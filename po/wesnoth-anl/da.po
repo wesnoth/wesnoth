@@ -1,15 +1,14 @@
-# (Battle for Wesnoth) Danish translation of Battle for Wesnoth.
-# Copyright (C) 2005 Wesnoth development team
+# Danish translation of A New Land.
+# Copyright (C) 2008 Wesnoth development team, Joe Hansen.
 # This file is distributed under the same license as the Battle for Wesnoth package.
-# Anders K. Madsen (madsen@lillesvin.linux.dk), 2005
-# Joe Hansen (joedalton2@yahoo.dk), 2007
+# Joe Hansen (joedalton2@yahoo.dk), 2008.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 1.3+CVS\n"
+"Project-Id-Version: Battle for Wesnoth 1.5+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-11-09 21:12+0100\n"
-"PO-Revision-Date: 2007-12-13 13:44+0200\n"
+"PO-Revision-Date: 2008-11-03 13:44+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "MIME-Version: 1.0\n"
@@ -19,9 +18,8 @@ msgstr ""
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:4
-#, fuzzy
 msgid "4p - A New Land"
-msgstr "4p - Lagoon"
+msgstr "4p - Et nyt land"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:7
@@ -29,6 +27,9 @@ msgid ""
 "This 4p survival scenario allows you to construct buildings and terraform "
 "the land. Use map settings. Recommended starting gold=100."
 msgstr ""
+"Dette 4 personers overlevelsesscenarie giver dig mulighed for at bygge "
+"bygninger og opdyrke landet. Brug kortindstillinger. Anbefalet "
+"startbeholdning af guld=100."
 
 #. [part]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:25
@@ -38,40 +39,48 @@ msgid ""
 "armies that had crushed their homeland, the leaders of the resistance hoped "
 "only for enough time to rebuild their forces."
 msgstr ""
+"I efterspillet på den store krig flygtede resterne af menneskeheden til en "
+"fjern afsondret bjergkløft. Selvom de vidste, at de ikke kunne gemme sig for "
+"de store hære, som havde knust deres hjemland, så håbede lederne af "
+"modstanden, at de kunne vinde nok tid til at genobygge deres styrker."
 
 #. [objectives]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:33
 msgid "Right-click on your leader during your turn for help"
-msgstr ""
+msgstr "Højreklik på din leder under din runde for hjælp"
 
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:35
 msgid "You must survive until turn 25."
-msgstr ""
+msgstr "Du skal overleve indtil runde 25."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:428
 msgid ""
 "You destroy the mushroom mine. The northwest undead now have 10 less income."
 msgstr ""
+"Du ødelægger svampeminen. De nordvestlige udøde har nu 10 mindre i indkomst."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:448
 msgid ""
 "You destroy the mushroom mine. The northeast orcs now have 10 less income."
 msgstr ""
+"Du ødelægger svampeminen. De nordøstlige orker har nu 10 mindre i indkomst."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:468
 msgid ""
 "You destroy the mushroom mine. The southwest orcs now have 10 less income."
 msgstr ""
+"Du ødelægger svampeminen. De sydvestlige orker har nu 10 mindre i indkomst."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:488
 msgid ""
 "You destroy the mushroom mine. The southeast undead now have 10 less income."
 msgstr ""
+"Du ødelægger svampeminen. De sydøstlige udøde har nu 10 mindre i indkomst."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:580
@@ -79,6 +88,7 @@ msgid ""
 "One of your peasants has happened upon some spider's nests in the north and "
 "south."
 msgstr ""
+"En af dine bønder er stødt ind i nogle edderkoppers reder mod nord og syd."
 
 #. [message]: type=Peasant
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:586
@@ -86,6 +96,8 @@ msgid ""
 "I swear I saw somebody trapped in the spider's web. Maybe we should rescue "
 "them?"
 msgstr ""
+"Jeg sværger, jeg så nogle fanget i edderkoppens net. Måske skulle vi redde "
+"dem?"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:598
@@ -94,12 +106,17 @@ msgid ""
 "spiders guarding each captive are currently wounded, the sooner you get "
 "there the better chance you have of killing them."
 msgstr ""
+"Flyt en enhed hen ved siden af disse fanger og de vil slutte sig til din "
+"side. Edderkopperne der bevogter fangerne er sårede, jo hurtigere du kommer "
+"frem jo bedre er din chance for at dræbe dem."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:609
 msgid ""
 "Your men report strange sounds coming from some caves to the east and west."
 msgstr ""
+"Dine mænd fortæller om mærkelige lyde, der kommer fra nogle huler mod øst og "
+"vest."
 
 #. [message]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:615
@@ -108,6 +125,10 @@ msgid ""
 "it must be where the mainstay of their resources are produced. If we could "
 "destroy them our chances wouldn't nearly be so slim."
 msgstr ""
+"Det ser ud til at fjenden tæt herpå har bygget nogle underjordiske "
+"svampeminer - det må være her at størstedelen af deres ressourcer bliver "
+"produceret. Hvis vi kunne ødelægge dem ville vi forøge vores chancer i "
+"krigen."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:627
@@ -115,11 +136,13 @@ msgid ""
 "Move any unit onto these villages to destroy the mine. Each one you destroy "
 "will reduce the enemy's income by 10."
 msgstr ""
+"Flyt en enhed ind i disse landsbyer for at ødelægge minen. Hver mine du "
+"ødelægger vil reducere fjendens indkomst med 10."
 
 #. [message]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:639
 msgid "This battle is nearly at an end. Victory is close at hand!"
-msgstr ""
+msgstr "Dette slag er næsten færdig. Sejren er tæt på!"
 
 #. [message]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:650
@@ -127,48 +150,50 @@ msgid ""
 "We have survived the onslaught! The tide of the battle has turned, victory "
 "cannot elude us now!"
 msgstr ""
+"Vi har overlevet massakren! Slaget har vendt sig, sejren er inden for vores "
+"rækkevidde!"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:654
 msgid "You have won the game, but you may continue if you wish..."
-msgstr ""
+msgstr "Du har vundet spillet, men du kan fortsætte hvis du ønsker det..."
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:669
 msgid "I have fallen, but all is not lost!"
-msgstr ""
+msgstr "Jeg har tabt, men alt er ikke forgæves!"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:681
 msgid "I am done for, but we have yet to lose this battle!"
-msgstr ""
+msgstr "Jeg er færdig, men vi har stadig ikke tabt dette slag!"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:693
 msgid "Comrades, avenge me!"
-msgstr ""
+msgstr "Kammerater, hævn mig!"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:705
 msgid "Do not fear, there is hope for us still!"
-msgstr ""
+msgstr "Frygt ikke, der er stadig håb for os!"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_general_macros.cfg:78
 msgid "The chest contains $oc_treasure gold."
-msgstr ""
+msgstr "Kisten indeholder $oc_treasure guldstykker."
 
 #. [option]
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:5
 msgid "Return to menu"
-msgstr ""
+msgstr "Tilbage til menu"
 
 #. [message]: speaker=narrator
 #. [option]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:15
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:113
 msgid "Peasants"
-msgstr ""
+msgstr "Bønder"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:18
@@ -177,13 +202,16 @@ msgid ""
 "peasant allows you to terraform the landscape and/or build castles, mines, "
 "farms, villages and universities."
 msgstr ""
+"Bønder er dine arbejdere. Afhængig af terræn, vil et højreklik på en bonde "
+"giver dig mulighed for at kultivere landskabet og/eller bygge slotte, miner, "
+"landbrug, landsbyer og universiteter."
 
 #. [message]: speaker=narrator
 #. [option]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:26
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:120
 msgid "Mages"
-msgstr ""
+msgstr "Troldmænd"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:28
@@ -191,14 +219,15 @@ msgid ""
 "Mages are your wise men. They can study at universities, pursuing advances "
 "in mining, farming and recruitment."
 msgstr ""
+"Troldmænd er dine kloge folk. De kan studere ved universiteter, forfølge "
+"fremskridt indenfor minearbejde, landbrug og rekruttering."
 
 #. [message]: speaker=narrator
 #. [option]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:36
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:127
-#, fuzzy
 msgid "Farms"
-msgstr "Faery"
+msgstr "Landbrug"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:38
@@ -206,13 +235,15 @@ msgid ""
 "Farms can only be planted on grassland. Move a peasant onto a farm and he "
 "will begin to automatically harvest the cash crop."
 msgstr ""
+"Landbrug kan kun placeres på græsland. Flyt en bonde ind på et landbrug og "
+"han vil automatisk begynde at høste."
 
 #. [message]: speaker=narrator
 #. [option]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:46
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:134
 msgid "Villages"
-msgstr ""
+msgstr "Landsbyer"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:48
@@ -221,14 +252,15 @@ msgid ""
 "usual. Right-click on a peasant in a village and you can establish a "
 "university."
 msgstr ""
+"Landsbyer kan kun bygges på græsland. De giver indkomster og helbredelse som "
+"normalt. Højreklik på en bonde i en landsby og du kan bygge et universitet."
 
 #. [message]: speaker=narrator
 #. [option]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:56
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:141
-#, fuzzy
 msgid "Mines"
-msgstr "Monstre"
+msgstr "Miner"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:58
@@ -236,22 +268,29 @@ msgid ""
 "Mines can be built on hills or mountains. A peasant on a mine will "
 "automatically dig for gold at the start of your turn."
 msgstr ""
+"Miner kan bygges på bakker og bjerge. En bonde på en mine vil automatisk "
+"grave efter guld i begyndelsen af din runde."
 
 #. [message]: speaker=narrator
 #. [option]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:66
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:148
 msgid "Universities"
-msgstr ""
+msgstr "Universiteter"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:68
+#, fuzzy
 msgid ""
 "Any of the 'Elvish' style villages represent universities. At the start of "
 "your turn, Mages in universities automatically add to the study progress of "
 "your chosen research target. Right-click on a mage in a university to change "
 "research target."
 msgstr ""
+"Alle de »elveragtige« landsbyer repræsenterer universiteter. I begyndelsen af "
+"din runde, vil troldmænd i universiteterne automatisk tilføre fremskridt til "
+"dit valgte forskningsmål. Højreklik på en troldmand i et universtitet for at "
+"ændre forskningsmålet."
 
 #. [message]: speaker=narrator
 #. [option]: speaker=narrator
@@ -260,40 +299,43 @@ msgstr ""
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:155
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:135
 msgid "Diplomacy"
-msgstr ""
+msgstr "Diplomati"
 
+# engelsk fejl = univerity
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:78
+#, fuzzy
 msgid ""
 "Right-clicking on your leader when in a university allows you to select "
 "special diplomatic options."
 msgstr ""
+"Højreklik på din leder, når han befinder sig i et universitet, og du kan "
+"vælge specielle diplomatiske muligheder."
 
 #. [set_menu_item]
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:86
 msgid "Help"
-msgstr ""
+msgstr "Hjælp"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:102
-#, fuzzy
 msgid "A New Land - Help"
-msgstr "4p - Lagoon"
+msgstr "Et nyt land - hjælp"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:103
 msgid "Select a topic."
-msgstr ""
+msgstr "Vælg et emne."
 
 #. [option]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:106
 msgid "Done"
-msgstr ""
+msgstr "Færdig"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:19
 msgid "I hereby donate 20 gold to the coffers of $df_player_name|."
-msgstr ""
+msgstr "Jeg donerer hermed 20 guldstykker til $df_player_name|."
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:59
@@ -301,6 +343,8 @@ msgid ""
 "$sf_player_name|, since our wisdom exceeds yours I have instructed my "
 "scholars to further your understanding of agriculture."
 msgstr ""
+"$sf_player_name|, da vores kundskaber er større end dine har jeg instrueret "
+"mine videnskabsmænd i at øge din forståelse for landbrug."
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:91
@@ -309,6 +353,8 @@ msgid ""
 "instructed my scholars to aid you in your efforts to learn the science of "
 "mining."
 msgstr ""
+"$sm_player_name|, da vores kundskaber er større end dine har jeg instrueret "
+"mine videnskabsmænd i at øge din forståelse for minedrift."
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:123
@@ -316,6 +362,8 @@ msgid ""
 "You know worryingly little about the arts of war, $sw_player_name|. I feel "
 "an obligation to instruct you in this vital matter."
 msgstr ""
+"Du ved foruroligende lidt om krigskunst, $sw_player_name|. Jeg føler en "
+"forpligtelse til at øge dit kundskabsniveau på dette vitale område."
 
 #. [set_variable]
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:189
@@ -323,6 +371,8 @@ msgid ""
 "$player_name\n"
 "Share knowledge of agriculture"
 msgstr ""
+"$player_name\n"
+"Del viden om landbrugsdrift"
 
 #. [set_variable]
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:196
@@ -330,6 +380,8 @@ msgid ""
 "$player_name\n"
 "Share knowledge of mining"
 msgstr ""
+"$player_name\n"
+"Del viden om minedrift"
 
 #. [set_variable]
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:203
@@ -337,24 +389,26 @@ msgid ""
 "$player_name\n"
 "Share knowledge of warfare"
 msgstr ""
+"$player_name\n"
+"Del viden om krigskunst"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:220
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:246
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:279
 msgid "Diplomatic Options"
-msgstr ""
+msgstr "Diplomatiske indstillinger"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:223
 msgid "What shall I do?"
-msgstr ""
+msgstr "Hvad skal jeg gøre?"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:47
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:229
 msgid "Nothing"
-msgstr ""
+msgstr "Intet"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:239
@@ -362,17 +416,19 @@ msgid ""
 "Donate Funds\n"
 "Give 20 gold to another player"
 msgstr ""
+"Doner midler\n"
+"Giv 20 guldstykker til en anden spiller"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:249
 msgid "Who will you donate funds to?"
-msgstr ""
+msgstr "Hvem vil du donere penge til?"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:252
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:285
 msgid "Back"
-msgstr ""
+msgstr "Forrige"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:272
@@ -380,11 +436,13 @@ msgid ""
 "Share Knowledge\n"
 "Help an ally with their research"
 msgstr ""
+"Del viden\n"
+"Hjælp en allieret med deres forskning"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:282
 msgid "Who will you share knowledge with?"
-msgstr ""
+msgstr "Hvem vil du dele viden med?"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:319
@@ -394,6 +452,10 @@ msgid ""
 "Negotiation Progress: $player_$side_number|.leader_option_1.progress|/"
 "$player_$side_number|.leader_option_1.target"
 msgstr ""
+"Forhandle med dværgene\n"
+"Gør at du kan rekruttere en dværgeenhed\n"
+"Forhandlingsfremskridt: $player_$side_number|.leader_option_1.progress|/"
+"$player_$side_number|.leader_option_1.target"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:345
@@ -403,12 +465,15 @@ msgid ""
 "Negotiation Progress: $player_$side_number|.leader_option_2.progress|/"
 "$player_$side_number|.leader_option_2.target"
 msgstr ""
+"Forhandle med elverne\n"
+"Forhandlingsfremskridt: $player_$side_number|.leader_option_2.progress|/"
+"$player_$side_number|.leader_option_2.target"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:378
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:400
 msgid "Negotiation Complete"
-msgstr ""
+msgstr "Forhandling færdig"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:381
@@ -416,6 +481,8 @@ msgid ""
 "Our talks are complete - the Dwarves will gladly fight by your side. Which "
 "of our brethren do you want to recruit?"
 msgstr ""
+"Vores samtaler er færdige - dværgene vil gerne kæmpe ved din side. Hvem "
+"blandt vores artsfæller ønsker du at rekruttere?"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:403
@@ -423,11 +490,13 @@ msgid ""
 "Our talks are complete - the Elves shall aid you in this battle. Which our "
 "of kin do you wish to recruit?"
 msgstr ""
+"Vores samtler er færdige - elverne vil hjælpe dig i dette slag. Hvem blandt "
+"vores artsfæller ønsker du at rekruttere?"
 
 #. [set_menu_item]
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:9
 msgid "Choose New Recruit"
-msgstr ""
+msgstr "Vælg ny rekrut"
 
 #. [message]: speaker=unit
 #. [message]: speaker=narrator
@@ -436,22 +505,22 @@ msgstr ""
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:225
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:241
 msgid "Study Complete"
-msgstr ""
+msgstr "Forskning færdig"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:35
 msgid "Which type of unit would you like to be able to recruit?"
-msgstr ""
+msgstr "Hvilken type af enhed ønsker du at kunne rekruttere?"
 
 #. [set_menu_item]
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:54
 msgid "Oversee Research"
-msgstr ""
+msgstr "Føre tilsyn med forskningen"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:93
 msgid "Research"
-msgstr ""
+msgstr "Forskning"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:99
@@ -463,11 +532,17 @@ msgid ""
 "Our mines produce $player_$side_number|.mining.gold|g\n"
 "                                                                                "
 msgstr ""
+"Vi forsker nu i $player_$side_number|.research.current_target|. Til hvilket "
+"formål ønsker du at vores videnskabsmænd skal bruge deres ressourcer?\n"
+"\n"
+"Vores landbrug producere $player_$side_number|.farming.gold|g\n"
+"Vores miner producere $player_$side_number|.mining.gold|g\n"
+"                                                                                "
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:103
 msgid "Continue as before"
-msgstr ""
+msgstr "Fortsæt som før"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:115
@@ -477,6 +552,10 @@ msgid ""
 "Study Progress: $player_$side_number|.farming.progress|/$player_"
 "$side_number|.farming.target"
 msgstr ""
+"Landbrug\n"
+"Landmænd producerer +1 guldstykke\n"
+"Forskningsfremskridt: $player_$side_number|.farming.progress|/$player_"
+"$side_number|.farming.target"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:129
@@ -486,6 +565,10 @@ msgid ""
 "Study Progress: $player_$side_number|.mining.progress|/$player_$side_number|."
 "mining.target"
 msgstr ""
+"Minedrift\n"
+"Minearbejdere producerer +1 guldstykke\n"
+"Forskningsfremskridt: $player_$side_number|.mining.progress|/$player_"
+"$side_number|.mining.target"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:143
@@ -495,6 +578,10 @@ msgid ""
 "Study Progress: $player_$side_number|.warfare.progress|/$player_"
 "$side_number|.warfare.target"
 msgstr ""
+"Krigsførelse\n"
+"Gør at du kan rekruttere en ny enhedstype\n"
+"Forskningsfremskridt: $player_$side_number|.warfare.progress|/$player_"
+"$side_number|.warfare.target"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:210
@@ -502,6 +589,8 @@ msgid ""
 "$player_$side_number|.name|'s farms now produce $player_$side_number|."
 "farming.gold gold."
 msgstr ""
+"$player_$side_number|.name|s landbrug producerer nu $player_$side_number|."
+"farming.gold guldstykker."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:227
@@ -509,6 +598,8 @@ msgid ""
 "$player_$side_number|.name|'s mines now produce $player_$side_number|.mining."
 "gold gold."
 msgstr ""
+"$player_$side_number|.name|s miner producerer nu $player_$side_number|."
+"mining.gold guldstykker."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:243
@@ -516,31 +607,35 @@ msgid ""
 "$player_$side_number|.name|, we have finished researching warfare. Right-"
 "click on a mage in a university to select a unit to recruit."
 msgstr ""
+"$player_$side_number|.name|, vi har afsluttet forskningen indenfor "
+"krigsførelse. Højreklik på en troldmand i et universitet for at vælge en "
+"enhed der skal rekrutteres."
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_special_macros.cfg:149
 msgid "Let's cut you free!"
-msgstr ""
+msgstr "Lad os slippe dig fri!"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_special_macros.cfg:153
 msgid "You release the creature from the web and it agrees to help you."
 msgstr ""
+"Du skærer skabningen fri fra nettet og den er indforstået med at hjælpe dig."
 
 #. [set_menu_item]
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:6
 msgid "Get to Work!"
-msgstr ""
+msgstr "Kom i gang!"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:43
 msgid "What shall I do my liege?"
-msgstr ""
+msgstr "Hvad skal jeg gøre vasal?"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:61
 msgid "Convert to Grassland"
-msgstr ""
+msgstr "Omdan til græsland"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:61
@@ -548,151 +643,150 @@ msgstr ""
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:268
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:404
 msgid "Cost: 0g"
-msgstr ""
+msgstr "Pris: 0 g."
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:76
 msgid "Plant Farm"
-msgstr ""
+msgstr "Anlæg landbrug"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:88
 msgid "Cost: 15g"
-msgstr ""
+msgstr "Pris: 15 g."
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:88
 msgid "Build Village"
-msgstr ""
+msgstr "Byg landsby"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:106
 msgid "Build Castle"
-msgstr ""
+msgstr "Byg borg"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:106
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:363
 msgid "Cost: 6g"
-msgstr ""
+msgstr "Pris: 6 g."
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:123
 msgid "Flood the Field"
-msgstr ""
+msgstr "Oversvøm marken"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:123
 msgid "Cost: 4g"
-msgstr ""
+msgstr "Pris: 4 g."
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:140
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:283
 msgid "Cost: 1g"
-msgstr ""
+msgstr "Pris: 1 g."
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:140
 msgid "Plant Saplings"
-msgstr ""
+msgstr "Plant små træer"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:160
 msgid "Chop Down Forest"
-msgstr ""
+msgstr "Hug skoven ned"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:160
 msgid "Earns: 1g"
-msgstr ""
+msgstr "Indkomst: 1 g."
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:187
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:208
 msgid "Build Mine"
-msgstr ""
+msgstr "Byg mine"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:187
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:208
 msgid "Cost: 25g"
-msgstr ""
+msgstr "Pris: 25 g."
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:229
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:321
 msgid "Cost: 3g"
-msgstr ""
+msgstr "Pris: 3 g."
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:229
 msgid "Make a Ford"
-msgstr ""
+msgstr "Lav et vadested"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:247
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:283
 msgid "Landfill"
-msgstr ""
+msgstr "Jordopfyldning"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:247
 msgid "Cost: 5g"
-msgstr ""
+msgstr "Pris: 5 g."
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:268
 msgid "Destroy the Ford"
-msgstr ""
+msgstr "Ødelæg vadestedet"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:304
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:321
 msgid "Smash Cave Floor"
-msgstr ""
+msgstr "Knus hulegulvet"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:304
 msgid "Cost: 2g"
-msgstr ""
+msgstr "Pris: 2 g."
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:338
 msgid "Harvest Mushrooms"
-msgstr ""
+msgstr "Høst svampe"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:338
 msgid "Earns: 3g"
-msgstr ""
+msgstr "Indkomst: 3 g."
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:363
 msgid "Build a Keep"
-msgstr ""
+msgstr "Byg et tårn"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:383
 msgid "Cost: 7g"
-msgstr ""
+msgstr "Pris: 7 g."
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:383
 msgid "Establish University"
-msgstr ""
+msgstr "Grundlæg universitet"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:404
-#, fuzzy
 msgid "Clear the Ground"
-msgstr "Klart vejr"
+msgstr "Ryd området"
 
 #~ msgid "User Map"
 #~ msgstr "Brugerkort"
 
 #~ msgid "Random"
-#~ msgstr "Tilfældig"
+#~ msgstr "TilfÃŠldig"
 
 #~ msgid "Default"
 #~ msgstr "Standard"
@@ -704,7 +798,7 @@ msgstr "Klart vejr"
 #~ msgstr "Den Store Krig"
 
 #~ msgid "Alliance of Darkness"
-#~ msgstr "Mørkets alliance"
+#~ msgstr "MÃžrkets alliance"
 
 #~ msgid "Alliance of Light"
 #~ msgstr "Lysets alliance"
@@ -725,7 +819,7 @@ msgstr "Klart vejr"
 #~ msgstr "Rebeller"
 
 #~ msgid "Undead"
-#~ msgstr "Udød"
+#~ msgstr "UdÃžd"
 
 #~ msgid "2p - Caves of the Basilisk"
 #~ msgstr "2p - Basiliskens huler"
@@ -736,9 +830,9 @@ msgstr "Klart vejr"
 #~ "caves and the stark wilderness surrounding them are filled with the "
 #~ "petrified forms of some of Wesnoth's greatest heroes."
 #~ msgstr ""
-#~ "Spillerne skal navigere deres enheder igennem forskellige terræn i denne "
-#~ "frygtede region, tidligere hjem for den legendariske ældre basilisk. "
-#~ "Hulerne og de vilde omgivelser er brolagt med nogle af de største "
+#~ "Spillerne skal navigere deres enheder igennem forskellige terrÃŠn i denne "
+#~ "frygtede region, tidligere hjem for den legendariske ÃŠldre basilisk. "
+#~ "Hulerne og de vilde omgivelser er brolagt med nogle af de stÃžrste "
 #~ "forstenede helte fra Wesnoth."
 
 #~ msgid "teamname^North"
@@ -769,24 +863,24 @@ msgstr "Klart vejr"
 #~ "His home to steal the Basilisk's gold.\n"
 #~ "(inscribed by Flametrooper)"
 #~ msgstr ""
-#~ "Den mørke skyes vind var så kold,\n"
-#~ "Månen var høj på himlen, natten var gold,\n"
+#~ "Den mÃžrke skyes vind var sÃ¥ kold,\n"
+#~ "MÃ¥nen var hÃžj pÃ¥ himlen, natten var gold,\n"
 #~ "Modig var hestedragen som turde forlade\n"
-#~ "Sit hjem for at stjæle basiliskens guld.\n"
+#~ "Sit hjem for at stjÃŠle basiliskens guld.\n"
 #~ "\n"
-#~ "På den mørke nat, skyerne hvirvlede,\n"
-#~ "Han glemte hvad han havde lært,\n"
-#~ "Tåbelig men modig han til basiliskens hule travede,\n"
-#~ "Han mødte og ilden i ham brændte.\n"
+#~ "PÃ¥ den mÃžrke nat, skyerne hvirvlede,\n"
+#~ "Han glemte hvad han havde lÃŠrt,\n"
+#~ "TÃ¥belig men modig han til basiliskens hule travede,\n"
+#~ "Han mÃždte og ilden i ham brÃŠndte.\n"
 #~ "\n"
-#~ "Den ild brænder ikke sagte,\n"
-#~ "Et mægtigt brøl fra basilisken,\n"
+#~ "Den ild brÃŠnder ikke sagte,\n"
+#~ "Et mÃŠgtigt brÃžl fra basilisken,\n"
 #~ "Gjorde ham kold til benet og forsagte,\n"
-#~ "Og sådan han endte.\n"
+#~ "Og sÃ¥dan han endte.\n"
 #~ "\n"
-#~ "Skyernes vinde blæste så koldt,\n"
-#~ "Årene gik, dagene holdt,\n"
-#~ "Her står den hestedrage, som turde\n"
+#~ "Skyernes vinde blÃŠste sÃ¥ koldt,\n"
+#~ "Ãrene gik, dagene holdt,\n"
+#~ "Her stÃ¥r den hestedrage, som turde\n"
 #~ "men basilisken sit guld beholdt.\n"
 #~ "(inskription af flammekavalerist)"
 
@@ -815,25 +909,25 @@ msgstr "Klart vejr"
 #~ "lake, Xikkrisx set the statue down inside of a small cave, and lay down "
 #~ "to rest. He was awoken by a bone-chilling roar."
 #~ msgstr ""
-#~ "Xikkrisx fra Syrsszk var en magtfuld øglekriger, som blev sendt til denne "
-#~ "region af Rysssrylosszkk-klanens ældreråd (oversættelse: »Jager-fjender-i-"
-#~ "kogende- flod-klanen«). Ældrerådet var i gang med at forberede krig mod en "
-#~ "menneskeforpost, og havde behov for de magiske evner hos Oxsrrsk, en "
-#~ "øglemystiker som senest var set på vej mod Ruaskkolin-floden. Xikkrisx "
-#~ "fandt den forstenede krop af Oxsrrsk, sammen med en omhyggeligt bundet "
-#~ "skriftrulle, som øjensynlig var blevet tabt i en lille revne i hulens "
-#~ "gulv. Han åbnede skriftrullen og læste et kort udsnit fra midten af "
-#~ "teksten: »Efter han var blevet bundet til Oververdenen, søgte Chak'ksos "
-#~ "rasende sjæl efter frihed, og han var i stand til at yde indflydelse på "
-#~ "bestemte regioner i Oververdenen, kanaliseret igennem »stier af sten« som "
-#~ "førte fra overfladen ned i Underverdenen. Dette raseri ændrede ægene hos "
-#~ "mægtige firben, skabte deres krop og sjæl i inkarnationer af Chak'ksos "
-#~ "had.« Forvirret hang Xikkrisx opmærksomhed fast ved den igangværende "
-#~ "opgave. Måske kunne de ældre finde en måde at genoplive Oxsrrsk, så han "
-#~ "begyndte den lange og møjsommelige opgave med at slæbe stenen tilbage til "
-#~ "Rysssrylosszkk-klanen. Udmattet, og ikke langt fra floden, satte Xikkrisx "
-#~ "statuen ned i en lille hule og hvilede sig. Han vågnede ved et "
-#~ "frygtindgydende brøl."
+#~ "Xikkrisx fra Syrsszk var en magtfuld Ãžglekriger, som blev sendt til "
+#~ "denne region af Rysssrylosszkk-klanens ÃŠldrerÃ¥d (oversÃŠttelse: Â»Jager-"
+#~ "fjender-i-kogende- flod-klanenÂ«). ÃldrerÃ¥det var i gang med at forberede "
+#~ "krig mod en menneskeforpost, og havde behov for de magiske evner hos "
+#~ "Oxsrrsk, en Ãžglemystiker som senest var set pÃ¥ vej mod Ruaskkolin-"
+#~ "floden. Xikkrisx fandt den forstenede krop af Oxsrrsk, sammen med en "
+#~ "omhyggeligt bundet skriftrulle, som Ãžjensynlig var blevet tabt i en "
+#~ "lille revne i hulens gulv. Han Ã¥bnede skriftrullen og lÃŠste et kort "
+#~ "udsnit fra midten af teksten: Â»Efter han var blevet bundet til "
+#~ "Oververdenen, sÃžgte Chak'ksos rasende sjÃŠl efter frihed, og han var i "
+#~ "stand til at yde indflydelse pÃ¥ bestemte regioner i Oververdenen, "
+#~ "kanaliseret igennem Â»stier af stenÂ« som fÃžrte fra overfladen ned i "
+#~ "Underverdenen. Dette raseri ÃŠndrede ÃŠgene hos mÃŠgtige firben, skabte "
+#~ "deres krop og sjÃŠl i inkarnationer af Chak'ksos had.Â« Forvirret hang "
+#~ "Xikkrisx opmÃŠrksomhed fast ved den igangvÃŠrende opgave. MÃ¥ske kunne de "
+#~ "ÃŠldre finde en mÃ¥de at genoplive Oxsrrsk, sÃ¥ han begyndte den lange og "
+#~ "mÃžjsommelige opgave med at slÃŠbe stenen tilbage til Rysssrylosszkk-"
+#~ "klanen. Udmattet, og ikke langt fra floden, satte Xikkrisx statuen ned i "
+#~ "en lille hule og hvilede sig. Han vÃ¥gnede ved et frygtindgydende brÃžl."
 
 #~ msgid "Oxsrrsk"
 #~ msgstr "Oxsrrsk"
@@ -860,25 +954,25 @@ msgstr "Klart vejr"
 #~ "ability to locate and bind this powerful creature into his service, "
 #~ "Oxsrrsk set out on his journey..."
 #~ msgstr ""
-#~ "Oxsrrsk var et magtfuldt øgleorakel, som havde, i et overfald på den "
-#~ "rivaliserende Xraxss-klan, erobret (fra gemmerne hos det nu afdøde orakel "
-#~ "Hesx-Rzzak) en meget fascinerende skriftrulle. Skriftrullen bar navnet "
-#~ "»Ney'yks af granitånden«, og fortalte om en skabning kendt under navnet "
-#~ "»Chak'kso Ney'yks«, et navn som i et ældgammelt øglesprog betød »Det "
-#~ "ældste barn af Chak'kso«. Chak'kso mentes at have været en magtfuld "
-#~ "halvgud i Underverdenen, beskrevet som en »dæmon af jorden« i elvernes "
-#~ "historiebøger. Ifølge disse legender, havde Chak'kso forsøgt at  omdanne "
-#~ "alt liv på jorden til sten; så stort var hans had til kødets skabninger. "
-#~ "Han blev besejret og bundet af af magtfuld magi, men i århundrederne "
-#~ "efter hans tilfangetagelse (i et område langt under jordens overflade) "
-#~ "begyndte en ny slags skabninger at fremkomme, en race med evnen til at "
-#~ "kunne forvandle kød til sten. Der var en periode da disse basilisker (som "
-#~ "de blev kaldt) skabte panik blandt de levende på jorden, og de "
-#~ "forvandlede tusinder til sten. En efter en, og med store omkostninger, "
-#~ "blev disse basilisker besejret. Alle på nær en; nemlig basilisken kendt "
-#~ "under navnet »Ney'yks«, eller »Det ældste barn«, i moderne sprog. "
-#~ "Overbevidst om sin evne til at finde og fange denne magtfulde skabning "
-#~ "til egen fordel, tog Oxsrrsk af sted på sin rejse..."
+#~ "Oxsrrsk var et magtfuldt Ãžgleorakel, som havde, i et overfald pÃ¥ den "
+#~ "rivaliserende Xraxss-klan, erobret (fra gemmerne hos det nu afdÃžde "
+#~ "orakel Hesx-Rzzak) en meget fascinerende skriftrulle. Skriftrullen bar "
+#~ "navnet Â»Ney'yks af granitÃ¥ndenÂ«, og fortalte om en skabning kendt under "
+#~ "navnet Â»Chak'kso Ney'yksÂ«, et navn som i et ÃŠldgammelt Ãžglesprog "
+#~ "betÃžd Â»Det ÃŠldste barn af Chak'ksoÂ«. Chak'kso mentes at have vÃŠret en "
+#~ "magtfuld halvgud i Underverdenen, beskrevet som en Â»dÃŠmon af jordenÂ« i "
+#~ "elvernes historiebÃžger. IfÃžlge disse legender, havde Chak'kso forsÃžgt "
+#~ "at  omdanne alt liv pÃ¥ jorden til sten; sÃ¥ stort var hans had til "
+#~ "kÃždets skabninger. Han blev besejret og bundet af af magtfuld magi, men "
+#~ "i Ã¥rhundrederne efter hans tilfangetagelse (i et omrÃ¥de langt under "
+#~ "jordens overflade) begyndte en ny slags skabninger at fremkomme, en race "
+#~ "med evnen til at kunne forvandle kÃžd til sten. Der var en periode da "
+#~ "disse basilisker (som de blev kaldt) skabte panik blandt de levende pÃ¥ "
+#~ "jorden, og de forvandlede tusinder til sten. En efter en, og med store "
+#~ "omkostninger, blev disse basilisker besejret. Alle pÃ¥ nÃŠr en; nemlig "
+#~ "basilisken kendt under navnet Â»Ney'yksÂ«, eller Â»Det ÃŠldste barnÂ«, i "
+#~ "moderne sprog. Overbevidst om sin evne til at finde og fange denne "
+#~ "magtfulde skabning til egen fordel, tog Oxsrrsk af sted pÃ¥ sin rejse..."
 
 #~ msgid ""
 #~ "Slim of Stature, dexterous Hands\n"
@@ -890,12 +984,12 @@ msgstr "Klart vejr"
 #~ "- - Seven Stones - and the Elven\n"
 #~ "(inscribed by Gauteamus)"
 #~ msgstr ""
-#~ "Slank af statur, behændige hænder\n"
+#~ "Slank af statur, behÃŠndige hÃŠnder\n"
 #~ "- - Syv stene og elleve\n"
-#~ "Gav sine fjende så lille en chance\n"
+#~ "Gav sine fjende sÃ¥ lille en chance\n"
 #~ "- - Syv stene og elleve\n"
 #~ "Skarpskytte kendt som dragebetvinger\n"
-#~ "døde blandt disse statuer\n"
+#~ "dÃžde blandt disse statuer\n"
 #~ "- - Syv stene - og den elvte\n"
 #~ "(inskription af Gauteamus)"
 
@@ -918,20 +1012,20 @@ msgstr "Klart vejr"
 #~ "words: Good Gog, dog, are yer legs made of stone?!?\n"
 #~ "(inscribed by Elvish Pillager)"
 #~ msgstr ""
-#~ "Blum Duk var berygtet i sin goblinklan for at have tæmmet en af "
+#~ "Blum Duk var berygtet i sin goblinklan for at have tÃŠmmet en af "
 #~ "frygtulvene fra bjergene, og han havde et mod der matchede denne. Hans "
-#~ "lederskab og evner var hvad der holdt områdets gobliner i live på trods "
+#~ "lederskab og evner var hvad der holdt omrÃ¥dets gobliner i live pÃ¥ trods "
 #~ "af menneskenes og elvernes trussel. Rygter sagde at hans ulv havde "
-#~ "nedlagt 50 mænd og 100 elver.\n"
-#~ "Da vi hørte om det frygtelige monster som beboede dette område var det "
-#~ "derfor naturligt at han alene red ud for at møde det. Alle de andre "
-#~ "gobliner forventede at han nemt ville nedlægge monstre og tage dets lig "
-#~ "tilbage til et festmåltid.\n"
-#~ "Han fik et chok. Så snart han så basilisken frøs han i skræk. Han "
-#~ "forsøgte at vende sin ulv omkring, men den ville ikke flytte sig. Da "
+#~ "nedlagt 50 mÃŠnd og 100 elver.\n"
+#~ "Da vi hÃžrte om det frygtelige monster som beboede dette omrÃ¥de var det "
+#~ "derfor naturligt at han alene red ud for at mÃžde det. Alle de andre "
+#~ "gobliner forventede at han nemt ville nedlÃŠgge monstre og tage dets lig "
+#~ "tilbage til et festmÃ¥ltid.\n"
+#~ "Han fik et chok. SÃ¥ snart han sÃ¥ basilisken frÃžs han i skrÃŠk. Han "
+#~ "forsÃžgte at vende sin ulv omkring, men den ville ikke flytte sig. Da "
 #~ "skabningen gik imod ham skreg han sine sidste ord: Good Gog, hund, er "
 #~ "dine ben lavet af sten?!?\n"
-#~ "(inskription af elverrøver)"
+#~ "(inskription af elverrÃžver)"
 
 #~ msgid "Rah Ihn Mar"
 #~ msgstr "Rah Ihn Mar"
@@ -948,15 +1042,15 @@ msgstr "Klart vejr"
 #~ "entering the region but a day ago. Burning for vengeance, Rah Ihn Mar "
 #~ "began the hunt....."
 #~ msgstr ""
-#~ "Rah Ihn Mar, mester i De Brændende Bakker, var på vej mod Ruaskkolin-"
-#~ "floden i forfølgelse af elverhelten Terowydlithrol, kendt blandt elverne "
-#~ "som »Dragebetvingeren«. Det blev sagt at Terowydlithrol havde dræbt en "
-#~ "ilddrage som truede en elverlandsby, og startet et »modangreb« i hvilket "
-#~ "37 hestedrager på lejr i en nærvedliggende zzz ravine <<< og antaget for "
-#~ "at være i alliance med dragen, blev myrdet. Vel vidende at disse "
+#~ "Rah Ihn Mar, mester i De BrÃŠndende Bakker, var pÃ¥ vej mod Ruaskkolin-"
+#~ "floden i forfÃžlgelse af elverhelten Terowydlithrol, kendt blandt elverne "
+#~ "som Â»DragebetvingerenÂ«. Det blev sagt at Terowydlithrol havde drÃŠbt en "
+#~ "ilddrage som truede en elverlandsby, og startet et Â»modangrebÂ« i hvilket "
+#~ "37 hestedrager pÃ¥ lejr i en nÃŠrvedliggende zzz ravine <<< og antaget "
+#~ "for at vÃŠre i alliance med dragen, blev myrdet. Vel vidende at disse "
 #~ "hestedrager var uskyldige kom Rah Ihn Mar til Ruaskkolin-floden for at "
-#~ "opspore og dræbe Terowydlithrol, som var blevet set i området en dags tid "
-#~ "tidligere. Optændt af hævnlyst, begyndte Rah Ihn Mar jagten..."
+#~ "opspore og drÃŠbe Terowydlithrol, som var blevet set i omrÃ¥det en dags "
+#~ "tid tidligere. OptÃŠndt af hÃŠvnlyst, begyndte Rah Ihn Mar jagten..."
 
 #~ msgid ""
 #~ "He had lived there for ages upon ages, in the depths of the water, "
@@ -967,11 +1061,11 @@ msgstr "Klart vejr"
 #~ "lord of the lake had arrived.\n"
 #~ "(inscribed by Turin)"
 #~ msgstr ""
-#~ "Han havde levet der i umindelige tider, i vandets dyb, på jagt efter "
-#~ "forskellige fisk, frøer og havfolk. Det var hans flod, ingen andres, og "
-#~ "selvom den ikke var stor, var han dens herre. Så kom basilisken, og "
-#~ "kiggede i søslangens øje. Søslangen var ikke død, men den var ikke "
-#~ "længere i live. Så den herre i floden var ankommet.\n"
+#~ "Han havde levet der i umindelige tider, i vandets dyb, pÃ¥ jagt efter "
+#~ "forskellige fisk, frÃžer og havfolk. Det var hans flod, ingen andres, og "
+#~ "selvom den ikke var stor, var han dens herre. SÃ¥ kom basilisken, og "
+#~ "kiggede i sÃžslangens Ãžje. SÃžslangen var ikke dÃžd, men den var ikke "
+#~ "lÃŠngere i live. SÃ¥ den herre i floden var ankommet.\n"
 #~ "(inskription af Turin)"
 
 #~ msgid ""
@@ -983,12 +1077,12 @@ msgstr "Klart vejr"
 #~ "stark reminder of his once great bearing and strength.\n"
 #~ "(inscribed by Fynmiir)"
 #~ msgstr ""
-#~ "En modig helt fra Wesnoths gyldne tid, en stor rytter og leder af mænd, "
-#~ "kom til dette onde sted på et plyndringstogt mod orkerne. Fanget i et "
-#~ "uopmærksomt øjeblik af denne fæle skabning, blev mange af hans mænd "
-#~ "dræbt, men han kæmpede modigt og dræbte mange. Men forgæves! Den fæle "
-#~ "basilisk gjorde ham til sten idet han knuste den sidste ork. Nu er der "
-#~ "kun et minde tilbage om hans store position og styrke.\n"
+#~ "En modig helt fra Wesnoths gyldne tid, en stor rytter og leder af mÃŠnd, "
+#~ "kom til dette onde sted pÃ¥ et plyndringstogt mod orkerne. Fanget i et "
+#~ "uopmÃŠrksomt Ãžjeblik af denne fÃŠle skabning, blev mange af hans mÃŠnd "
+#~ "drÃŠbt, men han kÃŠmpede modigt og drÃŠbte mange. Men forgÃŠves! Den "
+#~ "fÃŠle basilisk gjorde ham til sten idet han knuste den sidste ork. Nu er "
+#~ "der kun et minde tilbage om hans store position og styrke.\n"
 #~ "(inskription af Fynmiir)"
 
 #~ msgid "Bramwythl"
@@ -1011,21 +1105,22 @@ msgstr "Klart vejr"
 #~ "been granted.\n"
 #~ "(inscribed by Elvish Pillager)"
 #~ msgstr ""
-#~ "Bramwythl træsjælen var altid blevet anset for en langsom ordknap fyr, "
-#~ "selv af andre træsjæle. I langt højere grad end andre træsjæle, nød han "
-#~ "at stå alene i solen, med armene oprejst, og beundrende skønheden over "
-#~ "hans himmel. Selv han indrømmede en enkelt gang over for en artsfælle, at "
-#~ "hans største ønske var at være i stang til at baske med vinger i solens "
-#~ "stråler.\n"
-#~ "Hvorledes end, ikke lang tid derefter, hørte det lokale træsjæle samfund "
-#~ "om at et forfærdelig monster, stærk nok til let at ødelægge de få "
-#~ "træsjæle der levede i området, var på vej. De flyttede sig hurtigt "
-#~ "(hurtigt for træsjæle i hvert fald), men Bramwythl blev glemt tilbage - i "
-#~ "travlheden havde ingen husket at finde ham og fortælle ham om faren.\n"
+#~ "Bramwythl trÃŠsjÃŠlen var altid blevet anset for en langsom ordknap fyr, "
+#~ "selv af andre trÃŠsjÃŠle. I langt hÃžjere grad end andre trÃŠsjÃŠle, nÃžd "
+#~ "han at stÃ¥ alene i solen, med armene oprejst, og beundrende skÃžnheden "
+#~ "over hans himmel. Selv han indrÃžmmede en enkelt gang over for en "
+#~ "artsfÃŠlle, at hans stÃžrste Ãžnske var at vÃŠre i stang til at baske med "
+#~ "vinger i solens strÃ¥ler.\n"
+#~ "Hvorledes end, ikke lang tid derefter, hÃžrte det lokale trÃŠsjÃŠle "
+#~ "samfund om at et forfÃŠrdelig monster, stÃŠrk nok til let at ÃždelÃŠgge "
+#~ "de fÃ¥ trÃŠsjÃŠle der levede i omrÃ¥det, var pÃ¥ vej. De flyttede sig "
+#~ "hurtigt (hurtigt for trÃŠsjÃŠle i hvert fald), men Bramwythl blev glemt "
+#~ "tilbage - i travlheden havde ingen husket at finde ham og fortÃŠlle ham "
+#~ "om faren.\n"
 #~ "Han blev overrasket af basilisken, og omdannet til sten inden han "
-#~ "overhovedet havde genkendt monsteret. Hans forstenet legeme står der "
-#~ "stadig i dag, og bliver varmet af solens stråler, under en åben himmel. "
-#~ "Hans største ønske blev opfyldt.\n"
+#~ "overhovedet havde genkendt monsteret. Hans forstenet legeme stÃ¥r der "
+#~ "stadig i dag, og bliver varmet af solens strÃ¥ler, under en Ã¥ben himmel. "
+#~ "Hans stÃžrste Ãžnske blev opfyldt.\n"
 #~ "(indhugget af elverplyndringsmand)"
 
 #~ msgid "Talael Ryndoc"
@@ -1035,8 +1130,8 @@ msgstr "Klart vejr"
 #~ "General Talael Ryndoc came to this place to fight a duel with the Grand "
 #~ "Marshal Aethec Corryn, but the two men never found one another. "
 #~ msgstr ""
-#~ "General Talael Ryndoc kom til dette sted for at udkæmpe en duel med "
-#~ "stormarskal Aethec Corryn, men de to mænd fandt aldrig hinanden. "
+#~ "General Talael Ryndoc kom til dette sted for at udkÃŠmpe en duel med "
+#~ "stormarskal Aethec Corryn, men de to mÃŠnd fandt aldrig hinanden. "
 
 #~ msgid "Aethec Corryn"
 #~ msgstr "Aethec Corryn"
@@ -1050,13 +1145,13 @@ msgstr "Klart vejr"
 #~ "\n"
 #~ "Perhaps he should not have shouted quite so loudly.... "
 #~ msgstr ""
-#~ "De sidste ord udtalt af stormarskal Aethec Corryn: »Talael Ryndoc! Jeg er "
-#~ "færdig med at lede efter dig! Jeg returnerer til Haldrics Hall, og "
+#~ "De sidste ord udtalt af stormarskal Aethec Corryn: Â»Talael Ryndoc! Jeg "
+#~ "er fÃŠrdig med at lede efter dig! Jeg returnerer til Haldrics Hall, og "
 #~ "informerer dem om, at du var en for stor kujon til at komme til vores "
-#~ "duel! Din nedgørelse vil være mere hård end den død jeg ville have givet "
-#~ "dig!« \n"
+#~ "duel! Din nedgÃžrelse vil vÃŠre mere hÃ¥rd end den dÃžd jeg ville have "
+#~ "givet dig!Â« \n"
 #~ "\n"
-#~ "Måske skulle han ikke have råbt nær så højt.... "
+#~ "MÃ¥ske skulle han ikke have rÃ¥bt nÃŠr sÃ¥ hÃžjt.... "
 
 #~ msgid "Rilhon"
 #~ msgstr "Rilhon"
@@ -1075,15 +1170,15 @@ msgstr "Klart vejr"
 #~ "teeth.\n"
 #~ "(inscribed by Paterson)"
 #~ msgstr ""
-#~ "Denne stolte kriger kendt blandt nagaerne under navnet Rilhon hørte "
-#~ "historier om en stor skat som var blevet væk i disse vandrige huler. "
+#~ "Denne stolte kriger kendt blandt nagaerne under navnet Rilhon hÃžrte "
+#~ "historier om en stor skat som var blevet vÃŠk i disse vandrige huler. "
 #~ "Deriblandt et spyd hvis hoved var skabt af Chak'kso Ney'yks' tand, en "
 #~ "gammel basilisk nedlagt for lang tid siden af en elverhelt Eloralduil. "
-#~ "Ifølge legenden lå våbenet på bunden af denne flod (Ruaskkolin-floden, "
-#~ "opkaldt efter en kendt søslange som gjorde den til sit hjem). Rilhon "
-#~ "forberedte sig til slaget mod søslangen, men mødte to store "
+#~ "IfÃžlge legenden lÃ¥ vÃ¥benet pÃ¥ bunden af denne flod (Ruaskkolin-"
+#~ "floden, opkaldt efter en kendt sÃžslange som gjorde den til sit hjem). "
+#~ "Rilhon forberedte sig til slaget mod sÃžslangen, men mÃždte to store "
 #~ "overraskelser. Den anden var den stadig levende Chak'kso Ney'yks, som "
-#~ "var, mærkeligt nok, i besiddelse af alle sine tænder.n(inskription af "
+#~ "var, mÃŠrkeligt nok, i besiddelse af alle sine tÃŠnder.n(inskription af "
 #~ "Paterson)"
 
 #~ msgid ""
@@ -1103,19 +1198,19 @@ msgstr "Klart vejr"
 #~ "\n"
 #~ "(inscribed by MJQ)"
 #~ msgstr ""
-#~ "Igennem bølger og sten\n"
-#~ "blå og hvid\n"
+#~ "Igennem bÃžlger og sten\n"
+#~ "blÃ¥ og hvid\n"
 #~ "hun trak og skubbede tidevandet\n"
-#~ "og lærte fiskene at tale med planetens\n"
-#~ "sølvgrønne\n"
+#~ "og lÃŠrte fiskene at tale med planetens\n"
+#~ "sÃžlvgrÃžnne\n"
 #~ "hvide magi\n"
-#~ "løbende fra hendes ånd ind i tangbælter og sneglehuse\n"
-#~ "en ændring af hendes hale og hænder\n"
-#~ "hun sang sine sange løbende på bare fødder i sandet\n"
+#~ "lÃžbende fra hendes Ã¥nd ind i tangbÃŠlter og sneglehuse\n"
+#~ "en ÃŠndring af hendes hale og hÃŠnder\n"
+#~ "hun sang sine sange lÃžbende pÃ¥ bare fÃždder i sandet\n"
 #~ "og nu\n"
-#~ "og nu den mærkeligste pause\n"
-#~ "i århundreder\n"
-#~ "har hun ikke blinket med øjnene\n"
+#~ "og nu den mÃŠrkeligste pause\n"
+#~ "i Ã¥rhundreder\n"
+#~ "har hun ikke blinket med Ãžjnene\n"
 #~ "\n"
 #~ "(inskription af MJQ)"
 
@@ -1133,7 +1228,7 @@ msgstr "Klart vejr"
 #~ "spillere som er til episke, store duel kampe."
 
 #~ msgid "2p - Dark Forecast (Survival)"
-#~ msgstr "2p - Mørk forudsigelse (Overlevelse)"
+#~ msgstr "2p - MÃžrk forudsigelse (Overlevelse)"
 
 #~ msgid ""
 #~ "Dark Forecast is a survival scenario for solitaire or two-player "
@@ -1141,19 +1236,19 @@ msgstr "Klart vejr"
 #~ "surviving all enemy waves.  During the course of gameplay, the terrain "
 #~ "will change based on random weather effects."
 #~ msgstr ""
-#~ "Mørk forudsigelse er et overlevelsesscenarie for enlige eller hold "
-#~ "baseret på to spillere mod tilfældige computeregenererede enheder. Sejr "
-#~ "opnås ved at overleve alle fjendes angreb.  Under spillet, vil terrænet "
-#~ "skifte afhængig af tilfældige vejreffekter."
+#~ "MÃžrk forudsigelse er et overlevelsesscenarie for enlige eller hold "
+#~ "baseret pÃ¥ to spillere mod tilfÃŠldige computeregenererede enheder. Sejr "
+#~ "opnÃ¥s ved at overleve alle fjendes angreb.  Under spillet, vil terrÃŠnet "
+#~ "skifte afhÃŠngig af tilfÃŠldige vejreffekter."
 
 #~ msgid ""
 #~ "The screams and pleas for mercy are finally silenced, as you remove your "
 #~ "blood soaked blade from the last of the rebels. There will be no more "
 #~ "resistance from the local scum. Your reign has finally earned stability."
 #~ msgstr ""
-#~ "Råbene om barmhjertighed og nåde er endelig stille. Du fjerner din "
-#~ "blodsprøjtet klinge fra den sidste af rebellerne. Der vil ikke længere "
-#~ "være modstand fra de lokale afskum. Dit styre har endelig opnået "
+#~ "RÃ¥bene om barmhjertighed og nÃ¥de er endelig stille. Du fjerner din "
+#~ "blodsprÃžjtet klinge fra den sidste af rebellerne. Der vil ikke lÃŠngere "
+#~ "vÃŠre modstand fra de lokale afskum. Dit styre har endelig opnÃ¥et "
 #~ "stabilitet."
 
 #~ msgid ""
@@ -1161,7 +1256,7 @@ msgstr "Klart vejr"
 #~ "that if we can finish them off in time, we shall be victorious."
 #~ msgstr ""
 #~ "Den sidste og mest magtfulde af disse skabninger er over os. Jeg kan "
-#~ "mærke at hvis vi ordner dem i tide, så vinder vi."
+#~ "mÃŠrke at hvis vi ordner dem i tide, sÃ¥ vinder vi."
 
 #~ msgid "Heavy Snowfall"
 #~ msgstr "Kraftigt snefald"
@@ -1173,7 +1268,7 @@ msgstr "Klart vejr"
 #~ msgstr "Kraftigt regnvejr"
 
 #~ msgid "Drought"
-#~ msgstr "Tørke"
+#~ msgstr "TÃžrke"
 
 #~ msgid "Single player mode - uses the reduced strength spawns."
 #~ msgstr "1-spiller - anvender reduceret styrke i fjendtlige enheder."
@@ -1182,7 +1277,7 @@ msgstr "Klart vejr"
 #~ msgstr "2-spillere - anvender fuld styrke hos fjendtlige enheder."
 
 #~ msgid "Survive and defeat the waves of opposition."
-#~ msgstr "Overlev og besejr bølgerne af fjender."
+#~ msgstr "Overlev og besejr bÃžlgerne af fjender."
 
 #~ msgid "Defeat all waves"
 #~ msgstr "Besejr alle fjender"
@@ -1191,7 +1286,7 @@ msgstr "Klart vejr"
 #~ msgstr "Tab alle dit holds ledere"
 
 #~ msgid "Dark Forecast - a random survival scenario"
-#~ msgstr "Mørk forudsigelse - et tilfældigt overlevelsesscenarie"
+#~ msgstr "MÃžrk forudsigelse - et tilfÃŠldigt overlevelsesscenarie"
 
 #~ msgid ""
 #~ "Your aim is to survive the spawning waves and defeat the final arch-"
@@ -1218,23 +1313,23 @@ msgstr "Klart vejr"
 #~ "@Rhuvaen\n"
 #~ "- WML implementation"
 #~ msgstr ""
-#~ "Dit mål er at overleve de angribende bølger og besejre de sidste ærke- "
+#~ "Dit mÃ¥l er at overleve de angribende bÃžlger og besejre de sidste ÃŠrke- "
 #~ "fjender.\n"
 #~ "       \n"
-#~ "Bølgerne skabes tilfældigt og vil være forskellige hver gang du spiller "
-#~ "scenariet.\n"
+#~ "BÃžlgerne skabes tilfÃŠldigt og vil vÃŠre forskellige hver gang du "
+#~ "spiller scenariet.\n"
 #~ "\n"
 #~ "\n"
-#~ "De ankommer langs med det nordige, sydelig og vestlige hjørne - de kommer "
-#~ "dog hovedsagelig fra det vestlige hjørne. Bølgerne kommer med "
-#~ "regelmæssige mellemrum.\n"
+#~ "De ankommer langs med det nordige, sydelig og vestlige hjÃžrne - de "
+#~ "kommer dog hovedsagelig fra det vestlige hjÃžrne. BÃžlgerne kommer med "
+#~ "regelmÃŠssige mellemrum.\n"
 #~ "\n"
 #~ "\n"
-#~ "Vejret skifter også tilfældigt, og påvirker udseendet af kortet.\n"
+#~ "Vejret skifter ogsÃ¥ tilfÃŠldigt, og pÃ¥virker udseendet af kortet.\n"
 #~ "\n"
 #~ "\n"
 #~ "\n"
-#~ "#Mørk forudsigelse er lavet af:\n"
+#~ "#MÃžrk forudsigelse er lavet af:\n"
 #~ "\n"
 #~ "@jb\n"
 #~ "- kortdesign, grupper af fjender og scenariekoncept\n"
@@ -1243,22 +1338,22 @@ msgstr "Klart vejr"
 #~ "- WML implementation"
 
 #~ msgid "So this is the accursed valley - a land ours for the taking."
-#~ msgstr "Så dette er den forbandet dal - et land vi kan indtage."
+#~ msgstr "SÃ¥ dette er den forbandet dal - et land vi kan indtage."
 
 #~ msgid ""
 #~ "The inhabitants are rumored to be a strange alliance of man and beast, "
 #~ "and our claim is not going to be unopposed. We must be prepared for the "
 #~ "surprises of this land."
 #~ msgstr ""
-#~ "Indbyggerne siges at være en mærkelig alliance af mænd og bæst, og vores "
-#~ "krav kommer ikke til at stå uimodsagt. Vi må være forberedt for "
+#~ "Indbyggerne siges at vÃŠre en mÃŠrkelig alliance af mÃŠnd og bÃŠst, og "
+#~ "vores krav kommer ikke til at stÃ¥ uimodsagt. Vi mÃ¥ vÃŠre forberedt for "
 #~ "overraskelser i dette land."
 
 #~ msgid ""
 #~ "Then let us discover what lies in waiting and teach them not to oppose "
 #~ "our claim."
 #~ msgstr ""
-#~ "Så lad os opdage hvad der venter os og lære dem ikke at stå op imod os."
+#~ "SÃ¥ lad os opdage hvad der venter os og lÃŠre dem ikke at stÃ¥ op imod os."
 
 #~ msgid ""
 #~ "Ugh!  How can this be?  Defeated by mere barbarians! My gods have "
@@ -1270,17 +1365,17 @@ msgstr "Klart vejr"
 #~ "Cheers of your enemy are the last thing you hear as you slip into death..."
 #~ "their joy fills your last moments with pure hate."
 #~ msgstr ""
-#~ "Hurraråb fra dine fjender er det sidste du hører da du glider ind i "
-#~ "døden...deres glæde fylder dit sidste øjeblik med rent had."
+#~ "HurrarÃ¥b fra dine fjender er det sidste du hÃžrer da du glider ind i "
+#~ "dÃžden...deres glÃŠde fylder dit sidste Ãžjeblik med rent had."
 
 #~ msgid ""
 #~ "The enemy cheers as a dark mist rises from the land, engulfing you. As "
 #~ "ghostly wisps drain away your will, you realize that your time in this "
 #~ "land is over."
 #~ msgstr ""
-#~ "Fjende jubler mens en mørk tåge stiger op fra landet og omklammer dig. "
-#~ "Mens spøgelsestjavser fjerne din vilje, indser du at din tid i dette land "
-#~ "er forbi."
+#~ "Fjende jubler mens en mÃžrk tÃ¥ge stiger op fra landet og omklammer dig. "
+#~ "Mens spÃžgelsestjavser fjerne din vilje, indser du at din tid i dette "
+#~ "land er forbi."
 
 #~ msgid "2p - Den of Onis"
 #~ msgstr "2p - Onis' hule"
@@ -1289,27 +1384,27 @@ msgstr "Klart vejr"
 #~ "Danger lurks around every corner in this underground battlefield, a duel "
 #~ "map where players must find the balance between force and subterfuge."
 #~ msgstr ""
-#~ "Farer lurer ved hvert hjørne på denne underjordiske slagmark, et kort for "
-#~ "to hvor styrke og snuhed mødes."
+#~ "Farer lurer ved hvert hjÃžrne pÃ¥ denne underjordiske slagmark, et kort "
+#~ "for to hvor styrke og snuhed mÃždes."
 
 #~ msgid " Recommended setting of 2 gold per village."
 #~ msgstr " Anbefalet indstilling er 2 guld per landsby."
 
 #~ msgid "2p - Fallenstar Lake"
-#~ msgstr "2p - Fallenstar Sø"
+#~ msgstr "2p - Fallenstar SÃž"
 
 #~ msgid ""
 #~ "Long ago, a great star fell from the heavens, leaving its mark on this "
 #~ "coniferous region."
 #~ msgstr ""
-#~ "For lang tid siden faldt en stjerne ned fra himlen og gav sit aftryk på "
-#~ "denne nåletræsregion."
+#~ "For lang tid siden faldt en stjerne ned fra himlen og gav sit aftryk pÃ¥ "
+#~ "denne nÃ¥letrÃŠsregion."
 
 #~ msgid "teamname^West"
 #~ msgstr "Vest"
 
 #~ msgid "teamname^East"
-#~ msgstr "Øst"
+#~ msgstr "Ãst"
 
 #~ msgid "2p - Hamlets"
 #~ msgstr "2p - Hamlets"
@@ -1318,16 +1413,17 @@ msgstr "Klart vejr"
 #~ "Warfare transforms the simple farms and villages of a peaceful region "
 #~ "into a subtly parceled battlefield."
 #~ msgstr ""
-#~ "Krig forvandler gårde og landsbyer i en fredelig region til en krigszone."
+#~ "Krig forvandler gÃ¥rde og landsbyer i en fredelig region til en krigszone."
 
 #~ msgid "2p - Hornshark Island"
-#~ msgstr "2p - Hornshark Ø"
+#~ msgstr "2p - Hornshark Ã"
 
 #~ msgid ""
 #~ "Players must navigate the dispersive terrain of this small but "
 #~ "topographically dense island."
 #~ msgstr ""
-#~ "Spillerne må navigere i dette spredte terræn på en lille men tæt besat ø."
+#~ "Spillerne mÃ¥ navigere i dette spredte terrÃŠn pÃ¥ en lille men tÃŠt "
+#~ "besat Ãž."
 
 #~ msgid "2p - Sablestone Delta"
 #~ msgstr "2p - Sablestone Delta"
@@ -1336,8 +1432,8 @@ msgstr "Klart vejr"
 #~ "Two armies collide on this disjointed coastal landscape of hidden caves "
 #~ "and jagged rivers."
 #~ msgstr ""
-#~ "To hære møder hinanden i dette kystlandskab bestående af skjulte huler og "
-#~ "forrevne floder."
+#~ "To hÃŠre mÃžder hinanden i dette kystlandskab bestÃ¥ende af skjulte huler "
+#~ "og forrevne floder."
 
 #~ msgid "2p - Silverhead Crossing"
 #~ msgstr "2p - Silverhead Overgangen"
@@ -1346,7 +1442,7 @@ msgstr "Klart vejr"
 #~ "Players must traverse all manner of terrain in pursuit of victory on this "
 #~ "multi-fronted duel map."
 #~ msgstr ""
-#~ "Spillerne skal igennem alle slags terræn i jagten på sejren på dette "
+#~ "Spillerne skal igennem alle slags terrÃŠn i jagten pÃ¥ sejren pÃ¥ dette "
 #~ "duelkort med flere fronter."
 
 #~ msgid "statue"
@@ -1362,8 +1458,8 @@ msgstr "Klart vejr"
 #~ "Flooded by the seas and battered by the winter elements, only ruins, "
 #~ "water and ice now remain in the shadow of this once mighty empire."
 #~ msgstr ""
-#~ "Oversvømmet af havet og påvirket af vinterens elementer har gjort, at kun "
-#~ "ruiner, vand og is er tilbage af dette tidligere stor rige."
+#~ "OversvÃžmmet af havet og pÃ¥virket af vinterens elementer har gjort, at "
+#~ "kun ruiner, vand og is er tilbage af dette tidligere stor rige."
 
 #~ msgid "Statue of Sulla"
 #~ msgstr "Statue af Sulla"
@@ -1373,11 +1469,11 @@ msgstr "Klart vejr"
 #~ "Sulla the Tyrant, Empress of the Sinking Tower, Lady of the Walking "
 #~ "Glacier, Sulla the Incinerator, Sulla the Proud and Sulla the Righteous."
 #~ msgstr ""
-#~ "En stenskabt efterligning af Sulla den Store, også kendt som Sulla den "
-#~ "Retfærdige, Sulla Tyran, Kejser af det faldende tårn, arving af de "
-#~ "knusende Gales, Kvinde over den gående gletsjer, Indehaver af den "
-#~ "brændende bølge, Dronning af den lige flamme, Sulla den Brændende, Sulla "
-#~ "den stolte og Sulla den Retfærdige."
+#~ "En stenskabt efterligning af Sulla den Store, ogsÃ¥ kendt som Sulla den "
+#~ "RetfÃŠrdige, Sulla Tyran, Kejser af det faldende tÃ¥rn, arving af de "
+#~ "knusende Gales, Kvinde over den gÃ¥ende gletsjer, Indehaver af den "
+#~ "brÃŠndende bÃžlge, Dronning af den lige flamme, Sulla den BrÃŠndende, "
+#~ "Sulla den stolte og Sulla den RetfÃŠrdige."
 
 #~ msgid "Statue of Lhun-dup"
 #~ msgstr "Lhun-dup statuen"
@@ -1422,11 +1518,11 @@ msgstr "Klart vejr"
 #~ "when units are killed, they return to that player's end zone with an "
 #~ "injury."
 #~ msgstr ""
-#~ "I Wesbowl handler det om at få bolden ned i modspillerens slutzone så "
-#~ "ofte som muligt. Bemærk dog at modspilleren kan angribe dine enheder. "
-#~ "Wesbowl spilles med stumpe våben og helbredere står klar, så når enheder "
-#~ "bliver dræbt transporteres de tilbage til deres slutzone, men med en "
-#~ "skade."
+#~ "I Wesbowl handler det om at fÃ¥ bolden ned i modspillerens slutzone sÃ¥ "
+#~ "ofte som muligt. BemÃŠrk dog at modspilleren kan angribe dine enheder. "
+#~ "Wesbowl spilles med stumpe vÃ¥ben og helbredere stÃ¥r klar, sÃ¥ nÃ¥r "
+#~ "enheder bliver drÃŠbt transporteres de tilbage til deres slutzone, men "
+#~ "med en skade."
 
 #~ msgid ""
 #~ "\n"
@@ -1446,10 +1542,10 @@ msgstr "Klart vejr"
 #~ "flytter den ind i deres slutzone."
 
 #~ msgid "Red scores! Current score is $redscore-$bluescore"
-#~ msgstr "Rød scorede! Stilling: $redscore-$bluescore"
+#~ msgstr "RÃžd scorede! Stilling: $redscore-$bluescore"
 
 #~ msgid "Blue scores! Current score is $redscore-$bluescore"
-#~ msgstr "Blå scorede! Stilling: $redscore-$bluescore"
+#~ msgstr "BlÃ¥ scorede! Stilling: $redscore-$bluescore"
 
 #~ msgid "Should I pass the ball to $passto.type ($xloc,$yloc)?"
 #~ msgstr "Skal jeg aflevere bolden til $passto.type ($xloc,$yloc)?"
@@ -1461,10 +1557,10 @@ msgstr "Klart vejr"
 #~ msgstr "Nej"
 
 #~ msgid "Blue team wins! Final score: $redscore-$bluescore"
-#~ msgstr "Blåt hold vandt! Resultat: $redscore-$bluescore"
+#~ msgstr "BlÃ¥t hold vandt! Resultat: $redscore-$bluescore"
 
 #~ msgid "Red team wins! Final score: $redscore-$bluescore"
-#~ msgstr "Rødt hold vandt! Resultat: $redscore-$bluescore"
+#~ msgstr "RÃždt hold vandt! Resultat: $redscore-$bluescore"
 
 #~ msgid "Draw! Final score: $redscore-$bluescore"
 #~ msgstr "Uafgjort! Resultat: $redscore-$bluescore"
@@ -1474,16 +1570,16 @@ msgstr "Klart vejr"
 
 #~ msgid "Three players come head to head on this water-cut battlefield."
 #~ msgstr ""
-#~ "Tre spillere sættes direkte over for hinaden på denne vandrige slagmark."
+#~ "Tre spillere sÃŠttes direkte over for hinaden pÃ¥ denne vandrige slagmark."
 
 #~ msgid "3p - Island of the Horatii"
-#~ msgstr "3p - Horatiiøen"
+#~ msgstr "3p - HoratiiÃžen"
 
 #~ msgid ""
 #~ "Controlling the central island is often the key to victory in this "
 #~ "21x21hex 3 player free for all map."
 #~ msgstr ""
-#~ "Kontrol med den centrale ø er ofte nøglen til sejr i dette 21 x 21 felt "
+#~ "Kontrol med den centrale Ãž er ofte nÃžglen til sejr i dette 21 x 21 felt "
 #~ "store 3 spiller frie kort."
 
 #~ msgid "3p - Morituri"
@@ -1493,11 +1589,11 @@ msgstr "Klart vejr"
 #~ "Only one faction will emerge victorious from this tightly bordered three-"
 #~ "player map."
 #~ msgstr ""
-#~ "Kun en fraktion vil komme sejrrigt ud fra dette stærkt afgrænset "
+#~ "Kun en fraktion vil komme sejrrigt ud fra dette stÃŠrkt afgrÃŠnset "
 #~ "trespillerkort."
 
 #~ msgid "4p - Blue Water Province"
-#~ msgstr "4p - Blå Vand Provins"
+#~ msgstr "4p - BlÃ¥ Vand Provins"
 
 #~ msgid ""
 #~ "Historians write that Bluewater Province has been destroyed and rebuilt "
@@ -1505,10 +1601,10 @@ msgstr "Klart vejr"
 #~ "streams and snowcapped mountains of this small province, its villagers "
 #~ "hardly seem to take notice."
 #~ msgstr ""
-#~ "Det er blevet sagt at Blå Vand Provinsen er blevet ødelagt og genopbygget "
-#~ "en 20 gange. Nu da hære igen møder hinanden i de stenfuldte strømme og "
-#~ "snedækkede bjerg i denne lille provins, bemærker dens indbyggere det "
-#~ "næsten ikke."
+#~ "Det er blevet sagt at BlÃ¥ Vand Provinsen er blevet Ãždelagt og "
+#~ "genopbygget en 20 gange. Nu da hÃŠre igen mÃžder hinanden i de stenfuldte "
+#~ "strÃžmme og snedÃŠkkede bjerg i denne lille provins, bemÃŠrker dens "
+#~ "indbyggere det nÃŠsten ikke."
 
 #~ msgid "teamname^Team 1"
 #~ msgstr "Hold 1"
@@ -1517,18 +1613,18 @@ msgstr "Klart vejr"
 #~ msgstr "Hold 2"
 
 #~ msgid "4p - Castle Hopping Isle"
-#~ msgstr "4p - Borg hoppende ø"
+#~ msgstr "4p - Borg hoppende Ãž"
 
 #~ msgid "Hop from castle to castle while fighting over a central isle."
-#~ msgstr "Hop fra borg til borg mens der kæmpes om en central ø."
+#~ msgstr "Hop fra borg til borg mens der kÃŠmpes om en central Ãž."
 
 #~ msgid "4p - Clash"
-#~ msgstr "4p - Sammenstød"
+#~ msgstr "4p - SammenstÃžd"
 
 #~ msgid "Small map for 2 vs. 2."
 #~ msgstr "Lille kort for 2 vs. 2."
 
-# en hamlet er i britisk en mindre landsby uden egen kirke, men hørende under en anden
+# en hamlet er i britisk en mindre landsby uden egen kirke, men hÃžrende under en anden
 # landsby eller by.
 #~ msgid "4p - Hamlets"
 #~ msgstr "4p - Landsbyer"
@@ -1542,16 +1638,16 @@ msgstr "Klart vejr"
 #~ "players 1&4 vs. 2&3 (northeast vs. southwest). Designed for 75 starting "
 #~ "gold, 20 villages."
 #~ msgstr ""
-#~ "Et meget lille 2 versus 2 kort. Tæt kamp betyder at succesfuld rotation "
-#~ "af enheder og planlægning af bevægelser er vigtig. Holdene sættes af "
-#~ "spiller 1 & 4 versus 2 & 3 (nordøst versus sydvest). Designet til 75 "
+#~ "Et meget lille 2 versus 2 kort. TÃŠt kamp betyder at succesfuld rotation "
+#~ "af enheder og planlÃŠgning af bevÃŠgelser er vigtig. Holdene sÃŠttes af "
+#~ "spiller 1 & 4 versus 2 & 3 (nordÃžst versus sydvest). Designet til 75 "
 #~ "start guldstykker, 20 landsbyer."
 
 #~ msgid "teamname^South-West"
 #~ msgstr "Sydvest"
 
 #~ msgid "teamname^North-East"
-#~ msgstr "Nordøst"
+#~ msgstr "NordÃžst"
 
 #~ msgid "4p - King of the Hill"
 #~ msgstr "4p - Bakkernes konge"
@@ -1560,9 +1656,9 @@ msgstr "Klart vejr"
 #~ "Controlling the area around the central keep is very lucrative in this "
 #~ "36X36 4 player FFA map. Works fine 2 vs. 2 as well. There are 36 villages."
 #~ msgstr ""
-#~ "Kontrol med området omkring det centrale borgtårn er meget lukrativt i "
-#~ "dette 36 x 36 4 spiller FFA kort. Virker også fint som 2 versus 2. Der er "
-#~ "36 landsbyer."
+#~ "Kontrol med omrÃ¥det omkring det centrale borgtÃ¥rn er meget lukrativt i "
+#~ "dette 36 x 36 4 spiller FFA kort. Virker ogsÃ¥ fint som 2 versus 2. Der "
+#~ "er 36 landsbyer."
 
 #~ msgid " Recommended setting of 2 gold per village and 150 starting gold."
 #~ msgstr ""
@@ -1570,7 +1666,7 @@ msgstr "Klart vejr"
 #~ "startpenge."
 
 #~ msgid "teamname^South-East"
-#~ msgstr "Sydøst"
+#~ msgstr "SydÃžst"
 
 #~ msgid "teamname^North-West"
 #~ msgstr "Nordvest"
@@ -1579,7 +1675,7 @@ msgstr "Klart vejr"
 #~ msgstr " Anbefalet indstilling er 1 guld per landsby."
 
 #~ msgid "Four factions contend for dominance over this watery settlement."
-#~ msgstr "Fire fraktioner slås om dominans over dette vandrige område."
+#~ msgstr "Fire fraktioner slÃ¥s om dominans over dette vandrige omrÃ¥de."
 
 #~ msgid "4p - Loris River"
 #~ msgstr "4p - Lorisfloden"
@@ -1588,8 +1684,8 @@ msgstr "Klart vejr"
 #~ "A 25x25 2 vs. 2 map centered around a river with keeps in opposite "
 #~ "corners. Designed for players 1&4 vs. 2&3. There are 28 villages."
 #~ msgstr ""
-#~ "Et 25x25 2 vs 2 kort centreret omkring en flod med tårne i hvert hjørne. "
-#~ "Designet for spiller 1&4 vs 2&3. Der er 28 landsbyer."
+#~ "Et 25x25 2 vs 2 kort centreret omkring en flod med tÃ¥rne i hvert "
+#~ "hjÃžrne. Designet for spiller 1&4 vs 2&3. Der er 28 landsbyer."
 
 #~ msgid "4p - Morituri"
 #~ msgstr "4p - Morituri"
@@ -1608,7 +1704,7 @@ msgstr "Klart vejr"
 #~ "played east vs. west (1&4 vs. 2&3), but works well with any teams or FFA."
 #~ msgstr ""
 #~ "Et 35 x 27 2 vs. 2 kort med 5 separate veje til konfrontation. Er lavet "
-#~ "til at blive spillet øst vs. vest (1&4 vs. 2&3), men virke godt med alle "
+#~ "til at blive spillet Ãžst vs. vest (1&4 vs. 2&3), men virke godt med alle "
 #~ "hold eller FFA."
 
 #~ msgid "4p - Siege Castles"
@@ -1619,18 +1715,19 @@ msgstr "Klart vejr"
 #~ "two rivers. Works well as 2 vs. 2 or FFA. There are approximately 45 "
 #~ "villages."
 #~ msgstr ""
-#~ "40 x 30 4 spillerkort hvor 4 mægtige borge møder hinanden hvor to floder "
-#~ "mødes. Virker godt som et 2 versus 2 eller FFA. Der er cirka 45 landsbyer."
+#~ "40 x 30 4 spillerkort hvor 4 mÃŠgtige borge mÃžder hinanden hvor to "
+#~ "floder mÃždes. Virker godt som et 2 versus 2 eller FFA. Der er cirka 45 "
+#~ "landsbyer."
 
 #~ msgid "4p - The Wilderlands"
-#~ msgstr "4p - Ødemarken"
+#~ msgstr "4p - Ãdemarken"
 
 #~ msgid ""
 #~ "A vast region of wild, untamed wilderness, its terrain dotted with "
 #~ "forests, caves, rivers, and the ruins of ancient fortresses."
 #~ msgstr ""
-#~ "En stor vil region af utømmet ødemark, terrænet har enkelte træer, huler "
-#~ "floder og ruinerne fra ældgamle fæstningsværker."
+#~ "En stor vil region af utÃžmmet Ãždemark, terrÃŠnet har enkelte trÃŠer, "
+#~ "huler floder og ruinerne fra ÃŠldgamle fÃŠstningsvÃŠrker."
 
 #~ msgid "4p - Xanthe Chaos"
 #~ msgstr "4p - Xanthe kaos"
@@ -1639,7 +1736,7 @@ msgstr "Klart vejr"
 #~ "A 24X28 2 vs. 2 map with auxiliary keeps, and a large messy battle in the "
 #~ "center common."
 #~ msgstr ""
-#~ "Et 24x28 2 mod 2 kort med neutrale borgtårne og et stort rodet slag i "
+#~ "Et 24x28 2 mod 2 kort med neutrale borgtÃ¥rne og et stort rodet slag i "
 #~ "centrum."
 
 #~ msgid "5p - Auction-X"
@@ -1652,17 +1749,17 @@ msgstr "Klart vejr"
 #~ "wins. It is a very small map so 75 gold is recommended for the other "
 #~ "players."
 #~ msgstr ""
-#~ "4 spillere omkring et centralt borgtårn. Spil alene mod computeren eller "
-#~ "som en FFA eller 4 mod 1. Den centrale spiller vil få brug for mere guld "
-#~ "i et 4 mod 1 eller FFA, og den bedste måde at bestemme dette på er ved en "
-#~ "auktion, hvor det laveste vinder. Det er et meget lille kort så 75 "
+#~ "4 spillere omkring et centralt borgtÃ¥rn. Spil alene mod computeren eller "
+#~ "som en FFA eller 4 mod 1. Den centrale spiller vil fÃ¥ brug for mere guld "
+#~ "i et 4 mod 1 eller FFA, og den bedste mÃ¥de at bestemme dette pÃ¥ er ved "
+#~ "en auktion, hvor det laveste vinder. Det er et meget lille kort sÃ¥ 75 "
 #~ "guldstykker anbefales for de andre spillere."
 
 #~ msgid "teamname^Northeast"
-#~ msgstr "Nordøst"
+#~ msgstr "NordÃžst"
 
 #~ msgid "teamname^Southeast"
-#~ msgstr "Sydøst"
+#~ msgstr "SydÃžst"
 
 #~ msgid "teamname^Southwest"
 #~ msgstr "Sydvest"
@@ -1677,7 +1774,7 @@ msgstr "Klart vejr"
 #~ msgstr "5p - Frygtens skov"
 
 #~ msgid "In this mixed landscape, five armies battle for supremacy."
-#~ msgstr "I dette blandede landskap, kæmper fem hære for overmagten."
+#~ msgstr "I dette blandede landskap, kÃŠmper fem hÃŠre for overmagten."
 
 #~ msgid "6p - Amohsad Caldera"
 #~ msgstr "6p - Amohsad Caldera"
@@ -1686,8 +1783,8 @@ msgstr "Klart vejr"
 #~ "Only a true tactician will survive in this deadly and confining "
 #~ "battlefield, where six boxed-in armies come to a head."
 #~ msgstr ""
-#~ "Kun en sand taktiker vil overleve i denne dødelige og afgrænsede "
-#~ "slagmark, hvor seks indelukkede hære møder hinanden ansigt til ansigt."
+#~ "Kun en sand taktiker vil overleve i denne dÃždelige og afgrÃŠnsede "
+#~ "slagmark, hvor seks indelukkede hÃŠre mÃžder hinanden ansigt til ansigt."
 
 #~ msgid "6p - Crusaders' Field"
 #~ msgstr "6p - Korstogenes slagmark"
@@ -1697,8 +1794,9 @@ msgstr "Klart vejr"
 #~ "field of war, where the ghosts of thousands of brave warriors float "
 #~ "invisibly through the mountains, trees and rivers."
 #~ msgstr ""
-#~ "Slagmarkens skrig kan igen høres på denne krigsscene hvor tusinder af "
-#~ "spøgelser af modige krigere flyder igennem bjergene, træerne og floderne."
+#~ "Slagmarkens skrig kan igen hÃžres pÃ¥ denne krigsscene hvor tusinder af "
+#~ "spÃžgelser af modige krigere flyder igennem bjergene, trÃŠerne og "
+#~ "floderne."
 
 #~ msgid "6p - Hexcake"
 #~ msgstr "6p - Hexcake"
@@ -1722,48 +1820,49 @@ msgstr "Klart vejr"
 #~ msgstr "Runde 14: Hestedrager"
 
 #~ msgid "Turn 17: Undead"
-#~ msgstr "Runde 17: Udøde"
+#~ msgstr "Runde 17: UdÃžde"
 
 #~ msgid "Tower of Doom"
-#~ msgstr "Undergangstårnet"
+#~ msgstr "UndergangstÃ¥rnet"
 
 #~ msgid "6p - Team Survival"
 #~ msgstr "6p - Holdoverlevelse"
 
 #~ msgid "Scenario where the objective is to survive for as long as possible."
-#~ msgstr "Scenarie hvor missionen er at overleve i så lang tid som muligt."
+#~ msgstr "Scenarie hvor missionen er at overleve i sÃ¥ lang tid som muligt."
 
 #~ msgid "Survive for 32 turns."
 #~ msgstr "Overlev i 32 runder."
 
 #~ msgid "Hint: Learning the enemy spawnpoints and types helps alot."
-#~ msgstr "Hjælp: At lære fjendes opstartsteder og enhedstyper hjælper meget."
+#~ msgstr ""
+#~ "HjÃŠlp: At lÃŠre fjendes opstartsteder og enhedstyper hjÃŠlper meget."
 
 #~ msgid "Survive all enemy attacks."
 #~ msgstr "Overlev alle fjendtlige angreb."
 
 #~ msgid "Death of your team leaders."
-#~ msgstr "Dine holdlederes død."
+#~ msgstr "Dine holdlederes dÃžd."
 
 #~ msgid ""
 #~ "Congratulations for surviving the map that so many people claim is "
 #~ "impossible. Frankly, I haven't got a clue as to how you did it, so send "
 #~ "me the replay by mail to: roze@roze.mine.nu. Thank You!"
 #~ msgstr ""
-#~ "Tillykke du har overlevet dette kort som så mange personer har erklæret "
-#~ "for umuligt at vinde. For at sige det som det er så har jeg ingen anelse "
-#~ "om hvordan du har båret dig ad så send mig spillets resume til: roze@roze."
-#~ "mine.nu tak!"
+#~ "Tillykke du har overlevet dette kort som sÃ¥ mange personer har erklÃŠret "
+#~ "for umuligt at vinde. For at sige det som det er sÃ¥ har jeg ingen anelse "
+#~ "om hvordan du har bÃ¥ret dig ad sÃ¥ send mig spillets resume til: "
+#~ "roze@roze.mine.nu tak!"
 
 #~ msgid "Death"
-#~ msgstr "Død"
+#~ msgstr "DÃžd"
 
 #~ msgid ""
 #~ "You have lost this game, but fear not. You can always try again. And "
 #~ "again. And again. *Muahahaha*"
 #~ msgstr ""
-#~ "Du har tabt dette spil, men frygt ikke. Du kan altid prøve igen. Og igen. "
-#~ "og igen. *Muahahaha*"
+#~ "Du har tabt dette spil, men frygt ikke. Du kan altid prÃžve igen. Og "
+#~ "igen. og igen. *Muahahaha*"
 
 #~ msgid "Attacker"
 #~ msgstr "Angriber"
@@ -1772,7 +1871,7 @@ msgstr "Klart vejr"
 #~ msgstr "Forsvarer"
 
 #~ msgid "6p - The Manzivan Traps"
-#~ msgstr "6p - Manzivanfælderne"
+#~ msgstr "6p - ManzivanfÃŠlderne"
 
 #~ msgid ""
 #~ "A 40X20 3 vs. 3 map. The Manzivan Traps are widely known as a difficult "
@@ -1780,9 +1879,9 @@ msgstr "Klart vejr"
 #~ "or over extended. Teams set for players 145 vs. 236 (east vs west). "
 #~ "Designed for 100 starting gold, has 33 villages."
 #~ msgstr ""
-#~ "Et 40x20 3 vs 3 kort. Manzivanfælderne er kendt for at være et svært og "
-#~ "forvirrende terrænområde, hvor det er nemt at ende i uorden eller med "
-#~ "spredte styrker. Hold sættes til spiller 145 versus 236 (øst versus "
+#~ "Et 40x20 3 vs 3 kort. ManzivanfÃŠlderne er kendt for at vÃŠre et svÃŠrt "
+#~ "og forvirrende terrÃŠnomrÃ¥de, hvor det er nemt at ende i uorden eller "
+#~ "med spredte styrker. Hold sÃŠttes til spiller 145 versus 236 (Ãžst versus "
 #~ "vest). Designet for 100 guldstykker i starten. Har 33 landsbyer."
 
 #~ msgid "6p - Waterloo Sunset"
@@ -1794,23 +1893,23 @@ msgstr "Klart vejr"
 #~ "south), but having players 146 or 136 as a team is also interesting. "
 #~ "Designed for 150 starting gold, has 44 villages."
 #~ msgstr ""
-#~ "Et 40x30 3 mod 3 kort. Fleksibel koordinering med dine allierede kræves "
-#~ "for at du ungår at blive udmanøvreret. Hold sættes til spiller 145 mod "
-#~ "236 (nord mod syd), men hold som 146 eller 136 er også interessant at "
+#~ "Et 40x30 3 mod 3 kort. Fleksibel koordinering med dine allierede krÃŠves "
+#~ "for at du ungÃ¥r at blive udmanÃžvreret. Hold sÃŠttes til spiller 145 mod "
+#~ "236 (nord mod syd), men hold som 146 eller 136 er ogsÃ¥ interessant at "
 #~ "spille. Designet til 150 guldstykker i opstart. Har 44 landsbyer."
 
 #~ msgid "8p - Mokena Prairie"
-#~ msgstr "8p - Mokenaprærien"
+#~ msgstr "8p - MokenaprÃŠrien"
 
 #~ msgid ""
 #~ "Inspired from Morituri, this 8 player map creates an epic battle scene "
 #~ "that requires two teams to coordinate on both offense and defense."
 #~ msgstr ""
 #~ "Inspireret af Morituri. Dette 8 spillerkort skaber et episk slag som "
-#~ "kræver at to hold koordinerer både offensivt og defensivt."
+#~ "krÃŠver at to hold koordinerer bÃ¥de offensivt og defensivt."
 
 #~ msgid "teamname^east"
-#~ msgstr "øst"
+#~ msgstr "Ãžst"
 
 #~ msgid "teamname^west"
 #~ msgstr "vest"
@@ -1822,8 +1921,8 @@ msgstr "Klart vejr"
 #~ "Teamwork and tactics are key to victory in this unusual battlefield, "
 #~ "where eight armies fight to the finish."
 #~ msgstr ""
-#~ "Samarbejde og taktik er nøglen til sejr på denne usædvanlige slagmark, "
-#~ "hvor otte hære kæmper om at stå tilbage med sejren."
+#~ "Samarbejde og taktik er nÃžglen til sejr pÃ¥ denne usÃŠdvanlige slagmark, "
+#~ "hvor otte hÃŠre kÃŠmper om at stÃ¥ tilbage med sejren."
 
 #~ msgid "9p - Merkwuerdigliebe"
 #~ msgstr "9p - Merkwuerdigliebe"
@@ -1835,54 +1934,54 @@ msgstr "Klart vejr"
 #~ "3 gold per villages is recommended."
 #~ msgstr ""
 #~ "Et meget lille 3 versus 3 versus 3 kort. En 60 sekunder timer er "
-#~ "anbefalet på grund af det store antal spillere. Holdene er spiller 159 "
-#~ "versus 267 versus 348 (nord versus sydøst versus sydvest). Der er meget "
-#~ "få landsbyer per spiller så 3 guld per landsby anbefales."
+#~ "anbefalet pÃ¥ grund af det store antal spillere. Holdene er spiller 159 "
+#~ "versus 267 versus 348 (nord versus sydÃžst versus sydvest). Der er meget "
+#~ "fÃ¥ landsbyer per spiller sÃ¥ 3 guld per landsby anbefales."
 
 #~ msgid "Random map"
-#~ msgstr "Tilfældigt kort"
+#~ msgstr "TilfÃŠldigt kort"
 
 #~ msgid ""
 #~ "Randomly generated map. Note: random maps are often unbalanced, but if "
 #~ "you have time, you can regenerate them until you get a good one."
 #~ msgstr ""
-#~ "Tilfældig kort. Bemærk: Tilfældige kort er ofte ikke afbalancerede men "
-#~ "hvis du har tiden kan du genskabe dem til du får et godt kort."
+#~ "TilfÃŠldig kort. BemÃŠrk: TilfÃŠldige kort er ofte ikke afbalancerede men "
+#~ "hvis du har tiden kan du genskabe dem til du fÃ¥r et godt kort."
 
 #~ msgid "Random map (Desert)"
-#~ msgstr "Tilfældigt kort (ørken)"
+#~ msgstr "TilfÃŠldigt kort (Ãžrken)"
 
 #~ msgid ""
 #~ "A random map with sand as the primary terrain. Note: random maps are "
 #~ "often unbalanced, but if you have time, you can regenerate them until you "
 #~ "get a good one."
 #~ msgstr ""
-#~ "Et tilfældig kort med sand som den primære terræntype. Bemærk: Tilfældige "
-#~ "kort er ofte ubalanceret, men hvis du har tid, kan du gendanne indtil du "
-#~ "får et godt kort."
+#~ "Et tilfÃŠldig kort med sand som den primÃŠre terrÃŠntype. BemÃŠrk: "
+#~ "TilfÃŠldige kort er ofte ubalanceret, men hvis du har tid, kan du "
+#~ "gendanne indtil du fÃ¥r et godt kort."
 
 #~ msgid "Random map (Marsh)"
-#~ msgstr "Tilfældigt kort (marsk)"
+#~ msgstr "TilfÃŠldigt kort (marsk)"
 
 #~ msgid ""
 #~ "A random map with swamp as the primary terrain. Note: random maps are "
 #~ "often unbalanced, but if you have time, you can regenerate them until you "
 #~ "get a good one."
 #~ msgstr ""
-#~ "Et tilfældig kort med sumpe som den primære terræntype. Bemærk: "
-#~ "Tilfældige kort er ofte ubalanceret, men hvis du har tid, kan du gendanne "
-#~ "indtil du får et godt kort."
+#~ "Et tilfÃŠldig kort med sumpe som den primÃŠre terrÃŠntype. BemÃŠrk: "
+#~ "TilfÃŠldige kort er ofte ubalanceret, men hvis du har tid, kan du "
+#~ "gendanne indtil du fÃ¥r et godt kort."
 
 #~ msgid "Random map (Winter)"
-#~ msgstr "Tilfældigt kort (vinter)"
+#~ msgstr "TilfÃŠldigt kort (vinter)"
 
 #~ msgid ""
 #~ "A random map set in the break between spring and winter, mainly with "
 #~ "snowy terrains. Note: random maps are often unbalanced, but if you have "
 #~ "time, you can regenerate them until you get a good one."
 #~ msgstr ""
-#~ "Et tilfældig kort i perioden mellem forår og vinter, mest med snefyldt "
-#~ "terræn. Bemærk: Tilfældige kort er ofte ubalancerede, men hvis du har "
+#~ "Et tilfÃŠldig kort i perioden mellem forÃ¥r og vinter, mest med snefyldt "
+#~ "terrÃŠn. BemÃŠrk: TilfÃŠldige kort er ofte ubalancerede, men hvis du har "
 #~ "tiden, kan du genskabe dem indtil du har et godt kort."
 
 #~ msgid "Wesnoth Benchmark: AI"
@@ -1906,7 +2005,7 @@ msgstr "Klart vejr"
 #~ "scenario=wesbench_scroll --exit-at-end."
 
 #~ msgid "Wesnoth Benchmark: Walking through Shroud"
-#~ msgstr "Wesnoth test: Gående igennem skygge"
+#~ msgstr "Wesnoth test: GÃ¥ende igennem skygge"
 
 #~ msgid ""
 #~ "A wesnoth benchmark, use --no-delay --multiplayer --"
