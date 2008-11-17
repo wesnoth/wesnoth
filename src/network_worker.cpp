@@ -237,7 +237,7 @@ bool receive_with_timeout(TCPsocket s, char* buf, size_t nbytes,
 					retval = select(((_TCPsocket*)s)->channel + 1, &readfds, NULL, NULL, &tv);
 				} while(retval == -1 && errno == EINTR);
 
-#elif
+#else
 				SDL_Delay(5);
 #endif
 			} else {
