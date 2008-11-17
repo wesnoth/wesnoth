@@ -1772,6 +1772,8 @@ static int process_command_args(int argc, char** argv) {
 #ifdef HAVE_PYTHON
 			<< "  --python-api                 prints the runtime documentation for the python\n"
 			<< "                               API.\n"
+			<< "  --python-shell               invokes wesnoth's embedded python interpreter in\n"
+			<< "                               interactive mode.\n"
 #endif
 			<< "  -r, --resolution XxY         sets the screen resolution. Example: -r 800x600\n"
 			<< "  --smallgui                   allows to use screen resolutions down to 800x480\n"
