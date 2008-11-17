@@ -8,7 +8,8 @@
 from __future__ import with_statement
 
 import time
-import wail, random
+import wail
+import ai
 
 ##    Copyright 2006 by Michael Schmahl
 ##    This code is available under the latest version of the GNU Public License.
@@ -289,7 +290,7 @@ class AI:
         while 1:
 
             # pick a random recruit in proportion to the weights
-            r = random.uniform(0,sumweights)
+            r = ai.get_random(0,sumweights)
             for recruit,weight in recruit_list:
                 r -= weight
                 if r < 0: break
@@ -535,6 +536,10 @@ class AI:
 
         return score
 
+import sys
+print "Running bruteforce wail ai."
+print "Wesnoth", wesnoth.get_version()
+print "Python", sys.version
 
 st = time.time()
 ai = AI()

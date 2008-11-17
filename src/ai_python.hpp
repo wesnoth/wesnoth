@@ -72,6 +72,7 @@ public:
     W(get_version);
     W(raise_user_interact);
     W(test_move);
+    W(get_random);
 
 	static PyObject* unittype_advances_to( wesnoth_unittype* type, PyObject* args );
 	static PyObject* wrapper_team_recruits( wesnoth_team* team, PyObject* args );
@@ -82,6 +83,7 @@ public:
 	std::vector<team>& get_teams() { return get_info().teams; }
     static void initialize_python();
     static void invoke(std::string name);
+    static int run_shell();
 
     friend void recalculate_movemaps();
 private:

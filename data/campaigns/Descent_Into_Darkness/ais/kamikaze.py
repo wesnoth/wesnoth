@@ -1,5 +1,5 @@
 #!WPY
-import wesnoth
+import ai as wesnoth
 
 class AI:
     def __init__(self):

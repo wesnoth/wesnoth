@@ -2,7 +2,8 @@
 
 """This is a rather simple minded example of a python AI."""
 
-import wesnoth, heapq, random
+import ai as wesnoth
+import heapq
 
 def pos(location):
     """Just a helper function for printing positions in debug messages."""
@@ -277,7 +278,7 @@ class AI:
                         v *= v * v
                         total_v += v
                         heapq.heappush(heap, (-v, r[0]))
-                    r = random.uniform(0, total_v)
+                    r = wesnoth.get_random(0, total_v)
                     while 1:
                         v, recruit = heapq.heappop(heap)
                         debug("%d %d" % (r, v))
@@ -392,5 +393,10 @@ class AI:
                     location = wesnoth.move_unit(location, p)
                     return location
         return location
+
+import sys
+print "Running sample ai."
+print "Wesnoth", wesnoth.get_version()
+print "Python", sys.version
 
 AI()

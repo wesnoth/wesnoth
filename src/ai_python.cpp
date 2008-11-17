@@ -48,6 +48,7 @@
 #include "attack_prediction.hpp"
 #include "gamestatus.hpp"
 #include "filesystem.hpp"
+#include "random.hpp"
 #include "log.hpp"
 #include "map.hpp"
 #include "menu_events.hpp"
@@ -1949,6 +1950,15 @@ PyObject* python_ai::wrapper_test_move(PyObject* /*self*/, PyObject* args)
 	return ret;
 }
 
+PyObject* python_ai::wrapper_get_random(PyObject* /*self*/, PyObject* args)
+{
+    int a, b, r;
+	if (!PyArg_ParseTuple(args, CC("ii"), &a, &b))
+		return NULL;
+    r = get_random() % (b-a+1) + a;
+	return Py_BuildValue(INTVALUE, r);
+}
+
 static PyMethodDef wesnoth_python_methods[] = {
     MDEF("log_message", python_ai::wrapper_log_message,
 		"Parameters: string\n"
@@ -1957,6 +1967,10 @@ static PyMethodDef wesnoth_python_methods[] = {
 		"Parameters: string\n"
 		"Writes a debug message to the AI log. This should be used instead of "
 		"print to not clutter stdout if AI logging is disabled.")
+    MDEF("get_random", python_ai::wrapper_get_random,
+        "Parameters: a, b\n"
+		"Returns: random number\n"
+		"Get random number in the range [a, b].")
     MDEF("get_units", python_ai::wrapper_get_units,
 		"Returns: units\n"
 		"Returns a dictionary containing (location, unit) pairs.")
@@ -2057,7 +2071,7 @@ void python_ai::initialize_python()
         init_ = true;
 
 	Py_Initialize( );
-	PyObject* module = Py_InitModule3(CC("wesnoth"), wesnoth_python_methods,
+	PyObject* module = Py_InitModule3(CC("ai"), wesnoth_python_methods,
 		CC("This is the wesnoth AI module. "
 		"The python script will be executed once for each turn of the side with the "
 		"python AI using the script."));
@@ -2093,6 +2107,44 @@ void python_ai::invoke(std::string name)
 		globals);
 	Py_XDECREF(ret);
 	Py_DECREF(globals);
+}
+
+/***
+ * Invoke the Wesnoth's builtin interactive Python interpreter.
+ */
+int python_ai::run_shell()
+{
+	initialize_python();
+	PyErr_Clear();
+	PyObject* globals = PyDict_New();
+	PyDict_SetItemString(globals, "__builtins__", PyEval_GetBuiltins());
+	std::string python_code;
+    // Inspired by Django shell command implementation.
+	python_code +=
+		"import sys\n"
+		"sys.path.append(\"" + game_config::path + "/data/ai/python\")\n"
+		"sys.path.append(\"" + game_config::path + "/data/tools/wesnoth\")\n"
+        "import code\n"
+        "imported_objects = {}\n"
+        "try: # Try activating rlcompleter, because it's handy.\n"
+        "\timport readline\n"
+        "except ImportError:\n"
+        "\tpass\n"
+        "else:\n"
+        "\timport rlcompleter\n"
+        "\treadline.set_completer(rlcompleter.Completer(imported_objects).complete)\n"
+        "\treadline.parse_and_bind('tab:complete')\n"
+        "code.interact(local=imported_objects)\n"
+        ;
+	PyObject *ret = PyRun_String(python_code.c_str(), Py_file_input, globals,
+		globals);
+    if (PyErr_Occurred())
+        PyErr_Print();
+
+    int cret = (int)PyInt_AsLong(ret);
+	Py_XDECREF(ret);
+	Py_DECREF(globals);
+    return cret; //Py_Main(argc, argv);
 }
 
 python_ai::python_ai(ai_interface::info& info) : 

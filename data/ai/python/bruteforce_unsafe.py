@@ -161,7 +161,7 @@
 ##    ** Overall                   25-8-0     76   10 Wins, 1 Loss (91%)
 
 import time
-import wesnoth, random
+import ai as wesnoth
 
 assert not restricted, "Can only be run outside of restricted environment!"
 try:
@@ -343,7 +343,7 @@ class AI:
         while 1:
 
             # pick a random recruit in proportion to the weights
-            r = random.uniform(0,sumweights)
+            r = wesnoth.get_random(0,sumweights)
             for recruit,weight in recruit_list:
                 r -= weight
                 if r < 0: break
@@ -587,6 +587,11 @@ class AI:
         # end mod
 
         return score
+
+import sys
+print "Running bruteforce unsafe ai."
+print "Wesnoth", wesnoth.get_version()
+print "Python", sys.version
 
 st = time.time()
 ai = AI()

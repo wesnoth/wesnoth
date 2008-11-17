@@ -85,7 +85,7 @@ if __name__ == "__main__":
     os.system("src/wesnoth --python-api")
 else:
     # If we are run as a python script, output the documentation to stdout.
-    import wesnoth
+    import ai as wesnoth
     topics = []
     myhelp("wesnoth", topics)
     output(topics, 1)

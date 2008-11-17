@@ -1804,8 +1804,11 @@ static int process_command_args(int argc, char** argv) {
 			return 0;
 #ifdef HAVE_PYTHON
 		} else if(val == "--python-api") {
-			python_ai::invoke("documentation.py");
+			python_ai::invoke("documentation");
 			return 0;
+        } else if(val == "--python-shell") {
+			int ret = python_ai::run_shell();
+            return 0;
 #endif
 		} else if(val == "--config-dir") {
 			if (argc <= ++arg)

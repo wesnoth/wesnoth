@@ -1,7 +1,6 @@
 #!WPY
 
-import time
-import wesnoth, random
+import ai as wesnoth
 
 ##    Copyright 2006 by Michael Schmahl
 ##    This code is available under the latest version of the GNU Public License.
@@ -282,7 +281,7 @@ class AI:
         while 1:
 
             # pick a random recruit in proportion to the weights
-            r = random.uniform(0,sumweights)
+            r = wesnoth.get_random(0,sumweights)
             for recruit,weight in recruit_list:
                 r -= weight
                 if r < 0: break
@@ -528,8 +527,14 @@ class AI:
 
         return score
 
+#import time
+#st = time.time()
 
-st = time.time()
+import sys
+print "Running bruteforce ai."
+print "Wesnoth", wesnoth.get_version()
+print "Python", sys.version
+
 ai = AI()
 ai.recruit()
 while True:
