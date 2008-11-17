@@ -84,11 +84,11 @@ Version 1.5.5+svn:
      (feature request #10398).
    * When fire_event=yes, [kill] now also fires the 'last breath' event.
  * Miscellaneous and bug fixes:
-   * fixed addon update version logic (patch #1110)
+   * Fixed addon update version logic (patch #1110).
    * Fixed a flaw which caused sound sources to be forgotten after saving
      and loading a game (bug #11495).
-   * fixed crashes on move_unit_fake with unit types which cannot move
-     over terrains that are part of the path
+   * Fixed crashes on move_unit_fake with unit types which cannot move
+     over terrains that are part of the path.
    * Generic units get unique non-underlying ids again (bug #12558).
 
 Version 1.5.5:
