@@ -1,0 +1,64 @@
+- A bug in the ALMA of the main character causes all the players units
+  to have no upkeep (bug report: https://gna.org/bugs/index.php?12260)
+
+  Disposition: Remove the custom AMLAs for Kaleh.  These were a hack
+  by rhuvaen, not part of the original UtBS.  They push the WML engine
+  bryond its limits, notably in bad interactions with the help system.
+
+- In scenario 4 the game slows down more and more with every new
+  turn. (bug report: https://gna.org/bugs/index.php?11745)
+
+  Disposition: Solved by removing the camouflage AMLA.
+
+- In scenario 2 units take damage from dehydration during daytime,
+  strange behaviour of this have been reported.
+
+  Disposition: I will fix this, if necessary by reverting to the
+  old 1.4 behavior of dehydration, which worked.
+
+- The masked assassin (the brother of Kaleh) can appear in place of
+  the players characters and they die (even campaign critical ones).
+
+  Disposition: I will fix it.
+
+- A magical berserker creature the player can get during the campaign
+  (scenario 4) dies too easily.
+
+  Disposition: I will fix it.  I don't experct this to be difficult.
+
+- The frost sword doesn't work like expected (I had no look at this,
+  maybe the player who reported this had no idea about Wesnoth's
+  damage types)
+
+  Disposition: I will investigate and fix if necessary.
+
+- Choosing the trolls as allies is too hard.
+
+  Disposition: I will fix it.
+
+- The whole campaign seems to be unbalanced by being too easy in general.
+
+  Disposition: I will investigate and fix as necessary.
+
+- Maps are outdated.
+
+  Disposition: I will refresh them.  This should be easy, as I have 
+  done several similar refresh passes on other campaigns and know what
+  to look for.
+
+- The unit graphics of the dessert elves are very outdated. They are
+  based on the mainline elves found in Wesnoth 1.0 and lack the team
+  colourisation. They look strange compared to the enemies that have
+  current mainline quality. An attempt to produce new graphics has
+  started there:
+  http://www.wesnoth.org/forum/viewtopic.php?f=9&t=19613
+  But the thread did not show any progress for a while now.
+
+  Disposition: While this should be fixed, I don't think it's a release
+  blocker.  Considering the story context, the odd appearance of the 
+  Quenoth elves is almost an asset. I encourage Jetrel to finish the
+  TC pass on them he was planning.
+
+- Many more wml bugs.
+
+  Disposition: I will investigate during playtesting.
