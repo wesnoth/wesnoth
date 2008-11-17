@@ -2020,17 +2020,14 @@ namespace {
 			for(loc.y = 0; loc.y < game_map->h(); ++loc.y) {
 				unit_map::iterator un = units->find(loc);
 				if(un != units->end() && game_events::unit_matches_filter(un,cfg)) {
-					if(utils::string_bool(cfg["animate"])) {
-						(screen)->scroll_to_tile(loc);
-						unit_display::unit_die(loc, un->second);
-					}
+					bool fire_event = false;
+					game_events::entity_location death_loc(un);
 					if(utils::string_bool(cfg["fire_event"])) {
-						game_events::entity_location death_loc(un);
 						// Prevent infinite recursion of 'die' events
-						bool fire_event = true;
+						fire_event = true;
 						recursion_preventer_ptr recursion_prevent;
 
-						if (event_info.loc1 == death_loc && event_info.name == "die" && !handler.first_time_only())
+						if (event_info.loc1 == death_loc && (event_info.name == "die" || event_info.name == "last breath") && !handler.first_time_only())
 						{
 							recursion_prevent.reset(new recursion_preventer(death_loc));
 
@@ -2038,33 +2035,41 @@ namespace {
 							{
 								fire_event = false;
 
-								ERR_NG << "tried to fire 'die' event on primary_unit inside its own 'die' event with 'first_time_only' set to false!\n";
+								ERR_NG << "tried to fire 'die' or 'last breath' event on primary_unit inside its own 'die' or 'last breath' event with 'first_time_only' set to false!\n";
 							}
 						}
-						if (fire_event)
-						{
-							game_events::fire("die", death_loc, death_loc);
+					}
+					if (fire_event) {
+						game_events::fire("last breath", death_loc, death_loc);
+					}
+					if(utils::string_bool(cfg["animate"])) {
+						(screen)->scroll_to_tile(loc);
+						unit_display::unit_die(loc, un->second);
+					}
+					if (fire_event)
+					{
+						game_events::fire("die", death_loc, death_loc);
 
-							char buf[50];
-							snprintf(buf,sizeof(buf),"%d",event_info.loc1.x+1);
-							state_of_game->set_variable("x1", buf);
+						char buf[50];
+						snprintf(buf,sizeof(buf),"%d",event_info.loc1.x+1);
+						state_of_game->set_variable("x1", buf);
 
-							snprintf(buf,sizeof(buf),"%d",event_info.loc1.y+1);
-							state_of_game->set_variable("y1", buf);
+						snprintf(buf,sizeof(buf),"%d",event_info.loc1.y+1);
+						state_of_game->set_variable("y1", buf);
 
-							snprintf(buf,sizeof(buf),"%d",event_info.loc2.x+1);
-							state_of_game->set_variable("x2", buf);
+						snprintf(buf,sizeof(buf),"%d",event_info.loc2.x+1);
+						state_of_game->set_variable("x2", buf);
 
-							snprintf(buf,sizeof(buf),"%d",event_info.loc2.y+1);
-							state_of_game->set_variable("y2", buf);
+						snprintf(buf,sizeof(buf),"%d",event_info.loc2.y+1);
+						state_of_game->set_variable("y2", buf);
 
-							un = units->find(death_loc);
-							if(un != units->end() && death_loc.matches_unit(un->second)) {
-								units->erase(un);
-								unit_mutations++;
-							}
+						un = units->find(death_loc);
+						if(un != units->end() && death_loc.matches_unit(un->second)) {
+							units->erase(un);
+							unit_mutations++;
 						}
-					} else {
+					}
+					if (! utils::string_bool(cfg["fire_event"])) {
 						units->erase(un);
 						unit_mutations++;
 					}

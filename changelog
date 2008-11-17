@@ -82,6 +82,7 @@ Version 1.5.5+svn:
    * Restore x1, y1, x2, and y2 after events fired from events.
    * WML variable expansion can be used inside story [part] tags
      (feature request #10398).
+   * When fire_event=yes, [kill] now also fires the 'last breath' event.
  * Miscellaneous and bug fixes:
    * fixed addon update version logic (patch #1110)
    * Fixed a flaw which caused sound sources to be forgotten after saving
