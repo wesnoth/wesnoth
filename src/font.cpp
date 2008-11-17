@@ -25,12 +25,18 @@
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
 #include "marked-up_text.hpp"
+#include "foreach.hpp"
 
 #include <list>
 #include <set>
 #include <stack>
 
 #include <fontconfig/fontconfig.h>
+#include <cairo-features.h>
+
+#ifdef CAIRO_HAS_WIN32_FONT
+#include <windows.h>
+#endif
 
 #define DBG_FT LOG_STREAM(debug, display)
 #define LOG_FT LOG_STREAM(info, display)
@@ -288,6 +294,17 @@ manager::manager()
 		ERR_FT << "Could not load the  true type fonts\n";
 		throw error();
 	}
+
+#if CAIRO_HAS_WIN32_FONT
+	foreach(const std::string& path, get_binary_paths("fonts")) {
+		std::vector<std::string> files;
+		get_files_in_dir(path, &files, NULL, ENTIRE_FILE_PATH);
+		foreach(const std::string& file, files) 
+			if(file.substr(file.length() - 4) == ".ttf")
+				AddFontResource(file.c_str());
+	}
+#endif
+
 }
 
 manager::~manager()
@@ -296,6 +313,16 @@ manager::~manager()
 
 	clear_fonts();
 	TTF_Quit();
+
+#if CAIRO_HAS_WIN32_FONT
+	foreach(const std::string& path, get_binary_paths("fonts")) {
+		std::vector<std::string> files;
+		get_files_in_dir(path, &files, NULL, ENTIRE_FILE_PATH);
+		foreach(const std::string& file, files) 
+			if(file.substr(file.length() - 4) == ".ttf")
+				RemoveFontResource(file.c_str());
+	}
+#endif
 }
 
 //structure used to describe a font, and the subset of the Unicode character
