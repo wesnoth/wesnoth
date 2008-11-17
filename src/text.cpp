@@ -469,9 +469,10 @@ void ttext::rerender(const bool force) const
 		// Draw twice otherwise we have some problems due to transparency
 		// we overcome the problem with drawing twice which is a kind of hack.
 		pango_cairo_show_layout(cr, layout_);
+#ifdef _WIN32		
 		// On Windows drawing twice is not enough.
 		pango_cairo_show_layout(cr, layout_);
-
+#endif
 		surface_.assign(SDL_CreateRGBSurfaceFrom(
 			surface_buffer_, width, height, 32, stride, 
 			0x00FF0000, 0x0000FF00, 0x000000FF, 0xFF000000));
