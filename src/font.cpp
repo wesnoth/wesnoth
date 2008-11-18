@@ -31,8 +31,11 @@
 #include <set>
 #include <stack>
 
-#include <fontconfig/fontconfig.h>
 #include <cairo-features.h>
+
+#ifdef CAIRO_HAS_FT_FONT
+#include <fontconfig/fontconfig.h>
+#endif
 
 #ifdef CAIRO_HAS_WIN32_FONT
 #include <windows.h>
@@ -287,6 +290,7 @@ manager::manager()
 		LOG_FT << "Initialized true type fonts\n";
 	}
 
+#ifdef CAIRO_HAS_FT_FONT
 	if(!FcConfigAppFontAddDir( FcConfigGetCurrent(), 
 			reinterpret_cast<const FcChar8*>
 			((game_config::path + "/fonts/").c_str()))) {
@@ -294,6 +298,7 @@ manager::manager()
 		ERR_FT << "Could not load the  true type fonts\n";
 		throw error();
 	}
+#endif
 
 #if CAIRO_HAS_WIN32_FONT
 	foreach(const std::string& path, get_binary_paths("fonts")) {
@@ -309,7 +314,9 @@ manager::manager()
 
 manager::~manager()
 {
+#ifdef CAIRO_HAS_FT_FONT
 	FcConfigAppFontClear(FcConfigGetCurrent());
+#endif
 
 	clear_fonts();
 	TTF_Quit();
