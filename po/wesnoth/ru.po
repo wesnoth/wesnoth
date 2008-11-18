@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-14 22:24+0100\n"
+"POT-Creation-Date: 2008-11-18 22:04+0100\n"
 "PO-Revision-Date: 2008-06-07 00:37+0300\n"
 "Last-Translator: vicza <vicza@zmail.ru>\n"
 "Language-Team:  <ru@li.org>\n"
@@ -76,13 +76,13 @@ msgid "poisoned"
 msgstr "отравлен"
 
 #. [berserk]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:62
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:702
 #: data/core/macros/abilities.cfg:553
 msgid "berserk"
 msgstr "берсерк"
 
 #. [berserk]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:64
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:704
 #: data/core/macros/abilities.cfg:555
 msgid ""
 "Berserk:\n"
@@ -94,13 +94,13 @@ msgstr ""
 "один из бойцов не погибнет или пока не пройдут 30 раундов атаки."
 
 #. [chance_to_hit]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:77
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:717
 #: data/core/macros/abilities.cfg:639
 msgid "magical"
 msgstr "магия"
 
 #. [chance_to_hit]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:79
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:719
 #: data/core/macros/abilities.cfg:641
 msgid ""
 "Magical:\n"
@@ -112,13 +112,13 @@ msgstr ""
 "защитных свойств атакуемого им отряда."
 
 #. [firststrike]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:91
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:731
 #: data/core/macros/abilities.cfg:688
 msgid "firststrike"
 msgstr "первый удар"
 
 #. [firststrike]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:93
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:733
 #: data/core/macros/abilities.cfg:690
 msgid ""
 "First Strike:\n"
@@ -126,6 +126,76 @@ msgid ""
 msgstr ""
 "Первый удар:\n"
 "Данный отряд всегда атакует первым с данной атакой, даже если он защищается."
+
+#. [heals]
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:13
+#: data/core/macros/abilities.cfg:10
+msgid "heals +4"
+msgstr "лечит +4"
+
+#. [heals]
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:14
+#: data/core/macros/abilities.cfg:11
+#, fuzzy
+msgid "female^heals +4"
+msgstr "живучая"
+
+#. [heals]
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:19
+#: data/core/macros/abilities.cfg:16
+#, fuzzy
+msgid ""
+"Heals +4:\n"
+"Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
+"\n"
+"A unit cared for by this healer may heal up to 4 HP per turn, or stop poison "
+"from taking effect for that turn.\n"
+"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
+"care of a village or a unit that can cure."
+msgstr ""
+"Лечит +4:\n"
+"Позволяет отряду лечить соседние дружественные отряды в начале каждого "
+"хода.\n"
+"\n"
+"Отряд получает от целителя до 4 ЗД за ход либо перестает терять здоровье от "
+"яда в текущем ходу.\n"
+"Отравленный отряд не может быть полностью излечен лекарем от яда и должен "
+"найти деревню или целителя."
+
+#. [heals]
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:42
+#: data/core/macros/abilities.cfg:30
+msgid "heals +8"
+msgstr "лечит +8"
+
+#. [heals]
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:43
+#: data/core/macros/abilities.cfg:31
+#, fuzzy
+msgid "female^heals +8"
+msgstr "живучая"
+
+#. [heals]
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:48
+#: data/core/macros/abilities.cfg:36
+msgid ""
+"Heals +8:\n"
+"This unit combines herbal remedies with magic to heal units more quickly "
+"than is normally possible on the battlefield.\n"
+"\n"
+"A unit cared for by this healer may heal up to 8 HP per turn, or stop poison "
+"from taking effect for that turn.\n"
+"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
+"care of a village or a unit that can cure."
+msgstr ""
+"Лечит +8:\n"
+"Этот отряд сочетает силу целебных трав с восстанавливающей магией для "
+"быстрейшего восстановления раненых отрядов на поле боя.\n"
+"\n"
+"Лечимый отряд получает от лекаря до 8 ЗД за ход либо перестает терять "
+"здоровье от яда в текущем ходу.\n"
+"Отравленный отряд не может быть полностью излечен лекарем от яда и должен "
+"найти деревню или целителя."
 
 #. [about]
 #: data/core/about.cfg:7
@@ -2806,70 +2876,6 @@ msgid ""
 msgstr ""
 "\n"
 "Изменяет указанное свойство выбранного отряда. Например: :unit hitpoints=100"
-
-#. [heals]
-#: data/core/macros/abilities.cfg:10
-msgid "heals +4"
-msgstr "лечит +4"
-
-#. [heals]
-#: data/core/macros/abilities.cfg:11
-#, fuzzy
-msgid "female^heals +4"
-msgstr "живучая"
-
-#. [heals]
-#: data/core/macros/abilities.cfg:16
-#, fuzzy
-msgid ""
-"Heals +4:\n"
-"Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
-"\n"
-"A unit cared for by this healer may heal up to 4 HP per turn, or stop poison "
-"from taking effect for that turn.\n"
-"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
-"care of a village or a unit that can cure."
-msgstr ""
-"Лечит +4:\n"
-"Позволяет отряду лечить соседние дружественные отряды в начале каждого "
-"хода.\n"
-"\n"
-"Отряд получает от целителя до 4 ЗД за ход либо перестает терять здоровье от "
-"яда в текущем ходу.\n"
-"Отравленный отряд не может быть полностью излечен лекарем от яда и должен "
-"найти деревню или целителя."
-
-#. [heals]
-#: data/core/macros/abilities.cfg:30
-msgid "heals +8"
-msgstr "лечит +8"
-
-#. [heals]
-#: data/core/macros/abilities.cfg:31
-#, fuzzy
-msgid "female^heals +8"
-msgstr "живучая"
-
-#. [heals]
-#: data/core/macros/abilities.cfg:36
-msgid ""
-"Heals +8:\n"
-"This unit combines herbal remedies with magic to heal units more quickly "
-"than is normally possible on the battlefield.\n"
-"\n"
-"A unit cared for by this healer may heal up to 8 HP per turn, or stop poison "
-"from taking effect for that turn.\n"
-"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
-"care of a village or a unit that can cure."
-msgstr ""
-"Лечит +8:\n"
-"Этот отряд сочетает силу целебных трав с восстанавливающей магией для "
-"быстрейшего восстановления раненых отрядов на поле боя.\n"
-"\n"
-"Лечимый отряд получает от лекаря до 8 ЗД за ход либо перестает терять "
-"здоровье от яда в текущем ходу.\n"
-"Отравленный отряд не может быть полностью излечен лекарем от яда и должен "
-"найти деревню или целителя."
 
 #. [heals]
 #: data/core/macros/abilities.cfg:51
@@ -7070,7 +7076,7 @@ msgstr "Аддон удалён"
 msgid "Add-on could not be deleted properly:"
 msgstr "Аддон не может быть удалён — файл не найден."
 
-#: src/ai.cpp:1777
+#: src/ai.cpp:1776
 msgid "Unknown unit type : "
 msgstr "Неизвестный отряд:"
 
@@ -7410,20 +7416,20 @@ msgstr "ПОДРОБНОСТИ ОШИБКИ:"
 msgid "Loading data files"
 msgstr "Чтение файлов данных"
 
-#: src/game.cpp:1945
+#: src/game.cpp:1950
 msgid "Loading game configuration."
 msgstr "Загрузка настроек игры"
 
-#: src/game.cpp:1951
+#: src/game.cpp:1956
 msgid "Re-initialize fonts for the current language."
 msgstr "Реинициализация шрифтов для текущего языка"
 
-#: src/game.cpp:1959
+#: src/game.cpp:1964
 #, fuzzy
 msgid "Searching for installed add-ons."
 msgstr "Передача аддона"
 
-#: src/game.cpp:1968
+#: src/game.cpp:1973
 msgid "Loading title screen."
 msgstr "Загрузка заглавного изображения"
 
@@ -7705,7 +7711,7 @@ msgstr "Пропустить"
 msgid "The End"
 msgstr "Конец"
 
-#: src/language.cpp:158
+#: src/language.cpp:162
 msgid "System default language"
 msgstr "Язык по умолчанию"
 

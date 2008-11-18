@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-14 22:24+0100\n"
+"POT-Creation-Date: 2008-11-18 22:04+0100\n"
 "PO-Revision-Date: 2005-12-14 12:40+0200\n"
 "Last-Translator: \n"
 "Language-Team: Afrikaans\n"
@@ -68,13 +68,13 @@ msgid "poisoned"
 msgstr "vergiftig"
 
 #. [berserk]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:62
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:702
 #: data/core/macros/abilities.cfg:553
 msgid "berserk"
 msgstr "beserk"
 
 #. [berserk]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:64
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:704
 #: data/core/macros/abilities.cfg:555
 msgid ""
 "Berserk:\n"
@@ -87,13 +87,13 @@ msgstr ""
 "verby."
 
 #. [chance_to_hit]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:77
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:717
 #: data/core/macros/abilities.cfg:639
 msgid "magical"
 msgstr "magies"
 
 #. [chance_to_hit]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:79
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:719
 #: data/core/macros/abilities.cfg:641
 #, fuzzy
 msgid ""
@@ -105,13 +105,13 @@ msgstr ""
 "Hierdie aanval het 'n 70 % kans om 'n trefhou te wees."
 
 #. [firststrike]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:91
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:731
 #: data/core/macros/abilities.cfg:688
 msgid "firststrike"
 msgstr "eerste trefhou"
 
 #. [firststrike]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:93
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:733
 #: data/core/macros/abilities.cfg:690
 msgid ""
 "First Strike:\n"
@@ -120,6 +120,86 @@ msgstr ""
 "Eerste Trefhou:\n"
 "Hierdie eenheid sal altyd eerste slaan met hierdie aanval, selfs al verdedig "
 "hy."
+
+#. [heals]
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:13
+#: data/core/macros/abilities.cfg:10
+#, fuzzy
+msgid "heals +4"
+msgstr "gesondmaak"
+
+#. [heals]
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:14
+#: data/core/macros/abilities.cfg:11
+#, fuzzy
+msgid "female^heals +4"
+msgstr "Dief"
+
+#. [heals]
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:19
+#: data/core/macros/abilities.cfg:16
+#, fuzzy
+msgid ""
+"Heals +4:\n"
+"Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
+"\n"
+"A unit cared for by this healer may heal up to 4 HP per turn, or stop poison "
+"from taking effect for that turn.\n"
+"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
+"care of a village or a unit that can cure."
+msgstr ""
+"Gesond maak:\n"
+"Laat die eenheid toe om aangrensende, goedgesinde eenhede gesond te maak aan "
+"die begin van die beurt.\n"
+"\n"
+"'n Eenheid wat deur 'n gesondmaker versorg word, kan soveel as 4 LP per "
+"beurt gesondmaak.\n"
+"'n Gesondmaker mag vir 'n totaal van 8 LP per beurt genees, vir al die "
+"eenhede wat dit versorg.\n"
+"'n Vergiftigde eenheid kan nie deur 'n gesondmaker van sy vergiftiging "
+"genees word nie en moet die sorg van 'n dorp of 'n eenheid wat kan genees "
+"opsoek."
+
+#. [heals]
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:42
+#: data/core/macros/abilities.cfg:30
+#, fuzzy
+msgid "heals +8"
+msgstr "gesondmaak"
+
+#. [heals]
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:43
+#: data/core/macros/abilities.cfg:31
+#, fuzzy
+msgid "female^heals +8"
+msgstr "Dief"
+
+#. [heals]
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:48
+#: data/core/macros/abilities.cfg:36
+#, fuzzy
+msgid ""
+"Heals +8:\n"
+"This unit combines herbal remedies with magic to heal units more quickly "
+"than is normally possible on the battlefield.\n"
+"\n"
+"A unit cared for by this healer may heal up to 8 HP per turn, or stop poison "
+"from taking effect for that turn.\n"
+"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
+"care of a village or a unit that can cure."
+msgstr ""
+"Genesers:\n"
+"Hierdie eenheid kombineer kruie-medisyne met toorkrag om eenhede sodoende "
+"vinniger te genees as wat normaalweg op 'n slagveld moontlik is.\n"
+"\n"
+"Hierdie eenheid sal vir alle aangrensende goedgesinde, beseerde eenhede aan "
+"die begin van elke beurt sorg.\n"
+"'n Eenheid wat deur 'n geneser versorg word mag tot soveel as 8 LP per beurt "
+"genees word.\n"
+"'n Geneser mag vir 'n totaal van 18 LP per beurt genees, vir al die eenhede "
+"wat dit versorg.\n"
+"'n Geneser kan 'n eenheid van gif genees, maar die eenheid sal geen "
+"addisionele gesondmaak kry totdat dit totaal van die gif genees is nie."
 
 #. [about]
 #: data/core/about.cfg:7
@@ -2725,80 +2805,6 @@ msgid ""
 "Modifies the specified property of the selected unit. Example: :unit "
 "hitpoints=100"
 msgstr ""
-
-#. [heals]
-#: data/core/macros/abilities.cfg:10
-#, fuzzy
-msgid "heals +4"
-msgstr "gesondmaak"
-
-#. [heals]
-#: data/core/macros/abilities.cfg:11
-#, fuzzy
-msgid "female^heals +4"
-msgstr "Dief"
-
-#. [heals]
-#: data/core/macros/abilities.cfg:16
-#, fuzzy
-msgid ""
-"Heals +4:\n"
-"Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
-"\n"
-"A unit cared for by this healer may heal up to 4 HP per turn, or stop poison "
-"from taking effect for that turn.\n"
-"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
-"care of a village or a unit that can cure."
-msgstr ""
-"Gesond maak:\n"
-"Laat die eenheid toe om aangrensende, goedgesinde eenhede gesond te maak aan "
-"die begin van die beurt.\n"
-"\n"
-"'n Eenheid wat deur 'n gesondmaker versorg word, kan soveel as 4 LP per "
-"beurt gesondmaak.\n"
-"'n Gesondmaker mag vir 'n totaal van 8 LP per beurt genees, vir al die "
-"eenhede wat dit versorg.\n"
-"'n Vergiftigde eenheid kan nie deur 'n gesondmaker van sy vergiftiging "
-"genees word nie en moet die sorg van 'n dorp of 'n eenheid wat kan genees "
-"opsoek."
-
-#. [heals]
-#: data/core/macros/abilities.cfg:30
-#, fuzzy
-msgid "heals +8"
-msgstr "gesondmaak"
-
-#. [heals]
-#: data/core/macros/abilities.cfg:31
-#, fuzzy
-msgid "female^heals +8"
-msgstr "Dief"
-
-#. [heals]
-#: data/core/macros/abilities.cfg:36
-#, fuzzy
-msgid ""
-"Heals +8:\n"
-"This unit combines herbal remedies with magic to heal units more quickly "
-"than is normally possible on the battlefield.\n"
-"\n"
-"A unit cared for by this healer may heal up to 8 HP per turn, or stop poison "
-"from taking effect for that turn.\n"
-"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
-"care of a village or a unit that can cure."
-msgstr ""
-"Genesers:\n"
-"Hierdie eenheid kombineer kruie-medisyne met toorkrag om eenhede sodoende "
-"vinniger te genees as wat normaalweg op 'n slagveld moontlik is.\n"
-"\n"
-"Hierdie eenheid sal vir alle aangrensende goedgesinde, beseerde eenhede aan "
-"die begin van elke beurt sorg.\n"
-"'n Eenheid wat deur 'n geneser versorg word mag tot soveel as 8 LP per beurt "
-"genees word.\n"
-"'n Geneser mag vir 'n totaal van 18 LP per beurt genees, vir al die eenhede "
-"wat dit versorg.\n"
-"'n Geneser kan 'n eenheid van gif genees, maar die eenheid sal geen "
-"addisionele gesondmaak kry totdat dit totaal van die gif genees is nie."
 
 #. [heals]
 #: data/core/macros/abilities.cfg:51
@@ -6341,7 +6347,7 @@ msgstr "Veldtog geïnstalleer"
 msgid "Add-on could not be deleted properly:"
 msgstr ""
 
-#: src/ai.cpp:1777
+#: src/ai.cpp:1776
 #, fuzzy
 msgid "Unknown unit type : "
 msgstr "Onbekende scenario: '"
@@ -6706,21 +6712,21 @@ msgstr "FOUT BESONDERHEDE:"
 msgid "Loading data files"
 msgstr ""
 
-#: src/game.cpp:1945
+#: src/game.cpp:1950
 #, fuzzy
 msgid "Loading game configuration."
 msgstr "Fout met laai van konfigurasie lêers: '"
 
-#: src/game.cpp:1951
+#: src/game.cpp:1956
 msgid "Re-initialize fonts for the current language."
 msgstr ""
 
-#: src/game.cpp:1959
+#: src/game.cpp:1964
 #, fuzzy
 msgid "Searching for installed add-ons."
 msgstr "Besig om veldtog af te laai..."
 
-#: src/game.cpp:1968
+#: src/game.cpp:1973
 msgid "Loading title screen."
 msgstr ""
 
@@ -7019,7 +7025,7 @@ msgstr "Oorslaan"
 msgid "The End"
 msgstr "Die Einde"
 
-#: src/language.cpp:158
+#: src/language.cpp:162
 msgid "System default language"
 msgstr "Standaard stelseltaal"
 

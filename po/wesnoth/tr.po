@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-14 22:24+0100\n"
+"POT-Creation-Date: 2008-11-18 22:04+0100\n"
 "PO-Revision-Date: 2008-10-08 19:26+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish <wesnoth-tr@googlegroups.com>\n"
@@ -70,13 +70,13 @@ msgid "poisoned"
 msgstr "zehirli"
 
 #. [berserk]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:62
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:702
 #: data/core/macros/abilities.cfg:553
 msgid "berserk"
 msgstr "cinnet"
 
 #. [berserk]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:64
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:704
 #: data/core/macros/abilities.cfg:555
 msgid ""
 "Berserk:\n"
@@ -88,13 +88,13 @@ msgstr ""
 "veya 30 ellik saldırıya denk olana dek devam eder."
 
 #. [chance_to_hit]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:77
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:717
 #: data/core/macros/abilities.cfg:639
 msgid "magical"
 msgstr "sihirli"
 
 #. [chance_to_hit]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:79
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:719
 #: data/core/macros/abilities.cfg:641
 msgid ""
 "Magical:\n"
@@ -105,13 +105,13 @@ msgstr ""
 "Bu saldırı her zaman (saldırı ve savunma) %70 isabet şansına sahiptir."
 
 #. [firststrike]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:91
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:731
 #: data/core/macros/abilities.cfg:688
 msgid "firststrike"
 msgstr "ilk vuruş"
 
 #. [firststrike]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:93
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:733
 #: data/core/macros/abilities.cfg:690
 msgid ""
 "First Strike:\n"
@@ -119,6 +119,74 @@ msgid ""
 msgstr ""
 "İlk vuruş:\n"
 "Bu birim bu saldırısıyla, savunmadayken bile, her zaman ilk vuruşu yapar."
+
+#. [heals]
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:13
+#: data/core/macros/abilities.cfg:10
+msgid "heals +4"
+msgstr "tedavi +4"
+
+#. [heals]
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:14
+#: data/core/macros/abilities.cfg:11
+msgid "female^heals +4"
+msgstr "+4 tedavi"
+
+#. [heals]
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:19
+#: data/core/macros/abilities.cfg:16
+#, fuzzy
+msgid ""
+"Heals +4:\n"
+"Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
+"\n"
+"A unit cared for by this healer may heal up to 4 HP per turn, or stop poison "
+"from taking effect for that turn.\n"
+"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
+"care of a village or a unit that can cure."
+msgstr ""
+"Tedavi +4 :\n"
+"Birimin, her elin başında komşu altıgenlerdeki dost birimleri tedavi "
+"etmesini sağlar.\n"
+"\n"
+"Bu birim her el en fazla 4 YP puanı iyileşme sağlayabilir veya zehrin "
+"etkisini sadece o el için durdurabilir.\n"
+"Zehirlenmiş bir birim tedaviciden panzehir alamaz, bu iş için bir köy ya da "
+"ilaç verebilen bir birim aramalıdır."
+
+#. [heals]
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:42
+#: data/core/macros/abilities.cfg:30
+msgid "heals +8"
+msgstr " tedavi +8"
+
+#. [heals]
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:43
+#: data/core/macros/abilities.cfg:31
+msgid "female^heals +8"
+msgstr " +8 tedavi"
+
+#. [heals]
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:48
+#: data/core/macros/abilities.cfg:36
+msgid ""
+"Heals +8:\n"
+"This unit combines herbal remedies with magic to heal units more quickly "
+"than is normally possible on the battlefield.\n"
+"\n"
+"A unit cared for by this healer may heal up to 8 HP per turn, or stop poison "
+"from taking effect for that turn.\n"
+"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
+"care of a village or a unit that can cure."
+msgstr ""
+"Tedavi +8:\n"
+"Bu birim savaş alanında bitkisel otlarla sihri birleştirerek birimleri "
+"normalde mümkün olandan çok daha hızlı iyileştirir.\n"
+"\n"
+"Bu birim her el en fazla 8 YP puanı iyileşme sağlayabilir veya zehrin "
+"etkisini sadece o el için durdurabilir.\n"
+"Zehirlenmiş bir birim tedaviciden ilaç alamaz, bu iş için bir köy ya da ilaç "
+"verebilen bir birim aramalıdır."
 
 #. [about]
 #: data/core/about.cfg:7
@@ -2750,68 +2818,6 @@ msgstr ""
 "\n"
 "Seçili birimin belirtilen özelliğini değiştirir. Örnek: <bold>text=':unit "
 "hitpoins=100'</bold>"
-
-#. [heals]
-#: data/core/macros/abilities.cfg:10
-msgid "heals +4"
-msgstr "tedavi +4"
-
-#. [heals]
-#: data/core/macros/abilities.cfg:11
-msgid "female^heals +4"
-msgstr "+4 tedavi"
-
-#. [heals]
-#: data/core/macros/abilities.cfg:16
-#, fuzzy
-msgid ""
-"Heals +4:\n"
-"Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
-"\n"
-"A unit cared for by this healer may heal up to 4 HP per turn, or stop poison "
-"from taking effect for that turn.\n"
-"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
-"care of a village or a unit that can cure."
-msgstr ""
-"Tedavi +4 :\n"
-"Birimin, her elin başında komşu altıgenlerdeki dost birimleri tedavi "
-"etmesini sağlar.\n"
-"\n"
-"Bu birim her el en fazla 4 YP puanı iyileşme sağlayabilir veya zehrin "
-"etkisini sadece o el için durdurabilir.\n"
-"Zehirlenmiş bir birim tedaviciden panzehir alamaz, bu iş için bir köy ya da "
-"ilaç verebilen bir birim aramalıdır."
-
-#. [heals]
-#: data/core/macros/abilities.cfg:30
-msgid "heals +8"
-msgstr " tedavi +8"
-
-#. [heals]
-#: data/core/macros/abilities.cfg:31
-msgid "female^heals +8"
-msgstr " +8 tedavi"
-
-#. [heals]
-#: data/core/macros/abilities.cfg:36
-msgid ""
-"Heals +8:\n"
-"This unit combines herbal remedies with magic to heal units more quickly "
-"than is normally possible on the battlefield.\n"
-"\n"
-"A unit cared for by this healer may heal up to 8 HP per turn, or stop poison "
-"from taking effect for that turn.\n"
-"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
-"care of a village or a unit that can cure."
-msgstr ""
-"Tedavi +8:\n"
-"Bu birim savaş alanında bitkisel otlarla sihri birleştirerek birimleri "
-"normalde mümkün olandan çok daha hızlı iyileştirir.\n"
-"\n"
-"Bu birim her el en fazla 8 YP puanı iyileşme sağlayabilir veya zehrin "
-"etkisini sadece o el için durdurabilir.\n"
-"Zehirlenmiş bir birim tedaviciden ilaç alamaz, bu iş için bir köy ya da ilaç "
-"verebilen bir birim aramalıdır."
 
 #. [heals]
 #: data/core/macros/abilities.cfg:51
@@ -6673,7 +6679,7 @@ msgstr "Eklenti silindi"
 msgid "Add-on could not be deleted properly:"
 msgstr "Eklenti tamamen silinemedi:"
 
-#: src/ai.cpp:1777
+#: src/ai.cpp:1776
 msgid "Unknown unit type : "
 msgstr "Bilinmeyen birim türü: "
 
@@ -7008,19 +7014,19 @@ msgstr "HATA AYRINTILARI:"
 msgid "Loading data files"
 msgstr "Veri dosyaları yükleniyor"
 
-#: src/game.cpp:1945
+#: src/game.cpp:1950
 msgid "Loading game configuration."
 msgstr "Oyun yapılandırması yükleniyor."
 
-#: src/game.cpp:1951
+#: src/game.cpp:1956
 msgid "Re-initialize fonts for the current language."
 msgstr "Yazıtipleri geçerli dil için yeniden ilklendirildi."
 
-#: src/game.cpp:1959
+#: src/game.cpp:1964
 msgid "Searching for installed add-ons."
 msgstr "Kurulu eklentiler aranıyor."
 
-#: src/game.cpp:1968
+#: src/game.cpp:1973
 msgid "Loading title screen."
 msgstr "Ana ekran yükleniyor."
 
@@ -7296,7 +7302,7 @@ msgstr "Atla"
 msgid "The End"
 msgstr "Son"
 
-#: src/language.cpp:158
+#: src/language.cpp:162
 msgid "System default language"
 msgstr "Öntanımlı sistem dili"
 

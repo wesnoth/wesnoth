@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-14 22:24+0100\n"
+"POT-Creation-Date: 2008-11-18 22:04+0100\n"
 "PO-Revision-Date: 2006-08-14 19:33+0200\n"
 "Last-Translator: Jaka Kranjc <wesnoth@prinas.si>\n"
 "Language-Team: Slovenian\n"
@@ -72,13 +72,13 @@ msgid "poisoned"
 msgstr "zastrupljen"
 
 #. [berserk]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:62
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:702
 #: data/core/macros/abilities.cfg:553
 msgid "berserk"
 msgstr "berzerk"
 
 #. [berserk]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:64
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:704
 #: data/core/macros/abilities.cfg:555
 msgid ""
 "Berserk:\n"
@@ -90,13 +90,13 @@ msgstr ""
 "ne umre ali mine 30 rund."
 
 #. [chance_to_hit]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:77
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:717
 #: data/core/macros/abilities.cfg:639
 msgid "magical"
 msgstr "čaroben"
 
 #. [chance_to_hit]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:79
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:719
 #: data/core/macros/abilities.cfg:641
 #, fuzzy
 msgid ""
@@ -108,13 +108,13 @@ msgstr ""
 "Ta napad ima vedno 70% možnosti da zadane."
 
 #. [firststrike]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:91
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:731
 #: data/core/macros/abilities.cfg:688
 msgid "firststrike"
 msgstr "prvi napad"
 
 #. [firststrike]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:93
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:733
 #: data/core/macros/abilities.cfg:690
 msgid ""
 "First Strike:\n"
@@ -122,6 +122,75 @@ msgid ""
 msgstr ""
 "Prvi napad:\n"
 "Ta enota vedno napade prva, tudi če se brani."
+
+#. [heals]
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:13
+#: data/core/macros/abilities.cfg:10
+msgid "heals +4"
+msgstr "ranocelnik +4"
+
+#. [heals]
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:14
+#: data/core/macros/abilities.cfg:11
+#, fuzzy
+msgid "female^heals +4"
+msgstr "Tatica"
+
+#. [heals]
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:19
+#: data/core/macros/abilities.cfg:16
+#, fuzzy
+msgid ""
+"Heals +4:\n"
+"Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
+"\n"
+"A unit cared for by this healer may heal up to 4 HP per turn, or stop poison "
+"from taking effect for that turn.\n"
+"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
+"care of a village or a unit that can cure."
+msgstr ""
+"Ranocelnik +4:\n"
+"Enota bo vsako potezo pozdravila sosednje zavezniške enote.\n"
+"\n"
+"Enota, ki jo oskrbuje ranocelnik se lahko pozdravi za do 4 HP na potezo ali "
+"pa ne utrpi škode zaradi zastrupljenosti.\n"
+"Zastrupljenih enot ne more ozdraviti strupa, te morajo poiskati pomoč v vasi "
+"ali pri razstrupljevalecu."
+
+#. [heals]
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:42
+#: data/core/macros/abilities.cfg:30
+msgid "heals +8"
+msgstr "ranocelnik +8"
+
+#. [heals]
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:43
+#: data/core/macros/abilities.cfg:31
+#, fuzzy
+msgid "female^heals +8"
+msgstr "Tatica"
+
+#. [heals]
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:48
+#: data/core/macros/abilities.cfg:36
+msgid ""
+"Heals +8:\n"
+"This unit combines herbal remedies with magic to heal units more quickly "
+"than is normally possible on the battlefield.\n"
+"\n"
+"A unit cared for by this healer may heal up to 8 HP per turn, or stop poison "
+"from taking effect for that turn.\n"
+"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
+"care of a village or a unit that can cure."
+msgstr ""
+"Ranocelnik +8:\n"
+"Ta enota s pomočjo zelišč in čarovnij zdravi druge hitreje, kot je ponavadi "
+"možno na bojišču.\n"
+"\n"
+"Enota, ki jo oskrbuje zdravnik se lahko pozdravi za do 8 HP na potezo ali pa "
+"ne utrpi škode zaradi zastrupljenosti.\n"
+"Zastrupljenih enot ne more ozdraviti strupa, te morajo poiskati pomoč v vasi "
+"ali pri razstrupljevalecu."
 
 #. [about]
 #: data/core/about.cfg:7
@@ -2673,69 +2742,6 @@ msgid ""
 "Modifies the specified property of the selected unit. Example: :unit "
 "hitpoints=100"
 msgstr ""
-
-#. [heals]
-#: data/core/macros/abilities.cfg:10
-msgid "heals +4"
-msgstr "ranocelnik +4"
-
-#. [heals]
-#: data/core/macros/abilities.cfg:11
-#, fuzzy
-msgid "female^heals +4"
-msgstr "Tatica"
-
-#. [heals]
-#: data/core/macros/abilities.cfg:16
-#, fuzzy
-msgid ""
-"Heals +4:\n"
-"Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
-"\n"
-"A unit cared for by this healer may heal up to 4 HP per turn, or stop poison "
-"from taking effect for that turn.\n"
-"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
-"care of a village or a unit that can cure."
-msgstr ""
-"Ranocelnik +4:\n"
-"Enota bo vsako potezo pozdravila sosednje zavezniške enote.\n"
-"\n"
-"Enota, ki jo oskrbuje ranocelnik se lahko pozdravi za do 4 HP na potezo ali "
-"pa ne utrpi škode zaradi zastrupljenosti.\n"
-"Zastrupljenih enot ne more ozdraviti strupa, te morajo poiskati pomoč v vasi "
-"ali pri razstrupljevalecu."
-
-#. [heals]
-#: data/core/macros/abilities.cfg:30
-msgid "heals +8"
-msgstr "ranocelnik +8"
-
-#. [heals]
-#: data/core/macros/abilities.cfg:31
-#, fuzzy
-msgid "female^heals +8"
-msgstr "Tatica"
-
-#. [heals]
-#: data/core/macros/abilities.cfg:36
-msgid ""
-"Heals +8:\n"
-"This unit combines herbal remedies with magic to heal units more quickly "
-"than is normally possible on the battlefield.\n"
-"\n"
-"A unit cared for by this healer may heal up to 8 HP per turn, or stop poison "
-"from taking effect for that turn.\n"
-"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
-"care of a village or a unit that can cure."
-msgstr ""
-"Ranocelnik +8:\n"
-"Ta enota s pomočjo zelišč in čarovnij zdravi druge hitreje, kot je ponavadi "
-"možno na bojišču.\n"
-"\n"
-"Enota, ki jo oskrbuje zdravnik se lahko pozdravi za do 8 HP na potezo ali pa "
-"ne utrpi škode zaradi zastrupljenosti.\n"
-"Zastrupljenih enot ne more ozdraviti strupa, te morajo poiskati pomoč v vasi "
-"ali pri razstrupljevalecu."
 
 #. [heals]
 #: data/core/macros/abilities.cfg:51
@@ -6273,7 +6279,7 @@ msgstr "Dodatek nameščen"
 msgid "Add-on could not be deleted properly:"
 msgstr ""
 
-#: src/ai.cpp:1777
+#: src/ai.cpp:1776
 #, fuzzy
 msgid "Unknown unit type : "
 msgstr "Neznan scenarij"
@@ -6632,20 +6638,20 @@ msgstr "PODROBNOSTI NAPAKE:"
 msgid "Loading data files"
 msgstr "Branje datotek enot."
 
-#: src/game.cpp:1945
+#: src/game.cpp:1950
 msgid "Loading game configuration."
 msgstr "Nalaganje nastavitev."
 
-#: src/game.cpp:1951
+#: src/game.cpp:1956
 msgid "Re-initialize fonts for the current language."
 msgstr "Ponastavi pisave za trenutni jezik."
 
-#: src/game.cpp:1959
+#: src/game.cpp:1964
 #, fuzzy
 msgid "Searching for installed add-ons."
 msgstr "Pošiljanje dodatka"
 
-#: src/game.cpp:1968
+#: src/game.cpp:1973
 msgid "Loading title screen."
 msgstr "Nalaganje uvodnega zaslona."
 
@@ -6942,7 +6948,7 @@ msgstr "Preskoči"
 msgid "The End"
 msgstr "Konec"
 
-#: src/language.cpp:158
+#: src/language.cpp:162
 msgid "System default language"
 msgstr "Privzeti sistemski jezik"
 

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-14 22:24+0100\n"
+"POT-Creation-Date: 2008-11-18 22:04+0100\n"
 "PO-Revision-Date: 2008-03-02 19:00+0900\n"
 "Last-Translator: naoki iimura <amatubu@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
@@ -72,13 +72,13 @@ msgid "poisoned"
 msgstr "毒を受けた"
 
 #. [berserk]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:62
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:702
 #: data/core/macros/abilities.cfg:553
 msgid "berserk"
 msgstr "狂戦"
 
 #. [berserk]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:64
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:704
 #: data/core/macros/abilities.cfg:555
 msgid ""
 "Berserk:\n"
@@ -90,13 +90,13 @@ msgstr ""
 "ニットが倒されるまで交戦をやめません。もしくは 30 回の攻撃が行われるまで。"
 
 #. [chance_to_hit]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:77
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:717
 #: data/core/macros/abilities.cfg:639
 msgid "magical"
 msgstr "魔法"
 
 #. [chance_to_hit]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:79
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:719
 #: data/core/macros/abilities.cfg:641
 msgid ""
 "Magical:\n"
@@ -108,13 +108,13 @@ msgstr ""
 "70%となります。"
 
 #. [firststrike]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:91
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:731
 #: data/core/macros/abilities.cfg:688
 msgid "firststrike"
 msgstr "先制"
 
 #. [firststrike]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:93
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:733
 #: data/core/macros/abilities.cfg:690
 msgid ""
 "First Strike:\n"
@@ -122,6 +122,75 @@ msgid ""
 msgstr ""
 "先制:\n"
 "このユニットは、 たとえ防御時であっても常にこの攻撃で先に攻撃します。"
+
+#. [heals]
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:13
+#: data/core/macros/abilities.cfg:10
+msgid "heals +4"
+msgstr "回復 +4"
+
+#. [heals]
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:14
+#: data/core/macros/abilities.cfg:11
+#, fuzzy
+msgid "female^heals +4"
+msgstr "壮健"
+
+#. [heals]
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:19
+#: data/core/macros/abilities.cfg:16
+#, fuzzy
+msgid ""
+"Heals +4:\n"
+"Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
+"\n"
+"A unit cared for by this healer may heal up to 4 HP per turn, or stop poison "
+"from taking effect for that turn.\n"
+"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
+"care of a village or a unit that can cure."
+msgstr ""
+"回復 +4:\n"
+"このユニットは隣接した友好的なユニットをターン開始時に回復させます。\n"
+"\n"
+"このユニットに治療されるユニットは１ターンに最大でHPが４回復します。もしく"
+"は、そのターンに毒の効果が発動しないようにします。 \n"
+"毒を受けているユニットの解毒を行うことはできません。 村で回復させるか、 治療"
+"ユニットを捜して下さい。"
+
+#. [heals]
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:42
+#: data/core/macros/abilities.cfg:30
+msgid "heals +8"
+msgstr "回復 +8"
+
+#. [heals]
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:43
+#: data/core/macros/abilities.cfg:31
+#, fuzzy
+msgid "female^heals +8"
+msgstr "壮健"
+
+#. [heals]
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:48
+#: data/core/macros/abilities.cfg:36
+msgid ""
+"Heals +8:\n"
+"This unit combines herbal remedies with magic to heal units more quickly "
+"than is normally possible on the battlefield.\n"
+"\n"
+"A unit cared for by this healer may heal up to 8 HP per turn, or stop poison "
+"from taking effect for that turn.\n"
+"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
+"care of a village or a unit that can cure."
+msgstr ""
+"回復 +8:\n"
+"このユニットは薬草と魔法を組み合わせて、 戦場で通常可能であったよりも素早くユ"
+"ニットを回復します。\n"
+"\n"
+"このユニットに治癒されるユニットは１ターンに最大でHPが８回復します。もしく"
+"は、そのターンに毒の効果が発動しないようにします。 \n"
+"毒を受けているユニットの解毒を行うことはできません。 村で回復させるか、 治療"
+"ユニットを捜して下さい。"
 
 #. [about]
 #: data/core/about.cfg:7
@@ -2739,69 +2808,6 @@ msgid ""
 msgstr ""
 "\n"
 "選択されたユニットの指定されたプロパティを変更する。例: :unit hitpoints=100"
-
-#. [heals]
-#: data/core/macros/abilities.cfg:10
-msgid "heals +4"
-msgstr "回復 +4"
-
-#. [heals]
-#: data/core/macros/abilities.cfg:11
-#, fuzzy
-msgid "female^heals +4"
-msgstr "壮健"
-
-#. [heals]
-#: data/core/macros/abilities.cfg:16
-#, fuzzy
-msgid ""
-"Heals +4:\n"
-"Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
-"\n"
-"A unit cared for by this healer may heal up to 4 HP per turn, or stop poison "
-"from taking effect for that turn.\n"
-"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
-"care of a village or a unit that can cure."
-msgstr ""
-"回復 +4:\n"
-"このユニットは隣接した友好的なユニットをターン開始時に回復させます。\n"
-"\n"
-"このユニットに治療されるユニットは１ターンに最大でHPが４回復します。もしく"
-"は、そのターンに毒の効果が発動しないようにします。 \n"
-"毒を受けているユニットの解毒を行うことはできません。 村で回復させるか、 治療"
-"ユニットを捜して下さい。"
-
-#. [heals]
-#: data/core/macros/abilities.cfg:30
-msgid "heals +8"
-msgstr "回復 +8"
-
-#. [heals]
-#: data/core/macros/abilities.cfg:31
-#, fuzzy
-msgid "female^heals +8"
-msgstr "壮健"
-
-#. [heals]
-#: data/core/macros/abilities.cfg:36
-msgid ""
-"Heals +8:\n"
-"This unit combines herbal remedies with magic to heal units more quickly "
-"than is normally possible on the battlefield.\n"
-"\n"
-"A unit cared for by this healer may heal up to 8 HP per turn, or stop poison "
-"from taking effect for that turn.\n"
-"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
-"care of a village or a unit that can cure."
-msgstr ""
-"回復 +8:\n"
-"このユニットは薬草と魔法を組み合わせて、 戦場で通常可能であったよりも素早くユ"
-"ニットを回復します。\n"
-"\n"
-"このユニットに治癒されるユニットは１ターンに最大でHPが８回復します。もしく"
-"は、そのターンに毒の効果が発動しないようにします。 \n"
-"毒を受けているユニットの解毒を行うことはできません。 村で回復させるか、 治療"
-"ユニットを捜して下さい。"
 
 #. [heals]
 #: data/core/macros/abilities.cfg:51
@@ -6805,7 +6811,7 @@ msgstr "アドオンは削除されました"
 msgid "Add-on could not be deleted properly:"
 msgstr "アドオンは削除できませんでした。ファイルが見つかりませんでした。"
 
-#: src/ai.cpp:1777
+#: src/ai.cpp:1776
 msgid "Unknown unit type : "
 msgstr "不明のユニットタイプ : "
 
@@ -7145,20 +7151,20 @@ msgstr "エラー詳細:"
 msgid "Loading data files"
 msgstr "データファイル読み込み中"
 
-#: src/game.cpp:1945
+#: src/game.cpp:1950
 msgid "Loading game configuration."
 msgstr "ゲーム設定を読み込んでいます。"
 
-#: src/game.cpp:1951
+#: src/game.cpp:1956
 msgid "Re-initialize fonts for the current language."
 msgstr "現在の言語でフォントを再初期化します。"
 
-#: src/game.cpp:1959
+#: src/game.cpp:1964
 #, fuzzy
 msgid "Searching for installed add-ons."
 msgstr "アドオンを送信しています"
 
-#: src/game.cpp:1968
+#: src/game.cpp:1973
 msgid "Loading title screen."
 msgstr "タイトル画面を読み込んでいます。"
 
@@ -7433,7 +7439,7 @@ msgstr "スキップ"
 msgid "The End"
 msgstr "完"
 
-#: src/language.cpp:158
+#: src/language.cpp:162
 msgid "System default language"
 msgstr "システムデフォルト言語"
 

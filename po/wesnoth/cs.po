@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-14 22:24+0100\n"
+"POT-Creation-Date: 2008-11-18 22:04+0100\n"
 "PO-Revision-Date: 2008-10-31 18:22+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
@@ -78,13 +78,13 @@ msgid "poisoned"
 msgstr "otrávený"
 
 #. [berserk]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:62
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:702
 #: data/core/macros/abilities.cfg:553
 msgid "berserk"
 msgstr "na život a na smrt"
 
 #. [berserk]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:64
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:704
 #: data/core/macros/abilities.cfg:555
 msgid ""
 "Berserk:\n"
@@ -96,13 +96,13 @@ msgstr ""
 "útoků."
 
 #. [chance_to_hit]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:77
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:717
 #: data/core/macros/abilities.cfg:639
 msgid "magical"
 msgstr "magické"
 
 #. [chance_to_hit]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:79
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:719
 #: data/core/macros/abilities.cfg:641
 msgid ""
 "Magical:\n"
@@ -114,13 +114,13 @@ msgstr ""
 "možnosti cílové jednotky."
 
 #. [firststrike]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:91
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:731
 #: data/core/macros/abilities.cfg:688
 msgid "firststrike"
 msgstr "první úder"
 
 #. [firststrike]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:93
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:733
 #: data/core/macros/abilities.cfg:690
 msgid ""
 "First Strike:\n"
@@ -128,6 +128,75 @@ msgid ""
 msgstr ""
 "První úder:\n"
 "Tato jednotka v souboji vždy udeří první, i když se brání."
+
+#. [heals]
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:13
+#: data/core/macros/abilities.cfg:10
+msgid "heals +4"
+msgstr "ošetření"
+
+#. [heals]
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:14
+#: data/core/macros/abilities.cfg:11
+msgid "female^heals +4"
+msgstr "ošetření"
+
+#. [heals]
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:19
+#: data/core/macros/abilities.cfg:16
+msgid ""
+"Heals +4:\n"
+"Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
+"\n"
+"A unit cared for by this healer may heal up to 4 HP per turn, or stop poison "
+"from taking effect for that turn.\n"
+"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
+"care of a village or a unit that can cure."
+msgstr ""
+"Ošetření:\n"
+"Jednotka dokáže ošetřit spřátelené jednotky na vedlejších polích na začátku "
+"tahu.\n"
+"\n"
+"Zraněná jednotka v péči tohoto ošetřovatele se může za jeden tah vyléčit až "
+"o 4 životy nebo se jí může na jeden tah zastavit působení jedu.\n"
+"Ošetřovatel nedokáže uzdravit otrávenou jednotku; taková jednotka musí "
+"vyhledat pomoc ve vesnici nebo u jednotky, která dokáže uzdravovat."
+
+#. [heals]
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:42
+#: data/core/macros/abilities.cfg:30
+msgid "heals +8"
+msgstr "léčení"
+
+#. [heals]
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:43
+#: data/core/macros/abilities.cfg:31
+msgid "female^heals +8"
+msgstr "léčení"
+
+#. [heals]
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:48
+#: data/core/macros/abilities.cfg:36
+msgid ""
+"Heals +8:\n"
+"This unit combines herbal remedies with magic to heal units more quickly "
+"than is normally possible on the battlefield.\n"
+"\n"
+"A unit cared for by this healer may heal up to 8 HP per turn, or stop poison "
+"from taking effect for that turn.\n"
+"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
+"care of a village or a unit that can cure."
+msgstr ""
+"Léčení:\n"
+"Tato jednotka kombinuje účinky léčivých rostlin s magií, aby vyléčila "
+"jednotky rychleji než je běžně možné na bitevním poli.\n"
+"\n"
+"Tato jednotka se na začátku tahu postará o všechny spřátelené zraněné "
+"jednotky stojící na sousedních polích.\n"
+"Zraněná jednotka se může za jeden tah vyléčit až o 8 životů nebo zastavit na "
+"jeden tah průběh otravy.\n"
+"Léčitel nedokáže uzdravit otrávenou jednotku; taková jednotka musí vyhledat "
+"pomoc ve vesnici nebo u jednotky, která dokáže uzdravovat."
 
 #. [about]
 #: data/core/about.cfg:7
@@ -2767,69 +2836,6 @@ msgstr ""
 "\n"
 "Upravuje určenou vlastnost vybrané jednotky. Příklad použití: :unit "
 "hitpoints=100"
-
-#. [heals]
-#: data/core/macros/abilities.cfg:10
-msgid "heals +4"
-msgstr "ošetření"
-
-#. [heals]
-#: data/core/macros/abilities.cfg:11
-msgid "female^heals +4"
-msgstr "ošetření"
-
-#. [heals]
-#: data/core/macros/abilities.cfg:16
-msgid ""
-"Heals +4:\n"
-"Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
-"\n"
-"A unit cared for by this healer may heal up to 4 HP per turn, or stop poison "
-"from taking effect for that turn.\n"
-"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
-"care of a village or a unit that can cure."
-msgstr ""
-"Ošetření:\n"
-"Jednotka dokáže ošetřit spřátelené jednotky na vedlejších polích na začátku "
-"tahu.\n"
-"\n"
-"Zraněná jednotka v péči tohoto ošetřovatele se může za jeden tah vyléčit až "
-"o 4 životy nebo se jí může na jeden tah zastavit působení jedu.\n"
-"Ošetřovatel nedokáže uzdravit otrávenou jednotku; taková jednotka musí "
-"vyhledat pomoc ve vesnici nebo u jednotky, která dokáže uzdravovat."
-
-#. [heals]
-#: data/core/macros/abilities.cfg:30
-msgid "heals +8"
-msgstr "léčení"
-
-#. [heals]
-#: data/core/macros/abilities.cfg:31
-msgid "female^heals +8"
-msgstr "léčení"
-
-#. [heals]
-#: data/core/macros/abilities.cfg:36
-msgid ""
-"Heals +8:\n"
-"This unit combines herbal remedies with magic to heal units more quickly "
-"than is normally possible on the battlefield.\n"
-"\n"
-"A unit cared for by this healer may heal up to 8 HP per turn, or stop poison "
-"from taking effect for that turn.\n"
-"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
-"care of a village or a unit that can cure."
-msgstr ""
-"Léčení:\n"
-"Tato jednotka kombinuje účinky léčivých rostlin s magií, aby vyléčila "
-"jednotky rychleji než je běžně možné na bitevním poli.\n"
-"\n"
-"Tato jednotka se na začátku tahu postará o všechny spřátelené zraněné "
-"jednotky stojící na sousedních polích.\n"
-"Zraněná jednotka se může za jeden tah vyléčit až o 8 životů nebo zastavit na "
-"jeden tah průběh otravy.\n"
-"Léčitel nedokáže uzdravit otrávenou jednotku; taková jednotka musí vyhledat "
-"pomoc ve vesnici nebo u jednotky, která dokáže uzdravovat."
 
 #. [heals]
 #: data/core/macros/abilities.cfg:51
@@ -6993,7 +6999,7 @@ msgstr "Rozšíření smazáno"
 msgid "Add-on could not be deleted properly:"
 msgstr "Rozšíření nebylo možno odstranit - soubor nebyl nalezen."
 
-#: src/ai.cpp:1777
+#: src/ai.cpp:1776
 msgid "Unknown unit type : "
 msgstr "Neznámý druh jednotky : "
 
@@ -7333,20 +7339,20 @@ msgstr "POPIS CHYBY:"
 msgid "Loading data files"
 msgstr "Načítám datové soubory."
 
-#: src/game.cpp:1945
+#: src/game.cpp:1950
 msgid "Loading game configuration."
 msgstr "Nahrávání konfigurace."
 
-#: src/game.cpp:1951
+#: src/game.cpp:1956
 msgid "Re-initialize fonts for the current language."
 msgstr "Probíhá přenastavení písma pro současný jazyk."
 
-#: src/game.cpp:1959
+#: src/game.cpp:1964
 #, fuzzy
 msgid "Searching for installed add-ons."
 msgstr "Získávám seznam rozšíření"
 
-#: src/game.cpp:1968
+#: src/game.cpp:1973
 msgid "Loading title screen."
 msgstr "Načítám hlavní obrazovku."
 
@@ -7630,7 +7636,7 @@ msgstr "Přeskočit"
 msgid "The End"
 msgstr "Konec"
 
-#: src/language.cpp:158
+#: src/language.cpp:162
 msgid "System default language"
 msgstr "Implicitní jazyk"
 

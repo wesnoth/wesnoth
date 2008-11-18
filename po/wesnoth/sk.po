@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-14 22:24+0100\n"
+"POT-Creation-Date: 2008-11-18 22:04+0100\n"
 "PO-Revision-Date: 2008-09-27 22:17+0100\n"
 "Last-Translator: aceman <acelists@atlas.sk>\n"
 "Language-Team: none\n"
@@ -69,13 +69,13 @@ msgid "poisoned"
 msgstr "otrávený"
 
 #. [berserk]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:62
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:702
 #: data/core/macros/abilities.cfg:553
 msgid "berserk"
 msgstr "berserk"
 
 #. [berserk]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:64
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:704
 #: data/core/macros/abilities.cfg:555
 msgid ""
 "Berserk:\n"
@@ -87,13 +87,13 @@ msgstr ""
 "protivníkov, prípadne kým si nevymenia 30 sérií útokov."
 
 #. [chance_to_hit]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:77
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:717
 #: data/core/macros/abilities.cfg:639
 msgid "magical"
 msgstr "magický"
 
 #. [chance_to_hit]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:79
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:719
 #: data/core/macros/abilities.cfg:641
 msgid ""
 "Magical:\n"
@@ -105,13 +105,13 @@ msgstr ""
 "jednotky, na ktorú sa útočí."
 
 #. [firststrike]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:91
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:731
 #: data/core/macros/abilities.cfg:688
 msgid "firststrike"
 msgstr "prvý úder"
 
 #. [firststrike]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:93
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:733
 #: data/core/macros/abilities.cfg:690
 msgid ""
 "First Strike:\n"
@@ -119,6 +119,76 @@ msgid ""
 msgstr ""
 "Prvý útok:\n"
 "Týmto útokom útočí jednotka vždy prvá, aj keď bola napadnutá."
+
+#. [heals]
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:13
+#: data/core/macros/abilities.cfg:10
+msgid "heals +4"
+msgstr "uzdravuje +4"
+
+#. [heals]
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:14
+#: data/core/macros/abilities.cfg:11
+#, fuzzy
+msgid "female^heals +4"
+msgstr "životaschopná"
+
+#. [heals]
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:19
+#: data/core/macros/abilities.cfg:16
+#, fuzzy
+msgid ""
+"Heals +4:\n"
+"Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
+"\n"
+"A unit cared for by this healer may heal up to 4 HP per turn, or stop poison "
+"from taking effect for that turn.\n"
+"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
+"care of a village or a unit that can cure."
+msgstr ""
+"Uzdravuje +4:\n"
+"Jednotka dokáže uzdravovať spriatelené jednotky na vedľajších políčkach "
+"začiatkom ťahu.\n"
+"\n"
+"Jednotka v opatere tohoto uzdravovateľa sa môže za jedno kolo uzdraviť až o "
+"4 životy, alebo jej v tomto kole nebude jed uberať životy.\n"
+"Uzdravovateľ nedokáže vyliečiť otrávenú jednotku; taká jednotka musí "
+"vyhľadať pomoc v dedine, alebo u jednotky, ktorá dokáže liečiť."
+
+#. [heals]
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:42
+#: data/core/macros/abilities.cfg:30
+msgid "heals +8"
+msgstr "uzdravuje +8"
+
+#. [heals]
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:43
+#: data/core/macros/abilities.cfg:31
+#, fuzzy
+msgid "female^heals +8"
+msgstr "životaschopná"
+
+#. [heals]
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:48
+#: data/core/macros/abilities.cfg:36
+msgid ""
+"Heals +8:\n"
+"This unit combines herbal remedies with magic to heal units more quickly "
+"than is normally possible on the battlefield.\n"
+"\n"
+"A unit cared for by this healer may heal up to 8 HP per turn, or stop poison "
+"from taking effect for that turn.\n"
+"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
+"care of a village or a unit that can cure."
+msgstr ""
+"Uzdravuje +8:\n"
+"Jednotka kombinuje rastlinné liečivá s mágiou, aby uzdravovala rýchlejšie, "
+"ako je bežne možné na bojisku.\n"
+"\n"
+"Jednotka v opatere tohoto uzdravovateľa sa môže za jedno kolo uzdraviť až o "
+"8 životov, alebo jej v tomto kole nebude jed uberať životy.\n"
+"Uzdravovateľ nedokáže vyliečiť otrávenú jednotku; taká jednotka musí "
+"vyhľadať pomoc v dedine, alebo u jednotky, ktorá dokáže liečiť."
 
 #. [about]
 #: data/core/about.cfg:7
@@ -2745,70 +2815,6 @@ msgstr ""
 "\n"
 "Zmení zadanú vlastnosť vybranej jednotky. Príklad (nastaví 100 životov): :"
 "unit hitpoints=100"
-
-#. [heals]
-#: data/core/macros/abilities.cfg:10
-msgid "heals +4"
-msgstr "uzdravuje +4"
-
-#. [heals]
-#: data/core/macros/abilities.cfg:11
-#, fuzzy
-msgid "female^heals +4"
-msgstr "životaschopná"
-
-#. [heals]
-#: data/core/macros/abilities.cfg:16
-#, fuzzy
-msgid ""
-"Heals +4:\n"
-"Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
-"\n"
-"A unit cared for by this healer may heal up to 4 HP per turn, or stop poison "
-"from taking effect for that turn.\n"
-"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
-"care of a village or a unit that can cure."
-msgstr ""
-"Uzdravuje +4:\n"
-"Jednotka dokáže uzdravovať spriatelené jednotky na vedľajších políčkach "
-"začiatkom ťahu.\n"
-"\n"
-"Jednotka v opatere tohoto uzdravovateľa sa môže za jedno kolo uzdraviť až o "
-"4 životy, alebo jej v tomto kole nebude jed uberať životy.\n"
-"Uzdravovateľ nedokáže vyliečiť otrávenú jednotku; taká jednotka musí "
-"vyhľadať pomoc v dedine, alebo u jednotky, ktorá dokáže liečiť."
-
-#. [heals]
-#: data/core/macros/abilities.cfg:30
-msgid "heals +8"
-msgstr "uzdravuje +8"
-
-#. [heals]
-#: data/core/macros/abilities.cfg:31
-#, fuzzy
-msgid "female^heals +8"
-msgstr "životaschopná"
-
-#. [heals]
-#: data/core/macros/abilities.cfg:36
-msgid ""
-"Heals +8:\n"
-"This unit combines herbal remedies with magic to heal units more quickly "
-"than is normally possible on the battlefield.\n"
-"\n"
-"A unit cared for by this healer may heal up to 8 HP per turn, or stop poison "
-"from taking effect for that turn.\n"
-"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
-"care of a village or a unit that can cure."
-msgstr ""
-"Uzdravuje +8:\n"
-"Jednotka kombinuje rastlinné liečivá s mágiou, aby uzdravovala rýchlejšie, "
-"ako je bežne možné na bojisku.\n"
-"\n"
-"Jednotka v opatere tohoto uzdravovateľa sa môže za jedno kolo uzdraviť až o "
-"8 životov, alebo jej v tomto kole nebude jed uberať životy.\n"
-"Uzdravovateľ nedokáže vyliečiť otrávenú jednotku; taká jednotka musí "
-"vyhľadať pomoc v dedine, alebo u jednotky, ktorá dokáže liečiť."
 
 #. [heals]
 #: data/core/macros/abilities.cfg:51
@@ -6990,7 +6996,7 @@ msgstr "Doplnok odstránený"
 msgid "Add-on could not be deleted properly:"
 msgstr "Doplnok nemohol byť vymazaný -- súbor sa nenašiel."
 
-#: src/ai.cpp:1777
+#: src/ai.cpp:1776
 msgid "Unknown unit type : "
 msgstr "Neznámy typ jednotky : "
 
@@ -7331,20 +7337,20 @@ msgstr "DETAILY CHYBY:"
 msgid "Loading data files"
 msgstr "Načítavajú sa dátové súbory"
 
-#: src/game.cpp:1945
+#: src/game.cpp:1950
 msgid "Loading game configuration."
 msgstr "Načítavam nastavenia hry."
 
-#: src/game.cpp:1951
+#: src/game.cpp:1956
 msgid "Re-initialize fonts for the current language."
 msgstr "Znovunačítaj písmo pre aktuálny jazyk"
 
-#: src/game.cpp:1959
+#: src/game.cpp:1964
 #, fuzzy
 msgid "Searching for installed add-ons."
 msgstr "Pýtam si zoznam doplnkov"
 
-#: src/game.cpp:1968
+#: src/game.cpp:1973
 msgid "Loading title screen."
 msgstr "Načítava sa úvodná obrazovka."
 
@@ -7622,7 +7628,7 @@ msgstr "Preskoč"
 msgid "The End"
 msgstr "Koniec"
 
-#: src/language.cpp:158
+#: src/language.cpp:162
 msgid "System default language"
 msgstr "Štandardný jazyk systému"
 

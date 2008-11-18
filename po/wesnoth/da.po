@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.5+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-14 22:24+0100\n"
+"POT-Creation-Date: 2008-11-18 22:04+0100\n"
 "PO-Revision-Date: 2008-11-04 13:44+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
@@ -67,13 +67,13 @@ msgid "poisoned"
 msgstr "forgiftet"
 
 #. [berserk]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:62
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:702
 #: data/core/macros/abilities.cfg:553
 msgid "berserk"
 msgstr "bersærk"
 
 #. [berserk]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:64
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:704
 #: data/core/macros/abilities.cfg:555
 msgid ""
 "Berserk:\n"
@@ -85,13 +85,13 @@ msgstr ""
 "af parterne dør, eller 30 runder af angreb er foretaget."
 
 #. [chance_to_hit]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:77
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:717
 #: data/core/macros/abilities.cfg:639
 msgid "magical"
 msgstr "magisk"
 
 #. [chance_to_hit]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:79
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:719
 #: data/core/macros/abilities.cfg:641
 msgid ""
 "Magical:\n"
@@ -103,13 +103,13 @@ msgstr ""
 "enhed som bliver angrebet."
 
 #. [firststrike]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:91
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:731
 #: data/core/macros/abilities.cfg:688
 msgid "firststrike"
 msgstr "initiativ"
 
 #. [firststrike]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:93
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:733
 #: data/core/macros/abilities.cfg:690
 msgid ""
 "First Strike:\n"
@@ -118,6 +118,75 @@ msgstr ""
 "Initiativ:\n"
 "Denne enhed angriber først - har initiativet - med dette angreb, også selv "
 "om den forsvarer sig."
+
+#. [heals]
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:13
+#: data/core/macros/abilities.cfg:10
+msgid "heals +4"
+msgstr "helbreder +4"
+
+#. [heals]
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:14
+#: data/core/macros/abilities.cfg:11
+#, fuzzy
+msgid "female^heals +4"
+msgstr "sund"
+
+#. [heals]
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:19
+#: data/core/macros/abilities.cfg:16
+#, fuzzy
+msgid ""
+"Heals +4:\n"
+"Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
+"\n"
+"A unit cared for by this healer may heal up to 4 HP per turn, or stop poison "
+"from taking effect for that turn.\n"
+"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
+"care of a village or a unit that can cure."
+msgstr ""
+"Helbreder +4:\n"
+"Tillader enheden at helbrede enheder ved dens side i starten af hver runde.\n"
+"\n"
+"En enhed som bliver behandlet af denne naturlæge opnår op til 4 liv per "
+"runde, eller også stopper en forgiftningseffekt for den aktuelle runde.\n"
+"En forgiftet enhed kan ikke helbredes for sin gift af en naturlæge, og må "
+"søge behandling i en landsby, eller fra en enhed som har denne evne."
+
+#. [heals]
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:42
+#: data/core/macros/abilities.cfg:30
+msgid "heals +8"
+msgstr "helbreder +8"
+
+#. [heals]
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:43
+#: data/core/macros/abilities.cfg:31
+#, fuzzy
+msgid "female^heals +8"
+msgstr "sund"
+
+#. [heals]
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:48
+#: data/core/macros/abilities.cfg:36
+msgid ""
+"Heals +8:\n"
+"This unit combines herbal remedies with magic to heal units more quickly "
+"than is normally possible on the battlefield.\n"
+"\n"
+"A unit cared for by this healer may heal up to 8 HP per turn, or stop poison "
+"from taking effect for that turn.\n"
+"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
+"care of a village or a unit that can cure."
+msgstr ""
+"Helbreder +8:\n"
+"Denne enhed bruger magisk naturmedicin til at helbrede enheder hurtigere end "
+"det ellers normalt er muligt på slagmarken.\n"
+"\n"
+"En enhed som bliver behandlet af denne naturlæge opnår op til 8 liv per "
+"runde, eller også stopper en forgiftningseffekt for den aktuelle runde.\n"
+"En forgiftet enhed kan ikke helbredes for sin gift af en naturlæge, og må "
+"søge behandling i en landsby eller fra en enhed som har denne evne."
 
 #. [about]
 #: data/core/about.cfg:7
@@ -2772,69 +2841,6 @@ msgid ""
 msgstr ""
 "\n"
 "Ændrer det angivne karaktertræk på den valgte enhed. Eksempel: :enhedsliv=100"
-
-#. [heals]
-#: data/core/macros/abilities.cfg:10
-msgid "heals +4"
-msgstr "helbreder +4"
-
-#. [heals]
-#: data/core/macros/abilities.cfg:11
-#, fuzzy
-msgid "female^heals +4"
-msgstr "sund"
-
-#. [heals]
-#: data/core/macros/abilities.cfg:16
-#, fuzzy
-msgid ""
-"Heals +4:\n"
-"Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
-"\n"
-"A unit cared for by this healer may heal up to 4 HP per turn, or stop poison "
-"from taking effect for that turn.\n"
-"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
-"care of a village or a unit that can cure."
-msgstr ""
-"Helbreder +4:\n"
-"Tillader enheden at helbrede enheder ved dens side i starten af hver runde.\n"
-"\n"
-"En enhed som bliver behandlet af denne naturlæge opnår op til 4 liv per "
-"runde, eller også stopper en forgiftningseffekt for den aktuelle runde.\n"
-"En forgiftet enhed kan ikke helbredes for sin gift af en naturlæge, og må "
-"søge behandling i en landsby, eller fra en enhed som har denne evne."
-
-#. [heals]
-#: data/core/macros/abilities.cfg:30
-msgid "heals +8"
-msgstr "helbreder +8"
-
-#. [heals]
-#: data/core/macros/abilities.cfg:31
-#, fuzzy
-msgid "female^heals +8"
-msgstr "sund"
-
-#. [heals]
-#: data/core/macros/abilities.cfg:36
-msgid ""
-"Heals +8:\n"
-"This unit combines herbal remedies with magic to heal units more quickly "
-"than is normally possible on the battlefield.\n"
-"\n"
-"A unit cared for by this healer may heal up to 8 HP per turn, or stop poison "
-"from taking effect for that turn.\n"
-"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
-"care of a village or a unit that can cure."
-msgstr ""
-"Helbreder +8:\n"
-"Denne enhed bruger magisk naturmedicin til at helbrede enheder hurtigere end "
-"det ellers normalt er muligt på slagmarken.\n"
-"\n"
-"En enhed som bliver behandlet af denne naturlæge opnår op til 8 liv per "
-"runde, eller også stopper en forgiftningseffekt for den aktuelle runde.\n"
-"En forgiftet enhed kan ikke helbredes for sin gift af en naturlæge, og må "
-"søge behandling i en landsby eller fra en enhed som har denne evne."
 
 #. [heals]
 #: data/core/macros/abilities.cfg:51
@@ -7032,7 +7038,7 @@ msgstr "Udvidelsesmodul slettet"
 msgid "Add-on could not be deleted properly:"
 msgstr "Kampagne kunne ikke slettes ordentligt:"
 
-#: src/ai.cpp:1777
+#: src/ai.cpp:1776
 msgid "Unknown unit type : "
 msgstr "Ukendt enhedstype : "
 
@@ -7375,19 +7381,19 @@ msgstr "FEJL-DETALJER:"
 msgid "Loading data files"
 msgstr "Indlæser datafiler"
 
-#: src/game.cpp:1945
+#: src/game.cpp:1950
 msgid "Loading game configuration."
 msgstr "Indlæser spillets konfiguration."
 
-#: src/game.cpp:1951
+#: src/game.cpp:1956
 msgid "Re-initialize fonts for the current language."
 msgstr "Genindlæser fonte for det nuværende sprog."
 
-#: src/game.cpp:1959
+#: src/game.cpp:1964
 msgid "Searching for installed add-ons."
 msgstr "Søger efter intallerede kampagner"
 
-#: src/game.cpp:1968
+#: src/game.cpp:1973
 msgid "Loading title screen."
 msgstr "Henter titelskærm."
 
@@ -7661,7 +7667,7 @@ msgstr "Spring over"
 msgid "The End"
 msgstr "Slut"
 
-#: src/language.cpp:158
+#: src/language.cpp:162
 msgid "System default language"
 msgstr "Systemets standardsprog"
 

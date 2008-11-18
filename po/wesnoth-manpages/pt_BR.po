@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
-"POT-Creation-Date: 2008-10-12 14:33+0300\n"
+"POT-Creation-Date: 2008-11-18 22:07+0100\n"
 "PO-Revision-Date: 2007-11-14 02:23+0900\n"
 "Last-Translator: Claus Aranha\n"
 "Language-Team: Brazilian Portuguese\n"
@@ -408,104 +408,115 @@ msgstr ""
 # type: TP
 #: ../../doc/man/wesnoth.6:147
 #, fuzzy, no-wrap
+msgid "B<--python-shell>"
+msgstr "B<--path>"
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:150
+msgid "invokes wesnoth's embedded python interpreter in interactive mode."
+msgstr ""
+
+# type: TP
+#: ../../doc/man/wesnoth.6:150
+#, fuzzy, no-wrap
 msgid "B<-r\\ >I<X>B<x>I<Y>B<,\\ --resolution\\ >I<X>B<x>I<Y>"
 msgstr "B<-r>, B<--resolution>\\\\ I<XxY>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:151
+#: ../../doc/man/wesnoth.6:154
 #, fuzzy
 msgid "sets the screen resolution. Example: B<-r 800x600>"
 msgstr "configura a resolução da tela. Por exemplo: -r 800x600"
 
 # type: TP
-#: ../../doc/man/wesnoth.6:151
+#: ../../doc/man/wesnoth.6:154
 #, fuzzy, no-wrap
 msgid "B<--smallgui>"
 msgstr "B<--nogui>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:154
+#: ../../doc/man/wesnoth.6:157
 msgid ""
 "allows to use screen resolutions down to 800x480 and resizes a few interface "
 "elements."
 msgstr ""
 
 # type: TP
-#: ../../doc/man/wesnoth.6:154
+#: ../../doc/man/wesnoth.6:157
 #, fuzzy, no-wrap
 msgid "B<-s,\\ --server\\ [host]>"
 msgstr "B<-v,\\ --verbose>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:158
+#: ../../doc/man/wesnoth.6:161
 msgid ""
 "connects to the specified host if any, otherwise connect to the first server "
 "in preferences. Example: B<--server server.wesnoth.org>"
 msgstr ""
 
 # type: TP
-#: ../../doc/man/wesnoth.6:158
+#: ../../doc/man/wesnoth.6:161
 #, fuzzy, no-wrap
 msgid "B<-t, --test>"
 msgstr "B<-t>, B<--test>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:161
+#: ../../doc/man/wesnoth.6:164
 msgid "runs the game in a small test scenario."
 msgstr "executa o jogo em um pequeno cenário de teste."
 
 # type: TP
-#: ../../doc/man/wesnoth.6:161
+#: ../../doc/man/wesnoth.6:164
 #, fuzzy, no-wrap
 msgid "B<--validcache>"
 msgstr "B<--nocache>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:164
+#: ../../doc/man/wesnoth.6:167
 msgid "assumes that the cache is valid. (dangerous)"
 msgstr ""
 
 # type: TP
-#: ../../doc/man/wesnoth.6:164
+#: ../../doc/man/wesnoth.6:167
 #, fuzzy, no-wrap
 msgid "B<-v, --version>"
 msgstr "B<-v>, B<--version>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:167
+#: ../../doc/man/wesnoth.6:170
 msgid "shows the version number and exits."
 msgstr "mostra o número da versão e sai."
 
 # type: TP
-#: ../../doc/man/wesnoth.6:167
+#: ../../doc/man/wesnoth.6:170
 #, fuzzy, no-wrap
 msgid "B<-w, --windowed>"
 msgstr "B<-w>, B<--windowed>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:170
+#: ../../doc/man/wesnoth.6:173
 msgid "runs the game in windowed mode."
 msgstr "executa o jogo em modo janela."
 
 # type: TP
-#: ../../doc/man/wesnoth.6:170
+#: ../../doc/man/wesnoth.6:173
 #, fuzzy, no-wrap
 msgid "B<--with-replay>"
 msgstr "B<--no-delay>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:175
+#: ../../doc/man/wesnoth.6:178
 msgid "replays the game loaded with the B<--load> option."
 msgstr ""
 
 # type: SH
-#: ../../doc/man/wesnoth.6:176
+#: ../../doc/man/wesnoth.6:179
 #, no-wrap
 msgid "Options for --multiplayer"
 msgstr "Opções para --multiplayer"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:183
+#: ../../doc/man/wesnoth.6:186
 #, fuzzy
 msgid ""
 "The side-specific multiplayer options are marked with I<number>.  I<number> "
@@ -518,13 +529,13 @@ msgstr ""
 "jogadores permitidos no cenário escolhido."
 
 # type: TP
-#: ../../doc/man/wesnoth.6:183
+#: ../../doc/man/wesnoth.6:186
 #, fuzzy, no-wrap
 msgid "B<--algorithm>I<number>B<=>I<value>"
 msgstr "B<--algorithmE<lt>númeroE<gt>=valor>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:190
+#: ../../doc/man/wesnoth.6:193
 #, fuzzy
 msgid ""
 "selects a non-standard algorithm to be used by the AI controller for this "
@@ -534,13 +545,13 @@ msgstr ""
 "este time. Valores possíveis: \"idle_ai\" e \"sample_ai\"."
 
 # type: TP
-#: ../../doc/man/wesnoth.6:190
+#: ../../doc/man/wesnoth.6:193
 #, fuzzy, no-wrap
 msgid "B<--controller>I<number>B<=>I<value>"
 msgstr "B<--controllerE<lt>númeroE<gt>=valor>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:196
+#: ../../doc/man/wesnoth.6:199
 #, fuzzy
 msgid ""
 "selects the controller for this side. Available values: B<human> and B<ai>."
@@ -548,13 +559,13 @@ msgstr ""
 "escolhe o controlador deste time. Valores possíveis: \"human\" e \"ai\"."
 
 # type: TP
-#: ../../doc/man/wesnoth.6:196
+#: ../../doc/man/wesnoth.6:199
 #, fuzzy, no-wrap
 msgid "B<--era=>I<value>"
 msgstr "B<--era=valor>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:203
+#: ../../doc/man/wesnoth.6:206
 #, fuzzy
 msgid ""
 "use this option to play in the selected era instead of the B<Default> era. "
@@ -566,13 +577,13 @@ msgstr ""
 "disponíveis estão listadas no arquivo data/multiplayer.cfg."
 
 # type: TP
-#: ../../doc/man/wesnoth.6:203
+#: ../../doc/man/wesnoth.6:206
 #, no-wrap
 msgid "B<--exit-at-end>"
 msgstr "B<--exit-at-end>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:207
+#: ../../doc/man/wesnoth.6:210
 msgid ""
 "exits once the scenario is over, without displaying victory/defeat dialog "
 "which requires the user to click OK.  This is also used for scriptable "
@@ -583,13 +594,13 @@ msgstr ""
 "de benchmark."
 
 # type: TP
-#: ../../doc/man/wesnoth.6:207
+#: ../../doc/man/wesnoth.6:210
 #, no-wrap
 msgid "B<--nogui>"
 msgstr "B<--nogui>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:212
+#: ../../doc/man/wesnoth.6:215
 msgid ""
 "runs the game without the GUI. Must appear before B<--multiplayer> to have "
 "the desired effect."
@@ -598,13 +609,13 @@ msgstr ""
 "o efeito desejado."
 
 # type: TP
-#: ../../doc/man/wesnoth.6:212
+#: ../../doc/man/wesnoth.6:215
 #, fuzzy, no-wrap
 msgid "B<--parm>I<number>B<=>I<name>B<:>I<value>"
 msgstr "B<--parmE<lt>númeroE<gt>=nome:valor>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:221
+#: ../../doc/man/wesnoth.6:224
 #, fuzzy
 msgid ""
 "sets additional parameters for this side. This parameter depends on the "
@@ -616,13 +627,13 @@ msgstr ""
 "pessoas criando suas próprias IA. (não esta completamente documentado ainda)"
 
 # type: TP
-#: ../../doc/man/wesnoth.6:221
+#: ../../doc/man/wesnoth.6:224
 #, fuzzy, no-wrap
 msgid "B<--scenario=>I<value>"
 msgstr "B<--scenario=valor>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:225
+#: ../../doc/man/wesnoth.6:228
 #, fuzzy
 msgid ""
 "selects a multiplayer scenario by id. The default scenario id is "
@@ -632,13 +643,13 @@ msgstr ""
 "\"multiplayer_The_Freelands\"."
 
 # type: TP
-#: ../../doc/man/wesnoth.6:225
+#: ../../doc/man/wesnoth.6:228
 #, fuzzy, no-wrap
 msgid "B<--side>I<number>B<=>I<value>"
 msgstr "B<--sideE<lt>númeroE<gt>=valor>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:230
+#: ../../doc/man/wesnoth.6:233
 msgid ""
 "selects a faction of the current era for this side. The faction is chosen by "
 "an id. Factions are described in the data/multiplayer.cfg file."
@@ -648,25 +659,25 @@ msgstr ""
 "multiplayer.cfg."
 
 # type: TP
-#: ../../doc/man/wesnoth.6:230
+#: ../../doc/man/wesnoth.6:233
 #, fuzzy, no-wrap
 msgid "B<--turns=>I<value>"
 msgstr "B<--turns=valor>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:234
+#: ../../doc/man/wesnoth.6:237
 #, fuzzy
 msgid "sets the number of turns for the chosen scenario. The default is B<50>."
 msgstr "define o número de turnos para o cenário escolhido. O padrão é \"50\"."
 
 # type: TP
-#: ../../doc/man/wesnoth.6:234
+#: ../../doc/man/wesnoth.6:237
 #, no-wrap
 msgid "Example to test your own AI against the default AI without starting the GUI:"
 msgstr "Exemplo para testar sua própria IA contra a IA padrão sem inicializar a GUI:"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:237
+#: ../../doc/man/wesnoth.6:240
 #, fuzzy
 msgid ""
 "B<wesnoth --nogui --multiplayer --controller1=ai --controller2=ai --"
@@ -676,18 +687,18 @@ msgstr ""
 "algorithm2=python_ai --parm2=python_script:py/meu_script_python_ai.py"
 
 # type: SH
-#: ../../doc/man/wesnoth.6:238 ../../doc/man/wesnothd.6:188
+#: ../../doc/man/wesnoth.6:241 ../../doc/man/wesnothd.6:188
 #, no-wrap
 msgid "AUTHOR"
 msgstr "AUTOR"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:241
+#: ../../doc/man/wesnoth.6:244
 msgid "Written by David White E<lt>davidnwhite@verizon.netE<gt>."
 msgstr "Escrito por David White E<lt>davidnwhite@verizon.netE<gt>."
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:243
+#: ../../doc/man/wesnoth.6:246
 #, fuzzy
 msgid ""
 "Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon."
@@ -697,7 +708,7 @@ msgstr ""
 "netE<gt> e Soliton E<lt>soliton@sonnenkinder.orgE<gt>."
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:245
+#: ../../doc/man/wesnoth.6:248
 msgid ""
 "This manual page was originally written by Cyril Bouthors "
 "E<lt>cyril@bouthors.orgE<gt>."
@@ -706,25 +717,25 @@ msgstr ""
 "E<lt>cyril@bouthors.orgE<gt>."
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:247 ../../doc/man/wesnothd.6:195
+#: ../../doc/man/wesnoth.6:250 ../../doc/man/wesnothd.6:195
 msgid "Visit the official homepage: http://www.wesnoth.org/"
 msgstr "Visite a página oficial do projeto: http://www.wesnoth.org/"
 
 # type: SH
-#: ../../doc/man/wesnoth.6:248 ../../doc/man/wesnothd.6:196
+#: ../../doc/man/wesnoth.6:251 ../../doc/man/wesnothd.6:196
 #, no-wrap
 msgid "COPYRIGHT"
 msgstr "COPYRIGHT"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:251 ../../doc/man/wesnothd.6:199
+#: ../../doc/man/wesnoth.6:254 ../../doc/man/wesnothd.6:199
 #, fuzzy
 msgid "Copyright \\(co 2003-2007 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr ""
 "Copyright \\\\(co 2003-2006 David White E<lt>davidnwhite@verizon.netE<gt>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:254 ../../doc/man/wesnothd.6:202
+#: ../../doc/man/wesnoth.6:257 ../../doc/man/wesnothd.6:202
 msgid ""
 "This is Free Software; this software is licensed under the GPL version 2, as "
 "published by the Free Software Foundation.  There is NO warranty; not even "
@@ -736,13 +747,13 @@ msgstr ""
 "ADEQUAÇÃO A QUALQUER PROPÓSITO."
 
 # type: SH
-#: ../../doc/man/wesnoth.6:255 ../../doc/man/wesnothd.6:203
+#: ../../doc/man/wesnoth.6:258 ../../doc/man/wesnothd.6:203
 #, no-wrap
 msgid "SEE ALSO"
 msgstr "VEJA TAMBÉM"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:258
+#: ../../doc/man/wesnoth.6:261
 msgid "B<wesnoth_editor>(6), B<wesnothd>(6)"
 msgstr "B<wesnoth_editor>(6), B<wesnothd>"
 

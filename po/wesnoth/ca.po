@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.5.5+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-14 22:24+0100\n"
+"POT-Creation-Date: 2008-11-18 22:04+0100\n"
 "PO-Revision-Date: 2008-10-18 13:59+0200\n"
 "Last-Translator: Jordà Polo <jorda@ettin.org>\n"
 "Language-Team: Catalan <wesnoth-ca@lists.ettin.org>\n"
@@ -73,13 +73,13 @@ msgid "poisoned"
 msgstr "enverinat"
 
 #. [berserk]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:62
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:702
 #: data/core/macros/abilities.cfg:553
 msgid "berserk"
 msgstr "berserk"
 
 #. [berserk]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:64
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:704
 #: data/core/macros/abilities.cfg:555
 msgid ""
 "Berserk:\n"
@@ -92,13 +92,13 @@ msgstr ""
 "d'atacs."
 
 #. [chance_to_hit]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:77
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:717
 #: data/core/macros/abilities.cfg:639
 msgid "magical"
 msgstr "màgic"
 
 #. [chance_to_hit]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:79
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:719
 #: data/core/macros/abilities.cfg:641
 msgid ""
 "Magical:\n"
@@ -110,13 +110,13 @@ msgstr ""
 "l'habilitat defensiva de la unitat atacada."
 
 #. [firststrike]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:91
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:731
 #: data/core/macros/abilities.cfg:688
 msgid "firststrike"
 msgstr "iniciatiu"
 
 #. [firststrike]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:93
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:733
 #: data/core/macros/abilities.cfg:690
 msgid ""
 "First Strike:\n"
@@ -124,6 +124,76 @@ msgid ""
 msgstr ""
 "Iniciatiu:\n"
 "Aquesta unitat sempre ataca primer, encara que estigui defensant."
+
+#. [heals]
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:13
+#: data/core/macros/abilities.cfg:10
+msgid "heals +4"
+msgstr "curació +4"
+
+#. [heals]
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:14
+#: data/core/macros/abilities.cfg:11
+msgid "female^heals +4"
+msgstr "curació +4"
+
+#. [heals]
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:19
+#: data/core/macros/abilities.cfg:16
+#, fuzzy
+msgid ""
+"Heals +4:\n"
+"Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
+"\n"
+"A unit cared for by this healer may heal up to 4 HP per turn, or stop poison "
+"from taking effect for that turn.\n"
+"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
+"care of a village or a unit that can cure."
+msgstr ""
+"Curació +4:\n"
+"Permet a la unitat curar unitats amigues adjacents al principi de cada "
+"torn.\n"
+"\n"
+"Cada unitat pot recuperar fins a 4 punts de vida per torn, o bé veure aturat "
+"l'efecte d'un enverinament.\n"
+"Una unitat enverinada no pot ser guarida del seu verí per un curador, i "
+"haurà de cercar l'ajuda a un llogaret o d'una unitat amb l'habilitat de "
+"guarició."
+
+#. [heals]
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:42
+#: data/core/macros/abilities.cfg:30
+msgid "heals +8"
+msgstr "curació +8"
+
+#. [heals]
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:43
+#: data/core/macros/abilities.cfg:31
+msgid "female^heals +8"
+msgstr "curació +8"
+
+#. [heals]
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:48
+#: data/core/macros/abilities.cfg:36
+msgid ""
+"Heals +8:\n"
+"This unit combines herbal remedies with magic to heal units more quickly "
+"than is normally possible on the battlefield.\n"
+"\n"
+"A unit cared for by this healer may heal up to 8 HP per turn, or stop poison "
+"from taking effect for that turn.\n"
+"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
+"care of a village or a unit that can cure."
+msgstr ""
+"Curació +8:\n"
+"Aquesta unitat combina herbes medicinals amb màgia per tal de curar les "
+"unitats més ràpidament del que seria possible al camp de batalla.\n"
+"\n"
+"Cada unitat pot recuperar fins a 8 punts de vida per torn, o bé veure aturat "
+"l'efecte d'un enverinament.\n"
+"Una unitat enverinada no pot ser guarida del seu verí per un curador, i "
+"haurà de cercar l'ajuda a un llogaret o d'una unitat amb l'habilitat de "
+"guarició."
 
 #. [about]
 #: data/core/about.cfg:7
@@ -2745,70 +2815,6 @@ msgid ""
 "Modifies the specified property of the selected unit. Example: :unit "
 "hitpoints=100"
 msgstr ""
-
-#. [heals]
-#: data/core/macros/abilities.cfg:10
-msgid "heals +4"
-msgstr "curació +4"
-
-#. [heals]
-#: data/core/macros/abilities.cfg:11
-msgid "female^heals +4"
-msgstr "curació +4"
-
-#. [heals]
-#: data/core/macros/abilities.cfg:16
-#, fuzzy
-msgid ""
-"Heals +4:\n"
-"Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
-"\n"
-"A unit cared for by this healer may heal up to 4 HP per turn, or stop poison "
-"from taking effect for that turn.\n"
-"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
-"care of a village or a unit that can cure."
-msgstr ""
-"Curació +4:\n"
-"Permet a la unitat curar unitats amigues adjacents al principi de cada "
-"torn.\n"
-"\n"
-"Cada unitat pot recuperar fins a 4 punts de vida per torn, o bé veure aturat "
-"l'efecte d'un enverinament.\n"
-"Una unitat enverinada no pot ser guarida del seu verí per un curador, i "
-"haurà de cercar l'ajuda a un llogaret o d'una unitat amb l'habilitat de "
-"guarició."
-
-#. [heals]
-#: data/core/macros/abilities.cfg:30
-msgid "heals +8"
-msgstr "curació +8"
-
-#. [heals]
-#: data/core/macros/abilities.cfg:31
-msgid "female^heals +8"
-msgstr "curació +8"
-
-#. [heals]
-#: data/core/macros/abilities.cfg:36
-msgid ""
-"Heals +8:\n"
-"This unit combines herbal remedies with magic to heal units more quickly "
-"than is normally possible on the battlefield.\n"
-"\n"
-"A unit cared for by this healer may heal up to 8 HP per turn, or stop poison "
-"from taking effect for that turn.\n"
-"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
-"care of a village or a unit that can cure."
-msgstr ""
-"Curació +8:\n"
-"Aquesta unitat combina herbes medicinals amb màgia per tal de curar les "
-"unitats més ràpidament del que seria possible al camp de batalla.\n"
-"\n"
-"Cada unitat pot recuperar fins a 8 punts de vida per torn, o bé veure aturat "
-"l'efecte d'un enverinament.\n"
-"Una unitat enverinada no pot ser guarida del seu verí per un curador, i "
-"haurà de cercar l'ajuda a un llogaret o d'una unitat amb l'habilitat de "
-"guarició."
 
 #. [heals]
 #: data/core/macros/abilities.cfg:51
@@ -6618,7 +6624,7 @@ msgstr "Complement eliminat"
 msgid "Add-on could not be deleted properly:"
 msgstr "No s'ha pogut eliminar correctament el complement:"
 
-#: src/ai.cpp:1777
+#: src/ai.cpp:1776
 msgid "Unknown unit type : "
 msgstr "Tipus d'unitat desconegut: "
 
@@ -6958,19 +6964,19 @@ msgstr "DETALLS DE L'ERROR:"
 msgid "Loading data files"
 msgstr "S'estan llegint els fitxers de dades"
 
-#: src/game.cpp:1945
+#: src/game.cpp:1950
 msgid "Loading game configuration."
 msgstr "S'està carregant la configuració del joc."
 
-#: src/game.cpp:1951
+#: src/game.cpp:1956
 msgid "Re-initialize fonts for the current language."
 msgstr "S'està tornant a inicialitzar la font per a l'idioma actual."
 
-#: src/game.cpp:1959
+#: src/game.cpp:1964
 msgid "Searching for installed add-ons."
 msgstr "S'estan cercant els complements instal·lats..."
 
-#: src/game.cpp:1968
+#: src/game.cpp:1973
 msgid "Loading title screen."
 msgstr "S'està carregant la pantalla principal."
 
@@ -7249,7 +7255,7 @@ msgstr "Omet"
 msgid "The End"
 msgstr "Final"
 
-#: src/language.cpp:158
+#: src/language.cpp:162
 msgid "System default language"
 msgstr "Idioma per defecte del sistema"
 

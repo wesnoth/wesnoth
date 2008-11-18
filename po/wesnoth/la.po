@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth Latin 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-14 22:24+0100\n"
+"POT-Creation-Date: 2008-11-18 22:04+0100\n"
 "PO-Revision-Date: 2006-06-27 13:27+0200\n"
 "Last-Translator: Mark Polo <markpolo@gmail.com>\n"
 "Language-Team: Latin\n"
@@ -67,13 +67,13 @@ msgid "poisoned"
 msgstr "venenatus"
 
 #. [berserk]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:62
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:702
 #: data/core/macros/abilities.cfg:553
 msgid "berserk"
 msgstr "saevus"
 
 #. [berserk]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:64
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:704
 #: data/core/macros/abilities.cfg:555
 msgid ""
 "Berserk:\n"
@@ -85,13 +85,13 @@ msgstr ""
 "pugnatoribus interfectus erit aut XXX tractus oppugnationis evenerint."
 
 #. [chance_to_hit]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:77
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:717
 #: data/core/macros/abilities.cfg:639
 msgid "magical"
 msgstr "magicalis"
 
 #. [chance_to_hit]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:79
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:719
 #: data/core/macros/abilities.cfg:641
 #, fuzzy
 msgid ""
@@ -103,13 +103,13 @@ msgstr ""
 "Haec oppugnatio semper probabilitatem LXX pro cento habet feriendi."
 
 #. [firststrike]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:91
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:731
 #: data/core/macros/abilities.cfg:688
 msgid "firststrike"
 msgstr "ictus primus"
 
 #. [firststrike]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:93
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:733
 #: data/core/macros/abilities.cfg:690
 msgid ""
 "First Strike:\n"
@@ -117,6 +117,75 @@ msgid ""
 msgstr ""
 "Ictus Primus:\n"
 "Haec unitas semper prima percutit, etsi defendit."
+
+#. [heals]
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:13
+#: data/core/macros/abilities.cfg:10
+msgid "heals +4"
+msgstr "medetur IV"
+
+#. [heals]
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:14
+#: data/core/macros/abilities.cfg:11
+#, fuzzy
+msgid "female^heals +4"
+msgstr "Fur"
+
+#. [heals]
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:19
+#: data/core/macros/abilities.cfg:16
+#, fuzzy
+msgid ""
+"Heals +4:\n"
+"Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
+"\n"
+"A unit cared for by this healer may heal up to 4 HP per turn, or stop poison "
+"from taking effect for that turn.\n"
+"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
+"care of a village or a unit that can cure."
+msgstr ""
+"Medetur IV:\n"
+"Permittit ut unitas unitatibus amicis vicinis in initio tractus medeatur.\n"
+"\n"
+"Unitas curata ab hoc medetore sanari potest usque ad IV PS in tractu aut "
+"vetariut venenum in hoc tractu efficace sit.\n"
+"Unitas venenata non a veneno a medetore sanari potest, et curam pagi aut "
+"unitatis quae sanat petere debet."
+
+#. [heals]
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:42
+#: data/core/macros/abilities.cfg:30
+msgid "heals +8"
+msgstr "medetur VIII"
+
+#. [heals]
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:43
+#: data/core/macros/abilities.cfg:31
+#, fuzzy
+msgid "female^heals +8"
+msgstr "Fur"
+
+#. [heals]
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:48
+#: data/core/macros/abilities.cfg:36
+msgid ""
+"Heals +8:\n"
+"This unit combines herbal remedies with magic to heal units more quickly "
+"than is normally possible on the battlefield.\n"
+"\n"
+"A unit cared for by this healer may heal up to 8 HP per turn, or stop poison "
+"from taking effect for that turn.\n"
+"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
+"care of a village or a unit that can cure."
+msgstr ""
+"Medetur VIII:\n"
+"Haec unitas remedia hebalia cum magica coniungunt ut unitates celerius "
+"sanent quam plerumque possibile est in acie.\n"
+"\n"
+"Unitas curata ab hoc medetore sanari potest usque ad VIII PS in tractu aut "
+"vetariut venenum in hoc tractu efficace sit.\n"
+"Unitas venenata non a veneno a medetore sanari potest, et curam pagi aut "
+"unitatis quae sanat petere debet."
 
 #. [about]
 #: data/core/about.cfg:7
@@ -2703,69 +2772,6 @@ msgid ""
 "Modifies the specified property of the selected unit. Example: :unit "
 "hitpoints=100"
 msgstr ""
-
-#. [heals]
-#: data/core/macros/abilities.cfg:10
-msgid "heals +4"
-msgstr "medetur IV"
-
-#. [heals]
-#: data/core/macros/abilities.cfg:11
-#, fuzzy
-msgid "female^heals +4"
-msgstr "Fur"
-
-#. [heals]
-#: data/core/macros/abilities.cfg:16
-#, fuzzy
-msgid ""
-"Heals +4:\n"
-"Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
-"\n"
-"A unit cared for by this healer may heal up to 4 HP per turn, or stop poison "
-"from taking effect for that turn.\n"
-"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
-"care of a village or a unit that can cure."
-msgstr ""
-"Medetur IV:\n"
-"Permittit ut unitas unitatibus amicis vicinis in initio tractus medeatur.\n"
-"\n"
-"Unitas curata ab hoc medetore sanari potest usque ad IV PS in tractu aut "
-"vetariut venenum in hoc tractu efficace sit.\n"
-"Unitas venenata non a veneno a medetore sanari potest, et curam pagi aut "
-"unitatis quae sanat petere debet."
-
-#. [heals]
-#: data/core/macros/abilities.cfg:30
-msgid "heals +8"
-msgstr "medetur VIII"
-
-#. [heals]
-#: data/core/macros/abilities.cfg:31
-#, fuzzy
-msgid "female^heals +8"
-msgstr "Fur"
-
-#. [heals]
-#: data/core/macros/abilities.cfg:36
-msgid ""
-"Heals +8:\n"
-"This unit combines herbal remedies with magic to heal units more quickly "
-"than is normally possible on the battlefield.\n"
-"\n"
-"A unit cared for by this healer may heal up to 8 HP per turn, or stop poison "
-"from taking effect for that turn.\n"
-"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
-"care of a village or a unit that can cure."
-msgstr ""
-"Medetur VIII:\n"
-"Haec unitas remedia hebalia cum magica coniungunt ut unitates celerius "
-"sanent quam plerumque possibile est in acie.\n"
-"\n"
-"Unitas curata ab hoc medetore sanari potest usque ad VIII PS in tractu aut "
-"vetariut venenum in hoc tractu efficace sit.\n"
-"Unitas venenata non a veneno a medetore sanari potest, et curam pagi aut "
-"unitatis quae sanat petere debet."
 
 #. [heals]
 #: data/core/macros/abilities.cfg:51
@@ -6343,7 +6349,7 @@ msgstr "Adiunctum Inauguratur"
 msgid "Add-on could not be deleted properly:"
 msgstr ""
 
-#: src/ai.cpp:1777
+#: src/ai.cpp:1776
 #, fuzzy
 msgid "Unknown unit type : "
 msgstr "Missio incognita"
@@ -6696,21 +6702,21 @@ msgstr "SINGULA ERRORIS:"
 msgid "Loading data files"
 msgstr "Legens data unitatum."
 
-#: src/game.cpp:1945
+#: src/game.cpp:1950
 #, fuzzy
 msgid "Loading game configuration."
 msgstr "Mendum in restituendo pligas configuationis: '"
 
-#: src/game.cpp:1951
+#: src/game.cpp:1956
 msgid "Re-initialize fonts for the current language."
 msgstr ""
 
-#: src/game.cpp:1959
+#: src/game.cpp:1964
 #, fuzzy
 msgid "Searching for installed add-ons."
 msgstr "Adiunctum mittitur"
 
-#: src/game.cpp:1968
+#: src/game.cpp:1973
 msgid "Loading title screen."
 msgstr "Revocans scrinium tituli."
 
@@ -7003,7 +7009,7 @@ msgstr "Praeterire"
 msgid "The End"
 msgstr "Finis"
 
-#: src/language.cpp:158
+#: src/language.cpp:162
 msgid "System default language"
 msgstr "Lingua solita computatri"
 

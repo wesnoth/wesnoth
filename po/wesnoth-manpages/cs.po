@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-10-12 14:33+0300\n"
+"POT-Creation-Date: 2008-11-18 22:07+0100\n"
 "PO-Revision-Date: 2008-10-12 17:05+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
@@ -417,23 +417,34 @@ msgstr "zobrazí běhovou dokumentaci pro API Pythonu."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:147
+#, fuzzy, no-wrap
+msgid "B<--python-shell>"
+msgstr "B<--python-api>"
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:150
+msgid "invokes wesnoth's embedded python interpreter in interactive mode."
+msgstr ""
+
+# type: TP
+#: ../../doc/man/wesnoth.6:150
 #, no-wrap
 msgid "B<-r\\ >I<X>B<x>I<Y>B<,\\ --resolution\\ >I<X>B<x>I<Y>"
 msgstr "B<-r\\ >I<X>B<x>I<Y>B<,\\ --resolution\\ >I<X>B<x>I<Y>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:151
+#: ../../doc/man/wesnoth.6:154
 msgid "sets the screen resolution. Example: B<-r 800x600>"
 msgstr "nastavuje rozlišení. Příklad: B<-r 800x600>"
 
 # type: TP
-#: ../../doc/man/wesnoth.6:151
+#: ../../doc/man/wesnoth.6:154
 #, no-wrap
 msgid "B<--smallgui>"
 msgstr "B<--smallgui>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:154
+#: ../../doc/man/wesnoth.6:157
 msgid ""
 "allows to use screen resolutions down to 800x480 and resizes a few interface "
 "elements."
@@ -442,13 +453,13 @@ msgstr ""
 "prvků grafického rozhraní."
 
 # type: TP
-#: ../../doc/man/wesnoth.6:154
+#: ../../doc/man/wesnoth.6:157
 #, no-wrap
 msgid "B<-s,\\ --server\\ [host]>"
 msgstr "B<-s,\\ --server\\ [hostitel]>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:158
+#: ../../doc/man/wesnoth.6:161
 msgid ""
 "connects to the specified host if any, otherwise connect to the first server "
 "in preferences. Example: B<--server server.wesnoth.org>"
@@ -457,68 +468,68 @@ msgstr ""
 "prvnímu serveru v nastavení. Příklad: B<--server server.wesnoth.org>"
 
 # type: TP
-#: ../../doc/man/wesnoth.6:158
+#: ../../doc/man/wesnoth.6:161
 #, no-wrap
 msgid "B<-t, --test>"
 msgstr "B<-t, --test>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:161
+#: ../../doc/man/wesnoth.6:164
 msgid "runs the game in a small test scenario."
 msgstr "spouští hru v malém testovacím scénáři."
 
 # type: TP
-#: ../../doc/man/wesnoth.6:161
+#: ../../doc/man/wesnoth.6:164
 #, no-wrap
 msgid "B<--validcache>"
 msgstr "B<--validcache>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:164
+#: ../../doc/man/wesnoth.6:167
 msgid "assumes that the cache is valid. (dangerous)"
 msgstr "považuje cache za platnou bez kontroly. (nebezpečné)"
 
 # type: TP
-#: ../../doc/man/wesnoth.6:164
+#: ../../doc/man/wesnoth.6:167
 #, no-wrap
 msgid "B<-v, --version>"
 msgstr "B<-v, --version>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:167
+#: ../../doc/man/wesnoth.6:170
 msgid "shows the version number and exits."
 msgstr "zobrazí verzi wesnothu a skončí."
 
 # type: TP
-#: ../../doc/man/wesnoth.6:167
+#: ../../doc/man/wesnoth.6:170
 #, no-wrap
 msgid "B<-w, --windowed>"
 msgstr "B<-w, --windowed>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:170
+#: ../../doc/man/wesnoth.6:173
 msgid "runs the game in windowed mode."
 msgstr "spustí hry v okně."
 
 # type: TP
-#: ../../doc/man/wesnoth.6:170
+#: ../../doc/man/wesnoth.6:173
 #, no-wrap
 msgid "B<--with-replay>"
 msgstr "B<--with-replay>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:175
+#: ../../doc/man/wesnoth.6:178
 msgid "replays the game loaded with the B<--load> option."
 msgstr "přehraje záznam načtený volbou B<--load>."
 
 # type: SH
-#: ../../doc/man/wesnoth.6:176
+#: ../../doc/man/wesnoth.6:179
 #, no-wrap
 msgid "Options for --multiplayer"
 msgstr "Volby pro --multiplayer"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:183
+#: ../../doc/man/wesnoth.6:186
 msgid ""
 "The side-specific multiplayer options are marked with I<number>.  I<number> "
 "has to be replaced by a side number. It usually is 1 or 2 but depends on the "
@@ -529,13 +540,13 @@ msgstr ""
 "2, ale záleží to vždy od konkrétního scénáře a od počtu hráčů."
 
 # type: TP
-#: ../../doc/man/wesnoth.6:183
+#: ../../doc/man/wesnoth.6:186
 #, no-wrap
 msgid "B<--algorithm>I<number>B<=>I<value>"
 msgstr "B<--algorithm>I<strana>B<=>I<hodnota>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:190
+#: ../../doc/man/wesnoth.6:193
 msgid ""
 "selects a non-standard algorithm to be used by the AI controller for this "
 "side. Available values: B<idle_ai> and B<sample_ai>."
@@ -544,25 +555,25 @@ msgstr ""
 "této strany. Momentálně jsou k dispozici hodnoty: B<idle_ai> a B<sample_ai>."
 
 # type: TP
-#: ../../doc/man/wesnoth.6:190
+#: ../../doc/man/wesnoth.6:193
 #, no-wrap
 msgid "B<--controller>I<number>B<=>I<value>"
 msgstr "B<--controller>I<strana>B<=>I<hodnota>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:196
+#: ../../doc/man/wesnoth.6:199
 msgid ""
 "selects the controller for this side. Available values: B<human> and B<ai>."
 msgstr "vybírá druh ovládání strany. Použitelné hodnoty jsou B<human> a B<ai>."
 
 # type: TP
-#: ../../doc/man/wesnoth.6:196
+#: ../../doc/man/wesnoth.6:199
 #, no-wrap
 msgid "B<--era=>I<value>"
 msgstr "B<--era=>I<hodnota>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:203
+#: ../../doc/man/wesnoth.6:206
 msgid ""
 "use this option to play in the selected era instead of the B<Default> era. "
 "The era is chosen by an id. Eras are described in the B<data/multiplayer/"
@@ -573,13 +584,13 @@ msgstr ""
 "multiplayer.cfg>."
 
 # type: TP
-#: ../../doc/man/wesnoth.6:203
+#: ../../doc/man/wesnoth.6:206
 #, no-wrap
 msgid "B<--exit-at-end>"
 msgstr "B<--exit-at-end>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:207
+#: ../../doc/man/wesnoth.6:210
 msgid ""
 "exits once the scenario is over, without displaying victory/defeat dialog "
 "which requires the user to click OK.  This is also used for scriptable "
@@ -590,13 +601,13 @@ msgstr ""
 "volba se používá při ruzných měřeních."
 
 # type: TP
-#: ../../doc/man/wesnoth.6:207
+#: ../../doc/man/wesnoth.6:210
 #, no-wrap
 msgid "B<--nogui>"
 msgstr "B<--nogui>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:212
+#: ../../doc/man/wesnoth.6:215
 msgid ""
 "runs the game without the GUI. Must appear before B<--multiplayer> to have "
 "the desired effect."
@@ -605,13 +616,13 @@ msgstr ""
 "kýženého efektu."
 
 # type: TP
-#: ../../doc/man/wesnoth.6:212
+#: ../../doc/man/wesnoth.6:215
 #, no-wrap
 msgid "B<--parm>I<number>B<=>I<name>B<:>I<value>"
 msgstr "B<--parm>I<strana>B<=>I<jméno>B<:>I<hodnota>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:221
+#: ../../doc/man/wesnoth.6:224
 msgid ""
 "sets additional parameters for this side. This parameter depends on the "
 "options used with B<--controller> and B<--algorithm>.  It should only be "
@@ -622,13 +633,13 @@ msgstr ""
 "pouze lidmi vyvíjejícími si vlastní umělou inteligenci (není zdokumentováno)."
 
 # type: TP
-#: ../../doc/man/wesnoth.6:221
+#: ../../doc/man/wesnoth.6:224
 #, no-wrap
 msgid "B<--scenario=>I<value>"
 msgstr "B<--scenario=>I<hodnota>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:225
+#: ../../doc/man/wesnoth.6:228
 msgid ""
 "selects a multiplayer scenario by id. The default scenario id is "
 "B<multiplayer_The_Freelands>."
@@ -637,13 +648,13 @@ msgstr ""
 "B<multiplayer_The_Freelands>."
 
 # type: TP
-#: ../../doc/man/wesnoth.6:225
+#: ../../doc/man/wesnoth.6:228
 #, no-wrap
 msgid "B<--side>I<number>B<=>I<value>"
 msgstr "B<--side>I<strana>B<=>I<hodnota>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:230
+#: ../../doc/man/wesnoth.6:233
 msgid ""
 "selects a faction of the current era for this side. The faction is chosen by "
 "an id. Factions are described in the data/multiplayer.cfg file."
@@ -652,24 +663,24 @@ msgstr ""
 "ID. Frakce jsou popsány v souboru data/multiplayer.cfg"
 
 # type: TP
-#: ../../doc/man/wesnoth.6:230
+#: ../../doc/man/wesnoth.6:233
 #, no-wrap
 msgid "B<--turns=>I<value>"
 msgstr "B<--turns=>I<hodnota>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:234
+#: ../../doc/man/wesnoth.6:237
 msgid "sets the number of turns for the chosen scenario. The default is B<50>."
 msgstr "nastavuje počet kol pro vybraný scénář, implicitně je B<50>."
 
 # type: TP
-#: ../../doc/man/wesnoth.6:234
+#: ../../doc/man/wesnoth.6:237
 #, no-wrap
 msgid "Example to test your own AI against the default AI without starting the GUI:"
 msgstr "Příklad pro testování Vaší vlastní AI proti vestavěné bez použití grafického rozhraní:"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:237
+#: ../../doc/man/wesnoth.6:240
 msgid ""
 "B<wesnoth --nogui --multiplayer --controller1=ai --controller2=ai --"
 "algorithm2=python_ai --parm2=python_script:py/my_own_python_ai.py>"
@@ -678,18 +689,18 @@ msgstr ""
 "algorithm2=python_ai --parm2=python_script:py/moje_vlastní_ai_v_pythonu.py>"
 
 # type: SH
-#: ../../doc/man/wesnoth.6:238 ../../doc/man/wesnothd.6:188
+#: ../../doc/man/wesnoth.6:241 ../../doc/man/wesnothd.6:188
 #, no-wrap
 msgid "AUTHOR"
 msgstr "AUTOŘI"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:241
+#: ../../doc/man/wesnoth.6:244
 msgid "Written by David White E<lt>davidnwhite@verizon.netE<gt>."
 msgstr "Vytvořil David White E<lt>davidnwhite@verizon.netE<gt>."
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:243
+#: ../../doc/man/wesnoth.6:246
 msgid ""
 "Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon."
 "netE<gt> and Soliton E<lt>soliton.de@gmail.comE<gt>."
@@ -698,7 +709,7 @@ msgstr ""
 "netE<gt> a Soliton E<lt>soliton.de@gmail.comE<gt>."
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:245
+#: ../../doc/man/wesnoth.6:248
 msgid ""
 "This manual page was originally written by Cyril Bouthors "
 "E<lt>cyril@bouthors.orgE<gt>."
@@ -707,26 +718,26 @@ msgstr ""
 "orgE<gt>. Překlad Oto 'tapik' Buchta E<lt>tapik@buchtovi.czE<gt>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:247 ../../doc/man/wesnothd.6:195
+#: ../../doc/man/wesnoth.6:250 ../../doc/man/wesnothd.6:195
 msgid "Visit the official homepage: http://www.wesnoth.org/"
 msgstr ""
 "Navštivte oficiální stránky: http://www.wesnoth.org/ a oficiální české "
 "stránky http://www.wesnoth.wz.cz/"
 
 # type: SH
-#: ../../doc/man/wesnoth.6:248 ../../doc/man/wesnothd.6:196
+#: ../../doc/man/wesnoth.6:251 ../../doc/man/wesnothd.6:196
 #, no-wrap
 msgid "COPYRIGHT"
 msgstr "COPYRIGHT"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:251 ../../doc/man/wesnothd.6:199
+#: ../../doc/man/wesnoth.6:254 ../../doc/man/wesnothd.6:199
 msgid "Copyright \\(co 2003-2007 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr ""
 "Copyright \\(co 2003-2007 David White E<lt>davidnwhite@verizon.netE<gt>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:254 ../../doc/man/wesnothd.6:202
+#: ../../doc/man/wesnoth.6:257 ../../doc/man/wesnothd.6:202
 msgid ""
 "This is Free Software; this software is licensed under the GPL version 2, as "
 "published by the Free Software Foundation.  There is NO warranty; not even "
@@ -737,13 +748,13 @@ msgstr ""
 "to i co se týká obchodovatelnosti a použitelnosti."
 
 # type: SH
-#: ../../doc/man/wesnoth.6:255 ../../doc/man/wesnothd.6:203
+#: ../../doc/man/wesnoth.6:258 ../../doc/man/wesnothd.6:203
 #, no-wrap
 msgid "SEE ALSO"
 msgstr "VIZ TAKÉ"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:258
+#: ../../doc/man/wesnoth.6:261
 msgid "B<wesnoth_editor>(6), B<wesnothd>(6)"
 msgstr "B<wesnoth_editor>(6), B<wesnothd>(6)"
 

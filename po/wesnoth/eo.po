@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-14 22:24+0100\n"
+"POT-Creation-Date: 2008-11-18 22:04+0100\n"
 "PO-Revision-Date: 2008-03-01 19:31+0200\n"
 "Last-Translator: Aleksej Korgenkov <grimpanto@mail.ru>\n"
 "Language-Team: \n"
@@ -68,13 +68,13 @@ msgid "poisoned"
 msgstr "venenita"
 
 #. [berserk]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:62
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:702
 #: data/core/macros/abilities.cfg:553
 msgid "berserk"
 msgstr "furioza"
 
 #. [berserk]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:64
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:704
 #: data/core/macros/abilities.cfg:555
 msgid ""
 "Berserk:\n"
@@ -86,13 +86,13 @@ msgstr ""
 "kontraŭuloj."
 
 #. [chance_to_hit]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:77
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:717
 #: data/core/macros/abilities.cfg:639
 msgid "magical"
 msgstr "magia"
 
 #. [chance_to_hit]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:79
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:719
 #: data/core/macros/abilities.cfg:641
 msgid ""
 "Magical:\n"
@@ -103,13 +103,13 @@ msgstr ""
 "Tiu ĉi atako havas ĉiam 70% ŝancon trafi sendepende de defendanta unuo."
 
 #. [firststrike]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:91
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:731
 #: data/core/macros/abilities.cfg:688
 msgid "firststrike"
 msgstr "unua bato"
 
 #. [firststrike]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:93
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:733
 #: data/core/macros/abilities.cfg:690
 msgid ""
 "First Strike:\n"
@@ -117,6 +117,85 @@ msgid ""
 msgstr ""
 "Unua atako:\n"
 "Per ĉi tiu atako la milit-unuo ĉiam atakas kiel unua, ankaŭ ĉe defendado."
+
+#. [heals]
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:13
+#: data/core/macros/abilities.cfg:10
+msgid "heals +4"
+msgstr "sanigo +4"
+
+#. [heals]
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:14
+#: data/core/macros/abilities.cfg:11
+#, fuzzy
+msgid "female^heals +4"
+msgstr "sana"
+
+#
+#
+#. [heals]
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:19
+#: data/core/macros/abilities.cfg:16
+#, fuzzy
+msgid ""
+"Heals +4:\n"
+"Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
+"\n"
+"A unit cared for by this healer may heal up to 4 HP per turn, or stop poison "
+"from taking effect for that turn.\n"
+"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
+"care of a village or a unit that can cure."
+msgstr ""
+"Kuracas:\n"
+"milit-unuo kapablas kuraci aliancajn milit-unuojn sur najbaraj kampoj "
+"komence de tiro.\n"
+"\n"
+"milit-unuo prizorgita de kuracanto povas resaniĝi dum unu tiro maksimune 14 "
+"vivojn.\n"
+"Kuracanto povas dum unu tiro regeneri al ĉiuj prizorgitaj milit-unuoj entute "
+"8 vivojn.\n"
+"Kuracanto ne kapablas resanigi venenigitan milit-unuon; tia milit-unuo devas "
+"serĉi helpon en vilaĝo, aŭ ĉe milit-unuo, kiu kapablas kuraci."
+
+#. [heals]
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:42
+#: data/core/macros/abilities.cfg:30
+msgid "heals +8"
+msgstr "sanigo +8"
+
+#. [heals]
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:43
+#: data/core/macros/abilities.cfg:31
+#, fuzzy
+msgid "female^heals +8"
+msgstr "sana"
+
+#
+#
+#. [heals]
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:48
+#: data/core/macros/abilities.cfg:36
+#, fuzzy
+msgid ""
+"Heals +8:\n"
+"This unit combines herbal remedies with magic to heal units more quickly "
+"than is normally possible on the battlefield.\n"
+"\n"
+"A unit cared for by this healer may heal up to 8 HP per turn, or stop poison "
+"from taking effect for that turn.\n"
+"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
+"care of a village or a unit that can cure."
+msgstr ""
+"Kuracas:\n"
+"milit-unuo kapablas kuraci aliancajn milit-unuojn sur najbaraj kampoj "
+"komence de tiro.\n"
+"\n"
+"milit-unuo prizorgita de kuracanto povas resaniĝi dum unu tiro maksimune 14 "
+"vivojn.\n"
+"Kuracanto povas dum unu tiro regeneri al ĉiuj prizorgitaj milit-unuoj entute "
+"8 vivojn.\n"
+"Kuracanto ne kapablas resanigi venenigitan milit-unuon; tia milit-unuo devas "
+"serĉi helpon en vilaĝo, aŭ ĉe milit-unuo, kiu kapablas kuraci."
 
 #. [about]
 #: data/core/about.cfg:7
@@ -2723,79 +2802,6 @@ msgid ""
 "Modifies the specified property of the selected unit. Example: :unit "
 "hitpoints=100"
 msgstr ""
-
-#. [heals]
-#: data/core/macros/abilities.cfg:10
-msgid "heals +4"
-msgstr "sanigo +4"
-
-#. [heals]
-#: data/core/macros/abilities.cfg:11
-#, fuzzy
-msgid "female^heals +4"
-msgstr "sana"
-
-#
-#
-#. [heals]
-#: data/core/macros/abilities.cfg:16
-#, fuzzy
-msgid ""
-"Heals +4:\n"
-"Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
-"\n"
-"A unit cared for by this healer may heal up to 4 HP per turn, or stop poison "
-"from taking effect for that turn.\n"
-"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
-"care of a village or a unit that can cure."
-msgstr ""
-"Kuracas:\n"
-"milit-unuo kapablas kuraci aliancajn milit-unuojn sur najbaraj kampoj "
-"komence de tiro.\n"
-"\n"
-"milit-unuo prizorgita de kuracanto povas resaniĝi dum unu tiro maksimune 14 "
-"vivojn.\n"
-"Kuracanto povas dum unu tiro regeneri al ĉiuj prizorgitaj milit-unuoj entute "
-"8 vivojn.\n"
-"Kuracanto ne kapablas resanigi venenigitan milit-unuon; tia milit-unuo devas "
-"serĉi helpon en vilaĝo, aŭ ĉe milit-unuo, kiu kapablas kuraci."
-
-#. [heals]
-#: data/core/macros/abilities.cfg:30
-msgid "heals +8"
-msgstr "sanigo +8"
-
-#. [heals]
-#: data/core/macros/abilities.cfg:31
-#, fuzzy
-msgid "female^heals +8"
-msgstr "sana"
-
-#
-#
-#. [heals]
-#: data/core/macros/abilities.cfg:36
-#, fuzzy
-msgid ""
-"Heals +8:\n"
-"This unit combines herbal remedies with magic to heal units more quickly "
-"than is normally possible on the battlefield.\n"
-"\n"
-"A unit cared for by this healer may heal up to 8 HP per turn, or stop poison "
-"from taking effect for that turn.\n"
-"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
-"care of a village or a unit that can cure."
-msgstr ""
-"Kuracas:\n"
-"milit-unuo kapablas kuraci aliancajn milit-unuojn sur najbaraj kampoj "
-"komence de tiro.\n"
-"\n"
-"milit-unuo prizorgita de kuracanto povas resaniĝi dum unu tiro maksimune 14 "
-"vivojn.\n"
-"Kuracanto povas dum unu tiro regeneri al ĉiuj prizorgitaj milit-unuoj entute "
-"8 vivojn.\n"
-"Kuracanto ne kapablas resanigi venenigitan milit-unuon; tia milit-unuo devas "
-"serĉi helpon en vilaĝo, aŭ ĉe milit-unuo, kiu kapablas kuraci."
 
 #. [heals]
 #: data/core/macros/abilities.cfg:51
@@ -6594,7 +6600,7 @@ msgstr "Aldonaĵo forigita"
 msgid "Add-on could not be deleted properly:"
 msgstr "Aldonaĵo ne forigeblas - dosiero mankas."
 
-#: src/ai.cpp:1777
+#: src/ai.cpp:1776
 msgid "Unknown unit type : "
 msgstr "Nekonata speco de unuo: "
 
@@ -6942,21 +6948,21 @@ msgstr "DETALOJ DE ERARO:"
 msgid "Loading data files"
 msgstr ""
 
-#: src/game.cpp:1945
+#: src/game.cpp:1950
 #, fuzzy
 msgid "Loading game configuration."
 msgstr "Eraro ĉe legado de agordigaj dosieroj:  '"
 
-#: src/game.cpp:1951
+#: src/game.cpp:1956
 msgid "Re-initialize fonts for the current language."
 msgstr ""
 
-#: src/game.cpp:1959
+#: src/game.cpp:1964
 #, fuzzy
 msgid "Searching for installed add-ons."
 msgstr "Mi enŝutas kampanjon..."
 
-#: src/game.cpp:1968
+#: src/game.cpp:1973
 msgid "Loading title screen."
 msgstr ""
 
@@ -7234,7 +7240,7 @@ msgstr "Saltu"
 msgid "The End"
 msgstr "Fino"
 
-#: src/language.cpp:158
+#: src/language.cpp:162
 msgid "System default language"
 msgstr "Laŭnorma lingvo"
 

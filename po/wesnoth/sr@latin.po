@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-14 22:24+0100\n"
+"POT-Creation-Date: 2008-11-18 22:04+0100\n"
 "PO-Revision-Date: 2008-05-04 12:00+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -70,13 +70,13 @@ msgid "poisoned"
 msgstr "otrovan"
 
 #. [berserk]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:62
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:702
 #: data/core/macros/abilities.cfg:553
 msgid "berserk"
 msgstr "bezglavost"
 
 #. [berserk]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:64
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:704
 #: data/core/macros/abilities.cfg:555
 msgid ""
 "Berserk:\n"
@@ -88,13 +88,13 @@ msgstr ""
 "upetljana jedinica ne nastrada, ili prođe 30 rundi napada."
 
 #. [chance_to_hit]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:77
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:717
 #: data/core/macros/abilities.cfg:639
 msgid "magical"
 msgstr "magičnost"
 
 #. [chance_to_hit]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:79
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:719
 #: data/core/macros/abilities.cfg:641
 msgid ""
 "Magical:\n"
@@ -106,13 +106,13 @@ msgstr ""
 "napadnute jedinice."
 
 #. [firststrike]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:91
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:731
 #: data/core/macros/abilities.cfg:688
 msgid "firststrike"
 msgstr "prvi udar"
 
 #. [firststrike]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/scen3_alt/challenge.cfg:93
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:733
 #: data/core/macros/abilities.cfg:690
 msgid ""
 "First Strike:\n"
@@ -120,6 +120,76 @@ msgid ""
 msgstr ""
 "Prvi udar:\n"
 "Jedinica uvek udara prva u borbi, čak i kada se brani."
+
+#. [heals]
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:13
+#: data/core/macros/abilities.cfg:10
+msgid "heals +4"
+msgstr "lečenje +4"
+
+#. [heals]
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:14
+#: data/core/macros/abilities.cfg:11
+#, fuzzy
+msgid "female^heals +4"
+msgstr "zdravlje"
+
+#. [heals]
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:19
+#: data/core/macros/abilities.cfg:16
+#, fuzzy
+msgid ""
+"Heals +4:\n"
+"Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
+"\n"
+"A unit cared for by this healer may heal up to 4 HP per turn, or stop poison "
+"from taking effect for that turn.\n"
+"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
+"care of a village or a unit that can cure."
+msgstr ""
+"Lečenje +4:\n"
+"Omogućava jedinici da leči susedne prijateljske jedinice na početku svakog "
+"poteza.\n"
+"\n"
+"Jedinica pod uticajem ovog vidara može povratiti do 4 UP po potezu, ili ne "
+"osetiti dejstvo otrova u datom potezu.\n"
+"Vidar ne može isceliti otrovanu jedinicu, već ona mora potražiti brigu u "
+"selu ili kod jedinice koja ume da isceljuje."
+
+#. [heals]
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:42
+#: data/core/macros/abilities.cfg:30
+msgid "heals +8"
+msgstr "lečenje +8"
+
+#. [heals]
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:43
+#: data/core/macros/abilities.cfg:31
+#, fuzzy
+msgid "female^heals +8"
+msgstr "zdravlje"
+
+#. [heals]
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:48
+#: data/core/macros/abilities.cfg:36
+msgid ""
+"Heals +8:\n"
+"This unit combines herbal remedies with magic to heal units more quickly "
+"than is normally possible on the battlefield.\n"
+"\n"
+"A unit cared for by this healer may heal up to 8 HP per turn, or stop poison "
+"from taking effect for that turn.\n"
+"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
+"care of a village or a unit that can cure."
+msgstr ""
+"Lečenje +8:\n"
+"Ova jedinica objedinjuje lekovite trave i magiju kako bi lečila brže nego "
+"što je to uobičajeno na bojnom polju.\n"
+"\n"
+"Jedinica pod uticajem ovog vidara može povratiti do 8 UP po potezu, ili ne "
+"osetiti dejstvo otrova u datom potezu.\n"
+"Vidar ne može isceliti otrovanu jedinicu, već ona mora potražiti brigu u "
+"selu ili kod jedinice koja ume da isceljuje."
 
 #. [about]
 #: data/core/about.cfg:7
@@ -2759,70 +2829,6 @@ msgid ""
 msgstr ""
 "\n"
 "izmenjuje navedeno svojstvo izabrane jedinice, na primer: :unit hitpoints=100"
-
-#. [heals]
-#: data/core/macros/abilities.cfg:10
-msgid "heals +4"
-msgstr "lečenje +4"
-
-#. [heals]
-#: data/core/macros/abilities.cfg:11
-#, fuzzy
-msgid "female^heals +4"
-msgstr "zdravlje"
-
-#. [heals]
-#: data/core/macros/abilities.cfg:16
-#, fuzzy
-msgid ""
-"Heals +4:\n"
-"Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
-"\n"
-"A unit cared for by this healer may heal up to 4 HP per turn, or stop poison "
-"from taking effect for that turn.\n"
-"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
-"care of a village or a unit that can cure."
-msgstr ""
-"Lečenje +4:\n"
-"Omogućava jedinici da leči susedne prijateljske jedinice na početku svakog "
-"poteza.\n"
-"\n"
-"Jedinica pod uticajem ovog vidara može povratiti do 4 UP po potezu, ili ne "
-"osetiti dejstvo otrova u datom potezu.\n"
-"Vidar ne može isceliti otrovanu jedinicu, već ona mora potražiti brigu u "
-"selu ili kod jedinice koja ume da isceljuje."
-
-#. [heals]
-#: data/core/macros/abilities.cfg:30
-msgid "heals +8"
-msgstr "lečenje +8"
-
-#. [heals]
-#: data/core/macros/abilities.cfg:31
-#, fuzzy
-msgid "female^heals +8"
-msgstr "zdravlje"
-
-#. [heals]
-#: data/core/macros/abilities.cfg:36
-msgid ""
-"Heals +8:\n"
-"This unit combines herbal remedies with magic to heal units more quickly "
-"than is normally possible on the battlefield.\n"
-"\n"
-"A unit cared for by this healer may heal up to 8 HP per turn, or stop poison "
-"from taking effect for that turn.\n"
-"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
-"care of a village or a unit that can cure."
-msgstr ""
-"Lečenje +8:\n"
-"Ova jedinica objedinjuje lekovite trave i magiju kako bi lečila brže nego "
-"što je to uobičajeno na bojnom polju.\n"
-"\n"
-"Jedinica pod uticajem ovog vidara može povratiti do 8 UP po potezu, ili ne "
-"osetiti dejstvo otrova u datom potezu.\n"
-"Vidar ne može isceliti otrovanu jedinicu, već ona mora potražiti brigu u "
-"selu ili kod jedinice koja ume da isceljuje."
 
 #. [heals]
 #: data/core/macros/abilities.cfg:51
@@ -6973,7 +6979,7 @@ msgstr "Dodatak obrisan"
 msgid "Add-on could not be deleted properly:"
 msgstr "Dodatak ne može biti obrisan — nema datoteke."
 
-#: src/ai.cpp:1777
+#: src/ai.cpp:1776
 msgid "Unknown unit type : "
 msgstr "Nepoznat tip jedinice: "
 
@@ -7317,20 +7323,20 @@ msgstr "DETALJI GREŠKE:"
 msgid "Loading data files"
 msgstr "Učitavam podatke."
 
-#: src/game.cpp:1945
+#: src/game.cpp:1950
 msgid "Loading game configuration."
 msgstr "Učitavam postavu igre."
 
-#: src/game.cpp:1951
+#: src/game.cpp:1956
 msgid "Re-initialize fonts for the current language."
 msgstr "Vaspostavljam fontove za tekući jezik."
 
-#: src/game.cpp:1959
+#: src/game.cpp:1964
 #, fuzzy
 msgid "Searching for installed add-ons."
 msgstr "Šaljem dodatak"
 
-#: src/game.cpp:1968
+#: src/game.cpp:1973
 msgid "Loading title screen."
 msgstr "Učitavam naslovni ekran."
 
@@ -7609,7 +7615,7 @@ msgstr "Preskoči"
 msgid "The End"
 msgstr "Kraj"
 
-#: src/language.cpp:158
+#: src/language.cpp:162
 msgid "System default language"
 msgstr "Sistemski jezik"
 
