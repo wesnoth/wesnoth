@@ -1,37 +1,16 @@
-Main issues with UtBS were identified by fabi in 
-https://mail.gna.org/public/wesnoth-dev/2008-11/msg00007.html
-I have attached to each one a proposed disposition.
-
 - In scenario 2 units take damage from dehydration during daytime,
   strange behaviour of this have been reported.  loonycyborg
   clarified that dehydration interacts badly with poison.
 
-  Disposition: I will fix this, if necessary by reverting to the
-  old 1.4 behavior of dehydration, which worked.
-
 - The masked assassin (the brother of Kaleh) can appear in place of
   the players characters and they die (even campaign critical ones).
-
-  Disposition: I will fix it.
 
 - A magical berserker creature the player can get during the campaign
   (scenario 4) dies too easily.
 
-  Disposition: I will fix it.  I don't experct this to be difficult.
-
-- The frost sword doesn't work like expected (I had no look at this,
-  maybe the player who reported this had no idea about Wesnoth's
-  damage types)
-
-  Disposition: I will investigate and fix if necessary.
-
 - Choosing the trolls as allies is too hard.
 
-  Disposition: I will fix it.
-
 - The whole campaign seems to be unbalanced by being too easy in general.
-
-  Disposition: I will investigate and fix as necessary.
 
 - The unit graphics of the desert elves are very outdated. They are
   based on the mainline elves found in Wesnoth 1.0 and lack the team
@@ -46,6 +25,5 @@ I have attached to each one a proposed disposition.
   Quenoth elves is almost an asset. I encourage Jetrel to finish the
   TC pass on them he was planning.
 
-- Many more wml bugs.
-
-  Disposition: I will investigate during playtesting.
+- Need to investigate the two versions of scenario 3, decide which to keep,
+  and junk the other.
