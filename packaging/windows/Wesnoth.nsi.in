@@ -144,6 +144,15 @@ Section "Battle for Wesnoth" BfWSection
   File packaging\windows\wesnoth_editor-icon.ico
   
   %NSIS_INSTALL_FILES
+
+  ; install python stuff
+  SetOutPath "$INSTDIR\Lib"
+  File /nonfatal /r /x .* /x *.pyc /x *.pyo Lib\*.*
+
+  SetOutPath "$INSTDIR\DLLs"
+  File /nonfatal /r /x .* DLLs\*.*
+
+  SetOutPath "$INSTDIR"
   
   ;Store installation folder
   WriteRegStr SHCTX "Software\Battle for Wesnoth\%version" "" $INSTDIR
@@ -191,7 +200,8 @@ FunctionEnd
 
 Section "Uninstall"
 
-  ;ADD YOUR OWN FILES HERE...
+  RMDir /r "$INSTDIR\Lib"
+  RMDir /r "$INSTDIR\DLLs"
   %NSIS_UNINSTALL_FILES
   Delete "$INSTDIR\wesnoth_editor-icon.ico"
   RMDir /r "$INSTDIR\manual"
