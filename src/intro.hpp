@@ -24,20 +24,32 @@ class display;
 
 #include <string>
 
-//function to show an introduction sequence specified by data.
-//the format of data is like,
-//[part]
-//id='id'
-//story='story'
-//image='img'
-//[/part]
-//where 'id' is a unique identifier, 'story' is text describing
-//storyline, and 'img' is an image.
-//
-//each part of the sequence will be displayed in turn, with the
-//user able to go to the next part, or skip it entirely.
+/**
+ * Function to show an introduction sequence using story WML.
+ * The WML config data has a format similar to:
+ * @code
+ * [part]
+ *     id='id'
+ *     story='story'
+ *     image='img'
+ * [/part]
+ * @endcode
+ * Where 'id' is a unique identifier, 'story' is text describing the
+ * storyline,and 'img' is a background image. Each part of the sequence will
+ * be displayed in turn, with the user able to go to the next part, or skip
+ * it entirely.
+ */
 void show_intro(display &disp, const vconfig& data, const config& level);
 
-void the_end(display &disp);
+/**
+ * Displays a simple fading screen with any user-provided text.
+ * Used after the end of single-player campaigns.
+ *
+ * @param text     Text to display, centered on the screen.
+ *
+ * @param duration In milliseconds, for how much time the text will
+ *                 be displayed on screen.
+ */
+void the_end(display &disp, std::string text, unsigned int duration);
 
 #endif

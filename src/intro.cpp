@@ -364,8 +364,16 @@ static bool show_intro_part_helper(display &disp, const vconfig& part,
 }
 
 /** Black screen with "The End", shown at the end of a campaign. */
-void the_end(display &disp)
+void the_end(display &disp, std::string text, unsigned int duration)
 {
+	//
+	// Some sane defaults.
+	//
+	if(text.empty())
+		text = _("The End");
+	if(!duration)
+		duration = 3500;
+
 	SDL_Rect area = screen_area();
 	CVideo &video = disp.video();
 	SDL_FillRect(video.getSurface(),&area,0);
@@ -373,7 +381,6 @@ void the_end(display &disp)
 	update_whole_screen();
 	disp.flip();
 
-	const std::string text = _("The End");
 	const size_t font_size = font::SIZE_XLARGE;
 
 	area = font::text_area(text,font_size);
@@ -381,16 +388,37 @@ void the_end(display &disp)
 	area.y = screen_area().h/2 - area.h/2;
 
 	for(size_t n = 0; n < 255; n += 5) {
+		if(n)
+			SDL_FillRect(video.getSurface(),&area,0);
+
 		const SDL_Color col = {n,n,n,n};
 		font::draw_text(&video,area,font_size,col,text,area.x,area.y);
 		update_rect(area);
+
+		events::pump();
+		events::raise_process_event();
+		events::raise_draw_event();
 		disp.flip();
-
-		SDL_FillRect(video.getSurface(),&area,0);
-
 		disp.delay(10);
 	}
 
-	disp.delay(4000);
+	//
+	// Delay after the end of fading.
+	// Rounded to multiples of 10.
+	//
+	unsigned int count = duration/10;
+	while(count) {
+		events::pump();
+		events::raise_process_event();
+		events::raise_draw_event();
+		disp.flip();
+		disp.delay(10);
+		--count;
+	}
 }
 
+void the_end(display &disp)
+{
+	const std::string endtxt = _("The End");
+	the_end(disp, endtxt, 3500);
+}

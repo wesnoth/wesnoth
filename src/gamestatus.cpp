@@ -438,6 +438,8 @@ game_state::game_state()  :
 		scenario(),
 		next_scenario(),
 		completion(),
+		end_text(),
+		end_text_duration(),
 		players(),
 		scoped_variables(),
 		wml_menu_items(),
@@ -465,6 +467,8 @@ game_state::game_state(const config& cfg, bool show_replay) :
 		scenario(cfg["scenario"]),
 		next_scenario(cfg["next_scenario"]),
 		completion(cfg["completion"]),
+		end_text(cfg["end_text"]),
+		end_text_duration(lexical_cast_default<unsigned int>(cfg["end_text_duration"])),
 		players(),
 		scoped_variables(),
 		wml_menu_items(),
@@ -1196,6 +1200,8 @@ game_state::game_state(const game_state& state) :
 	scenario(),
 	next_scenario(),
 	completion(),
+	end_text(),
+	end_text_duration(),
 	players(),
 	scoped_variables(),
 	wml_menu_items(),
@@ -1228,6 +1234,8 @@ game_state& game_state::operator=(const game_state& state)
 	campaign = state.campaign;
 	scenario = state.scenario;
 	completion = state.completion;
+	end_text = state.end_text;
+	end_text_duration = state.end_text_duration;
 	rng_ = state.rng_;
 	players = state.players;
 	scoped_variables = state.scoped_variables;

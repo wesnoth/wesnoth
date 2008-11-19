@@ -89,6 +89,9 @@ public:
 	std::string scenario;                            /**< the scenario being played */
 	std::string next_scenario;                       /**< the scenario coming next (for campaigns) */
 	std::string completion;                          /**< running. victory, or defeat */
+	std::string end_text;                            /**< end-of-campaign text */
+
+	unsigned int end_text_duration;                  /**< for how long the end-of-campaign text is shown */
 
 	/**
 	 * Information about campaign players who carry resources from previous

@@ -1573,7 +1573,7 @@ void game_controller::launch_game(RELOAD_GAME_DATA reload)
 		// don't show The End for multiplayer scenario
 		// change this if MP campaigns are implemented
 		if((result == VICTORY || result == LEVEL_CONTINUE_NO_SAVE) && (state_.campaign_type.empty() || state_.campaign_type != "multiplayer")) {
-			the_end(disp());
+			the_end(disp(), state_.end_text, state_.end_text_duration);
 			about::show_about(disp(),state_.campaign);
 		}
 	} catch(game::load_game_exception& e) {
