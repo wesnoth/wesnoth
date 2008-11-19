@@ -472,6 +472,7 @@ void ttext::rerender(const bool force) const
 #ifdef _WIN32		
 		// On Windows drawing twice is not enough.
 		pango_cairo_show_layout(cr, layout_);
+		pango_cairo_show_layout(cr, layout_);
 #endif
 		surface_.assign(SDL_CreateRGBSurfaceFrom(
 			surface_buffer_, width, height, 32, stride, 
