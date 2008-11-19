@@ -85,7 +85,7 @@ bool show_intro_part(display &disp, const vconfig& part,
 	LOG_NG << "showing intro part\n";
 
 	CVideo &video = disp.video();
-	const std::string& music_file = part["music"];
+	const std::string music_file = part["music"];
 
 	// Play music if available
 	if(music_file != "") {
@@ -101,7 +101,7 @@ bool show_intro_part(display &disp, const vconfig& part,
 			0,0,0,1.0,video.getSurface());
 
 
-	const std::string& background_name = part["background"];
+	const std::string background_name = part["background"];
 	const bool show_title = utils::string_bool(part["show_title"]);
 	const bool scale_background = utils::string_bool(part["scale_background"], true);
 
@@ -192,17 +192,14 @@ bool show_intro_part(display &disp, const vconfig& part,
 		bool pass = false;
 
 		for(vconfig::child_list::const_iterator i = images.begin(); i != images.end(); ++i){
-			const std::string& image_name = (*i)["file"];
+			const std::string image_name = (*i)["file"];
 			if(image_name == "") continue;
 			surface img(image::get_image(image_name));
 			if(img.null()) continue;
 
-			const std::string& xloc = (*i)["x"];
-			const std::string& yloc = (*i)["y"];
-			const std::string& delay_str = (*i)["delay"];
-			const int delay = (delay_str == "") ? 0: atoi(delay_str.c_str());
-			const int x = static_cast<int>(atoi(xloc.c_str())*scale);
-			const int y = static_cast<int>(atoi(yloc.c_str())*scale);
+			const int delay = lexical_cast_default<int>((*i)["delay"], 0);
+			const int x = static_cast<int>(atoi((*i)["x"].c_str())*scale);
+			const int y = static_cast<int>(atoi((*i)["y"].c_str())*scale);
 
 			if (utils::string_bool((*i)["scaled"])){
 				img = scale_surface(img, static_cast<int>(img->w*scale), static_cast<int>(img->h*scale));
