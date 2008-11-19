@@ -1053,48 +1053,16 @@ bool unit::matches_filter(const vconfig& cfg, const map_location& loc, bool use_
 
 bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, bool use_flat_tod) const
 {
-	const t_string& t_id = cfg["id"];
-	const t_string& t_description = cfg["description"];
-	const t_string& t_speaker = cfg["speaker"];
-	const t_string& t_type = cfg["type"];
-	const t_string& t_ability = cfg["ability"];
-	const t_string& t_side = cfg["side"];
-	const t_string& t_weapon = cfg["has_weapon"];
-	const t_string& t_role = cfg["role"];
-	const t_string& t_ai_special = cfg["ai_special"];
-	const t_string& t_race = cfg["race"];
-	const t_string& t_gender = cfg["gender"];
-	const t_string& t_canrecruit = cfg["canrecruit"];
-	const t_string& t_level = cfg["level"];
-	const t_string& t_defense = cfg["defense"];
-	const t_string& t_movement_cost = cfg["movement_cost"];
-
-	const std::string& id = t_id;
-	const std::string& description = t_description;
-	const std::string& speaker = t_speaker;
-	const std::string& type = t_type;
-	const std::string& ability = t_ability;
-	const std::string& side = t_side;
-	const std::string& weapon = t_weapon;
-	const std::string& role = t_role;
-	const std::string& ai_special = t_ai_special;
-	const std::string& race = t_race;
-	const std::string& gender = t_gender;
-	const std::string& canrecruit = t_canrecruit;
-	const std::string& level = t_level;
-	const std::string& defense = t_defense;
-	const std::string& mvt_cost = t_movement_cost;
-
-	if(description.empty() == false && description != name_) {
+	if(cfg.has_attribute("name") && cfg["name"] != name_) {
 		return false;
 	}
 
-	if(id.empty() == false && id != this->id()) {
+	if(cfg.has_attribute("id") && cfg["id"] != this->id()) {
 		return false;
 	}
 
 	// Allow 'speaker' as an alternative to id, since people use it so often
-	if(speaker.empty() == false && speaker != this->id()) {
+	if(cfg.has_attribute("speaker") && cfg["speaker"] != this->id()) {
 		return false;
 	}
 
@@ -1109,9 +1077,9 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 		}
 	}
 	// Also allow filtering on location ranges outside of the location filter
-	const t_string& cfg_x = cfg["x"];
-	const t_string& cfg_y = cfg["y"];
-	if(!cfg_x.empty() || !cfg_y.empty()){
+	if(cfg.has_attribute("x") || cfg.has_attribute("y")){
+		const t_string& cfg_x = cfg["x"];
+		const t_string& cfg_y = cfg["y"];
 		if(cfg_x == "recall" && cfg_y == "recall") {
 			//locations on the map are considered to not be on a recall list
 			if((!map_ && loc.valid()) || (map_ && map_->on_board(loc))) {
@@ -1122,15 +1090,18 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 		}
 	}
 
-	const std::string& this_type = type_id();
-
 	// The type could be a comma separated list of types
-	if(type.empty() == false && type != this_type) {
+	if(cfg.has_attribute("type")) {
+		const t_string& t_type = cfg["type"];
+		const std::string& type = t_type;
+		const std::string& this_type = type_id();
 
 		// We only do the full CSV search if we find a comma in there,
 		// and if the subsequence is found within the main sequence.
 		// This is because doing the full CSV split is expensive.
-		if(std::find(type.begin(),type.end(),',') != type.end() &&
+		if(type == this_type) {
+			// pass
+		} else if(std::find(type.begin(),type.end(),',') != type.end() &&
 		   std::search(type.begin(),type.end(),this_type.begin(),
 					   this_type.end()) != type.end()) {
 			const std::vector<std::string>& vals = utils::split(type);
@@ -1143,8 +1114,13 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 		}
 	}
 
-	if(ability.empty() == false && has_ability_by_id(ability) == false) {
-		if(std::find(ability.begin(),ability.end(),',') != ability.end()) {
+	if(cfg.has_attribute("ability")) {
+		const t_string& t_ability = cfg["ability"];
+		const std::string& ability = t_ability;
+
+		if(has_ability_by_id(ability)) {
+			// pass
+		} else if(std::find(ability.begin(),ability.end(),',') != ability.end()) {
 			const std::vector<std::string>& vals = utils::split(ability);
 			bool has_ability = false;
 			for(std::vector<std::string>::const_iterator this_ability = vals.begin(); this_ability != vals.end(); ++this_ability) {
@@ -1161,18 +1137,20 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 		}
 	}
 
-	if(race.empty() == false && race_->id() != race) {
+	if(cfg.has_attribute("race") && race_->id() != cfg["race"]) {
 		return false;
 	}
 
-	if(gender.empty() == false) {
-		if(string_gender(gender) != this->gender()) {
-			return false;
-		}
+	if(cfg.has_attribute("gender") && string_gender(cfg["gender"]) != gender()) {
+		return false;
 	}
 
-	if(side.empty() == false && this->side() != lexical_cast_default<unsigned>(side)) {
-		if(std::find(side.begin(),side.end(),',') != side.end()) {
+	if(cfg.has_attribute("side")) {
+		const t_string& t_side = cfg["side"];
+		const std::string& side = t_side;
+		if(this->side() == lexical_cast_default<unsigned>(side)) {
+			// pass
+		} else if(std::find(side.begin(),side.end(),',') != side.end()) {
 			const std::vector<std::string>& vals = utils::split(side);
 
 			std::ostringstream s;
@@ -1185,42 +1163,44 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 		}
 	  }
 
-	if(weapon.empty() == false) {
+	if(cfg.has_attribute("has_weapon")) {
+		const t_string& t_weapon = cfg["has_weapon"];
+		const std::string& weapon = t_weapon;
 		bool has_weapon = false;
 		const std::vector<attack_type>& attacks = this->attacks();
 		for(std::vector<attack_type>::const_iterator i = attacks.begin();
 			i != attacks.end(); ++i) {
 			if(i->id() == weapon) {
 				has_weapon = true;
+				break;
 			}
 		}
-
 		if(!has_weapon) {
 			return false;
 		}
 	}
 
-	if(role.empty() == false && role_ != role) {
+	if(cfg.has_attribute("role") && role_ != cfg["role"]) {
 		return false;
 	}
 
-	if(ai_special.empty() == false && ai_special_ != ai_special) {
+	if(cfg.has_attribute("ai_special") && ai_special_ != cfg["ai_special"]) {
 		return false;
 	}
 
-	if(canrecruit.empty() == false && utils::string_bool(canrecruit) != can_recruit()) {
+	if(cfg.has_attribute("canrecruit") && utils::string_bool(cfg["canrecruit"]) != can_recruit()) {
 		return false;
 	}
 
-	if(level.empty() == false && level_ != lexical_cast_default<int>(level,-1)) {
+	if(cfg.has_attribute("level") && level_ != lexical_cast_default<int>(cfg["level"],-1)) {
 		return false;
 	}
 
-	if(defense.empty() == false && defense_modifier(map_->get_terrain(loc)) != lexical_cast_default<int>(defense,-1)) {
+	if(cfg.has_attribute("defense") && defense_modifier(map_->get_terrain(loc)) != lexical_cast_default<int>(cfg["defense"],-1)) {
 		return false;
 	}
 
-	if(mvt_cost.empty() == false && movement_cost(map_->get_terrain(loc)) != lexical_cast_default<int>(mvt_cost,-1)) {
+	if(cfg.has_attribute("movement_cost") && movement_cost(map_->get_terrain(loc)) != lexical_cast_default<int>(cfg["movement_cost"],-1)) {
 		return false;
 	}
 

@@ -86,6 +86,7 @@ Version 1.5.5+svn:
    * WML variable expansion can be used inside story [part] tags
      (feature request #10398).
    * When fire_event=yes, [kill] now also fires the 'last breath' event.
+   * SingleUnitFilters can now check for empty keys such as role=$null
  * Miscellaneous and bug fixes:
    * Fixed addon update version logic (patch #1110).
    * Fixed a flaw which caused sound sources to be forgotten after saving
@@ -93,6 +94,7 @@ Version 1.5.5+svn:
    * Fixed crashes on move_unit_fake with unit types which cannot move
      over terrains that are part of the path.
    * Generic units get unique non-underlying ids again (bug #12558).
+   * Fixed a bug where "name=" attribute was not recognized in SUF
 
 Version 1.5.5:
  * Campaigns:
