@@ -580,8 +580,15 @@ bool disconnect(connection s, bool force)
 	if(s == 0) {
 		while(sockets.empty() == false) {
 			assert(sockets.back() != 0);
-//			disconnect(sockets.back(), true);
+			size_t n = 0;
 			while(disconnect(sockets.back()) == false) {
+				// force a disconnect
+				if (n > 100) {
+					disconnect(sockets.back(), true);
+					n = 0;
+					continue;
+				}
+				++n;
 				SDL_Delay(1);
 			}
 		}
