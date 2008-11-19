@@ -1809,7 +1809,7 @@ static int process_command_args(int argc, char** argv) {
 			python_ai::invoke("documentation");
 			return 0;
         } else if(val == "--python-shell") {
-			int ret = python_ai::run_shell();
+			python_ai::run_shell();
             return 0;
 #endif
 		} else if(val == "--config-dir") {
