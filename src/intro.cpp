@@ -413,9 +413,3 @@ void the_end(display &disp, std::string text, unsigned int duration)
 		--count;
 	}
 }
-
-void the_end(display &disp)
-{
-	const std::string endtxt = _("The End");
-	the_end(disp, endtxt, 3500);
-}
