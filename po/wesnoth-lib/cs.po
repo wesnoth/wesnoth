@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-11-09 21:11+0100\n"
-"PO-Revision-Date: 2008-10-31 16:15+0100\n"
+"PO-Revision-Date: 2008-11-20 16:35+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
@@ -365,7 +365,7 @@ msgstr "Aktualizace rozšíření"
 #: data/gui/default/window/addon_connect.cfg:169
 #, fuzzy
 msgid "Remove Add-ons"
-msgstr "Odstraň"
+msgstr "Odstranit rozšíření"
 
 #. [button]
 #: data/gui/default/window/addon_connect.cfg:201
@@ -498,9 +498,8 @@ msgstr "Změň velikost"
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:38 src/hotkeys.cpp:100
-#, fuzzy
 msgid "Editor Settings"
-msgstr "Nastavení klávesových zkratek"
+msgstr "Nastavení editoru"
 
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:46
@@ -710,9 +709,8 @@ msgstr ""
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:169
-#, fuzzy
 msgid "Local Game"
-msgstr "Načti hru"
+msgstr "Místní hra"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:170
@@ -743,9 +741,8 @@ msgstr "Vyber vše"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:77
-#, fuzzy
 msgid "Tutorial"
-msgstr "Dialog Ano/Ne"
+msgstr "Výcvik"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:78
@@ -754,7 +751,6 @@ msgstr "Tažení"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:80
-#, fuzzy
 msgid "Load"
 msgstr "Načíst hru"
 
@@ -1357,9 +1353,7 @@ msgid ""
 msgstr ""
 "'list_data' musí obsahovat stejný počet sloupců jako 'list_definition'."
 
-# Je "values" slovo, nebo označení druhu proměnné?
 #: src/gui/widgets/window_builder.cpp:1084
-#, fuzzy
 msgid "The number of value_labels and values don't match."
 msgstr "Nesouhlasí počet value_labels a values."
 
@@ -1577,9 +1571,8 @@ msgid "Revert All Changes"
 msgstr "Vrátit všechny změny"
 
 #: src/hotkeys.cpp:107
-#, fuzzy
 msgid "Map Information"
-msgstr "Generátor map"
+msgstr "Informace o mapě"
 
 #: src/hotkeys.cpp:109
 msgid "Swap fore- and background terrains"
@@ -1611,9 +1604,8 @@ msgid "Next Brush"
 msgstr "Další kolo"
 
 #: src/hotkeys.cpp:117
-#, fuzzy
 msgid "Default Brush"
-msgstr "Výchozí ???"
+msgstr "Výchozí štětec"
 
 #: src/hotkeys.cpp:118
 msgid "Cut"
@@ -1636,25 +1628,28 @@ msgid "Select Inverse"
 msgstr "Invertovat výběr"
 
 #: src/hotkeys.cpp:126
-#, fuzzy
 msgid "Select None"
 msgstr "Vyber nic"
 
+# délka?
 #: src/hotkeys.cpp:128
+#, fuzzy
 msgid "Rotate Clipboard Clockwise"
-msgstr ""
+msgstr "Otočit schránku po směru hodinových ručiček"
 
+# délka?
 #: src/hotkeys.cpp:130
+#, fuzzy
 msgid "Rotate Clipboard Counter-Clockwise"
-msgstr ""
+msgstr "Otočit schránku proti směru hodinových ručiček"
 
 #: src/hotkeys.cpp:132
 msgid "Flip Clipboard Horizontally"
-msgstr ""
+msgstr "Převrátit schránku horizontálně"
 
 #: src/hotkeys.cpp:134
 msgid "Flip Clipboard Vertically"
-msgstr ""
+msgstr "Převrátit schránku vertikálně"
 
 #: src/hotkeys.cpp:136
 msgid "Rotate Selection"
@@ -1678,7 +1673,6 @@ msgid "Randomize Tiles In Selection"
 msgstr ""
 
 #: src/hotkeys.cpp:148
-#, fuzzy
 msgid "Rotate Map"
 msgstr "Otoč mapu"
 
@@ -1691,9 +1685,8 @@ msgid "Apply a Mask"
 msgstr ""
 
 #: src/hotkeys.cpp:154
-#, fuzzy
 msgid "Create Mask"
-msgstr "Vytvoř novou mapu"
+msgstr "Vytvoř masku"
 
 #: src/hotkeys.cpp:156
 #, fuzzy

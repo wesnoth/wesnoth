@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-11-09 21:11+0100\n"
-"PO-Revision-Date: 2008-09-29 13:13+0100\n"
+"PO-Revision-Date: 2008-11-19 17:01+0100\n"
 "Last-Translator: Leandro Regueiro <leandro DOT regueiro AT gmail DOT com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "MIME-Version: 1.0\n"
@@ -81,13 +81,15 @@ msgstr ""
 
 #. [brush]
 #: data/core/editor2-brushes.cfg:14
+#, fuzzy
 msgid "Radius 1 Hex"
-msgstr ""
+msgstr "Radio horizontal"
 
 #. [brush]
 #: data/core/editor2-brushes.cfg:24
+#, fuzzy
 msgid "Radius 2 Hex"
-msgstr ""
+msgstr "Radio horizontal"
 
 #. [brush]
 #: data/core/editor2-brushes.cfg:54
@@ -119,7 +121,7 @@ msgstr ""
 #. [editor2_tool_hint]
 #: data/core/editor2-tool-hints.cfg:30
 msgid "Click to paste."
-msgstr ""
+msgstr "Prema para pegar."
 
 #. [menu]
 #: data/themes/editor2.cfg:120
@@ -147,24 +149,24 @@ msgstr "Saír do Editor"
 
 #: src/editor2/editor_controller.cpp:220
 msgid "Fatal error"
-msgstr ""
+msgstr "Erro moi grave"
 
 #: src/editor2/editor_controller.cpp:228
 msgid "Do you really want to quit?"
-msgstr ""
+msgstr "Está seguro de que desexa saír?"
 
 #: src/editor2/editor_controller.cpp:231
 msgid "There are unsaved changes in the map."
-msgstr ""
+msgstr "Hai cambios no mapa que non foron gardados."
 
 #: src/editor2/editor_controller.cpp:233
 msgid "Quit"
-msgstr ""
+msgstr "Saír"
 
 #: src/editor2/editor_controller.cpp:243 src/editor2/editor_controller.cpp:345
 #: src/editor2/editor_controller.cpp:381 src/editor2/editor_controller.cpp:403
 msgid "Error"
-msgstr ""
+msgstr "Erro"
 
 #: src/editor2/editor_controller.cpp:243
 msgid "No editor time-of-day found"
@@ -172,11 +174,11 @@ msgstr ""
 
 #: src/editor2/editor_controller.cpp:276
 msgid "There are unsaved changes in the map"
-msgstr ""
+msgstr "Hai cambios sen gardar no mapa"
 
 #: src/editor2/editor_controller.cpp:277
 msgid "Do you want to discard all changes you made to the map?"
-msgstr ""
+msgstr "Desexa desbotar tódolos cambios que fixo no mapa?"
 
 #: src/editor2/editor_controller.cpp:290
 msgid "Choose a Map to Load"
@@ -195,17 +197,19 @@ msgid "No random map generators found"
 msgstr ""
 
 #: src/editor2/editor_controller.cpp:356
+#, fuzzy
 msgid "Map creation failed."
-msgstr ""
+msgstr "\" fallou ó cargar debido a "
 
 #: src/editor2/editor_controller.cpp:371
 #, fuzzy
 msgid "Choose a mask to apply"
-msgstr "Escolla un Mapa para Cargar"
+msgstr "Aplicar o valor ós seguintes aspectos dos clons:"
 
 #: src/editor2/editor_controller.cpp:378
+#, fuzzy
 msgid "Error loading mask"
-msgstr ""
+msgstr "Produciuse un erro ó gardar unha copia temporal"
 
 #: src/editor2/editor_controller.cpp:393
 msgid "Choose target map"
@@ -214,7 +218,7 @@ msgstr ""
 #: src/editor2/editor_controller.cpp:400 src/editor2/editor_controller.cpp:508
 #: src/editor2/editor_main.cpp:50
 msgid "Error loading map"
-msgstr ""
+msgstr "Erro ó cargar o mapa"
 
 #: src/editor2/editor_controller.cpp:489
 msgid "Map saved."
@@ -229,16 +233,18 @@ msgid "Undo"
 msgstr "Desfacer"
 
 #: src/editor2/editor_controller.cpp:851
+#, fuzzy
 msgid "Can't Undo"
-msgstr ""
+msgstr "Historial de cambios"
 
 #: src/editor2/editor_controller.cpp:855
 msgid "Redo"
 msgstr "Refacer"
 
 #: src/editor2/editor_controller.cpp:857
+#, fuzzy
 msgid "Can't Redo"
-msgstr ""
+msgstr "Non hai nada para refacer."
 
 #: src/editor2/editor_map.cpp:62
 msgid "Empty map file or file not found"
@@ -269,9 +275,8 @@ msgid "BG"
 msgstr "Fondo"
 
 #: src/editor2/mouse_action.cpp:376
-#, fuzzy
 msgid "(Player)^None"
-msgstr "Xogador"
+msgstr "Ningún"
 
 #: src/editor2/mouse_action.cpp:383
 msgid "Choose player"
@@ -284,8 +289,9 @@ msgid ""
 msgstr ""
 
 #: src/gui/dialogs/editor_settings.cpp:105
+#, fuzzy
 msgid "Custom setting"
-msgstr ""
+msgstr "Tamaño personalizado"
 
 #~ msgid "Settings"
 #~ msgstr "Preferencias"

@@ -1,20 +1,26 @@
+# Galician translation of wesnoth-anl.
+#
+# Leandro Regueiro <leandro.regueiro@gmail.com>, 2008.
+#
+# Proxecto Trasno http://trasno.net
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
+"Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-11-09 21:12+0100\n"
-"PO-Revision-Date: 2008-02-29 15:24+0100\n"
-"Last-Translator: Fran Diéguez <fran[dot]dieguez[at]glug[dot]es>\n"
-"Language-Team: \n"
+"PO-Revision-Date: 2008-11-19 17:33+0100\n"
+"Last-Translator: Leandro Regueiro <leandro DOT regueiro AT gmail DOT com>\n"
+"Language-Team: Galician <proxecto@trasno.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:4
-#, fuzzy
 msgid "4p - A New Land"
-msgstr "4 xog - Lagoa"
+msgstr "4x - Unha nova terra"
 
 #. [multiplayer]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:7
@@ -40,7 +46,7 @@ msgstr ""
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:35
 msgid "You must survive until turn 25."
-msgstr ""
+msgstr "Debes sobrevivir ata o turno 25."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:428
@@ -154,14 +160,14 @@ msgstr ""
 #. [option]
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:5
 msgid "Return to menu"
-msgstr ""
+msgstr "Volver ó menú"
 
 #. [message]: speaker=narrator
 #. [option]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:15
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:113
 msgid "Peasants"
-msgstr ""
+msgstr "Labregos"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:18
@@ -176,7 +182,7 @@ msgstr ""
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:26
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:120
 msgid "Mages"
-msgstr ""
+msgstr "Magos"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:28
@@ -189,9 +195,8 @@ msgstr ""
 #. [option]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:36
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:127
-#, fuzzy
 msgid "Farms"
-msgstr "FeÃ­rico"
+msgstr "Granxas"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:38
@@ -205,7 +210,7 @@ msgstr ""
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:46
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:134
 msgid "Villages"
-msgstr ""
+msgstr "Vilas"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:48
@@ -219,9 +224,8 @@ msgstr ""
 #. [option]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:56
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:141
-#, fuzzy
 msgid "Mines"
-msgstr "Monstros"
+msgstr "Minas"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:58
@@ -235,7 +239,7 @@ msgstr ""
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:66
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:148
 msgid "Universities"
-msgstr ""
+msgstr "Universidades"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:68
@@ -253,7 +257,7 @@ msgstr ""
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:155
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:135
 msgid "Diplomacy"
-msgstr ""
+msgstr "Diplomacia"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:78
@@ -265,23 +269,22 @@ msgstr ""
 #. [set_menu_item]
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:86
 msgid "Help"
-msgstr ""
+msgstr "Axuda"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:102
-#, fuzzy
 msgid "A New Land - Help"
-msgstr "4 xog - Lagoa"
+msgstr "Unha nova terra - Axuda"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:103
 msgid "Select a topic."
-msgstr ""
+msgstr "Selecciona un tema"
 
 #. [option]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:106
 msgid "Done"
-msgstr ""
+msgstr "Feito"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:19
@@ -335,19 +338,24 @@ msgstr ""
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:220
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:246
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:279
+#, fuzzy
 msgid "Diplomatic Options"
 msgstr ""
+"[OPCIÓNS...] [FICHEIRO...]\n"
+"\n"
+"Opcións dispoñibles:"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:223
+#, fuzzy
 msgid "What shall I do?"
-msgstr ""
+msgstr "Facer outra vez a última acción que se desfixo"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:47
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:229
 msgid "Nothing"
-msgstr ""
+msgstr "Nada"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:239
@@ -365,7 +373,7 @@ msgstr ""
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:252
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:285
 msgid "Back"
-msgstr ""
+msgstr "Atrás"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:272
@@ -419,8 +427,9 @@ msgstr ""
 
 #. [set_menu_item]
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:9
+#, fuzzy
 msgid "Choose New Recruit"
-msgstr ""
+msgstr "Creando novo conectador"
 
 #. [message]: speaker=unit
 #. [message]: speaker=narrator
@@ -459,8 +468,9 @@ msgstr ""
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:103
+#, fuzzy
 msgid "Continue as before"
-msgstr ""
+msgstr "Coma subcapa da actual"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:115
@@ -522,8 +532,9 @@ msgstr ""
 
 #. [set_menu_item]
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:6
+#, fuzzy
 msgid "Get to Work!"
-msgstr ""
+msgstr "Obxecto a camiño"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:43
@@ -532,8 +543,9 @@ msgstr ""
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:61
+#, fuzzy
 msgid "Convert to Grassland"
-msgstr ""
+msgstr "_Converter a Texto"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:61
@@ -541,7 +553,7 @@ msgstr ""
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:268
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:404
 msgid "Cost: 0g"
-msgstr ""
+msgstr "Custo: 0o"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:76
@@ -551,23 +563,23 @@ msgstr ""
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:88
 msgid "Cost: 15g"
-msgstr ""
+msgstr "Custo: 15o"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:88
 msgid "Build Village"
-msgstr ""
+msgstr "Construir unha vila"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:106
 msgid "Build Castle"
-msgstr ""
+msgstr "Construir un castelo"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:106
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:363
 msgid "Cost: 6g"
-msgstr ""
+msgstr "Custo: 6o"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:123
@@ -577,13 +589,13 @@ msgstr ""
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:123
 msgid "Cost: 4g"
-msgstr ""
+msgstr "Custo: 4o"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:140
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:283
 msgid "Cost: 1g"
-msgstr ""
+msgstr "Custo: 1o"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:140
@@ -604,24 +616,25 @@ msgstr ""
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:187
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:208
 msgid "Build Mine"
-msgstr ""
+msgstr "Construir unha mina"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:187
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:208
 msgid "Cost: 25g"
-msgstr ""
+msgstr "Custo: 25o"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:229
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:321
 msgid "Cost: 3g"
-msgstr ""
+msgstr "Custo: 3o"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:229
+#, fuzzy
 msgid "Make a Ford"
-msgstr ""
+msgstr "Crear estrela"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:247
@@ -632,7 +645,7 @@ msgstr ""
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:247
 msgid "Cost: 5g"
-msgstr ""
+msgstr "Custo: 5o"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:268
@@ -648,7 +661,7 @@ msgstr ""
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:304
 msgid "Cost: 2g"
-msgstr ""
+msgstr "Custo: 2o"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:338
@@ -657,18 +670,19 @@ msgstr ""
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:338
+#, fuzzy
 msgid "Earns: 3g"
-msgstr ""
+msgstr " alfa %.3g"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:363
 msgid "Build a Keep"
-msgstr ""
+msgstr "Construir unha torre"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:383
 msgid "Cost: 7g"
-msgstr ""
+msgstr "Custo: 7o"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:383
@@ -679,1208 +693,4 @@ msgstr ""
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:404
 #, fuzzy
 msgid "Clear the Ground"
-msgstr "Tempo estÃ¡bel"
-
-# translation of gl_ES.po to Galician
-# #-#-#-#-#  wesnoth.cpp1.po (Battle for Wesnoth VERSION)  #-#-#-#-#
-# Galician translations for Battle for Wesnoth package.
-# Copyright (C) 2006 Wesnoth development team
-# This file is distributed under the same license as the Battle for Wesnoth package.
-#
-# Proxecto Trasno <http://trasno.net>
-#
-#
-# Automatically generated, 2006.
-# Leandro Regueiro <leandro.regueiro@gmail.com>, 2007.
-# Fran DiÃ©guez <fran dot dieguez at glug dot es>, 2008.
-# Paco <fran dot dieguez at glug dot es>, 2008.
-#~ msgid "User Map"
-#~ msgstr "Mapa de Usuario"
-
-#~ msgid "Random"
-#~ msgstr "Aleatorio"
-
-#~ msgid "Default"
-#~ msgstr "Predeterminado"
-
-#~ msgid "Age of Heroes"
-#~ msgstr "Idade dos Heroes"
-
-#~ msgid "Great War"
-#~ msgstr "Gran Guerra"
-
-#~ msgid "Alliance of Darkness"
-#~ msgstr "Alianza da Escuridade"
-
-#~ msgid "Alliance of Light"
-#~ msgstr "Alianza da Luz"
-
-#~ msgid "Drakes"
-#~ msgstr "Dracos"
-
-#~ msgid "Knalgan Alliance"
-#~ msgstr "Alianza Knalgan"
-
-#~ msgid "Loyalists"
-#~ msgstr "Leais"
-
-#~ msgid "Northerners"
-#~ msgstr "NorteÃ±os"
-
-#~ msgid "Rebels"
-#~ msgstr "Rebeldes"
-
-#~ msgid "Undead"
-#~ msgstr "Non mortos"
-
-#~ msgid "2p - Caves of the Basilisk"
-#~ msgstr "2 xog - As Covas do Basilisco"
-
-#~ msgid ""
-#~ "Players must maneuver their units through the divisive terrain of this "
-#~ "long-feared region, once the home of a legendary Elder Basilisk. The "
-#~ "caves and the stark wilderness surrounding them are filled with the "
-#~ "petrified forms of some of Wesnoth's greatest heroes."
-#~ msgstr ""
-#~ "Os xogadores deben maniobrar as sÃºas unidades a travÃ©s do divisivo "
-#~ "terreo de esta rexiÃ³n largamente meda, en outro tempo de un lexendario e "
-#~ "antigo basilisco. AS covas e a cruda natureza que lles rodean estÃ¡n "
-#~ "cheas coas formas petrificadas de algÃºns dos mÃ¡is grandes hÃ©roes de "
-#~ "Wesnoth."
-
-#~ msgid "teamname^North"
-#~ msgstr "Norte"
-
-#~ msgid "teamname^South"
-#~ msgstr "Sur"
-
-#~ msgid ""
-#~ "The winds of the dark sky blew so cold,\n"
-#~ "The moon was high, the night was old,\n"
-#~ "Brave was the drake that dared forsake\n"
-#~ "His home to steal the Basilisk's gold.\n"
-#~ "\n"
-#~ "On that dark night, the skies so churned,\n"
-#~ "He disregarded what he had learned,\n"
-#~ "Foolish but brave, to the Basilisk's cave,\n"
-#~ "He flew, and the fire within him burned.\n"
-#~ "\n"
-#~ "Alas, that fire burns no more,\n"
-#~ "For the Basilisk, with one mighty roar,\n"
-#~ "Chilled him to the bone, and he turned to stone,\n"
-#~ "And so he stays forevermore.\n"
-#~ "\n"
-#~ "The winds of the sky blow so cold,\n"
-#~ "The years pass by, the days are old,\n"
-#~ "Here stands that drake, who dared forsake\n"
-#~ "His home to steal the Basilisk's gold.\n"
-#~ "(inscribed by Flametrooper)"
-#~ msgstr ""
-#~ "Os ventos do ceo escuro sopran ven frÃ­os\n"
-#~ "A lÃºa estÃ¡ chea, a noite Ã© vella,\n"
-#~ "Que bravo Ã© o draco, a traiciÃ³n atrevida\n"
-#~ "Esta casa rouba o ouro de Basilisk\n"
-#~ "\n"
-#~ "Na noite escura, os ceos axitados,\n"
-#~ "El ignorou o que aprendeu, \n"
-#~ "EstÃºpido pero bravo, para cova do Basilisco\n"
-#~ "Voou, e o lume queimouno\n"
-#~ "\n"
-#~ "Alas, Ã³ que o lume non queimarÃ¡ mÃ¡is,\n"
-#~ "Para o Basilisco, con un incrÃ­bel ruxido,\n"
-#~ "Enfriolle os os osos, e voltounos pedra,\n"
-#~ "E ahÃ­ quedarÃ¡ para sempre.\n"
-#~ "\n"
-#~ "O vento do ceo sopra tan frio,\n"
-#~ "Os anos pasan, os dÃ­as son tan frÃ­os,\n"
-#~ "AquÃ­ xace aquel draco, o cal traizoou de forma atrevida,\n"
-#~ "A sÃºa casa rouba o Ouro do Basilisco.\n"
-#~ "(inscrito polo Guerreiro das Lapas)"
-
-#~ msgid "Xikkrisx"
-#~ msgstr "Xikkrisx"
-
-#, fuzzy
-#~ msgid ""
-#~ "Xikkrisx of Syrsszk was a powerful Saurian warrior, sent to this region "
-#~ "by the Elders of the Rysssrylosszkk Clan (translation: ''The Hunts-Foes-"
-#~ "In-Boiling-Rivers Clan''). The Elders were preparing to make war on a "
-#~ "human outpost, and were in great need of the powerful magics of Oxsrrsk, "
-#~ "a Saurian Mystic who had last been seen heading in the direction of "
-#~ "Ruaskkolin Lake. Xikkrisx found the petrified body of Oxsrrsk, along with "
-#~ "a carefully bound scroll that had apparently been dropped into a small "
-#~ "crevice in the cave floor. He opened the scroll and read a brief passage "
-#~ "from the middle of the text: ''After he was bound and cast from the Upper "
-#~ "World, Chak'kso's enraged spirit sought release, and was able to exert a "
-#~ "corrupting influence on certain regions of the Upper World, channeled "
-#~ "through ''pathways of stone'' that extend from the surface into the "
-#~ "depths of the Under Reaches. This rage altered the eggs of great lizards, "
-#~ "shaping their bodies and spirits into implements of Chak'kso's hatred.'' "
-#~ "Confused, Xikkrisx fixed his attention on the task at hand. Thinking that "
-#~ "perhaps the Elders could find some way to restore Oxsrrsk, he began the "
-#~ "long and strenuous task of hauling the statue back to the domain of the "
-#~ "Rysssrylosszkk Clan. Exhausted, and not having traveled far from the "
-#~ "lake, Xikkrisx set the statue down inside of a small cave, and lay down "
-#~ "to rest. He was awoken by a bone-chilling roar."
-#~ msgstr ""
-#~ "Xikkrisx of Syrsszk foi un loitador Saurio moi forte, enviado a esta "
-#~ "rexión polos Anciáns do Clan Rysssrylosszkk (traducción: \"O clan caza "
-#~ "adversarios no rio quente\"). Os anciáns estaban preparados de facela "
-#~ "guerra un posto de avanzadilla humano, e precisaban o poder da máxia de "
-#~ "Oxsrrsk, o Saurio Místico que foi encabezado na dirección do Río "
-#~ "Ruaskkolin. Xikkrisx atopou o corpo petrificado de Oxsrrsk,        nunha "
-#~ "pequena endidura no chan da cova. Abríu o pergamino e leeu un breve "
-#~ "pasaxe sobre no medio do texto: \"Despois de que fora atado e arroxado ó "
-#~ "Mundo Superior, Chak'kso's enfureceu"
-
-#~ msgid "Oxsrrsk"
-#~ msgstr "Oxsrrsk"
-
-#~ msgid ""
-#~ "Slim of Stature, dexterous Hands\n"
-#~ "- - Seven Stones and Eleven\n"
-#~ "Left his Foes so slim a Chance\n"
-#~ "- - Seven Stones and Eleven\n"
-#~ "Marksman known as Dragonbane\n"
-#~ "'mongst the Statues here was slain\n"
-#~ "- - Seven Stones - and the Elven\n"
-#~ "(inscribed by Gauteamus)"
-#~ msgstr ""
-#~ "De corpo alto, delgado e de gran habilidade\n"
-#~ "- - Sete Pedras e Once\n"
-#~ "DeixÃ³u Ã³s seus inimigos pouca oportunidade - -  Sete Pedras e Once\n"
-#~ "Arquero, Dragonbane era llamado\n"
-#~ "- - Sete Pedras - e os Elfos\n"
-#~ "Entre asestatuas foi asasinado\n"
-#~ "(inscrito por Gauteamus)"
-
-#~ msgid "Blum Duk"
-#~ msgstr "Blum Duk"
-
-#~ msgid ""
-#~ "Blum Duk was renowned among his goblin clan for having tamed one of the "
-#~ "Dire Wolves of the mountains, and he had the courage to match. His "
-#~ "leadership and skills alone were what kept the area's goblins alive "
-#~ "despite human and elvish menaces. Rumor had it that his wolf had slain "
-#~ "fifty men and a hundred Elves.\n"
-#~ "Thus, when he heard of the awful monster that was inhabiting the area, it "
-#~ "was only natural that he ride out alone to face it. All the other goblins "
-#~ "expected him to slay the creature easily and drag back its carcass to "
-#~ "feast on.\n"
-#~ "He was in for quite a shock. As soon as he saw the Basilisk, Blum Duk "
-#~ "cowered in fright. He tried to wheel his wolf around to run away, but it "
-#~ "wouldn't move. As the creature stalked towards him, he screamed his last "
-#~ "words: Good Gog, dog, are yer legs made of stone?!?\n"
-#~ "(inscribed by Elvish Pillager)"
-#~ msgstr ""
-#~ "Blum Duk tiÃ±a renome no seu clan de trasgos por domesticar os Lobos "
-#~ "veroces das montaÃ±as, e ter o coraxe de atopalos. O seu liderazgo e "
-#~ "habilidadas foron os que o manteron con vida na Ã¡rea dos trasgos, porÃ©n "
-#~ "das amenazas dos homes e elfos. O rumor dÃ­ que o seu lobo asasinou 5 "
-#~ "homes e centos de elfos.\n"
-#~ "Ata agora, cando escoitabas polo tremendo monstro que habitaba a Ã¡rea, "
-#~ "foi natural que se agardaran por atoparse sÃ³s. TÃ³dolos outros trasgos "
-#~ "esperabao para matar a criatura facilmente e facen un festÃ­in co "
-#~ "cadÃ¡ver.\n"
-#~ "Foi un pequeno golpe. Tan pronto como viron Ã³ Basilisco, a Blum Duk "
-#~ "cobreuno un medo tremendo. Tentou empurrar o seu lobo para escapar, pero "
-#~ "non se podÃ­a mover. Como a criatura seguÃ­a os seus pasos, gritou as "
-#~ "sÃºas Ãºltimas palabras: Meu deus, cadelo, Â¿estÃ¡n tÃºas pernas feitas "
-#~ "de rocha?!? \n"
-#~ "(inscrito por Elfo saqueador)"
-
-#~ msgid "Rah Ihn Mar"
-#~ msgstr "Rah Ihn Mar"
-
-#~ msgid ""
-#~ "Rah Ihn Mar, Champion of the Burning Hills, made his way to the "
-#~ "Ruaskkolin Lake region in pursuit of the Elvish Hero Terowydlithrol, "
-#~ "known amoung Elves as ''The Dragonbane.'' It was said that Terowydlithrol "
-#~ "had killed a Dragon of Fire that threatened an Elvish village, and "
-#~ "initiated a ''counterattack'' in which some 37 Drakes, camping in a "
-#~ "nearby ravine and believed to be in allegiance with the Dragon, were "
-#~ "slaughtered. Knowing that these Drakes were innocent, Rah Ihn Mar came to "
-#~ "Ruaskkolin Lake to hunt down and slay Terowydlithrol, who had been seen "
-#~ "entering the region but a day ago. Burning for vengeance, Rah Ihn Mar "
-#~ "began the hunt....."
-#~ msgstr ""
-#~ "Rah Ihn Mar, CampeÃ³n das Colinas Ardentes, recorrÃ©u seu camiÃ±o ata a "
-#~ "rexiÃ³n do lago Ruaskkolin na persecuciÃ³n do HÃ©roe Elfo Terowydlithrol, "
-#~ "coÃ±ecido entre os elfos como 'Aruina do DragÃ³n.''DÃ­xose que "
-#~ "Terowydlithrol matara a un dragÃ³n de lume que amenazaba una aldea "
-#~ "Ã©lfica, e iniciou un ''contraataque'' no que uns 37 Dracos, acampados "
-#~ "nun barranco cercano dos que se creÃ­a que eran aliados do DragÃ³n, foron "
-#~ "masacrados. Sabendo estos Dracos que eran inocentes, Rah Ihn Mar chegÃ³u "
-#~ "Ã³ lago Ruaskkolin a atrapar e matar Terowydlithrol, que foi visto "
-#~ "entrando na rexiÃ³n, pero un dÃ­a atrÃ¡s. Ardente de venganza, Rah Ihn "
-#~ "Mar comezou a caza....."
-
-#~ msgid ""
-#~ "He had lived there for ages upon ages, in the depths of the water, "
-#~ "preying upon the various fish and frogs and merfolk that entered his "
-#~ "domain. It was his lake, no other's, and though it was not large, he was "
-#~ "its master. Then, the Basilisk came, and looked into the Serpent's eyes. "
-#~ "And the Serpent had not died, but it was no longer alive. Thus the new "
-#~ "lord of the lake had arrived.\n"
-#~ "(inscribed by Turin)"
-#~ msgstr ""
-#~ "Vivimos anos tras anos, nas profundidades da auta, facendo vÃ­ctimas os "
-#~ "varios peixes e rÃ¡s e pobos que entraron nos nosos seus dominios. Este "
-#~ "foi o seu lago, non outros, e pensa que non Ã© grande, Ã©l foi o maestro. "
-#~ "Logo, Basilisk chegou, e mirou Ã³s ollos da Serpente. E a Serpente non "
-#~ "morreu, pero non vivÃ­u mÃ¡is. Dende entÃ³n o novo seÃ±or do lago chegou "
-#~ "(inscrito por Turin)"
-
-#~ msgid ""
-#~ "A brave hero of Wesnoth's Golden Age, this great rider and commander of "
-#~ "men came to this evil place while on a raid against the orcs. Caught "
-#~ "unaware by the foul creatures, many of his fellows were killed, but he "
-#~ "fought valiantly, slaying many a foe. But alas! The foul Basilisk turned "
-#~ "him to stone even as he slew the last orc. Now all that is left is a "
-#~ "stark reminder of his once great bearing and strength.\n"
-#~ "(inscribed by Fynmiir)"
-#~ msgstr ""
-#~ "Un  bravo heroe da Idade Dourada de Wesnoth, este gran xinete e "
-#~ "comandante dos homes viu a este maldito lugar  durante unha incursiÃ³n "
-#~ "contra os orcos. Collido desprevido polas noxentas criaturas, moitos dos "
-#~ "seus compaÃ±eiros foron matados, pero el loitou contra os inimigos "
-#~ "valentemente, matando moitos inimigos. Pero deus! O noxento Basilisco "
-#~ "converteuno en pedra de repente cando matou Ã³ Ãºltimo orco. Agora todo o "
-#~ "que queda Ã© crudo recordo da sÃºa orientaciÃ³n e forza.\n"
-#~ "(escrito por Fynmiir)"
-
-#~ msgid "Bramwythl"
-#~ msgstr "Bramwythl"
-
-#~ msgid ""
-#~ "Bramwythl the Wose was always considered a slow, taciturn fellow, even by "
-#~ "other Woses. More than any other Wose, he enjoyed simply standing alone "
-#~ "in the sun, arms upraised, admiring the beauty of the empty sky. Once, "
-#~ "even, he confided in a fellow that his greatest wish was to be able to "
-#~ "bask forever in the sun's glory.\n"
-#~ "However, not long after, the local wose community heard of the approach "
-#~ "of a horrible monster, powerful enough to easily destroy the few woses "
-#~ "that lived in the area. They quickly moved off (quickly for Woses, "
-#~ "anyway), but Bramwythl was left behind - in their haste, no one had "
-#~ "remembered to find him and tell him of the danger.\n"
-#~ "He was taken quite unawares by the Basilisk, and turned to stone before "
-#~ "he even recognized the beast. His petrified form still stands there "
-#~ "today, warmed by the sun's rays, under an open sky. His greatest wish has "
-#~ "been granted.\n"
-#~ "(inscribed by Elvish Pillager)"
-#~ msgstr ""
-#~ "Bramwythl o wose foi considerado sempre un compaÃ±eiro lento e taciturno, "
-#~ "incluso para os outros woses. Moito mÃ¡is que calqueira outro wose, "
-#~ "disfrutaba simplemente quedÃ¡ndose ante o sol, cos brazos en alto, "
-#~ "admirando a beleza do ceo limpo. De feito, unha vez, confesou a un compaÃ"
-#~ "±eiro que o seu  grande desexo era disfrutar para sempre da gloria do "
-#~ "sol.\n"
-#~ "Sin embargo, non moito mÃ¡is tarde, a comunidade local de woses ouiu do "
-#~ "acercamento dun horrible monstro, tan poderoso como para destruir con  "
-#~ "facilidade Ã³s poucos woses que vivÃ­an na zona. AlonxÃ¡ronse "
-#~ "rÃ¡pidamente (rÃ¡pido par os woses, de todos modos), pero  a Bramwythl "
-#~ "deixÃ¡rono atrÃ¡s. Na sÃºa precipitaciÃ³n, nadie se acordou de buscarlle "
-#~ "e avisarlle do peligro.\n"
-#~ "Foi pillado por sorpresa polo Basilisco, e convertido en pedra antes de "
-#~ "que sequera reconocera Ã¡ besta. A sÃºa forma petrificada aÃ­nda "
-#~ "permanece aquÃ­ hoxe, quentada polos raios do sol, baixo o ceo aberto. O "
-#~ "seu grande desexo foille  finalmente concedido.\n"
-#~ "(inscrito por Saqueador Elfo)"
-
-#~ msgid "Talael Ryndoc"
-#~ msgstr "Talael Ryndoc"
-
-#~ msgid ""
-#~ "General Talael Ryndoc came to this place to fight a duel with the Grand "
-#~ "Marshal Aethec Corryn, but the two men never found one another. "
-#~ msgstr ""
-#~ "O Xeneral Talael Ryndoc viu a este lugar para loitar nun duelo contra o "
-#~ "Gran Mariscal Aethen Corryn, pero os dous homes nunca se atoparon."
-
-#~ msgid "Aethec Corryn"
-#~ msgstr "Aethec Corryn"
-
-#~ msgid ""
-#~ "The last words spoken by Grand Marshal Aethec Corryn: ''Talael Ryndoc! I "
-#~ "am through searching for you! I shall make my way back to Haldric's Hall, "
-#~ "and inform the court that you were too much of a coward to attend our "
-#~ "duel! Your disgrace shall be more agonizing than the death I'd have given "
-#~ "you!''\n"
-#~ "\n"
-#~ "Perhaps he should not have shouted quite so loudly.... "
-#~ msgstr ""
-#~ "As Ãºltimas palabras ditas polo Gran Mariscal Aethec Corryn: \"Talael "
-#~ "Ryndoc! Estou buscandote! Farei o camiÃ±o de volta Ã³ Muro de Haldric, e "
-#~ "comunicareille Ã¡ corte que fuches demasiado cobarde para loitar no noso "
-#~ "duelo! A tÃºa desgracia serÃ¡ mÃ¡is agonizante que a morte que che tiÃ±a "
-#~ "dada!\"\n"
-#~ "\n"
-#~ "Quizais non deberÃ­a ter berrado tan forte..."
-
-#~ msgid "Rilhon"
-#~ msgstr "Rilhon"
-
-#~ msgid ""
-#~ "This brave warrior, known as Rilhon among the Naga, heard tell of a "
-#~ "fabulous treasure that had been lost in these watery caves- a spear whose "
-#~ "head was said to have been fashioned from the tooth of Chak'kso Ney'yks, "
-#~ "an Elder Basilisk slain long ago by the Elvish hero, Eloralduil. "
-#~ "According to the legend, the weapon rested somewhere on the bottom of "
-#~ "this very lake (Ruaskkolin Lake, named for a well-known Sea Serpent who "
-#~ "made it his home). Having prepared himself for battle with the Serpent, "
-#~ "Rilhon met with two rather large surprises. The first was the petrified "
-#~ "form of Ruaskkolin the Serpent. The second was the very-much-alive "
-#~ "Chak'kso Ney'yks, who was, oddly enough, in possession of all of his "
-#~ "teeth.\n"
-#~ "(inscribed by Paterson)"
-#~ msgstr ""
-#~ "Este valente guerreiro, coÃ±ecido como Rilhon entre os Naga, oÃ­u falar "
-#~ "de un fabuloso tesouro, que se perdera nesas hÃºmedas covas, unha lanza "
-#~ "cuxa punta decÃ­ase feita a partir do dende de Chak'kso Ney'yks, un "
-#~ "antigo bisilisco, morto facÃ­amoito polo hÃ©roe elfo Eloralduil. Segundo "
-#~ "a lenda a arma foi atopada depositada nalgÃºn lugar no fondo de este "
-#~ "mesmo lago (o lago Ruaskkolin, chamado asÃ­ debido a unha serpe de mar "
-#~ "moi coÃ±ecida, que fixo do lago o seu fogar). Habendose preparado a si "
-#~ "mesmo para loitar contra a serpe, Rilhon encontrouse con duas grandes "
-#~ "sorpresas. A primeira foi a petrificada forma de Ruaskkolin, a serpe. A "
-#~ "segunda foi un Chak'kso Nwy'yks ben vivo que estaba, desafortunadamente, "
-#~ "en posesiÃ³n de todos os seus dentes. (inscrito por Paterson)"
-
-#~ msgid ""
-#~ "Through waves and rocky channels\n"
-#~ "blue and white\n"
-#~ "she pulled and pushed the tides\n"
-#~ "and taught the fishes how to speak to planets\n"
-#~ "silver green\n"
-#~ "with magic\n"
-#~ "running from her spirit into skins of kelp and shells of snails\n"
-#~ "a twisting of her tail and hands\n"
-#~ "she sent her songs to run on pin-tipped legs about the sands\n"
-#~ "and now\n"
-#~ "and now the strangest pause\n"
-#~ "for years and years\n"
-#~ "she hasn't moved her eyes\n"
-#~ "\n"
-#~ "(inscribed by MJQ)"
-#~ msgstr ""
-#~ "A travÃ©s de canales rochosos e ondas azul e branco das mareas ela "
-#~ "empuxou e tirou e Ã³s peixes a lengua dos planetas mostrou plata e verde "
-#~ "manando do seu espÃ­rito enche algas e caracolas a sÃºa cola e as sÃºas "
-#~ "mÃ¡ns ela xirÃ³u e as sÃºas canciÃ³ns a correr pola area con patitas "
-#~ "enviÃ³u e agora e agora a pausa mÃ¡is extraÃ±a sucedeu por sÃ©culos os "
-#~ "seus ollos non moveu (inscrito por MJQ)"
-
-#~ msgid "2p - Cynsaun Battlefield"
-#~ msgstr "2 xog - Cynsaun Battlefield"
-
-#~ msgid " Recommended settings of 150 gold and 2 gold per village."
-#~ msgstr ""
-#~ " A configuraciÃ³n recomendada Ã© de 150 de ouro e 2 de ouro por vila."
-
-#~ msgid ""
-#~ "There is much to explore in this vast battlefront, designed for players "
-#~ "who favor epic, large-scale duel matches."
-#~ msgstr ""
-#~ "Hai moito mÃ¡is que explorar neste grande campo de batalla, deseÃ±ado por "
-#~ "xogadores que prefiren duelos Ã©picos e de gran escala."
-
-#~ msgid "2p - Dark Forecast (Survival)"
-#~ msgstr "6 xog - PronÃ³stico escuro (Supervivencia do Equipo)"
-
-#~ msgid ""
-#~ "Dark Forecast is a survival scenario for solitaire or two-player "
-#~ "teambased play against randomly AI spawned units. Victory is achieved by "
-#~ "surviving all enemy waves.  During the course of gameplay, the terrain "
-#~ "will change based on random weather effects."
-#~ msgstr ""
-#~ "O pronÃ³stico escuro Ã© un escenario de supervivencia para Ãºnicos "
-#~ "xogadores ou equipos de dous xogadores fronte a unidades dirixidas "
-#~ "aleatoriamente por IA. A victoria alcÃ¡nzase supervivindo a tÃ³dolos "
-#~ "ataques de inimigos. Durante o curso do xogo, o terreo cambiarÃ¡ "
-#~ "baseandose en trocos de tempo aleatorios."
-
-#~ msgid ""
-#~ "The screams and pleas for mercy are finally silenced, as you remove your "
-#~ "blood soaked blade from the last of the rebels. There will be no more "
-#~ "resistance from the local scum. Your reign has finally earned stability."
-#~ msgstr ""
-#~ "Os gritos e sÃºplicas para a compasiÃ³n son finalmente silenciados, cando "
-#~ "sÃ¡calo fio enchancado de sangue do Ãºltimo dos rebeldes. Non haberÃ¡ "
-#~ "mais resistencia da escoria local. O reinado conseguirÃ¡ finalmente a "
-#~ "estabilidade."
-
-#~ msgid ""
-#~ "The last and most powerful of these creatures are almost upon us. I feel "
-#~ "that if we can finish them off in time, we shall be victorious."
-#~ msgstr ""
-#~ "As Ãºltimas e mÃ¡is fortes destas criaturas estÃ¡n diante nosa. Sinto que "
-#~ "se podemos rematar con elas a tempo, podemos chegar Ã¡ victoria."
-
-#~ msgid "Heavy Snowfall"
-#~ msgstr "Nevada Forte"
-
-#~ msgid "Snowfall"
-#~ msgstr "Nevada"
-
-#~ msgid "Heavy Rains"
-#~ msgstr "Grande Chuvasco"
-
-#~ msgid "Drought"
-#~ msgstr "SequÃ­a"
-
-#~ msgid "Single player mode - uses the reduced strength spawns."
-#~ msgstr "Modo de xogador individual - emprega multitudes de forza reducida."
-
-#~ msgid "Two player mode - uses the full strength spawns."
-#~ msgstr "Modo de dous xogadores - emprega multitudes con forza completa."
-
-#~ msgid "Survive and defeat the waves of opposition."
-#~ msgstr "Sobrevivir e derrotar as ondas de oposiciÃ³n."
-
-#~ msgid "Defeat all waves"
-#~ msgstr "Derrota tÃ³dalas ondas."
-
-#~ msgid "Lose all your team's leaders"
-#~ msgstr "Perdeches a tÃ³dolos lÃ­deres do teu equipo."
-
-#~ msgid "Dark Forecast - a random survival scenario"
-#~ msgstr "PronÃ³stico escuro - un escenario de supervivencia aleatorio."
-
-#~ msgid ""
-#~ "Your aim is to survive the spawning waves and defeat the final arch-"
-#~ "enemies.\n"
-#~ "       \n"
-#~ "The spawning waves are generated randomly and will different each time "
-#~ "Dark Forecast is played.\n"
-#~ "\n"
-#~ "\n"
-#~ "They appear along the north, south and west map edges - though they are "
-#~ "most likely to spawn on the west edge. The spawn waves appear at somewhat "
-#~ "regular intervals.\n"
-#~ "\n"
-#~ "\n"
-#~ "The weather will also change randomly, affecting the layout of the map.\n"
-#~ "\n"
-#~ "\n"
-#~ "\n"
-#~ "#Dark Forecast was made by:\n"
-#~ "\n"
-#~ "@jb\n"
-#~ "- map design, spawn groups and scenario concept\n"
-#~ "\n"
-#~ "@Rhuvaen\n"
-#~ "- WML implementation"
-#~ msgstr ""
-#~ "O teu obxetivo Ã© sobrevivir Ã¡s ondas de multitudes e derrotar o archi-"
-#~ "inimigo final.\n"
-#~ "       \n"
-#~ "As ondas de multitude son xeradas aleatoriamente e serÃ¡n diferentes cada "
-#~ "vez que sexa xogado PronÃ³stico Oscuro \n"
-#~ "\n"
-#~ "\n"
-#~ "Aparecen dende os extremos norte, sur, e este do mapa - pensa que Ã© "
-#~ "mÃ¡is provÃ¡bel que aparezan dende o extremo este.As ondas de multitude "
-#~ "aparecerÃ¡n en intervalos regulares.\n"
-#~ "\n"
-#~ "\n"
-#~ "A climatoloxÃ­a tamÃ©n cambiarÃ¡ aleatoriamente, afenctando Ã¡ capa do "
-#~ "mapa.\n"
-#~ "\n"
-#~ "\n"
-#~ "\n"
-#~ "#PronÃ³stico oscuro foi creado por:\n"
-#~ "\n"
-#~ "@jb\n"
-#~ "- deseÃ±o dos mapas, grupod de multitude e concepto do escenario\n"
-#~ "\n"
-#~ "@Rhuvaen\n"
-#~ "- implementaciÃ³n WML"
-
-#~ msgid "So this is the accursed valley - a land ours for the taking."
-#~ msgstr "Este Ã© o maldito val - unha terra que nos fai sobrecoller."
-
-#~ msgid ""
-#~ "The inhabitants are rumored to be a strange alliance of man and beast, "
-#~ "and our claim is not going to be unopposed. We must be prepared for the "
-#~ "surprises of this land."
-#~ msgstr ""
-#~ "Dos habitantes rumorÃ©ase que son estraÃ±as misturas de home e besta, a "
-#~ "nosa reclamaciÃ³n Ã© non ser opoÃ±entes. DeberÃ­amos estar preparados "
-#~ "para as sorpresas de esta terra"
-
-#~ msgid ""
-#~ "Then let us discover what lies in waiting and teach them not to oppose "
-#~ "our claim."
-#~ msgstr ""
-#~ "EntÃ³n deixanos descobrir que mentiras nos estÃ¡n agardando e ensinarlle "
-#~ "a non opoÃ±erse Ã¡ nosa reclamaciÃ³n."
-
-#~ msgid ""
-#~ "Ugh!  How can this be?  Defeated by mere barbarians! My gods have "
-#~ "forsaken me..."
-#~ msgstr ""
-#~ "Ugh! Â¿Como pode ser?  Derrotados por bÃ¡rbaros! Os meus deuses "
-#~ "olvidÃ¡ronse de min..."
-
-#~ msgid ""
-#~ "Cheers of your enemy are the last thing you hear as you slip into death..."
-#~ "their joy fills your last moments with pure hate."
-#~ msgstr ""
-#~ "Saludos do teu inimigo Ã© a Ãºltima cousa que escoitas mentras te "
-#~ "deslizas cara a morte... a sÃºa alegrÃ­a enche os teus Ãºltimos momentos "
-#~ "con puro odio."
-
-#~ msgid ""
-#~ "The enemy cheers as a dark mist rises from the land, engulfing you. As "
-#~ "ghostly wisps drain away your will, you realize that your time in this "
-#~ "land is over."
-#~ msgstr ""
-#~ "O inimigo animase como crece a nÃ©boa escura deste paÃ­s, tragÃ¡ndonos. "
-#~ "Como unha espiral fantasmagÃ³rica, daraste de conta de que o teu tempo "
-#~ "nesta terra estÃ¡ a rematar."
-
-#~ msgid "2p - Den of Onis"
-#~ msgstr "2 xog - O tobo de Onis"
-
-#~ msgid ""
-#~ "Danger lurks around every corner in this underground battlefield, a duel "
-#~ "map where players must find the balance between force and subterfuge."
-#~ msgstr ""
-#~ "O perigo acecha detrÃ¡s de cada esquina neste campo de batalla "
-#~ "subterrÃ¡neo, un mapa para duelos onde os xogadores deben atopar o "
-#~ "equilibrio entre a forza e o subterfugio."
-
-#~ msgid " Recommended setting of 2 gold per village."
-#~ msgstr " ConfiguraciÃ³n recomendada 2 de ouro por vila."
-
-#~ msgid "2p - Fallenstar Lake"
-#~ msgstr "2 xog - Lago de Fallenstar"
-
-#~ msgid ""
-#~ "Long ago, a great star fell from the heavens, leaving its mark on this "
-#~ "coniferous region."
-#~ msgstr ""
-#~ "Hai moito tempo, unha gran estrela caiu dende os ceos, deixando a sÃºa "
-#~ "marca nesta rexiÃ³n de conÃ­feras."
-
-#~ msgid "teamname^West"
-#~ msgstr "Oeste"
-
-#~ msgid "teamname^East"
-#~ msgstr "Leste"
-
-#~ msgid "2p - Hamlets"
-#~ msgstr "2 xog - Hamlets"
-
-#~ msgid ""
-#~ "Warfare transforms the simple farms and villages of a peaceful region "
-#~ "into a subtly parceled battlefield."
-#~ msgstr ""
-#~ "A guerra transforma as sinxelas granxas e vilas dunha rexiÃ³n pacÃ­fica "
-#~ "nun campo de batalla sutilmente entregado."
-
-#~ msgid "2p - Hornshark Island"
-#~ msgstr "2 xog - Illa de Hornshark"
-
-#~ msgid ""
-#~ "Players must navigate the dispersive terrain of this small but "
-#~ "topographically dense island."
-#~ msgstr ""
-#~ "Os xogadores deben navegar polo terreo disperso desta pequena pero "
-#~ "topogrÃ¡ficamente densa illa."
-
-#~ msgid "2p - Sablestone Delta"
-#~ msgstr "2 xog. - Delta do Sable de Pedra"
-
-#~ msgid ""
-#~ "Two armies collide on this disjointed coastal landscape of hidden caves "
-#~ "and jagged rivers."
-#~ msgstr ""
-#~ "As dÃºas armadas colisionan neste paisaxe costeiro separado das covas "
-#~ "escondidas e rÃ­os dentados."
-
-#~ msgid "2p - Silverhead Crossing"
-#~ msgstr "2 xog - Encrucillada de Silverhead"
-
-#~ msgid ""
-#~ "Players must traverse all manner of terrain in pursuit of victory on this "
-#~ "multi-fronted duel map."
-#~ msgstr ""
-#~ "Os xogadores deben atravesar todo tipo de terreos para conseguir a "
-#~ "victoria neste mapa de duelo de varias frontes."
-
-#~ msgid "statue"
-#~ msgstr "estatua"
-
-#~ msgid "This is a sculpture made of stone."
-#~ msgstr "Esta Ã© unha escultura feita de pedra."
-
-#~ msgid "2p - Sullas Ruins"
-#~ msgstr "2 xog - As RuÃ­nas de Sulla"
-
-#~ msgid ""
-#~ "Flooded by the seas and battered by the winter elements, only ruins, "
-#~ "water and ice now remain in the shadow of this once mighty empire."
-#~ msgstr ""
-#~ "Innundados polos ocÃ©anos e maltratado polos ventos, sÃ³ as ruÃ­nas, a "
-#~ "auga e o xeo permanecen agora na sombra deste unha vez marabilloso "
-#~ "imperio."
-
-#~ msgid "Statue of Sulla"
-#~ msgstr "Estatua de Sulla"
-
-#~ msgid ""
-#~ "A stone-carved likeness of Sulla the Great, also known as Sulla the Just, "
-#~ "Sulla the Tyrant, Empress of the Sinking Tower, Lady of the Walking "
-#~ "Glacier, Sulla the Incinerator, Sulla the Proud and Sulla the Righteous."
-#~ msgstr ""
-#~ "Un sÃ­mil tallado en pedra de Sulla a Grande, tamÃ©n coÃ±ecida como Sulla "
-#~ "a xusta, Sulla a tirana, Emperatriz da Torre que se Hunde, SeÃ±ora dos "
-#~ "Glaciares Andantes, Sulla a incineradora, Sulla a Orgullosa e Sulla a "
-#~ "Recta."
-
-#~ msgid "Statue of Lhun-dup"
-#~ msgstr "Estatua de Lhun-dup"
-
-#~ msgid "A stone-carved likeness of Lhun-dup, Servant of Sulla."
-#~ msgstr "Unha pedra esculpida a semellanza de Lhun-dup, Servidor de Sulla"
-
-#~ msgid "Statue of Ri-nzen"
-#~ msgstr "Estatua de Ri-nzen"
-
-#~ msgid "A stone-carved likeness of Ri-nzen, Servant of Sulla."
-#~ msgstr "Unha pedra esculpida a semellanza de Ri-nzen, Servidor de Sulla"
-
-#~ msgid "Statue of Ten-zin"
-#~ msgstr "Estatua de Ten-zin"
-
-#~ msgid "A stone-carved likeness of Ten-zin, Servant of Sulla."
-#~ msgstr "Unha pedra esculpida a semellanza de Ten-zin, Servidor de Sulla"
-
-#~ msgid "Statue of Lo-bsang"
-#~ msgstr "Estatua de Lo-bsang"
-
-#~ msgid "A stone-carved likeness of Lo-bsang, Servant of Sulla."
-#~ msgstr "Unha pedra esculpida a semellanza de Lo-bsang, Servidor de Sulla"
-
-#~ msgid "2p - The Freelands"
-#~ msgstr "2 xog. - As terras libres"
-
-#~ msgid "A duel map for super fast play."
-#~ msgstr "Un mapa de duelo para un xogo super rÃ¡pido."
-
-#~ msgid "2p - Weldyn Channel"
-#~ msgstr "2 xog - Canle de Weldyn"
-
-#~ msgid "2p - Wesbowl"
-#~ msgstr "2 xog - Wesbowl"
-
-#~ msgid ""
-#~ "In Wesbowl, a player has to get any of the balls to the other player's "
-#~ "end zone as often as possible. However, the other player can attack your "
-#~ "units. Wesbowl is played with blunt weapons, and healers are on hand, so "
-#~ "when units are killed, they return to that player's end zone with an "
-#~ "injury."
-#~ msgstr ""
-#~ "En Wesbowl, un xogador ten que botar as bÃ³las na zona do outro xogador "
-#~ "tanto como lle sexa posible. Sen embargo, o outro xogador pode atacar Ã¡s "
-#~ "tÃºas unidades. En Wesbowl xÃ³gase con armas romas, e os sandadores "
-#~ "estÃ¡n na tua man, asÃ­ que cando as unidades morren volven Ã³s seus "
-#~ "xogadores Ã³ final da zona con unha lesiÃ³n."
-
-#~ msgid ""
-#~ "\n"
-#~ "Victory:\n"
-#~ "@Move either ball to your opponent's end zone more times than they move a "
-#~ "ball to yours.\n"
-#~ "Defeat:\n"
-#~ "#Opponent moves the balls to your end zone more times than you move them "
-#~ "to the opponent's end zone"
-#~ msgstr ""
-#~ "\n"
-#~ "Victoria:\n"
-#~ "@Mover calqueira balÃ³n Ã¡ parte do fondo do seu opoÃ±ente mÃ¡is veces eu "
-#~ "a tÃºa\n"
-#~ "Derrota:\n"
-#~ "#El oponente move mÃ¡is balÃ³ns e a sÃºa parte do fondo que vostede Ã¡ "
-#~ "sÃºa."
-
-#~ msgid "Red scores! Current score is $redscore-$bluescore"
-#~ msgstr "PuntÃºan os vermellos! A puntuaciÃ³n actual Ã© $redscore-$bluescore"
-
-#~ msgid "Blue scores! Current score is $redscore-$bluescore"
-#~ msgstr "PuntÃºan os azuis! A puntuaciÃ³n actual Ã© $redscore-$bluescore"
-
-#~ msgid "Should I pass the ball to $passto.type ($xloc,$yloc)?"
-#~ msgstr "Â¿DeberÃ­Â­a pasar a pelota a $passto.type ($xloc,$yloc)?"
-
-#~ msgid "Yes!"
-#~ msgstr "Si!"
-
-#~ msgid "No"
-#~ msgstr "Non"
-
-#~ msgid "Blue team wins! Final score: $redscore-$bluescore"
-#~ msgstr "GaÃ±ou o equipo Azul! PuntuaciÃ³n final: $redscore-$bluescore"
-
-#~ msgid "Red team wins! Final score: $redscore-$bluescore"
-#~ msgstr "GaÃ±ou o equipo Vermello! PuntuaciÃ³n final: $redscore-$bluescore"
-
-#~ msgid "Draw! Final score: $redscore-$bluescore"
-#~ msgstr "Empate! PuntuaciÃ³n final: $redscore-$bluescore"
-
-#~ msgid "3p - Alirok Marsh"
-#~ msgstr "3 xog. - A malaria Alirok"
-
-#~ msgid "Three players come head to head on this water-cut battlefield."
-#~ msgstr "Tres xogadores enfrÃ³ntanse neste campo de batalla de auga."
-
-#~ msgid "3p - Island of the Horatii"
-#~ msgstr "3 xog. - A Illa dos Horatii"
-
-#~ msgid ""
-#~ "Controlling the central island is often the key to victory in this "
-#~ "21x21hex 3 player free for all map."
-#~ msgstr ""
-#~ "Controlando a illa central Ã© normalmente a chave da victoria neste "
-#~ "21x21hex  3 xogadores libres por todo o mapa."
-
-#~ msgid "3p - Morituri"
-#~ msgstr "3 xog - Morituri"
-
-#~ msgid ""
-#~ "Only one faction will emerge victorious from this tightly bordered three-"
-#~ "player map."
-#~ msgstr ""
-#~ "SÃ³ unha facciÃ³n chegarÃ¡ victoriosa de este mapa axustado de tres "
-#~ "xogadores "
-
-#~ msgid "4p - Blue Water Province"
-#~ msgstr "4 xog - Provincia de Augazul"
-
-#~ msgid ""
-#~ "Historians write that Bluewater Province has been destroyed and rebuilt "
-#~ "some twenty times. Now, as armies once again converge on the rocky "
-#~ "streams and snowcapped mountains of this small province, its villagers "
-#~ "hardly seem to take notice."
-#~ msgstr ""
-#~ "Os historiadores escribiron que a Provincia de Augazul foi destruÃ­da e "
-#~ "reconstruÃ­da unhas vinte veces. Agora, outra vez os exÃ©rcitos converxen "
-#~ "nos rochosos e nevados regatos desta pequena provincia, os seus "
-#~ "habitantes  semellan alarmarse."
-
-#~ msgid "teamname^Team 1"
-#~ msgstr "Equipo 1"
-
-#~ msgid "teamname^Team 2"
-#~ msgstr "Equipo 2"
-
-#~ msgid "4p - Castle Hopping Isle"
-#~ msgstr "4 xog - A Illa dos Castelos Escondidos"
-
-#~ msgid "Hop from castle to castle while fighting over a central isle."
-#~ msgstr "Salta de castelo en castelo mentras lita sobre una illa central."
-
-#~ msgid "4p - Clash"
-#~ msgstr "4 xog - Choque"
-
-#~ msgid "Small map for 2 vs. 2."
-#~ msgstr "Pequeno mapa para 2 contra 2."
-
-#~ msgid "4p - Hamlets"
-#~ msgstr "4 xog - Pobo"
-
-#~ msgid "4p - Isar's Cross"
-#~ msgstr "4 xog - Cruce de Isar"
-
-#~ msgid ""
-#~ "A very small 2 vs. 2 map. Close quarters fighting means the successful "
-#~ "rotation of units and planning of moves is important. Teams set for "
-#~ "players 1&4 vs. 2&3 (northeast vs. southwest). Designed for 75 starting "
-#~ "gold, 20 villages."
-#~ msgstr ""
-#~ "Un mapa moi pequeno para xogar 2 contra 2. Combatir en tan pouco espacio "
-#~ "significa que Ã© importante a rotaciÃ³n satisfactoria de unidades e a "
-#~ "planificaciÃ³n de movementos. Os equipos establÃ©cense cos xogadores 1 3 "
-#~ "4 contra 2 e 3 (nordeste contra suroeste). DeseÃ±ado para 75 pezas de "
-#~ "ouro iniciais, 20 aldeas."
-
-#~ msgid "teamname^South-West"
-#~ msgstr "Sudoeste"
-
-#~ msgid "teamname^North-East"
-#~ msgstr "Nordeste"
-
-#~ msgid "4p - King of the Hill"
-#~ msgstr "4 xog - Rei do Outeiro"
-
-#~ msgid ""
-#~ "Controlling the area around the central keep is very lucrative in this "
-#~ "36X36 4 player FFA map. Works fine 2 vs. 2 as well. There are 36 villages."
-#~ msgstr ""
-#~ "Controlando a Ã¡rea Ã³ redor do centro Ã© moi lucrativo en mapas FFA "
-#~ "63x63 de 4 xogadores. Funciona ben en 2 vs. 2 tamÃ©n. Hai 36 pobos."
-
-#~ msgid " Recommended setting of 2 gold per village and 150 starting gold."
-#~ msgstr ""
-#~ " ConfiguraciÃ³n recomendada de 2 de ouro por vila e comezar con 150 de "
-#~ "ouro."
-
-#~ msgid "teamname^South-East"
-#~ msgstr "Sueste"
-
-#~ msgid "teamname^North-West"
-#~ msgstr "Noroeste"
-
-#~ msgid " Recommended setting of 1 gold per village."
-#~ msgstr " ConfiguraciÃ³n recomendada de 1 de ouro por vila."
-
-#~ msgid "Four factions contend for dominance over this watery settlement."
-#~ msgstr ""
-#~ "Catro facciÃ³ns enfrÃ³ntanse por dominar este establecemento na auga."
-
-#~ msgid "4p - Loris River"
-#~ msgstr "4 xog - RÃ­o Loris"
-
-#~ msgid ""
-#~ "A 25x25 2 vs. 2 map centered around a river with keeps in opposite "
-#~ "corners. Designed for players 1&4 vs. 2&3. There are 28 villages."
-#~ msgstr ""
-#~ "Un mapa de 25x25 de 2 vs. 2 sobre un rio que os mantÃ©n en esquinas "
-#~ "distintas. DeseÃ±ado por xogadores 1&4 vs. 2&3. Hai 28 pobos."
-
-#~ msgid "4p - Morituri"
-#~ msgstr "4 xog - Morituri"
-
-#~ msgid "Who will emerge from the confines of this perilous battlefield?"
-#~ msgstr "Â¿Quen emerxerÃ¡ dos confÃ­ns de este peligroso campo de batalla?"
-
-#~ msgid "4p - Paths of Daggers"
-#~ msgstr "4 xog - Sendas das dagas"
-
-#~ msgid " Recommended setting of 2 gold per village, 28 villages."
-#~ msgstr " ConfiguraciÃ³n recomendada de 2 de ouro por vila, 28 vilas."
-
-#~ msgid ""
-#~ "A 35X27 2 vs. 2 map with 5 separate paths of engagement. Balanced to be "
-#~ "played east vs. west (1&4 vs. 2&3), but works well with any teams or FFA."
-#~ msgstr ""
-#~ "Un mapa de 35x27 e 2 contra 2 con 5 sendas de combate separadas. EstÃ¡ "
-#~ "balanceado para que xogue o este contra o oeste (1 e 4 contra 2 e 3), "
-#~ "pero funciona ben con calqueira equipo o todos contra todos."
-
-#~ msgid "4p - Siege Castles"
-#~ msgstr "4 xog - Asedia os castelos"
-
-#~ msgid ""
-#~ "40X30 4 player map where 4 mighty castles face off at the convergence of "
-#~ "two rivers. Works well as 2 vs. 2 or FFA. There are approximately 45 "
-#~ "villages."
-#~ msgstr ""
-#~ "Mapa de 40x30 e 4 xogadores con 4 poderosos castelos enfrentados na "
-#~ "converxencia de dous rÃ­os. Funciona ben como 2 contra 2 ou como todos "
-#~ "contra todos. Hai aproximadamente 45 aldeas."
-
-#~ msgid "4p - The Wilderlands"
-#~ msgstr "4 xog - Os pÃ¡ramos"
-
-#~ msgid ""
-#~ "A vast region of wild, untamed wilderness, its terrain dotted with "
-#~ "forests, caves, rivers, and the ruins of ancient fortresses."
-#~ msgstr ""
-#~ "Unha vasta rexiÃ³n de aridez indomable, salpicada de bosques, covas, rÃ­"
-#~ "os, e as ruinas de antigas fortalezas."
-
-#~ msgid "4p - Xanthe Chaos"
-#~ msgstr "4 xog - O caos de Xanthe"
-
-#~ msgid ""
-#~ "A 24X28 2 vs. 2 map with auxiliary keeps, and a large messy battle in the "
-#~ "center common."
-#~ msgstr ""
-#~ "Un mapa de 28X28 e 2 contra 2, con torreÃ³ns auxiliares e unha grande e "
-#~ "caÃ³tica batalla no centro comÃºn."
-
-#~ msgid "5p - Auction-X"
-#~ msgstr "5 xog - Subasta-X"
-
-#~ msgid ""
-#~ "4 players surround a central keep, play vs the AI survival style, or as a "
-#~ "FFA or 4 vs. 1. The center player will need more gold in a 4 vs. 1 or "
-#~ "FFA, and the best way to determine how much is an auction, LOWEST bid "
-#~ "wins. It is a very small map so 75 gold is recommended for the other "
-#~ "players."
-#~ msgstr ""
-#~ "4 xogadores rodean un torreÃ³n central, xogando contra a intelixencia "
-#~ "artificial en modo supervivencia, todos contra todos ou catro contra Ãºn. "
-#~ "O xogador central necesitarÃ¡ mÃ¡is diÃ±eiro cando se xogue a catro "
-#~ "contra Ãºn ou a todos contra todos e a mellor maneira de determinar canto "
-#~ "Ã© mediante unha subasta, a MÃIS BAIXA gana. Ã un mapa moi pequeno polo "
-#~ "que se recomenda 75 de ouro para tÃ³dolos xogadores."
-
-#~ msgid "teamname^Northeast"
-#~ msgstr "Nordeste"
-
-#~ msgid "teamname^Southeast"
-#~ msgstr "Sudeste"
-
-#~ msgid "teamname^Southwest"
-#~ msgstr "Sudoeste"
-
-#~ msgid "teamname^Northwest"
-#~ msgstr "Noroeste"
-
-#~ msgid "teamname^Center"
-#~ msgstr "Centro"
-
-#~ msgid "5p - Forest of Fear"
-#~ msgstr "5 xog - Bosque do medo"
-
-#~ msgid "In this mixed landscape, five armies battle for supremacy."
-#~ msgstr "En este escenario mixto, 5 exÃ©rcitos combaten pola supremacÃ­a."
-
-#~ msgid "6p - Amohsad Caldera"
-#~ msgstr "6 xog - A caldeira de Arnohsad"
-
-#~ msgid ""
-#~ "Only a true tactician will survive in this deadly and confining "
-#~ "battlefield, where six boxed-in armies come to a head."
-#~ msgstr ""
-#~ "SÃ³ un autÃ©ntico estratega sobrevivirÃ¡ neste cmapo de batalla mortal e "
-#~ "acotado, onde 6 exÃ©rcitos encaxonados se medirÃ¡n as forzas."
-
-#~ msgid "6p - Crusaders' Field"
-#~ msgstr "6 xog -Campos cruzados."
-
-#~ msgid ""
-#~ "The rallying cries of battle can once again be heard on this time-worn "
-#~ "field of war, where the ghosts of thousands of brave warriors float "
-#~ "invisibly through the mountains, trees and rivers."
-#~ msgstr ""
-#~ "Os gritos da batalla poden escoitarse de novo neste campo de batalla "
-#~ "desgastado polo tempo, onde os fantasmas de miles de bravos guerreiros "
-#~ "flotan invisibles entre as montaÃ±as, arbores e rÃ­os."
-
-#~ msgid "6p - Hexcake"
-#~ msgstr "6 xog - Pastel hexagonal"
-
-#~ msgid "2 vs. 2 or 3 vs. 3 team game."
-#~ msgstr "xogo de 2 contra 2 ou 3 contra 3."
-
-#~ msgid "Turn 2: Loyalists"
-#~ msgstr "Turn 2: Leais"
-
-#~ msgid "Turn 5: Knalgans"
-#~ msgstr "Turno 5: Knalgans"
-
-#~ msgid "Turn 8: Rebels"
-#~ msgstr "Turno 8: Rebeldes"
-
-#~ msgid "Turn 11: Northerners"
-#~ msgstr "Turno 11: NorteÃ±os"
-
-#~ msgid "Turn 14: Drakes"
-#~ msgstr "Turno 14: Dracos"
-
-#~ msgid "Turn 17: Undead"
-#~ msgstr "Turno 17: Non Mortos"
-
-#~ msgid "Tower of Doom"
-#~ msgstr "Torre da fatalidade"
-
-#~ msgid "6p - Team Survival"
-#~ msgstr "6 xog - Supervivencia do Equipo"
-
-#~ msgid "Scenario where the objective is to survive for as long as possible."
-#~ msgstr ""
-#~ "Escenario no que o obxectivo Ã© sobrevivir tanto tempo como sexa posible."
-
-#~ msgid "Survive for 32 turns."
-#~ msgstr "Sobrevive 32 turnos."
-
-#~ msgid "Hint: Learning the enemy spawnpoints and types helps alot."
-#~ msgstr ""
-#~ "Pista: Aprender  onde recluta o inimigo as sÃºas unidades e de que tipo "
-#~ "son pode serche de moita axuda."
-
-#~ msgid "Survive all enemy attacks."
-#~ msgstr "Sobrevive a tÃ³dolos ataques dos inimigos."
-
-#~ msgid "Death of your team leaders."
-#~ msgstr "Morte dos lÃ­deres do teu equipo."
-
-#~ msgid ""
-#~ "Congratulations for surviving the map that so many people claim is "
-#~ "impossible. Frankly, I haven't got a clue as to how you did it, so send "
-#~ "me the replay by mail to: roze@roze.mine.nu. Thank You!"
-#~ msgstr ""
-#~ "Noraboa por sobrevivir Ã³ mapa que tanta xente protesta de que Ã© "
-#~ "imposible. Francamente, non teÃ±o nin idea de como o fixeches, asÃ­ que "
-#~ "enviame a reproduciÃ³n por correo a: roze@roze.mine.nu. Moitas Grazas!"
-
-#~ msgid "Death"
-#~ msgstr "Morte"
-
-#~ msgid ""
-#~ "You have lost this game, but fear not. You can always try again. And "
-#~ "again. And again. *Muahahaha*"
-#~ msgstr ""
-#~ "Perdiches esta partida, pero non temas. Sempre poderÃ¡s intentalo outra "
-#~ "vez. E outra. E outra. *Muahahaha*"
-
-#~ msgid "Attacker"
-#~ msgstr "Atacante"
-
-#~ msgid "Defender"
-#~ msgstr "Defensor"
-
-#~ msgid "6p - The Manzivan Traps"
-#~ msgstr "6 xog - As trampas manzivanas"
-
-#~ msgid ""
-#~ "A 40X20 3 vs. 3 map. The Manzivan Traps are widely known as a difficult "
-#~ "and confusing area of terrain where it is easy to end up out of position "
-#~ "or over extended. Teams set for players 145 vs. 236 (east vs west). "
-#~ "Designed for 100 starting gold, has 33 villages."
-#~ msgstr ""
-#~ "Un mapa de 40x20 e 3 contra 3. As trampas manzivanas son ampliamente coÃ"
-#~ "±ecidas como un Ã¡rea difÃ­cil e confusa de terreno onde Ã© fÃ¡cil "
-#~ "terminar fora de lugar ou sobrepasado. Os equipos establÃ©cense cos "
-#~ "xogadores 1, 4 e 5 contra 2, 3 e 6 (este contra oeste). DeseÃ±ado para "
-#~ "100 pezas de ouro iniciais, ten 33 aldeas."
-
-#~ msgid "6p - Waterloo Sunset"
-#~ msgstr "6 xog - Ocaso de Waterloo"
-
-#~ msgid ""
-#~ "A 40X30 3 vs. 3 map. Flexible coordination of your alliance is required "
-#~ "to avoid being outnumbered. Teams set for players 145 vs. 236 (north vs. "
-#~ "south), but having players 146 or 136 as a team is also interesting. "
-#~ "Designed for 150 starting gold, has 44 villages."
-#~ msgstr ""
-#~ "Un mapa de 40x30 e 3 contra 3. Ã necesaria unha coordinaciÃ³n flexible da "
-#~ "sÃºa alianza para evitar ser superado en nÃºmero. Os equipos "
-#~ "establÃ©cense cos xogadores 1, 4 e 5 contra 2, 3 e 6 (norte contra sur), "
-#~ "pero tamÃ©n pode ser interesante establecer un equipo cos xogadores 1, 4 "
-#~ "e 6 ou  1, 3 e 6. DeseÃ±ado para 150 pezas de ouro iniciais, ten 44 "
-#~ "aldeas."
-
-#~ msgid "8p - Mokena Prairie"
-#~ msgstr "8 xog - Pradeira Mokena"
-
-#~ msgid ""
-#~ "Inspired from Morituri, this 8 player map creates an epic battle scene "
-#~ "that requires two teams to coordinate on both offense and defense."
-#~ msgstr ""
-#~ "Inspirado en Morituri, este mapa de 8 xogadores crea unha escena de "
-#~ "batalla Ã©pica que require que dous equipos se coordinen tanto para "
-#~ "atacar coma para defenderse."
-
-#~ msgid "teamname^east"
-#~ msgstr "leste"
-
-#~ msgid "teamname^west"
-#~ msgstr "oeste"
-
-#~ msgid "8p - Morituri"
-#~ msgstr "8 xog - Morituri"
-
-#~ msgid ""
-#~ "Teamwork and tactics are key to victory in this unusual battlefield, "
-#~ "where eight armies fight to the finish."
-#~ msgstr ""
-#~ "O traballo en equipo e as tÃ¡cticas son a clave da victoria neste campo "
-#~ "de batalla pouco habitual, no cal oito exÃ©rcitos loitan ata a fin."
-
-#~ msgid "9p - Merkwuerdigliebe"
-#~ msgstr "9 xog - Merkwuerdigliebe"
-
-#~ msgid ""
-#~ "A very small 3 vs. 3 vs. 3 map. A 60sec timer is recommended due to the "
-#~ "large number of players. The teams are players 159 vs. 267 vs. 348 (north "
-#~ "vs. southeast vs. southwest). There are very few villages per player, so "
-#~ "3 gold per villages is recommended."
-#~ msgstr ""
-#~ "Un mapa moi pequeno de 3 contra 3. RecomÃ©ndse establecer un tempo lÃ­"
-#~ "mite de 60 segundos debido Ã³ gran nÃºmero de xogadores. Os equipos sonos "
-#~ "xogadores 1, 5 e 9 contra 3, 4 e 8 (norte contra sudoeste contra "
-#~ "sudoeste). Hai moi poucas aldeas por xogador, polo que se recomenda "
-#~ "tamÃ©n 3 pezas de ouro por aldea."
-
-#~ msgid "Random map"
-#~ msgstr "Mapa aleatorio"
-
-#~ msgid ""
-#~ "Randomly generated map. Note: random maps are often unbalanced, but if "
-#~ "you have time, you can regenerate them until you get a good one."
-#~ msgstr ""
-#~ "Mapa xerado de forma aleatoria. Nota: os mapas aleatorios a miÃºdo estÃ¡n "
-#~ "desequilibrados, pero se tes tempo, podes volvelo xerar ata que obteÃ±as "
-#~ "un correcto."
-
-#~ msgid "Random map (Desert)"
-#~ msgstr "Mapa aleatorio (Deserto)"
-
-#~ msgid ""
-#~ "A random map with sand as the primary terrain. Note: random maps are "
-#~ "often unbalanced, but if you have time, you can regenerate them until you "
-#~ "get a good one."
-#~ msgstr ""
-#~ "Un mapa aleatorio con area coma terreo principal. Nota: os mapas "
-#~ "aleatorios a miÃºdo estÃ¡n desequilibrados, pero se tes tempo, podes "
-#~ "volvelo xerar ata que obteÃ±as un correcto."
-
-#~ msgid "Random map (Marsh)"
-#~ msgstr "Mapa aleatorio (Marismas)"
-
-#~ msgid ""
-#~ "A random map with swamp as the primary terrain. Note: random maps are "
-#~ "often unbalanced, but if you have time, you can regenerate them until you "
-#~ "get a good one."
-#~ msgstr ""
-#~ "Un mapa aleatorio con braÃ±as coma terreo principal. Nota: os mapas "
-#~ "aleatorios a miÃºdo estÃ¡n desequilibrados, pero se tes tempo, podes "
-#~ "volvelo xerar ata que obteÃ±as un correcto."
-
-#~ msgid "Random map (Winter)"
-#~ msgstr "Mapa aleatorio (Inverno)"
-
-#~ msgid ""
-#~ "A random map set in the break between spring and winter, mainly with "
-#~ "snowy terrains. Note: random maps are often unbalanced, but if you have "
-#~ "time, you can regenerate them until you get a good one."
-#~ msgstr ""
-#~ "Un mapa aleatorio situado entre a primavera e o inverno, con sobre todo "
-#~ "terreos nevados. Nota: os mapas aleatorios a miÃºdo estÃ¡n "
-#~ "desequilibrados, pero se tes tempo, podes volvelo xerar ata que obteÃ±as "
-#~ "un correcto."
-
-#~ msgid "Wesnoth Benchmark: AI"
-#~ msgstr "Proba de rendemento de Wesnoth: Intelixencia Artificial"
-
-#~ msgid ""
-#~ "A wesnoth benchmark, use --nogui --no-delay --multiplayer --"
-#~ "scenario=wesbench_ai --exit-at-end."
-#~ msgstr ""
-#~ "Unha proba de rendemento de wesnoth, usa --nogui --no-delay --multiplayer "
-#~ "--scenario=wesbench_ai --exit-at-end."
-
-#~ msgid "Wesnoth Benchmark: Scrolling"
-#~ msgstr "Proba de rendemento de Wesnoth: Desplazamento"
-
-#~ msgid ""
-#~ "A wesnoth benchmark, use --no-delay --multiplayer --"
-#~ "scenario=wesbench_scroll --exit-at-end."
-#~ msgstr ""
-#~ "A wesnoth benchmark, use --no-delay --multiplayer --"
-#~ "scenario=wesbench_scroll --exit-at-end."
-
-#~ msgid "Wesnoth Benchmark: Walking through Shroud"
-#~ msgstr "Proba de rendemento de Wesnoth: Andando a travÃ©s da escuridade."
-
-#~ msgid ""
-#~ "A wesnoth benchmark, use --no-delay --multiplayer --"
-#~ "scenario=wesbench_shroud_walk --exit-at-end."
-#~ msgstr ""
-#~ "Unha proba de rendemento de wesnoth, usa --no-delay --multiplayer --"
-#~ "scenario=wesbench_shroud_walk --exit-at-end."
+msgstr "_Fondo:"

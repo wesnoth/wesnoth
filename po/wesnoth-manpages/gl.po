@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "POT-Creation-Date: 2008-11-18 22:07+0100\n"
-"PO-Revision-Date: 2008-10-05 13:18+0100\n"
+"PO-Revision-Date: 2008-11-19 17:09+0100\n"
 "Last-Translator: Leandro Regueiro <leandro DOT regueiro AT gmail DOT com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "MIME-Version: 1.0\n"
@@ -130,7 +130,7 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:52
 #, fuzzy, no-wrap
 msgid "B<--config-dir>I<\\ name>"
-msgstr "B<--load>I<\\ partidagardada>"
+msgstr "Re_nomear Capa..."
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:57
@@ -143,7 +143,7 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:57
 #, fuzzy, no-wrap
 msgid "B<--config-path>"
-msgstr "B<--path>"
+msgstr "Pechando o camiño."
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:60
@@ -185,7 +185,7 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:68
 #, fuzzy, no-wrap
 msgid "B<-e, --editor>"
-msgstr "B<-t, --test>"
+msgstr "Editor de _XML..."
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:71
@@ -265,7 +265,7 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:93
 #, fuzzy, no-wrap
 msgid "B<-l,\\ --load>I<\\ file>"
-msgstr "B<--load>I<\\ partidagardada>"
+msgstr "Ficheiro PDF"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:105
@@ -398,7 +398,7 @@ msgstr "amosa o nome do directorio de datos do xogo e sae."
 #: ../../doc/man/wesnoth.6:144
 #, fuzzy, no-wrap
 msgid "B<--python-api>"
-msgstr "B<--path>"
+msgstr "_Executar Python"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:147
@@ -409,7 +409,7 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:147
 #, fuzzy, no-wrap
 msgid "B<--python-shell>"
-msgstr "B<--path>"
+msgstr "_Executar Python"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:150
@@ -501,7 +501,7 @@ msgstr "executa o xogo nunha ventá."
 #: ../../doc/man/wesnoth.6:173
 #, fuzzy, no-wrap
 msgid "B<--with-replay>"
-msgstr "B<--no-delay>"
+msgstr "<b>Estrela</b> de %d vértice"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:178
@@ -1225,117 +1225,3 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:206
 msgid "B<wesnoth>(6), B<wesnoth_editor>(6)"
 msgstr "B<wesnoth>(6), B<wesnoth_editor>(6)"
-
-# type: TP
-#~ msgid "B<--compress>I<\\ infile\\ outfile>"
-#~ msgstr "B<--compress>I<\\ ficheiroentrada\\ ficheirosaída>"
-
-# type: Plain text
-#~ msgid ""
-#~ "compresses a savefile (I<infile>)  that is in text WML format into binary "
-#~ "WML format (I<outfile>)."
-#~ msgstr ""
-#~ "comprime un ficheiro de partida gardada (I<ficheiroentrada>)  que está en "
-#~ "formato WML de texto a formato WML binario (I<ficheirosaída>)."
-
-# type: TP
-#~ msgid "B<--decompress>I<\\ infile\\ outfile>"
-#~ msgstr "B<--decompress>I<\\ ficheiroentrada\\ ficheirosaída>"
-
-# type: Plain text
-#~ msgid ""
-#~ "decompresses a savefile (I<infile>)  that is in binary WML format into "
-#~ "text WML format (I<outfile>)."
-#~ msgstr ""
-#~ "descomprime un ficheiro de partida gardada (I<ficheiroentrada>)  que está "
-#~ "en formato WML binario a formato WML de texto (I<ficheirosaída>)."
-
-# type: Plain text
-#~ msgid "loads the file savegame from the standard save game directory."
-#~ msgstr ""
-#~ "carga o ficheiro de partida gardada dende o directorio estándar de "
-#~ "partidas gardadas."
-
-# type: TH
-#~ msgid "WESNOTH_EDITOR"
-#~ msgstr "WESNOTH_EDITOR"
-
-# type: TH
-#~ msgid "wesnoth_editor"
-#~ msgstr "wesnoth_editor"
-
-# type: Plain text
-#~ msgid "Battle for Wesnoth map editor"
-#~ msgstr "Editor de mapas de Battle for Wesnoth"
-
-# type: Plain text
-#~ msgid "wesnoth_editor - Battle for Wesnoth map editor"
-#~ msgstr "wesnoth_editor - Editor de Mapas de Battle for Wesnoth"
-
-# type: Plain text
-#~ msgid "B<wesnoth_editor> [I<OPTIONS>] [I<MAP>]"
-#~ msgstr "B<wesnoth_editor> [I<OPCIÓNS>] [I<MAPA>]"
-
-# type: Plain text
-#~ msgid "Battle for B<Wesnoth> map editor."
-#~ msgstr "Editor de mapas de Battle for B<Wesnoth>."
-
-# type: TP
-#~ msgid "B<--bpp>\\ number"
-#~ msgstr "B<--bpp>\\ número"
-
-# type: TP
-#~ msgid "B<--datadir>"
-#~ msgstr "B<--datadir>"
-
-# type: Plain text
-#~ msgid "selects the data directory to use."
-#~ msgstr "selecciona o directorio de datos a usar."
-
-# type: TP
-#~ msgid "B<-f>,B<\\ --fullscreen>"
-#~ msgstr "B<-f>,B<\\ --fullscreen>"
-
-# type: Plain text
-#~ msgid "runs the editor in full screen mode."
-#~ msgstr "executa o editor a pantalla completa."
-
-# type: TP
-#~ msgid "B<-h>,B<\\ --help>"
-#~ msgstr "B<-h>,B<\\ --help>"
-
-# type: TP
-#~ msgid "B<--log->levelB<=>domain1B<,>domain2B<,>..."
-#~ msgstr "B<--log->nivelB<=>dominio1B<,>dominio2B<,>..."
-
-# type: Plain text
-#~ msgid "sets screen resolution. Example: B<-r 800x600>"
-#~ msgstr "establece a resolución da pantalla. Por exemplo: B<-r 800x600>"
-
-# type: TP
-#~ msgid "B<-v>,B<\\ --version>"
-#~ msgstr "B<-v>,B<\\ --version>"
-
-# type: Plain text
-#~ msgid "prints version number and exits."
-#~ msgstr "amosa o número de versión e sae."
-
-# type: TP
-#~ msgid "B<-w>,B<\\ --windowed>"
-#~ msgstr "B<-w>,B<\\ --windowed>"
-
-# type: Plain text
-#~ msgid "runs the editor in windowed mode."
-#~ msgstr "executa o editor nunha ventá."
-
-# type: Plain text
-#~ msgid ""
-#~ "Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt> and ott "
-#~ "E<lt>ott@gaon.netE<gt>."
-#~ msgstr ""
-#~ "Editado por Nils KneuperE<lt>crazy-ivanovic@gmx.netE<gt> e ott "
-#~ "E<lt>ott@gaon.netE<gt>."
-
-# type: Plain text
-#~ msgid "B<wesnoth>(6), B<wesnothd>(6)"
-#~ msgstr "B<wesnoth>(6), B<wesnothd>(6)"

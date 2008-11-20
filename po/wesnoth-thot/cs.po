@@ -14,8 +14,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-11-18 22:06+0100\n"
-"PO-Revision-Date: 2008-10-31 15:31+0100\n"
-"Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
+"PO-Revision-Date: 2008-11-20 09:51+0100\n"
+"Last-Translator: Septim <septim@centrum.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -594,9 +594,8 @@ msgstr "Podivné spojenectví"
 # Jméno
 #. [side]: type=Orcish Warrior
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:43
-#, fuzzy
 msgid "Marth-Tak"
-msgstr "Marth Tak"
+msgstr "Marth-Tak"
 
 # Jméno
 #. [side]: type=Outlaw
@@ -689,9 +688,8 @@ msgstr "Za Alianci! Do zbraně!"
 # Návěští scénáře
 #. [objective]: condition=win
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:192
-#, fuzzy
 msgid "Help Marth-Tak defeat Gothras"
-msgstr "Pomoz Marth Takovi porazit Gothrase "
+msgstr "Pomoz Marth-Takovi porazit Gothrase "
 
 # Návěští scénáře
 #. [objective]: condition=lose
@@ -712,9 +710,8 @@ msgstr "Angarthing zemře"
 # Návěští scénáře
 #. [objective]: condition=lose
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:204
-#, fuzzy
 msgid "Death of Marth-Tak"
-msgstr "Marth Tak zemře"
+msgstr "Marth-Tak zemře"
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:222
@@ -1024,9 +1021,8 @@ msgstr ""
 # říká objevitel Rathelna (trpaslík)
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:244
-#, fuzzy
 msgid "Pardon my curiosity, but what is a fire-mage doing freezing to death?"
-msgstr "Odpusť mi moji zvědavost, ale jak může mág kouzlící oheň umrznout?"
+msgstr "Odpusť mi můj zvědavavý údiv, ale jak může mág kouzlící oheň umrznout?"
 
 # říká Ratheln (člověk)
 #. [message]: speaker=Ratheln
@@ -1102,11 +1098,10 @@ msgstr "Zase začalo sněžit. Postupujte rychleji! Pokud tu uvízneme, zemřeme
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:311
-#, fuzzy
 msgid ""
 "We're snowed in. Our mission has failed, even if we live until the spring."
 msgstr ""
-"Zapadli jsme. I kdybychom přežili do jara, stejně je naše mise ztracena!"
+"Zapadli jsme. I kdybysme přežili do jara, stejně je naše mise ztracena!"
 
 # říká Aiglondur (trpaslík)
 #. [message]: speaker=Aiglondur
@@ -2398,9 +2393,8 @@ msgstr "Za hodinu"
 # říká Aiglondur (trpaslík)
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1059
-#, fuzzy
 msgid "The door is about to give. Brace yourselves, everyone."
-msgstr "Jo, vypadá to, že dveře jsou načaté. Teď všichni zaberem!"
+msgstr "Vypadá to, že dveře jsou načaté. Teď všichni zaberem!"
 
 # říká Karrag (lich)
 #. [message]: speaker=Karrag
@@ -2616,12 +2610,13 @@ msgstr ""
 "všeobecně neznámá. Ke schopnostem dohlížitelů se u nich, díky studiu rostlin "
 "a minerálů, přidává schopnost uzdravovat otravu. "
 
+# morgenštern
 #. [attack]: type=impact
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Loremaster.cfg:42
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Witness.cfg:44
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Annalist.cfg:39
 msgid "morningstar"
-msgstr ""
+msgstr "kropáč"
 
 # zbraň
 #. [attack]: type=impact
@@ -2804,7 +2799,6 @@ msgstr "inspirující"
 
 #. [leadership]
 #: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:15
-#, fuzzy
 msgid ""
 "Inspire:\n"
 "This unit can inspire own L0 or L1 units that are next to it, making them "
@@ -2818,7 +2812,6 @@ msgstr ""
 
 #. [leadership]
 #: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:47
-#, fuzzy
 msgid ""
 "Inspire:\n"
 "This unit can inspire own L0, L1, or L2 units that are next to it, making "
@@ -2833,7 +2826,6 @@ msgstr ""
 
 #. [leadership]
 #: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:91
-#, fuzzy
 msgid ""
 "Inspire:\n"
 "This unit can inspire own L0, L1, L2, or L3 units that are next to it, "
@@ -2974,7 +2966,3 @@ msgstr ""
 #: data/campaigns/The_Hammer_of_Thursagan/utils/macros.cfg:332
 msgid "I sense wrongness. Some greater evil awakens before us."
 msgstr "Cítím špatnost. Probouzí se nějaké velké zlo."
-
-# zbraň
-#~ msgid "chainmace"
-#~ msgstr "řemdih"
