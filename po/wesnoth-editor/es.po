@@ -6,13 +6,14 @@
 # Isaac Clerencia <isaac@warp.es>, 2006.
 # Roberto Romero <sildurin@gmail.com>, 2007.
 # Sergi March <sergi.march@gmail.com>, 2008.
+# Ignacio R. Morelle <shikadilord@users.sourceforge.net>, 2008.
 msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-11-09 21:11+0100\n"
-"PO-Revision-Date: 2008-01-20 22:39+0100\n"
-"Last-Translator: Sergi March <sergi.march@gmail.com>\n"
+"PO-Revision-Date: 2008-11-19 20:39-0300\n"
+"Last-Translator: Ignacio R. Morelle <shikadilord@users.sourceforge.net>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -73,27 +74,27 @@ msgstr "castillo"
 #. [editor_group]
 #: data/core/editor-groups.cfg:77
 msgid "special"
-msgstr ""
+msgstr "especial"
 
 #. [brush]
 #: data/core/editor2-brushes.cfg:4
 msgid "Single Hex"
-msgstr ""
+msgstr "Un hexágono"
 
 #. [brush]
 #: data/core/editor2-brushes.cfg:14
 msgid "Radius 1 Hex"
-msgstr ""
+msgstr "Hexágonos en radio 1"
 
 #. [brush]
 #: data/core/editor2-brushes.cfg:24
 msgid "Radius 2 Hex"
-msgstr ""
+msgstr "Hexágonos en radio 2"
 
 #. [brush]
 #: data/core/editor2-brushes.cfg:54
 msgid "Hex Line NW-SE"
-msgstr ""
+msgstr "Línea de hexágonos NO-SE"
 
 #. [editor2_tool_hint]
 #: data/core/editor2-tool-hints.cfg:7 data/core/editor2-tool-hints.cfg:13
@@ -101,6 +102,9 @@ msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only"
 msgstr ""
+"Use el botón izquierdo o derecho del ratón para dibujar terreno de primer "
+"plano o de fondo, respectivamente. Mantenga presionado SHIFT para dibujar "
+"sólo en la capa de fondo."
 
 #. [editor2_tool_hint]
 #: data/core/editor2-tool-hints.cfg:19
@@ -108,6 +112,9 @@ msgid ""
 "Left mouse button selects, right deselects. Hold Shift for magic-wand "
 "selection of tiles with same terrain"
 msgstr ""
+"El botón izquierdo del ratón selecciona, y el derecho anula la selección. "
+"Mantenga SHIFT presionado para seleccionar casillas adyacentes del mismo "
+"terreno (\"varita mágica\")."
 
 #. [editor2_tool_hint]
 #: data/core/editor2-tool-hints.cfg:25
@@ -116,11 +123,15 @@ msgid ""
 "scroll to the starting position, alt+number sets respective starting "
 "position under cursor, delete clears."
 msgstr ""
+"El botón izquierdo del ratón permite seleccionar un jugador, y el izquierdo "
+"lo quita. Las teclas numéricas desplazan la vista a la ubicación inicial; ALT"
+"+número establece la ubicación inicial respectiva bajo el puntero, y "
+"SUPRIMIR la elimina."
 
 #. [editor2_tool_hint]
 #: data/core/editor2-tool-hints.cfg:30
 msgid "Click to paste."
-msgstr ""
+msgstr "Haga clic para pegar."
 
 #. [menu]
 #: data/themes/editor2.cfg:120
@@ -135,7 +146,7 @@ msgstr "Editar"
 #. [menu]
 #: data/themes/editor2.cfg:141
 msgid "Map"
-msgstr ""
+msgstr "Mapa"
 
 #. [label]
 #: data/themes/editor2.cfg:252
@@ -148,36 +159,36 @@ msgstr "Salir del editor"
 
 #: src/editor2/editor_controller.cpp:220
 msgid "Fatal error"
-msgstr ""
+msgstr "Error grave"
 
 #: src/editor2/editor_controller.cpp:228
 msgid "Do you really want to quit?"
-msgstr ""
+msgstr "¿Realmente desea salir?"
 
 #: src/editor2/editor_controller.cpp:231
 msgid "There are unsaved changes in the map."
-msgstr ""
+msgstr "Hay cambios sin guardar en el mapa."
 
 #: src/editor2/editor_controller.cpp:233
 msgid "Quit"
-msgstr ""
+msgstr "Salir"
 
 #: src/editor2/editor_controller.cpp:243 src/editor2/editor_controller.cpp:345
 #: src/editor2/editor_controller.cpp:381 src/editor2/editor_controller.cpp:403
 msgid "Error"
-msgstr ""
+msgstr "Error"
 
 #: src/editor2/editor_controller.cpp:243
 msgid "No editor time-of-day found"
-msgstr ""
+msgstr "No se encontró una hora del día para el editor"
 
 #: src/editor2/editor_controller.cpp:276
 msgid "There are unsaved changes in the map"
-msgstr ""
+msgstr "Hay cambios sin guardar en el mapa"
 
 #: src/editor2/editor_controller.cpp:277
 msgid "Do you want to discard all changes you made to the map?"
-msgstr ""
+msgstr "¿Desea abandonar todos los cambios efectuados en el mapa?"
 
 #: src/editor2/editor_controller.cpp:290
 msgid "Choose a Map to Load"
@@ -193,29 +204,28 @@ msgstr "El mapa ya existe. ¿Desea sobreescribirlo?"
 
 #: src/editor2/editor_controller.cpp:345
 msgid "No random map generators found"
-msgstr ""
+msgstr "No se encontraron generadores de mapa aleatorio"
 
 #: src/editor2/editor_controller.cpp:356
 msgid "Map creation failed."
-msgstr ""
+msgstr "Falló la creación del mapa."
 
 #: src/editor2/editor_controller.cpp:371
-#, fuzzy
 msgid "Choose a mask to apply"
-msgstr "Escoja un mapa a cargar"
+msgstr "Escoja una máscara a aplicar"
 
 #: src/editor2/editor_controller.cpp:378
 msgid "Error loading mask"
-msgstr ""
+msgstr "Error al cargar la máscara"
 
 #: src/editor2/editor_controller.cpp:393
 msgid "Choose target map"
-msgstr ""
+msgstr "Escoja mapa de destino"
 
 #: src/editor2/editor_controller.cpp:400 src/editor2/editor_controller.cpp:508
 #: src/editor2/editor_main.cpp:50
 msgid "Error loading map"
-msgstr ""
+msgstr "Error al cargar el mapa"
 
 #: src/editor2/editor_controller.cpp:489
 msgid "Map saved."
@@ -231,7 +241,7 @@ msgstr "Deshacer"
 
 #: src/editor2/editor_controller.cpp:851
 msgid "Can't Undo"
-msgstr ""
+msgstr "No se puede deshacer"
 
 #: src/editor2/editor_controller.cpp:855
 msgid "Redo"
@@ -239,19 +249,19 @@ msgstr "Rehacer"
 
 #: src/editor2/editor_controller.cpp:857
 msgid "Can't Redo"
-msgstr ""
+msgstr "No se puede rehacer"
 
 #: src/editor2/editor_map.cpp:62
 msgid "Empty map file or file not found"
-msgstr ""
+msgstr "Archivo de mapa vacío o inexistente"
 
 #: src/editor2/editor_map.cpp:70
 msgid "There was a format error while loading the file:"
-msgstr ""
+msgstr "Ocurrió un error de formato al cargar el archivo:"
 
 #: src/editor2/editor_map.cpp:76
 msgid "There was a wml error while loading the file:"
-msgstr ""
+msgstr "Ocurrió un error de WML al cargar el archivo:"
 
 #: src/editor2/editor_map.cpp:149 src/editor2/mouse_action.cpp:379
 msgid "Player"
@@ -259,7 +269,7 @@ msgstr "Jugador"
 
 #: src/editor2/editor_map.cpp:268
 msgid "The size of the target map is different from the current map"
-msgstr ""
+msgstr "El tamaño del mapa de destino difiere del mapa actual"
 
 #: src/editor2/editor_palettes.cpp:494
 msgid "FG"
@@ -270,99 +280,21 @@ msgid "BG"
 msgstr "Fondo"
 
 #: src/editor2/mouse_action.cpp:376
-#, fuzzy
 msgid "(Player)^None"
-msgstr "Jugador"
+msgstr "Ninguno"
 
 #: src/editor2/mouse_action.cpp:383
 msgid "Choose player"
-msgstr ""
+msgstr "Escoja un jugador"
 
 #: src/editor2/mouse_action.cpp:384
 msgid ""
 "Which player should start here? You can also use the 1-9 and delete keys to "
 "set/clear staring positions."
 msgstr ""
+"¿Qué jugador debe comenzar aquí? También puede utilizar las teclas 1-9 y "
+"Suprimir para establecer/quitar ubicaciones iniciales."
 
 #: src/gui/dialogs/editor_settings.cpp:105
 msgid "Custom setting"
-msgstr ""
-
-#~ msgid "Settings"
-#~ msgstr "Ajustes"
-
-#~ msgid "Draw tiles"
-#~ msgstr "Dibujar casillas"
-
-#~ msgid "Fill"
-#~ msgstr "Rellenar"
-
-#~ msgid "Set player's starting position"
-#~ msgstr "Colocar posición de inicio del jugador"
-
-#~ msgid "Zoom in"
-#~ msgstr "Acercar"
-
-#~ msgid "Zoom out"
-#~ msgstr "Alejar"
-
-#~ msgid "Zoom to default view"
-#~ msgstr "Nivel de acercamiento predeterminado"
-
-#~ msgid "Toggle grid"
-#~ msgstr "Activar rejilla"
-
-#~ msgid "Resize the map"
-#~ msgstr "Cambiar el tamaño del mapa"
-
-#~ msgid "Flip map"
-#~ msgstr "Voltear mapa"
-
-#~ msgid "Update transitions"
-#~ msgstr "Actualizar transiciones"
-
-#~ msgid "Delay transition updates"
-#~ msgstr "Retraso entre las actualizaciones de la transición"
-
-#~ msgid "Language"
-#~ msgstr "Idioma"
-
-#~ msgid "Choose your preferred language:"
-#~ msgstr "Elija su idioma preferido:"
-
-#~ msgid "Battle for Wesnoth Map Editor"
-#~ msgstr "Editor de mapas de La batalla por Wesnoth"
-
-#~ msgid "None"
-#~ msgstr "Nada"
-
-#~ msgid "Which Player?"
-#~ msgstr "¿Qué jugador?"
-
-#~ msgid "Which player should start here?"
-#~ msgstr "¿Qué jugador debería empezar aquí?"
-
-#~ msgid ""
-#~ "Warning: Illegal characters found in the map name. Please save under a "
-#~ "different name."
-#~ msgstr ""
-#~ "Aviso: Se han encontrado caracteres inválidos en el nombre del mapa. Ha "
-#~ "de guardarlo con un nombre diferente."
-
-#~ msgid "The file does not contain a valid map."
-#~ msgstr "El fichero no contiene un mapa válido."
-
-#~ msgid "Do you want to save the map before quitting?"
-#~ msgstr "¿Desea guardar el mapa antes de salir?"
-
-#~ msgid "Error: Illegal character in filename."
-#~ msgstr "Error: Carácter inválido en el nombre del fichero."
-
-#~ msgid ""
-#~ "Can't resize the map, the requested size is bigger than the maximum, size="
-#~ msgstr ""
-#~ "No se puede redimensionar el mapa, el tamaño solicitado es mayor que el "
-#~ "máximo, tamaño="
-
-#~ msgid " maximum="
-#~ msgstr " máximo="
+msgstr "Personalizado"
