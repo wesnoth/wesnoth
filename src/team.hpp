@@ -135,7 +135,7 @@ public:
 	bool get_village(const map_location&);
 	void lose_village(const map_location&);
 	void clear_villages() { villages_.clear(); }
-	const std::set<map_location>& villages() const { std::cerr << name() << villages_.size() << " "; return villages_; }
+	const std::set<map_location>& villages() const { return villages_; }
 	bool owns_village(const map_location& loc) const
 		{ return villages_.count(loc) > 0; }
 

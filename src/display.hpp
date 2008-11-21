@@ -286,7 +286,7 @@ public:
 	 */
 	virtual void invalidate_animations_location(const map_location& /*loc*/) {}
 
-	const gamemap& get_map()const { return *map_; }
+	const gamemap& get_map() const { return *map_; }
 
 	/**
 	 * The last action in drawing a tile is adding the overlays.
