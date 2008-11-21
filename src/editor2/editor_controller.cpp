@@ -301,7 +301,9 @@ void editor_controller::close_current_context()
 	if (map_contexts_.size() == 1) {
 		create_default_context();
 		map_contexts_.erase(map_contexts_.begin());
-	} else if (current_context_index_ == map_contexts_.size() - 1) {
+	} else if (current_context_index_ == 
+			static_cast<int>(map_contexts_.size()) - 1) {
+
 		map_contexts_.pop_back();
 		current_context_index_--;
 	} else {
@@ -311,9 +313,9 @@ void editor_controller::close_current_context()
 	delete current;
 }
 
-void editor_controller::switch_context(int index)
+void editor_controller::switch_context(const int index)
 {
-	if (index < 0 || index >= map_contexts_.size()) {
+	if (index < 0 || static_cast<size_t>(index) >= map_contexts_.size()) {
 		WRN_ED << "Invalid index in switch map context: " << index << "\n";
 		return;
 	}
@@ -944,7 +946,7 @@ void editor_controller::expand_open_maps_menu(std::vector<std::string>& items)
 		if (items[i] == "editor-switch-map") {
 			items.erase(items.begin() + i);
 			std::vector<std::string> contexts;
-			for (int mci = 0; mci < map_contexts_.size(); ++mci) {
+			for (size_t mci = 0; mci < map_contexts_.size(); ++mci) {
 				std::string filename = map_contexts_[mci]->get_filename();
 				if (filename.empty()) {
 					filename = _("(New Map)");
