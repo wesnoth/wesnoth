@@ -96,7 +96,7 @@ void get_player_info(const config& cfg, game_state& gamestate,
 
 	LOG_NG << "set gold to '" << ngold << "'\n";
 
-	team temp_team(cfg, ngold);
+	team temp_team(cfg, map, ngold);
 	teams.push_back(temp_team);
 
 	// Update/fix the recall list for this side,

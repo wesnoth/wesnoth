@@ -22,10 +22,12 @@
 #include "game_events.hpp"
 #include "gamestatus.hpp"
 #include "log.hpp"
+#include "map.hpp"
 #include "network.hpp"
 
 
 #define LOG_NG LOG_STREAM(info, engine)
+#define WRN_NG LOG_STREAM(warn, engine)
 
 namespace {
 	std::vector<team>* teams = NULL;
@@ -420,7 +422,7 @@ void team::merge_shroud_map_data(const std::string& shroud_data)
 	shroud_.merge(shroud_data);
 }
 
-team::team(const config& cfg, int gold) : 
+team::team(const config& cfg, const gamemap& map, int gold) : 
 		gold_(gold),
 		villages_(),
 		shroud_(),
@@ -454,7 +456,12 @@ team::team(const config& cfg, int gold) :
 	// Load in the villages the side controls at the start
 	const config::child_list& villages = cfg.get_children("village");
 	for(config::child_list::const_iterator v = villages.begin(); v != villages.end(); ++v) {
-		villages_.insert(map_location(**v,game_events::get_state_of_game()));
+		map_location loc(**v,game_events::get_state_of_game());
+		if (map.is_village(loc)) {
+			villages_.insert(loc);
+		} else {
+			WRN_NG << "[side] " << name() << " [village] points to a non-village location " << loc << "\n";
+		}
 	}
 
 	countdown_time_=lexical_cast_default<int>(cfg["countdown_time"],0);
