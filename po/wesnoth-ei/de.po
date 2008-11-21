@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-11-18 22:05+0100\n"
-"PO-Revision-Date: 2008-10-31 15:32+0100\n"
+"PO-Revision-Date: 2008-11-21 20:31+0100\n"
 "Last-Translator: Nils Kneuper <crazy-ivanovic  AT gmx  D O  T net>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "MIME-Version: 1.0\n"
@@ -82,9 +82,8 @@ msgstr "Betreuung"
 
 #. [about]
 #: data/campaigns/Eastern_Invasion/_main.cfg:37
-#, fuzzy
 msgid "Campaign Epilogue and Continuity"
-msgstr "Kampagnenepilog und -fortsetzung"
+msgstr "Kampagnenepilog und -zusammenhang"
 
 #. [about]
 #: data/campaigns/Eastern_Invasion/_main.cfg:43
@@ -172,17 +171,21 @@ msgid ""
 "eye and hand firmly on the settled country to either side of the lower "
 "Weldyn. He sent two of the most promising young officers to them."
 msgstr ""
+"Aufgrund der unbekannten Feinde Wesnoths im Osten entschied sich Konrad II "
+"dazu die Außenposten am Fluss wiederaufzubauen und erneut zu bemannen, so "
+"dass das die Krone fest über die Siedlungen an beiden Seiten des Weldyn "
+"wachen konnte. Er entsandte zwei vielversprechende, junge Offiziere, dieser "
+"Aufgabe nachzukommen."
 
 #. [part]
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:44
-#, fuzzy
 msgid ""
 "To the northern outpost he sent Owaec, a clan noble. To the southern "
 "outpost, he sent Gweddry, who would be accompanied by Dacyn the mage. It is "
 "with them this story is concerned."
 msgstr ""
 "In den nördlichen Außenposten entsandte er Owaec, der den Respekt der Sippen "
-"inne hatte. In den mittleren Außenposten entsandte er Gweddry, welchem er "
+"inne hatte. In den südlichen Außenposten entsandte er Gweddry, welchem er "
 "Dacyn, den Magier, zur Seite stellte. Von diesen beiden handelt die nun "
 "folgende Geschichte."
 
@@ -1634,7 +1637,7 @@ msgstr ""
 #. [message]: speaker=Wak-Rano
 #: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:144
 msgid "Arrgh! I have failed to defend the northern homeland!"
-msgstr ""
+msgstr "Arrgh! Ich habe es nicht geschafft meine Heimat zu verteidigen!"
 
 #. [message]: speaker=Mal-Arnai
 #: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:164
@@ -1974,7 +1977,6 @@ msgstr ""
 
 #. [message]: speaker=Pelathsil
 #: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:146
-#, fuzzy
 msgid "Impossible! I canna' believe any of my kin would ha' helped a human!"
 msgstr ""
 "Unmöglich! Ich kann nicht glauben, dass meine Artgenossen einem Menschen "
@@ -2598,7 +2600,6 @@ msgstr "Es würde uns gar nicht helfen! Die Untoten würden uns alle töten!"
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:354
-#, fuzzy
 msgid ""
 "Have you not heard what Dacyn said? Either the orcs or undead will kill us "
 "no matter what we do. Our only hope was to isolate ourselves on the Isle of "
@@ -2608,8 +2609,8 @@ msgstr ""
 "Habt ihr nicht gehört, was Dacyn gerade gesagt hat? Egal was wir machen, "
 "entweder töten uns die Orks oder die Untoten. Unsere letzte Hoffnung war es, "
 "uns auf der Insel Vrug zu verbarrikadieren. Davon sind wir aber nun zu weit "
-"entfernt als das wir zurückkehren könnten. Außerdem haben wir die Orks auf "
-"uns aufmerksam gemacht. Wenn wir also schon keine Hoffnung haben..."
+"entfernt, als dass wir zurückkehren könnten. Außerdem haben wir die Orks auf "
+"uns aufmerksam gemacht. Wenn wir also schon keine Hoffnung haben, dann..."
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:358
@@ -3317,7 +3318,7 @@ msgstr "Mal-Drakanal"
 #: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:112
 #: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:193
 msgid "?"
-msgstr ""
+msgstr "?"
 
 #. [objective]: condition=lose
 #: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:144
@@ -3326,7 +3327,6 @@ msgstr "Ihr lasst einen Feind in eure Festung eindringen"
 
 #. [message]: speaker=Mal-Drakanal
 #: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:163
-#, fuzzy
 msgid ""
 "You people are fools! You rejected my master's offer to duel... very well, "
 "you will ALL die! And know this; my master is here to enjoy your demise. For "
@@ -3339,8 +3339,9 @@ msgstr ""
 "zurückzuweisen... nun werdet ihr alle sterben! Mein Meister ist hier um "
 "euren Untergang zu beobachten. Er fürchtet euch nicht im geringsten, da er "
 "weiß, dass ihr nie in der Lage sein werdet, ihn zu finden und zu töten. Hier "
-"sind sieben von uns und nur einer ist der wahre Herrscher! Hahahahaha! Der "
-"Fairness halber verraten wir euch alle unsere Namen."
+"sind sieben von uns und nur EINER ist der wahre Herrscher! Ha ha ha ha! Der "
+"Fairness halber verraten wir alle euch unsere Namen, solltet ihr uns denn "
+"erreichen."
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:167
@@ -3375,18 +3376,17 @@ msgstr "Mal-Larakan"
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:243
 msgid "(whispered) There he is!"
-msgstr ""
+msgstr "(geflüstert) Dort ist er!"
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:250
 msgid "(whispered) That isn't him..."
-msgstr ""
+msgstr "(geflüstert) Das ist er nicht..."
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:262
-#, fuzzy
 msgid "You dare to attack me? Now you will pay!"
-msgstr "Ihr wagt es MICH anzugreifen?!? Geht zurück zu eurem Herrn!"
+msgstr "Ihr wagt es mich anzugreifen? Dafür werdet ihr büßen!"
 
 #. [message]: speaker=Mal-Ravanal
 #: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:280
