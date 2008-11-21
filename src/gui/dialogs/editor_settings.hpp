@@ -56,7 +56,7 @@ public:
 	void update_selected_tod_info(twindow& window);
 	
 	bool get_use_mdi() const;
-	void set_use_mdi(bool value) { use_mdi_ = value; }
+	void set_use_mdi(bool value);
 	
 private:
 	/** Inherited from tdialog. */
@@ -95,9 +95,7 @@ private:
 	tfield_integer* custom_tod_green_field_;
 	tfield_integer* custom_tod_blue_field_;
 	
-	tfield_bool* use_mdi_field_;
-
-	bool use_mdi_;
+	tfield_bool* use_mdi_field_;	
 };
 
 } // namespace gui2

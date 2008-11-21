@@ -67,6 +67,12 @@ int teditor_settings::get_blue() const
 {
 	return custom_tod_blue_field_->get_cache_value();
 }
+
+void teditor_settings::set_use_mdi(bool value)
+{
+	use_mdi_field_->set_cache_value(value);
+}
+
 bool teditor_settings::get_use_mdi() const
 {
 	return use_mdi_field_->get_cache_value();
