@@ -384,6 +384,8 @@ private:
 		items.push_back(heading.str());
 
 		const team& viewing_team = teams_[gui_->viewing_team()];
+		
+		int total_villages = 0;
 
 		//if the player is under shroud or fog, they don't get
 		//to see details about the other sides, only their own
@@ -450,8 +452,11 @@ private:
 			str << data.villages << COLUMN_SEPARATOR
 				<< data.units << COLUMN_SEPARATOR << data.upkeep << COLUMN_SEPARATOR
 				<< (data.net_income < 0 ? font::BAD_TEXT : font::NULL_MARKUP) << data.net_income;
-
+			total_villages += data.villages;
 			items.push_back(str.str());
+		}
+		if (total_villages > map_.villages().size()) {
+			ERR_NG << "Logic error: map has " << map_.villages().size() << " villages but status table shows " << total_villages << " owned in total\n";
 		}
 
 		int result = 0;
