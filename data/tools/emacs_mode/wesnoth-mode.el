@@ -33,6 +33,16 @@
 ;; to automatically load wesnoth-mode for all files ending in '.cfg'.
 
 ;;; History:
+;; 1.3.2
+;; * Major performance improvements to indentation and WML checking.
+;; * Fixed a bug where nesting could break when inserting multiple elements
+;;   near the last element in a buffer.
+;; * Fixed a bug where attributes immediately within #ifn?def were always
+;;   reported to be illegal.
+;; * Fixed a bug where tags immediately within #ifn?def were always legal.
+;; * Fixed a bug where when inserting missing tags, scanning would only be
+;;   performed up to point.
+;; * Fixed a bug when jumping between preprocessor statements.
 ;; 1.3.1
 ;; * Completion history available is now specific to wesnoth-mode.
 ;; * Added binding to explicitly update macro information from the current
@@ -134,13 +144,11 @@
 ;; * Added support for #ifndef.
 
 ;;; Code:
-(eval-when-compile
-  (require 'cl))
 (require 'easymenu)
 (require 'wesnoth-update)
 (require 'wesnoth-wml-data)
 
-(defconst wesnoth-mode-version "1.3.1"
+(defconst wesnoth-mode-version "1.3.2"
   "The current version of `wesnoth-mode'.")
 
 (defgroup wesnoth-mode nil "Wesnoth-mode access"
@@ -165,7 +173,7 @@ level as their parent.")
   :group 'wesnoth-mode)
 
 (defconst wesnoth-preprocessor-regexp
-  "[\t ]*#\\(enddef\\|define\\|e\\(lse\\|nd\\(\\(de\\|i\\)f\\)\\)\\|\\(ifn?\\|un\\)def\\)"
+  "[\t ]*#\\(enddef\\|define \\|e\\(lse\\|nd\\(\\(de\\|i\\)f\\)\\)\\|\\(ifn?\\|un\\)def \\)"
   "Regular expression to match all preprocessor statements.")
 
 (defconst wesnoth-preprocessor-opening-regexp
@@ -316,11 +324,11 @@ Otherwise, return a string containing the name of the parent tag."
 					      (point))))
 	(end-of-line))
       (while (and (> depth 0)
-		  (search-backward-regexp (wesnoth-element)
+		  (search-backward-regexp (wesnoth-element t)
 					  (point-min) t))
 	(if (string-match "[\t ]*\\[/" (match-string 0))
-	    (incf depth)
-	  (decf depth)))
+	    (setq depth (1+ depth))
+	  (setq depth (1- depth))))
       (beginning-of-line)
       (if (> depth 0)
 	  nil
@@ -426,9 +434,8 @@ If COMPLETEP is non-nil, attempt to complete preprocessor at point."
 				       (split-string
 					(match-string-no-properties 1)))
 			       results)))
-	    (decf depth)))))
-    (message "%s" results)
-    results))
+	    (setq depth (1- depth)))))
+      results)))
 
 (defun wesnoth-complete-macro (&optional completep)
   "Complete and insert the macro at point.
@@ -464,7 +471,7 @@ If COMPLETEP is non-nil, attempt to complete the macro at point."
   "Insert the attribute at point.
 If COMPLETEP is non-nil, attempt to complete the attribute at point."
   (interactive)
-  (let* ((completions (wesnoth-build-completion 2))
+  (let* ((completions (wesnoth-build-completion 1))
 	 (partial (when completep
 		    (save-excursion
 		      (back-to-indentation)
@@ -492,7 +499,7 @@ ELEMENTS is the number of elements to wrap around.
 If COMPLETEP is non-nil, attempt to complete tag at point."
   (interactive "P")
   (or elements (setq elements 0))
-  (let* ((completions (wesnoth-build-completion 1))
+  (let* ((completions (wesnoth-build-completion 0))
 	 (partial (when completep
 		    (save-excursion
 		      (back-to-indentation)
@@ -502,7 +509,7 @@ If COMPLETEP is non-nil, attempt to complete tag at point."
 		  partial))
 	 (closedp
 	  (save-excursion
-	    (wesnoth-jump-to-matching)
+	    (wesnoth-jump-to-matching (concat "[" tag "]"))
 	    (back-to-indentation)
 	    (and (looking-at "\\[/\\(\\(\\w\\|_\\)+\\)")
 		 (string= tag (match-string 1))))))
@@ -521,12 +528,11 @@ Rebuilding list is required for versions of GNU Emacs earlier
 than 22.  POSITION is the argument passed to `nth' for
 `wesnoth-tag-data'."
   (interactive "P")
-  (let* ((parent (wesnoth-parent-tag))
-	 (candidates
-	  (if (or (stringp parent) (null parent))
-	      (nth (1- position) (gethash parent wesnoth-tag-hash-table))
-	    (mapcar 'car wesnoth-tag-data))))
-    (wesnoth-emacs-completion-formats candidates)))
+  (let ((parent (wesnoth-parent-tag)))
+    (wesnoth-emacs-completion-formats
+     (if (or (stringp parent) (null parent))
+	 (nth position (gethash parent wesnoth-tag-hash-table))
+       (mapcar 'car wesnoth-tag-data)))))
 
 (defun wesnoth-emacs-completion-formats (candidates)
   "Return the completions in the correct format for `emacs-major-version'.
@@ -561,6 +567,14 @@ TAGNAME is the name of the tag to be inserted."
   (let ((depth 0)
 	(start (save-excursion (forward-line -1) (point)))
 	(end (unless (= elements 0)
+	       ;; Work around some strange behaviour when the target is at the
+	       ;; end of the buffer.
+	       (save-excursion
+		 (goto-char (point-max))
+		 (beginning-of-line)
+		 (unless (looking-at "^[\t ]*$")
+		   (end-of-line)
+		   (newline)))
 	       (wesnoth-nth-pair-position elements))))
     (if (string-match wesnoth-preprocessor-regexp tagname)
 	(wesnoth-insert-element-separately tagname)
@@ -609,15 +623,16 @@ respectively."
       (setq start (region-beginning)
 	    end (copy-marker (region-end)))
     (setq start (point-min)
-	  end (point)))
+	  end (point-max)))
   (let ((element (wesnoth-check-structure start end)))
-    (if (not element)
-	(error "%s" "Unable to find element to insert")
-      (when (string= element "Unexpected end of file")
-	(error "%s" element))
-      (wesnoth-insert-element-separately element)))
-  (wesnoth-indent)
-  (end-of-line))
+    (cond ((not element)
+	   (message "%s" "Unable to find element to insert"))
+	  ((string= element "Unexpected end of file")
+	   (message "%s" element))
+	  (t
+	   (wesnoth-insert-element-separately element)
+	   (wesnoth-indent)
+	   (end-of-line)))))
 
 (defun wesnoth-insert-and-indent (&rest args)
   "Concatenate and insert the given string(s) before indenting.
@@ -651,7 +666,7 @@ search."
        (and (eq ,search-function 'search-forward-regexp) (end-of-line))
        (funcall ,search-function (wesnoth-element-opening) ,bound t)
        (back-to-indentation)
-       (decf ,repeat))))
+       (setq repeat (1- ,repeat)))))
 
 (defun wesnoth-nth-pair-position (count)
   "Return `point' after COUNT number of matching element pairs.
@@ -670,12 +685,8 @@ pairs to move across.
 	(unless (wesnoth-search-for-matching-tag
 		 'search-forward-regexp (wesnoth-element-closing) 'point-max)
 	  (setq count 0)
-	  (unless (or (= (point) (point-max))
-		      (progn (beginning-of-line)
-			     (search-backward-regexp (wesnoth-element-closing)
-						     start t)))
-	    (setq failed t)))
-	(and (> (decf count) 0) (forward-line 1)))
+	  (setq failed t))
+	(and (> (setq count (1- count)) 0) (forward-line 1)))
       (if failed
 	  (beginning-of-line)
 	(end-of-line))
@@ -708,16 +719,16 @@ SEARCH-STRING is a string representing the matching tag type.
 BOUND is the bound to be passed to the search function.
 If SKIP is non-nil, skip the first element and continue from there."
   `(let ((depth 1))
-     (when (or (and ,skip (forward-line 1))
-	       (funcall ,search-function (wesnoth-element) (funcall ,bound) t))
-       (when (or ,skip (not (string-match ,search-string (match-string 0))))
-	 (while (and (> depth 0)
-		     (funcall ,search-function (wesnoth-element)
-			      (funcall ,bound) t))
-	   (if (string-match ,search-string (match-string 0))
-	       (decf depth)
-	     (incf depth)))
-	 (= depth 0)))))
+     (when (and (or (and ,skip (forward-line 1))
+		    (funcall ,search-function (wesnoth-element) (funcall ,bound) t))
+		(or ,skip (not (string-match ,search-string (match-string 0)))))
+       (while (and (> depth 0)
+		   (funcall ,search-function (wesnoth-element)
+			    (funcall ,bound) t))
+	 (if (string-match ,search-string (match-string 0))
+	     (setq depth (1- depth))
+	   (setq depth (1+ depth))))
+       (= depth 0))))
 
 (defun wesnoth-jump-to-matching (&optional opening)
   "Jump point to the matching opening/closing tag.
@@ -727,44 +738,50 @@ OPENING is an opening preprocessor statement to attempt to find a match for."
   (let ((target nil)
 	(first-element nil))
     (save-excursion
-      (if (or (and (stringp opening)
-		   (string-match (wesnoth-element-opening) opening))
-	      (looking-at (wesnoth-element-opening)))
-	  (progn
-	    (setq first-element (match-string-no-properties 0 opening))
-	    (when (wesnoth-search-for-matching-tag
-		   'search-forward-regexp (wesnoth-element-closing) 'point-max
-		   (stringp opening))
-	      (beginning-of-line)
-	      (if (and (string-match wesnoth-preprocessor-opening-regexp
-				     first-element)
-		       (looking-at (wesnoth-element-closing)))
-		  (when (string= (match-string-no-properties 0)
-				 (cdr (assoc first-element
-					     '(("#define " . "#enddef")
-					       ("#ifndef " . "#endif")
-					       ("#ifdef " . "#endif")))))
-		    (setq target (point)))
-		(setq target (point)))))
-	(when (looking-at (wesnoth-element-closing))
-	  (setq first-element (match-string-no-properties 0))
-	  (end-of-line)
+      (cond
+       ((or (and (stringp opening)
+		 (string-match (wesnoth-element-opening) opening))
+	    (looking-at (wesnoth-element-opening)))
+	(progn
+	  (setq first-element (match-string-no-properties 0 opening))
 	  (when (wesnoth-search-for-matching-tag
-		 'search-backward-regexp (wesnoth-element-opening)
-		 'wesnoth-wml-start-pos)
-	    (if (and (string-match wesnoth-preprocessor-closing-regexp
+		 'search-forward-regexp (wesnoth-element-closing) 'point-max
+		 (stringp opening))
+	    (beginning-of-line)
+	    (if (and (string-match wesnoth-preprocessor-opening-regexp
 				   first-element)
-		     (looking-at (wesnoth-element-opening)))
-		(progn
-		  (when (or (and (string= "#enddef" first-element)
-				 (string= "#define "
-					  (match-string-no-properties 0)))
-			    (and (string= "#endif" first-element)
-				 (string-match
-				  "#ifn?def "
-				  (match-string-no-properties 0))))
-		    (setq target (point))))
-	      (setq target (point)))))))
+		     (looking-at (wesnoth-element-closing)))
+		(when (string= (match-string-no-properties 0)
+			       (cdr (assoc first-element
+					   '(("#define " . "#enddef")
+					     ("#ifndef " . "#endif")
+					     ("#ifdef " . "#endif")))))
+		  (setq target (point)))
+	      (setq target (point))))))
+       ((looking-at (wesnoth-element-closing))
+	(end-of-line)
+	(setq first-element (match-string-no-properties 0))
+	(when (wesnoth-search-for-matching-tag
+	       'search-backward-regexp (wesnoth-element-opening)
+	       'wesnoth-wml-start-pos)
+	  (if (and (string-match wesnoth-preprocessor-closing-regexp
+				 first-element)
+		   (looking-at (wesnoth-element-opening)))
+	      (progn
+		(when (or (and (string= "#enddef" first-element)
+			       (string= "#define "
+					(match-string-no-properties
+					 0)))
+			  (and (string= "#endif" first-element)
+			       (string-match
+				"#ifn?def "
+				(match-string-no-properties
+				 0))))
+		  (setq target (point))))
+	    (setq target (point)))))
+       (t
+	(search-backward-regexp (wesnoth-element-opening) (point-min) t)
+	(setq target (point)))))
     (if target
 	(goto-char target)
       (when (interactive-p)
@@ -782,48 +799,55 @@ Otherwise return nil."
       (beginning-of-line)
       (point))))
 
-(defun first-column-indent-p (point)
+(defun wesnoth-first-column-indent-p (point)
   "Return non-nil if the current line should not be indented.
 
 POINT is the position in the buffer to check.
 CONTEXT represents the type of element which precedes the current element."
   (or (not (wesnoth-wml-start-pos))
       (<= (point) (wesnoth-wml-start-pos))
-      (nth 3 (parse-partial-sexp (point-min) point))
+      (nth 3 (parse-partial-sexp
+	      (save-excursion (search-backward-regexp
+			       (wesnoth-element t) (point-min) t)
+			      (point))
+	      point))
       (looking-at wesnoth-preprocessor-regexp)))
 
 (defun wesnoth-indent ()
   "Indent the current line as WML."
   (beginning-of-line)
-  (let ((cur-indent 0))
-    (unless (first-column-indent-p (point))
-      (multiple-value-bind (context ref-indent)
-	  (wesnoth-determine-context (point))
-	(cond
-	 ((eq context 'opening)
-	  (if (or (and wesnoth-indent-savefile
-		       (not (looking-at (wesnoth-element-closing t))))
-		  (looking-at (wesnoth-element-opening t)))
-	      (setq cur-indent (+ ref-indent wesnoth-base-indent))
-	    (setq cur-indent ref-indent)))
-	 ((eq context 'closing)
-	  (if (or (looking-at "^[\t ]*\\[/")
-		  (and (not wesnoth-indent-savefile)
-		       (not (looking-at (wesnoth-element-opening t)))))
-	      (setq cur-indent (- ref-indent wesnoth-base-indent))
-	    (setq cur-indent ref-indent))))))
+  (let* ((cur-indent 0)
+	 (context-data (wesnoth-determine-context (point)))
+	 (context (car context-data))
+	 (ref-indent (cdr context-data)))
+    (unless (wesnoth-first-column-indent-p (point))
+      (cond
+       ((eq context 'opening)
+	(if (or (and wesnoth-indent-savefile
+		     (not (looking-at (wesnoth-element-closing t))))
+		(looking-at (wesnoth-element-opening t)))
+	    (setq cur-indent (+ ref-indent wesnoth-base-indent))
+	  (setq cur-indent ref-indent)))
+       ((eq context 'closing)
+	(if (or (looking-at "^[\t ]*\\[/")
+		(and (not wesnoth-indent-savefile)
+		     (not (looking-at (wesnoth-element-opening t)))))
+	    (setq cur-indent (- ref-indent wesnoth-base-indent))
+	  (setq cur-indent ref-indent)))))
     (indent-line-to (max cur-indent 0))))
 
 (defun wesnoth-within-define (position)
   "Determine whether point is currently inside a #define block.
 POSITION is the initial cursor position."
   (save-match-data
-    (let ((depth 0))
-      (dolist (element (or wesnoth-define-blocks
-			   (wesnoth-find-macro-definitions)))
-	(when (= (cadr (sort (append (mapcar 'marker-position (cadr element))
-				     (list position)) '>)) position)
-	  (setq depth (max (car element) depth))))
+    (let ((depth 0)
+	  (defblocks (or wesnoth-define-blocks
+			     (wesnoth-find-macro-definitions))))
+      (unless (equal (car defblocks) 'none)
+	(dolist (element defblocks)
+	  (when (= (cadr (sort (append (mapcar 'marker-position (cadr element))
+				       (list position)) '>)) position)
+	    (setq depth (max (car element) depth)))))
       depth)))
 
 (defun wesnoth-find-macro-definitions ()
@@ -848,7 +872,7 @@ POSITION is the initial cursor position."
 		      (1- depth))
 		  depth)))
 	(end-of-line))
-      cache)))
+      (or cache (list 'none)))))
 
 (defun wesnoth-indent-region (start end)
   "Indent the region from START to END.
@@ -875,9 +899,11 @@ Creates and destroys a cache of macro definition details as necessary."
 POSITION is the buffer position of the element for which to
 determine the context."
   (save-excursion
-    (search-backward-regexp (wesnoth-element t)
-			    (wesnoth-wml-start-pos) t)
-    (let ((match (or (match-string 1) ""))
+    (let ((match (or
+		  (and (search-backward-regexp
+			(wesnoth-element t) (point-min) t)
+		       (match-string 1))
+		  ""))
 	  (depth (wesnoth-within-define position)))
       (while (and (> (wesnoth-within-define (point)) depth)
 		  (not (= (point) (wesnoth-wml-start-pos))))
@@ -890,9 +916,9 @@ determine the context."
 	(setq match ""))
       (cond
        ((string-match "\\[/\\|#enddef" match)
-	(values 'closing (current-indentation)))
+	(cons 'closing (current-indentation)))
        ((string-match "\\[[^/]?\\|#define" match)
-	(values 'opening (current-indentation)))))))
+	(cons 'opening (current-indentation)))))))
 
 (defun wesnoth-newline-and-indent (&optional indent)
   "Indent both the current line and the newline created.
@@ -907,18 +933,15 @@ be performed."
     (wesnoth-indent)))
 
 ;;; WML checks
-(defun wesnoth-check-element-type (position last-tag)
+(defun wesnoth-check-element-type (position)
   "Determine the context of the element.
-POSITION is the position of the element in the list.
-LAST-TAG is the parent element."
-  (if (or (not last-tag)
-	  (save-match-data
-	    (string-match "#\\(?:define\\|ifn?def\\)" last-tag)))
+POSITION is the position of the element in the list."
+  (let ((parent (save-match-data (wesnoth-parent-tag))))
+    (if (or (stringp parent) (null parent))
+	(member (match-string-no-properties 1)
+		(nth position (gethash parent wesnoth-tag-hash-table)))
       (member (match-string-no-properties 1)
-	      (mapcar 'car wesnoth-tag-data))
-    (member (match-string-no-properties 1)
-	    (nth position (gethash last-tag
-				   wesnoth-tag-hash-table)))))
+	      (mapcar 'car wesnoth-tag-data)))))
 
 ;; Provide `line-number-at-pos' implementation (not available in Emacs 21).
 (defun wesnoth-line-number-at-pos (&optional pos)
@@ -962,8 +985,10 @@ ARGS is any additional data required by `format' to handle FORMAT-STRING."
   (wesnoth-update-project-information)
   (when (= 0 (hash-table-count wesnoth-tag-hash-table))
     (error "WML data not available; can not generate report"))
+  (setq wesnoth-define-blocks (wesnoth-find-macro-definitions))
   (let ((unmatched '())
-	(outbuf (get-buffer-create "*WML*")))
+	(outbuf (get-buffer-create "*WML*"))
+	(last-match-pos 1))
     (save-excursion
       (let ((buffer (buffer-name)))
 	(set-buffer outbuf)
@@ -980,7 +1005,7 @@ ARGS is any additional data required by `format' to handle FORMAT-STRING."
 			 (append (wesnoth-macro-arguments)
 				 wesnoth-local-macro-data
 				 wesnoth-macro-data))
-	    (wesnoth-check-output outbuf "Unknown macro definition: '{%s}'"
+	    (wesnoth-check-output outbuf "Unknown macro definition: '%s'"
 				  macro))))
       (goto-char (or (wesnoth-wml-start-pos) (point-min)))
       (while (search-forward-regexp
@@ -991,10 +1016,10 @@ ARGS is any additional data required by `format' to handle FORMAT-STRING."
 	      (point-max) t)
 	(save-excursion
 	  (goto-char (match-beginning 1))
-	  (cond ((nth 3 (parse-partial-sexp (point-min) (point)))
+	  (cond ((nth 3 (parse-partial-sexp last-match-pos (point)))
 		 nil)
 		((looking-at "[\t ]*\\[\\+?\\(\\(\\w\\|_\\)+\\)\\]")
-		 (unless (wesnoth-check-element-type 0 (car unmatched))
+		 (unless (wesnoth-check-element-type 0)
 		   (wesnoth-check-output outbuf
 					 "Tag not available in this context: '%s'"
 					 (match-string-no-properties 1)))
@@ -1022,7 +1047,7 @@ ARGS is any additional data required by `format' to handle FORMAT-STRING."
 		    "Preprocessor statement does not nest correctly"))
 		 (setq unmatched (cdr unmatched)))
 		((looking-at "[\t ]*\\(\\(\\w\\|_\\)+\\)=\\(.+\\)?")
-		 (unless (wesnoth-check-element-type 1 (car unmatched))
+		 (unless (wesnoth-check-element-type 1)
 		   (wesnoth-check-output
 		    outbuf "Attribute not available in this context: '%s'"
 		    (match-string-no-properties 1)))
@@ -1042,12 +1067,14 @@ ARGS is any additional data required by `format' to handle FORMAT-STRING."
 					  (car unmatched))))
 		   (wesnoth-check-output outbuf "Expecting: '[/%s]'"
 					 (car unmatched)))
-		 (setq unmatched (cdr unmatched))))))
+		 (setq unmatched (cdr unmatched)
+		       last-match-pos (point))))))
       (if unmatched
 	  (dolist (tag unmatched)
 	    (wesnoth-check-output outbuf "Unmatched element: '%s'"
 				  (car unmatched)))))
     (save-excursion
+      (setq wesnoth-define-blocks nil)
       (let ((buffer (buffer-name)))
 	(set-buffer outbuf)
 	(display-buffer outbuf t)

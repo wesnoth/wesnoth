@@ -59,6 +59,9 @@
 ;; available to `wesnoth-mode'.
 
 ;;; History:
+;; 0.1.2
+;; * Allow forced updating of the hash table.
+;; * Allow clearing of local macro data via a prefix argument.
 ;; 0.1.1
 ;; * Provide means for increased performance when referencing attributes and
 ;;   tags.
@@ -107,11 +110,13 @@ This is relative to the wesnoth directory in `wesnoth-root-directory.'.")
 						:size 350)
   "Hash table of known WML tag data.")
 
-(defun wesnoth-create-wml-hash-table ()
+(defun wesnoth-create-wml-hash-table (&optional force)
   "Handle generation of `wesnoth-tag-hash-table'."
-  (clrhash wesnoth-tag-hash-table)
-  (dolist (tag wesnoth-tag-data)
-    (puthash (car tag) (cdr tag) wesnoth-tag-hash-table)))
+  (when (or (= (hash-table-count wesnoth-tag-hash-table) 0)
+	    force)
+    (clrhash wesnoth-tag-hash-table)
+    (dolist (tag wesnoth-tag-data)
+      (puthash (car tag) (cdr tag) wesnoth-tag-hash-table))))
 
 (defun wesnoth-file-cfg-p (file)
   "Return non-nil if FILE has a '.cfg' extension."
@@ -286,13 +291,15 @@ Path to WML information included in wesnoth is set by
     (write-file (expand-file-name (format "wesnoth-wml-data.el")
 				  (wesnoth-output-path)))
     (load "wesnoth-wml-data"))
-  (wesnoth-create-wml-hash-table)
+  (wesnoth-create-wml-hash-table t)
   (message "Updating WML information...done"))
 
-(defun wesnoth-update-project-information ()
+(defun wesnoth-update-project-information (&optional clear)
   "Update WML macro information for the current project."
-  (interactive)
-  (wesnoth-determine-macro-information 'wesnoth-local-macro-data))
+  (interactive "P")
+  (if clear
+      (setq wesnoth-local-macro-data nil)
+    (wesnoth-determine-macro-information 'wesnoth-local-macro-data)))
 
 (defun wesnoth-update-teach-wesnoth-mode (file-or-dir)
   "Update WML tag and attribute information for the current project.
