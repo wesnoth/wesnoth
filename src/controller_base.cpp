@@ -129,20 +129,25 @@ bool controller_base::handle_scroll(CKey& key, int mousex, int mousey, int mouse
 {
 	bool scrolling = false;
 	const int scroll_threshold = (preferences::mouse_scroll_enabled()) ? 5 : 0;
+	bool mouse_in_window = SDL_GetAppState() & SDL_APPMOUSEFOCUS;
 
-	if ((key[SDLK_UP] && have_keyboard_focus()) || mousey < scroll_threshold) {
+	if ((key[SDLK_UP] && have_keyboard_focus()) 
+	|| (mousey < scroll_threshold && mouse_in_window)) {
 		get_display().scroll(0,-preferences::scroll_speed());
 		scrolling = true;
 	}
-	if ((key[SDLK_DOWN] && have_keyboard_focus()) || mousey > get_display().h() - scroll_threshold) {
+	if ((key[SDLK_DOWN] && have_keyboard_focus()) 
+	|| (mousey > get_display().h() - scroll_threshold && mouse_in_window)) {
 		get_display().scroll(0,preferences::scroll_speed());
 		scrolling = true;
 	}
-	if ((key[SDLK_LEFT] && have_keyboard_focus()) || mousex < scroll_threshold) {
+	if ((key[SDLK_LEFT] && have_keyboard_focus()) 
+	|| (mousex < scroll_threshold && mouse_in_window)) {
 		get_display().scroll(-preferences::scroll_speed(),0);
 		scrolling = true;
 	}
-	if ((key[SDLK_RIGHT] && have_keyboard_focus()) || mousex > get_display().w() - scroll_threshold) {
+	if ((key[SDLK_RIGHT] && have_keyboard_focus()) 
+	|| (mousex > get_display().w() - scroll_threshold && mouse_in_window)) {
 		get_display().scroll(preferences::scroll_speed(),0);
 		scrolling = true;
 	}
