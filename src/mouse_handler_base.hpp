@@ -32,7 +32,7 @@ extern int commands_disabled;
 	
 class mouse_handler_base {
 public:
-	mouse_handler_base(gamemap& map);
+	mouse_handler_base();
 	virtual ~mouse_handler_base() {}
 
 	/**
@@ -152,8 +152,6 @@ protected:
 	
 	/** Show context menu flag */
 	bool show_menu_;
-	
-	gamemap& map_;
 	
 	static const int drag_threshold_;
 };

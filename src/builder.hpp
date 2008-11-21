@@ -75,13 +75,17 @@ public:
 	 *						and '.png' suffix
 	 */
 	terrain_builder(const config& cfg, const config &level,
-		const gamemap& map, const std::string& offmap_image);
+		const gamemap* map, const std::string& offmap_image);
+		
+	const gamemap& map() const { return *map_; }
 		
 	/** 
 	 * Updates internals that cache map size. This should be called when the map 
 	 * size has changed.
 	 */
 	void reload_map();
+	
+	void change_map(const gamemap* m);
 
 	/** Returns a vector of strings representing the images to load & blit
 	 * together to get the built content for this tile.
@@ -360,7 +364,7 @@ private:
 		 * Constructs a tilemap of dimensions x * y
 		 */
 		tilemap(int x, int y) : 
-				map_((x + 4) * (y + 4)),
+				tiles_((x + 4) * (y + 4)),
 				x_(x),
 				y_(y)
 			{}
@@ -400,7 +404,7 @@ private:
 		void reload(int x, int y);
 	private:
 		/** The map */
-		std::vector<tile> map_;
+		std::vector<tile> tiles_;
 		/** The x dimension of the map */
 		int x_;
 		/** The y dimension of the map */
@@ -716,9 +720,10 @@ private:
 	void build_terrains();
 
 	/**
-	 * A reference to the gamemap class used in the current level.
+	 * A pointer to the gamemap class used in the current level.
 	 */
-	const gamemap& map_;
+	const gamemap* map_;
+	
 	/**
 	 * The tile_map_ for the current level, which is filled by the
 	 * build_terrains_ method to contain "tiles" representing images

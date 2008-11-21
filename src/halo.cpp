@@ -19,7 +19,7 @@
  */
 
 #include "global.hpp"
-
+#include "animated.hpp"
 #include "display.hpp"
 #include "game_preferences.hpp"
 #include "halo.hpp"

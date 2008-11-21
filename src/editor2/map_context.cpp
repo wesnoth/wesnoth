@@ -18,6 +18,7 @@
 #include "../display.hpp"
 #include "../filesystem.hpp"
 #include "../foreach.hpp"
+#include "../map_label.hpp"
 
 
 
@@ -135,9 +136,7 @@ bool map_context::everything_changed() const
 
 void map_context::clear_starting_position_labels(display& disp)
 {
-	foreach (const map_location& loc, starting_position_label_locs_) {
-		disp.labels().set_label(loc, "");
-	}
+	disp.labels().clear_all();
 	starting_position_label_locs_.clear();
 }
 	
@@ -158,7 +157,7 @@ bool map_context::save()
 {
 	std::string data = map_.write();
 	write_file(get_filename(), data);
-	actions_since_save_ = 0;
+	clear_modified();
 	return true;
 }
 
@@ -180,7 +179,6 @@ void map_context::set_map(const editor_map& map)
 		set_needs_terrain_rebuild();
 	}
 	map_ = map;
-	
 }
 
 void map_context::perform_action(const editor_action& action)
@@ -217,6 +215,11 @@ void map_context::perform_partial_action(const editor_action& action)
 bool map_context::modified() const
 {
 	return actions_since_save_ != 0;
+}
+
+void map_context::clear_modified()
+{
+	actions_since_save_ = 0;
 }
 
 bool map_context::can_undo() const

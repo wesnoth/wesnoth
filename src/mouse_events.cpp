@@ -39,7 +39,8 @@ namespace{
 mouse_handler::mouse_handler(game_display* gui, std::vector<team>& teams, 
 		unit_map& units, gamemap& map, gamestatus& status, 
 		undo_list& undo_stack, undo_list& redo_stack) :
-	mouse_handler_base(map), 
+	mouse_handler_base(), 
+	map_(map),
 	gui_(gui), 
 	teams_(teams), 
 	units_(units), 

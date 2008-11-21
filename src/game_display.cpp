@@ -24,6 +24,7 @@
 #include "halo.hpp"
 #include "log.hpp"
 #include "map.hpp"
+#include "map_label.hpp"
 #include "marked-up_text.hpp"
 #include "game_preferences.hpp"
 #include "gamestatus.hpp"
@@ -39,7 +40,7 @@ std::map<map_location,fixed_t> game_display::debugHighlights_;
 game_display::game_display(unit_map& units, CVideo& video, const gamemap& map,
 		const gamestatus& status, const std::vector<team>& t,
 		const config& theme_cfg, const config& cfg, const config& level) :
-		display(video, map, theme_cfg, cfg, level),
+		display(video, &map, theme_cfg, cfg, level),
 		units_(units),
 		temp_unit_(NULL),
 		temp_unit_loc_(),
@@ -208,12 +209,12 @@ void game_display::select_hex(map_location hex)
 
 void game_display::highlight_hex(map_location hex)
 {
-	unit_map::const_iterator u = find_visible_unit(units_,hex, map_, teams_,teams_[viewing_team()]);
+	unit_map::const_iterator u = find_visible_unit(units_,hex, get_map(), teams_,teams_[viewing_team()]);
 	if (u != units_.end()) {
 		displayedUnitHex_ = hex;
 		invalidate_unit();
 	} else {
-		u = find_visible_unit(units_,mouseoverHex_, map_, teams_,teams_[viewing_team()]);
+		u = find_visible_unit(units_,mouseoverHex_, get_map(), teams_,teams_[viewing_team()]);
 		if (u != units_.end()) {
 			// mouse moved from unit hex to non-unit hex
 			if (units_.count(selectedHex_)) {
@@ -230,7 +231,7 @@ void game_display::highlight_hex(map_location hex)
 
 void game_display::display_unit_hex(map_location hex)
 {
-	unit_map::const_iterator u = find_visible_unit(units_,hex, map_, teams_,teams_[viewing_team()]);
+	unit_map::const_iterator u = find_visible_unit(units_,hex, get_map(), teams_,teams_[viewing_team()]);
 	if (u != units_.end()) {
 		displayedUnitHex_ = hex;
 		invalidate_unit();
@@ -292,11 +293,11 @@ std::vector<map_location> game_display::get_invalidated_unit_locations() {
 
 image::TYPE game_display::get_image_type(const map_location& loc) {
 	// We highlight hex under the mouse, or under a selected unit.
-	if (map_.on_board(loc)) {
+	if (get_map().on_board(loc)) {
 		if (loc == mouseoverHex_ || loc == attack_indicator_src_) {
 			return image::BRIGHTENED;
 		} else if (loc == selectedHex_) {
-			unit_map::iterator un = find_visible_unit(units_, loc, map_, 
+			unit_map::iterator un = find_visible_unit(units_, loc, get_map(), 
 				teams_,teams_[currentTeam_]);
 			if (un != units_.end()) {
 				return image::BRIGHTENED;
@@ -322,7 +323,7 @@ void game_display::post_commit()
 
 void game_display::draw_hex(const map_location& loc)
 {
-	const bool on_map = map_.on_board(loc);
+	const bool on_map = get_map().on_board(loc);
 	const bool is_shrouded = shrouded(loc);
 	const bool is_fogged = fogged(loc);
 	int xpos = get_location_x(loc);
@@ -352,7 +353,7 @@ void game_display::draw_hex(const map_location& loc)
 					
 	// Draw the time-of-day mask on top of the terrain in the hex.
 	// tod may differ from tod if hex is illuminated.
-	std::string tod_hex_mask = timeofday_at(status_,units_,loc,map_).image_mask;
+	std::string tod_hex_mask = timeofday_at(status_,units_,loc,get_map()).image_mask;
 	if(tod_hex_mask1 != NULL || tod_hex_mask2 != NULL) {
 		drawing_buffer_add(LAYER_TERRAIN_FG, drawing_order, tblit(xpos, ypos, tod_hex_mask1));
 		drawing_buffer_add(LAYER_TERRAIN_FG, drawing_order, tblit(xpos, ypos, tod_hex_mask2));
@@ -431,7 +432,7 @@ void game_display::draw_report(reports::TYPE report_num)
 		return;
 	}
 
-	reports::report report = reports::generate_report(report_num,report_,map_,
+	reports::report report = reports::generate_report(report_num,report_,get_map(),
 							  units_, teams_,
 							  teams_[viewing_team()],
 							  size_t(currentTeam_+1),size_t(activeTeam_+1),
@@ -439,7 +440,7 @@ void game_display::draw_report(reports::TYPE report_num)
 
 	brighten = false;
 	if(report_num == reports::TIME_OF_DAY) {
-		time_of_day tod = timeofday_at(status_,units_,mouseoverHex_,map_);
+		time_of_day tod = timeofday_at(status_,units_,mouseoverHex_,get_map());
 		// Don't show illuminated time on fogged/shrouded tiles
 		if (teams_[viewing_team()].fogged(mouseoverHex_) ||
 				teams_[viewing_team()].shrouded(mouseoverHex_)) {
@@ -477,7 +478,7 @@ void game_display::draw_sidebar()
 		// otherwise we display the unit that is selected.
 		unit_map::const_iterator i =
 			find_visible_unit(units_,displayedUnitHex_,
-					map_,
+					get_map(),
 					teams_,teams_[viewing_team()]);
 
 		if(i != units_.end()) {
@@ -497,8 +498,8 @@ void game_display::draw_sidebar()
 
 void game_display::draw_minimap_units()
 {
-	double xscaling = 1.0 * minimap_location_.w / map_.w();
-	double yscaling = 1.0 * minimap_location_.h / map_.h();
+	double xscaling = 1.0 * minimap_location_.w / get_map().w();
+	double yscaling = 1.0 * minimap_location_.h / get_map().h();
 
 	for(unit_map::const_iterator u = units_.begin(); u != units_.end(); ++u) {
 		if(fogged(u->first) ||
@@ -614,7 +615,7 @@ void game_display::draw_movement_info(const map_location& loc)
 		const unit_map::const_iterator un = units_.find(route_.steps.front());
 		if(un != units_.end()) {
 			// Display the def% of this terrain
-			const int def =  100 - un->second.defense_modifier(map_.get_terrain(loc));
+			const int def =  100 - un->second.defense_modifier(get_map().get_terrain(loc));
 			std::stringstream def_text;
 			def_text << def << "%";
 
@@ -680,7 +681,7 @@ std::vector<surface> game_display::footsteps_images(const map_location& loc)
 	int move_cost = 1;
 	const unit_map::const_iterator u = units_.find(route_.steps.front());
 	if(u != units_.end()) {
-			move_cost = u->second.movement_cost(map_.get_terrain(loc));
+			move_cost = u->second.movement_cost(get_map().get_terrain(loc));
 	}
 	int image_number = std::min<int>(move_cost, game_config::foot_speed_prefix.size());
 	if (image_number < 1) {
@@ -731,9 +732,9 @@ std::vector<surface> game_display::footsteps_images(const map_location& loc)
 
 surface game_display::get_flag(const map_location& loc)
 {
-	t_translation::t_terrain terrain = map_.get_terrain(loc);
+	t_translation::t_terrain terrain = get_map().get_terrain(loc);
 
-	if(!map_.is_village(terrain)) {
+	if(!get_map().is_village(terrain)) {
 		return surface(NULL);
 	}
 
@@ -894,7 +895,7 @@ const SDL_Rect& game_display::calculate_energy_bar(surface surf)
 }
 
 void game_display::invalidate_animations_location(const map_location& loc) {
-	if (map_.is_village(loc)) {
+	if (get_map().is_village(loc)) {
 		const int owner = player_teams::village_owner(loc);
 		if (owner >= 0 && flags_[owner].need_update()
 		&& (!fogged(loc) || !teams_[currentTeam_].is_enemy(owner+1))) {

@@ -36,7 +36,8 @@ custom_tod_toggle_field_(register_bool("custom_tod_toggle", false)),
 custom_tod_red_(NULL), custom_tod_green_(NULL), custom_tod_blue_(NULL),
 custom_tod_red_field_(register_integer("custom_tod_red", false)),
 custom_tod_green_field_(register_integer("custom_tod_green", false)),
-custom_tod_blue_field_(register_integer("custom_tod_blue", false))
+custom_tod_blue_field_(register_integer("custom_tod_blue", false)),
+use_mdi_field_(register_bool("use_mdi"))
 {
 }
 
@@ -65,6 +66,10 @@ int teditor_settings::get_green() const
 int teditor_settings::get_blue() const
 {
 	return custom_tod_blue_field_->get_cache_value();
+}
+bool teditor_settings::get_use_mdi() const
+{
+	return use_mdi_field_->get_cache_value();
 }
 
 void teditor_settings::update_tod_display(twindow& /*window*/)

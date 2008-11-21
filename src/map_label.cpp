@@ -15,6 +15,7 @@
 #include "global.hpp"
 
 #include "display.hpp"
+#include "map_label.hpp"
 
 
 namespace {
@@ -31,11 +32,9 @@ static bool is_shrouded(const display& disp, const map_location& loc)
 }
 
 map_labels::map_labels(const display& disp,
-					   const gamemap& map,
 					   const team* team) :
 		disp_(disp),
 		team_(team),
-		map_(map),
 		labels_(),
 		label_cache_()
 {
@@ -43,12 +42,10 @@ map_labels::map_labels(const display& disp,
 
 map_labels::map_labels(const display& disp,
 		       const config& cfg,
-		       const gamemap& map,
 		       const team* team,
 		       const variable_set *variables) :
 		disp_(disp),
 		team_(team),
-		map_(map),
 		labels_(),
 		label_cache_()
 {

@@ -26,6 +26,7 @@
 #include "game_events.hpp"
 #include "log.hpp"
 #include "map.hpp"
+#include "map_label.hpp"
 #include "menu_events.hpp"
 #include "replay.hpp"
 #include "statistics.hpp"

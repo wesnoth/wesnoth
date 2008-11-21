@@ -24,6 +24,7 @@
 #include "hotkeys.hpp"
 #include "log.hpp"
 #include "map.hpp"
+#include "map_label.hpp"
 #include "menu_events.hpp"
 #include "mouse_handler_base.hpp"
 #include "replay.hpp"

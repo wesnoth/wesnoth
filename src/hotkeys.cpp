@@ -97,6 +97,8 @@ const struct {
 
 #ifndef DISABLE_EDITOR2
 	{ hotkey::HOTKEY_EDITOR_QUIT_TO_DESKTOP, "editor-quit-to-desktop", N_("Quit to Desktop"), false, hotkey::SCOPE_EDITOR },
+	{ hotkey::HOTKEY_EDITOR_CLOSE_MAP, "editor-close-map", N_("Close Map"), false, hotkey::SCOPE_EDITOR },
+	{ hotkey::HOTKEY_EDITOR_SWITCH_MAP, "editor-switch-map", N_("Switch Map"), false, hotkey::SCOPE_EDITOR },
 	{ hotkey::HOTKEY_EDITOR_SETTINGS, "editor-settings", N_("Editor Settings"), false, hotkey::SCOPE_EDITOR },
 	{ hotkey::HOTKEY_EDITOR_PARTIAL_UNDO, "editor-partial-undo", N_("Partial Undo"), false, hotkey::SCOPE_EDITOR },
 	{ hotkey::HOTKEY_EDITOR_MAP_NEW, "editor-map-new", N_("New Map"), false, hotkey::SCOPE_EDITOR },
@@ -966,7 +968,7 @@ void command_executor::show_menu(const std::vector<std::string>& items_arg, int 
 }
 
 std::string command_executor::get_menu_image(hotkey::HOTKEY_COMMAND command, int index) const {
-	switch(get_action_state(command)) {
+	switch(get_action_state(command, index)) {
 		case ACTION_ON: return game_config::checked_menu_image;
 		case ACTION_OFF: return game_config::unchecked_menu_image;
 		default: return get_action_image(command, index);

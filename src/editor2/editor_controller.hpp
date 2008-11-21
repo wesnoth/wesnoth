@@ -66,21 +66,26 @@ class editor_controller : public controller_base,
 	private boost::noncopyable
 {
 	public:
+		/**
+		 * The constructor. A initial map context can be specified here, the controller 
+		 * will assume ownership and delete the pointer during destruction, but changes
+		 * to the map can be retrieved between the main loop's end and the controller's
+		 * destruction.
+		 */
 		editor_controller(const config &game_config, CVideo& video, map_context* init_map_context = NULL);
+		
 		~editor_controller();
 		
+		/** Editor main loop */
 		EXIT_STATUS main_loop();
 		
-		/**
-		 * Process a hotkey quit command
-		 */
+		/** Process a hotkey quit command */
 		void hotkey_quit();
 		
-		/**
-		 * Show a quit confirmation dialog and if confirmed quit with the given exit status
-		 */
+		/** Show a quit confirmation dialog and if confirmed quit with the given exit status */
 		void quit_confirm(EXIT_STATUS status);
 		
+		/** Display the settings dialog, used to control e.g. the lighting settings */
 		void editor_settings_dialog();
 		
 		/**
@@ -90,14 +95,32 @@ class editor_controller : public controller_base,
 		bool confirm_discard();
 		
 		/** Get the current map context object */
-		map_context& get_map_context() { return *map_context_; }
+		map_context& get_map_context() { return *map_contexts_[current_context_index_]; }
+		
 		/** Get the current map context object - const version */
-		const map_context& get_map_context() const { return *map_context_; }
+		const map_context& get_map_context() const { return *map_contexts_[current_context_index_]; }
+		
 		/** Get the map from the current map context object */
 		editor_map& get_map() { return get_map_context().get_map(); }
+		
 		/** Get the map from the current map context object - const version*/
 		const editor_map& get_map() const { return get_map_context().get_map(); }
 		
+		/** 
+		 * Add a map context. The controller assumes ownership. 
+		 * @return the index of the added map context in the map_contexts_ array
+		 */
+		int add_map_context(map_context* mc);
+		
+		/** Creates a default map context object, used to ensure there is always at least one. */
+		void create_default_context();
+		
+		/** Closes the active map context. Switches to a valid context afterward or creates a dummy one. */
+		void close_current_context();
+		
+		/** Switches the context to the one under the specified index. */
+		void switch_context(int idx);
+				
 		/** Display a load map dialog and process user input. */
 		void load_map_dialog();
 
@@ -134,12 +157,12 @@ class editor_controller : public controller_base,
 		/**
 		 * Create a new map.
 		 */
-		void new_map(int width, int height, t_translation::t_terrain fill);
+		void new_map(int width, int height, t_translation::t_terrain fill, bool new_context);
 		
 		/**
 		 * Load a map given the filename
 		 */
-		void load_map(const std::string& filename);
+		void load_map(const std::string& filename, bool new_context);
 		
 		/**
 		 * Revert the map by reloading it from disk
@@ -152,17 +175,22 @@ class editor_controller : public controller_base,
 		 */
 		void reload_map();
 		
+		/**
+		 * Refresh everything, i.e. invalidate all hexes and redraw them. Does *not* reload the map.
+		 */
+		void refresh_all();
+
 		/** command_executor override */
 		bool can_execute_command(hotkey::HOTKEY_COMMAND, int index = -1) const;
 		
 		/** command_executor override */
-		hotkey::ACTION_STATE get_action_state(hotkey::HOTKEY_COMMAND command) const;
+		hotkey::ACTION_STATE get_action_state(hotkey::HOTKEY_COMMAND command, int index) const;
 		
 		/** command_executor override */
 		bool execute_command(hotkey::HOTKEY_COMMAND command, int index = -1);
 
-		/** WIP idea for context-menu starting position setting*/
-		void expand_starting_position_menu(std::vector<std::string>& items);
+		/** Menu expanding for open maps list */
+		void expand_open_maps_menu(std::vector<std::string>& items);
 		
 		/** controller_base override */
 		void show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu);
@@ -242,7 +270,12 @@ class editor_controller : public controller_base,
 		 */
 		void perform_refresh(const editor_action& action, bool drag_part = false);
 		
+		/**
+		 * Callback for the editor settings dialog to allow on-the-fly 
+		 * updating of the lighting display on the game map behing the dialog
+		 */
 		void editor_settings_dialog_redraw_callback(int r, int g, int b);
+
 	private:    		
 		/** init the display object and general set-up */ 
 		void init_gui(CVideo& video);
@@ -277,10 +310,10 @@ class editor_controller : public controller_base,
 		void refresh_after_action(bool drag_part = false);
 		
 		/**
-		 * Refresh everything unconditionally
+		 * Replace the current map context and refresh accordingly
 		 */
-		void refresh_all();
-		
+		void replace_map_context(const map_context& new_mc);
+						
 		/**
 		 * Callback function passed to display to be called on each redraw_everything run.
 		 * Redraws toolbar, brush bar and related items.
@@ -301,14 +334,19 @@ class editor_controller : public controller_base,
 		
 		rand_rng::set_random_generator* rng_setter_;
 		
-		/** The current map object */
-		map_context* map_context_;
+		/** The currently opened map context object */
+		std::vector<map_context*> map_contexts_;
+		
+		/** Index into the map_contexts_ array */
+		int current_context_index_;
 		
 		/** The display object used and owned by the editor. */
 		editor_display* gui_;
 		
+		/** Available random map generators */
 		std::vector<map_generator*> map_generators_;
 
+		/** Pre-defined time of day lighting settings for the settings dialog */
 		std::vector<time_of_day> tods_;
 
 		/** Legacy object required by the legacy terrain palette and brush bar */
@@ -360,6 +398,8 @@ class editor_controller : public controller_base,
 		
 		/** Flag to rebuild terrain on every terrain change */
 		bool auto_update_transitions_;
+		
+		bool use_mdi_;
 		
 		/** Default directory for map load/save as dialogs */
 		std::string default_dir_;

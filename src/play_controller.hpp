@@ -87,7 +87,7 @@ protected:
 	void post_mouse_press(const SDL_Event& event);	
 		
 	virtual std::string get_action_image(hotkey::HOTKEY_COMMAND, int index) const;
-	virtual hotkey::ACTION_STATE get_action_state(hotkey::HOTKEY_COMMAND command) const;
+	virtual hotkey::ACTION_STATE get_action_state(hotkey::HOTKEY_COMMAND command, int index) const;
 	/** Check if a command can be executed. */
 	virtual bool can_execute_command(hotkey::HOTKEY_COMMAND command, int index=-1) const;
 	virtual bool execute_command(hotkey::HOTKEY_COMMAND command, int index=-1);

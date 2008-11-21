@@ -20,6 +20,7 @@
 #include "global.hpp"
 
 #include "actions.hpp"
+#include "builder.hpp"
 #include "cursor.hpp"
 #include "display.hpp"
 #include "events.hpp"
@@ -33,6 +34,7 @@
 #include "log.hpp"
 #include "marked-up_text.hpp"
 #include "map.hpp"
+#include "map_label.hpp"
 #include "minimap.hpp"
 #include "pathfind.hpp"
 #include "preferences.hpp"
@@ -73,7 +75,7 @@ namespace {
 	bool benchmark = false;
 }
 
-display::display(CVideo& video, const gamemap& map, const config& theme_cfg, const config& cfg, const config& level) :
+display::display(CVideo& video, const gamemap* map, const config& theme_cfg, const config& cfg, const config& level) :
 	screen_(video), 
 	map_(map), 
 	viewpoint_(NULL), 
@@ -82,7 +84,7 @@ display::display(CVideo& video, const gamemap& map, const config& theme_cfg, con
 	theme_(theme_cfg, screen_area()),
 	zoom_(DefaultZoom), 
 	last_zoom_(SmallZoom),
-	builder_(cfg, level, map, theme_.border().tile_image),
+	builder_(new terrain_builder(cfg, level, map, theme_.border().tile_image)),
 	minimap_(NULL), 
 	minimap_location_(empty_rect),
 	redrawMinimap_(false), 
@@ -94,9 +96,9 @@ display::display(CVideo& video, const gamemap& map, const config& theme_cfg, con
 	turbo_speed_(2), 
 	turbo_(false),
 	invalidateGameStatus_(true),
-	map_labels_(*this,map, 0),
-	shroud_image_("terrain/" + map_.get_terrain_info(t_translation::VOID_TERRAIN).minimap_image() + ".png"),
-	fog_image_("terrain/" + map_.get_terrain_info(t_translation::FOGGED).minimap_image() + ".png"),
+	map_labels_(new map_labels(*this, 0)),
+	shroud_image_("terrain/" + get_map().get_terrain_info(t_translation::VOID_TERRAIN).minimap_image() + ".png"),
+	fog_image_("terrain/" + get_map().get_terrain_info(t_translation::FOGGED).minimap_image() + ".png"),
 	tod_(time_of_day()),
 	_scroll_event("scrolled"),
 	nextDraw_(0),
@@ -141,9 +143,20 @@ display::~display()
 {
 }
 
+void display::rebuild_all()
+{
+	builder_->rebuild_all();
+}
+
 void display::reload_map()
 {
-	builder_.reload_map();
+	builder_->reload_map();
+}
+
+void display::change_map(const gamemap* m)
+{
+	map_ = m;
+	builder_->change_map(m);
 }
 
 const SDL_Rect& display::max_map_area() const
@@ -157,8 +170,8 @@ const SDL_Rect& display::max_map_area() const
 	// To display a hex fully on screen,
 	// a little bit extra space is needed.
 	// Also added the border two times.
-	max_area.w  = static_cast<int>((map_.w() + 2 * theme_.border().size + 1.0/3.0) * hex_width());
-	max_area.h = static_cast<int>((map_.h() + 2 * theme_.border().size + 0.5) * hex_size());
+	max_area.w  = static_cast<int>((get_map().w() + 2 * theme_.border().size + 1.0/3.0) * hex_width());
+	max_area.h = static_cast<int>((get_map().h() + 2 * theme_.border().size + 0.5) * hex_size());
 
 	return max_area;
 }
@@ -418,19 +431,19 @@ map_location display::minimap_location_on(int x, int y)
 	// probably more adjustements to do (border, minimap shift...)
 	// but the mouse and human capacity to evaluate the rectangle center
 	// is not pixel precise.
-	int px = (x - minimap_location_.x) * map_.w()*hex_width() / minimap_location_.w;
-	int py = (y - minimap_location_.y) * map_.h()*hex_size() / minimap_location_.h;
+	int px = (x - minimap_location_.x) * get_map().w()*hex_width() / minimap_location_.w;
+	int py = (y - minimap_location_.y) * get_map().h()*hex_size() / minimap_location_.h;
 
 	map_location loc = pixel_position_to_hex(px, py);
 	if (loc.x < 0)
 		loc.x = 0;
-	else if (loc.x >= map_.w())
-		loc.x = map_.w() - 1;
+	else if (loc.x >= get_map().w())
+		loc.x = get_map().w() - 1;
 	
 	if (loc.y < 0)
 		loc.y = 0;
-	else if (loc.y >= map_.h())
-		loc.y = map_.h() - 1;
+	else if (loc.y >= get_map().h())
+		loc.y = get_map().h() - 1;
 
 	return loc;
 }
@@ -443,7 +456,7 @@ int display::screenshot(std::string filename, bool map_screenshot)
 		SDL_SaveBMP(screenshot_surf, filename.c_str());
 		size = screenshot_surf->w * screenshot_surf->h;
 	} else {
-		if (map_.empty()) {
+		if (get_map().empty()) {
 			// Map Screenshot are big, abort and warn the user if he does strange things
 			std::cerr << "No map, can't do a Map Screenshot. If it was not wanted, check your hotkey.\n";
 			return -1;
@@ -590,7 +603,7 @@ std::vector<std::string> display::get_fog_shroud_graphics(const map_location& lo
 				//	stream << "void";
 				//else
 				//	stream << "fog";
-				stream << "terrain/" << map_.get_terrain_info(*terrain).minimap_image();
+				stream << "terrain/" << get_map().get_terrain_info(*terrain).minimap_image();
 
 				for(int n = 0; *terrain == tiles[i] && n != 6; i = (i+1)%6, ++n) {
 					stream << get_direction(i);
@@ -647,7 +660,7 @@ std::vector<surface> display::get_terrain_images(const map_location &loc,
 	terrain_builder::ADJACENT_TERRAIN_TYPE builder_terrain_type =
 	      (terrain_type == ADJACENT_FOREGROUND ?
 		  terrain_builder::ADJACENT_FOREGROUND : terrain_builder::ADJACENT_BACKGROUND);
-	const terrain_builder::imagelist* const terrains = builder_.get_terrain_at(loc,
+	const terrain_builder::imagelist* const terrains = builder_->get_terrain_at(loc,
 			timeid, builder_terrain_type);
 
 	if(terrains != NULL) {
@@ -1081,7 +1094,7 @@ bool display::draw_init()
 {
 	bool changed = false;
 
-	if (map_.empty()) {
+	if (get_map().empty()) {
 		return changed;
 	}
 
@@ -1251,7 +1264,7 @@ void display::draw_border(const map_location& loc, const int xpos, const int ypo
 	if(loc.x == -1 && loc.y == -1) { // top left corner
 		drawing_buffer_add(LAYER_BORDER, drawing_order, tblit(xpos + zoom_/4, ypos,
 			image::get_image(theme_.border().corner_image_top_left, image::SCALED_TO_ZOOM)));
-	} else if(loc.x == map_.w() && loc.y == -1) { // top right corner
+	} else if(loc.x == get_map().w() && loc.y == -1) { // top right corner
 		// We use the map idea of odd and even, and map coords are internal coords + 1
 		if(loc.x%2 == 0) {
 			drawing_buffer_add(LAYER_BORDER, drawing_order, tblit(xpos, ypos + zoom_/2,
@@ -1260,11 +1273,11 @@ void display::draw_border(const map_location& loc, const int xpos, const int ypo
 			drawing_buffer_add(LAYER_BORDER, drawing_order, tblit(xpos, ypos,
 				image::get_image(theme_.border().corner_image_top_right_even, image::SCALED_TO_ZOOM)));
 		}
-	} else if(loc.x == -1 && loc.y == map_.h()) { // bottom left corner
+	} else if(loc.x == -1 && loc.y == get_map().h()) { // bottom left corner
 		drawing_buffer_add(LAYER_BORDER, drawing_order, tblit(xpos + zoom_/4, ypos,
 			image::get_image(theme_.border().corner_image_bottom_left, image::SCALED_TO_ZOOM)));
 
-	} else if(loc.x == map_.w() && loc.y == map_.h()) { // bottom right corner
+	} else if(loc.x == get_map().w() && loc.y == get_map().h()) { // bottom right corner
 		// We use the map idea of odd and even, and map coords are internal coords + 1
 		if(loc.x%2 == 1) {
 			drawing_buffer_add(LAYER_BORDER, drawing_order, tblit(xpos, ypos,
@@ -1278,7 +1291,7 @@ void display::draw_border(const map_location& loc, const int xpos, const int ypo
 	} else if(loc.x == -1) { // left side
 		drawing_buffer_add(LAYER_BORDER, drawing_order, tblit(xpos + zoom_/4, ypos,
 			image::get_image(theme_.border().border_image_left, image::SCALED_TO_ZOOM)));
-	} else if(loc.x == map_.w()) { // right side
+	} else if(loc.x == get_map().w()) { // right side
 		drawing_buffer_add(LAYER_BORDER, drawing_order, tblit(xpos + zoom_/4, ypos,
 			image::get_image(theme_.border().border_image_right, image::SCALED_TO_ZOOM)));
 	} else if(loc.y == -1) { // top side
@@ -1290,7 +1303,7 @@ void display::draw_border(const map_location& loc, const int xpos, const int ypo
 			drawing_buffer_add(LAYER_BORDER, drawing_order, tblit(xpos, ypos + zoom_/2,
 				image::get_image(theme_.border().border_image_top_odd, image::SCALED_TO_ZOOM)));
 		}
-	} else if(loc.y == map_.h()) { // bottom side
+	} else if(loc.y == get_map().h()) { // bottom side
 		// We use the map idea of odd and even, and map coords are internal coords + 1
 		if(loc.x%2 == 1) {
 			drawing_buffer_add(LAYER_BORDER, drawing_order, tblit(xpos, ypos,
@@ -1306,7 +1319,7 @@ void display::draw_minimap()
 {
 	const SDL_Rect& area = minimap_area();
 	if(minimap_ == NULL || minimap_->w > area.w || minimap_->h > area.h) {
-		minimap_ = image::getMinimap(area.w, area.h, map_, viewpoint_);
+		minimap_ = image::getMinimap(area.w, area.h, get_map(), viewpoint_);
 		if(minimap_ == NULL) {
 			return;
 		}
@@ -1328,8 +1341,8 @@ void display::draw_minimap()
 
 	// calculate the visible portion of the map:
 	// scaling between minimap and full map images
-	double xscaling = 1.0*minimap_->w / (map_.w()*hex_width());
-	double yscaling = 1.0*minimap_->h / (map_.h()*hex_size());
+	double xscaling = 1.0*minimap_->w / (get_map().w()*hex_width());
+	double yscaling = 1.0*minimap_->h / (get_map().h()*hex_size());
 
 	// we need to shift with the border size
 	// and the 0.25 from the minimap balanced drawing
@@ -1366,7 +1379,7 @@ void display::scroll(int xmove, int ymove)
 	if(dx == 0 && dy == 0)
 		return;
 
-	map_labels_.scroll(dx, dy);
+	labels().scroll(dx, dy);
 	font::scroll_floating_labels(dx, dy);
 
 	surface screen(screen_.getSurface());
@@ -1421,7 +1434,7 @@ void display::set_zoom(int amount)
 		bounds_check_position();
 
 		image::set_zoom(zoom_);
-		map_labels_.recalculate_labels();
+		labels().recalculate_labels();
 		redraw_background_ = true;
 		invalidate_all();
 
@@ -1534,7 +1547,7 @@ void display::scroll_to_xy(int screenxpos, int screenypos, SCROLL_TYPE scroll_ty
 
 void display::scroll_to_tile(const map_location& loc, SCROLL_TYPE scroll_type, bool check_fogged)
 {
-	if(map_.on_board(loc) == false) {
+	if(get_map().on_board(loc) == false) {
 		ERR_DP << "Tile at " << loc << " isn't on the map, can't scroll to the tile.\n";
 		return;
 	}
@@ -1567,7 +1580,7 @@ void display::scroll_to_tiles(const std::vector<map_location>& locs,
 	bool first_tile_on_screen = false;
 
 	for(std::vector<map_location>::const_iterator itor = locs.begin(); itor != locs.end() ; itor++) {
-		if(map_.on_board(*itor) == false) continue;
+		if(get_map().on_board(*itor) == false) continue;
 		if(check_fogged && fogged(*itor)) continue;
 
 		int x = get_location_x(*itor);
@@ -1711,8 +1724,8 @@ void display::bounds_check_position(int& xpos, int& ypos)
 	const int tile_width = hex_width();
 
 	// Adjust for the border 2 times
-	const int xend = static_cast<int>(tile_width * (map_.w() + 2 * theme_.border().size) + tile_width/3);
-	const int yend = static_cast<int>(zoom_ * (map_.h() + 2 * theme_.border().size) + zoom_/2);
+	const int xend = static_cast<int>(tile_width * (get_map().w() + 2 * theme_.border().size) + tile_width/3);
+	const int yend = static_cast<int>(zoom_ * (get_map().h() + 2 * theme_.border().size) + zoom_/2);
 
 	if(xpos > xend - map_area().w) {
 		xpos = xend - map_area().w;
@@ -1775,7 +1788,7 @@ void display::redraw_everything()
 
 	panelsDrawn_ = false;
 
-	map_labels_.recalculate_labels();
+	labels().recalculate_labels();
 
 	redraw_background_ = true;
 	
@@ -1811,7 +1824,7 @@ void display::draw(bool update,bool force) {
 	invalidate_animations();
 	pre_draw();
 	update_time_of_day();
-	if(!map_.empty()) {
+	if(!get_map().empty()) {
 		//int simulate_delay = 0;
 		if(!invalidated_.empty()) {
 			changed = true;
@@ -1827,6 +1840,16 @@ void display::draw(bool update,bool force) {
 		//SDL_Delay(2*simulate_delay + rand() % 20);
 	}
 	draw_wrap(update, force, changed);
+}
+
+map_labels& display::labels()
+{
+	return *map_labels_;
+}
+
+const map_labels& display::labels() const
+{
+	return *map_labels_;
 }
 
 void display::clear_screen()
@@ -1849,8 +1872,8 @@ void display::draw_invalidated() {
 	foreach (map_location loc, invalidated_) {
 		int xpos = get_location_x(loc);
 		int ypos = get_location_y(loc);
-		const bool on_map = map_.on_board(loc);
-		const bool off_map_tile = (map_.get_terrain(loc) == t_translation::OFF_MAP_USER);
+		const bool on_map = get_map().on_board(loc);
+		const bool off_map_tile = (get_map().get_terrain(loc) == t_translation::OFF_MAP_USER);
 		SDL_Rect hex_rect = {xpos, ypos, zoom_, zoom_};
 		if(!rects_overlap(hex_rect,clip_rect)) {
 			continue;
@@ -1868,8 +1891,8 @@ void display::draw_hex(const map_location& loc) {
 	int ypos = get_location_y(loc);
 	int drawing_order = loc.get_drawing_order();
 	image::TYPE image_type = get_image_type(loc);
-	const bool on_map = map_.on_board(loc);	
-	const bool off_map_tile = (map_.get_terrain(loc) == t_translation::OFF_MAP_USER);
+	const bool on_map = get_map().on_board(loc);	
+	const bool off_map_tile = (get_map().get_terrain(loc) == t_translation::OFF_MAP_USER);
 	if(!shrouded(loc)) {
 		// unshrouded terrain (the normal case)
 		drawing_buffer_add(LAYER_TERRAIN_BG, drawing_order, tblit(xpos, ypos,
@@ -1901,7 +1924,7 @@ void display::draw_hex(const map_location& loc) {
 	if(loc == selectedHex_ && on_map && selected_hex_overlay_ != NULL) {
 		drawing_buffer_add(LAYER_TERRAIN_TMP_BG, drawing_order, tblit(xpos, ypos, selected_hex_overlay_));
 	}
-	if(loc == mouseoverHex_ && (on_map || (in_editor() && map_.on_board_with_border(loc))) && mouseover_hex_overlay_ != NULL) {
+	if(loc == mouseoverHex_ && (on_map || (in_editor() && get_map().on_board_with_border(loc))) && mouseover_hex_overlay_ != NULL) {
 		drawing_buffer_add(LAYER_TERRAIN_TMP_BG, drawing_order, tblit(xpos, ypos, mouseover_hex_overlay_));
 	}
 	
@@ -1940,7 +1963,7 @@ void display::draw_hex(const map_location& loc) {
 		if (draw_terrain_codes_ && (game_config::debug || !shrouded(loc))) {
 			int off_x = xpos + hex_size()/2;
 			int off_y = ypos + hex_size()/2;
-			surface text = font::get_rendered_text(lexical_cast<std::string>(map_.get_terrain(loc)), font::SIZE_SMALL, font::NORMAL_COLOUR);
+			surface text = font::get_rendered_text(lexical_cast<std::string>(get_map().get_terrain(loc)), font::SIZE_SMALL, font::NORMAL_COLOUR);
 			surface bg = create_neutral_surface(text->w, text->h);
 			SDL_Rect bg_rect = {0, 0, text->w, text->h};
 			SDL_FillRect(bg, &bg_rect, 0xaa000000);
@@ -2226,7 +2249,7 @@ void display::invalidate_animations() {
 		rect_of_hexes::iterator i = hexes.begin(), end = hexes.end();
 		for (;i != end; ++i) {
 			if (!shrouded(*i)) {
-				if (builder_.update_animation(*i)) {
+				if (builder_->update_animation(*i)) {
 					invalidate(*i);
 				} else {
 					invalidate_animations_location(*i);

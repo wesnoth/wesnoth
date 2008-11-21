@@ -23,6 +23,7 @@ class team;
 class unit;
 class unit_map;
 
+#include "animated.hpp"
 #include "display.hpp"
 #include "image.hpp"
 #include "pathfind.hpp"

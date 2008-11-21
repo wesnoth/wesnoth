@@ -111,7 +111,7 @@ void terrain_builder::tile::clear()
 
 void terrain_builder::tilemap::reset()
 {
-	for(std::vector<tile>::iterator it = map_.begin(); it != map_.end(); ++it)
+	for(std::vector<tile>::iterator it = tiles_.begin(); it != tiles_.end(); ++it)
 		it->clear();
 }
 
@@ -119,7 +119,7 @@ void terrain_builder::tilemap::reload(int x, int y)
 {
 	x_ = x;
 	y_ = y;
-	map_.resize((x + 4) * (y + 4));
+	tiles_.resize((x + 4) * (y + 4));
 }
 
 bool terrain_builder::tilemap::on_map(const map_location &loc) const
@@ -136,20 +136,20 @@ terrain_builder::tile& terrain_builder::tilemap::operator[](const map_location &
 {
 	assert(on_map(loc));
 
-	return map_[(loc.x + 2) + (loc.y + 2) * (x_ + 4)];
+	return tiles_[(loc.x + 2) + (loc.y + 2) * (x_ + 4)];
 }
 
 const terrain_builder::tile& terrain_builder::tilemap::operator[] (const map_location &loc) const
 {
 	assert(on_map(loc));
 
-	return map_[(loc.x + 2) + (loc.y + 2) * (x_ + 4)];
+	return tiles_[(loc.x + 2) + (loc.y + 2) * (x_ + 4)];
 }
 
 terrain_builder::terrain_builder(const config& cfg, const config& level,
-		const gamemap& map, const std::string& offmap_image) :
-	map_(map), 
-	tile_map_(map.w(), map.h()),
+		const gamemap* m, const std::string& offmap_image) :
+	map_(m), 
+	tile_map_(map().w(), map().h()),
 	terrain_by_type_(),
 	building_rules_()
 {
@@ -168,9 +168,15 @@ terrain_builder::terrain_builder(const config& cfg, const config& level,
 
 void terrain_builder::reload_map()
 {
-	tile_map_.reload(map_.w(), map_.h());
+	tile_map_.reload(map().w(), map().h());
 	terrain_by_type_.clear();
 	build_terrains();
+}
+
+void terrain_builder::change_map(const gamemap* m)
+{
+	map_ = m;
+	reload_map();
 }
 
 const terrain_builder::imagelist *terrain_builder::get_terrain_at(const map_location &loc,
@@ -234,16 +240,16 @@ void terrain_builder::rebuild_terrain(const map_location &loc)
 		btile.images_foreground.clear();
 		btile.images_background.clear();
 		const std::string filename =
-			map_.get_terrain_info(map_.get_terrain(loc)).minimap_image();
+			map().get_terrain_info(map().get_terrain(loc)).minimap_image();
 		animated<image::locator> img_loc;
 		img_loc.add_frame(100,image::locator("terrain/" + filename + ".png"));
 		img_loc.start_animation(0, true);
 		btile.images_background.push_back(img_loc);
 		
 		//Combine base and overlay image if neccessary
-		if(map_.get_terrain_info(map_.get_terrain(loc)).is_combined()) {
+		if(map().get_terrain_info(map().get_terrain(loc)).is_combined()) {
 			const std::string filename_ovl =
-				map_.get_terrain_info(map_.get_terrain(loc)).minimap_image_overlay();
+				map().get_terrain_info(map().get_terrain(loc)).minimap_image_overlay();
 			animated<image::locator> img_loc_ovl;
 			img_loc_ovl.add_frame(100,image::locator("terrain/" + filename_ovl + ".png"));
 			img_loc_ovl.start_animation(0, true);
@@ -872,11 +878,11 @@ bool terrain_builder::rule_matches(const terrain_builder::building_rule &rule,
 			return false;
 		}
 
-		//std::cout << "testing..." << builder_letter(map_.get_terrain(tloc))
+		//std::cout << "testing..." << builder_letter(map().get_terrain(tloc))
 
 		// check if terrain matches except if we already know that it does
 		if(cons != type_checked &&
-				!terrain_matches(map_.get_terrain(tloc), cons->second.terrain_types_match)) {
+				!terrain_matches(map().get_terrain(tloc), cons->second.terrain_types_match)) {
 			return false;
 		}
 
@@ -937,10 +943,10 @@ void terrain_builder::build_terrains()
 	log_scope("terrain_builder::build_terrains");
 
 	// Builds the terrain_by_type_ cache
-	for(int x = -2; x <= map_.w(); ++x) {
-		for(int y = -2; y <= map_.h(); ++y) {
+	for(int x = -2; x <= map().w(); ++x) {
+		for(int y = -2; y <= map().h(); ++y) {
 			const map_location loc(x,y);
-			const t_translation::t_terrain t = map_.get_terrain(loc);
+			const t_translation::t_terrain t = map().get_terrain(loc);
 
 			terrain_by_type_[t].push_back(loc);
 		}

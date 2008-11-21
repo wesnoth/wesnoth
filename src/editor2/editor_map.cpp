@@ -19,6 +19,7 @@
 #include "../filesystem.hpp"
 #include "../foreach.hpp"
 #include "../map_exception.hpp"
+#include "../map_label.hpp"
 #include "../pathutils.hpp"
 #include "../wml_exception.hpp"
 
@@ -277,6 +278,12 @@ gamemap editor_map::mask_to(const gamemap& target) const
 		}
 	}
 	return mask;
+}
+
+bool editor_map::same_size_as(const gamemap& other) const
+{
+	return h() == other.h() 
+		&& w() == other.w();
 }
 
 void editor_map::swap_starting_position(int x1, int y1, int x2, int y2)

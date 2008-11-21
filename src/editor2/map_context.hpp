@@ -31,13 +31,13 @@ namespace editor2 {
  * as e.g. the undo stack is part of the map, not the editor as a whole. This might allow many
  * maps to be open at the same time.
  */	
-class map_context : private boost::noncopyable
+class map_context
 {
 public:
 	/**
 	 * A map context can only by created from an existing map
 	 */
-	map_context(const editor_map& map);
+	explicit map_context(const editor_map& map);
 	
 	/**
 	 * Create map_context from a map file. If the map cannot be
@@ -152,6 +152,9 @@ public:
 	
 	/** @return whether the map was modified since the last save */
 	bool modified() const;
+	
+	/** Clear the modified state */
+	void clear_modified();
 
 	/** @return true when undo can be performed, false otherwise */
 	bool can_undo() const;

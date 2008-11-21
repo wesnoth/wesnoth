@@ -36,8 +36,8 @@ public:
 	typedef std::map<map_location,const terrain_label*> label_map;
 	typedef std::map<std::string,label_map> team_label_map;
 
-	map_labels(const display& disp, const gamemap& map, const team*);
-	map_labels(const display& disp, const config& cfg, const gamemap& map, const team*, const variable_set *variables);
+	map_labels(const display& disp, const team*);
+	map_labels(const display& disp, const config& cfg, const team*, const variable_set *variables);
 	~map_labels();
 
 	void write(config& res) const;
@@ -71,15 +71,14 @@ public:
 
 	void set_team(const team*);
 
+	void clear_all();
 private:
 	void clear_map(const label_map&);
-	void clear_all();
 	map_labels(const map_labels&);
 	void operator=(const map_labels&);
 
 	const display& disp_;
 	const team* team_;
-	const gamemap& map_;
 
 	team_label_map labels_;
 	label_map label_cache_;

@@ -12,6 +12,7 @@
 */
 
 #include "editor_display.hpp"
+#include "builder.hpp"
 
 
 
@@ -20,7 +21,7 @@ namespace editor2 {
 editor_display::editor_display(CVideo& video, const editor_map& map,
 		const config& theme_cfg, const config& cfg,
 		const config& level)
-	: display(video, map, theme_cfg, cfg, level)
+	: display(video, &map, theme_cfg, cfg, level)
 	, brush_locations_()
 	, toolbar_hint_()
 {
@@ -53,7 +54,7 @@ void editor_display::remove_brush_loc(const map_location& hex)
 }
 
 void editor_display::rebuild_terrain(const map_location &loc) {
-    builder_.rebuild_terrain(loc);
+    builder_->rebuild_terrain(loc);
 }
 
 void editor_display::pre_draw()
@@ -95,11 +96,11 @@ const SDL_Rect& editor_display::get_clip_rect()
 void editor_display::draw_sidebar()
 {
 	// Fill in the terrain report
-	if(map_.on_board_with_border(mouseoverHex_)) {
-		refresh_report(reports::TERRAIN, reports::report(map_.get_terrain_string(mouseoverHex_)));
+	if(get_map().on_board_with_border(mouseoverHex_)) {
+		refresh_report(reports::TERRAIN, reports::report(get_map().get_terrain_string(mouseoverHex_)));
 		refresh_report(reports::POSITION, reports::report(lexical_cast<std::string>(mouseoverHex_)));
 	}
-	refresh_report(reports::VILLAGES, reports::report(lexical_cast<std::string>(map_.villages().size())));
+	refresh_report(reports::VILLAGES, reports::report(lexical_cast<std::string>(get_map().villages().size())));
 	refresh_report(reports::EDITOR2_TOOL_HINT, reports::report(toolbar_hint_));	
 }
 

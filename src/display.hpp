@@ -38,13 +38,14 @@ class gamestatus;
 class team;
 class unit;
 class unit_map;
+class terrain_builder;
+class map_labels;
 
-#include "builder.hpp"
 #include "generic_event.hpp"
 #include "image.hpp"
+#include "font.hpp"
 #include "key.hpp"
 #include "map_location.hpp"
-#include "map_label.hpp"
 #include "reports.hpp"
 #include "time_of_day.hpp"
 #include "theme.hpp"
@@ -58,12 +59,13 @@ class unit_map;
 #include <string>
 
 #include <boost/function.hpp>
+#include <boost/scoped_ptr.hpp>
 
 
 class display
 {
 public:
-	display(CVideo& video, const gamemap& map, const config& theme_cfg,
+	display(CVideo& video, const gamemap* map, const config& theme_cfg,
 			const config& cfg, const config& level);
 	virtual ~display();
 	
@@ -72,7 +74,9 @@ public:
 	 * size has changed.
 	 */
 	void reload_map();
-
+	
+	void change_map(const gamemap* m);
+	
 	static Uint32 rgb(Uint8 red, Uint8 green, Uint8 blue)
 		{ return 0xFF000000 | (red << 16) | (green << 8) | blue; }
 
@@ -282,7 +286,7 @@ public:
 	 */
 	virtual void invalidate_animations_location(const map_location& /*loc*/) {}
 
-	const gamemap& get_map()const { return map_;}
+	const gamemap& get_map()const { return *map_; }
 
 	/**
 	 * The last action in drawing a tile is adding the overlays.
@@ -329,7 +333,7 @@ public:
 	void update_display();
 
 	/** Rebuild all dynamic terrain. */
-	void rebuild_all() { builder_.rebuild_all(); }
+	void rebuild_all();
 
 	const theme::menu* menu_pressed();
 	
@@ -434,8 +438,8 @@ public:
 	 */
 	void draw(bool update=true, bool force=false);
 
-	map_labels& labels() { return map_labels_; }
-	const map_labels& labels() const { return map_labels_; }
+	map_labels& labels();
+	const map_labels& labels() const;
 
 	/** Announce a message prominently. */
 	void announce(const std::string msg,
@@ -545,13 +549,13 @@ protected:
 	void scroll_to_xy(int screenxpos, int screenypos, SCROLL_TYPE scroll_type);
 
 	CVideo& screen_;
-	const gamemap& map_;
+	const gamemap* map_;
 	const viewpoint *viewpoint_;
 	int xpos_, ypos_;
 	theme theme_;
 	int zoom_;
 	int last_zoom_;
-	terrain_builder builder_;
+	boost::scoped_ptr<terrain_builder> builder_;
 	surface minimap_;
 	SDL_Rect minimap_location_;
 	bool redrawMinimap_;
@@ -563,7 +567,7 @@ protected:
 	double turbo_speed_;
 	bool turbo_;
 	bool invalidateGameStatus_;
-	map_labels map_labels_;
+	boost::scoped_ptr<map_labels> map_labels_;
 	std::string shroud_image_;
 	std::string fog_image_;
 	time_of_day tod_;

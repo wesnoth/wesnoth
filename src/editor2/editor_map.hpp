@@ -146,6 +146,8 @@ public:
 	 * will transform it into the target map.
 	 */
 	gamemap mask_to(const gamemap& target) const;
+	
+	bool same_size_as(const gamemap& other) const;
 
 protected:
 	void swap_starting_position(int x1, int y1, int x2, int y2);

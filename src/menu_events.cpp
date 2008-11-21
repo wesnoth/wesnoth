@@ -27,6 +27,7 @@
 #include "gettext.hpp"
 #include "help.hpp"
 #include "log.hpp"
+#include "map_label.hpp"
 #include "marked-up_text.hpp"
 #include "menu_events.hpp"
 #include "mouse_events.hpp"
@@ -723,6 +724,7 @@ private:
 		} catch(game::save_game_failed&) {
 			gui::message_dialog(*gui_,"",_("Could not auto save the game. Please save the game manually.")).show();
 			//do not bother retrying, since the user can just save the game
+			//maybe show a yes-no dialog for "disable autosaves now"?
 		}
 		end = SDL_GetTicks();
 		LOG_NG << "Milliseconds to save " << savename << ": " << end - start << "\n";

@@ -925,7 +925,7 @@ std::string play_controller::get_action_image(hotkey::HOTKEY_COMMAND command, in
 	return command_executor::get_action_image(command, index);
 }
 
-hotkey::ACTION_STATE play_controller::get_action_state(hotkey::HOTKEY_COMMAND command) const
+hotkey::ACTION_STATE play_controller::get_action_state(hotkey::HOTKEY_COMMAND command, int /*index*/) const
 {
 	switch(command) {
 	case hotkey::HOTKEY_DELAY_SHROUD:

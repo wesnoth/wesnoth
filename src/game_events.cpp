@@ -26,6 +26,7 @@
 #include "gui/widgets/spacer.hpp"
 #include "gui/widgets/window.hpp"
 #include "map.hpp"
+#include "map_label.hpp"
 #include "map_exception.hpp"
 #include "menu_events.hpp"
 #include "replay.hpp"
