@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-11-18 22:05+0100\n"
-"PO-Revision-Date: 2008-05-02 18:38+0100\n"
+"PO-Revision-Date: 2008-11-21 23:20+0100\n"
 "Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "MIME-Version: 1.0\n"
@@ -55,9 +55,8 @@ msgstr "Fänge"
 
 #. [unit_type]: race=bats
 #: data/core/units/bats/Bat_Dread.cfg:4
-#, fuzzy
 msgid "Dread Bat"
-msgstr "Vampirfledermaus"
+msgstr "Horrorfledermaus"
 
 #. [unit_type]: race=bats
 #: data/core/units/bats/Bat_Dread.cfg:25
@@ -67,6 +66,10 @@ msgid ""
 "began the battle. Bloated with blood they have grown to a huge size and can "
 "feast on bigger and tougher victims."
 msgstr ""
+"Horrorfledermäuse fliegen schnell, und saugen das Blut ihrer Opfer aus, "
+"wodurch sie sich selbst heilen können. Es kann sogar sein, dass sie nach "
+"einem Kampf gesünder sind als zuvor. Mit Blut vollgesaugt erreichen sie eine "
+"enorme Größe und können so immer größere Opfer anfallen."
 
 #. [unit_type]: race=bats
 #: data/core/units/bats/Bat_Vampire.cfg:4
@@ -121,7 +124,6 @@ msgstr "Piratengaleone"
 
 #. [unit_type]: race=mechanical
 #: data/core/units/boats/Pirate_Galleon.cfg:18
-#, fuzzy
 msgid ""
 "Pirate galleons are to transport ships what wolves are to sheep. The pirates "
 "who crew them are more than happy to help relieve other ships of their "
@@ -661,7 +663,6 @@ msgstr "Zwergen Drachenwächter"
 
 #. [unit_type]: race=dwarf
 #: data/core/units/dwarves/Dragonguard.cfg:20
-#, fuzzy
 msgid ""
 "It is not clear why the Dragonguards are called what they are, a name given "
 "by their dwarven brethren. Some speculate that the name comes from their "
@@ -834,9 +835,8 @@ msgstr "Runenhammer"
 
 #. [attack]: type=fire
 #: data/core/units/dwarves/Runemaster.cfg:35
-#, fuzzy
 msgid "lightning bolt"
-msgstr "Blitzschlag"
+msgstr "Blitzstrahl"
 
 #. [unit_type]: race=dwarf
 #: data/core/units/dwarves/Sentinel.cfg:4
@@ -900,7 +900,6 @@ msgstr "Zwergen Donnerer"
 
 #. [unit_type]: race=dwarf
 #: data/core/units/dwarves/Thunderer.cfg:19
-#, fuzzy
 msgid ""
 "When the men of Wesnoth first encountered the dwarves, they were mystified "
 "by the power of the Dwarvish Thunderers, who were able to hurl death from "
@@ -929,7 +928,6 @@ msgstr "Zwergen Donnerwächter"
 
 #. [unit_type]: race=dwarf
 #: data/core/units/dwarves/Thunderguard.cfg:21
-#, fuzzy
 msgid ""
 "The Dwarven Thunderguards are famed for their curious weaponry, these "
 "strange staffs of wood and iron that make a thunderous noise in their anger. "
@@ -1588,7 +1586,7 @@ msgstr "Spinnfäden"
 #. [unit_type]: race=monster
 #: data/core/units/fake/Fog_Clearer.cfg:7
 msgid "dummy_unit^Fog Clearer"
-msgstr ""
+msgstr "Nebelräumer"
 
 #. [unit_type]: race=wolf
 #: data/core/units/goblins/Direwolf_Rider.cfg:4
@@ -1643,7 +1641,6 @@ msgstr "Kobold Raubritter"
 
 #. [unit_type]: race=wolf
 #: data/core/units/goblins/Knight.cfg:20
-#, fuzzy
 msgid ""
 "The Goblin 'Knights' have little in common with the men who share that "
 "title, and the title is bestowed in mockery by their enemies. The similarity "
@@ -1789,7 +1786,6 @@ msgstr "Greifenmeister"
 
 #. [unit_type]: race=gryphon
 #: data/core/units/gryphons/Gryphon_Master.cfg:19
-#, fuzzy
 msgid ""
 "Gryphon Masters have long experience flying the Gryphons, which have become "
 "an extension of themselves. This special relationship makes the heart of the "
@@ -2033,7 +2029,6 @@ msgstr "Kavallerist"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Cavalryman.cfg:23
-#, fuzzy
 msgid ""
 "Cavalrymen are distinguished from horsemen by their tactics and equipment. A "
 "cavalryman wears heavier armor, and carries a sword and shield, rather than "
@@ -2111,7 +2106,6 @@ msgstr ""
 #: data/core/units/humans/Loyalist_Duelist.cfg:72
 #: data/core/units/humans/Loyalist_Fencer.cfg:127
 #: data/core/units/humans/Loyalist_Master_at_Arms.cfg:31
-#, fuzzy
 msgid "saber"
 msgstr "Säbel"
 
@@ -2122,7 +2116,6 @@ msgstr "Duellant"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Loyalist_Fencer.cfg:20
-#, fuzzy
 msgid ""
 "Fencers belong to a school of thought that considers the armor most soldiers "
 "wear in combat to be their own worst enemy. While armor can only soften a "
@@ -2673,9 +2666,8 @@ msgstr "Erzmagierin"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Mage_Elder.cfg:4
-#, fuzzy
 msgid "Elder Mage"
-msgstr "Silberner Magier"
+msgstr "Alter Magier"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Mage_Elder.cfg:22
@@ -2684,10 +2676,12 @@ msgid ""
 "wearying years of battle. Nevertheless they remain feared on the battlefield "
 "on account of their powerful lightning bolts."
 msgstr ""
+"Die einst großen Älteren Magier haben noch immer viel ihrer Kraft, obwohl "
+"sie mit den Jahren etwas abgenommen hat. Ihre starken Lichtblitze werden auf "
+"dem Schlachtfeld von allen ihren Feinden gefürchtet."
 
 #. [attack]: type=fire
 #: data/core/units/humans/Mage_Elder.cfg:34
-#, fuzzy
 msgid "lightning"
 msgstr "Blitzschlag"
 
@@ -3269,9 +3263,8 @@ msgstr "Mistforke"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Royal_Warrior.cfg:8
-#, fuzzy
 msgid "Royal Warrior"
-msgstr "Kriegstroll"
+msgstr "Adeliger Krieger"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Royal_Warrior.cfg:25
@@ -3279,6 +3272,8 @@ msgid ""
 "Royal warriors are the kings and princes of human noble houses, armed and "
 "armored to a degree heavier than that of their knights."
 msgstr ""
+"Adelige Krieger sind die Anführer von Adelshäusern der Menschen. Sie "
+"verfügen über bessere Waffen und Rüstungen als ihre untergebenen Ritter."
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Woodsman.cfg:4
@@ -3287,7 +3282,6 @@ msgstr "Förster"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Woodsman.cfg:19
-#, fuzzy
 msgid ""
 "Woodsmen are hunters, woodcutters, charcoal-burners, and others who eke out "
 "a living where the human world verges on the wilderness. Wits and woodcraft "
@@ -3303,7 +3297,6 @@ msgstr "Waidmann"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Woodsman_Huntsman.cfg:22
-#, fuzzy
 msgid ""
 "Hunting is a popular sport of noblemen, but it can also be a livelihood for "
 "commoners. Like any other craft, it has men of masterful skill in its "
@@ -3346,7 +3339,6 @@ msgstr "Wilddieb"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Woodsman_Poacher.cfg:22
-#, fuzzy
 msgid ""
 "Though not trained as warriors, the skills possessed by a hunter (especially "
 "those of archery) are useful in battle. Any group of soldiers or bandits "
@@ -3376,7 +3368,6 @@ msgstr "Waldläufer"
 
 #. [unit_type]: race=human
 #: data/core/units/humans/Woodsman_Ranger.cfg:22
-#, fuzzy
 msgid ""
 "Rangers are wild men and wanderers, who have chosen to shun the company of "
 "their fellow men for myriad reasons. They have spent the better part of "
@@ -3594,7 +3585,6 @@ msgstr "Wassermann Speerwerfer"
 
 #. [unit_type]: race=merman
 #: data/core/units/merfolk/Javelineer.cfg:19
-#, fuzzy
 msgid ""
 "Those mermen who master the art of the javelin can become nearly as "
 "effective as an archer - though the heft of their weapons impedes their "
@@ -3700,7 +3690,6 @@ msgstr "Wassermann Speerträger"
 
 #. [unit_type]: race=merman
 #: data/core/units/merfolk/Spearman.cfg:18
-#, fuzzy
 msgid ""
 "Archery is little favored by the mermen, for whom use of javelins serves a "
 "similar function. Though thrown javelins are of little use under the water, "
@@ -3991,6 +3980,9 @@ msgid ""
 "Wolves are aggressive animals that hunt in packs. Although weak "
 "individually, a wolf pack can kill even the strongest man in minutes."
 msgstr ""
+"Wölfe sind aggressive Raubtiere, die in Rudeln jagen. Zwar ist ein einzelner "
+"Wolf kein gefährlicher Gegner, jedoch erlegt ein ganzes Rudel selbst den "
+"stärksten Mann in wenigen Minuten."
 
 #. [unit_type]: race=monster
 #: data/core/units/monsters/Yeti.cfg:4
@@ -4061,7 +4053,6 @@ msgstr "Nagini Scherge"
 
 #. [female]
 #: data/core/units/nagas/Myrmidon.cfg:71
-#, fuzzy
 msgid ""
 "The most practiced of the nagani blademasters are initiated into the caste "
 "of the Myrmidon, masters of their twin-bladed art. They strike as fast as "
@@ -4069,10 +4060,11 @@ msgid ""
 "only are they potent enemies on any open terrain, but their ability to swim "
 "allows them a deadly mobility."
 msgstr ""
-"Die geübtesten der Naga Schwertmeisterinnen werden in die Kaste der Schergen "
-"eingeführt. Sie schlagen blitzschnell zu wie Schlangen, denen sie sehr "
-"ähneln, um sich dann graziös zurückzuziehen. An Land sind sie gefährliche "
-"Gegner, aber ihre Fähigkeit zu schwimmen gibt ihnen eine tödliche Mobilität."
+"Die geübtesten der Nagini Schwertmeisterinnen werden in die Kaste der "
+"Schergen eingeführt. Sie schlagen blitzschnell zu wie Schlangen, denen sie "
+"sehr ähneln, um sich dann graziös zurückzuziehen. An Land sind sie "
+"gefährliche Gegner, aber ihre Fähigkeit zu schwimmen gibt ihnen eine "
+"tödliche Mobilität."
 
 #. [unit_type]: race=naga
 #: data/core/units/nagas/Warrior.cfg:4
@@ -4104,7 +4096,6 @@ msgstr "Nagini Kriegerin"
 
 #. [female]
 #: data/core/units/nagas/Warrior.cfg:69
-#, fuzzy
 msgid ""
 "Many of the young warriors of the nagani aspire for the day when they merit "
 "their second blade. Their martial practice of using twin blades is wholly "
@@ -4113,12 +4104,12 @@ msgid ""
 "dodge from blows. This makes them potent on land, but the friction of water "
 "greatly impedes their ability to do this."
 msgstr ""
-"Viele der jungen Naga Krieger fiebern dem Tag entgegen, an dem sie sich ihr "
-"zweites Schwert verdienen. Ihre Art, mit den Zwillingsschwertern zu kämpfen, "
-"ist gänzlich verschieden von der der Orks und der der anderen Rassen. Sie "
-"sind dabei zu lernen, ihre Schlangenform dazu zu nutzen sich feindlichen "
-"Angriffen durch drehen und winden zu entziehen. Das gibt ihnen die "
-"Möglichkeit auch an Land gut zu kämpfen, jedoch schadet das fehlen von "
+"Viele der jungen Nagini Krieger fiebern dem Tag entgegen, an dem sie sich "
+"ihr zweites Schwert verdienen. Ihre Art, mit den Zwillingsschwertern zu "
+"kämpfen, ist gänzlich verschieden von der der Orks und der der anderen "
+"Rassen. Sie sind dabei zu lernen, ihre Schlangenform dazu zu nutzen sich "
+"feindlichen Angriffen durch drehen und winden zu entziehen. Das gibt ihnen "
+"die Möglichkeit auch an Land gut zu kämpfen, jedoch schadet das fehlen von "
 "Wasser ihrer Beweglichkeit."
 
 #. [unit_type]: race=ogre
@@ -4336,7 +4327,6 @@ msgstr "Orkkharraschschütze"
 
 #. [unit_type]: race=orc
 #: data/core/units/orcs/Slurbow.cfg:23
-#, fuzzy
 msgid ""
 "The basic design of a crossbow gives rise to the arbalest or 'slurbow'; a "
 "much more intricate device, complete with a hand-turned cranequin to re-cock "
@@ -4639,9 +4629,8 @@ msgstr ""
 
 #. [unit_type]: race=troll
 #: data/core/units/trolls/Troll_Shaman.cfg:4
-#, fuzzy
 msgid "Troll Shaman"
-msgstr "Trollwelpe"
+msgstr "Trollschamane"
 
 #. [unit_type]: race=troll
 #: data/core/units/trolls/Troll_Shaman.cfg:24
@@ -4650,11 +4639,14 @@ msgid ""
 "or tough as other trolls, their true power lies in their fire magic, which "
 "they use to blast enemies with gouts of fire."
 msgstr ""
+"Trollschamanen sind die mystischen Führer der Trolle. Sie sind nicht so "
+"stark wie andere Trolle, aber ihre wahre Macht liegt in ihrer Feuermagie, "
+"mit der sie ihren Feinden eine Gischt aus Feuer entgegen schleudern."
 
 #. [attack]: type=fire
 #: data/core/units/trolls/Troll_Shaman.cfg:41
 msgid "flame blast"
-msgstr ""
+msgstr "Flammenschlag"
 
 #. [unit_type]: race=troll
 #: data/core/units/trolls/Warrior.cfg:4
