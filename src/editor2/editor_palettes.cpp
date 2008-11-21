@@ -38,7 +38,7 @@ terrain_group::terrain_group(const config& cfg, display& gui):
 }
 
 terrain_palette::terrain_palette(display &gui, const size_specs &sizes,
-								 const gamemap &map, const config& cfg,
+								 const config& cfg,
 								 t_translation::t_terrain& fore,
 								 t_translation::t_terrain& back)
 	: gui::widget(gui.video())
@@ -49,7 +49,6 @@ terrain_palette::terrain_palette(display &gui, const size_specs &sizes,
 	, terrains_()
 	, terrain_groups_()
 	, checked_group_btn_(0)
-	, map_(map)
 	, top_button_(gui.video(), "", gui::button::TYPE_PRESS, "uparrow-button")
 	, bot_button_(gui.video(), "", gui::button::TYPE_PRESS, "downarrow-button")
 	, button_x_()
@@ -61,7 +60,7 @@ terrain_palette::terrain_palette(display &gui, const size_specs &sizes,
 	, selected_bg_terrain_(back)
 {
 	// Get the available terrains temporary in terrains_
-	terrains_ = map_.get_terrain_list();
+	terrains_ = map().get_terrain_list();
 	
 	//move "invalid" terrains to the end 
 	size_t size = terrains_.size();
@@ -95,7 +94,7 @@ terrain_palette::terrain_palette(display &gui, const size_specs &sizes,
 	// add the groups for all terrains to the map
 	t_translation::t_list::const_iterator t_itor = terrains_.begin();
 	for(; t_itor != terrains_.end(); ++t_itor) {
-        const terrain_type& t_info = map_.get_terrain_info(*t_itor);
+        const terrain_type& t_info = map().get_terrain_info(*t_itor);
 
         // don't display terrains that were automatically created from base+overlay
 		if (t_info.is_combined())
@@ -287,15 +286,15 @@ void terrain_palette::update_selected_terrains()
 std::string terrain_palette::get_terrain_string(const t_translation::t_terrain t)
 {
 	std::stringstream str;
-	const std::string& name = map_.get_terrain_info(t).name();
-	const t_translation::t_list& underlying = map_.underlying_union_terrain(t);
+	const std::string& name = map().get_terrain_info(t).name();
+	const t_translation::t_list& underlying = map().underlying_union_terrain(t);
 	str << name;
 	if(underlying.size() != 1 || underlying[0] != t) {
 		str << " (";
 		for(t_translation::t_list::const_iterator i = underlying.begin();
 			i != underlying.end(); ++i) {
 
-			str << map_.get_terrain_info(*i).name();
+			str << map().get_terrain_info(*i).name();
 			if(i+1 != underlying.end()) {
 				str << ",";
 			}
@@ -407,7 +406,7 @@ void terrain_palette::draw(bool force) {
 	int y = terrain_start_;
 	for(unsigned int counter = starting; counter < ending; counter++){
 		const t_translation::t_terrain terrain = terrains_[counter];
-		const t_translation::t_terrain base_terrain = map_.get_terrain_info(terrain).default_base();
+		const t_translation::t_terrain base_terrain = map().get_terrain_info(terrain).default_base();
 
 		const int counter_from_zero = counter - starting;
 		SDL_Rect dstrect;
@@ -418,7 +417,7 @@ void terrain_palette::draw(bool force) {
 
 		//Draw default base for overlay terrains
 		if(base_terrain != t_translation::NONE_TERRAIN) {
-			const std::string base_filename = "terrain/" + map_.get_terrain_info(base_terrain).editor_image() + ".png";
+			const std::string base_filename = "terrain/" + map().get_terrain_info(base_terrain).editor_image() + ".png";
 			surface base_image(image::get_image(base_filename));
 
 			if(base_image == NULL) {
@@ -436,7 +435,7 @@ void terrain_palette::draw(bool force) {
 			SDL_BlitSurface(base_image, NULL, screen, &dstrect);
 		}
 
-		const std::string filename = "terrain/" + map_.get_terrain_info(terrain).editor_image() + ".png";
+		const std::string filename = "terrain/" + map().get_terrain_info(terrain).editor_image() + ".png";
 		surface image(image::get_image(filename));
 		if(image == NULL) {
 			ERR_ED << "image for terrain " << counter << ": '" << filename << "' not found\n";
@@ -468,7 +467,7 @@ void terrain_palette::draw(bool force) {
 		}
 		draw_rectangle(dstrect.x, dstrect.y, image->w, image->h, color, screen);
 		tooltips::clear_tooltips(dstrect);
-		tooltips::add_tooltip(dstrect, map_.get_terrain_string(terrain));
+		tooltips::add_tooltip(dstrect, map().get_terrain_string(terrain));
 		if (counter_from_zero % size_specs_.terrain_width == size_specs_.terrain_width - 1)
 			y += size_specs_.terrain_space;
 	}

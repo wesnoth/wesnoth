@@ -138,7 +138,7 @@ void editor_controller::init_sidebar(const config& game_config)
 {
 	size_specs_ = new size_specs();
 	adjust_sizes(gui(), *size_specs_);
-	palette_ = new terrain_palette(gui(), *size_specs_, get_map(), game_config,
+	palette_ = new terrain_palette(gui(), *size_specs_, game_config,
 		foreground_terrain_, background_terrain_);
 	brush_bar_ = new brush_bar(gui(), *size_specs_, brushes_, &brush_);
 }
@@ -384,6 +384,13 @@ void editor_controller::load_map_dialog()
 	}
 	int res = dialogs::show_file_chooser_dialog(gui(), fn, _("Choose a Map to Load"));
 	if (res == 0) {
+		for (size_t i = 0; i < map_contexts_.size(); ++i) {
+			if (map_contexts_[i]->get_filename() == fn) {
+				gui::dialog(gui(), "", _("This map is already open.") + std::string("\n") + fn).show();
+				switch_context(i);
+				return;
+			}
+		}
 		load_map(fn, use_mdi_);
 	}
 }

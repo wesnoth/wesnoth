@@ -54,9 +54,11 @@ struct terrain_group
 class terrain_palette : public gui::widget {
 public:
 	terrain_palette(display &gui, const size_specs &sizes,
-					const gamemap &map, const config& cfg,
+					const config& cfg,
 					t_translation::t_terrain& fore,
 					t_translation::t_terrain& back);
+	
+	const gamemap& map() const { return gui_.get_map(); }
 
 	/** Scroll the terrain-palette up one step if possible. */
 	void scroll_up();
@@ -169,7 +171,6 @@ private:
 	 */
 	gui::button *checked_group_btn_;
 
-	const gamemap &map_;
 	gui::button top_button_, bot_button_;
 	size_t button_x_, top_button_y_, bot_button_y_;
 	size_t nterrains_, terrain_start_;
