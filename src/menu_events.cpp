@@ -385,7 +385,7 @@ private:
 
 		const team& viewing_team = teams_[gui_->viewing_team()];
 		
-		int total_villages = 0;
+		unsigned total_villages = 0;
 
 		//if the player is under shroud or fog, they don't get
 		//to see details about the other sides, only their own
