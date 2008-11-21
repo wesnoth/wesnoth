@@ -225,7 +225,7 @@ static int unittype_internal_compare(wesnoth_unittype* left,
 static PyTypeObject wesnoth_unittype_type = {
 	PyObject_HEAD_INIT(NULL)
 	0,										/* ob_size*/
-	CC("wesnoth.unittype"),					/* tp_name*/
+	CC("ai.unittype"),					    /* tp_name*/
 	sizeof(wesnoth_unittype),				/* tp_basicsize*/
 	0,										/* tp_itemsize*/
 	0,										/* tp_dealloc*/
@@ -356,7 +356,7 @@ static PyMethodDef attacktype_methods[] = {
 static PyTypeObject wesnoth_attacktype_type = {
 	PyObject_HEAD_INIT(NULL)
 	0,										/* ob_size*/
-	CC("wesnoth.attacktype"),				/* tp_name*/
+	CC("ai.attacktype"),				    /* tp_name*/
 	sizeof(wesnoth_attacktype),				/* tp_basicsize*/
 	0,										/* tp_itemsize*/
 	reinterpret_cast<destructor>
@@ -671,7 +671,7 @@ static int unit_internal_compare(wesnoth_unit* left, wesnoth_unit* right)
 static PyTypeObject wesnoth_unit_type = {
 	PyObject_HEAD_INIT(NULL)
 	0,						   /* ob_size*/
-	CC("wesnoth.unit"),		   /* tp_name*/
+	CC("ai.unit"),	    	   /* tp_name*/
 	sizeof(wesnoth_unit),  /* tp_basicsize*/
 	0,						   /* tp_itemsize*/
 	0,						   /* tp_dealloc*/
@@ -783,7 +783,7 @@ static PyMethodDef location_methods[] = {
 static PyTypeObject wesnoth_location_type = {
 	PyObject_HEAD_INIT(NULL)
 	0,						   /* ob_size*/
-	CC("wesnoth.location"),		   /* tp_name*/
+	CC("ai.location"),		   /* tp_name*/
 	sizeof(wesnoth_location),  /* tp_basicsize*/
 	0,						   /* tp_itemsize*/
 	reinterpret_cast<destructor>(wesnoth_location_dealloc),						  /* tp_dealloc*/
@@ -955,7 +955,7 @@ static PyMethodDef gamemap_methods[] = {
 static PyTypeObject wesnoth_gamemap_type = {
 	PyObject_HEAD_INIT(NULL)
 	0,						   /* ob_size*/
-	CC("wesnoth.gamemap"),		  /* tp_name*/
+	CC("ai.gamemap"),		  /* tp_name*/
 	sizeof(wesnoth_gamemap),  /* tp_basicsize*/
 	0,						   /* tp_itemsize*/
 	0,						   /* tp_dealloc*/
@@ -1140,7 +1140,7 @@ static PyGetSetDef team_getseters[] = {
 static PyTypeObject wesnoth_team_type = {
 	PyObject_HEAD_INIT(NULL)
 	0,						   /* ob_size*/
-	CC("wesnoth.team"),		   /* tp_name*/
+	CC("ai.team"),  		   /* tp_name*/
 	sizeof(wesnoth_team),  /* tp_basicsize*/
 	0,						   /* tp_itemsize*/
 	0,						   /* tp_dealloc*/
@@ -1279,7 +1279,7 @@ static PyGetSetDef gamestatus_getseters[] = {
 static PyTypeObject wesnoth_gamestatus_type = {
 	PyObject_HEAD_INIT(NULL)
 	0,						   /* ob_size*/
-	CC("wesnoth.gamestatus"),		   /* tp_name*/
+	CC("ai.gamestatus"),	   /* tp_name*/
 	sizeof(wesnoth_gamestatus),  /* tp_basicsize*/
 	0,						   /* tp_itemsize*/
 	0,						   /* tp_dealloc*/
@@ -1852,7 +1852,7 @@ PyObject* python_ai::wrapper_get_version(PyObject* /*self*/, PyObject* args)
 {
 	if (!PyArg_ParseTuple(args, NOVALUE))
 		return NULL;
-	return Py_BuildValue(STRINGVALUE, game_config::version.c_str());
+	return Py_BuildValue(CC("s#"), game_config::version.data(), game_config::version.size());
 }
 
 PyObject* python_ai::wrapper_raise_user_interact(PyObject* /*self*/, PyObject* args)
@@ -1969,7 +1969,7 @@ static PyMethodDef wesnoth_python_methods[] = {
 		"print to not clutter stdout if AI logging is disabled.")
     MDEF("get_random", python_ai::wrapper_get_random,
         "Parameters: a, b\n"
-		"Returns: random number\n"
+		"Returns: random_number\n"
 		"Get random number in the range [a, b].")
     MDEF("get_units", python_ai::wrapper_get_units,
 		"Returns: units\n"
@@ -2122,9 +2122,10 @@ int python_ai::run_shell()
     // Inspired by Django shell command implementation.
 	python_code +=
 		"import sys\n"
+		"import code\n"
+		"import ai\n"
 		"sys.path.append(\"" + game_config::path + "/data/ai/python\")\n"
 		"sys.path.append(\"" + game_config::path + "/data/tools/wesnoth\")\n"
-        "import code\n"
         "imported_objects = {}\n"
         "try: # Try activating rlcompleter, because it's handy.\n"
         "\timport readline\n"
@@ -2134,7 +2135,8 @@ int python_ai::run_shell()
         "\timport rlcompleter\n"
         "\treadline.set_completer(rlcompleter.Completer(imported_objects).complete)\n"
         "\treadline.parse_and_bind('tab:complete')\n"
-        "code.interact(local=imported_objects)\n"
+        "banner= 'Wesnoth %s\\nPython %s' % (ai.get_version(), sys.version)\n"
+        "code.interact(banner, local=imported_objects)\n"
         ;
 	PyObject *ret = PyRun_String(python_code.c_str(), Py_file_input, globals,
 		globals);
