@@ -32,6 +32,7 @@
 
 #include <deque>
 #include <boost/utility.hpp>
+#include <boost/scoped_ptr.hpp>
 
 class config;
 class map_generator;
@@ -330,9 +331,9 @@ class editor_controller : public controller_base,
 		 */
 		void redo();
 		
-		rand_rng::rng* rng_;
+		boost::scoped_ptr<rand_rng::rng> rng_;
 		
-		rand_rng::set_random_generator* rng_setter_;
+		boost::scoped_ptr<rand_rng::set_random_generator> rng_setter_;
 		
 		/** The currently opened map context object */
 		std::vector<map_context*> map_contexts_;
@@ -341,7 +342,7 @@ class editor_controller : public controller_base,
 		int current_context_index_;
 		
 		/** The display object used and owned by the editor. */
-		editor_display* gui_;
+		boost::scoped_ptr<editor_display> gui_;
 		
 		/** Available random map generators */
 		std::vector<map_generator*> map_generators_;
@@ -350,18 +351,18 @@ class editor_controller : public controller_base,
 		std::vector<time_of_day> tods_;
 
 		/** Legacy object required by the legacy terrain palette and brush bar */
-		size_specs* size_specs_;
+		boost::scoped_ptr<size_specs> size_specs_;
 		
 		/** The terrain palette */
-		terrain_palette* palette_;
+		boost::scoped_ptr<terrain_palette> palette_;
 		
 		/** The brush selector */
-		brush_bar* brush_bar_;
+		boost::scoped_ptr<brush_bar> brush_bar_;
 		
 		/* managers */
-		preferences::display_manager* prefs_disp_manager_;
+		boost::scoped_ptr<preferences::display_manager> prefs_disp_manager_;
 		tooltips::manager tooltip_manager_;
-		font::floating_label_context* floating_label_manager_;		
+		boost::scoped_ptr<font::floating_label_context> floating_label_manager_;		
 		
 		/** Quit main loop flag */
 		bool do_quit_;

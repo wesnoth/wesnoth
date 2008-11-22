@@ -112,8 +112,8 @@ editor_controller::editor_controller(const config &game_config, CVideo& video, m
 	init_tods(game_config);
 	init_sidebar(game_config);
 	hotkey_set_mouse_action(hotkey::HOTKEY_EDITOR_TOOL_PAINT);	
-	rng_ = new rand_rng::rng();
-	rng_setter_ = new rand_rng::set_random_generator(rng_);
+	rng_.reset(new rand_rng::rng());
+	rng_setter_.reset(new rand_rng::set_random_generator(rng_.get()));
 	hotkey::get_hotkey(hotkey::HOTKEY_QUIT_GAME).set_description(_("Quit Editor"));
 	get_map_context().set_starting_position_labels(gui());
 	cursor::set(cursor::NORMAL);
@@ -127,20 +127,20 @@ void editor_controller::init_gui(CVideo& video)
 	config dummy;
 	const config* theme_cfg = get_theme(game_config_, "editor2");
 	theme_cfg = theme_cfg ? theme_cfg : &dummy;
-	gui_ = new editor_display(video, get_map(), *theme_cfg, game_config_, config());
+	gui_.reset(new editor_display(video, get_map(), *theme_cfg, game_config_, config()));
 	gui_->set_grid(preferences::grid());
-	prefs_disp_manager_ = new preferences::display_manager(gui_);
+	prefs_disp_manager_.reset(new preferences::display_manager(&gui()));
 	gui_->add_redraw_observer(boost::bind(&editor_controller::display_redraw_callback, this, _1));
-	floating_label_manager_ = new font::floating_label_context();
+	floating_label_manager_.reset(new font::floating_label_context());
 }
 
 void editor_controller::init_sidebar(const config& game_config)
 {
-	size_specs_ = new size_specs();
+	size_specs_.reset(new size_specs());
 	adjust_sizes(gui(), *size_specs_);
-	palette_ = new terrain_palette(gui(), *size_specs_, game_config,
-		foreground_terrain_, background_terrain_);
-	brush_bar_ = new brush_bar(gui(), *size_specs_, brushes_, &brush_);
+	palette_.reset(new terrain_palette(gui(), *size_specs_, game_config,
+		foreground_terrain_, background_terrain_));
+	brush_bar_.reset(new brush_bar(gui(), *size_specs_, brushes_, &brush_));
 }
 
 void editor_controller::init_brushes(const config& game_config)
@@ -220,20 +220,12 @@ void editor_controller::load_tooltips()
 
 editor_controller::~editor_controller()
 {
-	delete palette_;
-	delete brush_bar_;
-	delete size_specs_;
-	delete floating_label_manager_;
-    delete gui_;
 	foreach (const mouse_action_map::value_type a, mouse_actions_) {
 		delete a.second;
 	}
 	foreach (map_generator* m, map_generators_) {
 		delete m;
 	}
-	delete prefs_disp_manager_;
-	delete rng_setter_;
-	delete rng_;
 	foreach (map_context* mc, map_contexts_) {
 		delete mc;
 	}
