@@ -34,15 +34,15 @@ wesnothd \- Demonio para juego en red multijugador de la batalla por
 .
 .SH DESCRIPCIÓN
 .
-Manages Battle for Wesnoth multiplayer games. See
-http://www.wesnoth.org/wiki/ServerAdministration on what commands the server
-accepts via the wesnoth client (/query ...) or the fifo.
+Administra juegos multijugador de la batalla por Wesnoth. Vea
+http://www.wesnoth.org/wiki/ServerAdministration para saber que órdenes
+acepta el servidor a través del cliente de wesnoth (/query) o del FIFO.
 .
 .SH OPCIONES
 .
 .TP 
 \fB\-c\ \fP\fIruta\fP\fB,\ \-\-config\fP\fI\ ruta\fP
-indica a wesnothd donde encontrar el fichero de configuración que debe
+indica a wesnothd donde encontrar el archivo de configuración que debe
 usar. Vea la sección \fBSERVER CONFIG\fP más abajo para conocer la
 sintaxis. PUedes recargar la configuración enviando SIGHUP al proceso del
 servidor.
@@ -84,18 +84,19 @@ activa el registro de depuración
 .P
 [\fIetiqueta\fP]
 .IP
-clave="\fIvalor\fP"
+atributo="\fIvalor\fP"
 .IP
-clave="\fIvalor\fP,\fIvalor\fP,..."
+atributo="\fIvalor\fP,\fIvalor\fP,..."
 .P
 [/\fIetiqueta\fP]
 .
-.SS "Claves globales:"
+.SS "Atributos globales:"
 .
 .TP 
 \fBban_save_file\fP
-Full or relative path to a (gzip compressed) file that the server can read
-and write.  Bans will be saved to this file and read again on server start.
+Ruta completa o relativa a un archivo (comprimido con gzip) que el servidor
+pueda leer y escribir.  Las denegaciones de acceso serán almacenadas en este
+archivo y leídas nuevamente al iniciar el servidor.
 .TP 
 \fBconnections_allowed\fP
 El número máximo de conexiones permitidas desde la misma IP. \fB0\fP significa
@@ -108,9 +109,10 @@ defecto (usados si no se especifica nada) son:
 \fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
 .TP 
 \fBfifo_path\fP
-The path to the fifo you can echo server commands into (same as /query
-\&... from wesnoth).  If not specified defaults to the compile\-time specified
-path (default: /var/run/socket/wesnothd/socket).
+La ruta al FIFO por el cual puede enviarle comandos al servidor (equivalente
+a /query ... desde Wesnoth).  Si no está especificada, se utiliza el valor
+especificado al compilar el servidor (predeterminado:
+/var/run/socket/wesnothd/socket).
 .TP 
 \fBmax_messages\fP
 El número de mensajes permitidos en un lapso de tiempo definido por
@@ -128,8 +130,8 @@ La contraseña utilizada para obtener privilegios de
 administrador. Habitualmente empieza por `admin '.
 .TP 
 \fBrestart_command\fP
-The command that the server uses to start a new server process via the
-`restart' command. (Can only be issued via the fifo.)
+El comando que utiliza el servidor para iniciar un nuevo proceso a través
+del comando `restart'. (Sólo puede ser enviado a través del FIFO.)
 .TP 
 \fBversions_accepted\fP
 Una lista separada por comas de cadenas de versión que serán admitidas por
@@ -156,24 +158,24 @@ Una lista separada por comas de las versiones a redirigir. Se usa la misma
 sintaxis que para \fBversions_accepted\fP en lo relativo a comodines.
 .RE
 .P
-\fB[ban_time]\fP A tag to define convenient keywords for temporary ban time
-lengths.
+\fB[ban_time]\fP Una etiqueta para definir palabras claves convenientes como
+sinónimos de duraciones de denegaciones.
 .RS
 .TP 
 \fBname\fP
-The name used to reference the ban time.
+El nombre utilizado para hacer referencia al tiempo de denegación.
 .TP 
 \fBtime\fP
-The time length definition.  The format is: %d[%s[%d%s[...]]] where %s is s
-(seconds), m (minutes), h (hours), D (days), M (months) or Y (years) and %d
-is a number.  If no time modifier is given minutes (m) are assumed.
-Example: time="1D12h30m" results in a ban time of 1 day, 12 hours and 30
-minutes.
+La definición del intervalo de tiempo.  El formato es: %d[%s[%d%s[...]]],
+donde %s es s (segundos), m (minutos), h (horas), D (días), M (meses) o Y
+(años) y %d es un número.  Si no se especifica un modificador de tiempo, se
+asumen minutos (m).  Ejemplo: time="1D12h30m" resulta en un acceso denegado
+por un día, 12 horas y 30 minutos.
 .RE
 .P
-\fB[proxy]\fP A tag to tell the server to act as a proxy and forward the
-connected client's requests to the specified server.  Accepts the same keys
-as \fB[redirect]\fP.
+\fB[proxy]\fP Una etiqueta para indicar al servidor que actúe como proxy y
+reenvíe las peticiones de los clientes conectados al servidor especificado.
+Acepta los mismos atributos que \fB[redirect]\fP.
 .
 .SH AUTOR
 .
