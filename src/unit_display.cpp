@@ -34,6 +34,7 @@ static void teleport_unit_between( const map_location& a, const map_location& b,
 
 	if (!disp->fogged(a)) { // teleport
 		disp->place_temporary_unit(temp_unit,a);
+		temp_unit.set_facing(a.get_relative_dir(b));
 		unit_animator animator;
 		animator.add_animation(&temp_unit,"pre_teleport",a);
 		animator.start_animations();
@@ -41,6 +42,7 @@ static void teleport_unit_between( const map_location& a, const map_location& b,
 	}
 	if (!disp->fogged(b)) { // teleport
 		disp->place_temporary_unit(temp_unit,b);
+		temp_unit.set_facing(a.get_relative_dir(b));
 		disp->scroll_to_tiles(b,a,game_display::ONSCREEN,true);
 		unit_animator animator;
 		animator.add_animation(&temp_unit,"post_teleport",b);
