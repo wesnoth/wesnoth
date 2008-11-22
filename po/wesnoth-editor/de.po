@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-11-22 14:55+0100\n"
-"PO-Revision-Date: 2007-12-10 13:57+0100\n"
+"PO-Revision-Date: 2008-11-22 16:33+0100\n"
 "Last-Translator: Nils Kneuper <crazy-ivanovic  AT gmx  D O  T net>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "MIME-Version: 1.0\n"
@@ -68,22 +68,22 @@ msgstr "Befestigungen"
 #. [editor_group]
 #: data/core/editor-groups.cfg:77
 msgid "special"
-msgstr ""
+msgstr "Spezielles"
 
 #. [brush]
 #: data/core/editor2-brushes.cfg:4
 msgid "Single Hex"
-msgstr ""
+msgstr "Einzelnes Hexfeld"
 
 #. [brush]
 #: data/core/editor2-brushes.cfg:14
 msgid "Radius 1 Hex"
-msgstr ""
+msgstr "Radius von 1 Hexfeld"
 
 #. [brush]
 #: data/core/editor2-brushes.cfg:24
 msgid "Radius 2 Hex"
-msgstr ""
+msgstr "Radius von 2 Hexfeldern"
 
 #. [brush]
 #: data/core/editor2-brushes.cfg:54
@@ -132,13 +132,12 @@ msgstr "Bearbeiten"
 #. [menu]
 #: data/themes/editor2.cfg:141
 msgid "Map"
-msgstr ""
+msgstr "Karte"
 
 #. [menu]
 #: data/themes/editor2.cfg:151
-#, fuzzy
 msgid "Window"
-msgstr "Rückgängig"
+msgstr "Fenster"
 
 #. [label]
 #: data/themes/editor2.cfg:262
@@ -151,93 +150,96 @@ msgstr "Editor beenden"
 
 #: src/editor2/editor_controller.cpp:241
 msgid "Fatal error"
-msgstr ""
+msgstr "Kritischer Fehler"
 
 #: src/editor2/editor_controller.cpp:255 src/editor2/editor_controller.cpp:951
 msgid "(New Map)"
-msgstr ""
+msgstr "(Neue Karte)"
 
 #: src/editor2/editor_controller.cpp:261
 msgid "Do you really want to quit?"
-msgstr ""
+msgstr "Wollt Ihr wirklich beenden?"
 
 #: src/editor2/editor_controller.cpp:263
 msgid ""
 "Do you really want to quit? Changes in the map since the last save will be "
 "lost."
 msgstr ""
+"Wollt Ihr wirklich beenden? Sämtliche Änderungen an der Karte seit dem "
+"letzten Speichern werden verloren gehen."
 
 #: src/editor2/editor_controller.cpp:265
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
 msgstr ""
+"Wollt Ihr wirklich beenden? Die folgenden Karten wurden seit dem letzten "
+"Speichern verändert und sämtliche Änderungen werden verloren gehen:"
 
 #: src/editor2/editor_controller.cpp:270
 msgid "Quit"
-msgstr ""
+msgstr "Beenden"
 
 #: src/editor2/editor_controller.cpp:327 src/editor2/editor_controller.cpp:439
 #: src/editor2/editor_controller.cpp:475 src/editor2/editor_controller.cpp:497
 msgid "Error"
-msgstr ""
+msgstr "Fehler"
 
 #: src/editor2/editor_controller.cpp:327
 msgid "No editor time-of-day found."
-msgstr ""
+msgstr "Keine Tageszeiten-Definitionen für den Editor gefunden."
 
 #: src/editor2/editor_controller.cpp:363
 msgid "Unsaved Changes"
-msgstr ""
+msgstr "Nicht gespeicherte Änderungen"
 
 #: src/editor2/editor_controller.cpp:364
 msgid ""
 "Do you want to discard all changes you made to the map since the last save?"
 msgstr ""
+"Wollt Ihr alle Änderungen an dieser Karte, die ihr seit dem letzten "
+"Speichern gemacht habt, verwerfen?"
 
 #: src/editor2/editor_controller.cpp:377
-#, fuzzy
 msgid "Choose a Map to Open"
-msgstr "Wählt eine Karte aus, die Ihr laden wollt."
+msgstr "Wählt eine Karte aus, die Ihr laden wollt"
 
 #: src/editor2/editor_controller.cpp:381
 msgid "This map is already open."
-msgstr ""
+msgstr "Diese Karte ist bereits geöffnet."
 
 #: src/editor2/editor_controller.cpp:419
 msgid "Save the Map As"
 msgstr "Karte speichern unter"
 
 #: src/editor2/editor_controller.cpp:423
-#, fuzzy
 msgid "The file already exists. Do you want to overwrite it?"
-msgstr "Diese Karte existiert schon. Soll sie überschrieben werden?"
+msgstr "Diese Datei existiert schon. Soll sie überschrieben werden?"
 
 #: src/editor2/editor_controller.cpp:439
 msgid "No random map generators found."
-msgstr ""
+msgstr "Keine Generatoren für Zufallskarten gefunden."
 
 #: src/editor2/editor_controller.cpp:450
 msgid "Map creation failed."
-msgstr ""
+msgstr "Erstellen der Karte fehlgeschlagen"
 
 #: src/editor2/editor_controller.cpp:465
-#, fuzzy
 msgid "Choose a mask to apply"
-msgstr "Wählt eine Karte aus, die Ihr laden wollt."
+msgstr "Wählt eine Maske aus, die Ihr anwenden wollt"
 
 #: src/editor2/editor_controller.cpp:472
 msgid "Error loading mask"
-msgstr ""
+msgstr "Fehler beim Laden der Maske"
 
 #: src/editor2/editor_controller.cpp:487
 msgid "Choose target map"
-msgstr ""
+msgstr "Wählt die Zielkarte"
 
 #: src/editor2/editor_controller.cpp:494 src/editor2/editor_controller.cpp:606
 #: src/editor2/editor_main.cpp:50
 msgid "Error loading map"
-msgstr ""
+msgstr "Fehler beim Laden der Karte"
 
 #: src/editor2/editor_controller.cpp:583
 msgid "Map saved."
@@ -253,7 +255,7 @@ msgstr "Rückgängig"
 
 #: src/editor2/editor_controller.cpp:980
 msgid "Can't Undo"
-msgstr ""
+msgstr "Rückgängig machen nicht möglich"
 
 #: src/editor2/editor_controller.cpp:984
 msgid "Redo"
@@ -261,19 +263,19 @@ msgstr "Wiederherstellen"
 
 #: src/editor2/editor_controller.cpp:986
 msgid "Can't Redo"
-msgstr ""
+msgstr "Wiederholen machen nicht möglich"
 
 #: src/editor2/editor_map.cpp:63
 msgid "Empty map file or file not found"
-msgstr ""
+msgstr "Leere Karte oder Datei nicht gefunden"
 
 #: src/editor2/editor_map.cpp:71
 msgid "There was a format error while loading the file:"
-msgstr ""
+msgstr "Es gab einen Fehler beim Format der zu ladenden Datei:"
 
 #: src/editor2/editor_map.cpp:77
 msgid "There was a wml error while loading the file:"
-msgstr ""
+msgstr "Es gab einen WML Fehler beim Laden der Datei:"
 
 #: src/editor2/editor_map.cpp:150 src/editor2/mouse_action.cpp:379
 msgid "Player"
@@ -281,7 +283,7 @@ msgstr "Spieler"
 
 #: src/editor2/editor_map.cpp:269
 msgid "The size of the target map is different from the current map"
-msgstr ""
+msgstr "Die Größe der Ziel-Karte weicht von der aktuellen Karte ab"
 
 #: src/editor2/editor_palettes.cpp:493
 msgid "FG"
@@ -292,23 +294,24 @@ msgid "BG"
 msgstr "HG"
 
 #: src/editor2/mouse_action.cpp:376
-#, fuzzy
 msgid "(Player)^None"
-msgstr "Spieler"
+msgstr "Niemand"
 
 #: src/editor2/mouse_action.cpp:383
 msgid "Choose player"
-msgstr ""
+msgstr "Spieler auswählen"
 
 #: src/editor2/mouse_action.cpp:384
 msgid ""
 "Which player should start here? You can also use the 1-9 and delete keys to "
 "set/clear staring positions."
 msgstr ""
+"Welcher Spieler soll hier beginnen? Ihr könnt auch die Ziffern 1 bis 9 sowie "
+"die Entfernen Taste nutzen um die Startposition zu setzen oder zu löschen."
 
 #: src/gui/dialogs/editor_settings.cpp:116
 msgid "Custom setting"
-msgstr ""
+msgstr "Eigene Einstellungen"
 
 #~ msgid "Settings"
 #~ msgstr "Einstellungen"
