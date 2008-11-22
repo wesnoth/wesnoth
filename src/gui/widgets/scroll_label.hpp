@@ -95,29 +95,43 @@ private:
 
 	void finalize();
 
-	/***** ***** ***** inherited ****** *****/
+	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
 
-	/** Inherited from tcontrol. */
-	const std::string& get_control_type() const 
-		{ static const std::string type = "scroll_label"; return type; }
+	/** Inherited from tvertical_scrollbar_container_. */
+	tpoint content_calculate_best_size() const;
 
 	/** Inherited from tvertical_scrollbar_container_. */
 	bool content_can_wrap() const { return true; }
 
+	/** Inherited from tvertical_scrollbar_container_. */
+	void content_use_vertical_scrollbar(const unsigned /*maximum_height*/)
+	{ 
+		/* 
+		 * FIXME implement, not sure whether it needs to so something.
+		 *
+		 * Probably only set the height of the best_size, maybe optimize so it
+		 * shows entire lines. Evaluate when this code is really tested and
+		 * used.
+		 */
+	}
+
+	/** Inherited from tvertical_scrollbar_container_. */
+	void content_set_size(const SDL_Rect& rect);
+
+// REMOVE when wrapping is reimplemented.	
+#if 0
 	/** Inherited from tvertical_scrollbar_container_. */
 	bool content_set_width_constrain(const unsigned width);
 	 
 	/** Inherited from tvertical_scrollbar_container_. */
 	void content_clear_width_constrain();
 
-	/** Inherited from tvertical_scrollbar_container_. */
-	tpoint content_get_best_size(const tpoint& maximum_size) const;
+#endif
+	/***** ***** ***** inherited ****** *****/
 
-	/** Inherited from tvertical_scrollbar_container_. */
-	tpoint content_get_best_size() const;
-
-	/** Inherited from tvertical_scrollbar_container_. */
-	void content_set_size(const SDL_Rect& rect);
+	/** Inherited from tcontrol. */
+	const std::string& get_control_type() const 
+		{ static const std::string type = "scroll_label"; return type; }
 
 	/** Inherited from tvertical_scrollbar_container_. */
 	void draw_content(surface& surface,  const bool force = false,

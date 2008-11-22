@@ -193,9 +193,7 @@ int twindow::show(const bool restore, void* /*flip_function*/)
 {
 	log_scope2(gui_draw, "Window: show.");
 
-#ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
-	debug_layout_->generate_dot_file("show");
-#endif	
+	generate_dot_file("show");
 
 	assert(status_ == NEW);
 
@@ -391,62 +389,103 @@ void twindow::remove_easy_close_blocker(const std::string& id)
 
 void twindow::layout()
 {
+	/**** Initialize and get initial size. *****/
+
 	boost::intrusive_ptr<const twindow_definition::tresolution> conf =
-		boost::dynamic_pointer_cast<const twindow_definition::tresolution>(config());
+		boost::dynamic_pointer_cast<const twindow_definition::tresolution>
+		(config());
 	assert(conf);
+
+	log_scope2(gui_layout, "Window: Recalculate size");	
+
+	layout_init();
+	generate_dot_file("layout_init");
+
+	const game_logic::map_formula_callable variables = 
+		get_screen_size_variables(); 
+
+	const int maximum_width = automatic_placement_ ?
+			settings::screen_width :  w_(variables);
+
+	const int maximum_height = automatic_placement_ ?
+			settings::screen_height :  h_(variables);
+
+	tpoint size = get_best_size();
+	generate_dot_file("get_initial_best_size");
+
+	DBG_G_L << "twindow " << __func__ << ": " << size << " maximum size " 
+			<< maximum_width << ',' << maximum_height << ".\n";
+
+	/***** Does the width fit in the available width? *****/
+	
+	// *** wrap (can change height)
+	if(size.x > maximum_width && can_wrap()) {
+		layout_wrap(maximum_width);
+		size = get_best_size();
+		generate_dot_file("wrapped");
+	}
+
+	// *** scrollbar (leaves height untouched)
+	if(size.x > maximum_width && has_horizontal_scrollbar()) {
+		layout_use_horizontal_scrollbar(maximum_width);
+		size = get_best_size();
+		generate_dot_file("horizontal_scrollbar");
+	}
+
+	// *** shrink (can change height)
+	if(size.x > maximum_width) {
+		layout_shrink_width(maximum_width);
+		size = get_best_size();
+		generate_dot_file("shrink_width");
+	}
+
+	// *** failed?
+	if(size.x > maximum_width) {
+		ERR_G_L << "Failed to resize window, wanted width "
+			<< size.x << " available width "
+			<< maximum_width << ".\n";
+		assert(false);
+	}
+
+	/***** Does the height fit in the available height? ******/
+
+	// *** scrollbar (leaves width untouched)
+	if(size.y > maximum_height && has_vertical_scrollbar()) {
+		layout_use_vertical_scrollbar(maximum_height);
+		size = get_best_size();
+		generate_dot_file("vertical_scrollbar");
+	}
+
+	// *** shrink (can change width)
+	if(size.y > maximum_height) {
+		layout_shrink_height(maximum_height);
+		size = get_best_size();
+		generate_dot_file("shrink_height");
+	}
+
+	// *** failed?
+	if(size.y > maximum_height) {
+		ERR_G_L << "Failed to resize window, wanted height "
+			<< size.y << " available height "
+			<< maximum_height << ".\n";
+		assert(false);
+	}
+
+	/***** Get the best location for the window *****/
+
+	tpoint origin(0, 0);
 
 	if(automatic_placement_) {
 		
-		log_scope2(gui_layout, "Window: Recalculate size");	
-
-		tpoint size = get_best_size(); 
-		DBG_G_L << "twindow " << __func__ << ": " << size << " screen size " 
-			<< settings::screen_width << ',' << settings::screen_height << ".\n";
-
-		// Too wide and we can wrap, try that.
-		if(static_cast<size_t>(size.x) > settings::screen_width && can_wrap()) {
-			DBG_G_L << "twindow " << __func__ << ": start wrapping.\n";
-			disable_cache = true;
-			if(set_width_constrain(settings::screen_width
-					-  conf->left_border - conf->right_border)) {
-
-				size = get_best_size();
-				DBG_G_L << "twindow " << __func__ 
-					<< ": After wrapping : " << size << ".\n";
-			} else {
-				DBG_G_L << "twindow " << __func__ << ": wrapping failed.\n";
-				disable_cache = false;
-			}
-		}
-
-		// If too big try it gracefully.
-		if(static_cast<size_t>(size.x) > settings::screen_width 
-				|| static_cast<size_t>(size.y) > settings::screen_height) {
-
-			size = get_best_size(
-				tpoint(settings::screen_width, settings::screen_height));
-			DBG_G_L << "twindow " << __func__ 
-				<< ": After resize request : " << size << ".\n";
-		}
-		// If still too big, just resize and hope for the best.
-		size.x = size.x < static_cast<int>(settings::screen_width) 
-			? size.x : static_cast<int>(settings::screen_width);
-
-		size.y = size.y < static_cast<int>(settings::screen_height) 
-			? size.y : static_cast<int>(settings::screen_height);
-
-		DBG_G_L << "twindow " << __func__ << ": final size " << size << ".\n";
-
-		tpoint position(0, 0);
 		switch(horizontal_placement_) {
 			case tgrid::HORIZONTAL_ALIGN_LEFT :
 				// Do nothing
 				break;
 			case tgrid::HORIZONTAL_ALIGN_CENTER :
-				position.x = (settings::screen_width - size.x) / 2;
+				origin.x = (settings::screen_width - size.x) / 2;
 				break;
 			case tgrid::HORIZONTAL_ALIGN_RIGHT :
-				position.x = settings::screen_width - size.x;
+				origin.x = settings::screen_width - size.x;
 				break;
 			default :
 				assert(false);
@@ -456,29 +495,26 @@ void twindow::layout()
 				// Do nothing
 				break;
 			case tgrid::VERTICAL_ALIGN_CENTER :
-				position.y = (settings::screen_height - size.y) / 2;
+				origin.y = (settings::screen_height - size.y) / 2;
 				break;
 			case tgrid::VERTICAL_ALIGN_BOTTOM :
-				position.y = settings::screen_height - size.y;
+				origin.y = settings::screen_height - size.y;
 				break;
 			default :
 				assert(false);
 		}
-
-		set_size(create_rect(position, size));
 	} else {
-		game_logic::map_formula_callable variables = get_screen_size_variables(); 
+		origin.x = x_(variables);
+		origin.y = y_(variables);
 
-		set_size(::create_rect(
-			x_(variables), y_(variables), w_(variables), h_(variables)));
+		size.x = w_(variables);
+		size.y = h_(variables);
 	}
 
-#ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
-	debug_layout_->generate_dot_file("layout_finished");
-#endif	
-	// Make sure the contrains are cleared, they might be partially set.
-	clear_width_constrain();
-	disable_cache = false;
+	/***** Set the window size *****/
+	set_size(origin, size);
+
+	generate_dot_file("layout_finished");
 	need_layout_ = false;
 }
 
@@ -516,7 +552,9 @@ void twindow::do_show_tooltip(const tpoint& location, const t_string& tooltip)
 		tooltip_rect.x = client_rect.w - size.x;
 	}
 
-	tooltip_.set_size(tooltip_rect);
+	tooltip_.set_size(
+			tpoint(tooltip_rect.x, tooltip_rect.y), 
+			tpoint(tooltip_rect.w, tooltip_rect.h));
 	tooltip_.set_visible();
 }
 
@@ -556,7 +594,9 @@ void twindow::do_show_help_popup(const tpoint& location, const t_string& help_po
 		help_popup_rect.x = client_rect.w - size.x;
 	}
 
-	help_popup_.set_size(help_popup_rect);
+	help_popup_.set_size(
+			tpoint(help_popup_rect.w, help_popup_rect.h), 
+			tpoint(help_popup_rect.x, help_popup_rect.y));
 	help_popup_.set_visible();
 }
 
@@ -577,6 +617,11 @@ void twindow::draw(surface& /*surf*/, const bool /*force*/,
 twindow::~twindow() 
 {
 	delete debug_layout_; 
+}
+
+void twindow::generate_dot_file(const std::string& generator)
+{
+	debug_layout_->generate_dot_file(generator);
 }
 #endif	
 } // namespace gui2

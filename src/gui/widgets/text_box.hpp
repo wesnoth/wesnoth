@@ -133,9 +133,13 @@ public:
 		{ history_ = ttext_history::get_history(id, true); }
 	
 protected:
-	
+
+	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
+
 	/** Inherited from tcontrol. */
-	void set_size(const SDL_Rect& rect);
+	void set_size(const tpoint& origin, const tpoint& size);
+
+	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
 	/** Inherited from tcontrol. */
 	void update_canvas();

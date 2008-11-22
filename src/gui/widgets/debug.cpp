@@ -16,6 +16,7 @@
 
 #include "foreach.hpp"
 #include "formatter.hpp"
+#include "gui/widgets/vertical_scrollbar_container.hpp"
 #include "gui/widgets/window.hpp"
 #include "serialization/string_utils.hpp"
 
@@ -181,8 +182,8 @@ void tdebug_layout_graph::generate_dot_file(const std::string& generator)
 	file << "}\n";
 }
 
-void tdebug_layout_graph::widget_generate_info(
-		std::ostream& out, const twidget* widget, const std::string& id) const
+void tdebug_layout_graph::widget_generate_info(std::ostream& out, 
+		const twidget* widget, const std::string& id, const bool embedded) const
 {
 
 	out << "\t" << id 
@@ -192,13 +193,22 @@ void tdebug_layout_graph::widget_generate_info(
 	if(level_ & STATE_INFO) widget_generate_state_info(out, widget);
 	if(level_ & SIZE_INFO) widget_generate_size_info(out, widget);
 
-	out << "</table>>];\n";
+	out << "</table>>";
+	if(embedded) {
+		out << ", fillcolor=\"palegoldenrod\"";
+	}	
+	out << "];\n";
 
 	const tgrid* grid = dynamic_cast<const tgrid*>(widget);
 	if(!grid) {
 		const tcontainer_* container = dynamic_cast<const tcontainer_*>(widget);
-		if(container) {
-			grid = &container->grid();
+
+		if(container && level_ & CHILD) { // The extra constrain needed???
+
+			widget_generate_info(out, &container->grid(), id + "_G", true);
+			out << "\t" << id << " -> " 
+				<< id << "_G"
+				<< " [label=\"(grid)\"];\n";
 		}
 	}
 	if(grid) {
@@ -257,23 +267,25 @@ void tdebug_layout_graph::widget_generate_state_info(
 		<< "<tr><td>\n"
 		<< "does block easy close=" << control->does_block_easy_close() << '\n'
 		<< "</td></tr>\n";
+
+	const tvertical_scrollbar_container_* vertical_scrollbar_container = 
+		dynamic_cast<const tvertical_scrollbar_container_*>(widget);
+
+	if(vertical_scrollbar_container) {
+
+		out << "<tr><td>\n"
+			<< "scrollbar_mode_=" 
+				<< vertical_scrollbar_container->scrollbar_mode_ << '\n'
+			<< "</td></tr>\n";
+	}
+
 }
 
 void tdebug_layout_graph::widget_generate_size_info(
 		std::ostream& out, const twidget* widget) const
 {
 	out << "<tr><td>\n"
-		<< "minimum size=" << widget->get_minimum_size() << '\n'
-		<< "</td></tr>\n"
-		<< "<tr><td>\n"
-		<< "best size=" << widget->get_best_size() << '\n'
-		<< "</td></tr>\n"
-		<< "<tr><td>\n"
-		<< "maximum size" << widget->get_maximum_size() << '\n'
-		<< "</td></tr>\n"
-		<< "<tr><td>\n"
 		<< "can wrap=" << widget->can_wrap() << '\n'
-		// FIXME add constrain info
 		<< "</td></tr>\n"
 		<< "<tr><td>\n"
 		<< "has vertical scrollbar=" 
@@ -285,7 +297,54 @@ void tdebug_layout_graph::widget_generate_size_info(
 		<< "</td></tr>\n"
 		<< "<tr><td>\n"
 		<< "size=" << widget->get_rect() << '\n'
+		<< "</td></tr>\n"
+		<< "<tr><td>\n"
+		<< "last_best_size_=" << widget->last_best_size_ << '\n'
+		<< "</td></tr>\n"
+		<< "<tr><td>\n"
+		<< "layout_size_=" << widget->layout_size_ << '\n'
 		<< "</td></tr>\n";
+
+
+	const tcontrol* control = dynamic_cast<const tcontrol*>(widget);
+
+	if(control) {
+		out << "<tr><td>\n"
+			<< "minimum config size=" << control->get_config_minimum_size() << '\n'
+			<< "</td></tr>\n"
+			<< "<tr><td>\n"
+			<< "default config size=" << control->get_config_default_size() << '\n'
+			<< "</td></tr>\n"
+			<< "<tr><td>\n"
+			<< "maximum config size=" << control->get_config_maximum_size() << '\n'
+			<< "</td></tr>\n"
+			<< "<tr><td>\n"
+			<< "shrunken_=" << control->shrunken_ << '\n'
+			<< "</td></tr>\n";
+	}
+
+	const tcontainer_* container = dynamic_cast<const tcontainer_*>(widget);
+
+	if(container) {
+		out << "<tr><td>\n"
+			<< "border_space=" << container->border_space() << '\n'
+			<< "</td></tr>\n";
+	}
+
+	const tvertical_scrollbar_container_* vertical_scrollbar_container = 
+		dynamic_cast<const tvertical_scrollbar_container_*>(widget);
+
+	if(vertical_scrollbar_container) {
+
+		out << "<tr><td>\n"
+			<< "content_last_best_size_=" 
+				<< vertical_scrollbar_container->content_last_best_size_ << '\n'
+			<< "</td></tr>\n"
+			<< "<tr><td>\n"
+			<< "content_layout_size_=" 
+				<< vertical_scrollbar_container->content_layout_size_ << '\n'
+			<< "</td></tr>\n";
+	}
 }
 
 void tdebug_layout_graph::grid_generate_info(std::ostream& out, 

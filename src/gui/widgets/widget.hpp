@@ -260,16 +260,21 @@ private:
 class twidget : public virtual tevent_executor
 {
 	friend class tdebug_layout_graph;
+
 public:
-	twidget() : 
-		id_(""), 
-		definition_("default"),
-		parent_(0),
-		x_(-1),
-		y_(-1),
-		w_(0),
-		h_(0),
-		dirty_(true)
+	twidget()
+		: id_("")
+		, definition_("default")
+		, parent_(0)
+		, x_(-1)
+		, y_(-1)
+		, w_(0)
+		, h_(0)
+		, dirty_(true)
+		, layout_size_(tpoint(0,0))
+#ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
+		, last_best_size_(tpoint(0,0))
+#endif			
 		{}
 
 	virtual ~twidget() {}
@@ -284,57 +289,52 @@ public:
 	 */
 	virtual void load_config() {} 
 
-	/***** ***** ***** ***** get optimal sizes ***** ***** ***** *****/
+	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
 
 	/**
-	 * Gets the minimum size for the widget.
+	 * How the layout engine works.
 	 *
-	 * @returns                      The minimum size for the widget.
-	 * @retval 0,0                   The minimum size is 0,0.
+	 * Every widget has a member layout_size_ which holds the best size in
+	 * the current layout phase. When the windows starts the layout phase it
+	 * calls layout_init() which resets this value.
+	 *
+	 * Every widget has two function to get the best size. get_best_size() tests
+	 * whether layout_size_ is set and if so returns that value otherwise it
+	 * calls calculate_best_size() so the size can be updated.
+	 *
+	 * During the layout phase some functions can modify layout_size_ so the
+	 * next call to get_best_size() returns the currently best size. This means
+	 * that after the layout phase get_best_size() still returns this value.
 	 */
-	virtual tpoint get_minimum_size() const = 0;	
+
+	/** Initializes the layout phase. */
+	virtual void layout_init() { layout_size_ = tpoint(0,0); }
 
 	/**
 	 * Gets the best size for the widget.
 	 *
+	 * During the layout phase a best size will be determined, several stages
+	 * might change the best size. This function will return the currently best
+	 * size as determined during the layout phase.
+	 *
 	 * @returns                      The best size for the widget.
 	 * @retval 0,0                   The best size is 0,0.
 	 */
-	virtual tpoint get_best_size() const = 0;	
+	tpoint get_best_size() const;
 
-
+private:
 	/**
-	 * Gets the best size for a widget within certain bounds.
+	 * Calculates the best size.
 	 *
-	 * This function now returns the same as get_best_size for items without
-	 * scrollbars. This behaviour might and should change in the future. When
-	 * things get too small we can ask for the minimum and test who benefites
-	 * most from the extra space that might be available. Eg a label that shows
-	 * it's abbriviation might get more space, but if it's not enough to show
-	 * the whole text it wouldn't benefit from it.
+	 * This function calculates the best size and ignores the current values in
+	 * the layout phase. Note containers can call the get_best_size() of their
+	 * children since it's meant to update itself.
 	 *
-	 * @todo implement this function for all widgets.
-	 *
-	 * @param maximum_size        The maximum size the widget is allowed to
-	 *                            return. If one of the values is 0 there's no
-	 *                            restriction in that direction, if both are 0
-	 *                            the result is the same a get_best_size().
-	 *                            NOTE if the widget can't be shown within the
-	 *                            maximum it's return can be larger as
-	 *                            maximum_size.
-	 *
-	 * @returns                   The best size for the widget.
-	 * @retval 0,0                The best size is 0,0.
+	 * @returns                      The best size for the widget.
+	 * @retval 0,0                   The best size is 0,0.
 	 */
-	virtual tpoint get_best_size(const tpoint& maximum_size) const = 0;
-
-	/**
-	 * Gets the maximum size for the widget.
-	 *
-	 * @returns                      The maximum size for the widget.
-	 * @retval 0,0                   The widget has no maximum size.
-	 */
-	virtual tpoint get_maximum_size() const = 0;	
+	virtual tpoint calculate_best_size() const = 0;
+public:
 
 	/**
 	 * Can the widget wrap.
@@ -348,19 +348,44 @@ public:
 	virtual bool can_wrap() const { return false; }
 
 	/**
-	 * Limits the maximum width for a widget.
+	 * Wraps the contents of the widget.
 	 *
-	 * This function should only be called on widgets that can wrap.
+	 * @todo implement this function properly.
 	 *
-	 * @param width               The maximum width for the widget.
+	 * @param maximum_width       The wanted maximum width of the widget.
 	 *
-	 * @returns                   True if the widget can wrap in the wanted
-	 *                            width, false otherwise.
+	 * @pre                       can_wrap() == true.
 	 */
-	virtual bool set_width_constrain(const unsigned /*width*/) { return false; }
+	virtual void layout_wrap(const unsigned /*maximum_width*/) 
+		{ assert(can_wrap()); }
 
-	/** Clears the width constrains set. */
-	virtual void clear_width_constrain() {}
+	/**
+	 * Does the widget have a horizontal scrollbar.
+	 *
+	 * See has_vertical_scrollbar for more info.
+	 * @returns                   Whether or not the widget has a horizontal
+	 *                            scrollbar.
+	 */
+	virtual bool has_horizontal_scrollbar() const { return false; }
+
+	/**
+	 * Tries to use a horizontal scrollbar with the widget.
+	 *
+	 * @param maximum_width       The wanted maximum width of the widget.
+	 *
+	 * @pre                       has_horizontal_scrollbar() == true.
+	 */
+	virtual void layout_use_horizontal_scrollbar(const unsigned /*maximum_width*/) 
+		{ assert(has_horizontal_scrollbar()); }
+
+	/**
+	 * Tries to shrink a widget so it fits in the wanted width.
+	 *
+	 * @todo implement this function properly.
+	 *
+	 * @param maximum_width       The wanted maximum width of the widget.
+	 */
+	virtual void layout_shrink_width(const unsigned /*maximum_width*/) { }
 
 	/**
 	 * Does the widget have a vertical scrollbar.
@@ -376,13 +401,52 @@ public:
 	virtual bool has_vertical_scrollbar() const { return false; }
 
 	/**
-	 * Does the widget have a horizontal scrollbar.
+	 * Tries to use a vertical scrollbar with the widget.
 	 *
-	 * See has_vertical_scrollbar for more info.
-	 * @returns                   Whether or not the widget has a horizontal
-	 *                            scrollbar.
+	 * @todo implement this function properly.
+	 *
+	 * @param maximum_height      The wanted maximum height of the widget.
+	 *
+	 * @pre                       has_vertical_scrollbar() == true.
 	 */
-	virtual bool has_horizontal_scrollbar() const { return false; }
+	virtual void layout_use_vertical_scrollbar(const unsigned /*maximum_height*/) 
+		{ assert(has_vertical_scrollbar()); }
+
+	/**
+	 * Tries to shrink a widget so it fits in the wanted height.
+	 *
+	 * @todo implement this function properly.
+	 *
+	 * @param maximum_height      The wanted maximum height of the widget.
+	 *
+	 */
+	virtual void layout_shrink_height(const unsigned /*maximum_height*/) { }
+
+	/**
+	 * Sets the size of the widget.
+	 *
+	 * @param origin              The position of top left of the widget.
+	 * @param size                The size of the widget.
+	 */
+	virtual void set_size(const tpoint& origin, const tpoint& size);
+
+// REMOVE when wrapping is reimplemented.	
+#if 0
+	/**
+	 * Limits the maximum width for a widget.
+	 *
+	 * This function should only be called on widgets that can wrap.
+	 *
+	 * @param width               The maximum width for the widget.
+	 *
+	 * @returns                   True if the widget can wrap in the wanted
+	 *                            width, false otherwise.
+	 */
+	virtual bool set_width_constrain(const unsigned /*width*/) { return false; }
+
+	/** Clears the width constrains set. */
+	virtual void clear_width_constrain() {}
+#endif
 
 	/***** ***** ***** ***** drawing ***** ***** ***** *****/
 
@@ -589,14 +653,6 @@ public:
 	virtual void set_definition(const std::string& definition) 
 		{ definition_ = definition; }
 
-	/**
-	 * Sets the size (and location) of the widget.
-	 *
-	 * There are no separate setters for the size only this function. Most of
-	 * the time (or always) all sizes are modified together.
-	 */
-	virtual void set_size(const SDL_Rect& rect);
-	
 	/** Gets the sizes in one rect structure. */
 	SDL_Rect get_rect() const 
 		{ return ::create_rect( x_, y_, w_, h_ ); }
@@ -620,6 +676,12 @@ public:
 	}
 
 	virtual bool is_dirty() const { return dirty_; }
+
+protected:	
+	/***** ***** ***** setters / getters for members ***** ****** *****/
+
+	void set_layout_size(const tpoint& size) { layout_size_ = size; }
+	const tpoint& layout_size() const { return layout_size_; }
 
 private:
 	/**
@@ -666,6 +728,24 @@ private:
 	 */
 	bool dirty_;
 
+	/**
+	 * The best size for the control.
+	 *
+	 * When 0,0 the real best size is returned, but in the layout phase a
+	 * wrapping or a scrollbar might change the best size for that widget. 
+	 * This variable holds that best value.
+	 */
+	tpoint layout_size_;
+
+#ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
+	/** 
+	 * Debug helper to store last value of get_best_size().
+	 *
+	 * We're mutable so calls can stay const and this is disabled in
+	 * production code.
+	 */
+	mutable tpoint last_best_size_;
+#endif
 };
 
 /**

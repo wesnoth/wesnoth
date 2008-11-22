@@ -12,11 +12,31 @@
    see the copying file for more details.
 */
 
-
 #include "gui/widgets/window.hpp"
 
-
 namespace gui2 {
+
+tpoint twidget::get_best_size() const
+{
+	tpoint result = layout_size_;
+	if(result == tpoint(0, 0)) {
+		result = calculate_best_size();
+	}
+
+#ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
+	last_best_size_ = result;
+#endif
+	return result;	
+}
+
+void twidget::set_size(const tpoint& origin, const tpoint& size)
+{
+	x_ = origin.x;
+	y_ = origin.y;
+	w_ = size.x;
+	h_ = size.y;
+	set_dirty();
+}
 
 twindow* twidget::get_window()
 {
@@ -36,15 +56,6 @@ tdialog* twidget::dialog()
 {
 	twindow* window = get_window();
 	return window ? window->dialog() : 0;
-}
-
-void twidget::set_size(const SDL_Rect& rect)
-{
-	x_ = rect.x;
-	y_ = rect.y;
-	w_ = rect.w;
-	h_ = rect.h;
-	set_dirty();
 }
 
 } // namespace gui2

@@ -384,6 +384,11 @@ private:
 public:
 	// The destructor only needs to delete the debug_layout_ so declared here.
 	~twindow();
+
+	/** wrapper for tdebug_layout_graph::generate_dot_file. */
+	void generate_dot_file(const std::string& generator);
+#else
+	void generate_dot_file(const std::string&) {}
 #endif
 };
 

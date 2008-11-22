@@ -34,6 +34,13 @@ public:
 	{
 	}
 
+	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
+
+private:
+	/** Inherited from tcontrol. */
+	tpoint calculate_best_size() const;
+public:
+
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
 	/** Inherited from tinteger_selector_. */
@@ -56,12 +63,6 @@ public:
 	int get_maximum_value() const 
 		// The number of items needs to include the begin and end so count - 1.
 		{ return minimum_value_ + get_item_count() - 1; }
-
-	/** Inherited from tcontrol. */
-	tpoint get_best_size() const;
-
-	/** Import overloaded versions. */
-	using tcontrol::get_best_size;
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 

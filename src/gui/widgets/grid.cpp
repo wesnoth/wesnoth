@@ -18,27 +18,20 @@
 
 #include <numeric>
 
-// Disable the size caching for now, it gives problems with the new wrapping
-// code. Postpone the final faith of this code until we know whether or not the
-// caching is needed for speed.
-#define DISABLE_CACHE 1
-
 namespace gui2 {
 
-	bool disable_cache = false;
-
-tgrid::tgrid(const unsigned rows, const unsigned cols) :
-	rows_(rows),
-	cols_(cols),
-	best_row_height_(),
-	best_col_width_(),
-	minimum_row_height_(),
-	minimum_col_width_(),
-	row_height_(),
-	col_width_(),
-	row_grow_factor_(rows),
-	col_grow_factor_(cols),
-	children_(rows * cols)
+tgrid::tgrid(const unsigned rows, const unsigned cols) 
+	: rows_(rows)
+	, cols_(cols)
+	, best_row_height_()
+	, best_col_width_()
+	, minimum_row_height_()
+	, minimum_col_width_()
+	, row_height_()
+	, col_width_()
+	, row_grow_factor_(rows)
+	, col_grow_factor_(cols)
+	, children_(rows * cols)
 {
 }
 
@@ -202,94 +195,65 @@ void tgrid::set_active(const bool active)
 	}
 }
 
-tpoint tgrid::get_minimum_size() const
+void tgrid::layout_init()
 {
-	log_scope2(gui_layout, std::string("tgrid ") + __func__);
+	// Clear our cache.
+	best_row_height_.clear();
+	best_col_width_.clear();
+	minimum_row_height_.clear();
+	minimum_col_width_.clear();
 
-	return get_size("minimum", minimum_col_width_, 
-		minimum_row_height_, &tchild::get_minimum_size);
-}
+	// Clear child caches.
+	foreach(tchild& child, children_) {
 
-tpoint tgrid::get_maximum_size() const
-{
-	log_scope2(gui_layout, std::string("tgrid ") + __func__);
-
-	DBG_G_L << "tgrid " << __func__ << ": Always 0,0.\n";
-
-	// A grid doesn't have a maximum size.
-	return tpoint(0,0);
-}
-
-tpoint tgrid::get_best_size() const
-{
-	log_scope2(gui_layout, std::string("tgrid ") + __func__);
-
-	return get_size("best", best_col_width_, 
-		best_row_height_, &tchild::get_best_size);
-}
-
-tpoint tgrid::get_best_size(const tpoint& maximum_size) const
-{
-	log_scope2(gui_layout, std::string("tgrid ") + __func__);
-	DBG_G_L << "tgrid: maximum size " << maximum_size << ".\n";
-	
-	tpoint size = get_size("best with maximum", best_col_width_, 
-		best_row_height_, NULL, &tchild::get_best_size, maximum_size);
-
-	// If we honoured the size or can't resize return the result.
-	if(size.y <= maximum_size.y || !has_vertical_scrollbar()) {
-		DBG_G_L << "tgrid: maximum size " 
-			<< maximum_size << " returning " << size << ".\n";
-		return size;
-	}
-
-	// Try to resize.
-	
-	// The amount we're too high.
-	const unsigned too_high = size.y - maximum_size.y;
-	// The amount we reduced
-	unsigned reduced = 0;
-	for(size_t y = 0; y < rows_; ++y) {
-
-		const unsigned wanted_height = (too_high - reduced) >= best_row_height_[y] 
-			? 1 : best_row_height_[y] - (too_high - reduced);
-
-		const unsigned height = get_best_row_height(y, wanted_height);
-
-		if(height < best_row_height_[y]) {
-			DBG_G_L << "tgrid: reduced " << best_row_height_[y] - height 
-				<< " pixels for row " << y << ".\n";
-
-			reduced += best_row_height_[y] - height;
-			best_row_height_[y] = height;
+		twidget* widget = child.widget();
+		if(widget) {
+			widget->layout_init();
 		}
-		
-		if(reduced >= too_high) {
-			break;
+	}
+}
+
+tpoint tgrid::calculate_best_size() const
+{
+	log_scope2(gui_layout, std::string("tgrid ") + __func__);
+
+
+	best_row_height_.resize(rows_, 0);
+	best_col_width_.resize(cols_, 0);
+	
+	// First get the sizes for all items.
+	for(unsigned row = 0; row < rows_; ++row) {
+		for(unsigned col = 0; col < cols_; ++col) {
+
+			const tpoint size = child(row, col).get_best_size();
+
+			if(size.x > static_cast<int>(best_col_width_[col])) {
+				best_col_width_[col] = size.x;
+			}
+
+			if(size.y > static_cast<int>(best_row_height_[row])) {
+				best_row_height_[row] = size.y;
+			}
+
 		}
 	}
 
-	/** @todo vertical resizing isn't implemented yet. */
-
-	size.y -= reduced;
-	if(reduced >= too_high) {
-		DBG_G_L << "tgrid: maximum size " << maximum_size
-			<< " need to reduce " << too_high 
-			<< " reduced " << reduced 
-			<< " resizing succeeded returning " << size.y << ".\n";
-	} else if(reduced == 0) {
-		DBG_G_L << "tgrid: maximum size " << maximum_size
-			<< " need to reduce " << too_high 
-			<< " reduced " << reduced 
-			<< " resizing completely failed returning " << size.y << ".\n";
-	} else {
-		DBG_G_L << "tgrid: maximum size " << maximum_size
-			<< " need to reduce " << too_high 
-			<< " reduced " << reduced 
-			<< " resizing partly failed returning " << size.y << ".\n";
+	for(unsigned row = 0; row < rows_; ++row) {
+		DBG_G_L << "tgrid: the " << " best_row_height_ for row " << row 
+			<< " will be " << best_row_height_[row] << ".\n";
 	}
 
-	return tpoint(size.x, size.y);
+	for(unsigned col = 0; col < cols_; ++col) {
+		DBG_G_L << "tgrid: the " << " best_col_width_ for col " << col 
+			<< " will be " << best_col_width_[col]  << ".\n";
+	}
+
+	const tpoint result(
+		std::accumulate(best_col_width_.begin(), best_col_width_.end(), 0),
+		std::accumulate(best_row_height_.begin(), best_row_height_.end(), 0));
+	
+	DBG_G_L << "tgrid: returning " << result << ".\n";
+	return result;
 }
 
 bool tgrid::can_wrap() const 
@@ -304,6 +268,185 @@ bool tgrid::can_wrap() const
 	return twidget::can_wrap();
 }
 
+bool tgrid::has_vertical_scrollbar() const 
+{
+	for(std::vector<tchild>::const_iterator itor = children_.begin();
+			itor != children_.end(); ++itor) {
+		// FIXME we should check per row and the entire row
+		// should have the flag!!!!
+		if(itor->widget() && itor->widget()->has_vertical_scrollbar()) {
+			return true;
+		} 
+	}
+	
+	// Inherit
+	return twidget::has_vertical_scrollbar();
+}
+
+void tgrid::layout_use_vertical_scrollbar(const unsigned maximum_height)
+{
+	// Inherited.
+	twidget::layout_use_vertical_scrollbar(maximum_height);
+
+	log_scope2(gui_layout, std::string("tgrid ") + __func__);
+	DBG_G_L << "tgrid: maximum height " << maximum_height << ".\n";
+	
+	tpoint size = get_best_size();
+
+	// If we honoured the size or can't resize return the result.
+	if(size.y <= static_cast<int>(maximum_height) || !has_vertical_scrollbar()) {
+		DBG_G_L << "tgrid: maximum height " 
+			<< maximum_height << " returning " << size << ".\n";
+		return;
+	}
+
+	// Try to resize.
+	
+	// The amount we're too high.
+	const unsigned too_high = size.y - maximum_height;
+	// The amount we reduced
+	unsigned reduced = 0;
+	for(size_t y = 0; y < rows_; ++y) {
+
+		const unsigned wanted_height = (too_high - reduced) >= best_row_height_[y] 
+			? 1 : best_row_height_[y] - (too_high - reduced);
+
+		const unsigned height = row_use_vertical_scrollbar(y, wanted_height);
+
+		if(height < best_row_height_[y]) {
+			DBG_G_L << "tgrid: reduced " << best_row_height_[y] - height 
+				<< " pixels for row " << y << ".\n";
+
+			reduced += best_row_height_[y] - height;
+			best_row_height_[y] = height;
+		}
+		
+		if(reduced >= too_high) {
+			break;
+		}
+	}
+
+	size.y -= reduced;
+	if(reduced >= too_high) {
+		DBG_G_L << "tgrid: maximum height " << maximum_height
+			<< " need to reduce " << too_high 
+			<< " reduced " << reduced 
+			<< " resizing succeeded returning " << size.y << ".\n";
+	} else if(reduced == 0) {
+		DBG_G_L << "tgrid: maximum height " << maximum_height
+			<< " need to reduce " << too_high 
+			<< " reduced " << reduced 
+			<< " resizing completely failed returning " << size.y << ".\n";
+	} else {
+		DBG_G_L << "tgrid: maximum height " << maximum_height
+			<< " need to reduce " << too_high 
+			<< " reduced " << reduced 
+			<< " resizing partly failed returning " << size.y << ".\n";
+	}
+
+	set_layout_size(calculate_best_size());
+}
+
+void tgrid::set_size(const tpoint& origin, const tpoint& size)
+{
+	log_scope2(gui_layout, "tgrid: set size");
+
+	/***** INIT *****/
+
+	twidget::set_size(origin, size);
+
+	if(!rows_ || !cols_) {
+		return;
+	}
+
+	const tpoint best_size = get_best_size();
+	row_height_ = best_row_height_;
+	col_width_ = best_col_width_;
+
+	assert(row_height_.size() == rows_);
+	assert(col_width_.size() == cols_);
+	assert(row_grow_factor_.size() == rows_);
+	assert(col_grow_factor_.size() == cols_);
+
+	DBG_G_L << "tgrid: best size " << best_size 
+		<< " available size " << size << ".\n";
+
+	/***** BEST_SIZE *****/
+
+	if(best_size == size) {
+		layout(origin);
+		return;
+	}
+
+	/***** GROW *****/
+	if(best_size < size) {
+		row_height_ = best_row_height_;
+		col_width_ = best_col_width_;
+
+		// expand it.
+		if(size.x > best_size.x) {
+			const unsigned w = size.x - best_size.x;
+			unsigned w_size = std::accumulate(
+					col_grow_factor_.begin(), col_grow_factor_.end(), 0);
+
+			DBG_G_L << "tgrid: extra width " << w << " will be divided amount " 
+				<< w_size << " units in " << cols_ << " columns.\n";
+
+			if(w_size == 0) {
+				// If all sizes are 0 reset them to 1
+				foreach(unsigned& val, col_grow_factor_) {
+					val = 1;
+				}
+				w_size = cols_;
+			}
+			// We might have a bit 'extra' if the division doesn't fix exactly
+			// but we ignore that part for now.
+			const unsigned w_normal = w / w_size;
+			for(unsigned i = 0; i < cols_; ++i) {
+				col_width_[i] += w_normal * col_grow_factor_[i];
+				DBG_G_L << "tgrid: column " << i 
+					<< " with grow factor " << col_grow_factor_[i] 
+					<< " set width to " << col_width_[i] << ".\n";
+			}
+
+		}
+
+		if(size.y > best_size.y) {
+			const unsigned h = size.y - best_size.y;
+			unsigned h_size = std::accumulate(
+					row_grow_factor_.begin(), row_grow_factor_.end(), 0);
+			DBG_G_L << "tgrid: extra height " << h 
+				<< " will be divided amount " << h_size 
+				<< " units in " << rows_ << " rows.\n";
+
+			if(h_size == 0) {
+				// If all sizes are 0 reset them to 1
+				foreach(unsigned& val, row_grow_factor_) {
+					val = 1;
+				}
+				h_size = rows_;
+			}
+			// We might have a bit 'extra' if the division doesn't fix exactly
+			// but we ignore that part for now.
+			const unsigned h_normal = h / h_size;
+			for(unsigned i = 0; i < rows_; ++i) {
+				row_height_[i] += h_normal * row_grow_factor_[i];
+				DBG_G_L << "tgrid: row " << i  
+					<< " with grow factor " << row_grow_factor_[i] 
+					<< " set height to " << row_height_[i] << ".\n";
+			}
+		}
+
+		layout(origin);
+		return;
+	}
+
+	// This shouldn't be possible...
+	assert(false);
+}
+
+// REMOVE when wrapping is reimplemented.	
+#if 0
 bool tgrid::set_width_constrain(const unsigned maximum_width)
 {
 
@@ -414,23 +557,7 @@ void tgrid::clear_width_constrain()
 	// Inherit
 	twidget::clear_width_constrain();
 }
-
-bool tgrid::has_vertical_scrollbar() const 
-{
-	for(std::vector<tchild>::const_iterator itor = children_.begin();
-			itor != children_.end(); ++itor) {
-		// FIXME we should check per row and the entire row
-		// should have the flag!!!!
-		if(itor->widget() && itor->widget()->has_vertical_scrollbar()) {
-			return true;
-		} 
-
-	}
-	
-	// Inherit
-	return twidget::has_vertical_scrollbar();
-}
-
+#endif
 void tgrid::draw(surface& surface, const bool force, 
 		const bool invalidate_background)
 {
@@ -553,127 +680,6 @@ bool tgrid::has_widget(const twidget* widget) const
 	return false;
 }
 
-void tgrid::set_size(const SDL_Rect& rect)
-{
-	log_scope2(gui_layout, "tgrid: set size");
-
-	/***** INIT *****/
-
-	twidget::set_size(rect);
-
-	if(!rows_ || !cols_) {
-		return;
-	}
-
-	const tpoint orig(rect.x, rect.y);
-	const tpoint size(rect.w, rect.h);
-
-	const tpoint best_size = get_best_size();
-	row_height_ = best_row_height_;
-	col_width_ = best_col_width_;
-
-	assert(row_height_.size() == rows_);
-	assert(col_width_.size() == cols_);
-	assert(row_grow_factor_.size() == rows_);
-	assert(col_grow_factor_.size() == cols_);
-	DBG_G_L << "tgrid: best size " << best_size << " available size " << size << ".\n";
-
-	/***** BEST_SIZE *****/
-
-	if(best_size == size) {
-		row_height_ = best_row_height_;
-		col_width_ = best_col_width_;
-
-		layout(orig);
-		return;
-	}
-
-	/***** GROW *****/
-
-	if(best_size < size) {
-		row_height_ = best_row_height_;
-		col_width_ = best_col_width_;
-
-		// expand it.
-		if(size.x > best_size.x) {
-			const unsigned w = size.x - best_size.x;
-			unsigned w_size = 
-				std::accumulate(col_grow_factor_.begin(), col_grow_factor_.end(), 0);
-			DBG_G_L << "tgrid: extra width " << w << " will be divided amount " 
-				<< w_size << " units in " << cols_ << " columns.\n";
-
-			if(w_size == 0) {
-				// If all sizes are 0 reset them to 1
-				foreach(unsigned& val, col_grow_factor_) {
-					val = 1;
-				}
-				w_size = cols_;
-			}
-			// We might have a bit 'extra' if the division doesn't fix exactly
-			// but we ignore that part for now.
-			const unsigned w_normal = w / w_size;
-			for(unsigned i = 0; i < cols_; ++i) {
-				col_width_[i] += w_normal * col_grow_factor_[i];
-				DBG_G_L << "tgrid: column " << i << " with grow factor " 
-					<< col_grow_factor_[i] << " set width to " << col_width_[i] << ".\n";
-			}
-
-		}
-
-		if(size.y > best_size.y) {
-			const unsigned h = size.y - best_size.y;
-			unsigned h_size = 
-				std::accumulate(row_grow_factor_.begin(), row_grow_factor_.end(), 0);
-			DBG_G_L << "tgrid: extra height " << h << " will be divided amount " 
-				<< h_size << " units in " << rows_ << " rows.\n";
-
-			if(h_size == 0) {
-				// If all sizes are 0 reset them to 1
-				foreach(unsigned& val, row_grow_factor_) {
-					val = 1;
-				}
-				h_size = rows_;
-			}
-			// We might have a bit 'extra' if the division doesn't fix exactly
-			// but we ignore that part for now.
-			const unsigned h_normal = h / h_size;
-			for(unsigned i = 0; i < rows_; ++i) {
-				row_height_[i] += h_normal * row_grow_factor_[i];
-				DBG_G_L << "tgrid: row " << i  << " with grow factor "
-					<< row_grow_factor_[i] << " set height to " << row_height_[i] << ".\n";
-			}
-		}
-
-		layout(orig);
-		return;
-
-	}
-
-	/***** SHRINK SCROLLBAR *****/
-
-	if((best_size.x <= size.x /*|| has_horizontal_scrollbar()*/) 
-			&& (best_size.y <= size.y || has_vertical_scrollbar())) {
-
-		tpoint new_size = get_best_size(size);
-		assert(new_size <= size);
-
-		row_height_ = best_row_height_;
-		col_width_ = best_col_width_;
-		layout(orig);
-		return;
-	}
-
-
-
-
-	// FIXME make other cases work as well
-	assert(false);
-/*
-	const tpoint minimum_size = get_minimum_size();
-	if(minimum_size == size) {
-*/		
-}
-
 void tgrid::set_rows(const unsigned rows)
 {
 	if(rows == rows_) {
@@ -737,19 +743,9 @@ tpoint tgrid::tchild::get_best_size() const
 			<< ".\n";
 		return border_space();
 	}
-#if 0 // HACK
-#if disable_cache
-	if(true) {
-#else	
-	if(widget_->is_dirty() || best_size_ == tpoint(0, 0)) {
-#endif	
-		best_size_ = widget_->get_best_size() + border_space();
-	}
-#else
-if(disable_cache || widget_->is_dirty() || best_size_ == tpoint(0, 0)) {
+
+	// NOTE best_size_ might be removed all together
 	best_size_ = widget_->get_best_size() + border_space();
-}
-#endif // HACK
 
 	DBG_G_L << "tgrid::tchild:"
 		<< " has widget " << true
@@ -758,120 +754,13 @@ if(disable_cache || widget_->is_dirty() || best_size_ == tpoint(0, 0)) {
 	return best_size_;
 }
 
-tpoint tgrid::tchild::get_best_size(const tpoint& maximum) const
-{
-	log_scope2(gui_layout, std::string("tgrid::tchild ") + __func__);
-	
-	if(!widget_) {
-		DBG_G_L << "tgrid::tchild:"
-			<< " has widget " << false
-			<< " maximum size " << maximum 
-			<< " returning " << border_space()
-			<< ".\n";
-		return border_space();
-	}
-
-	best_size_ =  widget_->get_best_size(maximum - border_space()) + border_space();
-
-	DBG_G_L << "tgrid::tchild:"
-		<< " has widget " << true
-		<< " maximum size " << maximum 
-		<< " returning " << best_size_ 
-		<< ".\n";
-	return best_size_;
-}
-
-tpoint tgrid::tchild::get_minimum_size() const
-{
-	if(!widget_) {
-		return border_space();
-	}
-
-	if(widget_->is_dirty() || minimum_size_ == tpoint(0, 0)) {
-		minimum_size_ = widget_->get_minimum_size() + border_space();
-	}
-
-	return minimum_size_;
-}
-
-tpoint tgrid::tchild::get_maximum_size() const
-{
-	if(!widget_) {
-		return tpoint(0, 0);
-	}
-
-	if(widget_->is_dirty() || maximum_size_ == tpoint(0, 0)) {
-		maximum_size_ = widget_->get_maximum_size();
-
-		// If the widget has no maximum return that 
-		// else we need to add the border.
-		if(maximum_size_ != tpoint(0, 0)) {
-			maximum_size_ += border_space();
-		}
-	}
-
-	return maximum_size_;
-}
-
-bool tgrid::tchild::set_width_constrain(const unsigned width)
-{
-	assert(widget_ && widget_->can_wrap());
-
-	return widget_->set_width_constrain(width - border_space().x); 
-}
-
-tpoint tgrid::tchild::border_space() const
-{
-	tpoint result(0, 0);
-
-	if(border_size_) {
-
-		if(flags_ & BORDER_TOP) result.y += border_size_;
-		if(flags_ & BORDER_BOTTOM) result.y += border_size_;
-				
-		if(flags_ & BORDER_LEFT) result.x += border_size_;
-		if(flags_ & BORDER_RIGHT) result.x += border_size_;
-	}
-
-	return result;
-}
-
-void tgrid::clear_cache()
-{
-	best_row_height_.clear();
-	best_col_width_.clear();
-
-	minimum_row_height_.clear();
-	minimum_col_width_.clear();
-}
-
-void tgrid::layout(const tpoint& origin)
-{
-	tpoint orig = origin;
-	for(unsigned row = 0; row < rows_; ++row) {
-		for(unsigned col = 0; col < cols_; ++col) {
-
-			const tpoint size(col_width_[col], row_height_[row]);
-			DBG_G_L << "tgrid: set widget at " << row << ',' << col 
-				<< " at origin " << orig << " with size " << size << ".\n";
-
-			if(child(row, col).widget()) {
-				child(row, col).set_size(orig, size);
-			}
-
-			orig.x += col_width_[col];
-		}
-		orig.y += row_height_[row];
-		orig.x = origin.x;
-	}
-}
-void tgrid::tchild::set_size(tpoint orig, tpoint size)
+void tgrid::tchild::set_size(tpoint origin, tpoint size)
 {
 	assert(widget());
 
 	if(border_size_) {
 		if(flags_ & BORDER_TOP) {
-			orig.y += border_size_;
+			origin.y += border_size_;
 			size.y -= border_size_;
 		}
 		if(flags_ & BORDER_BOTTOM) {
@@ -879,7 +768,7 @@ void tgrid::tchild::set_size(tpoint orig, tpoint size)
 		}
 				
 		if(flags_ & BORDER_LEFT) {
-			orig.x += border_size_;
+			origin.x += border_size_;
 			size.x -= border_size_;
 		}
 		if(flags_ & BORDER_RIGHT) {
@@ -892,22 +781,26 @@ void tgrid::tchild::set_size(tpoint orig, tpoint size)
 	const tpoint best_size = widget()->get_best_size();
 	if(size <= best_size) {
 		DBG_G_L << "tgrid::tchild: in best size range setting widget to " 
-			<< orig << " x " << size << ".\n";
+			<< origin << " x " << size << ".\n";
 
-		widget()->set_size(create_rect(orig, size));
+		widget()->set_size(origin, size);
 		return;
 	}
 
-	const tpoint maximum_size = widget()->get_maximum_size();
+	const tcontrol* control = dynamic_cast<const tcontrol*>(widget());
+	const tpoint maximum_size = control 
+		? control->get_config_maximum_size()
+		: tpoint(0, 0);
+
 	if((flags_ & (HORIZONTAL_MASK | VERTICAL_MASK))
 			== (HORIZONTAL_GROW_SEND_TO_CLIENT | VERTICAL_GROW_SEND_TO_CLIENT)) {
 
 		if(maximum_size == tpoint(0,0) || size <= maximum_size) {
 	
 			DBG_G_L << "tgrid::tchild: in maximum size range setting widget to " 
-				<< orig << " x " << size << ".\n";
+				<< origin << " x " << size << ".\n";
 
-			widget()->set_size(create_rect(orig, size));
+			widget()->set_size(origin, size);
 			return;
 	
 		}
@@ -916,7 +809,7 @@ void tgrid::tchild::set_size(tpoint orig, tpoint size)
 	tpoint widget_size = tpoint(
 		std::min(size.x, best_size.x), 
 		std::min(size.y, best_size.y));
-	tpoint widget_orig = orig;
+	tpoint widget_orig = origin;
 
 	const unsigned v_flag = flags_ & VERTICAL_MASK;
 
@@ -984,94 +877,89 @@ void tgrid::tchild::set_size(tpoint orig, tpoint size)
 	DBG_G_L << "tgrid::tchild: resize widget to " 
 		<< widget_orig << " x " << widget_size << ".\n";
 
-
-	widget()->set_size(create_rect(widget_orig, widget_size));
+	widget()->set_size(widget_orig, widget_size);
 }
 
-tpoint tgrid::get_size(const std::string& id, std::vector<unsigned>& width, 
-		std::vector<unsigned>& height, 
-		tpoint (tchild::*size_proc)() const,
-		tpoint (tchild::*size_proc_max)(const tpoint&) const,
-		const tpoint& maximum_size) const
+void tgrid::tchild::layout_use_vertical_scrollbar(const unsigned maximum_height)
 {
-#if 0 // HACK
-#if DISABLE_CACHE
-	height.clear();
-	width.clear();
-#endif	
-#else 
-if(disable_cache) {
-	height.clear();
-	width.clear();
+
+	assert(widget_);
+
+	if(! widget_->has_vertical_scrollbar()) {
+		return;
+	}
+
+	widget_->layout_use_vertical_scrollbar(maximum_height - border_space().y);
+
 }
-#endif // HACK
 
-	if(height.empty() || width.empty() || maximum_size != tpoint(0, 0)) {
+tpoint tgrid::tchild::border_space() const
+{
+	tpoint result(0, 0);
 
-		DBG_G_L << "tgrid: calculate " << id << " size.\n";
+	if(border_size_) {
 
-		height.resize(rows_, 0);
-		width.resize(cols_, 0);
-		
-		// First get the sizes for all items.
-		for(unsigned row = 0; row < rows_; ++row) {
-			for(unsigned col = 0; col < cols_; ++col) {
-
-				assert(size_proc || size_proc_max);
-
-				const tpoint size = size_proc
-					? (child(row, col).*size_proc)()
-					: (child(row, col).*size_proc_max)(maximum_size);
-
-				if(size.x > static_cast<int>(width[col])) {
-					width[col] = size.x;
-				}
-
-				if(size.y > static_cast<int>(height[row])) {
-					height[row] = size.y;
-				}
-
-			}
-		}
-	} else {
-		DBG_G_L << "tgrid: used cached " << id << " size.\n";
+		if(flags_ & BORDER_TOP) result.y += border_size_;
+		if(flags_ & BORDER_BOTTOM) result.y += border_size_;
+				
+		if(flags_ & BORDER_LEFT) result.x += border_size_;
+		if(flags_ & BORDER_RIGHT) result.x += border_size_;
 	}
 
-	for(unsigned row = 0; row < rows_; ++row) {
-		DBG_G_L << "tgrid: the " << id << " height for row " << row 
-			<< " will be " << height[row] << ".\n";
-	}
-
-	for(unsigned col = 0; col < cols_; ++col) {
-		DBG_G_L << "tgrid: the " << id << " width for col " << col 
-			<< " will be " << width[col]  << ".\n";
-	}
-
-	const tpoint result(
-		std::accumulate(width.begin(), width.end(), 0),
-		std::accumulate(height.begin(), height.end(), 0));
-	
-	DBG_G_L << "tgrid: returning " << result << ".\n";
 	return result;
 }
 
-unsigned tgrid::get_best_row_height(const unsigned row, const unsigned maximum_height) const
+void tgrid::clear_cache()
+{
+	best_row_height_.clear();
+	best_col_width_.clear();
+
+	minimum_row_height_.clear();
+	minimum_col_width_.clear();
+}
+
+void tgrid::layout(const tpoint& origin)
+{
+	tpoint orig = origin;
+	for(unsigned row = 0; row < rows_; ++row) {
+		for(unsigned col = 0; col < cols_; ++col) {
+
+			const tpoint size(col_width_[col], row_height_[row]);
+			DBG_G_L << "tgrid: set widget at " << row << ',' << col 
+				<< " at origin " << orig << " with size " << size << ".\n";
+
+			if(child(row, col).widget()) {
+				child(row, col).set_size(orig, size);
+			}
+
+			orig.x += col_width_[col];
+		}
+		orig.y += row_height_[row];
+		orig.x = origin.x;
+	}
+}
+
+unsigned tgrid::row_use_vertical_scrollbar(
+		const unsigned row, const unsigned maximum_height) 
 {
 	// The minimum height required.
 	unsigned required_height = 0;
 
 	for(size_t x = 0; x < cols_; ++x) {
+		tchild& cell = child(row, x);
+		cell.layout_use_vertical_scrollbar(maximum_height);
 
-		const tchild& cell = child(row, x);
+		const tpoint size(cell.get_best_size());
 
-		const tpoint size = cell.get_best_size(tpoint(0, maximum_height));
-		if(required_height == 0 || static_cast<size_t>(size.y) > required_height) {
+		if(required_height == 0 
+				|| static_cast<size_t>(size.y) > required_height) {
+
 			required_height = size.y;
 		}
 	}
 
-	DBG_G_L << "tgrid: maximum row height " << maximum_height << " returning " 
-		<< required_height << ".\n";
+	DBG_G_L << "tgrid: maximum row height " << maximum_height 
+		<< " returning " << required_height << ".\n";
 
 	return required_height;
 }

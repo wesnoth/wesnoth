@@ -31,6 +31,32 @@ static int distance(const int a, const int b)
 	return result;
 }
 
+tpoint tslider::calculate_best_size() const
+{
+	log_scope2(gui_layout, std::string("tslider ") + __func__);
+
+	// Inherited.
+	tpoint result = tcontrol::calculate_best_size();
+	if(best_slider_length_ != 0) {
+
+		// Override length.
+		boost::intrusive_ptr<const tslider_definition::tresolution> conf =
+			boost::dynamic_pointer_cast<const tslider_definition::tresolution>
+			(config());
+
+		assert(conf); 
+
+		result.x = conf->left_offset + best_slider_length_ + conf->right_offset;
+	}
+
+	DBG_G_L << "tslider " << __func__ << ":"
+		<< " best_slider_length " << best_slider_length_
+		<< " result " << result
+		<< ".\n";
+	return result;
+
+}
+
 void tslider::set_value(const int value) 
 { 
 	if(value == get_value()) {
@@ -88,28 +114,6 @@ void tslider::set_maximum_value(const int maximum_value)
 	} else {
 		set_item_position(minimum_value_ + value);
 	}
-}
-
-tpoint tslider::get_best_size() const
-{
-	log_scope2(gui_layout, std::string("tslider ") + __func__);
-	// Inherited.
-	tpoint result = tcontrol::get_best_size();
-	if(best_slider_length_ != 0) {
-
-		// Override length.
-		boost::intrusive_ptr<const tslider_definition::tresolution> conf =
-			boost::dynamic_pointer_cast<const tslider_definition::tresolution>(config());
-		assert(conf); 
-
-		result.x = conf->left_offset + best_slider_length_ + conf->right_offset;
-	}
-
-	DBG_G_L << "tslider " << __func__ << ":"
-		<< " best_slider_length " << best_slider_length_
-		<< " result " << result
-		<< ".\n";
-	return result;
 }
 
 t_string tslider::get_value_label() const

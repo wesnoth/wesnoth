@@ -64,6 +64,14 @@ void tscrollbar_::scroll(const tscroll scroll)
 		}
 }
 
+void tscrollbar_::set_size(const tpoint& origin, const tpoint& size)
+{
+	// Inherited.
+	tcontrol::set_size(origin, size);
+
+	recalculate();
+}
+
 void tscrollbar_::mouse_move(tevent_handler& event)
 {
 	tpoint mouse = event.get_mouse();
@@ -160,14 +168,6 @@ void tscrollbar_::mouse_left_button_up(tevent_handler& event)
 	} else {
 		set_state(ENABLED);
 	}
-}
-
-void tscrollbar_::set_size(const SDL_Rect& rect)
-{
-	// Inherited.
-	tcontrol::set_size(rect);
-
-	recalculate();
 }
 
 void tscrollbar_::set_item_position(const unsigned item_position)

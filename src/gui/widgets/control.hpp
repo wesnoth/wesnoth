@@ -99,6 +99,48 @@ public:
 	 */
 	virtual bool does_block_easy_close() const = 0;
 
+	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
+
+	/**
+	 * Gets the minimum size as defined in the config.
+	 *
+	 * @pre                       config_ !=  NULL
+	 *
+	 * @returns                   The size.
+	 */
+	tpoint get_config_minimum_size() const;
+
+	/**
+	 * Gets the default size as defined in the config.
+	 *
+	 * @pre                       config_ !=  NULL
+	 *
+	 * @returns                   The size.
+	 */
+	tpoint get_config_default_size() const;
+
+	/**
+	 * Gets the best size as defined in the config.
+	 *
+	 * @pre                       config_ !=  NULL
+	 *
+	 * @returns                   The size.
+	 */
+	tpoint get_config_maximum_size() const;
+
+	/** Inherited from twidget. */
+	/** @todo Also handle the tooltip state if shrunken_ &&
+	 * use_tooltip_on_label_overflow_. */
+	void layout_init();
+
+protected:	
+	/** Inherited from twidget. */
+	tpoint calculate_best_size() const;
+public:
+
+	/** Inherited from twidget. */
+	void set_size(const tpoint& origin, const tpoint& size);
+	
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
 	/** Inherted from tevent_executor. */
@@ -117,18 +159,6 @@ public:
 	 * classes which call this routine should also define get_control_type().
 	 */
 	void load_config();
-
-	/** Inherited from twidget. */
-	tpoint get_minimum_size() const;
-
-	/** Inherited from twidget. */
-	tpoint get_best_size() const;
-
-	/** Inherited from twidget. */
-	tpoint get_best_size(const tpoint& maximum_size) const;
-
-	/** Inherited from twidget. */
-	tpoint get_maximum_size() const;
 
 	/** Inherited from twidget. */
 	bool set_width_constrain(const unsigned width);
@@ -183,9 +213,6 @@ public:
 	 * This function should be called one time only!!!
 	 */
 	void set_definition(const std::string& definition);
-
-	/** Inherited from twidget. */
-	void set_size(const SDL_Rect& rect);
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
@@ -348,6 +375,7 @@ protected:
 	 * control involved.
 	 */
 	virtual const std::string& get_control_type() const = 0;
+
 private:
 	/**
 	 * Gets the best size for a text.
@@ -377,6 +405,9 @@ private:
 
 	/** The maximum width for the text in a control. */
 	int text_maximum_width_;
+
+	/** Is the widget smaller as it's best size? */
+	bool shrunken_;
 };
 
 } // namespace gui2

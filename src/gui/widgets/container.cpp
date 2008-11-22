@@ -14,71 +14,30 @@
 
 #include "gui/widgets/container.hpp"
 
-
 namespace gui2 {
 
-tpoint tcontainer_::get_minimum_size() const
+void tcontainer_::layout_init()
 {
-	log_scope2(gui_layout, "tcontainer(" + get_control_type() + ") " + __func__);
+	// Inherited.
+	tcontrol::layout_init();
 
-	tpoint size = grid_.get_maximum_size();
-	tpoint border_size = border_space();
-
-	if(size.x) {
-		size.x += border_size.x;
-	}
-
-	if(size.y) {
-		size.y += border_size.y;
-	}
-
-	DBG_G_L << "tcontainer(" + get_control_type() + "): returning "
-		<< size << ".\n";
-	return size;
+	grid_.layout_init();
 }
 
-tpoint tcontainer_::get_best_size() const
+void tcontainer_::layout_use_vertical_scrollbar(const unsigned maximum_height)
 {
-	log_scope2(gui_layout, "tcontainer(" + get_control_type() + ") " + __func__);
+	// Inherited.
+	twidget::layout_use_vertical_scrollbar(maximum_height);
 
-	tpoint size = grid_.get_best_size();
-	const tpoint border_size = border_space();
-
-	// If the best size has a value of 0 it's means no limit so don't add the
-	// border_size might set a very small best size.
-	if(size.x) {
-		size.x += border_size.x;
-	}
-
-	if(size.y) {
-		size.y += border_size.y;
-	}
-
-	DBG_G_L << "tcontainer(" + get_control_type() + "):"
-		<< " border size " << border_size
-		<< " returning " << size 
-		<< ".\n";
-	return size;
-}
-
-tpoint tcontainer_::get_best_size(const tpoint& maximum_size) const
-{
 	log_scope2(gui_layout, "tcontainer(" + get_control_type() + ") " + __func__);
 	
 	// We need a copy and adjust if for the borders, no use to ask the grid for
 	// the best size if it won't fit in the end due to our borders.
 	const tpoint border_size = border_space();
-	tpoint max = maximum_size;
-	if(max.x) {
-		max.x -= border_size.x;
-	}
-
-	if(max.y) {
-		max.y -= border_size.y;
-	}
 
 	// Calculate the best size
-	tpoint size = grid_.get_best_size(max);
+	grid_.layout_use_vertical_scrollbar(maximum_height - border_space().y);
+	tpoint size = grid_.get_best_size();
 
 	// If the best size has a value of 0 it's means no limit so don't add the
 	// border_size might set a very small best size.
@@ -91,11 +50,48 @@ tpoint tcontainer_::get_best_size(const tpoint& maximum_size) const
 	}
 	
 	DBG_G_L << "tcontainer(" + get_control_type() + "):"
-		<< " maximum_size " << maximum_size
+		<< " maximum_height " << maximum_height
 		<< " border size " << border_size
 		<< " returning " << size 
 		<< ".\n";
-	return size;
+	
+	set_layout_size(size);
+}
+
+void tcontainer_::set_size(const tpoint& origin, const tpoint& size)
+{
+	tcontrol::set_size(origin, size);
+
+	const SDL_Rect rect = get_client_rect();
+	const tpoint client_size(rect.w, rect.h);
+	const tpoint client_position(rect.x, rect.y);
+	grid_.set_size(client_position, client_size);
+}
+
+tpoint tcontainer_::calculate_best_size() const
+{
+	log_scope2(gui_layout, "tcontainer(" + 
+		get_control_type() + ") " + __func__);
+
+	tpoint result(grid_.get_best_size());
+	const tpoint border_size = border_space();
+
+	// If the best size has a value of 0 it's means no limit so don't
+	// add the border_size might set a very small best size.
+	if(result.x) {
+		result.x += border_size.x;
+	}
+
+	if(result.y) {
+		result.y += border_size.y;
+	}
+
+	DBG_G_L << "tcontainer(" + get_control_type() + "):"
+		<< " border size " << border_size
+		<< " returning " << result 
+		<< ".\n";
+
+	return result;
 }
 
 void tcontainer_::draw(surface& surface, const bool force,

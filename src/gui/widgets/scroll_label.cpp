@@ -86,6 +86,8 @@ void tscroll_label::finalize()
 	label_->set_can_wrap(true);
 }
 
+// REMOVE when wrapping is reimplemented.	
+#if 0
 bool tscroll_label::content_set_width_constrain(const unsigned width)
 {
 	bool result = !label_ ? true : label_->set_width_constrain(width);
@@ -104,20 +106,8 @@ void tscroll_label::content_clear_width_constrain()
 	}
 }
 
-tpoint tscroll_label::content_get_best_size(const tpoint& maximum_size) const
-{
-	assert(label_);
-
-	log_scope2(gui_layout, std::string("tscroll_label ") + __func__);
-	DBG_G_L << "maximum size " << maximum_size << ".\n";
-
-	tpoint result = label_->get_best_size(maximum_size);
-
-	DBG_G_L << " result " << result << ".\n";
-	return result;
-}
-
-tpoint tscroll_label::content_get_best_size() const
+#endif
+tpoint tscroll_label::content_calculate_best_size() const
 {
 	assert(label_);
 
@@ -133,15 +123,14 @@ void tscroll_label::content_set_size(const SDL_Rect& rect)
 	assert(label_);
 
 	// Set the dummy spacer.
-	find_spacer()->set_size(rect);
+	find_spacer()->set_size(tpoint(rect.x, rect.y), tpoint(rect.w, rect.h));
 
 	//maybe add a get best height for a label with a given width...
-	SDL_Rect size = { 0, 0, get_best_size().x, get_best_size().y };
-	label_->set_size(size);
+	label_->set_size(tpoint(0, 0), tpoint(get_best_size().x, get_best_size().y));
 
 	tscrollbar_* scrollbar = find_scrollbar(false);
 	if(scrollbar) {
-		scrollbar->set_item_count(size.h);
+		scrollbar->set_item_count(get_best_size().y);
 		scrollbar->set_visible_items(rect.h);
 	}
 }

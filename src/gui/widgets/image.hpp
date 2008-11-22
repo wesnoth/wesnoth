@@ -29,17 +29,14 @@ public:
 	{
 	}
 
-	/** Inherited from tcontrol. */
-	tpoint get_minimum_size() const { return get_best_size(); }
+	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
 
+private:	
 	/** Inherited from tcontrol. */
-	tpoint get_best_size() const;
+	tpoint calculate_best_size() const;
+public:
 
-	/** Import overloaded versions. */
-	using tcontrol::get_best_size;
-
-	/** Inherited from tcontrol. */
-	tpoint get_maximum_size() const { return get_best_size(); }
+	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
 	/** Inherited from tcontrol. */
 	void set_active(const bool /*active*/) {}

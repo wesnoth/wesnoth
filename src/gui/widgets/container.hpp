@@ -46,11 +46,37 @@ public:
 	 */
 	virtual SDL_Rect get_client_rect() const { return get_rect(); }
 
-	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
+	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
+
+	/** Inherited from tcontrol. */
+	void layout_init();
+
+private:	
+	/** Inherited from twidget. */
+	tpoint calculate_best_size() const;
+public:
 
 	/** Inherited from twidget. */
 	bool can_wrap() const { return grid_.can_wrap() || twidget::can_wrap(); }
 
+	/** 
+	 * Inherited from twidget. 
+	 * 
+	 * Since we can't define a good default behaviour we force the inheriting
+	 * classes to define this function. So inheriting classes act as one widget
+	 * others as a collection of multiple objects.
+	 */
+	bool has_vertical_scrollbar() const
+
+		{ return grid_.has_vertical_scrollbar(); }
+	/** Inherited from twidget. */
+	void layout_use_vertical_scrollbar(const unsigned maximum_height);
+
+	/** Inherited from twidget. */
+	void set_size(const tpoint& origin, const tpoint& size);
+
+// REMOVE when wrapping is reimplemented.	
+#if 0
 	/** 
 	 * Inherited from twidget. 
 	 *
@@ -60,15 +86,9 @@ public:
 
 	/** Inherited from twidget. */
 	void clear_width_constrain() { grid_.clear_width_constrain(); }
+#endif
 
-	/** 
-	 * Inherited from twidget. 
-	 * 
-	 * Since we can't define a good default behaviour we force the inheriting
-	 * classes to define this function. So inheriting classes act as one widget
-	 * others as a collection of multiple objects.
-	 */
-	bool has_vertical_scrollbar() const = 0;
+	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
 	/** Inherited from twidget.*/
 	bool has_widget(const twidget* widget) const 
@@ -76,15 +96,6 @@ public:
 
 	/** Inherited from twidget. */
 	bool is_dirty() const { return twidget::is_dirty() || grid_.is_dirty(); }
-
-	/** Inherited from tcontrol. */
-	tpoint get_minimum_size() const;
-
-	/** Inherited from tcontrol. */
-	tpoint get_best_size() const;
-
-	/** Inherited from twidget. */
-	tpoint get_best_size(const tpoint& maximum_size) const;
 
 	/** Inherited from tcontrol. */
 	void draw(surface& surface,  const bool force = false,
@@ -115,13 +126,6 @@ public:
 
 	/** Import overloaded versions. */
 	using tcontrol::find_widget;
-	
-	/** Inherited from tcontrol. */
-	void set_size(const SDL_Rect& rect) 
-	{	
-		tcontrol::set_size(rect);
-		set_client_size(get_client_rect());
-	}
 
 	/** Inherited from tcontrol. */
 	void set_active(const bool active);
@@ -162,10 +166,6 @@ public:
 	void set_col_grow_factor(const unsigned col, const unsigned factor)
 		{ grid_.set_col_grow_factor(col, factor); }
 
-	/** FIXME see whether needed to be exported. */
-	void set_client_size(const SDL_Rect& rect) { grid_.set_size(rect); }
-
-
 	/** Inherited from twidget. */
 	void set_dirty(const bool dirty = true);
 
@@ -178,7 +178,7 @@ protected:
 	void set_background_changed(const bool changed = true)
 		{ background_changed_ = changed; }
 	bool has_background_changed() const { return background_changed_; }
-		
+
 private:
 
 	/** The grid which holds the child objects. */

@@ -24,6 +24,8 @@ class tscrollbar_;
 /** Base class for creating containers with a vertical scrollbar. */
 class tvertical_scrollbar_container_ : public tcontainer_
 {
+	friend class tdebug_layout_graph;
+
 	// Builders need to be able to finalize the object.
 	friend class tbuilder_listbox;
 	friend class tbuilder_scroll_label;
@@ -70,36 +72,43 @@ public:
 	virtual bool select_row(const unsigned /*row*/, const bool /*select*/ = true) 
 		{ return false; }
 
+	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
+
+	/** Inherited from tcontainer_. */
+	void layout_init();
+
+	/** Inherited from twidget. */
+	bool can_wrap() const { return content_can_wrap(); }
+
+	/** Inherited from twidget. */
+	bool has_vertical_scrollbar() const { return scrollbar_mode_ != HIDE; }
+
+	/** Inherited from tcontainer_. */
+	void layout_use_vertical_scrollbar(const unsigned maximum_height);
+
+private:
+	/** Inherited from tcontainer_. */
+	tpoint calculate_best_size() const;
+public:
+
+	/** Inherited from tcontainer. */
+	void set_size(const tpoint& origin, const tpoint& size);
+
 	/***** ***** ***** inherited ****** *****/
 
 	/** Inherited from tevent_executor. */
 	void key_press(tevent_handler& event, bool& handled, 
 		SDLKey key, SDLMod modifier, Uint16 unicode);
 
-	/** Inherited from twidget. */
-	bool can_wrap() const { return content_can_wrap(); }
-	
-	/** Inherited from twidget. */
-	bool set_width_constrain(const unsigned width);
-
+// REMOVE when wrapping is reimplemented.	
+#if 0	
 	/** Inherited from twidget. */
 	void clear_width_constrain() { content_clear_width_constrain(); }
-
-	/** Inherited from twidget. */
-	bool has_vertical_scrollbar() const { return true; }
-
-	/** Inherited from tcontainer. */
-	tpoint get_best_size() const;
-
-	/** Inherited from tcontainer. */
-	tpoint get_best_size(const tpoint& maximum_size) const;
+#endif
 
 	/** Inherited from tcontainer. */
 	void draw(surface& surface,  const bool force = false,
 	        const bool invalidate_background = false);
-
-	/** Inherited from tcontainer. */
-	void set_size(const SDL_Rect& rect);
 
 	/** Inherited from tcontainer_. */
 	twidget* find_widget(const tpoint& coordinate, const bool must_be_active);
@@ -225,13 +234,8 @@ private:
 
 	/***** ***** (pure) virtuals for the subclasses ****** *****/
 
-	/**
-	 * Returns whether or not the content can wrap.
-	 *
-	 * See can_wrap() for more info.
-	 */
-	virtual bool content_can_wrap() const { return false; }
-
+// REMOVE when wrapping is reimplemented.	
+#if 0
 	/**
 	 * Sets the content width constrain.
 	 *
@@ -246,30 +250,7 @@ private:
 	 * See clear_width_constrain() for more info.
 	 */
 	virtual void content_clear_width_constrain() {}
-
-	/** 
-	 * Returns the best size for the content part. 
-	 *
-	 * See get_best_size() for more info.
-	 */
-	virtual tpoint content_get_best_size() const = 0;
-
-	/** 
-	 * Returns the best size for the content part. 
-	 *
-	 * See get_best_size(cont tpoint&) for more info.
-	 */
-	virtual tpoint content_get_best_size(const tpoint& maximum_size) const = 0;
-
-	/**
-	 * Sets the size for the content.
-	 *
-	 * This is a notification after the size of the content grid has been set
-	 * so the function only needs to update its state if applicable.
-	 *
-	 * @param rect                The new size of the content grid.
-	 */
-	virtual void content_set_size(const SDL_Rect& rect) = 0;
+#endif
 
 	/** 
 	 * Draws the content part of the widget.
@@ -290,6 +271,65 @@ private:
 	/** The const version. */
 	virtual const twidget* content_find_widget(
 		const tpoint& coordinate, const bool must_be_active) const = 0;
+
+	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
+
+	/**
+	 * For the content we "copy paste" the method used for the normal widgets
+	 * for determining the best size and layout methods.
+	 */
+
+protected:
+	/** 
+	 * Returns the best size for the content part. 
+	 *
+	 * See get_best_size() for more info.
+	 */
+	tpoint content_get_best_size() const;
+
+	/**
+	 * Calculates the best size for the content part.
+	 *
+	 * See calculate_best_size() for more info.
+	 */
+	virtual tpoint content_calculate_best_size() const = 0;
+private:
+
+	/**
+	 * Returns whether or not the content can wrap.
+	 *
+	 * See can_wrap() for more info.
+	 */
+	virtual bool content_can_wrap() const { return false; }
+
+	// FIXME document
+	virtual void content_use_vertical_scrollbar(const unsigned maximum_height) = 0;
+
+	/**
+	 * Sets the size for the content.
+	 *
+	 * This is a notification after the size of the content grid has been set
+	 * so the function only needs to update its state if applicable.
+	 *
+	 * @param rect                The new size of the content grid.
+	 */
+	virtual void content_set_size(const SDL_Rect& rect) = 0;
+
+	/***** ***** ***** setters / getters for members ***** ****** *****/
+
+protected:
+
+	const tpoint& content_layout_size() const { return content_layout_size_; }
+	void set_content_layout_size(const tpoint& size) 
+		{ content_layout_size_ = size; }
+
+private:
+
+	tpoint content_layout_size_;
+
+#ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
+	mutable tpoint content_last_best_size_;	
+#endif
 };
 
 } // namespace gui2

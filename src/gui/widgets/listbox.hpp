@@ -341,20 +341,22 @@ private:
 	/** The rows in the listbox. */
 	std::vector<trow> rows_;
 
+	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
+
+	/** Inherited from tvertical_scrollbar_container_. */
+	tpoint content_calculate_best_size() const;
+
+	/** Inherited from tvertical_scrollbar_container_. */
+	void content_use_vertical_scrollbar(const unsigned maximum_height);
+
+	/** Inherited from tvertical_scrollbar_container_. */
+	void content_set_size(const SDL_Rect& rect);
+
 	/***** ***** ***** inherited ****** *****/
 
 	/** Inherited from tcontrol. */
 	const std::string& get_control_type() const 
 		{ static const std::string type = "listbox"; return type; }
-
-	/** Inherited from tvertical_scrollbar_container_. */
-	tpoint content_get_best_size(const tpoint& maximum_size) const;
-
-	/** Inherited from tvertical_scrollbar_container_. */
-	tpoint content_get_best_size() const;
-
-	/** Inherited from tvertical_scrollbar_container_. */
-	void content_set_size(const SDL_Rect& rect);
 
 	/** Inherited from tvertical_scrollbar_container_. */
 	void draw_content(surface& surface,  const bool force = false,

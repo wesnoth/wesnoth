@@ -98,9 +98,11 @@ private:
 	 * @param out                 The stream to write the info to.
 	 * @param widget              The widget to write the info about.
 	 * @param id                  The dof-file-id of the widget.
+	 * @param embedded            Is the grid embedded in a container eg parent
+	 *                            inherits from tcontainer_.
 	 */
-	void widget_generate_info(std::ostream& out, 
-			const twidget* widget, const std::string& id) const;
+	void widget_generate_info(std::ostream& out, const twidget* widget, 
+			const std::string& id, const bool embedded = false) const;
 
 	/**
 	 * Generates the basic info about a widget.
@@ -138,8 +140,8 @@ private:
 	 * @param grid                The grid to write the info about.
 	 * @param parent_id           The dot-file-id of the parent of the widget.
 	 */
-	void grid_generate_info(std::ostream& out, 
-			const tgrid* grid, const std::string& parent_id) const;
+	void grid_generate_info(std::ostream& out, const tgrid* grid, 
+			const std::string& parent_id) const;
 
 	/**
 	 * Generates the info about a grid cell.

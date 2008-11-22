@@ -69,6 +69,10 @@ tvertical_scrollbar_container_::
 	, scrollbar_mode_(SHOW_WHEN_NEEDED)
 	, scrollbar_grid_(NULL)
 	, callback_value_change_(NULL)
+	, content_layout_size_(tpoint(0, 0))
+#ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
+	, content_last_best_size_(tpoint(0, 0))
+#endif	
 {
 }
 
@@ -84,6 +88,103 @@ void tvertical_scrollbar_container_::
 		scrollbar_mode_ = scrollbar_mode;
 		show_scrollbar(scrollbar_mode_ != HIDE);
 	}
+}
+void tvertical_scrollbar_container_::layout_init()
+{
+	// Inherited.
+	tcontainer_::layout_init();
+
+	content_layout_size_ = tpoint(0, 0);
+}
+
+void tvertical_scrollbar_container_::
+		layout_use_vertical_scrollbar(const unsigned maximum_height)
+{
+	twidget::layout_use_vertical_scrollbar(maximum_height);
+
+	log_scope2(gui_layout, 
+		std::string("tvertical_scrollbar_container_ ") + __func__);
+
+	DBG_G_L << "tvertical_scrollbar_container_ maximum_height " 
+		<< maximum_height << ".\n";
+
+	content_use_vertical_scrollbar(maximum_height);
+
+	set_layout_size(calculate_best_size());
+}
+
+tpoint tvertical_scrollbar_container_::calculate_best_size() const
+{
+	log_scope2(gui_layout, 
+		std::string("tvertical_scrollbar_container_ ") + __func__);
+
+	const tpoint content = content_get_best_size();
+	if(scrollbar_mode_ == HIDE) {
+		DBG_G_L << "tvertical_scrollbar_container_ result " << content << ".\n";
+		return content;
+	} 
+	
+	const tpoint scrollbar = find_scrollbar_grid()->get_best_size();
+	if(scrollbar_mode_ == SHOW) {
+		// We need to show the scrollbar so the biggest height of scrollbar and
+		// content is needed. The width is the sum of them.
+		const tpoint result(
+			content.x + scrollbar.x,
+			std::max(content.y, scrollbar.y));
+
+		DBG_G_L << "tvertical_scrollbar_container_ result " << result << ".\n";
+		return result;
+	}
+
+	// When auto show the height of the content is leading. (Width again the sum.)
+	const tpoint result(content.x + scrollbar.x, content.y);
+
+	DBG_G_L << "tvertical_scrollbar_container_ result " << result << ".\n";
+	return result;
+}
+
+void tvertical_scrollbar_container_::set_size(const tpoint& origin, const tpoint& size)
+{
+	// Inherited. -- note we don't use client size, might change
+	tcontrol::set_size(origin, size); 
+
+	// Test whether we need a scrollbar.
+	/** 
+	 * @todo the test might/will fail if the text not wrapped does fit
+	 * without a scrollbar and wrapped does need it.
+	 */
+	bool scrollbar_needed = scrollbar_mode_ == SHOW
+		|| (scrollbar_mode_ == SHOW_WHEN_NEEDED
+				&& content_calculate_best_size().y > size.y);
+
+	if(scrollbar_needed) {
+
+		show_scrollbar(true);
+
+		const tpoint scrollbar = find_scrollbar_grid()->get_best_size();
+
+		tpoint tmp_origin(origin);
+		tpoint tmp_size(size);
+		tmp_origin.x += tmp_size.x - scrollbar.x;
+		tmp_size.x = scrollbar.x;
+		find_scrollbar_grid()->set_size(tmp_origin, tmp_size);
+
+
+		tmp_origin = origin;
+		tmp_size = size;
+
+		tmp_size.x -= scrollbar.x;
+		content_find_grid()->set_size(tmp_origin, tmp_size);
+		content_set_size(create_rect(tmp_origin, tmp_size));
+	} else {
+
+		show_scrollbar(false);
+
+		content_find_grid()->set_size(origin, size);
+	 	content_set_size(create_rect(origin, size));
+	}
+
+	set_scrollbar_button_status();
 }
 
 void tvertical_scrollbar_container_::key_press(tevent_handler& /*event*/, 
@@ -154,6 +255,8 @@ void tvertical_scrollbar_container_::key_press(tevent_handler& /*event*/,
 	}
 }
 
+// REMOVE when wrapping is reimplemented.	
+#if 0
 bool tvertical_scrollbar_container_::set_width_constrain(const unsigned width)
 {
 	log_scope2(gui_layout, 
@@ -171,111 +274,7 @@ bool tvertical_scrollbar_container_::set_width_constrain(const unsigned width)
 		<< ".\n";
 	return result;
 }
-
-tpoint tvertical_scrollbar_container_::get_best_size() const
-{
-	log_scope2(gui_layout, 
-		std::string("tvertical_scrollbar_container_ ") + __func__);
-
-	const tpoint content = content_get_best_size();
-	if(scrollbar_mode_ == HIDE) {
-		DBG_G_L << "tvertical_scrollbar_container_ result " << content << ".\n";
-		return content;
-	} 
-	
-	const tpoint scrollbar = find_scrollbar_grid()->get_best_size();
-	if(scrollbar_mode_ == SHOW) {
-		// We need to show the scrollbar so the biggest height of scrollbar and
-		// content is needed. The width is the sum of them.
-		const tpoint result(
-			content.x + scrollbar.x,
-			std::max(content.y, scrollbar.y));
-
-		DBG_G_L << "tvertical_scrollbar_container_ result " << result << ".\n";
-		return result;
-	}
-
-	// When auto show the height of the content is leading. (Width again the sum.)
-	const tpoint result(content.x + scrollbar.x, content.y);
-
-	DBG_G_L << "tvertical_scrollbar_container_ result " << result << ".\n";
-	return result;
-}
-
-tpoint tvertical_scrollbar_container_::get_best_size(const tpoint& maximum_size) const
-{
-	log_scope2(gui_layout, 
-		std::string("tvertical_scrollbar_container_ ") + __func__);
-
-	DBG_G_L << "tvertical_scrollbar_container_ maximum_size " 
-		<< maximum_size << ".\n";
-
-	if(scrollbar_mode_ == HIDE) {
-		// No scrollbar hope the normal size is small enough. Don't send the
-		// maximum_size parameter since then the content 'thinks' there will be
-		// a scrollbar.
-		const tpoint result = content_get_best_size();
-
-		DBG_G_L << "tvertical_scrollbar_container_ result " << result << ".\n";
-		return result;
-	} else {
-		// The scrollbar also can't be resized so ask the best size.
-		const tpoint scrollbar = find_scrollbar_grid()->get_best_size();
-		const tpoint content = content_get_best_size(tpoint(
-			maximum_size.x - scrollbar.x, maximum_size.y));
-
-		// Width and height same rules as above.
-		if(scrollbar_mode_ == SHOW) {
-			const tpoint result( 
-				content.x + scrollbar.x,
-				std::max(content.y, scrollbar.y));
-
-			DBG_G_L << "tvertical_scrollbar_container_ result " << result << ".\n";
-			return result;
-		}
-		const tpoint result(content.x + scrollbar.x, content.y);
-
-		DBG_G_L << "tvertical_scrollbar_container_ result " << result << ".\n";
-		return result;
-	}
-}
-
-void tvertical_scrollbar_container_::set_size(const SDL_Rect& rect)
-{
-	// Inherited. -- note we don't use client size, might change
-	tcontrol::set_size(rect);
-
-	// Test whether we need a scrollbar.
-	bool scrollbar_needed = (scrollbar_mode_ == SHOW);
-	if(scrollbar_mode_ == SHOW_WHEN_NEEDED) {
-		tpoint size = content_get_best_size();
-		scrollbar_needed = size.x > rect.w || size.y > rect.h; 
-	}
-
-	if(scrollbar_needed) {
-
-		show_scrollbar(true);
-
-		const tpoint scrollbar = find_scrollbar_grid()->get_best_size();
-		SDL_Rect tmp = rect;
-		tmp.x += tmp.w - scrollbar.x;
-		tmp.w = scrollbar.x;
-		find_scrollbar_grid()->set_size(tmp);
-
-		tmp = rect;
-		tmp.w -= scrollbar.x;
-		content_find_grid()->set_size(tmp);
-		content_set_size(tmp);
-	} else {
-
-		show_scrollbar(false);
-
-		content_find_grid()->set_size(rect);
-	 	content_set_size(rect);
-	}
-
-	set_scrollbar_button_status();
-}
+#endif
 
 void tvertical_scrollbar_container_::draw(
 		surface& surface, const bool force, const bool invalidate_background)
@@ -457,6 +456,20 @@ unsigned tvertical_scrollbar_container_::get_selected_row() const
 {
 	return find_scrollbar()->get_item_position();
 }
+
+tpoint tvertical_scrollbar_container_::content_get_best_size() const
+{
+	tpoint result = content_layout_size_;
+	if(result == tpoint(0, 0)) {
+		result = content_calculate_best_size();
+	}
+
+#ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
+	content_last_best_size_ = result;
+#endif
+	return result;	
+}
+
 
 } // namespace gui2
 

@@ -37,6 +37,19 @@ public:
 	{
 	}
 
+	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
+
+private:
+	/** Inherited from tcontrol. */
+	tpoint calculate_best_size() const
+	{ 
+		return best_size_ != tpoint(0, 0) 
+			? best_size_ : tcontrol::calculate_best_size(); 
+	}
+public:
+
+	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
+
 	/** Inherited from tcontrol. */
 	void set_active(const bool) {}
 
@@ -49,13 +62,6 @@ public:
 	/** Inherited from tcontrol. */
 	bool does_block_easy_close() const { return false; }
 
-	/** Inherited from tcontrol. */
-	tpoint get_best_size() const 
-		{ return best_size_ != tpoint(0, 0) ? best_size_ : tcontrol::get_best_size(); }
-
-	/** Import overloaded versions. */
-	using tcontrol::get_best_size;
-
 	/** 
 	 * Inherited from tcontrol. 
 	 *
@@ -64,6 +70,7 @@ public:
 	void draw(surface& /*surface*/, const bool /*force*/ = false, 
 		const bool /*invalidate_background*/ = false) {}
 	
+	/***** ***** ***** setters / getters for members ***** ****** *****/
 
 	void set_best_size(const tpoint& best_size) { best_size_ = best_size; }
 	

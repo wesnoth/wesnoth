@@ -402,48 +402,7 @@ void tlistbox::trow::select_in_grid(tgrid* grid, const bool selected)
 	}
 }
 
-tpoint tlistbox::content_get_best_size(const tpoint& maximum_size) const
-{
-	log_scope2(gui_layout, std::string("tlistbox ") + __func__);
-
-	tpoint best_size = content_get_best_size();
-
-	// We can only reduce our height so we ignore the x value.
-	// NOTE we might later be able to reduce our width as well, but that's
-	// something for later, also we don't ask our children for a better value.
-	if(best_size.y <= maximum_size.y) {
-		return best_size;
-	}
-
-	tpoint max = maximum_size;
-
-	// Adjust for the size of the header and footer.
-	const tpoint base = content_find_grid()->get_best_size();
-	max.y -= base.y;
-	if(base.x > max.x) {
-		max.x = base.x;
-	}
-
-	if(assume_fixed_row_size_) {
-		// Only adjust the sizes if we have some rows
-		if(rows_.size() > 0) {
-			// The row might not have a size, since it might never been set
-			// so ask the best size.
-			const unsigned row_height = (*rows_[0].grid()).get_best_size().y;
-			best_size.y = (max.y / row_height) * row_height;
-		}
-
-	} else {
-		best_size.y = max.y;
-	}
-
-	DBG_G_L << "tlistbox: maximum size " 
-			<< maximum_size << " result " << best_size << ".\n";
-
-	return best_size;
-}
-
-tpoint tlistbox::content_get_best_size() const
+tpoint tlistbox::content_calculate_best_size() const
 {
 	log_scope2(gui_layout, std::string("tlistbox ") + __func__);
 
@@ -468,6 +427,47 @@ tpoint tlistbox::content_get_best_size() const
 	return tpoint(width, height);
 }
 
+void tlistbox::content_use_vertical_scrollbar(const unsigned maximum_height)
+{
+	log_scope2(gui_layout, std::string("tlistbox ") + __func__);
+
+	tpoint best_size = content_get_best_size();
+
+	// We can only reduce our height so we ignore the x value.
+	// NOTE we might later be able to reduce our width as well, but that's
+	// something for later, also we don't ask our children for a better value.
+	if(best_size.y <= static_cast<int>(maximum_height)) {
+		return;
+	}
+
+	tpoint max(best_size.x, maximum_height);
+
+	// Adjust for the size of the header and footer.
+	const tpoint base = content_find_grid()->get_best_size();
+	max.y -= base.y;
+	if(base.x > max.x) {
+		max.x = base.x;
+	}
+
+	if(assume_fixed_row_size_) {
+		// Only adjust the sizes if we have some rows
+		if(rows_.size() > 0) {
+			// The row might not have a size, since it might never been set
+			// so ask the best size.
+			const unsigned row_height = (*rows_[0].grid()).get_best_size().y;
+			best_size.y = (max.y / row_height) * row_height;
+		}
+
+	} else {
+		best_size.y = max.y;
+	}
+
+	DBG_G_L << "tlistbox: maximum height " 
+			<< maximum_height << " result " << best_size << ".\n";
+
+	set_content_layout_size(best_size);
+}
+
 void tlistbox::content_set_size(const SDL_Rect& rect)
 {
 	unsigned total_height = 0;
@@ -477,7 +477,7 @@ void tlistbox::content_set_size(const SDL_Rect& rect)
 		const unsigned height = row.grid()->get_best_size().y;
 		row.set_height(height);
 
-		row.grid()->set_size(::create_rect(0, 0, rect.w, height));
+		row.grid()->set_size(tpoint(0, 0), tpoint(rect.w, height));
 		row.canvas().assign(create_neutral_surface(rect.w, height));
 
 		total_height += height;

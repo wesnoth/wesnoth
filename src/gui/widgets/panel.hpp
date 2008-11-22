@@ -60,9 +60,6 @@ public:
 	void draw(surface& surface,  const bool force = false,
 	        const bool invalidate_background = false);
 
-	/** Inherited from tcontainer_. */
-	bool has_vertical_scrollbar() const { return false; }
-
 private:
 
 	/** Inherited from tcontrol. */

@@ -22,15 +22,6 @@
 
 namespace gui2 {
 
-	/**
-	 * Helper variable for the layout system.
-	 * 
-	 * @todo This is a kind of hack to make the layout engine work properly.
-	 * Wrapping needs the cache disabled but the scrollbars need it enabled. 
-	 * But the entire layout code needs a review and probably a rewrite...
-	 */ 
-	extern bool disable_cache;
-
 /**
  * Base container class.
  *
@@ -40,6 +31,7 @@ namespace gui2 {
 class tgrid : public virtual twidget
 {
 	friend class tdebug_layout_graph;
+
 public:
 
 	tgrid(const unsigned rows = 0, const unsigned cols = 0); 
@@ -185,32 +177,37 @@ public:
 	twidget* widget(const unsigned row, const unsigned col) 
 		{ return child(row, col).widget(); }
 
-	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
+	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
 
 	/** Inherited from twidget. */
-	tpoint get_minimum_size() const;
+	void layout_init();
 
+private:
 	/** Inherited from twidget. */
-	tpoint get_best_size() const;
-
-	/** Inherited from twidget. */
-	tpoint get_best_size(const tpoint& maximum_size) const;
-
-	/** Inherited from twidget. */
-	tpoint get_maximum_size() const;
+	tpoint calculate_best_size() const;
+public:
 
 	/** Inherited from twidget. */
 	bool can_wrap() const;
 
 	/** Inherited from twidget. */
+	bool has_vertical_scrollbar() const;
+
+	/** Inherited from twidget. */
+	void layout_use_vertical_scrollbar(const unsigned maximum_height);
+
+	/** Inherited from twidget. */
+	void set_size(const tpoint& origin, const tpoint& size);
+
+	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
+// REMOVE when wrapping is reimplemented.	
+#if 0
+	/** Inherited from twidget. */
 	bool set_width_constrain(const unsigned width);
 
 	/** Inherited from twidget. */
 	void clear_width_constrain();
-
-	/** Inherited from twidget. */
-	bool has_vertical_scrollbar() const;
-
+#endif
 	/** Inherited from twidget. */
 	void draw(surface& surface,  const bool force = false,
 	        const bool invalidate_background = false);
@@ -231,9 +228,6 @@ public:
 
 	/** Inherited from twidget.*/
 	bool has_widget(const twidget* widget) const;
-
-	/** Inherited from twidget. */
-	void set_size(const SDL_Rect& rect);
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
@@ -276,28 +270,19 @@ private:
 		/** Returns the best size for the cell. */
 		tpoint get_best_size() const;
 
-		/** Returns the best size for the cell. */
-		tpoint get_best_size(const tpoint& maximum_size) const;
-
-		/** Returns the minimum size for the cell. */
-		tpoint get_minimum_size() const;
-
-		/** Returns the maximum size for the cell. */
-		tpoint get_maximum_size() const;
+		/**
+		 * Sets the size of the widget in the cell.
+		 *
+		 * @param origin          The origin (x, y) for the widget.
+		 * @param size            The size for the widget.
+		 */
+		void set_size(tpoint origin, tpoint size);
 
 		/** Returns the can_wrap for the cell. */
 		bool can_wrap() const { return widget_ ? widget_->can_wrap() : false; }
 
-		/** Returns the set_width_constrain for the cell. */
-		bool set_width_constrain(const unsigned width);
-
-		/**
-		 * Sets the size of the widget in the cell.
-		 *
-		 * @param orig            The origin (x, y) for the widget.
-		 * @param size            The size for the widget.
-		 */
-		void set_size(tpoint orig, tpoint size);
+		/** Forwards layout_use_vertical_scrollbar() to the cell. */
+		void layout_use_vertical_scrollbar(const unsigned maximum_height);
 
 		const std::string& id() const { return id_; }
 		void set_id(const std::string& id) { id_ = id; }
@@ -440,7 +425,6 @@ private:
 	/** The grow factor for all columns. */
 	std::vector<unsigned> col_grow_factor_;
 
-
 	/** 
 	 * The child items. 
 	 *
@@ -489,10 +473,12 @@ private:
 	 * @returns                   The best height for a row, if possible
 	 *                            smaller as the maximum.
 	 */
-	unsigned get_best_row_height(const unsigned row, const unsigned maximum_height) const;
-};
+	unsigned row_use_vertical_scrollbar(
+			const unsigned row, const unsigned maximum_height);
 
+};
 
 } // namespace gui2
 
 #endif
+

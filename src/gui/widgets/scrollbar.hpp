@@ -84,6 +84,11 @@ public:
 	bool at_end() const 
 		{ return item_position_ + visible_items_ == item_count_; }
 
+	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
+
+	/** Inherited from tcontrol. */
+	void set_size(const tpoint& origin, const tpoint& size);
+
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
 	/**
@@ -123,9 +128,6 @@ public:
 
 	/** Inherited from tcontrol. */
 	bool does_block_easy_close() const { return true; }
-
-	/** Inherited from tcontrol. */
-	void set_size(const SDL_Rect& rect);
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 

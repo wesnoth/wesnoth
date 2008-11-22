@@ -81,16 +81,16 @@ std::string ttext_history::get_value() const
 	}
 }
 
-void ttext_box::set_size(const SDL_Rect& rect)
+void ttext_box::set_size(const tpoint& origin, const tpoint& size)
 {
 	// Inherited.
-	tcontrol::set_size(rect);
+	tcontrol::set_size(origin, size);
 
 	set_maximum_width(get_text_maximum_width());
 	set_maximum_height(get_text_maximum_height());
 
 	update_offsets();
-}	
+}
 
 void ttext_box::update_canvas()
 {

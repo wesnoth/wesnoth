@@ -12,7 +12,6 @@
    see the copying file for more details.
 */
 
-
 #include "foreach.hpp"
 #include "gui/widgets/window.hpp"
 
@@ -29,6 +28,7 @@ tcontrol::tcontrol(const unsigned canvas_count)
 	, config_(0)
 	, renderer_()
 	, text_maximum_width_(0)
+	, shrunken_(false)
 {
 }
 
@@ -76,6 +76,92 @@ void tcontrol::set_block_easy_close(const bool block)
 	}
 }
 
+tpoint tcontrol::get_config_minimum_size() const
+{
+	assert(config_);
+
+	tpoint result(config_->min_width, config_->min_height);
+
+	DBG_G_L << "tcontrol(" + get_control_type() + ") " + __func__ + ":"
+		<< " result " << result
+		<< ".\n";
+	return result;
+}
+
+tpoint tcontrol::get_config_default_size() const
+{
+	assert(config_);
+
+	tpoint result(config_->default_width, config_->default_height);
+
+	DBG_G_L << "tcontrol(" + get_control_type() + ") " + __func__ + ":"
+		<< " result " << result
+		<< ".\n";
+	return result;
+}
+
+tpoint tcontrol::get_config_maximum_size() const
+{
+	assert(config_);
+
+	tpoint result(config_->max_width, config_->max_height);
+
+	DBG_G_L << "tcontrol(" + get_control_type() + ") " + __func__ + ":"
+		<< " result " << result
+		<< ".\n";
+	return result;
+}
+
+void tcontrol::layout_init()
+{ 
+	twidget::layout_init(); 
+	shrunken_ = false; 
+}
+
+tpoint tcontrol::calculate_best_size() const
+{
+	assert(config_);
+	tpoint result(config_->default_width, config_->default_height);
+	if(! label_.empty()) {
+		// If no label text set we use the predefined value.
+
+		/** 
+		 * @todo The value send should subtract the border size
+		 * and readd it after calculation to get the proper result.
+		 */
+		result = get_best_text_size(result);
+	}
+
+	DBG_G_L << "tcontrol(" + get_control_type() + ") " + __func__ + ":"
+		<< " empty label " << label_.empty()
+		<< " result " << result
+		<< ".\n";
+	return result;
+}
+
+void tcontrol::set_size(const tpoint& origin, const tpoint& size)
+{
+	// resize canvasses
+	foreach(tcanvas& canvas, canvas_) {
+		canvas.set_width(size.x);
+		canvas.set_height(size.y);
+	}
+
+	// Note we assume that the best size has been queried but otherwise it
+	// should return false.
+	if(renderer_.is_truncated() 
+			&& use_tooltip_on_label_overflow_ && tooltip_.empty()) {
+
+		 set_tooltip(label_);
+	}
+
+	// inherited
+	twidget::set_size(origin, size);
+
+	// update the state of the canvas after the sizes have been set.
+	update_canvas();
+}
+
 void tcontrol::mouse_hover(tevent_handler& event)
 {
 	DBG_G_E << "Control: mouse hover.\n"; 
@@ -102,82 +188,6 @@ void tcontrol::load_config()
 
 		load_config_extra();
 	}
-}
-
-tpoint tcontrol::get_minimum_size() const
-{
-	assert(config_);
-
-	tpoint result(config_->min_width, config_->min_height);
-	if(! label_.empty()) {
-		// If no label text set we use the predefined value.
-		 
-		/** 
-		 * @todo The value send should subtract the border size
-		 * and readd it after calculation to get the proper result.
-		 */
-		result = get_best_text_size(result);
-	}
-
-	DBG_G_L << "tcontrol(" + get_control_type() + ") " + __func__ + ":"
-		<< " empty label " << label_.empty()
-		<< " result " << result
-		<< ".\n";
-	return result;
-}
-
-tpoint tcontrol::get_best_size() const
-{
-	assert(config_);
-	tpoint result(config_->default_width, config_->default_height);
-	if(! label_.empty()) {
-		// If no label text set we use the predefined value.
-
-		/** 
-		 * @todo The value send should subtract the border size
-		 * and readd it after calculation to get the proper result.
-		 */
-		result = get_best_text_size(result);
-	}
-
-	DBG_G_L << "tcontrol(" + get_control_type() + ") " + __func__ + ":"
-		<< " empty label " << label_.empty()
-		<< " result " << result
-		<< ".\n";
-	return result;
-}
-
-tpoint tcontrol::get_best_size(const tpoint& maximum_size) const
-{
-	assert(config_);
-	tpoint result(0, 0);
-	if(! label_.empty()) {
-		// If no label text set we use the predefined value.
-
-		/** 
-		 * @todo The value send should subtract the border size
-		 * and readd it after calculation to get the proper result.
-		 */
-		result = get_best_text_size(tpoint(0,0), maximum_size);
-	}
-
-	DBG_G_L << "tcontrol(" + get_control_type() + ") " + __func__ + ":"
-		<< " empty label " << label_.empty()
-		<< " result " << result
-		<< ".\n";
-	return result;
-}
-
-tpoint tcontrol::get_maximum_size() const
-{
-	assert(config_);
-
-	tpoint result = tpoint(config_->max_width, config_->max_height);
-
-	DBG_G_L << "tcontrol(" + get_control_type() + ") " + __func__ + ":"
-		<< " result " << result
-		<< ".\n";
-	return result;
 }
 
 bool tcontrol::set_width_constrain(const unsigned width)
@@ -250,29 +260,6 @@ void tcontrol::set_definition(const std::string& definition)
 	twidget::set_definition(definition);
 	load_config();
 	assert(config());
-}
-
-void tcontrol::set_size(const SDL_Rect& rect)
-{
-	// resize canvasses
-	foreach(tcanvas& canvas, canvas_) {
-		canvas.set_width(rect.w);
-		canvas.set_height(rect.h);
-	}
-
-	// Note we assume that the best size has been queried but otherwise it
-	// should return false.
-	if(renderer_.is_truncated() 
-			&& use_tooltip_on_label_overflow_ && tooltip_.empty()) {
-
-		 set_tooltip(label_);
-	}
-
-	// inherited
-	twidget::set_size(rect);
-
-	// update the state of the canvas after the sizes have been set.
-	update_canvas();
 }
 
 void tcontrol::set_visible(const bool visible)
