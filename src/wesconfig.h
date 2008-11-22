@@ -25,7 +25,7 @@
 # endif
 #endif
 #ifndef VERSION
-#define VERSION "1.5.6"
+#define VERSION "1.5.6+svn"
 #endif
 #ifndef PACKAGE
 #define PACKAGE "wesnoth"
