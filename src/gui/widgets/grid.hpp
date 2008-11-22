@@ -360,34 +360,11 @@ private:
 
 	/***** ***** ***** ***** size caching ***** ***** ***** *****/
 
-	/** Cache containing the best row heights. */
-	mutable std::vector<unsigned> best_row_height_;
-
-	/** Cache containing the best column widths. */
-	mutable std::vector<unsigned> best_col_width_;
-
-	/** Cache containing the best minimum heights. */
-	mutable std::vector<unsigned> minimum_row_height_;
-
-	/** Cache containing the minimum column widths. */
-	mutable std::vector<unsigned> minimum_col_width_;
-
-	/** 
-	 * Clears the size caches. 
-	 *
-	 * @todo we need to evaluate how useful caching is in the first place since
-	 * quite some functions invalidate the caches and most things are calculated
-	 * only a few times. This means the caches might be overkill and adding
-	 * complexity.
-	 */
-	void clear_cache();
-
 	/** The row heights in the grid. */
-	std::vector<unsigned> row_height_;
+	mutable std::vector<unsigned> row_height_;
 
 	/** The column widths in the grid. */
-	std::vector<unsigned> col_width_;
-
+	mutable std::vector<unsigned> col_width_;
 
 	/** The grow factor for all rows. */
 	std::vector<unsigned> row_grow_factor_;
@@ -405,7 +382,7 @@ private:
 	const tchild& child(const unsigned row, const unsigned col) const
 		{ return children_[rows_ * col + row]; }
 	tchild& child(const unsigned row, const unsigned col)
-		{ clear_cache(); return children_[rows_ * col + row]; }
+		{ return children_[rows_ * col + row]; }
 
 	/** Layouts the children in the grid. */
 	void layout(const tpoint& origin);
