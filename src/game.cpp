@@ -381,6 +381,9 @@ game_controller::game_controller(int argc, char** argv) :
 			jump_to_editor_ = true;
 #endif
 		} else if(val == "--dummylocales") {
+			std::cerr << "--dummylocales is deprecated use --dummy-locales instead.\n";
+			game_config::use_dummylocales = true;
+		} else if(val == "--dummy-locales") {
 			game_config::use_dummylocales = true;
 		} else if(val[0] == '-') {
 			std::cerr << "unknown option: " << val << std::endl;
@@ -1723,7 +1726,7 @@ static int process_command_args(int argc, char** argv) {
 			<< "                               The data can also be generated when the F12 is\n"
 			<< "                               pressed in a dialog.\n"
 #endif
-			<< "  --dummylocales               enables dummy locales for switching to non-system\n"
+			<< "  --dummy-locales              enables dummy locales for switching to non-system\n"
 			<< "                               locales.\n"
 #ifndef DISABLE_EDITOR2
 			<< "  -e, --editor                 starts the in-game map editor directly.\n"
