@@ -23,7 +23,8 @@
 #  Boost_ADDITIONAL_VERSIONS     A list of version numbers to use for searching
 #                                the boost include directory. The default list
 #                                of version numbers is:
-#                                1.33, 1.33.0, 1.33.1, 1.34, 1.34.0, 1.34.1, 1.35, 1.35.0
+#                                1.33, 1.33.0, 1.33.1, 1.34, 1.34.0, 1.34.1, 1.35, 1.35.0,
+#                                1.36.0, 1.37.0
 #                                If you want to look for an older or newer
 #                                version set this variable to a list of
 #                                strings, where each string contains a number, i.e.
@@ -78,7 +79,7 @@
 
 # MESSAGE(STATUS "Finding Boost libraries.... ")
 
-SET( _boost_TEST_VERSIONS ${Boost_ADDITIONAL_VERSIONS} "1.33" "1.33.0" "1.33.1" "1.34" "1.34.0" "1.34.1" "1.35" "1.35.0")
+SET( _boost_TEST_VERSIONS ${Boost_ADDITIONAL_VERSIONS} "1.33" "1.33.0" "1.33.1" "1.34" "1.34.0" "1.34.1" "1.35" "1.35.0" "1.36" "1.36.0" "1.37" "1.37.0")
 
 ############################################
 #
