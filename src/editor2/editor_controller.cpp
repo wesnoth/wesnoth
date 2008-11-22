@@ -360,8 +360,8 @@ void editor_controller::editor_settings_dialog_redraw_callback(int r, int g, int
 bool editor_controller::confirm_discard()
 {
 	if (get_map_context().modified()) {
-		return !gui::dialog(gui(), _("There are unsaved changes in the map"),
-			_("Do you want to discard all changes you made to the map?"), gui::YES_NO).show();
+		return !gui::dialog(gui(), _("Unsaved Changes"),
+			_("Do you want to discard all changes you made to the map since the last save?"), gui::YES_NO).show();
 	} else {
 		return true;
 	}
@@ -374,7 +374,7 @@ void editor_controller::load_map_dialog()
 	if (fn.empty()) {
 		fn = default_dir_;
 	}
-	int res = dialogs::show_file_chooser_dialog(gui(), fn, _("Choose a Map to Load"));
+	int res = dialogs::show_file_chooser_dialog(gui(), fn, _("Choose a Map to Open"));
 	if (res == 0) {
 		for (size_t i = 0; i < map_contexts_.size(); ++i) {
 			if (map_contexts_[i]->get_filename() == fn) {
@@ -420,7 +420,7 @@ void editor_controller::save_map_as_dialog()
 		if (res == 0) {
 			if (file_exists(input_name)) {
 				overwrite_res = gui::dialog(gui(), "",
-					_("The map already exists. Do you want to overwrite it?"),
+					_("The file already exists. Do you want to overwrite it?"),
 					gui::YES_NO).show();
 			} else {
 				overwrite_res = 0;
