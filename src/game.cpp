@@ -256,6 +256,12 @@ game_controller::game_controller(int argc, char** argv) :
 {
 	bool no_music = false;
 	bool no_sound = false;
+
+	// The path can be hardcoded and it might be a relative path.
+	if(!game_config::path.empty() &&  game_config::path[0] != '/') {
+		game_config::path = get_cwd() + '/' + game_config::path;
+	}
+
 	for(arg_ = 1; arg_ != argc_; ++arg_) {
 		const std::string val(argv_[arg_]);
 		if(val.empty()) {
