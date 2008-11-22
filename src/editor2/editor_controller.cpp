@@ -985,6 +985,10 @@ void editor_controller::show_menu(const std::vector<std::string>& items_arg, int
 			} else {
 				hotkey::get_hotkey(*i).set_description(_("Can't Redo"));
 			}
+		} else if(!can_execute_command(command)
+		|| (context_menu && !in_context_menu(command))) {
+			i = items.erase(i);
+			continue;
 		}
 		++i;
 	}
