@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-22 14:56+0100\n"
+"POT-Creation-Date: 2008-11-22 20:14+0100\n"
 "PO-Revision-Date: 2008-03-29 13:15+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Dansk-gruppen <dansk@dansk-gruppen.dk>\n"
@@ -111,11 +111,13 @@ msgstr "Fredsafslutning"
 
 #. [objective]: condition=win
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_Of_Peace.cfg:21
-msgid "Defeat Albert and his troops"
-msgstr "Besejr Albert og hans tropper"
+#, fuzzy
+msgid "Defeat Albert"
+msgstr "Besejr Ar Dant"
 
 #. [objective]: condition=lose
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:37
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:443
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:25
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:27
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:517
@@ -130,7 +132,7 @@ msgstr "Besejr Albert og hans tropper"
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_The_Smug.cfg:30
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_Human_Horde.cfg:29
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:39
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:286
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:282
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:25
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:547
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:46
@@ -144,6 +146,7 @@ msgstr "Kapou'es død"
 
 #. [objective]: condition=lose
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:45
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:451
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:33
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:39
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:529
@@ -152,7 +155,7 @@ msgstr "Kapou'es død"
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:359
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:244
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:43
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:294
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:290
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:33
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:555
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:54
@@ -165,7 +168,6 @@ msgid "Turns run out"
 msgstr "Tiden løber ud"
 
 #. [side]: type=Orcish Leader
-#. [modify_side]
 #. [side]: type=Orcish Warlord
 #. [side]: type=Orcish Slayer
 #. [side]
@@ -173,7 +175,6 @@ msgstr "Tiden løber ud"
 #. [side]: type=Great Troll
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:56
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:62
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:436
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:45
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:51
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:65
@@ -202,9 +203,9 @@ msgstr "Tiden løber ud"
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_Human_Horde.cfg:50
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_Human_Horde.cfg:66
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_Human_Horde.cfg:81
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:69
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:75
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:81
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:108
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:102
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:45
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:51
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:62
@@ -698,13 +699,13 @@ msgstr "Mod Haagbjergene"
 
 #. [objective]: condition=win
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:29
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:276
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:272
 msgid "Move Kapou'e to the end of the mountains"
 msgstr "Flyt Kapou'e til slutningen af bjergene"
 
 #. [objective]: condition=win
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:35
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:282
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:278
 msgid ""
 "<255,255,255>Bonus objective:\n"
 "@Defeat the enemy leader\n"
@@ -712,17 +713,17 @@ msgid ""
 msgstr ""
 
 #. [side]: type=Dwarvish Lord
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:91
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:85
 msgid "Kwili"
 msgstr "Kwili"
 
 #. [side]: type=Dwarvish Lord
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:100
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:94
 msgid "Dwarves"
 msgstr ""
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:133
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:127
 #, fuzzy
 msgid ""
 "We have almost crossed the mountains. We're close to the lands of the free "
@@ -732,17 +733,17 @@ msgstr ""
 "Så langt så godt."
 
 #. [message]: speaker=Kwili
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:137
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:131
 msgid "Halt! Who goes there?"
 msgstr "Stop! Hvem går der?"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:142
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:136
 msgid "It is I, Kapou'e, son of the Black-Eye Karun. What do you want, dwarf?"
 msgstr "Det er mig Kapou'e, søn af Det sorte Øje. Hvad vil du dværg?"
 
 #. [message]: speaker=Kwili
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:148
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:142
 #, fuzzy
 msgid ""
 "Oh, so it's another group o' stinkin' orcs, eh. Begone, or we shall wash our "
@@ -752,7 +753,7 @@ msgstr ""
 "i jeres blod."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:153
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:147
 #, fuzzy
 msgid ""
 "Look, you pint-sized idiot, we aren't out to kill you so why don't you just "
@@ -763,12 +764,12 @@ msgstr ""
 "bare og gemmer dig i en hule eller noget. Vi er væk om nogle timer"
 
 #. [message]: role=Helper
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:158
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:152
 msgid " *snicker*"
 msgstr " *grine*"
 
 #. [message]: speaker=Kwili
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:163
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:157
 #, fuzzy
 msgid ""
 "Your scorn and rudeness shall be your undoing. Dwarves, let no orc pass this "
@@ -778,12 +779,12 @@ msgstr ""
 "ork passere forbi i live!"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:168
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:162
 msgid "It looks like we might have to fight them after all."
 msgstr "Ser ud til at vi må bekæmpe dem alligevel."
 
 #. [message]: role=Helper
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:173
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:167
 #, fuzzy
 msgid ""
 "Hey, Chief, I was thinking - dwarves are pretty slow; why don't we just "
@@ -793,12 +794,12 @@ msgstr ""
 "ikke bare forbi dem?"
 
 #. [message]: role=Helper
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:178
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:172
 msgid "I mean, we could defeat them easily but it would just slow us down."
 msgstr "Jeg mener, vi kunne nemt besejre dem, men det vil bare forsinke os."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:183
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:177
 #, fuzzy
 msgid ""
 "We could, but then again, if we crush them then we can loot their treasury "
@@ -809,7 +810,7 @@ msgstr ""
 "være brugbart i fremtiden."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:188
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:182
 msgid ""
 "Whatever else happens, we have to pass through these mountains and I dislike "
 "leaving enemies in our rear. Stab, smite, and slay!"
@@ -818,45 +819,45 @@ msgstr ""
 "efterlade fjender bag vores ryg. Stik, slå hårdt og dræb!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:202
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:198
 msgid ""
 "I've never pushed so far. We are crossing the border of the Black-Eye lands."
 msgstr ""
 "Jeg har aldrig været så langt, vi krydser grænsen for Det sorte Øjes land."
 
 #. [unit]: type=Troll Warrior
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:210
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:206
 msgid "Blemaker"
 msgstr "Blemaker"
 
 #. [unit]: type=Troll Hero
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:219
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:215
 msgid "Grüü"
 msgstr "Grüü"
 
 #. [unit]: type=Troll Whelp
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:234
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:230
 msgid "Toughkon"
 msgstr "Toughkon"
 
 #. [unit]: type=Troll Whelp
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:243
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:239
 msgid "Pe"
 msgstr "Pe"
 
 #. [message]: speaker=Blemaker
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:253
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:249
 #, fuzzy
 msgid "Look! Dwarves are fighting orcs!"
 msgstr "Se! Dværge kæmper imod orker!"
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:257
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:253
 msgid "Father, we should help them. Orcs are our allies."
 msgstr "Far vi bør hjælpe dem. Orkerne er vores allierede."
 
 #. [message]: speaker=Blemaker
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:261
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:257
 #, fuzzy
 msgid ""
 "I don't know. Orcs have been our allies in the past, but they treat us as "
@@ -866,7 +867,7 @@ msgstr ""
 "men de har altid behandlet os som fjolser."
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:265
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:261
 #, fuzzy
 msgid ""
 "But, Father, we don't know what they are seeking there. Between us, we could "
@@ -876,7 +877,7 @@ msgstr ""
 "at slippe af med disse dværge."
 
 #. [message]: speaker=Blemaker
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:269
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:265
 #, fuzzy
 msgid ""
 "Right, my son. We help our orcish friends. But you take care ... I would be "
@@ -887,6 +888,7 @@ msgstr ""
 
 #. [objective]: condition=lose
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:41
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:447
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:29
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:31
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:521
@@ -897,7 +899,7 @@ msgstr ""
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:33
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_The_Smug.cfg:34
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_Human_Horde.cfg:33
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:290
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:286
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:29
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:551
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:50
@@ -910,29 +912,29 @@ msgstr "Grüüs død"
 
 #. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_Human_Horde.cfg:266
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:308
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:304
 #: data/campaigns/Son_Of_The_Black_Eye/utils/deaths.cfg:80
 msgid "Argh! I'm done. My people are doomed!"
 msgstr "Argh! Jeg er færdig. Mit folk er fortabt!"
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:322
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:318
 msgid "Father! Oh no!"
 msgstr "Far! Oh nej!"
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:326
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:322
 #, fuzzy
 msgid "Filthy dwarves! Now I'll kill you to the last!"
 msgstr "Fæle dværge! Jeg dræber jer til sidste mand!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:337
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:333
 msgid "Oh no, I'm defeated."
 msgstr "Oh nej jeg er besejret."
 
 #. [message]: speaker=Blemaker
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:346
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:342
 #, fuzzy
 msgid ""
 "My son! I should have never brought him to this fight. Now we return to our "
@@ -942,7 +944,7 @@ msgstr ""
 "returnere til vores huler, og vi går aldrig tilbage."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:355
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:351
 #, fuzzy
 msgid ""
 "The trolls are done. We will desperately need their help in the coming "
@@ -952,12 +954,12 @@ msgstr ""
 "forestående slag. Uden dem er der ikke noget håb."
 
 #. [message]: speaker=unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:369
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:365
 msgid "Argh! I die!"
 msgstr "Argh! Jeg dør!"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:379
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:375
 #, fuzzy
 msgid ""
 "You were warned, dwarf. Riders, spread out of the area and collect what you "
@@ -972,12 +974,12 @@ msgstr ""
 "jeres opgave er færdig."
 
 #. [message]: role=doggie
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:389
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:385
 msgid "Sounds like fun. Alright boys, let's go!"
 msgstr "Lyder som en sjov opgave. Lad os gå i gang drenge!"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:444
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:440
 #, fuzzy
 msgid ""
 "We've succeeded! We've passed through the Mountains of Haag! Look at these "
@@ -988,7 +990,7 @@ msgstr ""
 "Ladet med de frie stammer er nær. Nu kan jeg se Barag Górs mure i horisonten."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:448
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:444
 #, fuzzy
 msgid ""
 "Blemaker, many thanks for your help in this fight. Would you like to join us "
@@ -999,12 +1001,12 @@ msgstr ""
 "din søn? Din hjælp vil være meget velkommen!"
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:453
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:449
 msgid "Father, I'd like to join them. Would you mind it?"
 msgstr "Far jeg vil gerne med dem. Har du noget imod det?"
 
 #. [message]: speaker=Blemaker
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:457
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:453
 msgid ""
 "My son, you're old enough to discover the world. Me, I have to stay here. "
 "But take care, there are plenty of creatures that seek our end, like elves "
@@ -1015,12 +1017,12 @@ msgstr ""
 "eller mennesker. Der er lige så kloge, som de er nådesløse."
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:461
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:457
 msgid "Thanks, father. Don't worry, I'll take care of myself."
 msgstr "Tak far. Vær ikke bekymret jeg tager godt vare på mig selv."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:467
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:463
 msgid ""
 "We've succeeded! We've passed through the Mountains of Haag! Look at these "
 "green hills! The land of the free tribes is near now. I can see the walls of "
@@ -1030,7 +1032,7 @@ msgstr ""
 "Ladet med de frie stammer er nær. Nu kan jeg se Barag Górs mure i horisonten."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:471
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:467
 #, fuzzy
 msgid ""
 "Grüü, many thanks for your help in this fight. I'm sorry for the loss of "
@@ -1041,7 +1043,7 @@ msgstr ""
 "far. Vil du slutte dig til vores rejse? Din hjælp vil være meget velkommen!"
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:475
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:471
 msgid ""
 "My father would have come to help you. I would insult his memory not to help "
 "you. I come!"
@@ -3109,6 +3111,7 @@ msgstr "Tilbagebetaling"
 
 #. [objectives]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:48
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:454
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:37
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:41
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_Human_Horde.cfg:36
@@ -3800,7 +3803,9 @@ msgstr "Besejr alle oprørs ledere og..."
 
 #. [objective]: condition=win
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:33
-msgid "Move Kapou'e to the end of the signpost at the southwest"
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:439
+#, fuzzy
+msgid "Move Kapou'e to the signpost at the southwest"
 msgstr "Flyt Kapou'e til slutningen af signalposten mod sydvest"
 
 #. [side]: type=Orcish Warlord
@@ -3810,10 +3815,10 @@ msgstr "Braga"
 
 #. [side]: type=Orcish Warlord
 #. [side]: type=Orcish Grunt
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:78
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:97
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:116
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:135
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:79
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:99
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:119
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:139
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_Coward.cfg:71
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_Coward.cfg:108
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_Coward.cfg:122
@@ -3821,23 +3826,23 @@ msgid "Rebels"
 msgstr ""
 
 #. [side]: type=Orcish Warlord
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:91
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:92
 msgid "Meato"
 msgstr "Meato"
 
 #. [side]: type=Orcish Warlord
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:110
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:112
 msgid "Ragvan"
 msgstr "Ragvan"
 
 #. [side]: type=Orcish Warlord
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:129
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:132
 #, fuzzy
 msgid "Kergai"
 msgstr "Orga"
 
 #. [part]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:147
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:151
 msgid ""
 "Infuriated by the murder of the shamans, the orcish horde massacred the "
 "humans and their allies. In their rage, they scoured the snow for hours "
@@ -3850,7 +3855,7 @@ msgstr ""
 "fulde virkning af shamanernes død begyndte at stå klar for dem."
 
 #. [part]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:152
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:156
 msgid ""
 "With the Council broken, there was now nothing left to hold the orcish "
 "forces together. And if the orcish forces began to fight amongst themselves "
@@ -3861,7 +3866,7 @@ msgstr ""
 "de ofte gjorde, så ville menneskene hurtigt udrydde dem."
 
 #. [part]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:157
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:161
 #, fuzzy
 msgid ""
 "Kapou'e vowed that this would not happen. Events had the smell of a "
@@ -3883,7 +3888,7 @@ msgstr ""
 "igen - på den gamle måde."
 
 #. [part]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:162
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:166
 msgid ""
 "Furthermore, the troops who had been led by Kapou'e this far had grown to "
 "respect him as a wise and capable leader, and they proclaimed their loyalty "
@@ -3906,7 +3911,7 @@ msgstr ""
 "forventede angreb tilbage."
 
 #. [part]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:167
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:171
 msgid ""
 "Having thus made his plans, Kapou'e set out for Bitok to get to the root of "
 "this treachery."
@@ -3915,7 +3920,7 @@ msgstr ""
 "årsagen til dette forræderi."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:218
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:222
 msgid ""
 "If we are going to make it to Bitok, and then back to Dorset before spring "
 "we have to get a move on. Break camp as soon as possible. Destroy all "
@@ -3928,12 +3933,12 @@ msgstr ""
 "færdige her."
 
 #. [message]: speaker=Braga
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:223
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:227
 msgid "Black-Eye! We won't submit to an upstart like you!"
 msgstr ""
 
 #. [message]: speaker=Meato
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:228
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:232
 msgid ""
 "Turn around and go back to where you came from or you'll find your head on a "
 "pike! Right?"
@@ -3941,174 +3946,61 @@ msgstr ""
 
 #. [message]: speaker=Ragvan
 #. [message]: speaker=Kergai
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:233
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:238
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:237
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:242
 #, fuzzy
 msgid "Right!"
 msgstr "Rugh"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:243
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:247
 msgid ""
 "It's been a chilly winter. How about we warm ourselves up a bit by giving "
 "these traitors a good whopping, boys?"
 msgstr ""
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:248
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:252
 msgid "Yeah!"
 msgstr ""
 
-#. [message]: speaker=unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:263
-msgid ""
-"(whispered) Psst, Black-Eye! Shan Taum paid our chiefs to stick around here "
-"and guard Bitok. But they pay us poor!"
-msgstr ""
-
-#. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:268
-msgid "And how is that my problem?"
-msgstr ""
-
-#. [message]: speaker=unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:273
-msgid ""
-"(whispered) Well, Black-Eye, as long as they're in charge you'll have to "
-"fight us all...but I'm sure none of us would bother you if you'd 'remove' "
-"just our chiefs."
-msgstr ""
-
-#. [message]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:279
-msgid ""
-"What are you doing! I haven't let you keep your head so you could chat with "
-"the enemy! Get back to the fight!"
-msgstr ""
-
-#. [message]: speaker=unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:284
-msgid "Uh oh...yes chief, right away!"
-msgstr ""
-
-#. [message]: speaker=unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:289
-msgid "(whispered) Sorry!"
-msgstr ""
-
-#. [message]: speaker=second_unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:302
-msgid ""
-"Chief, maybe we should do what he said and just try to assassinate their "
-"leaders instead?"
-msgstr ""
-
-#. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:307
-msgid "Sure, why not. If we get the chance."
-msgstr ""
-
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:324
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:329
 msgid "Little orcs fun to squash too! Chief doesn't let me too often."
 msgstr ""
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:329
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:334
 msgid "You can have as many as you want now, Grüü."
 msgstr ""
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:361
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:366
 msgid "This rabble won't be a problem anymore."
 msgstr "Denne snak vil ikke være et problem mere."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:370
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:375
 msgid "Got this tribe under control."
 msgstr "Fik denne stamme under kontrol."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:379
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:384
 msgid "This is what you get for deserting the Son of the Black-Eye."
 msgstr "Det er, hvad du for ud af at desertere fra Det sorte Øjes søn."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:388
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:393
 msgid "This trash's gone."
 msgstr ""
 
-#. [message]: role=new_leader
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:466
-msgid "Freedom! Don't worry about our tribe anymore, Kapou'e."
-msgstr ""
-
-#. [message]: role=new_leader
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:476
-#, fuzzy
-msgid "Thank you, Son of the Black-Eye!"
-msgstr "Det sorte Øjes søn"
-
-#. [message]: role=new_leader
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:486
-msgid "The chief is gone at last!"
-msgstr ""
-
-#. [message]: role=new_leader
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:496
-msgid "Finally! We'll fight at your side now!"
-msgstr ""
-
-#. [message]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:545
-msgid "Thanks to you, Kapou'e, our imbecile leaders are gone!"
-msgstr ""
-
-#. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:550
-msgid ""
-"Good for you. Now let's get going, we have an appointment with Shan Taum."
-msgstr ""
-
-#. [message]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:556
-msgid "Actually...we won't be coming."
-msgstr ""
-
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:561
-msgid "You don't turn your back on Chief! You come or we squash!"
-msgstr ""
-
-#. [message]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:567
-msgid ""
-"But we don't want to fight anymore! In fact, we prefer farming to war. Maybe "
-"burn a village every now and then, but no big fighting."
-msgstr ""
-
-#. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:572
-msgid ""
-"Haha, Grüü never heard anything funnier! Farming orcs must have been hit in "
-"the head too hard."
-msgstr ""
-
-#. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:578
-msgid ""
-"As much as I'd like to, we don't have time to stay and 're-educate' these un-"
-"orcs. So go jump in a lake if you want for all I care, just make sure I "
-"never see your pathetic faces again."
-msgstr ""
-
-#. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:586
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:427
 msgid "Heehee, we wiped them out good."
 msgstr ""
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:591
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:432
 msgid "Now let's get going, we have an appointment with Shan Taum."
 msgstr ""
 
@@ -4995,6 +4887,13 @@ msgid ""
 msgstr ""
 "Forbandet være det uden Inarix til at anføre sine øgler kan vi ikke længere "
 "regne med deres hjælp."
+
+#~ msgid "Defeat Albert and his troops"
+#~ msgstr "Besejr Albert og hans tropper"
+
+#, fuzzy
+#~ msgid "Thank you, Son of the Black-Eye!"
+#~ msgstr "Det sorte Øjes søn"
 
 #~ msgid "Ok."
 #~ msgstr "O.k."

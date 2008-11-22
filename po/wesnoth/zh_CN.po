@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-22 15:02+0100\n"
+"POT-Creation-Date: 2008-11-22 20:13+0100\n"
 "PO-Revision-Date: 2008-02-26 14:53+0100\n"
 "Last-Translator: Nils Kneuper <crazy-ivanovic  AT gmx  D O  T net>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
@@ -545,7 +545,7 @@ msgstr "地形"
 
 #. [section]
 #. [topic]
-#: data/core/help.cfg:74 data/core/help.cfg:720
+#: data/core/help.cfg:74 data/core/help.cfg:730
 msgid "Commands"
 msgstr "指令"
 
@@ -2358,11 +2358,17 @@ msgstr ""
 
 #. [topic]
 #: data/core/help.cfg:698
+#, fuzzy
+msgid "Coastal Reef"
+msgstr "城堡"
+
+#. [topic]
+#: data/core/help.cfg:708
 msgid "Bridge"
 msgstr "桥梁"
 
 #. [topic]
-#: data/core/help.cfg:703
+#: data/core/help.cfg:713
 msgid ""
 "To those capable of building one, the ability to lay a bridge offers a "
 "liberation from the fickle nature of waterways, whose fords come and go with "
@@ -2384,13 +2390,13 @@ msgstr ""
 "同时占领同一座桥。"
 
 #. [topic]
-#: data/core/help.cfg:710
+#: data/core/help.cfg:720
 #, fuzzy
 msgid "Impassable"
 msgstr "高不可攀的大山"
 
 #. [topic]
-#: data/core/help.cfg:713
+#: data/core/help.cfg:723
 msgid ""
 "Obstacles that not even the most determined traveler may overcome include "
 "solid walls of stone and mountains so tall and steep that they are "
@@ -2400,12 +2406,12 @@ msgid ""
 msgstr ""
 
 #. [topic]
-#: data/core/help.cfg:726
+#: data/core/help.cfg:736
 msgid "General commands"
 msgstr "常规指令"
 
 #. [topic]
-#: data/core/help.cfg:731
+#: data/core/help.cfg:741
 msgid ""
 "\n"
 "Clear chat messages.\n"
@@ -2416,7 +2422,7 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:735
+#: data/core/help.cfg:745
 #, fuzzy
 msgid ""
 "\n"
@@ -2433,7 +2439,7 @@ msgstr ""
 
 # can someone explain this to me in other words? i have not seen this in real multiplayer yet
 #. [topic]
-#: data/core/help.cfg:738
+#: data/core/help.cfg:748
 #, fuzzy
 msgid ""
 "\n"
@@ -2452,7 +2458,7 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:741
+#: data/core/help.cfg:751
 msgid ""
 "\n"
 "Toggle the display of the current frames per second.\n"
@@ -2463,7 +2469,7 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:744
+#: data/core/help.cfg:754
 msgid ""
 "\n"
 "Switch a log domain to a different log level.\n"
@@ -2474,7 +2480,7 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:747
+#: data/core/help.cfg:757
 msgid ""
 "\n"
 "Redraw the screen.\n"
@@ -2485,7 +2491,7 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:750
+#: data/core/help.cfg:760
 msgid ""
 "\n"
 "Bring up theme selection menu.\n"
@@ -2496,7 +2502,7 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:753
+#: data/core/help.cfg:763
 msgid ""
 "\n"
 "Quit the scenario (without prompting).\n"
@@ -2507,7 +2513,7 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:756
+#: data/core/help.cfg:766
 msgid ""
 "\n"
 "Save the game (without prompting).\n"
@@ -2518,7 +2524,7 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:757
+#: data/core/help.cfg:767
 msgid ""
 "\n"
 "Save the game and quit the scenario (without prompting)."
@@ -2527,12 +2533,12 @@ msgstr ""
 "保存游戏并退出当前场景（无提示窗口）。"
 
 #. [topic]
-#: data/core/help.cfg:765
+#: data/core/help.cfg:775
 msgid "Multiplayer commands"
 msgstr "多人对战指令"
 
 #. [topic]
-#: data/core/help.cfg:769
+#: data/core/help.cfg:779
 msgid ""
 "\n"
 "Ban a user in a multiplayer game by the IP address used by that username and "
@@ -2544,7 +2550,7 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:772
+#: data/core/help.cfg:782
 msgid ""
 "\n"
 "Change the controller for side (write here the number of the side) to "
@@ -2560,7 +2566,7 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:775
+#: data/core/help.cfg:785
 msgid ""
 "\n"
 "Kick a user in multiplayer. They will be able to rejoin the game. Generally "
@@ -2574,7 +2580,7 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:778
+#: data/core/help.cfg:788
 msgid ""
 "\n"
 "Mute a specific observer. If no username is supplied the muted usernames are "
@@ -2587,7 +2593,7 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:779
+#: data/core/help.cfg:789
 msgid ""
 "\n"
 "Toggle muting/silencing of all observers on/off."
@@ -2596,12 +2602,12 @@ msgstr ""
 "屏蔽/取消屏蔽所有观察者。"
 
 #. [topic]
-#: data/core/help.cfg:786
+#: data/core/help.cfg:796
 msgid "Debug mode commands"
 msgstr "除错模式指令"
 
 #. [topic]
-#: data/core/help.cfg:790
+#: data/core/help.cfg:800
 msgid ""
 "\n"
 "Create a unit of the specified type on the selected hex.\n"
@@ -2613,7 +2619,7 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:793
+#: data/core/help.cfg:803
 msgid ""
 "\n"
 "Toggle fog/shroud for the current side.\n"
@@ -2624,7 +2630,7 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:796
+#: data/core/help.cfg:806
 msgid ""
 "\n"
 "Adds the specified amount to the current side's gold.\n"
@@ -2635,7 +2641,7 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:799
+#: data/core/help.cfg:809
 msgid ""
 "\n"
 "Manually set a gamestate variable to value.\n"
@@ -2646,7 +2652,7 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:802
+#: data/core/help.cfg:812
 msgid ""
 "\n"
 "Show a gamestate variable.\n"
@@ -2657,7 +2663,7 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:805
+#: data/core/help.cfg:815
 msgid ""
 "\n"
 "Manually fire the specified event.\n"
@@ -2668,7 +2674,7 @@ msgstr ""
 "\n"
 
 #. [topic]
-#: data/core/help.cfg:806
+#: data/core/help.cfg:816
 msgid ""
 "\n"
 "Modifies the specified property of the selected unit. Example: :unit "
