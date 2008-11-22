@@ -224,26 +224,24 @@ void fuh::set_lastlogin(const std::string& user, const time_t& lastlogin) {
 }
 
 mysqlpp::Result fuh::db_query(const std::string& sql) {
-
-	//Check if we are connected
-	if(!(db_interface_.connected())) {
-		WRN_UH << "not connected to database, reconnecting..." << std::endl;
-		//Try to reconnect
-		try {
-			db_interface_.connect(db_name_.c_str(), db_host_.c_str(), db_user_.c_str(), db_password_.c_str());
-		} catch(...) {
-			 ERR_UH << "Could not connect to database: " << db_interface_.error() << std::endl;
-			throw error("Could not connect to database.");
-		}
-	}
-
 	try {
 		mysqlpp::Query query = db_interface_.query();
 		query << sql;
 		return query.store();
 	} catch(...) {
-		 ERR_UH << "Could not connect to database: " << db_interface_.error() << std::endl;
-		throw error("Error querying database.");
+		WRN_UH << "not connected to database, reconnecting..." << std::endl;
+		//Try to reconnect
+		try {
+			db_interface_.connect(db_name_.c_str(), db_host_.c_str(), db_user_.c_str(), db_password_.c_str());
+
+			// Execute the query again
+			mysqlpp::Query query = db_interface_.query();
+			query << sql;
+			return query.store();
+		} catch(...) {
+			ERR_UH << "Could not connect to database: " << db_interface_.error() << std::endl;
+			throw error("Error querying database.");
+		}
 	}
 }
 
