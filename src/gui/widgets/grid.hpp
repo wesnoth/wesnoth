@@ -254,7 +254,6 @@ private:
 	{
 	public:
 		tchild() : 
-			id_(),
 			flags_(0),
 			border_size_(0),
 			widget_(0),
@@ -284,8 +283,8 @@ private:
 		/** Forwards layout_use_vertical_scrollbar() to the cell. */
 		void layout_use_vertical_scrollbar(const unsigned maximum_height);
 
-		const std::string& id() const { return id_; }
-		void set_id(const std::string& id) { id_ = id; }
+		/** Returns the id of the widget/ */
+		const std::string& id() const;
 
 		unsigned get_flags() const { return flags_; }
 		void set_flags(const unsigned flags) { flags_ = flags; set_dirty(); }
@@ -300,9 +299,6 @@ private:
 		void set_widget(twidget* widget) { widget_ = widget; set_dirty(); }
 
 	private:
-		/** The id of the widget if it has a widget. */
-		std::string id_;
-
 		/** The flags for the border and cell setup. */
 		unsigned flags_;
 

@@ -80,7 +80,6 @@ void tgrid::set_child(twidget* widget, const unsigned row,
 	cell.set_widget(widget);
 	if(cell.widget()) {
 		// make sure the new child is valid before deferring
-		cell.set_id(cell.widget()->id());
 		cell.widget()->set_parent(this);
 
 		// Init the easy close state here, normally when put in a grid the grid
@@ -92,8 +91,6 @@ void tgrid::set_child(twidget* widget, const unsigned row,
 					&& control->get_active() 
 					&& control->does_block_easy_close());
 		}
-	} else {
-		cell.set_id("");
 	}
 
 	clear_cache();
@@ -130,7 +127,6 @@ twidget* tgrid::swap_child(
 
 		widget->set_parent(this);
 		child.set_widget(widget);
-		child.set_id(widget->id());
 
 		return old;
 	}
@@ -144,7 +140,6 @@ void tgrid::remove_child(const unsigned row, const unsigned col)
 
 	tchild& cell = child(row, col);
 
-	cell.set_id("");
 	if(cell.widget()) {
 		delete cell.widget();
 	}
@@ -158,7 +153,6 @@ void tgrid::remove_child(const std::string& id, const bool find_all)
 			itor != children_.end(); ++itor) {
 
 		if(itor->id() == id) {
-			itor->set_id("");
 			if(itor->widget()) {
 				delete itor->widget();
 			}
@@ -891,6 +885,12 @@ void tgrid::tchild::layout_use_vertical_scrollbar(const unsigned maximum_height)
 
 	widget_->layout_use_vertical_scrollbar(maximum_height - border_space().y);
 
+}
+
+const std::string& tgrid::tchild::id() const 
+{ 
+	assert(widget_);
+	return widget_->id();
 }
 
 tpoint tgrid::tchild::border_space() const
