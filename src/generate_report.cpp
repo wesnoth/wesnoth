@@ -328,7 +328,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 					str << (*sp_it);
 					str<<"\n";
 					++sp_it;
-					tooltip << (*sp_it);
+					tooltip << (*sp_it) << "\n";
 				}
 				res.add_text(str,tooltip);
 			}
