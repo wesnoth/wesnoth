@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-09 21:11+0100\n"
+"POT-Creation-Date: 2008-11-22 14:55+0100\n"
 "PO-Revision-Date: 2008-11-19 20:39-0300\n"
 "Last-Translator: Ignacio R. Morelle <shikadilord@users.sourceforge.net>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -98,9 +98,10 @@ msgstr "Línea de hexágonos NO-SE"
 
 #. [editor2_tool_hint]
 #: data/core/editor2-tool-hints.cfg:7 data/core/editor2-tool-hints.cfg:13
+#, fuzzy
 msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
-"paint base layer only"
+"paint base layer only."
 msgstr ""
 "Use el botón izquierdo o derecho del ratón para dibujar terreno de primer "
 "plano o de fondo, respectivamente. Mantenga presionado SHIFT para dibujar "
@@ -108,9 +109,10 @@ msgstr ""
 
 #. [editor2_tool_hint]
 #: data/core/editor2-tool-hints.cfg:19
+#, fuzzy
 msgid ""
 "Left mouse button selects, right deselects. Hold Shift for magic-wand "
-"selection of tiles with same terrain"
+"selection of tiles with same terrain."
 msgstr ""
 "El botón izquierdo del ratón selecciona, y el derecho anula la selección. "
 "Mantenga SHIFT presionado para seleccionar casillas adyacentes del mismo "
@@ -130,8 +132,10 @@ msgstr ""
 
 #. [editor2_tool_hint]
 #: data/core/editor2-tool-hints.cfg:30
-msgid "Click to paste."
-msgstr "Haga clic para pegar."
+msgid ""
+"Click to paste. Use the edit menu to transform the clipboard (rotate, "
+"mirror)."
+msgstr ""
 
 #. [menu]
 #: data/themes/editor2.cfg:120
@@ -148,134 +152,162 @@ msgstr "Editar"
 msgid "Map"
 msgstr "Mapa"
 
+#. [menu]
+#: data/themes/editor2.cfg:151
+#, fuzzy
+msgid "Window"
+msgstr "Deshacer"
+
 #. [label]
-#: data/themes/editor2.cfg:252
+#: data/themes/editor2.cfg:262
 msgid "villages"
 msgstr "aldeas"
 
-#: src/editor2/editor_controller.cpp:90
+#: src/editor2/editor_controller.cpp:117
 msgid "Quit Editor"
 msgstr "Salir del editor"
 
-#: src/editor2/editor_controller.cpp:220
+#: src/editor2/editor_controller.cpp:241
 msgid "Fatal error"
 msgstr "Error grave"
 
-#: src/editor2/editor_controller.cpp:228
+#: src/editor2/editor_controller.cpp:255 src/editor2/editor_controller.cpp:951
+msgid "(New Map)"
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:261
 msgid "Do you really want to quit?"
 msgstr "¿Realmente desea salir?"
 
-#: src/editor2/editor_controller.cpp:231
-msgid "There are unsaved changes in the map."
-msgstr "Hay cambios sin guardar en el mapa."
+#: src/editor2/editor_controller.cpp:263
+msgid ""
+"Do you really want to quit? Changes in the map since the last save will be "
+"lost."
+msgstr ""
 
-#: src/editor2/editor_controller.cpp:233
+#: src/editor2/editor_controller.cpp:265
+msgid ""
+"Do you really want to quit? The following maps were modified and all changes "
+"since the last save will be lost:"
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:270
 msgid "Quit"
 msgstr "Salir"
 
-#: src/editor2/editor_controller.cpp:243 src/editor2/editor_controller.cpp:345
-#: src/editor2/editor_controller.cpp:381 src/editor2/editor_controller.cpp:403
+#: src/editor2/editor_controller.cpp:327 src/editor2/editor_controller.cpp:439
+#: src/editor2/editor_controller.cpp:475 src/editor2/editor_controller.cpp:497
 msgid "Error"
 msgstr "Error"
 
-#: src/editor2/editor_controller.cpp:243
-msgid "No editor time-of-day found"
+#: src/editor2/editor_controller.cpp:327
+#, fuzzy
+msgid "No editor time-of-day found."
 msgstr "No se encontró una hora del día para el editor"
 
-#: src/editor2/editor_controller.cpp:276
-msgid "There are unsaved changes in the map"
-msgstr "Hay cambios sin guardar en el mapa"
+#: src/editor2/editor_controller.cpp:363
+msgid "Unsaved Changes"
+msgstr ""
 
-#: src/editor2/editor_controller.cpp:277
-msgid "Do you want to discard all changes you made to the map?"
+#: src/editor2/editor_controller.cpp:364
+#, fuzzy
+msgid ""
+"Do you want to discard all changes you made to the map since the last save?"
 msgstr "¿Desea abandonar todos los cambios efectuados en el mapa?"
 
-#: src/editor2/editor_controller.cpp:290
-msgid "Choose a Map to Load"
+#: src/editor2/editor_controller.cpp:377
+#, fuzzy
+msgid "Choose a Map to Open"
 msgstr "Escoja un mapa a cargar"
 
-#: src/editor2/editor_controller.cpp:325
+#: src/editor2/editor_controller.cpp:381
+msgid "This map is already open."
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:419
 msgid "Save the Map As"
 msgstr "Guardar el mapa como"
 
-#: src/editor2/editor_controller.cpp:329
-msgid "The map already exists. Do you want to overwrite it?"
+#: src/editor2/editor_controller.cpp:423
+#, fuzzy
+msgid "The file already exists. Do you want to overwrite it?"
 msgstr "El mapa ya existe. ¿Desea sobreescribirlo?"
 
-#: src/editor2/editor_controller.cpp:345
-msgid "No random map generators found"
+#: src/editor2/editor_controller.cpp:439
+#, fuzzy
+msgid "No random map generators found."
 msgstr "No se encontraron generadores de mapa aleatorio"
 
-#: src/editor2/editor_controller.cpp:356
+#: src/editor2/editor_controller.cpp:450
 msgid "Map creation failed."
 msgstr "Falló la creación del mapa."
 
-#: src/editor2/editor_controller.cpp:371
+#: src/editor2/editor_controller.cpp:465
 msgid "Choose a mask to apply"
 msgstr "Escoja una máscara a aplicar"
 
-#: src/editor2/editor_controller.cpp:378
+#: src/editor2/editor_controller.cpp:472
 msgid "Error loading mask"
 msgstr "Error al cargar la máscara"
 
-#: src/editor2/editor_controller.cpp:393
+#: src/editor2/editor_controller.cpp:487
 msgid "Choose target map"
 msgstr "Escoja mapa de destino"
 
-#: src/editor2/editor_controller.cpp:400 src/editor2/editor_controller.cpp:508
+#: src/editor2/editor_controller.cpp:494 src/editor2/editor_controller.cpp:606
 #: src/editor2/editor_main.cpp:50
 msgid "Error loading map"
 msgstr "Error al cargar el mapa"
 
-#: src/editor2/editor_controller.cpp:489
+#: src/editor2/editor_controller.cpp:583
 msgid "Map saved."
 msgstr "Mapa guardado."
 
-#: src/editor2/editor_controller.cpp:494
+#: src/editor2/editor_controller.cpp:588
 msgid "Could not save the map: $msg"
 msgstr "No se pudo guardar el mapa: $msg"
 
-#: src/editor2/editor_controller.cpp:849
+#: src/editor2/editor_controller.cpp:978
 msgid "Undo"
 msgstr "Deshacer"
 
-#: src/editor2/editor_controller.cpp:851
+#: src/editor2/editor_controller.cpp:980
 msgid "Can't Undo"
 msgstr "No se puede deshacer"
 
-#: src/editor2/editor_controller.cpp:855
+#: src/editor2/editor_controller.cpp:984
 msgid "Redo"
 msgstr "Rehacer"
 
-#: src/editor2/editor_controller.cpp:857
+#: src/editor2/editor_controller.cpp:986
 msgid "Can't Redo"
 msgstr "No se puede rehacer"
 
-#: src/editor2/editor_map.cpp:62
+#: src/editor2/editor_map.cpp:63
 msgid "Empty map file or file not found"
 msgstr "Archivo de mapa vacío o inexistente"
 
-#: src/editor2/editor_map.cpp:70
+#: src/editor2/editor_map.cpp:71
 msgid "There was a format error while loading the file:"
 msgstr "Ocurrió un error de formato al cargar el archivo:"
 
-#: src/editor2/editor_map.cpp:76
+#: src/editor2/editor_map.cpp:77
 msgid "There was a wml error while loading the file:"
 msgstr "Ocurrió un error de WML al cargar el archivo:"
 
-#: src/editor2/editor_map.cpp:149 src/editor2/mouse_action.cpp:379
+#: src/editor2/editor_map.cpp:150 src/editor2/mouse_action.cpp:379
 msgid "Player"
 msgstr "Jugador"
 
-#: src/editor2/editor_map.cpp:268
+#: src/editor2/editor_map.cpp:269
 msgid "The size of the target map is different from the current map"
 msgstr "El tamaño del mapa de destino difiere del mapa actual"
 
-#: src/editor2/editor_palettes.cpp:494
+#: src/editor2/editor_palettes.cpp:493
 msgid "FG"
 msgstr "Primer plano"
 
-#: src/editor2/editor_palettes.cpp:496
+#: src/editor2/editor_palettes.cpp:495
 msgid "BG"
 msgstr "Fondo"
 
@@ -295,6 +327,15 @@ msgstr ""
 "¿Qué jugador debe comenzar aquí? También puede utilizar las teclas 1-9 y "
 "Suprimir para establecer/quitar ubicaciones iniciales."
 
-#: src/gui/dialogs/editor_settings.cpp:105
+#: src/gui/dialogs/editor_settings.cpp:116
 msgid "Custom setting"
 msgstr "Personalizado"
+
+#~ msgid "Click to paste."
+#~ msgstr "Haga clic para pegar."
+
+#~ msgid "There are unsaved changes in the map."
+#~ msgstr "Hay cambios sin guardar en el mapa."
+
+#~ msgid "There are unsaved changes in the map"
+#~ msgstr "Hay cambios sin guardar en el mapa"

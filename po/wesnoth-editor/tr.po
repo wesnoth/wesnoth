@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-editor\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-09 21:11+0100\n"
+"POT-Creation-Date: 2008-11-22 14:55+0100\n"
 "PO-Revision-Date: 2008-10-03 17:34+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish <wesnoth-tr@googlegroups.com>\n"
@@ -98,16 +98,17 @@ msgstr "KB-GD Altıgen Hattı"
 #, fuzzy
 msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
-"paint base layer only"
+"paint base layer only."
 msgstr ""
 "Arazinin ön ve art alanlarını çizmek için farenin sol ve sağ düğmelerini "
 "kullanın. Sadece zemin katmanını boyamak isterseniz ALT tuşunu basılı tutun."
 
 #. [editor2_tool_hint]
 #: data/core/editor2-tool-hints.cfg:19
+#, fuzzy
 msgid ""
 "Left mouse button selects, right deselects. Hold Shift for magic-wand "
-"selection of tiles with same terrain"
+"selection of tiles with same terrain."
 msgstr ""
 "Farenin sol düğmesi yakalar, sağ düğmesi bırakır. Çok sayıda arazi altıgeni "
 "seçmek için Shift tuşunu basılı tutun."
@@ -125,8 +126,10 @@ msgstr ""
 
 #. [editor2_tool_hint]
 #: data/core/editor2-tool-hints.cfg:30
-msgid "Click to paste."
-msgstr "Yapıştırmak için tıklayın."
+msgid ""
+"Click to paste. Use the edit menu to transform the clipboard (rotate, "
+"mirror)."
+msgstr ""
 
 #. [menu]
 #: data/themes/editor2.cfg:120
@@ -143,139 +146,167 @@ msgstr "Düzenle"
 msgid "Map"
 msgstr "Harita"
 
+#. [menu]
+#: data/themes/editor2.cfg:151
+#, fuzzy
+msgid "Window"
+msgstr "Geri al"
+
 #. [label]
-#: data/themes/editor2.cfg:252
+#: data/themes/editor2.cfg:262
 msgid "villages"
 msgstr "köyler"
 
-#: src/editor2/editor_controller.cpp:90
+#: src/editor2/editor_controller.cpp:117
 msgid "Quit Editor"
 msgstr "Düzenleyiciden çıkılsın mı?"
 
-#: src/editor2/editor_controller.cpp:220
+#: src/editor2/editor_controller.cpp:241
 msgid "Fatal error"
 msgstr "Ölümcül hata"
 
-#: src/editor2/editor_controller.cpp:228
+#: src/editor2/editor_controller.cpp:255 src/editor2/editor_controller.cpp:951
+msgid "(New Map)"
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:261
 msgid "Do you really want to quit?"
 msgstr "Gerçekten çıkmak istiyor musunuz?"
 
-#: src/editor2/editor_controller.cpp:231
-msgid "There are unsaved changes in the map."
-msgstr "Haritada kaydedilmemiş değişiklikler var."
+#: src/editor2/editor_controller.cpp:263
+msgid ""
+"Do you really want to quit? Changes in the map since the last save will be "
+"lost."
+msgstr ""
 
-#: src/editor2/editor_controller.cpp:233
+#: src/editor2/editor_controller.cpp:265
+msgid ""
+"Do you really want to quit? The following maps were modified and all changes "
+"since the last save will be lost:"
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:270
 msgid "Quit"
 msgstr "Çık"
 
-#: src/editor2/editor_controller.cpp:243 src/editor2/editor_controller.cpp:345
-#: src/editor2/editor_controller.cpp:381 src/editor2/editor_controller.cpp:403
+#: src/editor2/editor_controller.cpp:327 src/editor2/editor_controller.cpp:439
+#: src/editor2/editor_controller.cpp:475 src/editor2/editor_controller.cpp:497
 msgid "Error"
 msgstr "Hata"
 
-#: src/editor2/editor_controller.cpp:243
-msgid "No editor time-of-day found"
+#: src/editor2/editor_controller.cpp:327
+#, fuzzy
+msgid "No editor time-of-day found."
 msgstr "Bir düzenleyici vakti yok."
 
-#: src/editor2/editor_controller.cpp:276
-msgid "There are unsaved changes in the map"
-msgstr "Haritada kaydedilmemiş değişiklikler var"
+#: src/editor2/editor_controller.cpp:363
+msgid "Unsaved Changes"
+msgstr ""
 
-#: src/editor2/editor_controller.cpp:277
-msgid "Do you want to discard all changes you made to the map?"
+#: src/editor2/editor_controller.cpp:364
+#, fuzzy
+msgid ""
+"Do you want to discard all changes you made to the map since the last save?"
 msgstr "Haritada yaptığınız değişiklikleri iptal etmek mi istiyorsunuz?"
 
-#: src/editor2/editor_controller.cpp:290
-msgid "Choose a Map to Load"
+#: src/editor2/editor_controller.cpp:377
+#, fuzzy
+msgid "Choose a Map to Open"
 msgstr "Yüklemek için bir harita seç"
 
-#: src/editor2/editor_controller.cpp:325
+#: src/editor2/editor_controller.cpp:381
+msgid "This map is already open."
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:419
 msgid "Save the Map As"
 msgstr "Haritayı Farklı Kaydet"
 
-#: src/editor2/editor_controller.cpp:329
-msgid "The map already exists. Do you want to overwrite it?"
+#: src/editor2/editor_controller.cpp:423
+#, fuzzy
+msgid "The file already exists. Do you want to overwrite it?"
 msgstr "Bu isimde bir harita zaten var. Üzerine yazmak ister misiniz?"
 
-#: src/editor2/editor_controller.cpp:345
-msgid "No random map generators found"
+#: src/editor2/editor_controller.cpp:439
+#, fuzzy
+msgid "No random map generators found."
 msgstr "Bir rasgele harita üreteci yok."
 
-#: src/editor2/editor_controller.cpp:356
+#: src/editor2/editor_controller.cpp:450
 msgid "Map creation failed."
 msgstr "Harita oluşturulamadı."
 
-#: src/editor2/editor_controller.cpp:371
+#: src/editor2/editor_controller.cpp:465
 #, fuzzy
 msgid "Choose a mask to apply"
 msgstr "Yüklemek için bir harita seç"
 
-#: src/editor2/editor_controller.cpp:378
+#: src/editor2/editor_controller.cpp:472
 #, fuzzy
 msgid "Error loading mask"
 msgstr "Harita yüklenirken hata"
 
-#: src/editor2/editor_controller.cpp:393
+#: src/editor2/editor_controller.cpp:487
 #, fuzzy
 msgid "Choose target map"
 msgstr "Oyuncu seçiniz"
 
-#: src/editor2/editor_controller.cpp:400 src/editor2/editor_controller.cpp:508
+#: src/editor2/editor_controller.cpp:494 src/editor2/editor_controller.cpp:606
 #: src/editor2/editor_main.cpp:50
 msgid "Error loading map"
 msgstr "Harita yüklenirken hata"
 
-#: src/editor2/editor_controller.cpp:489
+#: src/editor2/editor_controller.cpp:583
 msgid "Map saved."
 msgstr "Harita kaydedildi."
 
-#: src/editor2/editor_controller.cpp:494
+#: src/editor2/editor_controller.cpp:588
 msgid "Could not save the map: $msg"
 msgstr "Harita kaydedilemedi: $msg"
 
-#: src/editor2/editor_controller.cpp:849
+#: src/editor2/editor_controller.cpp:978
 msgid "Undo"
 msgstr "Geri al"
 
-#: src/editor2/editor_controller.cpp:851
+#: src/editor2/editor_controller.cpp:980
 msgid "Can't Undo"
 msgstr "Geri Alınamaz"
 
-#: src/editor2/editor_controller.cpp:855
+#: src/editor2/editor_controller.cpp:984
 msgid "Redo"
 msgstr "Tekrar yap"
 
-#: src/editor2/editor_controller.cpp:857
+#: src/editor2/editor_controller.cpp:986
 msgid "Can't Redo"
 msgstr "Tekrarlanamaz"
 
-#: src/editor2/editor_map.cpp:62
+#: src/editor2/editor_map.cpp:63
 msgid "Empty map file or file not found"
 msgstr "Harita dosyası ya boş ya da yok."
 
-#: src/editor2/editor_map.cpp:70
+#: src/editor2/editor_map.cpp:71
 #, fuzzy
 msgid "There was a format error while loading the file:"
 msgstr "Harita yüklenirken bir biçem hatası bulundu:"
 
-#: src/editor2/editor_map.cpp:76
+#: src/editor2/editor_map.cpp:77
 #, fuzzy
 msgid "There was a wml error while loading the file:"
 msgstr "Harita yüklenirken bir WML hatası saptandı:"
 
-#: src/editor2/editor_map.cpp:149 src/editor2/mouse_action.cpp:379
+#: src/editor2/editor_map.cpp:150 src/editor2/mouse_action.cpp:379
 msgid "Player"
 msgstr "Oyuncu"
 
-#: src/editor2/editor_map.cpp:268
+#: src/editor2/editor_map.cpp:269
 msgid "The size of the target map is different from the current map"
 msgstr ""
 
-#: src/editor2/editor_palettes.cpp:494
+#: src/editor2/editor_palettes.cpp:493
 msgid "FG"
 msgstr "ÖP"
 
-#: src/editor2/editor_palettes.cpp:496
+#: src/editor2/editor_palettes.cpp:495
 msgid "BG"
 msgstr "AP"
 
@@ -295,9 +326,18 @@ msgstr ""
 "Burada hangi oyuncu oyuna başlayacak? Başlangıç konumunu belirlemek için 1-9 "
 "tuşlarını, silmek için Del tuşunu kullanabilirsiniz."
 
-#: src/gui/dialogs/editor_settings.cpp:105
+#: src/gui/dialogs/editor_settings.cpp:116
 msgid "Custom setting"
 msgstr "Özel Ayarlar"
+
+#~ msgid "Click to paste."
+#~ msgstr "Yapıştırmak için tıklayın."
+
+#~ msgid "There are unsaved changes in the map."
+#~ msgstr "Haritada kaydedilmemiş değişiklikler var."
+
+#~ msgid "There are unsaved changes in the map"
+#~ msgstr "Haritada kaydedilmemiş değişiklikler var"
 
 #~ msgid "Settings"
 #~ msgstr "Ayarlar"

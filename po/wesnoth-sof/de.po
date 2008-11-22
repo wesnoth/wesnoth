@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-09 21:14+0100\n"
+"POT-Creation-Date: 2008-11-22 14:56+0100\n"
 "PO-Revision-Date: 2008-11-21 21:52+0100\n"
 "Last-Translator: Nils Kneuper <crazy-ivanovic  AT gmx  D O  T net>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
@@ -27,37 +27,31 @@ msgstr "DZdF"
 
 #. [campaign]
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:16
-#: data/campaigns/Sceptre_of_Fire/_main.cfg:19
 msgid "Fighter"
 msgstr "Kämpfer"
 
 #. [campaign]
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:16
-#: data/campaigns/Sceptre_of_Fire/_main.cfg:19
 msgid "(Normal)"
 msgstr "(Normal)"
 
 #. [campaign]
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:17
-#: data/campaigns/Sceptre_of_Fire/_main.cfg:20
 msgid "Steelclad"
 msgstr "Chalybter"
 
 #. [campaign]
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:17
-#: data/campaigns/Sceptre_of_Fire/_main.cfg:20
 msgid "(Challenging)"
 msgstr "(Herausfordernd)"
 
 #. [campaign]
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:18
-#: data/campaigns/Sceptre_of_Fire/_main.cfg:21
 msgid "Lord"
 msgstr "Fürst"
 
 #. [campaign]
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:18
-#: data/campaigns/Sceptre_of_Fire/_main.cfg:21
 msgid "(Difficult)"
 msgstr "(Schwierig)"
 
@@ -73,7 +67,7 @@ msgstr "(Schwierig)"
 # –\n
 # (Einstufung: Schwierig, 9 Szenarien)
 #. [campaign]
-#: data/campaigns/Sceptre_of_Fire/_main.cfg:32
+#: data/campaigns/Sceptre_of_Fire/_main.cfg:29
 msgid ""
 "The land of Wesnoth's banner bold\n"
 "Comes not from its own land;\n"
@@ -99,22 +93,22 @@ msgstr ""
 "(Einstufung: Schwierig, 9 Szenarien)"
 
 #. [about]
-#: data/campaigns/Sceptre_of_Fire/_main.cfg:36
+#: data/campaigns/Sceptre_of_Fire/_main.cfg:33
 msgid "Campaign Design"
 msgstr "Kampagnengestaltung"
 
 #. [about]
-#: data/campaigns/Sceptre_of_Fire/_main.cfg:42
+#: data/campaigns/Sceptre_of_Fire/_main.cfg:39
 msgid "Campaign Maintenance"
 msgstr "Kampagnenbetreuung"
 
 #. [about]
-#: data/campaigns/Sceptre_of_Fire/_main.cfg:48
+#: data/campaigns/Sceptre_of_Fire/_main.cfg:45
 msgid "WML Assistance"
 msgstr "WML-Entwicklung"
 
 #. [about]
-#: data/campaigns/Sceptre_of_Fire/_main.cfg:63
+#: data/campaigns/Sceptre_of_Fire/_main.cfg:60
 msgid "Artwork and Graphics Design"
 msgstr "Grafik"
 
@@ -716,15 +710,6 @@ msgstr "Tötet alle Elfen, die nach Schließung der Tore noch in den Höhlen sin
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:538
 msgid "Death of Baglur"
 msgstr "Baglur fällt in der Schlacht"
-
-#. [objectives]
-#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:88
-#: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:560
-#: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:240
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:116
-#: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:554
-msgid "Early finish bonus."
-msgstr "Bonus für ein frühzeitiges Ende."
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:140
@@ -2240,17 +2225,6 @@ msgstr "Besiegt Glonoin, Oberhaupt des Shorbear Klans"
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:566
 msgid "Death of Durstorn"
 msgstr "Durstorn fällt in der Schlacht"
-
-#. [objectives]
-#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:172
-#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:406
-#: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:480
-#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:141
-#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:406
-#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:511
-#: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:574
-msgid "No early finish bonus."
-msgstr "Kein Bonus für ein frühzeitiges Ende."
 
 #. [message]: speaker=Kuhnar
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:197
@@ -4058,6 +4032,12 @@ msgstr "Ahhgg..."
 #: data/campaigns/Sceptre_of_Fire/utils/utils.cfg:71
 msgid "Kraa..."
 msgstr "Kraa..."
+
+#~ msgid "Early finish bonus."
+#~ msgstr "Bonus für ein frühzeitiges Ende."
+
+#~ msgid "No early finish bonus."
+#~ msgstr "Kein Bonus für ein frühzeitiges Ende."
 
 #~ msgid ""
 #~ "Humans, halt! Don't come any closer, we dwarves don't like company..."

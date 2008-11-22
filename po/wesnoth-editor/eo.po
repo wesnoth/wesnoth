@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-09 21:11+0100\n"
+"POT-Creation-Date: 2008-11-22 14:55+0100\n"
 "PO-Revision-Date: 2008-02-12 20:47+0200\n"
 "Last-Translator: Aleksej Korgenkov <grimpanto@mail.ru>\n"
 "Language-Team: eo-EO\n"
@@ -92,14 +92,14 @@ msgstr ""
 #: data/core/editor2-tool-hints.cfg:7 data/core/editor2-tool-hints.cfg:13
 msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
-"paint base layer only"
+"paint base layer only."
 msgstr ""
 
 #. [editor2_tool_hint]
 #: data/core/editor2-tool-hints.cfg:19
 msgid ""
 "Left mouse button selects, right deselects. Hold Shift for magic-wand "
-"selection of tiles with same terrain"
+"selection of tiles with same terrain."
 msgstr ""
 
 #. [editor2_tool_hint]
@@ -112,7 +112,9 @@ msgstr ""
 
 #. [editor2_tool_hint]
 #: data/core/editor2-tool-hints.cfg:30
-msgid "Click to paste."
+msgid ""
+"Click to paste. Use the edit menu to transform the clipboard (rotate, "
+"mirror)."
 msgstr ""
 
 #. [menu]
@@ -130,135 +132,160 @@ msgstr "Redakti"
 msgid "Map"
 msgstr ""
 
+#. [menu]
+#: data/themes/editor2.cfg:151
+#, fuzzy
+msgid "Window"
+msgstr "Malfari"
+
 #. [label]
-#: data/themes/editor2.cfg:252
+#: data/themes/editor2.cfg:262
 msgid "villages"
 msgstr "vilaĝoj"
 
-#: src/editor2/editor_controller.cpp:90
+#: src/editor2/editor_controller.cpp:117
 msgid "Quit Editor"
 msgstr "Eliri"
 
-#: src/editor2/editor_controller.cpp:220
+#: src/editor2/editor_controller.cpp:241
 msgid "Fatal error"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:228
+#: src/editor2/editor_controller.cpp:255 src/editor2/editor_controller.cpp:951
+msgid "(New Map)"
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:261
 msgid "Do you really want to quit?"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:231
-msgid "There are unsaved changes in the map."
+#: src/editor2/editor_controller.cpp:263
+msgid ""
+"Do you really want to quit? Changes in the map since the last save will be "
+"lost."
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:233
+#: src/editor2/editor_controller.cpp:265
+msgid ""
+"Do you really want to quit? The following maps were modified and all changes "
+"since the last save will be lost:"
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:270
 msgid "Quit"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:243 src/editor2/editor_controller.cpp:345
-#: src/editor2/editor_controller.cpp:381 src/editor2/editor_controller.cpp:403
+#: src/editor2/editor_controller.cpp:327 src/editor2/editor_controller.cpp:439
+#: src/editor2/editor_controller.cpp:475 src/editor2/editor_controller.cpp:497
 msgid "Error"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:243
-msgid "No editor time-of-day found"
+#: src/editor2/editor_controller.cpp:327
+msgid "No editor time-of-day found."
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:276
-msgid "There are unsaved changes in the map"
+#: src/editor2/editor_controller.cpp:363
+msgid "Unsaved Changes"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:277
-msgid "Do you want to discard all changes you made to the map?"
+#: src/editor2/editor_controller.cpp:364
+msgid ""
+"Do you want to discard all changes you made to the map since the last save?"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:290
-msgid "Choose a Map to Load"
+#: src/editor2/editor_controller.cpp:377
+#, fuzzy
+msgid "Choose a Map to Open"
 msgstr "Elektu Mapon por Ŝarĝado"
 
-#: src/editor2/editor_controller.cpp:325
+#: src/editor2/editor_controller.cpp:381
+msgid "This map is already open."
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:419
 msgid "Save the Map As"
 msgstr "Savi la Mapon Kiel..."
 
-#: src/editor2/editor_controller.cpp:329
-msgid "The map already exists. Do you want to overwrite it?"
+#: src/editor2/editor_controller.cpp:423
+#, fuzzy
+msgid "The file already exists. Do you want to overwrite it?"
 msgstr "La mapo jam ekzistas. Ĉu vi volas anstaŭigi ĝin?"
 
-#: src/editor2/editor_controller.cpp:345
-msgid "No random map generators found"
+#: src/editor2/editor_controller.cpp:439
+msgid "No random map generators found."
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:356
+#: src/editor2/editor_controller.cpp:450
 msgid "Map creation failed."
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:371
+#: src/editor2/editor_controller.cpp:465
 #, fuzzy
 msgid "Choose a mask to apply"
 msgstr "Elektu Mapon por Ŝarĝado"
 
-#: src/editor2/editor_controller.cpp:378
+#: src/editor2/editor_controller.cpp:472
 msgid "Error loading mask"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:393
+#: src/editor2/editor_controller.cpp:487
 msgid "Choose target map"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:400 src/editor2/editor_controller.cpp:508
+#: src/editor2/editor_controller.cpp:494 src/editor2/editor_controller.cpp:606
 #: src/editor2/editor_main.cpp:50
 msgid "Error loading map"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:489
+#: src/editor2/editor_controller.cpp:583
 msgid "Map saved."
 msgstr "Mapo estas savita."
 
-#: src/editor2/editor_controller.cpp:494
+#: src/editor2/editor_controller.cpp:588
 msgid "Could not save the map: $msg"
 msgstr "Vi ne povas savi mapon: $msg"
 
-#: src/editor2/editor_controller.cpp:849
+#: src/editor2/editor_controller.cpp:978
 msgid "Undo"
 msgstr "Malfari"
 
-#: src/editor2/editor_controller.cpp:851
+#: src/editor2/editor_controller.cpp:980
 msgid "Can't Undo"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:855
+#: src/editor2/editor_controller.cpp:984
 msgid "Redo"
 msgstr "Refari"
 
-#: src/editor2/editor_controller.cpp:857
+#: src/editor2/editor_controller.cpp:986
 msgid "Can't Redo"
 msgstr ""
 
-#: src/editor2/editor_map.cpp:62
+#: src/editor2/editor_map.cpp:63
 msgid "Empty map file or file not found"
 msgstr ""
 
-#: src/editor2/editor_map.cpp:70
+#: src/editor2/editor_map.cpp:71
 msgid "There was a format error while loading the file:"
 msgstr ""
 
-#: src/editor2/editor_map.cpp:76
+#: src/editor2/editor_map.cpp:77
 msgid "There was a wml error while loading the file:"
 msgstr ""
 
-#: src/editor2/editor_map.cpp:149 src/editor2/mouse_action.cpp:379
+#: src/editor2/editor_map.cpp:150 src/editor2/mouse_action.cpp:379
 msgid "Player"
 msgstr "Ludanto"
 
-#: src/editor2/editor_map.cpp:268
+#: src/editor2/editor_map.cpp:269
 msgid "The size of the target map is different from the current map"
 msgstr ""
 
-#: src/editor2/editor_palettes.cpp:494
+#: src/editor2/editor_palettes.cpp:493
 msgid "FG"
 msgstr "Antaŭa"
 
-#: src/editor2/editor_palettes.cpp:496
+#: src/editor2/editor_palettes.cpp:495
 msgid "BG"
 msgstr "Malantaŭa"
 
@@ -277,7 +304,7 @@ msgid ""
 "set/clear staring positions."
 msgstr ""
 
-#: src/gui/dialogs/editor_settings.cpp:105
+#: src/gui/dialogs/editor_settings.cpp:116
 msgid "Custom setting"
 msgstr ""
 

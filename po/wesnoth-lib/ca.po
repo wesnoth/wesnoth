@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.5.5+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-09 21:11+0100\n"
+"POT-Creation-Date: 2008-11-22 14:55+0100\n"
 "PO-Revision-Date: 2008-10-25 11:31+0200\n"
 "Last-Translator: Jordà Polo <jorda@ettin.org>\n"
 "Language-Team: Catalan <wesnoth-ca@lists.ettin.org>\n"
@@ -366,7 +366,7 @@ msgstr "Connecta"
 #: data/gui/default/window/editor_generate_map.cfg:111
 #: data/gui/default/window/editor_new_map.cfg:111
 #: data/gui/default/window/editor_resize_map.cfg:275
-#: data/gui/default/window/editor_settings.cfg:218
+#: data/gui/default/window/editor_settings.cfg:240
 #: data/gui/default/window/language_selection.cfg:136
 #: data/gui/default/window/mp_connect.cfg:190
 #: data/gui/default/window/mp_create_game.cfg:552
@@ -400,7 +400,7 @@ msgstr "Genera"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_new_map.cfg:27 src/hotkeys.cpp:102
+#: data/gui/default/window/editor_new_map.cfg:27 src/hotkeys.cpp:104
 msgid "New Map"
 msgstr "Nou mapa"
 
@@ -424,7 +424,7 @@ msgstr "Crea un mapa nou"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_resize_map.cfg:27 src/hotkeys.cpp:146
+#: data/gui/default/window/editor_resize_map.cfg:27 src/hotkeys.cpp:148
 msgid "Resize Map"
 msgstr "Canvia la mida del mapa"
 
@@ -439,18 +439,6 @@ msgstr "Amplada nova:"
 #, fuzzy
 msgid "Old width:"
 msgstr "Amplada antiga:"
-
-#. [label]
-#: data/gui/default/window/editor_resize_map.cfg:81
-#: data/gui/default/window/editor_resize_map.cfg:130
-msgid "2000"
-msgstr "2000"
-
-#. [label]
-#: data/gui/default/window/editor_resize_map.cfg:82
-#: data/gui/default/window/editor_resize_map.cfg:131
-msgid "-1"
-msgstr "-1"
 
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:95
@@ -482,13 +470,13 @@ msgstr "Canvia la mida del mapa"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_settings.cfg:38 src/hotkeys.cpp:100
+#: data/gui/default/window/editor_settings.cfg:38 src/hotkeys.cpp:102
 msgid "Editor Settings"
 msgstr "Configuració de l'editor"
 
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:46
-msgid "Time of day lightning preset"
+msgid "Time of day lighting preset"
 msgstr ""
 
 #. [button]
@@ -499,7 +487,7 @@ msgstr "Següent"
 
 #. [toggle_button]
 #: data/gui/default/window/editor_settings.cfg:83
-msgid "Custom lightning setting"
+msgid "Custom lighting setting"
 msgstr ""
 
 #. [toggle_button]
@@ -522,16 +510,21 @@ msgstr "Verd:"
 msgid "Blue:"
 msgstr "Blau:"
 
+#. [toggle_button]
+#: data/gui/default/window/editor_settings.cfg:208
+msgid "Allow more than one map to be open at the same time (MDI)"
+msgstr ""
+
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]
-#: data/gui/default/window/editor_settings.cfg:208
+#: data/gui/default/window/editor_settings.cfg:230
 #: src/construct_dialog.cpp:125 src/construct_dialog.cpp:132
 msgid "OK"
 msgstr "D'acord"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]
-#: data/gui/default/window/editor_settings.cfg:228
+#: data/gui/default/window/editor_settings.cfg:250
 #: src/game_preferences_display.cpp:188
 msgid "Apply"
 msgstr "Aplica"
@@ -754,8 +747,8 @@ msgstr "Crèdits"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
-#: data/gui/default/window/title_screen.cfg:86 src/hotkeys.cpp:646
-#: src/hotkeys.cpp:927
+#: data/gui/default/window/title_screen.cfg:86 src/hotkeys.cpp:648
+#: src/hotkeys.cpp:929
 msgid "Quit"
 msgstr "Surt"
 
@@ -1371,7 +1364,7 @@ msgstr "Allunya"
 msgid "Default Zoom"
 msgstr "Escala per defecte"
 
-#: src/hotkeys.cpp:55 src/hotkeys.cpp:882
+#: src/hotkeys.cpp:55 src/hotkeys.cpp:884
 msgid "Screenshot"
 msgstr "Captura de pantalla"
 
@@ -1523,235 +1516,244 @@ msgstr "Omet animació"
 msgid "Quit to Desktop"
 msgstr "Surt"
 
+#: src/hotkeys.cpp:100
+#, fuzzy
+msgid "Close Map"
+msgstr "Tanca"
+
 #: src/hotkeys.cpp:101
+msgid "Switch Map"
+msgstr ""
+
+#: src/hotkeys.cpp:103
 msgid "Partial Undo"
 msgstr "Desfés parcialment"
 
-#: src/hotkeys.cpp:103
+#: src/hotkeys.cpp:105
 msgid "Load Map"
 msgstr "Carrega un mapa"
 
-#: src/hotkeys.cpp:104
+#: src/hotkeys.cpp:106
 msgid "Save Map"
 msgstr "Desa el mapa"
 
-#: src/hotkeys.cpp:105
+#: src/hotkeys.cpp:107
 msgid "Save Map As"
 msgstr "Anomena i desa el mapa"
 
-#: src/hotkeys.cpp:106
+#: src/hotkeys.cpp:108
 msgid "Revert All Changes"
 msgstr "Desfés tots els canvis"
 
-#: src/hotkeys.cpp:107
+#: src/hotkeys.cpp:109
 msgid "Map Information"
 msgstr "Informació del mapa"
 
-#: src/hotkeys.cpp:109
+#: src/hotkeys.cpp:111
 msgid "Swap fore- and background terrains"
 msgstr ""
 
-#: src/hotkeys.cpp:110
+#: src/hotkeys.cpp:112
 msgid "Next Tool"
 msgstr "Eina següent"
 
-#: src/hotkeys.cpp:111
+#: src/hotkeys.cpp:113
 msgid "Paint Tool"
 msgstr "Eina de pintar"
 
-#: src/hotkeys.cpp:112
+#: src/hotkeys.cpp:114
 msgid "Fill Tool"
 msgstr "Eina d'emplenar"
 
-#: src/hotkeys.cpp:113
+#: src/hotkeys.cpp:115
 msgid "Selection Tool"
 msgstr "Eina de selecció"
 
-#: src/hotkeys.cpp:115
+#: src/hotkeys.cpp:117
 msgid "Set Starting Positions Tool"
 msgstr ""
 
-#: src/hotkeys.cpp:116
+#: src/hotkeys.cpp:118
 msgid "Next Brush"
 msgstr "Pinzell següent"
 
-#: src/hotkeys.cpp:117
+#: src/hotkeys.cpp:119
 msgid "Default Brush"
 msgstr "Pinzell predeterminat"
 
-#: src/hotkeys.cpp:118
+#: src/hotkeys.cpp:120
 msgid "Cut"
 msgstr "Talla"
 
-#: src/hotkeys.cpp:119
+#: src/hotkeys.cpp:121
 msgid "Copy"
 msgstr "Copia"
 
-#: src/hotkeys.cpp:120
+#: src/hotkeys.cpp:122
 msgid "Paste"
 msgstr "Enganxa"
 
-#: src/hotkeys.cpp:122
+#: src/hotkeys.cpp:124
 msgid "Select All"
 msgstr "Selecciona-ho tot"
 
-#: src/hotkeys.cpp:124
+#: src/hotkeys.cpp:126
 msgid "Select Inverse"
 msgstr "Inverteix la selecció"
 
-#: src/hotkeys.cpp:126
+#: src/hotkeys.cpp:128
 msgid "Select None"
 msgstr "No seleccionis res"
 
-#: src/hotkeys.cpp:128
+#: src/hotkeys.cpp:130
 msgid "Rotate Clipboard Clockwise"
 msgstr ""
 
-#: src/hotkeys.cpp:130
+#: src/hotkeys.cpp:132
 msgid "Rotate Clipboard Counter-Clockwise"
 msgstr ""
 
-#: src/hotkeys.cpp:132
+#: src/hotkeys.cpp:134
 msgid "Flip Clipboard Horizontally"
 msgstr ""
 
-#: src/hotkeys.cpp:134
+#: src/hotkeys.cpp:136
 msgid "Flip Clipboard Vertically"
 msgstr ""
 
-#: src/hotkeys.cpp:136
+#: src/hotkeys.cpp:138
 msgid "Rotate Selection"
 msgstr ""
 
-#: src/hotkeys.cpp:138
+#: src/hotkeys.cpp:140
 msgid "Flip Selection"
 msgstr ""
 
-#: src/hotkeys.cpp:140
+#: src/hotkeys.cpp:142
 msgid "Fill Selection"
 msgstr "Emplena la selecció"
 
-#: src/hotkeys.cpp:142
+#: src/hotkeys.cpp:144
 msgid "Generate Tiles In Selection"
 msgstr ""
 
-#: src/hotkeys.cpp:144
+#: src/hotkeys.cpp:146
 msgid "Randomize Tiles In Selection"
 msgstr ""
 
-#: src/hotkeys.cpp:148
+#: src/hotkeys.cpp:150
 msgid "Rotate Map"
 msgstr ""
 
-#: src/hotkeys.cpp:150
+#: src/hotkeys.cpp:152
 msgid "Generate Map"
 msgstr "Genera un mapa"
 
-#: src/hotkeys.cpp:152
+#: src/hotkeys.cpp:154
 msgid "Apply a Mask"
 msgstr "Aplica a la màscara"
 
-#: src/hotkeys.cpp:154
+#: src/hotkeys.cpp:156
 msgid "Create Mask"
 msgstr "Crea una màscara"
 
-#: src/hotkeys.cpp:156
+#: src/hotkeys.cpp:158
 msgid "Refresh Display"
 msgstr "Refresca la pantalla"
 
-#: src/hotkeys.cpp:158
+#: src/hotkeys.cpp:160
 msgid "Update Terrain Transitions"
 msgstr "Actualitza les transicions del terreny"
 
-#: src/hotkeys.cpp:160
+#: src/hotkeys.cpp:162
 msgid "Auto-update Terrain Transitions"
 msgstr "Actualitza les transicions del terreny automàticament"
 
-#: src/hotkeys.cpp:162
+#: src/hotkeys.cpp:164
 msgid "Refresh Image Cache"
 msgstr "Refresca la cau de les imatges"
 
-#: src/hotkeys.cpp:164
+#: src/hotkeys.cpp:166
 msgid "Draw Hex Coordinates"
 msgstr "Dibuixa les coordenades dels hexàgons"
 
-#: src/hotkeys.cpp:166
+#: src/hotkeys.cpp:168
 msgid "Draw Terrain Codes"
 msgstr "Dibuixa els codis del terreny"
 
-#: src/hotkeys.cpp:171
+#: src/hotkeys.cpp:173
 msgid "Delay Shroud Updates"
 msgstr "Retarda el refresc"
 
-#: src/hotkeys.cpp:172
+#: src/hotkeys.cpp:174
 msgid "Update Shroud Now"
 msgstr "Refresca les zones fosques"
 
-#: src/hotkeys.cpp:173
+#: src/hotkeys.cpp:175
 msgid "Continue Move"
 msgstr "Continua movent"
 
-#: src/hotkeys.cpp:174
+#: src/hotkeys.cpp:176
 msgid "Find Label or Unit"
 msgstr "Cerca una etiqueta o unitat"
 
-#: src/hotkeys.cpp:175
+#: src/hotkeys.cpp:177
 msgid "Speak to Ally"
 msgstr "Parla als aliats"
 
-#: src/hotkeys.cpp:176
+#: src/hotkeys.cpp:178
 msgid "Speak to All"
 msgstr "Parla a tothom"
 
-#: src/hotkeys.cpp:177
+#: src/hotkeys.cpp:179
 msgid "Help"
 msgstr "Ajuda"
 
-#: src/hotkeys.cpp:178
+#: src/hotkeys.cpp:180
 msgid "View Chat Log"
 msgstr "Veure el registre del xat"
 
-#: src/hotkeys.cpp:179
+#: src/hotkeys.cpp:181
 msgid "Change the language"
 msgstr "Canvia l'idioma"
 
-#: src/hotkeys.cpp:181
+#: src/hotkeys.cpp:183
 msgid "Enter user command"
 msgstr "Introdueix una ordre d'usuari"
 
-#: src/hotkeys.cpp:182
+#: src/hotkeys.cpp:184
 msgid "Custom command"
 msgstr "Ordre personalitzada"
 
-#: src/hotkeys.cpp:183
+#: src/hotkeys.cpp:185
 msgid "Run AI formula"
 msgstr "Executa una fórmula de l'IA"
 
-#: src/hotkeys.cpp:184
+#: src/hotkeys.cpp:186
 msgid "Clear messages"
 msgstr "Neteja els missatges"
 
-#: src/hotkeys.cpp:186
+#: src/hotkeys.cpp:188
 msgid "User-Command#2"
 msgstr "Ordre d'usuari #2"
 
-#: src/hotkeys.cpp:187
+#: src/hotkeys.cpp:189
 msgid "User-Command#3"
 msgstr "Ordre d'usuari #3"
 
-#: src/hotkeys.cpp:646 src/hotkeys.cpp:927
+#: src/hotkeys.cpp:648 src/hotkeys.cpp:929
 msgid "Do you really want to quit?"
 msgstr "Segur que voleu sortir?"
 
-#: src/hotkeys.cpp:882
+#: src/hotkeys.cpp:884
 msgid "Map-Screenshot"
 msgstr "Captura de pantalla del mapa"
 
-#: src/hotkeys.cpp:889
+#: src/hotkeys.cpp:891
 msgid "Screenshot done"
 msgstr "S'ha fet la captura de pantalla"
 
-#: src/hotkeys.cpp:891
+#: src/hotkeys.cpp:893
 msgid "Screenshot failed"
 msgstr "Ha fallat la captura de pantalla"
 
@@ -1906,6 +1908,12 @@ msgstr ""
 #: src/wml_exception.cpp:72
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr "A la secció «[$section|]», la clau obligatòria «$key|» no està definida."
+
+#~ msgid "2000"
+#~ msgstr "2000"
+
+#~ msgid "-1"
+#~ msgstr "-1"
 
 #~ msgid "Your modifications to the map will be lost. Continue?"
 #~ msgstr "Les vostres modificacions del mapa es perdran. Voleu continuar?"

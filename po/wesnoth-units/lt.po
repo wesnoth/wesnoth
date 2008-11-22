@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-18 22:05+0100\n"
+"POT-Creation-Date: 2008-11-22 14:55+0100\n"
 "PO-Revision-Date: 2008-11-10 00:15+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lietuvių <komp_lt@konf.lt>\n"
@@ -14,6 +14,24 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%"
 "100<10 || n%100>=20) ? 1 : 2);\n"
+
+#. [unit_type]
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Guardian.cfg:7
+#, fuzzy
+msgid "Dwarvish Masked Guardsman"
+msgstr "Dvorfų sargybinis"
+
+#. [unit_type]
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Sentinel.cfg:7
+#, fuzzy
+msgid "Dwarvish Masked Sentinel"
+msgstr "Dvorfų sergėtojas"
+
+#. [unit_type]
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Stalwart.cfg:7
+#, fuzzy
+msgid "Dwarvish Masked Stalwart"
+msgstr "Dvorfų stipruolis"
 
 #. [unit_type]: race=bats
 #: data/core/units/bats/Bat_Blood.cfg:4
@@ -315,8 +333,8 @@ msgstr ""
 #: data/core/units/humans/Royal_Warrior.cfg:29
 #: data/core/units/humans/Outlaw_Bandit.cfg:35
 #: data/core/units/humans/Outlaw.cfg:23
-#: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:23
-#: data/core/units/humans/Loyalist_Iron_Mauler.cfg:25
+#: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:24
+#: data/core/units/humans/Loyalist_Iron_Mauler.cfg:26
 #: data/core/units/humans/Outlaw_Highwayman.cfg:25
 #: data/core/units/humans/Outlaw_Fugitive.cfg:28
 msgid "mace"
@@ -1712,7 +1730,7 @@ msgid "Heavy Infantryman"
 msgstr "Sunkusis pėstininkas"
 
 #. [unit_type]: race=human
-#: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:17
+#: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:18
 msgid ""
 "Heavy infantry are an unusual choice for outfitting troops. They are very "
 "difficult to send afield in war, and are typically useful only in the "
@@ -1730,7 +1748,7 @@ msgid "Iron Mauler"
 msgstr ""
 
 #. [unit_type]: race=human
-#: data/core/units/humans/Loyalist_Iron_Mauler.cfg:19
+#: data/core/units/humans/Loyalist_Iron_Mauler.cfg:20
 msgid ""
 "Iron Maulers are given their name for reasons which are all too obvious to "
 "their foes. The men within these suits of armor can match ogres in contests "
@@ -1885,7 +1903,7 @@ msgid "Shock Trooper"
 msgstr ""
 
 #. [unit_type]: race=human
-#: data/core/units/humans/Loyalist_Shock_Trooper.cfg:16
+#: data/core/units/humans/Loyalist_Shock_Trooper.cfg:17
 msgid ""
 "Shock troopers are the elite of the heavy infantry, and a significant part "
 "of their use is mere intimidation. The only men who can enter their ranks "
@@ -1899,7 +1917,7 @@ msgstr ""
 
 #. [attack]: type=impact
 #: data/core/units/humans/Mage_of_Light.cfg:99
-#: data/core/units/humans/Loyalist_Shock_Trooper.cfg:22
+#: data/core/units/humans/Loyalist_Shock_Trooper.cfg:23
 msgid "morning star"
 msgstr ""
 

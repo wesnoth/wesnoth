@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-09 21:11+0100\n"
+"POT-Creation-Date: 2008-11-22 14:55+0100\n"
 "PO-Revision-Date: 2005-11-04 01:03GMT Standard Time\n"
 "Last-Translator: Luis Passos Carvalho (lpcarvalho AT gmail DOT com)\n"
 "Language-Team: European Portuguese\n"
@@ -377,7 +377,7 @@ msgstr ""
 #: data/gui/default/window/editor_generate_map.cfg:111
 #: data/gui/default/window/editor_new_map.cfg:111
 #: data/gui/default/window/editor_resize_map.cfg:275
-#: data/gui/default/window/editor_settings.cfg:218
+#: data/gui/default/window/editor_settings.cfg:240
 #: data/gui/default/window/language_selection.cfg:136
 #: data/gui/default/window/mp_connect.cfg:190
 #: data/gui/default/window/mp_create_game.cfg:552
@@ -414,7 +414,7 @@ msgstr "Gerar Novo Mapa"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_new_map.cfg:27 src/hotkeys.cpp:102
+#: data/gui/default/window/editor_new_map.cfg:27 src/hotkeys.cpp:104
 msgid "New Map"
 msgstr "Novo Mapa"
 
@@ -439,7 +439,7 @@ msgstr "Criar Novo Mapa"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_resize_map.cfg:27 src/hotkeys.cpp:146
+#: data/gui/default/window/editor_resize_map.cfg:27 src/hotkeys.cpp:148
 msgid "Resize Map"
 msgstr "Redimensionar Mapa"
 
@@ -454,18 +454,6 @@ msgstr "Largura:"
 #, fuzzy
 msgid "Old width:"
 msgstr "Largura:"
-
-#. [label]
-#: data/gui/default/window/editor_resize_map.cfg:81
-#: data/gui/default/window/editor_resize_map.cfg:130
-msgid "2000"
-msgstr ""
-
-#. [label]
-#: data/gui/default/window/editor_resize_map.cfg:82
-#: data/gui/default/window/editor_resize_map.cfg:131
-msgid "-1"
-msgstr ""
 
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:95
@@ -498,14 +486,14 @@ msgstr "Redimensionar Mapa"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_settings.cfg:38 src/hotkeys.cpp:100
+#: data/gui/default/window/editor_settings.cfg:38 src/hotkeys.cpp:102
 #, fuzzy
 msgid "Editor Settings"
 msgstr "Definições de Atalhos"
 
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:46
-msgid "Time of day lightning preset"
+msgid "Time of day lighting preset"
 msgstr ""
 
 #. [button]
@@ -517,7 +505,7 @@ msgstr "Próxima unidade"
 
 #. [toggle_button]
 #: data/gui/default/window/editor_settings.cfg:83
-msgid "Custom lightning setting"
+msgid "Custom lighting setting"
 msgstr ""
 
 #. [toggle_button]
@@ -541,16 +529,21 @@ msgstr ""
 msgid "Blue:"
 msgstr ""
 
+#. [toggle_button]
+#: data/gui/default/window/editor_settings.cfg:208
+msgid "Allow more than one map to be open at the same time (MDI)"
+msgstr ""
+
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]
-#: data/gui/default/window/editor_settings.cfg:208
+#: data/gui/default/window/editor_settings.cfg:230
 #: src/construct_dialog.cpp:125 src/construct_dialog.cpp:132
 msgid "OK"
 msgstr "Ok"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]
-#: data/gui/default/window/editor_settings.cfg:228
+#: data/gui/default/window/editor_settings.cfg:250
 #: src/game_preferences_display.cpp:188
 msgid "Apply"
 msgstr ""
@@ -786,8 +779,8 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
-#: data/gui/default/window/title_screen.cfg:86 src/hotkeys.cpp:646
-#: src/hotkeys.cpp:927
+#: data/gui/default/window/title_screen.cfg:86 src/hotkeys.cpp:648
+#: src/hotkeys.cpp:929
 msgid "Quit"
 msgstr "Sair"
 
@@ -1413,7 +1406,7 @@ msgstr "Reduzir"
 msgid "Default Zoom"
 msgstr "Ampliação normal"
 
-#: src/hotkeys.cpp:55 src/hotkeys.cpp:882
+#: src/hotkeys.cpp:55 src/hotkeys.cpp:884
 msgid "Screenshot"
 msgstr "Fotografia"
 
@@ -1574,254 +1567,263 @@ msgstr ""
 msgid "Quit to Desktop"
 msgstr ""
 
+#: src/hotkeys.cpp:100
+#, fuzzy
+msgid "Close Map"
+msgstr "Fechar"
+
 #: src/hotkeys.cpp:101
-msgid "Partial Undo"
+msgid "Switch Map"
 msgstr ""
 
 #: src/hotkeys.cpp:103
+msgid "Partial Undo"
+msgstr ""
+
+#: src/hotkeys.cpp:105
 msgid "Load Map"
 msgstr "Carregar Mapa"
 
-#: src/hotkeys.cpp:104
+#: src/hotkeys.cpp:106
 msgid "Save Map"
 msgstr "Gravar Mapa"
 
-#: src/hotkeys.cpp:105
+#: src/hotkeys.cpp:107
 #, fuzzy
 msgid "Save Map As"
 msgstr "Gravar Mapa"
 
-#: src/hotkeys.cpp:106
+#: src/hotkeys.cpp:108
 msgid "Revert All Changes"
 msgstr ""
 
-#: src/hotkeys.cpp:107
+#: src/hotkeys.cpp:109
 #, fuzzy
 msgid "Map Information"
 msgstr "Gerador do Mapa"
 
-#: src/hotkeys.cpp:109
+#: src/hotkeys.cpp:111
 msgid "Swap fore- and background terrains"
 msgstr ""
 
-#: src/hotkeys.cpp:110
+#: src/hotkeys.cpp:112
 #, fuzzy
 msgid "Next Tool"
 msgstr "Próxima unidade"
 
-#: src/hotkeys.cpp:111
+#: src/hotkeys.cpp:113
 msgid "Paint Tool"
 msgstr ""
 
-#: src/hotkeys.cpp:112
+#: src/hotkeys.cpp:114
 msgid "Fill Tool"
 msgstr ""
 
-#: src/hotkeys.cpp:113
+#: src/hotkeys.cpp:115
 #, fuzzy
 msgid "Selection Tool"
 msgstr "Seleccionar Todos"
 
-#: src/hotkeys.cpp:115
+#: src/hotkeys.cpp:117
 msgid "Set Starting Positions Tool"
 msgstr ""
 
-#: src/hotkeys.cpp:116
+#: src/hotkeys.cpp:118
 #, fuzzy
 msgid "Next Brush"
 msgstr "Próxima unidade"
 
-#: src/hotkeys.cpp:117
+#: src/hotkeys.cpp:119
 #, fuzzy
 msgid "Default Brush"
 msgstr "Ampliação normal"
 
-#: src/hotkeys.cpp:118
+#: src/hotkeys.cpp:120
 msgid "Cut"
 msgstr "Cortar"
 
-#: src/hotkeys.cpp:119
+#: src/hotkeys.cpp:121
 msgid "Copy"
 msgstr "Copiar"
 
-#: src/hotkeys.cpp:120
+#: src/hotkeys.cpp:122
 msgid "Paste"
 msgstr "Colar"
 
-#: src/hotkeys.cpp:122
+#: src/hotkeys.cpp:124
 msgid "Select All"
 msgstr "Seleccionar Todos"
 
-#: src/hotkeys.cpp:124
+#: src/hotkeys.cpp:126
 msgid "Select Inverse"
 msgstr ""
 
-#: src/hotkeys.cpp:126
+#: src/hotkeys.cpp:128
 #, fuzzy
 msgid "Select None"
 msgstr "Seleccionar Todos"
 
-#: src/hotkeys.cpp:128
+#: src/hotkeys.cpp:130
 msgid "Rotate Clipboard Clockwise"
 msgstr ""
 
-#: src/hotkeys.cpp:130
+#: src/hotkeys.cpp:132
 msgid "Rotate Clipboard Counter-Clockwise"
 msgstr ""
 
-#: src/hotkeys.cpp:132
+#: src/hotkeys.cpp:134
 msgid "Flip Clipboard Horizontally"
 msgstr ""
 
-#: src/hotkeys.cpp:134
+#: src/hotkeys.cpp:136
 msgid "Flip Clipboard Vertically"
 msgstr ""
 
-#: src/hotkeys.cpp:136
+#: src/hotkeys.cpp:138
 #, fuzzy
 msgid "Rotate Selection"
 msgstr "Preencher Selecção"
 
-#: src/hotkeys.cpp:138
+#: src/hotkeys.cpp:140
 #, fuzzy
 msgid "Flip Selection"
 msgstr "Preencher Selecção"
 
-#: src/hotkeys.cpp:140
+#: src/hotkeys.cpp:142
 msgid "Fill Selection"
 msgstr "Preencher Selecção"
 
-#: src/hotkeys.cpp:142
+#: src/hotkeys.cpp:144
 #, fuzzy
 msgid "Generate Tiles In Selection"
 msgstr "Preencher Selecção"
 
-#: src/hotkeys.cpp:144
+#: src/hotkeys.cpp:146
 msgid "Randomize Tiles In Selection"
 msgstr ""
 
-#: src/hotkeys.cpp:148
+#: src/hotkeys.cpp:150
 #, fuzzy
 msgid "Rotate Map"
 msgstr "Carregar Mapa"
 
-#: src/hotkeys.cpp:150
+#: src/hotkeys.cpp:152
 #, fuzzy
 msgid "Generate Map"
 msgstr "Gerar Novo Mapa"
 
-#: src/hotkeys.cpp:152
+#: src/hotkeys.cpp:154
 msgid "Apply a Mask"
 msgstr ""
 
-#: src/hotkeys.cpp:154
+#: src/hotkeys.cpp:156
 #, fuzzy
 msgid "Create Mask"
 msgstr "Gravar o Jogo"
 
-#: src/hotkeys.cpp:156
+#: src/hotkeys.cpp:158
 #, fuzzy
 msgid "Refresh Display"
 msgstr "Ecrã"
 
-#: src/hotkeys.cpp:158
+#: src/hotkeys.cpp:160
 msgid "Update Terrain Transitions"
 msgstr ""
 
-#: src/hotkeys.cpp:160
+#: src/hotkeys.cpp:162
 msgid "Auto-update Terrain Transitions"
 msgstr ""
 
-#: src/hotkeys.cpp:162
+#: src/hotkeys.cpp:164
 msgid "Refresh Image Cache"
 msgstr "Actualizar a Cache de Imagens"
 
-#: src/hotkeys.cpp:164
+#: src/hotkeys.cpp:166
 msgid "Draw Hex Coordinates"
 msgstr ""
 
-#: src/hotkeys.cpp:166
+#: src/hotkeys.cpp:168
 #, fuzzy
 msgid "Draw Terrain Codes"
 msgstr "Desenhar Terreno"
 
-#: src/hotkeys.cpp:171
+#: src/hotkeys.cpp:173
 msgid "Delay Shroud Updates"
 msgstr "Adiar Actualizações da Sombra"
 
-#: src/hotkeys.cpp:172
+#: src/hotkeys.cpp:174
 msgid "Update Shroud Now"
 msgstr "Actualizar a Sombra Agora"
 
-#: src/hotkeys.cpp:173
+#: src/hotkeys.cpp:175
 msgid "Continue Move"
 msgstr "Continuar Movimento"
 
-#: src/hotkeys.cpp:174
+#: src/hotkeys.cpp:176
 msgid "Find Label or Unit"
 msgstr "Procurar Etiqueta ou Unidade"
 
-#: src/hotkeys.cpp:175
+#: src/hotkeys.cpp:177
 msgid "Speak to Ally"
 msgstr "Falar com um Aliado"
 
-#: src/hotkeys.cpp:176
+#: src/hotkeys.cpp:178
 msgid "Speak to All"
 msgstr "Falar com Todos"
 
-#: src/hotkeys.cpp:177
+#: src/hotkeys.cpp:179
 msgid "Help"
 msgstr "Ajuda"
 
-#: src/hotkeys.cpp:178
+#: src/hotkeys.cpp:180
 msgid "View Chat Log"
 msgstr "Ver Registo da Conversa"
 
-#: src/hotkeys.cpp:179
+#: src/hotkeys.cpp:181
 msgid "Change the language"
 msgstr "Modificar a língua"
 
-#: src/hotkeys.cpp:181
+#: src/hotkeys.cpp:183
 msgid "Enter user command"
 msgstr "Introduzir comando"
 
-#: src/hotkeys.cpp:182
+#: src/hotkeys.cpp:184
 #, fuzzy
 msgid "Custom command"
 msgstr "Introduzir comando"
 
-#: src/hotkeys.cpp:183
+#: src/hotkeys.cpp:185
 msgid "Run AI formula"
 msgstr ""
 
-#: src/hotkeys.cpp:184
+#: src/hotkeys.cpp:186
 #, fuzzy
 msgid "Clear messages"
 msgstr "Definir Etiqueta"
 
-#: src/hotkeys.cpp:186
+#: src/hotkeys.cpp:188
 msgid "User-Command#2"
 msgstr ""
 
-#: src/hotkeys.cpp:187
+#: src/hotkeys.cpp:189
 msgid "User-Command#3"
 msgstr ""
 
-#: src/hotkeys.cpp:646 src/hotkeys.cpp:927
+#: src/hotkeys.cpp:648 src/hotkeys.cpp:929
 msgid "Do you really want to quit?"
 msgstr "Tem a certeza de que quer sair?"
 
-#: src/hotkeys.cpp:882
+#: src/hotkeys.cpp:884
 #, fuzzy
 msgid "Map-Screenshot"
 msgstr "Fotografia"
 
-#: src/hotkeys.cpp:889
+#: src/hotkeys.cpp:891
 #, fuzzy
 msgid "Screenshot done"
 msgstr "Fotografia"
 
-#: src/hotkeys.cpp:891
+#: src/hotkeys.cpp:893
 #, fuzzy
 msgid "Screenshot failed"
 msgstr "Fotografia"
