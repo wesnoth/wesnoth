@@ -738,14 +738,13 @@ tpoint tgrid::tchild::get_best_size() const
 		return border_space();
 	}
 
-	// NOTE best_size_ might be removed all together
-	best_size_ = widget_->get_best_size() + border_space();
+	const tpoint best_size = widget_->get_best_size() + border_space();
 
 	DBG_G_L << "tgrid::tchild:"
 		<< " has widget " << true
-		<< " returning " << best_size_ 
+		<< " returning " << best_size 
 		<< ".\n";
-	return best_size_;
+	return best_size;
 }
 
 void tgrid::tchild::set_size(tpoint origin, tpoint size)

@@ -257,9 +257,6 @@ private:
 			flags_(0),
 			border_size_(0),
 			widget_(0),
-			best_size_(0, 0),
-			minimum_size_(0, 0),
-			maximum_size_(0, 0),
 			clip_()
 
 			// Fixme make a class wo we can store some properties in the cache 
@@ -287,16 +284,16 @@ private:
 		const std::string& id() const;
 
 		unsigned get_flags() const { return flags_; }
-		void set_flags(const unsigned flags) { flags_ = flags; set_dirty(); }
+		void set_flags(const unsigned flags) { flags_ = flags; }
 
 		unsigned get_border_size() const { return border_size_; }
 		void set_border_size(const unsigned border_size) 
-			{  border_size_ = border_size; set_dirty(); }
+			{  border_size_ = border_size; }
 
 		const twidget* widget() const { return widget_; }
 		twidget* widget() { return widget_; }
 
-		void set_widget(twidget* widget) { widget_ = widget; set_dirty(); }
+		void set_widget(twidget* widget) { widget_ = widget; }
 
 	private:
 		/** The flags for the border and cell setup. */
@@ -316,18 +313,6 @@ private:
 		 */
 		twidget* widget_;
 
-		/**
-		 * The best size for this cell, determined by the best size of the
-		 * widget and the border_size_ and flags_.
-		 */
-		mutable tpoint best_size_;
-
-		/** The minimum size for this cell, like best_size_. */
-		mutable tpoint minimum_size_;
-
-		/** The maximum size for this cell, like best_size_. */
-		mutable tpoint maximum_size_;
-
 		/** Returns the space needed for the border. */
 		tpoint border_space() const;
 
@@ -336,17 +321,6 @@ private:
 		 * container.
 		 */
 		SDL_Rect clip_;
-
-		/**
-		 * Sets the calculations to be dirty, this means all caches are simply
-		 * cleared.
-		 */
-		void set_dirty()  // FIXME rename to clear cache??
-		{ 
-			best_size_ = tpoint(0, 0); 
-			minimum_size_ = tpoint(0, 0); 
-			maximum_size_ = tpoint(0, 0);
-		}
 
 	}; // class tchild
 
