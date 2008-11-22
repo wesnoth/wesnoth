@@ -290,6 +290,25 @@ manager::manager()
 		LOG_FT << "Initialized true type fonts\n";
 	}
 
+	init();
+}
+
+manager::~manager()
+{
+	deinit();
+
+	clear_fonts();
+	TTF_Quit();
+}
+
+void manager::update_font_path() const
+{
+	deinit();
+	init();
+}
+
+void manager::init() const
+{
 #ifdef CAIRO_HAS_FT_FONT
 	if(!FcConfigAppFontAddDir( FcConfigGetCurrent(), 
 			reinterpret_cast<const FcChar8*>
@@ -309,17 +328,13 @@ manager::manager()
 				AddFontResource(file.c_str());
 	}
 #endif
-
 }
 
-manager::~manager()
+void manager::deinit() const
 {
 #ifdef CAIRO_HAS_FT_FONT
 	FcConfigAppFontClear(FcConfigGetCurrent());
 #endif
-
-	clear_fonts();
-	TTF_Quit();
 
 #if CAIRO_HAS_WIN32_FONT
 	foreach(const std::string& path, get_binary_paths("fonts")) {

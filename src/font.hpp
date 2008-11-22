@@ -31,7 +31,21 @@ namespace font {
 struct manager {
 	manager();
 	~manager();
+
+	/**
+	 * Updates the font path, when initialized it sets the fontpath to
+	 * game_config::path. When this path is updated, this function should be
+	 * called.
+	 */
+	void update_font_path() const;
+
 	struct error {};
+private:
+	/** Initializes the font path. */
+	void init() const;
+
+	/** Deinitializes the font path. */
+	void deinit() const;
 };
 
 //various standard colours

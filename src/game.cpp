@@ -260,6 +260,7 @@ game_controller::game_controller(int argc, char** argv) :
 	// The path can be hardcoded and it might be a relative path.
 	if(!game_config::path.empty() &&  game_config::path[0] != '/') {
 		game_config::path = get_cwd() + '/' + game_config::path;
+		font_manager_.update_font_path();
 	}
 
 	for(arg_ = 1; arg_ != argc_; ++arg_) {
@@ -401,6 +402,7 @@ game_controller::game_controller(int argc, char** argv) :
 				throw config::error("directory not found");
 			}
 
+			font_manager_.update_font_path();
 		}
 	}
 	std::cerr << '\n';
