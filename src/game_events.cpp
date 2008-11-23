@@ -18,8 +18,10 @@
  */
 
 #include "global.hpp"
+#include "actions.hpp"
 #include "dialogs.hpp"
 #include "foreach.hpp"
+#include "game_end_exceptions.hpp"
 #include "game_events.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
@@ -28,13 +30,10 @@
 #include "map.hpp"
 #include "map_label.hpp"
 #include "map_exception.hpp"
-#include "menu_events.hpp"
 #include "replay.hpp"
 #include "sound.hpp"
 #include "terrain_filter.hpp"
 #include "unit_display.hpp"
-
-
 
 #include <boost/scoped_ptr.hpp>
 

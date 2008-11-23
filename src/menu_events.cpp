@@ -23,6 +23,7 @@
 
 #include "dialogs.hpp"
 #include "formula_ai.hpp"
+#include "game_end_exceptions.hpp"
 #include "game_events.hpp"
 #include "gettext.hpp"
 #include "help.hpp"

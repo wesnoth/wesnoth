@@ -30,51 +30,6 @@ namespace events {
 	class mouse_handler;
 }
 
-enum LEVEL_RESULT { VICTORY, DEFEAT, QUIT, LEVEL_CONTINUE, LEVEL_CONTINUE_NO_SAVE, OBSERVER_END, SKIP_TO_LINGER };
-
-#define DELAY_END_LEVEL(end_ptr, code) try { \
-	code; \
-	} catch ( end_level_exception &e) { \
-		if (end_ptr == 0) { \
-			end_ptr = new end_level_exception(e); \
-		} \
-	}
-
-#define THROW_END_LEVEL_DELETE(end_ptr) if (end_ptr) {\
-	end_level_exception temp_exception(*end_ptr);\
-	delete end_ptr; \
-	throw temp_exception; \
-	}
-
-#define THROW_END_LEVEL(end_ptr) if (end_ptr) {\
-	throw end_level_exception(*end_ptr); \
-	}
-
-struct end_level_exception {
-	end_level_exception(LEVEL_RESULT res,
-	                    const std::string& endlevel_music_list="",
-	                    const int percentage = -1,
-	                    const bool add = false, const bool bonus=true
-			           ):
-   		result(res),
-		gold_bonus(bonus),
-		carryover_percentage(percentage),
-		carryover_add(add),
-		custom_endlevel_music(endlevel_music_list)
-	{}
-
-	LEVEL_RESULT result;
-	bool gold_bonus;
-	int carryover_percentage;
-	bool carryover_add;
-	std::string custom_endlevel_music;
-};
-
-struct end_turn_exception {
-	end_turn_exception(unsigned int r = 0): redo(r) {}
-	unsigned int redo;
-};
-
 struct fallback_ai_to_human_exception {};
 
 namespace events{

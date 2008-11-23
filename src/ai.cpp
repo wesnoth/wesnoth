@@ -26,6 +26,7 @@
 #include "array.hpp"
 #include "dialogs.hpp"
 #include "formula_ai.hpp"
+#include "game_end_exceptions.hpp"
 #include "game_events.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
@@ -35,7 +36,6 @@
 #include "statistics.hpp"
 #include "unit_display.hpp"
 #include "wml_exception.hpp"
-#include "menu_events.hpp"
 
 #include <fstream>
 

@@ -15,10 +15,10 @@
 #include "playturn.hpp"
 
 #include "construct_dialog.hpp"
+#include "game_end_exceptions.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
-#include "menu_events.hpp"
 #include "replay.hpp"
 
 turn_info::turn_info(game_state& state_of_game,

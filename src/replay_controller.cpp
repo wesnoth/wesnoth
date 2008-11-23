@@ -16,6 +16,7 @@
 #include "global.hpp"
 
 #include "config_adapter.hpp"
+#include "game_end_exceptions.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "replay_controller.hpp"

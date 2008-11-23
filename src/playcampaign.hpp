@@ -18,11 +18,12 @@
 #ifndef PLAYCAMPAIGN_H_INCLUDED
 #define PLAYCAMPAIGN_H_INCLUDED
 
-#include "menu_events.hpp"
+#include "game_end_exceptions.hpp"
 
 class display;
 class game_state;
 class config;
+class CVideo;
 struct upload_log;
 
 enum io_type_t {

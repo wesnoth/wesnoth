@@ -22,6 +22,7 @@
 #include "playsingle_controller.hpp"
 
 #include "ai.hpp"
+#include "game_end_exceptions.hpp"
 #include "gettext.hpp"
 #include "intro.hpp"
 #include "log.hpp"

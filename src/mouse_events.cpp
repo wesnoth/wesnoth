@@ -17,6 +17,7 @@
 
 #include "attack_prediction_display.hpp"
 #include "dialogs.hpp"
+#include "game_end_exceptions.hpp"
 #include "game_events.hpp"
 #include "gettext.hpp"
 #include "log.hpp"

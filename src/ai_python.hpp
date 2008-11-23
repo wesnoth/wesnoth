@@ -18,7 +18,7 @@
 #define AI_PYTHON_HPP_INCLUDED
 
 #include "ai_interface.hpp"
-#include "menu_events.hpp"
+#include "game_end_exceptions.hpp"
 #undef _POSIX_C_SOURCE	// avoids a spurious compiler warning
 #include <Python.h>
 

@@ -51,7 +51,7 @@
 #include "random.hpp"
 #include "log.hpp"
 #include "map.hpp"
-#include "menu_events.hpp"
+#include "game_end_exceptions.hpp"
 #include "game_events.hpp"
 #include "game_config.hpp"
 #include "settings.hpp"

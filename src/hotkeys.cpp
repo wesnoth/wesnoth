@@ -17,11 +17,12 @@
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "construct_dialog.hpp"
+#include "display.hpp"
 #include "hotkeys.hpp"
+#include "game_end_exceptions.hpp"
 #include "gettext.hpp"
 #include "filesystem.hpp"
 #include "log.hpp"
-#include "menu_events.hpp"
 #include "preferences_display.hpp"
 #include "wesconfig.h"
 #include "wml_separators.hpp"

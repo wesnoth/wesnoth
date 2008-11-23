@@ -19,7 +19,7 @@
 #include "global.hpp"
 
 #include "cursor.hpp"
-#include "menu_events.hpp"
+#include "game_end_exceptions.hpp"
 #include "play_controller.hpp"
 
 struct upload_log;

@@ -18,6 +18,7 @@
  */
 
 #include "attack_prediction.hpp"
+#include "game_end_exceptions.hpp"
 #include "game_events.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
@@ -25,7 +26,6 @@
 #include "log.hpp"
 #include "map.hpp"
 #include "map_label.hpp"
-#include "menu_events.hpp"
 #include "mouse_handler_base.hpp"
 #include "replay.hpp"
 #include "statistics.hpp"

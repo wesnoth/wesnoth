@@ -16,6 +16,7 @@
 #include "playmp_controller.hpp"
 
 #include "dialogs.hpp"
+#include "game_end_exceptions.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "playturn.hpp"

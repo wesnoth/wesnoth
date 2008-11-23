@@ -21,19 +21,19 @@
 
 #include "global.hpp"
 
+#include "actions.hpp"
 #include "dialogs.hpp"
+#include "game_end_exceptions.hpp"
 #include "game_preferences.hpp"
 #include "game_events.hpp"
 #include "log.hpp"
 #include "map.hpp"
 #include "map_label.hpp"
-#include "menu_events.hpp"
 #include "replay.hpp"
 #include "statistics.hpp"
 #include "unit_display.hpp"
 #include "wesconfig.h"
 #include "serialization/binary_or_text.hpp"
-
 
 #define DBG_REPLAY LOG_STREAM(debug, replay)
 #define LOG_REPLAY LOG_STREAM(info, replay)
