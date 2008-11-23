@@ -719,7 +719,6 @@ void unit::advance_to(const unit_type* t, bool use_traits, game_state* state)
 	cfg_.clear_children("female");
 
 	advances_to_ = t->advances_to();
-	cfg_.values.erase("advanceto");
 
 	race_ = t->race_;
 	type_name_ = t->type_name();
@@ -3119,7 +3118,7 @@ void unit::set_hidden(bool state) {
 	clear_haloes();
 }
 /**
- * advanceto
+ * advances_to
  * alignment
  * cost
  * experience

@@ -912,16 +912,9 @@ void unit_type::build_created(const config& cfg, const movement_type_map& mv_typ
 		gender_types_[unit_race::FEMALE] = new unit_type(f_cfg,mv_types,races,traits);
 	}
 
-	const std::string& advance_to_val = cfg["advanceto"];
-	if(advance_to_val != "null" && advance_to_val != "") {
-		advances_to_ = utils::split(advance_to_val);
-        lg::wml_error << "Usage of 'advanceto' is deprecated; support for this will be removed in 1.5.6. (use 'advances_to' instead)\n";
-    }
-    // This overwrites the previous if both exist, should preserve backwards compatibility
     const std::string& advances_to_val = cfg["advances_to"];
     if(advances_to_val != "null" && advances_to_val != "")
         advances_to_ = utils::split(advances_to_val);
-    DBG_UT << "unit_type '" << id_ << "' advanceto : " << advance_to_val << "\n";
     DBG_UT << "unit_type '" << id_ << "' advances to : " << advances_to_val << "\n";
 
     build_status_ = CREATED;
@@ -1303,12 +1296,7 @@ unit_type& unit_type_data::unit_type_map_wrapper::build_unit_type(const std::str
 void unit_type_data::unit_type_map_wrapper::add_advancefrom(const config& unit_cfg) const
 {
     //find the units this one can advance into and add advancefrom information for them
-    std::vector<std::string> advances_to = utils::split(unit_cfg["advanceto"]);
-    // Storing advances_to here to check if it contains anything,
-    // if it does, overwrite the deprecated key.
-    const std::string& advances_to_val = unit_cfg["advances_to"];
-    if(advances_to_val != "null" && advances_to_val != "")
-        advances_to = utils::split(advances_to_val);
+    const std::vector<std::string> advances_to = utils::split(unit_cfg["advances_to"]);
     if ( (advances_to.size() > 0) && (advances_to[0] != "null") ){
         int count = 0;
         for (std::vector<std::string>::const_iterator i_adv = advances_to.begin(); i_adv != advances_to.end(); i_adv++){
