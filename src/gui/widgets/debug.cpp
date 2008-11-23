@@ -68,10 +68,7 @@ std::string get_base_filename()
 	static unsigned counter = 0;
 	++counter;
 
-	static const std::string 
-		result((formatter() << buf << '_' << counter << '_').c_str());
-
-	return result;
+	return (formatter() << buf << '_' << counter << '_').c_str();
 }
 
 	/***** ***** ***** ***** FLAGS ***** ***** ***** *****/
