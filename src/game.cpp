@@ -400,8 +400,8 @@ game_controller::game_controller(int argc, char** argv) :
 		} else {
 			std::cerr << "Overriding data directory with " << val << std::endl;
 #ifdef _WIN32
-			// Save since std::string::operator[](std::string::size()) returns '\0'
-			if(val[1] == ':') {
+			// use c_str to ensure that index 1 points to valid element since c_str() returns null-terminated string
+			if(val.c_str()[1] == ':') {
 #else				
 			if(val[0] == '/') {
 #endif				
