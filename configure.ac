@@ -7,19 +7,21 @@
 AC_PREREQ([2.60])
 
 define([WESNOTH_VERSION],[1.5.6+svn])
+define([WESNOTH_BUGS],[http://bugs.wesnoth.org])
 
-AC_INIT([Battle for Wesnoth], WESNOTH_VERSION, [isaac@warp.es], [wesnoth])
+AC_INIT([Battle for Wesnoth], WESNOTH_VERSION, WESNOTH_BUGS, [wesnoth])
 
 AC_REVISION([$Revision$])
 
 echo "****************************************"
 echo "***                                  ***"
-echo "***  At the moment cmake and scons   ***"
-echo "***  are evaluated to replace the    ***"
-echo "***  autotools build system. Once a  ***"
-echo "***  decision has been made          ***"
-echo "***  autotools will most likely      ***"
-echo "***  become deprecated.              ***"
+echo "***  At the moment we are also       ***"
+echo "***  working on cmake and scons      ***"
+echo "***  based build systems which       ***"
+echo "***  might replace the autotools     ***"
+echo "***  build system. Due to this       ***"
+echo "***  autotools might be become       ***"
+echo "***  deprecated.                     ***"
 echo "***  Please test scons and cmake     ***"
 echo "***  and report any problems!        ***"
 echo "***                                  ***"
@@ -29,7 +31,11 @@ echo "***  directory.                      ***"
 echo "***                                  ***"
 echo "***  To build with cmake, type       ***"
 echo "***  'cmake .' followed by 'make'    ***"
-echo "***  in the distribution directory.  ***"
+echo "***  in the distribution directory   ***"
+echo "***  or create a directory to build  ***"
+echo "***  in and type                     ***"
+echo "***  'cmake PATH/TO/WESNOTH/SOURCE'  ***"
+echo "***  followed by 'make'.             ***"
 echo "***                                  ***"
 echo "***  See the INSTALL file for more   ***"
 echo "***  details.                        ***"
