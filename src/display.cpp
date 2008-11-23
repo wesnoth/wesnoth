@@ -24,7 +24,6 @@
 #include "cursor.hpp"
 #include "display.hpp"
 #include "events.hpp"
-#include "font.hpp"
 #include "foreach.hpp"
 #include "game_config.hpp"
 #include "gettext.hpp"
@@ -39,7 +38,6 @@
 #include "pathfind.hpp"
 #include "preferences.hpp"
 #include "sdl_utils.hpp"
-#include "theme.hpp"
 #include "tooltips.hpp"
 
 #include "SDL_image.h"
