@@ -104,16 +104,7 @@ private:
 	bool content_can_wrap() const { return true; }
 
 	/** Inherited from tvertical_scrollbar_container_. */
-	void content_use_vertical_scrollbar(const unsigned /*maximum_height*/)
-	{ 
-		/* 
-		 * FIXME implement, not sure whether it needs to so something.
-		 *
-		 * Probably only set the height of the best_size, maybe optimize so it
-		 * shows entire lines. Evaluate when this code is really tested and
-		 * used.
-		 */
-	}
+	void content_use_vertical_scrollbar(const unsigned maximum_height);
 
 	/** Inherited from tvertical_scrollbar_container_. */
 	void content_set_size(const SDL_Rect& rect);

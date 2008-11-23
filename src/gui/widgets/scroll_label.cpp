@@ -118,19 +118,31 @@ tpoint tscroll_label::content_calculate_best_size() const
 	return result;
 }
 
+void tscroll_label::
+	content_use_vertical_scrollbar(const unsigned maximum_height)
+{
+	int width = content_get_best_size().x;
+
+	set_content_layout_size(tpoint(width, maximum_height));
+}
+
 void tscroll_label::content_set_size(const SDL_Rect& rect)
 {
 	assert(label_);
+
+	tpoint label_best_size = label_->get_best_size();
 
 	// Set the dummy spacer.
 	find_spacer()->set_size(tpoint(rect.x, rect.y), tpoint(rect.w, rect.h));
 
 	//maybe add a get best height for a label with a given width...
-	label_->set_size(tpoint(0, 0), tpoint(get_best_size().x, get_best_size().y));
+	label_->set_size(
+			tpoint(0, 0),
+			tpoint(label_best_size.x, label_best_size.y));
 
 	tscrollbar_* scrollbar = find_scrollbar(false);
 	if(scrollbar) {
-		scrollbar->set_item_count(get_best_size().y);
+		scrollbar->set_item_count(label_best_size.y);
 		scrollbar->set_visible_items(rect.h);
 	}
 }
