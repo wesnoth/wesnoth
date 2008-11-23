@@ -118,6 +118,21 @@ tpoint tscroll_label::content_calculate_best_size() const
 	return result;
 }
 
+void tscroll_label::content_layout_wrap(const unsigned maximum_width)
+{
+	if(!label_) {
+		return;
+	}
+
+	label_->layout_wrap(maximum_width);
+
+	set_content_layout_size(label_->get_best_size());
+
+	DBG_G_L << "tscroll_label " << __func__ << ":"
+		<< " result " << content_layout_size()
+		<< ".\n";
+}
+
 void tscroll_label::
 	content_use_vertical_scrollbar(const unsigned maximum_height)
 {

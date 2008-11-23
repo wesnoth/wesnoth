@@ -114,8 +114,36 @@ tpoint tcontrol::get_config_maximum_size() const
 
 void tcontrol::layout_init()
 { 
-	twidget::layout_init(); 
+	twidget::layout_init();
 	shrunken_ = false; 
+}
+
+void tcontrol::layout_wrap(const unsigned maximum_width)
+{
+	// Inherited.
+	twidget::layout_wrap(maximum_width);
+
+	assert(config_);
+
+	if(label_.empty()) {
+		// FIXME see what to do on an empty label later.
+		return;
+	} else {
+
+		tpoint size = get_best_text_size(
+				tpoint(0,0), 
+				tpoint(maximum_width - config_->text_extra_width, 0));
+
+		size.x += config_->text_extra_width;
+		size.y += config_->text_extra_height;
+
+		set_layout_size(size);
+
+		DBG_G_L << "tcontrol(" + get_control_type() + ") " + __func__ + ":"
+			<< " result " << size
+			<< ".\n";
+
+	}
 }
 
 tpoint tcontrol::calculate_best_size() const
@@ -189,7 +217,7 @@ void tcontrol::load_config()
 		load_config_extra();
 	}
 }
-
+#if 0
 bool tcontrol::set_width_constrain(const unsigned width)
 {
 	assert(can_wrap());
@@ -216,7 +244,7 @@ void tcontrol::clear_width_constrain()
 {
 	text_maximum_width_ = 0;
 }
-
+#endif
 void tcontrol::draw(surface& surface, const bool force, 
 		const bool invalidate_background)
 {

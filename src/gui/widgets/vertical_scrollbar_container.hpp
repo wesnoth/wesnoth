@@ -77,10 +77,13 @@ public:
 	/** Inherited from tcontainer_. */
 	void layout_init();
 
-	/** Inherited from twidget. */
+	/** Inherited from tcontainer_. */
 	bool can_wrap() const { return content_can_wrap(); }
 
-	/** Inherited from twidget. */
+	/** Inherited from twidget (not tcontainer_). */
+	void layout_wrap(const unsigned maximum_width); 
+
+	/** Inherited from twidget (not tcontainer_). */
 	bool has_vertical_scrollbar() const { return scrollbar_mode_ != HIDE; }
 
 	/** Inherited from tcontainer_. */
@@ -302,7 +305,10 @@ private:
 	 */
 	virtual bool content_can_wrap() const { return false; }
 
-	// FIXME document
+	/** Does the layout_wrap() for the content. */
+	virtual void content_layout_wrap(const unsigned /*maximum_width*/) {}
+
+	/** Does the use_vertical_scrollbar() for the content. */
 	virtual void content_use_vertical_scrollbar(const unsigned maximum_height) = 0;
 
 	/**

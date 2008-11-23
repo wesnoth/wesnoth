@@ -104,6 +104,9 @@ private:
 	bool content_can_wrap() const { return true; }
 
 	/** Inherited from tvertical_scrollbar_container_. */
+	void content_layout_wrap(const unsigned maximum_width);
+
+	/** Inherited from tvertical_scrollbar_container_. */
 	void content_use_vertical_scrollbar(const unsigned maximum_height);
 
 	/** Inherited from tvertical_scrollbar_container_. */

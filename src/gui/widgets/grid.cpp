@@ -197,8 +197,10 @@ tpoint tgrid::calculate_best_size() const
 {
 	log_scope2(gui_layout, std::string("tgrid ") + __func__);
 
-
+	// Reset the cached values.
+	row_height_.clear();
 	row_height_.resize(rows_, 0);
+	col_width_.clear();
 	col_width_.resize(cols_, 0);
 	
 	// First get the sizes for all items.
@@ -219,12 +221,12 @@ tpoint tgrid::calculate_best_size() const
 	}
 
 	for(unsigned row = 0; row < rows_; ++row) {
-		DBG_G_L << "tgrid: the " << " row_height_ for row " << row 
+		DBG_G_L << "tgrid: the row_height_ for row " << row 
 			<< " will be " << row_height_[row] << ".\n";
 	}
 
 	for(unsigned col = 0; col < cols_; ++col) {
-		DBG_G_L << "tgrid: the " << " col_width_ for col " << col 
+		DBG_G_L << "tgrid: the col_width_ for col " << col 
 			<< " will be " << col_width_[col]  << ".\n";
 	}
 
@@ -244,8 +246,108 @@ bool tgrid::can_wrap() const
 		}
 	}
 
-	// Inherit
+	// Inherited.
 	return twidget::can_wrap();
+}
+
+void tgrid::layout_wrap(const unsigned maximum_width)
+{
+	// Inherited.
+	twidget::layout_wrap(maximum_width);
+
+	/*
+	 * 1. Test the width of (every) row.
+	 * 2. Row wider as wanted?
+	 *    - No goto 3
+	 *    - Yes
+	 *      2.1 Test every column in the row.
+	 *      2.2 Can be resized?
+	 *      - No goto 2.1.
+	 *      - Yes can be sized small enough?
+	 *        - No FAILURE.
+	 *        - Yes goto 3.
+	 *      2.3 Last column?
+	 *        - No goto 2.1
+	 *        - Yes FAILURE.
+	 * 3. Last row?
+	 *    - No goto 1.
+	 *    - Yes SUCCESS.
+	 */
+
+	log_scope2(gui_layout, std::string("tgrid ") + __func__);
+	DBG_G_L << "tgrid:  maximum_width " << maximum_width << ".\n"; 
+
+	std::vector<int> widths(cols_);
+	for(unsigned row = 0; row < rows_; ++row) {
+
+		for(unsigned col = 0; col < cols_; ++col) {
+
+			widths[col] = (child(row, col).get_best_size()).x;
+		}
+
+		if(std::accumulate(widths.begin(), widths.end(), 0) > 
+				static_cast<int>(maximum_width)) {
+
+			DBG_G_L << "tgrid: row " << row << " out of bounds needs "
+				<< std::accumulate(widths.begin(), widths.end(), 0)
+				<< " available " << maximum_width 
+				<< ", try to resize.\n";
+			log_scope2(gui_layout, "tgrid: testing all columns");
+
+			int width = 0;
+			for(unsigned col = 0; col < cols_; ++col) {
+
+				log_scope2(gui_layout, "tgrid: column " 
+					+ lexical_cast<std::string>(col));
+
+				tchild& chld = child(row, col);
+
+				if(!chld.can_wrap()) {
+					DBG_G_L << "tgrid: column can't wrap, skip.\n";
+					continue;
+				}
+
+				if(widths[col] == 0) {
+					DBG_G_L << "tgrid: column has zero width, skip.\n";
+				}
+
+				width = widths[col];
+				widths[col] = 0;
+
+				const int widget_width = maximum_width 
+					- std::accumulate(widths.begin(), widths.end(), 0);
+
+				if(widget_width <=0) {
+					
+					DBG_G_L << "tgrid: column is too small to resize, skip.\n";
+					widths[col] = width;
+					width = 0;
+					continue;
+				}
+
+				chld.layout_wrap(widget_width);
+
+				if(chld.get_best_size().x <= widget_width) {
+
+					DBG_G_L << "tgrid: column resize succeeded.\n";
+					break;
+				}
+
+				DBG_G_L << "tgrid: column resize failed.\n";
+				widths[col] = width;
+				width = 0;
+			}
+
+			if(width == 0) {
+				DBG_G_L << "tgrid: no solution found.\n";
+				return;
+			}
+		} else {
+			DBG_G_L << "tgrid: row " << row << " in bounds.\n";
+		}
+	}
+
+	DBG_G_L << "tgrid: found solution.\n";
 }
 
 bool tgrid::has_vertical_scrollbar() const 
@@ -853,6 +955,18 @@ void tgrid::tchild::set_size(tpoint origin, tpoint size)
 	widget()->set_size(widget_orig, widget_size);
 }
 
+void tgrid::tchild::layout_wrap(const unsigned maximum_width)
+{
+	assert(widget_);
+
+	if(! widget_->can_wrap()) {
+		return;
+	}
+
+	widget_->layout_wrap(maximum_width - border_space().x);
+}
+
+
 void tgrid::tchild::layout_use_vertical_scrollbar(const unsigned maximum_height)
 {
 
@@ -863,7 +977,6 @@ void tgrid::tchild::layout_use_vertical_scrollbar(const unsigned maximum_height)
 	}
 
 	widget_->layout_use_vertical_scrollbar(maximum_height - border_space().y);
-
 }
 
 const std::string& tgrid::tchild::id() const 

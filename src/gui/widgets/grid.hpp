@@ -183,12 +183,16 @@ public:
 	void layout_init();
 
 private:
+
 	/** Inherited from twidget. */
 	tpoint calculate_best_size() const;
 public:
 
 	/** Inherited from twidget. */
 	bool can_wrap() const;
+
+	/** Inherited from twidget. */
+	void layout_wrap(const unsigned maximum_width); 
 
 	/** Inherited from twidget. */
 	bool has_vertical_scrollbar() const;
@@ -275,7 +279,11 @@ private:
 		void set_size(tpoint origin, tpoint size);
 
 		/** Returns the can_wrap for the cell. */
-		bool can_wrap() const { return widget_ ? widget_->can_wrap() : false; }
+		bool can_wrap() const 
+			{ return widget_ ? widget_->can_wrap() : false; }
+
+		/** Forwards layout_wrap() to the cell. */
+		void layout_wrap(const unsigned maximum_width); 
 
 		/** Forwards layout_use_vertical_scrollbar() to the cell. */
 		void layout_use_vertical_scrollbar(const unsigned maximum_height);

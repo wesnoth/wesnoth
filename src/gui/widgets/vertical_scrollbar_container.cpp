@@ -89,12 +89,26 @@ void tvertical_scrollbar_container_::
 		show_scrollbar(scrollbar_mode_ != HIDE);
 	}
 }
+
 void tvertical_scrollbar_container_::layout_init()
 {
 	// Inherited.
 	tcontainer_::layout_init();
 
 	content_layout_size_ = tpoint(0, 0);
+}
+
+void tvertical_scrollbar_container_::layout_wrap(const unsigned maximum_width)
+{
+	// Inherited.
+	twidget::layout_wrap(maximum_width);
+
+	// FIXME it might we we have omitted some borders
+	const tpoint scrollbar = find_scrollbar_grid()->get_best_size();
+
+	content_layout_wrap(maximum_width - scrollbar.x);
+
+	set_layout_size(calculate_best_size());
 }
 
 void tvertical_scrollbar_container_::

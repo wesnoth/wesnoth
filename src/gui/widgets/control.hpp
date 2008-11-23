@@ -133,6 +133,9 @@ public:
 	 * use_tooltip_on_label_overflow_. */
 	void layout_init();
 
+	/** Inherited from twidget. */
+	void layout_wrap(const unsigned maximum_width);
+
 protected:	
 	/** Inherited from twidget. */
 	tpoint calculate_best_size() const;
@@ -159,13 +162,13 @@ public:
 	 * classes which call this routine should also define get_control_type().
 	 */
 	void load_config();
-
+#if 0
 	/** Inherited from twidget. */
 	bool set_width_constrain(const unsigned width);
 
 	/** Inherited from twidget. */
 	void clear_width_constrain();
-
+#endif
 	/** Inherited from twidget. */
 	void draw(surface& surface,  const bool force = false,
 	        const bool invalidate_background = false);
