@@ -260,6 +260,7 @@ game_controller::game_controller(int argc, char** argv) :
 	// The path can be hardcoded and it might be a relative path.
 	if(!game_config::path.empty() &&
 #ifdef _WIN32
+		// Save since std::string::operator[](std::string::size()) returns '\0'
 		game_config::path[1] != ':'
 #else
 		game_config::path[0] != '/'
@@ -397,8 +398,13 @@ game_controller::game_controller(int argc, char** argv) :
 			std::cerr << "unknown option: " << val << std::endl;
 			throw config::error("unknown option");
 		} else {
-		  std::cerr << "Overriding data directory with " << val << std::endl;
+			std::cerr << "Overriding data directory with " << val << std::endl;
+#ifdef _WIN32
+			// Save since std::string::operator[](std::string::size()) returns '\0'
+			if(val[1] == ':') {
+#else				
 			if(val[0] == '/') {
+#endif				
 				game_config::path = val;
 			} else {
 				game_config::path = get_cwd() + '/' + val;
