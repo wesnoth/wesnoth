@@ -260,8 +260,8 @@ game_controller::game_controller(int argc, char** argv) :
 	// The path can be hardcoded and it might be a relative path.
 	if(!game_config::path.empty() &&
 #ifdef _WIN32
-		// Save since std::string::operator[](std::string::size()) returns '\0'
-		game_config::path[1] != ':'
+		// use c_str to ensure that index 1 points to valid element since c_str() returns null-terminated string
+		game_config::path.c_str()[1] != ':'
 #else
 		game_config::path[0] != '/'
 #endif
