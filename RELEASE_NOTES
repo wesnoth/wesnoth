@@ -10,29 +10,10 @@ is making sure that spelling/grammer/whatever is usable and that you are using
 
 The release team should empty this file after each release.
 
-*** 1.5.5+svn
+*** 1.5.6+svn ***
+***
 
-The excessive AI cautiousness that afflicted the 1.5.5 release has been fixed.
 
-Legend of Wesmere has been added to mainline.
-
-There is a new tool for visually editing the journey tracks that appear on the 
-story maps of many Wesnoth campaigns.  It is called 'trackplacer', and you
-can read about it here: http://www.wesnoth.org/wiki/Authoring_tools
-
-Many blocker bugs (yet not officially reported, *tsk*) related to the "update
-add-ons" dialog functionality have been fixed.
-
-The music namespace has been reorganized a bit.  UMC authors should know 
-of the following name changes 
-
-      main_menu.ogg -> transience.ogg, 
-      main_menu_new.ogg -> main_menu.ogg
-      nr-sad.ogg -> sad.ogg
-
-We don't try to handle the first two automatically in wmllint, as it's
-not perfectly clear whether UMC authors want the track or the role when 
-they name "main_menu.ogg".
 
 ***
 
