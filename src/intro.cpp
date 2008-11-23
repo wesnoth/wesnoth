@@ -34,7 +34,6 @@
 static bool show_intro_part(display &disp, const vconfig& part,
 		const std::string& scenario);
 
-/** Show an introduction sequence at the start of a scenario. */
 void show_intro(display &disp, const vconfig& data, const config& level)
 {
 	LOG_NG << "showing intro sequence...\n";
@@ -360,7 +359,6 @@ static bool show_intro_part_helper(display &disp, const vconfig& part,
 	return true;
 }
 
-/** Black screen with "The End", shown at the end of a campaign. */
 void the_end(display &disp, std::string text, unsigned int duration)
 {
 	//
