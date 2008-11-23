@@ -91,7 +91,7 @@
 # of lines they enclose.
 #
 # You can suppress warnings about newlines in messages (and attempts to
-# replair them) with "wmllint: display on", and re-enable them with
+# repair them) with "wmllint: display on", and re-enable them with
 # "wmllint: display off".  The repair attempts (only) may also be
 # suppressed with the --stringfreeze option.
 #
@@ -1158,8 +1158,8 @@ def translator(filename, mapxforms, textxform):
         if transformed[i] == '\n':
             if singleline:
                 singleline = False
-                if not display_state and quotecount % 2:
-                    print '"%s", line %d: newline within string' % (filename, linecount)
+		if not display_state and quotecount % 2 and transformed[i:i+2] != "\n\n" and transformed[i-1:i+1] != "\n\n":
+                    print '"%s", line %d: nonstandard word-wrap style within message' % (filename, linecount)
             linecount += 1
         elif transformed[i-7:i] == "message" and not transformed[i] == ']':
             singleline = True
