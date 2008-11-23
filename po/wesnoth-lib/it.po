@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-11-22 15:03+0100\n"
-"PO-Revision-Date: 2008-11-16 16:08+0100\n"
+"PO-Revision-Date: 2008-11-23 16:59+0100\n"
 "Last-Translator: Luciano Montanaro <mikelima@cirulla.net>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -334,7 +334,7 @@ msgstr "Connettiti al server"
 #. [label]
 #: data/gui/default/window/addon_connect.cfg:51
 msgid "You will now connect to a server to download add-ons."
-msgstr ""
+msgstr "Verrai collegato a un server per scaricare le estensioni."
 
 #. [label]
 #: data/gui/default/window/addon_connect.cfg:81
@@ -487,9 +487,8 @@ msgstr "Unità successiva"
 
 #. [toggle_button]
 #: data/gui/default/window/editor_settings.cfg:83
-#, fuzzy
 msgid "Custom lighting setting"
-msgstr "Impostazione personalizzata per l'illuminazione"
+msgstr "Impostazioni d'illuminazione personalizzata"
 
 #. [toggle_button]
 #: data/gui/default/window/editor_settings.cfg:93
@@ -514,7 +513,7 @@ msgstr "Blu:"
 #. [toggle_button]
 #: data/gui/default/window/editor_settings.cfg:208
 msgid "Allow more than one map to be open at the same time (MDI)"
-msgstr ""
+msgstr "Permetti che sia aperta più di una mappa contemporaneamente (MDI)"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]
@@ -593,9 +592,8 @@ msgstr "Predefinita"
 
 #. [button]
 #: data/gui/default/window/mp_create_game.cfg:218
-#, fuzzy
 msgid "Set Password"
-msgstr "Password"
+msgstr "Imposta password"
 
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:246
@@ -661,9 +659,8 @@ msgstr "Collegati al server ufficiale"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:137
-#, fuzzy
 msgid "Log on to the official Wesnoth multiplayer server"
-msgstr "server"
+msgstr "Accedi al server ufficiale multigiocatore di Wesnoth"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:148
@@ -1254,11 +1251,11 @@ msgstr "Versione"
 
 #: src/gui/widgets/canvas.cpp:290
 msgid "Line doesn't fit on canvas."
-msgstr ""
+msgstr "La linea non entra nella tela."
 
 #: src/gui/widgets/canvas.cpp:425
 msgid "Rectangle doesn't fit on canvas."
-msgstr ""
+msgstr "Il rettangolo non entra nella tela."
 
 #: src/gui/widgets/canvas.cpp:791
 msgid "Text has a font size of 0."
@@ -1291,9 +1288,8 @@ msgid "No resolution defined."
 msgstr "Non è stato definita nessuna risoluzione."
 
 #: src/gui/widgets/settings.cpp:449
-#, fuzzy
 msgid "No state or draw section defined."
-msgstr "Non è stato definito nessun server."
+msgstr "Non è stata definita nessuna sezione state o draw."
 
 #: src/gui/widgets/settings.cpp:629
 msgid "No scrollbar defined."
@@ -1523,13 +1519,12 @@ msgid "Quit to Desktop"
 msgstr "Esci al desktop"
 
 #: src/hotkeys.cpp:100
-#, fuzzy
 msgid "Close Map"
-msgstr "Chiudi"
+msgstr "Chiudi mappa"
 
 #: src/hotkeys.cpp:101
 msgid "Switch Map"
-msgstr ""
+msgstr "Cambia mappa"
 
 #: src/hotkeys.cpp:103
 msgid "Partial Undo"
@@ -1640,14 +1635,12 @@ msgid "Fill Selection"
 msgstr "Riempi selezione"
 
 #: src/hotkeys.cpp:144
-#, fuzzy
 msgid "Generate Tiles In Selection"
-msgstr "Ruota selezione"
+msgstr "Genera tessere nella selezione"
 
 #: src/hotkeys.cpp:146
-#, fuzzy
 msgid "Randomize Tiles In Selection"
-msgstr "In Selezione"
+msgstr "Rendi casuali le tessere della selezione"
 
 #: src/hotkeys.cpp:150
 msgid "Rotate Map"
@@ -1872,6 +1865,8 @@ msgstr "Questo tasto-scorciatoia è già in uso."
 msgid ""
 "Warning: screenshot hotkeys not combined with Control, Alt or Meta keys."
 msgstr ""
+"Attenzione: scorciatoia per schermata non combinata con i tasti Ctrl, Alt o "
+"Meta."
 
 #: src/preferences_display.cpp:419
 msgid "There are no alternative video modes available"
@@ -1921,9 +1916,3 @@ msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr ""
 "Nella sezione «[$section|]» la chiave obbligatoria «$key|» non è impostata."
 "Nella sezione «[$section|]» la chiave obbligatoria «$key|» non è impostata."
-
-#~ msgid "2000"
-#~ msgstr "2000"
-
-#~ msgid "-1"
-#~ msgstr "-1"
