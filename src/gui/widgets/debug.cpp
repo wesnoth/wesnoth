@@ -233,8 +233,12 @@ void tdebug_layout_graph::widget_generate_basic_info(
 		<< "definition=" << widget->definition() << '\n'
 		<< "</td></tr>" << '\n';
 		if(control) {
+			std::string label = control->label();
+			if(label.size() > 50) {
+				label = label.substr(0, 50) + "...";
+			}
 			out << "<tr><td" << header_background << ">" << '\n'
-				<< "label=" << control->label()  << '\n'
+				<< "label=" << label << '\n'
 				<< "</td></tr>\n";
 		}
 }
