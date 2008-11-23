@@ -258,7 +258,14 @@ game_controller::game_controller(int argc, char** argv) :
 	bool no_sound = false;
 
 	// The path can be hardcoded and it might be a relative path.
-	if(!game_config::path.empty() &&  game_config::path[0] != '/') {
+	if(!game_config::path.empty() &&
+#ifdef _WIN32
+		game_config::path[1] != ':'
+#else
+		game_config::path[0] != '/'
+#endif
+	)
+	{
 		game_config::path = get_cwd() + '/' + game_config::path;
 		font_manager_.update_font_path();
 	}
