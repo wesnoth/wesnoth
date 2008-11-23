@@ -140,22 +140,10 @@ bool show_intro_part(display &disp, const vconfig& part,
 	texty = 0;
 #else
 	int xbuttons, ybuttons;
-
-	if (background->w > 500) {
-		textx = dstrect.x + 150;
-		xbuttons = dstrect.x+dstrect.w-140;
-	} else {
-		textx = 200;
-		xbuttons = video.getx() - 200 - 40;
-	}
-
-	if (background->h > 375) {
-		texty = dstrect.y + dstrect.h - 200;
-		ybuttons = dstrect.y + dstrect.h - 40;
-	} else {
-		texty = video.gety() - 200;
-		ybuttons = video.gety() - 40;
-	}
+	textx = 200;
+	xbuttons = video.getx() - 200 - 40;
+	texty = video.gety() - 200;
+	ybuttons = video.gety() - 40;
 #endif
 
 	// Darken the area for the text and buttons to be drawn on
@@ -279,11 +267,12 @@ static bool show_intro_part_helper(display &disp, const vconfig& part,
 	const SDL_Rect total_size = font::draw_text(NULL, screen_area(), font::SIZE_PLUS,
 			font::NORMAL_COLOUR, story, 0, 0);
 	if (texty + 20 + total_size.h > screen_area().h) {
+		int old_texty = texty;
 		texty = screen_area().h > total_size.h + 1 ? screen_area().h - total_size.h - 21 : 0;
 
-		draw_solid_tinted_rectangle(textx, texty, total_size.w, total_size.h,
+		draw_solid_tinted_rectangle(0, texty, screen_area().w, old_texty - texty,
 				0, 0, 0, 128, video.getSurface());
-		update_rect(textx, texty, total_size.w, total_size.h);
+		update_rect(0, texty, screen_area().w, old_texty - texty);
 	}
 
 	if(lang_rtl)

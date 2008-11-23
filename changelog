@@ -5,6 +5,11 @@ Version 1.5.6+svn:
  * User interface:
    * Rewrote the layout algorithm for the new widgets.
    * Fixed the font loading when the data directory is overridden.
+   * Removed text wrapping around background image in story screens; it is
+     better to always use the whole screen width if possible (fixes the
+     first story screens in Descent into Darkness and Under the Burning Suns).
+   * Tweaked the algorithm that extends the darkened area below long
+     story texts so that it gives a more consistent appearance.
 
 Version 1.5.6:
  * Authoring tools:
