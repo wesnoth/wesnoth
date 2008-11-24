@@ -27,6 +27,22 @@
 
 namespace editor2 {
 
+namespace {
+
+editor_map_load_exception wrap_exc(const char* type, const std::string& e_msg, const std::string& filename)
+{
+	WRN_ED << type << " error in load map " << filename << ": " << e_msg << "\n";
+	utils::string_map symbols;
+	symbols["type"] = type;
+	const char* error_msg = "There was an error ($type) while loading the file:";
+	std::string msg = vgettext(error_msg, symbols);
+	msg += "\n";
+	msg += e_msg;
+	return editor_map_load_exception(filename, msg);
+}
+
+} // namespace
+
 editor_map::editor_map(const config& terrain_cfg, const std::string& data)
 	: gamemap(terrain_cfg, data)
 	, selection_()
@@ -54,18 +70,6 @@ editor_map::editor_map(const gamemap& map)
 	, selection_()
 {
 	sanity_check();
-}
-
-editor_map_load_exception wrap_exc(const char* type, const std::string& e_msg, const std::string& filename)
-{
-	WRN_ED << type << " error in load map " << filename << ": " << e_msg << "\n";
-	utils::string_map symbols;
-	symbols["type"] = type;
-	const char* error_msg = "There was an error ($type) while loading the file:";
-	std::string msg = vgettext(error_msg, symbols);
-	msg += "\n";
-	msg += e_msg;
-	return editor_map_load_exception(filename, msg);
 }
 
 editor_map editor_map::load_from_file(const config& game_config, const std::string& filename)
