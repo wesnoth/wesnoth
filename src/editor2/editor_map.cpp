@@ -56,10 +56,24 @@ editor_map::editor_map(const gamemap& map)
 	sanity_check();
 }
 
+editor_map_load_exception wrap_exc(const char* type, const std::string& e_msg, const std::string& filename)
+{
+	WRN_ED << type << " error in load map " << filename << ": " << e_msg << "\n";
+	utils::string_map symbols;
+	symbols["type"] = type;
+	const char* error_msg = "There was an error ($type) while loading the file:";
+	std::string msg = vgettext(error_msg, symbols);
+	msg += "\n";
+	msg += e_msg;
+	return editor_map_load_exception(filename, msg);
+}
+
 editor_map editor_map::load_from_file(const config& game_config, const std::string& filename)
 {
 	log_scope2(editor, "Loading map " + filename);
 	std::string map_string = read_file(filename, false);
+
+	
 	if (map_string.empty()) {
 		std::string message = _("Empty map file or file not found");
 		throw editor_map_load_exception(filename, message);
@@ -68,17 +82,11 @@ editor_map editor_map::load_from_file(const config& game_config, const std::stri
 		editor_map new_map(game_config, map_string);
 		return new_map;
 	} catch (incorrect_map_format_exception& e) {
-		WRN_ED << "format error in load map " << filename << "\n";
-		std::string message = _("There was a format error while loading the file:");
-		message += "\n";
-		message += e.msg_;
-		throw editor_map_load_exception(filename, message);
+		throw wrap_exc("format", e.msg_, filename);
 	} catch (twml_exception& e) {
-		WRN_ED << "wml error in load map " << filename << "\n";
-		std::string message = _("There was a wml error while loading the file:");
-		message += "\n";
-		message += e.user_message;
-		throw editor_map_load_exception(filename, message);
+		throw wrap_exc("wml", e.user_message, filename);
+	} catch (config::error& e) {
+		throw wrap_exc("config", e.message, filename);	
 	}
 }
 
