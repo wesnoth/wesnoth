@@ -28,10 +28,12 @@ namespace gui2 {
 class tmessage : public tdialog
 {
 public:
-	tmessage(const std::string& title, const std::string& message)
+	tmessage(const std::string& title, const std::string& message,
+			const bool auto_close)
 		: title_(title)
 		, image_()
 		, message_(message)
+		, auto_close_(auto_close)
 	{}
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
@@ -56,6 +58,12 @@ private:
 	/** The message to show to the user. */
 	std::string message_;
 
+	/** 
+	 * Does the window need to use easy_close when the dialog doesn't need a
+	 * scrollbar.
+	 */
+	bool auto_close_;
+
 	/** Inherited from tdialog. */
 	twindow build_window(CVideo& video);
 
@@ -76,9 +84,13 @@ private:
  * @param title               The title of the dialog.
  * @param message             The message to show in the dialog.
  * @param button_caption      The caption of the close button.
+ * @param auto_close          When true the window will hide the ok button
+ *                            when the message doesn't need a scrollbar to
+ *                            show itself.
  */
 void show_message(CVideo& video, const std::string& title, 
-	const std::string& message, const std::string& button_caption = "");
+	const std::string& message, const std::string& button_caption = "",
+	const bool auto_close = true);
 
 } // namespace gui2
 

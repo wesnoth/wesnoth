@@ -44,13 +44,38 @@ void tmessage::pre_show(CVideo& /*video*/, twindow& window)
 	VALIDATE(label, missing_widget("label"));
 
 	label->set_label(message_);
+
+	if(auto_close_) {
+		/*
+		 * Hide the buttton and do the layout, if window.does_easy_close() is
+		 * false the scroll_label has a scrollbar so we need to show the
+		 * button. When the button is hidden the text for the label is bigger
+		 * and thus not need a scrollbar. Also when the button is visible
+		 * easy_close will always return false.
+		 */
+		/** @todo The space for invisible items is always reserved. Look about
+		 * how to change that. (Maybe get_best_size() in twidget can do that by
+		 * returning 0,0 when called upon invisible items. Or the tgrid::tchild
+		 * should do that since an item with 0,0 might get a border.)
+		 */
+		tcontrol* button = 
+			dynamic_cast<tcontrol*>(window.find_widget("ok", false));
+		button->set_visible(false);
+
+		window.layout();
+
+		if(! window.does_easy_close()) {
+			button->set_visible();
+		}
+	}
 }
 
 /** @todo the caption is ignored. */
 void show_message(CVideo& video, const std::string& title, 
-	const std::string& message, const std::string& /*button_caption*/)
+	const std::string& message, const std::string& /*button_caption*/,
+	const bool auto_close)
 {
-	tmessage(title, message).show(video);
+	tmessage(title, message, auto_close).show(video);
 }
 
 } // namespace gui2

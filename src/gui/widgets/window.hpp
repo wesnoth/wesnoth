@@ -47,6 +47,9 @@ class tdebug_layout_graph;
 class twindow : public tpanel, public tevent_handler
 {
 	friend class tdebug_layout_graph;
+
+	// Wants to use layout().
+	friend class tmessage;
 public:
 	twindow(CVideo& video,
 		tformula<unsigned>x,
