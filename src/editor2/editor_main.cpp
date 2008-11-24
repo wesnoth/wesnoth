@@ -33,7 +33,8 @@ EXIT_STATUS start(config& game_conf, CVideo& video, const std::string& filename 
 		if (!filename.empty()) {
 			try {
 				mc.reset(new map_context(game_conf, filename));
-				LOG_ED << "Map loaded. " << mc->get_map().w() << " by " << mc->get_map().h() << "\n";
+				LOG_ED << "Map " << filename << " loaded. " 
+					<< mc->get_map().w() << " by " << mc->get_map().h() << "\n";
 			} catch (editor_map_load_exception& e) {
 				std::stringstream ss;
 				ss << "\"" << boost::replace_all_copy(filename, "\\", "\\\\") << "\"";

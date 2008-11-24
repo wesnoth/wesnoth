@@ -594,6 +594,7 @@ bool editor_controller::save_map(bool display_confirmation)
 
 void editor_controller::load_map(const std::string& filename, bool new_context)
 {
+	LOG_ED << "Load map: " << filename << (new_context ? " (new)" : " (same)") << "\n";
 	try {
 		if (new_context) {
 			std::auto_ptr<map_context> mc(new map_context(game_config_, filename));
@@ -1192,7 +1193,6 @@ void editor_controller::mouse_motion(int x, int y, const bool /*browse*/, bool u
 			refresh_after_action(true);
 		}
 	} else {
-		DBG_ED << "move " << hex_clicked << "\n";
 		get_mouse_action()->move(*gui_, hex_clicked);
 	}
 	gui().highlight_hex(hex_clicked);
