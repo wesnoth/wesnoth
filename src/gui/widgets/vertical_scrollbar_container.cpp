@@ -198,6 +198,7 @@ void tvertical_scrollbar_container_::set_size(const tpoint& origin, const tpoint
 	 	content_set_size(create_rect(origin, size));
 	}
 
+	set_block_easy_close(get_visible() && get_active() && does_block_easy_close());
 	set_scrollbar_button_status();
 }
 
@@ -333,6 +334,17 @@ const twidget* tvertical_scrollbar_container_::find_widget(
 
 	// Inherited
 	return tcontainer_::find_widget(coordinate, must_be_active);
+}
+
+bool tvertical_scrollbar_container_::does_block_easy_close() const
+{
+	if(scrollbar_grid_) {
+		// scrollbar is hidden.
+		return false;
+	} else {
+		// scrollbar is visible.
+		return find_scrollbar()->get_active();
+	}
 }
 
 void tvertical_scrollbar_container_::value_changed()

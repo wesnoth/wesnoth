@@ -123,6 +123,9 @@ public:
 	/** Import overloaded versions. */
 	using tcontainer_::find_widget;
 
+	/** Inherited from tcontainer_. */
+	bool does_block_easy_close() const;
+
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
 	void set_callback_value_change(void (*callback) (twidget* caller))
