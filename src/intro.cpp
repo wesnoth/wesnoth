@@ -76,6 +76,7 @@ void show_intro(display &disp, const vconfig& data, const config& level)
 static bool show_intro_part_helper(display &disp, const vconfig& part,
 		int textx, int texty,
 		bool has_background,
+		bool redraw_all,
 		gui::button& next_button, gui::button& skip_button,
 		CKey& key);
 
@@ -125,6 +126,7 @@ bool show_intro_part(display &disp, const vconfig& part,
 	const double scale = scale_background ? std::min<double>(xscale,yscale) : 1.0;
 
 	background = scale_surface(background, static_cast<int>(background->w*scale), static_cast<int>(background->h*scale));
+	assert(background.null() == false);
 
 	dstrect.x = (video.getx() - background->w) / 2;
 	dstrect.y = (video.gety() - background->h) / 2;
@@ -140,23 +142,16 @@ bool show_intro_part(display &disp, const vconfig& part,
 
 	// Use the whole screen for text
 	texty = 0;
+	
+	next_button.set_location(xbuttons,ybuttons-20);
+	skip_button.set_location(xbuttons,ybuttons);
 #else
 	int xbuttons, ybuttons;
 	textx = 200;
 	xbuttons = video.getx() - 200 - 40;
 	texty = video.gety() - 200;
 	ybuttons = video.gety() - 40;
-#endif
-
-	// Darken the area for the text and buttons to be drawn on
-	if(part["story"].empty() == false) {
-		draw_solid_tinted_rectangle(0,texty,video.getx(),video.gety()-texty,0,0,0,0.5,video.getSurface());
-	}
-
-#ifdef USE_TINY_GUI
-	next_button.set_location(xbuttons,ybuttons-20);
-	skip_button.set_location(xbuttons,ybuttons);
-#else
+	
 	next_button.set_location(xbuttons,ybuttons-30);
 	skip_button.set_location(xbuttons,ybuttons);
 #endif
@@ -170,14 +165,15 @@ bool show_intro_part(display &disp, const vconfig& part,
 					    dstrect.x + 20,dstrect.y + 20));
 	}
 
-	events::raise_draw_event();
-	update_whole_screen();
-	disp.flip();
+	const vconfig::child_list images = part.get_children("image");
 
-	if(!background.null()) {
+	if(!images.empty()) {
+		// Redraw all
+		events::raise_draw_event();
+		update_whole_screen();
+		disp.flip();
+
 		// Draw images
-		const vconfig::child_list& images = part.get_children("image");
-
 		bool pass = false;
 
 		for(vconfig::child_list::const_iterator i = images.begin(); i != images.end(); ++i){
@@ -240,7 +236,11 @@ bool show_intro_part(display &disp, const vconfig& part,
 	}
 	try {
 		return show_intro_part_helper(
-			disp, part, textx, texty, has_background, next_button, skip_button, key);
+			disp, part, textx, texty,
+			has_background,
+			images.empty(),
+			next_button, skip_button, key
+		);
 
 	} catch (utils::invalid_utf8_exception&) {
 		LOG_STREAM(err, engine) << "Invalid utf-8 found, story message is ignored.\n";
@@ -249,15 +249,28 @@ bool show_intro_part(display &disp, const vconfig& part,
 	}
 }
 
+#ifdef LOW_MEM
+static void blur_helper(CVideo&,int,int)
+{}
+#else
+static void blur_helper(CVideo& video, int y, int h)
+{
+	SDL_Rect blur_rect = { 0, y, screen_area().w, h };
+	surface blur = get_surface_portion(video.getSurface(), blur_rect, false);
+	blur = blur_surface(blur, 1, false);
+	video.blit_surface(0, y, blur);
+}
+#endif
+
 static bool show_intro_part_helper(display &disp, const vconfig& part,
 		int textx, int texty,
 		bool has_background,
+		bool redraw_all,
 		gui::button& next_button, gui::button& skip_button,
 		CKey& key)
 {
 	bool lang_rtl = current_language_rtl();
 	CVideo &video = disp.video();
-
 
 	const int max_width = next_button.location().x - 10 - textx;
 	const std::string story = 
@@ -266,36 +279,58 @@ static bool show_intro_part_helper(display &disp, const vconfig& part,
 	utils::utf8_iterator itor(story);
 
 	bool skip = false, last_key = true;
-
-	const SDL_Rect total_size = font::draw_text(NULL, screen_area(), font::SIZE_PLUS,
-			font::NORMAL_COLOUR, story, 0, 0);
-
-	int update_h = 0;
-	if (texty + 20 + total_size.h > screen_area().h) {
-		int old_texty = texty;
-		texty = screen_area().h > total_size.h + 1 ? screen_area().h - total_size.h - 21 : 0;
-		draw_solid_tinted_rectangle(0, texty, screen_area().w, old_texty - texty,
-				0, 0, 0, 128, video.getSurface());
-		update_h = old_texty - texty;
+	int update_y = 0, update_h = 0;
+	
+	// Draw the text box
+	if(story.empty() != true)
+	{
+		// this should kill the tiniest flickering caused
+		// by the buttons being hidden and unhidden in this scope.
+		update_locker locker(disp.video());
+		
+		const SDL_Rect total_size = font::draw_text(NULL, screen_area(), font::SIZE_PLUS,
+				font::NORMAL_COLOUR, story, 0, 0);
+		
+		next_button.hide();
+		skip_button.hide();
+		
+		if (texty + 20 + total_size.h > screen_area().h) {
+			texty = screen_area().h > total_size.h + 1 ? screen_area().h - total_size.h - 21 : 0;
+		}
+		
+		update_y = texty;
+		update_h = screen_area().h-texty;
+		blur_helper(disp.video(), update_y, update_h);
+		
+		draw_solid_tinted_rectangle(
+			0, texty, screen_area().w, screen_area().h - texty,
+			0, 0, 0, 0.5, video.getSurface()
+		);
+		
+		// Draw a nice border
+		if(has_background) {
+			// FIXME: perhaps hard-coding the image path isn't a really
+			// good idea - it must not be forgotten if someone decides to switch
+			// the image directories around.
+			surface top_border = image::get_image("dialogs/translucent54-border-top.png");
+			top_border = scale_surface_blended(top_border, screen_area().w, top_border->h);
+			update_y = texty - top_border->h;
+			update_h += top_border->h;
+			blur_helper(disp.video(), update_y, update_h);
+			disp.video().blit_surface(0, texty - top_border->h, top_border);
+		}
+		
+		// Make buttons aware of the changes in the background
+		next_button.set_location(next_button.location());
+		next_button.hide(false);
+		skip_button.set_location(skip_button.location());
+		skip_button.hide(false);
 	}
 	
-	// Draw a nice border
-	int update_y = texty;
-	if(has_background && !story.empty()) {
-		// FIXME: perhaps hard-coding the image path isn't a really
-		// good idea - it must not be forgotten if someone decides to switch
-		// the image directories around.
-		surface top_border = image::get_image("dialogs/translucent54-border-top.png");
-		top_border = scale_surface_blended(top_border, screen_area().w, top_border->h);
-		
-		disp.video().blit_surface(0, texty - top_border->h, top_border);
-		
-		update_y = texty - top_border->h;
-		update_h += top_border->h;
-	}
-	
-	if(update_h > 0) {
-		update_rect(0, update_y, screen_area().w, update_h);
+	if(redraw_all) {
+		update_whole_screen();
+	} else if(update_h > 0) {
+		update_rect(0,update_y,screen_area().w,update_h);
 	}
 
 	if(lang_rtl)
