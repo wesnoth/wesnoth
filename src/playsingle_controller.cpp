@@ -856,7 +856,8 @@ bool playsingle_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, 
 			return (!browse_ || linger_) && !events::commands_disabled;
 
 		case hotkey::HOTKEY_DELAY_SHROUD:
-			return !linger_ && (current_team().uses_fog() || current_team().uses_shroud());
+			return !linger_ && (current_team().uses_fog() || current_team().uses_shroud()) 
+			&& !events::commands_disabled;
 		case hotkey::HOTKEY_UPDATE_SHROUD:
 			return !linger_ && !events::commands_disabled && current_team().auto_shroud_updates() == false;
 
