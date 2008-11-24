@@ -94,6 +94,8 @@
 #include <sstream>
 #include <string>
 
+
+#include <boost/algorithm/string/replace.hpp>
 #include <boost/iostreams/copy.hpp>
 #include <boost/iostreams/filtering_streambuf.hpp>
 #include <boost/iostreams/filter/gzip.hpp>
@@ -1156,6 +1158,9 @@ bool game_controller::goto_editor()
 {
 	if(jump_to_editor_){
 		jump_to_editor_ = false;
+#ifdef _WIN32
+		boost::replace_all(loaded_game_, "\\", "/");
+#endif
 		if (start_editor(loaded_game_) == editor2::EXIT_QUIT_TO_DESKTOP) {
 			return false;
 		}
