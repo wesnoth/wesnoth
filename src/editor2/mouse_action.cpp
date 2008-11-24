@@ -133,10 +133,10 @@ bool mouse_action::has_shift_modifier() const
 void mouse_action::set_terrain_mouse_overlay(editor_display& disp, t_translation::t_terrain fg,
 		t_translation::t_terrain bg)
 {
-	surface image_fg(image::get_image("terrain/" + disp.get_map().get_terrain_info(
-				fg).editor_image() + ".png"));
-	surface image_bg(image::get_image("terrain/" + disp.get_map().get_terrain_info(
-				bg).editor_image() + ".png"));
+	surface image_fg(image::get_image("terrain/" 
+		+ disp.get_map().get_terrain_info(fg).editor_image() + ".png"));
+	surface image_bg(image::get_image("terrain/" 
+		+ disp.get_map().get_terrain_info(bg).editor_image() + ".png"));
 
 	if (image_fg == NULL || image_bg == NULL) {
 		ERR_ED << "Missing terrain icon\n";
@@ -172,6 +172,10 @@ void mouse_action::set_terrain_mouse_overlay(editor_display& disp, t_translation
 	SDL_Rect rcDestRight = { half_size, quarter_size, 0, 0 };
 	SDL_BlitSurface ( image_bg, NULL, image, &rcDestRight );
 
+	//apply mask so the overlay is contained within the mouseover hex
+	surface mask(image::get_image("terrain/alphamask.png"));
+	image = mask_surface(image, mask);
+	
 	// Add the alpha factor and scale the image
 	image = scale_surface(adjust_surface_alpha(image, alpha), zoom, zoom);
 
