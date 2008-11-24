@@ -602,7 +602,7 @@ void twindow::do_show_help_popup(const tpoint& location, const t_string& help_po
 
 void twindow::easy_close()
 {
-	if(easy_close_ && easy_close_blocker_.empty()) {
+	if(does_easy_close()) {
 		set_retval(OK);
 	}
 }

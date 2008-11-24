@@ -240,6 +240,14 @@ public:
 	 */
 	void remove_easy_close_blocker(const std::string& id);
 
+	/**
+	 * Does the window close easily?
+	 *
+	 * @returns                   Whether or not the window closes easily.
+	 */
+	bool does_easy_close() const 
+		{ return easy_close_ && easy_close_blocker_.empty(); }
+
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
 	/**
