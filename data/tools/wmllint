@@ -452,35 +452,15 @@ def sanity_check(filename, lines):
                     traits.append(p)
                 if q in nav.text:
                     notes.append(q)
-    # Collect information on defined movement types
-    in_movetype = False
-    for i in range(len(lines)):
-        if "[movetype]" in lines[i]:
-            in_movetype = True
-            continue
-        elif "[/movetype]" in lines[i]:
-            in_movetype = False
-            continue
-        if in_movetype:
+    # Collect information on defined movement types and races
+    for nav in WmllintIterator(lines, filename):
+        above = nav.ancestors()
+        if above and above[-1] in ("[movetype]", "[race]"):
             try:
-                (key, prefix, value, comment) = parse_attribute(lines[i])
-                if key == 'name':
+                (key, prefix, value, comment) = parse_attribute(nav.text)
+                if above[-1] == "[movetype]" and key == 'name':
                     movetypes.append(value)
-            except TypeError:
-                pass
-    # Collect information on defined races
-    in_race = False
-    for i in range(len(lines)):
-        if "[race]" in lines[i]:
-            in_race = True
-            continue
-        elif "[/race]" in lines[i]:
-            in_race = False
-            continue
-        if in_race:
-            try:
-                (key, prefix, value, comment) = parse_attribute(lines[i])
-                if key == 'id':
+                if above[-1] == "[race]" and key == 'id':
                     races.append(value)
             except TypeError:
                 pass
