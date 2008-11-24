@@ -75,6 +75,7 @@ void show_intro(display &disp, const vconfig& data, const config& level)
  */
 static bool show_intro_part_helper(display &disp, const vconfig& part,
 		int textx, int texty,
+		bool has_background,
 		gui::button& next_button, gui::button& skip_button,
 		CKey& key);
 
@@ -108,6 +109,7 @@ bool show_intro_part(display &disp, const vconfig& part,
 	if(background_name.empty() == false) {
 		background.assign(image::get_image(background_name));
 	}
+	const bool has_background = !background.null();
 
 	int textx = 200;
 	int texty = 400;
@@ -238,7 +240,7 @@ bool show_intro_part(display &disp, const vconfig& part,
 	}
 	try {
 		return show_intro_part_helper(
-			disp, part, textx, texty, next_button, skip_button, key);
+			disp, part, textx, texty, has_background, next_button, skip_button, key);
 
 	} catch (utils::invalid_utf8_exception&) {
 		LOG_STREAM(err, engine) << "Invalid utf-8 found, story message is ignored.\n";
@@ -249,6 +251,7 @@ bool show_intro_part(display &disp, const vconfig& part,
 
 static bool show_intro_part_helper(display &disp, const vconfig& part,
 		int textx, int texty,
+		bool has_background,
 		gui::button& next_button, gui::button& skip_button,
 		CKey& key)
 {
@@ -266,13 +269,33 @@ static bool show_intro_part_helper(display &disp, const vconfig& part,
 
 	const SDL_Rect total_size = font::draw_text(NULL, screen_area(), font::SIZE_PLUS,
 			font::NORMAL_COLOUR, story, 0, 0);
+
+	int update_h = 0;
 	if (texty + 20 + total_size.h > screen_area().h) {
 		int old_texty = texty;
 		texty = screen_area().h > total_size.h + 1 ? screen_area().h - total_size.h - 21 : 0;
-
 		draw_solid_tinted_rectangle(0, texty, screen_area().w, old_texty - texty,
 				0, 0, 0, 128, video.getSurface());
-		update_rect(0, texty, screen_area().w, old_texty - texty);
+		update_h = old_texty - texty;
+	}
+	
+	// Draw a nice border
+	int update_y = texty;
+	if(has_background && !story.empty()) {
+		// FIXME: perhaps hard-coding the image path isn't a really
+		// good idea - it must not be forgotten if someone decides to switch
+		// the image directories around.
+		surface top_border = image::get_image("dialogs/translucent54-border-top.png");
+		top_border = scale_surface_blended(top_border, screen_area().w, top_border->h);
+		
+		disp.video().blit_surface(0, texty - top_border->h, top_border);
+		
+		update_y = texty - top_border->h;
+		update_h += top_border->h;
+	}
+	
+	if(update_h > 0) {
+		update_rect(0, update_y, screen_area().w, update_h);
 	}
 
 	if(lang_rtl)
