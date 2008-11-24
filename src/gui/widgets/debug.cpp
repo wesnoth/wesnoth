@@ -12,6 +12,8 @@
    see the copying file for more details.
 */
 
+#ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
+
 #include "gui/widgets/debug.hpp"
 
 #include "foreach.hpp"
@@ -494,4 +496,5 @@ std::string tdebug_layout_graph::get_type(const twidget* widget) const
 }
 
 } // namespace gui2
+#endif
 

@@ -12,6 +12,8 @@
    see the copying file for more details.
 */
 
+#ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
+
 #ifndef GUI_WIDGETS_DEBUG_HPP_INCLUDED
 #define GUI_WIDGETS_DEBUG_HPP_INCLUDED
 
@@ -174,5 +176,6 @@ private:
 
 } // namespace gui2
 
+#endif
 #endif
 
