@@ -21,11 +21,6 @@
 
 namespace gui2 {
 
-twindow tmessage::build_window(CVideo& video)
-{
-	return build(video, get_id(MESSAGE));
-}
-
 void tmessage::pre_show(CVideo& /*video*/, twindow& window)
 {
 	if(!title_.empty()) {
@@ -75,6 +70,11 @@ void tmessage::pre_show(CVideo& /*video*/, twindow& window)
 			button->set_visible();
 		}
 	}
+}
+
+twindow tmessage::build_window(CVideo& video)
+{
+	return build(video, get_id(MESSAGE));
 }
 
 /** @todo the caption is ignored. */

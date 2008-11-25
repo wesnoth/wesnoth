@@ -25,8 +25,9 @@
 #include "game_events.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
-#include "gui/widgets/spacer.hpp"
-#include "gui/widgets/window.hpp"
+#include "gui/dialogs/wml_message.hpp"
+#include "gui/widgets/settings.hpp"
+#include "log.hpp"
 #include "map.hpp"
 #include "map_label.hpp"
 #include "map_exception.hpp"
@@ -34,6 +35,7 @@
 #include "sound.hpp"
 #include "terrain_filter.hpp"
 #include "unit_display.hpp"
+#include "wml_exception.hpp"
 
 #include <boost/scoped_ptr.hpp>
 
@@ -2891,23 +2893,11 @@ namespace {
 					const tportrait* portrait = 
 						speaker->second.portrait(400, tportrait::LEFT);
 					if(portrait) {
-
-						gui2::twindow window = 
-							gui2::build((screen)->video(), "message_test_left"); 
-
-						const t_string message = cfg["message"];
-						const std::string image = portrait ? portrait->image : "";
-						const bool mirror = portrait ? portrait->mirror : false;
-
-						window.canvas(1).set_variable("portrait_image", variant(image));
-						window.canvas(1).set_variable("portrait_mirror", variant(mirror));
-
-						gui2::tcontrol* label = dynamic_cast<gui2::tcontrol*>(window.find_widget("message", false));
-						assert(label);
-						label->set_label(message);
-
-						window.show();
-
+						gui2::twml_message_left (
+								caption,
+								cfg["message"],
+								portrait->image,
+								portrait->mirror).show(screen->video());
 						return;
 					}
 				}

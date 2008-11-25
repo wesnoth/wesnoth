@@ -40,23 +40,31 @@ enum twindow_type {
 	ADDON_CONNECT,           /**< The addon server connection dialog. */
 	LANGUAGE_SELECTION,      /**< The language selection dialog. */
 	MESSAGE,                 /**< A generic message dialog. */
+	WML_MESSAGE_LEFT,        /**< 
+	                          * A WML message dialog with the portrait on
+	                          * the left side.
+	                          */
+	WML_MESSAGE_RIGHT,       /**< 
+	                          * A WML message dialog with the portrait on
+	                          * the right side.
+	                          */
 	MP_CONNECT,              /**< The mp server connection dialog. */
 	MP_METHOD_SELECTION,     /**< 
 	                          * The dialog which allows you to choose the kind
 	                          * mp game the user wants to play.
-							  */
+	                          */
 	MP_SERVER_LIST,          /**< The mp server list dialog. */
 	MP_CREATE_GAME,          /**< The mp creation dialog. */
 #ifndef DISABLE_EDITOR2
 	EDITOR_NEW_MAP,          /**< New map dialog. */
 	EDITOR_GENERATE_MAP,     /**< Editor random map genarator dialog. */
-	EDITOR_RESIZE_MAP, 	   	 /**< Editor resize map dialog. */
-	EDITOR_SETTINGS,		 /**< Editor settings dialog. */
+	EDITOR_RESIZE_MAP,       /**< Editor resize map dialog. */
+	EDITOR_SETTINGS,         /**< Editor settings dialog. */
 #endif
 	COUNT                    /**< 
-							  * The last one to hold the number of items and as
-							  * sentinel.
-							  */
+	                          * The last one to hold the number of items and as
+	                          * sentinel.
+	                          */
 };
 
 const std::string& get_id(const twindow_type window_type);

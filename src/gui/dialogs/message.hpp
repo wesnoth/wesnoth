@@ -44,6 +44,10 @@ public:
 
 	void set_message(const std::string& message) {  message_ = message; }
 
+protected:
+	/** Inherited from tdialog. */
+	void pre_show(CVideo& video, twindow& window);
+
 private:
 	/** The title for the dialog. */
 	std::string title_;
@@ -66,9 +70,6 @@ private:
 
 	/** Inherited from tdialog. */
 	twindow build_window(CVideo& video);
-
-	/** Inherited from tdialog. */
-	void pre_show(CVideo& video, twindow& window);
 };
 
 /**
