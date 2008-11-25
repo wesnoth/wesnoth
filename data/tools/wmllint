@@ -307,6 +307,7 @@ spellcheck_these = (\
     "title=",
     "title2=",
     "tooltip=",
+    "user_team_name=",
     )
 
 
@@ -1226,6 +1227,7 @@ def spellcheck(fn, d):
             value = value.replace("''", "")
             value = value.replace("female^", " ")
             value = value.replace("male^", " ")
+            value = value.replace("teamname^", " ")
             if '<' in value:
                 value = re.sub("<[^>]+>text='([^']*)'<[^>]+>", r"\1", value)
                 value = re.sub("<[0-9,]+>", "", value)
