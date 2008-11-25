@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-11-22 14:55+0100\n"
-"PO-Revision-Date: 2008-11-19 17:01+0100\n"
+"PO-Revision-Date: 2008-11-20 21:41+0100\n"
 "Last-Translator: Leandro Regueiro <leandro DOT regueiro AT gmail DOT com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "MIME-Version: 1.0\n"
@@ -72,7 +72,7 @@ msgstr "castelo"
 #. [editor_group]
 #: data/core/editor-groups.cfg:77
 msgid "special"
-msgstr ""
+msgstr "especial"
 
 #. [brush]
 #: data/core/editor2-brushes.cfg:4
@@ -138,7 +138,7 @@ msgstr "Editar"
 #. [menu]
 #: data/themes/editor2.cfg:141
 msgid "Map"
-msgstr ""
+msgstr "Mapa"
 
 #. [menu]
 #: data/themes/editor2.cfg:151
@@ -189,8 +189,9 @@ msgid "Error"
 msgstr "Erro"
 
 #: src/editor2/editor_controller.cpp:327
+#, fuzzy
 msgid "No editor time-of-day found."
-msgstr ""
+msgstr "Non se atopou a hora do día do editor"
 
 #: src/editor2/editor_controller.cpp:363
 msgid "Unsaved Changes"
@@ -221,27 +222,25 @@ msgid "The file already exists. Do you want to overwrite it?"
 msgstr "O mapa xa existe. Desexa sobrescribilo?"
 
 #: src/editor2/editor_controller.cpp:439
+#, fuzzy
 msgid "No random map generators found."
-msgstr ""
+msgstr "Non se atoparon xeradores aleatorios de mapas"
 
 #: src/editor2/editor_controller.cpp:450
-#, fuzzy
 msgid "Map creation failed."
-msgstr "\" fallou ó cargar debido a "
+msgstr "Fallo ó crear o mapa."
 
 #: src/editor2/editor_controller.cpp:465
-#, fuzzy
 msgid "Choose a mask to apply"
-msgstr "Aplicar o valor ós seguintes aspectos dos clons:"
+msgstr "Escolla unha máscara para aplicar"
 
 #: src/editor2/editor_controller.cpp:472
-#, fuzzy
 msgid "Error loading mask"
-msgstr "Produciuse un erro ó gardar unha copia temporal"
+msgstr "Produciuse un erro ó cargar a máscara"
 
 #: src/editor2/editor_controller.cpp:487
 msgid "Choose target map"
-msgstr ""
+msgstr "Escolla o mapa de destino"
 
 #: src/editor2/editor_controller.cpp:494 src/editor2/editor_controller.cpp:606
 #: src/editor2/editor_main.cpp:50
@@ -261,30 +260,28 @@ msgid "Undo"
 msgstr "Desfacer"
 
 #: src/editor2/editor_controller.cpp:980
-#, fuzzy
 msgid "Can't Undo"
-msgstr "Historial de cambios"
+msgstr "Non se pode desfacer"
 
 #: src/editor2/editor_controller.cpp:984
 msgid "Redo"
 msgstr "Refacer"
 
 #: src/editor2/editor_controller.cpp:986
-#, fuzzy
 msgid "Can't Redo"
-msgstr "Non hai nada para refacer."
+msgstr "Non se pode refacer"
 
 #: src/editor2/editor_map.cpp:63
 msgid "Empty map file or file not found"
-msgstr ""
+msgstr "O ficheiro de mapa está baleiro ou non se atopou ningún ficheiro"
 
 #: src/editor2/editor_map.cpp:71
 msgid "There was a format error while loading the file:"
-msgstr ""
+msgstr "Ocorreu un erro de formato mentres se cargaba o ficheiro:"
 
 #: src/editor2/editor_map.cpp:77
 msgid "There was a wml error while loading the file:"
-msgstr ""
+msgstr "Ocorreu un erro de wml mentres se cargaba o ficheiro:"
 
 #: src/editor2/editor_map.cpp:150 src/editor2/mouse_action.cpp:379
 msgid "Player"
@@ -292,7 +289,7 @@ msgstr "Xogador"
 
 #: src/editor2/editor_map.cpp:269
 msgid "The size of the target map is different from the current map"
-msgstr ""
+msgstr "O tamaño do mapa de destino é diferente ó do mapa actual"
 
 #: src/editor2/editor_palettes.cpp:493
 msgid "FG"
@@ -308,7 +305,7 @@ msgstr "Ningún"
 
 #: src/editor2/mouse_action.cpp:383
 msgid "Choose player"
-msgstr ""
+msgstr "Escolla o xogador"
 
 #: src/editor2/mouse_action.cpp:384
 msgid ""
@@ -317,9 +314,8 @@ msgid ""
 msgstr ""
 
 #: src/gui/dialogs/editor_settings.cpp:116
-#, fuzzy
 msgid "Custom setting"
-msgstr "Tamaño personalizado"
+msgstr "Opción personalizada"
 
 #~ msgid "Click to paste."
 #~ msgstr "Prema para pegar."

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "POT-Creation-Date: 2008-11-18 22:07+0100\n"
-"PO-Revision-Date: 2008-11-19 17:09+0100\n"
+"PO-Revision-Date: 2008-11-20 22:33+0100\n"
 "Last-Translator: Leandro Regueiro <leandro DOT regueiro AT gmail DOT com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "MIME-Version: 1.0\n"
@@ -117,20 +117,20 @@ msgstr "establece o valor de BitsPerPixel. Exemplo: B<--bpp 32>"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:49
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<-c, --campaign>"
-msgstr "B<-d, --daemon>"
+msgstr "B<-c, --campaign>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:52
 msgid "goes directly to the campaign selection menu."
-msgstr ""
+msgstr "vai directamente ó menú de selección de campaña."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:52
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--config-dir>I<\\ name>"
-msgstr "Re_nomear Capa..."
+msgstr "B<--config-dir>I<\\ nome>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:57
@@ -141,15 +141,14 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnoth.6:57
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--config-path>"
-msgstr "Pechando o camiño."
+msgstr "B<--config-path>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:60
-#, fuzzy
 msgid "prints the path of the user configuration directory and exits."
-msgstr "amosa o nome do directorio de datos do xogo e sae."
+msgstr "mostra a ruta do directorio de configuración do usuario e sae."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:60
@@ -170,9 +169,9 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnoth.6:64
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--dummylocales>"
-msgstr "B<--nocache>"
+msgstr "B<--dummylocales>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:68
@@ -183,9 +182,9 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnoth.6:68
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<-e, --editor>"
-msgstr "Editor de _XML..."
+msgstr "B<-e, --editor>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:71
@@ -263,9 +262,9 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnoth.6:93
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<-l,\\ --load>I<\\ file>"
-msgstr "Ficheiro PDF"
+msgstr "B<-l,\\ --load>I<\\ ficheiro>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:105
@@ -320,9 +319,9 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnoth.6:122
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<-m, --multiplayer>"
-msgstr "B<--multiplayer>"
+msgstr "B<-m, --multiplayer>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:128
@@ -362,15 +361,14 @@ msgstr "deshabilita a caché de datos de xogo."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:135
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--nomusic>"
-msgstr "B<--nogui>"
+msgstr "B<--nomusic>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:138
-#, fuzzy
 msgid "runs the game without music."
-msgstr "executa o xogo sen son e sen música."
+msgstr "executa o xogo sen música."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:138
@@ -396,9 +394,9 @@ msgstr "amosa o nome do directorio de datos do xogo e sae."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:144
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--python-api>"
-msgstr "_Executar Python"
+msgstr "B<--python-api>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:147
@@ -407,9 +405,9 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnoth.6:147
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--python-shell>"
-msgstr "_Executar Python"
+msgstr "B<--python-shell>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:150
@@ -429,9 +427,9 @@ msgstr "establece a resolución da pantalla. Por exemplo: B<-r 800x600>"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:154
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--smallgui>"
-msgstr "B<--nogui>"
+msgstr "B<--smallgui>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:157
@@ -442,9 +440,9 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnoth.6:157
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<-s,\\ --server\\ [host]>"
-msgstr "B<-v, --verbose>"
+msgstr "B<-s,\\ --server\\ [máquina]>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:161
@@ -466,9 +464,9 @@ msgstr "executa o xogo nun pequeno escenario de proba."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:164
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--validcache>"
-msgstr "B<--nocache>"
+msgstr "B<--validcache>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:167
@@ -499,14 +497,14 @@ msgstr "executa o xogo nunha ventá."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:173
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--with-replay>"
-msgstr "<b>Estrela</b> de %d vértice"
+msgstr "B<--with-replay>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:178
 msgid "replays the game loaded with the B<--load> option."
-msgstr ""
+msgstr "reproduce a partida cargada ca opción B<--load>."
 
 # type: SH
 #: ../../doc/man/wesnoth.6:179

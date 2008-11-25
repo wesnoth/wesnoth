@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-11-22 15:03+0100\n"
-"PO-Revision-Date: 2008-11-19 17:08+0100\n"
+"PO-Revision-Date: 2008-11-20 21:32+0100\n"
 "Last-Translator: Leandro Regueiro <leandro DOT regueiro AT gmail DOT com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "MIME-Version: 1.0\n"
@@ -368,7 +368,6 @@ msgstr "Eliminar a reixa seleccionada."
 #: data/gui/default/window/addon_connect.cfg:202
 #: data/gui/default/window/mp_connect.cfg:175
 #: data/gui/default/window/mp_connect.cfg:176
-#, fuzzy
 msgid "Connect"
 msgstr "Conectar"
 
@@ -396,16 +395,14 @@ msgstr "Xerar Mapa Aleatorio"
 #. [button]
 #: data/gui/default/window/editor_generate_map.cfg:67
 #: data/gui/default/window/editor_generate_map.cfg:68
-#, fuzzy
 msgid "Next Generator"
-msgstr "Seleccionar Seguinte"
+msgstr "Seguinte xerador"
 
 #. [button]
 #: data/gui/default/window/editor_generate_map.cfg:90
 #: data/gui/default/window/editor_generate_map.cfg:91
-#, fuzzy
 msgid "Settings"
-msgstr "Configuración de páxina"
+msgstr "Configuración"
 
 #. [button]
 #: data/gui/default/window/editor_generate_map.cfg:101
@@ -433,9 +430,8 @@ msgstr "Alto:"
 #. [button]
 #: data/gui/default/window/editor_new_map.cfg:100
 #: data/gui/default/window/editor_new_map.cfg:101
-#, fuzzy
 msgid "Create new map"
-msgstr "Crear nova reixa"
+msgstr "Crear un novo mapa"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -445,27 +441,23 @@ msgstr "Redimensionar Mapa"
 
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:46
-#, fuzzy
 msgid "New width:"
-msgstr "Ancho, alto:"
+msgstr "Novo ancho:"
 
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:70
-#, fuzzy
 msgid "Old width:"
-msgstr "Ancho, alto:"
+msgstr "Antigo ancho:"
 
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:95
-#, fuzzy
 msgid "New height:"
-msgstr "Ancho, alto:"
+msgstr "Novo alto:"
 
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:119
-#, fuzzy
 msgid "Old height:"
-msgstr "Ancho, alto:"
+msgstr "Antigo alto:"
 
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:147
@@ -481,16 +473,14 @@ msgstr "Detección Óptima de Bordos"
 #. [button]
 #: data/gui/default/window/editor_resize_map.cfg:264
 #: data/gui/default/window/editor_resize_map.cfg:265
-#, fuzzy
 msgid "Resize map"
-msgstr "Redimensionar Mapa"
+msgstr "Redimensionar o mapa"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:38 src/hotkeys.cpp:102
-#, fuzzy
 msgid "Editor Settings"
-msgstr "Configuración de páxina"
+msgstr "Configuración do editor"
 
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:46
@@ -606,7 +596,6 @@ msgstr "Era:"
 
 #. [button]
 #: data/gui/default/window/mp_create_game.cfg:196
-#, fuzzy
 msgid "Default"
 msgstr "Predeterminado"
 
@@ -1269,9 +1258,8 @@ msgid "Load Game"
 msgstr "Cargar Partida"
 
 #: src/gui/dialogs/mp_create_game.cpp:76
-#, fuzzy
 msgid "Load Game..."
-msgstr "\" fallou ó cargar debido a "
+msgstr "Cargar partida..."
 
 #: src/gui/dialogs/title_screen.cpp:71
 msgid "Version"
@@ -1304,9 +1292,8 @@ msgid "No default gui defined."
 msgstr "non se definiu ningunha implementación para a extensión."
 
 #: src/gui/widgets/settings.cpp:241
-#, fuzzy
 msgid "Window not defined."
-msgstr "Documento sen gardar."
+msgstr "Ventá non definida."
 
 #: src/gui/widgets/settings.cpp:305
 msgid ""
@@ -1336,9 +1323,8 @@ msgid "No grid defined."
 msgstr "Crear nova reixa"
 
 #: src/gui/widgets/window_builder.cpp:490
-#, fuzzy
 msgid "A row must have a column."
-msgstr "<small>Por columna:</small>"
+msgstr "Unha fila debe ter unha columna."
 
 #: src/gui/widgets/window_builder.cpp:491
 #, fuzzy
@@ -1553,9 +1539,8 @@ msgid "Skip animation"
 msgstr "Saltar a animación"
 
 #: src/hotkeys.cpp:99
-#, fuzzy
 msgid "Quit to Desktop"
-msgstr "Desktop Cutting Plotter"
+msgstr "Saír ó escritorio"
 
 #: src/hotkeys.cpp:100
 #, fuzzy
@@ -1580,28 +1565,24 @@ msgid "Save Map"
 msgstr "Gardar Mapa"
 
 #: src/hotkeys.cpp:107
-#, fuzzy
 msgid "Save Map As"
-msgstr "Coma subcapa da actual"
+msgstr "Gardar o mapa coma"
 
 #: src/hotkeys.cpp:108
-#, fuzzy
 msgid "Revert All Changes"
-msgstr "Buscar tódalas figuras"
+msgstr "Desbotar tódolos cambios"
 
 #: src/hotkeys.cpp:109
-#, fuzzy
 msgid "Map Information"
-msgstr "Información do uso da memoria"
+msgstr "Información do mapa"
 
 #: src/hotkeys.cpp:111
 msgid "Swap fore- and background terrains"
 msgstr ""
 
 #: src/hotkeys.cpp:112
-#, fuzzy
 msgid "Next Tool"
-msgstr "Seleccionar Seguinte"
+msgstr "Seguinte ferramenta"
 
 #: src/hotkeys.cpp:113
 #, fuzzy
@@ -1614,9 +1595,8 @@ msgid "Fill Tool"
 msgstr "Recheo non asignado"
 
 #: src/hotkeys.cpp:115
-#, fuzzy
 msgid "Selection Tool"
-msgstr "Selección cancelada."
+msgstr "Ferramenta de selección"
 
 #: src/hotkeys.cpp:117
 msgid "Set Starting Positions Tool"
@@ -1649,14 +1629,12 @@ msgid "Select All"
 msgstr "Seleccionar Todo"
 
 #: src/hotkeys.cpp:126
-#, fuzzy
 msgid "Select Inverse"
-msgstr "_Seleccionar Isto"
+msgstr "Inverter a selección"
 
 #: src/hotkeys.cpp:128
-#, fuzzy
 msgid "Select None"
-msgstr "_Seleccionar Isto"
+msgstr "Non seleccionar nada"
 
 #: src/hotkeys.cpp:130
 #, fuzzy
@@ -1702,14 +1680,12 @@ msgid "Randomize Tiles In Selection"
 msgstr "<small>Non hai degradados na selección</small>"
 
 #: src/hotkeys.cpp:150
-#, fuzzy
 msgid "Rotate Map"
-msgstr "Rotar os nodos"
+msgstr "Rotar o mapa"
 
 #: src/hotkeys.cpp:152
-#, fuzzy
 msgid "Generate Map"
-msgstr "Xerar Novo Mapa"
+msgstr "Xerar mapa"
 
 #: src/hotkeys.cpp:154
 #, fuzzy
@@ -1827,9 +1803,8 @@ msgid "Screenshot done"
 msgstr "Captura de Pantalla"
 
 #: src/hotkeys.cpp:893
-#, fuzzy
 msgid "Screenshot failed"
-msgstr "\" fallou ó cargar debido a "
+msgstr "Fallo ó capturar a pantalla"
 
 #: src/mapgen_dialog.cpp:109 src/preferences_display.cpp:217
 msgid "Close Window"
@@ -1910,9 +1885,8 @@ msgid "Hotkey Settings"
 msgstr "Preferencias de Atallos de Teclado"
 
 #: src/preferences_display.cpp:227 src/preferences_display.cpp:295
-#, fuzzy
 msgid "Press desired Hotkey (Esc cancels)"
-msgstr "Prema a tecla desexada"
+msgstr "Prema a tecla desexada (Esc para cancelar)"
 
 #: src/preferences_display.cpp:246
 msgid "Action"
@@ -1983,6 +1957,12 @@ msgstr ""
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr ""
 "Na sección '[$section|]' a clave obrigatoria '$key|' non está definida."
+
+#~ msgid "2000"
+#~ msgstr "2000"
+
+#~ msgid "-1"
+#~ msgstr "-1"
 
 #~ msgid "Rockbound Cave Lit"
 #~ msgstr "Cova Rochosa Iluminada"
