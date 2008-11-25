@@ -14,6 +14,7 @@
 
 #include "gui/dialogs/message.hpp"
 
+#include "gui/widgets/button.hpp"
 #include "gui/widgets/image.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/window.hpp"
@@ -27,17 +28,21 @@ twindow tmessage::build_window(CVideo& video)
 
 void tmessage::pre_show(CVideo& /*video*/, twindow& window)
 {
-	tlabel* title = 
-		dynamic_cast<tlabel*>(window.find_widget("title", false));
-	VALIDATE(title, missing_widget("title"));
+	if(!title_.empty()) {
+		tlabel* title = 
+			dynamic_cast<tlabel*>(window.find_widget("title", false));
+		VALIDATE(title, missing_widget("title"));
 
-	title->set_label(title_);
+		title->set_label(title_);
+	}
 
-	timage* image = 
-		dynamic_cast<timage*>(window.find_widget("image", false));
-	VALIDATE(image, missing_widget("image"));
+	if(!image_.empty()) {
+		timage* image = 
+			dynamic_cast<timage*>(window.find_widget("image", false));
+		VALIDATE(image, missing_widget("image"));
 
-	image->set_label(image_);
+		image->set_label(image_);
+	}
 
 	tcontrol* label = 
 		dynamic_cast<tcontrol*>(window.find_widget("label", false));
@@ -58,8 +63,10 @@ void tmessage::pre_show(CVideo& /*video*/, twindow& window)
 		 * returning 0,0 when called upon invisible items. Or the tgrid::tchild
 		 * should do that since an item with 0,0 might get a border.)
 		 */
-		tcontrol* button = 
-			dynamic_cast<tcontrol*>(window.find_widget("ok", false));
+		tbutton* button = 
+			dynamic_cast<tbutton*>(window.find_widget("ok", false));
+		VALIDATE(button, missing_widget("ok"));
+
 		button->set_visible(false);
 
 		window.layout();
