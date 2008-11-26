@@ -725,20 +725,24 @@ def consistency_check():
     "Consistency-check state information picked up by sanity_check"
     derivedlist = map(lambda x: x[2], derived_units)
     baselist = map(lambda x: x[3], derived_units)
+    derivations = dict(zip(derivedlist, baselist))
     for (filename, recruitdict, patterndict) in sides:
         for (rdifficulty, (rl, recruit)) in recruitdict.items():
             utypes = []
             for rtype in recruit:
+                base = rtype
                 if rtype not in unit_types:
                     # Assume WML coder knew what he was doing if macro reference
                     if not rtype.startswith("{"):
                         print '"%s", line %d: %s is not a known unit type' % (filename, rl, rtype)
                     continue
                 elif rtype not in usage:
-                    if not rtype in derivedlist:
+                    if rtype in derivedlist:
+                        base = derivations[rtype]
+                    else:
                         print '"%s", line %d: %s has no usage type' % (filename, rl, rtype)
                     continue
-                utype = usage[rtype]
+                utype = usage[base]
                 utypes.append(utype)
                 for (pdifficulty, (pl, recruit_pattern)) in patterndict.items():
                     if condition_match(pdifficulty, rdifficulty):
@@ -760,7 +764,7 @@ def consistency_check():
                             if utype not in utypes:
                                 rshow = '.'
                                 if rdifficulty is not None:
-                                    rshow = ' and difficulty ' + rdifficulty + '.'
+                                    rshow = ' at difficulty ' + rdifficulty + '.'
                                 print '"%s", line %d: no %s units recruitable%s' % (filename, pl, utype, rshow)
     if movetypes:
         for (unit_id, filename, line, movetype) in unit_movetypes:
