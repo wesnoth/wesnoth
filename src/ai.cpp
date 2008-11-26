@@ -377,7 +377,7 @@ bool ai::recruit_usage(const std::string& usage)
 			"available. Check the recruit and [ai] "
 			"recruitment_pattern keys for team '" + 
 			current_team().name() + "' against the usage key of the"
-			"units in question! Removing invalid "
+			" units in question! Removing invalid "
 			" recruitment_pattern entry and continuing...\n";
 		WRN_AI << warning;
 		lg::wml_error << warning;
