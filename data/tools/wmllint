@@ -472,11 +472,24 @@ def sanity_check(filename, lines):
     # last of each for later consistency checking.
     in_side = False
     in_ai = in_subunit = False
-    recruit = []
+    recruit = {}
     in_generator = False
     sidecount = 0
-    recruitment_pattern = []
+    recruitment_pattern = {}
+    ifdef_stack = [None]
     for i in range(len(lines)):
+        if lines[i].startswith("#ifdef"):
+            ifdef_stack.append(lines[i].strip().split()[1])
+            continue
+        if lines[i].startswith("#ifndef"):
+            ifdef_stack.append("!" + lines[i].strip().split()[1])
+            continue
+        if lines[i].startswith("#else"):
+            ifdef_stack.append("!" + ifdef_stack[-1])
+            continue
+        if lines[i].startswith("#endif"):
+            ifdef_stack.pop()
+            continue
         if "[generator]" in lines[i]:
             in_generator = True
             continue
@@ -491,8 +504,8 @@ def sanity_check(filename, lines):
             if recruit or recruitment_pattern:
                 sides.append((filename, recruit, recruitment_pattern))
             in_side = False
-            recruit = []
-            recruitment_pattern = []
+            recruit = {}
+            recruitment_pattern = {}
             continue
         elif in_side and "[ai]" in lines[i]:
             in_ai = True
@@ -511,14 +524,14 @@ def sanity_check(filename, lines):
         try:
             (key, prefix, value, comment) = parse_attribute(lines[i])
             if key == "recruit" and value:
-                recruit = (i+1, map(lambda x: x.strip(), value.split(",")))
+                recruit[ifdef_stack[-1]] = (i+1, map(lambda x: x.strip(), value.split(",")))
             elif key == "recruitment_pattern" and value:
                 if not in_ai:
                     print '"%s", line %d: recruitment_pattern outside [ai]' \
                               % (filename, i+1)
                 else:
-                    recruitment_pattern = (i+1, map(lambda x: x.strip(), value.split(",")))
-                    for utype in recruitment_pattern[1]:
+                    recruitment_pattern[ifdef_stack[-1]] = (i+1, map(lambda x: x.strip(), value.split(",")))
+                    for utype in recruitment_pattern[ifdef_stack[-1]][1]:
                         if not utype in usage_types:
                             print '"%s", line %d: unknown usage class %s' \
                                   % (filename, i+1, utype)
@@ -692,10 +705,8 @@ def consistency_check():
     utypes = []
     derivedlist = map(lambda x: x[2], derived_units)
     baselist = map(lambda x: x[3], derived_units)
-    for (filename, recruitlist, patternlist) in sides:
-        #print "%s: %d=%s, %d=%s" %  (filename, rl, recruit, pl, recruitment_pattern)
-        if recruitlist:
-            (rl, recruit) = recruitlist
+    for (filename, recruitdict, patterndict) in sides:
+        for (difficulty, (rl, recruit)) in recruitdict.items():
             for rtype in recruit:
                 if rtype not in unit_types:
                     # Assume WML coder knew what he was doing if macro reference
@@ -707,16 +718,15 @@ def consistency_check():
                         print '"%s", line %d: %s has no usage type' % (filename, rl, rtype)
                     continue
                 utype = usage[rtype]
-                if patternlist:
-                    (pl, recruitment_pattern) = patternlist
-                    if utype not in recruitment_pattern:
-                        print '"%s", line %d: %s (%s) doesn\'t match the recruitment pattern (%s) for its side' % (filename, rl, rtype, utype, ", ".join(recruitment_pattern))
-                    utypes.append(utype)
-            if patternlist:
-                (pl, recruitment_pattern) = patternlist
-                for utype in recruitment_pattern:
-                    if utype not in utypes:
-                        print '"%s", line %d: %s doesn\'t match a recruitable type for its side' % (filename, pl, utype)
+                #if patternlist:
+                #    (pl, recruitment_pattern) = patternlist
+                #    if utype not in recruitment_pattern:
+                #        print '"%s", line %d: %s (%s) doesn\'t match the recruitment pattern (%s) for its side' % (filename, rl, rtype, utype, ", ".join(recruitment_pattern))
+                #    utypes.append(utype)
+            #for (difficulty, (pl, recruitment_pattern)) in patterndict.items():
+            #    for utype in recruitment_pattern:
+            #        if utype not in utypes:
+            #            print '"%s", line %d: %s doesn\'t match a recruitable type for its side' % (filename, pl, utype)
     if movetypes:
         for (unit_id, filename, line, movetype) in unit_movetypes:
             if movetype not in movetypes:
