@@ -703,6 +703,24 @@ def sanity_check(filename, lines):
             lines = [lines[w-1].lstrip()] + lines[:w-1] + lines[w:]
     return lines
 
+def condition_match(p, q):
+    "Do two condition-states match?"
+    # The empty condition state is represented by None 
+    if p is None or q is None or (p == q):
+        return True
+    # Past this point it's all about handling cases with negation
+    sp = p
+    np = False
+    if sp.startswith("!"):
+        sp = sp[1:]
+        np = True
+    sq = q
+    nq = False
+    if sq.startswith("!"):
+        sq = sp[1:]
+        nq == True
+    return (sp != sq) and (np != nq)
+
 def consistency_check():
     "Consistency-check state information picked up by sanity_check"
     #utypes = {}
@@ -722,7 +740,7 @@ def consistency_check():
                     continue
                 utype = usage[rtype]
                 for (pdifficulty, (pl, recruit_pattern)) in patterndict.items():
-                    if pdifficulty is None or rdifficulty is None or pdifficulty == rdifficulty or ((rdifficulty[0]=="!") == ((pdifficulty[0]=="!"))):
+                    if condition_match(pdifficulty, rdifficulty):
                         #utypes[rdifficulty].append(utype)
                         if utype not in recruit_pattern:
                             rshow = ''
