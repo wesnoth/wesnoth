@@ -723,11 +723,11 @@ def condition_match(p, q):
 
 def consistency_check():
     "Consistency-check state information picked up by sanity_check"
-    #utypes = {}
     derivedlist = map(lambda x: x[2], derived_units)
     baselist = map(lambda x: x[3], derived_units)
     for (filename, recruitdict, patterndict) in sides:
         for (rdifficulty, (rl, recruit)) in recruitdict.items():
+            utypes = []
             for rtype in recruit:
                 if rtype not in unit_types:
                     # Assume WML coder knew what he was doing if macro reference
@@ -739,9 +739,9 @@ def consistency_check():
                         print '"%s", line %d: %s has no usage type' % (filename, rl, rtype)
                     continue
                 utype = usage[rtype]
+                utypes.append(utype)
                 for (pdifficulty, (pl, recruit_pattern)) in patterndict.items():
                     if condition_match(pdifficulty, rdifficulty):
-                        #utypes[rdifficulty].append(utype)
                         if utype not in recruit_pattern:
                             rshow = ''
                             if rdifficulty is not None:
@@ -750,10 +750,13 @@ def consistency_check():
                             if pdifficulty is not None:
                                 pshow = ' ' + pdifficulty
                             print '"%s", line %d: %s%s (%s) doesn\'t match the%s recruitment pattern (%s) for its side' % (filename, rl, rshow, rtype, utype, pshow, ", ".join(recruit_pattern))
-            #for (pdifficulty, (pl, recruitment_pattern)) in patterndict.items():
-            #    for utype in recruitment_pattern:
-            #        if utype not in utypes:
-            #            print '"%s", line %d: %s doesn\'t match a recruitable type for its side' % (filename, pl, utype)
+            # We have a list of all the usage types recruited at this sifficulty
+            # in utypes.  Use it to check the matching pattern, if any. 
+            for (pdifficulty, (pl, recruitment_pattern)) in patterndict.items():
+                if condition_match(pdifficulty, rdifficulty):
+                    for utype in recruitment_pattern:
+                        if utype not in utypes:
+                            print '"%s", line %d: %s doesn\'t match a recruitable type for its side and difficulty' % (filename, pl, utype)
     if movetypes:
         for (unit_id, filename, line, movetype) in unit_movetypes:
             if movetype not in movetypes:
