@@ -73,6 +73,7 @@ class frame_parameters{
 	halo(""),
 	halo_x(0),
 	halo_y(0),
+	halo_mod(""),
 	sound(""),
 	text(""),
 	text_color(0),
@@ -93,6 +94,7 @@ class frame_parameters{
 	std::string halo;
 	int halo_x;
 	int halo_y;
+	std::string halo_mod;
 	std::string sound;
 	std::string text;
 	Uint32 text_color;
@@ -120,6 +122,7 @@ class frame_builder {
 		halo_(""),
 		halo_x_(""),
 		halo_y_(""),
+		halo_mod_(""),
 		sound_(""),
 		text_(""),
 		text_color_(0),
@@ -139,7 +142,7 @@ class frame_builder {
 		frame_builder & image_diagonal(const image::locator image_diagonal,const std::string & image_mod="");
 		frame_builder & sound(const std::string& sound);
 		frame_builder & text(const std::string& text,const  Uint32 text_color);
-		frame_builder & halo(const std::string &halo, const std::string &halo_x, const std::string& halo_y);
+		frame_builder & halo(const std::string &halo, const std::string &halo_x, const std::string& halo_y,const std::string& halo_mod);
 		frame_builder & duration(const int duration);
 		frame_builder & blend(const std::string& blend_ratio,const Uint32 blend_color);
 		frame_builder & highlight(const std::string& highlight);
@@ -162,6 +165,7 @@ class frame_builder {
 		progressive_string halo_;
 		progressive_int halo_x_;
 		progressive_int halo_y_;
+		std::string halo_mod_;
 		std::string sound_;
 		std::string text_;
 		Uint32 text_color_;

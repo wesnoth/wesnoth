@@ -201,7 +201,7 @@ public:
 	 * skip functions assuming that)
 	 */
 	void redraw_unit(game_display& disp, const map_location& loc, const bool fake = false);
-	/** Clear unit_halo_ and unit_anim_halo_ */
+	/** Clear unit_halo_  */
 	void clear_haloes();
 
 
@@ -422,7 +422,6 @@ private:
 
 
 	int unit_halo_;
-	int unit_anim_halo_;
 	bool getsHit_;
 	bool refreshing_; // avoid infinite recursion
 	bool hidden_;

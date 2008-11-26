@@ -162,6 +162,7 @@ frame_builder::frame_builder(const config& cfg,const std::string& frame_string) 
 	halo_(""),
 	halo_x_(""),
 	halo_y_(""),
+	halo_mod_(""),
 	sound_(""),
 	text_(""),
 	text_color_(0),
@@ -191,7 +192,7 @@ frame_builder::frame_builder(const config& cfg,const std::string& frame_string) 
 	} else {
 		duration(atoi(cfg[frame_string+"end"].c_str()) - atoi(cfg[frame_string+"begin"].c_str()));
 	}
-	halo(cfg[frame_string+"halo"],cfg[frame_string+"halo_x"],cfg[frame_string+"halo_y"]);
+	halo(cfg[frame_string+"halo"],cfg[frame_string+"halo_x"],cfg[frame_string+"halo_y"],cfg[frame_string+"halo_mod"]);
 	 tmp_string_vect=utils::split(cfg[frame_string+"blend_color"]);
 	if(tmp_string_vect.size() ==3) {
 		blend(cfg[frame_string+"blend_ratio"],display::rgb(atoi(tmp_string_vect[0].c_str()),atoi(tmp_string_vect[1].c_str()),atoi(tmp_string_vect[2].c_str())));
@@ -217,6 +218,7 @@ const frame_parameters frame_builder::parameters(int current_time) const
 	result.halo = halo_.get_current_element(current_time);
 	result.halo_x = halo_x_.get_current_element(current_time);
 	result.halo_y = halo_y_.get_current_element(current_time);
+	result.halo_mod = halo_mod_;
 	result.sound = sound_;
 	result.text = text_;
 	result.text_color = text_color_;
@@ -253,11 +255,12 @@ frame_builder & frame_builder::text(const std::string& text,const  Uint32 text_c
 	text_color_=text_color;
 	return *this;
 }
-frame_builder & frame_builder::halo(const std::string &halo, const std::string &halo_x, const std::string& halo_y)
+frame_builder & frame_builder::halo(const std::string &halo, const std::string &halo_x, const std::string& halo_y,const std::string & halo_mod)
 {
 	halo_ = progressive_string(halo,duration_);
 	halo_x_ = progressive_int(halo_x,duration_);
 	halo_y_ = progressive_int(halo_y,duration_);
+	halo_mod_= halo_mod;
 	return *this;
 }
 frame_builder & frame_builder::duration(const int duration)
@@ -422,13 +425,13 @@ void unit_frame::redraw(const int frame_time,bool first_time,const map_location 
 		if(direction != map_location::SOUTH_WEST && direction != map_location::NORTH_WEST) {
 			*halo_id = halo::add(static_cast<int>(x+current_data.halo_x* game_display::get_singleton()->get_zoom_factor()),
 					static_cast<int>(y+current_data.halo_y* game_display::get_singleton()->get_zoom_factor()),
-					current_data.halo,
+					current_data.halo + current_data.halo_mod,
 					map_location(-1, -1),
 					orientation);
 		} else {
 			*halo_id = halo::add(static_cast<int>(x-current_data.halo_x* game_display::get_singleton()->get_zoom_factor()),
 					static_cast<int>(y+current_data.halo_y* game_display::get_singleton()->get_zoom_factor()),
-					current_data.halo,
+					current_data.halo + current_data.halo_mod,
 					map_location(-1, -1),
 					orientation);
 		}
@@ -522,6 +525,10 @@ const frame_parameters unit_frame::merge_parameters(int current_time,const frame
 	/** the engine provide y modification for terrain with height adjust and flying units */
 	result.halo_y = current_val.halo_y?current_val.halo_y:animation_val.halo_y;
 	result.halo_y += engine_val.halo_y;
+
+	/** engine provides hflip modifications */
+		result.halo_mod = current_val.halo_mod +animation_val.halo_mod;
+	if(primary)	result.halo_mod += engine_val.halo_mod;
 
 	assert(engine_val.duration == 0);
 	result.duration = current_val.duration;

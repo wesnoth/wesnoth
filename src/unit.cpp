@@ -140,7 +140,6 @@ unit::unit(const unit& o):
 
            frame_begin_time_(o.frame_begin_time_),
            unit_halo_(halo::NO_HALO),
-           unit_anim_halo_(halo::NO_HALO),
            getsHit_(o.getsHit_),
            refreshing_(o.refreshing_),
            hidden_(o.hidden_),
@@ -214,7 +213,6 @@ unit::unit(unit_map* unitmap, const gamemap* map, const gamestatus* game_status,
 	next_idling_(0),
 	frame_begin_time_(0),
 	unit_halo_(halo::NO_HALO),
-	unit_anim_halo_(halo::NO_HALO),
 	getsHit_(0),
 	refreshing_(false),
 	hidden_(false),
@@ -292,7 +290,6 @@ unit::unit(const config& cfg,bool use_traits) :
 	next_idling_(0),
 	frame_begin_time_(0),
 	unit_halo_(halo::NO_HALO),
-	unit_anim_halo_(halo::NO_HALO),
 	getsHit_(0),
 	refreshing_(false),
 	hidden_(false),
@@ -398,7 +395,6 @@ unit::unit(unit_map* unitmap, const gamemap* map, const gamestatus* game_status,
 	next_idling_(0),
 	frame_begin_time_(0),
 	unit_halo_(halo::NO_HALO),
-	unit_anim_halo_(halo::NO_HALO),
 	getsHit_(0),
 	refreshing_(false),
 	hidden_(false),
@@ -435,7 +431,6 @@ unit::unit(unit_map* unitmap, const gamemap* map, const gamestatus* game_status,
 	next_idling_ = 0;
 	frame_begin_time_ = 0;
 	unit_halo_ = halo::NO_HALO;
-	unit_anim_halo_ = halo::NO_HALO;
 }
 
 unit::unit(const unit_type* t, int side, bool use_traits, bool dummy_unit,
@@ -497,7 +492,6 @@ unit::unit(const unit_type* t, int side, bool use_traits, bool dummy_unit,
 	next_idling_(0),
 	frame_begin_time_(0),
 	unit_halo_(halo::NO_HALO),
-	unit_anim_halo_(halo::NO_HALO),
 	getsHit_(0),
 	refreshing_(false),
 	hidden_(false),
@@ -1843,6 +1837,7 @@ void unit::redraw_unit(game_display& disp, const map_location& loc, const bool f
 	if(utils::string_bool(get_state("stoned"))) params.image_mod +="~GS()";
 	if(facing_ == map_location::SOUTH_WEST || facing_ == map_location::SOUTH_EAST || facing_ == map_location::SOUTH ) {
 		params.image_mod +="~FL(vertical)";
+		params.halo_mod +="~FL(vertical)";
 	}
 
 	const frame_parameters adjusted_params = anim_->get_current_params(params,true);
@@ -1872,20 +1867,6 @@ void unit::redraw_unit(game_display& disp, const map_location& loc, const bool f
 	} else if(unit_halo_ != halo::NO_HALO) {
 		halo::set_location(unit_halo_, x, y);
 	}
-
-	if(unit_anim_halo_ != halo::NO_HALO) {
-		halo::remove(unit_anim_halo_);
-		unit_anim_halo_ = halo::NO_HALO;
-	}
-	if(!adjusted_params.halo.empty()) {
-		int dx = static_cast<int>(adjusted_params.halo_x * disp.get_zoom_factor());
-		int dy = static_cast<int>(adjusted_params.halo_y * disp.get_zoom_factor());
-		if (facing_west) dx = -dx;
-		unit_anim_halo_ = halo::add(x + dx, y+ dy,
-			adjusted_params.halo, map_location(-1, -1),
-			facing_west ? halo::HREVERSE : halo::NORMAL);
-	}
-
 
 
 
@@ -2024,10 +2005,6 @@ void unit::clear_haloes()
 		halo::remove(unit_halo_);
 		unit_halo_ = halo::NO_HALO;
 	}
-	if(unit_anim_halo_ != halo::NO_HALO) {
-		halo::remove(unit_anim_halo_);
-		unit_anim_halo_ = halo::NO_HALO;
-	}
 }
 bool unit::invalidate(const map_location &loc)
 {
@@ -2064,6 +2041,7 @@ bool unit::invalidate(const map_location &loc)
 				facing_ == map_location::SOUTH_EAST ||
 			       	facing_ == map_location::SOUTH ) {
 			params.image_mod +="~FL(vertical)";
+			params.halo_mod +="~FL(vertical)";
 		}
 
                 //get_animation()->update_last_draw_time();

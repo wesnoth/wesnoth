@@ -13,7 +13,6 @@
    */
 
 #include "global.hpp"
-
 #include "map.hpp"
 #include "halo.hpp"
 #include "unit.hpp"
