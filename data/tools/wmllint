@@ -751,12 +751,17 @@ def consistency_check():
                                 pshow = ' ' + pdifficulty
                             print '"%s", line %d: %s%s (%s) doesn\'t match the%s recruitment pattern (%s) for its side' % (filename, rl, rshow, rtype, utype, pshow, ", ".join(recruit_pattern))
             # We have a list of all the usage types recruited at this sifficulty
-            # in utypes.  Use it to check the matching pattern, if any. 
-            for (pdifficulty, (pl, recruitment_pattern)) in patterndict.items():
-                if condition_match(pdifficulty, rdifficulty):
-                    for utype in recruitment_pattern:
-                        if utype not in utypes:
-                            print '"%s", line %d: %s doesn\'t match a recruitable type for its side and difficulty' % (filename, pl, utype)
+            # in utypes.  Use it to check the matching pattern, if any. Suppress
+            # this check if the recruit line is a macroexpansion.
+            if recruit and not recruit[0].startswith("{"):
+                for (pdifficulty, (pl, recruitment_pattern)) in patterndict.items():
+                    if condition_match(pdifficulty, rdifficulty):
+                        for utype in recruitment_pattern:
+                            if utype not in utypes:
+                                rshow = '.'
+                                if rdifficulty is not None:
+                                    rshow = ' and difficulty ' + rdifficulty + '.'
+                                print '"%s", line %d: no %s units recruitable%s' % (filename, pl, utype, rshow)
     if movetypes:
         for (unit_id, filename, line, movetype) in unit_movetypes:
             if movetype not in movetypes:
