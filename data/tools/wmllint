@@ -485,7 +485,10 @@ def sanity_check(filename, lines):
             ifdef_stack.append("!" + lines[i].strip().split()[1])
             continue
         if lines[i].startswith("#else"):
-            ifdef_stack.append("!" + ifdef_stack[-1])
+            if ifdef_stack[-1].startswith("!"):
+                ifdef_stack.append(ifdef_stack[-1][1:])
+            else:
+                ifdef_stack.append("!" + ifdef_stack[-1])
             continue
         if lines[i].startswith("#endif"):
             ifdef_stack.pop()
@@ -702,11 +705,11 @@ def sanity_check(filename, lines):
 
 def consistency_check():
     "Consistency-check state information picked up by sanity_check"
-    utypes = []
+    #utypes = {}
     derivedlist = map(lambda x: x[2], derived_units)
     baselist = map(lambda x: x[3], derived_units)
     for (filename, recruitdict, patterndict) in sides:
-        for (difficulty, (rl, recruit)) in recruitdict.items():
+        for (rdifficulty, (rl, recruit)) in recruitdict.items():
             for rtype in recruit:
                 if rtype not in unit_types:
                     # Assume WML coder knew what he was doing if macro reference
@@ -718,12 +721,18 @@ def consistency_check():
                         print '"%s", line %d: %s has no usage type' % (filename, rl, rtype)
                     continue
                 utype = usage[rtype]
-                #if patternlist:
-                #    (pl, recruitment_pattern) = patternlist
-                #    if utype not in recruitment_pattern:
-                #        print '"%s", line %d: %s (%s) doesn\'t match the recruitment pattern (%s) for its side' % (filename, rl, rtype, utype, ", ".join(recruitment_pattern))
-                #    utypes.append(utype)
-            #for (difficulty, (pl, recruitment_pattern)) in patterndict.items():
+                for (pdifficulty, (pl, recruit_pattern)) in patterndict.items():
+                    if pdifficulty is None or rdifficulty is None or pdifficulty == rdifficulty or ((rdifficulty[0]=="!") == ((pdifficulty[0]=="!"))):
+                        #utypes[rdifficulty].append(utype)
+                        if utype not in recruit_pattern:
+                            rshow = ''
+                            if rdifficulty is not None:
+                                rshow = 'At ' + rdifficulty + ', '
+                            pshow = ''
+                            if pdifficulty is not None:
+                                pshow = ' ' + pdifficulty
+                            print '"%s", line %d: %s%s (%s) doesn\'t match the%s recruitment pattern (%s) for its side' % (filename, rl, rshow, rtype, utype, pshow, ", ".join(recruit_pattern))
+            #for (pdifficulty, (pl, recruitment_pattern)) in patterndict.items():
             #    for utype in recruitment_pattern:
             #        if utype not in utypes:
             #            print '"%s", line %d: %s doesn\'t match a recruitable type for its side' % (filename, pl, utype)
