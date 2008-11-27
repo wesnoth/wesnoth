@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-22 14:55+0100\n"
+"POT-Creation-Date: 2008-11-27 19:52+0100\n"
 "PO-Revision-Date: 2007-11-30 18:25+0100\n"
 "Last-Translator: Stefan Bergström (tephlon) <stefan DOT bergstrom AT gmail "
 "DOT com>\n"
@@ -157,7 +157,7 @@ msgstr "Vill du verkligen sluta?"
 msgid "Fatal error"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:255 src/editor2/editor_controller.cpp:951
+#: src/editor2/editor_controller.cpp:255 src/editor2/editor_controller.cpp:952
 msgid "(New Map)"
 msgstr ""
 
@@ -238,8 +238,8 @@ msgstr ""
 msgid "Choose target map"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:494 src/editor2/editor_controller.cpp:606
-#: src/editor2/editor_main.cpp:50
+#: src/editor2/editor_controller.cpp:494 src/editor2/editor_controller.cpp:607
+#: src/editor2/editor_main.cpp:51
 msgid "Error loading map"
 msgstr ""
 
@@ -251,39 +251,31 @@ msgstr "Kartan har sparats."
 msgid "Could not save the map: $msg"
 msgstr "Kunde inte spara kartan: $msg"
 
-#: src/editor2/editor_controller.cpp:978
+#: src/editor2/editor_controller.cpp:979
 msgid "Undo"
 msgstr "Ångra"
 
-#: src/editor2/editor_controller.cpp:980
+#: src/editor2/editor_controller.cpp:981
 msgid "Can't Undo"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:984
+#: src/editor2/editor_controller.cpp:985
 msgid "Redo"
 msgstr "Gör om"
 
-#: src/editor2/editor_controller.cpp:986
+#: src/editor2/editor_controller.cpp:987
 msgid "Can't Redo"
 msgstr ""
 
-#: src/editor2/editor_map.cpp:63
+#: src/editor2/editor_map.cpp:82
 msgid "Empty map file or file not found"
 msgstr ""
 
-#: src/editor2/editor_map.cpp:71
-msgid "There was a format error while loading the file:"
-msgstr ""
-
-#: src/editor2/editor_map.cpp:77
-msgid "There was a wml error while loading the file:"
-msgstr ""
-
-#: src/editor2/editor_map.cpp:150 src/editor2/mouse_action.cpp:379
+#: src/editor2/editor_map.cpp:163 src/editor2/mouse_action.cpp:383
 msgid "Player"
 msgstr "Spelare"
 
-#: src/editor2/editor_map.cpp:269
+#: src/editor2/editor_map.cpp:282
 msgid "The size of the target map is different from the current map"
 msgstr ""
 
@@ -295,16 +287,16 @@ msgstr "FG"
 msgid "BG"
 msgstr "BG"
 
-#: src/editor2/mouse_action.cpp:376
+#: src/editor2/mouse_action.cpp:380
 #, fuzzy
 msgid "(Player)^None"
 msgstr "Spelare"
 
-#: src/editor2/mouse_action.cpp:383
+#: src/editor2/mouse_action.cpp:387
 msgid "Choose player"
 msgstr ""
 
-#: src/editor2/mouse_action.cpp:384
+#: src/editor2/mouse_action.cpp:388
 msgid ""
 "Which player should start here? You can also use the 1-9 and delete keys to "
 "set/clear staring positions."

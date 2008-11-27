@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-22 14:55+0100\n"
+"POT-Creation-Date: 2008-11-27 19:52+0100\n"
 "PO-Revision-Date: 2008-10-04 14:22+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
@@ -164,7 +164,7 @@ msgstr "Ukončení editoru"
 msgid "Fatal error"
 msgstr "Kritická chyba"
 
-#: src/editor2/editor_controller.cpp:255 src/editor2/editor_controller.cpp:951
+#: src/editor2/editor_controller.cpp:255 src/editor2/editor_controller.cpp:952
 msgid "(New Map)"
 msgstr ""
 
@@ -248,8 +248,8 @@ msgstr "Chyba načítání mapy"
 msgid "Choose target map"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:494 src/editor2/editor_controller.cpp:606
-#: src/editor2/editor_main.cpp:50
+#: src/editor2/editor_controller.cpp:494 src/editor2/editor_controller.cpp:607
+#: src/editor2/editor_main.cpp:51
 msgid "Error loading map"
 msgstr "Chyba načítání mapy"
 
@@ -261,41 +261,31 @@ msgstr "Mapa byla uložena."
 msgid "Could not save the map: $msg"
 msgstr "Nepodařilo se uložit mapu: $msg"
 
-#: src/editor2/editor_controller.cpp:978
+#: src/editor2/editor_controller.cpp:979
 msgid "Undo"
 msgstr "Zpátky"
 
-#: src/editor2/editor_controller.cpp:980
+#: src/editor2/editor_controller.cpp:981
 msgid "Can't Undo"
 msgstr "Nelze vrátit"
 
-#: src/editor2/editor_controller.cpp:984
+#: src/editor2/editor_controller.cpp:985
 msgid "Redo"
 msgstr "Vrať"
 
-#: src/editor2/editor_controller.cpp:986
+#: src/editor2/editor_controller.cpp:987
 msgid "Can't Redo"
 msgstr "Nelze opakovat"
 
-#: src/editor2/editor_map.cpp:63
+#: src/editor2/editor_map.cpp:82
 msgid "Empty map file or file not found"
 msgstr "Soubor mapy nebyl nalezen nebo je prázdný"
 
-#: src/editor2/editor_map.cpp:71
-#, fuzzy
-msgid "There was a format error while loading the file:"
-msgstr "Při načítání mapy se vyskytla chyba formátu:"
-
-#: src/editor2/editor_map.cpp:77
-#, fuzzy
-msgid "There was a wml error while loading the file:"
-msgstr "Při načítání mapy se vyskytla chyba WML:"
-
-#: src/editor2/editor_map.cpp:150 src/editor2/mouse_action.cpp:379
+#: src/editor2/editor_map.cpp:163 src/editor2/mouse_action.cpp:383
 msgid "Player"
 msgstr "Hráč"
 
-#: src/editor2/editor_map.cpp:269
+#: src/editor2/editor_map.cpp:282
 msgid "The size of the target map is different from the current map"
 msgstr ""
 
@@ -307,15 +297,15 @@ msgstr "Popředí"
 msgid "BG"
 msgstr "Pozadí"
 
-#: src/editor2/mouse_action.cpp:376
+#: src/editor2/mouse_action.cpp:380
 msgid "(Player)^None"
 msgstr "Žádný"
 
-#: src/editor2/mouse_action.cpp:383
+#: src/editor2/mouse_action.cpp:387
 msgid "Choose player"
 msgstr ""
 
-#: src/editor2/mouse_action.cpp:384
+#: src/editor2/mouse_action.cpp:388
 msgid ""
 "Which player should start here? You can also use the 1-9 and delete keys to "
 "set/clear staring positions."
@@ -324,6 +314,14 @@ msgstr ""
 #: src/gui/dialogs/editor_settings.cpp:116
 msgid "Custom setting"
 msgstr ""
+
+#, fuzzy
+#~ msgid "There was a format error while loading the file:"
+#~ msgstr "Při načítání mapy se vyskytla chyba formátu:"
+
+#, fuzzy
+#~ msgid "There was a wml error while loading the file:"
+#~ msgstr "Při načítání mapy se vyskytla chyba WML:"
 
 #~ msgid "There are unsaved changes in the map."
 #~ msgstr "Na mapě jsou neuložené změny."

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu-lib_1.5\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-22 15:03+0100\n"
+"POT-Creation-Date: 2008-11-27 19:52+0100\n"
 "PO-Revision-Date: 2008-10-24 20:44+0200\n"
 "Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
 "Language-Team: Hungarian\n"
@@ -416,7 +416,7 @@ msgstr "Új pálya generálása"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_new_map.cfg:27 src/hotkeys.cpp:104
+#: data/gui/default/window/editor_new_map.cfg:27 src/hotkeys.cpp:105
 msgid "New Map"
 msgstr "Új pálya"
 
@@ -441,7 +441,7 @@ msgstr "Új pálya készítése"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_resize_map.cfg:27 src/hotkeys.cpp:148
+#: data/gui/default/window/editor_resize_map.cfg:27 src/hotkeys.cpp:149
 msgid "Resize Map"
 msgstr "Pálya átméretezése"
 
@@ -488,7 +488,7 @@ msgstr "Pálya átméretezése"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_settings.cfg:38 src/hotkeys.cpp:102
+#: data/gui/default/window/editor_settings.cfg:38 src/hotkeys.cpp:103
 #, fuzzy
 msgid "Editor Settings"
 msgstr "Gyorsbillentyűk beállításai"
@@ -772,7 +772,7 @@ msgstr "Kilépés a szerkesztőből"
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:84
-#: src/game_preferences_display.cpp:49 src/hotkeys.cpp:75
+#: src/game_preferences_display.cpp:49 src/hotkeys.cpp:76
 msgid "Preferences"
 msgstr "Beállítások"
 
@@ -783,8 +783,8 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
-#: data/gui/default/window/title_screen.cfg:86 src/hotkeys.cpp:648
-#: src/hotkeys.cpp:929
+#: data/gui/default/window/title_screen.cfg:86 src/hotkeys.cpp:649
+#: src/hotkeys.cpp:930
 msgid "Quit"
 msgstr "Kilépés"
 
@@ -832,7 +832,7 @@ msgstr "Egy kiszolgáló sincs megadva."
 msgid "player"
 msgstr "játékos"
 
-#: src/game_preferences_display.cpp:150 src/hotkeys.cpp:54
+#: src/game_preferences_display.cpp:150 src/hotkeys.cpp:55
 msgid "Toggle Full Screen"
 msgstr "Teljes képernyős mód beállítása"
 
@@ -1277,11 +1277,11 @@ msgstr ""
 msgid "Find $filename server binary to host networked games"
 msgstr ""
 
-#: src/gui/dialogs/mp_create_game.cpp:75 src/hotkeys.cpp:63
+#: src/gui/dialogs/mp_create_game.cpp:76 src/hotkeys.cpp:64
 msgid "Load Game"
 msgstr "Játék betöltése"
 
-#: src/gui/dialogs/mp_create_game.cpp:76
+#: src/gui/dialogs/mp_create_game.cpp:77
 #, fuzzy
 msgid "Load Game..."
 msgstr "Játék betöltése"
@@ -1311,36 +1311,36 @@ msgstr ""
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr "Egy kiszolgáló sincs megadva."
 
-#: src/gui/widgets/settings.cpp:115
+#: src/gui/widgets/settings.cpp:117
 #, fuzzy
 msgid "No default gui defined."
 msgstr "Egy kiszolgáló sincs megadva."
 
-#: src/gui/widgets/settings.cpp:241
+#: src/gui/widgets/settings.cpp:243
 msgid "Window not defined."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:305
+#: src/gui/widgets/settings.cpp:307
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:417 src/gui/widgets/window_builder.cpp:272
+#: src/gui/widgets/settings.cpp:419 src/gui/widgets/window_builder.cpp:272
 #, fuzzy
 msgid "No resolution defined."
 msgstr "Egy kiszolgáló sincs megadva."
 
-#: src/gui/widgets/settings.cpp:449
+#: src/gui/widgets/settings.cpp:451
 #, fuzzy
 msgid "No state or draw section defined."
 msgstr "Egy kiszolgáló sincs megadva."
 
-#: src/gui/widgets/settings.cpp:629
+#: src/gui/widgets/settings.cpp:631
 #, fuzzy
 msgid "No scrollbar defined."
 msgstr "Egy kiszolgáló sincs megadva."
 
-#: src/gui/widgets/settings.cpp:785 src/gui/widgets/window_builder.cpp:363
+#: src/gui/widgets/settings.cpp:787 src/gui/widgets/window_builder.cpp:363
 #: src/gui/widgets/window_builder.cpp:946
 #: src/gui/widgets/window_builder.cpp:1157
 #, fuzzy
@@ -1373,456 +1373,456 @@ msgstr ""
 msgid "The number of value_labels and values don't match."
 msgstr ""
 
-#: src/hotkeys.cpp:44
+#: src/hotkeys.cpp:45
 msgid "Next Unit"
 msgstr "Következő egység"
 
-#: src/hotkeys.cpp:45
+#: src/hotkeys.cpp:46
 msgid "Previous Unit"
 msgstr "Előző egység"
 
-#: src/hotkeys.cpp:46
+#: src/hotkeys.cpp:47
 msgid "Hold Position"
 msgstr "Állás megtartása"
 
-#: src/hotkeys.cpp:47
+#: src/hotkeys.cpp:48
 msgid "End Unit Turn"
 msgstr "Egység körének vége"
 
-#: src/hotkeys.cpp:48
+#: src/hotkeys.cpp:49
 msgid "Leader"
 msgstr "Vezér"
 
-#: src/hotkeys.cpp:49
+#: src/hotkeys.cpp:50
 msgid "Undo"
 msgstr "Visszavonás"
 
-#: src/hotkeys.cpp:50
+#: src/hotkeys.cpp:51
 msgid "Redo"
 msgstr "Megismétlés"
 
-#: src/hotkeys.cpp:51
+#: src/hotkeys.cpp:52
 msgid "Zoom In"
 msgstr "Ráközelítés"
 
-#: src/hotkeys.cpp:52
+#: src/hotkeys.cpp:53
 msgid "Zoom Out"
 msgstr "Eltávolítás"
 
-#: src/hotkeys.cpp:53
+#: src/hotkeys.cpp:54
 msgid "Default Zoom"
 msgstr "Alap ráközelítés"
 
-#: src/hotkeys.cpp:55 src/hotkeys.cpp:884
+#: src/hotkeys.cpp:56 src/hotkeys.cpp:885
 msgid "Screenshot"
 msgstr "Képernyőkép"
 
-#: src/hotkeys.cpp:56
+#: src/hotkeys.cpp:57
 #, fuzzy
 msgid "Map Screenshot"
 msgstr "Képernyőkép"
 
-#: src/hotkeys.cpp:57
+#: src/hotkeys.cpp:58
 msgid "Accelerated"
 msgstr "Felgyorsítva"
 
-#: src/hotkeys.cpp:58
+#: src/hotkeys.cpp:59
 msgid "Unit Description"
 msgstr "Egység leírása"
 
-#: src/hotkeys.cpp:59
+#: src/hotkeys.cpp:60
 msgid "Rename Unit"
 msgstr "Egység átnevezése"
 
-#: src/hotkeys.cpp:60
+#: src/hotkeys.cpp:61
 msgid "Save Game"
 msgstr "Állás mentése"
 
-#: src/hotkeys.cpp:61
+#: src/hotkeys.cpp:62
 msgid "Save Replay"
 msgstr "Visszajátszás mentése"
 
-#: src/hotkeys.cpp:62
+#: src/hotkeys.cpp:63
 msgid "Save The Map"
 msgstr "Pálya mentése"
 
-#: src/hotkeys.cpp:64
+#: src/hotkeys.cpp:65
 msgid "Recruit"
 msgstr "Toborzás"
 
-#: src/hotkeys.cpp:65
+#: src/hotkeys.cpp:66
 msgid "Repeat Recruit"
 msgstr "Toborzás megismétlése"
 
-#: src/hotkeys.cpp:66
+#: src/hotkeys.cpp:67
 msgid "Recall"
 msgstr "Visszahívás"
 
-#: src/hotkeys.cpp:67
+#: src/hotkeys.cpp:68
 msgid "End Turn"
 msgstr "Kör vége"
 
-#: src/hotkeys.cpp:68
+#: src/hotkeys.cpp:69
 msgid "Toggle Grid"
 msgstr "Rács átkapcsolása"
 
-#: src/hotkeys.cpp:69
+#: src/hotkeys.cpp:70
 msgid "Mouse Scrolling"
 msgstr "Egérgörgetés"
 
-#: src/hotkeys.cpp:70
+#: src/hotkeys.cpp:71
 msgid "Status Table"
 msgstr "Helyezések"
 
-#: src/hotkeys.cpp:71
+#: src/hotkeys.cpp:72
 msgid "Mute"
 msgstr "Elnémítás"
 
-#: src/hotkeys.cpp:72
+#: src/hotkeys.cpp:73
 msgid "Speak"
 msgstr "Beszélés"
 
-#: src/hotkeys.cpp:73
+#: src/hotkeys.cpp:74
 msgid "Create Unit (Debug!)"
 msgstr "Egység létrehozása (hibajavítás!)"
 
-#: src/hotkeys.cpp:74
+#: src/hotkeys.cpp:75
 msgid "Change Unit Side (Debug!)"
 msgstr "Egység átállítása (hibajavítás!)"
 
-#: src/hotkeys.cpp:76
+#: src/hotkeys.cpp:77
 msgid "Scenario Objectives"
 msgstr "Pálya céljai"
 
-#: src/hotkeys.cpp:77
+#: src/hotkeys.cpp:78
 msgid "Unit List"
 msgstr "Egységlista"
 
-#: src/hotkeys.cpp:78
+#: src/hotkeys.cpp:79
 msgid "Statistics"
 msgstr "Statisztikák"
 
-#: src/hotkeys.cpp:79
+#: src/hotkeys.cpp:80
 msgid "Quit Game"
 msgstr "Kilépés a játékból"
 
-#: src/hotkeys.cpp:80
+#: src/hotkeys.cpp:81
 msgid "Set Team Label"
 msgstr "Csapat címkéjének megadása"
 
-#: src/hotkeys.cpp:81
+#: src/hotkeys.cpp:82
 msgid "Set Label"
 msgstr "Címke megadása"
 
-#: src/hotkeys.cpp:82
+#: src/hotkeys.cpp:83
 msgid "Clear Labels"
 msgstr "Címkék kitörlése"
 
-#: src/hotkeys.cpp:83
+#: src/hotkeys.cpp:84
 msgid "Show Enemy Moves"
 msgstr "Ellenséges lépések mutatása"
 
-#: src/hotkeys.cpp:84
+#: src/hotkeys.cpp:85
 msgid "Best Possible Enemy Moves"
 msgstr "Legjobb lehetséges ellenséges lépések"
 
-#: src/hotkeys.cpp:85
+#: src/hotkeys.cpp:86
 msgid "Play"
 msgstr "Indítás"
 
-#: src/hotkeys.cpp:86
+#: src/hotkeys.cpp:87
 msgid "Reset"
 msgstr "Újraindítás"
 
-#: src/hotkeys.cpp:87
+#: src/hotkeys.cpp:88
 msgid "Stop"
 msgstr "Megállítás"
 
-#: src/hotkeys.cpp:88
+#: src/hotkeys.cpp:89
 msgid "Next Turn"
 msgstr "Következő kör"
 
-#: src/hotkeys.cpp:89
+#: src/hotkeys.cpp:90
 msgid "Next Side"
 msgstr "Következő játékos"
 
-#: src/hotkeys.cpp:91
+#: src/hotkeys.cpp:92
 msgid "Full map"
 msgstr "Teljes pálya"
 
-#: src/hotkeys.cpp:93
+#: src/hotkeys.cpp:94
 msgid "Each team"
 msgstr "Mindegyik csapat"
 
-#: src/hotkeys.cpp:95
+#: src/hotkeys.cpp:96
 msgid "Team 1"
 msgstr "Csapat 1"
 
-#: src/hotkeys.cpp:96
+#: src/hotkeys.cpp:97
 msgid "Skip animation"
 msgstr "Animációk átugrása"
 
-#: src/hotkeys.cpp:99
+#: src/hotkeys.cpp:100
 msgid "Quit to Desktop"
 msgstr ""
 
-#: src/hotkeys.cpp:100
+#: src/hotkeys.cpp:101
 #, fuzzy
 msgid "Close Map"
 msgstr "Bezár"
 
-#: src/hotkeys.cpp:101
+#: src/hotkeys.cpp:102
 msgid "Switch Map"
 msgstr ""
 
-#: src/hotkeys.cpp:103
+#: src/hotkeys.cpp:104
 msgid "Partial Undo"
 msgstr ""
 
-#: src/hotkeys.cpp:105
+#: src/hotkeys.cpp:106
 msgid "Load Map"
 msgstr "Pálya betöltése"
 
-#: src/hotkeys.cpp:106
+#: src/hotkeys.cpp:107
 msgid "Save Map"
 msgstr "Pálya mentése"
 
-#: src/hotkeys.cpp:107
+#: src/hotkeys.cpp:108
 #, fuzzy
 msgid "Save Map As"
 msgstr "Pálya mentése"
 
-#: src/hotkeys.cpp:108
+#: src/hotkeys.cpp:109
 msgid "Revert All Changes"
 msgstr ""
 
-#: src/hotkeys.cpp:109
+#: src/hotkeys.cpp:110
 #, fuzzy
 msgid "Map Information"
 msgstr "Pályarajzoló"
 
-#: src/hotkeys.cpp:111
+#: src/hotkeys.cpp:112
 msgid "Swap fore- and background terrains"
 msgstr ""
 
-#: src/hotkeys.cpp:112
+#: src/hotkeys.cpp:113
 #, fuzzy
 msgid "Next Tool"
 msgstr "Következő kör"
 
-#: src/hotkeys.cpp:113
+#: src/hotkeys.cpp:114
 msgid "Paint Tool"
 msgstr ""
 
-#: src/hotkeys.cpp:114
+#: src/hotkeys.cpp:115
 msgid "Fill Tool"
 msgstr ""
 
-#: src/hotkeys.cpp:115
+#: src/hotkeys.cpp:116
 #, fuzzy
 msgid "Selection Tool"
 msgstr "Minden kijelölése"
 
-#: src/hotkeys.cpp:117
+#: src/hotkeys.cpp:118
 msgid "Set Starting Positions Tool"
 msgstr ""
 
-#: src/hotkeys.cpp:118
+#: src/hotkeys.cpp:119
 #, fuzzy
 msgid "Next Brush"
 msgstr "Következő kör"
 
-#: src/hotkeys.cpp:119
+#: src/hotkeys.cpp:120
 #, fuzzy
 msgid "Default Brush"
 msgstr "Alap ráközelítés"
 
-#: src/hotkeys.cpp:120
+#: src/hotkeys.cpp:121
 msgid "Cut"
 msgstr "Kivágás"
 
-#: src/hotkeys.cpp:121
+#: src/hotkeys.cpp:122
 msgid "Copy"
 msgstr "Másolás"
 
-#: src/hotkeys.cpp:122
+#: src/hotkeys.cpp:123
 msgid "Paste"
 msgstr "Beillesztés"
 
-#: src/hotkeys.cpp:124
+#: src/hotkeys.cpp:125
 msgid "Select All"
 msgstr "Minden kijelölése"
 
-#: src/hotkeys.cpp:126
+#: src/hotkeys.cpp:127
 msgid "Select Inverse"
 msgstr ""
 
-#: src/hotkeys.cpp:128
+#: src/hotkeys.cpp:129
 #, fuzzy
 msgid "Select None"
 msgstr "Minden kijelölése"
 
-#: src/hotkeys.cpp:130
+#: src/hotkeys.cpp:131
 msgid "Rotate Clipboard Clockwise"
 msgstr ""
 
-#: src/hotkeys.cpp:132
+#: src/hotkeys.cpp:133
 msgid "Rotate Clipboard Counter-Clockwise"
 msgstr ""
 
-#: src/hotkeys.cpp:134
+#: src/hotkeys.cpp:135
 msgid "Flip Clipboard Horizontally"
 msgstr ""
 
-#: src/hotkeys.cpp:136
+#: src/hotkeys.cpp:137
 msgid "Flip Clipboard Vertically"
 msgstr ""
 
-#: src/hotkeys.cpp:138
+#: src/hotkeys.cpp:139
 msgid "Rotate Selection"
 msgstr "A kitöltő elem elforgatása"
 
-#: src/hotkeys.cpp:140
+#: src/hotkeys.cpp:141
 #, fuzzy
 msgid "Flip Selection"
 msgstr "A kitöltő elem megválasztása"
 
-#: src/hotkeys.cpp:142
+#: src/hotkeys.cpp:143
 msgid "Fill Selection"
 msgstr "A kitöltő elem megválasztása"
 
-#: src/hotkeys.cpp:144
+#: src/hotkeys.cpp:145
 #, fuzzy
 msgid "Generate Tiles In Selection"
 msgstr "A kitöltő elem elforgatása"
 
-#: src/hotkeys.cpp:146
+#: src/hotkeys.cpp:147
 msgid "Randomize Tiles In Selection"
 msgstr ""
 
-#: src/hotkeys.cpp:150
+#: src/hotkeys.cpp:151
 #, fuzzy
 msgid "Rotate Map"
 msgstr "Pálya betöltése"
 
-#: src/hotkeys.cpp:152
+#: src/hotkeys.cpp:153
 #, fuzzy
 msgid "Generate Map"
 msgstr "Új pálya generálása"
 
-#: src/hotkeys.cpp:154
+#: src/hotkeys.cpp:155
 msgid "Apply a Mask"
 msgstr ""
 
-#: src/hotkeys.cpp:156
+#: src/hotkeys.cpp:157
 #, fuzzy
 msgid "Create Mask"
 msgstr "Állás mentése"
 
-#: src/hotkeys.cpp:158
+#: src/hotkeys.cpp:159
 #, fuzzy
 msgid "Refresh Display"
 msgstr "Képernyő"
 
-#: src/hotkeys.cpp:160
+#: src/hotkeys.cpp:161
 #, fuzzy
 msgid "Update Terrain Transitions"
 msgstr "Áttűnések frissítése"
 
-#: src/hotkeys.cpp:162
+#: src/hotkeys.cpp:163
 #, fuzzy
 msgid "Auto-update Terrain Transitions"
 msgstr "Áttűnések frissítése"
 
-#: src/hotkeys.cpp:164
+#: src/hotkeys.cpp:165
 msgid "Refresh Image Cache"
 msgstr "Képek átmeneti tárolójának frissítése"
 
-#: src/hotkeys.cpp:166
+#: src/hotkeys.cpp:167
 msgid "Draw Hex Coordinates"
 msgstr ""
 
-#: src/hotkeys.cpp:168
+#: src/hotkeys.cpp:169
 #, fuzzy
 msgid "Draw Terrain Codes"
 msgstr "Terület megrajzolása"
 
-#: src/hotkeys.cpp:173
+#: src/hotkeys.cpp:174
 msgid "Delay Shroud Updates"
 msgstr "Eltakarás frissítésének késleltetése"
 
-#: src/hotkeys.cpp:174
+#: src/hotkeys.cpp:175
 msgid "Update Shroud Now"
 msgstr "Eltakarás frissítése most"
 
-#: src/hotkeys.cpp:175
+#: src/hotkeys.cpp:176
 msgid "Continue Move"
 msgstr "Lépés folytatása"
 
-#: src/hotkeys.cpp:176
+#: src/hotkeys.cpp:177
 msgid "Find Label or Unit"
 msgstr "Címke vagy egység keresése"
 
-#: src/hotkeys.cpp:177
+#: src/hotkeys.cpp:178
 msgid "Speak to Ally"
 msgstr "Szólás a szövetségesekhez"
 
-#: src/hotkeys.cpp:178
+#: src/hotkeys.cpp:179
 msgid "Speak to All"
 msgstr "Szólás mindenkihez"
 
-#: src/hotkeys.cpp:179
+#: src/hotkeys.cpp:180
 msgid "Help"
 msgstr "Segítség"
 
-#: src/hotkeys.cpp:180
+#: src/hotkeys.cpp:181
 msgid "View Chat Log"
 msgstr "Csevegésnapló megtekintése"
 
-#: src/hotkeys.cpp:181
+#: src/hotkeys.cpp:182
 msgid "Change the language"
 msgstr "Nyelv megváltoztatása"
 
-#: src/hotkeys.cpp:183
+#: src/hotkeys.cpp:184
 msgid "Enter user command"
 msgstr "Felhasználói parancs megadása"
 
-#: src/hotkeys.cpp:184
+#: src/hotkeys.cpp:185
 #, fuzzy
 msgid "Custom command"
 msgstr "Felhasználói parancs megadása"
 
-#: src/hotkeys.cpp:185
+#: src/hotkeys.cpp:186
 msgid "Run AI formula"
 msgstr ""
 
-#: src/hotkeys.cpp:186
+#: src/hotkeys.cpp:187
 msgid "Clear messages"
 msgstr "Üzenetek kitörlése"
 
-#: src/hotkeys.cpp:188
+#: src/hotkeys.cpp:189
 msgid "User-Command#2"
 msgstr "Felhasználói Parancs#2"
 
-#: src/hotkeys.cpp:189
+#: src/hotkeys.cpp:190
 msgid "User-Command#3"
 msgstr "Felhasználói Parancs#3"
 
-#: src/hotkeys.cpp:648 src/hotkeys.cpp:929
+#: src/hotkeys.cpp:649 src/hotkeys.cpp:930
 msgid "Do you really want to quit?"
 msgstr "Biztos ki akarsz lépni?"
 
-#: src/hotkeys.cpp:884
+#: src/hotkeys.cpp:885
 #, fuzzy
 msgid "Map-Screenshot"
 msgstr "Képernyőkép"
 
-#: src/hotkeys.cpp:891
+#: src/hotkeys.cpp:892
 #, fuzzy
 msgid "Screenshot done"
 msgstr "Képernyőkép"
 
-#: src/hotkeys.cpp:893
+#: src/hotkeys.cpp:894
 #, fuzzy
 msgid "Screenshot failed"
 msgstr "Képernyőkép"

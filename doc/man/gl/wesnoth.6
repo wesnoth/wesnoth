@@ -1,0 +1,231 @@
+.\" This program is free software; you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation; either version 2 of the License, or
+.\" (at your option) any later version.
+.\"
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program; if not, write to the Free Software
+.\" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+.\"
+.
+.\"*******************************************************************
+.\"
+.\" This file was generated with po4a. Translate the source file.
+.\"
+.\"*******************************************************************
+.TH WESNOTH 6 2007 wesnoth "Battle for Wesnoth"
+.
+.SH NOME
+wesnoth \- Battle for Wesnoth, un xogo fantástico de estratexia por turnos
+.
+.SH SINOPSE
+.
+\fBwesnoth\fP [\fIOPCIÓNS\fP] [\fIRUTA_ÓS_DATOS\fP]
+.
+.SH DESCRICIÓN
+.
+Battle for \fBWesnoth\fP é un xogo fantástico de estratexia por turnos
+
+Derrota a tódolos líderes inimigos usando un cadro de tropas ben escollido,
+tendo en conta a xestión dos teus recursos de ouro e vilas. Tódalas unidades
+teñen as súas propias fortalezas e debilidades; para gañar, desprega as túas
+forzas para que teñan as máximas vantaxes mentres lle impides ós teus
+inimigos face\-lo mesmo. A medida que as unidades conseguen experiencia,
+adquiren novas habilidades e fanse máis poderosas. Xoga na túa propia lingua
+e proba as túas habilidades contra un opoñente por ordenador intelixente, ou
+únete á gran comunidade de xogadores en liña de Wesnoth. Crea as túas
+propias unidades personalizadas, escenarios ou campañas, e comparteos cos
+demais.
+.
+.SH OPCIÓNS
+.
+.TP 
+\fB\-\-bpp\fP\fI\ número\fP
+establece o valor de BitsPerPixel. Exemplo: \fB\-\-bpp 32\fP
+.TP 
+\fB\-c, \-\-campaign\fP
+vai directamente ó menú de selección de campaña.
+.TP 
+\fB\-\-config\-dir\fP\fI\ nome\fP
+sets the user configuration directory to \fIname\fP under $HOME or %APPDATA%
+for windows.
+.TP 
+\fB\-\-config\-path\fP
+mostra a ruta do directorio de configuración do usuario e sae.
+.TP 
+\fB\-d, \-\-debug\fP
+enables additional command mode options in\-game (see the wiki page at
+http://www.wesnoth.org/wiki/CommandMode for more information about command
+mode).
+.TP 
+\fB\-\-dummy\-locales\fP
+use special dummy locales to switch to any language even if that language
+isn't installed system\-wide.
+.TP 
+\fB\-e, \-\-editor\fP
+start the in\-game map editor directly.
+.TP 
+\fB\-\-fps\fP
+amosa o número de imaxes por segundo ó que se está executando o xogo, nunha
+esquina da pantalla.
+.TP 
+\fB\-f, \-\-fullscreen\fP
+executa o xogo a pantalla completa.
+.TP 
+\fB\-\-gunzip\fP\fI\ ficheiroentrada.gz\fP
+descomprime un ficheiro que debería estar en formato gzip e gárdao co sufixo
+\&.gz. O \fIficheiroentrada.gz\fP eliminarase.
+.TP 
+\fB\-\-gzip\fP\fI\ ficheiroentrada\fP
+comprime un ficheiro con formato gzip, gárdao coma \fIficheiroentrada\fP.gz e
+elimina \fIficheiroentrada\fP.
+.TP 
+\fB\-h, \-\-help\fP
+amosa un resumo das opcións de liña de comandos na saída estándar, e sae.
+.TP 
+\fB\-l,\ \-\-load\fP\fI\ ficheiro\fP
+loads the savegame \fIfile\fP from the standard save game directory.  If the
+\fB\-e\fP or \fB\-\-editor\fP option is used as well, starts the editor with the map
+from \fIfile\fP open.
+.TP 
+\fB\-\-log\-\fP\fInivel\fP\fB=\fP\fIdominio1\fP\fB,\fP\fIdominio2\fP\fB,\fP\fI...\fP
+establece o nivel de severidade dos dominios de log.  Pódese usar \fBall\fP
+para referirse a calquera dominio de log. Niveis dispoñibles: \fBerror\fP,\
+\fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP.  Por defecto úsase o nivel \fBerror\fP.
+.TP 
+\fB\-\-logdomains\fP
+Mostra unha lista de tódolos dominios de log e sae.
+.TP 
+\fB\-\-max\-fps\fP
+o número de imaxes por segundo que pode amosar o xogo, o valor debe estar
+entre 1 e 1000, o predeterminado é \fB50\fP.
+.TP 
+\fB\-m, \-\-multiplayer\fP
+executa o xogo en multixogador. Hai opcións adicionais que poden usarse
+xunta con \fB\-\-multiplayer\fP tal como se explica máis abaixo.
+.TP 
+\fB\-\-no\-delay\fP
+runs the game without any delays for graphic benchmarking. This is
+automatically enabled by \fB\-\-nogui\fP.
+.TP 
+\fB\-\-nocache\fP
+deshabilita a caché de datos de xogo.
+.TP 
+\fB\-\-nomusic\fP
+executa o xogo sen música.
+.TP 
+\fB\-\-nosound\fP
+executa o xogo sen son e sen música.
+.TP 
+\fB\-\-path\fP
+amosa o nome do directorio de datos do xogo e sae.
+.TP 
+\fB\-\-python\-api\fP
+prints the runtime documentation for the python API.
+.TP 
+\fB\-\-python\-shell\fP
+invokes wesnoth's embedded python interpreter in interactive mode.
+.TP 
+\fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\ \fP\fIX\fP\fBx\fP\fIY\fP
+establece a resolución da pantalla. Por exemplo: \fB\-r 800x600\fP
+.TP 
+\fB\-\-smallgui\fP
+allows to use screen resolutions down to 800x480 and resizes a few interface
+elements.
+.TP 
+\fB\-s,\ \-\-server\ [máquina]\fP
+connects to the specified host if any, otherwise connect to the first server
+in preferences. Example: \fB\-\-server server.wesnoth.org\fP
+.TP 
+\fB\-t, \-\-test\fP
+executa o xogo nun pequeno escenario de proba.
+.TP 
+\fB\-\-validcache\fP
+assumes that the cache is valid. (dangerous)
+.TP 
+\fB\-v, \-\-version\fP
+amosa o número de versión e sae.
+.TP 
+\fB\-w, \-\-windowed\fP
+executa o xogo nunha ventá.
+.TP 
+\fB\-\-with\-replay\fP
+reproduce a partida cargada ca opción \fB\-\-load\fP.
+.
+.SH "Opcións para \-\-multiplayer"
+.
+As opcións multixogador específicas dun bando márcanse con \fInúmero\fP.
+\fInúmero\fP tense que substituír por un número de bando. Normalmente é 1 ou 2
+pero depende do número de xogadores posible do escenario escollido.
+.TP 
+\fB\-\-algorithm\fP\fInúmero\fP\fB=\fP\fIvalor\fP
+selecciona un algoritmo non estándar para que o use o controlador da IA dese
+bando. Valores dispoñibles: \fBidle_ai\fP e \fBsample_ai\fP.
+.TP  
+\fB\-\-controller\fP\fInúmero\fP\fB=\fP\fIvalor\fP
+selecciona o controlador deste bando. Valores dispoñibles: \fBhuman\fP e \fBai\fP.
+.TP  
+\fB\-\-era=\fP\fIvalor\fP
+use esta opción para xogar na era seleccionada en vez de na era
+\fBDefault\fP. A era elíxese mediante un id. As eras descríbense no ficheiro
+\fBdata/multiplayer/eras.cfg\fP.
+.TP 
+\fB\-\-exit\-at\-end\fP
+sae unha vez se rematou o escenario, sen mostrar un diálogo de victoria ou
+derrota que require que o usuario prema Aceptar. Isto tamén se emprega para
+probas de rendemento automatizadas mediante scripts.
+.TP 
+\fB\-\-nogui\fP
+executa o xogo sen GUI. Debe aparecer antes de \fB\-\-multiplayer\fP para ter o
+efecto desexado.
+.TP 
+\fB\-\-parm\fP\fInúmero\fP\fB=\fP\fInome\fP\fB:\fP\fIvalor\fP
+establece parámetros adicionais para este bando. Este parámetro depende das
+opcións usadas con \fB\-\-controller\fP e \fB\-\-algorithm\fP. Debería ter únicamente
+utilidade para a xente que está deseñando a súa propia IA. (ainda non
+documentado de forma completa)
+.TP 
+\fB\-\-scenario=\fP\fIvalor\fP
+selecciona un escenario multixogador polo id. O id do escenario
+predeterminado é \fBmultiplayer_The_Freelands\fP.
+.TP 
+\fB\-\-side\fP\fInúmero\fP\fB=\fP\fIvalor\fP
+selecciona unha facción da era actual para este bando. A facción elíxese
+mediante un id. As faccións descríbense no ficheiro data/multiplayer.cfg.
+.TP 
+\fB\-\-turns=\fP\fIvalor\fP
+establece o número de turnos para o escenario elixido. Por defecto é \fB50\fP.
+.TP 
+Exemplo para probar a túa propia IA contra a IA predeterminada sen iniciar a GUI:
+\fBwesnoth \-\-nogui \-\-multiplayer \-\-controller1=ai \-\-controller2=ai
+\-\-algorithm2=python_ai \-\-parm2=python_script:py/a_miña_propia_ia.py\fP
+.
+.SH AUTOR
+.
+Escrito por David White <davidnwhite@verizon.net>.
+.br
+Editado por Nils Kneuper <crazy\-ivanovic@gmx.net>, ott
+<ott@gaon.net> e Soliton <soliton.de@gmail.com>.
+.br
+Esta páxina de manual escribiuna orixinalmente Cyril Bouthors
+<cyril@bouthors.org>.
+.br
+Visite o sitio oficial: http://www.wesnoth.org/
+.
+.SH COPYRIGHT
+.
+Copyright \(co 2003\-2007 David White <davidnwhite@verizon.net>
+.br
+Isto é Software Libre; este software está licenciado baixo a GPL versión 2,
+tal e como foi publicada pola Free Software Foundation.  Non existe NINGUNHA
+garantía; nin sequera para o SEU USO COMERCIAL ou ADECUACIÓN PARA UN
+PROPÓSITO PARTICULAR.
+.
+.SH "CONSULTE TAMÉN"
+.
+\fBwesnoth_editor\fP(6), \fBwesnothd\fP(6)

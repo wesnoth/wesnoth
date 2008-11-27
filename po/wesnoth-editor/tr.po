@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-editor\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-22 14:55+0100\n"
+"POT-Creation-Date: 2008-11-27 19:52+0100\n"
 "PO-Revision-Date: 2008-10-03 17:34+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish <wesnoth-tr@googlegroups.com>\n"
@@ -165,7 +165,7 @@ msgstr "Düzenleyiciden çıkılsın mı?"
 msgid "Fatal error"
 msgstr "Ölümcül hata"
 
-#: src/editor2/editor_controller.cpp:255 src/editor2/editor_controller.cpp:951
+#: src/editor2/editor_controller.cpp:255 src/editor2/editor_controller.cpp:952
 msgid "(New Map)"
 msgstr ""
 
@@ -251,8 +251,8 @@ msgstr "Harita yüklenirken hata"
 msgid "Choose target map"
 msgstr "Oyuncu seçiniz"
 
-#: src/editor2/editor_controller.cpp:494 src/editor2/editor_controller.cpp:606
-#: src/editor2/editor_main.cpp:50
+#: src/editor2/editor_controller.cpp:494 src/editor2/editor_controller.cpp:607
+#: src/editor2/editor_main.cpp:51
 msgid "Error loading map"
 msgstr "Harita yüklenirken hata"
 
@@ -264,41 +264,31 @@ msgstr "Harita kaydedildi."
 msgid "Could not save the map: $msg"
 msgstr "Harita kaydedilemedi: $msg"
 
-#: src/editor2/editor_controller.cpp:978
+#: src/editor2/editor_controller.cpp:979
 msgid "Undo"
 msgstr "Geri al"
 
-#: src/editor2/editor_controller.cpp:980
+#: src/editor2/editor_controller.cpp:981
 msgid "Can't Undo"
 msgstr "Geri Alınamaz"
 
-#: src/editor2/editor_controller.cpp:984
+#: src/editor2/editor_controller.cpp:985
 msgid "Redo"
 msgstr "Tekrar yap"
 
-#: src/editor2/editor_controller.cpp:986
+#: src/editor2/editor_controller.cpp:987
 msgid "Can't Redo"
 msgstr "Tekrarlanamaz"
 
-#: src/editor2/editor_map.cpp:63
+#: src/editor2/editor_map.cpp:82
 msgid "Empty map file or file not found"
 msgstr "Harita dosyası ya boş ya da yok."
 
-#: src/editor2/editor_map.cpp:71
-#, fuzzy
-msgid "There was a format error while loading the file:"
-msgstr "Harita yüklenirken bir biçem hatası bulundu:"
-
-#: src/editor2/editor_map.cpp:77
-#, fuzzy
-msgid "There was a wml error while loading the file:"
-msgstr "Harita yüklenirken bir WML hatası saptandı:"
-
-#: src/editor2/editor_map.cpp:150 src/editor2/mouse_action.cpp:379
+#: src/editor2/editor_map.cpp:163 src/editor2/mouse_action.cpp:383
 msgid "Player"
 msgstr "Oyuncu"
 
-#: src/editor2/editor_map.cpp:269
+#: src/editor2/editor_map.cpp:282
 msgid "The size of the target map is different from the current map"
 msgstr ""
 
@@ -310,15 +300,15 @@ msgstr "ÖP"
 msgid "BG"
 msgstr "AP"
 
-#: src/editor2/mouse_action.cpp:376
+#: src/editor2/mouse_action.cpp:380
 msgid "(Player)^None"
 msgstr "Hiçbiri"
 
-#: src/editor2/mouse_action.cpp:383
+#: src/editor2/mouse_action.cpp:387
 msgid "Choose player"
 msgstr "Oyuncu seçiniz"
 
-#: src/editor2/mouse_action.cpp:384
+#: src/editor2/mouse_action.cpp:388
 msgid ""
 "Which player should start here? You can also use the 1-9 and delete keys to "
 "set/clear staring positions."
@@ -329,6 +319,14 @@ msgstr ""
 #: src/gui/dialogs/editor_settings.cpp:116
 msgid "Custom setting"
 msgstr "Özel Ayarlar"
+
+#, fuzzy
+#~ msgid "There was a format error while loading the file:"
+#~ msgstr "Harita yüklenirken bir biçem hatası bulundu:"
+
+#, fuzzy
+#~ msgid "There was a wml error while loading the file:"
+#~ msgstr "Harita yüklenirken bir WML hatası saptandı:"
 
 #~ msgid "Click to paste."
 #~ msgstr "Yapıştırmak için tıklayın."

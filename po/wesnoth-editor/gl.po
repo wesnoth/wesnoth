@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-22 14:55+0100\n"
+"POT-Creation-Date: 2008-11-27 19:52+0100\n"
 "PO-Revision-Date: 2008-11-20 21:41+0100\n"
 "Last-Translator: Leandro Regueiro <leandro DOT regueiro AT gmail DOT com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
@@ -159,7 +159,7 @@ msgstr "Saír do Editor"
 msgid "Fatal error"
 msgstr "Erro moi grave"
 
-#: src/editor2/editor_controller.cpp:255 src/editor2/editor_controller.cpp:951
+#: src/editor2/editor_controller.cpp:255 src/editor2/editor_controller.cpp:952
 msgid "(New Map)"
 msgstr ""
 
@@ -242,8 +242,8 @@ msgstr "Produciuse un erro ó cargar a máscara"
 msgid "Choose target map"
 msgstr "Escolla o mapa de destino"
 
-#: src/editor2/editor_controller.cpp:494 src/editor2/editor_controller.cpp:606
-#: src/editor2/editor_main.cpp:50
+#: src/editor2/editor_controller.cpp:494 src/editor2/editor_controller.cpp:607
+#: src/editor2/editor_main.cpp:51
 msgid "Error loading map"
 msgstr "Erro ó cargar o mapa"
 
@@ -255,39 +255,31 @@ msgstr "Gardouse o mapa."
 msgid "Could not save the map: $msg"
 msgstr "Non se puido garda-lo mapa: $msg"
 
-#: src/editor2/editor_controller.cpp:978
+#: src/editor2/editor_controller.cpp:979
 msgid "Undo"
 msgstr "Desfacer"
 
-#: src/editor2/editor_controller.cpp:980
+#: src/editor2/editor_controller.cpp:981
 msgid "Can't Undo"
 msgstr "Non se pode desfacer"
 
-#: src/editor2/editor_controller.cpp:984
+#: src/editor2/editor_controller.cpp:985
 msgid "Redo"
 msgstr "Refacer"
 
-#: src/editor2/editor_controller.cpp:986
+#: src/editor2/editor_controller.cpp:987
 msgid "Can't Redo"
 msgstr "Non se pode refacer"
 
-#: src/editor2/editor_map.cpp:63
+#: src/editor2/editor_map.cpp:82
 msgid "Empty map file or file not found"
 msgstr "O ficheiro de mapa está baleiro ou non se atopou ningún ficheiro"
 
-#: src/editor2/editor_map.cpp:71
-msgid "There was a format error while loading the file:"
-msgstr "Ocorreu un erro de formato mentres se cargaba o ficheiro:"
-
-#: src/editor2/editor_map.cpp:77
-msgid "There was a wml error while loading the file:"
-msgstr "Ocorreu un erro de wml mentres se cargaba o ficheiro:"
-
-#: src/editor2/editor_map.cpp:150 src/editor2/mouse_action.cpp:379
+#: src/editor2/editor_map.cpp:163 src/editor2/mouse_action.cpp:383
 msgid "Player"
 msgstr "Xogador"
 
-#: src/editor2/editor_map.cpp:269
+#: src/editor2/editor_map.cpp:282
 msgid "The size of the target map is different from the current map"
 msgstr "O tamaño do mapa de destino é diferente ó do mapa actual"
 
@@ -299,15 +291,15 @@ msgstr "Primeiro Plano"
 msgid "BG"
 msgstr "Fondo"
 
-#: src/editor2/mouse_action.cpp:376
+#: src/editor2/mouse_action.cpp:380
 msgid "(Player)^None"
 msgstr "Ningún"
 
-#: src/editor2/mouse_action.cpp:383
+#: src/editor2/mouse_action.cpp:387
 msgid "Choose player"
 msgstr "Escolla o xogador"
 
-#: src/editor2/mouse_action.cpp:384
+#: src/editor2/mouse_action.cpp:388
 msgid ""
 "Which player should start here? You can also use the 1-9 and delete keys to "
 "set/clear staring positions."
@@ -316,6 +308,12 @@ msgstr ""
 #: src/gui/dialogs/editor_settings.cpp:116
 msgid "Custom setting"
 msgstr "Opción personalizada"
+
+#~ msgid "There was a format error while loading the file:"
+#~ msgstr "Ocorreu un erro de formato mentres se cargaba o ficheiro:"
+
+#~ msgid "There was a wml error while loading the file:"
+#~ msgstr "Ocorreu un erro de wml mentres se cargaba o ficheiro:"
 
 #~ msgid "Click to paste."
 #~ msgstr "Prema para pegar."
