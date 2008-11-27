@@ -15,7 +15,7 @@ Linker=-mthreads_@@_-lmingw32_@@_-lmingwthrd_@@_-lSDLmain _@@_-lSDL _@@_-lboost_
 IsCpp=1
 ExeOutput=..\..
 ObjectOutput=
-OverrideOutput=0
+OverrideOutput=1
 HostApplication=
 Folders=
 CommandLine=
@@ -26,6 +26,8 @@ SupportXPThemes=0
 CompilerSet=0
 CompilerSettings=0000000001000000010100
 OverrideOutputName=wesnothd_dc.exe
+PrivateResource=
+Icon=
 
 [Unit37]
 FileName=..\..\src\image.cpp

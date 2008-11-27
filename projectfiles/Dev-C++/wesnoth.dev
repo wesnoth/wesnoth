@@ -1,7 +1,7 @@
 [Project]
 FileName=wesnoth.dev
 Name=wesnoth
-UnitCount=200
+UnitCount=201
 Type=0
 Ver=1
 ObjFiles=
@@ -16,7 +16,7 @@ IsCpp=1
 Icon=
 ExeOutput=..\..
 ObjectOutput=
-OverrideOutput=0
+OverrideOutput=1
 HostApplication=
 Folders=
 CommandLine=--log-info=all -t
@@ -27,6 +27,7 @@ SupportXPThemes=0
 CompilerSet=0
 CompilerSettings=0010000001000000010100
 OverrideOutputName=wesnoth_dc.exe
+PrivateResource=wesnoth_private.rc
 
 [Unit27]
 FileName=..\..\src\image.cpp
@@ -869,9 +870,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit201]
-FileName=..\..\src\widgets\scrollpane.cpp
+FileName=..\..\src\gui\dialogs\wml_message.cpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=wesnoth
 Compile=1
 Link=1
 Priority=1000
