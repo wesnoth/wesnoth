@@ -740,8 +740,9 @@ def consistency_check():
                     if rtype in derivedlist:
                         base = derivations[rtype]
                     else:
-                        print '"%s", line %d: %s has no usage type' % (filename, rl, rtype)
-                    continue
+                        print '"%s", line %d: %s has no usage type' % \
+                              (filename, rl, rtype)
+                        continue
                 utype = usage[base]
                 utypes.append(utype)
                 for (pdifficulty, (pl, recruit_pattern)) in patterndict.items():
