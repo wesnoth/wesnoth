@@ -22,6 +22,7 @@
 #include "config.hpp"
 #include "video.hpp"
 
+#include <cstring>
 
 SDL_Color int_to_color(const Uint32 rgb) {
 	SDL_Color to_return = {

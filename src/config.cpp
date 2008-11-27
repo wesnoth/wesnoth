@@ -23,6 +23,8 @@
 #include "config.hpp"
 #include "log.hpp"
 
+#include <cstring>
+
 #define ERR_CF LOG_STREAM(err, config)
 
 config::config() : values(), children(), ordered_children()

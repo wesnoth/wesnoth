@@ -19,6 +19,8 @@
 
 #include "util.hpp"
 
+#include <cstdlib>
+
 template<>
 int lexical_cast<int, const std::string&>(const std::string& a)
 {

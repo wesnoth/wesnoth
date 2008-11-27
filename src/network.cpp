@@ -31,6 +31,7 @@
 #include <queue>
 #include <iomanip>
 #include <set>
+#include <cstring>
 
 #include <signal.h>
 #if defined(_WIN32) || defined(__WIN32__) || defined (WIN32)

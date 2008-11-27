@@ -49,6 +49,9 @@ BPath be_path;
 #include <iomanip>
 #include <set>
 
+// for strerror
+#include <cstring>
+
 #include "config.hpp"
 #include "filesystem.hpp"
 #include "game_config.hpp"

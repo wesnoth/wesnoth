@@ -17,9 +17,8 @@
 #include "gui/widgets/helper.hpp"
 #include "font.hpp"
 
-
 #include <cassert>
-
+#include <cstring>
 
 namespace font {
 
