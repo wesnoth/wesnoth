@@ -270,27 +270,6 @@ void tvertical_scrollbar_container_::key_press(tevent_handler& /*event*/,
 	}
 }
 
-// REMOVE when wrapping is reimplemented.	
-#if 0
-bool tvertical_scrollbar_container_::set_width_constrain(const unsigned width)
-{
-	log_scope2(gui_layout, 
-		std::string("tvertical_scrollbar_container_ ") + __func__);
-
-	const unsigned scrollbar_width = scrollbar_mode_ == HIDE 
-		? 0 : find_scrollbar_grid()->get_best_size().x;
-	
-	const bool result = content_set_width_constrain(width - scrollbar_width);
-
-	DBG_G_L << "tvertical_scrollbar_container_ " 
-		<< " width " << width
-		<< " scrollbar_width " << scrollbar_width
-		<< " result " << result
-		<< ".\n";
-	return result;
-}
-#endif
-
 void tvertical_scrollbar_container_::draw(
 		surface& surface, const bool force, const bool invalidate_background)
 {

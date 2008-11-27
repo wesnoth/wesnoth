@@ -112,15 +112,6 @@ private:
 	/** Inherited from tvertical_scrollbar_container_. */
 	void content_set_size(const SDL_Rect& rect);
 
-// REMOVE when wrapping is reimplemented.	
-#if 0
-	/** Inherited from tvertical_scrollbar_container_. */
-	bool content_set_width_constrain(const unsigned width);
-	 
-	/** Inherited from tvertical_scrollbar_container_. */
-	void content_clear_width_constrain();
-
-#endif
 	/***** ***** ***** inherited ****** *****/
 
 	/** Inherited from tcontrol. */

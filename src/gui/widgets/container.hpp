@@ -78,19 +78,6 @@ public:
 	/** Inherited from twidget. */
 	void set_size(const tpoint& origin, const tpoint& size);
 
-// REMOVE when wrapping is reimplemented.	
-#if 0
-	/** 
-	 * Inherited from twidget. 
-	 *
-	 * @todo Adjust for our border.
-	 */
-	bool set_width_constrain(const unsigned width) {  return grid_.set_width_constrain(width); }
-
-	/** Inherited from twidget. */
-	void clear_width_constrain() { grid_.clear_width_constrain(); }
-#endif
-
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
 	/** Inherited from twidget.*/

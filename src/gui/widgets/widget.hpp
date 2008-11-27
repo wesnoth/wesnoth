@@ -430,24 +430,6 @@ public:
 	 */
 	virtual void set_size(const tpoint& origin, const tpoint& size);
 
-// REMOVE when wrapping is reimplemented.	
-#if 0
-	/**
-	 * Limits the maximum width for a widget.
-	 *
-	 * This function should only be called on widgets that can wrap.
-	 *
-	 * @param width               The maximum width for the widget.
-	 *
-	 * @returns                   True if the widget can wrap in the wanted
-	 *                            width, false otherwise.
-	 */
-	virtual bool set_width_constrain(const unsigned /*width*/) { return false; }
-
-	/** Clears the width constrains set. */
-	virtual void clear_width_constrain() {}
-#endif
-
 	/***** ***** ***** ***** drawing ***** ***** ***** *****/
 
 	/**

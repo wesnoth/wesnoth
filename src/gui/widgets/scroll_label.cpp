@@ -86,27 +86,6 @@ void tscroll_label::finalize()
 	label_->set_can_wrap(true);
 }
 
-// REMOVE when wrapping is reimplemented.	
-#if 0
-bool tscroll_label::content_set_width_constrain(const unsigned width)
-{
-	bool result = !label_ ? true : label_->set_width_constrain(width);
-
-	DBG_G_L << "tscroll_label " << __func__ << ":"
-		<< " no label " << !label_
-		<< " result " << result
-		<< ".\n";
-	return result;
-}
-
-void tscroll_label::content_clear_width_constrain()
-{
-	if(label_) {
-		label_->clear_width_constrain();
-	}
-}
-
-#endif
 tpoint tscroll_label::content_calculate_best_size() const
 {
 	assert(label_);

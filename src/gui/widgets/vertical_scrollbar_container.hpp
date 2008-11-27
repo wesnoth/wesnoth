@@ -103,12 +103,6 @@ public:
 	void key_press(tevent_handler& event, bool& handled, 
 		SDLKey key, SDLMod modifier, Uint16 unicode);
 
-// REMOVE when wrapping is reimplemented.	
-#if 0	
-	/** Inherited from twidget. */
-	void clear_width_constrain() { content_clear_width_constrain(); }
-#endif
-
 	/** Inherited from tcontainer. */
 	void draw(surface& surface,  const bool force = false,
 	        const bool invalidate_background = false);
@@ -239,24 +233,6 @@ private:
 	virtual unsigned get_selected_row() const;
 
 	/***** ***** (pure) virtuals for the subclasses ****** *****/
-
-// REMOVE when wrapping is reimplemented.	
-#if 0
-	/**
-	 * Sets the content width constrain.
-	 *
-	 * See set_width_contrain() for more info.
-	 */
-	virtual bool content_set_width_constrain(const unsigned /*width*/) 
-		{return false; }
-
-	/**
-	 * Clears the content width constrain.
-	 *
-	 * See clear_width_constrain() for more info.
-	 */
-	virtual void content_clear_width_constrain() {}
-#endif
 
 	/** 
 	 * Draws the content part of the widget.

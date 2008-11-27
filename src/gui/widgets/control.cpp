@@ -219,34 +219,7 @@ void tcontrol::load_config()
 		load_config_extra();
 	}
 }
-#if 0
-bool tcontrol::set_width_constrain(const unsigned width)
-{
-	assert(can_wrap());
-	assert(text_maximum_width_ == 0);
 
-	bool result = false;
-	if(label_.empty()) {
-		// Return true on empty label but don't set the value.
-		result = true;
-	} else if(get_best_text_size(tpoint(width, 0)).y <= static_cast<int>(width)) {
-		// Test whether we can achieve the wanted size.
-		text_maximum_width_ = width;
-		result = true;
-	}
-
-	DBG_G_L << "tcontrol(" + get_control_type() + ") " + __func__ + ":"
-		<< " empty label " << label_.empty()
-		<< " result " << result
-		<< ".\n";
-	return result;
-}
-
-void tcontrol::clear_width_constrain()
-{
-	text_maximum_width_ = 0;
-}
-#endif
 void tcontrol::draw(surface& surface, const bool force, 
 		const bool invalidate_background)
 {

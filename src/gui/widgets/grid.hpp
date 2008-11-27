@@ -204,14 +204,7 @@ public:
 	void set_size(const tpoint& origin, const tpoint& size);
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
-// REMOVE when wrapping is reimplemented.	
-#if 0
-	/** Inherited from twidget. */
-	bool set_width_constrain(const unsigned width);
 
-	/** Inherited from twidget. */
-	void clear_width_constrain();
-#endif
 	/** Inherited from twidget. */
 	void draw(surface& surface,  const bool force = false,
 	        const bool invalidate_background = false);
