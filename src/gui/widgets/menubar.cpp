@@ -14,6 +14,7 @@
 
 #include "gui/widgets/menubar.hpp"
 
+#include "gui/widgets/selectable.hpp"
 
 namespace gui2 {
 

@@ -23,6 +23,7 @@
 #ifndef GUI_DIALOGS_FIELD_HPP_INCLUDED
 #define GUI_DIALOGS_FIELD_HPP_INCLUDED
 
+#include "gui/widgets/selectable.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/window.hpp"
 #include "wml_exception.hpp"

@@ -751,30 +751,6 @@ template<class T> T* get_parent(twidget* widget)
 	return result;
 }
 
-/**
- * Small abstract helper class.
- *
- * Parts of the engine inherit this class so we can have generic
- * selectable items.
- */
-class tselectable_ 
-{
-public:
-	virtual ~tselectable_() {}
-
-	/** Is the control selected? */
-	virtual bool get_value() const = 0;
-
-	/** Select the control. */
-	virtual void set_value(const bool) = 0;
-
-	/**
-	 * When the user does something to change the widget state this event is
-	 * fired. Most of the time it will be a left click on the widget.
-	 */
-	virtual void set_callback_state_change(void (*callback) (twidget*)) = 0;
-};
-
 } // namespace gui2
 
 #endif

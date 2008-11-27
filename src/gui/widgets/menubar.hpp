@@ -19,6 +19,8 @@
 
 namespace gui2 {
 
+class tselectable_;
+
 /**
  * A menu bar.
  *
