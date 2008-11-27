@@ -104,7 +104,7 @@
 # the spelling exceptions apply to all files below the parent
 # directory.
 #
-# A coment containing "no spellcheck" disable spellchecking on the
+# A coment containing "no spellcheck" disables spellchecking on the
 # line where it occurs.
 
 import sys, os, re, getopt, string, copy, difflib, time
@@ -116,6 +116,8 @@ linechanges = (
         ("canrecruit=1", "canrecruit=yes"),
         ("canrecruit=0", "canrecruit=no"),
         ("generate_description", "generate_name"),
+        # Fix a common typo
+        ("agression=", "aggression="),
         # These changed just after 1.5.0
         ("[special_filter]", "[filter_attack]"),
         ("[wml_filter]", "[filter_wml]"),
