@@ -1829,10 +1829,7 @@ void unit::redraw_unit(game_display& disp, const map_location& loc, const bool f
 #ifdef LOW_MEM
 	params.image= absolute_image();
 	params.image_diagonal= absolute_image();
-	bool facing_west = false;
 	params.image_mod +="~FL(horizontal)";
-#else
-	bool facing_west = facing_ == map_location::NORTH_WEST || facing_ == map_location::SOUTH_WEST;
 #endif
 	if(utils::string_bool(get_state("stoned"))) params.image_mod +="~GS()";
 	if(facing_ == map_location::SOUTH_WEST || facing_ == map_location::SOUTH_EAST || facing_ == map_location::SOUTH ) {
