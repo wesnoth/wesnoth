@@ -19,6 +19,7 @@
 #include "gettext.hpp"
 #include "gui/dialogs/field.hpp"
 #include "gui/dialogs/helper.hpp"
+#include "gui/widgets/integer_selector.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/minimap.hpp"
 #include "../../settings.hpp"

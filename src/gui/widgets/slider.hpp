@@ -15,6 +15,7 @@
 #ifndef GUI_WIDGETS_SLIDER_HPP_INCLUDED
 #define GUI_WIDGETS_SLIDER_HPP_INCLUDED
 
+#include "gui/widgets/integer_selector.hpp"
 #include "gui/widgets/scrollbar.hpp"
 
 namespace gui2 {

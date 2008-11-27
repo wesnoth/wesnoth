@@ -16,6 +16,7 @@
 
 #include "foreach.hpp"
 #include "gui/dialogs/field.hpp"
+#include "gui/widgets/integer_selector.hpp"
 
 namespace gui2 {
 

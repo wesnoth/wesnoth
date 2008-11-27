@@ -775,36 +775,6 @@ public:
 	virtual void set_callback_state_change(void (*callback) (twidget*)) = 0;
 };
 
-/**
- * Small abstract helper class.
- *
- * Parts of the engine inherit this class so we can have generic
- * widgets to select an integer value.
- */
-class tinteger_selector_ 
-{
-public:
-	virtual ~tinteger_selector_() {}
-
-	/** Sets the selected value. */
-	virtual void set_value(const int value) = 0;
-
-	/** Gets the selected value. */
-	virtual int get_value() const = 0;
-
-	/** Sets the minimum value. */
-	virtual void set_minimum_value(const int value) = 0;
-
-	/** Gets the minimum value. */
-	virtual int get_minimum_value() const = 0;
-
-	/** Sets the maximum value. */
-	virtual void set_maximum_value(const int value) = 0;
-
-	/** Gets the maximum value. */
-	virtual int get_maximum_value() const = 0;
-};
-
 } // namespace gui2
 
 #endif
