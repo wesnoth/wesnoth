@@ -12,6 +12,8 @@
    see the copying file for more details.
 */
 
+#include "control.hpp"
+
 #include "foreach.hpp"
 #include "gui/widgets/window.hpp"
 
