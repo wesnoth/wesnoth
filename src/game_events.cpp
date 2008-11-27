@@ -1097,6 +1097,27 @@ namespace {
 			}
 		}
 
+		const std::string round_val = cfg["round"];
+		if(round_val.empty() == false) {
+			double value = lexical_cast<double>(var.c_str());
+			if (round_val == "ceil") {
+				//TODO precision stuff
+				value = ceil(value);
+			} else if (round_val == "floor") {
+				//TODO same
+				value = floor(value);
+			} else {
+				// We assume the value is an integer.
+				// Any non-numerical values will be interpreted as 0
+				// Which is probably what was intended anyway
+				const int decimals = atoi(round_val.c_str());
+				value *= pow(10, decimals); //add $decimals zeroes
+				value = round(value);
+				value *= pow(10, -decimals); //and remove them
+			}
+			var = str_cast(value);
+		}
+
 		const t_string string_length_target = cfg["string_length"];
 		if(string_length_target.empty() == false) {
 			const int value = string_length_target.str().length();
