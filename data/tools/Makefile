@@ -23,6 +23,10 @@ lint-low:
 	# Check for obsolete WML, broken references, consistency in LoW.
 	./wmllint --dryrun $(DATA)/core $(DATA)/campaigns/Legend_of_Wesmere
 
+lint-utbs:
+	# Check for obsolete WML, broken references, consistency in UtbS.
+	./wmllint --dryrun $(DATA)/core $(DATA)/campaigns/Under_the_Burning_Suns
+
 unresolved:
 	@echo "# Report on unresolved macro calls and resource references"
 	@./wmlscope --unresolved $(MAINLINE) $(UMC)
