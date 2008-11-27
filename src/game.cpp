@@ -1720,7 +1720,7 @@ static int process_command_args(int argc, char** argv) {
 			<< "  --bpp <number>               sets BitsPerPixel value. Example: --bpp 32\n"
 			<< "  -c, --campaign               goes directly to the campaign selection menu.\n"
 			<< "  --config-dir <name>          sets the path of the user config directory to\n"
-			<< "                               $HOME/<name> or %APPDATA%\\<name> for windows.\n"
+			<< "                               $HOME/<name> or My Documents\\My Games\\<name> for windows.\n"
 			<< "  --config-path                prints the path of the user config directory and\n"
 			<< "                               exits.\n"
 			<< "  -d, --debug                  enables additional command mode options in-game.\n"

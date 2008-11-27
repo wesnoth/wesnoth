@@ -442,49 +442,29 @@ void set_preferences_dir(std::string path)
 const std::string PREFERENCES_DIR = ".wesnoth" + std::string(game_config::version).substr(0,3);
 #endif
 #ifdef _WIN32
-#ifdef APPDATA_USERDATA
-	const char* const appdata = getenv("APPDATA");
-#else
-	const char* appdata = "";
-#endif /*APPDATA_USERDATA*/
-	if (path.size() > 2 && path[1] == ':') {
+	if(path.empty()) {
+		game_config::preferences_dir = get_cwd() + "/userdata";
+	} else if (path.size() > 2 && path[1] == ':') {
 		//allow absolute path override 
 		game_config::preferences_dir = path;
-		return;
-	}	
-	if (strlen(appdata) > 0)
-	{
-		if (path.empty())
-		{
-			path = PREFERENCES_DIR;
-		}
-		game_config::preferences_dir = appdata +std::string("/")+ path;
-		return;
 	} else {
-		if (path.empty())
-		{
-			path = "userdata";
-		}	
-#ifndef APPDATA_USERDATA
-		else
-		{
-			// if the path is given fallback to %APPDATA%.
-			appdata = getenv("APPDATA");
-			game_config::preferences_dir = appdata + std::string("/") + path;
-			return;
-		}
-#endif /*APPDATA_USERDATA*/
-		char buf[512];
-		const char* const res = getcwd(buf,sizeof(buf));
-		if (res == NULL)
-		{
-			game_config::preferences_dir = path;
-			return;
+		BOOL (*SHGetSpecialFolderPath)(HWND, LPTSTR, int, BOOL);
+		HMODULE module = LoadLibrary("shell32");
+		SHGetSpecialFolderPath = (BOOL (*)(HWND, LPTSTR, int, BOOL))GetProcAddress(module, "SHGetSpecialFolderPathA");
+		if(SHGetSpecialFolderPath) {
+			LOG_FS << "Using SHGetSpecialFolderPath to find My Documents\n";
+			char my_documents_path[MAX_PATH];
+			if(SHGetSpecialFolderPath(NULL, my_documents_path, 5, 1)) {
+				std::string mygames_path = std::string(my_documents_path) + "\\" + "My Games";
+				create_directory_if_missing(mygames_path);
+				game_config::preferences_dir = mygames_path + "\\" + path;
+			} else {
+				WRN_FS << "SHGetSpecialFolderPath failed\n";
+				game_config::preferences_dir = get_cwd() + "/" + path;
+			}
 		} else {
-			std::string cur_path(res);
-			std::replace(cur_path.begin(),cur_path.end(),'\\','/');
-			game_config::preferences_dir = cur_path + "/" + path;
-			return;
+			LOG_FS << "Failed to load SHGetSpecialFolderPath function\n";
+			game_config::preferences_dir = get_cwd() + "/" + path;
 		}
 	}
 
