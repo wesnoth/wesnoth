@@ -316,7 +316,7 @@ static bool show_intro_part_helper(display &disp, const vconfig& part,
 			top_border = scale_surface_blended(top_border, screen_area().w, top_border->h);
 			update_y = texty - top_border->h;
 			update_h += top_border->h;
-			blur_helper(disp.video(), update_y, update_h);
+			blur_helper(disp.video(), update_y, top_border->h);
 			disp.video().blit_surface(0, texty - top_border->h, top_border);
 		}
 		
