@@ -183,7 +183,7 @@ void ai::do_attack_analysis(
 			int best_leadership_bonus = abil.highest("value").first;
 			double leadership_bonus = static_cast<double>(best_leadership_bonus+100)/100.0;
 			if (leadership_bonus > 1.1) {
-				ERR_AI << unit_itor->second.name() << " is getting leadership " << leadership_bonus << "\n";
+				LOG_AI << unit_itor->second.name() << " is getting leadership " << leadership_bonus << "\n";
 			}
 
 			// Check to see whether this move would be a backstab.
