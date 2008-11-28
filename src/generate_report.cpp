@@ -240,12 +240,12 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 			// Compute swarm attacks:
 			unit_ability_list swarm = at_it->get_specials("swarm");
 			if(!swarm.empty()) {
-				int swarm_max_attacks = swarm.highest("attacks_max",nattacks).first;
-				int swarm_min_attacks = swarm.highest("attacks_min").first;
+				int swarm_max_attacks = swarm.highest("swarm_attacks_max",nattacks).first;
+				int swarm_min_attacks = swarm.highest("swarm_attacks_min").first;
 				int hitp = u->second.hitpoints();
 				int mhitp = u->second.max_hitpoints();
 
-				nattacks = swarm_min_attacks + swarm_max_attacks * hitp / mhitp;
+				nattacks = swarm_min_attacks + (swarm_max_attacks - swarm_min_attacks) * hitp / mhitp;
 
 			} else {
 				nattacks = at_it->num_attacks();
