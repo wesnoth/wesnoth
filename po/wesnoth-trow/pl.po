@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-11-27 19:54+0100\n"
-"PO-Revision-Date: 2008-02-10 21:41+0100\n"
+"PO-Revision-Date: 2008-11-28 18:15+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team:  <z.banach@wsisiz.edu.pl>\n"
 "MIME-Version: 1.0\n"
@@ -13,6 +13,7 @@ msgstr ""
 "|| n%100>=20) ? 1 : 2);\n"
 "X-Poedit-Language: Polish\n"
 "X-Poedit-Country: POLAND\n"
+"X-Poedit-Basepath: /usr/local/share/wesnoth\n"
 
 #. [scenario]
 #. [campaign]
@@ -131,9 +132,8 @@ msgstr "Książę Haldric"
 
 #. [side]: type=Noble Youth, type=Noble Fighter
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:34
-#, fuzzy
 msgid "Haldric"
-msgstr "Haldric."
+msgstr "Haldric"
 
 #. [side]: type=Wesfolk Outcast
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:36
@@ -378,7 +378,7 @@ msgstr "Jesień"
 #. [side]: type=Noble Fighter
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:27
 msgid "Stormvale"
-msgstr ""
+msgstr "Stormvale"
 
 #. [side]: type=Orcish Warlord
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:60
@@ -413,7 +413,7 @@ msgstr "Tan-Rarbag"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:38
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:63
 msgid "Orcs"
-msgstr ""
+msgstr "Orki"
 
 #. [side]: type=Orcish Warrior
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:84
@@ -673,7 +673,7 @@ msgstr "Mordercza ucieczka"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:24
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:27
 msgid "Refugees"
-msgstr ""
+msgstr "Uchodźcy"
 
 #. [side]: type=Orcish Warlord
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:33
@@ -950,7 +950,7 @@ msgstr "Cleon"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_River_Road.cfg:76
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_River_Road.cfg:104
 msgid "Cultists"
-msgstr ""
+msgstr "Kultyści"
 
 #. [side]: type=Dark Sorcerer
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_River_Road.cfg:55
@@ -1746,7 +1746,7 @@ msgstr "Władca liczów Lenvan"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/06_Temple_of_the_Deep.cfg:44
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:118
 msgid "Undead"
-msgstr ""
+msgstr "Nieumarli"
 
 #. [objective]: condition=win
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/06_Temple_of_the_Deep.cfg:108
@@ -1887,9 +1887,8 @@ msgstr "Zaskakująco-Niczymdrzewa"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:35
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:45
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:56
-#, fuzzy
 msgid "Treefolk"
-msgstr "Wesfolk"
+msgstr "Leśny lud"
 
 #. [side]: type=Wose
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:41
@@ -2201,7 +2200,7 @@ msgstr "Port Clearwater"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:30
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:57
 msgid "Humans"
-msgstr ""
+msgstr "Ludzie"
 
 #. [then]
 #. [side]: type=Lieutenant
@@ -2947,7 +2946,7 @@ msgstr "Daellyn Czerwony"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/10_Sewer.cfg:45
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/10_Sewer.cfg:67
 msgid "Red Wizards"
-msgstr ""
+msgstr "Czerwoni Magowie"
 
 #. [side]: type=Arch Mage
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/10_Sewer.cfg:59
@@ -3762,7 +3761,7 @@ msgstr "Kegrid"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:64
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:94
 msgid "Drakes"
-msgstr ""
+msgstr "Smoki"
 
 #. [side]: type=Drake Flameheart
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:58
@@ -3909,7 +3908,7 @@ msgstr "Abraxas"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:68
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:96
 msgid "Naga"
-msgstr ""
+msgstr "Nagi"
 
 #. [side]: type=Naga Warrior
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:62
@@ -4026,7 +4025,7 @@ msgstr "Glimir"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_New_Land.cfg:58
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_New_Land.cfg:76
 msgid "Continentals"
-msgstr ""
+msgstr "Kontynentalni"
 
 #. [side]: type=Dwarvish Stalwart
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_New_Land.cfg:52
@@ -4313,7 +4312,7 @@ msgstr "Ka'lian"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:45
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:56
 msgid "Elves"
-msgstr ""
+msgstr "Elfy"
 
 #. [side]: type=Elvish Champion
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:42
@@ -4874,7 +4873,7 @@ msgstr "Tirasch"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17b_A_Beach.cfg:41
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17b_A_Beach.cfg:67
 msgid "Monsters"
-msgstr ""
+msgstr "Potwory"
 
 #. [side]: type=Saurian Flanker
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17b_A_Beach.cfg:61
@@ -4954,9 +4953,8 @@ msgstr "Erart"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17c_Troll_Hole.cfg:68
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17c_Troll_Hole.cfg:94
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17c_Troll_Hole.cfg:120
-#, fuzzy
 msgid "Trolls"
-msgstr "Tromas"
+msgstr "Trolle"
 
 #. [side]: type=Troll Warrior
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17c_Troll_Hole.cfg:62
@@ -5201,30 +5199,28 @@ msgstr "Jessica w ukryciu"
 
 #. [message]: speaker=Lord Logalmier
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:113
-#, fuzzy
 msgid ""
 "So a doom has followed them here from their old home. My Outriders have "
 "reported that orcs have made landfall. Orcs! The tree-killers of our most "
 "ancient legends. Some thought them only a nightmare to frighten children, "
 "and never real at all."
 msgstr ""
-"Tak więc przeznaczenie podąża za nimi od ich domu aż tutaj. Moi zwiadowcy "
-"donieśli, że orkowie przybili do brzegu. Orkowie, tutaj - pierwszy raz od "
-"wieków."
+"Tak więc przeznaczenie podąża za nimi od ich dawnej ojczyzny aż tutaj. Moi "
+"zwiadowcy donieśli, że na brzegu wylądowały orki. Orki! Mordercy drzew, "
+"znani nam dotąd tylko z najstarszych legend. Wielu już myślało, że orki "
+"istnieją tylko w bajkach, by straszyć dzieci."
 
 #. [message]: speaker=Lord Dionli
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:117
-#, fuzzy
 msgid ""
 "And he bears an artifact of some power. The orcs would not be able to sense "
 "that. There is some hand we cannot see at work here."
 msgstr ""
-"A on posiada artefakt o wielkiej mocy. Orkowie nie byliby w stanie tego "
-"wyczuć. Działa tu jakaś potężniejsza moc."
+"I ma przy sobie artefakt o wielkiej mocy. Orkowie nie byliby w stanie tego "
+"wyczuć. Działa tu jakaś potężniejsza moc, której nie widzimy."
 
 #. [message]: speaker=Lord Aryad
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:121
-#, fuzzy
 msgid ""
 "We may have decided wrongly. If the humans drive the orcs off we should "
 "honor our pledge. If more trouble follows them here we should let them fight "
@@ -5232,9 +5228,9 @@ msgid ""
 "the Dwarves."
 msgstr ""
 "Możliwe, że podjęliśmy błędną decyzję. Jeśli ludzie przepędzą orków, "
-"uszanujemy nasze przyrzeczenie. Jeśli będzie za nimi podążać więcej "
-"kłopotów, niech sami się nimi zajmą, a my \"zajmiemy\" się ocalałymi i "
-"zawrzemy ugodę z krasnoludami."
+"dotrzymamy danego słowa. Jeśli jednak będzie za nimi podążać więcej "
+"kłopotów, niech sami się nimi zajmą - a my \"zajmiemy\" się ocalałymi, po "
+"czym zawrzemy ugodę z krasnoludami."
 
 #. [message]: speaker=Lord Dionli
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:125
@@ -5244,17 +5240,16 @@ msgstr "Ale zawarliśmy pakt z tym Haldrikiem i ludźmi z północnego zachodu..
 
 #. [message]: speaker=Lord Logalmier
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:130
-#, fuzzy
 msgid ""
 "We are the people of the forest, you know that all words spoken to these un-"
 "people are of secondary importance to our own needs. As Lord Aryad said, 'If "
 "more trouble follows them here we should let them fight it out, then we "
 "should 'deal' with the survivors, and make a compromise with the Dwarves.'"
 msgstr ""
-"Jesteśmy ludźmi lasu. Dobrze wiesz, że każde słowo wypowiedziane do tych nie-"
-"ludzi ma dla nas drugorzędne znaczenie. Jak powiedział Lord Aryad, \"Jeśli "
-"będzie za nimi podążać więcej kłopotów, niech sami się nimi zajmą, a my "
-"\"zajmiemy\" się ocalałymi i zawrzemy ugodę z krasnoludami.' "
+"Jesteśmy ludem lasu. Dobrze wiesz, że każde słowo wypowiedziane do tych nie-"
+"ludzi ma dla nas drugorzędne znaczenie. Jak powiedział Lord Aryad: jeśli "
+"będzie za nimi podążać więcej kłopotów, niech sami się nimi zajmą - a my "
+"\"zajmiemy\" się ocalałymi, po czym zawrzemy ugodę z krasnoludami."
 
 #. [message]: speaker=Lord Dionli
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:138
@@ -5933,9 +5928,8 @@ msgstr ""
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:122
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:159
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:197
-#, fuzzy
 msgid "Evil"
-msgstr "Eriol"
+msgstr "Źli"
 
 #. [side]: type=Orcish Warlord
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:79
@@ -6410,7 +6404,7 @@ msgstr "Epilog"
 #. [side]: type=Noble Commander
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:23
 msgid "Wesnothians"
-msgstr ""
+msgstr "Wesnothczycy"
 
 #. [message]: speaker=Minister Edmond
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:141
@@ -6933,25 +6927,23 @@ msgstr "rozpraszanie"
 
 #. [skirmisher]
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-abilities.cfg:8
-#, fuzzy
 msgid ""
 "Distract:\n"
 "This unit negates enemy Zones of Control around itself for allied units (but "
 "not for itself)."
 msgstr ""
 "Rozpraszanie:\n"
-"Ta jednostka neguje wpływ wrogich Stref Kontroli na otaczających ją polach "
-"na jednostki sojusznicze (ale nie na siebie samą)."
+"Ta jednostka neguje wpływ wrogich stref kontroli na sąsiadujących z nią "
+"polach na jednostki sojusznicze (ale nie na siebie samą)."
 
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-abilities.cfg:23
-#, fuzzy
 msgid ""
 "This unit is capable of distracting opponents, allowing allied units to "
 "trespass their Zones of Control and move unhindered around them."
 msgstr ""
 "Jednostka ta potrafi rozpraszać uwagę nieprzyjaciela, dzięki czemu przyjazne "
-"jednostki mogą przechodzić obok jednostek wroga nie bacząc na ich Strefy "
-"Kontroli."
+"jednostki mogą przechodzić obok jednostek wroga nie bacząc na ich strefy "
+"kontroli."
 
 #. [message]: speaker=unit
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-deaths.cfg:12
@@ -7346,6 +7338,9 @@ msgstr ""
 #~ msgstr ""
 #~ "W końcu dalekie brzegi wielkiego lądu stają w zasięgu wzroku. Nastał czas "
 #~ "przybicia do brzegu."
+
+#~ msgid "Lizardoids"
+#~ msgstr "Jaszczurowate"
 
 #~ msgid "Liabra"
 #~ msgstr "Liabra"

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-11-22 14:55+0100\n"
-"PO-Revision-Date: 2008-05-01 21:28+0100\n"
+"PO-Revision-Date: 2008-10-29 14:06+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team:  <z.banach@wsisiz.edu.pl>\n"
 "MIME-Version: 1.0\n"
@@ -24,7 +24,7 @@ msgstr "Inwazja ze wschodu"
 #. [campaign]
 #: data/campaigns/Eastern_Invasion/_main.cfg:12
 msgid "EI"
-msgstr "EI"
+msgstr "IzW"
 
 #. [campaign]
 #: data/campaigns/Eastern_Invasion/_main.cfg:16
@@ -104,8 +104,8 @@ msgid ""
 "It was the thirteenth year of Konrad II's reign, and there were strange "
 "occurrences in the Estmark Hills on the eastern border of Wesnoth."
 msgstr ""
-"To był trzydziesty rok panowania Konrada II i dziwne rzeczy działy się na "
-"wschodniej granicy Wesnoth."
+"Był trzydziesty rok panowania Konrada II, gdy zaczęły chodzić słuchy o "
+"dziwnych wydarzeniach na Wzgórzach Estmark u wschodniej granicy Wesnoth."
 
 #. [part]
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:21
@@ -137,17 +137,16 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:29
-#, fuzzy
 msgid ""
 "When the King received news of the problem, his advisor Dacyn had much to "
 "say. Apparently, these attacks were connected to similar ones that occurred "
 "earlier on the far southern border, attacks by undead. Dacyn outlined a plan "
 "to combat these intrusions."
 msgstr ""
-"Gdy król otrzymał wieści o problemie, jego doradca Dacyn miał wiele do "
-"powiedzenia. Widocznie te ataki były powiązane z podobnymi, które zdarzały "
-"się wcześniej na południowej granicy, atakami nieumarłych. Dacyn naszkicował "
-"plan w celu zwalczania podobnych incydentów."
+"Gdy wieści dotarły do Króla, jego doradca Dacyn miał wiele do powiedzenia. "
+"Wszystko wskazywało na to, że ataki te były powiązane z podobnymi, które "
+"zdarzały się wcześniej na południowej granicy - atakami nieumarłych. Dacyn "
+"opracował zarysy planu zwalczania tych najazdów."
 
 #. [part]
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:36
@@ -159,10 +158,12 @@ msgid ""
 "River Guard posts had been abandoned, as colonists spread into the Estmarks "
 "and the orcs were driven in retreat north of the Great River."
 msgstr ""
-"Za czasów króla Gararda I, wzdłuż południowo-wschodniej granicy zostały "
-"zbudowane trzy strażnice w celu powstrzymania orków z wschodu przed "
-"wkraczaniem do Wesnoth. Od tego czasu, ziemie za górami zmieniły się w "
-"błota, a orki opuściły góry ruszając do ziem na północy."
+"Za czasów króla Gararda I wybudowano dwie strażnice nad bliższym brzegiem "
+"rzeki Weldyn, na południe od Soradoc. Umocnienia miały powstrzymywać najazdy "
+"orków i bandytów zza wschodniej granicy Wesnoth. Z biegiem czasu nadrzeczne "
+"strażnice zostały jednak porzucone, w miarę jak koloniści zaludniali coraz "
+"to większe obszary Wzgórz Estmark, a orki zepchnięto na północ od Wielkiej "
+"Rzeki."
 
 #. [part]
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:40
@@ -172,16 +173,19 @@ msgid ""
 "eye and hand firmly on the settled country to either side of the lower "
 "Weldyn. He sent two of the most promising young officers to them."
 msgstr ""
+"W obliczu nowego, nieznanego zagrożenia dla wschodnich granic Wesnoth, "
+"Konrad II postanowił odbudować i ponownie obsadzić wojskiem strażnice "
+"nadrzeczne, by umocnić panowanie Korony na zaludnionych terenach w dolnym "
+"biegu rzeki Weldyn. Zadanie to powierzył dwóm młodym i obiecującym oficerom."
 
 #. [part]
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:44
-#, fuzzy
 msgid ""
 "To the northern outpost he sent Owaec, a clan noble. To the southern "
 "outpost, he sent Gweddry, who would be accompanied by Dacyn the mage. It is "
 "with them this story is concerned."
 msgstr ""
-"Do północnej strażnicy wysłał Owaeca, szlachcica z klanów. Do środkowej "
+"Do północnej strażnicy wysłał Owaeca, szlachcica z klanów. Do południowej "
 "wysłał Gweddry'ego, któremu towarzyszył mag Dacyn. I to o nich jest ta "
 "historia."
 
@@ -271,7 +275,7 @@ msgstr "Mal-Sakkat"
 #: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:63
 #: data/campaigns/Eastern_Invasion/scenarios/07b.Undead_Crossing.cfg:44
 msgid "Undead"
-msgstr ""
+msgstr "Nieumarli"
 
 #. [side]: type=Dark Sorcerer
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:120
@@ -504,7 +508,7 @@ msgstr "Ucieczka tunelem"
 #: data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:110
 #: data/campaigns/Eastern_Invasion/scenarios/07b.Undead_Crossing.cfg:22
 msgid "Wesnothians"
-msgstr ""
+msgstr "Wesnothczycy"
 
 #. [side]: type=Troll
 #: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:34
@@ -776,13 +780,17 @@ msgid ""
 "foothills of the Estmarks in a direction few Wesnothians had traveled "
 "before, into unknown forest country just south of the Great River."
 msgstr ""
+"Gweddry i Owaec wkrótce przekonali się, że przy zablokowanym tunelu powrót "
+"do Wesnoth nie będzie łatwy. Z podnóży Wzgórz Estmark wyruszyli więc w "
+"kierunku, w którym mało kto z Wesnoth się dotąd wyprawiał: ku nieznanym "
+"lasom, leżącym na południe od Wielkiej Rzeki."
 
 #. [side]: type=Lieutenant
 #. [side]: type=Elvish Ranger
 #: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:34
 #: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:47
 msgid "Allies"
-msgstr ""
+msgstr "Sprzymierzeni"
 
 #. [side]: type=Elvish Ranger
 #: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:40
@@ -1031,14 +1039,13 @@ msgstr "Dalej, wróćmy do Wesnoth i pomóżmy Północnej Strażnicy."
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:134
-#, fuzzy
 msgid ""
 "We have defeated this patrol, but we can still turn back! Do we want to go "
 "further east now, or do we want to try to turn back and defeat this dark "
 "sorcerer?"
 msgstr ""
 "Pokonaliśmy ten patrol, ale wciąż możemy zawrócić! Czy chcemy iść w głąb "
-"tych ziem, czy też spróbujemy zawrócić i pokonać tego mrocznego czarodzieja?"
+"tych ziem, czy też spróbujemy zawrócić i pokonać tego czarnoksiężnika?"
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:285
@@ -1135,6 +1142,8 @@ msgid ""
 "The Bitter Swamp's ill reputation is, it seems, well merited. Mal-Ravanal's "
 "capital lies before us!"
 msgstr ""
+"Oto widzimy, że ponura reputacja Gorzkich Bagien jest w pełni zasłużona. "
+"Przed nami stolica Mal-Ravanala!"
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:128
@@ -1159,11 +1168,11 @@ msgstr ""
 
 #. [message]: speaker=Mal-Ravanal
 #: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:139
-#, fuzzy
 msgid ""
 "These humans have dared foolishly to come this far into my land. Crush them!"
 msgstr ""
-"Ci ludzie odważyli się wejść aż tak daleko na moje ziemie? Zgnieść ich!"
+"Ci lekkomyślni ludzie zapuścili się za daleko w głąb moich ziem. Zniszczyć "
+"ich!"
 
 #. [unit]: type=Paladin
 #: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:157
@@ -1236,6 +1245,9 @@ msgid ""
 "Estmarks, they were greatly relieved to see the valley of the Weldyn open "
 "before them on the other side."
 msgstr ""
+"Ludzie Gweddry'ego szybko wycofali się z Gorzkich Bagien, uciekając co sił w "
+"nogach na północny zachód. Niską przełęczą na północy przeprawili się przez "
+"wzgórza Estmark i odetchnęli z ulgą, widząc przed sobą dolinę Weldyn."
 
 #. [scenario]
 #: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:4
@@ -1271,9 +1283,8 @@ msgstr "Lanar-Skal"
 #: data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:60
 #: data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:77
 #: data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:94
-#, fuzzy
 msgid "Evil"
-msgstr "Epilog"
+msgstr "Źli"
 
 #. [objective]: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:107
@@ -1554,25 +1565,22 @@ msgstr ""
 
 #. [message]: speaker=Mal-Arnai
 #: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:125
-#, fuzzy
 msgid ""
 "Well, orc, we can either continue this fight, or we can crush the humans and "
 "battle later. How shall it be?"
 msgstr ""
-"No cóż, orku, możemy albo kontynuować tę walkę, albo najpierw zgnieść tych "
-"intruzów, a potem dokończyć naszą bitwę. Wybieraj."
+"To jak będzie, orku? Możemy kontynuować tę walkę albo najpierw pokonać "
+"tamtych ludzi, a potem dokończyć nasze porachunki. Wybieraj."
 
 #. [message]: speaker=Wak-Rano
 #: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:129
-#, fuzzy
 msgid ""
 "Hmm... I know. We will make a pact to destroy these men, and continue our "
 "fight later. (Perhaps he will die, and I will win our battle without "
 "fighting.)"
 msgstr ""
-"Hmm... Już wiem. Zawrzyjmy układ, by zniszczyć tych ludzi, a potem "
-"dokończymy naszą walkę. (Miejmy nadzieję, że zginiesz, a wtedy wygram bitwę "
-"bez walki)."
+"Hmm... Już wiem. Zawrzemy układ: wspólnie pokonamy tych ludzi, a potem "
+"dokończymy naszą bitwę. (Może śmierdziel zginie, a ja pokonam go bez walki)."
 
 #. [message]: speaker=Mal-Arnai
 #: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:133
@@ -1585,7 +1593,7 @@ msgstr ""
 #. [message]: speaker=Wak-Rano
 #: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:144
 msgid "Arrgh! I have failed to defend the northern homeland!"
-msgstr ""
+msgstr "Aaaach! Nie zdołałem obronić krain północnych!"
 
 #. [message]: speaker=Mal-Arnai
 #: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:164
@@ -2029,7 +2037,7 @@ msgstr "Darg"
 #: data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:53
 #: data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:69
 msgid "Monsters"
-msgstr ""
+msgstr "Potwory"
 
 #. [side]: type=Gryphon
 #: data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:60
@@ -2579,13 +2587,12 @@ msgstr "Pokonaj Khrakrahsa"
 
 #. [message]: speaker=Owaec
 #: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:381
-#, fuzzy
 msgid ""
 "Now, we have reached the Horse Plains, the fair homeland of my people. They "
 "may be able to help us in - "
 msgstr ""
-"Dotarliśmy teraz do serca ojczyzny moich ludzi. Może będą w stanie pomóc nam "
-"w..."
+"Oto dotarliśmy do Równin Tabunów - pięknych ziem mojego ludu. Zapewne będą w "
+"stanie nam pomóc w..."
 
 #. [message]: speaker=Owaec
 #: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:385
@@ -2636,15 +2643,14 @@ msgstr ""
 
 #. [message]
 #: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:427
-#, fuzzy
 msgid ""
 "Aha! I see what they have done. They have raised him as an undead dragon. "
 "But he does not appear to be weak to my arcane senses... this is strange "
 "magic indeed."
 msgstr ""
-"Aha! Już widzę, co zrobili - przywołali go po śmierci jako nieumarłego "
-"smoka. Dziwne tylko, że nie wydaje się być wrażliwy na mój astralny "
-"płomień... Zagadkowa to magia."
+"Ha! Już widzę, co zrobili - przywołali go po śmierci jako nieumarłego smoka. "
+"Dziwne tylko, że nie wydaje się być wrażliwy na mój astralny płomień... "
+"Zagadkowa to magia."
 
 #. [scenario]
 #: data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:4
@@ -3300,7 +3306,6 @@ msgstr "Epilog"
 
 #. [part]
 #: data/campaigns/Eastern_Invasion/scenarios/19_Epilog.cfg:15
-#, fuzzy
 msgid ""
 "When Mal-Ravanal fell, the living creatures under his banner broke and fled; "
 "the undead simply collapsed like puppets with their strings cut. As the "
@@ -3312,10 +3317,10 @@ msgid ""
 "that great dark pall obscured the sun..."
 msgstr ""
 "Gdy Mal-Ravanal padł, wszystkie walczące pod jego sztandarem żywe stworzenia "
-"zaniechały walki i rzuciły się do ucieczki, a nieumarli padli na ziemię jak "
-"kukiełki, których sznurki nagle przecięto. W powietrzu brzmiało agonalne "
+"zaprzestały walki i rzuciły się do ucieczki, a nieumarli padli na ziemię jak "
+"kukiełki, których sznurki nagle przecięto. W powietrzu zabrzmiało agonalne "
 "wycie licza, a z jego zwłok jak dym z nieczystego ognia uniósł się potężny "
-"snop cienia, który u szczytu podzielił się na pięć smug, sięgającym ku "
+"snop cienia, który u szczytu podzielił się na pięć smug, sięgających ku "
 "niebiosom jak wyciągnięta ręka.\n"
 "\n"
 "Wielki, mroczny całun spowił słońce. Broń padała z pozbawionych nagle czucia "
@@ -3376,12 +3381,11 @@ msgstr ""
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/19_Epilog.cfg:118
-#, fuzzy
 msgid ""
 "Even now we should be sending our troops to harry and slay as many of the "
 "fleeing orcs as we can."
 msgstr ""
-"Powinniśmy niezwłocznie wysłać kawalerię w pościg za uciekającymi orkami, by "
+"Powinniśmy niezwłocznie wysłać oddziały w pościg za uciekającymi orkami, by "
 "jak najmniej z nich uszło z życiem."
 
 #. [message]: speaker=Konrad II
@@ -3411,8 +3415,8 @@ msgstr "Panie, wypełnialiśmy tylko swą powinność."
 #: data/campaigns/Eastern_Invasion/scenarios/19_Epilog.cfg:152
 msgid "Quite. Now do not interrupt while I am doing mine...kneel, Owaec."
 msgstr ""
-"W rzeczy samej. A teraz nie przerywaj i pozwól mi wypełnić moją powinność... "
-"Uklęknij, Owaec."
+"W rzeczy samej. A teraz nie przerywaj i pozwól mi wypełnić moją... Uklęknij, "
+"Owaec."
 
 #. [message]: speaker=Konrad II
 #: data/campaigns/Eastern_Invasion/scenarios/19_Epilog.cfg:159
@@ -3434,11 +3438,10 @@ msgstr "Uklęknij, Gweddry!"
 
 #. [message]: speaker=Konrad II
 #: data/campaigns/Eastern_Invasion/scenarios/19_Epilog.cfg:194
-#, fuzzy
 msgid "Quite. Now do not interrupt while I am doing mine...kneel, Gweddry."
 msgstr ""
-"W rzeczy samej. A teraz nie przerywaj i pozwól mi wypełnić moją powinność... "
-"Uklęknij, Owaec."
+"W rzeczy samej. A teraz nie przerywaj i pozwól mi wypełnić moją... Uklęknij, "
+"Gweddry."
 
 #. [message]: speaker=Konrad II
 #: data/campaigns/Eastern_Invasion/scenarios/19_Epilog.cfg:203

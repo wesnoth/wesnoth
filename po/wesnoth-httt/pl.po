@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-11-27 19:53+0100\n"
-"PO-Revision-Date: 2008-02-10 21:40+0100\n"
+"PO-Revision-Date: 2008-10-29 14:24+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team:  <z.banach@wsisiz.edu.pl>\n"
 "MIME-Version: 1.0\n"
@@ -253,7 +253,7 @@ msgstr "Konrad"
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:73
 #: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:59
 msgid "Rebels"
-msgstr ""
+msgstr "Rebelianci"
 
 #. [unit]: type=Elder Mage
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:68
@@ -297,9 +297,8 @@ msgstr "Urug-Telfar"
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:529
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:563
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:122
-#, fuzzy
 msgid "Orcs"
-msgstr "Marcus"
+msgstr "Orki"
 
 #. [side]: type=Orcish Warlord
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:164
@@ -323,15 +322,15 @@ msgstr "Chantal"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:239
-#, fuzzy
 msgid ""
 "Sixteen years into her rule, Asheviere turned her attention to the wood "
 "elves living in the great forest southwest of Wesnoth, whom she despised. "
 "Orcish mercenaries were hired and dispatched to bring about their ruin."
 msgstr ""
-"W szesnastym roku swoich rządów, Asheviere zwróciła swą uwagę na "
+"W szesnastym roku swoich rządów Asheviere zwróciła swą uwagę na "
 "znienawidzone leśne elfy, zamieszkujące wielkie lasy na południowym "
-"zachodzie Wesnoth. Najęła orków, którzy mieli sprowadzić na nie ruinę."
+"zachodzie Wesnoth. Najęła więc orki, których atak miał sprowadzić na elfy "
+"ruinę."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:243
@@ -482,9 +481,8 @@ msgstr "Nie umieraj, Delfadorze! Proszę, musisz żyć!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:376
-#, fuzzy
 msgid "Ugh!"
-msgstr "Oj..."
+msgstr "Uch!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:387
@@ -494,7 +492,6 @@ msgstr "O nie, nie zdążyliśmy! Przybyły ich posiłki..."
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:406
-#, fuzzy
 msgid "Die, villain, die!"
 msgstr "Giń, złoczyńco, giń!"
 
@@ -548,12 +545,14 @@ msgstr "Przeżyj do końca limitu tur"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:25
-#, fuzzy
 msgid ""
 "<255,255,255>Alternative objective:\n"
 "@Defeat the enemy leader\n"
 "`(special bonus)"
-msgstr "Pokonaj wrogich przywódców"
+msgstr ""
+"<255,255,255>Cel alternatywny:\n"
+"@Pokonaj przywódcę wroga\n"
+"`(premia)"
 
 #. [objective]: condition=lose
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:38
@@ -612,15 +611,14 @@ msgstr ""
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:164
-#, fuzzy
 msgid ""
 "Konrad, this is Kaylan, one of the mightiest of the horse lords, and one of "
 "the few who is willing to oppose the Dark Crown. Rumor has it that his lance "
 "has slain fifty men and a hundred orcs."
 msgstr ""
-"Konradzie, to Kaylan, jeden z najpotężniejszych władców jeźdźców, i jeden z "
-"niewielu, którzy chcą przeciwstawić się mrocznej Królowej. Pogłoski mówią, "
-"że jego lanca zabiła pięćdziesięciu ludzi i stu orków."
+"Konradzie, to Kaylan, jeden z najpotężniejszych władców jeźdźców - i jeden z "
+"niewielu ludzi gotowych się przeciwstawić Mrocznej Koronie. Powiadają, że "
+"jego lanca zabiła pięćdziesięciu ludzi i stu orków."
 
 #. [message]: speaker=Kaylan
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:168
@@ -1053,6 +1051,9 @@ msgid ""
 "@Defeat all enemy leaders\n"
 "`(early finish bonus)"
 msgstr ""
+"<255,255,255>Cel alternatywny:\n"
+"@Pokonaj wszystkich przywódców wroga\n"
+"`(premia za wczesne zakończenie)"
 
 #. [side]: type=Orcish Warrior
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:59
@@ -1518,6 +1519,9 @@ msgid ""
 "@Defeat Muff Malal\n"
 "`(early finish bonus)"
 msgstr ""
+"<255,255,255>Cel alternatywny:\n"
+"@Pokonaj Muff Malala\n"
+"`(premia za wczesne zakończenie)"
 
 #. [side]: type=Dark Sorcerer
 #: data/campaigns/Heir_To_The_Throne/scenarios/05a_Muff_Malal_Peninsula.cfg:61
@@ -1543,7 +1547,7 @@ msgstr "Muff Malal"
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:152
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:101
 msgid "Undead"
-msgstr ""
+msgstr "Nieumarli"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/05a_Muff_Malal_Peninsula.cfg:117
@@ -1640,12 +1644,14 @@ msgstr "Wyspa przeklętych"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:25
-#, fuzzy
 msgid ""
 "<255,255,255>Alternative objective:\n"
 "@Defeat all enemy leaders\n"
 "`(special bonus)"
-msgstr "Pokonaj wrogich przywódców"
+msgstr ""
+"<255,255,255>Cel alternatywny:\n"
+"@Pokonaj wszystkich wrogich przywódców\n"
+"`(premia)"
 
 #. [objectives]
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:33
@@ -1909,7 +1915,7 @@ msgstr "Agadla"
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:96
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:139
 msgid "Evil"
-msgstr ""
+msgstr "Źli"
 
 #. [side]: type=Dark Sorcerer
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:104
@@ -2668,6 +2674,9 @@ msgid ""
 "@Eradicate the liches\n"
 "`(early finish bonus)"
 msgstr ""
+"<255,255,255>Cel alternatywny:\n"
+"@Zniszcz liczów\n"
+"`(premia za wczesne zakończenie)"
 
 #. [side]: type=Lich
 #: data/campaigns/Heir_To_The_Throne/scenarios/09_The_Valley_of_Death.cfg:76
@@ -3104,9 +3113,8 @@ msgstr "Gaga-Breuk"
 #. [side]
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:123
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:168
-#, fuzzy
 msgid "Monsters"
-msgstr "Monry"
+msgstr "Potwory"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:185
@@ -3191,7 +3199,6 @@ msgstr "Co masz na myśli?"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:229
-#, fuzzy
 msgid ""
 "I mustered men to fight against the traitor-king, and of course Asheviere "
 "too, for she was behind it all. We met them; not here, but on the road from "
@@ -3199,11 +3206,11 @@ msgid ""
 "battle, that boy, fool that he was, came charging at me, slashing wildly. I "
 "had little choice but to end his life."
 msgstr ""
-"Zebrałem ludzi do walki przeciw królowi-zdrajcy i oczywiście przeciw "
-"Asheviere, bo to ona stała za tym wszystkim. Stawiliśmy im czoła nieopodal "
-"miasta Tath. Mieli przewagę liczebną, być może nawet czterech na jednego. W "
-"wirze walki ten lekkomyślny młodzieniec natarł na mnie, tnąc dziko swym "
-"mieczem. Nie miałem wyboru i musiałem zakończyć jego życie."
+"Zebrałem ludzi do walki przeciwko królowi-zdrajcy i oczywiście przeciwko "
+"Asheviere, bo to ona stała za tym wszystkim. Stawiliśmy im czoła na drodze z "
+"Weldyn, nieopodal miasta Tath. Mieli przewagę liczebną, może nawet czterech "
+"na jednego. W ogniu bitwy ten lekkomyślny młodzieniec natarł na mnie, tnąc "
+"dziko swym mieczem. Nie miałem wyboru i musiałem zakończyć jego życie."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:233
@@ -4336,14 +4343,13 @@ msgstr ""
 
 #. [message]
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:216
-#, fuzzy
 msgid ""
 "I am of the merfolk, dweller of the vast oceans! Do not ask me what I am "
 "doing in a cave. My lord can be somewhat eccentric. We are fighting at the "
 "side of your fellow cave-dwellers to drive back the orcs and trolls."
 msgstr ""
-"Jestem mermanem, mieszkańcem bezkresnych oceanów! Nie pytaj mnie, co robię w "
-"jaskini. Mój władca bywa czasem... ekscentryczny. Walczymy u boku Twoich "
+"Jestem mermenem, mieszkańcem bezkresnych oceanów! Nie pytaj mnie, co robię w "
+"jaskini. Mój pan miewa czasem ekscentryczne życzenia. Walczymy u boku Twoich "
 "pobratymców, by odeprzeć orków i trolle."
 
 #. [message]: speaker=Ulfdain
@@ -4675,7 +4681,7 @@ msgstr ""
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:70
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:90
 msgid "Humans"
-msgstr ""
+msgstr "Ludzie"
 
 #. [side]: type=Troll Warrior
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:97
@@ -5535,6 +5541,8 @@ msgid ""
 "<255,255,255>Bonus objective:\n"
 "@Defeat all Death Knights first"
 msgstr ""
+"<255,255,255>Premia:\n"
+"@Najpierw pokonaj wszystkich Rycerzy Śmierci"
 
 #. [side]: type=Death Knight
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:87
@@ -5744,9 +5752,8 @@ msgstr "Dotrzyj do końca rzeki"
 #. [side]: type=Saurian Oracle
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:136
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:83
-#, fuzzy
 msgid "Drakes"
-msgstr "Dafeis"
+msgstr "Smoki"
 
 #. [unit]: type=Injured Sergeant
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:264
@@ -5755,7 +5762,6 @@ msgstr "Warven"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:277
-#, fuzzy
 msgid ""
 "The party traveled up the river for days, sometimes walking through the "
 "shallow water, sometimes swimming, helped by the Merfolk."
@@ -6201,6 +6207,8 @@ msgid ""
 "<255,255,255>Optional objective:\n"
 "@Rescue the sergeant"
 msgstr ""
+"<255,255,255>Cel opcjonalny:\n"
+"@Pokonaj sierżanta"
 
 #. [message]: speaker=Warven
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1127
@@ -6227,7 +6235,6 @@ msgstr ""
 
 #. [message]: speaker=Warven
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1139
-#, fuzzy
 msgid "Princess Li'sar - here? Your Highness, I am yours to command!"
 msgstr "Księżniczka Li'sar? Tutaj? Wasza Wysokość, czekam na rozkazy!"
 
@@ -6340,11 +6347,12 @@ msgstr "Dom Północnych Elfów"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:20
-#, fuzzy
 msgid ""
 "Konrad must reach the Lintanir Forest to the east and hold that position "
 "until the turn is over"
-msgstr "Konrad musi dotrzeć do lasu elfów i przetrwać do końca tur"
+msgstr ""
+"Konrad musi dotrzeć do Lasu Lintanir na wschodzie i utrzymać pozycję do "
+"końca tury"
 
 #. [objective]: condition=lose
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:40
@@ -6353,9 +6361,8 @@ msgstr "Koniec tur przed dotarciem do lasu"
 
 #. [objectives]
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:45
-#, fuzzy
 msgid "Note: your encampment will be dismantled after the first turn.\n"
-msgstr "Twój obóz zostanie rozebrany po pierwszej turze"
+msgstr "Uwaga: Twój obóz zostanie zwinięty po pierwszej turze.\n"
 
 #. [side]: type=Commander
 #. [side]: type=Elvish Lord
@@ -6367,7 +6374,7 @@ msgstr "Twój obóz zostanie rozebrany po pierwszej turze"
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:54
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:190
 msgid "Allies"
-msgstr ""
+msgstr "Sprzymierzeni"
 
 #. [side]: type=Orcish Warlord
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:69
@@ -6391,6 +6398,9 @@ msgid ""
 "the North Elves. I was born not far east of here...more years ago than I "
 "care to remember."
 msgstr ""
+"Nareszcie, przyjaciele, już prawie jesteśmy w Lesie Lintanir - domu Elfów "
+"Północy. Urodziłem się niedaleko na wschód stąd... więcej lat temu, niż "
+"jestem skłonny pamiętać."
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:353
@@ -6453,15 +6463,14 @@ msgstr "Kłopoty? Jakie kłopoty?"
 
 #. [message]: speaker=Telerandor
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:414
-#, fuzzy
 msgid ""
 "We have sighted a great host to the south, a host of the men of Wesnoth. And "
 "we believe they are looking for you! There is not a moment to lose. You must "
 "make haste, east to Lintanir. Only there will you be safe!"
 msgstr ""
 "Na południu dostrzegliśmy potężną armię, oddziały ludzi z Wesnoth. Uważamy, "
-"że to was szukają! Nie mamy chwili do stracenia. Musicie natychmiast udać "
-"się do lasu elfów. Tylko tam będziecie bezpieczni!"
+"że to was szukają! Nie ma chwili do stracenia. Musicie jak najszybciej "
+"dotrzeć do Lasu Lintanir na wschodzie. Tylko tam będziecie bezpieczni!"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:419
@@ -6662,21 +6671,19 @@ msgstr "Tam są! Do ataku!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:654
-#, fuzzy
 msgid "There you are! You must come quickly east to Lintanir!!"
-msgstr "Jesteście! Musicie szybko dotrzeć do domu elfów na wschód stąd!"
+msgstr "Jesteście! Musicie szybko dotrzeć do Lintaniru, na wschód stąd!"
 
 #. [message]: speaker=El'rien
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:669
-#, fuzzy
 msgid ""
 "Greetings, Elf-friend! Welcome to Emetria, my hold in Lintanir. You must "
 "take shelter here until the battle passes. If you stay with me here for a "
 "little while, we will all be safe."
 msgstr ""
-"Witaj, przyjacielu elfów! Witaj w Emetrii. Musicie schronić się tu do "
-"momentu, gdy bitwa przycichnie. Jeśli zostaniecie tu ze mną na jakiś czas, "
-"wszyscy będziemy bezpieczni."
+"Bądź pozdrowiony, przyjacielu elfów! Witaj w Emetrii, mojej twierdzy w Lesie "
+"Lintanir. Musicie się tu schronić, aż bitwa przycichnie. Zostańcie tu u mnie "
+"przez jakiś czas, a wszyscy będziemy bezpieczni."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:673
@@ -6714,12 +6721,10 @@ msgstr "Jesteście teraz bezpieczni, przyjaciele elfów!"
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:758
-#, fuzzy
 msgid ""
 "El'rien, we have the Scepter of Fire with us! We must escort them to "
 "Elensiria!"
-msgstr ""
-"El'rien, mamy przy sobie Berło Ognia! Musimy eskortować ich do Elensii!"
+msgstr "El'rien, mamy Berło Ognia! Musimy ich eskortować do Elensirii!"
 
 #. [message]: speaker=El'rien
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:762
@@ -6739,13 +6744,12 @@ msgstr "Znajdź wyjście z podziemi i przesuń do niego Konrada"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:28
-#, fuzzy
 msgid ""
 "<255,255,255>Optional objective:\n"
 "@Help the Wose fend off the undead attack"
 msgstr ""
-"<0,0,255>Pomóż drzewcowi odeprzeć atak nieumarłych\n"
-"<0,0,255>(Cel opcjonalny)"
+"<255,255,255>Cel opcjonalny:\n"
+"@Pomóż drzewcowi odeprzeć atak nieumarłych"
 
 #. [objective]: condition=lose
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:48
@@ -6815,16 +6819,15 @@ msgstr "Everlore"
 
 #. [message]: speaker=Uradredia
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:100
-#, fuzzy
 msgid ""
 "Greetings, and welcome to our capital. You should feel honored. It has been "
 "half a century - a generation in the way your race counts time - since any "
 "man has been considered Elf-friend enough to stand here in Elensiria."
 msgstr ""
-"Pozdrawiam i witam w naszej stolicy. Powinniście czuć się zaszczyceni. "
-"Minęło pół wieku - całe pokolenie według waszego sposobu liczenia czasu - "
+"Bądźcie pozdrowieni i witajcie w naszej stolicy. Powinniście czuć się "
+"zaszczyceni. Minęło pół wieku - całe pokolenie według waszej rachuby czasu - "
 "odkąd człowiek został uznany tak bliskim przyjacielem elfów, że pozwolono mu "
-"tu przybyć."
+"przybyć tutaj, do Elensirii."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:104
@@ -7398,26 +7401,25 @@ msgstr "Próba Klanu"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:21
-#, fuzzy
 msgid "Defeat 25 enemy units"
-msgstr "Pokonaj 25 jednostek"
+msgstr "Pokonaj 25 wrogich jednostek"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:26
-#, fuzzy
 msgid ""
 "<255,255,255>Bonus objective:\n"
 "@Defeat all enemy leaders"
-msgstr "Pokonaj wrogich przywódców"
+msgstr ""
+"<255,255,255>Premia:\n"
+"@Pokonaj wszystkich przywódców wroga"
 
 #. [side]: type=Grand Knight
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:73
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:102
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:131
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:160
-#, fuzzy
 msgid "Plainsmen"
-msgstr "Śnieżne równiny"
+msgstr "Ludzie równin"
 
 #. [then]
 #. [side]: type=Grand Knight
@@ -7468,13 +7470,12 @@ msgstr ""
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:217
-#, fuzzy
 msgid ""
 "We come in peace! We wish for you to aid us in our struggle against "
 "Asheviere, the evil Queen."
 msgstr ""
-"Przybywamy w pokoju! Pragniemy, byście pomogli nam w walce przeciw złej "
-"królowej matce Asheviere."
+"Przybywamy w pokoju! Pragniemy, byście pomogli nam w walce przeciwko "
+"okrutnej królowej Asheviere."
 
 #. [message]: speaker=Sir Alric
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:221
@@ -8484,7 +8485,6 @@ msgstr "zbroja nicości"
 
 #. [value]
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:198
-#, fuzzy
 msgid ""
 "The Void Armor grants the following resistances:\n"
 "blade:  50%\n"
@@ -8494,8 +8494,8 @@ msgid ""
 msgstr ""
 "Zbroja Nicości daje noszącemu następujące odporności:\n"
 "sieczne:  50%\n"
-"kłujące: 50%\n"
-"obuchowe: 60%\n"
+"kłujące: 40%\n"
+"obuchowe: 40%\n"
 "ogień:  +10%"
 
 #. [object]
@@ -8708,6 +8708,9 @@ msgstr ""
 "Delfador wychowywał młodego Konrada pod ochroną elfów, ze smutkiem patrząc, "
 "jak w Wesnoth rozpoczynają się rządy terroru pod berłem Asheviere..."
 
+#~ msgid "Early finish bonus."
+#~ msgstr "Nagroda za wczesne zakończenie"
+
 #~ msgid "Jibb"
 #~ msgstr "Jibb"
 
@@ -8744,6 +8747,9 @@ msgstr ""
 #~ msgid "Goblin Knight"
 #~ msgstr "Gobliński rycerz"
 
+#~ msgid "Eonihar"
+#~ msgstr "Eonihar"
+
 #~ msgid "Ceomyr"
 #~ msgstr "Ceomyr"
 
@@ -8752,9 +8758,6 @@ msgstr ""
 
 #~ msgid "cold"
 #~ msgstr "chłód"
-
-#~ msgid "Eonihar"
-#~ msgstr "Eonihar"
 
 #~ msgid ""
 #~ "At last, friends, we have almost reached the home of my people, the North "

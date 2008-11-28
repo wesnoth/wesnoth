@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-11-22 14:56+0100\n"
-"PO-Revision-Date: 2008-07-21 13:48+0100\n"
+"PO-Revision-Date: 2008-11-28 16:35+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team: polski <pl@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -11,6 +11,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
+"X-Poedit-Basepath: /usr/local/share/wesnoth\n"
+"X-Poedit-SearchPath-0: \n"
 
 #. [campaign]
 #: data/campaigns/Northern_Rebirth/_main.cfg:9
@@ -561,19 +563,17 @@ msgstr "TAK! Udało się! Jesteśmy wolni!"
 
 #. [unit]: type=Orcish Grunt
 #: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:317
-#, fuzzy
 msgid "Khrulg"
-msgstr "Krog"
+msgstr "Khrulg"
 
 #. [message]: speaker=Khrulg
 #: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:325
-#, fuzzy
 msgid ""
 "Garrugch failed in mission, but Al'tar dead by peasant slaves. Better tell "
 "the Master."
 msgstr ""
-"Garrugch nie wykonał zadania, ale Al'tar zabity przez zbuntowanych chłopów. "
-"Lepiej doniosę o tym Panu."
+"Garrugch nie wykonał zadania, ale Al'tar zabity przez zbuntowanych "
+"niewolników. Lepiej doniosę o tym Panu."
 
 #. [message]: speaker=Khrulg
 #: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:329
@@ -752,7 +752,7 @@ msgstr ""
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:54
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:95
 msgid "Rebels"
-msgstr ""
+msgstr "Rebelianci"
 
 #. [side]: type=Troll
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:62
@@ -771,7 +771,7 @@ msgstr "Knash"
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:397
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:428
 msgid "Trolls"
-msgstr ""
+msgstr "Trolle"
 
 #. [side]: type=Troll
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:75
@@ -806,7 +806,7 @@ msgstr "Hamel"
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:172
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:194
 msgid "Undead"
-msgstr ""
+msgstr "Nieumarli"
 
 #. [side]: type=Troll Warrior
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:116
@@ -863,13 +863,12 @@ msgstr "Aaaaa!"
 
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:245
-#, fuzzy
 msgid ""
 "Calm down. Come what may, we'll handle them. Come on now, let's find those "
 "dwarves!"
 msgstr ""
-"Uspokój się, $name.user_description. Co by nas nie czekało, ze wszystkim "
-"sobie poradzimy. Ruszajmy, musimy odnaleźć krasnoludy!"
+"Uspokój się. Co by nas nie czekało, ze wszystkim sobie poradzimy. Ruszajmy, "
+"musimy odnaleźć krasnoludy!"
 
 #. [unit]: type=Arch Mage
 #. [side]: type=Great Mage
@@ -1059,7 +1058,6 @@ msgstr "No to je po prostu wyważ."
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:457
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:511
-#, fuzzy
 msgid "...right."
 msgstr "... dobra."
 
@@ -1498,7 +1496,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/03_To_The_Mines.cfg:63
-#, fuzzy
 msgid ""
 "That is the problem lad, we ha' been stranded in these tunnels for years "
 "now, almost completely cut off from sources of food or metals or tools. It "
@@ -1660,9 +1657,8 @@ msgstr "Porządki w kopalniach"
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:167
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:197
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:213
-#, fuzzy
 msgid "Alliance"
-msgstr "Hellian"
+msgstr "Przymierze"
 
 #. [side]: type=Ancient Lich
 #. [unit]: type=Ancient Lich
@@ -1933,7 +1929,6 @@ msgstr "JEDZEEEENIE!"
 
 #. [message]: role=Supporter
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:661
-#, fuzzy
 msgid "Lords of Light, what kind of vile creation are those things!"
 msgstr "Na świętych władców światłości, co to za odrażające stworzenia?!"
 
@@ -1952,13 +1947,12 @@ msgstr ""
 
 #. [message]: speaker=Camerin
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:671
-#, fuzzy
 msgid ""
 "Oh, and try to stay away from their claws. If you get even one scratch, and "
 "don't get it treated quickly, you will soon find yourself weak, sick and "
 "unable to fight further."
 msgstr ""
-"A, i uważajcie na ich pazury. Wystarczy jedno nieopatrzone draśnięcie, a "
+"A, i uważajcie na ich szpony. Wystarczy jedno nieopatrzone draśnięcie, a "
 "wkrótce będziesz słaby, chory i niezdolny do dalszej walki."
 
 #. [message]: speaker=Hamel
@@ -3530,7 +3524,6 @@ msgstr "Wy przeklęte szkodniki, tym razem zrobię z wami porządek! Straż!"
 
 #. [message]: speaker=Malifor
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2597
-#, fuzzy
 msgid ""
 "You invaded my kingdom, drove me from my mines, raided my dungeon, and "
 "plundered my treasury. Your audacity ends here!"
@@ -3840,7 +3833,7 @@ msgstr ""
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:185
 #: data/campaigns/Northern_Rebirth/scenarios/09b_Judgement.cfg:35
 msgid "Minions"
-msgstr ""
+msgstr "Słudzy"
 
 #. [side]: type=Troll
 #: data/campaigns/Northern_Rebirth/scenarios/05b_Compelled.cfg:51
@@ -4154,9 +4147,8 @@ msgstr ""
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:203
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:220
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:120
-#, fuzzy
 msgid "Knalgans"
-msgstr "Knash"
+msgstr "Knalganie"
 
 #. [unit]: type=Orcish Sovereign
 #. [side]: type=Orcish Sovereign
@@ -4187,7 +4179,7 @@ msgstr "Rakshas"
 #: data/campaigns/Northern_Rebirth/scenarios/08a_Elvish_Princess.cfg:197
 #: data/campaigns/Northern_Rebirth/scenarios/08a_Elvish_Princess.cfg:205
 msgid "Orcs"
-msgstr ""
+msgstr "Orki"
 
 #. [side]: type=Orcish Warlord
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:170
@@ -4201,13 +4193,12 @@ msgstr "Poul"
 
 #. [message]
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:308
-#, fuzzy
 msgid ""
 "So I see you stinky-midgets and human-worms finally mustered up the courage "
 "to face me."
 msgstr ""
-"Widzę, tłuste świnie, że w końcu zdobyliście się na odwagę i wyszliście mi "
-"naprzeciw."
+"Cóż tu widzę? Kurduple i ludzkie robaki w końcu zdobyły się na odwagę, by "
+"wyjść mi naprzeciw."
 
 #. [message]
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:312
@@ -4297,13 +4288,12 @@ msgstr "Lub stawiaj opór do końca limitu tur"
 
 #. [message]
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:400
-#, fuzzy
 msgid ""
 "Come on, why are we just sitting here in these caves! Have you forgotten "
 "already all these orcs have done to us! Let us spill their foul blood on the "
 "ground!"
 msgstr ""
-"Czemu nadal siedzimy w tych jaskiniach?! Już zapomnieliście wszystkie "
+"Co my jeszcze robimy w tych jaskiniach?! Już zapomnieliście wszystkie "
 "krzywdy, jakie orki nam wyrządziły? Niech ziemia spłynie ich plugawą krwią!"
 
 #. [message]
@@ -4581,9 +4571,8 @@ msgstr "Dobry boże! Tallin, czy to ty?"
 
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/06b_Slave_of_the_Undead.cfg:286
-#, fuzzy
 msgid " $betrayed_friend.name, I..."
-msgstr " $stored_helper.user_description|, ja..."
+msgstr " $betrayed_friend.name, ja..."
 
 #. [message]: speaker=Betrayed Friend
 #: data/campaigns/Northern_Rebirth/scenarios/06b_Slave_of_the_Undead.cfg:291
@@ -6436,7 +6425,6 @@ msgstr "Laskę Sprawiedliwości? Nigdy o niej nie słyszałem."
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/08b_Ray_of_Hope.cfg:94
-#, fuzzy
 msgid ""
 "Abhai: You haven't? It was an ancient artifact even when I was young. They "
 "say it was crafted by the Great Gods themselves, and given to the first true "
@@ -6445,12 +6433,12 @@ msgid ""
 "wielded by men, the ruling class never became corrupt, the people never "
 "lacked justice and neither evil nor wars ever troubled the land."
 msgstr ""
-"Abhai: Nie słyszałeś? Laska sprawiedliwości już za mojej młodości była "
-"pradawnym artefaktem. Mówią, że zrobili ją sami Wielcy Bogowie i przekazali "
-"ją pierwszemu prawdziwemu Władcy Ludzi, by zapewnić pokój, zgodę i przede "
-"wszystkim sprawiedliwość. Przez setki lat spełniała swoje zadanie, gdyż "
-"dopóki dzierżyli ją władcy ludzi, rządzący nigdy nie ulegli zepsuciu, lud "
-"mógł zawsze liczyć na sprawiedliwość, a ziemie ludzi były wolne od zła i "
+"Abhai: Nie słyszałeś? Laska sprawiedliwości już za czasów mojej młodości "
+"była pradawnym artefaktem. Ponoć stworzyli ją sami Wielcy Bogowie i "
+"przekazali pierwszemu prawdziwemu Władcy Ludzi, by zapewnić pokój, zgodę i "
+"przede wszystkim sprawiedliwość. Przez setki lat spełniała swoje zadanie, "
+"gdyż dopóki dzierżyli ją władcy ludzi, rządzący nigdy nie ulegli zepsuciu, "
+"lud mógł zawsze liczyć na sprawiedliwość, a ziemie ludzi były wolne od zła i "
 "wojen."
 
 #. [part]
@@ -6547,7 +6535,7 @@ msgstr "Machador"
 #: data/campaigns/Northern_Rebirth/scenarios/08b_Ray_of_Hope.cfg:306
 #: data/campaigns/Northern_Rebirth/scenarios/08b_Ray_of_Hope.cfg:318
 msgid "Monsters"
-msgstr ""
+msgstr "Potwory"
 
 #. [side]: type=Troll Warrior
 #: data/campaigns/Northern_Rebirth/scenarios/08b_Ray_of_Hope.cfg:302
@@ -6571,7 +6559,6 @@ msgstr "Śmierć Abhaia"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Northern_Rebirth/scenarios/08b_Ray_of_Hope.cfg:529
-#, fuzzy
 msgid ""
 "Tallin, accompanied by the ghost of the king - whose name he soon discovered "
 "to be Abhai - set off down the tunnels in search of the Rod of Justice. "
@@ -6580,7 +6567,7 @@ msgid ""
 msgstr ""
 "Tallin w towarzystwie widmowego króla - który, jak się wkrótce dowiedział, "
 "nosił imię Abhai - wyruszył w głąb tuneli w poszukiwaniu Laski "
-"Sprawiedliwości. Wkrótce jednak napotkali na swej drodze zbiornik wody, "
+"Sprawiedliwości. Wkrótce jednak napotkali na swej drodze zbiornik wodny, "
 "który wyczuł wcześniej Tallin, wraz z potworem, który czyhał w jego "
 "głębinach."
 
@@ -6662,7 +6649,6 @@ msgstr "SSSSSSSS"
 
 #. [object]
 #: data/campaigns/Northern_Rebirth/scenarios/08b_Ray_of_Hope.cfg:643
-#, fuzzy
 msgid ""
 "Showing signs of ancient elvish manufacture, this amulet grants whomever is "
 "wearing it increased strength, stamina and protection against fire and "
@@ -7163,7 +7149,6 @@ msgstr ""
 
 #. [message]: speaker=Anita
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:202
-#, fuzzy
 msgid ""
 "That could hardly count as repayment of our debt to you, Tallin. This "
 "Rakshas fellow is an enemy to every Northern Elf as well. Why, it can't have "
@@ -7472,13 +7457,11 @@ msgstr "Witaj, Tallinie"
 
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/09b_Judgement.cfg:133
-#, fuzzy
 msgid " $betrayed_friend.name, you?"
-msgstr " $betrayed_friend.user_description, ty?"
+msgstr " $betrayed_friend.name, to ty?"
 
 #. [message]: speaker=Betrayed Friend
 #: data/campaigns/Northern_Rebirth/scenarios/09b_Judgement.cfg:138
-#, fuzzy
 msgid "Yes, Tallin - it is I."
 msgstr "Tak Tallinie - to ja."
 
@@ -7580,7 +7563,6 @@ msgstr "Nie został osiągnięty? Ja powiedziałbym po prostu, że zawiodłem."
 
 #. [message]: speaker=Betrayed Friend
 #: data/campaigns/Northern_Rebirth/scenarios/09b_Judgement.cfg:198
-#, fuzzy
 msgid ""
 "No, Tallin. You have strayed, surely, but you have not yet failed. The fire "
 "you have kindled is still burning. Your people are still free and fighting "
@@ -7757,7 +7739,6 @@ msgstr "Czy zdołaliście ich dopaść?"
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:93
-#, fuzzy
 msgid ""
 "Och, we tried, Tallin, but with the orcs still pressing our southern "
 "defenses and other groups of trolls trying to break through everywhere, we "
@@ -7951,9 +7932,8 @@ msgstr "Podążymy śladem trolli - powinny nas doprowadzić do Rakshasa."
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:204
-#, fuzzy
 msgid "It is well thought. May the Bright Gods be with you."
-msgstr "Dobry to plan. Niech Bogowie Gór będą z wami."
+msgstr "Dobry to plan. Niech Bogowie Jasności będą z wami."
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:208
@@ -10665,9 +10645,8 @@ msgstr "Aaach! Nic to, wykończę cię w następnym życiu."
 
 #. [message]: speaker=Sister Theta
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:600
-#, fuzzy
 msgid "Which might be sooner than you think."
-msgstr "Które może nadejść szybciej niż sądzisz."
+msgstr "Które może nadejść szybciej, niż sądzisz."
 
 #. [message]: speaker=Father Marcus
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:606
@@ -10762,12 +10741,6 @@ msgstr "Jak... jak to możliwe?"
 msgid "He was stark raving mad, but I am sure going to miss him."
 msgstr "Był zdrowo szurnięty, ale będzie mi go brakować."
 
-#~ msgid "Tentacle"
-#~ msgstr "Macka"
-
-#~ msgid "Giant Spider"
-#~ msgstr "Olbrzymi pająk"
-
 #~ msgid "....right."
 #~ msgstr "... dobra."
 
@@ -10776,6 +10749,12 @@ msgstr "Był zdrowo szurnięty, ale będzie mi go brakować."
 
 #~ msgid "Ok."
 #~ msgstr "Dobra."
+
+#~ msgid "Tentacle"
+#~ msgstr "Macka"
+
+#~ msgid "Giant Spider"
+#~ msgstr "Olbrzymi pająk"
 
 #~ msgid "Ouch! That hurt. Let's try not to do that again ok?"
 #~ msgstr "Au! To bolało! Postarajmy się tego więcej nie robić, co?"

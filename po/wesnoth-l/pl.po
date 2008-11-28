@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-11-14 22:25+0100\n"
-"PO-Revision-Date: 2008-02-08 20:25+0100\n"
+"PO-Revision-Date: 2008-11-28 16:24+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -11,6 +11,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
+"X-Poedit-Basepath: /usr/local/share/wesnoth\n"
+"X-Poedit-SearchPath-0: /usr/local/share/wesnoth\n"
 
 #. [campaign]
 #: data/campaigns/Liberty/_main.cfg:10 data/campaigns/Liberty/_main.cfg:11
@@ -426,9 +428,8 @@ msgstr "Jasken"
 
 #. [message]: speaker=Wolmas
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:338
-#, fuzzy
 msgid "What's happening here? Why are you running like mad, $unit.name|?"
-msgstr "Co tu się dzieje? Dokąd tak pędzisz, $unit.user_description|?"
+msgstr "Co tu się dzieje? Dokąd tak pędzisz, $unit.name|?"
 
 #. [message]: speaker=unit
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:342
@@ -482,7 +483,7 @@ msgstr "Obywatelskie nieposłuszeństwo"
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:69
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:48
 msgid "Rebels"
-msgstr ""
+msgstr "Rebelianci"
 
 #. [side]: type=Cavalier
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:47
@@ -504,7 +505,7 @@ msgstr "Tarwen"
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:65
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:79
 msgid "Asheviere"
-msgstr ""
+msgstr "Asheviere"
 
 #. [objective]: condition=win
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:78
@@ -651,7 +652,7 @@ msgstr "Urk Delek"
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:88
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:110
 msgid "Evil"
-msgstr ""
+msgstr "Źli"
 
 #. [side]: type=Saurian Oracle
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:94
@@ -1563,13 +1564,12 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:30
-#, fuzzy
 msgid ""
 "Knowing they too would be labeled criminals, he reluctantly accepted their "
 "help. (Baldras is now able to recruit outlaws.)"
 msgstr ""
-"Wiedząc, że również i ich obwoła się kryminalistami, niechętnie zgodził się "
-"przyjąć ich pomoc. Baldras może teraz rekrutować banitów."
+"Baldras przyjął ich pomoc, choć nie bez wahania, gdyż wiedział, że również "
+"oni zostaną obwołani przestępcami. (Baldras może teraz rekrutować banitów)."
 
 #. [part]
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:33
@@ -1890,7 +1890,7 @@ msgstr "Vashna"
 #. [side]: type=Orcish Warlord
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:178
 msgid "Orcs"
-msgstr ""
+msgstr "Orki"
 
 #. [objective]: condition=win
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:283
@@ -2398,14 +2398,13 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Liberty/scenarios/09_Epilog.cfg:41
-#, fuzzy
 msgid ""
 "'If you wish to find us, head southwest. When you reach the land's end, just "
 "keep going. See you in the Three Sisters, old friend. - Relnan' "
 msgstr ""
-"'Jeżeli chcesz nas odnaleźć, ruszaj na południowy zachód. Kiedy dotrzesz do "
-"kresu tej ziemi, po prostu podążaj dalej. Do zobaczenia wkrótce, stary druhu "
-"- Relnan'"
+"\"Jeżeli chcesz nas odnaleźć, ruszaj na południowy zachód. Kiedy dotrzesz do "
+"kresu tej ziemi, po prostu podążaj dalej. Do zobaczenia na Trzech Siostrach, "
+"stary druhu - Relnan\""
 
 #. [unit_type]: race=undead
 #: data/campaigns/Liberty/units/Bone_Knight.cfg:5
@@ -2573,9 +2572,8 @@ msgstr ""
 
 #. [unit_type]
 #: data/campaigns/Liberty/units/Villagers.cfg:16
-#, fuzzy
 msgid "Villager"
-msgstr "Starszy wioski"
+msgstr "Chłop"
 
 #. [unit_type]
 #: data/campaigns/Liberty/units/Villagers.cfg:19
@@ -2670,6 +2668,11 @@ msgid ""
 "native toughness and knowledge of local conditions make them formidable on "
 "their home ground."
 msgstr ""
+"W przygranicznych wioskach utrzymywane są oddziały milicji, które "
+"odpowiadają za bezpieczeństwo osady. Choć nie mają wyszkolenia wojskowego "
+"ani broni z prawdziwego zdarzenia, dzięki wrodzonej wytrzymałości i "
+"znajomości miejscowego terenu potrafią być groźnymi przeciwnikami dla "
+"najeźdźców."
 
 #. [female]
 #: data/campaigns/Liberty/units/Villagers.cfg:101
