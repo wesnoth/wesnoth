@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-11-29 12:23+0100\n"
-"PO-Revision-Date: 2008-11-23 16:53+0100\n"
+"PO-Revision-Date: 2008-11-29 16:41+0100\n"
 "Last-Translator: Luciano Montanaro <mikelima@cirulla.net>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -6776,9 +6776,8 @@ msgid "slowed"
 msgstr "rallentato"
 
 #: src/actions.cpp:1057 src/actions.cpp:1328
-#, fuzzy
 msgid "female^stone"
-msgstr "forte"
+msgstr "pietrifica"
 
 #: src/actions.cpp:1057 src/actions.cpp:1328
 msgid "stone"
@@ -6937,7 +6936,7 @@ msgstr ""
 
 #: src/addon_management.cpp:637
 msgid "Unchecked script files found:"
-msgstr ""
+msgstr "File di script non controllato trovato: "
 
 #: src/addon_management.cpp:644
 msgid "The add-on '$addon_title|' has been successfully installed."
@@ -8221,7 +8220,7 @@ msgstr "Cancella la cronologia della chat."
 
 #: src/menu_events.cpp:2286
 msgid "Visualize the screen refresh procedure."
-msgstr ""
+msgstr "Mostra la procedura di aggiornamento dello schermo."
 
 #: src/menu_events.cpp:2289
 msgid "Save game."
@@ -8306,10 +8305,12 @@ msgstr "Scatena un evento di gioco."
 #: src/menu_events.cpp:2337
 msgid "Toggle overalying of x,y coordinates on hexes."
 msgstr ""
+"Attiva/disattiva la sovrapposizione delle coordinate x,y sugli esagoni."
 
 #: src/menu_events.cpp:2340
 msgid "Toggle overalying of terrain codes on hexes."
 msgstr ""
+"Attiva/disattiva la sovrapposizione dei codici del terreno sugli esagoni."
 
 #: src/menu_events.cpp:2385
 msgid "Unknown debug level: '$level'."
@@ -8387,7 +8388,7 @@ msgstr "Modalità di debug disattivata!"
 
 #: src/menu_events.cpp:3003
 msgid "ai"
-msgstr ""
+msgstr "ia"
 
 #: src/menu_events.cpp:3011 src/menu_events.cpp:3026
 msgid "prompt^Command:"
@@ -9004,7 +9005,7 @@ msgstr "Scenario sconosciuto: «$scenario|»"
 
 #: src/playmp_controller.cpp:209
 msgid "Undoing moves not yet transmitted to the server."
-msgstr ""
+msgstr "Annullamento mosse non ancora inviato al server."
 
 #: src/playmp_controller.cpp:289
 msgid "End scenario"
