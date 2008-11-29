@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-11-29 12:25+0100\n"
-"PO-Revision-Date: 2008-11-14 22:04+0300\n"
+"PO-Revision-Date: 2008-11-28 23:10+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lietuvių <komp_lt@konf.lt>\n"
 "MIME-Version: 1.0\n"
@@ -38,7 +38,7 @@ msgstr "(Pradedantysis)"
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:18
 msgid "(Challenging)"
-msgstr "(iššaukiantis)"
+msgstr "(Iššaukiantis)"
 
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:18
@@ -140,6 +140,11 @@ msgid ""
 "brother, with which they might call to each other when in dire need. Bjarn "
 "sent out that call."
 msgstr ""
+"Tuo tarpu, Bdžarnas turėjo brolį vardu Arne, kuris taip pat paliko Maghre "
+"ieškodamas savo likimo ir tapo mažos raitelių grupelės vadu, kurie samdėsi "
+"kaip pirklių karavanų sargybiniai. Laimei, kad kai Bdžarnas mokėsi magijos, "
+"jis padarė pora amuletų sau ir savo broliui, su kuriais jie galėjo baisiai "
+"prireikus vienas kitą pašaukti. Bdžarnas išsiuntė šį pašaukimą."
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:56
@@ -311,16 +316,20 @@ msgid ""
 "his creatures, I will try to defeat Mordak himself with magic at an "
 "unguarded moment. Together we may accomplish what either alone may not."
 msgstr ""
+"Tu būsi dešinioji ranka, aš kairioji. Aš eisiu slaptai, su saujele geriausių "
+"mūsų žvalgų ir miškininkų. Kol tu demonstruosi prieš jį ir žudysi jo "
+"būtybes, aš pabandysiu nugalėti patį Mordaką pasinaudodamas magija, kai jis "
+"bus nesaugomas. Kartu mes atliksime tai, ko nesugebėtų kiekvienas iš mūsų "
+"atskirai."
 
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:359
-#, fuzzy
 msgid ""
 "Bjarn should be in position by now. Press them, distract the adept so Bjarn "
 "can spring his trap!"
 msgstr ""
 "Bdžarnas jau turėtų būti vietoje. Paspauskite juos, atitraukite žinovo "
-"dėmesį, kad Bdžarnas galėtų "
+"dėmesį, kad Bdžarnas galėtų įtaisyti savo spąstus!"
 
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:367
@@ -328,6 +337,8 @@ msgid ""
 "Bjarn has not made his attack! I begin to fear for him... and it means we "
 "must deal with this Mordak ourselves!"
 msgstr ""
+"Bdžarnui nesigavo jo ataka! Aš pradedu bijoti dėl jo... ir tai reiškia, kad "
+"mes privalome patys susitvarkyti su Mordaku!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:382
@@ -363,7 +374,7 @@ msgstr ""
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:402
 msgid "That they should dare this! We will give chase at once."
-msgstr ""
+msgstr "Tai jie turėtų išdrįsti! Mes tuoj jau pat juos vysimės."
 
 #. [message]: speaker=Mordak
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:415
@@ -405,7 +416,6 @@ msgstr "Vijimasis"
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:18
-#, fuzzy
 msgid ""
 "The pursuit had already run for several days when the pursuers came to the "
 "bounds of the huge forest known as the Gray Woods. Ancient tales warned of "
@@ -546,6 +556,9 @@ msgid ""
 "precious brother the mage north with half my men a day since; he will be "
 "safely locked away in our master's dungeons by now."
 msgstr ""
+"Cha! Jūs sučiupote mane, bet tai jums nepadės. Aš nusiunčiau tavo "
+"mieliausiąjį brolį magą į šiaurią kartu su puse savo vyrų; dabar jis jau bus "
+"saugiai užrakintas mūsų šeimininko požeminiuose kalėjimuose."
 
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:404
@@ -623,6 +636,9 @@ msgid ""
 "Greetings. I am Brena, a knight errant. I saw you pursuing and fighting the "
 "foul undead. Are there more of them to be destroyed?"
 msgstr ""
+"Sveikinimai. Aš Brenas, keliaujantis riteris. Mačiau jus besivejančius ir "
+"besikaunančius su bjauriais nemirėliais. Ar yra dar daugiau jų, kad "
+"sunaikintume?"
 
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:453
@@ -649,9 +665,8 @@ msgstr "Jis tik mus sulėtins!"
 
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:465
-#, fuzzy
 msgid "It is my place to decide this."
-msgstr "Aš esu tas, kuris spręs."
+msgstr "Čia aš esu tas, kuris spręs tai."
 
 #. [option]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:467
@@ -707,7 +722,7 @@ msgstr ""
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:539
 msgid "Follow their back trail!"
-msgstr ""
+msgstr "Sekite jų pėdomis!"
 
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:544
@@ -825,13 +840,10 @@ msgstr ""
 
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:400
-#, fuzzy
 msgid ""
 "My sword-arm has a say in who will do the dying. Come on, men, let's kill "
 "some orcs."
-msgstr ""
-"Aš žinojau, kad mes turėsime kautis, kad išlaisvintumėm mano brolį! Eime, "
-"vyrai, nužudykime orkų."
+msgstr "Mano kardas-ranka sakys, kas mirs! Eime, vyrai, nužudykime orkų."
 
 #. [message]: speaker=Guard2_leader
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:449
@@ -1093,13 +1105,12 @@ msgstr ""
 
 #. [message]: speaker=Councillor Hoban
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:202
-#, fuzzy
 msgid ""
 "Have a care, his men are fell fighters and have killed many. Very few remain "
 "who can bear arms, but I will send them to aid you in battle."
 msgstr ""
-"Būk atsargus, jis atsakingas už daugelio mūsiškių mirtį. Labai nedaug liko, "
-"kurie gali panešti ginklus, bet aš juos atsiųsiu tau į pagalbą."
+"Būk atsargus, jo vyrai ir žiaurūs kovotojai daugelį užmušė. Labai nedaug "
+"liko, kurie gali panešti ginklus, bet aš juos atsiųsiu tau į pagalbą."
 
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:207
@@ -1173,13 +1184,3 @@ msgstr ""
 "vadovaus. Savo kelionėse jie sutiko daug iššūkių ir mūšių. Kai kurie "
 "pasakojimai netgi pamini Arne vardą kartu su žymiojo elfų valdovo Kalenzo "
 "vardu, bet tai jau yra kita istorija..."
-
-#~ msgid ""
-#~ "Hurry, we have to track them down. Maybe we can still get them. They have "
-#~ "to be in the north!"
-#~ msgstr ""
-#~ "Paskubėkime, mes turime juos susekti. Galbūt mes vis dar galime juos "
-#~ "pavyti. Jie turėtų būti šiaurėje."
-
-#~ msgid "Hurry to the north and stop the kidnappers"
-#~ msgstr "Skubėkite į šiaurę ir sustabdykite pagrobėjus"

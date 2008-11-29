@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6\n"
 "POT-Creation-Date: 2008-11-29 12:26+0100\n"
-"PO-Revision-Date: 2008-10-14 19:10+0300\n"
+"PO-Revision-Date: 2008-11-29 18:41+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lietuvių <komp_lt@konf.lt>\n"
 "MIME-Version: 1.0\n"
@@ -132,13 +132,12 @@ msgstr "B<--config-dir>I<\\ pavadinimas>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:57
-#, fuzzy
 msgid ""
 "sets the user configuration directory to I<name> under $HOME or My Documents"
 "\\eMy Games for windows."
 msgstr ""
-"nustato naudotojo konfigūracijos aplanką, randamą $HOME arba %APPDATA% "
-"windowsuose, į I<pavadinimas>."
+"nustato naudotojo konfigūracijos aplanką į I<name> esantį $HOME arba My "
+"Documents\\eMy Games windowsuose."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:57
@@ -166,9 +165,9 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnoth.6:64
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--dummy-locales>"
-msgstr "B<--dummylocales>"
+msgstr "B<--dummy-locales>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:68
@@ -272,6 +271,9 @@ msgid ""
 "e> or B<--editor> option is used as well, starts the editor with the map "
 "from I<file> open."
 msgstr ""
+"įkelia išsaugojimą I<failas> išs standartinio išsaugojimų aplanko.  Jei taip "
+"pat naudojamas B<-e> arba B<--editor> parametras, paleidžia redaktorių su "
+"atvertu iš I<failo> žemėlapiu."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:105 ../../doc/man/wesnothd.6:58
@@ -400,9 +402,9 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnoth.6:147
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--python-shell>"
-msgstr "B<--python-api>"
+msgstr "B<--python-shell>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:150
@@ -439,7 +441,7 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:157
 #, fuzzy, no-wrap
 msgid "B<-s,\\ --server\\ [host]>"
-msgstr "B<-v, --verbose>"
+msgstr "B<-s,\\ --server\\ [mazgas]>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:161
@@ -1154,13 +1156,12 @@ msgstr ""
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:187
-#, fuzzy
 msgid ""
 "B<[proxy]> A tag to tell the server to act as a proxy and forward the "
 "connected client's requests to the specified server.  Accepts the same keys "
 "as B<[redirect]>."
 msgstr ""
-"B<[proxy]> Elementas nurodantis serveriui elgtis kaip proksi ir persiųsti "
+"B<[proxy]> Elementas, nurodantis serveriui elgtis kaip proksi ir persiųsti "
 "visus prisijungusius klientus į nurodytą serverį.  Priima tuos pačius raktus "
 "kaip ir B<[redirect]>."
 

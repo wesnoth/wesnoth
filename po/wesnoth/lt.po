@@ -6,20 +6,20 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-11-29 12:23+0100\n"
-"PO-Revision-Date: 2008-11-15 00:10+0300\n"
+"PO-Revision-Date: 2008-11-29 20:28+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
-"Language-Team: en_US <kde-i18n-doc@lists.kde.org>\n"
+"Language-Team: Lithuanian <kde-i18n-doc@lists.kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%"
 "100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: LoKalize 0.2\n"
+"X-Generator: Lokalize 0.2\n"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:45
 msgid "Compressed Saves"
-msgstr ""
+msgstr "Suspausti išsaugojimai"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:52
@@ -609,6 +609,15 @@ msgid ""
 "then <italic>text='Heir to the Throne'</italic>. As Battle for Wesnoth can "
 "be quite challenging, you may wish to start on <italic>text=Easy</italic>."
 msgstr ""
+"\n"
+"\n"
+"Pradžiai geriausia pagrindiniame meniu nuspausti mygtuką "
+"<italic>text=Apmokymas</italic>. Tai jus nuves į interaktyvų apmokymą, kuris "
+"išmokys jus Wesnoth pagrindų. Po to, rekomenduojama, kad pirmiausia "
+"sužaistumėte kampaniją Sosto įpėdinis – spauskite <italic>text=Kampanija</"
+"italic>, tada <italic>text='Sosto įpėdinis'</italic>. Kadangi Mūšis dėl "
+"Wesnoth gali būti pakankamai iššaukiančiu, galite norėti pradėti "
+"<italic>text=Lengvu</italic> sudėtingumu."
 
 #. [topic]: id=fundamentals
 #: data/core/help.cfg:140
@@ -687,6 +696,13 @@ msgid ""
 "options or (if you are in a multiplayer game) chatting with other players "
 "before pressing that button to advance."
 msgstr ""
+"\n"
+"\n"
+"Kai laimite scenarijų, žemėlapis papilkuos ir mygtukas „Baigti "
+"ėjimą“pasikeis į „Baigti scenarijų“. Pieš nuspausdami šį mygtuką, kad "
+"tęstumėte, dabar galite atlikti tokius veiksmus kaip keisti išsaugojimų "
+"nustatymus arba (jei esate daugelio žaidėjų žaidime) kalbėtis su kitais "
+"žaidėjais."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:164
@@ -1387,7 +1403,7 @@ msgstr ""
 "Bruožai galimi visiems ne-nemirėliams daliniams yra "
 "<ref>dst='traits_intelligent' text='Protingas'</ref>, "
 "<ref>dst='traits_quick' text='Greitas'</ref>, <ref>dst='traits_resilient' "
-"text='Atsparus'</ref> ir <ref>dst='traits_strong' text='Stiprus'</ref>."
+"text='Gyvybingas'</ref> ir <ref>dst='traits_strong' text='Stiprus'</ref>."
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:356
@@ -1459,12 +1475,12 @@ msgstr ""
 #. [topic]: id=traits_resilient
 #: data/core/help.cfg:378
 msgid "Resilient"
-msgstr "Atsparus"
+msgstr "Gyvybingas"
 
 #. [topic]: id=traits_resilient
 #: data/core/help.cfg:379
 msgid "Resilient units have 4 HP plus 1 HP per level more than usual."
-msgstr "Atsparūs daliniai turi 4 GT plius 1 GT lygiui daugiau negu įprasta."
+msgstr "Gyvybingi daliniai turi 4 GT plius 1 GT lygiui daugiau negu įprasta."
 
 #. [topic]: id=traits_resilient
 #: data/core/help.cfg:381
@@ -2017,9 +2033,8 @@ msgstr ""
 
 #. [topic]: id=terrain_reef
 #: data/core/help.cfg:698
-#, fuzzy
 msgid "Coastal Reef"
-msgstr "Pilis"
+msgstr "Pakrantės povandeninės uolos"
 
 #. [topic]: id=terrain_bridge
 #: data/core/help.cfg:708
@@ -2235,7 +2250,7 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Sukuria nurodyto tipo dalinį nurodytama langelyje.\n"
+"Sukuria nurodyto tipo dalinį nurodytame laukelyje.\n"
 "\n"
 
 #. [topic]: id=debug_commands
@@ -2342,12 +2357,12 @@ msgstr ""
 #. [resistance]: id=steadfast
 #: data/core/macros/abilities.cfg:97
 msgid "steadfast"
-msgstr ""
+msgstr "atsparus"
 
 #. [resistance]: id=steadfast
 #: data/core/macros/abilities.cfg:98
 msgid "female^steadfast"
-msgstr ""
+msgstr "atspari"
 
 #. [resistance]: id=steadfast
 #: data/core/macros/abilities.cfg:100
@@ -2356,6 +2371,9 @@ msgid ""
 "This unit's resistances are doubled, up to a maximum of 50%, when defending. "
 "Vulnerabilities are not affected."
 msgstr ""
+"Atsparus:\n"
+"Šio dalinio atsparumai yar padvigubinami, iki didžiausių įmanomų 50%, kai "
+"ginamasi. Pažeidžiamumai nepaveikiami."
 
 #. [leadership]: id=leadership
 #: data/core/macros/abilities.cfg:113 data/core/macros/abilities.cfg:136
@@ -3484,6 +3502,9 @@ msgid ""
 " The leadership of this unit enables adjacent units of the same side to deal "
 "more damage in combat, though this only applies to units of lower level."
 msgstr ""
+" Šio dalinio vadovavimas leidžia greta esantiems tos pačios pusės daliniams "
+"padaryti daugiau žalos mūšyje, tačiau tai galioja tik žemesnio lygio "
+"daliniams."
 
 #: data/core/macros/special-notes.cfg:32
 msgid ""
@@ -3493,7 +3514,7 @@ msgstr ""
 
 #: data/core/macros/special-notes.cfg:35
 msgid " Illumination increases the lighting level in adjacent areas."
-msgstr ""
+msgstr " Apšvietimas padidina šviesos lygį gretimose laukeliuose."
 
 #: data/core/macros/special-notes.cfg:38
 msgid ""
@@ -3692,12 +3713,12 @@ msgstr "protinga"
 #. [trait]: id=resilient
 #: data/core/macros/traits.cfg:113
 msgid "resilient"
-msgstr "atsparus"
+msgstr "gyvybingas"
 
 #. [trait]: id=resilient
 #: data/core/macros/traits.cfg:114
 msgid "female^resilient"
-msgstr "atspari"
+msgstr "gyvybinga"
 
 #. [trait]: id=healthy
 #: data/core/macros/traits.cfg:132
@@ -4624,7 +4645,7 @@ msgstr ""
 #. [tip]
 #: data/hardwired/tips.cfg:4
 msgid "Wesnoth Developers"
-msgstr ""
+msgstr "Wesnoth programuotojai"
 
 #. [tip]
 #: data/hardwired/tips.cfg:7
@@ -5034,6 +5055,8 @@ msgid ""
 "You can see how far enemy units can move by moving the mouse cursor over "
 "them."
 msgstr ""
+"Galite pamatyti, kaip toli priešo daliniai gali judėti, užvesdami pelės "
+"ženkliuką virš jų."
 
 #. [tip]
 #: data/hardwired/tips.cfg:155
@@ -5104,6 +5127,9 @@ msgid ""
 "Nearly every icon and word in Wesnoth's playing screen has a tool-tip. Place "
 "your mouse pointer over one to get an explanation or description."
 msgstr ""
+"Beveik kiekvienas ženkliukas ir žodis Wesnoth'o žaidimo ekrane turi "
+"paaiškinimą. Parodykite pelės žymekliu virš jo, kad gautumėte paaiškinimą "
+"arba aprašymą."
 
 #. [tip]
 #: data/hardwired/tips.cfg:187
@@ -5259,7 +5285,7 @@ msgstr "JT"
 #. [label]: id=replay-label
 #: data/themes/macros.cfg:59
 msgid "Replay"
-msgstr ""
+msgstr "Peržaidimas"
 
 #. [menu]: id=button-playreplay, type=image
 #: data/themes/macros.cfg:74
@@ -5651,7 +5677,7 @@ msgstr "Tipas"
 
 #: src/addon_management.cpp:998
 msgid "Publish add-on: "
-msgstr ""
+msgstr "Publish add-on: "
 
 #: src/addon_management.cpp:1004
 msgid "Delete add-on: "
@@ -5732,7 +5758,7 @@ msgstr "Nežinomas dalinio tipas: "
 
 #: src/ai_move.cpp:72
 msgid "Movement cost is 0, probably a terrain with movement cost of 0."
-msgstr ""
+msgstr "Judėjimo kaina yra 0, turbūt vietovė su nuline judėjimo kaina."
 
 #: src/attack_prediction_display.cpp:113 src/attack_prediction_display.cpp:223
 msgid "Attacker"
@@ -5815,15 +5841,18 @@ msgid ""
 "Save names may not contain colons, slashes, or backslashes. Please choose a "
 "different name."
 msgstr ""
+"Išsaugojimų vardai negali turėti dvitaškių, slešų arba atbulinių slešų. "
+"Prašome pasirinkti kitą pavadinimą."
 
 #: src/dialogs.cpp:287
 msgid "Save names should not end on '.gz'. Please choose a different name."
 msgstr ""
+"Išsaugojimų pavadinimai neturėtų baigtis „.gz“. Prašome pasirinkti kitą "
+"pavadinimą."
 
 #: src/dialogs.cpp:295
-#, fuzzy
 msgid "Save already exists. Do you want to overwrite it?"
-msgstr "Žemėlapis jau egzistuoja. Ar norite jį perrašyti?"
+msgstr "Išsaugojimas jau egzistuoja. Ar norite jį perrašyti?"
 
 #: src/dialogs.cpp:296 src/menu_events.cpp:582 src/playcampaign.cpp:415
 msgid "Name: "
@@ -5863,7 +5892,7 @@ msgstr "Apmokymas"
 
 #: src/dialogs.cpp:554 src/menu_events.cpp:568
 msgid "replay"
-msgstr ""
+msgstr "peržaidimas"
 
 #: src/dialogs.cpp:556 src/menu_events.cpp:570
 msgid "Turn"
@@ -5925,12 +5954,11 @@ msgstr "Pasirinkite žaidimą, kurį įkelsite"
 
 #: src/dialogs.cpp:675
 msgid "Show replay"
-msgstr ""
+msgstr "Rodyti peržaidimus"
 
 #: src/dialogs.cpp:679
-#, fuzzy
 msgid "Cancel orders"
-msgstr "Atšaukti"
+msgstr "Atšaukti nurodymus"
 
 #: src/dialogs.cpp:682 src/multiplayer_create.cpp:82
 msgid "OK"
@@ -5944,7 +5972,7 @@ msgstr "Atšaukti"
 
 #: src/dialogs.cpp:686
 msgid "Delete Save"
-msgstr ""
+msgstr "Trinti išsaugojimą"
 
 #: src/dialogs.cpp:742
 msgid "Profile"
@@ -5977,13 +6005,14 @@ msgstr ""
 
 #: src/game.cpp:929 src/multiplayer_connect.cpp:1566
 msgid "This save is from a version too old to be loaded."
-msgstr ""
+msgstr "Išsaugojimas yra iš per senos versijos, kad būtų įkeltas."
 
 #: src/game.cpp:935 src/multiplayer_connect.cpp:1573
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
 msgstr ""
+"Išsaugojimas yra iš kitos žaidimo versijos. Ar norite pabandyti jį įkelti?"
 
 #: src/game.cpp:955 src/game.cpp:958 src/multiplayer_connect.cpp:1544
 msgid "The file you have tried to load is corrupt: '"
@@ -6097,7 +6126,7 @@ msgstr "Nebuvo nurodytas dienos laikas."
 
 #: src/gamestatus.cpp:738 src/gamestatus.cpp:740 src/playcampaign.cpp:414
 msgid " replay"
-msgstr ""
+msgstr " peržaidimas"
 
 #: src/gamestatus.cpp:875
 msgid "Could not write to file"
@@ -6765,7 +6794,7 @@ msgstr ""
 
 #: src/menu_events.cpp:2153
 msgid "Request information about a user."
-msgstr ""
+msgstr "Pareikalauti informacijos apie naudotoją."
 
 #: src/menu_events.cpp:2155
 msgid "Request a list of details you can set for your registered username."
@@ -6789,7 +6818,7 @@ msgstr "Išvalyti pokalbių istoriją."
 
 #: src/menu_events.cpp:2286
 msgid "Visualize the screen refresh procedure."
-msgstr ""
+msgstr "Vizualizuoti ekrano atnaujinimo procedūrą."
 
 #: src/menu_events.cpp:2289
 msgid "Save game."
@@ -6805,11 +6834,11 @@ msgstr "Išsaugoti ir išjungti."
 
 #: src/menu_events.cpp:2298
 msgid "Ignore replay errors."
-msgstr ""
+msgstr "Ignoruoti peržaidimo klaidas."
 
 #: src/menu_events.cpp:2300
 msgid "Disable autosaves."
-msgstr ""
+msgstr "Uždrausti autoišsaugojimus."
 
 #: src/menu_events.cpp:2302
 msgid "Advance to the next scenario, or scenario identified by 'id'"
@@ -6849,7 +6878,7 @@ msgstr ""
 
 #: src/menu_events.cpp:2324
 msgid "Remove a trait from a unit. (Does not work yet.)"
-msgstr ""
+msgstr "Pašalinti dalinio bruožą. (Dar neveikia.)"
 
 #: src/menu_events.cpp:2326
 msgid "Create a unit."
@@ -7120,7 +7149,7 @@ msgstr "Tuščia"
 
 #: src/multiplayer_connect.cpp:1552
 msgid "This is not a multiplayer save"
-msgstr ""
+msgstr "Tai nėra daugelio žaidėjų žaidimo išsaugojimas"
 
 #: src/multiplayer_connect.cpp:1672
 msgid "Cannot find era $era"
@@ -7538,13 +7567,12 @@ msgid "Error while reading the WML: "
 msgstr "Klaida, skaitant WML: "
 
 #: src/playcampaign.cpp:416
-#, fuzzy
 msgid "Save Replay"
-msgstr "Išsaugoti žaidimą"
+msgstr "Išsaugoti peržaidimą"
 
 #: src/playcampaign.cpp:421
 msgid "The replay could not be saved"
-msgstr ""
+msgstr "Peržaidimas negali būti išsaugotas"
 
 #: src/playcampaign.cpp:438
 msgid "This scenario has ended. Do you want to continue the campaign?"
@@ -7728,7 +7756,7 @@ msgstr ""
 
 #: src/serialization/parser.cpp:164
 msgid "Unterminated [element] tag"
-msgstr ""
+msgstr "Neuždarytas [element] elementas"
 
 #: src/serialization/parser.cpp:174 src/serialization/parser.cpp:212
 msgid "Invalid tag name"
@@ -7736,7 +7764,7 @@ msgstr "Netinkamas elemento vardas"
 
 #: src/serialization/parser.cpp:177
 msgid "Unterminated [+element] tag"
-msgstr ""
+msgstr "Neuždarytas [+element] elementas"
 
 #: src/serialization/parser.cpp:193
 msgid "Invalid closing tag name"
@@ -7744,7 +7772,7 @@ msgstr "Netinkamas uždarančiojo elemento vardas"
 
 #: src/serialization/parser.cpp:196
 msgid "Unterminated closing tag"
-msgstr ""
+msgstr "Neužbaigtas uždarantysis elementas"
 
 #: src/serialization/parser.cpp:198
 msgid "Unexpected closing tag"
@@ -8066,6 +8094,3 @@ msgstr "Padėkite mums padaryti Wesnoth geresnį jums!"
 #: src/upload_log.cpp:330
 msgid "Enable summary uploads"
 msgstr "Įgalinti santraukų siuntimą"
-
-#~ msgid "Abilites"
-#~ msgstr "Gebėjimai"
