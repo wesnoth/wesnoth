@@ -158,7 +158,10 @@ public:
 	surface& surf() { return canvas_; }
 
 	void set_variable(const std::string& key, const variant& value)
-		{ variables_.add(key, value); }
+	{ 
+		variables_.add(key, value); 
+		set_dirty();
+	}
 
 private:
 	/** Vector with the shapes to draw. */
