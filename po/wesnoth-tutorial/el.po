@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-22 14:55+0100\n"
+"POT-Creation-Date: 2008-11-29 12:24+0100\n"
 "PO-Revision-Date: 2008-01-31 02:12+0200\n"
 "Last-Translator: Konstantinos Egarhos <atixos@gmail.com>\n"
 "Language-Team: none\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#. [tutorial]
+#. [tutorial]: id=tutorial
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:41
 msgid ""
 "Hello translators! Tutorial is meant to be a little funny at the start, "
@@ -22,12 +22,12 @@ msgstr ""
 "τους νέους παίκτες. Παρακαλώ κρατήστε χαρούμενα αισθήματα! Για ερωτήσεις "
 "στείλτε γράμμα στο rusty@rustcorp.com.au!"
 
-#. [tutorial]
+#. [tutorial]: id=tutorial
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:42
 msgid "Wesnoth Tutorial"
 msgstr "Εκμάθηση του Γουέσνοθ"
 
-#. [side]: type=Fighter
+#. [side]: type=Fighter, id=student
 #. [command]
 #. [option]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:295
@@ -39,7 +39,7 @@ msgstr "Εκμάθηση του Γουέσνοθ"
 msgid "Konrad"
 msgstr "Κώνραντ"
 
-#. [unit]: type=Elder Mage
+#. [unit]: id=Delfador, type=Elder Mage
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:113
 msgid "Delfador"
 msgstr "Ντεφάλντορ"
@@ -75,7 +75,7 @@ msgstr "Πεθάνετε"
 msgid "Who would you like to play?"
 msgstr "Με ποιον θα θέλατε να παίξετε;"
 
-#. [unit]: type=Fighteress
+#. [unit]: type=Fighteress, id=student
 #. [command]
 #. [option]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:365
@@ -213,46 +213,46 @@ msgstr ""
 "να ανακαλέσεις, και να ξαναπροσπαθήσεις.\n"
 "*Αριστερό κλικ ή οποιοδήποτε κουμπί για συνέχεια..."
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:313
 #, fuzzy
 msgid "Good morning, Delfador! Is it time to attack things?"
 msgstr "Καλημέρα Ντεφάλντορ! Ήρθε η ώρα να πολεμήσω τίποτα;"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:317
 msgid "Um, well..."
 msgstr "Χμμ, εντάξει..."
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:321
 msgid "Have you found an orc for me to fight, huh? A troll?"
 msgstr "Μου βρήκες κανένα ορκ για να παλέψω, ε; Κανένα τρολ;"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:325
 msgid "Quiet! I will summon an enemy for you..."
 msgstr "Ησυχία! Θα καλέσω έναν εχθρό για σένα..."
 
 #. [event]
-#. [unit_type]: race=mechanical
+#. [unit_type]: id=Quintain, race=mechanical
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:353
 #: data/campaigns/tutorial/units/Quintain.cfg:4
 msgid "Quintain"
 msgstr "Ανδρόκειλο"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:357
 msgid "... this quintain!"
 msgstr "... αυτό το ανδρόκειλο!"
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:361
 #, fuzzy
 msgid "A quintain? You want me to pretend to fight a dummy?"
 msgstr "Ένα ανδρόκειλο; Θες να υποκριθώ ότι πολεμάω ένα σκιάχτρο;;"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:365
 msgid "Child, you have 32 hitpoints and a sword. I'm fairly sure you'll win."
 msgstr ""
@@ -288,22 +288,22 @@ msgstr ""
 msgid "Click on the quintain to attack it"
 msgstr "Κάνε κλικ στο ανδρόκειλο για να του επιτεθείς"
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:424
 msgid "Hey! This quintain fights back!"
 msgstr "Έι! Αυτό το ανδρόκειλο αντεπιτήθεται!"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:428
 msgid "Hmm, maybe we should have started with a doll."
 msgstr "Χμμ, μάλλον θα έπρεπε να αρχίσουμε με μία κούκλα."
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:432
 msgid "Should I retreat?"
 msgstr "Μήπως να υποχωρήσω;"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:436
 msgid "Good idea!"
 msgstr "Καλή ιδέα!"
@@ -330,7 +330,7 @@ msgstr ""
 "πεθάνει αυτός θα χάσεις το παιχνίδι. Επίσης, θα χάσεις το παιχνίδι εάν "
 "σκοτωθεί ο αρχηγός σου (Λί'ζαρ)."
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:454
 msgid ""
 "Unfortunately, you've used up your turn attacking the quintain. The quintain "
@@ -339,12 +339,12 @@ msgstr ""
 "Δυστυχώς, κατανάλωσες τον γύρο σου κάνοντας επίθεση στο ανδρόκειλο. Είναι ο "
 "γύρος του ανδρόκειλου τώρα."
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:458
 msgid "The DUMMY gets a turn?"
 msgstr "Αυτή το ΣΚΙΑΧΤΡΟ έχει και γύρο;"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:464
 #, fuzzy
 msgid ""
@@ -361,7 +361,7 @@ msgstr ""
 msgid "Click on the End Turn button on the bottom right"
 msgstr "Κάνε κλικ στο Τέλος Γύρου κουμπί κάτω δεξιά"
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:488
 #, fuzzy
 msgid "Ouch! I need to heal! Only $student_hp hitpoints left!"
@@ -374,7 +374,7 @@ msgstr "Άουτς! Χρειάζομαι θεραπεία! Μόνο  $student_hp
 msgid "Village"
 msgstr "Χωριό"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:493
 #, fuzzy
 msgid ""
@@ -422,7 +422,7 @@ msgstr ""
 msgid "Click on the End Turn button"
 msgstr "Κάνε κλικ στο κουμπί Τέλος Γύρου"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:563
 #, fuzzy
 msgid ""
@@ -432,7 +432,7 @@ msgstr ""
 "Τώρα θα θεραπευτείς κατά 8 βαθμούς υγείας. Μα νομίζω ότι θα χρειαστείς λίγη "
 "βοήθεια εναντίων του ανδρόκειλου."
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:567
 msgid "I'll recruit some elves!"
 msgstr "Θα στρατολογήσω μερικά ξωτικά!"
@@ -444,7 +444,7 @@ msgstr "Θα στρατολογήσω μερικά ξωτικά!"
 msgid "Keep"
 msgstr "Πύργος"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:572
 #, fuzzy
 msgid ""
@@ -507,7 +507,7 @@ msgid "Right click on the other castle tile and Recruit another unit"
 msgstr ""
 "Δεξί κλικ σε κάποιο άλλο χώρο του κάστρου και στρατολόγησε μια ακόμα μονάδα"
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:695
 #, fuzzy
 msgid ""
@@ -516,12 +516,12 @@ msgstr ""
 "Εε, αυτό το ανδρόκειλο μόλις γιατρεύτηκε κατά 2 βαθμούς υγείας! Καλά θα κάνω "
 "να επιτεθώ αμέσως!"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:699
 msgid "Yes, if a unit doesn't do anything for a turn, it will slowly heal."
 msgstr ""
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:711
 #, fuzzy
 msgid ""
@@ -533,13 +533,13 @@ msgstr ""
 "Μα πριν στείλεις τους πολεμηστές σου εναντίων του ανδρόκειλου, πρέπει να "
 "ξέρεις ότι έχουν δύο είδη επιθέσεων..."
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:715
 #, fuzzy
 msgid "I'll tell them to use the one that does the most damage!"
 msgstr "Θα τους πω να χρησιμοποιήσουν αυτό που κάνει την πιο πολλή ζημιά!"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:719
 #, fuzzy
 msgid ""
@@ -559,7 +559,7 @@ msgstr "Αριστερό κλικ στο Ξωτικοπολεμιστή"
 msgid "End your turn and attack again."
 msgstr "Τελείωσε τον γύρω σου, και τότε ξανακάνε επίθεση."
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:739
 msgid ""
 "You wouldn't do anything stupid like charging that quintain yourself again, "
@@ -572,7 +572,7 @@ msgstr ""
 msgid "Left click on the Quintain to attack it."
 msgstr "Αριστερό κλικ στο Ανδρόκειλο για να επιτεθείς."
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:784
 #, fuzzy
 msgid ""
@@ -584,7 +584,7 @@ msgstr ""
 "επίθεση από κοντά, έτσι το ανδρόκειλο αμύνθηκε με την δική του επίθεση (3-"
 "5). Η επίθεση από απόσταση ήταν ασφαλέστερη."
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:792
 #, fuzzy
 msgid ""
@@ -598,7 +598,7 @@ msgstr ""
 "5). Η επίθεση από απόσταση ήταν ασφαλέστερη.\n"
 "Τελείωσε τον γύρο σου, και ξαναπροσπάθησε."
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:804
 #, fuzzy
 msgid ""
@@ -618,7 +618,7 @@ msgstr ""
 msgid "Attack with the other Elf"
 msgstr "Κάνε επίθεση με το άλλο Ξωτικό"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:836
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:854
 #, fuzzy
@@ -631,7 +631,7 @@ msgstr ""
 "Το ανδρόκειλο δεν έχει επίθεση από απόσταση, μόνο επίθεση από κοντά, και "
 "έτσι δεν μπόρεσε να αμυνθεί."
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:844
 #, fuzzy
 msgid ""
@@ -645,14 +645,14 @@ msgstr ""
 "έτσι δεν μπόρεσε να αμυνθεί.\n"
 "Τελείωσε τον γύρο σου, και ξανακάνε επίθεση."
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:875
 #, fuzzy
 msgid "Keep attacking with both elves until the quintain is finished!"
 msgstr ""
 "Συνέχισε να πολεμάς, με τα δύο ξωτικά, μέχρι να νικήσεις το ανδρόκειλο!"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:889
 msgid "Maybe you should recruit another elf?"
 msgstr "Μήπως θα έπρεπε να στρατολογήσεις ένα ακόμα ξωτικό;"
@@ -731,7 +731,7 @@ msgstr ""
 msgid "The quintain is dead, sirs, and I have gained more experience!"
 msgstr "Το ανδρόκειλο είναι νεκρό, κύριοι, και πήρα περισσότερη εμπειρία!"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1001
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1005
 #, fuzzy
@@ -742,7 +742,7 @@ msgstr ""
 "Ναι, παίρνεις περισσότερη εμπειρία με μάχες, ειδικά όταν σκοτώνεις εχθρούς. "
 "Όσο πιο πολύ εμπειρία τόσο ισχυρότερος γίνεσαι."
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1002
 #, fuzzy
 msgid ""
@@ -752,7 +752,7 @@ msgstr ""
 "Τώρα Κώνραντ, μπορείς να παλέψει και με άλλα σκιάχτρα εάν θες να εξασκηθείς! "
 "Μετά, έχουμε λίγη πραγματική δουλειά να κάνουμε..."
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1006
 #, fuzzy
 msgid ""
@@ -924,12 +924,12 @@ msgid "Yes, keep recruiting more units: I think you might need them!"
 msgstr ""
 "Ναι, συνέχισε να στρατολογείς: Νομίζω θα χρειαστούμε και άλλες μονάδες!"
 
-#. [tutorial]
+#. [tutorial]: id=2_Tutorial
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:286
 msgid "Wesnoth Tutorial Part II"
 msgstr "Εκμάθηση του Γουέσνοθ Μέρος II"
 
-#. [side]: type=Orcish Warrior
+#. [side]: type=Orcish Warrior, id=Thrag
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:307
 msgid "Thrag"
 msgstr "Θραγκ"
@@ -956,7 +956,7 @@ msgstr "Τελειώσουν οι γύροι"
 msgid "Death of Li'sar"
 msgstr "Θάνατος της Λί'ζαρ"
 
-#. [unit]: type=Elvish Captain
+#. [unit]: id=Galdrad, type=Elvish Captain
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:388
 msgid "Galdrad"
 msgstr "Γκάλντραντ"
@@ -1199,7 +1199,7 @@ msgstr "Μετακίνησε την Λί'ζαρ ώστε να πάρει ένα 
 msgid "No! I said recruit an Elvish ARCHER! Now try again..."
 msgstr "Όχι! Είπα στρατολόγησε έναν ΞωτικοΤΟΞΟΤΗ! Ξαναπροσπάθησε..."
 
-#. [unit]: type=Elvish Archer
+#. [unit]: id=Eowynial, type=Elvish Archer
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:626
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:638
@@ -1216,7 +1216,7 @@ msgstr "Σαμάνος"
 msgid "Recruit an Elvish Shaman to your north"
 msgstr "Στρατολόγησε έναν Ξωτικοσαμάνο στα βόρεια"
 
-#. [unit]: type=Elvish Archer
+#. [unit]: id=Elriend, type=Elvish Archer
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:665
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:676
@@ -1251,7 +1251,7 @@ msgstr "Στρατολόγησε δύο Ξωτικοτοξότες δυτικά 
 msgid "No! I said recruit an Elvish FIGHTER! Now try again..."
 msgstr "Όχι! Είπα στρατολόγησε έναν ΞωτικοΠΟΛΕΜΙΣΤΗ! Ξαναδοκίμασε..."
 
-#. [unit]: type=Elvish Fighter
+#. [unit]: id=Golir, type=Elvish Fighter
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:730
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:741
@@ -1300,7 +1300,7 @@ msgstr ""
 "$recruit.language_name|? Είπα ΑΝΑΚΑΛΕΣΕ έναν νέο ΞΩΤΙΚΟΠΟΛΕΜΙΣΤΗ. "
 "Ξαναπροσπάθησε..."
 
-#. [unit]: type=Elvish Fighter
+#. [unit]: id=Elindel, type=Elvish Fighter
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:834
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:845
@@ -1877,12 +1877,13 @@ msgstr ""
 "αρχάριους.Ο Κώνραντ, η Λί'ζαρ και ο Ντεφάλντορ είναι χαρακτήρες από το Ο "
 "Κληρονόμος του Θρόνου"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Fighter, race=human
 #: data/campaigns/tutorial/units/Fighter.cfg:4
 msgid "Fighter"
 msgstr "Πολεμιστής"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Fighteress, race=human
+#. [unit_type]: id=Fighter, race=human
 #: data/campaigns/tutorial/units/Fighteress.cfg:17
 #: data/campaigns/tutorial/units/Fighter.cfg:17
 #, fuzzy
@@ -1900,7 +1901,7 @@ msgstr ""
 msgid "sword"
 msgstr "σπαθί"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Fighteress, race=human
 #: data/campaigns/tutorial/units/Fighteress.cfg:4
 msgid "female^Fighter"
 msgstr "Πολεμήστρια"
@@ -1911,7 +1912,7 @@ msgstr "Πολεμήστρια"
 msgid "saber"
 msgstr "σπαθί"
 
-#. [unit_type]: race=mechanical
+#. [unit_type]: id=Quintain, race=mechanical
 #: data/campaigns/tutorial/units/Quintain.cfg:14
 msgid ""
 "Quintains are used to practice swordplay and jousting on. It would be "

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-httt\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-27 19:53+0100\n"
+"POT-Creation-Date: 2008-11-29 12:24+0100\n"
 "PO-Revision-Date: 2008-02-26 14:54+0100\n"
 "Last-Translator: Nils Kneuper <crazy-ivanovic  AT gmx  D O  T net>\n"
 "Language-Team:  <zh@li.org>\n"
@@ -15,46 +15,46 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.10\n"
 
-#. [campaign]
+#. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:11
 msgid "Heir to the Throne"
 msgstr "继位者"
 
-#. [campaign]
+#. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:12
 msgid "HttT"
 msgstr "HttT"
 
-#. [variation]: race=human
-#. [unit_type]: race=human
-#. [campaign]
+#. [variation]: id=Fighter, race=human
+#. [unit_type]: id=Fighter, race=human
+#. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:4
 #: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:33
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:16
 msgid "Fighter"
 msgstr "战士"
 
-#. [campaign]
+#. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:16
 msgid "(Beginner)"
 msgstr "（初学）"
 
-#. [campaign]
+#. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:17
 msgid "(Normal)"
 msgstr "（普通）"
 
-#. [campaign]
+#. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:17
 msgid "Hero"
 msgstr "英雄"
 
-#. [campaign]
+#. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:18
 msgid "(Challenging)"
 msgstr "（挑战）"
 
-#. [campaign]
+#. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:18
 msgid "Champion"
 msgstr "凯旋者"
@@ -67,7 +67,7 @@ msgstr "凯旋者"
 # (The well known book: Romance Of The Three Kindom Classic wrote of this history.)
 # Hence, this word "Wei" conveys to the Chinese memories of war, strategies, betrayal, victories and defeat.
 # The word "nuo" chosen can and has been be used in names. Hence I combine these two characters to describe game Wesnoth, one of war, strategy, victories and defeat.
-#. [campaign]
+#. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:21
 msgid ""
 "Fight to regain the throne of Wesnoth, of which you are the legitimate "
@@ -99,7 +99,7 @@ msgstr "美工制作"
 msgid "Miscellaneous"
 msgstr "其他"
 
-#. [scenario]
+#. [scenario]: id=01_The_Elves_Besieged
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:4
 msgid "The Elves Besieged"
 msgstr "精灵遇袭"
@@ -188,8 +188,8 @@ msgstr "黎伐多阵亡"
 msgid "Turns run out"
 msgstr "步履尽"
 
-#. [side]: type=Commander
-#. [side]: type=Fighter
+#. [side]: type=Commander, id=Konrad
+#. [side]: type=Fighter, id=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:46
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:94
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:44
@@ -222,15 +222,16 @@ msgstr "步履尽"
 msgid "Konrad"
 msgstr "孔列"
 
-#. [side]: type=Commander
-#. [side]: type=Fighter
-#. [side]: type=Dwarvish Lord
-#. [side]: type=Grand Knight
-#. [side]: type=Elvish Champion
-#. [side]: type=Elvish Druid
+#. [side]: type=Commander, id=Konrad
+#. [side]: type=Fighter, id=Konrad
+#. [side]: id=Geldar, type=Dwarvish Lord
+#. [side]: type=Grand Knight, id=Kaylan
+#. [side]: type=Elvish Champion, id=Galdrad
+#. [side]: type=Elvish Druid, id=Chantal
 #. [side]
-#. [side]: type=Ancient Wose
-#. [side]: type=Elvish Sylph
+#. [side]: id=Relgorn, type=Dwarvish Lord
+#. [side]: type=Ancient Wose, id=Haralamdum
+#. [side]: type=Elvish Sylph, id=Bona-Melodia
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:52
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:101
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:49
@@ -268,7 +269,7 @@ msgstr "孔列"
 msgid "Rebels"
 msgstr ""
 
-#. [unit]: type=Elder Mage
+#. [unit]: id=Delfador, type=Elder Mage
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:68
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:693
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:850
@@ -276,18 +277,31 @@ msgid "Delfador"
 msgstr "黎伐多"
 
 # This is only a sounds-like translation. More recommendations welcome.
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Urug-Telfar
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:144
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:83
 msgid "Urug-Telfar"
 msgstr "乌孺.佻伐"
 
-#. [side]: type=Orcish Warlord
-#. [side]: type=Orcish Warrior
-#. [side]: type=Orcish Slurbow
-#. [side]: type=Orcish Sovereign
+#. [side]: type=Orcish Warlord, id=Kojun Herolm
+#. [side]: type=Orcish Warrior, id=Mokho Kimer
+#. [side]: type=Orcish Warrior, id=Mokolo Qimur
+#. [side]: type=Orcish Warlord, id=Urug-Telfar
+#. [side]: type=Orcish Warlord, id=Knafa-Tan
+#. [side]: type=Orcish Warlord, id=Maga-Knafa
+#. [side]: type=Orcish Slurbow, id=Knafa-Telfar
+#. [side]: type=Orcish Warlord, id=Urug-Tan
+#. [side]: type=Orcish Sovereign, id=Shuuga-Mool
+#. [side]: type=Orcish Warrior, id=Halgar Du'nar
+#. [side]: type=Orcish Warlord, id=Gaga-Breuk
+#. [side]: type=Orcish Warlord, id=Urag-Tifer
+#. [side]: type=Orcish Warrior, id=Dwaba-Kukai
+#. [side]: type=Orcish Warrior, id=Managa'Gwin
+#. [side]: type=Orcish Warrior, id=Usadar Q'kai
 #. [side]: type=Goblin Rouser
+#. [side]: type=Orcish Warlord
 #. [side]: type=Troll Warrior
+#. [side]: type=Orcish Warlord, id=Kior-Dal
 #: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:173
 #: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:190
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:100
@@ -315,22 +329,22 @@ msgstr "乌孺.佻伐"
 msgid "Orcs"
 msgstr "马克思"
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Knafa-Tan
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:164
 msgid "Knafa-Tan"
 msgstr "克纳法-丹"
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Maga-Knafa
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:183
 msgid "Maga-Knafa"
 msgstr "玛加-克纳法"
 
-#. [side]: type=Elvish Champion
+#. [side]: type=Elvish Champion, id=Galdrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:203
 msgid "Galdrad"
 msgstr "约瑟"
 
-#. [side]: type=Elvish Druid
+#. [side]: type=Elvish Druid, id=Chantal
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:218
 msgid "Chantal"
 msgstr "詹泰"
@@ -530,7 +544,7 @@ msgid "There can be no looking back. We must go quickly!"
 msgstr "不可再看！快逃吧！"
 
 #. [label]
-#. [scenario]
+#. [scenario]: id=02_Blackwater_Port
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:4
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:50
 msgid "Blackwater Port"
@@ -556,22 +570,22 @@ msgstr "败众敌将"
 msgid "Death of Sir Kaylan"
 msgstr "凯兰爵士阵亡"
 
-#. [side]: type=Grand Knight
+#. [side]: type=Grand Knight, id=Kaylan
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:71
 msgid "Sir Kaylan"
 msgstr "凯兰爵士"
 
-#. [side]: type=Orcish Warrior
+#. [side]: type=Orcish Warrior, id=Mokolo Qimur
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:95
 msgid "Mokolo Qimur"
 msgstr "魔蛞咯.麒穆"
 
-#. [unit]: type=Swordsman
+#. [unit]: type=Swordsman, id=Veocyn
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:123
 msgid "Veocyn"
 msgstr "威尔芯"
 
-#. [unit]: type=Swordsman
+#. [unit]: type=Swordsman, id=Yran
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:135
 msgid "Yran"
 msgstr "毅蚺"
@@ -720,7 +734,7 @@ msgid ""
 "units from past battles to help you fight again."
 msgstr "孔列，谨慎录取新兵。汝也可招回前战经验之士，来助汝今日。"
 
-#. [unit]: type=Horseman
+#. [unit]: id=Haldiel, type=Horseman
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:216
 msgid "Haldiel"
 msgstr "哈蒂尔"
@@ -739,37 +753,37 @@ msgid ""
 msgstr ""
 "孔列，哈蒂尔忠义之士，不耗维护。此乃珍贵非常之品行。希君慎加使用，勿使战损。"
 
-#. [unit]: type=Horseman
+#. [unit]: type=Horseman, id=Yredd
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:245
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:368
 msgid "Yredd"
 msgstr "伊列"
 
-#. [unit]: type=Horseman
+#. [unit]: type=Horseman, id=Tarcyn
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:257
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:380
 msgid "Tarcyn"
 msgstr "塔杏"
 
-#. [unit]: type=Horseman
+#. [unit]: type=Horseman, id=Syryn
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:269
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:392
 msgid "Syryn"
 msgstr "佘英"
 
-#. [unit]: type=Knight
+#. [unit]: type=Knight, id=Cicyn
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:281
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:404
 msgid "Cicyn"
 msgstr "锡芯"
 
-#. [unit]: type=Knight
+#. [unit]: type=Knight, id=Ginvan
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:293
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:416
 msgid "Ginvan"
 msgstr "荆玩"
 
-#. [unit]: type=Knight
+#. [unit]: type=Knight, id=Simyr
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:305
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:428
 msgid "Simyr"
@@ -842,7 +856,7 @@ msgid ""
 "Without his help, we will be unable to use the ships. There is no hope..."
 msgstr "失其援，吾等无法渡船。前路无望耳……"
 
-#. [scenario]
+#. [scenario]: id=03_The_Isle_of_Alduin
 #: data/campaigns/Heir_To_The_Throne/scenarios/03_The_Isle_of_Alduin.cfg:4
 msgid "The Isle of Alduin"
 msgstr "安度云岛"
@@ -854,7 +868,7 @@ msgstr "安度云岛"
 msgid "Defeat the enemy leader"
 msgstr "败敌将"
 
-#. [side]: type=Orcish Warrior
+#. [side]: type=Orcish Warrior, id=Usadar Q'kai
 #: data/campaigns/Heir_To_The_Throne/scenarios/03_The_Isle_of_Alduin.cfg:64
 msgid "Usadar Q'kai"
 msgstr "乌萨达 丘凯"
@@ -896,7 +910,7 @@ msgid ""
 "beautiful. We must recapture it! To arms!"
 msgstr "孰料半兽妖竟已至此。此岛曾何等华美，今定要夺回！军士备战！"
 
-#. [unit]: type=Mage
+#. [unit]: id=Elrian, type=Mage
 #: data/campaigns/Heir_To_The_Throne/scenarios/03_The_Isle_of_Alduin.cfg:216
 msgid "Elrian"
 msgstr "艾里"
@@ -940,7 +954,7 @@ msgid ""
 "with stronger units else the enemy will make short work of them."
 msgstr "王子慎之，术士难以上阵搏杀，其守护常为之软肋耳，需诸军翼之。"
 
-#. [unit]: type=Arch Mage
+#. [unit]: type=Arch Mage, id=Seimus
 #: data/campaigns/Heir_To_The_Throne/scenarios/03_The_Isle_of_Alduin.cfg:267
 msgid "Seimus"
 msgstr "西穆斯"
@@ -998,7 +1012,7 @@ msgid ""
 "sail for the Bay. Hopefully we will defeat her forces there!"
 msgstr "吾等必需行往彼处。且先稍加休息，好乘渡船往去。望可破其妖军！"
 
-#. [scenario]
+#. [scenario]: id=04_The_Bay_of_Pearls
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:4
 msgid "The Bay of Pearls"
 msgstr "珍珠湾"
@@ -1017,29 +1031,29 @@ msgid ""
 msgstr ""
 
 # The next few names are just translated based on sounds-like characters. Very much subjected to debate, but will be of no avail as there is not a one-to-one translation for these in Chinese.
-#. [side]: type=Orcish Warrior
+#. [side]: type=Orcish Warrior, id=Dwaba-Kukai
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:59
 msgid "Dwaba-Kukai"
 msgstr "嘟洼霸－枯凯"
 
-#. [side]: type=Orcish Warrior
+#. [side]: type=Orcish Warrior, id=Managa'Gwin
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:75
 msgid "Managa'Gwin"
 msgstr "玛纳贾－戈盈"
 
-#. [unit]: type=Orcish Archer
+#. [unit]: type=Orcish Archer, id=Bugg
 #. [then]
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:132
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:269
 msgid "Bugg"
 msgstr "霸珥"
 
-#. [unit]: type=Naga Fighter, type=Naga Warrior
+#. [unit]: type=Naga Fighter, type=Naga Warrior, id=Xnamas
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:148
 msgid "Xnamas"
 msgstr "萨马"
 
-#. [unit]: type=Naga Warrior, type=Naga Fighter
+#. [unit]: type=Naga Warrior, type=Naga Fighter, id=Inalai
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:164
 msgid "Inalai"
 msgstr "依纳莱"
@@ -1112,22 +1126,22 @@ msgid "Who was that idiot?"
 msgstr "孰愚耶？"
 
 # Those names from this string down are translated based on sounds-like only.
-#. [unit]: type=Merman Fighter
+#. [unit]: id=Gwaba, type=Merman Fighter
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:320
 msgid "Gwaba"
 msgstr "格瓦霸"
 
-#. [unit]: type=Merman Fighter
+#. [unit]: id=Nepba, type=Merman Fighter
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:333
 msgid "Nepba"
 msgstr "讷霸"
 
-#. [unit]: type=Merman Fighter
+#. [unit]: id=Triram, type=Merman Fighter
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:346
 msgid "Triram"
 msgstr "忒蚺"
 
-#. [unit]: type=Merman Fighter
+#. [unit]: id=Mriram, type=Merman Fighter
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:361
 msgid "Mriram"
 msgstr "米蚺"
@@ -1137,22 +1151,22 @@ msgstr "米蚺"
 msgid "Free at last! Now, death to the orcs!"
 msgstr "自由于是！半兽妖死期已至！"
 
-#. [unit]: type=Merman Fighter
+#. [unit]: id=Mabooa, type=Merman Fighter
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:392
 msgid "Mabooa"
 msgstr "玛钸威"
 
-#. [unit]: type=Merman Fighter
+#. [unit]: id=Earooa, type=Merman Fighter
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:407
 msgid "Earooa"
 msgstr "耶汝威"
 
-#. [unit]: type=Merman Fighter
+#. [unit]: id=Nethuns, type=Merman Fighter
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:420
 msgid "Nethuns"
 msgstr "讷敦斯"
 
-#. [unit]: type=Merman Fighter
+#. [unit]: id=Gwoama, type=Merman Fighter
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:434
 msgid "Gwoama"
 msgstr "戈洼玛"
@@ -1162,12 +1176,12 @@ msgstr "戈洼玛"
 msgid "Now that we are free, together we can defeat our oppressors!"
 msgstr "吾等现已自由，可一齐败敌！"
 
-#. [unit]: type=Merman Fighter
+#. [unit]: id=Kaba, type=Merman Fighter
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:465
 msgid "Kaba"
 msgstr "卡巴"
 
-#. [unit]: type=Merman Fighter
+#. [unit]: id=Kwaboo, type=Merman Fighter
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:480
 msgid "Kwaboo"
 msgstr "夸卜"
@@ -1177,17 +1191,17 @@ msgstr "夸卜"
 msgid "Freedom! Now where are those orcs? Let me at 'em!"
 msgstr "自由！何处有半兽妖？吾来也！"
 
-#. [unit]: type=Merman Fighter
+#. [unit]: id=Gwimli, type=Merman Fighter
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:512
 msgid "Gwimli"
 msgstr "桂米丽"
 
-#. [unit]: type=Merman Fighter
+#. [unit]: id=Jarla, type=Merman Fighter
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:525
 msgid "Jarla"
 msgstr "贾拉"
 
-#. [unit]: type=Merman Fighter
+#. [unit]: id=Gwarloa, type=Merman Fighter
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:540
 msgid "Gwarloa"
 msgstr "戈洼洛阿"
@@ -1199,32 +1213,32 @@ msgid ""
 "cage where they keep most of the mermen is in the northwest!"
 msgstr "感恩汝等前来搭救！吾等可助主敌半兽妖！多数鱼人，笼于西北！"
 
-#. [unit]: type=Merman Fighter
+#. [unit]: id=Heldaga, type=Merman Fighter
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:571
 msgid "Heldaga"
 msgstr "肖达贾"
 
-#. [unit]: type=Merman Hunter
+#. [unit]: id=Apalala, type=Merman Hunter
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:584
 msgid "Apalala"
 msgstr "亚巴腊拉"
 
-#. [unit]: type=Mermaid Initiate
+#. [unit]: id=Oceania, type=Mermaid Initiate
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:597
 msgid "Oceania"
 msgstr "欧仙努"
 
-#. [unit]: type=Merman Fighter
+#. [unit]: id=Elcmar, type=Merman Fighter
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:611
 msgid "Elcmar"
 msgstr "耀玛"
 
-#. [unit]: type=Merman Fighter
+#. [unit]: id=Aigaion, type=Merman Fighter
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:624
 msgid "Aigaion"
 msgstr "艾该勇"
 
-#. [unit]: type=Merman Fighter
+#. [unit]: id=Tini, type=Merman Fighter
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:638
 msgid "Tini"
 msgstr "迪尼"
@@ -1431,7 +1445,7 @@ msgid ""
 "by land, Elensefar is only six days' march up the coast. Make haste!"
 msgstr "半兽妖霸据海上，渡船危险。沿岸步行六日可达埃仁撒伐。事关紧急，速去吧！"
 
-#. [scenario]
+#. [scenario]: id=05a_Muff_Malals_Peninsula
 #: data/campaigns/Heir_To_The_Throne/scenarios/05a_Muff_Malal_Peninsula.cfg:4
 msgid "Muff Malal's Peninsula"
 msgstr "茅马丽半岛"
@@ -1449,16 +1463,24 @@ msgid ""
 "`(early finish bonus)"
 msgstr ""
 
-#. [side]: type=Dark Sorcerer
+#. [side]: type=Dark Sorcerer, id=Muff Malal
 #: data/campaigns/Heir_To_The_Throne/scenarios/05a_Muff_Malal_Peninsula.cfg:61
 msgid "Muff Malal"
 msgstr "茅马丽"
 
-#. [side]: type=Death Knight
-#. [side]: type=Lich
-#. [side]: type=Dark Sorcerer
+#. [side]: type=Death Knight, id=Clarustus
+#. [side]: type=Death Knight, id=Merlunius
+#. [side]: type=Lich, id=Aimucasur
+#. [side]: type=Death Knight, id=Secadius
+#. [side]: type=Death Knight, id=Dafeis
+#. [side]: type=Dark Sorcerer, id=Muff Malal
+#. [side]: type=Lich, id=Galga
+#. [side]: type=Lich, id=Na-alga
+#. [side]: type=Lich, id=Selda-Mana
+#. [side]: id=Haf-Mal, type=Lich
+#. [side]: id=Jarmal-Gorg, type=Lich
 #. [side]
-#. [side]: type=Ancient Lich
+#. [side]: type=Ancient Lich, id=Muff Argulak
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:98
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:114
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:129
@@ -1550,7 +1572,7 @@ msgid ""
 msgstr ""
 "胜利终归吾军！望此战不误大局，吾等救埃仁撒伐，至少解放乡民。吾辈快快向前吧！"
 
-#. [scenario]
+#. [scenario]: id=05b_Isle_of_the_Damned
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:5
 msgid "Isle of the Damned"
 msgstr "罪孽之岛"
@@ -1587,22 +1609,22 @@ msgid ""
 "back to the ship. By dint of great effort they reached a nearby island..."
 msgstr "众人鱼终救得孔列，却无法带他归船。费九牛二虎之力，一众方抵一近邻之岛……"
 
-#. [side]: type=Lich
+#. [side]: id=Haf-Mal, type=Lich
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:77
 msgid "Haf-Mal"
 msgstr "哈佛－毛"
 
-#. [side]: type=Lich
+#. [side]: id=Jarmal-Gorg, type=Lich
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:95
 msgid "Jarmal-Gorg"
 msgstr "夹毛－戈尔"
 
-#. [event]
+#. [event]: id=Delurin 21 12}
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:154
 msgid "Kalba"
 msgstr "拷霸"
 
-#. [event]
+#. [event]: id=Delurin 21 12}
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:155
 msgid "Gnaba"
 msgstr "戈纳巴"
@@ -1636,7 +1658,7 @@ msgid ""
 "undead hordes!"
 msgstr "吾主，此岛尚有人类躲藏。主若应征些来助战，或可敌傀儡军！"
 
-#. [event]
+#. [event]: id=Delurin 21 12}
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:176
 msgid "Delurin"
 msgstr "德鲁林"
@@ -1673,8 +1695,8 @@ msgstr "此庙空也。"
 msgid "Looks like there is somebody hidden in the temple."
 msgstr "似有人匿庙内。"
 
-#. [unit]: type=Mage of Light
-#. [unit]: type=White Mage
+#. [unit]: id=Moremirmu, type=Mage of Light
+#. [unit]: id=Moremirmu, type=White Mage
 #: data/campaigns/Heir_To_The_Throne/scenarios/09_The_Valley_of_Death.cfg:264
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:243
 msgid "Moremirmu"
@@ -1705,7 +1727,7 @@ msgid ""
 "you. Otherwise, I plan to finish my task here before moving on."
 msgstr "若能尽除傀儡，吾当随君左右。不然吾当先尽此职。"
 
-#. [unit]: type=Revenant
+#. [unit]: type=Revenant, id=Xakae
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:303
 msgid "Xakae"
 msgstr "撒奇"
@@ -1762,7 +1784,7 @@ msgid ""
 "we meet again some day!"
 msgstr "谢君相助。吾得继续抗傀儡。望主顺利，也望有缘再见！"
 
-#. [scenario]
+#. [scenario]: id=06_The_Siege_of_Elensefar
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:4
 msgid "The Siege of Elensefar"
 msgstr "围攻埃仁撒伐"
@@ -1780,15 +1802,18 @@ msgstr "败众敌将"
 msgid "Elensefar"
 msgstr "埃仁撒伐"
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Agadla
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:61
 msgid "Agadla"
 msgstr "埃格达"
 
-#. [side]: type=Orcish Warlord
-#. [side]: type=Dark Sorcerer
-#. [side]: type=Troll Warrior
-#. [side]: type=Death Knight
+#. [side]: type=Orcish Warlord, id=Agadla
+#. [side]: type=Dark Sorcerer, id=Muff Jaanal
+#. [side]: id=Brugg, type=Troll Warrior
+#. [side]: id=Lionel, type=Death Knight
+#. [side]: type=Troll Warrior, id=Haaf-Garga
+#. [side]: type=Orcish Warlord, id=Urug-Telfar
+#. [side]: type=Death Knight, id=Unan-Ka'tall
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:72
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:113
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:79
@@ -1799,7 +1824,7 @@ msgstr "埃格达"
 msgid "Evil"
 msgstr ""
 
-#. [side]: type=Dark Sorcerer
+#. [side]: type=Dark Sorcerer, id=Muff Jaanal
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:104
 msgid "Muff Jaanal"
 msgstr "冒－加纳"
@@ -1842,19 +1867,19 @@ msgid ""
 "arrive!"
 msgstr "吾军得趁增援未到，先破城，灭傀儡！"
 
-#. [unit]: type=Rogue
+#. [unit]: id=Reglok, type=Rogue
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:201
 msgid "Reglok"
 msgstr "瑞罗"
 
-#. [unit]: type=Thief
+#. [unit]: id=Gelgar, type=Thief
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:240
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:383
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:480
 msgid "Gelgar"
 msgstr "娇佳"
 
-#. [unit]: type=Thief
+#. [unit]: id=Gamlel, type=Thief
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:252
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:395
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:493
@@ -1974,7 +1999,7 @@ msgid ""
 "city."
 msgstr "当军旗竖起，打斗声遍城可闻。"
 
-#. [unit]: type=Thief
+#. [unit]: id=Darglen, type=Thief
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:407
 msgid "Darglen"
 msgstr "达尔根"
@@ -2023,7 +2048,7 @@ msgstr "吾主得胜！埃仁撒伐贼党将归主公号令。"
 msgid "The party rested for three days, after which an old friend returned."
 msgstr "大伙休息三天后，一老友归来。"
 
-#. [unit]: type=Elvish Lord
+#. [unit]: id=Kalenz, type=Elvish Lord
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:555
 msgid "Kalenz"
 msgstr "克兰"
@@ -2135,7 +2160,7 @@ msgstr "是，孔列。吾信之终有一日，君将为王。但现于今吾等
 msgid "So you endeavor to fight me in my home. Foolish."
 msgstr "尔等然，敢于重地与吾斗。愚蠢。"
 
-#. [scenario]
+#. [scenario]: id=07_Crossroads
 #: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:4
 msgid "Crossroads"
 msgstr "交叉路口"
@@ -2193,12 +2218,12 @@ msgid ""
 "not hold."
 msgstr "孔列军势小，行军于荒芜西部，一时敌军眼线未能发现。然其终未能遂愿。"
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Kojun Herolm
 #: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:165
 msgid "Kojun Herolm"
 msgstr "克菌.荷隆"
 
-#. [side]: type=Orcish Warrior
+#. [side]: type=Orcish Warrior, id=Mokho Kimer
 #: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:182
 msgid "Mokho Kimer"
 msgstr "魔荷.麒墨"
@@ -2282,7 +2307,7 @@ msgstr "吾等暂不可敌艾斯威勒，尚需得夺宣火皇柄，义集北方
 msgid "Victory is ours, men. Let us proceed northeast!"
 msgstr "吾辈必胜。众人速往东北！"
 
-#. [scenario]
+#. [scenario]: id=08_The_Princess_of_Wesnoth
 #: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:4
 msgid "The Princess of Wesnoth"
 msgstr "韦诺公主"
@@ -2314,8 +2339,8 @@ msgid "Elbridge"
 msgstr "耀桥"
 
 #. [event]
-#. [side]: type=Princess
-#. [unit]: type=$stored_Lisar.type
+#. [side]: type=Princess, id=Li'sar
+#. [unit]: id=Li'sar, type=$stored_Lisar.type
 #: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:651
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:59
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:82
@@ -2324,11 +2349,16 @@ msgstr "耀桥"
 msgid "Li'sar"
 msgstr "丽萨"
 
-#. [side]: type=Orcish Warlord
-#. [side]: type=General
-#. [side]: type=Cavalier
-#. [side]: type=Dark Queen
-#. [side]: type=Princess
+#. [side]: type=Orcish Warlord, id=Haliel-Maga
+#. [side]: type=General, id=Heford
+#. [side]: type=Cavalier, id=Sir Kalm
+#. [side]: type=Dark Queen, id=Asheviere
+#. [side]: type=General, id=Josephus
+#. [side]: type=Orcish Warlord, id=Dwar-Ni
+#. [side]: type=General, id=Malatus
+#. [side]: type=Princess, id=Li'sar
+#. [side]: type=General, id=Herbert
+#. [side]: type=General, id=Robert
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:117
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:131
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:147
@@ -2482,7 +2512,7 @@ msgstr "被汝识破吾计！此无他，吾就将计就计吧！"
 msgid "The trap is foiled, but I'll still flush this rabble from their keep!"
 msgstr "计被识穿，然吾仍将驱叛贼下城！"
 
-#. [scenario]
+#. [scenario]: id=09_The_Valley_of_Death
 #: data/campaigns/Heir_To_The_Throne/scenarios/09_The_Valley_of_Death.cfg:4
 msgid "The Valley of Death - The Princess's Revenge"
 msgstr "亡魂谷 － 公主报仇"
@@ -2500,17 +2530,17 @@ msgid ""
 "`(early finish bonus)"
 msgstr ""
 
-#. [side]: type=Lich
+#. [side]: type=Lich, id=Galga
 #: data/campaigns/Heir_To_The_Throne/scenarios/09_The_Valley_of_Death.cfg:76
 msgid "Galga"
 msgstr "羔甲"
 
-#. [side]: type=Lich
+#. [side]: type=Lich, id=Na-alga
 #: data/campaigns/Heir_To_The_Throne/scenarios/09_The_Valley_of_Death.cfg:120
 msgid "Na-alga"
 msgstr "纳－奥甲"
 
-#. [side]: type=Lich
+#. [side]: type=Lich, id=Selda-Mana
 #: data/campaigns/Heir_To_The_Throne/scenarios/09_The_Valley_of_Death.cfg:154
 msgid "Selda-Mana"
 msgstr "肖達－马那"
@@ -2681,7 +2711,7 @@ msgid "Indeed! Let us go from here!"
 msgstr "甚是！当速离此地！"
 
 # I Translate Gryphon based on the "Component" of this creature: mainly Lion and Eagle. Hence translated "Lion-Eagle-Beast"
-#. [scenario]
+#. [scenario]: id=10_Gryphon_Mountain
 #: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:4
 msgid "Gryphon Mountain"
 msgstr "狮鹰兽山"
@@ -2691,12 +2721,12 @@ msgstr "狮鹰兽山"
 msgid "Defeat the mother gryphon and the enemy commander"
 msgstr "败母狮鹰兽与敌将"
 
-#. [side]: type=General
+#. [side]: type=General, id=Robert
 #: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:69
 msgid "Robert"
 msgstr "罗伯特"
 
-#. [side]: type=Gryphon
+#. [side]: type=Gryphon, id=Mother Gryphon
 #: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:87
 msgid "Mother Gryphon"
 msgstr "母狮鹰兽"
@@ -2881,7 +2911,7 @@ msgstr "愤怒瓜吴"
 msgid "Rampant Gruak"
 msgstr "愤怒菇吖"
 
-#. [scenario]
+#. [scenario]: id=11_The_Ford_of_Abez
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:4
 msgid "The Ford of Abez"
 msgstr "雅碧关"
@@ -2891,7 +2921,7 @@ msgstr "雅碧关"
 msgid "Move Konrad to the north side of the river"
 msgstr "带孔列到河阳"
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Gaga-Breuk
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:82
 msgid "Gaga-Breuk"
 msgstr "甲佳－ 壁鲁"
@@ -3133,7 +3163,7 @@ msgstr ""
 "视之，其欲迹我等，却又与海怪为难。吾辈诸已向前。她若争渡冬季之前，于时再行打"
 "算！"
 
-#. [scenario]
+#. [scenario]: id=12_Northern_Winter
 #: data/campaigns/Heir_To_The_Throne/scenarios/12_Northern_Winter.cfg:4
 msgid "Northern Winter"
 msgstr "北部冬季"
@@ -3153,7 +3183,7 @@ msgid ""
 "of autumn and the onset of what would be a harsh winter."
 msgstr "旋风挟雪，吹打孔军，酷冬即来。"
 
-#. [side]: type=Orcish Warrior
+#. [side]: type=Orcish Warrior, id=Halgar Du'nar
 #: data/campaigns/Heir_To_The_Throne/scenarios/12_Northern_Winter.cfg:77
 #: data/campaigns/Heir_To_The_Throne/scenarios/12_Northern_Winter.cfg:102
 msgid "Halgar Du'nar"
@@ -3288,7 +3318,7 @@ msgid ""
 msgstr ""
 "黎伐多等急切寻柄，孔军歇息多日，终不能待春归大地，便复整装行往矮人之国。"
 
-#. [scenario]
+#. [scenario]: id=13_The_Dwarven_Doors
 #: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:4
 msgid "The Dwarven Doors"
 msgstr "矮人国门"
@@ -3298,17 +3328,17 @@ msgstr "矮人国门"
 msgid "Move Konrad to the entrance of the Dwarven Kingdom"
 msgstr "孔列至矮人国入口"
 
-#. [side]: type=Orcish Slurbow
+#. [side]: type=Orcish Slurbow, id=Knafa-Telfar
 #: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:67
 msgid "Knafa-Telfar"
 msgstr "啃拿法－调伐"
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Urug-Tan
 #: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:86
 msgid "Urug-Tan"
 msgstr "乌腊－谭"
 
-#. [side]: type=Orcish Sovereign
+#. [side]: type=Orcish Sovereign, id=Shuuga-Mool
 #: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:105
 msgid "Shuuga-Mool"
 msgstr "属嘎－穆"
@@ -3329,7 +3359,7 @@ msgstr "伟大国门"
 # 1. huang shi wei (literally: Royal Guards)
 # 2. huang shi hu wei (literally: Royal Guards)
 # But "jing yi wei" are part of the Chinese culture. Upon hearing these words, players know who they are up against.
-#. [scenario]
+#. [scenario]: id=13_The_Dwarven_Doors
 #: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:142
 msgid "Royal Guard"
 msgstr "锦衣卫"
@@ -3623,7 +3653,7 @@ msgid ""
 "caves that lie ahead of us!"
 msgstr "喔！虽过高峰险雾，却入此荒乱之地！無隙！速往矿洞去！"
 
-#. [scenario]
+#. [scenario]: id=14_Plunging_into_the_Darkness
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:4
 msgid "Plunging into the Darkness"
 msgstr "进入黑暗"
@@ -3638,52 +3668,52 @@ msgstr "寻找矮人"
 msgid "Hywyn"
 msgstr "海云"
 
-#. [side]: type=Dwarvish Lord
+#. [side]: id=Relgorn, type=Dwarvish Lord
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:97
 msgid "Relgorn"
 msgstr "瑞罗"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:244
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:245
 msgid "It's so dark in here I can hardly see!"
 msgstr "此处好暗，吾目难以见物！"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:248
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:249
 msgid ""
 "It is dark indeed. We shall have to light torches and tread slowly and "
 "carefully. It may be there are still dwarves down here who can aid us!"
 msgstr "确是阴暗。吾众需点燃灯火，小心慢行。此处或还存有矮人，可助吾等！"
 
 #. [message]: speaker=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:252
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:253
 msgid "Indeed. We elves do not fare well in these dark pits."
 msgstr "的确。众精灵不能适此暗道。"
 
 #. [message]: speaker=Relgorn
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:269
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:270
 msgid "Who are these that approach? Surface-dwellers! On your guard, men!"
 msgstr "来者何人？从地面来的！来人，快防备！"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:299
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:300
 msgid "We come in peace, friends. We come in peace!"
 msgstr "以和为贵，朋友啊，以和为贵！"
 
 #. [message]: speaker=Relgorn
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:304
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:305
 msgid ""
 "Oh, do you? I see that you are accompanied by elves. Can we dwarves not live "
 "in peace without the treacherous elves coming to bother us?"
 msgstr "是吗？汝与精灵同行。矮人不得和平居住，岂非为因奸诈精灵骚扰？"
 
 #. [message]: speaker=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:309
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:310
 msgid "Why such harsh words, dwarf? Elves have never done you any harm."
 msgstr "矮人为何口出此言？精灵从未伤汝等。"
 
 #. [message]: speaker=Relgorn
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:314
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:315
 msgid ""
 "'Never done us any harm?' Why, I was there myself, when the elves refused to "
 "honor our alliance. Many dwarves were slaughtered, and you cowardly elves "
@@ -3693,21 +3723,21 @@ msgstr ""
 "按兵不动！"
 
 #. [message]: speaker=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:319
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:320
 msgid ""
 "You go too far! I am Kalenz, a mighty elvish lord! How dare such as you, "
 "sniveling in his tunnel, call me a coward?"
 msgstr "汝言甚矣！吾乃克兰，精灵之主也！汝匿于洞内之矮人，胆敢呼吾懦夫？"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:324
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:325
 msgid ""
 "Peace, friends! Peace! The evil orcs roam the lands above us, we must not "
 "fight among ourselves."
 msgstr "和为贵，吾友！尚和为贵！恶兽妖横行地面，吾等不能内乱不止。"
 
 #. [message]: speaker=Relgorn
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:329
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:330
 msgid ""
 "Very well! Explain your presence here then, human. Who are you? Why have you "
 "risked life and limb to come to Knalga, home of the dwarves?"
@@ -3715,25 +3745,25 @@ msgstr ""
 "好吧！讲讲汝辈所来何图，人属者？汝乃何人？为何冒身命之险来柯那格矮人之家？"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:334
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:335
 msgid "Well, we... we..."
 msgstr "如此，吾等……"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:339
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:340
 msgid ""
 "We have come so that an heir may claim his inheritance, that a king may "
 "claim his throne. We seek the Scepter of Fire."
 msgstr "吾等来，使继位者得其业，当为王者续王位。吾等现寻宣火皇柄。"
 
 #. [message]: speaker=Relgorn
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:344
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:345
 msgid ""
 "The Scepter of Fire? Are you out of your minds? Surely you speak in jest!"
 msgstr "宣火皇柄！汝辈疯欤？贻笑耳！"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:349
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:350
 msgid ""
 "We jest not, friend. We seek the Scepter of Fire. We seek the help of the "
 "dwarves in finding it. But know that we will find it, whether you help us or "
@@ -3743,7 +3773,7 @@ msgstr ""
 "寻获之。"
 
 #. [message]: speaker=Relgorn
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:354
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:355
 msgid ""
 "You speak foolishness. No one even knows if the Scepter of Fire still "
 "exists. And who is this heir, this king that you speak of?"
@@ -3752,12 +3782,12 @@ msgstr ""
 "人？"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:359
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:360
 msgid "I am, sir."
 msgstr "吾也，先生。"
 
 #. [message]: speaker=Relgorn
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:364
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:365
 msgid ""
 "You? Ha ha! This boy that stands before me is the king of Wesnoth? Ha ha! I "
 "haven't had such a laugh in a long time. And who are you, old man?"
@@ -3765,14 +3795,14 @@ msgstr ""
 "是汝？哈哈！此男孩是韦诺之王？哈哈！吾好久没如此笑过。老头子，汝又乃何人？"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:369
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:370
 msgid ""
 "I am Delfador, Delfador the Great, Arch Mage to King Garard, and Protector "
 "of his heir."
 msgstr "吾乃是黎伐多，那伟大的黎伐多，约瑟王之术士，他继承人护卫者。"
 
 #. [message]: speaker=Relgorn
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:374
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:375
 msgid ""
 "You... you are Delfador? I saw Delfador when I was but a young dwarf, and I "
 "will tell you, old man, you are not Delfador. Men! Take these liars out of "
@@ -3782,29 +3812,29 @@ msgstr ""
 "此些骗子拉出去。黎伐多多年前已经过世。"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:404
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:405
 msgid "I am Delfador the Great! Tremble before my wrath!"
 msgstr "吾乃黎伐多大人！于此怒火前战栗罢！"
 
 #. [message]: speaker=Relgorn
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:409
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:410
 msgid ""
 "You... you really are Delfador! But we had news that you were dead, years "
 "ago!"
 msgstr "汝……先生真是黎伐多！但吾有闻先生已于多年前身亡！"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:414
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:415
 msgid "They thought I was dead. They hoped I was dead. Yet still I live."
 msgstr "众人以为吾已亡。他辈希望吾已亡。然吾尚未亡焉。"
 
 #. [message]: speaker=Relgorn
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:419
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:420
 msgid "And you really think that you can find the Scepter of Fire?"
 msgstr "先生确以为可寻得宣火皇柄否？"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:424
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:425
 msgid ""
 "Yes, I do. If you help us, friend, all the treasures of Knalga that we find "
 "are yours. We want only the Scepter. It will be dangerous. Make no mistake "
@@ -3816,7 +3846,7 @@ msgstr ""
 "此，逃避兽妖。"
 
 #. [message]: speaker=Relgorn
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:429
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:430
 msgid ""
 "You are right, friend. I will put my best men at your disposal. We know not "
 "where the Scepter is though. Legend says it is hidden in the eastern tunnels."
@@ -3825,47 +3855,47 @@ msgstr ""
 "它是藏于东通道处。"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:434
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:435
 msgid "Then to the eastern tunnels we shall go!"
 msgstr "那就进军东边通道！"
 
 # I Translate Gryphon based on the "Component" of this creature: mainly Lion and Eagle. Hence translated "Lion-Eagle-Beast"
-#. [unit]: type=Elvish Shaman
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:499
+#. [unit]: type=Elvish Shaman, id=Gryphon Tender
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:500
 msgid "Gryphon Tender"
 msgstr "狮鹫牧童"
 
 #. [message]: speaker=Gryphon Tender
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:512
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:513
 msgid ""
 "I am sorry, Prince Konrad. The young gryphons are breaking their ropes. They "
 "are simply getting too large and too restless to restrain anymore!"
 msgstr "王子啊，成年狮鹫在扯脱缰绳。此物之庞大好动，不能再行圈养。"
 
 #. [message]: speaker=Relgorn
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:546
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:547
 msgid "What's this? Gryphons in my castle? Remove the beasts!"
 msgstr "这是何物？吾城堡中竟有狮鹫？驱除此些野兽！"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:550
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:551
 msgid "Beasts? We were planning to use them as mounts."
 msgstr "野兽？吾等尚欲以此为坐骑。"
 
 #. [message]: speaker=Relgorn
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:554
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:555
 msgid "Ha ha! Gryphons as mounts! Is there no end to your folly?"
 msgstr "哈！狮鹫为坐骑？尔等实太过荒唐！"
 
 #. [message]: speaker=Konrad
 #. [message]: speaker=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:558
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:566
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:559
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:567
 msgid "(looks miffed)"
 msgstr "（面有怒色）"
 
 #. [message]: speaker=Relgorn
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:562
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:563
 msgid ""
 "Well, if you must go on with this mad scheme, I shall supply you with my own "
 "troops as riders! A frail human - or worse, an elf - would never be able to "
@@ -3875,35 +3905,35 @@ msgstr ""
 "性。"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:570
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:571
 msgid ""
 "Temper your anger. Relgorn's manner may be rough, but surely there is "
 "nothing wrong with his suggestion?"
 msgstr "君需消气。此虽鲁莽，然此计无误焉。"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:574
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:575
 msgid "Well, I suppose..."
 msgstr "此，吾提议......."
 
-#. [unit]: type=Gryphon Rider
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:599
+#. [unit]: type=Gryphon Rider, id=Mounted Dwarf
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:600
 msgid "Mounted Dwarf"
 msgstr "骑行矮人"
 
 #. [message]: speaker=Mounted Dwarf
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:612
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:613
 #, fuzzy
 msgid "Whoa there... No need to be surly, now. Easy...easy... now GO!"
 msgstr "啊……现下并不需粗暴。呃，自在些……走！"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:638
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:639
 msgid "You can now recruit fearsome Gryphon Riders!"
 msgstr "我军现可招天骑者！"
 
 #. [message]: speaker=Relgorn
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:643
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:644
 msgid ""
 "Though they stink, gryphons are magnificent animals. They may not be able to "
 "navigate our twisted caverns very well, but if you ever see the surface "
@@ -3913,33 +3943,33 @@ msgstr ""
 "主。祝好运，柯那格之盟友。"
 
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:670
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:671
 msgid "Hmm... there seems to be a secret passage behind these rocks!"
 msgstr "咦……岩石后面有一秘道！"
 
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:694
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:695
 msgid ""
 "There is a great fortune in this chest of treasure! I can count two hundred "
 "pieces of gold!"
 msgstr "此箱蓄财！数来有两百金！"
 
-#. [scenario]
+#. [scenario]: id=15_The_Lost_General
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:4
 msgid "The Lost General"
 msgstr "失落将军"
 
-#. [side]: type=Dwarvish Lord
+#. [side]: id=Geldar, type=Dwarvish Lord
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:57
 msgid "Geldar"
 msgstr "交达"
 
-#. [side]: type=Troll Warrior
+#. [side]: id=Brugg, type=Troll Warrior
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:69
 msgid "Brugg"
 msgstr "卜儒"
 
-#. [side]: type=Death Knight
+#. [side]: id=Lionel, type=Death Knight
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:84
 msgid "Lionel"
 msgstr "黎尔诺"
@@ -3976,7 +4006,7 @@ msgstr "吾舅舅一家于半兽妖泛滥地道后淹死……"
 msgid "A hidden whirlpool sucks you down into a subterranean current!"
 msgstr "漩涡将其吸入地下潜流。"
 
-#. [unit]: type=Dwarvish Ulfserker
+#. [unit]: id=Ulfdain, type=Dwarvish Ulfserker
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:176
 msgid "Ulfdain"
 msgstr "阿富旦"
@@ -4244,7 +4274,7 @@ msgid ""
 msgstr ""
 "孔列，吾不得知。然此路唯领吾等下行。吾等将继续向东北，至此窑洞最深之处。"
 
-#. [scenario]
+#. [scenario]: id=16_Hasty_Alliance
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:4
 msgid "Hasty Alliance"
 msgstr "快速联盟"
@@ -4298,14 +4328,14 @@ msgstr ""
 "众人前行，得一空穴，不见四壁。疾风呼号，掠过众人足下之桥，如受强力术法与新生"
 "邪恶所控。"
 
-#. [side]: type=Commander
-#. [side]: type=Princess
+#. [side]: type=Commander, id=Konrad
+#. [side]: type=Princess, id=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:70
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:90
 msgid "Humans"
 msgstr ""
 
-#. [side]: type=Troll Warrior
+#. [side]: type=Troll Warrior, id=Haaf-Garga
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:97
 msgid "Haaf-Garga"
 msgstr "哈俄－戛戛"
@@ -4417,7 +4447,7 @@ msgid "I can't believe it should end like this!"
 msgstr "我不信就此数尽！"
 
 #. [settings]
-#. [scenario]
+#. [scenario]: id=17_Scepter_of_Fire
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:4
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:33
 msgid "The Scepter of Fire"
@@ -4513,7 +4543,7 @@ msgstr "孔列，此裹囊与你，备金供君使用。"
 msgid "You receive 300 pieces of gold!"
 msgstr "汝获金币三百！"
 
-#. [scenario]
+#. [scenario]: id=18_A_Choice_Must_Be_Made
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:4
 msgid "A Choice Must Be Made"
 msgstr "需做选择"
@@ -4553,7 +4583,7 @@ msgid "Defeat either of the enemy leaders"
 msgstr "败任一敌将"
 
 # This is only a sounds-like translation. More recommendations welcome.
-#. [side]: type=Death Knight
+#. [side]: type=Death Knight, id=Unan-Ka'tall
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:104
 msgid "Unan-Ka'tall"
 msgstr "乌囊.卡淘"
@@ -4909,12 +4939,12 @@ msgid ""
 "of the river again."
 msgstr "今后若想择此路，可令一人鱼再复移动到河之右端。"
 
-#. [scenario]
+#. [scenario]: id=19a_Snow_Plains
 #: data/campaigns/Heir_To_The_Throne/scenarios/19a_Snow_Plains.cfg:4
 msgid "Snow Plains"
 msgstr "雪遮旷野"
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Urag-Tifer
 #: data/campaigns/Heir_To_The_Throne/scenarios/19a_Snow_Plains.cfg:65
 msgid "Urag-Tifer"
 msgstr "乌拉蹄缶"
@@ -5060,7 +5090,7 @@ msgstr ""
 "停下！吾不忍听更多。公主或欲止汝母之恶统，但吾誓取其首级，以报杀吾父兄之仇。"
 "艾斯威勒之篡位之举，终将止于吾之剑下！"
 
-#. [scenario]
+#. [scenario]: id=19b_Swamp_Of_Dread
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:4
 msgid "Swamp Of Dread"
 msgstr "恐惧沼泽"
@@ -5077,27 +5107,27 @@ msgid ""
 "@Defeat all Death Knights first"
 msgstr ""
 
-#. [side]: type=Death Knight
+#. [side]: type=Death Knight, id=Clarustus
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:87
 msgid "Clarustus"
 msgstr "卡儒督"
 
-#. [side]: type=Death Knight
+#. [side]: type=Death Knight, id=Merlunius
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:106
 msgid "Merlunius"
 msgstr "默伦尼爾"
 
-#. [side]: type=Lich
+#. [side]: type=Lich, id=Aimucasur
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:122
 msgid "Aimucasur"
 msgstr "阿姆凯社"
 
-#. [side]: type=Death Knight
+#. [side]: type=Death Knight, id=Secadius
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:138
 msgid "Secadius"
 msgstr "萨卡蒂尔"
 
-#. [side]: type=Death Knight
+#. [side]: type=Death Knight, id=Dafeis
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:157
 msgid "Dafeis"
 msgstr "達菲义"
@@ -5242,7 +5272,7 @@ msgstr ""
 "汝目光公平却视如无物，且听吾一言，汝以为吾不知人灵之力耶？当正义和真言之卷，"
 "竟在皇室弃他之时能被改写，其又复能邪恶乎！"
 
-#. [scenario]
+#. [scenario]: id=19c_Cliffs_of_Thoria
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:4
 msgid "The Cliffs of Thoria"
 msgstr "索丽亚山崖"
@@ -5254,14 +5284,14 @@ msgid "Make it to the end of the river"
 msgstr "带孔列到河之尽头"
 
 #. [side]
-#. [side]: type=Saurian Oracle
+#. [side]: type=Saurian Oracle, id=Szerkz
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:136
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:83
 #, fuzzy
 msgid "Drakes"
 msgstr "達菲义"
 
-#. [unit]: type=Injured Sergeant
+#. [unit]: type=Injured Sergeant, id=Warven
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:264
 msgid "Warven"
 msgstr "沃尔文"
@@ -5356,7 +5386,7 @@ msgstr "吾等已无时日以归来路！吾等需速投北精灵，见吾等之
 msgid "Delfador is right. We must go on!"
 msgstr "黎伐多所言极是，吾等需向前。"
 
-#. [unit]: type=Armageddon Drake
+#. [unit]: type=Armageddon Drake, id=Keh Ohn
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:345
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:455
 msgid "Keh Ohn"
@@ -5763,7 +5793,7 @@ msgstr "是，殿下！"
 msgid "Everybody inside..."
 msgstr "众皆入……"
 
-#. [scenario]
+#. [scenario]: id=20a_North_Elves
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:4
 msgid "Home of the North Elves"
 msgstr "北精灵国"
@@ -5787,10 +5817,10 @@ msgstr "步伐完毕，却未抵达精灵林"
 msgid "Note: your encampment will be dismantled after the first turn.\n"
 msgstr "首合汝营将坏"
 
-#. [side]: type=Commander
-#. [side]: type=Elvish Lord
-#. [side]: type=Elvish Lady
-#. [side]: type=Elvish Marshal
+#. [side]: type=Commander, id=Konrad
+#. [side]: type=Elvish Lord, id=Uradredia
+#. [side]: type=Elvish Lady, id=Parandra
+#. [side]: type=Elvish Marshal, id=El'rien
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:28
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:39
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:48
@@ -5799,17 +5829,17 @@ msgstr "首合汝营将坏"
 msgid "Allies"
 msgstr ""
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Kior-Dal
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:69
 msgid "Kior-Dal"
 msgstr "岂欧达"
 
-#. [side]: type=General
+#. [side]: type=General, id=Herbert
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:128
 msgid "Herbert"
 msgstr "锡伯"
 
-#. [side]: type=Elvish Marshal
+#. [side]: type=Elvish Marshal, id=El'rien
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:193
 msgid "El'rien"
 msgstr "耀丽颜"
@@ -5842,7 +5872,7 @@ msgid ""
 "the safety and hospitality of the elves."
 msgstr "只要大家小心谨慎前往，吾相信即可至精灵地，享安全及盛待。"
 
-#. [unit]: type=Elvish Rider
+#. [unit]: id=Telerandor, type=Elvish Rider
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:377
 #, fuzzy
 msgid "Telerandor"
@@ -6114,7 +6144,7 @@ msgstr "耀丽颜，吾等已获宣火皇柄！快带大伙去埃仁西亚！"
 msgid "Indeed. We will escort you to our capital, where we will make Council."
 msgstr "的确。吾等即刻带主入京，以便商议。"
 
-#. [scenario]
+#. [scenario]: id=20b_Underground_Channels
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:4
 msgid "Underground Channels"
 msgstr "地下通道"
@@ -6139,22 +6169,22 @@ msgstr ""
 msgid "Turns expire"
 msgstr "逾时"
 
-#. [side]: type=Saurian Oracle
+#. [side]: type=Saurian Oracle, id=Szerkz
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:79
 msgid "Szerkz"
 msgstr "瑟责卡滋"
 
-#. [side]: type=Ancient Lich
+#. [side]: type=Ancient Lich, id=Muff Argulak
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:97
 msgid "Muff Argulak"
 msgstr "茅伐格拉"
 
-#. [side]: type=Ancient Wose
+#. [side]: type=Ancient Wose, id=Haralamdum
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:115
 msgid "Haralamdum"
 msgstr "哈阿来目德"
 
-#. [side]: type=Elvish Sylph
+#. [side]: type=Elvish Sylph, id=Bona-Melodia
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:135
 msgid "Bona-Melodia"
 msgstr "博那麦噢得儿"
@@ -6169,32 +6199,32 @@ msgstr "众人乃入密洞，面此难关……"
 msgid "Get that vile creature!"
 msgstr "取那卑劣之物！"
 
-#. [scenario]
+#. [scenario]: id=21_Elven_Council
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:4
 msgid "The Elven Council"
 msgstr "精灵会议"
 
-#. [side]: type=Elvish Lord
+#. [side]: type=Elvish Lord, id=Uradredia
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:34
 msgid "Uradredia"
 msgstr "乌拉芮蒂亚"
 
-#. [side]: type=Elvish Lady
+#. [side]: type=Elvish Lady, id=Parandra
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:44
 msgid "Parandra"
 msgstr "笆蚺蒂亚"
 
-#. [unit]: type=Elvish Champion
+#. [unit]: type=Elvish Champion, id=Bellrok
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:77
 msgid "Bellrok"
 msgstr "贝尔洛"
 
-#. [unit]: type=Elvish Avenger
+#. [unit]: type=Elvish Avenger, id=Tindolean
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:86
 msgid "Tindolean"
 msgstr "特嗯渡兰"
 
-#. [unit]: type=Elvish Enchantress
+#. [unit]: type=Elvish Enchantress, id=Everlore
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:94
 msgid "Everlore"
 msgstr "呃瓦噢"
@@ -6557,7 +6587,7 @@ msgid ""
 "you will leave our protection with the resources to finish your journey."
 msgstr "善，歇息吧。君所带之兵将于此休养。吾等已备齐君之离去所需物品。"
 
-#. [scenario]
+#. [scenario]: id=22_Return_to_Wesnoth
 #: data/campaigns/Heir_To_The_Throne/scenarios/22_Return_to_Wesnoth.cfg:4
 msgid "Return to Wesnoth"
 msgstr "重返韦诺"
@@ -6621,17 +6651,17 @@ msgid ""
 "greatest danger lay ahead, he knew he was finally returning home."
 msgstr "艰险漂泊半载有余，旅程望终。纵前路危险，孔列却知其乃归路也。"
 
-#. [side]: type=General
+#. [side]: type=General, id=Josephus
 #: data/campaigns/Heir_To_The_Throne/scenarios/22_Return_to_Wesnoth.cfg:100
 msgid "Josephus"
 msgstr "约束亚"
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Dwar-Ni
 #: data/campaigns/Heir_To_The_Throne/scenarios/22_Return_to_Wesnoth.cfg:119
 msgid "Dwar-Ni"
 msgstr "特瓦尼"
 
-#. [side]: type=General
+#. [side]: type=General, id=Malatus
 #: data/campaigns/Heir_To_The_Throne/scenarios/22_Return_to_Wesnoth.cfg:137
 msgid "Malatus"
 msgstr "马拉地"
@@ -6689,7 +6719,7 @@ msgid ""
 "we're diminishing our resources."
 msgstr "大家赶快！前路困难重重，怠慢则损。"
 
-#. [scenario]
+#. [scenario]: id=23_Test_of_the_Clans
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:4
 msgid "Test of the Clan"
 msgstr "骑族应考"
@@ -6708,7 +6738,10 @@ msgid ""
 "@Defeat all enemy leaders"
 msgstr "败众敌将"
 
-#. [side]: type=Grand Knight
+#. [side]: type=Grand Knight, id=Sir Alric
+#. [side]: type=Grand Knight, id=Sir Ruga
+#. [side]: type=Grand Knight, id=Sir Daryn
+#. [side]: type=Grand Knight, id=Bayar
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:73
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:102
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:131
@@ -6718,28 +6751,28 @@ msgid "Plainsmen"
 msgstr "雪遮旷野"
 
 #. [then]
-#. [side]: type=Grand Knight
+#. [side]: type=Grand Knight, id=Sir Alric
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:207
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:76
 msgid "Sir Alric"
 msgstr "奥里爵士"
 
 #. [then]
-#. [side]: type=Grand Knight
+#. [side]: type=Grand Knight, id=Sir Ruga
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:198
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:105
 msgid "Sir Ruga"
 msgstr "鲁佳爵士"
 
 #. [then]
-#. [side]: type=Grand Knight
+#. [side]: type=Grand Knight, id=Sir Daryn
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:189
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:134
 msgid "Sir Daryn"
 msgstr "大林爵士"
 
 #. [then]
-#. [side]: type=Grand Knight
+#. [side]: type=Grand Knight, id=Bayar
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:180
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:163
@@ -6971,7 +7004,7 @@ msgid ""
 "help in guarding our flanks will be invaluable."
 msgstr "吾等已败敌！看骑族军力如何。他辈助守左右，有百利而无一害！"
 
-#. [scenario]
+#. [scenario]: id=24_Battle_for_Wesnoth
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:4
 msgid "The Battle for Wesnoth"
 msgstr "韦诺大战"
@@ -7085,17 +7118,17 @@ msgid ""
 "for the heir to the throne to claim it!"
 msgstr "天已破晓，吾等亦莫久留此地。此刻乃继位者夺位之时！"
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Haliel-Maga
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:107
 msgid "Haliel-Maga"
 msgstr "哈雷尔.马甲"
 
-#. [side]: type=General
+#. [side]: type=General, id=Heford
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:123
 msgid "Heford"
 msgstr "荷副"
 
-#. [side]: type=Cavalier
+#. [side]: type=Cavalier, id=Sir Kalm
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:138
 msgid "Sir Kalm"
 msgstr "甘爵士"
@@ -7300,7 +7333,7 @@ msgstr ""
 "此为正义之战，精灵主，为不战则恶盛行。恳求令死者得其所。生者获利。吾等已夺此"
 "胜利，吾友，明日将时为新……令吾等共建新朝！"
 
-#. [scenario]
+#. [scenario]: id=25_HttT_Epilogue
 #: data/campaigns/Heir_To_The_Throne/scenarios/25_HttT_Epilogue.cfg:4
 msgid "Epilogue"
 msgstr "收场白"
@@ -7352,15 +7385,15 @@ msgid ""
 "every week."
 msgstr "小孔列王子遗骨，从精灵处取回，转葬于韦玲皇墓。列则每周祭拜。"
 
-#. [variation]: race=human
-#. [unit_type]: race=human
+#. [variation]: id=Battle Princess, race=human
+#. [unit_type]: id=Battle Princess, race=human
 #: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:4
 #: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:84
 msgid "female^Battle Princess"
 msgstr "战斗公主"
 
-#. [variation]: race=human
-#. [unit_type]: race=human
+#. [variation]: id=Battle Princess, race=human
+#. [unit_type]: id=Battle Princess, race=human
 #: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:32
 #: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:111
 msgid ""
@@ -7391,15 +7424,15 @@ msgstr "军刀"
 msgid "scepter of fire"
 msgstr "火焰权杖"
 
-#. [variation]: race=human
-#. [unit_type]: race=human
+#. [variation]: id=Commander, race=human
+#. [unit_type]: id=Commander, race=human
 #: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:4
 #: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:148
 msgid "Commander"
 msgstr "指挥官"
 
-#. [variation]: race=human
-#. [unit_type]: race=human
+#. [variation]: id=Commander, race=human
+#. [unit_type]: id=Commander, race=human
 #: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:27
 #: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:171
 msgid ""
@@ -7432,15 +7465,15 @@ msgstr "剑"
 msgid "bow"
 msgstr "弓"
 
-#. [variation]: race=human
-#. [unit_type]: race=human
+#. [variation]: id=Dark Queen, race=human
+#. [unit_type]: id=Dark Queen, race=human
 #: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:4
 #: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:45
 msgid "female^Dark Queen"
 msgstr "黑暗女王"
 
-#. [variation]: race=human
-#. [unit_type]: race=human
+#. [variation]: id=Dark Queen, race=human
+#. [unit_type]: id=Dark Queen, race=human
 #: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:19
 #: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:60
 msgid ""
@@ -7461,7 +7494,7 @@ msgstr "权杖"
 msgid "raging blizzard"
 msgstr ""
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Fighter, race=human
 #: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:18
 msgid ""
 "Young and brash, Fighters attack with a sword, and are vulnerable to more "
@@ -7470,7 +7503,7 @@ msgid ""
 msgstr ""
 "年轻性急的战士使用剑，会受老练敌人攻击。然而他们某日将能成为伟大的勇士。"
 
-#. [variation]: race=human
+#. [variation]: id=Fighter, race=human
 #: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:46
 msgid ""
 "Young and brash, Fighters fight with a sword, and are vulnerable to attack "
@@ -7478,20 +7511,20 @@ msgid ""
 "day."
 msgstr "年轻性急的战士使用剑，易受敌人攻击。然而他们某日将能成为伟大的勇士。"
 
-#. [unit_type]
+#. [unit_type]: id=Injured Sergeant
 #: data/campaigns/Heir_To_The_Throne/units/Injured_Sergeant.cfg:7
 msgid "Injured Sergeant"
 msgstr "受伤军官"
 
-#. [variation]: race=human
-#. [unit_type]: race=human
+#. [variation]: id=Lord, race=human
+#. [unit_type]: id=Lord, race=human
 #: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:4
 #: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:175
 msgid "Lord"
 msgstr "君主"
 
-#. [variation]: race=human
-#. [unit_type]: race=human
+#. [variation]: id=Lord, race=human
+#. [unit_type]: id=Lord, race=human
 #: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:28
 #: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:199
 msgid ""
@@ -7503,13 +7536,13 @@ msgstr ""
 "诸多军队的高级领袖，君主于近战中特别强而有力，并有弓技能，像指挥官一样，君主"
 "拥有领导技能，并让相邻的低级单位改进战斗能力。"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Princess, race=human
 #: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:4
 msgid "female^Princess"
 msgstr "公主"
 
-#. [variation]: race=human
-#. [unit_type]: race=human
+#. [variation]: id=Princess, race=human
+#. [unit_type]: id=Princess, race=human
 #: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:29
 #: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:150
 msgid ""
@@ -7523,17 +7556,17 @@ msgstr ""
 "邻的低级单位于她的领导下能更好的战斗。公主也十分灵活和敏捷，有着如小偷般的技"
 "能。"
 
-#. [variation]: race=human
+#. [variation]: id=Princess, race=human
 #: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:126
 msgid "Princess"
 msgstr "公主"
 
-#. [unit_type]: race=orc
+#. [unit_type]: id=Sea Orc, race=orc
 #: data/campaigns/Heir_To_The_Throne/units/Sea_Orc.cfg:4
 msgid "Sea Orc"
 msgstr "海洋兽"
 
-#. [unit_type]: race=orc
+#. [unit_type]: id=Sea Orc, race=orc
 #: data/campaigns/Heir_To_The_Throne/units/Sea_Orc.cfg:17
 #, fuzzy
 msgid ""
@@ -7547,12 +7580,12 @@ msgstr ""
 "的环境。弯曲的剑使得他能胜任战士此一职业，虽然他们缺乏有效的远程攻击，在陆地"
 "上疏于防御，表现出他们战略上的弱势。"
 
-#. [unit_type]: race=gryphon
+#. [unit_type]: id=Sleeping Gryphon, race=gryphon
 #: data/campaigns/Heir_To_The_Throne/units/Sleeping_Gryphon.cfg:4
 msgid "Sleeping Gryphon"
 msgstr "沉睡狮鹫"
 
-#. [unit_type]: race=gryphon
+#. [unit_type]: id=Sleeping Gryphon, race=gryphon
 #: data/campaigns/Heir_To_The_Throne/units/Sleeping_Gryphon.cfg:18
 msgid "Shhhh! The Gryphon is sleeping! You'd better not wake it up!"
 msgstr "嘘！狮鹫正寐！毋要吵醒之！"
@@ -7594,12 +7627,12 @@ msgstr "此人取剑否？"
 msgid "Yes"
 msgstr "是"
 
-#. [object]
+#. [object]: id={ID}
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:49
 msgid "Flaming Sword"
 msgstr "火焰剑"
 
-#. [object]
+#. [object]: id={ID}
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:53
 msgid ""
 "This massive blade was created centuries ago by long-forgotten elvish "
@@ -7610,7 +7643,7 @@ msgstr ""
 "此宏伟之剑，乃精灵圣人于数百年前所炼就，精钢中渗有火焰魔力。其表有火舌舞动，"
 "视不见瑕疵。"
 
-#. [object]
+#. [object]: id={ID}
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:54
 msgid "Only the leader of an army can wield this sword!"
 msgstr "仅部队领袖方可取用本剑！"
@@ -7639,19 +7672,19 @@ msgstr "不是"
 msgid "Do you want this unit to pick up the armor?"
 msgstr "此人取此铠？"
 
-#. [object]
+#. [object]: id={ID}
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:166
 msgid "Void Armor"
 msgstr "空虚之铠"
 
-#. [object]
+#. [object]: id={ID}
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:168
 msgid ""
 "A beautiful chest plate crafted from shimmering black steel, the Void Armor "
 "is virtually impenetrable to physical weapons!"
 msgstr "美丽胸片点缀的黑钢战甲，空虚之铠竟似武器不可穿透之物！"
 
-#. [object]
+#. [object]: id={ID}
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:169
 msgid "Only a powerful warrior may don this armor!"
 msgstr "唯猛士可戴！"
@@ -7663,12 +7696,12 @@ msgid ""
 "amazingly comfortable. You have increased resistance to all physical damage!"
 msgstr "探入战甲，非观之重量。经及套入，确舒适于体。可担当外在硬伤！"
 
-#. [value]
+#. [value]: id=void_armor
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:193
 msgid "void armor"
 msgstr "空虚之铠"
 
-#. [value]
+#. [value]: id=void_armor
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:198
 #, fuzzy
 msgid ""
@@ -7684,12 +7717,12 @@ msgstr ""
 "冲击： 60%\n"
 "火焰：+10%"
 
-#. [object]
+#. [object]: id=object_scepter
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:384
 msgid "Scepter of Fire"
 msgstr "宣火皇柄"
 
-#. [object]
+#. [object]: id=object_scepter
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:387
 #, fuzzy
 msgid ""
@@ -7698,7 +7731,7 @@ msgid ""
 "fireballs at enemies of the bearer!"
 msgstr "此皇柄乃群山中矮人所铸。韦诺王权象征，持者以皇柄之能，疾出火球杀敌！"
 
-#. [object]
+#. [object]: id=object_scepter
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:388
 msgid ""
 "This is the Scepter of Fire. Only a true successor to the throne can "

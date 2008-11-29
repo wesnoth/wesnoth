@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-22 14:55+0100\n"
+"POT-Creation-Date: 2008-11-29 12:24+0100\n"
 "PO-Revision-Date: 2008-03-01 17:34+0200\n"
 "Last-Translator: Aleksej Korgenkov <grimpanto@mail.ru>\n"
 "Language-Team: none\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-Language: Esperanto\n"
 
-#. [tutorial]
+#. [tutorial]: id=tutorial
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:41
 msgid ""
 "Hello translators! Tutorial is meant to be a little funny at the start, "
@@ -23,12 +23,12 @@ msgstr ""
 "bonvenigi novulojn. Bonvolu konservi amikeman kaj gajan senton. Por ĉiuj "
 "demandoj uzu rusty@rustcorp.com.au!"
 
-#. [tutorial]
+#. [tutorial]: id=tutorial
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:42
 msgid "Wesnoth Tutorial"
 msgstr "Vesnot Instruado"
 
-#. [side]: type=Fighter
+#. [side]: type=Fighter, id=student
 #. [command]
 #. [option]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:295
@@ -40,7 +40,7 @@ msgstr "Vesnot Instruado"
 msgid "Konrad"
 msgstr "Konrado"
 
-#. [unit]: type=Elder Mage
+#. [unit]: id=Delfador, type=Elder Mage
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:113
 msgid "Delfador"
 msgstr "Delfadoro"
@@ -76,7 +76,7 @@ msgstr "Mortos"
 msgid "Who would you like to play?"
 msgstr "Per kiu persono vi volas ludi?"
 
-#. [unit]: type=Fighteress
+#. [unit]: type=Fighteress, id=student
 #. [command]
 #. [option]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:365
@@ -210,46 +210,46 @@ msgstr ""
 "la movon, poste provu denove.\n"
 "*Klaku por daŭrigi..."
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:313
 #, fuzzy
 msgid "Good morning, Delfador! Is it time to attack things?"
 msgstr "Bonan matenon, Delfadoro! Ĉu venis tempo ataki?"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:317
 msgid "Um, well..."
 msgstr "Do, bone..."
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:321
 msgid "Have you found an orc for me to fight, huh? A troll?"
 msgstr "Ĉu vi trovis orkon por mi? Aŭ  trolon?"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:325
 msgid "Quiet! I will summon an enemy for you..."
 msgstr "Silenton! Por vi malamiko estos..."
 
 #. [event]
-#. [unit_type]: race=mechanical
+#. [unit_type]: id=Quintain, race=mechanical
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:353
 #: data/campaigns/tutorial/units/Quintain.cfg:4
 msgid "Quintain"
 msgstr "Birdtimigilo"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:357
 msgid "... this quintain!"
 msgstr "... ĉi tiu birdtimigilo!"
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:361
 #, fuzzy
 msgid "A quintain? You want me to pretend to fight a dummy?"
 msgstr "Birdtimigilo? Ĉu vi volas ke mi batalu kontraŭ manekeno??"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:365
 msgid "Child, you have 32 hitpoints and a sword. I'm fairly sure you'll win."
 msgstr ""
@@ -285,22 +285,22 @@ msgstr ""
 msgid "Click on the quintain to attack it"
 msgstr "Klaku la birdtimigilon por ataki ĝin"
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:424
 msgid "Hey! This quintain fights back!"
 msgstr "Hej! La timigilo responde atakas!"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:428
 msgid "Hmm, maybe we should have started with a doll."
 msgstr "Hm, eble ni devas komenci kun pupo..."
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:432
 msgid "Should I retreat?"
 msgstr "Ĉu mi devas remarŝi?"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:436
 msgid "Good idea!"
 msgstr "Bona ideo!"
@@ -325,7 +325,7 @@ msgstr ""
 "Noto: la eta arĝenta krono ĉe Delfadoro montras, ke vi malgajnos, se li "
 "mortos. Vi ankaŭ malgajnas, se via gvidantino (Li'sar) mortas."
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:454
 msgid ""
 "Unfortunately, you've used up your turn attacking the quintain. The quintain "
@@ -334,12 +334,12 @@ msgstr ""
 "Bedaŭrinde, vi uzis vian movon atakante la timigilon. Venis vico de la "
 "timigilo."
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:458
 msgid "The DUMMY gets a turn?"
 msgstr "Ĉu la MANEKENO ricevos movon?"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:464
 #, fuzzy
 msgid ""
@@ -359,7 +359,7 @@ msgstr ""
 msgid "Click on the End Turn button on the bottom right"
 msgstr "Klaku sur la butono 'Fino de Movo' en la malsupra dekstra angulo"
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:488
 #, fuzzy
 msgid "Ouch! I need to heal! Only $student_hp hitpoints left!"
@@ -372,7 +372,7 @@ msgstr "Aj! Mi devas resaniĝi! Restis nur $student_hp bp!"
 msgid "Village"
 msgstr "Vilaĝo"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:493
 #, fuzzy
 msgid ""
@@ -420,7 +420,7 @@ msgstr ""
 msgid "Click on the End Turn button"
 msgstr "Klaku la butonon 'Fino de Movo'"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:563
 #, fuzzy
 msgid ""
@@ -430,7 +430,7 @@ msgstr ""
 "Vi estas resanigita per ok batpoentoj.  Sed mi pensas ke vi bezonas iun "
 "helpon kontraŭ ĉi tiu timigilo."
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:567
 msgid "I'll recruit some elves!"
 msgstr "Mi varbos iom da elfoj!"
@@ -442,7 +442,7 @@ msgstr "Mi varbos iom da elfoj!"
 msgid "Keep"
 msgstr "Defendejo"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:572
 #, fuzzy
 msgid ""
@@ -504,7 +504,7 @@ msgstr ""
 msgid "Right click on the other castle tile and Recruit another unit"
 msgstr "Klaku dekstran butonon sur la alia ĉelo kaj varbu alian militunuon."
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:695
 #, fuzzy
 msgid ""
@@ -513,12 +513,12 @@ msgstr ""
 "Hej, la timigilo resaniĝis ricevante du batpoentojn! Mi pensas ke pli bone "
 "ataki ĝin tuj!"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:699
 msgid "Yes, if a unit doesn't do anything for a turn, it will slowly heal."
 msgstr ""
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:711
 #, fuzzy
 msgid ""
@@ -529,13 +529,13 @@ msgstr ""
 "Sed antaŭ sendi viajn batalantojn kontraŭ timigilo, vi devas scii ke estas "
 "du manieroj ataki..."
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:715
 #, fuzzy
 msgid "I'll tell them to use the one that does the most damage!"
 msgstr "Mi ordonos ke ili uzu la plej damaĝan!"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:719
 #, fuzzy
 msgid ""
@@ -556,7 +556,7 @@ msgstr "Klaku Elfan Batalanton"
 msgid "End your turn and attack again."
 msgstr "Finu vian movon kaj ataku denove."
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:739
 msgid ""
 "You wouldn't do anything stupid like charging that quintain yourself again, "
@@ -569,7 +569,7 @@ msgstr ""
 msgid "Left click on the Quintain to attack it."
 msgstr "Klaku la Timigilon por ataki ĝin."
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:784
 #, fuzzy
 msgid ""
@@ -581,7 +581,7 @@ msgstr ""
 "do la timigilo respondas per sia kontakta atako (3-5). La distanca atako "
 "estas pli sekura."
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:792
 #, fuzzy
 msgid ""
@@ -595,7 +595,7 @@ msgstr ""
 "estas pli sekura.\n"
 "Finu vian movon kaj ataku denove."
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:804
 #, fuzzy
 msgid ""
@@ -615,7 +615,7 @@ msgstr ""
 msgid "Attack with the other Elf"
 msgstr "Ataku kun helpo de alia Elfo"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:836
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:854
 #, fuzzy
@@ -628,7 +628,7 @@ msgstr ""
 "atakoj). La birtimigilo ne povas ataki distance, nur kontakte, do ĝi ne "
 "povas defendi sin."
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:844
 #, fuzzy
 msgid ""
@@ -642,13 +642,13 @@ msgstr ""
 "povas defendi sin.\n"
 "Finu vian movon kaj ataku denove."
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:875
 #, fuzzy
 msgid "Keep attacking with both elves until the quintain is finished!"
 msgstr "Daŭrigu atakojn, per aliaj elfoj ĝis kiam vi ne finos kun la timigilo!"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:889
 msgid "Maybe you should recruit another elf?"
 msgstr "Eble vi devas varbi ankoraŭ unu elfon?"
@@ -724,7 +724,7 @@ msgstr ""
 msgid "The quintain is dead, sirs, and I have gained more experience!"
 msgstr "La timigilo mortis, majstro, kaj mi akiris sperton!"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1001
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1005
 #, fuzzy
@@ -735,7 +735,7 @@ msgstr ""
 "Jes, vi akiras sperton kiam vi batalas, precipe mortigante kontraŭulojn: "
 "akiru sufiĉan sperton kaj estu pli potenca."
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1002
 #, fuzzy
 msgid ""
@@ -745,7 +745,7 @@ msgstr ""
 "Nun, Konrado, mi lasas vin kun pluaj manekenoj por praktiki. Post tio vi "
 "havos realan laboron..."
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1006
 #, fuzzy
 msgid ""
@@ -914,12 +914,12 @@ msgstr "Mi havas $side.gold monerojn: sufiĉe por varbi!"
 msgid "Yes, keep recruiting more units: I think you might need them!"
 msgstr "Jes, daŭre rekrutigu pliajn unuojn: mi pensas ke vi povos bezoni ilin!"
 
-#. [tutorial]
+#. [tutorial]: id=2_Tutorial
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:286
 msgid "Wesnoth Tutorial Part II"
 msgstr "Vesnot Instruado Parto II"
 
-#. [side]: type=Orcish Warrior
+#. [side]: type=Orcish Warrior, id=Thrag
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:307
 msgid "Thrag"
 msgstr "Trago"
@@ -946,7 +946,7 @@ msgstr "Tempo finiĝis"
 msgid "Death of Li'sar"
 msgstr "Morto de Li'sar"
 
-#. [unit]: type=Elvish Captain
+#. [unit]: id=Galdrad, type=Elvish Captain
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:388
 msgid "Galdrad"
 msgstr "Geldrado"
@@ -1185,7 +1185,7 @@ msgstr "Movu Li'sar por okupi vilaĝon"
 msgid "No! I said recruit an Elvish ARCHER! Now try again..."
 msgstr "Ne! Mi diris varbu Elfan PAFARKISTON! Nun provu denove..."
 
-#. [unit]: type=Elvish Archer
+#. [unit]: id=Eowynial, type=Elvish Archer
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:626
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:638
@@ -1202,7 +1202,7 @@ msgstr "Shamano"
 msgid "Recruit an Elvish Shaman to your north"
 msgstr "Varbu Elfan Shamanon al via nordo"
 
-#. [unit]: type=Elvish Archer
+#. [unit]: id=Elriend, type=Elvish Archer
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:665
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:676
@@ -1237,7 +1237,7 @@ msgstr "Varbu du Elfajn Pafarkistojn sur okcidentaj ĉeloj"
 msgid "No! I said recruit an Elvish FIGHTER! Now try again..."
 msgstr "Ne! Mi diris varbi Elfan BATALANTON! Nun provu denove..."
 
-#. [unit]: type=Elvish Fighter
+#. [unit]: id=Golir, type=Elvish Fighter
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:730
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:741
@@ -1289,7 +1289,7 @@ msgstr ""
 "$recruit.language_name|?  Mi diris ALVOKI novan ELFAN BATALANTON.  Nun provu "
 "denove..."
 
-#. [unit]: type=Elvish Fighter
+#. [unit]: id=Elindel, type=Elvish Fighter
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:834
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:845
@@ -1852,12 +1852,13 @@ msgstr ""
 "Suda Gardisto estis speciale prilaborita kiel kampanjo por komencantoj. "
 "Konrado, Li'sar kaj Delfadoro estas karakteroj de Heredanto de la Trono."
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Fighter, race=human
 #: data/campaigns/tutorial/units/Fighter.cfg:4
 msgid "Fighter"
 msgstr "Batalanto"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Fighteress, race=human
+#. [unit_type]: id=Fighter, race=human
 #: data/campaigns/tutorial/units/Fighteress.cfg:17
 #: data/campaigns/tutorial/units/Fighter.cfg:17
 #, fuzzy
@@ -1874,7 +1875,7 @@ msgstr ""
 msgid "sword"
 msgstr "glavo"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Fighteress, race=human
 #: data/campaigns/tutorial/units/Fighteress.cfg:4
 msgid "female^Fighter"
 msgstr "Batalantino"
@@ -1885,7 +1886,7 @@ msgstr "Batalantino"
 msgid "saber"
 msgstr "sabro"
 
-#. [unit_type]: race=mechanical
+#. [unit_type]: id=Quintain, race=mechanical
 #: data/campaigns/tutorial/units/Quintain.cfg:14
 msgid ""
 "Quintains are used to practice swordplay and jousting on. It would be "

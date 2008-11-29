@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.2-SVN\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-27 19:53+0100\n"
+"POT-Creation-Date: 2008-11-29 12:24+0100\n"
 "PO-Revision-Date: 2006-07-02 01:01+0100\n"
 "Last-Translator: Gaute Storli <gauteamus@gmail.com>\n"
 "Language-Team: none\n"
@@ -14,51 +14,51 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#. [campaign]
+#. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:11
 msgid "Heir to the Throne"
 msgstr "Tronarvingen"
 
-#. [campaign]
+#. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:12
 msgid "HttT"
 msgstr ""
 
-#. [variation]: race=human
-#. [unit_type]: race=human
-#. [campaign]
+#. [variation]: id=Fighter, race=human
+#. [unit_type]: id=Fighter, race=human
+#. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:4
 #: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:33
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:16
 msgid "Fighter"
 msgstr "Stridsmann"
 
-#. [campaign]
+#. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:16
 msgid "(Beginner)"
 msgstr ""
 
-#. [campaign]
+#. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:17
 msgid "(Normal)"
 msgstr ""
 
-#. [campaign]
+#. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:17
 msgid "Hero"
 msgstr "Helt"
 
-#. [campaign]
+#. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:18
 msgid "(Challenging)"
 msgstr ""
 
-#. [campaign]
+#. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:18
 msgid "Champion"
 msgstr "Mester"
 
-#. [campaign]
+#. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:21
 #, fuzzy
 msgid ""
@@ -88,7 +88,7 @@ msgstr ""
 msgid "Miscellaneous"
 msgstr ""
 
-#. [scenario]
+#. [scenario]: id=01_The_Elves_Besieged
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:4
 msgid "The Elves Besieged"
 msgstr "Alvene Beleiret"
@@ -173,8 +173,8 @@ msgstr "Delfador dør"
 msgid "Turns run out"
 msgstr "Rundene tar slutt"
 
-#. [side]: type=Commander
-#. [side]: type=Fighter
+#. [side]: type=Commander, id=Konrad
+#. [side]: type=Fighter, id=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:46
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:94
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:44
@@ -207,15 +207,16 @@ msgstr "Rundene tar slutt"
 msgid "Konrad"
 msgstr "Konrad"
 
-#. [side]: type=Commander
-#. [side]: type=Fighter
-#. [side]: type=Dwarvish Lord
-#. [side]: type=Grand Knight
-#. [side]: type=Elvish Champion
-#. [side]: type=Elvish Druid
+#. [side]: type=Commander, id=Konrad
+#. [side]: type=Fighter, id=Konrad
+#. [side]: id=Geldar, type=Dwarvish Lord
+#. [side]: type=Grand Knight, id=Kaylan
+#. [side]: type=Elvish Champion, id=Galdrad
+#. [side]: type=Elvish Druid, id=Chantal
 #. [side]
-#. [side]: type=Ancient Wose
-#. [side]: type=Elvish Sylph
+#. [side]: id=Relgorn, type=Dwarvish Lord
+#. [side]: type=Ancient Wose, id=Haralamdum
+#. [side]: type=Elvish Sylph, id=Bona-Melodia
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:52
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:101
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:49
@@ -253,25 +254,38 @@ msgstr "Konrad"
 msgid "Rebels"
 msgstr ""
 
-#. [unit]: type=Elder Mage
+#. [unit]: id=Delfador, type=Elder Mage
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:68
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:693
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:850
 msgid "Delfador"
 msgstr "Delfador"
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Urug-Telfar
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:144
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:83
 msgid "Urug-Telfar"
 msgstr "Urug-Telfar"
 
-#. [side]: type=Orcish Warlord
-#. [side]: type=Orcish Warrior
-#. [side]: type=Orcish Slurbow
-#. [side]: type=Orcish Sovereign
+#. [side]: type=Orcish Warlord, id=Kojun Herolm
+#. [side]: type=Orcish Warrior, id=Mokho Kimer
+#. [side]: type=Orcish Warrior, id=Mokolo Qimur
+#. [side]: type=Orcish Warlord, id=Urug-Telfar
+#. [side]: type=Orcish Warlord, id=Knafa-Tan
+#. [side]: type=Orcish Warlord, id=Maga-Knafa
+#. [side]: type=Orcish Slurbow, id=Knafa-Telfar
+#. [side]: type=Orcish Warlord, id=Urug-Tan
+#. [side]: type=Orcish Sovereign, id=Shuuga-Mool
+#. [side]: type=Orcish Warrior, id=Halgar Du'nar
+#. [side]: type=Orcish Warlord, id=Gaga-Breuk
+#. [side]: type=Orcish Warlord, id=Urag-Tifer
+#. [side]: type=Orcish Warrior, id=Dwaba-Kukai
+#. [side]: type=Orcish Warrior, id=Managa'Gwin
+#. [side]: type=Orcish Warrior, id=Usadar Q'kai
 #. [side]: type=Goblin Rouser
+#. [side]: type=Orcish Warlord
 #. [side]: type=Troll Warrior
+#. [side]: type=Orcish Warlord, id=Kior-Dal
 #: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:173
 #: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:190
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:100
@@ -299,22 +313,22 @@ msgstr "Urug-Telfar"
 msgid "Orcs"
 msgstr "Marcus"
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Knafa-Tan
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:164
 msgid "Knafa-Tan"
 msgstr "Knafa-Tan"
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Maga-Knafa
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:183
 msgid "Maga-Knafa"
 msgstr "Maga-Knafa"
 
-#. [side]: type=Elvish Champion
+#. [side]: type=Elvish Champion, id=Galdrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:203
 msgid "Galdrad"
 msgstr "Galdrad"
 
-#. [side]: type=Elvish Druid
+#. [side]: type=Elvish Druid, id=Chantal
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:218
 msgid "Chantal"
 msgstr "Chantal"
@@ -531,7 +545,7 @@ msgid "There can be no looking back. We must go quickly!"
 msgstr "Vi kan ikke se oss tilbake. Vi må dra snart avgårde!"
 
 #. [label]
-#. [scenario]
+#. [scenario]: id=02_Blackwater_Port
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:4
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:50
 msgid "Blackwater Port"
@@ -557,22 +571,22 @@ msgstr "Bekjemp alle fiendtlige ledere"
 msgid "Death of Sir Kaylan"
 msgstr "Ridder Kaylan dør"
 
-#. [side]: type=Grand Knight
+#. [side]: type=Grand Knight, id=Kaylan
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:71
 msgid "Sir Kaylan"
 msgstr "Ridder Kaylan"
 
-#. [side]: type=Orcish Warrior
+#. [side]: type=Orcish Warrior, id=Mokolo Qimur
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:95
 msgid "Mokolo Qimur"
 msgstr "Mokolo Qimur"
 
-#. [unit]: type=Swordsman
+#. [unit]: type=Swordsman, id=Veocyn
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:123
 msgid "Veocyn"
 msgstr "Veocyn"
 
-#. [unit]: type=Swordsman
+#. [unit]: type=Swordsman, id=Yran
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:135
 msgid "Yran"
 msgstr "Yran"
@@ -718,7 +732,7 @@ msgstr ""
 "Rekrutter dine tropper kløktig, Konrad, og husk at du kan tilbakekalle "
 "erfarne enheter fra tidligere slag for å kjempe igjen."
 
-#. [unit]: type=Horseman
+#. [unit]: id=Haldiel, type=Horseman
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:216
 msgid "Haldiel"
 msgstr "Haldiel"
@@ -739,37 +753,37 @@ msgstr ""
 "lojalenhet kjemper han for vår sak kun av lojalitet. Slike enheter er "
 "ekstremt verdifulle og bør brukes varsomt i slag, så de ikke faller unødig."
 
-#. [unit]: type=Horseman
+#. [unit]: type=Horseman, id=Yredd
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:245
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:368
 msgid "Yredd"
 msgstr "Yredd"
 
-#. [unit]: type=Horseman
+#. [unit]: type=Horseman, id=Tarcyn
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:257
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:380
 msgid "Tarcyn"
 msgstr "Tarcyn"
 
-#. [unit]: type=Horseman
+#. [unit]: type=Horseman, id=Syryn
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:269
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:392
 msgid "Syryn"
 msgstr "Syryn"
 
-#. [unit]: type=Knight
+#. [unit]: type=Knight, id=Cicyn
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:281
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:404
 msgid "Cicyn"
 msgstr "Cicyn"
 
-#. [unit]: type=Knight
+#. [unit]: type=Knight, id=Ginvan
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:293
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:416
 msgid "Ginvan"
 msgstr "Ginvan"
 
-#. [unit]: type=Knight
+#. [unit]: type=Knight, id=Simyr
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:305
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:428
 msgid "Simyr"
@@ -861,7 +875,7 @@ msgstr ""
 "Uten hans hjelp vil vi ikke være i stand til å gå i skipene, det er "
 "håpløst..."
 
-#. [scenario]
+#. [scenario]: id=03_The_Isle_of_Alduin
 #: data/campaigns/Heir_To_The_Throne/scenarios/03_The_Isle_of_Alduin.cfg:4
 msgid "The Isle of Alduin"
 msgstr "Atollen Alduin"
@@ -873,7 +887,7 @@ msgstr "Atollen Alduin"
 msgid "Defeat the enemy leader"
 msgstr "Bekjemp fiendens leder"
 
-#. [side]: type=Orcish Warrior
+#. [side]: type=Orcish Warrior, id=Usadar Q'kai
 #: data/campaigns/Heir_To_The_Throne/scenarios/03_The_Isle_of_Alduin.cfg:64
 msgid "Usadar Q'kai"
 msgstr "Usudar Q'kai"
@@ -922,7 +936,7 @@ msgstr ""
 "Jeg trodde ikke orkene ville ha kommet hit. Denne øya pleide å være så full "
 "av ynde og uant skjønnhet. Vi må ta den tilbake! Til våpen!"
 
-#. [unit]: type=Mage
+#. [unit]: id=Elrian, type=Mage
 #: data/campaigns/Heir_To_The_Throne/scenarios/03_The_Isle_of_Alduin.cfg:216
 msgid "Elrian"
 msgstr "Elrian"
@@ -975,7 +989,7 @@ msgstr ""
 "i kampens hete. Når trollmenn kjemper i frontlinjen i et slag trenger de "
 "beskyttelse av sterkere enheter skal ikke fienden gjøre kort prosess med dem."
 
-#. [unit]: type=Arch Mage
+#. [unit]: type=Arch Mage, id=Seimus
 #: data/campaigns/Heir_To_The_Throne/scenarios/03_The_Isle_of_Alduin.cfg:267
 msgid "Seimus"
 msgstr "Seimus"
@@ -1043,7 +1057,7 @@ msgstr ""
 "Vi må i sannhet dra dit. La oss samle litt krefter, og så sette seil med "
 "kurs for Bukten. Vårt håp består i å beseire styrkene hun har samlet der!"
 
-#. [scenario]
+#. [scenario]: id=04_The_Bay_of_Pearls
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:4
 msgid "The Bay of Pearls"
 msgstr "Perlebukten"
@@ -1062,29 +1076,29 @@ msgid ""
 "`(early finish bonus)"
 msgstr ""
 
-#. [side]: type=Orcish Warrior
+#. [side]: type=Orcish Warrior, id=Dwaba-Kukai
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:59
 msgid "Dwaba-Kukai"
 msgstr "Dwaba-Kukai"
 
-#. [side]: type=Orcish Warrior
+#. [side]: type=Orcish Warrior, id=Managa'Gwin
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:75
 msgid "Managa'Gwin"
 msgstr "Managa'Gwin"
 
-#. [unit]: type=Orcish Archer
+#. [unit]: type=Orcish Archer, id=Bugg
 #. [then]
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:132
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:269
 msgid "Bugg"
 msgstr "Bugg"
 
-#. [unit]: type=Naga Fighter, type=Naga Warrior
+#. [unit]: type=Naga Fighter, type=Naga Warrior, id=Xnamas
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:148
 msgid "Xnamas"
 msgstr "Xnamas"
 
-#. [unit]: type=Naga Warrior, type=Naga Fighter
+#. [unit]: type=Naga Warrior, type=Naga Fighter, id=Inalai
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:164
 msgid "Inalai"
 msgstr "Inalai"
@@ -1155,22 +1169,22 @@ msgstr "Men... men... hvordan kan dette skje meg?"
 msgid "Who was that idiot?"
 msgstr "Hvem var den torsken?"
 
-#. [unit]: type=Merman Fighter
+#. [unit]: id=Gwaba, type=Merman Fighter
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:320
 msgid "Gwaba"
 msgstr "Gwaba"
 
-#. [unit]: type=Merman Fighter
+#. [unit]: id=Nepba, type=Merman Fighter
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:333
 msgid "Nepba"
 msgstr "Nepba"
 
-#. [unit]: type=Merman Fighter
+#. [unit]: id=Triram, type=Merman Fighter
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:346
 msgid "Triram"
 msgstr "Triram"
 
-#. [unit]: type=Merman Fighter
+#. [unit]: id=Mriram, type=Merman Fighter
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:361
 msgid "Mriram"
 msgstr "Mriram"
@@ -1181,22 +1195,22 @@ msgstr "Mriram"
 msgid "Free at last! Now, death to the orcs!"
 msgstr "Endelig garnfri! Død over orkene!"
 
-#. [unit]: type=Merman Fighter
+#. [unit]: id=Mabooa, type=Merman Fighter
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:392
 msgid "Mabooa"
 msgstr "Mabooa"
 
-#. [unit]: type=Merman Fighter
+#. [unit]: id=Earooa, type=Merman Fighter
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:407
 msgid "Earooa"
 msgstr "Earooa"
 
-#. [unit]: type=Merman Fighter
+#. [unit]: id=Nethuns, type=Merman Fighter
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:420
 msgid "Nethuns"
 msgstr "Nethuns"
 
-#. [unit]: type=Merman Fighter
+#. [unit]: id=Gwoama, type=Merman Fighter
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:434
 msgid "Gwoama"
 msgstr "Gwoama"
@@ -1206,12 +1220,12 @@ msgstr "Gwoama"
 msgid "Now that we are free, together we can defeat our oppressors!"
 msgstr "Nå som vi er av kroken, kan vi sammen overvinne våre undertrykkere!"
 
-#. [unit]: type=Merman Fighter
+#. [unit]: id=Kaba, type=Merman Fighter
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:465
 msgid "Kaba"
 msgstr "Kaba"
 
-#. [unit]: type=Merman Fighter
+#. [unit]: id=Kwaboo, type=Merman Fighter
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:480
 msgid "Kwaboo"
 msgstr "Kwaboo"
@@ -1221,17 +1235,17 @@ msgstr "Kwaboo"
 msgid "Freedom! Now where are those orcs? Let me at 'em!"
 msgstr "Frihet! Hvor er disse orkene? La meg sløye dem!"
 
-#. [unit]: type=Merman Fighter
+#. [unit]: id=Gwimli, type=Merman Fighter
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:512
 msgid "Gwimli"
 msgstr "Gwimli"
 
-#. [unit]: type=Merman Fighter
+#. [unit]: id=Jarla, type=Merman Fighter
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:525
 msgid "Jarla"
 msgstr "Jarla"
 
-#. [unit]: type=Merman Fighter
+#. [unit]: id=Gwarloa, type=Merman Fighter
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:540
 msgid "Gwarloa"
 msgstr "Gwarloa"
@@ -1245,32 +1259,32 @@ msgstr ""
 "Takk for at du reddet oss! Nå kan vi hjelpe deg å bekjempe dette orkeondet!\n"
 "Hovedburet der de holder flest havfolk fanget er i sjøen nordvest for øya!"
 
-#. [unit]: type=Merman Fighter
+#. [unit]: id=Heldaga, type=Merman Fighter
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:571
 msgid "Heldaga"
 msgstr "Heldaga"
 
-#. [unit]: type=Merman Hunter
+#. [unit]: id=Apalala, type=Merman Hunter
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:584
 msgid "Apalala"
 msgstr "Apalala"
 
-#. [unit]: type=Mermaid Initiate
+#. [unit]: id=Oceania, type=Mermaid Initiate
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:597
 msgid "Oceania"
 msgstr "Oceania"
 
-#. [unit]: type=Merman Fighter
+#. [unit]: id=Elcmar, type=Merman Fighter
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:611
 msgid "Elcmar"
 msgstr "Elcmar"
 
-#. [unit]: type=Merman Fighter
+#. [unit]: id=Aigaion, type=Merman Fighter
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:624
 msgid "Aigaion"
 msgstr "Aigaion"
 
-#. [unit]: type=Merman Fighter
+#. [unit]: id=Tini, type=Merman Fighter
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:638
 msgid "Tini"
 msgstr "Tini"
@@ -1512,7 +1526,7 @@ msgstr ""
 "Reis over land, Elensefar er bare en seks dagers marsj opp langs kysten. "
 "Skynd deg!"
 
-#. [scenario]
+#. [scenario]: id=05a_Muff_Malals_Peninsula
 #: data/campaigns/Heir_To_The_Throne/scenarios/05a_Muff_Malal_Peninsula.cfg:4
 msgid "Muff Malal's Peninsula"
 msgstr "Muff Malals Forberg"
@@ -1530,16 +1544,24 @@ msgid ""
 "`(early finish bonus)"
 msgstr ""
 
-#. [side]: type=Dark Sorcerer
+#. [side]: type=Dark Sorcerer, id=Muff Malal
 #: data/campaigns/Heir_To_The_Throne/scenarios/05a_Muff_Malal_Peninsula.cfg:61
 msgid "Muff Malal"
 msgstr "Muff Malal"
 
-#. [side]: type=Death Knight
-#. [side]: type=Lich
-#. [side]: type=Dark Sorcerer
+#. [side]: type=Death Knight, id=Clarustus
+#. [side]: type=Death Knight, id=Merlunius
+#. [side]: type=Lich, id=Aimucasur
+#. [side]: type=Death Knight, id=Secadius
+#. [side]: type=Death Knight, id=Dafeis
+#. [side]: type=Dark Sorcerer, id=Muff Malal
+#. [side]: type=Lich, id=Galga
+#. [side]: type=Lich, id=Na-alga
+#. [side]: type=Lich, id=Selda-Mana
+#. [side]: id=Haf-Mal, type=Lich
+#. [side]: id=Jarmal-Gorg, type=Lich
 #. [side]
-#. [side]: type=Ancient Lich
+#. [side]: type=Ancient Lich, id=Muff Argulak
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:98
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:114
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:129
@@ -1646,7 +1668,7 @@ msgstr ""
 "Seieren er vår! La oss bare håpe at denne forsinkelsen ikke vil hindre vårt "
 "oppdrag å redde Elensefar. Vi må skynde oss videre!"
 
-#. [scenario]
+#. [scenario]: id=05b_Isle_of_the_Damned
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:5
 msgid "Isle of the Damned"
 msgstr "De Fortaptes Klippe"
@@ -1687,22 +1709,22 @@ msgstr ""
 "Havfolket reddet Konrad fra å drukne, men de kunne ikke innhente skipet. Med "
 "mye anstrengelse fikk de brakt ham til en øy i nærheten..."
 
-#. [side]: type=Lich
+#. [side]: id=Haf-Mal, type=Lich
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:77
 msgid "Haf-Mal"
 msgstr "Haf-Mal"
 
-#. [side]: type=Lich
+#. [side]: id=Jarmal-Gorg, type=Lich
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:95
 msgid "Jarmal-Gorg"
 msgstr "Jarmal-Gorg"
 
-#. [event]
+#. [event]: id=Delurin 21 12}
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:154
 msgid "Kalba"
 msgstr "Kalba"
 
-#. [event]
+#. [event]: id=Delurin 21 12}
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:155
 msgid "Gnaba"
 msgstr "Gnaba"
@@ -1744,7 +1766,7 @@ msgstr ""
 "rekrutterer noen av dem kan vi kanskje ha håp om å holde tilbake de vandødes "
 "horder!"
 
-#. [event]
+#. [event]: id=Delurin 21 12}
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:176
 msgid "Delurin"
 msgstr "Delurin"
@@ -1783,8 +1805,8 @@ msgstr "Tempelet synes å ha stått tomt i lang tid."
 msgid "Looks like there is somebody hidden in the temple."
 msgstr "Det ser ut som noen gjemmer seg inne i tempelet."
 
-#. [unit]: type=Mage of Light
-#. [unit]: type=White Mage
+#. [unit]: id=Moremirmu, type=Mage of Light
+#. [unit]: id=Moremirmu, type=White Mage
 #: data/campaigns/Heir_To_The_Throne/scenarios/09_The_Valley_of_Death.cfg:264
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:243
 msgid "Moremirmu"
@@ -1820,7 +1842,7 @@ msgstr ""
 "Hvis vi utrydder den vandøde plagen som rider dette stedet vil jeg sannelig "
 "følge dere videre. Ellers vil jeg måtte fullføre mitt verk her."
 
-#. [unit]: type=Revenant
+#. [unit]: type=Revenant, id=Xakae
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:303
 msgid "Xakae"
 msgstr "Xakae"
@@ -1890,7 +1912,7 @@ msgstr ""
 "skjebnen smile til dere på deres edle oppdrag, og måtte vi møtes igjen en "
 "dag!"
 
-#. [scenario]
+#. [scenario]: id=06_The_Siege_of_Elensefar
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:4
 msgid "The Siege of Elensefar"
 msgstr "Beleiringen av Elensefar"
@@ -1909,15 +1931,18 @@ msgstr "Bekjemp alle fiendtlige ledere"
 msgid "Elensefar"
 msgstr "Mot Elensefar"
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Agadla
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:61
 msgid "Agadla"
 msgstr "Agadla"
 
-#. [side]: type=Orcish Warlord
-#. [side]: type=Dark Sorcerer
-#. [side]: type=Troll Warrior
-#. [side]: type=Death Knight
+#. [side]: type=Orcish Warlord, id=Agadla
+#. [side]: type=Dark Sorcerer, id=Muff Jaanal
+#. [side]: id=Brugg, type=Troll Warrior
+#. [side]: id=Lionel, type=Death Knight
+#. [side]: type=Troll Warrior, id=Haaf-Garga
+#. [side]: type=Orcish Warlord, id=Urug-Telfar
+#. [side]: type=Death Knight, id=Unan-Ka'tall
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:72
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:113
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:79
@@ -1928,7 +1953,7 @@ msgstr "Agadla"
 msgid "Evil"
 msgstr ""
 
-#. [side]: type=Dark Sorcerer
+#. [side]: type=Dark Sorcerer, id=Muff Jaanal
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:104
 msgid "Muff Jaanal"
 msgstr "Muff Jaanal"
@@ -1980,19 +2005,19 @@ msgstr ""
 "Vi må innta byen og knuse de vandøde før nyheter om vår ferd kommer "
 "Asheviere for øre og hun sender sender friske tropper til forsvarernes hjelp!"
 
-#. [unit]: type=Rogue
+#. [unit]: id=Reglok, type=Rogue
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:201
 msgid "Reglok"
 msgstr "Reglok"
 
-#. [unit]: type=Thief
+#. [unit]: id=Gelgar, type=Thief
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:240
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:383
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:480
 msgid "Gelgar"
 msgstr "Gelgar"
 
-#. [unit]: type=Thief
+#. [unit]: id=Gamlel, type=Thief
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:252
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:395
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:493
@@ -2128,7 +2153,7 @@ msgstr ""
 "Idet banneret heistes, gjorde lydene av kamp vold på nattens ro gjennom hele "
 "byen."
 
-#. [unit]: type=Thief
+#. [unit]: id=Darglen, type=Thief
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:407
 msgid "Darglen"
 msgstr "Darglen"
@@ -2186,7 +2211,7 @@ msgstr "Seier! Elensefars tyver vil tjene deg, min herre."
 msgid "The party rested for three days, after which an old friend returned."
 msgstr "Selskapet hvilte i tre dager, før en gammel venn vendte tilbake."
 
-#. [unit]: type=Elvish Lord
+#. [unit]: id=Kalenz, type=Elvish Lord
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:555
 msgid "Kalenz"
 msgstr "Kalenz"
@@ -2304,7 +2329,7 @@ msgstr "Ja, Konrad. Jeg tror at du vil bli konge en dag. La oss skynde oss!"
 msgid "So you endeavor to fight me in my home. Foolish."
 msgstr "Så du tenker å slå meg i mitt eget hus. Dåraktig."
 
-#. [scenario]
+#. [scenario]: id=07_Crossroads
 #: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:4
 msgid "Crossroads"
 msgstr "Korsveier"
@@ -2368,12 +2393,12 @@ msgstr ""
 "Liten som den var, unngikk Konrads styrker lenge fiendens øyne i de sparsomt "
 "befolkede vestlige landsdelene. Lykken deres skulle imidlertid ikke vare. "
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Kojun Herolm
 #: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:165
 msgid "Kojun Herolm"
 msgstr "Kojun Herolm"
 
-#. [side]: type=Orcish Warrior
+#. [side]: type=Orcish Warrior, id=Mokho Kimer
 #: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:182
 msgid "Mokho Kimer"
 msgstr "Mokho Kimer"
@@ -2454,7 +2479,7 @@ msgstr ""
 msgid "Victory is ours, men. Let us proceed northeast!"
 msgstr "Seieren er vår! La oss fortsette mot nordøst!"
 
-#. [scenario]
+#. [scenario]: id=08_The_Princess_of_Wesnoth
 #: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:4
 msgid "The Princess of Wesnoth"
 msgstr "Prinsesse av Wesnoth"
@@ -2489,8 +2514,8 @@ msgid "Elbridge"
 msgstr "Elbro"
 
 #. [event]
-#. [side]: type=Princess
-#. [unit]: type=$stored_Lisar.type
+#. [side]: type=Princess, id=Li'sar
+#. [unit]: id=Li'sar, type=$stored_Lisar.type
 #: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:651
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:59
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:82
@@ -2499,11 +2524,16 @@ msgstr "Elbro"
 msgid "Li'sar"
 msgstr "Li'sar"
 
-#. [side]: type=Orcish Warlord
-#. [side]: type=General
-#. [side]: type=Cavalier
-#. [side]: type=Dark Queen
-#. [side]: type=Princess
+#. [side]: type=Orcish Warlord, id=Haliel-Maga
+#. [side]: type=General, id=Heford
+#. [side]: type=Cavalier, id=Sir Kalm
+#. [side]: type=Dark Queen, id=Asheviere
+#. [side]: type=General, id=Josephus
+#. [side]: type=Orcish Warlord, id=Dwar-Ni
+#. [side]: type=General, id=Malatus
+#. [side]: type=Princess, id=Li'sar
+#. [side]: type=General, id=Herbert
+#. [side]: type=General, id=Robert
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:117
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:131
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:147
@@ -2675,7 +2705,7 @@ msgstr ""
 msgid "The trap is foiled, but I'll still flush this rabble from their keep!"
 msgstr "Fellen er oppdaget, men jeg skal dog flå denne rebellen i tårnet hans!"
 
-#. [scenario]
+#. [scenario]: id=09_The_Valley_of_Death
 #: data/campaigns/Heir_To_The_Throne/scenarios/09_The_Valley_of_Death.cfg:4
 msgid "The Valley of Death - The Princess's Revenge"
 msgstr "Dødsskyggens Dal"
@@ -2693,17 +2723,17 @@ msgid ""
 "`(early finish bonus)"
 msgstr ""
 
-#. [side]: type=Lich
+#. [side]: type=Lich, id=Galga
 #: data/campaigns/Heir_To_The_Throne/scenarios/09_The_Valley_of_Death.cfg:76
 msgid "Galga"
 msgstr "Galga"
 
-#. [side]: type=Lich
+#. [side]: type=Lich, id=Na-alga
 #: data/campaigns/Heir_To_The_Throne/scenarios/09_The_Valley_of_Death.cfg:120
 msgid "Na-alga"
 msgstr "Na-alga"
 
-#. [side]: type=Lich
+#. [side]: type=Lich, id=Selda-Mana
 #: data/campaigns/Heir_To_The_Throne/scenarios/09_The_Valley_of_Death.cfg:154
 msgid "Selda-Mana"
 msgstr "Selda-Mana"
@@ -2898,7 +2928,7 @@ msgstr ""
 msgid "Indeed! Let us go from here!"
 msgstr "Javisst! La oss dra herfra!"
 
-#. [scenario]
+#. [scenario]: id=10_Gryphon_Mountain
 #: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:4
 msgid "Gryphon Mountain"
 msgstr "Griffenes Fjell"
@@ -2908,12 +2938,12 @@ msgstr "Griffenes Fjell"
 msgid "Defeat the mother gryphon and the enemy commander"
 msgstr "Nedkjemp Griffenes Mor og fiendens kommandant"
 
-#. [side]: type=General
+#. [side]: type=General, id=Robert
 #: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:69
 msgid "Robert"
 msgstr "Robert"
 
-#. [side]: type=Gryphon
+#. [side]: type=Gryphon, id=Mother Gryphon
 #: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:87
 msgid "Mother Gryphon"
 msgstr "Griffenes Mor"
@@ -3107,7 +3137,7 @@ msgstr "Tirret Grook"
 msgid "Rampant Gruak"
 msgstr "Tirret Gruak"
 
-#. [scenario]
+#. [scenario]: id=11_The_Ford_of_Abez
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:4
 msgid "The Ford of Abez"
 msgstr "Vadestedet ved Abez"
@@ -3117,7 +3147,7 @@ msgstr "Vadestedet ved Abez"
 msgid "Move Konrad to the north side of the river"
 msgstr "Forflytt Konrad over til nordsiden av elven."
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Gaga-Breuk
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:82
 msgid "Gaga-Breuk"
 msgstr "Gaga-Breuk"
@@ -3385,7 +3415,7 @@ msgstr ""
 "det vanskelig for henne. Vi må fortsette videre. Hvis hun kommer seg over "
 "før vinteren kommer, er ikke det vår sak."
 
-#. [scenario]
+#. [scenario]: id=12_Northern_Winter
 #: data/campaigns/Heir_To_The_Throne/scenarios/12_Northern_Winter.cfg:4
 msgid "Northern Winter"
 msgstr "Nordens Vinter"
@@ -3411,7 +3441,7 @@ msgstr ""
 "Isnende snefulle vinder pisket Konrads hær i ansiktet, og bar vitne om at "
 "høsten snart var omme og at en fimbulvinter stod for tur."
 
-#. [side]: type=Orcish Warrior
+#. [side]: type=Orcish Warrior, id=Halgar Du'nar
 #: data/campaigns/Heir_To_The_Throne/scenarios/12_Northern_Winter.cfg:77
 #: data/campaigns/Heir_To_The_Throne/scenarios/12_Northern_Winter.cfg:102
 msgid "Halgar Du'nar"
@@ -3573,7 +3603,7 @@ msgstr ""
 "- Delfador insisterte på at scepteret måtte gjenvinnes fort. Etter mange "
 "rolige dagers hvile gav følget seg igjen ut på reisen mot dvergegnes rike..."
 
-#. [scenario]
+#. [scenario]: id=13_The_Dwarven_Doors
 #: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:4
 msgid "The Dwarven Doors"
 msgstr "Dvergenes Dører"
@@ -3584,17 +3614,17 @@ msgstr "Dvergenes Dører"
 msgid "Move Konrad to the entrance of the Dwarven Kingdom"
 msgstr "Forflytt Konrad til Dvergerikets inngang"
 
-#. [side]: type=Orcish Slurbow
+#. [side]: type=Orcish Slurbow, id=Knafa-Telfar
 #: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:67
 msgid "Knafa-Telfar"
 msgstr "Knafa-Telfar"
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Urug-Tan
 #: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:86
 msgid "Urug-Tan"
 msgstr "Urug-Tan"
 
-#. [side]: type=Orcish Sovereign
+#. [side]: type=Orcish Sovereign, id=Shuuga-Mool
 #: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:105
 msgid "Shuuga-Mool"
 msgstr "Shuuga-Mool"
@@ -3609,7 +3639,7 @@ msgstr "Thunedains Søyler"
 msgid "The Great Doors"
 msgstr "Dvergedørene"
 
-#. [scenario]
+#. [scenario]: id=13_The_Dwarven_Doors
 #: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:142
 msgid "Royal Guard"
 msgstr "Livgardist"
@@ -3933,7 +3963,7 @@ msgstr ""
 "kaoset! Kom igjen! Vi må komme oss inn i de eldgamle gruvene som fortsatt "
 "ligger foran oss!"
 
-#. [scenario]
+#. [scenario]: id=14_Plunging_into_the_Darkness
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:4
 msgid "Plunging into the Darkness"
 msgstr "Et Sprang ned i Mørket"
@@ -3948,18 +3978,18 @@ msgstr "Finn dvergene"
 msgid "Hywyn"
 msgstr "Hywyn"
 
-#. [side]: type=Dwarvish Lord
+#. [side]: id=Relgorn, type=Dwarvish Lord
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:97
 msgid "Relgorn"
 msgstr "Relgorn"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:244
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:245
 msgid "It's so dark in here I can hardly see!"
 msgstr "Det er så mørkt her inne! Jeg kan knapt se!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:248
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:249
 #, fuzzy
 msgid ""
 "It is dark indeed. We shall have to light torches and tread slowly and "
@@ -3969,23 +3999,23 @@ msgstr ""
 "Jeg håper det fremdeles er dverger her nede som kan hjelpe oss!"
 
 #. [message]: speaker=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:252
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:253
 #, fuzzy
 msgid "Indeed. We elves do not fare well in these dark pits."
 msgstr "Ja. Vi alver er ikke vante med slike mørke huller."
 
 #. [message]: speaker=Relgorn
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:269
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:270
 msgid "Who are these that approach? Surface-dwellers! On your guard, men!"
 msgstr "Hvem er det som nærmer seg? Overflate-boere! På vakt!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:299
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:300
 msgid "We come in peace, friends. We come in peace!"
 msgstr "Vi kommer med fred, venner. Vi kommer med fred!"
 
 #. [message]: speaker=Relgorn
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:304
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:305
 msgid ""
 "Oh, do you? I see that you are accompanied by elves. Can we dwarves not live "
 "in peace without the treacherous elves coming to bother us?"
@@ -3994,13 +4024,13 @@ msgstr ""
 "leve i fred uten at de forræderiske alvene kommer og forstyrrer oss?"
 
 #. [message]: speaker=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:309
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:310
 #, fuzzy
 msgid "Why such harsh words, dwarf? Elves have never done you any harm."
 msgstr "Hvorfor slike harde ord, Dverg? Alvene har aldri gjort dere noe ondt."
 
 #. [message]: speaker=Relgorn
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:314
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:315
 #, fuzzy
 msgid ""
 "'Never done us any harm?' Why, I was there myself, when the elves refused to "
@@ -4012,7 +4042,7 @@ msgstr ""
 "ingenting for å hjelpe!"
 
 #. [message]: speaker=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:319
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:320
 msgid ""
 "You go too far! I am Kalenz, a mighty elvish lord! How dare such as you, "
 "sniveling in his tunnel, call me a coward?"
@@ -4021,7 +4051,7 @@ msgstr ""
 "slike som deg, reddharer som gjemmer seg i huler, å kalle meg feig?"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:324
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:325
 msgid ""
 "Peace, friends! Peace! The evil orcs roam the lands above us, we must not "
 "fight among ourselves."
@@ -4030,7 +4060,7 @@ msgstr ""
 "slåss mot hverandre?"
 
 #. [message]: speaker=Relgorn
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:329
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:330
 msgid ""
 "Very well! Explain your presence here then, human. Who are you? Why have you "
 "risked life and limb to come to Knalga, home of the dwarves?"
@@ -4039,12 +4069,12 @@ msgstr ""
 "Hvorfor har dere risikert liv og lemmer for å se Knalga, dvergenes hjem?"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:334
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:335
 msgid "Well, we... we..."
 msgstr "Vel, vi...vi..."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:339
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:340
 msgid ""
 "We have come so that an heir may claim his inheritance, that a king may "
 "claim his throne. We seek the Scepter of Fire."
@@ -4053,13 +4083,13 @@ msgstr ""
 "skal ta tilbake sin trone. Vi søker Ildscepteret."
 
 #. [message]: speaker=Relgorn
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:344
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:345
 msgid ""
 "The Scepter of Fire? Are you out of your minds? Surely you speak in jest!"
 msgstr "Ildscepteret? Er du gal? Dette er vel bare et narrespill!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:349
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:350
 msgid ""
 "We jest not, friend. We seek the Scepter of Fire. We seek the help of the "
 "dwarves in finding it. But know that we will find it, whether you help us or "
@@ -4070,7 +4100,7 @@ msgstr ""
 "vil. Vi kommer til å finne det, enten dere hjelper oss eller ei."
 
 #. [message]: speaker=Relgorn
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:354
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:355
 #, fuzzy
 msgid ""
 "You speak foolishness. No one even knows if the Scepter of Fire still "
@@ -4080,12 +4110,12 @@ msgstr ""
 "denne arvingen, denne kongen du taler om?"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:359
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:360
 msgid "I am, sir."
 msgstr "Det er meg, herre."
 
 #. [message]: speaker=Relgorn
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:364
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:365
 msgid ""
 "You? Ha ha! This boy that stands before me is the king of Wesnoth? Ha ha! I "
 "haven't had such a laugh in a long time. And who are you, old man?"
@@ -4094,7 +4124,7 @@ msgstr ""
 "Haha! Jeg har ikke ledd så godt på lenge. Og hvem er du, gamle mann?"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:369
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:370
 msgid ""
 "I am Delfador, Delfador the Great, Arch Mage to King Garard, and Protector "
 "of his heir."
@@ -4103,7 +4133,7 @@ msgstr ""
 "Beskytter av hans arving."
 
 #. [message]: speaker=Relgorn
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:374
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:375
 msgid ""
 "You... you are Delfador? I saw Delfador when I was but a young dwarf, and I "
 "will tell you, old man, you are not Delfador. Men! Take these liars out of "
@@ -4114,13 +4144,13 @@ msgstr ""
 "løgnerne. Delfador døde mange år tilbake."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:404
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:405
 #, fuzzy
 msgid "I am Delfador the Great! Tremble before my wrath!"
 msgstr "Jeg er Delfador den Store. Forbered deg på å dø!"
 
 #. [message]: speaker=Relgorn
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:409
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:410
 msgid ""
 "You... you really are Delfador! But we had news that you were dead, years "
 "ago!"
@@ -4128,18 +4158,18 @@ msgstr ""
 "Du... Du er virkelig Delfador! Men vi hørte at du var død, mange år tilbake!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:414
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:415
 msgid "They thought I was dead. They hoped I was dead. Yet still I live."
 msgstr ""
 "De trodde jeg var død. De håpet jeg var død. Men likevel, likevel lever jeg."
 
 #. [message]: speaker=Relgorn
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:419
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:420
 msgid "And you really think that you can find the Scepter of Fire?"
 msgstr "Og du tror virkelig at du skal kunne finne Ildscepteret?"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:424
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:425
 msgid ""
 "Yes, I do. If you help us, friend, all the treasures of Knalga that we find "
 "are yours. We want only the Scepter. It will be dangerous. Make no mistake "
@@ -4152,7 +4182,7 @@ msgstr ""
 "enn å gjemme seg som mark for orkene."
 
 #. [message]: speaker=Relgorn
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:429
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:430
 msgid ""
 "You are right, friend. I will put my best men at your disposal. We know not "
 "where the Scepter is though. Legend says it is hidden in the eastern tunnels."
@@ -4161,18 +4191,18 @@ msgstr ""
 "ikke hvor Scepteret er. Legenden sier det er gjemt i de østlige tunnelene."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:434
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:435
 msgid "Then to the eastern tunnels we shall go!"
 msgstr "Da drar vi til de østre tunnelene!"
 
-#. [unit]: type=Elvish Shaman
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:499
+#. [unit]: type=Elvish Shaman, id=Gryphon Tender
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:500
 #, fuzzy
 msgid "Gryphon Tender"
 msgstr "Griffenes Fjell"
 
 #. [message]: speaker=Gryphon Tender
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:512
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:513
 msgid ""
 "I am sorry, Prince Konrad. The young gryphons are breaking their ropes. They "
 "are simply getting too large and too restless to restrain anymore!"
@@ -4181,29 +4211,29 @@ msgstr ""
 "simpelthen for store og ville til å kontrollere!"
 
 #. [message]: speaker=Relgorn
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:546
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:547
 msgid "What's this? Gryphons in my castle? Remove the beasts!"
 msgstr "Hva er dette?! Griffer i min festning? Fjern beistene!!"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:550
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:551
 msgid "Beasts? We were planning to use them as mounts."
 msgstr "Beist? Vi planlegger å bruke dem som ridedyr."
 
 #. [message]: speaker=Relgorn
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:554
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:555
 msgid "Ha ha! Gryphons as mounts! Is there no end to your folly?"
 msgstr "Haha! Griffer som ridedyr! Er det ingen ende på din dårskap?"
 
 #. [message]: speaker=Konrad
 #. [message]: speaker=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:558
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:566
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:559
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:567
 msgid "(looks miffed)"
 msgstr "(forlegen)"
 
 #. [message]: speaker=Relgorn
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:562
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:563
 #, fuzzy
 msgid ""
 "Well, if you must go on with this mad scheme, I shall supply you with my own "
@@ -4216,7 +4246,7 @@ msgstr ""
 "griffenes!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:570
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:571
 msgid ""
 "Temper your anger. Relgorn's manner may be rough, but surely there is "
 "nothing wrong with his suggestion?"
@@ -4225,28 +4255,28 @@ msgstr ""
 "er da ikke noe galt med forslaget hans?"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:574
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:575
 msgid "Well, I suppose..."
 msgstr "Vel, jeg antar..."
 
-#. [unit]: type=Gryphon Rider
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:599
+#. [unit]: type=Gryphon Rider, id=Mounted Dwarf
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:600
 msgid "Mounted Dwarf"
 msgstr ""
 
 #. [message]: speaker=Mounted Dwarf
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:612
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:613
 #, fuzzy
 msgid "Whoa there... No need to be surly, now. Easy...easy... now GO!"
 msgstr "Hei der... ingen grunn til å være tverr. Stødig nå.. i trav!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:638
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:639
 msgid "You can now recruit fearsome Gryphon Riders!"
 msgstr "Du kan nå rekruttere fryktede Grifferyttere!"
 
 #. [message]: speaker=Relgorn
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:643
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:644
 msgid ""
 "Though they stink, gryphons are magnificent animals. They may not be able to "
 "navigate our twisted caverns very well, but if you ever see the surface "
@@ -4257,34 +4287,34 @@ msgstr ""
 "igjen vil de dominere luftrommet. Lykke til, forbundne av Knalga!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:670
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:671
 msgid "Hmm... there seems to be a secret passage behind these rocks!"
 msgstr "Hmm... det ser ut til at det er en hemmelig gang bak disse steinene!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:694
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:695
 msgid ""
 "There is a great fortune in this chest of treasure! I can count two hundred "
 "pieces of gold!"
 msgstr ""
 "Det er en stor formue i denne kista! Jeg kan telle to hundre gullstykker!"
 
-#. [scenario]
+#. [scenario]: id=15_The_Lost_General
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:4
 msgid "The Lost General"
 msgstr "Den Fortapte General"
 
-#. [side]: type=Dwarvish Lord
+#. [side]: id=Geldar, type=Dwarvish Lord
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:57
 msgid "Geldar"
 msgstr "Geldar"
 
-#. [side]: type=Troll Warrior
+#. [side]: id=Brugg, type=Troll Warrior
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:69
 msgid "Brugg"
 msgstr "Brugg"
 
-#. [side]: type=Death Knight
+#. [side]: id=Lionel, type=Death Knight
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:84
 msgid "Lionel"
 msgstr "Lionel"
@@ -4325,7 +4355,7 @@ msgstr ""
 msgid "A hidden whirlpool sucks you down into a subterranean current!"
 msgstr ""
 
-#. [unit]: type=Dwarvish Ulfserker
+#. [unit]: id=Ulfdain, type=Dwarvish Ulfserker
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:176
 msgid "Ulfdain"
 msgstr ""
@@ -4612,7 +4642,7 @@ msgstr ""
 "Jeg føler på meg, Konrad, at våre veier fører oss ned i dypet. Vi fortsetter "
 "mot nordøst, til de dypeste delene av hulene."
 
-#. [scenario]
+#. [scenario]: id=16_Hasty_Alliance
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:4
 msgid "Hasty Alliance"
 msgstr "Et Hastig Forbund"
@@ -4671,14 +4701,14 @@ msgstr ""
 "naturlige broer over bunnløse avgrunner. En vind bragt til live av kraftfull "
 "magi... og nylig vekket ondskap."
 
-#. [side]: type=Commander
-#. [side]: type=Princess
+#. [side]: type=Commander, id=Konrad
+#. [side]: type=Princess, id=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:70
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:90
 msgid "Humans"
 msgstr ""
 
-#. [side]: type=Troll Warrior
+#. [side]: type=Troll Warrior, id=Haaf-Garga
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:97
 msgid "Haaf-Garga"
 msgstr "Haaf-Garga"
@@ -4803,7 +4833,7 @@ msgid "I can't believe it should end like this!"
 msgstr "Jeg kan ikke tro det skulle ende slik!"
 
 #. [settings]
-#. [scenario]
+#. [scenario]: id=17_Scepter_of_Fire
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:4
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:33
 msgid "The Scepter of Fire"
@@ -4912,7 +4942,7 @@ msgstr "Her er pungen min, Konrad, som lovet full av gull."
 msgid "You receive 300 pieces of gold!"
 msgstr "Du mottar 300 gullstykker!"
 
-#. [scenario]
+#. [scenario]: id=18_A_Choice_Must_Be_Made
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:4
 msgid "A Choice Must Be Made"
 msgstr "Et Valg må Gjøres"
@@ -4958,7 +4988,7 @@ msgstr ""
 msgid "Defeat either of the enemy leaders"
 msgstr "Bekjemp en av fiendens ledere"
 
-#. [side]: type=Death Knight
+#. [side]: type=Death Knight, id=Unan-Ka'tall
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:104
 msgid "Unan-Ka'tall"
 msgstr "Unan-Ka'tall"
@@ -5304,12 +5334,12 @@ msgid ""
 "of the river again."
 msgstr ""
 
-#. [scenario]
+#. [scenario]: id=19a_Snow_Plains
 #: data/campaigns/Heir_To_The_Throne/scenarios/19a_Snow_Plains.cfg:4
 msgid "Snow Plains"
 msgstr "Snøkledde Vidder"
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Urag-Tifer
 #: data/campaigns/Heir_To_The_Throne/scenarios/19a_Snow_Plains.cfg:65
 msgid "Urag-Tifer"
 msgstr "Urag-Tifer"
@@ -5483,7 +5513,7 @@ msgstr ""
 "min far og mine brødre. Ashevieres mesterspill av svik og bedrag skal "
 "opphøre ved min egen klinge!"
 
-#. [scenario]
+#. [scenario]: id=19b_Swamp_Of_Dread
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:4
 msgid "Swamp Of Dread"
 msgstr "Fryktens Sump"
@@ -5500,27 +5530,27 @@ msgid ""
 "@Defeat all Death Knights first"
 msgstr ""
 
-#. [side]: type=Death Knight
+#. [side]: type=Death Knight, id=Clarustus
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:87
 msgid "Clarustus"
 msgstr "Clarustus"
 
-#. [side]: type=Death Knight
+#. [side]: type=Death Knight, id=Merlunius
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:106
 msgid "Merlunius"
 msgstr "Merlunius"
 
-#. [side]: type=Lich
+#. [side]: type=Lich, id=Aimucasur
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:122
 msgid "Aimucasur"
 msgstr "Aimucasur"
 
-#. [side]: type=Death Knight
+#. [side]: type=Death Knight, id=Secadius
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:138
 msgid "Secadius"
 msgstr "Secadius"
 
-#. [side]: type=Death Knight
+#. [side]: type=Death Knight, id=Dafeis
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:157
 msgid "Dafeis"
 msgstr "Dafeis"
@@ -5696,7 +5726,7 @@ msgstr ""
 "onde dåder en person kan utføre der sannhet og rettferd bare er vakre ord på "
 "dronningers falske bannbuller?"
 
-#. [scenario]
+#. [scenario]: id=19c_Cliffs_of_Thoria
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:4
 msgid "The Cliffs of Thoria"
 msgstr ""
@@ -5709,14 +5739,14 @@ msgid "Make it to the end of the river"
 msgstr "Forflytt Konrad over til nordsiden av elven."
 
 #. [side]
-#. [side]: type=Saurian Oracle
+#. [side]: type=Saurian Oracle, id=Szerkz
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:136
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:83
 #, fuzzy
 msgid "Drakes"
 msgstr "Dafeis"
 
-#. [unit]: type=Injured Sergeant
+#. [unit]: type=Injured Sergeant, id=Warven
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:264
 #, fuzzy
 msgid "Warven"
@@ -5807,7 +5837,7 @@ msgstr ""
 msgid "Delfador is right. We must go on!"
 msgstr ""
 
-#. [unit]: type=Armageddon Drake
+#. [unit]: type=Armageddon Drake, id=Keh Ohn
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:345
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:455
 msgid "Keh Ohn"
@@ -6198,7 +6228,7 @@ msgstr ""
 msgid "Everybody inside..."
 msgstr ""
 
-#. [scenario]
+#. [scenario]: id=20a_North_Elves
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:4
 msgid "Home of the North Elves"
 msgstr "Nordalvenes Hjem"
@@ -6224,10 +6254,10 @@ msgstr "Rundene tar slutt før du når skogen"
 msgid "Note: your encampment will be dismantled after the first turn.\n"
 msgstr "Leiren din vil bli hevet etter første runde"
 
-#. [side]: type=Commander
-#. [side]: type=Elvish Lord
-#. [side]: type=Elvish Lady
-#. [side]: type=Elvish Marshal
+#. [side]: type=Commander, id=Konrad
+#. [side]: type=Elvish Lord, id=Uradredia
+#. [side]: type=Elvish Lady, id=Parandra
+#. [side]: type=Elvish Marshal, id=El'rien
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:28
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:39
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:48
@@ -6236,17 +6266,17 @@ msgstr "Leiren din vil bli hevet etter første runde"
 msgid "Allies"
 msgstr ""
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Kior-Dal
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:69
 msgid "Kior-Dal"
 msgstr "Kior-Dal"
 
-#. [side]: type=General
+#. [side]: type=General, id=Herbert
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:128
 msgid "Herbert"
 msgstr "Herbert"
 
-#. [side]: type=Elvish Marshal
+#. [side]: type=Elvish Marshal, id=El'rien
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:193
 msgid "El'rien"
 msgstr "El'rien"
@@ -6284,7 +6314,7 @@ msgstr ""
 "Så lenge vi beveger oss fremover uten å forsake forsiktighet og klokskap, er "
 "jeg sikker på at vi vil nå tryggheten og gjestfriheten hos alvene."
 
-#. [unit]: type=Elvish Rider
+#. [unit]: id=Telerandor, type=Elvish Rider
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:377
 #, fuzzy
 msgid "Telerandor"
@@ -6589,7 +6619,7 @@ msgid "Indeed. We will escort you to our capital, where we will make Council."
 msgstr ""
 "Ja visst. Vi vil eskortere dere til hovedstaden vår, hvor vi skal holde Råd."
 
-#. [scenario]
+#. [scenario]: id=20b_Underground_Channels
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:4
 msgid "Underground Channels"
 msgstr ""
@@ -6611,23 +6641,23 @@ msgstr ""
 msgid "Turns expire"
 msgstr ""
 
-#. [side]: type=Saurian Oracle
+#. [side]: type=Saurian Oracle, id=Szerkz
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:79
 msgid "Szerkz"
 msgstr ""
 
-#. [side]: type=Ancient Lich
+#. [side]: type=Ancient Lich, id=Muff Argulak
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:97
 #, fuzzy
 msgid "Muff Argulak"
 msgstr "Muff Malal"
 
-#. [side]: type=Ancient Wose
+#. [side]: type=Ancient Wose, id=Haralamdum
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:115
 msgid "Haralamdum"
 msgstr ""
 
-#. [side]: type=Elvish Sylph
+#. [side]: type=Elvish Sylph, id=Bona-Melodia
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:135
 msgid "Bona-Melodia"
 msgstr ""
@@ -6642,33 +6672,33 @@ msgstr ""
 msgid "Get that vile creature!"
 msgstr ""
 
-#. [scenario]
+#. [scenario]: id=21_Elven_Council
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:4
 msgid "The Elven Council"
 msgstr "Alvenes Rådsmøte"
 
-#. [side]: type=Elvish Lord
+#. [side]: type=Elvish Lord, id=Uradredia
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:34
 msgid "Uradredia"
 msgstr "Uradradia"
 
-#. [side]: type=Elvish Lady
+#. [side]: type=Elvish Lady, id=Parandra
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:44
 msgid "Parandra"
 msgstr "Parandra"
 
-#. [unit]: type=Elvish Champion
+#. [unit]: type=Elvish Champion, id=Bellrok
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:77
 #, fuzzy
 msgid "Bellrok"
 msgstr "Reglok"
 
-#. [unit]: type=Elvish Avenger
+#. [unit]: type=Elvish Avenger, id=Tindolean
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:86
 msgid "Tindolean"
 msgstr ""
 
-#. [unit]: type=Elvish Enchantress
+#. [unit]: type=Elvish Enchantress, id=Everlore
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:94
 msgid "Everlore"
 msgstr ""
@@ -7083,7 +7113,7 @@ msgstr ""
 "Ja, hvil ut. Soldatene dine vil bli pleiet og sett til. Vi skal sørge for at "
 "dere kan legge ut på reisens siste etappe utstyrt med rikelige ressurser."
 
-#. [scenario]
+#. [scenario]: id=22_Return_to_Wesnoth
 #: data/campaigns/Heir_To_The_Throne/scenarios/22_Return_to_Wesnoth.cfg:4
 msgid "Return to Wesnoth"
 msgstr "Tilbake til Wesnoth"
@@ -7163,17 +7193,17 @@ msgstr ""
 "ødemarker, sprang Konrads hjerte i ham ved tanken på at reisen snart var "
 "over. Skjønt den største faren lå foran ham, var han på vei hjem."
 
-#. [side]: type=General
+#. [side]: type=General, id=Josephus
 #: data/campaigns/Heir_To_The_Throne/scenarios/22_Return_to_Wesnoth.cfg:100
 msgid "Josephus"
 msgstr "Josephus"
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Dwar-Ni
 #: data/campaigns/Heir_To_The_Throne/scenarios/22_Return_to_Wesnoth.cfg:119
 msgid "Dwar-Ni"
 msgstr "Dwar-Ni"
 
-#. [side]: type=General
+#. [side]: type=General, id=Malatus
 #: data/campaigns/Heir_To_The_Throne/scenarios/22_Return_to_Wesnoth.cfg:137
 msgid "Malatus"
 msgstr "Malatus"
@@ -7237,7 +7267,7 @@ msgstr ""
 "Vi må skynde på! Langt større utfordringer ligger foran oss, ved å bie her "
 "minker vi bare våre egne ressurser."
 
-#. [scenario]
+#. [scenario]: id=23_Test_of_the_Clans
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:4
 msgid "Test of the Clan"
 msgstr "Klanenes Prøve"
@@ -7256,7 +7286,10 @@ msgid ""
 "@Defeat all enemy leaders"
 msgstr "Bekjemp alle fiendtlige ledere"
 
-#. [side]: type=Grand Knight
+#. [side]: type=Grand Knight, id=Sir Alric
+#. [side]: type=Grand Knight, id=Sir Ruga
+#. [side]: type=Grand Knight, id=Sir Daryn
+#. [side]: type=Grand Knight, id=Bayar
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:73
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:102
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:131
@@ -7266,28 +7299,28 @@ msgid "Plainsmen"
 msgstr "Snøkledde Vidder"
 
 #. [then]
-#. [side]: type=Grand Knight
+#. [side]: type=Grand Knight, id=Sir Alric
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:207
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:76
 msgid "Sir Alric"
 msgstr "Ridder Alric"
 
 #. [then]
-#. [side]: type=Grand Knight
+#. [side]: type=Grand Knight, id=Sir Ruga
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:198
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:105
 msgid "Sir Ruga"
 msgstr "Ridder Ruga"
 
 #. [then]
-#. [side]: type=Grand Knight
+#. [side]: type=Grand Knight, id=Sir Daryn
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:189
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:134
 msgid "Sir Daryn"
 msgstr "Ridder Daryn"
 
 #. [then]
-#. [side]: type=Grand Knight
+#. [side]: type=Grand Knight, id=Bayar
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:180
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:163
@@ -7548,7 +7581,7 @@ msgstr ""
 "Vi jager styrkene deres på flukt! La oss se om Klanen har fått nok. Deres "
 "hjelp til å forsvare flankene våre vil være uvurderlig."
 
-#. [scenario]
+#. [scenario]: id=24_Battle_for_Wesnoth
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:4
 msgid "The Battle for Wesnoth"
 msgstr "Kampen om Wesnoth"
@@ -7669,17 +7702,17 @@ msgstr ""
 "Nå, la oss ei bie her lenger! Dagen bryter! Tiden har kommet for "
 "tronarvingen å kreve sin trone!"
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Haliel-Maga
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:107
 msgid "Haliel-Maga"
 msgstr "Haliel-Maga"
 
-#. [side]: type=General
+#. [side]: type=General, id=Heford
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:123
 msgid "Heford"
 msgstr "Heford"
 
-#. [side]: type=Cavalier
+#. [side]: type=Cavalier, id=Sir Kalm
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:138
 msgid "Sir Kalm"
 msgstr "Ridder Kalm"
@@ -7916,7 +7949,7 @@ msgstr ""
 "seiret. I morgen er en ny dag, venner.. la oss gjenoppbygge dette "
 "kongedømmet."
 
-#. [scenario]
+#. [scenario]: id=25_HttT_Epilogue
 #: data/campaigns/Heir_To_The_Throne/scenarios/25_HttT_Epilogue.cfg:4
 msgid "Epilogue"
 msgstr "Epilog"
@@ -7979,15 +8012,15 @@ msgstr ""
 "Den unge prins Konrads ben ble hentet hos Alvene, og begravd i den kongelige "
 "krypten i Weldyn, som Konrad besøkte hver uke for å vise aktelse."
 
-#. [variation]: race=human
-#. [unit_type]: race=human
+#. [variation]: id=Battle Princess, race=human
+#. [unit_type]: id=Battle Princess, race=human
 #: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:4
 #: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:84
 msgid "female^Battle Princess"
 msgstr "Slagprinsesse"
 
-#. [variation]: race=human
-#. [unit_type]: race=human
+#. [variation]: id=Battle Princess, race=human
+#. [unit_type]: id=Battle Princess, race=human
 #: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:32
 #: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:111
 msgid ""
@@ -8019,15 +8052,15 @@ msgstr "sabel"
 msgid "scepter of fire"
 msgstr "ildscepter"
 
-#. [variation]: race=human
-#. [unit_type]: race=human
+#. [variation]: id=Commander, race=human
+#. [unit_type]: id=Commander, race=human
 #: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:4
 #: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:148
 msgid "Commander"
 msgstr "Befal"
 
-#. [variation]: race=human
-#. [unit_type]: race=human
+#. [variation]: id=Commander, race=human
+#. [unit_type]: id=Commander, race=human
 #: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:27
 #: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:171
 msgid ""
@@ -8061,15 +8094,15 @@ msgstr "sverd"
 msgid "bow"
 msgstr "bue"
 
-#. [variation]: race=human
-#. [unit_type]: race=human
+#. [variation]: id=Dark Queen, race=human
+#. [unit_type]: id=Dark Queen, race=human
 #: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:4
 #: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:45
 msgid "female^Dark Queen"
 msgstr "Ond dronning"
 
-#. [variation]: race=human
-#. [unit_type]: race=human
+#. [variation]: id=Dark Queen, race=human
+#. [unit_type]: id=Dark Queen, race=human
 #: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:19
 #: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:60
 msgid ""
@@ -8091,7 +8124,7 @@ msgstr "scepter"
 msgid "raging blizzard"
 msgstr ""
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Fighter, race=human
 #: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:18
 #, fuzzy
 msgid ""
@@ -8103,7 +8136,7 @@ msgstr ""
 "sårbare for angrep fra fiender, har de potensiale til en dag å bli en store "
 "krigere."
 
-#. [variation]: race=human
+#. [variation]: id=Fighter, race=human
 #: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:46
 msgid ""
 "Young and brash, Fighters fight with a sword, and are vulnerable to attack "
@@ -8114,20 +8147,20 @@ msgstr ""
 "sårbare for angrep fra fiender, har de potensiale til en dag å bli en store "
 "krigere."
 
-#. [unit_type]
+#. [unit_type]: id=Injured Sergeant
 #: data/campaigns/Heir_To_The_Throne/units/Injured_Sergeant.cfg:7
 msgid "Injured Sergeant"
 msgstr ""
 
-#. [variation]: race=human
-#. [unit_type]: race=human
+#. [variation]: id=Lord, race=human
+#. [unit_type]: id=Lord, race=human
 #: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:4
 #: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:175
 msgid "Lord"
 msgstr "Fyrste"
 
-#. [variation]: race=human
-#. [unit_type]: race=human
+#. [variation]: id=Lord, race=human
+#. [unit_type]: id=Lord, race=human
 #: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:28
 #: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:199
 msgid ""
@@ -8141,13 +8174,13 @@ msgstr ""
 "innehar en Fyrste ferdigheter i lederskap, slik at han kan inspirere "
 "nærtstående lavere rangerte enheter til større dåder på slagmarken."
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Princess, race=human
 #: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:4
 msgid "female^Princess"
 msgstr "Prinsesse"
 
-#. [variation]: race=human
-#. [unit_type]: race=human
+#. [variation]: id=Princess, race=human
+#. [unit_type]: id=Princess, race=human
 #: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:29
 #: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:150
 msgid ""
@@ -8163,17 +8196,17 @@ msgstr ""
 "bedre på grunn av hennes strålende nærvær. Prinsessen er også lettbent og "
 "behendig, og har samme evner som en tyv."
 
-#. [variation]: race=human
+#. [variation]: id=Princess, race=human
 #: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:126
 msgid "Princess"
 msgstr "Prinsesse"
 
-#. [unit_type]: race=orc
+#. [unit_type]: id=Sea Orc, race=orc
 #: data/campaigns/Heir_To_The_Throne/units/Sea_Orc.cfg:4
 msgid "Sea Orc"
 msgstr "Sjøork"
 
-#. [unit_type]: race=orc
+#. [unit_type]: id=Sea Orc, race=orc
 #: data/campaigns/Heir_To_The_Throne/units/Sea_Orc.cfg:17
 #, fuzzy
 msgid ""
@@ -8190,12 +8223,12 @@ msgstr ""
 "avstandsangrep og dårlig utviklet forsvar på landjorden representerer "
 "strategiske svakheter."
 
-#. [unit_type]: race=gryphon
+#. [unit_type]: id=Sleeping Gryphon, race=gryphon
 #: data/campaigns/Heir_To_The_Throne/units/Sleeping_Gryphon.cfg:4
 msgid "Sleeping Gryphon"
 msgstr "Sovende griff"
 
-#. [unit_type]: race=gryphon
+#. [unit_type]: id=Sleeping Gryphon, race=gryphon
 #: data/campaigns/Heir_To_The_Throne/units/Sleeping_Gryphon.cfg:18
 msgid "Shhhh! The Gryphon is sleeping! You'd better not wake it up!"
 msgstr "Hysjj! Griffen sover! Du bør nok ikke vekke den."
@@ -8236,12 +8269,12 @@ msgstr "Ønsker du at enheten skal plukke opp sverdet?"
 msgid "Yes"
 msgstr "Ja"
 
-#. [object]
+#. [object]: id={ID}
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:49
 msgid "Flaming Sword"
 msgstr "Flammende Sverd"
 
-#. [object]
+#. [object]: id={ID}
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:53
 #, fuzzy
 msgid ""
@@ -8254,7 +8287,7 @@ msgstr ""
 "alvesmeder. Dets blåaktige stål er inngitt med magisk ild. Flammetunger "
 "danser om eggene, og gir stålet dets speilende blåglans."
 
-#. [object]
+#. [object]: id={ID}
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:54
 msgid "Only the leader of an army can wield this sword!"
 msgstr "Kun en stor hærfører kan bruke dette sverdet!"
@@ -8286,12 +8319,12 @@ msgstr "Nei"
 msgid "Do you want this unit to pick up the armor?"
 msgstr "Vil du plukke opp denne rustningen?"
 
-#. [object]
+#. [object]: id={ID}
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:166
 msgid "Void Armor"
 msgstr "Savnets Rustning"
 
-#. [object]
+#. [object]: id={ID}
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:168
 msgid ""
 "A beautiful chest plate crafted from shimmering black steel, the Void Armor "
@@ -8300,7 +8333,7 @@ msgstr ""
 "Savnets Rustning er en brystplate virket i skinnende sort stål, og er "
 "nærmest ugjennomtrengelig for fysiske våpen."
 
-#. [object]
+#. [object]: id={ID}
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:169
 msgid "Only a powerful warrior may don this armor!"
 msgstr "Bare en mektig kriger kan ta på denne rustningen!"
@@ -8315,13 +8348,13 @@ msgstr ""
 "om å ta den på deg. Likevel er den forbløffende komfortabel når du først har "
 "fått den på. Din motstand mot fysisk skade har økt!"
 
-#. [value]
+#. [value]: id=void_armor
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:193
 #, fuzzy
 msgid "void armor"
 msgstr "Savnets Rustning"
 
-#. [value]
+#. [value]: id=void_armor
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:198
 msgid ""
 "The Void Armor grants the following resistances:\n"
@@ -8331,12 +8364,12 @@ msgid ""
 "fire:  +10%"
 msgstr ""
 
-#. [object]
+#. [object]: id=object_scepter
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:384
 msgid "Scepter of Fire"
 msgstr "Ildscepteret"
 
-#. [object]
+#. [object]: id=object_scepter
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:387
 #, fuzzy
 msgid ""
@@ -8348,7 +8381,7 @@ msgstr ""
 "Scepteret er et symbol på Wesnoths kongemakt, og kan skyte ildkuler på "
 "bærerens fiender!"
 
-#. [object]
+#. [object]: id=object_scepter
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:388
 msgid ""
 "This is the Scepter of Fire. Only a true successor to the throne can "

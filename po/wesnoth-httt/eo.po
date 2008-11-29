@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-27 19:53+0100\n"
+"POT-Creation-Date: 2008-11-29 12:24+0100\n"
 "PO-Revision-Date: 2008-02-29 00:20+0100\n"
 "Last-Translator: Viliam Búr <viliam@bur.sk>\n"
 "Language-Team: \n"
@@ -11,52 +11,52 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-Language: Esperanto\n"
 
-#. [campaign]
+#. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:11
 msgid "Heir to the Throne"
 msgstr "Heredanto de la Trono"
 
-#. [campaign]
+#. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:12
 msgid "HttT"
 msgstr "HttT"
 
-#. [variation]: race=human
-#. [unit_type]: race=human
-#. [campaign]
+#. [variation]: id=Fighter, race=human
+#. [unit_type]: id=Fighter, race=human
+#. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:4
 #: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:33
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:16
 msgid "Fighter"
 msgstr "Batalanto"
 
-#. [campaign]
+#. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:16
 msgid "(Beginner)"
 msgstr "(Komencanto)"
 
-#. [campaign]
+#. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:17
 msgid "(Normal)"
 msgstr "(normala)"
 
-#. [campaign]
+#. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:17
 msgid "Hero"
 msgstr "Heroo"
 
-#. [campaign]
+#. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:18
 msgid "(Challenging)"
 msgstr "(Progresinto)"
 
-#. [campaign]
+#. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:18
 msgid "Champion"
 msgstr "Ĉampiono"
 
 #
-#. [campaign]
+#. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:21
 msgid ""
 "Fight to regain the throne of Wesnoth, of which you are the legitimate "
@@ -88,7 +88,7 @@ msgstr "Desagnaĵoj kaj grafikaĵoj"
 msgid "Miscellaneous"
 msgstr "Diversa"
 
-#. [scenario]
+#. [scenario]: id=01_The_Elves_Besieged
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:4
 msgid "The Elves Besieged"
 msgstr "Elfoj sieĝitaj"
@@ -173,8 +173,8 @@ msgstr "Delfador mortos"
 msgid "Turns run out"
 msgstr "Paso de tempo"
 
-#. [side]: type=Commander
-#. [side]: type=Fighter
+#. [side]: type=Commander, id=Konrad
+#. [side]: type=Fighter, id=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:46
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:94
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:44
@@ -207,15 +207,16 @@ msgstr "Paso de tempo"
 msgid "Konrad"
 msgstr "Konrad"
 
-#. [side]: type=Commander
-#. [side]: type=Fighter
-#. [side]: type=Dwarvish Lord
-#. [side]: type=Grand Knight
-#. [side]: type=Elvish Champion
-#. [side]: type=Elvish Druid
+#. [side]: type=Commander, id=Konrad
+#. [side]: type=Fighter, id=Konrad
+#. [side]: id=Geldar, type=Dwarvish Lord
+#. [side]: type=Grand Knight, id=Kaylan
+#. [side]: type=Elvish Champion, id=Galdrad
+#. [side]: type=Elvish Druid, id=Chantal
 #. [side]
-#. [side]: type=Ancient Wose
-#. [side]: type=Elvish Sylph
+#. [side]: id=Relgorn, type=Dwarvish Lord
+#. [side]: type=Ancient Wose, id=Haralamdum
+#. [side]: type=Elvish Sylph, id=Bona-Melodia
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:52
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:101
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:49
@@ -253,25 +254,38 @@ msgstr "Konrad"
 msgid "Rebels"
 msgstr ""
 
-#. [unit]: type=Elder Mage
+#. [unit]: id=Delfador, type=Elder Mage
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:68
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:693
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:850
 msgid "Delfador"
 msgstr "Delfador"
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Urug-Telfar
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:144
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:83
 msgid "Urug-Telfar"
 msgstr "Urug-Telfar"
 
-#. [side]: type=Orcish Warlord
-#. [side]: type=Orcish Warrior
-#. [side]: type=Orcish Slurbow
-#. [side]: type=Orcish Sovereign
+#. [side]: type=Orcish Warlord, id=Kojun Herolm
+#. [side]: type=Orcish Warrior, id=Mokho Kimer
+#. [side]: type=Orcish Warrior, id=Mokolo Qimur
+#. [side]: type=Orcish Warlord, id=Urug-Telfar
+#. [side]: type=Orcish Warlord, id=Knafa-Tan
+#. [side]: type=Orcish Warlord, id=Maga-Knafa
+#. [side]: type=Orcish Slurbow, id=Knafa-Telfar
+#. [side]: type=Orcish Warlord, id=Urug-Tan
+#. [side]: type=Orcish Sovereign, id=Shuuga-Mool
+#. [side]: type=Orcish Warrior, id=Halgar Du'nar
+#. [side]: type=Orcish Warlord, id=Gaga-Breuk
+#. [side]: type=Orcish Warlord, id=Urag-Tifer
+#. [side]: type=Orcish Warrior, id=Dwaba-Kukai
+#. [side]: type=Orcish Warrior, id=Managa'Gwin
+#. [side]: type=Orcish Warrior, id=Usadar Q'kai
 #. [side]: type=Goblin Rouser
+#. [side]: type=Orcish Warlord
 #. [side]: type=Troll Warrior
+#. [side]: type=Orcish Warlord, id=Kior-Dal
 #: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:173
 #: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:190
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:100
@@ -299,22 +313,22 @@ msgstr "Urug-Telfar"
 msgid "Orcs"
 msgstr "Markus"
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Knafa-Tan
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:164
 msgid "Knafa-Tan"
 msgstr "Knafa-Tan"
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Maga-Knafa
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:183
 msgid "Maga-Knafa"
 msgstr "Maga-Knafa"
 
-#. [side]: type=Elvish Champion
+#. [side]: type=Elvish Champion, id=Galdrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:203
 msgid "Galdrad"
 msgstr "Galdrad"
 
-#. [side]: type=Elvish Druid
+#. [side]: type=Elvish Druid, id=Chantal
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:218
 msgid "Chantal"
 msgstr "Ĥantal"
@@ -525,7 +539,7 @@ msgid "There can be no looking back. We must go quickly!"
 msgstr "Jem ne ekzistas vojo reen. Ni devas iri, rapide!"
 
 #. [label]
-#. [scenario]
+#. [scenario]: id=02_Blackwater_Port
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:4
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:50
 msgid "Blackwater Port"
@@ -551,22 +565,22 @@ msgstr "Venku ĉiujn malamikoj "
 msgid "Death of Sir Kaylan"
 msgstr "Siro Kailan mortos"
 
-#. [side]: type=Grand Knight
+#. [side]: type=Grand Knight, id=Kaylan
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:71
 msgid "Sir Kaylan"
 msgstr "Siro Kailan"
 
-#. [side]: type=Orcish Warrior
+#. [side]: type=Orcish Warrior, id=Mokolo Qimur
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:95
 msgid "Mokolo Qimur"
 msgstr "Mokolo Kimur"
 
-#. [unit]: type=Swordsman
+#. [unit]: type=Swordsman, id=Veocyn
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:123
 msgid "Veocyn"
 msgstr "Veocin"
 
-#. [unit]: type=Swordsman
+#. [unit]: type=Swordsman, id=Yran
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:135
 msgid "Yran"
 msgstr "Iran"
@@ -709,7 +723,7 @@ msgstr ""
 "Varbu trupojn saĝe, Konrado, kaj memoru, ke vi povas alvoki pli spertajn "
 "trupojn el pasintaj bataloj, pro ke  ili denove helpu vin."
 
-#. [unit]: type=Horseman
+#. [unit]: id=Haldiel, type=Horseman
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:216
 msgid "Haldiel"
 msgstr "Haldiel"
@@ -730,37 +744,37 @@ msgstr ""
 "kiu batalas kun ni nur pro lojaleco. Tiaj trupoj estas ege valoraj. Uzu ilin "
 "atenteme en batalo, por ke ili ne falu ."
 
-#. [unit]: type=Horseman
+#. [unit]: type=Horseman, id=Yredd
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:245
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:368
 msgid "Yredd"
 msgstr "Jredd"
 
-#. [unit]: type=Horseman
+#. [unit]: type=Horseman, id=Tarcyn
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:257
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:380
 msgid "Tarcyn"
 msgstr "Tarcin"
 
-#. [unit]: type=Horseman
+#. [unit]: type=Horseman, id=Syryn
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:269
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:392
 msgid "Syryn"
 msgstr "Sirin"
 
-#. [unit]: type=Knight
+#. [unit]: type=Knight, id=Cicyn
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:281
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:404
 msgid "Cicyn"
 msgstr "Cicin"
 
-#. [unit]: type=Knight
+#. [unit]: type=Knight, id=Ginvan
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:293
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:416
 msgid "Ginvan"
 msgstr "Ginvan"
 
-#. [unit]: type=Knight
+#. [unit]: type=Knight, id=Simyr
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:305
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:428
 msgid "Simyr"
@@ -845,7 +859,7 @@ msgid ""
 "Without his help, we will be unable to use the ships. There is no hope..."
 msgstr "Sen ĝia helpo ni ne kapablos uzi ŝipojn, ni estas senŝancaj..."
 
-#. [scenario]
+#. [scenario]: id=03_The_Isle_of_Alduin
 #: data/campaigns/Heir_To_The_Throne/scenarios/03_The_Isle_of_Alduin.cfg:4
 msgid "The Isle of Alduin"
 msgstr "La insulo de Alduin"
@@ -857,7 +871,7 @@ msgstr "La insulo de Alduin"
 msgid "Defeat the enemy leader"
 msgstr "Venku malamikan estron"
 
-#. [side]: type=Orcish Warrior
+#. [side]: type=Orcish Warrior, id=Usadar Q'kai
 #: data/campaigns/Heir_To_The_Throne/scenarios/03_The_Isle_of_Alduin.cfg:64
 msgid "Usadar Q'kai"
 msgstr "Usadar Q´kai"
@@ -905,7 +919,7 @@ msgstr ""
 "Mi pensis, ke orkoj  ne venos ĉi tien. Tiu ĉi insulo iam estis belega. Ni "
 "devas ĝin denove konkeri! Prenu armilojn!"
 
-#. [unit]: type=Mage
+#. [unit]: id=Elrian, type=Mage
 #: data/campaigns/Heir_To_The_Throne/scenarios/03_The_Isle_of_Alduin.cfg:216
 msgid "Elrian"
 msgstr "Elrian"
@@ -955,7 +969,7 @@ msgstr ""
 "ili batalos en frontlinioj, fortaj trupoj devas protekti ilin, ĉar malamikoj "
 "rapide neniigus ilin."
 
-#. [unit]: type=Arch Mage
+#. [unit]: type=Arch Mage, id=Seimus
 #: data/campaigns/Heir_To_The_Throne/scenarios/03_The_Isle_of_Alduin.cfg:267
 msgid "Seimus"
 msgstr "Seimus"
@@ -1022,7 +1036,7 @@ msgstr ""
 "Vere, ni devas iri tien. Iomete ni ripozigu kaj poste ni navigos en golfon. "
 "Espereble ni venkos ŝiajn fortojn."
 
-#. [scenario]
+#. [scenario]: id=04_The_Bay_of_Pearls
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:4
 msgid "The Bay of Pearls"
 msgstr "Golfo de perloj"
@@ -1042,29 +1056,29 @@ msgid ""
 "`(early finish bonus)"
 msgstr ""
 
-#. [side]: type=Orcish Warrior
+#. [side]: type=Orcish Warrior, id=Dwaba-Kukai
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:59
 msgid "Dwaba-Kukai"
 msgstr "Dwaba-Kukai"
 
-#. [side]: type=Orcish Warrior
+#. [side]: type=Orcish Warrior, id=Managa'Gwin
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:75
 msgid "Managa'Gwin"
 msgstr "Managa'Gwin"
 
-#. [unit]: type=Orcish Archer
+#. [unit]: type=Orcish Archer, id=Bugg
 #. [then]
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:132
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:269
 msgid "Bugg"
 msgstr "Bugg"
 
-#. [unit]: type=Naga Fighter, type=Naga Warrior
+#. [unit]: type=Naga Fighter, type=Naga Warrior, id=Xnamas
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:148
 msgid "Xnamas"
 msgstr "Knamaso"
 
-#. [unit]: type=Naga Warrior, type=Naga Fighter
+#. [unit]: type=Naga Warrior, type=Naga Fighter, id=Inalai
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:164
 msgid "Inalai"
 msgstr "Inalai"
@@ -1135,22 +1149,22 @@ msgstr "Sed...sed... kiel tio povis okazi?"
 msgid "Who was that idiot?"
 msgstr "Kiu estis tiu idioto?"
 
-#. [unit]: type=Merman Fighter
+#. [unit]: id=Gwaba, type=Merman Fighter
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:320
 msgid "Gwaba"
 msgstr "Gwaba"
 
-#. [unit]: type=Merman Fighter
+#. [unit]: id=Nepba, type=Merman Fighter
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:333
 msgid "Nepba"
 msgstr "Nepba"
 
-#. [unit]: type=Merman Fighter
+#. [unit]: id=Triram, type=Merman Fighter
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:346
 msgid "Triram"
 msgstr "Triram"
 
-#. [unit]: type=Merman Fighter
+#. [unit]: id=Mriram, type=Merman Fighter
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:361
 msgid "Mriram"
 msgstr "Mriram"
@@ -1160,22 +1174,22 @@ msgstr "Mriram"
 msgid "Free at last! Now, death to the orcs!"
 msgstr "Finfine liberaj! Nun morton al orkoj!"
 
-#. [unit]: type=Merman Fighter
+#. [unit]: id=Mabooa, type=Merman Fighter
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:392
 msgid "Mabooa"
 msgstr "Mabooa"
 
-#. [unit]: type=Merman Fighter
+#. [unit]: id=Earooa, type=Merman Fighter
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:407
 msgid "Earooa"
 msgstr "Earooa"
 
-#. [unit]: type=Merman Fighter
+#. [unit]: id=Nethuns, type=Merman Fighter
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:420
 msgid "Nethuns"
 msgstr "Nethuns"
 
-#. [unit]: type=Merman Fighter
+#. [unit]: id=Gwoama, type=Merman Fighter
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:434
 msgid "Gwoama"
 msgstr "Gwoama"
@@ -1185,12 +1199,12 @@ msgstr "Gwoama"
 msgid "Now that we are free, together we can defeat our oppressors!"
 msgstr "Nun, kiam  ni estas liberaj, ni povas venki la subpremantojn!  "
 
-#. [unit]: type=Merman Fighter
+#. [unit]: id=Kaba, type=Merman Fighter
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:465
 msgid "Kaba"
 msgstr "Kaba"
 
-#. [unit]: type=Merman Fighter
+#. [unit]: id=Kwaboo, type=Merman Fighter
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:480
 msgid "Kwaboo"
 msgstr "Kvaboo"
@@ -1200,17 +1214,17 @@ msgstr "Kvaboo"
 msgid "Freedom! Now where are those orcs? Let me at 'em!"
 msgstr "Libero! Kie esras nun orkoj? Ek kontraŭ ili!"
 
-#. [unit]: type=Merman Fighter
+#. [unit]: id=Gwimli, type=Merman Fighter
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:512
 msgid "Gwimli"
 msgstr "Gvimli"
 
-#. [unit]: type=Merman Fighter
+#. [unit]: id=Jarla, type=Merman Fighter
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:525
 msgid "Jarla"
 msgstr "Jarla"
 
-#. [unit]: type=Merman Fighter
+#. [unit]: id=Gwarloa, type=Merman Fighter
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:540
 msgid "Gwarloa"
 msgstr "Gwarloa"
@@ -1224,32 +1238,32 @@ msgstr ""
 "Dankon, ke vi savis nin! Nun ni helpos al vii batali kontraŭ malbonaj orkoj! "
 "Ĉefa kaĝo, en kiu ili tenas plimulton de maraj homoj, estas nordokcidente!  "
 
-#. [unit]: type=Merman Fighter
+#. [unit]: id=Heldaga, type=Merman Fighter
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:571
 msgid "Heldaga"
 msgstr "Heldaga"
 
-#. [unit]: type=Merman Hunter
+#. [unit]: id=Apalala, type=Merman Hunter
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:584
 msgid "Apalala"
 msgstr "Apalala"
 
-#. [unit]: type=Mermaid Initiate
+#. [unit]: id=Oceania, type=Mermaid Initiate
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:597
 msgid "Oceania"
 msgstr "Oceanio"
 
-#. [unit]: type=Merman Fighter
+#. [unit]: id=Elcmar, type=Merman Fighter
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:611
 msgid "Elcmar"
 msgstr "Elcmar"
 
-#. [unit]: type=Merman Fighter
+#. [unit]: id=Aigaion, type=Merman Fighter
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:624
 msgid "Aigaion"
 msgstr "Aigaion"
 
-#. [unit]: type=Merman Fighter
+#. [unit]: id=Tini, type=Merman Fighter
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:638
 msgid "Tini"
 msgstr "Tini"
@@ -1483,7 +1497,7 @@ msgstr ""
 "Ĉar orkoj estras marojn, veturi ŝipe estus danĝere. Veturu tra kontinento. "
 "Elensefar vi atingos post ses taga marŝado laŭ marbordo. Rapidu!"
 
-#. [scenario]
+#. [scenario]: id=05a_Muff_Malals_Peninsula
 #: data/campaigns/Heir_To_The_Throne/scenarios/05a_Muff_Malal_Peninsula.cfg:4
 msgid "Muff Malal's Peninsula"
 msgstr "Insulo de Muff Malalov"
@@ -1501,16 +1515,24 @@ msgid ""
 "`(early finish bonus)"
 msgstr ""
 
-#. [side]: type=Dark Sorcerer
+#. [side]: type=Dark Sorcerer, id=Muff Malal
 #: data/campaigns/Heir_To_The_Throne/scenarios/05a_Muff_Malal_Peninsula.cfg:61
 msgid "Muff Malal"
 msgstr "Muff Malal"
 
-#. [side]: type=Death Knight
-#. [side]: type=Lich
-#. [side]: type=Dark Sorcerer
+#. [side]: type=Death Knight, id=Clarustus
+#. [side]: type=Death Knight, id=Merlunius
+#. [side]: type=Lich, id=Aimucasur
+#. [side]: type=Death Knight, id=Secadius
+#. [side]: type=Death Knight, id=Dafeis
+#. [side]: type=Dark Sorcerer, id=Muff Malal
+#. [side]: type=Lich, id=Galga
+#. [side]: type=Lich, id=Na-alga
+#. [side]: type=Lich, id=Selda-Mana
+#. [side]: id=Haf-Mal, type=Lich
+#. [side]: id=Jarmal-Gorg, type=Lich
 #. [side]
-#. [side]: type=Ancient Lich
+#. [side]: type=Ancient Lich, id=Muff Argulak
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:98
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:114
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:129
@@ -1615,7 +1637,7 @@ msgstr ""
 "Elensefar, sed almenaŭ ni liberigis ĉi tiujn bonajn homojn. Ni devas rapidi "
 "antaŭen!"
 
-#. [scenario]
+#. [scenario]: id=05b_Isle_of_the_Damned
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:5
 msgid "Isle of the Damned"
 msgstr "Insulo de damnitoj"
@@ -1655,22 +1677,22 @@ msgstr ""
 "Maraj homoj savis Konradon antaŭ droniĝo, sed ne kapablis loki lin sur "
 "ŝipon. Post longa klopodo transportis lin al proksima insulo..."
 
-#. [side]: type=Lich
+#. [side]: id=Haf-Mal, type=Lich
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:77
 msgid "Haf-Mal"
 msgstr "Haf-Mal"
 
-#. [side]: type=Lich
+#. [side]: id=Jarmal-Gorg, type=Lich
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:95
 msgid "Jarmal-Gorg"
 msgstr "Jarmal-Gorg"
 
-#. [event]
+#. [event]: id=Delurin 21 12}
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:154
 msgid "Kalba"
 msgstr "Kalba"
 
-#. [event]
+#. [event]: id=Delurin 21 12}
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:155
 msgid "Gnaba"
 msgstr "Gnaba"
@@ -1711,7 +1733,7 @@ msgstr ""
 "Sur insulo ĉiam estas kelkaj homoj, sinjoro. Eble vi dungos kelkajn por "
 "helpi. Ni povas havi almenaŭ ian esperon kontraŭ hordoj de ne malvivuloj!"
 
-#. [event]
+#. [event]: id=Delurin 21 12}
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:176
 msgid "Delurin"
 msgstr "Delurin"
@@ -1750,8 +1772,8 @@ msgstr "La templo aspektas malplena."
 msgid "Looks like there is somebody hidden in the temple."
 msgstr "Ŝajnas, ke en ĉi tiu templo iu kaŝiĝas."
 
-#. [unit]: type=Mage of Light
-#. [unit]: type=White Mage
+#. [unit]: id=Moremirmu, type=Mage of Light
+#. [unit]: id=Moremirmu, type=White Mage
 #: data/campaigns/Heir_To_The_Throne/scenarios/09_The_Valley_of_Death.cfg:264
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:243
 msgid "Moremirmu"
@@ -1786,7 +1808,7 @@ msgstr ""
 "Se ni sukcesos forigi minacon de ne malvivuloj el ĉi tiuj insuloj, ni certe "
 "iros kun vi. Se ne, ni devos fini nian laboron ĉi tie."
 
-#. [unit]: type=Revenant
+#. [unit]: type=Revenant, id=Xakae
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:303
 msgid "Xakae"
 msgstr "Ksakae"
@@ -1853,7 +1875,7 @@ msgstr ""
 "malvivaj. Estu al vi sorto favora dum via nobla misio, kaj eble ni iam "
 "denove renkontiĝos."
 
-#. [scenario]
+#. [scenario]: id=06_The_Siege_of_Elensefar
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:4
 msgid "The Siege of Elensefar"
 msgstr "Sieĝo de Elensefar"
@@ -1872,15 +1894,18 @@ msgstr "Venku ĉiujn malamikoj "
 msgid "Elensefar"
 msgstr "Al Elensefar"
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Agadla
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:61
 msgid "Agadla"
 msgstr "Agadla"
 
-#. [side]: type=Orcish Warlord
-#. [side]: type=Dark Sorcerer
-#. [side]: type=Troll Warrior
-#. [side]: type=Death Knight
+#. [side]: type=Orcish Warlord, id=Agadla
+#. [side]: type=Dark Sorcerer, id=Muff Jaanal
+#. [side]: id=Brugg, type=Troll Warrior
+#. [side]: id=Lionel, type=Death Knight
+#. [side]: type=Troll Warrior, id=Haaf-Garga
+#. [side]: type=Orcish Warlord, id=Urug-Telfar
+#. [side]: type=Death Knight, id=Unan-Ka'tall
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:72
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:113
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:79
@@ -1891,7 +1916,7 @@ msgstr "Agadla"
 msgid "Evil"
 msgstr ""
 
-#. [side]: type=Dark Sorcerer
+#. [side]: type=Dark Sorcerer, id=Muff Jaanal
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:104
 msgid "Muff Jaanal"
 msgstr "Muff Jaanal"
@@ -1941,19 +1966,19 @@ msgstr ""
 "Ni devas konkeri la urbon kaj mortigi aĉajn ne malvivulojn, pli frue ol "
 "venos helptrupoj."
 
-#. [unit]: type=Rogue
+#. [unit]: id=Reglok, type=Rogue
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:201
 msgid "Reglok"
 msgstr "Reglok"
 
-#. [unit]: type=Thief
+#. [unit]: id=Gelgar, type=Thief
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:240
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:383
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:480
 msgid "Gelgar"
 msgstr "Gelgar"
 
-#. [unit]: type=Thief
+#. [unit]: id=Gamlel, type=Thief
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:252
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:395
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:493
@@ -2085,7 +2110,7 @@ msgid ""
 "city."
 msgstr "Tuj post hiso de standardo, tra urbo eksonis batalbruon."
 
-#. [unit]: type=Thief
+#. [unit]: id=Darglen, type=Thief
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:407
 msgid "Darglen"
 msgstr "Darglen"
@@ -2138,7 +2163,7 @@ msgstr "Venko! Ŝtelistoj el Elensefaro estos  je via dispono, sinjoro."
 msgid "The party rested for three days, after which an old friend returned."
 msgstr "Grupo ripozis dum tri tagoj, kaj poste ilia malnova amiko reveniĝis."
 
-#. [unit]: type=Elvish Lord
+#. [unit]: id=Kalenz, type=Elvish Lord
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:555
 msgid "Kalenz"
 msgstr "Kalenzo"
@@ -2262,7 +2287,7 @@ msgstr "Jes, Konrado. Mi kredas, ke iam vi estos reĝo. Kaj nun ni hastu!"
 msgid "So you endeavor to fight me in my home. Foolish."
 msgstr "Do, vi klopodas batali kontraŭ mi en mia hejmo. Kiel stulte."
 
-#. [scenario]
+#. [scenario]: id=07_Crossroads
 #: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:4
 msgid "Crossroads"
 msgstr "Vojkrucejo"
@@ -2324,12 +2349,12 @@ msgstr ""
 "Malgranda armeo de Konrado ne vekas atenton de malamikoj en dise loĝata "
 "okcidenta provinco. Sed ilia bonŝanco ne daŭris longe."
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Kojun Herolm
 #: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:165
 msgid "Kojun Herolm"
 msgstr "Kojun Herolm"
 
-#. [side]: type=Orcish Warrior
+#. [side]: type=Orcish Warrior, id=Mokho Kimer
 #: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:182
 msgid "Mokho Kimer"
 msgstr "Mokho Kimer"
@@ -2408,7 +2433,7 @@ msgstr ""
 msgid "Victory is ours, men. Let us proceed northeast!"
 msgstr "Viroj, ni venkis. Ni daŭrigu nordorienten!"
 
-#. [scenario]
+#. [scenario]: id=08_The_Princess_of_Wesnoth
 #: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:4
 msgid "The Princess of Wesnoth"
 msgstr "Princino el Vesnot"
@@ -2441,8 +2466,8 @@ msgid "Elbridge"
 msgstr "Ponto de Elo"
 
 #. [event]
-#. [side]: type=Princess
-#. [unit]: type=$stored_Lisar.type
+#. [side]: type=Princess, id=Li'sar
+#. [unit]: id=Li'sar, type=$stored_Lisar.type
 #: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:651
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:59
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:82
@@ -2451,11 +2476,16 @@ msgstr "Ponto de Elo"
 msgid "Li'sar"
 msgstr "Li'sar"
 
-#. [side]: type=Orcish Warlord
-#. [side]: type=General
-#. [side]: type=Cavalier
-#. [side]: type=Dark Queen
-#. [side]: type=Princess
+#. [side]: type=Orcish Warlord, id=Haliel-Maga
+#. [side]: type=General, id=Heford
+#. [side]: type=Cavalier, id=Sir Kalm
+#. [side]: type=Dark Queen, id=Asheviere
+#. [side]: type=General, id=Josephus
+#. [side]: type=Orcish Warlord, id=Dwar-Ni
+#. [side]: type=General, id=Malatus
+#. [side]: type=Princess, id=Li'sar
+#. [side]: type=General, id=Herbert
+#. [side]: type=General, id=Robert
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:117
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:131
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:147
@@ -2620,7 +2650,7 @@ msgstr "Vi malkaŝis mian trukon! Ne gravas, egale mi vin frakasos."
 msgid "The trap is foiled, but I'll still flush this rabble from their keep!"
 msgstr "Kaptilo fiaskis, sed egale mi forpelos ĉi kanajlojn el ilia citadelo!"
 
-#. [scenario]
+#. [scenario]: id=09_The_Valley_of_Death
 #: data/campaigns/Heir_To_The_Throne/scenarios/09_The_Valley_of_Death.cfg:4
 msgid "The Valley of Death - The Princess's Revenge"
 msgstr "Valo de morto - Venĝo de princino"
@@ -2638,17 +2668,17 @@ msgid ""
 "`(early finish bonus)"
 msgstr ""
 
-#. [side]: type=Lich
+#. [side]: type=Lich, id=Galga
 #: data/campaigns/Heir_To_The_Throne/scenarios/09_The_Valley_of_Death.cfg:76
 msgid "Galga"
 msgstr "Galga"
 
-#. [side]: type=Lich
+#. [side]: type=Lich, id=Na-alga
 #: data/campaigns/Heir_To_The_Throne/scenarios/09_The_Valley_of_Death.cfg:120
 msgid "Na-alga"
 msgstr "Na-alga"
 
-#. [side]: type=Lich
+#. [side]: type=Lich, id=Selda-Mana
 #: data/campaigns/Heir_To_The_Throne/scenarios/09_The_Valley_of_Death.cfg:154
 msgid "Selda-Mana"
 msgstr "Selda-Mana"
@@ -2839,7 +2869,7 @@ msgstr ""
 msgid "Indeed! Let us go from here!"
 msgstr "Reale! Ni iru for de ĉi tie!"
 
-#. [scenario]
+#. [scenario]: id=10_Gryphon_Mountain
 #: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:4
 msgid "Gryphon Mountain"
 msgstr "Grif-monto"
@@ -2849,12 +2879,12 @@ msgstr "Grif-monto"
 msgid "Defeat the mother gryphon and the enemy commander"
 msgstr "Venku grif-patrinon kaj malamikan komandanton."
 
-#. [side]: type=General
+#. [side]: type=General, id=Robert
 #: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:69
 msgid "Robert"
 msgstr "Roberto"
 
-#. [side]: type=Gryphon
+#. [side]: type=Gryphon, id=Mother Gryphon
 #: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:87
 msgid "Mother Gryphon"
 msgstr "Grif-patrino"
@@ -3049,7 +3079,7 @@ msgstr "Sovaĝa Grook"
 msgid "Rampant Gruak"
 msgstr "Sovaĝa Gruak"
 
-#. [scenario]
+#. [scenario]: id=11_The_Ford_of_Abez
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:4
 msgid "The Ford of Abez"
 msgstr "Vadejo Abez"
@@ -3059,7 +3089,7 @@ msgstr "Vadejo Abez"
 msgid "Move Konrad to the north side of the river"
 msgstr "Movigu Konradon al norda flanko de rivero."
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Gaga-Breuk
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:82
 msgid "Gaga-Breuk"
 msgstr "Gaga-Breuk"
@@ -3325,7 +3355,7 @@ msgstr ""
 "Certe ŝi provos tion, sed maraj monstroj malfaciligos tion al ŝi. Ni devas "
 "daŭrigi. Se ŝi travados la riveron pli frue ol venos vintro, fariĝu tiel!"
 
-#. [scenario]
+#. [scenario]: id=12_Northern_Winter
 #: data/campaigns/Heir_To_The_Throne/scenarios/12_Northern_Winter.cfg:4
 msgid "Northern Winter"
 msgstr "Norda vintro"
@@ -3350,7 +3380,7 @@ msgstr ""
 "Kirlanta vintra vento ekblovis la armeon de Konrado, komunikante, ke aŭtuno "
 "finiĝis kaj venas kruela vintro."
 
-#. [side]: type=Orcish Warrior
+#. [side]: type=Orcish Warrior, id=Halgar Du'nar
 #: data/campaigns/Heir_To_The_Throne/scenarios/12_Northern_Winter.cfg:77
 #: data/campaigns/Heir_To_The_Throne/scenarios/12_Northern_Winter.cfg:102
 msgid "Halgar Du'nar"
@@ -3507,7 +3537,7 @@ msgstr ""
 "antaŭ alveno de printempo. Kaj post multaj ripoztagoj la taĉmento daŭrigis "
 "al reĝlando de nanoj..."
 
-#. [scenario]
+#. [scenario]: id=13_The_Dwarven_Doors
 #: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:4
 msgid "The Dwarven Doors"
 msgstr "Nana pordo"
@@ -3517,17 +3547,17 @@ msgstr "Nana pordo"
 msgid "Move Konrad to the entrance of the Dwarven Kingdom"
 msgstr "Movigu Konradon al enirejo de nana reĝlando!"
 
-#. [side]: type=Orcish Slurbow
+#. [side]: type=Orcish Slurbow, id=Knafa-Telfar
 #: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:67
 msgid "Knafa-Telfar"
 msgstr "Kanfa-Telfar"
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Urug-Tan
 #: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:86
 msgid "Urug-Tan"
 msgstr "Urug-Tan"
 
-#. [side]: type=Orcish Sovereign
+#. [side]: type=Orcish Sovereign, id=Shuuga-Mool
 #: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:105
 msgid "Shuuga-Mool"
 msgstr "Shuuga-Mool"
@@ -3542,7 +3572,7 @@ msgstr "Pilieroj de Thunedino"
 msgid "The Great Doors"
 msgstr "Granda pordo"
 
-#. [scenario]
+#. [scenario]: id=13_The_Dwarven_Doors
 #: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:142
 msgid "Royal Guard"
 msgstr "Reĝa gardo"
@@ -3862,7 +3892,7 @@ msgstr ""
 "Oh! Ni trairis danĝeran montaran nebulon, kaj nun antaŭ ni estas ĉi tiu "
 "kaoso! Iru viroj! Ni devas atingi minejojn, ili kuŝas antaŭ ni!"
 
-#. [scenario]
+#. [scenario]: id=14_Plunging_into_the_Darkness
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:4
 msgid "Plunging into the Darkness"
 msgstr "Mergiĝo en mallumo"
@@ -3877,18 +3907,18 @@ msgstr "Trovu nanojn"
 msgid "Hywyn"
 msgstr "Hivin"
 
-#. [side]: type=Dwarvish Lord
+#. [side]: id=Relgorn, type=Dwarvish Lord
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:97
 msgid "Relgorn"
 msgstr "Relgom"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:244
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:245
 msgid "It's so dark in here I can hardly see!"
 msgstr "Estas ĉi tie terura mallumo! Apenaŭ mi vidas!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:248
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:249
 msgid ""
 "It is dark indeed. We shall have to light torches and tread slowly and "
 "carefully. It may be there are still dwarves down here who can aid us!"
@@ -3897,22 +3927,22 @@ msgstr ""
 "singardeme! Espereble ĉi tie ankoraŭ troviĝas nanoj, kiuj povus helpi nin!"
 
 #. [message]: speaker=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:252
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:253
 msgid "Indeed. We elves do not fare well in these dark pits."
 msgstr "Vere. Ni elfoj ne estas tro alkutimiĝitaj al ĉi tiuj mallumaj truoj."
 
 #. [message]: speaker=Relgorn
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:269
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:270
 msgid "Who are these that approach? Surface-dwellers! On your guard, men!"
 msgstr "Kiu alproksimiĝas? Estaĵoj el supraĵo! Gardu, viroj!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:299
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:300
 msgid "We come in peace, friends. We come in peace!"
 msgstr "Ni venas en paco, amikoj. Ni venas en paco!"
 
 #. [message]: speaker=Relgorn
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:304
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:305
 msgid ""
 "Oh, do you? I see that you are accompanied by elves. Can we dwarves not live "
 "in peace without the treacherous elves coming to bother us?"
@@ -3921,12 +3951,12 @@ msgstr ""
 "paco, sen ĝeno de perfidaj elfoj?"
 
 #. [message]: speaker=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:309
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:310
 msgid "Why such harsh words, dwarf? Elves have never done you any harm."
 msgstr "Kial tiel duraj vortoj, nano? Elfoj neniam faris maljustaĵon al vi."
 
 #. [message]: speaker=Relgorn
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:314
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:315
 msgid ""
 "'Never done us any harm?' Why, I was there myself, when the elves refused to "
 "honor our alliance. Many dwarves were slaughtered, and you cowardly elves "
@@ -3937,7 +3967,7 @@ msgstr ""
 "poltronaj elfoj eĉ fingron ne movis por helpi  nin!"
 
 #. [message]: speaker=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:319
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:320
 msgid ""
 "You go too far! I am Kalenz, a mighty elvish lord! How dare such as you, "
 "sniveling in his tunnel, call me a coward?"
@@ -3946,7 +3976,7 @@ msgstr ""
 "tie ploraĉas enrampita en tunelo, kuraĝas nomi min poltrono?"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:324
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:325
 msgid ""
 "Peace, friends! Peace! The evil orcs roam the lands above us, we must not "
 "fight among ourselves."
@@ -3955,7 +3985,7 @@ msgstr ""
 "ankaŭ devas batali inter ni?"
 
 #. [message]: speaker=Relgorn
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:329
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:330
 msgid ""
 "Very well! Explain your presence here then, human. Who are you? Why have you "
 "risked life and limb to come to Knalga, home of the dwarves?"
@@ -3964,12 +3994,12 @@ msgstr ""
 "riskis sanon kaj vivon sur vojo al Knalga, la hejmo de nanoj?"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:334
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:335
 msgid "Well, we... we..."
 msgstr "Do, ni... ni..."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:339
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:340
 msgid ""
 "We have come so that an heir may claim his inheritance, that a king may "
 "claim his throne. We seek the Scepter of Fire."
@@ -3978,13 +4008,13 @@ msgstr ""
 "tronon. Ni serĉas Fajran sceptron."
 
 #. [message]: speaker=Relgorn
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:344
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:345
 msgid ""
 "The Scepter of Fire? Are you out of your minds? Surely you speak in jest!"
 msgstr "Fajran sceptron? Ĉu vi freneziĝis? Certe vi nur ŝercas!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:349
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:350
 msgid ""
 "We jest not, friend. We seek the Scepter of Fire. We seek the help of the "
 "dwarves in finding it. But know that we will find it, whether you help us or "
@@ -3995,7 +4025,7 @@ msgstr ""
 "ĝi."
 
 #. [message]: speaker=Relgorn
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:354
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:355
 msgid ""
 "You speak foolishness. No one even knows if the Scepter of Fire still "
 "exists. And who is this heir, this king that you speak of?"
@@ -4004,12 +4034,12 @@ msgstr ""
 "kiu estas la heredanto, la reĝo, pri kiu vi parolas?"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:359
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:360
 msgid "I am, sir."
 msgstr "Mi estas, sinjoro."
 
 #. [message]: speaker=Relgorn
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:364
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:365
 msgid ""
 "You? Ha ha! This boy that stands before me is the king of Wesnoth? Ha ha! I "
 "haven't had such a laugh in a long time. And who are you, old man?"
@@ -4018,7 +4048,7 @@ msgstr ""
 "tiel ne ridis. Kaj kiu vi estas, maljunulo?"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:369
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:370
 msgid ""
 "I am Delfador, Delfador the Great, Arch Mage to King Garard, and Protector "
 "of his heir."
@@ -4027,7 +4057,7 @@ msgstr ""
 "protektanto de lia heredanto."
 
 #. [message]: speaker=Relgorn
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:374
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:375
 msgid ""
 "You... you are Delfador? I saw Delfador when I was but a young dwarf, and I "
 "will tell you, old man, you are not Delfador. Men! Take these liars out of "
@@ -4038,12 +4068,12 @@ msgstr ""
 "mensogulojn deantaŭ miaj okuloj. Delfadoro pereis jam antaŭ multaj jaroj."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:404
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:405
 msgid "I am Delfador the Great! Tremble before my wrath!"
 msgstr "Mi estas Delfadoro la Granda, prepariĝu morti!"
 
 #. [message]: speaker=Relgorn
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:409
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:410
 msgid ""
 "You... you really are Delfador! But we had news that you were dead, years "
 "ago!"
@@ -4052,17 +4082,17 @@ msgstr ""
 "multaj jaroj!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:414
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:415
 msgid "They thought I was dead. They hoped I was dead. Yet still I live."
 msgstr "Ili pensis, ke mi mortis. Ili esperis, ke mi mortis. Sed mi plu vivas."
 
 #. [message]: speaker=Relgorn
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:419
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:420
 msgid "And you really think that you can find the Scepter of Fire?"
 msgstr "Kaj ĉu vi vere pensas, ke vi sukcesos trovi Fajran sceptron?"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:424
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:425
 msgid ""
 "Yes, I do. If you help us, friend, all the treasures of Knalga that we find "
 "are yours. We want only the Scepter. It will be dangerous. Make no mistake "
@@ -4075,7 +4105,7 @@ msgstr ""
 "kiel vermoj."
 
 #. [message]: speaker=Relgorn
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:429
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:430
 msgid ""
 "You are right, friend. I will put my best men at your disposal. We know not "
 "where the Scepter is though. Legend says it is hidden in the eastern tunnels."
@@ -4085,17 +4115,17 @@ msgstr ""
 "tuneloj"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:434
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:435
 msgid "Then to the eastern tunnels we shall go!"
 msgstr "Do ni iros al orientaj tuneloj!"
 
-#. [unit]: type=Elvish Shaman
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:499
+#. [unit]: type=Elvish Shaman, id=Gryphon Tender
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:500
 msgid "Gryphon Tender"
 msgstr "Grif-zorganto"
 
 #. [message]: speaker=Gryphon Tender
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:512
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:513
 msgid ""
 "I am sorry, Prince Konrad. The young gryphons are breaking their ropes. They "
 "are simply getting too large and too restless to restrain anymore!"
@@ -4104,29 +4134,29 @@ msgstr ""
 "grandaj kaj nervozaj, se io limigas ilin!"
 
 #. [message]: speaker=Relgorn
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:546
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:547
 msgid "What's this? Gryphons in my castle? Remove the beasts!"
 msgstr "Kio estas tio? Grifoj en mia kastelo? Forigu bestiojn!"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:550
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:551
 msgid "Beasts? We were planning to use them as mounts."
 msgstr "Rabobestoj? Ni planis rajdi ilin."
 
 #. [message]: speaker=Relgorn
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:554
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:555
 msgid "Ha ha! Gryphons as mounts! Is there no end to your folly?"
 msgstr "Ha ha! Rajdi grifojn! Ĉu via stulteco ne havas finon?"
 
 #. [message]: speaker=Konrad
 #. [message]: speaker=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:558
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:566
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:559
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:567
 msgid "(looks miffed)"
 msgstr "(furioza rigardo)"
 
 #. [message]: speaker=Relgorn
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:562
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:563
 msgid ""
 "Well, if you must go on with this mad scheme, I shall supply you with my own "
 "troops as riders! A frail human - or worse, an elf - would never be able to "
@@ -4137,7 +4167,7 @@ msgstr ""
 "sovaĝajn instinktojn."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:570
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:571
 msgid ""
 "Temper your anger. Relgorn's manner may be rough, but surely there is "
 "nothing wrong with his suggestion?"
@@ -4146,28 +4176,28 @@ msgstr ""
 "io malbona en lia propono?"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:574
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:575
 msgid "Well, I suppose..."
 msgstr "Do, mi supozas, ke..."
 
-#. [unit]: type=Gryphon Rider
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:599
+#. [unit]: type=Gryphon Rider, id=Mounted Dwarf
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:600
 msgid "Mounted Dwarf"
 msgstr "Nano sur grifo"
 
 #. [message]: speaker=Mounted Dwarf
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:612
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:613
 #, fuzzy
 msgid "Whoa there... No need to be surly, now. Easy...easy... now GO!"
 msgstr "Ho vi...Ne furiozu jam. En ordo...kaj nun, IRU!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:638
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:639
 msgid "You can now recruit fearsome Gryphon Riders!"
 msgstr "De nun vi povas varbi timigajn grif-rajdantojn!"
 
 #. [message]: speaker=Relgorn
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:643
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:644
 msgid ""
 "Though they stink, gryphons are magnificent animals. They may not be able to "
 "navigate our twisted caverns very well, but if you ever see the surface "
@@ -4178,33 +4208,33 @@ msgstr ""
 "firmamenton. Multe da feliĉo, amikoj de Knalgo."
 
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:670
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:671
 msgid "Hmm... there seems to be a secret passage behind these rocks!"
 msgstr "Hmm.. malantaŭ ĉi rokoj estas sekreta trairejo!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:694
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:695
 msgid ""
 "There is a great fortune in this chest of treasure! I can count two hundred "
 "pieces of gold!"
 msgstr "En ĉi tiu kesto estas trezorego! Tio estas 200 guldenojn!"
 
-#. [scenario]
+#. [scenario]: id=15_The_Lost_General
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:4
 msgid "The Lost General"
 msgstr "Perdita generalo"
 
-#. [side]: type=Dwarvish Lord
+#. [side]: id=Geldar, type=Dwarvish Lord
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:57
 msgid "Geldar"
 msgstr "Geldar"
 
-#. [side]: type=Troll Warrior
+#. [side]: id=Brugg, type=Troll Warrior
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:69
 msgid "Brugg"
 msgstr "Brugg"
 
-#. [side]: type=Death Knight
+#. [side]: id=Lionel, type=Death Knight
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:84
 msgid "Lionel"
 msgstr "Lionel"
@@ -4243,7 +4273,7 @@ msgstr "La familio de mia onklo droniĝis, kiam orkoj akvigis la groton..."
 msgid "A hidden whirlpool sucks you down into a subterranean current!"
 msgstr "Kaŝita vento ensuĉis vin en subteran fluon!"
 
-#. [unit]: type=Dwarvish Ulfserker
+#. [unit]: id=Ulfdain, type=Dwarvish Ulfserker
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:176
 msgid "Ulfdain"
 msgstr "Ulfdain"
@@ -4539,7 +4569,7 @@ msgstr ""
 "Mi ne certas, Konrado, sed mi sentas, ke nia vojo kondukas nin malsupren. Ni "
 "daŭrigos nordorienten, en la plej malaltaj profundaĵoj de ĉi tiuj grotoj."
 
-#. [scenario]
+#. [scenario]: id=16_Hasty_Alliance
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:4
 msgid "Hasty Alliance"
 msgstr "Neatendita alianco"
@@ -4596,14 +4626,14 @@ msgstr ""
 "Vento jelpis kaj blovis super ŝtuparo kondukanta malsupren al profundaĵo, "
 "kvazaŭ movigata de ia proksima magia forto... kaj de ĵus vekita malbono."
 
-#. [side]: type=Commander
-#. [side]: type=Princess
+#. [side]: type=Commander, id=Konrad
+#. [side]: type=Princess, id=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:70
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:90
 msgid "Humans"
 msgstr ""
 
-#. [side]: type=Troll Warrior
+#. [side]: type=Troll Warrior, id=Haaf-Garga
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:97
 msgid "Haaf-Garga"
 msgstr "Haaf-Garga"
@@ -4724,7 +4754,7 @@ msgid "I can't believe it should end like this!"
 msgstr "Mi ne povas kredi, ke tio finiĝis tiele!"
 
 #. [settings]
-#. [scenario]
+#. [scenario]: id=17_Scepter_of_Fire
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:4
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:33
 msgid "The Scepter of Fire"
@@ -4829,7 +4859,7 @@ msgstr "Konrado, kiel mi promesis, ĉi tie estas mia monujo orplena."
 msgid "You receive 300 pieces of gold!"
 msgstr "Vi ricevis 200 da guldenoj!"
 
-#. [scenario]
+#. [scenario]: id=18_A_Choice_Must_Be_Made
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:4
 msgid "A Choice Must Be Made"
 msgstr "Oni devas elekti"
@@ -4873,7 +4903,7 @@ msgstr ""
 msgid "Defeat either of the enemy leaders"
 msgstr "Venku iun el la malamikaj gvidantoj"
 
-#. [side]: type=Death Knight
+#. [side]: type=Death Knight, id=Unan-Ka'tall
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:104
 msgid "Unan-Ka'tall"
 msgstr "Unan-Ka'tall"
@@ -5251,12 +5281,12 @@ msgstr ""
 "Do, se vi pli poste decidos iri laŭ rivero, transloku denove iun maran viron "
 "al la dekstra fino de la rivero."
 
-#. [scenario]
+#. [scenario]: id=19a_Snow_Plains
 #: data/campaigns/Heir_To_The_Throne/scenarios/19a_Snow_Plains.cfg:4
 msgid "Snow Plains"
 msgstr "Neĝkampoj"
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Urag-Tifer
 #: data/campaigns/Heir_To_The_Throne/scenarios/19a_Snow_Plains.cfg:65
 msgid "Urag-Tifer"
 msgstr "Urag-Tifer"
@@ -5417,7 +5447,7 @@ msgstr ""
 "patrino, sed mi finos ŝian vivon, same, kiel ŝi faris kun mia patro kaj "
 "fratoj. Ĉenon de perfidoj de Aŝeviera trahakos mia glavo!"
 
-#. [scenario]
+#. [scenario]: id=19b_Swamp_Of_Dread
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:4
 msgid "Swamp Of Dread"
 msgstr "Marĉo de teruro"
@@ -5434,27 +5464,27 @@ msgid ""
 "@Defeat all Death Knights first"
 msgstr ""
 
-#. [side]: type=Death Knight
+#. [side]: type=Death Knight, id=Clarustus
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:87
 msgid "Clarustus"
 msgstr "Clarustus"
 
-#. [side]: type=Death Knight
+#. [side]: type=Death Knight, id=Merlunius
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:106
 msgid "Merlunius"
 msgstr "Merlunius"
 
-#. [side]: type=Lich
+#. [side]: type=Lich, id=Aimucasur
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:122
 msgid "Aimucasur"
 msgstr "Aimucasur"
 
-#. [side]: type=Death Knight
+#. [side]: type=Death Knight, id=Secadius
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:138
 msgid "Secadius"
 msgstr "Secadius"
 
-#. [side]: type=Death Knight
+#. [side]: type=Death Knight, id=Dafeis
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:157
 msgid "Dafeis"
 msgstr "Dafeis"
@@ -5618,7 +5648,7 @@ msgstr ""
 "kaj justeco restos nur papero, kiun eblas reskribi, kiam ili ne plaĉas al la "
 "reĝino?"
 
-#. [scenario]
+#. [scenario]: id=19c_Cliffs_of_Thoria
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:4
 msgid "The Cliffs of Thoria"
 msgstr "Klifoj de Thoria"
@@ -5630,14 +5660,14 @@ msgid "Make it to the end of the river"
 msgstr "Venu al fino de la rivero."
 
 #. [side]
-#. [side]: type=Saurian Oracle
+#. [side]: type=Saurian Oracle, id=Szerkz
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:136
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:83
 #, fuzzy
 msgid "Drakes"
 msgstr "Dafeis"
 
-#. [unit]: type=Injured Sergeant
+#. [unit]: type=Injured Sergeant, id=Warven
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:264
 msgid "Warven"
 msgstr "Warveno"
@@ -5742,7 +5772,7 @@ msgstr ""
 msgid "Delfador is right. We must go on!"
 msgstr "Defendoro pravas. Ni devas iri antaŭen!"
 
-#. [unit]: type=Armageddon Drake
+#. [unit]: type=Armageddon Drake, id=Keh Ohn
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:345
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:455
 msgid "Keh Ohn"
@@ -6206,7 +6236,7 @@ msgstr "Jes, sinjorino mia!"
 msgid "Everybody inside..."
 msgstr "Ĉiuj enen..."
 
-#. [scenario]
+#. [scenario]: id=20a_North_Elves
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:4
 msgid "Home of the North Elves"
 msgstr "Hejmo de nordaj elfoj"
@@ -6230,10 +6260,10 @@ msgstr "Tempo forpasos pli frue ol vi atingos arbaron"
 msgid "Note: your encampment will be dismantled after the first turn.\n"
 msgstr "Via tendaro estos forigita post la unua rondo."
 
-#. [side]: type=Commander
-#. [side]: type=Elvish Lord
-#. [side]: type=Elvish Lady
-#. [side]: type=Elvish Marshal
+#. [side]: type=Commander, id=Konrad
+#. [side]: type=Elvish Lord, id=Uradredia
+#. [side]: type=Elvish Lady, id=Parandra
+#. [side]: type=Elvish Marshal, id=El'rien
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:28
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:39
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:48
@@ -6242,17 +6272,17 @@ msgstr "Via tendaro estos forigita post la unua rondo."
 msgid "Allies"
 msgstr ""
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Kior-Dal
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:69
 msgid "Kior-Dal"
 msgstr "Kior-Dal"
 
-#. [side]: type=General
+#. [side]: type=General, id=Herbert
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:128
 msgid "Herbert"
 msgstr "Herberto"
 
-#. [side]: type=Elvish Marshal
+#. [side]: type=Elvish Marshal, id=El'rien
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:193
 msgid "El'rien"
 msgstr "Elrien"
@@ -6288,7 +6318,7 @@ msgstr ""
 "Dum ni daŭrigas saĝe kaj atenteme, mi certas, ke ni atingos sekuran lokon "
 "kaj elfoj prizorgos nin."
 
-#. [unit]: type=Elvish Rider
+#. [unit]: id=Telerandor, type=Elvish Rider
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:377
 #, fuzzy
 msgid "Telerandor"
@@ -6593,7 +6623,7 @@ msgstr ""
 msgid "Indeed. We will escort you to our capital, where we will make Council."
 msgstr "Certe. Ni akompanos vin al nia ĉefurbo, kaj kunvokos konsilantaron."
 
-#. [scenario]
+#. [scenario]: id=20b_Underground_Channels
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:4
 msgid "Underground Channels"
 msgstr "Subteraj kanaloj"
@@ -6618,22 +6648,22 @@ msgstr ""
 msgid "Turns expire"
 msgstr "Tempo pasos."
 
-#. [side]: type=Saurian Oracle
+#. [side]: type=Saurian Oracle, id=Szerkz
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:79
 msgid "Szerkz"
 msgstr "Szerkz"
 
-#. [side]: type=Ancient Lich
+#. [side]: type=Ancient Lich, id=Muff Argulak
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:97
 msgid "Muff Argulak"
 msgstr "Muff Argulak"
 
-#. [side]: type=Ancient Wose
+#. [side]: type=Ancient Wose, id=Haralamdum
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:115
 msgid "Haralamdum"
 msgstr "Haralamdum"
 
-#. [side]: type=Elvish Sylph
+#. [side]: type=Elvish Sylph, id=Bona-Melodia
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:135
 msgid "Bona-Melodia"
 msgstr "Bona-Melodia"
@@ -6648,32 +6678,32 @@ msgstr "Grupo eniris groton, preta rezisti nekonatan..."
 msgid "Get that vile creature!"
 msgstr "Kaptu la kreaĵaĉon!"
 
-#. [scenario]
+#. [scenario]: id=21_Elven_Council
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:4
 msgid "The Elven Council"
 msgstr "Elf-konsilantaro"
 
-#. [side]: type=Elvish Lord
+#. [side]: type=Elvish Lord, id=Uradredia
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:34
 msgid "Uradredia"
 msgstr "Uradredia"
 
-#. [side]: type=Elvish Lady
+#. [side]: type=Elvish Lady, id=Parandra
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:44
 msgid "Parandra"
 msgstr "Paranda"
 
-#. [unit]: type=Elvish Champion
+#. [unit]: type=Elvish Champion, id=Bellrok
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:77
 msgid "Bellrok"
 msgstr "Bellrok"
 
-#. [unit]: type=Elvish Avenger
+#. [unit]: type=Elvish Avenger, id=Tindolean
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:86
 msgid "Tindolean"
 msgstr "Tindolean"
 
-#. [unit]: type=Elvish Enchantress
+#. [unit]: type=Elvish Enchantress, id=Everlore
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:94
 msgid "Everlore"
 msgstr "Everlore"
@@ -7086,7 +7116,7 @@ msgstr ""
 "Jes, vi ripozu. Ni bone prizorgos viajn soldatojn, ili refreŝiĝos. Ankaŭ ni "
 "provizos vin sufiĉe por resto de via  vojo."
 
-#. [scenario]
+#. [scenario]: id=22_Return_to_Wesnoth
 #: data/campaigns/Heir_To_The_Throne/scenarios/22_Return_to_Wesnoth.cfg:4
 msgid "Return to Wesnoth"
 msgstr "Reveno al Vesnot"
@@ -7164,17 +7194,17 @@ msgstr ""
 "de Konrado ekĝojis ĉe imago, ke ekspedicio baldaŭ finiĝos. Malgraŭ la plej "
 "granda danĝero kuŝis antaŭ li, li sciis, ke reveno hejmen proksimiĝas."
 
-#. [side]: type=General
+#. [side]: type=General, id=Josephus
 #: data/campaigns/Heir_To_The_Throne/scenarios/22_Return_to_Wesnoth.cfg:100
 msgid "Josephus"
 msgstr "Josefus"
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Dwar-Ni
 #: data/campaigns/Heir_To_The_Throne/scenarios/22_Return_to_Wesnoth.cfg:119
 msgid "Dwar-Ni"
 msgstr "Dvar-Ni"
 
-#. [side]: type=General
+#. [side]: type=General, id=Malatus
 #: data/campaigns/Heir_To_The_Throne/scenarios/22_Return_to_Wesnoth.cfg:137
 msgid "Malatus"
 msgstr "Malatus"
@@ -7237,7 +7267,7 @@ msgstr ""
 "Ni devas hasti! Atendas nin ankoraŭ du grandaj danĝeroj, hezitante ni nur "
 "konsumas provizojn"
 
-#. [scenario]
+#. [scenario]: id=23_Test_of_the_Clans
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:4
 msgid "Test of the Clan"
 msgstr "Testo de tribo"
@@ -7256,7 +7286,10 @@ msgid ""
 "@Defeat all enemy leaders"
 msgstr "Venku ĉiujn malamikoj "
 
-#. [side]: type=Grand Knight
+#. [side]: type=Grand Knight, id=Sir Alric
+#. [side]: type=Grand Knight, id=Sir Ruga
+#. [side]: type=Grand Knight, id=Sir Daryn
+#. [side]: type=Grand Knight, id=Bayar
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:73
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:102
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:131
@@ -7266,28 +7299,28 @@ msgid "Plainsmen"
 msgstr "Neĝkampoj"
 
 #. [then]
-#. [side]: type=Grand Knight
+#. [side]: type=Grand Knight, id=Sir Alric
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:207
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:76
 msgid "Sir Alric"
 msgstr "Siro Alrik"
 
 #. [then]
-#. [side]: type=Grand Knight
+#. [side]: type=Grand Knight, id=Sir Ruga
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:198
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:105
 msgid "Sir Ruga"
 msgstr "Siro Ruga"
 
 #. [then]
-#. [side]: type=Grand Knight
+#. [side]: type=Grand Knight, id=Sir Daryn
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:189
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:134
 msgid "Sir Daryn"
 msgstr "Siro Darin"
 
 #. [then]
-#. [side]: type=Grand Knight
+#. [side]: type=Grand Knight, id=Bayar
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:180
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:163
@@ -7541,7 +7574,7 @@ msgstr ""
 "Ni detruas iliajn trupojn! Ni vidos, ĉu al klano jam sufiĉis. Ilia helpo ĉe "
 "nia flanko estus valorega."
 
-#. [scenario]
+#. [scenario]: id=24_Battle_for_Wesnoth
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:4
 msgid "The Battle for Wesnoth"
 msgstr "Batalo pro Vesnot"
@@ -7662,17 +7695,17 @@ msgstr ""
 "Do ni ne hezitu plu! Matenas. Venis tempo, por ke heredanto pretendis sian "
 "tronon! "
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Haliel-Maga
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:107
 msgid "Haliel-Maga"
 msgstr "Haliel-Maga"
 
-#. [side]: type=General
+#. [side]: type=General, id=Heford
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:123
 msgid "Heford"
 msgstr "Heford"
 
-#. [side]: type=Cavalier
+#. [side]: type=Cavalier, id=Sir Kalm
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:138
 msgid "Sir Kalm"
 msgstr "Sinjoro Kalm"
@@ -7906,7 +7939,7 @@ msgstr ""
 "venkus. Sed nun ni lasu mortintojn ripozi. Ni venkis. Morgaŭ estas nova "
 "tago, amikoj...kaj ĉi tiun reĝlandon ni konstruos denove."
 
-#. [scenario]
+#. [scenario]: id=25_HttT_Epilogue
 #: data/campaigns/Heir_To_The_Throne/scenarios/25_HttT_Epilogue.cfg:4
 msgid "Epilogue"
 msgstr "Epilogo"
@@ -7967,15 +8000,15 @@ msgstr ""
 "Ostojn de juna princo Konrado ili veturigis de elfoj kaj entonbigis ilin en "
 "reĝa kripto en Weldino. Konrado ĉiusemajne alvenadis omaĝi ilin."
 
-#. [variation]: race=human
-#. [unit_type]: race=human
+#. [variation]: id=Battle Princess, race=human
+#. [unit_type]: id=Battle Princess, race=human
 #: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:4
 #: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:84
 msgid "female^Battle Princess"
 msgstr "Batal-princino"
 
-#. [variation]: race=human
-#. [unit_type]: race=human
+#. [variation]: id=Battle Princess, race=human
+#. [unit_type]: id=Battle Princess, race=human
 #: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:32
 #: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:111
 msgid ""
@@ -8008,15 +8041,15 @@ msgstr "sabro"
 msgid "scepter of fire"
 msgstr "fajra sceptro"
 
-#. [variation]: race=human
-#. [unit_type]: race=human
+#. [variation]: id=Commander, race=human
+#. [unit_type]: id=Commander, race=human
 #: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:4
 #: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:148
 msgid "Commander"
 msgstr "komandanto"
 
-#. [variation]: race=human
-#. [unit_type]: race=human
+#. [variation]: id=Commander, race=human
+#. [unit_type]: id=Commander, race=human
 #: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:27
 #: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:171
 msgid ""
@@ -8050,15 +8083,15 @@ msgstr "glavo"
 msgid "bow"
 msgstr "pafarko"
 
-#. [variation]: race=human
-#. [unit_type]: race=human
+#. [variation]: id=Dark Queen, race=human
+#. [unit_type]: id=Dark Queen, race=human
 #: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:4
 #: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:45
 msgid "female^Dark Queen"
 msgstr "Obskura reĝino"
 
-#. [variation]: race=human
-#. [unit_type]: race=human
+#. [variation]: id=Dark Queen, race=human
+#. [unit_type]: id=Dark Queen, race=human
 #: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:19
 #: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:60
 msgid ""
@@ -8080,7 +8113,7 @@ msgstr "scepto"
 msgid "raging blizzard"
 msgstr ""
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Fighter, race=human
 #: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:18
 msgid ""
 "Young and brash, Fighters attack with a sword, and are vulnerable to more "
@@ -8091,7 +8124,7 @@ msgstr ""
 "sprtaj malamikoj. Sed en ili kuŝas potencialo iun tagon fariĝi grandaj "
 "batalantoj."
 
-#. [variation]: race=human
+#. [variation]: id=Fighter, race=human
 #: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:46
 msgid ""
 "Young and brash, Fighters fight with a sword, and are vulnerable to attack "
@@ -8101,20 +8134,20 @@ msgstr ""
 "Junaj kaj mallertaj batalas kun glavo, ili estas vundeblaj dum malamikaj "
 "atakoj. Sed en ili troviĝas potencialo fariĝi grandaj batalanotoj iutage."
 
-#. [unit_type]
+#. [unit_type]: id=Injured Sergeant
 #: data/campaigns/Heir_To_The_Throne/units/Injured_Sergeant.cfg:7
 msgid "Injured Sergeant"
 msgstr "Vundita serĝento"
 
-#. [variation]: race=human
-#. [unit_type]: race=human
+#. [variation]: id=Lord, race=human
+#. [unit_type]: id=Lord, race=human
 #: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:4
 #: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:175
 msgid "Lord"
 msgstr "Lordo"
 
-#. [variation]: race=human
-#. [unit_type]: race=human
+#. [variation]: id=Lord, race=human
+#. [unit_type]: id=Lord, race=human
 #: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:28
 #: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:199
 msgid ""
@@ -8128,13 +8161,13 @@ msgstr ""
 "gvidkapablojn kaj perfektigas batalkapablojn de ĉiuj trupoj je malplialta "
 "nivelo, kiuj troviĝas en ilia proksimeco."
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Princess, race=human
 #: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:4
 msgid "female^Princess"
 msgstr "Princino"
 
-#. [variation]: race=human
-#. [unit_type]: race=human
+#. [variation]: id=Princess, race=human
+#. [unit_type]: id=Princess, race=human
 #: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:29
 #: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:150
 msgid ""
@@ -8150,17 +8183,17 @@ msgstr ""
 "bone nur dank´al ŝia proksimeco. La princino estas ankaŭ facilmova kaj "
 "elasta kaj per siaj kapabloj superas multajn rabistojn."
 
-#. [variation]: race=human
+#. [variation]: id=Princess, race=human
 #: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:126
 msgid "Princess"
 msgstr "Princino"
 
-#. [unit_type]: race=orc
+#. [unit_type]: id=Sea Orc, race=orc
 #: data/campaigns/Heir_To_The_Throne/units/Sea_Orc.cfg:4
 msgid "Sea Orc"
 msgstr "Mara orko"
 
-#. [unit_type]: race=orc
+#. [unit_type]: id=Sea Orc, race=orc
 #: data/campaigns/Heir_To_The_Throne/units/Sea_Orc.cfg:17
 #, fuzzy
 msgid ""
@@ -8177,12 +8210,12 @@ msgstr ""
 "estas mizera defendo sur tero kaj manko de ia ajn formo de longdistanca "
 "atako."
 
-#. [unit_type]: race=gryphon
+#. [unit_type]: id=Sleeping Gryphon, race=gryphon
 #: data/campaigns/Heir_To_The_Throne/units/Sleeping_Gryphon.cfg:4
 msgid "Sleeping Gryphon"
 msgstr "Dormanta grifono"
 
-#. [unit_type]: race=gryphon
+#. [unit_type]: id=Sleeping Gryphon, race=gryphon
 #: data/campaigns/Heir_To_The_Throne/units/Sleeping_Gryphon.cfg:18
 msgid "Shhhh! The Gryphon is sleeping! You'd better not wake it up!"
 msgstr "Ŝŝŝ! Grifono dormas! Pli bone estos ne veki ĝin!"
@@ -8224,12 +8257,12 @@ msgstr "Ĉu vi deziras, ke ĉi tiu trupo prenu glavon?"
 msgid "Yes"
 msgstr "Jes"
 
-#. [object]
+#. [object]: id={ID}
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:49
 msgid "Flaming Sword"
 msgstr "Fajra glavo"
 
-#. [object]
+#. [object]: id={ID}
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:53
 msgid ""
 "This massive blade was created centuries ago by long-forgotten elvish "
@@ -8242,7 +8275,7 @@ msgstr ""
 "Flamolangoj dancas surface kaj donas al blueca ŝtalo perfektan spegulantan "
 "surfacon."
 
-#. [object]
+#. [object]: id={ID}
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:54
 msgid "Only the leader of an army can wield this sword!"
 msgstr "Nur ĉefkomandanto rajtas preni ĉi glavon!"
@@ -8274,12 +8307,12 @@ msgstr "Ne"
 msgid "Do you want this unit to pick up the armor?"
 msgstr "Ĉu vi deziras, ke ĉi tiu trupo prenu kirason?"
 
-#. [object]
+#. [object]: id={ID}
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:166
 msgid "Void Armor"
 msgstr "Kiraso de vakeco"
 
-#. [object]
+#. [object]: id={ID}
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:168
 msgid ""
 "A beautiful chest plate crafted from shimmering black steel, the Void Armor "
@@ -8288,7 +8321,7 @@ msgstr ""
 "Kiraso de vakeco, kreita de brilanta malhela ŝtalo, estas preskaŭ nevenkebla "
 "per fizika armilo!"
 
-#. [object]
+#. [object]: id={ID}
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:169
 msgid "Only a powerful warrior may don this armor!"
 msgstr "Nur forta batalanto povas vesti ĉi kirason!"
@@ -8302,12 +8335,12 @@ msgstr ""
 "Penege vi levas kaj vestas pezan kirason. Sed portante ĝin, surprize "
 "komfortas. Vi altigis reziston kontraŭ ĉiuj fizikaj damaĝoj."
 
-#. [value]
+#. [value]: id=void_armor
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:193
 msgid "void armor"
 msgstr "Kiraso de nenieco"
 
-#. [value]
+#. [value]: id=void_armor
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:198
 #, fuzzy
 msgid ""
@@ -8323,12 +8356,12 @@ msgstr ""
 "bato: 60%\n"
 "fajro: +10%"
 
-#. [object]
+#. [object]: id=object_scepter
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:384
 msgid "Scepter of Fire"
 msgstr "Fajra sceptro"
 
-#. [object]
+#. [object]: id=object_scepter
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:387
 #, fuzzy
 msgid ""
@@ -8340,7 +8373,7 @@ msgstr ""
 "simbolo de reĝa gento de Vesnot. Ĝi donas al portanto potencon meti fajrajn "
 "kuglojn sur malamikoj!"
 
-#. [object]
+#. [object]: id=object_scepter
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:388
 msgid ""
 "This is the Scepter of Fire. Only a true successor to the throne can "

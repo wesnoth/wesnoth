@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-27 19:52+0100\n"
+"POT-Creation-Date: 2008-11-29 12:23+0100\n"
 "PO-Revision-Date: 2008-11-22 17:20+0200\n"
 "Last-Translator: Simo Sutela <qurnelius@netscape.net>\n"
 "Language-Team: Finnish\n"
@@ -53,8 +53,8 @@ msgstr "Näytä taistelu"
 msgid "Only Run Safe Python AIs"
 msgstr ""
 
-#. [time]
-#. [illuminated_time]
+#. [time]: id=underground
+#. [illuminated_time]: id=underground_illum
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:523
 #: data/core/macros/schedules.cfg:77 data/core/macros/schedules.cfg:84
 msgid "Underground"
@@ -67,13 +67,13 @@ msgstr "maan alla"
 msgid "poisoned"
 msgstr "myrkytetty"
 
-#. [berserk]
+#. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:702
 #: data/core/macros/abilities.cfg:553
 msgid "berserk"
 msgstr "hurmos"
 
-#. [berserk]
+#. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:704
 #: data/core/macros/abilities.cfg:555
 msgid ""
@@ -85,13 +85,13 @@ msgstr ""
 "Sekä puolustaessaan että hyökätessään hurmayksiköt jatkavat, kunnes "
 "jompikumpi osapuoli kuolee tai taistelu on jatkunut 30 kierrosta."
 
-#. [chance_to_hit]
+#. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:717
 #: data/core/macros/abilities.cfg:639
 msgid "magical"
 msgstr "maaginen"
 
-#. [chance_to_hit]
+#. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:719
 #: data/core/macros/abilities.cfg:641
 msgid ""
@@ -103,13 +103,13 @@ msgstr ""
 "Tällä hyökkäyksellä on aina 70% mahdollisuus osua riippumatta puolustavan "
 "yksikön puolustuskyvystä."
 
-#. [firststrike]
+#. [firststrike]: id=firststrike
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:731
 #: data/core/macros/abilities.cfg:688
 msgid "firststrike"
 msgstr "ensi-isku"
 
-#. [firststrike]
+#. [firststrike]: id=firststrike
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:733
 #: data/core/macros/abilities.cfg:690
 msgid ""
@@ -120,19 +120,19 @@ msgstr ""
 "Yksikkö iskee taistelussa aina ensin tällä hyökkäuksellä, myös "
 "puolustautuessaan."
 
-#. [heals]
+#. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:13
 #: data/core/macros/abilities.cfg:10
 msgid "heals +4"
 msgstr "hoivaa +4"
 
-#. [heals]
+#. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:14
 #: data/core/macros/abilities.cfg:11
 msgid "female^heals +4"
 msgstr "hoivaa +4"
 
-#. [heals]
+#. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:19
 #: data/core/macros/abilities.cfg:16
 #, fuzzy
@@ -153,19 +153,19 @@ msgstr ""
 "Hoivaaja ei voi parantaa yksikköä myrkytyksestä, sillä se onnistuu vain "
 "lääkitsijältä tai kylässä."
 
-#. [heals]
+#. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:42
 #: data/core/macros/abilities.cfg:30
 msgid "heals +8"
 msgstr "hoivaa +8"
 
-#. [heals]
+#. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:43
 #: data/core/macros/abilities.cfg:31
 msgid "female^heals +8"
 msgstr "hoivaa +8"
 
-#. [heals]
+#. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:48
 #: data/core/macros/abilities.cfg:36
 msgid ""
@@ -231,258 +231,258 @@ msgid "Campaign Design"
 msgstr "Kampanjasuunnittelu"
 
 #. [about]
-#: data/core/about.cfg:594
+#: data/core/about.cfg:602
 msgid "Multiplayer Maps and Balancing"
 msgstr "Moninpelikartat ja tasapainotus"
 
 #. [about]
-#: data/core/about.cfg:635
+#: data/core/about.cfg:643
 msgid "Packagers"
 msgstr "Pakkaajat"
 
 #. [about]
-#: data/core/about.cfg:701
+#: data/core/about.cfg:709
 msgid "Miscellaneous contributors"
 msgstr "Muut vaikuttajat"
 
 #. [about]
-#: data/core/about.cfg:855
+#: data/core/about.cfg:863
 msgid "Internationalization Managers"
 msgstr "Kansainvälistyksen hallinnoijat"
 
 #. [about]
-#: data/core/about.cfg:880
+#: data/core/about.cfg:888
 #, fuzzy
 msgid "English strings edition"
 msgstr "Brittienglanninkielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:887
+#: data/core/about.cfg:895
 msgid "Afrikaans Translation"
 msgstr "Afrikaansinkielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:903
+#: data/core/about.cfg:911
 msgid "Arabic Translation"
 msgstr "Arabiankielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:910
+#: data/core/about.cfg:918
 msgid "Basque Translation"
 msgstr "Baskinkielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:923
+#: data/core/about.cfg:931
 msgid "Bulgarian Translation"
 msgstr "Bulgariankielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:942
+#: data/core/about.cfg:950
 msgid "Catalan Translation"
 msgstr "Katalaaninkielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:980
+#: data/core/about.cfg:988
 msgid "Chinese Translation"
 msgstr "Kiinankielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:1014
+#: data/core/about.cfg:1022
 msgid "Chinese (Taiwan) Translation"
 msgstr "Taiwaninkiinankielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:1021
+#: data/core/about.cfg:1029
 msgid "Croatian Translation"
 msgstr "Kroatiankielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:1028
+#: data/core/about.cfg:1036
 msgid "Czech Translation"
 msgstr "Tšekinkielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:1085
+#: data/core/about.cfg:1093
 msgid "Danish Translation"
 msgstr "Tanskankielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:1116
+#: data/core/about.cfg:1124
 msgid "Dutch Translation"
 msgstr "Hollanninkielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:1169
+#: data/core/about.cfg:1177
 msgid "English (GB) Translation"
 msgstr "Brittienglanninkielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:1179
+#: data/core/about.cfg:1187
 msgid "Esperanto Translation"
 msgstr "Esperantonkielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:1198
+#: data/core/about.cfg:1206
 msgid "Estonian Translation"
 msgstr "Eestinkielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:1208
+#: data/core/about.cfg:1216
 msgid "Filipino Translation"
 msgstr "Filipinonkielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:1218
+#: data/core/about.cfg:1226
 msgid "Finnish Translation"
 msgstr "Suomenkielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:1258
+#: data/core/about.cfg:1266
 msgid "French Translation"
 msgstr "Ranskankielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:1381
+#: data/core/about.cfg:1389
 msgid "Friulian Translation"
 msgstr "Friulinkielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:1388
+#: data/core/about.cfg:1396
 msgid "Galician Translation"
 msgstr "Galegonkielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:1423
+#: data/core/about.cfg:1431
 msgid "German Translation"
 msgstr "Saksankielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:1471
+#: data/core/about.cfg:1479
 msgid "Greek Translation"
 msgstr "Kreikankielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:1502
+#: data/core/about.cfg:1510
 msgid "Hebrew Translation"
 msgstr "Hepreankielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:1512
+#: data/core/about.cfg:1520
 msgid "Hungarian Translation"
 msgstr "Unkarinkielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:1582
+#: data/core/about.cfg:1590
 msgid "Indonesian Translation"
 msgstr "Indonesiankielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:1589
+#: data/core/about.cfg:1597
 msgid "Italian Translation"
 msgstr "Italiankielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:1624
+#: data/core/about.cfg:1632
 msgid "Japanese Translation"
 msgstr "Japaninkielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:1650
+#: data/core/about.cfg:1658
 msgid "Korean Translation"
 msgstr "Koreankielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:1657
+#: data/core/about.cfg:1665
 msgid "Latin Translation"
 msgstr "Latinankielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:1664
+#: data/core/about.cfg:1672
 msgid "Latvian Translation"
 msgstr "Latviankielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:1671
+#: data/core/about.cfg:1679
 msgid "Lithuanian Translation"
 msgstr "Liettuankielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:1679
+#: data/core/about.cfg:1687
 msgid "Macedonian Translation"
 msgstr "Makedoniankielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:1686
+#: data/core/about.cfg:1694
 msgid "Norwegian Translation"
 msgstr "Norjankielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:1708
+#: data/core/about.cfg:1716
 msgid "Polish Translation"
 msgstr "Puolankielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:1757
+#: data/core/about.cfg:1765
 msgid "Portuguese Translation"
 msgstr "Portugalinkielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:1764
+#: data/core/about.cfg:1772
 msgid "Portuguese (Brazil) Translation"
 msgstr "Brasilianportugalinkielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:1799
+#: data/core/about.cfg:1807
 msgid "Romanian Translation"
 msgstr "Romaniankielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:1807
+#: data/core/about.cfg:1815
 msgid "Russian Translation"
 msgstr "Venäjänkielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:1843
+#: data/core/about.cfg:1851
 msgid "Serbian Translation"
 msgstr "Serbiankielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:1858
+#: data/core/about.cfg:1866
 msgid "Slovak Translation"
 msgstr "Slovakiankielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:1884
+#: data/core/about.cfg:1892
 msgid "Slovenian Translation"
 msgstr "Sloveniankielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:1894
+#: data/core/about.cfg:1902
 msgid "Spanish Translation"
 msgstr "Espanjankielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:1942
+#: data/core/about.cfg:1950
 msgid "Swedish Translation"
 msgstr "Ruotsinkielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:1971
+#: data/core/about.cfg:1979
 msgid "Turkish Translation"
 msgstr "Turkinkielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:1993
+#: data/core/about.cfg:2001
 msgid "Valencian (southern Catalan) Translation"
 msgstr "Valenciankatalaaninkielinen käännös"
 
 #. [about]
-#: data/core/about.cfg:2006
+#: data/core/about.cfg:2014
 msgid "RACV's Translation"
 msgstr "RACV:n käännös"
 
 #. [about]
-#: data/core/about.cfg:2013
+#: data/core/about.cfg:2021
 msgid "Bots"
 msgstr "Botit"
 
@@ -491,56 +491,56 @@ msgstr "Botit"
 msgid "DejaVuSans.ttf,sazanami-gothic.ttf,wqy-zenhei-gb2312.ttf"
 msgstr "DejaVuSans.ttf,sazanami-gothic.ttf,wqy-zenhei-gb2312.ttf"
 
-#. [section]
-#. [topic]
+#. [section]: id=introduction
+#. [topic]: id=..introduction
 #: data/core/help.cfg:21 data/core/help.cfg:80
 msgid "Introduction"
 msgstr "Esittely"
 
-#. [section]
-#. [topic]
+#. [section]: id=gameplay
+#. [topic]: id=..gameplay
 #: data/core/help.cfg:27 data/core/help.cfg:128
 msgid "Gameplay"
 msgstr "Pelaaminen"
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
-#. [section]
-#. [topic]
+#. [section]: id=traits_section
+#. [topic]: id=..traits_section
 #: data/core/help.cfg:33 data/core/help.cfg:348 src/menu_events.cpp:991
 msgid "Traits"
 msgstr "Ominaisuudet"
 
-#. [section]
-#. [topic]
+#. [section]: id=units
+#. [topic]: id=..units
 #: data/core/help.cfg:42 data/core/help.cfg:86
 msgid "Units"
 msgstr "Yksiköt"
 
-#. [section]
-#. [topic]
+#. [section]: id=abilities_section
+#. [topic]: id=..abilities_section
 #: data/core/help.cfg:51 data/core/help.cfg:92
 msgid "Abilities"
 msgstr "Erikoistaidot"
 
-#. [section]
-#. [topic]
+#. [section]: id=weapon_specials
+#. [topic]: id=..weapon_specials
 #: data/core/help.cfg:59 data/core/help.cfg:101
 msgid "Weapon Specials"
 msgstr "Hyökkäystaidot"
 
-#. [section]
-#. [topic]
+#. [section]: id=terrains
+#. [topic]: id=..terrains
 #: data/core/help.cfg:67 data/core/help.cfg:440
 msgid "Terrains"
 msgstr "Maastot"
 
-#. [section]
-#. [topic]
+#. [section]: id=commands
+#. [topic]: id=..commands
 #: data/core/help.cfg:74 data/core/help.cfg:730
 msgid "Commands"
 msgstr "Komennot"
 
-#. [topic]
+#. [topic]: id=..abilities_section
 #: data/core/help.cfg:95
 msgid ""
 "Certain units have abilities that either directly affect other units, or "
@@ -553,7 +553,7 @@ msgstr ""
 "Nämä taidot listataan tämän otsikon alle sitä mukaa, kun kohtaat niitä.\n"
 "\n"
 
-#. [topic]
+#. [topic]: id=..weapon_specials
 #: data/core/help.cfg:104
 msgid ""
 "Some weapons have special features that increase the effectiveness of "
@@ -564,12 +564,12 @@ msgstr ""
 "tehokkuutta hyökätessä.\n"
 "\n"
 
-#. [topic]
+#. [topic]: id=.unknown_unit
 #: data/core/help.cfg:111
 msgid "Unknown Unit"
 msgstr "Tuntematon yksikkö"
 
-#. [topic]
+#. [topic]: id=.unknown_unit
 #: data/core/help.cfg:114
 msgid ""
 "\n"
@@ -582,12 +582,12 @@ msgstr ""
 "Tämä yksikkö on tuntematon tällä hetkellä. Sinun täytyy löytää se pelissä "
 "ennen kuin voit nähdä sen kuvauksen."
 
-#. [topic]
+#. [topic]: id=introduction_topic
 #: data/core/help.cfg:119
 msgid "Overview"
 msgstr "Yleiskuva"
 
-#. [topic]
+#. [topic]: id=introduction_topic
 #: data/core/help.cfg:122
 msgid ""
 "\n"
@@ -608,12 +608,12 @@ msgstr ""
 "yksinkertainen. Näistä yksinkertaisista säännöistä voi luoda monenlaisia "
 "strategioita, joten peli on helppo oppia, mutta vaikea hallita."
 
-#. [topic]
+#. [topic]: id=fundamentals
 #: data/core/help.cfg:134
 msgid "Fundamentals of Gameplay"
 msgstr "Pelaamisen perusteet"
 
-#. [topic]
+#. [topic]: id=fundamentals
 #: data/core/help.cfg:135
 msgid ""
 "These pages outline all you need to know to play Battle for Wesnoth. They "
@@ -628,7 +628,7 @@ msgstr ""
 "pelistä. Halutessasi tarkempaa tietoa erityisistä tilanteista ja "
 "poikkeuksista, seuraa sivuilla olevia linkkejä."
 
-#. [topic]
+#. [topic]: id=fundamentals
 #: data/core/help.cfg:137
 msgid ""
 "\n"
@@ -650,7 +650,7 @@ msgstr ""
 "Wesnothista voi olla varsin haastava, haluat ehkä aloittaa helpoimmalla "
 "vaikeusasteella."
 
-#. [topic]
+#. [topic]: id=fundamentals
 #: data/core/help.cfg:140
 #, fuzzy
 msgid ""
@@ -665,12 +665,12 @@ msgstr ""
 "hyödyllinen kohdatessasi uusia <ref>dst=abilities text=erikoistaitoja</ref> "
 "ensimmäistä kertaa."
 
-#. [topic]
+#. [topic]: id=about_game
 #: data/core/help.cfg:145
 msgid "About the Game"
 msgstr "Yleistietoja pelistä"
 
-#. [topic]
+#. [topic]: id=about_game
 #: data/core/help.cfg:146
 msgid ""
 "The game takes place over a series of battles, called scenarios. Each "
@@ -688,7 +688,7 @@ msgstr ""
 "koneesi on kytketty tietoverkkoon tai internetiin, voit pelata muiden samaan "
 "verkkoon kytkeytyneiden kanssa."
 
-#. [topic]
+#. [topic]: id=about_game
 #: data/core/help.cfg:148
 msgid ""
 "\n"
@@ -705,12 +705,12 @@ msgstr ""
 "parhaat yksikkösi hengissä, jotta voit käyttää niitä myös myöhemmissä "
 "taisteluissa."
 
-#. [topic]
+#. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:154
 msgid "Victory and Defeat"
 msgstr "Voitto ja häviö"
 
-#. [topic]
+#. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:155
 msgid ""
 "Pay careful attention to the Objectives pop-up box at the beginning of each "
@@ -726,7 +726,7 @@ msgstr ""
 "johtajasi tiettyyn paikkaan, jonkun pelastaminen, arvoituksen ratkaiseminen, "
 "tai paikan puolustaminen, kunnes tietty määrä vuoroja on kulunut."
 
-#. [topic]
+#. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:157
 msgid ""
 "\n"
@@ -744,12 +744,12 @@ msgstr ""
 "ennen kuin painat lopetusnappia päästääksesi takaisin palvelimen aulaan/"
 "valikkoon."
 
-#. [topic]
+#. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:164
 msgid "Recruiting and Recalling"
 msgstr "Värväys ja kutsuminen"
 
-#. [topic]
+#. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:165
 #, fuzzy
 msgid ""
@@ -774,7 +774,7 @@ msgstr ""
 "joka listaa mahdolliset värvättävät yksiköt ja niiden hinnat. Klikkaa "
 "yksikköä nähdäksesi sen tiedot, ja paina värväysnappia värvätäksesi sen."
 
-#. [topic]
+#. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:167
 msgid ""
 "\n"
@@ -792,7 +792,7 @@ msgstr ""
 "heksoja linnassasi, etkä voi käyttää värväykseen enempää kultaa, kuin "
 "sinulla on."
 
-#. [topic]
+#. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:169
 #, fuzzy
 msgid ""
@@ -806,7 +806,7 @@ msgstr ""
 "Värvätyt yksiköt saavat kaksi satunnaista <ref>dst=..traits_section "
 "text=ominaisuutta</ref>, jotka vaikuttavat niiden kykyihin."
 
-#. [topic]
+#. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:171
 msgid ""
 "\n"
@@ -822,7 +822,7 @@ msgstr ""
 "maksaa aina 20 kultapalaa ja saat nähtäväksesi listan edellisten "
 "taisteluiden selviytyjistä."
 
-#. [topic]
+#. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:173
 #, fuzzy
 msgid ""
@@ -838,12 +838,12 @@ msgstr ""
 "ylläpito maksaa. Katso kohta <ref>dst=income_and_upkeep text='Tulot ja "
 "menot'</ref> saadaksesi lisätietoja."
 
-#. [topic]
+#. [topic]: id=orbs
 #: data/core/help.cfg:180
 msgid "Orbs"
 msgstr "Pallot"
 
-#. [topic]
+#. [topic]: id=orbs
 #: data/core/help.cfg:181
 msgid ""
 "On top of the energy bar shown next to each unit of yours is an orb. For "
@@ -852,39 +852,39 @@ msgstr ""
 "Jokaisen yksikön vieressä näytettävän energiapylvään huipulla näytetään "
 "pallo. Sinun yksiköilläsi pallo on..."
 
-#. [topic]
+#. [topic]: id=orbs
 #: data/core/help.cfg:182
 msgid "green if it hasn't moved this turn,"
 msgstr "vihreä, jos yksikkö ei ole liikkunut tällä vuorolla,"
 
-#. [topic]
+#. [topic]: id=orbs
 #: data/core/help.cfg:183
 msgid "yellow if it has moved, but could still move further or attack, or"
 msgstr ""
 "keltainen, jos se on liikkunut, mutta voisi edelleen liikkua tai hyökätä"
 
-#. [topic]
+#. [topic]: id=orbs
 #: data/core/help.cfg:184
 msgid "red if it has used all its movement this turn."
 msgstr ""
 "tai punainen, jos yksikkö on jo tehnyt kaiken mahdollisen tällä vuorolla."
 
-#. [topic]
+#. [topic]: id=orbs
 #: data/core/help.cfg:185
 msgid "The orb is blue if the unit is an ally you do not control."
 msgstr "Pallo on sininen, jos yksikkö on liittolaisesi."
 
-#. [topic]
+#. [topic]: id=orbs
 #: data/core/help.cfg:186
 msgid "Enemy units have no orb on top of their energy bar."
 msgstr "Vihollisen yksiköillä ei ole palloa energiapylväänsä huipulla."
 
-#. [topic]
+#. [topic]: id=hitpoints
 #: data/core/help.cfg:193
 msgid "Hitpoints and Experience"
 msgstr "Elämäpisteet ja kokemuspisteet"
 
-#. [topic]
+#. [topic]: id=hitpoints
 #: data/core/help.cfg:194
 msgid ""
 "Each unit has a certain number of hitpoints (HP). If the hitpoints of a unit "
@@ -897,7 +897,7 @@ msgstr ""
 "on myös tietty määrä kokemuspisteitä (KP). Vasta värvätyllä yksiköllä ei ole "
 "kokemusta, mutta se saa kokemusta otellessaan vastustajien kanssa."
 
-#. [topic]
+#. [topic]: id=hitpoints
 #: data/core/help.cfg:198
 msgid ""
 "The hitpoints and experience points are both indicated in the status pane "
@@ -908,7 +908,7 @@ msgstr ""
 "kahta lukua (pisteiden nykyinen arvo ja enimmäisarvo, jonka yksikkö voi "
 "saavuttaa)."
 
-#. [topic]
+#. [topic]: id=hitpoints
 #: data/core/help.cfg:199
 #, fuzzy
 msgid ""
@@ -922,12 +922,12 @@ msgstr ""
 "1 kokemuspiste, saa sinisen kokemuspylvään, joka muuttuu valkoiseksi, kun "
 "yksikkö on <ref>dst=experience_and_advancement text=ylenemässä</ref>."
 
-#. [topic]
+#. [topic]: id=movement
 #: data/core/help.cfg:206
 msgid "Movement"
 msgstr "Liikkuminen"
 
-#. [topic]
+#. [topic]: id=movement
 #: data/core/help.cfg:207
 msgid ""
 "Movement in Battle for Wesnoth is simple. Click on the unit you wish to move "
@@ -957,7 +957,7 @@ msgstr ""
 "loputtua kylään, jota pelaaja ei omista, menettää yksikkö kaiken "
 "liikkumisensa, mutta se voi silti vielä hyökätä."
 
-#. [topic]
+#. [topic]: id=movement
 #: data/core/help.cfg:209
 msgid ""
 "\n"
@@ -985,7 +985,7 @@ msgstr ""
 "valitsemalla ”Yksikön kuvaus” ja katsomalla kohtaa <italic>text='Maaston "
 "vaikutus'</italic>."
 
-#. [topic]
+#. [topic]: id=movement
 #: data/core/help.cfg:211
 #, fuzzy
 msgid ""
@@ -1007,7 +1007,7 @@ msgstr ""
 "osa Wesnothia, sillä vain <ref>dst=ability_skirmisher text=kahakoitsijat</"
 "ref> voivat jättää hallitut alueet huomiotta."
 
-#. [topic]
+#. [topic]: id=movement
 #: data/core/help.cfg:213
 msgid ""
 "\n"
@@ -1022,12 +1022,12 @@ msgstr ""
 "Ctrl-b tai Cmd-b näyttää, mihin vihollinen voisi liikkua, jos sinun joukkosi "
 "eivät olisi estämässä niiden etenemistä."
 
-#. [topic]
+#. [topic]: id=shroud_and_fog
 #: data/core/help.cfg:220
 msgid "Shroud and Fog of War"
 msgstr "Huntu ja sumu"
 
-#. [topic]
+#. [topic]: id=shroud_and_fog
 #: data/core/help.cfg:223
 msgid ""
 "In some scenarios, parts of the map will be hidden from you. There are two "
@@ -1068,12 +1068,12 @@ msgstr ""
 "tapahtunut tai vuorosi päättyy. Näin voit käyttää peruutustoimintoa "
 "normaalisti."
 
-#. [topic]
+#. [topic]: id=combat
 #: data/core/help.cfg:230
 msgid "Combat"
 msgstr "Taistelu"
 
-#. [topic]
+#. [topic]: id=combat
 #: data/core/help.cfg:231
 msgid ""
 "Combat in Battle for Wesnoth always takes place between units in adjacent "
@@ -1097,7 +1097,7 @@ msgstr ""
 "käytetään esimerkiksi miekkoja, kirveitä tai hampaita, ja etätaistelu, jossa "
 "yleensä käytetään esimerkiksi jousia, keihäitä tai tulipalloja."
 
-#. [topic]
+#. [topic]: id=combat
 #: data/core/help.cfg:233
 msgid ""
 "\n"
@@ -1108,7 +1108,7 @@ msgstr ""
 "\n"
 "<header>text='Hyökkäysten järjestys ja lukumäärä'</header>"
 
-#. [topic]
+#. [topic]: id=combat
 #: data/core/help.cfg:235
 msgid ""
 "\n"
@@ -1130,7 +1130,7 @@ msgstr ""
 "vahinkoa. Örkki, jolla on 9-2 -hyökkäys, tekee vain kaksi iskua, joista "
 "kumpikin voi tehdä 9 vahinkoa."
 
-#. [topic]
+#. [topic]: id=combat
 #: data/core/help.cfg:237
 msgid ""
 "\n"
@@ -1141,7 +1141,7 @@ msgstr ""
 "\n"
 "<header>text='Mahdollisuus osua'</header>"
 
-#. [topic]
+#. [topic]: id=combat
 #: data/core/help.cfg:239
 msgid ""
 "\n"
@@ -1165,7 +1165,7 @@ msgstr ""
 "mahdollisuus osua hyökkääjään riippuu puolestaan siitä maastosta, missä "
 "hyökkääjä on."
 
-#. [topic]
+#. [topic]: id=combat
 #: data/core/help.cfg:241
 #, fuzzy
 msgid ""
@@ -1185,7 +1185,7 @@ msgstr ""
 "osua. Tarkk’ampujilla on hyökätessä vähintään 60% mahdollisuus osua, "
 "riippumatta puolustautujan maastosta."
 
-#. [topic]
+#. [topic]: id=combat
 #: data/core/help.cfg:243
 msgid ""
 "\n"
@@ -1196,7 +1196,7 @@ msgstr ""
 "\n"
 "<header>text=Vahinko</header>"
 
-#. [topic]
+#. [topic]: id=combat
 #: data/core/help.cfg:245
 #, fuzzy
 msgid ""
@@ -1220,7 +1220,7 @@ msgstr ""
 "vaikuttavat, valitse <italic>text='Vahinkolaskelmat'</italic> "
 "hyökkäysvalikossa."
 
-#. [topic]
+#. [topic]: id=combat
 #: data/core/help.cfg:247
 #, fuzzy
 msgid ""
@@ -1239,12 +1239,12 @@ msgstr ""
 "sekä hyökkääjän että puolustajan tekemän vahingon, kun rynnäköivä yksikkö "
 "hyökkää."
 
-#. [topic]
+#. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:253
 msgid "Damage Types and Resistance"
 msgstr "Vahinkotyypit ja vastustukset"
 
-#. [topic]
+#. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:254
 msgid ""
 "In Wesnoth, there are three types of damage usually associated with physical "
@@ -1259,7 +1259,7 @@ msgstr ""
 "yksiköillä voi olla vastustuksia, jotka muuttavat vahinkoa, jonka ne "
 "kärsivät tietyistä vahinkotyypeistä."
 
-#. [topic]
+#. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:256
 msgid ""
 "\n"
@@ -1278,7 +1278,7 @@ msgstr ""
 "vastustus vahinkotyyppiä vastaan se kärsii 100% enemmän vahinkoa sen "
 "vahinkotyypin hyökkäyksistä."
 
-#. [topic]
+#. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:258
 msgid ""
 "\n"
@@ -1293,7 +1293,7 @@ msgstr ""
 "heikkoja murjovia iskuja ja tulta vastaan ja erittäin heikkoja salatiedettä "
 "vastaan."
 
-#. [topic]
+#. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:260
 msgid ""
 "\n"
@@ -1307,12 +1307,12 @@ msgstr ""
 "Jos isku osuu, se tekee aina vähintään 1 pisteen vahinkoa. Näin käy "
 "silloinkin, jos puolustajalla on 100% vastustus kyseiselle vahinkolajille."
 
-#. [topic]
+#. [topic]: id=time_of_day
 #: data/core/help.cfg:266
 msgid "Time of Day"
 msgstr "Vuorokaudenaika"
 
-#. [topic]
+#. [topic]: id=time_of_day
 #: data/core/help.cfg:270
 msgid ""
 "The time of day affects the damage of certain units as follows:\n"
@@ -1326,7 +1326,7 @@ msgstr ""
 "Kaoottiset yksiköt tekevät +25% vahinkoa yöllä ja -25% päivällä.\n"
 "Neutraaleihin yksiköihin vuorokausirytmi ei vaikuta."
 
-#. [topic]
+#. [topic]: id=time_of_day
 #: data/core/help.cfg:273
 msgid ""
 "\n"
@@ -1341,43 +1341,43 @@ msgstr ""
 "tilannepaneelista. Normaalilla vuorokausisyklillä aamupäivä ja iltapäivä "
 "ovat päivää, iltayö ja aamuyö yötä:\n"
 
-#. [time]
-#. [topic]
+#. [time]: id=dawn
+#. [topic]: id=time_of_day
 #: data/core/help.cfg:273 data/core/macros/schedules.cfg:7
 msgid "Dawn"
 msgstr "aamu"
 
-#. [time]
-#. [topic]
+#. [time]: id=morning
+#. [topic]: id=time_of_day
 #: data/core/help.cfg:274 data/core/macros/schedules.cfg:19
 msgid "Morning"
 msgstr "aamupäivä"
 
-#. [time]
-#. [topic]
+#. [time]: id=afternoon
+#. [topic]: id=time_of_day
 #: data/core/help.cfg:275 data/core/macros/schedules.cfg:29
 msgid "Afternoon"
 msgstr "iltapäivä"
 
-#. [time]
-#. [topic]
+#. [time]: id=dusk
+#. [topic]: id=time_of_day
 #: data/core/help.cfg:276 data/core/macros/schedules.cfg:39
 msgid "Dusk"
 msgstr "ilta"
 
-#. [time]
-#. [topic]
+#. [time]: id=first_watch
+#. [topic]: id=time_of_day
 #: data/core/help.cfg:277 data/core/macros/schedules.cfg:51
 msgid "First Watch"
 msgstr "iltayö"
 
-#. [time]
-#. [topic]
+#. [time]: id=second_watch
+#. [topic]: id=time_of_day
 #: data/core/help.cfg:278 data/core/macros/schedules.cfg:64
 msgid "Second Watch"
 msgstr "aamuyö"
 
-#. [topic]
+#. [topic]: id=time_of_day
 #: data/core/help.cfg:280
 msgid ""
 "Keep in mind that some scenarios take place underground, where it is "
@@ -1385,12 +1385,12 @@ msgid ""
 msgstr ""
 "Muista, että jotkin taistelut käydään maan alla, missä on jatkuvasti yö!"
 
-#. [topic]
+#. [topic]: id=experience_and_advancement
 #: data/core/help.cfg:287
 msgid "Experience and Advancement"
 msgstr "Kokemus ja yleneminen"
 
-#. [topic]
+#. [topic]: id=experience_and_advancement
 #: data/core/help.cfg:288
 msgid ""
 "If both units survive a combat, they gain a number of experience points "
@@ -1403,7 +1403,7 @@ msgstr ""
 "kokemuspisteitä tulee paljon enemmän: 4 tason 0 yksiköstä, 8 tasosta 1, 16 "
 "tasosta 2, 24 tasosta 3 ja niin edelleen."
 
-#. [topic]
+#. [topic]: id=experience_and_advancement
 #: data/core/help.cfg:290
 msgid ""
 "\n"
@@ -1420,7 +1420,7 @@ msgstr ""
 "nousee välittömästi seuraavalle tasolle ja paranee samalla kokonaan. "
 "Joissain tapauksissa sinä saat valita kehityspolun vaihtoehdoista."
 
-#. [topic]
+#. [topic]: id=experience_and_advancement
 #: data/core/help.cfg:292
 #, fuzzy
 msgid ""
@@ -1452,12 +1452,12 @@ msgstr ""
 "joten yleensä on kannattavampaa yrittää saada alempitasoisia yksiköitä "
 "ylenemään."
 
-#. [topic]
+#. [topic]: id=healing
 #: data/core/help.cfg:299
 msgid "Healing"
 msgstr "Parantaminen"
 
-#. [topic]
+#. [topic]: id=healing
 #: data/core/help.cfg:300
 #, fuzzy
 msgid ""
@@ -1474,7 +1474,7 @@ msgstr ""
 "yksiköitäsi. Kaikki näistä toimivat vuoron alussa, ennen kuin liikutat "
 "joukkojasi."
 
-#. [topic]
+#. [topic]: id=healing
 #: data/core/help.cfg:302
 #, fuzzy
 msgid ""
@@ -1488,7 +1488,7 @@ msgstr ""
 "Lepääminen: Yksikkö, joka ei liiku, hyökkää, eikä joudu hyökkäyksen "
 "kohteeksi, paranee 2 elämäpisteen verran seuraavalla vuorollaan."
 
-#. [topic]
+#. [topic]: id=healing
 #: data/core/help.cfg:303
 msgid ""
 "\n"
@@ -1497,7 +1497,7 @@ msgstr ""
 "\n"
 "Kylät: Yksikkö, joka aloittaa vuoronsa kylässä, paranee 8 elämäpisteellä."
 
-#. [topic]
+#. [topic]: id=healing
 #: data/core/help.cfg:304
 #, fuzzy
 msgid ""
@@ -1509,7 +1509,7 @@ msgstr ""
 "<ref>dst=ability_regenerates text=Uusiutuminen</ref>: Tietyt yksiköt (kuten "
 "peikot) paranevat automaattisesti 8 elämäpistettä joka vuoro."
 
-#. [topic]
+#. [topic]: id=healing
 #: data/core/help.cfg:305
 #, fuzzy
 msgid ""
@@ -1524,7 +1524,7 @@ msgstr ""
 "text=Hoivaa</ref>, voivat hoivata viereisiään ystävällisiä yksiköitä yleensä "
 "4 tai 8 EP per vuoro, tai estää myrkyn vaikutuksen."
 
-#. [topic]
+#. [topic]: id=healing
 #: data/core/help.cfg:306
 #, fuzzy
 msgid ""
@@ -1539,7 +1539,7 @@ msgstr ""
 "yksikön myrkytystilan (hoivaamisen sijaan, jos yksiköllä on myös kyseinen "
 "erikoistaito)."
 
-#. [topic]
+#. [topic]: id=healing
 #: data/core/help.cfg:308
 msgid ""
 "\n"
@@ -1555,12 +1555,12 @@ msgstr ""
 "vaan käytetään parasta vaihtoehtoa. Lisäksi yksiköt paranevat täysin "
 "taisteluiden välillä."
 
-#. [topic]
+#. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:315
 msgid "Income and Upkeep"
 msgstr "Tulot ja menot"
 
-#. [topic]
+#. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:316
 msgid ""
 "In Wesnoth, it is not enough simply to recruit units and fight. You must "
@@ -1573,7 +1573,7 @@ msgstr ""
 "viedä ylimääräisen kullan taistelusta toiseen). Olennaisia asioita on kaksi: "
 "tulot ja ylläpito."
 
-#. [topic]
+#. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:318
 msgid ""
 "\n"
@@ -1591,7 +1591,7 @@ msgstr ""
 "Ylläpitokustannuksesi vähennetään tuloistasi sen mukaisesti, mitä alla "
 "kerrotaan."
 
-#. [topic]
+#. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:320
 msgid ""
 "\n"
@@ -1612,7 +1612,7 @@ msgstr ""
 "sinulla siis on kaksitoista tason yksi yksikköä ja kymmenen kylää, joudut "
 "maksamaan kaksi kultaa vuorossa ylläpitoa."
 
-#. [topic]
+#. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:322
 msgid ""
 "\n"
@@ -1626,7 +1626,7 @@ msgstr ""
 "Ylläpitokustannukset vähennetään tuloistasi. Tällöin 12 tason yksiköiden ja "
 "10 kylän tapauksessa tulosi olisivat lopulta 10 kultapalaa vuorossa."
 
-#. [topic]
+#. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:323
 msgid ""
 "\n"
@@ -1644,12 +1644,12 @@ msgstr ""
 "taistelun aikana (kuten hevosmies ”Valtaistuimen perillisen” toisessa "
 "taistelussa), ovat pääsääntöisesti uskollisia."
 
-#. [topic]
+#. [topic]: id=wrap_up
 #: data/core/help.cfg:329
 msgid "Wrap Up"
 msgstr "Yhteenveto"
 
-#. [topic]
+#. [topic]: id=wrap_up
 #: data/core/help.cfg:330
 #, fuzzy
 msgid ""
@@ -1665,17 +1665,17 @@ msgstr ""
 "kaiken, mitä tarvitset pelataksesi Valtaistuimen perillinen -kampanjaa. Pidä "
 "hauskaa, ja onnea!"
 
-#. [topic]
+#. [topic]: id=about
 #: data/core/help.cfg:335
 msgid "ingame_help_item^Contributors"
 msgstr "Vaikuttajat"
 
-#. [topic]
+#. [topic]: id=license
 #: data/core/help.cfg:341
 msgid "License"
 msgstr "Lisenssi"
 
-#. [topic]
+#. [topic]: id=..traits_section
 #: data/core/help.cfg:350
 msgid ""
 "Most units have two traits. However, Undead units are assigned the single "
@@ -1688,7 +1688,7 @@ msgstr ""
 "joilla ei ole erityisiä ominaisuuksia. Ominaisuudet muuttavat yksikön kykyjä "
 "hiukan. Yleensä ne jaetaan yksiköille värvättäessä sattumanvaraisesti."
 
-#. [topic]
+#. [topic]: id=..traits_section
 #: data/core/help.cfg:352
 #, fuzzy
 msgid ""
@@ -1706,7 +1706,7 @@ msgstr ""
 "text=nopea</ref>, <ref>dst=traits_resilient text=kestävä</ref>, ja "
 "<ref>dst=traits_strong text=vahva</ref>."
 
-#. [topic]
+#. [topic]: id=..traits_section
 #: data/core/help.cfg:356
 #, fuzzy
 msgid ""
@@ -1724,19 +1724,19 @@ msgstr ""
 "<ref>dst=traits_dextrous text=taitava</ref>.\n"
 "\n"
 
-#. [topic]
+#. [topic]: id=traits_intelligent
 #: data/core/help.cfg:362
 msgid "Intelligent"
 msgstr "älykäs"
 
-#. [topic]
+#. [topic]: id=traits_intelligent
 #: data/core/help.cfg:363
 msgid "Intelligent units require 20% less experience than usual to advance."
 msgstr ""
 "Älykkäät yksiköt tarvitsevat yletäkseen 20% vähemmän kokemuspisteitä kuin "
 "muut."
 
-#. [topic]
+#. [topic]: id=traits_intelligent
 #: data/core/help.cfg:365
 msgid ""
 "\n"
@@ -1756,19 +1756,19 @@ msgstr ""
 "korkeimman tasoisia yksiköitä, voit haluta mieluummin kutsua palvelukseen "
 "yksiköitä, joilla on hyödyllisempiä ominaisuuksia."
 
-#. [topic]
+#. [topic]: id=traits_quick
 #: data/core/help.cfg:370
 msgid "Quick"
 msgstr "nopea"
 
-#. [topic]
+#. [topic]: id=traits_quick
 #: data/core/help.cfg:371
 msgid "Quick units have 1 extra movement point, but 5% less HP than usual."
 msgstr ""
 "Nopeilla yksiköillä on 1 liikepiste enemmän, mutta 5% vähemmän elämäpisteitä "
 "kuin muilla."
 
-#. [topic]
+#. [topic]: id=traits_quick
 #: data/core/help.cfg:373
 msgid ""
 "\n"
@@ -1789,19 +1789,19 @@ msgstr ""
 "kestäviä kuin muut yksiköt, joten ne ovat huonompia puolustamaan kiisteltyjä "
 "asemia."
 
-#. [topic]
+#. [topic]: id=traits_resilient
 #: data/core/help.cfg:378
 msgid "Resilient"
 msgstr "kestävä"
 
-#. [topic]
+#. [topic]: id=traits_resilient
 #: data/core/help.cfg:379
 msgid "Resilient units have 4 HP plus 1 HP per level more than usual."
 msgstr ""
 "Kestävillä yksiköillä on neljä ylimääräistä elämäpistettä ja 1 EP tasoa "
 "kohti."
 
-#. [topic]
+#. [topic]: id=traits_resilient
 #: data/core/help.cfg:381
 msgid ""
 "\n"
@@ -1820,12 +1820,12 @@ msgstr ""
 "hyvä puolustus tai korkeat vastustukset. Kestävät yksiköt ovat erityisen "
 "hyviä tärkeiden asemien pitämisessä."
 
-#. [topic]
+#. [topic]: id=traits_strong
 #: data/core/help.cfg:386
 msgid "Strong"
 msgstr "vahva"
 
-#. [topic]
+#. [topic]: id=traits_strong
 #: data/core/help.cfg:387
 msgid ""
 "Strong units do 1 more damage for every successful strike in melee combat, "
@@ -1834,7 +1834,7 @@ msgstr ""
 "Vahvat yksiköt tekevät 1 vahingon enemmän jokaisella osumalla "
 "lähitaistelussa, ja niillä on 1 EP enemmän kuin muilla."
 
-#. [topic]
+#. [topic]: id=traits_strong
 #: data/core/help.cfg:389
 msgid ""
 "\n"
@@ -1852,22 +1852,22 @@ msgstr ""
 "tarvitaan vain pieni määrä lisävahinkoa muuttamaan vakava haava "
 "kuolettavaksi."
 
-#. [topic]
+#. [topic]: id=traits_fearless
 #: data/core/help.cfg:394
 msgid "Fearless"
 msgstr "peloton"
 
-#. [topic]
+#. [topic]: id=traits_fearless
 #: data/core/help.cfg:395
 msgid "Aversion to light and dark holds no sway over these brave individuals."
 msgstr "Valon ja pimeän pelko ei tartu kiinni näihin urheisiin yksilöihin."
 
-#. [topic]
+#. [topic]: id=traits_loyal
 #: data/core/help.cfg:400
 msgid "Loyal"
 msgstr "uskollinen"
 
-#. [topic]
+#. [topic]: id=traits_loyal
 #: data/core/help.cfg:401
 msgid ""
 "Loyal units don't incur upkeep. Most units incur an upkeep cost at the end "
@@ -1877,7 +1877,7 @@ msgstr ""
 "Uskolliset yksiköt eivät vaadi ylläpitoa. Useimmista yksiköistä joutuu "
 "maksamaan vuoron lopussa ylläpitoa, joka on sama kuin yksikön taso."
 
-#. [topic]
+#. [topic]: id=traits_loyal
 #: data/core/help.cfg:403
 msgid ""
 "\n"
@@ -1898,12 +1898,12 @@ msgstr ""
 "eivät milloinkaan saa tätä kykyä, joten uskollisia yksiköitä ei välttämättä "
 "kannata vapauttaa palveluksesta tai tapattaa turhaan."
 
-#. [topic]
+#. [topic]: id=traits_undead
 #: data/core/help.cfg:408
 msgid "trait^Undead"
 msgstr "epäkuollut"
 
-#. [topic]
+#. [topic]: id=traits_undead
 #: data/core/help.cfg:409
 msgid ""
 "Undead units are immune to poison, also drain and plague doesn't work on "
@@ -1912,7 +1912,7 @@ msgstr ""
 "Epäkuolleet yksiköt ovat immuuneja myrkylle. Myös elämänimu ja rutto ovat "
 "tehottomia niitä vastaan."
 
-#. [topic]
+#. [topic]: id=traits_undead
 #: data/core/help.cfg:411
 msgid ""
 "\n"
@@ -1929,12 +1929,12 @@ msgstr ""
 "ei ole vaikutusta niihin. Tämä voi tehdä niistä erittäin hyödyllisiä, kun "
 "vihollisesi käyttävät myrkkyä hyökkäyksissään."
 
-#. [topic]
+#. [topic]: id=traits_mechanical
 #: data/core/help.cfg:416
 msgid "trait^Mechanical"
 msgstr "mekaaninen"
 
-#. [topic]
+#. [topic]: id=traits_mechanical
 #: data/core/help.cfg:417
 msgid ""
 "Mechanical units are immune to poison, also drain and plague doesn't work on "
@@ -1943,7 +1943,7 @@ msgstr ""
 "Mekaaniset yksiköt ovat immuuneja myrkylle. Myös elämänimu ja rutto ovat "
 "tehottomia niitä vastaan."
 
-#. [topic]
+#. [topic]: id=traits_mechanical
 #: data/core/help.cfg:419
 msgid ""
 "\n"
@@ -1958,19 +1958,19 @@ msgstr ""
 "Koska mekaaniset yksiköt eivät oikeasti elä, elämänimu, myrkky ja rutto "
 "eivät vaikuta niihin."
 
-#. [topic]
+#. [topic]: id=traits_dextrous
 #: data/core/help.cfg:424
 msgid "Dextrous"
 msgstr "taitava"
 
-#. [topic]
+#. [topic]: id=traits_dextrous
 #: data/core/help.cfg:425
 msgid ""
 "Dextrous units do 1 more damage for every successful strike in ranged combat."
 msgstr ""
 "Taitavat yksiköt tekevät 1 vahingon enemmän jokaisella kaukotaisteluosumalla."
 
-#. [topic]
+#. [topic]: id=traits_dextrous
 #: data/core/help.cfg:427
 msgid ""
 "\n"
@@ -1987,12 +1987,12 @@ msgstr ""
 "kanssa. Jotkut ovat kuitenkin luonnostaan vertaisiaan parempia. Nämä haltiat "
 "aiheuttavat yhden pisteen enemmän vahinkoa kullakin nuolella, joka osuu."
 
-#. [topic]
+#. [topic]: id=traits_healthy
 #: data/core/help.cfg:432
 msgid "Healthy"
 msgstr "elinvoimainen"
 
-#. [topic]
+#. [topic]: id=traits_healthy
 #: data/core/help.cfg:433
 msgid ""
 "Renowned for their vitality, some dwarves are sturdier than others and can "
@@ -2001,7 +2001,7 @@ msgstr ""
 "Kääpiöt ovat tunnettuja elinvoimaisuudestaan. Jotkut heistä ovat muita "
 "sitkeämpiä ja voivat levätä jopa matkatessaan."
 
-#. [topic]
+#. [topic]: id=traits_healthy
 #: data/core/help.cfg:435
 #, fuzzy
 msgid ""
@@ -2016,7 +2016,7 @@ msgstr ""
 "lepääminen parantaa kaksi ylimääräistä elämäpistettä joka vuoro taistelun "
 "ulkopuolella."
 
-#. [topic]
+#. [topic]: id=..terrains
 #: data/core/help.cfg:443
 msgid ""
 "Game maps feature a variety of terrains that affect both unit movement and a "
@@ -2027,12 +2027,12 @@ msgstr ""
 "liikkuvuuteen, sekä yksikön puolustusmahdollisuuksiin taistelussa.\n"
 "\n"
 
-#. [topic]
+#. [topic]: id=terrain_flat
 #: data/core/help.cfg:450
 msgid "Flat"
 msgstr ""
 
-#. [topic]
+#. [topic]: id=terrain_flat
 #: data/core/help.cfg:455
 msgid ""
 "Grassland represents open plains, whether cultivated, cut back for grazing, "
@@ -2051,12 +2051,12 @@ msgstr ""
 "\n"
 "Useimpien yksiköiden puolustus ruohotasangolla on 30% tai 40%."
 
-#. [topic]
+#. [topic]: id=terrain_road
 #: data/core/help.cfg:462
 msgid "Road"
 msgstr "tie"
 
-#. [topic]
+#. [topic]: id=terrain_road
 #: data/core/help.cfg:465
 #, fuzzy
 msgid ""
@@ -2068,12 +2068,12 @@ msgstr ""
 "tallaamana. Pelaamisen kannalta tiet vastaavat <ref>dst=terrain_grassland "
 "text=tasankoja</ref>."
 
-#. [topic]
+#. [topic]: id=terrain_forest
 #: data/core/help.cfg:472
 msgid "Forest"
 msgstr "metsää"
 
-#. [topic]
+#. [topic]: id=terrain_forest
 #: data/core/help.cfg:479
 msgid ""
 "Forests represent any woodland with significant undergrowth, enough to "
@@ -2107,12 +2107,12 @@ msgstr ""
 "vain 30%.\n"
 "\n"
 
-#. [topic]
+#. [topic]: id=terrain_hills
 #: data/core/help.cfg:486
 msgid "Hills"
 msgstr "mäkiä"
 
-#. [topic]
+#. [topic]: id=terrain_hills
 #: data/core/help.cfg:491
 msgid ""
 "Hills represent any reasonably rough terrain, with enough dips and rises in "
@@ -2134,12 +2134,12 @@ msgstr ""
 "Useimpien yksiköiden puolustus kukkuloilla on 50%. Ratsuyksiköillä se on "
 "vain 40%. Kääpiöiden puolustus kukkuloilla on 60%."
 
-#. [topic]
+#. [topic]: id=terrain_mountains
 #: data/core/help.cfg:498
 msgid "Mountains"
 msgstr "vuoria"
 
-#. [topic]
+#. [topic]: id=terrain_mountains
 #: data/core/help.cfg:503
 msgid ""
 "Mountains are steep enough that units often have to climb over obstacles to "
@@ -2161,12 +2161,12 @@ msgstr ""
 "\n"
 "Useimpien yksiköiden puolustus vuorilla on 60%. Kääpiöillä se on 70%."
 
-#. [topic]
+#. [topic]: id=terrain_swamp_water
 #: data/core/help.cfg:510
 msgid "Swamp"
 msgstr "suota"
 
-#. [topic]
+#. [topic]: id=terrain_swamp_water
 #: data/core/help.cfg:515
 msgid ""
 "Swamps represent any sort of wetlands. Swamps slow down nearly everyone, and "
@@ -2187,12 +2187,12 @@ msgstr ""
 "Useimpien yksiköiden puolustus soilla on 30%. Merenmiesten, nagojen ja "
 "sauriaanien puolustus on 60%."
 
-#. [topic]
+#. [topic]: id=terrain_shallow_water
 #: data/core/help.cfg:522
 msgid "Shallow Water"
 msgstr "matalaa vettä"
 
-#. [topic]
+#. [topic]: id=terrain_shallow_water
 #: data/core/help.cfg:527
 msgid ""
 "Shallow water represents any body of water deep enough to come up to roughly "
@@ -2215,12 +2215,12 @@ msgstr ""
 "Useimpien yksiköiden puolustus matalassa vedessä on vain 20% tai 30%, kun "
 "merenmiehillä ja nagoilla se on 60%."
 
-#. [topic]
+#. [topic]: id=terrain_deep_water
 #: data/core/help.cfg:534
 msgid "Deep Water"
 msgstr "syvää vettä"
 
-#. [topic]
+#. [topic]: id=terrain_deep_water
 #: data/core/help.cfg:539
 msgid ""
 "Deep water represents any body of water deep enough to cover a man's head. "
@@ -2236,12 +2236,12 @@ msgstr ""
 "Merenmiehillä ja nagoilla puolustus syvässä vedessä on 50%, ja ne liikkuvat "
 "siellä vaivatta."
 
-#. [topic]
+#. [topic]: id=terrain_frozen
 #: data/core/help.cfg:546
 msgid "Frozen"
 msgstr ""
 
-#. [topic]
+#. [topic]: id=terrain_frozen
 #: data/core/help.cfg:551
 #, fuzzy
 msgid ""
@@ -2259,12 +2259,12 @@ msgstr ""
 "\n"
 "Useimpien yksiköiden puolustus lumella on 20%:ista 40%:iin."
 
-#. [topic]
+#. [topic]: id=terrain_castle
 #: data/core/help.cfg:558
 msgid "Castle"
 msgstr "linna"
 
-#. [topic]
+#. [topic]: id=terrain_castle
 #: data/core/help.cfg:565
 msgid ""
 "Castles are any sort of permanent fortification. Nearly all units receive a "
@@ -2286,12 +2286,12 @@ msgstr ""
 "Useimpien yksiköiden puolustus linnassa on 60%.\n"
 "\n"
 
-#. [topic]
+#. [topic]: id=terrain_sand
 #: data/core/help.cfg:572
 msgid "Sand"
 msgstr "hiekkaa"
 
-#. [topic]
+#. [topic]: id=terrain_sand
 #: data/core/help.cfg:577
 msgid ""
 "The instability of sand makes it harder for most units to cross, and leaves "
@@ -2306,12 +2306,12 @@ msgstr ""
 "\n"
 "Useimpien yksiköiden puolustus hiekalla on 20%:sta 40%:iin."
 
-#. [topic]
+#. [topic]: id=terrain_desert
 #: data/core/help.cfg:584
 msgid "Desert"
 msgstr "aavikkoa"
 
-#. [topic]
+#. [topic]: id=terrain_desert
 #: data/core/help.cfg:587
 #, fuzzy
 msgid ""
@@ -2322,12 +2322,12 @@ msgstr ""
 "Aavikot eroavat hieman hiekkakuoppien ja -rantojen hiekasta. Pelin kannalta "
 "ne kuitenkin vastaavat <ref>dst=terrain_sand text=hiekkaa</ref>."
 
-#. [topic]
+#. [topic]: id=terrain_cave
 #: data/core/help.cfg:594
 msgid "Cave"
 msgstr "luola"
 
-#. [topic]
+#. [topic]: id=terrain_cave
 #: data/core/help.cfg:599
 #, fuzzy
 msgid ""
@@ -2351,12 +2351,12 @@ msgstr ""
 "Useimpien yksiköiden puolustus luolissa on 20% 40%:iin, kun se kääpiöillä on "
 "50%."
 
-#. [topic]
+#. [topic]: id=terrain_rockbound_cave
 #: data/core/help.cfg:606
 msgid "Rockbound Cave"
 msgstr "louhikkoluola"
 
-#. [topic]
+#. [topic]: id=terrain_rockbound_cave
 #: data/core/help.cfg:611
 #, fuzzy
 msgid ""
@@ -2382,12 +2382,12 @@ msgstr ""
 "Useimpien yksiköiden puolustus louhikkoluolassa on 50%. Kääpiöillä puolustus "
 "on peräti 60% ja ratsuyksiköillä vain 40%."
 
-#. [topic]
+#. [topic]: id=terrain_illuminated_cave
 #: data/core/help.cfg:618
 msgid "Illuminated Cave"
 msgstr "valaistu luola"
 
-#. [topic]
+#. [topic]: id=terrain_illuminated_cave
 #: data/core/help.cfg:621
 msgid ""
 "Rare patches of the underground world are illuminated by light from the "
@@ -2401,12 +2401,12 @@ msgstr ""
 "yksiköiltä. Muuten tämä maasto on täysin samanlainen kuin tavallinen "
 "luolamaasto."
 
-#. [topic]
+#. [topic]: id=terrain_fungus
 #: data/core/help.cfg:628
 msgid "Mushroom Grove"
 msgstr "sienilehtoa"
 
-#. [topic]
+#. [topic]: id=terrain_fungus
 #: data/core/help.cfg:633
 msgid ""
 "Mushroom groves are vast underground forests of giant mushrooms, which "
@@ -2430,12 +2430,12 @@ msgstr ""
 "ratsuyksiköillä puolustus on vain 20%."
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
-#. [topic]
+#. [topic]: id=terrain_village
 #: data/core/help.cfg:640 src/terrain.cpp:139
 msgid "Village"
 msgstr "kylä"
 
-#. [topic]
+#. [topic]: id=terrain_village
 #: data/core/help.cfg:647
 msgid ""
 "Villages represent any group of buildings, human or otherwise. Almost all "
@@ -2460,12 +2460,12 @@ msgstr ""
 "kuitenkin vain 40%.\n"
 "\n"
 
-#. [topic]
+#. [topic]: id=terrain_water_village
 #: data/core/help.cfg:656
 msgid "Submerged Village"
 msgstr "uponnut kylä"
 
-#. [topic]
+#. [topic]: id=terrain_water_village
 #: data/core/help.cfg:661
 msgid ""
 "Submerged villages are the homes of Merfolk and Nagas. While water-dwelling "
@@ -2488,12 +2488,12 @@ msgstr ""
 "Merenväellä ja nagoilla on 60% puolustus uponneissa kylissä, kun taas "
 "maanpäällisellä väellä on yleensä heikko puolustus."
 
-#. [topic]
+#. [topic]: id=terrain_unwalkable
 #: data/core/help.cfg:668
 msgid "Unwalkable"
 msgstr ""
 
-#. [topic]
+#. [topic]: id=terrain_unwalkable
 #: data/core/help.cfg:671
 #, fuzzy
 msgid ""
@@ -2506,12 +2506,12 @@ msgstr ""
 "tunnusmerkkinä ovat jyrkät seinämät, joiden kiipeämiseen kuluisi päiviä. "
 "Pelissä vain lentävät yksiköt voivat liikkua kuilujen yli."
 
-#. [topic]
+#. [topic]: id=terrain_lava
 #: data/core/help.cfg:678
 msgid "Lava"
 msgstr "laavaa"
 
-#. [topic]
+#. [topic]: id=terrain_lava
 #: data/core/help.cfg:681
 #, fuzzy
 msgid ""
@@ -2528,12 +2528,12 @@ msgstr ""
 "Lisäksi laava hohtaa valoa, joka antaa sen yläpuolella käydyissä "
 "taisteluissa etua lainkuuliaisille yksiköille ja haittaa kaoottisille."
 
-#. [topic]
+#. [topic]: id=terrain_ford
 #: data/core/help.cfg:688
 msgid "River Ford"
 msgstr "kahlaamo"
 
-#. [topic]
+#. [topic]: id=terrain_ford
 #: data/core/help.cfg:691
 msgid ""
 "When a river happens to be extremely shallow, passing over it is a trivial "
@@ -2549,18 +2549,18 @@ msgstr ""
 "kumpi tarjoaa yksikölle paremmat mahdollisuudet liikkumiseen ja "
 "puolustautumiseen."
 
-#. [topic]
+#. [topic]: id=terrain_reef
 #: data/core/help.cfg:698
 #, fuzzy
 msgid "Coastal Reef"
 msgstr "linna"
 
-#. [topic]
+#. [topic]: id=terrain_bridge
 #: data/core/help.cfg:708
 msgid "Bridge"
 msgstr "silta"
 
-#. [topic]
+#. [topic]: id=terrain_bridge
 #: data/core/help.cfg:713
 msgid ""
 "To those capable of building one, the ability to lay a bridge offers a "
@@ -2586,12 +2586,12 @@ msgstr ""
 "puolustautumiseen. Huomaa, että sillan heksassa ei voi olla yhtä aikaa kahta "
 "yksikköä (maa- ja vesiyksikköä), kuten ei muissakaan pelin heksoissa."
 
-#. [topic]
+#. [topic]: id=terrain_impassable
 #: data/core/help.cfg:720
 msgid "Impassable"
 msgstr "ylitsepääsemätön"
 
-#. [topic]
+#. [topic]: id=terrain_impassable
 #: data/core/help.cfg:723
 msgid ""
 "Obstacles that not even the most determined traveler may overcome include "
@@ -2601,12 +2601,12 @@ msgid ""
 "smash through thick walls of stone."
 msgstr ""
 
-#. [topic]
+#. [topic]: id=general_commands
 #: data/core/help.cfg:736
 msgid "General commands"
 msgstr "Yleiset komennot"
 
-#. [topic]
+#. [topic]: id=general_commands
 #: data/core/help.cfg:741
 msgid ""
 "\n"
@@ -2616,7 +2616,7 @@ msgstr ""
 "\n"
 "Tyhjennä keskusteluikkuna.\n"
 
-#. [topic]
+#. [topic]: id=general_commands
 #: data/core/help.cfg:745
 #, fuzzy
 msgid ""
@@ -2632,7 +2632,7 @@ msgstr ""
 "Testaustila suljetaan lopettamalla peli tai komennolla :nodebug.\n"
 "\n"
 
-#. [topic]
+#. [topic]: id=general_commands
 #: data/core/help.cfg:748
 msgid ""
 "\n"
@@ -2652,7 +2652,7 @@ msgstr ""
 "jos parametrejä ei ole annettu.\n"
 "\n"
 
-#. [topic]
+#. [topic]: id=general_commands
 #: data/core/help.cfg:751
 msgid ""
 "\n"
@@ -2663,7 +2663,7 @@ msgstr ""
 "Näyttää kehysten määrän sekunnissa (fps).\n"
 "\n"
 
-#. [topic]
+#. [topic]: id=general_commands
 #: data/core/help.cfg:754
 msgid ""
 "\n"
@@ -2674,7 +2674,7 @@ msgstr ""
 "Vaihda lokialue toiselle lokitasolle.\n"
 "\n"
 
-#. [topic]
+#. [topic]: id=general_commands
 #: data/core/help.cfg:757
 msgid ""
 "\n"
@@ -2685,7 +2685,7 @@ msgstr ""
 "Piirrä sisältö uudelleen.\n"
 "\n"
 
-#. [topic]
+#. [topic]: id=general_commands
 #: data/core/help.cfg:760
 msgid ""
 "\n"
@@ -2696,7 +2696,7 @@ msgstr ""
 "Näytä teeman valintavalikko.\n"
 "\n"
 
-#. [topic]
+#. [topic]: id=general_commands
 #: data/core/help.cfg:763
 msgid ""
 "\n"
@@ -2707,7 +2707,7 @@ msgstr ""
 "Poistu skenaariosta (varmistamatta).\n"
 "\n"
 
-#. [topic]
+#. [topic]: id=general_commands
 #: data/core/help.cfg:766
 msgid ""
 "\n"
@@ -2718,7 +2718,7 @@ msgstr ""
 "Tallenna peli (varmistamatta).\n"
 "\n"
 
-#. [topic]
+#. [topic]: id=general_commands
 #: data/core/help.cfg:767
 msgid ""
 "\n"
@@ -2727,12 +2727,12 @@ msgstr ""
 "\n"
 "Tallenna peli ja poistu skenaariosta (varmistamatta)."
 
-#. [topic]
+#. [topic]: id=mp_commands
 #: data/core/help.cfg:775
 msgid "Multiplayer commands"
 msgstr "Moninpelikomennot"
 
-#. [topic]
+#. [topic]: id=mp_commands
 #: data/core/help.cfg:779
 msgid ""
 "\n"
@@ -2744,7 +2744,7 @@ msgstr ""
 "Potki pelaaja moninpelistä, ja estä hänen IP-osoitteensa.\n"
 "\n"
 
-#. [topic]
+#. [topic]: id=mp_commands
 #: data/core/help.cfg:782
 msgid ""
 "\n"
@@ -2762,7 +2762,7 @@ msgstr ""
 "näppäinyhdistelmällä alt+s).\n"
 "\n"
 
-#. [topic]
+#. [topic]: id=mp_commands
 #: data/core/help.cfg:785
 msgid ""
 "\n"
@@ -2777,7 +2777,7 @@ msgstr ""
 "ongelmia.\n"
 "\n"
 
-#. [topic]
+#. [topic]: id=mp_commands
 #: data/core/help.cfg:788
 msgid ""
 "\n"
@@ -2790,7 +2790,7 @@ msgstr ""
 "hiljennetyt pelaajatunnukset.\n"
 "\n"
 
-#. [topic]
+#. [topic]: id=mp_commands
 #: data/core/help.cfg:789
 msgid ""
 "\n"
@@ -2799,12 +2799,12 @@ msgstr ""
 "\n"
 "Hiljennä tai poista hiljennys kaikilta tarkkailijoilta."
 
-#. [topic]
+#. [topic]: id=debug_commands
 #: data/core/help.cfg:796
 msgid "Debug mode commands"
 msgstr "Testaustilan komennot"
 
-#. [topic]
+#. [topic]: id=debug_commands
 #: data/core/help.cfg:800
 msgid ""
 "\n"
@@ -2815,7 +2815,7 @@ msgstr ""
 "Luo määrätyn tyyppisen yksikön valittuun heksaan.\n"
 "\n"
 
-#. [topic]
+#. [topic]: id=debug_commands
 #: data/core/help.cfg:803
 msgid ""
 "\n"
@@ -2826,7 +2826,7 @@ msgstr ""
 "Sumu/huntu päälle tai pois nykyiselle joukkueelle.\n"
 "\n"
 
-#. [topic]
+#. [topic]: id=debug_commands
 #: data/core/help.cfg:806
 msgid ""
 "\n"
@@ -2837,7 +2837,7 @@ msgstr ""
 "Lisää määritellyn määrän kultaa nykyiselle joukkueelle.\n"
 "\n"
 
-#. [topic]
+#. [topic]: id=debug_commands
 #: data/core/help.cfg:809
 msgid ""
 "\n"
@@ -2848,7 +2848,7 @@ msgstr ""
 "Aseta käsin pelintila (gamestate) -muuttujalle arvo.\n"
 "\n"
 
-#. [topic]
+#. [topic]: id=debug_commands
 #: data/core/help.cfg:812
 msgid ""
 "\n"
@@ -2859,7 +2859,7 @@ msgstr ""
 "Näytä pelintila (gamestate) -muuttuja.\n"
 "\n"
 
-#. [topic]
+#. [topic]: id=debug_commands
 #: data/core/help.cfg:815
 msgid ""
 "\n"
@@ -2870,7 +2870,7 @@ msgstr ""
 "Laukaise määritelty tapahtuma.\n"
 "\n"
 
-#. [topic]
+#. [topic]: id=debug_commands
 #: data/core/help.cfg:816
 msgid ""
 "\n"
@@ -2881,17 +2881,17 @@ msgstr ""
 "Muokkaa määriteltyä valitun yksikön ominaisuutta. Esimerkki: :unit "
 "hitpoints=100"
 
-#. [heals]
+#. [heals]: id=curing
 #: data/core/macros/abilities.cfg:51
 msgid "cures"
 msgstr "lääkitsee"
 
-#. [heals]
+#. [heals]: id=curing
 #: data/core/macros/abilities.cfg:52
 msgid "female^cures"
 msgstr "lääkitsee"
 
-#. [heals]
+#. [heals]: id=curing
 #: data/core/macros/abilities.cfg:54
 msgid ""
 "Cures:\n"
@@ -2902,17 +2902,17 @@ msgstr ""
 "Lääkitsijä osaa parantaa yksikön myrkytystilan. Yksikkö, jonka myrkytystila "
 "on parannettu, ei saa muuta parannusta samalla vuorolla."
 
-#. [regenerate]
+#. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:76
 msgid "regenerates"
 msgstr "uusiutuu"
 
-#. [regenerate]
+#. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:77
 msgid "female^regenerates"
 msgstr "uusiutuu"
 
-#. [regenerate]
+#. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:79
 msgid ""
 "Regenerates:\n"
@@ -2923,17 +2923,17 @@ msgstr ""
 "Yksikkö parantaa itseään 8 elämäpistettä vuorossa. Jos yksikkö myrkytetään, "
 "se poistaa myrkyn paranemisen sijasta."
 
-#. [resistance]
+#. [resistance]: id=steadfast
 #: data/core/macros/abilities.cfg:97
 msgid "steadfast"
 msgstr "vankkumaton"
 
-#. [resistance]
+#. [resistance]: id=steadfast
 #: data/core/macros/abilities.cfg:98
 msgid "female^steadfast"
 msgstr "vankkumaton"
 
-#. [resistance]
+#. [resistance]: id=steadfast
 #: data/core/macros/abilities.cfg:100
 msgid ""
 "Steadfast:\n"
@@ -2944,21 +2944,21 @@ msgstr ""
 "Tämän yksikön vastustukset tuplataan (korkeintaan 50%:iin) puolustettaessa. "
 "Ei vaikuta heikkouksiin."
 
-#. [leadership]
+#. [leadership]: id=leadership
 #: data/core/macros/abilities.cfg:113 data/core/macros/abilities.cfg:136
 #: data/core/macros/abilities.cfg:171 data/core/macros/abilities.cfg:218
 #: data/core/macros/abilities.cfg:277
 msgid "leadership"
 msgstr "johtaja"
 
-#. [leadership]
+#. [leadership]: id=leadership
 #: data/core/macros/abilities.cfg:114 data/core/macros/abilities.cfg:137
 #: data/core/macros/abilities.cfg:172 data/core/macros/abilities.cfg:219
 #: data/core/macros/abilities.cfg:278
 msgid "female^leadership"
 msgstr "johtaja"
 
-#. [leadership]
+#. [leadership]: id=leadership
 #: data/core/macros/abilities.cfg:118 data/core/macros/abilities.cfg:141
 #: data/core/macros/abilities.cfg:176 data/core/macros/abilities.cfg:223
 #: data/core/macros/abilities.cfg:282
@@ -2981,17 +2981,17 @@ msgstr ""
 "yksikkö joutuu taisteluun, sen hyökkäykset tekevät 25% enemmän vahinkoa "
 "jokaista tasoa kohti, jonka yksikkö on johtajaa alempana."
 
-#. [skirmisher]
+#. [skirmisher]: id=skirmisher
 #: data/core/macros/abilities.cfg:346
 msgid "skirmisher"
 msgstr "kahakointi"
 
-#. [skirmisher]
+#. [skirmisher]: id=skirmisher
 #: data/core/macros/abilities.cfg:347
 msgid "female^skirmisher"
 msgstr "kahakointi"
 
-#. [skirmisher]
+#. [skirmisher]: id=skirmisher
 #: data/core/macros/abilities.cfg:349
 msgid ""
 "Skirmisher:\n"
@@ -3002,17 +3002,17 @@ msgstr ""
 "Tämä yksikkö osaa liikkua nopeasti vihollisyksiköiden ohitse, eikä välitä "
 "vihollisen hallitsemista alueista."
 
-#. [illuminates]
+#. [illuminates]: id=illumination
 #: data/core/macros/abilities.cfg:362
 msgid "illuminates"
 msgstr "valaisee"
 
-#. [illuminates]
+#. [illuminates]: id=illumination
 #: data/core/macros/abilities.cfg:363
 msgid "female^illuminates"
 msgstr "valaisee"
 
-#. [illuminates]
+#. [illuminates]: id=illumination
 #: data/core/macros/abilities.cfg:367
 msgid ""
 "Illuminates:\n"
@@ -3029,17 +3029,17 @@ msgstr ""
 "Kaikki viereiset yksiköt taistelevat aivan kuin yö olisi iltahämärä, ja "
 "iltahämärä olisi päivä."
 
-#. [teleport]
+#. [teleport]: id=teleport
 #: data/core/macros/abilities.cfg:377
 msgid "teleport"
 msgstr "kaukosiirto"
 
-#. [teleport]
+#. [teleport]: id=teleport
 #: data/core/macros/abilities.cfg:378
 msgid "female^teleport"
 msgstr "kaukosiirto"
 
-#. [teleport]
+#. [teleport]: id=teleport
 #: data/core/macros/abilities.cfg:380
 msgid ""
 "Teleport:\n"
@@ -3050,17 +3050,17 @@ msgstr ""
 "Tämä yksikkö voi kaukosiirtyä kahden ystävällisen kylän välillä kuluttamalla "
 "(vain) yhden liikepisteen."
 
-#. [hides]
+#. [hides]: id=ambush
 #: data/core/macros/abilities.cfg:389 data/core/macros/abilities.cfg:391
 msgid "ambush"
 msgstr "väijytys"
 
-#. [hides]
+#. [hides]: id=ambush
 #: data/core/macros/abilities.cfg:390 data/core/macros/abilities.cfg:392
 msgid "female^ambush"
 msgstr "väijytys"
 
-#. [hides]
+#. [hides]: id=ambush
 #: data/core/macros/abilities.cfg:396 data/core/macros/abilities.cfg:400
 msgid ""
 "Ambush:\n"
@@ -3077,13 +3077,13 @@ msgstr ""
 "vierellään. Jokainen vihollisyksikkö, joka ensimmäisenä löytää tällaisen "
 "yksikön, menettää kaikki jäljelläolevat liikepisteensä."
 
-#. [hides]
+#. [hides]: id=nightstalk
 #: data/core/macros/abilities.cfg:415 data/core/macros/abilities.cfg:416
 #: data/core/macros/abilities.cfg:421
 msgid "nightstalk"
 msgstr "yöväijyntä"
 
-#. [hides]
+#. [hides]: id=nightstalk
 #: data/core/macros/abilities.cfg:420 data/core/macros/abilities.cfg:426
 msgid ""
 "Nightstalk:\n"
@@ -3102,22 +3102,22 @@ msgstr ""
 "vihollisyksikkö, joka siirtyy tällaisen yksikön viereen, menettää kaikki "
 "jäljellä olevat liikepisteensä."
 
-#. [hides]
+#. [hides]: id=nightstalk
 #: data/core/macros/abilities.cfg:422
 msgid "female^nightstalk"
 msgstr "yöväijyntä"
 
-#. [hides]
+#. [hides]: id=concealment
 #: data/core/macros/abilities.cfg:441 data/core/macros/abilities.cfg:447
 msgid "concealment"
 msgstr "piiloutuminen"
 
-#. [hides]
+#. [hides]: id=concealment
 #: data/core/macros/abilities.cfg:442 data/core/macros/abilities.cfg:448
 msgid "female^concealment"
 msgstr "piiloutuminen"
 
-#. [hides]
+#. [hides]: id=concealment
 #: data/core/macros/abilities.cfg:446 data/core/macros/abilities.cfg:452
 msgid ""
 "Concealment:\n"
@@ -3136,18 +3136,18 @@ msgstr ""
 "vihollisyksiköitä. Vihollisyksikkö, joka ensimmäisenä löytää tämän yksikön, "
 "menettää kaikki jäljellä olevat liikepisteensä."
 
-#. [hides]
+#. [hides]: id=submerge
 #: data/core/macros/abilities.cfg:467 data/core/macros/abilities.cfg:473
 msgid "submerge"
 msgstr "sukellusväijytys"
 
-#. [hides]
+#. [hides]: id=submerge
 #: data/core/macros/abilities.cfg:468 data/core/macros/abilities.cfg:474
 #, fuzzy
 msgid "female^submerge"
 msgstr "vahva"
 
-#. [hides]
+#. [hides]: id=submerge
 #: data/core/macros/abilities.cfg:472 data/core/macros/abilities.cfg:478
 msgid ""
 "Submerge:\n"
@@ -3165,18 +3165,18 @@ msgstr ""
 "vihollisyksiköitä. Jokainen vihollisyksikkö, joka ensimmäisenä löytää tämän "
 "yksikön, menettää kaikki jäljellä olevat liikepisteensä."
 
-#. [dummy]
+#. [dummy]: id=feeding
 #: data/core/macros/abilities.cfg:496
 msgid "feeding"
 msgstr "ruokinta"
 
-#. [dummy]
+#. [dummy]: id=feeding
 #: data/core/macros/abilities.cfg:497
 #, fuzzy
 msgid "female^feeding"
 msgstr "peloton"
 
-#. [dummy]
+#. [dummy]: id=feeding
 #: data/core/macros/abilities.cfg:499
 msgid ""
 "Feeding:\n"
@@ -3343,17 +3343,17 @@ msgstr ""
 "kahdeksan elämäpistettä jokaisella vuorolle, kunnes ne ovat parannettu tai "
 "elämäpisteitä on jäljellä vain yksi."
 
-#. [advancement]
+#. [advancement]: id=amla_default
 #: data/core/macros/amla.cfg:10
 msgid "Max HP bonus +3, Max XP +20%"
 msgstr "Enimmäis-EP-bonus +3, enimmäis-KP  +20%"
 
-#. [advancement]
+#. [advancement]: id=tough_{HP_ADVANCE_NUMBER}
 #: data/core/macros/amla.cfg:38
 msgid ", MAX XP +25%"
 msgstr ", enimmäis-KP +25%"
 
-#. [advancement]
+#. [advancement]: id=tough_{HP_ADVANCE_NUMBER}
 #: data/core/macros/amla.cfg:38
 msgid "Max HP bonus +"
 msgstr "Enimmäis-EP-bonus +"
@@ -3442,37 +3442,37 @@ msgstr "Vastaanotettu"
 msgid "Leave it"
 msgstr "Vaihda yksikön nimeä"
 
-#. [object]
+#. [object]: id={ID}
 #: data/core/macros/items.cfg:218
 msgid "Potion of Healing"
 msgstr "Parannusjuoma"
 
-#. [object]
+#. [object]: id={ID}
 #: data/core/macros/items.cfg:221
 msgid "A feeling of well-being overwhelms the drinker."
 msgstr "Hyvänolontunne valtaa juojan."
 
-#. [object]
+#. [object]: id={ID}
 #: data/core/macros/items.cfg:222
 msgid "You are not worthy of healing."
 msgstr "Et ole parantamisen arvoinen."
 
-#. [object]
+#. [object]: id={ID}
 #: data/core/macros/items.cfg:256
 msgid "Poison"
 msgstr "Myrkky"
 
-#. [object]
+#. [object]: id={ID}
 #: data/core/macros/items.cfg:259
 msgid "Poison is seeping through the veins of this unit at this very moment."
 msgstr "Myrkky virtaa tälläkin hetkellä tämän yksikön suonissa."
 
-#. [object]
+#. [object]: id={ID}
 #: data/core/macros/items.cfg:293
 msgid "Holy Water"
 msgstr "Pyhä vesi"
 
-#. [object]
+#. [object]: id={ID}
 #: data/core/macros/items.cfg:296
 msgid ""
 "This water will make melee weapons have the 'arcane' damage type until the "
@@ -3481,62 +3481,62 @@ msgstr ""
 "Tämä vesi antaa lähitaisteluaseille salatieteen vahinkomuodon skenaarion "
 "loppuun asti."
 
-#. [object]
+#. [object]: id={ID}
 #: data/core/macros/items.cfg:297
 msgid "I am not suited to the use of this item! Let another take it."
 msgstr "En sovellu tämän esineen käyttöön! Ottakoon joku muu sen."
 
-#. [object]
+#. [object]: id={ID}
 #: data/core/macros/items.cfg:332
 msgid "Potion of Strength"
 msgstr "Voimajuoma"
 
-#. [object]
+#. [object]: id={ID}
 #: data/core/macros/items.cfg:335
 msgid "Strength is given to the drinker."
 msgstr "Juoja saa voimaa."
 
-#. [object]
+#. [object]: id={ID}
 #: data/core/macros/items.cfg:375
 msgid "Potion of Decay"
 msgstr "Mädätysjuoma"
 
-#. [object]
+#. [object]: id={ID}
 #: data/core/macros/items.cfg:378
 msgid "This poor unit drank something really bad."
 msgstr "Tämä yksikköraukka joi jotain todella pahaa."
 
-#. [object]
+#. [object]: id={ID}
 #: data/core/macros/items.cfg:412
 msgid "Ring of Regeneration"
 msgstr "Uusiutumisen sormus"
 
-#. [object]
+#. [object]: id={ID}
 #: data/core/macros/items.cfg:415
 msgid "This ring will heal the bearer a little each turn."
 msgstr "Tämä sormus parantaa kantajaa vähän joka vuoro."
 
-#. [object]
+#. [object]: id={ID}
 #: data/core/macros/items.cfg:451
 msgid "Ring of Slowness"
 msgstr "Hitauden sormus"
 
-#. [object]
+#. [object]: id={ID}
 #: data/core/macros/items.cfg:454
 msgid "The bearer of this ring is slowed."
 msgstr "Sormuksen kantaja hidastuu."
 
-#. [object]
+#. [object]: id={ID}
 #: data/core/macros/items.cfg:488
 msgid "Staff of Swiftness"
 msgstr "Nopeuden sauva"
 
-#. [object]
+#. [object]: id={ID}
 #: data/core/macros/items.cfg:491
 msgid "This staff will grant the bearer swift movement."
 msgstr "Tämä sauva antaa kantajalleen nopean liikkumisen."
 
-#. [object]
+#. [object]: id={ID}
 #: data/core/macros/items.cfg:492
 msgid "Only magical beings can wield such an object."
 msgstr "Vain taikaolennot voivat käyttää tuollaista esinettä."
@@ -4366,8 +4366,8 @@ msgid ""
 "this scenario. Side $side_number is intended to be played by a human player."
 msgstr ""
 
-#. [time]
-#. [illuminated_time]
+#. [time]: id=deep_underground
+#. [illuminated_time]: id=deep_underground_illum
 #: data/core/macros/schedules.cfg:93 data/core/macros/schedules.cfg:103
 msgid "Deep Underground"
 msgstr "syvällä maan alla"
@@ -4597,238 +4597,248 @@ msgstr ""
 " Tämä yksikkö myrkyttää. Sen uhrit kärsivät jatkuvasti vahinkoa, kunnes ne "
 "pääsevät parannettaviksi joko kaupungissa tai lääkitsevän yksikön vieressä."
 
-#. [trait]
+#. [trait]: id=loyal
 #: data/core/macros/traits.cfg:8
 msgid "loyal"
 msgstr "uskollinen"
 
-#. [trait]
+#. [trait]: id=loyal
 #: data/core/macros/traits.cfg:9
 msgid "female^loyal"
 msgstr "uskollinen"
 
-#. [trait]
+#. [trait]: id=loyal
 #: data/core/macros/traits.cfg:10
 msgid "Zero upkeep"
 msgstr "Ei ylläpitoa"
 
-#. [trait]
+#. [trait]: id=undead
 #: data/core/macros/traits.cfg:22
 msgid "undead"
 msgstr "epäkuollut"
 
-#. [trait]
+#. [trait]: id=undead
 #: data/core/macros/traits.cfg:23
 msgid "female^undead"
 msgstr "epäkuollut"
 
-#. [trait]
+#. [trait]: id=undead
+#. [trait]: id=mechanical
 #: data/core/macros/traits.cfg:24 data/core/macros/traits.cfg:39
 msgid "Immune to drain, poison and plague"
 msgstr "Immuuni elämänimulle, myrkylle ja rutolle"
 
-#. [trait]
+#. [trait]: id=mechanical
 #: data/core/macros/traits.cfg:37
 msgid "mechanical"
 msgstr "mekaaninen"
 
-#. [trait]
+#. [trait]: id=mechanical
 #: data/core/macros/traits.cfg:38
 msgid "female^mechanical"
 msgstr "mekaaninen"
 
-#. [trait]
+#. [trait]: id=strong
 #: data/core/macros/traits.cfg:51
 msgid "strong"
 msgstr "vahva"
 
-#. [trait]
+#. [trait]: id=strong
 #: data/core/macros/traits.cfg:52
 msgid "female^strong"
 msgstr "vahva"
 
-#. [trait]
+#. [trait]: id=dextrous
 #: data/core/macros/traits.cfg:69
 msgid "dextrous"
 msgstr "taitava"
 
-#. [trait]
+#. [trait]: id=dextrous
 #: data/core/macros/traits.cfg:70
 msgid "female^dextrous"
 msgstr "taitava"
 
-#. [trait]
+#. [trait]: id=quick
 #: data/core/macros/traits.cfg:83
 msgid "quick"
 msgstr "nopea"
 
-#. [trait]
+#. [trait]: id=quick
 #: data/core/macros/traits.cfg:84
 msgid "female^quick"
 msgstr "nopea"
 
-#. [trait]
+#. [trait]: id=intelligent
 #: data/core/macros/traits.cfg:100
 msgid "intelligent"
 msgstr "älykäs"
 
-#. [trait]
+#. [trait]: id=intelligent
 #: data/core/macros/traits.cfg:101
 msgid "female^intelligent"
 msgstr "älykäs"
 
-#. [trait]
+#. [trait]: id=resilient
 #: data/core/macros/traits.cfg:113
 msgid "resilient"
 msgstr "kestävä"
 
-#. [trait]
+#. [trait]: id=resilient
 #: data/core/macros/traits.cfg:114
 msgid "female^resilient"
 msgstr "kestävä"
 
-#. [trait]
+#. [trait]: id=healthy
 #: data/core/macros/traits.cfg:132
 msgid "healthy"
 msgstr "elinvoimainen"
 
-#. [trait]
+#. [trait]: id=healthy
 #: data/core/macros/traits.cfg:133
 msgid "female^healthy"
 msgstr "elinvoimainen"
 
-#. [trait]
+#. [trait]: id=healthy
 #: data/core/macros/traits.cfg:134
 #, fuzzy
 msgid "Can rest while moving, halves poison damage"
 msgstr "Voi levätä samalla liikkuen"
 
-#. [trait]
+#. [trait]: id=fearless
 #: data/core/macros/traits.cfg:151 data/core/macros/traits.cfg:164
 msgid "fearless"
 msgstr "peloton"
 
-#. [trait]
+#. [trait]: id=fearless
 #: data/core/macros/traits.cfg:152 data/core/macros/traits.cfg:165
 msgid "female^fearless"
 msgstr "peloton"
 
-#. [trait]
+#. [trait]: id=fearless
 #: data/core/macros/traits.cfg:153 data/core/macros/traits.cfg:166
 msgid "Fights normally during unfavorable times of day/night"
 msgstr "Taistelee normaalisti epäedullisina vuorokaudenaikoina"
 
-#. [trait]
+#. [trait]: id=weak
 #: data/core/macros/traits.cfg:174
 msgid "weak"
 msgstr ""
 
-#. [trait]
+#. [trait]: id=weak
 #: data/core/macros/traits.cfg:175
 #, fuzzy
 msgid "female^weak"
 msgstr "epäkuollut"
 
-#. [trait]
+#. [trait]: id=slow
 #: data/core/macros/traits.cfg:192
 #, fuzzy
 msgid "slow"
 msgstr "hidastaa"
 
-#. [trait]
+#. [trait]: id=slow
 #: data/core/macros/traits.cfg:193
 #, fuzzy
 msgid "female^slow"
 msgstr "uskollinen"
 
-#. [trait]
+#. [trait]: id=dim
 #: data/core/macros/traits.cfg:209
 #, fuzzy
 msgid "dim"
 msgstr "Keskitaso"
 
-#. [trait]
+#. [trait]: id=dim
 #: data/core/macros/traits.cfg:210
 #, fuzzy
 msgid "female^dim"
 msgstr "peloton"
 
-#. [color_range]
+#. [color_range]: id=red
+#. [color_range]: id=1
 #: data/core/team-colors.cfg:14 data/core/team-colors.cfg:71
 msgid "Red"
 msgstr "Punainen"
 
-#. [color_range]
+#. [color_range]: id=blue
+#. [color_range]: id=2
 #: data/core/team-colors.cfg:20 data/core/team-colors.cfg:77
 msgid "Blue"
 msgstr "Sininen"
 
-#. [color_range]
+#. [color_range]: id=green
+#. [color_range]: id=3
 #: data/core/team-colors.cfg:26 data/core/team-colors.cfg:83
 msgid "Green"
 msgstr "Vihreä"
 
-#. [color_range]
+#. [color_range]: id=purple
+#. [color_range]: id=4
 #: data/core/team-colors.cfg:32 data/core/team-colors.cfg:89
 msgid "Purple"
 msgstr "Violetti"
 
-#. [color_range]
+#. [color_range]: id=orange
+#. [color_range]: id=7
 #: data/core/team-colors.cfg:38 data/core/team-colors.cfg:95
 msgid "Orange"
 msgstr "Oranssi"
 
-#. [color_range]
+#. [color_range]: id=black
+#. [color_range]: id=5
 #: data/core/team-colors.cfg:44 data/core/team-colors.cfg:101
 msgid "Black"
 msgstr "Musta"
 
-#. [color_range]
+#. [color_range]: id=white
+#. [color_range]: id=8
 #: data/core/team-colors.cfg:50 data/core/team-colors.cfg:107
 msgid "White"
 msgstr "Valkoinen"
 
-#. [color_range]
+#. [color_range]: id=brown
+#. [color_range]: id=6
 #: data/core/team-colors.cfg:56 data/core/team-colors.cfg:113
 msgid "Brown"
 msgstr "Ruskea"
 
-#. [color_range]
+#. [color_range]: id=teal
+#. [color_range]: id=9
 #: data/core/team-colors.cfg:62 data/core/team-colors.cfg:119
 msgid "Teal"
 msgstr "Sinivihreä"
 
-#. [race]: description=
+#. [race]: id=bats, description=
 #: data/core/units.cfg:43
 msgid "race^Bat"
 msgstr "Lepakko"
 
-#. [race]: description=
+#. [race]: id=bats, description=
 #: data/core/units.cfg:44
 msgid "race+female^Bat"
 msgstr "Lepakko"
 
-#. [race]: description=
+#. [race]: id=bats, description=
 #: data/core/units.cfg:45
 msgid "race^Bats"
 msgstr "Lepakot"
 
-#. [race]
+#. [race]: id=drake
 #: data/core/units.cfg:53
 msgid "race^Drake"
 msgstr "Draakki"
 
-#. [race]
+#. [race]: id=drake
 #: data/core/units.cfg:54
 msgid "race+female^Drake"
 msgstr "Draakki"
 
-#. [race]
+#. [race]: id=drake
 #: data/core/units.cfg:55
 msgid "race^Drakes"
 msgstr "Draakit"
 
-#. [race]
+#. [race]: id=drake
 #: data/core/units.cfg:68
 #, fuzzy
 msgid ""
@@ -4959,22 +4969,22 @@ msgstr ""
 "ilmastossa, ominaisuus, joka on sallinut heidän asuttaa jopa joitain "
 "vuoristoja kaukana pohjoisessa Suurella mantereella."
 
-#. [race]
+#. [race]: id=dwarf
 #: data/core/units.cfg:88
 msgid "race^Dwarf"
 msgstr "Kääpiö"
 
-#. [race]
+#. [race]: id=dwarf
 #: data/core/units.cfg:89
 msgid "race+female^Dwarf"
 msgstr "Kääpiö"
 
-#. [race]
+#. [race]: id=dwarf
 #: data/core/units.cfg:90
 msgid "race^Dwarves"
 msgstr "Kääpiöt"
 
-#. [race]
+#. [race]: id=dwarf
 #: data/core/units.cfg:95
 #, fuzzy
 msgid ""
@@ -5075,22 +5085,22 @@ msgstr ""
 "vieroksumaan taikuuden käyttäjiä. Kuitenkin, kääpiöillä on riimuseppiä, "
 "jotka ehostavat heidän omia luonnollisia kykyjään."
 
-#. [race]
+#. [race]: id=elf
 #: data/core/units.cfg:107
 msgid "race^Elf"
 msgstr "Haltia"
 
-#. [race]
+#. [race]: id=elf
 #: data/core/units.cfg:108
 msgid "race+female^Elf"
 msgstr "Haltia"
 
-#. [race]
+#. [race]: id=elf
 #: data/core/units.cfg:109
 msgid "race^Elves"
 msgstr "Haltiat"
 
-#. [race]
+#. [race]: id=elf
 #: data/core/units.cfg:119
 #, fuzzy
 msgid ""
@@ -5159,52 +5169,52 @@ msgstr ""
 "linnoutiksia ei voi luotettavasti päivätä, jotka ovat kiistämättä olleet "
 "olemassa miljardeja vuosia."
 
-#. [race]: description=
+#. [race]: id=goblin, description=
 #: data/core/units.cfg:129
 msgid "race^Goblin"
 msgstr "Hiisi"
 
-#. [race]: description=
+#. [race]: id=goblin, description=
 #: data/core/units.cfg:130
 msgid "race+female^Goblin"
 msgstr "Hiisi"
 
-#. [race]: description=
+#. [race]: id=goblin, description=
 #: data/core/units.cfg:131
 msgid "race^Goblins"
 msgstr "Hiidet"
 
-#. [race]: description=
+#. [race]: id=gryphon, description=
 #: data/core/units.cfg:144
 msgid "race^Gryphon"
 msgstr "Aarnikotka"
 
-#. [race]: description=
+#. [race]: id=gryphon, description=
 #: data/core/units.cfg:145
 msgid "race+female^Gryphon"
 msgstr "Aarnikotka"
 
-#. [race]: description=
+#. [race]: id=gryphon, description=
 #: data/core/units.cfg:146
 msgid "race^Gryphons"
 msgstr "Aarnikotkat"
 
-#. [race]
+#. [race]: id=human
 #: data/core/units.cfg:161
 msgid "race^Human"
 msgstr "Ihminen"
 
-#. [race]
+#. [race]: id=human
 #: data/core/units.cfg:162
 msgid "race+female^Human"
 msgstr "Ihminen"
 
-#. [race]
+#. [race]: id=human
 #: data/core/units.cfg:163
 msgid "race^Humans"
 msgstr "Ihmiset"
 
-#. [race]
+#. [race]: id=human
 #: data/core/units.cfg:170
 msgid ""
 "The race of men is an extremely diverse one. Although they originally came "
@@ -5287,102 +5297,102 @@ msgstr ""
 "organisoituja kuin sivistyneet taistelijat, ja näiden ryhmien vahvuudet ja "
 "heikkoudet täydentävät toisiaan."
 
-#. [race]: description=
+#. [race]: id=lizard, description=
 #: data/core/units.cfg:178
 msgid "race^Saurian"
 msgstr "Sauriaani"
 
-#. [race]: description=
+#. [race]: id=lizard, description=
 #: data/core/units.cfg:179
 msgid "race+female^Saurian"
 msgstr "Sauriaani"
 
-#. [race]: description=
+#. [race]: id=lizard, description=
 #: data/core/units.cfg:180
 msgid "race^Saurians"
 msgstr "Sauriaanit"
 
-#. [race]: description=
+#. [race]: id=mechanical, description=
 #: data/core/units.cfg:189
 msgid "race^Mechanical"
 msgstr "Mekaaninen"
 
-#. [race]: description=
+#. [race]: id=mechanical, description=
 #: data/core/units.cfg:190
 msgid "race+plural^Mechanical"
 msgstr "Mekaaniset"
 
-#. [race]: description=
+#. [race]: id=merman, description=
 #: data/core/units.cfg:200
 msgid "race^Merman"
 msgstr "Merenmies"
 
-#. [race]: description=
+#. [race]: id=merman, description=
 #: data/core/units.cfg:201
 msgid "race^Mermaid"
 msgstr "Merenneito"
 
-#. [race]: description=
+#. [race]: id=merman, description=
 #: data/core/units.cfg:202
 msgid "race^Mermen"
 msgstr "Merenmiehet"
 
-#. [race]: description=
+#. [race]: id=monster, description=
 #: data/core/units.cfg:210
 msgid "race^Monster"
 msgstr "Hirviö"
 
-#. [race]: description=
+#. [race]: id=monster, description=
 #: data/core/units.cfg:211
 msgid "race^Monsters"
 msgstr "Hirviöt"
 
-#. [race]: description=
+#. [race]: id=naga, description=
 #: data/core/units.cfg:219
 msgid "race^Naga"
 msgstr "Naga"
 
-#. [race]: description=
+#. [race]: id=naga, description=
 #: data/core/units.cfg:220
 msgid "race^Nagani"
 msgstr "Naga"
 
-#. [race]: description=
+#. [race]: id=naga, description=
 #: data/core/units.cfg:221
 msgid "race^Nagas"
 msgstr "Nagat"
 
-#. [race]: description=
+#. [race]: id=ogre, description=
 #: data/core/units.cfg:229
 msgid "race^Ogre"
 msgstr "Jätti"
 
-#. [race]: description=
+#. [race]: id=ogre, description=
 #: data/core/units.cfg:230
 msgid "race+female^Ogre"
 msgstr "Jätti"
 
-#. [race]: description=
+#. [race]: id=ogre, description=
 #: data/core/units.cfg:231
 msgid "race^Ogres"
 msgstr "Jätit"
 
-#. [race]
+#. [race]: id=orc
 #: data/core/units.cfg:240
 msgid "race^Orc"
 msgstr "Örkki"
 
-#. [race]
+#. [race]: id=orc
 #: data/core/units.cfg:241
 msgid "race+female^Orc"
 msgstr "Örkki"
 
-#. [race]
+#. [race]: id=orc
 #: data/core/units.cfg:242
 msgid "race^Orcs"
 msgstr "Örkit"
 
-#. [race]
+#. [race]: id=orc
 #: data/core/units.cfg:252
 #, fuzzy
 msgid ""
@@ -5504,22 +5514,22 @@ msgstr ""
 "yksilöistä yleensä erikoistuvat muihin taitoihin, kuten jousiammuntaan tai "
 "salamurhaamiseen."
 
-#. [race]
+#. [race]: id=troll
 #: data/core/units.cfg:259
 msgid "race^Troll"
 msgstr "Peikko"
 
-#. [race]
+#. [race]: id=troll
 #: data/core/units.cfg:260
 msgid "race+female^Troll"
 msgstr "Peikko"
 
-#. [race]
+#. [race]: id=troll
 #: data/core/units.cfg:261
 msgid "race^Trolls"
 msgstr "Peikot"
 
-#. [race]
+#. [race]: id=troll
 #: data/core/units.cfg:267
 #, fuzzy
 msgid ""
@@ -5595,22 +5605,22 @@ msgstr ""
 "siirtyneet kääpiöt. Peikot ovat yleinen näky vuoristolinjoilla pohjoisessa "
 "ja eteläisessä Wesnothissa, ja missä tahansa örkkilaumat vaeltavat."
 
-#. [race]
+#. [race]: id=undead
 #: data/core/units.cfg:281
 msgid "race^Undead"
 msgstr "Epäkuollut"
 
-#. [race]
+#. [race]: id=undead
 #: data/core/units.cfg:282
 msgid "race+female^Undead"
 msgstr "Epäkuollut"
 
-#. [race]
+#. [race]: id=undead
 #: data/core/units.cfg:283
 msgid "race+plural^Undead"
 msgstr "Epäkuolleet"
 
-#. [race]
+#. [race]: id=undead
 #: data/core/units.cfg:289
 #, fuzzy
 msgid ""
@@ -5664,22 +5674,22 @@ msgstr ""
 "määrin vasta Haldric I:sen vanavedessä, eivät he olleet sitä ennenkään "
 "kokonaan tuntemattomia haltioiden ja kääpiöiden keskuudessa."
 
-#. [race]: description=
+#. [race]: id=wolf, description=
 #: data/core/units.cfg:297
 msgid "race^Wolf"
 msgstr "Susi"
 
-#. [race]: description=
+#. [race]: id=wolf, description=
 #: data/core/units.cfg:298
 msgid "race^Wolves"
 msgstr "Sudet"
 
-#. [race]: description=
+#. [race]: id=wose, description=
 #: data/core/units.cfg:307
 msgid "race^Wose"
 msgstr "Puupaimen"
 
-#. [race]: description=
+#. [race]: id=wose, description=
 #: data/core/units.cfg:308
 msgid "race^Woses"
 msgstr "Puupaimenet"
@@ -6496,166 +6506,167 @@ msgstr ""
 "reunalla voi aiheuttaa suuria määriä uhreja. Haltiat voivat käyttää "
 "metsänreunaa samaan tarkoitukseen ja kääpiöt vuoristoa."
 
-#. [menu]
+#. [menu]: id=menu-main
 #: data/themes/default.cfg:120 data/themes/dfool.cfg:134
 #: data/themes/experimental.cfg:95
 msgid "Menu"
 msgstr "Valikko"
 
-#. [menu]
+#. [menu]: id=actions-menu
 #: data/themes/default.cfg:131 data/themes/dfool.cfg:145
 #: data/themes/experimental.cfg:106
 msgid "Actions"
 msgstr "Toiminnot"
 
-#. [menu]
-#. [change]
+#. [menu]: id=button-endturn
+#. [change]: id=button-endturn
 #: data/themes/default.cfg:153 data/themes/default.cfg:763
 #: data/themes/dfool.cfg:160
 msgid "End Turn"
 msgstr "Lopeta vuoro"
 
-#. [menu]
-#. [change]
+#. [menu]: id=button-endturn
+#. [change]: id=button-endturn
+#. [menu]: id=button-endturn2
 #: data/themes/default.cfg:154 data/themes/default.cfg:764
 #: data/themes/default.cfg:1018 data/themes/dfool.cfg:161
 msgid "End Scenario"
 msgstr "Päätä skenaario"
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
-#. [label]
+#. [label]: id=label-hp
 #: data/themes/default.cfg:212 data/themes/dfool.cfg:232
-#: data/themes/experimental.cfg:181 src/menu_events.cpp:201 src/unit.cpp:2569
-#: src/unit.cpp:2743
+#: data/themes/experimental.cfg:181 src/menu_events.cpp:201 src/unit.cpp:2566
+#: src/unit.cpp:2740
 msgid "HP"
 msgstr "EP"
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
-#. [label]
+#. [label]: id=label-xp
 #: data/themes/default.cfg:221 data/themes/dfool.cfg:242
 #: data/themes/experimental.cfg:190 src/menu_events.cpp:202
 #: src/menu_events.cpp:989
 msgid "XP"
 msgstr "KP"
 
-#. [label]
+#. [label]: id=gold-icon
 #: data/themes/default.cfg:231 data/themes/dfool.cfg:261
 #: data/themes/experimental.cfg:199
 msgid "gold"
 msgstr "kultapalaa"
 
-#. [label]
+#. [label]: id=villages-icon
 #: data/themes/default.cfg:240 data/themes/dfool.cfg:270
 #: data/themes/experimental.cfg:208
 msgid "villages"
 msgstr "kyliä"
 
-#. [label]
+#. [label]: id=units-icon
 #: data/themes/default.cfg:249 data/themes/dfool.cfg:279
 #: data/themes/experimental.cfg:217
 msgid "units"
 msgstr "yksiköitä"
 
-#. [label]
+#. [label]: id=upkeep-icon
 #: data/themes/default.cfg:258 data/themes/dfool.cfg:288
 #: data/themes/experimental.cfg:226
 msgid "upkeep"
 msgstr "ylläpito"
 
-#. [label]
+#. [label]: id=income-icon
 #: data/themes/default.cfg:267 data/themes/dfool.cfg:297
 #: data/themes/experimental.cfg:235
 msgid "income"
 msgstr "tulot"
 
-#. [unit_level]
+#. [unit_level]: id=unit-level
 #: data/themes/default.cfg:428 data/themes/dfool.cfg:467
 #: data/themes/experimental.cfg:368
 msgid "statuspanel^level"
 msgstr "kokemustaso"
 
-#. [unit_moves]
+#. [unit_moves]: id=unit-moves
 #: data/themes/default.cfg:459 data/themes/experimental.cfg:399
 msgid "statuspanel^movement"
 msgstr "liikepisteet"
 
-#. [change]
+#. [change]: id=actions-menu
 #: data/themes/default.cfg:989
 msgid "Act."
 msgstr "Toimi."
 
-#. [remove]
-#. [menu]
+#. [remove]: id=button-endturn
+#. [menu]: id=button-endturn2
 #: data/themes/default.cfg:1009 data/themes/default.cfg:1017
 msgid "short end-turn^E."
 msgstr "L."
 
-#. [label]
+#. [label]: id=label-mp
 #: data/themes/dfool.cfg:252
 msgid "MP"
 msgstr "MP"
 
-#. [label]
+#. [label]: id=replay-label
 #: data/themes/macros.cfg:59
 msgid "Replay"
 msgstr "Uusinta"
 
-#. [menu]: type=image
+#. [menu]: id=button-playreplay, type=image
 #: data/themes/macros.cfg:74
 msgid "Play"
 msgstr "Pelaa"
 
-#. [menu]: type=image
+#. [menu]: id=button-playreplay, type=image
 #: data/themes/macros.cfg:75
 msgid "continuous replay"
 msgstr "jatkuva toisto"
 
-#. [menu]: type=image
+#. [menu]: id=button-stopreplay, type=image
 #: data/themes/macros.cfg:92
 msgid "Stop"
 msgstr "Pysäytä"
 
-#. [menu]: type=image
+#. [menu]: id=button-stopreplay, type=image
 #: data/themes/macros.cfg:93
 msgid "pause at end of turn"
 msgstr "tauko vuoron lopussa"
 
-#. [menu]: type=image
+#. [menu]: id=button-resetreplay, type=image
 #: data/themes/macros.cfg:110
 msgid "Reset"
 msgstr "Palaa alkuun"
 
-#. [menu]: type=image
+#. [menu]: id=button-resetreplay, type=image
 #: data/themes/macros.cfg:111
 msgid "reset to beginning"
 msgstr "palauta alkutilanteeseen"
 
-#. [menu]: type=image
+#. [menu]: id=button-nextturn, type=image
 #: data/themes/macros.cfg:128
 msgid "Next Turn"
 msgstr "Seuraava vuoro"
 
-#. [menu]: type=image
+#. [menu]: id=button-nextturn, type=image
 #: data/themes/macros.cfg:129
 msgid "play turn"
 msgstr "vuorossa"
 
-#. [menu]: type=image
+#. [menu]: id=button-nextside, type=image
 #: data/themes/macros.cfg:146
 msgid "Next Side"
 msgstr "Seuraava puoli"
 
-#. [menu]: type=image
+#. [menu]: id=button-nextside, type=image
 #: data/themes/macros.cfg:147
 msgid "play side turn"
 msgstr "vuorossa"
 
-#. [menu]
+#. [menu]: id=show-what
 #: data/themes/macros.cfg:163
 msgid "Point of view"
 msgstr "Näkökulma"
 
-#. [menu]: type=checkbox
+#. [menu]: id=skip-animation, type=checkbox
 #: data/themes/macros.cfg:179
 msgid "Skip animation"
 msgstr "Älä animoi"
@@ -9363,31 +9374,31 @@ msgstr "Tuntematon yksikkötyyppi '$type|'"
 msgid "Unknown unit type '$type|'"
 msgstr "Tuntematon yksikkötyyppi '$type|'"
 
-#: src/unit.cpp:2526 src/unit.cpp:2731 src/unit.cpp:2787
+#: src/unit.cpp:2523 src/unit.cpp:2728 src/unit.cpp:2784
 msgid " and "
 msgstr " ja "
 
-#: src/unit.cpp:2537
+#: src/unit.cpp:2534
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/unit.cpp:2602
+#: src/unit.cpp:2599
 msgid "moves"
 msgstr "siirrot"
 
-#: src/unit.cpp:2620 src/unit.cpp:2758
+#: src/unit.cpp:2617 src/unit.cpp:2755
 msgid "XP to advance"
 msgstr "KP:tä ylenemiseen"
 
-#: src/unit.cpp:2750
+#: src/unit.cpp:2747
 msgid " move"
 msgstr "siirto"
 
-#: src/unit.cpp:2766
+#: src/unit.cpp:2763
 msgid "$effect_description per level"
 msgstr "$effect_description tasoa kohden"
 
-#: src/unit.cpp:2796
+#: src/unit.cpp:2793
 msgid "$trait_name|: $trait_description "
 msgstr "$trait_name|: $trait_description "
 

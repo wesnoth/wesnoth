@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-18 22:05+0100\n"
+"POT-Creation-Date: 2008-11-29 12:24+0100\n"
 "PO-Revision-Date: 2008-10-27 13:44+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
@@ -17,74 +17,74 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#. [generic_multiplayer]
+#. [generic_multiplayer]: id=user_map
 #: data/multiplayer/_main.cfg:8
 msgid "User Map"
 msgstr "Brugerkort"
 
-#. [multiplayer_side]
+#. [multiplayer_side]: id=Random
 #: data/multiplayer/eras.cfg:5
 msgid "Random"
 msgstr "Tilfældig"
 
-#. [era]
+#. [era]: id=era_default
 #: data/multiplayer/eras.cfg:14
 msgid "Default"
 msgstr "Standard"
 
-#. [era]
+#. [era]: id=era_heroes
 #: data/multiplayer/eras.cfg:63
 msgid "Age of Heroes"
 msgstr "Heltenes tid"
 
-#. [multiplayer_side]: type=Drake Flare
-#. [multiplayer_side]: type=Drake Flameheart
+#. [multiplayer_side]: id=Drakes, type=Drake Flare
+#. [multiplayer_side]: id=Drakes, type=Drake Flameheart
 #: data/multiplayer/factions/drakes-default.cfg:4
 #: data/multiplayer/factions/drakes-aoh.cfg:4
 msgid "Drakes"
 msgstr "Hestedragere"
 
-#. [multiplayer_side]: type=Dwarvish Steelclad
-#. [multiplayer_side]: type=Dwarvish Lord
+#. [multiplayer_side]: id=Knalgan Alliance, type=Dwarvish Steelclad
+#. [multiplayer_side]: id=Knalgan Alliance, type=Dwarvish Lord
 #: data/multiplayer/factions/knalgans-default.cfg:4
 #: data/multiplayer/factions/knalgans-aoh.cfg:4
 msgid "Knalgan Alliance"
 msgstr "Knalgan-alliancen"
 
-#. [multiplayer_side]: type=Lieutenant
-#. [multiplayer_side]: type=General
+#. [multiplayer_side]: id=Loyalists, type=Lieutenant
+#. [multiplayer_side]: id=Loyalists, type=General
 #: data/multiplayer/factions/loyalists-default.cfg:4
 #: data/multiplayer/factions/loyalists-aoh.cfg:4
 msgid "Loyalists"
 msgstr "Loyalister"
 
-#. [multiplayer_side]: type=Orcish Warlord
-#. [multiplayer_side]: type=Orcish Warrior
+#. [multiplayer_side]: id=Northerners, type=Orcish Warlord
+#. [multiplayer_side]: id=Northerners, type=Orcish Warrior
 #: data/multiplayer/factions/northerners-aoh.cfg:4
 #: data/multiplayer/factions/northerners-default.cfg:4
 msgid "Northerners"
 msgstr "Nordfolk"
 
-#. [multiplayer_side]: type=Elvish Marshal
-#. [multiplayer_side]: type=Elvish Captain
+#. [multiplayer_side]: id=Rebels, type=Elvish Marshal
+#. [multiplayer_side]: id=Rebels, type=Elvish Captain
 #: data/multiplayer/factions/rebels-aoh.cfg:4
 #: data/multiplayer/factions/rebels-default.cfg:4
 msgid "Rebels"
 msgstr "Rebeller"
 
-#. [multiplayer_side]: type=Dark Sorcerer
-#. [multiplayer_side]: type=Lich
+#. [multiplayer_side]: id=Undead, type=Dark Sorcerer
+#. [multiplayer_side]: id=Undead, type=Lich
 #: data/multiplayer/factions/undead-default.cfg:4
 #: data/multiplayer/factions/undead-aoh.cfg:4
 msgid "Undead"
 msgstr "Udød"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Basilisk
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:33
 msgid "2p - Caves of the Basilisk"
 msgstr "2p - Basiliskens huler"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Basilisk
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:35
 msgid ""
 "Players must maneuver their units through the divisive terrain of this long-"
@@ -556,17 +556,17 @@ msgstr ""
 "\n"
 "(inskription af MJQ)"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Cynsaun_Battlefield
 #: data/multiplayer/scenarios/2p_Cynsaun_Battlefield.cfg:5
 msgid "2p - Cynsaun Battlefield"
 msgstr "2p - Cynsaun slagmarken"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Cynsaun_Battlefield
 #: data/multiplayer/scenarios/2p_Cynsaun_Battlefield.cfg:7
 msgid " Recommended settings of 150 gold and 2 gold per village."
 msgstr " Anbefalet indstilling er 150 guld og 2 guld per landsby."
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Cynsaun_Battlefield
 #: data/multiplayer/scenarios/2p_Cynsaun_Battlefield.cfg:7
 msgid ""
 "There is much to explore in this vast battlefront, designed for players who "
@@ -575,12 +575,12 @@ msgstr ""
 "Der er meget at udforske i denne udbredte krigsfront, designet for spillere "
 "som er til episke, store duel kampe."
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_2p_Dark_Forecast
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:5
 msgid "2p - Dark Forecast (Survival)"
 msgstr "2p - Mørk forudsigelse (Overlevelse)"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_2p_Dark_Forecast
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:8
 #, fuzzy
 msgid ""
@@ -777,12 +777,12 @@ msgstr ""
 "spøgelsestjavser fjerne din vilje, indser du at din tid i dette land er "
 "forbi."
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Den_of_Onis
 #: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:5
 msgid "2p - Den of Onis"
 msgstr "2p - Onis' hule"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Den_of_Onis
 #: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:6
 msgid ""
 "Danger lurks around every corner in this underground battlefield, a duel map "
@@ -791,7 +791,28 @@ msgstr ""
 "Farer lurer ved hvert hjørne på denne underjordiske slagmark, et kort for to "
 "hvor styrke og snuhed mødes."
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Blue_Water_Province
+#. [multiplayer]: id=multiplayer_Loris_River
+#. [multiplayer]: id=multiplayer_Sablestone_Delta
+#. [multiplayer]: id=multiplayer_Fallenstar_Lake
+#. [multiplayer]: id=multiplayer_Clash
+#. [multiplayer]: id=multiplayer_4p_Hamlets
+#. [multiplayer]: id=multiplayer_The_Freelands
+#. [multiplayer]: id=multiplayer_8p_Morituri
+#. [multiplayer]: id=multiplayer_Alirok_Marsh
+#. [multiplayer]: id=multiplayer_3p_Morituri
+#. [multiplayer]: id=multiplayer_Den_of_Onis
+#. [multiplayer]: id=multiplayer_Weldyn_Channel
+#. [multiplayer]: id=multiplayer_Island_of_the_Horatii
+#. [multiplayer]: id=multiplayer_Hornshark_Island
+#. [multiplayer]: id=multiplayer_4p_Morituri
+#. [multiplayer]: id=multiplayer_Silverhead_Crossing
+#. [multiplayer]: id=multiplayer_Castle_Hopping_Isle
+#. [multiplayer]: id=multiplayer_Sullas_Ruins
+#. [multiplayer]: id=multiplayer_4p_Underworld
+#. [multiplayer]: id=multiplayer_Hamlets
+#. [multiplayer]: id=multiplayer_Howling_Ghost_Badlands
+#. [multiplayer]: id=multiplayer_8p_Mokena_Prairie
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:7
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:9
 #: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:6
@@ -817,12 +838,12 @@ msgstr ""
 msgid " Recommended setting of 2 gold per village."
 msgstr " Anbefalet indstilling er 2 guld per landsby."
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Fallenstar_Lake
 #: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:5
 msgid "2p - Fallenstar Lake"
 msgstr "2p - Fallenstar Sø"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Fallenstar_Lake
 #: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:6
 msgid ""
 "Long ago, a great star fell from the heavens, leaving its mark on this "
@@ -872,12 +893,13 @@ msgstr "Vest"
 msgid "teamname^East"
 msgstr "Øst"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Hamlets
 #: data/multiplayer/scenarios/2p_Hamlets.cfg:5
 msgid "2p - Hamlets"
 msgstr "2p - Hamlets"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_4p_Hamlets
+#. [multiplayer]: id=multiplayer_Hamlets
 #: data/multiplayer/scenarios/4p_Hamlets.cfg:6
 #: data/multiplayer/scenarios/2p_Hamlets.cfg:6
 msgid ""
@@ -886,12 +908,12 @@ msgid ""
 msgstr ""
 "Krig forvandler gårde og landsbyer i en fredelig region til en krigszone."
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Hornshark_Island
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:5
 msgid "2p - Hornshark Island"
 msgstr "2p - Hornshark Ø"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Hornshark_Island
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:6
 msgid ""
 "Players must navigate the dispersive terrain of this small but "
@@ -899,12 +921,12 @@ msgid ""
 msgstr ""
 "Spillerne må navigere i dette spredte terræn på en lille men tæt besat ø."
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Howling_Ghost_Badlands
 #: data/multiplayer/scenarios/2p_Howling_Ghost_Badlands.cfg:5
 msgid "2p - Howling Ghost Badlands"
 msgstr "2p - Hylende spøgelsesland"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Howling_Ghost_Badlands
 #: data/multiplayer/scenarios/2p_Howling_Ghost_Badlands.cfg:6
 msgid ""
 "Little remains of this once wealthy mining colony, now a haven for raiders "
@@ -913,12 +935,12 @@ msgstr ""
 "Kun lidt er tilbage af denne tidligere rige minekoloni, nu er den et mål for "
 "plyndring og tyve."
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Sablestone_Delta
 #: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:5
 msgid "2p - Sablestone Delta"
 msgstr "2p - Sablestone Delta"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Sablestone_Delta
 #: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:6
 msgid ""
 "Two armies collide on this disjointed coastal landscape of hidden caves and "
@@ -927,12 +949,12 @@ msgstr ""
 "To hære møder hinanden i dette kystlandskab bestående af skjulte huler og "
 "forrevne floder."
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Silverhead_Crossing
 #: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:5
 msgid "2p - Silverhead Crossing"
 msgstr "2p - Silverhead Overgangen"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Silverhead_Crossing
 #: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:6
 msgid ""
 "Players must traverse all manner of terrain in pursuit of victory on this "
@@ -941,23 +963,23 @@ msgstr ""
 "Spillerne skal igennem alle slags terræn i jagten på sejren på dette "
 "duelkort med flere fronter."
 
-#. [trait]
+#. [trait]: id=remove_hp
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:23
 msgid "statue"
 msgstr "statue"
 
-#. [trait]
+#. [trait]: id=remove_hp
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:24
 msgid "This is a sculpture made of stone."
 msgstr "Dette er en skulptur lavet af sten."
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Sullas_Ruins
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:39
 #, fuzzy
 msgid "2p - Sulla's Ruins"
 msgstr "2p - Sullas ruiner"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Sullas_Ruins
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:40
 msgid ""
 "Flooded by the seas and battered by the winter elements, only ruins, water "
@@ -1024,39 +1046,40 @@ msgstr "Statue af Lo-bsang"
 msgid "A stone-carved likeness of Lo-bsang, Servant of Sulla."
 msgstr "En stenskabt efterligning af Lo-bsang, Tjener af Sulla."
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_The_Freelands
 #: data/multiplayer/scenarios/2p_The_Freelands.cfg:5
 msgid "2p - The Freelands"
 msgstr "2p - De frie lande"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_The_Freelands
+#. [multiplayer]: id=multiplayer_Weldyn_Channel
 #: data/multiplayer/scenarios/2p_The_Freelands.cfg:7
 #: data/multiplayer/scenarios/2p_Weldyn_Channel.cfg:7
 msgid "A duel map for super fast play."
 msgstr "Et dobbelt kort til meget hurtig spil."
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Weldyn_Channel
 #: data/multiplayer/scenarios/2p_Weldyn_Channel.cfg:5
 msgid "2p - Weldyn Channel"
 msgstr "2p - Weldyn-kanal"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Alirok_Marsh
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:5
 msgid "3p - Alirok Marsh"
 msgstr "3p - Alirok Mose"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Alirok_Marsh
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:6
 msgid "Three players come head to head on this water-cut battlefield."
 msgstr ""
 "Tre spillere sættes direkte over for hinaden på denne vandrige slagmark."
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Island_of_the_Horatii
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:5
 msgid "3p - Island of the Horatii"
 msgstr "3p - Horatiiøen"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Island_of_the_Horatii
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:6
 msgid ""
 "Controlling the central island is often the key to victory in this 21x21hex "
@@ -1065,12 +1088,12 @@ msgstr ""
 "Kontrol med den centrale ø er ofte nøglen til sejr i dette 21 x 21 felt "
 "store 3 spiller frie kort."
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_3p_Morituri
 #: data/multiplayer/scenarios/3p_Morituri.cfg:5
 msgid "3p - Morituri"
 msgstr "3p - Morituri"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_3p_Morituri
 #: data/multiplayer/scenarios/3p_Morituri.cfg:6
 msgid ""
 "Only one faction will emerge victorious from this tightly bordered three-"
@@ -1079,12 +1102,12 @@ msgstr ""
 "Kun en fraktion vil komme sejrrigt ud fra dette stærkt afgrænset "
 "trespillerkort."
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Blue_Water_Province
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:5
 msgid "4p - Blue Water Province"
 msgstr "4p - Blå Vand Provins"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Blue_Water_Province
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:7
 msgid ""
 "Historians write that Bluewater Province has been destroyed and rebuilt some "
@@ -1123,39 +1146,39 @@ msgstr "Hold 1"
 msgid "teamname^Team 2"
 msgstr "Hold 2"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Castle_Hopping_Isle
 #: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:5
 msgid "4p - Castle Hopping Isle"
 msgstr "4p - Borg hoppende ø"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Castle_Hopping_Isle
 #: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:7
 msgid "Hop from castle to castle while fighting over a central isle."
 msgstr "Hop fra borg til borg mens der kæmpes om en central ø."
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Clash
 #: data/multiplayer/scenarios/4p_Clash.cfg:5
 msgid "4p - Clash"
 msgstr "4p - Sammenstød"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Clash
 #: data/multiplayer/scenarios/4p_Clash.cfg:7
 msgid "Small map for 2 vs. 2."
 msgstr "Lille kort for 2 vs. 2."
 
 # en hamlet er i britisk en mindre landsby uden egen kirke, men hørende under en anden
 # landsby eller by.
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_4p_Hamlets
 #: data/multiplayer/scenarios/4p_Hamlets.cfg:5
 msgid "4p - Hamlets"
 msgstr "4p - Landsbyer"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Isars_Cross
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:7
 msgid "4p - Isar's Cross"
 msgstr "4p - Isars kors"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Isars_Cross
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:9
 msgid ""
 "A very small 2 vs. 2 map. Close quarters fighting means the successful "
@@ -1194,12 +1217,12 @@ msgstr "Sydvest"
 msgid "teamname^North-East"
 msgstr "Nordøst"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_King_of_the_Hill
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:7
 msgid "4p - King of the Hill"
 msgstr "4p - Bakkernes konge"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_King_of_the_Hill
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:9
 msgid ""
 "Controlling the area around the central keep is very lucrative in this 36X36 "
@@ -1209,7 +1232,8 @@ msgstr ""
 "36 x 36 4 spiller FFA kort. Virker også fint som 2 versus 2. Der er 36 "
 "landsbyer."
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_King_of_the_Hill
+#. [multiplayer]: id=multiplayer_Siege_Castles
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:9
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:9
 msgid " Recommended setting of 2 gold per village and 150 starting gold."
@@ -1237,29 +1261,31 @@ msgstr "Sydøst"
 msgid "teamname^North-West"
 msgstr "Nordvest"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Lagoon
 #: data/multiplayer/scenarios/4p_Lagoon.cfg:5
 msgid "4p - Lagoon"
 msgstr "4p - Lagoon"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_The_Wilderlands
+#. [multiplayer]: id=multiplayer_Crusaders_Field
+#. [multiplayer]: id=multiplayer_Lagoon
 #: data/multiplayer/scenarios/4p_The_Wilderlands.cfg:38
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:7
 #: data/multiplayer/scenarios/4p_Lagoon.cfg:6
 msgid " Recommended setting of 1 gold per village."
 msgstr " Anbefalet indstilling er 1 guld per landsby."
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Lagoon
 #: data/multiplayer/scenarios/4p_Lagoon.cfg:6
 msgid "Four factions contend for dominance over this watery settlement."
 msgstr "Fire fraktioner slås om dominans over dette vandrige område."
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Loris_River
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:7
 msgid "4p - Loris River"
 msgstr "4p - Lorisfloden"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Loris_River
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:9
 msgid ""
 "A 25x25 2 vs. 2 map centered around a river with keeps in opposite corners. "
@@ -1268,27 +1294,27 @@ msgstr ""
 "Et 25x25 2 vs 2 kort centreret omkring en flod med tårne i hvert hjørne. "
 "Designet for spiller 1&4 vs 2&3. Der er 28 landsbyer."
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_4p_Morituri
 #: data/multiplayer/scenarios/4p_Morituri.cfg:5
 msgid "4p - Morituri"
 msgstr "4p - Morituri"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_4p_Morituri
 #: data/multiplayer/scenarios/4p_Morituri.cfg:7
 msgid "Who will emerge from the confines of this perilous battlefield?"
 msgstr "Hvem vil dukke op fra ruinerne af denne slagmark?"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Paths_of_Daggers
 #: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:7
 msgid "4p - Paths of Daggers"
 msgstr "4p - Daggerternes spor"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Paths_of_Daggers
 #: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:9
 msgid " Recommended setting of 2 gold per village, 28 villages."
 msgstr " Anbefalet indstilling 2 guldstykker per landsby, 28 landsbyer."
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Paths_of_Daggers
 #: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:9
 msgid ""
 "A 35X27 2 vs. 2 map with 5 separate paths of engagement. Balanced to be "
@@ -1298,12 +1324,12 @@ msgstr ""
 "at blive spillet øst vs. vest (1&4 vs. 2&3), men virke godt med alle hold "
 "eller FFA."
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Siege_Castles
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:7
 msgid "4p - Siege Castles"
 msgstr "4p - Borge under belejring"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Siege_Castles
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:9
 msgid ""
 "40X30 4 player map where 4 mighty castles face off at the convergence of two "
@@ -1312,12 +1338,12 @@ msgstr ""
 "40 x 30 4 spillerkort hvor 4 mægtige borge møder hinanden hvor to floder "
 "mødes. Virker godt som et 2 versus 2 eller FFA. Der er cirka 45 landsbyer."
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_The_Wilderlands
 #: data/multiplayer/scenarios/4p_The_Wilderlands.cfg:37
 msgid "4p - The Wilderlands"
 msgstr "4p - Ødemarken"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_The_Wilderlands
 #: data/multiplayer/scenarios/4p_The_Wilderlands.cfg:38
 msgid ""
 "A vast region of wild, untamed wilderness, its terrain dotted with forests, "
@@ -1326,22 +1352,22 @@ msgstr ""
 "En stor vil region af utømmet ødemark, terrænet har enkelte træer, huler "
 "floder og ruinerne fra ældgamle fæstningsværker."
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_4p_Underworld
 #: data/multiplayer/scenarios/4p_Underworld.cfg:5
 msgid "4p - Underworld"
 msgstr ""
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_4p_Underworld
 #: data/multiplayer/scenarios/4p_Underworld.cfg:6
 msgid "A fast-paced 2 vs. 2 map set deep below the surface."
 msgstr ""
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Xanthe_Chaos
 #: data/multiplayer/scenarios/4p_Xanthe_Chaos.cfg:7
 msgid "4p - Xanthe Chaos"
 msgstr "4p - Xanthe kaos"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Xanthe_Chaos
 #: data/multiplayer/scenarios/4p_Xanthe_Chaos.cfg:9
 msgid ""
 "A 24X28 2 vs. 2 map with auxiliary keeps, and a large messy battle in the "
@@ -1350,12 +1376,12 @@ msgstr ""
 "Et 24x28 2 mod 2 kort med neutrale borgtårne og et stort rodet slag i "
 "centrum."
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Auction-X
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:5
 msgid "5p - Auction-X"
 msgstr "5p - Auktion-X"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Auction-X
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:7
 msgid ""
 "4 players surround a central keep, play vs the AI survival style, or as a "
@@ -1394,22 +1420,22 @@ msgstr "Nordvest"
 msgid "teamname^Center"
 msgstr "Midt"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Forest_of_Fear
 #: data/multiplayer/scenarios/5p_Forest_of_Fear.cfg:5
 msgid "5p - Forest of Fear"
 msgstr "5p - Frygtens skov"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Forest_of_Fear
 #: data/multiplayer/scenarios/5p_Forest_of_Fear.cfg:7
 msgid "In this mixed landscape, five armies battle for supremacy."
 msgstr "I dette blandede landskap, kæmper fem hære for overmagten."
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Crusaders_Field
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:5
 msgid "6p - Crusaders' Field"
 msgstr "6p - Korstogenes slagmark"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Crusaders_Field
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:7
 msgid ""
 "The rallying cries of battle can once again be heard on this time-worn field "
@@ -1419,12 +1445,12 @@ msgstr ""
 "Slagmarkens skrig kan igen høres på denne krigsscene hvor tusinder af "
 "spøgelser af modige krigere flyder igennem bjergene, træerne og floderne."
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Hexcake
 #: data/multiplayer/scenarios/6p_Hexcake.cfg:5
 msgid "6p - Hexcake"
 msgstr "6p - Hexcake"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Hexcake
 #: data/multiplayer/scenarios/6p_Hexcake.cfg:7
 msgid "2 vs. 2 or 3 vs. 3 team game."
 msgstr "2 vs. 2 eller 3 vs 3 holdspil."
@@ -1457,42 +1483,42 @@ msgstr "Runde 17: Udøde"
 msgid "Tower of Doom"
 msgstr "Undergangstårnet"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_6p_Team_Survival
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:337
 msgid "6p - Team Survival"
 msgstr "6p - Holdoverlevelse"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_6p_Team_Survival
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:340
 msgid "Scenario where the objective is to survive for as long as possible."
 msgstr "Scenarie hvor missionen er at overleve i så lang tid som muligt."
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_6p_Team_Survival
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:347
 msgid "Survive for 32 turns."
 msgstr "Overlev i 32 runder."
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_6p_Team_Survival
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:347
 msgid "Hint: Learning the enemy spawnpoints and types helps alot."
 msgstr "Hjælp: At lære fjendes opstartsteder og enhedstyper hjælper meget."
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_6p_Team_Survival
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:348
 msgid "Survive all enemy attacks."
 msgstr "Overlev alle fjendtlige angreb."
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_6p_Team_Survival
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:349
 msgid "Death of your team leaders."
 msgstr "Dine holdlederes død."
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_6p_Team_Survival
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:371
 msgid "Faery"
 msgstr "Faery"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_6p_Team_Survival
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:371
 msgid ""
 "Congratulations for surviving the map that so many people claim is "
@@ -1504,12 +1530,12 @@ msgstr ""
 "hvordan du har båret dig ad så send mig spillets resume til: roze@roze.mine."
 "nu tak!"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_6p_Team_Survival
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:374
 msgid "Death"
 msgstr "Død"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_6p_Team_Survival
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:374
 msgid ""
 "You have lost this game, but fear not. You can always try again. And again. "
@@ -1518,12 +1544,12 @@ msgstr ""
 "Du har tabt dette spil, men frygt ikke. Du kan altid prøve igen. Og igen. og "
 "igen. *Muahahaha*"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_6p_Team_Survival
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:380
 msgid "Attacker"
 msgstr "Angriber"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_6p_Team_Survival
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:385
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:388
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:391
@@ -1533,12 +1559,12 @@ msgstr "Angriber"
 msgid "Defender"
 msgstr "Forsvarer"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_The_Manzivan_Traps
 #: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:7
 msgid "6p - The Manzivan Traps"
 msgstr "6p - Manzivanfælderne"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_The_Manzivan_Traps
 #: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:10
 msgid ""
 "A 40X20 3 vs. 3 map. The Manzivan Traps are widely known as a difficult and "
@@ -1551,12 +1577,12 @@ msgstr ""
 "spredte styrker. Hold sættes til spiller 145 versus 236 (øst versus vest). "
 "Designet for 100 guldstykker i starten. Har 33 landsbyer."
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Waterloo_Sunset
 #: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:7
 msgid "6p - Waterloo Sunset"
 msgstr "6p - Waterloo solnedgang"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Waterloo_Sunset
 #: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:9
 msgid ""
 "A 40X30 3 vs. 3 map. Flexible coordination of your alliance is required to "
@@ -1569,12 +1595,12 @@ msgstr ""
 "mod syd), men hold som 146 eller 136 er også interessant at spille. Designet "
 "til 150 guldstykker i opstart. Har 44 landsbyer."
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_8p_Mokena_Prairie
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:5
 msgid "8p - Mokena Prairie"
 msgstr "8p - Mokenaprærien"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_8p_Mokena_Prairie
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:8
 msgid ""
 "Inspired from Morituri, this 8 player map creates an epic battle scene that "
@@ -1599,12 +1625,12 @@ msgstr "øst"
 msgid "teamname^west"
 msgstr "vest"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_8p_Morituri
 #: data/multiplayer/scenarios/8p_Morituri.cfg:5
 msgid "8p - Morituri"
 msgstr "8p - Morituri"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_8p_Morituri
 #: data/multiplayer/scenarios/8p_Morituri.cfg:7
 msgid ""
 "Teamwork and tactics are key to victory in this unusual battlefield, where "
@@ -1613,12 +1639,12 @@ msgstr ""
 "Samarbejde og taktik er nøglen til sejr på denne usædvanlige slagmark, hvor "
 "otte hære kæmper om at stå tilbage med sejren."
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Merkwuerdigliebe
 #: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:7
 msgid "9p - Merkwuerdigliebe"
 msgstr "9p - Merkwuerdigliebe"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Merkwuerdigliebe
 #: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:9
 msgid ""
 "A very small 3 vs. 3 vs. 3 map. A 60sec timer is recommended due to the "
@@ -1631,14 +1657,14 @@ msgstr ""
 "versus 348 (nord versus sydøst versus sydvest). Der er meget få landsbyer "
 "per spiller så 3 guld per landsby anbefales."
 
-#. [scenario]
-#. [multiplayer]
+#. [scenario]: id=multiplayer_Random_Map
+#. [multiplayer]: id=multiplayer_Random_Map
 #: data/multiplayer/scenarios/Random_Scenario.cfg:6
 #: data/multiplayer/scenarios/Random_Scenario.cfg:11
 msgid "Random map"
 msgstr "Tilfældigt kort"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Random_Map
 #: data/multiplayer/scenarios/Random_Scenario.cfg:7
 msgid ""
 "Randomly generated map. Note: random maps are often unbalanced, but if you "
@@ -1647,14 +1673,14 @@ msgstr ""
 "Tilfældig kort. Bemærk: Tilfældige kort er ofte ikke afbalancerede men hvis "
 "du har tiden kan du genskabe dem til du får et godt kort."
 
-#. [scenario]
-#. [multiplayer]
+#. [scenario]: id=multiplayer_Random_Map_Desert
+#. [multiplayer]: id=multiplayer_Random_Map_Desert
 #: data/multiplayer/scenarios/Random_Scenario_Desert.cfg:5
 #: data/multiplayer/scenarios/Random_Scenario_Desert.cfg:10
 msgid "Random map (Desert)"
 msgstr "Tilfældigt kort (ørken)"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Random_Map_Desert
 #: data/multiplayer/scenarios/Random_Scenario_Desert.cfg:6
 msgid ""
 "A random map with sand as the primary terrain. Note: random maps are often "
@@ -1665,14 +1691,14 @@ msgstr ""
 "kort er ofte ubalanceret, men hvis du har tid, kan du gendanne indtil du får "
 "et godt kort."
 
-#. [scenario]
-#. [multiplayer]
+#. [scenario]: id=multiplayer_Random_Map_Marsh
+#. [multiplayer]: id=multiplayer_Random_Map_Marsh
 #: data/multiplayer/scenarios/Random_Scenario_Marsh.cfg:5
 #: data/multiplayer/scenarios/Random_Scenario_Marsh.cfg:10
 msgid "Random map (Marsh)"
 msgstr "Tilfældigt kort (marsk)"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Random_Map_Marsh
 #: data/multiplayer/scenarios/Random_Scenario_Marsh.cfg:6
 msgid ""
 "A random map with swamp as the primary terrain. Note: random maps are often "
@@ -1683,14 +1709,14 @@ msgstr ""
 "kort er ofte ubalanceret, men hvis du har tid, kan du gendanne indtil du får "
 "et godt kort."
 
-#. [scenario]
-#. [multiplayer]
+#. [scenario]: id=multiplayer_Random_Map_Winter
+#. [multiplayer]: id=multiplayer_Random_Map_Winter
 #: data/multiplayer/scenarios/Random_Scenario_Winter.cfg:5
 #: data/multiplayer/scenarios/Random_Scenario_Winter.cfg:10
 msgid "Random map (Winter)"
 msgstr "Tilfældigt kort (vinter)"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Random_Map_Winter
 #: data/multiplayer/scenarios/Random_Scenario_Winter.cfg:6
 msgid ""
 "A random map set in the break between spring and winter, mainly with snowy "
@@ -1701,12 +1727,12 @@ msgstr ""
 "terræn. Bemærk: Tilfældige kort er ofte ubalancerede, men hvis du har tiden, "
 "kan du genskabe dem indtil du har et godt kort."
 
-#. [multiplayer]
+#. [multiplayer]: id=wesbench_ai
 #: data/multiplayer/scenarios/Wesbench_AI.cfg:7
 msgid "Wesnoth Benchmark: AI"
 msgstr "Wesnoth Test: Computer"
 
-#. [multiplayer]
+#. [multiplayer]: id=wesbench_ai
 #: data/multiplayer/scenarios/Wesbench_AI.cfg:8
 msgid ""
 "A wesnoth benchmark, use --nogui --no-delay --multiplayer --"
@@ -1715,12 +1741,12 @@ msgstr ""
 "En Wesnoth test, anvend --nogui --no-delay --multiplayer --"
 "scenario=wesbench_ai --exit-at-end."
 
-#. [multiplayer]
+#. [multiplayer]: id=wesbench_scroll
 #: data/multiplayer/scenarios/Wesbench_Scroll.cfg:7
 msgid "Wesnoth Benchmark: Scrolling"
 msgstr "Wesnoth benchmark: Panorering"
 
-#. [multiplayer]
+#. [multiplayer]: id=wesbench_scroll
 #: data/multiplayer/scenarios/Wesbench_Scroll.cfg:8
 msgid ""
 "A wesnoth benchmark, use --no-delay --multiplayer --scenario=wesbench_scroll "
@@ -1729,12 +1755,12 @@ msgstr ""
 "En Wesnoth test, anvend --no-delay --multiplayer --scenario=wesbench_scroll "
 "--exit-at-end."
 
-#. [multiplayer]
+#. [multiplayer]: id=wesbench_shroud_walk
 #: data/multiplayer/scenarios/Wesbench_Shroud_Walk.cfg:7
 msgid "Wesnoth Benchmark: Walking through Shroud"
 msgstr "Wesnoth test: Gående igennem skygge"
 
-#. [multiplayer]
+#. [multiplayer]: id=wesbench_shroud_walk
 #: data/multiplayer/scenarios/Wesbench_Shroud_Walk.cfg:8
 msgid ""
 "A wesnoth benchmark, use --no-delay --multiplayer --"

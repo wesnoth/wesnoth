@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-tutorial-fi\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-22 14:55+0100\n"
+"POT-Creation-Date: 2008-11-29 12:24+0100\n"
 "PO-Revision-Date: 2008-06-21 23:46+0200\n"
 "Last-Translator: Mikko Nikkilä <miccoh@gmail.com>\n"
 "Language-Team: Finnish <kde-i18n-fi-discussion@lists.sourceforge.net>\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#. [tutorial]
+#. [tutorial]: id=tutorial
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:41
 msgid ""
 "Hello translators! Tutorial is meant to be a little funny at the start, "
@@ -23,12 +23,12 @@ msgid ""
 "rusty@rustcorp.com.au!"
 msgstr "Always!"
 
-#. [tutorial]
+#. [tutorial]: id=tutorial
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:42
 msgid "Wesnoth Tutorial"
 msgstr "Wesnoth-tutoriaali"
 
-#. [side]: type=Fighter
+#. [side]: type=Fighter, id=student
 #. [command]
 #. [option]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:295
@@ -40,7 +40,7 @@ msgstr "Wesnoth-tutoriaali"
 msgid "Konrad"
 msgstr "Konrad"
 
-#. [unit]: type=Elder Mage
+#. [unit]: id=Delfador, type=Elder Mage
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:113
 msgid "Delfador"
 msgstr "Delfador"
@@ -76,7 +76,7 @@ msgstr "Kuolet"
 msgid "Who would you like to play?"
 msgstr "Millä hahmolla haluaisit pelata?"
 
-#. [unit]: type=Fighteress
+#. [unit]: type=Fighteress, id=student
 #. [command]
 #. [option]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:365
@@ -213,46 +213,46 @@ msgstr ""
 "joka peruu edellisen siirron. Yritä sitten uudestaan.*Napsauta tai paina "
 "mitä tahansa näppäintä…"
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:313
 #, fuzzy
 msgid "Good morning, Delfador! Is it time to attack things?"
 msgstr "Hyvää huomenta Delfador! Onko jo aika taistella?"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:317
 msgid "Um, well..."
 msgstr "Öh, noo..."
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:321
 msgid "Have you found an orc for me to fight, huh? A troll?"
 msgstr "Oletko löytänyt minulle vastustajaksi örkin? Tai kenties peikon?"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:325
 msgid "Quiet! I will summon an enemy for you..."
 msgstr "Hiljaa! Kutsun sinulle vihollisen…"
 
 #. [event]
-#. [unit_type]: race=mechanical
+#. [unit_type]: id=Quintain, race=mechanical
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:353
 #: data/campaigns/tutorial/units/Quintain.cfg:4
 msgid "Quintain"
 msgstr "Harjoittelunukke"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:357
 msgid "... this quintain!"
 msgstr "…harjoittelunuken!"
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:361
 #, fuzzy
 msgid "A quintain? You want me to pretend to fight a dummy?"
 msgstr "Harjoittelunuken? Haluatko minun taistelevan nukkea vastaan?!"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:365
 msgid "Child, you have 32 hitpoints and a sword. I'm fairly sure you'll win."
 msgstr ""
@@ -287,22 +287,22 @@ msgstr ""
 msgid "Click on the quintain to attack it"
 msgstr "Hyökkää harjoittelunuken kimppuun napsauttamalla sitä"
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:424
 msgid "Hey! This quintain fights back!"
 msgstr "Hei! Tämä harjoittelunukke lyö takaisin!"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:428
 msgid "Hmm, maybe we should have started with a doll."
 msgstr "Hmm, ehkä meidän olisi pitänyt aloittaa tavallisella nukella."
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:432
 msgid "Should I retreat?"
 msgstr "Pitäisikö minun perääntyä?"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:436
 msgid "Good idea!"
 msgstr "Hyvä ajatus!"
@@ -327,7 +327,7 @@ msgstr ""
 "Delfadorin vieressä oleva pieni sininen kruunu kertoo, että häviät pelin jos "
 "Delfador kuolee. Häviät pelin myös, jos johtajasi (Li’sar) kuolee."
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:454
 msgid ""
 "Unfortunately, you've used up your turn attacking the quintain. The quintain "
@@ -336,12 +336,12 @@ msgstr ""
 "Valitettavasti olet käyttänyt vuorosi hyökkäämällä harjoittelunukkea "
 "vastaan. Nyt on harjoittelunuken vuoro."
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:458
 msgid "The DUMMY gets a turn?"
 msgstr "Nukellakin on vuoro?"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:464
 #, fuzzy
 msgid ""
@@ -362,7 +362,7 @@ msgstr ""
 msgid "Click on the End Turn button on the bottom right"
 msgstr "Lopeta vuoro painamalla nappia oikeassa alareunassa"
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:488
 #, fuzzy
 msgid "Ouch! I need to heal! Only $student_hp hitpoints left!"
@@ -377,7 +377,7 @@ msgstr ""
 msgid "Village"
 msgstr "kylä"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:493
 #, fuzzy
 msgid ""
@@ -424,7 +424,7 @@ msgstr ""
 msgid "Click on the End Turn button"
 msgstr "Lopeta vuoro"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:563
 #, fuzzy
 msgid ""
@@ -434,7 +434,7 @@ msgstr ""
 "Paranet kohta 8 elämäpistettä. Mutta luulen, että tarvitset hieman apua "
 "tuota harjoittelunukkea vastaan."
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:567
 msgid "I'll recruit some elves!"
 msgstr "Värvään haltioita!"
@@ -446,7 +446,7 @@ msgstr "Värvään haltioita!"
 msgid "Keep"
 msgstr "linnake"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:572
 #, fuzzy
 msgid ""
@@ -512,7 +512,7 @@ msgstr ""
 "Napsauta hiiren oikeaa painiketta toisen linnaruudun kohdalla ja värvää "
 "toinen yksikkö"
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:695
 #, fuzzy
 msgid ""
@@ -521,12 +521,12 @@ msgstr ""
 "Hei, harjoittelunukke parantui juuri kaksi elämäpistettä! Minun on parasta "
 "hyökätä välittömästi!"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:699
 msgid "Yes, if a unit doesn't do anything for a turn, it will slowly heal."
 msgstr ""
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:711
 #, fuzzy
 msgid ""
@@ -537,13 +537,13 @@ msgstr ""
 "Mutta ennen kuin lähetät soturisi taisteluun harjoittelunukkea vastaan, "
 "sinun tulisi tietää, että niillä on kaksi erilaista hyökkäystä…"
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:715
 #, fuzzy
 msgid "I'll tell them to use the one that does the most damage!"
 msgstr "Käsken heitä käyttämään sitä, joka tekee eniten vahinkoa!"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:719
 #, fuzzy
 msgid ""
@@ -564,7 +564,7 @@ msgstr "Napsauta haltiasoturia hiiren vasemmalla painikkeella"
 msgid "End your turn and attack again."
 msgstr "Lopeta vuorosi ja hyökkää sitten uudestaan."
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:739
 msgid ""
 "You wouldn't do anything stupid like charging that quintain yourself again, "
@@ -579,7 +579,7 @@ msgstr ""
 "Hyökkää harjoittelunuken kimppuun napsauttamalla sitä hiiren vasemmalla "
 "painikkeella."
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:784
 #, fuzzy
 msgid ""
@@ -591,7 +591,7 @@ msgstr ""
 "on lähitaisteluase, joten harjoittelunukke puolustautui omalla "
 "lähitaisteluhyökkäyksellään (3-5). Kaukotaisteluhyökkäys oli turvallisempi."
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:792
 #, fuzzy
 msgid ""
@@ -605,7 +605,7 @@ msgstr ""
 "lähitaisteluhyökkäyksellään (3-5). Kaukotaisteluhyökkäys oli turvallisempi.\n"
 "Lopeta vuorosi ja hyökkää sitten uudestaan."
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:804
 #, fuzzy
 msgid ""
@@ -625,7 +625,7 @@ msgstr ""
 msgid "Attack with the other Elf"
 msgstr "Hyökkää toisella haltialla"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:836
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:854
 #, fuzzy
@@ -638,7 +638,7 @@ msgstr ""
 "Harjoittelunukella ei ole kaukotaisteluhyökkäystä, vaan ainoastaan "
 "lähitaisteluhyökkäys, joten se ei voinut puolustautua ollenkaan."
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:844
 #, fuzzy
 msgid ""
@@ -652,7 +652,7 @@ msgstr ""
 "lähitaisteluhyökkäys, joten se ei voinut puolustautua ollenkaan.\n"
 "Lopeta vuorosi ja hyökkää sitten uudestaan."
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:875
 #, fuzzy
 msgid "Keep attacking with both elves until the quintain is finished!"
@@ -660,7 +660,7 @@ msgstr ""
 "Jatka hyökkäämistä molemmilla haltioilla, kunnes harjoittelunukke on "
 "kukistettu!"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:889
 msgid "Maybe you should recruit another elf?"
 msgstr "Ehkäpä sinun pitäisi värvätä yksi haltia lisää?"
@@ -741,7 +741,7 @@ msgid "The quintain is dead, sirs, and I have gained more experience!"
 msgstr "Harjoittelunukke on kuollut ja minä sain lisää kokemusta!"
 
 # tarvii välilyönnin loppuun
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1001
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1005
 #, fuzzy
@@ -752,7 +752,7 @@ msgstr ""
 "Kyllä, saat lisää kokemusta taistelemalla ja etenkin jos onnistut tappamaan "
 "vihollisen: kerää tarpeeksi kokemusta, ja tulet mahtavammaksi. "
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1002
 #, fuzzy
 msgid ""
@@ -762,7 +762,7 @@ msgstr ""
 "Konrad, jätän sinut harjoittelemaan nukeilla! Sen jälkeen meillä on oikeaa "
 "työtä tehtävänä…"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1006
 #, fuzzy
 msgid ""
@@ -933,12 +933,12 @@ msgid "Yes, keep recruiting more units: I think you might need them!"
 msgstr ""
 "Kyllä, jatka yksikköjen värväämistä. Luulen, että tarvitset niitä vielä!"
 
-#. [tutorial]
+#. [tutorial]: id=2_Tutorial
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:286
 msgid "Wesnoth Tutorial Part II"
 msgstr "Wesnoth-tutoriaalin toinen osa"
 
-#. [side]: type=Orcish Warrior
+#. [side]: type=Orcish Warrior, id=Thrag
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:307
 msgid "Thrag"
 msgstr "Thrag"
@@ -965,7 +965,7 @@ msgstr "Vuorot loppuvat"
 msgid "Death of Li'sar"
 msgstr "Li’sarin kuolema"
 
-#. [unit]: type=Elvish Captain
+#. [unit]: id=Galdrad, type=Elvish Captain
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:388
 msgid "Galdrad"
 msgstr "Galdrad"
@@ -1205,7 +1205,7 @@ msgstr "Valtaa kylä liikuttamalla Li’sar siihen"
 msgid "No! I said recruit an Elvish ARCHER! Now try again..."
 msgstr "Ei! Käskin sinua värväämään JOUSIhaltian! Yritä uudelleen…"
 
-#. [unit]: type=Elvish Archer
+#. [unit]: id=Eowynial, type=Elvish Archer
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:626
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:638
@@ -1222,7 +1222,7 @@ msgstr "Shamaani"
 msgid "Recruit an Elvish Shaman to your north"
 msgstr "Värvää haltiashamaani pohjoisenpuoleiseen ruutuun"
 
-#. [unit]: type=Elvish Archer
+#. [unit]: id=Elriend, type=Elvish Archer
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:665
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:676
@@ -1257,7 +1257,7 @@ msgstr "Värvää kaksi jousihaltiaa lännenpuoleisiin ruutuihin"
 msgid "No! I said recruit an Elvish FIGHTER! Now try again..."
 msgstr "Ei! Käskin värväämään haltiaSOTURIN! Yritä uudelleen…"
 
-#. [unit]: type=Elvish Fighter
+#. [unit]: id=Golir, type=Elvish Fighter
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:730
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:741
@@ -1308,7 +1308,7 @@ msgstr ""
 "$recruit.language_name|? Käskin sinua VÄRVÄÄMÄÄN HaltiaSOTURIN! Yritä "
 "uudelleen..."
 
-#. [unit]: type=Elvish Fighter
+#. [unit]: id=Elindel, type=Elvish Fighter
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:834
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:845
@@ -1884,12 +1884,13 @@ msgstr ""
 "aloittelijoille. Konrad, Li’sar ja Delfador ovat hahmoja Valtaistuimen "
 "perillinen -kampanjasta."
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Fighter, race=human
 #: data/campaigns/tutorial/units/Fighter.cfg:4
 msgid "Fighter"
 msgstr "Soturi"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Fighteress, race=human
+#. [unit_type]: id=Fighter, race=human
 #: data/campaigns/tutorial/units/Fighteress.cfg:17
 #: data/campaigns/tutorial/units/Fighter.cfg:17
 #, fuzzy
@@ -1907,7 +1908,7 @@ msgstr ""
 msgid "sword"
 msgstr "miekka"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Fighteress, race=human
 #: data/campaigns/tutorial/units/Fighteress.cfg:4
 msgid "female^Fighter"
 msgstr "Soturi"
@@ -1918,7 +1919,7 @@ msgstr "Soturi"
 msgid "saber"
 msgstr "säilä"
 
-#. [unit_type]: race=mechanical
+#. [unit_type]: id=Quintain, race=mechanical
 #: data/campaigns/tutorial/units/Quintain.cfg:14
 msgid ""
 "Quintains are used to practice swordplay and jousting on. It would be "

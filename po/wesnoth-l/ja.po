@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-14 22:25+0100\n"
+"POT-Creation-Date: 2008-11-29 12:24+0100\n"
 "PO-Revision-Date: 2006-09-05 11:46+0900\n"
 "Last-Translator: Nobuhito Okada <okyada@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
@@ -17,42 +17,42 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#. [campaign]
+#. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:10 data/campaigns/Liberty/_main.cfg:11
 msgid "Liberty"
 msgstr ""
 
-#. [campaign]
+#. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:17
 msgid "Outlaw"
 msgstr ""
 
-#. [campaign]
+#. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:17
 msgid "(Easy)"
 msgstr ""
 
-#. [campaign]
+#. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:17
 msgid "(Difficult)"
 msgstr ""
 
-#. [campaign]
+#. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:17
 msgid "Peasant"
 msgstr "農民"
 
-#. [campaign]
+#. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:17
 msgid "(Normal)"
 msgstr ""
 
-#. [campaign]
+#. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:17
 msgid "Fugitive"
 msgstr ""
 
-#. [campaign]
+#. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:25
 msgid ""
 "As the shadow of civil war lengthens across Wesnoth, a band of hardy "
@@ -88,7 +88,7 @@ msgstr ""
 msgid "Translators"
 msgstr ""
 
-#. [scenario]
+#. [scenario]: id=the_raid
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:4
 msgid "The Raid"
 msgstr "不意の襲撃"
@@ -157,14 +157,14 @@ msgstr ""
 "Annuvin の人々は一生懸命築かれた彼らの自治を放棄しようとしませんでした、 特に"
 "この主張者にも…"
 
-#. [side]: type=Bandit_Peasant
+#. [side]: type=Bandit_Peasant, id=Baldras
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:59
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:31
 #, fuzzy
 msgid "Baldras"
 msgstr "(Baldras!)"
 
-#. [side]: type=Goblin Pillager
+#. [side]: type=Goblin Pillager, id=Fal Khag
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:75
 msgid "Fal Khag"
 msgstr ""
@@ -298,7 +298,7 @@ msgstr ""
 msgid "Treagh"
 msgstr ""
 
-#. [unit]: type=Footpad_Peasant
+#. [unit]: type=Footpad_Peasant, id=Harper
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:217
 msgid "Harper"
 msgstr ""
@@ -460,19 +460,19 @@ msgid ""
 "are done pillaging it."
 msgstr "ゴブリンが村に着きました! 破壊の後には、確実に何も残らないでしょう。"
 
-#. [scenario]
+#. [scenario]: id=civil_disobedience
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:4
 msgid "Civil Disobedience"
 msgstr "市民の反抗"
 
-#. [side]: type=Highwayman
-#. [side]: type=Shadow Lord
+#. [side]: type=Highwayman, id=Baldras
+#. [side]: type=Shadow Lord, id=Helicrom
 #. [side]
-#. [side]: type=Bandit
-#. [side]: type=Rogue
-#. [side]: type=Highwayman_Peasant
-#. [side]: type=General
-#. [side]: type=Bandit_Peasant
+#. [side]: type=Bandit, id=Baldras
+#. [side]: type=Rogue, id=Hans
+#. [side]: type=Highwayman_Peasant, id=Relnan
+#. [side]: type=General, id=Lord Maddock
+#. [side]: type=Bandit_Peasant, id=Baldras
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:58
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:203
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:213
@@ -490,17 +490,18 @@ msgstr "市民の反抗"
 msgid "Rebels"
 msgstr ""
 
-#. [side]: type=Cavalier
+#. [side]: type=Cavalier, id=Tarwen
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:47
 msgid "Tarwen"
 msgstr ""
 
-#. [side]: type=General
+#. [side]: type=General, id=Dommel
 #. [side]
-#. [side]: type=Master Bowman
-#. [side]: type=Cavalier
-#. [side]: type=Royal Guard
-#. [side]: type=Iron Mauler
+#. [side]: type=Master Bowman, id=Quentin
+#. [side]: type=General, id=Kestrel
+#. [side]: type=Cavalier, id=Tarwen
+#. [side]: type=Royal Guard, id=Archarel
+#. [side]: type=Iron Mauler, id=Linneus
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:96
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:117
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:55
@@ -643,26 +644,27 @@ msgid ""
 "Oh, no! We have run out of time, they have arrived with reinforcements..."
 msgstr "なんてことだ! わしらは時間を使い果たし、彼らは援軍と共に到着した…"
 
-#. [scenario]
+#. [scenario]: id=a_strategy_of_hope
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:4
 msgid "A Strategy of Hope"
 msgstr "希望の計画"
 
-#. [side]: type=Highwayman_Peasant
+#. [side]: type=Highwayman_Peasant, id=Relnan
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:40
 #, fuzzy
 msgid "Relnan"
 msgstr "レブナント"
 
-#. [side]: type=Orcish Warrior
+#. [side]: type=Orcish Warrior, id=Urk Delek
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:66
 msgid "Urk Delek"
 msgstr ""
 
-#. [side]: type=Necromancer
-#. [side]: type=Lich
-#. [side]: type=Orcish Warrior
-#. [side]: type=Saurian Oracle
+#. [side]: type=Necromancer, id=Mal-Jarrof
+#. [side]: type=Necromancer, id=Mal-Jerod
+#. [side]: type=Lich, id=Sel-Mana
+#. [side]: type=Orcish Warrior, id=Urk Delek
+#. [side]: type=Saurian Oracle, id=Thhsthss
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:106
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:121
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:137
@@ -671,7 +673,7 @@ msgstr ""
 msgid "Evil"
 msgstr ""
 
-#. [side]: type=Saurian Oracle
+#. [side]: type=Saurian Oracle, id=Thhsthss
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:94
 msgid "Thhsthss"
 msgstr ""
@@ -832,7 +834,7 @@ msgid ""
 "Retreat!!"
 msgstr ""
 
-#. [scenario]
+#. [scenario]: id=unlawful_orders
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:4
 msgid "Unlawful Orders"
 msgstr "無法なる命令"
@@ -847,13 +849,13 @@ msgstr ""
 msgid "Port of Elensefar"
 msgstr ""
 
-#. [side]: type=General
+#. [side]: type=General, id=Lord Maddock
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:50
 #, fuzzy
 msgid "Lord Maddock"
 msgstr "Maddock の死"
 
-#. [side]: type=General
+#. [side]: type=General, id=Kestrel
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:71
 msgid "Kestrel"
 msgstr ""
@@ -868,7 +870,7 @@ msgstr "敵の将軍を打ち負かす"
 msgid "Death of Maddock"
 msgstr "Maddock の死"
 
-#. [unit]: type=Lieutenant
+#. [unit]: type=Lieutenant, id=Rothel
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:134
 msgid "Rothel"
 msgstr ""
@@ -1084,22 +1086,22 @@ msgstr ""
 "見ろ、より多くの騎士達が南東から来るぞ。 わしらは次の襲撃を乗り切れん。 わし"
 "らは終わった!"
 
-#. [scenario]
+#. [scenario]: id=hide_and_seek
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:6
 msgid "Hide and Seek"
 msgstr "かくれんぼ"
 
-#. [time]
+#. [time]: id=midnight
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:12
 msgid "Midnight"
 msgstr "真夜中"
 
-#. [side]: type=Master Bowman
+#. [side]: type=Master Bowman, id=Quentin
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:50
 msgid "Quentin"
 msgstr ""
 
-#. [side]: type=Rogue
+#. [side]: type=Rogue, id=Hans
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:86
 msgid "Hans"
 msgstr ""
@@ -1140,7 +1142,7 @@ msgstr ""
 "わしはわしらが今どこに行くべきであるか明確には分らない。 もしわしらが街に入れ"
 "るなら 情報のために聞き込みを始めるのだが。"
 
-#. [unit]: type=Thief
+#. [unit]: type=Thief, id=Link
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:511
 msgid "Link"
 msgstr ""
@@ -1273,28 +1275,28 @@ msgstr ""
 "た。 わしらの任務は未完了だが、わしらは戻って、自殺的な一戦を交え なければな"
 "らん。"
 
-#. [scenario]
+#. [scenario]: id=the_gray_woods
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:4
 msgid "The Gray Woods"
 msgstr "Gray Woods"
 
-#. [side]: type=Shadow Lord
+#. [side]: type=Shadow Lord, id=Helicrom
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:187
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:62
 msgid "Helicrom"
 msgstr ""
 
-#. [side]: type=Necromancer
+#. [side]: type=Necromancer, id=Mal-Jarrof
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:97
 msgid "Mal-Jarrof"
 msgstr ""
 
-#. [side]: type=Necromancer
+#. [side]: type=Necromancer, id=Mal-Jerod
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:112
 msgid "Mal-Jerod"
 msgstr ""
 
-#. [side]: type=Lich
+#. [side]: type=Lich, id=Sel-Mana
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:127
 msgid "Sel-Mana"
 msgstr ""
@@ -1557,7 +1559,7 @@ msgstr ""
 msgid "My men... have failed to protect me! I perish..."
 msgstr "部下は…私を守れなれなかった! 私は死者に…"
 
-#. [scenario]
+#. [scenario]: id=the_hunters
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:4
 msgid "The Hunters"
 msgstr "狩人達"
@@ -1609,13 +1611,13 @@ msgstr ""
 "のと、北西へ進軍するのをひそかに監視しました。 それで何をするかが 不明確な事"
 "から、彼らは自分達の次の行動を計画しました…"
 
-#. [side]: type=Royal Guard
+#. [side]: type=Royal Guard, id=Archarel
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:55
 #, fuzzy
 msgid "Archarel"
 msgstr "突撃"
 
-#. [side]: type=Iron Mauler
+#. [side]: type=Iron Mauler, id=Linneus
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:72
 msgid "Linneus"
 msgstr ""
@@ -1672,7 +1674,7 @@ msgstr ""
 "Wesnoth の敵からこの領域をよく保護していた; まさか、 Wesnoth の敵を入れようと"
 "は想像していなかった。"
 
-#. [event]
+#. [event]: id=Pitcher 20 14}, id=Pitcher 28 18}, id=Pitcher 20 14}
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:157
 msgid "Pitcher"
 msgstr ""
@@ -1845,7 +1847,7 @@ msgstr ""
 "わしらはここであまりに多くの時間を費やしてしまった。 確実に全ての Wesnoth 軍"
 "隊が わしらの所に進撃してきます。 わしらはもうだめです!"
 
-#. [scenario]
+#. [scenario]: id=glory
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:4
 msgid "Glory"
 msgstr "栄光"
@@ -1919,17 +1921,17 @@ msgstr ""
 "も 落ちたことがありません。 侵略者の血液は欄干に染みを付けます、そして、砕か"
 "れた 骨は Halstead の凍てついた敷石の底に残されています。"
 
-#. [side]: type=General
+#. [side]: type=General, id=Dommel
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:67
 msgid "Dommel"
 msgstr ""
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Vashna
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:124
 msgid "Vashna"
 msgstr ""
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Vashna
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:178
 msgid "Orcs"
 msgstr ""
@@ -2117,7 +2119,7 @@ msgstr "助けを、私は望んでいます。 状況はこれ以上恐ろし�
 msgid "Riders approach from the northwest! Stand fast, men."
 msgstr "北東から騎士達がやって来る！　固守しろ、部下たちよ"
 
-#. [unit]: type=Paladin
+#. [unit]: type=Paladin, id=Sir Gwydion
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:517
 msgid "Sir Gwydion"
 msgstr ""
@@ -2346,7 +2348,7 @@ msgstr ""
 "小さい勝利だと? バカめ! この砦を起源であるほこりへと、完全に破壊するつもり"
 "だ。"
 
-#. [scenario]
+#. [scenario]: id=epilog
 #: data/campaigns/Liberty/scenarios/09_Epilog.cfg:4
 #, fuzzy
 msgid "Liberty - Epilogue"
@@ -2477,12 +2479,12 @@ msgstr ""
 "「私たちを見つけたければ、西に向かってください。 土地の境界に達しても、 進み"
 "続けて下さい。 近いうちに会いましょう、旧友よ。 - Relnan 」"
 
-#. [unit_type]: race=undead
+#. [unit_type]: id=Bone Knight, race=undead
 #: data/campaigns/Liberty/units/Bone_Knight.cfg:5
 msgid "Bone Knight"
 msgstr "ボーン ナイト"
 
-#. [unit_type]: race=undead
+#. [unit_type]: id=Bone Knight, race=undead
 #: data/campaigns/Liberty/units/Bone_Knight.cfg:33
 msgid ""
 "Once great warriors across the plains, these mounted riders atop their "
@@ -2503,12 +2505,12 @@ msgstr "アックス"
 msgid "trample"
 msgstr "踏みつけ"
 
-#. [unit_type]: race=undead
+#. [unit_type]: id=Death Squire, race=undead
 #: data/campaigns/Liberty/units/Death_Squire.cfg:4
 msgid "Death Squire"
 msgstr "死の 従騎士"
 
-#. [unit_type]: race=undead
+#. [unit_type]: id=Death Squire, race=undead
 #: data/campaigns/Liberty/units/Death_Squire.cfg:26
 #, fuzzy
 msgid ""
@@ -2528,12 +2530,12 @@ msgstr ""
 msgid "sword"
 msgstr "ソード"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Rogue Mage, race=human
 #: data/campaigns/Liberty/units/Rogue_Mage.cfg:5
 msgid "Rogue Mage"
 msgstr "ローグ メイジ"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Rogue Mage, race=human
 #: data/campaigns/Liberty/units/Rogue_Mage.cfg:18
 msgid ""
 "Some mages are thrown out of the mage's guild for attempting to practice "
@@ -2555,12 +2557,12 @@ msgstr "ショート ソード"
 msgid "magic missile"
 msgstr "投擲"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Shadow Lord, race=human
 #: data/campaigns/Liberty/units/Shadow_Lord.cfg:5
 msgid "Shadow Lord"
 msgstr "シャドウ ロード"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Shadow Lord, race=human
 #: data/campaigns/Liberty/units/Shadow_Lord.cfg:22
 msgid ""
 "Few humans fathom the secrets of light and dark magic and retain their "
@@ -2585,12 +2587,12 @@ msgstr "シャドウ ボルト"
 msgid "shadow blast"
 msgstr "シャドウ ブラスト"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Shadow Mage, race=human
 #: data/campaigns/Liberty/units/Shadow_Mage.cfg:5
 msgid "Shadow Mage"
 msgstr "シャドウ メイジ"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Shadow Mage, race=human
 #: data/campaigns/Liberty/units/Shadow_Mage.cfg:21
 msgid ""
 "Years of violence and brutality to support the study of forbidden magical "
@@ -2607,12 +2609,12 @@ msgstr ""
 msgid "ice blast"
 msgstr "アイス ブラスト"
 
-#. [unit_type]: race=undead
+#. [unit_type]: id=Skeleton Rider, race=undead
 #: data/campaigns/Liberty/units/Skeleton_Rider.cfg:5
 msgid "Skeleton Rider"
 msgstr "スケルトン ライダー"
 
-#. [unit_type]: race=undead
+#. [unit_type]: id=Skeleton Rider, race=undead
 #: data/campaigns/Liberty/units/Skeleton_Rider.cfg:33
 #, fuzzy
 msgid ""
@@ -2623,13 +2625,13 @@ msgstr ""
 "平野の向こう側のかつて偉大な戦士、骨のみの馬の上の騎士は、恐怖と破壊を 広げる"
 "ために地面から不浄な魔法で育てられました。"
 
-#. [unit_type]
+#. [unit_type]: id=Thug_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:16
 #, fuzzy
 msgid "Villager"
 msgstr "村の 長老"
 
-#. [unit_type]
+#. [unit_type]: id=Thug_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:19
 #, fuzzy
 msgid ""
@@ -2638,12 +2640,12 @@ msgid ""
 msgstr ""
 "農民は Wesnoth の辺境の向こう側に点在する小さい村落と村に住んでいます。"
 
-#. [unit_type]
+#. [unit_type]: id=Bandit_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:28
 msgid "Village Elder"
 msgstr "村の 長老"
 
-#. [unit_type]
+#. [unit_type]: id=Bandit_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:31
 #, fuzzy
 msgid ""
@@ -2654,12 +2656,12 @@ msgstr ""
 "Wesnoth 辺境の向こう側に点在するそれぞれの村は年長者のグループによって 通常導"
 "かれます。（その年長者は、村の最も賢明で最も経験豊富な者です。）"
 
-#. [unit_type]
+#. [unit_type]: id=Highwayman_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:40
 msgid "Senior Village Elder"
 msgstr "村の 最長老"
 
-#. [unit_type]
+#. [unit_type]: id=Highwayman_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:44
 #, fuzzy
 msgid ""
@@ -2671,13 +2673,13 @@ msgstr ""
 "全ての村は指導のために年上の長老を頼りにしています。 強くて、賢明であること"
 "で、 年上の長老は彼らの肩の上に共同体の暮らしへの責任が公平に置かれます。"
 
-#. [unit_type]
+#. [unit_type]: id=Footpad_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:56
 #, fuzzy
 msgid "Peasant Youth"
 msgstr "農民の 猟師"
 
-#. [unit_type]
+#. [unit_type]: id=Footpad_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:61
 msgid ""
 "The scruffy-haired peasant youth are much like the young people living "
@@ -2691,13 +2693,13 @@ msgstr ""
 msgid "female^Peasant Youth"
 msgstr ""
 
-#. [unit_type]
+#. [unit_type]: id=Outlaw_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:77
 #, fuzzy
 msgid "Watchman"
 msgstr "夜間警備員"
 
-#. [unit_type]
+#. [unit_type]: id=Outlaw_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:82
 #, fuzzy
 msgid ""
@@ -2713,12 +2715,12 @@ msgstr ""
 msgid "female^Watchwoman"
 msgstr "女性夜間警備員"
 
-#. [unit_type]
+#. [unit_type]: id=Fugitive_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:94
 msgid "Borderer"
 msgstr ""
 
-#. [unit_type]
+#. [unit_type]: id=Fugitive_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:99
 msgid ""
 "Border villages maintain militias dedicated to fending off hostiles. While "
@@ -2732,12 +2734,12 @@ msgstr ""
 msgid "female^Borderer"
 msgstr ""
 
-#. [unit_type]
+#. [unit_type]: id=Poacher_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:116
 msgid "Peasant Hunter"
 msgstr "農民の 猟師"
 
-#. [unit_type]
+#. [unit_type]: id=Poacher_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:119
 msgid ""
 "Villages, especially in wilder areas near frontiers, rely on hunters to "
@@ -2745,12 +2747,12 @@ msgid ""
 "local terrain can be valuable assets in combat."
 msgstr ""
 
-#. [unit_type]
+#. [unit_type]: id=Trapper_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:128
 msgid "Peasant Trapper"
 msgstr "農民の 罠猟師"
 
-#. [unit_type]
+#. [unit_type]: id=Trapper_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:133
 #, fuzzy
 msgid ""
@@ -2761,13 +2763,13 @@ msgstr ""
 "罠猟師 は食物と毛皮をいくつかの村に供給する熟練した猟師です。彼らが経験を積む"
 "のに、夜や森林の中と湿地帯が最も重要になります。"
 
-#. [unit_type]
+#. [unit_type]: id=Huntsman_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:142
 #, fuzzy
 msgid "Peasant Huntsman"
 msgstr "農民の 猟師"
 
-#. [unit_type]
+#. [unit_type]: id=Huntsman_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:147
 #, fuzzy
 msgid ""
@@ -2779,12 +2781,12 @@ msgstr ""
 "り、領土に入って来るもの何でも追跡する事が出来る。 彼らは夜狩ることに 非常に"
 "熟練しています。"
 
-#. [object]
+#. [object]: id={ID}
 #: data/campaigns/Liberty/utils/utils.cfg:62
 msgid "Holy Ankh"
 msgstr "聖なるAnkh"
 
-#. [object]
+#. [object]: id={ID}
 #: data/campaigns/Liberty/utils/utils.cfg:65
 #, fuzzy
 msgid ""
@@ -2794,7 +2796,7 @@ msgstr ""
 "あなたは骨の中で重いペンダントを見つけた。 あなたがそれを拾うと、 それは明る"
 "く照り映えました! "
 
-#. [object]
+#. [object]: id={ID}
 #: data/campaigns/Liberty/utils/utils.cfg:66
 msgid ""
 "There is a strange altar here and a pendant on it. I don't want to touch it."

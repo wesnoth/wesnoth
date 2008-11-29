@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-27 19:52+0100\n"
+"POT-Creation-Date: 2008-11-29 12:23+0100\n"
 "PO-Revision-Date: 2005-12-14 12:40+0200\n"
 "Last-Translator: \n"
 "Language-Team: Afrikaans\n"
@@ -53,8 +53,8 @@ msgstr "Wys Geveg"
 msgid "Only Run Safe Python AIs"
 msgstr ""
 
-#. [time]
-#. [illuminated_time]
+#. [time]: id=underground
+#. [illuminated_time]: id=underground_illum
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:523
 #: data/core/macros/schedules.cfg:77 data/core/macros/schedules.cfg:84
 msgid "Underground"
@@ -67,13 +67,13 @@ msgstr "Ondergronds"
 msgid "poisoned"
 msgstr "vergiftig"
 
-#. [berserk]
+#. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:702
 #: data/core/macros/abilities.cfg:553
 msgid "berserk"
 msgstr "beserk"
 
-#. [berserk]
+#. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:704
 #: data/core/macros/abilities.cfg:555
 msgid ""
@@ -86,13 +86,13 @@ msgstr ""
 "voortduur totdat een van die vegters sneuwel, of 30 rondtes van aanvalle is "
 "verby."
 
-#. [chance_to_hit]
+#. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:717
 #: data/core/macros/abilities.cfg:639
 msgid "magical"
 msgstr "magies"
 
-#. [chance_to_hit]
+#. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:719
 #: data/core/macros/abilities.cfg:641
 #, fuzzy
@@ -104,13 +104,13 @@ msgstr ""
 "Magies:\n"
 "Hierdie aanval het 'n 70 % kans om 'n trefhou te wees."
 
-#. [firststrike]
+#. [firststrike]: id=firststrike
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:731
 #: data/core/macros/abilities.cfg:688
 msgid "firststrike"
 msgstr "eerste trefhou"
 
-#. [firststrike]
+#. [firststrike]: id=firststrike
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:733
 #: data/core/macros/abilities.cfg:690
 msgid ""
@@ -121,21 +121,21 @@ msgstr ""
 "Hierdie eenheid sal altyd eerste slaan met hierdie aanval, selfs al verdedig "
 "hy."
 
-#. [heals]
+#. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:13
 #: data/core/macros/abilities.cfg:10
 #, fuzzy
 msgid "heals +4"
 msgstr "gesondmaak"
 
-#. [heals]
+#. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:14
 #: data/core/macros/abilities.cfg:11
 #, fuzzy
 msgid "female^heals +4"
 msgstr "Dief"
 
-#. [heals]
+#. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:19
 #: data/core/macros/abilities.cfg:16
 #, fuzzy
@@ -160,21 +160,21 @@ msgstr ""
 "genees word nie en moet die sorg van 'n dorp of 'n eenheid wat kan genees "
 "opsoek."
 
-#. [heals]
+#. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:42
 #: data/core/macros/abilities.cfg:30
 #, fuzzy
 msgid "heals +8"
 msgstr "gesondmaak"
 
-#. [heals]
+#. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:43
 #: data/core/macros/abilities.cfg:31
 #, fuzzy
 msgid "female^heals +8"
 msgstr "Dief"
 
-#. [heals]
+#. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:48
 #: data/core/macros/abilities.cfg:36
 #, fuzzy
@@ -246,307 +246,307 @@ msgid "Campaign Design"
 msgstr "Veldtog"
 
 #. [about]
-#: data/core/about.cfg:594
+#: data/core/about.cfg:602
 #, fuzzy
 msgid "Multiplayer Maps and Balancing"
 msgstr "+Veelspeler Kaarte"
 
 #. [about]
-#: data/core/about.cfg:635
+#: data/core/about.cfg:643
 #, fuzzy
 msgid "Packagers"
 msgstr "+Verpakkers"
 
 #. [about]
-#: data/core/about.cfg:701
+#: data/core/about.cfg:709
 #, fuzzy
 msgid "Miscellaneous contributors"
 msgstr "+Algemeen"
 
 #. [about]
-#: data/core/about.cfg:855
+#: data/core/about.cfg:863
 #, fuzzy
 msgid "Internationalization Managers"
 msgstr "+Internasionalisering Bestuurders"
 
 #. [about]
-#: data/core/about.cfg:880
+#: data/core/about.cfg:888
 #, fuzzy
 msgid "English strings edition"
 msgstr "+Engelse (Britse) Vertaling"
 
 #. [about]
-#: data/core/about.cfg:887
+#: data/core/about.cfg:895
 #, fuzzy
 msgid "Afrikaans Translation"
 msgstr "+Afrikaanse Vertaling"
 
 #. [about]
-#: data/core/about.cfg:903
+#: data/core/about.cfg:911
 #, fuzzy
 msgid "Arabic Translation"
 msgstr "+Serwiese Vertaling"
 
 #. [about]
-#: data/core/about.cfg:910
+#: data/core/about.cfg:918
 #, fuzzy
 msgid "Basque Translation"
 msgstr "+Baskiese Vertaling"
 
 #. [about]
-#: data/core/about.cfg:923
+#: data/core/about.cfg:931
 #, fuzzy
 msgid "Bulgarian Translation"
 msgstr "+Bulgaarse Vertaling"
 
 #. [about]
-#: data/core/about.cfg:942
+#: data/core/about.cfg:950
 #, fuzzy
 msgid "Catalan Translation"
 msgstr "+Katalaniese Vertaling"
 
 #. [about]
-#: data/core/about.cfg:980
+#: data/core/about.cfg:988
 #, fuzzy
 msgid "Chinese Translation"
 msgstr "+Sjinese Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1014
+#: data/core/about.cfg:1022
 #, fuzzy
 msgid "Chinese (Taiwan) Translation"
 msgstr "+Sjinese Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1021
+#: data/core/about.cfg:1029
 #, fuzzy
 msgid "Croatian Translation"
 msgstr "+Katalaniese Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1028
+#: data/core/about.cfg:1036
 #, fuzzy
 msgid "Czech Translation"
 msgstr "+Tsjeggiese Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1085
+#: data/core/about.cfg:1093
 #, fuzzy
 msgid "Danish Translation"
 msgstr "+Deense Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1116
+#: data/core/about.cfg:1124
 #, fuzzy
 msgid "Dutch Translation"
 msgstr "+Nederlandse Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1169
+#: data/core/about.cfg:1177
 #, fuzzy
 msgid "English (GB) Translation"
 msgstr "+Engelse (Britse) Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1179
+#: data/core/about.cfg:1187
 #, fuzzy
 msgid "Esperanto Translation"
 msgstr "+Duitse Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1198
+#: data/core/about.cfg:1206
 #, fuzzy
 msgid "Estonian Translation"
 msgstr "+Estniese Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1208
+#: data/core/about.cfg:1216
 #, fuzzy
 msgid "Filipino Translation"
 msgstr "+Finse Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1218
+#: data/core/about.cfg:1226
 #, fuzzy
 msgid "Finnish Translation"
 msgstr "+Finse Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1258
+#: data/core/about.cfg:1266
 #, fuzzy
 msgid "French Translation"
 msgstr "+Franse Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1381
+#: data/core/about.cfg:1389
 #, fuzzy
 msgid "Friulian Translation"
 msgstr "+Finse Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1388
+#: data/core/about.cfg:1396
 #, fuzzy
 msgid "Galician Translation"
 msgstr "+Sloweense Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1423
+#: data/core/about.cfg:1431
 #, fuzzy
 msgid "German Translation"
 msgstr "+Duitse Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1471
+#: data/core/about.cfg:1479
 #, fuzzy
 msgid "Greek Translation"
 msgstr "+Griekse Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1502
+#: data/core/about.cfg:1510
 #, fuzzy
 msgid "Hebrew Translation"
 msgstr "+Hebreeuse Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1512
+#: data/core/about.cfg:1520
 #, fuzzy
 msgid "Hungarian Translation"
 msgstr "+Hongaarse Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1582
+#: data/core/about.cfg:1590
 #, fuzzy
 msgid "Indonesian Translation"
 msgstr "+Estniese Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1589
+#: data/core/about.cfg:1597
 #, fuzzy
 msgid "Italian Translation"
 msgstr "+Italiaanse Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1624
+#: data/core/about.cfg:1632
 #, fuzzy
 msgid "Japanese Translation"
 msgstr "+Japannese Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1650
+#: data/core/about.cfg:1658
 #, fuzzy
 msgid "Korean Translation"
 msgstr "+Noorweegse Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1657
+#: data/core/about.cfg:1665
 #, fuzzy
 msgid "Latin Translation"
 msgstr "+Latynse Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1664
+#: data/core/about.cfg:1672
 #, fuzzy
 msgid "Latvian Translation"
 msgstr "+Latynse Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1671
+#: data/core/about.cfg:1679
 #, fuzzy
 msgid "Lithuanian Translation"
 msgstr "+Italiaanse Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1679
+#: data/core/about.cfg:1687
 #, fuzzy
 msgid "Macedonian Translation"
 msgstr "+Estniese Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1686
+#: data/core/about.cfg:1694
 #, fuzzy
 msgid "Norwegian Translation"
 msgstr "+Noorweegse Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1708
+#: data/core/about.cfg:1716
 #, fuzzy
 msgid "Polish Translation"
 msgstr "+Poolse Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1757
+#: data/core/about.cfg:1765
 #, fuzzy
 msgid "Portuguese Translation"
 msgstr "+Portugese Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1764
+#: data/core/about.cfg:1772
 #, fuzzy
 msgid "Portuguese (Brazil) Translation"
 msgstr "+Portugese (Brasiliaanse) Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1799
+#: data/core/about.cfg:1807
 #, fuzzy
 msgid "Romanian Translation"
 msgstr "+Estniese Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1807
+#: data/core/about.cfg:1815
 #, fuzzy
 msgid "Russian Translation"
 msgstr "+Russiese Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1843
+#: data/core/about.cfg:1851
 #, fuzzy
 msgid "Serbian Translation"
 msgstr "+Serwiese Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1858
+#: data/core/about.cfg:1866
 #, fuzzy
 msgid "Slovak Translation"
 msgstr "+Slowaakse Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1884
+#: data/core/about.cfg:1892
 #, fuzzy
 msgid "Slovenian Translation"
 msgstr "+Sloweense Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1894
+#: data/core/about.cfg:1902
 #, fuzzy
 msgid "Spanish Translation"
 msgstr "+Spaanse Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1942
+#: data/core/about.cfg:1950
 #, fuzzy
 msgid "Swedish Translation"
 msgstr "+Sweedse Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1971
+#: data/core/about.cfg:1979
 #, fuzzy
 msgid "Turkish Translation"
 msgstr "+Turkse Vertaling"
 
 #. [about]
-#: data/core/about.cfg:1993
+#: data/core/about.cfg:2001
 #, fuzzy
 msgid "Valencian (southern Catalan) Translation"
 msgstr "+Sloweense Vertaling"
 
 #. [about]
-#: data/core/about.cfg:2006
+#: data/core/about.cfg:2014
 #, fuzzy
 msgid "RACV's Translation"
 msgstr "+Sjinese Vertaling"
 
 #. [about]
-#: data/core/about.cfg:2013
+#: data/core/about.cfg:2021
 #, fuzzy
 msgid "Bots"
 msgstr "+Internet Robot"
@@ -557,57 +557,57 @@ msgstr "+Internet Robot"
 msgid "DejaVuSans.ttf,sazanami-gothic.ttf,wqy-zenhei-gb2312.ttf"
 msgstr "DejaVuSans.ttf,sazanami-gothic.ttf,gkai00mp.ttf"
 
-#. [section]
-#. [topic]
+#. [section]: id=introduction
+#. [topic]: id=..introduction
 #: data/core/help.cfg:21 data/core/help.cfg:80
 msgid "Introduction"
 msgstr "Inleiding"
 
-#. [section]
-#. [topic]
+#. [section]: id=gameplay
+#. [topic]: id=..gameplay
 #: data/core/help.cfg:27 data/core/help.cfg:128
 msgid "Gameplay"
 msgstr "Spel-omstandighede"
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
-#. [section]
-#. [topic]
+#. [section]: id=traits_section
+#. [topic]: id=..traits_section
 #: data/core/help.cfg:33 data/core/help.cfg:348 src/menu_events.cpp:991
 msgid "Traits"
 msgstr "Karaktertrekke"
 
-#. [section]
-#. [topic]
+#. [section]: id=units
+#. [topic]: id=..units
 #: data/core/help.cfg:42 data/core/help.cfg:86
 msgid "Units"
 msgstr "Eenhede"
 
-#. [section]
-#. [topic]
+#. [section]: id=abilities_section
+#. [topic]: id=..abilities_section
 #: data/core/help.cfg:51 data/core/help.cfg:92
 msgid "Abilities"
 msgstr "Vaardighede"
 
-#. [section]
-#. [topic]
+#. [section]: id=weapon_specials
+#. [topic]: id=..weapon_specials
 #: data/core/help.cfg:59 data/core/help.cfg:101
 msgid "Weapon Specials"
 msgstr "Wapen Bonusse"
 
-#. [section]
-#. [topic]
+#. [section]: id=terrains
+#. [topic]: id=..terrains
 #: data/core/help.cfg:67 data/core/help.cfg:440
 msgid "Terrains"
 msgstr "Terreine"
 
-#. [section]
-#. [topic]
+#. [section]: id=commands
+#. [topic]: id=..commands
 #: data/core/help.cfg:74 data/core/help.cfg:730
 #, fuzzy
 msgid "Commands"
 msgstr "Bevelvoerder"
 
-#. [topic]
+#. [topic]: id=..abilities_section
 #: data/core/help.cfg:95
 #, fuzzy
 msgid ""
@@ -620,7 +620,7 @@ msgstr ""
 "invloed het op hoe die eenheid op ander eenhede reageer. Hierdie vermoëns "
 "sal onder hierdie onderwerp gelys word wanneer jy hulle teëkom."
 
-#. [topic]
+#. [topic]: id=..weapon_specials
 #: data/core/help.cfg:104
 msgid ""
 "Some weapons have special features that increase the effectiveness of "
@@ -628,13 +628,13 @@ msgid ""
 "\n"
 msgstr ""
 
-#. [topic]
+#. [topic]: id=.unknown_unit
 #: data/core/help.cfg:111
 #, fuzzy
 msgid "Unknown Unit"
 msgstr "Onbekende scenario: '"
 
-#. [topic]
+#. [topic]: id=.unknown_unit
 #: data/core/help.cfg:114
 msgid ""
 "\n"
@@ -643,12 +643,12 @@ msgid ""
 "allowed to see its description."
 msgstr ""
 
-#. [topic]
+#. [topic]: id=introduction_topic
 #: data/core/help.cfg:119
 msgid "Overview"
 msgstr "Oorsig"
 
-#. [topic]
+#. [topic]: id=introduction_topic
 #: data/core/help.cfg:122
 msgid ""
 "\n"
@@ -668,12 +668,12 @@ msgstr ""
 "van hierdie eenvoudingheid kom 'n magdom van strategie, wat die spel maklik "
 "maak om te leer, maar dit 'n uitdaging maak om te bemeester."
 
-#. [topic]
+#. [topic]: id=fundamentals
 #: data/core/help.cfg:134
 msgid "Fundamentals of Gameplay"
 msgstr "Beginsels van die Spel"
 
-#. [topic]
+#. [topic]: id=fundamentals
 #: data/core/help.cfg:135
 msgid ""
 "These pages outline all you need to know to play Battle for Wesnoth. They "
@@ -689,7 +689,7 @@ msgstr ""
 "besonderhede oor spesiale situasies en uitsonderings, volg die skakels wat "
 "ingesluit is."
 
-#. [topic]
+#. [topic]: id=fundamentals
 #: data/core/help.cfg:137
 msgid ""
 "\n"
@@ -712,7 +712,7 @@ msgstr ""
 "uitdaging kan wees, beveel ons aan dat jy die <italic>text=Maklik</italic> "
 "moeilikheidsgraad eerste probeer."
 
-#. [topic]
+#. [topic]: id=fundamentals
 #: data/core/help.cfg:140
 #, fuzzy
 msgid ""
@@ -728,12 +728,12 @@ msgstr ""
 "nuttig wanneer jy nuwe <ref>dst=abilities text=vermoëns</ref> vir die eerste "
 "keer teëkom."
 
-#. [topic]
+#. [topic]: id=about_game
 #: data/core/help.cfg:145
 msgid "About the Game"
 msgstr "Meer omtrent die Spel"
 
-#. [topic]
+#. [topic]: id=about_game
 #: data/core/help.cfg:146
 msgid ""
 "The game takes place over a series of battles, called scenarios. Each "
@@ -752,7 +752,7 @@ msgstr ""
 "jou rekenar 'n verbinding tot die internet het, kan jy teen ander oor die "
 "internet speel."
 
-#. [topic]
+#. [topic]: id=about_game
 #: data/core/help.cfg:148
 msgid ""
 "\n"
@@ -769,12 +769,12 @@ msgstr ""
 "troepe bewaar sodat hulle in latere scenarios in die veldtog gebruik kan "
 "word."
 
-#. [topic]
+#. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:154
 msgid "Victory and Defeat"
 msgstr ""
 
-#. [topic]
+#. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:155
 msgid ""
 "Pay careful attention to the Objectives pop-up box at the beginning of each "
@@ -785,7 +785,7 @@ msgid ""
 "a certain number of turns have elapsed."
 msgstr ""
 
-#. [topic]
+#. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:157
 msgid ""
 "\n"
@@ -796,12 +796,12 @@ msgid ""
 "before pressing that button to advance."
 msgstr ""
 
-#. [topic]
+#. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:164
 msgid "Recruiting and Recalling"
 msgstr "Werwing en Terugroeping"
 
-#. [topic]
+#. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:165
 #, fuzzy
 msgid ""
@@ -827,7 +827,7 @@ msgstr ""
 "gelys word asook hoeveel hulle kos in terme van goud. Kliek op 'n eenheid om "
 "sy statistieke te vertoon, en kliek dan op die werf knop op hom te werf."
 
-#. [topic]
+#. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:167
 msgid ""
 "\n"
@@ -845,7 +845,7 @@ msgstr ""
 "wat jy leë heksagonale in jou kasteel beskikbaar het en jy kan nie meer goud "
 "spandeer as wat jy werklik beskikbaar het nie."
 
-#. [topic]
+#. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:169
 #, fuzzy
 msgid ""
@@ -859,7 +859,7 @@ msgstr ""
 "Gewerfde eenhede kom met willekeurige <ref>dst=traits text=Eienskappe</ref> "
 "wat hulle statistieke sal verander."
 
-#. [topic]
+#. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:171
 msgid ""
 "\n"
@@ -874,7 +874,7 @@ msgstr ""
 "Terugroep kos 'n standaard bedrag van 20 goud en gee jou die keuse van "
 "oorlewende eenhede uit vorige scenarios."
 
-#. [topic]
+#. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:173
 #, fuzzy
 msgid ""
@@ -890,12 +890,12 @@ msgstr ""
 "ook geld om te ondersteun. Sien <ref>dst=income_and_upkeep text='Inkomste en "
 "Onderhoud'</ref> vir meer inligting."
 
-#. [topic]
+#. [topic]: id=orbs
 #: data/core/help.cfg:180
 msgid "Orbs"
 msgstr "Orbe"
 
-#. [topic]
+#. [topic]: id=orbs
 #: data/core/help.cfg:181
 msgid ""
 "On top of the energy bar shown next to each unit of yours is an orb. For "
@@ -904,37 +904,37 @@ msgstr ""
 "Bo die energie wyser by elke eenheid is 'n orb. Vir eenhede wat joune is, is "
 "hierdie orb:"
 
-#. [topic]
+#. [topic]: id=orbs
 #: data/core/help.cfg:182
 msgid "green if it hasn't moved this turn,"
 msgstr "groen as dit nie hierdie beurt beweeg het nie,"
 
-#. [topic]
+#. [topic]: id=orbs
 #: data/core/help.cfg:183
 msgid "yellow if it has moved, but could still move further or attack, or"
 msgstr "geel as dit beweeg het maar nog verder kan beweeg of aanval, of"
 
-#. [topic]
+#. [topic]: id=orbs
 #: data/core/help.cfg:184
 msgid "red if it has used all its movement this turn."
 msgstr "rooi as dit al sy moontlike bewegings vir die beurt opgebruik het."
 
-#. [topic]
+#. [topic]: id=orbs
 #: data/core/help.cfg:185
 msgid "The orb is blue if the unit is an ally you do not control."
 msgstr "Die orb is blou as die eenheid 'n bondgenoot is wat jy nie beheer nie."
 
-#. [topic]
+#. [topic]: id=orbs
 #: data/core/help.cfg:186
 msgid "Enemy units have no orb on top of their energy bar."
 msgstr "Vyandige eenhede het geen orb bo hulle energiewyser nie."
 
-#. [topic]
+#. [topic]: id=hitpoints
 #: data/core/help.cfg:193
 msgid "Hitpoints and Experience"
 msgstr "Lewenspunte en Ervaring"
 
-#. [topic]
+#. [topic]: id=hitpoints
 #: data/core/help.cfg:194
 msgid ""
 "Each unit has a certain number of hitpoints (HP). If the hitpoints of a unit "
@@ -947,7 +947,7 @@ msgstr ""
 "sekere aantal ervaringspunte (EP). 'n Vars gewerfde eenheid begin met geen "
 "ervaringspunte en doen ervaring op deur met vyande te veg."
 
-#. [topic]
+#. [topic]: id=hitpoints
 #: data/core/help.cfg:198
 msgid ""
 "The hitpoints and experience points are both indicated in the status pane "
@@ -958,7 +958,7 @@ msgstr ""
 "twee getalle gebruik te maak (die huidige waarde en die maksimum waarde wat "
 "die eenheid kan hê)."
 
-#. [topic]
+#. [topic]: id=hitpoints
 #: data/core/help.cfg:199
 #, fuzzy
 msgid ""
@@ -972,12 +972,12 @@ msgstr ""
 "het 'n blou ervaringswyser wat wit word as die eenheid op die punt is om "
 "<ref>dst=experience_and_advancement text=bevorder</ref> te word."
 
-#. [topic]
+#. [topic]: id=movement
 #: data/core/help.cfg:206
 msgid "Movement"
 msgstr "Beweging"
 
-#. [topic]
+#. [topic]: id=movement
 #: data/core/help.cfg:207
 #, fuzzy
 msgid ""
@@ -1004,7 +1004,7 @@ msgstr ""
 "vertoon word en deur daarop te kliek sal veroorsaak dat die eenheid na die "
 "blok sou beweeg op die vinnigste roete oor die opvolgende beurte."
 
-#. [topic]
+#. [topic]: id=movement
 #: data/core/help.cfg:209
 msgid ""
 "\n"
@@ -1032,7 +1032,7 @@ msgstr ""
 "Beskrywing te kies en deur dan na die <italic>text='Terrein Veranderlikes'</"
 "italic> te kyk."
 
-#. [topic]
+#. [topic]: id=movement
 #: data/core/help.cfg:211
 #, fuzzy
 msgid ""
@@ -1054,7 +1054,7 @@ msgstr ""
 "deel van Wesnoth, aangesien slegs <ref>dst=ability_skirmisher "
 "text='Skermutselaars'</ref> beheersones kan ignoreer."
 
-#. [topic]
+#. [topic]: id=movement
 #: data/core/help.cfg:213
 msgid ""
 "\n"
@@ -1069,12 +1069,12 @@ msgstr ""
 "v of Cmd-V. Ctrl-b of Cmd-b wys waarheen die vyand kan beweeg as jou eenhede "
 "nie op die kaart was om hulle bewegings te beperk nie."
 
-#. [topic]
+#. [topic]: id=shroud_and_fog
 #: data/core/help.cfg:220
 msgid "Shroud and Fog of War"
 msgstr ""
 
-#. [topic]
+#. [topic]: id=shroud_and_fog
 #: data/core/help.cfg:223
 msgid ""
 "In some scenarios, parts of the map will be hidden from you. There are two "
@@ -1097,12 +1097,12 @@ msgid ""
 "thereby perserve your ability to undo movement."
 msgstr ""
 
-#. [topic]
+#. [topic]: id=combat
 #: data/core/help.cfg:230
 msgid "Combat"
 msgstr "Gevegte"
 
-#. [topic]
+#. [topic]: id=combat
 #: data/core/help.cfg:231
 msgid ""
 "Combat in Battle for Wesnoth always takes place between units in adjacent "
@@ -1125,7 +1125,7 @@ msgstr ""
 "handgevegte, wat gewoonlik wapens soos swaarde, byle of tande insluit en "
 "afstandgevegte wat gewoonlik wapens soos boë, spiese en vuurballe insluit."
 
-#. [topic]
+#. [topic]: id=combat
 #: data/core/help.cfg:233
 msgid ""
 "\n"
@@ -1136,7 +1136,7 @@ msgstr ""
 "\n"
 "<header>text='Volgorde en aantal trefhoue'</header>"
 
-#. [topic]
+#. [topic]: id=combat
 #: data/core/help.cfg:235
 msgid ""
 "\n"
@@ -1159,7 +1159,7 @@ msgstr ""
 "skade toe, terwyl 'n Orcish Grunt met 'n 9-2 aanval slegs twee keer kan "
 "slaan (maar skade van 9 punte vir elke trefhou kan toedien)."
 
-#. [topic]
+#. [topic]: id=combat
 #: data/core/help.cfg:237
 msgid ""
 "\n"
@@ -1170,7 +1170,7 @@ msgstr ""
 "\n"
 "<header>text='Kans om te tref'</header>"
 
-#. [topic]
+#. [topic]: id=combat
 #: data/core/help.cfg:239
 msgid ""
 "\n"
@@ -1194,7 +1194,7 @@ msgstr ""
 "hang die elf se kanse om die aanvaller te tref af van die terrein waarin die "
 "aanvaller hom bevind."
 
-#. [topic]
+#. [topic]: id=combat
 #: data/core/help.cfg:241
 #, fuzzy
 msgid ""
@@ -1215,7 +1215,7 @@ msgstr ""
 "gebruik word, het Skerpskutters altyd ten minste 'n 60% kans om te tref, "
 "ongeag die terrein."
 
-#. [topic]
+#. [topic]: id=combat
 #: data/core/help.cfg:243
 msgid ""
 "\n"
@@ -1226,7 +1226,7 @@ msgstr ""
 "\n"
 "<header>text=Skade</header>"
 
-#. [topic]
+#. [topic]: id=combat
 #: data/core/help.cfg:245
 #, fuzzy
 msgid ""
@@ -1250,7 +1250,7 @@ msgstr ""
 "skadepunte verander word deur die omstandighede, kies "
 "<italic>text='Skadeberekenings'</italic> in die aanvalkeusebalk."
 
-#. [topic]
+#. [topic]: id=combat
 #: data/core/help.cfg:247
 #, fuzzy
 msgid ""
@@ -1269,12 +1269,12 @@ msgstr ""
 "die aanvaller en verdediger verdubbel wanneer 'n eenheid wat kan Storm "
 "aanval."
 
-#. [topic]
+#. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:253
 msgid "Damage Types and Resistance"
 msgstr "Soorte Skade en Weerstand"
 
-#. [topic]
+#. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:254
 #, fuzzy
 msgid ""
@@ -1290,7 +1290,7 @@ msgstr ""
 "aanvalle. Verskillende eenhede mag weerstande hê wat die hoeveelheid skade "
 "verander wat sekere soorte skades mag aanrig."
 
-#. [topic]
+#. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:256
 msgid ""
 "\n"
@@ -1310,7 +1310,7 @@ msgstr ""
 "weerstand het teen 'n sekere soort skade, sal dit 100% meer skade ly wanneer "
 "dit deur 'n wapen getref word wat daardie soort skade veroorsaak."
 
-#. [topic]
+#. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:258
 #, fuzzy
 msgid ""
@@ -1325,7 +1325,7 @@ msgstr ""
 "Geraamtes het byvoorbeeld 'n baie hoë weerstand teen Sny en Steekskade maar "
 "is vatbaar vir Impak of Brandskade en uiters vatbaar vir Heilige skade."
 
-#. [topic]
+#. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:260
 msgid ""
 "\n"
@@ -1339,12 +1339,12 @@ msgstr ""
 "As 'n hou getref het, sal dit altyd ten minste 1 punt skade aanrig. Dit geld "
 "selfs al het die verdediger 'n 100% weerstand teen hierdie soort skade."
 
-#. [topic]
+#. [topic]: id=time_of_day
 #: data/core/help.cfg:266
 msgid "Time of Day"
 msgstr "Tyd van die Dag"
 
-#. [topic]
+#. [topic]: id=time_of_day
 #: data/core/help.cfg:270
 msgid ""
 "The time of day affects the damage of certain units as follows:\n"
@@ -1358,7 +1358,7 @@ msgstr ""
 " Chaotiese eenhede kry +25% skade in die nag en -25% skade in die dag.\n"
 " Neutrale eenhede word nie deur die tyd van die dag beïnvloed nie."
 
-#. [topic]
+#. [topic]: id=time_of_day
 #: data/core/help.cfg:273
 msgid ""
 "\n"
@@ -1373,43 +1373,43 @@ msgstr ""
 "die statuspaneel. Vir die gewone dag/nag siklus, Oggend en Namiddag tel as "
 "dag, Eerste- en Tweede Wag tel as nag:\n"
 
-#. [time]
-#. [topic]
+#. [time]: id=dawn
+#. [topic]: id=time_of_day
 #: data/core/help.cfg:273 data/core/macros/schedules.cfg:7
 msgid "Dawn"
 msgstr "Dagbreek"
 
-#. [time]
-#. [topic]
+#. [time]: id=morning
+#. [topic]: id=time_of_day
 #: data/core/help.cfg:274 data/core/macros/schedules.cfg:19
 msgid "Morning"
 msgstr "Oggend"
 
-#. [time]
-#. [topic]
+#. [time]: id=afternoon
+#. [topic]: id=time_of_day
 #: data/core/help.cfg:275 data/core/macros/schedules.cfg:29
 msgid "Afternoon"
 msgstr "Namiddag"
 
-#. [time]
-#. [topic]
+#. [time]: id=dusk
+#. [topic]: id=time_of_day
 #: data/core/help.cfg:276 data/core/macros/schedules.cfg:39
 msgid "Dusk"
 msgstr "Skemer"
 
-#. [time]
-#. [topic]
+#. [time]: id=first_watch
+#. [topic]: id=time_of_day
 #: data/core/help.cfg:277 data/core/macros/schedules.cfg:51
 msgid "First Watch"
 msgstr "Eerste Wag"
 
-#. [time]
-#. [topic]
+#. [time]: id=second_watch
+#. [topic]: id=time_of_day
 #: data/core/help.cfg:278 data/core/macros/schedules.cfg:64
 msgid "Second Watch"
 msgstr "Tweede Wag"
 
-#. [topic]
+#. [topic]: id=time_of_day
 #: data/core/help.cfg:280
 msgid ""
 "Keep in mind that some scenarios take place underground, where it is "
@@ -1418,12 +1418,12 @@ msgstr ""
 "Hou in gedagte dat sommige scenarios ondergronds plaasvind waar dit "
 "voortdurend nag is!"
 
-#. [topic]
+#. [topic]: id=experience_and_advancement
 #: data/core/help.cfg:287
 msgid "Experience and Advancement"
 msgstr "Ervaring en Bevordering"
 
-#. [topic]
+#. [topic]: id=experience_and_advancement
 #: data/core/help.cfg:288
 msgid ""
 "If both units survive a combat, they gain a number of experience points "
@@ -1437,7 +1437,7 @@ msgstr ""
 "vir 'n vlak 0 eenheid, 8 vir 'n vlak 1, 16 vir 'n vlak 2, 24 vir 'n vlak 3 "
 "eenheid ensovoorts."
 
-#. [topic]
+#. [topic]: id=experience_and_advancement
 #: data/core/help.cfg:290
 msgid ""
 "\n"
@@ -1456,7 +1456,7 @@ msgstr ""
 "gevalle sal jy 'n keuse gebied word tussen verskillende opsies vir "
 "bevordering."
 
-#. [topic]
+#. [topic]: id=experience_and_advancement
 #: data/core/help.cfg:292
 #, fuzzy
 msgid ""
@@ -1486,12 +1486,12 @@ msgstr ""
 "van die NMVB effek. Die meeste eenhede kry slegs die bonus by die Maksimum "
 "LP."
 
-#. [topic]
+#. [topic]: id=healing
 #: data/core/help.cfg:299
 msgid "Healing"
 msgstr "Gesondmaak-krag"
 
-#. [topic]
+#. [topic]: id=healing
 #: data/core/help.cfg:300
 #, fuzzy
 msgid ""
@@ -1508,7 +1508,7 @@ msgstr ""
 "genees te word, almal waarvan aan die begin van jou beurt plaasvind voordat "
 "jy aksie neem."
 
-#. [topic]
+#. [topic]: id=healing
 #: data/core/help.cfg:302
 #, fuzzy
 msgid ""
@@ -1522,7 +1522,7 @@ msgstr ""
 "Rus: 'n Eenheid wat nie beweeg, aanval of aangeval word nie sal met 2LP in "
 "sy volgende beurt genees word."
 
-#. [topic]
+#. [topic]: id=healing
 #: data/core/help.cfg:303
 msgid ""
 "\n"
@@ -1531,7 +1531,7 @@ msgstr ""
 "\n"
 "Dorpies: 'n Eenheid wat 'n beurt in 'n dorp begin sal met 8LP herstel."
 
-#. [topic]
+#. [topic]: id=healing
 #: data/core/help.cfg:304
 #, fuzzy
 msgid ""
@@ -1543,7 +1543,7 @@ msgstr ""
 "<ref>dst=ability_regenerates text=Herlewing</ref>: Sekere eenhede (soos die "
 "trolle) sal outomaties met 8LP herstel met elke beurt."
 
-#. [topic]
+#. [topic]: id=healing
 #: data/core/help.cfg:305
 #, fuzzy
 msgid ""
@@ -1559,7 +1559,7 @@ msgstr ""
 "kan voorkom. Slegs eenhede wat langs en aan dieselfde kant veg as die "
 "Gesondmaak eenheid kan genees word en slegs met 4LP per eenheid."
 
-#. [topic]
+#. [topic]: id=healing
 #: data/core/help.cfg:306
 #, fuzzy
 msgid ""
@@ -1575,7 +1575,7 @@ msgstr ""
 "as die genesende eenheid sal genees word en ook net tot op 'n maksimum van "
 "8LP per eenheid."
 
-#. [topic]
+#. [topic]: id=healing
 #: data/core/help.cfg:308
 #, fuzzy
 msgid ""
@@ -1593,12 +1593,12 @@ msgstr ""
 "gewondes sal minder doeltreffend wees met die gesondmaak van individuele "
 "wonde. Ten laaste sal alle eenhede ten volle herstel tussen scenarios."
 
-#. [topic]
+#. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:315
 msgid "Income and Upkeep"
 msgstr "Inkomste en Onderhoud"
 
-#. [topic]
+#. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:316
 msgid ""
 "In Wesnoth, it is not enough simply to recruit units and fight. You must "
@@ -1611,7 +1611,7 @@ msgstr ""
 "van een scenario na 'n volgende kan oordra. Daar is twee aspekte wat oorweeg "
 "moet word; Inkomste en Onderhoud."
 
-#. [topic]
+#. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:318
 #, fuzzy
 msgid ""
@@ -1630,7 +1630,7 @@ msgstr ""
 "Onderhoudskoste word vanaf hierdie inkomste afgetrek soos hieronder "
 "uiteengesit."
 
-#. [topic]
+#. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:320
 msgid ""
 "\n"
@@ -1652,7 +1652,7 @@ msgstr ""
 "vlak een eenhede en tien dorpe het, sal jy twee goud se onderhoud per beurt "
 "moet betaal."
 
-#. [topic]
+#. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:322
 #, fuzzy
 msgid ""
@@ -1668,7 +1668,7 @@ msgstr ""
 "twaalf vlakke vir eenhede het en tien dorpe besit, sal jou gevolglike "
 "Inkomste 10 goud per beurt wees."
 
-#. [topic]
+#. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:323
 #, fuzzy
 msgid ""
@@ -1687,12 +1687,12 @@ msgstr ""
 "tydens 'n scenario (soos die Ruiter in die tweede scenario van "
 "Troonopvolger) sal gewoonlik die Lojaliteit karaktertrek hê."
 
-#. [topic]
+#. [topic]: id=wrap_up
 #: data/core/help.cfg:329
 msgid "Wrap Up"
 msgstr "Maak Klaar"
 
-#. [topic]
+#. [topic]: id=wrap_up
 #: data/core/help.cfg:330
 #, fuzzy
 msgid ""
@@ -1708,17 +1708,17 @@ msgstr ""
 "alles wat nodig is om te weet om die Troonopvolger scenario te kan speel. "
 "Sterkte en geniet dit!"
 
-#. [topic]
+#. [topic]: id=about
 #: data/core/help.cfg:335
 msgid "ingame_help_item^Contributors"
 msgstr ""
 
-#. [topic]
+#. [topic]: id=license
 #: data/core/help.cfg:341
 msgid "License"
 msgstr "Lisensie"
 
-#. [topic]
+#. [topic]: id=..traits_section
 #: data/core/help.cfg:350
 msgid ""
 "Most units have two traits. However, Undead units are assigned the single "
@@ -1732,7 +1732,7 @@ msgstr ""
 "se eienskappe effens aanpas. Hulle word gewoonlik willekeurig aan 'n eenheid "
 "toegeken wanneer dit gewerf word."
 
-#. [topic]
+#. [topic]: id=..traits_section
 #: data/core/help.cfg:352
 #, fuzzy
 msgid ""
@@ -1750,7 +1750,7 @@ msgstr ""
 "<ref>dst=traits_quick text=Vinnig</ref>, <ref>dst=traits_resilient "
 "text=Volharding</ref> en <ref>dst=traits_strong text=Sterk</ref>."
 
-#. [topic]
+#. [topic]: id=..traits_section
 #: data/core/help.cfg:356
 #, fuzzy
 msgid ""
@@ -1767,19 +1767,19 @@ msgstr ""
 "<ref>dst=traits_loyal text=Lojaal</ref>, <ref>dst=traits_undead "
 "text='Wandelende Dood'</ref> en <ref>dst=traits_dextrous text=Behendig</ref>"
 
-#. [topic]
+#. [topic]: id=traits_intelligent
 #: data/core/help.cfg:362
 msgid "Intelligent"
 msgstr "Intelligent"
 
-#. [topic]
+#. [topic]: id=traits_intelligent
 #: data/core/help.cfg:363
 msgid "Intelligent units require 20% less experience than usual to advance."
 msgstr ""
 "Intelligente eenhede vereis 20% minder ervaring as gewoonlik om bevorder te "
 "word."
 
-#. [topic]
+#. [topic]: id=traits_intelligent
 #: data/core/help.cfg:365
 msgid ""
 "\n"
@@ -1799,19 +1799,19 @@ msgstr ""
 "is nie. As jy baie 'maksimum vlak' eenhede het mag jy dalk eenhede wil "
 "herroep met meer gewensde karaktertrekke."
 
-#. [topic]
+#. [topic]: id=traits_quick
 #: data/core/help.cfg:370
 msgid "Quick"
 msgstr "Vinnig"
 
-#. [topic]
+#. [topic]: id=traits_quick
 #: data/core/help.cfg:371
 #, fuzzy
 msgid "Quick units have 1 extra movement point, but 5% less HP than usual."
 msgstr ""
 "Vinnige eenhede het 1 ekstra bewegingspunt maar 10% minder LP as gewoonlik."
 
-#. [topic]
+#. [topic]: id=traits_quick
 #: data/core/help.cfg:373
 msgid ""
 "\n"
@@ -1832,18 +1832,18 @@ msgstr ""
 "nie so taai soos eenhede wat nie hierdie karaktertrek het nie en is dus "
 "minder goed om bestrede posisies te behou."
 
-#. [topic]
+#. [topic]: id=traits_resilient
 #: data/core/help.cfg:378
 msgid "Resilient"
 msgstr "Volharding"
 
-#. [topic]
+#. [topic]: id=traits_resilient
 #: data/core/help.cfg:379
 #, fuzzy
 msgid "Resilient units have 4 HP plus 1 HP per level more than usual."
 msgstr "Volhardingseenhede het 7 meer LP as gewoonlik."
 
-#. [topic]
+#. [topic]: id=traits_resilient
 #: data/core/help.cfg:381
 msgid ""
 "\n"
@@ -1862,12 +1862,12 @@ msgstr ""
 "verdediging of hoe weerstand het. Volhardingseenhede is veral nuttig vir die "
 "hou van strategiese posisies teen teenstanders."
 
-#. [topic]
+#. [topic]: id=traits_strong
 #: data/core/help.cfg:386
 msgid "Strong"
 msgstr "Sterk"
 
-#. [topic]
+#. [topic]: id=traits_strong
 #: data/core/help.cfg:387
 #, fuzzy
 msgid ""
@@ -1877,7 +1877,7 @@ msgstr ""
 "Sterk eenhede veroorsaak 1 meer skade vir elke suksesvolle hou in 'n "
 "handgeveg en het 2 meer LP."
 
-#. [topic]
+#. [topic]: id=traits_strong
 #: data/core/help.cfg:389
 msgid ""
 "\n"
@@ -1894,22 +1894,22 @@ msgstr ""
 "baie nuttig wees wanneer 'n klein bietjie ekstra skade al is wat nodig is om "
 "'n hou wat skade veroorsaak in 'n noodlottige hou te verander."
 
-#. [topic]
+#. [topic]: id=traits_fearless
 #: data/core/help.cfg:394
 msgid "Fearless"
 msgstr ""
 
-#. [topic]
+#. [topic]: id=traits_fearless
 #: data/core/help.cfg:395
 msgid "Aversion to light and dark holds no sway over these brave individuals."
 msgstr ""
 
-#. [topic]
+#. [topic]: id=traits_loyal
 #: data/core/help.cfg:400
 msgid "Loyal"
 msgstr "Lojaal"
 
-#. [topic]
+#. [topic]: id=traits_loyal
 #: data/core/help.cfg:401
 msgid ""
 "Loyal units don't incur upkeep. Most units incur an upkeep cost at the end "
@@ -1920,7 +1920,7 @@ msgstr ""
 "gelykstaande aan hulle vlak, aan die einde van 'n beurt. Lojaal eenhede "
 "vereis nie die koste nie."
 
-#. [topic]
+#. [topic]: id=traits_loyal
 #: data/core/help.cfg:403
 msgid ""
 "\n"
@@ -1942,13 +1942,13 @@ msgstr ""
 "nooit aan gewerfde eenhede toegeken nie, dit sal dus onwys wees om hulle te "
 "ontslaan of na 'n onnodige dood te stuur."
 
-#. [topic]
+#. [topic]: id=traits_undead
 #: data/core/help.cfg:408
 #, fuzzy
 msgid "trait^Undead"
 msgstr "Wandelende dooies"
 
-#. [topic]
+#. [topic]: id=traits_undead
 #: data/core/help.cfg:409
 #, fuzzy
 msgid ""
@@ -1956,7 +1956,7 @@ msgid ""
 "them."
 msgstr "Wandelende dooie eenhede is immuun teen gif."
 
-#. [topic]
+#. [topic]: id=traits_undead
 #: data/core/help.cfg:411
 msgid ""
 "\n"
@@ -1974,12 +1974,12 @@ msgstr ""
 "hulle onmisbaar maak wanneer daar met vyande afgereken moet word wat gif as "
 "deel van hulle aanvalstrategie gebruik."
 
-#. [topic]
+#. [topic]: id=traits_mechanical
 #: data/core/help.cfg:416
 msgid "trait^Mechanical"
 msgstr ""
 
-#. [topic]
+#. [topic]: id=traits_mechanical
 #: data/core/help.cfg:417
 #, fuzzy
 msgid ""
@@ -1987,7 +1987,7 @@ msgid ""
 "them."
 msgstr "Wandelende dooie eenhede is immuun teen gif."
 
-#. [topic]
+#. [topic]: id=traits_mechanical
 #: data/core/help.cfg:419
 msgid ""
 "\n"
@@ -1997,12 +1997,12 @@ msgid ""
 "effect upon them."
 msgstr ""
 
-#. [topic]
+#. [topic]: id=traits_dextrous
 #: data/core/help.cfg:424
 msgid "Dextrous"
 msgstr "Behendig"
 
-#. [topic]
+#. [topic]: id=traits_dextrous
 #: data/core/help.cfg:425
 #, fuzzy
 msgid ""
@@ -2010,7 +2010,7 @@ msgid ""
 msgstr ""
 "Behendige Eenhede rig 1 punt meer skade aan vir elke trefhou met 'n boog."
 
-#. [topic]
+#. [topic]: id=traits_dextrous
 #: data/core/help.cfg:427
 msgid ""
 "\n"
@@ -2027,19 +2027,19 @@ msgstr ""
 "van die talente as sommige van hulle ras. Hierdie buitengewoone Elwe se pyle "
 "veroorsaak 'n addisionele punt se skade."
 
-#. [topic]
+#. [topic]: id=traits_healthy
 #: data/core/help.cfg:432
 msgid "Healthy"
 msgstr ""
 
-#. [topic]
+#. [topic]: id=traits_healthy
 #: data/core/help.cfg:433
 msgid ""
 "Renowned for their vitality, some dwarves are sturdier than others and can "
 "rest even when travelling."
 msgstr ""
 
-#. [topic]
+#. [topic]: id=traits_healthy
 #: data/core/help.cfg:435
 msgid ""
 "\n"
@@ -2048,7 +2048,7 @@ msgid ""
 "the usual 2 HP after each turn they did not fight."
 msgstr ""
 
-#. [topic]
+#. [topic]: id=..terrains
 #: data/core/help.cfg:443
 msgid ""
 "Game maps feature a variety of terrains that affect both unit movement and a "
@@ -2056,12 +2056,12 @@ msgid ""
 "\n"
 msgstr ""
 
-#. [topic]
+#. [topic]: id=terrain_flat
 #: data/core/help.cfg:450
 msgid "Flat"
 msgstr ""
 
-#. [topic]
+#. [topic]: id=terrain_flat
 #: data/core/help.cfg:455
 msgid ""
 "Grassland represents open plains, whether cultivated, cut back for grazing, "
@@ -2080,12 +2080,12 @@ msgstr ""
 "\n"
 "Meeste eenhede het 'n verdediging van 30 tot 40% op grasvelde."
 
-#. [topic]
+#. [topic]: id=terrain_road
 #: data/core/help.cfg:462
 msgid "Road"
 msgstr "Pad"
 
-#. [topic]
+#. [topic]: id=terrain_road
 #: data/core/help.cfg:465
 #, fuzzy
 msgid ""
@@ -2097,12 +2097,12 @@ msgstr ""
 "uitgetrap het. Sover dit die spel aanbetref, is paaie identies aan "
 "<ref>dst=terrain_grassland text=Grassland</ref>"
 
-#. [topic]
+#. [topic]: id=terrain_forest
 #: data/core/help.cfg:472
 msgid "Forest"
 msgstr "Woud"
 
-#. [topic]
+#. [topic]: id=terrain_forest
 #: data/core/help.cfg:479
 #, fuzzy
 msgid ""
@@ -2136,12 +2136,12 @@ msgstr ""
 "die Elfse Ruiters. Dwerge ontvang gewoonlik slegs 'n 30% verdediging in "
 "woude."
 
-#. [topic]
+#. [topic]: id=terrain_hills
 #: data/core/help.cfg:486
 msgid "Hills"
 msgstr "Heuwels"
 
-#. [topic]
+#. [topic]: id=terrain_hills
 #: data/core/help.cfg:491
 msgid ""
 "Hills represent any reasonably rough terrain, with enough dips and rises in "
@@ -2165,12 +2165,12 @@ msgstr ""
 "Die meeste eenhede het omtrent 50% verdediging in heuwels, terwyl kavallarie "
 "beperk word tot 40%. Dwerge geniet 60% verdediging in heuwels."
 
-#. [topic]
+#. [topic]: id=terrain_mountains
 #: data/core/help.cfg:498
 msgid "Mountains"
 msgstr "Berge"
 
-#. [topic]
+#. [topic]: id=terrain_mountains
 #: data/core/help.cfg:503
 msgid ""
 "Mountains are steep enough that units often have to climb over obstacles to "
@@ -2194,12 +2194,12 @@ msgstr ""
 "Die meeste eenhede ontvang omtrent 60% verdediging in berge, terwyl Dwerge "
 "70% geniet."
 
-#. [topic]
+#. [topic]: id=terrain_swamp_water
 #: data/core/help.cfg:510
 msgid "Swamp"
 msgstr "Moeras"
 
-#. [topic]
+#. [topic]: id=terrain_swamp_water
 #: data/core/help.cfg:515
 msgid ""
 "Swamps represent any sort of wetlands. Swamps slow down nearly everyone, and "
@@ -2221,12 +2221,12 @@ msgstr ""
 "Die meeste eenhede kom oor die weg met 30% verdediging in moerasse. Mermen, "
 "Naga en Saurians geniet gewoonlik 60%."
 
-#. [topic]
+#. [topic]: id=terrain_shallow_water
 #: data/core/help.cfg:522
 msgid "Shallow Water"
 msgstr "Vlak Water"
 
-#. [topic]
+#. [topic]: id=terrain_shallow_water
 #: data/core/help.cfg:527
 msgid ""
 "Shallow water represents any body of water deep enough to come up to roughly "
@@ -2249,12 +2249,12 @@ msgstr ""
 "Die meeste eenhede kom oor die weg met 20 tot 30% verdediging in vlak water, "
 "terwyl beidie Naga en Mermen 60% geniet."
 
-#. [topic]
+#. [topic]: id=terrain_deep_water
 #: data/core/help.cfg:534
 msgid "Deep Water"
 msgstr "Diep Water"
 
-#. [topic]
+#. [topic]: id=terrain_deep_water
 #: data/core/help.cfg:539
 msgid ""
 "Deep water represents any body of water deep enough to cover a man's head. "
@@ -2270,12 +2270,12 @@ msgstr ""
 "Mermen en Naga ontvang beide 50% verdediging in diep water met volle "
 "beweging."
 
-#. [topic]
+#. [topic]: id=terrain_frozen
 #: data/core/help.cfg:546
 msgid "Frozen"
 msgstr ""
 
-#. [topic]
+#. [topic]: id=terrain_frozen
 #: data/core/help.cfg:551
 #, fuzzy
 msgid ""
@@ -2292,12 +2292,12 @@ msgstr ""
 "\n"
 "Die meeste eenhede het 20 tot 40% verdediging in sneeu. "
 
-#. [topic]
+#. [topic]: id=terrain_castle
 #: data/core/help.cfg:558
 msgid "Castle"
 msgstr "Kasteel"
 
-#. [topic]
+#. [topic]: id=terrain_castle
 #: data/core/help.cfg:565
 #, fuzzy
 msgid ""
@@ -2320,12 +2320,12 @@ msgstr ""
 "\n"
 "Die meeste eenhede het ongeveer 60% verdediging in 'n kasteel."
 
-#. [topic]
+#. [topic]: id=terrain_sand
 #: data/core/help.cfg:572
 msgid "Sand"
 msgstr "Sand"
 
-#. [topic]
+#. [topic]: id=terrain_sand
 #: data/core/help.cfg:577
 msgid ""
 "The instability of sand makes it harder for most units to cross, and leaves "
@@ -2341,12 +2341,12 @@ msgstr ""
 "\n"
 "Die meeste eenhede ontvang 20% tot 40% verdediging in Sand."
 
-#. [topic]
+#. [topic]: id=terrain_desert
 #: data/core/help.cfg:584
 msgid "Desert"
 msgstr "Woestyn"
 
-#. [topic]
+#. [topic]: id=terrain_desert
 #: data/core/help.cfg:587
 #, fuzzy
 msgid ""
@@ -2358,12 +2358,12 @@ msgstr ""
 "vir speldoeleindes is hulle egter identies. Sien <ref>dst=terrain_sand "
 "text=Sand</ref>."
 
-#. [topic]
+#. [topic]: id=terrain_cave
 #: data/core/help.cfg:594
 msgid "Cave"
 msgstr "Grot"
 
-#. [topic]
+#. [topic]: id=terrain_cave
 #: data/core/help.cfg:599
 #, fuzzy
 msgid ""
@@ -2387,12 +2387,12 @@ msgstr ""
 "Die meeste eenhede ontvang 20 tot 40% verdediging in Grotte, terwyl dwerge "
 "50% het."
 
-#. [topic]
+#. [topic]: id=terrain_rockbound_cave
 #: data/core/help.cfg:606
 msgid "Rockbound Cave"
 msgstr ""
 
-#. [topic]
+#. [topic]: id=terrain_rockbound_cave
 #: data/core/help.cfg:611
 #, fuzzy
 msgid ""
@@ -2417,13 +2417,13 @@ msgstr ""
 "Die meeste eenhede ontvang 20 tot 40% verdediging in Grotte, terwyl dwerge "
 "50% het."
 
-#. [topic]
+#. [topic]: id=terrain_illuminated_cave
 #: data/core/help.cfg:618
 #, fuzzy
 msgid "Illuminated Cave"
 msgstr "verlig"
 
-#. [topic]
+#. [topic]: id=terrain_illuminated_cave
 #: data/core/help.cfg:621
 msgid ""
 "Rare patches of the underground world are illuminated by light from the "
@@ -2432,12 +2432,12 @@ msgid ""
 "other regards this terrain is functionally identical to normal cave terrains."
 msgstr ""
 
-#. [topic]
+#. [topic]: id=terrain_fungus
 #: data/core/help.cfg:628
 msgid "Mushroom Grove"
 msgstr ""
 
-#. [topic]
+#. [topic]: id=terrain_fungus
 #: data/core/help.cfg:633
 msgid ""
 "Mushroom groves are vast underground forests of giant mushrooms, which "
@@ -2452,12 +2452,12 @@ msgid ""
 msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
-#. [topic]
+#. [topic]: id=terrain_village
 #: data/core/help.cfg:640 src/terrain.cpp:139
 msgid "Village"
 msgstr "Dorpie"
 
-#. [topic]
+#. [topic]: id=terrain_village
 #: data/core/help.cfg:647
 #, fuzzy
 msgid ""
@@ -2482,13 +2482,13 @@ msgstr ""
 "Die meeste eenhede het 50 tot 60% verdediging in dorpe, terwyl kavallerie "
 "slegs 40% kry."
 
-#. [topic]
+#. [topic]: id=terrain_water_village
 #: data/core/help.cfg:656
 #, fuzzy
 msgid "Submerged Village"
 msgstr "Woestyndorp"
 
-#. [topic]
+#. [topic]: id=terrain_water_village
 #: data/core/help.cfg:661
 msgid ""
 "Submerged villages are the homes of Merfolk and Nagas. While water-dwelling "
@@ -2502,12 +2502,12 @@ msgid ""
 "units usually have a low defence."
 msgstr ""
 
-#. [topic]
+#. [topic]: id=terrain_unwalkable
 #: data/core/help.cfg:668
 msgid "Unwalkable"
 msgstr ""
 
-#. [topic]
+#. [topic]: id=terrain_unwalkable
 #: data/core/help.cfg:671
 #, fuzzy
 msgid ""
@@ -2520,12 +2520,12 @@ msgstr ""
 "is bekend vir hulle styl kranse wat dae neem om oor te steek. In soverre dit "
 "die spel betref, kan slegs eenhede wat kan vlieg die terrein oorsteek."
 
-#. [topic]
+#. [topic]: id=terrain_lava
 #: data/core/help.cfg:678
 msgid "Lava"
 msgstr "Lawa"
 
-#. [topic]
+#. [topic]: id=terrain_lava
 #: data/core/help.cfg:681
 #, fuzzy
 msgid ""
@@ -2541,12 +2541,12 @@ msgstr ""
 "Die terrein kan slegs oorgesteek word deur eenhede wat hoog daaroor kan "
 "vlieg."
 
-#. [topic]
+#. [topic]: id=terrain_ford
 #: data/core/help.cfg:688
 msgid "River Ford"
 msgstr "Rivierdrif"
 
-#. [topic]
+#. [topic]: id=terrain_ford
 #: data/core/help.cfg:691
 msgid ""
 "When a river happens to be extremely shallow, passing over it is a trivial "
@@ -2563,18 +2563,18 @@ msgstr ""
 "'n mens die een wat die beste verdediging of bewegingsbonusse inhou vir die "
 "eenheid wat daaroor moet beweeg."
 
-#. [topic]
+#. [topic]: id=terrain_reef
 #: data/core/help.cfg:698
 #, fuzzy
 msgid "Coastal Reef"
 msgstr "Kasteel"
 
-#. [topic]
+#. [topic]: id=terrain_bridge
 #: data/core/help.cfg:708
 msgid "Bridge"
 msgstr "Brug"
 
-#. [topic]
+#. [topic]: id=terrain_bridge
 #: data/core/help.cfg:713
 #, fuzzy
 msgid ""
@@ -2601,13 +2601,13 @@ msgstr ""
 "brug beset. Neem kennis dat 'n swem-eenheid en 'n land-eenheid nie die brug "
 "op dieselfde spasie en dieselfe tyd kan beset nie. "
 
-#. [topic]
+#. [topic]: id=terrain_impassable
 #: data/core/help.cfg:720
 #, fuzzy
 msgid "Impassable"
 msgstr "Woestynberge"
 
-#. [topic]
+#. [topic]: id=terrain_impassable
 #: data/core/help.cfg:723
 msgid ""
 "Obstacles that not even the most determined traveler may overcome include "
@@ -2617,13 +2617,13 @@ msgid ""
 "smash through thick walls of stone."
 msgstr ""
 
-#. [topic]
+#. [topic]: id=general_commands
 #: data/core/help.cfg:736
 #, fuzzy
 msgid "General commands"
 msgstr "Generaal"
 
-#. [topic]
+#. [topic]: id=general_commands
 #: data/core/help.cfg:741
 msgid ""
 "\n"
@@ -2631,7 +2631,7 @@ msgid ""
 "\n"
 msgstr ""
 
-#. [topic]
+#. [topic]: id=general_commands
 #: data/core/help.cfg:745
 msgid ""
 "\n"
@@ -2641,7 +2641,7 @@ msgid ""
 "\n"
 msgstr ""
 
-#. [topic]
+#. [topic]: id=general_commands
 #: data/core/help.cfg:748
 msgid ""
 "\n"
@@ -2653,7 +2653,7 @@ msgid ""
 "\n"
 msgstr ""
 
-#. [topic]
+#. [topic]: id=general_commands
 #: data/core/help.cfg:751
 msgid ""
 "\n"
@@ -2661,7 +2661,7 @@ msgid ""
 "\n"
 msgstr ""
 
-#. [topic]
+#. [topic]: id=general_commands
 #: data/core/help.cfg:754
 msgid ""
 "\n"
@@ -2669,7 +2669,7 @@ msgid ""
 "\n"
 msgstr ""
 
-#. [topic]
+#. [topic]: id=general_commands
 #: data/core/help.cfg:757
 msgid ""
 "\n"
@@ -2677,7 +2677,7 @@ msgid ""
 "\n"
 msgstr ""
 
-#. [topic]
+#. [topic]: id=general_commands
 #: data/core/help.cfg:760
 msgid ""
 "\n"
@@ -2685,7 +2685,7 @@ msgid ""
 "\n"
 msgstr ""
 
-#. [topic]
+#. [topic]: id=general_commands
 #: data/core/help.cfg:763
 msgid ""
 "\n"
@@ -2693,7 +2693,7 @@ msgid ""
 "\n"
 msgstr ""
 
-#. [topic]
+#. [topic]: id=general_commands
 #: data/core/help.cfg:766
 msgid ""
 "\n"
@@ -2701,20 +2701,20 @@ msgid ""
 "\n"
 msgstr ""
 
-#. [topic]
+#. [topic]: id=general_commands
 #: data/core/help.cfg:767
 msgid ""
 "\n"
 "Save the game and quit the scenario (without prompting)."
 msgstr ""
 
-#. [topic]
+#. [topic]: id=mp_commands
 #: data/core/help.cfg:775
 #, fuzzy
 msgid "Multiplayer commands"
 msgstr "+Veelspeler Kaarte"
 
-#. [topic]
+#. [topic]: id=mp_commands
 #: data/core/help.cfg:779
 msgid ""
 "\n"
@@ -2723,7 +2723,7 @@ msgid ""
 "\n"
 msgstr ""
 
-#. [topic]
+#. [topic]: id=mp_commands
 #: data/core/help.cfg:782
 msgid ""
 "\n"
@@ -2734,7 +2734,7 @@ msgid ""
 "\n"
 msgstr ""
 
-#. [topic]
+#. [topic]: id=mp_commands
 #: data/core/help.cfg:785
 msgid ""
 "\n"
@@ -2744,7 +2744,7 @@ msgid ""
 "\n"
 msgstr ""
 
-#. [topic]
+#. [topic]: id=mp_commands
 #: data/core/help.cfg:788
 msgid ""
 "\n"
@@ -2753,20 +2753,20 @@ msgid ""
 "\n"
 msgstr ""
 
-#. [topic]
+#. [topic]: id=mp_commands
 #: data/core/help.cfg:789
 msgid ""
 "\n"
 "Toggle muting/silencing of all observers on/off."
 msgstr ""
 
-#. [topic]
+#. [topic]: id=debug_commands
 #: data/core/help.cfg:796
 #, fuzzy
 msgid "Debug mode commands"
 msgstr "Generaal"
 
-#. [topic]
+#. [topic]: id=debug_commands
 #: data/core/help.cfg:800
 msgid ""
 "\n"
@@ -2774,7 +2774,7 @@ msgid ""
 "\n"
 msgstr ""
 
-#. [topic]
+#. [topic]: id=debug_commands
 #: data/core/help.cfg:803
 msgid ""
 "\n"
@@ -2782,7 +2782,7 @@ msgid ""
 "\n"
 msgstr ""
 
-#. [topic]
+#. [topic]: id=debug_commands
 #: data/core/help.cfg:806
 msgid ""
 "\n"
@@ -2790,7 +2790,7 @@ msgid ""
 "\n"
 msgstr ""
 
-#. [topic]
+#. [topic]: id=debug_commands
 #: data/core/help.cfg:809
 msgid ""
 "\n"
@@ -2798,7 +2798,7 @@ msgid ""
 "\n"
 msgstr ""
 
-#. [topic]
+#. [topic]: id=debug_commands
 #: data/core/help.cfg:812
 msgid ""
 "\n"
@@ -2806,7 +2806,7 @@ msgid ""
 "\n"
 msgstr ""
 
-#. [topic]
+#. [topic]: id=debug_commands
 #: data/core/help.cfg:815
 msgid ""
 "\n"
@@ -2814,7 +2814,7 @@ msgid ""
 "\n"
 msgstr ""
 
-#. [topic]
+#. [topic]: id=debug_commands
 #: data/core/help.cfg:816
 msgid ""
 "\n"
@@ -2822,18 +2822,18 @@ msgid ""
 "hitpoints=100"
 msgstr ""
 
-#. [heals]
+#. [heals]: id=curing
 #: data/core/macros/abilities.cfg:51
 msgid "cures"
 msgstr "genees"
 
-#. [heals]
+#. [heals]: id=curing
 #: data/core/macros/abilities.cfg:52
 #, fuzzy
 msgid "female^cures"
 msgstr "Prinses"
 
-#. [heals]
+#. [heals]: id=curing
 #: data/core/macros/abilities.cfg:54
 msgid ""
 "Cures:\n"
@@ -2841,18 +2841,18 @@ msgid ""
 "additional healing on the turn it is cured of the poison."
 msgstr ""
 
-#. [regenerate]
+#. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:76
 msgid "regenerates"
 msgstr "regenereer"
 
-#. [regenerate]
+#. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:77
 #, fuzzy
 msgid "female^regenerates"
 msgstr "regenereer"
 
-#. [regenerate]
+#. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:79
 #, fuzzy
 msgid ""
@@ -2864,18 +2864,18 @@ msgstr ""
 "Hierdie eenheid kan homself met 8 LP per beurt genees. As dit vergiftig word "
 "sal dit die gif verwyder in plaas daarvan om te genees."
 
-#. [resistance]
+#. [resistance]: id=steadfast
 #: data/core/macros/abilities.cfg:97
 msgid "steadfast"
 msgstr "standvastig"
 
-#. [resistance]
+#. [resistance]: id=steadfast
 #: data/core/macros/abilities.cfg:98
 #, fuzzy
 msgid "female^steadfast"
 msgstr "standvastig"
 
-#. [resistance]
+#. [resistance]: id=steadfast
 #: data/core/macros/abilities.cfg:100
 #, fuzzy
 msgid ""
@@ -2887,14 +2887,14 @@ msgstr ""
 "Hierdie eenheid se weerstand word verdubbel tot 'n maksimum van 50% wanneer "
 "hulle verdedig."
 
-#. [leadership]
+#. [leadership]: id=leadership
 #: data/core/macros/abilities.cfg:113 data/core/macros/abilities.cfg:136
 #: data/core/macros/abilities.cfg:171 data/core/macros/abilities.cfg:218
 #: data/core/macros/abilities.cfg:277
 msgid "leadership"
 msgstr "leierskap"
 
-#. [leadership]
+#. [leadership]: id=leadership
 #: data/core/macros/abilities.cfg:114 data/core/macros/abilities.cfg:137
 #: data/core/macros/abilities.cfg:172 data/core/macros/abilities.cfg:219
 #: data/core/macros/abilities.cfg:278
@@ -2902,7 +2902,7 @@ msgstr "leierskap"
 msgid "female^leadership"
 msgstr "leierskap"
 
-#. [leadership]
+#. [leadership]: id=leadership
 #: data/core/macros/abilities.cfg:118 data/core/macros/abilities.cfg:141
 #: data/core/macros/abilities.cfg:176 data/core/macros/abilities.cfg:223
 #: data/core/macros/abilities.cfg:282
@@ -2926,18 +2926,18 @@ msgstr ""
 "laer vlak het, en ook aan dieselfde kant veg, sal sy aanvalle 25% meer skade "
 "vermenigvuldig met die verskil in hulle vlakke aanrig."
 
-#. [skirmisher]
+#. [skirmisher]: id=skirmisher
 #: data/core/macros/abilities.cfg:346
 msgid "skirmisher"
 msgstr "skermutselaar"
 
-#. [skirmisher]
+#. [skirmisher]: id=skirmisher
 #: data/core/macros/abilities.cfg:347
 #, fuzzy
 msgid "female^skirmisher"
 msgstr "skermutselaar"
 
-#. [skirmisher]
+#. [skirmisher]: id=skirmisher
 #: data/core/macros/abilities.cfg:349
 #, fuzzy
 msgid ""
@@ -2949,18 +2949,18 @@ msgstr ""
 "Hierdie eenheid is vaardig om by vinnig by vyande verby te sluip en ignoreer "
 "Vyandige beheersones."
 
-#. [illuminates]
+#. [illuminates]: id=illumination
 #: data/core/macros/abilities.cfg:362
 msgid "illuminates"
 msgstr "verlig"
 
-#. [illuminates]
+#. [illuminates]: id=illumination
 #: data/core/macros/abilities.cfg:363
 #, fuzzy
 msgid "female^illuminates"
 msgstr "verlig"
 
-#. [illuminates]
+#. [illuminates]: id=illumination
 #: data/core/macros/abilities.cfg:367
 msgid ""
 "Illuminates:\n"
@@ -2977,18 +2977,18 @@ msgstr ""
 "Enige eenhede langs hierdie eenheid sal veg asof dit skemer is, in die nag "
 "en soos in die dag wanneer dit skemer is."
 
-#. [teleport]
+#. [teleport]: id=teleport
 #: data/core/macros/abilities.cfg:377
 msgid "teleport"
 msgstr "teleporteer"
 
-#. [teleport]
+#. [teleport]: id=teleport
 #: data/core/macros/abilities.cfg:378
 #, fuzzy
 msgid "female^teleport"
 msgstr "intelligent"
 
-#. [teleport]
+#. [teleport]: id=teleport
 #: data/core/macros/abilities.cfg:380
 #, fuzzy
 msgid ""
@@ -3000,18 +3000,18 @@ msgstr ""
 "Hierdie eenheid kan tussen twee goedgesinde dorpe verplaas word deur slegs "
 "een van sy bewegings te gebruik."
 
-#. [hides]
+#. [hides]: id=ambush
 #: data/core/macros/abilities.cfg:389 data/core/macros/abilities.cfg:391
 msgid "ambush"
 msgstr "lokval"
 
-#. [hides]
+#. [hides]: id=ambush
 #: data/core/macros/abilities.cfg:390 data/core/macros/abilities.cfg:392
 #, fuzzy
 msgid "female^ambush"
 msgstr "Misdadiger"
 
-#. [hides]
+#. [hides]: id=ambush
 #: data/core/macros/abilities.cfg:396 data/core/macros/abilities.cfg:400
 #, fuzzy
 msgid ""
@@ -3029,13 +3029,13 @@ msgstr ""
 "woud is nie, behalwe vir die beurt wat volg net nadat die eenheid self 'n "
 "aanval doen of wanneer daar vyandige eenhede reg langs die eenheid is."
 
-#. [hides]
+#. [hides]: id=nightstalk
 #: data/core/macros/abilities.cfg:415 data/core/macros/abilities.cfg:416
 #: data/core/macros/abilities.cfg:421
 msgid "nightstalk"
 msgstr "nagsluip"
 
-#. [hides]
+#. [hides]: id=nightstalk
 #: data/core/macros/abilities.cfg:420 data/core/macros/abilities.cfg:426
 #, fuzzy
 msgid ""
@@ -3053,25 +3053,25 @@ msgstr ""
 "behalwe vir die beurt wat volg direk na die eenheid self 'n aanval geloods "
 "het of as daar vyandige eenhede reg langs hierdie eenheide is."
 
-#. [hides]
+#. [hides]: id=nightstalk
 #: data/core/macros/abilities.cfg:422
 #, fuzzy
 msgid "female^nightstalk"
 msgstr "nagsluip"
 
-#. [hides]
+#. [hides]: id=concealment
 #: data/core/macros/abilities.cfg:441 data/core/macros/abilities.cfg:447
 #, fuzzy
 msgid "concealment"
 msgstr "Kamp"
 
-#. [hides]
+#. [hides]: id=concealment
 #: data/core/macros/abilities.cfg:442 data/core/macros/abilities.cfg:448
 #, fuzzy
 msgid "female^concealment"
 msgstr "Kamp"
 
-#. [hides]
+#. [hides]: id=concealment
 #: data/core/macros/abilities.cfg:446 data/core/macros/abilities.cfg:452
 #, fuzzy
 msgid ""
@@ -3090,19 +3090,19 @@ msgstr ""
 "woud is nie, behalwe vir die beurt wat volg net nadat die eenheid self 'n "
 "aanval doen of wanneer daar vyandige eenhede reg langs die eenheid is."
 
-#. [hides]
+#. [hides]: id=submerge
 #: data/core/macros/abilities.cfg:467 data/core/macros/abilities.cfg:473
 #, fuzzy
 msgid "submerge"
 msgstr "steek"
 
-#. [hides]
+#. [hides]: id=submerge
 #: data/core/macros/abilities.cfg:468 data/core/macros/abilities.cfg:474
 #, fuzzy
 msgid "female^submerge"
 msgstr "Uitvaagsel"
 
-#. [hides]
+#. [hides]: id=submerge
 #: data/core/macros/abilities.cfg:472 data/core/macros/abilities.cfg:478
 #, fuzzy
 msgid ""
@@ -3120,18 +3120,18 @@ msgstr ""
 "woud is nie, behalwe vir die beurt wat volg net nadat die eenheid self 'n "
 "aanval doen of wanneer daar vyandige eenhede reg langs die eenheid is."
 
-#. [dummy]
+#. [dummy]: id=feeding
 #: data/core/macros/abilities.cfg:496
 msgid "feeding"
 msgstr ""
 
-#. [dummy]
+#. [dummy]: id=feeding
 #: data/core/macros/abilities.cfg:497
 #, fuzzy
 msgid "female^feeding"
 msgstr "Prinses"
 
-#. [dummy]
+#. [dummy]: id=feeding
 #: data/core/macros/abilities.cfg:499
 msgid ""
 "Feeding:\n"
@@ -3291,18 +3291,18 @@ msgstr ""
 "Hierdie aanval vergiftig die teiken. Vergiftigde eenhede verloor 8 LP met "
 "elke beurt totdat hulle genees word of na 1 LP verminder het."
 
-#. [advancement]
+#. [advancement]: id=amla_default
 #: data/core/macros/amla.cfg:10
 #, fuzzy
 msgid "Max HP bonus +3, Max XP +20%"
 msgstr "Maksimum LP bonus +"
 
-#. [advancement]
+#. [advancement]: id=tough_{HP_ADVANCE_NUMBER}
 #: data/core/macros/amla.cfg:38
 msgid ", MAX XP +25%"
 msgstr ""
 
-#. [advancement]
+#. [advancement]: id=tough_{HP_ADVANCE_NUMBER}
 #: data/core/macros/amla.cfg:38
 msgid "Max HP bonus +"
 msgstr "Maksimum LP bonus +"
@@ -3395,100 +3395,100 @@ msgstr "Grot"
 msgid "Leave it"
 msgstr "Grot"
 
-#. [object]
+#. [object]: id={ID}
 #: data/core/macros/items.cfg:218
 msgid "Potion of Healing"
 msgstr "Gesondmaak Doepa"
 
-#. [object]
+#. [object]: id={ID}
 #: data/core/macros/items.cfg:221
 msgid "A feeling of well-being overwhelms the drinker."
 msgstr "'n Gevoel van welvaart oorweldig die drinker."
 
-#. [object]
+#. [object]: id={ID}
 #: data/core/macros/items.cfg:222
 msgid "You are not worthy of healing."
 msgstr "Jy is nie waardig om gesond te maak nie."
 
-#. [object]
+#. [object]: id={ID}
 #: data/core/macros/items.cfg:256
 msgid "Poison"
 msgstr "Gif"
 
-#. [object]
+#. [object]: id={ID}
 #: data/core/macros/items.cfg:259
 msgid "Poison is seeping through the veins of this unit at this very moment."
 msgstr "Gif is tans besig om deur die are van hierdie eenheid te bruis."
 
-#. [object]
+#. [object]: id={ID}
 #: data/core/macros/items.cfg:293
 msgid "Holy Water"
 msgstr "Heilige Water"
 
-#. [object]
+#. [object]: id={ID}
 #: data/core/macros/items.cfg:296
 msgid ""
 "This water will make melee weapons have the 'arcane' damage type until the "
 "end of the current scenario."
 msgstr ""
 
-#. [object]
+#. [object]: id={ID}
 #: data/core/macros/items.cfg:297
 msgid "I am not suited to the use of this item! Let another take it."
 msgstr "Ek kan nie hierdie item gebruik nie! Laat iemand anders dit vat."
 
-#. [object]
+#. [object]: id={ID}
 #: data/core/macros/items.cfg:332
 msgid "Potion of Strength"
 msgstr "Sterkmaak Doepa"
 
-#. [object]
+#. [object]: id={ID}
 #: data/core/macros/items.cfg:335
 msgid "Strength is given to the drinker."
 msgstr "Die een wat dit drink word Sterk"
 
-#. [object]
+#. [object]: id={ID}
 #: data/core/macros/items.cfg:375
 msgid "Potion of Decay"
 msgstr "Vrotword Doepa"
 
-#. [object]
+#. [object]: id={ID}
 #: data/core/macros/items.cfg:378
 msgid "This poor unit drank something really bad."
 msgstr "Hierdie arme drommel het iets baie sleg gedrink."
 
-#. [object]
+#. [object]: id={ID}
 #: data/core/macros/items.cfg:412
 msgid "Ring of Regeneration"
 msgstr "Ring van Herlewing"
 
-#. [object]
+#. [object]: id={ID}
 #: data/core/macros/items.cfg:415
 msgid "This ring will heal the bearer a little each turn."
 msgstr ""
 "Hierdie ring sal die draer daarvan so 'n bietjie met elke beurt laat herstel."
 
-#. [object]
+#. [object]: id={ID}
 #: data/core/macros/items.cfg:451
 msgid "Ring of Slowness"
 msgstr "Ring van Traagheid"
 
-#. [object]
+#. [object]: id={ID}
 #: data/core/macros/items.cfg:454
 msgid "The bearer of this ring is slowed."
 msgstr "Die draer van hierdie ring word baie stadig."
 
-#. [object]
+#. [object]: id={ID}
 #: data/core/macros/items.cfg:488
 msgid "Staff of Swiftness"
 msgstr "Spoedstaf"
 
-#. [object]
+#. [object]: id={ID}
 #: data/core/macros/items.cfg:491
 msgid "This staff will grant the bearer swift movement."
 msgstr "Hierdie staf laat die draer baie vinnig beweeg."
 
-#. [object]
+#. [object]: id={ID}
 #: data/core/macros/items.cfg:492
 msgid "Only magical beings can wield such an object."
 msgstr "Slegs towerweses kan so 'n voorwerp gebruik."
@@ -3958,8 +3958,8 @@ msgid ""
 "this scenario. Side $side_number is intended to be played by a human player."
 msgstr ""
 
-#. [time]
-#. [illuminated_time]
+#. [time]: id=deep_underground
+#. [illuminated_time]: id=deep_underground_illum
 #: data/core/macros/schedules.cfg:93 data/core/macros/schedules.cfg:103
 #, fuzzy
 msgid "Deep Underground"
@@ -4153,258 +4153,268 @@ msgid ""
 "can be cured in town or by a unit which cures."
 msgstr ""
 
-#. [trait]
+#. [trait]: id=loyal
 #: data/core/macros/traits.cfg:8
 msgid "loyal"
 msgstr "lojaal"
 
-#. [trait]
+#. [trait]: id=loyal
 #: data/core/macros/traits.cfg:9
 #, fuzzy
 msgid "female^loyal"
 msgstr "Misdadiger"
 
-#. [trait]
+#. [trait]: id=loyal
 #: data/core/macros/traits.cfg:10
 msgid "Zero upkeep"
 msgstr "Geen onderhoudingskoste"
 
-#. [trait]
+#. [trait]: id=undead
 #: data/core/macros/traits.cfg:22
 msgid "undead"
 msgstr "lewende dood"
 
-#. [trait]
+#. [trait]: id=undead
 #: data/core/macros/traits.cfg:23
 #, fuzzy
 msgid "female^undead"
 msgstr "Uitvaagsel"
 
-#. [trait]
+#. [trait]: id=undead
+#. [trait]: id=mechanical
 #: data/core/macros/traits.cfg:24 data/core/macros/traits.cfg:39
 #, fuzzy
 msgid "Immune to drain, poison and plague"
 msgstr "bestand teen gif"
 
-#. [trait]
+#. [trait]: id=mechanical
 #: data/core/macros/traits.cfg:37
 #, fuzzy
 msgid "mechanical"
 msgstr "magies"
 
-#. [trait]
+#. [trait]: id=mechanical
 #: data/core/macros/traits.cfg:38
 #, fuzzy
 msgid "female^mechanical"
 msgstr "Dief"
 
-#. [trait]
+#. [trait]: id=strong
 #: data/core/macros/traits.cfg:51
 msgid "strong"
 msgstr "sterk"
 
-#. [trait]
+#. [trait]: id=strong
 #: data/core/macros/traits.cfg:52
 #, fuzzy
 msgid "female^strong"
 msgstr "Uitvaagsel"
 
-#. [trait]
+#. [trait]: id=dextrous
 #: data/core/macros/traits.cfg:69
 msgid "dextrous"
 msgstr "vaardig"
 
-#. [trait]
+#. [trait]: id=dextrous
 #: data/core/macros/traits.cfg:70
 #, fuzzy
 msgid "female^dextrous"
 msgstr "vaardig"
 
-#. [trait]
+#. [trait]: id=quick
 #: data/core/macros/traits.cfg:83
 msgid "quick"
 msgstr "vinnig"
 
-#. [trait]
+#. [trait]: id=quick
 #: data/core/macros/traits.cfg:84
 #, fuzzy
 msgid "female^quick"
 msgstr "Prinses"
 
-#. [trait]
+#. [trait]: id=intelligent
 #: data/core/macros/traits.cfg:100
 msgid "intelligent"
 msgstr "intelligent"
 
-#. [trait]
+#. [trait]: id=intelligent
 #: data/core/macros/traits.cfg:101
 #, fuzzy
 msgid "female^intelligent"
 msgstr "intelligent"
 
-#. [trait]
+#. [trait]: id=resilient
 #: data/core/macros/traits.cfg:113
 msgid "resilient"
 msgstr "volhard"
 
-#. [trait]
+#. [trait]: id=resilient
 #: data/core/macros/traits.cfg:114
 #, fuzzy
 msgid "female^resilient"
 msgstr "volhard"
 
-#. [trait]
+#. [trait]: id=healthy
 #: data/core/macros/traits.cfg:132
 msgid "healthy"
 msgstr ""
 
-#. [trait]
+#. [trait]: id=healthy
 #: data/core/macros/traits.cfg:133
 #, fuzzy
 msgid "female^healthy"
 msgstr "Dief"
 
-#. [trait]
+#. [trait]: id=healthy
 #: data/core/macros/traits.cfg:134
 msgid "Can rest while moving, halves poison damage"
 msgstr ""
 
-#. [trait]
+#. [trait]: id=fearless
 #: data/core/macros/traits.cfg:151 data/core/macros/traits.cfg:164
 #, fuzzy
 msgid "fearless"
 msgstr "Prinses"
 
-#. [trait]
+#. [trait]: id=fearless
 #: data/core/macros/traits.cfg:152 data/core/macros/traits.cfg:165
 #, fuzzy
 msgid "female^fearless"
 msgstr "Prinses"
 
-#. [trait]
+#. [trait]: id=fearless
 #: data/core/macros/traits.cfg:153 data/core/macros/traits.cfg:166
 msgid "Fights normally during unfavorable times of day/night"
 msgstr ""
 
-#. [trait]
+#. [trait]: id=weak
 #: data/core/macros/traits.cfg:174
 msgid "weak"
 msgstr ""
 
-#. [trait]
+#. [trait]: id=weak
 #: data/core/macros/traits.cfg:175
 #, fuzzy
 msgid "female^weak"
 msgstr "Uitvaagsel"
 
-#. [trait]
+#. [trait]: id=slow
 #: data/core/macros/traits.cfg:192
 #, fuzzy
 msgid "slow"
 msgstr "verstadig"
 
-#. [trait]
+#. [trait]: id=slow
 #: data/core/macros/traits.cfg:193
 #, fuzzy
 msgid "female^slow"
 msgstr "Misdadiger"
 
-#. [trait]
+#. [trait]: id=dim
 #: data/core/macros/traits.cfg:209
 #, fuzzy
 msgid "dim"
 msgstr "Middelmatig"
 
-#. [trait]
+#. [trait]: id=dim
 #: data/core/macros/traits.cfg:210
 #, fuzzy
 msgid "female^dim"
 msgstr "Prinses"
 
-#. [color_range]
+#. [color_range]: id=red
+#. [color_range]: id=1
 #: data/core/team-colors.cfg:14 data/core/team-colors.cfg:71
 msgid "Red"
 msgstr "Rooi"
 
-#. [color_range]
+#. [color_range]: id=blue
+#. [color_range]: id=2
 #: data/core/team-colors.cfg:20 data/core/team-colors.cfg:77
 msgid "Blue"
 msgstr "Blou"
 
-#. [color_range]
+#. [color_range]: id=green
+#. [color_range]: id=3
 #: data/core/team-colors.cfg:26 data/core/team-colors.cfg:83
 msgid "Green"
 msgstr "Groen"
 
-#. [color_range]
+#. [color_range]: id=purple
+#. [color_range]: id=4
 #: data/core/team-colors.cfg:32 data/core/team-colors.cfg:89
 msgid "Purple"
 msgstr "Pers"
 
-#. [color_range]
+#. [color_range]: id=orange
+#. [color_range]: id=7
 #: data/core/team-colors.cfg:38 data/core/team-colors.cfg:95
 msgid "Orange"
 msgstr "Oranje"
 
-#. [color_range]
+#. [color_range]: id=black
+#. [color_range]: id=5
 #: data/core/team-colors.cfg:44 data/core/team-colors.cfg:101
 #, fuzzy
 msgid "Black"
 msgstr "< Terug"
 
-#. [color_range]
+#. [color_range]: id=white
+#. [color_range]: id=8
 #: data/core/team-colors.cfg:50 data/core/team-colors.cfg:107
 msgid "White"
 msgstr "Wit"
 
-#. [color_range]
+#. [color_range]: id=brown
+#. [color_range]: id=6
 #: data/core/team-colors.cfg:56 data/core/team-colors.cfg:113
 msgid "Brown"
 msgstr "Bruin"
 
-#. [color_range]
+#. [color_range]: id=teal
+#. [color_range]: id=9
 #: data/core/team-colors.cfg:62 data/core/team-colors.cfg:119
 #, fuzzy
 msgid "Teal"
 msgstr "Span"
 
-#. [race]: description=
+#. [race]: id=bats, description=
 #: data/core/units.cfg:43
 #, fuzzy
 msgid "race^Bat"
 msgstr "Naga"
 
-#. [race]: description=
+#. [race]: id=bats, description=
 #: data/core/units.cfg:44
 #, fuzzy
 msgid "race+female^Bat"
 msgstr "Naga"
 
-#. [race]: description=
+#. [race]: id=bats, description=
 #: data/core/units.cfg:45
 #, fuzzy
 msgid "race^Bats"
 msgstr "Naga"
 
-#. [race]
+#. [race]: id=drake
 #: data/core/units.cfg:53
 #, fuzzy
 msgid "race^Drake"
 msgstr "Dwerge"
 
-#. [race]
+#. [race]: id=drake
 #: data/core/units.cfg:54
 #, fuzzy
 msgid "race+female^Drake"
 msgstr "Dwerge"
 
-#. [race]
+#. [race]: id=drake
 #: data/core/units.cfg:55
 #, fuzzy
 msgid "race^Drakes"
 msgstr "Dwerge"
 
-#. [race]
+#. [race]: id=drake
 #: data/core/units.cfg:68
 msgid ""
 "Drakes are large, winged and fire-breathing creatures, reminiscent of true "
@@ -4471,25 +4481,25 @@ msgid ""
 "some of the mountains of the far north of the Great Continent."
 msgstr ""
 
-#. [race]
+#. [race]: id=dwarf
 #: data/core/units.cfg:88
 #, fuzzy
 msgid "race^Dwarf"
 msgstr "Dwerge"
 
-#. [race]
+#. [race]: id=dwarf
 #: data/core/units.cfg:89
 #, fuzzy
 msgid "race+female^Dwarf"
 msgstr "Dwerge"
 
-#. [race]
+#. [race]: id=dwarf
 #: data/core/units.cfg:90
 #, fuzzy
 msgid "race^Dwarves"
 msgstr "Dwerge"
 
-#. [race]
+#. [race]: id=dwarf
 #: data/core/units.cfg:95
 msgid ""
 "The dwarves are a race famed for their miners, blacksmiths, merchants and "
@@ -4539,25 +4549,25 @@ msgid ""
 "augment certain aspects of their natures."
 msgstr ""
 
-#. [race]
+#. [race]: id=elf
 #: data/core/units.cfg:107
 #, fuzzy
 msgid "race^Elf"
 msgstr "Dwerge"
 
-#. [race]
+#. [race]: id=elf
 #: data/core/units.cfg:108
 #, fuzzy
 msgid "race+female^Elf"
 msgstr "Dwerge"
 
-#. [race]
+#. [race]: id=elf
 #: data/core/units.cfg:109
 #, fuzzy
 msgid "race^Elves"
 msgstr "Dwerge"
 
-#. [race]
+#. [race]: id=elf
 #: data/core/units.cfg:119
 msgid ""
 "Compared to humans, elves are somewhat taller, more agile but less sturdy. "
@@ -4597,60 +4607,60 @@ msgid ""
 "having existed for over a millennium."
 msgstr ""
 
-#. [race]: description=
+#. [race]: id=goblin, description=
 #: data/core/units.cfg:129
 #, fuzzy
 msgid "race^Goblin"
 msgstr "Trol"
 
-#. [race]: description=
+#. [race]: id=goblin, description=
 #: data/core/units.cfg:130
 #, fuzzy
 msgid "race+female^Goblin"
 msgstr "Trol"
 
-#. [race]: description=
+#. [race]: id=goblin, description=
 #: data/core/units.cfg:131
 msgid "race^Goblins"
 msgstr ""
 
-#. [race]: description=
+#. [race]: id=gryphon, description=
 #: data/core/units.cfg:144
 #, fuzzy
 msgid "race^Gryphon"
 msgstr "Trol"
 
-#. [race]: description=
+#. [race]: id=gryphon, description=
 #: data/core/units.cfg:145
 #, fuzzy
 msgid "race+female^Gryphon"
 msgstr "Trol"
 
-#. [race]: description=
+#. [race]: id=gryphon, description=
 #: data/core/units.cfg:146
 #, fuzzy
 msgid "race^Gryphons"
 msgstr "Trol"
 
-#. [race]
+#. [race]: id=human
 #: data/core/units.cfg:161
 #, fuzzy
 msgid "race^Human"
 msgstr "Mense-ras"
 
-#. [race]
+#. [race]: id=human
 #: data/core/units.cfg:162
 #, fuzzy
 msgid "race+female^Human"
 msgstr "Mense-ras"
 
-#. [race]
+#. [race]: id=human
 #: data/core/units.cfg:163
 #, fuzzy
 msgid "race^Humans"
 msgstr "Mense-ras"
 
-#. [race]
+#. [race]: id=human
 #: data/core/units.cfg:170
 msgid ""
 "The race of men is an extremely diverse one. Although they originally came "
@@ -4692,117 +4702,117 @@ msgid ""
 "and the strengths and weaknesses of these groups complement each other."
 msgstr ""
 
-#. [race]: description=
+#. [race]: id=lizard, description=
 #: data/core/units.cfg:178
 #, fuzzy
 msgid "race^Saurian"
 msgstr "Naga"
 
-#. [race]: description=
+#. [race]: id=lizard, description=
 #: data/core/units.cfg:179
 #, fuzzy
 msgid "race+female^Saurian"
 msgstr "Naga"
 
-#. [race]: description=
+#. [race]: id=lizard, description=
 #: data/core/units.cfg:180
 #, fuzzy
 msgid "race^Saurians"
 msgstr "Naga"
 
-#. [race]: description=
+#. [race]: id=mechanical, description=
 #: data/core/units.cfg:189
 msgid "race^Mechanical"
 msgstr ""
 
-#. [race]: description=
+#. [race]: id=mechanical, description=
 #: data/core/units.cfg:190
 #, fuzzy
 msgid "race+plural^Mechanical"
 msgstr "Dief"
 
-#. [race]: description=
+#. [race]: id=merman, description=
 #: data/core/units.cfg:200
 #, fuzzy
 msgid "race^Merman"
 msgstr "Mense-ras"
 
-#. [race]: description=
+#. [race]: id=merman, description=
 #: data/core/units.cfg:201
 #, fuzzy
 msgid "race^Mermaid"
 msgstr "Mense-ras"
 
-#. [race]: description=
+#. [race]: id=merman, description=
 #: data/core/units.cfg:202
 msgid "race^Mermen"
 msgstr ""
 
-#. [race]: description=
+#. [race]: id=monster, description=
 #: data/core/units.cfg:210
 #, fuzzy
 msgid "race^Monster"
 msgstr "Dwerge"
 
-#. [race]: description=
+#. [race]: id=monster, description=
 #: data/core/units.cfg:211
 msgid "race^Monsters"
 msgstr ""
 
-#. [race]: description=
+#. [race]: id=naga, description=
 #: data/core/units.cfg:219
 #, fuzzy
 msgid "race^Naga"
 msgstr "Naga"
 
-#. [race]: description=
+#. [race]: id=naga, description=
 #: data/core/units.cfg:220
 #, fuzzy
 msgid "race^Nagani"
 msgstr "Naga"
 
-#. [race]: description=
+#. [race]: id=naga, description=
 #: data/core/units.cfg:221
 #, fuzzy
 msgid "race^Nagas"
 msgstr "Naga"
 
-#. [race]: description=
+#. [race]: id=ogre, description=
 #: data/core/units.cfg:229
 #, fuzzy
 msgid "race^Ogre"
 msgstr "Trol"
 
-#. [race]: description=
+#. [race]: id=ogre, description=
 #: data/core/units.cfg:230
 #, fuzzy
 msgid "race+female^Ogre"
 msgstr "Trol"
 
-#. [race]: description=
+#. [race]: id=ogre, description=
 #: data/core/units.cfg:231
 msgid "race^Ogres"
 msgstr ""
 
-#. [race]
+#. [race]: id=orc
 #: data/core/units.cfg:240
 #, fuzzy
 msgid "race^Orc"
 msgstr "Trol"
 
-#. [race]
+#. [race]: id=orc
 #: data/core/units.cfg:241
 #, fuzzy
 msgid "race+female^Orc"
 msgstr "Trol"
 
-#. [race]
+#. [race]: id=orc
 #: data/core/units.cfg:242
 #, fuzzy
 msgid "race^Orcs"
 msgstr "Trol"
 
-#. [race]
+#. [race]: id=orc
 #: data/core/units.cfg:252
 msgid ""
 "In appearance, orcs are half men and half beasts. They are taller, sturdier "
@@ -4862,25 +4872,25 @@ msgid ""
 "assassination."
 msgstr ""
 
-#. [race]
+#. [race]: id=troll
 #: data/core/units.cfg:259
 #, fuzzy
 msgid "race^Troll"
 msgstr "Trol"
 
-#. [race]
+#. [race]: id=troll
 #: data/core/units.cfg:260
 #, fuzzy
 msgid "race+female^Troll"
 msgstr "Trol"
 
-#. [race]
+#. [race]: id=troll
 #: data/core/units.cfg:261
 #, fuzzy
 msgid "race^Trolls"
 msgstr "Trol"
 
-#. [race]
+#. [race]: id=troll
 #: data/core/units.cfg:267
 msgid ""
 "Trolls are ancient creatures, one of the oldest known races known to inhabit "
@@ -4919,24 +4929,24 @@ msgid ""
 "north and east of Wesnoth, and wherever Orcish hordes travel."
 msgstr ""
 
-#. [race]
+#. [race]: id=undead
 #: data/core/units.cfg:281
 msgid "race^Undead"
 msgstr "Wandelende dooies"
 
-#. [race]
+#. [race]: id=undead
 #: data/core/units.cfg:282
 #, fuzzy
 msgid "race+female^Undead"
 msgstr "Wandelende dooies"
 
-#. [race]
+#. [race]: id=undead
 #: data/core/units.cfg:283
 #, fuzzy
 msgid "race+plural^Undead"
 msgstr "Wandelende dooies"
 
-#. [race]
+#. [race]: id=undead
 #: data/core/units.cfg:289
 msgid ""
 "Undead are not really a single race of creatures, although often treated as "
@@ -4965,25 +4975,25 @@ msgid ""
 "and dwarves before that."
 msgstr ""
 
-#. [race]: description=
+#. [race]: id=wolf, description=
 #: data/core/units.cfg:297
 #, fuzzy
 msgid "race^Wolf"
 msgstr "Dwerge"
 
-#. [race]: description=
+#. [race]: id=wolf, description=
 #: data/core/units.cfg:298
 #, fuzzy
 msgid "race^Wolves"
 msgstr "Dwerge"
 
-#. [race]: description=
+#. [race]: id=wose, description=
 #: data/core/units.cfg:307
 #, fuzzy
 msgid "race^Wose"
 msgstr "Dwerge"
 
-#. [race]: description=
+#. [race]: id=wose, description=
 #: data/core/units.cfg:308
 #, fuzzy
 msgid "race^Woses"
@@ -5755,27 +5765,28 @@ msgid ""
 "a similar manner, and dwarves can do the same with mountains."
 msgstr ""
 
-#. [menu]
+#. [menu]: id=menu-main
 #: data/themes/default.cfg:120 data/themes/dfool.cfg:134
 #: data/themes/experimental.cfg:95
 msgid "Menu"
 msgstr "Menu"
 
-#. [menu]
+#. [menu]: id=actions-menu
 #: data/themes/default.cfg:131 data/themes/dfool.cfg:145
 #: data/themes/experimental.cfg:106
 msgid "Actions"
 msgstr "Aksies"
 
-#. [menu]
-#. [change]
+#. [menu]: id=button-endturn
+#. [change]: id=button-endturn
 #: data/themes/default.cfg:153 data/themes/default.cfg:763
 #: data/themes/dfool.cfg:160
 msgid "End Turn"
 msgstr "Eindig Beurt"
 
-#. [menu]
-#. [change]
+#. [menu]: id=button-endturn
+#. [change]: id=button-endturn
+#. [menu]: id=button-endturn2
 #: data/themes/default.cfg:154 data/themes/default.cfg:764
 #: data/themes/default.cfg:1018 data/themes/dfool.cfg:161
 #, fuzzy
@@ -5783,144 +5794,144 @@ msgid "End Scenario"
 msgstr "Onbekende scenario: '"
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
-#. [label]
+#. [label]: id=label-hp
 #: data/themes/default.cfg:212 data/themes/dfool.cfg:232
-#: data/themes/experimental.cfg:181 src/menu_events.cpp:201 src/unit.cpp:2569
-#: src/unit.cpp:2743
+#: data/themes/experimental.cfg:181 src/menu_events.cpp:201 src/unit.cpp:2566
+#: src/unit.cpp:2740
 msgid "HP"
 msgstr "LP"
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
-#. [label]
+#. [label]: id=label-xp
 #: data/themes/default.cfg:221 data/themes/dfool.cfg:242
 #: data/themes/experimental.cfg:190 src/menu_events.cpp:202
 #: src/menu_events.cpp:989
 msgid "XP"
 msgstr "EP"
 
-#. [label]
+#. [label]: id=gold-icon
 #: data/themes/default.cfg:231 data/themes/dfool.cfg:261
 #: data/themes/experimental.cfg:199
 msgid "gold"
 msgstr "goud"
 
-#. [label]
+#. [label]: id=villages-icon
 #: data/themes/default.cfg:240 data/themes/dfool.cfg:270
 #: data/themes/experimental.cfg:208
 msgid "villages"
 msgstr "dorpe"
 
-#. [label]
+#. [label]: id=units-icon
 #: data/themes/default.cfg:249 data/themes/dfool.cfg:279
 #: data/themes/experimental.cfg:217
 msgid "units"
 msgstr "eenhede"
 
-#. [label]
+#. [label]: id=upkeep-icon
 #: data/themes/default.cfg:258 data/themes/dfool.cfg:288
 #: data/themes/experimental.cfg:226
 msgid "upkeep"
 msgstr "onderhoud"
 
-#. [label]
+#. [label]: id=income-icon
 #: data/themes/default.cfg:267 data/themes/dfool.cfg:297
 #: data/themes/experimental.cfg:235
 msgid "income"
 msgstr "inkomste"
 
-#. [unit_level]
+#. [unit_level]: id=unit-level
 #: data/themes/default.cfg:428 data/themes/dfool.cfg:467
 #: data/themes/experimental.cfg:368
 msgid "statuspanel^level"
 msgstr "vlak"
 
-#. [unit_moves]
+#. [unit_moves]: id=unit-moves
 #: data/themes/default.cfg:459 data/themes/experimental.cfg:399
 msgid "statuspanel^movement"
 msgstr "beweging"
 
-#. [change]
+#. [change]: id=actions-menu
 #: data/themes/default.cfg:989
 msgid "Act."
 msgstr "Episode."
 
-#. [remove]
-#. [menu]
+#. [remove]: id=button-endturn
+#. [menu]: id=button-endturn2
 #: data/themes/default.cfg:1009 data/themes/default.cfg:1017
 #, fuzzy
 msgid "short end-turn^E."
 msgstr "Eindig"
 
-#. [label]
+#. [label]: id=label-mp
 #: data/themes/dfool.cfg:252
 msgid "MP"
 msgstr ""
 
-#. [label]
+#. [label]: id=replay-label
 #: data/themes/macros.cfg:59
 msgid "Replay"
 msgstr "Wys weer"
 
-#. [menu]: type=image
+#. [menu]: id=button-playreplay, type=image
 #: data/themes/macros.cfg:74
 msgid "Play"
 msgstr "Speel"
 
-#. [menu]: type=image
+#. [menu]: id=button-playreplay, type=image
 #: data/themes/macros.cfg:75
 #, fuzzy
 msgid "continuous replay"
 msgstr " wys weer"
 
-#. [menu]: type=image
+#. [menu]: id=button-stopreplay, type=image
 #: data/themes/macros.cfg:92
 msgid "Stop"
 msgstr "Stop"
 
-#. [menu]: type=image
+#. [menu]: id=button-stopreplay, type=image
 #: data/themes/macros.cfg:93
 msgid "pause at end of turn"
 msgstr ""
 
-#. [menu]: type=image
+#. [menu]: id=button-resetreplay, type=image
 #: data/themes/macros.cfg:110
 msgid "Reset"
 msgstr "Terugstel"
 
-#. [menu]: type=image
+#. [menu]: id=button-resetreplay, type=image
 #: data/themes/macros.cfg:111
 msgid "reset to beginning"
 msgstr ""
 
-#. [menu]: type=image
+#. [menu]: id=button-nextturn, type=image
 #: data/themes/macros.cfg:128
 msgid "Next Turn"
 msgstr "Volgende Beurt"
 
-#. [menu]: type=image
+#. [menu]: id=button-nextturn, type=image
 #: data/themes/macros.cfg:129
 #, fuzzy
 msgid "play turn"
 msgstr "per beurt"
 
-#. [menu]: type=image
+#. [menu]: id=button-nextside, type=image
 #: data/themes/macros.cfg:146
 msgid "Next Side"
 msgstr "Volgende Kant"
 
-#. [menu]: type=image
+#. [menu]: id=button-nextside, type=image
 #: data/themes/macros.cfg:147
 #, fuzzy
 msgid "play side turn"
 msgstr "per beurt"
 
-#. [menu]
+#. [menu]: id=show-what
 #: data/themes/macros.cfg:163
 #, fuzzy
 msgid "Point of view"
 msgstr "Vrotword Doepa"
 
-#. [menu]: type=checkbox
+#. [menu]: id=skip-animation, type=checkbox
 #: data/themes/macros.cfg:179
 #, fuzzy
 msgid "Skip animation"
@@ -8751,34 +8762,34 @@ msgstr ""
 msgid "Unknown unit type '$type|'"
 msgstr ""
 
-#: src/unit.cpp:2526 src/unit.cpp:2731 src/unit.cpp:2787
+#: src/unit.cpp:2523 src/unit.cpp:2728 src/unit.cpp:2784
 #, fuzzy
 msgid " and "
 msgstr "Sand"
 
-#: src/unit.cpp:2537
+#: src/unit.cpp:2534
 msgid "$attack_list|: $effect_description"
 msgstr ""
 
-#: src/unit.cpp:2602
+#: src/unit.cpp:2599
 #, fuzzy
 msgid "moves"
 msgstr "Skuiwe"
 
-#: src/unit.cpp:2620 src/unit.cpp:2758
+#: src/unit.cpp:2617 src/unit.cpp:2755
 msgid "XP to advance"
 msgstr "EP om te bevorder"
 
-#: src/unit.cpp:2750
+#: src/unit.cpp:2747
 #, fuzzy
 msgid " move"
 msgstr "Skuiwe"
 
-#: src/unit.cpp:2766
+#: src/unit.cpp:2763
 msgid "$effect_description per level"
 msgstr ""
 
-#: src/unit.cpp:2796
+#: src/unit.cpp:2793
 msgid "$trait_name|: $trait_description "
 msgstr ""
 

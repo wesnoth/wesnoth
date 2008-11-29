@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3.12+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-27 19:54+0100\n"
+"POT-Creation-Date: 2008-11-29 12:25+0100\n"
 "PO-Revision-Date: 2008-08-28 11:23+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: chinese\n"
@@ -10,47 +10,47 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#. [campaign]
+#. [campaign]: id=The_Hammer_of_Thursagan
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:10
 msgid "The Hammer of Thursagan"
 msgstr "瑟薩岡之錘"
 
-#. [campaign]
+#. [campaign]: id=The_Hammer_of_Thursagan
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:11
 msgid "THoT"
 msgstr "瑟"
 
-#. [campaign]
+#. [campaign]: id=The_Hammer_of_Thursagan
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:16
 msgid "Fighter"
 msgstr "戰士"
 
-#. [campaign]
+#. [campaign]: id=The_Hammer_of_Thursagan
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:16
 msgid "(Easy)"
 msgstr "（容易）"
 
-#. [campaign]
+#. [campaign]: id=The_Hammer_of_Thursagan
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:17
 msgid "Steelclad"
 msgstr "重裝兵"
 
-#. [campaign]
+#. [campaign]: id=The_Hammer_of_Thursagan
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:17
 msgid "(Normal)"
 msgstr "（普通）"
 
-#. [campaign]
+#. [campaign]: id=The_Hammer_of_Thursagan
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:18
 msgid "(Challenging)"
 msgstr "（挑戰）"
 
-#. [campaign]
+#. [campaign]: id=The_Hammer_of_Thursagan
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:18
 msgid "Lord"
 msgstr "領主"
 
-#. [campaign]
+#. [campaign]: id=The_Hammer_of_Thursagan
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:22
 msgid ""
 "In the first years of the Northern Alliance, an expedition from Knalga seeks "
@@ -86,7 +86,7 @@ msgstr "藝術"
 msgid "Brainstorming, playtesting, and spousal support"
 msgstr "集體討論，遊戲測試，和家人的支持"
 
-#. [scenario]
+#. [scenario]: id=01_At_The_East_Gate
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_The_East_Gate.cfg:3
 msgid "At The East Gate"
 msgstr "在東門"
@@ -96,12 +96,12 @@ msgstr "在東門"
 msgid "East Gate"
 msgstr "東門"
 
-#. [side]: type=Dwarvish Fighter
-#. [side]: type=Dwarvish Lord
-#. [side]: type=Great Mage
-#. [side]: type=Dwarvish Steelclad
+#. [side]: type=Dwarvish Fighter, id=Aiglondur
+#. [side]: type=Dwarvish Lord, id=Hamel
+#. [side]: type=Great Mage, id=Master Perrin
+#. [side]: type=Dwarvish Steelclad, id=Dulcatulos
 #. [side]
-#. [side]: type=Orcish Warrior
+#. [side]: type=Orcish Warrior, id=Marth-Tak
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:34
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_The_Past.cfg:28
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_The_Past.cfg:46
@@ -123,7 +123,7 @@ msgstr "東門"
 msgid "Alliance"
 msgstr "歐凌"
 
-#. [side]: type=Dwarvish Fighter
+#. [side]: type=Dwarvish Fighter, id=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:29
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_The_Past.cfg:40
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_The_East_Gate.cfg:44
@@ -139,8 +139,13 @@ msgstr "歐凌"
 msgid "Aiglondur"
 msgstr "艾格藍德"
 
-#. [side]: type=Orcish Warrior
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warrior, id=Bashnark
+#. [side]: type=Orcish Warlord, id=Tan-Malgar
+#. [side]: type=Orcish Warlord, id=Tan-Grolak
+#. [side]: type=Orcish Warlord, id=Tan-Uthkar
+#. [side]: type=Orcish Warlord, id=Tan-Morgh
+#. [side]: type=Orcish Warlord, id=Tan-Garukh
+#. [side]: type=Orcish Warlord, id=Tan-Wagran
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_The_East_Gate.cfg:59
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:62
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:98
@@ -151,12 +156,12 @@ msgstr "艾格藍德"
 msgid "Orcs"
 msgstr ""
 
-#. [side]: type=Orcish Warrior
+#. [side]: type=Orcish Warrior, id=Bashnark
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_The_East_Gate.cfg:65
 msgid "Bashnark"
 msgstr "巴希奈克"
 
-#. [unit]: type=Gryphon Rider
+#. [unit]: type=Gryphon Rider, id=Pelmathidrol
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_The_East_Gate.cfg:83
 msgid "Pelmathidrol"
 msgstr "保羅瑪西卓"
@@ -258,13 +263,13 @@ msgstr "這個是？他們頭目身上穿着矮人製作的斗篷。上面還釘
 msgid "The maker's mark is strange to me. We had best consult the lord Hamel."
 msgstr "我不認識這個標記。我們最好稟報漢牡王。"
 
-#. [scenario]
+#. [scenario]: id=02_Reclaiming_The_Past
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_The_Past.cfg:3
 msgid "Reclaiming The Past"
 msgstr "回憶過去"
 
-#. [side]: type=Dwarvish Lord
-#. [side]: type=Dwarvish Fighter
+#. [side]: type=Dwarvish Lord, id=Hamel
+#. [side]: type=Dwarvish Fighter, id=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_The_Past.cfg:22
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_Troll_Bridge.cfg:18
 msgid "Hamel"
@@ -281,7 +286,8 @@ msgstr ""
 "在對抗半獸人的戰爭取得勝利後，艾格藍德被召到漢牡王的會客大廳。漢牡王，柯內革"
 "的領主同時也是北方聯盟的盟主。旁邊站着一位穿着智慧大師長袍的陌生人..."
 
-#. [unit]: type=Dwarvish Witness
+#. [unit]: type=Dwarvish Witness, id=Angarthing_dummy
+#. [unit]: type=Dwarvish Witness, id=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_The_Past.cfg:93
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:141
 msgid "Angarthing"
@@ -489,23 +495,23 @@ msgid ""
 "soon grow dangerous."
 msgstr "冬天快到了；我們得趕路了，不然穿越山脈會越來越危險。"
 
-#. [scenario]
+#. [scenario]: id=03_Strange_Allies
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:3
 msgid "Strange Allies"
 msgstr "陌生盟友"
 
-#. [side]: type=Orcish Warrior
+#. [side]: type=Orcish Warrior, id=Marth-Tak
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:43
 #, fuzzy
 msgid "Marth-Tak"
 msgstr "馬瑟 坦克"
 
-#. [side]: type=Outlaw
+#. [side]: type=Outlaw, id=Gothras
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:85
 msgid "Gothras"
 msgstr "迦瑟瑞斯"
 
-#. [side]: type=Outlaw
+#. [side]: type=Outlaw, id=Gothras
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:94
 msgid "Bandits"
 msgstr ""
@@ -633,17 +639,17 @@ msgstr ""
 msgid "East, eh? You won't find many friends in that direction. Travel safely."
 msgstr "東邊，恩？那裡不容易見到盟友。希望你旅途安全。"
 
-#. [scenario]
+#. [scenario]: id=04_Troll Bridge
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_Troll_Bridge.cfg:3
 msgid "Troll Bridge"
 msgstr "巨魔橋"
 
-#. [side]: type=Troll
+#. [side]: type=Troll, id=Gronk
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_Troll_Bridge.cfg:35
 msgid "Gronk"
 msgstr "格朗克"
 
-#. [side]: type=Troll
+#. [side]: type=Troll, id=Gronk
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_Troll_Bridge.cfg:43
 msgid "Trolls"
 msgstr ""
@@ -703,7 +709,7 @@ msgstr ""
 msgid "Defeat Gronk"
 msgstr "擊敗格朗克"
 
-#. [scenario]
+#. [scenario]: id=05_Invaders
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:3
 msgid "Invaders"
 msgstr "侵略者"
@@ -720,17 +726,17 @@ msgid ""
 "wildlands."
 msgstr "北方聯盟的道路在巨魔橋就到了盡頭。再向東就只有荒地了。"
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Tan-Malgar
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:54
 msgid "Tan-Malgar"
 msgstr "丹-瑪卡"
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Tan-Grolak
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:80
 msgid "Tan-Grolak"
 msgstr "丹-克拉客"
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Tan-Uthkar
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:125
 msgid "Tan-Uthkar"
 msgstr "丹-阿瑟卡"
@@ -802,17 +808,17 @@ msgstr "但是，這個選擇是，我們要先和這幫弱小的反抗者作戰
 msgid "Defeat all enemies"
 msgstr "擊敗全部敵人"
 
-#. [scenario]
+#. [scenario]: id=06_High_Pass
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:3
 msgid "High Pass"
 msgstr "高原山口"
 
-#. [side]: type=Gryphon
+#. [side]: type=Gryphon, id=Kaara
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:48
 msgid "Kaara"
 msgstr "卡爾亞"
 
-#. [side]: type=Gryphon
+#. [side]: type=Gryphon, id=Kaara
 #. [side]
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:52
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:68
@@ -846,7 +852,7 @@ msgid ""
 "should investigate."
 msgstr ""
 
-#. [unit]: type=Arch Mage
+#. [unit]: type=Arch Mage, id=Ratheln
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:225
 msgid "Ratheln"
 msgstr "阿爾任"
@@ -952,33 +958,33 @@ msgid ""
 "Aye. But I've a grim feeling we might be going to discover that in person."
 msgstr "啊。我強烈的感到我們將親自發現原因。"
 
-#. [scenario]
+#. [scenario]: id=07_Mages_and_Drakes
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:3
 msgid "Mages and Drakes"
 msgstr "龍與法師"
 
-#. [side]: type=Great Mage
+#. [side]: type=Great Mage, id=Master Perrin
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:42
 msgid "Master Perrin"
 msgstr "珀藍大師"
 
-#. [side]: type=Drake Flameheart
+#. [side]: type=Drake Flameheart, id=Glashal
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:62
 msgid "Glashal"
 msgstr "塔拉夏"
 
-#. [side]: type=Drake Flameheart
+#. [side]: type=Drake Flameheart, id=Glashal
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:66
 #, fuzzy
 msgid "Drakes"
 msgstr "達爾崔西"
 
-#. [unit]: type=White Mage
+#. [unit]: type=White Mage, id=Preceptor
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:93
 msgid "Preceptor"
 msgstr "導師"
 
-#. [unit]: type=Red Mage
+#. [unit]: type=Red Mage, id=Warder
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:105
 msgid "Warder"
 msgstr "守衛"
@@ -1060,12 +1066,12 @@ msgstr ""
 "那裡蘊藏著龐大的魔法力量。有些...邪惡的力量。 我感覺到附近的土地和空氣有它的"
 "痕跡。"
 
-#. [unit]: type=Mage
+#. [unit]: type=Mage, id=Lorinne
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:191
 msgid "Lorinne"
 msgstr "羅靈納"
 
-#. [unit]: type=Mage
+#. [unit]: type=Mage, id=Darchas
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:199
 msgid "Darchas"
 msgstr "達爾崔西"
@@ -1110,17 +1116,24 @@ msgid ""
 "I think we will regret Perrin's passing. There is much he might have told us."
 msgstr "我們對珀藍的逝世感到難過。我們會紀念他的。"
 
-#. [scenario]
+#. [scenario]: id=08_Fear
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:3
 msgid "Fear"
 msgstr "恐懼"
 
+#. [unit]: type=Dwarvish Masked Steelclad, id=Gog
+#. [unit]: type=Dwarvish Masked Steelclad, id=Magog
+#. [unit]: type=Dwarvish Ulfserker, id=Hekyll
+#. [unit]: type=Dwarvish Ulfserker, id=Jekyll
+#. [side]: type=Dwarvish Masked Steelclad, id=Dufon
+#. [side]: type=Dwarvish Masked Lord, id=Aragoth
+#. [side]: type=Dwarvish Masked Lord, id=Dranath
+#. [side]: type=Dwarvish Masked Steelclad, id=Sashaon
 #. [unit]: type=Dwarvish Masked Steelclad
-#. [unit]: type=Dwarvish Ulfserker
-#. [side]: type=Dwarvish Masked Steelclad
-#. [side]: type=Dwarvish Masked Lord
 #. [unit]: type=Dwarvish Masked Thunderguard
 #. [unit]: type=Dwarvish Masked Stalwart
+#. [side]: type=Dwarvish Masked Steelclad, id=Masked Dwarf Leader
+#. [unit]: type=Dwarvish Ulfserker, id={ID_STRING}
 #. [event]
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:128
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:137
@@ -1140,10 +1153,14 @@ msgstr "恐懼"
 msgid "Masked Dwarf"
 msgstr "蒙面矮人"
 
-#. [side]: type=Dwarvish Rune Lord
-#. [side]: type=Dwarvish Masked Steelclad
-#. [side]: type=Dwarvish Masked Lord
-#. [side]: type=Lich
+#. [side]: type=Dwarvish Rune Lord, id=Karrag
+#. [side]: type=Dwarvish Masked Steelclad, id=Dufon
+#. [side]: type=Dwarvish Masked Lord, id=Aragoth
+#. [side]: type=Dwarvish Masked Lord, id=Dranath
+#. [side]: type=Lich, id=Fleleen
+#. [side]: type=Lich, id=Lannex
+#. [side]: type=Dwarvish Masked Steelclad, id=Sashaon
+#. [side]: type=Dwarvish Masked Steelclad, id=Masked Dwarf Leader
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:56
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:77
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:98
@@ -1195,7 +1212,7 @@ msgstr "仔細尋找這里的居民。他們可能會告訴我們些情報。"
 msgid "Find the inhabitants"
 msgstr "尋找居民"
 
-#. [unit]: type=Peasant
+#. [unit]: type=Peasant, id=Ollin
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:193
 msgid "Ollin"
 msgstr "歐凌"
@@ -1357,36 +1374,36 @@ msgid ""
 "was any good one."
 msgstr "他們正在尋找俘虜。我不知道他們在打什麼主意。但我不認為是好事。"
 
-#. [scenario]
+#. [scenario]: id=09_Forbidden_Forest
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:3
 msgid "Forbidden Forest"
 msgstr "禁行森林"
 
-#. [side]: type=Elvish High Lord
+#. [side]: type=Elvish High Lord, id=Telcherion
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:121
 msgid "Telcherion"
 msgstr "泰雀瑞恩"
 
-#. [side]: type=Elvish High Lord
-#. [side]: type=Elvish Lady
-#. [side]: type=Ancient Wose
+#. [side]: type=Elvish High Lord, id=Telcherion
+#. [side]: type=Elvish Lady, id=Iluvarda
+#. [side]: type=Ancient Wose, id=Burumardir-Athelorand
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:137
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:160
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:184
 msgid "Forest"
 msgstr ""
 
-#. [side]: type=Elvish Lady
+#. [side]: type=Elvish Lady, id=Iluvarda
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:145
 msgid "Iluvarda"
 msgstr "拉福瑞達"
 
-#. [side]: type=Ancient Wose
+#. [side]: type=Ancient Wose, id=Burumardir-Athelorand
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:168
 msgid "Burumardir-Athelorand"
 msgstr "布若-阿瑟"
 
-#. [unit]: type=Elvish Scout
+#. [unit]: type=Elvish Scout, id=Elurin
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:225
 msgid "Elurin"
 msgstr "艾爾蘭"
@@ -1460,29 +1477,29 @@ msgstr "各位，集合！我們有比跟精靈打架更重要的事情要做。
 msgid "Kal Kartha should be only another day's march east of here."
 msgstr "只要在往東走幾天的路應該就會抵達凱 鎧爾瑟。 "
 
-#. [scenario]
+#. [scenario]: id=10_The_Siege_of_Kal_Kartha
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:3
 msgid "The Siege of Kal Kartha"
 msgstr "凱 鎧爾瑟的圍攻"
 
-#. [unit]: type=Dwarvish Steelclad
-#. [side]: type=Dwarvish Steelclad
+#. [unit]: type=Dwarvish Steelclad, id=Dulcatulos
+#. [side]: type=Dwarvish Steelclad, id=Dulcatulos
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:102
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:49
 msgid "Dulcatulos"
 msgstr "達克特羅斯"
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Tan-Morgh
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:74
 msgid "Tan-Morgh"
 msgstr "丹-馬克"
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Tan-Garukh
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:121
 msgid "Tan-Garukh"
 msgstr "丹-葛羅"
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Tan-Wagran
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:154
 msgid "Tan-Wagran"
 msgstr "丹-瓦根"
@@ -1593,20 +1610,20 @@ msgstr ""
 "這是我們的王和智慧大師所擔心的。而我則讓我的部隊受到良好的照顧。食物等等會給"
 "你送來，好好休息吧，我們會在來找你談談的。"
 
-#. [scenario]
+#. [scenario]: id=11_The_Court_of_Karrag
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:3
 msgid "The Court of Karrag"
 msgstr "葛瑞格的宮庭"
 
-#. [side]: type=Dwarvish Rune Lord
-#. [unit]: type=Lich
+#. [side]: type=Dwarvish Rune Lord, id=Karrag
+#. [unit]: type=Lich, id=Karrag
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:45
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:245
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:49
 msgid "Karrag"
 msgstr "葛瑞格"
 
-#. [side]: type=Dwarvish Rune Lord
+#. [side]: type=Dwarvish Rune Lord, id=Karrag
 #. [side]
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:52
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:72
@@ -1788,17 +1805,17 @@ msgid ""
 "fight them, too. Our mission has failed."
 msgstr "達克特羅斯在向凱 鎧爾瑟報告我們要襲擊他們的行動。我們的任務曝光了。"
 
-#. [scenario]
+#. [scenario]: id=12_The_Underlevels
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:8
 msgid "The Underlevels"
 msgstr "地底"
 
-#. [side]: type=Lich
+#. [side]: type=Lich, id=Fleleen
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:134
 msgid "Fleleen"
 msgstr "富萊林"
 
-#. [side]: type=Lich
+#. [side]: type=Lich, id=Lannex
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:148
 msgid "Lannex"
 msgstr "藍克斯"
@@ -2031,22 +2048,22 @@ msgstr "一條坍塌的古老地道。也許清掉這些碎石後我們就可以
 msgid "Another old caved-in passage way..."
 msgstr "另一條坍塌的古老地道..."
 
-#. [unit]: type=Dwarvish Steelclad
+#. [unit]: type=Dwarvish Steelclad, id=Trisi
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:843
 msgid "Trisi"
 msgstr "崔西"
 
-#. [unit]: type=Dwarvish Steelclad
+#. [unit]: type=Dwarvish Steelclad, id=Malifen
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:894
 msgid "Malifen"
 msgstr "馬嵐范"
 
-#. [unit]: type=Dwarvish Thunderguard
+#. [unit]: type=Dwarvish Thunderguard, id=Borras
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:945
 msgid "Borras"
 msgstr "布拉斯"
 
-#. [unit]: type=Dwarvish Steelclad
+#. [unit]: type=Dwarvish Steelclad, id=Zamak
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:996
 msgid "Zamak"
 msgstr "薩門"
@@ -2113,7 +2130,7 @@ msgstr "不！不！不！達克特羅斯必須死！我們必須統治一切！
 msgid "The 'true people' speak through our axes. Die, foul lich."
 msgstr "要問問我的斧頭同不同意。死吧，邪惡的傢伙。"
 
-#. [scenario]
+#. [scenario]: id=13_Epilogue
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/13_Epilogue.cfg:3
 msgid "Epilogue"
 msgstr "後續"
@@ -2208,7 +2225,7 @@ msgstr ""
 "智慧大師...我們之中沒有一個能擔當的起領導的位置。葛瑞格愚弄了我們所有人，把我"
 "們作為他邪惡計畫的工具。"
 
-#. [unit]: type=Lancer
+#. [unit]: type=Lancer, id=Pelias
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/13_Epilogue.cfg:135
 msgid "Pelias"
 msgstr "派瑞斯"
@@ -2284,12 +2301,12 @@ msgid ""
 msgstr ""
 "派瑞斯，我向守護王致謝；我會在春天面見他的。不過看起來這裡有些工作我要先做。"
 
-#. [unit_type]: race=dwarf
+#. [unit_type]: id=Dwarvish Annalist, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Annalist.cfg:4
 msgid "Dwarvish Annalist"
 msgstr "矮人史官"
 
-#. [unit_type]: race=dwarf
+#. [unit_type]: id=Dwarvish Annalist, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Annalist.cfg:22
 #, fuzzy
 msgid ""
@@ -2315,12 +2332,12 @@ msgstr ""
 msgid "bolas"
 msgstr "流星錘"
 
-#. [unit_type]: race=dwarf
+#. [unit_type]: id=Dwarvish Loremaster, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Loremaster.cfg:4
 msgid "Dwarvish Loremaster"
 msgstr "矮人智慧大師"
 
-#. [unit_type]: race=dwarf
+#. [unit_type]: id=Dwarvish Loremaster, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Loremaster.cfg:24
 #, fuzzy
 msgid ""
@@ -2336,28 +2353,28 @@ msgstr ""
 "以這麼說智慧大師站在哪兒，哪兒就是矮人的靈魂。相對於史官來說他們提升了有限的"
 "治療能力。"
 
-#. [unit_type]
+#. [unit_type]: id=Dwarvish Masked Dragonguard
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Dragonguard.cfg:7
 msgid "Dwarvish Masked Dragonguard"
 msgstr "蒙面矮人龍護衛"
 
-#. [unit_type]
+#. [unit_type]: id=Dwarvish Masked Fighter
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Fighter.cfg:7
 msgid "Dwarvish Masked Fighter"
 msgstr "蒙面矮人士兵"
 
-#. [unit_type]
+#. [unit_type]: id=Dwarvish Masked Guardsman
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Guardian.cfg:7
 #, fuzzy
 msgid "Dwarvish Masked Guardsman"
 msgstr "蒙面矮人王"
 
-#. [unit_type]
+#. [unit_type]: id=Dwarvish Masked Lord
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Lord.cfg:7
 msgid "Dwarvish Masked Lord"
 msgstr "蒙面矮人王"
 
-#. [unit_type]
+#. [unit_type]: id=Dwarvish Masked Lord
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Lord.cfg:9
 #, fuzzy
 msgid ""
@@ -2373,24 +2390,24 @@ msgstr ""
 "師，并能在一定距離內向目標投擲手斧。雖然移動速度很慢，這些矮人還是代表了矮人"
 "族的力量。"
 
-#. [unit_type]
+#. [unit_type]: id=Dwarvish Masked Sentinel
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Sentinel.cfg:7
 #, fuzzy
 msgid "Dwarvish Masked Sentinel"
 msgstr "蒙面矮人重步兵"
 
-#. [unit_type]
+#. [unit_type]: id=Dwarvish Masked Stalwart
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Stalwart.cfg:7
 #, fuzzy
 msgid "Dwarvish Masked Stalwart"
 msgstr "蒙面矮人重步兵"
 
-#. [unit_type]
+#. [unit_type]: id=Dwarvish Masked Steelclad
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Steelclad.cfg:7
 msgid "Dwarvish Masked Steelclad"
 msgstr "蒙面矮人重步兵"
 
-#. [unit_type]
+#. [unit_type]: id=Dwarvish Masked Steelclad
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Steelclad.cfg:11
 #, fuzzy
 msgid ""
@@ -2399,22 +2416,22 @@ msgid ""
 "conceal their faces behind riveted masks."
 msgstr "許多老練的矮人鐵甲兵穿着厚重的鏈甲和板甲，他們以此而著稱。"
 
-#. [unit_type]
+#. [unit_type]: id=Dwarvish Masked Thunderer
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Thunderer.cfg:7
 msgid "Dwarvish Masked Thunderer"
 msgstr "蒙面矮人火槍兵"
 
-#. [unit_type]
+#. [unit_type]: id=Dwarvish Masked Thunderguard
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Thunderguard.cfg:7
 msgid "Dwarvish Masked Thunderguard"
 msgstr "蒙面矮人槍衛士"
 
-#. [unit_type]: race=dwarf
+#. [unit_type]: id=Dwarvish Rune Lord, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:6
 msgid "Dwarvish Runemaster"
 msgstr "矮人符石法師"
 
-#. [unit_type]: race=dwarf
+#. [unit_type]: id=Dwarvish Rune Lord, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:26
 msgid ""
 "Except for those with almost supernatural skill, the highest rank a "
@@ -2437,12 +2454,12 @@ msgstr "戰鎚"
 msgid "chill tempest"
 msgstr "冰風暴"
 
-#. [unit_type]: race=dwarf
+#. [unit_type]: id=Dwarvish Witness, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Witness.cfg:10
 msgid "Dwarvish Witness"
 msgstr "矮人見證者"
 
-#. [unit_type]: race=dwarf
+#. [unit_type]: id=Dwarvish Witness, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Witness.cfg:28
 #, fuzzy
 msgid ""
@@ -2465,14 +2482,14 @@ msgid ""
 "in combat, though this only applies to units of lower or equal level."
 msgstr ""
 
-#. [leadership]
+#. [leadership]: id=inspire_0
 #: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:13
 #: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:45
 #: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:89
 msgid "inspire"
 msgstr ""
 
-#. [leadership]
+#. [leadership]: id=inspire_0
 #: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:15
 msgid ""
 "Inspire:\n"
@@ -2481,7 +2498,7 @@ msgid ""
 "will do 50% more."
 msgstr ""
 
-#. [leadership]
+#. [leadership]: id=inspire_0
 #: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:47
 msgid ""
 "Inspire:\n"
@@ -2490,7 +2507,7 @@ msgid ""
 "units will do 50% more, and L0 will do 75% more."
 msgstr ""
 
-#. [leadership]
+#. [leadership]: id=inspire_0
 #: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:91
 msgid ""
 "Inspire:\n"
@@ -2527,19 +2544,19 @@ msgid ""
 "longer recruit new ones."
 msgstr "你的團隊已沒有來自大師，珀藍學院的魔法學者了，你將不能再招募新的法師。"
 
-#. [object]
+#. [object]: id=sorf	# Prevent it from being picked up more than once.
 #: data/campaigns/The_Hammer_of_Thursagan/utils/macros.cfg:70
 msgid "Staff of Righteous Flame"
 msgstr "正義光輝之杖"
 
-#. [object]
+#. [object]: id=sorf	# Prevent it from being picked up more than once.
 #: data/campaigns/The_Hammer_of_Thursagan/utils/macros.cfg:73
 msgid ""
 "This staff gives a dying mage a final strike that will destroy all nearby "
 "enemies."
 msgstr "這個法杖使法師在臨死之前施放強力的攻擊，可以瞬間殺死周圍的敵人。"
 
-#. [object]
+#. [object]: id=sorf	# Prevent it from being picked up more than once.
 #: data/campaigns/The_Hammer_of_Thursagan/utils/macros.cfg:74
 msgid "Only mages can wield the Staff."
 msgstr "只有法師可以使用這根法杖。"

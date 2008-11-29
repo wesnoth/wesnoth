@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-27 19:54+0100\n"
+"POT-Creation-Date: 2008-11-29 12:25+0100\n"
 "PO-Revision-Date: 2007-01-04 19:33+0000\n"
 "Last-Translator: Peter J Ross <wesnoth@pjr.britishlibrary.net>\n"
 "Language-Team: English (British) <en@li.org>\n"
@@ -16,17 +16,17 @@ msgstr ""
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#. [campaign]
+#. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:9
 msgid "The South Guard"
 msgstr "The South Guard"
 
-#. [campaign]
+#. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:10
 msgid "TSG"
 msgstr ""
 
-#. [campaign]
+#. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:19
 #, fuzzy
 msgid ""
@@ -40,33 +40,33 @@ msgstr ""
 "Note: This campaign is designed as an introduction to Wesnoth. The "
 "'Civilian' difficulty level is aimed at first-time players."
 
-#. [campaign]
+#. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:22
 msgid "Civilian"
 msgstr "Civilian"
 
-#. [campaign]
+#. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:22
 msgid "(Beginner)"
 msgstr ""
 
-#. [campaign]
+#. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:23
 #, fuzzy
 msgid "(Easy)"
 msgstr "(easy)"
 
-#. [campaign]
+#. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:23
 msgid "Recruit"
 msgstr "Recruit"
 
-#. [campaign]
+#. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:24
 msgid "Soldier"
 msgstr "Soldier"
 
-#. [campaign]
+#. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:24
 #, fuzzy
 msgid "(Normal)"
@@ -87,14 +87,14 @@ msgstr ""
 msgid "Artwork and Graphics Design"
 msgstr ""
 
-#. [scenario]
+#. [scenario]: id=1_Born_To_The_Banner
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:5
 msgid "Born to the Banner"
 msgstr "Born to the Banner"
 
-#. [side]: type=Horseman Commander
-#. [side]: type=Dismounted Commander 1
-#. [side]
+#. [side]: type=Horseman Commander, id=Deoran
+#. [side]: type=Dismounted Commander 1, id=Deoran
+#. [side]: id=Deoran
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:26
 #: data/campaigns/The_South_Guard/scenarios/10a_Elf_Epilogue.cfg:17
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:26
@@ -112,11 +112,12 @@ msgstr "Born to the Banner"
 msgid "Deoran"
 msgstr "Deoran"
 
-#. [side]: type=Horseman Commander
-#. [side]: type=Troll Hero
+#. [side]: type=Horseman Commander, id=Deoran
+#. [side]: type=Troll Hero, id=Grek
 #. [side]
-#. [side]: type=Lieutenant
-#. [side]: type=Dismounted Commander 1
+#. [side]: type=Lieutenant, id=Plynry
+#. [side]: type=Dismounted Commander 1, id=Deoran
+#. [side]: id=Deoran
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:30
 #: data/campaigns/The_South_Guard/scenarios/10a_Elf_Epilogue.cfg:20
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:30
@@ -138,14 +139,16 @@ msgstr "Deoran"
 msgid "South Guard"
 msgstr "The South Guard"
 
-#. [side]: type=Bandit
+#. [side]: type=Bandit, id=Urza Mathin
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:54
 msgid "Urza Mathin"
 msgstr "Urza Mathin"
 
-#. [side]: type=Outlaw
-#. [side]: type=Rogue
-#. [side]: type=Bandit
+#. [side]: type=Outlaw, id=Tharzo Kalain
+#. [side]: type=Rogue, id=Urza Fastik
+#. [side]: type=Outlaw, id=Urza Afalas
+#. [side]: type=Bandit, id=Urza Mathin
+#. [side]: type=Outlaw, id=Urza Nalmath
 #. [side]
 #: data/campaigns/The_South_Guard/scenarios/08a_Return_To_Kerlath.cfg:107
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:60
@@ -230,7 +233,7 @@ msgstr ""
 "previous commander, had squandered his time in games and diversions, and "
 "bandits had overrun the land..."
 
-#. [unit]
+#. [unit]: id=Moreth
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:165
 msgid "Moreth"
 msgstr "Moreth"
@@ -308,7 +311,7 @@ msgstr ""
 "Ha! This new commander doesn't stand a chance. His fate will be the same as "
 "that of that swine Loris!"
 
-#. [unit]: type=South Guard Captain
+#. [unit]: type=South Guard Captain, id=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:234
 msgid "Sir Gerrick"
 msgstr "Sir Gerrick"
@@ -478,12 +481,12 @@ msgstr ""
 "During the day your units will deal more damage, and Urza Mathin's less. The "
 "more of his troops you can defeat during the day, the better!"
 
-#. [unit]: type=Merman Warrior, type=Merman Warrior, type=Merman Fighter
+#. [unit]: type=Merman Warrior, type=Merman Warrior, type=Merman Fighter, id=Myssh
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:418
 msgid "Myssh"
 msgstr "Myssh"
 
-#. [unit]: type=Merman Spearman, type=Merman Hunter, type=Merman Hunter
+#. [unit]: type=Merman Spearman, type=Merman Hunter, type=Merman Hunter, id=Ylla
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:437
 msgid "Ylla"
 msgstr "Ylla"
@@ -520,8 +523,8 @@ msgstr ""
 "in rivers and swamps and they will fight well! Put them on dry land and "
 "they're in trouble!"
 
-#. [unit]: type=Longbowman
-#. [unit]: type=Peasant
+#. [unit]: type=Longbowman, id=Aleron
+#. [unit]: type=Peasant, id=Aleron
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:484
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:520
 msgid "Aleron"
@@ -602,7 +605,7 @@ msgstr ""
 "Garrison the villages behind our lines and keep the enemy from slipping "
 "around us at night."
 
-#. [unit]: type=Footpad
+#. [unit]: type=Footpad, id=Glasar
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:552
 msgid "Glasar"
 msgstr "Glasar"
@@ -697,7 +700,7 @@ msgstr ""
 "This is worse than even my darkest fears. We must ride to Westin at once, "
 "and hope that Sir Loris is there and well! Come, men! Ride for Westin!"
 
-#. [scenario]
+#. [scenario]: id=2_Proven_By_The_Sword
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:5
 msgid "Proven By The Sword"
 msgstr "Proven By The Sword"
@@ -707,7 +710,7 @@ msgstr "Proven By The Sword"
 msgid "Westin"
 msgstr "Westin"
 
-#. [side]: type=Outlaw
+#. [side]: type=Outlaw, id=Urza Nalmath
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:63
 msgid "Urza Nalmath"
 msgstr "Urza Nalmath"
@@ -779,7 +782,7 @@ msgstr "Now, Deoran, take your post of command at the Citadel of Westin."
 msgid "Bring Deoran to the Citadel of Westin."
 msgstr "Bring Deoran to the Citadel of Westin."
 
-#. [unit]: type=White Mage
+#. [unit]: type=White Mage, id=Minister Hylas
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:304
 msgid "Minister Hylas"
 msgstr "Minister Hylas"
@@ -1054,12 +1057,12 @@ msgstr ""
 "Deoran sent a rider to request mounted reinforcements and set out at once "
 "towards the western forest..."
 
-#. [scenario]
+#. [scenario]: id=3_A_Desperate_Errand
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:5
 msgid "A Desperate Errand"
 msgstr "A Desperate Errand"
 
-#. [side]: type=Rogue
+#. [side]: type=Rogue, id=Urza Fastik
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:57
 msgid "Urza Fastik"
 msgstr "Urza Fastik"
@@ -1138,7 +1141,7 @@ msgstr "Move Deoran to the Elvish city in the northern woods"
 msgid "There is so much ground to cover. If only our riders would arrive!"
 msgstr "There is so much ground to cover. If only our riders would arrive!"
 
-#. [unit]
+#. [unit]: id=Jarek
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:206
 msgid "Jarek"
 msgstr "Jarek"
@@ -1225,7 +1228,7 @@ msgstr ""
 msgid "Talchar"
 msgstr ""
 
-#. [unit]: type=Elvish Shyde, type=Elvish Druid
+#. [unit]: type=Elvish Shyde, type=Elvish Druid, id=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:293
 msgid "Ethiliel"
 msgstr "Ethiliel"
@@ -1323,22 +1326,24 @@ msgstr ""
 msgid "My thanks, lady."
 msgstr "My thanks, lady."
 
-#. [scenario]
+#. [scenario]: id=4_Vale_of_Tears
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:5
 msgid "Vale of Tears"
 msgstr "Vale of Tears"
 
-#. [side]: type=Dark Adept, type=Dark Sorcerer, type=Necromancer
+#. [side]: type=Dark Adept, type=Dark Sorcerer, type=Necromancer, id=Mal A'kai
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:68
 msgid "Mal A'kai"
 msgstr "Mal A'kai"
 
-#. [side]: type=Dark Adept, type=Dark Sorcerer, type=Necromancer
-#. [side]: type=Outlaw
-#. [side]: type=Lich, type=Lich, type=Ancient Lich
-#. [side]: type=Soulless
-#. [side]: type=Ancient Lich
-#. [side]: type=Lich
+#. [side]: type=Dark Adept, type=Dark Sorcerer, type=Necromancer, id=Mal A'kai
+#. [side]: type=Outlaw, id=Jera Ilras
+#. [side]: type=Lich, type=Lich, type=Ancient Lich, id=Mal M'Brin
+#. [side]: type=Soulless, id=Groth
+#. [side]: type=Ancient Lich, id=Mal M'Brin
+#. [side]: type=Lich, id=Mal Tera
+#. [side]: type=Soulless, id=Gruth
+#. [side]: type=Lich, id=Mal M'brin
 #. [side]
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:74
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:116
@@ -1353,7 +1358,7 @@ msgstr "Mal A'kai"
 msgid "Undead"
 msgstr ""
 
-#. [side]: type=Outlaw
+#. [side]: type=Outlaw, id=Jera Ilras
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:110
 msgid "Jera Ilras"
 msgstr "Jera Ilras"
@@ -1540,7 +1545,7 @@ msgstr "You have a bodyguard?"
 msgid "You have a bodyguard?!!"
 msgstr "You have a bodyguard?"
 
-#. [unit]: type=Elvish Ranger
+#. [unit]: id=Elvish Bodyguard, type=Elvish Ranger
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:366
 msgid "Elvish Bodyguard"
 msgstr "Elvish Bodyguard"
@@ -1651,24 +1656,24 @@ msgstr ""
 "Well, vengeance or no, if you will lead us into the forest, we will follow "
 "you and battle the undead!"
 
-#. [scenario]
+#. [scenario]: id=5_Choice_In_The_Fog
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:5
 msgid "Choice in the Fog"
 msgstr "Choice in the Fog"
 
-#. [side]: type=Outlaw
-#. [unit]: type=Outlaw
+#. [side]: type=Outlaw, id=Urza Afalas
+#. [unit]: type=Outlaw, id=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:62
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:479
 msgid "Urza Afalas"
 msgstr "Urza Afalas"
 
-#. [side]: type=Soulless
+#. [side]: type=Soulless, id=Gruth
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:87
 msgid "Gruth"
 msgstr "Gruth"
 
-#. [side]: type=Lich
+#. [side]: type=Lich, id=Mal M'brin
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:120
 msgid "?"
 msgstr ""
@@ -2018,7 +2023,7 @@ msgid "Fools! That lich will be the death of us all! You have sealed our doom!"
 msgstr ""
 "Fools! That lich will be the death of us all! You have sealed our doom!"
 
-#. [unit]: type=Sea Serpent
+#. [unit]: type=Sea Serpent, id=Beast of the Lake
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:687
 msgid "Beast of the Lake"
 msgstr "Beast of the Lake"
@@ -2184,7 +2189,7 @@ msgid ""
 msgstr ""
 "Farewell, Deoran! I will be there to greet you when you return to Kerlath."
 
-#. [scenario]
+#. [scenario]: id=6a_Tidings_Good_And_Ill
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:5
 msgid "Tidings, Good and Ill"
 msgstr "Tidings, Good and Ill"
@@ -2261,7 +2266,7 @@ msgstr ""
 msgid "Kallen"
 msgstr "Kallen"
 
-#. [unit]: type=Elvish Ranger
+#. [unit]: type=Elvish Ranger, id=Eliomir
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:175
 msgid "Eliomir"
 msgstr ""
@@ -2476,7 +2481,7 @@ msgstr ""
 "While the council debated the best course of action, Deoran and Ethiliel "
 "prepared to enter the caves under Mebrin's fortress..."
 
-#. [scenario]
+#. [scenario]: id=6b_The_Long_March
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:5
 msgid "The Long March"
 msgstr "The Long March"
@@ -2603,7 +2608,7 @@ msgid ""
 "You humans have kidnapped Mebrin the Sage. You will pay for your crimes."
 msgstr ""
 
-#. [message]
+#. [message]: id=Deoran
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:845
 msgid ""
 "Your sage Mebrin is the criminal. He practices necromancy and now commands "
@@ -2661,32 +2666,32 @@ msgstr "I can only hope for mercy when I return to Westin."
 msgid "But there was a dark cloud looming behind Deoran and his men..."
 msgstr "But there was a dark cloud looming behind Deoran and his men..."
 
-#. [scenario]
+#. [scenario]: id=7a_Into_The_Depths
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:5
 msgid "Into The Depths"
 msgstr "Into The Depths"
 
-#. [side]: type=Lich, type=Lich, type=Ancient Lich
-#. [side]: type=Ancient Lich
+#. [side]: type=Lich, type=Lich, type=Ancient Lich, id=Mal M'Brin
+#. [side]: type=Ancient Lich, id=Mal M'Brin
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:57
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_In_The_Flood.cfg:54
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:54
 msgid "Mal M'Brin"
 msgstr "Mal M'Brin"
 
-#. [side]: type=Soulless
+#. [side]: type=Soulless, id=Groth
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:103
 #, fuzzy
 msgid "Groth"
 msgstr "Gruth"
 
-#. [side]: type=Troll Hero
+#. [side]: type=Troll Hero, id=Grek
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:144
 #, fuzzy
 msgid "Grek"
 msgstr "Jarek"
 
-#. [unit]: type=Eyestalk
+#. [unit]: type=Eyestalk, id=Eye Guardian
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:223
 #, fuzzy
 msgid "Eye Guardian"
@@ -3016,12 +3021,12 @@ msgstr ""
 "No! This cannot be. The elves I once led have destroyed me. After all I have "
 "sacrificed, I still die...."
 
-#. [scenario]
+#. [scenario]: id=7b_Pebbles_In_The_Flood
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_In_The_Flood.cfg:5
 msgid "Pebbles in the Flood"
 msgstr "Pebbles in the Flood"
 
-#. [side]: type=Lich
+#. [side]: type=Lich, id=Mal Tera
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_In_The_Flood.cfg:82
 msgid "Mal Tera"
 msgstr "Mal Tera"
@@ -3207,7 +3212,7 @@ msgstr ""
 "We will crush Westin as we have crushed you! No one shall stand between us "
 "and our home."
 
-#. [scenario]
+#. [scenario]: id=8a_Return_To_Kerlath
 #: data/campaigns/The_South_Guard/scenarios/08a_Return_To_Kerlath.cfg:4
 msgid "Return To Kerlath"
 msgstr ""
@@ -3217,12 +3222,12 @@ msgstr ""
 msgid "Move Deoran into Kerlath Province"
 msgstr ""
 
-#. [side]: type=Outlaw
+#. [side]: type=Outlaw, id=Tharzo Kalain
 #: data/campaigns/The_South_Guard/scenarios/08a_Return_To_Kerlath.cfg:96
 msgid "Tharzo Kalain"
 msgstr ""
 
-#. [side]: type=Lieutenant
+#. [side]: type=Lieutenant, id=Plynry
 #: data/campaigns/The_South_Guard/scenarios/08a_Return_To_Kerlath.cfg:140
 msgid "Plynry"
 msgstr ""
@@ -3280,7 +3285,7 @@ msgid ""
 "of trouble with the elves of the Aethenwood."
 msgstr ""
 
-#. [scenario]
+#. [scenario]: id=8b_The_Tides_of_War
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:5
 msgid "The Tides of War"
 msgstr "The Tides of War"
@@ -3463,12 +3468,12 @@ msgstr "Now I will never see Westin free again..."
 msgid "Far from home I fall - but not in vain! Guard our people, Deoran!"
 msgstr "Far from home I fall - but not in vain! Guard our people Deoran!"
 
-#. [scenario]
+#. [scenario]: id=9a_Vengeance
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:5
 msgid "Vengeance"
 msgstr "Vengeance"
 
-#. [side]: type=Dismounted Commander 1
+#. [side]: type=Dismounted Commander 1, id=Deoran
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:45
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:46
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:47
@@ -3478,12 +3483,12 @@ msgstr "Vengeance"
 msgid "Westin Guard"
 msgstr "Westin Guard"
 
-#. [side]: type=Elvish Marshal
+#. [side]: type=Elvish Marshal, id=Ithelden
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:61
 msgid "Ithelden"
 msgstr "Ithelden"
 
-#. [side]: type=Elvish Marshal
+#. [side]: type=Elvish Marshal, id=Ithelden
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:64
 msgid "Enraged Elves"
 msgstr ""
@@ -3534,7 +3539,7 @@ msgstr ""
 msgid "Help!"
 msgstr "Help!"
 
-#. [unit]: type=Peasant
+#. [unit]: type=Peasant, id=Poor Farmer
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:151
 msgid "Poor Farmer"
 msgstr "Poor Farmer"
@@ -3589,7 +3594,7 @@ msgstr ""
 "will die with them!"
 
 #. [event]
-#. [unit]: type=$unit_type
+#. [unit]: type=$unit_type, id=Disciple of Mebrin
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:212
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:213
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:214
@@ -3667,18 +3672,19 @@ msgstr "Bring Ethiliel to the Great Tree to parley with Ithelden"
 msgid "I feel like I belong on this spot."
 msgstr ""
 
-#. [scenario]
+#. [scenario]: id=10a_Elf_Epilogue
+#. [scenario]: id=9b_Bandit_Epilogue
 #: data/campaigns/The_South_Guard/scenarios/10a_Elf_Epilogue.cfg:5
 #: data/campaigns/The_South_Guard/scenarios/09b_Bandit_Epilogue.cfg:5
 msgid "Epilogue"
 msgstr "Epilogue"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=South Guard Commander, race=human
 #: data/campaigns/The_South_Guard/units/Assault_Commander.cfg:4
 msgid "Infantry Commander"
 msgstr "Infantry Commander"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=South Guard Commander, race=human
 #: data/campaigns/The_South_Guard/units/Assault_Commander.cfg:29
 msgid ""
 "Veteran commanders have faced battle many times and led their men with "
@@ -3698,14 +3704,18 @@ msgstr "glaive"
 msgid "shield"
 msgstr "shield"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Dismounted Commander 1, race=human
+#. [unit_type]: id=Dismounted Commander 2, race=human
+#. [unit_type]: id=Dismounted Commander 3, race=human
 #: data/campaigns/The_South_Guard/units/Dismounted_Commander.cfg:4
 #: data/campaigns/The_South_Guard/units/Dismounted_Commander.cfg:80
 #: data/campaigns/The_South_Guard/units/Dismounted_Commander.cfg:202
 msgid "Dismounted Commander"
 msgstr "Dismounted Commander"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Dismounted Commander 1, race=human
+#. [unit_type]: id=Dismounted Commander 2, race=human
+#. [unit_type]: id=Dismounted Commander 3, race=human
 #: data/campaigns/The_South_Guard/units/Dismounted_Commander.cfg:24
 #: data/campaigns/The_South_Guard/units/Dismounted_Commander.cfg:100
 #: data/campaigns/The_South_Guard/units/Dismounted_Commander.cfg:223
@@ -3735,12 +3745,12 @@ msgstr "lance"
 msgid "mace"
 msgstr "lance"
 
-#. [unit_type]: race=monster
+#. [unit_type]: id=Eyestalk, race=monster
 #: data/campaigns/The_South_Guard/units/Eyestalk.cfg:4
 msgid "Eyestalk"
 msgstr ""
 
-#. [unit_type]: race=monster
+#. [unit_type]: id=Eyestalk, race=monster
 #: data/campaigns/The_South_Guard/units/Eyestalk.cfg:25
 msgid ""
 "Named 'Eyestalks' for obvious reasons, these plant-like creatures can focus "
@@ -3761,12 +3771,12 @@ msgstr "Myssh"
 msgid "gaze"
 msgstr "glaive"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Horseman Commander, race=human
 #: data/campaigns/The_South_Guard/units/Horseman_Commander.cfg:4
 msgid "Horseman Commander"
 msgstr "Horseman Commander"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Horseman Commander, race=human
 #: data/campaigns/The_South_Guard/units/Horseman_Commander.cfg:27
 #, fuzzy
 msgid ""
@@ -3778,12 +3788,12 @@ msgstr ""
 "ride and fight, but to lead. They command the garrisons that keep peace in "
 "the provinces of Wesnoth."
 
-#. [unit_type]: race=human
+#. [unit_type]: id=South Guard Captain, race=human
 #: data/campaigns/The_South_Guard/units/Infantry_Commander.cfg:4
 msgid "Infantry Lieutenant"
 msgstr "Infantry Lieutenant"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=South Guard Captain, race=human
 #: data/campaigns/The_South_Guard/units/Infantry_Commander.cfg:28
 #, fuzzy
 msgid ""
@@ -3797,12 +3807,12 @@ msgstr ""
 "veteran soldiers, not nobility, and all have shown leadership and courage in "
 "battle."
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Junior Commander, race=human
 #: data/campaigns/The_South_Guard/units/Junior_Commander.cfg:4
 msgid "Junior Commander"
 msgstr "Junior Commander"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Junior Commander, race=human
 #: data/campaigns/The_South_Guard/units/Junior_Commander.cfg:27
 #, fuzzy
 msgid ""
@@ -3814,12 +3824,12 @@ msgstr ""
 "and swords and told to become leaders of men. Those whose mettle was strong "
 "enough for the task became the commanders of the armies of Wesnoth."
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Mounted General, race=human
 #: data/campaigns/The_South_Guard/units/Mounted_General.cfg:4
 msgid "Mounted General"
 msgstr ""
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Mounted General, race=human
 #: data/campaigns/The_South_Guard/units/Mounted_General.cfg:29
 #, fuzzy
 msgid ""

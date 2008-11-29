@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-22 14:55+0100\n"
+"POT-Creation-Date: 2008-11-29 12:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -10,47 +10,47 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#. [campaign]
+#. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:11
 msgid "The Eastern Invasion"
 msgstr ""
 
-#. [campaign]
+#. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:12
 msgid "EI"
 msgstr ""
 
-#. [campaign]
+#. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:16
 msgid "(Easy)"
 msgstr ""
 
-#. [campaign]
+#. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:16
 msgid "Spearman"
 msgstr ""
 
-#. [campaign]
+#. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:17
 msgid "(Normal)"
 msgstr ""
 
-#. [campaign]
+#. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:17
 msgid "Swordsman"
 msgstr ""
 
-#. [campaign]
+#. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:18
 msgid "(Challenging)"
 msgstr ""
 
-#. [campaign]
+#. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:18
 msgid "Royal Guard"
 msgstr ""
 
-#. [campaign]
+#. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:21
 msgid ""
 "There are rumors of undead attacks on the eastern border of Wesnoth. You, an officer in the Royal Army, have been sent to the eastern front to protect the villagers and find out what is happening.\n"
@@ -78,7 +78,7 @@ msgstr ""
 msgid "Artwork and Graphics Design"
 msgstr ""
 
-#. [scenario]
+#. [scenario]: id=The_Outpost
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:4
 msgid "The Outpost"
 msgstr ""
@@ -123,41 +123,58 @@ msgstr ""
 msgid "All went well once the King's forces arrived. There were no attacks for several weeks, and Gweddry's men started to grow incautious. Then, at dawn one day, Gweddry and his men were roused by the startled cries of the night watchmen..."
 msgstr ""
 
-#. [side]: type=Lieutenant
-#. [side]: type=General
-#. [side]: type=Sergeant
-#. [side]: race=Humans, type=Lieutenant
+#. [side]: type=Lieutenant, id=Gweddry
+#. [side]: type=General, id=Gweddry
+#. [side]: type=Sergeant, id=Gweddry
+#. [side]: race=Humans, type=Lieutenant, id=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/07a.The_Crossing.cfg:20 data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:19 data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:20 data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:31 data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:27 data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:36 data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:27 data/campaigns/Eastern_Invasion/scenarios/19_Epilog.cfg:29 data/campaigns/Eastern_Invasion/scenarios/18a.The_Duel.cfg:18 data/campaigns/Eastern_Invasion/scenarios/16.The_Council.cfg:55 data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:64 data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:37 data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:58 data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:28 data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:29 data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:27 data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:27 data/campaigns/Eastern_Invasion/scenarios/09.Training_the_Ogres.cfg:27 data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:27 data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:25 data/campaigns/Eastern_Invasion/scenarios/07b.Undead_Crossing.cfg:17 data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:28
 msgid "Gweddry"
 msgstr ""
 
-#. [unit]: type=White Mage
+#. [unit]: type=White Mage, id=Dacyn
 #. [message]
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:68 data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:268 data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:425
 msgid "Dacyn"
 msgstr ""
 
-#. [side]: type=Dark Sorcerer
+#. [side]: type=Dark Sorcerer, id=Mal-Sakkat
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:97
 msgid "Mal-Sakkat"
 msgstr ""
 
-#. [side]: type=Lich
-#. [side]: type=Dark Sorcerer
-#. [side]: type=Death Knight
-#. [side]: type=Dark Adept
-#. [side]: type=Ancient Lich
-#. [side]: type=Necromancer
+#. [side]: type=Lich, id=Mal-Drakanal
+#. [side]: type=Lich, id=Lich3
+#. [side]: type=Lich, id=Lich4
+#. [side]: type=Lich, id=Lich5
+#. [side]: type=Lich, id=Lich6
+#. [side]: type=Lich, id=Lich7
+#. [side]: type=Lich, id=Lich8
+#. [side]: type=Dark Sorcerer, id=Mal-Marak
+#. [side]: type=Dark Sorcerer, id=Mal-Galkar
+#. [side]: type=Death Knight, id=Ravanal-Guard
+#. [side]: type=Lich, id=Mal-Ravanal
+#. [side]: type=Dark Sorcerer, id=Mal-Skraat
+#. [side]: type=Dark Adept, id=Mal-Tar
+#. [side]: type=Dark Sorcerer, id=Mal-Kallat
+#. [side]: type=Ancient Lich, id=Mal-Ravanal
+#. [side]: type=Lich, id=Mal-Grekulak
+#. [side]: type=Lich, id=Mal-Xakralan
+#. [side]: type=Lich, id=Mal-Uknalu
+#. [side]: type=Dark Sorcerer, id=Mal-Sakkat
+#. [side]: type=Dark Sorcerer, id=Mal-Talar
+#. [side]: type=Lich, id=Mal-Uldhar
+#. [side]: type=Lich, id=Mal-Telnarad
+#. [side]: type=Necromancer, id=Mal-un-Karad
 #: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:41 data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:54 data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:67 data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:80 data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:93 data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:106 data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:119 data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:51 data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:63 data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:75 data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:91 data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:51 data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:64 data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:85 data/campaigns/Eastern_Invasion/scenarios/18a.The_Duel.cfg:36 data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:103 data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:119 data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:135 data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:110 data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:131 data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:151 data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:45 data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:63 data/campaigns/Eastern_Invasion/scenarios/07b.Undead_Crossing.cfg:44
 msgid "Undead"
 msgstr ""
 
-#. [side]: type=Dark Sorcerer
+#. [side]: type=Dark Sorcerer, id=Mal-Talar
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:120
 msgid "Mal-Talar"
 msgstr ""
 
-#. [side]: type=Lich
+#. [side]: type=Lich, id=Mal-Uldhar
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:141
 msgid "Mal-Uldhar"
 msgstr ""
@@ -189,9 +206,9 @@ msgstr ""
 
 #. [event]
 #. [variable]
-#. [side]: type=Lich
-#. [side]: type=Ancient Lich
-#. [unit]: type=Ancient Lich
+#. [side]: type=Lich, id=Mal-Ravanal
+#. [side]: type=Ancient Lich, id=Mal-Ravanal
+#. [unit]: type=Ancient Lich, id=Mal-Ravanal
 #: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:174 data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:224 data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:84 data/campaigns/Eastern_Invasion/scenarios/18a.The_Duel.cfg:29 data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:214
 msgid "Mal-Ravanal"
 msgstr ""
@@ -276,32 +293,36 @@ msgstr ""
 msgid "Hurry! Before long enemy reinforcements will arrive, and we will all die! Go to the trapdoor!"
 msgstr ""
 
-#. [scenario]
+#. [scenario]: id=Escape_Tunnel
 #: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:4
 msgid "The Escape Tunnel"
 msgstr ""
 
-#. [side]: type=Lieutenant
-#. [side]: type=Dwarvish Steelclad
-#. [side]: type=Mounted Fighter
-#. [side]: type=General
-#. [side]: type=Great Mage
-#. [side]: race=Humans, type=Lieutenant
+#. [side]: type=Lieutenant, id=Gweddry
+#. [side]: type=Dwarvish Steelclad, id=Knutan
+#. [side]: type=Mounted Fighter, id=Owaec
+#. [side]: type=General, id=Konrad II
+#. [side]: type=Great Mage, id=Kaldor
+#. [side]: type=General, id=Gweddry
+#. [side]: type=General, id=Halrad
+#. [side]: type=General, id=Halric
+#. [side]: type=General, id=Halrod
+#. [side]: race=Humans, type=Lieutenant, id=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:25 data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:52 data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:36 data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:33 data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:45 data/campaigns/Eastern_Invasion/scenarios/19_Epilog.cfg:34 data/campaigns/Eastern_Invasion/scenarios/19_Epilog.cfg:46 data/campaigns/Eastern_Invasion/scenarios/19_Epilog.cfg:57 data/campaigns/Eastern_Invasion/scenarios/18a.The_Duel.cfg:23 data/campaigns/Eastern_Invasion/scenarios/16.The_Council.cfg:60 data/campaigns/Eastern_Invasion/scenarios/16.The_Council.cfg:73 data/campaigns/Eastern_Invasion/scenarios/16.The_Council.cfg:85 data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:69 data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:42 data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:56 data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:72 data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:88 data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:33 data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:32 data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:32 data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:30 data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:110 data/campaigns/Eastern_Invasion/scenarios/07b.Undead_Crossing.cfg:22
 msgid "Wesnothians"
 msgstr ""
 
-#. [side]: type=Troll
+#. [side]: type=Troll, id=Kabak
 #: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:34
 msgid "Kabak"
 msgstr ""
 
-#. [side]: type=Dwarvish Steelclad
+#. [side]: type=Dwarvish Steelclad, id=Knutan
 #: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:45
 msgid "Knutan"
 msgstr ""
 
-#. [side]: type=Dark Sorcerer
+#. [side]: type=Dark Sorcerer, id=Mal-Bakral
 #: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:69
 msgid "Mal-Bakral"
 msgstr ""
@@ -371,17 +392,17 @@ msgstr ""
 msgid "Very well. The best of luck in your battle."
 msgstr ""
 
-#. [object]
+#. [object]: id=holyamulet
 #: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:213 data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:435 data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:412 data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:322
 msgid "Holy Amulet"
 msgstr ""
 
-#. [object]
+#. [object]: id=holyamulet
 #: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:216 data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:438 data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:415 data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:325
 msgid "Wearing this amulet will cause every blow you deal to inflict arcane damage!"
 msgstr ""
 
-#. [object]
+#. [object]: id=holyamulet
 #: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:217 data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:439 data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:416 data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:326
 msgid "I am not suited to using this item! Let another take it."
 msgstr ""
@@ -406,22 +427,22 @@ msgstr ""
 msgid "We have reached the end of the tunnel. I see daylight above us!"
 msgstr ""
 
-#. [scenario]
+#. [scenario]: id=Unexpected_Appearance
 #: data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:4
 msgid "An Unexpected Appearance"
 msgstr ""
 
-#. [side]: type=Dark Sorcerer
+#. [side]: type=Dark Sorcerer, id=Mal-Skraat
 #: data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:37 data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:39
 msgid "Mal-Skraat"
 msgstr ""
 
-#. [side]: type=Dark Adept
+#. [side]: type=Dark Adept, id=Mal-Tar
 #: data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:57
 msgid "Mal-Tar"
 msgstr ""
 
-#. [side]: type=Dark Sorcerer
+#. [side]: type=Dark Sorcerer, id=Mal-Kallat
 #: data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:72
 msgid "Mal-Kallat"
 msgstr ""
@@ -481,7 +502,7 @@ msgstr ""
 msgid "You have defeated my brother, but I will follow you and kill you!"
 msgstr ""
 
-#. [scenario]
+#. [scenario]: id=Elven_Alliance
 #: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:4
 msgid "An Elven Alliance"
 msgstr ""
@@ -491,18 +512,18 @@ msgstr ""
 msgid "But Gweddry and Owaec were to find that re-entering Wesnoth would not be easy with the escape tunnel closed to them. They marched out of the foothills of the Estmarks in a direction few Wesnothians had traveled before, into unknown forest country just south of the Great River."
 msgstr ""
 
-#. [side]: type=Lieutenant
-#. [side]: type=Elvish Ranger
+#. [side]: type=Lieutenant, id=Gweddry
+#. [side]: type=Elvish Ranger, id=Volas
 #: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:34 data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:47
 msgid "Allies"
 msgstr ""
 
-#. [side]: type=Elvish Ranger
+#. [side]: type=Elvish Ranger, id=Volas
 #: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:40
 msgid "Volas"
 msgstr ""
 
-#. [side]: type=Orcish Warrior
+#. [side]: type=Orcish Warrior, id=Gruga-Har
 #: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:55
 msgid "Gruga-Har"
 msgstr ""
@@ -577,7 +598,7 @@ msgstr ""
 msgid "Bring forth the assassins, we may be able to poison them!"
 msgstr ""
 
-#. [unit]: type=Orcish Slayer
+#. [unit]: type=Orcish Slayer, id=Nafga
 #: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:166 data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:200
 msgid "Nafga"
 msgstr ""
@@ -632,12 +653,12 @@ msgstr ""
 msgid "Very well. I will send guides to lead you to your allies."
 msgstr ""
 
-#. [scenario]
+#. [scenario]: id=Undead_Border_Patrol
 #: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:4
 msgid "The Undead Border Patrol"
 msgstr ""
 
-#. [side]: type=Lich
+#. [side]: type=Lich, id=Mal-Telnarad
 #: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:51
 msgid "Mal-Telnarad"
 msgstr ""
@@ -722,22 +743,22 @@ msgstr ""
 msgid "Noo!!! He will reach Mal-Ravanal's capital, and I shall be punished for letting him escape!"
 msgstr ""
 
-#. [scenario]
+#. [scenario]: id=Mal-Ravanals_Capital
 #: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:4
 msgid "Mal-Ravanal's Capital"
 msgstr ""
 
-#. [side]: type=Dark Sorcerer
+#. [side]: type=Dark Sorcerer, id=Mal-Marak
 #: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:45
 msgid "Mal-Marak"
 msgstr ""
 
-#. [side]: type=Dark Sorcerer
+#. [side]: type=Dark Sorcerer, id=Mal-Galkar
 #: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:57
 msgid "Mal-Galkar"
 msgstr ""
 
-#. [side]: type=Death Knight
+#. [side]: type=Death Knight, id=Ravanal-Guard
 #: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:69
 msgid "Rava-Krodaz"
 msgstr ""
@@ -767,7 +788,7 @@ msgstr ""
 msgid "These humans have dared foolishly to come this far into my land. Crush them!"
 msgstr ""
 
-#. [unit]: type=Paladin
+#. [unit]: type=Paladin, id=Terraent
 #: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:157
 msgid "Terraent"
 msgstr ""
@@ -812,27 +833,32 @@ msgstr ""
 msgid "Gweddry's men retreated swiftly from the Bitter Swamp, fleeing north and west as if their heels were winged. Finding a low pass through the northern Estmarks, they were greatly relieved to see the valley of the Weldyn open before them on the other side."
 msgstr ""
 
-#. [scenario]
+#. [scenario]: id=Northern_Outpost
 #: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:4
 msgid "Northern Outpost"
 msgstr ""
 
-#. [side]: type=Mounted Fighter
+#. [side]: type=Mounted Fighter, id=Owaec
 #: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:39
 msgid "Owaec"
 msgstr ""
 
-#. [side]: type=Revenant
+#. [side]: type=Revenant, id=Lanar-Skal
 #: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:62
 msgid "Lanar-Skal"
 msgstr ""
 
-#. [side]: type=Revenant
-#. [side]: type=Orcish Warlord
+#. [side]: type=Revenant, id=Lanar-Skal
+#. [side]: type=Orcish Warlord, id=King Dra-Nak
 #. [side]
-#. [side]: type=Troll Warrior
-#. [side]: type=Dark Sorcerer
-#. [side]: type=Necromancer
+#. [side]: type=Orcish Warlord, id=Varrak-Klar
+#. [side]: type=Troll Warrior, id=Unhk
+#. [side]: type=Orcish Warlord, id=Ran-Lar
+#. [side]: type=Orcish Warlord, id=Wak-Rano
+#. [side]: type=Dark Sorcerer, id=Mal-Arnai
+#. [side]: type=Necromancer, id=Mal-un-Darak
+#. [side]: type=Necromancer, id=Mal-un-Zanrad
+#. [side]: type=Necromancer, id=Mal-un-Xadrux
 #: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:68 data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:94 data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:104 data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:48 data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:70 data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:93 data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:43 data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:51 data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:46 data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:64 data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:60 data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:77 data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:94
 msgid "Evil"
 msgstr ""
@@ -912,7 +938,7 @@ msgstr ""
 msgid "They're here!"
 msgstr ""
 
-#. [unit]: type=Assassin
+#. [unit]: type=Assassin, id=Shodrano
 #: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:269
 msgid "Shodrano"
 msgstr ""
@@ -967,17 +993,17 @@ msgstr ""
 msgid "Good work! Now, we should move onward, north. Tell the villagers to pack their belongings and follow us."
 msgstr ""
 
-#. [scenario]
+#. [scenario]: id=Two_Paths
 #: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:4
 msgid "Two Paths"
 msgstr ""
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Wak-Rano
 #: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:39
 msgid "Wak-Rano"
 msgstr ""
 
-#. [side]: type=Dark Sorcerer
+#. [side]: type=Dark Sorcerer, id=Mal-Arnai
 #: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:54
 msgid "Mal-Arnai"
 msgstr ""
@@ -1032,23 +1058,23 @@ msgstr ""
 msgid "I was supposed to kill you all! I have failed."
 msgstr ""
 
-#. [scenario]
+#. [scenario]: id=Crossing
 #: data/campaigns/Eastern_Invasion/scenarios/07a.The_Crossing.cfg:4
 msgid "The Crossing"
 msgstr ""
 
-#. [side]: type=Revenant
+#. [side]: type=Revenant, id=Garnad
 #: data/campaigns/Eastern_Invasion/scenarios/07a.The_Crossing.cfg:36
 msgid "Garnad"
 msgstr ""
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Draka-Kura
 #: data/campaigns/Eastern_Invasion/scenarios/07a.The_Crossing.cfg:47
 msgid "Draka-Kura"
 msgstr ""
 
-#. [side]: type=Ogre
-#. [unit]: type=Ogre
+#. [side]: type=Ogre, id=Grug
+#. [unit]: type=Ogre, id=Grug
 #: data/campaigns/Eastern_Invasion/scenarios/07a.The_Crossing.cfg:58 data/campaigns/Eastern_Invasion/scenarios/07a.The_Crossing.cfg:238
 msgid "Grug"
 msgstr ""
@@ -1093,7 +1119,7 @@ msgstr ""
 msgid "If we show ourselves as enemies of the orcs, they may aid us. But I think we should cross the river before trying to convince these ogres to help."
 msgstr ""
 
-#. [unit]: type=Lich
+#. [unit]: type=Lich, id=Mal-Hakralan
 #: data/campaigns/Eastern_Invasion/scenarios/07a.The_Crossing.cfg:167
 msgid "Mal-Hakralan"
 msgstr ""
@@ -1133,12 +1159,12 @@ msgstr ""
 msgid "Hurry up. We must get across before these undead slaughter us!"
 msgstr ""
 
-#. [scenario]
+#. [scenario]: id=Undead_Crossing
 #: data/campaigns/Eastern_Invasion/scenarios/07b.Undead_Crossing.cfg:4
 msgid "Undead Crossing"
 msgstr ""
 
-#. [side]: type=Necromancer
+#. [side]: type=Necromancer, id=Mal-un-Karad
 #: data/campaigns/Eastern_Invasion/scenarios/07b.Undead_Crossing.cfg:37
 msgid "Mal-un-Karad"
 msgstr ""
@@ -1173,7 +1199,7 @@ msgstr ""
 msgid "It seems as if in addition to summoning undead this foul sorcerer has learned to call up monsters from the deep!"
 msgstr ""
 
-#. [scenario]
+#. [scenario]: id=Ogre
 #: data/campaigns/Eastern_Invasion/scenarios/09.Training_the_Ogres.cfg:4
 msgid "Training the Ogres"
 msgstr ""
@@ -1218,22 +1244,22 @@ msgstr ""
 msgid "We didn't capture enough of the ogres here. We will have to go on without them."
 msgstr ""
 
-#. [scenario]
+#. [scenario]: id=Xenophobia
 #: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:4
 msgid "Xenophobia"
 msgstr ""
 
-#. [side]: type=Dwarvish Lord
+#. [side]: type=Dwarvish Lord, id=Pelathsil
 #: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:40
 msgid "Pelathsil"
 msgstr ""
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Prok-Bak
 #: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:57
 msgid "Prok-Bak"
 msgstr ""
 
-#. [side]: type=Elvish Marshal
+#. [side]: type=Elvish Marshal, id=Elandin
 #: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:77
 msgid "Elandin"
 msgstr ""
@@ -1348,23 +1374,23 @@ msgstr ""
 msgid "Cursed elves! Perhaps we should have allied wi' the humans..."
 msgstr ""
 
-#. [scenario]
+#. [scenario]: id=Lake
 #: data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:4
 msgid "Lake Vrug"
 msgstr ""
 
-#. [side]: type=Troll Warrior
+#. [side]: type=Troll Warrior, id=Darg
 #: data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:44
 msgid "Darg"
 msgstr ""
 
-#. [side]: type=Troll Warrior
-#. [side]: type=Gryphon
+#. [side]: type=Troll Warrior, id=Darg
+#. [side]: type=Gryphon, id=Kraagak
 #: data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:53 data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:69
 msgid "Monsters"
 msgstr ""
 
-#. [side]: type=Gryphon
+#. [side]: type=Gryphon, id=Kraagak
 #: data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:60
 msgid "Kraagak"
 msgstr ""
@@ -1419,7 +1445,7 @@ msgstr ""
 msgid "We have done it! The island is ours. Our journey is complete."
 msgstr ""
 
-#. [unit]: type=Troll Warrior
+#. [unit]: type=Troll Warrior, id=Groog
 #: data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:193
 msgid "Groog"
 msgstr ""
@@ -1429,7 +1455,7 @@ msgstr ""
 msgid "Be not going too fast. You gonna come wid us."
 msgstr ""
 
-#. [scenario]
+#. [scenario]: id=Captured
 #: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:4
 msgid "Captured"
 msgstr ""
@@ -1469,7 +1495,7 @@ msgstr ""
 msgid "Exit"
 msgstr ""
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=King Dra-Nak
 #: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:77
 msgid "King Dra-Nak"
 msgstr ""
@@ -1569,7 +1595,7 @@ msgstr ""
 msgid "Good! We have escaped these accursed caves!"
 msgstr ""
 
-#. [scenario]
+#. [scenario]: id=Evacuation
 #: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:4
 msgid "Evacuation"
 msgstr ""
@@ -1579,17 +1605,17 @@ msgstr ""
 msgid "Gweddry had escaped from the orcish prisons. He found himself in the Northlands, farther south than before. Orcs were at his back. He and his men went south, until they reached the Great River."
 msgstr ""
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Varrak-Klar
 #: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:39
 msgid "Varrak-Klar"
 msgstr ""
 
-#. [side]: type=Troll Warrior
+#. [side]: type=Troll Warrior, id=Unhk
 #: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:62
 msgid "Unhk"
 msgstr ""
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Ran-Lar
 #: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:84
 msgid "Ran-Lar"
 msgstr ""
@@ -1604,7 +1630,7 @@ msgstr ""
 msgid "Note: every unit not on the south side of the river when the bridge is destroyed will be lost (including not recalled units)"
 msgstr ""
 
-#. [unit]: type=Red Mage
+#. [unit]: id=Engineer, type=Red Mage
 #: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:193
 msgid "Engineer"
 msgstr ""
@@ -1744,12 +1770,12 @@ msgstr ""
 msgid "I'll be followin' yah from now on. Hope yah can get to Weld'n an' all so I c'n stop runnin'..."
 msgstr ""
 
-#. [scenario]
+#. [scenario]: id=The_Drowned_Plains
 #: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:4
 msgid "The Drowned Plains"
 msgstr ""
 
-#. [unit]: type=Skeletal Dragon
+#. [unit]: type=Skeletal Dragon, id=Khrakrahs
 #. [message]
 #: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:126 data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:399
 msgid "Khrakrahs"
@@ -1800,28 +1826,28 @@ msgstr ""
 msgid "Aha! I see what they have done. They have raised him as an undead dragon. But he does not appear to be weak to my arcane senses... this is strange magic indeed."
 msgstr ""
 
-#. [scenario]
+#. [scenario]: id=Approaching_Weldyn
 #: data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:4
 msgid "Approaching Weldyn"
 msgstr ""
 
-#. [side]: type=Necromancer
+#. [side]: type=Necromancer, id=Mal-un-Darak
 #: data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:49
 msgid "Mal-un-Darak"
 msgstr ""
 
-#. [side]: type=Necromancer
+#. [side]: type=Necromancer, id=Mal-un-Zanrad
 #: data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:67
 msgid "Mal-un-Zanrad"
 msgstr ""
 
-#. [side]: type=Necromancer
+#. [side]: type=Necromancer, id=Mal-un-Xadrux
 #: data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:84
 msgid "Mal-un-Xadrux"
 msgstr ""
 
-#. [side]: type=General
-#. [unit]: type=General
+#. [side]: type=General, id=Konrad II
+#. [unit]: id=Konrad, type=General
 #: data/campaigns/Eastern_Invasion/scenarios/19_Epilog.cfg:40 data/campaigns/Eastern_Invasion/scenarios/16.The_Council.cfg:66 data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:192 data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:101
 msgid "Konrad II"
 msgstr ""
@@ -1861,7 +1887,7 @@ msgstr ""
 msgid "Weldyn has been captured, and Wesnoth is no more..."
 msgstr ""
 
-#. [scenario]
+#. [scenario]: id=Throne
 #: data/campaigns/Eastern_Invasion/scenarios/16.The_Council.cfg:4
 msgid "The Council"
 msgstr ""
@@ -1896,7 +1922,7 @@ msgstr ""
 msgid "The guards, surprised by this sudden revelation, advanced to attack him. However, as he was now skilled in the magical art of teleportation, he simply vanished. And has not been seen since."
 msgstr ""
 
-#. [side]: type=Great Mage
+#. [side]: type=Great Mage, id=Kaldor
 #: data/campaigns/Eastern_Invasion/scenarios/19_Epilog.cfg:52 data/campaigns/Eastern_Invasion/scenarios/16.The_Council.cfg:79
 msgid "Kaldor"
 msgstr ""
@@ -1966,37 +1992,37 @@ msgstr ""
 msgid "Well, that will have to be the end of our council. Let us fight!"
 msgstr ""
 
-#. [scenario]
+#. [scenario]: id=Weldyn_Attack, (id=Messenger of Doom) 39 4}
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:4
 msgid "Weldyn under Attack"
 msgstr ""
 
-#. [side]: type=General
+#. [side]: type=General, id=Halrad
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:49
 msgid "Halrad"
 msgstr ""
 
-#. [side]: type=General
+#. [side]: type=General, id=Halric
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:65
 msgid "Halric"
 msgstr ""
 
-#. [side]: type=General
+#. [side]: type=General, id=Halrod
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:81
 msgid "Halrod"
 msgstr ""
 
-#. [side]: type=Lich
+#. [side]: type=Lich, id=Mal-Grekulak
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:98
 msgid "Mal-Grekulak"
 msgstr ""
 
-#. [side]: type=Lich
+#. [side]: type=Lich, id=Mal-Xakralan
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:114
 msgid "Mal-Xakralan"
 msgstr ""
 
-#. [side]: type=Lich
+#. [side]: type=Lich, id=Mal-Uknalu
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:130
 msgid "Mal-Uknalu"
 msgstr ""
@@ -2026,7 +2052,7 @@ msgstr ""
 msgid "I have died, and with me gone the city shall fall."
 msgstr ""
 
-#. [unit]: type=Spectre
+#. [unit]: type=Spectre, id=Messenger of Doom
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:238
 msgid "Messenger of Doom"
 msgstr ""
@@ -2096,7 +2122,7 @@ msgstr ""
 msgid "Look, the sun has risen, and the undead are retreating."
 msgstr ""
 
-#. [scenario]
+#. [scenario]: id=Duel
 #: data/campaigns/Eastern_Invasion/scenarios/18a.The_Duel.cfg:4
 msgid "The Duel"
 msgstr ""
@@ -2140,17 +2166,22 @@ msgstr ""
 msgid "And more!"
 msgstr ""
 
-#. [scenario]
+#. [scenario]: id=Reject
 #: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:4
 msgid "Weldyn Besieged"
 msgstr ""
 
-#. [side]: type=Lich
+#. [side]: type=Lich, id=Mal-Drakanal
 #: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:34
 msgid "Mal-Drakanal"
 msgstr ""
 
-#. [side]: type=Lich
+#. [side]: type=Lich, id=Lich3
+#. [side]: type=Lich, id=Lich4
+#. [side]: type=Lich, id=Lich5
+#. [side]: type=Lich, id=Lich6
+#. [side]: type=Lich, id=Lich7
+#. [side]: type=Lich, id=Lich8
 #. [filter_second]: type=Lich
 #: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:47 data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:60 data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:73 data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:86 data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:99 data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:112 data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:193
 msgid "?"
@@ -2226,7 +2257,7 @@ msgstr ""
 msgid "They killed Konrad... now, even if we save Weldyn, Wesnoth has fallen."
 msgstr ""
 
-#. [scenario]
+#. [scenario]: id=Epilog
 #: data/campaigns/Eastern_Invasion/scenarios/19_Epilog.cfg:4
 msgid "Epilog"
 msgstr ""
@@ -2319,12 +2350,12 @@ msgstr ""
 msgid "With these words and acts began the Silver Age of Wesnoth, that time known to historians as the Reconstruction..."
 msgstr ""
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Horse Lord, race=human
 #: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:4
 msgid "Horse Lord"
 msgstr ""
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Horse Lord, race=human
 #: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:18
 msgid "The greatest of the men of the plains, Horse Lords are heads of their houses and are respected by all, friend or foe. Their sword can kill most ordinary enemies, and their morning star crushes those who are left."
 msgstr ""
@@ -2339,22 +2370,22 @@ msgstr ""
 msgid "morning star"
 msgstr ""
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Mounted Fighter, race=human
 #: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:4
 msgid "Mounted Fighter"
 msgstr ""
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Mounted Fighter, race=human
 #: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:25
 msgid "The nobles of the men of the plains are trained with the rest of the horsemen to become great warriors. However, they are also trained in commanding their comrades, and they are the ones that become captains of the armies of the Clans."
 msgstr ""
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Mounted Warrior, race=human
 #: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:4
 msgid "Mounted Warrior"
 msgstr ""
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Mounted Warrior, race=human
 #: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:25
 msgid "Leaders of the plains, Mounted Warriors are skilled with the use of the sword and the morning star. Riding horses, they are able to move around the battlefield with great speed, and can provide much needed assistance to different fronts."
 msgstr ""

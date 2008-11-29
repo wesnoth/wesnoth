@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-22 14:55+0100\n"
+"POT-Creation-Date: 2008-11-29 12:24+0100\n"
 "PO-Revision-Date: 2008-06-24 12:00+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -18,47 +18,47 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n%"
 "10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 
-#. [campaign]
+#. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:11
 msgid "The Eastern Invasion"
 msgstr "Najezda sa istoka"
 
-#. [campaign]
+#. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:12
 msgid "EI"
 msgstr "NI"
 
-#. [campaign]
+#. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:16
 msgid "(Easy)"
 msgstr "(lako)"
 
-#. [campaign]
+#. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:16
 msgid "Spearman"
 msgstr "kopljanik"
 
-#. [campaign]
+#. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:17
 msgid "(Normal)"
 msgstr "(normalno)"
 
-#. [campaign]
+#. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:17
 msgid "Swordsman"
 msgstr "mačevalac"
 
-#. [campaign]
+#. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:18
 msgid "(Challenging)"
 msgstr "(izazovno)"
 
-#. [campaign]
+#. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:18
 msgid "Royal Guard"
 msgstr "carigardejac"
 
-#. [campaign]
+#. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:21
 msgid ""
 "There are rumors of undead attacks on the eastern border of Wesnoth. You, an "
@@ -94,7 +94,7 @@ msgstr "Epilog i usaglašenost pohoda"
 msgid "Artwork and Graphics Design"
 msgstr "Crteži i grafički dizajn"
 
-#. [scenario]
+#. [scenario]: id=The_Outpost
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:4
 msgid "The Outpost"
 msgstr "Ispostava"
@@ -199,10 +199,10 @@ msgstr ""
 "jednog dana u zoru, Gvedrija i njegove ljude trgoše zapanjeni krici noćne "
 "straže..."
 
-#. [side]: type=Lieutenant
-#. [side]: type=General
-#. [side]: type=Sergeant
-#. [side]: race=Humans, type=Lieutenant
+#. [side]: type=Lieutenant, id=Gweddry
+#. [side]: type=General, id=Gweddry
+#. [side]: type=Sergeant, id=Gweddry
+#. [side]: race=Humans, type=Lieutenant, id=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/07a.The_Crossing.cfg:20
 #: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:19
 #: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:20
@@ -228,7 +228,7 @@ msgstr ""
 msgid "Gweddry"
 msgstr "Gvedri"
 
-#. [unit]: type=White Mage
+#. [unit]: type=White Mage, id=Dacyn
 #. [message]
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:68
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:268
@@ -236,17 +236,34 @@ msgstr "Gvedri"
 msgid "Dacyn"
 msgstr "Desin"
 
-#. [side]: type=Dark Sorcerer
+#. [side]: type=Dark Sorcerer, id=Mal-Sakkat
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:97
 msgid "Mal-Sakkat"
 msgstr "Mal-Sakat"
 
-#. [side]: type=Lich
-#. [side]: type=Dark Sorcerer
-#. [side]: type=Death Knight
-#. [side]: type=Dark Adept
-#. [side]: type=Ancient Lich
-#. [side]: type=Necromancer
+#. [side]: type=Lich, id=Mal-Drakanal
+#. [side]: type=Lich, id=Lich3
+#. [side]: type=Lich, id=Lich4
+#. [side]: type=Lich, id=Lich5
+#. [side]: type=Lich, id=Lich6
+#. [side]: type=Lich, id=Lich7
+#. [side]: type=Lich, id=Lich8
+#. [side]: type=Dark Sorcerer, id=Mal-Marak
+#. [side]: type=Dark Sorcerer, id=Mal-Galkar
+#. [side]: type=Death Knight, id=Ravanal-Guard
+#. [side]: type=Lich, id=Mal-Ravanal
+#. [side]: type=Dark Sorcerer, id=Mal-Skraat
+#. [side]: type=Dark Adept, id=Mal-Tar
+#. [side]: type=Dark Sorcerer, id=Mal-Kallat
+#. [side]: type=Ancient Lich, id=Mal-Ravanal
+#. [side]: type=Lich, id=Mal-Grekulak
+#. [side]: type=Lich, id=Mal-Xakralan
+#. [side]: type=Lich, id=Mal-Uknalu
+#. [side]: type=Dark Sorcerer, id=Mal-Sakkat
+#. [side]: type=Dark Sorcerer, id=Mal-Talar
+#. [side]: type=Lich, id=Mal-Uldhar
+#. [side]: type=Lich, id=Mal-Telnarad
+#. [side]: type=Necromancer, id=Mal-un-Karad
 #: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:41
 #: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:54
 #: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:67
@@ -274,12 +291,12 @@ msgstr "Mal-Sakat"
 msgid "Undead"
 msgstr ""
 
-#. [side]: type=Dark Sorcerer
+#. [side]: type=Dark Sorcerer, id=Mal-Talar
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:120
 msgid "Mal-Talar"
 msgstr "Mal-Talar"
 
-#. [side]: type=Lich
+#. [side]: type=Lich, id=Mal-Uldhar
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:141
 msgid "Mal-Uldhar"
 msgstr "Mal-Uldhar"
@@ -335,9 +352,9 @@ msgstr ""
 
 #. [event]
 #. [variable]
-#. [side]: type=Lich
-#. [side]: type=Ancient Lich
-#. [unit]: type=Ancient Lich
+#. [side]: type=Lich, id=Mal-Ravanal
+#. [side]: type=Ancient Lich, id=Mal-Ravanal
+#. [unit]: type=Ancient Lich, id=Mal-Ravanal
 #: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:174
 #: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:224
 #: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:84
@@ -470,17 +487,21 @@ msgstr ""
 "Brzo! Još malo i neprijatelju će stići pojačanja, i svi ćemo pomreti! Kroz "
 "vrata!"
 
-#. [scenario]
+#. [scenario]: id=Escape_Tunnel
 #: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:4
 msgid "The Escape Tunnel"
 msgstr "Hodnik za beg"
 
-#. [side]: type=Lieutenant
-#. [side]: type=Dwarvish Steelclad
-#. [side]: type=Mounted Fighter
-#. [side]: type=General
-#. [side]: type=Great Mage
-#. [side]: race=Humans, type=Lieutenant
+#. [side]: type=Lieutenant, id=Gweddry
+#. [side]: type=Dwarvish Steelclad, id=Knutan
+#. [side]: type=Mounted Fighter, id=Owaec
+#. [side]: type=General, id=Konrad II
+#. [side]: type=Great Mage, id=Kaldor
+#. [side]: type=General, id=Gweddry
+#. [side]: type=General, id=Halrad
+#. [side]: type=General, id=Halric
+#. [side]: type=General, id=Halrod
+#. [side]: race=Humans, type=Lieutenant, id=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:25
 #: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:52
 #: data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:36
@@ -507,17 +528,17 @@ msgstr "Hodnik za beg"
 msgid "Wesnothians"
 msgstr ""
 
-#. [side]: type=Troll
+#. [side]: type=Troll, id=Kabak
 #: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:34
 msgid "Kabak"
 msgstr "Kabak"
 
-#. [side]: type=Dwarvish Steelclad
+#. [side]: type=Dwarvish Steelclad, id=Knutan
 #: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:45
 msgid "Knutan"
 msgstr "Knutan"
 
-#. [side]: type=Dark Sorcerer
+#. [side]: type=Dark Sorcerer, id=Mal-Bakral
 #: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:69
 msgid "Mal-Bakral"
 msgstr "Mal-Bakral"
@@ -612,7 +633,7 @@ msgstr ""
 msgid "Very well. The best of luck in your battle."
 msgstr "Dobro onda. Najbolje vam želim u vašoj borbi."
 
-#. [object]
+#. [object]: id=holyamulet
 #: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:213
 #: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:435
 #: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:412
@@ -620,7 +641,7 @@ msgstr "Dobro onda. Najbolje vam želim u vašoj borbi."
 msgid "Holy Amulet"
 msgstr "sveta amajlija"
 
-#. [object]
+#. [object]: id=holyamulet
 #: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:216
 #: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:438
 #: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:415
@@ -629,7 +650,7 @@ msgid ""
 "Wearing this amulet will cause every blow you deal to inflict arcane damage!"
 msgstr "Ko ponese ovu amajliju, svaki će mu udar biti volšeban!"
 
-#. [object]
+#. [object]: id=holyamulet
 #: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:217
 #: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:439
 #: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:416
@@ -667,23 +688,23 @@ msgstr ""
 msgid "We have reached the end of the tunnel. I see daylight above us!"
 msgstr "Stigosmo do kraja hodnika. Vidim obdanicu pred nama!"
 
-#. [scenario]
+#. [scenario]: id=Unexpected_Appearance
 #: data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:4
 msgid "An Unexpected Appearance"
 msgstr "Neočekivana pojava"
 
-#. [side]: type=Dark Sorcerer
+#. [side]: type=Dark Sorcerer, id=Mal-Skraat
 #: data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:37
 #: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:39
 msgid "Mal-Skraat"
 msgstr "Mal-Skrat"
 
-#. [side]: type=Dark Adept
+#. [side]: type=Dark Adept, id=Mal-Tar
 #: data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:57
 msgid "Mal-Tar"
 msgstr "Mal-Tar"
 
-#. [side]: type=Dark Sorcerer
+#. [side]: type=Dark Sorcerer, id=Mal-Kallat
 #: data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:72
 msgid "Mal-Kallat"
 msgstr "Mal-Kalat"
@@ -760,7 +781,7 @@ msgstr "Ne! Poraziste me, i možete dalje u Vesnot!"
 msgid "You have defeated my brother, but I will follow you and kill you!"
 msgstr "Uništili ste mog brata, ali znajte da ću vas pohvatati i pobiti!"
 
-#. [scenario]
+#. [scenario]: id=Elven_Alliance
 #: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:4
 msgid "An Elven Alliance"
 msgstr "Vilenjački savez"
@@ -774,19 +795,19 @@ msgid ""
 "before, into unknown forest country just south of the Great River."
 msgstr ""
 
-#. [side]: type=Lieutenant
-#. [side]: type=Elvish Ranger
+#. [side]: type=Lieutenant, id=Gweddry
+#. [side]: type=Elvish Ranger, id=Volas
 #: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:34
 #: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:47
 msgid "Allies"
 msgstr ""
 
-#. [side]: type=Elvish Ranger
+#. [side]: type=Elvish Ranger, id=Volas
 #: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:40
 msgid "Volas"
 msgstr "Volas"
 
-#. [side]: type=Orcish Warrior
+#. [side]: type=Orcish Warrior, id=Gruga-Har
 #: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:55
 msgid "Gruga-Har"
 msgstr "Gruga-Har"
@@ -895,7 +916,7 @@ msgstr ""
 msgid "Bring forth the assassins, we may be able to poison them!"
 msgstr "Napred sa ubicama, možda ih možemo potrovati!"
 
-#. [unit]: type=Orcish Slayer
+#. [unit]: type=Orcish Slayer, id=Nafga
 #: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:166
 #: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:200
 msgid "Nafga"
@@ -967,12 +988,12 @@ msgstr ""
 msgid "Very well. I will send guides to lead you to your allies."
 msgstr "Dobro onda. Dodeliću vam vodiče da vas povedu do vaših saveznika."
 
-#. [scenario]
+#. [scenario]: id=Undead_Border_Patrol
 #: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:4
 msgid "The Undead Border Patrol"
 msgstr "Nemrtva pogranična straža"
 
-#. [side]: type=Lich
+#. [side]: type=Lich, id=Mal-Telnarad
 #: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:51
 msgid "Mal-Telnarad"
 msgstr "Mal-Telnarad"
@@ -1099,22 +1120,22 @@ msgstr ""
 "Ne!!! Dosegnuće sve do prestonice Mal-Ravanala, a mene će kazniti što sam ih "
 "propustio!"
 
-#. [scenario]
+#. [scenario]: id=Mal-Ravanals_Capital
 #: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:4
 msgid "Mal-Ravanal's Capital"
 msgstr "Prestonica Mal-Ravanala"
 
-#. [side]: type=Dark Sorcerer
+#. [side]: type=Dark Sorcerer, id=Mal-Marak
 #: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:45
 msgid "Mal-Marak"
 msgstr "Mal-Marak"
 
-#. [side]: type=Dark Sorcerer
+#. [side]: type=Dark Sorcerer, id=Mal-Galkar
 #: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:57
 msgid "Mal-Galkar"
 msgstr "Mal-Galkar"
 
-#. [side]: type=Death Knight
+#. [side]: type=Death Knight, id=Ravanal-Guard
 #: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:69
 msgid "Rava-Krodaz"
 msgstr "Rava-Krodaz"
@@ -1159,7 +1180,7 @@ msgid ""
 "These humans have dared foolishly to come this far into my land. Crush them!"
 msgstr "Ovi se ljudi drznuše da zađu preduboko u moje zemlje. Zdrobite ih!"
 
-#. [unit]: type=Paladin
+#. [unit]: type=Paladin, id=Terraent
 #: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:157
 msgid "Terraent"
 msgstr "Tarent"
@@ -1231,27 +1252,32 @@ msgid ""
 "before them on the other side."
 msgstr ""
 
-#. [scenario]
+#. [scenario]: id=Northern_Outpost
 #: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:4
 msgid "Northern Outpost"
 msgstr "Severnjačka ispostava"
 
-#. [side]: type=Mounted Fighter
+#. [side]: type=Mounted Fighter, id=Owaec
 #: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:39
 msgid "Owaec"
 msgstr "Ovaek"
 
-#. [side]: type=Revenant
+#. [side]: type=Revenant, id=Lanar-Skal
 #: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:62
 msgid "Lanar-Skal"
 msgstr "Lanar-Skal"
 
-#. [side]: type=Revenant
-#. [side]: type=Orcish Warlord
+#. [side]: type=Revenant, id=Lanar-Skal
+#. [side]: type=Orcish Warlord, id=King Dra-Nak
 #. [side]
-#. [side]: type=Troll Warrior
-#. [side]: type=Dark Sorcerer
-#. [side]: type=Necromancer
+#. [side]: type=Orcish Warlord, id=Varrak-Klar
+#. [side]: type=Troll Warrior, id=Unhk
+#. [side]: type=Orcish Warlord, id=Ran-Lar
+#. [side]: type=Orcish Warlord, id=Wak-Rano
+#. [side]: type=Dark Sorcerer, id=Mal-Arnai
+#. [side]: type=Necromancer, id=Mal-un-Darak
+#. [side]: type=Necromancer, id=Mal-un-Zanrad
+#. [side]: type=Necromancer, id=Mal-un-Xadrux
 #: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:68
 #: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:94
 #: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:104
@@ -1406,7 +1432,7 @@ msgstr ""
 msgid "They're here!"
 msgstr "Evo ih stižu!"
 
-#. [unit]: type=Assassin
+#. [unit]: type=Assassin, id=Shodrano
 #: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:269
 msgid "Shodrano"
 msgstr "Šodrano"
@@ -1484,17 +1510,17 @@ msgstr ""
 "Odlično urađeno! Krenimo sada dalje, na sever. Saopštite seljanima da se "
 "pakuju i polaze sa nama."
 
-#. [scenario]
+#. [scenario]: id=Two_Paths
 #: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:4
 msgid "Two Paths"
 msgstr "Dva puta"
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Wak-Rano
 #: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:39
 msgid "Wak-Rano"
 msgstr "Vak-Rano"
 
-#. [side]: type=Dark Sorcerer
+#. [side]: type=Dark Sorcerer, id=Mal-Arnai
 #: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:54
 msgid "Mal-Arnai"
 msgstr "Mal-Arnaj"
@@ -1588,23 +1614,23 @@ msgstr ""
 msgid "I was supposed to kill you all! I have failed."
 msgstr "Trebalo je da vas sve pobijem! Propao sam."
 
-#. [scenario]
+#. [scenario]: id=Crossing
 #: data/campaigns/Eastern_Invasion/scenarios/07a.The_Crossing.cfg:4
 msgid "The Crossing"
 msgstr "Prelaz"
 
-#. [side]: type=Revenant
+#. [side]: type=Revenant, id=Garnad
 #: data/campaigns/Eastern_Invasion/scenarios/07a.The_Crossing.cfg:36
 msgid "Garnad"
 msgstr "Garnad"
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Draka-Kura
 #: data/campaigns/Eastern_Invasion/scenarios/07a.The_Crossing.cfg:47
 msgid "Draka-Kura"
 msgstr "Draka-Kjura"
 
-#. [side]: type=Ogre
-#. [unit]: type=Ogre
+#. [side]: type=Ogre, id=Grug
+#. [unit]: type=Ogre, id=Grug
 #: data/campaigns/Eastern_Invasion/scenarios/07a.The_Crossing.cfg:58
 #: data/campaigns/Eastern_Invasion/scenarios/07a.The_Crossing.cfg:238
 msgid "Grug"
@@ -1672,7 +1698,7 @@ msgstr ""
 "Ako se pokažemo kao neprijatelji orkovima, možda nam ogrovi pomognu. Ali "
 "mislim da moramo preći reku pre nego što pokušamo da ih ubedimo u to."
 
-#. [unit]: type=Lich
+#. [unit]: type=Lich, id=Mal-Hakralan
 #: data/campaigns/Eastern_Invasion/scenarios/07a.The_Crossing.cfg:167
 msgid "Mal-Hakralan"
 msgstr "Mal-Hakralan"
@@ -1719,12 +1745,12 @@ msgstr "Sada možeš najmiti ogrove!"
 msgid "Hurry up. We must get across before these undead slaughter us!"
 msgstr "Požurite. Moramo se prebaciti pre nego što nas nemrtvi pokolju!"
 
-#. [scenario]
+#. [scenario]: id=Undead_Crossing
 #: data/campaigns/Eastern_Invasion/scenarios/07b.Undead_Crossing.cfg:4
 msgid "Undead Crossing"
 msgstr "Nemrtvački prelaz"
 
-#. [side]: type=Necromancer
+#. [side]: type=Necromancer, id=Mal-un-Karad
 #: data/campaigns/Eastern_Invasion/scenarios/07b.Undead_Crossing.cfg:37
 msgid "Mal-un-Karad"
 msgstr "Mal-un-Karad"
@@ -1780,7 +1806,7 @@ msgstr ""
 "Izgleda da je pored podizanja nemrtvih, ovaj ogavni čarobnjak spoznao i kako "
 "da prizove dubinske nemani!"
 
-#. [scenario]
+#. [scenario]: id=Ogre
 #: data/campaigns/Eastern_Invasion/scenarios/09.Training_the_Ogres.cfg:4
 msgid "Training the Ogres"
 msgstr "Uvežbavanje ogrova"
@@ -1846,22 +1872,22 @@ msgstr ""
 "Ne smogasmo da zarobimo dovoljno ogrova ovde. Moraćemo dalje bez njihove "
 "pomoći."
 
-#. [scenario]
+#. [scenario]: id=Xenophobia
 #: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:4
 msgid "Xenophobia"
 msgstr "Ksenofobija"
 
-#. [side]: type=Dwarvish Lord
+#. [side]: type=Dwarvish Lord, id=Pelathsil
 #: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:40
 msgid "Pelathsil"
 msgstr "Pelatsil"
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Prok-Bak
 #: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:57
 msgid "Prok-Bak"
 msgstr "Prok-Bak"
 
-#. [side]: type=Elvish Marshal
+#. [side]: type=Elvish Marshal, id=Elandin
 #: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:77
 msgid "Elandin"
 msgstr "Elandin"
@@ -2002,24 +2028,24 @@ msgstr "Pogani orkovi! Možda beš' bolje udruž'ti se s ljudima..."
 msgid "Cursed elves! Perhaps we should have allied wi' the humans..."
 msgstr "Kleti vilenjaci! Možda beš' bolje udruž'ti se s ljudima..."
 
-#. [scenario]
+#. [scenario]: id=Lake
 #: data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:4
 msgid "Lake Vrug"
 msgstr "Jezero Vrug"
 
-#. [side]: type=Troll Warrior
+#. [side]: type=Troll Warrior, id=Darg
 #: data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:44
 msgid "Darg"
 msgstr "Darg"
 
-#. [side]: type=Troll Warrior
-#. [side]: type=Gryphon
+#. [side]: type=Troll Warrior, id=Darg
+#. [side]: type=Gryphon, id=Kraagak
 #: data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:53
 #: data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:69
 msgid "Monsters"
 msgstr ""
 
-#. [side]: type=Gryphon
+#. [side]: type=Gryphon, id=Kraagak
 #: data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:60
 msgid "Kraagak"
 msgstr "Kragak"
@@ -2101,7 +2127,7 @@ msgstr "Nađe 100 zlatnika u tvrđavi!"
 msgid "We have done it! The island is ours. Our journey is complete."
 msgstr "Uspeli smo! Ostrvo je naše. Putovanje nam je okončano."
 
-#. [unit]: type=Troll Warrior
+#. [unit]: type=Troll Warrior, id=Groog
 #: data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:193
 msgid "Groog"
 msgstr "Grug"
@@ -2111,7 +2137,7 @@ msgstr "Grug"
 msgid "Be not going too fast. You gonna come wid us."
 msgstr "Ne ide tako brzo. Ti sa nam pođe."
 
-#. [scenario]
+#. [scenario]: id=Captured
 #: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:4
 msgid "Captured"
 msgstr "Zarobljen"
@@ -2160,7 +2186,7 @@ msgstr "Grad"
 msgid "Exit"
 msgstr "Izlaz"
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=King Dra-Nak
 #: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:77
 msgid "King Dra-Nak"
 msgstr "Kralj Dra-Nak"
@@ -2280,7 +2306,7 @@ msgstr "Dobro onda. Na drugu stranu."
 msgid "Good! We have escaped these accursed caves!"
 msgstr "Konačno! Izbismo iz ovih prokletih pećinčina!"
 
-#. [scenario]
+#. [scenario]: id=Evacuation
 #: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:4
 msgid "Evacuation"
 msgstr "Evakuacija"
@@ -2296,17 +2322,17 @@ msgstr ""
 "jugu nego pre. Orkovi su mu za petama. On i njegova družina pođoše na jug, "
 "dok ne stigoše do Velike reke."
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Varrak-Klar
 #: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:39
 msgid "Varrak-Klar"
 msgstr "Varak-Klar"
 
-#. [side]: type=Troll Warrior
+#. [side]: type=Troll Warrior, id=Unhk
 #: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:62
 msgid "Unhk"
 msgstr "Unk"
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Ran-Lar
 #: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:84
 msgid "Ran-Lar"
 msgstr "Ran-Lar"
@@ -2325,7 +2351,7 @@ msgstr ""
 "Napomena: Biće izgubljene sve jedinice koje se ne nađu na južnoj obali reke "
 "kada most padne (uključujući i nesazvane)."
 
-#. [unit]: type=Red Mage
+#. [unit]: id=Engineer, type=Red Mage
 #: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:193
 msgid "Engineer"
 msgstr "inženjer"
@@ -2542,12 +2568,12 @@ msgstr ""
 "J'ću vas prat'ti od sada. Nad'm se da ć'te stići do Veld'na pa da mogu "
 "prest'nem bež'ti..."
 
-#. [scenario]
+#. [scenario]: id=The_Drowned_Plains
 #: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:4
 msgid "The Drowned Plains"
 msgstr "Potopljene ravnice"
 
-#. [unit]: type=Skeletal Dragon
+#. [unit]: type=Skeletal Dragon, id=Khrakrahs
 #. [message]
 #: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:126
 #: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:399
@@ -2625,28 +2651,28 @@ msgstr ""
 "Ah! Vidim šta su učinili. Vaskrsli su ga kao nemrtvog zmaja. Ali izgleda da "
 "nije osetljiv na moj volšebni plamen... Uistinu neka čudna magija."
 
-#. [scenario]
+#. [scenario]: id=Approaching_Weldyn
 #: data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:4
 msgid "Approaching Weldyn"
 msgstr "Na prilazu Veldinu"
 
-#. [side]: type=Necromancer
+#. [side]: type=Necromancer, id=Mal-un-Darak
 #: data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:49
 msgid "Mal-un-Darak"
 msgstr "Mal-un-Darak"
 
-#. [side]: type=Necromancer
+#. [side]: type=Necromancer, id=Mal-un-Zanrad
 #: data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:67
 msgid "Mal-un-Zanrad"
 msgstr "Mal-un-Zanrad"
 
-#. [side]: type=Necromancer
+#. [side]: type=Necromancer, id=Mal-un-Xadrux
 #: data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:84
 msgid "Mal-un-Xadrux"
 msgstr "Mal-un-Ksadruks"
 
-#. [side]: type=General
-#. [unit]: type=General
+#. [side]: type=General, id=Konrad II
+#. [unit]: id=Konrad, type=General
 #: data/campaigns/Eastern_Invasion/scenarios/19_Epilog.cfg:40
 #: data/campaigns/Eastern_Invasion/scenarios/16.The_Council.cfg:66
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:192
@@ -2699,7 +2725,7 @@ msgstr "Hajdete, u zamak."
 msgid "Weldyn has been captured, and Wesnoth is no more..."
 msgstr "Veldin je zarobljen, Vesnotu je došao kraj..."
 
-#. [scenario]
+#. [scenario]: id=Throne
 #: data/campaigns/Eastern_Invasion/scenarios/16.The_Council.cfg:4
 msgid "The Council"
 msgstr "Savet"
@@ -2785,7 +2811,7 @@ msgstr ""
 "Međutim, kako je ovladao magičnom veštinom teleportacije, Mal-Ravanal "
 "jednostavno ispari. I od tada više nije viđen."
 
-#. [side]: type=Great Mage
+#. [side]: type=Great Mage, id=Kaldor
 #: data/campaigns/Eastern_Invasion/scenarios/19_Epilog.cfg:52
 #: data/campaigns/Eastern_Invasion/scenarios/16.The_Council.cfg:79
 msgid "Kaldor"
@@ -2901,37 +2927,37 @@ msgstr "Gospodari, vojske nemrtvih kreću u napad!"
 msgid "Well, that will have to be the end of our council. Let us fight!"
 msgstr "To je onda kraj ovome savetovanju. Krenimo u boj!"
 
-#. [scenario]
+#. [scenario]: id=Weldyn_Attack, (id=Messenger of Doom) 39 4}
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:4
 msgid "Weldyn under Attack"
 msgstr "Veldin na udaru"
 
-#. [side]: type=General
+#. [side]: type=General, id=Halrad
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:49
 msgid "Halrad"
 msgstr "Halrad"
 
-#. [side]: type=General
+#. [side]: type=General, id=Halric
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:65
 msgid "Halric"
 msgstr "Halrik"
 
-#. [side]: type=General
+#. [side]: type=General, id=Halrod
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:81
 msgid "Halrod"
 msgstr "Halrod"
 
-#. [side]: type=Lich
+#. [side]: type=Lich, id=Mal-Grekulak
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:98
 msgid "Mal-Grekulak"
 msgstr "Mal-Grekulak"
 
-#. [side]: type=Lich
+#. [side]: type=Lich, id=Mal-Xakralan
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:114
 msgid "Mal-Xakralan"
 msgstr "Mal-Ksakralan"
 
-#. [side]: type=Lich
+#. [side]: type=Lich, id=Mal-Uknalu
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:130
 msgid "Mal-Uknalu"
 msgstr "Mal-Uknalu"
@@ -2968,7 +2994,7 @@ msgstr ""
 msgid "I have died, and with me gone the city shall fall."
 msgstr "Umirem, a bez mene će i grad ubrzo pasti."
 
-#. [unit]: type=Spectre
+#. [unit]: type=Spectre, id=Messenger of Doom
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:238
 msgid "Messenger of Doom"
 msgstr "glasnik propasti"
@@ -3092,7 +3118,7 @@ msgstr "Ne mogu prihvatiti borbu u kojoj će on jamačno varati! Odbijam!"
 msgid "Look, the sun has risen, and the undead are retreating."
 msgstr "Gle, izlazi sunce, a nemrtvi se povlače."
 
-#. [scenario]
+#. [scenario]: id=Duel
 #: data/campaigns/Eastern_Invasion/scenarios/18a.The_Duel.cfg:4
 msgid "The Duel"
 msgstr "Dvoboj"
@@ -3153,17 +3179,22 @@ msgstr "Ja... izgubih...?"
 msgid "And more!"
 msgstr "I još!"
 
-#. [scenario]
+#. [scenario]: id=Reject
 #: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:4
 msgid "Weldyn Besieged"
 msgstr "Veldin pod opsadom"
 
-#. [side]: type=Lich
+#. [side]: type=Lich, id=Mal-Drakanal
 #: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:34
 msgid "Mal-Drakanal"
 msgstr "Mal-Drakanal"
 
-#. [side]: type=Lich
+#. [side]: type=Lich, id=Lich3
+#. [side]: type=Lich, id=Lich4
+#. [side]: type=Lich, id=Lich5
+#. [side]: type=Lich, id=Lich6
+#. [side]: type=Lich, id=Lich7
+#. [side]: type=Lich, id=Lich8
 #. [filter_second]: type=Lich
 #: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:47
 #: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:60
@@ -3258,7 +3289,7 @@ msgstr "Ubijte kralja!"
 msgid "They killed Konrad... now, even if we save Weldyn, Wesnoth has fallen."
 msgstr "Ubiše Konrada... Sada čak i da spasimo Veldin, kraljevstvu je kraj."
 
-#. [scenario]
+#. [scenario]: id=Epilog
 #: data/campaigns/Eastern_Invasion/scenarios/19_Epilog.cfg:4
 msgid "Epilog"
 msgstr "Epilog"
@@ -3414,12 +3445,12 @@ msgstr ""
 "Ovim rečima i delima otpoče Srebrno doba Vesnota, ono među istoričarima "
 "znano kao Sveobnova..."
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Horse Lord, race=human
 #: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:4
 msgid "Horse Lord"
 msgstr "gospodar konja"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Horse Lord, race=human
 #: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:18
 msgid ""
 "The greatest of the men of the plains, Horse Lords are heads of their houses "
@@ -3443,12 +3474,12 @@ msgstr "mač"
 msgid "morning star"
 msgstr "severnjača"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Mounted Fighter, race=human
 #: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:4
 msgid "Mounted Fighter"
 msgstr "borac-jahač"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Mounted Fighter, race=human
 #: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:25
 msgid ""
 "The nobles of the men of the plains are trained with the rest of the "
@@ -3460,12 +3491,12 @@ msgstr ""
 "veliki ratnici. Međutim, takođe vežbaju zapovedanje svojim sadruzima, jer su "
 "oni ti koji će postati kapetani armija Klanova."
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Mounted Warrior, race=human
 #: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:4
 msgid "Mounted Warrior"
 msgstr "ratnik-jahač"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Mounted Warrior, race=human
 #: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:25
 msgid ""
 "Leaders of the plains, Mounted Warriors are skilled with the use of the "

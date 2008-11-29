@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-22 14:56+0100\n"
+"POT-Creation-Date: 2008-11-29 12:25+0100\n"
 "PO-Revision-Date: 2008-03-22 12:00+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -18,38 +18,38 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n%"
 "10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 
-#. [campaign]
+#. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:12
 #, fuzzy
 msgid "A Tale of Two Brothers"
 msgstr "Прича о два брата"
 
-#. [campaign]
+#. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:13
 msgid "AToTB"
 msgstr "ПоДБ"
 
-#. [campaign]
+#. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:17
 msgid "Horseman"
 msgstr "коњаник"
 
-#. [campaign]
+#. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:17
 msgid "(Beginner)"
 msgstr "(почетник)"
 
-#. [campaign]
+#. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:18
 msgid "(Challenging)"
 msgstr "(изазовно)"
 
-#. [campaign]
+#. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:18
 msgid "Knight"
 msgstr "витез"
 
-#. [campaign]
+#. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:21
 #, fuzzy
 msgid ""
@@ -92,7 +92,7 @@ msgstr "Разно"
 msgid "And special thanks to everyone else who I forgot to mention."
 msgstr "И посебне захвалнице свима које заборавих да поменем."
 
-#. [scenario]
+#. [scenario]: id=1_Rooting_Out_A_Mage
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:4
 msgid "Rooting Out A Mage"
 msgstr "Искорењивање мага"
@@ -178,7 +178,7 @@ msgstr "Настрада ли Арне"
 msgid "Turns run out"
 msgstr "Останеш ли без потезâ"
 
-#. [side]: type=Knight
+#. [side]: type=Knight, id=Arne
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:160
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:66
 #: data/campaigns/Two_Brothers/scenarios/5_Epilog.cfg:49
@@ -187,7 +187,7 @@ msgstr "Останеш ли без потезâ"
 msgid "Arne"
 msgstr "Арне"
 
-#. [unit]: type=Red Mage
+#. [unit]: id=Bjarn, type=Red Mage
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:170
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:721
 msgid "Bjarn"
@@ -223,23 +223,23 @@ msgstr "Ефран"
 msgid "Fargus"
 msgstr "Фаргус"
 
-#. [unit]: type=Horseman
+#. [unit]: id=Erik, type=Horseman
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:251
 msgid "Erik"
 msgstr "Ерик"
 
-#. [unit]: type=Horseman
+#. [unit]: id=Heine, type=Horseman
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:263
 msgid "Heine"
 msgstr "Хајне"
 
-#. [unit]: type=Horseman
+#. [unit]: id=Magnus, type=Horseman
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:275
 msgid "Magnus"
 msgstr "Магнус"
 
-#. [side]: type=Knight
-#. [side]: type=Longbowman
+#. [side]: type=Knight, id=Arne
+#. [side]: type=Longbowman, id=Councillor Hoban
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:287
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:74
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:153
@@ -248,14 +248,15 @@ msgstr "Магнус"
 msgid "Humans"
 msgstr ""
 
-#. [side]: type=Dark Sorcerer
+#. [side]: type=Dark Sorcerer, id=Mordak
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:300
 msgid "Mordak"
 msgstr "Мордак"
 
-#. [side]: type=Dark Sorcerer
+#. [side]: type=Dark Sorcerer, id=Mordak
+#. [side]: type=Dark Sorcerer, id=Rotharik
 #. [side]
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Tairach
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:314
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:105
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:146
@@ -382,7 +383,7 @@ msgstr "То не бејаше претешко!"
 msgid "All is lost now that I am dead..."
 msgstr "Сада кад умирем, све је изгубљено..."
 
-#. [scenario]
+#. [scenario]: id=2_The_Chase
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:4
 msgid "The Chase"
 msgstr "Потера"
@@ -411,12 +412,12 @@ msgstr ""
 msgid "Fight your way through the woods before the kidnappers escape"
 msgstr "Пробијеш ли се кроз шуму пре него што отимачи избегну"
 
-#. [side]: type=Elvish Rider
+#. [side]: type=Elvish Rider, id=Nil-Galion
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:168
 msgid "Nil-Galion"
 msgstr "Нил-Галион"
 
-#. [side]: type=Elvish Rider
+#. [side]: type=Elvish Rider, id=Nil-Galion
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:175
 msgid "Elves"
 msgstr ""
@@ -479,7 +480,7 @@ msgid ""
 "offer."
 msgstr ""
 
-#. [unit]: type=Dark Adept
+#. [unit]: type=Dark Adept, id=Muff Toras
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:314
 msgid "Muff Toras"
 msgstr "Маф Торас"
@@ -577,7 +578,7 @@ msgstr ""
 msgid "Bind him and take him with us. If he has played us false, he will die."
 msgstr ""
 
-#. [unit]: type=Iron Mauler
+#. [unit]: id=Brena, type=Iron Mauler
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:437
 msgid "Brena"
 msgstr "Брена"
@@ -677,24 +678,24 @@ msgstr ""
 msgid "Catch the kidnappers"
 msgstr "Напред, људи, похватајмо те отимаче!"
 
-#. [terrain]
+#. [terrain]: id=magic_irongate
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:6
 msgid "Irongate"
 msgstr "гвоздодвери"
 
-#. [scenario]
+#. [scenario]: id=3_Guarded_Castle
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:16
 msgid "Guarded Castle"
 msgstr "Чувани замак"
 
-#. [side]: type=Dark Sorcerer
+#. [side]: type=Dark Sorcerer, id=Rotharik
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:87
 msgid "Rotharik"
 msgstr "Ротарик"
 
-#. [unit]: type=Assassin
+#. [unit]: id=Guard_leader, type=Assassin
 #. [unit]: role=Guard, type=Bandit
-#. [unit]: type=Rogue
+#. [unit]: id=Guard2_leader, type=Rogue
 #. [unit]: role=Guard2, type=Bandit
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:109
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:117
@@ -711,7 +712,7 @@ msgstr "Ротарик"
 msgid "Guard"
 msgstr "Стража"
 
-#. [unit]: type=Orcish Warrior
+#. [unit]: id=Knago-Brek, type=Orcish Warrior
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:152
 msgid "Knago-Brek"
 msgstr "Кнаго-Брек"
@@ -970,7 +971,7 @@ msgstr "Стиже прекасно! Твој брат мртав је већ! �
 msgid "Argh!!!"
 msgstr "Аооо!!!"
 
-#. [scenario]
+#. [scenario]: id=4_Return_To_The_Village
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:4
 msgid "Return to the Village"
 msgstr "Повратак у село"
@@ -986,13 +987,13 @@ msgstr "Извидиш ли шта се у селу збива"
 msgid "Death of Bjarn"
 msgstr "Настрада ли Бјарн"
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Tairach
 #: data/campaigns/Two_Brothers/scenarios/5_Epilog.cfg:59
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:104
 msgid "Tairach"
 msgstr "Тајрах"
 
-#. [side]: type=Longbowman
+#. [side]: type=Longbowman, id=Councillor Hoban
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:132
 msgid "Councillor Hoban"
 msgstr "Већник Хобан"
@@ -1108,7 +1109,7 @@ msgstr "Мислим да се нико више спасти из ових се
 msgid "I was too weak to protect these people. Oh why did this happen to me?!?"
 msgstr "Бејах преслаб да заштитим ове људе. Што ли ме снађе таква судба?!"
 
-#. [scenario]
+#. [scenario]: id=epilog
 #: data/campaigns/Two_Brothers/scenarios/5_Epilog.cfg:4
 #, fuzzy
 msgid "A Tale of Two Brothers - Epilogue"

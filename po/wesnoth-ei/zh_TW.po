@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-22 14:55+0100\n"
+"POT-Creation-Date: 2008-11-29 12:24+0100\n"
 "PO-Revision-Date: 2008-08-29 00:47+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
@@ -10,47 +10,47 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#. [campaign]
+#. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:11
 msgid "The Eastern Invasion"
 msgstr "東疆防衛戰"
 
-#. [campaign]
+#. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:12
 msgid "EI"
 msgstr "東"
 
-#. [campaign]
+#. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:16
 msgid "(Easy)"
 msgstr "（簡單）"
 
-#. [campaign]
+#. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:16
 msgid "Spearman"
 msgstr "矛兵"
 
-#. [campaign]
+#. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:17
 msgid "(Normal)"
 msgstr "（普通）"
 
-#. [campaign]
+#. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:17
 msgid "Swordsman"
 msgstr "劍士"
 
-#. [campaign]
+#. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:18
 msgid "(Challenging)"
 msgstr "（挑戰）"
 
-#. [campaign]
+#. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:18
 msgid "Royal Guard"
 msgstr "皇家武士"
 
-#. [campaign]
+#. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:21
 msgid ""
 "There are rumors of undead attacks on the eastern border of Wesnoth. You, an "
@@ -85,7 +85,7 @@ msgstr "旁白和角色對話"
 msgid "Artwork and Graphics Design"
 msgstr "美術設計"
 
-#. [scenario]
+#. [scenario]: id=The_Outpost
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:4
 msgid "The Outpost"
 msgstr "前哨站"
@@ -180,10 +180,10 @@ msgstr ""
 "國王的軍隊到來後一切都很好。有好幾周都沒有攻擊事件，這使得柯維卓的人開始鬆懈"
 "起來。而後，在某天的黎明，柯維卓和他的人被守夜人驚恐的叫聲喚醒..."
 
-#. [side]: type=Lieutenant
-#. [side]: type=General
-#. [side]: type=Sergeant
-#. [side]: race=Humans, type=Lieutenant
+#. [side]: type=Lieutenant, id=Gweddry
+#. [side]: type=General, id=Gweddry
+#. [side]: type=Sergeant, id=Gweddry
+#. [side]: race=Humans, type=Lieutenant, id=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/07a.The_Crossing.cfg:20
 #: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:19
 #: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:20
@@ -209,7 +209,7 @@ msgstr ""
 msgid "Gweddry"
 msgstr "柯維卓"
 
-#. [unit]: type=White Mage
+#. [unit]: type=White Mage, id=Dacyn
 #. [message]
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:68
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:268
@@ -217,17 +217,34 @@ msgstr "柯維卓"
 msgid "Dacyn"
 msgstr "戴森"
 
-#. [side]: type=Dark Sorcerer
+#. [side]: type=Dark Sorcerer, id=Mal-Sakkat
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:97
 msgid "Mal-Sakkat"
 msgstr "麥爾-薩凱"
 
-#. [side]: type=Lich
-#. [side]: type=Dark Sorcerer
-#. [side]: type=Death Knight
-#. [side]: type=Dark Adept
-#. [side]: type=Ancient Lich
-#. [side]: type=Necromancer
+#. [side]: type=Lich, id=Mal-Drakanal
+#. [side]: type=Lich, id=Lich3
+#. [side]: type=Lich, id=Lich4
+#. [side]: type=Lich, id=Lich5
+#. [side]: type=Lich, id=Lich6
+#. [side]: type=Lich, id=Lich7
+#. [side]: type=Lich, id=Lich8
+#. [side]: type=Dark Sorcerer, id=Mal-Marak
+#. [side]: type=Dark Sorcerer, id=Mal-Galkar
+#. [side]: type=Death Knight, id=Ravanal-Guard
+#. [side]: type=Lich, id=Mal-Ravanal
+#. [side]: type=Dark Sorcerer, id=Mal-Skraat
+#. [side]: type=Dark Adept, id=Mal-Tar
+#. [side]: type=Dark Sorcerer, id=Mal-Kallat
+#. [side]: type=Ancient Lich, id=Mal-Ravanal
+#. [side]: type=Lich, id=Mal-Grekulak
+#. [side]: type=Lich, id=Mal-Xakralan
+#. [side]: type=Lich, id=Mal-Uknalu
+#. [side]: type=Dark Sorcerer, id=Mal-Sakkat
+#. [side]: type=Dark Sorcerer, id=Mal-Talar
+#. [side]: type=Lich, id=Mal-Uldhar
+#. [side]: type=Lich, id=Mal-Telnarad
+#. [side]: type=Necromancer, id=Mal-un-Karad
 #: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:41
 #: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:54
 #: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:67
@@ -255,12 +272,12 @@ msgstr "麥爾-薩凱"
 msgid "Undead"
 msgstr ""
 
-#. [side]: type=Dark Sorcerer
+#. [side]: type=Dark Sorcerer, id=Mal-Talar
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:120
 msgid "Mal-Talar"
 msgstr "麥爾-塔爾"
 
-#. [side]: type=Lich
+#. [side]: type=Lich, id=Mal-Uldhar
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:141
 msgid "Mal-Uldhar"
 msgstr "麥爾-阿靼"
@@ -314,9 +331,9 @@ msgstr "看，不死族，從東方來了！等一下...我發現一件事情...
 
 #. [event]
 #. [variable]
-#. [side]: type=Lich
-#. [side]: type=Ancient Lich
-#. [unit]: type=Ancient Lich
+#. [side]: type=Lich, id=Mal-Ravanal
+#. [side]: type=Ancient Lich, id=Mal-Ravanal
+#. [unit]: type=Ancient Lich, id=Mal-Ravanal
 #: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:174
 #: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:224
 #: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:84
@@ -439,17 +456,21 @@ msgid ""
 "to the trapdoor!"
 msgstr "快點！在大批的敵人增援部隊抵達前。不然我們全都會被宰掉！進入暗門！"
 
-#. [scenario]
+#. [scenario]: id=Escape_Tunnel
 #: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:4
 msgid "The Escape Tunnel"
 msgstr "逃生隧道"
 
-#. [side]: type=Lieutenant
-#. [side]: type=Dwarvish Steelclad
-#. [side]: type=Mounted Fighter
-#. [side]: type=General
-#. [side]: type=Great Mage
-#. [side]: race=Humans, type=Lieutenant
+#. [side]: type=Lieutenant, id=Gweddry
+#. [side]: type=Dwarvish Steelclad, id=Knutan
+#. [side]: type=Mounted Fighter, id=Owaec
+#. [side]: type=General, id=Konrad II
+#. [side]: type=Great Mage, id=Kaldor
+#. [side]: type=General, id=Gweddry
+#. [side]: type=General, id=Halrad
+#. [side]: type=General, id=Halric
+#. [side]: type=General, id=Halrod
+#. [side]: race=Humans, type=Lieutenant, id=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:25
 #: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:52
 #: data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:36
@@ -476,17 +497,17 @@ msgstr "逃生隧道"
 msgid "Wesnothians"
 msgstr ""
 
-#. [side]: type=Troll
+#. [side]: type=Troll, id=Kabak
 #: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:34
 msgid "Kabak"
 msgstr "卡布克"
 
-#. [side]: type=Dwarvish Steelclad
+#. [side]: type=Dwarvish Steelclad, id=Knutan
 #: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:45
 msgid "Knutan"
 msgstr "紐坦"
 
-#. [side]: type=Dark Sorcerer
+#. [side]: type=Dark Sorcerer, id=Mal-Bakral
 #: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:69
 msgid "Mal-Bakral"
 msgstr "麥爾-貝克"
@@ -575,7 +596,7 @@ msgstr "我的族人在這個洞穴生活了數百年了。我們不會因為一
 msgid "Very well. The best of luck in your battle."
 msgstr "那好，祝你在戰鬥中無往不利。"
 
-#. [object]
+#. [object]: id=holyamulet
 #: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:213
 #: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:435
 #: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:412
@@ -583,7 +604,7 @@ msgstr "那好，祝你在戰鬥中無往不利。"
 msgid "Holy Amulet"
 msgstr "神聖護身符"
 
-#. [object]
+#. [object]: id=holyamulet
 #: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:216
 #: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:438
 #: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:415
@@ -592,7 +613,7 @@ msgid ""
 "Wearing this amulet will cause every blow you deal to inflict arcane damage!"
 msgstr "這個護身符會讓你每次攻擊附加祕術效果！"
 
-#. [object]
+#. [object]: id=holyamulet
 #: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:217
 #: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:439
 #: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:416
@@ -627,23 +648,23 @@ msgstr ""
 msgid "We have reached the end of the tunnel. I see daylight above us!"
 msgstr "我們已經來到隧道盡頭了。我看到上頭有陽光！"
 
-#. [scenario]
+#. [scenario]: id=Unexpected_Appearance
 #: data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:4
 msgid "An Unexpected Appearance"
 msgstr "意料之外的會面"
 
-#. [side]: type=Dark Sorcerer
+#. [side]: type=Dark Sorcerer, id=Mal-Skraat
 #: data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:37
 #: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:39
 msgid "Mal-Skraat"
 msgstr "麥爾-斯格亞特"
 
-#. [side]: type=Dark Adept
+#. [side]: type=Dark Adept, id=Mal-Tar
 #: data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:57
 msgid "Mal-Tar"
 msgstr "麥爾-塔"
 
-#. [side]: type=Dark Sorcerer
+#. [side]: type=Dark Sorcerer, id=Mal-Kallat
 #: data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:72
 msgid "Mal-Kallat"
 msgstr "麥爾-克拉克"
@@ -718,7 +739,7 @@ msgstr "不！你打敗了我，也能再次進入韋諾了！"
 msgid "You have defeated my brother, but I will follow you and kill you!"
 msgstr "你打敗了我的兄弟，但是我會追蹤並殺掉你！"
 
-#. [scenario]
+#. [scenario]: id=Elven_Alliance
 #: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:4
 msgid "An Elven Alliance"
 msgstr "精靈聯盟"
@@ -732,19 +753,19 @@ msgid ""
 "before, into unknown forest country just south of the Great River."
 msgstr ""
 
-#. [side]: type=Lieutenant
-#. [side]: type=Elvish Ranger
+#. [side]: type=Lieutenant, id=Gweddry
+#. [side]: type=Elvish Ranger, id=Volas
 #: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:34
 #: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:47
 msgid "Allies"
 msgstr ""
 
-#. [side]: type=Elvish Ranger
+#. [side]: type=Elvish Ranger, id=Volas
 #: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:40
 msgid "Volas"
 msgstr "福藍斯"
 
-#. [side]: type=Orcish Warrior
+#. [side]: type=Orcish Warrior, id=Gruga-Har
 #: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:55
 msgid "Gruga-Har"
 msgstr "古卡-海爾"
@@ -847,7 +868,7 @@ msgstr "我不知道。但是他們擋在北方道路上。你們只有把他們
 msgid "Bring forth the assassins, we may be able to poison them!"
 msgstr "讓刺客出動，這樣，我們可以讓他們中毒！"
 
-#. [unit]: type=Orcish Slayer
+#. [unit]: type=Orcish Slayer, id=Nafga
 #: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:166
 #: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:200
 msgid "Nafga"
@@ -914,12 +935,12 @@ msgstr "我們沒時間了。這場戰爭已經浪費了太多的時間，我們
 msgid "Very well. I will send guides to lead you to your allies."
 msgstr "好吧，我將會向引領你們到你的同盟那裡。"
 
-#. [scenario]
+#. [scenario]: id=Undead_Border_Patrol
 #: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:4
 msgid "The Undead Border Patrol"
 msgstr "不死族的邊境巡邏隊"
 
-#. [side]: type=Lich
+#. [side]: type=Lich, id=Mal-Telnarad
 #: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:51
 msgid "Mal-Telnarad"
 msgstr "麥爾-拓諾德"
@@ -1039,22 +1060,22 @@ msgid ""
 "letting him escape!"
 msgstr "不！！！這樣他會到達麥爾-諾曼鈉的首都，我則會因他的逃脫而受懲罰！"
 
-#. [scenario]
+#. [scenario]: id=Mal-Ravanals_Capital
 #: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:4
 msgid "Mal-Ravanal's Capital"
 msgstr "麥爾-諾曼鈉的首都"
 
-#. [side]: type=Dark Sorcerer
+#. [side]: type=Dark Sorcerer, id=Mal-Marak
 #: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:45
 msgid "Mal-Marak"
 msgstr "麥爾-馬瑞克"
 
-#. [side]: type=Dark Sorcerer
+#. [side]: type=Dark Sorcerer, id=Mal-Galkar
 #: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:57
 msgid "Mal-Galkar"
 msgstr "麥爾-瓜克"
 
-#. [side]: type=Death Knight
+#. [side]: type=Death Knight, id=Ravanal-Guard
 #: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:69
 msgid "Rava-Krodaz"
 msgstr "瑞法-克羅迪斯"
@@ -1097,7 +1118,7 @@ msgid ""
 "These humans have dared foolishly to come this far into my land. Crush them!"
 msgstr "這些人類竟膽敢來到我的領地。撕碎他們！"
 
-#. [unit]: type=Paladin
+#. [unit]: type=Paladin, id=Terraent
 #: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:157
 msgid "Terraent"
 msgstr "泰瑞安特"
@@ -1164,27 +1185,32 @@ msgid ""
 "before them on the other side."
 msgstr ""
 
-#. [scenario]
+#. [scenario]: id=Northern_Outpost
 #: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:4
 msgid "Northern Outpost"
 msgstr "北部前哨站"
 
-#. [side]: type=Mounted Fighter
+#. [side]: type=Mounted Fighter, id=Owaec
 #: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:39
 msgid "Owaec"
 msgstr "歐維克"
 
-#. [side]: type=Revenant
+#. [side]: type=Revenant, id=Lanar-Skal
 #: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:62
 msgid "Lanar-Skal"
 msgstr "萊納-斯凱爾"
 
-#. [side]: type=Revenant
-#. [side]: type=Orcish Warlord
+#. [side]: type=Revenant, id=Lanar-Skal
+#. [side]: type=Orcish Warlord, id=King Dra-Nak
 #. [side]
-#. [side]: type=Troll Warrior
-#. [side]: type=Dark Sorcerer
-#. [side]: type=Necromancer
+#. [side]: type=Orcish Warlord, id=Varrak-Klar
+#. [side]: type=Troll Warrior, id=Unhk
+#. [side]: type=Orcish Warlord, id=Ran-Lar
+#. [side]: type=Orcish Warlord, id=Wak-Rano
+#. [side]: type=Dark Sorcerer, id=Mal-Arnai
+#. [side]: type=Necromancer, id=Mal-un-Darak
+#. [side]: type=Necromancer, id=Mal-un-Zanrad
+#. [side]: type=Necromancer, id=Mal-un-Xadrux
 #: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:68
 #: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:94
 #: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:104
@@ -1327,7 +1353,7 @@ msgstr ""
 msgid "They're here!"
 msgstr "他們在這兒！"
 
-#. [unit]: type=Assassin
+#. [unit]: type=Assassin, id=Shodrano
 #: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:269
 msgid "Shodrano"
 msgstr "俠丹諾"
@@ -1396,17 +1422,17 @@ msgid ""
 "their belongings and follow us."
 msgstr "做得好！現在，我們能向前行，直達北方。告訴村民們打包行李並跟著我們。"
 
-#. [scenario]
+#. [scenario]: id=Two_Paths
 #: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:4
 msgid "Two Paths"
 msgstr "分岔口"
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Wak-Rano
 #: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:39
 msgid "Wak-Rano"
 msgstr "沃客-瑞鈕"
 
-#. [side]: type=Dark Sorcerer
+#. [side]: type=Dark Sorcerer, id=Mal-Arnai
 #: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:54
 msgid "Mal-Arnai"
 msgstr "麥爾-阿耶恩"
@@ -1491,23 +1517,23 @@ msgstr ""
 msgid "I was supposed to kill you all! I have failed."
 msgstr "我真想把你們全都殺死！可惜我失敗了。"
 
-#. [scenario]
+#. [scenario]: id=Crossing
 #: data/campaigns/Eastern_Invasion/scenarios/07a.The_Crossing.cfg:4
 msgid "The Crossing"
 msgstr "渡口"
 
-#. [side]: type=Revenant
+#. [side]: type=Revenant, id=Garnad
 #: data/campaigns/Eastern_Invasion/scenarios/07a.The_Crossing.cfg:36
 msgid "Garnad"
 msgstr "高奈德"
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Draka-Kura
 #: data/campaigns/Eastern_Invasion/scenarios/07a.The_Crossing.cfg:47
 msgid "Draka-Kura"
 msgstr "卓克-科若"
 
-#. [side]: type=Ogre
-#. [unit]: type=Ogre
+#. [side]: type=Ogre, id=Grug
+#. [unit]: type=Ogre, id=Grug
 #: data/campaigns/Eastern_Invasion/scenarios/07a.The_Crossing.cfg:58
 #: data/campaigns/Eastern_Invasion/scenarios/07a.The_Crossing.cfg:238
 msgid "Grug"
@@ -1573,7 +1599,7 @@ msgstr ""
 "如果我們表現得像是獸人的敵人，他們可能會幫助我們。但我想我們最好在說服食人魔"
 "幫助我們前，先穿過這條河。"
 
-#. [unit]: type=Lich
+#. [unit]: type=Lich, id=Mal-Hakralan
 #: data/campaigns/Eastern_Invasion/scenarios/07a.The_Crossing.cfg:167
 msgid "Mal-Hakralan"
 msgstr "麥爾-海克林"
@@ -1619,12 +1645,12 @@ msgstr "您現在可以招募食人魔了!"
 msgid "Hurry up. We must get across before these undead slaughter us!"
 msgstr "快點。我們必須在不死族屠殺我們前通過！"
 
-#. [scenario]
+#. [scenario]: id=Undead_Crossing
 #: data/campaigns/Eastern_Invasion/scenarios/07b.Undead_Crossing.cfg:4
 msgid "Undead Crossing"
 msgstr "不死族渡口"
 
-#. [side]: type=Necromancer
+#. [side]: type=Necromancer, id=Mal-un-Karad
 #: data/campaigns/Eastern_Invasion/scenarios/07b.Undead_Crossing.cfg:37
 msgid "Mal-un-Karad"
 msgstr "麥爾-凱爾"
@@ -1676,7 +1702,7 @@ msgid ""
 "learned to call up monsters from the deep!"
 msgstr "看來除了召喚不死亡靈外，這個邪惡的術士看來也學會如何喚出深淵中的怪物。"
 
-#. [scenario]
+#. [scenario]: id=Ogre
 #: data/campaigns/Eastern_Invasion/scenarios/09.Training_the_Ogres.cfg:4
 msgid "Training the Ogres"
 msgstr "訓練食人魔"
@@ -1736,22 +1762,22 @@ msgid ""
 "them."
 msgstr "我們沒有捕獲足夠的食人魔。我們不得不放棄他們。"
 
-#. [scenario]
+#. [scenario]: id=Xenophobia
 #: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:4
 msgid "Xenophobia"
 msgstr "克若夫必恩"
 
-#. [side]: type=Dwarvish Lord
+#. [side]: type=Dwarvish Lord, id=Pelathsil
 #: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:40
 msgid "Pelathsil"
 msgstr "帕拉斯樂"
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Prok-Bak
 #: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:57
 msgid "Prok-Bak"
 msgstr "波克-布"
 
-#. [side]: type=Elvish Marshal
+#. [side]: type=Elvish Marshal, id=Elandin
 #: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:77
 msgid "Elandin"
 msgstr "伊蘭丹"
@@ -1884,24 +1910,24 @@ msgstr "卑鄙的獸人！我們也許該和人類結盟..."
 msgid "Cursed elves! Perhaps we should have allied wi' the humans..."
 msgstr "該死的精靈！我們也許該和人類結盟..."
 
-#. [scenario]
+#. [scenario]: id=Lake
 #: data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:4
 msgid "Lake Vrug"
 msgstr "芙諾格湖"
 
-#. [side]: type=Troll Warrior
+#. [side]: type=Troll Warrior, id=Darg
 #: data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:44
 msgid "Darg"
 msgstr "達克"
 
-#. [side]: type=Troll Warrior
-#. [side]: type=Gryphon
+#. [side]: type=Troll Warrior, id=Darg
+#. [side]: type=Gryphon, id=Kraagak
 #: data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:53
 #: data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:69
 msgid "Monsters"
 msgstr ""
 
-#. [side]: type=Gryphon
+#. [side]: type=Gryphon, id=Kraagak
 #: data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:60
 msgid "Kraagak"
 msgstr "克諾卡克"
@@ -1976,7 +2002,7 @@ msgstr "你在要塞中找到了100枚金幣。"
 msgid "We have done it! The island is ours. Our journey is complete."
 msgstr "我們做到了！我們擊敗了他們。旅程結束了。"
 
-#. [unit]: type=Troll Warrior
+#. [unit]: type=Troll Warrior, id=Groog
 #: data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:193
 msgid "Groog"
 msgstr "古"
@@ -1986,7 +2012,7 @@ msgstr "古"
 msgid "Be not going too fast. You gonna come wid us."
 msgstr "不要高興得太早，你們得跟我們走。"
 
-#. [scenario]
+#. [scenario]: id=Captured
 #: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:4
 msgid "Captured"
 msgstr "俘獲"
@@ -2031,7 +2057,7 @@ msgstr "城市"
 msgid "Exit"
 msgstr "退出"
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=King Dra-Nak
 #: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:77
 msgid "King Dra-Nak"
 msgstr "卓-奈克 王"
@@ -2147,7 +2173,7 @@ msgstr "很好，我們應該走另一條路。"
 msgid "Good! We have escaped these accursed caves!"
 msgstr "真棒！我們終於從這該死的洞穴中逃出來了！"
 
-#. [scenario]
+#. [scenario]: id=Evacuation
 #: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:4
 msgid "Evacuation"
 msgstr "撤退"
@@ -2162,17 +2188,17 @@ msgstr ""
 "柯維卓已逃出了獸人的監獄。他發現自己身在北方大陸，離南部更遠了。而獸人緊跟在"
 "身後。他和他的部下向南行進，直到他們來到那條大河邊。"
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Varrak-Klar
 #: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:39
 msgid "Varrak-Klar"
 msgstr "富諾克-克爾"
 
-#. [side]: type=Troll Warrior
+#. [side]: type=Troll Warrior, id=Unhk
 #: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:62
 msgid "Unhk"
 msgstr "阿剋"
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Ran-Lar
 #: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:84
 msgid "Ran-Lar"
 msgstr "蘭-羅"
@@ -2191,7 +2217,7 @@ msgstr ""
 "小提示：當橋樑被摧毀時，您將失去所有不在\"南岸\"的單位（包括沒有被徵召的單"
 "位）"
 
-#. [unit]: type=Red Mage
+#. [unit]: id=Engineer, type=Red Mage
 #: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:193
 msgid "Engineer"
 msgstr "工兵"
@@ -2386,12 +2412,12 @@ msgid ""
 "c'n stop runnin'..."
 msgstr "我現在開始跟隨你。希望你能帶領我們到維丁，讓我可以不用再到處逃..."
 
-#. [scenario]
+#. [scenario]: id=The_Drowned_Plains
 #: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:4
 msgid "The Drowned Plains"
 msgstr "溺死平原"
 
-#. [unit]: type=Skeletal Dragon
+#. [unit]: type=Skeletal Dragon, id=Khrakrahs
 #. [message]
 #: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:126
 #: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:399
@@ -2465,28 +2491,28 @@ msgstr ""
 "啊哈！我明白他們做什麼了。他們使這巨龍復活，成為不死族的一員。為的就是他不怕"
 "我的神聖火焰...這確實是奇特的魔法。"
 
-#. [scenario]
+#. [scenario]: id=Approaching_Weldyn
 #: data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:4
 msgid "Approaching Weldyn"
 msgstr "逼近維丁"
 
-#. [side]: type=Necromancer
+#. [side]: type=Necromancer, id=Mal-un-Darak
 #: data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:49
 msgid "Mal-un-Darak"
 msgstr "麥爾-笛瑞克"
 
-#. [side]: type=Necromancer
+#. [side]: type=Necromancer, id=Mal-un-Zanrad
 #: data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:67
 msgid "Mal-un-Zanrad"
 msgstr "麥爾-薩諾德"
 
-#. [side]: type=Necromancer
+#. [side]: type=Necromancer, id=Mal-un-Xadrux
 #: data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:84
 msgid "Mal-un-Xadrux"
 msgstr "麥爾-賽德羅克斯"
 
-#. [side]: type=General
-#. [unit]: type=General
+#. [side]: type=General, id=Konrad II
+#. [unit]: id=Konrad, type=General
 #: data/campaigns/Eastern_Invasion/scenarios/19_Epilog.cfg:40
 #: data/campaigns/Eastern_Invasion/scenarios/16.The_Council.cfg:66
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:192
@@ -2537,7 +2563,7 @@ msgstr "快，到城堡裡來。"
 msgid "Weldyn has been captured, and Wesnoth is no more..."
 msgstr "維丁被占領，韋諾不復在..."
 
-#. [scenario]
+#. [scenario]: id=Throne
 #: data/campaigns/Eastern_Invasion/scenarios/16.The_Council.cfg:4
 msgid "The Council"
 msgstr "議會"
@@ -2614,7 +2640,7 @@ msgstr ""
 "守衛，被他的真面目驚動，向前去攻擊他。然而，那時他已對傳送魔法十分熟練，他很"
 "快就消失不見了，從此不再出現。"
 
-#. [side]: type=Great Mage
+#. [side]: type=Great Mage, id=Kaldor
 #: data/campaigns/Eastern_Invasion/scenarios/19_Epilog.cfg:52
 #: data/campaigns/Eastern_Invasion/scenarios/16.The_Council.cfg:79
 msgid "Kaldor"
@@ -2720,37 +2746,37 @@ msgstr "殿下，不死部隊開始攻擊了！"
 msgid "Well, that will have to be the end of our council. Let us fight!"
 msgstr "好啦，我們不得不結束討論了，開始戰鬥吧！"
 
-#. [scenario]
+#. [scenario]: id=Weldyn_Attack, (id=Messenger of Doom) 39 4}
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:4
 msgid "Weldyn under Attack"
 msgstr "維丁遭襲"
 
-#. [side]: type=General
+#. [side]: type=General, id=Halrad
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:49
 msgid "Halrad"
 msgstr "海爾羅德"
 
-#. [side]: type=General
+#. [side]: type=General, id=Halric
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:65
 msgid "Halric"
 msgstr "海爾羅克"
 
-#. [side]: type=General
+#. [side]: type=General, id=Halrod
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:81
 msgid "Halrod"
 msgstr "海爾羅"
 
-#. [side]: type=Lich
+#. [side]: type=Lich, id=Mal-Grekulak
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:98
 msgid "Mal-Grekulak"
 msgstr "麥爾-奎格拉"
 
-#. [side]: type=Lich
+#. [side]: type=Lich, id=Mal-Xakralan
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:114
 msgid "Mal-Xakralan"
 msgstr "麥爾-薩克隆"
 
-#. [side]: type=Lich
+#. [side]: type=Lich, id=Mal-Uknalu
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:130
 msgid "Mal-Uknalu"
 msgstr "麥爾-阿納盧"
@@ -2786,7 +2812,7 @@ msgstr "無論如何，不死族開始攻擊了。希望我們能堅守整個晚
 msgid "I have died, and with me gone the city shall fall."
 msgstr "我死了，而我的城市也隨之淪陷。"
 
-#. [unit]: type=Spectre
+#. [unit]: type=Spectre, id=Messenger of Doom
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:238
 msgid "Messenger of Doom"
 msgstr "厄運信使"
@@ -2899,7 +2925,7 @@ msgstr "我不會接受一個他會作弊的決鬥！我拒絕！"
 msgid "Look, the sun has risen, and the undead are retreating."
 msgstr "看，太陽升起了，不死族正在撤退。"
 
-#. [scenario]
+#. [scenario]: id=Duel
 #: data/campaigns/Eastern_Invasion/scenarios/18a.The_Duel.cfg:4
 msgid "The Duel"
 msgstr "決鬥"
@@ -2955,17 +2981,22 @@ msgstr "我....輸了？..."
 msgid "And more!"
 msgstr "和更多！"
 
-#. [scenario]
+#. [scenario]: id=Reject
 #: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:4
 msgid "Weldyn Besieged"
 msgstr "圍攻維丁"
 
-#. [side]: type=Lich
+#. [side]: type=Lich, id=Mal-Drakanal
 #: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:34
 msgid "Mal-Drakanal"
 msgstr "麥爾-卓克鈕"
 
-#. [side]: type=Lich
+#. [side]: type=Lich, id=Lich3
+#. [side]: type=Lich, id=Lich4
+#. [side]: type=Lich, id=Lich5
+#. [side]: type=Lich, id=Lich6
+#. [side]: type=Lich, id=Lich7
+#. [side]: type=Lich, id=Lich8
 #. [filter_second]: type=Lich
 #: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:47
 #: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:60
@@ -3058,7 +3089,7 @@ msgstr "殺死他們的王！"
 msgid "They killed Konrad... now, even if we save Weldyn, Wesnoth has fallen."
 msgstr "他們殺掉了康拉德... 現在，即使我們拯救了維丁，韋諾也已淪陷。"
 
-#. [scenario]
+#. [scenario]: id=Epilog
 #: data/campaigns/Eastern_Invasion/scenarios/19_Epilog.cfg:4
 msgid "Epilog"
 msgstr "後記"
@@ -3199,12 +3230,12 @@ msgstr ""
 "這些話語和行動為韋諾的白銀時代（Silver Age of Wesnoth）揭開序幕，被歷史學家認"
 "為是韋諾的復興..."
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Horse Lord, race=human
 #: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:4
 msgid "Horse Lord"
 msgstr "騎將"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Horse Lord, race=human
 #: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:18
 msgid ""
 "The greatest of the men of the plains, Horse Lords are heads of their houses "
@@ -3227,12 +3258,12 @@ msgstr "劍"
 msgid "morning star"
 msgstr "流星鎚"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Mounted Fighter, race=human
 #: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:4
 msgid "Mounted Fighter"
 msgstr "驃騎軍"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Mounted Fighter, race=human
 #: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:25
 msgid ""
 "The nobles of the men of the plains are trained with the rest of the "
@@ -3243,12 +3274,12 @@ msgstr ""
 "這些平原上的貴族接受輕騎兵的訓練以成為偉大的戰士。然而，他們也要接受指揮官的"
 "訓練，他們是氏族軍隊裡隊長的候選人。"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Mounted Warrior, race=human
 #: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:4
 msgid "Mounted Warrior"
 msgstr "驃騎勇士"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Mounted Warrior, race=human
 #: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:25
 msgid ""
 "Leaders of the plains, Mounted Warriors are skilled with the use of the "

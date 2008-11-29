@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3.19+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-22 14:55+0100\n"
+"POT-Creation-Date: 2008-11-29 12:24+0100\n"
 "PO-Revision-Date: 2008-08-12 16:07+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Chinese (Taiwan) <steven2880@gmail.com>\n"
@@ -13,7 +13,7 @@ msgstr ""
 "X-Poedit-Language: Chinese\n"
 "X-Poedit-Country: TAIWAN\n"
 
-#. [tutorial]
+#. [tutorial]: id=tutorial
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:41
 msgid ""
 "Hello translators! Tutorial is meant to be a little funny at the start, "
@@ -24,12 +24,12 @@ msgstr ""
 "去完成它！有任何問題都可以e-mail至 rusty@rustcorp.com.au或者是 "
 "steven2880@gmail.com(台灣)"
 
-#. [tutorial]
+#. [tutorial]: id=tutorial
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:42
 msgid "Wesnoth Tutorial"
 msgstr "韋諾遊戲教學"
 
-#. [side]: type=Fighter
+#. [side]: type=Fighter, id=student
 #. [command]
 #. [option]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:295
@@ -41,7 +41,7 @@ msgstr "韋諾遊戲教學"
 msgid "Konrad"
 msgstr "康拉德"
 
-#. [unit]: type=Elder Mage
+#. [unit]: id=Delfador, type=Elder Mage
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:113
 msgid "Delfador"
 msgstr "迪法多"
@@ -77,7 +77,7 @@ msgstr "您失敗了"
 msgid "Who would you like to play?"
 msgstr "您想要扮演誰？"
 
-#. [unit]: type=Fighteress
+#. [unit]: type=Fighteress, id=student
 #. [command]
 #. [option]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:365
@@ -208,46 +208,46 @@ msgstr ""
 "你移動到錯誤的位置！你可以按下'u'來還原，然後在重新試一次。\n"
 "*左鍵點選或按任意鍵繼續..."
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:313
 #, fuzzy
 msgid "Good morning, Delfador! Is it time to attack things?"
 msgstr "早安 迪法多！現在是練習時間嗎？"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:317
 msgid "Um, well..."
 msgstr "是的，好..."
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:321
 msgid "Have you found an orc for me to fight, huh? A troll?"
 msgstr "你會找個半獸人給我嗎？嗯？還是巨魔？"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:325
 msgid "Quiet! I will summon an enemy for you..."
 msgstr "安靜！我會招喚一個敵人給你..."
 
 #. [event]
-#. [unit_type]: race=mechanical
+#. [unit_type]: id=Quintain, race=mechanical
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:353
 #: data/campaigns/tutorial/units/Quintain.cfg:4
 msgid "Quintain"
 msgstr "槍靶"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:357
 msgid "... this quintain!"
 msgstr "...一個槍靶！"
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:361
 #, fuzzy
 msgid "A quintain? You want me to pretend to fight a dummy?"
 msgstr "槍靶？你是要我假裝跟假人打嗎？"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:365
 msgid "Child, you have 32 hitpoints and a sword. I'm fairly sure you'll win."
 msgstr "孩子，你有32點生命和一把劍，我想你可以打贏它。"
@@ -279,22 +279,22 @@ msgstr ""
 msgid "Click on the quintain to attack it"
 msgstr "點選槍靶來攻擊它"
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:424
 msgid "Hey! This quintain fights back!"
 msgstr "哇！這槍靶會反擊！"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:428
 msgid "Hmm, maybe we should have started with a doll."
 msgstr "沒錯，也許我們該從個娃娃開始練習。"
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:432
 msgid "Should I retreat?"
 msgstr "我應該撤退嗎？"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:436
 msgid "Good idea!"
 msgstr "好主意！"
@@ -319,19 +319,19 @@ msgstr ""
 "小提示：迪法多左上的銀色小皇冠表示：如果他被殺了，您會輸掉這場遊戲。而如果您"
 "的領導者(麗莎)被殺，您也會輸。"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:454
 msgid ""
 "Unfortunately, you've used up your turn attacking the quintain. The quintain "
 "will now get a turn."
 msgstr "不幸的是，您已經把這回合用在攻擊槍靶上了。現在輪到槍靶了。"
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:458
 msgid "The DUMMY gets a turn?"
 msgstr "這'假人'可以行動一回合？"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:464
 #, fuzzy
 msgid ""
@@ -350,7 +350,7 @@ msgstr ""
 msgid "Click on the End Turn button on the bottom right"
 msgstr "點選右下方的'結束回合'"
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:488
 #, fuzzy
 msgid "Ouch! I need to heal! Only $student_hp hitpoints left!"
@@ -363,7 +363,7 @@ msgstr "嘔！我需要治療，只剩 $student_hp 點生命了！"
 msgid "Village"
 msgstr "村莊"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:493
 #, fuzzy
 msgid ""
@@ -409,7 +409,7 @@ msgstr ""
 msgid "Click on the End Turn button"
 msgstr "點選'結束回合'"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:563
 #, fuzzy
 msgid ""
@@ -417,7 +417,7 @@ msgid ""
 "going to need some help against that quintain."
 msgstr "您剛剛恢復了8點的生命值，但我想您需要些人手來對抗那個槍靶。"
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:567
 msgid "I'll recruit some elves!"
 msgstr "我要招募些精靈！"
@@ -429,7 +429,7 @@ msgstr "我要招募些精靈！"
 msgid "Keep"
 msgstr "主堡"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:572
 #, fuzzy
 msgid ""
@@ -487,19 +487,19 @@ msgstr ""
 msgid "Right click on the other castle tile and Recruit another unit"
 msgstr "在另一個城堡區塊點選右鍵，然後招募另一個單位"
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:695
 #, fuzzy
 msgid ""
 "Hey, the quintain just healed 2 hitpoints! I'd better attack it at once!"
 msgstr "嘿，這槍靶恢復了兩點生命值，我最好馬上攻擊它！"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:699
 msgid "Yes, if a unit doesn't do anything for a turn, it will slowly heal."
 msgstr ""
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:711
 #, fuzzy
 msgid ""
@@ -509,13 +509,13 @@ msgstr ""
 "如果一個單位一回合不做任何事情，它會慢慢的恢復生命。\n"
 "但是在將戰士送去攻擊前，您應該要知道他們有兩種攻擊方式..."
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:715
 #, fuzzy
 msgid "I'll tell them to use the one that does the most damage!"
 msgstr "我會讓他們用最能造成傷害的攻擊方式！"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:719
 #, fuzzy
 msgid ""
@@ -534,7 +534,7 @@ msgstr "左鍵點選一個精靈戰士"
 msgid "End your turn and attack again."
 msgstr "結束您的回合，然後再次攻擊。"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:739
 msgid ""
 "You wouldn't do anything stupid like charging that quintain yourself again, "
@@ -547,7 +547,7 @@ msgstr ""
 msgid "Left click on the Quintain to attack it."
 msgstr "左鍵點選槍靶以攻擊它。"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:784
 #, fuzzy
 msgid ""
@@ -558,7 +558,7 @@ msgstr ""
 "您的精靈使用劍(5-4，即四次攻擊，每次五點傷害)，這是近距離攻擊，所以槍靶會以它"
 "的近距離攻擊(3-5)來反擊。遠距離攻擊會比較安全。"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:792
 #, fuzzy
 msgid ""
@@ -571,7 +571,7 @@ msgstr ""
 "的近距離攻擊(3-5)來反擊。遠距離攻擊會比較安全。\n"
 "結束您的回合，然後在攻擊一次。"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:804
 #, fuzzy
 msgid ""
@@ -589,7 +589,7 @@ msgstr ""
 msgid "Attack with the other Elf"
 msgstr "使用另一個精靈攻擊"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:836
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:854
 #, fuzzy
@@ -601,7 +601,7 @@ msgstr ""
 "您的精靈使用弓箭，這是一種遠程攻擊(3-3，即三次攻擊，每次三點傷害)。槍靶沒有遠"
 "程攻擊，所以它不會反擊。"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:844
 #, fuzzy
 msgid ""
@@ -614,13 +614,13 @@ msgstr ""
 "程攻擊，所以它不會反擊。\n"
 "結束您的回合，然後再次攻擊。"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:875
 #, fuzzy
 msgid "Keep attacking with both elves until the quintain is finished!"
 msgstr "用您的兩個精靈繼續攻擊，直到槍靶被解決為止！"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:889
 msgid "Maybe you should recruit another elf?"
 msgstr "也許您該再招募一個精靈？"
@@ -695,7 +695,7 @@ msgstr ""
 msgid "The quintain is dead, sirs, and I have gained more experience!"
 msgstr "長官，槍靶掛了，而我得到更多的經驗值！"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1001
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1005
 #, fuzzy
@@ -706,7 +706,7 @@ msgstr ""
 "在戰鬥中您可以得到經驗值，而殺死敵人可以獲得更多經驗：得到足夠的經驗值，就會"
 "變得更強。"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1002
 #, fuzzy
 msgid ""
@@ -714,7 +714,7 @@ msgid ""
 "we have real work to do..."
 msgstr "康拉德，現在我給您更多假人練習！在這之後，我們有重要的工作要做..."
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1006
 #, fuzzy
 msgid ""
@@ -873,12 +873,12 @@ msgstr "我現在有 $side.gold 個金幣：可以招募士兵了！"
 msgid "Yes, keep recruiting more units: I think you might need them!"
 msgstr "繼續招募更多單位：我想您絕對需要他們！"
 
-#. [tutorial]
+#. [tutorial]: id=2_Tutorial
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:286
 msgid "Wesnoth Tutorial Part II"
 msgstr "韋諾遊戲教學第二部份"
 
-#. [side]: type=Orcish Warrior
+#. [side]: type=Orcish Warrior, id=Thrag
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:307
 msgid "Thrag"
 msgstr "卓格"
@@ -905,7 +905,7 @@ msgstr "回合耗盡"
 msgid "Death of Li'sar"
 msgstr "麗莎死亡"
 
-#. [unit]: type=Elvish Captain
+#. [unit]: id=Galdrad, type=Elvish Captain
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:388
 msgid "Galdrad"
 msgstr "約瑟德"
@@ -1127,7 +1127,7 @@ msgstr "讓麗莎佔領一座村莊"
 msgid "No! I said recruit an Elvish ARCHER! Now try again..."
 msgstr "錯了！我說招募一個精靈弓箭手！請再試一次..."
 
-#. [unit]: type=Elvish Archer
+#. [unit]: id=Eowynial, type=Elvish Archer
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:626
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:638
@@ -1144,7 +1144,7 @@ msgstr "巫醫"
 msgid "Recruit an Elvish Shaman to your north"
 msgstr "在您的北邊招募一個巫醫"
 
-#. [unit]: type=Elvish Archer
+#. [unit]: id=Elriend, type=Elvish Archer
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:665
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:676
@@ -1179,7 +1179,7 @@ msgstr "在您西邊的區塊中招募兩個精靈弓箭手"
 msgid "No! I said recruit an Elvish FIGHTER! Now try again..."
 msgstr "錯了！我說招募一個精靈戰士！請再試一次..."
 
-#. [unit]: type=Elvish Fighter
+#. [unit]: id=Golir, type=Elvish Fighter
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:730
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:741
@@ -1223,7 +1223,7 @@ msgid ""
 "again..."
 msgstr "$recruit.language_name|？我說招募一個新的精靈戰士。請再試一次..."
 
-#. [unit]: type=Elvish Fighter
+#. [unit]: id=Elindel, type=Elvish Fighter
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:834
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:845
@@ -1745,12 +1745,13 @@ msgstr ""
 "或是王位繼承者。South Guard是特別為初學者設計的。康拉德、麗莎和迪法多則出現在"
 "王位繼承者。"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Fighter, race=human
 #: data/campaigns/tutorial/units/Fighter.cfg:4
 msgid "Fighter"
 msgstr "戰士"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Fighteress, race=human
+#. [unit_type]: id=Fighter, race=human
 #: data/campaigns/tutorial/units/Fighteress.cfg:17
 #: data/campaigns/tutorial/units/Fighter.cfg:17
 #, fuzzy
@@ -1766,7 +1767,7 @@ msgstr ""
 msgid "sword"
 msgstr "劍"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Fighteress, race=human
 #: data/campaigns/tutorial/units/Fighteress.cfg:4
 msgid "female^Fighter"
 msgstr "戰士"
@@ -1777,7 +1778,7 @@ msgstr "戰士"
 msgid "saber"
 msgstr "軍刀"
 
-#. [unit_type]: race=mechanical
+#. [unit_type]: id=Quintain, race=mechanical
 #: data/campaigns/tutorial/units/Quintain.cfg:14
 msgid ""
 "Quintains are used to practice swordplay and jousting on. It would be "

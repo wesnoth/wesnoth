@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.3.14\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-22 14:56+0100\n"
+"POT-Creation-Date: 2008-11-29 12:25+0100\n"
 "PO-Revision-Date: 2008-03-02 10:03+0100\n"
 "Last-Translator: Jose Gordillo <kilder@hotmail.com>\n"
 "Language-Team: Catalan <wesnoth-ca@ettin.org>\n"
@@ -19,38 +19,38 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#. [campaign]
+#. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:12
 #, fuzzy
 msgid "A Tale of Two Brothers"
 msgstr "Història de dos germans"
 
-#. [campaign]
+#. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:13
 msgid "AToTB"
 msgstr "HdDG"
 
-#. [campaign]
+#. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:17
 msgid "Horseman"
 msgstr "Genet"
 
-#. [campaign]
+#. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:17
 msgid "(Beginner)"
 msgstr "(Principiant)"
 
-#. [campaign]
+#. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:18
 msgid "(Challenging)"
 msgstr "(Desafiament)"
 
-#. [campaign]
+#. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:18
 msgid "Knight"
 msgstr "Cavaller"
 
-#. [campaign]
+#. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:21
 #, fuzzy
 msgid ""
@@ -94,7 +94,7 @@ msgstr "Miscel·lània"
 msgid "And special thanks to everyone else who I forgot to mention."
 msgstr "I agraïments especials a tots aquells que haja oblidat mencionar."
 
-#. [scenario]
+#. [scenario]: id=1_Rooting_Out_A_Mage
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:4
 msgid "Rooting Out A Mage"
 msgstr "Extirpar un mal"
@@ -180,7 +180,7 @@ msgstr "Mort d'Arne"
 msgid "Turns run out"
 msgstr "Fi dels torns"
 
-#. [side]: type=Knight
+#. [side]: type=Knight, id=Arne
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:160
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:66
 #: data/campaigns/Two_Brothers/scenarios/5_Epilog.cfg:49
@@ -189,7 +189,7 @@ msgstr "Fi dels torns"
 msgid "Arne"
 msgstr "Arne"
 
-#. [unit]: type=Red Mage
+#. [unit]: id=Bjarn, type=Red Mage
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:170
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:721
 msgid "Bjarn"
@@ -225,23 +225,23 @@ msgstr "Efran"
 msgid "Fargus"
 msgstr "Fargus"
 
-#. [unit]: type=Horseman
+#. [unit]: id=Erik, type=Horseman
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:251
 msgid "Erik"
 msgstr "Erik"
 
-#. [unit]: type=Horseman
+#. [unit]: id=Heine, type=Horseman
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:263
 msgid "Heine"
 msgstr "Heine"
 
-#. [unit]: type=Horseman
+#. [unit]: id=Magnus, type=Horseman
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:275
 msgid "Magnus"
 msgstr "Magnus"
 
-#. [side]: type=Knight
-#. [side]: type=Longbowman
+#. [side]: type=Knight, id=Arne
+#. [side]: type=Longbowman, id=Councillor Hoban
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:287
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:74
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:153
@@ -250,14 +250,15 @@ msgstr "Magnus"
 msgid "Humans"
 msgstr ""
 
-#. [side]: type=Dark Sorcerer
+#. [side]: type=Dark Sorcerer, id=Mordak
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:300
 msgid "Mordak"
 msgstr "Mordak"
 
-#. [side]: type=Dark Sorcerer
+#. [side]: type=Dark Sorcerer, id=Mordak
+#. [side]: type=Dark Sorcerer, id=Rotharik
 #. [side]
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Tairach
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:314
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:105
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:146
@@ -386,7 +387,7 @@ msgstr "No era tan difícil!"
 msgid "All is lost now that I am dead..."
 msgstr "Tot està perdut ara que sóc mort..."
 
-#. [scenario]
+#. [scenario]: id=2_The_Chase
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:4
 msgid "The Chase"
 msgstr "La persecució"
@@ -415,12 +416,12 @@ msgstr ""
 msgid "Fight your way through the woods before the kidnappers escape"
 msgstr "Obre't pas a través dels boscos abans que els segrestadors escapen"
 
-#. [side]: type=Elvish Rider
+#. [side]: type=Elvish Rider, id=Nil-Galion
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:168
 msgid "Nil-Galion"
 msgstr "Nil-Galion"
 
-#. [side]: type=Elvish Rider
+#. [side]: type=Elvish Rider, id=Nil-Galion
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:175
 msgid "Elves"
 msgstr ""
@@ -483,7 +484,7 @@ msgid ""
 "offer."
 msgstr ""
 
-#. [unit]: type=Dark Adept
+#. [unit]: type=Dark Adept, id=Muff Toras
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:314
 msgid "Muff Toras"
 msgstr "Muff Toras"
@@ -581,7 +582,7 @@ msgstr ""
 msgid "Bind him and take him with us. If he has played us false, he will die."
 msgstr ""
 
-#. [unit]: type=Iron Mauler
+#. [unit]: id=Brena, type=Iron Mauler
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:437
 msgid "Brena"
 msgstr "Brena"
@@ -680,24 +681,24 @@ msgstr ""
 msgid "Catch the kidnappers"
 msgstr "Vinga, xicots! Anem a acaçar aquests segrestadors!"
 
-#. [terrain]
+#. [terrain]: id=magic_irongate
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:6
 msgid "Irongate"
 msgstr "La Porta de Ferro"
 
-#. [scenario]
+#. [scenario]: id=3_Guarded_Castle
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:16
 msgid "Guarded Castle"
 msgstr "Castell resguardat"
 
-#. [side]: type=Dark Sorcerer
+#. [side]: type=Dark Sorcerer, id=Rotharik
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:87
 msgid "Rotharik"
 msgstr "Rotharik"
 
-#. [unit]: type=Assassin
+#. [unit]: id=Guard_leader, type=Assassin
 #. [unit]: role=Guard, type=Bandit
-#. [unit]: type=Rogue
+#. [unit]: id=Guard2_leader, type=Rogue
 #. [unit]: role=Guard2, type=Bandit
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:109
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:117
@@ -714,7 +715,7 @@ msgstr "Rotharik"
 msgid "Guard"
 msgstr "Guàrdia"
 
-#. [unit]: type=Orcish Warrior
+#. [unit]: id=Knago-Brek, type=Orcish Warrior
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:152
 msgid "Knago-Brek"
 msgstr "Knago-Brek"
@@ -977,7 +978,7 @@ msgstr "Arribes massa tard! El teu germà ja és mort! Muhahahaha..."
 msgid "Argh!!!"
 msgstr "Argh!!!"
 
-#. [scenario]
+#. [scenario]: id=4_Return_To_The_Village
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:4
 msgid "Return to the Village"
 msgstr "La tornada a casa"
@@ -993,13 +994,13 @@ msgstr "Descobreix què passa al llogaret"
 msgid "Death of Bjarn"
 msgstr "Mort de Bjarn"
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Tairach
 #: data/campaigns/Two_Brothers/scenarios/5_Epilog.cfg:59
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:104
 msgid "Tairach"
 msgstr "Tairach"
 
-#. [side]: type=Longbowman
+#. [side]: type=Longbowman, id=Councillor Hoban
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:132
 msgid "Councillor Hoban"
 msgstr "Conseller Hoban"
@@ -1120,7 +1121,7 @@ msgid "I was too weak to protect these people. Oh why did this happen to me?!?"
 msgstr ""
 "Era massa dèbil per protegir aquestes gents. Oh, per què m'ha succeït a mi?!?"
 
-#. [scenario]
+#. [scenario]: id=epilog
 #: data/campaigns/Two_Brothers/scenarios/5_Epilog.cfg:4
 #, fuzzy
 msgid "A Tale of Two Brothers - Epilogue"

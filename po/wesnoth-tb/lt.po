@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-22 14:56+0100\n"
+"POT-Creation-Date: 2008-11-29 12:25+0100\n"
 "PO-Revision-Date: 2008-11-14 22:04+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lietuvių <komp_lt@konf.lt>\n"
@@ -15,37 +15,37 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%"
 "100<10 || n%100>=20) ? 1 : 2);\n"
 
-#. [campaign]
+#. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:12
 msgid "A Tale of Two Brothers"
 msgstr "Pasakojimas apie du brolius"
 
-#. [campaign]
+#. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:13
 msgid "AToTB"
 msgstr "PaDB"
 
-#. [campaign]
+#. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:17
 msgid "Horseman"
 msgstr "Raitelis"
 
-#. [campaign]
+#. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:17
 msgid "(Beginner)"
 msgstr "(Pradedantysis)"
 
-#. [campaign]
+#. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:18
 msgid "(Challenging)"
 msgstr "(iššaukiantis)"
 
-#. [campaign]
+#. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:18
 msgid "Knight"
 msgstr "Riteris"
 
-#. [campaign]
+#. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:21
 msgid ""
 "An evil mage is threatening the small village of Maghre and its inhabitants. "
@@ -87,7 +87,7 @@ msgstr "Įvairūs"
 msgid "And special thanks to everyone else who I forgot to mention."
 msgstr "Ir ypatingas ačiū visiems kitiems, kuriuos pamiršau paminėti."
 
-#. [scenario]
+#. [scenario]: id=1_Rooting_Out_A_Mage
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:4
 msgid "Rooting Out A Mage"
 msgstr "Mago išrovimas"
@@ -181,7 +181,7 @@ msgstr "Arne mirtis"
 msgid "Turns run out"
 msgstr "Pasibaigia ėjimai"
 
-#. [side]: type=Knight
+#. [side]: type=Knight, id=Arne
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:160
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:66
 #: data/campaigns/Two_Brothers/scenarios/5_Epilog.cfg:49
@@ -190,7 +190,7 @@ msgstr "Pasibaigia ėjimai"
 msgid "Arne"
 msgstr "Arne"
 
-#. [unit]: type=Red Mage
+#. [unit]: id=Bjarn, type=Red Mage
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:170
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:721
 msgid "Bjarn"
@@ -226,23 +226,23 @@ msgstr "Efranas"
 msgid "Fargus"
 msgstr "Fargusas"
 
-#. [unit]: type=Horseman
+#. [unit]: id=Erik, type=Horseman
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:251
 msgid "Erik"
 msgstr "Erikas"
 
-#. [unit]: type=Horseman
+#. [unit]: id=Heine, type=Horseman
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:263
 msgid "Heine"
 msgstr "Heine"
 
-#. [unit]: type=Horseman
+#. [unit]: id=Magnus, type=Horseman
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:275
 msgid "Magnus"
 msgstr "Magnusas"
 
-#. [side]: type=Knight
-#. [side]: type=Longbowman
+#. [side]: type=Knight, id=Arne
+#. [side]: type=Longbowman, id=Councillor Hoban
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:287
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:74
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:153
@@ -251,14 +251,15 @@ msgstr "Magnusas"
 msgid "Humans"
 msgstr "Žmonės"
 
-#. [side]: type=Dark Sorcerer
+#. [side]: type=Dark Sorcerer, id=Mordak
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:300
 msgid "Mordak"
 msgstr "Mordakas"
 
-#. [side]: type=Dark Sorcerer
+#. [side]: type=Dark Sorcerer, id=Mordak
+#. [side]: type=Dark Sorcerer, id=Rotharik
 #. [side]
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Tairach
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:314
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:105
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:146
@@ -397,7 +398,7 @@ msgstr "Tai nebuvo taip sunku!"
 msgid "All is lost now that I am dead..."
 msgstr "Dabar viskas prarasta, kai aš miręs..."
 
-#. [scenario]
+#. [scenario]: id=2_The_Chase
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:4
 msgid "The Chase"
 msgstr "Vijimasis"
@@ -431,12 +432,12 @@ msgstr ""
 msgid "Fight your way through the woods before the kidnappers escape"
 msgstr "Prasikovokite kelią per miškus prieš pabėgant pagrobėjams"
 
-#. [side]: type=Elvish Rider
+#. [side]: type=Elvish Rider, id=Nil-Galion
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:168
 msgid "Nil-Galion"
 msgstr "Nil-Galionas"
 
-#. [side]: type=Elvish Rider
+#. [side]: type=Elvish Rider, id=Nil-Galion
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:175
 msgid "Elves"
 msgstr "Elfai"
@@ -509,7 +510,7 @@ msgid ""
 "offer."
 msgstr ""
 
-#. [unit]: type=Dark Adept
+#. [unit]: type=Dark Adept, id=Muff Toras
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:314
 msgid "Muff Toras"
 msgstr "Muff Toras"
@@ -611,7 +612,7 @@ msgstr ""
 msgid "Bind him and take him with us. If he has played us false, he will die."
 msgstr "Suriškite jį ir paimkite su savimi. Jei jis mus apgavo, jis mirs."
 
-#. [unit]: type=Iron Mauler
+#. [unit]: id=Brena, type=Iron Mauler
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:437
 msgid "Brena"
 msgstr "Brenas"
@@ -713,24 +714,24 @@ msgstr ""
 msgid "Catch the kidnappers"
 msgstr "Pagaukite pagrobėjus"
 
-#. [terrain]
+#. [terrain]: id=magic_irongate
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:6
 msgid "Irongate"
 msgstr "Geležiniai vartai"
 
-#. [scenario]
+#. [scenario]: id=3_Guarded_Castle
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:16
 msgid "Guarded Castle"
 msgstr "Saugoma pilis"
 
-#. [side]: type=Dark Sorcerer
+#. [side]: type=Dark Sorcerer, id=Rotharik
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:87
 msgid "Rotharik"
 msgstr "Rotarikas"
 
-#. [unit]: type=Assassin
+#. [unit]: id=Guard_leader, type=Assassin
 #. [unit]: role=Guard, type=Bandit
-#. [unit]: type=Rogue
+#. [unit]: id=Guard2_leader, type=Rogue
 #. [unit]: role=Guard2, type=Bandit
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:109
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:117
@@ -747,7 +748,7 @@ msgstr "Rotarikas"
 msgid "Guard"
 msgstr "Sargybinis"
 
-#. [unit]: type=Orcish Warrior
+#. [unit]: id=Knago-Brek, type=Orcish Warrior
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:152
 msgid "Knago-Brek"
 msgstr "Knago-Brekas"
@@ -1006,7 +1007,7 @@ msgstr "Tu per vėlai! Tavo brolis jau miręs! Muchachachacha..."
 msgid "Argh!!!"
 msgstr "Argh!!!"
 
-#. [scenario]
+#. [scenario]: id=4_Return_To_The_Village
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:4
 msgid "Return to the Village"
 msgstr "Grįžimas į kaimą"
@@ -1022,13 +1023,13 @@ msgstr "Išsiaiškinkite, kas vyksta kaime"
 msgid "Death of Bjarn"
 msgstr "Bdžarno mirtis"
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Tairach
 #: data/campaigns/Two_Brothers/scenarios/5_Epilog.cfg:59
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:104
 msgid "Tairach"
 msgstr "Tairačas"
 
-#. [side]: type=Longbowman
+#. [side]: type=Longbowman, id=Councillor Hoban
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:132
 msgid "Councillor Hoban"
 msgstr "Tarybos narys Hobanas"
@@ -1144,7 +1145,7 @@ msgid "I was too weak to protect these people. Oh why did this happen to me?!?"
 msgstr ""
 "Buvau per silpnas, kad apsaugočiau šiuos žmones. O, kodėl tai man nutiko?!?"
 
-#. [scenario]
+#. [scenario]: id=epilog
 #: data/campaigns/Two_Brothers/scenarios/5_Epilog.cfg:4
 msgid "A Tale of Two Brothers - Epilogue"
 msgstr "Pasakojimas apie du brolius – Epilogas"

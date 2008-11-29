@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-27 19:52+0100\n"
+"POT-Creation-Date: 2008-11-29 12:24+0100\n"
 "PO-Revision-Date: 2007-12-11 22:48+0100\n"
 "Last-Translator: Stefan Bergström (tephlon) <stefan DOT bergstrom AT gmail "
 "DOT com>\n"
@@ -15,12 +15,12 @@ msgstr ""
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#. [unit_type]: race=bats
+#. [unit_type]: id=Blood Bat, race=bats
 #: data/core/units/bats/Bat_Blood.cfg:4
 msgid "Blood Bat"
 msgstr "Blodsugande fladdermus"
 
-#. [unit_type]: race=bats
+#. [unit_type]: id=Blood Bat, race=bats
 #: data/core/units/bats/Bat_Blood.cfg:19
 #, fuzzy
 msgid ""
@@ -51,13 +51,13 @@ msgstr ""
 msgid "fangs"
 msgstr "huggtänder"
 
-#. [unit_type]: race=bats
+#. [unit_type]: id=Dread Bat, race=bats
 #: data/core/units/bats/Bat_Dread.cfg:4
 #, fuzzy
 msgid "Dread Bat"
 msgstr "Vampyrfladdermus"
 
-#. [unit_type]: race=bats
+#. [unit_type]: id=Dread Bat, race=bats
 #: data/core/units/bats/Bat_Dread.cfg:25
 msgid ""
 "Dread Bats are fast and can drain the blood of those they attack, thereby "
@@ -66,12 +66,12 @@ msgid ""
 "feast on bigger and tougher victims."
 msgstr ""
 
-#. [unit_type]: race=bats
+#. [unit_type]: id=Vampire Bat, race=bats
 #: data/core/units/bats/Bat_Vampire.cfg:4
 msgid "Vampire Bat"
 msgstr "Vampyrfladdermus"
 
-#. [unit_type]: race=bats
+#. [unit_type]: id=Vampire Bat, race=bats
 #: data/core/units/bats/Bat_Vampire.cfg:19
 #, fuzzy
 msgid ""
@@ -85,12 +85,12 @@ msgstr ""
 "\n"
 "Anmärkning:"
 
-#. [unit_type]: race=mechanical
+#. [unit_type]: id=Boat, race=mechanical
 #: data/core/units/boats/Boat.cfg:4
 msgid "Boat"
 msgstr "Båt"
 
-#. [unit_type]: race=mechanical
+#. [unit_type]: id=Boat, race=mechanical
 #: data/core/units/boats/Boat.cfg:18
 msgid ""
 "Often propelled by oars or small sails, boats are used to travel short "
@@ -99,22 +99,22 @@ msgstr ""
 "Båtar drivs fram med åror eller små segel, och används för korta transporter "
 "i grundare vatten där större skepp inte kan komma fram."
 
-#. [unit_type]: race=mechanical
+#. [unit_type]: id=Galleon, race=mechanical
 #: data/core/units/boats/Galleon.cfg:6
 msgid "Galleon"
 msgstr "Galjon"
 
-#. [unit_type]: race=mechanical
+#. [unit_type]: id=Galleon, race=mechanical
 #: data/core/units/boats/Galleon.cfg:21
 msgid "Galleons are blue-water ships built for trade and transport."
 msgstr "Galjoner är skepp byggda för handel och transport."
 
-#. [unit_type]: race=mechanical
+#. [unit_type]: id=Pirate Galleon, race=mechanical
 #: data/core/units/boats/Pirate_Galleon.cfg:4
 msgid "Pirate Galleon"
 msgstr "Piratgaljon"
 
-#. [unit_type]: race=mechanical
+#. [unit_type]: id=Pirate Galleon, race=mechanical
 #: data/core/units/boats/Pirate_Galleon.cfg:18
 #, fuzzy
 msgid ""
@@ -132,12 +132,12 @@ msgstr ""
 msgid "ballista"
 msgstr "ballista"
 
-#. [unit_type]: race=mechanical
+#. [unit_type]: id=Transport Galleon, race=mechanical
 #: data/core/units/boats/Transport_Galleon.cfg:4
 msgid "Transport Galleon"
 msgstr "Transportgaljon"
 
-#. [unit_type]: race=mechanical
+#. [unit_type]: id=Transport Galleon, race=mechanical
 #: data/core/units/boats/Transport_Galleon.cfg:18
 msgid ""
 "Transport Galleons are well-armed ships that carry troops. If they reach the "
@@ -146,12 +146,12 @@ msgstr ""
 "Transportgaljoner är välrustade skepp som används för att transportera "
 "trupper. Väl i land kan trupperna anfalla. "
 
-#. [unit_type]: race=drake
+#. [unit_type]: id=Armageddon Drake, race=drake
 #: data/core/units/drakes/Armageddon.cfg:4
 msgid "Armageddon Drake"
 msgstr "Harmageddondrake"
 
-#. [unit_type]: race=drake
+#. [unit_type]: id=Armageddon Drake, race=drake
 #: data/core/units/drakes/Armageddon.cfg:27
 msgid ""
 "Were it not for the armor they wear, certain drakes might be "
@@ -193,12 +193,12 @@ msgstr "klor"
 msgid "fire breath"
 msgstr "spruta eld"
 
-#. [unit_type]: race=drake
+#. [unit_type]: id=Drake Blademaster, race=drake
 #: data/core/units/drakes/Blademaster.cfg:4
 msgid "Drake Blademaster"
 msgstr "Draksvärdmästare"
 
-#. [unit_type]: race=drake
+#. [unit_type]: id=Drake Blademaster, race=drake
 #: data/core/units/drakes/Blademaster.cfg:19
 msgid ""
 "The drakes who master the use of a sword are sworn into a special order. The "
@@ -245,12 +245,12 @@ msgstr ""
 msgid "sword"
 msgstr "svärd"
 
-#. [unit_type]: race=drake
+#. [unit_type]: id=Drake Burner, race=drake
 #: data/core/units/drakes/Burner.cfg:4
 msgid "Drake Burner"
 msgstr "Sotdrake"
 
-#. [unit_type]: race=drake
+#. [unit_type]: id=Drake Burner, race=drake
 #: data/core/units/drakes/Burner.cfg:19
 msgid ""
 "Drake Burners are the proud few in whom the blood and strength of their "
@@ -263,12 +263,12 @@ msgstr ""
 "blotta storlek och kloförsedda händer, gör dem till farliga motståndare i "
 "strid."
 
-#. [unit_type]: race=drake
+#. [unit_type]: id=Drake Clasher, race=drake
 #: data/core/units/drakes/Clasher.cfg:4
 msgid "Drake Clasher"
 msgstr "Draksoldat"
 
-#. [unit_type]: race=drake
+#. [unit_type]: id=Drake Clasher, race=drake
 #: data/core/units/drakes/Clasher.cfg:21
 #, fuzzy
 msgid ""
@@ -335,12 +335,12 @@ msgstr ""
 msgid "spear"
 msgstr "spjut"
 
-#. [unit_type]: race=drake
+#. [unit_type]: id=Drake Enforcer, race=drake
 #: data/core/units/drakes/Enforcer.cfg:4
 msgid "Drake Enforcer"
 msgstr "Draktyrann"
 
-#. [unit_type]: race=drake
+#. [unit_type]: id=Drake Enforcer, race=drake
 #: data/core/units/drakes/Enforcer.cfg:21
 msgid ""
 "The great Drake Enforcers epitomize the raw strength of their kind. Long "
@@ -364,12 +364,12 @@ msgstr ""
 msgid "mace"
 msgstr "spikklubba"
 
-#. [unit_type]: race=drake
+#. [unit_type]: id=Drake Fighter, race=drake
 #: data/core/units/drakes/Fighter.cfg:4
 msgid "Drake Fighter"
 msgstr "Drakkämpe"
 
-#. [unit_type]: race=drake
+#. [unit_type]: id=Drake Fighter, race=drake
 #: data/core/units/drakes/Fighter.cfg:19
 msgid ""
 "Drake Fighters wield curved scimitars, and possess the fire breathing skills "
@@ -387,12 +387,12 @@ msgstr ""
 msgid "scimitar"
 msgstr "kroksabel"
 
-#. [unit_type]: race=drake
+#. [unit_type]: id=Fire Drake, race=drake
 #: data/core/units/drakes/Fire.cfg:4
 msgid "Fire Drake"
 msgstr "Elddrake"
 
-#. [unit_type]: race=drake
+#. [unit_type]: id=Fire Drake, race=drake
 #: data/core/units/drakes/Fire.cfg:18
 msgid ""
 "The great fire-drakes are masters of their internal fire. Clad in shining "
@@ -403,12 +403,12 @@ msgstr ""
 "rustningar visar de sitt släktes styrka och storhet när de sprutar sin "
 "förtärande eld mot alla som sätter sig upp mot dem."
 
-#. [unit_type]: race=drake
+#. [unit_type]: id=Drake Flameheart, race=drake
 #: data/core/units/drakes/Flameheart.cfg:4
 msgid "Drake Flameheart"
 msgstr "Eldhjärta"
 
-#. [unit_type]: race=drake
+#. [unit_type]: id=Drake Flameheart, race=drake
 #: data/core/units/drakes/Flameheart.cfg:26
 #, fuzzy
 msgid ""
@@ -425,12 +425,12 @@ msgstr ""
 "\n"
 "Anmärkning:"
 
-#. [unit_type]: race=drake
+#. [unit_type]: id=Drake Flare, race=drake
 #: data/core/units/drakes/Flare.cfg:4
 msgid "Drake Flare"
 msgstr "Flamdrake"
 
-#. [unit_type]: race=drake
+#. [unit_type]: id=Drake Flare, race=drake
 #: data/core/units/drakes/Flare.cfg:25
 #, fuzzy
 msgid ""
@@ -444,12 +444,12 @@ msgstr ""
 "\n"
 "Anmärkning:"
 
-#. [unit_type]: race=drake
+#. [unit_type]: id=Drake Gladiator, race=drake
 #: data/core/units/drakes/Gladiator.cfg:4
 msgid "Drake Gladiator"
 msgstr "Drakgladiator"
 
-#. [unit_type]: race=drake
+#. [unit_type]: id=Drake Gladiator, race=drake
 #: data/core/units/drakes/Gladiator.cfg:19
 msgid ""
 "The Gladiator has taken a completely different path from the Slashers. "
@@ -467,12 +467,12 @@ msgstr ""
 "som de kompletterar med spikklubbor. Deras hängivenhet till vapnen för med "
 "sig en viss försämring av deras förmåga till försvar."
 
-#. [unit_type]: race=drake
+#. [unit_type]: id=Drake Glider, race=drake
 #: data/core/units/drakes/Glider.cfg:4
 msgid "Drake Glider"
 msgstr "Drakseglare"
 
-#. [unit_type]: race=drake
+#. [unit_type]: id=Drake Glider, race=drake
 #: data/core/units/drakes/Glider.cfg:20
 #, fuzzy
 msgid ""
@@ -498,12 +498,12 @@ msgstr ""
 msgid "slam"
 msgstr "nedslag"
 
-#. [unit_type]: race=drake
+#. [unit_type]: id=Hurricane Drake, race=drake
 #: data/core/units/drakes/Hurricane.cfg:4
 msgid "Hurricane Drake"
 msgstr "Orkandrake"
 
-#. [unit_type]: race=drake
+#. [unit_type]: id=Hurricane Drake, race=drake
 #: data/core/units/drakes/Hurricane.cfg:29
 #, fuzzy
 msgid ""
@@ -517,12 +517,12 @@ msgstr ""
 "\n"
 "Anmärkning:"
 
-#. [unit_type]: race=drake
+#. [unit_type]: id=Inferno Drake, race=drake
 #: data/core/units/drakes/Inferno.cfg:4
 msgid "Inferno Drake"
 msgstr "Infernodrake"
 
-#. [unit_type]: race=drake
+#. [unit_type]: id=Inferno Drake, race=drake
 #: data/core/units/drakes/Inferno.cfg:19
 msgid ""
 "The flying conflagrations known as Drake Infernos are the masters of the "
@@ -537,12 +537,12 @@ msgstr ""
 "rustningar är deras kasts stolta och mäktiga tecken, det ideal mot vilka "
 "andra bland deras släkte strävar."
 
-#. [unit_type]: race=drake
+#. [unit_type]: id=Sky Drake, race=drake
 #: data/core/units/drakes/Sky.cfg:4
 msgid "Sky Drake"
 msgstr "Molndrake"
 
-#. [unit_type]: race=drake
+#. [unit_type]: id=Sky Drake, race=drake
 #: data/core/units/drakes/Sky.cfg:28
 #, fuzzy
 msgid ""
@@ -560,12 +560,12 @@ msgstr ""
 "\n"
 "Anmärkning:"
 
-#. [unit_type]: race=drake
+#. [unit_type]: id=Drake Slasher, race=drake
 #: data/core/units/drakes/Slasher.cfg:4
 msgid "Drake Slasher"
 msgstr "Drakveteran"
 
-#. [unit_type]: race=drake
+#. [unit_type]: id=Drake Slasher, race=drake
 #: data/core/units/drakes/Slasher.cfg:19
 #, fuzzy
 msgid ""
@@ -592,12 +592,12 @@ msgstr ""
 msgid "halberd"
 msgstr "hillebard"
 
-#. [unit_type]: race=drake
+#. [unit_type]: id=Drake Warden, race=drake
 #: data/core/units/drakes/Warden.cfg:4
 msgid "Drake Warden"
 msgstr "Drakväktare"
 
-#. [unit_type]: race=drake
+#. [unit_type]: id=Drake Warden, race=drake
 #: data/core/units/drakes/Warden.cfg:20
 #, fuzzy
 msgid ""
@@ -612,12 +612,12 @@ msgstr ""
 "\n"
 "Anmärkning:"
 
-#. [unit_type]: race=drake
+#. [unit_type]: id=Drake Warrior, race=drake
 #: data/core/units/drakes/Warrior.cfg:4
 msgid "Drake Warrior"
 msgstr "Drakkrigare"
 
-#. [unit_type]: race=drake
+#. [unit_type]: id=Drake Warrior, race=drake
 #: data/core/units/drakes/Warrior.cfg:18
 msgid ""
 "Drake Warriors wield swords with great skill, and possess the fire breathing "
@@ -628,12 +628,12 @@ msgstr ""
 "förfäders förmåga att spruta eld. Deras stora styrka gör dem mycket "
 "uthålliga och ger deras utfall en skrämmande kraft."
 
-#. [unit_type]: race=dwarf
+#. [unit_type]: id=Dwarvish Berserker, race=dwarf
 #: data/core/units/dwarves/Berserker.cfg:4
 msgid "Dwarvish Berserker"
 msgstr "Dvärgbärsärk"
 
-#. [unit_type]: race=dwarf
+#. [unit_type]: id=Dwarvish Berserker, race=dwarf
 #: data/core/units/dwarves/Berserker.cfg:19
 #, fuzzy
 msgid ""
@@ -652,12 +652,12 @@ msgstr ""
 msgid "berserker frenzy"
 msgstr "bärsärkagång"
 
-#. [unit_type]: race=dwarf
+#. [unit_type]: id=Dwarvish Dragonguard, race=dwarf
 #: data/core/units/dwarves/Dragonguard.cfg:4
 msgid "Dwarvish Dragonguard"
 msgstr "Drakvakt"
 
-#. [unit_type]: race=dwarf
+#. [unit_type]: id=Dwarvish Dragonguard, race=dwarf
 #: data/core/units/dwarves/Dragonguard.cfg:20
 #, fuzzy
 msgid ""
@@ -701,12 +701,12 @@ msgstr "dolk"
 msgid "dragonstaff"
 msgstr "drakstav"
 
-#. [unit_type]: race=dwarf
+#. [unit_type]: id=Dwarvish Fighter, race=dwarf
 #: data/core/units/dwarves/Fighter.cfg:4
 msgid "Dwarvish Fighter"
 msgstr "Dvärgkrigare"
 
-#. [unit_type]: race=dwarf
+#. [unit_type]: id=Dwarvish Fighter, race=dwarf
 #: data/core/units/dwarves/Fighter.cfg:20
 msgid ""
 "Dwarvish Fighters wield mighty battle axes and hammers, which make them "
@@ -734,12 +734,12 @@ msgstr "yxa"
 msgid "hammer"
 msgstr "hammare"
 
-#. [unit_type]: race=dwarf
+#. [unit_type]: id=Dwarvish Guardsman, race=dwarf
 #: data/core/units/dwarves/Guardsman.cfg:4
 msgid "Dwarvish Guardsman"
 msgstr "Dvärgvakt"
 
-#. [unit_type]: race=dwarf
+#. [unit_type]: id=Dwarvish Guardsman, race=dwarf
 #: data/core/units/dwarves/Guardsman.cfg:20
 #, fuzzy
 msgid ""
@@ -766,12 +766,12 @@ msgstr ""
 msgid "javelin"
 msgstr "kastspjut"
 
-#. [unit_type]: race=dwarf
+#. [unit_type]: id=Dwarvish Lord, race=dwarf
 #: data/core/units/dwarves/Lord.cfg:4
 msgid "Dwarvish Lord"
 msgstr "Bergakung"
 
-#. [unit_type]: race=dwarf
+#. [unit_type]: id=Dwarvish Lord, race=dwarf
 #: data/core/units/dwarves/Lord.cfg:20
 msgid ""
 "Clad in shining armor, these dwarves look like kings from under the "
@@ -796,12 +796,12 @@ msgstr "stridsyxa"
 msgid "hatchet"
 msgstr "kastyxa"
 
-#. [unit_type]: race=dwarf
+#. [unit_type]: id=Dwarvish Runemaster, race=dwarf
 #: data/core/units/dwarves/Runemaster.cfg:4
 msgid "Dwarvish Runemaster"
 msgstr "Runmästare"
 
-#. [unit_type]: race=dwarf
+#. [unit_type]: id=Dwarvish Runemaster, race=dwarf
 #: data/core/units/dwarves/Runemaster.cfg:20
 msgid ""
 "Dwarven magic most often manifests itself by the inscription of runes in the "
@@ -824,12 +824,12 @@ msgstr "runhammare"
 msgid "lightning bolt"
 msgstr "åskvigg"
 
-#. [unit_type]: race=dwarf
+#. [unit_type]: id=Dwarvish Sentinel, race=dwarf
 #: data/core/units/dwarves/Sentinel.cfg:4
 msgid "Dwarvish Sentinel"
 msgstr "Dvärghedersvakt"
 
-#. [unit_type]: race=dwarf
+#. [unit_type]: id=Dwarvish Sentinel, race=dwarf
 #: data/core/units/dwarves/Sentinel.cfg:20
 #, fuzzy
 msgid ""
@@ -844,12 +844,12 @@ msgstr ""
 "självmordsbenäget än ogenomtänkt. Dessa dvärgar är närstridens mästare, och "
 "kan hålla stånd med en eks envishet."
 
-#. [unit_type]: race=dwarf
+#. [unit_type]: id=Dwarvish Stalwart, race=dwarf
 #: data/core/units/dwarves/Stalwart.cfg:4
 msgid "Dwarvish Stalwart"
 msgstr "Pansarvakt"
 
-#. [unit_type]: race=dwarf
+#. [unit_type]: id=Dwarvish Stalwart, race=dwarf
 #: data/core/units/dwarves/Stalwart.cfg:19
 #, fuzzy
 msgid ""
@@ -865,12 +865,12 @@ msgstr ""
 "\n"
 "Anmärkning:"
 
-#. [unit_type]: race=dwarf
+#. [unit_type]: id=Dwarvish Steelclad, race=dwarf
 #: data/core/units/dwarves/Steelclad.cfg:4
 msgid "Dwarvish Steelclad"
 msgstr "Järnnäve"
 
-#. [unit_type]: race=dwarf
+#. [unit_type]: id=Dwarvish Steelclad, race=dwarf
 #: data/core/units/dwarves/Steelclad.cfg:20
 msgid ""
 "The more experienced Dwarvish Steelclad fighters wear heavy chain mail and "
@@ -879,12 +879,12 @@ msgstr ""
 "Dvärgarnas järnnävar bär tunga ringbrynjor och stålrustningar. Detta har "
 "rättmätigt gjort dem berömda och fruktade vida omkring."
 
-#. [unit_type]: race=dwarf
+#. [unit_type]: id=Dwarvish Thunderer, race=dwarf
 #: data/core/units/dwarves/Thunderer.cfg:4
 msgid "Dwarvish Thunderer"
 msgstr "Tordönskrigare"
 
-#. [unit_type]: race=dwarf
+#. [unit_type]: id=Dwarvish Thunderer, race=dwarf
 #: data/core/units/dwarves/Thunderer.cfg:19
 #, fuzzy
 msgid ""
@@ -906,12 +906,12 @@ msgstr ""
 msgid "thunderstick"
 msgstr "åskstav"
 
-#. [unit_type]: race=dwarf
+#. [unit_type]: id=Dwarvish Thunderguard, race=dwarf
 #: data/core/units/dwarves/Thunderguard.cfg:4
 msgid "Dwarvish Thunderguard"
 msgstr "Tordönsvakt"
 
-#. [unit_type]: race=dwarf
+#. [unit_type]: id=Dwarvish Thunderguard, race=dwarf
 #: data/core/units/dwarves/Thunderguard.cfg:21
 #, fuzzy
 msgid ""
@@ -938,12 +938,12 @@ msgstr ""
 "förbereda anses detta av dvärgarna vara värt sin väntan med tanke på "
 "resultaten."
 
-#. [unit_type]: race=dwarf
+#. [unit_type]: id=Dwarvish Ulfserker, race=dwarf
 #: data/core/units/dwarves/Ulfserker.cfg:4
 msgid "Dwarvish Ulfserker"
 msgstr "Dvärgulvhedin"
 
-#. [unit_type]: race=dwarf
+#. [unit_type]: id=Dwarvish Ulfserker, race=dwarf
 #: data/core/units/dwarves/Ulfserker.cfg:20
 #, fuzzy
 msgid ""
@@ -958,12 +958,12 @@ msgstr ""
 "\n"
 "Anmärkning:"
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Elvish Archer, race=elf
 #: data/core/units/elves/Archer.cfg:4
 msgid "Elvish Archer"
 msgstr "Alvbågskytt"
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Elvish Archer, race=elf
 #: data/core/units/elves/Archer.cfg:21
 msgid ""
 "Elves have always had a reputation for archery, a skill that, for many "
@@ -1011,12 +1011,12 @@ msgstr "pilbåge"
 msgid "female^Elvish Archer"
 msgstr "Alvbågskytt"
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Elvish Avenger, race=elf
 #: data/core/units/elves/Avenger.cfg:4
 msgid "Elvish Avenger"
 msgstr "Alvhämnare"
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Elvish Avenger, race=elf
 #: data/core/units/elves/Avenger.cfg:23
 #, fuzzy
 msgid ""
@@ -1047,12 +1047,12 @@ msgstr ""
 msgid "female^Elvish Avenger"
 msgstr "Alvhämnare"
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Elvish Captain, race=elf
 #: data/core/units/elves/Captain.cfg:4
 msgid "Elvish Captain"
 msgstr "Alvkapten"
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Elvish Captain, race=elf
 #: data/core/units/elves/Captain.cfg:26
 #, fuzzy
 msgid ""
@@ -1071,12 +1071,12 @@ msgstr ""
 "\n"
 "Anmärkning:"
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Elvish Champion, race=elf
 #: data/core/units/elves/Champion.cfg:4
 msgid "Elvish Champion"
 msgstr "Alvförkämpe"
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Elvish Champion, race=elf
 #: data/core/units/elves/Champion.cfg:20
 msgid ""
 "Those few elves who deliberately hone themselves into weapons of war become "
@@ -1091,12 +1091,12 @@ msgstr ""
 "svärdsmästare. Även bågskytte, som mer betraktas som lek, utförs med "
 "mästerlighet."
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Elvish Druid, race=elf
 #: data/core/units/elves/Druid.cfg:4
 msgid "female^Elvish Druid"
 msgstr "Alvdruid"
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Elvish Druid, race=elf
 #: data/core/units/elves/Druid.cfg:21
 #, fuzzy
 msgid ""
@@ -1146,12 +1146,12 @@ msgstr "snärja"
 msgid "thorns"
 msgstr "törnen"
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Elvish Enchantress, race=elf
 #: data/core/units/elves/Enchantress.cfg:4
 msgid "female^Elvish Enchantress"
 msgstr "Huldra"
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Elvish Enchantress, race=elf
 #: data/core/units/elves/Enchantress.cfg:19
 #, fuzzy
 msgid ""
@@ -1182,12 +1182,12 @@ msgstr "snärja"
 msgid "faerie fire"
 msgstr "feeld"
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Elvish Fighter, race=elf
 #: data/core/units/elves/Fighter.cfg:4
 msgid "Elvish Fighter"
 msgstr "Alvkrigare"
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Elvish Fighter, race=elf
 #: data/core/units/elves/Fighter.cfg:20
 msgid ""
 "Elves are not warlike by nature, but in times of need, their natural grace "
@@ -1201,12 +1201,12 @@ msgstr ""
 "svärdskonstens och bågskyttets grunder på en mycket kort tid, och använda "
 "dessa kunskaper i strid med stor förtjänst."
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Elvish Hero, race=elf
 #: data/core/units/elves/Hero.cfg:4
 msgid "Elvish Hero"
 msgstr "Alvhjälte"
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Elvish Hero, race=elf
 #: data/core/units/elves/Hero.cfg:19
 msgid ""
 "A relatively small amount of experience will turn an elf from a competent "
@@ -1219,12 +1219,12 @@ msgstr ""
 "har skaffat sig goda kunskaper med svärd och båge, kunskaper som aldrig "
 "avtar i brist på utövande."
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Elvish High Lord, race=elf
 #: data/core/units/elves/High_Lord.cfg:4
 msgid "Elvish High Lord"
 msgstr "Alvstorfurste"
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Elvish High Lord, race=elf
 #: data/core/units/elves/High_Lord.cfg:19
 msgid ""
 "The leaders of the elves do not fall sallow and frail with age. Rather, it "
@@ -1237,12 +1237,12 @@ msgstr ""
 "alvstorfurstarnas lugn och kontemplativa sinnelag ett ideal som få kan "
 "uppnå, men i fullt vredesmod blir de verkligt imponerande."
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Elvish Lady, race=elf
 #: data/core/units/elves/Lady.cfg:5
 msgid "female^Elvish Lady"
 msgstr "Alvfurstinna"
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Elvish Lady, race=elf
 #: data/core/units/elves/Lady.cfg:20
 msgid ""
 "Elves choose their leaders for their power and wisdom; foresight is what has "
@@ -1254,12 +1254,12 @@ msgstr ""
 "framsynthet behövs i oroliga tider. Deras rättvisa styre belönas med deras "
 "folks villkorslösa trohet, vilket är den största gåva en ledare kan få."
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Elvish Lord, race=elf
 #: data/core/units/elves/Lord.cfg:4
 msgid "Elvish Lord"
 msgstr "Alvfurste"
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Elvish Lord, race=elf
 #: data/core/units/elves/Lord.cfg:18
 msgid ""
 "The nobility of the elves are possessed of merit to match their standing in "
@@ -1270,12 +1270,12 @@ msgstr ""
 "Alvfurstarna är de visaste och starkaste bland deras folk, och fruktas bland "
 "andra raser för sina kunskaper i magi."
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Elvish Marksman, race=elf
 #: data/core/units/elves/Marksman.cfg:4
 msgid "Elvish Marksman"
 msgstr "Alvprickskytt"
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Elvish Marksman, race=elf
 #: data/core/units/elves/Marksman.cfg:22
 #, fuzzy
 msgid ""
@@ -1308,12 +1308,12 @@ msgstr "långbåge"
 msgid "female^Elvish Marksman"
 msgstr "Alvprickskytt"
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Elvish Marshal, race=elf
 #: data/core/units/elves/Marshal.cfg:4
 msgid "Elvish Marshal"
 msgstr "Alvöverste"
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Elvish Marshal, race=elf
 #: data/core/units/elves/Marshal.cfg:27
 #, fuzzy
 msgid ""
@@ -1333,12 +1333,12 @@ msgstr ""
 "\n"
 "Anmärkning:"
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Elvish Outrider, race=elf
 #: data/core/units/elves/Outrider.cfg:4
 msgid "Elvish Outrider"
 msgstr "Alvförtrupp"
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Elvish Outrider, race=elf
 #: data/core/units/elves/Outrider.cfg:23
 msgid ""
 "Elvish Outriders are trained as the royal couriers of the elven kingdoms. "
@@ -1361,12 +1361,12 @@ msgstr ""
 "själva väljer när de strider på egen mark, ett faktum som skonat många "
 "alvers liv."
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Elvish Ranger, race=elf
 #: data/core/units/elves/Ranger.cfg:3
 msgid "Elvish Ranger"
 msgstr "Alvjägare"
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Elvish Ranger, race=elf
 #: data/core/units/elves/Ranger.cfg:20
 #, fuzzy
 msgid ""
@@ -1389,12 +1389,12 @@ msgstr ""
 msgid "female^Elvish Ranger"
 msgstr "Alvjägare"
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Elvish Rider, race=elf
 #: data/core/units/elves/Rider.cfg:4
 msgid "Elvish Rider"
 msgstr "Alvryttare"
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Elvish Rider, race=elf
 #: data/core/units/elves/Rider.cfg:24
 msgid ""
 "The master horsemen of the elves are able to move through forests at a speed "
@@ -1413,12 +1413,12 @@ msgstr ""
 "Denna kombination av stor rörlighet och gott stridskunnande är en av "
 "alvernas största tillgångar i krig."
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Elvish Scout, race=elf
 #: data/core/units/elves/Scout.cfg:4
 msgid "Elvish Scout"
 msgstr "Alvspejare"
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Elvish Scout, race=elf
 #: data/core/units/elves/Scout.cfg:23
 msgid ""
 "The horsemen of the wood elves have some skill with bow and sword, but their "
@@ -1433,12 +1433,12 @@ msgstr ""
 "utan några som helst incidenter. Kanske är de det enda kavalleri som gör "
 "bättre ifrån sig i skog än på öppen mark."
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Elvish Shaman, race=elf
 #: data/core/units/elves/Shaman.cfg:4
 msgid "female^Elvish Shaman"
 msgstr "Alvschaman"
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Elvish Shaman, race=elf
 #: data/core/units/elves/Shaman.cfg:23
 #, fuzzy
 msgid ""
@@ -1461,12 +1461,12 @@ msgstr ""
 "\n"
 "Anmärkning:"
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Elvish Sharpshooter, race=elf
 #: data/core/units/elves/Sharpshooter.cfg:4
 msgid "Elvish Sharpshooter"
 msgstr "Alvskarpskytt"
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Elvish Sharpshooter, race=elf
 #: data/core/units/elves/Sharpshooter.cfg:21
 #, fuzzy
 msgid ""
@@ -1487,12 +1487,12 @@ msgstr ""
 msgid "female^Elvish Sharpshooter"
 msgstr "Alvskarpskytt"
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Elvish Shyde, race=elf
 #: data/core/units/elves/Shyde.cfg:4
 msgid "female^Elvish Shyde"
 msgstr "Älva"
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Elvish Shyde, race=elf
 #: data/core/units/elves/Shyde.cfg:22
 #, fuzzy
 msgid ""
@@ -1514,12 +1514,12 @@ msgstr ""
 msgid "faerie touch"
 msgstr "feberöring"
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Elvish Sorceress, race=elf
 #: data/core/units/elves/Sorceress.cfg:4
 msgid "female^Elvish Sorceress"
 msgstr "Alvbesvärjerska"
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Elvish Sorceress, race=elf
 #: data/core/units/elves/Sorceress.cfg:21
 #, fuzzy
 msgid ""
@@ -1540,12 +1540,12 @@ msgstr ""
 "de kan sannerligen fylla den rollen.\n"
 "Anmärkning: "
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Elvish Sylph, race=elf
 #: data/core/units/elves/Sylph.cfg:4
 msgid "female^Elvish Sylph"
 msgstr "Sylfid"
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Elvish Sylph, race=elf
 #: data/core/units/elves/Sylph.cfg:20
 #, fuzzy
 msgid ""
@@ -1566,17 +1566,17 @@ msgstr ""
 msgid "gossamer"
 msgstr "väv"
 
-#. [unit_type]: race=monster
+#. [unit_type]: id=Fog Clearer, race=monster
 #: data/core/units/fake/Fog_Clearer.cfg:7
 msgid "dummy_unit^Fog Clearer"
 msgstr ""
 
-#. [unit_type]: race=wolf
+#. [unit_type]: id=Direwolf Rider, race=wolf
 #: data/core/units/goblins/Direwolf_Rider.cfg:4
 msgid "Direwolf Rider"
 msgstr "Monstervargryttare"
 
-#. [unit_type]: race=wolf
+#. [unit_type]: id=Direwolf Rider, race=wolf
 #: data/core/units/goblins/Direwolf_Rider.cfg:21
 #, fuzzy
 msgid ""
@@ -1603,12 +1603,12 @@ msgstr ""
 "\n"
 "Anmärkning:"
 
-#. [unit_type]: race=goblin
+#. [unit_type]: id=Goblin Impaler, race=goblin
 #: data/core/units/goblins/Impaler.cfg:4
 msgid "Goblin Impaler"
 msgstr "Spetsarvätte"
 
-#. [unit_type]: race=goblin
+#. [unit_type]: id=Goblin Impaler, race=goblin
 #: data/core/units/goblins/Impaler.cfg:19
 #, fuzzy
 msgid ""
@@ -1623,12 +1623,12 @@ msgstr ""
 "\n"
 "Anmärkning:"
 
-#. [unit_type]: race=wolf
+#. [unit_type]: id=Goblin Knight, race=wolf
 #: data/core/units/goblins/Knight.cfg:4
 msgid "Goblin Knight"
 msgstr "Riddarvätte"
 
-#. [unit_type]: race=wolf
+#. [unit_type]: id=Goblin Knight, race=wolf
 #: data/core/units/goblins/Knight.cfg:20
 #, fuzzy
 msgid ""
@@ -1648,12 +1648,12 @@ msgstr ""
 "De vargar de använder som riddjur är framavlade med snabbhet och styrka som "
 "främsta egenskaper, vilket gör dem farliga i strid."
 
-#. [unit_type]: race=wolf
+#. [unit_type]: id=Goblin Pillager, race=wolf
 #: data/core/units/goblins/Pillager.cfg:4
 msgid "Goblin Pillager"
 msgstr "Plundrarvätte"
 
-#. [unit_type]: race=wolf
+#. [unit_type]: id=Goblin Pillager, race=wolf
 #: data/core/units/goblins/Pillager.cfg:19
 #, fuzzy
 msgid ""
@@ -1681,12 +1681,12 @@ msgstr "fackla"
 msgid "net"
 msgstr "nät"
 
-#. [unit_type]: race=goblin
+#. [unit_type]: id=Goblin Rouser, race=goblin
 #: data/core/units/goblins/Rouser.cfg:4
 msgid "Goblin Rouser"
 msgstr "Standarvätte"
 
-#. [unit_type]: race=goblin
+#. [unit_type]: id=Goblin Rouser, race=goblin
 #: data/core/units/goblins/Rouser.cfg:26
 #, fuzzy
 msgid ""
@@ -1704,12 +1704,12 @@ msgstr ""
 "\n"
 "Anmärkning:"
 
-#. [unit_type]: race=goblin
+#. [unit_type]: id=Goblin Spearman, race=goblin
 #: data/core/units/goblins/Spearman.cfg:4
 msgid "Goblin Spearman"
 msgstr "Spjutvätte"
 
-#. [unit_type]: race=goblin
+#. [unit_type]: id=Goblin Spearman, race=goblin
 #: data/core/units/goblins/Spearman.cfg:20
 msgid ""
 "In any litter of orcs, several are born much smaller and weaker than the "
@@ -1731,12 +1731,12 @@ msgstr ""
 "förfall, men ingen känner till tillräckligt om deras historia för att kunna "
 "avgöra hur det ligger till."
 
-#. [unit_type]: race=wolf
+#. [unit_type]: id=Wolf Rider, race=wolf
 #: data/core/units/goblins/Wolf_Rider.cfg:4
 msgid "Wolf Rider"
 msgstr "Vargryttare"
 
-#. [unit_type]: race=wolf
+#. [unit_type]: id=Wolf Rider, race=wolf
 #: data/core/units/goblins/Wolf_Rider.cfg:36
 msgid ""
 "No one is quite sure how the practice of taming and riding wolves came into "
@@ -1762,12 +1762,12 @@ msgstr ""
 "svårigheter att ta sig genom oländig terräng, som berg, men vatten och "
 "skogar sinkar dem."
 
-#. [unit_type]: race=gryphon
+#. [unit_type]: id=Gryphon, race=gryphon
 #: data/core/units/gryphons/Gryphon.cfg:4
 msgid "Gryphon"
 msgstr "Grip"
 
-#. [unit_type]: race=gryphon
+#. [unit_type]: id=Gryphon, race=gryphon
 #: data/core/units/gryphons/Gryphon.cfg:18
 msgid ""
 "These majestic and powerful creatures are masters of the sky. Gryphons are "
@@ -1778,12 +1778,12 @@ msgstr ""
 "är farliga och misstänksamma mot andra intelligenta varelser, varför de inte "
 "bör störas i onödan."
 
-#. [unit_type]: race=gryphon
+#. [unit_type]: id=Gryphon Master, race=gryphon
 #: data/core/units/gryphons/Gryphon_Master.cfg:4
 msgid "Gryphon Master"
 msgstr "Gripmästare"
 
-#. [unit_type]: race=gryphon
+#. [unit_type]: id=Gryphon Master, race=gryphon
 #: data/core/units/gryphons/Gryphon_Master.cfg:19
 #, fuzzy
 msgid ""
@@ -1796,12 +1796,12 @@ msgstr ""
 "speciella förhållande dem emellan får alla jordbundna att darra, då dessa "
 "mäktiga varelser kan slå ner på dem från alla håll."
 
-#. [unit_type]: race=gryphon
+#. [unit_type]: id=Gryphon Rider, race=gryphon
 #: data/core/units/gryphons/Gryphon_Rider.cfg:4
 msgid "Gryphon Rider"
 msgstr "Gripryttare"
 
-#. [unit_type]: race=gryphon
+#. [unit_type]: id=Gryphon Rider, race=gryphon
 #: data/core/units/gryphons/Gryphon_Rider.cfg:19
 msgid ""
 "Only a few are able to bond with the mighty Gryphons. Those who do may "
@@ -1812,12 +1812,12 @@ msgstr ""
 "kan bli gripryttare, och upptäcka världen bland molnen på dessa flygande "
 "bestars ryggar."
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Grand Knight, race=human
 #: data/core/units/humans/Horse_Grand_Knight.cfg:4
 msgid "Grand Knight"
 msgstr "Storriddare"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Grand Knight, race=human
 #: data/core/units/humans/Horse_Grand_Knight.cfg:20
 msgid ""
 "Grand Knights have reached the acme of skill with sword and lance. Wearing "
@@ -1840,12 +1840,12 @@ msgstr ""
 msgid "lance"
 msgstr "lans"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Knight, race=human
 #: data/core/units/humans/Horse_Knight.cfg:4
 msgid "Knight"
 msgstr "Riddare"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Knight, race=human
 #: data/core/units/humans/Horse_Knight.cfg:19
 msgid ""
 "Horsemen of skill and discipline are promoted to Knights. Veterans of "
@@ -1864,12 +1864,12 @@ msgstr ""
 "finns fortfarande nära till hands, och deras växande erfarenhet med dessa "
 "vapen är bara till deras fördel."
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Lancer, race=human
 #: data/core/units/humans/Horse_Lancer.cfg:4
 msgid "Lancer"
 msgstr "Lansiär"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Lancer, race=human
 #: data/core/units/humans/Horse_Lancer.cfg:20
 msgid ""
 "Lancers are among the bravest and most feared riders in all of Wesnoth. Clad "
@@ -1886,12 +1886,12 @@ msgstr ""
 "infanterister som brutit sina formeringar och bryter lätt igenom "
 "försvarlinjer. De är dock av begränsad nytta vid försvar."
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Paladin, race=human
 #: data/core/units/humans/Horse_Paladin.cfg:4
 msgid "Paladin"
 msgstr "Tempelriddare"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Paladin, race=human
 #: data/core/units/humans/Horse_Paladin.cfg:22
 msgid ""
 "Knights of the highest virtue, Paladins have sworn their strength not to "
@@ -1912,12 +1912,12 @@ msgid ""
 "unnatural things, and most have some skill at medicine and healing."
 msgstr ""
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Horseman, race=human
 #: data/core/units/humans/Horseman.cfg:4
 msgid "Horseman"
 msgstr "Ryttare"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Horseman, race=human
 #: data/core/units/humans/Horseman.cfg:20
 msgid ""
 "Often hailing from the wilder and untamed regions of Wesnoth, Horsemen are "
@@ -1936,12 +1936,12 @@ msgstr ""
 "spjutsoldater och bågskyttar, för vilka deras storlek och anslagskraft utgör "
 "frestande måltavlor."
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Bowman, race=human
 #: data/core/units/humans/Loyalist_Bowman.cfg:4
 msgid "Bowman"
 msgstr "Bågskytt"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Bowman, race=human
 #: data/core/units/humans/Loyalist_Bowman.cfg:21
 msgid ""
 "The use of archery in shooting something other than game was seen from its "
@@ -1962,12 +1962,12 @@ msgstr ""
 msgid "short sword"
 msgstr "kortsvärd"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Cavalier, race=human
 #: data/core/units/humans/Loyalist_Cavalier.cfg:4
 msgid "Cavalier"
 msgstr "Kavaljer"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Cavalier, race=human
 #: data/core/units/humans/Loyalist_Cavalier.cfg:21
 msgid ""
 "A triumphant sight on the battlefield, cavaliers are masters at the use of "
@@ -1997,12 +1997,12 @@ msgstr ""
 msgid "crossbow"
 msgstr "armborst"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Cavalryman, race=human
 #: data/core/units/humans/Loyalist_Cavalryman.cfg:4
 msgid "Cavalryman"
 msgstr "Kavallerist"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Cavalryman, race=human
 #: data/core/units/humans/Loyalist_Cavalryman.cfg:23
 #, fuzzy
 msgid ""
@@ -2024,12 +2024,12 @@ msgstr ""
 "Kavallerister är mycket användbara för att inta och hålla positioner på "
 "öppen mark, som skyddspatrull, eller som spejare."
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Dragoon, race=human
 #: data/core/units/humans/Loyalist_Dragoon.cfg:4
 msgid "Dragoon"
 msgstr "Dragon"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Dragoon, race=human
 #: data/core/units/humans/Loyalist_Dragoon.cfg:20
 msgid ""
 "The more talented cavalrymen in the armies of Wesnoth are trained in the use "
@@ -2043,12 +2043,12 @@ msgstr ""
 "och skickliga även med sina svärd. Dessa soldater kan erövra och hålla mark. "
 "Deras rörlighet och tålighet gör dem mycket värdefulla på slagfältet."
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Duelist, race=human
 #: data/core/units/humans/Loyalist_Duelist.cfg:4
 msgid "Duelist"
 msgstr "Duellant"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Duelist, race=human
 #: data/core/units/humans/Loyalist_Duelist.cfg:19
 #, fuzzy
 msgid ""
@@ -2087,12 +2087,12 @@ msgstr ""
 msgid "saber"
 msgstr "sabel"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Fencer, race=human
 #: data/core/units/humans/Loyalist_Fencer.cfg:4
 msgid "Fencer"
 msgstr "Fäktare"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Fencer, race=human
 #: data/core/units/humans/Loyalist_Fencer.cfg:20
 #, fuzzy
 msgid ""
@@ -2120,12 +2120,12 @@ msgstr ""
 "\n"
 "Anmärkning:."
 
-#. [unit_type]: race=human
+#. [unit_type]: id=General, race=human
 #: data/core/units/humans/Loyalist_General.cfg:4
 msgid "General"
 msgstr "General"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=General, race=human
 #: data/core/units/humans/Loyalist_General.cfg:29
 #, fuzzy
 msgid ""
@@ -2137,12 +2137,12 @@ msgstr ""
 "\n"
 "Anmärkning:"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Grand Marshal, race=human
 #: data/core/units/humans/Loyalist_Grand_Marshal.cfg:4
 msgid "Grand Marshal"
 msgstr "Överstemarskalk"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Grand Marshal, race=human
 #: data/core/units/humans/Loyalist_Grand_Marshal.cfg:25
 #, fuzzy
 msgid ""
@@ -2157,12 +2157,12 @@ msgstr ""
 "\n"
 "Anmärkning:"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Halberdier, race=human
 #: data/core/units/humans/Loyalist_Halberdier.cfg:4
 msgid "Halberdier"
 msgstr "Hillebardiär"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Halberdier, race=human
 #: data/core/units/humans/Loyalist_Halberdier.cfg:21
 #, fuzzy
 msgid ""
@@ -2194,12 +2194,12 @@ msgstr ""
 "\n"
 "Anmärkning:"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Heavy Infantryman, race=human
 #: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:4
 msgid "Heavy Infantryman"
 msgstr "Tung infanterist"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Heavy Infantryman, race=human
 #: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:18
 msgid ""
 "Heavy infantry are an unusual choice for outfitting troops. They are very "
@@ -2220,12 +2220,12 @@ msgstr ""
 "bär och den vård som krävs för all denna metall, men slagkraften hos dessa "
 "soldater kompenserar mer än väl."
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Iron Mauler, race=human
 #: data/core/units/humans/Loyalist_Iron_Mauler.cfg:4
 msgid "Iron Mauler"
 msgstr "Järnmanglare"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Iron Mauler, race=human
 #: data/core/units/humans/Loyalist_Iron_Mauler.cfg:20
 msgid ""
 "Iron Maulers are given their name for reasons which are all too obvious to "
@@ -2250,12 +2250,12 @@ msgstr ""
 "väl att de inte kan fly från ett slagfält. De har ofta sett en kamrat falla "
 "en bit bort, men mäktade inte med att hinna fram i tid."
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Javelineer, race=human
 #: data/core/units/humans/Loyalist_Javelineer.cfg:4
 msgid "Javelineer"
 msgstr "Spjutkastare"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Javelineer, race=human
 #: data/core/units/humans/Loyalist_Javelineer.cfg:19
 #, fuzzy
 msgid ""
@@ -2277,12 +2277,12 @@ msgstr ""
 "\n"
 "Anmärkning:"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Lieutenant, race=human
 #: data/core/units/humans/Loyalist_Lieutenant.cfg:4
 msgid "Lieutenant"
 msgstr "Löjtnant"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Lieutenant, race=human
 #: data/core/units/humans/Loyalist_Lieutenant.cfg:24
 #, fuzzy
 msgid ""
@@ -2294,12 +2294,12 @@ msgstr ""
 "\n"
 "Anmärkning:"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Longbowman, race=human
 #: data/core/units/humans/Loyalist_Longbowman.cfg:4
 msgid "Longbowman"
 msgstr "Långbågsskytt"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Longbowman, race=human
 #: data/core/units/humans/Loyalist_Longbowman.cfg:21
 msgid ""
 "Longbows are fearsome weapons, but too difficult for beginning archers to "
@@ -2315,12 +2315,12 @@ msgstr ""
 "Långbågsskyttar bär sina vapen med stolthet och de flesta bågskyttar ser "
 "fram mot den dagen då de kan mäkta med en sådan."
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Master Bowman, race=human
 #: data/core/units/humans/Loyalist_Master_Bowman.cfg:4
 msgid "Master Bowman"
 msgstr "Mästerbågskytt"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Master Bowman, race=human
 #: data/core/units/humans/Loyalist_Master_Bowman.cfg:21
 msgid ""
 "Master bowmen have reached the zenith of their art, inasmuch as any human is "
@@ -2341,12 +2341,12 @@ msgstr ""
 "som står över människorna i bågskytte, och det har spekulerats, kanske i "
 "avund, om att det kanske bara hänger på alvernas åldersfördel."
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Master at Arms, race=human
 #: data/core/units/humans/Loyalist_Master_at_Arms.cfg:4
 msgid "Master at Arms"
 msgstr "Väbel"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Master at Arms, race=human
 #: data/core/units/humans/Loyalist_Master_at_Arms.cfg:20
 #, fuzzy
 msgid ""
@@ -2376,12 +2376,12 @@ msgstr ""
 "\n"
 "Anmärkning:"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Pikeman, race=human
 #: data/core/units/humans/Loyalist_Pikeman.cfg:4
 msgid "Pikeman"
 msgstr "Pikenerare"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Pikeman, race=human
 #: data/core/units/humans/Loyalist_Pikeman.cfg:18
 #, fuzzy
 msgid ""
@@ -2405,12 +2405,12 @@ msgstr ""
 msgid "pike"
 msgstr "pik"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Royal Guard, race=human
 #: data/core/units/humans/Loyalist_Royal_Guard.cfg:4
 msgid "Royal Guard"
 msgstr "Livgardist"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Royal Guard, race=human
 #: data/core/units/humans/Loyalist_Royal_Guard.cfg:19
 msgid ""
 "Royal Guards are picked from the best swordsmen in Wesnoth. Serving under "
@@ -2431,12 +2431,12 @@ msgstr ""
 "skicklighet i strid är deras största tillgångar, för vilka de är vitt "
 "omtalade."
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Sergeant, race=human
 #: data/core/units/humans/Loyalist_Sergeant.cfg:4
 msgid "Sergeant"
 msgstr "Sergeant"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Sergeant, race=human
 #: data/core/units/humans/Loyalist_Sergeant.cfg:25
 msgid ""
 "The Sergeant is a low-ranking officer in the ranks of an army. Though "
@@ -2447,12 +2447,12 @@ msgstr ""
 "utbildning, men behöver skaffa sig mer erfarenhet för att utveckla sin "
 "ledarskapsförmåga och få den erkänd."
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Shock Trooper, race=human
 #: data/core/units/humans/Loyalist_Shock_Trooper.cfg:4
 msgid "Shock Trooper"
 msgstr "Stormtrupp"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Shock Trooper, race=human
 #: data/core/units/humans/Loyalist_Shock_Trooper.cfg:17
 msgid ""
 "Shock troopers are the elite of the heavy infantry, and a significant part "
@@ -2479,12 +2479,12 @@ msgstr ""
 msgid "morning star"
 msgstr "morgonstjärna"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Spearman, race=human
 #: data/core/units/humans/Loyalist_Spearman.cfg:4
 msgid "Spearman"
 msgstr "Spjutbärare"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Spearman, race=human
 #: data/core/units/humans/Loyalist_Spearman.cfg:20
 #, fuzzy
 msgid ""
@@ -2503,12 +2503,12 @@ msgstr ""
 "\n"
 "Anmärkning:"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Swordsman, race=human
 #: data/core/units/humans/Loyalist_Swordsman.cfg:4
 msgid "Swordsman"
 msgstr "Svärdssoldat"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Swordsman, race=human
 #: data/core/units/humans/Loyalist_Swordsman.cfg:18
 #, fuzzy
 msgid ""
@@ -2526,12 +2526,12 @@ msgstr ""
 "utan nackdelar, men det är mycket mer lättmanövrerat och mycket bättre i "
 "trängda situationer."
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Mage, race=human
 #: data/core/units/humans/Mage.cfg:4
 msgid "Mage"
 msgstr "Magiker"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Mage, race=human
 #: data/core/units/humans/Mage.cfg:25
 #, fuzzy
 msgid ""
@@ -2585,12 +2585,12 @@ msgstr "projektil"
 msgid "female^Mage"
 msgstr "Magiker"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Arch Mage, race=human
 #: data/core/units/humans/Mage_Arch.cfg:4
 msgid "Arch Mage"
 msgstr "Ärkemagiker"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Arch Mage, race=human
 #: data/core/units/humans/Mage_Arch.cfg:21
 #, fuzzy
 msgid ""
@@ -2633,13 +2633,13 @@ msgstr "eldklot"
 msgid "female^Arch Mage"
 msgstr "Ärkemagiker"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Elder Mage, race=human
 #: data/core/units/humans/Mage_Elder.cfg:4
 #, fuzzy
 msgid "Elder Mage"
 msgstr "Silvermagiker"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Elder Mage, race=human
 #: data/core/units/humans/Mage_Elder.cfg:22
 msgid ""
 "Once great, Elder Magi have seen their power a little diminished from "
@@ -2653,12 +2653,12 @@ msgstr ""
 msgid "lightning"
 msgstr "åskvigg"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Great Mage, race=human
 #: data/core/units/humans/Mage_Great.cfg:4
 msgid "Great Mage"
 msgstr "Stormagiker"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Great Mage, race=human
 #: data/core/units/humans/Mage_Great.cfg:22
 #, fuzzy
 msgid ""
@@ -2692,12 +2692,12 @@ msgstr ""
 msgid "female^Great Mage"
 msgstr "Stormagiker"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Red Mage, race=human
 #: data/core/units/humans/Mage_Red.cfg:4
 msgid "Red Mage"
 msgstr "Röd magiker"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Red Mage, race=human
 #: data/core/units/humans/Mage_Red.cfg:21
 #, fuzzy
 msgid ""
@@ -2734,19 +2734,19 @@ msgstr ""
 msgid "female^Red Mage"
 msgstr "Röd magiker"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Silver Mage, race=human
 #: data/core/units/humans/Mage_Silver.cfg:4
 msgid "Silver Mage"
 msgstr "Silvermagiker"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Silver Mage, race=human
 #: data/core/units/humans/Mage_Silver.cfg:24
 msgid ""
 "SPECIAL_NOTE^ Silver Magi are well-attuned to their magical natures and are "
 "highly resistant to non-physical damage."
 msgstr ""
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Silver Mage, race=human
 #: data/core/units/humans/Mage_Silver.cfg:24
 #, fuzzy
 msgid ""
@@ -2794,12 +2794,12 @@ msgstr ""
 msgid "female^Silver Mage"
 msgstr "Silvermagiker"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=White Mage, race=human
 #: data/core/units/humans/Mage_White.cfg:4
 msgid "White Mage"
 msgstr "Vit magiker"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=White Mage, race=human
 #: data/core/units/humans/Mage_White.cfg:21
 #, fuzzy
 msgid ""
@@ -2838,12 +2838,12 @@ msgstr "ljusbåge"
 msgid "female^White Mage"
 msgstr "Vit magiker"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Mage of Light, race=human
 #: data/core/units/humans/Mage_of_Light.cfg:4
 msgid "Mage of Light"
 msgstr "Ljusets magiker"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Mage of Light, race=human
 #: data/core/units/humans/Mage_of_Light.cfg:23
 #, fuzzy
 msgid ""
@@ -2868,12 +2868,12 @@ msgstr ""
 msgid "female^Mage of Light"
 msgstr "Ljusets magiker"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Outlaw, race=human
 #: data/core/units/humans/Outlaw.cfg:4
 msgid "Outlaw"
 msgstr "Fredlös"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Outlaw, race=human
 #: data/core/units/humans/Outlaw.cfg:18
 msgid ""
 "After some years of service, former 'footpads' rise up in the ranks of their "
@@ -2900,12 +2900,12 @@ msgid "sling"
 msgstr "slunga"
 
 #. [female]
-#: data/core/units/humans/Outlaw.cfg:101
+#: data/core/units/humans/Outlaw.cfg:102
 msgid "female^Outlaw"
 msgstr "Fredlös"
 
 #. [female]
-#: data/core/units/humans/Outlaw.cfg:104
+#: data/core/units/humans/Outlaw.cfg:105
 msgid ""
 "female^After some years of service, former 'footpads' rise up in the ranks "
 "of their fellow outlaws. Having proven themselves in combat, they are given "
@@ -2922,12 +2922,12 @@ msgstr ""
 "rikliga mängd ammunition de har att tillgå. Fredlösa trivs inte så väl i "
 "dagsljus, utan föredrar att strida i nattens mörker."
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Assassin, race=human
 #: data/core/units/humans/Outlaw_Assassin.cfg:4
 msgid "Assassin"
 msgstr "Lönnmördare"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Assassin, race=human
 #: data/core/units/humans/Outlaw_Assassin.cfg:20
 #, fuzzy
 msgid ""
@@ -2957,12 +2957,12 @@ msgstr "kniv"
 msgid "female^Assassin"
 msgstr "Lönnmördare"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Bandit, race=human
 #: data/core/units/humans/Outlaw_Bandit.cfg:4
 msgid "Bandit"
 msgstr "Bandit"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Bandit, race=human
 #: data/core/units/humans/Outlaw_Bandit.cfg:18
 msgid ""
 "Bandits are a motley collection of men, most of dubious background. They are "
@@ -2978,12 +2978,12 @@ msgstr ""
 "varje annan fredlös är de vana vid att slåss nattetid, och trivs inte i "
 "dagsljus."
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Footpad, race=human
 #: data/core/units/humans/Outlaw_Footpad.cfg:4
 msgid "Footpad"
 msgstr "Stigman"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Footpad, race=human
 #: data/core/units/humans/Outlaw_Footpad.cfg:20
 msgid ""
 "These petty criminals are often derisively called 'footpads' by their "
@@ -3008,12 +3008,12 @@ msgid "club"
 msgstr "klubba"
 
 #. [female]
-#: data/core/units/humans/Outlaw_Footpad.cfg:162
+#: data/core/units/humans/Outlaw_Footpad.cfg:163
 msgid "female^Footpad"
 msgstr "Stigman"
 
 #. [female]
-#: data/core/units/humans/Outlaw_Footpad.cfg:165
+#: data/core/units/humans/Outlaw_Footpad.cfg:166
 msgid ""
 "female^These petty criminals are often derisively called 'footpads' by their "
 "superiors, for they are tasked with any job that requires a great deal of "
@@ -3028,12 +3028,12 @@ msgstr ""
 "snabbheten kommer väl till pass i strid, och trots sina ömkliga vapen är de "
 "bra på att plåga sina fiender, speciellt i skydd av mörkret. "
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Fugitive, race=human
 #: data/core/units/humans/Outlaw_Fugitive.cfg:5
 msgid "Fugitive"
 msgstr "Flykting"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Fugitive, race=human
 #: data/core/units/humans/Outlaw_Fugitive.cfg:20
 msgid ""
 "Veteran criminals become notorious for both their ruthlessness and ability "
@@ -3046,12 +3046,12 @@ msgstr ""
 "riktig match för yrkesarbetande upprätthållare av lag och ordning."
 
 #. [female]
-#: data/core/units/humans/Outlaw_Fugitive.cfg:108
+#: data/core/units/humans/Outlaw_Fugitive.cfg:109
 msgid "female^Fugitive"
 msgstr "Flykting"
 
 #. [female]
-#: data/core/units/humans/Outlaw_Fugitive.cfg:111
+#: data/core/units/humans/Outlaw_Fugitive.cfg:112
 msgid ""
 "female^Veteran criminals become notorious for both their ruthlessness and "
 "ability to elude capture. They can be dangerous and rightly fearful in their "
@@ -3062,12 +3062,12 @@ msgstr ""
 "undkomma. De är farliga och skoningslösa i sina rätta element, men ingen "
 "riktig match för yrkesarbetande upprätthållare av lag och ordning."
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Highwayman, race=human
 #: data/core/units/humans/Outlaw_Highwayman.cfg:5
 msgid "Highwayman"
 msgstr "Stråtrövare"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Highwayman, race=human
 #: data/core/units/humans/Outlaw_Highwayman.cfg:20
 msgid ""
 "Armed with heavy mace, Highwaymen are the last people you want to meet on a "
@@ -3076,12 +3076,12 @@ msgstr ""
 "Med sina tunga klubbor är stråtrövare de sista du skulle vilja stöta på på "
 "en övergiven landsväg om natten."
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Rogue, race=human
 #: data/core/units/humans/Outlaw_Rogue.cfg:4
 msgid "Rogue"
 msgstr "Rövare"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Rogue, race=human
 #: data/core/units/humans/Outlaw_Rogue.cfg:19
 #, fuzzy
 msgid ""
@@ -3106,12 +3106,12 @@ msgstr ""
 msgid "female^Rogue"
 msgstr "Rövare"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Ruffian, race=human
 #: data/core/units/humans/Outlaw_Ruffian.cfg:4
 msgid "Ruffian"
 msgstr "Råskinn"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Ruffian, race=human
 #: data/core/units/humans/Outlaw_Ruffian.cfg:18
 msgid ""
 "Some men without particular skills cannot or will not make an honest living. "
@@ -3124,12 +3124,12 @@ msgstr ""
 "kallas råskinn. Med tillräcklig tur och erfarenhet lyckas de ibland undvika "
 "stupstocken, som väntar de flesta av deras kollegor. "
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Thief, race=human
 #: data/core/units/humans/Outlaw_Thief.cfg:4
 msgid "Thief"
 msgstr "Tjuv"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Thief, race=human
 #: data/core/units/humans/Outlaw_Thief.cfg:20
 #, fuzzy
 msgid ""
@@ -3156,12 +3156,12 @@ msgstr ""
 msgid "female^Thief"
 msgstr "Tjuv"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Thug, race=human
 #: data/core/units/humans/Outlaw_Thug.cfg:4
 msgid "Thug"
 msgstr "Buse"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Thug, race=human
 #: data/core/units/humans/Outlaw_Thug.cfg:19
 msgid ""
 "Thugs come from a wide variety of sources; while a few are born into "
@@ -3176,12 +3176,12 @@ msgstr ""
 "försörjning. Oavsett varifrån de kommer, så har de alla gemensamt att slå "
 "sina offer med stora klubbor."
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Peasant, race=human
 #: data/core/units/humans/Peasant.cfg:4
 msgid "Peasant"
 msgstr "Bonde"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Peasant, race=human
 #: data/core/units/humans/Peasant.cfg:20
 msgid ""
 "Peasants are the backbone of the rural economy, and the soldiers of last "
@@ -3199,25 +3199,25 @@ msgstr ""
 msgid "pitchfork"
 msgstr "högaffel"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Royal Warrior, race=human
 #: data/core/units/humans/Royal_Warrior.cfg:8
 #, fuzzy
 msgid "Royal Warrior"
 msgstr "Trollkrigare"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Royal Warrior, race=human
 #: data/core/units/humans/Royal_Warrior.cfg:25
 msgid ""
 "Royal warriors are the kings and princes of human noble houses, armed and "
 "armored to a degree heavier than that of their knights."
 msgstr ""
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Woodsman, race=human
 #: data/core/units/humans/Woodsman.cfg:4
 msgid "Woodsman"
 msgstr "Skogsman"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Woodsman, race=human
 #: data/core/units/humans/Woodsman.cfg:19
 #, fuzzy
 msgid ""
@@ -3229,12 +3229,12 @@ msgstr ""
 "till vildmarken. Deras kvicktänkthet och kunskap om skogen står dem ofta bi "
 "när vapnen inte räcker till."
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Huntsman, race=human
 #: data/core/units/humans/Woodsman_Huntsman.cfg:5
 msgid "Huntsman"
 msgstr "Jägare"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Huntsman, race=human
 #: data/core/units/humans/Woodsman_Huntsman.cfg:22
 #, fuzzy
 msgid ""
@@ -3269,12 +3269,12 @@ msgstr ""
 "\n"
 "Anmärkning:"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Poacher, race=human
 #: data/core/units/humans/Woodsman_Poacher.cfg:4
 msgid "Poacher"
 msgstr "Tjuvskytt"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Poacher, race=human
 #: data/core/units/humans/Woodsman_Poacher.cfg:22
 #, fuzzy
 msgid ""
@@ -3294,12 +3294,12 @@ msgstr ""
 "På grund av sin bakgrund är dessa jägare ovanligt skickliga i skydd av "
 "natten, samt i skogar och träsk."
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Ranger, race=human
 #: data/core/units/humans/Woodsman_Ranger.cfg:5
 msgid "Ranger"
 msgstr "Utbygdsjägare"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Ranger, race=human
 #: data/core/units/humans/Woodsman_Ranger.cfg:22
 #, fuzzy
 msgid ""
@@ -3327,12 +3327,12 @@ msgstr ""
 "Utbygdsjägare kan lejas, men det är lika troligt att finna dem i banditers "
 "sold som i en kungs."
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Trapper, race=human
 #: data/core/units/humans/Woodsman_Trapper.cfg:4
 msgid "Trapper"
 msgstr "Pälsjägare"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Trapper, race=human
 #: data/core/units/humans/Woodsman_Trapper.cfg:21
 msgid ""
 "Master woodsmen are useful allies to any army, and indispensable for any "
@@ -3351,12 +3351,12 @@ msgstr ""
 "Deras jägarskicklighet kommer till stor nytta i strid och gör dem ovanligt "
 "skickliga i skydd av natten, samt i skogar och träsk."
 
-#. [unit_type]: race=merman
+#. [unit_type]: id=Mermaid Diviner, race=merman
 #: data/core/units/merfolk/Diviner.cfg:4
 msgid "female^Mermaid Diviner"
 msgstr "Sjösibylla"
 
-#. [unit_type]: race=merman
+#. [unit_type]: id=Mermaid Diviner, race=merman
 #: data/core/units/merfolk/Diviner.cfg:24
 #, fuzzy
 msgid ""
@@ -3373,12 +3373,12 @@ msgstr ""
 "på Alavynnes stränder, men som red igen nästa dag, och nedgjorde den "
 "scharlakansröda hertigen."
 
-#. [unit_type]: race=merman
+#. [unit_type]: id=Mermaid Enchantress, race=merman
 #: data/core/units/merfolk/Enchantress.cfg:4
 msgid "female^Mermaid Enchantress"
 msgstr "Sjöhuldra"
 
-#. [unit_type]: race=merman
+#. [unit_type]: id=Mermaid Enchantress, race=merman
 #: data/core/units/merfolk/Enchantress.cfg:19
 #, fuzzy
 msgid ""
@@ -3405,12 +3405,12 @@ msgstr ""
 msgid "water spray"
 msgstr "vattenstråle"
 
-#. [unit_type]: race=merman
+#. [unit_type]: id=Merman Entangler, race=merman
 #: data/core/units/merfolk/Entangler.cfg:4
 msgid "Merman Entangler"
 msgstr "Sjösnärjare"
 
-#. [unit_type]: race=merman
+#. [unit_type]: id=Merman Entangler, race=merman
 #: data/core/units/merfolk/Entangler.cfg:19
 #, fuzzy
 msgid ""
@@ -3427,12 +3427,12 @@ msgstr ""
 "\n"
 "Anmärkning:"
 
-#. [unit_type]: race=merman
+#. [unit_type]: id=Merman Fighter, race=merman
 #: data/core/units/merfolk/Fighter.cfg:4
 msgid "Merman Fighter"
 msgstr "Sjökämpe"
 
-#. [unit_type]: race=merman
+#. [unit_type]: id=Merman Fighter, race=merman
 #: data/core/units/merfolk/Fighter.cfg:19
 msgid ""
 "Skilled creatures of the sea, Mermen are powerful and quick in any watery "
@@ -3450,12 +3450,12 @@ msgstr ""
 msgid "trident"
 msgstr "treudd"
 
-#. [unit_type]: race=merman
+#. [unit_type]: id=Merman Hoplite, race=merman
 #: data/core/units/merfolk/Hoplite.cfg:4
 msgid "Merman Hoplite"
 msgstr "Hoplit"
 
-#. [unit_type]: race=merman
+#. [unit_type]: id=Merman Hoplite, race=merman
 #: data/core/units/merfolk/Hoplite.cfg:20
 #, fuzzy
 msgid ""
@@ -3471,12 +3471,12 @@ msgstr ""
 "\n"
 "Anmärkning:"
 
-#. [unit_type]: race=merman
+#. [unit_type]: id=Merman Hunter, race=merman
 #: data/core/units/merfolk/Hunter.cfg:4
 msgid "Merman Hunter"
 msgstr "Sjöjägare"
 
-#. [unit_type]: race=merman
+#. [unit_type]: id=Merman Hunter, race=merman
 #: data/core/units/merfolk/Hunter.cfg:19
 msgid ""
 "The skills employed by mermen in spear-fishing are easily translated into "
@@ -3489,12 +3489,12 @@ msgstr ""
 "oroliga tider är det många bland jägarna som ställer upp för att fylla leden "
 "i deras militär."
 
-#. [unit_type]: race=merman
+#. [unit_type]: id=Mermaid Initiate, race=merman
 #: data/core/units/merfolk/Initiate.cfg:4
 msgid "female^Mermaid Initiate"
 msgstr "Sjönovis"
 
-#. [unit_type]: race=merman
+#. [unit_type]: id=Mermaid Initiate, race=merman
 #: data/core/units/merfolk/Initiate.cfg:23
 #, fuzzy
 msgid ""
@@ -3514,12 +3514,12 @@ msgstr ""
 "\n"
 "Anmärkning:"
 
-#. [unit_type]: race=merman
+#. [unit_type]: id=Merman Javelineer, race=merman
 #: data/core/units/merfolk/Javelineer.cfg:4
 msgid "Merman Javelineer"
 msgstr "Sjöspjutkastare"
 
-#. [unit_type]: race=merman
+#. [unit_type]: id=Merman Javelineer, race=merman
 #: data/core/units/merfolk/Javelineer.cfg:19
 #, fuzzy
 msgid ""
@@ -3533,12 +3533,12 @@ msgstr ""
 "upp av kraften i träffen. I vatten kompenserar sjöfolkets rörlighet mer än "
 "väl för alla eventuella nackdelar av spjutkastarnas val av vapen."
 
-#. [unit_type]: race=merman
+#. [unit_type]: id=Merman Netcaster, race=merman
 #: data/core/units/merfolk/Netcaster.cfg:4
 msgid "Merman Netcaster"
 msgstr "Sjönätkastare"
 
-#. [unit_type]: race=merman
+#. [unit_type]: id=Merman Netcaster, race=merman
 #: data/core/units/merfolk/Netcaster.cfg:18
 #, fuzzy
 msgid ""
@@ -3562,12 +3562,12 @@ msgstr ""
 "\n"
 "Anmärkning:"
 
-#. [unit_type]: race=merman
+#. [unit_type]: id=Mermaid Priestess, race=merman
 #: data/core/units/merfolk/Priestess.cfg:4
 msgid "female^Mermaid Priestess"
 msgstr "Sjöprästinna"
 
-#. [unit_type]: race=merman
+#. [unit_type]: id=Mermaid Priestess, race=merman
 #: data/core/units/merfolk/Priestess.cfg:22
 #, fuzzy
 msgid ""
@@ -3585,12 +3585,12 @@ msgstr ""
 "\n"
 "Anmärkning:"
 
-#. [unit_type]: race=merman
+#. [unit_type]: id=Mermaid Siren, race=merman
 #: data/core/units/merfolk/Siren.cfg:4
 msgid "Mermaid Siren"
 msgstr "Siren"
 
-#. [unit_type]: race=merman
+#. [unit_type]: id=Mermaid Siren, race=merman
 #: data/core/units/merfolk/Siren.cfg:22
 #, fuzzy
 msgid ""
@@ -3621,12 +3621,12 @@ msgstr ""
 msgid "naia touch"
 msgstr "najadberöring"
 
-#. [unit_type]: race=merman
+#. [unit_type]: id=Merman Spearman, race=merman
 #: data/core/units/merfolk/Spearman.cfg:4
 msgid "Merman Spearman"
 msgstr "Sjöspjutbärare"
 
-#. [unit_type]: race=merman
+#. [unit_type]: id=Merman Spearman, race=merman
 #: data/core/units/merfolk/Spearman.cfg:18
 #, fuzzy
 msgid ""
@@ -3643,12 +3643,12 @@ msgstr ""
 "sin slagkraft även en bit under vattnet. De är också användbara i närstrid, "
 "även djupt under ytan, vilket sannerligen inte kan sägas om pilar."
 
-#. [unit_type]: race=merman
+#. [unit_type]: id=Merman Triton, race=merman
 #: data/core/units/merfolk/Triton.cfg:4
 msgid "Merman Triton"
 msgstr "Sjötriton"
 
-#. [unit_type]: race=merman
+#. [unit_type]: id=Merman Triton, race=merman
 #: data/core/units/merfolk/Triton.cfg:20
 msgid ""
 "Tritons are combat masters of the sea. Skilled in use of the trident, "
@@ -3659,12 +3659,12 @@ msgstr ""
 "besegrar de med lätthet varje oförsiktig fiende som far för långt ut på "
 "havet."
 
-#. [unit_type]: race=merman
+#. [unit_type]: id=Merman Warrior, race=merman
 #: data/core/units/merfolk/Warrior.cfg:4
 msgid "Merman Warrior"
 msgstr "Sjökrigare"
 
-#. [unit_type]: race=merman
+#. [unit_type]: id=Merman Warrior, race=merman
 #: data/core/units/merfolk/Warrior.cfg:18
 msgid ""
 "The Mermen Warriors form the core of the mermen armies. Wielding powerful "
@@ -3673,12 +3673,12 @@ msgstr ""
 "Sjökrigarna utgör kärnan i sjöfolkets arméer. Med sina mäktiga treuddar "
 "förgör de med lätthet de som vågar ge sig ut i deras vatten."
 
-#. [unit_type]: race=monster
+#. [unit_type]: id=Giant Spider, race=monster
 #: data/core/units/monsters/Cave_Spider.cfg:4
 msgid "Giant Spider"
 msgstr "Jättespindel"
 
-#. [unit_type]: race=monster
+#. [unit_type]: id=Giant Spider, race=monster
 #: data/core/units/monsters/Cave_Spider.cfg:17
 #, fuzzy
 msgid ""
@@ -3697,12 +3697,12 @@ msgstr ""
 msgid "web"
 msgstr "spindelnät"
 
-#. [unit_type]: race=monster
+#. [unit_type]: id=Cuttle Fish, race=monster
 #: data/core/units/monsters/Cuttle_Fish.cfg:4
 msgid "Cuttle Fish"
 msgstr "Jättebläckfisk"
 
-#. [unit_type]: race=monster
+#. [unit_type]: id=Cuttle Fish, race=monster
 #: data/core/units/monsters/Cuttle_Fish.cfg:18
 #, fuzzy
 msgid ""
@@ -3729,12 +3729,12 @@ msgstr "tentakel"
 msgid "ink"
 msgstr "bläck"
 
-#. [unit_type]: race=monster
+#. [unit_type]: id=Fire Dragon, race=monster
 #: data/core/units/monsters/Fire_Dragon.cfg:4
 msgid "Fire Dragon"
 msgstr "Elddrake"
 
-#. [unit_type]: race=monster
+#. [unit_type]: id=Fire Dragon, race=monster
 #: data/core/units/monsters/Fire_Dragon.cfg:24
 msgid ""
 "A dragon is a legendary creature, normally seen only in fantastic tales. "
@@ -3769,12 +3769,12 @@ msgstr "bett"
 msgid "tail"
 msgstr "svans"
 
-#. [unit_type]: race=monster
+#. [unit_type]: id=Giant Mudcrawler, race=monster
 #: data/core/units/monsters/Giant_Mudcrawler.cfg:4
 msgid "Giant Mudcrawler"
 msgstr "Jätteslamkrypare"
 
-#. [unit_type]: race=monster
+#. [unit_type]: id=Giant Mudcrawler, race=monster
 #: data/core/units/monsters/Giant_Mudcrawler.cfg:18
 msgid ""
 "Giant Mudcrawlers are a larger kind of Mudcrawler, and are magical "
@@ -3801,12 +3801,12 @@ msgstr "knytnäve"
 msgid "mud glob"
 msgstr "lerklump"
 
-#. [unit_type]: race=monster
+#. [unit_type]: id=Giant Scorpion, race=monster
 #: data/core/units/monsters/Giant_Scorpion.cfg:4
 msgid "Giant Scorpion"
 msgstr "Jätteskorpion"
 
-#. [unit_type]: race=monster
+#. [unit_type]: id=Giant Scorpion, race=monster
 #: data/core/units/monsters/Giant_Scorpion.cfg:19
 #, fuzzy
 msgid ""
@@ -3828,12 +3828,12 @@ msgstr "gadd"
 msgid "pincers"
 msgstr "gripklor"
 
-#. [unit_type]: race=monster
+#. [unit_type]: id=Mudcrawler, race=monster
 #: data/core/units/monsters/Mudcrawler.cfg:4
 msgid "Mudcrawler"
 msgstr "Slamkrypare"
 
-#. [unit_type]: race=monster
+#. [unit_type]: id=Mudcrawler, race=monster
 #: data/core/units/monsters/Mudcrawler.cfg:20
 msgid ""
 "Mudcrawlers are magical constructs of soil and water. They attack by "
@@ -3842,12 +3842,12 @@ msgstr ""
 "Slamkryparna är magiska varelser sammansatta av jord och vatten. De "
 "attackerar genom att spotta lera på sina fiender."
 
-#. [unit_type]: race=monster
+#. [unit_type]: id=Sea Serpent, race=monster
 #: data/core/units/monsters/Sea_Serpent.cfg:4
 msgid "Sea Serpent"
 msgstr "Sjöorm"
 
-#. [unit_type]: race=monster
+#. [unit_type]: id=Sea Serpent, race=monster
 #: data/core/units/monsters/Sea_Serpent.cfg:22
 msgid ""
 "Sea Serpents are gigantic monsters, capable of capsizing boats by themselves."
@@ -3855,12 +3855,12 @@ msgstr ""
 "Sjöormarna är gigantiska monster, fullt kapabla att på egen hand sänka "
 "fartyg."
 
-#. [unit_type]: race=undead
+#. [unit_type]: id=Skeletal Dragon, race=undead
 #: data/core/units/monsters/Skeletal_Dragon.cfg:4
 msgid "Skeletal Dragon"
 msgstr "Skelettdrake"
 
-#. [unit_type]: race=undead
+#. [unit_type]: id=Skeletal Dragon, race=undead
 #: data/core/units/monsters/Skeletal_Dragon.cfg:26
 msgid ""
 "Long ago one of the mightiest living creatures, the feared Dragon has become "
@@ -3880,12 +3880,12 @@ msgstr ""
 msgid "jaw"
 msgstr "käke"
 
-#. [unit_type]: race=monster
+#. [unit_type]: id=Tentacle of the Deep, race=monster
 #: data/core/units/monsters/Tentacle.cfg:4
 msgid "Tentacle of the Deep"
 msgstr "Djupets tentakel"
 
-#. [unit_type]: race=monster
+#. [unit_type]: id=Tentacle of the Deep, race=monster
 #: data/core/units/monsters/Tentacle.cfg:22
 #, fuzzy
 msgid ""
@@ -3897,24 +3897,24 @@ msgstr ""
 "\n"
 "Anmärkning:"
 
-#. [unit_type]: race=wolf
+#. [unit_type]: id=Wolf, race=wolf
 #: data/core/units/monsters/Wolf.cfg:4
 msgid "Wolf"
 msgstr "Varg"
 
-#. [unit_type]: race=wolf
+#. [unit_type]: id=Wolf, race=wolf
 #: data/core/units/monsters/Wolf.cfg:34
 msgid ""
 "Wolves are aggressive animals that hunt in packs. Although weak "
 "individually, a wolf pack can kill even the strongest man in minutes."
 msgstr ""
 
-#. [unit_type]: race=monster
+#. [unit_type]: id=Yeti, race=monster
 #: data/core/units/monsters/Yeti.cfg:4
 msgid "Yeti"
 msgstr "Snöman"
 
-#. [unit_type]: race=monster
+#. [unit_type]: id=Yeti, race=monster
 #: data/core/units/monsters/Yeti.cfg:18
 msgid ""
 "Little is known about Yetis, ape-like creatures said to live in remote and "
@@ -3925,12 +3925,12 @@ msgstr ""
 "snötäckta berg. Ibland hörs berättelser om möten med snömän, men de flesta "
 "betvivlar deras existens."
 
-#. [unit_type]: race=naga
+#. [unit_type]: id=Naga Fighter, race=naga
 #: data/core/units/nagas/Fighter.cfg:4
 msgid "Naga Fighter"
 msgstr "Nagakämpe"
 
-#. [unit_type]: race=naga
+#. [unit_type]: id=Naga Fighter, race=naga
 #: data/core/units/nagas/Fighter.cfg:21
 msgid ""
 "The serpentine naga are one of the few races capable of any meaningful "
@@ -3950,12 +3950,12 @@ msgstr ""
 msgid "Nagini Fighter"
 msgstr "Naginikämpe"
 
-#. [unit_type]: race=naga
+#. [unit_type]: id=Naga Myrmidon, race=naga
 #: data/core/units/nagas/Myrmidon.cfg:4
 msgid "Naga Myrmidon"
 msgstr "Nagamyrmidon"
 
-#. [unit_type]: race=naga
+#. [unit_type]: id=Naga Myrmidon, race=naga
 #: data/core/units/nagas/Myrmidon.cfg:21
 msgid ""
 "The most practiced of the naga blademasters are initiated into the caste of "
@@ -3990,12 +3990,12 @@ msgstr ""
 "liknar, och dansar lätt bort från attacker. De är farliga motståndare på "
 "öppen terräng, och dessutom ger deras simförmåga dem en dödlig rörlighet."
 
-#. [unit_type]: race=naga
+#. [unit_type]: id=Naga Warrior, race=naga
 #: data/core/units/nagas/Warrior.cfg:4
 msgid "Naga Warrior"
 msgstr "Nagakrigare"
 
-#. [unit_type]: race=naga
+#. [unit_type]: id=Naga Warrior, race=naga
 #: data/core/units/nagas/Warrior.cfg:19
 msgid ""
 "The young warriors of the naga aspire to the day when they merit their "
@@ -4033,12 +4033,12 @@ msgstr ""
 "skicklighet. Detta gör dem till farliga motståndare på land, men i vatten "
 "försämras deras förmåga av vattenmotståndet."
 
-#. [unit_type]: race=ogre
+#. [unit_type]: id=Ogre, race=ogre
 #: data/core/units/ogres/Ogre.cfg:4
 msgid "Ogre"
 msgstr "Rese"
 
-#. [unit_type]: race=ogre
+#. [unit_type]: id=Ogre, race=ogre
 #: data/core/units/ogres/Ogre.cfg:21
 msgid ""
 "Ogres are giant creatures that usually live alone in the wilderness, "
@@ -4056,12 +4056,12 @@ msgstr ""
 msgid "cleaver"
 msgstr "köttyxa"
 
-#. [unit_type]: race=ogre
+#. [unit_type]: id=Young Ogre, race=ogre
 #: data/core/units/ogres/Young_Ogre.cfg:4
 msgid "Young Ogre"
 msgstr "Ung rese"
 
-#. [unit_type]: race=ogre
+#. [unit_type]: id=Young Ogre, race=ogre
 #: data/core/units/ogres/Young_Ogre.cfg:21
 msgid ""
 "When still young, Ogres are sometimes captured and taken into armies to be "
@@ -4072,12 +4072,12 @@ msgstr ""
 "tränas. De är inte skickliga med vapen, men det spelar inte så stor roll med "
 "tanke på deras styrka."
 
-#. [unit_type]: race=orc
+#. [unit_type]: id=Orcish Archer, race=orc
 #: data/core/units/orcs/Archer.cfg:4
 msgid "Orcish Archer"
 msgstr "Orchbågskytt"
 
-#. [unit_type]: race=orc
+#. [unit_type]: id=Orcish Archer, race=orc
 #: data/core/units/orcs/Archer.cfg:19
 msgid ""
 "Amongst orcs, bows are often regarded as a cowardly weapon; but even orcs, "
@@ -4092,12 +4092,12 @@ msgstr ""
 "träning. Trots detta kan deras vapen vara nog så dödliga, och bärarna av "
 "dessa vapen går sällan ensamma."
 
-#. [unit_type]: race=orc
+#. [unit_type]: id=Orcish Assassin, race=orc
 #: data/core/units/orcs/Assassin.cfg:4
 msgid "Orcish Assassin"
 msgstr "Lönnmördarorch"
 
-#. [unit_type]: race=orc
+#. [unit_type]: id=Orcish Assassin, race=orc
 #: data/core/units/orcs/Assassin.cfg:22
 #, fuzzy
 msgid ""
@@ -4120,12 +4120,12 @@ msgstr ""
 msgid "throwing knives"
 msgstr "kastknivar"
 
-#. [unit_type]: race=orc
+#. [unit_type]: id=Orcish Crossbowman, race=orc
 #: data/core/units/orcs/Crossbowman.cfg:4
 msgid "Orcish Crossbowman"
 msgstr "Armborstorch"
 
-#. [unit_type]: race=orc
+#. [unit_type]: id=Orcish Crossbowman, race=orc
 #: data/core/units/orcs/Crossbowman.cfg:18
 msgid ""
 "Orcish crossbows are crude imitations of human or dwarvish design; a "
@@ -4138,12 +4138,12 @@ msgstr ""
 "orcher som är privilegierade nog att få använda dem är skickliga krigare, "
 "och det de saknar i finess kompenserar de med antal."
 
-#. [unit_type]: race=orc
+#. [unit_type]: id=Orcish Grunt, race=orc
 #: data/core/units/orcs/Grunt.cfg:4
 msgid "Orcish Grunt"
 msgstr "Orchsoldat"
 
-#. [unit_type]: race=orc
+#. [unit_type]: id=Orcish Grunt, race=orc
 #: data/core/units/orcs/Grunt.cfg:19
 msgid ""
 "Orcish Grunts form the core of the orcish forces. Although slower than human "
@@ -4154,12 +4154,12 @@ msgstr ""
 "alvernas och människornas krigare, så delar de ut kraftfullare slag och tål "
 "mer stryk."
 
-#. [unit_type]: race=orc
+#. [unit_type]: id=Orcish Leader, race=orc
 #: data/core/units/orcs/Leader.cfg:4
 msgid "Orcish Leader"
 msgstr "Orchledare"
 
-#. [unit_type]: race=orc
+#. [unit_type]: id=Orcish Leader, race=orc
 #: data/core/units/orcs/Leader.cfg:25
 #, fuzzy
 msgid ""
@@ -4176,12 +4176,12 @@ msgstr ""
 "med ovanlig djärvhet.\n"
 "Anmärkning:"
 
-#. [unit_type]: race=orc
+#. [unit_type]: id=Orcish Ruler, race=orc
 #: data/core/units/orcs/Ruler.cfg:4
 msgid "Orcish Ruler"
 msgstr "Orchhövding"
 
-#. [unit_type]: race=orc
+#. [unit_type]: id=Orcish Ruler, race=orc
 #: data/core/units/orcs/Ruler.cfg:24
 #, fuzzy
 msgid ""
@@ -4205,12 +4205,12 @@ msgstr ""
 msgid "greatsword"
 msgstr "bredsvärd"
 
-#. [unit_type]: race=orc
+#. [unit_type]: id=Orcish Slayer, race=orc
 #: data/core/units/orcs/Slayer.cfg:4
 msgid "Orcish Slayer"
 msgstr "Slaktarorch"
 
-#. [unit_type]: race=orc
+#. [unit_type]: id=Orcish Slayer, race=orc
 #: data/core/units/orcs/Slayer.cfg:22
 #, fuzzy
 msgid ""
@@ -4228,12 +4228,12 @@ msgstr ""
 "\n"
 "Anmärkning:"
 
-#. [unit_type]: race=orc
+#. [unit_type]: id=Orcish Slurbow, race=orc
 #: data/core/units/orcs/Slurbow.cfg:4
 msgid "Orcish Slurbow"
 msgstr "Arbalestorch"
 
-#. [unit_type]: race=orc
+#. [unit_type]: id=Orcish Slurbow, race=orc
 #: data/core/units/orcs/Slurbow.cfg:23
 #, fuzzy
 msgid ""
@@ -4257,12 +4257,12 @@ msgstr ""
 "hamnar utan undantag i händerna på de starkaste och listigaste av "
 "bågskyttarna."
 
-#. [unit_type]: race=orc
+#. [unit_type]: id=Orcish Sovereign, race=orc
 #: data/core/units/orcs/Sovereign.cfg:4
 msgid "Orcish Sovereign"
 msgstr "Orchhärskare"
 
-#. [unit_type]: race=orc
+#. [unit_type]: id=Orcish Sovereign, race=orc
 #: data/core/units/orcs/Sovereign.cfg:25
 #, fuzzy
 msgid ""
@@ -4282,12 +4282,12 @@ msgstr ""
 "\n"
 "Anmärkning:"
 
-#. [unit_type]: race=orc
+#. [unit_type]: id=Orcish Warlord, race=orc
 #: data/core/units/orcs/Warlord.cfg:4
 msgid "Orcish Warlord"
 msgstr "Orchkrigsherre"
 
-#. [unit_type]: race=orc
+#. [unit_type]: id=Orcish Warlord, race=orc
 #: data/core/units/orcs/Warlord.cfg:19
 msgid ""
 "Only orcs with both great cunning and unsurpassed strength can become "
@@ -4298,12 +4298,12 @@ msgstr ""
 "krigarbestar är mycket skickliga med svärd och har även en viss fallenhet i "
 "bågskytte, och de leder sitt släkte med järnhand."
 
-#. [unit_type]: race=orc
+#. [unit_type]: id=Orcish Warrior, race=orc
 #: data/core/units/orcs/Warrior.cfg:4
 msgid "Orcish Warrior"
 msgstr "Orchkrigare"
 
-#. [unit_type]: race=orc
+#. [unit_type]: id=Orcish Warrior, race=orc
 #: data/core/units/orcs/Warrior.cfg:18
 msgid ""
 "Having mastered the art of dual-sword fighting, Orcish Warriors are highly "
@@ -4314,12 +4314,12 @@ msgstr ""
 "har gjort dem mycket respekterade i orchsamhället, och mycket fruktade av "
 "sina fiender. Deras enda svaghet är deras oförmåga att hantera en båge."
 
-#. [unit_type]: race=lizard
+#. [unit_type]: id=Saurian Ambusher, race=lizard
 #: data/core/units/saurians/Ambusher.cfg:4
 msgid "Saurian Ambusher"
 msgstr "Bakhållstrupp"
 
-#. [unit_type]: race=lizard
+#. [unit_type]: id=Saurian Ambusher, race=lizard
 #: data/core/units/saurians/Ambusher.cfg:19
 #, fuzzy
 msgid ""
@@ -4340,12 +4340,12 @@ msgstr ""
 "\n"
 "Anmärkning:"
 
-#. [unit_type]: race=lizard
+#. [unit_type]: id=Saurian Augur, race=lizard
 #: data/core/units/saurians/Augur.cfg:4
 msgid "Saurian Augur"
 msgstr "Spåödla"
 
-#. [unit_type]: race=lizard
+#. [unit_type]: id=Saurian Augur, race=lizard
 #: data/core/units/saurians/Augur.cfg:21
 #, fuzzy
 msgid ""
@@ -4366,12 +4366,12 @@ msgstr ""
 msgid "curse"
 msgstr "förbannelse"
 
-#. [unit_type]: race=lizard
+#. [unit_type]: id=Saurian Flanker, race=lizard
 #: data/core/units/saurians/Flanker.cfg:4
 msgid "Saurian Flanker"
 msgstr "Flanktrupp"
 
-#. [unit_type]: race=lizard
+#. [unit_type]: id=Saurian Flanker, race=lizard
 #: data/core/units/saurians/Flanker.cfg:20
 #, fuzzy
 msgid ""
@@ -4389,12 +4389,12 @@ msgstr ""
 "\n"
 "Anmärkning:"
 
-#. [unit_type]: race=lizard
+#. [unit_type]: id=Saurian Oracle, race=lizard
 #: data/core/units/saurians/Oracle.cfg:4
 msgid "Saurian Oracle"
 msgstr "Orakel"
 
-#. [unit_type]: race=lizard
+#. [unit_type]: id=Saurian Oracle, race=lizard
 #: data/core/units/saurians/Oracle.cfg:21
 #, fuzzy
 msgid ""
@@ -4414,12 +4414,12 @@ msgstr ""
 "\n"
 "Anmärkning:"
 
-#. [unit_type]: race=lizard
+#. [unit_type]: id=Saurian Skirmisher, race=lizard
 #: data/core/units/saurians/Skirmisher.cfg:4
 msgid "Saurian Skirmisher"
 msgstr "Ödlestigfinnare"
 
-#. [unit_type]: race=lizard
+#. [unit_type]: id=Saurian Skirmisher, race=lizard
 #: data/core/units/saurians/Skirmisher.cfg:22
 #, fuzzy
 msgid ""
@@ -4442,12 +4442,12 @@ msgstr ""
 "\n"
 "Anmärkning:"
 
-#. [unit_type]: race=lizard
+#. [unit_type]: id=Saurian Soothsayer, race=lizard
 #: data/core/units/saurians/Soothsayer.cfg:4
 msgid "Saurian Soothsayer"
 msgstr "Sökare"
 
-#. [unit_type]: race=lizard
+#. [unit_type]: id=Saurian Soothsayer, race=lizard
 #: data/core/units/saurians/Soothsayer.cfg:21
 #, fuzzy
 msgid ""
@@ -4463,12 +4463,12 @@ msgstr ""
 "\n"
 "Anmärkning:"
 
-#. [unit_type]: race=troll
+#. [unit_type]: id=Great Troll, race=troll
 #: data/core/units/trolls/Great.cfg:4
 msgid "Great Troll"
 msgstr "Stort troll"
 
-#. [unit_type]: race=troll
+#. [unit_type]: id=Great Troll, race=troll
 #: data/core/units/trolls/Great.cfg:19
 #, fuzzy
 msgid ""
@@ -4485,12 +4485,12 @@ msgstr ""
 "\n"
 "Anmärkning:"
 
-#. [unit_type]: race=troll
+#. [unit_type]: id=Troll Hero, race=troll
 #: data/core/units/trolls/Hero.cfg:4
 msgid "Troll Hero"
 msgstr "Trollhjälte"
 
-#. [unit_type]: race=troll
+#. [unit_type]: id=Troll Hero, race=troll
 #: data/core/units/trolls/Hero.cfg:18
 #, fuzzy
 msgid ""
@@ -4504,12 +4504,12 @@ msgstr ""
 "\n"
 "Anmärkning:"
 
-#. [unit_type]: race=troll
+#. [unit_type]: id=Troll Rocklobber, race=troll
 #: data/core/units/trolls/Rocklobber.cfg:4
 msgid "Troll Rocklobber"
 msgstr "Stenkastartroll"
 
-#. [unit_type]: race=troll
+#. [unit_type]: id=Troll Rocklobber, race=troll
 #: data/core/units/trolls/Rocklobber.cfg:20
 #, fuzzy
 msgid ""
@@ -4527,12 +4527,12 @@ msgstr ""
 "Anmärkning: även om de är otympliga så är en sten slungad av ett av dessa "
 "monster mycket farligare än en pil, om den träffar."
 
-#. [unit_type]: race=troll
+#. [unit_type]: id=Troll, race=troll
 #: data/core/units/trolls/Troll.cfg:4
 msgid "Troll"
 msgstr "Troll"
 
-#. [unit_type]: race=troll
+#. [unit_type]: id=Troll, race=troll
 #: data/core/units/trolls/Troll.cfg:18
 #, fuzzy
 msgid ""
@@ -4552,13 +4552,13 @@ msgstr ""
 "\n"
 "Anmärkning:"
 
-#. [unit_type]: race=troll
+#. [unit_type]: id=Troll Shaman, race=troll
 #: data/core/units/trolls/Troll_Shaman.cfg:4
 #, fuzzy
 msgid "Troll Shaman"
 msgstr "Trollvalp"
 
-#. [unit_type]: race=troll
+#. [unit_type]: id=Troll Shaman, race=troll
 #: data/core/units/trolls/Troll_Shaman.cfg:24
 msgid ""
 "Troll shamans are the mystical leaders of the trolls. Though not as strong "
@@ -4571,12 +4571,12 @@ msgstr ""
 msgid "flame blast"
 msgstr ""
 
-#. [unit_type]: race=troll
+#. [unit_type]: id=Troll Warrior, race=troll
 #: data/core/units/trolls/Warrior.cfg:4
 msgid "Troll Warrior"
 msgstr "Trollkrigare"
 
-#. [unit_type]: race=troll
+#. [unit_type]: id=Troll Warrior, race=troll
 #: data/core/units/trolls/Warrior.cfg:20
 #, fuzzy
 msgid ""
@@ -4600,12 +4600,12 @@ msgstr ""
 "\n"
 "Anmärkning:"
 
-#. [unit_type]: race=troll
+#. [unit_type]: id=Troll Whelp, race=troll
 #: data/core/units/trolls/Whelp.cfg:4
 msgid "Troll Whelp"
 msgstr "Trollvalp"
 
-#. [unit_type]: race=troll
+#. [unit_type]: id=Troll Whelp, race=troll
 #: data/core/units/trolls/Whelp.cfg:19
 #, fuzzy
 msgid ""
@@ -4622,12 +4622,12 @@ msgstr ""
 "\n"
 "Anmärkning:"
 
-#. [unit_type]: race=undead
+#. [unit_type]: id=Ghoul, race=undead
 #: data/core/units/undead/Corpse_Ghoul.cfg:4
 msgid "Ghoul"
 msgstr "Ghul"
 
-#. [unit_type]: race=undead
+#. [unit_type]: id=Ghoul, race=undead
 #: data/core/units/undead/Corpse_Ghoul.cfg:22
 #, fuzzy
 msgid ""
@@ -4650,12 +4650,12 @@ msgstr ""
 "\n"
 "Anmärkning:"
 
-#. [unit_type]: race=undead
+#. [unit_type]: id=Necrophage, race=undead
 #: data/core/units/undead/Corpse_Necrophage.cfg:4
 msgid "Necrophage"
 msgstr "Nekrofag"
 
-#. [unit_type]: race=undead
+#. [unit_type]: id=Necrophage, race=undead
 #: data/core/units/undead/Corpse_Necrophage.cfg:20
 #, fuzzy
 msgid ""
@@ -4675,12 +4675,12 @@ msgstr ""
 "\n"
 "Anmärkning:"
 
-#. [unit_type]: race=undead
+#. [unit_type]: id=Soulless, race=undead
 #: data/core/units/undead/Corpse_Soulless.cfg:6
 msgid "Soulless"
 msgstr "Själlös"
 
-#. [unit_type]: race=undead
+#. [unit_type]: id=Soulless, race=undead
 #: data/core/units/undead/Corpse_Soulless.cfg:20
 #, fuzzy
 msgid ""
@@ -4705,12 +4705,12 @@ msgstr ""
 msgid "touch"
 msgstr "beröring"
 
-#. [unit_type]: race=undead
+#. [unit_type]: id=Walking Corpse, race=undead
 #: data/core/units/undead/Corpse_Walking.cfg:6
 msgid "Walking Corpse"
 msgstr "Vandrande död"
 
-#. [unit_type]: race=undead
+#. [unit_type]: id=Walking Corpse, race=undead
 #: data/core/units/undead/Corpse_Walking.cfg:19
 #, fuzzy
 msgid ""
@@ -4724,12 +4724,12 @@ msgstr ""
 "\n"
 "Anmärkning:"
 
-#. [unit_type]: race=undead
+#. [unit_type]: id=Ancient Lich, race=undead
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:4
 msgid "Ancient Lich"
 msgstr "Uråldrig häxmästare"
 
-#. [unit_type]: race=undead
+#. [unit_type]: id=Ancient Lich, race=undead
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:25
 #, fuzzy
 msgid ""
@@ -4757,12 +4757,12 @@ msgstr "köldstorm"
 msgid "shadow wave"
 msgstr "skuggstöt"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Dark Adept, race=human
 #: data/core/units/undead/Necro_Dark_Adept.cfg:4
 msgid "Dark Adept"
 msgstr "Svartkonstnär"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Dark Adept, race=human
 #: data/core/units/undead/Necro_Dark_Adept.cfg:26
 #, fuzzy
 msgid ""
@@ -4826,12 +4826,12 @@ msgstr ""
 "\n"
 "Anmärkning:"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Dark Sorcerer, race=human
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:4
 msgid "Dark Sorcerer"
 msgstr "Skuggmagiker"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Dark Sorcerer, race=human
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:21
 #, fuzzy
 msgid ""
@@ -4911,12 +4911,12 @@ msgstr ""
 "\n"
 "Anmärkning:"
 
-#. [unit_type]: race=undead
+#. [unit_type]: id=Lich, race=undead
 #: data/core/units/undead/Necro_Lich.cfg:4
 msgid "Lich"
 msgstr "Häxmästare"
 
-#. [unit_type]: race=undead
+#. [unit_type]: id=Lich, race=undead
 #: data/core/units/undead/Necro_Lich.cfg:25
 #, fuzzy
 msgid ""
@@ -4941,12 +4941,12 @@ msgstr ""
 "\n"
 "Anmärkning:"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Necromancer, race=human
 #: data/core/units/undead/Necromancer.cfg:4
 msgid "Necromancer"
 msgstr "Nekromant"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Necromancer, race=human
 #: data/core/units/undead/Necromancer.cfg:22
 #, fuzzy
 msgid ""
@@ -4978,12 +4978,12 @@ msgstr "peststav"
 msgid "female^Necromancer"
 msgstr "Nekromant"
 
-#. [unit_type]: race=undead
+#. [unit_type]: id=Banebow, race=undead
 #: data/core/units/undead/Skele_Banebow.cfg:5
 msgid "Banebow"
 msgstr "Själaskytt"
 
-#. [unit_type]: race=undead
+#. [unit_type]: id=Banebow, race=undead
 #: data/core/units/undead/Skele_Banebow.cfg:18
 #, fuzzy
 msgid ""
@@ -5000,12 +5000,12 @@ msgstr ""
 "\n"
 "Anmärkning:"
 
-#. [unit_type]: race=undead
+#. [unit_type]: id=Bone Shooter, race=undead
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:4
 msgid "Bone Shooter"
 msgstr "Benskjutare"
 
-#. [unit_type]: race=undead
+#. [unit_type]: id=Bone Shooter, race=undead
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:16
 #, fuzzy
 msgid ""
@@ -5025,12 +5025,12 @@ msgstr ""
 "\n"
 "Anmärkning:"
 
-#. [unit_type]: race=undead
+#. [unit_type]: id=Chocobone, race=undead
 #: data/core/units/undead/Skele_Chocobone.cfg:4
 msgid "Chocobone"
 msgstr "Benryttare"
 
-#. [unit_type]: race=undead
+#. [unit_type]: id=Chocobone, race=undead
 #: data/core/units/undead/Skele_Chocobone.cfg:20
 #, fuzzy
 msgid ""
@@ -5044,12 +5044,12 @@ msgstr ""
 "\n"
 "Anmärkning:"
 
-#. [unit_type]: race=undead
+#. [unit_type]: id=Death Knight, race=undead
 #: data/core/units/undead/Skele_Death_Knight.cfg:4
 msgid "Death Knight"
 msgstr "Dödsriddare"
 
-#. [unit_type]: race=undead
+#. [unit_type]: id=Death Knight, race=undead
 #: data/core/units/undead/Skele_Death_Knight.cfg:39
 #, fuzzy
 msgid ""
@@ -5065,12 +5065,12 @@ msgstr ""
 "\n"
 "Anmärkning:"
 
-#. [unit_type]: race=undead
+#. [unit_type]: id=Deathblade, race=undead
 #: data/core/units/undead/Skele_Deathblade.cfg:4
 msgid "Deathblade"
 msgstr "Svärdsande"
 
-#. [unit_type]: race=undead
+#. [unit_type]: id=Deathblade, race=undead
 #: data/core/units/undead/Skele_Deathblade.cfg:18
 #, fuzzy
 msgid ""
@@ -5089,12 +5089,12 @@ msgstr ""
 "\n"
 "Anmärkning:"
 
-#. [unit_type]: race=undead
+#. [unit_type]: id=Draug, race=undead
 #: data/core/units/undead/Skele_Draug.cfg:4
 msgid "Draug"
 msgstr "Draug"
 
-#. [unit_type]: race=undead
+#. [unit_type]: id=Draug, race=undead
 #: data/core/units/undead/Skele_Draug.cfg:18
 #, fuzzy
 msgid ""
@@ -5110,12 +5110,12 @@ msgstr ""
 "endast armstyrka kan ge dem. De kämpar, utan tanke och utan vila.\n"
 "Anmärkning:"
 
-#. [unit_type]: race=undead
+#. [unit_type]: id=Revenant, race=undead
 #: data/core/units/undead/Skele_Revenant.cfg:4
 msgid "Revenant"
 msgstr "Gengångare"
 
-#. [unit_type]: race=undead
+#. [unit_type]: id=Revenant, race=undead
 #: data/core/units/undead/Skele_Revenant.cfg:18
 #, fuzzy
 msgid ""
@@ -5134,12 +5134,12 @@ msgstr ""
 "\n"
 "Anmärkning:"
 
-#. [unit_type]: race=undead
+#. [unit_type]: id=Skeleton, race=undead
 #: data/core/units/undead/Skeleton.cfg:4
 msgid "Skeleton"
 msgstr "Skelett"
 
-#. [unit_type]: race=undead
+#. [unit_type]: id=Skeleton, race=undead
 #: data/core/units/undead/Skeleton.cfg:18
 #, fuzzy
 msgid ""
@@ -5155,12 +5155,12 @@ msgstr ""
 "\n"
 "Anmärkning:"
 
-#. [unit_type]: race=undead
+#. [unit_type]: id=Skeleton Archer, race=undead
 #: data/core/units/undead/Skeleton_Archer.cfg:4
 msgid "Skeleton Archer"
 msgstr "Skelettbågskytt"
 
-#. [unit_type]: race=undead
+#. [unit_type]: id=Skeleton Archer, race=undead
 #: data/core/units/undead/Skeleton_Archer.cfg:17
 #, fuzzy
 msgid ""
@@ -5178,12 +5178,12 @@ msgstr ""
 "\n"
 "Anmärkning:"
 
-#. [unit_type]: race=undead
+#. [unit_type]: id=Ghost, race=undead
 #: data/core/units/undead/Spirit_Ghost.cfg:4
 msgid "Ghost"
 msgstr "Spöke"
 
-#. [unit_type]: race=undead
+#. [unit_type]: id=Ghost, race=undead
 #: data/core/units/undead/Spirit_Ghost.cfg:20
 #, fuzzy
 msgid ""
@@ -5210,12 +5210,12 @@ msgstr ""
 msgid "wail"
 msgstr "tjut"
 
-#. [unit_type]: race=undead
+#. [unit_type]: id=Nightgaunt, race=undead
 #: data/core/units/undead/Spirit_Nightgaunt.cfg:4
 msgid "Nightgaunt"
 msgstr "Blekman"
 
-#. [unit_type]: race=undead
+#. [unit_type]: id=Nightgaunt, race=undead
 #: data/core/units/undead/Spirit_Nightgaunt.cfg:18
 #, fuzzy
 msgid ""
@@ -5231,12 +5231,12 @@ msgstr ""
 "\n"
 "Anmärkning:"
 
-#. [unit_type]: race=undead
+#. [unit_type]: id=Shadow, race=undead
 #: data/core/units/undead/Spirit_Shadow.cfg:4
 msgid "Shadow"
 msgstr "Skugga"
 
-#. [unit_type]: race=undead
+#. [unit_type]: id=Shadow, race=undead
 #: data/core/units/undead/Spirit_Shadow.cfg:19
 #, fuzzy
 msgid ""
@@ -5254,12 +5254,12 @@ msgstr ""
 "\n"
 "Anmärkning:"
 
-#. [unit_type]: race=undead
+#. [unit_type]: id=Spectre, race=undead
 #: data/core/units/undead/Spirit_Spectre.cfg:4
 msgid "Spectre"
 msgstr "Ond ande"
 
-#. [unit_type]: race=undead
+#. [unit_type]: id=Spectre, race=undead
 #: data/core/units/undead/Spirit_Spectre.cfg:20
 #, fuzzy
 msgid ""
@@ -5286,12 +5286,12 @@ msgstr ""
 msgid "baneblade"
 msgstr "domedagssvärd"
 
-#. [unit_type]: race=undead
+#. [unit_type]: id=Wraith, race=undead
 #: data/core/units/undead/Spirit_Wraith.cfg:4
 msgid "Wraith"
 msgstr "Vålnad"
 
-#. [unit_type]: race=undead
+#. [unit_type]: id=Wraith, race=undead
 #: data/core/units/undead/Spirit_Wraith.cfg:17
 #, fuzzy
 msgid ""
@@ -5309,12 +5309,12 @@ msgstr ""
 "\n"
 "Anmärkning:"
 
-#. [unit_type]: race=wose
+#. [unit_type]: id=Ancient Wose, race=wose
 #: data/core/units/wose/Ancient.cfg:4
 msgid "Ancient Wose"
 msgstr "Uråldrig ent"
 
-#. [unit_type]: race=wose
+#. [unit_type]: id=Ancient Wose, race=wose
 #: data/core/units/wose/Ancient.cfg:20
 #, fuzzy
 msgid ""
@@ -5345,12 +5345,12 @@ msgstr ""
 msgid "crush"
 msgstr "krossa"
 
-#. [unit_type]: race=wose
+#. [unit_type]: id=Elder Wose, race=wose
 #: data/core/units/wose/Elder.cfg:4
 msgid "Elder Wose"
 msgstr "Äldre ent"
 
-#. [unit_type]: race=wose
+#. [unit_type]: id=Elder Wose, race=wose
 #: data/core/units/wose/Elder.cfg:19
 #, fuzzy
 msgid ""
@@ -5379,12 +5379,12 @@ msgstr ""
 "\n"
 "Anmärkning:"
 
-#. [unit_type]: race=wose
+#. [unit_type]: id=Wose, race=wose
 #: data/core/units/wose/Wose.cfg:4
 msgid "Wose"
 msgstr "Ent"
 
-#. [unit_type]: race=wose
+#. [unit_type]: id=Wose, race=wose
 #: data/core/units/wose/Wose.cfg:20
 #, fuzzy
 msgid ""

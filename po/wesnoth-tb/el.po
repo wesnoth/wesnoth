@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-22 14:56+0100\n"
+"POT-Creation-Date: 2008-11-29 12:25+0100\n"
 "PO-Revision-Date: 2008-01-21 11:31+0200\n"
 "Last-Translator: Konstantinos Egarhos <atixos@gmail.com>\n"
 "Language-Team: none\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#. [campaign]
+#. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:12
 #, fuzzy
 msgid "A Tale of Two Brothers"
@@ -20,32 +20,32 @@ msgstr ""
 "την περιοχή μας. Ήδη κάλεσα το χωριό στα όπλα και τώρα επαφίεται σε σένα να "
 "τους οδηγήσεις. Είναι βόρεια, δυο μέρες με το άλογο."
 
-#. [campaign]
+#. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:13
 msgid "AToTB"
 msgstr "AToTB"
 
-#. [campaign]
+#. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:17
 msgid "Horseman"
 msgstr "Ιππέας"
 
-#. [campaign]
+#. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:17
 msgid "(Beginner)"
 msgstr "(Αρχάριο)"
 
-#. [campaign]
+#. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:18
 msgid "(Challenging)"
 msgstr "(Προκλητικό)"
 
-#. [campaign]
+#. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:18
 msgid "Knight"
 msgstr "Ιππότης"
 
-#. [campaign]
+#. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:21
 #, fuzzy
 msgid ""
@@ -88,7 +88,7 @@ msgstr "Λοιπά"
 msgid "And special thanks to everyone else who I forgot to mention."
 msgstr "Και ένα ξεχωριστό ευχαριστό για όλους αυτούς που δεν αναφέρθηκαν."
 
-#. [scenario]
+#. [scenario]: id=1_Rooting_Out_A_Mage
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:4
 msgid "Rooting Out A Mage"
 msgstr "Ξεκληρίζοντας Έναν Μάγο"
@@ -174,7 +174,7 @@ msgstr "Θάνατος του Άρνε."
 msgid "Turns run out"
 msgstr "Οι γύροι εξαντλήθηκαν"
 
-#. [side]: type=Knight
+#. [side]: type=Knight, id=Arne
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:160
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:66
 #: data/campaigns/Two_Brothers/scenarios/5_Epilog.cfg:49
@@ -183,7 +183,7 @@ msgstr "Οι γύροι εξαντλήθηκαν"
 msgid "Arne"
 msgstr "Άρνε"
 
-#. [unit]: type=Red Mage
+#. [unit]: id=Bjarn, type=Red Mage
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:170
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:721
 msgid "Bjarn"
@@ -219,23 +219,23 @@ msgstr "Έφραν"
 msgid "Fargus"
 msgstr "Φάργκους"
 
-#. [unit]: type=Horseman
+#. [unit]: id=Erik, type=Horseman
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:251
 msgid "Erik"
 msgstr "Έρικ"
 
-#. [unit]: type=Horseman
+#. [unit]: id=Heine, type=Horseman
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:263
 msgid "Heine"
 msgstr "Χέινε"
 
-#. [unit]: type=Horseman
+#. [unit]: id=Magnus, type=Horseman
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:275
 msgid "Magnus"
 msgstr "Μάγκνους"
 
-#. [side]: type=Knight
-#. [side]: type=Longbowman
+#. [side]: type=Knight, id=Arne
+#. [side]: type=Longbowman, id=Councillor Hoban
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:287
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:74
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:153
@@ -244,14 +244,15 @@ msgstr "Μάγκνους"
 msgid "Humans"
 msgstr ""
 
-#. [side]: type=Dark Sorcerer
+#. [side]: type=Dark Sorcerer, id=Mordak
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:300
 msgid "Mordak"
 msgstr "Μόρντακ"
 
-#. [side]: type=Dark Sorcerer
+#. [side]: type=Dark Sorcerer, id=Mordak
+#. [side]: type=Dark Sorcerer, id=Rotharik
 #. [side]
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Tairach
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:314
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:105
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:146
@@ -380,7 +381,7 @@ msgstr "Δεν ήταν τόσο δύσκολο!"
 msgid "All is lost now that I am dead..."
 msgstr "Όλα χάθηκαν τώρα που πέθανα..."
 
-#. [scenario]
+#. [scenario]: id=2_The_Chase
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:4
 msgid "The Chase"
 msgstr "Το κυνήγι"
@@ -409,12 +410,12 @@ msgstr ""
 msgid "Fight your way through the woods before the kidnappers escape"
 msgstr "Άνοιξε δρόμο προς το δάσος πριν οι απαγωγείς το σκάσουν"
 
-#. [side]: type=Elvish Rider
+#. [side]: type=Elvish Rider, id=Nil-Galion
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:168
 msgid "Nil-Galion"
 msgstr "Νίλ-Γκάλιον"
 
-#. [side]: type=Elvish Rider
+#. [side]: type=Elvish Rider, id=Nil-Galion
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:175
 msgid "Elves"
 msgstr ""
@@ -477,7 +478,7 @@ msgid ""
 "offer."
 msgstr ""
 
-#. [unit]: type=Dark Adept
+#. [unit]: type=Dark Adept, id=Muff Toras
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:314
 msgid "Muff Toras"
 msgstr "Μουφ Τόρας"
@@ -575,7 +576,7 @@ msgstr ""
 msgid "Bind him and take him with us. If he has played us false, he will die."
 msgstr ""
 
-#. [unit]: type=Iron Mauler
+#. [unit]: id=Brena, type=Iron Mauler
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:437
 msgid "Brena"
 msgstr "Μπρένα"
@@ -676,24 +677,24 @@ msgstr ""
 msgid "Catch the kidnappers"
 msgstr "Άντε, άντρες, ας πιάσουμε αυτούς τους απαγωγείς!"
 
-#. [terrain]
+#. [terrain]: id=magic_irongate
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:6
 msgid "Irongate"
 msgstr "Σιδερένια πύλη"
 
-#. [scenario]
+#. [scenario]: id=3_Guarded_Castle
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:16
 msgid "Guarded Castle"
 msgstr "Φρουρούμενο Κάστρο"
 
-#. [side]: type=Dark Sorcerer
+#. [side]: type=Dark Sorcerer, id=Rotharik
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:87
 msgid "Rotharik"
 msgstr "Ρόθαρικ"
 
-#. [unit]: type=Assassin
+#. [unit]: id=Guard_leader, type=Assassin
 #. [unit]: role=Guard, type=Bandit
-#. [unit]: type=Rogue
+#. [unit]: id=Guard2_leader, type=Rogue
 #. [unit]: role=Guard2, type=Bandit
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:109
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:117
@@ -710,7 +711,7 @@ msgstr "Ρόθαρικ"
 msgid "Guard"
 msgstr "Φύλακας"
 
-#. [unit]: type=Orcish Warrior
+#. [unit]: id=Knago-Brek, type=Orcish Warrior
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:152
 msgid "Knago-Brek"
 msgstr "Κνάγκο-Μπρεκ"
@@ -977,7 +978,7 @@ msgstr "Άργησες πολύ! Ο αδερφός σου είναι ήδη νε
 msgid "Argh!!!"
 msgstr "Αααχχ!!!"
 
-#. [scenario]
+#. [scenario]: id=4_Return_To_The_Village
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:4
 msgid "Return to the Village"
 msgstr "Επέστρεψε στο Χωριό"
@@ -993,13 +994,13 @@ msgstr "Μάθε τι συμβαίνει στο χωριό"
 msgid "Death of Bjarn"
 msgstr "Ο Θάνατος του Μπτζάρν"
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Tairach
 #: data/campaigns/Two_Brothers/scenarios/5_Epilog.cfg:59
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:104
 msgid "Tairach"
 msgstr "Τάιραχ"
 
-#. [side]: type=Longbowman
+#. [side]: type=Longbowman, id=Councillor Hoban
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:132
 msgid "Councillor Hoban"
 msgstr "Σύμβουλος Χόμπαν"
@@ -1124,7 +1125,7 @@ msgstr ""
 "Ήμουν πολύ αδύναμος για να προστατέψω αυτούς τους ανθρώπους. Μα γιατί συνέβη "
 "αυτό σε μένα;!;"
 
-#. [scenario]
+#. [scenario]: id=epilog
 #: data/campaigns/Two_Brothers/scenarios/5_Epilog.cfg:4
 #, fuzzy
 msgid "A Tale of Two Brothers - Epilogue"

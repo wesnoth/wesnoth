@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-tsg\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-27 19:54+0100\n"
+"POT-Creation-Date: 2008-11-29 12:25+0100\n"
 "PO-Revision-Date: 2008-10-03 19:59+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish <wesnoth-tr@googlegroups.com>\n"
@@ -18,17 +18,17 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#. [campaign]
+#. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:9
 msgid "The South Guard"
 msgstr "Güney Karakolu"
 
-#. [campaign]
+#. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:10
 msgid "TSG"
 msgstr "GK"
 
-#. [campaign]
+#. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:19
 msgid ""
 "A young Knight, Deoran, is dispatched to take command of the South Guard... "
@@ -44,32 +44,32 @@ msgstr ""
 "\n"
 "(Acemi düzeyi; senaryo akışına bağlı olarak 9 veya 10 senaryo.)"
 
-#. [campaign]
+#. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:22
 msgid "Civilian"
 msgstr "Sivil"
 
-#. [campaign]
+#. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:22
 msgid "(Beginner)"
 msgstr "(Yeni başlayanlar)"
 
-#. [campaign]
+#. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:23
 msgid "(Easy)"
 msgstr "(Kolay)"
 
-#. [campaign]
+#. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:23
 msgid "Recruit"
 msgstr "Acemi Asker"
 
-#. [campaign]
+#. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:24
 msgid "Soldier"
 msgstr "Asker"
 
-#. [campaign]
+#. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:24
 msgid "(Normal)"
 msgstr "(Normal)"
@@ -89,14 +89,14 @@ msgstr "Seferberlik Bakımı"
 msgid "Artwork and Graphics Design"
 msgstr "Sanatsal ve Çizgesel Tasarım"
 
-#. [scenario]
+#. [scenario]: id=1_Born_To_The_Banner
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:5
 msgid "Born to the Banner"
 msgstr "Bayrağı Dalgalandırmak"
 
-#. [side]: type=Horseman Commander
-#. [side]: type=Dismounted Commander 1
-#. [side]
+#. [side]: type=Horseman Commander, id=Deoran
+#. [side]: type=Dismounted Commander 1, id=Deoran
+#. [side]: id=Deoran
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:26
 #: data/campaigns/The_South_Guard/scenarios/10a_Elf_Epilogue.cfg:17
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:26
@@ -114,11 +114,12 @@ msgstr "Bayrağı Dalgalandırmak"
 msgid "Deoran"
 msgstr "Deoran"
 
-#. [side]: type=Horseman Commander
-#. [side]: type=Troll Hero
+#. [side]: type=Horseman Commander, id=Deoran
+#. [side]: type=Troll Hero, id=Grek
 #. [side]
-#. [side]: type=Lieutenant
-#. [side]: type=Dismounted Commander 1
+#. [side]: type=Lieutenant, id=Plynry
+#. [side]: type=Dismounted Commander 1, id=Deoran
+#. [side]: id=Deoran
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:30
 #: data/campaigns/The_South_Guard/scenarios/10a_Elf_Epilogue.cfg:20
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:30
@@ -139,14 +140,16 @@ msgstr "Deoran"
 msgid "South Guard"
 msgstr "Güney Karakolu"
 
-#. [side]: type=Bandit
+#. [side]: type=Bandit, id=Urza Mathin
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:54
 msgid "Urza Mathin"
 msgstr "Urza Matin"
 
-#. [side]: type=Outlaw
-#. [side]: type=Rogue
-#. [side]: type=Bandit
+#. [side]: type=Outlaw, id=Tharzo Kalain
+#. [side]: type=Rogue, id=Urza Fastik
+#. [side]: type=Outlaw, id=Urza Afalas
+#. [side]: type=Bandit, id=Urza Mathin
+#. [side]: type=Outlaw, id=Urza Nalmath
 #. [side]
 #: data/campaigns/The_South_Guard/scenarios/08a_Return_To_Kerlath.cfg:107
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:60
@@ -231,7 +234,7 @@ msgstr ""
 "Bir önceki kumandan, Loris, zamanını oyun ve eğlencelerle israf etmiş; "
 "haydutlar da meydanı boş bulup bölgeyi istila etmiştir..."
 
-#. [unit]
+#. [unit]: id=Moreth
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:165
 msgid "Moreth"
 msgstr "Moret"
@@ -303,7 +306,7 @@ msgid ""
 msgstr ""
 "Ha ha! Yeni kumandan daha çocuk. Onun kaderi de domuz Loris gibi olacak!"
 
-#. [unit]: type=South Guard Captain
+#. [unit]: type=South Guard Captain, id=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:234
 msgid "Sir Gerrick"
 msgstr "Bay Gerik"
@@ -465,12 +468,12 @@ msgstr ""
 "birimleri daha az hasar verebilecek. Gündüz onun birimlerinden ne kadar çok "
 "öldürürsen o kadar iyi."
 
-#. [unit]: type=Merman Warrior, type=Merman Warrior, type=Merman Fighter
+#. [unit]: type=Merman Warrior, type=Merman Warrior, type=Merman Fighter, id=Myssh
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:418
 msgid "Myssh"
 msgstr "Misiş"
 
-#. [unit]: type=Merman Spearman, type=Merman Hunter, type=Merman Hunter
+#. [unit]: type=Merman Spearman, type=Merman Hunter, type=Merman Hunter, id=Ylla
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:437
 msgid "Ylla"
 msgstr "Yılla"
@@ -504,8 +507,8 @@ msgstr ""
 "ırktır. Onları nehirlerde ve bataklıklarda tutarsan oralarda iyi savaşırlar! "
 "Kuru toprağa koyarsan sorun yaşarlar!"
 
-#. [unit]: type=Longbowman
-#. [unit]: type=Peasant
+#. [unit]: type=Longbowman, id=Aleron
+#. [unit]: type=Peasant, id=Aleron
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:484
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:520
 msgid "Aleron"
@@ -580,7 +583,7 @@ msgstr ""
 "Hatlarımızın gerisinde kalan köylere asker yerleştirin ve düşmanı gece "
 "yanımıza yaklaştırmayın."
 
-#. [unit]: type=Footpad
+#. [unit]: type=Footpad, id=Glasar
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:552
 msgid "Glasar"
 msgstr "Glasar"
@@ -668,7 +671,7 @@ msgstr ""
 "Bu umduğumdan da kötü. Hemen Vestin’e gidip Bay Loris'i bulmalı ve iyi "
 "olduğundan emin olmalıyız! Haydi! Atlarınızı Vestin’e sürün!"
 
-#. [scenario]
+#. [scenario]: id=2_Proven_By_The_Sword
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:5
 msgid "Proven By The Sword"
 msgstr "Kılıçla Kanıtlanan"
@@ -678,7 +681,7 @@ msgstr "Kılıçla Kanıtlanan"
 msgid "Westin"
 msgstr "Vestin"
 
-#. [side]: type=Outlaw
+#. [side]: type=Outlaw, id=Urza Nalmath
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:63
 msgid "Urza Nalmath"
 msgstr "Urza Nalmat"
@@ -745,7 +748,7 @@ msgstr "Vestin Kalesinin komutası artık sende Deoran."
 msgid "Bring Deoran to the Citadel of Westin."
 msgstr "Deoran’ı Vestin Kalesine götür."
 
-#. [unit]: type=White Mage
+#. [unit]: type=White Mage, id=Minister Hylas
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:304
 msgid "Minister Hylas"
 msgstr "Bakan Haylas"
@@ -1003,12 +1006,12 @@ msgstr ""
 "Deoran atlı takviye birlikleri istemek için bir süvari gönderdi ve Eten "
 "ormanlarına doğru hemen yola çıktı."
 
-#. [scenario]
+#. [scenario]: id=3_A_Desperate_Errand
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:5
 msgid "A Desperate Errand"
 msgstr "Ümitsiz Teşebbüs"
 
-#. [side]: type=Rogue
+#. [side]: type=Rogue, id=Urza Fastik
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:57
 msgid "Urza Fastik"
 msgstr "Urza Fastik"
@@ -1080,7 +1083,7 @@ msgid "There is so much ground to cover. If only our riders would arrive!"
 msgstr ""
 "Bakılacak çok fazla yer var. Varacak olanlar sadece binicilerimiz olacak!"
 
-#. [unit]
+#. [unit]: id=Jarek
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:206
 msgid "Jarek"
 msgstr "Jarek"
@@ -1159,7 +1162,7 @@ msgstr "Vardanos"
 msgid "Talchar"
 msgstr "Talçar"
 
-#. [unit]: type=Elvish Shyde, type=Elvish Druid
+#. [unit]: type=Elvish Shyde, type=Elvish Druid, id=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:293
 msgid "Ethiliel"
 msgstr "Etilyel"
@@ -1250,22 +1253,24 @@ msgstr ""
 msgid "My thanks, lady."
 msgstr "Teşekkür ederim, hanımefendi."
 
-#. [scenario]
+#. [scenario]: id=4_Vale_of_Tears
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:5
 msgid "Vale of Tears"
 msgstr "Keder Vadisi"
 
-#. [side]: type=Dark Adept, type=Dark Sorcerer, type=Necromancer
+#. [side]: type=Dark Adept, type=Dark Sorcerer, type=Necromancer, id=Mal A'kai
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:68
 msgid "Mal A'kai"
 msgstr "Mal Akayi"
 
-#. [side]: type=Dark Adept, type=Dark Sorcerer, type=Necromancer
-#. [side]: type=Outlaw
-#. [side]: type=Lich, type=Lich, type=Ancient Lich
-#. [side]: type=Soulless
-#. [side]: type=Ancient Lich
-#. [side]: type=Lich
+#. [side]: type=Dark Adept, type=Dark Sorcerer, type=Necromancer, id=Mal A'kai
+#. [side]: type=Outlaw, id=Jera Ilras
+#. [side]: type=Lich, type=Lich, type=Ancient Lich, id=Mal M'Brin
+#. [side]: type=Soulless, id=Groth
+#. [side]: type=Ancient Lich, id=Mal M'Brin
+#. [side]: type=Lich, id=Mal Tera
+#. [side]: type=Soulless, id=Gruth
+#. [side]: type=Lich, id=Mal M'brin
 #. [side]
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:74
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:116
@@ -1280,7 +1285,7 @@ msgstr "Mal Akayi"
 msgid "Undead"
 msgstr "Yarı Ölüler"
 
-#. [side]: type=Outlaw
+#. [side]: type=Outlaw, id=Jera Ilras
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:110
 msgid "Jera Ilras"
 msgstr "Jera Ilras"
@@ -1449,7 +1454,7 @@ msgstr "Senin bir koruyucun mu var?!"
 msgid "You have a bodyguard?!!"
 msgstr "Senin bir koruyucun mu var?!!"
 
-#. [unit]: type=Elvish Ranger
+#. [unit]: id=Elvish Bodyguard, type=Elvish Ranger
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:366
 msgid "Elvish Bodyguard"
 msgstr "Elf Koruyucu"
@@ -1549,24 +1554,24 @@ msgstr ""
 "İyi, öç almak ya da almamak, eğer bize ormanın içine doğru liderlik "
 "ederseniz, sizi izler ve bu yarı ölülerle savaşırız."
 
-#. [scenario]
+#. [scenario]: id=5_Choice_In_The_Fog
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:5
 msgid "Choice in the Fog"
 msgstr "Siste Seçim"
 
-#. [side]: type=Outlaw
-#. [unit]: type=Outlaw
+#. [side]: type=Outlaw, id=Urza Afalas
+#. [unit]: type=Outlaw, id=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:62
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:479
 msgid "Urza Afalas"
 msgstr "Urza Afalas"
 
-#. [side]: type=Soulless
+#. [side]: type=Soulless, id=Gruth
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:87
 msgid "Gruth"
 msgstr "Grut"
 
-#. [side]: type=Lich
+#. [side]: type=Lich, id=Mal M'brin
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:120
 msgid "?"
 msgstr ""
@@ -1891,7 +1896,7 @@ msgstr ""
 "Aptallar! O yarı ölü büyücüsü hepimizi öldürecek! Ölüm fermanımızı "
 "imzaladınız!"
 
-#. [unit]: type=Sea Serpent
+#. [unit]: type=Sea Serpent, id=Beast of the Lake
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:687
 msgid "Beast of the Lake"
 msgstr "Gölün Canavarı"
@@ -2055,7 +2060,7 @@ msgid ""
 msgstr ""
 "Elveda Deoran! Kerlat’a döndüğün zaman seni karşılamak için orada olacağım."
 
-#. [scenario]
+#. [scenario]: id=6a_Tidings_Good_And_Ill
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:5
 msgid "Tidings, Good and Ill"
 msgstr "İyi ve Kötü Haber"
@@ -2131,7 +2136,7 @@ msgstr "Lesiş"
 msgid "Kallen"
 msgstr "Kallen"
 
-#. [unit]: type=Elvish Ranger
+#. [unit]: type=Elvish Ranger, id=Eliomir
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:175
 msgid "Eliomir"
 msgstr "Elyomir"
@@ -2337,7 +2342,7 @@ msgstr ""
 "Konsey uygulanacak en iyi yöntem hakkında konuşadursun, Deoran ve Etilyel "
 "Mebrin’in kalesinin altında bulunan mağaralara girmeye hazırlanıyordu..."
 
-#. [scenario]
+#. [scenario]: id=6b_The_Long_March
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:5
 msgid "The Long March"
 msgstr "Uzun Yürüyüş"
@@ -2460,7 +2465,7 @@ msgid ""
 msgstr ""
 "Siz insanlar Bilge Mebrin’i kaçırdınız. Suçunuzun cezasını çekeceksiniz."
 
-#. [message]
+#. [message]: id=Deoran
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:845
 #, fuzzy
 msgid ""
@@ -2523,30 +2528,30 @@ msgid "But there was a dark cloud looming behind Deoran and his men..."
 msgstr ""
 "Fakat Deoran ve adamlarının arkasından çökmekte olan kara bir bulut vardı..."
 
-#. [scenario]
+#. [scenario]: id=7a_Into_The_Depths
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:5
 msgid "Into The Depths"
 msgstr "Derinliklere Doğru"
 
-#. [side]: type=Lich, type=Lich, type=Ancient Lich
-#. [side]: type=Ancient Lich
+#. [side]: type=Lich, type=Lich, type=Ancient Lich, id=Mal M'Brin
+#. [side]: type=Ancient Lich, id=Mal M'Brin
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:57
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_In_The_Flood.cfg:54
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:54
 msgid "Mal M'Brin"
 msgstr "Mal Embrin"
 
-#. [side]: type=Soulless
+#. [side]: type=Soulless, id=Groth
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:103
 msgid "Groth"
 msgstr "Grot"
 
-#. [side]: type=Troll Hero
+#. [side]: type=Troll Hero, id=Grek
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:144
 msgid "Grek"
 msgstr "Grek"
 
-#. [unit]: type=Eyestalk
+#. [unit]: type=Eyestalk, id=Eye Guardian
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:223
 msgid "Eye Guardian"
 msgstr "Göz Muhafız"
@@ -2912,12 +2917,12 @@ msgstr ""
 "Hayır! Bu olamaz. Evvelce yönettiğim elfler işimi bitirdi. Yaptığım onca "
 "fedakarlıktan sonra, gene de ölüyorum..."
 
-#. [scenario]
+#. [scenario]: id=7b_Pebbles_In_The_Flood
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_In_The_Flood.cfg:5
 msgid "Pebbles in the Flood"
 msgstr "Taşkındaki Çakıllar"
 
-#. [side]: type=Lich
+#. [side]: type=Lich, id=Mal Tera
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_In_The_Flood.cfg:82
 msgid "Mal Tera"
 msgstr "Mal Tera"
@@ -3095,7 +3100,7 @@ msgstr ""
 "Sizin işinizi bitirdiğimiz gibi Vestin’in de işini bitireceğiz! Bizimle "
 "ülkemiz arasında ayakta hiçbir şey kalmayacak."
 
-#. [scenario]
+#. [scenario]: id=8a_Return_To_Kerlath
 #: data/campaigns/The_South_Guard/scenarios/08a_Return_To_Kerlath.cfg:4
 msgid "Return To Kerlath"
 msgstr "Kerlat’a Dönüş"
@@ -3105,12 +3110,12 @@ msgstr "Kerlat’a Dönüş"
 msgid "Move Deoran into Kerlath Province"
 msgstr "Deoran’ı Kerlat Eyaletine götür"
 
-#. [side]: type=Outlaw
+#. [side]: type=Outlaw, id=Tharzo Kalain
 #: data/campaigns/The_South_Guard/scenarios/08a_Return_To_Kerlath.cfg:96
 msgid "Tharzo Kalain"
 msgstr "Tarzo Kalin"
 
-#. [side]: type=Lieutenant
+#. [side]: type=Lieutenant, id=Plynry
 #: data/campaigns/The_South_Guard/scenarios/08a_Return_To_Kerlath.cfg:140
 msgid "Plynry"
 msgstr "Pilinri"
@@ -3178,7 +3183,7 @@ msgstr ""
 "Elf dostlar mı? Vestin’e gitmekte acele ederseniz iyi olacağını düşünüyorum. "
 "Eten ormanı elfleriyle sorunlar olduğuna dair söylentiler var."
 
-#. [scenario]
+#. [scenario]: id=8b_The_Tides_of_War
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:5
 msgid "The Tides of War"
 msgstr "Savaş Eğilimleri"
@@ -3355,12 +3360,12 @@ msgstr "Artık Vestin’i asla özgür göremeyeceğim..."
 msgid "Far from home I fall - but not in vain! Guard our people, Deoran!"
 msgstr "Evimden uzağa düştüm - fakat boşuna değil! Halkımızı koru Deoran!"
 
-#. [scenario]
+#. [scenario]: id=9a_Vengeance
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:5
 msgid "Vengeance"
 msgstr "İntikam"
 
-#. [side]: type=Dismounted Commander 1
+#. [side]: type=Dismounted Commander 1, id=Deoran
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:45
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:46
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:47
@@ -3370,12 +3375,12 @@ msgstr "İntikam"
 msgid "Westin Guard"
 msgstr "Vestin Muhafızı"
 
-#. [side]: type=Elvish Marshal
+#. [side]: type=Elvish Marshal, id=Ithelden
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:61
 msgid "Ithelden"
 msgstr "Itelden"
 
-#. [side]: type=Elvish Marshal
+#. [side]: type=Elvish Marshal, id=Ithelden
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:64
 msgid "Enraged Elves"
 msgstr "Öfkeli Elfler"
@@ -3422,7 +3427,7 @@ msgstr ""
 msgid "Help!"
 msgstr "İmdat!"
 
-#. [unit]: type=Peasant
+#. [unit]: type=Peasant, id=Poor Farmer
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:151
 msgid "Poor Farmer"
 msgstr "Zavallı Çiftçi"
@@ -3472,7 +3477,7 @@ msgstr ""
 "birlikte öleceksin!"
 
 #. [event]
-#. [unit]: type=$unit_type
+#. [unit]: type=$unit_type, id=Disciple of Mebrin
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:212
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:213
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:214
@@ -3548,18 +3553,19 @@ msgstr "Etilyel’i Itelden ile Büyük Ağaca konuşmaya götür."
 msgid "I feel like I belong on this spot."
 msgstr "Kendimi buraya ait hissediyorum."
 
-#. [scenario]
+#. [scenario]: id=10a_Elf_Epilogue
+#. [scenario]: id=9b_Bandit_Epilogue
 #: data/campaigns/The_South_Guard/scenarios/10a_Elf_Epilogue.cfg:5
 #: data/campaigns/The_South_Guard/scenarios/09b_Bandit_Epilogue.cfg:5
 msgid "Epilogue"
 msgstr "Son Söz"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=South Guard Commander, race=human
 #: data/campaigns/The_South_Guard/units/Assault_Commander.cfg:4
 msgid "Infantry Commander"
 msgstr "Piyade Komutanı"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=South Guard Commander, race=human
 #: data/campaigns/The_South_Guard/units/Assault_Commander.cfg:29
 msgid ""
 "Veteran commanders have faced battle many times and led their men with "
@@ -3579,14 +3585,18 @@ msgstr "kılıç"
 msgid "shield"
 msgstr "kalkan"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Dismounted Commander 1, race=human
+#. [unit_type]: id=Dismounted Commander 2, race=human
+#. [unit_type]: id=Dismounted Commander 3, race=human
 #: data/campaigns/The_South_Guard/units/Dismounted_Commander.cfg:4
 #: data/campaigns/The_South_Guard/units/Dismounted_Commander.cfg:80
 #: data/campaigns/The_South_Guard/units/Dismounted_Commander.cfg:202
 msgid "Dismounted Commander"
 msgstr "Atsız Komutan"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Dismounted Commander 1, race=human
+#. [unit_type]: id=Dismounted Commander 2, race=human
+#. [unit_type]: id=Dismounted Commander 3, race=human
 #: data/campaigns/The_South_Guard/units/Dismounted_Commander.cfg:24
 #: data/campaigns/The_South_Guard/units/Dismounted_Commander.cfg:100
 #: data/campaigns/The_South_Guard/units/Dismounted_Commander.cfg:223
@@ -3615,12 +3625,12 @@ msgstr "kargı"
 msgid "mace"
 msgstr "topuz"
 
-#. [unit_type]: race=monster
+#. [unit_type]: id=Eyestalk, race=monster
 #: data/campaigns/The_South_Guard/units/Eyestalk.cfg:4
 msgid "Eyestalk"
 msgstr "Cingöz"
 
-#. [unit_type]: race=monster
+#. [unit_type]: id=Eyestalk, race=monster
 #: data/campaigns/The_South_Guard/units/Eyestalk.cfg:25
 msgid ""
 "Named 'Eyestalks' for obvious reasons, these plant-like creatures can focus "
@@ -3644,12 +3654,12 @@ msgstr "tokat"
 msgid "gaze"
 msgstr "dikbakış"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Horseman Commander, race=human
 #: data/campaigns/The_South_Guard/units/Horseman_Commander.cfg:4
 msgid "Horseman Commander"
 msgstr "Atlı Kumandan"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Horseman Commander, race=human
 #: data/campaigns/The_South_Guard/units/Horseman_Commander.cfg:27
 msgid ""
 "Leaders of the border guards, mounted commanders are trained not only to "
@@ -3660,12 +3670,12 @@ msgstr ""
 "eğitimi almakla kalmaz liderlik eğitimi de alırlar. Wesnoth eyaletlerinde "
 "düzeni sağlayan garnizonlara komuta ederler."
 
-#. [unit_type]: race=human
+#. [unit_type]: id=South Guard Captain, race=human
 #: data/campaigns/The_South_Guard/units/Infantry_Commander.cfg:4
 msgid "Infantry Lieutenant"
 msgstr "Piyade Teğmeni"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=South Guard Captain, race=human
 #: data/campaigns/The_South_Guard/units/Infantry_Commander.cfg:28
 msgid ""
 "Commanders of the infantry of Wesnoth are responsible for the garrison and "
@@ -3678,12 +3688,12 @@ msgstr ""
 "seçilirler ve hepsi savaşta yiğitlikleriyle ve liderlikleriyle öne çıkmış "
 "askerlerdir."
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Junior Commander, race=human
 #: data/campaigns/The_South_Guard/units/Junior_Commander.cfg:4
 msgid "Junior Commander"
 msgstr "Genç Komutan"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Junior Commander, race=human
 #: data/campaigns/The_South_Guard/units/Junior_Commander.cfg:27
 msgid ""
 "Scarcely 17 or 18 years old, the sons of knights and lords were given mounts "
@@ -3695,12 +3705,12 @@ msgstr ""
 "olmak onların Wesnoth ordularının kumandanları haline gelmesi için yeterince "
 "güçlü bir sebeptir."
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Mounted General, race=human
 #: data/campaigns/The_South_Guard/units/Mounted_General.cfg:4
 msgid "Mounted General"
 msgstr "Atlı General"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Mounted General, race=human
 #: data/campaigns/The_South_Guard/units/Mounted_General.cfg:29
 msgid ""
 "Being the most able leaders of the border guards, Mounted Generals are "

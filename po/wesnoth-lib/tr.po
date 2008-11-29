@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-lib\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-27 19:52+0100\n"
+"POT-Creation-Date: 2008-11-29 12:24+0100\n"
 "PO-Revision-Date: 2008-10-08 20:03+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish <wesnoth-tr@googlegroups.com>\n"
@@ -18,33 +18,41 @@ msgstr ""
 "X-Generator: KBabel 1.11.4\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#. [terrain]
+#. [terrain]: id=off_map
 #: data/core/terrain.cfg:13
 msgid "None"
 msgstr "Yok"
 
-#. [toggle_button]
-#. [terrain]
+#. [toggle_button]: id=shroud
+#. [terrain]: id=shroud
 #: data/core/terrain.cfg:22 data/gui/default/window/mp_create_game.cfg:473
 msgid "Shroud"
 msgstr "Örtü"
 
-#. [terrain]
+#. [terrain]: id=fog
 #: data/core/terrain.cfg:31
 msgid "Fog"
 msgstr "Savaş Dumanı"
 
-#. [terrain]
+#. [terrain]: id=ice
 #: data/core/terrain.cfg:43
 msgid "Ice"
 msgstr "Buz"
 
-#. [terrain]
+#. [terrain]: id=snow
 #: data/core/terrain.cfg:53
 msgid "Snow"
 msgstr "Kar"
 
-#. [terrain]
+#. [terrain]: id=bridge
+#. [terrain]: id=bridgediag1
+#. [terrain]: id=bridgediag2
+#. [terrain]: id=bridgechasm
+#. [terrain]: id=bridgechasmdiag1
+#. [terrain]: id=bridgechasmdiag2
+#. [terrain]: id=bridgelava
+#. [terrain]: id=bridgelavadiag1
+#. [terrain]: id=bridglavadiag2
 #: data/core/terrain.cfg:66 data/core/terrain.cfg:75 data/core/terrain.cfg:84
 #: data/core/terrain.cfg:95 data/core/terrain.cfg:104
 #: data/core/terrain.cfg:114 data/core/terrain.cfg:126
@@ -52,33 +60,40 @@ msgstr "Kar"
 msgid "Bridge"
 msgstr "Köprü"
 
-#. [terrain]
+#. [terrain]: id=encampment
 #: data/core/terrain.cfg:162
 msgid "Encampment"
 msgstr "Ordugah"
 
-#. [terrain]
+#. [terrain]: id=castle
+#. [terrain]: id=dwarven_castle
 #: data/core/terrain.cfg:173 data/core/terrain.cfg:183
 #: data/core/terrain.cfg:194
 msgid "Castle"
 msgstr "Kale"
 
-#. [terrain]
+#. [terrain]: id=ruin
 #: data/core/terrain.cfg:205
 msgid "Ruin"
 msgstr "Harabe"
 
-#. [terrain]
+#. [terrain]: id=sunkenruin
 #: data/core/terrain.cfg:216
 msgid "Sunken Ruin"
 msgstr "Çökük Harabe"
 
-#. [terrain]
+#. [terrain]: id=swampruin
 #: data/core/terrain.cfg:228
 msgid "Swamp Ruin"
 msgstr "Batak Harabe"
 
-#. [terrain]
+#. [terrain]: id=encampment_keep
+#. [terrain]: id=human_keep
+#. [terrain]: id=elven_keep
+#. [terrain]: id=dwarven_keep
+#. [terrain]: id=ruined_keep
+#. [terrain]: id=sunken_keep
+#. [terrain]: id=swamp_keep
 #: data/core/terrain.cfg:253 data/core/terrain.cfg:265
 #: data/core/terrain.cfg:277 data/core/terrain.cfg:289
 #: data/core/terrain.cfg:301 data/core/terrain.cfg:313
@@ -86,160 +101,184 @@ msgstr "Batak Harabe"
 msgid "Keep"
 msgstr "İç kale"
 
-#. [terrain]
+#. [terrain]: id=crater
 #: data/core/terrain.cfg:351
 msgid "Crater"
 msgstr "Krater"
 
-#. [terrain]
+#. [terrain]: id=desert
 #: data/core/terrain.cfg:361
 msgid "Desert"
 msgstr "Çöl"
 
-#. [terrain]
+#. [terrain]: id=sand_rubble
 #: data/core/terrain.cfg:371
 msgid "Rubble"
 msgstr "Moloz"
 
-#. [terrain]
+#. [terrain]: id=sand
 #: data/core/terrain.cfg:382
 msgid "Sand"
 msgstr "Kum"
 
-#. [terrain]
+#. [terrain]: id=oasis
 #: data/core/terrain.cfg:390
 msgid "Oasis"
 msgstr "Vaha"
 
-#. [terrain]
+#. [terrain]: id=snow_forest
 #: data/core/terrain.cfg:405
 msgid "Snow Forest"
 msgstr "Karlı Orman"
 
-#. [terrain]
+#. [terrain]: id=great_tree
 #: data/core/terrain.cfg:416
 msgid "Great Tree"
 msgstr "Ulu Ağaç"
 
-#. [terrain]
+#. [terrain]: id=forest
 #: data/core/terrain.cfg:426
 msgid "Forest"
 msgstr "Orman"
 
-#. [terrain]
+#. [terrain]: id=tropical_forest
 #: data/core/terrain.cfg:435
 msgid "Tropical Forest"
 msgstr "Tropik Orman"
 
-#. [terrain]
+#. [terrain]: id=forested_hills
 #: data/core/terrain.cfg:449
 msgid "Forested Hills"
 msgstr "Ağaçlık Tepeler"
 
-#. [terrain]
+#. [terrain]: id=forested_snow_hills
 #: data/core/terrain.cfg:459
 msgid "Forested Snow Hills"
 msgstr "Ağaçlık Karlı Tepeler"
 
-#. [terrain]
+#. [terrain]: id=grassland
+#. [terrain]: id=grassland_flowers
+#. [terrain]: id=windmill
 #: data/core/terrain.cfg:473 data/core/terrain.cfg:482
 #: data/core/terrain.cfg:491
 msgid "Grassland"
 msgstr "Çayır"
 
-#. [terrain]
+#. [terrain]: id=savanna
 #: data/core/terrain.cfg:500
 msgid "Savanna"
 msgstr "Bozkır"
 
-#. [terrain]
+#. [terrain]: id=snow_hills
 #: data/core/terrain.cfg:513
 msgid "Snow Hills"
 msgstr "Karlı Tepeler"
 
-#. [terrain]
+#. [terrain]: id=desert_hills
 #: data/core/terrain.cfg:523
 msgid "Dunes"
 msgstr "Kum Tepeleri"
 
-#. [terrain]
+#. [terrain]: id=hills
 #: data/core/terrain.cfg:533
 msgid "Hills"
 msgstr "Tepeler"
 
-#. [terrain]
+#. [terrain]: id=desert_mountains
+#. [terrain]: id=mountains
+#. [terrain]: id=snow_mountains
 #: data/core/terrain.cfg:545 data/core/terrain.cfg:554
 #: data/core/terrain.cfg:562
 msgid "Mountains"
 msgstr "Dağlar"
 
-#. [terrain]
+#. [terrain]: id=canyon
 #: data/core/terrain.cfg:576
 msgid "Chasm"
 msgstr "Kanyon"
 
-#. [terrain]
+#. [terrain]: id=lava_chasm
 #: data/core/terrain.cfg:585
 msgid "Lava chasm"
 msgstr "Lav çukuru"
 
-#. [terrain]
+#. [terrain]: id=lava
 #: data/core/terrain.cfg:595
 msgid "Lava"
 msgstr "Lav"
 
-#. [terrain]
+#. [terrain]: id=road
+#. [terrain]: id=stone_path
 #: data/core/terrain.cfg:609 data/core/terrain.cfg:627
 #: data/core/terrain.cfg:636
 msgid "Road"
 msgstr "Yol"
 
-#. [terrain]
+#. [terrain]: id=dirt
 #: data/core/terrain.cfg:618
 msgid "Dirt"
 msgstr "Çamur"
 
-#. [terrain]
+#. [terrain]: id=farm
 #: data/core/terrain.cfg:645
 msgid "Farmland"
 msgstr "Tarla"
 
-#. [terrain]
+#. [terrain]: id=swamp_water
 #: data/core/terrain.cfg:659
 msgid "Swamp"
 msgstr "Bataklık"
 
-#. [terrain]
+#. [terrain]: id=lit
 #: data/core/terrain.cfg:673
 msgid "Lit"
 msgstr "Hüzme"
 
-#. [terrain]
+#. [terrain]: id=cave
 #: data/core/terrain.cfg:683
 msgid "Cave"
 msgstr "Mağara"
 
-#. [terrain]
+#. [terrain]: id=cave_path
 #: data/core/terrain.cfg:701
 msgid "Cave path"
 msgstr "Mağara yolu"
 
-#. [terrain]
+#. [terrain]: id=fungus
 #: data/core/terrain.cfg:710
 msgid "Mushroom Grove"
 msgstr "Mantar Korusu"
 
-#. [terrain]
+#. [terrain]: id=fungus_beam
 #: data/core/terrain.cfg:719
 msgid "Mushroom Grove Lit"
 msgstr "Işıklı Mantar Korusu"
 
-#. [terrain]
+#. [terrain]: id=rocky_cave
 #: data/core/terrain.cfg:730
 msgid "Rockbound Cave"
 msgstr "Taşlık Mağara"
 
-#. [terrain]
+#. [terrain]: id=desert_village
+#. [terrain]: id=elven_snow_village
+#. [terrain]: id=village
+#. [terrain]: id=snow_village
+#. [terrain]: id=hill_village
+#. [terrain]: id=snow-hill_village
+#. [terrain]: id=snow-mountain_village
+#. [terrain]: id=mountain_village
+#. [terrain]: id=tropical_forest_village
+#. [terrain]: id=camp_village
+#. [terrain]: id=underground_village
+#. [terrain]: id=dwarven_village
+#. [terrain]: id=hut_village
+#. [terrain]: id=hut_snow_village
+#. [terrain]: id=hut_hills_village
+#. [terrain]: id=hut_snow_hills_village
+#. [terrain]: id=hut_mountains_village
+#. [terrain]: id=mermen_village
+#. [terrain]: id=swamp_village
+#. [terrain]: id=swamp_merfolk-village
 #: data/core/terrain.cfg:757 data/core/terrain.cfg:768
 #: data/core/terrain.cfg:781 data/core/terrain.cfg:792
 #: data/core/terrain.cfg:805 data/core/terrain.cfg:816
@@ -255,67 +294,67 @@ msgstr "Taşlık Mağara"
 msgid "Village"
 msgstr "Köy"
 
-#. [terrain]
+#. [terrain]: id=deep_water
 #: data/core/terrain.cfg:1026
 msgid "Deep Water"
 msgstr "Derin Su"
 
-#. [terrain]
+#. [terrain]: id=shallow_water
 #: data/core/terrain.cfg:1036
 msgid "Shallow Water"
 msgstr "Sığ Su"
 
-#. [terrain]
+#. [terrain]: id=ford
 #: data/core/terrain.cfg:1046
 msgid "River Ford"
 msgstr "Sığ Geçit"
 
-#. [terrain]
+#. [terrain]: id=reef
 #: data/core/terrain.cfg:1057
 msgid "Coastal Reef"
 msgstr "Kayalık Sahil"
 
-#. [terrain]
+#. [terrain]: id=cloud
 #: data/core/terrain.cfg:1071
 msgid "Impassable Mountains"
 msgstr "Aşılmaz Dağlar"
 
-#. [terrain]
+#. [terrain]: id=clouddesert
 #: data/core/terrain.cfg:1080
 msgid "Impassable Desert Mountains"
 msgstr "Aşılmaz Çöl Dağları"
 
-#. [terrain]
+#. [terrain]: id=cavewall
 #: data/core/terrain.cfg:1089
 msgid "Cave Wall"
 msgstr "Mağara Duvarı"
 
-#. [terrain]
+#. [terrain]: id=wall_stone
 #: data/core/terrain.cfg:1098
 msgid "Wall"
 msgstr "Duvar"
 
-#. [terrain]
+#. [terrain]: id=void
 #: data/core/terrain.cfg:1108
 msgid "Void"
 msgstr "Boş"
 
-#. [terrain]
+#. [terrain]: id=flat
 #: data/core/terrain.cfg:1121
 msgid "Flat"
 msgstr "Çayır"
 
-#. [terrain]
+#. [terrain]: id=frozen
 #: data/core/terrain.cfg:1128
 msgid "Frozen"
 msgstr "Kar"
 
-#. [terrain]
+#. [terrain]: id=impassable
 #: data/core/terrain.cfg:1135
 msgid "Impassable"
 msgstr "Geçit Vermez"
 
-#. [terrain]
+#. [terrain]: id=unwalkable
 #: data/core/terrain.cfg:1142
 msgid "Unwalkable"
 msgstr "Yürünmez"
@@ -352,7 +391,7 @@ msgstr "Eklentileri güncelle"
 msgid "Remove Add-ons"
 msgstr "Eklentileri Sil"
 
-#. [button]
+#. [button]: id=ok
 #: data/gui/default/window/addon_connect.cfg:201
 #: data/gui/default/window/addon_connect.cfg:202
 #: data/gui/default/window/mp_connect.cfg:175
@@ -361,7 +400,7 @@ msgid "Connect"
 msgstr "Bağlan"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
-#. [button]
+#. [button]: id=cancel
 #: data/gui/default/window/addon_connect.cfg:216
 #: data/gui/default/window/editor_generate_map.cfg:111
 #: data/gui/default/window/editor_new_map.cfg:111
@@ -381,19 +420,19 @@ msgstr "İptal"
 msgid "Generate Random Map"
 msgstr "Rastgele Harita Üret"
 
-#. [button]
+#. [button]: id=next_generator
 #: data/gui/default/window/editor_generate_map.cfg:67
 #: data/gui/default/window/editor_generate_map.cfg:68
 msgid "Next Generator"
 msgstr "Sonraki Üreteç"
 
-#. [button]
+#. [button]: id=settings
 #: data/gui/default/window/editor_generate_map.cfg:90
 #: data/gui/default/window/editor_generate_map.cfg:91
 msgid "Settings"
 msgstr "Ayarlar"
 
-#. [button]
+#. [button]: id=ok
 #: data/gui/default/window/editor_generate_map.cfg:101
 msgid "Generate"
 msgstr "Üret"
@@ -416,7 +455,7 @@ msgstr "Eni:"
 msgid "Height:"
 msgstr "Boyu:"
 
-#. [button]
+#. [button]: id=ok
 #: data/gui/default/window/editor_new_map.cfg:100
 #: data/gui/default/window/editor_new_map.cfg:101
 msgid "Create new map"
@@ -453,12 +492,12 @@ msgstr "Eski yükseklik:"
 msgid "Expand / shrink direction"
 msgstr "Kenarı uzat/kısalt"
 
-#. [toggle_button]
+#. [toggle_button]: id=copy_edge_terrain
 #: data/gui/default/window/editor_resize_map.cfg:242
 msgid "Copy edge terrain"
 msgstr "Arazi kenarlarını kopyala"
 
-#. [button]
+#. [button]: id=ok
 #: data/gui/default/window/editor_resize_map.cfg:264
 #: data/gui/default/window/editor_resize_map.cfg:265
 msgid "Resize map"
@@ -476,19 +515,19 @@ msgstr "Düzenleyici Ayarları"
 msgid "Time of day lighting preset"
 msgstr "Vaktin aydınlığını sıfırla"
 
-#. [button]
+#. [button]: id=next_tod
 #: data/gui/default/window/editor_settings.cfg:75
 #: data/gui/default/window/editor_settings.cfg:76
 msgid "Next"
 msgstr "Sonraki"
 
-#. [toggle_button]
+#. [toggle_button]: id=custom_tod_toggle
 #: data/gui/default/window/editor_settings.cfg:83
 #, fuzzy
 msgid "Custom lighting setting"
 msgstr "Özel aydınlatma ayarları"
 
-#. [toggle_button]
+#. [toggle_button]: id=custom_tod_auto_refresh
 #: data/gui/default/window/editor_settings.cfg:93
 msgid "Auto-update map view"
 msgstr "Harite görünümünü güncel tut"
@@ -508,20 +547,21 @@ msgstr "Yeşil:"
 msgid "Blue:"
 msgstr "Mavi:"
 
-#. [toggle_button]
+#. [toggle_button]: id=use_mdi
 #: data/gui/default/window/editor_settings.cfg:208
 msgid "Allow more than one map to be open at the same time (MDI)"
 msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
-#. [button]
+#. [button]: id=ok
 #: data/gui/default/window/editor_settings.cfg:230
+#: data/gui/default/window/mp_method_selection.cfg:205
 #: src/construct_dialog.cpp:125 src/construct_dialog.cpp:132
 msgid "OK"
 msgstr "Tamam"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
-#. [button]
+#. [button]: id=apply
 #: data/gui/default/window/editor_settings.cfg:250
 #: src/game_preferences_display.cpp:188
 msgid "Apply"
@@ -539,7 +579,7 @@ msgstr "Dil"
 msgid "Choose your preferred language:"
 msgstr "Dil tercihinizi belirtin:"
 
-#. [button]
+#. [button]: id=ok
 #: data/gui/default/window/language_selection.cfg:121
 #: data/gui/default/window/language_selection.cfg:122
 msgid "Change language"
@@ -551,7 +591,7 @@ msgstr "Dili değiştir"
 msgid "You will now connect to the multiplayer server."
 msgstr "Çok oyunculu oyun sunucusuna bağlanıyorsunuz."
 
-#. [button]
+#. [button]: id=list
 #: data/gui/default/window/mp_connect.cfg:148
 msgid "View List"
 msgstr "Listeyi Göster"
@@ -562,18 +602,18 @@ msgid "Create Game"
 msgstr "Oyun Üret"
 
 #. [label]
-#. [text_box]
+#. [text_box]: id=game_name
 #: data/gui/default/window/mp_create_game.cfg:62
 #: data/gui/default/window/mp_create_game.cfg:77
 msgid "Name of game:"
 msgstr "Oyunun adı:"
 
-#. [label]
+#. [label]: id=map_players
 #: data/gui/default/window/mp_create_game.cfg:140
 msgid "Players: "
 msgstr "Oyuncular: "
 
-#. [label]
+#. [label]: id=map_size
 #: data/gui/default/window/mp_create_game.cfg:159
 msgid "Map size: "
 msgstr "Harita Boyutları:"
@@ -583,12 +623,12 @@ msgstr "Harita Boyutları:"
 msgid "Era:"
 msgstr "Çağ:"
 
-#. [button]
+#. [button]: id=era
 #: data/gui/default/window/mp_create_game.cfg:196
 msgid "Default"
 msgstr "Öntanımlı"
 
-#. [button]
+#. [button]: id=password
 #: data/gui/default/window/mp_create_game.cfg:218
 msgid "Set Password"
 msgstr "Parola Ata"
@@ -598,7 +638,7 @@ msgstr "Parola Ata"
 msgid "Map to play:"
 msgstr "Oyun haritasi:"
 
-#. [toggle_button]
+#. [toggle_button]: id=use_map_settings
 #: data/gui/default/window/mp_create_game.cfg:315
 msgid "Use map settings"
 msgstr "Harite ayarlarını kullan"
@@ -608,7 +648,7 @@ msgstr "Harite ayarlarını kullan"
 msgid "Number of turns"
 msgstr "El sayısı"
 
-#. [slider]
+#. [slider]: id=turn_count
 #: data/gui/default/window/mp_create_game.cfg:356
 msgid "Unlimited"
 msgstr "Sınırsız"
@@ -623,17 +663,17 @@ msgstr "Köy altını"
 msgid "Experience modifier"
 msgstr "Tecrübe ayarı"
 
-#. [toggle_button]
+#. [toggle_button]: id=fog
 #: data/gui/default/window/mp_create_game.cfg:454
 msgid "Fog of War"
 msgstr "Savaş Dumanı"
 
-#. [toggle_button]
+#. [toggle_button]: id=random_start_time
 #: data/gui/default/window/mp_create_game.cfg:495
 msgid "Random start time"
 msgstr "Rasgele başlatma zamanı"
 
-#. [button]
+#. [button]: id=ok
 #: data/gui/default/window/mp_create_game.cfg:537
 msgid "Create game"
 msgstr "Oyun oluştur"
@@ -686,11 +726,6 @@ msgid "Play a multiplayer game with the AI or humans sharing the same machine"
 msgstr ""
 "Oyunu bu makine üzerinde arkadaşlarınızla veya bilgisayara karşı oynarsınız"
 
-#. [button]
-#: data/gui/default/window/mp_method_selection.cfg:205
-msgid "Ok"
-msgstr "Tamam"
-
 #. [label]
 #: data/gui/default/window/mp_server_list.cfg:84
 msgid "Name"
@@ -701,7 +736,7 @@ msgstr "İsim"
 msgid "Address"
 msgstr "Adres"
 
-#. [button]
+#. [button]: id=ok
 #: data/gui/default/window/mp_server_list.cfg:198
 msgid "Select"
 msgstr "Seçiniz"
@@ -1901,6 +1936,9 @@ msgstr ""
 #: src/wml_exception.cpp:72
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr "‘[$section|]’ bölümünde zorunlu ‘$key|’ anahtarı belirtilmemiş."
+
+#~ msgid "Ok"
+#~ msgstr "Tamam"
 
 #~ msgid "2000"
 #~ msgstr "2000"

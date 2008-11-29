@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-22 20:14+0100\n"
+"POT-Creation-Date: 2008-11-29 12:25+0100\n"
 "PO-Revision-Date: 2008-03-21 18:16+0100\n"
 "Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
@@ -20,47 +20,47 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-Language: German\n"
 
-#. [campaign]
+#. [campaign]: id=Son_Of_The_Black_Eye
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:9
 msgid "Son of the Black-Eye"
 msgstr "Schwarzauges Sohn"
 
-#. [campaign]
+#. [campaign]: id=Son_Of_The_Black_Eye
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:10
 msgid "SotBE"
 msgstr "SS"
 
-#. [campaign]
+#. [campaign]: id=Son_Of_The_Black_Eye
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:15
 msgid "Grunt"
 msgstr "Grunzer"
 
-#. [campaign]
+#. [campaign]: id=Son_Of_The_Black_Eye
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:15
 msgid "(Challenging)"
 msgstr "(Herausfordernd)"
 
-#. [campaign]
+#. [campaign]: id=Son_Of_The_Black_Eye
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:16
 msgid "Warrior"
 msgstr "Krieger"
 
-#. [campaign]
+#. [campaign]: id=Son_Of_The_Black_Eye
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:16
 msgid "(Difficult)"
 msgstr "(Schwierig)"
 
-#. [campaign]
+#. [campaign]: id=Son_Of_The_Black_Eye
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:17
 msgid "(Nightmare)"
 msgstr "(Albtraum)"
 
-#. [campaign]
+#. [campaign]: id=Son_Of_The_Black_Eye
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:17
 msgid "Warlord"
 msgstr "Kriegsherr"
 
-#. [campaign]
+#. [campaign]: id=Son_Of_The_Black_Eye
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:22
 #, fuzzy
 msgid ""
@@ -105,7 +105,7 @@ msgstr "Sprach- und WML-Hilfe"
 msgid "Artwork and Graphics"
 msgstr ""
 
-#. [scenario]
+#. [scenario]: id=End_Of_Peace
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_Of_Peace.cfg:4
 msgid "End Of Peace"
 msgstr "Ende des Friedens"
@@ -168,12 +168,13 @@ msgstr "Kapou'e fällt in der Schlacht"
 msgid "Turns run out"
 msgstr "Rundenlimit überschritten"
 
-#. [side]: type=Orcish Leader
-#. [side]: type=Orcish Warlord
-#. [side]: type=Orcish Slayer
+#. [side]: type=Orcish Leader, id=Kapou'e
+#. [side]: type=Orcish Warlord, id=Al'Brock
+#. [side]: type=Orcish Warlord, id=Flar'Tar
+#. [side]: type=Orcish Slayer, id=Rugh
 #. [side]
-#. [side]: type=General
-#. [side]: type=Great Troll
+#. [side]: type=General, id=Howgarth III
+#. [side]: id=gruu_recall_enabling_hack_leader, type=Great Troll
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:56
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:62
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:45
@@ -230,14 +231,16 @@ msgstr "Rundenlimit überschritten"
 msgid "Kapou'e"
 msgstr "Kapou'e"
 
-#. [side]: type=Lieutenant
+#. [side]: type=Lieutenant, id=Albert
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_Of_Peace.cfg:71
 msgid "Albert"
 msgstr "Albert"
 
-#. [side]: type=General
+#. [side]: type=General, id=Lanbec'h
+#. [side]: type=General, id=Slowhand
 #. [side]
-#. [side]: type=Lieutenant
+#. [side]: type=General, id=Harman
+#. [side]: type=Lieutenant, id=Albert
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:64
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:82
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:100
@@ -396,7 +399,7 @@ msgstr "Hurra! Der Sieg ist unser!"
 msgid "Oh, just die, human-worm."
 msgstr "Stirb, Menschling."
 
-#. [unit]: type=Wolf Rider
+#. [unit]: type=Wolf Rider, id=Vrag
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_Of_Peace.cfg:192
 msgid "Vrag"
 msgstr "Vrag"
@@ -527,7 +530,7 @@ msgstr ""
 "Menschen zeigen, was passiert wenn jemand versucht von Kapou'e, dem Sohn des "
 "Schwarzauges, zu stehlen!"
 
-#. [scenario]
+#. [scenario]: id=the_human_army
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:4
 msgid "The Human Army"
 msgstr "Die Armee der Menschen"
@@ -537,7 +540,7 @@ msgstr "Die Armee der Menschen"
 msgid "Defeat Lanbec'h"
 msgstr "Besiegt Graf Lanbec'h"
 
-#. [side]: type=General
+#. [side]: type=General, id=Lanbec'h
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:57
 msgid "Lanbec'h"
 msgstr "Graf Lanbec'h"
@@ -710,7 +713,7 @@ msgstr ""
 "Aber nur im Traum, Kumpel. Wenn die Zeit reif ist, werdet ihr mit eurem "
 "Leben dafür bezahlen!"
 
-#. [scenario]
+#. [scenario]: id=Toward_Mountains_of_Haag
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:4
 msgid "Toward Mountains of Haag"
 msgstr "Durch das Haag-Gebirge"
@@ -730,12 +733,12 @@ msgid ""
 "`(early finish bonus)"
 msgstr ""
 
-#. [side]: type=Dwarvish Lord
+#. [side]: type=Dwarvish Lord, id=Kwili
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:85
 msgid "Kwili"
 msgstr "Kwili"
 
-#. [side]: type=Dwarvish Lord
+#. [side]: type=Dwarvish Lord, id=Kwili
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:94
 msgid "Dwarves"
 msgstr ""
@@ -849,22 +852,22 @@ msgstr ""
 "Wir sind niemals zuvor soweit von Zuhause weg gewesen. Wir haben gerade die "
 "äußerste Grenze unserer Heimat überschritten."
 
-#. [unit]: type=Troll Warrior
+#. [unit]: id=Blemaker, type=Troll Warrior
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:206
 msgid "Blemaker"
 msgstr "Blemaker"
 
-#. [unit]: type=Troll Hero
+#. [unit]: id=Grüü, type=Troll Hero
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:215
 msgid "Grüü"
 msgstr "Grüü"
 
-#. [unit]: type=Troll Whelp
+#. [unit]: id=Toughkon, type=Troll Whelp
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:230
 msgid "Toughkon"
 msgstr "Toughkon"
 
-#. [unit]: type=Troll Whelp
+#. [unit]: id=Pe, type=Troll Whelp
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/03_Towards_Mountains_of_Haag.cfg:239
 msgid "Pe"
 msgstr "Pe"
@@ -1082,7 +1085,7 @@ msgstr ""
 "Vater euch geholfen haben würde. Grüü nicht wollen beleidigen toten Vater, "
 "also gehen mit!"
 
-#. [scenario]
+#. [scenario]: id=The_Siege_Of_Barag_Gor
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:4
 msgid "The Siege Of Barag Gór"
 msgstr "Die Belagerung von Barag Gór"
@@ -1103,14 +1106,17 @@ msgstr "Durchbrich die Belagerung von Barag Gór"
 msgid "Death of a Shaman"
 msgstr "Ein Schamane fällt in der Schlacht"
 
-#. [side]: type=Elvish Marshal
+#. [side]: type=Elvish Marshal, id=Etheliel
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:63
 msgid "Etheliel"
 msgstr "Etheliel"
 
-#. [side]: type=Elvish Marshal
-#. [side]: type=Elvish Shyde
-#. [side]: type=Elvish Captain
+#. [side]: type=Elvish Marshal, id=Etheliel
+#. [side]: type=Elvish Marshal, id=Hida'tul
+#. [side]: type=Elvish Marshal, id=Ammon
+#. [side]: type=Elvish Marshal, id=Sammual
+#. [side]: type=Elvish Shyde, id=Lucile
+#. [side]: type=Elvish Captain, id=Raceme
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:66
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:101
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:115
@@ -1120,22 +1126,22 @@ msgstr "Etheliel"
 msgid "Elves"
 msgstr ""
 
-#. [side]: type=Orcish Slayer
+#. [side]: type=Orcish Slayer, id=Rugh
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:77
 msgid "Rugh"
 msgstr "Rugh"
 
-#. [side]: type=Elvish Marshal
+#. [side]: type=Elvish Marshal, id=Hida'tul
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:98
 msgid "Hida'tul"
 msgstr "Hida'tul"
 
-#. [side]: type=Elvish Marshal
+#. [side]: type=Elvish Marshal, id=Ammon
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:112
 msgid "Ammon"
 msgstr "Ammon"
 
-#. [side]: type=Elvish Marshal
+#. [side]: type=Elvish Marshal, id=Sammual
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:126
 msgid "Sammual"
 msgstr "Sammual"
@@ -1342,7 +1348,7 @@ msgid ""
 msgstr ""
 "Dann befahl Kapou'e den Angriff, um die Belagerung von Barag Gór zu beenden."
 
-#. [unit]: type=Orcish Assassin
+#. [unit]: id=Jetto, type=Orcish Assassin
 #. [message]: speaker=narrator
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:446
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:602
@@ -1512,24 +1518,25 @@ msgstr ""
 "Endlich frei! Ich bin Jetto, Meister der Attentäter. Da ihr mich befreit "
 "habt, wird euch die Gilde der Attentäter von nun an unterstützen."
 
-#. [scenario]
+#. [scenario]: id=To_the_harbour_of_Tirigaz
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:4
 #, fuzzy
 msgid "To the Harbour of Tirigaz"
 msgstr "Zum Hafen von Tirigaz"
 
-#. [side]: type=Lich
+#. [side]: type=Lich, id=Na-Mana
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:159
 msgid "Na-Mana"
 msgstr "Na-Mana"
 
-#. [side]: type=Lich
+#. [side]: type=Lich, id=Na-Mana
+#. [side]: type=Lich, id=Ma-Rana
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:162
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:191
 msgid "Undead"
 msgstr ""
 
-#. [side]: type=Lich
+#. [side]: type=Lich, id=Ma-Rana
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:188
 msgid "Ma-Rana"
 msgstr "Ma-Rana"
@@ -1694,7 +1701,7 @@ msgstr "Grüü, hast du vergessen, dass wir ebenfalls Wesen der Nacht sind?"
 msgid "Err... well..."
 msgstr "Ähm... Gut..."
 
-#. [scenario]
+#. [scenario]: id=Black_Flag
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:26
 msgid "Black Flag"
 msgstr "Schwarze Flagge"
@@ -1704,17 +1711,17 @@ msgstr "Schwarze Flagge"
 msgid "Defeat Slowhand and Harman"
 msgstr "Besiegt Ogdan den Langsamen und Haman"
 
-#. [side]: type=General
+#. [side]: type=General, id=Slowhand
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:79
 msgid "Slowhand"
 msgstr "Ogdan der Langsame"
 
-#. [side]: type=General
+#. [side]: type=General, id=Harman
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:112
 msgid "Harman"
 msgstr "Harman"
 
-#. [unit]: type=Orcish Warrior
+#. [unit]: type=Orcish Warrior, id=Affman
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:139
 msgid "Affman"
 msgstr "Affman"
@@ -1905,7 +1912,7 @@ msgstr ""
 "Wir nicht haben Wahl... Ich nie haben probiert Skorpione, aber sich hören "
 "lustig an."
 
-#. [scenario]
+#. [scenario]: id=Desert_Of_Death
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:4
 msgid "The Desert of Death"
 msgstr "Die Todeswüste"
@@ -1915,22 +1922,26 @@ msgstr "Die Todeswüste"
 msgid "Reach the Oasis"
 msgstr "Erreicht die Oase"
 
-#. [side]: type=Assassin, type=Rogue
+#. [side]: type=Assassin, type=Rogue, id=Ar-Dant
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:65
 #, fuzzy
 msgid "Ar-Dant"
 msgstr "Ar Dant"
 
-#. [side]: type=General
-#. [side]: type=Lieutenant
-#. [side]: type=Elvish Champion
-#. [side]: type=Dwarvish Steelclad
+#. [side]: type=General, id=Arthur
+#. [side]: type=Lieutenant, id=Hank
+#. [side]: type=Elvish Champion, id=Thelarion
+#. [side]: type=Dwarvish Steelclad, id=Darstang
+#. [side]: type=General, id=Earl Lanbec'h
 #. [side]
-#. [side]: type=Assassin, type=Rogue
+#. [side]: type=Assassin, type=Rogue, id=Ar-Dant
 #. [side]: type=Giant Scorpion
-#. [side]: type=Grand Marshal
-#. [side]: type=Orcish Warlord
-#. [side]: type=Bandit
+#. [side]: type=Grand Marshal, id=Earl Lanbec'h
+#. [side]: type=Orcish Warlord, id=Shan Taum
+#. [side]: type=General, id=Telthys
+#. [side]: type=General, id=Fredrick
+#. [side]: type=General, id=Georgy
+#. [side]: type=Bandit, id=Sam
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:92
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:110
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:83
@@ -2211,7 +2222,7 @@ msgstr "...kommt...Leute...wir...müssen...weiter...gehen..."
 msgid ".... can't.... the .... heat.... is.... too..... much...."
 msgstr "...können...nicht...die...Hitze...ist...zu...viel..."
 
-#. [scenario]
+#. [scenario]: id=Silent_Forest
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:4
 msgid "Silent Forest"
 msgstr "Der Stille Wald"
@@ -2221,12 +2232,12 @@ msgstr "Der Stille Wald"
 msgid "Defeat the elves"
 msgstr "Besiegt die Elfen"
 
-#. [side]: type=Elvish Shyde
+#. [side]: type=Elvish Shyde, id=Lucile
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:92
 msgid "Lucile"
 msgstr "Lucile"
 
-#. [side]: type=Elvish Captain
+#. [side]: type=Elvish Captain, id=Raceme
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:107
 msgid "Raceme"
 msgstr "Raceme"
@@ -2458,7 +2469,7 @@ msgstr ""
 "Ahhhgh! Flieht, und berichtet dem Prinz, dass ich besiegt und der "
 "Aussenposten zerstört wurde."
 
-#. [unit]: type=Elvish Scout
+#. [unit]: type=Elvish Scout, id=Linduilas
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:320
 msgid "Linduilas"
 msgstr "Linduilas"
@@ -2468,7 +2479,7 @@ msgstr "Linduilas"
 msgid "As you command, my lady."
 msgstr "Wie ihr befiehlt, Milady."
 
-#. [scenario]
+#. [scenario]: id=Shan_Taum_The_Smug
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_The_Smug.cfg:4
 msgid "Shan Taum The Smug"
 msgstr "Shan Taum der Selbstgefällige"
@@ -2486,8 +2497,8 @@ msgid ""
 "`(early finish bonus)"
 msgstr ""
 
-#. [side]: type=Orcish Warlord
-#. [unit]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Shan Taum
+#. [unit]: type=Orcish Warlord, id=Shan Taum
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:105
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_The_Smug.cfg:65
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_Coward.cfg:164
@@ -2698,7 +2709,7 @@ msgstr ""
 msgid "Nooo! Don't kill me, I surrender to you little earthworm."
 msgstr "Nein! Töte mich nicht. Ich ergebe mich, du kleiner Regenwurm."
 
-#. [scenario]
+#. [scenario]: id=Saving_Inarix
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:10
 msgid "Saving Inarix"
 msgstr "Rettet Inarix"
@@ -2723,8 +2734,8 @@ msgstr ""
 msgid "Note: whoever detonates the bridge will die.\n"
 msgstr ""
 
-#. [side]: type=Elvish Champion
-#. [unit]: type=Elvish Champion
+#. [side]: type=Elvish Champion, id=Thelarion
+#. [unit]: type=Elvish Champion, id=Thelarion
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:66
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:102
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:77
@@ -2732,14 +2743,14 @@ msgstr ""
 msgid "Thelarion"
 msgstr "Thelarion"
 
-#. [side]: type=Dwarvish Steelclad
+#. [side]: type=Dwarvish Steelclad, id=Darstang
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:94
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:100
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_Dwarvish_Stand.cfg:75
 msgid "Darstang"
 msgstr "Darstang"
 
-#. [unit]: type=Orcish Slayer
+#. [unit]: type=Orcish Slayer, id=Plonk
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:132
 msgid "Plonk"
 msgstr "Plonk"
@@ -2860,7 +2871,7 @@ msgstr ""
 "Das ist »der Prinz« aus dem Stillen Wald. Leider können wir uns nicht um ihn "
 "kümmern. Wir müssen uns auf Inarix Rettung konzentrieren."
 
-#. [unit]: type=Saurian Ambusher
+#. [unit]: type=Saurian Ambusher, id=Inarix
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:236
 msgid "Inarix"
 msgstr "Inarix"
@@ -2984,9 +2995,9 @@ msgid "It won't be said that Elves were braver than us, everyone attack!"
 msgstr ""
 "Es kann nicht sein, dass Elfen tapferer sind als wir. Zum Angriff, Männer!"
 
-#. [side]: type=General
-#. [side]: type=Grand Marshal
-#. [unit]: type=General
+#. [side]: type=General, id=Earl Lanbec'h
+#. [side]: type=Grand Marshal, id=Earl Lanbec'h
+#. [unit]: type=General, id=Earl Lanbec'h
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:126
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:86
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_Human_Horde.cfg:90
@@ -3016,7 +3027,7 @@ msgstr "Die grüne Erde wird dich dafür verfluchen..."
 msgid "Curse you, foul orc!"
 msgstr "Verflucht seist du, verdammter Ork!"
 
-#. [scenario]
+#. [scenario]: id=Clash_of_armies
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:4
 msgid "Clash of Armies"
 msgstr "Zusammenprall der Armeen"
@@ -3134,7 +3145,7 @@ msgstr "Großartig."
 msgid "Then, the battle for Prestim began."
 msgstr "Nach dieser Beratung nahm die Schlacht von Prestim ihren Lauf."
 
-#. [unit]: type=Merman Warrior
+#. [unit]: type=Merman Warrior, id=Plouf
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:296
 msgid "Plouf"
 msgstr "Plouf"
@@ -3152,7 +3163,7 @@ msgstr "Das Meervolk ist hier, um seinen Anteil zu leisten, Graf Lanbec'h."
 msgid "Curses! They have fish-men on their side."
 msgstr "Ach nöö! Sie haben Meereskämpfer auf Ihrer Seite."
 
-#. [unit]: type=Duelist
+#. [unit]: type=Duelist, id=J'rem
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:335
 msgid "J'rem"
 msgstr "J'rem"
@@ -3210,7 +3221,7 @@ msgstr ""
 msgid "No! The walls of Prestim are destroyed, we are done!"
 msgstr "Nein! Prestims Mauern wurden zerstört. Wir sind verloren!"
 
-#. [scenario]
+#. [scenario]: id=Giving_Some_Back
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:5
 msgid "Giving Some Back"
 msgstr "Revanche"
@@ -3228,25 +3239,25 @@ msgstr "Revanche"
 msgid "The Great Horde: upkeep cost of every unit decreased by one."
 msgstr ""
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Al'Brock
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:59
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_Human_Horde.cfg:60
 msgid "Al'Brock"
 msgstr "Al'Brock"
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Flar'Tar
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:72
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_Human_Horde.cfg:75
 msgid "Flar'Tar"
 msgstr "Flar'Tar"
 
-#. [side]: type=General
+#. [side]: type=General, id=Arthur
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:86
 #, fuzzy
 msgid "Arthur"
 msgstr "Angthur"
 
-#. [side]: type=Lieutenant
+#. [side]: type=Lieutenant, id=Hank
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:105
 #, fuzzy
 msgid "Hank"
@@ -3372,12 +3383,12 @@ msgstr ""
 "Die Orks machen Fortschritte. Die Stadt darf nicht fallen – ruft die "
 "Reserven!"
 
-#. [scenario]
+#. [scenario]: id=Dwarvish_Stand
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_Dwarvish_Stand.cfg:4
 msgid "The Dwarvish Stand"
 msgstr "Die Verteidigungslinie der Zwerge"
 
-#. [side]: type=Bandit
+#. [side]: type=Bandit, id=Sam
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_Dwarvish_Stand.cfg:87
 msgid "Sam"
 msgstr "Sam"
@@ -3579,24 +3590,24 @@ msgid ""
 "I have a pony?"
 msgstr ""
 
-#. [scenario]
+#. [scenario]: id=back_home
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:4
 msgid "Back Home"
 msgstr "Zurück Zuhause"
 
-#. [side]: type=General
+#. [side]: type=General, id=Telthys
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:86
 #, fuzzy
 msgid "Telthys"
 msgstr "General Telthys"
 
-#. [side]: type=General
+#. [side]: type=General, id=Fredrick
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:117
 #, fuzzy
 msgid "Fredrick"
 msgstr "General Fredrick"
 
-#. [side]: type=General
+#. [side]: type=General, id=Georgy
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:132
 #, fuzzy
 msgid "Georgy"
@@ -3920,7 +3931,7 @@ msgstr "Was sollen wir mit diesem tun, Häuptling?"
 msgid "Throw him in the lake. If he freezes to death, all the better."
 msgstr "Werft ihn in den See. Wenn er zu Tode friert, um so besser."
 
-#. [scenario]
+#. [scenario]: id=Civil_War
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:4
 msgid "Civil War"
 msgstr "Bürgerkrieg"
@@ -3937,13 +3948,18 @@ msgstr "Beseitigt alle gegnerischen Anführer und .."
 msgid "Move Kapou'e to the signpost at the southwest"
 msgstr "Führt Kapou'e zum Wegweiser am Ende des Gebirges im Südwesten"
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Braga
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:72
 msgid "Braga"
 msgstr "Braga"
 
-#. [side]: type=Orcish Warlord
-#. [side]: type=Orcish Grunt
+#. [side]: type=Orcish Warlord, id=Braga
+#. [side]: type=Orcish Warlord, id=Meato
+#. [side]: type=Orcish Warlord, id=Ragvan
+#. [side]: type=Orcish Warlord, id=Kergai
+#. [side]: type=Orcish Warlord, id=Orga
+#. [side]: type=Orcish Grunt, id=Knorgh
+#. [side]: type=Orcish Grunt, id=Nofhug
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:79
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:99
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:119
@@ -3954,17 +3970,17 @@ msgstr "Braga"
 msgid "Rebels"
 msgstr ""
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Meato
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:92
 msgid "Meato"
 msgstr "Meato"
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Ragvan
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:112
 msgid "Ragvan"
 msgstr "Ragvan"
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Kergai
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:132
 #, fuzzy
 msgid "Kergai"
@@ -4140,22 +4156,22 @@ msgstr ""
 msgid "Now let's get going, we have an appointment with Shan Taum."
 msgstr ""
 
-#. [scenario]
+#. [scenario]: id=Coward
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_Coward.cfg:4
 msgid "The Coward"
 msgstr "Der Feigling"
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Orga
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_Coward.cfg:66
 msgid "Orga"
 msgstr "Orga"
 
-#. [side]: type=Orcish Grunt
+#. [side]: type=Orcish Grunt, id=Knorgh
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_Coward.cfg:103
 msgid "Knorgh"
 msgstr ""
 
-#. [side]: type=Orcish Grunt
+#. [side]: type=Orcish Grunt, id=Nofhug
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_Coward.cfg:117
 msgid "Nofhug"
 msgstr ""
@@ -4338,7 +4354,7 @@ msgstr ""
 "Okay, wir haben dieses Widerstandsnest zermalmt. Wohin in aller Welt ist "
 "jetzt der Feigling Shan Taun verschwunden?"
 
-#. [scenario]
+#. [scenario]: id=Human_Horde
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_Human_Horde.cfg:5
 msgid "The Human Attack"
 msgstr "Der Angriff der Menschen"
@@ -4448,8 +4464,8 @@ msgstr "Wir sind angekommen, mein Fürst."
 msgid "Ahhh, perfect, more reinforcements."
 msgstr "Aaah, perfekt, mehr Verstärkungen."
 
-#. [side]: type=General
-#. [unit]: type=General
+#. [side]: type=General, id=Howgarth III
+#. [unit]: type=General, id=Howgarth III
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:128
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_Human_Horde.cfg:669
 msgid "Howgarth III"
@@ -4580,7 +4596,7 @@ msgstr ""
 msgid "Funny, that name sounds oddly familiar..."
 msgstr "Komisch, dieser Name kommt mir irgendwie bekannt vor..."
 
-#. [scenario]
+#. [scenario]: id=Northern_Alliance
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:4
 msgid "Northern Alliance"
 msgstr "Nordallianz"
@@ -4829,7 +4845,7 @@ msgstr ""
 "gescherzt als ich sagte, dass ich einen Becher aus seinem hohlen Schädel "
 "machen würde."
 
-#. [scenario]
+#. [scenario]: id=Epilogue
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/19_Epilogue.cfg:4
 msgid "Epilogue"
 msgstr "Epilog"
@@ -4936,12 +4952,12 @@ msgstr ""
 "sogar bekannter als Kapou'e selbst. Geschichten von seinem Mut, Tapferkeit "
 "und Gerissenheit waren bis ins ferne Wesnoth zu hören."
 
-#. [unit_type]: race=orc
+#. [unit_type]: id=Novice Orcish Shaman, race=orc
 #: data/campaigns/Son_Of_The_Black_Eye/units/Novice_Orcish_Shaman.cfg:4
 msgid "Novice Orcish Shaman"
 msgstr "Junger Orkschamane"
 
-#. [unit_type]: race=orc
+#. [unit_type]: id=Novice Orcish Shaman, race=orc
 #: data/campaigns/Son_Of_The_Black_Eye/units/Novice_Orcish_Shaman.cfg:21
 msgid ""
 "Orcish Shamans are the guardians of orcish magic. Respected among orcish "
@@ -4977,12 +4993,12 @@ msgstr "Stab"
 msgid "curse"
 msgstr "Fluch"
 
-#. [unit_type]: race=orc
+#. [unit_type]: id=Old Orcish Shaman, race=orc
 #: data/campaigns/Son_Of_The_Black_Eye/units/Old_Orcish_Shaman.cfg:4
 msgid "Old Orcish Shaman"
 msgstr "Alter Orkschamane"
 
-#. [unit_type]: race=orc
+#. [unit_type]: id=Old Orcish Shaman, race=orc
 #: data/campaigns/Son_Of_The_Black_Eye/units/Old_Orcish_Shaman.cfg:21
 msgid ""
 "Orcish Shamans are the guardians of orcish magic. Respected among orcish "
@@ -5005,12 +5021,12 @@ msgstr ""
 "Allerdings hat auch Ihre körperliche Kraft durch das hohe Alter weiter "
 "abgenommen."
 
-#. [unit_type]: race=orc
+#. [unit_type]: id=Orcish Shaman, race=orc
 #: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman.cfg:4
 msgid "Orcish Shaman"
 msgstr "Orkschamane"
 
-#. [unit_type]: race=orc
+#. [unit_type]: id=Orcish Shaman, race=orc
 #: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman.cfg:21
 msgid ""
 "Orcish Shamans are the guardians of orcish magic. Respected among orcish "
@@ -5029,12 +5045,12 @@ msgstr ""
 "durch ihre Fähigkeit, Magie herauf zu beschwören und Ihren Feinden mit "
 "Flüchen die Lebensenergie auszusaugen, nicht zu verachten. "
 
-#. [unit_type]: race=mechanical
+#. [unit_type]: id=Watch Tower, race=mechanical
 #: data/campaigns/Son_Of_The_Black_Eye/units/Watch_Tower.cfg:4
 msgid "Watch Tower"
 msgstr "Wachturm"
 
-#. [unit_type]: race=mechanical
+#. [unit_type]: id=Watch Tower, race=mechanical
 #: data/campaigns/Son_Of_The_Black_Eye/units/Watch_Tower.cfg:34
 msgid ""
 "Watch Towers are good places from which to spot enemies and then shoot "

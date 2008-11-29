@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-27 19:54+0100\n"
+"POT-Creation-Date: 2008-11-29 12:25+0100\n"
 "PO-Revision-Date: 2008-06-20 22:07+0200\n"
 "Last-Translator: Mikko Nikkilä <miccoh@gmail.com>\n"
 "Language-Team: Finnish\n"
@@ -13,17 +13,17 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#. [campaign]
+#. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:9
 msgid "The South Guard"
 msgstr "Etelän vartiosto"
 
-#. [campaign]
+#. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:10
 msgid "TSG"
 msgstr "Ev"
 
-#. [campaign]
+#. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:19
 msgid ""
 "A young Knight, Deoran, is dispatched to take command of the South Guard... "
@@ -38,32 +38,32 @@ msgstr ""
 "\n"
 "(Aloittelijataso, 9 tai 10 skenaariota riippuen valitsemastasi reitistä.)"
 
-#. [campaign]
+#. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:22
 msgid "Civilian"
 msgstr "Siviili"
 
-#. [campaign]
+#. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:22
 msgid "(Beginner)"
 msgstr "(Aloittelija)"
 
-#. [campaign]
+#. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:23
 msgid "(Easy)"
 msgstr "(Helppo)"
 
-#. [campaign]
+#. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:23
 msgid "Recruit"
 msgstr "Alokas"
 
-#. [campaign]
+#. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:24
 msgid "Soldier"
 msgstr "Sotilas"
 
-#. [campaign]
+#. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:24
 msgid "(Normal)"
 msgstr "(Normaali)"
@@ -83,14 +83,14 @@ msgstr "Kampanjan ylläpito"
 msgid "Artwork and Graphics Design"
 msgstr "Taidetyö ja graafinen suunnittelu"
 
-#. [scenario]
+#. [scenario]: id=1_Born_To_The_Banner
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:5
 msgid "Born to the Banner"
 msgstr "Syntynyt johtajaksi"
 
-#. [side]: type=Horseman Commander
-#. [side]: type=Dismounted Commander 1
-#. [side]
+#. [side]: type=Horseman Commander, id=Deoran
+#. [side]: type=Dismounted Commander 1, id=Deoran
+#. [side]: id=Deoran
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:26
 #: data/campaigns/The_South_Guard/scenarios/10a_Elf_Epilogue.cfg:17
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:26
@@ -108,11 +108,12 @@ msgstr "Syntynyt johtajaksi"
 msgid "Deoran"
 msgstr "Deoran"
 
-#. [side]: type=Horseman Commander
-#. [side]: type=Troll Hero
+#. [side]: type=Horseman Commander, id=Deoran
+#. [side]: type=Troll Hero, id=Grek
 #. [side]
-#. [side]: type=Lieutenant
-#. [side]: type=Dismounted Commander 1
+#. [side]: type=Lieutenant, id=Plynry
+#. [side]: type=Dismounted Commander 1, id=Deoran
+#. [side]: id=Deoran
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:30
 #: data/campaigns/The_South_Guard/scenarios/10a_Elf_Epilogue.cfg:20
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:30
@@ -134,14 +135,16 @@ msgstr "Deoran"
 msgid "South Guard"
 msgstr "Etelän vartiosto"
 
-#. [side]: type=Bandit
+#. [side]: type=Bandit, id=Urza Mathin
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:54
 msgid "Urza Mathin"
 msgstr "Urza Mathin"
 
-#. [side]: type=Outlaw
-#. [side]: type=Rogue
-#. [side]: type=Bandit
+#. [side]: type=Outlaw, id=Tharzo Kalain
+#. [side]: type=Rogue, id=Urza Fastik
+#. [side]: type=Outlaw, id=Urza Afalas
+#. [side]: type=Bandit, id=Urza Mathin
+#. [side]: type=Outlaw, id=Urza Nalmath
 #. [side]
 #: data/campaigns/The_South_Guard/scenarios/08a_Return_To_Kerlath.cfg:107
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:60
@@ -226,7 +229,7 @@ msgstr ""
 "komentaja, oli kuluttanut aikansa peleihin ja huvituksiin sillä aikaa kun "
 "ryövärit valtasivat maata..."
 
-#. [unit]
+#. [unit]: id=Moreth
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:165
 msgid "Moreth"
 msgstr "Moreth"
@@ -298,7 +301,7 @@ msgstr ""
 "Ha! Tällä uudella komentajalla ei ole mitään mahdollisuuksia. Hän kokee "
 "saman kohtalon kuin se sika, Loris."
 
-#. [unit]: type=South Guard Captain
+#. [unit]: type=South Guard Captain, id=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:234
 msgid "Sir Gerrick"
 msgstr "Sir Gerrick"
@@ -459,12 +462,12 @@ msgstr ""
 "vähemmän. Mitä enemmän joukkosi ehtivät hyökkäämään päiväsaikaan, sen "
 "parempi!"
 
-#. [unit]: type=Merman Warrior, type=Merman Warrior, type=Merman Fighter
+#. [unit]: type=Merman Warrior, type=Merman Warrior, type=Merman Fighter, id=Myssh
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:418
 msgid "Myssh"
 msgstr "Myssh"
 
-#. [unit]: type=Merman Spearman, type=Merman Hunter, type=Merman Hunter
+#. [unit]: type=Merman Spearman, type=Merman Hunter, type=Merman Hunter, id=Ylla
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:437
 msgid "Ylla"
 msgstr "Ylla"
@@ -498,8 +501,8 @@ msgstr ""
 "taistelevat parhaiten vedessä ja suolla, mutta kuivalla maalla he ovat "
 "pulassa!"
 
-#. [unit]: type=Longbowman
-#. [unit]: type=Peasant
+#. [unit]: type=Longbowman, id=Aleron
+#. [unit]: type=Peasant, id=Aleron
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:484
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:520
 msgid "Aleron"
@@ -575,7 +578,7 @@ msgstr ""
 "Linnoittakaa kylät linjojemme takana älkääkä päästäkö vihollista selustaamme "
 "yön turvin."
 
-#. [unit]: type=Footpad
+#. [unit]: type=Footpad, id=Glasar
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:552
 msgid "Glasar"
 msgstr "Glasar"
@@ -666,7 +669,7 @@ msgstr ""
 "ratsastaa Westiniin heti. Toivottavasti Sir Loris on siellä ja voi hyvin! "
 "Tulkaa, miehet! Ratsastetaan Westiniin!"
 
-#. [scenario]
+#. [scenario]: id=2_Proven_By_The_Sword
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:5
 msgid "Proven By The Sword"
 msgstr "Miekka näyttää totuuden"
@@ -676,7 +679,7 @@ msgstr "Miekka näyttää totuuden"
 msgid "Westin"
 msgstr "Westin"
 
-#. [side]: type=Outlaw
+#. [side]: type=Outlaw, id=Urza Nalmath
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:63
 msgid "Urza Nalmath"
 msgstr "Urza Nalmath"
@@ -743,7 +746,7 @@ msgstr "Nyt, Deoran, ottakaa paikkanne Westinin linnoituksen johdossa."
 msgid "Bring Deoran to the Citadel of Westin."
 msgstr "Siirrä Deoran Westinin linnoitukseen."
 
-#. [unit]: type=White Mage
+#. [unit]: type=White Mage, id=Minister Hylas
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:304
 msgid "Minister Hylas"
 msgstr "Ministeri Hylas"
@@ -1006,12 +1009,12 @@ msgstr ""
 "Deoran lähetti ratsastajan pyytämään ratsujoukkoja vahvistuksiksi ja lähti "
 "välittömästi matkaan kohti läntistä metsää..."
 
-#. [scenario]
+#. [scenario]: id=3_A_Desperate_Errand
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:5
 msgid "A Desperate Errand"
 msgstr "Epätoivoinen tehtävä"
 
-#. [side]: type=Rogue
+#. [side]: type=Rogue, id=Urza Fastik
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:57
 msgid "Urza Fastik"
 msgstr "Urza Fastik"
@@ -1083,7 +1086,7 @@ msgstr "Saata Deoran haltiakaupunkiin pohjoisessa"
 msgid "There is so much ground to cover. If only our riders would arrive!"
 msgstr "Matka on niin pitkä. Kunpa vain ratsastajamme saapuisivat pian!"
 
-#. [unit]
+#. [unit]: id=Jarek
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:206
 msgid "Jarek"
 msgstr "Jarek"
@@ -1164,7 +1167,7 @@ msgstr "Vardanos"
 msgid "Talchar"
 msgstr "Talchar"
 
-#. [unit]: type=Elvish Shyde, type=Elvish Druid
+#. [unit]: type=Elvish Shyde, type=Elvish Druid, id=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:293
 msgid "Ethiliel"
 msgstr "Ethiliel"
@@ -1256,22 +1259,24 @@ msgstr ""
 msgid "My thanks, lady."
 msgstr "Kiitokseni, teidän armonne."
 
-#. [scenario]
+#. [scenario]: id=4_Vale_of_Tears
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:5
 msgid "Vale of Tears"
 msgstr "Kyynelten laakso"
 
-#. [side]: type=Dark Adept, type=Dark Sorcerer, type=Necromancer
+#. [side]: type=Dark Adept, type=Dark Sorcerer, type=Necromancer, id=Mal A'kai
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:68
 msgid "Mal A'kai"
 msgstr "Mal A'kai"
 
-#. [side]: type=Dark Adept, type=Dark Sorcerer, type=Necromancer
-#. [side]: type=Outlaw
-#. [side]: type=Lich, type=Lich, type=Ancient Lich
-#. [side]: type=Soulless
-#. [side]: type=Ancient Lich
-#. [side]: type=Lich
+#. [side]: type=Dark Adept, type=Dark Sorcerer, type=Necromancer, id=Mal A'kai
+#. [side]: type=Outlaw, id=Jera Ilras
+#. [side]: type=Lich, type=Lich, type=Ancient Lich, id=Mal M'Brin
+#. [side]: type=Soulless, id=Groth
+#. [side]: type=Ancient Lich, id=Mal M'Brin
+#. [side]: type=Lich, id=Mal Tera
+#. [side]: type=Soulless, id=Gruth
+#. [side]: type=Lich, id=Mal M'brin
 #. [side]
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:74
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:116
@@ -1286,7 +1291,7 @@ msgstr "Mal A'kai"
 msgid "Undead"
 msgstr ""
 
-#. [side]: type=Outlaw
+#. [side]: type=Outlaw, id=Jera Ilras
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:110
 msgid "Jera Ilras"
 msgstr "Jera Ilras"
@@ -1459,7 +1464,7 @@ msgstr "Sinulla on henkivartija?!"
 msgid "You have a bodyguard?!!"
 msgstr "Sinulla on henkivartija?!?"
 
-#. [unit]: type=Elvish Ranger
+#. [unit]: id=Elvish Bodyguard, type=Elvish Ranger
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:366
 msgid "Elvish Bodyguard"
 msgstr "Haltiahenkivartija"
@@ -1563,24 +1568,24 @@ msgstr ""
 "No, kosto tai ei, jos johdatatte meidät metsään, me seuraamme teitä ja "
 "taistelemme epäkuolleita vastaan!"
 
-#. [scenario]
+#. [scenario]: id=5_Choice_In_The_Fog
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:5
 msgid "Choice in the Fog"
 msgstr "Valinta sumussa"
 
-#. [side]: type=Outlaw
-#. [unit]: type=Outlaw
+#. [side]: type=Outlaw, id=Urza Afalas
+#. [unit]: type=Outlaw, id=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:62
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:479
 msgid "Urza Afalas"
 msgstr "Urza Afalas"
 
-#. [side]: type=Soulless
+#. [side]: type=Soulless, id=Gruth
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:87
 msgid "Gruth"
 msgstr "Gruth"
 
-#. [side]: type=Lich
+#. [side]: type=Lich, id=Mal M'brin
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:120
 msgid "?"
 msgstr ""
@@ -1916,7 +1921,7 @@ msgstr ""
 "Typerykset! Tämä kuolonherra tappaa meidät kaikki! Olette sinetöineet "
 "tuhomme!"
 
-#. [unit]: type=Sea Serpent
+#. [unit]: type=Sea Serpent, id=Beast of the Lake
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:687
 msgid "Beast of the Lake"
 msgstr "Järven peto"
@@ -2080,7 +2085,7 @@ msgid ""
 "Province."
 msgstr "Hyvästi, Deoran. Olen teitä vastassa, kun palaatte Kerlathiin."
 
-#. [scenario]
+#. [scenario]: id=6a_Tidings_Good_And_Ill
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:5
 msgid "Tidings, Good and Ill"
 msgstr "Hyviä ja huonoja uutisia"
@@ -2156,7 +2161,7 @@ msgstr "Lesssh"
 msgid "Kallen"
 msgstr "Kallen"
 
-#. [unit]: type=Elvish Ranger
+#. [unit]: type=Elvish Ranger, id=Eliomir
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:175
 msgid "Eliomir"
 msgstr "Eliomir"
@@ -2368,7 +2373,7 @@ msgstr ""
 "Sillä aikaa kun neuvosto väitteli parhaasta tavasta toimia, Deoran ja "
 "Ethiliel valmistautuivat menemään Mebrinin linnoituksen alaisiin luoliin..."
 
-#. [scenario]
+#. [scenario]: id=6b_The_Long_March
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:5
 msgid "The Long March"
 msgstr "Pitkä marssi"
@@ -2491,7 +2496,7 @@ msgid ""
 "You humans have kidnapped Mebrin the Sage. You will pay for your crimes."
 msgstr "Te ihmiset kaappasivat Mebrin Viisaan. Saatte maksaa rikoksistanne."
 
-#. [message]
+#. [message]: id=Deoran
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:845
 #, fuzzy
 msgid ""
@@ -2555,30 +2560,30 @@ msgid "But there was a dark cloud looming behind Deoran and his men..."
 msgstr ""
 "Mutta synkät pilvet häämöttivät jo Deoranin ja hänen joukkojensa takana..."
 
-#. [scenario]
+#. [scenario]: id=7a_Into_The_Depths
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:5
 msgid "Into The Depths"
 msgstr "Syvyyksissä"
 
-#. [side]: type=Lich, type=Lich, type=Ancient Lich
-#. [side]: type=Ancient Lich
+#. [side]: type=Lich, type=Lich, type=Ancient Lich, id=Mal M'Brin
+#. [side]: type=Ancient Lich, id=Mal M'Brin
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:57
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_In_The_Flood.cfg:54
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:54
 msgid "Mal M'Brin"
 msgstr "Mal M'Brin"
 
-#. [side]: type=Soulless
+#. [side]: type=Soulless, id=Groth
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:103
 msgid "Groth"
 msgstr "Groth"
 
-#. [side]: type=Troll Hero
+#. [side]: type=Troll Hero, id=Grek
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:144
 msgid "Grek"
 msgstr "Grek"
 
-#. [unit]: type=Eyestalk
+#. [unit]: type=Eyestalk, id=Eye Guardian
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:223
 msgid "Eye Guardian"
 msgstr "Silmävahti"
@@ -2943,12 +2948,12 @@ msgstr ""
 "Eeii! Näin ei voi olla. Haltiat, joita kerran johdin, ovat tuhonneet minut. "
 "Kaiken sen jälkeen, mitä olen uhrannut, kuolen silti...."
 
-#. [scenario]
+#. [scenario]: id=7b_Pebbles_In_The_Flood
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_In_The_Flood.cfg:5
 msgid "Pebbles in the Flood"
 msgstr "Toivoton taistelu"
 
-#. [side]: type=Lich
+#. [side]: type=Lich, id=Mal Tera
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_In_The_Flood.cfg:82
 msgid "Mal Tera"
 msgstr "Mal Tera"
@@ -3128,7 +3133,7 @@ msgstr ""
 "Murskaamme Westinin kuten murskasimme sinut! Kukaan ei asetu minun ja kotini "
 "väliin!"
 
-#. [scenario]
+#. [scenario]: id=8a_Return_To_Kerlath
 #: data/campaigns/The_South_Guard/scenarios/08a_Return_To_Kerlath.cfg:4
 msgid "Return To Kerlath"
 msgstr "Paluu Kerlathiin"
@@ -3138,12 +3143,12 @@ msgstr "Paluu Kerlathiin"
 msgid "Move Deoran into Kerlath Province"
 msgstr "Vie Deoran Kerlathin maakuntaan"
 
-#. [side]: type=Outlaw
+#. [side]: type=Outlaw, id=Tharzo Kalain
 #: data/campaigns/The_South_Guard/scenarios/08a_Return_To_Kerlath.cfg:96
 msgid "Tharzo Kalain"
 msgstr "Tharzo Kalain"
 
-#. [side]: type=Lieutenant
+#. [side]: type=Lieutenant, id=Plynry
 #: data/campaigns/The_South_Guard/scenarios/08a_Return_To_Kerlath.cfg:140
 msgid "Plynry"
 msgstr "Plynry"
@@ -3211,7 +3216,7 @@ msgstr ""
 "Haltialiittolaiset? Luulen että teidän kannattaa kiirehtiä Westiniin. Olen "
 "kuullut huhuja ongelmista läntisen metsän haltioiden kanssa."
 
-#. [scenario]
+#. [scenario]: id=8b_The_Tides_of_War
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:5
 msgid "The Tides of War"
 msgstr "Sodan vuorovedet"
@@ -3389,12 +3394,12 @@ msgstr "Nyt en koskaan enää näe Westiniä vapaana..."
 msgid "Far from home I fall - but not in vain! Guard our people, Deoran!"
 msgstr "Kaukana kotoa kaadun, mutten turhaan! Vartioi kansaamme, Deoran!"
 
-#. [scenario]
+#. [scenario]: id=9a_Vengeance
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:5
 msgid "Vengeance"
 msgstr "Kosto"
 
-#. [side]: type=Dismounted Commander 1
+#. [side]: type=Dismounted Commander 1, id=Deoran
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:45
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:46
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:47
@@ -3404,12 +3409,12 @@ msgstr "Kosto"
 msgid "Westin Guard"
 msgstr "Westinin vartija"
 
-#. [side]: type=Elvish Marshal
+#. [side]: type=Elvish Marshal, id=Ithelden
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:61
 msgid "Ithelden"
 msgstr "Ithelden"
 
-#. [side]: type=Elvish Marshal
+#. [side]: type=Elvish Marshal, id=Ithelden
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:64
 msgid "Enraged Elves"
 msgstr ""
@@ -3456,7 +3461,7 @@ msgstr ""
 msgid "Help!"
 msgstr "Apua!"
 
-#. [unit]: type=Peasant
+#. [unit]: type=Peasant, id=Poor Farmer
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:151
 msgid "Poor Farmer"
 msgstr "Köyhä viljelijä"
@@ -3507,7 +3512,7 @@ msgstr ""
 "tällaisia tekoja! Sinä kuolet heidän mukana!"
 
 #. [event]
-#. [unit]: type=$unit_type
+#. [unit]: type=$unit_type, id=Disciple of Mebrin
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:212
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:213
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:214
@@ -3587,18 +3592,19 @@ msgstr "Vie Ethiliel suuren puun luo keskustelemaan Itheldenin kanssa"
 msgid "I feel like I belong on this spot."
 msgstr ""
 
-#. [scenario]
+#. [scenario]: id=10a_Elf_Epilogue
+#. [scenario]: id=9b_Bandit_Epilogue
 #: data/campaigns/The_South_Guard/scenarios/10a_Elf_Epilogue.cfg:5
 #: data/campaigns/The_South_Guard/scenarios/09b_Bandit_Epilogue.cfg:5
 msgid "Epilogue"
 msgstr "Loppusanat"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=South Guard Commander, race=human
 #: data/campaigns/The_South_Guard/units/Assault_Commander.cfg:4
 msgid "Infantry Commander"
 msgstr "Jalkaväenkomentaja"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=South Guard Commander, race=human
 #: data/campaigns/The_South_Guard/units/Assault_Commander.cfg:29
 msgid ""
 "Veteran commanders have faced battle many times and led their men with "
@@ -3618,14 +3624,18 @@ msgstr "kalpa"
 msgid "shield"
 msgstr "kilpi"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Dismounted Commander 1, race=human
+#. [unit_type]: id=Dismounted Commander 2, race=human
+#. [unit_type]: id=Dismounted Commander 3, race=human
 #: data/campaigns/The_South_Guard/units/Dismounted_Commander.cfg:4
 #: data/campaigns/The_South_Guard/units/Dismounted_Commander.cfg:80
 #: data/campaigns/The_South_Guard/units/Dismounted_Commander.cfg:202
 msgid "Dismounted Commander"
 msgstr "Hevosen selästä pudonnut komentaja"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Dismounted Commander 1, race=human
+#. [unit_type]: id=Dismounted Commander 2, race=human
+#. [unit_type]: id=Dismounted Commander 3, race=human
 #: data/campaigns/The_South_Guard/units/Dismounted_Commander.cfg:24
 #: data/campaigns/The_South_Guard/units/Dismounted_Commander.cfg:100
 #: data/campaigns/The_South_Guard/units/Dismounted_Commander.cfg:223
@@ -3654,12 +3664,12 @@ msgstr "peitsi"
 msgid "mace"
 msgstr "helanuija"
 
-#. [unit_type]: race=monster
+#. [unit_type]: id=Eyestalk, race=monster
 #: data/campaigns/The_South_Guard/units/Eyestalk.cfg:4
 msgid "Eyestalk"
 msgstr "Tappisilmä"
 
-#. [unit_type]: race=monster
+#. [unit_type]: id=Eyestalk, race=monster
 #: data/campaigns/The_South_Guard/units/Eyestalk.cfg:25
 msgid ""
 "Named 'Eyestalks' for obvious reasons, these plant-like creatures can focus "
@@ -3683,12 +3693,12 @@ msgstr "murskaus"
 msgid "gaze"
 msgstr "tuijotus"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Horseman Commander, race=human
 #: data/campaigns/The_South_Guard/units/Horseman_Commander.cfg:4
 msgid "Horseman Commander"
 msgstr "Ratsuväen komentaja"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Horseman Commander, race=human
 #: data/campaigns/The_South_Guard/units/Horseman_Commander.cfg:27
 msgid ""
 "Leaders of the border guards, mounted commanders are trained not only to "
@@ -3699,12 +3709,12 @@ msgstr ""
 "ratsastamaan ja taistelemaan, myös johtamaan. He komentavat varuskuntia, "
 "jotka ylläpitävät rauhaa Wesnothin maakunnissa."
 
-#. [unit_type]: race=human
+#. [unit_type]: id=South Guard Captain, race=human
 #: data/campaigns/The_South_Guard/units/Infantry_Commander.cfg:4
 msgid "Infantry Lieutenant"
 msgstr "Jalkaväen luutnantti"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=South Guard Captain, race=human
 #: data/campaigns/The_South_Guard/units/Infantry_Commander.cfg:28
 msgid ""
 "Commanders of the infantry of Wesnoth are responsible for the garrison and "
@@ -3717,12 +3727,12 @@ msgstr ""
 "riveistä, ei aatelistosta, ja kaikki heistä ovat osoittaneet johtajuutta ja "
 "urheutta taistelussa."
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Junior Commander, race=human
 #: data/campaigns/The_South_Guard/units/Junior_Commander.cfg:4
 msgid "Junior Commander"
 msgstr "Nuorempi komentaja"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Junior Commander, race=human
 #: data/campaigns/The_South_Guard/units/Junior_Commander.cfg:27
 msgid ""
 "Scarcely 17 or 18 years old, the sons of knights and lords were given mounts "
@@ -3734,12 +3744,12 @@ msgstr ""
 "Niistä, joissa oli riittävästi ainesta, tuli Wesnothin armeijoiden "
 "komentajia."
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Mounted General, race=human
 #: data/campaigns/The_South_Guard/units/Mounted_General.cfg:4
 msgid "Mounted General"
 msgstr "Ratsuväenkenraali"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Mounted General, race=human
 #: data/campaigns/The_South_Guard/units/Mounted_General.cfg:29
 msgid ""
 "Being the most able leaders of the border guards, Mounted Generals are "

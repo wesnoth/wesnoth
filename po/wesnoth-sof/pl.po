@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-22 14:56+0100\n"
+"POT-Creation-Date: 2008-11-29 12:25+0100\n"
 "PO-Revision-Date: 2008-11-28 16:40+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team: none\n"
@@ -16,47 +16,47 @@ msgstr ""
 "X-Poedit-Country: POLAND\n"
 "X-Poedit-Basepath: /usr/local/share/wesnoth\n"
 
-#. [campaign]
+#. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:10
 msgid "The Sceptre of Fire"
 msgstr "Berło Ognia"
 
-#. [campaign]
+#. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:11
 msgid "SoF"
 msgstr "SoF"
 
-#. [campaign]
+#. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:16
 msgid "Fighter"
 msgstr "Krasnoludzki wojownik"
 
-#. [campaign]
+#. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:16
 msgid "(Normal)"
 msgstr "(normalny)"
 
-#. [campaign]
+#. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:17
 msgid "Steelclad"
 msgstr "Pancerny krasnolud"
 
-#. [campaign]
+#. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:17
 msgid "(Challenging)"
 msgstr "(wymagający)"
 
-#. [campaign]
+#. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:18
 msgid "Lord"
 msgstr "Krasnoludzki władca"
 
-#. [campaign]
+#. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:18
 msgid "(Difficult)"
 msgstr "(trudny)"
 
-#. [campaign]
+#. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:29
 msgid ""
 "The land of Wesnoth's banner bold\n"
@@ -101,18 +101,18 @@ msgstr "Pomoc w kodowaniu WML"
 msgid "Artwork and Graphics Design"
 msgstr "Grafika i projektowanie graficzne"
 
-#. [scenario]
+#. [scenario]: id=1_A_Bargain_is_Struck
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:3
 msgid "A Bargain is Struck"
 msgstr "Dobicie targu"
 
-#. [side]: type=Dwarvish Fighter
+#. [side]: type=Dwarvish Fighter, id=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:18
 msgid "Rugnur"
 msgstr "Rugnur"
 
-#. [side]: type=Dwarvish Fighter
-#. [side]: type=Haldric II
+#. [side]: type=Dwarvish Fighter, id=Rugnur
+#. [side]: type=Haldric II, id=Haldric II
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:26
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:41
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:18
@@ -120,13 +120,13 @@ msgstr "Rugnur"
 msgid "Allies"
 msgstr "Sprzymierzeni"
 
-#. [side]: type=Haldric II
+#. [side]: type=Haldric II, id=Haldric II
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:34
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:24
 msgid "Haldric II"
 msgstr "Haldric II"
 
-#. [side]: type=Elvish Captain
+#. [side]: type=Elvish Captain, id=Glildur
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:75
 msgid "Glildur"
 msgstr "Glildur"
@@ -456,7 +456,7 @@ msgstr ""
 "dopilnuje, byście skończyli na czas. Chcę je dostać, nim nadejdzie kres "
 "mojego panowania."
 
-#. [unit]: type=Dragoon
+#. [unit]: type=Dragoon, id=Alanin
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:293
 msgid "Alanin"
 msgstr "Alanin"
@@ -646,12 +646,12 @@ msgstr ""
 "Właśnie dopuściłeś do przejęcia karawany z MOIMI pieniędzmi! Skoro nie "
 "jesteście w stanie zapewnić bezpieczeństwa mojej własności, to nici z umowy."
 
-#. [scenario]
+#. [scenario]: id=2_Closing_the_Gates
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:3
 msgid "Closing the Gates"
 msgstr "Zamykanie bram"
 
-#. [side]: type=Elvish Captain
+#. [side]: type=Elvish Captain, id=Glindur
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:33
 msgid "Glindur"
 msgstr "Glindur"
@@ -736,7 +736,7 @@ msgstr "Eee... a na jakich warunkach?"
 msgid "Unconditional."
 msgstr "Bezwarunkowo."
 
-#. [unit]: type=Dwarvish Stalwart
+#. [unit]: type=Dwarvish Stalwart, id=Baglur
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:192
 msgid "Baglur"
 msgstr "Baglur"
@@ -938,13 +938,13 @@ msgstr ""
 msgid "My glyph is on."
 msgstr "Mój glif jest włączony."
 
-#. [scenario]
+#. [scenario]: id=2t_In_the_Dwarven_City
 #: data/campaigns/Sceptre_of_Fire/scenarios/2t_In_the_Dwarven_City.cfg:3
 msgid "In the Dwarven City"
 msgstr "W krasnoludzkim mieście"
 
-#. [side]: type=Dwarvish Lord
-#. [unit]: type=Dwarvish Lord
+#. [side]: type=Dwarvish Lord, id=Durstorn
+#. [unit]: type=Dwarvish Lord, id=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/2t_In_the_Dwarven_City.cfg:26
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:153
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:26
@@ -970,21 +970,21 @@ msgstr ""
 "Tego dnia Durstorn nie był zadowolony. W ogóle rzadko zdarzało mu się "
 "radować, ale tego dnia był w wyjątkowo podłym nastroju."
 
-#. [unit]: type=Dwarvish Stalwart
+#. [unit]: type=Dwarvish Stalwart, id=Neglur
 #: data/campaigns/Sceptre_of_Fire/scenarios/2t_In_the_Dwarven_City.cfg:58
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:54
 #: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:55
 msgid "Neglur"
 msgstr "Neglur"
 
-#. [unit]: type=Dwarvish Runesmith
+#. [unit]: type=Dwarvish Runesmith, id=Glinar
 #: data/campaigns/Sceptre_of_Fire/scenarios/2t_In_the_Dwarven_City.cfg:70
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:65
 #: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:66
 msgid "Glinar"
 msgstr "Glinar"
 
-#. [unit]: type=Dwarvish Thunderguard
+#. [unit]: type=Dwarvish Thunderguard, id=Noiraran
 #: data/campaigns/Sceptre_of_Fire/scenarios/2t_In_the_Dwarven_City.cfg:82
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:165
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:76
@@ -992,7 +992,7 @@ msgstr "Glinar"
 msgid "Noiraran"
 msgstr "Noiraran"
 
-#. [unit]: type=Dwarvish Steelclad
+#. [unit]: type=Dwarvish Steelclad, id=Kuhnar
 #: data/campaigns/Sceptre_of_Fire/scenarios/2t_In_the_Dwarven_City.cfg:93
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:175
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:87
@@ -1199,7 +1199,7 @@ msgstr ""
 "A kim ty jesteś, do czorta? Wygląda na to, że jesteś z Rugnurem... więc "
 "podążaj z nim na północ."
 
-#. [scenario]
+#. [scenario]: id=3_Searching_for_the_Runecrafter
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:3
 msgid "Searching for the Runecrafter"
 msgstr "Poszukiwania runarza"
@@ -1287,7 +1287,7 @@ msgstr ""
 "Zgadza się. Niewykluczone, że będziemy musieli sobie wywalczyć drogę do jego "
 "domu."
 
-#. [unit]: type=Gryphon
+#. [unit]: type=Gryphon, id=Krawg
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:293
 msgid "Krawg"
 msgstr "Krawg"
@@ -1369,7 +1369,7 @@ msgstr ""
 msgid "Death of Krawg"
 msgstr "Śmierć Krawga"
 
-#. [unit]: type=Gryphon Rider
+#. [unit]: id=Kawn # wmllint: ignore, type=Gryphon Rider
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:378
 msgid "Kawn"
 msgstr "Kawn"
@@ -1380,7 +1380,7 @@ msgid "I see a house in the distance!"
 msgstr "W oddali widzę dom!"
 
 #. [message]: speaker=narrator
-#. [unit]: type=Dwarvish Runemaster_alt
+#. [unit]: type=Dwarvish Runemaster_alt, id=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:361
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:367
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:455
@@ -1525,7 +1525,7 @@ msgid "Well, now we are in the caves again! Come on, back south, to the city."
 msgstr ""
 "Nareszcie, znów jesteśmy w jaskiniach! Dalej, wracamy na południe, do miasta."
 
-#. [scenario]
+#. [scenario]: id=3t_The_Council_Regathers
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:3
 msgid "The Council Regathers"
 msgstr "Ponowne zebranie Rady"
@@ -1715,12 +1715,12 @@ msgstr ""
 "a ja sprowadzę z akademii kilku uczących się jeszcze runarzy, by pomogli nam "
 "w walce."
 
-#. [unit]: type=Dwarvish Runesmith
+#. [unit]: type=Dwarvish Runesmith, id=Kinan    # wmllint: ignore
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:236
 msgid "Kinan"
 msgstr "Kinan"
 
-#. [unit]: type=Dwarvish Runesmith
+#. [unit]: type=Dwarvish Runesmith, id=Rynan    # wmllint: ignore
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:247
 msgid "Rynan"
 msgstr "Rynan"
@@ -1745,7 +1745,7 @@ msgid "M' 'u!"
 msgstr "Jaateees!"
 
 #. [settings]
-#. [scenario]
+#. [scenario]: id=4_Gathering_Materials
 #: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:3
 #: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:10
 msgid "Gathering Materials"
@@ -1886,7 +1886,7 @@ msgstr "Oto i złoto."
 msgid "Trolls"
 msgstr "Trolle"
 
-#. [scenario]
+#. [scenario]: id=4t_The_Jeweler
 #: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:3
 msgid "The Jeweler"
 msgstr "Jubiler"
@@ -1976,7 +1976,7 @@ msgid ""
 "Theganli! Come out of there, Durstorn orders you to come to the citadel."
 msgstr "Theganli! Wychodź, lord Durstorn rozkazuje ci przyjść do cytadeli."
 
-#. [unit]: type=Dwarvish Runesmith
+#. [unit]: type=Dwarvish Runesmith, id=Theganli
 #: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:183
 msgid "Theganli"
 msgstr "Theganli"
@@ -2134,19 +2134,20 @@ msgstr "Oczywiście! Choć na wszelki wypadek ty i Noiraran pójdziecie z nami."
 msgid "Yes sir... *sigh*"
 msgstr "Tak jest, panie... *wzdycha*"
 
-#. [scenario]
+#. [scenario]: id=5_Hills_of_the_Shorbear_Clan
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:3
 msgid "Hills of the Shorbear Clan"
 msgstr "Wzgórza klanu Shorbear"
 
-#. [side]: type=Dwarvish Lord
+#. [side]: type=Dwarvish Lord, id=Glonoin
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:33
 msgid "Glonoin"
 msgstr "Glonoin"
 
-#. [side]: type=Elvish Marshal
-#. [side]: type=Elvish Captain
-#. [side]: type=Dwarvish Lord
+#. [side]: type=Elvish Marshal, id=Gaenlar
+#. [side]: type=Elvish Marshal, id=Glinan
+#. [side]: type=Elvish Captain, id=Kalnar
+#. [side]: type=Dwarvish Lord, id=Glonoin
 #. [side]
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:38
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:72
@@ -2369,7 +2370,7 @@ msgstr "Popełniasz błąd, Durstorn."
 msgid "Shut up, all of you! Attack them!"
 msgstr "Zamknąć się, wszyscy! Atakować ich!"
 
-#. [unit]: type=Elvish Marshal
+#. [unit]: id=Lyndar, type=Elvish Marshal
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:326
 msgid "Lyndar"
 msgstr "Lyndar"
@@ -2545,22 +2546,22 @@ msgstr ""
 msgid "Gaanngh..."
 msgstr "Gaanngh..."
 
-#. [scenario]
+#. [scenario]: id=6_Towards_the_Caves
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:3
 msgid "Towards the Caves"
 msgstr "Ku jaskiniom"
 
-#. [side]: type=Elvish Marshal
+#. [side]: type=Elvish Marshal, id=Gaenlar
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:32
 msgid "Gaenlar"
 msgstr "Gaenlar"
 
-#. [side]: type=Elvish Marshal
+#. [side]: type=Elvish Marshal, id=Glinan
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:65
 msgid "Glinan"
 msgstr "Glinan"
 
-#. [side]: type=Elvish Captain
+#. [side]: type=Elvish Captain, id=Kalnar
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:96
 msgid "Kalnar"
 msgstr "Kalnar"
@@ -2907,7 +2908,7 @@ msgstr ""
 "Nie mam pojęcia, co jest w tych jaskiniach, ale cokolwiek to jest, nie może "
 "być gorsze niż pozostanie tutaj."
 
-#. [scenario]
+#. [scenario]: id=7_Outriding_the_Outriders
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_of_Outriders.cfg:3
 msgid "Outriding the Outriders"
 msgstr "Mordercza pogoń"
@@ -2954,27 +2955,27 @@ msgstr ""
 "Moją ostatnią nadzieją jest przekonać chłopów, żeby powstrzymali elfy przed "
 "przejazdem przez ich ziemie, abym mógł zyskać na czasie."
 
-#. [unit]: type=Elvish Outrider
+#. [unit]: type=Elvish Outrider, id=Asaeri
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_of_Outriders.cfg:108
 msgid "Lord Asaeri"
 msgstr "Lord Asaeri"
 
-#. [unit]: type=Elvish Outrider
+#. [unit]: type=Elvish Outrider, id=Gaelir
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_of_Outriders.cfg:119
 msgid "Gaelir"
 msgstr "Gaelir"
 
-#. [unit]: type=Elvish Outrider
+#. [unit]: type=Elvish Outrider, id=Salira
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_of_Outriders.cfg:130
 msgid "Salira"
 msgstr "Salira"
 
-#. [unit]: type=Elvish Outrider
+#. [unit]: type=Elvish Outrider, id=Losnin
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_of_Outriders.cfg:142
 msgid "Losnin"
 msgstr "Losnin"
 
-#. [unit]: type=Elvish Outrider
+#. [unit]: type=Elvish Outrider, id=Ealin
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_of_Outriders.cfg:154
 msgid "Ealin"
 msgstr "Ealin"
@@ -2993,7 +2994,7 @@ msgstr ""
 msgid "We shall see about that!"
 msgstr "To się jeszcze okaże!"
 
-#. [unit]: type=Elvish Outrider
+#. [unit]: type=Elvish Outrider, id=Raesil
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_of_Outriders.cfg:185
 msgid "Raesil"
 msgstr "Raesil"
@@ -3007,7 +3008,7 @@ msgstr ""
 "Tutejsi wieśniacy są lojalni koronie Wesnoth. Zapewne da się ich nakłonić, "
 "by pomogli mi w ucieczce przed tymi elfami."
 
-#. [unit]: type=Spearman
+#. [unit]: type=Spearman, id=Rolin    # wmllint: ignore
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_of_Outriders.cfg:207
 msgid "Rolin"
 msgstr "Rolin"
@@ -3019,7 +3020,7 @@ msgstr ""
 "Bez wahania pomożemy każdemu wojownikowi królestwa Wesnoth, który potrzebuje "
 "naszej pomocy!"
 
-#. [unit]: type=Lieutenant
+#. [unit]: type=Lieutenant, id=Hadlin   # wmllint: ignore
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_of_Outriders.cfg:267
 msgid "Hadlin"
 msgstr "Hadlin"
@@ -3049,17 +3050,17 @@ msgstr ""
 "Rozumiem. Cóż, wjeżdżaj do środka. Wątpię, czy elfy zdołałyby zdobyć ten "
 "fort, nawet gdyby chciały wszcząć wojnę - w co wątpię."
 
-#. [scenario]
+#. [scenario]: id=8_The_Dragon
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:3
 msgid "The Dragon"
 msgstr "Smok"
 
-#. [side]: type=Elvish Marshal
+#. [side]: type=Elvish Marshal, id=Landar
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:36
 msgid "Landar"
 msgstr "Landar"
 
-#. [side]: type=Fire Dragon
+#. [side]: type=Fire Dragon, id=Khrakrahs
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:82
 msgid "Khrakrahs"
 msgstr "Khrakrahs"
@@ -3279,12 +3280,12 @@ msgstr ""
 msgid "In $turnsleft more turns I will have completed the sceptre."
 msgstr "Potrzebuję jeszcze $turnsleft tur, żeby ukończyć berło."
 
-#. [scenario]
+#. [scenario]: id=9_Caverns_of_Flame
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:3
 msgid "Caverns of Flame"
 msgstr "Groty płomieni"
 
-#. [side]: type=Dwarvish Fighter
+#. [side]: type=Dwarvish Fighter, id=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:26
 msgid "Dwarves"
 msgstr "Krasnoludy"
@@ -3322,8 +3323,8 @@ msgstr ""
 msgid "Explore as much of the cave as possible"
 msgstr "Zbadaj jak największą część jaskiń"
 
-#. [unit]: type=Troll
-#. [unit]: type=Orcish Warrior
+#. [unit]: type=Troll, id=Guardian
+#. [unit]: type=Orcish Warrior, id=Guardian
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:244
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:252
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:260
@@ -3388,7 +3389,7 @@ msgstr "Krawg czije rkóóóww tey ssskini!"
 msgid "Indeed, there may be orcs lurking here. We should beware of them."
 msgstr "Faktycznie, mogą tu się czaić orki. Musimy na nie uważać."
 
-#. [unit]: type=Elvish Marshal
+#. [unit]: type=Elvish Marshal, id=Aendan
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:344
 msgid "Aendan"
 msgstr "Aendan"
@@ -3516,7 +3517,7 @@ msgstr "Zabij wszystkie elfy, nim którykolwiek z nich opuści jaskinie"
 msgid "Hm... Me le' no'w!"
 msgstr "Hm... Ja nikaam!"
 
-#. [scenario]
+#. [scenario]: id=Epilogue
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:3
 msgid "Epilogue"
 msgstr "Epilog"
@@ -3551,12 +3552,12 @@ msgstr ""
 "Krawg przemierzył całą daleką drogę na południe, do Weldyn, i dotarł tam "
 "mniej więcej w tym samym czasie, co Alanin."
 
-#. [unit]: type=Royal Guard
+#. [unit]: type=Royal Guard, id=Guard Captain
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:71
 msgid "Guard Captain"
 msgstr "Kapitan straży"
 
-#. [unit]: type=Swordsman
+#. [unit]: type=Swordsman, id=Gatekeeper
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:88
 msgid "Gatekeeper"
 msgstr "Strażnik bramy"
@@ -3796,12 +3797,12 @@ msgstr ""
 "Thursagan, najpotężniejszy z Krasnoludzkich Mędrców i Rugnur, największy z "
 "Krasnoludzkich Bohaterów dawnych czasów."
 
-#. [unit_type]: race=mechanical
+#. [unit_type]: id=Caravan, race=mechanical
 #: data/campaigns/Sceptre_of_Fire/units/Caravan.cfg:4
 msgid "Caravan"
 msgstr "Karawana"
 
-#. [unit_type]: race=mechanical
+#. [unit_type]: id=Caravan, race=mechanical
 #: data/campaigns/Sceptre_of_Fire/units/Caravan.cfg:17
 msgid ""
 "Caravans are used to carry gold or supplies long distances. Because of the "
@@ -3810,12 +3811,12 @@ msgstr ""
 "Karawan używa się do przewożenia złota lub zaopatrzenia na duże odległości. "
 "Z powodu ogromnej wagi towaru, który wiezie, porusza się ona bardzo wolno."
 
-#. [unit_type]: race=dwarf
+#. [unit_type]: id=Dwarvish Arcanister, race=dwarf
 #: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Arcanister.cfg:4
 msgid "Dwarvish Arcanister"
 msgstr "Arcymistrz run"
 
-#. [unit_type]: race=dwarf
+#. [unit_type]: id=Dwarvish Arcanister, race=dwarf
 #: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Arcanister.cfg:23
 msgid ""
 "The most powerful of all the runecrafters, the Dwarvish Arcanister destroys "
@@ -3836,12 +3837,12 @@ msgstr ""
 msgid "hammer"
 msgstr "młot"
 
-#. [unit_type]: race=dwarf
+#. [unit_type]: id=Dwarvish Miner, race=dwarf
 #: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Miner.cfg:4
 msgid "Dwarvish Miner"
 msgstr "Krasnoludzki górnik"
 
-#. [unit_type]: race=dwarf
+#. [unit_type]: id=Dwarvish Miner, race=dwarf
 #: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Miner.cfg:17
 msgid ""
 "Dwarvish miners are the grunt workers of Dwarvish society. They take the "
@@ -3857,12 +3858,12 @@ msgstr ""
 msgid "pick"
 msgstr "kilof"
 
-#. [unit_type]: race=dwarf
+#. [unit_type]: id=Dwarvish Runemaster_alt, race=dwarf
 #: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Runemaster.cfg:4
 msgid "Dwarvish Runemaster"
 msgstr "Krasnoludzki runarz"
 
-#. [unit_type]: race=dwarf
+#. [unit_type]: id=Dwarvish Runemaster_alt, race=dwarf
 #: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Runemaster.cfg:22
 msgid ""
 "Except for those with almost supernatural skill, the highest rank a "
@@ -3880,12 +3881,12 @@ msgstr ""
 "run fizyczne ciosy ich przeciwników zadają mniej obrażeń, niż można by się "
 "spodziewać."
 
-#. [unit_type]: race=dwarf
+#. [unit_type]: id=Dwarvish Runesmith, race=dwarf
 #: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Runesmith.cfg:4
 msgid "Dwarvish Runesmith"
 msgstr "Krasnoludzki kowal run"
 
-#. [unit_type]: race=dwarf
+#. [unit_type]: id=Dwarvish Runesmith, race=dwarf
 #: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Runesmith.cfg:25
 msgid ""
 "Dwarvish runesmiths, now practiced at their craft, carve arcane runes into "
@@ -3898,12 +3899,12 @@ msgstr ""
 "ich siłę i celność, ale również osłabiają ciosy przeciwników, sprawiając, że "
 "wrogowie uderzają delikatnie, słabo i prosto w pancerz obrońcy."
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Haldric II, race=human
 #: data/campaigns/Sceptre_of_Fire/units/Haldric_II.cfg:4
 msgid "King"
 msgstr "Król"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Haldric II, race=human
 #: data/campaigns/Sceptre_of_Fire/units/Haldric_II.cfg:21
 msgid "King of Wesnoth."
 msgstr "Król Wesnoth."

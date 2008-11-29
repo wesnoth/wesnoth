@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-sof\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-22 14:56+0100\n"
+"POT-Creation-Date: 2008-11-29 12:25+0100\n"
 "PO-Revision-Date: 2008-10-03 18:24+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish <wesnoth-tr@googlegroups.com>\n"
@@ -18,47 +18,47 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#. [campaign]
+#. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:10
 msgid "The Sceptre of Fire"
 msgstr "Ateş Asası"
 
-#. [campaign]
+#. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:11
 msgid "SoF"
 msgstr "AA"
 
-#. [campaign]
+#. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:16
 msgid "Fighter"
 msgstr "Savaşçı"
 
-#. [campaign]
+#. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:16
 msgid "(Normal)"
 msgstr "(Normal)"
 
-#. [campaign]
+#. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:17
 msgid "Steelclad"
 msgstr "Çelik Zırhlı"
 
-#. [campaign]
+#. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:17
 msgid "(Challenging)"
 msgstr "(Tecrübeli)"
 
-#. [campaign]
+#. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:18
 msgid "Lord"
 msgstr "Lider"
 
-#. [campaign]
+#. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:18
 msgid "(Difficult)"
 msgstr "(Zor)"
 
-#. [campaign]
+#. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:29
 msgid ""
 "The land of Wesnoth's banner bold\n"
@@ -98,18 +98,18 @@ msgstr "WML Yardımı"
 msgid "Artwork and Graphics Design"
 msgstr "Sanatsal ve Çizgesel Tasarım"
 
-#. [scenario]
+#. [scenario]: id=1_A_Bargain_is_Struck
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:3
 msgid "A Bargain is Struck"
 msgstr "Pazarlıkta Vurgun"
 
-#. [side]: type=Dwarvish Fighter
+#. [side]: type=Dwarvish Fighter, id=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:18
 msgid "Rugnur"
 msgstr "Rugnur"
 
-#. [side]: type=Dwarvish Fighter
-#. [side]: type=Haldric II
+#. [side]: type=Dwarvish Fighter, id=Rugnur
+#. [side]: type=Haldric II, id=Haldric II
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:26
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:41
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:18
@@ -117,13 +117,13 @@ msgstr "Rugnur"
 msgid "Allies"
 msgstr "Müttefikler"
 
-#. [side]: type=Haldric II
+#. [side]: type=Haldric II, id=Haldric II
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:34
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:24
 msgid "Haldric II"
 msgstr "II. Haldrik"
 
-#. [side]: type=Elvish Captain
+#. [side]: type=Elvish Captain, id=Glildur
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:75
 msgid "Glildur"
 msgstr "Glildur"
@@ -450,7 +450,7 @@ msgstr ""
 "göndereceğim. Taşı getiren, asa yapılırken sizinle kalacak ve bittiği zaman "
 "asayı bana getirmesini sağlayacaksınız. Krallığım sona ermeden biter umarım."
 
-#. [unit]: type=Dragoon
+#. [unit]: type=Dragoon, id=Alanin
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:293
 msgid "Alanin"
 msgstr "Alanin"
@@ -631,12 +631,12 @@ msgstr ""
 "Paramla yüklü bir arabayı ele geçirmelerine izin verdiniz! Malımı güvende "
 "tutmanız için size güvenemezsem, anlaşma burada biter."
 
-#. [scenario]
+#. [scenario]: id=2_Closing_the_Gates
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:3
 msgid "Closing the Gates"
 msgstr "Kapanan Kapılar"
 
-#. [side]: type=Elvish Captain
+#. [side]: type=Elvish Captain, id=Glindur
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:33
 msgid "Glindur"
 msgstr "Glindur"
@@ -721,7 +721,7 @@ msgstr "Hımm... Şartlar neler?"
 msgid "Unconditional."
 msgstr "Koşulsuz olarak."
 
-#. [unit]: type=Dwarvish Stalwart
+#. [unit]: type=Dwarvish Stalwart, id=Baglur
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:192
 msgid "Baglur"
 msgstr "Baglur"
@@ -914,13 +914,13 @@ msgstr "Güzel, şimdi şehre gidip raporumu vermeliyim. Zaten çok geç kaldım
 msgid "My glyph is on."
 msgstr "Benim motif etkin."
 
-#. [scenario]
+#. [scenario]: id=2t_In_the_Dwarven_City
 #: data/campaigns/Sceptre_of_Fire/scenarios/2t_In_the_Dwarven_City.cfg:3
 msgid "In the Dwarven City"
 msgstr "Cüce Kenti"
 
-#. [side]: type=Dwarvish Lord
-#. [unit]: type=Dwarvish Lord
+#. [side]: type=Dwarvish Lord, id=Durstorn
+#. [unit]: type=Dwarvish Lord, id=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/2t_In_the_Dwarven_City.cfg:26
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:153
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:26
@@ -946,21 +946,21 @@ msgstr ""
 "Durstorn bugün mutlu değil. Zaten ne zaman mutluydu ki; fakat bugün daha da "
 "mutsuz."
 
-#. [unit]: type=Dwarvish Stalwart
+#. [unit]: type=Dwarvish Stalwart, id=Neglur
 #: data/campaigns/Sceptre_of_Fire/scenarios/2t_In_the_Dwarven_City.cfg:58
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:54
 #: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:55
 msgid "Neglur"
 msgstr "Neglur"
 
-#. [unit]: type=Dwarvish Runesmith
+#. [unit]: type=Dwarvish Runesmith, id=Glinar
 #: data/campaigns/Sceptre_of_Fire/scenarios/2t_In_the_Dwarven_City.cfg:70
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:65
 #: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:66
 msgid "Glinar"
 msgstr "Glinar"
 
-#. [unit]: type=Dwarvish Thunderguard
+#. [unit]: type=Dwarvish Thunderguard, id=Noiraran
 #: data/campaigns/Sceptre_of_Fire/scenarios/2t_In_the_Dwarven_City.cfg:82
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:165
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:76
@@ -968,7 +968,7 @@ msgstr "Glinar"
 msgid "Noiraran"
 msgstr "Noyraran"
 
-#. [unit]: type=Dwarvish Steelclad
+#. [unit]: type=Dwarvish Steelclad, id=Kuhnar
 #: data/campaigns/Sceptre_of_Fire/scenarios/2t_In_the_Dwarven_City.cfg:93
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:175
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:87
@@ -1171,7 +1171,7 @@ msgstr ""
 "Şeytan, sen kimsin? Hımm, Rugnur ile berabersin sanırım... Kuzeye "
 "gidiyorlar, onları takibet."
 
-#. [scenario]
+#. [scenario]: id=3_Searching_for_the_Runecrafter
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:3
 msgid "Searching for the Runecrafter"
 msgstr "Oyma Ustasını Aramak"
@@ -1257,7 +1257,7 @@ msgstr ""
 msgid "Right. We'll probably have to fight our way through to his house."
 msgstr "Doğru. Evine varana dek belki de döğüşmek zorunda kalacağız."
 
-#. [unit]: type=Gryphon
+#. [unit]: type=Gryphon, id=Krawg
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:293
 msgid "Krawg"
 msgstr "Kvarg"
@@ -1341,7 +1341,7 @@ msgstr ""
 msgid "Death of Krawg"
 msgstr "Kvarg’ın ölümü"
 
-#. [unit]: type=Gryphon Rider
+#. [unit]: id=Kawn # wmllint: ignore, type=Gryphon Rider
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:378
 msgid "Kawn"
 msgstr "Kavn"
@@ -1352,7 +1352,7 @@ msgid "I see a house in the distance!"
 msgstr "Uzakta bir ev görüyorum!"
 
 #. [message]: speaker=narrator
-#. [unit]: type=Dwarvish Runemaster_alt
+#. [unit]: type=Dwarvish Runemaster_alt, id=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:361
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:367
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:455
@@ -1495,7 +1495,7 @@ msgstr "Tursagan’ın ölümü"
 msgid "Well, now we are in the caves again! Come on, back south, to the city."
 msgstr "İşte, tekrar mağaralardayız! Gelin güneye şehre gidelim."
 
-#. [scenario]
+#. [scenario]: id=3t_The_Council_Regathers
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:3
 msgid "The Council Regathers"
 msgstr "Yine Yeniden Konsey"
@@ -1685,12 +1685,12 @@ msgstr ""
 "Ben de bu düşmanlarla döğüşmekte yardımcı olmaları için akademiden bir kaç "
 "tane eğitimli oymacı getireceğim."
 
-#. [unit]: type=Dwarvish Runesmith
+#. [unit]: type=Dwarvish Runesmith, id=Kinan    # wmllint: ignore
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:236
 msgid "Kinan"
 msgstr "Kinan"
 
-#. [unit]: type=Dwarvish Runesmith
+#. [unit]: type=Dwarvish Runesmith, id=Rynan    # wmllint: ignore
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:247
 msgid "Rynan"
 msgstr "Rinan"
@@ -1715,7 +1715,7 @@ msgid "M' 'u!"
 msgstr "Benim de!"
 
 #. [settings]
-#. [scenario]
+#. [scenario]: id=4_Gathering_Materials
 #: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:3
 #: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:10
 msgid "Gathering Materials"
@@ -1858,7 +1858,7 @@ msgstr "Altın burada."
 msgid "Trolls"
 msgstr "Troller"
 
-#. [scenario]
+#. [scenario]: id=4t_The_Jeweler
 #: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:3
 msgid "The Jeweler"
 msgstr "Mücevherci"
@@ -1948,7 +1948,7 @@ msgid ""
 "Theganli! Come out of there, Durstorn orders you to come to the citadel."
 msgstr "Teganli! Buraya gel, Durstorn kaleye gelmeni emrediyor."
 
-#. [unit]: type=Dwarvish Runesmith
+#. [unit]: type=Dwarvish Runesmith, id=Theganli
 #: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:183
 msgid "Theganli"
 msgstr "Teganli"
@@ -2104,19 +2104,20 @@ msgstr "Elbette. Güvenlik için sen ve Noyraran da bizimle gelecek."
 msgid "Yes sir... *sigh*"
 msgstr "Peki efendim... *iç çeker*"
 
-#. [scenario]
+#. [scenario]: id=5_Hills_of_the_Shorbear_Clan
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:3
 msgid "Hills of the Shorbear Clan"
 msgstr "Şorber Kabilesi Tepeleri"
 
-#. [side]: type=Dwarvish Lord
+#. [side]: type=Dwarvish Lord, id=Glonoin
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:33
 msgid "Glonoin"
 msgstr "Glonin"
 
-#. [side]: type=Elvish Marshal
-#. [side]: type=Elvish Captain
-#. [side]: type=Dwarvish Lord
+#. [side]: type=Elvish Marshal, id=Gaenlar
+#. [side]: type=Elvish Marshal, id=Glinan
+#. [side]: type=Elvish Captain, id=Kalnar
+#. [side]: type=Dwarvish Lord, id=Glonoin
 #. [side]
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:38
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:72
@@ -2338,7 +2339,7 @@ msgstr "Yanlış yapıyorsun, Durstorn."
 msgid "Shut up, all of you! Attack them!"
 msgstr "Kesin sesinizi! Saldırın şunlara!"
 
-#. [unit]: type=Elvish Marshal
+#. [unit]: id=Lyndar, type=Elvish Marshal
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:326
 msgid "Lyndar"
 msgstr "Lindar"
@@ -2511,22 +2512,22 @@ msgstr ""
 msgid "Gaanngh..."
 msgstr "Gaanng..."
 
-#. [scenario]
+#. [scenario]: id=6_Towards_the_Caves
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:3
 msgid "Towards the Caves"
 msgstr "Mağaralara Doğru"
 
-#. [side]: type=Elvish Marshal
+#. [side]: type=Elvish Marshal, id=Gaenlar
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:32
 msgid "Gaenlar"
 msgstr "Gavenlar"
 
-#. [side]: type=Elvish Marshal
+#. [side]: type=Elvish Marshal, id=Glinan
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:65
 msgid "Glinan"
 msgstr "Glinan"
 
-#. [side]: type=Elvish Captain
+#. [side]: type=Elvish Captain, id=Kalnar
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:96
 msgid "Kalnar"
 msgstr "Kalnar"
@@ -2869,7 +2870,7 @@ msgstr ""
 "Bu mağaralarda ne olduğunu bilmiyorum, fakat her ne varsa, orada kalıp "
 "ölmeyi beklemekten iyidir."
 
-#. [scenario]
+#. [scenario]: id=7_Outriding_the_Outriders
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_of_Outriders.cfg:3
 msgid "Outriding the Outriders"
 msgstr "Akıncı Akını"
@@ -2916,27 +2917,27 @@ msgstr ""
 "Tek umudum elfleri durdurmaları için köylüleri ikna etmek. Böylece önlerine "
 "geçebilirim."
 
-#. [unit]: type=Elvish Outrider
+#. [unit]: type=Elvish Outrider, id=Asaeri
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_of_Outriders.cfg:108
 msgid "Lord Asaeri"
 msgstr "Komutan Asayeri"
 
-#. [unit]: type=Elvish Outrider
+#. [unit]: type=Elvish Outrider, id=Gaelir
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_of_Outriders.cfg:119
 msgid "Gaelir"
 msgstr "Gagelir"
 
-#. [unit]: type=Elvish Outrider
+#. [unit]: type=Elvish Outrider, id=Salira
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_of_Outriders.cfg:130
 msgid "Salira"
 msgstr "Salira"
 
-#. [unit]: type=Elvish Outrider
+#. [unit]: type=Elvish Outrider, id=Losnin
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_of_Outriders.cfg:142
 msgid "Losnin"
 msgstr "Losnin"
 
-#. [unit]: type=Elvish Outrider
+#. [unit]: type=Elvish Outrider, id=Ealin
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_of_Outriders.cfg:154
 msgid "Ealin"
 msgstr "Evalin"
@@ -2955,7 +2956,7 @@ msgstr ""
 msgid "We shall see about that!"
 msgstr "Göreceğiz!"
 
-#. [unit]: type=Elvish Outrider
+#. [unit]: type=Elvish Outrider, id=Raesil
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_of_Outriders.cfg:185
 msgid "Raesil"
 msgstr "Rayesil"
@@ -2969,7 +2970,7 @@ msgstr ""
 "Buradaki köylüler Wesnoth’a sadıktır. Bu elflerden kaçmama yardımcı olmak "
 "için gönüllü olacaklardır."
 
-#. [unit]: type=Spearman
+#. [unit]: type=Spearman, id=Rolin    # wmllint: ignore
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_of_Outriders.cfg:207
 msgid "Rolin"
 msgstr "Rolin"
@@ -2980,7 +2981,7 @@ msgid "We will certainly help any warrior of Wesnoth who needs our help!"
 msgstr ""
 "Yardımımıza ihtiyaç duyan her Wesnoth savaşçısına kesinlikle yardım ederiz!"
 
-#. [unit]: type=Lieutenant
+#. [unit]: type=Lieutenant, id=Hadlin   # wmllint: ignore
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_of_Outriders.cfg:267
 msgid "Hadlin"
 msgstr "Hadlin"
@@ -3010,17 +3011,17 @@ msgstr ""
 "Anlıyorum. İçeri gel. Bu kaleyi ele geçirmeye çalışacaklarını sanmam, bir "
 "savaş başlatmayı isteyeceklerinden bile şüpheliyim. "
 
-#. [scenario]
+#. [scenario]: id=8_The_Dragon
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:3
 msgid "The Dragon"
 msgstr "Ejderha"
 
-#. [side]: type=Elvish Marshal
+#. [side]: type=Elvish Marshal, id=Landar
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:36
 msgid "Landar"
 msgstr "Landar"
 
-#. [side]: type=Fire Dragon
+#. [side]: type=Fire Dragon, id=Khrakrahs
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:82
 msgid "Khrakrahs"
 msgstr "Krakras"
@@ -3238,12 +3239,12 @@ msgstr ""
 msgid "In $turnsleft more turns I will have completed the sceptre."
 msgstr "Asayı tamamlamama $turnsleft el kaldı."
 
-#. [scenario]
+#. [scenario]: id=9_Caverns_of_Flame
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:3
 msgid "Caverns of Flame"
 msgstr "Ateş Mağaraları"
 
-#. [side]: type=Dwarvish Fighter
+#. [side]: type=Dwarvish Fighter, id=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:26
 msgid "Dwarves"
 msgstr "Cüceler"
@@ -3281,8 +3282,8 @@ msgstr ""
 msgid "Explore as much of the cave as possible"
 msgstr "Mağarayı mümkün olduğunca keşfet"
 
-#. [unit]: type=Troll
-#. [unit]: type=Orcish Warrior
+#. [unit]: type=Troll, id=Guardian
+#. [unit]: type=Orcish Warrior, id=Guardian
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:244
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:252
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:260
@@ -3347,7 +3348,7 @@ msgstr "Kvarg, orkları hissediyor!"
 msgid "Indeed, there may be orcs lurking here. We should beware of them."
 msgstr "Gerçekten de buralarda dolaşan orklar olabilir. Dikkatli olmalıyız."
 
-#. [unit]: type=Elvish Marshal
+#. [unit]: type=Elvish Marshal, id=Aendan
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:344
 msgid "Aendan"
 msgstr "Agendan"
@@ -3477,7 +3478,7 @@ msgstr "Mağaralardan kaçmadan elflerin hepsini öldür"
 msgid "Hm... Me le' no'w!"
 msgstr "Hımmm... Gitmeliyim!"
 
-#. [scenario]
+#. [scenario]: id=Epilogue
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:3
 msgid "Epilogue"
 msgstr "Sonsöz"
@@ -3510,12 +3511,12 @@ msgstr ""
 "Ve Kvarg; Kvarg onu takip etti. Nasıl yaptı bilmiyorum. Fakat, Kvarg güneye, "
 "Veldin’e doğru gitti ve Alanin’e tam zamanında yetişti."
 
-#. [unit]: type=Royal Guard
+#. [unit]: type=Royal Guard, id=Guard Captain
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:71
 msgid "Guard Captain"
 msgstr "Muhafız Yüzbaşısı"
 
-#. [unit]: type=Swordsman
+#. [unit]: type=Swordsman, id=Gatekeeper
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:88
 msgid "Gatekeeper"
 msgstr "Kapıcı"
@@ -3749,12 +3750,12 @@ msgstr ""
 "olan Tursagan ile Cüce kahramanlarının en büyüklerinden Rugnur hakkında "
 "destanlar yazıldı."
 
-#. [unit_type]: race=mechanical
+#. [unit_type]: id=Caravan, race=mechanical
 #: data/campaigns/Sceptre_of_Fire/units/Caravan.cfg:4
 msgid "Caravan"
 msgstr "Yük Arabası"
 
-#. [unit_type]: race=mechanical
+#. [unit_type]: id=Caravan, race=mechanical
 #: data/campaigns/Sceptre_of_Fire/units/Caravan.cfg:17
 msgid ""
 "Caravans are used to carry gold or supplies long distances. Because of the "
@@ -3763,12 +3764,12 @@ msgstr ""
 "At arabaları uzak mesafelere altın ve erzak taşımakta kullanılır. Taşınan "
 "yükün ağırlığı sebebiyle çok yavaş hareket ederler."
 
-#. [unit_type]: race=dwarf
+#. [unit_type]: id=Dwarvish Arcanister, race=dwarf
 #: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Arcanister.cfg:4
 msgid "Dwarvish Arcanister"
 msgstr "Cüce Gizemci"
 
-#. [unit_type]: race=dwarf
+#. [unit_type]: id=Dwarvish Arcanister, race=dwarf
 #: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Arcanister.cfg:23
 msgid ""
 "The most powerful of all the runecrafters, the Dwarvish Arcanister destroys "
@@ -3788,12 +3789,12 @@ msgstr ""
 msgid "hammer"
 msgstr "çekiç"
 
-#. [unit_type]: race=dwarf
+#. [unit_type]: id=Dwarvish Miner, race=dwarf
 #: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Miner.cfg:4
 msgid "Dwarvish Miner"
 msgstr "Cüce Madenci"
 
-#. [unit_type]: race=dwarf
+#. [unit_type]: id=Dwarvish Miner, race=dwarf
 #: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Miner.cfg:17
 msgid ""
 "Dwarvish miners are the grunt workers of Dwarvish society. They take the "
@@ -3808,12 +3809,12 @@ msgstr ""
 msgid "pick"
 msgstr "dürtme"
 
-#. [unit_type]: race=dwarf
+#. [unit_type]: id=Dwarvish Runemaster_alt, race=dwarf
 #: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Runemaster.cfg:4
 msgid "Dwarvish Runemaster"
 msgstr "Cüce Oyma Ustası (AA)"
 
-#. [unit_type]: race=dwarf
+#. [unit_type]: id=Dwarvish Runemaster_alt, race=dwarf
 #: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Runemaster.cfg:22
 msgid ""
 "Except for those with almost supernatural skill, the highest rank a "
@@ -3828,12 +3829,12 @@ msgstr ""
 "motifler içerir, dolayısıyla bu silahlar düşmanlar üzerinde daha etkili "
 "olurlar."
 
-#. [unit_type]: race=dwarf
+#. [unit_type]: id=Dwarvish Runesmith, race=dwarf
 #: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Runesmith.cfg:4
 msgid "Dwarvish Runesmith"
 msgstr "Cüce Oymacı"
 
-#. [unit_type]: race=dwarf
+#. [unit_type]: id=Dwarvish Runesmith, race=dwarf
 #: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Runesmith.cfg:25
 msgid ""
 "Dwarvish runesmiths, now practiced at their craft, carve arcane runes into "
@@ -3846,12 +3847,12 @@ msgstr ""
 "kazanırlar ve döğüşte düşmanların nefesinin kesilmesine, takatinin düşmesine "
 "ve zırhlarının zayıflamasına sebep olurlar."
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Haldric II, race=human
 #: data/campaigns/Sceptre_of_Fire/units/Haldric_II.cfg:4
 msgid "King"
 msgstr "Kral"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Haldric II, race=human
 #: data/campaigns/Sceptre_of_Fire/units/Haldric_II.cfg:21
 msgid "King of Wesnoth."
 msgstr "Wesnoth Kralı."

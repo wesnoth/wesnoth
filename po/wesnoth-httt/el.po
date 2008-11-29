@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-27 19:53+0100\n"
+"POT-Creation-Date: 2008-11-29 12:24+0100\n"
 "PO-Revision-Date: 2007-02-18 21:14+0200\n"
 "Last-Translator: Κωνσταντίνος Έγκαρχος <atixos@gmail.com>\n"
 "Language-Team: none\n"
@@ -17,51 +17,51 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#. [campaign]
+#. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:11
 msgid "Heir to the Throne"
 msgstr "Ο Κληρονομος του Θρόνου"
 
-#. [campaign]
+#. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:12
 msgid "HttT"
 msgstr ""
 
-#. [variation]: race=human
-#. [unit_type]: race=human
-#. [campaign]
+#. [variation]: id=Fighter, race=human
+#. [unit_type]: id=Fighter, race=human
+#. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:4
 #: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:33
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:16
 msgid "Fighter"
 msgstr "Πολεμιστής"
 
-#. [campaign]
+#. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:16
 msgid "(Beginner)"
 msgstr ""
 
-#. [campaign]
+#. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:17
 msgid "(Normal)"
 msgstr ""
 
-#. [campaign]
+#. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:17
 msgid "Hero"
 msgstr "Ήρωας"
 
-#. [campaign]
+#. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:18
 msgid "(Challenging)"
 msgstr ""
 
-#. [campaign]
+#. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:18
 msgid "Champion"
 msgstr "Πρωταθλητής"
 
-#. [campaign]
+#. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:21
 #, fuzzy
 msgid ""
@@ -93,7 +93,7 @@ msgstr ""
 msgid "Miscellaneous"
 msgstr ""
 
-#. [scenario]
+#. [scenario]: id=01_The_Elves_Besieged
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:4
 msgid "The Elves Besieged"
 msgstr "Η Πολιορκία των Ξωτικών"
@@ -178,8 +178,8 @@ msgstr "Θάνατος του Ντεφάλντορ"
 msgid "Turns run out"
 msgstr "Οι γύροι εξαντληθούν"
 
-#. [side]: type=Commander
-#. [side]: type=Fighter
+#. [side]: type=Commander, id=Konrad
+#. [side]: type=Fighter, id=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:46
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:94
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:44
@@ -212,15 +212,16 @@ msgstr "Οι γύροι εξαντληθούν"
 msgid "Konrad"
 msgstr "Κώνραντ"
 
-#. [side]: type=Commander
-#. [side]: type=Fighter
-#. [side]: type=Dwarvish Lord
-#. [side]: type=Grand Knight
-#. [side]: type=Elvish Champion
-#. [side]: type=Elvish Druid
+#. [side]: type=Commander, id=Konrad
+#. [side]: type=Fighter, id=Konrad
+#. [side]: id=Geldar, type=Dwarvish Lord
+#. [side]: type=Grand Knight, id=Kaylan
+#. [side]: type=Elvish Champion, id=Galdrad
+#. [side]: type=Elvish Druid, id=Chantal
 #. [side]
-#. [side]: type=Ancient Wose
-#. [side]: type=Elvish Sylph
+#. [side]: id=Relgorn, type=Dwarvish Lord
+#. [side]: type=Ancient Wose, id=Haralamdum
+#. [side]: type=Elvish Sylph, id=Bona-Melodia
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:52
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:101
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:49
@@ -258,25 +259,38 @@ msgstr "Κώνραντ"
 msgid "Rebels"
 msgstr ""
 
-#. [unit]: type=Elder Mage
+#. [unit]: id=Delfador, type=Elder Mage
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:68
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:693
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:850
 msgid "Delfador"
 msgstr "Ντεφάλντορ"
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Urug-Telfar
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:144
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:83
 msgid "Urug-Telfar"
 msgstr "Ούρουγκ-Τέλφαρ"
 
-#. [side]: type=Orcish Warlord
-#. [side]: type=Orcish Warrior
-#. [side]: type=Orcish Slurbow
-#. [side]: type=Orcish Sovereign
+#. [side]: type=Orcish Warlord, id=Kojun Herolm
+#. [side]: type=Orcish Warrior, id=Mokho Kimer
+#. [side]: type=Orcish Warrior, id=Mokolo Qimur
+#. [side]: type=Orcish Warlord, id=Urug-Telfar
+#. [side]: type=Orcish Warlord, id=Knafa-Tan
+#. [side]: type=Orcish Warlord, id=Maga-Knafa
+#. [side]: type=Orcish Slurbow, id=Knafa-Telfar
+#. [side]: type=Orcish Warlord, id=Urug-Tan
+#. [side]: type=Orcish Sovereign, id=Shuuga-Mool
+#. [side]: type=Orcish Warrior, id=Halgar Du'nar
+#. [side]: type=Orcish Warlord, id=Gaga-Breuk
+#. [side]: type=Orcish Warlord, id=Urag-Tifer
+#. [side]: type=Orcish Warrior, id=Dwaba-Kukai
+#. [side]: type=Orcish Warrior, id=Managa'Gwin
+#. [side]: type=Orcish Warrior, id=Usadar Q'kai
 #. [side]: type=Goblin Rouser
+#. [side]: type=Orcish Warlord
 #. [side]: type=Troll Warrior
+#. [side]: type=Orcish Warlord, id=Kior-Dal
 #: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:173
 #: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:190
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:100
@@ -304,22 +318,22 @@ msgstr "Ούρουγκ-Τέλφαρ"
 msgid "Orcs"
 msgstr "Μάρκος"
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Knafa-Tan
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:164
 msgid "Knafa-Tan"
 msgstr "Κνάφα-Ταν"
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Maga-Knafa
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:183
 msgid "Maga-Knafa"
 msgstr "Μάγα-Κνάφα"
 
-#. [side]: type=Elvish Champion
+#. [side]: type=Elvish Champion, id=Galdrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:203
 msgid "Galdrad"
 msgstr "Γκάλντραντ"
 
-#. [side]: type=Elvish Druid
+#. [side]: type=Elvish Druid, id=Chantal
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:218
 msgid "Chantal"
 msgstr "Χάνταλ"
@@ -535,7 +549,7 @@ msgid "There can be no looking back. We must go quickly!"
 msgstr "Μην κοιτάς πίσω. Πρέπει να φύγουμε!"
 
 #. [label]
-#. [scenario]
+#. [scenario]: id=02_Blackwater_Port
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:4
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:50
 msgid "Blackwater Port"
@@ -561,22 +575,22 @@ msgstr "Νίκησε του αντίπαλους αρχηγούς"
 msgid "Death of Sir Kaylan"
 msgstr "Θάνατος του Λόρδου Κάυλαν"
 
-#. [side]: type=Grand Knight
+#. [side]: type=Grand Knight, id=Kaylan
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:71
 msgid "Sir Kaylan"
 msgstr "Λόρδος Κάυλαν"
 
-#. [side]: type=Orcish Warrior
+#. [side]: type=Orcish Warrior, id=Mokolo Qimur
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:95
 msgid "Mokolo Qimur"
 msgstr "Μόκολο Κίμιρ"
 
-#. [unit]: type=Swordsman
+#. [unit]: type=Swordsman, id=Veocyn
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:123
 msgid "Veocyn"
 msgstr "Βέοσυν"
 
-#. [unit]: type=Swordsman
+#. [unit]: type=Swordsman, id=Yran
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:135
 msgid "Yran"
 msgstr "Ήραν"
@@ -725,7 +739,7 @@ msgstr ""
 "Στρατολόγησε δυνάμεις σοφά, Κώνραντ, και θυμίσου ότι μπορείς να ανακαλέσεις "
 "εμπειροπόλεμες μονάδες από προηγούμενες μάχες για να βοηθήσουν και πάλι."
 
-#. [unit]: type=Horseman
+#. [unit]: id=Haldiel, type=Horseman
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:216
 msgid "Haldiel"
 msgstr "Χάλντιελ"
@@ -747,37 +761,37 @@ msgstr ""
 "στρατιώτες είναι πολύ χρήσιμοι. Να τους χρησιμοποιείς επιφυλακτικά στην "
 "μάχη, αλλιώς θα πέσουν."
 
-#. [unit]: type=Horseman
+#. [unit]: type=Horseman, id=Yredd
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:245
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:368
 msgid "Yredd"
 msgstr "Ηρέντ"
 
-#. [unit]: type=Horseman
+#. [unit]: type=Horseman, id=Tarcyn
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:257
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:380
 msgid "Tarcyn"
 msgstr "Τάρκιν"
 
-#. [unit]: type=Horseman
+#. [unit]: type=Horseman, id=Syryn
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:269
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:392
 msgid "Syryn"
 msgstr "Σηρίν"
 
-#. [unit]: type=Knight
+#. [unit]: type=Knight, id=Cicyn
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:281
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:404
 msgid "Cicyn"
 msgstr "Σηκίν"
 
-#. [unit]: type=Knight
+#. [unit]: type=Knight, id=Ginvan
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:293
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:416
 msgid "Ginvan"
 msgstr "Γκίνβαν"
 
-#. [unit]: type=Knight
+#. [unit]: type=Knight, id=Simyr
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:305
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:428
 msgid "Simyr"
@@ -866,7 +880,7 @@ msgstr ""
 "Χωρίς την βοήθειά του, δεν μπορούμε να χτησιμοποιήσουμε τα πλοία. Δεν "
 "υπάρχει ελπίδα πια..."
 
-#. [scenario]
+#. [scenario]: id=03_The_Isle_of_Alduin
 #: data/campaigns/Heir_To_The_Throne/scenarios/03_The_Isle_of_Alduin.cfg:4
 msgid "The Isle of Alduin"
 msgstr "Το Νησί του Άνντουιν"
@@ -878,7 +892,7 @@ msgstr "Το Νησί του Άνντουιν"
 msgid "Defeat the enemy leader"
 msgstr "Νίκησε τον αντίπαλο αρχηγό"
 
-#. [side]: type=Orcish Warrior
+#. [side]: type=Orcish Warrior, id=Usadar Q'kai
 #: data/campaigns/Heir_To_The_Throne/scenarios/03_The_Isle_of_Alduin.cfg:64
 msgid "Usadar Q'kai"
 msgstr "Ούσανταρ Κιου-Κάι"
@@ -928,7 +942,7 @@ msgstr ""
 "Δεν νομίζω ότι οι ορκ έπρεπε να έρθουν εδώ. Το νησί ήταν ειρηνικό. Πρέπει να "
 "το επανακτήσουμε! Στα όπλα!"
 
-#. [unit]: type=Mage
+#. [unit]: id=Elrian, type=Mage
 #: data/campaigns/Heir_To_The_Throne/scenarios/03_The_Isle_of_Alduin.cfg:216
 msgid "Elrian"
 msgstr "Έλριαν"
@@ -981,7 +995,7 @@ msgstr ""
 "τους προστατέψεις με δυνατότερες μονάδες αλλιώς ο εχθρός θα ξεμπερδέψει "
 "γρήγορα μ'αυτούς."
 
-#. [unit]: type=Arch Mage
+#. [unit]: type=Arch Mage, id=Seimus
 #: data/campaigns/Heir_To_The_Throne/scenarios/03_The_Isle_of_Alduin.cfg:267
 msgid "Seimus"
 msgstr "Σέιμους"
@@ -1048,7 +1062,7 @@ msgstr ""
 "Σίγουρα, πρέπει να πάμε εκεί. Ας ξεκουραστούμε όμως λίγο, και μετά θα "
 "σαλπάρουμε για την Παραλία. Ελπίζω να νικήσουμε τις δυνάμεις της εκεί!"
 
-#. [scenario]
+#. [scenario]: id=04_The_Bay_of_Pearls
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:4
 msgid "The Bay of Pearls"
 msgstr "Η Παραλία των Κοραλιών"
@@ -1066,29 +1080,29 @@ msgid ""
 "`(early finish bonus)"
 msgstr ""
 
-#. [side]: type=Orcish Warrior
+#. [side]: type=Orcish Warrior, id=Dwaba-Kukai
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:59
 msgid "Dwaba-Kukai"
 msgstr "Ντγουάμπα-Κουκάι"
 
-#. [side]: type=Orcish Warrior
+#. [side]: type=Orcish Warrior, id=Managa'Gwin
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:75
 msgid "Managa'Gwin"
 msgstr "Μάναγκα'Γκγιν"
 
-#. [unit]: type=Orcish Archer
+#. [unit]: type=Orcish Archer, id=Bugg
 #. [then]
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:132
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:269
 msgid "Bugg"
 msgstr "Μπάγκ"
 
-#. [unit]: type=Naga Fighter, type=Naga Warrior
+#. [unit]: type=Naga Fighter, type=Naga Warrior, id=Xnamas
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:148
 msgid "Xnamas"
 msgstr "Ξνάμας"
 
-#. [unit]: type=Naga Warrior, type=Naga Fighter
+#. [unit]: type=Naga Warrior, type=Naga Fighter, id=Inalai
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:164
 msgid "Inalai"
 msgstr "Ίναλαϊ"
@@ -1162,22 +1176,22 @@ msgstr "Μα... μα... πως συνέβη αυτό σε μένα;"
 msgid "Who was that idiot?"
 msgstr "Ποιος ήταν αυτός ο ηλίθιος;"
 
-#. [unit]: type=Merman Fighter
+#. [unit]: id=Gwaba, type=Merman Fighter
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:320
 msgid "Gwaba"
 msgstr "Γκγάμπα"
 
-#. [unit]: type=Merman Fighter
+#. [unit]: id=Nepba, type=Merman Fighter
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:333
 msgid "Nepba"
 msgstr "Νέπντα"
 
-#. [unit]: type=Merman Fighter
+#. [unit]: id=Triram, type=Merman Fighter
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:346
 msgid "Triram"
 msgstr "Τρίραμ"
 
-#. [unit]: type=Merman Fighter
+#. [unit]: id=Mriram, type=Merman Fighter
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:361
 msgid "Mriram"
 msgstr "Μρίμαρ"
@@ -1188,22 +1202,22 @@ msgstr "Μρίμαρ"
 msgid "Free at last! Now, death to the orcs!"
 msgstr "Ελεύθερος επιτέλους! Θάνατος στους ορκ!"
 
-#. [unit]: type=Merman Fighter
+#. [unit]: id=Mabooa, type=Merman Fighter
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:392
 msgid "Mabooa"
 msgstr "Μαμπόα"
 
-#. [unit]: type=Merman Fighter
+#. [unit]: id=Earooa, type=Merman Fighter
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:407
 msgid "Earooa"
 msgstr "Εαρόα"
 
-#. [unit]: type=Merman Fighter
+#. [unit]: id=Nethuns, type=Merman Fighter
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:420
 msgid "Nethuns"
 msgstr "Νέθουνς"
 
-#. [unit]: type=Merman Fighter
+#. [unit]: id=Gwoama, type=Merman Fighter
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:434
 msgid "Gwoama"
 msgstr "Γκγοάμα"
@@ -1213,12 +1227,12 @@ msgstr "Γκγοάμα"
 msgid "Now that we are free, together we can defeat our oppressors!"
 msgstr "Τώρα που ελευθερωθήκαμε, μπορούμε να νικήσουμε τους κατακτητές!"
 
-#. [unit]: type=Merman Fighter
+#. [unit]: id=Kaba, type=Merman Fighter
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:465
 msgid "Kaba"
 msgstr "Κάμπα"
 
-#. [unit]: type=Merman Fighter
+#. [unit]: id=Kwaboo, type=Merman Fighter
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:480
 msgid "Kwaboo"
 msgstr "Κγάμπο"
@@ -1228,17 +1242,17 @@ msgstr "Κγάμπο"
 msgid "Freedom! Now where are those orcs? Let me at 'em!"
 msgstr "Ελευθερία! Που είναι οι ορκ; Δώστε μου λίγους!"
 
-#. [unit]: type=Merman Fighter
+#. [unit]: id=Gwimli, type=Merman Fighter
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:512
 msgid "Gwimli"
 msgstr "Γκγουίμλι"
 
-#. [unit]: type=Merman Fighter
+#. [unit]: id=Jarla, type=Merman Fighter
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:525
 msgid "Jarla"
 msgstr "Τζάρλα"
 
-#. [unit]: type=Merman Fighter
+#. [unit]: id=Gwarloa, type=Merman Fighter
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:540
 msgid "Gwarloa"
 msgstr "Γκγάρλοα"
@@ -1253,32 +1267,32 @@ msgstr ""
 "πολεμήσεις τους ορκ! Η κεντρική φυλακή που κρατάνε τους περισσότερους είναι "
 "βορειοδυτικά!"
 
-#. [unit]: type=Merman Fighter
+#. [unit]: id=Heldaga, type=Merman Fighter
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:571
 msgid "Heldaga"
 msgstr "Χελντάγκα"
 
-#. [unit]: type=Merman Hunter
+#. [unit]: id=Apalala, type=Merman Hunter
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:584
 msgid "Apalala"
 msgstr "Απαλάλα"
 
-#. [unit]: type=Mermaid Initiate
+#. [unit]: id=Oceania, type=Mermaid Initiate
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:597
 msgid "Oceania"
 msgstr "Ωκεάνια"
 
-#. [unit]: type=Merman Fighter
+#. [unit]: id=Elcmar, type=Merman Fighter
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:611
 msgid "Elcmar"
 msgstr "Έλκμαρ"
 
-#. [unit]: type=Merman Fighter
+#. [unit]: id=Aigaion, type=Merman Fighter
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:624
 msgid "Aigaion"
 msgstr "Αιγαίος"
 
-#. [unit]: type=Merman Fighter
+#. [unit]: id=Tini, type=Merman Fighter
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:638
 msgid "Tini"
 msgstr "Τίνι"
@@ -1518,7 +1532,7 @@ msgstr ""
 "Με τους ορκ να ελένχουν τη θαλασσα, δεν θα ήταν καλή ιδέα να πας με πλοίο. "
 "Πήγαινε με τα πόδια. Το Ελενσέφαρ είναι 6 μερών διαδρομή. Ξεκίνα!"
 
-#. [scenario]
+#. [scenario]: id=05a_Muff_Malals_Peninsula
 #: data/campaigns/Heir_To_The_Throne/scenarios/05a_Muff_Malal_Peninsula.cfg:4
 msgid "Muff Malal's Peninsula"
 msgstr "Χερσόνησος του Μούφ Μάλαλ"
@@ -1536,16 +1550,24 @@ msgid ""
 "`(early finish bonus)"
 msgstr ""
 
-#. [side]: type=Dark Sorcerer
+#. [side]: type=Dark Sorcerer, id=Muff Malal
 #: data/campaigns/Heir_To_The_Throne/scenarios/05a_Muff_Malal_Peninsula.cfg:61
 msgid "Muff Malal"
 msgstr "Μουφ Μαλάλ"
 
-#. [side]: type=Death Knight
-#. [side]: type=Lich
-#. [side]: type=Dark Sorcerer
+#. [side]: type=Death Knight, id=Clarustus
+#. [side]: type=Death Knight, id=Merlunius
+#. [side]: type=Lich, id=Aimucasur
+#. [side]: type=Death Knight, id=Secadius
+#. [side]: type=Death Knight, id=Dafeis
+#. [side]: type=Dark Sorcerer, id=Muff Malal
+#. [side]: type=Lich, id=Galga
+#. [side]: type=Lich, id=Na-alga
+#. [side]: type=Lich, id=Selda-Mana
+#. [side]: id=Haf-Mal, type=Lich
+#. [side]: id=Jarmal-Gorg, type=Lich
 #. [side]
-#. [side]: type=Ancient Lich
+#. [side]: type=Ancient Lich, id=Muff Argulak
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:98
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:114
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:129
@@ -1654,7 +1676,7 @@ msgstr ""
 "την αποστολή μας να σώσουμε το Ελενσέφαρ, αλλά τουλάχιστον ελευθερώσαμε "
 "μερικούς ανθρώπους. Πρέπει να βιαστούμε!"
 
-#. [scenario]
+#. [scenario]: id=05b_Isle_of_the_Damned
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:5
 msgid "Isle of the Damned"
 msgstr "Το Νησί των Καταραμένων"
@@ -1697,22 +1719,22 @@ msgstr ""
 "για να τον γυρίσουν στο πλοίο. Με μεγάλη προσπάθεια, έφτασαν ένα κοντινό "
 "νησί..."
 
-#. [side]: type=Lich
+#. [side]: id=Haf-Mal, type=Lich
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:77
 msgid "Haf-Mal"
 msgstr "Χάφ-Μαλ"
 
-#. [side]: type=Lich
+#. [side]: id=Jarmal-Gorg, type=Lich
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:95
 msgid "Jarmal-Gorg"
 msgstr "Τζάρμαλ-Γκοργκ"
 
-#. [event]
+#. [event]: id=Delurin 21 12}
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:154
 msgid "Kalba"
 msgstr "Κάλμπα"
 
-#. [event]
+#. [event]: id=Delurin 21 12}
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:155
 msgid "Gnaba"
 msgstr "Γκνάμπα"
@@ -1754,7 +1776,7 @@ msgstr ""
 "στρατολογήσουμε μερικούς, ίσως έχουμε ελπίδες να κρατήσουμε μακριά τις ορδές "
 "των νεκρών!"
 
-#. [event]
+#. [event]: id=Delurin 21 12}
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:176
 msgid "Delurin"
 msgstr "Ντέλουριν"
@@ -1793,8 +1815,8 @@ msgstr "Ο ναός μοιάζει άδειος."
 msgid "Looks like there is somebody hidden in the temple."
 msgstr "Φένετε σαν κάποιος είναι κρυμμένος εδώ."
 
-#. [unit]: type=Mage of Light
-#. [unit]: type=White Mage
+#. [unit]: id=Moremirmu, type=Mage of Light
+#. [unit]: id=Moremirmu, type=White Mage
 #: data/campaigns/Heir_To_The_Throne/scenarios/09_The_Valley_of_Death.cfg:264
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:243
 msgid "Moremirmu"
@@ -1830,7 +1852,7 @@ msgstr ""
 "Αν ξεριζώσουμε την πληγή των νεκρών από αυτά τα νησιά, σίγουρα θα έρθω μαζί "
 "σου. Αλλιώς, σκοπεύω να τελειώσω το καθήκον μου πριν προχωρήσω."
 
-#. [unit]: type=Revenant
+#. [unit]: type=Revenant, id=Xakae
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:303
 msgid "Xakae"
 msgstr "Ξάκαε"
@@ -1896,7 +1918,7 @@ msgstr ""
 "Ευχαριστώ για την βοήθειά σας αδέλφια. Εγώ θα μείνω για να αντισταθώ στους "
 "νεκρούς. Καλή τύχη με την αποστολή σου, και ίσως ξανασηναντηθούμε στο μέλλον!"
 
-#. [scenario]
+#. [scenario]: id=06_The_Siege_of_Elensefar
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:4
 msgid "The Siege of Elensefar"
 msgstr "Η Πολιορκεία του Ελενσέφαρ"
@@ -1915,15 +1937,18 @@ msgstr "Νίκησε του αντίπαλους αρχηγούς"
 msgid "Elensefar"
 msgstr "Προς Ελενσέφαρ"
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Agadla
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:61
 msgid "Agadla"
 msgstr "Αγκάντλα"
 
-#. [side]: type=Orcish Warlord
-#. [side]: type=Dark Sorcerer
-#. [side]: type=Troll Warrior
-#. [side]: type=Death Knight
+#. [side]: type=Orcish Warlord, id=Agadla
+#. [side]: type=Dark Sorcerer, id=Muff Jaanal
+#. [side]: id=Brugg, type=Troll Warrior
+#. [side]: id=Lionel, type=Death Knight
+#. [side]: type=Troll Warrior, id=Haaf-Garga
+#. [side]: type=Orcish Warlord, id=Urug-Telfar
+#. [side]: type=Death Knight, id=Unan-Ka'tall
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:72
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:113
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:79
@@ -1934,7 +1959,7 @@ msgstr "Αγκάντλα"
 msgid "Evil"
 msgstr ""
 
-#. [side]: type=Dark Sorcerer
+#. [side]: type=Dark Sorcerer, id=Muff Jaanal
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:104
 msgid "Muff Jaanal"
 msgstr "Μουφ Ζανάλ"
@@ -1986,19 +2011,19 @@ msgstr ""
 "Πρέπει να πάρουμε την πόλη, και να καταστρέψουμε τους νεκρούς πριν φέρουν "
 "ενισχύσεις!"
 
-#. [unit]: type=Rogue
+#. [unit]: id=Reglok, type=Rogue
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:201
 msgid "Reglok"
 msgstr "Ρέγκλοκ"
 
-#. [unit]: type=Thief
+#. [unit]: id=Gelgar, type=Thief
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:240
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:383
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:480
 msgid "Gelgar"
 msgstr "Γκέλνταρ"
 
-#. [unit]: type=Thief
+#. [unit]: id=Gamlel, type=Thief
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:252
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:395
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:493
@@ -2130,7 +2155,7 @@ msgid ""
 msgstr ""
 "Όπως το λάβαρο υψώθηκε, ήχοι μάχης ακούγονταν από την άλλη μεριά της πόλης."
 
-#. [unit]: type=Thief
+#. [unit]: id=Darglen, type=Thief
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:407
 msgid "Darglen"
 msgstr "Ντάργκλεν"
@@ -2184,7 +2209,7 @@ msgstr "Νίκη! Οι κλέφτες του Ελενσέφαρ θα βρήσκ�
 msgid "The party rested for three days, after which an old friend returned."
 msgstr "Η παρέα ξεκουράστηκε τρεις μέρες, μέχρι την άφιξη ενός παλιού φίλου."
 
-#. [unit]: type=Elvish Lord
+#. [unit]: id=Kalenz, type=Elvish Lord
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:555
 msgid "Kalenz"
 msgstr "Κάλενζ"
@@ -2302,7 +2327,7 @@ msgstr ""
 msgid "So you endeavor to fight me in my home. Foolish."
 msgstr "Ωστε θα προσπαθείσεις να με πολεμήσεις στο ίδιο μου το σπίτι. Ανόητε. "
 
-#. [scenario]
+#. [scenario]: id=07_Crossroads
 #: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:4
 msgid "Crossroads"
 msgstr "Σταυροδρόμι"
@@ -2367,12 +2392,12 @@ msgstr ""
 "βλεμμάτων στην αραιοκατοικημένη δυτική εξοχή. Δυστυχώς, η τύχη τους δεν "
 "κράτησε για πολύ."
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Kojun Herolm
 #: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:165
 msgid "Kojun Herolm"
 msgstr "Κοτζούμ Χέρολμ"
 
-#. [side]: type=Orcish Warrior
+#. [side]: type=Orcish Warrior, id=Mokho Kimer
 #: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:182
 msgid "Mokho Kimer"
 msgstr "Μόκχο Κίμερ"
@@ -2455,7 +2480,7 @@ msgstr ""
 msgid "Victory is ours, men. Let us proceed northeast!"
 msgstr "Η νίκη είναι δική μας, άντρες. Ας προχωρήσουμε βορειανατολικά!"
 
-#. [scenario]
+#. [scenario]: id=08_The_Princess_of_Wesnoth
 #: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:4
 msgid "The Princess of Wesnoth"
 msgstr "Η Πριγκίπισσα του Γουέσνοθ"
@@ -2488,8 +2513,8 @@ msgid "Elbridge"
 msgstr "Γέφυρα Ελ"
 
 #. [event]
-#. [side]: type=Princess
-#. [unit]: type=$stored_Lisar.type
+#. [side]: type=Princess, id=Li'sar
+#. [unit]: id=Li'sar, type=$stored_Lisar.type
 #: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:651
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:59
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:82
@@ -2498,11 +2523,16 @@ msgstr "Γέφυρα Ελ"
 msgid "Li'sar"
 msgstr "Λί'ζαρ"
 
-#. [side]: type=Orcish Warlord
-#. [side]: type=General
-#. [side]: type=Cavalier
-#. [side]: type=Dark Queen
-#. [side]: type=Princess
+#. [side]: type=Orcish Warlord, id=Haliel-Maga
+#. [side]: type=General, id=Heford
+#. [side]: type=Cavalier, id=Sir Kalm
+#. [side]: type=Dark Queen, id=Asheviere
+#. [side]: type=General, id=Josephus
+#. [side]: type=Orcish Warlord, id=Dwar-Ni
+#. [side]: type=General, id=Malatus
+#. [side]: type=Princess, id=Li'sar
+#. [side]: type=General, id=Herbert
+#. [side]: type=General, id=Robert
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:117
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:131
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:147
@@ -2673,7 +2703,7 @@ msgstr "Ανακάλυψες τον ελιγμό μου! Δεν πειράζει
 msgid "The trap is foiled, but I'll still flush this rabble from their keep!"
 msgstr "Η παγίδα χάλασε μα και πάλι θα ισοπεδώσουμε τον πύργο τους!"
 
-#. [scenario]
+#. [scenario]: id=09_The_Valley_of_Death
 #: data/campaigns/Heir_To_The_Throne/scenarios/09_The_Valley_of_Death.cfg:4
 msgid "The Valley of Death - The Princess's Revenge"
 msgstr "Η Κοιλάδα των Νεκρών - Η Εκδίκηση της Πριγκίπισσας"
@@ -2691,17 +2721,17 @@ msgid ""
 "`(early finish bonus)"
 msgstr ""
 
-#. [side]: type=Lich
+#. [side]: type=Lich, id=Galga
 #: data/campaigns/Heir_To_The_Throne/scenarios/09_The_Valley_of_Death.cfg:76
 msgid "Galga"
 msgstr "Γκάλγκα"
 
-#. [side]: type=Lich
+#. [side]: type=Lich, id=Na-alga
 #: data/campaigns/Heir_To_The_Throne/scenarios/09_The_Valley_of_Death.cfg:120
 msgid "Na-alga"
 msgstr "Να-άλγκα"
 
-#. [side]: type=Lich
+#. [side]: type=Lich, id=Selda-Mana
 #: data/campaigns/Heir_To_The_Throne/scenarios/09_The_Valley_of_Death.cfg:154
 msgid "Selda-Mana"
 msgstr "Σέλντα-Μάνα"
@@ -2894,7 +2924,7 @@ msgstr ""
 msgid "Indeed! Let us go from here!"
 msgstr "Πάμε από εδώ!"
 
-#. [scenario]
+#. [scenario]: id=10_Gryphon_Mountain
 #: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:4
 msgid "Gryphon Mountain"
 msgstr "Το Βουνό των Γρυπαετών"
@@ -2904,12 +2934,12 @@ msgstr "Το Βουνό των Γρυπαετών"
 msgid "Defeat the mother gryphon and the enemy commander"
 msgstr "Νίκησε την μάνα των γρυπαετών και τον αντίπαλο διοικητή"
 
-#. [side]: type=General
+#. [side]: type=General, id=Robert
 #: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:69
 msgid "Robert"
 msgstr "Ρόμπερτ"
 
-#. [side]: type=Gryphon
+#. [side]: type=Gryphon, id=Mother Gryphon
 #: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:87
 msgid "Mother Gryphon"
 msgstr "Μάνα των Γρυπαετών"
@@ -3111,7 +3141,7 @@ msgstr "Ράμπαντ Γκρόοκ"
 msgid "Rampant Gruak"
 msgstr "Ράμπαντ Γκρούακ"
 
-#. [scenario]
+#. [scenario]: id=11_The_Ford_of_Abez
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:4
 msgid "The Ford of Abez"
 msgstr "Η Διάβαση του Άμπεζ"
@@ -3121,7 +3151,7 @@ msgstr "Η Διάβαση του Άμπεζ"
 msgid "Move Konrad to the north side of the river"
 msgstr "Μετακίνησε τον Κώνραντ στην βόρεια πλευρά του ποταμού"
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Gaga-Breuk
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:82
 msgid "Gaga-Breuk"
 msgstr "Γκάγκα-Μρέουκ"
@@ -3392,7 +3422,7 @@ msgstr ""
 "Πρέπει να συνεχίσουμε. Άμα τα καταφέρει πριν πέσει ο χειμώνας, θα δούμε τι "
 "θα κάνουμε!"
 
-#. [scenario]
+#. [scenario]: id=12_Northern_Winter
 #: data/campaigns/Heir_To_The_Throne/scenarios/12_Northern_Winter.cfg:4
 msgid "Northern Winter"
 msgstr "Βόρειος Χειμώνας"
@@ -3418,7 +3448,7 @@ msgstr ""
 "Στροβιλίζοντας, οι χιονοθύελλες αποδυνάμωναν τον στρατό του Κώνραντ, "
 "σημαδεύοντας το τέλος του Φθινοπώρου, και την αρχή ενός δύσκολου χειμώνα."
 
-#. [side]: type=Orcish Warrior
+#. [side]: type=Orcish Warrior, id=Halgar Du'nar
 #: data/campaigns/Heir_To_The_Throne/scenarios/12_Northern_Winter.cfg:77
 #: data/campaigns/Heir_To_The_Throne/scenarios/12_Northern_Winter.cfg:102
 msgid "Halgar Du'nar"
@@ -3584,7 +3614,7 @@ msgstr ""
 "μετά από αρκετές ημέρες ξεκούρασης, η παρέα ξεκίνησε προς το βασίλειο των "
 "νάνων..."
 
-#. [scenario]
+#. [scenario]: id=13_The_Dwarven_Doors
 #: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:4
 msgid "The Dwarven Doors"
 msgstr "Οι Πύλες των Νάνων"
@@ -3595,17 +3625,17 @@ msgstr "Οι Πύλες των Νάνων"
 msgid "Move Konrad to the entrance of the Dwarven Kingdom"
 msgstr "Μετακίνησε τον Κώνραντ στο Βασίλειο των Νάνων"
 
-#. [side]: type=Orcish Slurbow
+#. [side]: type=Orcish Slurbow, id=Knafa-Telfar
 #: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:67
 msgid "Knafa-Telfar"
 msgstr "Κνάφα-Τέλφαρ"
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Urug-Tan
 #: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:86
 msgid "Urug-Tan"
 msgstr "Ούρουγκ-Ταν"
 
-#. [side]: type=Orcish Sovereign
+#. [side]: type=Orcish Sovereign, id=Shuuga-Mool
 #: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:105
 msgid "Shuuga-Mool"
 msgstr "Σούουγκα-Μόολ"
@@ -3620,7 +3650,7 @@ msgstr "Οι Κολόνες του Θούνενταϊν"
 msgid "The Great Doors"
 msgstr "Οι Μεγάλες Πόρτες"
 
-#. [scenario]
+#. [scenario]: id=13_The_Dwarven_Doors
 #: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:142
 msgid "Royal Guard"
 msgstr "Βασιλικός Φρουρός"
@@ -3945,7 +3975,7 @@ msgstr ""
 "Ουφ! Τα καταφέραμε μέχρι εδώ, μα τώρα μας περιμένουν άλλα. Χάος βρίσκεται "
 "μπροστά μας! Ελάτε άντρες! Πρέπει να περάσουμε!"
 
-#. [scenario]
+#. [scenario]: id=14_Plunging_into_the_Darkness
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:4
 msgid "Plunging into the Darkness"
 msgstr "Μπαίνοντας στο Σκοτάδι"
@@ -3960,18 +3990,18 @@ msgstr "Βρές τους νάνους"
 msgid "Hywyn"
 msgstr "Χίγουιν"
 
-#. [side]: type=Dwarvish Lord
+#. [side]: id=Relgorn, type=Dwarvish Lord
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:97
 msgid "Relgorn"
 msgstr "Ρέλγκορν"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:244
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:245
 msgid "It's so dark in here I can hardly see!"
 msgstr "Είναι τόσο σκοτεινά που μετα βίας βλέπω την μύτη μου!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:248
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:249
 #, fuzzy
 msgid ""
 "It is dark indeed. We shall have to light torches and tread slowly and "
@@ -3982,23 +4012,23 @@ msgstr ""
 "μας βοηθήσουν."
 
 #. [message]: speaker=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:252
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:253
 #, fuzzy
 msgid "Indeed. We elves do not fare well in these dark pits."
 msgstr "Τα ξωτικά δεν μπορούν να περπατήσουν γρήγορα σε τέτοια σκοτεινά μέρη."
 
 #. [message]: speaker=Relgorn
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:269
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:270
 msgid "Who are these that approach? Surface-dwellers! On your guard, men!"
 msgstr "Ποιος είναι κει; Άνθρωποι του έξω κόσμου! Στα πόστα σας, άντρες!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:299
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:300
 msgid "We come in peace, friends. We come in peace!"
 msgstr "Ερχόμαστε ειρηνικά."
 
 #. [message]: speaker=Relgorn
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:304
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:305
 msgid ""
 "Oh, do you? I see that you are accompanied by elves. Can we dwarves not live "
 "in peace without the treacherous elves coming to bother us?"
@@ -4007,13 +4037,13 @@ msgstr ""
 "οι νάνοι ειρηνικά με τα ξωτικά να μας ενοχλούν;"
 
 #. [message]: speaker=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:309
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:310
 #, fuzzy
 msgid "Why such harsh words, dwarf? Elves have never done you any harm."
 msgstr "Γιατί τόσο σκληρά λόγια, Νάνε; Τα ξωτικά ποτέ δεν σας πείραξαν."
 
 #. [message]: speaker=Relgorn
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:314
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:315
 #, fuzzy
 msgid ""
 "'Never done us any harm?' Why, I was there myself, when the elves refused to "
@@ -4025,7 +4055,7 @@ msgstr ""
 "βοήθησαν καθόλου!"
 
 #. [message]: speaker=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:319
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:320
 msgid ""
 "You go too far! I am Kalenz, a mighty elvish lord! How dare such as you, "
 "sniveling in his tunnel, call me a coward?"
@@ -4034,7 +4064,7 @@ msgstr ""
 "Πως τολμάς, εσύ που κρύβεσαι σε σήραγγες, να με λες δειλό;"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:324
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:325
 msgid ""
 "Peace, friends! Peace! The evil orcs roam the lands above us, we must not "
 "fight among ourselves."
@@ -4043,7 +4073,7 @@ msgstr ""
 "μεταξύ μας."
 
 #. [message]: speaker=Relgorn
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:329
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:330
 msgid ""
 "Very well! Explain your presence here then, human. Who are you? Why have you "
 "risked life and limb to come to Knalga, home of the dwarves?"
@@ -4052,12 +4082,12 @@ msgstr ""
 "ρισκάρατε την ζωή σας για να'ρθείτε στην Κνάλγκα, το σπίτι των νάνων;"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:334
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:335
 msgid "Well, we... we..."
 msgstr "Λοιπόν, εμείς....."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:339
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:340
 msgid ""
 "We have come so that an heir may claim his inheritance, that a king may "
 "claim his throne. We seek the Scepter of Fire."
@@ -4066,13 +4096,13 @@ msgstr ""
 "ανακτήσει ένας βασιλιάς τον θρόνο του. Ψάχνουμε το Σκήπτρο της Φωτιάς."
 
 #. [message]: speaker=Relgorn
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:344
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:345
 msgid ""
 "The Scepter of Fire? Are you out of your minds? Surely you speak in jest!"
 msgstr "Το Σκήπτρο της Φωτιάς; Τρελαθήκατε; Σίγουρα αστειέυεστε!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:349
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:350
 msgid ""
 "We jest not, friend. We seek the Scepter of Fire. We seek the help of the "
 "dwarves in finding it. But know that we will find it, whether you help us or "
@@ -4083,7 +4113,7 @@ msgstr ""
 "βοηθήσεις είτε όχι."
 
 #. [message]: speaker=Relgorn
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:354
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:355
 #, fuzzy
 msgid ""
 "You speak foolishness. No one even knows if the Scepter of Fire still "
@@ -4093,12 +4123,12 @@ msgstr ""
 "υπάρχει. Και ποιος είναι ο διάδοχος, ο βασιλιάς που ανέφερες;"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:359
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:360
 msgid "I am, sir."
 msgstr "Εγώ είμαι κύριε."
 
 #. [message]: speaker=Relgorn
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:364
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:365
 msgid ""
 "You? Ha ha! This boy that stands before me is the king of Wesnoth? Ha ha! I "
 "haven't had such a laugh in a long time. And who are you, old man?"
@@ -4107,7 +4137,7 @@ msgstr ""
 "τόσο εδώ και πολύ καιρό. Και ποιος είσαι συ, γέρο;"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:369
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:370
 msgid ""
 "I am Delfador, Delfador the Great, Arch Mage to King Garard, and Protector "
 "of his heir."
@@ -4116,7 +4146,7 @@ msgstr ""
 "Γκάρανντ και του διαδόχου του."
 
 #. [message]: speaker=Relgorn
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:374
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:375
 msgid ""
 "You... you are Delfador? I saw Delfador when I was but a young dwarf, and I "
 "will tell you, old man, you are not Delfador. Men! Take these liars out of "
@@ -4127,13 +4157,13 @@ msgstr ""
 "ανθρώπους να μην τους βλέπω. Ο Ντεφάλντορ χάθηκε πριν από πολλά χρόνια."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:404
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:405
 #, fuzzy
 msgid "I am Delfador the Great! Tremble before my wrath!"
 msgstr "Είμαι ο Ντεφάλντορ ο Μέγας. Ετοιμάσου να πεθάνεις!"
 
 #. [message]: speaker=Relgorn
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:409
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:410
 msgid ""
 "You... you really are Delfador! But we had news that you were dead, years "
 "ago!"
@@ -4142,17 +4172,17 @@ msgstr ""
 "χρόνια!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:414
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:415
 msgid "They thought I was dead. They hoped I was dead. Yet still I live."
 msgstr "Νόμιζαν ότι ήμουν νεκρός. Ήλπιζαν ότι ήμουν νεκρός. Αλλά ζω ακόμα."
 
 #. [message]: speaker=Relgorn
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:419
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:420
 msgid "And you really think that you can find the Scepter of Fire?"
 msgstr "Και στ'αλήθεια νομίζεις ότι θα βρεις το Σκήπτρο της Φωτιάς;"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:424
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:425
 msgid ""
 "Yes, I do. If you help us, friend, all the treasures of Knalga that we find "
 "are yours. We want only the Scepter. It will be dangerous. Make no mistake "
@@ -4165,7 +4195,7 @@ msgstr ""
 "απ'το να κρύβεστε από τους ορκ σαν τα ποντίκια."
 
 #. [message]: speaker=Relgorn
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:429
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:430
 msgid ""
 "You are right, friend. I will put my best men at your disposal. We know not "
 "where the Scepter is though. Legend says it is hidden in the eastern tunnels."
@@ -4175,17 +4205,17 @@ msgstr ""
 "ανατολικές σήραγγες."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:434
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:435
 msgid "Then to the eastern tunnels we shall go!"
 msgstr "Τότε πάμε στις ανατολικές σήραγγες!"
 
-#. [unit]: type=Elvish Shaman
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:499
+#. [unit]: type=Elvish Shaman, id=Gryphon Tender
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:500
 msgid "Gryphon Tender"
 msgstr "Η Προσφορά των Γρυπαετών"
 
 #. [message]: speaker=Gryphon Tender
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:512
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:513
 msgid ""
 "I am sorry, Prince Konrad. The young gryphons are breaking their ropes. They "
 "are simply getting too large and too restless to restrain anymore!"
@@ -4194,29 +4224,29 @@ msgstr ""
 "Είναι αρκετά μεγάλοι πλέον για να τους ελένξουμε!"
 
 #. [message]: speaker=Relgorn
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:546
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:547
 msgid "What's this? Gryphons in my castle? Remove the beasts!"
 msgstr "Τι είναι αυτό; Γρυπαετοί στο κάστρο μου; Πάρτε από'δω αυτά τα τέρατα!"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:550
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:551
 msgid "Beasts? We were planning to use them as mounts."
 msgstr "Τέρατα; Σκοπεύουμαι να τους χρησιμοποιήσουμε ως ιππείς."
 
 #. [message]: speaker=Relgorn
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:554
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:555
 msgid "Ha ha! Gryphons as mounts! Is there no end to your folly?"
 msgstr "Χα! Οι γρυπαετοί ιππείς! Υπάρχει τέλος στην ανοησία σου;"
 
 #. [message]: speaker=Konrad
 #. [message]: speaker=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:558
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:566
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:559
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:567
 msgid "(looks miffed)"
 msgstr "(δείχνει προσβεβλημένος)"
 
 #. [message]: speaker=Relgorn
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:562
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:563
 msgid ""
 "Well, if you must go on with this mad scheme, I shall supply you with my own "
 "troops as riders! A frail human - or worse, an elf - would never be able to "
@@ -4228,7 +4258,7 @@ msgstr ""
 "του ζώου!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:570
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:571
 msgid ""
 "Temper your anger. Relgorn's manner may be rough, but surely there is "
 "nothing wrong with his suggestion?"
@@ -4237,28 +4267,28 @@ msgstr ""
 "το λάθος στην σκέψη του;"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:574
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:575
 msgid "Well, I suppose..."
 msgstr "Λοιπόν, νομίζω..."
 
-#. [unit]: type=Gryphon Rider
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:599
+#. [unit]: type=Gryphon Rider, id=Mounted Dwarf
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:600
 msgid "Mounted Dwarf"
 msgstr ""
 
 #. [message]: speaker=Mounted Dwarf
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:612
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:613
 #, fuzzy
 msgid "Whoa there... No need to be surly, now. Easy...easy... now GO!"
 msgstr "Ώπα... Δεν υπάρχει λόγος να είμαστε σκυθρωποί. Εντάξει, ήρεμα τώρα!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:638
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:639
 msgid "You can now recruit fearsome Gryphon Riders!"
 msgstr "Τώρα μπορείς να στρατολογήσεις Γρυπαετούς!"
 
 #. [message]: speaker=Relgorn
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:643
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:644
 msgid ""
 "Though they stink, gryphons are magnificent animals. They may not be able to "
 "navigate our twisted caverns very well, but if you ever see the surface "
@@ -4270,12 +4300,12 @@ msgstr ""
 "Κναλγκα."
 
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:670
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:671
 msgid "Hmm... there seems to be a secret passage behind these rocks!"
 msgstr "Χμμ... φένετε να υπάρχει ένα μυστικό μέρασμα πίσω απ'αυτές τις πέτρες!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:694
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:695
 msgid ""
 "There is a great fortune in this chest of treasure! I can count two hundred "
 "pieces of gold!"
@@ -4283,22 +4313,22 @@ msgstr ""
 "Υπάρχει μεγάλη περιουσία σ'αυτό το σεντούκι! Μετρώ περίπου δύο χιλιάδες "
 "χρυσά κέρματα!"
 
-#. [scenario]
+#. [scenario]: id=15_The_Lost_General
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:4
 msgid "The Lost General"
 msgstr "Ο Χαμένος Στρατηγός"
 
-#. [side]: type=Dwarvish Lord
+#. [side]: id=Geldar, type=Dwarvish Lord
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:57
 msgid "Geldar"
 msgstr "Γκέλνταρ"
 
-#. [side]: type=Troll Warrior
+#. [side]: id=Brugg, type=Troll Warrior
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:69
 msgid "Brugg"
 msgstr "Μπρουγκ"
 
-#. [side]: type=Death Knight
+#. [side]: id=Lionel, type=Death Knight
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:84
 msgid "Lionel"
 msgstr "Λάιονελ"
@@ -4340,7 +4370,7 @@ msgstr ""
 msgid "A hidden whirlpool sucks you down into a subterranean current!"
 msgstr "Μια κρυμμένη δίνη σας απορροφά κάτω σε ένα υπόγειο ρεύμα!"
 
-#. [unit]: type=Dwarvish Ulfserker
+#. [unit]: id=Ulfdain, type=Dwarvish Ulfserker
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:176
 msgid "Ulfdain"
 msgstr "Ούλφντάιν"
@@ -4649,7 +4679,7 @@ msgstr ""
 "Δεν ξέρω, Κώνραντ, μα διαισθάνομαι πως το μονοπάτι μας οδηγεί όλο και πιο "
 "βαθιά. Θα συνεχίσουμε βορειοανατολικά, μέχρι τα βάθη αυτών των στρατώνων."
 
-#. [scenario]
+#. [scenario]: id=16_Hasty_Alliance
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:4
 msgid "Hasty Alliance"
 msgstr "Εσπευσμένη Συμμαχία"
@@ -4706,14 +4736,14 @@ msgstr ""
 "φαινόντουσαν. Ο άνεμος σφύριζε μέσα στα στενά ράφια γεφυρώνοντας το βάθος, "
 "σαν να γινόταν από μαγεία... και πρόσφατα ξυπνημένο κακό."
 
-#. [side]: type=Commander
-#. [side]: type=Princess
+#. [side]: type=Commander, id=Konrad
+#. [side]: type=Princess, id=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:70
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:90
 msgid "Humans"
 msgstr ""
 
-#. [side]: type=Troll Warrior
+#. [side]: type=Troll Warrior, id=Haaf-Garga
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:97
 msgid "Haaf-Garga"
 msgstr "Χάαφ-Γκάργκα"
@@ -4837,7 +4867,7 @@ msgid "I can't believe it should end like this!"
 msgstr "Δεν πίστευα ποτέ ότι θα τελείωνε έτσι!"
 
 #. [settings]
-#. [scenario]
+#. [scenario]: id=17_Scepter_of_Fire
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:4
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:33
 msgid "The Scepter of Fire"
@@ -4946,7 +4976,7 @@ msgstr "Κώνραντ, όπως υποσχέθηκα, ιδού τα σεντο�
 msgid "You receive 300 pieces of gold!"
 msgstr "Παρέλαβες 300 κομμάτια χρυσού!"
 
-#. [scenario]
+#. [scenario]: id=18_A_Choice_Must_Be_Made
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:4
 msgid "A Choice Must Be Made"
 msgstr "Η Απόφαση"
@@ -4993,7 +5023,7 @@ msgstr ""
 msgid "Defeat either of the enemy leaders"
 msgstr "Νίκησε έναν από τους εχθρούς"
 
-#. [side]: type=Death Knight
+#. [side]: type=Death Knight, id=Unan-Ka'tall
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:104
 msgid "Unan-Ka'tall"
 msgstr "Ούναν-Κα'ταλ"
@@ -5341,12 +5371,12 @@ msgid ""
 "of the river again."
 msgstr ""
 
-#. [scenario]
+#. [scenario]: id=19a_Snow_Plains
 #: data/campaigns/Heir_To_The_Throne/scenarios/19a_Snow_Plains.cfg:4
 msgid "Snow Plains"
 msgstr "Χιονισμένοι Κάμποι"
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Urag-Tifer
 #: data/campaigns/Heir_To_The_Throne/scenarios/19a_Snow_Plains.cfg:65
 msgid "Urag-Tifer"
 msgstr "Ούραγκ-Τίφερ"
@@ -5515,7 +5545,7 @@ msgstr ""
 "πατέρα μου και στα αδέρφια μου. Η Άσεβιρ δασκάλα της προδοσίας θα πεθάνει, "
 "από την λεπίδα του σπαθιού μου!"
 
-#. [scenario]
+#. [scenario]: id=19b_Swamp_Of_Dread
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:4
 msgid "Swamp Of Dread"
 msgstr "Βάλτοι των Νεκρών"
@@ -5532,27 +5562,27 @@ msgid ""
 "@Defeat all Death Knights first"
 msgstr ""
 
-#. [side]: type=Death Knight
+#. [side]: type=Death Knight, id=Clarustus
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:87
 msgid "Clarustus"
 msgstr "Κλάρουστους"
 
-#. [side]: type=Death Knight
+#. [side]: type=Death Knight, id=Merlunius
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:106
 msgid "Merlunius"
 msgstr "Μερλούνιους"
 
-#. [side]: type=Lich
+#. [side]: type=Lich, id=Aimucasur
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:122
 msgid "Aimucasur"
 msgstr "Αϊμάκασουρ"
 
-#. [side]: type=Death Knight
+#. [side]: type=Death Knight, id=Secadius
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:138
 msgid "Secadius"
 msgstr "Σεκάντιους"
 
-#. [side]: type=Death Knight
+#. [side]: type=Death Knight, id=Dafeis
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:157
 msgid "Dafeis"
 msgstr "Ντάφεις"
@@ -5729,7 +5759,7 @@ msgstr ""
 "ικανός κάποιος όταν η αλήθεια και η δικαιοσύνη είναι μόνο πάπυροι που "
 "μπορούν να ξαναγρφτούν  όταν μια βασίλισσα τους βαρεθεί;"
 
-#. [scenario]
+#. [scenario]: id=19c_Cliffs_of_Thoria
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:4
 msgid "The Cliffs of Thoria"
 msgstr "Οι κορυφές της Θόρια"
@@ -5741,14 +5771,14 @@ msgid "Make it to the end of the river"
 msgstr "Φθάσε στο τέλος του ποταμού"
 
 #. [side]
-#. [side]: type=Saurian Oracle
+#. [side]: type=Saurian Oracle, id=Szerkz
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:136
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:83
 #, fuzzy
 msgid "Drakes"
 msgstr "Ντάφεις"
 
-#. [unit]: type=Injured Sergeant
+#. [unit]: type=Injured Sergeant, id=Warven
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:264
 #, fuzzy
 msgid "Warven"
@@ -5839,7 +5869,7 @@ msgstr ""
 msgid "Delfador is right. We must go on!"
 msgstr ""
 
-#. [unit]: type=Armageddon Drake
+#. [unit]: type=Armageddon Drake, id=Keh Ohn
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:345
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:455
 msgid "Keh Ohn"
@@ -6230,7 +6260,7 @@ msgstr ""
 msgid "Everybody inside..."
 msgstr ""
 
-#. [scenario]
+#. [scenario]: id=20a_North_Elves
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:4
 msgid "Home of the North Elves"
 msgstr "Το Σπίτι των Βόρειων Ξωτικών"
@@ -6256,10 +6286,10 @@ msgstr "Οι γύροι τελειώσουν πριν φθάσεις το δάσ
 msgid "Note: your encampment will be dismantled after the first turn.\n"
 msgstr "Η κατασκήνωσή σου θα παροπλιστεί μετά τον πρώτο γύρο"
 
-#. [side]: type=Commander
-#. [side]: type=Elvish Lord
-#. [side]: type=Elvish Lady
-#. [side]: type=Elvish Marshal
+#. [side]: type=Commander, id=Konrad
+#. [side]: type=Elvish Lord, id=Uradredia
+#. [side]: type=Elvish Lady, id=Parandra
+#. [side]: type=Elvish Marshal, id=El'rien
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:28
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:39
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:48
@@ -6268,17 +6298,17 @@ msgstr "Η κατασκήνωσή σου θα παροπλιστεί μετά τ
 msgid "Allies"
 msgstr ""
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Kior-Dal
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:69
 msgid "Kior-Dal"
 msgstr "Κίορ-Νταλ"
 
-#. [side]: type=General
+#. [side]: type=General, id=Herbert
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:128
 msgid "Herbert"
 msgstr "Χέρμπερτ"
 
-#. [side]: type=Elvish Marshal
+#. [side]: type=Elvish Marshal, id=El'rien
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:193
 msgid "El'rien"
 msgstr "Έλ'ριέν"
@@ -6314,7 +6344,7 @@ msgstr ""
 "Τόσο καιρό που προχωράμε επιφυλακτικά και με περίσκεψη, είμαι σίγουρος ότι "
 "θα φτάσουμε στην ασφάλεια και φιλοξενεία των ξωτικών."
 
-#. [unit]: type=Elvish Rider
+#. [unit]: id=Telerandor, type=Elvish Rider
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:377
 #, fuzzy
 msgid "Telerandor"
@@ -6627,7 +6657,7 @@ msgid "Indeed. We will escort you to our capital, where we will make Council."
 msgstr ""
 "Πράγματι. Θα σας οδηγήσουμε στην πρωτεύουσά μας, όπου θα γίνει συμβούλιο."
 
-#. [scenario]
+#. [scenario]: id=20b_Underground_Channels
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:4
 msgid "Underground Channels"
 msgstr ""
@@ -6649,23 +6679,23 @@ msgstr ""
 msgid "Turns expire"
 msgstr ""
 
-#. [side]: type=Saurian Oracle
+#. [side]: type=Saurian Oracle, id=Szerkz
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:79
 msgid "Szerkz"
 msgstr ""
 
-#. [side]: type=Ancient Lich
+#. [side]: type=Ancient Lich, id=Muff Argulak
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:97
 #, fuzzy
 msgid "Muff Argulak"
 msgstr "Μουφ Μαλάλ"
 
-#. [side]: type=Ancient Wose
+#. [side]: type=Ancient Wose, id=Haralamdum
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:115
 msgid "Haralamdum"
 msgstr ""
 
-#. [side]: type=Elvish Sylph
+#. [side]: type=Elvish Sylph, id=Bona-Melodia
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:135
 msgid "Bona-Melodia"
 msgstr ""
@@ -6680,33 +6710,33 @@ msgstr ""
 msgid "Get that vile creature!"
 msgstr ""
 
-#. [scenario]
+#. [scenario]: id=21_Elven_Council
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:4
 msgid "The Elven Council"
 msgstr "Το Ξωτικοσυμβούλιο"
 
-#. [side]: type=Elvish Lord
+#. [side]: type=Elvish Lord, id=Uradredia
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:34
 msgid "Uradredia"
 msgstr "Ουραντρέντια"
 
-#. [side]: type=Elvish Lady
+#. [side]: type=Elvish Lady, id=Parandra
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:44
 msgid "Parandra"
 msgstr "Παράνδρα"
 
-#. [unit]: type=Elvish Champion
+#. [unit]: type=Elvish Champion, id=Bellrok
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:77
 #, fuzzy
 msgid "Bellrok"
 msgstr "Ρέγκλοκ"
 
-#. [unit]: type=Elvish Avenger
+#. [unit]: type=Elvish Avenger, id=Tindolean
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:86
 msgid "Tindolean"
 msgstr ""
 
-#. [unit]: type=Elvish Enchantress
+#. [unit]: type=Elvish Enchantress, id=Everlore
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:94
 msgid "Everlore"
 msgstr ""
@@ -7130,7 +7160,7 @@ msgstr ""
 "αναζωογονηθούν. Θα φροντίσουμε να φύγετε απο'δω με όλες τις απαραίτητες "
 "προμήθειες για να τελειώσετε το ταξίδι σας."
 
-#. [scenario]
+#. [scenario]: id=22_Return_to_Wesnoth
 #: data/campaigns/Heir_To_The_Throne/scenarios/22_Return_to_Wesnoth.cfg:4
 msgid "Return to Wesnoth"
 msgstr "Η Επιστροφή στο Γουέσνοθ"
@@ -7209,17 +7239,17 @@ msgstr ""
 "Κώνραντ σκίρτησε όταν η περιπέτειά του είχε σχεδόν τελιώσει. Αν και "
 "μεγαλύτεροι κίνδυνοι περίμεναν μπροστά, γνώριζε ότι επιτέλους γύριζε σπίτι."
 
-#. [side]: type=General
+#. [side]: type=General, id=Josephus
 #: data/campaigns/Heir_To_The_Throne/scenarios/22_Return_to_Wesnoth.cfg:100
 msgid "Josephus"
 msgstr "Ζόζεφους"
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Dwar-Ni
 #: data/campaigns/Heir_To_The_Throne/scenarios/22_Return_to_Wesnoth.cfg:119
 msgid "Dwar-Ni"
 msgstr "Ντγουάρ-Νι"
 
-#. [side]: type=General
+#. [side]: type=General, id=Malatus
 #: data/campaigns/Heir_To_The_Throne/scenarios/22_Return_to_Wesnoth.cfg:137
 msgid "Malatus"
 msgstr "Μάλατους"
@@ -7284,7 +7314,7 @@ msgstr ""
 "Πρέπει να βιαστούμε! Πολύ μεγαλύτερες προκλήσεις μας περιμένουν.Χάνοντας τον "
 "χρόνο μας εδώ μας τελειώνουν τα εφόδια."
 
-#. [scenario]
+#. [scenario]: id=23_Test_of_the_Clans
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:4
 msgid "Test of the Clan"
 msgstr "Η Δοκιμασία της Συμμαχίας"
@@ -7303,7 +7333,10 @@ msgid ""
 "@Defeat all enemy leaders"
 msgstr "Νίκησε του αντίπαλους αρχηγούς"
 
-#. [side]: type=Grand Knight
+#. [side]: type=Grand Knight, id=Sir Alric
+#. [side]: type=Grand Knight, id=Sir Ruga
+#. [side]: type=Grand Knight, id=Sir Daryn
+#. [side]: type=Grand Knight, id=Bayar
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:73
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:102
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:131
@@ -7313,28 +7346,28 @@ msgid "Plainsmen"
 msgstr "Χιονισμένοι Κάμποι"
 
 #. [then]
-#. [side]: type=Grand Knight
+#. [side]: type=Grand Knight, id=Sir Alric
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:207
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:76
 msgid "Sir Alric"
 msgstr "Λόρδος Άλρικ"
 
 #. [then]
-#. [side]: type=Grand Knight
+#. [side]: type=Grand Knight, id=Sir Ruga
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:198
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:105
 msgid "Sir Ruga"
 msgstr "Λόρδος Ρούγκα"
 
 #. [then]
-#. [side]: type=Grand Knight
+#. [side]: type=Grand Knight, id=Sir Daryn
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:189
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:134
 msgid "Sir Daryn"
 msgstr "Λόρδος Ντάρυν"
 
 #. [then]
-#. [side]: type=Grand Knight
+#. [side]: type=Grand Knight, id=Bayar
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:180
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:163
@@ -7600,7 +7633,7 @@ msgstr ""
 "Εξαλήφουμαι τις δυνάμεις τους! Ας δούμε αν η Συμμαχία είχε αρκετούς. Η "
 "βοήθειά τους στην φύλαξη της οπισθοφυλακής θα είναι ανεκτίμητη."
 
-#. [scenario]
+#. [scenario]: id=24_Battle_for_Wesnoth
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:4
 msgid "The Battle for Wesnoth"
 msgstr "Μάχη για το Γουέσνοθ"
@@ -7722,17 +7755,17 @@ msgstr ""
 "Τώρα καλύτερα να μην καθυστερήσουμαι περισσότερο! Η αυγή πλησιάζει! Η ώρα "
 "ήρθε για την διάδοχο να διεκδικήσει τον θρόνο!"
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Haliel-Maga
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:107
 msgid "Haliel-Maga"
 msgstr "Χάλιελ-Μάγκα"
 
-#. [side]: type=General
+#. [side]: type=General, id=Heford
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:123
 msgid "Heford"
 msgstr "Χέφορντ"
 
-#. [side]: type=Cavalier
+#. [side]: type=Cavalier, id=Sir Kalm
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:138
 msgid "Sir Kalm"
 msgstr "Σιρ Καλμ"
@@ -7971,7 +8004,7 @@ msgstr ""
 "Νικήσαμε. Αύριο ξημερώνει μια καινούργια μέρα, φίλοι... ας ξαναχτίσουμε αυτό "
 "το βασίλειο εκ νέου."
 
-#. [scenario]
+#. [scenario]: id=25_HttT_Epilogue
 #: data/campaigns/Heir_To_The_Throne/scenarios/25_HttT_Epilogue.cfg:4
 msgid "Epilogue"
 msgstr "Επίλογος"
@@ -8036,15 +8069,15 @@ msgstr ""
 "θάφτηκαν στην Βασιλική Κρύπτη του Γέλντιν, την οποία ο Κώνραντ "
 "επισκεφτόταναι για να αποδώσει φόρο τιμής κάθε εβδομάδα."
 
-#. [variation]: race=human
-#. [unit_type]: race=human
+#. [variation]: id=Battle Princess, race=human
+#. [unit_type]: id=Battle Princess, race=human
 #: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:4
 #: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:84
 msgid "female^Battle Princess"
 msgstr "Πριγκήπισσα Μαχητής"
 
-#. [variation]: race=human
-#. [unit_type]: race=human
+#. [variation]: id=Battle Princess, race=human
+#. [unit_type]: id=Battle Princess, race=human
 #: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:32
 #: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:111
 msgid ""
@@ -8076,15 +8109,15 @@ msgstr "ξίφος"
 msgid "scepter of fire"
 msgstr "σκήπτρο της φωτιάς"
 
-#. [variation]: race=human
-#. [unit_type]: race=human
+#. [variation]: id=Commander, race=human
+#. [unit_type]: id=Commander, race=human
 #: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:4
 #: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:148
 msgid "Commander"
 msgstr "Διοικητής"
 
-#. [variation]: race=human
-#. [unit_type]: race=human
+#. [variation]: id=Commander, race=human
+#. [unit_type]: id=Commander, race=human
 #: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:27
 #: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:171
 msgid ""
@@ -8119,15 +8152,15 @@ msgstr "σπαθί"
 msgid "bow"
 msgstr "τόξο"
 
-#. [variation]: race=human
-#. [unit_type]: race=human
+#. [variation]: id=Dark Queen, race=human
+#. [unit_type]: id=Dark Queen, race=human
 #: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:4
 #: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:45
 msgid "female^Dark Queen"
 msgstr "Σκοτεινή Βασίλισσα"
 
-#. [variation]: race=human
-#. [unit_type]: race=human
+#. [variation]: id=Dark Queen, race=human
+#. [unit_type]: id=Dark Queen, race=human
 #: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:19
 #: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:60
 msgid ""
@@ -8149,7 +8182,7 @@ msgstr "σκήπτρο"
 msgid "raging blizzard"
 msgstr ""
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Fighter, race=human
 #: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:18
 #, fuzzy
 msgid ""
@@ -8161,7 +8194,7 @@ msgstr ""
 "επιθέσεις των εχθρών. Εχουν όμως τήν δυνατότητα μιά μέρα νά γίνουν μεγάλοι "
 "πολεμιστές."
 
-#. [variation]: race=human
+#. [variation]: id=Fighter, race=human
 #: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:46
 msgid ""
 "Young and brash, Fighters fight with a sword, and are vulnerable to attack "
@@ -8172,20 +8205,20 @@ msgstr ""
 "επιθέσεις των εχθρών. Εχουν όμως τήν δυνατότητα μιά μέρα νά γίνουν μεγάλοι "
 "πολεμιστές."
 
-#. [unit_type]
+#. [unit_type]: id=Injured Sergeant
 #: data/campaigns/Heir_To_The_Throne/units/Injured_Sergeant.cfg:7
 msgid "Injured Sergeant"
 msgstr ""
 
-#. [variation]: race=human
-#. [unit_type]: race=human
+#. [variation]: id=Lord, race=human
+#. [unit_type]: id=Lord, race=human
 #: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:4
 #: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:175
 msgid "Lord"
 msgstr "Άρχοντας"
 
-#. [variation]: race=human
-#. [unit_type]: race=human
+#. [variation]: id=Lord, race=human
+#. [unit_type]: id=Lord, race=human
 #: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:28
 #: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:199
 msgid ""
@@ -8199,13 +8232,13 @@ msgstr ""
 "Διοικητές, οι Λόρδοι κατέχουν τις δεξιότητες ηγεσίας, και βελτιώνουν τη "
 "δυνατότητα μάχης όλων των παρακείμενων χαμηλότερου επιπέδου μονάδων."
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Princess, race=human
 #: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:4
 msgid "female^Princess"
 msgstr "Πριγκήπισσα"
 
-#. [variation]: race=human
-#. [unit_type]: race=human
+#. [variation]: id=Princess, race=human
+#. [unit_type]: id=Princess, race=human
 #: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:29
 #: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:150
 msgid ""
@@ -8221,17 +8254,17 @@ msgstr ""
 "καλύτερα οφελούμενοι από την παρουσία της. Η πριγκήπισσα είναι επίσης "
 "ευκίνητη και επιδέξια, έχοντας τις δεξιότητες όπως αυτές ενός κλέφτη."
 
-#. [variation]: race=human
+#. [variation]: id=Princess, race=human
 #: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:126
 msgid "Princess"
 msgstr "Πριγκήπισσα"
 
-#. [unit_type]: race=orc
+#. [unit_type]: id=Sea Orc, race=orc
 #: data/campaigns/Heir_To_The_Throne/units/Sea_Orc.cfg:4
 msgid "Sea Orc"
 msgstr "Ορκ τής θάλασσας"
 
-#. [unit_type]: race=orc
+#. [unit_type]: id=Sea Orc, race=orc
 #: data/campaigns/Heir_To_The_Throne/units/Sea_Orc.cfg:17
 #, fuzzy
 msgid ""
@@ -8247,12 +8280,12 @@ msgstr ""
 "ικανοί πολεμιστές, αν καί η έλλειψη επίθεσης από μακριά καί κακή αμυντική "
 "τους ικανότητα στήν στεριά αντιπροσωπεύουν στρατηγικές αδυναμίες. "
 
-#. [unit_type]: race=gryphon
+#. [unit_type]: id=Sleeping Gryphon, race=gryphon
 #: data/campaigns/Heir_To_The_Throne/units/Sleeping_Gryphon.cfg:4
 msgid "Sleeping Gryphon"
 msgstr "Κοιμώμενος Γρυπαετός"
 
-#. [unit_type]: race=gryphon
+#. [unit_type]: id=Sleeping Gryphon, race=gryphon
 #: data/campaigns/Heir_To_The_Throne/units/Sleeping_Gryphon.cfg:18
 msgid "Shhhh! The Gryphon is sleeping! You'd better not wake it up!"
 msgstr "Σσσσ! Ο Γρυπαετός κυμάται! Καλύτερα να μην τον ξυπνήσουμε!"
@@ -8293,12 +8326,12 @@ msgstr "Θες αυτή η μονάδα να μαζέψει το ξίφος;"
 msgid "Yes"
 msgstr "Ναι"
 
-#. [object]
+#. [object]: id={ID}
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:49
 msgid "Flaming Sword"
 msgstr "Φλεγόμενο Σπαθί"
 
-#. [object]
+#. [object]: id={ID}
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:53
 #, fuzzy
 msgid ""
@@ -8312,7 +8345,7 @@ msgstr ""
 "εσωτερική μαγική φωτιά. Γλώσσες φωτιάς χορεύουν στην επιφάνεια, δίνοντας "
 "στην γαλαζωπή λεπίδα αψεγάδιαστο φινίρισμα."
 
-#. [object]
+#. [object]: id={ID}
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:54
 msgid "Only the leader of an army can wield this sword!"
 msgstr "Μόνο ο ηγέτης ενός στρατού μπορεί να κραδαίνει ένα τέτοιο σπαθί!"
@@ -8344,12 +8377,12 @@ msgstr "Όχι"
 msgid "Do you want this unit to pick up the armor?"
 msgstr "Θες αυτή η μονάδα να μαζέψει την πανοπλία;"
 
-#. [object]
+#. [object]: id={ID}
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:166
 msgid "Void Armor"
 msgstr "Άτρωτη Πανοπλία"
 
-#. [object]
+#. [object]: id={ID}
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:168
 msgid ""
 "A beautiful chest plate crafted from shimmering black steel, the Void Armor "
@@ -8358,7 +8391,7 @@ msgstr ""
 "Μια πανέμορφη θωράκιση δημιουργημένη από σπιθοβόλο μαύρο ατσάλι, η άτρωτη "
 "πανοπλία είναι ουσιαστικά αδιαπέραστη σε φυσικά όπλα!"
 
-#. [object]
+#. [object]: id={ID}
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:169
 msgid "Only a powerful warrior may don this armor!"
 msgstr "Μόνο ένας ισχυρός πολεμιστής μπορεί να φορέσει αυτήν την πανωπλία!"
@@ -8372,13 +8405,13 @@ msgstr ""
 "Μπορεί να αγωνίζεσαι να σηκώσεις και φορέσεις την πανωπλία, μα όταν φορεθεί, "
 "είναι απερίγραπτα βολική. Έχεις βελτιωμένη αντοχή σε φυσική ζημιά!"
 
-#. [value]
+#. [value]: id=void_armor
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:193
 #, fuzzy
 msgid "void armor"
 msgstr "Άτρωτη Πανοπλία"
 
-#. [value]
+#. [value]: id=void_armor
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:198
 msgid ""
 "The Void Armor grants the following resistances:\n"
@@ -8388,12 +8421,12 @@ msgid ""
 "fire:  +10%"
 msgstr ""
 
-#. [object]
+#. [object]: id=object_scepter
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:384
 msgid "Scepter of Fire"
 msgstr "Το Σκήπτρο της Φωτιάς"
 
-#. [object]
+#. [object]: id=object_scepter
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:387
 #, fuzzy
 msgid ""
@@ -8405,7 +8438,7 @@ msgstr ""
 "Βουνών. Είναι σύμβολο της βασιλείας του Γουέσνοθ και έχει την δύναμη να "
 "εκτοξεύει μπάλες φωτιάς στους εχθρούς του κομιστή του!"
 
-#. [object]
+#. [object]: id=object_scepter
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:388
 msgid ""
 "This is the Scepter of Fire. Only a true successor to the throne can "

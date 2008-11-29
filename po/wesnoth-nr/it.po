@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-22 14:56+0100\n"
+"POT-Creation-Date: 2008-11-29 12:25+0100\n"
 "PO-Revision-Date: 2008-11-14 00:14+0100\n"
 "Last-Translator: Luciano Montanaro <mikelima@cirulla.net>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -15,57 +15,57 @@ msgstr ""
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#. [campaign]
+#. [campaign]: id=Northern_Rebirth
 #: data/campaigns/Northern_Rebirth/_main.cfg:9
 msgid "Northern Rebirth"
 msgstr "La rinascita del Nord"
 
-#. [campaign]
+#. [campaign]: id=Northern_Rebirth
 #: data/campaigns/Northern_Rebirth/_main.cfg:10
 msgid "NR"
 msgstr "RdN"
 
-#. [campaign]
+#. [campaign]: id=Northern_Rebirth
 #: data/campaigns/Northern_Rebirth/_main.cfg:15
 msgid "(Normal)"
 msgstr "(normale)"
 
-#. [campaign]
+#. [campaign]: id=Northern_Rebirth
 #: data/campaigns/Northern_Rebirth/_main.cfg:15
 msgid "Peasant"
 msgstr "Contadino"
 
-#. [campaign]
+#. [campaign]: id=Northern_Rebirth
 #: data/campaigns/Northern_Rebirth/_main.cfg:16
 msgid "Spearman"
 msgstr "Fante"
 
-#. [campaign]
+#. [campaign]: id=Northern_Rebirth
 #: data/campaigns/Northern_Rebirth/_main.cfg:16
 msgid "(Challenging)"
 msgstr "(Stimolante)"
 
-#. [campaign]
+#. [campaign]: id=Northern_Rebirth
 #: data/campaigns/Northern_Rebirth/_main.cfg:17
 msgid "(Difficult)"
 msgstr "(Difficile)"
 
-#. [campaign]
+#. [campaign]: id=Northern_Rebirth
 #: data/campaigns/Northern_Rebirth/_main.cfg:17
 msgid "Swordsman"
 msgstr "Maestro di spada"
 
-#. [campaign]
+#. [campaign]: id=Northern_Rebirth
 #: data/campaigns/Northern_Rebirth/_main.cfg:18
 msgid "Royal Guard"
 msgstr "Guardia reale"
 
-#. [campaign]
+#. [campaign]: id=Northern_Rebirth
 #: data/campaigns/Northern_Rebirth/_main.cfg:18
 msgid "(Nightmare)"
 msgstr "(Incubo)"
 
-#. [campaign]
+#. [campaign]: id=Northern_Rebirth
 #: data/campaigns/Northern_Rebirth/_main.cfg:22
 msgid ""
 "For the people of Dwarven Doors the choice was stark: either drudge as "
@@ -115,7 +115,7 @@ msgstr "Traduttori"
 msgid "Code and Translation Assistance"
 msgstr "Assistenza per il codice e la traduzione"
 
-#. [scenario]
+#. [scenario]: id=chain_break
 #: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:5
 msgid "Breaking the Chains"
 msgstr "Spezzare le catene"
@@ -343,8 +343,8 @@ msgstr ""
 "Fuggì verso delle rovine abbandonate nella foresta per chiamare a raccolta i "
 "suoi compagni contadini."
 
-#. [side]: type=Peasant
-#. [side]: type=Lieutenant
+#. [side]: type=Peasant, id=Tallin
+#. [side]: type=Lieutenant, id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:19
 #: data/campaigns/Northern_Rebirth/scenarios/11a_Eastern_Flank.cfg:31
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:47
@@ -365,12 +365,12 @@ msgstr ""
 msgid "Tallin"
 msgstr "Tallin"
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Al'Tar
 #: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:96
 msgid "Al'Tar"
 msgstr "Al'Tar"
 
-#. [side]: type=Orcish Warrior
+#. [side]: type=Orcish Warrior, id=Garrugch
 #: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:121
 msgid "Garrugch"
 msgstr "Garrugch"
@@ -425,7 +425,7 @@ msgstr "Morte di Tallin"
 msgid "Turns run out"
 msgstr "Fine dei turni"
 
-#. [unit]: type=Peasant
+#. [unit]: type=Peasant, id=Zlex
 #: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:183
 msgid "Zlex"
 msgstr "Zlex"
@@ -568,7 +568,7 @@ msgstr "Aaaaah! Troll! Le caverne sono infestate dai troll!"
 msgid "YES! We did it! We are free!"
 msgstr "SÌ! Ce l'abbiamo fatta! Siamo liberi!"
 
-#. [unit]: type=Orcish Grunt
+#. [unit]: type=Orcish Grunt, id=Khrulg
 #: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:317
 msgid "Khrulg"
 msgstr "Khrulg"
@@ -633,7 +633,7 @@ msgstr "No! Ho fallito la missione!"
 msgid "Mission? What mission?"
 msgstr "Missione? Quale missione?"
 
-#. [scenario]
+#. [scenario]: id=infested_caves
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:4
 msgid "Infested Caves"
 msgstr "Le miniere infestate"
@@ -755,20 +755,27 @@ msgstr ""
 "quest'ultima. La gente rapidamente mise insieme tutto il cibo e le armi che "
 "fu capace di trovare e si gettò nell'oscurità delle grotte."
 
-#. [side]: type=Peasant
-#. [side]: type=Dwarvish Lord
+#. [side]: type=Peasant, id=Tallin
+#. [side]: type=Dwarvish Lord, id=Hamel
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:54
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:95
 msgid "Rebels"
 msgstr "Ribelli"
 
-#. [side]: type=Troll
+#. [side]: type=Troll, id=Knash
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:62
 msgid "Knash"
 msgstr "Knash"
 
-#. [side]: type=Troll
-#. [side]: type=Troll Warrior
+#. [side]: type=Troll, id=Knash
+#. [side]: type=Troll, id=Krog
+#. [side]: type=Troll Warrior, id=Thung
+#. [side]: type=Troll, id=Franik
+#. [side]: type=Troll, id=Henie
+#. [side]: type=Troll Warrior, id=Tor
+#. [side]: type=Troll Warrior, id=Bor
+#. [side]: type=Troll Warrior, id=Oof
+#. [side]: type=Troll Warrior, id=Glu
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:68
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:81
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:122
@@ -781,22 +788,32 @@ msgstr "Knash"
 msgid "Trolls"
 msgstr "Troll"
 
-#. [side]: type=Troll
+#. [side]: type=Troll, id=Krog
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:75
 msgid "Krog"
 msgstr "Krog"
 
-#. [side]: type=Dwarvish Lord
-#. [unit]: type=Dwarvish Lord
+#. [side]: type=Dwarvish Lord, id=Hamel
+#. [unit]: type=Dwarvish Lord, id=Hamel
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:88
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:242
 #: data/campaigns/Northern_Rebirth/scenarios/03_To_The_Mines.cfg:123
 msgid "Hamel"
 msgstr "Hamel"
 
-#. [side]: type=Ancient Lich
-#. [side]: type=Draug
+#. [side]: type=Ancient Lich, id=Malifor
+#. [side]: type=Draug, id=Thorin
+#. [side]: type=Draug, id=Herlin
+#. [side]: type=Draug, id=Fervin
+#. [side]: type=Draug, id=Hellian
 #. [side]: type=Death Knight
+#. [side]: type=Death Knight, id=Hettel
+#. [side]: type=Death Knight, id=Thor
+#. [side]: type=Death Knight, id=Trevor
+#. [side]: type=Death Knight, id=Author
+#. [side]: type=Death Knight, id=Sam
+#. [side]: type=Death Knight, id=Boblin
+#. [side]: type=Death Knight, id=Antrasis
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:42
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:54
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:66
@@ -816,7 +833,7 @@ msgstr "Hamel"
 msgid "Undead"
 msgstr "Non-morti"
 
-#. [side]: type=Troll Warrior
+#. [side]: type=Troll Warrior, id=Thung
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:116
 msgid "Thung"
 msgstr "Thung"
@@ -880,8 +897,8 @@ msgstr ""
 "Calmati. Qualsiasi cosa accada, ce la caveremo. Andiamo adesso, troviamo "
 "quei nani!"
 
-#. [unit]: type=Arch Mage
-#. [side]: type=Great Mage
+#. [unit]: type=Arch Mage, id=Camerin
+#. [side]: type=Great Mage, id=Camerin
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:262
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:724
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:115
@@ -1192,7 +1209,8 @@ msgstr ""
 
 #. [message]: speaker=Tallin
 #. [message]: speaker=unit
-#. [message]
+#. [message]: id=Father Marcus
+#. [message]: id=Ro'Arthian
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:596
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:1701
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2393
@@ -1339,7 +1357,7 @@ msgid ""
 "find he is relatively harmless..."
 msgstr ""
 
-#. [scenario]
+#. [scenario]: id=dwarven_mines
 #: data/campaigns/Northern_Rebirth/scenarios/03_To_The_Mines.cfg:4
 msgid "To the Mines"
 msgstr "Alle miniere"
@@ -1569,7 +1587,7 @@ msgstr ""
 "guardie rimangano qua con quelli che non combattono, per la loro sicurezza e "
 "per difendere il forte."
 
-#. [side]: type=Direwolf Rider
+#. [side]: type=Direwolf Rider, id=Pruol
 #: data/campaigns/Northern_Rebirth/scenarios/03_To_The_Mines.cfg:107
 msgid "Pruol"
 msgstr "Pruol"
@@ -1641,18 +1659,18 @@ msgid ""
 msgstr ""
 "Che cos'è tutto questo parlare di «padrone»? Comincia a rendermi nervoso."
 
-#. [scenario]
+#. [scenario]: id=clearing_the_mines
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:4
 msgid "Clearing the Mines"
 msgstr "La liberazione delle miniere"
 
-#. [side]: type=Peasant
-#. [side]: type=Lieutenant
-#. [side]: type=Drake Burner
-#. [side]: type=Dwarvish Lord
+#. [side]: type=Peasant, id=Tallin
+#. [side]: type=Lieutenant, id=Tallin
+#. [side]: type=Drake Burner, id=Krash
+#. [side]: type=Dwarvish Lord, id=Hamel
 #. [side]
-#. [side]: type=Elvish Avenger
-#. [side]: type=Orcish Warlord
+#. [side]: type=Elvish Avenger, id=Sisal
+#. [side]: type=Orcish Warlord, id=Ha'Tuil
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:26
 #: data/campaigns/Northern_Rebirth/scenarios/11a_Eastern_Flank.cfg:37
 #: data/campaigns/Northern_Rebirth/scenarios/11a_Eastern_Flank.cfg:124
@@ -1673,8 +1691,8 @@ msgstr "La liberazione delle miniere"
 msgid "Alliance"
 msgstr "Alleanza"
 
-#. [side]: type=Ancient Lich
-#. [unit]: type=Ancient Lich
+#. [side]: type=Ancient Lich, id=Malifor
+#. [unit]: type=Ancient Lich, id=Malifor
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:34
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:39
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2824
@@ -1683,22 +1701,22 @@ msgstr "Alleanza"
 msgid "Malifor"
 msgstr "Malifor"
 
-#. [side]: type=Draug
+#. [side]: type=Draug, id=Thorin
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:48
 msgid "Thorin"
 msgstr "Thorin"
 
-#. [side]: type=Draug
+#. [side]: type=Draug, id=Herlin
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:60
 msgid "Herlin"
 msgstr "Herlin"
 
-#. [side]: type=Draug
+#. [side]: type=Draug, id=Fervin
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:72
 msgid "Fervin"
 msgstr "Fervin"
 
-#. [side]: type=Draug
+#. [side]: type=Draug, id=Hellian
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:84
 msgid "Hellian"
 msgstr "Hellian"
@@ -2058,32 +2076,32 @@ msgstr ""
 msgid "Thank you, Lord Hamel."
 msgstr "Grazie, Lord Hamel."
 
-#. [scenario]
+#. [scenario]: id=pursuit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:9
 msgid "The Pursuit"
 msgstr "L'inseguimento"
 
-#. [side]: type=Death Knight
+#. [side]: type=Death Knight, id=Hettel
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:52
 msgid "Hettel"
 msgstr "Hettel"
 
-#. [side]: type=Death Knight
+#. [side]: type=Death Knight, id=Trevor
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:99
 msgid "Trevor"
 msgstr "Trevor"
 
-#. [side]: type=Death Knight
+#. [side]: type=Death Knight, id=Author
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:122
 msgid "Author"
 msgstr "Autore"
 
-#. [side]: type=Death Knight
+#. [side]: type=Death Knight, id=Sam
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:145
 msgid "Sam"
 msgstr "Sam"
 
-#. [side]: type=Death Knight
+#. [side]: type=Death Knight, id=Boblin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:168
 msgid "Boblin"
 msgstr "Boblin"
@@ -2179,8 +2197,8 @@ msgstr "Stanno cercando di liberare i prigionieri! Fermateli!"
 msgid "Good luck, my friend."
 msgstr "Buona fortuna, amico mio."
 
-#. [unit]: type=White Mage
-#. [unit]: type=$type_check.type
+#. [unit]: type=White Mage, id=Father Marcus
+#. [unit]: type=$type_check.type, id=Father Marcus
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:544
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:400
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:608
@@ -2317,8 +2335,8 @@ msgstr ""
 msgid " *giggle*"
 msgstr " (ridacchia)"
 
-#. [unit]: type=White Mage
-#. [unit]: type=$type_check.type
+#. [unit]: type=White Mage, id=Sister Theta
+#. [unit]: type=$type_check.type, id=Sister Theta
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:658
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:418
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:626
@@ -2394,7 +2412,7 @@ msgstr ""
 msgid "Very well, you are most welcome to join us."
 msgstr "Benissimo, siete i benvenuti tra di noi."
 
-#. [unit]: type=Elvish Druid
+#. [unit]: type=Elvish Druid, id=Elenia
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:753
 msgid "Elenia"
 msgstr "Elenia"
@@ -2535,8 +2553,8 @@ msgstr "Quel vecchio scheletro? Diamine, è proprio fuori di testa."
 msgid "You're telling me."
 msgstr "A chi lo dici!"
 
-#. [side]: type=Drake Burner
-#. [unit]: type=Drake Burner
+#. [side]: type=Drake Burner, id=Krash
+#. [unit]: type=Drake Burner, id=Krash
 #: data/campaigns/Northern_Rebirth/scenarios/11a_Eastern_Flank.cfg:118
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:907
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:227
@@ -2672,17 +2690,17 @@ msgstr ""
 " (sospira) Magnifico. Altra acqua. E non sembra esserci nulla in fondo a "
 "questa galleria, né amico né nemico."
 
-#. [unit]: type=Dwarvish Steelclad
+#. [unit]: type=Dwarvish Steelclad, id=Dulcatas
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:1058
 msgid "Dulcatas"
 msgstr "Dulcatas"
 
-#. [unit]: type=Dwarvish Thunderguard
+#. [unit]: type=Dwarvish Thunderguard, id=Antolos
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:1070
 msgid "Antolos"
 msgstr "Antolos"
 
-#. [unit]: type=Dwarvish Fighter
+#. [unit]: type=Dwarvish Fighter, id=Varem
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:1082
 msgid "Varem"
 msgstr "Varem"
@@ -2871,12 +2889,12 @@ msgstr "È una brutta situazione."
 msgid "Great Chamber my foot! This is a Death Chamber!"
 msgstr "Sala grande un cavolo! Questa è la «sala della morte»."
 
-#. [object]
+#. [object]: id=justice_rod
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:1592
 msgid "Rod of Justice"
 msgstr "Bacchetta della giustizia"
 
-#. [object]
+#. [object]: id=justice_rod
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:1595
 msgid ""
 "This is a magical staff of tremendous power and unknown origin. Although the "
@@ -3151,7 +3169,7 @@ msgstr "Facciamolo, allora."
 msgid "Hmm, what is this thing?"
 msgstr "Hmm, cos'è questa cosa?"
 
-#. [unit]: type=Wraith
+#. [unit]: type=Wraith, id=Abhai
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2052
 #: data/campaigns/Northern_Rebirth/scenarios/08b_Ray_of_Hope.cfg:405
 msgid "Abhai"
@@ -3763,7 +3781,7 @@ msgstr "Questi non sono i modi di una signora."
 msgid " *giggle* Sorry."
 msgstr " (ridacchia) Scusate."
 
-#. [scenario]
+#. [scenario]: id=compelled
 #: data/campaigns/Northern_Rebirth/scenarios/05b_Compelled.cfg:4
 msgid "Compelled"
 msgstr "Manipolato"
@@ -3819,9 +3837,9 @@ msgstr ""
 "diede il potere di animare i cadaveri. Fu mandato in una remota rete di "
 "gallerie per scacciare un gruppo di troll che vi si erano stabiliti."
 
-#. [side]: type=Peasant
-#. [side]: type=Ancient Lich
-#. [side]: type=Dark Adept
+#. [side]: type=Peasant, id=Tallin
+#. [side]: type=Ancient Lich, id=Malifor
+#. [side]: type=Dark Adept, id=Deory
 #: data/campaigns/Northern_Rebirth/scenarios/08b_Ray_of_Hope.cfg:146
 #: data/campaigns/Northern_Rebirth/scenarios/05b_Compelled.cfg:44
 #: data/campaigns/Northern_Rebirth/scenarios/06b_Slave_of_the_Undead.cfg:77
@@ -3832,12 +3850,12 @@ msgstr ""
 msgid "Minions"
 msgstr "Servi"
 
-#. [side]: type=Troll
+#. [side]: type=Troll, id=Franik
 #: data/campaigns/Northern_Rebirth/scenarios/05b_Compelled.cfg:51
 msgid "Franik"
 msgstr "Franik"
 
-#. [side]: type=Troll
+#. [side]: type=Troll, id=Henie
 #: data/campaigns/Northern_Rebirth/scenarios/05b_Compelled.cfg:66
 msgid "Henie"
 msgstr "Henie"
@@ -3853,7 +3871,7 @@ msgstr "Uccidi i comandanti dei troll"
 msgid "Argh! I have failed my master."
 msgstr "Arg! Padrone, ho fallito."
 
-#. [scenario]
+#. [scenario]: id=old_friend
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:5
 msgid "Old Friend"
 msgstr "Un vecchio amico"
@@ -4135,10 +4153,10 @@ msgstr ""
 "con gli orchi, mentre Hamel terrà loro aperta la via per la ritirata nelle "
 "caverne."
 
-#. [side]: type=Peasant
-#. [side]: type=Lieutenant
-#. [side]: type=Dwarvish Lord
-#. [side]: type=Great Mage
+#. [side]: type=Peasant, id=Tallin
+#. [side]: type=Lieutenant, id=Tallin
+#. [side]: type=Dwarvish Lord, id=Stalrag
+#. [side]: type=Great Mage, id=Camerin
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:141
 #: data/campaigns/Northern_Rebirth/scenarios/08a_Elvish_Princess.cfg:183
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:26
@@ -4148,8 +4166,8 @@ msgstr ""
 msgid "Knalgans"
 msgstr "Knalgani"
 
-#. [unit]: type=Orcish Sovereign
-#. [side]: type=Orcish Sovereign
+#. [unit]: type=Orcish Sovereign, id=Rakshas
+#. [side]: type=Orcish Sovereign, id=Rakshas
 #: data/campaigns/Northern_Rebirth/scenarios/11a_Eastern_Flank.cfg:202
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:151
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:57
@@ -4157,9 +4175,19 @@ msgstr "Knalgani"
 msgid "Rakshas"
 msgstr "Rakshas"
 
-#. [side]: type=Troll Warrior
-#. [side]: type=Orcish Warlord
-#. [side]: type=Orcish Sovereign
+#. [side]: type=Troll Warrior, id=Gore
+#. [side]: type=Orcish Warlord, id=Carron
+#. [side]: type=Orcish Warlord, id=Rash
+#. [side]: type=Orcish Warlord, id=Al'Mar
+#. [side]: type=Orcish Warlord, id=Ha'Tang
+#. [side]: type=Orcish Sovereign, id=Rakshas
+#. [side]: type=Orcish Warlord, id=Drung
+#. [side]: type=Orcish Warlord, id=Poul
+#. [side]: type=Orcish Warlord, id=Ha'Tuil
+#. [side]: type=Orcish Warlord, id=Ar'Muff
+#. [side]: type=Orcish Warlord, id=Calter
+#. [side]: type=Orcish Warlord, id=Halter
+#. [side]: type=Orcish Warlord, id=Atul
 #. [side]
 #: data/campaigns/Northern_Rebirth/scenarios/11a_Eastern_Flank.cfg:52
 #: data/campaigns/Northern_Rebirth/scenarios/11a_Eastern_Flank.cfg:69
@@ -4179,17 +4207,17 @@ msgstr "Rakshas"
 msgid "Orcs"
 msgstr "Orchi"
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Drung
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:170
 msgid "Drung"
 msgstr "Drung"
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Poul
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:188
 msgid "Poul"
 msgstr "Poul"
 
-#. [message]
+#. [message]: id=Rakshas
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:308
 msgid ""
 "So I see you stinky-midgets and human-worms finally mustered up the courage "
@@ -4198,12 +4226,12 @@ msgstr ""
 "Così vedo che voi nanerottoli puzzoni e vermi umani avete finalmente trovato "
 "il coraggio di affrontarmi."
 
-#. [message]
+#. [message]: id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:312
 msgid "Who are you, what do you want?"
 msgstr "Chi sei, e che cosa vuoi?"
 
-#. [message]
+#. [message]: id=Rakshas
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:316
 msgid ""
 "I am Emperor Rakshas and by the power of my sword, I lead the orcish people. "
@@ -4214,7 +4242,7 @@ msgstr ""
 "degli orchi. Sono qui solo per terminare ciò che ha iniziato Zanna-Nera anni "
 "fa – la conquista di Knalga."
 
-#. [message]
+#. [message]: id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:320
 msgid ""
 "Khazg tried and failed, and if you repeat his folly you will soon join him "
@@ -4223,7 +4251,7 @@ msgstr ""
 "Khazg ha provato e fallito, e se ripeti la sua follia ti unirai presto a lui "
 "nella terra dei morti!"
 
-#. [message]
+#. [message]: id=Rakshas
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:325
 msgid ""
 "Pah! I would like to see those cowardly dwarves try their treachery on me as "
@@ -4234,7 +4262,7 @@ msgid ""
 "but a burnt out, pillaged wreck before long."
 msgstr ""
 
-#. [message]
+#. [message]: id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:329
 msgid "Boy, this guy sure has delusions of grandeur."
 msgstr "Ragazzi, questo di certo ha manie di grandezza."
@@ -4250,7 +4278,7 @@ msgstr ""
 "Porte dei Nani, e a quei lupi sulla strada per le miniere; parlavano tutti "
 "di qualcosa a riguardo del «Padrone»."
 
-#. [message]
+#. [message]: id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:337
 msgid "Yeah?"
 msgstr "Sì?"
@@ -4260,7 +4288,7 @@ msgstr "Sì?"
 msgid "Well, unless I miss my guess, dreamy fellow would be him."
 msgstr "Be' se non mi sbaglio, il tizio sognante dovrebbe essere lui."
 
-#. [message]
+#. [message]: id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:345
 msgid ""
 "Well, if that is so, then it's time to end this menace once and for all! "
@@ -4279,7 +4307,7 @@ msgstr "Sconfiggi Rakshas... se ci riesci..."
 msgid "Or, resist till end of turns"
 msgstr "Oppure resisti fino alla fine dei turni"
 
-#. [message]
+#. [message]: id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:400
 msgid ""
 "Come on, why are we just sitting here in these caves! Have you forgotten "
@@ -4290,7 +4318,7 @@ msgstr ""
 "dimenticato tutto quello che gli orchi ci hanno fatto!? Rendiamo rosso il "
 "terreno con il loro sporco sangue!"
 
-#. [message]
+#. [message]: id=Rakshas
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:419
 msgid ""
 "So your forces are managing to advance upon me are they? Very impressive but "
@@ -4304,12 +4332,12 @@ msgstr ""
 msgid "HAHAHAHAHA, GOT YOU, SUCKERS!"
 msgstr "AHAHAHAHA, VI ABBIAMO PRESI, IMBECILLI!"
 
-#. [message]
+#. [message]: id=Rakshas
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:471
 msgid "CHARGE!!!"
 msgstr "CARICA!!!"
 
-#. [message]
+#. [message]: id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:475
 msgid ""
 "Oh, hell! Form up men, back to back, don't let them penetrate our ranks."
@@ -4317,29 +4345,29 @@ msgstr ""
 "Al diavolo! Uomini, in formazione, schiena contro schiena, non permettetegli "
 "di penetrare le nostre fila!"
 
-#. [message]
+#. [message]: id=Rakshas
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:479
 msgid "That's not all, my friends. GENERALS, CALL THE RESERVES!"
 msgstr "Non è finita, amici miei. GENERALI, CHIAMATE LE RISERVE!"
 
-#. [message]
+#. [message]: id=Drung
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:483
 msgid "Oh yeah!"
 msgstr "Oh siiiì!"
 
-#. [message]
+#. [message]: id=Poul
 #. [message]: speaker=Malifor
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:487
 #: data/campaigns/Northern_Rebirth/scenarios/06b_Slave_of_the_Undead.cfg:407
 msgid "HAHAHAHAHA!"
 msgstr "AH! AH! AH! AH!"
 
-#. [message]
+#. [message]: id=Drung
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:491
 msgid "You are so dead, you human vermin!"
 msgstr "Siete proprio spacciati, parassiti umani!"
 
-#. [message]
+#. [message]: id=Poul
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:495
 msgid "Oooooooh! Time to start the fun!"
 msgstr "Oooh! Inizia il divertimento!"
@@ -4349,7 +4377,7 @@ msgstr "Oooh! Inizia il divertimento!"
 msgid "This doesn't look good..."
 msgstr "Questa situazione non mi piace..."
 
-#. [message]
+#. [message]: id=Drung
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:529
 msgid "Argh! I have been slain!"
 msgstr "Argh! Sono stato ucciso!"
@@ -4363,12 +4391,12 @@ msgstr ""
 "Ucciso! Ho anche preso il suo oro. Vediamo... circa 500 pezzi d'oro. Non "
 "male."
 
-#. [message]
+#. [message]: id=Rakshas
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:541
 msgid "They have killed one of my generals! REINFORCEMENTS!"
 msgstr "Hanno ucciso uno dei miei generali! RINFORZI!"
 
-#. [message]
+#. [message]: id=Poul
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:569
 msgid ""
 "My death will only make the Master's punishment for you worse you fools!"
@@ -4387,12 +4415,12 @@ msgid "But my my, what's in that big pouch? 300 gold! Not bad."
 msgstr ""
 "Ma guarda, che cosa c'è in quella bisaccia? 300 monete d'oro. Non male."
 
-#. [message]
+#. [message]: id=Rakshas
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:585
 msgid "You vermin will pay for that! REINFORCEMENTS!"
 msgstr "Parassiti, pagherete per questo! RINFORZI!"
 
-#. [message]
+#. [message]: id=Rakshas
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:613
 msgid "Ahhhh! Run for your life!"
 msgstr "Ahhh! Si salvi chi può!"
@@ -4402,7 +4430,7 @@ msgstr "Ahhh! Si salvi chi può!"
 msgid "What the... Hey, where do you think you are running off to you coward!"
 msgstr "Ma che... Ehi, dove vuoi scappare, codardo!"
 
-#. [message]
+#. [message]: id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:621
 msgid "Stop him!"
 msgstr "Fermatelo!"
@@ -4416,7 +4444,7 @@ msgstr ""
 "Troppo tardi, mi spiace, Tallin, è fuggito! Non ci aspettavamo che sarebbe "
 "scappato come un coniglio."
 
-#. [message]
+#. [message]: id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:629
 msgid ""
 "Damn! We had the opportunity to end the war in one stroke there. Now we will "
@@ -4425,7 +4453,7 @@ msgstr ""
 "Dannazione! Avevamo la possibilità di concludere la guerra in un colpo solo. "
 "Adesso dovremo inseguirlo ammesso che riusciamo a rompere l'assedio!"
 
-#. [message]
+#. [message]: id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:640
 msgid ""
 "Geez, we have been fighting them for three whole days and nights now with no "
@@ -4434,7 +4462,7 @@ msgstr ""
 "Diamine, li stiamo combattendo da tre giorni e tre notti e la conclusione "
 "non sembra vicina. Adesso la quarta notte si avvicina, che possiamo fare?"
 
-#. [message]
+#. [message]: id=Father Marcus
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:644
 msgid ""
 "It seems hopeless to continue on like this. The orcs numbers are unlimited "
@@ -4445,7 +4473,7 @@ msgstr ""
 "Rakshas estremamente protetto. L'unico esito possibile sarebbe solo un altro "
 "massacro."
 
-#. [message]
+#. [message]: id=Sister Theta
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:648
 msgid ""
 "I propose that we retreat back into the caves and consult with the dwarves."
@@ -4456,17 +4484,17 @@ msgstr "Propongo che ci ritiriamo nelle grotte e ci consultiamo con i nani."
 msgid "I agree, Tallin, it is pointless to carry on."
 msgstr "Sono d'accordo, Tallin, non ha senso continuare."
 
-#. [message]
+#. [message]: id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:656
 msgid "Very well. Everyone fall back!"
 msgstr "Benissimo. Ritiriamoci!"
 
-#. [message]
+#. [message]: id=Camerin
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:660
 msgid "Awwwww! Just when I was having the most fun!"
 msgstr "Ah! Proprio mentre mi stavo divertendo così tanto!"
 
-#. [scenario]
+#. [scenario]: id=slave_of_undead
 #: data/campaigns/Northern_Rebirth/scenarios/06b_Slave_of_the_Undead.cfg:4
 msgid "Slave of the Undead"
 msgstr "Schiavo dei non-morti"
@@ -4546,17 +4574,17 @@ msgstr ""
 msgid "Destroy the Invaders"
 msgstr "Distruggi gli invasori"
 
-#. [side]: type=Swordsman
+#. [side]: type=Swordsman, id=Friend
 #: data/campaigns/Northern_Rebirth/scenarios/06b_Slave_of_the_Undead.cfg:83
 msgid "Friend"
 msgstr "Un vecchio amico"
 
-#. [unit]: type=Dark Adept
+#. [unit]: type=Dark Adept, id=James
 #: data/campaigns/Northern_Rebirth/scenarios/06b_Slave_of_the_Undead.cfg:263
 msgid "James"
 msgstr "James"
 
-#. [unit]: type=Dark Adept
+#. [unit]: type=Dark Adept, id=Aledor
 #: data/campaigns/Northern_Rebirth/scenarios/06b_Slave_of_the_Undead.cfg:272
 msgid "Aledor"
 msgstr "Aledor"
@@ -4620,7 +4648,7 @@ msgstr ""
 msgid "What the... everybody get out! The roof of the cave is collapsing!"
 msgstr "Ma che... tutti fuori! Il soffitto della caverna sta crollando!"
 
-#. [scenario]
+#. [scenario]: id=settling_disputes
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:5
 msgid "Settling Disputes"
 msgstr "La risoluzione delle dispute"
@@ -4994,15 +5022,15 @@ msgstr ""
 "E così Tallin ed i suoi compagni si avviarono per procurarsi l'aiuto dei "
 "maghi."
 
-#. [unit]: type=Dwarvish Lord
-#. [side]: type=Dwarvish Lord
+#. [unit]: type=Dwarvish Lord, id=Stalrag
+#. [side]: type=Dwarvish Lord, id=Stalrag
 #: data/campaigns/Northern_Rebirth/scenarios/08a_Elvish_Princess.cfg:255
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:213
 msgid "Stalrag"
 msgstr "Stalrag"
 
-#. [unit]: type=Ancient Lich
-#. [side]: type=Ancient Lich
+#. [unit]: type=Ancient Lich, id=Ro'Arthian
+#. [side]: type=Ancient Lich, id=Ro'Arthian
 #: data/campaigns/Northern_Rebirth/scenarios/08a_Elvish_Princess.cfg:268
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:231
 msgid "Ro'Arthian"
@@ -5018,7 +5046,7 @@ msgstr "Salva Stalrag da Ro'Sothian."
 msgid "Death of Tallin or Stalrag."
 msgstr "Morte di Tallin o Stalrag."
 
-#. [unit]: type=Lich
+#. [unit]: type=Lich, id=Ro'Sothian
 #: data/campaigns/Northern_Rebirth/scenarios/08a_Elvish_Princess.cfg:280
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:313
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:619
@@ -5035,12 +5063,12 @@ msgstr ""
 "All'arrivo al passo di montagna a Tallin ed i suoi uomini sembrò di essere "
 "arrivati un po' troppo tardi."
 
-#. [message]
+#. [message]: id=Ro'Sothian
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:377
 msgid "HAH! I finally have you, you wretched dwarf!"
 msgstr "Ah! Ora sei mio, disgraziato di un nano!"
 
-#. [message]
+#. [message]: id=Stalrag
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:381
 msgid ""
 "Argh! You blasted mages! How many times do I have to kill you two before you "
@@ -5049,7 +5077,7 @@ msgstr ""
 "Argh! Voi maledetti maghi! Quante volte dovrò uccidervi prima che ci "
 "lasciate in pace!"
 
-#. [message]
+#. [message]: id=Ro'Sothian
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:385
 msgid ""
 "Leave YOU in peace! It is your kind that won't leave US in peace. Ever since "
@@ -5064,7 +5092,7 @@ msgstr ""
 "carcasse e le appenderò all'ingresso del passo come avvertimento per altri "
 "pazzi come voi! E al contrario di noi, voi NON tornerete indietro."
 
-#. [message]
+#. [message]: id=Stalrag
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:389
 msgid ""
 "You cursed mage! I now go to join all of my men you have killed. But know "
@@ -5075,22 +5103,22 @@ msgstr ""
 "sappilo, gli spaccatibie non si arrenderanno MAI! Ti provocheremo fino "
 "all'ultimo respiro!"
 
-#. [message]
+#. [message]: id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:393
 msgid "Hold it! What's going on here!"
 msgstr "Fermi! Che cosa sta succedendo qui?!"
 
-#. [message]
+#. [message]: id=Father Marcus
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:397
 msgid "Ro'Sothian, is that you?"
 msgstr "Ro'Sothian, sei tu?"
 
-#. [message]
+#. [message]: id=Ro'Sothian
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:401
 msgid "Not now, Father. I'm a little busy at the moment."
 msgstr "Non ora, padre. Sono un po' occupato al momento."
 
-#. [message]
+#. [message]: id=Camerin
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:411
 msgid ""
 "Ro'Sothian! How are you doing, my old friend! Boy, you sure look... erm.... "
@@ -5099,7 +5127,7 @@ msgstr ""
 "Ro'Sothian! Come va, vecchio mio! Ragazzi, certamente sembri... ehm... "
 "diverso!"
 
-#. [message]
+#. [message]: id=Ro'Sothian
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:415
 msgid ""
 "Camerin! Great Lords of Darkness, I haven't seen you in ages! Here, let me "
@@ -5108,33 +5136,33 @@ msgstr ""
 "Camerin! Per il gran signore dell'oscurità, sono secoli che non ti vedo! "
 "Aspetta, lascia che finisca con questo piccolo parassita e vengo subito a te."
 
-#. [message]
+#. [message]: id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:419
 msgid " *aside* Camerin, you know him?"
 msgstr " (a parte) Camerin, lo conosci?"
 
-#. [message]
+#. [message]: id=Camerin
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:423
 msgid " *aside* Duh! His brother Ro'Arthian is the one who taught me magic!"
 msgstr ""
 " (a parte) Eh! Suo fratello Ro'Arthian è quello che mi ha insegnato la magia!"
 
-#. [message]
+#. [message]: id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:427
 msgid " *aside* Oh....!"
 msgstr " (a parte) Oh....!"
 
-#. [message]
+#. [message]: id=Father Marcus
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:433
 msgid "Hang on a sec, Ro'Sothian, you don't want to kill him."
 msgstr "Aspetta un attimo, Ro'Sothian, non vorrai mica ucciderlo."
 
-#. [message]
+#. [message]: id=Ro'Sothian
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:437
 msgid "Huh!? He killed me!"
 msgstr "Uh?! Lui ha ucciso me!"
 
-#. [message]
+#. [message]: id=Father Marcus
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:441
 msgid ""
 "Oh.... I see. But we come on more pressing business. We are in desperate "
@@ -5150,7 +5178,7 @@ msgstr ""
 "catene e, assieme a lord Hamel di Knalga, stanno cominciando a fare uscire "
 "Knalga dal caos in cui si trovava."
 
-#. [message]
+#. [message]: id=Ro'Sothian
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:445
 msgid ""
 "So? What does this have to do with me? And hurry up, my staff is buzzing to "
@@ -5159,7 +5187,7 @@ msgstr ""
 "E allora? Io che cosa c'entro? Sbrigati, il mio bastone sta friggendo per "
 "spazzare via questo piccolo parassita una volta per tutte."
 
-#. [message]
+#. [message]: id=Father Marcus
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:449
 msgid ""
 "Don't! Please, my friend, listen. The orcs are on the rise again and they "
@@ -5173,7 +5201,7 @@ msgstr ""
 "Ecco perché siamo venuti qua, per cercare l'aiuto tuo e dei tuoi fratelli "
 "per sconfiggere gli orchi."
 
-#. [message]
+#. [message]: id=Ro'Sothian
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:453
 msgid ""
 "Take your begging and shove it, Father! We don't help no-one. Not even you "
@@ -5182,7 +5210,7 @@ msgstr ""
 "Prendi le tue preghiere e vattene, padre! Noi non aiutiamo nessuno. Nemmeno "
 "voi e DI SICURO non un nano!"
 
-#. [message]
+#. [message]: id=Camerin
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:462
 msgid ""
 "Hold a moment, my friend. You won't believe what a blast it is fighting with "
@@ -5193,7 +5221,7 @@ msgstr ""
 "combattere questa gente. Devi friggere scheletri, orchi, troll e lupi a "
 "migliaia! Coraggio, vecchio amico, non prendertela."
 
-#. [message]
+#. [message]: id=Ro'Sothian
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:466
 msgid ""
 "Camerin, you were always a little crazy. Now I see you have gone stark "
@@ -5204,7 +5232,7 @@ msgstr ""
 "pazzo e farnetichi! Davvero pensi che potremmo aiutare qualcuno? "
 "SPECIALMENTE un branco di nani!"
 
-#. [message]
+#. [message]: id=Ro'Sothian
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:472
 msgid ""
 "I tire of this; prepare to die, wretched dwarf! And the rest of you, get "
@@ -5213,32 +5241,32 @@ msgstr ""
 "Sono stufo. Preparati a morire, nano disgraziato! Quanto al resto di voi, "
 "andatevene e non tornate, a meno che non siate stufi di vivere!"
 
-#. [message]
+#. [message]: id=Sister Theta
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:476
 msgid "Uh oh, he is gathering energy for a cold blast."
 msgstr "Uh, oh, sta raccogliendo l'energia per un soffio gelido."
 
-#. [message]
+#. [message]: id=Father Marcus
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:480
 msgid "Quick, honey, we've got to stop him. Let's go!"
 msgstr "Presto, dolcezza, dobbiamo fermarlo. Andiamo!"
 
-#. [message]
+#. [message]: id=Camerin
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:489
 msgid "Hey, are you two going to hog all the fun for yourselves?"
 msgstr "Ehi, voi due volete prendervi tutto il divertimento da soli?"
 
-#. [message]
+#. [message]: id=Father Marcus
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:493
 msgid "Alright, alright, hang on!"
 msgstr "Va bene, va bene, tieniti stretto!"
 
-#. [message]
+#. [message]: id=Ro'Sothian
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:549
 msgid "BROTHER! HELP ME!"
 msgstr "FRATELLO! AIUTAMI!"
 
-#. [message]
+#. [message]: id=Ro'Arthian
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:553
 msgid ""
 " *booming voice coming from all directions* SO YOU MAGES HAVE THE AUDACITY "
@@ -5247,7 +5275,7 @@ msgstr ""
 " (voce che risuona da tutte le parti) DUNQUE VOI MAGHI OSATE ATTACCARE MIO "
 "FRATELLO! MORIRETE PER LA VOSTRA PAZZIA!"
 
-#. [message]
+#. [message]: id=Father Marcus
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:557
 msgid ""
 "Ro'Arthian, listen to me. We don't want to fight with you, we have come here "
@@ -5262,7 +5290,7 @@ msgstr ""
 msgid "No answer"
 msgstr "Nessuna risposta"
 
-#. [message]
+#. [message]: id=Father Marcus
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:566
 msgid ""
 "I know you can hear me, Ro'Arthian. Please, the fate of every creature in "
@@ -5271,7 +5299,7 @@ msgstr ""
 "So che mi senti, Ro'Arthian. Ti prego, il destino di tutte le creature del "
 "nord dipende dal tuo aiuto."
 
-#. [message]
+#. [message]: id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:575
 msgid ""
 "Give it up, father, he isn't answering. I am afraid we may have to use um... "
@@ -5280,39 +5308,39 @@ msgstr ""
 "Rinuncia, padre, non vuole rispondere. Ho paura che dovremo usare... metodi "
 "più energici per convincerlo."
 
-#. [message]
+#. [message]: id=Father Marcus
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:579
 msgid " *sigh* Yes, you are right."
 msgstr "(sigh) Sì, hai ragione."
 
-#. [message]
+#. [message]: id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:583
 msgid "Put Ro'Sothian into that jail over there until we capture his brother."
 msgstr ""
 "Sbattete Ro'Sothian in quella cella laggiù finché non catturiamo suo "
 "fratello."
 
-#. [message]
+#. [message]: id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:593
 msgid "And someone keep an eye on him. We don't want him to get away."
 msgstr "E che qualcuno lo sorvegli. Non vogliamo che riesca a fuggire."
 
-#. [message]
+#. [message]: id=Ro'Sothian
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:626
 msgid "Ha! I am free! Now you foul traitors will pay!"
 msgstr "Ah! Sono libero! Ora la pagherete, luridi traditori!"
 
-#. [message]
+#. [message]: id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:630
 msgid "Oh no, he got away! Quick, men, we must capture him again!"
 msgstr "Oh no, è scappato! Presto, uomini, dobbiamo ricatturarlo!"
 
-#. [message]
+#. [message]: id=Ro'Sothian
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:641
 msgid "Ahhhh! Not again!"
 msgstr "Ah! Non di nuovo!"
 
-#. [message]
+#. [message]: id=Father Marcus
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:645
 msgid ""
 "Come on, Ro'Sothian, we really don't have to be doing this. Come, join us!"
@@ -5320,12 +5348,12 @@ msgstr ""
 "Dai, Ro'Sothian, non è necessario che facciamo tutto questo. Forza, unisciti "
 "a noi!"
 
-#. [message]
+#. [message]: id=Ro'Sothian
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:649
 msgid "Never!"
 msgstr "Mai!"
 
-#. [message]
+#. [message]: id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:653
 msgid "Sigh, we'll talk later."
 msgstr "Sigh, ne parleremo più tardi."
@@ -5345,22 +5373,22 @@ msgstr "Cattura Ro'Arthian."
 msgid "Death of Stalrag."
 msgstr "Morte di Stalrag"
 
-#. [message]
+#. [message]: id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:697
 msgid "Ro'Arthian, are you ready to talk yet?"
 msgstr "Ro'Arthian, sei pronto a parlare, ora?"
 
-#. [message]
+#. [message]: id=Ro'Arthian
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:701
 msgid "Fine, you trespassers. What do you want?"
 msgstr "Bene, intrusi. Che volete?"
 
-#. [message]
+#. [message]: id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:705
 msgid "Well... first why don't you tell us what you want?"
 msgstr "Be'... perché prima non ci dici cosa vuoi tu?"
 
-#. [message]
+#. [message]: id=Ro'Arthian
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:709
 msgid ""
 "What do I want? I'll tell you what I want! I want the stinking carcasses of "
@@ -5371,17 +5399,17 @@ msgstr ""
 "carcasse, quelle dei vostri servi e quelle di quei parassiti di nani fuori "
 "dalla mia terra! E RESTATENE fuori!"
 
-#. [message]
+#. [message]: id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:713
 msgid "So basically, you want to be left alone in peace. Right?"
 msgstr "Quindi, in sostanza, vuoi essere lasciato in pace, giusto?"
 
-#. [message]
+#. [message]: id=Ro'Arthian
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:717
 msgid "Wow! Someone FINALLY figured it out!"
 msgstr "Wow! Qualcuno FINALMENTE l'ha capita!"
 
-#. [message]
+#. [message]: id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:721
 msgid ""
 "Alright! Listen then. Right now we have very little power to grant your "
@@ -5392,7 +5420,7 @@ msgstr ""
 "le tue richieste. Siamo solo un gruppo di contadini che combatte per la "
 "libertà della propria patria."
 
-#. [message]
+#. [message]: id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:725
 msgid ""
 "But when we defeat the orcish host, re-establish Knalga, and bring law and "
@@ -5403,7 +5431,7 @@ msgstr ""
 "portato legge e ordine nelle Terre del Nord, avremo conquistato l'autorità "
 "per farlo."
 
-#. [message]
+#. [message]: id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:729
 msgid ""
 "When that time comes, I hereby make a solemn oath: no man or dwarf shall "
@@ -5416,7 +5444,7 @@ msgstr ""
 "qualunque dei miei uomini violerà questa legge sarà punito con la morte e "
 "credo di poter parlare anche a nome di Hamel."
 
-#. [message]
+#. [message]: id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:733
 msgid ""
 "In order for that to come about, we must crush the orcish host. But we can't "
@@ -5425,7 +5453,7 @@ msgstr ""
 "Perché questo avvenga, dobbiamo distruggere le schiere di orchi. Ma non "
 "possiamo farlo senza il tuo aiuto. Vuoi unirti a noi?"
 
-#. [message]
+#. [message]: id=Father Marcus
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:737
 msgid ""
 "Think of it, Ro'Arthian, it is a fair bargain. If you don't agree to "
@@ -5438,17 +5466,17 @@ msgstr ""
 "risolta. Avete stregato queste montagne per troppo tempo. È ormai ora per te "
 "e tuo fratello di riposare in pace."
 
-#. [message]
+#. [message]: id=Ro'Arthian
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:741
 msgid "Hrmph. What do you think, brother?"
 msgstr "Hrmph. Che cosa ne pensi, fratello?"
 
-#. [message]
+#. [message]: id=Ro'Sothian
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:758
 msgid " *shrugs* I don't think we have any other choice left."
 msgstr " (solleva le spalle) Non penso che abbiamo altra scelta."
 
-#. [message]
+#. [message]: id=Camerin
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:762
 msgid ""
 "Come on, guys, it will be great! Those orcs will never know what hit them! "
@@ -5463,7 +5491,7 @@ msgstr ""
 "botto! Diventerete leggende! «I due terribili maghi risorti dai morti per "
 "devastare le orde degli orchi!»"
 
-#. [message]
+#. [message]: id=Ro'Arthian
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:766
 msgid ""
 "Very well, Tallin. We accept under the terms that your people will forever "
@@ -5472,7 +5500,7 @@ msgstr ""
 "Molto bene, Tallin. Accettiamo, a patto che il tuo popolo ci lasci per "
 "sempre in pace una volta finito."
 
-#. [message]
+#. [message]: id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:770
 msgid ""
 "Ro'Arthian, I am not of royal blood, but I am a man of my word. I will "
@@ -5481,12 +5509,12 @@ msgstr ""
 "Ro'Arthian, io non sono di sangue reale, ma sono un uomo di parola. Terrò "
 "fede al giuramento che ho dato anche a costo della mia vita."
 
-#. [message]
+#. [message]: id=Ro'Arthian
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:774
 msgid "Very well. The orcish hosts shall feel our wrath!"
 msgstr "Molto bene. Le orde degli orchi assaggeranno la nostra ira!"
 
-#. [message]
+#. [message]: id=Stalrag
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:778
 msgid ""
 "Wait a second, Tallin. Are you saying that we should abandon our homeland to "
@@ -5496,8 +5524,9 @@ msgstr ""
 "patria a questi maghi disgraziati?"
 
 #. [message]: speaker=Anita
-#. [message]
+#. [message]: id=Ro'Sothian
 #. [message]: speaker=Ro'Sothian
+#. [message]: id=Ro'Arthian
 #: data/campaigns/Northern_Rebirth/scenarios/11a_Eastern_Flank.cfg:462
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:1047
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1093
@@ -5505,7 +5534,7 @@ msgstr ""
 msgid " *snicker*"
 msgstr "(risatina)"
 
-#. [message]
+#. [message]: id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:786
 msgid ""
 "Chief Stalrag, it is said that to save a family, we should be willing to "
@@ -5517,12 +5546,12 @@ msgstr ""
 "sacrificare una famiglia; e per salvare una nazione dobbiamo essere disposti "
 "a sacrificare una città."
 
-#. [message]
+#. [message]: id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:790
 msgid "Now, Stalrag, it is up to you. Do you want to save Knalga or not?"
 msgstr "Adesso, Stalrag, sta a te decidere. Vuoi salvare Knalga o no?"
 
-#. [message]
+#. [message]: id=Stalrag
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:794
 msgid ""
 "Well Tallin, if you put it that way... We don't like it, but if that's what "
@@ -5531,7 +5560,7 @@ msgstr ""
 "Benissimo, Tallin, se la metti così... Non ci piace, ma se è quello che "
 "serve per salvare Knalga, allora lo faremo."
 
-#. [message]
+#. [message]: id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:798
 msgid ""
 "Thank you, Stalrag. I am sure that the sacrifice of you and your people will "
@@ -5540,12 +5569,12 @@ msgstr ""
 "Grazie, Stalrag. Sono certo che il sacrificio tuo e della tua gente verrà "
 "ricordato per sempre."
 
-#. [message]
+#. [message]: id=Stalrag
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:802
 msgid " *mumbles* Yeah, great compensation..."
 msgstr " (borbotta) Magra consolazione."
 
-#. [message]
+#. [message]: id=Ro'Arthian
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:806
 msgid ""
 "I have the power to control many creatures, such as Gryphons, Trolls and "
@@ -5554,12 +5583,12 @@ msgstr ""
 "Ho il potere di controllare molte creature, grifoni, troll e ogre. Finché "
 "sarò con voi essi saranno ai tuoi ordini."
 
-#. [message]
+#. [message]: id=Stalrag
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:810
 msgid "The Shinsplitters will be at your service, Tallin."
 msgstr "Anche gli spaccatibie saranno al tuo servizio, Tallin."
 
-#. [message]
+#. [message]: id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:814
 msgid ""
 "My thanks, Stalrag and Ro'Arthian. However, I have sufficient forces under "
@@ -5573,7 +5602,7 @@ msgstr ""
 "dovreste mantenere il controllo dei vostri troll e ogre finché non ne "
 "abbiamo bisogno."
 
-#. [message]
+#. [message]: id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:822
 msgid ""
 "Great. Now let's get back to the caves and start planning the best way teach "
@@ -5583,19 +5612,19 @@ msgstr ""
 "migliore per insegnare a questi orchi una lezione che non dimenticheranno "
 "mai!"
 
-#. [message]
+#. [message]: id=Stalrag
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:834
 msgid "Farewell, my friends. I now go to join my fallen brethren."
 msgstr "Addio, amici miei. Ora vado a raggiungere i miei fratelli caduti."
 
-#. [message]
+#. [message]: id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:838
 msgid ""
 "No! If Stalrag dies now none of his men will follow us. We are finished."
 msgstr ""
 "No! Se Stalrag adesso muore nessuno dei suoi uomini ci seguirà. Siamo finiti."
 
-#. [scenario]
+#. [scenario]: id=protecting_the_master
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:4
 msgid "Protecting the Master"
 msgstr "Proteggere il padrone"
@@ -5792,7 +5821,7 @@ msgstr ""
 "Tra l'altro, probabilmente andrà a buttarsi nel fiume più vicino comunque, "
 "perché preoccuparsi di ucciderlo?"
 
-#. [scenario]
+#. [scenario]: id=elvish_princess
 #: data/campaigns/Northern_Rebirth/scenarios/08a_Elvish_Princess.cfg:5
 msgid "Elvish Princess"
 msgstr "La principessa degli elfi"
@@ -6135,7 +6164,7 @@ msgstr "Morte di Ro'Arthian"
 msgid "Death of Ro'Sothian"
 msgstr "Morte di Ro'Sothian"
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Atul
 #: data/campaigns/Northern_Rebirth/scenarios/08a_Elvish_Princess.cfg:190
 msgid "Atul"
 msgstr "Atul"
@@ -6149,7 +6178,7 @@ msgstr ""
 "Dopo esser emersi da un'uscita di una galleria nascosta vicina alla "
 "fortezza, Tallin e i suoi uomini osservarono la scena davanti a loro."
 
-#. [message]
+#. [message]: id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/08a_Elvish_Princess.cfg:478
 msgid ""
 "There's the fortress of Bitterhold. A grim and impressive pile indeed..."
@@ -6162,7 +6191,7 @@ msgstr ""
 msgid "They have dammed the river to make a moat for their castle."
 msgstr "Hanno deviato il fiume per costruire un fossato attorno alla rocca."
 
-#. [message]
+#. [message]: id=Ro'Arthian
 #: data/campaigns/Northern_Rebirth/scenarios/08a_Elvish_Princess.cfg:486
 msgid ""
 "Are we here to sight-see or to rescue this blasted sorceress? And if you "
@@ -6172,7 +6201,7 @@ msgstr ""
 "E se volete davvero ammirare il panorama, allora guardate quell'accampamento "
 "di orchi a sud."
 
-#. [message]
+#. [message]: id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/08a_Elvish_Princess.cfg:490
 msgid ""
 "Just our luck to be here when they're mustering a field force - probably to "
@@ -6182,17 +6211,17 @@ msgstr ""
 "campo – probabilmente per attaccare le caverne. Evitiamoli, se possiamo, "
 "altrimenti uccidiamoli."
 
-#. [message]
+#. [message]: id=Atul
 #: data/campaigns/Northern_Rebirth/scenarios/08a_Elvish_Princess.cfg:494
 msgid "INTRUDERS! KILL THEM!!!"
 msgstr "DEGLI INTRUSI! UCCIDETELI!!!"
 
-#. [unit]: type=Elvish Sorceress
+#. [unit]: type=Elvish Sorceress, id=Anita
 #: data/campaigns/Northern_Rebirth/scenarios/08a_Elvish_Princess.cfg:515
 msgid "Anita"
 msgstr "Anita"
 
-#. [message]
+#. [message]: id=Anita
 #: data/campaigns/Northern_Rebirth/scenarios/08a_Elvish_Princess.cfg:526
 msgid ""
 "I am free! Thank you, my saviors. Who has come to rescue me from vile "
@@ -6201,7 +6230,7 @@ msgstr ""
 "Sono libera! Grazie, miei salvatori. Chi è venuto a salvarmi da questa "
 "orribile prigionia?"
 
-#. [message]
+#. [message]: id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/08a_Elvish_Princess.cfg:531
 msgid ""
 "Later, princess, first let's get outta -- uh, let us take our leave of this "
@@ -6210,7 +6239,7 @@ msgstr ""
 "Più tardi, principessa, prima dobbiamo andar- ehm, prendiamo congedo da "
 "questo luogo il più rapidamente possibile!"
 
-#. [message]
+#. [message]: id=Anita
 #: data/campaigns/Northern_Rebirth/scenarios/08a_Elvish_Princess.cfg:535
 msgid "Lead; I will follow."
 msgstr "Fa' strada: ti seguirò."
@@ -6224,13 +6253,13 @@ msgstr ""
 "Ehi, quegli intrusi stanno per liberare l'elfa! Non possiamo permetterlo! "
 "Uccidetela! Uccidete l'elfa!"
 
-#. [message]
+#. [message]: id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/08a_Elvish_Princess.cfg:553
 #, fuzzy
 msgid "Darn it! We weren't fast enough."
 msgstr "Dannazione! Non siamo stati abbastanza veloci."
 
-#. [scenario]
+#. [scenario]: id=lost
 #: data/campaigns/Northern_Rebirth/scenarios/08b_Ray_of_Hope.cfg:4
 msgid "Ray of Hope"
 msgstr "Un raggio di speranza"
@@ -6468,15 +6497,19 @@ msgstr ""
 msgid "Then we must find this rod. Lead the way, my friend."
 msgstr "Allora dobbiamo trovare questa bacchetta. Fammi strada, amico mio."
 
-#. [side]: type=Fire Dragon
+#. [side]: type=Fire Dragon, id=Machador
 #: data/campaigns/Northern_Rebirth/scenarios/08b_Ray_of_Hope.cfg:154
 msgid "Machador"
 msgstr "Machador"
 
-#. [side]: type=Fire Dragon
-#. [side]: type=Blood Bat
-#. [side]: type=Troll Warrior
-#. [side]: type=Drake Flare
+#. [side]: type=Fire Dragon, id=Machador
+#. [side]: type=Blood Bat, id=Blood Bat 3
+#. [side]: type=Blood Bat, id=Blood Bat 4
+#. [side]: type=Blood Bat, id=Blood Bat 5
+#. [side]: type=Blood Bat, id=Blood Bat 6
+#. [side]: type=Blood Bat, id=Blood Bat 7
+#. [side]: type=Troll Warrior, id=Gurk
+#. [side]: type=Drake Flare, id=Kishmish
 #: data/campaigns/Northern_Rebirth/scenarios/08b_Ray_of_Hope.cfg:158
 #: data/campaigns/Northern_Rebirth/scenarios/08b_Ray_of_Hope.cfg:169
 #: data/campaigns/Northern_Rebirth/scenarios/08b_Ray_of_Hope.cfg:196
@@ -6488,12 +6521,12 @@ msgstr "Machador"
 msgid "Monsters"
 msgstr "Mostri"
 
-#. [side]: type=Troll Warrior
+#. [side]: type=Troll Warrior, id=Gurk
 #: data/campaigns/Northern_Rebirth/scenarios/08b_Ray_of_Hope.cfg:302
 msgid "Gurk"
 msgstr "Gurk"
 
-#. [side]: type=Drake Flare
+#. [side]: type=Drake Flare, id=Kishmish
 #: data/campaigns/Northern_Rebirth/scenarios/08b_Ray_of_Hope.cfg:314
 msgid "Kishmish"
 msgstr "Kishmish"
@@ -6587,7 +6620,7 @@ msgstr ""
 msgid "HISSSSSS"
 msgstr "HISSSSSS"
 
-#. [object]
+#. [object]: id=strength_amulet
 #: data/campaigns/Northern_Rebirth/scenarios/08b_Ray_of_Hope.cfg:643
 msgid ""
 "Showing signs of ancient elvish manufacture, this amulet grants whomever is "
@@ -6613,12 +6646,12 @@ msgstr ""
 msgid "Bah! More undead. Alert chief!"
 msgstr "Bah! Altri non-morti. Capo, attento!"
 
-#. [unit]: type=Dwarvish Lord
+#. [unit]: type=Dwarvish Lord, id=Haffel
 #: data/campaigns/Northern_Rebirth/scenarios/08b_Ray_of_Hope.cfg:745
 msgid "Haffel"
 msgstr "Haffel"
 
-#. [unit]: type=Dwarvish Dragonguard
+#. [unit]: type=Dwarvish Dragonguard, id=Hekkna
 #: data/campaigns/Northern_Rebirth/scenarios/08b_Ray_of_Hope.cfg:754
 msgid "Hekkna"
 msgstr "Hekkna"
@@ -6919,7 +6952,7 @@ msgstr ""
 msgid "I really should slay the dragon before I touch this..."
 msgstr "Probabilmente dovrei uccidere il drago prima di toccarla..."
 
-#. [scenario]
+#. [scenario]: id=introductions
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:5
 msgid "Introductions"
 msgstr "Presentazioni"
@@ -7338,7 +7371,7 @@ msgstr ""
 "Un troll? Cosa diavolo ci stanno facendo dei troll così vicini a Knalga? Sta "
 "succedendo qualcosa, uomini, sbrighiamoci a tornare."
 
-#. [scenario]
+#. [scenario]: id=judgement
 #: data/campaigns/Northern_Rebirth/scenarios/09b_Judgement.cfg:4
 msgid "Judgement"
 msgstr "Il giudizio"
@@ -7519,7 +7552,7 @@ msgstr ""
 msgid "Very well. If this is the will of the Greater Gods then so be it."
 msgstr "Molto bene. Se questa è la volontà dei Grandi Dei, così sia."
 
-#. [scenario]
+#. [scenario]: id=stolen_gold
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:5
 msgid "Stolen Gold"
 msgstr "L'oro rubato"
@@ -7963,22 +7996,22 @@ msgstr ""
 "Mentre erano sulla tracce dei troll, incontrarono solo una debole resistenza "
 "che superarono rapidamente."
 
-#. [side]: type=Troll Warrior
+#. [side]: type=Troll Warrior, id=Tor
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:329
 msgid "Tor"
 msgstr "Tor"
 
-#. [side]: type=Troll Warrior
+#. [side]: type=Troll Warrior, id=Bor
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:360
 msgid "Bor"
 msgstr "Bor"
 
-#. [side]: type=Troll Warrior
+#. [side]: type=Troll Warrior, id=Oof
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:390
 msgid "Oof"
 msgstr "Oof"
 
-#. [side]: type=Troll Warrior
+#. [side]: type=Troll Warrior, id=Glu
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:420
 msgid "Glu"
 msgstr "Glu"
@@ -8080,12 +8113,12 @@ msgstr "Una creature così feroce e garbata. Sentirò la sua mancanza."
 msgid "Farewell, Krash, may the lords of light guide your path."
 msgstr "Addio, Krash, che i Signori della Luce guidino i tuoi passi."
 
-#. [unit]: type=Drake Burner
+#. [unit]: type=Drake Burner, id=Singe
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:672
 msgid "Singe"
 msgstr "Singe"
 
-#. [unit]: type=Drake Fighter
+#. [unit]: type=Drake Fighter, id=Bak'man, id=Halk
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:689
 msgid "Bak'man"
 msgstr "Bak'man"
@@ -8154,7 +8187,8 @@ msgstr "Chiudi quella bocca, codardo!"
 msgid "Help Tallin defeat the enemy leaders or"
 msgstr "Aiuta Tallin a sconfiggere i comandanti nemici o"
 
-#. [unit]: type=Elvish Marshal
+#. [unit]: type=Elvish Marshal, id=Hidel
+#. [unit]: id=Hidel, type=Elvish Marshal
 #: data/campaigns/Northern_Rebirth/scenarios/11a_Eastern_Flank.cfg:228
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:800
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1115
@@ -8233,7 +8267,7 @@ msgstr "Aiuta Tallin a sconfiggere i comandanti nemici"
 msgid "Haha! Look at them run!"
 msgstr "Ahah! Guarda come corrono!"
 
-#. [unit]: type=Elvish Outrider
+#. [unit]: id=Himadrin, type=Elvish Outrider
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:930
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1231
 msgid "Himadrin"
@@ -8397,8 +8431,8 @@ msgstr "...la strada è sgombra e bramo di pestare qualche altro orco. Andiamo?"
 msgid "Right. Onward men!"
 msgstr "Certo. Avanti uomini!"
 
-#. [unit]: type=Elvish Avenger
-#. [side]: type=Elvish Avenger
+#. [unit]: type=Elvish Avenger, id=Sisal
+#. [side]: type=Elvish Avenger, id=Sisal
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1133
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:138
 msgid "Sisal"
@@ -8501,7 +8535,7 @@ msgstr "Come desideri, principessa."
 msgid "Very well, people. The road ahead is clear, onward to victory!"
 msgstr "Benissimo gente. La strada davanti a noi è sicura, verso la vittoria!"
 
-#. [scenario]
+#. [scenario]: id=eastern_flank
 #: data/campaigns/Northern_Rebirth/scenarios/11a_Eastern_Flank.cfg:5
 msgid "The Eastern Flank"
 msgstr "Il fianco orientale"
@@ -8525,27 +8559,27 @@ msgstr ""
 "della valle, videro in lontananza la massiccia fortezza degli orchi di "
 "Angthurim."
 
-#. [side]: type=Troll Warrior
+#. [side]: type=Troll Warrior, id=Gore
 #: data/campaigns/Northern_Rebirth/scenarios/11a_Eastern_Flank.cfg:44
 msgid "Gore"
 msgstr "Gore"
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Carron
 #: data/campaigns/Northern_Rebirth/scenarios/11a_Eastern_Flank.cfg:62
 msgid "Carron"
 msgstr "Carron"
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Rash
 #: data/campaigns/Northern_Rebirth/scenarios/11a_Eastern_Flank.cfg:75
 msgid "Rash"
 msgstr "Rash"
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Al'Mar
 #: data/campaigns/Northern_Rebirth/scenarios/11a_Eastern_Flank.cfg:88
 msgid "Al'Mar"
 msgstr "Al'Mar"
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Ha'Tang
 #: data/campaigns/Northern_Rebirth/scenarios/11a_Eastern_Flank.cfg:101
 msgid "Ha'Tang"
 msgstr "Ha'Tang"
@@ -8782,7 +8816,7 @@ msgstr ""
 "Abbiamo colpito il cuore delle loro difese orientali. Ora andiamo a fare i "
 "conti con Rakshas una volta per tutte!"
 
-#. [scenario]
+#. [scenario]: id=get_gold
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:5
 msgid "Get the Gold"
 msgstr "Riprendi l'oro"
@@ -9078,7 +9112,7 @@ msgstr ""
 "Al grifone sembrava che gli elfi stessero per essere sopraffatti. Il gruppo "
 "velocemente si rivolse a sud e si tuffò nella foresta."
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Ha'Tuil
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:95
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:156
 msgid "Ha'Tuil"
@@ -9093,28 +9127,28 @@ msgstr ""
 "Dopo una marcia forzata attraverso la foresta, il gruppo giunse sulla scena "
 "della battaglia."
 
-#. [message]
+#. [message]: id=Anita
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:387
 msgid "Sisal, how do you fare?"
 msgstr "Sisal, come andiamo?"
 
-#. [message]
+#. [message]: id=Sisal
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:391
 msgid "Princess! You are here! How fares Hidel?"
 msgstr "Principessa! Siete qui! Come sta Hidel?"
 
-#. [message]
+#. [message]: id=Anita
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:395
 msgid " *sheds a tear*"
 msgstr " *asciugandosi una lacrima*"
 
-#. [message]
+#. [message]: id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:399
 msgid "Hidel...died a hero's death, one worthy to be sung forever."
 msgstr ""
 "Hidel... è morto da eroe, degno di essere ricordato nelle canzoni per sempre."
 
-#. [message]
+#. [message]: id=Sisal
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:403
 msgid ""
 "The dung-spawned bastards! Verily, Tallin, had it not been for Hidel we "
@@ -9124,7 +9158,7 @@ msgstr ""
 "sacrifico di Hidel saremmo tutti già morti e Rakshas starebbe allegramente "
 "contando il suo oro."
 
-#. [message]
+#. [message]: id=Sisal
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:407
 msgid ""
 "Hidel and a handful of elves held off the orcs for more then an hour. That "
@@ -9135,12 +9169,12 @@ msgstr ""
 "stato sufficiente da permetterci di svignarcela con l'oro e sgattaiolare "
 "presso queste rovine."
 
-#. [message]
+#. [message]: id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:411
 msgid "So you have the gold?"
 msgstr "Così avete l'oro?"
 
-#. [message]
+#. [message]: id=Sisal
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:415
 msgid ""
 "We have the gold, and now we shall have the blood of these orcs! IN HIDEL'S "
@@ -9149,7 +9183,7 @@ msgstr ""
 "Abbiamo l'oro, e ora avremo anche il sangue di questi orchi! NEL SEGNO DI "
 "HIDEL!"
 
-#. [message]
+#. [message]: id=Ha'Tuil
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:420
 msgid ""
 "Grrr, Ha'Tuil has never failed in his mission. I will soon lay your severed "
@@ -9158,7 +9192,7 @@ msgstr ""
 "Grrr, Ha'Tulin non ha mai fallito in una missione.Presto deporrò io stesso "
 "le vostre teste mozzate ai piedi del Maestro!"
 
-#. [message]
+#. [message]: id=Sisal
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:424
 msgid ""
 "You will eat cold steel and whimper your way to hell, foul wretch of an orc!"
@@ -9173,12 +9207,12 @@ msgstr ""
 msgid "Defeat the orcs"
 msgstr "Sconfiggi gli orchi"
 
-#. [message]
+#. [message]: id=Ha'Tuil
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:506
 msgid "Argh! I have failed!"
 msgstr "Arg! Ho fallito."
 
-#. [message]
+#. [message]: id=Sisal
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:510
 msgid ""
 "Cheer up -- you won't have to live with your failure for long...*snicker*"
@@ -9186,12 +9220,12 @@ msgstr ""
 "Rallegrati – non dovrai sopportare il peso del fallimento a lungo... "
 "(ridacchia)"
 
-#. [message]
+#. [message]: id=Sisal
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:524
 msgid "Ahhhh! Farewell, friends. I now go to join Hidel."
 msgstr "Ahhhh! Addio amici. Vado a raggiungere Hidel."
 
-#. [message]
+#. [message]: id=Anita
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:528
 msgid "Sisal! Noooo!"
 msgstr "Sisal! Noooo!"
@@ -9201,7 +9235,7 @@ msgstr "Sisal! Noooo!"
 msgid "Haha! We got the gold now!"
 msgstr "Ah, ah! Abbiamo l'oro, adesso!"
 
-#. [message]
+#. [message]: id=Ha'Tuil
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:536
 msgid ""
 "Hahaha! Mission accomplished, men! Now let's crush the rest of this scum and "
@@ -9210,7 +9244,7 @@ msgstr ""
 "Hahaha! Missione compiuta, uomini! Ora schiacciamo il resto di questa "
 "marmaglia e torniamo a rapporto dal nostro Maestro."
 
-#. [message]
+#. [message]: id=Anita
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:540
 msgid ""
 "I don't think so, you bastard orcs! That gold belongs to us. Besides, we now "
@@ -9221,7 +9255,7 @@ msgstr ""
 "anche qualche conticino in sospeso con voi. Truppa, prendeteli – Esigo che "
 "neanche un orco rimanga vivo!"
 
-#. [message]
+#. [message]: id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:550
 msgid ""
 "Thanks to Hidel and the elves, we have recovered our gold. Now let's run "
@@ -9230,7 +9264,7 @@ msgstr ""
 "Grazie a Hidel e agli elfi, abbiamo recuperato il nostro oro. Ora inseguiamo "
 "Rakshas e finiamo questa questione una volta per tutte."
 
-#. [scenario]
+#. [scenario]: id=Showdown
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:4
 msgid "Showdown"
 msgstr "Finale"
@@ -9280,17 +9314,17 @@ msgstr ""
 "L'idea era di circondare su tutti i fronti Rakshas, impedendogli ogni "
 "possibilità di fuga o di arrivo di rinforzi."
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Ar'Muff
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:127
 msgid "Ar'Muff"
 msgstr "Ar'Muff"
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Calter
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:159
 msgid "Calter"
 msgstr "Calter"
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Halter
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:191
 msgid "Halter"
 msgstr "Halter"
@@ -9336,7 +9370,7 @@ msgstr ""
 msgid "A few short hours later all the groups converged on the fortress."
 msgstr "Poche ore dopo tutti i gruppi si diressero verso la fortezza."
 
-#. [message]
+#. [message]: id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:795
 msgid ""
 "Rakshas! You have evaded me for the last time. Now come out and die like a "
@@ -9345,12 +9379,12 @@ msgstr ""
 "Rakshas! Mi sei sfuggito per l'ultima volta. Ora vieni fuori e muori come un "
 "uomo!"
 
-#. [message]
+#. [message]: id=Rakshas
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:799
 msgid "What the...? How did he get here?"
 msgstr "Che cosa...? Ma com'è arrivato là?"
 
-#. [message]
+#. [message]: id=Anita
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:808
 msgid ""
 "We have crushed and scattered your entire eastern flank, and now it's your "
@@ -9358,7 +9392,7 @@ msgid ""
 msgstr ""
 "Abbiamo travolto e disperso tutto il tuo fianco orientale e ora tocca a te!"
 
-#. [message]
+#. [message]: id=Rakshas
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:812
 msgid ""
 "You slimy little elf! So you have joined hands with these humans, have you? "
@@ -9367,7 +9401,7 @@ msgstr ""
 "Piccolo elfo viscido! Dunque avete stretto un patto con questi uomini, vero? "
 "Benissimo, presto sarete entrambi morti!"
 
-#. [message]
+#. [message]: id=Anita
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:816
 msgid ""
 "Good luck, you monster. You are cut off and surrounded. We shall kill you "
@@ -9376,7 +9410,7 @@ msgstr ""
 "Buona fortuna, mostro. Sei tagliato fuori e circondato. Ti uccideremo e la "
 "tua carcassa nutrirà gli avvoltoi e le bestie selvatiche."
 
-#. [message]
+#. [message]: id=Rakshas
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:820
 msgid ""
 "Hahahahah! You fools, do you not see that you are right in the heart of "
@@ -9389,7 +9423,7 @@ msgstr ""
 "momento tutto il mio esercito occidentale sta marciando in questa direzione. "
 "Presto saranno qua e disperderanno le vostre forze come fuscelli!"
 
-#. [message]
+#. [message]: id=Ro'Arthian
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:826
 msgid ""
 "We have crushed and scattered your entire eastern flank, buddy, and now it's "
@@ -9398,19 +9432,19 @@ msgstr ""
 "Abbiamo travolto e disperso tutto il tuo fianco orientale, amico, e ora "
 "tocca a te!"
 
-#. [message]
+#. [message]: id=Rakshas
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:830
 msgid ""
 "Argh, you frustrating little vermin! I am going to pluck your eyeballs out "
 "and..."
 msgstr "Argh, piccolo insetto noioso! Ti strapperò le palle degli occhi e..."
 
-#. [message]
+#. [message]: id=Ro'Arthian
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:834
 msgid "We don't have any eyeballs, you idiot!"
 msgstr "Non abbiamo palle degli occhi, idiota!"
 
-#. [message]
+#. [message]: id=Rakshas
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:839
 msgid ""
 "PAH! You fools, know that you shall soon be outnumbered and surrounded. At "
@@ -9422,17 +9456,17 @@ msgstr ""
 "questa direzione. Presto saranno qua e disperderanno le vostre meschine "
 "forze come fuscelli!"
 
-#. [message]
+#. [message]: id=Hamel
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:884
 msgid "Will they, now?"
 msgstr "Lo faranno, adesso?"
 
-#. [message]
+#. [message]: id=Rakshas
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:888
 msgid "WHAT!?!?!"
 msgstr "COSA!?!?!"
 
-#. [message]
+#. [message]: id=Hamel
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:892
 msgid ""
 "Your western army has been slaughtered, Rakshas, and YOU will soon join them!"
@@ -9440,32 +9474,32 @@ msgstr ""
 "Il tuo esercito occidentale è stato massacrato, Rakshas, e TU farai la "
 "stessa fine presto!"
 
-#. [message]
+#. [message]: id=Rakshas
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:896
 msgid "But... but... how can this be?"
 msgstr "Ma... ma... come può essere?"
 
-#. [message]
+#. [message]: id=Hamel
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:900
 msgid "It's called 'The End', foul orc. Forward! FOR KNALGA!!!"
 msgstr "È quello che si dice «la fine», lurido orco. Avanti! PER KNALGA!!!"
 
-#. [message]
+#. [message]: id=Krash
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:904
 msgid "FOR FRIENDSHIP!!!"
 msgstr "PER L'AMICIZIA!!!"
 
-#. [message]
+#. [message]: id=Ro'Arthian
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:908
 msgid "FOR PEACE!!!"
 msgstr "PER LA PACE!!!"
 
-#. [message]
+#. [message]: id=Camerin
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:912
 msgid "FOR FUN!"
 msgstr "PER DIVERTIMENTO!!!"
 
-#. [message]
+#. [message]: id=Anita
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:916
 msgid "FOR HIDEL!!!"
 msgstr "PER HIDEL!!!"
@@ -9475,22 +9509,22 @@ msgstr "PER HIDEL!!!"
 msgid "FOR DWARVEN DOORS!!!"
 msgstr "PER LE PORTE DEI NANI!!!"
 
-#. [message]
+#. [message]: id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:924
 msgid "FOR THE NORTH! FALL ON THEM, MEN!!!"
 msgstr "PER IL NORD! ATTACCHIAMOLI, UOMINI!!!"
 
-#. [message]
+#. [message]: id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:1002
 msgid "Sweet gods, look at all those orcs pouring out of that fortress."
 msgstr "Per gli dei, guardate quanti orchi escono da quella fortezza."
 
-#. [message]
+#. [message]: id=Hamel
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:1006
 msgid "Aye, and not just any orcs either, those are all hardened veterans!"
 msgstr "Sissignore, e non sono orchi qualunque, sono tutti veterani esperti!"
 
-#. [message]
+#. [message]: id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:1010
 msgid ""
 "Yeah. Obviously this is going to take some time. If necessary we can sit "
@@ -9499,19 +9533,19 @@ msgstr ""
 "Sì. Naturalmente ci vorrà del tempo. Se necessario possiamo rinchiuderci "
 "nelle nostre fortificazioni e assediarli finché non moriranno di fame!"
 
-#. [message]
+#. [message]: id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:1022
 msgid ""
 "Die, you murderous beast! No longer shall you terrorize the people of the "
 "North."
 msgstr "Muori, bestia assassina! Non terrorizzerai più la gente del nord."
 
-#. [message]
+#. [message]: id=Hamel
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:1026
 msgid "Learn the fate of one who offends the Dwarves of Knalga."
 msgstr "Questo è il destino di quelli che offendono i nani di Knalga."
 
-#. [message]
+#. [message]: id=Anita
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:1030
 msgid "Or the elves of the Northern Forests."
 msgstr "O gli elfi della fortezza settentrionale."
@@ -9521,18 +9555,18 @@ msgstr "O gli elfi della fortezza settentrionale."
 msgid "Or the humans of Dwarven Doors."
 msgstr "O gli uomini delle Porte dei nani."
 
-#. [message]
+#. [message]: id=Rakshas
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:1039
 msgid ""
 " *gurggle* No!... this.... cannot.... be... happening.... to.... me....."
 msgstr " (farfuglia) No!... Non... può... succedere... a... me..."
 
-#. [message]
+#. [message]: id=Sister Theta
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:1043
 msgid "Such were the last words of of Rakshas the great!"
 msgstr "Ecco le ultime parole di Rakshas il grande!"
 
-#. [message]
+#. [message]: id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:1056
 msgid ""
 "At last! Rakshas has been slain, and the orcish host has been crushed. Peace "
@@ -9550,12 +9584,12 @@ msgstr ""
 "A queste parole tutte le forze alleate acclamarono assieme fragorosamente. "
 "Il loro lungo travaglio era finalmente concluso."
 
-#. [message]
+#. [message]: id=Camerin
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:1065
 msgid " *small voice lost in the uproar* Awww, is it over already?"
 msgstr " (voce debole persa nel frastuono) Ah, è già finita?"
 
-#. [message]
+#. [message]: id=Hamel
 #. [message]: speaker=Father Marcus
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:1134
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:552
@@ -9564,7 +9598,7 @@ msgstr " (voce debole persa nel frastuono) Ah, è già finita?"
 msgid "Argh!"
 msgstr "Argh!"
 
-#. [message]
+#. [message]: id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:1138
 msgid ""
 "Hamel! Blast it, without the dwarves to hold the western flank we are as "
@@ -9573,17 +9607,17 @@ msgstr ""
 "Hamel! Maledetto, senza i nani a tenere il fianco occidentale siamo già "
 "sconfitti."
 
-#. [message]
+#. [message]: id=Sisal
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:1152
 msgid "Ahhhh! Farewell friends. I now go to join Hidel."
 msgstr "Ahhhh! Addio amici. Vado a raggiungere Hidel."
 
-#. [message]
+#. [message]: id=Anita
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:1156
 msgid "Sisal! Noooo! Not you too!"
 msgstr "Sisal! Noooo! Non anche tu!"
 
-#. [scenario]
+#. [scenario]: id=epilogue
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:5
 msgid "Epilogue"
 msgstr "Epilogo"
@@ -9599,7 +9633,7 @@ msgstr ""
 "tutti si radunarono nella rocca appena conquistata per decidere la prossima "
 "linea d'azione."
 
-#. [message]
+#. [message]: id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:81
 msgid ""
 "So, Rakshas has been defeated and all the armies that he had gathered have "
@@ -9610,19 +9644,19 @@ msgstr ""
 "state frantumate. Questo risolve molti problemi, ma se non facciamo "
 "attenzione adesso, potremmo avere dei problemi più tardi."
 
-#. [message]
+#. [message]: id=Anita
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:85
 msgid "How is that, Tallin?"
 msgstr "Come mai, Tallin?"
 
-#. [message]
+#. [message]: id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:89
 msgid ""
 "Rakshas was but a symptom. The ill is the nature of the orcs themselves."
 msgstr ""
 "Rakshas non era che un sintomo. Il male è nella natura degli orchi stessi."
 
-#. [message]
+#. [message]: id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:93
 msgid ""
 "The orcs are exceedingly numerous and warlike. While they squabble among "
@@ -9636,7 +9670,7 @@ msgstr ""
 "Rakshas si erge sopra gli altri, allora il loro ludibrio per la battaglia "
 "diventa una piaga per tutti i loro vincini."
 
-#. [message]
+#. [message]: id=Anita
 #. [message]: role=Supporter
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:102
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:108
@@ -9647,12 +9681,12 @@ msgstr ""
 "Quindi dobbiamo evitare che gli orchi si uniscano in futuro sotto un unico, "
 "forte e bellicoso condottiero."
 
-#. [message]
+#. [message]: id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:114
 msgid "Exactly."
 msgstr "Esattamente."
 
-#. [message]
+#. [message]: id=Hamel
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:118
 #, fuzzy
 msgid ""
@@ -9668,17 +9702,17 @@ msgstr ""
 "dobbiamo assicurarci che non ci siano bande isolate di orchi, troll, ogre o "
 "qualunque altra creatura a vagabondare attaccando gente innocente."
 
-#. [message]
+#. [message]: id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:122
 msgid "A worthy and difficult task. Does anybody have any ideas?"
 msgstr "Ottima intenzione. Qualcuno ha qualche idea?"
 
-#. [message]
+#. [message]: id=Father Marcus
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:126
 msgid "I do have a suggestion."
 msgstr "Vorrei dare un suggerimento."
 
-#. [message]
+#. [message]: id=Father Marcus
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:130
 msgid ""
 "The orcs are too hardy and fast-breeding to be exterminated, even if we "
@@ -9686,7 +9720,7 @@ msgid ""
 "Therefore, we must find a way to make them part of our solution."
 msgstr ""
 
-#. [message]
+#. [message]: id=Father Marcus
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:134
 msgid ""
 "I propose is the creation of a neutral council of warders, composed of "
@@ -9697,7 +9731,7 @@ msgstr ""
 "composto da uomini, nani, elfi, draghi, troll o chiunque voglia farne parte, "
 "di qualunque razza siano, anche orchi."
 
-#. [message]
+#. [message]: id=Father Marcus
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:138
 msgid ""
 "This body would not claim sovereignty over any peoples or lands, but exist "
@@ -9708,7 +9742,7 @@ msgstr ""
 "terra ma esisterebbe solo per portare pace e giustizia ai paesi a sud e ad "
 "est del grande oceano, a nord di Wesnoth e a ovest delle foreste degli elfi."
 
-#. [message]
+#. [message]: id=Father Marcus
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:142
 msgid ""
 "The first task of the warders would be to go to go to each orcish tribe and "
@@ -9719,7 +9753,7 @@ msgstr ""
 "orchi e accordarsi con loro, in modo da assicurarsi che i problemi che "
 "abbiamo avuto con loro in passato non si ripetano."
 
-#. [message]
+#. [message]: id=Father Marcus
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:146
 msgid ""
 "The orcs have just experienced a crushing defeat; it shouldn't be too hard "
@@ -9732,7 +9766,7 @@ msgstr ""
 "dovessero rimangiarsi l'accordo, e minacciare la pace e la prosperità del "
 "Nord, allora l'armata formata dai Guardiani li schiaccerebbe."
 
-#. [message]
+#. [message]: id=Father Marcus
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:150
 msgid ""
 "That is the basic outline of my proposal. Shall the Council of Warders "
@@ -9750,7 +9784,7 @@ msgstr ""
 "Sentendo le parole del saggio mago, l'intera assemblea eruppe in grida di "
 "approvazione."
 
-#. [message]
+#. [message]: id=Stalrag
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:159
 msgid "Fitting!"
 msgstr "Adatto!"
@@ -9760,12 +9794,12 @@ msgstr "Adatto!"
 msgid "Great!"
 msgstr "Ottimo!"
 
-#. [message]
+#. [message]: id=Elenia
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:167
 msgid "Smart!"
 msgstr "Astuto!"
 
-#. [message]
+#. [message]: id=Camerin
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:171
 msgid "Sounds like fun."
 msgstr "Suona bene."
@@ -9778,7 +9812,7 @@ msgid ""
 msgstr ""
 "Alzandosi in piedi e alzando le mani, Hamel attese che il clamore cessasse."
 
-#. [message]
+#. [message]: id=Hamel
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:180
 msgid ""
 "Over time, Tallin has proved himself to be a wise, courageous and capable "
@@ -9801,7 +9835,7 @@ msgstr ""
 "trambusto durò per ancora un po' di tempo, e alla fine Tallin si alzò e "
 "invocò il silenzio."
 
-#. [message]
+#. [message]: id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:189
 msgid ""
 "I thank everyone for the love and honor bestowed upon me. In honor of that "
@@ -9810,7 +9844,7 @@ msgstr ""
 "Ringrazio tutti per l'affetto e l'onore riposto su di me. E in virtù di "
 "questo affetto io accetto questa responsabilità."
 
-#. [message]
+#. [message]: id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:193
 msgid ""
 "No one leader will make the Warders a success; we will need the help of all "
@@ -9819,7 +9853,7 @@ msgstr ""
 "Nessun condottiero potrà mai adempiere a questo compito da solo; avrò "
 "bisogno dell'aiuto di tutti voi."
 
-#. [message]
+#. [message]: id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:197
 msgid ""
 "Father Marcus, this whole plan is your idea. Would you and your wife be "
@@ -9828,7 +9862,7 @@ msgstr ""
 "Padre Marcus, l'intero piano è un'idea tua. Sareste d'accordo tu e tua "
 "moglie di starmi vicini e di aiutarmi? "
 
-#. [message]
+#. [message]: id=Father Marcus
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:201
 msgid ""
 "Gladly, Tallin. We will stand with the Warders till the end of days if need "
@@ -9837,27 +9871,27 @@ msgstr ""
 "Volentieri, Tallin. Saremo vicini ai Guardiani fino alla fine del mondo, se "
 "è necessario."
 
-#. [message]
+#. [message]: id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:210
 msgid "Stalrag?"
 msgstr "Stalrag?"
 
-#. [message]
+#. [message]: id=Stalrag
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:214
 msgid "I am yours to command, my lord Tallin."
 msgstr "Sono ai tuoi comandi, milord."
 
-#. [message]
+#. [message]: id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:218
 msgid " 'Lord' Oh no!"
 msgstr "«Lord» – Oh, no!"
 
-#. [message]
+#. [message]: id=Sister Theta
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:222
 msgid " *giggle* Better get used to it."
 msgstr "Eh! eh! È meglio che ti ci abitui."
 
-#. [message]
+#. [message]: id=Stalrag
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:226
 msgid ""
 "You have led myself and the Shinsplitters wisely. We will uphold the Council "
@@ -9866,12 +9900,12 @@ msgstr ""
 "Hai guidato spaccapietre e me saggiamente. Noi sosterremo il Consiglio dei "
 "Guardiani."
 
-#. [message]
+#. [message]: id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:237
 msgid "Camerin?"
 msgstr "Camerin?"
 
-#. [message]
+#. [message]: id=Camerin
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:241
 msgid ""
 "Heck yeah! It has been a total blast being with you. I wouldn't even think "
@@ -9880,12 +9914,12 @@ msgstr ""
 "Diamine, sì! È stata davvero uno schianto stare con te. Non ci penso nemmeno "
 "di lasciarti ora!"
 
-#. [message]
+#. [message]: id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:252
 msgid "Elenia?"
 msgstr "Elenia?"
 
-#. [message]
+#. [message]: id=Elenia
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:256
 msgid ""
 "Tallin, as you know, I have been separated from my race and kinsmen - well, "
@@ -9897,7 +9931,7 @@ msgstr ""
 "vorrei tornare per un po' alle foreste elfiche. Potrei tornare qui, un "
 "giorno."
 
-#. [message]
+#. [message]: id=Anita
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:265
 msgid ""
 "Knowing you and your spirit of adventure, Elenia, I am certain that you are "
@@ -9906,12 +9940,12 @@ msgstr ""
 "Conoscendo te e il tuo spirito avventuroso, Elenia, sono sicuro che prima o "
 "poi tornerai."
 
-#. [message]
+#. [message]: id=Elenia
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:269
 msgid " *smiles* It is not unlikely..."
 msgstr " *sorride* non è improbabile..."
 
-#. [message]
+#. [message]: id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:275
 msgid ""
 "You have been a valuable ally and a great friend, Elenia. Go with our "
@@ -9920,17 +9954,17 @@ msgstr ""
 "Sei stata una preziosa alleata e una grande amica, Elenia. Vai in pace, e "
 "porta agli elfi le nostre proposte di speranza e pace."
 
-#. [message]
+#. [message]: id=Elenia
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:279
 msgid "Thank you Tallin."
 msgstr "Grazie, Tallin."
 
-#. [message]
+#. [message]: id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:290
 msgid "Krash?"
 msgstr "Krash?"
 
-#. [message]
+#. [message]: id=Krash
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:294
 msgid ""
 "I am sorry, Tallin but me and my friends had better be getting back to our "
@@ -9939,7 +9973,7 @@ msgstr ""
 "Mi dispiace, Tallin, ma io e i miei compagni faremmo meglio a tornare fra "
 "nostra gente."
 
-#. [message]
+#. [message]: id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:298
 msgid ""
 "No need to apologize, Krash, for you and the valiant drakes of your band "
@@ -9949,7 +9983,7 @@ msgstr ""
 "di inestimabile aiuto per noi. Tutte le Terre del Nord sono in debito con "
 "voi."
 
-#. [message]
+#. [message]: id=Krash
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:302
 msgid ""
 "As you said once before Tallin, let not talk of debts come between us. I "
@@ -9964,7 +9998,7 @@ msgstr ""
 "guadagnato il rispetto degli elfi e dei nani, hai guadagnato anche quello "
 "dei draghi. Sono sicuro che molti si uniranno alla tua causa."
 
-#. [message]
+#. [message]: id=Krash
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:306
 msgid ""
 "If you are ever in desperate need of help then come to us. The gryphons will "
@@ -9973,17 +10007,17 @@ msgstr ""
 "E quando sarai in disperato bisogno di aiuto vieni da noi. I grifoni ti "
 "mostreranno la via."
 
-#. [message]
+#. [message]: id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:310
 msgid "Thanks, friend."
 msgstr "Grazie, amico."
 
-#. [message]
+#. [message]: id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:322
 msgid "Abhai, your assistance has also been a great help to us."
 msgstr "Abhai, anche la tua assistenza è stata di grande aiuto per noi."
 
-#. [message]
+#. [message]: id=Abhai
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:327
 msgid ""
 "Pah, think nothing of it. It will sure make an interesting story to tell the "
@@ -9992,12 +10026,12 @@ msgstr ""
 "Bah, una cosa da niente. Di sicuro però costituisce una storia interessante "
 "da raccontare alla gente a casa."
 
-#. [message]
+#. [message]: id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:331
 msgid "So you would like to return to your home?"
 msgstr "Quindi vorresti tornare a casa tua?"
 
-#. [message]
+#. [message]: id=Abhai
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:335
 msgid ""
 "Yes. The dead should stay in the land of the dead. It is against the laws of "
@@ -10008,7 +10042,7 @@ msgstr ""
 "sarebbe andare contro le leggi di natura. C'è solo un problema: Malifor mi "
 "ha imprigionato in questo corpo e non so come uscirne."
 
-#. [message]
+#. [message]: id=Father Marcus
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:339
 msgid ""
 "I believe Theta and I can help you with that, Abhai. Have no worries, you "
@@ -10017,7 +10051,7 @@ msgstr ""
 "Credo che Theta e io possiamo aiutarti in questo, Abhai. Non ti preoccupare, "
 "sarai presto a casa."
 
-#. [message]
+#. [message]: id=Abhai
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:343
 msgid ""
 "Thank you father, and thank you again, Tallin for all that you have done, "
@@ -10026,12 +10060,12 @@ msgstr ""
 "Grazie, padre, e grazie di nuovo, Tallin, per tutto quello che hai fatto, "
 "sia per il mondo dei vivi che per quello dei morti."
 
-#. [message]
+#. [message]: id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:347
 msgid "My thanks to you as well, Abhai. May you rest in peace."
 msgstr "I miei ringraziamenti anche a te, Abhai. Possa tu riposare in pace."
 
-#. [message]
+#. [message]: id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:353
 msgid ""
 "Ro'Arthian and Ro'Sothian, you two have also been of staunch allies. As per "
@@ -10044,7 +10078,7 @@ msgstr ""
 "che le guardie poste alle due estremità sbarrino la strada a chiunque voglia "
 "entrare, pena la morte."
 
-#. [message]
+#. [message]: id=Ro'Arthian
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:357
 msgid ""
 "Thank you, Tallin. Our old bones are weary of being animated long past their "
@@ -10058,7 +10092,7 @@ msgstr ""
 "vogliamo vedere i nostri sforzi gettati al vento. Quando le Terre del Nord "
 "avranno bisogno impellente del nostro aiuto, sorgeremo di nuovo."
 
-#. [message]
+#. [message]: id=Ro'Arthian
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:366
 msgid ""
 "Stalrag, for years now we have fought each other, but recent events have "
@@ -10068,12 +10102,12 @@ msgstr ""
 "ci hanno resi alleati. Ora comincerò il riposo eterno; possiamo separarci "
 "come amici."
 
-#. [message]
+#. [message]: id=Stalrag
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:370
 msgid "May your rest be peaceful and undisturbed, Ro'Arthian."
 msgstr "Possa il tuo riposo essere pacifico e indisturbato, Ro'Arthian."
 
-#. [message]
+#. [message]: id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:381
 msgid ""
 "And Anita... I may be rash and bold to ask this but... *goes to his knees in "
@@ -10082,12 +10116,12 @@ msgstr ""
 "Ah, e... Anita, forse sono avventato e sfrontato nel chiederti questo... (si "
 "inginocchia di fronte ad Anita e le prende la mano) Vuoi sposarmi?"
 
-#. [message]
+#. [message]: id=Anita
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:385
 msgid " *struck speechless*"
 msgstr "(senza parole)"
 
-#. [message]
+#. [message]: id=Hamel
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:389
 msgid ""
 "Tallin, are you sure? Elves have a very long lifespan compared to humans. "
@@ -10098,7 +10132,7 @@ msgstr ""
 "paragonata a quella degli uomini. Lei vivrà per almeno un altro migliaio di "
 "anni, mentre tu hai a malapena settant'anni davanti a te... al massimo."
 
-#. [message]
+#. [message]: id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:393
 msgid ""
 " *eyes on Anita* I know, Hamel. Then may the coming seventy years be the "
@@ -10109,12 +10143,12 @@ msgstr ""
 "più felici e soddisfacenti delle nostre vite. Dovremmo negarci la felicità "
 "solo per la paura della sconfitta?"
 
-#. [message]
+#. [message]: id=Father Marcus
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:397
 msgid "Well spoken!"
 msgstr "Ben detto!"
 
-#. [message]
+#. [message]: id=Anita
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:401
 msgid "I may be foolish to say this, Tallin, but... yes."
 msgstr "Potrei essere sciocca nel dire questo, Tallin, ma... sì."
@@ -10171,7 +10205,7 @@ msgstr ""
 "dell'Alleanza del Nord, il suo matrimonio con Anita fu sereno e pieno di "
 "felicità. Ebbero insieme un figlio, sul quale furono scritte molte leggende."
 
-#. [message]
+#. [message]: id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:427
 msgid ""
 "Once again I thank all of you. For those of you who are leaving, may the "

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-27 19:52+0100\n"
+"POT-Creation-Date: 2008-11-29 12:24+0100\n"
 "PO-Revision-Date: 2008-11-19 20:39-0300\n"
 "Last-Translator: Ignacio R. Morelle <shikadilord@users.sourceforge.net>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -21,57 +21,57 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#. [editor_group]
+#. [editor_group]: id=all
 #: data/core/editor-groups.cfg:11
 msgid "all"
 msgstr "todo"
 
-#. [editor_group]
+#. [editor_group]: id=water
 #: data/core/editor-groups.cfg:17
 msgid "water"
 msgstr "agua"
 
-#. [editor_group]
+#. [editor_group]: id=flat
 #: data/core/editor-groups.cfg:29
 msgid "flat"
 msgstr "llano"
 
-#. [editor_group]
+#. [editor_group]: id=desert
 #: data/core/editor-groups.cfg:35
 msgid "desert"
 msgstr "desierto"
 
-#. [editor_group]
+#. [editor_group]: id=forest
 #: data/core/editor-groups.cfg:41
 msgid "forest"
 msgstr "bosque"
 
-#. [editor_group]
+#. [editor_group]: id=frozen
 #: data/core/editor-groups.cfg:47
 msgid "frozen"
 msgstr "helado"
 
-#. [editor_group]
+#. [editor_group]: id=rough
 #: data/core/editor-groups.cfg:53
 msgid "rough"
 msgstr "abrupto"
 
-#. [editor_group]
+#. [editor_group]: id=cave
 #: data/core/editor-groups.cfg:59
 msgid "cave"
 msgstr "caverna"
 
-#. [editor_group]
+#. [editor_group]: id=village
 #: data/core/editor-groups.cfg:65
 msgid "village"
 msgstr "aldea"
 
-#. [editor_group]
+#. [editor_group]: id=castle
 #: data/core/editor-groups.cfg:71
 msgid "castle"
 msgstr "castillo"
 
-#. [editor_group]
+#. [editor_group]: id=special
 #: data/core/editor-groups.cfg:77
 msgid "special"
 msgstr "especial"
@@ -96,7 +96,8 @@ msgstr "Hexágonos en radio 2"
 msgid "Hex Line NW-SE"
 msgstr "Línea de hexágonos NO-SE"
 
-#. [editor2_tool_hint]
+#. [editor2_tool_hint]: id=editor-tool-paint
+#. [editor2_tool_hint]: id=editor-tool-fill
 #: data/core/editor2-tool-hints.cfg:7 data/core/editor2-tool-hints.cfg:13
 #, fuzzy
 msgid ""
@@ -107,7 +108,7 @@ msgstr ""
 "plano o de fondo, respectivamente. Mantenga presionado SHIFT para dibujar "
 "sólo en la capa de fondo."
 
-#. [editor2_tool_hint]
+#. [editor2_tool_hint]: id=editor-tool-select
 #: data/core/editor2-tool-hints.cfg:19
 #, fuzzy
 msgid ""
@@ -118,7 +119,7 @@ msgstr ""
 "Mantenga SHIFT presionado para seleccionar casillas adyacentes del mismo "
 "terreno (\"varita mágica\")."
 
-#. [editor2_tool_hint]
+#. [editor2_tool_hint]: id=editor-tool-starting-position
 #: data/core/editor2-tool-hints.cfg:25
 msgid ""
 "Left mouse button displays player selection, right clears. Number keys "
@@ -130,35 +131,35 @@ msgstr ""
 "+número establece la ubicación inicial respectiva bajo el puntero, y "
 "SUPRIMIR la elimina."
 
-#. [editor2_tool_hint]
+#. [editor2_tool_hint]: id=editor-paste
 #: data/core/editor2-tool-hints.cfg:30
 msgid ""
 "Click to paste. Use the edit menu to transform the clipboard (rotate, "
 "mirror)."
 msgstr ""
 
-#. [menu]
+#. [menu]: id=menu-editor-file
 #: data/themes/editor2.cfg:120
 msgid "File"
 msgstr "Fichero"
 
-#. [menu]
+#. [menu]: id=menu-editor-edit
 #: data/themes/editor2.cfg:131
 msgid "Edit"
 msgstr "Editar"
 
-#. [menu]
+#. [menu]: id=menu-editor-map
 #: data/themes/editor2.cfg:141
 msgid "Map"
 msgstr "Mapa"
 
-#. [menu]
+#. [menu]: id=menu-editor-window
 #: data/themes/editor2.cfg:151
 #, fuzzy
 msgid "Window"
 msgstr "Deshacer"
 
-#. [label]
+#. [label]: id=villages-icon
 #: data/themes/editor2.cfg:262
 msgid "villages"
 msgstr "aldeas"

@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: de\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-14 22:25+0100\n"
+"POT-Creation-Date: 2008-11-29 12:24+0100\n"
 "PO-Revision-Date: 2008-11-21 20:43+0100\n"
 "Last-Translator: Nils Kneuper <crazy-ivanovic  AT gmx  D O  T net>\n"
 "Language-Team: german <de@li.org>\n"
@@ -16,42 +16,42 @@ msgstr ""
 "X-Poedit-Country: GERMANY\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#. [campaign]
+#. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:10 data/campaigns/Liberty/_main.cfg:11
 msgid "Liberty"
 msgstr "Freiheit"
 
-#. [campaign]
+#. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:17
 msgid "Outlaw"
 msgstr "Gesetzloser"
 
-#. [campaign]
+#. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:17
 msgid "(Easy)"
 msgstr "(Einfach)"
 
-#. [campaign]
+#. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:17
 msgid "(Difficult)"
 msgstr "(Schwierig)"
 
-#. [campaign]
+#. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:17
 msgid "Peasant"
 msgstr "Bauer"
 
-#. [campaign]
+#. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:17
 msgid "(Normal)"
 msgstr "(Normal)"
 
-#. [campaign]
+#. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:17
 msgid "Fugitive"
 msgstr "Flüchtling"
 
-#. [campaign]
+#. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:25
 msgid ""
 "As the shadow of civil war lengthens across Wesnoth, a band of hardy "
@@ -95,7 +95,7 @@ msgstr "Kunst und graphisches Design"
 msgid "Translators"
 msgstr "Übersetzer"
 
-#. [scenario]
+#. [scenario]: id=the_raid
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:4
 msgid "The Raid"
 msgstr "Der Überfall"
@@ -166,13 +166,13 @@ msgstr ""
 "Freiheit und Selbständigkeit wegwerfen und widersetzte sich den Befehlen der "
 "Dunklen Königin..."
 
-#. [side]: type=Bandit_Peasant
+#. [side]: type=Bandit_Peasant, id=Baldras
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:59
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:31
 msgid "Baldras"
 msgstr "Baldras"
 
-#. [side]: type=Goblin Pillager
+#. [side]: type=Goblin Pillager, id=Fal Khag
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:75
 msgid "Fal Khag"
 msgstr "Fal Khag"
@@ -309,7 +309,7 @@ msgstr "Kembe"
 msgid "Treagh"
 msgstr "Treagh"
 
-#. [unit]: type=Footpad_Peasant
+#. [unit]: type=Footpad_Peasant, id=Harper
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:217
 msgid "Harper"
 msgstr "Harper"
@@ -473,19 +473,19 @@ msgstr ""
 "Die Kobolde haben das Dorf erreicht! Gott erbarme dich, diese Monster werden "
 "sicherlich niemanden am Leben lassen!"
 
-#. [scenario]
+#. [scenario]: id=civil_disobedience
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:4
 msgid "Civil Disobedience"
 msgstr "Ziviler Ungehorsam"
 
-#. [side]: type=Highwayman
-#. [side]: type=Shadow Lord
+#. [side]: type=Highwayman, id=Baldras
+#. [side]: type=Shadow Lord, id=Helicrom
 #. [side]
-#. [side]: type=Bandit
-#. [side]: type=Rogue
-#. [side]: type=Highwayman_Peasant
-#. [side]: type=General
-#. [side]: type=Bandit_Peasant
+#. [side]: type=Bandit, id=Baldras
+#. [side]: type=Rogue, id=Hans
+#. [side]: type=Highwayman_Peasant, id=Relnan
+#. [side]: type=General, id=Lord Maddock
+#. [side]: type=Bandit_Peasant, id=Baldras
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:58
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:203
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:213
@@ -503,17 +503,18 @@ msgstr "Ziviler Ungehorsam"
 msgid "Rebels"
 msgstr "Rebellen"
 
-#. [side]: type=Cavalier
+#. [side]: type=Cavalier, id=Tarwen
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:47
 msgid "Tarwen"
 msgstr "Tarwen"
 
-#. [side]: type=General
+#. [side]: type=General, id=Dommel
 #. [side]
-#. [side]: type=Master Bowman
-#. [side]: type=Cavalier
-#. [side]: type=Royal Guard
-#. [side]: type=Iron Mauler
+#. [side]: type=Master Bowman, id=Quentin
+#. [side]: type=General, id=Kestrel
+#. [side]: type=Cavalier, id=Tarwen
+#. [side]: type=Royal Guard, id=Archarel
+#. [side]: type=Iron Mauler, id=Linneus
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:96
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:117
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:55
@@ -651,25 +652,26 @@ msgstr ""
 "Oh nein! Vertändelt haben wir unsere Zeit, die Verstärkung wird uns "
 "niedermachen..."
 
-#. [scenario]
+#. [scenario]: id=a_strategy_of_hope
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:4
 msgid "A Strategy of Hope"
 msgstr "Eine Strategie der Hoffnung"
 
-#. [side]: type=Highwayman_Peasant
+#. [side]: type=Highwayman_Peasant, id=Relnan
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:40
 msgid "Relnan"
 msgstr "Relnan"
 
-#. [side]: type=Orcish Warrior
+#. [side]: type=Orcish Warrior, id=Urk Delek
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:66
 msgid "Urk Delek"
 msgstr "Urk Delek"
 
-#. [side]: type=Necromancer
-#. [side]: type=Lich
-#. [side]: type=Orcish Warrior
-#. [side]: type=Saurian Oracle
+#. [side]: type=Necromancer, id=Mal-Jarrof
+#. [side]: type=Necromancer, id=Mal-Jerod
+#. [side]: type=Lich, id=Sel-Mana
+#. [side]: type=Orcish Warrior, id=Urk Delek
+#. [side]: type=Saurian Oracle, id=Thhsthss
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:106
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:121
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:137
@@ -678,7 +680,7 @@ msgstr "Urk Delek"
 msgid "Evil"
 msgstr "Das Böse"
 
-#. [side]: type=Saurian Oracle
+#. [side]: type=Saurian Oracle, id=Thhsthss
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:94
 msgid "Thhsthss"
 msgstr "Thhsthss"
@@ -857,7 +859,7 @@ msgstr ""
 "Elensefar zu erreichen und mit Verstärkungen hierher zurückzukehren, bevor "
 "die Armee von Wesnoth unsere Häuser dem Erdboden gleich gemacht hat. Rückzug!"
 
-#. [scenario]
+#. [scenario]: id=unlawful_orders
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:4
 msgid "Unlawful Orders"
 msgstr "Ringen ums Recht"
@@ -872,12 +874,12 @@ msgstr "Elensefar"
 msgid "Port of Elensefar"
 msgstr "Hafen von Elensefar"
 
-#. [side]: type=General
+#. [side]: type=General, id=Lord Maddock
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:50
 msgid "Lord Maddock"
 msgstr "Fürst Maddock"
 
-#. [side]: type=General
+#. [side]: type=General, id=Kestrel
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:71
 msgid "Kestrel"
 msgstr "Kestrel"
@@ -892,7 +894,7 @@ msgstr "Besiege den feindlichen General"
 msgid "Death of Maddock"
 msgstr "Maddock fällt in der Schlacht"
 
-#. [unit]: type=Lieutenant
+#. [unit]: type=Lieutenant, id=Rothel
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:134
 msgid "Rothel"
 msgstr "Rothel"
@@ -1104,22 +1106,22 @@ msgstr ""
 "Seht, eine Schwadron Reiter aus dem Südosten. Einen weiteren Angriff "
 "überstehen wir nicht. Wir sind erledigt!"
 
-#. [scenario]
+#. [scenario]: id=hide_and_seek
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:6
 msgid "Hide and Seek"
 msgstr "Verstecken und Suchen"
 
-#. [time]
+#. [time]: id=midnight
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:12
 msgid "Midnight"
 msgstr "Mitternacht"
 
-#. [side]: type=Master Bowman
+#. [side]: type=Master Bowman, id=Quentin
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:50
 msgid "Quentin"
 msgstr "Quentin"
 
-#. [side]: type=Rogue
+#. [side]: type=Rogue, id=Hans
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:86
 msgid "Hans"
 msgstr "Hans"
@@ -1158,7 +1160,7 @@ msgstr ""
 "Wie zur Hölle geht es nun weiter? Wahrscheinlich müssen wir uns in der Stadt "
 "nach Informationen umhören."
 
-#. [unit]: type=Thief
+#. [unit]: type=Thief, id=Link
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:511
 msgid "Link"
 msgstr "Verbindung"
@@ -1298,28 +1300,28 @@ msgstr ""
 "sicherlich nach Dallben zurückgekehrt. Unsere Mission ist nicht beendet, "
 "aber wir müssen zurückkehren, um eine Schlacht ohne Hoffnung zu führen."
 
-#. [scenario]
+#. [scenario]: id=the_gray_woods
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:4
 msgid "The Gray Woods"
 msgstr "Die Grauen Wälder"
 
-#. [side]: type=Shadow Lord
+#. [side]: type=Shadow Lord, id=Helicrom
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:187
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:62
 msgid "Helicrom"
 msgstr "Helicrom"
 
-#. [side]: type=Necromancer
+#. [side]: type=Necromancer, id=Mal-Jarrof
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:97
 msgid "Mal-Jarrof"
 msgstr "Mal-Jarrof"
 
-#. [side]: type=Necromancer
+#. [side]: type=Necromancer, id=Mal-Jerod
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:112
 msgid "Mal-Jerod"
 msgstr "Mal-Jerod"
 
-#. [side]: type=Lich
+#. [side]: type=Lich, id=Sel-Mana
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:127
 msgid "Sel-Mana"
 msgstr "Sel-Mana"
@@ -1580,7 +1582,7 @@ msgstr ""
 msgid "My men... have failed to protect me! I perish..."
 msgstr "Meine Männer... konnten mich nicht beschützen! Ich sterbe..."
 
-#. [scenario]
+#. [scenario]: id=the_hunters
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:4
 msgid "The Hunters"
 msgstr "Die Jäger"
@@ -1629,12 +1631,12 @@ msgstr ""
 "Nordwest. Unsicher, was sie davon halten sollten, planten sie ihre nächsten "
 "Schritte..."
 
-#. [side]: type=Royal Guard
+#. [side]: type=Royal Guard, id=Archarel
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:55
 msgid "Archarel"
 msgstr "Archarel"
 
-#. [side]: type=Iron Mauler
+#. [side]: type=Iron Mauler, id=Linneus
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:72
 msgid "Linneus"
 msgstr "Linneus"
@@ -1690,7 +1692,7 @@ msgstr ""
 "Wesnoths; ich hätte nie geglaubt, dass sie einmal die Feinde Wesnoths "
 "beherbergen würden."
 
-#. [event]
+#. [event]: id=Pitcher 20 14}, id=Pitcher 28 18}, id=Pitcher 20 14}
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:157
 msgid "Pitcher"
 msgstr "Pitcher"
@@ -1854,7 +1856,7 @@ msgstr ""
 "Wir haben zu viel Zeit hier verbracht. Bestimmt ist schon die gesamte Armee "
 "Wesnoths auf dem Weg hierher. Wir sind erledigt!"
 
-#. [scenario]
+#. [scenario]: id=glory
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:4
 msgid "Glory"
 msgstr "Ruhm"
@@ -1927,17 +1929,17 @@ msgstr ""
 "Brüstung und die Knochen der Besiegten vermodern vor den steinernem "
 "Fundament Halsteads."
 
-#. [side]: type=General
+#. [side]: type=General, id=Dommel
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:67
 msgid "Dommel"
 msgstr "Dommel"
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Vashna
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:124
 msgid "Vashna"
 msgstr "Vashna"
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Vashna
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:178
 msgid "Orcs"
 msgstr "Orks"
@@ -2116,7 +2118,7 @@ msgstr "Hilfe, hoffe ich. Schlimmer wird's auf jeden Fall nimmer."
 msgid "Riders approach from the northwest! Stand fast, men."
 msgstr "Reiter nähern sich vom Nordwesten! Haltet die Stellung Männer."
 
-#. [unit]: type=Paladin
+#. [unit]: type=Paladin, id=Sir Gwydion
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:517
 msgid "Sir Gwydion"
 msgstr "Sir Gwydion"
@@ -2336,7 +2338,7 @@ msgstr ""
 "Kleiner Sieg? Pah! Nun werden wir diese Festung dem Erdboden gleich machen, "
 "aus dem sie einst entstand."
 
-#. [scenario]
+#. [scenario]: id=epilog
 #: data/campaigns/Liberty/scenarios/09_Epilog.cfg:4
 msgid "Liberty - Epilogue"
 msgstr "Freiheit – Epilog"
@@ -2461,12 +2463,12 @@ msgstr ""
 "Landes erreicht hast, geh einfach weiter. Wir sehen auf den Drei Schwestern, "
 "alter Freund. – Relnan«"
 
-#. [unit_type]: race=undead
+#. [unit_type]: id=Bone Knight, race=undead
 #: data/campaigns/Liberty/units/Bone_Knight.cfg:5
 msgid "Bone Knight"
 msgstr "Knochenritter"
 
-#. [unit_type]: race=undead
+#. [unit_type]: id=Bone Knight, race=undead
 #: data/campaigns/Liberty/units/Bone_Knight.cfg:33
 msgid ""
 "Once great warriors across the plains, these mounted riders atop their "
@@ -2488,12 +2490,12 @@ msgstr "Axt"
 msgid "trample"
 msgstr "Niedertrampeln"
 
-#. [unit_type]: race=undead
+#. [unit_type]: id=Death Squire, race=undead
 #: data/campaigns/Liberty/units/Death_Squire.cfg:4
 msgid "Death Squire"
 msgstr "Todesknappe"
 
-#. [unit_type]: race=undead
+#. [unit_type]: id=Death Squire, race=undead
 #: data/campaigns/Liberty/units/Death_Squire.cfg:26
 msgid ""
 "Sometimes the mightiest warriors and generals, cursed with hate and angst, "
@@ -2513,12 +2515,12 @@ msgstr ""
 msgid "sword"
 msgstr "Schwert"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Rogue Mage, race=human
 #: data/campaigns/Liberty/units/Rogue_Mage.cfg:5
 msgid "Rogue Mage"
 msgstr "Abtrünniger Magier"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Rogue Mage, race=human
 #: data/campaigns/Liberty/units/Rogue_Mage.cfg:18
 msgid ""
 "Some mages are thrown out of the mage's guild for attempting to practice "
@@ -2545,12 +2547,12 @@ msgstr "Kurzschwert"
 msgid "magic missile"
 msgstr "Magiegeschoss"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Shadow Lord, race=human
 #: data/campaigns/Liberty/units/Shadow_Lord.cfg:5
 msgid "Shadow Lord"
 msgstr "Schattenfürst"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Shadow Lord, race=human
 #: data/campaigns/Liberty/units/Shadow_Lord.cfg:22
 msgid ""
 "Few humans fathom the secrets of light and dark magic and retain their "
@@ -2581,12 +2583,12 @@ msgstr "Schattengeschoss"
 msgid "shadow blast"
 msgstr "Schattenböe"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Shadow Mage, race=human
 #: data/campaigns/Liberty/units/Shadow_Mage.cfg:5
 msgid "Shadow Mage"
 msgstr "Schattenmagier"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Shadow Mage, race=human
 #: data/campaigns/Liberty/units/Shadow_Mage.cfg:21
 msgid ""
 "Years of violence and brutality to support the study of forbidden magical "
@@ -2610,12 +2612,12 @@ msgstr ""
 msgid "ice blast"
 msgstr "Eiswind"
 
-#. [unit_type]: race=undead
+#. [unit_type]: id=Skeleton Rider, race=undead
 #: data/campaigns/Liberty/units/Skeleton_Rider.cfg:5
 msgid "Skeleton Rider"
 msgstr "Skelett Reiter"
 
-#. [unit_type]: race=undead
+#. [unit_type]: id=Skeleton Rider, race=undead
 #: data/campaigns/Liberty/units/Skeleton_Rider.cfg:33
 msgid ""
 "Once great warriors thundering across the plains, these mounted riders atop "
@@ -2626,12 +2628,12 @@ msgstr ""
 "Pferden durch schwarze Magie aus ihren Gräbern zurück gerufen, um Angst und "
 "Zerstörung zu verbreiten."
 
-#. [unit_type]
+#. [unit_type]: id=Thug_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:16
 msgid "Villager"
 msgstr "Dorfbewohner"
 
-#. [unit_type]
+#. [unit_type]: id=Thug_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:19
 msgid ""
 "Peasants live in the small hamlets and villages scattered across the Wesnoth "
@@ -2640,12 +2642,12 @@ msgstr ""
 "Bauern leben in den kleinen Weilern und Dörfern, die über das Land von "
 "Wesnoth verstreut sind."
 
-#. [unit_type]
+#. [unit_type]: id=Bandit_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:28
 msgid "Village Elder"
 msgstr "Dorfältester"
 
-#. [unit_type]
+#. [unit_type]: id=Bandit_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:31
 msgid ""
 "Each of the villages scattered across the Wesnoth countryside is normally "
@@ -2656,12 +2658,12 @@ msgstr ""
 "von einer Gruppe Ältester geleitet, welche die weisesten und erfahrensten "
 "Bewohner des Dorfes sind."
 
-#. [unit_type]
+#. [unit_type]: id=Highwayman_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:40
 msgid "Senior Village Elder"
 msgstr "Erfahrener Dorfältester"
 
-#. [unit_type]
+#. [unit_type]: id=Highwayman_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:44
 msgid ""
 "The entire village looks to the senior elder for guidance. Strong and wise, "
@@ -2675,12 +2677,12 @@ msgstr ""
 "Dorfältesten zum Magistrat und vereinen Staatsmacht und gesellschaftliche "
 "Macht in einer Person."
 
-#. [unit_type]
+#. [unit_type]: id=Footpad_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:56
 msgid "Peasant Youth"
 msgstr "Jungbauer"
 
-#. [unit_type]
+#. [unit_type]: id=Footpad_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:61
 msgid ""
 "The scruffy-haired peasant youth are much like the young people living "
@@ -2695,12 +2697,12 @@ msgstr ""
 msgid "female^Peasant Youth"
 msgstr "Bauerstochter"
 
-#. [unit_type]
+#. [unit_type]: id=Outlaw_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:77
 msgid "Watchman"
 msgstr "Nachtwächter"
 
-#. [unit_type]
+#. [unit_type]: id=Outlaw_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:82
 msgid ""
 "The watchmen are men and women who protect the villages from marauders, both "
@@ -2715,12 +2717,12 @@ msgstr ""
 msgid "female^Watchwoman"
 msgstr "Nachtwächterin"
 
-#. [unit_type]
+#. [unit_type]: id=Fugitive_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:94
 msgid "Borderer"
 msgstr "Grenzschützer"
 
-#. [unit_type]
+#. [unit_type]: id=Fugitive_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:99
 msgid ""
 "Border villages maintain militias dedicated to fending off hostiles. While "
@@ -2739,12 +2741,12 @@ msgstr ""
 msgid "female^Borderer"
 msgstr "Grenzschützerin"
 
-#. [unit_type]
+#. [unit_type]: id=Poacher_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:116
 msgid "Peasant Hunter"
 msgstr "Bauern Jäger"
 
-#. [unit_type]
+#. [unit_type]: id=Poacher_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:119
 msgid ""
 "Villages, especially in wilder areas near frontiers, rely on hunters to "
@@ -2756,12 +2758,12 @@ msgstr ""
 "Ihre Fähigkeit sich nahezu lautlos zu bewegen und ihr ausgezeichnetes Wissen "
 "über die Umgebung, machen sie zu wertvollen Kämpfern in der Schlacht."
 
-#. [unit_type]
+#. [unit_type]: id=Trapper_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:128
 msgid "Peasant Trapper"
 msgstr "Bauern Fallensteller"
 
-#. [unit_type]
+#. [unit_type]: id=Trapper_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:133
 msgid ""
 "Trappers are skilled hunters who supply food and furs for several villages. "
@@ -2772,13 +2774,13 @@ msgstr ""
 "mehrere Dörfer sichern. Ihre Jagderfahrung macht sie am wertvollsten in der "
 "Nacht, sowie in Wäldern und Sümpfen."
 
-#. [unit_type]
+#. [unit_type]: id=Huntsman_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:142
 msgid "Peasant Huntsman"
 msgstr "Bäuerlicher Jäger"
 
 # bullseye wamprats ist ein Zitat aus Star Wars und hat in meinen Augen keinerlei Daseinsberechtigung in Wesnoth.
-#. [unit_type]
+#. [unit_type]: id=Huntsman_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:147
 msgid ""
 "Huntsmen have spent their lives in the backwoods and swamps of their "
@@ -2790,12 +2792,12 @@ msgstr ""
 "Sumpfratte das Auge auszuschießen und verlieren keine Spuren von dem, was "
 "sich in ihrem Gebiet bewegt."
 
-#. [object]
+#. [object]: id={ID}
 #: data/campaigns/Liberty/utils/utils.cfg:62
 msgid "Holy Ankh"
 msgstr "Heiliges Amulett"
 
-#. [object]
+#. [object]: id={ID}
 #: data/campaigns/Liberty/utils/utils.cfg:65
 msgid ""
 "You find a hefty pendant on a strange and ominous looking altar. It glows "
@@ -2804,7 +2806,7 @@ msgstr ""
 "Ihr findet einen schweren Anhänger auf einem unheimlich und rätselhaft "
 "wirkenden Altar. Es leuchtet in dem Moment, in dem ihr es aufhebt, hell auf!"
 
-#. [object]
+#. [object]: id={ID}
 #: data/campaigns/Liberty/utils/utils.cfg:66
 msgid ""
 "There is a strange altar here and a pendant on it. I don't want to touch it."

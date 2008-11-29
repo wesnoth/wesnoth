@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.5.5+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-27 19:52+0100\n"
+"POT-Creation-Date: 2008-11-29 12:24+0100\n"
 "PO-Revision-Date: 2008-10-25 11:30+0200\n"
 "Last-Translator: Robert Millan <rmh@aybabtu.com>\n"
 "Language-Team: Catalan <wesnoth-ca@lists.ettin.org>\n"
@@ -19,33 +19,41 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#. [terrain]
+#. [terrain]: id=off_map
 #: data/core/terrain.cfg:13
 msgid "None"
 msgstr "Cap"
 
-#. [toggle_button]
-#. [terrain]
+#. [toggle_button]: id=shroud
+#. [terrain]: id=shroud
 #: data/core/terrain.cfg:22 data/gui/default/window/mp_create_game.cfg:473
 msgid "Shroud"
 msgstr "Ocult"
 
-#. [terrain]
+#. [terrain]: id=fog
 #: data/core/terrain.cfg:31
 msgid "Fog"
 msgstr "Boira"
 
-#. [terrain]
+#. [terrain]: id=ice
 #: data/core/terrain.cfg:43
 msgid "Ice"
 msgstr "Gel"
 
-#. [terrain]
+#. [terrain]: id=snow
 #: data/core/terrain.cfg:53
 msgid "Snow"
 msgstr "Neu"
 
-#. [terrain]
+#. [terrain]: id=bridge
+#. [terrain]: id=bridgediag1
+#. [terrain]: id=bridgediag2
+#. [terrain]: id=bridgechasm
+#. [terrain]: id=bridgechasmdiag1
+#. [terrain]: id=bridgechasmdiag2
+#. [terrain]: id=bridgelava
+#. [terrain]: id=bridgelavadiag1
+#. [terrain]: id=bridglavadiag2
 #: data/core/terrain.cfg:66 data/core/terrain.cfg:75 data/core/terrain.cfg:84
 #: data/core/terrain.cfg:95 data/core/terrain.cfg:104
 #: data/core/terrain.cfg:114 data/core/terrain.cfg:126
@@ -53,33 +61,40 @@ msgstr "Neu"
 msgid "Bridge"
 msgstr "Pont"
 
-#. [terrain]
+#. [terrain]: id=encampment
 #: data/core/terrain.cfg:162
 msgid "Encampment"
 msgstr "Campament"
 
-#. [terrain]
+#. [terrain]: id=castle
+#. [terrain]: id=dwarven_castle
 #: data/core/terrain.cfg:173 data/core/terrain.cfg:183
 #: data/core/terrain.cfg:194
 msgid "Castle"
 msgstr "Castell"
 
-#. [terrain]
+#. [terrain]: id=ruin
 #: data/core/terrain.cfg:205
 msgid "Ruin"
 msgstr "Ruïna"
 
-#. [terrain]
+#. [terrain]: id=sunkenruin
 #: data/core/terrain.cfg:216
 msgid "Sunken Ruin"
 msgstr "Ruïnes submergides"
 
-#. [terrain]
+#. [terrain]: id=swampruin
 #: data/core/terrain.cfg:228
 msgid "Swamp Ruin"
 msgstr "Ruïnes pantanoses"
 
-#. [terrain]
+#. [terrain]: id=encampment_keep
+#. [terrain]: id=human_keep
+#. [terrain]: id=elven_keep
+#. [terrain]: id=dwarven_keep
+#. [terrain]: id=ruined_keep
+#. [terrain]: id=sunken_keep
+#. [terrain]: id=swamp_keep
 #: data/core/terrain.cfg:253 data/core/terrain.cfg:265
 #: data/core/terrain.cfg:277 data/core/terrain.cfg:289
 #: data/core/terrain.cfg:301 data/core/terrain.cfg:313
@@ -87,160 +102,184 @@ msgstr "Ruïnes pantanoses"
 msgid "Keep"
 msgstr "Torre"
 
-#. [terrain]
+#. [terrain]: id=crater
 #: data/core/terrain.cfg:351
 msgid "Crater"
 msgstr "Cràter"
 
-#. [terrain]
+#. [terrain]: id=desert
 #: data/core/terrain.cfg:361
 msgid "Desert"
 msgstr "Desert"
 
-#. [terrain]
+#. [terrain]: id=sand_rubble
 #: data/core/terrain.cfg:371
 msgid "Rubble"
 msgstr "Runa"
 
-#. [terrain]
+#. [terrain]: id=sand
 #: data/core/terrain.cfg:382
 msgid "Sand"
 msgstr "Sorra"
 
-#. [terrain]
+#. [terrain]: id=oasis
 #: data/core/terrain.cfg:390
 msgid "Oasis"
 msgstr "Oasi"
 
-#. [terrain]
+#. [terrain]: id=snow_forest
 #: data/core/terrain.cfg:405
 msgid "Snow Forest"
 msgstr "Bosc nevat"
 
-#. [terrain]
+#. [terrain]: id=great_tree
 #: data/core/terrain.cfg:416
 msgid "Great Tree"
 msgstr "Arbre venerable"
 
-#. [terrain]
+#. [terrain]: id=forest
 #: data/core/terrain.cfg:426
 msgid "Forest"
 msgstr "Bosc"
 
-#. [terrain]
+#. [terrain]: id=tropical_forest
 #: data/core/terrain.cfg:435
 msgid "Tropical Forest"
 msgstr "Bosc tropical"
 
-#. [terrain]
+#. [terrain]: id=forested_hills
 #: data/core/terrain.cfg:449
 msgid "Forested Hills"
 msgstr "Turons boscosos"
 
-#. [terrain]
+#. [terrain]: id=forested_snow_hills
 #: data/core/terrain.cfg:459
 msgid "Forested Snow Hills"
 msgstr "Turons boscosos nevats"
 
-#. [terrain]
+#. [terrain]: id=grassland
+#. [terrain]: id=grassland_flowers
+#. [terrain]: id=windmill
 #: data/core/terrain.cfg:473 data/core/terrain.cfg:482
 #: data/core/terrain.cfg:491
 msgid "Grassland"
 msgstr "Prada"
 
-#. [terrain]
+#. [terrain]: id=savanna
 #: data/core/terrain.cfg:500
 msgid "Savanna"
 msgstr "Sabana"
 
-#. [terrain]
+#. [terrain]: id=snow_hills
 #: data/core/terrain.cfg:513
 msgid "Snow Hills"
 msgstr "Turons nevats"
 
-#. [terrain]
+#. [terrain]: id=desert_hills
 #: data/core/terrain.cfg:523
 msgid "Dunes"
 msgstr "Dunes"
 
-#. [terrain]
+#. [terrain]: id=hills
 #: data/core/terrain.cfg:533
 msgid "Hills"
 msgstr "Turons"
 
-#. [terrain]
+#. [terrain]: id=desert_mountains
+#. [terrain]: id=mountains
+#. [terrain]: id=snow_mountains
 #: data/core/terrain.cfg:545 data/core/terrain.cfg:554
 #: data/core/terrain.cfg:562
 msgid "Mountains"
 msgstr "Muntanyes"
 
-#. [terrain]
+#. [terrain]: id=canyon
 #: data/core/terrain.cfg:576
 msgid "Chasm"
 msgstr "Abisme"
 
-#. [terrain]
+#. [terrain]: id=lava_chasm
 #: data/core/terrain.cfg:585
 msgid "Lava chasm"
 msgstr "Abisme de lava"
 
-#. [terrain]
+#. [terrain]: id=lava
 #: data/core/terrain.cfg:595
 msgid "Lava"
 msgstr "Lava"
 
-#. [terrain]
+#. [terrain]: id=road
+#. [terrain]: id=stone_path
 #: data/core/terrain.cfg:609 data/core/terrain.cfg:627
 #: data/core/terrain.cfg:636
 msgid "Road"
 msgstr "Camí"
 
-#. [terrain]
+#. [terrain]: id=dirt
 #: data/core/terrain.cfg:618
 msgid "Dirt"
 msgstr "Terra"
 
-#. [terrain]
+#. [terrain]: id=farm
 #: data/core/terrain.cfg:645
 msgid "Farmland"
 msgstr "Terra de cultiu"
 
-#. [terrain]
+#. [terrain]: id=swamp_water
 #: data/core/terrain.cfg:659
 msgid "Swamp"
 msgstr "Pantà"
 
-#. [terrain]
+#. [terrain]: id=lit
 #: data/core/terrain.cfg:673
 msgid "Lit"
 msgstr ""
 
-#. [terrain]
+#. [terrain]: id=cave
 #: data/core/terrain.cfg:683
 msgid "Cave"
 msgstr "Cova"
 
-#. [terrain]
+#. [terrain]: id=cave_path
 #: data/core/terrain.cfg:701
 msgid "Cave path"
 msgstr "Camí de cova"
 
-#. [terrain]
+#. [terrain]: id=fungus
 #: data/core/terrain.cfg:710
 msgid "Mushroom Grove"
 msgstr "Boscatge de bolets"
 
-#. [terrain]
+#. [terrain]: id=fungus_beam
 #: data/core/terrain.cfg:719
 msgid "Mushroom Grove Lit"
 msgstr "Boscatge de bolets il·luminat"
 
-#. [terrain]
+#. [terrain]: id=rocky_cave
 #: data/core/terrain.cfg:730
 msgid "Rockbound Cave"
 msgstr "Cova rocosa"
 
-#. [terrain]
+#. [terrain]: id=desert_village
+#. [terrain]: id=elven_snow_village
+#. [terrain]: id=village
+#. [terrain]: id=snow_village
+#. [terrain]: id=hill_village
+#. [terrain]: id=snow-hill_village
+#. [terrain]: id=snow-mountain_village
+#. [terrain]: id=mountain_village
+#. [terrain]: id=tropical_forest_village
+#. [terrain]: id=camp_village
+#. [terrain]: id=underground_village
+#. [terrain]: id=dwarven_village
+#. [terrain]: id=hut_village
+#. [terrain]: id=hut_snow_village
+#. [terrain]: id=hut_hills_village
+#. [terrain]: id=hut_snow_hills_village
+#. [terrain]: id=hut_mountains_village
+#. [terrain]: id=mermen_village
+#. [terrain]: id=swamp_village
+#. [terrain]: id=swamp_merfolk-village
 #: data/core/terrain.cfg:757 data/core/terrain.cfg:768
 #: data/core/terrain.cfg:781 data/core/terrain.cfg:792
 #: data/core/terrain.cfg:805 data/core/terrain.cfg:816
@@ -256,67 +295,67 @@ msgstr "Cova rocosa"
 msgid "Village"
 msgstr "Llogaret"
 
-#. [terrain]
+#. [terrain]: id=deep_water
 #: data/core/terrain.cfg:1026
 msgid "Deep Water"
 msgstr "Aigua profunda"
 
-#. [terrain]
+#. [terrain]: id=shallow_water
 #: data/core/terrain.cfg:1036
 msgid "Shallow Water"
 msgstr "Aigua baixa"
 
-#. [terrain]
+#. [terrain]: id=ford
 #: data/core/terrain.cfg:1046
 msgid "River Ford"
 msgstr "Gual"
 
-#. [terrain]
+#. [terrain]: id=reef
 #: data/core/terrain.cfg:1057
 msgid "Coastal Reef"
 msgstr "Trieu costaner"
 
-#. [terrain]
+#. [terrain]: id=cloud
 #: data/core/terrain.cfg:1071
 msgid "Impassable Mountains"
 msgstr "Muntanyes impassables"
 
-#. [terrain]
+#. [terrain]: id=clouddesert
 #: data/core/terrain.cfg:1080
 msgid "Impassable Desert Mountains"
 msgstr "Muntanyes desèrtiques impassables"
 
-#. [terrain]
+#. [terrain]: id=cavewall
 #: data/core/terrain.cfg:1089
 msgid "Cave Wall"
 msgstr "Paret de cova"
 
-#. [terrain]
+#. [terrain]: id=wall_stone
 #: data/core/terrain.cfg:1098
 msgid "Wall"
 msgstr "Mur"
 
-#. [terrain]
+#. [terrain]: id=void
 #: data/core/terrain.cfg:1108
 msgid "Void"
 msgstr "Buit"
 
-#. [terrain]
+#. [terrain]: id=flat
 #: data/core/terrain.cfg:1121
 msgid "Flat"
 msgstr "Plana"
 
-#. [terrain]
+#. [terrain]: id=frozen
 #: data/core/terrain.cfg:1128
 msgid "Frozen"
 msgstr "Gelat"
 
-#. [terrain]
+#. [terrain]: id=impassable
 #: data/core/terrain.cfg:1135
 msgid "Impassable"
 msgstr "Impassable"
 
-#. [terrain]
+#. [terrain]: id=unwalkable
 #: data/core/terrain.cfg:1142
 msgid "Unwalkable"
 msgstr "Impracticable"
@@ -353,7 +392,7 @@ msgstr "Actualitza els complements"
 msgid "Remove Add-ons"
 msgstr "Suprimix complements"
 
-#. [button]
+#. [button]: id=ok
 #: data/gui/default/window/addon_connect.cfg:201
 #: data/gui/default/window/addon_connect.cfg:202
 #: data/gui/default/window/mp_connect.cfg:175
@@ -362,7 +401,7 @@ msgid "Connect"
 msgstr "Connecta"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
-#. [button]
+#. [button]: id=cancel
 #: data/gui/default/window/addon_connect.cfg:216
 #: data/gui/default/window/editor_generate_map.cfg:111
 #: data/gui/default/window/editor_new_map.cfg:111
@@ -382,19 +421,19 @@ msgstr "Cancel·la"
 msgid "Generate Random Map"
 msgstr "Genera mapa aleatori"
 
-#. [button]
+#. [button]: id=next_generator
 #: data/gui/default/window/editor_generate_map.cfg:67
 #: data/gui/default/window/editor_generate_map.cfg:68
 msgid "Next Generator"
 msgstr "Següent generador"
 
-#. [button]
+#. [button]: id=settings
 #: data/gui/default/window/editor_generate_map.cfg:90
 #: data/gui/default/window/editor_generate_map.cfg:91
 msgid "Settings"
 msgstr "Configuració"
 
-#. [button]
+#. [button]: id=ok
 #: data/gui/default/window/editor_generate_map.cfg:101
 msgid "Generate"
 msgstr "Genera"
@@ -417,7 +456,7 @@ msgstr "Amplada:"
 msgid "Height:"
 msgstr "Alçada:"
 
-#. [button]
+#. [button]: id=ok
 #: data/gui/default/window/editor_new_map.cfg:100
 #: data/gui/default/window/editor_new_map.cfg:101
 msgid "Create new map"
@@ -458,12 +497,12 @@ msgstr "Alçada antiga:"
 msgid "Expand / shrink direction"
 msgstr ""
 
-#. [toggle_button]
+#. [toggle_button]: id=copy_edge_terrain
 #: data/gui/default/window/editor_resize_map.cfg:242
 msgid "Copy edge terrain"
 msgstr ""
 
-#. [button]
+#. [button]: id=ok
 #: data/gui/default/window/editor_resize_map.cfg:264
 #: data/gui/default/window/editor_resize_map.cfg:265
 msgid "Resize map"
@@ -480,18 +519,18 @@ msgstr "Configuració de l'editor"
 msgid "Time of day lighting preset"
 msgstr ""
 
-#. [button]
+#. [button]: id=next_tod
 #: data/gui/default/window/editor_settings.cfg:75
 #: data/gui/default/window/editor_settings.cfg:76
 msgid "Next"
 msgstr "Següent"
 
-#. [toggle_button]
+#. [toggle_button]: id=custom_tod_toggle
 #: data/gui/default/window/editor_settings.cfg:83
 msgid "Custom lighting setting"
 msgstr ""
 
-#. [toggle_button]
+#. [toggle_button]: id=custom_tod_auto_refresh
 #: data/gui/default/window/editor_settings.cfg:93
 msgid "Auto-update map view"
 msgstr ""
@@ -511,20 +550,21 @@ msgstr "Verd:"
 msgid "Blue:"
 msgstr "Blau:"
 
-#. [toggle_button]
+#. [toggle_button]: id=use_mdi
 #: data/gui/default/window/editor_settings.cfg:208
 msgid "Allow more than one map to be open at the same time (MDI)"
 msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
-#. [button]
+#. [button]: id=ok
 #: data/gui/default/window/editor_settings.cfg:230
+#: data/gui/default/window/mp_method_selection.cfg:205
 #: src/construct_dialog.cpp:125 src/construct_dialog.cpp:132
 msgid "OK"
 msgstr "D'acord"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
-#. [button]
+#. [button]: id=apply
 #: data/gui/default/window/editor_settings.cfg:250
 #: src/game_preferences_display.cpp:188
 msgid "Apply"
@@ -542,7 +582,7 @@ msgstr "Idioma"
 msgid "Choose your preferred language:"
 msgstr "Trieu el vostre idioma:"
 
-#. [button]
+#. [button]: id=ok
 #: data/gui/default/window/language_selection.cfg:121
 #: data/gui/default/window/language_selection.cfg:122
 msgid "Change language"
@@ -554,7 +594,7 @@ msgstr "Canvia l'idioma"
 msgid "You will now connect to the multiplayer server."
 msgstr "Us connectareu al servidor multijugador."
 
-#. [button]
+#. [button]: id=list
 #: data/gui/default/window/mp_connect.cfg:148
 msgid "View List"
 msgstr "Visualitza la llista"
@@ -565,18 +605,18 @@ msgid "Create Game"
 msgstr "Crea una partida"
 
 #. [label]
-#. [text_box]
+#. [text_box]: id=game_name
 #: data/gui/default/window/mp_create_game.cfg:62
 #: data/gui/default/window/mp_create_game.cfg:77
 msgid "Name of game:"
 msgstr "Nom de la partida:"
 
-#. [label]
+#. [label]: id=map_players
 #: data/gui/default/window/mp_create_game.cfg:140
 msgid "Players: "
 msgstr "Jugadors: "
 
-#. [label]
+#. [label]: id=map_size
 #: data/gui/default/window/mp_create_game.cfg:159
 msgid "Map size: "
 msgstr "Grandària del mapa: "
@@ -586,12 +626,12 @@ msgstr "Grandària del mapa: "
 msgid "Era:"
 msgstr "Era:"
 
-#. [button]
+#. [button]: id=era
 #: data/gui/default/window/mp_create_game.cfg:196
 msgid "Default"
 msgstr "Per defecte"
 
-#. [button]
+#. [button]: id=password
 #: data/gui/default/window/mp_create_game.cfg:218
 msgid "Set Password"
 msgstr "Establix la contrasenya"
@@ -601,7 +641,7 @@ msgstr "Establix la contrasenya"
 msgid "Map to play:"
 msgstr "Mapa a jugar:"
 
-#. [toggle_button]
+#. [toggle_button]: id=use_map_settings
 #: data/gui/default/window/mp_create_game.cfg:315
 msgid "Use map settings"
 msgstr "Utilitza els paràmetres per defecte"
@@ -611,7 +651,7 @@ msgstr "Utilitza els paràmetres per defecte"
 msgid "Number of turns"
 msgstr "Nombre de torns"
 
-#. [slider]
+#. [slider]: id=turn_count
 #: data/gui/default/window/mp_create_game.cfg:356
 msgid "Unlimited"
 msgstr "Il·limitat"
@@ -626,17 +666,17 @@ msgstr "Or dels llogarets"
 msgid "Experience modifier"
 msgstr "Modificador d'experiència"
 
-#. [toggle_button]
+#. [toggle_button]: id=fog
 #: data/gui/default/window/mp_create_game.cfg:454
 msgid "Fog of War"
 msgstr "Boira de guerra"
 
-#. [toggle_button]
+#. [toggle_button]: id=random_start_time
 #: data/gui/default/window/mp_create_game.cfg:495
 msgid "Random start time"
 msgstr ""
 
-#. [button]
+#. [button]: id=ok
 #: data/gui/default/window/mp_create_game.cfg:537
 msgid "Create game"
 msgstr "Crea una partida"
@@ -689,11 +729,6 @@ msgid "Play a multiplayer game with the AI or humans sharing the same machine"
 msgstr ""
 "Juga una partida multijugador contra l'IA o compartint la mateixa màquina"
 
-#. [button]
-#: data/gui/default/window/mp_method_selection.cfg:205
-msgid "Ok"
-msgstr "D'acord"
-
 #. [label]
 #: data/gui/default/window/mp_server_list.cfg:84
 msgid "Name"
@@ -704,7 +739,7 @@ msgstr "Nom"
 msgid "Address"
 msgstr "Adreça"
 
-#. [button]
+#. [button]: id=ok
 #: data/gui/default/window/mp_server_list.cfg:198
 msgid "Select"
 msgstr "Selecciona"
@@ -1909,6 +1944,9 @@ msgstr ""
 #: src/wml_exception.cpp:72
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr "A la secció «[$section|]», la clau obligatòria «$key|» no està definida."
+
+#~ msgid "Ok"
+#~ msgstr "D'acord"
 
 #~ msgid "2000"
 #~ msgstr "2000"

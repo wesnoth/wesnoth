@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-27 19:54+0100\n"
+"POT-Creation-Date: 2008-11-29 12:25+0100\n"
 "PO-Revision-Date: 2008-04-14 00:09+0200\n"
 "Last-Translator: Benoît Timbert <benoit.timbert@free.fr>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
@@ -12,56 +12,56 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Poedit-Bookmarks: 1496,1004,-1,-1,-1,-1,-1,-1,-1,-1\n"
 
-#. [campaign]
-#. [editor_group]
+#. [campaign]: id=Under_the_Burning_Suns
+#. [editor_group]: id=utbs
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:15
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:131
 msgid "Under the Burning Suns"
 msgstr "Sous les soleils brûlants"
 
 # Damien : abbréviation de Sous les Soleil Brûlants
-#. [campaign]
+#. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:16
 msgid "UtBS"
 msgstr "SlSB"
 
-#. [unit_type]: race=elf
-#. [campaign]
+#. [unit_type]: id=Desert Hunter, race=elf
+#. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Hunter.cfg:5
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:21
 msgid "Desert Hunter"
 msgstr "Chasseur du désert"
 
-#. [campaign]
+#. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:21
 msgid "(Normal)"
 msgstr "(Normal)"
 
-#. [campaign]
+#. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:22
 msgid "(Challenging)"
 msgstr "(Difficile)"
 
-#. [unit_type]: race=elf
-#. [campaign]
+#. [unit_type]: id=Desert Sentinel, race=elf
+#. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Sentinel.cfg:4
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:22
 msgid "Desert Sentinel"
 msgstr "Sentinelle du désert"
 
-#. [campaign]
+#. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:23
 msgid "(Nightmare)"
 msgstr "(cauchemardesque)"
 
-#. [unit_type]: race=elf
-#. [campaign]
+#. [unit_type]: id=Desert Prowler, race=elf
+#. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Prowler.cfg:4
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:23
 msgid "Desert Prowler"
 msgstr "Patrouilleur du désert"
 
-#. [campaign]
+#. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:28
 msgid ""
 "In the distant future a small band of elves struggles to survive amidst the "
@@ -101,17 +101,17 @@ msgstr "Divers"
 msgid "And special thanks to everyone else who I forgot to mention."
 msgstr "Et merci beaucoup à tous ceux que j'ai oubliés de mentionner."
 
-#. [scenario]
+#. [scenario]: id=1_The_Morning_After
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:8
 msgid "The Morning After"
 msgstr "Le Lendemain matin"
 
-#. [side]: type=Kaleh
+#. [side]: id=Kaleh, type=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:37
 msgid "Kaleh"
 msgstr "Kaleh"
 
-#. [unit]: type=Nym Hunter
+#. [unit]: type=Nym Hunter, id=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:63
 msgid "Nym"
 msgstr "Nym"
@@ -126,8 +126,9 @@ msgid "Monsters"
 msgstr "Monstres"
 
 #. [side]
-#. [side]: type=Direwolf Rider, type=Goblin Knight
-#. [side]: type=Orcish Warrior, type=Orcish Warlord
+#. [side]: id=Panok, type=Direwolf Rider, type=Goblin Knight
+#. [side]: id=Turg, type=Orcish Warrior, type=Orcish Warlord
+#. [side]: id=Ug'lok, type=Orcish Warrior, type=Orcish Warlord
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:108
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:59
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:112
@@ -143,7 +144,7 @@ msgstr "Méchants"
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07b_Talking_with_Trolls.cfg:75
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07a_Dealing_with_Dwarves.cfg:74
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:511
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:152
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:144
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:201
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:336
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:181
@@ -155,72 +156,72 @@ msgid "Starting Objectives:"
 msgstr "Objectifs initiaux :"
 
 #. [objective]: condition=win
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:154
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:146
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1088
 msgid "Rescue Surviving Elves"
 msgstr "Sauver les elfes survivants"
 
 #. [objective]: condition=lose
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:195
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:158
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:150
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1096
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:187
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1704
 msgid "Death of Kaleh, Nym, Garak or Zhul"
 msgstr "Mort de Kaleh, Nym, Garak ou de Zhul"
 
-#. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:177
+#. [value]: type=Desert Fighter
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:171
 msgid "Lrea"
 msgstr "Lrea"
 
-#. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:178
+#. [value]: type=Desert Fighter
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:176
 msgid "Piyru"
 msgstr "Piyru"
 
-#. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:179
+#. [value]: type=Desert Archer
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:181
 msgid "Frea"
 msgstr "Frea"
 
-#. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:180
+#. [value]: type=Desert Archer
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:186
 msgid "Danu"
 msgstr "Danu"
 
-#. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:181
+#. [value]: type=Desert Hunter
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:191
 msgid "Hamuil"
 msgstr "Hamuil"
 
-#. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:182
+#. [value]: type=Desert Hunter
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:196
 msgid "Anioh"
 msgstr "Anioh"
 
-#. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:183
+#. [value]: type=Desert Scout
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:201
 msgid "Vemuil"
 msgstr "Vemuil"
 
-#. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:184
+#. [value]: type=Desert Scout
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:206
 msgid "Taliu"
 msgstr "Taliu"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:194
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:217
 msgid "Hey Kaleh, are you in there?"
 msgstr "Hé Kaleh, tu es par là ?"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:198
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:221
 msgid "Nym, is that you?"
 msgstr "Nym, c'est toi ?"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:202
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:225
 msgid ""
 "Yes, come on out already. The storm has passed. With the morning light Naia "
 "has ended the terrible night."
@@ -229,12 +230,12 @@ msgstr ""
 "à cette terrible nuit."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:206
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:229
 msgid "Has the sky really stopped falling?"
 msgstr "Est-ce que plus rien ne tombe du ciel ?"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:210
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:233
 msgid ""
 "I already told you, the sky is clear and empty. Now come quickly, silly, "
 "others may need our help."
@@ -243,7 +244,7 @@ msgstr ""
 "maintenant, imbécile, les autres peuvent avoir besoin de notre aide."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:214
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:237
 msgid ""
 "What's happened? Oh Eloh, the craters are everywhere, everything is gone, "
 "ruined. I can hardly recognize our village. I didn't think it could be this "
@@ -254,7 +255,7 @@ msgstr ""
 "ça puisse être aussi terrible."
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:219
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:242
 msgid ""
 "C'mon Kaleh, we have to go see if anyone is hurt or needs help. I think I "
 "hear people calling from the south. Now is not a time for fear, we must be "
@@ -272,7 +273,7 @@ msgstr ""
 "nuit."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:223
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:246
 msgid ""
 "Wait, our keep is just to the east. Our leader Tanuil must surely be "
 "recruiting others to help deal with the devastation. Perhaps we should go to "
@@ -283,7 +284,7 @@ msgstr ""
 "y aller avant d'explorer le reste du village."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:239
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:262
 msgid ""
 "Tanuil's keep, our beautiful fortress, it is destroyed. How will we summon "
 "our people to battle?"
@@ -293,7 +294,7 @@ msgstr ""
 
 # Damien : pour la cohérence, j'ai mis 'ici' qui n'est pas dans le texte. En effet, pourquoi chercher des survivants si personne n'a survécu en général ?
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:243
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:266
 msgid ""
 "We must rally those survivors we can find amidst the rubble. It doesn't look "
 "like anyone survived, but at least we can thank Eloh it was a quick death. "
@@ -305,51 +306,51 @@ msgstr ""
 "nous apitoyer sur les morts, nous devons aider les vivants."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:247
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:270
 msgid "But if Tanuil is dead, who will lead us?"
 msgstr "Mais qui nous guidera si Tanuil est mort ?"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:251
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:274
 msgid "That's a question for another time. Let's keep exploring the wreckage."
 msgstr ""
 "Nous nous poserons cette question plus tard. Allons explorer les décombres."
 
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:279
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:302
 msgid "Vecnu"
 msgstr "Vecnu"
 
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:280
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:303
 msgid "Eranor"
 msgstr "Eranor"
 
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:281
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:304
 msgid "Seela"
 msgstr "Seela"
 
 #. [message]: speaker=Vecnu
 #. [message]: speaker=Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:313
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:481
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:336
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:504
 msgid "Kaleh, Nym, help us!"
 msgstr "Kaleh, Nym, aidez-nous !"
 
 #. [message]: speaker=Kaleh
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:6239
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:317
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:485
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:674
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:340
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:508
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:697
 msgid "What in Uria's name is that?"
 msgstr "Au nom d'Uria, qu'est-ce que c'est que ça ?"
 
 #. [message]: speaker=Vecnu
 #. [message]: speaker=Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:321
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:489
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:344
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:512
 msgid ""
 "They came with the stones that fell from the sky. I know not what they are, "
 "but more seem to be emerging from the craters. If we don't stop them there "
@@ -360,61 +361,61 @@ msgstr ""
 "les arrêtons pas, il ne restera rien de notre village ou de notre peuple."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:325
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:493
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:348
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:516
 msgid "To battle, my friends! There are still those left who can fight."
 msgstr "Aux armes, mes amis ! Ceux qui restent peuvent toujours se battre."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:332
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:355
 msgid "There are more of our people fighting the mud monsters!"
 msgstr ""
 "Il y a d'autres gens de notre peuple qui combattent les monstres de boue !"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:336
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:359
 msgid "Then let's join the battle!"
 msgstr "Alors, allons nous battre !"
 
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:356
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:379
 msgid "Eloshi"
 msgstr "Eloshi"
 
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:357
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:380
 msgid "Illuvia"
 msgstr "Illuvia"
 
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:361
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:384
 msgid "Raynor"
 msgstr "Raynor"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:378
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:401
 msgid "More of these muddy crawlies, let's get rid of them with haste."
 msgstr "Encore de ces trucs boueux, débarrassons-nous en en vitesse."
 
-#. [unit]: type=Desert Captain
+#. [unit]: type=Desert Captain, id=Garak
 #. [message]: speaker=narrator
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:442
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:465
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:248
 msgid "Garak"
 msgstr "Garak"
 
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:461
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:484
 msgid "Jorazan"
 msgstr "Jorazan"
 
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:462
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:485
 msgid "Zyara"
 msgstr "Zyara"
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:469
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:492
 msgid ""
 "This is our training ground. And look, there is Garak, the captain of the "
 "guard. He and his fighters have survived the night!"
@@ -423,19 +424,19 @@ msgstr ""
 "la garde. Ses guerriers et lui ont survécu à la nuit !"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:499
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:522
 msgid "But they are fighting many mud creatures. Quick, we must help them!"
 msgstr ""
 "Mais ils affrontent de nombreuses créatures de boue. Vite, nous devons les "
 "aider !"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:524
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:547
 msgid "Ha! They're destroyed at last."
 msgstr "Ha ! Elles sont enfin détruites !"
 
 #. [message]: speaker=Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:528
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:551
 msgid ""
 "Thanks for the help. I am glad to see that so many have survived the night. "
 "But there's no time to talk, we must save the rest of our people and crush "
@@ -447,12 +448,12 @@ msgstr ""
 "viennent."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:555
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:578
 msgid "This bridge leads to the holy island at the center of our lake."
 msgstr "Ce pont mène à l'île sainte au centre de notre lac."
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:559
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:582
 msgid ""
 "Hmmmm. Some of the druids that worship on the island may still be alive. We "
 "should go check."
@@ -461,7 +462,7 @@ msgstr ""
 "en vie. Nous devrions aller vérifier."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:563
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:586
 msgid ""
 "Be careful. The bridge is broken, so we'll have to wade through the shallow "
 "water."
@@ -469,7 +470,7 @@ msgstr ""
 "Sois prudent. Le pont est brisé, nous allons devoir patauger dans l'eau."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:578
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:601
 msgid ""
 "The great tree! It has been buried under the rocks. Our most holy sanctuary, "
 "defiled. Oh, Eloh, what shall we do?"
@@ -478,39 +479,39 @@ msgstr ""
 "sanctuaire, souillé. Oh, Eloh, que devons-nous faire ?"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:582
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:605
 msgid "Is anyone still alive?"
 msgstr "Y a-t-il encore quelqu'un de vivant ?"
 
 #. [event]
-#. [unit]: type=Desert Druid
+#. [unit]: type=Desert Druid, id=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:3368
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:587
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:610
 msgid "Zhul"
 msgstr "Zhul"
 
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:599
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:622
 msgid "Ryoko"
 msgstr "Ryoko"
 
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:600
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:623
 msgid "Yuni"
 msgstr "Yuni"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:603
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:626
 msgid "Finally! We were worried that no one else had survived."
 msgstr "Enfin ! Nous avions peur que personne d'autre n'ait survécu."
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:607
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:630
 msgid "Mother priestess, are you all right?"
 msgstr "Mère prêtresse, allez-vous bien ?"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:611
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:634
 msgid ""
 "There's no time to stand on ceremony. I'm fine. I'm afraid only a few of us "
 "survived, but we will lend you what skills we have. Show me to those who "
@@ -521,12 +522,12 @@ msgstr ""
 "Mène-moi à qui a besoin de soins."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:615
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:638
 msgid "But the great tree, it has been destroyed!"
 msgstr "Mais le grand arbre a été détruit, lui !"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:619
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:642
 msgid ""
 "All things of this world come to an end, but the power of Eloh endures. A "
 "new one shall grow in its place. Come now, let us see to the needs of our "
@@ -536,13 +537,13 @@ msgstr ""
 "nouveau poussera à sa place. Viens maintenant, allons pourvoir aux besoins "
 "de notre peuple."
 
-#. [unit]: type=Cuttle Fish
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:635
+#. [unit]: type=Cuttle Fish, id=Deep One
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:658
 msgid "Deep One"
 msgstr "Profond"
 
-#. [unit]: type=Cuttle Fish
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:636
+#. [unit]: type=Cuttle Fish, id=Deep One
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:659
 msgid ""
 "The Deep Ones are gigantic aquatic monsters that lurk in the dark places of "
 "the world. Rarely do they come to the surface, and when they do the best way "
@@ -557,7 +558,7 @@ msgstr ""
 "encre noire et empoisonnée."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:669
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:692
 #, fuzzy
 msgid ""
 "The water of the lake suddenly goes dark and unsettled, only to erupt in a "
@@ -569,7 +570,7 @@ msgstr ""
 "tentacules."
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:678
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:701
 msgid ""
 "I felt a great darkness in this lake, but I knew not what it was. The "
 "falling rocks must have woken it from its sleep."
@@ -578,7 +579,7 @@ msgstr ""
 "que c'était. Les roches tombées du ciel ont dû le réveiller de son sommeil."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:682
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:705
 msgid ""
 "Protect the priestesses, we shall send this monstrosity back to the depths "
 "it came from!"
@@ -587,48 +588,48 @@ msgstr ""
 "d'où elle est venue !"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:701
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:724
 msgid "These fields seem strangely vacant. Where are the horses?"
 msgstr "Ces prés sont étrangement vides. Où sont les chevaux ?"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:705
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:728
 msgid "Maybe they're hiding in the stables. Let's go check."
 msgstr "Peut-être qu'ils se cachent dans les écuries. Allons vérifier."
 
 #. [message]: speaker=Naru
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:765
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:774
 #, fuzzy
 msgid "Hey, Nisa, the rocks have stopped falling. You can come out now!"
 msgstr "Hé, Nisa, les pierres ont cessé de tomber. Tu peux sortir maintenant !"
 
 #. [then]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:767
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:776
 msgid "Nisa"
 msgstr "Nisa"
 
 #. [message]: speaker=Nisa
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:773
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:782
 msgid "Oh, thank Eloh, I thought they would never stop."
 msgstr "Oh, Eloh soit louée, je pensais que ça ne finirait jamais."
 
 #. [else]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:778
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:787
 msgid "Naru"
 msgstr "Naru"
 
 #. [message]: speaker=Naru
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:781
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:790
 msgid "Is it safe to come out? I was so scared."
 msgstr "On peut sortir ? J'ai eu tellement peur !"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:785
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:794
 msgid "Where are all the other horses?"
 msgstr "Où sont tous les autres chevaux ?"
 
 #. [message]: speaker=Naru
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:789
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:798
 msgid ""
 "A hunting party left just yesterday, so unless the rocks fell all over the "
 "land, many of the horses have probably survived. The few that remained here "
@@ -642,7 +643,7 @@ msgstr ""
 "l'empêcher de fuir."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:793
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:802
 #, fuzzy
 msgid ""
 "We'll need your help in checking to see if the outer settlements survived. "
@@ -656,13 +657,13 @@ msgstr ""
 "désert ont réussi à regrouper des chevaux enfuis."
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:797
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:806
 #, fuzzy
 msgid "We can only hope that hunting party returns soon."
 msgstr "Eh bien espérons que les chasseurs reviendront bientôt."
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:950
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:934
 msgid ""
 "Oh good, some elves have survived in this outer settlement. They've agreed "
 "to help us search for other survivors."
@@ -671,12 +672,12 @@ msgstr ""
 "de nous aider à chercher d'autres survivants."
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:958
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:942
 msgid "The encampment is empty. I wonder what happened to the inhabitants?"
 msgstr "Le campement est vide. Je me demande ce qui est arrivé aux habitants ?"
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:978
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:953
 msgid ""
 "This encampment has been abandoned. There are signs of a struggle and a few "
 "bloodstains but nothing else. I fear for those elves who lived out here."
@@ -684,7 +685,7 @@ msgstr ""
 "Ce campement a été abandonné. Il y a des traces de lutte et quelques taches "
 "de sang mais rien d'autre. Je crains pour les elfes qui vivaient ici."
 
-#. [unit]: type=Necromancer, type=Dark Sorcerer
+#. [unit]: type=Necromancer, type=Dark Sorcerer, id=Xanthos
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1043
 msgid "Xanthos"
 msgstr "Xanthos"
@@ -786,17 +787,17 @@ msgid "Defeat Xanthos"
 msgstr "Battre Xanthos"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1162
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1157
 msgid "The necromancer is finally vanquished."
 msgstr "Le nécromancien a finalement été vaincu."
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1166
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1161
 msgid "And at last the dead shall have their rest."
 msgstr "Et les morts peuvent enfin trouver le repos."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1176
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1171
 msgid ""
 "The necromancer is dead, but I don't think we've explored the entire "
 "village. There may still be elves that need rescuing. We should go back and "
@@ -807,7 +808,7 @@ msgstr ""
 "devrions retourner vérifier."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1194
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1189
 msgid ""
 "We've explored the village and I think we've rescued the last of the "
 "survivors."
@@ -816,7 +817,7 @@ msgstr ""
 "derniers survivants."
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1238
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1233
 #, fuzzy
 msgid ""
 "Some of our people felt crowded in the village, and wanted to live out on "
@@ -829,37 +830,37 @@ msgstr ""
 "leur est arrivé."
 
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1250
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1245
 msgid "Pythos"
 msgstr "Pythos"
 
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1251
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1246
 msgid "Shea"
 msgstr "Shea"
 
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1252
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1247
 msgid "Narn"
 msgstr "Narn"
 
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1253
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1248
 msgid "Jokli"
 msgstr "Jokli"
 
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1254
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1249
 msgid "Lyia"
 msgstr "Lyia"
 
 #. [message]: speaker=Pythos
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1260
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1255
 msgid "Hail, is anyone still alive?"
 msgstr "Oyez, y a-t-il encore quelqu'un de vivant ?"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1264
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1259
 msgid ""
 "Yes, and we could certainly use your help. A necromancer has been attacking "
 "us, he intends to use our fallen comrades as fodder for his evil magics. "
@@ -870,7 +871,7 @@ msgstr ""
 "vous passés ?"
 
 #. [message]: speaker=Pythos
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1268
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1263
 msgid ""
 "We were out far in the sands, searching for prey and roaming orcs. As soon "
 "as we saw the rock storm we raced back as fast as we could. I only wish we "
@@ -881,38 +882,38 @@ msgstr ""
 "aussi vite que possible. Si seulement nous étions arrivés plus tôt..."
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1272
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1267
 msgid "No use crying over spilt water. But we're sure glad you're here now."
 msgstr ""
 "À chose faite point de remède. Mais nous sommes bien sûr heureux que vous "
 "soyez enfin là."
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1281
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1276
 msgid "It seems that we finally have some peace. But what do we do now?"
 msgstr ""
 "On dirait que nous sommes finalement tranquilles. Mais que faisons-nous "
 "maintenant ?"
 
 #. [message]: speaker=Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1285
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1280
 msgid "Where is Tanuil and his family?"
 msgstr "Où sont Tanuil et sa famille ?"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1289
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1284
 msgid "The keep has been crushed by the rocks. We could find no survivors."
 msgstr ""
 "Le donjon a été broyé par les rochers. Nous n'avons pu trouver aucun "
 "survivant."
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1293
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1288
 msgid "Too many have died this night."
 msgstr "Trop de gens sont morts cette nuit."
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1297
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1292
 msgid ""
 "Our village is in ruins. The walls that were built by our ancestors over "
 "generations have been demolished in a space of hours. Most of our dwellings "
@@ -925,7 +926,7 @@ msgstr ""
 "chose est sûre, nous ne pouvons rester ici."
 
 #. [message]: speaker=Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1301
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1296
 msgid ""
 "You are a fool to despair. This has always been our home. The water here is "
 "good, we know this land. We can rebuild; Eloh willing, we can thrive again."
@@ -935,7 +936,7 @@ msgstr ""
 "Eloh le veut, nous prospérerons à nouveau."
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1305
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1300
 msgid ""
 "Think for a moment. Who else has seen the rock storm? What other foes are "
 "coming to pick over the remains of our people? There is no mercy in the "
@@ -948,18 +949,18 @@ msgstr ""
 "pourraient profiter de notre faiblesse."
 
 #. [message]: speaker=Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1309
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1304
 msgid ""
 "Impudent girl, you should not speak so to your elders, or to your betters."
 msgstr "Impudente, comment oses-tu parler ainsi à tes aînés  ?"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1313
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1308
 msgid "I have a right to speak my mind!"
 msgstr "J'ai le droit de donner mon avis !"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1317
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1312
 msgid ""
 "Peace, please calm yourselves. In chaos there is nothing but death and "
 "destruction. Even in this time of trial we must show our fortitude, and "
@@ -975,7 +976,7 @@ msgstr ""
 "donc notre chef légitime. Quel est ton avis, Kaleh ?"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1321
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1316
 msgid ""
 "Last night, before the rock storm, I heard a voice in my sleep. It sounded "
 "like sweet music, and somehow I knew it was Eloh. I still remember her exact "
@@ -1000,7 +1001,7 @@ msgstr ""
 "conduirai."
 
 #. [message]: speaker=Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1325
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1320
 #, fuzzy
 msgid ""
 "I fear what dangers lurk in the harsh sands and beyond to the north, but "
@@ -1010,7 +1011,7 @@ msgstr ""
 "nord, mais tu es notre chef et je suivrai tes recommandations."
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1329
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1324
 msgid ""
 "Then let us collect what supplies we can from the wreckage and head north "
 "with great haste. Our home is protection no longer, we must find a new haven "
@@ -1021,7 +1022,7 @@ msgstr ""
 "une protection et nous devons trouver une nouvelle patrie pour notre peuple."
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1333
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1328
 msgid ""
 "What about the bodies of the dead? We can't leave them to be torn by crows "
 "or desecrated by other dark mages."
@@ -1030,7 +1031,7 @@ msgstr ""
 "nourrir les corbeaux ou être relevés par des nécromanciens."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1337
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1332
 msgid ""
 "I agree, we should not forget our dead. We should build a huge pyre and burn "
 "them with proper ceremony, so that the smoke may carry them on to the next "
@@ -1041,7 +1042,7 @@ msgstr ""
 "solennelle, comme cela la fumée les portera vers l'au-delà."
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1341
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1336
 msgid ""
 "Kaleh, I don't want to tarry longer than necessary, but I agree that we must "
 "see to the dead before we leave. Garak, you and your men start collecting "
@@ -1053,7 +1054,7 @@ msgstr ""
 "bois pour construire un bûcher."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1345
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1340
 msgid ""
 "And so it was done. The dead were laid reverently on top of what little wood "
 "we could find. But the fire was big enough to burn the bodies to ashes and "
@@ -1070,7 +1071,7 @@ msgstr ""
 "grande aventure, mais ce n'était certainement pas les derniers."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1358
+#: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1353
 msgid ""
 "What's that to the north? It looks like even more undead! The rock storm "
 "must have attracted other necromancers. There's no way we can defeat them "
@@ -1081,7 +1082,7 @@ msgstr ""
 "n'avons aucun moyen de tous les vaincre. Nous avons été trop lents et il n'y "
 "a plus d'issue. Eloh, sauve-nous !"
 
-#. [scenario]
+#. [scenario]: id=2_Across_the_Harsh_Sands
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:6
 msgid "Across the Harsh Sands"
 msgstr "Dans le feu des sables"
@@ -1313,12 +1314,12 @@ msgstr ""
 "L'unité portant cet anneau est immunisée contre les dégâts causés par la "
 "chaleur du désert pendant la journée."
 
-#. [object]
+#. [object]: id=Travelring
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:725
 msgid "Traveler's Ring"
 msgstr "Anneau du voyageur"
 
-#. [object]
+#. [object]: id=Travelring
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:727
 msgid "At the end of each turn, this unit takes no damage from the desert."
 msgstr ""
@@ -1415,8 +1416,8 @@ msgstr ""
 "Trop tard. Et il n'y a que du sable à l'intérieur. Ça ne valait pas... "
 "Wahouu ! Qu'est-ce qui se passe ?!"
 
-#. [unit]: type=Dust Devil
-#. [unit_type]: race=monster
+#. [unit]: type=Dust Devil, id=Dust Devil
+#. [unit_type]: id=Dust Devil, race=monster
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:936
 #: data/campaigns/Under_the_Burning_Suns/units/Dust_Devil.cfg:4
 msgid "Dust Devil"
@@ -1485,7 +1486,7 @@ msgstr ""
 "Nous ne savons qui vous êtes et nous nous en moquons. Tremblez devant la "
 "puissance de la Main Noire !"
 
-#. [unit]: type=Red Mage
+#. [unit]: type=Red Mage, id=Elyssa
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1280
 msgid "Elyssa"
 msgstr "Elyssa"
@@ -1602,7 +1603,7 @@ msgstr ""
 "Les morts-vivants sont vaincus mais elle aussi est morte dans la bataille. "
 "Peste ! Si seulement nous avions pu la sauver."
 
-#. [unit]: type=Wraith, role=wraith
+#. [unit]: type=Wraith, id=Vengeful Lord, role=wraith
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1498
 msgid "Vengeful Lord"
 msgstr "Seigneur vindicatif"
@@ -1732,7 +1733,7 @@ msgstr ""
 msgid "Defeat Outlaw Leader"
 msgstr "Vaincre le chef des hors-la-Loi"
 
-#. [unit]: type=Outlaw
+#. [unit]: id=Thorn, type=Outlaw
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1712
 msgid "Thorn"
 msgstr "Thorn"
@@ -1755,12 +1756,12 @@ msgstr ""
 "Ainsi les hors-la-loi ont établi un camp vers le rocher du Pinacle. C'est un "
 "bon emplacement, mais nous les en chasserons quand même."
 
-#. [object]
+#. [object]: id=PureWater
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1829
 msgid "Pure Water"
 msgstr "Eau pure"
 
-#. [object]
+#. [object]: id=PureWater
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1831
 msgid ""
 "This water will make your melee weapons arcane, and thus especially powerful "
@@ -2001,18 +2002,18 @@ msgstr ""
 msgid "Flee, you craven spirits, and leave us in peace!"
 msgstr "Fuyez, esprits peureux, et laissez-nous en paix !"
 
-#. [scenario]
+#. [scenario]: id=3_Stirring_in_the_Night
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:15
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:16
 msgid "A Stirring in the Night"
 msgstr "Une nuit agitée"
 
-#. [side]: type=Lich
+#. [side]: id=Azkotep, type=Lich
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:48
 msgid "Azkotep"
 msgstr "Azkotep"
 
-#. [side]: type=Spectre
+#. [side]: id=Ystara, type=Spectre
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:103
 msgid "Ystara"
 msgstr "Ystara"
@@ -2717,7 +2718,7 @@ msgstr "Éclaireur elfe blessé"
 msgid "Orcs... Not far behind me... From the hills..."
 msgstr "Des orcs... Pas loin, derrière moi... venant des collines..."
 
-#. [unit]: type=Orcish Leader, type=Orcish Ruler
+#. [unit]: type=Orcish Leader, type=Orcish Ruler, id=Ganthos
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2165
 msgid "Ganthos"
 msgstr "Ganthos"
@@ -3155,23 +3156,23 @@ msgstr ""
 msgid "My undead zombies shall always defeat the living."
 msgstr "Mes zombis triompheront toujours des vivants !"
 
-#. [scenario]
+#. [scenario]: id=4_Descending_into_Darkness
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:6
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:7
 msgid "Descending into Darkness"
 msgstr "Descente dans les ténèbres"
 
-#. [side]: type=Direwolf Rider, type=Goblin Knight
+#. [side]: id=Panok, type=Direwolf Rider, type=Goblin Knight
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:45
 msgid "Panok"
 msgstr "Panok"
 
-#. [side]: type=Orcish Warrior, type=Orcish Warlord
+#. [side]: id=Turg, type=Orcish Warrior, type=Orcish Warlord
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:98
 msgid "Turg"
 msgstr "Turg"
 
-#. [side]: type=Orcish Warrior, type=Orcish Warlord
+#. [side]: id=Ug'lok, type=Orcish Warrior, type=Orcish Warlord
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:144
 msgid "Ug'lok"
 msgstr "Ug'lok"
@@ -3300,7 +3301,7 @@ msgid "Goblin Coward"
 msgstr "Poltron gobelin"
 
 #. [then]
-#. [scenario]
+#. [scenario]: id=4_Descending_into_Darkness
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:735
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:736
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:737
@@ -3334,7 +3335,7 @@ msgid "Goblins are so predictable."
 msgstr "Les gobelins sont si prévisibles."
 
 #. [then]
-#. [scenario]
+#. [scenario]: id=4_Descending_into_Darkness
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:800
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:802
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:976
@@ -3343,7 +3344,7 @@ msgid "Orac"
 msgstr "Orac"
 
 #. [then]
-#. [scenario]
+#. [scenario]: id=4_Descending_into_Darkness
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:819
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:821
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:980
@@ -3352,7 +3353,7 @@ msgid "Scylla"
 msgstr "Scylla"
 
 #. [then]
-#. [scenario]
+#. [scenario]: id=4_Descending_into_Darkness
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:830
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:832
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:836
@@ -3447,12 +3448,12 @@ msgstr ""
 "Approchez, créatures du lac ! Soyez fidèles au serment que vous avez prêté "
 "et aidez-nous à repousser ces créatures détestées hors de nos terres."
 
-#. [object]
+#. [object]: id=SpeedyRing
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1070
 msgid "Ring of Speed"
 msgstr "Anneau de vitesse"
 
-#. [object]
+#. [object]: id=SpeedyRing
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1072
 msgid "This ring will increase your maximum speed by 1."
 msgstr "Cet anneau augmentera votre vitesse maximum de 1."
@@ -3557,12 +3558,12 @@ msgstr ""
 "La lame est glacée au toucher et dégage une lueur froide. Je me demande "
 "comment elle est arrivée ici."
 
-#. [object]
+#. [object]: id=ColdBlade
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1290
 msgid "Cold Blade"
 msgstr "Épée froide"
 
-#. [object]
+#. [object]: id=ColdBlade
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1291
 msgid ""
 "The unit who wields this blade will deal cold damage with its melee attack."
@@ -3611,9 +3612,9 @@ msgstr ""
 "en sorte que je veuille venir jusqu'ici, mais je ne sais pas ce qui m'a fait "
 "penser que cela pouvait nous être bénéfique."
 
-#. [unit]: type=Dark Assassin3
-#. [unit]: type=Dark Assassin1
-#. [unit]: type=Dark Assassin2
+#. [unit]: type=Dark Assassin3, id=Cloaked Figure
+#. [unit]: type=Dark Assassin1, id=Cloaked Figure
+#. [unit]: type=Dark Assassin2, id=Cloaked Figure
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3527
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1414
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3365
@@ -3720,7 +3721,7 @@ msgstr ""
 "l'ouest pour nous encercler. Il n'y a aucun moyen de tuer tous ces orcs et "
 "ces gobelins. Nous ne pourrons jamais y parvenir saufs maintenant."
 
-#. [scenario]
+#. [scenario]: id=5_A_Subterranean_Struggle
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:8
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:9
 msgid "A Subterranean Struggle"
@@ -3752,17 +3753,17 @@ msgstr "Explorer le souterrain"
 msgid "Defeat all Enemies"
 msgstr "Vaincre tous les ennemis"
 
-#. [unit]: type=Desert Fighter
+#. [unit]: type=Desert Fighter, id=Nantheos
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:596
 msgid "Nantheos"
 msgstr "Nantheos"
 
-#. [unit]: type=Desert Archer
+#. [unit]: type=Desert Archer, id=Sylestria
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:610
 msgid "Sylestria"
 msgstr "Sylestria"
 
-#. [unit]: type=Desert Ranger
+#. [unit]: type=Desert Ranger, id=Rygar
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:635
 msgid "Rygar"
 msgstr "Rygar"
@@ -4016,7 +4017,7 @@ msgstr "Les araignées ne sont pas des insectes."
 msgid "Thanks for the clarification."
 msgstr "Merci pour la précision."
 
-#. [unit]: type=Dwarvish Fighter
+#. [unit]: type=Dwarvish Fighter, id=Wounded Dwarf
 #. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:836
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:956
@@ -4366,22 +4367,22 @@ msgstr "Tirailleur nain"
 msgid "Dwarf Thunderer"
 msgstr "Foudroyeur nain"
 
-#. [unit]: type=Dwarvish Explorer
+#. [unit]: type=Dwarvish Explorer, id=Fundin
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1783
 msgid "Fundin"
 msgstr "Fundin"
 
-#. [unit]: type=Dwarvish Explorer
+#. [unit]: type=Dwarvish Explorer, id=Nori
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1798
 msgid "Nori"
 msgstr "Nori"
 
-#. [unit]: type=Troll Warrior
+#. [unit]: type=Troll Warrior, id=Thungar
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1814
 msgid "Thungar"
 msgstr "Thungar"
 
-#. [unit]: type=Troll Warrior
+#. [unit]: type=Troll Warrior, id=Gnarl
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1829
 msgid "Gnarl"
 msgstr "Gnarl"
@@ -4492,27 +4493,27 @@ msgstr ""
 "Je dois me replier et trouver plus de trolls pour combattre. Vous devez les "
 "retenir, Kaleh. Soyez forts comme un roc. Griknagh sera de votre côté."
 
-#. [unit]: type=Troll Shaman
+#. [unit]: type=Troll Shaman, id=Thu'lok
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2578
 msgid "Thu'lok"
 msgstr "Thu'lok"
 
-#. [unit]: type=Troll Whelp
+#. [unit]: type=Troll Whelp, id=Harpo
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2591
 msgid "Harpo"
 msgstr "Harpo"
 
-#. [unit]: type=Troll Whelp
+#. [unit]: type=Troll Whelp, id=Groucho
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2604
 msgid "Groucho"
 msgstr "Groucho"
 
-#. [unit]: type=Troll Whelp
+#. [unit]: type=Troll Whelp, id=Chico
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2618
 msgid "Chico"
 msgstr "Chico"
 
-#. [unit]: type=Troll Rocklobber
+#. [unit]: type=Troll Rocklobber, id=Groo
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2632
 msgid "Groo"
 msgstr "Groo"
@@ -4526,27 +4527,27 @@ msgstr ""
 "Notre chef nous a envoyés pour vous aider. Nous combattons avec vous jusqu'à "
 "la mort de tous les nains. Nous vengerons les morts de notre peuple !"
 
-#. [unit]: type=Dwarvish Fighter
+#. [unit]: type=Dwarvish Fighter, id=Dwalim
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2676
 msgid "Dwalim"
 msgstr "Dwalim"
 
-#. [unit]: type=Dwarvish Pathfinder
+#. [unit]: type=Dwarvish Pathfinder, id=Moin
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2689
 msgid "Moin"
 msgstr "Moin"
 
-#. [unit]: type=Dwarvish Thunderer
+#. [unit]: type=Dwarvish Thunderer, id=Nordi
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2702
 msgid "Nordi"
 msgstr "Nordi"
 
-#. [unit]: type=Dwarvish Berserker
+#. [unit]: type=Dwarvish Berserker, id=Byorn
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2715
 msgid "Byorn"
 msgstr "Byorn"
 
-#. [unit]: type=Dwarvish Fighter
+#. [unit]: type=Dwarvish Fighter, id=Runin
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2731
 msgid "Runin"
 msgstr "Runin"
@@ -4785,7 +4786,7 @@ msgstr ""
 msgid "The rest is silence..."
 msgstr "Le reste est silence..."
 
-#. [unit]: type=Troll Shaman
+#. [unit]: type=Troll Shaman, id=Zurg
 #. [event]
 #. [then]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:505
@@ -4805,7 +4806,7 @@ msgstr "Je rejoins mes ancêtres..."
 msgid "Arrggg!!!"
 msgstr "Arrggg !!!"
 
-#. [unit]: type=Dwarvish Pathfinder
+#. [unit]: type=Dwarvish Pathfinder, id=Grimnir
 #. [event]
 #. [then]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:424
@@ -4886,12 +4887,12 @@ msgstr ""
 "Oh non, nous avons pris trop de temps et les renforts ennemis sont arrivés. "
 "Nous allons sûrement être submergés maintenant !"
 
-#. [scenario]
+#. [scenario]: id=6a_In_the_Tunnels_of_the_Trolls, id=troll_wc_1}, id=troll_wc_2}, id=troll_wc_3}, id=troll_wc_4}, id=troll_wc_5}, id=troll_wc_6}, id=troll_wc_5}, id=troll_wc_6}
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:6
 msgid "In the Tunnels of the Trolls"
 msgstr "Dans les tunnels trolls"
 
-#. [side]: type=Desert Fighter
+#. [side]: id=Kaleh, type=Desert Fighter
 #. [side]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:36
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:50
@@ -4903,23 +4904,23 @@ msgstr "Alliés nains"
 msgid "Kill Troll Leader"
 msgstr "Tuez le meneur troll"
 
-#. [unit]: type=Troll
+#. [unit]: type=Troll, id=Troll Interrogator
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:441
 msgid "Troll Interrogator"
 msgstr "Tortionnaire troll"
 
-#. [unit]: type=Troll Whelp
+#. [unit]: type=Troll Whelp, id=Troll Assistant
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:455
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:484
 msgid "Troll Assistant"
 msgstr "Assistant troll"
 
-#. [unit]: type=Troll Whelp
+#. [unit]: type=Troll Whelp, id=Ulg
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:469
 msgid "Ulg"
 msgstr "Ulg"
 
-#. [unit]: type=Troll Shaman
+#. [unit]: type=Troll Shaman, id=Troll High Shaman
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:501
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:527
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:1804
@@ -4997,14 +4998,14 @@ msgid ""
 "Once you are done moving your people into position, I will blow the charges."
 msgstr "Dès que vous êtes prêts, je fais exploser les charges."
 
-#. [unit]: type=Troll
+#. [unit]: id=Troll Brute, type=Troll
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:658
 msgid "Troll Brute"
 msgstr "Brute troll"
 
-#. [unit]: type=Troll
-#. [unit]: type=Troll Rocklobber
-#. [unit]: type=Troll Whelp
+#. [unit]: type=Troll, id=Troll Guard
+#. [unit]: type=Troll Rocklobber, id=Troll Guard
+#. [unit]: type=Troll Whelp, id=Troll Guard
 #. [then]
 #. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07b_Talking_with_Trolls.cfg:413
@@ -5095,7 +5096,7 @@ msgstr ""
 "ne soit tué."
 
 #. [set_variable]
-#. [unit]: type=Dwarvish Stalwart
+#. [unit]: type=Dwarvish Stalwart, id=Rogrimir
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:617
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:946
 msgid "Rogrimir"
@@ -5243,7 +5244,7 @@ msgid "Arise, hallowed guardians, and destroy them!"
 msgstr "Levez-vous, gardiens sacrés, et détruisez-les !"
 
 #. [then]
-#. [unit_type]: race=monster
+#. [unit_type]: id=Lava Monster, race=monster
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:1639
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:1640
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:1644
@@ -5327,12 +5328,12 @@ msgstr "Que Griknagh vous protège. Je serai bientôt de retour !"
 msgid "Troll Reinforcements"
 msgstr "Renforts trolls"
 
-#. [unit]: type=Great Troll
+#. [unit]: type=Great Troll, id=Troll Chieftain
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:1917
 msgid "Troll Chieftain"
 msgstr "Meneur troll"
 
-#. [unit]: type=Troll Shaman
+#. [unit]: type=Troll Shaman, id=High Advisor
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:1986
 msgid "High Advisor"
 msgstr "Grand conseiller"
@@ -5520,6 +5521,7 @@ msgstr ""
 "et vous protège. Je vais maintenant rejoindre le domaine de mes ancêtres..."
 
 #. [event]
+#. [event]: id=cryptguard}
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3476
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:2338
 msgid "Crypt Guardian"
@@ -5578,12 +5580,12 @@ msgstr ""
 "La baguette s'adapte bien à ma main. Elle ne paraît pas posséder une grande "
 "portée, mais pourrait se révéler utile au corps à corps."
 
-#. [object]
+#. [object]: id=Troll Wand
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:2417
 msgid "Emerald Wand of Poison"
 msgstr "Baguette d'émeraude d'empoisonnement"
 
-#. [object]
+#. [object]: id=Troll Wand
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:2418
 msgid "This wand makes this unit's melee attacks deal poison damage."
 msgstr ""
@@ -5596,16 +5598,16 @@ msgstr ""
 msgid "On second thought, it's better to leave the dead in peace."
 msgstr "Après mûre réflexion, mieux vaut laisser les morts en paix."
 
-#. [scenario]
+#. [scenario]: id=6b_In the Domain of the Dwarves
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:6
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:7
 msgid "In the Domain of the Dwarves"
 msgstr "Sur le territoire des nains"
 
-#. [side]: type=Desert Fighter
-#. [side]: type=Great Troll
-#. [side]: type=Dwarvish Lord
-#. [side]: type=Mermaid Diviner
+#. [side]: id=Kaleh, type=Desert Fighter
+#. [side]: id=Great Leader Darmog, type=Great Troll
+#. [side]: id=King Thurongar, type=Dwarvish Lord
+#. [side]: id=Melusand, type=Mermaid Diviner
 #. [side]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07b_Talking_with_Trolls.cfg:37
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07b_Talking_with_Trolls.cfg:59
@@ -5631,19 +5633,19 @@ msgstr "Ennemis"
 msgid "Kill Dwarf Chieftain"
 msgstr "Tuez le meneur nain"
 
-#. [unit]: type=Dwarvish Steelclad
+#. [unit]: type=Dwarvish Steelclad, id=Dwarf Sergeant
 #. [then]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:473
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:648
 msgid "Dwarf Sergeant"
 msgstr "Sergent nain"
 
-#. [unit]: type=Dwarvish Fighter
+#. [unit]: type=Dwarvish Fighter, id=Vengeful Dwarf
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:490
 msgid "Vengeful Dwarf"
 msgstr "Vengeur nain"
 
-#. [unit]: type=Dwarvish Stalwart
+#. [unit]: type=Dwarvish Stalwart, id=Dwarf Scout
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:521
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:548
 msgid "Dwarf Scout"
@@ -5705,10 +5707,10 @@ msgstr ""
 msgid "Once you done moving into position, Zurg will destroy wall."
 msgstr "Quand vous prêts, Zurg détruira mur."
 
-#. [unit]: type=Dwarvish Sentinel
-#. [unit]: type=Dwarvish Steelclad
-#. [unit]: type=Dwarvish Berserker
-#. [unit]: type=Dwarvish Dragonguard
+#. [unit]: type=Dwarvish Sentinel, id=Dwarf Guard
+#. [unit]: type=Dwarvish Steelclad, id=Dwarf Guard
+#. [unit]: type=Dwarvish Berserker, id=Dwarf Guard
+#. [unit]: type=Dwarvish Dragonguard, id=Dwarf Guard
 #. [then]
 #. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07a_Dealing_with_Dwarves.cfg:408
@@ -5844,7 +5846,7 @@ msgid "I love you, Sarge..."
 msgstr "Je vous aime, sergent..."
 
 #. [set_variable]
-#. [unit]: type=Troll
+#. [unit]: type=Troll, id=Grog
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:571
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:931
 msgid "Grog"
@@ -5950,12 +5952,12 @@ msgstr ""
 "espèce de mousse phosphorescente sur les murs éclaire la caverne et nous "
 "permet de mieux voir."
 
-#. [unit]: type=Dread Bat
+#. [unit]: id=Extra Hairy Bat, type=Dread Bat
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1410
 msgid "Extra Hairy Bat"
 msgstr "Chauve-souris velue"
 
-#. [unit]: type=Dwarvish Stalwart
+#. [unit]: type=Dwarvish Stalwart, id=Dwarf Hermit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1455
 msgid "Dwarf Hermit"
 msgstr "Ermite nain"
@@ -6009,7 +6011,7 @@ msgstr ""
 "Les mouvements sous l'eau ont cessé. Je pense que nous avons tout tué. Quoi "
 "que cela ait été."
 
-#. [unit]: type=Dwarvish Lord
+#. [unit]: type=Dwarvish Lord, id=Dwarf Chieftain
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1865
 msgid "Dwarf Chieftain"
 msgstr "Meneur nain"
@@ -6237,12 +6239,12 @@ msgstr ""
 "fort et plus résistant. C'est trop facile, il ne semble pas y avoir eu de "
 "piège sur le sarcophage. C'est mon jour de chance aujourd'hui."
 
-#. [object]
+#. [object]: id=DwarvenBelt
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:2314
 msgid "Dwarven Belt"
 msgstr "Ceinture naine"
 
-#. [object]
+#. [object]: id=DwarvenBelt
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:2315
 msgid ""
 "The maximum hit points of the unit who wears this belt will increase by 12."
@@ -6265,13 +6267,13 @@ msgstr "Vous qui perturbez mon sommeil, venez me rejoindre dans la mort !"
 msgid "Then again, maybe I spoke too soon."
 msgstr "Encore une fois, j'ai peut-être parlé trop vite."
 
-#. [scenario]
+#. [scenario]: id=7_a_Dealing with Dwarves
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07a_Dealing_with_Dwarves.cfg:6
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07a_Dealing_with_Dwarves.cfg:7
 msgid "Dealing with Dwarves"
 msgstr "Négociations avec les nains."
 
-#. [side]: type=Dwarvish Lord
+#. [side]: id=King Thurongar, type=Dwarvish Lord
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07a_Dealing_with_Dwarves.cfg:43
 msgid "King Thurongar"
 msgstr "Roi Thurongar"
@@ -6283,7 +6285,7 @@ msgid "Choose a Unit to Take the Fire Blade"
 msgstr "Choisissez une unité pour prendre l'épée de feu"
 
 #. [set_variable]
-#. [unit]: type=Dwarvish Stalwart
+#. [unit]: type=Dwarvish Stalwart, id=Jarl
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:640
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07a_Dealing_with_Dwarves.cfg:389
 msgid "Jarl"
@@ -6641,13 +6643,13 @@ msgstr "Dois-je prendre cette épée ?"
 msgid "Yes, I'll take it."
 msgstr "Oui, je vais la prendre."
 
-#. [object]
+#. [object]: id=FlamingSword
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07b_Talking_with_Trolls.cfg:771
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07a_Dealing_with_Dwarves.cfg:772
 msgid "Flaming Sword"
 msgstr "Épée enflammée"
 
-#. [object]
+#. [object]: id=FlamingSword
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07b_Talking_with_Trolls.cfg:772
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07a_Dealing_with_Dwarves.cfg:773
 msgid "This sword will make all your melee attacks do fire damage."
@@ -6670,25 +6672,25 @@ msgstr ""
 msgid "No, I think someone else should wield it."
 msgstr "Non, je pense que quelqu'un d'autre devrait la porter."
 
-#. [scenario]
+#. [scenario]: id=7b_Talking_with_Trolls
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07b_Talking_with_Trolls.cfg:6
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07b_Talking_with_Trolls.cfg:7
 msgid "Talking with Trolls"
 msgstr "Discussion avec les trolls"
 
-#. [side]: type=Great Troll
+#. [side]: id=Great Leader Darmog, type=Great Troll
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07b_Talking_with_Trolls.cfg:43
 msgid "Great Leader Darmog"
 msgstr "Le grand chef Darmog"
 
 #. [set_variable]
-#. [unit]: type=Troll
+#. [unit]: type=Troll, id=Nog
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:594
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07b_Talking_with_Trolls.cfg:394
 msgid "Nog"
 msgstr "Nog"
 
-#. [unit]: type=Troll Shaman
+#. [unit]: type=Troll Shaman, id=Spiritual Advisor
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07b_Talking_with_Trolls.cfg:441
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07b_Talking_with_Trolls.cfg:455
 msgid "Spiritual Advisor"
@@ -6957,12 +6959,12 @@ msgstr ""
 "soleil sur mon visage et le vent dans mes cheveux."
 
 # Damien : expression "out of the frying pan to the fire" (pour dire que ça va de plus en plus mal...)
-#. [scenario]
+#. [scenario]: id=8_Out_of_the_Frying_Pan
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:6
 msgid "Out of the Frying Pan"
 msgstr "De mal en pis"
 
-#. [side]: type=Desert Fighter
+#. [side]: id=Kaleh, type=Desert Fighter
 #. [side]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:34
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:47
@@ -6983,7 +6985,7 @@ msgstr "Alliés humains"
 msgid "Cultists"
 msgstr "Cultistes"
 
-#. [event]
+#. [event]: id=$ally_name misc/hero-icon.png}
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:519
 msgid "Test"
 msgstr "Test"
@@ -7065,17 +7067,17 @@ msgstr ""
 "J'ai eu l'impression d'entendre un grondement lointain. Et qu'est-ce que "
 "c'est que ce vacarme ?"
 
-#. [unit]: type=Troll Whelp
-#. [unit]: type=Troll Shaman
+#. [unit]: type=Troll Whelp, id=Troll Avenger
+#. [unit]: type=Troll Shaman, id=Troll Avenger
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1046
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1067
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1088
 msgid "Troll Avenger"
 msgstr "Vengeur troll"
 
-#. [unit]: type=Dwarvish Fighter
-#. [unit]: type=Dwarvish Thunderer
-#. [unit]: type=Dwarvish Pathfinder
+#. [unit]: type=Dwarvish Fighter, id=Dwarf Avenger
+#. [unit]: type=Dwarvish Thunderer, id=Dwarvish Avenger
+#. [unit]: type=Dwarvish Pathfinder, id=Dwarvish Avenger
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1111
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1132
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1153
@@ -8453,7 +8455,7 @@ msgstr ""
 "Maintenant, Keratur, je veux des réponses. As-tu trempé dans ce qui vient "
 "d'arriver ?"
 
-#. [unit]: type=Dark Assassin3
+#. [unit]: type=Dark Assassin3, id=Keratur
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3884
 msgid "Keratur"
 msgstr "Keratur"
@@ -8775,9 +8777,9 @@ msgstr ""
 "scintiller à l'horizon, mais je ne sais pas ce que c'est."
 
 #. [event]
-#. [unit]: type=Divine Avatar
+#. [unit]: type=Divine Avatar, id=Eloh
 #. [side]
-#. [unit]: type=Divine Incarnation
+#. [unit]: type=Divine Incarnation, id=Eloh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4501
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:857
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:50
@@ -8955,7 +8957,7 @@ msgstr ""
 "t'inquiète pas avec toutes ces questions si futiles. Viens à moi et tout "
 "sera clair."
 
-#. [unit]: type=Human Commander
+#. [unit]: type=Human Commander, id=Sergeant Durstrag
 #. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4707
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4847
@@ -9343,7 +9345,7 @@ msgstr ""
 msgid "Great. So now we're fighting in a haunted valley."
 msgstr "Super. Maintenant, on va se battre dans une vallée hantée."
 
-#. [unit]: type=Spectre
+#. [unit]: type=Spectre, id=Undead Leader
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:5265
 msgid "Undead Leader"
 msgstr "Meneur mort-vivant"
@@ -9420,14 +9422,14 @@ msgstr ""
 "Envoie le messager et son escorte. Allez au nord et revenez avec de l'aide "
 "aussi vite de possible !"
 
-#. [unit]: type=Dragoon
+#. [unit]: type=Dragoon, id=Human Messenger
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:5391
 msgid "Human Messenger"
 msgstr "Messager humain"
 
-#. [unit]: type=Cavalryman, type=Cavalier, type=Dragoon
-#. [unit]: type=Spearman, type=Javelineer, type=Swordsman
-#. [unit]: type=Spearman, type=Longbowman, type=Master Bowman
+#. [unit]: type=Cavalryman, type=Cavalier, type=Dragoon, id=Human Escort
+#. [unit]: type=Spearman, type=Javelineer, type=Swordsman, id=Human Escort
+#. [unit]: type=Spearman, type=Longbowman, type=Master Bowman, id=Human Escort
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:5411
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:5430
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:5449
@@ -9740,7 +9742,7 @@ msgstr "Par Eloh, Nym, tu as l'air exténuée. Tu vas bien ?"
 msgid "Yes. Just...let me...catch...my breath."
 msgstr "Oui... Laisse-moi... juste... récupérer... mon souffle."
 
-#. [unit]: type=Merman Netcaster
+#. [unit]: type=Merman Netcaster, id=Esanoo
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:6215
 msgid "Esanoo"
 msgstr "Esanoo"
@@ -9922,22 +9924,22 @@ msgstr ""
 "Les choses arrivent à terme. Je m'inquiète pour Tanstafaal et vos amis "
 "ondins. Allons-y aussi vite que possible, le temps est précieux."
 
-#. [scenario]
+#. [scenario]: id=9_Blood_is_Thicker_Than_Water
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:6
 msgid "Blood is Thicker than Water"
 msgstr "Du sang plus abondant que l'eau"
 
-#. [side]: type=Human Commander
-#. [unit]: type=Human Commander
+#. [side]: type=Human Commander, id=Darius
+#. [unit]: type=Human Commander, id=Darius
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:38
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:3200
 msgid "Darius"
 msgstr "Darius"
 
-#. [side]: type=Human Commander
+#. [side]: type=Human Commander, id=Darius
 #. [side]
-#. [side]: type=Shock Trooper
-#. [side]: type=Javelineer
+#. [side]: type=Shock Trooper, id=Zelgant
+#. [side]: type=Javelineer, id=Alastra
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:51
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:84
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:152
@@ -9951,15 +9953,15 @@ msgstr "Alliés humains"
 msgid "Iron Council"
 msgstr ""
 
-#. [side]: type=Shock Trooper
-#. [unit]: type=Shock Trooper
+#. [side]: type=Shock Trooper, id=Zelgant
+#. [unit]: type=Shock Trooper, id=Zelgant
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:139
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:3180
 msgid "Zelgant"
 msgstr "Zelgant"
 
-#. [side]: type=Javelineer
-#. [unit]: type=Javelineer
+#. [side]: type=Javelineer, id=Alastra
+#. [unit]: type=Javelineer, id=Alastra
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:179
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:3160
 msgid "Alastra"
@@ -9989,12 +9991,12 @@ msgstr "Trois ondins doivent survivre"
 msgid "Death of Kaleh, Nym, Zhul"
 msgstr "Mort de Kaleh, Nym ou Zhul"
 
-#. [unit]: type=Desert Fighter
+#. [unit]: type=Desert Fighter, id=Ulothanir
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:542
 msgid "Ulothanir"
 msgstr "Ulothanir"
 
-#. [unit]: type=Desert Archer
+#. [unit]: type=Desert Archer, id=Elonea
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:556
 msgid "Elonea"
 msgstr "Elonea"
@@ -10244,7 +10246,7 @@ msgstr ""
 msgid "Human Soldier"
 msgstr "Soldat humain"
 
-#. [unit]: type=Desert Captain
+#. [unit]: type=Desert Captain, id=Tanstafaal
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:822
 msgid "Tanstafaal"
 msgstr "Tanstafaal"
@@ -10628,7 +10630,7 @@ msgstr "Alors nous ferons avec le peu que nous avons."
 msgid "Defeat Tanstafaal and Eloh"
 msgstr "Vaincre Tanstafaal et Eloh"
 
-#. [scenario]
+#. [scenario]: id=9_Blood_is_Thicker_Than_Water
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1094
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1095
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1096
@@ -10716,7 +10718,7 @@ msgid "I must leave for now, fight on in my stead."
 msgstr "Je dois partir maintenant, couvrez-moi."
 
 #. [else]
-#. [unit]: type=Necromancer
+#. [unit]: type=Necromancer, id=Hekuba
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1279
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2189
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2431
@@ -10751,7 +10753,7 @@ msgstr ""
 "C'était un membre de la Triade de Fer. Ils ne quittent que rarement leur "
 "sanctuaire. Ils préfèrent laisser leurs subalternes s'occuper du sale boulot."
 
-#. [unit]: type=Merman Warrior
+#. [unit]: type=Merman Warrior, id=Urruga
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1402
 msgid "Urruga"
 msgstr "Urruga"
@@ -10852,7 +10854,7 @@ msgstr ""
 "Merci de m'avoir secouru. Nous allons montrer à ces humains ce qu'est la "
 "vraie fureur des ondins !"
 
-#. [unit]: type=Merman Warrior
+#. [unit]: type=Merman Warrior, id=Nuvassa
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1503
 msgid "Nuvassa"
 msgstr "Nuvassa"
@@ -10871,7 +10873,7 @@ msgstr ""
 msgid "As I envy your kind's prowess when fighting in the water."
 msgstr "Tout comme j'envie vos prouesses quand vous combattez dans l'eau."
 
-#. [unit]: type=Merman Spearman
+#. [unit]: type=Merman Spearman, id=Yantili
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1605
 msgid "Yantili"
 msgstr "Yantili"
@@ -10886,7 +10888,7 @@ msgstr ""
 "vous trouver, les elfes. Notre maîtresse avait raison après tout. Vous aurez "
 "plus de précisions plus tard..."
 
-#. [unit]: type=Mermaid Priestess
+#. [unit]: type=Mermaid Priestess, id=Il-tian
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1703
 msgid "Il-tian"
 msgstr "Il-tian"
@@ -10915,7 +10917,7 @@ msgstr "Quel endroit sombre et désagréable. Quelque chose empeste."
 msgid "Undead Warden"
 msgstr "Gardien mort-vivant"
 
-#. [unit]: type=Mermaid Enchantress
+#. [unit]: type=Mermaid Enchantress, id=We-jial
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1828
 msgid "We-jial"
 msgstr "We-jial"
@@ -11392,12 +11394,12 @@ msgstr ""
 msgid "Thank you."
 msgstr "Merci."
 
-#. [unit]: type=Necromancer
+#. [unit]: type=Necromancer, id=Zilchis
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2820
 msgid "Zilchis"
 msgstr "Zilchis"
 
-#. [unit]: type=Necromancer
+#. [unit]: type=Necromancer, id=Sultaria
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2832
 msgid "Sultaria"
 msgstr "Sultaria"
@@ -11429,7 +11431,7 @@ msgstr ""
 "rochers se dressent aussi en dehors des flots pour nous aider à traverser. "
 "Nous nous répandrons comme la peste et nous repousserons les incroyants !"
 
-#. [scenario]
+#. [scenario]: id=9_Blood_is_Thicker_Than_Water
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2894
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2895
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2896
@@ -11845,24 +11847,24 @@ msgstr ""
 "Par la main du dieu de la mer, j'appelle les vents. Qu'ils perturbent nos "
 "ennemis et protègent ces vaisseaux."
 
-#. [scenario]
+#. [scenario]: id=10_Speaking_with_the_Fishes
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:6
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:7
 msgid "Speaking with the Fishes"
 msgstr "Rencontre avec les poissons"
 
-#. [side]: type=Mermaid Diviner
-#. [unit]: type=Mermaid Diviner
+#. [side]: id=Melusand, type=Mermaid Diviner
+#. [unit]: type=Mermaid Diviner, id=Melusand
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:43
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:431
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:758
 msgid "Melusand"
 msgstr "Melusand"
 
-#. [unit]: type=Merman Warrior
-#. [unit]: type=Merman Hoplite
-#. [unit]: type=Merman Spearman
-#. [unit]: type=Merman Entangler
+#. [unit]: type=Merman Warrior, id=Merfolk Guard
+#. [unit]: type=Merman Hoplite, id=Merfolk Guard
+#. [unit]: type=Merman Spearman, id=Merfolk Guard
+#. [unit]: type=Merman Entangler, id=Merfolk Guard
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:126
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:136
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:146
@@ -13070,20 +13072,20 @@ msgstr ""
 "longue nuit, ainsi à l'aube la grande île devrait être relativement peu "
 "gardée. Je prierai pour votre succès, avec de la chance nous nous reverrons."
 
-#. [scenario]
+#. [scenario]: id=11_Battle_for_Zocthanol_Isle
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:6
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:7
 msgid "The Battle for Zocthanol Isle"
 msgstr "La Bataille pour l'île de Zocthanol"
 
-#. [side]: type=Saurian Oracle
+#. [side]: type=Saurian Oracle, id=Boyicht
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:55
 msgid "Boyicht"
 msgstr "Boyicht"
 
-#. [side]: type=Saurian Oracle
-#. [side]: type=Draug
-#. [side]: type=Orcish Sovereign
+#. [side]: type=Saurian Oracle, id=Boyicht
+#. [side]: type=Draug, id=Kelur
+#. [side]: type=Orcish Sovereign, id=Graghht
 #. [side]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:68
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:114
@@ -13096,17 +13098,17 @@ msgstr "Boyicht"
 msgid "Eloh Cultists"
 msgstr "Cultistes d'Eloh"
 
-#. [side]: type=Draug
+#. [side]: type=Draug, id=Kelur
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:105
 msgid "Kelur"
 msgstr "Kelur"
 
-#. [side]: type=Orcish Sovereign
+#. [side]: type=Orcish Sovereign, id=Graghht
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:147
 msgid "Graghht"
 msgstr "Graghht"
 
-#. [unit]: type=Merman Triton
+#. [unit]: type=Merman Triton, id=Trapped Merman
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:529
 msgid "Trapped Merman"
 msgstr "Ondin piégé"
@@ -13116,12 +13118,12 @@ msgstr "Ondin piégé"
 msgid "Kaleh must capture a keep"
 msgstr "Kaleh doit capturer un donjon"
 
-#. [unit]: type=Desert Hunter
+#. [unit]: type=Desert Hunter, id=Eagath
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:715
 msgid "Eagath"
 msgstr "Eagath"
 
-#. [unit]: type=Desert Archer
+#. [unit]: type=Desert Archer, id=Alusan
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:729
 msgid "Alusan"
 msgstr "Alusan"
@@ -13263,7 +13265,7 @@ msgstr ""
 msgid "I say good riddance. He creeped me out."
 msgstr "Je dis bon débarras. Il me tapait sur les nerfs."
 
-#. [unit]: type=Naga Myrmidon
+#. [unit]: type=Naga Myrmidon, id=Naga Leader
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1023
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1053
 msgid "Naga Leader"
@@ -13547,7 +13549,7 @@ msgstr ""
 "vivre dans les débris de ce navire. Je frissonne à la pensée de ce dont elle "
 "devait se régaler."
 
-#. [unit]: type=Merman Triton
+#. [unit]: type=Merman Triton, id=Grateful Merman
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1782
 msgid "Grateful Merman"
 msgstr "Ondin reconnaissant"
@@ -13798,7 +13800,7 @@ msgstr ""
 msgid "They must be nocturnal."
 msgstr "Ce doit être des nocturnes."
 
-#. [scenario]
+#. [scenario]: id=12_The_Final_Confrontation
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:6
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:7
 msgid "The Final Confrontation"
@@ -13894,12 +13896,12 @@ msgstr ""
 "C'est donc ce que tu penses ? Je te prouverai ton erreur. Observe ton peuple "
 "et tu perdras espoir !"
 
-#. [unit]: type=Desert Fighter
+#. [unit]: type=Desert Fighter, id=Anarion
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:635
 msgid "Anarion"
 msgstr "Anarion"
 
-#. [unit]: type=Desert Archer
+#. [unit]: type=Desert Archer, id=Zylea
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:662
 msgid "Zylea"
 msgstr "Zylea"
@@ -14040,9 +14042,9 @@ msgstr ""
 msgid "Yes priestess."
 msgstr "Oui prêtresse."
 
-#. [unit]: type=Central Body
-#. [unit]: type=Central Body2
-#. [unit]: type=Central Body3
+#. [unit]: type=Central Body, id=Yechnagoth
+#. [unit]: type=Central Body2, id=Yechnagoth
+#. [unit]: type=Central Body3, id=Yechnagoth
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1193
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1617
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1652
@@ -14169,7 +14171,7 @@ msgstr ""
 msgid "Let's get out of here."
 msgstr "Sortons d'ici."
 
-#. [scenario]
+#. [scenario]: id=13_Epilogue
 #: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:6
 #: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:7
 msgid "Epilogue"
@@ -14794,12 +14796,16 @@ msgstr "C'est ce qu'on va voir ! Allez viens !"
 msgid "THE END"
 msgstr "FIN"
 
-#. [unit_type]: race=monster
+#. [unit_type]: id=Central Body, race=monster
 #: data/campaigns/Under_the_Burning_Suns/units/Alien_Body.cfg:5
 msgid "Central Body"
 msgstr "Corps central"
 
-#. [unit_type]: race=monster
+#. [unit_type]: id=Central Body2, race=monster
+#. [unit_type]: id=Central Body3, race=monster
+#. [unit_type]: id=Pulsing Spire, race=monster
+#. [unit_type]: id=Central Body, race=monster
+#. [unit_type]: id=Crawling Horror, race=monster
 #: data/campaigns/Under_the_Burning_Suns/units/Alien_Body2.cfg:34
 #: data/campaigns/Under_the_Burning_Suns/units/Alien_Body3.cfg:33
 #: data/campaigns/Under_the_Burning_Suns/units/Alien_Spire.cfg:26
@@ -14823,13 +14829,14 @@ msgstr ""
 msgid "energy ray"
 msgstr "rayon d'énergie."
 
-#. [unit_type]: race=monster
+#. [unit_type]: id=Central Body2, race=monster
+#. [unit_type]: id=Central Body3, race=monster
 #: data/campaigns/Under_the_Burning_Suns/units/Alien_Body2.cfg:6
 #: data/campaigns/Under_the_Burning_Suns/units/Alien_Body3.cfg:7
 msgid "Weakened Central Body"
 msgstr "Corps central affaibli"
 
-#. [unit_type]: race=monster
+#. [unit_type]: id=Crawling Horror, race=monster
 #: data/campaigns/Under_the_Burning_Suns/units/Alien_Minion.cfg:4
 msgid "Crawling Horror"
 msgstr "Horreur rampante"
@@ -14840,17 +14847,17 @@ msgstr "Horreur rampante"
 msgid "fangs"
 msgstr "crocs"
 
-#. [unit_type]: race=monster
+#. [unit_type]: id=Pulsing Spire, race=monster
 #: data/campaigns/Under_the_Burning_Suns/units/Alien_Spire.cfg:4
 msgid "Pulsing Spire"
 msgstr "Pointe palpitante"
 
-#. [unit_type]: race=monster
+#. [unit_type]: id=Giant Ant, race=monster
 #: data/campaigns/Under_the_Burning_Suns/units/Ant.cfg:4
 msgid "Giant Ant"
 msgstr "Fourmi géante"
 
-#. [unit_type]: race=monster
+#. [unit_type]: id=Giant Ant, race=monster
 #: data/campaigns/Under_the_Burning_Suns/units/Ant.cfg:18
 msgid ""
 "Giant Ants are common in almost any environment, from caverns deep under the "
@@ -14862,12 +14869,12 @@ msgstr ""
 "montagnes. Habituellement non agressives, elles peuvent mordre au corps à "
 "corps."
 
-#. [unit_type]
+#. [unit_type]: id=Cave Spider
 #: data/campaigns/Under_the_Burning_Suns/units/Cave_Spider.cfg:12
 msgid "Cave Spider"
 msgstr "Araignée des cavernes"
 
-#. [unit_type]
+#. [unit_type]: id=Cave Spider
 #: data/campaigns/Under_the_Burning_Suns/units/Cave_Spider.cfg:15
 msgid ""
 "Cave Spiders roam deep under the earth, devouring many victims. They can "
@@ -14879,12 +14886,12 @@ msgstr ""
 "leurs ennemis. Elles peuvent également projeter une toile qui ralentit leurs "
 "adversaires."
 
-#. [unit_type]
+#. [unit_type]: id=Confused Ant
 #: data/campaigns/Under_the_Burning_Suns/units/Confused_Ant.cfg:8
 msgid "Confused Ant"
 msgstr "Fourmi désorientée"
 
-#. [unit_type]
+#. [unit_type]: id=Confused Ant
 #: data/campaigns/Under_the_Burning_Suns/units/Confused_Ant.cfg:10
 msgid ""
 "Giant Ants are common in almost any environment, from caverns deep under the "
@@ -14898,12 +14905,12 @@ msgstr ""
 "corps. Elles sont souvent désorientées quand elles n'ont plus de reine pour "
 "les diriger."
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Corrupted Elf, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Corrupted_Elf.cfg:4
 msgid "Corrupted Elf"
 msgstr "Elfe corrompu"
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Corrupted Elf, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Corrupted_Elf.cfg:27
 msgid ""
 "Imbued with a dark spirit these corrupted elves combine unhuman strength "
@@ -14917,7 +14924,7 @@ msgstr ""
 "puissantes armes pour les seigneurs morts-vivants."
 
 #. [attack]: type=blade
-#. [unit_type]: race=elf, type=impact, type=blade
+#. [unit_type]: id=Kaleh, race=elf, type=impact, type=blade
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Hunter.cfg:36
 #: data/campaigns/Under_the_Burning_Suns/units/Nym.cfg:30
 #: data/campaigns/Under_the_Burning_Suns/units/Human_Commander.cfg:44
@@ -14949,12 +14956,12 @@ msgstr "épée"
 msgid "magic"
 msgstr "magie"
 
-#. [unit_type]: race=monster
+#. [unit_type]: id=Crab Man, race=monster
 #: data/campaigns/Under_the_Burning_Suns/units/Crab_Man.cfg:4
 msgid "Crab Man"
 msgstr "Homme crabe"
 
-#. [unit_type]: race=monster
+#. [unit_type]: id=Crab Man, race=monster
 #: data/campaigns/Under_the_Burning_Suns/units/Crab_Man.cfg:18
 msgid ""
 "The Crab Men are part crab, part humanoid, and are certainly one of the most "
@@ -14972,12 +14979,12 @@ msgstr ""
 msgid "claws"
 msgstr "griffes"
 
-#. [unit_type]: race=monster
+#. [unit_type]: id=Darawf, race=monster
 #: data/campaigns/Under_the_Burning_Suns/units/Darawf.cfg:4
 msgid "Dawarf"
 msgstr "Niain"
 
-#. [unit_type]: race=monster
+#. [unit_type]: id=Darawf, race=monster
 #: data/campaigns/Under_the_Burning_Suns/units/Darawf.cfg:19
 msgid ""
 "Don't ask where the Dawarf came from. You really don't want to know. It is a "
@@ -14997,12 +15004,12 @@ msgstr ""
 msgid "fist"
 msgstr "poing"
 
-#. [unit_type]: race=orc
+#. [unit_type]: id=Dark Assassin1, race=orc
 #: data/campaigns/Under_the_Burning_Suns/units/Dark_Assassin1.cfg:4
 msgid "Dark Assassin"
 msgstr "Assassin des ténèbres"
 
-#. [unit_type]: race=orc
+#. [unit_type]: id=Dark Assassin1, race=orc
 #: data/campaigns/Under_the_Burning_Suns/units/Dark_Assassin1.cfg:20
 msgid ""
 "The Dark Assassin appears and disappears at a moment's notice. No one knows "
@@ -15025,12 +15032,12 @@ msgstr "faux"
 msgid "darts"
 msgstr "dards"
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Desert Archer, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Archer.cfg:5
 msgid "Desert Archer"
 msgstr "Archer du désert"
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Desert Archer, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Archer.cfg:31
 msgid ""
 "Desert Archers are trained from youth in archery, and so skilled in long-"
@@ -15067,12 +15074,12 @@ msgstr "arc"
 msgid "female^Desert Archer"
 msgstr "Archère du désert"
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Desert Avenger, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Avenger.cfg:4
 msgid "Desert Avenger"
 msgstr "Vengeur du désert"
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Desert Avenger, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Avenger.cfg:36
 msgid ""
 "Desert Avengers are extremely skillful and extremely quick, powerful in all "
@@ -15089,7 +15096,7 @@ msgstr ""
 msgid "female^Desert Avenger"
 msgstr "Vengeuse du désert"
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Desert Captain, race=elf
 #. [variation]
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Captain.cfg:4
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:171
@@ -15097,7 +15104,7 @@ msgstr "Vengeuse du désert"
 msgid "Desert Captain"
 msgstr "Capitaine du désert"
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Desert Captain, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Captain.cfg:39
 msgid ""
 "Skilled in commanding other elves, Desert Captains provide a bonus to all "
@@ -15110,13 +15117,13 @@ msgstr ""
 "d'utiliser les armes à distance."
 
 #. [variation]
-#. [unit_type]: race=elf
+#. [unit_type]: id=Desert Champion, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:281
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Champion.cfg:4
 msgid "Desert Champion"
 msgstr "Champion du désert"
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Desert Champion, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Champion.cfg:30
 msgid ""
 "Desert Champions are awesome masters of swordsmanship, inflicting grievous "
@@ -15128,12 +15135,12 @@ msgstr ""
 "utiliser l'arc et sont donc capables de blesser leurs ennemis en combat "
 "rapproché ou à distance. "
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Desert Druid, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Druid.cfg:4
 msgid "Desert Druid"
 msgstr "Druide du désert"
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Desert Druid, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Druid.cfg:34
 msgid ""
 "Desert Druids are powerful masters of the sands. Brilliant at ensnaring "
@@ -15166,13 +15173,13 @@ msgid "thorns"
 msgstr "épines"
 
 #. [variation]
-#. [unit_type]: race=elf
+#. [unit_type]: id=Desert Fighter, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:143
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Fighter.cfg:5
 msgid "Desert Fighter"
 msgstr "Guerrier du désert"
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Desert Fighter, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Fighter.cfg:30
 msgid ""
 "Desert Fighters make up the bulk of the Quenoth warriors. They are trained "
@@ -15184,7 +15191,7 @@ msgstr ""
 "espèce, ils préfèrent le corps à corps au tir à distance. Ces elfes ont un "
 "pied très sûr et préfèrent combattre sur le sable."
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Desert Hero, race=elf
 #. [variation]
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Hero.cfg:4
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:226
@@ -15192,7 +15199,7 @@ msgstr ""
 msgid "Desert Hero"
 msgstr "Héros du désert"
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Desert Hero, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Hero.cfg:29
 msgid ""
 "Desert Heroes focus on individual performance on the battlefield, having "
@@ -15205,12 +15212,12 @@ msgstr ""
 "Ils préfèrent l'épée et le corps à corps mais sont aussi capables d'utiliser "
 "leur arc."
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Desert Horseman, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Horseman.cfg:4
 msgid "Desert Horseman"
 msgstr "Cavalier du désert"
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Desert Horseman, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Horseman.cfg:38
 msgid ""
 "Trading speed for heavier arms and armament, Elvish Horsemen delight in "
@@ -15224,7 +15231,7 @@ msgstr ""
 "vieilles forêts et les elfes ont largement développé leurs compétences "
 "équestres au fur et à mesure des générations."
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Desert Hunter, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Hunter.cfg:31
 msgid ""
 "Desert Hunters are trained to scour the sands for prey and enemies. They can "
@@ -15236,7 +15243,7 @@ msgstr ""
 "achever à l'épée."
 
 #. [attack]: type=impact
-#. [unit_type]: race=elf, type=impact, type=blade
+#. [unit_type]: id=Kaleh, race=elf, type=impact, type=blade
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Hunter.cfg:45
 #: data/campaigns/Under_the_Burning_Suns/units/Nym.cfg:39
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Sentinel.cfg:49
@@ -15246,18 +15253,18 @@ msgid "bolas"
 msgstr "bolas"
 
 #. [female]
-#. [unit_type]: race=elf
+#. [unit_type]: id=Nym Hunter, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Hunter.cfg:118
 #: data/campaigns/Under_the_Burning_Suns/units/Nym.cfg:130
 msgid "female^Desert Hunter"
 msgstr "Chasseuse du désert"
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Desert Marksman, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Marksman.cfg:4
 msgid "Desert Marksman"
 msgstr "Tireur d'élite du désert"
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Desert Marksman, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Marksman.cfg:29
 msgid ""
 "Desert Marksman are expert in use of the bow. Though their bows and arrows "
@@ -15281,14 +15288,14 @@ msgstr "arc long"
 msgid "female^Desert Marksman"
 msgstr "Tireuse d'élite du désert"
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Desert Marshal, race=elf
 #. [variation]
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Marshal.cfg:4
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:308
 msgid "Desert Marshal"
 msgstr "Maréchal du désert"
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Desert Marshal, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Marshal.cfg:40
 msgid ""
 "Desert Marshals are master commanders, able to inspire confidence in any "
@@ -15301,12 +15308,12 @@ msgstr ""
 "mieux se battre. Les maréchaux du désert préfèrent le combat au corps à "
 "corps, mais sont aussi capables d'utiliser les armes à distance."
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Desert Outrider, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Outrider.cfg:4
 msgid "Desert Outrider"
 msgstr "Escorteur du désert"
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Desert Outrider, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Outrider.cfg:35
 msgid ""
 "Riding like the wind, Desert Outriders breeze across the sands to strike at "
@@ -15318,7 +15325,7 @@ msgstr ""
 "l'épée, précis avec l'arc, ils frappent dur et ensuite s'évanouissent dans "
 "les sables pour éviter toute riposte."
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Desert Prowler, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Prowler.cfg:34
 msgid ""
 "Desert Prowlers sneak across the sands, searching out enemies and protecting "
@@ -15332,19 +15339,19 @@ msgstr ""
 "bolas et de leur épée leur permet d'estropier et de tuer les ennemis avec "
 "une facilité déconcertante."
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Nym Prowler, race=elf
 #. [female]
 #: data/campaigns/Under_the_Burning_Suns/units/Nym.cfg:155
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Prowler.cfg:137
 msgid "female^Desert Prowler"
 msgstr "Patrouilleuse du désert"
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Desert Ranger, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Ranger.cfg:4
 msgid "Desert Ranger"
 msgstr "Rôdeur du désert"
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Desert Ranger, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Ranger.cfg:36
 msgid ""
 "Desert Rangers are quick and powerful. Skilled in both short and long-range "
@@ -15362,12 +15369,12 @@ msgstr ""
 msgid "female^Desert Ranger"
 msgstr "Rôdeuse du désert"
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Desert Rider, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Rider.cfg:4
 msgid "Desert Rider"
 msgstr "Coursier du désert"
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Desert Rider, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Rider.cfg:34
 msgid ""
 "Swift riders, Desert Riders are fast in the open desert. They can use a bow "
@@ -15376,12 +15383,12 @@ msgstr ""
 "Les coursiers du désert sont à l'aise en plein désert. Ils peuvent tirer des "
 "flèches à cheval, mais préfèrent le corps à corps quand c'est nécessaire."
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Desert Scout, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Scout.cfg:5
 msgid "Desert Scout"
 msgstr "Éclaireur du désert"
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Desert Scout, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Scout.cfg:34
 msgid ""
 "Desert Scouts move swiftly across the sands. Their skill on horseback is "
@@ -15391,7 +15398,7 @@ msgstr ""
 "habilité à monter à cheval est quasiment inégalée, mais ils manquent de "
 "puissance au combat."
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Desert Sentinel, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Sentinel.cfg:35
 msgid ""
 "Desert Sentinels patrol the sands; they are trained to avoid enemies when it "
@@ -15408,19 +15415,19 @@ msgstr ""
 "Leur capacité de tirailleur leur permet d'ignorer les zones de contrôle "
 "ennemies et donc de se déplacer autour d'eux sans encombre."
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Nym Sentinel, race=elf
 #. [female]
 #: data/campaigns/Under_the_Burning_Suns/units/Nym.cfg:141
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Sentinel.cfg:122
 msgid "female^Desert Sentinel"
 msgstr "Sentinelle du désert"
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Desert Shaman, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Shaman.cfg:5
 msgid "Desert Shaman"
 msgstr "Chaman du désert"
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Desert Shaman, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Shaman.cfg:34
 msgid ""
 "Desert Shamans focus on less violent ways to hinder the enemy. Their "
@@ -15437,12 +15444,12 @@ msgstr ""
 msgid "entangle"
 msgstr "enchevêtrement"
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Desert Sharpshooter, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Sharpshooter.cfg:4
 msgid "Desert Sharpshooter"
 msgstr "Franc-tireur du désert"
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Desert Sharpshooter, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Sharpshooter.cfg:30
 msgid ""
 "The most elite archers among the elves, Desert Sharpshooters use the best "
@@ -15461,12 +15468,12 @@ msgstr ""
 msgid "female^Desert Sharpshooter"
 msgstr "Franc-tireur du désert"
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Desert Shyde, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Shyde.cfg:4
 msgid "Desert Shyde"
 msgstr "Nymphe du désert"
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Desert Shyde, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Shyde.cfg:38
 msgid ""
 "Desert Shydes are elves that are devoted to nature and their faerie side. "
@@ -15479,7 +15486,8 @@ msgstr ""
 "magnifique. Elles peuvent voler gracieusement sur presque toute sorte de "
 "terrain."
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Desert Shyde, race=elf
+#. [unit_type]: id=Desert Star, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Shyde.cfg:38
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Star.cfg:46
 msgid "SPECIAL_NOTE^ This unit can fly across any terrain except deep water."
@@ -15491,17 +15499,17 @@ msgstr "Cette unité peut survoler tous les terrains sauf l'eau profonde."
 msgid "faerie touch"
 msgstr "toucher féérique"
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Desert Star, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Star.cfg:4
 msgid "Desert Star"
 msgstr "Étoile du désert"
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Desert Star, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Star.cfg:46
 msgid "SPECIAL_NOTE^ It also gains a 10% bonus to resistance from all attacks."
 msgstr "Sa résistance augmente de 10 % contre tous les types d'attaque."
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Desert Star, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Star.cfg:46
 msgid ""
 "Desert Stars are Shydes that have becomes so powerful and holy that they "
@@ -15517,12 +15525,12 @@ msgstr ""
 "presque tous les terrains. Le pouvoir d'Eloh réduit également les dégâts "
 "qu'elles subissent quand elles sont blessées."
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Divine Avatar, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Divine_Avatar.cfg:4
 msgid "Divine Avatar"
 msgstr "Avatar divin"
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Divine Avatar, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Divine_Avatar.cfg:19
 msgid ""
 "Divine Avatars only appear in time of great need. Forms of the Gods "
@@ -15540,12 +15548,12 @@ msgstr ""
 msgid "lightbeam"
 msgstr "rayon de lumière"
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Divine Incarnation, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Divine_Incarnation.cfg:4
 msgid "Divine Incarnation"
 msgstr "Incarnation divine"
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Divine Incarnation, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Divine_Incarnation.cfg:19
 msgid ""
 "Divine Incarnations are said to be the closest thing to a god's actual "
@@ -15555,7 +15563,7 @@ msgstr ""
 "à la présence divine en ce monde. Elles peuvent être simultanément "
 "terrifiantes et inspirer un grand respect."
 
-#. [unit_type]: race=monster
+#. [unit_type]: id=Dust Devil, race=monster
 #: data/campaigns/Under_the_Burning_Suns/units/Dust_Devil.cfg:37
 msgid ""
 "A swirl of dust and desert sand, quick as a wind, impossible to spot when "
@@ -15592,27 +15600,27 @@ msgstr ""
 "poussiérieux. Si elle est empoisonnée, elle guérit du poison au lieu de se "
 "soigner."
 
-#. [advancement]
+#. [advancement]: id=Dust1
 #: data/campaigns/Under_the_Burning_Suns/units/Dust_Devil.cfg:82
 msgid "a stronger Dust Devil"
 msgstr "un diable de poussière plus fort"
 
-#. [advancement]
+#. [advancement]: id=Dust2
 #: data/campaigns/Under_the_Burning_Suns/units/Dust_Devil.cfg:101
 msgid "a taller Dust Devil"
 msgstr "un diable de poussière plus grand"
 
-#. [advancement]
+#. [advancement]: id=Dust3
 #: data/campaigns/Under_the_Burning_Suns/units/Dust_Devil.cfg:114
 msgid "a fully-healed Dust Devil"
 msgstr "un diable de poussière en pleine forme"
 
-#. [unit_type]: race=dwarf
+#. [unit_type]: id=Dwarvish Explorer, race=dwarf
 #: data/campaigns/Under_the_Burning_Suns/units/Dwarvish_Explorer.cfg:4
 msgid "Dwarvish Explorer"
 msgstr "Explorateur nain"
 
-#. [unit_type]: race=dwarf
+#. [unit_type]: id=Dwarvish Explorer, race=dwarf
 #: data/campaigns/Under_the_Burning_Suns/units/Dwarvish_Explorer.cfg:26
 #, fuzzy
 msgid ""
@@ -15644,12 +15652,12 @@ msgstr "hache de bataille"
 msgid "axe"
 msgstr "hache"
 
-#. [unit_type]: race=dwarf
+#. [unit_type]: id=Dwarvish Pathfinder, race=dwarf
 #: data/campaigns/Under_the_Burning_Suns/units/Dwarvish_Pathfinder.cfg:4
 msgid "Dwarvish Pathfinder"
 msgstr "Pisteur nain"
 
-#. [unit_type]: race=dwarf
+#. [unit_type]: id=Dwarvish Pathfinder, race=dwarf
 #: data/campaigns/Under_the_Burning_Suns/units/Dwarvish_Pathfinder.cfg:22
 msgid ""
 "Dwarvish Pathfinders are faster, stronger and even deadlier with their axes "
@@ -15661,12 +15669,12 @@ msgstr ""
 "explorant les terrains inconnus et sécurisant les villages et les passages "
 "trop étroits."
 
-#. [unit_type]: race=dwarf
+#. [unit_type]: id=Dwarvish Scout, race=dwarf
 #: data/campaigns/Under_the_Burning_Suns/units/Dwarvish_Scout.cfg:4
 msgid "Dwarvish Scout"
 msgstr "Éclaireur nain"
 
-#. [unit_type]: race=dwarf
+#. [unit_type]: id=Dwarvish Scout, race=dwarf
 #: data/campaigns/Under_the_Burning_Suns/units/Dwarvish_Scout.cfg:21
 msgid ""
 "Moving faster than other dwarves Dwarvish Scouts love to explore both above "
@@ -15677,12 +15685,12 @@ msgstr ""
 "espèce, aiment explorer à la fois le sous-sol et la surface. Ils savent se "
 "battre au corps à corps avec leur hache, mais peuvent aussi la lancer."
 
-#. [unit_type]
+#. [unit_type]: id=EGhost
 #: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Ghost.cfg:7
 msgid "Ethereal Ghost"
 msgstr "Fantôme éthéré"
 
-#. [unit_type]
+#. [unit_type]: id=EGhost
 #: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Ghost.cfg:18
 msgid ""
 "It is one of the greater mercies of creation that a human soul is immutable, "
@@ -15701,7 +15709,11 @@ msgstr ""
 "pris dans les voiles d'un navire. Il en résulte est un serviteur "
 "infaillible, prisonnier des moindres volontés de son maître."
 
-#. [unit_type]
+#. [unit_type]: id=ESpectre
+#. [unit_type]: id=EWraith
+#. [unit_type]: id=ENightgaunt
+#. [unit_type]: id=EGhost
+#. [unit_type]: id=EShadow
 #: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Spectre.cfg:16
 #: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Wraith.cfg:17
 #: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Nightgaunt.cfg:14
@@ -15710,12 +15722,12 @@ msgstr ""
 msgid "SPECIAL_NOTE^ This unit is able to move through solid stone walls."
 msgstr "Cette unité peut se déplacer à travers les murs de pierre."
 
-#. [unit_type]
+#. [unit_type]: id=ENightgaunt
 #: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Nightgaunt.cfg:7
 msgid "Ethereal Nightgaunt"
 msgstr "Horreur nocturne éthérée"
 
-#. [unit_type]
+#. [unit_type]: id=ENightgaunt
 #: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Nightgaunt.cfg:14
 msgid ""
 "SPECIAL_NOTE^ Unlike normal Nightgaunts, Ethereal Nightgaunts cannot hide at "
@@ -15724,7 +15736,7 @@ msgstr ""
 "Contrairement aux horreurs nocturnes habituelles, les horreurs nocturnes "
 "éthérées ne peuvent se dissimuler la nuit."
 
-#. [unit_type]
+#. [unit_type]: id=ENightgaunt
 #: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Nightgaunt.cfg:14
 msgid ""
 "The purpose of the masks that these creatures wear is unknown, as is the "
@@ -15736,12 +15748,12 @@ msgstr ""
 "visage qu'ils protègent. Ces formes redoutables sont rarement vues par les "
 "vivants, et ceux qui survivent n'ont pas pris le temps d'étudier leur ennemi."
 
-#. [unit_type]
+#. [unit_type]: id=EShadow
 #: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Shadow.cfg:7
 msgid "Ethereal Shadow"
 msgstr "Ombre éthérée"
 
-#. [unit_type]
+#. [unit_type]: id=EShadow
 #: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Shadow.cfg:17
 msgid ""
 "SPECIAL_NOTE^ Unlike normal Shadows, Ethereal Shadows cannot hide at night."
@@ -15749,7 +15761,7 @@ msgstr ""
 "Contrairement aux ombres habituelles, les ombres éthérées ne peuvent se "
 "dissimuler la nuit."
 
-#. [unit_type]
+#. [unit_type]: id=EShadow
 #: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Shadow.cfg:17
 msgid ""
 "When light came into the world and gave form to the unknown, fear was forced "
@@ -15765,12 +15777,12 @@ msgstr ""
 "\n"
 "Cette raison pourrait facilement être expliquée par un nécromancien."
 
-#. [unit_type]
+#. [unit_type]: id=ESpectre
 #: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Spectre.cfg:7
 msgid "Ethereal Spectre"
 msgstr "Spectre éthéré"
 
-#. [unit_type]
+#. [unit_type]: id=ESpectre
 #: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Spectre.cfg:16
 msgid ""
 "Sometimes called the 'hollow men', spectres form the right arm of their "
@@ -15789,12 +15801,12 @@ msgstr ""
 "Vaincre ces créations n'est pas un exploit ; le vrai danger est qu'en "
 "rencontrer n'est qu'un avant-goût des périls qui vont suivre."
 
-#. [unit_type]
+#. [unit_type]: id=EWraith
 #: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Wraith.cfg:7
 msgid "Ethereal Wraith"
 msgstr "Apparition éthérée"
 
-#. [unit_type]
+#. [unit_type]: id=EWraith
 #: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Wraith.cfg:17
 msgid ""
 "These tortured forms of what were once warriors are among the most "
@@ -15816,12 +15828,12 @@ msgstr ""
 "C'est pourquoi un enchantement spécifique à ces créatures a été créé pour "
 "leur permettre de prendre l'énergie de tous ceux qui les menacent."
 
-#. [unit_type]: race=monster
+#. [unit_type]: id=Flesh Golem, race=monster
 #: data/campaigns/Under_the_Burning_Suns/units/Flesh_Golem.cfg:4
 msgid "Flesh Golem"
 msgstr "Golem de chair"
 
-#. [unit_type]: race=monster
+#. [unit_type]: id=Flesh Golem, race=monster
 #: data/campaigns/Under_the_Burning_Suns/units/Flesh_Golem.cfg:25
 msgid ""
 "Incredibly strong constructs, flesh golems are created by powerful "
@@ -15841,12 +15853,12 @@ msgstr ""
 msgid "smashing frenzy"
 msgstr "frénésie dévastatrice"
 
-#. [unit_type]
+#. [unit_type]: id=Haunt
 #: data/campaigns/Under_the_Burning_Suns/units/Haunt.cfg:8
 msgid "Haunt"
 msgstr "Maudit"
 
-#. [unit_type]
+#. [unit_type]: id=Haunt
 #: data/campaigns/Under_the_Burning_Suns/units/Haunt.cfg:14
 msgid ""
 "Haunts are the tortured souls of those who have died suddenly and never been "
@@ -15859,12 +15871,12 @@ msgstr ""
 "les maudits sont condamnés à hanter le lieu de leur décès et à revivre ce "
 "moment encore et encore..."
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Human Commander, race=human
 #: data/campaigns/Under_the_Burning_Suns/units/Human_Commander.cfg:4
 msgid "Human Commander"
 msgstr "Commandant humain"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Human Commander, race=human
 #: data/campaigns/Under_the_Burning_Suns/units/Human_Commander.cfg:40
 msgid ""
 "In this new harsh world, might often makes right and these commanders are "
@@ -15878,12 +15890,12 @@ msgstr ""
 "leurs troupes et ne montrent aucune pitié pour leurs ennemis. Ils attaquent "
 "férocement avec soit des épées, soit des arcs."
 
-#. [unit_type]: race=monster
+#. [unit_type]: id=Ixthala Demon, race=monster
 #: data/campaigns/Under_the_Burning_Suns/units/Ixthala_Demon.cfg:4
 msgid "Ixthala Demon"
 msgstr "Démon Ixthala"
 
-#. [unit_type]: race=monster
+#. [unit_type]: id=Ixthala Demon, race=monster
 #: data/campaigns/Under_the_Burning_Suns/units/Ixthala_Demon.cfg:22
 msgid ""
 "Very few people who have every faced an Ixthala Demon have survived to tell "
@@ -15901,7 +15913,7 @@ msgstr ""
 msgid "flaming sword"
 msgstr "epée enflammée"
 
-#. [unit_type]: race=elf, type=impact, type=blade
+#. [unit_type]: id=Kaleh, race=elf, type=impact, type=blade
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:97
 msgid "Kaleh of the Quenoth Elves"
 msgstr "Kaleh des Elfes de Quenoth."
@@ -15911,44 +15923,44 @@ msgstr "Kaleh des Elfes de Quenoth."
 msgid "Desert Youth"
 msgstr "Adolescent du désert"
 
-#. [unit_type]: race=elf, type=impact, type=blade
+#. [unit_type]: id=Kaleh, race=elf, type=impact, type=blade
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:334
 msgid "a leader in battle"
 msgstr "un chef au combat"
 
-#. [unit_type]: race=elf, type=impact, type=blade
+#. [unit_type]: id=Kaleh, race=elf, type=impact, type=blade
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:341
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:347
 msgid "a better swordsman"
 msgstr "un meilleur spadassin"
 
-#. [unit_type]: race=elf, type=impact, type=blade
+#. [unit_type]: id=Kaleh, race=elf, type=impact, type=blade
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:353
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:360
 msgid "a better archer"
 msgstr "un meilleur archer"
 
-#. [unit_type]: race=elf, type=impact, type=blade
+#. [unit_type]: id=Kaleh, race=elf, type=impact, type=blade
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:366
 msgid "a marksman with the bow"
 msgstr "un tireur d'élite avec son arc"
 
-#. [unit_type]: race=elf, type=impact, type=blade
+#. [unit_type]: id=Kaleh, race=elf, type=impact, type=blade
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:375
 msgid "trained by Nym in using the bolas"
 msgstr "entraîné par Nym aux bolas"
 
-#. [unit_type]: race=elf, type=impact, type=blade
+#. [unit_type]: id=Kaleh, race=elf, type=impact, type=blade
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:389
 msgid "gain +20% resistance under the sun"
 msgstr "gagne 20 % de résistance sous le soleil"
 
-#. [resistance]
+#. [resistance]: id=sustenance
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:404
 msgid "sustenance"
 msgstr "sustentation"
 
-#. [resistance]
+#. [resistance]: id=sustenance
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:406
 msgid ""
 "Sustenance:\n"
@@ -15959,24 +15971,24 @@ msgstr ""
 "La résistance de l'unité est augmentée de 20 % à la lumière du jour, en "
 "défense comme en attaque. Les faiblesses ne sont pas modifiées."
 
-#. [unit_type]: race=elf, type=impact, type=blade
+#. [unit_type]: id=Kaleh, race=elf, type=impact, type=blade
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:413
 msgid "gain +10% resistance to blade, pierce and impact"
 msgstr ""
 "gagne 10 % de résistance aux coups tranchants, perforants et contondants"
 
-#. [unit_type]: race=elf, type=impact, type=blade
+#. [unit_type]: id=Kaleh, race=elf, type=impact, type=blade
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:434
 msgid "gain a stunning attack that disrupts enemy ZOC"
 msgstr "gagne une attaque étourdissante qui perturbe les ZdC ennemies."
 
-#. [chance_to_hit]
+#. [chance_to_hit]: id=fierce
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:446
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:449
 msgid "stun"
 msgstr "étourdissement"
 
-#. [chance_to_hit]
+#. [chance_to_hit]: id=fierce
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:448
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:451
 msgid ""
@@ -15990,7 +16002,7 @@ msgstr ""
 "s'il prend un coup. L'attaquant s'expose en attaquant ainsi et sera ralenti "
 "suite à l'effort fourni. Ne fonctionne pas en défense."
 
-#. [unit_type]: race=elf, type=impact, type=blade
+#. [unit_type]: id=Kaleh, race=elf, type=impact, type=blade
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:459
 msgid ""
 "Kaleh is still a young Elf of the Quenoth, on the verge of adulthood. He "
@@ -16007,7 +16019,7 @@ msgstr ""
 "soleils. Il a cherché en lui des réponses pour le guider, alors qu'il ne "
 "savait pas si son peuple suivrait volontiers ses futurs conseils."
 
-#. [unit_type]: race=monster
+#. [unit_type]: id=Lava Monster, race=monster
 #: data/campaigns/Under_the_Burning_Suns/units/Lava_Monster.cfg:26
 msgid ""
 "Fire Guardians are spirits of smoke and flame. No one is exactly sure where "
@@ -16031,12 +16043,13 @@ msgstr "griffes ardentes"
 msgid "fire breath"
 msgstr "souffle ardent"
 
-#. [unit_type]: race=naga
+#. [unit_type]: id=Naga Guardian, race=naga
 #: data/campaigns/Under_the_Burning_Suns/units/Naga_Guardian.cfg:4
 msgid "Naga Guardian"
 msgstr "Gardien naga"
 
-#. [unit_type]: race=naga
+#. [unit_type]: id=Naga Guardian, race=naga
+#. [unit_type]: id=Naga Warden, race=naga
 #: data/campaigns/Under_the_Burning_Suns/units/Naga_Guardian.cfg:23
 #: data/campaigns/Under_the_Burning_Suns/units/Naga_Warden.cfg:22
 msgid ""
@@ -16058,12 +16071,12 @@ msgstr ""
 msgid "mace"
 msgstr "masse"
 
-#. [unit_type]: race=naga
+#. [unit_type]: id=Naga Hunter, race=naga
 #: data/campaigns/Under_the_Burning_Suns/units/Naga_Hunter.cfg:4
 msgid "Naga Hunter"
 msgstr "Chasseur naga"
 
-#. [unit_type]: race=naga
+#. [unit_type]: id=Naga Hunter, race=naga
 #: data/campaigns/Under_the_Burning_Suns/units/Naga_Hunter.cfg:19
 msgid ""
 "Naga Hunters are Naga who are skilled at hunting with a bow. Since the naga "
@@ -16076,12 +16089,12 @@ msgstr ""
 "flèches empoisonnées. Ces aiguilles de deux pieds enduites d'un venin "
 "puissant sont réputées pour pouvoir abattre tout type de proie."
 
-#. [unit_type]: race=naga
+#. [unit_type]: id=Naga Sentinel, race=naga
 #: data/campaigns/Under_the_Burning_Suns/units/Naga_Sentinel.cfg:4
 msgid "Naga Sentinel"
 msgstr "Sentinelle naga"
 
-#. [unit_type]: race=naga
+#. [unit_type]: id=Naga Sentinel, race=naga
 #: data/campaigns/Under_the_Burning_Suns/units/Naga_Sentinel.cfg:23
 msgid ""
 "The heavy fighters are the elite guards of the naga. They are slower and "
@@ -16095,12 +16108,14 @@ msgstr ""
 "principalement les avant-postes nagas mais participent parfois à des raids "
 "d'attaque."
 
-#. [unit_type]: race=naga
+#. [unit_type]: id=Naga Warden, race=naga
 #: data/campaigns/Under_the_Burning_Suns/units/Naga_Warden.cfg:4
 msgid "Naga Warden"
 msgstr "Gardien naga"
 
-#. [unit_type]: race=elf
+#. [unit_type]: id=Nym Hunter, race=elf
+#. [unit_type]: id=Nym Sentinel, race=elf
+#. [unit_type]: id=Nym Prowler, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Nym.cfg:132
 #: data/campaigns/Under_the_Burning_Suns/units/Nym.cfg:142
 #: data/campaigns/Under_the_Burning_Suns/units/Nym.cfg:156
@@ -16115,12 +16130,12 @@ msgstr ""
 "rebelle à l'esprit rapide et à la volonté farouche. Sa bonne humeur est une "
 "réelle bénédiction pendant les heures difficiles."
 
-#. [unit_type]: race=monster
+#. [unit_type]: id=Small Mudcrawler, race=monster
 #: data/campaigns/Under_the_Burning_Suns/units/Small_Mudcrawler.cfg:5
 msgid "Small Mudcrawler"
 msgstr "Petit golem de boue"
 
-#. [unit_type]: race=monster
+#. [unit_type]: id=Small Mudcrawler, race=monster
 #: data/campaigns/Under_the_Burning_Suns/units/Small_Mudcrawler.cfg:19
 msgid ""
 "Small Mudcrawlers are beings of soil and water. They attack by spraying "
@@ -16135,12 +16150,12 @@ msgstr ""
 msgid "mud glob"
 msgstr "jet de boue"
 
-#. [unit_type]: race=undead
+#. [unit_type]: id=Spider Lich, race=undead
 #: data/campaigns/Under_the_Burning_Suns/units/Spider_Lich.cfg:4
 msgid "Spider Lich"
 msgstr "Araignée liche"
 
-#. [unit_type]: race=undead
+#. [unit_type]: id=Spider Lich, race=undead
 #: data/campaigns/Under_the_Burning_Suns/units/Spider_Lich.cfg:18
 msgid ""
 "No one is quite sure how spider liches are created, but they are horrific "
@@ -16167,12 +16182,12 @@ msgstr "onde de froid"
 msgid "shadow wave"
 msgstr "onde d'ombre"
 
-#. [unit_type]: race=undead
+#. [unit_type]: id=Skeleton Rider, race=undead
 #: data/campaigns/Under_the_Burning_Suns/units/Undead_Horseman.cfg:4
 msgid "Skeleton Rider"
 msgstr "Cavalier squelette"
 
-#. [unit_type]: race=undead
+#. [unit_type]: id=Skeleton Rider, race=undead
 #: data/campaigns/Under_the_Burning_Suns/units/Undead_Horseman.cfg:34
 msgid ""
 "Once great warriors across the plains, these mounted riders atop their "
@@ -17295,112 +17310,112 @@ msgstr ""
 msgid "Epilogue:"
 msgstr "Épilogue :"
 
-#. [terrain]
+#. [terrain]: id=lava
 #: data/campaigns/Under_the_Burning_Suns/utils/terrain.cfg:22
 msgid "Lava"
 msgstr "Lave"
 
-#. [terrain]
+#. [terrain]: id=HumanShip
 #: data/campaigns/Under_the_Burning_Suns/utils/terrain.cfg:36
 msgid "Human Ship"
 msgstr "Bateau humain"
 
-#. [terrain]
+#. [terrain]: id=DesertCampfire
 #: data/campaigns/Under_the_Burning_Suns/utils/terrain.cfg:48
 msgid "Campfire"
 msgstr "Feu de camp"
 
-#. [terrain]
+#. [terrain]: id=LostCastle
 #: data/campaigns/Under_the_Burning_Suns/utils/terrain.cfg:58
 msgid "Phantom Castle"
 msgstr "Château hanté"
 
-#. [terrain]
+#. [terrain]: id=LostCastle
 #: data/campaigns/Under_the_Burning_Suns/utils/terrain.cfg:70
 msgid "Phantom Keep"
 msgstr "Donjon hanté"
 
-#. [terrain]
+#. [terrain]: id=InnerSummoningCircle
 #: data/campaigns/Under_the_Burning_Suns/utils/terrain.cfg:82
 msgid "Inner Summoning Circle"
 msgstr ""
 
-#. [terrain]
+#. [terrain]: id=OuterSummoningCircle
 #: data/campaigns/Under_the_Burning_Suns/utils/terrain.cfg:94
 msgid "Outer Summoning Circle"
 msgstr ""
 
-#. [time]
+#. [time]: id=dawn1
 #: data/campaigns/Under_the_Burning_Suns/utils/time.cfg:16
 msgid "First Dawn"
 msgstr "Première aube"
 
-#. [time]
+#. [time]: id=dawn2
 #: data/campaigns/Under_the_Burning_Suns/utils/time.cfg:26
 msgid "Second Dawn"
 msgstr "Deuxième aube"
 
-#. [time]
+#. [time]: id=morning1
 #: data/campaigns/Under_the_Burning_Suns/utils/time.cfg:36
 msgid "First Morning"
 msgstr "Premier matin"
 
-#. [time]
+#. [time]: id=morning2
 #: data/campaigns/Under_the_Burning_Suns/utils/time.cfg:45
 msgid "Second Morning"
 msgstr "Deuxième matin"
 
-#. [time]
+#. [time]: id=midday1
 #: data/campaigns/Under_the_Burning_Suns/utils/time.cfg:54
 msgid "First Mid-Day"
 msgstr "Premier midi"
 
-#. [time]
+#. [time]: id=midday2
 #: data/campaigns/Under_the_Burning_Suns/utils/time.cfg:63
 msgid "Second Mid-Day"
 msgstr "Deuxième midi"
 
-#. [time]
+#. [time]: id=afternoon1
 #: data/campaigns/Under_the_Burning_Suns/utils/time.cfg:72
 msgid "First Afternoon"
 msgstr "Premier après-midi"
 
-#. [time]
+#. [time]: id=afternoon2
 #: data/campaigns/Under_the_Burning_Suns/utils/time.cfg:81
 msgid "Second Afternoon"
 msgstr "Deuxième après-midi"
 
-#. [time]
+#. [time]: id=dusk1
 #: data/campaigns/Under_the_Burning_Suns/utils/time.cfg:90
 msgid "First Dusk"
 msgstr "Premier crépuscule"
 
-#. [time]
+#. [time]: id=dusk2
 #: data/campaigns/Under_the_Burning_Suns/utils/time.cfg:100
 msgid "Second Dusk"
 msgstr "Deuxième crépuscule"
 
-#. [time]
+#. [time]: id=short_dark
 #: data/campaigns/Under_the_Burning_Suns/utils/time.cfg:110
 msgid "The Short Dark"
 msgstr "La courte nuit"
 
-#. [time]
+#. [time]: id=long_dark1
 #: data/campaigns/Under_the_Burning_Suns/utils/time.cfg:122
 msgid "The Long Dark (1)"
 msgstr "La longue nuit (1)"
 
-#. [time]
+#. [time]: id=long_dark2
 #: data/campaigns/Under_the_Burning_Suns/utils/time.cfg:134
 msgid "The Long Dark (2)"
 msgstr "La longue nuit (2)"
 
-#. [time]
+#. [time]: id=long_dark3
 #: data/campaigns/Under_the_Burning_Suns/utils/time.cfg:148
 msgid "The Long Dark (3)"
 msgstr "La longue nuit (3)"
 
-#. [time]
+#. [time]: id=long_dark4
 #: data/campaigns/Under_the_Burning_Suns/utils/time.cfg:160
 msgid "The Long Dark (4)"
 msgstr "La longue nuit (4)"

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu-l_1.4_1.5\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-14 22:25+0100\n"
+"POT-Creation-Date: 2008-11-29 12:24+0100\n"
 "PO-Revision-Date: 2008-10-23 12:18+0200\n"
 "Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
 "Language-Team: Hungarian <nplurals=2; plural=(n != 1);>\n"
@@ -24,42 +24,42 @@ msgstr ""
 
 # Következő munka: 238
 # 296-tól átnézve végig
-#. [campaign]
+#. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:10 data/campaigns/Liberty/_main.cfg:11
 msgid "Liberty"
 msgstr "Szabadság"
 
-#. [campaign]
+#. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:17
 msgid "Outlaw"
 msgstr "Törvényen kívüli"
 
-#. [campaign]
+#. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:17
 msgid "(Easy)"
 msgstr "(könnyű)"
 
-#. [campaign]
+#. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:17
 msgid "(Difficult)"
 msgstr "(nehéz)"
 
-#. [campaign]
+#. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:17
 msgid "Peasant"
 msgstr "Paraszt"
 
-#. [campaign]
+#. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:17
 msgid "(Normal)"
 msgstr "(átlagos)"
 
-#. [campaign]
+#. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:17
 msgid "Fugitive"
 msgstr "Kitaszított"
 
-#. [campaign]
+#. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:25
 msgid ""
 "As the shadow of civil war lengthens across Wesnoth, a band of hardy "
@@ -102,7 +102,7 @@ msgstr "Illusztrációk és grafikai arculat"
 msgid "Translators"
 msgstr "Fordítók"
 
-#. [scenario]
+#. [scenario]: id=the_raid
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:4
 msgid "The Raid"
 msgstr "A rajtaütés"
@@ -170,13 +170,13 @@ msgstr ""
 "Annuvin lakói nem akarták feladni a vérrel és verítékkel kiharcolt "
 "önállóságukat, főleg nem egy ilyen trónbitorló kedvéért..."
 
-#. [side]: type=Bandit_Peasant
+#. [side]: type=Bandit_Peasant, id=Baldras
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:59
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:31
 msgid "Baldras"
 msgstr "Baldras"
 
-#. [side]: type=Goblin Pillager
+#. [side]: type=Goblin Pillager, id=Fal Khag
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:75
 msgid "Fal Khag"
 msgstr "Fal Khag"
@@ -312,7 +312,7 @@ msgstr "Kembe"
 msgid "Treagh"
 msgstr "Treagh"
 
-#. [unit]: type=Footpad_Peasant
+#. [unit]: type=Footpad_Peasant, id=Harper
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:217
 msgid "Harper"
 msgstr "Harper"
@@ -477,19 +477,19 @@ msgstr ""
 "A koboldok elérték a falut! Bizonyára kő kövön nem marad, miután végeztek a "
 "fosztogatással."
 
-#. [scenario]
+#. [scenario]: id=civil_disobedience
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:4
 msgid "Civil Disobedience"
 msgstr "Polgári engedetlenség"
 
-#. [side]: type=Highwayman
-#. [side]: type=Shadow Lord
+#. [side]: type=Highwayman, id=Baldras
+#. [side]: type=Shadow Lord, id=Helicrom
 #. [side]
-#. [side]: type=Bandit
-#. [side]: type=Rogue
-#. [side]: type=Highwayman_Peasant
-#. [side]: type=General
-#. [side]: type=Bandit_Peasant
+#. [side]: type=Bandit, id=Baldras
+#. [side]: type=Rogue, id=Hans
+#. [side]: type=Highwayman_Peasant, id=Relnan
+#. [side]: type=General, id=Lord Maddock
+#. [side]: type=Bandit_Peasant, id=Baldras
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:58
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:203
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:213
@@ -507,17 +507,18 @@ msgstr "Polgári engedetlenség"
 msgid "Rebels"
 msgstr ""
 
-#. [side]: type=Cavalier
+#. [side]: type=Cavalier, id=Tarwen
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:47
 msgid "Tarwen"
 msgstr "Tarwen"
 
-#. [side]: type=General
+#. [side]: type=General, id=Dommel
 #. [side]
-#. [side]: type=Master Bowman
-#. [side]: type=Cavalier
-#. [side]: type=Royal Guard
-#. [side]: type=Iron Mauler
+#. [side]: type=Master Bowman, id=Quentin
+#. [side]: type=General, id=Kestrel
+#. [side]: type=Cavalier, id=Tarwen
+#. [side]: type=Royal Guard, id=Archarel
+#. [side]: type=Iron Mauler, id=Linneus
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:96
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:117
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:55
@@ -650,25 +651,26 @@ msgid ""
 "Oh, no! We have run out of time, they have arrived with reinforcements..."
 msgstr "Ó, jaj! Kifutottunk az időből, az ellenség erősítést hozott..."
 
-#. [scenario]
+#. [scenario]: id=a_strategy_of_hope
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:4
 msgid "A Strategy of Hope"
 msgstr "Reménykeltő stratégia"
 
-#. [side]: type=Highwayman_Peasant
+#. [side]: type=Highwayman_Peasant, id=Relnan
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:40
 msgid "Relnan"
 msgstr "Relnan"
 
-#. [side]: type=Orcish Warrior
+#. [side]: type=Orcish Warrior, id=Urk Delek
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:66
 msgid "Urk Delek"
 msgstr "Urk Delek"
 
-#. [side]: type=Necromancer
-#. [side]: type=Lich
-#. [side]: type=Orcish Warrior
-#. [side]: type=Saurian Oracle
+#. [side]: type=Necromancer, id=Mal-Jarrof
+#. [side]: type=Necromancer, id=Mal-Jerod
+#. [side]: type=Lich, id=Sel-Mana
+#. [side]: type=Orcish Warrior, id=Urk Delek
+#. [side]: type=Saurian Oracle, id=Thhsthss
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:106
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:121
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:137
@@ -677,7 +679,7 @@ msgstr "Urk Delek"
 msgid "Evil"
 msgstr ""
 
-#. [side]: type=Saurian Oracle
+#. [side]: type=Saurian Oracle, id=Thhsthss
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:94
 msgid "Thhsthss"
 msgstr "Thhsthss"
@@ -855,7 +857,7 @@ msgstr ""
 "visszatérjünk a segítséggel, mielőtt a wesnothi hadsereg elpusztítaná "
 "otthonainkat. Visszavonulás!!"
 
-#. [scenario]
+#. [scenario]: id=unlawful_orders
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:4
 msgid "Unlawful Orders"
 msgstr "Törvénytelen igazság"
@@ -870,12 +872,12 @@ msgstr "Elensefar"
 msgid "Port of Elensefar"
 msgstr "Elensefar kikőtője"
 
-#. [side]: type=General
+#. [side]: type=General, id=Lord Maddock
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:50
 msgid "Lord Maddock"
 msgstr "Lord Maddock"
 
-#. [side]: type=General
+#. [side]: type=General, id=Kestrel
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:71
 msgid "Kestrel"
 msgstr "Kestrel"
@@ -890,7 +892,7 @@ msgstr "Legyőzöd az ellenség tábornokát"
 msgid "Death of Maddock"
 msgstr "Maddock elesik"
 
-#. [unit]: type=Lieutenant
+#. [unit]: type=Lieutenant, id=Rothel
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:134
 msgid "Rothel"
 msgstr "Rothel"
@@ -1100,22 +1102,22 @@ msgstr ""
 "Nézzétek! Még több lovas közelít délkelet felől. Nem élünk túl egy újabb "
 "támadást. Végünk van!"
 
-#. [scenario]
+#. [scenario]: id=hide_and_seek
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:6
 msgid "Hide and Seek"
 msgstr "Bújócska"
 
-#. [time]
+#. [time]: id=midnight
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:12
 msgid "Midnight"
 msgstr "Éjfél"
 
-#. [side]: type=Master Bowman
+#. [side]: type=Master Bowman, id=Quentin
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:50
 msgid "Quentin"
 msgstr "Quentin"
 
-#. [side]: type=Rogue
+#. [side]: type=Rogue, id=Hans
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:86
 msgid "Hans"
 msgstr "Hans"
@@ -1155,7 +1157,7 @@ msgstr ""
 "Nem tudom, hova is kéne mennünk. Ha bemennénk a városba, kérdezősködhetnénk, "
 "hátha megtudunk valamit."
 
-#. [unit]: type=Thief
+#. [unit]: type=Thief, id=Link
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:511
 msgid "Link"
 msgstr "Link"
@@ -1286,28 +1288,28 @@ msgstr ""
 "visszatértek Dallbenbe. Bár még nem fejeztük be küldetésünk, mégis vissza "
 "kell térnünk egy öngyilkos csatára."
 
-#. [scenario]
+#. [scenario]: id=the_gray_woods
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:4
 msgid "The Gray Woods"
 msgstr "A Szürke-erdő"
 
-#. [side]: type=Shadow Lord
+#. [side]: type=Shadow Lord, id=Helicrom
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:187
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:62
 msgid "Helicrom"
 msgstr "Helicrom"
 
-#. [side]: type=Necromancer
+#. [side]: type=Necromancer, id=Mal-Jarrof
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:97
 msgid "Mal-Jarrof"
 msgstr "Mal-Jarrof"
 
-#. [side]: type=Necromancer
+#. [side]: type=Necromancer, id=Mal-Jerod
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:112
 msgid "Mal-Jerod"
 msgstr "Mal-Jerod"
 
-#. [side]: type=Lich
+#. [side]: type=Lich, id=Sel-Mana
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:127
 msgid "Sel-Mana"
 msgstr "Sel-Mana"
@@ -1557,7 +1559,7 @@ msgstr ""
 msgid "My men... have failed to protect me! I perish..."
 msgstr "Az embereim... nem tudtak megvédeni engem! Végem van..."
 
-#. [scenario]
+#. [scenario]: id=the_hunters
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:4
 msgid "The Hunters"
 msgstr "A vadászok"
@@ -1609,12 +1611,12 @@ msgstr ""
 "Baldrasék nem tudták mire vélni a dolgot, ezért tanakodni kezdtek a "
 "következő lépésükről..."
 
-#. [side]: type=Royal Guard
+#. [side]: type=Royal Guard, id=Archarel
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:55
 msgid "Archarel"
 msgstr "Archarel"
 
-#. [side]: type=Iron Mauler
+#. [side]: type=Iron Mauler, id=Linneus
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:72
 msgid "Linneus"
 msgstr "Linneus"
@@ -1669,7 +1671,7 @@ msgstr ""
 "Halstead egy erőd. Régen arra szolgált, hogy megvédje a vidéket Wesnoth "
 "ellenségeitől; sosem hittem volna, hogy egyszer az ellenség menedékévé lesz."
 
-#. [event]
+#. [event]: id=Pitcher 20 14}, id=Pitcher 28 18}, id=Pitcher 20 14}
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:157
 msgid "Pitcher"
 msgstr "Pitcher"
@@ -1831,7 +1833,7 @@ msgstr ""
 "Túl sok időt töltöttünk itt. Nyilván már az egész hadsereg erre masírozik. "
 "Végünk van!"
 
-#. [scenario]
+#. [scenario]: id=glory
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:4
 msgid "Glory"
 msgstr "Dicsőség"
@@ -1903,17 +1905,17 @@ msgstr ""
 "ellenség. Támadók vére vöröslik mellvédjén, és a legyőzöttek csontjai "
 "porlanak kőlábainál."
 
-#. [side]: type=General
+#. [side]: type=General, id=Dommel
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:67
 msgid "Dommel"
 msgstr "Dommel"
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Vashna
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:124
 msgid "Vashna"
 msgstr "Vashna"
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Vashna
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:178
 msgid "Orcs"
 msgstr ""
@@ -2090,7 +2092,7 @@ msgstr "Segítség, remélem. A helyzetnek nem szabad tovább romlani."
 msgid "Riders approach from the northwest! Stand fast, men."
 msgstr "Lovasok érkeznek északnyugat felől! Tartsátok az állásokat, katonák."
 
-#. [unit]: type=Paladin
+#. [unit]: type=Paladin, id=Sir Gwydion
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:517
 msgid "Sir Gwydion"
 msgstr "Sir Gwydion"
@@ -2306,7 +2308,7 @@ msgstr ""
 "Kis győzelem? Ah! Porig romboljuk ezt az erődöt, visszaadjuk a földnek, "
 "amelyből vétetett."
 
-#. [scenario]
+#. [scenario]: id=epilog
 #: data/campaigns/Liberty/scenarios/09_Epilog.cfg:4
 msgid "Liberty - Epilogue"
 msgstr "Szabadság - Végszó"
@@ -2431,12 +2433,12 @@ msgstr ""
 "'Ha ránk akarsz találni, tarts délnyugatnak. Amikor eléred a síkság végét, "
 "csak menj tovább. Viszlát, régi barátod. - Relnan'"
 
-#. [unit_type]: race=undead
+#. [unit_type]: id=Bone Knight, race=undead
 #: data/campaigns/Liberty/units/Bone_Knight.cfg:5
 msgid "Bone Knight"
 msgstr "Csontlovag"
 
-#. [unit_type]: race=undead
+#. [unit_type]: id=Bone Knight, race=undead
 #: data/campaigns/Liberty/units/Bone_Knight.cfg:33
 msgid ""
 "Once great warriors across the plains, these mounted riders atop their "
@@ -2458,12 +2460,12 @@ msgstr "bárd"
 msgid "trample"
 msgstr "eltaposás"
 
-#. [unit_type]: race=undead
+#. [unit_type]: id=Death Squire, race=undead
 #: data/campaigns/Liberty/units/Death_Squire.cfg:4
 msgid "Death Squire"
 msgstr "Halálapród"
 
-#. [unit_type]: race=undead
+#. [unit_type]: id=Death Squire, race=undead
 #: data/campaigns/Liberty/units/Death_Squire.cfg:26
 msgid ""
 "Sometimes the mightiest warriors and generals, cursed with hate and angst, "
@@ -2484,12 +2486,12 @@ msgstr ""
 msgid "sword"
 msgstr "kard"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Rogue Mage, race=human
 #: data/campaigns/Liberty/units/Rogue_Mage.cfg:5
 msgid "Rogue Mage"
 msgstr "Csavargó mágus"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Rogue Mage, race=human
 #: data/campaigns/Liberty/units/Rogue_Mage.cfg:18
 msgid ""
 "Some mages are thrown out of the mage's guild for attempting to practice "
@@ -2516,12 +2518,12 @@ msgstr "rövidkard"
 msgid "magic missile"
 msgstr "lövedék"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Shadow Lord, race=human
 #: data/campaigns/Liberty/units/Shadow_Lord.cfg:5
 msgid "Shadow Lord"
 msgstr "Árny úr"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Shadow Lord, race=human
 #: data/campaigns/Liberty/units/Shadow_Lord.cfg:22
 msgid ""
 "Few humans fathom the secrets of light and dark magic and retain their "
@@ -2551,12 +2553,12 @@ msgstr "árny villám"
 msgid "shadow blast"
 msgstr "árny fuvallat"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Shadow Mage, race=human
 #: data/campaigns/Liberty/units/Shadow_Mage.cfg:5
 msgid "Shadow Mage"
 msgstr "Árnymágus"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Shadow Mage, race=human
 #: data/campaigns/Liberty/units/Shadow_Mage.cfg:21
 msgid ""
 "Years of violence and brutality to support the study of forbidden magical "
@@ -2580,12 +2582,12 @@ msgstr ""
 msgid "ice blast"
 msgstr "jeges fuvallat"
 
-#. [unit_type]: race=undead
+#. [unit_type]: id=Skeleton Rider, race=undead
 #: data/campaigns/Liberty/units/Skeleton_Rider.cfg:5
 msgid "Skeleton Rider"
 msgstr "Csontlovas"
 
-#. [unit_type]: race=undead
+#. [unit_type]: id=Skeleton Rider, race=undead
 #: data/campaigns/Liberty/units/Skeleton_Rider.cfg:33
 msgid ""
 "Once great warriors thundering across the plains, these mounted riders atop "
@@ -2596,13 +2598,13 @@ msgstr ""
 "mágia most azért keltette életre őket a sírból, hogy csontváz lovaikon "
 "nyargalva félelmet és pusztulást hozzanak."
 
-#. [unit_type]
+#. [unit_type]: id=Thug_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:16
 #, fuzzy
 msgid "Villager"
 msgstr "A falu vénje "
 
-#. [unit_type]
+#. [unit_type]: id=Thug_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:19
 msgid ""
 "Peasants live in the small hamlets and villages scattered across the Wesnoth "
@@ -2610,12 +2612,12 @@ msgid ""
 msgstr ""
 "A parasztok kis tanyákon és falvakban élnek Wesnoth vidékén szétszóródva."
 
-#. [unit_type]
+#. [unit_type]: id=Bandit_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:28
 msgid "Village Elder"
 msgstr "A falu vénje "
 
-#. [unit_type]
+#. [unit_type]: id=Bandit_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:31
 msgid ""
 "Each of the villages scattered across the Wesnoth countryside is normally "
@@ -2625,12 +2627,12 @@ msgstr ""
 "A wesnothi vidéken elszórt falvak mindegyikét általában a vének tanácsa "
 "vezeti, akik a falu legbölcsebb és legtapasztaltabb lakói."
 
-#. [unit_type]
+#. [unit_type]: id=Highwayman_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:40
 msgid "Senior Village Elder"
 msgstr "A falu aggastyánja"
 
-#. [unit_type]
+#. [unit_type]: id=Highwayman_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:44
 msgid ""
 "The entire village looks to the senior elder for guidance. Strong and wise, "
@@ -2643,12 +2645,12 @@ msgstr ""
 "aggastyánokat kinevezni a tartományok helytartójának, hogy a hagyomány és a "
 "törvény szerinti hatalom egyazon személyben testesülhessen meg."
 
-#. [unit_type]
+#. [unit_type]: id=Footpad_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:56
 msgid "Peasant Youth"
 msgstr "Parasztlegény"
 
-#. [unit_type]
+#. [unit_type]: id=Footpad_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:61
 msgid ""
 "The scruffy-haired peasant youth are much like the young people living "
@@ -2662,12 +2664,12 @@ msgstr ""
 msgid "female^Peasant Youth"
 msgstr "Parasztleány"
 
-#. [unit_type]
+#. [unit_type]: id=Outlaw_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:77
 msgid "Watchman"
 msgstr "Őrszem"
 
-#. [unit_type]
+#. [unit_type]: id=Outlaw_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:82
 msgid ""
 "The watchmen are men and women who protect the villages from marauders, both "
@@ -2682,12 +2684,12 @@ msgstr ""
 msgid "female^Watchwoman"
 msgstr "Őrszem"
 
-#. [unit_type]
+#. [unit_type]: id=Fugitive_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:94
 msgid "Borderer"
 msgstr "Határőr"
 
-#. [unit_type]
+#. [unit_type]: id=Fugitive_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:99
 msgid ""
 "Border villages maintain militias dedicated to fending off hostiles. While "
@@ -2701,12 +2703,12 @@ msgstr ""
 msgid "female^Borderer"
 msgstr "Határőrnő"
 
-#. [unit_type]
+#. [unit_type]: id=Poacher_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:116
 msgid "Peasant Hunter"
 msgstr "Paraszt vadász"
 
-#. [unit_type]
+#. [unit_type]: id=Poacher_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:119
 msgid ""
 "Villages, especially in wilder areas near frontiers, rely on hunters to "
@@ -2717,12 +2719,12 @@ msgstr ""
 "segítségével szerzik meg élelmük nagy részét. Alapos helyismeretük és halk "
 "mozgásuk értékes segítség lehet a harcban."
 
-#. [unit_type]
+#. [unit_type]: id=Trapper_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:128
 msgid "Peasant Trapper"
 msgstr "Paraszt prémvadász"
 
-#. [unit_type]
+#. [unit_type]: id=Trapper_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:133
 msgid ""
 "Trappers are skilled hunters who supply food and furs for several villages. "
@@ -2733,12 +2735,12 @@ msgstr ""
 "számos falut. Vadászati tapasztalatukat éjszaka, főként erdőben és a "
 "mocsárvidéken tudják hasznosítani."
 
-#. [unit_type]
+#. [unit_type]: id=Huntsman_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:142
 msgid "Peasant Huntsman"
 msgstr "Paraszt vadászmester"
 
-#. [unit_type]
+#. [unit_type]: id=Huntsman_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:147
 msgid ""
 "Huntsmen have spent their lives in the backwoods and swamps of their "
@@ -2749,12 +2751,12 @@ msgstr ""
 "Telibe tudnak találni egy vérszívó denevért és követik bármi nyomát, ami a "
 "területükön áthalad."
 
-#. [object]
+#. [object]: id={ID}
 #: data/campaigns/Liberty/utils/utils.cfg:62
 msgid "Holy Ankh"
 msgstr "Szent Ankh"
 
-#. [object]
+#. [object]: id={ID}
 #: data/campaigns/Liberty/utils/utils.cfg:65
 msgid ""
 "You find a hefty pendant on a strange and ominous looking altar. It glows "
@@ -2763,7 +2765,7 @@ msgstr ""
 "Egy jókora medált találsz egy különös, lenyűgöző oltáron. Fényesen izzik, "
 "mikor felveszed!"
 
-#. [object]
+#. [object]: id={ID}
 #: data/campaigns/Liberty/utils/utils.cfg:66
 msgid ""
 "There is a strange altar here and a pendant on it. I don't want to touch it."

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-22 14:55+0100\n"
+"POT-Creation-Date: 2008-11-29 12:24+0100\n"
 "PO-Revision-Date: 2008-11-26 01:14+0100\n"
 "Last-Translator: Antonio Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#. [tutorial]
+#. [tutorial]: id=tutorial
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:41
 msgid ""
 "Hello translators! Tutorial is meant to be a little funny at the start, "
@@ -25,12 +25,12 @@ msgstr ""
 "nuovi giocatori. Cercate di dargli una forma divertente e spassosa! Se avete "
 "domande scrivete a rusty@rustcorp.com.au!"
 
-#. [tutorial]
+#. [tutorial]: id=tutorial
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:42
 msgid "Wesnoth Tutorial"
 msgstr "Esercitazione di Wesnoth"
 
-#. [side]: type=Fighter
+#. [side]: type=Fighter, id=student
 #. [command]
 #. [option]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:295
@@ -42,7 +42,7 @@ msgstr "Esercitazione di Wesnoth"
 msgid "Konrad"
 msgstr "Konrad"
 
-#. [unit]: type=Elder Mage
+#. [unit]: id=Delfador, type=Elder Mage
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:113
 msgid "Delfador"
 msgstr "Delfador"
@@ -77,7 +77,7 @@ msgstr "Ti fai uccidere"
 msgid "Who would you like to play?"
 msgstr "Con chi ti piacerebbe giocare?"
 
-#. [unit]: type=Fighteress
+#. [unit]: type=Fighteress, id=student
 #. [command]
 #. [option]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:365
@@ -208,44 +208,44 @@ msgstr ""
 "premere \"u\" per annullare la mossa e poi riprovare.\n"
 "*Premi il tasto sinistro o un tasto qualunque per continuare..."
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:313
 msgid "Good morning, Delfador! Is it time to attack things?"
 msgstr "Buongiorno, Delfador! È giunto il momento di imparare a combattere?"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:317
 msgid "Um, well..."
 msgstr "Uhm, vediamo..."
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:321
 msgid "Have you found an orc for me to fight, huh? A troll?"
 msgstr "Be' hai trovato un orco da farmi combattere? Oppure un troll?"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:325
 msgid "Quiet! I will summon an enemy for you..."
 msgstr "Silenzio! Evocherò un potente nemico da affrontare..."
 
 #. [event]
-#. [unit_type]: race=mechanical
+#. [unit_type]: id=Quintain, race=mechanical
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:353
 #: data/campaigns/tutorial/units/Quintain.cfg:4
 msgid "Quintain"
 msgstr "Quintana"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:357
 msgid "... this quintain!"
 msgstr "... questa quintana!"
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:361
 msgid "A quintain? You want me to pretend to fight a dummy?"
 msgstr "Una quintana? Vuoi che combatta con un fantoccio!?"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:365
 msgid "Child, you have 32 hitpoints and a sword. I'm fairly sure you'll win."
 msgstr ""
@@ -279,22 +279,22 @@ msgstr ""
 msgid "Click on the quintain to attack it"
 msgstr "Fai clic sulla quintana per attaccare"
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:424
 msgid "Hey! This quintain fights back!"
 msgstr "Ehi! Questa quintana risponde agli attacchi!"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:428
 msgid "Hmm, maybe we should have started with a doll."
 msgstr "Uhm, forse avremmo dovuto cominciare con una bambola."
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:432
 msgid "Should I retreat?"
 msgstr "Mi devo ritirare?"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:436
 msgid "Good idea!"
 msgstr "Direi che è una buona idea!"
@@ -319,7 +319,7 @@ msgstr ""
 "venire ucciso durante la battaglia, perderesti la partita. Lo stesso "
 "accadrebbe se il tuo condottiero (Li'sar) cadesse in battaglia."
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:454
 msgid ""
 "Unfortunately, you've used up your turn attacking the quintain. The quintain "
@@ -328,12 +328,12 @@ msgstr ""
 "Sfortunatamente, hai utilizzato il tuo turno per attaccare la quintana. Ora, "
 "ovviamente, la quintana dovrà utilizzare il suo turno."
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:458
 msgid "The DUMMY gets a turn?"
 msgstr "Cosa? Quel FANTOCCIO ha il suo turno?"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:464
 msgid ""
 "Yes. It's a magical quintain.\n"
@@ -353,7 +353,7 @@ msgstr ""
 msgid "Click on the End Turn button on the bottom right"
 msgstr "Fai clic sul pulsante Fine turno in basso a destra"
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:488
 msgid "Ouch! I need to heal! Only $student_hp hitpoints left!"
 msgstr ""
@@ -367,7 +367,7 @@ msgstr ""
 msgid "Village"
 msgstr "Villaggio"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:493
 msgid ""
 "There is a village on the other side of the river. Visiting villages is a "
@@ -414,7 +414,7 @@ msgid "Click on the End Turn button"
 msgstr "Fai clic sul pulsante Fine turno"
 
 # La frase deve essere "neutra", perché si può riferire a Li'sar o a Konrad
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:563
 msgid ""
 "You're about to be healed by $hp_difference hitpoints, but I think you're "
@@ -423,7 +423,7 @@ msgstr ""
 "Stai per recuperare 8 punti ferita. Ma penso che avrai bisogno di aiuto "
 "contro quella quintana."
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:567
 msgid "I'll recruit some elves!"
 msgstr "Recluterò alcuni elfi!"
@@ -435,7 +435,7 @@ msgstr "Recluterò alcuni elfi!"
 msgid "Keep"
 msgstr "Fortezza"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:572
 msgid ""
 "A splendid idea. You can recruit two units if you return to the keep. You "
@@ -496,7 +496,7 @@ msgid "Right click on the other castle tile and Recruit another unit"
 msgstr ""
 "Fai clic col tasto destro sull'altro esagono libero e recluta un'altra unità"
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:695
 msgid ""
 "Hey, the quintain just healed 2 hitpoints! I'd better attack it at once!"
@@ -504,12 +504,12 @@ msgstr ""
 "Ehi, la quintana ha appena recuperato 2 punti ferita! Sarà meglio attaccarla "
 "subito!"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:699
 msgid "Yes, if a unit doesn't do anything for a turn, it will slowly heal."
 msgstr "Sì, se un'unità non fa niente per un turno, guarirà lentamente."
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:711
 msgid ""
 "But before you send your fighters against the quintain, you should know they "
@@ -518,12 +518,12 @@ msgstr ""
 "Ma prima di mandare i tuoi combattenti contro la quintana, devi sapere che "
 "hanno due tipi di attacco..."
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:715
 msgid "I'll tell them to use the one that does the most damage!"
 msgstr "Dirò loro di usare l'attacco che provoca più danni!"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:719
 msgid ""
 "And which would that be? The sword (5-4) or the bow (3-3)? I suppose you'll "
@@ -542,7 +542,7 @@ msgstr "Fai clic col tasto sinistro su un elfo combattente"
 msgid "End your turn and attack again."
 msgstr "Termina il turno e poi attacca di nuovo."
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:739
 msgid ""
 "You wouldn't do anything stupid like charging that quintain yourself again, "
@@ -558,7 +558,7 @@ msgstr ""
 msgid "Left click on the Quintain to attack it."
 msgstr "Fai clic col tasto sinistro sulla quintana per attaccarla."
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:784
 msgid ""
 "Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
@@ -569,7 +569,7 @@ msgstr ""
 "un attacco da mischia, quindi la quintana si è difesa con il suo (3-5). "
 "L'attacco a distanza sarebbe stato più sicuro."
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:792
 msgid ""
 "Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
@@ -582,7 +582,7 @@ msgstr ""
 "L'attacco a distanza sarebbe stato più sicuro.\n"
 "Finisci il tuo turno e poi attacca di nuovo."
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:804
 msgid ""
 "Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
@@ -599,7 +599,7 @@ msgstr ""
 msgid "Attack with the other Elf"
 msgstr "Attacca con l'altro elfo"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:836
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:854
 msgid ""
@@ -611,7 +611,7 @@ msgstr ""
 "danno per 3 attacchi). La quintana non possiede attacchi a distanza, ma solo "
 "da mischia, quindi non ha potuto difendersi."
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:844
 msgid ""
 "Your elf used a bow, which is a ranged attack (3-3; or 3 damage, 3 attacks). "
@@ -624,14 +624,14 @@ msgstr ""
 "da mischia, quindi non ha potuto difendersi.\n"
 "Finisci il tuo turno, quindi attacca di nuovo."
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:875
 msgid "Keep attacking with both elves until the quintain is finished!"
 msgstr ""
 "Continua ad attaccare con entrambi gli elfi, fino a quando la quintana non "
 "morirà!"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:889
 msgid "Maybe you should recruit another elf?"
 msgstr "Forse dovresti reclutare un altro elfo?"
@@ -709,7 +709,7 @@ msgstr ""
 msgid "The quintain is dead, sirs, and I have gained more experience!"
 msgstr "La quintana è morta, signori, e ho guadagnato esperienza!"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1001
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1005
 msgid ""
@@ -719,7 +719,7 @@ msgstr ""
 "Sì, guadagni esperienza mediante la battaglia, specialmente uccidendo un "
 "avversario: quando avrai abbastanza esperienza diventerai più potente."
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1002
 msgid ""
 " Now, Konrad, I will leave you with more dummies to practice on! After that, "
@@ -728,7 +728,7 @@ msgstr ""
 "Ora Konrad, ti lascio con qualche altro fantoccio per farti esercitare! "
 "Quando avrai finito inizieremo a lavorare sul serio..."
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1006
 msgid ""
 " Now, Li'sar, I will leave you with more dummies to practice on! After that, "
@@ -891,12 +891,12 @@ msgstr "Ho $side.gold monete: Abbastanza per reclutare!"
 msgid "Yes, keep recruiting more units: I think you might need them!"
 msgstr "Sì, continua a reclutare più unità: credo che ne avrai bisogno!"
 
-#. [tutorial]
+#. [tutorial]: id=2_Tutorial
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:286
 msgid "Wesnoth Tutorial Part II"
 msgstr "Esercitazione di Wesnoth - parte II"
 
-#. [side]: type=Orcish Warrior
+#. [side]: type=Orcish Warrior, id=Thrag
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:307
 msgid "Thrag"
 msgstr "Thrag"
@@ -923,7 +923,7 @@ msgstr "Fine dei turni"
 msgid "Death of Li'sar"
 msgstr "Morte di Li'sar"
 
-#. [unit]: type=Elvish Captain
+#. [unit]: id=Galdrad, type=Elvish Captain
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:388
 msgid "Galdrad"
 msgstr "Galdrad"
@@ -1158,7 +1158,7 @@ msgstr "Sposta Li'sar per catturare un villaggio"
 msgid "No! I said recruit an Elvish ARCHER! Now try again..."
 msgstr "No! Ti ho detto di reclutare un elfo ARCIERE! Forza, riprova..."
 
-#. [unit]: type=Elvish Archer
+#. [unit]: id=Eowynial, type=Elvish Archer
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:626
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:638
@@ -1175,7 +1175,7 @@ msgstr "Sciamana"
 msgid "Recruit an Elvish Shaman to your north"
 msgstr "Recluta una sciamana elfica a nord"
 
-#. [unit]: type=Elvish Archer
+#. [unit]: id=Elriend, type=Elvish Archer
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:665
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:676
@@ -1212,7 +1212,7 @@ msgstr ""
 "Andiamo bene... ti avevo detto di reclutare un elfo COMBATTENTE! Dai, "
 "riprova..."
 
-#. [unit]: type=Elvish Fighter
+#. [unit]: id=Golir, type=Elvish Fighter
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:730
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:741
@@ -1262,7 +1262,7 @@ msgstr ""
 "Un $recruit.language_name|? Ti ho detto di RECLUTARE un COMBATTENTE ELFICO! "
 "Dai, riprova..."
 
-#. [unit]: type=Elvish Fighter
+#. [unit]: id=Elindel, type=Elvish Fighter
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:834
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:845
@@ -1802,12 +1802,13 @@ msgstr ""
 "in modo specifico come campagna per principianti. Konrad, Li'sar e Delfador "
 "sono personaggi di L'erede al trono."
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Fighter, race=human
 #: data/campaigns/tutorial/units/Fighter.cfg:4
 msgid "Fighter"
 msgstr "Combattente"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Fighteress, race=human
+#. [unit_type]: id=Fighter, race=human
 #: data/campaigns/tutorial/units/Fighteress.cfg:17
 #: data/campaigns/tutorial/units/Fighter.cfg:17
 msgid ""
@@ -1824,7 +1825,7 @@ msgstr ""
 msgid "sword"
 msgstr "spada"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Fighteress, race=human
 #: data/campaigns/tutorial/units/Fighteress.cfg:4
 msgid "female^Fighter"
 msgstr "Combattente"
@@ -1834,7 +1835,7 @@ msgstr "Combattente"
 msgid "saber"
 msgstr "sciabola"
 
-#. [unit_type]: race=mechanical
+#. [unit_type]: id=Quintain, race=mechanical
 #: data/campaigns/tutorial/units/Quintain.cfg:14
 msgid ""
 "Quintains are used to practice swordplay and jousting on. It would be "

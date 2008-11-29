@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-22 14:55+0100\n"
+"POT-Creation-Date: 2008-11-29 12:24+0100\n"
 "PO-Revision-Date: 2008-02-21 22:51+1000\n"
 "Last-Translator: luojie <luojie-dune@operamail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#. [tutorial]
+#. [tutorial]: id=tutorial
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:41
 msgid ""
 "Hello translators! Tutorial is meant to be a little funny at the start, "
@@ -22,12 +22,12 @@ msgstr ""
 "教程是个开头，应该有趣点~欢迎新人吧。 有问题请找 rusty@rustcorp.com.au（英"
 "文）或wesnoth.cn（中文）"
 
-#. [tutorial]
+#. [tutorial]: id=tutorial
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:42
 msgid "Wesnoth Tutorial"
 msgstr "韦诺教程"
 
-#. [side]: type=Fighter
+#. [side]: type=Fighter, id=student
 #. [command]
 #. [option]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:295
@@ -39,7 +39,7 @@ msgstr "韦诺教程"
 msgid "Konrad"
 msgstr "孔列"
 
-#. [unit]: type=Elder Mage
+#. [unit]: id=Delfador, type=Elder Mage
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:113
 msgid "Delfador"
 msgstr "黎伐多"
@@ -75,7 +75,7 @@ msgstr "主角死亡."
 msgid "Who would you like to play?"
 msgstr "你打算控制谁来玩?"
 
-#. [unit]: type=Fighteress
+#. [unit]: type=Fighteress, id=student
 #. [command]
 #. [option]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:365
@@ -206,46 +206,46 @@ msgstr ""
 "你移动错地方啦!关闭这条消息后,你可以按键盘上的'U'键来撤销移动,然后再试一次.\n"
 "*点击任意键继续..."
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:313
 #, fuzzy
 msgid "Good morning, Delfador! Is it time to attack things?"
 msgstr "早上好,黎多伐! 现在是不是该做攻击练习了?"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:317
 msgid "Um, well..."
 msgstr "恩,好吧..."
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:321
 msgid "Have you found an orc for me to fight, huh? A troll?"
 msgstr "你能找个兽人来让我练练手吗?或者,弄个巨魔来也行."
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:325
 msgid "Quiet! I will summon an enemy for you..."
 msgstr "安静! 我会给你弄个对手..."
 
 #. [event]
-#. [unit_type]: race=mechanical
+#. [unit_type]: id=Quintain, race=mechanical
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:353
 #: data/campaigns/tutorial/units/Quintain.cfg:4
 msgid "Quintain"
 msgstr "刺靶"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:357
 msgid "... this quintain!"
 msgstr "... 这个刺靶!"
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:361
 #, fuzzy
 msgid "A quintain? You want me to pretend to fight a dummy?"
 msgstr "一个刺靶? 你是想让我假装在和一个假人对战吗?"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:365
 msgid "Child, you have 32 hitpoints and a sword. I'm fairly sure you'll win."
 msgstr "孩子, 你有32点生命值和一把剑. 你该不会打不过它吧."
@@ -277,22 +277,22 @@ msgstr ""
 msgid "Click on the quintain to attack it"
 msgstr "点击刺靶."
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:424
 msgid "Hey! This quintain fights back!"
 msgstr "嘿! 这个刺靶会反击!"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:428
 msgid "Hmm, maybe we should have started with a doll."
 msgstr "唔, 看来假人对你来说困难了点, 也许我们应该从一个玩偶开始的."
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:432
 msgid "Should I retreat?"
 msgstr "我应该撤退吗?"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:436
 msgid "Good idea!"
 msgstr "明智的选择."
@@ -317,19 +317,19 @@ msgstr ""
 "提示: 黎多伐旁边的那个银色小皇冠表明,如果他被杀的话游戏就会失败. 如果你的领袖"
 "(丽萨)被杀的话,游戏同样会失败."
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:454
 msgid ""
 "Unfortunately, you've used up your turn attacking the quintain. The quintain "
 "will now get a turn."
 msgstr "可惜你已经把你的回合用来攻击刺靶. 现在就要轮到刺靶的回合了."
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:458
 msgid "The DUMMY gets a turn?"
 msgstr "轮到这个假人了?"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:464
 #, fuzzy
 msgid ""
@@ -348,7 +348,7 @@ msgstr ""
 msgid "Click on the End Turn button on the bottom right"
 msgstr "单击右下角的'结束回合'按钮"
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:488
 #, fuzzy
 msgid "Ouch! I need to heal! Only $student_hp hitpoints left!"
@@ -361,7 +361,7 @@ msgstr "嗷! 我需要治疗! 我只剩 $student_hp 点生命了!"
 msgid "Village"
 msgstr "村庄"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:493
 #, fuzzy
 msgid ""
@@ -407,7 +407,7 @@ msgstr ""
 msgid "Click on the End Turn button"
 msgstr "点击'结束回合'按钮"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:563
 #, fuzzy
 msgid ""
@@ -415,7 +415,7 @@ msgid ""
 "going to need some help against that quintain."
 msgstr "你将回复8点生命. 但我认为你需要支援."
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:567
 msgid "I'll recruit some elves!"
 msgstr "我要召集些精灵!"
@@ -427,7 +427,7 @@ msgstr "我要召集些精灵!"
 msgid "Keep"
 msgstr "要塞"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:572
 #, fuzzy
 msgid ""
@@ -485,19 +485,19 @@ msgstr ""
 msgid "Right click on the other castle tile and Recruit another unit"
 msgstr "右键单击城堡的另一个格子并征募一个单位"
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:695
 #, fuzzy
 msgid ""
 "Hey, the quintain just healed 2 hitpoints! I'd better attack it at once!"
 msgstr "嘿, 这个刺靶刚恢复了2点生命! 我得赶快弄死它."
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:699
 msgid "Yes, if a unit doesn't do anything for a turn, it will slowly heal."
 msgstr ""
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:711
 #, fuzzy
 msgid ""
@@ -507,13 +507,13 @@ msgstr ""
 "是的, 如果一个单位在回合内什么都没做, 它就会缓慢地恢复生命.\n"
 "但是让你的战士去和刺靶战斗之前, 你应该知道他们有两种攻击..."
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:715
 #, fuzzy
 msgid "I'll tell them to use the one that does the most damage!"
 msgstr "哪种厉害用哪种!"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:719
 #, fuzzy
 msgid ""
@@ -532,7 +532,7 @@ msgstr "左键单击一个精灵战士"
 msgid "End your turn and attack again."
 msgstr "结束本回合，然后再次攻击。"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:739
 msgid ""
 "You wouldn't do anything stupid like charging that quintain yourself again, "
@@ -545,7 +545,7 @@ msgstr ""
 msgid "Left click on the Quintain to attack it."
 msgstr "左键单击刺靶."
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:784
 #, fuzzy
 msgid ""
@@ -556,7 +556,7 @@ msgstr ""
 "你的精灵使用了剑(5-4,也就是5伤害,攻击4次),这是一种近战攻击,所以刺靶会以它的近"
 "战攻击反击(3-5). 而远程攻击将会更安全."
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:792
 #, fuzzy
 msgid ""
@@ -569,7 +569,7 @@ msgstr ""
 "战攻击反击(3-5). 而远程攻击将会更安全.\n"
 "结束回合, 然后再次攻击."
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:804
 #, fuzzy
 msgid ""
@@ -588,7 +588,7 @@ msgstr ""
 msgid "Attack with the other Elf"
 msgstr "让另一个精灵攻击"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:836
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:854
 #, fuzzy
@@ -600,7 +600,7 @@ msgstr ""
 "你的精灵使用了弓箭,这是一种远程攻击(3-3,即3点伤害,攻击3次). 刺靶没有远程攻击,"
 "只有近战攻击,所以它不会反击."
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:844
 #, fuzzy
 msgid ""
@@ -613,13 +613,13 @@ msgstr ""
 "只有近战攻击,所以它不会反击.\n"
 "结束回合,然后再次攻击."
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:875
 #, fuzzy
 msgid "Keep attacking with both elves until the quintain is finished!"
 msgstr "让两个精灵继续攻击,直到刺靶被消灭!"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:889
 msgid "Maybe you should recruit another elf?"
 msgstr "或许你该再征募个精灵?"
@@ -693,7 +693,7 @@ msgstr ""
 msgid "The quintain is dead, sirs, and I have gained more experience!"
 msgstr "刺靶被消灭了,长官,我经验值上升了!"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1001
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1005
 #, fuzzy
@@ -704,7 +704,7 @@ msgstr ""
 "没错,你可以通过战斗获得经验值,特别是杀死敌对单位:获得足够的经验你就会变得更强"
 "大."
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1002
 #, fuzzy
 msgid ""
@@ -712,7 +712,7 @@ msgid ""
 "we have real work to do..."
 msgstr "现在,孔列,我将会留给你更多傀儡练习!结束之后,我们会有些真正的活干..."
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1006
 #, fuzzy
 msgid ""
@@ -872,12 +872,12 @@ msgstr "我现在有 $side.gold 金币:足够用来征募了!"
 msgid "Yes, keep recruiting more units: I think you might need them!"
 msgstr "对, 不停征募更多单位: 你会需要他们的!"
 
-#. [tutorial]
+#. [tutorial]: id=2_Tutorial
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:286
 msgid "Wesnoth Tutorial Part II"
 msgstr "韦诺教程 第二部分"
 
-#. [side]: type=Orcish Warrior
+#. [side]: type=Orcish Warrior, id=Thrag
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:307
 msgid "Thrag"
 msgstr "撒格"
@@ -904,7 +904,7 @@ msgstr "回合耗尽"
 msgid "Death of Li'sar"
 msgstr "丽萨死亡"
 
-#. [unit]: type=Elvish Captain
+#. [unit]: id=Galdrad, type=Elvish Captain
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:388
 msgid "Galdrad"
 msgstr "嘉德拉德"
@@ -1127,7 +1127,7 @@ msgstr "移动丽萨去占领一座村庄"
 msgid "No! I said recruit an Elvish ARCHER! Now try again..."
 msgstr "不对! 我说了征募一个精灵射手! 再试一次..."
 
-#. [unit]: type=Elvish Archer
+#. [unit]: id=Eowynial, type=Elvish Archer
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:626
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:638
@@ -1144,7 +1144,7 @@ msgstr "萨满"
 msgid "Recruit an Elvish Shaman to your north"
 msgstr "在你上方的格子里征募一个精灵萨满"
 
-#. [unit]: type=Elvish Archer
+#. [unit]: id=Elriend, type=Elvish Archer
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:665
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:676
@@ -1179,7 +1179,7 @@ msgstr "在你左边的格子中征募两个精灵射手"
 msgid "No! I said recruit an Elvish FIGHTER! Now try again..."
 msgstr "不对! 我说了征募一个精灵战士! 再试一次..."
 
-#. [unit]: type=Elvish Fighter
+#. [unit]: id=Golir, type=Elvish Fighter
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:730
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:741
@@ -1225,7 +1225,7 @@ msgid ""
 "again..."
 msgstr "$recruit.language_name|? 我说了征募一个新的精灵战士. 再试一次..."
 
-#. [unit]: type=Elvish Fighter
+#. [unit]: id=Elindel, type=Elvish Fighter
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:834
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:845
@@ -1744,12 +1744,13 @@ msgstr ""
 "Throne). The South Guard 是为初学者特别设计的战役.而孔列, 丽萨和黎多伐则是'继"
 "位者'(Heir to The Throne)战役中的人物."
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Fighter, race=human
 #: data/campaigns/tutorial/units/Fighter.cfg:4
 msgid "Fighter"
 msgstr "战士"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Fighteress, race=human
+#. [unit_type]: id=Fighter, race=human
 #: data/campaigns/tutorial/units/Fighteress.cfg:17
 #: data/campaigns/tutorial/units/Fighter.cfg:17
 #, fuzzy
@@ -1765,7 +1766,7 @@ msgstr ""
 msgid "sword"
 msgstr "剑"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Fighteress, race=human
 #: data/campaigns/tutorial/units/Fighteress.cfg:4
 msgid "female^Fighter"
 msgstr "战士"
@@ -1776,7 +1777,7 @@ msgstr "战士"
 msgid "saber"
 msgstr "军刀"
 
-#. [unit_type]: race=mechanical
+#. [unit_type]: id=Quintain, race=mechanical
 #: data/campaigns/tutorial/units/Quintain.cfg:14
 msgid ""
 "Quintains are used to practice swordplay and jousting on. It would be "

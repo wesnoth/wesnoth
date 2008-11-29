@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-22 14:55+0100\n"
+"POT-Creation-Date: 2008-11-29 12:24+0100\n"
 "PO-Revision-Date: 2008-03-12 08:21+0100\n"
 "Last-Translator: Foppe Benedictus <foppe.benedictus@gmail.com>\n"
 "Language-Team: Dutch <onne@grammex.com>\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-Language: Dutch\n"
 
-#. [tutorial]
+#. [tutorial]: id=tutorial
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:41
 msgid ""
 "Hello translators! Tutorial is meant to be a little funny at the start, "
@@ -23,12 +23,12 @@ msgid ""
 "rusty@rustcorp.com.au!"
 msgstr "Hoi"
 
-#. [tutorial]
+#. [tutorial]: id=tutorial
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:42
 msgid "Wesnoth Tutorial"
 msgstr "Cursus Wesnoth"
 
-#. [side]: type=Fighter
+#. [side]: type=Fighter, id=student
 #. [command]
 #. [option]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:295
@@ -40,7 +40,7 @@ msgstr "Cursus Wesnoth"
 msgid "Konrad"
 msgstr "Konrad"
 
-#. [unit]: type=Elder Mage
+#. [unit]: id=Delfador, type=Elder Mage
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:113
 msgid "Delfador"
 msgstr "Delfador"
@@ -76,7 +76,7 @@ msgstr "Doodgaan"
 msgid "Who would you like to play?"
 msgstr "Met wie wil je spelen?"
 
-#. [unit]: type=Fighteress
+#. [unit]: type=Fighteress, id=student
 #. [command]
 #. [option]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:365
@@ -214,46 +214,46 @@ msgstr ""
 "drukken om je zet ongedaan te maken en het opnieuw te proberen.\n"
 "*Klik met de muis of druk op een toets om verder te gaan..."
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:313
 #, fuzzy
 msgid "Good morning, Delfador! Is it time to attack things?"
 msgstr "Goedemorgen Delfador! Kunnen we dingen gaan aanvallen?"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:317
 msgid "Um, well..."
 msgstr "Ehm, nou..."
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:321
 msgid "Have you found an orc for me to fight, huh? A troll?"
 msgstr "Heb je een ork voor me? Of een trol?"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:325
 msgid "Quiet! I will summon an enemy for you..."
 msgstr "Zwijg! Ik zal een vijand voor je oproepen..."
 
 #. [event]
-#. [unit_type]: race=mechanical
+#. [unit_type]: id=Quintain, race=mechanical
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:353
 #: data/campaigns/tutorial/units/Quintain.cfg:4
 msgid "Quintain"
 msgstr "Stropop"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:357
 msgid "... this quintain!"
 msgstr "... deze stropop!"
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:361
 #, fuzzy
 msgid "A quintain? You want me to pretend to fight a dummy?"
 msgstr "Een stropop? Je wilt me tegen een pop laten vechten??"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:365
 msgid "Child, you have 32 hitpoints and a sword. I'm fairly sure you'll win."
 msgstr ""
@@ -288,22 +288,22 @@ msgstr ""
 msgid "Click on the quintain to attack it"
 msgstr "Klik op de stropop om hem aan te vallen"
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:424
 msgid "Hey! This quintain fights back!"
 msgstr "He! Deze stropop vecht terug!"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:428
 msgid "Hmm, maybe we should have started with a doll."
 msgstr "Hmm, misschien hadden we met een kleinere pop moeten beginnen."
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:432
 msgid "Should I retreat?"
 msgstr "Moet ik me terugtrekken?"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:436
 msgid "Good idea!"
 msgstr "Goed idee!"
@@ -330,7 +330,7 @@ msgstr ""
 "verliest als hij omkomt. Je verliest het spel ook als je aanvoerder (Li'sar) "
 "sterft."
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:454
 msgid ""
 "Unfortunately, you've used up your turn attacking the quintain. The quintain "
@@ -339,12 +339,12 @@ msgstr ""
 "Helaas heb je je beurt verbruikt door de stropop aan te vallen. De stropop "
 "is nu aan de beurt."
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:458
 msgid "The DUMMY gets a turn?"
 msgstr "De POP is aan de beurt?"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:464
 #, fuzzy
 msgid ""
@@ -365,7 +365,7 @@ msgstr ""
 msgid "Click on the End Turn button on the bottom right"
 msgstr "Klik op de 'Einde beurt'-knop rechtsonder"
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:488
 #, fuzzy
 msgid "Ouch! I need to heal! Only $student_hp hitpoints left!"
@@ -378,7 +378,7 @@ msgstr "Oef! Ik moet herstellen! Slechts $student_hp HP over!"
 msgid "Village"
 msgstr "Dorp"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:493
 #, fuzzy
 msgid ""
@@ -426,7 +426,7 @@ msgstr ""
 msgid "Click on the End Turn button"
 msgstr "Klik op de 'Einde beurt'-knop"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:563
 #, fuzzy
 msgid ""
@@ -436,7 +436,7 @@ msgstr ""
 "Je krijgt straks 8 hitpoints erbij. Maar ik denk dat je wat hulp nodig hebt "
 "tegen die stropop."
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:567
 msgid "I'll recruit some elves!"
 msgstr "Ik zal wat elfen rekruteren!"
@@ -448,7 +448,7 @@ msgstr "Ik zal wat elfen rekruteren!"
 msgid "Keep"
 msgstr "Donjon"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:572
 #, fuzzy
 msgid ""
@@ -510,7 +510,7 @@ msgstr ""
 msgid "Right click on the other castle tile and Recruit another unit"
 msgstr "Rechtsklik op een ander kasteelvakje en Rekruteer nog een eenheid"
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:695
 #, fuzzy
 msgid ""
@@ -519,12 +519,12 @@ msgstr ""
 "He! De stropop kreeg er zomaar twee hitpoints bij! Ik moet hem snel "
 "aanvallen!"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:699
 msgid "Yes, if a unit doesn't do anything for a turn, it will slowly heal."
 msgstr ""
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:711
 #, fuzzy
 msgid ""
@@ -535,13 +535,13 @@ msgstr ""
 "Voordat je je krijgers op de stropop afstuurt, moet je weten dat ze op twee "
 "manieren kunnen aanvallen..."
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:715
 #, fuzzy
 msgid "I'll tell them to use the one that does the most damage!"
 msgstr "Ik zal ze die aanval laten gebruiken die de meeste schade toebrengt!"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:719
 #, fuzzy
 msgid ""
@@ -562,7 +562,7 @@ msgstr "Klik op een elfenkrijger"
 msgid "End your turn and attack again."
 msgstr "Beëindig je beurt alvorens nogmaals aan te vallen."
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:739
 msgid ""
 "You wouldn't do anything stupid like charging that quintain yourself again, "
@@ -575,7 +575,7 @@ msgstr ""
 msgid "Left click on the Quintain to attack it."
 msgstr "Klik op de stropop om hem aan te vallen."
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:784
 #, fuzzy
 msgid ""
@@ -587,7 +587,7 @@ msgstr ""
 "een wapen dat van dichtbij gebruikt wordt, en dus heeft de stropop van "
 "dichtbij verdedigd. De aanval op afstand was veiliger geweest."
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:792
 #, fuzzy
 msgid ""
@@ -601,7 +601,7 @@ msgstr ""
 "dichtbij verdedigd. De aanval op afstand was veiliger geweest.\n"
 "Beëindig je beurt en val nogmaals aan."
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:804
 #, fuzzy
 msgid ""
@@ -620,7 +620,7 @@ msgstr ""
 msgid "Attack with the other Elf"
 msgstr "Val aan met de andere elf"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:836
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:854
 #, fuzzy
@@ -633,7 +633,7 @@ msgstr ""
 "3 klappen). De stropop kan niet aanvallen van afstand, alleen van dichtbij "
 "en kon zich dus niet verdedigen."
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:844
 #, fuzzy
 msgid ""
@@ -647,13 +647,13 @@ msgstr ""
 "en kon zich dus niet verdedigen.\n"
 "Beëindig je beurt en val nogmaals aan."
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:875
 #, fuzzy
 msgid "Keep attacking with both elves until the quintain is finished!"
 msgstr "Blijf aanvallen, met beide elfen, tot de stropop er geweest is!"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:889
 msgid "Maybe you should recruit another elf?"
 msgstr "Misschien moet je nog een elf rekruteren?"
@@ -731,7 +731,7 @@ msgstr ""
 msgid "The quintain is dead, sirs, and I have gained more experience!"
 msgstr "Heer, de stropop is dood en ik heb ervaring opgedaan!"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1001
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1005
 #, fuzzy
@@ -742,7 +742,7 @@ msgstr ""
 "Ja, je doet ervaring op in de strijd, met name door het verslaan van een "
 "vijand. Als je genoeg ervaring opdoet zul je promoveren."
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1002
 #, fuzzy
 msgid ""
@@ -752,7 +752,7 @@ msgstr ""
 "Wel Konrad, ik zal je nog wat poppen geven om op te oefenen. Daarna is er "
 "echt werk te doen..."
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1006
 #, fuzzy
 msgid ""
@@ -923,12 +923,12 @@ msgstr "Ik heb $side.gold goudstukken: genoeg om te rekruteren!"
 msgid "Yes, keep recruiting more units: I think you might need them!"
 msgstr "Ja, blijf meer eenheden rekruteren: je zult ze nodig hebben!"
 
-#. [tutorial]
+#. [tutorial]: id=2_Tutorial
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:286
 msgid "Wesnoth Tutorial Part II"
 msgstr "Cursus Wesnoth Deel II"
 
-#. [side]: type=Orcish Warrior
+#. [side]: type=Orcish Warrior, id=Thrag
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:307
 msgid "Thrag"
 msgstr "Thrag"
@@ -955,7 +955,7 @@ msgstr "Overschrijding van het aantal beurten"
 msgid "Death of Li'sar"
 msgstr "Dood van Li'sar"
 
-#. [unit]: type=Elvish Captain
+#. [unit]: id=Galdrad, type=Elvish Captain
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:388
 msgid "Galdrad"
 msgstr "Galdrad"
@@ -1195,7 +1195,7 @@ msgstr "Laat Li'sar een dorp innemen"
 msgid "No! I said recruit an Elvish ARCHER! Now try again..."
 msgstr "Nee! Ik zei: rekruteer een elfenBOOGSCHUTTER! Probeer het nog eens..."
 
-#. [unit]: type=Elvish Archer
+#. [unit]: id=Eowynial, type=Elvish Archer
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:626
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:638
@@ -1212,7 +1212,7 @@ msgstr "Sjamaan"
 msgid "Recruit an Elvish Shaman to your north"
 msgstr "Rekruteer een elfensjamaan ten noorden van je"
 
-#. [unit]: type=Elvish Archer
+#. [unit]: id=Elriend, type=Elvish Archer
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:665
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:676
@@ -1247,7 +1247,7 @@ msgstr "Rekruteer twee elfenboogschutters op de vakjes ten westen van je"
 msgid "No! I said recruit an Elvish FIGHTER! Now try again..."
 msgstr "Nee! Ik zei: rekruteer een elfenKRIJGER! Probeer het nog eens..."
 
-#. [unit]: type=Elvish Fighter
+#. [unit]: id=Golir, type=Elvish Fighter
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:730
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:741
@@ -1300,7 +1300,7 @@ msgstr ""
 "$recruit.language_name|? Ik zei: REKRUTEER een nieuwe elfenKRIJGER! Probeer "
 "het nog eens..."
 
-#. [unit]: type=Elvish Fighter
+#. [unit]: id=Elindel, type=Elvish Fighter
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:834
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:845
@@ -1870,12 +1870,13 @@ msgstr ""
 "De zuidelijke wacht is specifiek ontworpen als beginnersveldtocht. Konrad, "
 "Li'sar en Delfador zijn karakters uit De kroonprins."
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Fighter, race=human
 #: data/campaigns/tutorial/units/Fighter.cfg:4
 msgid "Fighter"
 msgstr "Krijger"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Fighteress, race=human
+#. [unit_type]: id=Fighter, race=human
 #: data/campaigns/tutorial/units/Fighteress.cfg:17
 #: data/campaigns/tutorial/units/Fighter.cfg:17
 #, fuzzy
@@ -1893,7 +1894,7 @@ msgstr ""
 msgid "sword"
 msgstr "zwaard"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Fighteress, race=human
 #: data/campaigns/tutorial/units/Fighteress.cfg:4
 msgid "female^Fighter"
 msgstr "Krijger"
@@ -1904,7 +1905,7 @@ msgstr "Krijger"
 msgid "saber"
 msgstr "sabel"
 
-#. [unit_type]: race=mechanical
+#. [unit_type]: id=Quintain, race=mechanical
 #: data/campaigns/tutorial/units/Quintain.cfg:14
 msgid ""
 "Quintains are used to practice swordplay and jousting on. It would be "

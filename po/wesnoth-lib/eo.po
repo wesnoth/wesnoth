@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.4-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-27 19:52+0100\n"
+"POT-Creation-Date: 2008-11-29 12:24+0100\n"
 "PO-Revision-Date: 2008-03-01 17:08+0200\n"
 "Last-Translator: Aleksej Korgenkov <grimpanto@mail.ru>\n"
 "Language-Team: none\n"
@@ -16,33 +16,41 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-Language: Esperanto\n"
 
-#. [terrain]
+#. [terrain]: id=off_map
 #: data/core/terrain.cfg:13
 msgid "None"
 msgstr "Neniu"
 
-#. [toggle_button]
-#. [terrain]
+#. [toggle_button]: id=shroud
+#. [terrain]: id=shroud
 #: data/core/terrain.cfg:22 data/gui/default/window/mp_create_game.cfg:473
 msgid "Shroud"
 msgstr "Vualo"
 
-#. [terrain]
+#. [terrain]: id=fog
 #: data/core/terrain.cfg:31
 msgid "Fog"
 msgstr "Nebulo"
 
-#. [terrain]
+#. [terrain]: id=ice
 #: data/core/terrain.cfg:43
 msgid "Ice"
 msgstr "Glacio"
 
-#. [terrain]
+#. [terrain]: id=snow
 #: data/core/terrain.cfg:53
 msgid "Snow"
 msgstr "Neĝo"
 
-#. [terrain]
+#. [terrain]: id=bridge
+#. [terrain]: id=bridgediag1
+#. [terrain]: id=bridgediag2
+#. [terrain]: id=bridgechasm
+#. [terrain]: id=bridgechasmdiag1
+#. [terrain]: id=bridgechasmdiag2
+#. [terrain]: id=bridgelava
+#. [terrain]: id=bridgelavadiag1
+#. [terrain]: id=bridglavadiag2
 #: data/core/terrain.cfg:66 data/core/terrain.cfg:75 data/core/terrain.cfg:84
 #: data/core/terrain.cfg:95 data/core/terrain.cfg:104
 #: data/core/terrain.cfg:114 data/core/terrain.cfg:126
@@ -50,33 +58,40 @@ msgstr "Neĝo"
 msgid "Bridge"
 msgstr "Ponto"
 
-#. [terrain]
+#. [terrain]: id=encampment
 #: data/core/terrain.cfg:162
 msgid "Encampment"
 msgstr "Tendaro"
 
-#. [terrain]
+#. [terrain]: id=castle
+#. [terrain]: id=dwarven_castle
 #: data/core/terrain.cfg:173 data/core/terrain.cfg:183
 #: data/core/terrain.cfg:194
 msgid "Castle"
 msgstr "Kastelo"
 
-#. [terrain]
+#. [terrain]: id=ruin
 #: data/core/terrain.cfg:205
 msgid "Ruin"
 msgstr "Ruino"
 
-#. [terrain]
+#. [terrain]: id=sunkenruin
 #: data/core/terrain.cfg:216
 msgid "Sunken Ruin"
 msgstr "Subakvigita Ruino"
 
-#. [terrain]
+#. [terrain]: id=swampruin
 #: data/core/terrain.cfg:228
 msgid "Swamp Ruin"
 msgstr "Marĉa Ruino"
 
-#. [terrain]
+#. [terrain]: id=encampment_keep
+#. [terrain]: id=human_keep
+#. [terrain]: id=elven_keep
+#. [terrain]: id=dwarven_keep
+#. [terrain]: id=ruined_keep
+#. [terrain]: id=sunken_keep
+#. [terrain]: id=swamp_keep
 #: data/core/terrain.cfg:253 data/core/terrain.cfg:265
 #: data/core/terrain.cfg:277 data/core/terrain.cfg:289
 #: data/core/terrain.cfg:301 data/core/terrain.cfg:313
@@ -84,163 +99,187 @@ msgstr "Marĉa Ruino"
 msgid "Keep"
 msgstr "Defendejo"
 
-#. [terrain]
+#. [terrain]: id=crater
 #: data/core/terrain.cfg:351
 msgid "Crater"
 msgstr "Kratero"
 
-#. [terrain]
+#. [terrain]: id=desert
 #: data/core/terrain.cfg:361
 msgid "Desert"
 msgstr "Dezerto"
 
-#. [terrain]
+#. [terrain]: id=sand_rubble
 #: data/core/terrain.cfg:371
 msgid "Rubble"
 msgstr "Restaĵoj"
 
-#. [terrain]
+#. [terrain]: id=sand
 #: data/core/terrain.cfg:382
 msgid "Sand"
 msgstr "Sablo"
 
-#. [terrain]
+#. [terrain]: id=oasis
 #: data/core/terrain.cfg:390
 msgid "Oasis"
 msgstr "Oazo"
 
-#. [terrain]
+#. [terrain]: id=snow_forest
 #: data/core/terrain.cfg:405
 msgid "Snow Forest"
 msgstr "Neĝa Arbaro"
 
-#. [terrain]
+#. [terrain]: id=great_tree
 #: data/core/terrain.cfg:416
 msgid "Great Tree"
 msgstr "Granda Arbo"
 
-#. [terrain]
+#. [terrain]: id=forest
 #: data/core/terrain.cfg:426
 msgid "Forest"
 msgstr "Arbaro"
 
-#. [terrain]
+#. [terrain]: id=tropical_forest
 #: data/core/terrain.cfg:435
 msgid "Tropical Forest"
 msgstr "Tropika arbaro"
 
-#. [terrain]
+#. [terrain]: id=forested_hills
 #: data/core/terrain.cfg:449
 #, fuzzy
 msgid "Forested Hills"
 msgstr "Arbaro"
 
-#. [terrain]
+#. [terrain]: id=forested_snow_hills
 #: data/core/terrain.cfg:459
 #, fuzzy
 msgid "Forested Snow Hills"
 msgstr "Neĝaj montetoj"
 
-#. [terrain]
+#. [terrain]: id=grassland
+#. [terrain]: id=grassland_flowers
+#. [terrain]: id=windmill
 #: data/core/terrain.cfg:473 data/core/terrain.cfg:482
 #: data/core/terrain.cfg:491
 msgid "Grassland"
 msgstr "Herbejo"
 
-#. [terrain]
+#. [terrain]: id=savanna
 #: data/core/terrain.cfg:500
 msgid "Savanna"
 msgstr "Savano"
 
-#. [terrain]
+#. [terrain]: id=snow_hills
 #: data/core/terrain.cfg:513
 msgid "Snow Hills"
 msgstr "Neĝaj montetoj"
 
-#. [terrain]
+#. [terrain]: id=desert_hills
 #: data/core/terrain.cfg:523
 msgid "Dunes"
 msgstr "Dunoj"
 
-#. [terrain]
+#. [terrain]: id=hills
 #: data/core/terrain.cfg:533
 msgid "Hills"
 msgstr "Montetoj"
 
-#. [terrain]
+#. [terrain]: id=desert_mountains
+#. [terrain]: id=mountains
+#. [terrain]: id=snow_mountains
 #: data/core/terrain.cfg:545 data/core/terrain.cfg:554
 #: data/core/terrain.cfg:562
 msgid "Mountains"
 msgstr "Montoj"
 
-#. [terrain]
+#. [terrain]: id=canyon
 #: data/core/terrain.cfg:576
 msgid "Chasm"
 msgstr "Abismo"
 
-#. [terrain]
+#. [terrain]: id=lava_chasm
 #: data/core/terrain.cfg:585
 msgid "Lava chasm"
 msgstr "Lafa abismo"
 
-#. [terrain]
+#. [terrain]: id=lava
 #: data/core/terrain.cfg:595
 msgid "Lava"
 msgstr "Lafo"
 
-#. [terrain]
+#. [terrain]: id=road
+#. [terrain]: id=stone_path
 #: data/core/terrain.cfg:609 data/core/terrain.cfg:627
 #: data/core/terrain.cfg:636
 msgid "Road"
 msgstr "Vojo"
 
-#. [terrain]
+#. [terrain]: id=dirt
 #: data/core/terrain.cfg:618
 msgid "Dirt"
 msgstr "Koto"
 
-#. [terrain]
+#. [terrain]: id=farm
 #: data/core/terrain.cfg:645
 msgid "Farmland"
 msgstr "Plugkampo"
 
-#. [terrain]
+#. [terrain]: id=swamp_water
 #: data/core/terrain.cfg:659
 msgid "Swamp"
 msgstr "Marĉo"
 
-#. [terrain]
+#. [terrain]: id=lit
 #: data/core/terrain.cfg:673
 msgid "Lit"
 msgstr ""
 
-#. [terrain]
+#. [terrain]: id=cave
 #: data/core/terrain.cfg:683
 msgid "Cave"
 msgstr "Kaverno"
 
-#. [terrain]
+#. [terrain]: id=cave_path
 #: data/core/terrain.cfg:701
 #, fuzzy
 msgid "Cave path"
 msgstr "Lumigita Kaverno"
 
-#. [terrain]
+#. [terrain]: id=fungus
 #: data/core/terrain.cfg:710
 msgid "Mushroom Grove"
 msgstr "Funga Bosko"
 
-#. [terrain]
+#. [terrain]: id=fungus_beam
 #: data/core/terrain.cfg:719
 msgid "Mushroom Grove Lit"
 msgstr "Lumigita Funga Bosko"
 
-#. [terrain]
+#. [terrain]: id=rocky_cave
 #: data/core/terrain.cfg:730
 msgid "Rockbound Cave"
 msgstr "Ŝtona kaverno"
 
-#. [terrain]
+#. [terrain]: id=desert_village
+#. [terrain]: id=elven_snow_village
+#. [terrain]: id=village
+#. [terrain]: id=snow_village
+#. [terrain]: id=hill_village
+#. [terrain]: id=snow-hill_village
+#. [terrain]: id=snow-mountain_village
+#. [terrain]: id=mountain_village
+#. [terrain]: id=tropical_forest_village
+#. [terrain]: id=camp_village
+#. [terrain]: id=underground_village
+#. [terrain]: id=dwarven_village
+#. [terrain]: id=hut_village
+#. [terrain]: id=hut_snow_village
+#. [terrain]: id=hut_hills_village
+#. [terrain]: id=hut_snow_hills_village
+#. [terrain]: id=hut_mountains_village
+#. [terrain]: id=mermen_village
+#. [terrain]: id=swamp_village
+#. [terrain]: id=swamp_merfolk-village
 #: data/core/terrain.cfg:757 data/core/terrain.cfg:768
 #: data/core/terrain.cfg:781 data/core/terrain.cfg:792
 #: data/core/terrain.cfg:805 data/core/terrain.cfg:816
@@ -256,70 +295,70 @@ msgstr "Ŝtona kaverno"
 msgid "Village"
 msgstr "Vilaĝo"
 
-#. [terrain]
+#. [terrain]: id=deep_water
 #: data/core/terrain.cfg:1026
 msgid "Deep Water"
 msgstr "Profunda Akvo"
 
-#. [terrain]
+#. [terrain]: id=shallow_water
 #: data/core/terrain.cfg:1036
 msgid "Shallow Water"
 msgstr "Malprofunda akvo"
 
-#. [terrain]
+#. [terrain]: id=ford
 #: data/core/terrain.cfg:1046
 msgid "River Ford"
 msgstr "Travadejo"
 
-#. [terrain]
+#. [terrain]: id=reef
 #: data/core/terrain.cfg:1057
 #, fuzzy
 msgid "Coastal Reef"
 msgstr "Bordregiono"
 
-#. [terrain]
+#. [terrain]: id=cloud
 #: data/core/terrain.cfg:1071
 msgid "Impassable Mountains"
 msgstr "Netrapaseblaj Montoj"
 
-#. [terrain]
+#. [terrain]: id=clouddesert
 #: data/core/terrain.cfg:1080
 msgid "Impassable Desert Mountains"
 msgstr "Netrapaseblaj Dezertaj Montoj"
 
-#. [terrain]
+#. [terrain]: id=cavewall
 #: data/core/terrain.cfg:1089
 msgid "Cave Wall"
 msgstr "Muro de Kaverno"
 
-#. [terrain]
+#. [terrain]: id=wall_stone
 #: data/core/terrain.cfg:1098
 #, fuzzy
 msgid "Wall"
 msgstr "Muro de Kaverno"
 
-#. [terrain]
+#. [terrain]: id=void
 #: data/core/terrain.cfg:1108
 msgid "Void"
 msgstr "Vaka"
 
-#. [terrain]
+#. [terrain]: id=flat
 #: data/core/terrain.cfg:1121
 msgid "Flat"
 msgstr ""
 
-#. [terrain]
+#. [terrain]: id=frozen
 #: data/core/terrain.cfg:1128
 msgid "Frozen"
 msgstr ""
 
-#. [terrain]
+#. [terrain]: id=impassable
 #: data/core/terrain.cfg:1135
 #, fuzzy
 msgid "Impassable"
 msgstr "Netrapaseblaj Montoj"
 
-#. [terrain]
+#. [terrain]: id=unwalkable
 #: data/core/terrain.cfg:1142
 msgid "Unwalkable"
 msgstr ""
@@ -359,7 +398,7 @@ msgstr "Ĝisdatigi trapasojn"
 msgid "Remove Add-ons"
 msgstr "Forigi"
 
-#. [button]
+#. [button]: id=ok
 #: data/gui/default/window/addon_connect.cfg:201
 #: data/gui/default/window/addon_connect.cfg:202
 #: data/gui/default/window/mp_connect.cfg:175
@@ -368,7 +407,7 @@ msgid "Connect"
 msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
-#. [button]
+#. [button]: id=cancel
 #: data/gui/default/window/addon_connect.cfg:216
 #: data/gui/default/window/editor_generate_map.cfg:111
 #: data/gui/default/window/editor_new_map.cfg:111
@@ -388,21 +427,21 @@ msgstr "Nuligu"
 msgid "Generate Random Map"
 msgstr "Generi Hazardan Mapon"
 
-#. [button]
+#. [button]: id=next_generator
 #: data/gui/default/window/editor_generate_map.cfg:67
 #: data/gui/default/window/editor_generate_map.cfg:68
 #, fuzzy
 msgid "Next Generator"
 msgstr "Generatoro de mapoj"
 
-#. [button]
+#. [button]: id=settings
 #: data/gui/default/window/editor_generate_map.cfg:90
 #: data/gui/default/window/editor_generate_map.cfg:91
 #, fuzzy
 msgid "Settings"
 msgstr "Klavkomandaj preferoj"
 
-#. [button]
+#. [button]: id=ok
 #: data/gui/default/window/editor_generate_map.cfg:101
 #, fuzzy
 msgid "Generate"
@@ -426,7 +465,7 @@ msgstr "Larĝeco:"
 msgid "Height:"
 msgstr "Alteco:"
 
-#. [button]
+#. [button]: id=ok
 #: data/gui/default/window/editor_new_map.cfg:100
 #: data/gui/default/window/editor_new_map.cfg:101
 #, fuzzy
@@ -468,12 +507,12 @@ msgstr "Alteco:"
 msgid "Expand / shrink direction"
 msgstr ""
 
-#. [toggle_button]
+#. [toggle_button]: id=copy_edge_terrain
 #: data/gui/default/window/editor_resize_map.cfg:242
 msgid "Copy edge terrain"
 msgstr ""
 
-#. [button]
+#. [button]: id=ok
 #: data/gui/default/window/editor_resize_map.cfg:264
 #: data/gui/default/window/editor_resize_map.cfg:265
 #, fuzzy
@@ -492,19 +531,19 @@ msgstr "Klavkomandaj preferoj"
 msgid "Time of day lighting preset"
 msgstr ""
 
-#. [button]
+#. [button]: id=next_tod
 #: data/gui/default/window/editor_settings.cfg:75
 #: data/gui/default/window/editor_settings.cfg:76
 #, fuzzy
 msgid "Next"
 msgstr "Plua Unuo"
 
-#. [toggle_button]
+#. [toggle_button]: id=custom_tod_toggle
 #: data/gui/default/window/editor_settings.cfg:83
 msgid "Custom lighting setting"
 msgstr ""
 
-#. [toggle_button]
+#. [toggle_button]: id=custom_tod_auto_refresh
 #: data/gui/default/window/editor_settings.cfg:93
 msgid "Auto-update map view"
 msgstr ""
@@ -526,20 +565,21 @@ msgstr "Frekvenco:"
 msgid "Blue:"
 msgstr ""
 
-#. [toggle_button]
+#. [toggle_button]: id=use_mdi
 #: data/gui/default/window/editor_settings.cfg:208
 msgid "Allow more than one map to be open at the same time (MDI)"
 msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
-#. [button]
+#. [button]: id=ok
 #: data/gui/default/window/editor_settings.cfg:230
+#: data/gui/default/window/mp_method_selection.cfg:205
 #: src/construct_dialog.cpp:125 src/construct_dialog.cpp:132
 msgid "OK"
 msgstr "En ordo"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
-#. [button]
+#. [button]: id=apply
 #: data/gui/default/window/editor_settings.cfg:250
 #: src/game_preferences_display.cpp:188
 msgid "Apply"
@@ -557,7 +597,7 @@ msgstr ""
 msgid "Choose your preferred language:"
 msgstr ""
 
-#. [button]
+#. [button]: id=ok
 #: data/gui/default/window/language_selection.cfg:121
 #: data/gui/default/window/language_selection.cfg:122
 #, fuzzy
@@ -570,7 +610,7 @@ msgstr "Ŝanghi lingvon"
 msgid "You will now connect to the multiplayer server."
 msgstr ""
 
-#. [button]
+#. [button]: id=list
 #: data/gui/default/window/mp_connect.cfg:148
 #, fuzzy
 msgid "View List"
@@ -583,19 +623,19 @@ msgid "Create Game"
 msgstr "Konservi la ludon"
 
 #. [label]
-#. [text_box]
+#. [text_box]: id=game_name
 #: data/gui/default/window/mp_create_game.cfg:62
 #: data/gui/default/window/mp_create_game.cfg:77
 msgid "Name of game:"
 msgstr ""
 
-#. [label]
+#. [label]: id=map_players
 #: data/gui/default/window/mp_create_game.cfg:140
 #, fuzzy
 msgid "Players: "
 msgstr "Ludantoj:"
 
-#. [label]
+#. [label]: id=map_size
 #: data/gui/default/window/mp_create_game.cfg:159
 msgid "Map size: "
 msgstr ""
@@ -605,13 +645,13 @@ msgstr ""
 msgid "Era:"
 msgstr ""
 
-#. [button]
+#. [button]: id=era
 #: data/gui/default/window/mp_create_game.cfg:196
 #, fuzzy
 msgid "Default"
 msgstr "Defaŭlta zomo"
 
-#. [button]
+#. [button]: id=password
 #: data/gui/default/window/mp_create_game.cfg:218
 msgid "Set Password"
 msgstr ""
@@ -621,7 +661,7 @@ msgstr ""
 msgid "Map to play:"
 msgstr ""
 
-#. [toggle_button]
+#. [toggle_button]: id=use_map_settings
 #: data/gui/default/window/mp_create_game.cfg:315
 msgid "Use map settings"
 msgstr ""
@@ -632,7 +672,7 @@ msgstr ""
 msgid "Number of turns"
 msgstr "Nombro de Montetoj:"
 
-#. [slider]
+#. [slider]: id=turn_count
 #: data/gui/default/window/mp_create_game.cfg:356
 msgid "Unlimited"
 msgstr ""
@@ -648,17 +688,17 @@ msgstr "Vilaĝo"
 msgid "Experience modifier"
 msgstr ""
 
-#. [toggle_button]
+#. [toggle_button]: id=fog
 #: data/gui/default/window/mp_create_game.cfg:454
 msgid "Fog of War"
 msgstr ""
 
-#. [toggle_button]
+#. [toggle_button]: id=random_start_time
 #: data/gui/default/window/mp_create_game.cfg:495
 msgid "Random start time"
 msgstr ""
 
-#. [button]
+#. [button]: id=ok
 #: data/gui/default/window/mp_create_game.cfg:537
 #, fuzzy
 msgid "Create game"
@@ -713,11 +753,6 @@ msgstr "Legi ludon"
 msgid "Play a multiplayer game with the AI or humans sharing the same machine"
 msgstr ""
 
-#. [button]
-#: data/gui/default/window/mp_method_selection.cfg:205
-msgid "Ok"
-msgstr ""
-
 #. [label]
 #: data/gui/default/window/mp_server_list.cfg:84
 #, fuzzy
@@ -729,7 +764,7 @@ msgstr "Nomo:"
 msgid "Address"
 msgstr ""
 
-#. [button]
+#. [button]: id=ok
 #: data/gui/default/window/mp_server_list.cfg:198
 #, fuzzy
 msgid "Select"

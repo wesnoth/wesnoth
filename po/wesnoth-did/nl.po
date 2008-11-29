@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nl_wesnoth-did\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-22 20:14+0100\n"
+"POT-Creation-Date: 2008-11-29 12:24+0100\n"
 "PO-Revision-Date: 2008-11-22 19:02+0100\n"
 "Last-Translator: Alexander van Gessel (AI/AI0867) <AI0867_AT_gmail.com>\n"
 "Language-Team:  <nl@li.org>\n"
@@ -15,47 +15,47 @@ msgstr ""
 "X-Generator: KBabel 1.11.4\n"
 "X-Poedit-Language: Dutch\n"
 
-#. [campaign]
+#. [campaign]: id=Descent_Into_Darkness
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:11
 msgid "Descent Into Darkness"
 msgstr "Afdaling naar de Duisternis"
 
-#. [campaign]
+#. [campaign]: id=Descent_Into_Darkness
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:12
 msgid "DID"
 msgstr "AND"
 
-#. [campaign]
+#. [campaign]: id=Descent_Into_Darkness
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:16
 msgid "Neophyte"
 msgstr "Neophyte"
 
-#. [campaign]
+#. [campaign]: id=Descent_Into_Darkness
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:16
 msgid "(Normal)"
 msgstr "(Normaal)"
 
-#. [campaign]
+#. [campaign]: id=Descent_Into_Darkness
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:17
 msgid "(Challenging)"
 msgstr "(Uitdagend)"
 
-#. [campaign]
+#. [campaign]: id=Descent_Into_Darkness
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:17
 msgid "Evoker"
 msgstr "Evoker"
 
-#. [campaign]
+#. [campaign]: id=Descent_Into_Darkness
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:18
 msgid "(Difficult)"
 msgstr "(Moeilijk)"
 
-#. [campaign]
+#. [campaign]: id=Descent_Into_Darkness
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:18
 msgid "Summoner"
 msgstr "Summoner"
 
-#. [campaign]
+#. [campaign]: id=Descent_Into_Darkness
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:22
 msgid ""
 "Learn the dark arts of necromancy in order to save your people from an "
@@ -83,14 +83,14 @@ msgstr "Onderhoud van de veldtocht"
 msgid "Artwork and Graphics Design"
 msgstr "Artwork en Graphics Ontwerp"
 
-#. [scenario]
-#. [editor_group]
+#. [scenario]: id=Descent_into_Darkness
+#. [editor_group]: id=did
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:6
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:75
 msgid "Descent into Darkness"
 msgstr "Afdaling naar de Duisternis"
 
-#. [scenario]
+#. [scenario]: id=Saving_Parthyn
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:6
 msgid "Saving Parthyn"
 msgstr "Parthyn redden"
@@ -194,11 +194,11 @@ msgstr ""
 "toch zou doen. Je hulp is gewaardeerd maar we hebben geen nood aan een "
 "bondgenootschap met zwarte magiërs."
 
-#. [side]: type=General
-#. [side]: type=Apprentice Mage
-#. [side]: type=Sergeant
+#. [side]: type=General, id=Taylor
+#. [side]: type=Apprentice Mage, id=Malin Keshar
+#. [side]: type=Sergeant, id=Drogan
 #. [side]
-#. [side]: type=Frontier Baroness
+#. [side]: type=Frontier Baroness, id=Dela Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:66
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:66
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:102
@@ -208,8 +208,8 @@ msgstr ""
 msgid "Defenders"
 msgstr "Verdedigers"
 
-#. [side]: type=Apprentice Mage
-#. [unit]: type=Dark Mage
+#. [side]: type=Apprentice Mage, id=Malin Keshar
+#. [unit]: id=Malin Keshar, type=Dark Mage
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:39
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:44
 #: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:44
@@ -225,9 +225,12 @@ msgstr "Verdedigers"
 msgid "Malin Keshar"
 msgstr "Malin Keshar"
 
-#. [side]: type=Orcish Warlord
-#. [side]: type=Orcish Warrior
-#. [side]: type=Orcish Slurbow
+#. [side]: type=Orcish Warlord, id=Gron'r Hronk
+#. [side]: type=Orcish Warlord, id=K'rrlar Oban
+#. [side]: type=Orcish Warrior, id=Kreg'a'shar Trr
+#. [side]: type=Orcish Warlord, id=Borth
+#. [side]: type=Orcish Slurbow, id=P'Gareth
+#. [side]: type=Orcish Warlord, id=K'Vark
 #: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:58
 #: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:82
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:82
@@ -237,13 +240,13 @@ msgstr "Malin Keshar"
 msgid "Orcs"
 msgstr "Orks"
 
-#. [side]: type=Orcish Warrior
+#. [side]: type=Orcish Warrior, id=Kreg'a'shar Trr
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:85
 msgid "Kreg'a'shar Trr"
 msgstr "Kreg'a'shar Trr"
 
-#. [side]: type=Sergeant
-#. [side]: type=Lieutenant
+#. [side]: type=Sergeant, id=Drogan
+#. [side]: type=Lieutenant, id=Drogan
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:105
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:77
 msgid "Drogan"
@@ -532,7 +535,7 @@ msgstr ""
 msgid "The orcs are broken, dead or fled."
 msgstr "Alle orks zijn dood of gevlucht."
 
-#. [scenario]
+#. [scenario]: id=Peaceful_Valley
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:6
 msgid "Peaceful Valley"
 msgstr "Vredige vallei"
@@ -567,7 +570,7 @@ msgstr ""
 "samen met hem te reizen. In de daaropvolgende weken leert hij Malin nog meer "
 "zwarte magie."
 
-#. [side]: type=Goblin Knight
+#. [side]: type=Goblin Knight, id=T'shar Lggi
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:58
 msgid "T'shar Lggi"
 msgstr "T'shar Lggi"
@@ -591,17 +594,17 @@ msgstr "Bezet alle koboldse dorpen."
 msgid "Death of Darken Volk"
 msgstr "Dood van Darken Volk"
 
-#. [unit]: type=Dark Sorcerer DiD
+#. [unit]: id=Darken Volk, type=Dark Sorcerer DiD
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:100
 msgid "Darken Volk"
 msgstr "Darken Volk"
 
-#. [trait]
+#. [trait]: id=loyal
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:108
 msgid "loyal"
 msgstr "loyaal"
 
-#. [trait]
+#. [trait]: id=loyal
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:109
 msgid "to himself"
 msgstr "aan hemzelf"
@@ -813,7 +816,7 @@ msgstr ""
 msgid "Excellent. I'm eager to move on to the real foes."
 msgstr "Perfect. Ik popel om voort te gaan en de echte vijanden aan te vallen."
 
-#. [scenario]
+#. [scenario]: id=A_Haunting_in_Winter
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:6
 msgid "A Haunting in Winter"
 msgstr "Een winterse klopgeest."
@@ -831,19 +834,19 @@ msgstr ""
 "deze tegenkwamen.  Malin's krachten namen sterk toe door de vootdurende "
 "begeiding van de dodenbezweerder."
 
-#. [side]: type=Dwarvish Steelclad
-#. [side]: type=Bandit
+#. [side]: type=Dwarvish Steelclad, id=Dap Horner
+#. [side]: type=Bandit, id=Gorak Cole
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:53
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:73
 msgid "Outlaws"
 msgstr "Wettelozen"
 
-#. [side]: type=Dwarvish Steelclad
+#. [side]: type=Dwarvish Steelclad, id=Dap Horner
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:56
 msgid "Dap Horner"
 msgstr "Dap Horner"
 
-#. [side]: type=Bandit
+#. [side]: type=Bandit, id=Gorak Cole
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:76
 msgid "Gorak Cole"
 msgstr "Gorak Cole"
@@ -976,7 +979,7 @@ msgstr ""
 "Ik denk dat ik al de overigen onder controle heb.  Dat was maar op het "
 "nippertje."
 
-#. [scenario]
+#. [scenario]: id=Beginning_of_the_Revenge
 #: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:6
 msgid "Beginning of the Revenge"
 msgstr "Begin van de wraak"
@@ -1010,12 +1013,12 @@ msgstr ""
 "Orkse strijders onvoorbereid te vinden door zo vroeg in het jaar aan te "
 "komen, en hierdoor kan de grootst mogelijke schade toegebracht worden."
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Gron'r Hronk
 #: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:61
 msgid "Gron'r Hronk"
 msgstr "Gron'r Hronk"
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=K'rrlar Oban
 #: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:85
 msgid "K'rrlar Oban"
 msgstr "K'rrlar Oban"
@@ -1077,7 +1080,7 @@ msgstr ""
 "Het ijs breekt onder het gewicht van de stevige krijger die daarna verdrinkt "
 "in het ijzige bergwater."
 
-#. [scenario]
+#. [scenario]: id=Orc_war
 #: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:6
 msgid "Orc War"
 msgstr "Ork oorlog"
@@ -1129,23 +1132,23 @@ msgstr ""
 "elven de Arkan-thoria, slagen ze erin de mensen te omsingelen en een grote "
 "veldslag uit te lokken."
 
-#. [scenario]
+#. [scenario]: id=Orc_war
 #: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:44
 msgid "River Longlier"
 msgstr "Rivier Longlier"
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Borth
 #: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:70
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:54
 msgid "Borth"
 msgstr "Borth"
 
-#. [side]: type=Orcish Slurbow
+#. [side]: type=Orcish Slurbow, id=P'Gareth
 #: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:100
 msgid "P'Gareth"
 msgstr "P'Gareth"
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=K'Vark
 #: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:130
 msgid "K'Vark"
 msgstr "K'Vark"
@@ -1233,7 +1236,7 @@ msgstr ""
 "voegen in het westen binnen enkele weken.  In de tussentijd moet jij ervoor "
 "zorgen dat de stamhoofd zijn straf niet kan ontsnappen."
 
-#. [scenario]
+#. [scenario]: id=Return_to_Parthyn
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:6
 msgid "Return to Parthyn"
 msgstr "Terugkeer in Parthyn"
@@ -1256,13 +1259,13 @@ msgstr ""
 msgid "Within a few days, Malin recognizes some familiar surroundings..."
 msgstr "Na enkele dagen herkent Malin de omgeving."
 
-#. [side]: type=Lieutenant
+#. [side]: type=Lieutenant, id=Drogan
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:74
 msgid "Guardsmen"
 msgstr "Wachters"
 
-#. [unit]: type=Frontier Baroness
-#. [side]: type=Frontier Baroness
+#. [unit]: type=Frontier Baroness, id=Dela Keshar
+#. [side]: type=Frontier Baroness, id=Dela Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:429
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:96
 msgid "Dela Keshar"
@@ -1456,7 +1459,7 @@ msgstr ""
 msgid "See how you die when you spurn the help of Malin Keshar!"
 msgstr "Zie je nu hoe je sterft als je de help van Malin Keshar afwijst!"
 
-#. [scenario]
+#. [scenario]: id=A_Small_Favor
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:6
 msgid "A Small Favor"
 msgstr "Een kleine dienst."
@@ -1510,7 +1513,7 @@ msgstr ""
 "steunen. In zijn bibliotheek ligt het boek dat we zoeken. We zullen in zijn "
 "herenhuis moeten binnendringen en het boek daar zoeken.'"
 
-#. [side]: type=Apprentice Mage
+#. [side]: type=Apprentice Mage, id=Malin Keshar
 #. [side]
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:48
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:23
@@ -1519,7 +1522,7 @@ msgstr ""
 msgid "Intruders"
 msgstr "Indringer"
 
-#. [side]: type=General
+#. [side]: type=General, id=Taylor
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:69
 msgid "Taylor"
 msgstr "Taylor"
@@ -1632,7 +1635,7 @@ msgstr ""
 msgid "Here is the entrance! Hurry!"
 msgstr "Hier is de ingang! Snel!"
 
-#. [scenario]
+#. [scenario]: id=A_Small_Favor2
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:6
 msgid "A Small Favor - Part 2"
 msgstr "Een kleine dienst - deel twee"
@@ -1642,7 +1645,7 @@ msgstr "Een kleine dienst - deel twee"
 msgid "Find the mage Lord Karres"
 msgstr "Vind Karres, de heer van de magiërs"
 
-#. [unit]: type=Great Mage
+#. [unit]: type=Great Mage, id=Lord Karres
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:134
 msgid "Lord Karres"
 msgstr "Heer Karres"
@@ -1704,7 +1707,7 @@ msgstr ""
 "Wanneer de ochtend aanbreekt slagen de stadswachten erin zich toegang te "
 "verschaffen tot de residentie en nemen ze de twee dodenbezweerders gevangen."
 
-#. [scenario]
+#. [scenario]: id=A_Small_Favor3
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:6
 msgid "A Small Favor - Part 3"
 msgstr "Een kleine dienst - deel drie"
@@ -1787,7 +1790,7 @@ msgstr ""
 msgid "Phew! Let's get out of here."
 msgstr "Phew! Laat ons hier snel weggaan."
 
-#. [scenario]
+#. [scenario]: id=Alone_at_Last
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:6
 msgid "Alone at Last"
 msgstr "Eindelijk alleen"
@@ -1955,7 +1958,7 @@ msgstr ""
 "Aangedaan? Ik heb niets gedaan dan je mogelijkheden gegeven. Je hebt je "
 "eigen pad gekozen. Laat me nu gerust!"
 
-#. [unit]: type=Paladin
+#. [unit]: type=Paladin, id=Sir Cadaeus
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:370
 msgid "Sir Cadaeus"
 msgstr "Heer Cadaeus"
@@ -2124,7 +2127,7 @@ msgstr "Trollen"
 msgid "Become a Lich"
 msgstr "Word een zielenzuiger"
 
-#. [unit]: type=Ancient Wose
+#. [unit]: type=Ancient Wose, id=Dumdumbadoom
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:251
 msgid "Dumdumbadoom"
 msgstr "Dumdumbadoom"
@@ -2216,8 +2219,8 @@ msgstr ""
 msgid "by emptiness."
 msgstr "leegte."
 
-#. [side]: type=Lich
-#. [unit]: type=Lich DiD
+#. [side]: type=Lich, id=Mal Keshar
+#. [unit]: type=Lich DiD, id=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:32
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:393
 msgid "Mal Keshar"
@@ -2300,7 +2303,7 @@ msgstr ""
 msgid "AAAAAAAaaaaaaaggggggghhhhhhh!!!!...... . . . ."
 msgstr "AAAAAAAaaaaaaaggggggghhhhhhh!!!!...... . . . ."
 
-#. [scenario]
+#. [scenario]: id=Endless_Night
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:6
 msgid "Endless Night"
 msgstr "Eindeloze nacht"
@@ -2334,11 +2337,11 @@ msgstr ""
 msgid "Defeat the foolish hero"
 msgstr "Versla de domme held"
 
-#. [unit]: type=Royal Guard
-#. [unit]: type=Assassin
-#. [unit]: type=Elvish Marshal
-#. [unit]: type=Dwarvish Lord
-#. [unit]: type=Orcish Warlord
+#. [unit]: type=Royal Guard, id=Foolish Hero
+#. [unit]: type=Assassin, id=Foolish Hero
+#. [unit]: type=Elvish Marshal, id=Foolish Hero
+#. [unit]: type=Dwarvish Lord, id=Foolish Hero
+#. [unit]: type=Orcish Warlord, id=Foolish Hero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:130
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:153
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:171
@@ -2493,12 +2496,12 @@ msgstr ""
 msgid "No, I suppose it does not."
 msgstr "Nee, ik veronderstel dat het niet uitmaakt."
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Apprentice Mage, race=human
 #: data/campaigns/Descent_Into_Darkness/units/apprentice-mage.cfg:4
 msgid "Apprentice Mage"
 msgstr "Leerlingtovenaar"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Apprentice Mage, race=human
 #: data/campaigns/Descent_Into_Darkness/units/apprentice-mage.cfg:19
 msgid ""
 "Trained in swordsmanship as a boy and the magical arts as a young man, Malin "
@@ -2520,12 +2523,12 @@ msgstr "kort zwaard"
 msgid "magic blast"
 msgstr "magische ontploffing"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Apprentice Necromancer, race=human
 #: data/campaigns/Descent_Into_Darkness/units/apprentice-necromancer.cfg:4
 msgid "Apprentice Necromancer"
 msgstr "Leerling-dodenbezweerder"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Apprentice Necromancer, race=human
 #: data/campaigns/Descent_Into_Darkness/units/apprentice-necromancer.cfg:18
 msgid ""
 "Despite his increased magical powers, Malin holds on to his short sword as "
@@ -2546,12 +2549,12 @@ msgstr "frisse golf"
 msgid "shadow wave"
 msgstr "schaduwgolf"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Dark Mage, race=human
 #: data/campaigns/Descent_Into_Darkness/units/dark-mage.cfg:4
 msgid "Dark Mage"
 msgstr "Duistere tovenaar"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Dark Mage, race=human
 #: data/campaigns/Descent_Into_Darkness/units/dark-mage.cfg:18
 msgid ""
 "Although Malin's sword has grown rusty from lack of proper care, his "
@@ -2560,12 +2563,12 @@ msgstr ""
 "Hoewel Malins zwaard door het gebrek aan goede zorg verroest is wordt dit "
 "meer dan gecompenseerd door zijn toegenomen magische krachten."
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Frontier Baroness, race=human
 #: data/campaigns/Descent_Into_Darkness/units/frontier-baroness.cfg:6
 msgid "female^Frontier Baroness"
 msgstr "female^Grensbarones"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Frontier Baroness, race=human
 #: data/campaigns/Descent_Into_Darkness/units/frontier-baroness.cfg:24
 msgid ""
 "On the frontiers of Wesnoth, all able-bodied men and women must be able to "
@@ -2590,12 +2593,12 @@ msgstr "staf"
 msgid "sling"
 msgstr "slinger"
 
-#. [unit_type]: race=undead
+#. [unit_type]: id=Ghast, race=undead
 #: data/campaigns/Descent_Into_Darkness/units/ghast.cfg:4
 msgid "Ghast"
 msgstr "Ghast"
 
-#. [unit_type]: race=undead
+#. [unit_type]: id=Ghast, race=undead
 #: data/campaigns/Descent_Into_Darkness/units/ghast.cfg:21
 msgid ""
 "The ghast is a creature taken from humankind's most primal nightmares. "
@@ -2619,12 +2622,12 @@ msgstr ""
 msgid "bite"
 msgstr "beet"
 
-#. [unit_type]: race=monster
+#. [unit_type]: id=Giant Rat, race=monster
 #: data/campaigns/Descent_Into_Darkness/units/giant-rat.cfg:4
 msgid "Giant Rat"
 msgstr "Reuze rat"
 
-#. [unit_type]: race=monster
+#. [unit_type]: id=Giant Rat, race=monster
 #: data/campaigns/Descent_Into_Darkness/units/giant-rat.cfg:18
 msgid ""
 "Given an adequate supply of food, some rats can grow to truly impressive "
@@ -2667,7 +2670,7 @@ msgstr ""
 msgid "Then my battle against the orcs is lost!"
 msgstr "Dan is mijn strijd tegen de orks verloren!"
 
-#. [terrain]
+#. [terrain]: id=door
 #: data/campaigns/Descent_Into_Darkness/utils/terrain.cfg:7
 msgid "Door"
 msgstr "Deur"

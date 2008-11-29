@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-22 20:14+0100\n"
+"POT-Creation-Date: 2008-11-29 12:24+0100\n"
 "PO-Revision-Date: 2008-11-19 22:59+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
@@ -25,47 +25,47 @@ msgstr ""
 "X-Poedit-Country: CZECH REPUBLIC\n"
 "X-Poedit-Basepath: D:\\Dev\\wesnoth-trunk\n"
 
-#. [campaign]
+#. [campaign]: id=Descent_Into_Darkness
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:11
 msgid "Descent Into Darkness"
 msgstr "Pád Do Temnoty"
 
-#. [campaign]
+#. [campaign]: id=Descent_Into_Darkness
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:12
 msgid "DID"
 msgstr "PdT"
 
-#. [campaign]
+#. [campaign]: id=Descent_Into_Darkness
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:16
 msgid "Neophyte"
 msgstr "Akolyta"
 
-#. [campaign]
+#. [campaign]: id=Descent_Into_Darkness
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:16
 msgid "(Normal)"
 msgstr "(normální)"
 
-#. [campaign]
+#. [campaign]: id=Descent_Into_Darkness
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:17
 msgid "(Challenging)"
 msgstr "(nelehká)"
 
-#. [campaign]
+#. [campaign]: id=Descent_Into_Darkness
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:17
 msgid "Evoker"
 msgstr "Vyvolávač"
 
-#. [campaign]
+#. [campaign]: id=Descent_Into_Darkness
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:18
 msgid "(Difficult)"
 msgstr "(náročná)"
 
-#. [campaign]
+#. [campaign]: id=Descent_Into_Darkness
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:18
 msgid "Summoner"
 msgstr "Vzývač"
 
-#. [campaign]
+#. [campaign]: id=Descent_Into_Darkness
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:22
 msgid ""
 "Learn the dark arts of necromancy in order to save your people from an "
@@ -93,14 +93,14 @@ msgstr "Údržba tažení"
 msgid "Artwork and Graphics Design"
 msgstr "Kresby a grafika"
 
-#. [scenario]
-#. [editor_group]
+#. [scenario]: id=Descent_into_Darkness
+#. [editor_group]: id=did
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:6
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:75
 msgid "Descent into Darkness"
 msgstr "Pád Do Temnoty"
 
-#. [scenario]
+#. [scenario]: id=Saving_Parthyn
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:6
 msgid "Saving Parthyn"
 msgstr "Záchrana Parthynu"
@@ -197,11 +197,11 @@ msgstr ""
 "odjezdu však budete vyhoštěn z těchto zemí pod hrozbou smrti. Děkujeme vám "
 "za vaši pomoc, ale nebudeme se spolčovat s těmi co používají temnou magii.“"
 
-#. [side]: type=General
-#. [side]: type=Apprentice Mage
-#. [side]: type=Sergeant
+#. [side]: type=General, id=Taylor
+#. [side]: type=Apprentice Mage, id=Malin Keshar
+#. [side]: type=Sergeant, id=Drogan
 #. [side]
-#. [side]: type=Frontier Baroness
+#. [side]: type=Frontier Baroness, id=Dela Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:66
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:66
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:102
@@ -211,8 +211,8 @@ msgstr ""
 msgid "Defenders"
 msgstr "Obránci"
 
-#. [side]: type=Apprentice Mage
-#. [unit]: type=Dark Mage
+#. [side]: type=Apprentice Mage, id=Malin Keshar
+#. [unit]: id=Malin Keshar, type=Dark Mage
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:39
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:44
 #: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:44
@@ -228,9 +228,12 @@ msgstr "Obránci"
 msgid "Malin Keshar"
 msgstr "Malin Kešar"
 
-#. [side]: type=Orcish Warlord
-#. [side]: type=Orcish Warrior
-#. [side]: type=Orcish Slurbow
+#. [side]: type=Orcish Warlord, id=Gron'r Hronk
+#. [side]: type=Orcish Warlord, id=K'rrlar Oban
+#. [side]: type=Orcish Warrior, id=Kreg'a'shar Trr
+#. [side]: type=Orcish Warlord, id=Borth
+#. [side]: type=Orcish Slurbow, id=P'Gareth
+#. [side]: type=Orcish Warlord, id=K'Vark
 #: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:58
 #: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:82
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:82
@@ -240,13 +243,13 @@ msgstr "Malin Kešar"
 msgid "Orcs"
 msgstr "Skřeti"
 
-#. [side]: type=Orcish Warrior
+#. [side]: type=Orcish Warrior, id=Kreg'a'shar Trr
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:85
 msgid "Kreg'a'shar Trr"
 msgstr "Kregašar Trr"
 
-#. [side]: type=Sergeant
-#. [side]: type=Lieutenant
+#. [side]: type=Sergeant, id=Drogan
+#. [side]: type=Lieutenant, id=Drogan
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:105
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:77
 msgid "Drogan"
@@ -518,7 +521,7 @@ msgstr "Jízdní oddíl se vrátil a skřeti uprchli tváří v tvář větší 
 msgid "The orcs are broken, dead or fled."
 msgstr "Skřeti jsou poraženi, mrtví nebo rozprášení."
 
-#. [scenario]
+#. [scenario]: id=Peaceful_Valley
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:6
 msgid "Peaceful Valley"
 msgstr "Mírumilovné údolí"
@@ -552,7 +555,7 @@ msgstr ""
 "slitoval nad zuboženým Malinem a přizval ho, aby cestoval s ním. Jak týdny "
 "plynuly, učil Malina více temných kouzel."
 
-#. [side]: type=Goblin Knight
+#. [side]: type=Goblin Knight, id=T'shar Lggi
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:58
 msgid "T'shar Lggi"
 msgstr "Tšar Lggi"
@@ -576,17 +579,17 @@ msgstr "Obsaď všechny gobliní vesnice."
 msgid "Death of Darken Volk"
 msgstr "Darken Volk zemře"
 
-#. [unit]: type=Dark Sorcerer DiD
+#. [unit]: id=Darken Volk, type=Dark Sorcerer DiD
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:100
 msgid "Darken Volk"
 msgstr "Darken Volk"
 
-#. [trait]
+#. [trait]: id=loyal
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:108
 msgid "loyal"
 msgstr "věrný"
 
-#. [trait]
+#. [trait]: id=loyal
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:109
 msgid "to himself"
 msgstr "sobě"
@@ -792,7 +795,7 @@ msgstr ""
 msgid "Excellent. I'm eager to move on to the real foes."
 msgstr "Skvěle. Jsem nedočkavý přesunout se ke skutečnému nepříteli."
 
-#. [scenario]
+#. [scenario]: id=A_Haunting_in_Winter
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:6
 msgid "A Haunting in Winter"
 msgstr "Lov v zimě"
@@ -809,19 +812,19 @@ msgstr ""
 "Útočili na malé gobliní vesnice a skřetí tábory, kdekoliv je našli. Malinova "
 "moc značně vzrostla pod neustálým dohledem nekromanta."
 
-#. [side]: type=Dwarvish Steelclad
-#. [side]: type=Bandit
+#. [side]: type=Dwarvish Steelclad, id=Dap Horner
+#. [side]: type=Bandit, id=Gorak Cole
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:53
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:73
 msgid "Outlaws"
 msgstr "Psanci"
 
-#. [side]: type=Dwarvish Steelclad
+#. [side]: type=Dwarvish Steelclad, id=Dap Horner
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:56
 msgid "Dap Horner"
 msgstr "Dap Horner"
 
-#. [side]: type=Bandit
+#. [side]: type=Bandit, id=Gorak Cole
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:76
 msgid "Gorak Cole"
 msgstr "Gorak Cole"
@@ -951,7 +954,7 @@ msgid ""
 "I think I've got the rest of them under control now. That was a close call."
 msgstr "Myslím, že mám zbytek pevně pod kontrolou. To bylo o vlásek."
 
-#. [scenario]
+#. [scenario]: id=Beginning_of_the_Revenge
 #: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:6
 msgid "Beginning of the Revenge"
 msgstr "Začátek Pomsty"
@@ -983,12 +986,12 @@ msgstr ""
 "zastihnout skřety nepřipravené hned na začátku roku a tak jim způsobit co "
 "největší škody."
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Gron'r Hronk
 #: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:61
 msgid "Gron'r Hronk"
 msgstr "Gron'r Hronk"
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=K'rrlar Oban
 #: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:85
 msgid "K'rrlar Oban"
 msgstr "K'rrlar Oban"
@@ -1050,7 +1053,7 @@ msgstr ""
 "Slabý led se podlomil pod těžkým válečníkem, který se utopil ve studené "
 "horské vodě."
 
-#. [scenario]
+#. [scenario]: id=Orc_war
 #: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:6
 msgid "Orc War"
 msgstr "Skřetí Válka"
@@ -1098,23 +1101,23 @@ msgstr ""
 "přinutit k boji na místě, kde se řeka Longlier, známá mezi elfy jako Arkan-"
 "thoria, zužuje."
 
-#. [scenario]
+#. [scenario]: id=Orc_war
 #: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:44
 msgid "River Longlier"
 msgstr "Řeka Longlier"
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Borth
 #: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:70
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:54
 msgid "Borth"
 msgstr "Borth"
 
-#. [side]: type=Orcish Slurbow
+#. [side]: type=Orcish Slurbow, id=P'Gareth
 #: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:100
 msgid "P'Gareth"
 msgstr "P'Gareth"
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=K'Vark
 #: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:130
 msgid "K'Vark"
 msgstr "K'Vark"
@@ -1198,7 +1201,7 @@ msgstr ""
 "vyřídit. To se tě netýká. Setkám se s tebou na západě za pár týdnů. Mezitím "
 "nenech posledního velitele uprchnout spravedlnosti."
 
-#. [scenario]
+#. [scenario]: id=Return_to_Parthyn
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:6
 msgid "Return to Parthyn"
 msgstr "Návrat do Parthynu"
@@ -1220,13 +1223,13 @@ msgstr ""
 msgid "Within a few days, Malin recognizes some familiar surroundings..."
 msgstr "Během pár dnů, Malin začal rozeznávat povědomou krajinu..."
 
-#. [side]: type=Lieutenant
+#. [side]: type=Lieutenant, id=Drogan
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:74
 msgid "Guardsmen"
 msgstr "Stráž"
 
-#. [unit]: type=Frontier Baroness
-#. [side]: type=Frontier Baroness
+#. [unit]: type=Frontier Baroness, id=Dela Keshar
+#. [side]: type=Frontier Baroness, id=Dela Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:429
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:96
 msgid "Dela Keshar"
@@ -1412,7 +1415,7 @@ msgstr ""
 msgid "See how you die when you spurn the help of Malin Keshar!"
 msgstr "Takto zemřete, když odmítáte pomoc Malina Kešara!"
 
-#. [scenario]
+#. [scenario]: id=A_Small_Favor
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:6
 msgid "A Small Favor"
 msgstr "Malá Laskavost"
@@ -1464,7 +1467,7 @@ msgstr ""
 "bohatství k podpoře mnoha mágů v jejich studiích. V jeho knihovně je kniha, "
 "kterou hledáme. Budeme se muset dostat do jeho sídla a najít knihu uvnitř.“"
 
-#. [side]: type=Apprentice Mage
+#. [side]: type=Apprentice Mage, id=Malin Keshar
 #. [side]
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:48
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:23
@@ -1473,7 +1476,7 @@ msgstr ""
 msgid "Intruders"
 msgstr "Vetřelci"
 
-#. [side]: type=General
+#. [side]: type=General, id=Taylor
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:69
 msgid "Taylor"
 msgstr "Taylor"
@@ -1585,7 +1588,7 @@ msgstr ""
 msgid "Here is the entrance! Hurry!"
 msgstr "Tady je vchod! Rychle!"
 
-#. [scenario]
+#. [scenario]: id=A_Small_Favor2
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:6
 msgid "A Small Favor - Part 2"
 msgstr "Malá Laskavost - Část druhá"
@@ -1595,7 +1598,7 @@ msgstr "Malá Laskavost - Část druhá"
 msgid "Find the mage Lord Karres"
 msgstr "Najdi mága Lorda Karrese"
 
-#. [unit]: type=Great Mage
+#. [unit]: type=Great Mage, id=Lord Karres
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:134
 msgid "Lord Karres"
 msgstr "Lord Karres"
@@ -1652,7 +1655,7 @@ msgid ""
 msgstr ""
 "Když se rozednilo, městská stráž se dostala do sídla a zajala oba nekromanty."
 
-#. [scenario]
+#. [scenario]: id=A_Small_Favor3
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:6
 msgid "A Small Favor - Part 3"
 msgstr "Malá Laskavost - Část třetí"
@@ -1735,7 +1738,7 @@ msgstr ""
 msgid "Phew! Let's get out of here."
 msgstr "Uf! Rychle odsud."
 
-#. [scenario]
+#. [scenario]: id=Alone_at_Last
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:6
 msgid "Alone at Last"
 msgstr "Konečně sám"
@@ -1898,7 +1901,7 @@ msgstr ""
 "Udělal? Neudělal jsem ti nic, ale dal jsem ti šanci. Zvolil jsi svou vlastí "
 "cestu. Teď mne nech osamotě!"
 
-#. [unit]: type=Paladin
+#. [unit]: type=Paladin, id=Sir Cadaeus
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:370
 msgid "Sir Cadaeus"
 msgstr "Sir Cadaeus"
@@ -2062,7 +2065,7 @@ msgstr "Trollové"
 msgid "Become a Lich"
 msgstr "Staň se Lichem"
 
-#. [unit]: type=Ancient Wose
+#. [unit]: type=Ancient Wose, id=Dumdumbadoom
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:251
 msgid "Dumdumbadoom"
 msgstr ""
@@ -2148,8 +2151,8 @@ msgstr "Potom jsou nahrazeni bolestí tak silnou, že nelze vzdorovat a pak..."
 msgid "by emptiness."
 msgstr "...prázdnota."
 
-#. [side]: type=Lich
-#. [unit]: type=Lich DiD
+#. [side]: type=Lich, id=Mal Keshar
+#. [unit]: type=Lich DiD, id=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:32
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:393
 msgid "Mal Keshar"
@@ -2230,7 +2233,7 @@ msgstr ""
 msgid "AAAAAAAaaaaaaaggggggghhhhhhh!!!!...... . . . ."
 msgstr "AAAAAAAaaaaaaaggggggghhhhhhh!!!!...... . . . ."
 
-#. [scenario]
+#. [scenario]: id=Endless_Night
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:6
 msgid "Endless Night"
 msgstr "Noc bez konce"
@@ -2262,11 +2265,11 @@ msgstr ""
 msgid "Defeat the foolish hero"
 msgstr "Poraz bláhového hrdinu"
 
-#. [unit]: type=Royal Guard
-#. [unit]: type=Assassin
-#. [unit]: type=Elvish Marshal
-#. [unit]: type=Dwarvish Lord
-#. [unit]: type=Orcish Warlord
+#. [unit]: type=Royal Guard, id=Foolish Hero
+#. [unit]: type=Assassin, id=Foolish Hero
+#. [unit]: type=Elvish Marshal, id=Foolish Hero
+#. [unit]: type=Dwarvish Lord, id=Foolish Hero
+#. [unit]: type=Orcish Warlord, id=Foolish Hero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:130
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:153
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:171
@@ -2418,12 +2421,12 @@ msgstr ""
 msgid "No, I suppose it does not."
 msgstr "Ne, asi ne."
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Apprentice Mage, race=human
 #: data/campaigns/Descent_Into_Darkness/units/apprentice-mage.cfg:4
 msgid "Apprentice Mage"
 msgstr "Mág začátečník"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Apprentice Mage, race=human
 #: data/campaigns/Descent_Into_Darkness/units/apprentice-mage.cfg:19
 msgid ""
 "Trained in swordsmanship as a boy and the magical arts as a young man, Malin "
@@ -2444,12 +2447,12 @@ msgstr "krátký meč"
 msgid "magic blast"
 msgstr "magická vlna"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Apprentice Necromancer, race=human
 #: data/campaigns/Descent_Into_Darkness/units/apprentice-necromancer.cfg:4
 msgid "Apprentice Necromancer"
 msgstr "Nekromant začátečník"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Apprentice Necromancer, race=human
 #: data/campaigns/Descent_Into_Darkness/units/apprentice-necromancer.cfg:18
 msgid ""
 "Despite his increased magical powers, Malin holds on to his short sword as "
@@ -2470,12 +2473,12 @@ msgstr "vlna mrazu"
 msgid "shadow wave"
 msgstr "vlna tmy"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Dark Mage, race=human
 #: data/campaigns/Descent_Into_Darkness/units/dark-mage.cfg:4
 msgid "Dark Mage"
 msgstr "Temný mág"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Dark Mage, race=human
 #: data/campaigns/Descent_Into_Darkness/units/dark-mage.cfg:18
 msgid ""
 "Although Malin's sword has grown rusty from lack of proper care, his "
@@ -2484,12 +2487,12 @@ msgstr ""
 "Ačkoli Malinův meč zrezavěl díky nedostatku pořádné péče, jeho vzrůstající "
 "magické síly to více než vynahrazují."
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Frontier Baroness, race=human
 #: data/campaigns/Descent_Into_Darkness/units/frontier-baroness.cfg:6
 msgid "female^Frontier Baroness"
 msgstr "Baronka z pohraničí"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Frontier Baroness, race=human
 #: data/campaigns/Descent_Into_Darkness/units/frontier-baroness.cfg:24
 msgid ""
 "On the frontiers of Wesnoth, all able-bodied men and women must be able to "
@@ -2513,12 +2516,12 @@ msgstr "hůl"
 msgid "sling"
 msgstr "prak"
 
-#. [unit_type]: race=undead
+#. [unit_type]: id=Ghast, race=undead
 #: data/campaigns/Descent_Into_Darkness/units/ghast.cfg:4
 msgid "Ghast"
 msgstr "Žrout"
 
-#. [unit_type]: race=undead
+#. [unit_type]: id=Ghast, race=undead
 #: data/campaigns/Descent_Into_Darkness/units/ghast.cfg:21
 msgid ""
 "The ghast is a creature taken from humankind's most primal nightmares. "
@@ -2541,12 +2544,12 @@ msgstr ""
 msgid "bite"
 msgstr "kousnutí"
 
-#. [unit_type]: race=monster
+#. [unit_type]: id=Giant Rat, race=monster
 #: data/campaigns/Descent_Into_Darkness/units/giant-rat.cfg:4
 msgid "Giant Rat"
 msgstr "Obrovská krysa"
 
-#. [unit_type]: race=monster
+#. [unit_type]: id=Giant Rat, race=monster
 #: data/campaigns/Descent_Into_Darkness/units/giant-rat.cfg:18
 msgid ""
 "Given an adequate supply of food, some rats can grow to truly impressive "
@@ -2585,7 +2588,7 @@ msgstr ""
 msgid "Then my battle against the orcs is lost!"
 msgstr "Má bitva proti skřetům je ztracena!"
 
-#. [terrain]
+#. [terrain]: id=door
 #: data/campaigns/Descent_Into_Darkness/utils/terrain.cfg:7
 msgid "Door"
 msgstr "Dveře"

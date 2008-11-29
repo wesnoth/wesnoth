@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ru\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-27 19:52+0100\n"
+"POT-Creation-Date: 2008-11-29 12:24+0100\n"
 "PO-Revision-Date: 2007-08-20 01:10+0600\n"
 "Last-Translator: Azamat H. Hackimov <azamat.hackimov@gmail.com>\n"
 "Language-Team: Russian <bugs.wesnoth.org>\n"
@@ -31,57 +31,57 @@ msgstr ""
 "Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
 "10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#. [editor_group]
+#. [editor_group]: id=all
 #: data/core/editor-groups.cfg:11
 msgid "all"
 msgstr "все"
 
-#. [editor_group]
+#. [editor_group]: id=water
 #: data/core/editor-groups.cfg:17
 msgid "water"
 msgstr "вода"
 
-#. [editor_group]
+#. [editor_group]: id=flat
 #: data/core/editor-groups.cfg:29
 msgid "flat"
 msgstr "равнина"
 
-#. [editor_group]
+#. [editor_group]: id=desert
 #: data/core/editor-groups.cfg:35
 msgid "desert"
 msgstr "пустыня"
 
-#. [editor_group]
+#. [editor_group]: id=forest
 #: data/core/editor-groups.cfg:41
 msgid "forest"
 msgstr "лес"
 
-#. [editor_group]
+#. [editor_group]: id=frozen
 #: data/core/editor-groups.cfg:47
 msgid "frozen"
 msgstr "мерзлота"
 
-#. [editor_group]
+#. [editor_group]: id=rough
 #: data/core/editor-groups.cfg:53
 msgid "rough"
 msgstr ""
 
-#. [editor_group]
+#. [editor_group]: id=cave
 #: data/core/editor-groups.cfg:59
 msgid "cave"
 msgstr "пещера"
 
-#. [editor_group]
+#. [editor_group]: id=village
 #: data/core/editor-groups.cfg:65
 msgid "village"
 msgstr "деревня"
 
-#. [editor_group]
+#. [editor_group]: id=castle
 #: data/core/editor-groups.cfg:71
 msgid "castle"
 msgstr "замок"
 
-#. [editor_group]
+#. [editor_group]: id=special
 #: data/core/editor-groups.cfg:77
 msgid "special"
 msgstr ""
@@ -106,21 +106,22 @@ msgstr ""
 msgid "Hex Line NW-SE"
 msgstr ""
 
-#. [editor2_tool_hint]
+#. [editor2_tool_hint]: id=editor-tool-paint
+#. [editor2_tool_hint]: id=editor-tool-fill
 #: data/core/editor2-tool-hints.cfg:7 data/core/editor2-tool-hints.cfg:13
 msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only."
 msgstr ""
 
-#. [editor2_tool_hint]
+#. [editor2_tool_hint]: id=editor-tool-select
 #: data/core/editor2-tool-hints.cfg:19
 msgid ""
 "Left mouse button selects, right deselects. Hold Shift for magic-wand "
 "selection of tiles with same terrain."
 msgstr ""
 
-#. [editor2_tool_hint]
+#. [editor2_tool_hint]: id=editor-tool-starting-position
 #: data/core/editor2-tool-hints.cfg:25
 msgid ""
 "Left mouse button displays player selection, right clears. Number keys "
@@ -128,35 +129,35 @@ msgid ""
 "position under cursor, delete clears."
 msgstr ""
 
-#. [editor2_tool_hint]
+#. [editor2_tool_hint]: id=editor-paste
 #: data/core/editor2-tool-hints.cfg:30
 msgid ""
 "Click to paste. Use the edit menu to transform the clipboard (rotate, "
 "mirror)."
 msgstr ""
 
-#. [menu]
+#. [menu]: id=menu-editor-file
 #: data/themes/editor2.cfg:120
 msgid "File"
 msgstr "Файл"
 
-#. [menu]
+#. [menu]: id=menu-editor-edit
 #: data/themes/editor2.cfg:131
 msgid "Edit"
 msgstr "Правка"
 
-#. [menu]
+#. [menu]: id=menu-editor-map
 #: data/themes/editor2.cfg:141
 msgid "Map"
 msgstr ""
 
-#. [menu]
+#. [menu]: id=menu-editor-window
 #: data/themes/editor2.cfg:151
 #, fuzzy
 msgid "Window"
 msgstr "Отменить"
 
-#. [label]
+#. [label]: id=villages-icon
 #: data/themes/editor2.cfg:262
 #, fuzzy
 msgid "villages"

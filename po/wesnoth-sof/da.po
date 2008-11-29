@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.5+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-22 14:56+0100\n"
+"POT-Creation-Date: 2008-11-29 12:25+0100\n"
 "PO-Revision-Date: 2008-11-04 20:50+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
@@ -16,48 +16,48 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#. [campaign]
+#. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:10
 msgid "The Sceptre of Fire"
 msgstr "Ildscepteret"
 
-#. [campaign]
+#. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:11
 msgid "SoF"
 msgstr "Is"
 
-#. [campaign]
+#. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:16
 msgid "Fighter"
 msgstr "Soldat"
 
-#. [campaign]
+#. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:16
 msgid "(Normal)"
 msgstr "(Normal)"
 
 # Kontekst uafklaret
-#. [campaign]
+#. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:17
 msgid "Steelclad"
 msgstr "Pansret"
 
-#. [campaign]
+#. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:17
 msgid "(Challenging)"
 msgstr "(Udfordrende)"
 
-#. [campaign]
+#. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:18
 msgid "Lord"
 msgstr "Lensherre"
 
-#. [campaign]
+#. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:18
 msgid "(Difficult)"
 msgstr "(Svær)"
 
-#. [campaign]
+#. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:29
 msgid ""
 "The land of Wesnoth's banner bold\n"
@@ -102,18 +102,18 @@ msgstr "WML-assitance"
 msgid "Artwork and Graphics Design"
 msgstr "Tegninger og grafik"
 
-#. [scenario]
+#. [scenario]: id=1_A_Bargain_is_Struck
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:3
 msgid "A Bargain is Struck"
 msgstr "En handel aftales"
 
-#. [side]: type=Dwarvish Fighter
+#. [side]: type=Dwarvish Fighter, id=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:18
 msgid "Rugnur"
 msgstr "Rugnur"
 
-#. [side]: type=Dwarvish Fighter
-#. [side]: type=Haldric II
+#. [side]: type=Dwarvish Fighter, id=Rugnur
+#. [side]: type=Haldric II, id=Haldric II
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:26
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:41
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:18
@@ -121,13 +121,13 @@ msgstr "Rugnur"
 msgid "Allies"
 msgstr "Allierede"
 
-#. [side]: type=Haldric II
+#. [side]: type=Haldric II, id=Haldric II
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:34
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:24
 msgid "Haldric II"
 msgstr "Haldric 2."
 
-#. [side]: type=Elvish Captain
+#. [side]: type=Elvish Captain, id=Glildur
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:75
 msgid "Glildur"
 msgstr "Glildur"
@@ -450,7 +450,7 @@ msgstr ""
 "sikre, at opgaven bliver løst til tiden. Jeg forventer den færdig, før min "
 "tid som konge er slut."
 
-#. [unit]: type=Dragoon
+#. [unit]: type=Dragoon, id=Alanin
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:293
 msgid "Alanin"
 msgstr "Alanin"
@@ -638,12 +638,12 @@ msgstr ""
 "Du tillod en karavane med MINE penge at blive fanget! Hvis jeg ikke kan "
 "stole på, at du har styr på mine ejendele, så er handelen aflyst."
 
-#. [scenario]
+#. [scenario]: id=2_Closing_the_Gates
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:3
 msgid "Closing the Gates"
 msgstr "Lukning af portene"
 
-#. [side]: type=Elvish Captain
+#. [side]: type=Elvish Captain, id=Glindur
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:33
 msgid "Glindur"
 msgstr "Glindur"
@@ -729,7 +729,7 @@ msgstr "Hmm... på hvilke betingelser?"
 msgid "Unconditional."
 msgstr "Uden betingelser."
 
-#. [unit]: type=Dwarvish Stalwart
+#. [unit]: type=Dwarvish Stalwart, id=Baglur
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:192
 msgid "Baglur"
 msgstr "Baglur"
@@ -925,13 +925,13 @@ msgstr ""
 msgid "My glyph is on."
 msgstr "Min indhuggede figur er tændt."
 
-#. [scenario]
+#. [scenario]: id=2t_In_the_Dwarven_City
 #: data/campaigns/Sceptre_of_Fire/scenarios/2t_In_the_Dwarven_City.cfg:3
 msgid "In the Dwarven City"
 msgstr "I dværgebyen"
 
-#. [side]: type=Dwarvish Lord
-#. [unit]: type=Dwarvish Lord
+#. [side]: type=Dwarvish Lord, id=Durstorn
+#. [unit]: type=Dwarvish Lord, id=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/2t_In_the_Dwarven_City.cfg:26
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:153
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:26
@@ -957,21 +957,21 @@ msgstr ""
 "Durstorn var ikke glad denne dag. Det var han heller ikke normalt; men i dag "
 "var han mere sur end normalt."
 
-#. [unit]: type=Dwarvish Stalwart
+#. [unit]: type=Dwarvish Stalwart, id=Neglur
 #: data/campaigns/Sceptre_of_Fire/scenarios/2t_In_the_Dwarven_City.cfg:58
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:54
 #: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:55
 msgid "Neglur"
 msgstr "Neglur"
 
-#. [unit]: type=Dwarvish Runesmith
+#. [unit]: type=Dwarvish Runesmith, id=Glinar
 #: data/campaigns/Sceptre_of_Fire/scenarios/2t_In_the_Dwarven_City.cfg:70
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:65
 #: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:66
 msgid "Glinar"
 msgstr "Glinar"
 
-#. [unit]: type=Dwarvish Thunderguard
+#. [unit]: type=Dwarvish Thunderguard, id=Noiraran
 #: data/campaigns/Sceptre_of_Fire/scenarios/2t_In_the_Dwarven_City.cfg:82
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:165
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:76
@@ -979,7 +979,7 @@ msgstr "Glinar"
 msgid "Noiraran"
 msgstr "Noiraran"
 
-#. [unit]: type=Dwarvish Steelclad
+#. [unit]: type=Dwarvish Steelclad, id=Kuhnar
 #: data/campaigns/Sceptre_of_Fire/scenarios/2t_In_the_Dwarven_City.cfg:93
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:175
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:87
@@ -1182,7 +1182,7 @@ msgid ""
 msgstr ""
 "Hvem i alverden er du? Du ser ud som om du er med Rugnur... følg ham nordpå."
 
-#. [scenario]
+#. [scenario]: id=3_Searching_for_the_Runecrafter
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:3
 msgid "Searching for the Runecrafter"
 msgstr "Søgning efter runemesteren"
@@ -1266,7 +1266,7 @@ msgstr ""
 msgid "Right. We'll probably have to fight our way through to his house."
 msgstr "Sikkert. Vi må nok kæmpe os vej til hans hus."
 
-#. [unit]: type=Gryphon
+#. [unit]: type=Gryphon, id=Krawg
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:293
 msgid "Krawg"
 msgstr "Krawg"
@@ -1348,7 +1348,7 @@ msgstr ""
 msgid "Death of Krawg"
 msgstr "Krawgs død"
 
-#. [unit]: type=Gryphon Rider
+#. [unit]: id=Kawn # wmllint: ignore, type=Gryphon Rider
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:378
 msgid "Kawn"
 msgstr "Kawn"
@@ -1359,7 +1359,7 @@ msgid "I see a house in the distance!"
 msgstr "Jeg kan se et hus i det fjerne!"
 
 #. [message]: speaker=narrator
-#. [unit]: type=Dwarvish Runemaster_alt
+#. [unit]: type=Dwarvish Runemaster_alt, id=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:361
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:367
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:455
@@ -1503,7 +1503,7 @@ msgstr "Thursagans død"
 msgid "Well, now we are in the caves again! Come on, back south, to the city."
 msgstr "Tja nu er vi i hulerne igen! Kom nu tilbage sydpå til byen."
 
-#. [scenario]
+#. [scenario]: id=3t_The_Council_Regathers
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:3
 msgid "The Council Regathers"
 msgstr "Rådet sammenkaldes igen"
@@ -1687,12 +1687,12 @@ msgstr ""
 "og jeg vil medbringe nogle dværgetroldmandslærlinge fra akademiet til hjælp "
 "mod fjenderne i minerne."
 
-#. [unit]: type=Dwarvish Runesmith
+#. [unit]: type=Dwarvish Runesmith, id=Kinan    # wmllint: ignore
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:236
 msgid "Kinan"
 msgstr "Kinan"
 
-#. [unit]: type=Dwarvish Runesmith
+#. [unit]: type=Dwarvish Runesmith, id=Rynan    # wmllint: ignore
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:247
 msgid "Rynan"
 msgstr "Rynan"
@@ -1717,7 +1717,7 @@ msgid "M' 'u!"
 msgstr "M' 'u!"
 
 #. [settings]
-#. [scenario]
+#. [scenario]: id=4_Gathering_Materials
 #: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:3
 #: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:10
 msgid "Gathering Materials"
@@ -1857,7 +1857,7 @@ msgstr "Her er guldet."
 msgid "Trolls"
 msgstr "Trolde"
 
-#. [scenario]
+#. [scenario]: id=4t_The_Jeweler
 #: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:3
 msgid "The Jeweler"
 msgstr "Juveleren"
@@ -1948,7 +1948,7 @@ msgid ""
 "Theganli! Come out of there, Durstorn orders you to come to the citadel."
 msgstr "Theganli! Kom ud derfra Durstorn beordrer dig til kastellet."
 
-#. [unit]: type=Dwarvish Runesmith
+#. [unit]: type=Dwarvish Runesmith, id=Theganli
 #: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:183
 msgid "Theganli"
 msgstr "Theganli"
@@ -2104,19 +2104,20 @@ msgstr "Selvfølgelig! For en sikkerhedsskyld skal du og Noiraran også med os."
 msgid "Yes sir... *sigh*"
 msgstr "Ja herre... *suk*"
 
-#. [scenario]
+#. [scenario]: id=5_Hills_of_the_Shorbear_Clan
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:3
 msgid "Hills of the Shorbear Clan"
 msgstr "Kystbjørnenes klans bakker"
 
-#. [side]: type=Dwarvish Lord
+#. [side]: type=Dwarvish Lord, id=Glonoin
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:33
 msgid "Glonoin"
 msgstr "Glonoin"
 
-#. [side]: type=Elvish Marshal
-#. [side]: type=Elvish Captain
-#. [side]: type=Dwarvish Lord
+#. [side]: type=Elvish Marshal, id=Gaenlar
+#. [side]: type=Elvish Marshal, id=Glinan
+#. [side]: type=Elvish Captain, id=Kalnar
+#. [side]: type=Dwarvish Lord, id=Glonoin
 #. [side]
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:38
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:72
@@ -2337,7 +2338,7 @@ msgstr "Du laver en fejltagelse, Durstorn."
 msgid "Shut up, all of you! Attack them!"
 msgstr "Hold mund alle sammen! Angrib dem!"
 
-#. [unit]: type=Elvish Marshal
+#. [unit]: id=Lyndar, type=Elvish Marshal
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:326
 msgid "Lyndar"
 msgstr "Lyndar"
@@ -2513,22 +2514,22 @@ msgstr ""
 msgid "Gaanngh..."
 msgstr "Gaanngh..."
 
-#. [scenario]
+#. [scenario]: id=6_Towards_the_Caves
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:3
 msgid "Towards the Caves"
 msgstr "Imod hulerne"
 
-#. [side]: type=Elvish Marshal
+#. [side]: type=Elvish Marshal, id=Gaenlar
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:32
 msgid "Gaenlar"
 msgstr "Gaenlar"
 
-#. [side]: type=Elvish Marshal
+#. [side]: type=Elvish Marshal, id=Glinan
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:65
 msgid "Glinan"
 msgstr "Glinan"
 
-#. [side]: type=Elvish Captain
+#. [side]: type=Elvish Captain, id=Kalnar
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:96
 msgid "Kalnar"
 msgstr "Kalnar"
@@ -2876,7 +2877,7 @@ msgstr ""
 "Jeg ved ikke hvad der er i de huler, men uanset hvad kan det ikke være værre "
 "en at blive her og dø."
 
-#. [scenario]
+#. [scenario]: id=7_Outriding_the_Outriders
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_of_Outriders.cfg:3
 msgid "Outriding the Outriders"
 msgstr "Flugt fra rytterne"
@@ -2922,27 +2923,27 @@ msgstr ""
 "Mit eneste håb er at overbevise bønderne om at forhindre elverne i at "
 "passere igennem deres land, så jeg kan få et forspring."
 
-#. [unit]: type=Elvish Outrider
+#. [unit]: type=Elvish Outrider, id=Asaeri
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_of_Outriders.cfg:108
 msgid "Lord Asaeri"
 msgstr "Lensherre Asaeri"
 
-#. [unit]: type=Elvish Outrider
+#. [unit]: type=Elvish Outrider, id=Gaelir
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_of_Outriders.cfg:119
 msgid "Gaelir"
 msgstr "Gaelir"
 
-#. [unit]: type=Elvish Outrider
+#. [unit]: type=Elvish Outrider, id=Salira
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_of_Outriders.cfg:130
 msgid "Salira"
 msgstr "Salira"
 
-#. [unit]: type=Elvish Outrider
+#. [unit]: type=Elvish Outrider, id=Losnin
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_of_Outriders.cfg:142
 msgid "Losnin"
 msgstr "Losnin"
 
-#. [unit]: type=Elvish Outrider
+#. [unit]: type=Elvish Outrider, id=Ealin
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_of_Outriders.cfg:154
 msgid "Ealin"
 msgstr "Ealin"
@@ -2961,7 +2962,7 @@ msgstr ""
 msgid "We shall see about that!"
 msgstr "Det må vi se!"
 
-#. [unit]: type=Elvish Outrider
+#. [unit]: type=Elvish Outrider, id=Raesil
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_of_Outriders.cfg:185
 msgid "Raesil"
 msgstr "Raesil"
@@ -2975,7 +2976,7 @@ msgstr ""
 "Disse landsbybeboere er loyale over for Wesnoth. De bør være villige til at "
 "hjælpe mig med at undslippe disse elvere!"
 
-#. [unit]: type=Spearman
+#. [unit]: type=Spearman, id=Rolin    # wmllint: ignore
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_of_Outriders.cfg:207
 msgid "Rolin"
 msgstr "Rolin"
@@ -2987,7 +2988,7 @@ msgstr ""
 "Selvfølgelig vil vi hjælpe en kriger fra Wesnoth som har brug for vores "
 "hjælp!"
 
-#. [unit]: type=Lieutenant
+#. [unit]: type=Lieutenant, id=Hadlin   # wmllint: ignore
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_of_Outriders.cfg:267
 msgid "Hadlin"
 msgstr "Hadlin"
@@ -3017,17 +3018,17 @@ msgstr ""
 "Jeg forstår. Kom ind. Jeg tvivler på at de kan indtage denne fæstning, selv "
 "om de er parat til at starte en krig, hvilket jeg tvivler på."
 
-#. [scenario]
+#. [scenario]: id=8_The_Dragon
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:3
 msgid "The Dragon"
 msgstr "Dragen"
 
-#. [side]: type=Elvish Marshal
+#. [side]: type=Elvish Marshal, id=Landar
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:36
 msgid "Landar"
 msgstr "Landar"
 
-#. [side]: type=Fire Dragon
+#. [side]: type=Fire Dragon, id=Khrakrahs
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:82
 msgid "Khrakrahs"
 msgstr "Khrakrahs"
@@ -3249,12 +3250,12 @@ msgstr ""
 msgid "In $turnsleft more turns I will have completed the sceptre."
 msgstr "Om $turnsleft runder vil jeg være færdig med scepteret."
 
-#. [scenario]
+#. [scenario]: id=9_Caverns_of_Flame
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:3
 msgid "Caverns of Flame"
 msgstr "Flammernes huler"
 
-#. [side]: type=Dwarvish Fighter
+#. [side]: type=Dwarvish Fighter, id=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:26
 msgid "Dwarves"
 msgstr "Dværge"
@@ -3292,8 +3293,8 @@ msgstr ""
 msgid "Explore as much of the cave as possible"
 msgstr "Undersøg så meget af hulen som muligt"
 
-#. [unit]: type=Troll
-#. [unit]: type=Orcish Warrior
+#. [unit]: type=Troll, id=Guardian
+#. [unit]: type=Orcish Warrior, id=Guardian
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:244
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:252
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:260
@@ -3359,7 +3360,7 @@ msgid "Indeed, there may be orcs lurking here. We should beware of them."
 msgstr ""
 "Så sandelig der kan være orker på lur herinde. Vi bør være opmærksomme."
 
-#. [unit]: type=Elvish Marshal
+#. [unit]: type=Elvish Marshal, id=Aendan
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:344
 msgid "Aendan"
 msgstr "Aendan"
@@ -3486,7 +3487,7 @@ msgstr "Dræb alle elverne før de undslipper fra hulerne"
 msgid "Hm... Me le' no'w!"
 msgstr "Hm... Me le' nu!"
 
-#. [scenario]
+#. [scenario]: id=Epilogue
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:3
 msgid "Epilogue"
 msgstr "Epilog"
@@ -3520,12 +3521,12 @@ msgstr ""
 "Og Krawg - Krawg fulgte efter ham. Jeg ved ikke hvordan, men Krawg kom sydpå "
 "til Weldyn og nåede byen cirka samme tid som Alanin."
 
-#. [unit]: type=Royal Guard
+#. [unit]: type=Royal Guard, id=Guard Captain
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:71
 msgid "Guard Captain"
 msgstr "Vagtkaptajn"
 
-#. [unit]: type=Swordsman
+#. [unit]: type=Swordsman, id=Gatekeeper
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:88
 msgid "Gatekeeper"
 msgstr "Portvagt"
@@ -3762,12 +3763,12 @@ msgstr ""
 "- Thursagan, den mest fremragende af dværgenes troldmænd og Rugnur, den "
 "største af de gamle dværgehelte."
 
-#. [unit_type]: race=mechanical
+#. [unit_type]: id=Caravan, race=mechanical
 #: data/campaigns/Sceptre_of_Fire/units/Caravan.cfg:4
 msgid "Caravan"
 msgstr "Karavane"
 
-#. [unit_type]: race=mechanical
+#. [unit_type]: id=Caravan, race=mechanical
 #: data/campaigns/Sceptre_of_Fire/units/Caravan.cfg:17
 msgid ""
 "Caravans are used to carry gold or supplies long distances. Because of the "
@@ -3777,12 +3778,12 @@ msgstr ""
 "afstande. På grund af vægten af lasten som denne karavane transporterer, "
 "bevæger den sig meget langsomt."
 
-#. [unit_type]: race=dwarf
+#. [unit_type]: id=Dwarvish Arcanister, race=dwarf
 #: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Arcanister.cfg:4
 msgid "Dwarvish Arcanister"
 msgstr "Dværgemystiker"
 
-#. [unit_type]: race=dwarf
+#. [unit_type]: id=Dwarvish Arcanister, race=dwarf
 #: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Arcanister.cfg:23
 msgid ""
 "The most powerful of all the runecrafters, the Dwarvish Arcanister destroys "
@@ -3802,12 +3803,12 @@ msgstr ""
 msgid "hammer"
 msgstr "hammer"
 
-#. [unit_type]: race=dwarf
+#. [unit_type]: id=Dwarvish Miner, race=dwarf
 #: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Miner.cfg:4
 msgid "Dwarvish Miner"
 msgstr "Dværgeminearbejder"
 
-#. [unit_type]: race=dwarf
+#. [unit_type]: id=Dwarvish Miner, race=dwarf
 #: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Miner.cfg:17
 msgid ""
 "Dwarvish miners are the grunt workers of Dwarvish society. They take the "
@@ -3823,12 +3824,12 @@ msgstr ""
 msgid "pick"
 msgstr "hakke"
 
-#. [unit_type]: race=dwarf
+#. [unit_type]: id=Dwarvish Runemaster_alt, race=dwarf
 #: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Runemaster.cfg:4
 msgid "Dwarvish Runemaster"
 msgstr "Dværgetroldmand"
 
-#. [unit_type]: race=dwarf
+#. [unit_type]: id=Dwarvish Runemaster_alt, race=dwarf
 #: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Runemaster.cfg:22
 msgid ""
 "Except for those with almost supernatural skill, the highest rank a "
@@ -3844,12 +3845,12 @@ msgstr ""
 "magien er de også næsten usynlige, idet deres runer kan få de fysiske slag, "
 "de får, til at give mindre skade end de ellers ville."
 
-#. [unit_type]: race=dwarf
+#. [unit_type]: id=Dwarvish Runesmith, race=dwarf
 #: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Runesmith.cfg:4
 msgid "Dwarvish Runesmith"
 msgstr "Dværgerunesmed"
 
-#. [unit_type]: race=dwarf
+#. [unit_type]: id=Dwarvish Runesmith, race=dwarf
 #: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Runesmith.cfg:25
 msgid ""
 "Dwarvish runesmiths, now practiced at their craft, carve arcane runes into "
@@ -3862,12 +3863,12 @@ msgstr ""
 "fjendes angreb, så dette bliver blødt og svagt og rammer rustningen på "
 "dværgen."
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Haldric II, race=human
 #: data/campaigns/Sceptre_of_Fire/units/Haldric_II.cfg:4
 msgid "King"
 msgstr "Kong"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Haldric II, race=human
 #: data/campaigns/Sceptre_of_Fire/units/Haldric_II.cfg:21
 msgid "King of Wesnoth."
 msgstr "Konge af Wesnoth."

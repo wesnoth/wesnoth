@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.0\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-18 22:05+0100\n"
+"POT-Creation-Date: 2008-11-29 12:24+0100\n"
 "PO-Revision-Date: 2005-08-23 11:08+0100\n"
 "Last-Translator: Alfredo Beaumont <ziberpunk@ziberghetto.dhis.org>\n"
 "Language-Team: Basque <ziberpunk@ziberghetto.dhis.org>\n"
@@ -22,75 +22,75 @@ msgstr ""
 "X-Poedit-Country: SPAIN\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
-#. [generic_multiplayer]
+#. [generic_multiplayer]: id=user_map
 #: data/multiplayer/_main.cfg:8
 msgid "User Map"
 msgstr "Erabiltzailearen mapa"
 
-#. [multiplayer_side]
+#. [multiplayer_side]: id=Random
 #: data/multiplayer/eras.cfg:5
 msgid "Random"
 msgstr "Ausazkoa"
 
-#. [era]
+#. [era]: id=era_default
 #: data/multiplayer/eras.cfg:14
 msgid "Default"
 msgstr "Lehenetsia"
 
-#. [era]
+#. [era]: id=era_heroes
 #: data/multiplayer/eras.cfg:63
 msgid "Age of Heroes"
 msgstr "Heroien Garaia"
 
-#. [multiplayer_side]: type=Drake Flare
-#. [multiplayer_side]: type=Drake Flameheart
+#. [multiplayer_side]: id=Drakes, type=Drake Flare
+#. [multiplayer_side]: id=Drakes, type=Drake Flameheart
 #: data/multiplayer/factions/drakes-default.cfg:4
 #: data/multiplayer/factions/drakes-aoh.cfg:4
 msgid "Drakes"
 msgstr "Drakuak"
 
-#. [multiplayer_side]: type=Dwarvish Steelclad
-#. [multiplayer_side]: type=Dwarvish Lord
+#. [multiplayer_side]: id=Knalgan Alliance, type=Dwarvish Steelclad
+#. [multiplayer_side]: id=Knalgan Alliance, type=Dwarvish Lord
 #: data/multiplayer/factions/knalgans-default.cfg:4
 #: data/multiplayer/factions/knalgans-aoh.cfg:4
 msgid "Knalgan Alliance"
 msgstr "Knalgan-en aliantza"
 
-#. [multiplayer_side]: type=Lieutenant
-#. [multiplayer_side]: type=General
+#. [multiplayer_side]: id=Loyalists, type=Lieutenant
+#. [multiplayer_side]: id=Loyalists, type=General
 #: data/multiplayer/factions/loyalists-default.cfg:4
 #: data/multiplayer/factions/loyalists-aoh.cfg:4
 msgid "Loyalists"
 msgstr "Leialak"
 
-#. [multiplayer_side]: type=Orcish Warlord
-#. [multiplayer_side]: type=Orcish Warrior
+#. [multiplayer_side]: id=Northerners, type=Orcish Warlord
+#. [multiplayer_side]: id=Northerners, type=Orcish Warrior
 #: data/multiplayer/factions/northerners-aoh.cfg:4
 #: data/multiplayer/factions/northerners-default.cfg:4
 msgid "Northerners"
 msgstr ""
 
-#. [multiplayer_side]: type=Elvish Marshal
-#. [multiplayer_side]: type=Elvish Captain
+#. [multiplayer_side]: id=Rebels, type=Elvish Marshal
+#. [multiplayer_side]: id=Rebels, type=Elvish Captain
 #: data/multiplayer/factions/rebels-aoh.cfg:4
 #: data/multiplayer/factions/rebels-default.cfg:4
 msgid "Rebels"
 msgstr "Errebeldeak"
 
-#. [multiplayer_side]: type=Dark Sorcerer
-#. [multiplayer_side]: type=Lich
+#. [multiplayer_side]: id=Undead, type=Dark Sorcerer
+#. [multiplayer_side]: id=Undead, type=Lich
 #: data/multiplayer/factions/undead-default.cfg:4
 #: data/multiplayer/factions/undead-aoh.cfg:4
 msgid "Undead"
 msgstr "Ez Hilak"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Basilisk
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:33
 #, fuzzy
 msgid "2p - Caves of the Basilisk"
 msgstr "4j - Mendilerroaren Errege"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Basilisk
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:35
 msgid ""
 "Players must maneuver their units through the divisive terrain of this long-"
@@ -410,13 +410,13 @@ msgid ""
 "(inscribed by MJQ)"
 msgstr ""
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Cynsaun_Battlefield
 #: data/multiplayer/scenarios/2p_Cynsaun_Battlefield.cfg:5
 #, fuzzy
 msgid "2p - Cynsaun Battlefield"
 msgstr "Printzesaren Borrokalekua"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Cynsaun_Battlefield
 #: data/multiplayer/scenarios/2p_Cynsaun_Battlefield.cfg:7
 #, fuzzy
 msgid " Recommended settings of 150 gold and 2 gold per village."
@@ -424,19 +424,19 @@ msgstr ""
 "Buruz buruko joko azkarrerako mapa. Herrixkako Urrezko 2 txaponeko ezarpena "
 "gomendatzen da."
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Cynsaun_Battlefield
 #: data/multiplayer/scenarios/2p_Cynsaun_Battlefield.cfg:7
 msgid ""
 "There is much to explore in this vast battlefront, designed for players who "
 "favor epic, large-scale duel matches."
 msgstr ""
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_2p_Dark_Forecast
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:5
 msgid "2p - Dark Forecast (Survival)"
 msgstr ""
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_2p_Dark_Forecast
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:8
 msgid ""
 "Dark Forecast is a survival scenario for solitaire or two-player team-based "
@@ -588,19 +588,40 @@ msgid ""
 "is over."
 msgstr ""
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Den_of_Onis
 #: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:5
 msgid "2p - Den of Onis"
 msgstr "2j - Onis-en gordelekua"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Den_of_Onis
 #: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:6
 msgid ""
 "Danger lurks around every corner in this underground battlefield, a duel map "
 "where players must find the balance between force and subterfuge."
 msgstr ""
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Blue_Water_Province
+#. [multiplayer]: id=multiplayer_Loris_River
+#. [multiplayer]: id=multiplayer_Sablestone_Delta
+#. [multiplayer]: id=multiplayer_Fallenstar_Lake
+#. [multiplayer]: id=multiplayer_Clash
+#. [multiplayer]: id=multiplayer_4p_Hamlets
+#. [multiplayer]: id=multiplayer_The_Freelands
+#. [multiplayer]: id=multiplayer_8p_Morituri
+#. [multiplayer]: id=multiplayer_Alirok_Marsh
+#. [multiplayer]: id=multiplayer_3p_Morituri
+#. [multiplayer]: id=multiplayer_Den_of_Onis
+#. [multiplayer]: id=multiplayer_Weldyn_Channel
+#. [multiplayer]: id=multiplayer_Island_of_the_Horatii
+#. [multiplayer]: id=multiplayer_Hornshark_Island
+#. [multiplayer]: id=multiplayer_4p_Morituri
+#. [multiplayer]: id=multiplayer_Silverhead_Crossing
+#. [multiplayer]: id=multiplayer_Castle_Hopping_Isle
+#. [multiplayer]: id=multiplayer_Sullas_Ruins
+#. [multiplayer]: id=multiplayer_4p_Underworld
+#. [multiplayer]: id=multiplayer_Hamlets
+#. [multiplayer]: id=multiplayer_Howling_Ghost_Badlands
+#. [multiplayer]: id=multiplayer_8p_Mokena_Prairie
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:7
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:9
 #: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:6
@@ -629,13 +650,13 @@ msgstr ""
 "Buruz buruko joko azkarrerako mapa. Herrixkako Urrezko 2 txaponeko ezarpena "
 "gomendatzen da."
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Fallenstar_Lake
 #: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:5
 #, fuzzy
 msgid "2p - Fallenstar Lake"
 msgstr "2j - Meteoroen Lakua"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Fallenstar_Lake
 #: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:6
 #, fuzzy
 msgid ""
@@ -686,12 +707,13 @@ msgstr ""
 msgid "teamname^East"
 msgstr ""
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Hamlets
 #: data/multiplayer/scenarios/2p_Hamlets.cfg:5
 msgid "2p - Hamlets"
 msgstr "2p - Herriak"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_4p_Hamlets
+#. [multiplayer]: id=multiplayer_Hamlets
 #: data/multiplayer/scenarios/4p_Hamlets.cfg:6
 #: data/multiplayer/scenarios/2p_Hamlets.cfg:6
 #, fuzzy
@@ -702,12 +724,12 @@ msgstr ""
 "Hiru jokalari datoz buruz buru uraz ingurutatuko borroka leku honetan. "
 "Herrixkako urrezko 2 txaponeko ezarpena gomendatzen da."
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Hornshark_Island
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:5
 msgid "2p - Hornshark Island"
 msgstr "2j - Marrazoen Irla"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Hornshark_Island
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:6
 #, fuzzy
 msgid ""
@@ -717,24 +739,24 @@ msgstr ""
 "Hiru jokalari borrokatzen dute eskualde txiki eta itxi honentan. Herrixkako "
 "urrezko 2 txaponeko ezarpena gomendatzen da."
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Howling_Ghost_Badlands
 #: data/multiplayer/scenarios/2p_Howling_Ghost_Badlands.cfg:5
 msgid "2p - Howling Ghost Badlands"
 msgstr ""
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Howling_Ghost_Badlands
 #: data/multiplayer/scenarios/2p_Howling_Ghost_Badlands.cfg:6
 msgid ""
 "Little remains of this once wealthy mining colony, now a haven for raiders "
 "and thieves."
 msgstr ""
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Sablestone_Delta
 #: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:5
 msgid "2p - Sablestone Delta"
 msgstr "2j - Sableharkaitz-aren Delta"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Sablestone_Delta
 #: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:6
 #, fuzzy
 msgid ""
@@ -744,36 +766,36 @@ msgstr ""
 "Bi armada talka egiten dute kobazulo izkutu eta ibai koskaduneko kostako "
 "paisai honetan. Herrixkako urrezko 2 txaponeko ezarpena gomendatzen da."
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Silverhead_Crossing
 #: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:5
 msgid "2p - Silverhead Crossing"
 msgstr "2j - Zilarburuko gurutxea"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Silverhead_Crossing
 #: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:6
 msgid ""
 "Players must traverse all manner of terrain in pursuit of victory on this "
 "multi-fronted duel map."
 msgstr ""
 
-#. [trait]
+#. [trait]: id=remove_hp
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:23
 #, fuzzy
 msgid "statue"
 msgstr "Egoera"
 
-#. [trait]
+#. [trait]: id=remove_hp
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:24
 msgid "This is a sculpture made of stone."
 msgstr ""
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Sullas_Ruins
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:39
 #, fuzzy
 msgid "2p - Sulla's Ruins"
 msgstr "2j - Sullas-eko Hondakinak"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Sullas_Ruins
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:40
 msgid ""
 "Flooded by the seas and battered by the winter elements, only ruins, water "
@@ -833,30 +855,31 @@ msgstr ""
 msgid "A stone-carved likeness of Lo-bsang, Servant of Sulla."
 msgstr ""
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_The_Freelands
 #: data/multiplayer/scenarios/2p_The_Freelands.cfg:5
 #, fuzzy
 msgid "2p - The Freelands"
 msgstr "4j - Irla bat"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_The_Freelands
+#. [multiplayer]: id=multiplayer_Weldyn_Channel
 #: data/multiplayer/scenarios/2p_The_Freelands.cfg:7
 #: data/multiplayer/scenarios/2p_Weldyn_Channel.cfg:7
 msgid "A duel map for super fast play."
 msgstr ""
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Weldyn_Channel
 #: data/multiplayer/scenarios/2p_Weldyn_Channel.cfg:5
 #, fuzzy
 msgid "2p - Weldyn Channel"
 msgstr "2j - Kargatu"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Alirok_Marsh
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:5
 msgid "3p - Alirok Marsh"
 msgstr ""
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Alirok_Marsh
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:6
 #, fuzzy
 msgid "Three players come head to head on this water-cut battlefield."
@@ -864,25 +887,25 @@ msgstr ""
 "Hiru jokalari datoz buruz buru uraz ingurutatuko borroka leku honetan. "
 "Herrixkako urrezko 2 txaponeko ezarpena gomendatzen da."
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Island_of_the_Horatii
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:5
 #, fuzzy
 msgid "3p - Island of the Horatii"
 msgstr "4j - Mendilerroaren Errege"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Island_of_the_Horatii
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:6
 msgid ""
 "Controlling the central island is often the key to victory in this 21x21hex "
 "3 player free for all map."
 msgstr ""
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_3p_Morituri
 #: data/multiplayer/scenarios/3p_Morituri.cfg:5
 msgid "3p - Morituri"
 msgstr "3j - Morituri"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_3p_Morituri
 #: data/multiplayer/scenarios/3p_Morituri.cfg:6
 #, fuzzy
 msgid ""
@@ -892,12 +915,12 @@ msgstr ""
 "Hiru jokalari datoz buruz buru uraz ingurutatuko borroka leku honetan. "
 "Herrixkako urrezko 2 txaponeko ezarpena gomendatzen da."
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Blue_Water_Province
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:5
 msgid "4p - Blue Water Province"
 msgstr ""
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Blue_Water_Province
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:7
 msgid ""
 "Historians write that Bluewater Province has been destroyed and rebuilt some "
@@ -932,12 +955,12 @@ msgstr ""
 msgid "teamname^Team 2"
 msgstr ""
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Castle_Hopping_Isle
 #: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:5
 msgid "4p - Castle Hopping Isle"
 msgstr "4p - Gazteluz gazteluko Irla"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Castle_Hopping_Isle
 #: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:7
 #, fuzzy
 msgid "Hop from castle to castle while fighting over a central isle."
@@ -945,28 +968,28 @@ msgstr ""
 "Bi armada talka egiten dute kobazulo izkutu eta ibai koskaduneko kostako "
 "paisai honetan. Herrixkako urrezko 2 txaponeko ezarpena gomendatzen da."
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Clash
 #: data/multiplayer/scenarios/4p_Clash.cfg:5
 msgid "4p - Clash"
 msgstr "4j - Erronka"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Clash
 #: data/multiplayer/scenarios/4p_Clash.cfg:7
 msgid "Small map for 2 vs. 2."
 msgstr ""
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_4p_Hamlets
 #: data/multiplayer/scenarios/4p_Hamlets.cfg:5
 #, fuzzy
 msgid "4p - Hamlets"
 msgstr "2p - Herriak"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Isars_Cross
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:7
 msgid "4p - Isar's Cross"
 msgstr ""
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Isars_Cross
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:9
 msgid ""
 "A very small 2 vs. 2 map. Close quarters fighting means the successful "
@@ -1001,19 +1024,20 @@ msgstr ""
 msgid "teamname^North-East"
 msgstr ""
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_King_of_the_Hill
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:7
 msgid "4p - King of the Hill"
 msgstr "4j - Mendilerroaren Errege"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_King_of_the_Hill
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:9
 msgid ""
 "Controlling the area around the central keep is very lucrative in this 36X36 "
 "4 player FFA map. Works fine 2 vs. 2 as well. There are 36 villages."
 msgstr ""
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_King_of_the_Hill
+#. [multiplayer]: id=multiplayer_Siege_Castles
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:9
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:9
 #, fuzzy
@@ -1042,13 +1066,15 @@ msgstr ""
 msgid "teamname^North-West"
 msgstr ""
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Lagoon
 #: data/multiplayer/scenarios/4p_Lagoon.cfg:5
 #, fuzzy
 msgid "4p - Lagoon"
 msgstr "4j - Irla bat"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_The_Wilderlands
+#. [multiplayer]: id=multiplayer_Crusaders_Field
+#. [multiplayer]: id=multiplayer_Lagoon
 #: data/multiplayer/scenarios/4p_The_Wilderlands.cfg:38
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:7
 #: data/multiplayer/scenarios/4p_Lagoon.cfg:6
@@ -1058,7 +1084,7 @@ msgstr ""
 "Buruz buruko joko azkarrerako mapa. Herrixkako Urrezko 2 txaponeko ezarpena "
 "gomendatzen da."
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Lagoon
 #: data/multiplayer/scenarios/4p_Lagoon.cfg:6
 #, fuzzy
 msgid "Four factions contend for dominance over this watery settlement."
@@ -1066,26 +1092,26 @@ msgstr ""
 "Buruz buruko joko azkarrerako mapa. Herrixkako Urrezko 2 txaponeko ezarpena "
 "gomendatzen da."
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Loris_River
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:7
 #, fuzzy
 msgid "4p - Loris River"
 msgstr "2j - Ibaian Zehar"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Loris_River
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:9
 msgid ""
 "A 25x25 2 vs. 2 map centered around a river with keeps in opposite corners. "
 "Designed for players 1&4 vs. 2&3. There are 28 villages."
 msgstr ""
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_4p_Morituri
 #: data/multiplayer/scenarios/4p_Morituri.cfg:5
 #, fuzzy
 msgid "4p - Morituri"
 msgstr "3j - Morituri"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_4p_Morituri
 #: data/multiplayer/scenarios/4p_Morituri.cfg:7
 #, fuzzy
 msgid "Who will emerge from the confines of this perilous battlefield?"
@@ -1093,12 +1119,12 @@ msgstr ""
 "Hiru jokalari datoz buruz buru uraz ingurutatuko borroka leku honetan. "
 "Herrixkako urrezko 2 txaponeko ezarpena gomendatzen da."
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Paths_of_Daggers
 #: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:7
 msgid "4p - Paths of Daggers"
 msgstr ""
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Paths_of_Daggers
 #: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:9
 #, fuzzy
 msgid " Recommended setting of 2 gold per village, 28 villages."
@@ -1106,68 +1132,68 @@ msgstr ""
 "Buruz buruko joko azkarrerako mapa. Herrixkako Urrezko 2 txaponeko ezarpena "
 "gomendatzen da."
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Paths_of_Daggers
 #: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:9
 msgid ""
 "A 35X27 2 vs. 2 map with 5 separate paths of engagement. Balanced to be "
 "played east vs. west (1&4 vs. 2&3), but works well with any teams or FFA."
 msgstr ""
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Siege_Castles
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:7
 #, fuzzy
 msgid "4p - Siege Castles"
 msgstr "Gazteluen arteko errepideak"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Siege_Castles
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:9
 msgid ""
 "40X30 4 player map where 4 mighty castles face off at the convergence of two "
 "rivers. Works well as 2 vs. 2 or FFA. There are approximately 45 villages."
 msgstr ""
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_The_Wilderlands
 #: data/multiplayer/scenarios/4p_The_Wilderlands.cfg:37
 #, fuzzy
 msgid "4p - The Wilderlands"
 msgstr "4j - Irla bat"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_The_Wilderlands
 #: data/multiplayer/scenarios/4p_The_Wilderlands.cfg:38
 msgid ""
 "A vast region of wild, untamed wilderness, its terrain dotted with forests, "
 "caves, rivers, and the ruins of ancient fortresses."
 msgstr ""
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_4p_Underworld
 #: data/multiplayer/scenarios/4p_Underworld.cfg:5
 msgid "4p - Underworld"
 msgstr ""
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_4p_Underworld
 #: data/multiplayer/scenarios/4p_Underworld.cfg:6
 msgid "A fast-paced 2 vs. 2 map set deep below the surface."
 msgstr ""
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Xanthe_Chaos
 #: data/multiplayer/scenarios/4p_Xanthe_Chaos.cfg:7
 msgid "4p - Xanthe Chaos"
 msgstr ""
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Xanthe_Chaos
 #: data/multiplayer/scenarios/4p_Xanthe_Chaos.cfg:9
 msgid ""
 "A 24X28 2 vs. 2 map with auxiliary keeps, and a large messy battle in the "
 "center common."
 msgstr ""
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Auction-X
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:5
 #, fuzzy
 msgid "5p - Auction-X"
 msgstr "Ekintzak"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Auction-X
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:7
 msgid ""
 "4 players surround a central keep, play vs the AI survival style, or as a "
@@ -1201,22 +1227,22 @@ msgstr ""
 msgid "teamname^Center"
 msgstr ""
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Forest_of_Fear
 #: data/multiplayer/scenarios/5p_Forest_of_Fear.cfg:5
 msgid "5p - Forest of Fear"
 msgstr "5p - Beldurraren Basoa"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Forest_of_Fear
 #: data/multiplayer/scenarios/5p_Forest_of_Fear.cfg:7
 msgid "In this mixed landscape, five armies battle for supremacy."
 msgstr ""
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Crusaders_Field
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:5
 msgid "6p - Crusaders' Field"
 msgstr ""
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Crusaders_Field
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:7
 msgid ""
 "The rallying cries of battle can once again be heard on this time-worn field "
@@ -1224,12 +1250,12 @@ msgid ""
 "through the mountains, trees and rivers."
 msgstr ""
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Hexcake
 #: data/multiplayer/scenarios/6p_Hexcake.cfg:5
 msgid "6p - Hexcake"
 msgstr ""
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Hexcake
 #: data/multiplayer/scenarios/6p_Hexcake.cfg:7
 msgid "2 vs. 2 or 3 vs. 3 team game."
 msgstr "2 vs. 2 edo 3 vs. 3 talde jokua."
@@ -1265,43 +1291,43 @@ msgstr ""
 msgid "Tower of Doom"
 msgstr ""
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_6p_Team_Survival
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:337
 msgid "6p - Team Survival"
 msgstr ""
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_6p_Team_Survival
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:340
 msgid "Scenario where the objective is to survive for as long as possible."
 msgstr ""
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_6p_Team_Survival
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:347
 msgid "Survive for 32 turns."
 msgstr ""
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_6p_Team_Survival
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:347
 msgid "Hint: Learning the enemy spawnpoints and types helps alot."
 msgstr ""
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_6p_Team_Survival
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:348
 msgid "Survive all enemy attacks."
 msgstr ""
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_6p_Team_Survival
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:349
 #, fuzzy
 msgid "Death of your team leaders."
 msgstr "Konrad-en heriotza"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_6p_Team_Survival
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:371
 msgid "Faery"
 msgstr ""
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_6p_Team_Survival
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:371
 msgid ""
 "Congratulations for surviving the map that so many people claim is "
@@ -1309,25 +1335,25 @@ msgid ""
 "the replay by mail to: roze@roze.mine.nu. Thank You!"
 msgstr ""
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_6p_Team_Survival
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:374
 #, fuzzy
 msgid "Death"
 msgstr "Lehenetsia"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_6p_Team_Survival
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:374
 msgid ""
 "You have lost this game, but fear not. You can always try again. And again. "
 "And again. *Muahahaha*"
 msgstr ""
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_6p_Team_Survival
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:380
 msgid "Attacker"
 msgstr "Erasotzaile"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_6p_Team_Survival
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:385
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:388
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:391
@@ -1337,12 +1363,12 @@ msgstr "Erasotzaile"
 msgid "Defender"
 msgstr "Defentsari"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_The_Manzivan_Traps
 #: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:7
 msgid "6p - The Manzivan Traps"
 msgstr ""
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_The_Manzivan_Traps
 #: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:10
 msgid ""
 "A 40X20 3 vs. 3 map. The Manzivan Traps are widely known as a difficult and "
@@ -1351,12 +1377,12 @@ msgid ""
 "starting gold, has 33 villages."
 msgstr ""
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Waterloo_Sunset
 #: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:7
 msgid "6p - Waterloo Sunset"
 msgstr ""
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Waterloo_Sunset
 #: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:9
 msgid ""
 "A 40X30 3 vs. 3 map. Flexible coordination of your alliance is required to "
@@ -1365,13 +1391,13 @@ msgid ""
 "Designed for 150 starting gold, has 44 villages."
 msgstr ""
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_8p_Mokena_Prairie
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:5
 #, fuzzy
 msgid "8p - Mokena Prairie"
 msgstr "3j - Morituri"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_8p_Mokena_Prairie
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:8
 msgid ""
 "Inspired from Morituri, this 8 player map creates an epic battle scene that "
@@ -1394,13 +1420,13 @@ msgstr ""
 msgid "teamname^west"
 msgstr ""
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_8p_Morituri
 #: data/multiplayer/scenarios/8p_Morituri.cfg:5
 #, fuzzy
 msgid "8p - Morituri"
 msgstr "3j - Morituri"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_8p_Morituri
 #: data/multiplayer/scenarios/8p_Morituri.cfg:7
 #, fuzzy
 msgid ""
@@ -1410,12 +1436,12 @@ msgstr ""
 "Hiru jokalari datoz buruz buru uraz ingurutatuko borroka leku honetan. "
 "Herrixkako urrezko 2 txaponeko ezarpena gomendatzen da."
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Merkwuerdigliebe
 #: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:7
 msgid "9p - Merkwuerdigliebe"
 msgstr ""
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Merkwuerdigliebe
 #: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:9
 msgid ""
 "A very small 3 vs. 3 vs. 3 map. A 60sec timer is recommended due to the "
@@ -1424,28 +1450,28 @@ msgid ""
 "gold per villages is recommended."
 msgstr ""
 
-#. [scenario]
-#. [multiplayer]
+#. [scenario]: id=multiplayer_Random_Map
+#. [multiplayer]: id=multiplayer_Random_Map
 #: data/multiplayer/scenarios/Random_Scenario.cfg:6
 #: data/multiplayer/scenarios/Random_Scenario.cfg:11
 msgid "Random map"
 msgstr "Ausazko mapa"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Random_Map
 #: data/multiplayer/scenarios/Random_Scenario.cfg:7
 msgid ""
 "Randomly generated map. Note: random maps are often unbalanced, but if you "
 "have time, you can regenerate them until you get a good one."
 msgstr ""
 
-#. [scenario]
-#. [multiplayer]
+#. [scenario]: id=multiplayer_Random_Map_Desert
+#. [multiplayer]: id=multiplayer_Random_Map_Desert
 #: data/multiplayer/scenarios/Random_Scenario_Desert.cfg:5
 #: data/multiplayer/scenarios/Random_Scenario_Desert.cfg:10
 msgid "Random map (Desert)"
 msgstr "Ausazko mapa (desertua)"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Random_Map_Desert
 #: data/multiplayer/scenarios/Random_Scenario_Desert.cfg:6
 msgid ""
 "A random map with sand as the primary terrain. Note: random maps are often "
@@ -1453,14 +1479,14 @@ msgid ""
 "good one."
 msgstr ""
 
-#. [scenario]
-#. [multiplayer]
+#. [scenario]: id=multiplayer_Random_Map_Marsh
+#. [multiplayer]: id=multiplayer_Random_Map_Marsh
 #: data/multiplayer/scenarios/Random_Scenario_Marsh.cfg:5
 #: data/multiplayer/scenarios/Random_Scenario_Marsh.cfg:10
 msgid "Random map (Marsh)"
 msgstr "Ausazko mapa (Marsh)"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Random_Map_Marsh
 #: data/multiplayer/scenarios/Random_Scenario_Marsh.cfg:6
 msgid ""
 "A random map with swamp as the primary terrain. Note: random maps are often "
@@ -1468,14 +1494,14 @@ msgid ""
 "good one."
 msgstr ""
 
-#. [scenario]
-#. [multiplayer]
+#. [scenario]: id=multiplayer_Random_Map_Winter
+#. [multiplayer]: id=multiplayer_Random_Map_Winter
 #: data/multiplayer/scenarios/Random_Scenario_Winter.cfg:5
 #: data/multiplayer/scenarios/Random_Scenario_Winter.cfg:10
 msgid "Random map (Winter)"
 msgstr "Ausazko mapa (Negua)"
 
-#. [multiplayer]
+#. [multiplayer]: id=multiplayer_Random_Map_Winter
 #: data/multiplayer/scenarios/Random_Scenario_Winter.cfg:6
 msgid ""
 "A random map set in the break between spring and winter, mainly with snowy "
@@ -1483,36 +1509,36 @@ msgid ""
 "can regenerate them until you get a good one."
 msgstr ""
 
-#. [multiplayer]
+#. [multiplayer]: id=wesbench_ai
 #: data/multiplayer/scenarios/Wesbench_AI.cfg:7
 msgid "Wesnoth Benchmark: AI"
 msgstr ""
 
-#. [multiplayer]
+#. [multiplayer]: id=wesbench_ai
 #: data/multiplayer/scenarios/Wesbench_AI.cfg:8
 msgid ""
 "A wesnoth benchmark, use --nogui --no-delay --multiplayer --"
 "scenario=wesbench_ai --exit-at-end."
 msgstr ""
 
-#. [multiplayer]
+#. [multiplayer]: id=wesbench_scroll
 #: data/multiplayer/scenarios/Wesbench_Scroll.cfg:7
 msgid "Wesnoth Benchmark: Scrolling"
 msgstr ""
 
-#. [multiplayer]
+#. [multiplayer]: id=wesbench_scroll
 #: data/multiplayer/scenarios/Wesbench_Scroll.cfg:8
 msgid ""
 "A wesnoth benchmark, use --no-delay --multiplayer --scenario=wesbench_scroll "
 "--exit-at-end."
 msgstr ""
 
-#. [multiplayer]
+#. [multiplayer]: id=wesbench_shroud_walk
 #: data/multiplayer/scenarios/Wesbench_Shroud_Walk.cfg:7
 msgid "Wesnoth Benchmark: Walking through Shroud"
 msgstr ""
 
-#. [multiplayer]
+#. [multiplayer]: id=wesbench_shroud_walk
 #: data/multiplayer/scenarios/Wesbench_Shroud_Walk.cfg:8
 msgid ""
 "A wesnoth benchmark, use --no-delay --multiplayer --"

@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-27 19:52+0100\n"
+"POT-Creation-Date: 2008-11-29 12:24+0100\n"
 "PO-Revision-Date: 2008-11-20 16:35+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
@@ -26,33 +26,41 @@ msgstr ""
 "X-Poedit-Language: Czech\n"
 "X-Poedit-Country: CZECH REPUBLIC\n"
 
-#. [terrain]
+#. [terrain]: id=off_map
 #: data/core/terrain.cfg:13
 msgid "None"
 msgstr "Nic"
 
-#. [toggle_button]
-#. [terrain]
+#. [toggle_button]: id=shroud
+#. [terrain]: id=shroud
 #: data/core/terrain.cfg:22 data/gui/default/window/mp_create_game.cfg:473
 msgid "Shroud"
 msgstr "Zahalení tmou"
 
-#. [terrain]
+#. [terrain]: id=fog
 #: data/core/terrain.cfg:31
 msgid "Fog"
 msgstr "Mlha"
 
-#. [terrain]
+#. [terrain]: id=ice
 #: data/core/terrain.cfg:43
 msgid "Ice"
 msgstr "Led"
 
-#. [terrain]
+#. [terrain]: id=snow
 #: data/core/terrain.cfg:53
 msgid "Snow"
 msgstr "Sníh"
 
-#. [terrain]
+#. [terrain]: id=bridge
+#. [terrain]: id=bridgediag1
+#. [terrain]: id=bridgediag2
+#. [terrain]: id=bridgechasm
+#. [terrain]: id=bridgechasmdiag1
+#. [terrain]: id=bridgechasmdiag2
+#. [terrain]: id=bridgelava
+#. [terrain]: id=bridgelavadiag1
+#. [terrain]: id=bridglavadiag2
 #: data/core/terrain.cfg:66 data/core/terrain.cfg:75 data/core/terrain.cfg:84
 #: data/core/terrain.cfg:95 data/core/terrain.cfg:104
 #: data/core/terrain.cfg:114 data/core/terrain.cfg:126
@@ -60,33 +68,40 @@ msgstr "Sníh"
 msgid "Bridge"
 msgstr "Most"
 
-#. [terrain]
+#. [terrain]: id=encampment
 #: data/core/terrain.cfg:162
 msgid "Encampment"
 msgstr "Ležení"
 
-#. [terrain]
+#. [terrain]: id=castle
+#. [terrain]: id=dwarven_castle
 #: data/core/terrain.cfg:173 data/core/terrain.cfg:183
 #: data/core/terrain.cfg:194
 msgid "Castle"
 msgstr "Hrad"
 
-#. [terrain]
+#. [terrain]: id=ruin
 #: data/core/terrain.cfg:205
 msgid "Ruin"
 msgstr "Zřícenina"
 
-#. [terrain]
+#. [terrain]: id=sunkenruin
 #: data/core/terrain.cfg:216
 msgid "Sunken Ruin"
 msgstr "Zatopená zřícenina"
 
-#. [terrain]
+#. [terrain]: id=swampruin
 #: data/core/terrain.cfg:228
 msgid "Swamp Ruin"
 msgstr "Propadlá zřícenina"
 
-#. [terrain]
+#. [terrain]: id=encampment_keep
+#. [terrain]: id=human_keep
+#. [terrain]: id=elven_keep
+#. [terrain]: id=dwarven_keep
+#. [terrain]: id=ruined_keep
+#. [terrain]: id=sunken_keep
+#. [terrain]: id=swamp_keep
 #: data/core/terrain.cfg:253 data/core/terrain.cfg:265
 #: data/core/terrain.cfg:277 data/core/terrain.cfg:289
 #: data/core/terrain.cfg:301 data/core/terrain.cfg:313
@@ -94,161 +109,185 @@ msgstr "Propadlá zřícenina"
 msgid "Keep"
 msgstr "Tvrz"
 
-#. [terrain]
+#. [terrain]: id=crater
 #: data/core/terrain.cfg:351
 msgid "Crater"
 msgstr "Kráter"
 
-#. [terrain]
+#. [terrain]: id=desert
 #: data/core/terrain.cfg:361
 msgid "Desert"
 msgstr "Poušť"
 
-#. [terrain]
+#. [terrain]: id=sand_rubble
 #: data/core/terrain.cfg:371
 msgid "Rubble"
 msgstr "Smetí"
 
-#. [terrain]
+#. [terrain]: id=sand
 #: data/core/terrain.cfg:382
 msgid "Sand"
 msgstr "Písek"
 
-#. [terrain]
+#. [terrain]: id=oasis
 #: data/core/terrain.cfg:390
 msgid "Oasis"
 msgstr "Oáza"
 
-#. [terrain]
+#. [terrain]: id=snow_forest
 #: data/core/terrain.cfg:405
 msgid "Snow Forest"
 msgstr "Zasněžený les"
 
-#. [terrain]
+#. [terrain]: id=great_tree
 #: data/core/terrain.cfg:416
 msgid "Great Tree"
 msgstr "Velký strom"
 
-#. [terrain]
+#. [terrain]: id=forest
 #: data/core/terrain.cfg:426
 msgid "Forest"
 msgstr "Les"
 
-#. [terrain]
+#. [terrain]: id=tropical_forest
 #: data/core/terrain.cfg:435
 msgid "Tropical Forest"
 msgstr "Tropický les"
 
-#. [terrain]
+#. [terrain]: id=forested_hills
 #: data/core/terrain.cfg:449
 msgid "Forested Hills"
 msgstr "Zalesněné kopce"
 
-#. [terrain]
+#. [terrain]: id=forested_snow_hills
 #: data/core/terrain.cfg:459
 msgid "Forested Snow Hills"
 msgstr "Zasněžené a zalesněné kopce"
 
-#. [terrain]
+#. [terrain]: id=grassland
+#. [terrain]: id=grassland_flowers
+#. [terrain]: id=windmill
 #: data/core/terrain.cfg:473 data/core/terrain.cfg:482
 #: data/core/terrain.cfg:491
 msgid "Grassland"
 msgstr "Louka"
 
-#. [terrain]
+#. [terrain]: id=savanna
 #: data/core/terrain.cfg:500
 msgid "Savanna"
 msgstr "Step"
 
-#. [terrain]
+#. [terrain]: id=snow_hills
 #: data/core/terrain.cfg:513
 msgid "Snow Hills"
 msgstr "Zasněžené hory"
 
-#. [terrain]
+#. [terrain]: id=desert_hills
 #: data/core/terrain.cfg:523
 msgid "Dunes"
 msgstr "Duny"
 
-#. [terrain]
+#. [terrain]: id=hills
 #: data/core/terrain.cfg:533
 msgid "Hills"
 msgstr "Kopce"
 
-#. [terrain]
+#. [terrain]: id=desert_mountains
+#. [terrain]: id=mountains
+#. [terrain]: id=snow_mountains
 #: data/core/terrain.cfg:545 data/core/terrain.cfg:554
 #: data/core/terrain.cfg:562
 msgid "Mountains"
 msgstr "Hory"
 
-#. [terrain]
+#. [terrain]: id=canyon
 #: data/core/terrain.cfg:576
 msgid "Chasm"
 msgstr "Rokle"
 
-#. [terrain]
+#. [terrain]: id=lava_chasm
 #: data/core/terrain.cfg:585
 msgid "Lava chasm"
 msgstr "Lávová rokle"
 
-#. [terrain]
+#. [terrain]: id=lava
 #: data/core/terrain.cfg:595
 msgid "Lava"
 msgstr "Láva"
 
-#. [terrain]
+#. [terrain]: id=road
+#. [terrain]: id=stone_path
 #: data/core/terrain.cfg:609 data/core/terrain.cfg:627
 #: data/core/terrain.cfg:636
 msgid "Road"
 msgstr "Cesta"
 
-#. [terrain]
+#. [terrain]: id=dirt
 #: data/core/terrain.cfg:618
 msgid "Dirt"
 msgstr "Bahno"
 
-#. [terrain]
+#. [terrain]: id=farm
 #: data/core/terrain.cfg:645
 msgid "Farmland"
 msgstr "Pole"
 
-#. [terrain]
+#. [terrain]: id=swamp_water
 #: data/core/terrain.cfg:659
 msgid "Swamp"
 msgstr "Mokřina"
 
 # pseudoterén
-#. [terrain]
+#. [terrain]: id=lit
 #: data/core/terrain.cfg:673
 msgid "Lit"
 msgstr "Osvětlený"
 
-#. [terrain]
+#. [terrain]: id=cave
 #: data/core/terrain.cfg:683
 msgid "Cave"
 msgstr "Jeskyně"
 
-#. [terrain]
+#. [terrain]: id=cave_path
 #: data/core/terrain.cfg:701
 msgid "Cave path"
 msgstr "Jeskynní stezka"
 
-#. [terrain]
+#. [terrain]: id=fungus
 #: data/core/terrain.cfg:710
 msgid "Mushroom Grove"
 msgstr "Houbový háj"
 
-#. [terrain]
+#. [terrain]: id=fungus_beam
 #: data/core/terrain.cfg:719
 msgid "Mushroom Grove Lit"
 msgstr "Osvětlený houbový háj"
 
-#. [terrain]
+#. [terrain]: id=rocky_cave
 #: data/core/terrain.cfg:730
 msgid "Rockbound Cave"
 msgstr "Skalnatá jeskyně"
 
-#. [terrain]
+#. [terrain]: id=desert_village
+#. [terrain]: id=elven_snow_village
+#. [terrain]: id=village
+#. [terrain]: id=snow_village
+#. [terrain]: id=hill_village
+#. [terrain]: id=snow-hill_village
+#. [terrain]: id=snow-mountain_village
+#. [terrain]: id=mountain_village
+#. [terrain]: id=tropical_forest_village
+#. [terrain]: id=camp_village
+#. [terrain]: id=underground_village
+#. [terrain]: id=dwarven_village
+#. [terrain]: id=hut_village
+#. [terrain]: id=hut_snow_village
+#. [terrain]: id=hut_hills_village
+#. [terrain]: id=hut_snow_hills_village
+#. [terrain]: id=hut_mountains_village
+#. [terrain]: id=mermen_village
+#. [terrain]: id=swamp_village
+#. [terrain]: id=swamp_merfolk-village
 #: data/core/terrain.cfg:757 data/core/terrain.cfg:768
 #: data/core/terrain.cfg:781 data/core/terrain.cfg:792
 #: data/core/terrain.cfg:805 data/core/terrain.cfg:816
@@ -264,72 +303,72 @@ msgstr "Skalnatá jeskyně"
 msgid "Village"
 msgstr "Vesnice"
 
-#. [terrain]
+#. [terrain]: id=deep_water
 #: data/core/terrain.cfg:1026
 msgid "Deep Water"
 msgstr "Hluboká voda"
 
-#. [terrain]
+#. [terrain]: id=shallow_water
 #: data/core/terrain.cfg:1036
 msgid "Shallow Water"
 msgstr "Mělká voda"
 
-#. [terrain]
+#. [terrain]: id=ford
 #: data/core/terrain.cfg:1046
 msgid "River Ford"
 msgstr "Brod řeky"
 
-#. [terrain]
+#. [terrain]: id=reef
 #: data/core/terrain.cfg:1057
 msgid "Coastal Reef"
 msgstr "Pobřežní útes"
 
-#. [terrain]
+#. [terrain]: id=cloud
 #: data/core/terrain.cfg:1071
 msgid "Impassable Mountains"
 msgstr "Neschůdné hory"
 
 # pořadí?
-#. [terrain]
+#. [terrain]: id=clouddesert
 #: data/core/terrain.cfg:1080
 msgid "Impassable Desert Mountains"
 msgstr "Neschůdné pouštní hory"
 
-#. [terrain]
+#. [terrain]: id=cavewall
 #: data/core/terrain.cfg:1089
 msgid "Cave Wall"
 msgstr "Jeskynní hradba"
 
-#. [terrain]
+#. [terrain]: id=wall_stone
 #: data/core/terrain.cfg:1098
 msgid "Wall"
 msgstr "Zeď"
 
 # nicota?
-#. [terrain]
+#. [terrain]: id=void
 #: data/core/terrain.cfg:1108
 msgid "Void"
 msgstr "Prázdnota"
 
 # pseudoterén
-#. [terrain]
+#. [terrain]: id=flat
 #: data/core/terrain.cfg:1121
 msgid "Flat"
 msgstr "Plochý"
 
 # pseudoterén
-#. [terrain]
+#. [terrain]: id=frozen
 #: data/core/terrain.cfg:1128
 msgid "Frozen"
 msgstr "Zmrzlý"
 
-#. [terrain]
+#. [terrain]: id=impassable
 #: data/core/terrain.cfg:1135
 msgid "Impassable"
 msgstr "Neprůchozí"
 
 # pseudoterén
-#. [terrain]
+#. [terrain]: id=unwalkable
 #: data/core/terrain.cfg:1142
 msgid "Unwalkable"
 msgstr "Neschůdný"
@@ -367,7 +406,7 @@ msgstr "Aktualizace rozšíření"
 msgid "Remove Add-ons"
 msgstr "Odstranit rozšíření"
 
-#. [button]
+#. [button]: id=ok
 #: data/gui/default/window/addon_connect.cfg:201
 #: data/gui/default/window/addon_connect.cfg:202
 #: data/gui/default/window/mp_connect.cfg:175
@@ -376,7 +415,7 @@ msgid "Connect"
 msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
-#. [button]
+#. [button]: id=cancel
 #: data/gui/default/window/addon_connect.cfg:216
 #: data/gui/default/window/editor_generate_map.cfg:111
 #: data/gui/default/window/editor_new_map.cfg:111
@@ -396,21 +435,21 @@ msgstr "Zrušit"
 msgid "Generate Random Map"
 msgstr "Vygeneruj náhodnou mapu"
 
-#. [button]
+#. [button]: id=next_generator
 #: data/gui/default/window/editor_generate_map.cfg:67
 #: data/gui/default/window/editor_generate_map.cfg:68
 #, fuzzy
 msgid "Next Generator"
 msgstr "Generátor map"
 
-#. [button]
+#. [button]: id=settings
 #: data/gui/default/window/editor_generate_map.cfg:90
 #: data/gui/default/window/editor_generate_map.cfg:91
 #, fuzzy
 msgid "Settings"
 msgstr "Nastavení klávesových zkratek"
 
-#. [button]
+#. [button]: id=ok
 #: data/gui/default/window/editor_generate_map.cfg:101
 #, fuzzy
 msgid "Generate"
@@ -434,7 +473,7 @@ msgstr "Šířka:"
 msgid "Height:"
 msgstr "Výška:"
 
-#. [button]
+#. [button]: id=ok
 #: data/gui/default/window/editor_new_map.cfg:100
 #: data/gui/default/window/editor_new_map.cfg:101
 msgid "Create new map"
@@ -471,12 +510,12 @@ msgstr "Stará výška:"
 msgid "Expand / shrink direction"
 msgstr ""
 
-#. [toggle_button]
+#. [toggle_button]: id=copy_edge_terrain
 #: data/gui/default/window/editor_resize_map.cfg:242
 msgid "Copy edge terrain"
 msgstr ""
 
-#. [button]
+#. [button]: id=ok
 #: data/gui/default/window/editor_resize_map.cfg:264
 #: data/gui/default/window/editor_resize_map.cfg:265
 #, fuzzy
@@ -494,18 +533,18 @@ msgstr "Nastavení editoru"
 msgid "Time of day lighting preset"
 msgstr ""
 
-#. [button]
+#. [button]: id=next_tod
 #: data/gui/default/window/editor_settings.cfg:75
 #: data/gui/default/window/editor_settings.cfg:76
 msgid "Next"
 msgstr "Další"
 
-#. [toggle_button]
+#. [toggle_button]: id=custom_tod_toggle
 #: data/gui/default/window/editor_settings.cfg:83
 msgid "Custom lighting setting"
 msgstr ""
 
-#. [toggle_button]
+#. [toggle_button]: id=custom_tod_auto_refresh
 #: data/gui/default/window/editor_settings.cfg:93
 msgid "Auto-update map view"
 msgstr ""
@@ -525,20 +564,21 @@ msgstr "Zelená:"
 msgid "Blue:"
 msgstr "Modrá:"
 
-#. [toggle_button]
+#. [toggle_button]: id=use_mdi
 #: data/gui/default/window/editor_settings.cfg:208
 msgid "Allow more than one map to be open at the same time (MDI)"
 msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
-#. [button]
+#. [button]: id=ok
 #: data/gui/default/window/editor_settings.cfg:230
+#: data/gui/default/window/mp_method_selection.cfg:205
 #: src/construct_dialog.cpp:125 src/construct_dialog.cpp:132
 msgid "OK"
 msgstr "OK"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
-#. [button]
+#. [button]: id=apply
 #: data/gui/default/window/editor_settings.cfg:250
 #: src/game_preferences_display.cpp:188
 msgid "Apply"
@@ -556,7 +596,7 @@ msgstr "Jazyk"
 msgid "Choose your preferred language:"
 msgstr "Vyber si preferovaný jazyk:"
 
-#. [button]
+#. [button]: id=ok
 #: data/gui/default/window/language_selection.cfg:121
 #: data/gui/default/window/language_selection.cfg:122
 #, fuzzy
@@ -569,7 +609,7 @@ msgstr "Změnit používaný jazyk"
 msgid "You will now connect to the multiplayer server."
 msgstr ""
 
-#. [button]
+#. [button]: id=list
 #: data/gui/default/window/mp_connect.cfg:148
 #, fuzzy
 msgid "View List"
@@ -581,19 +621,19 @@ msgid "Create Game"
 msgstr "Vytvoř hru"
 
 #. [label]
-#. [text_box]
+#. [text_box]: id=game_name
 #: data/gui/default/window/mp_create_game.cfg:62
 #: data/gui/default/window/mp_create_game.cfg:77
 msgid "Name of game:"
 msgstr "Název hry:"
 
-#. [label]
+#. [label]: id=map_players
 #: data/gui/default/window/mp_create_game.cfg:140
 #, fuzzy
 msgid "Players: "
 msgstr "Počet hráčů: "
 
-#. [label]
+#. [label]: id=map_size
 #: data/gui/default/window/mp_create_game.cfg:159
 msgid "Map size: "
 msgstr "Velikost mapy: "
@@ -603,13 +643,13 @@ msgstr "Velikost mapy: "
 msgid "Era:"
 msgstr "Éra:"
 
-#. [button]
+#. [button]: id=era
 #: data/gui/default/window/mp_create_game.cfg:196
 #, fuzzy
 msgid "Default"
 msgstr "Implicitní pohled"
 
-#. [button]
+#. [button]: id=password
 #: data/gui/default/window/mp_create_game.cfg:218
 msgid "Set Password"
 msgstr "Nastavení hesla"
@@ -619,7 +659,7 @@ msgstr "Nastavení hesla"
 msgid "Map to play:"
 msgstr "Mapa k hraní:"
 
-#. [toggle_button]
+#. [toggle_button]: id=use_map_settings
 #: data/gui/default/window/mp_create_game.cfg:315
 msgid "Use map settings"
 msgstr "Použij nastavení z mapy"
@@ -629,7 +669,7 @@ msgstr "Použij nastavení z mapy"
 msgid "Number of turns"
 msgstr "Počet kol"
 
-#. [slider]
+#. [slider]: id=turn_count
 #: data/gui/default/window/mp_create_game.cfg:356
 msgid "Unlimited"
 msgstr "Neomezeně"
@@ -645,17 +685,17 @@ msgstr "Vesnice"
 msgid "Experience modifier"
 msgstr "Modifikátor zkušenostních bodů"
 
-#. [toggle_button]
+#. [toggle_button]: id=fog
 #: data/gui/default/window/mp_create_game.cfg:454
 msgid "Fog of War"
 msgstr "Mlha pro skrytí nepřátelských pohybů"
 
-#. [toggle_button]
+#. [toggle_button]: id=random_start_time
 #: data/gui/default/window/mp_create_game.cfg:495
 msgid "Random start time"
 msgstr "Náhodná počáteční doba"
 
-#. [button]
+#. [button]: id=ok
 #: data/gui/default/window/mp_create_game.cfg:537
 #, fuzzy
 msgid "Create game"
@@ -711,11 +751,6 @@ msgid "Play a multiplayer game with the AI or humans sharing the same machine"
 msgstr ""
 "Hrej hru více hráčů s lidmi nebo počítačovými protivníky na jednom stroji"
 
-#. [button]
-#: data/gui/default/window/mp_method_selection.cfg:205
-msgid "Ok"
-msgstr "Ok"
-
 #. [label]
 #: data/gui/default/window/mp_server_list.cfg:84
 msgid "Name"
@@ -726,7 +761,7 @@ msgstr "Název"
 msgid "Address"
 msgstr "Adresa"
 
-#. [button]
+#. [button]: id=ok
 #: data/gui/default/window/mp_server_list.cfg:198
 #, fuzzy
 msgid "Select"
@@ -1943,6 +1978,9 @@ msgstr ""
 #: src/wml_exception.cpp:72
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr "V sekci '[$section|]' není nastaven povinný klíč '$key|'."
+
+#~ msgid "Ok"
+#~ msgstr "Ok"
 
 #~ msgid "2000"
 #~ msgstr "2000"

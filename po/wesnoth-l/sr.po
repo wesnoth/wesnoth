@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-14 22:25+0100\n"
+"POT-Creation-Date: 2008-11-29 12:24+0100\n"
 "PO-Revision-Date: 2008-06-23 12:00+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -18,42 +18,42 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n%"
 "10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 
-#. [campaign]
+#. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:10 data/campaigns/Liberty/_main.cfg:11
 msgid "Liberty"
 msgstr "Слобода"
 
-#. [campaign]
+#. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:17
 msgid "Outlaw"
 msgstr "одметник"
 
-#. [campaign]
+#. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:17
 msgid "(Easy)"
 msgstr "(лако)"
 
-#. [campaign]
+#. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:17
 msgid "(Difficult)"
 msgstr "(тешко)"
 
-#. [campaign]
+#. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:17
 msgid "Peasant"
 msgstr "сељак"
 
-#. [campaign]
+#. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:17
 msgid "(Normal)"
 msgstr "(нормално)"
 
-#. [campaign]
+#. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:17
 msgid "Fugitive"
 msgstr "бегунац"
 
-#. [campaign]
+#. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:25
 msgid ""
 "As the shadow of civil war lengthens across Wesnoth, a band of hardy "
@@ -95,7 +95,7 @@ msgstr "Цртежи и графички дизајн"
 msgid "Translators"
 msgstr "Преводиоци"
 
-#. [scenario]
+#. [scenario]: id=the_raid
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:4
 msgid "The Raid"
 msgstr "Препад"
@@ -160,13 +160,13 @@ msgstr ""
 "Народ Анувина, међутим, не беше вољан одрећи се своје муком стечене "
 "самоуправе, посебно не ради те самозванке..."
 
-#. [side]: type=Bandit_Peasant
+#. [side]: type=Bandit_Peasant, id=Baldras
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:59
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:31
 msgid "Baldras"
 msgstr "Балдрас"
 
-#. [side]: type=Goblin Pillager
+#. [side]: type=Goblin Pillager, id=Fal Khag
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:75
 msgid "Fal Khag"
 msgstr "Фал Каг"
@@ -301,7 +301,7 @@ msgstr "Кембе"
 msgid "Treagh"
 msgstr "Треаг"
 
-#. [unit]: type=Footpad_Peasant
+#. [unit]: type=Footpad_Peasant, id=Harper
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:217
 msgid "Harper"
 msgstr "Харпер"
@@ -455,19 +455,19 @@ msgstr ""
 "Гоблини стигоше до села! Засигурно ништа од њега остати неће кад доврше "
 "своје пустошење."
 
-#. [scenario]
+#. [scenario]: id=civil_disobedience
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:4
 msgid "Civil Disobedience"
 msgstr "Грађанска непослушност"
 
-#. [side]: type=Highwayman
-#. [side]: type=Shadow Lord
+#. [side]: type=Highwayman, id=Baldras
+#. [side]: type=Shadow Lord, id=Helicrom
 #. [side]
-#. [side]: type=Bandit
-#. [side]: type=Rogue
-#. [side]: type=Highwayman_Peasant
-#. [side]: type=General
-#. [side]: type=Bandit_Peasant
+#. [side]: type=Bandit, id=Baldras
+#. [side]: type=Rogue, id=Hans
+#. [side]: type=Highwayman_Peasant, id=Relnan
+#. [side]: type=General, id=Lord Maddock
+#. [side]: type=Bandit_Peasant, id=Baldras
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:58
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:203
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:213
@@ -485,17 +485,18 @@ msgstr "Грађанска непослушност"
 msgid "Rebels"
 msgstr ""
 
-#. [side]: type=Cavalier
+#. [side]: type=Cavalier, id=Tarwen
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:47
 msgid "Tarwen"
 msgstr "Тарвен"
 
-#. [side]: type=General
+#. [side]: type=General, id=Dommel
 #. [side]
-#. [side]: type=Master Bowman
-#. [side]: type=Cavalier
-#. [side]: type=Royal Guard
-#. [side]: type=Iron Mauler
+#. [side]: type=Master Bowman, id=Quentin
+#. [side]: type=General, id=Kestrel
+#. [side]: type=Cavalier, id=Tarwen
+#. [side]: type=Royal Guard, id=Archarel
+#. [side]: type=Iron Mauler, id=Linneus
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:96
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:117
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:55
@@ -627,25 +628,26 @@ msgid ""
 "Oh, no! We have run out of time, they have arrived with reinforcements..."
 msgstr "О, не! Време нам је истекло, стижу им појачања..."
 
-#. [scenario]
+#. [scenario]: id=a_strategy_of_hope
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:4
 msgid "A Strategy of Hope"
 msgstr "Стратегија наде"
 
-#. [side]: type=Highwayman_Peasant
+#. [side]: type=Highwayman_Peasant, id=Relnan
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:40
 msgid "Relnan"
 msgstr "Релнан"
 
-#. [side]: type=Orcish Warrior
+#. [side]: type=Orcish Warrior, id=Urk Delek
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:66
 msgid "Urk Delek"
 msgstr "Урк Делек"
 
-#. [side]: type=Necromancer
-#. [side]: type=Lich
-#. [side]: type=Orcish Warrior
-#. [side]: type=Saurian Oracle
+#. [side]: type=Necromancer, id=Mal-Jarrof
+#. [side]: type=Necromancer, id=Mal-Jerod
+#. [side]: type=Lich, id=Sel-Mana
+#. [side]: type=Orcish Warrior, id=Urk Delek
+#. [side]: type=Saurian Oracle, id=Thhsthss
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:106
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:121
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:137
@@ -654,7 +656,7 @@ msgstr "Урк Делек"
 msgid "Evil"
 msgstr ""
 
-#. [side]: type=Saurian Oracle
+#. [side]: type=Saurian Oracle, id=Thhsthss
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:94
 msgid "Thhsthss"
 msgstr "Тстс"
@@ -827,7 +829,7 @@ msgstr ""
 "Превише смо одуговлачили... Нема нам више изгледа да досегнемо Еленсефар и "
 "доведемо помоћ пре него што нам веснотска војска уништи домове. Повлачење!"
 
-#. [scenario]
+#. [scenario]: id=unlawful_orders
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:4
 msgid "Unlawful Orders"
 msgstr "Незаконита наређења"
@@ -842,12 +844,12 @@ msgstr "Еленсефар"
 msgid "Port of Elensefar"
 msgstr "Лука Еленсефар"
 
-#. [side]: type=General
+#. [side]: type=General, id=Lord Maddock
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:50
 msgid "Lord Maddock"
 msgstr "господар Мадок"
 
-#. [side]: type=General
+#. [side]: type=General, id=Kestrel
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:71
 msgid "Kestrel"
 msgstr "Кестрел"
@@ -862,7 +864,7 @@ msgstr "Поразиш ли непријатељског генерала"
 msgid "Death of Maddock"
 msgstr "Настрада ли Мадок"
 
-#. [unit]: type=Lieutenant
+#. [unit]: type=Lieutenant, id=Rothel
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:134
 msgid "Rothel"
 msgstr "Ротел"
@@ -1064,22 +1066,22 @@ msgstr ""
 "Гледајте, стиже још јахача са југоистока. Не можемо преживети још један "
 "јуриш. С нама је свршено!"
 
-#. [scenario]
+#. [scenario]: id=hide_and_seek
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:6
 msgid "Hide and Seek"
 msgstr "Жмурке"
 
-#. [time]
+#. [time]: id=midnight
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:12
 msgid "Midnight"
 msgstr "поноћ"
 
-#. [side]: type=Master Bowman
+#. [side]: type=Master Bowman, id=Quentin
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:50
 msgid "Quentin"
 msgstr "Квентин"
 
-#. [side]: type=Rogue
+#. [side]: type=Rogue, id=Hans
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:86
 msgid "Hans"
 msgstr "Ханс"
@@ -1118,7 +1120,7 @@ msgstr ""
 "Нисам сигуран куда нам је сада поћи. Ако уђемо у град, можемо се распитати "
 "около."
 
-#. [unit]: type=Thief
+#. [unit]: type=Thief, id=Link
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:511
 msgid "Link"
 msgstr "Карика"
@@ -1247,28 +1249,28 @@ msgstr ""
 "Предуго се задржасмо овде. Краљичине снаге засигурно су се вратиле пут "
 "Далбена. Наше посланство је недовршено, али морамо назад у безнадежни бој."
 
-#. [scenario]
+#. [scenario]: id=the_gray_woods
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:4
 msgid "The Gray Woods"
 msgstr "Седошумље"
 
-#. [side]: type=Shadow Lord
+#. [side]: type=Shadow Lord, id=Helicrom
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:187
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:62
 msgid "Helicrom"
 msgstr "Хеликром"
 
-#. [side]: type=Necromancer
+#. [side]: type=Necromancer, id=Mal-Jarrof
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:97
 msgid "Mal-Jarrof"
 msgstr "Мал-Џароф"
 
-#. [side]: type=Necromancer
+#. [side]: type=Necromancer, id=Mal-Jerod
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:112
 msgid "Mal-Jerod"
 msgstr "Мал-Џерод"
 
-#. [side]: type=Lich
+#. [side]: type=Lich, id=Sel-Mana
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:127
 msgid "Sel-Mana"
 msgstr "Сел-Мана"
@@ -1514,7 +1516,7 @@ msgstr ""
 msgid "My men... have failed to protect me! I perish..."
 msgstr "Моји... не успеше да ме заштите! Пропадох..."
 
-#. [scenario]
+#. [scenario]: id=the_hunters
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:4
 msgid "The Hunters"
 msgstr "Ловци"
@@ -1563,12 +1565,12 @@ msgstr ""
 "Алдрила, оближњег града, где полазе на северозапад. Несигурни шта то значи, "
 "расправљаше о својим наредним корацима..."
 
-#. [side]: type=Royal Guard
+#. [side]: type=Royal Guard, id=Archarel
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:55
 msgid "Archarel"
 msgstr "Архарел"
 
-#. [side]: type=Iron Mauler
+#. [side]: type=Iron Mauler, id=Linneus
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:72
 msgid "Linneus"
 msgstr "Линије"
@@ -1622,7 +1624,7 @@ msgstr ""
 "су штитиле ову област од непријатеља Веснота; не помишљах да ће једном бити "
 "коначиште његовим непријатељима."
 
-#. [event]
+#. [event]: id=Pitcher 20 14}, id=Pitcher 28 18}, id=Pitcher 20 14}
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:157
 msgid "Pitcher"
 msgstr "Пичер"
@@ -1780,7 +1782,7 @@ msgstr ""
 "Бацисмо овде превише времена. До сада засигурно цела веснотска војска "
 "напредује к нашем положају. Готово је с нама!"
 
-#. [scenario]
+#. [scenario]: id=glory
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:4
 msgid "Glory"
 msgstr "Слава"
@@ -1850,17 +1852,17 @@ msgstr ""
 "зидине његове. Грудобрани су му умрљани крвљу опсадникâ, а прахом њихових "
 "костију засута су подножја Халстедових залеђених таласа од камена."
 
-#. [side]: type=General
+#. [side]: type=General, id=Dommel
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:67
 msgid "Dommel"
 msgstr "Домел"
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Vashna
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:124
 msgid "Vashna"
 msgstr "Вашна"
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Vashna
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:178
 msgid "Orcs"
 msgstr ""
@@ -2033,7 +2035,7 @@ msgstr "Помоћ, надам се. Не можемо си приуштити �
 msgid "Riders approach from the northwest! Stand fast, men."
 msgstr "Стижу коњаници са северозапада! Држите положаје, људи."
 
-#. [unit]: type=Paladin
+#. [unit]: type=Paladin, id=Sir Gwydion
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:517
 msgid "Sir Gwydion"
 msgstr "сер Гвидион"
@@ -2244,7 +2246,7 @@ msgstr ""
 "Мала победа? Ха! Сада ћемо сравнити ову тврђаву и покопати је у земљу из "
 "које је призвана."
 
-#. [scenario]
+#. [scenario]: id=epilog
 #: data/campaigns/Liberty/scenarios/09_Epilog.cfg:4
 msgid "Liberty - Epilogue"
 msgstr "Слобода — епилог"
@@ -2362,12 +2364,12 @@ msgstr ""
 "„Ако желиш да нас пронађеш, пођи на југозапад. Кад достигнеш крај земље, "
 "настави даље. Видимо се ускоро, стари пријатељу. — Релнан“"
 
-#. [unit_type]: race=undead
+#. [unit_type]: id=Bone Knight, race=undead
 #: data/campaigns/Liberty/units/Bone_Knight.cfg:5
 msgid "Bone Knight"
 msgstr "косковитез"
 
-#. [unit_type]: race=undead
+#. [unit_type]: id=Bone Knight, race=undead
 #: data/campaigns/Liberty/units/Bone_Knight.cfg:33
 msgid ""
 "Once great warriors across the plains, these mounted riders atop their "
@@ -2388,12 +2390,12 @@ msgstr "секира"
 msgid "trample"
 msgstr "топот"
 
-#. [unit_type]: race=undead
+#. [unit_type]: id=Death Squire, race=undead
 #: data/campaigns/Liberty/units/Death_Squire.cfg:4
 msgid "Death Squire"
 msgstr "мртви штитоноша"
 
-#. [unit_type]: race=undead
+#. [unit_type]: id=Death Squire, race=undead
 #: data/campaigns/Liberty/units/Death_Squire.cfg:26
 msgid ""
 "Sometimes the mightiest warriors and generals, cursed with hate and angst, "
@@ -2412,12 +2414,12 @@ msgstr ""
 msgid "sword"
 msgstr "мач"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Rogue Mage, race=human
 #: data/campaigns/Liberty/units/Rogue_Mage.cfg:5
 msgid "Rogue Mage"
 msgstr "одметнути маг"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Rogue Mage, race=human
 #: data/campaigns/Liberty/units/Rogue_Mage.cfg:18
 msgid ""
 "Some mages are thrown out of the mage's guild for attempting to practice "
@@ -2443,12 +2445,12 @@ msgstr "кратки мач"
 msgid "magic missile"
 msgstr "магични пројектил"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Shadow Lord, race=human
 #: data/campaigns/Liberty/units/Shadow_Lord.cfg:5
 msgid "Shadow Lord"
 msgstr "господар сенке"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Shadow Lord, race=human
 #: data/campaigns/Liberty/units/Shadow_Lord.cfg:22
 msgid ""
 "Few humans fathom the secrets of light and dark magic and retain their "
@@ -2477,12 +2479,12 @@ msgstr "стрела сенке"
 msgid "shadow blast"
 msgstr "прасак сенке"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Shadow Mage, race=human
 #: data/campaigns/Liberty/units/Shadow_Mage.cfg:5
 msgid "Shadow Mage"
 msgstr "маг сенке"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Shadow Mage, race=human
 #: data/campaigns/Liberty/units/Shadow_Mage.cfg:21
 msgid ""
 "Years of violence and brutality to support the study of forbidden magical "
@@ -2506,12 +2508,12 @@ msgstr ""
 msgid "ice blast"
 msgstr "ледени прасак"
 
-#. [unit_type]: race=undead
+#. [unit_type]: id=Skeleton Rider, race=undead
 #: data/campaigns/Liberty/units/Skeleton_Rider.cfg:5
 msgid "Skeleton Rider"
 msgstr "ћеле-јахач"
 
-#. [unit_type]: race=undead
+#. [unit_type]: id=Skeleton Rider, race=undead
 #: data/campaigns/Liberty/units/Skeleton_Rider.cfg:33
 msgid ""
 "Once great warriors thundering across the plains, these mounted riders atop "
@@ -2522,25 +2524,25 @@ msgstr ""
 "скелетним коњима бејаху издигнути из гроба несветом магијом, да шире страх и "
 "уништење."
 
-#. [unit_type]
+#. [unit_type]: id=Thug_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:16
 #, fuzzy
 msgid "Villager"
 msgstr "сеоски старешина"
 
-#. [unit_type]
+#. [unit_type]: id=Thug_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:19
 msgid ""
 "Peasants live in the small hamlets and villages scattered across the Wesnoth "
 "countryside."
 msgstr "Сељаци живе у засеоцима и селима раштрканим широм Веснотових пејзажа."
 
-#. [unit_type]
+#. [unit_type]: id=Bandit_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:28
 msgid "Village Elder"
 msgstr "сеоски старешина"
 
-#. [unit_type]
+#. [unit_type]: id=Bandit_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:31
 msgid ""
 "Each of the villages scattered across the Wesnoth countryside is normally "
@@ -2550,12 +2552,12 @@ msgstr ""
 "Свако од села раштрканих широм веснотске природе обично води збор старешина, "
 "који чине најмудрији и најискуснији његови становници."
 
-#. [unit_type]
+#. [unit_type]: id=Highwayman_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:40
 msgid "Senior Village Elder"
 msgstr "виши сеоски старешина"
 
-#. [unit_type]
+#. [unit_type]: id=Highwayman_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:44
 msgid ""
 "The entire village looks to the senior elder for guidance. Strong and wise, "
@@ -2568,12 +2570,12 @@ msgstr ""
 "званичници обично бирају више сеоске старешине за намеснике, како би "
 "законски ауторитет био усклађен са обичајним."
 
-#. [unit_type]
+#. [unit_type]: id=Footpad_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:56
 msgid "Peasant Youth"
 msgstr "сељачки омладинац"
 
-#. [unit_type]
+#. [unit_type]: id=Footpad_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:61
 msgid ""
 "The scruffy-haired peasant youth are much like the young people living "
@@ -2587,12 +2589,12 @@ msgstr ""
 msgid "female^Peasant Youth"
 msgstr "сељачка омладинка"
 
-#. [unit_type]
+#. [unit_type]: id=Outlaw_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:77
 msgid "Watchman"
 msgstr "надзорник"
 
-#. [unit_type]
+#. [unit_type]: id=Outlaw_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:82
 msgid ""
 "The watchmen are men and women who protect the villages from marauders, both "
@@ -2606,12 +2608,12 @@ msgstr ""
 msgid "female^Watchwoman"
 msgstr "надзорница"
 
-#. [unit_type]
+#. [unit_type]: id=Fugitive_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:94
 msgid "Borderer"
 msgstr "граничар"
 
-#. [unit_type]
+#. [unit_type]: id=Fugitive_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:99
 msgid ""
 "Border villages maintain militias dedicated to fending off hostiles. While "
@@ -2625,12 +2627,12 @@ msgstr ""
 msgid "female^Borderer"
 msgstr "граничарка"
 
-#. [unit_type]
+#. [unit_type]: id=Poacher_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:116
 msgid "Peasant Hunter"
 msgstr "сељачки ловац"
 
-#. [unit_type]
+#. [unit_type]: id=Poacher_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:119
 msgid ""
 "Villages, especially in wilder areas near frontiers, rely on hunters to "
@@ -2641,12 +2643,12 @@ msgstr ""
 "велики удео у снабдевању храном. Притајеност и изврсно познавање околног "
 "терена може им бити вредан иметак у борби."
 
-#. [unit_type]
+#. [unit_type]: id=Trapper_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:128
 msgid "Peasant Trapper"
 msgstr "сељачки трапер"
 
-#. [unit_type]
+#. [unit_type]: id=Trapper_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:133
 msgid ""
 "Trappers are skilled hunters who supply food and furs for several villages. "
@@ -2656,12 +2658,12 @@ msgstr ""
 "Трапери су умешни ловци који снабдевају храном и крзном и по неколико села. "
 "Ловачко искуство чини их највреднијим ноћу и у шумама и мочварама."
 
-#. [unit_type]
+#. [unit_type]: id=Huntsman_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:142
 msgid "Peasant Huntsman"
 msgstr "сељачки ловодар"
 
-#. [unit_type]
+#. [unit_type]: id=Huntsman_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:147
 msgid ""
 "Huntsmen have spent their lives in the backwoods and swamps of their "
@@ -2671,12 +2673,12 @@ msgstr ""
 "Ловодари су провели цео век у шумама и мочварама својих домова у дивљини. "
 "Могу устрелити мочвопацова и пратити све што се мрда по њиховој територији."
 
-#. [object]
+#. [object]: id={ID}
 #: data/campaigns/Liberty/utils/utils.cfg:62
 msgid "Holy Ankh"
 msgstr "свети анк"
 
-#. [object]
+#. [object]: id={ID}
 #: data/campaigns/Liberty/utils/utils.cfg:65
 msgid ""
 "You find a hefty pendant on a strange and ominous looking altar. It glows "
@@ -2685,7 +2687,7 @@ msgstr ""
 "Нађе потежи висак обешен о чудан и злокобан олтар. Чим га покупи, поче "
 "сјајно да светли!"
 
-#. [object]
+#. [object]: id={ID}
 #: data/campaigns/Liberty/utils/utils.cfg:66
 msgid ""
 "There is a strange altar here and a pendant on it. I don't want to touch it."

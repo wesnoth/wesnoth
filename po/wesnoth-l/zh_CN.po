@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-14 22:25+0100\n"
+"POT-Creation-Date: 2008-11-29 12:24+0100\n"
 "PO-Revision-Date: 2008-02-10 13:50+1000\n"
 "Last-Translator: luojie-dune <luojie-dune@operamail.com>\n"
 "Language-Team: chinese\n"
@@ -10,42 +10,42 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#. [campaign]
+#. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:10 data/campaigns/Liberty/_main.cfg:11
 msgid "Liberty"
 msgstr "自由"
 
-#. [campaign]
+#. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:17
 msgid "Outlaw"
 msgstr "罪犯"
 
-#. [campaign]
+#. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:17
 msgid "(Easy)"
 msgstr "（简单）"
 
-#. [campaign]
+#. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:17
 msgid "(Difficult)"
 msgstr "（困难）"
 
-#. [campaign]
+#. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:17
 msgid "Peasant"
 msgstr "农夫"
 
-#. [campaign]
+#. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:17
 msgid "(Normal)"
 msgstr "（正常）"
 
-#. [campaign]
+#. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:17
 msgid "Fugitive"
 msgstr "逃亡者"
 
-#. [campaign]
+#. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:25
 msgid ""
 "As the shadow of civil war lengthens across Wesnoth, a band of hardy "
@@ -84,7 +84,7 @@ msgstr "艺术与图像"
 msgid "Translators"
 msgstr "翻译者"
 
-#. [scenario]
+#. [scenario]: id=the_raid
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:4
 msgid "The Raid"
 msgstr "奇袭"
@@ -142,14 +142,14 @@ msgid ""
 "rule, especially not to this pretender..."
 msgstr "Annuvin的人民不愿放弃他们来之不易的自治权，特别是对这个篡位者..."
 
-#. [side]: type=Bandit_Peasant
+#. [side]: type=Bandit_Peasant, id=Baldras
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:59
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:31
 #, fuzzy
 msgid "Baldras"
 msgstr "Baldras"
 
-#. [side]: type=Goblin Pillager
+#. [side]: type=Goblin Pillager, id=Fal Khag
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:75
 #, fuzzy
 msgid "Fal Khag"
@@ -294,7 +294,7 @@ msgstr "Kembe"
 msgid "Treagh"
 msgstr "Treagh"
 
-#. [unit]: type=Footpad_Peasant
+#. [unit]: type=Footpad_Peasant, id=Harper
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:217
 #, fuzzy
 msgid "Harper"
@@ -442,19 +442,19 @@ msgid ""
 "are done pillaging it."
 msgstr "地精们到达村庄了！他们肯定要掠夺一空了。"
 
-#. [scenario]
+#. [scenario]: id=civil_disobedience
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:4
 msgid "Civil Disobedience"
 msgstr "公民反抗"
 
-#. [side]: type=Highwayman
-#. [side]: type=Shadow Lord
+#. [side]: type=Highwayman, id=Baldras
+#. [side]: type=Shadow Lord, id=Helicrom
 #. [side]
-#. [side]: type=Bandit
-#. [side]: type=Rogue
-#. [side]: type=Highwayman_Peasant
-#. [side]: type=General
-#. [side]: type=Bandit_Peasant
+#. [side]: type=Bandit, id=Baldras
+#. [side]: type=Rogue, id=Hans
+#. [side]: type=Highwayman_Peasant, id=Relnan
+#. [side]: type=General, id=Lord Maddock
+#. [side]: type=Bandit_Peasant, id=Baldras
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:58
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:203
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:213
@@ -472,18 +472,19 @@ msgstr "公民反抗"
 msgid "Rebels"
 msgstr ""
 
-#. [side]: type=Cavalier
+#. [side]: type=Cavalier, id=Tarwen
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:47
 #, fuzzy
 msgid "Tarwen"
 msgstr "Tarwen"
 
-#. [side]: type=General
+#. [side]: type=General, id=Dommel
 #. [side]
-#. [side]: type=Master Bowman
-#. [side]: type=Cavalier
-#. [side]: type=Royal Guard
-#. [side]: type=Iron Mauler
+#. [side]: type=Master Bowman, id=Quentin
+#. [side]: type=General, id=Kestrel
+#. [side]: type=Cavalier, id=Tarwen
+#. [side]: type=Royal Guard, id=Archarel
+#. [side]: type=Iron Mauler, id=Linneus
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:96
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:117
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:55
@@ -606,27 +607,28 @@ msgid ""
 "Oh, no! We have run out of time, they have arrived with reinforcements..."
 msgstr "噢！不！我们没有时间了！他们的援军来了…."
 
-#. [scenario]
+#. [scenario]: id=a_strategy_of_hope
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:4
 msgid "A Strategy of Hope"
 msgstr "憧憬"
 
-#. [side]: type=Highwayman_Peasant
+#. [side]: type=Highwayman_Peasant, id=Relnan
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:40
 #, fuzzy
 msgid "Relnan"
 msgstr "Relnan"
 
-#. [side]: type=Orcish Warrior
+#. [side]: type=Orcish Warrior, id=Urk Delek
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:66
 #, fuzzy
 msgid "Urk Delek"
 msgstr "Urk Delek"
 
-#. [side]: type=Necromancer
-#. [side]: type=Lich
-#. [side]: type=Orcish Warrior
-#. [side]: type=Saurian Oracle
+#. [side]: type=Necromancer, id=Mal-Jarrof
+#. [side]: type=Necromancer, id=Mal-Jerod
+#. [side]: type=Lich, id=Sel-Mana
+#. [side]: type=Orcish Warrior, id=Urk Delek
+#. [side]: type=Saurian Oracle, id=Thhsthss
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:106
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:121
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:137
@@ -635,7 +637,7 @@ msgstr "Urk Delek"
 msgid "Evil"
 msgstr ""
 
-#. [side]: type=Saurian Oracle
+#. [side]: type=Saurian Oracle, id=Thhsthss
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:94
 #, fuzzy
 msgid "Thhsthss"
@@ -796,7 +798,7 @@ msgstr ""
 "我们逗留在这里太久了...在韦诺军毁掉我们家园前我们没法到达Elensefar带回援助"
 "了。撤退！！"
 
-#. [scenario]
+#. [scenario]: id=unlawful_orders
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:4
 msgid "Unlawful Orders"
 msgstr "不法军职"
@@ -811,12 +813,12 @@ msgstr ""
 msgid "Port of Elensefar"
 msgstr ""
 
-#. [side]: type=General
+#. [side]: type=General, id=Lord Maddock
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:50
 msgid "Lord Maddock"
 msgstr "Maddock领主"
 
-#. [side]: type=General
+#. [side]: type=General, id=Kestrel
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:71
 #, fuzzy
 msgid "Kestrel"
@@ -832,7 +834,7 @@ msgstr "击败敌人将军"
 msgid "Death of Maddock"
 msgstr "Maddock死亡"
 
-#. [unit]: type=Lieutenant
+#. [unit]: type=Lieutenant, id=Rothel
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:134
 #, fuzzy
 msgid "Rothel"
@@ -1016,23 +1018,23 @@ msgid ""
 "assault. We are finished!"
 msgstr "看，更多的骑兵从东南方来了，我们抵不住再一轮的突袭了。我们完了！"
 
-#. [scenario]
+#. [scenario]: id=hide_and_seek
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:6
 msgid "Hide and Seek"
 msgstr "隐藏和搜索"
 
-#. [time]
+#. [time]: id=midnight
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:12
 msgid "Midnight"
 msgstr "午夜"
 
-#. [side]: type=Master Bowman
+#. [side]: type=Master Bowman, id=Quentin
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:50
 #, fuzzy
 msgid "Quentin"
 msgstr "Quentin"
 
-#. [side]: type=Rogue
+#. [side]: type=Rogue, id=Hans
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:86
 #, fuzzy
 msgid "Hans"
@@ -1069,7 +1071,7 @@ msgstr ""
 "现在我不敢肯定我们该往哪儿走了。我想我们要是进个镇子我们就可以问下附近的人一"
 "些情况。"
 
-#. [unit]: type=Thief
+#. [unit]: type=Thief, id=Link
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:511
 #, fuzzy
 msgid "Link"
@@ -1192,31 +1194,31 @@ msgstr ""
 "我们在这里花费太多的时间了。王后的军队肯定已经回到Dallben了。我们的任务还没完"
 "成，但我们必须回去进行个自杀式的战斗了。"
 
-#. [scenario]
+#. [scenario]: id=the_gray_woods
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:4
 msgid "The Gray Woods"
 msgstr "灰色森林"
 
-#. [side]: type=Shadow Lord
+#. [side]: type=Shadow Lord, id=Helicrom
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:187
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:62
 #, fuzzy
 msgid "Helicrom"
 msgstr "Helicrom"
 
-#. [side]: type=Necromancer
+#. [side]: type=Necromancer, id=Mal-Jarrof
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:97
 #, fuzzy
 msgid "Mal-Jarrof"
 msgstr "Mal-Jarrof"
 
-#. [side]: type=Necromancer
+#. [side]: type=Necromancer, id=Mal-Jerod
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:112
 #, fuzzy
 msgid "Mal-Jerod"
 msgstr "Mal-Jerod"
 
-#. [side]: type=Lich
+#. [side]: type=Lich, id=Sel-Mana
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:127
 #, fuzzy
 msgid "Sel-Mana"
@@ -1445,7 +1447,7 @@ msgstr ""
 msgid "My men... have failed to protect me! I perish..."
 msgstr "我的人...无法保护我！我死了..."
 
-#. [scenario]
+#. [scenario]: id=the_hunters
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:4
 msgid "The Hunters"
 msgstr "猎手"
@@ -1489,13 +1491,13 @@ msgstr ""
 "他们驻扎在森林的边缘，悄悄的注意到大量的军队从Aldril方向，一个附近的城市，向"
 "西北面行进。虽不清楚原因，他们讨论他们的下一步行动..."
 
-#. [side]: type=Royal Guard
+#. [side]: type=Royal Guard, id=Archarel
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:55
 #, fuzzy
 msgid "Archarel"
 msgstr "Archarel"
 
-#. [side]: type=Iron Mauler
+#. [side]: type=Iron Mauler, id=Linneus
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:72
 #, fuzzy
 msgid "Linneus"
@@ -1549,7 +1551,7 @@ msgstr ""
 "守备要塞。Halstead塔更像是个守备要塞，侄子，那是个城堡。被韦诺军用来保护这片"
 "区域；我没想过那里会驻扎韦诺军。"
 
-#. [event]
+#. [event]: id=Pitcher 20 14}, id=Pitcher 28 18}, id=Pitcher 20 14}
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:157
 #, fuzzy
 msgid "Pitcher"
@@ -1699,7 +1701,7 @@ msgstr ""
 "我们在这里浪费了太多的时间了。肯定整个韦诺军都来到了我们的阵地。我们疲惫不堪"
 "了。"
 
-#. [scenario]
+#. [scenario]: id=glory
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:4
 msgid "Glory"
 msgstr "荣耀"
@@ -1763,19 +1765,19 @@ msgstr ""
 "攻克过它，它的城墙从没被占领过。侵略者的血涂着它的扶手，战败者的骨头碎在"
 "Halstead无情墙头的地基上。"
 
-#. [side]: type=General
+#. [side]: type=General, id=Dommel
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:67
 #, fuzzy
 msgid "Dommel"
 msgstr "Dommel"
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Vashna
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:124
 #, fuzzy
 msgid "Vashna"
 msgstr "Vashna"
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Vashna
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:178
 msgid "Orcs"
 msgstr ""
@@ -1935,7 +1937,7 @@ msgstr "援助，我希望。情况不会更糟。"
 msgid "Riders approach from the northwest! Stand fast, men."
 msgstr "骑兵从西北面来了！大家顶住。"
 
-#. [unit]: type=Paladin
+#. [unit]: type=Paladin, id=Sir Gwydion
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:517
 msgid "Sir Gwydion"
 msgstr "Gwydion爵士"
@@ -2133,7 +2135,7 @@ msgid ""
 "from whence it came."
 msgstr "小胜？呸！现在我们会毁掉城堡并把它埋葬到土里，那是它来的地方。"
 
-#. [scenario]
+#. [scenario]: id=epilog
 #: data/campaigns/Liberty/scenarios/09_Epilog.cfg:4
 msgid "Liberty - Epilogue"
 msgstr "自由 - 收场白"
@@ -2240,12 +2242,12 @@ msgstr ""
 "“如果你想找我，朝西北面走。当你到达陆地的边缘时，继续前进。我们很快会再见面，"
 "老朋友。 － Relnan”"
 
-#. [unit_type]: race=undead
+#. [unit_type]: id=Bone Knight, race=undead
 #: data/campaigns/Liberty/units/Bone_Knight.cfg:5
 msgid "Bone Knight"
 msgstr "枯骨骑士"
 
-#. [unit_type]: race=undead
+#. [unit_type]: id=Bone Knight, race=undead
 #: data/campaigns/Liberty/units/Bone_Knight.cfg:33
 msgid ""
 "Once great warriors across the plains, these mounted riders atop their "
@@ -2266,12 +2268,12 @@ msgstr "斧"
 msgid "trample"
 msgstr "践踏"
 
-#. [unit_type]: race=undead
+#. [unit_type]: id=Death Squire, race=undead
 #: data/campaigns/Liberty/units/Death_Squire.cfg:4
 msgid "Death Squire"
 msgstr "死亡骑士扈从"
 
-#. [unit_type]: race=undead
+#. [unit_type]: id=Death Squire, race=undead
 #: data/campaigns/Liberty/units/Death_Squire.cfg:26
 msgid ""
 "Sometimes the mightiest warriors and generals, cursed with hate and angst, "
@@ -2289,12 +2291,12 @@ msgstr ""
 msgid "sword"
 msgstr "剑"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Rogue Mage, race=human
 #: data/campaigns/Liberty/units/Rogue_Mage.cfg:5
 msgid "Rogue Mage"
 msgstr "流浪法师"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Rogue Mage, race=human
 #: data/campaigns/Liberty/units/Rogue_Mage.cfg:18
 msgid ""
 "Some mages are thrown out of the mage's guild for attempting to practice "
@@ -2319,12 +2321,12 @@ msgstr "短剑"
 msgid "magic missile"
 msgstr "飞魔弹"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Shadow Lord, race=human
 #: data/campaigns/Liberty/units/Shadow_Lord.cfg:5
 msgid "Shadow Lord"
 msgstr "暗影领主"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Shadow Lord, race=human
 #: data/campaigns/Liberty/units/Shadow_Lord.cfg:22
 msgid ""
 "Few humans fathom the secrets of light and dark magic and retain their "
@@ -2352,12 +2354,12 @@ msgstr "暗影箭"
 msgid "shadow blast"
 msgstr "暗影波"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Shadow Mage, race=human
 #: data/campaigns/Liberty/units/Shadow_Mage.cfg:5
 msgid "Shadow Mage"
 msgstr "暗影法师"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Shadow Mage, race=human
 #: data/campaigns/Liberty/units/Shadow_Mage.cfg:21
 msgid ""
 "Years of violence and brutality to support the study of forbidden magical "
@@ -2378,12 +2380,12 @@ msgstr ""
 msgid "ice blast"
 msgstr "冷冻波"
 
-#. [unit_type]: race=undead
+#. [unit_type]: id=Skeleton Rider, race=undead
 #: data/campaigns/Liberty/units/Skeleton_Rider.cfg:5
 msgid "Skeleton Rider"
 msgstr "骷髅骑兵"
 
-#. [unit_type]: race=undead
+#. [unit_type]: id=Skeleton Rider, race=undead
 #: data/campaigns/Liberty/units/Skeleton_Rider.cfg:33
 msgid ""
 "Once great warriors thundering across the plains, these mounted riders atop "
@@ -2393,25 +2395,25 @@ msgstr ""
 "过去的伟大勇士雷鸣般越过草原，这些骷髅马背上的骑兵被不洁魔法从坟墓里召唤出来"
 "传播恐惧和破坏。"
 
-#. [unit_type]
+#. [unit_type]: id=Thug_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:16
 #, fuzzy
 msgid "Villager"
 msgstr "村庄长老"
 
-#. [unit_type]
+#. [unit_type]: id=Thug_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:19
 msgid ""
 "Peasants live in the small hamlets and villages scattered across the Wesnoth "
 "countryside."
 msgstr "农夫分散生活在韦诺郊区的小村小庄里。"
 
-#. [unit_type]
+#. [unit_type]: id=Bandit_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:28
 msgid "Village Elder"
 msgstr "村庄长老"
 
-#. [unit_type]
+#. [unit_type]: id=Bandit_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:31
 msgid ""
 "Each of the villages scattered across the Wesnoth countryside is normally "
@@ -2421,12 +2423,12 @@ msgstr ""
 "每一个分散在韦诺郊区的村庄里通常有个领导的长老会，由村庄里最智慧和最有经验的"
 "居民组成。"
 
-#. [unit_type]
+#. [unit_type]: id=Highwayman_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:40
 msgid "Senior Village Elder"
 msgstr "资深村庄长老"
 
-#. [unit_type]
+#. [unit_type]: id=Highwayman_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:44
 msgid ""
 "The entire village looks to the senior elder for guidance. Strong and wise, "
@@ -2437,12 +2439,12 @@ msgstr ""
 "整个村庄都靠着资深长老管理。强壮而智慧，资深长老肩负着大众的安宁。省里的长官"
 "倾向于选择资深村庄长老作为治安官，这样法律与习俗的权威得到了统一。"
 
-#. [unit_type]
+#. [unit_type]: id=Footpad_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:56
 msgid "Peasant Youth"
 msgstr "乡下青年"
 
-#. [unit_type]
+#. [unit_type]: id=Footpad_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:61
 msgid ""
 "The scruffy-haired peasant youth are much like the young people living "
@@ -2455,12 +2457,12 @@ msgstr ""
 msgid "female^Peasant Youth"
 msgstr "乡下青年"
 
-#. [unit_type]
+#. [unit_type]: id=Outlaw_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:77
 msgid "Watchman"
 msgstr "巡夜人"
 
-#. [unit_type]
+#. [unit_type]: id=Outlaw_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:82
 msgid ""
 "The watchmen are men and women who protect the villages from marauders, both "
@@ -2474,12 +2476,12 @@ msgstr ""
 msgid "female^Watchwoman"
 msgstr "巡夜人"
 
-#. [unit_type]
+#. [unit_type]: id=Fugitive_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:94
 msgid "Borderer"
 msgstr "巡界人"
 
-#. [unit_type]
+#. [unit_type]: id=Fugitive_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:99
 msgid ""
 "Border villages maintain militias dedicated to fending off hostiles. While "
@@ -2493,12 +2495,12 @@ msgstr ""
 msgid "female^Borderer"
 msgstr "巡界人"
 
-#. [unit_type]
+#. [unit_type]: id=Poacher_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:116
 msgid "Peasant Hunter"
 msgstr "乡下偷猎者"
 
-#. [unit_type]
+#. [unit_type]: id=Poacher_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:119
 msgid ""
 "Villages, especially in wilder areas near frontiers, rely on hunters to "
@@ -2508,12 +2510,12 @@ msgstr ""
 "村庄，特别是靠近边境的荒郊野外，依赖偷猎者带来大量他们的食物供给。他们对本地"
 "地形的秘密知识在战斗中是有价值的财产。"
 
-#. [unit_type]
+#. [unit_type]: id=Trapper_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:128
 msgid "Peasant Trapper"
 msgstr "乡下陷阱猎人"
 
-#. [unit_type]
+#. [unit_type]: id=Trapper_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:133
 msgid ""
 "Trappers are skilled hunters who supply food and furs for several villages. "
@@ -2523,12 +2525,12 @@ msgstr ""
 "陷阱猎人是为几个村子提供食物和皮毛的熟练偷猎者。他们狩猎的经验让他们在晚上和"
 "森林沼泽里最有价值。"
 
-#. [unit_type]
+#. [unit_type]: id=Huntsman_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:142
 msgid "Peasant Huntsman"
 msgstr "乡下丛林猎手"
 
-#. [unit_type]
+#. [unit_type]: id=Huntsman_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:147
 msgid ""
 "Huntsmen have spent their lives in the backwoods and swamps of their "
@@ -2538,12 +2540,12 @@ msgstr ""
 "丛林猎手把生活时间用在他们未开垦的丛林和沼泽里的荒野房屋上。他们能一箭射中"
 "womp rats并能追踪他们领地上任何移动的东西。"
 
-#. [object]
+#. [object]: id={ID}
 #: data/campaigns/Liberty/utils/utils.cfg:62
 msgid "Holy Ankh"
 msgstr "神圣十字架"
 
-#. [object]
+#. [object]: id={ID}
 #: data/campaigns/Liberty/utils/utils.cfg:65
 msgid ""
 "You find a hefty pendant on a strange and ominous looking altar. It glows "
@@ -2552,7 +2554,7 @@ msgstr ""
 "你发现一个沉重的垂饰在一个奇怪和不祥的看起来是个祭坛的上面。当你拾起时它散发"
 "出明亮的光辉。"
 
-#. [object]
+#. [object]: id={ID}
 #: data/campaigns/Liberty/utils/utils.cfg:66
 msgid ""
 "There is a strange altar here and a pendant on it. I don't want to touch it."

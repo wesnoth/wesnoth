@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bg\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-22 14:55+0100\n"
+"POT-Creation-Date: 2008-11-29 12:24+0100\n"
 "PO-Revision-Date: 2007-05-14 22:06+0300\n"
 "Last-Translator: Nikolay Vladimirov <nikolay@vladimiroff.com>\n"
 "Language-Team: Български\n"
@@ -15,7 +15,7 @@ msgstr ""
 "X-Generator: KBabel 1.11.4\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#. [tutorial]
+#. [tutorial]: id=tutorial
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:41
 msgid ""
 "Hello translators! Tutorial is meant to be a little funny at the start, "
@@ -26,12 +26,12 @@ msgstr ""
 "приветстващо нови играчи. Моля, задръжте приятелското весело чувство. За "
 "въпроси : rusty@rustcorp.com.au!"
 
-#. [tutorial]
+#. [tutorial]: id=tutorial
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:42
 msgid "Wesnoth Tutorial"
 msgstr "Запознаване с Уеснот"
 
-#. [side]: type=Fighter
+#. [side]: type=Fighter, id=student
 #. [command]
 #. [option]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:295
@@ -43,7 +43,7 @@ msgstr "Запознаване с Уеснот"
 msgid "Konrad"
 msgstr "Конрад"
 
-#. [unit]: type=Elder Mage
+#. [unit]: id=Delfador, type=Elder Mage
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:113
 msgid "Delfador"
 msgstr "Делфадор"
@@ -79,7 +79,7 @@ msgstr "Вашата смърт "
 msgid "Who would you like to play?"
 msgstr "Изберете си самоличност"
 
-#. [unit]: type=Fighteress
+#. [unit]: type=Fighteress, id=student
 #. [command]
 #. [option]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:365
@@ -213,46 +213,46 @@ msgstr ""
 "натиснете бутона 'u', за да отмените придвижването и да опитате отново.\n"
 "щракнете с ляв бутон или натиснете произволен клавиш, за да продължите..."
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:313
 #, fuzzy
 msgid "Good morning, Delfador! Is it time to attack things?"
 msgstr "Добро утро, Делфадор, време ли е вече да натупаме този-онзи?"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:317
 msgid "Um, well..."
 msgstr "Хм, ами..."
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:321
 msgid "Have you found an orc for me to fight, huh? A troll?"
 msgstr "Намери ли ми някой орк, когото да напердаша, а? Или Трол?"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:325
 msgid "Quiet! I will summon an enemy for you..."
 msgstr "Тишина! Ще призова противник за теб..."
 
 #. [event]
-#. [unit_type]: race=mechanical
+#. [unit_type]: id=Quintain, race=mechanical
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:353
 #: data/campaigns/tutorial/units/Quintain.cfg:4
 msgid "Quintain"
 msgstr "Мишена"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:357
 msgid "... this quintain!"
 msgstr "...ето тази учебна мишена!"
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:361
 #, fuzzy
 msgid "A quintain? You want me to pretend to fight a dummy?"
 msgstr "Мишена? Искаш да се преструвам, че се бия с някакво чучело??"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:365
 #, fuzzy
 msgid "Child, you have 32 hitpoints and a sword. I'm fairly sure you'll win."
@@ -287,22 +287,22 @@ msgstr ""
 msgid "Click on the quintain to attack it"
 msgstr "Щракнете на учебната мишена, за да я атакувате"
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:424
 msgid "Hey! This quintain fights back!"
 msgstr "Ей, тая мишена се бие!"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:428
 msgid "Hmm, maybe we should have started with a doll."
 msgstr "Хм, май трябваше да почнем с кукла."
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:432
 msgid "Should I retreat?"
 msgstr "Да се откажа ли?"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:436
 msgid "Good idea!"
 msgstr "Добра идея!"
@@ -329,7 +329,7 @@ msgstr ""
 "означава, че ако той бъде убит, ще изгубите играта. Ще изгубите и ако вашият "
 "водач (Ли'зар) бъде убита."
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:454
 msgid ""
 "Unfortunately, you've used up your turn attacking the quintain. The quintain "
@@ -338,12 +338,12 @@ msgstr ""
 "За съжаление, ти изразходва своя ход, като нападна учебната мишена. Сега "
 "следва ходът на мишената."
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:458
 msgid "The DUMMY gets a turn?"
 msgstr "На ЧУЧЕЛОТО му се полага ход?"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:464
 #, fuzzy
 msgid ""
@@ -361,7 +361,7 @@ msgstr ""
 msgid "Click on the End Turn button on the bottom right"
 msgstr "Щракнете на бутона 'Край на хода' в долния десен ъгъл на екрана"
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:488
 #, fuzzy
 msgid "Ouch! I need to heal! Only $student_hp hitpoints left!"
@@ -375,7 +375,7 @@ msgstr ""
 msgid "Village"
 msgstr "Селище"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:493
 #, fuzzy
 msgid ""
@@ -422,7 +422,7 @@ msgstr ""
 msgid "Click on the End Turn button"
 msgstr "Щракнете на бутона Край на хода"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:563
 #, fuzzy
 msgid ""
@@ -432,7 +432,7 @@ msgstr ""
 "Здравето ти ще се подобри с 8 точки. Но май ще ти трябва помощ срещу тая "
 "мишена."
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:567
 msgid "I'll recruit some elves!"
 msgstr "Ще си набера малко елфи!"
@@ -444,7 +444,7 @@ msgstr "Ще си набера малко елфи!"
 msgid "Keep"
 msgstr "Крепост"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:572
 #, fuzzy
 msgid ""
@@ -509,7 +509,7 @@ msgid "Right click on the other castle tile and Recruit another unit"
 msgstr ""
 "Щракнете с десен бутон върху друго поле от замъка и наберете друга единица"
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:695
 #, fuzzy
 msgid ""
@@ -518,12 +518,12 @@ msgstr ""
 "Ей, тая мишена току що се излекува с две точки здрави! Май не трябва да губя "
 "повече време, а да я нападна веднага!"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:699
 msgid "Yes, if a unit doesn't do anything for a turn, it will slowly heal."
 msgstr ""
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:711
 #, fuzzy
 msgid ""
@@ -535,13 +535,13 @@ msgstr ""
 "Но преди да изпратиш бойците си срещу мишената, трябва да знаеш, че има два "
 "вида атака..."
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:715
 #, fuzzy
 msgid "I'll tell them to use the one that does the most damage!"
 msgstr "Ще им наредя да използват този вид, който нанася по-голямо поражение!"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:719
 #, fuzzy
 msgid ""
@@ -562,7 +562,7 @@ msgstr "Щракнете с ляв бутон на Елфския боец"
 msgid "End your turn and attack again."
 msgstr "Приключете своя ход, после атакувайте отново."
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:739
 msgid ""
 "You wouldn't do anything stupid like charging that quintain yourself again, "
@@ -575,7 +575,7 @@ msgstr ""
 msgid "Left click on the Quintain to attack it."
 msgstr "Щракнете с ляв бутона на мишената, за да я нападнете."
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:784
 #, fuzzy
 msgid ""
@@ -587,7 +587,7 @@ msgstr ""
 "близък бой, на който мишената отвърна със своята атака за близък бой (3-5). "
 "Атаката от разстояние щеше да е по-безопасна."
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:792
 #, fuzzy
 msgid ""
@@ -601,7 +601,7 @@ msgstr ""
 "Атаката от разстояние щеше да е по-безопасна.\n"
 "Приключете хода си и атакувайте отново."
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:804
 #, fuzzy
 msgid ""
@@ -620,7 +620,7 @@ msgstr ""
 msgid "Attack with the other Elf"
 msgstr "Атакувайте с втория елф"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:836
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:854
 #, fuzzy
@@ -633,7 +633,7 @@ msgstr ""
 "Мишената няма атака за бой от разстояние, а само за близък бой, затова не "
 "можа да се защити."
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:844
 #, fuzzy
 msgid ""
@@ -647,13 +647,13 @@ msgstr ""
 "можа да се защити.\n"
 "Приключете хода си и атакувайте отново."
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:875
 #, fuzzy
 msgid "Keep attacking with both elves until the quintain is finished!"
 msgstr "Продължавайте да атакувате с двата елфа, докато разбиете мишената!"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:889
 msgid "Maybe you should recruit another elf?"
 msgstr "Може би трябва да наберете още един елф?"
@@ -732,7 +732,7 @@ msgstr ""
 msgid "The quintain is dead, sirs, and I have gained more experience!"
 msgstr "Господа, мишената е мъртва, а аз натрупах повече точки опит!"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1001
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1005
 #, fuzzy
@@ -743,7 +743,7 @@ msgstr ""
 "Да, по време на битка се трупа опит, особено ако противникът бъде убит: "
 "повече опит означава повече сила."
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1002
 #, fuzzy
 msgid ""
@@ -753,7 +753,7 @@ msgstr ""
 "Сега, Конрад, ще те оставя да се разправиш с още няколко чучела! А след това "
 "ще трябва да свършим малко истинска работа..."
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1006
 #, fuzzy
 msgid ""
@@ -923,12 +923,12 @@ msgstr ""
 msgid "Yes, keep recruiting more units: I think you might need them!"
 msgstr "Добре, продължавайте да набирате единици, мисля, че ще ви трябват!"
 
-#. [tutorial]
+#. [tutorial]: id=2_Tutorial
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:286
 msgid "Wesnoth Tutorial Part II"
 msgstr "Запознаване с Уеснот. Част 2"
 
-#. [side]: type=Orcish Warrior
+#. [side]: type=Orcish Warrior, id=Thrag
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:307
 msgid "Thrag"
 msgstr "Траг"
@@ -955,7 +955,7 @@ msgstr "Край на ходовете"
 msgid "Death of Li'sar"
 msgstr "Ли'зар е мъртва"
 
-#. [unit]: type=Elvish Captain
+#. [unit]: id=Galdrad, type=Elvish Captain
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:388
 msgid "Galdrad"
 msgstr "Галдрад"
@@ -1194,7 +1194,7 @@ msgstr "Пратете Ли'зар да завладее селище"
 msgid "No! I said recruit an Elvish ARCHER! Now try again..."
 msgstr "Не! Казах да набереш Елф, СТРЕЛЕЦ! Сега опитай отново..."
 
-#. [unit]: type=Elvish Archer
+#. [unit]: id=Eowynial, type=Elvish Archer
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:626
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:638
@@ -1211,7 +1211,7 @@ msgstr "Шаман"
 msgid "Recruit an Elvish Shaman to your north"
 msgstr "Наберете Елф Шаман Северно от вашата позиция"
 
-#. [unit]: type=Elvish Archer
+#. [unit]: id=Elriend, type=Elvish Archer
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:665
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:676
@@ -1246,7 +1246,7 @@ msgstr "Набери двама Елфа Стрелци в полетата на
 msgid "No! I said recruit an Elvish FIGHTER! Now try again..."
 msgstr "Не! Казах да набереш Елф, БОЕЦ! Сега опитай отново..."
 
-#. [unit]: type=Elvish Fighter
+#. [unit]: id=Golir, type=Elvish Fighter
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:730
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:741
@@ -1296,7 +1296,7 @@ msgid ""
 "again..."
 msgstr "$recruit.type|? Казах да НАБЕРЕШ нов ЕЛФ БОЕЦ! Сега опитай отново..."
 
-#. [unit]: type=Elvish Fighter
+#. [unit]: id=Elindel, type=Elvish Fighter
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:834
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:845
@@ -1859,12 +1859,13 @@ msgid ""
 "Konrad, Li'sar and Delfador are characters from Heir to the Throne."
 msgstr ""
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Fighter, race=human
 #: data/campaigns/tutorial/units/Fighter.cfg:4
 msgid "Fighter"
 msgstr "Боец"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Fighteress, race=human
+#. [unit_type]: id=Fighter, race=human
 #: data/campaigns/tutorial/units/Fighteress.cfg:17
 #: data/campaigns/tutorial/units/Fighter.cfg:17
 #, fuzzy
@@ -1881,7 +1882,7 @@ msgstr ""
 msgid "sword"
 msgstr "меч"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Fighteress, race=human
 #: data/campaigns/tutorial/units/Fighteress.cfg:4
 msgid "female^Fighter"
 msgstr "Боец"
@@ -1892,7 +1893,7 @@ msgstr "Боец"
 msgid "saber"
 msgstr "сабя"
 
-#. [unit_type]: race=mechanical
+#. [unit_type]: id=Quintain, race=mechanical
 #: data/campaigns/tutorial/units/Quintain.cfg:14
 msgid ""
 "Quintains are used to practice swordplay and jousting on. It would be "

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-22 14:55+0100\n"
+"POT-Creation-Date: 2008-11-29 12:24+0100\n"
 "PO-Revision-Date: 2006-12-22 19:12+0100\n"
 "Last-Translator: Matej Repinc <mrepinc@gmail.com>\n"
 "Language-Team: Slovenian\n"
@@ -15,7 +15,7 @@ msgstr ""
 "%100==4 ? 2 : 3);\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#. [tutorial]
+#. [tutorial]: id=tutorial
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:41
 #, fuzzy
 msgid ""
@@ -24,12 +24,12 @@ msgid ""
 "rusty@rustcorp.com.au!"
 msgstr "Vodnik naj bi bil zabaven, zato naj poskuša biti tudi prevod."
 
-#. [tutorial]
+#. [tutorial]: id=tutorial
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:42
 msgid "Wesnoth Tutorial"
 msgstr "Učne ure Wesnotha"
 
-#. [side]: type=Fighter
+#. [side]: type=Fighter, id=student
 #. [command]
 #. [option]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:295
@@ -41,7 +41,7 @@ msgstr "Učne ure Wesnotha"
 msgid "Konrad"
 msgstr "Konrad"
 
-#. [unit]: type=Elder Mage
+#. [unit]: id=Delfador, type=Elder Mage
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:113
 msgid "Delfador"
 msgstr "Delfador"
@@ -77,7 +77,7 @@ msgstr "Poizkušaj se ubiti"
 msgid "Who would you like to play?"
 msgstr "Koga bi radi igrali?"
 
-#. [unit]: type=Fighteress
+#. [unit]: type=Fighteress, id=student
 #. [command]
 #. [option]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:365
@@ -215,48 +215,48 @@ msgstr ""
 "*Pritisnite poljubno tipko oziroma pritisnite desni miškin gumb za "
 "nadaljevanje..."
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:313
 #, fuzzy
 msgid "Good morning, Delfador! Is it time to attack things?"
 msgstr "Dobro jutro Delfador!  Ali je čas za napadanje stvari?"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:317
 msgid "Um, well..."
 msgstr "No ja..."
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:321
 #, fuzzy
 msgid "Have you found an orc for me to fight, huh? A troll?"
 msgstr "Si mi našel orka za boj, kajne? Ali trola?"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:325
 #, fuzzy
 msgid "Quiet! I will summon an enemy for you..."
 msgstr "Tiho!  Poslal bom po nasprotnika zate..."
 
 #. [event]
-#. [unit_type]: race=mechanical
+#. [unit_type]: id=Quintain, race=mechanical
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:353
 #: data/campaigns/tutorial/units/Quintain.cfg:4
 msgid "Quintain"
 msgstr "Lutka"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:357
 msgid "... this quintain!"
 msgstr "...ta lutka!"
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:361
 #, fuzzy
 msgid "A quintain? You want me to pretend to fight a dummy?"
 msgstr "Lutka?  Hočeš da se pretvarjam da se bojujem z lutko??"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:365
 #, fuzzy
 msgid "Child, you have 32 hitpoints and a sword. I'm fairly sure you'll win."
@@ -291,22 +291,22 @@ msgstr ""
 msgid "Click on the quintain to attack it"
 msgstr "Za napad lutke kliknite nanjo"
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:424
 msgid "Hey! This quintain fights back!"
 msgstr "Hej! Lutka napada nazaj!"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:428
 msgid "Hmm, maybe we should have started with a doll."
 msgstr "Hmm, mogoče bi morala začeti z punčko."
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:432
 msgid "Should I retreat?"
 msgstr "Naj se predam?"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:436
 msgid "Good idea!"
 msgstr "Dobra ideja!"
@@ -331,7 +331,7 @@ msgstr ""
 "Opomba: majhen moder ščit zraven Delfadorja nam pove, da boste izgubili če "
 "je on ubit.  Prav tako boste izgubili če ubijejo vašega vodjo (Li'sarja)."
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:454
 #, fuzzy
 msgid ""
@@ -341,12 +341,12 @@ msgstr ""
 "Na žalost ste že uporabili vašo potezo za napad lutke. Sedaj bo lutka dobila "
 "svojo potezo."
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:458
 msgid "The DUMMY gets a turn?"
 msgstr "LUTKA bo dobila potezo?"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:464
 #, fuzzy
 msgid ""
@@ -364,7 +364,7 @@ msgstr ""
 msgid "Click on the End Turn button on the bottom right"
 msgstr "Kliknite na gumb Končajte potezo v spodnjem desnem kotu"
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:488
 #, fuzzy
 msgid "Ouch! I need to heal! Only $student_hp hitpoints left!"
@@ -377,7 +377,7 @@ msgstr "Avč!  Pozdraviti se moram!  Ostalo mi je samo $student_hp hpja!"
 msgid "Village"
 msgstr "Vas"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:493
 #, fuzzy
 msgid ""
@@ -425,7 +425,7 @@ msgstr ""
 msgid "Click on the End Turn button"
 msgstr "Kliknite na gumb Končaj potezo"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:563
 #, fuzzy
 msgid ""
@@ -435,7 +435,7 @@ msgstr ""
 "Pravkar se boste pozdravili za 8 hp.  Ampak mislim da boste potrebovali malo "
 "pomoči proti tisti lutki."
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:567
 msgid "I'll recruit some elves!"
 msgstr "Rekrutiral bom nekaj vilinov!"
@@ -447,7 +447,7 @@ msgstr "Rekrutiral bom nekaj vilinov!"
 msgid "Keep"
 msgstr "Utrdba"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:572
 #, fuzzy
 msgid ""
@@ -512,7 +512,7 @@ msgid "Right click on the other castle tile and Recruit another unit"
 msgstr ""
 "Desno kliknite na neko drugo polje v gradu ter Rekrutirajte še eno enoto"
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:695
 #, fuzzy
 msgid ""
@@ -521,12 +521,12 @@ msgstr ""
 "Lutka se je pravkar pozdravila za 2 HP! Najbolje bi bilo če jo napadem "
 "enkrat za vselej!"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:699
 msgid "Yes, if a unit doesn't do anything for a turn, it will slowly heal."
 msgstr ""
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:711
 #, fuzzy
 msgid ""
@@ -537,13 +537,13 @@ msgstr ""
 "Ampak preden pošljete vaše bojevnike nad lutko morate vedeti, da imajo dve "
 "vrsti napada..."
 
-#. [message]
+#. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:715
 #, fuzzy
 msgid "I'll tell them to use the one that does the most damage!"
 msgstr "Povedal jim bom, naj uporabijo tistega, ki naredu največ škode!"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:719
 #, fuzzy
 msgid ""
@@ -562,7 +562,7 @@ msgstr "Levo kliknite na Vilinskega bojevnika"
 msgid "End your turn and attack again."
 msgstr "Končajte potezo, nato pa še enkrat napadite. "
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:739
 msgid ""
 "You wouldn't do anything stupid like charging that quintain yourself again, "
@@ -575,7 +575,7 @@ msgstr ""
 msgid "Left click on the Quintain to attack it."
 msgstr "Za napad Lutke levo kliknite nanjo."
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:784
 #, fuzzy
 msgid ""
@@ -584,7 +584,7 @@ msgid ""
 "safer."
 msgstr "Vaš Vilin je uporabil meč (5-4, oziroma 5 škode, 4 napadi), kar je "
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:792
 #, fuzzy
 msgid ""
@@ -598,7 +598,7 @@ msgstr ""
 "daljave bi bil varnejši.\n"
 "Končajte potezo, nato napadite ponovno."
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:804
 #, fuzzy
 msgid ""
@@ -617,7 +617,7 @@ msgstr ""
 msgid "Attack with the other Elf"
 msgstr "Napadite z vašim drugim Vilinom"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:836
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:854
 #, fuzzy
@@ -629,7 +629,7 @@ msgstr ""
 "Vaš Vilin je uporabil lok, to je napad z razdalje (3-3, oziroma 3 škode, 3 "
 "napadi). Lutka nima napada z razdalje, zato se ni bila sposobna braniti."
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:844
 #, fuzzy
 msgid ""
@@ -642,13 +642,13 @@ msgstr ""
 "napadi). Lutka nima napada z razdalje, zato se ni bila sposobna braniti. \n"
 "Končajte potezo, nato napadite ponovno."
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:875
 #, fuzzy
 msgid "Keep attacking with both elves until the quintain is finished!"
 msgstr "Kar napadajte, z obema vilinoma, dokler ni lutka mrtva!"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:889
 msgid "Maybe you should recruit another elf?"
 msgstr "Mogoče bi bilo bolje če bi rekrutirali še enega vilina?"
@@ -724,7 +724,7 @@ msgstr ""
 msgid "The quintain is dead, sirs, and I have gained more experience!"
 msgstr "Lutka je mrtva gospod, in dobil sem točke izkušenj!"
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1001
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1005
 #, fuzzy
@@ -735,7 +735,7 @@ msgstr ""
 "Z ubijanjem nasprotnikov dobivate izkušenjske točke:več kot jih imate, manj "
 "ste ranljivi."
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1002
 #, fuzzy
 msgid ""
@@ -745,7 +745,7 @@ msgstr ""
 "Pustil ti bom še več lutk da boš lahko treniral! Po tem imava na vrsti resno "
 "delo..."
 
-#. [message]
+#. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1006
 #, fuzzy
 msgid ""
@@ -913,12 +913,12 @@ msgstr "Imam $gold zlata: dovolj, da nekoga novačim."
 msgid "Yes, keep recruiting more units: I think you might need them!"
 msgstr "Da, novači enote. Mislim, da jih boš potreboval!"
 
-#. [tutorial]
+#. [tutorial]: id=2_Tutorial
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:286
 msgid "Wesnoth Tutorial Part II"
 msgstr "Učne ure Wesnotha del II"
 
-#. [side]: type=Orcish Warrior
+#. [side]: type=Orcish Warrior, id=Thrag
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:307
 msgid "Thrag"
 msgstr "Trag"
@@ -945,7 +945,7 @@ msgstr "Poteze se iztečejo"
 msgid "Death of Li'sar"
 msgstr "Smrt Li'sarja"
 
-#. [unit]: type=Elvish Captain
+#. [unit]: id=Galdrad, type=Elvish Captain
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:388
 msgid "Galdrad"
 msgstr "Galdard"
@@ -1188,7 +1188,7 @@ msgid "No! I said recruit an Elvish ARCHER! Now try again..."
 msgstr ""
 "Ne!  Rekel sem da rekrutiraj Vilinskega LOKOSTRELCA!  Poizkusi ponovno..."
 
-#. [unit]: type=Elvish Archer
+#. [unit]: id=Eowynial, type=Elvish Archer
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:626
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:638
@@ -1205,7 +1205,7 @@ msgstr "Šaman"
 msgid "Recruit an Elvish Shaman to your north"
 msgstr "Severno rekrutirajte Vilinskega Šamana "
 
-#. [unit]: type=Elvish Archer
+#. [unit]: id=Elriend, type=Elvish Archer
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:665
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:676
@@ -1243,7 +1243,7 @@ msgid "No! I said recruit an Elvish FIGHTER! Now try again..."
 msgstr ""
 "Ne!  Rekel sem da rekrutiraj Vilinskega BOJEVNIKA!  Poizkusi ponovno..."
 
-#. [unit]: type=Elvish Fighter
+#. [unit]: id=Golir, type=Elvish Fighter
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:730
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:741
@@ -1296,7 +1296,7 @@ msgstr ""
 "$recruit.type|? Rekel sem da REKRUTIRAJ novega VILINSKEGA BOJEVNIKA.  "
 "Poizkusi ponovno..."
 
-#. [unit]: type=Elvish Fighter
+#. [unit]: id=Elindel, type=Elvish Fighter
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:834
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:845
@@ -1849,12 +1849,13 @@ msgid ""
 "Konrad, Li'sar and Delfador are characters from Heir to the Throne."
 msgstr ""
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Fighter, race=human
 #: data/campaigns/tutorial/units/Fighter.cfg:4
 msgid "Fighter"
 msgstr "Bojevnik"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Fighteress, race=human
+#. [unit_type]: id=Fighter, race=human
 #: data/campaigns/tutorial/units/Fighteress.cfg:17
 #: data/campaigns/tutorial/units/Fighter.cfg:17
 #, fuzzy
@@ -1871,7 +1872,7 @@ msgstr ""
 msgid "sword"
 msgstr "meč"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Fighteress, race=human
 #: data/campaigns/tutorial/units/Fighteress.cfg:4
 msgid "female^Fighter"
 msgstr "Bojevnica"
@@ -1882,7 +1883,7 @@ msgstr "Bojevnica"
 msgid "saber"
 msgstr "rapir"
 
-#. [unit_type]: race=mechanical
+#. [unit_type]: id=Quintain, race=mechanical
 #: data/campaigns/tutorial/units/Quintain.cfg:14
 #, fuzzy
 msgid ""

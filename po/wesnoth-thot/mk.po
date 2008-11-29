@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.5.0-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-27 19:54+0100\n"
+"POT-Creation-Date: 2008-11-29 12:25+0100\n"
 "PO-Revision-Date: 2008-04-24 21:06+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -10,47 +10,47 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#. [campaign]
+#. [campaign]: id=The_Hammer_of_Thursagan
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:10
 msgid "The Hammer of Thursagan"
 msgstr ""
 
-#. [campaign]
+#. [campaign]: id=The_Hammer_of_Thursagan
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:11
 msgid "THoT"
 msgstr ""
 
-#. [campaign]
+#. [campaign]: id=The_Hammer_of_Thursagan
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:16
 msgid "Fighter"
 msgstr ""
 
-#. [campaign]
+#. [campaign]: id=The_Hammer_of_Thursagan
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:16
 msgid "(Easy)"
 msgstr ""
 
-#. [campaign]
+#. [campaign]: id=The_Hammer_of_Thursagan
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:17
 msgid "Steelclad"
 msgstr ""
 
-#. [campaign]
+#. [campaign]: id=The_Hammer_of_Thursagan
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:17
 msgid "(Normal)"
 msgstr ""
 
-#. [campaign]
+#. [campaign]: id=The_Hammer_of_Thursagan
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:18
 msgid "(Challenging)"
 msgstr ""
 
-#. [campaign]
+#. [campaign]: id=The_Hammer_of_Thursagan
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:18
 msgid "Lord"
 msgstr ""
 
-#. [campaign]
+#. [campaign]: id=The_Hammer_of_Thursagan
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:22
 msgid ""
 "In the first years of the Northern Alliance, an expedition from Knalga seeks "
@@ -81,7 +81,7 @@ msgstr ""
 msgid "Brainstorming, playtesting, and spousal support"
 msgstr ""
 
-#. [scenario]
+#. [scenario]: id=01_At_The_East_Gate
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_The_East_Gate.cfg:3
 msgid "At The East Gate"
 msgstr ""
@@ -91,12 +91,12 @@ msgstr ""
 msgid "East Gate"
 msgstr ""
 
-#. [side]: type=Dwarvish Fighter
-#. [side]: type=Dwarvish Lord
-#. [side]: type=Great Mage
-#. [side]: type=Dwarvish Steelclad
+#. [side]: type=Dwarvish Fighter, id=Aiglondur
+#. [side]: type=Dwarvish Lord, id=Hamel
+#. [side]: type=Great Mage, id=Master Perrin
+#. [side]: type=Dwarvish Steelclad, id=Dulcatulos
 #. [side]
-#. [side]: type=Orcish Warrior
+#. [side]: type=Orcish Warrior, id=Marth-Tak
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:34
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_The_Past.cfg:28
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_The_Past.cfg:46
@@ -117,7 +117,7 @@ msgstr ""
 msgid "Alliance"
 msgstr ""
 
-#. [side]: type=Dwarvish Fighter
+#. [side]: type=Dwarvish Fighter, id=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:29
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_The_Past.cfg:40
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_The_East_Gate.cfg:44
@@ -133,8 +133,13 @@ msgstr ""
 msgid "Aiglondur"
 msgstr ""
 
-#. [side]: type=Orcish Warrior
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warrior, id=Bashnark
+#. [side]: type=Orcish Warlord, id=Tan-Malgar
+#. [side]: type=Orcish Warlord, id=Tan-Grolak
+#. [side]: type=Orcish Warlord, id=Tan-Uthkar
+#. [side]: type=Orcish Warlord, id=Tan-Morgh
+#. [side]: type=Orcish Warlord, id=Tan-Garukh
+#. [side]: type=Orcish Warlord, id=Tan-Wagran
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_The_East_Gate.cfg:59
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:62
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:98
@@ -145,12 +150,12 @@ msgstr ""
 msgid "Orcs"
 msgstr ""
 
-#. [side]: type=Orcish Warrior
+#. [side]: type=Orcish Warrior, id=Bashnark
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_The_East_Gate.cfg:65
 msgid "Bashnark"
 msgstr ""
 
-#. [unit]: type=Gryphon Rider
+#. [unit]: type=Gryphon Rider, id=Pelmathidrol
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_The_East_Gate.cfg:83
 msgid "Pelmathidrol"
 msgstr ""
@@ -238,13 +243,13 @@ msgstr ""
 msgid "The maker's mark is strange to me. We had best consult the lord Hamel."
 msgstr ""
 
-#. [scenario]
+#. [scenario]: id=02_Reclaiming_The_Past
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_The_Past.cfg:3
 msgid "Reclaiming The Past"
 msgstr ""
 
-#. [side]: type=Dwarvish Lord
-#. [side]: type=Dwarvish Fighter
+#. [side]: type=Dwarvish Lord, id=Hamel
+#. [side]: type=Dwarvish Fighter, id=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_The_Past.cfg:22
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_Troll_Bridge.cfg:18
 msgid "Hamel"
@@ -259,7 +264,8 @@ msgid ""
 "Loremasters..."
 msgstr ""
 
-#. [unit]: type=Dwarvish Witness
+#. [unit]: type=Dwarvish Witness, id=Angarthing_dummy
+#. [unit]: type=Dwarvish Witness, id=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_The_Past.cfg:93
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:141
 msgid "Angarthing"
@@ -440,22 +446,22 @@ msgid ""
 "soon grow dangerous."
 msgstr ""
 
-#. [scenario]
+#. [scenario]: id=03_Strange_Allies
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:3
 msgid "Strange Allies"
 msgstr ""
 
-#. [side]: type=Orcish Warrior
+#. [side]: type=Orcish Warrior, id=Marth-Tak
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:43
 msgid "Marth-Tak"
 msgstr ""
 
-#. [side]: type=Outlaw
+#. [side]: type=Outlaw, id=Gothras
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:85
 msgid "Gothras"
 msgstr ""
 
-#. [side]: type=Outlaw
+#. [side]: type=Outlaw, id=Gothras
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:94
 msgid "Bandits"
 msgstr ""
@@ -569,17 +575,17 @@ msgstr ""
 msgid "East, eh? You won't find many friends in that direction. Travel safely."
 msgstr ""
 
-#. [scenario]
+#. [scenario]: id=04_Troll Bridge
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_Troll_Bridge.cfg:3
 msgid "Troll Bridge"
 msgstr ""
 
-#. [side]: type=Troll
+#. [side]: type=Troll, id=Gronk
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_Troll_Bridge.cfg:35
 msgid "Gronk"
 msgstr ""
 
-#. [side]: type=Troll
+#. [side]: type=Troll, id=Gronk
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_Troll_Bridge.cfg:43
 msgid "Trolls"
 msgstr ""
@@ -632,7 +638,7 @@ msgstr ""
 msgid "Defeat Gronk"
 msgstr ""
 
-#. [scenario]
+#. [scenario]: id=05_Invaders
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:3
 msgid "Invaders"
 msgstr ""
@@ -649,17 +655,17 @@ msgid ""
 "wildlands."
 msgstr ""
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Tan-Malgar
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:54
 msgid "Tan-Malgar"
 msgstr ""
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Tan-Grolak
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:80
 msgid "Tan-Grolak"
 msgstr ""
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Tan-Uthkar
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:125
 msgid "Tan-Uthkar"
 msgstr ""
@@ -728,17 +734,17 @@ msgstr ""
 msgid "Defeat all enemies"
 msgstr ""
 
-#. [scenario]
+#. [scenario]: id=06_High_Pass
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:3
 msgid "High Pass"
 msgstr ""
 
-#. [side]: type=Gryphon
+#. [side]: type=Gryphon, id=Kaara
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:48
 msgid "Kaara"
 msgstr ""
 
-#. [side]: type=Gryphon
+#. [side]: type=Gryphon, id=Kaara
 #. [side]
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:52
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:68
@@ -770,7 +776,7 @@ msgid ""
 "should investigate."
 msgstr ""
 
-#. [unit]: type=Arch Mage
+#. [unit]: type=Arch Mage, id=Ratheln
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:225
 msgid "Ratheln"
 msgstr ""
@@ -865,32 +871,32 @@ msgid ""
 "Aye. But I've a grim feeling we might be going to discover that in person."
 msgstr ""
 
-#. [scenario]
+#. [scenario]: id=07_Mages_and_Drakes
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:3
 msgid "Mages and Drakes"
 msgstr ""
 
-#. [side]: type=Great Mage
+#. [side]: type=Great Mage, id=Master Perrin
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:42
 msgid "Master Perrin"
 msgstr ""
 
-#. [side]: type=Drake Flameheart
+#. [side]: type=Drake Flameheart, id=Glashal
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:62
 msgid "Glashal"
 msgstr ""
 
-#. [side]: type=Drake Flameheart
+#. [side]: type=Drake Flameheart, id=Glashal
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:66
 msgid "Drakes"
 msgstr ""
 
-#. [unit]: type=White Mage
+#. [unit]: type=White Mage, id=Preceptor
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:93
 msgid "Preceptor"
 msgstr ""
 
-#. [unit]: type=Red Mage
+#. [unit]: type=Red Mage, id=Warder
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:105
 msgid "Warder"
 msgstr ""
@@ -962,12 +968,12 @@ msgid ""
 "the currents of the earth and air."
 msgstr ""
 
-#. [unit]: type=Mage
+#. [unit]: type=Mage, id=Lorinne
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:191
 msgid "Lorinne"
 msgstr ""
 
-#. [unit]: type=Mage
+#. [unit]: type=Mage, id=Darchas
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:199
 msgid "Darchas"
 msgstr ""
@@ -1010,17 +1016,24 @@ msgid ""
 "I think we will regret Perrin's passing. There is much he might have told us."
 msgstr ""
 
-#. [scenario]
+#. [scenario]: id=08_Fear
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:3
 msgid "Fear"
 msgstr ""
 
+#. [unit]: type=Dwarvish Masked Steelclad, id=Gog
+#. [unit]: type=Dwarvish Masked Steelclad, id=Magog
+#. [unit]: type=Dwarvish Ulfserker, id=Hekyll
+#. [unit]: type=Dwarvish Ulfserker, id=Jekyll
+#. [side]: type=Dwarvish Masked Steelclad, id=Dufon
+#. [side]: type=Dwarvish Masked Lord, id=Aragoth
+#. [side]: type=Dwarvish Masked Lord, id=Dranath
+#. [side]: type=Dwarvish Masked Steelclad, id=Sashaon
 #. [unit]: type=Dwarvish Masked Steelclad
-#. [unit]: type=Dwarvish Ulfserker
-#. [side]: type=Dwarvish Masked Steelclad
-#. [side]: type=Dwarvish Masked Lord
 #. [unit]: type=Dwarvish Masked Thunderguard
 #. [unit]: type=Dwarvish Masked Stalwart
+#. [side]: type=Dwarvish Masked Steelclad, id=Masked Dwarf Leader
+#. [unit]: type=Dwarvish Ulfserker, id={ID_STRING}
 #. [event]
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:128
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:137
@@ -1040,10 +1053,14 @@ msgstr ""
 msgid "Masked Dwarf"
 msgstr ""
 
-#. [side]: type=Dwarvish Rune Lord
-#. [side]: type=Dwarvish Masked Steelclad
-#. [side]: type=Dwarvish Masked Lord
-#. [side]: type=Lich
+#. [side]: type=Dwarvish Rune Lord, id=Karrag
+#. [side]: type=Dwarvish Masked Steelclad, id=Dufon
+#. [side]: type=Dwarvish Masked Lord, id=Aragoth
+#. [side]: type=Dwarvish Masked Lord, id=Dranath
+#. [side]: type=Lich, id=Fleleen
+#. [side]: type=Lich, id=Lannex
+#. [side]: type=Dwarvish Masked Steelclad, id=Sashaon
+#. [side]: type=Dwarvish Masked Steelclad, id=Masked Dwarf Leader
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:56
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:77
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:98
@@ -1092,7 +1109,7 @@ msgstr ""
 msgid "Find the inhabitants"
 msgstr ""
 
-#. [unit]: type=Peasant
+#. [unit]: type=Peasant, id=Ollin
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:193
 msgid "Ollin"
 msgstr ""
@@ -1228,36 +1245,36 @@ msgid ""
 "was any good one."
 msgstr ""
 
-#. [scenario]
+#. [scenario]: id=09_Forbidden_Forest
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:3
 msgid "Forbidden Forest"
 msgstr ""
 
-#. [side]: type=Elvish High Lord
+#. [side]: type=Elvish High Lord, id=Telcherion
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:121
 msgid "Telcherion"
 msgstr ""
 
-#. [side]: type=Elvish High Lord
-#. [side]: type=Elvish Lady
-#. [side]: type=Ancient Wose
+#. [side]: type=Elvish High Lord, id=Telcherion
+#. [side]: type=Elvish Lady, id=Iluvarda
+#. [side]: type=Ancient Wose, id=Burumardir-Athelorand
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:137
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:160
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:184
 msgid "Forest"
 msgstr ""
 
-#. [side]: type=Elvish Lady
+#. [side]: type=Elvish Lady, id=Iluvarda
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:145
 msgid "Iluvarda"
 msgstr ""
 
-#. [side]: type=Ancient Wose
+#. [side]: type=Ancient Wose, id=Burumardir-Athelorand
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:168
 msgid "Burumardir-Athelorand"
 msgstr ""
 
-#. [unit]: type=Elvish Scout
+#. [unit]: type=Elvish Scout, id=Elurin
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:225
 msgid "Elurin"
 msgstr ""
@@ -1322,29 +1339,29 @@ msgstr ""
 msgid "Kal Kartha should be only another day's march east of here."
 msgstr ""
 
-#. [scenario]
+#. [scenario]: id=10_The_Siege_of_Kal_Kartha
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:3
 msgid "The Siege of Kal Kartha"
 msgstr ""
 
-#. [unit]: type=Dwarvish Steelclad
-#. [side]: type=Dwarvish Steelclad
+#. [unit]: type=Dwarvish Steelclad, id=Dulcatulos
+#. [side]: type=Dwarvish Steelclad, id=Dulcatulos
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:102
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:49
 msgid "Dulcatulos"
 msgstr ""
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Tan-Morgh
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:74
 msgid "Tan-Morgh"
 msgstr ""
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Tan-Garukh
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:121
 msgid "Tan-Garukh"
 msgstr ""
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Tan-Wagran
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:154
 msgid "Tan-Wagran"
 msgstr ""
@@ -1436,20 +1453,20 @@ msgid ""
 "speak again."
 msgstr ""
 
-#. [scenario]
+#. [scenario]: id=11_The_Court_of_Karrag
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:3
 msgid "The Court of Karrag"
 msgstr ""
 
-#. [side]: type=Dwarvish Rune Lord
-#. [unit]: type=Lich
+#. [side]: type=Dwarvish Rune Lord, id=Karrag
+#. [unit]: type=Lich, id=Karrag
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:45
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:245
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:49
 msgid "Karrag"
 msgstr ""
 
-#. [side]: type=Dwarvish Rune Lord
+#. [side]: type=Dwarvish Rune Lord, id=Karrag
 #. [side]
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:52
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:72
@@ -1611,17 +1628,17 @@ msgid ""
 "fight them, too. Our mission has failed."
 msgstr ""
 
-#. [scenario]
+#. [scenario]: id=12_The_Underlevels
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:8
 msgid "The Underlevels"
 msgstr ""
 
-#. [side]: type=Lich
+#. [side]: type=Lich, id=Fleleen
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:134
 msgid "Fleleen"
 msgstr ""
 
-#. [side]: type=Lich
+#. [side]: type=Lich, id=Lannex
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:148
 msgid "Lannex"
 msgstr ""
@@ -1828,22 +1845,22 @@ msgstr ""
 msgid "Another old caved-in passage way..."
 msgstr ""
 
-#. [unit]: type=Dwarvish Steelclad
+#. [unit]: type=Dwarvish Steelclad, id=Trisi
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:843
 msgid "Trisi"
 msgstr ""
 
-#. [unit]: type=Dwarvish Steelclad
+#. [unit]: type=Dwarvish Steelclad, id=Malifen
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:894
 msgid "Malifen"
 msgstr ""
 
-#. [unit]: type=Dwarvish Thunderguard
+#. [unit]: type=Dwarvish Thunderguard, id=Borras
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:945
 msgid "Borras"
 msgstr ""
 
-#. [unit]: type=Dwarvish Steelclad
+#. [unit]: type=Dwarvish Steelclad, id=Zamak
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:996
 msgid "Zamak"
 msgstr ""
@@ -1905,7 +1922,7 @@ msgstr ""
 msgid "The 'true people' speak through our axes. Die, foul lich."
 msgstr ""
 
-#. [scenario]
+#. [scenario]: id=13_Epilogue
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/13_Epilogue.cfg:3
 msgid "Epilogue"
 msgstr ""
@@ -1987,7 +2004,7 @@ msgid ""
 "all, made us the tools of his foul scheme."
 msgstr ""
 
-#. [unit]: type=Lancer
+#. [unit]: type=Lancer, id=Pelias
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/13_Epilogue.cfg:135
 msgid "Pelias"
 msgstr ""
@@ -2051,12 +2068,12 @@ msgid ""
 "But it seems that I have some work to do here first."
 msgstr ""
 
-#. [unit_type]: race=dwarf
+#. [unit_type]: id=Dwarvish Annalist, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Annalist.cfg:4
 msgid "Dwarvish Annalist"
 msgstr ""
 
-#. [unit_type]: race=dwarf
+#. [unit_type]: id=Dwarvish Annalist, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Annalist.cfg:22
 msgid ""
 "Dwarvish Annalists are the historians of this ancient and proud race. They "
@@ -2079,12 +2096,12 @@ msgstr ""
 msgid "bolas"
 msgstr ""
 
-#. [unit_type]: race=dwarf
+#. [unit_type]: id=Dwarvish Loremaster, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Loremaster.cfg:4
 msgid "Dwarvish Loremaster"
 msgstr ""
 
-#. [unit_type]: race=dwarf
+#. [unit_type]: id=Dwarvish Loremaster, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Loremaster.cfg:24
 msgid ""
 "Loremasters are the sages of the dwarvish race. Their counsel is greatly "
@@ -2095,27 +2112,27 @@ msgid ""
 "they add a limited ability to heal."
 msgstr ""
 
-#. [unit_type]
+#. [unit_type]: id=Dwarvish Masked Dragonguard
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Dragonguard.cfg:7
 msgid "Dwarvish Masked Dragonguard"
 msgstr ""
 
-#. [unit_type]
+#. [unit_type]: id=Dwarvish Masked Fighter
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Fighter.cfg:7
 msgid "Dwarvish Masked Fighter"
 msgstr ""
 
-#. [unit_type]
+#. [unit_type]: id=Dwarvish Masked Guardsman
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Guardian.cfg:7
 msgid "Dwarvish Masked Guardsman"
 msgstr ""
 
-#. [unit_type]
+#. [unit_type]: id=Dwarvish Masked Lord
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Lord.cfg:7
 msgid "Dwarvish Masked Lord"
 msgstr ""
 
-#. [unit_type]
+#. [unit_type]: id=Dwarvish Masked Lord
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Lord.cfg:9
 msgid ""
 "Feared in dwarven legend is the Dwarf Lord who masks his face, using the "
@@ -2127,22 +2144,22 @@ msgid ""
 "the prowess of their kind."
 msgstr ""
 
-#. [unit_type]
+#. [unit_type]: id=Dwarvish Masked Sentinel
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Sentinel.cfg:7
 msgid "Dwarvish Masked Sentinel"
 msgstr ""
 
-#. [unit_type]
+#. [unit_type]: id=Dwarvish Masked Stalwart
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Stalwart.cfg:7
 msgid "Dwarvish Masked Stalwart"
 msgstr ""
 
-#. [unit_type]
+#. [unit_type]: id=Dwarvish Masked Steelclad
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Steelclad.cfg:7
 msgid "Dwarvish Masked Steelclad"
 msgstr ""
 
-#. [unit_type]
+#. [unit_type]: id=Dwarvish Masked Steelclad
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Steelclad.cfg:11
 msgid ""
 "More experienced Dwarvish fighters wear heavy chain mail and plate armor, "
@@ -2150,22 +2167,22 @@ msgid ""
 "conceal their faces behind riveted masks."
 msgstr ""
 
-#. [unit_type]
+#. [unit_type]: id=Dwarvish Masked Thunderer
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Thunderer.cfg:7
 msgid "Dwarvish Masked Thunderer"
 msgstr ""
 
-#. [unit_type]
+#. [unit_type]: id=Dwarvish Masked Thunderguard
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Thunderguard.cfg:7
 msgid "Dwarvish Masked Thunderguard"
 msgstr ""
 
-#. [unit_type]: race=dwarf
+#. [unit_type]: id=Dwarvish Rune Lord, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:6
 msgid "Dwarvish Runemaster"
 msgstr ""
 
-#. [unit_type]: race=dwarf
+#. [unit_type]: id=Dwarvish Rune Lord, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:26
 msgid ""
 "Except for those with almost supernatural skill, the highest rank a "
@@ -2186,12 +2203,12 @@ msgstr ""
 msgid "chill tempest"
 msgstr ""
 
-#. [unit_type]: race=dwarf
+#. [unit_type]: id=Dwarvish Witness, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Witness.cfg:10
 msgid "Dwarvish Witness"
 msgstr ""
 
-#. [unit_type]: race=dwarf
+#. [unit_type]: id=Dwarvish Witness, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Witness.cfg:28
 msgid ""
 "A Witness functions as the eyes of the dwarves' history, a deep lore that "
@@ -2209,14 +2226,14 @@ msgid ""
 "in combat, though this only applies to units of lower or equal level."
 msgstr ""
 
-#. [leadership]
+#. [leadership]: id=inspire_0
 #: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:13
 #: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:45
 #: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:89
 msgid "inspire"
 msgstr ""
 
-#. [leadership]
+#. [leadership]: id=inspire_0
 #: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:15
 msgid ""
 "Inspire:\n"
@@ -2225,7 +2242,7 @@ msgid ""
 "will do 50% more."
 msgstr ""
 
-#. [leadership]
+#. [leadership]: id=inspire_0
 #: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:47
 msgid ""
 "Inspire:\n"
@@ -2234,7 +2251,7 @@ msgid ""
 "units will do 50% more, and L0 will do 75% more."
 msgstr ""
 
-#. [leadership]
+#. [leadership]: id=inspire_0
 #: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:91
 msgid ""
 "Inspire:\n"
@@ -2271,19 +2288,19 @@ msgid ""
 "longer recruit new ones."
 msgstr ""
 
-#. [object]
+#. [object]: id=sorf	# Prevent it from being picked up more than once.
 #: data/campaigns/The_Hammer_of_Thursagan/utils/macros.cfg:70
 msgid "Staff of Righteous Flame"
 msgstr ""
 
-#. [object]
+#. [object]: id=sorf	# Prevent it from being picked up more than once.
 #: data/campaigns/The_Hammer_of_Thursagan/utils/macros.cfg:73
 msgid ""
 "This staff gives a dying mage a final strike that will destroy all nearby "
 "enemies."
 msgstr ""
 
-#. [object]
+#. [object]: id=sorf	# Prevent it from being picked up more than once.
 #: data/campaigns/The_Hammer_of_Thursagan/utils/macros.cfg:74
 msgid "Only mages can wield the Staff."
 msgstr ""

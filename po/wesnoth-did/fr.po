@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-22 20:14+0100\n"
+"POT-Creation-Date: 2008-11-29 12:24+0100\n"
 "PO-Revision-Date: 2008-08-23 22:40+0200\n"
 "Last-Translator: Benoît Timbert <benoit.timbert@free.fr>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
@@ -16,48 +16,48 @@ msgstr ""
 "X-Poedit-Language: French\n"
 "X-Poedit-Country: FRANCE\n"
 
-#. [campaign]
+#. [campaign]: id=Descent_Into_Darkness
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:11
 msgid "Descent Into Darkness"
 msgstr "Descente dans les ténèbres"
 
 # Abbréviation : Descende dans les Ténèbres
-#. [campaign]
+#. [campaign]: id=Descent_Into_Darkness
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:12
 msgid "DID"
 msgstr "DT"
 
-#. [campaign]
+#. [campaign]: id=Descent_Into_Darkness
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:16
 msgid "Neophyte"
 msgstr "Apprenti"
 
-#. [campaign]
+#. [campaign]: id=Descent_Into_Darkness
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:16
 msgid "(Normal)"
 msgstr "(Normal)"
 
-#. [campaign]
+#. [campaign]: id=Descent_Into_Darkness
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:17
 msgid "(Challenging)"
 msgstr "(Stimulant)"
 
-#. [campaign]
+#. [campaign]: id=Descent_Into_Darkness
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:17
 msgid "Evoker"
 msgstr "Invocateur"
 
-#. [campaign]
+#. [campaign]: id=Descent_Into_Darkness
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:18
 msgid "(Difficult)"
 msgstr "(Difficile)"
 
-#. [campaign]
+#. [campaign]: id=Descent_Into_Darkness
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:18
 msgid "Summoner"
 msgstr "Invocateur confirmé"
 
-#. [campaign]
+#. [campaign]: id=Descent_Into_Darkness
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:22
 msgid ""
 "Learn the dark arts of necromancy in order to save your people from an "
@@ -85,14 +85,14 @@ msgstr "Maintenance de la campagne"
 msgid "Artwork and Graphics Design"
 msgstr ""
 
-#. [scenario]
-#. [editor_group]
+#. [scenario]: id=Descent_into_Darkness
+#. [editor_group]: id=did
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:6
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:75
 msgid "Descent into Darkness"
 msgstr "Descente dans les ténèbres"
 
-#. [scenario]
+#. [scenario]: id=Saving_Parthyn
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:6
 msgid "Saving Parthyn"
 msgstr "La Défense de Parthyn"
@@ -194,11 +194,11 @@ msgstr ""
 "si vous revenez. Nous vous remercions de votre proposition mais nous n'avons "
 "pas besoin de nous allier avec ceux qui pratiquent la magie des ténèbres. »"
 
-#. [side]: type=General
-#. [side]: type=Apprentice Mage
-#. [side]: type=Sergeant
+#. [side]: type=General, id=Taylor
+#. [side]: type=Apprentice Mage, id=Malin Keshar
+#. [side]: type=Sergeant, id=Drogan
 #. [side]
-#. [side]: type=Frontier Baroness
+#. [side]: type=Frontier Baroness, id=Dela Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:66
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:66
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:102
@@ -208,8 +208,8 @@ msgstr ""
 msgid "Defenders"
 msgstr "Défenseurs"
 
-#. [side]: type=Apprentice Mage
-#. [unit]: type=Dark Mage
+#. [side]: type=Apprentice Mage, id=Malin Keshar
+#. [unit]: id=Malin Keshar, type=Dark Mage
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:39
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:44
 #: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:44
@@ -225,9 +225,12 @@ msgstr "Défenseurs"
 msgid "Malin Keshar"
 msgstr "Malin Keshar"
 
-#. [side]: type=Orcish Warlord
-#. [side]: type=Orcish Warrior
-#. [side]: type=Orcish Slurbow
+#. [side]: type=Orcish Warlord, id=Gron'r Hronk
+#. [side]: type=Orcish Warlord, id=K'rrlar Oban
+#. [side]: type=Orcish Warrior, id=Kreg'a'shar Trr
+#. [side]: type=Orcish Warlord, id=Borth
+#. [side]: type=Orcish Slurbow, id=P'Gareth
+#. [side]: type=Orcish Warlord, id=K'Vark
 #: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:58
 #: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:82
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:82
@@ -237,13 +240,13 @@ msgstr "Malin Keshar"
 msgid "Orcs"
 msgstr "Orcs"
 
-#. [side]: type=Orcish Warrior
+#. [side]: type=Orcish Warrior, id=Kreg'a'shar Trr
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:85
 msgid "Kreg'a'shar Trr"
 msgstr "Kreg'a'shar Trr"
 
-#. [side]: type=Sergeant
-#. [side]: type=Lieutenant
+#. [side]: type=Sergeant, id=Drogan
+#. [side]: type=Lieutenant, id=Drogan
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:105
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:77
 msgid "Drogan"
@@ -534,7 +537,7 @@ msgstr ""
 msgid "The orcs are broken, dead or fled."
 msgstr "Les orcs sont démoralisés, morts ou en fuite."
 
-#. [scenario]
+#. [scenario]: id=Peaceful_Valley
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:6
 msgid "Peaceful Valley"
 msgstr "Vallée tranquille"
@@ -570,7 +573,7 @@ msgstr ""
 "propose de voyager avec lui. Au fil des semaines, il apprend à Malin à mieux "
 "manipuler la magie des ténèbres."
 
-#. [side]: type=Goblin Knight
+#. [side]: type=Goblin Knight, id=T'shar Lggi
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:58
 msgid "T'shar Lggi"
 msgstr "T'shar Lggi"
@@ -594,17 +597,17 @@ msgstr "Occuper tous les villages Gobelins"
 msgid "Death of Darken Volk"
 msgstr "Mort de Darken Volk"
 
-#. [unit]: type=Dark Sorcerer DiD
+#. [unit]: id=Darken Volk, type=Dark Sorcerer DiD
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:100
 msgid "Darken Volk"
 msgstr "Darken Volk"
 
-#. [trait]
+#. [trait]: id=loyal
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:108
 msgid "loyal"
 msgstr "fidèle"
 
-#. [trait]
+#. [trait]: id=loyal
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:109
 msgid "to himself"
 msgstr "à soi-même"
@@ -815,7 +818,7 @@ msgstr ""
 msgid "Excellent. I'm eager to move on to the real foes."
 msgstr "Excellent. Je suis impatient de rencontrer des vrais ennemis."
 
-#. [scenario]
+#. [scenario]: id=A_Haunting_in_Winter
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:6
 msgid "A Haunting in Winter"
 msgstr "Hantise d'hiver"
@@ -833,19 +836,19 @@ msgstr ""
 "ils en trouvent. Les pouvoirs de Malin grandissent considérablement sous la "
 "tutelle constante du nécromancien."
 
-#. [side]: type=Dwarvish Steelclad
-#. [side]: type=Bandit
+#. [side]: type=Dwarvish Steelclad, id=Dap Horner
+#. [side]: type=Bandit, id=Gorak Cole
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:53
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:73
 msgid "Outlaws"
 msgstr "Hors-la-loi"
 
-#. [side]: type=Dwarvish Steelclad
+#. [side]: type=Dwarvish Steelclad, id=Dap Horner
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:56
 msgid "Dap Horner"
 msgstr "Dap Horner"
 
-#. [side]: type=Bandit
+#. [side]: type=Bandit, id=Gorak Cole
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:76
 msgid "Gorak Cole"
 msgstr "Gorak Cole"
@@ -977,7 +980,7 @@ msgid ""
 "I think I've got the rest of them under control now. That was a close call."
 msgstr "Je pense que je les contrôle tous maintenant. On l'a échappé belle !"
 
-#. [scenario]
+#. [scenario]: id=Beginning_of_the_Revenge
 #: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:6
 msgid "Beginning of the Revenge"
 msgstr "Début de vengeance"
@@ -1010,12 +1013,12 @@ msgstr ""
 "Il dit qu'il espère prendre les guerriers orcs au dépourvu en arrivant si "
 "tôt dans l'année, et donc de leur infliger autant de dégâts que possible."
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Gron'r Hronk
 #: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:61
 msgid "Gron'r Hronk"
 msgstr "Gron'r Hronk"
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=K'rrlar Oban
 #: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:85
 msgid "K'rrlar Oban"
 msgstr "K'rrkar Oban"
@@ -1077,7 +1080,7 @@ msgstr ""
 "La glace fragile cède sous le lourd guerrier, qui coule dans les eaux "
 "glaciales de la montagne."
 
-#. [scenario]
+#. [scenario]: id=Orc_war
 #: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:6
 msgid "Orc War"
 msgstr "Guerre orc"
@@ -1128,24 +1131,24 @@ msgstr ""
 "l'adversité. Finalement, ils parviennent à encercler les forces humaines et "
 "à engager le combat."
 
-#. [scenario]
+#. [scenario]: id=Orc_war
 #: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:44
 #, fuzzy
 msgid "River Longlier"
 msgstr "Garde du fort du fleuve"
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=Borth
 #: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:70
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:54
 msgid "Borth"
 msgstr "Broth"
 
-#. [side]: type=Orcish Slurbow
+#. [side]: type=Orcish Slurbow, id=P'Gareth
 #: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:100
 msgid "P'Gareth"
 msgstr "P'Gareth"
 
-#. [side]: type=Orcish Warlord
+#. [side]: type=Orcish Warlord, id=K'Vark
 #: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:130
 msgid "K'Vark"
 msgstr "K'Vark"
@@ -1233,7 +1236,7 @@ msgstr ""
 "Pendant ce temps, ne laisse pas le dernier chef de clan échapper à la "
 "justice."
 
-#. [scenario]
+#. [scenario]: id=Return_to_Parthyn
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:6
 msgid "Return to Parthyn"
 msgstr "Retour à Parthyn"
@@ -1256,13 +1259,13 @@ msgstr ""
 msgid "Within a few days, Malin recognizes some familiar surroundings..."
 msgstr "Quelques jours après, Malin reconnait un paysage familier..."
 
-#. [side]: type=Lieutenant
+#. [side]: type=Lieutenant, id=Drogan
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:74
 msgid "Guardsmen"
 msgstr "Gardes"
 
-#. [unit]: type=Frontier Baroness
-#. [side]: type=Frontier Baroness
+#. [unit]: type=Frontier Baroness, id=Dela Keshar
+#. [side]: type=Frontier Baroness, id=Dela Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:429
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:96
 msgid "Dela Keshar"
@@ -1453,7 +1456,7 @@ msgstr ""
 msgid "See how you die when you spurn the help of Malin Keshar!"
 msgstr "Voilà comment on finit lorsque l'on refuse l'aide de Malin Keshar !"
 
-#. [scenario]
+#. [scenario]: id=A_Small_Favor
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:6
 msgid "A Small Favor"
 msgstr "Une petite faveur"
@@ -1506,7 +1509,7 @@ msgstr ""
 "grand nombre d'étudiants en magie. Sa bibliothèque contient le livre que "
 "nous cherchons. Nous aurons besoin d'entrer dans son manoir par effraction. »"
 
-#. [side]: type=Apprentice Mage
+#. [side]: type=Apprentice Mage, id=Malin Keshar
 #. [side]
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:48
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:23
@@ -1515,7 +1518,7 @@ msgstr ""
 msgid "Intruders"
 msgstr "Intrus"
 
-#. [side]: type=General
+#. [side]: type=General, id=Taylor
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:69
 msgid "Taylor"
 msgstr "Taylor"
@@ -1632,7 +1635,7 @@ msgstr ""
 msgid "Here is the entrance! Hurry!"
 msgstr "Voici l'entrée ! Vite !"
 
-#. [scenario]
+#. [scenario]: id=A_Small_Favor2
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:6
 msgid "A Small Favor - Part 2"
 msgstr "Une petite faveur - 2e partie"
@@ -1642,7 +1645,7 @@ msgstr "Une petite faveur - 2e partie"
 msgid "Find the mage Lord Karres"
 msgstr "Trouver le seigneur mage Karres"
 
-#. [unit]: type=Great Mage
+#. [unit]: type=Great Mage, id=Lord Karres
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:134
 msgid "Lord Karres"
 msgstr "Seigneur Karres"
@@ -1705,7 +1708,7 @@ msgstr ""
 "À l'aurore, les gardes de la cité pénètrent dans le manoir et capturent les "
 "deux nécromanciens."
 
-#. [scenario]
+#. [scenario]: id=A_Small_Favor3
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:6
 msgid "A Small Favor - Part 3"
 msgstr "Une petite faveur - 3e partie"
@@ -1789,7 +1792,7 @@ msgstr ""
 msgid "Phew! Let's get out of here."
 msgstr "Pfiou ! Sortons de là."
 
-#. [scenario]
+#. [scenario]: id=Alone_at_Last
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:6
 msgid "Alone at Last"
 msgstr "Enfin seul."
@@ -1961,7 +1964,7 @@ msgstr ""
 "Fait ? Je n'ai rien fait d'autre que te donner une opportunité. Tu as choisi "
 "ton propre chemin. Laisse-moi seul maintenant !"
 
-#. [unit]: type=Paladin
+#. [unit]: type=Paladin, id=Sir Cadaeus
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:370
 msgid "Sir Cadaeus"
 msgstr "Messire Cadaeus"
@@ -2129,7 +2132,7 @@ msgstr "Trolls"
 msgid "Become a Lich"
 msgstr "Devenir une liche"
 
-#. [unit]: type=Ancient Wose
+#. [unit]: type=Ancient Wose, id=Dumdumbadoom
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:251
 msgid "Dumdumbadoom"
 msgstr "Dumdumbadoum"
@@ -2220,8 +2223,8 @@ msgstr ""
 msgid "by emptiness."
 msgstr "... par le vide."
 
-#. [side]: type=Lich
-#. [unit]: type=Lich DiD
+#. [side]: type=Lich, id=Mal Keshar
+#. [unit]: type=Lich DiD, id=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:32
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:393
 msgid "Mal Keshar"
@@ -2305,7 +2308,7 @@ msgstr ""
 msgid "AAAAAAAaaaaaaaggggggghhhhhhh!!!!...... . . . ."
 msgstr "AAAAAAAaaaaaaaggggggghhhhhhh !!!! ...... . . . ."
 
-#. [scenario]
+#. [scenario]: id=Endless_Night
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:6
 msgid "Endless Night"
 msgstr "Une nuit sans fin"
@@ -2339,11 +2342,11 @@ msgstr ""
 msgid "Defeat the foolish hero"
 msgstr "Battre le héros stupide."
 
-#. [unit]: type=Royal Guard
-#. [unit]: type=Assassin
-#. [unit]: type=Elvish Marshal
-#. [unit]: type=Dwarvish Lord
-#. [unit]: type=Orcish Warlord
+#. [unit]: type=Royal Guard, id=Foolish Hero
+#. [unit]: type=Assassin, id=Foolish Hero
+#. [unit]: type=Elvish Marshal, id=Foolish Hero
+#. [unit]: type=Dwarvish Lord, id=Foolish Hero
+#. [unit]: type=Orcish Warlord, id=Foolish Hero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:130
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:153
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:171
@@ -2502,12 +2505,12 @@ msgstr ""
 msgid "No, I suppose it does not."
 msgstr "Rien, je suppose."
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Apprentice Mage, race=human
 #: data/campaigns/Descent_Into_Darkness/units/apprentice-mage.cfg:4
 msgid "Apprentice Mage"
 msgstr "Apprenti mage"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Apprentice Mage, race=human
 #: data/campaigns/Descent_Into_Darkness/units/apprentice-mage.cfg:19
 msgid ""
 "Trained in swordsmanship as a boy and the magical arts as a young man, Malin "
@@ -2529,12 +2532,12 @@ msgstr "épée courte"
 msgid "magic blast"
 msgstr "rafale magique"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Apprentice Necromancer, race=human
 #: data/campaigns/Descent_Into_Darkness/units/apprentice-necromancer.cfg:4
 msgid "Apprentice Necromancer"
 msgstr "Apprenti nécromancien"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Apprentice Necromancer, race=human
 #: data/campaigns/Descent_Into_Darkness/units/apprentice-necromancer.cfg:18
 msgid ""
 "Despite his increased magical powers, Malin holds on to his short sword as "
@@ -2555,12 +2558,12 @@ msgstr "onde glaciale"
 msgid "shadow wave"
 msgstr "onde obscure"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Dark Mage, race=human
 #: data/campaigns/Descent_Into_Darkness/units/dark-mage.cfg:4
 msgid "Dark Mage"
 msgstr "Mage des ténèbres"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Dark Mage, race=human
 #: data/campaigns/Descent_Into_Darkness/units/dark-mage.cfg:18
 msgid ""
 "Although Malin's sword has grown rusty from lack of proper care, his "
@@ -2569,12 +2572,12 @@ msgstr ""
 "Bien que l'épée de Malin soit devenue rouillée à cause de son manque "
 "d'entretien, son talent grandissant avec la magie fait plus que compenser."
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Frontier Baroness, race=human
 #: data/campaigns/Descent_Into_Darkness/units/frontier-baroness.cfg:6
 msgid "female^Frontier Baroness"
 msgstr "Baronne de la frontière"
 
-#. [unit_type]: race=human
+#. [unit_type]: id=Frontier Baroness, race=human
 #: data/campaigns/Descent_Into_Darkness/units/frontier-baroness.cfg:24
 msgid ""
 "On the frontiers of Wesnoth, all able-bodied men and women must be able to "
@@ -2600,12 +2603,12 @@ msgstr "bâton"
 msgid "sling"
 msgstr "fronde"
 
-#. [unit_type]: race=undead
+#. [unit_type]: id=Ghast, race=undead
 #: data/campaigns/Descent_Into_Darkness/units/ghast.cfg:4
 msgid "Ghast"
 msgstr "Blafard"
 
-#. [unit_type]: race=undead
+#. [unit_type]: id=Ghast, race=undead
 #: data/campaigns/Descent_Into_Darkness/units/ghast.cfg:21
 msgid ""
 "The ghast is a creature taken from humankind's most primal nightmares. "
@@ -2629,12 +2632,12 @@ msgstr ""
 msgid "bite"
 msgstr "morsure"
 
-#. [unit_type]: race=monster
+#. [unit_type]: id=Giant Rat, race=monster
 #: data/campaigns/Descent_Into_Darkness/units/giant-rat.cfg:4
 msgid "Giant Rat"
 msgstr "Rat géant"
 
-#. [unit_type]: race=monster
+#. [unit_type]: id=Giant Rat, race=monster
 #: data/campaigns/Descent_Into_Darkness/units/giant-rat.cfg:18
 #, fuzzy
 msgid ""
@@ -2678,7 +2681,7 @@ msgstr ""
 msgid "Then my battle against the orcs is lost!"
 msgstr "Alors ma bataille contre les orcs est perdue !"
 
-#. [terrain]
+#. [terrain]: id=door
 #: data/campaigns/Descent_Into_Darkness/utils/terrain.cfg:7
 msgid "Door"
 msgstr "Porte"

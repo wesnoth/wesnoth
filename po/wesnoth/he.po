@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-27 19:52+0100\n"
+"POT-Creation-Date: 2008-11-29 12:23+0100\n"
 "PO-Revision-Date: 2006-02-13 01:20+0200\n"
 "Last-Translator: Ely Levy <nakeee@gmail.com>\n"
 "Language-Team: Hebrew\n"
@@ -58,8 +58,8 @@ msgstr "הצג קרב"
 msgid "Only Run Safe Python AIs"
 msgstr ""
 
-#. [time]
-#. [illuminated_time]
+#. [time]: id=underground
+#. [illuminated_time]: id=underground_illum
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:523
 #: data/core/macros/schedules.cfg:77 data/core/macros/schedules.cfg:84
 msgid "Underground"
@@ -72,13 +72,13 @@ msgstr "מתחת לאדמה"
 msgid "poisoned"
 msgstr "מורעל"
 
-#. [berserk]
+#. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:702
 #: data/core/macros/abilities.cfg:553
 msgid "berserk"
 msgstr "משוגע"
 
-#. [berserk]
+#. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:704
 #: data/core/macros/abilities.cfg:555
 msgid ""
@@ -90,13 +90,13 @@ msgstr ""
 "בלי קשר לאם היחידה השתמשה בהתקפה זו להגנה או לתקיפה, היא תמשיך את הקרב עד "
 "שאחד מהנלחמים ימות, או עד שיעברו 30 סיבובי התקפות."
 
-#. [chance_to_hit]
+#. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:717
 #: data/core/macros/abilities.cfg:639
 msgid "magical"
 msgstr "קסום"
 
-#. [chance_to_hit]
+#. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:719
 #: data/core/macros/abilities.cfg:641
 #, fuzzy
@@ -108,13 +108,13 @@ msgstr ""
 "קסומה:\n"
 "להתקפה זו יש תמיד סיכוי של 70% לפגוע."
 
-#. [firststrike]
+#. [firststrike]: id=firststrike
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:731
 #: data/core/macros/abilities.cfg:688
 msgid "firststrike"
 msgstr "תקיפה ראשונה"
 
-#. [firststrike]
+#. [firststrike]: id=firststrike
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:733
 #: data/core/macros/abilities.cfg:690
 msgid ""
@@ -125,21 +125,21 @@ msgstr ""
 "יחידה זו תמיד מקבלת את ניסיון הפגיעה הראשון עם התקפה זו, אפילו בזמן שהיא "
 "מגנה."
 
-#. [heals]
+#. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:13
 #: data/core/macros/abilities.cfg:10
 #, fuzzy
 msgid "heals +4"
 msgstr "טיפול בפצעים"
 
-#. [heals]
+#. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:14
 #: data/core/macros/abilities.cfg:11
 #, fuzzy
 msgid "female^heals +4"
 msgstr "גנבת"
 
-#. [heals]
+#. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:19
 #: data/core/macros/abilities.cfg:16
 #, fuzzy
@@ -160,21 +160,21 @@ msgstr ""
 "יחידה מורעלת לא יכולה להרפא מהרעל על ידי מטפל, וחייבת לחפש תרופה לרעל בכפר "
 "או מיחידה עם יכולת ריפוי."
 
-#. [heals]
+#. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:42
 #: data/core/macros/abilities.cfg:30
 #, fuzzy
 msgid "heals +8"
 msgstr "טיפול בפצעים"
 
-#. [heals]
+#. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:43
 #: data/core/macros/abilities.cfg:31
 #, fuzzy
 msgid "female^heals +8"
 msgstr "גנבת"
 
-#. [heals]
+#. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:48
 #: data/core/macros/abilities.cfg:36
 #, fuzzy
@@ -242,273 +242,273 @@ msgid "Campaign Design"
 msgstr "מערכה"
 
 #. [about]
-#: data/core/about.cfg:594
+#: data/core/about.cfg:602
 #, fuzzy
 msgid "Multiplayer Maps and Balancing"
 msgstr "מפות למשחק רב משתתפים"
 
 #. [about]
-#: data/core/about.cfg:635
+#: data/core/about.cfg:643
 msgid "Packagers"
 msgstr "אורזי חבילות"
 
 #. [about]
-#: data/core/about.cfg:701
+#: data/core/about.cfg:709
 #, fuzzy
 msgid "Miscellaneous contributors"
 msgstr "שונות"
 
 #. [about]
-#: data/core/about.cfg:855
+#: data/core/about.cfg:863
 msgid "Internationalization Managers"
 msgstr "מנהלי תרגום"
 
 #. [about]
-#: data/core/about.cfg:880
+#: data/core/about.cfg:888
 #, fuzzy
 msgid "English strings edition"
 msgstr "תרגום לאנגלית (אנגליה)"
 
 #. [about]
-#: data/core/about.cfg:887
+#: data/core/about.cfg:895
 msgid "Afrikaans Translation"
 msgstr "תרגום לאפריקנית"
 
 #. [about]
-#: data/core/about.cfg:903
+#: data/core/about.cfg:911
 #, fuzzy
 msgid "Arabic Translation"
 msgstr "תרגום לסרבית"
 
 #. [about]
-#: data/core/about.cfg:910
+#: data/core/about.cfg:918
 msgid "Basque Translation"
 msgstr "תרגום לבסקית"
 
 #. [about]
-#: data/core/about.cfg:923
+#: data/core/about.cfg:931
 msgid "Bulgarian Translation"
 msgstr "תרגום לבולגרית"
 
 #. [about]
-#: data/core/about.cfg:942
+#: data/core/about.cfg:950
 msgid "Catalan Translation"
 msgstr "תרגום לקטאלאנית"
 
 #. [about]
-#: data/core/about.cfg:980
+#: data/core/about.cfg:988
 msgid "Chinese Translation"
 msgstr "תרגום לסינית"
 
 #. [about]
-#: data/core/about.cfg:1014
+#: data/core/about.cfg:1022
 #, fuzzy
 msgid "Chinese (Taiwan) Translation"
 msgstr "תרגום לסינית"
 
 #. [about]
-#: data/core/about.cfg:1021
+#: data/core/about.cfg:1029
 #, fuzzy
 msgid "Croatian Translation"
 msgstr "תרגום לקטאלאנית"
 
 #. [about]
-#: data/core/about.cfg:1028
+#: data/core/about.cfg:1036
 msgid "Czech Translation"
 msgstr "תרגום לצ'כית"
 
 #. [about]
-#: data/core/about.cfg:1085
+#: data/core/about.cfg:1093
 msgid "Danish Translation"
 msgstr "תרגום לדנית"
 
 #. [about]
-#: data/core/about.cfg:1116
+#: data/core/about.cfg:1124
 msgid "Dutch Translation"
 msgstr "תרגום להולנדית"
 
 #. [about]
-#: data/core/about.cfg:1169
+#: data/core/about.cfg:1177
 msgid "English (GB) Translation"
 msgstr "תרגום לאנגלית (אנגליה)"
 
 #. [about]
-#: data/core/about.cfg:1179
+#: data/core/about.cfg:1187
 msgid "Esperanto Translation"
 msgstr "תרגום לאספרנטו"
 
 #. [about]
-#: data/core/about.cfg:1198
+#: data/core/about.cfg:1206
 msgid "Estonian Translation"
 msgstr "תרגום לאסטונית"
 
 #. [about]
-#: data/core/about.cfg:1208
+#: data/core/about.cfg:1216
 #, fuzzy
 msgid "Filipino Translation"
 msgstr "תרגום לפינית"
 
 #. [about]
-#: data/core/about.cfg:1218
+#: data/core/about.cfg:1226
 msgid "Finnish Translation"
 msgstr "תרגום לפינית"
 
 #. [about]
-#: data/core/about.cfg:1258
+#: data/core/about.cfg:1266
 msgid "French Translation"
 msgstr "תרגום לצרפתית"
 
 #. [about]
-#: data/core/about.cfg:1381
+#: data/core/about.cfg:1389
 #, fuzzy
 msgid "Friulian Translation"
 msgstr "תרגום לפינית"
 
 #. [about]
-#: data/core/about.cfg:1388
+#: data/core/about.cfg:1396
 #, fuzzy
 msgid "Galician Translation"
 msgstr "תרגום לסלובנית"
 
 #. [about]
-#: data/core/about.cfg:1423
+#: data/core/about.cfg:1431
 msgid "German Translation"
 msgstr "תרגום לגרמנית"
 
 #. [about]
-#: data/core/about.cfg:1471
+#: data/core/about.cfg:1479
 msgid "Greek Translation"
 msgstr "תרגום ליוונית"
 
 #. [about]
-#: data/core/about.cfg:1502
+#: data/core/about.cfg:1510
 msgid "Hebrew Translation"
 msgstr "תרגום לעברית"
 
 #. [about]
-#: data/core/about.cfg:1512
+#: data/core/about.cfg:1520
 msgid "Hungarian Translation"
 msgstr "תרגום להונגרית"
 
 #. [about]
-#: data/core/about.cfg:1582
+#: data/core/about.cfg:1590
 msgid "Indonesian Translation"
 msgstr "תרגום לאינדונזית"
 
 #. [about]
-#: data/core/about.cfg:1589
+#: data/core/about.cfg:1597
 msgid "Italian Translation"
 msgstr "תרגום לאיטלקית"
 
 #. [about]
-#: data/core/about.cfg:1624
+#: data/core/about.cfg:1632
 msgid "Japanese Translation"
 msgstr "תרגום ליפנית"
 
 #. [about]
-#: data/core/about.cfg:1650
+#: data/core/about.cfg:1658
 #, fuzzy
 msgid "Korean Translation"
 msgstr "תרגום לנורווגית"
 
 #. [about]
-#: data/core/about.cfg:1657
+#: data/core/about.cfg:1665
 msgid "Latin Translation"
 msgstr "תרגום ללטינית"
 
 #. [about]
-#: data/core/about.cfg:1664
+#: data/core/about.cfg:1672
 #, fuzzy
 msgid "Latvian Translation"
 msgstr "תרגום ללטינית"
 
 #. [about]
-#: data/core/about.cfg:1671
+#: data/core/about.cfg:1679
 #, fuzzy
 msgid "Lithuanian Translation"
 msgstr "תרגום לאיטלקית"
 
 #. [about]
-#: data/core/about.cfg:1679
+#: data/core/about.cfg:1687
 #, fuzzy
 msgid "Macedonian Translation"
 msgstr "תרגום לאינדונזית"
 
 #. [about]
-#: data/core/about.cfg:1686
+#: data/core/about.cfg:1694
 msgid "Norwegian Translation"
 msgstr "תרגום לנורווגית"
 
 #. [about]
-#: data/core/about.cfg:1708
+#: data/core/about.cfg:1716
 msgid "Polish Translation"
 msgstr "תרגום לפולנית"
 
 #. [about]
-#: data/core/about.cfg:1757
+#: data/core/about.cfg:1765
 msgid "Portuguese Translation"
 msgstr "תרגום לפורטוגזית"
 
 #. [about]
-#: data/core/about.cfg:1764
+#: data/core/about.cfg:1772
 msgid "Portuguese (Brazil) Translation"
 msgstr "תרגום לפורטוגזית (ברזיל)"
 
 #. [about]
-#: data/core/about.cfg:1799
+#: data/core/about.cfg:1807
 #, fuzzy
 msgid "Romanian Translation"
 msgstr "תרגום לאסטונית"
 
 #. [about]
-#: data/core/about.cfg:1807
+#: data/core/about.cfg:1815
 msgid "Russian Translation"
 msgstr "תרגום לרוסית"
 
 #. [about]
-#: data/core/about.cfg:1843
+#: data/core/about.cfg:1851
 msgid "Serbian Translation"
 msgstr "תרגום לסרבית"
 
 #. [about]
-#: data/core/about.cfg:1858
+#: data/core/about.cfg:1866
 msgid "Slovak Translation"
 msgstr "תרגום לסלובקית"
 
 #. [about]
-#: data/core/about.cfg:1884
+#: data/core/about.cfg:1892
 msgid "Slovenian Translation"
 msgstr "תרגום לסלובנית"
 
 #. [about]
-#: data/core/about.cfg:1894
+#: data/core/about.cfg:1902
 msgid "Spanish Translation"
 msgstr "תרגום לספרדית"
 
 #. [about]
-#: data/core/about.cfg:1942
+#: data/core/about.cfg:1950
 msgid "Swedish Translation"
 msgstr "תרגום לשוודית"
 
 #. [about]
-#: data/core/about.cfg:1971
+#: data/core/about.cfg:1979
 msgid "Turkish Translation"
 msgstr "תרגום לתורכית"
 
 #. [about]
-#: data/core/about.cfg:1993
+#: data/core/about.cfg:2001
 #, fuzzy
 msgid "Valencian (southern Catalan) Translation"
 msgstr "תרגום לסלובנית"
 
 #. [about]
-#: data/core/about.cfg:2006
+#: data/core/about.cfg:2014
 #, fuzzy
 msgid "RACV's Translation"
 msgstr "תרגום לסינית"
 
 #. [about]
-#: data/core/about.cfg:2013
+#: data/core/about.cfg:2021
 msgid "Bots"
 msgstr "בוטים"
 
@@ -518,57 +518,57 @@ msgstr "בוטים"
 msgid "DejaVuSans.ttf,sazanami-gothic.ttf,wqy-zenhei-gb2312.ttf"
 msgstr "DejaVuSans.ttf,sazanami-gothic.ttf,gkai00mp.ttf "
 
-#. [section]
-#. [topic]
+#. [section]: id=introduction
+#. [topic]: id=..introduction
 #: data/core/help.cfg:21 data/core/help.cfg:80
 msgid "Introduction"
 msgstr "מבוא"
 
-#. [section]
-#. [topic]
+#. [section]: id=gameplay
+#. [topic]: id=..gameplay
 #: data/core/help.cfg:27 data/core/help.cfg:128
 msgid "Gameplay"
 msgstr "אפשרויות משחק"
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
-#. [section]
-#. [topic]
+#. [section]: id=traits_section
+#. [topic]: id=..traits_section
 #: data/core/help.cfg:33 data/core/help.cfg:348 src/menu_events.cpp:991
 msgid "Traits"
 msgstr "מאפיינים"
 
-#. [section]
-#. [topic]
+#. [section]: id=units
+#. [topic]: id=..units
 #: data/core/help.cfg:42 data/core/help.cfg:86
 msgid "Units"
 msgstr "יחידות"
 
-#. [section]
-#. [topic]
+#. [section]: id=abilities_section
+#. [topic]: id=..abilities_section
 #: data/core/help.cfg:51 data/core/help.cfg:92
 msgid "Abilities"
 msgstr "יכולות"
 
-#. [section]
-#. [topic]
+#. [section]: id=weapon_specials
+#. [topic]: id=..weapon_specials
 #: data/core/help.cfg:59 data/core/help.cfg:101
 msgid "Weapon Specials"
 msgstr "שימושים מיוחדים בנשק"
 
-#. [section]
-#. [topic]
+#. [section]: id=terrains
+#. [topic]: id=..terrains
 #: data/core/help.cfg:67 data/core/help.cfg:440
 msgid "Terrains"
 msgstr "סוגי שטח"
 
-#. [section]
-#. [topic]
+#. [section]: id=commands
+#. [topic]: id=..commands
 #: data/core/help.cfg:74 data/core/help.cfg:730
 #, fuzzy
 msgid "Commands"
 msgstr "מפקד"
 
-#. [topic]
+#. [topic]: id=..abilities_section
 #: data/core/help.cfg:95
 #, fuzzy
 msgid ""
@@ -581,7 +581,7 @@ msgstr ""
 "על האופן בו היחידה פועלת עם יחידות אחרות. יכולות אלו יהיו רשומות,  כשתפגוש "
 "בהם, תחת הכותרת הזו."
 
-#. [topic]
+#. [topic]: id=..weapon_specials
 #: data/core/help.cfg:104
 msgid ""
 "Some weapons have special features that increase the effectiveness of "
@@ -589,13 +589,13 @@ msgid ""
 "\n"
 msgstr ""
 
-#. [topic]
+#. [topic]: id=.unknown_unit
 #: data/core/help.cfg:111
 #, fuzzy
 msgid "Unknown Unit"
 msgstr "תרחיש לא ידוע"
 
-#. [topic]
+#. [topic]: id=.unknown_unit
 #: data/core/help.cfg:114
 msgid ""
 "\n"
@@ -604,12 +604,12 @@ msgid ""
 "allowed to see its description."
 msgstr ""
 
-#. [topic]
+#. [topic]: id=introduction_topic
 #: data/core/help.cfg:119
 msgid "Overview"
 msgstr "סקירה כללית"
 
-#. [topic]
+#. [topic]: id=introduction_topic
 #: data/core/help.cfg:122
 msgid ""
 "\n"
@@ -627,12 +627,12 @@ msgstr ""
 "לפשטות גם בחוקים וגם במשחקיות. זה לא הופך את המשחק לפשוט, מתוך החוקים "
 "הפשוטים הללו צומח עושר אסטרטגי, כך שהמשחק פשוט ללמידה אבל אתגר למומחה."
 
-#. [topic]
+#. [topic]: id=fundamentals
 #: data/core/help.cfg:134
 msgid "Fundamentals of Gameplay"
 msgstr "יסודות המשחק"
 
-#. [topic]
+#. [topic]: id=fundamentals
 #: data/core/help.cfg:135
 msgid ""
 "These pages outline all you need to know to play Battle for Wesnoth. They "
@@ -646,7 +646,7 @@ msgstr ""
 "יתווסף לדפים האלה כאשר תתקל בצדדים חדשים של המשחק. למידע יותר מפורט על מצבים "
 "מיוחדים ודברים יוצאי דופן, אנא עקוב אחרי הקישור המצורף."
 
-#. [topic]
+#. [topic]: id=fundamentals
 #: data/core/help.cfg:137
 msgid ""
 "\n"
@@ -667,7 +667,7 @@ msgstr ""
 "מכיוון שהקרב על ווסנות' יכול להיות מאד מאתגר, יכול להיות שתרצה להתחיל מ - "
 "<italic>text=קל</italic>."
 
-#. [topic]
+#. [topic]: id=fundamentals
 #: data/core/help.cfg:140
 #, fuzzy
 msgid ""
@@ -681,12 +681,12 @@ msgstr ""
 "מוצג תאור קצר, שמסביר את הפריט, כאשר הסמן נמצא מעליו. הדבר שימושי במיוחד "
 "כאשר אתה נתקל ב  <ref>dst=abilities text=יכולות</ref>  חדשות בפעם הראשונה."
 
-#. [topic]
+#. [topic]: id=about_game
 #: data/core/help.cfg:145
 msgid "About the Game"
 msgstr "אודות המשחק"
 
-#. [topic]
+#. [topic]: id=about_game
 #: data/core/help.cfg:146
 msgid ""
 "The game takes place over a series of battles, called scenarios. Each "
@@ -703,7 +703,7 @@ msgstr ""
 "יכול לשחק מול אנשים אחרים ברשת. אם המחשב שלך מחובר לאיטרנט אתה יכול לשחק מול "
 "אנשים אחרים באינטרנט."
 
-#. [topic]
+#. [topic]: id=about_game
 #: data/core/help.cfg:148
 msgid ""
 "\n"
@@ -719,12 +719,12 @@ msgstr ""
 "לעיתים קרובות אתה צריך לשחק ביתר זהירות,  תוך שמרה על היחידות הטובות ביותר "
 "שלך כך שאפשר יהיה להשתמש בהם בתרחישים מאוחרים יותר במערכה."
 
-#. [topic]
+#. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:154
 msgid "Victory and Defeat"
 msgstr ""
 
-#. [topic]
+#. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:155
 msgid ""
 "Pay careful attention to the Objectives pop-up box at the beginning of each "
@@ -735,7 +735,7 @@ msgid ""
 "a certain number of turns have elapsed."
 msgstr ""
 
-#. [topic]
+#. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:157
 msgid ""
 "\n"
@@ -746,12 +746,12 @@ msgid ""
 "before pressing that button to advance."
 msgstr ""
 
-#. [topic]
+#. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:164
 msgid "Recruiting and Recalling"
 msgstr "גיוס והחזרה"
 
-#. [topic]
+#. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:165
 #, fuzzy
 msgid ""
@@ -775,7 +775,7 @@ msgstr ""
 "עלות הגיוס בזהב. לחץ על יחידה כדי לראות את הסטטיסטיקות שלה, ואז לחץ על גיוס "
 "כדי לגייס אותה."
 
-#. [topic]
+#. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:167
 msgid ""
 "\n"
@@ -792,7 +792,7 @@ msgstr ""
 "היותר כמספר המשושים החופשיים בטירה שלך, אתה לא יכול להשקיע בגיוס יותר זהב "
 "ממה שיש לך."
 
-#. [topic]
+#. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:169
 #, fuzzy
 msgid ""
@@ -806,7 +806,7 @@ msgstr ""
 "יחידות מגוייסות מגיעות עם שני <ref>dst=traits text='מאפיינים'</ref> אקראיים "
 "שמשנים את הסטטיסטקות שלהן."
 
-#. [topic]
+#. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:171
 msgid ""
 "\n"
@@ -820,7 +820,7 @@ msgstr ""
 "בתרחישים מאוחרים, אתה יכול להחזיר יחידות ששרדו קרבות קודמים. החזרה עולה 20 "
 "זהב קבועים ומציגה לך רשימה של כל היחידות ששרדו מתרחישים קודמים."
 
-#. [topic]
+#. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:173
 #, fuzzy
 msgid ""
@@ -835,12 +835,12 @@ msgstr ""
 "יחידות לא רק עולות כסף לגיוס והחזרה, הן גם זקוקות לתמיכה כספית. למידע נוסף "
 "ראה <ref>dst=income_and_upkeep text='הכנסה ואחזקה'</ref>."
 
-#. [topic]
+#. [topic]: id=orbs
 #: data/core/help.cfg:180
 msgid "Orbs"
 msgstr "כדורים"
 
-#. [topic]
+#. [topic]: id=orbs
 #: data/core/help.cfg:181
 msgid ""
 "On top of the energy bar shown next to each unit of yours is an orb. For "
@@ -849,37 +849,37 @@ msgstr ""
 "בראש מד האנרגיה שמוצג ליד כל יחידה שלך יש כדור. ליחידות בהן אתה שולט, הכדור "
 "הוא:"
 
-#. [topic]
+#. [topic]: id=orbs
 #: data/core/help.cfg:182
 msgid "green if it hasn't moved this turn,"
 msgstr "ירוק אם היא לא זזה בתור הנוכחי. "
 
-#. [topic]
+#. [topic]: id=orbs
 #: data/core/help.cfg:183
 msgid "yellow if it has moved, but could still move further or attack, or"
 msgstr "צהוב אם היא זזה, אבל עדיין יכולה להמשיך לזוז או לתקוף, או"
 
-#. [topic]
+#. [topic]: id=orbs
 #: data/core/help.cfg:184
 msgid "red if it has used all its movement this turn."
 msgstr "או אדום אם היא השתמשה בכל נקודות התנועה שלה לתור הנוכחי."
 
-#. [topic]
+#. [topic]: id=orbs
 #: data/core/help.cfg:185
 msgid "The orb is blue if the unit is an ally you do not control."
 msgstr "הכדור כחול אם היחידה היא בעלת ברית ואין לך שליטה עליה."
 
-#. [topic]
+#. [topic]: id=orbs
 #: data/core/help.cfg:186
 msgid "Enemy units have no orb on top of their energy bar."
 msgstr "ליחידות אוייב אין כדור בראש מד האנרגיה."
 
-#. [topic]
+#. [topic]: id=hitpoints
 #: data/core/help.cfg:193
 msgid "Hitpoints and Experience"
 msgstr "נקודות פגיעה ונקודות ניסיון"
 
-#. [topic]
+#. [topic]: id=hitpoints
 #: data/core/help.cfg:194
 msgid ""
 "Each unit has a certain number of hitpoints (HP). If the hitpoints of a unit "
@@ -892,7 +892,7 @@ msgstr ""
 "(נק\"נ). ליחידה שרק גוייסה מתחילה ללא נקודות ניסיון, ומקבלת ניסיון על ידי "
 "לחימה באוייבים."
 
-#. [topic]
+#. [topic]: id=hitpoints
 #: data/core/help.cfg:198
 msgid ""
 "The hitpoints and experience points are both indicated in the status pane "
@@ -902,7 +902,7 @@ msgstr ""
 "גם נקודות הפגיעה וגם נקודות הניסיון מוצגות בחלונית המצב תוך שימוש בשני "
 "מספרים (הערך הנוכחי והערך המרבי שיכול להיות ליחידה)."
 
-#. [topic]
+#. [topic]: id=hitpoints
 #: data/core/help.cfg:199
 #, fuzzy
 msgid ""
@@ -916,12 +916,12 @@ msgstr ""
 "ככל שהיחידה מתקרבת ל - <ref>dst=experience_and_advancement text=התקדמות</"
 "ref>."
 
-#. [topic]
+#. [topic]: id=movement
 #: data/core/help.cfg:206
 msgid "Movement"
 msgstr "תנועה"
 
-#. [topic]
+#. [topic]: id=movement
 #: data/core/help.cfg:207
 msgid ""
 "Movement in Battle for Wesnoth is simple. Click on the unit you wish to move "
@@ -949,7 +949,7 @@ msgstr ""
 "בכפר שעדיין לא בשליטתך תשתמש גם בכל נקודות התנועה של היחידה, אבל היא עדיין "
 "תוכל להתקיף."
 
-#. [topic]
+#. [topic]: id=movement
 #: data/core/help.cfg:209
 msgid ""
 "\n"
@@ -975,7 +975,7 @@ msgstr ""
 "ימנית עליה, בחירת תאור יחידה, ואז הסתכל תחת <italic>text='התאמות שטח'</"
 "italic>."
 
-#. [topic]
+#. [topic]: id=movement
 #: data/core/help.cfg:211
 #, fuzzy
 msgid ""
@@ -996,7 +996,7 @@ msgstr ""
 "מווסנות', בגלל שרק <ref>dst=ability_skirmisher text='מסתננות'</ref> יכולות "
 "להתעלם מאזורי השליטה."
 
-#. [topic]
+#. [topic]: id=movement
 #: data/core/help.cfg:213
 msgid ""
 "\n"
@@ -1011,12 +1011,12 @@ msgstr ""
 "Ctrl-b או Cmd-b תראה לאן האוייב יכל לזוז, אם היחידות שלך לא היו על המפה "
 "לחסום את התקדמותו."
 
-#. [topic]
+#. [topic]: id=shroud_and_fog
 #: data/core/help.cfg:220
 msgid "Shroud and Fog of War"
 msgstr "הסתרה וערפל קרב"
 
-#. [topic]
+#. [topic]: id=shroud_and_fog
 #: data/core/help.cfg:223
 #, fuzzy
 msgid ""
@@ -1048,12 +1048,12 @@ msgstr ""
 "המיקומים אליהם היא יכולה להגיע תוך תור אחד, (תוך התעלמות מאזורי שליטה "
 "ויחידות אוייב), ואת המיקומים שצמודים למקומים אילו."
 
-#. [topic]
+#. [topic]: id=combat
 #: data/core/help.cfg:230
 msgid "Combat"
 msgstr "לחימה"
 
-#. [topic]
+#. [topic]: id=combat
 #: data/core/help.cfg:231
 msgid ""
 "Combat in Battle for Wesnoth always takes place between units in adjacent "
@@ -1075,7 +1075,7 @@ msgstr ""
 "והתקפה לטווח רחוק שבדרך כלל כרוכה בשימוש בכלי נשק כמו קשתות, חניתות או כדורי "
 "אש."
 
-#. [topic]
+#. [topic]: id=combat
 #: data/core/help.cfg:233
 msgid ""
 "\n"
@@ -1086,7 +1086,7 @@ msgstr ""
 "\n"
 "<header>text='סדר ניסיונות הפגיעה ומספרם'</header>"
 
-#. [topic]
+#. [topic]: id=combat
 #: data/core/help.cfg:235
 msgid ""
 "\n"
@@ -1108,7 +1108,7 @@ msgstr ""
 "לנסות לפגוע 4 פעמים, וכל ניסיון פגיעה מוצלח יגרום 5 נזק, בעוד שלוחם אורקי "
 "פשוט עם התקפה 9-2 יכול לנסות לפגוע רק פעמיים (אבל יגרום 9 נזק בכל פגיעה)."
 
-#. [topic]
+#. [topic]: id=combat
 #: data/core/help.cfg:237
 msgid ""
 "\n"
@@ -1119,7 +1119,7 @@ msgstr ""
 "\n"
 "<header>text='סיכויי פגיעה'</header>"
 
-#. [topic]
+#. [topic]: id=combat
 #: data/core/help.cfg:239
 msgid ""
 "\n"
@@ -1139,7 +1139,7 @@ msgstr ""
 "יחידה, ואז תחת <italic>text='התאמות שטח'</italic>. לדוגמה, להרבה אלפים יש "
 "דירוג הגנה של 70% ביער, כלומר ליחידה שמתקיפה אותם יש רק סיכוי של 30% לפגוע."
 
-#. [topic]
+#. [topic]: id=combat
 #: data/core/help.cfg:241
 #, fuzzy
 msgid ""
@@ -1158,7 +1158,7 @@ msgstr ""
 "קסומות יש תמיד סיכוי של 70% לפגוע, בלי קשר לסוג השטח, וכאשר הוא המתקיף, יש "
 "לצלף תמיד 60% לפגוע, בלי קשר לסוג השטח."
 
-#. [topic]
+#. [topic]: id=combat
 #: data/core/help.cfg:243
 msgid ""
 "\n"
@@ -1169,7 +1169,7 @@ msgstr ""
 "\n"
 "<header>text=נזק</header>"
 
-#. [topic]
+#. [topic]: id=combat
 #: data/core/help.cfg:245
 #, fuzzy
 msgid ""
@@ -1192,7 +1192,7 @@ msgstr ""
 "על ידי הנסיבות, בחר ב<italic>text='חישובי נזק'</italic> בתפריט הבחירה של "
 "ההתקפה."
 
-#. [topic]
+#. [topic]: id=combat
 #: data/core/help.cfg:247
 #, fuzzy
 msgid ""
@@ -1210,12 +1210,12 @@ msgstr ""
 "text=הסתערות</ref>, שמכפילה את הנזק שנגרם גם ע\"י המתקיף  וגם ע\"י המגן כאשר "
 "היחידה עם הסתערות מתקיפה."
 
-#. [topic]
+#. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:253
 msgid "Damage Types and Resistance"
 msgstr "סוגי נזק ועמידות"
 
-#. [topic]
+#. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:254
 #, fuzzy
 msgid ""
@@ -1230,7 +1230,7 @@ msgstr ""
 "אש, קור וקדוש. ליחידות שונות יכולות להיות עמידויות שישנו את כמות הנזק שיגרם "
 "להן מסוגי נזק מסויימים."
 
-#. [topic]
+#. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:256
 msgid ""
 "\n"
@@ -1248,7 +1248,7 @@ msgstr ""
 "תהייה פגיעה יותר לסוגי נזק מסויימים. אם יש ליחידה -100% עמידות נגד סוג נזק, "
 "היא תספוג 100% יותר נזק כאשר תפגע מסוג נזק זה."
 
-#. [topic]
+#. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:258
 #, fuzzy
 msgid ""
@@ -1263,7 +1263,7 @@ msgstr ""
 "לדוגמה, לשלדים יש עמידות גבוהה כנגד נזק להב וחודרני, אבל הם פגיעים לנזק אש "
 "וריסוק, ומאוד פגיעים לנזק קדוש."
 
-#. [topic]
+#. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:260
 msgid ""
 "\n"
@@ -1277,12 +1277,12 @@ msgstr ""
 "אם ניסיון הפגיעה מוצלח, הוא תמיד יגרום לפחות נקודת נזק אחת. הדבר תופס גם אם "
 "למגן יש 100% עמידות לסוג זה של נזק."
 
-#. [topic]
+#. [topic]: id=time_of_day
 #: data/core/help.cfg:266
 msgid "Time of Day"
 msgstr "זמן ביום"
 
-#. [topic]
+#. [topic]: id=time_of_day
 #: data/core/help.cfg:270
 msgid ""
 "The time of day affects the damage of certain units as follows:\n"
@@ -1295,7 +1295,7 @@ msgstr ""
 "יחידות תוהו מקבלות +25% לנזק בלילה  ו -25% לנזק ביום.\n"
 "יחידות נטראליות לא מושפעות מהזמן ביום."
 
-#. [topic]
+#. [topic]: id=time_of_day
 #: data/core/help.cfg:273
 msgid ""
 "\n"
@@ -1310,55 +1310,55 @@ msgstr ""
 "מחזור היום\\לילה הרגיל, בוקר ואחה\"צ נחשבים כיום, המשמרת הראשונה והשניה "
 "נחשבות כלילה:\n"
 
-#. [time]
-#. [topic]
+#. [time]: id=dawn
+#. [topic]: id=time_of_day
 #: data/core/help.cfg:273 data/core/macros/schedules.cfg:7
 msgid "Dawn"
 msgstr "שחר"
 
-#. [time]
-#. [topic]
+#. [time]: id=morning
+#. [topic]: id=time_of_day
 #: data/core/help.cfg:274 data/core/macros/schedules.cfg:19
 msgid "Morning"
 msgstr "בוקר"
 
-#. [time]
-#. [topic]
+#. [time]: id=afternoon
+#. [topic]: id=time_of_day
 #: data/core/help.cfg:275 data/core/macros/schedules.cfg:29
 msgid "Afternoon"
 msgstr "אחה\"צ"
 
-#. [time]
-#. [topic]
+#. [time]: id=dusk
+#. [topic]: id=time_of_day
 #: data/core/help.cfg:276 data/core/macros/schedules.cfg:39
 msgid "Dusk"
 msgstr "בין ערביים"
 
-#. [time]
-#. [topic]
+#. [time]: id=first_watch
+#. [topic]: id=time_of_day
 #: data/core/help.cfg:277 data/core/macros/schedules.cfg:51
 msgid "First Watch"
 msgstr "משמרת ראשונה"
 
-#. [time]
-#. [topic]
+#. [time]: id=second_watch
+#. [topic]: id=time_of_day
 #: data/core/help.cfg:278 data/core/macros/schedules.cfg:64
 msgid "Second Watch"
 msgstr "משמרת שניה"
 
-#. [topic]
+#. [topic]: id=time_of_day
 #: data/core/help.cfg:280
 msgid ""
 "Keep in mind that some scenarios take place underground, where it is "
 "perpetually night!"
 msgstr "שים לב שיש תרחישים שמתרחשים מתחת האדמה, ושם תמיד שורר לילה!"
 
-#. [topic]
+#. [topic]: id=experience_and_advancement
 #: data/core/help.cfg:287
 msgid "Experience and Advancement"
 msgstr "ניסיון והתקדמות"
 
-#. [topic]
+#. [topic]: id=experience_and_advancement
 #: data/core/help.cfg:288
 msgid ""
 "If both units survive a combat, they gain a number of experience points "
@@ -1370,7 +1370,7 @@ msgstr ""
 "היחידה בה הם נלחמים. אולם אם יחידה אחת הורגת את השניה בקרב, היא תזכה בהרבה "
 "יותר ניסיון - 4 ליחידה ברמה 0, 8 לרמה 1, 16 לרמה 2, 24 לרמה 3, וכו'."
 
-#. [topic]
+#. [topic]: id=experience_and_advancement
 #: data/core/help.cfg:290
 msgid ""
 "\n"
@@ -1386,7 +1386,7 @@ msgstr ""
 "דרושים 20% פחות). כאשר הן משיגות את הכמות הנדרשת, הן מתקדמות מיד לרמה הבאה, "
 "ומתרפאות באופן מלא בתהליך. בחלק מהמקרים ניתן לבחור בין אפשרויות קידום שונות."
 
-#. [topic]
+#. [topic]: id=experience_and_advancement
 #: data/core/help.cfg:292
 #, fuzzy
 msgid ""
@@ -1417,12 +1417,12 @@ msgstr ""
 "שים לב שרק מספר קטן של יחידות, כמו לדוגמה טורף גופות, באמת יתרפאו מהשפעת הקאד"
 "\"מ. רוב היחידות רק יזכו בבונוס לנק\"פ המירבי שלהן."
 
-#. [topic]
+#. [topic]: id=healing
 #: data/core/help.cfg:299
 msgid "Healing"
 msgstr "ריפוי"
 
-#. [topic]
+#. [topic]: id=healing
 #: data/core/help.cfg:300
 #, fuzzy
 msgid ""
@@ -1438,7 +1438,7 @@ msgstr ""
 "ווסנות' מציע מספר דרכים ליחידה שלך להתרפא, כאשר כולן מתרחשות בתחילת התור "
 "שלך, לפני שאתה מתחיל לפעול."
 
-#. [topic]
+#. [topic]: id=healing
 #: data/core/help.cfg:302
 #, fuzzy
 msgid ""
@@ -1451,7 +1451,7 @@ msgstr ""
 "\n"
 "מנוחה: יחידה שלא זזה ולא מתקיפה או מותקפת תתרפא ב - 2 נק\"פ בתור הבא."
 
-#. [topic]
+#. [topic]: id=healing
 #: data/core/help.cfg:303
 msgid ""
 "\n"
@@ -1460,7 +1460,7 @@ msgstr ""
 "\n"
 "כפר: יחידה שמתחילה את התור בכפר תתרפא ב- 8 נק\"פ."
 
-#. [topic]
+#. [topic]: id=healing
 #: data/core/help.cfg:304
 #, fuzzy
 msgid ""
@@ -1472,7 +1472,7 @@ msgstr ""
 "<ref>dst=ability_regenerates text=התחדשות</ref>: יחידות מסויימות (כמו למשל "
 "טרולים) יתרפאו אוטומטית 8 נק\"פ בכל תור."
 
-#. [topic]
+#. [topic]: id=healing
 #: data/core/help.cfg:305
 #, fuzzy
 msgid ""
@@ -1487,7 +1487,7 @@ msgstr ""
 "ref> יחזירו עד 8 נק\"פ לתור, וכמו כן ימנעו נזק מרעל. רק יחידות שצמודות "
 "ושמאותו צד של היחידה המטפלת יטופלו, ורק עד 4 נק\"פ ליחידה."
 
-#. [topic]
+#. [topic]: id=healing
 #: data/core/help.cfg:306
 #, fuzzy
 msgid ""
@@ -1501,7 +1501,7 @@ msgstr ""
 "יחזירו עד 18 נק\"פ לתור, וכמו כן ירפאו רעל. רק יחידות שצמודות ושנלחמות באותו "
 "צד של היחידה המרפאה ירופאו, ורק עד 8 נק\"פ ליחידה."
 
-#. [topic]
+#. [topic]: id=healing
 #: data/core/help.cfg:308
 #, fuzzy
 msgid ""
@@ -1518,12 +1518,12 @@ msgstr ""
 "מחולקת בין יותר מידי יחידות פצועות תהיה פחות יעילה בריפוי הנזק של כל יחידה. "
 "ודבר אחרון, יחידות מתרפאות באופן מלא בין תרחישים."
 
-#. [topic]
+#. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:315
 msgid "Income and Upkeep"
 msgstr "הכנסה ואחזקה"
 
-#. [topic]
+#. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:316
 msgid ""
 "In Wesnoth, it is not enough simply to recruit units and fight. You must "
@@ -1535,7 +1535,7 @@ msgstr ""
 "שלך, במיוחד במערכות, בהם אתה יכול להעביר זהב מתרחיש אחד לבא אחריו. יש לכך "
 "שני צדדים; הכנסה ואחזקה."
 
-#. [topic]
+#. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:318
 #, fuzzy
 msgid ""
@@ -1552,7 +1552,7 @@ msgstr ""
 "מקבל עוד זהב אחד לתור. כלומר, אם יש לך עשרה כפרים, אתה באופן רגיל תקבל 12 "
 "זהב כל תור. הוצאות האחזקה מנוקות מההכנסה הזאת, כמפורט למטה."
 
-#. [topic]
+#. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:320
 msgid ""
 "\n"
@@ -1572,7 +1572,7 @@ msgstr ""
 "זהב אחד בכל תור. לדוגמה, אם יש לך 12 יחידות מדרגה אחת ועשרה כפרים, תצטרך "
 "לשלם שני זהב בכל תור לאחזקה."
 
-#. [topic]
+#. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:322
 #, fuzzy
 msgid ""
@@ -1587,7 +1587,7 @@ msgstr ""
 "הוצאות אחזקה מנוקות מההכנסה שלך, לכן במקרה של 12 רמות של יחידות ועשרה כפרים, "
 "ההכנסה שתשאר לך היא 10 זהב לתור."
 
-#. [topic]
+#. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:323
 #, fuzzy
 msgid ""
@@ -1605,12 +1605,12 @@ msgstr ""
 "במהלך התרחיש (כמו הפרש בתרחיש השני של היורש לכס) בדרך כלל יהיה את מאפיין "
 "הנאמנות."
 
-#. [topic]
+#. [topic]: id=wrap_up
 #: data/core/help.cfg:329
 msgid "Wrap Up"
 msgstr "סיכום"
 
-#. [topic]
+#. [topic]: id=wrap_up
 #: data/core/help.cfg:330
 #, fuzzy
 msgid ""
@@ -1625,17 +1625,17 @@ msgstr ""
 "<ref>dst=abilities text=יכולות</ref>, אבל עכשיו אתה יודע כל מה שאתה צריך "
 "לדעת כדי לשחק בתרחיש היורש לכס. תהנה, ובהצלחה!"
 
-#. [topic]
+#. [topic]: id=about
 #: data/core/help.cfg:335
 msgid "ingame_help_item^Contributors"
 msgstr ""
 
-#. [topic]
+#. [topic]: id=license
 #: data/core/help.cfg:341
 msgid "License"
 msgstr "רישיון"
 
-#. [topic]
+#. [topic]: id=..traits_section
 #: data/core/help.cfg:350
 msgid ""
 "Most units have two traits. However, Undead units are assigned the single "
@@ -1647,7 +1647,7 @@ msgstr ""
 "מוות' , וליחידות ווס אין אף מאפיין. מאפיינים של יחידה משנים מעט את תכונותיה, "
 "ולרוב מוקצים לה באופן אקראי בעת גיוסה."
 
-#. [topic]
+#. [topic]: id=..traits_section
 #: data/core/help.cfg:352
 #, fuzzy
 msgid ""
@@ -1664,7 +1664,7 @@ msgstr ""
 "<ref>dst=traits_resilient text=חסונה</ref>, ו <ref>dst=traits_strong "
 "text=חזקה</ref>."
 
-#. [topic]
+#. [topic]: id=..traits_section
 #: data/core/help.cfg:356
 #, fuzzy
 msgid ""
@@ -1681,17 +1681,17 @@ msgstr ""
 "text=נאמנה</ref>, <ref>dst=traits_undead text=אל-מתה</ref>, ו "
 "<ref>dst=traits_dextrous text=דייקנית</ref>."
 
-#. [topic]
+#. [topic]: id=traits_intelligent
 #: data/core/help.cfg:362
 msgid "Intelligent"
 msgstr "חכמה"
 
-#. [topic]
+#. [topic]: id=traits_intelligent
 #: data/core/help.cfg:363
 msgid "Intelligent units require 20% less experience than usual to advance."
 msgstr "יחידות חכמות צריכות 20% פחות נק\"נ מכרגיל כדי להתקדם."
 
-#. [topic]
+#. [topic]: id=traits_intelligent
 #: data/core/help.cfg:365
 msgid ""
 "\n"
@@ -1709,18 +1709,18 @@ msgstr ""
 "מרבית (קלד\"מ) לא מהווה שינוי משמעותי כמו התקדמות דרגה. אם יש לך יחידות רבות "
 "בדרגה המירבית, יכול להיות שתרצה להחזיר יחידות עם מאפיינים שימושיים יותר."
 
-#. [topic]
+#. [topic]: id=traits_quick
 #: data/core/help.cfg:370
 msgid "Quick"
 msgstr "מהירה"
 
-#. [topic]
+#. [topic]: id=traits_quick
 #: data/core/help.cfg:371
 #, fuzzy
 msgid "Quick units have 1 extra movement point, but 5% less HP than usual."
 msgstr "ליחידות מהירות יש עוד נקודת תנועה אחת, אבל 10% פחות נק\"פ מכרגיל."
 
-#. [topic]
+#. [topic]: id=traits_quick
 #: data/core/help.cfg:373
 msgid ""
 "\n"
@@ -1740,18 +1740,18 @@ msgstr ""
 "בנוסף, יחידות מהירות לא קשוחות כמו יחידות ללא המאפיין היחודי, ולכן טובות "
 "פחות בשמירה על עמדות מפתח."
 
-#. [topic]
+#. [topic]: id=traits_resilient
 #: data/core/help.cfg:378
 msgid "Resilient"
 msgstr "חסונה"
 
-#. [topic]
+#. [topic]: id=traits_resilient
 #: data/core/help.cfg:379
 #, fuzzy
 msgid "Resilient units have 4 HP plus 1 HP per level more than usual."
 msgstr "ליחידות חסונות יש 7 נק\"פ יותר מכרגיל."
 
-#. [topic]
+#. [topic]: id=traits_resilient
 #: data/core/help.cfg:381
 msgid ""
 "\n"
@@ -1769,12 +1769,12 @@ msgstr ""
 "ביחידה עם שילוב של נק\"פ נמוך והגנה טובה, או עמידות גבוהה. יחידות חסונות "
 "שימושיות במיוחד להחזקת עמדות מפתח נגד היריב."
 
-#. [topic]
+#. [topic]: id=traits_strong
 #: data/core/help.cfg:386
 msgid "Strong"
 msgstr "חזקה"
 
-#. [topic]
+#. [topic]: id=traits_strong
 #: data/core/help.cfg:387
 #, fuzzy
 msgid ""
@@ -1784,7 +1784,7 @@ msgstr ""
 "יחידות חזקות עושות נקודת נזק אחת יותר עבור כל פגיעה מוצלחת בקפ\"פ , ויש להן "
 "עוד 2 נק\"פ."
 
-#. [topic]
+#. [topic]: id=traits_strong
 #: data/core/help.cfg:389
 msgid ""
 "\n"
@@ -1800,22 +1800,22 @@ msgstr ""
 "התקפות לתור כמו למשל לוחם אלפי. יחידות חזקות שימושיות כאשר עוד כמות קטנה של "
 "נזק היא כל מה שצריך כדי להפוך מכה שגורמת נזק למכת מוות."
 
-#. [topic]
+#. [topic]: id=traits_fearless
 #: data/core/help.cfg:394
 msgid "Fearless"
 msgstr ""
 
-#. [topic]
+#. [topic]: id=traits_fearless
 #: data/core/help.cfg:395
 msgid "Aversion to light and dark holds no sway over these brave individuals."
 msgstr ""
 
-#. [topic]
+#. [topic]: id=traits_loyal
 #: data/core/help.cfg:400
 msgid "Loyal"
 msgstr "נאמנה"
 
-#. [topic]
+#. [topic]: id=traits_loyal
 #: data/core/help.cfg:401
 msgid ""
 "Loyal units don't incur upkeep. Most units incur an upkeep cost at the end "
@@ -1825,7 +1825,7 @@ msgstr ""
 "יחידות נאמנות לא דורשות דמי החזקה. רוב היחידות דורשות דמי החזקה בסוף כל תור, "
 "ששווים לרמת היחידה. יחידות נאמנות לא דורשות את העלות הזו."
 
-#. [topic]
+#. [topic]: id=traits_loyal
 #: data/core/help.cfg:403
 msgid ""
 "\n"
@@ -1846,12 +1846,12 @@ msgstr ""
 "מגוייסות, ולכן זה יכול להיות לא חכם לשחרר יחידה כזו או לשלוח אותה למוות "
 "טיפשי."
 
-#. [topic]
+#. [topic]: id=traits_undead
 #: data/core/help.cfg:408
 msgid "trait^Undead"
 msgstr "אל-מתה"
 
-#. [topic]
+#. [topic]: id=traits_undead
 #: data/core/help.cfg:409
 #, fuzzy
 msgid ""
@@ -1859,7 +1859,7 @@ msgid ""
 "them."
 msgstr "יחידות אל-מתות מחוסנות בפני רעל."
 
-#. [topic]
+#. [topic]: id=traits_undead
 #: data/core/help.cfg:411
 msgid ""
 "\n"
@@ -1876,12 +1876,12 @@ msgstr ""
 "עובדה זו יכולה להפוך אותן ליקרות ערך כאשר נלחמים ביריב שמשתמש ברעל ביחד עם "
 "ההתקפות שלו."
 
-#. [topic]
+#. [topic]: id=traits_mechanical
 #: data/core/help.cfg:416
 msgid "trait^Mechanical"
 msgstr ""
 
-#. [topic]
+#. [topic]: id=traits_mechanical
 #: data/core/help.cfg:417
 #, fuzzy
 msgid ""
@@ -1889,7 +1889,7 @@ msgid ""
 "them."
 msgstr "יחידות אל-מתות מחוסנות בפני רעל."
 
-#. [topic]
+#. [topic]: id=traits_mechanical
 #: data/core/help.cfg:419
 msgid ""
 "\n"
@@ -1899,19 +1899,19 @@ msgid ""
 "effect upon them."
 msgstr ""
 
-#. [topic]
+#. [topic]: id=traits_dextrous
 #: data/core/help.cfg:424
 msgid "Dextrous"
 msgstr "דייקנית"
 
-#. [topic]
+#. [topic]: id=traits_dextrous
 #: data/core/help.cfg:425
 #, fuzzy
 msgid ""
 "Dextrous units do 1 more damage for every successful strike in ranged combat."
 msgstr "יחידות דייקניות עושות נקודת נזק אחת יותר לכל ניסיון פגיעה מוצלח בקשת."
 
-#. [topic]
+#. [topic]: id=traits_dextrous
 #: data/core/help.cfg:427
 msgid ""
 "\n"
@@ -1927,19 +1927,19 @@ msgstr ""
 "ובכשרונם הרב עם קשת. אולם, כמה מהם חוננו בכישרון טבעי שעוקף את זה של אחיהם. "
 "אלפים אלו מורדים נקודה נוספת שך נזק בכל חץ."
 
-#. [topic]
+#. [topic]: id=traits_healthy
 #: data/core/help.cfg:432
 msgid "Healthy"
 msgstr ""
 
-#. [topic]
+#. [topic]: id=traits_healthy
 #: data/core/help.cfg:433
 msgid ""
 "Renowned for their vitality, some dwarves are sturdier than others and can "
 "rest even when travelling."
 msgstr ""
 
-#. [topic]
+#. [topic]: id=traits_healthy
 #: data/core/help.cfg:435
 msgid ""
 "\n"
@@ -1948,7 +1948,7 @@ msgid ""
 "the usual 2 HP after each turn they did not fight."
 msgstr ""
 
-#. [topic]
+#. [topic]: id=..terrains
 #: data/core/help.cfg:443
 msgid ""
 "Game maps feature a variety of terrains that affect both unit movement and a "
@@ -1956,12 +1956,12 @@ msgid ""
 "\n"
 msgstr ""
 
-#. [topic]
+#. [topic]: id=terrain_flat
 #: data/core/help.cfg:450
 msgid "Flat"
 msgstr ""
 
-#. [topic]
+#. [topic]: id=terrain_flat
 #: data/core/help.cfg:455
 msgid ""
 "Grassland represents open plains, whether cultivated, cut back for grazing, "
@@ -1979,12 +1979,12 @@ msgstr ""
 "\n"
 "לרוב היחידות יש הגנה של 30 עד 40% על אדמת מרעה."
 
-#. [topic]
+#. [topic]: id=terrain_road
 #: data/core/help.cfg:462
 msgid "Road"
 msgstr "דרך"
 
-#. [topic]
+#. [topic]: id=terrain_road
 #: data/core/help.cfg:465
 #, fuzzy
 msgid ""
@@ -1995,12 +1995,12 @@ msgstr ""
 "דרכים הן שבלי עפר כבושים, שנוצרו על ידי הנוסעים הרבים שעברו עליהם. ככל שזה "
 "נוגע למשחקיות, דרכים זהות ל<ref>dst=terrain_grassland text='אדמת מרעה'</ref>."
 
-#. [topic]
+#. [topic]: id=terrain_forest
 #: data/core/help.cfg:472
 msgid "Forest"
 msgstr "יער"
 
-#. [topic]
+#. [topic]: id=terrain_forest
 #: data/core/help.cfg:479
 #, fuzzy
 msgid ""
@@ -2031,12 +2031,12 @@ msgstr ""
 "נהנים מ - 60 עד 70% הגנה, אפילו ליחידותם הרכובות. גמדים באון כללי מקבלים רק "
 "30% הגנה ביערות."
 
-#. [topic]
+#. [topic]: id=terrain_hills
 #: data/core/help.cfg:486
 msgid "Hills"
 msgstr "גבעות"
 
-#. [topic]
+#. [topic]: id=terrain_hills
 #: data/core/help.cfg:491
 msgid ""
 "Hills represent any reasonably rough terrain, with enough dips and rises in "
@@ -2057,12 +2057,12 @@ msgstr ""
 "ךרוב היחידות יש 50% הגנה בגבעות, אולם פרשים מוגבלים ל 40% הגנה. גמדים נהנים "
 "מ 60% הגנה בגבעות."
 
-#. [topic]
+#. [topic]: id=terrain_mountains
 #: data/core/help.cfg:498
 msgid "Mountains"
 msgstr "הרים"
 
-#. [topic]
+#. [topic]: id=terrain_mountains
 #: data/core/help.cfg:503
 msgid ""
 "Mountains are steep enough that units often have to climb over obstacles to "
@@ -2083,12 +2083,12 @@ msgstr ""
 "\n"
 "רוב היחידות מקבלות בערך 60% הגנה בהרים, בעוד שגמדים נהנים מ - 70%."
 
-#. [topic]
+#. [topic]: id=terrain_swamp_water
 #: data/core/help.cfg:510
 msgid "Swamp"
 msgstr "ביצה"
 
-#. [topic]
+#. [topic]: id=terrain_swamp_water
 #: data/core/help.cfg:515
 msgid ""
 "Swamps represent any sort of wetlands. Swamps slow down nearly everyone, and "
@@ -2108,12 +2108,12 @@ msgstr ""
 "רוב היחידות צריכות להסתדר עם 30% הגנב בביצות. אנשי-יםת נאגה ולטאנשים נאניםמ "
 "כולם באופן כללי מ 60%."
 
-#. [topic]
+#. [topic]: id=terrain_shallow_water
 #: data/core/help.cfg:522
 msgid "Shallow Water"
 msgstr "מים רדודים"
 
-#. [topic]
+#. [topic]: id=terrain_shallow_water
 #: data/core/help.cfg:527
 msgid ""
 "Shallow water represents any body of water deep enough to come up to roughly "
@@ -2135,12 +2135,12 @@ msgstr ""
 "רוב היחידות צריכות להסתדר עם 20 עד 30% הגנה במים רדודים, בעוד שגם נאגה וגם "
 "אנשי-ים נהנים מ - 60%."
 
-#. [topic]
+#. [topic]: id=terrain_deep_water
 #: data/core/help.cfg:534
 msgid "Deep Water"
 msgstr "מים עמוקים"
 
-#. [topic]
+#. [topic]: id=terrain_deep_water
 #: data/core/help.cfg:539
 msgid ""
 "Deep water represents any body of water deep enough to cover a man's head. "
@@ -2155,12 +2155,12 @@ msgstr ""
 "\n"
 "גם אנשי-ים וגם נאגה מקבלים 50% הגנה במים עמוקים, עם תנועה מלאה."
 
-#. [topic]
+#. [topic]: id=terrain_frozen
 #: data/core/help.cfg:546
 msgid "Frozen"
 msgstr ""
 
-#. [topic]
+#. [topic]: id=terrain_frozen
 #: data/core/help.cfg:551
 #, fuzzy
 msgid ""
@@ -2176,12 +2176,12 @@ msgstr ""
 "\n"
 "לרוב היחידות יש 20 עד 40% הגנה בשלג."
 
-#. [topic]
+#. [topic]: id=terrain_castle
 #: data/core/help.cfg:558
 msgid "Castle"
 msgstr "טירה"
 
-#. [topic]
+#. [topic]: id=terrain_castle
 #: data/core/help.cfg:565
 #, fuzzy
 msgid ""
@@ -2202,12 +2202,12 @@ msgstr ""
 "\n"
 "רוב היחידות מקבלות 60% הגנה בטירה."
 
-#. [topic]
+#. [topic]: id=terrain_sand
 #: data/core/help.cfg:572
 msgid "Sand"
 msgstr "חול"
 
-#. [topic]
+#. [topic]: id=terrain_sand
 #: data/core/help.cfg:577
 msgid ""
 "The instability of sand makes it harder for most units to cross, and leaves "
@@ -2222,12 +2222,12 @@ msgstr ""
 "\n"
 "לרוב היחידות יש בין 20 ל 40% הגנה בחול."
 
-#. [topic]
+#. [topic]: id=terrain_desert
 #: data/core/help.cfg:584
 msgid "Desert"
 msgstr "מדבר"
 
-#. [topic]
+#. [topic]: id=terrain_desert
 #: data/core/help.cfg:587
 #, fuzzy
 msgid ""
@@ -2238,12 +2238,12 @@ msgstr ""
 "למדבריות יש הרכב טיפה שונה ממלכודות חול קטנות או חופים, אבל למטרות המשחק הם "
 "זהים. ראה ערך <ref>dst=terrain_sand text=חול</ref>."
 
-#. [topic]
+#. [topic]: id=terrain_cave
 #: data/core/help.cfg:594
 msgid "Cave"
 msgstr "מערה"
 
-#. [topic]
+#. [topic]: id=terrain_cave
 #: data/core/help.cfg:599
 #, fuzzy
 msgid ""
@@ -2264,12 +2264,12 @@ msgstr ""
 "\n"
 "רוב היחידות מקבלות 20 עד 40% הגנה במערות, בעוד למדים יש 50%."
 
-#. [topic]
+#. [topic]: id=terrain_rockbound_cave
 #: data/core/help.cfg:606
 msgid "Rockbound Cave"
 msgstr "מערה מוקפת סלעים"
 
-#. [topic]
+#. [topic]: id=terrain_rockbound_cave
 #: data/core/help.cfg:611
 #, fuzzy
 msgid ""
@@ -2293,13 +2293,13 @@ msgstr ""
 "לרוב היחידות יש 50% הגנה במערות סילעיות, בעוד שיחידות רוכבות מוגבלות ל 40%. "
 "גמדים נהנים מ 60% הגנה במערות מוקפות סלעים."
 
-#. [topic]
+#. [topic]: id=terrain_illuminated_cave
 #: data/core/help.cfg:618
 #, fuzzy
 msgid "Illuminated Cave"
 msgstr "מאירה"
 
-#. [topic]
+#. [topic]: id=terrain_illuminated_cave
 #: data/core/help.cfg:621
 msgid ""
 "Rare patches of the underground world are illuminated by light from the "
@@ -2308,12 +2308,12 @@ msgid ""
 "other regards this terrain is functionally identical to normal cave terrains."
 msgstr ""
 
-#. [topic]
+#. [topic]: id=terrain_fungus
 #: data/core/help.cfg:628
 msgid "Mushroom Grove"
 msgstr "חורשת פיטריות"
 
-#. [topic]
+#. [topic]: id=terrain_fungus
 #: data/core/help.cfg:633
 #, fuzzy
 msgid ""
@@ -2337,12 +2337,12 @@ msgstr ""
 "רק 20%."
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
-#. [topic]
+#. [topic]: id=terrain_village
 #: data/core/help.cfg:640 src/terrain.cpp:139
 msgid "Village"
 msgstr "כפר"
 
-#. [topic]
+#. [topic]: id=terrain_village
 #: data/core/help.cfg:647
 #, fuzzy
 msgid ""
@@ -2364,13 +2364,13 @@ msgstr ""
 "\n"
 "לרוב היחידות יש 50 עד 60% הגנה בכפרים, לעומת זו פרשים מקבלים רק 40%."
 
-#. [topic]
+#. [topic]: id=terrain_water_village
 #: data/core/help.cfg:656
 #, fuzzy
 msgid "Submerged Village"
 msgstr "כפר כבוש"
 
-#. [topic]
+#. [topic]: id=terrain_water_village
 #: data/core/help.cfg:661
 msgid ""
 "Submerged villages are the homes of Merfolk and Nagas. While water-dwelling "
@@ -2384,12 +2384,12 @@ msgid ""
 "units usually have a low defence."
 msgstr ""
 
-#. [topic]
+#. [topic]: id=terrain_unwalkable
 #: data/core/help.cfg:668
 msgid "Unwalkable"
 msgstr ""
 
-#. [topic]
+#. [topic]: id=terrain_unwalkable
 #: data/core/help.cfg:671
 #, fuzzy
 msgid ""
@@ -2402,12 +2402,12 @@ msgstr ""
 "התלולים שיקחו ימים לחצייה. ככל שזה נוגע למשחקיות, רק יחידות בעלות יכולת "
 "תעופה יכולות לחצות את סוג השטח הזה."
 
-#. [topic]
+#. [topic]: id=terrain_lava
 #: data/core/help.cfg:678
 msgid "Lava"
 msgstr "לבה"
 
-#. [topic]
+#. [topic]: id=terrain_lava
 #: data/core/help.cfg:681
 #, fuzzy
 msgid ""
@@ -2422,12 +2422,12 @@ msgstr ""
 "הסכנות שטמונות בלנסות ללכת על לבה מובנות מאליו. סוג שטח זה יכול להחצות על "
 "ידי היחידות שמסוגלות לעוף מספיק גבוה מעליו."
 
-#. [topic]
+#. [topic]: id=terrain_ford
 #: data/core/help.cfg:688
 msgid "River Ford"
 msgstr "שפך נהר"
 
-#. [topic]
+#. [topic]: id=terrain_ford
 #: data/core/help.cfg:691
 msgid ""
 "When a river happens to be extremely shallow, passing over it is a trivial "
@@ -2442,18 +2442,18 @@ msgstr ""
 "נוגע למשחקיות, מתייחסים לשפך נהר כמו אדמת מרעה או מים רדודים, כאשר נבחר האחד "
 "שנותן את בונוסי ההגנה והתנועה הגבוהים ביותר ליחידה."
 
-#. [topic]
+#. [topic]: id=terrain_reef
 #: data/core/help.cfg:698
 #, fuzzy
 msgid "Coastal Reef"
 msgstr "טירה"
 
-#. [topic]
+#. [topic]: id=terrain_bridge
 #: data/core/help.cfg:708
 msgid "Bridge"
 msgstr "גשר"
 
-#. [topic]
+#. [topic]: id=terrain_bridge
 #: data/core/help.cfg:713
 #, fuzzy
 msgid ""
@@ -2479,13 +2479,13 @@ msgstr ""
 "ההגנה הטובים ביותר ליחידה שנמצאת על משושה הגשר. שים לב שיחידות שוחות ויחידות "
 "קרקע לא יכולות להמצא על משושה הגשר באותו זמן."
 
-#. [topic]
+#. [topic]: id=terrain_impassable
 #: data/core/help.cfg:720
 #, fuzzy
 msgid "Impassable"
 msgstr "הרים"
 
-#. [topic]
+#. [topic]: id=terrain_impassable
 #: data/core/help.cfg:723
 msgid ""
 "Obstacles that not even the most determined traveler may overcome include "
@@ -2495,13 +2495,13 @@ msgid ""
 "smash through thick walls of stone."
 msgstr ""
 
-#. [topic]
+#. [topic]: id=general_commands
 #: data/core/help.cfg:736
 #, fuzzy
 msgid "General commands"
 msgstr "גנרל"
 
-#. [topic]
+#. [topic]: id=general_commands
 #: data/core/help.cfg:741
 msgid ""
 "\n"
@@ -2509,7 +2509,7 @@ msgid ""
 "\n"
 msgstr ""
 
-#. [topic]
+#. [topic]: id=general_commands
 #: data/core/help.cfg:745
 msgid ""
 "\n"
@@ -2519,7 +2519,7 @@ msgid ""
 "\n"
 msgstr ""
 
-#. [topic]
+#. [topic]: id=general_commands
 #: data/core/help.cfg:748
 msgid ""
 "\n"
@@ -2531,7 +2531,7 @@ msgid ""
 "\n"
 msgstr ""
 
-#. [topic]
+#. [topic]: id=general_commands
 #: data/core/help.cfg:751
 msgid ""
 "\n"
@@ -2539,7 +2539,7 @@ msgid ""
 "\n"
 msgstr ""
 
-#. [topic]
+#. [topic]: id=general_commands
 #: data/core/help.cfg:754
 msgid ""
 "\n"
@@ -2547,7 +2547,7 @@ msgid ""
 "\n"
 msgstr ""
 
-#. [topic]
+#. [topic]: id=general_commands
 #: data/core/help.cfg:757
 msgid ""
 "\n"
@@ -2555,7 +2555,7 @@ msgid ""
 "\n"
 msgstr ""
 
-#. [topic]
+#. [topic]: id=general_commands
 #: data/core/help.cfg:760
 msgid ""
 "\n"
@@ -2563,7 +2563,7 @@ msgid ""
 "\n"
 msgstr ""
 
-#. [topic]
+#. [topic]: id=general_commands
 #: data/core/help.cfg:763
 msgid ""
 "\n"
@@ -2571,7 +2571,7 @@ msgid ""
 "\n"
 msgstr ""
 
-#. [topic]
+#. [topic]: id=general_commands
 #: data/core/help.cfg:766
 msgid ""
 "\n"
@@ -2579,20 +2579,20 @@ msgid ""
 "\n"
 msgstr ""
 
-#. [topic]
+#. [topic]: id=general_commands
 #: data/core/help.cfg:767
 msgid ""
 "\n"
 "Save the game and quit the scenario (without prompting)."
 msgstr ""
 
-#. [topic]
+#. [topic]: id=mp_commands
 #: data/core/help.cfg:775
 #, fuzzy
 msgid "Multiplayer commands"
 msgstr "מפות למשחק רב משתתפים"
 
-#. [topic]
+#. [topic]: id=mp_commands
 #: data/core/help.cfg:779
 msgid ""
 "\n"
@@ -2601,7 +2601,7 @@ msgid ""
 "\n"
 msgstr ""
 
-#. [topic]
+#. [topic]: id=mp_commands
 #: data/core/help.cfg:782
 msgid ""
 "\n"
@@ -2612,7 +2612,7 @@ msgid ""
 "\n"
 msgstr ""
 
-#. [topic]
+#. [topic]: id=mp_commands
 #: data/core/help.cfg:785
 msgid ""
 "\n"
@@ -2622,7 +2622,7 @@ msgid ""
 "\n"
 msgstr ""
 
-#. [topic]
+#. [topic]: id=mp_commands
 #: data/core/help.cfg:788
 msgid ""
 "\n"
@@ -2631,20 +2631,20 @@ msgid ""
 "\n"
 msgstr ""
 
-#. [topic]
+#. [topic]: id=mp_commands
 #: data/core/help.cfg:789
 msgid ""
 "\n"
 "Toggle muting/silencing of all observers on/off."
 msgstr ""
 
-#. [topic]
+#. [topic]: id=debug_commands
 #: data/core/help.cfg:796
 #, fuzzy
 msgid "Debug mode commands"
 msgstr "גנרל"
 
-#. [topic]
+#. [topic]: id=debug_commands
 #: data/core/help.cfg:800
 msgid ""
 "\n"
@@ -2652,7 +2652,7 @@ msgid ""
 "\n"
 msgstr ""
 
-#. [topic]
+#. [topic]: id=debug_commands
 #: data/core/help.cfg:803
 msgid ""
 "\n"
@@ -2660,7 +2660,7 @@ msgid ""
 "\n"
 msgstr ""
 
-#. [topic]
+#. [topic]: id=debug_commands
 #: data/core/help.cfg:806
 msgid ""
 "\n"
@@ -2668,7 +2668,7 @@ msgid ""
 "\n"
 msgstr ""
 
-#. [topic]
+#. [topic]: id=debug_commands
 #: data/core/help.cfg:809
 msgid ""
 "\n"
@@ -2676,7 +2676,7 @@ msgid ""
 "\n"
 msgstr ""
 
-#. [topic]
+#. [topic]: id=debug_commands
 #: data/core/help.cfg:812
 msgid ""
 "\n"
@@ -2684,7 +2684,7 @@ msgid ""
 "\n"
 msgstr ""
 
-#. [topic]
+#. [topic]: id=debug_commands
 #: data/core/help.cfg:815
 msgid ""
 "\n"
@@ -2692,7 +2692,7 @@ msgid ""
 "\n"
 msgstr ""
 
-#. [topic]
+#. [topic]: id=debug_commands
 #: data/core/help.cfg:816
 msgid ""
 "\n"
@@ -2700,18 +2700,18 @@ msgid ""
 "hitpoints=100"
 msgstr ""
 
-#. [heals]
+#. [heals]: id=curing
 #: data/core/macros/abilities.cfg:51
 msgid "cures"
 msgstr "מרפא"
 
-#. [heals]
+#. [heals]: id=curing
 #: data/core/macros/abilities.cfg:52
 #, fuzzy
 msgid "female^cures"
 msgstr "נסיכה"
 
-#. [heals]
+#. [heals]: id=curing
 #: data/core/macros/abilities.cfg:54
 msgid ""
 "Cures:\n"
@@ -2719,18 +2719,18 @@ msgid ""
 "additional healing on the turn it is cured of the poison."
 msgstr ""
 
-#. [regenerate]
+#. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:76
 msgid "regenerates"
 msgstr "התחדשות"
 
-#. [regenerate]
+#. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:77
 #, fuzzy
 msgid "female^regenerates"
 msgstr "התחדשות"
 
-#. [regenerate]
+#. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:79
 #, fuzzy
 msgid ""
@@ -2742,18 +2742,18 @@ msgstr ""
 "יחידה זו תרפא את עצמה ב 8 נק\"פ לתור. אם היא מורעלת, היא תסיר את הרעל במקום "
 "לרפא."
 
-#. [resistance]
+#. [resistance]: id=steadfast
 #: data/core/macros/abilities.cfg:97
 msgid "steadfast"
 msgstr "קור רוח"
 
-#. [resistance]
+#. [resistance]: id=steadfast
 #: data/core/macros/abilities.cfg:98
 #, fuzzy
 msgid "female^steadfast"
 msgstr "קור רוח"
 
-#. [resistance]
+#. [resistance]: id=steadfast
 #: data/core/macros/abilities.cfg:100
 msgid ""
 "Steadfast:\n"
@@ -2764,14 +2764,14 @@ msgstr ""
 "העמידות של יחידה זו מוכפלת, עד למקסימום של 50%, כאשר היא מתגוננת. חולשות לא "
 "מושפעות."
 
-#. [leadership]
+#. [leadership]: id=leadership
 #: data/core/macros/abilities.cfg:113 data/core/macros/abilities.cfg:136
 #: data/core/macros/abilities.cfg:171 data/core/macros/abilities.cfg:218
 #: data/core/macros/abilities.cfg:277
 msgid "leadership"
 msgstr "מנהיגות"
 
-#. [leadership]
+#. [leadership]: id=leadership
 #: data/core/macros/abilities.cfg:114 data/core/macros/abilities.cfg:137
 #: data/core/macros/abilities.cfg:172 data/core/macros/abilities.cfg:219
 #: data/core/macros/abilities.cfg:278
@@ -2779,7 +2779,7 @@ msgstr "מנהיגות"
 msgid "female^leadership"
 msgstr "מנהיגות"
 
-#. [leadership]
+#. [leadership]: id=leadership
 #: data/core/macros/abilities.cfg:118 data/core/macros/abilities.cfg:141
 #: data/core/macros/abilities.cfg:176 data/core/macros/abilities.cfg:223
 #: data/core/macros/abilities.cfg:282
@@ -2801,18 +2801,18 @@ msgstr ""
 "נמוכה יוצר ובאותו צד כמו היחידה עם המנהיגות, התקפותיה עושות 25% יותר נזק "
 "כפול ההפרש בדרגות."
 
-#. [skirmisher]
+#. [skirmisher]: id=skirmisher
 #: data/core/macros/abilities.cfg:346
 msgid "skirmisher"
 msgstr "מסתננת"
 
-#. [skirmisher]
+#. [skirmisher]: id=skirmisher
 #: data/core/macros/abilities.cfg:347
 #, fuzzy
 msgid "female^skirmisher"
 msgstr "מסתננת"
 
-#. [skirmisher]
+#. [skirmisher]: id=skirmisher
 #: data/core/macros/abilities.cfg:349
 #, fuzzy
 msgid ""
@@ -2825,18 +2825,18 @@ msgstr ""
 "האוייב. (יוצא מהכלל: אם היחידה עוצרת בתוך אזור שליטה של האוייב נקודות התנועה "
 "הנותרות שלה יאופסו אפילו אם היא מסתננת). "
 
-#. [illuminates]
+#. [illuminates]: id=illumination
 #: data/core/macros/abilities.cfg:362
 msgid "illuminates"
 msgstr "מאירה"
 
-#. [illuminates]
+#. [illuminates]: id=illumination
 #: data/core/macros/abilities.cfg:363
 #, fuzzy
 msgid "female^illuminates"
 msgstr "מאירה"
 
-#. [illuminates]
+#. [illuminates]: id=illumination
 #: data/core/macros/abilities.cfg:367
 msgid ""
 "Illuminates:\n"
@@ -2852,18 +2852,18 @@ msgstr ""
 "\n"
 "כל יחידה סמוכה תלחם בלילה כמו בזמן השקיעה ובשקיעה כמו בזמן היום."
 
-#. [teleport]
+#. [teleport]: id=teleport
 #: data/core/macros/abilities.cfg:377
 msgid "teleport"
 msgstr "העתקה"
 
-#. [teleport]
+#. [teleport]: id=teleport
 #: data/core/macros/abilities.cfg:378
 #, fuzzy
 msgid "female^teleport"
 msgstr "חכמה"
 
-#. [teleport]
+#. [teleport]: id=teleport
 #: data/core/macros/abilities.cfg:380
 #, fuzzy
 msgid ""
@@ -2875,18 +2875,18 @@ msgstr ""
 "יחידה זו יכולה להעתיק את עצמה בין כל שני כפרים ידידותיים תוך שימוש באחת "
 "מנקודות התנועה שלה."
 
-#. [hides]
+#. [hides]: id=ambush
 #: data/core/macros/abilities.cfg:389 data/core/macros/abilities.cfg:391
 msgid "ambush"
 msgstr "מארב"
 
-#. [hides]
+#. [hides]: id=ambush
 #: data/core/macros/abilities.cfg:390 data/core/macros/abilities.cfg:392
 #, fuzzy
 msgid "female^ambush"
 msgstr "פורעת חוק"
 
-#. [hides]
+#. [hides]: id=ambush
 #: data/core/macros/abilities.cfg:396 data/core/macros/abilities.cfg:400
 #, fuzzy
 msgid ""
@@ -2903,13 +2903,13 @@ msgstr ""
 "יחידות אוייב לא יכולות לראות או להתקיף יחידה זו כשהיא ביער, חוץ מאשר בתור "
 "שמיד אחרי שיחידה זו התקיפה, או אם יש יחידות אוייב ליד יחידה זו."
 
-#. [hides]
+#. [hides]: id=nightstalk
 #: data/core/macros/abilities.cfg:415 data/core/macros/abilities.cfg:416
 #: data/core/macros/abilities.cfg:421
 msgid "nightstalk"
 msgstr "התגנבות לילה"
 
-#. [hides]
+#. [hides]: id=nightstalk
 #: data/core/macros/abilities.cfg:420 data/core/macros/abilities.cfg:426
 #, fuzzy
 msgid ""
@@ -2926,25 +2926,25 @@ msgstr ""
 "יחידות אוייב לא יכולות לראות או להתקיף יחידה זו במשך הלילה, חוץ מאשר בתור "
 "שמיד אחרי שיחידה זו התקיפה, או אם יש יחידות אוייב ליד יחידה זו."
 
-#. [hides]
+#. [hides]: id=nightstalk
 #: data/core/macros/abilities.cfg:422
 #, fuzzy
 msgid "female^nightstalk"
 msgstr "התגנבות לילה"
 
-#. [hides]
+#. [hides]: id=concealment
 #: data/core/macros/abilities.cfg:441 data/core/macros/abilities.cfg:447
 #, fuzzy
 msgid "concealment"
 msgstr "מחנה"
 
-#. [hides]
+#. [hides]: id=concealment
 #: data/core/macros/abilities.cfg:442 data/core/macros/abilities.cfg:448
 #, fuzzy
 msgid "female^concealment"
 msgstr "מחנה"
 
-#. [hides]
+#. [hides]: id=concealment
 #: data/core/macros/abilities.cfg:446 data/core/macros/abilities.cfg:452
 #, fuzzy
 msgid ""
@@ -2962,18 +2962,18 @@ msgstr ""
 "יחידות אוייב לא יכולות לראות או להתקיף יחידה זו כשהיא במים עמוקים, חוץ מאשר "
 "בתור שמיד אחרי שיחידה זו התקיפה, או אם יש יחידות אוייב ליד יחידה זו."
 
-#. [hides]
+#. [hides]: id=submerge
 #: data/core/macros/abilities.cfg:467 data/core/macros/abilities.cfg:473
 msgid "submerge"
 msgstr "צלילה"
 
-#. [hides]
+#. [hides]: id=submerge
 #: data/core/macros/abilities.cfg:468 data/core/macros/abilities.cfg:474
 #, fuzzy
 msgid "female^submerge"
 msgstr "נוכלת"
 
-#. [hides]
+#. [hides]: id=submerge
 #: data/core/macros/abilities.cfg:472 data/core/macros/abilities.cfg:478
 #, fuzzy
 msgid ""
@@ -2990,18 +2990,18 @@ msgstr ""
 "יחידות אוייב לא יכולות לראות או להתקיף יחידה זו כשהיא במים עמוקים, חוץ מאשר "
 "בתור שמיד אחרי שיחידה זו התקיפה, או אם יש יחידות אוייב ליד יחידה זו."
 
-#. [dummy]
+#. [dummy]: id=feeding
 #: data/core/macros/abilities.cfg:496
 msgid "feeding"
 msgstr ""
 
-#. [dummy]
+#. [dummy]: id=feeding
 #: data/core/macros/abilities.cfg:497
 #, fuzzy
 msgid "female^feeding"
 msgstr "נסיכה"
 
-#. [dummy]
+#. [dummy]: id=feeding
 #: data/core/macros/abilities.cfg:499
 msgid ""
 "Feeding:\n"
@@ -3165,18 +3165,18 @@ msgstr ""
 "התקפה זו מרעילה את המטרה. יחידות מורעלות מאבדות 8 נק\"פ כל תור עד שהן "
 "מתרפאות או עד שהנק\"פ שלהן יורד ל 1."
 
-#. [advancement]
+#. [advancement]: id=amla_default
 #: data/core/macros/amla.cfg:10
 #, fuzzy
 msgid "Max HP bonus +3, Max XP +20%"
 msgstr "בונוס לנק\"פ המרבי +"
 
-#. [advancement]
+#. [advancement]: id=tough_{HP_ADVANCE_NUMBER}
 #: data/core/macros/amla.cfg:38
 msgid ", MAX XP +25%"
 msgstr ", נק\"ן מירבי +25%"
 
-#. [advancement]
+#. [advancement]: id=tough_{HP_ADVANCE_NUMBER}
 #: data/core/macros/amla.cfg:38
 msgid "Max HP bonus +"
 msgstr "בונוס לנק\"פ המרבי +"
@@ -3265,99 +3265,99 @@ msgstr "מערה מוארת"
 msgid "Leave it"
 msgstr "מערה מוארת"
 
-#. [object]
+#. [object]: id={ID}
 #: data/core/macros/items.cfg:218
 msgid "Potion of Healing"
 msgstr "שיקוי ריפוי"
 
-#. [object]
+#. [object]: id={ID}
 #: data/core/macros/items.cfg:221
 msgid "A feeling of well-being overwhelms the drinker."
 msgstr "גל של הרגשת בריאות מציף את השתה."
 
-#. [object]
+#. [object]: id={ID}
 #: data/core/macros/items.cfg:222
 msgid "You are not worthy of healing."
 msgstr "אתה לא ראוי לריפוי."
 
-#. [object]
+#. [object]: id={ID}
 #: data/core/macros/items.cfg:256
 msgid "Poison"
 msgstr "רעל"
 
-#. [object]
+#. [object]: id={ID}
 #: data/core/macros/items.cfg:259
 msgid "Poison is seeping through the veins of this unit at this very moment."
 msgstr "הרעל מתפשט בעורקיי היחידה הזאת ברגע זה ממש."
 
-#. [object]
+#. [object]: id={ID}
 #: data/core/macros/items.cfg:293
 msgid "Holy Water"
 msgstr "מים קדושים"
 
-#. [object]
+#. [object]: id={ID}
 #: data/core/macros/items.cfg:296
 msgid ""
 "This water will make melee weapons have the 'arcane' damage type until the "
 "end of the current scenario."
 msgstr ""
 
-#. [object]
+#. [object]: id={ID}
 #: data/core/macros/items.cfg:297
 msgid "I am not suited to the use of this item! Let another take it."
 msgstr "אני לא מתאים לשימוש של החפץ הזה! תן למישהו אחר לקחת אותו."
 
-#. [object]
+#. [object]: id={ID}
 #: data/core/macros/items.cfg:332
 msgid "Potion of Strength"
 msgstr "שיקוי כח"
 
-#. [object]
+#. [object]: id={ID}
 #: data/core/macros/items.cfg:335
 msgid "Strength is given to the drinker."
 msgstr "נותן כח לשותה."
 
-#. [object]
+#. [object]: id={ID}
 #: data/core/macros/items.cfg:375
 msgid "Potion of Decay"
 msgstr "שיקוי התנוונות"
 
-#. [object]
+#. [object]: id={ID}
 #: data/core/macros/items.cfg:378
 msgid "This poor unit drank something really bad."
 msgstr "היחידה המסכנה שתתה משהו רע מאד."
 
-#. [object]
+#. [object]: id={ID}
 #: data/core/macros/items.cfg:412
 msgid "Ring of Regeneration"
 msgstr "טבעת התחדשות"
 
-#. [object]
+#. [object]: id={ID}
 #: data/core/macros/items.cfg:415
 msgid "This ring will heal the bearer a little each turn."
 msgstr "הטבעת הזאת מרפאה את הנושא אותה מעט בכל תור."
 
-#. [object]
+#. [object]: id={ID}
 #: data/core/macros/items.cfg:451
 msgid "Ring of Slowness"
 msgstr "טבעת איטיות"
 
-#. [object]
+#. [object]: id={ID}
 #: data/core/macros/items.cfg:454
 msgid "The bearer of this ring is slowed."
 msgstr "הטבעת הזאת מאיטה את הנושא אותה."
 
-#. [object]
+#. [object]: id={ID}
 #: data/core/macros/items.cfg:488
 msgid "Staff of Swiftness"
 msgstr "מטה מהירות"
 
-#. [object]
+#. [object]: id={ID}
 #: data/core/macros/items.cfg:491
 msgid "This staff will grant the bearer swift movement."
 msgstr "מטה זה יתן לנושא אותו מהירות תנועה."
 
-#. [object]
+#. [object]: id={ID}
 #: data/core/macros/items.cfg:492
 msgid "Only magical beings can wield such an object."
 msgstr "רק יצורים קסומים יכולים להשתמש בחפץ כזה."
@@ -3826,8 +3826,8 @@ msgid ""
 "this scenario. Side $side_number is intended to be played by a human player."
 msgstr ""
 
-#. [time]
-#. [illuminated_time]
+#. [time]: id=deep_underground
+#. [illuminated_time]: id=deep_underground_illum
 #: data/core/macros/schedules.cfg:93 data/core/macros/schedules.cfg:103
 msgid "Deep Underground"
 msgstr "עמוק מתחת לאדמה"
@@ -4008,258 +4008,268 @@ msgid ""
 "can be cured in town or by a unit which cures."
 msgstr ""
 
-#. [trait]
+#. [trait]: id=loyal
 #: data/core/macros/traits.cfg:8
 msgid "loyal"
 msgstr "נאמנה"
 
-#. [trait]
+#. [trait]: id=loyal
 #: data/core/macros/traits.cfg:9
 #, fuzzy
 msgid "female^loyal"
 msgstr "פורעת חוק"
 
-#. [trait]
+#. [trait]: id=loyal
 #: data/core/macros/traits.cfg:10
 msgid "Zero upkeep"
 msgstr "אפס אחזקה"
 
-#. [trait]
+#. [trait]: id=undead
 #: data/core/macros/traits.cfg:22
 msgid "undead"
 msgstr "אל-מתה"
 
-#. [trait]
+#. [trait]: id=undead
 #: data/core/macros/traits.cfg:23
 #, fuzzy
 msgid "female^undead"
 msgstr "נוכלת"
 
-#. [trait]
+#. [trait]: id=undead
+#. [trait]: id=mechanical
 #: data/core/macros/traits.cfg:24 data/core/macros/traits.cfg:39
 #, fuzzy
 msgid "Immune to drain, poison and plague"
 msgstr "עמידה לרעל"
 
-#. [trait]
+#. [trait]: id=mechanical
 #: data/core/macros/traits.cfg:37
 #, fuzzy
 msgid "mechanical"
 msgstr "קסום"
 
-#. [trait]
+#. [trait]: id=mechanical
 #: data/core/macros/traits.cfg:38
 #, fuzzy
 msgid "female^mechanical"
 msgstr "גנבת"
 
-#. [trait]
+#. [trait]: id=strong
 #: data/core/macros/traits.cfg:51
 msgid "strong"
 msgstr "חזקה"
 
-#. [trait]
+#. [trait]: id=strong
 #: data/core/macros/traits.cfg:52
 #, fuzzy
 msgid "female^strong"
 msgstr "נוכלת"
 
-#. [trait]
+#. [trait]: id=dextrous
 #: data/core/macros/traits.cfg:69
 msgid "dextrous"
 msgstr "מדייקת"
 
-#. [trait]
+#. [trait]: id=dextrous
 #: data/core/macros/traits.cfg:70
 #, fuzzy
 msgid "female^dextrous"
 msgstr "מדייקת"
 
-#. [trait]
+#. [trait]: id=quick
 #: data/core/macros/traits.cfg:83
 msgid "quick"
 msgstr "מהירה"
 
-#. [trait]
+#. [trait]: id=quick
 #: data/core/macros/traits.cfg:84
 #, fuzzy
 msgid "female^quick"
 msgstr "נסיכה"
 
-#. [trait]
+#. [trait]: id=intelligent
 #: data/core/macros/traits.cfg:100
 msgid "intelligent"
 msgstr "חכמה"
 
-#. [trait]
+#. [trait]: id=intelligent
 #: data/core/macros/traits.cfg:101
 #, fuzzy
 msgid "female^intelligent"
 msgstr "חכמה"
 
-#. [trait]
+#. [trait]: id=resilient
 #: data/core/macros/traits.cfg:113
 msgid "resilient"
 msgstr "עמידה"
 
-#. [trait]
+#. [trait]: id=resilient
 #: data/core/macros/traits.cfg:114
 #, fuzzy
 msgid "female^resilient"
 msgstr "עמידה"
 
-#. [trait]
+#. [trait]: id=healthy
 #: data/core/macros/traits.cfg:132
 msgid "healthy"
 msgstr ""
 
-#. [trait]
+#. [trait]: id=healthy
 #: data/core/macros/traits.cfg:133
 #, fuzzy
 msgid "female^healthy"
 msgstr "גנבת"
 
-#. [trait]
+#. [trait]: id=healthy
 #: data/core/macros/traits.cfg:134
 msgid "Can rest while moving, halves poison damage"
 msgstr ""
 
-#. [trait]
+#. [trait]: id=fearless
 #: data/core/macros/traits.cfg:151 data/core/macros/traits.cfg:164
 #, fuzzy
 msgid "fearless"
 msgstr "נסיכה"
 
-#. [trait]
+#. [trait]: id=fearless
 #: data/core/macros/traits.cfg:152 data/core/macros/traits.cfg:165
 #, fuzzy
 msgid "female^fearless"
 msgstr "נסיכה"
 
-#. [trait]
+#. [trait]: id=fearless
 #: data/core/macros/traits.cfg:153 data/core/macros/traits.cfg:166
 msgid "Fights normally during unfavorable times of day/night"
 msgstr ""
 
-#. [trait]
+#. [trait]: id=weak
 #: data/core/macros/traits.cfg:174
 msgid "weak"
 msgstr ""
 
-#. [trait]
+#. [trait]: id=weak
 #: data/core/macros/traits.cfg:175
 #, fuzzy
 msgid "female^weak"
 msgstr "נוכלת"
 
-#. [trait]
+#. [trait]: id=slow
 #: data/core/macros/traits.cfg:192
 #, fuzzy
 msgid "slow"
 msgstr "איטיות"
 
-#. [trait]
+#. [trait]: id=slow
 #: data/core/macros/traits.cfg:193
 #, fuzzy
 msgid "female^slow"
 msgstr "פורעת חוק"
 
-#. [trait]
+#. [trait]: id=dim
 #: data/core/macros/traits.cfg:209
 #, fuzzy
 msgid "dim"
 msgstr "בינוני"
 
-#. [trait]
+#. [trait]: id=dim
 #: data/core/macros/traits.cfg:210
 #, fuzzy
 msgid "female^dim"
 msgstr "נסיכה"
 
-#. [color_range]
+#. [color_range]: id=red
+#. [color_range]: id=1
 #: data/core/team-colors.cfg:14 data/core/team-colors.cfg:71
 msgid "Red"
 msgstr "אדום"
 
-#. [color_range]
+#. [color_range]: id=blue
+#. [color_range]: id=2
 #: data/core/team-colors.cfg:20 data/core/team-colors.cfg:77
 msgid "Blue"
 msgstr "כחול"
 
-#. [color_range]
+#. [color_range]: id=green
+#. [color_range]: id=3
 #: data/core/team-colors.cfg:26 data/core/team-colors.cfg:83
 msgid "Green"
 msgstr "ירוק"
 
-#. [color_range]
+#. [color_range]: id=purple
+#. [color_range]: id=4
 #: data/core/team-colors.cfg:32 data/core/team-colors.cfg:89
 msgid "Purple"
 msgstr "סגול"
 
-#. [color_range]
+#. [color_range]: id=orange
+#. [color_range]: id=7
 #: data/core/team-colors.cfg:38 data/core/team-colors.cfg:95
 msgid "Orange"
 msgstr "כתום"
 
-#. [color_range]
+#. [color_range]: id=black
+#. [color_range]: id=5
 #: data/core/team-colors.cfg:44 data/core/team-colors.cfg:101
 #, fuzzy
 msgid "Black"
 msgstr "< חזרה "
 
-#. [color_range]
+#. [color_range]: id=white
+#. [color_range]: id=8
 #: data/core/team-colors.cfg:50 data/core/team-colors.cfg:107
 msgid "White"
 msgstr "לבן"
 
-#. [color_range]
+#. [color_range]: id=brown
+#. [color_range]: id=6
 #: data/core/team-colors.cfg:56 data/core/team-colors.cfg:113
 msgid "Brown"
 msgstr "חום"
 
-#. [color_range]
+#. [color_range]: id=teal
+#. [color_range]: id=9
 #: data/core/team-colors.cfg:62 data/core/team-colors.cfg:119
 #, fuzzy
 msgid "Teal"
 msgstr "צוות"
 
-#. [race]: description=
+#. [race]: id=bats, description=
 #: data/core/units.cfg:43
 #, fuzzy
 msgid "race^Bat"
 msgstr "בני-אדם"
 
-#. [race]: description=
+#. [race]: id=bats, description=
 #: data/core/units.cfg:44
 #, fuzzy
 msgid "race+female^Bat"
 msgstr "בני-אדם"
 
-#. [race]: description=
+#. [race]: id=bats, description=
 #: data/core/units.cfg:45
 #, fuzzy
 msgid "race^Bats"
 msgstr "בני-אדם"
 
-#. [race]
+#. [race]: id=drake
 #: data/core/units.cfg:53
 #, fuzzy
 msgid "race^Drake"
 msgstr "טרול"
 
-#. [race]
+#. [race]: id=drake
 #: data/core/units.cfg:54
 #, fuzzy
 msgid "race+female^Drake"
 msgstr "טרול"
 
-#. [race]
+#. [race]: id=drake
 #: data/core/units.cfg:55
 #, fuzzy
 msgid "race^Drakes"
 msgstr "טרול"
 
-#. [race]
+#. [race]: id=drake
 #: data/core/units.cfg:68
 msgid ""
 "Drakes are large, winged and fire-breathing creatures, reminiscent of true "
@@ -4326,24 +4336,24 @@ msgid ""
 "some of the mountains of the far north of the Great Continent."
 msgstr ""
 
-#. [race]
+#. [race]: id=dwarf
 #: data/core/units.cfg:88
 #, fuzzy
 msgid "race^Dwarf"
 msgstr "טרול"
 
-#. [race]
+#. [race]: id=dwarf
 #: data/core/units.cfg:89
 #, fuzzy
 msgid "race+female^Dwarf"
 msgstr "טרול"
 
-#. [race]
+#. [race]: id=dwarf
 #: data/core/units.cfg:90
 msgid "race^Dwarves"
 msgstr ""
 
-#. [race]
+#. [race]: id=dwarf
 #: data/core/units.cfg:95
 msgid ""
 "The dwarves are a race famed for their miners, blacksmiths, merchants and "
@@ -4393,25 +4403,25 @@ msgid ""
 "augment certain aspects of their natures."
 msgstr ""
 
-#. [race]
+#. [race]: id=elf
 #: data/core/units.cfg:107
 #, fuzzy
 msgid "race^Elf"
 msgstr "טרול"
 
-#. [race]
+#. [race]: id=elf
 #: data/core/units.cfg:108
 #, fuzzy
 msgid "race+female^Elf"
 msgstr "טרול"
 
-#. [race]
+#. [race]: id=elf
 #: data/core/units.cfg:109
 #, fuzzy
 msgid "race^Elves"
 msgstr "טרול"
 
-#. [race]
+#. [race]: id=elf
 #: data/core/units.cfg:119
 msgid ""
 "Compared to humans, elves are somewhat taller, more agile but less sturdy. "
@@ -4451,60 +4461,60 @@ msgid ""
 "having existed for over a millennium."
 msgstr ""
 
-#. [race]: description=
+#. [race]: id=goblin, description=
 #: data/core/units.cfg:129
 #, fuzzy
 msgid "race^Goblin"
 msgstr "טרול"
 
-#. [race]: description=
+#. [race]: id=goblin, description=
 #: data/core/units.cfg:130
 #, fuzzy
 msgid "race+female^Goblin"
 msgstr "טרול"
 
-#. [race]: description=
+#. [race]: id=goblin, description=
 #: data/core/units.cfg:131
 msgid "race^Goblins"
 msgstr ""
 
-#. [race]: description=
+#. [race]: id=gryphon, description=
 #: data/core/units.cfg:144
 #, fuzzy
 msgid "race^Gryphon"
 msgstr "טרול"
 
-#. [race]: description=
+#. [race]: id=gryphon, description=
 #: data/core/units.cfg:145
 #, fuzzy
 msgid "race+female^Gryphon"
 msgstr "טרול"
 
-#. [race]: description=
+#. [race]: id=gryphon, description=
 #: data/core/units.cfg:146
 #, fuzzy
 msgid "race^Gryphons"
 msgstr "טרול"
 
-#. [race]
+#. [race]: id=human
 #: data/core/units.cfg:161
 #, fuzzy
 msgid "race^Human"
 msgstr "בני-אדם"
 
-#. [race]
+#. [race]: id=human
 #: data/core/units.cfg:162
 #, fuzzy
 msgid "race+female^Human"
 msgstr "בני-אדם"
 
-#. [race]
+#. [race]: id=human
 #: data/core/units.cfg:163
 #, fuzzy
 msgid "race^Humans"
 msgstr "בני-אדם"
 
-#. [race]
+#. [race]: id=human
 #: data/core/units.cfg:170
 msgid ""
 "The race of men is an extremely diverse one. Although they originally came "
@@ -4546,116 +4556,116 @@ msgid ""
 "and the strengths and weaknesses of these groups complement each other."
 msgstr ""
 
-#. [race]: description=
+#. [race]: id=lizard, description=
 #: data/core/units.cfg:178
 #, fuzzy
 msgid "race^Saurian"
 msgstr "אל-מתים"
 
-#. [race]: description=
+#. [race]: id=lizard, description=
 #: data/core/units.cfg:179
 #, fuzzy
 msgid "race+female^Saurian"
 msgstr "אל-מתים"
 
-#. [race]: description=
+#. [race]: id=lizard, description=
 #: data/core/units.cfg:180
 #, fuzzy
 msgid "race^Saurians"
 msgstr "אל-מתים"
 
-#. [race]: description=
+#. [race]: id=mechanical, description=
 #: data/core/units.cfg:189
 msgid "race^Mechanical"
 msgstr ""
 
-#. [race]: description=
+#. [race]: id=mechanical, description=
 #: data/core/units.cfg:190
 #, fuzzy
 msgid "race+plural^Mechanical"
 msgstr "גנבת"
 
-#. [race]: description=
+#. [race]: id=merman, description=
 #: data/core/units.cfg:200
 #, fuzzy
 msgid "race^Merman"
 msgstr "בני-אדם"
 
-#. [race]: description=
+#. [race]: id=merman, description=
 #: data/core/units.cfg:201
 #, fuzzy
 msgid "race^Mermaid"
 msgstr "בני-אדם"
 
-#. [race]: description=
+#. [race]: id=merman, description=
 #: data/core/units.cfg:202
 msgid "race^Mermen"
 msgstr ""
 
-#. [race]: description=
+#. [race]: id=monster, description=
 #: data/core/units.cfg:210
 #, fuzzy
 msgid "race^Monster"
 msgstr "טרול"
 
-#. [race]: description=
+#. [race]: id=monster, description=
 #: data/core/units.cfg:211
 msgid "race^Monsters"
 msgstr ""
 
-#. [race]: description=
+#. [race]: id=naga, description=
 #: data/core/units.cfg:219
 #, fuzzy
 msgid "race^Naga"
 msgstr "בני-אדם"
 
-#. [race]: description=
+#. [race]: id=naga, description=
 #: data/core/units.cfg:220
 #, fuzzy
 msgid "race^Nagani"
 msgstr "בני-אדם"
 
-#. [race]: description=
+#. [race]: id=naga, description=
 #: data/core/units.cfg:221
 msgid "race^Nagas"
 msgstr ""
 
-#. [race]: description=
+#. [race]: id=ogre, description=
 #: data/core/units.cfg:229
 #, fuzzy
 msgid "race^Ogre"
 msgstr "טרול"
 
-#. [race]: description=
+#. [race]: id=ogre, description=
 #: data/core/units.cfg:230
 #, fuzzy
 msgid "race+female^Ogre"
 msgstr "טרול"
 
-#. [race]: description=
+#. [race]: id=ogre, description=
 #: data/core/units.cfg:231
 msgid "race^Ogres"
 msgstr ""
 
-#. [race]
+#. [race]: id=orc
 #: data/core/units.cfg:240
 #, fuzzy
 msgid "race^Orc"
 msgstr "טרול"
 
-#. [race]
+#. [race]: id=orc
 #: data/core/units.cfg:241
 #, fuzzy
 msgid "race+female^Orc"
 msgstr "טרול"
 
-#. [race]
+#. [race]: id=orc
 #: data/core/units.cfg:242
 #, fuzzy
 msgid "race^Orcs"
 msgstr "טרול"
 
-#. [race]
+#. [race]: id=orc
 #: data/core/units.cfg:252
 msgid ""
 "In appearance, orcs are half men and half beasts. They are taller, sturdier "
@@ -4715,25 +4725,25 @@ msgid ""
 "assassination."
 msgstr ""
 
-#. [race]
+#. [race]: id=troll
 #: data/core/units.cfg:259
 #, fuzzy
 msgid "race^Troll"
 msgstr "טרול"
 
-#. [race]
+#. [race]: id=troll
 #: data/core/units.cfg:260
 #, fuzzy
 msgid "race+female^Troll"
 msgstr "טרול"
 
-#. [race]
+#. [race]: id=troll
 #: data/core/units.cfg:261
 #, fuzzy
 msgid "race^Trolls"
 msgstr "טרול"
 
-#. [race]
+#. [race]: id=troll
 #: data/core/units.cfg:267
 msgid ""
 "Trolls are ancient creatures, one of the oldest known races known to inhabit "
@@ -4772,24 +4782,24 @@ msgid ""
 "north and east of Wesnoth, and wherever Orcish hordes travel."
 msgstr ""
 
-#. [race]
+#. [race]: id=undead
 #: data/core/units.cfg:281
 msgid "race^Undead"
 msgstr "אל-מתים"
 
-#. [race]
+#. [race]: id=undead
 #: data/core/units.cfg:282
 #, fuzzy
 msgid "race+female^Undead"
 msgstr "אל-מתים"
 
-#. [race]
+#. [race]: id=undead
 #: data/core/units.cfg:283
 #, fuzzy
 msgid "race+plural^Undead"
 msgstr "אל-מתים"
 
-#. [race]
+#. [race]: id=undead
 #: data/core/units.cfg:289
 msgid ""
 "Undead are not really a single race of creatures, although often treated as "
@@ -4818,25 +4828,25 @@ msgid ""
 "and dwarves before that."
 msgstr ""
 
-#. [race]: description=
+#. [race]: id=wolf, description=
 #: data/core/units.cfg:297
 #, fuzzy
 msgid "race^Wolf"
 msgstr "טרול"
 
-#. [race]: description=
+#. [race]: id=wolf, description=
 #: data/core/units.cfg:298
 #, fuzzy
 msgid "race^Wolves"
 msgstr "טרול"
 
-#. [race]: description=
+#. [race]: id=wose, description=
 #: data/core/units.cfg:307
 #, fuzzy
 msgid "race^Wose"
 msgstr "טרול"
 
-#. [race]: description=
+#. [race]: id=wose, description=
 #: data/core/units.cfg:308
 #, fuzzy
 msgid "race^Woses"
@@ -5589,27 +5599,28 @@ msgid ""
 "a similar manner, and dwarves can do the same with mountains."
 msgstr ""
 
-#. [menu]
+#. [menu]: id=menu-main
 #: data/themes/default.cfg:120 data/themes/dfool.cfg:134
 #: data/themes/experimental.cfg:95
 msgid "Menu"
 msgstr "תפריט"
 
-#. [menu]
+#. [menu]: id=actions-menu
 #: data/themes/default.cfg:131 data/themes/dfool.cfg:145
 #: data/themes/experimental.cfg:106
 msgid "Actions"
 msgstr "פעולות"
 
-#. [menu]
-#. [change]
+#. [menu]: id=button-endturn
+#. [change]: id=button-endturn
 #: data/themes/default.cfg:153 data/themes/default.cfg:763
 #: data/themes/dfool.cfg:160
 msgid "End Turn"
 msgstr "סוף תור"
 
-#. [menu]
-#. [change]
+#. [menu]: id=button-endturn
+#. [change]: id=button-endturn
+#. [menu]: id=button-endturn2
 #: data/themes/default.cfg:154 data/themes/default.cfg:764
 #: data/themes/default.cfg:1018 data/themes/dfool.cfg:161
 #, fuzzy
@@ -5617,144 +5628,144 @@ msgid "End Scenario"
 msgstr "תרחיש לא ידוע"
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
-#. [label]
+#. [label]: id=label-hp
 #: data/themes/default.cfg:212 data/themes/dfool.cfg:232
-#: data/themes/experimental.cfg:181 src/menu_events.cpp:201 src/unit.cpp:2569
-#: src/unit.cpp:2743
+#: data/themes/experimental.cfg:181 src/menu_events.cpp:201 src/unit.cpp:2566
+#: src/unit.cpp:2740
 msgid "HP"
 msgstr "נק\"פ"
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
-#. [label]
+#. [label]: id=label-xp
 #: data/themes/default.cfg:221 data/themes/dfool.cfg:242
 #: data/themes/experimental.cfg:190 src/menu_events.cpp:202
 #: src/menu_events.cpp:989
 msgid "XP"
 msgstr "נק\"ן"
 
-#. [label]
+#. [label]: id=gold-icon
 #: data/themes/default.cfg:231 data/themes/dfool.cfg:261
 #: data/themes/experimental.cfg:199
 msgid "gold"
 msgstr "זהב"
 
-#. [label]
+#. [label]: id=villages-icon
 #: data/themes/default.cfg:240 data/themes/dfool.cfg:270
 #: data/themes/experimental.cfg:208
 msgid "villages"
 msgstr "כפרים"
 
-#. [label]
+#. [label]: id=units-icon
 #: data/themes/default.cfg:249 data/themes/dfool.cfg:279
 #: data/themes/experimental.cfg:217
 msgid "units"
 msgstr "יחידות"
 
-#. [label]
+#. [label]: id=upkeep-icon
 #: data/themes/default.cfg:258 data/themes/dfool.cfg:288
 #: data/themes/experimental.cfg:226
 msgid "upkeep"
 msgstr "אחזקה"
 
-#. [label]
+#. [label]: id=income-icon
 #: data/themes/default.cfg:267 data/themes/dfool.cfg:297
 #: data/themes/experimental.cfg:235
 msgid "income"
 msgstr "הכנסה"
 
-#. [unit_level]
+#. [unit_level]: id=unit-level
 #: data/themes/default.cfg:428 data/themes/dfool.cfg:467
 #: data/themes/experimental.cfg:368
 msgid "statuspanel^level"
 msgstr "רמה"
 
-#. [unit_moves]
+#. [unit_moves]: id=unit-moves
 #: data/themes/default.cfg:459 data/themes/experimental.cfg:399
 msgid "statuspanel^movement"
 msgstr "תנועה"
 
-#. [change]
+#. [change]: id=actions-menu
 #: data/themes/default.cfg:989
 msgid "Act."
 msgstr "פעל."
 
-#. [remove]
-#. [menu]
+#. [remove]: id=button-endturn
+#. [menu]: id=button-endturn2
 #: data/themes/default.cfg:1009 data/themes/default.cfg:1017
 #, fuzzy
 msgid "short end-turn^E."
 msgstr "סוף"
 
-#. [label]
+#. [label]: id=label-mp
 #: data/themes/dfool.cfg:252
 msgid "MP"
 msgstr ""
 
-#. [label]
+#. [label]: id=replay-label
 #: data/themes/macros.cfg:59
 msgid "Replay"
 msgstr "הקלטת משחק"
 
-#. [menu]: type=image
+#. [menu]: id=button-playreplay, type=image
 #: data/themes/macros.cfg:74
 msgid "Play"
 msgstr "הצג"
 
-#. [menu]: type=image
+#. [menu]: id=button-playreplay, type=image
 #: data/themes/macros.cfg:75
 #, fuzzy
 msgid "continuous replay"
 msgstr " מהתחלה"
 
-#. [menu]: type=image
+#. [menu]: id=button-stopreplay, type=image
 #: data/themes/macros.cfg:92
 msgid "Stop"
 msgstr "עצור"
 
-#. [menu]: type=image
+#. [menu]: id=button-stopreplay, type=image
 #: data/themes/macros.cfg:93
 msgid "pause at end of turn"
 msgstr ""
 
-#. [menu]: type=image
+#. [menu]: id=button-resetreplay, type=image
 #: data/themes/macros.cfg:110
 msgid "Reset"
 msgstr "התחל מחדש"
 
-#. [menu]: type=image
+#. [menu]: id=button-resetreplay, type=image
 #: data/themes/macros.cfg:111
 msgid "reset to beginning"
 msgstr ""
 
-#. [menu]: type=image
+#. [menu]: id=button-nextturn, type=image
 #: data/themes/macros.cfg:128
 msgid "Next Turn"
 msgstr "התור הבא"
 
-#. [menu]: type=image
+#. [menu]: id=button-nextturn, type=image
 #: data/themes/macros.cfg:129
 #, fuzzy
 msgid "play turn"
 msgstr "לכל תור"
 
-#. [menu]: type=image
+#. [menu]: id=button-nextside, type=image
 #: data/themes/macros.cfg:146
 msgid "Next Side"
 msgstr "הצד הבא"
 
-#. [menu]: type=image
+#. [menu]: id=button-nextside, type=image
 #: data/themes/macros.cfg:147
 #, fuzzy
 msgid "play side turn"
 msgstr "לכל תור"
 
-#. [menu]
+#. [menu]: id=show-what
 #: data/themes/macros.cfg:163
 #, fuzzy
 msgid "Point of view"
 msgstr "שיקוי התנוונות"
 
-#. [menu]: type=checkbox
+#. [menu]: id=skip-animation, type=checkbox
 #: data/themes/macros.cfg:179
 msgid "Skip animation"
 msgstr "דלג על האנימציה"
@@ -8551,34 +8562,34 @@ msgstr ""
 msgid "Unknown unit type '$type|'"
 msgstr ""
 
-#: src/unit.cpp:2526 src/unit.cpp:2731 src/unit.cpp:2787
+#: src/unit.cpp:2523 src/unit.cpp:2728 src/unit.cpp:2784
 #, fuzzy
 msgid " and "
 msgstr "חול"
 
-#: src/unit.cpp:2537
+#: src/unit.cpp:2534
 msgid "$attack_list|: $effect_description"
 msgstr ""
 
-#: src/unit.cpp:2602
+#: src/unit.cpp:2599
 #, fuzzy
 msgid "moves"
 msgstr "מהלכים"
 
-#: src/unit.cpp:2620 src/unit.cpp:2758
+#: src/unit.cpp:2617 src/unit.cpp:2755
 msgid "XP to advance"
 msgstr "נק\"נ לרמה הבאה"
 
-#: src/unit.cpp:2750
+#: src/unit.cpp:2747
 #, fuzzy
 msgid " move"
 msgstr "מהלכים"
 
-#: src/unit.cpp:2766
+#: src/unit.cpp:2763
 msgid "$effect_description per level"
 msgstr ""
 
-#: src/unit.cpp:2796
+#: src/unit.cpp:2793
 msgid "$trait_name|: $trait_description "
 msgstr ""
 

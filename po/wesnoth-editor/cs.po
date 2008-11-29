@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-27 19:52+0100\n"
+"POT-Creation-Date: 2008-11-29 12:24+0100\n"
 "PO-Revision-Date: 2008-10-04 14:22+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
@@ -26,57 +26,57 @@ msgstr ""
 "X-Poedit-Country: CZECH REPUBLIC\n"
 "X-Poedit-Basepath: D:\\Dev\\wesnoth-trunk\n"
 
-#. [editor_group]
+#. [editor_group]: id=all
 #: data/core/editor-groups.cfg:11
 msgid "all"
 msgstr "všechno"
 
-#. [editor_group]
+#. [editor_group]: id=water
 #: data/core/editor-groups.cfg:17
 msgid "water"
 msgstr "voda"
 
-#. [editor_group]
+#. [editor_group]: id=flat
 #: data/core/editor-groups.cfg:29
 msgid "flat"
 msgstr "pláně"
 
-#. [editor_group]
+#. [editor_group]: id=desert
 #: data/core/editor-groups.cfg:35
 msgid "desert"
 msgstr "pouště"
 
-#. [editor_group]
+#. [editor_group]: id=forest
 #: data/core/editor-groups.cfg:41
 msgid "forest"
 msgstr "lesy"
 
-#. [editor_group]
+#. [editor_group]: id=frozen
 #: data/core/editor-groups.cfg:47
 msgid "frozen"
 msgstr "zmrzlé"
 
-#. [editor_group]
+#. [editor_group]: id=rough
 #: data/core/editor-groups.cfg:53
 msgid "rough"
 msgstr "členité"
 
-#. [editor_group]
+#. [editor_group]: id=cave
 #: data/core/editor-groups.cfg:59
 msgid "cave"
 msgstr "jeskyně"
 
-#. [editor_group]
+#. [editor_group]: id=village
 #: data/core/editor-groups.cfg:65
 msgid "village"
 msgstr "vesnice"
 
-#. [editor_group]
+#. [editor_group]: id=castle
 #: data/core/editor-groups.cfg:71
 msgid "castle"
 msgstr "hrady"
 
-#. [editor_group]
+#. [editor_group]: id=special
 #: data/core/editor-groups.cfg:77
 msgid "special"
 msgstr ""
@@ -101,21 +101,22 @@ msgstr "Poloměr dva hexy"
 msgid "Hex Line NW-SE"
 msgstr ""
 
-#. [editor2_tool_hint]
+#. [editor2_tool_hint]: id=editor-tool-paint
+#. [editor2_tool_hint]: id=editor-tool-fill
 #: data/core/editor2-tool-hints.cfg:7 data/core/editor2-tool-hints.cfg:13
 msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only."
 msgstr ""
 
-#. [editor2_tool_hint]
+#. [editor2_tool_hint]: id=editor-tool-select
 #: data/core/editor2-tool-hints.cfg:19
 msgid ""
 "Left mouse button selects, right deselects. Hold Shift for magic-wand "
 "selection of tiles with same terrain."
 msgstr ""
 
-#. [editor2_tool_hint]
+#. [editor2_tool_hint]: id=editor-tool-starting-position
 #: data/core/editor2-tool-hints.cfg:25
 msgid ""
 "Left mouse button displays player selection, right clears. Number keys "
@@ -123,35 +124,35 @@ msgid ""
 "position under cursor, delete clears."
 msgstr ""
 
-#. [editor2_tool_hint]
+#. [editor2_tool_hint]: id=editor-paste
 #: data/core/editor2-tool-hints.cfg:30
 msgid ""
 "Click to paste. Use the edit menu to transform the clipboard (rotate, "
 "mirror)."
 msgstr ""
 
-#. [menu]
+#. [menu]: id=menu-editor-file
 #: data/themes/editor2.cfg:120
 msgid "File"
 msgstr "Soubor"
 
-#. [menu]
+#. [menu]: id=menu-editor-edit
 #: data/themes/editor2.cfg:131
 msgid "Edit"
 msgstr "Úpravy"
 
-#. [menu]
+#. [menu]: id=menu-editor-map
 #: data/themes/editor2.cfg:141
 msgid "Map"
 msgstr "Mapa"
 
-#. [menu]
+#. [menu]: id=menu-editor-window
 #: data/themes/editor2.cfg:151
 #, fuzzy
 msgid "Window"
 msgstr "Zpátky"
 
-#. [label]
+#. [label]: id=villages-icon
 #: data/themes/editor2.cfg:262
 msgid "villages"
 msgstr "vesnic"
