@@ -24,7 +24,7 @@ eval "require \"$module\";";
 
 sub possible_node_info {
   my ($nodeinfostack, $field, $value) = @_;
-  if ($field =~ m/\b(speaker|role|description|condition|type|race)\b/) {
+  if ($field =~ m/\b(speaker|id|role|description|condition|type|race)\b/) {
     push @{$nodeinfostack->[-1][2]}, "$field=$value";
   }
 }
