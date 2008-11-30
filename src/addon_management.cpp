@@ -398,11 +398,11 @@ namespace {
 			case ADDON_SP_SCENARIO:
 				return _("addon_type^Scenario");
 			case ADDON_MP_ERA:
-				return _("addon_type^MP Era");
+				return _("addon_type^MP era");
 			case ADDON_MP_FACTION:
-				return _("addon_type^MP Faction");
+				return _("addon_type^MP faction");
 			case ADDON_MP_MAPS:
-				return _("addon_type^MP Map-pack");
+				return _("addon_type^MP map-pack");
 			case ADDON_MP_SCENARIO:
 				return _("addon_type^MP scenario");
 			case ADDON_MP_CAMPAIGN:
