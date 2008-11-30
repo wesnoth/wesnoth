@@ -2334,10 +2334,10 @@ private:
 					_("Fire a game event."), "", "D");
 				register_alias("throw", "fire");
 				register_command("show_coordinates", &console_handler::do_toggle_draw_coordinates,
-					_("Toggle overalying of x,y coordinates on hexes."));
+					_("Toggle overlaying of x,y coordinates on hexes."));
 				register_alias("show_coordinates", "sc");
 				register_command("show_terrain_codes", &console_handler::do_toggle_draw_terrain_codes,
-					_("Toggle overalying of terrain codes on hexes."));
+					_("Toggle overlaying of terrain codes on hexes."));
 				register_alias("show_terrain_codes", "tc");
 
 				config* alias_list = preferences::get_alias();
