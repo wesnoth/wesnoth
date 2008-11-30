@@ -1,3 +1,4 @@
+# translation of wesnoth-editor.po to Dutch
 # Dutch translations for Battle for Wesnoth package.
 # Copyright (C) 2005 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
@@ -5,16 +6,17 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 0.8.11+CVS\n"
+"Project-Id-Version: wesnoth-editor\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-11-29 12:24+0100\n"
-"PO-Revision-Date: 2008-11-20 08:40+0100\n"
-"Last-Translator: Foppe Benedictus <foppe.benedictus@gmail.com>\n"
-"Language-Team: Dutch <foppe.benedictus@gmail.com>\n"
+"PO-Revision-Date: 2008-11-28 20:18+0100\n"
+"Last-Translator: Julien Rossi (Tux2B)\n"
+"Language-Team: Dutch\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-Language: Dutch\n"
+"X-Generator: KBabel 1.11.4\n"
 
 #. [editor_group]: id=all
 #: data/core/editor-groups.cfg:11
@@ -74,22 +76,22 @@ msgstr "speciaal"
 #. [brush]
 #: data/core/editor2-brushes.cfg:4
 msgid "Single Hex"
-msgstr ""
+msgstr "Enkele hex"
 
 #. [brush]
 #: data/core/editor2-brushes.cfg:14
 msgid "Radius 1 Hex"
-msgstr ""
+msgstr "Radius 1 Hex"
 
 #. [brush]
 #: data/core/editor2-brushes.cfg:24
 msgid "Radius 2 Hex"
-msgstr ""
+msgstr "Radius 2 Hex"
 
 #. [brush]
 #: data/core/editor2-brushes.cfg:54
 msgid "Hex Line NW-SE"
-msgstr ""
+msgstr "Hex lijn NW-SO"
 
 #. [editor2_tool_hint]: id=editor-tool-paint
 #. [editor2_tool_hint]: id=editor-tool-fill
@@ -98,6 +100,8 @@ msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only."
 msgstr ""
+"Gebruik links/rechts muis knop om voor-/achtergrond terrein te tekenen. Houd "
+"Shift ingedrukt om alleen het basis layer te tekenen"
 
 #. [editor2_tool_hint]: id=editor-tool-select
 #: data/core/editor2-tool-hints.cfg:19
@@ -105,6 +109,8 @@ msgid ""
 "Left mouse button selects, right deselects. Hold Shift for magic-wand "
 "selection of tiles with same terrain."
 msgstr ""
+"Linkerknop selecteert, rechterknop deselecteert. Houd Shift ingedrukt voor "
+"toverstok selectie van hokjes met hetzelfde terrein."
 
 #. [editor2_tool_hint]: id=editor-tool-starting-position
 #: data/core/editor2-tool-hints.cfg:25
@@ -113,6 +119,9 @@ msgid ""
 "scroll to the starting position, alt+number sets respective starting "
 "position under cursor, delete clears."
 msgstr ""
+"Linkerknop weergeeft speler selectie, rechterknop wist. Nummer toetsen "
+"ontrol tot startpositie, alt+nummer stelt respectieve startpositie onder "
+"cursor in, delete wist."
 
 #. [editor2_tool_hint]: id=editor-paste
 #: data/core/editor2-tool-hints.cfg:30
@@ -120,6 +129,8 @@ msgid ""
 "Click to paste. Use the edit menu to transform the clipboard (rotate, "
 "mirror)."
 msgstr ""
+"Klik om te plakken. Gebruik het Bewerken-menu om het klemboord te bewerken "
+"(omdraaien, spiegel)."
 
 #. [menu]: id=menu-editor-file
 #: data/themes/editor2.cfg:120
@@ -138,9 +149,8 @@ msgstr "Kaart"
 
 #. [menu]: id=menu-editor-window
 #: data/themes/editor2.cfg:151
-#, fuzzy
 msgid "Window"
-msgstr "Ongedaan maken"
+msgstr "Venster"
 
 #. [label]: id=villages-icon
 #: data/themes/editor2.cfg:262
@@ -153,11 +163,11 @@ msgstr "Editor verlaten"
 
 #: src/editor2/editor_controller.cpp:241
 msgid "Fatal error"
-msgstr ""
+msgstr "Fataal fout"
 
 #: src/editor2/editor_controller.cpp:255 src/editor2/editor_controller.cpp:952
 msgid "(New Map)"
-msgstr ""
+msgstr "(Nieuwe kaart)"
 
 #: src/editor2/editor_controller.cpp:261
 msgid "Do you really want to quit?"
@@ -168,12 +178,16 @@ msgid ""
 "Do you really want to quit? Changes in the map since the last save will be "
 "lost."
 msgstr ""
+"Wilt u echt sluiten? Wijzigingen van de kaart sinds het laatste opname "
+"zullen worden verloren."
 
 #: src/editor2/editor_controller.cpp:265
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
 msgstr ""
+"Wilt u echt sluiten? De volgende kaarten zijn gewijzigd en alle wijzigingen "
+"sinds de laatste opname zullen worden verloren."
 
 #: src/editor2/editor_controller.cpp:270
 msgid "Quit"
@@ -186,60 +200,57 @@ msgstr "Fout"
 
 #: src/editor2/editor_controller.cpp:327
 msgid "No editor time-of-day found."
-msgstr ""
+msgstr "Geen editor tijd-van-dag gevonden"
 
 #: src/editor2/editor_controller.cpp:363
 msgid "Unsaved Changes"
-msgstr ""
+msgstr "Onopgeslagen wijzigingen"
 
 #: src/editor2/editor_controller.cpp:364
 msgid ""
 "Do you want to discard all changes you made to the map since the last save?"
-msgstr ""
+msgstr "Wilt u alle wijzigigen sinds u laatst de kaart opsloeg ongedaan maken?"
 
 #: src/editor2/editor_controller.cpp:377
-#, fuzzy
 msgid "Choose a Map to Open"
 msgstr "Kies een kaart om in te lezen"
 
 #: src/editor2/editor_controller.cpp:381
 msgid "This map is already open."
-msgstr ""
+msgstr "Deze kaart is al open"
 
 #: src/editor2/editor_controller.cpp:419
 msgid "Save the Map As"
 msgstr "Kaart opslaan als"
 
 #: src/editor2/editor_controller.cpp:423
-#, fuzzy
 msgid "The file already exists. Do you want to overwrite it?"
-msgstr "Wil je de bestaande kaart overschrijven?"
+msgstr "Wilt u de bestaande kaart overschrijven?"
 
 #: src/editor2/editor_controller.cpp:439
 msgid "No random map generators found."
-msgstr ""
+msgstr "Geen willekeurige kaart generator gevonden"
 
 #: src/editor2/editor_controller.cpp:450
 msgid "Map creation failed."
-msgstr ""
+msgstr "Kaart aanmaken mislukt"
 
 #: src/editor2/editor_controller.cpp:465
-#, fuzzy
 msgid "Choose a mask to apply"
-msgstr "Kies een kaart om in te lezen"
+msgstr "Kies een masker om aan te passen"
 
 #: src/editor2/editor_controller.cpp:472
 msgid "Error loading mask"
-msgstr ""
+msgstr "Fout bij laden van het masker"
 
 #: src/editor2/editor_controller.cpp:487
 msgid "Choose target map"
-msgstr ""
+msgstr "Kiez doel kaart"
 
 #: src/editor2/editor_controller.cpp:494 src/editor2/editor_controller.cpp:607
 #: src/editor2/editor_main.cpp:51
 msgid "Error loading map"
-msgstr ""
+msgstr "Fout bij laden van het kaart"
 
 #: src/editor2/editor_controller.cpp:583
 msgid "Map saved."
@@ -255,7 +266,7 @@ msgstr "Ongedaan maken"
 
 #: src/editor2/editor_controller.cpp:981
 msgid "Can't Undo"
-msgstr ""
+msgstr "Kan niet ongedaan maken"
 
 #: src/editor2/editor_controller.cpp:985
 msgid "Redo"
@@ -263,11 +274,11 @@ msgstr "Opnieuw"
 
 #: src/editor2/editor_controller.cpp:987
 msgid "Can't Redo"
-msgstr ""
+msgstr "Kan niet herhalen"
 
 #: src/editor2/editor_map.cpp:82
 msgid "Empty map file or file not found"
-msgstr ""
+msgstr "Leeg kaartbestand of bestand niet gevonden"
 
 #: src/editor2/editor_map.cpp:163 src/editor2/mouse_action.cpp:383
 msgid "Player"
@@ -275,7 +286,7 @@ msgstr "Speler"
 
 #: src/editor2/editor_map.cpp:282
 msgid "The size of the target map is different from the current map"
-msgstr ""
+msgstr "De groote van het doelmap verschilt van die van de huidige kaart"
 
 #: src/editor2/editor_palettes.cpp:493
 msgid "FG"
@@ -291,95 +302,22 @@ msgstr "Geen"
 
 #: src/editor2/mouse_action.cpp:387
 msgid "Choose player"
-msgstr ""
+msgstr "Kies speler"
 
 #: src/editor2/mouse_action.cpp:388
 msgid ""
 "Which player should start here? You can also use the 1-9 and delete keys to "
 "set/clear staring positions."
 msgstr ""
+"Welke speler zal hier moeten starten? U kunt ook de 1 t/m 9 and delete "
+"toetsen gebruiken om de startposities in te stellen of wissen."
 
 #: src/gui/dialogs/editor_settings.cpp:116
 msgid "Custom setting"
-msgstr ""
+msgstr "Eigen instelligen"
 
-#~ msgid "Click to paste."
-#~ msgstr "Klik om te plakken."
+#~ msgid "There was a format error while loading the file:"
+#~ msgstr "Er is een fout opgetreden bij het opladen van bestand :"
 
-#~ msgid "Settings"
-#~ msgstr "Instellingen"
-
-#~ msgid "Draw tiles"
-#~ msgstr "Vakjes plaatsen"
-
-#~ msgid "Fill"
-#~ msgstr "Opvullen"
-
-#~ msgid "Set player's starting position"
-#~ msgstr "Startpositie instellen"
-
-#~ msgid "Zoom in"
-#~ msgstr "Inzoomen"
-
-#~ msgid "Zoom out"
-#~ msgstr "Uitzoomen"
-
-#~ msgid "Zoom to default view"
-#~ msgstr "Standaardzoom"
-
-#~ msgid "Toggle grid"
-#~ msgstr "Raster aan/uit"
-
-#~ msgid "Resize the map"
-#~ msgstr "Afmetingen wijzigen"
-
-#~ msgid "Flip map"
-#~ msgstr "Kaart spiegelen"
-
-#~ msgid "Update transitions"
-#~ msgstr "Update transitie"
-
-#~ msgid "Delay transition updates"
-#~ msgstr "Verlaat transitie updates"
-
-#~ msgid "Language"
-#~ msgstr "Taal"
-
-#~ msgid "Choose your preferred language:"
-#~ msgstr "Taal instellen:"
-
-#~ msgid "Battle for Wesnoth Map Editor"
-#~ msgstr "Strijd om Wesnoth Kaartbewerking"
-
-#~ msgid "None"
-#~ msgstr "Geen"
-
-#~ msgid "Which Player?"
-#~ msgstr "Welke Speler?"
-
-#~ msgid "Which player should start here?"
-#~ msgstr "Welke speler begint hier?"
-
-#~ msgid ""
-#~ "Warning: Illegal characters found in the map name. Please save under a "
-#~ "different name."
-#~ msgstr ""
-#~ "Waarschuwing: Ongeldige tekens gevonden in de naam. Kies een andere naam."
-
-#~ msgid "The file does not contain a valid map."
-#~ msgstr "Het bestand is geen geldige Wesnoth-kaart."
-
-#~ msgid "Do you want to save the map before quitting?"
-#~ msgstr "Wil je de kaart opslaan?"
-
-#~ msgid "Error: Illegal character in filename."
-#~ msgstr "Fout: ongeldig teken in bestandsnaam."
-
-#~ msgid ""
-#~ "Can't resize the map, the requested size is bigger than the maximum, size="
-#~ msgstr ""
-#~ "Kan de kaart niet vergoten, de gewenste grootte is groter dan het "
-#~ "maximum, grootte="
-
-#~ msgid " maximum="
-#~ msgstr " maximum="
+#~ msgid "There was a wml error while loading the file:"
+#~ msgstr "Er is een WML fout opgetreden bij het laden van bestand :"

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-11-29 12:24+0100\n"
-"PO-Revision-Date: 2008-11-20 08:50+0100\n"
+"PO-Revision-Date: 2008-11-28 09:33+0100\n"
 "Last-Translator: Foppe Benedictus <foppe.benedictus@gmail.com>\n"
 "Language-Team: Dutch <foppe.benedictus@gmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -1079,6 +1079,9 @@ msgid ""
 "@Defeat all enemy leaders\n"
 "`(early finish bonus)"
 msgstr ""
+"<255,255,255>Alternatief doel:\n"
+"@Versla alle vijandelijke leiders\n"
+"`(vroeg einde bonus)"
 
 #. [side]: type=Orcish Warrior, id=Dwaba-Kukai
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:59
@@ -1540,6 +1543,9 @@ msgid ""
 "@Defeat Muff Malal\n"
 "`(early finish bonus)"
 msgstr ""
+"<255,255,255>Alternatief doel:\n"
+"@Verlsa Muff Malal\n"
+"`(vroeg einde bonus)"
 
 #. [side]: type=Dark Sorcerer, id=Muff Malal
 #: data/campaigns/Heir_To_The_Throne/scenarios/05a_Muff_Malal_Peninsula.cfg:61
@@ -1683,7 +1689,7 @@ msgstr ""
 #. [objectives]
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:33
 msgid "No gold carried over to the next scenario."
-msgstr ""
+msgstr "Geen goud meegenomen nar het volgende scenario."
 
 #. [part]
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:41
@@ -1781,9 +1787,8 @@ msgstr "Laten we samenwerken! Help ons die duistere schepsels te verslaan!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:201
-#, fuzzy
 msgid "You receive 100 pieces of gold!"
-msgstr "Je ontvangt 300 goudstukken!"
+msgstr "Je ontvangt 100 goudstukken!"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:210
@@ -1880,6 +1885,8 @@ msgstr ""
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:504
 msgid "You regain your lost troops and $isle_damned_starting_gold gold!"
 msgstr ""
+"Je hebt je verloren troepen terug en de $isle_damned_starting_gold "
+"goudstukken!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:475
@@ -4443,15 +4450,14 @@ msgstr "Hoe lang ben je hier al?"
 
 #. [message]: speaker=Ulfdain
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:237
-#, fuzzy
 msgid ""
 "Och, several days at least. The troll meat is starting to stink, and I'm a "
 "little ravenous, if ye catch my drift. Canna' swim past that current, and "
 "no' for lack o' tryin'."
 msgstr ""
-"Och, minstens meerdere dagen. Het trollenvoedsel begint te stinken en ik "
-"voel me een beetje uitgehongerd, als je begrijpt wat ik bedoel. Ik kan niet "
-"langs die verdraaide stroom gaan. Niet dat ik niet probeer, natuurlijk..."
+"Och, minstens meerdere dagen. Het trollenvlees begint te stinken en ik voel "
+"me een beetje uitgehongerd, als je begrijpt. Kan nie langs die verdraaide "
+"stroom gaan. Nie da'k niet probeer, natuurlijk."
 
 #. [message]
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:241
@@ -4460,10 +4466,8 @@ msgstr "Ik zal je redden. Houdt mijn schouders vast, heer dwerg."
 
 #. [message]: speaker=Ulfdain
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:245
-#, fuzzy
 msgid "Thanks. Nae need to wait around here. Let's go."
-msgstr ""
-"Bedankt. Er is geen reden om hier langer rond te hangen. Laten we gaan. "
+msgstr "Bedankt. Geen reden om hier langer rond te hangen. Laten we gaan. "
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:268
@@ -4530,9 +4534,8 @@ msgstr ""
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:438
-#, fuzzy
 msgid "Vile creature! Let us rid these tunnels of its kind!"
-msgstr "Ah, een ork! Laat ons de gangen van dit gespuis zuiveren!"
+msgstr "Gemeen wezen! Laat ons de gangen van dit gespuis zuiveren!"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:449
@@ -4609,13 +4612,12 @@ msgstr "De aarde beeft."
 
 #. [message]: speaker=Geldar
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:553
-#, fuzzy
 msgid ""
 "Tall ones, I thank ye. Life has been nothing but a struggle recently. We are "
 "the last outpost o' civilization in these caves."
 msgstr ""
-"O groten, ik dank u. Het leven is een en al ellende de laatste tijd. We zijn "
-"de laatste voorpost van beschaving in deze grotten."
+"O groten, ik dank je. Het leven is een en al ellende de laatste tijd. We "
+"zijn de laatste beschaving in deze grotten."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:557
@@ -4630,15 +4632,14 @@ msgstr ""
 
 #. [message]: speaker=Geldar
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:561
-#, fuzzy
 msgid ""
 "The Scepter? Ah, the Scepter ye seek. You surface dwellers are ambitious. "
 "Beyond my citadel the spawn of the darkness hold complete sway. You'll no' "
 "survive without assistance."
 msgstr ""
 "De scepter? Aha, jullie zoeken de scepter. Jullie oppervlaktebewoners zijn "
-"ambitieus. Achter mijn citadel hebben heerst de duisternis. Jullie zullen "
-"het zonder hulp niet redden."
+"ambitieus. Achter mijn citadel heerst de duisternis. Jullie zullen het "
+"zonder hulp niet redden."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:565
@@ -5598,7 +5599,6 @@ msgstr "Versla de zielenzuiger Heer Aimucasur"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:26
-#, fuzzy
 msgid ""
 "<255,255,255>Bonus objective:\n"
 "@Defeat all Death Knights first"
@@ -6796,13 +6796,12 @@ msgstr "Vind de uitgang van het ondergrondse en verplaats Konrad er naar toe"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:28
-#, fuzzy
 msgid ""
 "<255,255,255>Optional objective:\n"
 "@Help the Wose fend off the undead attack"
 msgstr ""
-"<0,0,255>Help de Enten de Ondoden aanval af te slaan\n"
-"<0,0,255>( Facultatief doel )"
+"<255,255,255>Optioneel doel:\n"
+"@Help de Enten de Ondoden aanval af te slaan"
 
 #. [objective]: condition=lose
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:48
@@ -6873,14 +6872,14 @@ msgstr "Everlore"
 
 #. [message]: speaker=Uradredia
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:100
-#, fuzzy
 msgid ""
 "Greetings, and welcome to our capital. You should feel honored. It has been "
 "half a century - a generation in the way your race counts time - since any "
 "man has been considered Elf-friend enough to stand here in Elensiria."
 msgstr ""
 "Gegroet en welkom in onze hoofdstad. Je moet je vereerd voelen. Het is bijna "
-"een halve eeuw geleden sinds een man elvenvriend genoeg was om hier te staan."
+"een halve eeuw, een generatie zoals jullie ras dat ervaart, geleden sinds "
+"een man elvenvriend genoeg was om hier in Elensiria te staan."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:104
@@ -7532,13 +7531,12 @@ msgstr ""
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:217
-#, fuzzy
 msgid ""
 "We come in peace! We wish for you to aid us in our struggle against "
 "Asheviere, the evil Queen."
 msgstr ""
 "We komen in vrede! We willen dat jullie ons helpen in onze strijd tegen "
-"Asheviere, de kwade koningin moeder."
+"Asheviere, de kwade koningin."
 
 #. [message]: speaker=Sir Alric
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:221
@@ -8174,7 +8172,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Heir_To_The_Throne/scenarios/25_HttT_Epilogue.cfg:19
-#, fuzzy
 msgid ""
 "Delfador became Li'sar's High Counselor, advising her in the most important "
 "matters of state. He lived until a ripe old age and was granted a royal "
@@ -8458,9 +8455,8 @@ msgstr "Nee! Dit is het einde! We zijn verslagen!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Heir_To_The_Throne/utils/deaths.cfg:65
-#, fuzzy
 msgid "At least I die an honorable death."
-msgstr "Ik sterf tenminste een eervolle dood"
+msgstr "Ik sterf tenminste een eervolle dood."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:43
@@ -8559,7 +8555,6 @@ msgstr "ongeldig pantser"
 
 #. [value]: id=void_armor
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:198
-#, fuzzy
 msgid ""
 "The Void Armor grants the following resistances:\n"
 "blade:  50%\n"
@@ -8568,9 +8563,9 @@ msgid ""
 "fire:  +10%"
 msgstr ""
 "Het ongeldige pantser garandeert de volgende beschermingen:\n"
-"blade:  50%\n"
-"pierce: 50%\n"
-"impact: 60%\n"
+"scherp:  50%\n"
+"puntig: 50%\n"
+"stomp: 60%\n"
 "vuur:  +10%"
 
 #. [object]: id=object_scepter
