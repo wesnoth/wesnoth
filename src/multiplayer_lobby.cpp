@@ -130,23 +130,22 @@ void gamebrowser::draw_row(const size_t index, const SDL_Rect& item_rect, ROW_TY
 
 	// Set font color
 	SDL_Color font_color;
-	if (game.password_required) {
-		font_color = font::BAD_COLOUR;
-	} else if (game.vacant_slots > 0 && game.have_era) {
+	if (game.vacant_slots > 0) {
 		if (game.reloaded || game.started) {
 			font_color = font::YELLOW_COLOUR;
 		} else {
 			font_color = font::GOOD_COLOUR;
 		}
 	} else {
-		if (game.observers && game.have_era) {
+		if (game.observers) {
 			font_color = font::NORMAL_COLOUR;
 		} else {
 			font_color = font::BAD_COLOUR;
 		}
 	}
-    if(!game.have_era)
-        no_era_string = _(" (Unknown Era)");
+	if(!game.have_era) {
+		no_era_string = _(" (Unknown Era)");
+	}
         
 	const surface status_text(font::get_rendered_text(game.status,
 	    font::SIZE_NORMAL, font_color));
