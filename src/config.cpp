@@ -603,7 +603,7 @@ void config::apply_diff(const config& diff)
 
 void config::merge_with(const config& c)
 {
-	boost::unordered_map<std::string, unsigned> visitations;
+	std::map<std::string, unsigned> visitations;
 
 	// Merge attributes first
 	string_map::const_iterator attrib_it, attrib_end = c.values.end();
