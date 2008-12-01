@@ -59,8 +59,7 @@ public:
 	 * @param item                The data to send to set_members of the
 	 *                            widget or to all the widgets.
 	 */
-	void add_row(const std::map<
-		std::string /* member id */, t_string /* member value */>& item);
+	void add_row(const string_map& item);
 
 	/**
 	 * Adds single row to the grid.
@@ -77,8 +76,7 @@ public:
 	 *                            Having both empty and non-empty id's gives
 	 *                            undefined behaviour.
 	 */
-	void add_row(const std::map<std::string /* widget id */, std::map<
-		std::string /* member id */, t_string /* member value */> >& data);
+	void add_row(const std::map<std::string /* widget id */, string_map>& data);
 
 	/**
 	 * Adds multiple rows to the grid.
@@ -91,8 +89,7 @@ public:
 	 *                            it calls add_row(std::map<std::string,
 	 *                            t_string>&). 
 	 */
-	void add_rows(const std::vector<std::map<
-		std::string /* member id */, t_string /* member value */> >& data);
+	void add_rows(const std::vector<string_map>& data);
 
 	unsigned get_item_count() const { return rows_.size(); }
 
@@ -282,8 +279,7 @@ private:
 	public:
 
 		trow(const tbuilder_grid& list_builder_, 
-			const std::map<std::string /* widget id */, std::map<
-			std::string /* member id */, t_string /* member value */> >& data);
+			const std::map<std::string /* widget id */, string_map>& data);
 
 		/***** ***** ***** setters / getters for members ***** ****** *****/
 
@@ -326,8 +322,7 @@ private:
 
 		/** Initializes all widgets in the grid. */
 		void init_in_grid(tgrid* grid, 
-			const std::map<std::string /* widget id */, std::map<
-			std::string /* member id */, t_string /* member value */> >& data);
+			const std::map<std::string /* widget id */, string_map>& data);
 
 		/** 
 		 * Selects all widgets in the grid.

@@ -19,11 +19,10 @@
 
 namespace gui2 {
 
-void ttoggle_panel::set_child_members(const std::map<std::string /* widget id */, std::map<
-		std::string /* member id */, t_string /* member value */> >& data)
+void ttoggle_panel::set_child_members(const std::map<std::string /* widget id */, string_map>& data)
 {
 	// typedef boost problem work around.
-	typedef std::pair<std::string, std::map<std::string, t_string> > hack ;
+	typedef std::pair<std::string, string_map> hack ;
 	foreach(const hack& item, data) {
 		tcontrol* control = dynamic_cast<tcontrol*>(find_widget(item.first, false));
 		if(control) {

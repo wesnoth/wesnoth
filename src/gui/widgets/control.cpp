@@ -34,10 +34,9 @@ tcontrol::tcontrol(const unsigned canvas_count)
 {
 }
 
-void tcontrol::set_members(const std::map<
-		std::string /* member id */, t_string /* member value */>& data)
+void tcontrol::set_members(const string_map& data)
 {
-	std::map<std::string, t_string>::const_iterator itor = data.find("label");
+	string_map::const_iterator itor = data.find("label");
 	if(itor != data.end()) {
 		set_label(itor->second);
 	}

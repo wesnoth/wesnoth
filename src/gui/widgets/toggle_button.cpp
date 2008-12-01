@@ -21,12 +21,12 @@
 namespace gui2 {
 
 
-void ttoggle_button::set_members(const std::map<std::string, t_string>& data)
+void ttoggle_button::set_members(const string_map& data)
 {
 	// Inherit
 	tcontrol::set_members(data);
 
-	std::map<std::string, t_string>::const_iterator itor = data.find("icon");
+	string_map::const_iterator itor = data.find("icon");
 	if(itor != data.end()) {
 		set_icon_name(itor->second);
 	}

@@ -357,7 +357,7 @@ const config* config::find_child(const std::string& key,
 
 void config::clear()
 {
-	for(std::map<std::string,std::vector<config*> >::iterator i = children.begin(); i != children.end(); ++i) {
+	for(child_map::iterator i = children.begin(); i != children.end(); ++i) {
 		std::vector<config*>& v = i->second;
 		for(std::vector<config*>::iterator j = v.begin(); j != v.end(); ++j)
 			delete *j;
@@ -603,7 +603,7 @@ void config::apply_diff(const config& diff)
 
 void config::merge_with(const config& c)
 {
-	std::map<std::string, unsigned> visitations;
+	boost::unordered_map<std::string, unsigned> visitations;
 
 	// Merge attributes first
 	string_map::const_iterator attrib_it, attrib_end = c.values.end();

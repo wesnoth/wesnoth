@@ -48,8 +48,7 @@ public:
 	 *
 	 * @param data                Map with the key value pairs to set the members.
 	 */
-	virtual void set_members(const std::map<
-		std::string /* member id */, t_string /* member value */>& data);
+	virtual void set_members(const string_map& data);
 
 	/***** ***** ***** ***** State handling ***** ***** ***** *****/
 

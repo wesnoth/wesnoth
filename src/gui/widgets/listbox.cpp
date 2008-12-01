@@ -69,18 +69,15 @@ void tlistbox::list_item_selected(twidget* caller)
 	assert(false);
 }
 
-void tlistbox::add_row(const std::map<
-		std::string /* member id */, t_string /* member value */>& item)
+void tlistbox::add_row(const string_map& item)
 {
-	std::map<std::string /* widget id */, std::map<
-		std::string /* member id */, t_string /* member value */> > data;
+	std::map<std::string, string_map> data;
 
 	data.insert(std::make_pair("", item));
 	add_row(data);
 }
 
-void tlistbox::add_row(const std::map<std::string /* widget id */, std::map<
-		std::string /* member id */, t_string /* member value */> >& data)
+void tlistbox::add_row(const std::map<std::string /* widget id */, string_map>& data)
 {
 	assert(list_builder_);
 
@@ -107,12 +104,11 @@ void tlistbox::add_row(const std::map<std::string /* widget id */, std::map<
 	set_scrollbar_button_status();
 }
 
-void tlistbox::add_rows(const std::vector< std::map<std::string, t_string> >& data)
+void tlistbox::add_rows(const std::vector<string_map>& data)
 {
 	// foreach(const std::map<std::string, t_string>& cell, data) {
 	// doesn't compile it sees 3 paramters instead of 2 so use a typedef.
-	typedef std::map<std::string, t_string> hack ;
-	foreach(const hack& cell, data) {
+	foreach(const string_map& cell, data) {
 		add_row(cell);
 	}
 }
@@ -322,8 +318,7 @@ bool tlistbox::get_item_active(const unsigned item) const
 }
 
 tlistbox::trow::trow(const tbuilder_grid& list_builder_, 
-		const std::map<std::string /* widget id */, std::map<
-		std::string /* member id */, t_string /* member value */> >& data) :
+		const std::map<std::string /* widget id */, string_map>& data):
 	grid_(dynamic_cast<tgrid*>(list_builder_.build())),
 	height_(0),
 	canvas_(),
@@ -342,8 +337,7 @@ void tlistbox::trow::set_selected(const bool selected)
 }
 
 void tlistbox::trow::init_in_grid(tgrid* grid, 
-		const std::map<std::string /* widget id */, std::map<
-		std::string /* member id */, t_string /* member value */> >& data)
+		const std::map<std::string /* widget id */, string_map>& data)
 {		
 	for(unsigned row = 0; row < grid->get_rows(); ++row) {
 		for(unsigned col = 0; col < grid->get_cols(); ++col) {
@@ -357,9 +351,7 @@ void tlistbox::trow::init_in_grid(tgrid* grid,
 
 			if(btn) {
 				btn->set_callback_state_change(callback_select_list_item);
-				std::map<std::string /* widget id */, std::map<
-					std::string /* member id */, t_string /* member value */> >
-					::const_iterator itor = data.find(btn->id());
+				std::map<std::string, string_map>::const_iterator itor = data.find(btn->id());
 
 				if(itor == data.end()) {
 					itor = data.find("");

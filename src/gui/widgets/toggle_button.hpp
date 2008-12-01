@@ -58,7 +58,7 @@ public:
 	 * Sets the additional member
 	 *  * icon_name_              icon
 	 */
-	void set_members(const std::map<std::string, t_string>& data);
+	void set_members(const string_map& data);
 
 	/** Inherited from tcontrol. */
 	void set_active(const bool active);

@@ -72,7 +72,7 @@ void tmp_create_game::pre_show(CVideo& /*video*/, twindow& window)
 	list->set_callback_value_change(dialog_callback<tmp_create_game, &tmp_create_game::update_map>);
 
 	// Load option (might turn it into a button later).
-	std::map<std::string, t_string> item;
+	string_map item;
 	item.insert(std::make_pair("label", _("Load Game")));
 	item.insert(std::make_pair("tooltip", _("Load Game...")));
 	list->add_row(item);
@@ -94,7 +94,7 @@ void tmp_create_game::pre_show(CVideo& /*video*/, twindow& window)
 	foreach(const config* map, cfg_.get_children("multiplayer")) {
 
 		if(utils::string_bool((*map)["allow_new_game"], true)) {
-			std::map<std::string, t_string> item;
+			string_map item;
 			item.insert(std::make_pair("label", (*map)["name"]));
 			item.insert(std::make_pair("tooltip", (*map)["name"]));
 			list->add_row(item);

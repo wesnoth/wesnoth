@@ -149,7 +149,7 @@ public:
 	 * Contains a vector with the data to set in every cell, it's used to 
 	 * serialize the data in the config, so the config is no longer required.
 	 */
-	std::vector<std::map<std::string /*key*/, t_string/*value*/> >list_data;
+	std::vector<string_map>list_data;
 
 	const bool assume_fixed_row_size;
 };

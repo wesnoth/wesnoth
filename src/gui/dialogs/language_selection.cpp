@@ -48,7 +48,7 @@ void tlanguage_selection::pre_show(CVideo& /*video*/, twindow& window)
 	const std::vector<language_def>& languages = get_languages();
 	const language_def& current_language = get_language();
 	foreach(const language_def& lang, languages) {
-		std::map<std::string, t_string> item;
+		string_map item;
 		item.insert(std::make_pair("label", lang.language));
 		item.insert(std::make_pair("tooltip", lang.language));
 

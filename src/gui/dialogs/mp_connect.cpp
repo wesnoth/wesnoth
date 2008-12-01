@@ -74,8 +74,8 @@ void tmp_server_list::pre_show(CVideo& /*video*/, twindow& window)
 
 	foreach(const game_config::server_info& server, pref_servers) {
 		
-		std::map<std::string, std::map<std::string, t_string> > data;
-		std::map<std::string, t_string> item;
+		std::map<std::string, string_map> data;
+		string_map item;
 
 		item["label"] = server.name;
 		data.insert(std::make_pair("name", item));
