@@ -70,10 +70,10 @@ struct wml_menu_item
 	config command;
 };
 
-//! Information on a particular player of the game. 
+//! Information on a particular player of the game.
 struct player_info
 {
-	player_info() : 
+	player_info() :
 		name(),
 		gold(-1) ,
 		gold_add(false),
@@ -81,21 +81,21 @@ struct player_info
 		can_recruit()
 	{}
 
-	std::string name;                  //!< Stores the current_player name 
-	int gold;                          //!< Amount of gold the player has saved 
-	bool gold_add;                     //!< Amount of gold is added to the 
+	std::string name;                  //!< Stores the current_player name
+	int gold;                          //!< Amount of gold the player has saved
+	bool gold_add;                     //!< Amount of gold is added to the
 	                                   //!< starting gold, if not it uses the highest
-	                                   //!< of the two. 
-	std::vector<unit> available_units; //!< Units the player may recall 
-	std::set<std::string> can_recruit; //!< Units the player has the ability to recruit 
-	
+	                                   //!< of the two.
+	std::vector<unit> available_units; //!< Units the player may recall
+	std::set<std::string> can_recruit; //!< Units the player has the ability to recruit
+
 	void debug();
 };
 
 class game_state : public variable_set
 {
 public:
-	game_state() : 
+	game_state() :
 		label(),
 		version(),
 		campaign_type(),
@@ -109,11 +109,11 @@ public:
 		players(),
 		scoped_variables(),
 		wml_menu_items(),
-		difficulty("NORMAL"), 
+		difficulty("NORMAL"),
 		replay_data(),
 		starting_pos(),
 		snapshot(),
-		last_selected(gamemap::location::null_location), 
+		last_selected(gamemap::location::null_location),
 		variables(),
 		temporaries(),
 		random_seed_(rand()),
@@ -148,6 +148,9 @@ public:
 
 	//! Return the Nth player, or NULL if no such player exists.
 	player_info* get_player(const std::string& id);
+
+	//! Loads the recall list.
+	void load_recall_list(const game_data& data, const config::child_list& players);
 
 	std::vector<scoped_wml_variable*> scoped_variables;
 	std::map<std::string, wml_menu_item*> wml_menu_items;
@@ -197,9 +200,9 @@ public:
 	//! Resets the random to the 0 calls and the seed to the random
 	//! this way we stay in the same sequence but don't have a lot
 	//! calls. Used when moving to the next scenario.
-	void rotate_random() 
+	void rotate_random()
 		{ random_seed_ = random_pool_; random_calls_ = 0; }
-	
+
 
 	int get_random_seed() const { return random_seed_; }
 	int get_random_calls() const { return random_calls_; }
@@ -220,9 +223,6 @@ private:
 
 	//! Sets the next random number in the pool.
 	void random_next();
-
-	//! Loads the recall list.
-	void load_recall_list(const game_data& data, const config::child_list& players);
 };
 
 
@@ -300,6 +300,7 @@ enum WRITE_GAME_MODE { WRITE_SNAPSHOT_ONLY, WRITE_FULL_GAME };
 
 void read_save_file(const std::string& name, config& cfg, std::string* error_log);
 
+void write_players(game_state& gamestate, config& cfg);
 void write_game(const game_state& gamestate, config& cfg, WRITE_GAME_MODE mode=WRITE_FULL_GAME);
 void write_game(config_writer &out, const game_state& gamestate, WRITE_GAME_MODE mode=WRITE_FULL_GAME);
 

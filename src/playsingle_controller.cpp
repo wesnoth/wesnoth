@@ -149,7 +149,7 @@ void playsingle_controller::report_victory(
 		    std::stringstream& report,
 		    end_level_exception& end_level,
 		    int player_gold,
-		    int remaining_gold, int finishing_bonus_per_turn, 
+		    int remaining_gold, int finishing_bonus_per_turn,
 		    int turns_left, int finishing_bonus)
 {
 	report << _("Remaining gold: ")
@@ -230,7 +230,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 	victory_conditions::set_victory_when_enemies_defeated(
 						level_["victory_when_enemies_defeated"] != "no");
 	victory_conditions::set_carryover_percentage(
-		lexical_cast_default<int>(level_["carryover_percentage"], 
+		lexical_cast_default<int>(level_["carryover_percentage"],
 		game_config::gold_carryover_percentage));
 	victory_conditions::set_carryover_add(utils::string_bool(
 		level_["carryover_add"], game_config::gold_carryover_add));
@@ -320,7 +320,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 			else
 				return QUIT;
 		} else if (end_level.result == VICTORY
-		|| end_level.result == LEVEL_CONTINUE 
+		|| end_level.result == LEVEL_CONTINUE
 		|| end_level.result == LEVEL_CONTINUE_NO_SAVE) {
 			if(end_level.result == LEVEL_CONTINUE_NO_SAVE) {
 				gamestate_.completion = "running";
@@ -346,11 +346,13 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 					player->name = i->current_player();
 			}
 
-			// Add all the units that survived the scenario.  
+			// Add all the units that survived the scenario.
+			LOG_NG << "Add units that survived the scenario to the recall list.\n";
 			for(unit_map::iterator un = units_.begin(); un != units_.end(); ++un) {
 				player_info *player=gamestate_.get_player(teams_[un->second.side()-1].save_id());
 
 				if(player) {
+				    LOG_NG << "Added unit " << un->second.id() << ", " << un->second.name() << "\n";
 					un->second.new_turn();
 					un->second.new_level();
 					player->available_units.push_back(un->second);
@@ -394,10 +396,10 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 
 					if (player) {
 						// Store the gold for all players.
-						player->gold = ((i->gold() + finishing_bonus) 
+						player->gold = ((i->gold() + finishing_bonus)
 								* end_level.carryover_percentage) / 100;
 						player->gold_add = end_level.carryover_add;
-						
+
 						// Only show the report for ourselves.
 						if (!i->is_persistent())
 							continue;
@@ -452,7 +454,7 @@ void playsingle_controller::play_turn(bool save)
 	events::raise_draw_event();
 
 	LOG_NG << "turn: " << status_.turn() << "\n";
-	
+
 	if(non_interactive())
 		std::cout << "Turn " << status_.turn() << ":" << std::endl;
 
@@ -488,13 +490,13 @@ void playsingle_controller::play_turn(bool save)
 		}
 
 		finish_side_turn();
-		
+
 		if(non_interactive()) {
 			std::cout << " Player " << player_number_ << ": " <<
 				current_team().villages().size() << " Villages" <<
 				std::endl;
 		}
-		
+
 		check_victory(units_, teams_, *gui_);
 	}
 

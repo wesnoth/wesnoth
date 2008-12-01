@@ -78,12 +78,12 @@ void get_player_info(const config& cfg, game_state& gamestate,
 	LOG_NG << "found gold: '" << gold << "'\n";
 
 	int ngold = lexical_cast_default<int>(gold);
-	
+
 	/* This is the gold carry-over mechanism for subsequent campaign
        scenarios. Snapshots and replays are loaded from savegames and
        got their own gold information, which must not be altered here
     */
-	if ( (player != NULL)  && (!snapshot) && (!replay) ) {
+	if ( (player != NULL)  && (!snapshot) ) {
 		if(player->gold_add) {
 			ngold +=  player->gold;
 		} else if(player->gold >= ngold) {
@@ -152,7 +152,7 @@ void get_player_info(const config& cfg, game_state& gamestate,
 
 		utils::string_map symbols;
 		symbols["side"] = lexical_cast<std::string>(side);
-		VALIDATE(units.count(start_pos) == 0, 
+		VALIDATE(units.count(start_pos) == 0,
 			 t_string(vgettext("Duplicate side definition for side '$side|' found.", symbols)));
 
 		new_unit.new_turn();

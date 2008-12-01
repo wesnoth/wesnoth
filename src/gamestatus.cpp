@@ -458,7 +458,7 @@ game_state::game_state(const game_data& data, const config& cfg, bool show_repla
 	const config* snapshot = cfg.child("snapshot");
 
 	// We have to load era id for MP games so they can load correct era.
-	
+
 
 	if ((snapshot != NULL) && (!snapshot->empty()) && (!show_replay)) {
 
@@ -470,11 +470,11 @@ game_state::game_state(const game_data& data, const config& cfg, bool show_repla
 		load_recall_list(data, snapshot->get_children("player"));
 
 	} else {
-		// Start of scenario save, replays and MP campaign network next scenario 
+		// Start of scenario save, replays and MP campaign network next scenario
 		// have the recall list stored in root of the config.
 		load_recall_list(data, cfg.get_children("player"));
 	}
-         
+
 	std::cerr << "scenario: '" << scenario << "'\n";
 	std::cerr << "next_scenario: '" << next_scenario << "'\n";
 
@@ -500,7 +500,19 @@ game_state::game_state(const game_data& data, const config& cfg, bool show_repla
 	const config* replay_start = cfg.child("replay_start");
 	if(replay_start != NULL) {
 		starting_pos = *replay_start;
-	}
+
+        //This is a quick hack to make replays for campaigns work again:
+        //The [player] information needs to be stored somewhere within the gamestate,
+        //because we need it later on when creating the replay savegame.
+        //We therefore put it inside the starting_pos, so it doesn't get lost.
+        //See also playcampaign::play_game, where after finishing the scenario the replay
+        //will be saved.
+		config::child_list player_list = cfg.get_children("player");
+        for (config::child_list::const_iterator p = player_list.begin(); p != player_list.end(); p++){
+            config& cfg_player = starting_pos.add_child("player");
+            cfg_player.merge_with(**p);
+        }
+    }
 
 	if(cfg.child("statistics")) {
 		statistics::fresh_stats();
@@ -537,6 +549,17 @@ static void write_player(const player_info& player, config& cfg)
 	}
 
 	cfg["can_recruit"] = can_recruit_str;
+}
+
+void write_players(game_state& gamestate, config& cfg)
+{
+	for(std::map<std::string, player_info>::const_iterator i=gamestate.players.begin();
+	    i!=gamestate.players.end(); ++i) {
+		config new_cfg;
+		write_player(i->second, new_cfg);
+		new_cfg["save_id"]=i->first;
+		cfg.add_child("player", new_cfg);
+	}
 }
 
 static void write_player(config_writer &out, const player_info& player)
@@ -787,7 +810,7 @@ void read_save_file(const std::string& name, config& cfg, std::string* error_log
 
 void copy_era(config &cfg)
 {
-	if (cfg.child("replay_start") 
+	if (cfg.child("replay_start")
 		&& cfg.child("replay_start")->child("era")
 		&& cfg.child("snapshot"))
 	{
@@ -853,7 +876,7 @@ void finish_save_game(config_writer &out, const game_state& gamestate, const std
 // Throws game::save_game_failed
 void save_game(const game_state& gamestate)
 {
-	std::string filename = gamestate.label; 
+	std::string filename = gamestate.label;
 	if(preferences::compress_saves()) {
 		filename += ".gz";
 	}
@@ -1127,7 +1150,7 @@ int game_state::get_random()
 {
 	random_next();
 	++random_calls_;
-	DBG_NG << "pulled user random " << random_pool_ 
+	DBG_NG << "pulled user random " << random_pool_
 		<< " for call " << random_calls_ << '\n';
 
 	return (static_cast<unsigned>(random_pool_ / 65536) % 32768);
@@ -1146,8 +1169,8 @@ void game_state::seed_random(const int seed, const unsigned call_count)
 	for(random_calls_ = 0; random_calls_ < call_count; ++random_calls_) {
 		random_next();
 	}
-	DBG_NG << "Seeded random with " << random_seed_ << " with " 
-		<< random_calls_ << " calls, pool is now at " 
+	DBG_NG << "Seeded random with " << random_seed_ << " with "
+		<< random_calls_ << " calls, pool is now at "
 		<< random_pool_ << '\n';
 }
 
@@ -1155,7 +1178,7 @@ void game_state::seed_random(const int seed, const unsigned call_count)
 void game_state::random_next()
 {
 	// Use the simple random generator as shown in man rand(3).
-	// The division is done separately since we also want to 
+	// The division is done separately since we also want to
 	// quickly go the the wanted index in the random list.
 	random_pool_ = random_pool_ * 1103515245 + 12345;
 }
@@ -1267,7 +1290,7 @@ void player_info::debug(){
 	LOG_NG << "\tEnd available units\n";
 }
 
-wml_menu_item::wml_menu_item(const std::string& id, const config* cfg) : 
+wml_menu_item::wml_menu_item(const std::string& id, const config* cfg) :
 		name(),
 		image(),
 		description(),
