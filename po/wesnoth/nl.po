@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-11-29 12:23+0100\n"
-"PO-Revision-Date: 2008-11-20 08:31+0100\n"
-"Last-Translator: Foppe Benedictus <foppe.benedictus@gmail.com>\n"
+"PO-Revision-Date: 2008-12-01 00:18+0100\n"
+"Last-Translator: Alexander van Gessel (AI/AI0867) <AI0867_AT_gmail.com>\n"
 "Language-Team: Dutch translation <foppe.benedictus@gmail.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -36,7 +36,7 @@ msgstr "Teken kaart"
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:66
 msgid "Show Titlescreen Animation"
-msgstr ""
+msgstr "Laat de Titelschermanimatie zien"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:73
@@ -130,12 +130,11 @@ msgstr "verpleegt +4"
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:14
 #: data/core/macros/abilities.cfg:11
 msgid "female^heals +4"
-msgstr "heelt +4"
+msgstr "verpleegt +4"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:19
 #: data/core/macros/abilities.cfg:16
-#, fuzzy
 msgid ""
 "Heals +4:\n"
 "Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
@@ -145,13 +144,14 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
-"Geneest +4:\n"
+"Verpleegt +4:\n"
 "Een eenheid met dit vermogen verpleegt omringende bevriende eenheden aan het "
 "begin van elke beurt.\n"
 "\n"
 "De eenheid die verpleegd wordt kan ofwel 4 HP per beurt genezen, danwel "
-"behoed worden voor de effecten van een vergiftiging. Om echter van een "
-"vergiftiging af te komen moet de eenheid een dorp of een genezer opzoeken."
+"behoed worden voor de effecten van een vergiftiging. \n"
+"Om echter van een vergiftiging af te komen moet de eenheid een dorp of een "
+"genezer opzoeken."
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:42
@@ -163,7 +163,7 @@ msgstr "verpleegt +8"
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:43
 #: data/core/macros/abilities.cfg:31
 msgid "female^heals +8"
-msgstr "heelt +8"
+msgstr "verpleegt +8"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:48
@@ -178,25 +178,28 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
-"Verpleegt:\n"
+"Verpleegt +8:\n"
 "Een eenheid met dit vermogen combineert geneeskrachtige kruiden met magie, "
 "wat leidt tot snellere genezing dan normaal gesproken mogelijk is in de "
 "strijd.\n"
+"\n"
 "De eenheid die verpleegd wordt kan ofwel 8HP per beurt genezen, danwel "
 "behoed worden voor de effecten van een vergiftiging. Om echter van een "
 "vergiftiging af te komen moet de eenheid een dorp of een genezer opzoeken."
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:72
-#, fuzzy
 msgid " This unit is capable of basic healing and slowing dehydration."
-msgstr " Deze eenheid kan "
+msgstr ""
+" Deze eenheid kan de beginselen van verpleging toepassen en dehydratie "
+"vertragen."
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:75
-#, fuzzy
 msgid ""
 " This unit is capable of healing those around it, slowing dehydration, and "
 "curing them of poison."
-msgstr " Deze eenheid kan degenen die hem omringen genezen, ook van vergif."
+msgstr ""
+" Deze eenheid kan degenen die hem omringen verplegen, dehydratie vertragen "
+"en vergiftiging genezen."
 
 #. [about]
 #: data/core/about.cfg:7
@@ -248,11 +251,12 @@ msgstr "Allerlei bijdragers"
 msgid "Internationalization Managers"
 msgstr "Internationaliseringsmanagers"
 
+# Geen idee wat hiermee bedoeld wordt
 #. [about]
 #: data/core/about.cfg:888
 #, fuzzy
 msgid "English strings edition"
-msgstr "Engelse "
+msgstr "Engelse versie"
 
 #. [about]
 #: data/core/about.cfg:895
@@ -789,7 +793,6 @@ msgstr ""
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:169
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -798,8 +801,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Gerekruteerde eenheden hebben twee willekeurig gekozen <ref>dst=traits "
-"text=kenmerken</ref> die hun eigenschappen beïnvloeden."
+"Gerekruteerde eenheden hebben twee willekeurig gekozen <ref>dst='traits' "
+"text='Kenmerken'</ref> die hun eigenschappen beïnvloeden."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:171
@@ -820,7 +823,6 @@ msgstr ""
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:173
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -832,7 +834,7 @@ msgstr ""
 "\n"
 "Denk erom dat troepen niet alleen goud kosten bij het rekruteren en "
 "oproepen, maar ook onderhoudskosten met zich meebrengen. Zie "
-"<ref>dst=income_and_upkeep text='Inkomen en Onderhoudskosten'</ref> voor "
+"<ref>dst='income_and_upkeep' text='Inkomen en Onderhoudskosten'</ref> voor "
 "meer informatie."
 
 #. [topic]: id=orbs
@@ -904,7 +906,6 @@ msgstr ""
 
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:199
-#, fuzzy
 msgid ""
 "The hitpoints are also indicated by an energy bar next to each unit, which "
 "is green, yellow or red. A unit with at least 1 experience point has a blue "
@@ -914,7 +915,7 @@ msgstr ""
 "De hitpoints worden ook weergegeven als een energiebalk naast de eenheid, "
 "die groen, geel of rood is. Een eenheid met tenminste 1 ervaringspunt heeft "
 "een blauwe ervaringsbalk, die wit wordt als de eenheid bijna "
-"<ref>dst=experience_and_advancement text=promoveert</ref>."
+"<ref>dst='experience_and_advancement' text='promoveert'</ref>."
 
 #. [topic]: id=movement
 #: data/core/help.cfg:206
@@ -981,7 +982,6 @@ msgstr ""
 
 #. [topic]: id=movement
 #: data/core/help.cfg:211
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -999,7 +999,7 @@ msgstr ""
 "andere eenheid die deze zone betreedt kan die beurt niet verder lopen (maar "
 "nog wel aanvallen). De beheersingszone is een belangrijk aspect van Wesnoth, "
 "en het is handig te leren er mee om te gaan. Alleen "
-"<ref>dst=ability_skirmisher text='Warzaaiers'</ref> negeren de "
+"<ref>dst='ability_skirmisher' text='Warzaaiers'</ref> negeren de "
 "beheersingszones."
 
 #. [topic]: id=movement
@@ -1164,7 +1164,6 @@ msgstr ""
 
 #. [topic]: id=combat
 #: data/core/help.cfg:241
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1176,10 +1175,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"De twee uitzenderingen op deze regel zijn <ref>dst=weaponspecial_magical "
+"De twee uitzenderingen op deze regel zijn <ref>dst='weaponspecial_magical' "
 "text='Magische aanvallen'</ref>, die altijd een raakkans van 70% hebben, en "
-"<ref>dst=weaponspecial_marksman text=Precisieschutters</ref>, die een "
-"raakkans van ten minste 60% hebben."
+"<ref>dst='weaponspecial_marksman' text='Precisieschutters'</ref>, die, "
+"tijdens een offensief, een raakkans van ten minste 60% hebben."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:243
@@ -1194,7 +1193,6 @@ msgstr ""
 
 #. [topic]: id=combat
 #: data/core/help.cfg:245
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1211,15 +1209,14 @@ msgstr ""
 "Elke geslaagde aanval brengt een bepaald aantal punten schade toe "
 "afhankelijk van het soort aanval. Een elfenkrijger met een 5-4 zwaard "
 "veroorzaakt 5 punten schade per geslaagde aanval. Dat getal wordt in het "
-"algemeen door twee dingen beïnvloed: <ref>dst=damage_types_and_resistance "
-"text=Weerstand</ref> en <ref>dst=time_of_day text='De Tijd van de Dag'</"
+"algemeen door twee dingen beïnvloed: <ref>dst='damage_types_and_resistance' "
+"text='Weerstand'</ref> en <ref>dst='time_of_day' text='De Tijd van de Dag'</"
 "ref>. Om te zien hoe de basisschade wordt beïnvloed door de omstandigheden "
 "kun je <italic>text='Schadeberekeningen'</italic> selecteren in het "
 "aanvalselectievenster."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:247
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1230,11 +1227,11 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Een aantal eenheden heeft bijzondere <ref>dst=abilities text=vermogens</ref> "
-"die de toegebrachte schade beïnvloeden. De meest voorkomende van deze is "
-"<ref>dst=weaponspecial_charge text=Stormloop</ref>, die de schade verdubbelt "
-"zowel voor de aanvaller als de verdediger, wanneer de eenheid met dit "
-"vermogen aanvalt."
+"Een aantal eenheden heeft bijzondere <ref>dst='..abilities_section' "
+"text='vermogens'</ref> die de toegebrachte schade beïnvloeden. De meest "
+"voorkomende van deze is <ref>dst='weaponspecial_charge' text='Stormloop'</"
+"ref>, die de schade verdubbelt zowel voor de aanvaller als de verdediger, "
+"wanneer de eenheid met dit vermogen aanvalt."
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:253
@@ -1423,7 +1420,6 @@ msgstr ""
 
 #. [topic]: id=experience_and_advancement
 #: data/core/help.cfg:292
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1441,8 +1437,8 @@ msgstr ""
 "\n"
 "\n"
 "De meeste, maar niet alle, eenheden hebben drie rangen. Sommige eenheden "
-"(zoals <ref>dst=unit_Mage text=magiërs</ref>) hebben er vier. Wanneer een "
-"eenheid zijn hoogste rang heeft bereikt kan hij een AMLA (After Maximum "
+"(zoals <ref>dst='unit_Mage' text='Magiërs'</ref>) hebben er vier. Wanneer "
+"een eenheid zijn hoogste rang heeft bereikt kan hij een AMLA (After Maximum "
 "Level Advancement) krijgen. De AMLA beïnvloed de eenheid elke keer dat hij "
 "bereikt wordt maar de rang van de eenheid blijft gelijk. Het standaardeffect "
 "is dat het maximale aantal hitpoints met 3 verhoogd wordt. De eerste AMLA "
@@ -1457,7 +1453,6 @@ msgstr "Genezing"
 
 #. [topic]: id=healing
 #: data/core/help.cfg:300
-#, fuzzy
 msgid ""
 "In combat, your units will inevitably take damage. When a unit "
 "<ref>dst='experience_and_advancement' text='advances'</ref>, it will heal "
@@ -1466,7 +1461,7 @@ msgid ""
 "of which take place at the beginning of your turn, before you take action."
 msgstr ""
 "Het is onvermijdelijk dat eenheden verwondingen oplopen bij gevechten. "
-"Wanneer een eenheid <ref>dst=experience_and_advancement text=promoveert</"
+"Wanneer een eenheid <ref>dst='experience_and_advancement' text='promoveert'</"
 "ref>, geneest hij van al zijn verwondingen. Dat kan gebeuren als die eenheid "
 "een vijand bevecht, of het nu op jouw beurt is of niet. Er zijn in Wesnoth "
 "nog andere manieren om verwondingen te genezen die allemaal aan het begin "
@@ -1474,7 +1469,6 @@ msgstr ""
 
 #. [topic]: id=healing
 #: data/core/help.cfg:302
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1484,7 +1478,7 @@ msgstr ""
 "\n"
 "\n"
 "Rust: Een eenheid die niet beweegt, niet aanvalt en niet aangevallen wordt "
-"zal 2HP genezen in de volgende beurt."
+"zal 2 HP genezen in de volgende beurt."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:303
@@ -1497,20 +1491,18 @@ msgstr ""
 
 #. [topic]: id=healing
 #: data/core/help.cfg:304
-#, fuzzy
 msgid ""
 "\n"
 "<ref>dst='ability_regenerates' text='Regeneration'</ref>: Certain units "
 "(such as trolls) will automatically heal 8HP every turn."
 msgstr ""
 "\n"
-"<ref>dst=ability_regenerates text=Regeneratie</ref>: Een eenheid met de "
+"<ref>dst='ability_regenerates' text='Regeneratie'</ref>: Een eenheid met de "
 "Regenereert-eigenschap (trollen bijvoorbeeld) geneest aan het begin van elke "
 "beurt 8HP."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:305
-#, fuzzy
 msgid ""
 "\n"
 "Healing units: Units with the <ref>dst='ability_heals +4' text='Heals'</ref> "
@@ -1519,14 +1511,15 @@ msgid ""
 "turn, or prevent Poison from causing that unit damage."
 msgstr ""
 "\n"
-"Eenheden genezen: Eenheden met het vermogen <ref>dst=ability_heals "
-"text=verpleegt</ref> kunnen elke bevriende eenheid die in een aangrenzend "
-"vakje staat verplegen. De verpleegde eenheid verkrijgt zo 4 of 8HP per beurt "
-"of wordt behoed voor de effecten van een vergiftiging."
+"Verplegende eenheden: Eenheden met het vermogen <ref>dst='ability_heals +4' "
+"text='Verpleegt'</ref> kunnen elke bevriende eenheid die in een aangrenzend "
+"vakje staat verplegen. De verpleegde eenheid verkrijgt zo "
+"<ref>dst='ability_heals +4' text='4HP'</ref> of <ref>dst='ability_heals +8' "
+"text='8HP'</ref> per beurt of wordt behoed voor de effecten van een "
+"vergiftiging."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:306
-#, fuzzy
 msgid ""
 "\n"
 "Curing units: Units with the <ref>dst='ability_cures' text='Cures'</ref> "
@@ -1535,9 +1528,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Genezers: Eenheden met het vermogen <ref>dst=ability_cures text=geneest</"
+"Genezers: Eenheden met het vermogen <ref>dst='ability_cures' text='Geneest'</"
 "ref>, genezen alle bevriende aangrenzende eenheden van een eventuele "
-"vergiftiging."
+"vergiftiging (in plaats van verpleging, als ze dit vermogen ook hebben)."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:308
@@ -1651,7 +1644,6 @@ msgstr "Slot"
 
 #. [topic]: id=wrap_up
 #: data/core/help.cfg:330
-#, fuzzy
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
 "Basic Strategy, or familiarise yourself with <ref>dst='..traits_section' "
@@ -1660,10 +1652,10 @@ msgid ""
 "Throne campaign. Have fun, and good luck!"
 msgstr ""
 "Hiermee zijn we aan het eind gekomen van de beginselen van Wesnoth. Je kunt "
-"nu verder lezen over basisstrategie of je verdiepen in <ref>dst=traits "
-"text=karaktertrekken</ref> en <ref>dst=abilities text=vermogens</ref>, maar "
-"in principe weet je nu genoeg om De Kroonprins te spelen. Succes en veel "
-"plezier!"
+"nu verder lezen over basisstrategie of je verdiepen in <ref>dst='.."
+"traits_section' text='karaktertrekken'</ref> en <ref>dst='.."
+"abilities_section' text='vermogens'</ref>, maar in principe weet je nu "
+"genoeg om De Kroonprins te spelen. Succes en veel plezier!"
 
 #. [topic]: id=about
 #: data/core/help.cfg:335
@@ -1691,7 +1683,6 @@ msgstr ""
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:352
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1703,13 +1694,12 @@ msgstr ""
 "\n"
 "\n"
 "De kenmerken die alle niet-ondode eenheden kunnen krijgen zijn: "
-"<ref>dst=traits_intelligent text=Intelligent</ref>, <ref>dst=traits_quick "
-"text=Snel</ref>, <ref>dst=traits_resilient text=Robuust</ref>, and "
-"<ref>dst=traits_strong text=Sterk</ref>."
+"<ref>dst='traits_intelligent' text='Intelligent'</ref>, "
+"<ref>dst='traits_quick' text='Snel'</ref>, <ref>dst='traits_resilient' "
+"text='Robuust'</ref>, en <ref>dst='traits_strong' text='Sterk'</ref>."
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:356
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1720,9 +1710,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Andere kenmerken zijn: <ref>dst=traits_dextrous text=Onverschrokken</ref>, "
-"<ref>dst=traits_loyal text=Loyaal</ref>, <ref>dst=traits_undead text=Ondood</"
-"ref>, and·<ref>dst=traits_dextrous text=Behendig</ref>.\n"
+"Andere kenmerken zijn: <ref>dst='traits_dextrous' text='Behendig'</ref>, "
+"<ref>dst='traits_loyal' text='Loyaal'</ref> en <ref>dst='traits_undead' "
+"text='Ondood'</ref>.\n"
 "\n"
 
 #. [topic]: id=traits_intelligent
@@ -2000,7 +1990,6 @@ msgstr ""
 
 #. [topic]: id=traits_healthy
 #: data/core/help.cfg:435
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2009,8 +1998,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Gezonde eenheden hebben 2 HP meer dan gebruikelijk en iedere beurt rust "
-"geeft ze ook 2 HP meer."
+"Gezonde eenheden hebben 1 HP plus 1 HP per rang meer dan gebruikelijk en "
+"iedere beurt rust geeft ze ook 2 HP meer."
 
 #. [topic]: id=..terrains
 #: data/core/help.cfg:443
@@ -2055,7 +2044,6 @@ msgstr "Weg"
 
 #. [topic]: id=terrain_road
 #: data/core/help.cfg:465
-#, fuzzy
 msgid ""
 "Roads are beaten paths of dirt, formed by many travelers passing over them. "
 "As far as gameplay is concerned, Roads behave as <ref>dst='terrain_flat' "
@@ -2063,7 +2051,7 @@ msgid ""
 msgstr ""
 "Wegen zijn platgetreden stofpaden, gevormd door het passeren van vele "
 "reizigers. Wat betreft de spelregels zijn wegen gelijk aan "
-"<ref>dst=terrain_grassland text=Grasland</ref>."
+"<ref>dst='terrain_flat' text='Vlak'</ref> terrein."
 
 #. [topic]: id=terrain_forest
 #: data/core/help.cfg:472
@@ -2243,7 +2231,6 @@ msgstr "Bevroren"
 
 #. [topic]: id=terrain_frozen
 #: data/core/help.cfg:551
-#, fuzzy
 msgid ""
 "Frozen terrain represents any flat area that is covered by snow or ice. Most "
 "units are slowed down on it, and have a harder time defending themselves. "
@@ -2252,10 +2239,12 @@ msgid ""
 "\n"
 "Most units have 20 to 40% defense in frozen terrain."
 msgstr ""
-"Sneeuw representeert elk soort vlak gebied met sneeuw of ijs. De meeste "
-"eenheden worden vertraagd door de sneeuw.\n"
+"Bevroren terrein representeert elk soort vlak gebied met sneeuw of ijs. De "
+"meeste eenheden worden vertraagd door de sneeuw en kunnen zich slechter "
+"verdedigen. Zwemmende eenheden, zelfs zij die onderwater kunnen ademen, "
+"kunnen niet onder ijs doorzwemmen.\n"
 "\n"
-"De meeste eenheden krijgen 20% tot 40% verdediging in de Toendra."
+"De meeste eenheden krijgen 20% tot 40% verdediging op bevroren terrein."
 
 #. [topic]: id=terrain_castle
 #: data/core/help.cfg:558
@@ -2311,15 +2300,14 @@ msgstr "Woestijn"
 
 #. [topic]: id=terrain_desert
 #: data/core/help.cfg:587
-#, fuzzy
 msgid ""
 "Deserts have a somewhat different composition than small sand pits or "
 "beaches, however for gameplay purposes they are identical. See "
 "<ref>dst='terrain_sand' text='Sand'</ref>."
 msgstr ""
-"Woestijnen hebben een enigzins andere samenstelling dan kleine zandputten en "
-"stranden, maar qua spelregels gelden ze toch als <ref>dst=terrain_sand "
-"text=Zand</ref>."
+"Woestijnen hebben een enigszins andere samenstelling dan kleine zandputten "
+"en stranden, maar qua spelregels zijn ze identiek. Zie "
+"<ref>dst='terrain_sand' text='Zand'</ref>."
 
 #. [topic]: id=terrain_cave
 #: data/core/help.cfg:594
@@ -2507,7 +2495,6 @@ msgstr "Lava"
 
 #. [topic]: id=terrain_lava
 #: data/core/help.cfg:681
-#, fuzzy
 msgid ""
 "The dangers inherent in trying to walk on lava are fairly obvious. As far as "
 "movement is concerned, lava is equivalent to <ref>dst='terrain_unwalkable' "
@@ -2517,11 +2504,12 @@ msgid ""
 "This provides an attack bonus for lawful units and removes the attack bonus "
 "from chaotic units."
 msgstr ""
-"Het gevaar van het lopen over lava ligt voor de hand. Dit soort terrein kan "
-"alleen betreden worden door eenheden die er hoog boven kunnen vliegen. Het "
-"gesmolten magma produceert een aanzienlijke gloed, die het gebied er direct "
-"boven verlicht. Gezagsgetrouwe eenheden krijgen daarom hun aanvalsbonus, "
-"wetteloze eenheden verliezen de bonus."
+"Het gevaar van het lopen over lava ligt voor de hand. Wat betreft beweging "
+"is lava equivalent aan <ref>dst='terrain_unwalkable' text='Onbeloopbaar'</"
+"ref> terrein, en kan alleen betreden worden door eenheden die er hoog boven "
+"kunnen vliegen. Het gesmolten magma produceert een aanzienlijke gloed, die "
+"het gebied er direct boven verlicht. Gezagsgetrouwe eenheden krijgen daarom "
+"hun aanvalsbonus, wetteloze eenheden verliezen de bonus."
 
 #. [topic]: id=terrain_ford
 #: data/core/help.cfg:688
@@ -2545,9 +2533,8 @@ msgstr ""
 
 #. [topic]: id=terrain_reef
 #: data/core/help.cfg:698
-#, fuzzy
 msgid "Coastal Reef"
-msgstr "Kasteel"
+msgstr "kustrif"
 
 #. [topic]: id=terrain_bridge
 #: data/core/help.cfg:708
@@ -2581,9 +2568,8 @@ msgstr ""
 
 #. [topic]: id=terrain_impassable
 #: data/core/help.cfg:720
-#, fuzzy
 msgid "Impassable"
-msgstr "Onbegaanbaar gebergte"
+msgstr "Onbegaanbaar"
 
 #. [topic]: id=terrain_impassable
 #: data/core/help.cfg:723
@@ -2594,6 +2580,11 @@ msgid ""
 "jagged peaks at such rarified heights, and not even the fiercest troll can "
 "smash through thick walls of stone."
 msgstr ""
+"Obstakels die zelfs de meest volhardende reiziger niet kan overwinnen "
+"omvatten massieve stenen muren en bergen zo hoog en steil dat ze constant "
+"gesluierd zijn in wolken. Zelfs vliegende wezens kunnen de hoekige toppen op "
+"zulke hoogten niet navigeren en zelfs de meest woeste trol kan niet door "
+"dikke stenen muren heenslaan."
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:736
@@ -2613,7 +2604,6 @@ msgstr ""
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:745
-#, fuzzy
 msgid ""
 "\n"
 "Switch debug mode on (does not work in multiplayer). See "
@@ -2623,7 +2613,7 @@ msgid ""
 msgstr ""
 "\n"
 "Debug-modus inschakelen (werkt niet bij multiplayer). Zie "
-"<ref>dst=debug_commands text='Debug modus commando's'</ref>.\n"
+"<ref>dst='debug_commands' text='Debug modus commando's'</ref>.\n"
 "Debug-modus word uitgeschakeld bij het verlaten van het spel of :nodebug.\n"
 "\n"
 
@@ -2956,7 +2946,6 @@ msgstr "leiderschap"
 #: data/core/macros/abilities.cfg:118 data/core/macros/abilities.cfg:141
 #: data/core/macros/abilities.cfg:176 data/core/macros/abilities.cfg:223
 #: data/core/macros/abilities.cfg:282
-#, fuzzy
 msgid ""
 "Leadership:\n"
 "This unit can lead our own units that are next to it, making them fight "
@@ -2971,8 +2960,10 @@ msgstr ""
 "Deze eenheid geeft leiding aan eenheden die naast hem staan en doet hen "
 "daardoor beter vechten.\n"
 "\n"
-"Aangrenzende geallieerde eenheden van lagere rang brengen per verschil in "
-"rang met de leider, 25% zwaardere verwondingen toe aan hun tegenstanders."
+"Aangrenzende eigen eenheden van lagere rang brengen meer schade toe in een "
+"gevecht. Wanneer een aangrenzende eenheid met een lagere rang van dezelfde "
+"zijde in zich gevecht begeeft, brengen zijn aanvallen per verschil in rang "
+"met de leider, 25% zwaardere verwondingen toe aan hun tegenstanders."
 
 #. [skirmisher]: id=skirmisher
 #: data/core/macros/abilities.cfg:346
@@ -3188,7 +3179,6 @@ msgid "backstab"
 msgstr "ruggesteek"
 
 #: data/core/macros/abilities.cfg:567
-#, fuzzy
 msgid ""
 "Backstab:\n"
 "When used offensively, this attack deals double damage if there is an enemy "
@@ -3196,9 +3186,10 @@ msgid ""
 "incapacitated (turned to stone or otherwise paralyzed)."
 msgstr ""
 "Ruggesteek:\n"
-"Deze aanval verdubbelt de verwondingen als een bevriende eenheid, die niet "
-"om een of andere reden is uitgeschakeld (omdat hij versteend is "
-"bijvoorbeeld), zich aan de andere kant van het slachtoffer bevindt."
+"Wanneer offensief gebruikt, brengt deze aanval tweemaal zo veel verwondingen "
+"toe als een bevriende eenheid, die niet om een of andere reden is "
+"uitgeschakeld (omdat hij versteend is bijvoorbeeld), zich aan de andere kant "
+"van het slachtoffer bevindt."
 
 #: data/core/macros/abilities.cfg:579 data/core/macros/abilities.cfg:591
 msgid "plague"
@@ -3278,7 +3269,6 @@ msgid "swarm"
 msgstr "zwerm"
 
 #: data/core/macros/abilities.cfg:654
-#, fuzzy
 msgid ""
 "Swarm:\n"
 "The number of strikes of this attack decreases when the unit is wounded. The "
@@ -3289,22 +3279,23 @@ msgstr ""
 "Zwerm:\n"
 "Het aantal slagen van deze aanval neemt af wanneer de eenheid gewond raakt. "
 "Het aantal slagen is evenredig met de verhouding tussen hitpoints en het "
-"maximale aantal hitpoints."
+"maximale aantal hitpoints. Als een eenheid bijvoorbeeld 3/4 van zijn "
+"maximale HP heeft krijgt het 3/4 van zijn aantal aanvallen."
 
 #: data/core/macros/abilities.cfg:663
 msgid "charge"
 msgstr "stormloop"
 
 #: data/core/macros/abilities.cfg:665
-#, fuzzy
 msgid ""
 "Charge:\n"
 "When used offensively, this attack deals double damage to the target. It "
 "also causes this unit to take double damage from the target's counterattack."
 msgstr ""
 "Stormloop:\n"
-"Deze aanval brengt tweemaal zo zware verwondingen toe. De eenheid wordt zelf "
-"ook tweemaal zo hard geraakt door de tegenaanval."
+"Wanneer offensief gebruikt, brengt deze aanval tweemaal zo zware "
+"verwondingen toe. De eenheid wordt zelf ook tweemaal zo hard geraakt door de "
+"tegenaanval."
 
 #: data/core/macros/abilities.cfg:677
 msgid "drains"
@@ -3352,31 +3343,33 @@ msgid "Max HP bonus +"
 msgstr "Max HP bonus +"
 
 #: data/core/macros/carryover-utils.cfg:9
-#, fuzzy
 msgid "Early finish bonus."
-msgstr "Bonus per beurt: "
+msgstr "Vroege overwinningsbonus."
 
 #: data/core/macros/carryover-utils.cfg:12
-#, fuzzy
 msgid "No early finish bonus."
-msgstr "Bonus per beurt: "
+msgstr "Geen vroege overwinningsbonus."
 
 #: data/core/macros/carryover-utils.cfg:16
 msgid ""
 "\n"
 "40% of finishing gold carried over to the next scenario."
 msgstr ""
+"\n"
+"40% van het goud wordt meegenomen naar het volgende scenario."
 
 #: data/core/macros/carryover-utils.cfg:20
 msgid ""
 "\n"
 "20% of finishing gold carried over to the next scenario."
 msgstr ""
+"\n"
+"20% van het goud wordt meegenomen naar het volgende scenario."
 
 #. [deprecated_message]
 #: data/core/macros/deprecated-utils.cfg:22
 msgid "VICTORY_AND_DEFEAT_MUSIC is unnecessary and can be removed."
-msgstr ""
+msgstr "VICTORY_AND_DEFEAT_MUSIC is onnodig en kan worden verwijderd."
 
 #. [message]: speaker=narrator
 #: data/core/macros/items.cfg:39
@@ -3430,9 +3423,8 @@ msgstr "Neem het"
 
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:166
-#, fuzzy
 msgid "Leave it"
-msgstr "Eenheid hernoemen"
+msgstr "Laat het liggen"
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:218
@@ -4359,6 +4351,9 @@ msgid ""
 "The computer player might not be able to play side $side_number properly in "
 "this scenario. Side $side_number is intended to be played by a human player."
 msgstr ""
+"De computerspeler kan mogelijk zijde $side_number niet goed spelen in dit "
+"scenario. Zijde $side_number is bedoeld om door een menselijke speler "
+"gespeeld te worden."
 
 #. [time]: id=deep_underground
 #. [illuminated_time]: id=deep_underground_illum
@@ -4393,9 +4388,8 @@ msgstr ""
 "ondoden, maar ook levenden zijn niet veilig."
 
 #: data/core/macros/special-notes.cfg:14
-#, fuzzy
 msgid " This unit is capable of basic healing."
-msgstr " Deze eenheid kan "
+msgstr " Deze eenheid kan fundamentele verpleging toepassen."
 
 #: data/core/macros/special-notes.cfg:17
 msgid ""
@@ -4511,11 +4505,12 @@ msgstr ""
 "afleidt."
 
 #: data/core/macros/special-notes.cfg:62
-#, fuzzy
 msgid ""
 " Foes who lose their life to the plague will rise again in unlife, unless "
 "they are standing on a village."
-msgstr " Vijanden die aan de pest sterven, komen terug als ondode."
+msgstr ""
+" Vijanden die aan de pest sterven, komen terug als ondode, tenzij ze in een "
+"dorp staan."
 
 #: data/core/macros/special-notes.cfg:65
 msgid ""
@@ -4541,13 +4536,11 @@ msgstr ""
 "hij aanvalt."
 
 #: data/core/macros/special-notes.cfg:74
-#, fuzzy
 msgid ""
 " The unit has magical attacks, which always have a high chance of hitting an "
 "opponent."
 msgstr ""
-" De aanval van afstand van deze eenheid is magisch en heeft als zodanig "
-"altijd een hoge raakkans."
+" Deze eenheid heeft magische aanvallen, die altijd een hoge raakkans hebben."
 
 #: data/core/macros/special-notes.cfg:77
 msgid ""
@@ -4692,9 +4685,8 @@ msgstr "gezond"
 
 #. [trait]: id=healthy
 #: data/core/macros/traits.cfg:134
-#, fuzzy
 msgid "Can rest while moving, halves poison damage"
-msgstr "Kan rusten onder het bewegen"
+msgstr "Kan rusten onder het bewegen, halveert vergiftigingsschade"
 
 #. [trait]: id=fearless
 #: data/core/macros/traits.cfg:151 data/core/macros/traits.cfg:164
@@ -4733,15 +4725,13 @@ msgstr "traag"
 
 #. [trait]: id=dim
 #: data/core/macros/traits.cfg:209
-#, fuzzy
 msgid "dim"
-msgstr "Normaal"
+msgstr "dom"
 
 #. [trait]: id=dim
 #: data/core/macros/traits.cfg:210
-#, fuzzy
 msgid "female^dim"
-msgstr "onbevreesd"
+msgstr "dom"
 
 #. [color_range]: id=red
 #. [color_range]: id=1
@@ -5367,7 +5357,6 @@ msgstr "Ondode"
 
 #. [race]: id=undead
 #: data/core/units.cfg:289
-#, fuzzy
 msgid ""
 "Undead are not really a single race of creatures, although often treated as "
 "such. Almost any dead creature can, by a sufficiently skilled necromancer, "
@@ -5396,7 +5385,30 @@ msgid ""
 msgstr ""
 "Ondoden zijn niet echt een enkel ras, ondanks dat ze meestal wel zo bekeken "
 "worden. Bijna ieder dood wezen kan door een voldoende bedreven "
-"dodenbezweerder gereanimeerd worden en opstaan als Ondode. Ondoden zijn "
+"dodenbezweerder gereanimeerd worden en opstaan als Ondode. Ondoden zijn voor "
+"het grootste deel onnatuurlijke maar onnadenkende creaturen die hun schepper "
+"gehoorzamen zonder vraag of gedachte. Een groter mysterie van de "
+"dodenbezwering is hoe deze constructies in stand worden gehouden zonder "
+"continue inspanning van de dodenbezweerder. Een ondood schepsel vereist geen "
+"constante aandacht van de dodenbezweerder om te bevelen en in stand te "
+"houden, maar kan autonoom werken naar de bevelen van zijn meester. Slechts "
+"zelden, misschien eens elke paar maanden, hoeft een dodenbezweerder zijn "
+"creatie te onderhouden.\n"
+"\n"
+"Dodenbezwering is bijna volledig gelimiteerd tot mensen. Zelfs de legenden "
+"van de magisch bekwame rassen zoals elven en meermannen vertellen van "
+"weinigen die zich ooit in de zwarte kunsten hebben verdiept. Er wordt "
+"vermoed dat dodenbezwerende magie een groot aanpassingsvermogen en een "
+"flexibele geest vereisen, de extremen waarvan vooral in mensen worden "
+"gevonden. Het uiteindelijke doel van de meeste dodenbezweerders is om deze "
+"zelfde kunst van het behouden en geven van leven op zichzelf te gebruiken, "
+"om zich te veranderen tegen elke prijs, om uiteindelijk de dood te "
+"ontsnappen door hun geest en ziel te bewaren.\n"
+"\n"
+"<header>text='Geographie'</header>\n"
+"Hoewel de ondode heren pas in grote aantallen op het Grote Continent "
+"arriveerden in de kielzog van Haldric I, waren ze daarvoor niet volledig "
+"onbekend bij elven en dwergen."
 
 #. [race]: id=wolf, description=
 #: data/core/units.cfg:297
@@ -5598,6 +5610,10 @@ msgid ""
 "features, and allows us to improve Wesnoth. To learn more about this or "
 "disable it, click the envelope in the bottom-right corner."
 msgstr ""
+"Strijd om Wesnoth stuurt automatisch anonieme statistieken over je "
+"spelprogressie naar een server waar ze op worden geslagen. Dit maakt het "
+"voor ons mogelijk om Wesnoth verder te verbeteren. Klik om hier meer over te "
+"leren of om dit te stoppen, op de envelop in de hoek rechtsonder."
 
 #. [tip]
 #: data/hardwired/tips.cfg:4
@@ -5827,7 +5843,6 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:67
-#, fuzzy
 msgid ""
 "Poisoned units will lose eight hitpoints every turn until they are one point "
 "from death. They will remain at death's door until the poison is removed. "
@@ -5839,8 +5854,8 @@ msgstr ""
 "een punt van de dood staan. Ze zullen op de rand van de dood blijven totdat "
 "het gif verwijderd wordt. Helers kunnen voorkomen dat een vergiftigde "
 "eenheid verzwakt, maar het gif zal niet verwijderd worden totdat de eenheid "
-"regenereert of een beurt in een dorp verblijft of naast een eenheid met het "
-"'Geneest' vermogen"
+"regenereert of een beurt in een dorp begint of naast een eenheid met het "
+"'Geneest' vermogen."
 
 #. [tip]
 #: data/hardwired/tips.cfg:71
@@ -6347,7 +6362,6 @@ msgstr "Speel"
 
 #. [menu]: id=button-playreplay, type=image
 #: data/themes/macros.cfg:75
-#, fuzzy
 msgid "continuous replay"
 msgstr "doorlopende herhaling"
 
@@ -6437,9 +6451,8 @@ msgid "An invalid weapon is send, possibly due to the Python AI."
 msgstr "Een ongeldig wapen is gestuurd, waarschijnlijk door de Python AI."
 
 #: src/actions.cpp:1045 src/actions.cpp:1316
-#, fuzzy
 msgid "female^poisoned"
-msgstr "ondood"
+msgstr "vergiftigd"
 
 #: src/actions.cpp:1050 src/actions.cpp:1321
 msgid "female^slowed"
@@ -6450,9 +6463,8 @@ msgid "slowed"
 msgstr "vertraagd"
 
 #: src/actions.cpp:1057 src/actions.cpp:1328
-#, fuzzy
 msgid "female^stone"
-msgstr "sterk"
+msgstr "versteen"
 
 #: src/actions.cpp:1057 src/actions.cpp:1328
 msgid "stone"
@@ -6516,7 +6528,7 @@ msgstr "GB"
 
 #: src/addon_management.cpp:397
 msgid "addon_type^Campaign"
-msgstr "Veldtoch"
+msgstr "Veldtocht"
 
 #: src/addon_management.cpp:399
 msgid "addon_type^Scenario"
@@ -6528,24 +6540,23 @@ msgstr "MP tijdperk"
 
 #: src/addon_management.cpp:403
 msgid "addon_type^MP Faction"
-msgstr ""
+msgstr "MP factie"
 
 #: src/addon_management.cpp:405
 msgid "addon_type^MP Map-pack"
-msgstr ""
+msgstr "MP kaart-collectie"
 
 #: src/addon_management.cpp:407
-#, fuzzy
 msgid "addon_type^MP scenario"
-msgstr "Remote scenario"
+msgstr "MP scenario"
 
 #: src/addon_management.cpp:409
 msgid "addon_type^MP campaign"
-msgstr ""
+msgstr "MP veldtocht"
 
 #: src/addon_management.cpp:411
 msgid "addon_type^Resources"
-msgstr ""
+msgstr "Middelen"
 
 #: src/addon_management.cpp:413
 msgid "addon_type^(unknown)"
@@ -6556,15 +6567,18 @@ msgid "Dependencies"
 msgstr "Afhankelijkheden"
 
 #: src/addon_management.cpp:443
-#, fuzzy
 msgid ""
 "This add-on depends upon the following add-on which you have not installed "
 "yet:"
 msgid_plural ""
 "This add-on depends upon the following add-ons which you have not installed "
 "yet:"
-msgstr[0] "Deze add-on heeft de volgende aanvullende afhankelijkheden:"
-msgstr[1] "Deze add-on heeft de volgende aanvullende afhankelijkheden:"
+msgstr[0] ""
+"Deze add-on is afhankelijk van de volgende add-on die je nog niet "
+"geïnstalleerd hebt:"
+msgstr[1] ""
+"Deze add-on is afhankelijk van de volgende add-ons die je nog niet "
+"geïnstalleerd hebt:"
 
 #: src/addon_management.cpp:448
 msgid "Do you still want to download it?"
@@ -6597,23 +6611,23 @@ msgid "Response"
 msgstr "Antwoord"
 
 #: src/addon_management.cpp:571
-#, fuzzy
 msgid "Downloading add-on: $addon_title|..."
-msgstr "Add-on downloaden..."
+msgstr "Bezig met add-on downloaden: $addon_title|..."
 
 #: src/addon_management.cpp:585
 msgid ""
 "The add-on has an invalid file or directory name and can not be installed."
 msgstr ""
+"De add-on heeft een ongeldige bestands- of mapnaam en kan niet worden "
+"geïnstalleerd."
 
 #: src/addon_management.cpp:637
 msgid "Unchecked script files found:"
-msgstr ""
+msgstr "Ongecontroleerde scriptbestanden gevonden:"
 
 #: src/addon_management.cpp:644
-#, fuzzy
 msgid "The add-on '$addon_title|' has been successfully installed."
-msgstr "De add-on is geïnstalleerd."
+msgstr "De add-on '$addon_title|' is succesvol geïnstalleerd."
 
 #: src/addon_management.cpp:646
 msgid "Add-on Installed"
@@ -6631,11 +6645,15 @@ msgid_plural ""
 "Some outdated local add-ons have publishing information attached. They will "
 "not be offered for updating."
 msgstr[0] ""
+"Een verouderde lokale add-on heeft publicatieinformatie. Deze zal niet "
+"worden aangeboden voor vernieuwing."
 msgstr[1] ""
+"Enkele verouderde lokale add-ons hebben publicatieinformatie. Deze zullen "
+"niet worden aangeboden voor vernieuwing."
 
 #: src/addon_management.cpp:715
 msgid "Could not find any updated add-ons on this server."
-msgstr ""
+msgstr "Kon geen vernieuwde add-ons vinden op deze server."
 
 #: src/addon_management.cpp:715
 msgid "No add-ons to update"
@@ -6679,12 +6697,11 @@ msgid "Update failed"
 msgstr "Update mislukt"
 
 #: src/addon_management.cpp:856
-#, fuzzy
 msgid "The following add-on could not be downloaded or updated successfully:"
 msgid_plural ""
 "The following add-ons could not be downloaded or updated successfully:"
-msgstr[0] "De volgende add-on bevat fouten en kon niet worden geladen:"
-msgstr[1] "De volgende add-on bevat fouten en kon niet worden geladen:"
+msgstr[0] "De volgende add-on kon niet worden gedownload of geüpdate:"
+msgstr[1] "De volgende add-ons konden niet worden gedownload of geüpdate:"
 
 #: src/addon_management.cpp:865
 msgid "Update succeeded"
@@ -6699,23 +6716,20 @@ msgid "All add-ons updated successfully."
 msgstr "Alle add-ons succesvol geupdate."
 
 #: src/addon_management.cpp:890
-#, fuzzy
 msgid "Connecting to Add-ons Server..."
-msgstr "Verbinden met Server"
+msgstr "Bezig met verbinden met de Add-ons Server..."
 
 #: src/addon_management.cpp:893
 msgid "Could not connect to host."
 msgstr "Kon geen verbinding maken met 'host'"
 
 #: src/addon_management.cpp:901
-#, fuzzy
 msgid "Requesting list of add-ons"
 msgstr "Bezig met het opvragen van een lijst met add-ons"
 
 #: src/addon_management.cpp:914
-#, fuzzy
 msgid "An error occurred while communicating with the server."
-msgstr "Fout bij communiceren met server."
+msgstr "Er is een fout opgetreden bij het communiceren met de server."
 
 #: src/addon_management.cpp:930 src/titlescreen.cpp:331
 msgid "Version"
@@ -6764,13 +6778,12 @@ msgid "Remote host disconnected."
 msgstr "'Remote host' brak verbinding af."
 
 #: src/addon_management.cpp:1066
-#, fuzzy
 msgid ""
 "A problem occurred when trying to create the files necessary to install this "
 "add-on."
 msgstr ""
-"Er was een probleem om de bestanden te genereren die nodig zijn voor deze "
-"veldtocht."
+"Een probleem trad op tijdens het genereren van de bestanden die nodig zijn "
+"voor deze veldtocht."
 
 #: src/addon_management.cpp:1084 src/addon_management.cpp:1139
 #: src/dialogs.cpp:278 src/dialogs.cpp:286 src/menu_events.cpp:594
@@ -6779,7 +6792,6 @@ msgid "Error"
 msgstr "Error"
 
 #: src/addon_management.cpp:1085
-#, fuzzy
 msgid "You have no add-ons installed."
 msgstr "Je hebt geen add-ons geïnstalleerd."
 
@@ -6788,9 +6800,8 @@ msgid "Choose the add-on to remove."
 msgstr "Kies een add-on om te verwijderen."
 
 #: src/addon_management.cpp:1097
-#, fuzzy
 msgid "Uninstall add-ons"
-msgstr "Add-on wordt verstuurd"
+msgstr "Verwijder add-ons"
 
 #: src/addon_management.cpp:1109
 msgid "Are you sure you want to remove the add-on '$addon|'?"
@@ -6809,9 +6820,8 @@ msgid "Add-on deleted"
 msgstr "Add-on verwijderd"
 
 #: src/addon_management.cpp:1140
-#, fuzzy
 msgid "Add-on could not be deleted properly:"
-msgstr "Add-on kon niet verwijderd worden -- bestand niet gevonden."
+msgstr "Add-on kon niet verwijderd worden:"
 
 #: src/ai.cpp:1778
 msgid "Unknown unit type : "
@@ -7017,9 +7027,8 @@ msgid "Show replay"
 msgstr "Replay"
 
 #: src/dialogs.cpp:679
-#, fuzzy
 msgid "Cancel orders"
-msgstr "Annuleren"
+msgstr "Bevelen annuleren"
 
 #: src/dialogs.cpp:682 src/multiplayer_create.cpp:82
 msgid "OK"
@@ -7086,9 +7095,8 @@ msgid "File I/O Error while reading the game"
 msgstr "Bestand I/O fout."
 
 #: src/game.cpp:1064
-#, fuzzy
 msgid "No campaigns are available.\n"
-msgstr "Geen doel beschikbaar."
+msgstr "Geen veldtochten beschikbaar.\n"
 
 #: src/game.cpp:1068
 msgid "Play a campaign"
@@ -7103,25 +7111,24 @@ msgid "Select difficulty level:"
 msgstr "Kies het spelniveau:"
 
 #: src/game.cpp:1272
-#, fuzzy
 msgid "Do you really want to start the server?"
-msgstr "Wil je haar werkelijk wegsturen?"
+msgstr "Wil je echt de server starten?"
 
 #: src/game.cpp:1273
 msgid ""
 "The server will run in a background process until all users have "
 "disconnected."
 msgstr ""
+"De server zal in een achtergrondproces draaien tot alle gebruikers hun "
+"verbinding hebben verbroken."
 
 #: src/game.cpp:1277
-#, fuzzy
 msgid "Don't show again"
-msgstr "Antwoord onthouden voor de volgende keer"
+msgstr "Niet nog een keer laten zien"
 
 #: src/game.cpp:1349
-#, fuzzy
 msgid "Error while starting server: "
-msgstr "Fout tijdens spelen van het spel: "
+msgstr "Fout tijdens het starten van de server: "
 
 #: src/game.cpp:1351 src/playcampaign.cpp:95 src/playcampaign.cpp:380
 msgid "The game could not be loaded: "
@@ -7144,11 +7151,10 @@ msgid "' (The game will now exit)"
 msgstr "' (Het spel wordt nu gesloten)"
 
 #: src/game.cpp:1535
-#, fuzzy
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "De volgende add-on bevat fouten en kon niet worden geladen:"
-msgstr[1] "De volgende add-on bevat fouten en kon niet worden geladen:"
+msgstr[1] "De volgende add-ons bevatten fouten en konden niet worden geladen:"
 
 #: src/game.cpp:1542
 msgid "ERROR DETAILS:"
@@ -7167,9 +7173,8 @@ msgid "Re-initialize fonts for the current language."
 msgstr "Hermaak de lettertypes voor de huidige taal. "
 
 #: src/game.cpp:1995
-#, fuzzy
 msgid "Searching for installed add-ons."
-msgstr "Add-on wordt verstuurd"
+msgstr "Bezig met zoeken naar geïnstalleerde add-ons."
 
 #: src/game.cpp:2004
 msgid "Loading title screen."
@@ -7211,12 +7216,12 @@ msgid "invisible: "
 msgstr "onzichtbaar: "
 
 #: src/generate_report.cpp:103
-#, fuzzy
 msgid ""
 "This unit has been slowed. It will only deal half its normal damage when "
 "attacking and its movement cost is doubled."
 msgstr ""
-"Deze eenheid is vertraagd en brengt daardoor maar half zoveel schade toe."
+"Deze eenheid is vertraagd. Het brengt daardoor maar half zoveel schade toe "
+"en de bewegingskosten zijn verdubbeld."
 
 #: src/generate_report.cpp:103
 msgid "slowed: "
@@ -7255,7 +7260,6 @@ msgid "Resistances: "
 msgstr "Weerstanden:"
 
 #: src/generate_report.cpp:172
-#, fuzzy
 msgid "(Att / Def)"
 msgstr "(Aan / Ver)"
 
@@ -7276,14 +7280,14 @@ msgstr[0] "aanval"
 msgstr[1] "aanvallen"
 
 #: src/generate_report.cpp:269
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "tooltip^% accuracy"
-msgstr "aanval"
+msgstr "% accuratesse"
 
 #: src/generate_report.cpp:275
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "tooltip^% parry"
-msgstr "schade"
+msgstr "% pareer"
 
 #: src/generate_report.cpp:286
 msgid "weapon range: "
@@ -7346,9 +7350,8 @@ msgid "Abilities: "
 msgstr "Vermogens: "
 
 #: src/help.cpp:1344
-#, fuzzy
 msgid "Ability Upgrades: "
-msgstr "Vermogens: "
+msgstr "Vermogen verbeteringen: "
 
 #: src/help.cpp:1362
 msgid "Cost: "
@@ -7511,9 +7514,8 @@ msgid "Do you really want to dismiss him?"
 msgstr "Wil je hem werkelijk wegsturen?"
 
 #: src/menu_events.cpp:96
-#, fuzzy
 msgid "My lord, this unit is loyal and requires no upkeep! "
-msgstr "Heer, deze eenheid is bijna gepromoveerd!"
+msgstr "Heer, deze eenheid is loyaal en vraagt geen onderhoud!"
 
 #: src/menu_events.cpp:97 src/menu_events.cpp:100 src/menu_events.cpp:104
 msgid "Do you really want to dismiss her?"
@@ -7783,15 +7785,16 @@ msgid "Search"
 msgstr "Zoeken"
 
 #: src/menu_events.cpp:1856
-#, fuzzy
 msgid "This command is currently unavailable."
-msgstr "Geen doel beschikbaar."
+msgstr "Het commando is op dit moment niet beschikbaar."
 
 #: src/menu_events.cpp:1867
 msgid ""
 "Available commands list and command-specific help. Use \"help all\" to "
 "include currently unavailable commands."
 msgstr ""
+"Beschikbare commandolijst en commandospecifieke hulp. Gebruik \"help all\" "
+"om de commando's die nu niet beschikbaar zijn ook te laten zien."
 
 #: src/menu_events.cpp:1972
 msgid " No help available."
@@ -7802,125 +7805,116 @@ msgid ""
 "Send a query to the server. Without arguments the server should tell you the "
 "available commands."
 msgstr ""
+"Stuur een vraag naar de server. Zonder argumenten zal de server u de "
+"beschikbare commando's vertellen."
 
 #: src/menu_events.cpp:2113
 msgid ""
 "Ban and kick a player or observer. If he is not in the game but on the "
 "server he will only be banned."
 msgstr ""
+"Verban en verwijder een speler of observator. Als hij niet in het spel maar "
+"wel op de server is, zal hij alleen verbannen worden."
 
 #: src/menu_events.cpp:2116
 msgid "Kick a player or observer."
-msgstr ""
+msgstr "Verwijder een speler of observator uit het spel."
 
 #: src/menu_events.cpp:2118
 msgid "Mute an observer."
-msgstr ""
+msgstr "Demp een observator."
 
 #: src/menu_events.cpp:2120
 msgid "Mute all observers."
-msgstr ""
+msgstr "Demp alle observator."
 
 #: src/menu_events.cpp:2124
-#, fuzzy
 msgid "Send an emotion or personal action in chat."
-msgstr ""
-"Stuur een emotie of persoonlijke actie in de chat. Gebruik: /me <message>"
+msgstr "Stuur een emotie of persoonlijke actie in de chat."
 
 #: src/menu_events.cpp:2127
-#, fuzzy
 msgid ""
 "Sends a private message. You can't send messages to players that don't "
 "control a side in a running game you are in."
 msgstr ""
-"Stuurt privéberichten. Je kunt niet aan spelers van elke partij berichten "
-"sturen. Gebruik: /whisper <bijnaam> <bericht>"
+"Stuurt privéberichten. Je kunt geen berichten sturen aan spelers van partij "
+"waarin jij ook speelt of observeert."
 
 #: src/menu_events.cpp:2133
 msgid "Change the log level of a log domain."
-msgstr ""
+msgstr "Verander het logniveau van een logdomein."
 
 #: src/menu_events.cpp:2135
-#, fuzzy
 msgid "Add a nick to your ignores list."
-msgstr "Speler toevoegen aan de negeer lijst. Gebruik: /list ignore <bijnaam>"
+msgstr "Speler toevoegen aan de negeer lijst."
 
 #: src/menu_events.cpp:2137
-#, fuzzy
 msgid "Add a nick to your friends list."
-msgstr "Toegevoegd aan vriendenlijst: "
+msgstr "Speler toevoegen aan de vriendenlijst."
 
 #: src/menu_events.cpp:2139
-#, fuzzy
 msgid "Remove a nick from your ignores or friends list."
-msgstr ""
-"Speler van de negeer of vrienden lijst verwijderen. Gebruik: /list remove "
-"<bijnaam>"
+msgstr "Speler van de negeer of vrienden lijst verwijderen."
 
 #: src/menu_events.cpp:2141
-#, fuzzy
 msgid "Show your ignores and friends list."
-msgstr "Negeer en vrienden lijst weergeven. Gebruik: /list display"
+msgstr "Negeer en vrienden lijst weergeven."
 
 #: src/menu_events.cpp:2144
-#, fuzzy
 msgid "Display version information."
-msgstr "Geen tijdperkinformatie gevonden"
+msgstr "Laat versieinformatie zien."
 
 #: src/menu_events.cpp:2146
-#, fuzzy
 msgid "Register your nick"
-msgstr "Registreer je "
+msgstr "Registreer je bijnaam"
 
 #: src/menu_events.cpp:2148
 msgid "Drop your nick."
-msgstr ""
+msgstr "Verwerp je bijnaam."
 
 #: src/menu_events.cpp:2150
 msgid "Update details for your username. For possible details see /details"
 msgstr ""
+"Vernieuw de details van uw gebruikersnaam. Voor mogelijke details, zie /"
+"details"
 
 #: src/menu_events.cpp:2153
 msgid "Request information about a user."
-msgstr ""
+msgstr "Vraag informatie over een gebruiker op."
 
 #: src/menu_events.cpp:2155
 msgid "Request a list of details you can set for your registered username."
 msgstr ""
+"Vraag een lijst aan van details die u kan zetten voor uw geregistreerde "
+"gebruikersnaam."
 
 #: src/menu_events.cpp:2277
 msgid "Refresh gui."
-msgstr ""
+msgstr "Vernieuw het gui."
 
 #: src/menu_events.cpp:2279
 msgid "Switch a side to/from AI control."
-msgstr ""
+msgstr "Schakel een kant naar/van AI controle."
 
 #: src/menu_events.cpp:2282
 msgid "Assign control of a side to a different player or observer."
-msgstr ""
+msgstr "Wijs controle over een zijde aan een andere speler of observator toe."
 
 #: src/menu_events.cpp:2284
-#, fuzzy
 msgid "Clear chat history."
-msgstr ""
-"\n"
-"Chatberichten opschonen.\n"
-"\n"
+msgstr "Chatberichten opschonen."
 
 #: src/menu_events.cpp:2286
 msgid "Visualize the screen refresh procedure."
-msgstr ""
+msgstr "Visualiseer de schermvernieuwingsprocedure."
 
 #: src/menu_events.cpp:2289
-#, fuzzy
 msgid "Save game."
-msgstr "Spel opslaan"
+msgstr "Spel opslaan."
 
 #: src/menu_events.cpp:2291
-#, fuzzy
 msgid "Quit game."
-msgstr "Het spel verlaten"
+msgstr "Het spel verlaten."
 
 #: src/menu_events.cpp:2295
 msgid "Save and quit."
@@ -7928,99 +7922,82 @@ msgstr "Opslaan en afsluiten."
 
 #: src/menu_events.cpp:2298
 msgid "Ignore replay errors."
-msgstr ""
+msgstr "Negeer herhalingfouten."
 
 #: src/menu_events.cpp:2300
 msgid "Disable autosaves."
 msgstr "Automatisch opslaan uitschakelen."
 
 #: src/menu_events.cpp:2302
-#, fuzzy
 msgid "Advance to the next scenario, or scenario identified by 'id'"
-msgstr "Wacht op het volgende scenario..."
+msgstr ""
+"Ga naar het volgende scenario, of het scenario geïdentificeerd door 'id'"
 
 #: src/menu_events.cpp:2305
-#, fuzzy
 msgid "Choose next scenario"
-msgstr "Download volgend scenario..."
+msgstr "Kies volgend scenario"
 
 #: src/menu_events.cpp:2308
-#, fuzzy
 msgid "Turn debug mode on."
-msgstr "Debug modus commando's"
+msgstr "Zet de debugmodus aan."
 
 #: src/menu_events.cpp:2310
 msgid "Turn debug mode off."
-msgstr ""
+msgstr "Zet debugmodus uit."
 
 #: src/menu_events.cpp:2312
 msgid "Set the command used by the custom command hotkey"
-msgstr ""
+msgstr "Zet het commando gebruikt door de aangepaste commando sneltoets"
 
 #: src/menu_events.cpp:2314
 msgid "Set or show alias to a command"
-msgstr ""
+msgstr "Zet een alias voor een commando of laat deze zien"
 
 #: src/menu_events.cpp:2316
-#, fuzzy
 msgid "Set a scenario variable."
-msgstr ""
-"\n"
-"Toon een spelstat variabele.\n"
-"\n"
+msgstr "Zet een scenario variabele."
 
 #: src/menu_events.cpp:2318
-#, fuzzy
 msgid "Show a scenario variable."
-msgstr ""
-"\n"
-"Toon een spelstat variabele.\n"
-"\n"
+msgstr "Toon een scenario variabele."
 
 #: src/menu_events.cpp:2320
 msgid "Modify a unit variable. (Only top level keys are supported.)"
 msgstr ""
+"Verander een eenheidsvariabele. (Alleen variabelen van het hoogste niveau "
+"werken.)"
 
 #: src/menu_events.cpp:2324
 msgid "Remove a trait from a unit. (Does not work yet.)"
-msgstr ""
+msgstr "Verwijden een kenmerk van een eenheid. (Werkt nog niet)"
 
 #: src/menu_events.cpp:2326
-#, fuzzy
 msgid "Create a unit."
-msgstr "Spel maken"
+msgstr "Creëer een eenheid."
 
 #: src/menu_events.cpp:2328
-#, fuzzy
 msgid "Toggle fog for the current player."
-msgstr ""
-"\n"
-"Schakel mist/sluier voor de huidige zijde.\n"
-"\n"
+msgstr "Schakel mist voor de huidige zijde."
 
 #: src/menu_events.cpp:2330
-#, fuzzy
 msgid "Toggle shroud for the current player."
-msgstr ""
-"\n"
-"Schakel mist/sluier voor de huidige zijde.\n"
-"\n"
+msgstr "Schakel sluier voor de huidige zijde."
 
 #: src/menu_events.cpp:2332
 msgid "Give gold to the current player."
-msgstr ""
+msgstr "Geef goud aan de huidige speler."
 
 #: src/menu_events.cpp:2334
 msgid "Fire a game event."
-msgstr ""
+msgstr "Vuur een spelgebeurtenis af."
 
 #: src/menu_events.cpp:2337
 msgid "Toggle overalying of x,y coordinates on hexes."
-msgstr ""
+msgstr "Schakel het bedekken van hexes met x,y coördinaten."
 
 #: src/menu_events.cpp:2340
 msgid "Toggle overalying of terrain codes on hexes."
-msgstr ""
+msgstr "Schakel het bedekken van hexes met terreincodes."
 
 #: src/menu_events.cpp:2385
 msgid "Unknown debug level: '$level'."
@@ -8064,11 +8041,11 @@ msgstr "Kon geen label of eenheid vinden met '$search'."
 
 #: src/menu_events.cpp:2710
 msgid "Can't droid invalid side: '$side'."
-msgstr ""
+msgstr "Kan de ongeldige zijde '$side' niet door de computer laten besturen."
 
 #: src/menu_events.cpp:2715
 msgid "Can't droid networked side: '$side'."
-msgstr ""
+msgstr "Kan de netwerkzijde '$side' niet door de computer laten besturen."
 
 #: src/menu_events.cpp:2752
 msgid "Can't change control of invalid side: '$side'."
@@ -8079,9 +8056,8 @@ msgid "Can't change control of out-of-bounds side: '$side'."
 msgstr "Kan besturing niet veranderen van buiten bereik zijnde zijde: '$side'."
 
 #: src/menu_events.cpp:2821
-#, fuzzy
 msgid "Choose Scenario (Debug!)"
-msgstr "Maak eenheid (Debug!)"
+msgstr "Kies een scenario (Debug!)"
 
 #: src/menu_events.cpp:2834
 msgid "Debug mode activated!"
@@ -8089,7 +8065,7 @@ msgstr "Debug modus geactiveerd!"
 
 #: src/menu_events.cpp:2837
 msgid "Debug mode not available in network games"
-msgstr ""
+msgstr "Debugmodus is niet beschikbaar in netwerkspellen"
 
 #: src/menu_events.cpp:2842
 msgid "Debug mode deactivated!"
@@ -8135,16 +8111,15 @@ msgstr "Server-side verwijzingslus"
 
 #: src/multiplayer.cpp:182
 msgid "Log in with password"
-msgstr ""
+msgstr "Log in met wachtwoord"
 
 #: src/multiplayer.cpp:183
 msgid "Request password reminder for this username"
-msgstr ""
+msgstr "Vraag een wachtwoord herinnering aan voor deze gebruikersnaam"
 
 #: src/multiplayer.cpp:184
-#, fuzzy
 msgid "Choose a different username"
-msgstr "Inloggen op een andere server"
+msgstr "Kies een andere gebruikersnaam"
 
 #: src/multiplayer.cpp:201
 msgid "Login"
@@ -8200,7 +8175,7 @@ msgstr "(Vacante plaats)"
 
 #: src/multiplayer_connect.cpp:691
 msgid "(Reserved for $playername)"
-msgstr ""
+msgstr "(Gereserveerd voor $playername)"
 
 #: src/multiplayer_connect.cpp:821
 msgid "Reserved"
@@ -8606,9 +8581,8 @@ msgid "No multiplayer sides found"
 msgstr "Er werden geen multiplayer kanten gevonden"
 
 #: src/multiplayer_wait.cpp:302
-#, fuzzy
 msgid "Choose your faction:"
-msgstr "Kies je kant:"
+msgstr "Kies je factie:"
 
 #: src/multiplayer_wait.cpp:302
 msgid "Starting position: "
@@ -8711,6 +8685,8 @@ msgstr "Onbekend scenario: '$scenario|'"
 #: src/playmp_controller.cpp:209
 msgid "Undoing moves not yet transmitted to the server."
 msgstr ""
+"Bezig met het ongedaan maken van zetten die nog niet naar de server zijn "
+"verstuurd."
 
 #: src/playmp_controller.cpp:289
 msgid "End scenario"
@@ -8729,6 +8705,13 @@ msgid ""
 "\n"
 "Do you want to save an error log of your game?"
 msgstr ""
+"Het spel is niet meer synchroon en kan niet verdergaan. Er zijn een aantal "
+"redenen waarom dit kan gebeuren: het kan zijn dat u of een andere speler de "
+"spelinstellingen hebben veranderd. Dit kan betekenen dat een van de spelers "
+"vals probeert te spelen. Het kan ook komen door een fout in het spel, maar "
+"dit is minder waarschijnlijk.\n"
+"\n"
+"Wilt u een log van de fouten opslaan?"
 
 #: src/playsingle_controller.cpp:180
 msgid "Remaining gold: "
@@ -8908,12 +8891,11 @@ msgstr " geïncludeerd vanuit"
 
 #: src/serialization/parser.cpp:344
 msgid "$error, value '$value', previous '$previous_value' at $pos"
-msgstr ""
+msgstr "$error, waarde '$value', vorige waarde '$previous_value' op $pos"
 
 #: src/serialization/parser.cpp:348
-#, fuzzy
 msgid "$error, value '$value' at $pos"
-msgstr "$error bij $pos"
+msgstr "$error, waarde '$value' bij $pos"
 
 #: src/statistics_dialog.cpp:66 src/statistics_dialog.cpp:121
 msgid "Recruits"
@@ -8996,9 +8978,8 @@ msgid "TitleScreen button^Add-ons"
 msgstr "Add-ons"
 
 #: src/titlescreen.cpp:383
-#, fuzzy
 msgid "TitleScreen button^Editor"
-msgstr "Afsluiten"
+msgstr "Kaartbewerker"
 
 #: src/titlescreen.cpp:385
 msgid "TitleScreen button^Language"
@@ -9058,7 +9039,7 @@ msgstr "Download zelfgemaakte veldtochten, tijdperken en kaarten"
 
 #: src/titlescreen.cpp:403
 msgid "Start the map editor"
-msgstr ""
+msgstr "Start de kaartbewerker"
 
 #: src/titlescreen.cpp:405
 msgid "Change the language"
@@ -9097,9 +9078,8 @@ msgid "Help Wesnoth by sending us information"
 msgstr "Help Wesnoth door ons informatie toe te sturen"
 
 #: src/unit.cpp:589
-#, fuzzy
 msgid "Unknown unit type '$type|' while generating traits"
-msgstr "Onbekende eenheid '$type|'"
+msgstr "Onbekende eenheid '$type|' tijdens het genereren van de kenmerken"
 
 #: src/unit.cpp:790
 msgid "Unknown unit type '$type|'"
@@ -9153,7 +9133,7 @@ msgstr "% nauwkeurigheid"
 #: src/unit_types.cpp:225
 #, no-c-format
 msgid "% parry"
-msgstr ""
+msgstr "% pareer"
 
 #: src/unit_types.cpp:1015
 msgid "chaotic"
