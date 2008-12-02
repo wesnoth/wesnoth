@@ -2142,8 +2142,13 @@ static int do_gameloop(int argc, char** argv)
 	return 0;
 }
 
+extern "C" {
+void init_custom_malloc();
+}
+
 int main(int argc, char** argv)
 {
+	init_custom_malloc();
 	if(SDL_Init(SDL_INIT_TIMER) < 0) {
 		fprintf(stderr, "Couldn't initialize SDL: %s\n", SDL_GetError());
 		return(1);

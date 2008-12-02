@@ -19,6 +19,8 @@ libwesnoth_core_sources = Split("""
     config.cpp
     gettext.cpp
     log.cpp
+    malloc.c
+    poolalloc.c
     map.cpp
     map_location.cpp
     md5.cpp
