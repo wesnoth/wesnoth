@@ -308,9 +308,11 @@ libwesnoth_core_a_SOURCES = \
 	game_config.cpp \
 	gettext.cpp \
 	log.cpp \
+	malloc.c \
 	map.cpp \
 	map_location.cpp \
 	md5.cpp \
+	poolalloc.c \
 	thread.cpp \
 	tstring.cpp \
 	util.cpp \
