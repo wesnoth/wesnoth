@@ -2148,7 +2148,9 @@ void init_custom_malloc();
 
 int main(int argc, char** argv)
 {
+#ifndef DISABLE_POOL_ALLOC
 	init_custom_malloc();
+#endif
 	if(SDL_Init(SDL_INIT_TIMER) < 0) {
 		fprintf(stderr, "Couldn't initialize SDL: %s\n", SDL_GetError());
 		return(1);

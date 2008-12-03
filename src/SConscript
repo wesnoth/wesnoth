@@ -19,8 +19,6 @@ libwesnoth_core_sources = Split("""
     config.cpp
     gettext.cpp
     log.cpp
-    malloc.c
-    poolalloc.c
     map.cpp
     map_location.cpp
     md5.cpp
@@ -35,6 +33,11 @@ libwesnoth_core_sources = Split("""
     serialization/string_utils.cpp
     serialization/tokenizer.cpp
     """)
+if env["pool_alloc"]:
+    libwesnoth_core_sources.extend(Split("""
+        malloc.c
+        poolalloc.c
+        """))
 
 libwesnoth_core_sources.extend(env.Object("network_worker.cpp", EXTRA_DEFINE = env['raw_sockets'] and "NETWORK_USE_RAW_SOCKETS" or None))
 
@@ -298,7 +301,7 @@ def WesnothProgram(env, target, source, can_build, **kw):
 from SCons.Script.SConscript import SConsEnvironment
 SConsEnvironment.WesnothProgram = WesnothProgram
 
-game_cpp = python_env.Object("game.cpp");
+game_cpp = python_env.Object("game.cpp", EXTRA_DEFINE = not env["pool_alloc"] and "DISABLE_POOL_ALLOC" or None);
 
 env.WesnothProgram("wesnoth", [game_cpp] + [libwesnoth_extras, libwesnoth_core, libwesnoth_sdl, libwesnoth, libcampaignd, env["wesnoth_res"]], have_client_prereqs)
 
