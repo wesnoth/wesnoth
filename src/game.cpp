@@ -2142,9 +2142,11 @@ static int do_gameloop(int argc, char** argv)
 	return 0;
 }
 
+#ifndef DISABLE_POOL_ALLOC
 extern "C" {
 void init_custom_malloc();
 }
+#endif
 
 int main(int argc, char** argv)
 {
