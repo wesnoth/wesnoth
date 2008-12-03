@@ -1478,7 +1478,10 @@ namespace {
 		std::vector<std::string>::iterator ti;
 		for(ti = types.begin(); ti != types.end(); ++ti) {
 			config item = cfg.get_config();
-			item["type"] = *ti;
+			// Do not try to match an empty string
+			if ( ! (*ti).empty() ) {
+				item["type"] = *ti;
+			}
 			item["role"] = "";
 			vconfig filter(&item);
 
