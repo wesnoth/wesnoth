@@ -325,7 +325,7 @@ for env in [test_env, env]:
         env[d] = os.path.join(env["prefix"], env[d])
 
     if env["PLATFORM"] == 'win32':
-        env.Append(LIBS = ["wsock32", "intl", "z"], CXXFLAGS = ["-mthreads"], LINKFLAGS = ["-mthreads"])
+        env.Append(LIBS = ["wsock32", "intl", "z"], CCFLAGS = ["-mthreads"], LINKFLAGS = ["-mthreads"])
     if env["PLATFORM"] == 'darwin':            # Mac OS X
         env.Append(FRAMEWORKS = "Carbon")            # Carbon GUI
 
@@ -356,11 +356,11 @@ SConscript(dirs = Split("po doc packaging/windows"))
 
 binaries = Split("wesnoth wesnothd cutter exploder campaignd test")
 builds = {
-    "base"          : dict(CXXFLAGS   = "$OPT_FLAGS"),    # Don't build in subdirectory
-    "debug"         : dict(CXXFLAGS   = Split("$DEBUG_FLAGS")),
+    "base"          : dict(CCFLAGS   = "$OPT_FLAGS"),    # Don't build in subdirectory
+    "debug"         : dict(CCFLAGS   = Split("$DEBUG_FLAGS")),
     "glibcxx_debug" : dict(CPPDEFINES = Split("_GLIBCXX_DEBUG _GLIBCXX_DEBUG_PEDANTIC")),
-    "release"       : dict(CXXFLAGS   = "$OPT_FLAGS"),
-    "profile"       : dict(CXXFLAGS   = "-pg", LINKFLAGS = "-pg")
+    "release"       : dict(CCFLAGS   = "$OPT_FLAGS"),
+    "profile"       : dict(CCFLAGS   = "-pg", LINKFLAGS = "-pg")
     }
 builds["glibcxx_debug"].update(builds["debug"])
 build = env["build"]
