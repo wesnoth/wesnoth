@@ -126,7 +126,7 @@ void* allocate_chunk_from_block(Block* b)
 
 inline Block* get_block_from_chunk(void* chunk)
 {
-	int8_t* block_ptr = ((int8_t*)chunk) - ((intptr_t)chunk)%BLOCK_SIZE;
+	int8_t* block_ptr = ((int8_t*)chunk) - ((uintptr_t)chunk)%BLOCK_SIZE;
 	return (Block*)block_ptr;
 }
 
