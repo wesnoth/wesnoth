@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu-wesnoth_1.4\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-29 12:36+0100\n"
+"POT-Creation-Date: 2008-12-03 15:10+0100\n"
 "PO-Revision-Date: 2008-10-20 16:50+0200\n"
 "Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
 "Language-Team: Hungarian <nplurals=2; plural=(n != 1);>\n"
@@ -285,112 +285,112 @@ msgid "Hungarian Translation"
 msgstr "Magyar Fordítás"
 
 #. [about]
-#: data/core/about.cfg:1468
+#: data/core/about.cfg:1456
 msgid "Indonesian Translation"
 msgstr "Indonéz Fordítás"
 
 #. [about]
-#: data/core/about.cfg:1475
+#: data/core/about.cfg:1463
 msgid "Italian Translation"
 msgstr "Olasz Fordítás"
 
 #. [about]
-#: data/core/about.cfg:1510
+#: data/core/about.cfg:1498
 msgid "Japanese Translation"
 msgstr "Japán Fordítás"
 
 #. [about]
-#: data/core/about.cfg:1536
+#: data/core/about.cfg:1524
 msgid "Korean Translation"
 msgstr "Koreai Fordítás"
 
 #. [about]
-#: data/core/about.cfg:1543
+#: data/core/about.cfg:1531
 msgid "Latin Translation"
 msgstr "Latin Fordítás"
 
 #. [about]
-#: data/core/about.cfg:1550
+#: data/core/about.cfg:1538
 msgid "Latvian Translation"
 msgstr "Lett Fordítás"
 
 #. [about]
-#: data/core/about.cfg:1557
+#: data/core/about.cfg:1545
 msgid "Lithuanian Translation"
 msgstr "Litván Fordítás"
 
 #. [about]
-#: data/core/about.cfg:1565
+#: data/core/about.cfg:1553
 msgid "Macedonian Translation"
 msgstr "Makedón Fordítás"
 
 #. [about]
-#: data/core/about.cfg:1572
+#: data/core/about.cfg:1560
 msgid "Norwegian Translation"
 msgstr "Norvég Fordítás"
 
 #. [about]
-#: data/core/about.cfg:1594
+#: data/core/about.cfg:1582
 msgid "Polish Translation"
 msgstr "Lengyel Fordítás"
 
 #. [about]
-#: data/core/about.cfg:1643
+#: data/core/about.cfg:1631
 msgid "Portuguese Translation"
 msgstr "Portugál Fordítás"
 
 #. [about]
-#: data/core/about.cfg:1650
+#: data/core/about.cfg:1638
 msgid "Portuguese (Brazil) Translation"
 msgstr "Portugál (Brazil) Fordítás"
 
 #. [about]
-#: data/core/about.cfg:1685
+#: data/core/about.cfg:1673
 msgid "Romanian Translation"
 msgstr "Román Fordítás"
 
 #. [about]
-#: data/core/about.cfg:1693
+#: data/core/about.cfg:1681
 msgid "Russian Translation"
 msgstr "Orosz Fordítás"
 
 #. [about]
-#: data/core/about.cfg:1729
+#: data/core/about.cfg:1717
 msgid "Serbian Translation"
 msgstr "Szerb Fordítás"
 
 #. [about]
-#: data/core/about.cfg:1744
+#: data/core/about.cfg:1732
 msgid "Slovak Translation"
 msgstr "Szlovák Fordítás"
 
 #. [about]
-#: data/core/about.cfg:1770
+#: data/core/about.cfg:1758
 msgid "Slovenian Translation"
 msgstr "Szlovén Fordítás"
 
 #. [about]
-#: data/core/about.cfg:1780
+#: data/core/about.cfg:1768
 msgid "Spanish Translation"
 msgstr "Spanyol Fordítás"
 
 #. [about]
-#: data/core/about.cfg:1828
+#: data/core/about.cfg:1816
 msgid "Swedish Translation"
 msgstr "Svéd Fordítás"
 
 #. [about]
-#: data/core/about.cfg:1857
+#: data/core/about.cfg:1845
 msgid "Turkish Translation"
 msgstr "Török Fordítás"
 
 #. [about]
-#: data/core/about.cfg:1879
+#: data/core/about.cfg:1867
 msgid "Valencian (southern Catalan) Translation"
 msgstr "Valenciai (Dél-Katalán) Fordítás"
 
 #. [about]
-#: data/core/about.cfg:1895
+#: data/core/about.cfg:1883
 msgid "Bots"
 msgstr "MI játékosok"
 
@@ -7106,11 +7106,11 @@ msgstr "Veszítesz, ha:"
 msgid "No time of day has been defined."
 msgstr "Nincs napszak meghatározva."
 
-#: src/gamestatus.cpp:703 src/gamestatus.cpp:705 src/playcampaign.cpp:422
+#: src/gamestatus.cpp:726 src/gamestatus.cpp:728 src/playcampaign.cpp:422
 msgid " replay"
 msgstr " visszajátszás"
 
-#: src/gamestatus.cpp:840
+#: src/gamestatus.cpp:863
 msgid "Could not write to file"
 msgstr "Nem sikerült a fájlba írni"
 
@@ -7592,7 +7592,7 @@ msgstr "Elmentve"
 msgid "The game has been saved"
 msgstr "Az állás el lett mentve"
 
-#: src/menu_events.cpp:763 src/playcampaign.cpp:569
+#: src/menu_events.cpp:763 src/playcampaign.cpp:582
 msgid "The game could not be saved"
 msgstr "A játék nem menthető el"
 
@@ -8485,27 +8485,27 @@ msgstr "Hiba a játék kódjában (WML): "
 msgid "Save Replay"
 msgstr "Visszajátszás mentése"
 
-#: src/playcampaign.cpp:429
+#: src/playcampaign.cpp:439
 msgid "The replay could not be saved"
 msgstr "A visszajátszás elmentése sikertelen."
 
-#: src/playcampaign.cpp:446
+#: src/playcampaign.cpp:456
 msgid "This scenario has ended. Do you want to continue the campaign?"
 msgstr "Ennek a küldetésnek vége. Folytatod a hadjáratot?"
 
-#: src/playcampaign.cpp:467
+#: src/playcampaign.cpp:477
 msgid "Downloading next scenario..."
 msgstr "Következő küldetés letöltése..."
 
-#: src/playcampaign.cpp:560
+#: src/playcampaign.cpp:573
 msgid "Do you want to save your game?"
 msgstr "El akarod menteni a játékot?"
 
-#: src/playcampaign.cpp:561
+#: src/playcampaign.cpp:574
 msgid "Name:"
 msgstr "Név:"
 
-#: src/playcampaign.cpp:585
+#: src/playcampaign.cpp:598
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Ismeretlen küldetés: '$scenario|'"
 
@@ -8608,29 +8608,29 @@ msgstr "Játék vége"
 msgid "The game is over."
 msgstr "A játék véget ért."
 
-#: src/playsingle_controller.cpp:377
+#: src/playsingle_controller.cpp:379
 msgid "Scenario Report"
 msgstr "A küldetés összegzése"
 
-#: src/playsingle_controller.cpp:379
+#: src/playsingle_controller.cpp:381
 msgid "Victory"
 msgstr "Győzelem"
 
-#: src/playsingle_controller.cpp:380
+#: src/playsingle_controller.cpp:382
 msgid "You have emerged victorious!"
 msgstr "Győztél!"
 
-#: src/playsingle_controller.cpp:427 src/playsingle_controller.cpp:472
+#: src/playsingle_controller.cpp:429 src/playsingle_controller.cpp:474
 msgid "The file you have tried to load is corrupt"
 msgstr "A fájl, amelyet megpróbáltál betölteni, sérült"
 
-#: src/playsingle_controller.cpp:437
+#: src/playsingle_controller.cpp:439
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
 msgstr "A hálózat megszakadt, így a játék nem folytatható. Elmented az állást?"
 
-#: src/playsingle_controller.cpp:577
+#: src/playsingle_controller.cpp:579
 msgid "It is now $name|'s turn"
 msgstr "$name következik"
 

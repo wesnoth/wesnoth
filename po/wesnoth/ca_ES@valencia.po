@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-29 12:36+0100\n"
+"POT-Creation-Date: 2008-12-03 15:10+0100\n"
 "PO-Revision-Date: 2008-09-24 02:09+0100\n"
 "Last-Translator: Mavorte <mavorte1@yahoo.es>\n"
 "Language-Team: none\n"
@@ -279,112 +279,112 @@ msgid "Hungarian Translation"
 msgstr "Traducció a l'hongarés"
 
 #. [about]
-#: data/core/about.cfg:1468
+#: data/core/about.cfg:1456
 msgid "Indonesian Translation"
 msgstr "Traducció a l'indonesi"
 
 #. [about]
-#: data/core/about.cfg:1475
+#: data/core/about.cfg:1463
 msgid "Italian Translation"
 msgstr "Traducció a l'italià"
 
 #. [about]
-#: data/core/about.cfg:1510
+#: data/core/about.cfg:1498
 msgid "Japanese Translation"
 msgstr "Traducció al japonés"
 
 #. [about]
-#: data/core/about.cfg:1536
+#: data/core/about.cfg:1524
 msgid "Korean Translation"
 msgstr "Traducció al coreà"
 
 #. [about]
-#: data/core/about.cfg:1543
+#: data/core/about.cfg:1531
 msgid "Latin Translation"
 msgstr "Traducció al llatí"
 
 #. [about]
-#: data/core/about.cfg:1550
+#: data/core/about.cfg:1538
 msgid "Latvian Translation"
 msgstr "Traducció al letó"
 
 #. [about]
-#: data/core/about.cfg:1557
+#: data/core/about.cfg:1545
 msgid "Lithuanian Translation"
 msgstr "Traducció al lituà"
 
 #. [about]
-#: data/core/about.cfg:1565
+#: data/core/about.cfg:1553
 msgid "Macedonian Translation"
 msgstr "Traducció al macedoni"
 
 #. [about]
-#: data/core/about.cfg:1572
+#: data/core/about.cfg:1560
 msgid "Norwegian Translation"
 msgstr "Traducció al noruec"
 
 #. [about]
-#: data/core/about.cfg:1594
+#: data/core/about.cfg:1582
 msgid "Polish Translation"
 msgstr "Traducció al polac"
 
 #. [about]
-#: data/core/about.cfg:1643
+#: data/core/about.cfg:1631
 msgid "Portuguese Translation"
 msgstr "Traducció al portugués"
 
 #. [about]
-#: data/core/about.cfg:1650
+#: data/core/about.cfg:1638
 msgid "Portuguese (Brazil) Translation"
 msgstr "Traducció al portugués (Brasil)"
 
 #. [about]
-#: data/core/about.cfg:1685
+#: data/core/about.cfg:1673
 msgid "Romanian Translation"
 msgstr "Traducció al rumà"
 
 #. [about]
-#: data/core/about.cfg:1693
+#: data/core/about.cfg:1681
 msgid "Russian Translation"
 msgstr "Traducció al rus"
 
 #. [about]
-#: data/core/about.cfg:1729
+#: data/core/about.cfg:1717
 msgid "Serbian Translation"
 msgstr "Traducció al serbi"
 
 #. [about]
-#: data/core/about.cfg:1744
+#: data/core/about.cfg:1732
 msgid "Slovak Translation"
 msgstr "Traducció a l'eslovac"
 
 #. [about]
-#: data/core/about.cfg:1770
+#: data/core/about.cfg:1758
 msgid "Slovenian Translation"
 msgstr "Traducció a l'eslové"
 
 #. [about]
-#: data/core/about.cfg:1780
+#: data/core/about.cfg:1768
 msgid "Spanish Translation"
 msgstr "Traducció al castellà"
 
 #. [about]
-#: data/core/about.cfg:1828
+#: data/core/about.cfg:1816
 msgid "Swedish Translation"
 msgstr "Traducció al suec"
 
 #. [about]
-#: data/core/about.cfg:1857
+#: data/core/about.cfg:1845
 msgid "Turkish Translation"
 msgstr "Traducció al turc"
 
 #. [about]
-#: data/core/about.cfg:1879
+#: data/core/about.cfg:1867
 msgid "Valencian (southern Catalan) Translation"
 msgstr "Traducció al valencià"
 
 #. [about]
-#: data/core/about.cfg:1895
+#: data/core/about.cfg:1883
 msgid "Bots"
 msgstr "Robots"
 
@@ -7104,11 +7104,11 @@ msgstr "Derrota:"
 msgid "No time of day has been defined."
 msgstr "No s'ha definit l'hora del dia."
 
-#: src/gamestatus.cpp:703 src/gamestatus.cpp:705 src/playcampaign.cpp:422
+#: src/gamestatus.cpp:726 src/gamestatus.cpp:728 src/playcampaign.cpp:422
 msgid " replay"
 msgstr " repetició"
 
-#: src/gamestatus.cpp:840
+#: src/gamestatus.cpp:863
 msgid "Could not write to file"
 msgstr "No ha segut possible escriure en l'archiu."
 
@@ -7592,7 +7592,7 @@ msgstr "Partida guardada"
 msgid "The game has been saved"
 msgstr "La partida ha segut guardada."
 
-#: src/menu_events.cpp:763 src/playcampaign.cpp:569
+#: src/menu_events.cpp:763 src/playcampaign.cpp:582
 msgid "The game could not be saved"
 msgstr "No s'ha pogut guardar la partida."
 
@@ -8475,27 +8475,27 @@ msgstr "Erro mentres es llegia el WML:"
 msgid "Save Replay"
 msgstr "Guardar Repetició"
 
-#: src/playcampaign.cpp:429
+#: src/playcampaign.cpp:439
 msgid "The replay could not be saved"
 msgstr "La repetició no s'ha pogut guardar"
 
-#: src/playcampaign.cpp:446
+#: src/playcampaign.cpp:456
 msgid "This scenario has ended. Do you want to continue the campaign?"
 msgstr "Est escenari ha acabat. ¿Voleu continuar la campanya?"
 
-#: src/playcampaign.cpp:467
+#: src/playcampaign.cpp:477
 msgid "Downloading next scenario..."
 msgstr "Descarregant el següent escenari..."
 
-#: src/playcampaign.cpp:560
+#: src/playcampaign.cpp:573
 msgid "Do you want to save your game?"
 msgstr "¿Vols guardar la teua partida?"
 
-#: src/playcampaign.cpp:561
+#: src/playcampaign.cpp:574
 msgid "Name:"
 msgstr "Nom: "
 
-#: src/playcampaign.cpp:585
+#: src/playcampaign.cpp:598
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Escenari desconegut: '$scenario|'"
 
@@ -8596,23 +8596,23 @@ msgstr "Partida perduda"
 msgid "The game is over."
 msgstr "La partida ha acabat."
 
-#: src/playsingle_controller.cpp:377
+#: src/playsingle_controller.cpp:379
 msgid "Scenario Report"
 msgstr "Informe de l'escenari"
 
-#: src/playsingle_controller.cpp:379
+#: src/playsingle_controller.cpp:381
 msgid "Victory"
 msgstr "Victòria"
 
-#: src/playsingle_controller.cpp:380
+#: src/playsingle_controller.cpp:382
 msgid "You have emerged victorious!"
 msgstr "¡Has segut el vencedor!"
 
-#: src/playsingle_controller.cpp:427 src/playsingle_controller.cpp:472
+#: src/playsingle_controller.cpp:429 src/playsingle_controller.cpp:474
 msgid "The file you have tried to load is corrupt"
 msgstr "L'archiu que ha intentat carregar està danyat."
 
-#: src/playsingle_controller.cpp:437
+#: src/playsingle_controller.cpp:439
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
@@ -8620,7 +8620,7 @@ msgstr ""
 "S'ha produït una desconexió de la ret i la partida no pot continuar. ¿Vols "
 "guardar la partida?"
 
-#: src/playsingle_controller.cpp:577
+#: src/playsingle_controller.cpp:579
 msgid "It is now $name|'s turn"
 msgstr "És la tanda de $name|."
 

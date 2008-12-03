@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-29 12:36+0100\n"
+"POT-Creation-Date: 2008-12-03 15:10+0100\n"
 "PO-Revision-Date: 2008-05-04 12:00+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -281,115 +281,115 @@ msgid "Hungarian Translation"
 msgstr "Mađarski prevod"
 
 #. [about]
-#: data/core/about.cfg:1468
+#: data/core/about.cfg:1456
 msgid "Indonesian Translation"
 msgstr "Indonežanski prevod"
 
 #. [about]
-#: data/core/about.cfg:1475
+#: data/core/about.cfg:1463
 msgid "Italian Translation"
 msgstr "Italijanski prevod"
 
 #. [about]
-#: data/core/about.cfg:1510
+#: data/core/about.cfg:1498
 msgid "Japanese Translation"
 msgstr "Japanski prevod"
 
 #. [about]
-#: data/core/about.cfg:1536
+#: data/core/about.cfg:1524
 msgid "Korean Translation"
 msgstr "Korejski prevod"
 
 #. [about]
-#: data/core/about.cfg:1543
+#: data/core/about.cfg:1531
 msgid "Latin Translation"
 msgstr "Latinski prevod"
 
 #. [about]
-#: data/core/about.cfg:1550
+#: data/core/about.cfg:1538
 #, fuzzy
 msgid "Latvian Translation"
 msgstr "Latinski prevod"
 
 #. [about]
-#: data/core/about.cfg:1557
+#: data/core/about.cfg:1545
 msgid "Lithuanian Translation"
 msgstr "Litvanski prevod"
 
 #. [about]
-#: data/core/about.cfg:1565
+#: data/core/about.cfg:1553
 #, fuzzy
 msgid "Macedonian Translation"
 msgstr "Indonežanski prevod"
 
 #. [about]
-#: data/core/about.cfg:1572
+#: data/core/about.cfg:1560
 msgid "Norwegian Translation"
 msgstr "Norveški prevod"
 
 #. [about]
-#: data/core/about.cfg:1594
+#: data/core/about.cfg:1582
 msgid "Polish Translation"
 msgstr "Poljski prevod"
 
 #. [about]
-#: data/core/about.cfg:1643
+#: data/core/about.cfg:1631
 msgid "Portuguese Translation"
 msgstr "Portugalski prevod"
 
 #. [about]
-#: data/core/about.cfg:1650
+#: data/core/about.cfg:1638
 msgid "Portuguese (Brazil) Translation"
 msgstr "Portugalski brazilski prevod"
 
 #. [about]
-#: data/core/about.cfg:1685
+#: data/core/about.cfg:1673
 #, fuzzy
 msgid "Romanian Translation"
 msgstr "Estonski prevod"
 
 #. [about]
-#: data/core/about.cfg:1693
+#: data/core/about.cfg:1681
 msgid "Russian Translation"
 msgstr "Ruski prevod"
 
 #. [about]
-#: data/core/about.cfg:1729
+#: data/core/about.cfg:1717
 msgid "Serbian Translation"
 msgstr "Srpski prevod"
 
 #. [about]
-#: data/core/about.cfg:1744
+#: data/core/about.cfg:1732
 msgid "Slovak Translation"
 msgstr "Slovački prevod"
 
 #. [about]
-#: data/core/about.cfg:1770
+#: data/core/about.cfg:1758
 msgid "Slovenian Translation"
 msgstr "Slovenački prevod"
 
 #. [about]
-#: data/core/about.cfg:1780
+#: data/core/about.cfg:1768
 msgid "Spanish Translation"
 msgstr "Španski prevod"
 
 #. [about]
-#: data/core/about.cfg:1828
+#: data/core/about.cfg:1816
 msgid "Swedish Translation"
 msgstr "Švedski prevod"
 
 #. [about]
-#: data/core/about.cfg:1857
+#: data/core/about.cfg:1845
 msgid "Turkish Translation"
 msgstr "Turski prevod"
 
 #. [about]
-#: data/core/about.cfg:1879
+#: data/core/about.cfg:1867
 msgid "Valencian (southern Catalan) Translation"
 msgstr "Valensijski (južnokatalonski) prevod"
 
 #. [about]
-#: data/core/about.cfg:1895
+#: data/core/about.cfg:1883
 msgid "Bots"
 msgstr "Botovi"
 
@@ -6931,11 +6931,11 @@ msgstr "poraz:"
 msgid "No time of day has been defined."
 msgstr "Doba dana nije određeno."
 
-#: src/gamestatus.cpp:703 src/gamestatus.cpp:705 src/playcampaign.cpp:422
+#: src/gamestatus.cpp:726 src/gamestatus.cpp:728 src/playcampaign.cpp:422
 msgid " replay"
 msgstr " snimak"
 
-#: src/gamestatus.cpp:840
+#: src/gamestatus.cpp:863
 msgid "Could not write to file"
 msgstr "Ne mogu pisati u datoteku"
 
@@ -7420,7 +7420,7 @@ msgstr "Sačuvano"
 msgid "The game has been saved"
 msgstr "Igra je sačuvana"
 
-#: src/menu_events.cpp:763 src/playcampaign.cpp:569
+#: src/menu_events.cpp:763 src/playcampaign.cpp:582
 msgid "The game could not be saved"
 msgstr "Igru nije bilo moguće sačuvati"
 
@@ -8300,27 +8300,27 @@ msgstr "Greška pri čitanju WML-a: "
 msgid "Save Replay"
 msgstr "Sačuvaj snimak"
 
-#: src/playcampaign.cpp:429
+#: src/playcampaign.cpp:439
 msgid "The replay could not be saved"
 msgstr "Snimak nije bilo moguće sačuvati"
 
-#: src/playcampaign.cpp:446
+#: src/playcampaign.cpp:456
 msgid "This scenario has ended. Do you want to continue the campaign?"
 msgstr "Scenario je okončan. Želite li da nastavite pohod?"
 
-#: src/playcampaign.cpp:467
+#: src/playcampaign.cpp:477
 msgid "Downloading next scenario..."
 msgstr "Preuzimam sledeći scenario..."
 
-#: src/playcampaign.cpp:560
+#: src/playcampaign.cpp:573
 msgid "Do you want to save your game?"
 msgstr "Želite li da sačuvate igru?"
 
-#: src/playcampaign.cpp:561
+#: src/playcampaign.cpp:574
 msgid "Name:"
 msgstr "Ime:"
 
-#: src/playcampaign.cpp:585
+#: src/playcampaign.cpp:598
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Nepoznat scenario: ‘$scenario|’"
 
@@ -8433,23 +8433,23 @@ msgstr "Kraj igre"
 msgid "The game is over."
 msgstr "Igra je završena."
 
-#: src/playsingle_controller.cpp:377
+#: src/playsingle_controller.cpp:379
 msgid "Scenario Report"
 msgstr "Izveštaj scenarija"
 
-#: src/playsingle_controller.cpp:379
+#: src/playsingle_controller.cpp:381
 msgid "Victory"
 msgstr "Pobeda"
 
-#: src/playsingle_controller.cpp:380
+#: src/playsingle_controller.cpp:382
 msgid "You have emerged victorious!"
 msgstr "Pobedili ste!"
 
-#: src/playsingle_controller.cpp:427 src/playsingle_controller.cpp:472
+#: src/playsingle_controller.cpp:429 src/playsingle_controller.cpp:474
 msgid "The file you have tried to load is corrupt"
 msgstr "Datoteka koju ste pokušali da otvorite iskvarena je"
 
-#: src/playsingle_controller.cpp:437
+#: src/playsingle_controller.cpp:439
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
@@ -8457,7 +8457,7 @@ msgstr ""
 "Mrežna veza je prekinuta i igra se ne može nastaviti. Želite li da sačuvate "
 "igru?"
 
-#: src/playsingle_controller.cpp:577
+#: src/playsingle_controller.cpp:579
 msgid "It is now $name|'s turn"
 msgstr "Na potezu je $name"
 

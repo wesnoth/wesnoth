@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-29 12:36+0100\n"
+"POT-Creation-Date: 2008-12-03 15:10+0100\n"
 "PO-Revision-Date: 2008-07-21 13:51+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team:  <z.banach@wsisiz.edu.pl>\n"
@@ -281,112 +281,112 @@ msgid "Hungarian Translation"
 msgstr "Tłumaczenie węgierskie"
 
 #. [about]
-#: data/core/about.cfg:1468
+#: data/core/about.cfg:1456
 msgid "Indonesian Translation"
 msgstr "Tłumaczenie estońskie"
 
 #. [about]
-#: data/core/about.cfg:1475
+#: data/core/about.cfg:1463
 msgid "Italian Translation"
 msgstr "Tłumaczenie włoskie"
 
 #. [about]
-#: data/core/about.cfg:1510
+#: data/core/about.cfg:1498
 msgid "Japanese Translation"
 msgstr "Tłumaczenie japońskie"
 
 #. [about]
-#: data/core/about.cfg:1536
+#: data/core/about.cfg:1524
 msgid "Korean Translation"
 msgstr "Tłumaczenie koreańskie"
 
 #. [about]
-#: data/core/about.cfg:1543
+#: data/core/about.cfg:1531
 msgid "Latin Translation"
 msgstr "Tłumaczenie łacińskie"
 
 #. [about]
-#: data/core/about.cfg:1550
+#: data/core/about.cfg:1538
 msgid "Latvian Translation"
 msgstr "Tłumaczenie łotewskie"
 
 #. [about]
-#: data/core/about.cfg:1557
+#: data/core/about.cfg:1545
 msgid "Lithuanian Translation"
 msgstr "Tłumaczenie litewskie"
 
 #. [about]
-#: data/core/about.cfg:1565
+#: data/core/about.cfg:1553
 msgid "Macedonian Translation"
 msgstr "Tłumaczenie macedońskie"
 
 #. [about]
-#: data/core/about.cfg:1572
+#: data/core/about.cfg:1560
 msgid "Norwegian Translation"
 msgstr "Tłumaczenie norweskie"
 
 #. [about]
-#: data/core/about.cfg:1594
+#: data/core/about.cfg:1582
 msgid "Polish Translation"
 msgstr "Tłumaczenie polskie"
 
 #. [about]
-#: data/core/about.cfg:1643
+#: data/core/about.cfg:1631
 msgid "Portuguese Translation"
 msgstr "Tłumaczenie portugalskie"
 
 #. [about]
-#: data/core/about.cfg:1650
+#: data/core/about.cfg:1638
 msgid "Portuguese (Brazil) Translation"
 msgstr "Tłumaczenie portugalskie (brazylijskie)"
 
 #. [about]
-#: data/core/about.cfg:1685
+#: data/core/about.cfg:1673
 msgid "Romanian Translation"
 msgstr "Tłumaczenie rumuńskie"
 
 #. [about]
-#: data/core/about.cfg:1693
+#: data/core/about.cfg:1681
 msgid "Russian Translation"
 msgstr "Tłumaczenie rosyjskie"
 
 #. [about]
-#: data/core/about.cfg:1729
+#: data/core/about.cfg:1717
 msgid "Serbian Translation"
 msgstr "Tłumaczenie serbskie"
 
 #. [about]
-#: data/core/about.cfg:1744
+#: data/core/about.cfg:1732
 msgid "Slovak Translation"
 msgstr "Tłumaczenie słowackie"
 
 #. [about]
-#: data/core/about.cfg:1770
+#: data/core/about.cfg:1758
 msgid "Slovenian Translation"
 msgstr "Tłumaczenie słoweńskie"
 
 #. [about]
-#: data/core/about.cfg:1780
+#: data/core/about.cfg:1768
 msgid "Spanish Translation"
 msgstr "Tłumaczenie hiszpańskie"
 
 #. [about]
-#: data/core/about.cfg:1828
+#: data/core/about.cfg:1816
 msgid "Swedish Translation"
 msgstr "Tłumaczenie szwedzkie"
 
 #. [about]
-#: data/core/about.cfg:1857
+#: data/core/about.cfg:1845
 msgid "Turkish Translation"
 msgstr "Tłumaczenie tureckie"
 
 #. [about]
-#: data/core/about.cfg:1879
+#: data/core/about.cfg:1867
 msgid "Valencian (southern Catalan) Translation"
 msgstr "Tłumaczenie walenckie (południowy kataloński)"
 
 #. [about]
-#: data/core/about.cfg:1895
+#: data/core/about.cfg:1883
 msgid "Bots"
 msgstr "Boty"
 
@@ -7082,11 +7082,11 @@ msgstr "Porażka:"
 msgid "No time of day has been defined."
 msgstr "Nie zdefiniowano pory dnia."
 
-#: src/gamestatus.cpp:703 src/gamestatus.cpp:705 src/playcampaign.cpp:422
+#: src/gamestatus.cpp:726 src/gamestatus.cpp:728 src/playcampaign.cpp:422
 msgid " replay"
 msgstr " powtórka"
 
-#: src/gamestatus.cpp:840
+#: src/gamestatus.cpp:863
 msgid "Could not write to file"
 msgstr "Nie udało się zapisać do pliku"
 
@@ -7574,7 +7574,7 @@ msgstr "Zapisano"
 msgid "The game has been saved"
 msgstr "Gra została zapisana"
 
-#: src/menu_events.cpp:763 src/playcampaign.cpp:569
+#: src/menu_events.cpp:763 src/playcampaign.cpp:582
 msgid "The game could not be saved"
 msgstr "Gra nie może zostać zapisana"
 
@@ -8461,27 +8461,27 @@ msgstr "Błąd podczas wczytywania kodu WML: "
 msgid "Save Replay"
 msgstr "Zapisz powtórkę"
 
-#: src/playcampaign.cpp:429
+#: src/playcampaign.cpp:439
 msgid "The replay could not be saved"
 msgstr "Zapisanie powtórki nie było możliwe"
 
-#: src/playcampaign.cpp:446
+#: src/playcampaign.cpp:456
 msgid "This scenario has ended. Do you want to continue the campaign?"
 msgstr "Zakończono scenariusz. Czy chcesz kontynuować kampanię?"
 
-#: src/playcampaign.cpp:467
+#: src/playcampaign.cpp:477
 msgid "Downloading next scenario..."
 msgstr "Pobieranie następnego scenariusza..."
 
-#: src/playcampaign.cpp:560
+#: src/playcampaign.cpp:573
 msgid "Do you want to save your game?"
 msgstr "Czy chcesz zapisać grę?"
 
-#: src/playcampaign.cpp:561
+#: src/playcampaign.cpp:574
 msgid "Name:"
 msgstr "Nazwa:"
 
-#: src/playcampaign.cpp:585
+#: src/playcampaign.cpp:598
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Nieznany scenariusz: '$scenario|'"
 
@@ -8591,30 +8591,30 @@ msgstr "Koniec gry"
 msgid "The game is over."
 msgstr "Gra się skończyła."
 
-#: src/playsingle_controller.cpp:377
+#: src/playsingle_controller.cpp:379
 msgid "Scenario Report"
 msgstr "Raport"
 
-#: src/playsingle_controller.cpp:379
+#: src/playsingle_controller.cpp:381
 msgid "Victory"
 msgstr "Zwycięstwo"
 
-#: src/playsingle_controller.cpp:380
+#: src/playsingle_controller.cpp:382
 msgid "You have emerged victorious!"
 msgstr "Zwyciężono wroga!"
 
-#: src/playsingle_controller.cpp:427 src/playsingle_controller.cpp:472
+#: src/playsingle_controller.cpp:429 src/playsingle_controller.cpp:474
 msgid "The file you have tried to load is corrupt"
 msgstr "Wczytywany plik jest uszkodzony"
 
-#: src/playsingle_controller.cpp:437
+#: src/playsingle_controller.cpp:439
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
 msgstr ""
 "Nastąpiło rozłączenie sieci i gra nie może być kontynuowana. Czy zapisać grę?"
 
-#: src/playsingle_controller.cpp:577
+#: src/playsingle_controller.cpp:579
 msgid "It is now $name|'s turn"
 msgstr "Tura gracza $name|"
 
