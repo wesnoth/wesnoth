@@ -1479,7 +1479,7 @@ namespace {
 		for(ti = types.begin(); ti != types.end(); ++ti) {
 			config item = cfg.get_config();
 			// Do not try to match an empty string
-			if ( ! (*ti).empty() ) {
+			if (!ti->empty()) {
 				item["type"] = *ti;
 			}
 			item["role"] = "";
