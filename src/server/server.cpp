@@ -1197,9 +1197,11 @@ void server::start_new_server() {
 	// Example config line: 
 	// restart_command="./wesnothd-debug -d -c ~/.wesnoth1.5/server.cfg"
 	// remember to make new one as a daemon or it will block old one
-	std::system(restart_command.c_str());
-
-	LOG_SERVER << "New server started with command: " << restart_command << "\n";
+	if (std::system(restart_command.c_str())) {
+		ERR_SERVER << "Failed to start new server with command: " << restart_command << "\n";
+	} else {
+		LOG_SERVER << "New server started with command: " << restart_command << "\n";
+	}
 }
 
 std::string server::process_command(const std::string& query, const std::string& issuer_name) {
