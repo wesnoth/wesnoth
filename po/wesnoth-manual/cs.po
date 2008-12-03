@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "POT-Creation-Date: 2008-11-22 15:05+0100\n"
-"PO-Revision-Date: 2008-09-28 00:23+0100\n"
+"PO-Revision-Date: 2008-11-22 23:50+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
@@ -107,7 +107,6 @@ msgstr "Svět"
 
 # type: Content of: <book><chapter><section><simpara>
 #: ../../doc/manual/manual.en.xml:42
-#, fuzzy
 msgid ""
 "The known portion of the Great Continent, on which Wesnoth abides, is "
 "generally divided into three areas: the Northlands, which are generally "
@@ -121,7 +120,6 @@ msgstr ""
 
 # type: Content of: <book><chapter><section><simpara>
 #: ../../doc/manual/manual.en.xml:48
-#, fuzzy
 msgid ""
 "The Kingdom of Wesnoth lies in the center of this land. Its borders are the "
 "Great River to the north, the Dulatus Hills in the east and south, the edge "
@@ -131,13 +129,10 @@ msgid ""
 "south, and the ocean to the west."
 msgstr ""
 "Království Wesnoth se rozkládá uprostřed těchto zemí. Jeho hranice tvoří na "
-"severu Velká řeka, na jihovýchodě nižší kopce, na jihozápadě Zelená bažina a "
-"na západě oceán. Bývalá provincie Wesnothu, Elensefar, je na severu "
+"severu Velká řeka, na jihovýchodě Dulatuské kopce, na jihozápadě Aethenwood "
+"a na západě oceán. Bývalá provincie Wesnothu, Elensefar, je na severu "
 "ohraničena Velkou řekou, na západě oceánem, na jihu Zátokou perel a na "
-"východě neurčitou příhraniční oblastí, oddělující jej od Wesnothu. Sever "
-"nemá žádnou trvalou formu vlády; obývají jej skupinky skřetů, trpaslíků, "
-"barbarů a elfů. Končí na jihu Velkou řeku a na západě oceánem, jinak nejsou "
-"známy žádné přirozené hranice."
+"východě neurčitou příhraniční oblastí, oddělující jej od Wesnothu."
 
 # type: Content of: <book><chapter><section><simpara>
 #: ../../doc/manual/manual.en.xml:55
@@ -147,6 +142,10 @@ msgid ""
 "and east lies the forest of Lintanir, where the great kingdom of the North-"
 "Elves keeps to its own mysterious affairs."
 msgstr ""
+"Severními zeměmi se obvykle míní divoký kraj severně od Velké řeky. Tento "
+"region obývají různé skupinky skřetů, trpaslíků, barbarů a elfů. Na "
+"severovýchodě se rozkládá les Lintanir, v jehož hloubi se nachází království "
+"tajnůstkářských severních elfů."
 
 # type: Content of: <book><chapter><section><simpara>
 #: ../../doc/manual/manual.en.xml:60
@@ -832,7 +831,6 @@ msgstr ""
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:503
-#, fuzzy
 msgid ""
 "The first thing you will probably want to do is recruit your first unit. "
 "Press <literal>Ctrl-R</literal> (or right click on an empty castle hex and "
@@ -847,10 +845,10 @@ msgstr ""
 "Stiskněte <literal>Ctrl-R</literal> (nebo klikněte pravým tlačítkem na "
 "prázdné políčko hradu a zvolte „Naverbuj“) a vyberte jednotku k naverbování "
 "ze seznamu dostupných druhů jednotek. Každý rekrut je umístěn na příslušném "
-"políčku hradu; jakmile jimi zaplníte celý hrad, nelze již nikam verbovat "
-"dokud se nepřesunou pryč a neuvolní opět místo. Velitel vašeho nepřítele je "
-"také ve své tvrzi a započne verbováním své bandy, takže neotálejte s "
-"prohlížením krajiny."
+"(prázdném) políčku hradu; jakmile jimi zaplníte celý hrad, nelze již nikam "
+"verbovat dokud se nepřesunou pryč a neuvolní opět místo. Velitel vašeho "
+"nepřítele je také ve své tvrzi a započne verbováním své bandy, takže "
+"neotálejte s prohlížením krajiny."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:512
@@ -3028,13 +3026,12 @@ msgstr ""
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2137
-#, fuzzy
 msgid ""
 "<emphasis role=\"strong\">Cold</emphasis>: Weapons based on cold or ice "
 "missiles. Example: A Dark Adepts's chill wave."
 msgstr ""
 "<emphasis role=\"strong\">Chlad</emphasis>: Zbraně založené na ochlazení "
-"nebo ledových střelách, většinou magické."
+"nebo ledových střelách, většinou magické. Příklad: střely temného učedníka."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2143
@@ -3806,7 +3803,6 @@ msgstr ""
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2549
-#, fuzzy
 msgid ""
 "You can use lower level units as cannon fodder, to slow down enemy. E.g. you "
 "can use them to block enemies reaching your important units."
@@ -3959,19 +3955,3 @@ msgstr "Vysvětlivky"
 #: ../../doc/manual/manual.en.xml:2668
 msgid "<link linkend=\"zoc\">Zone Of Control</link>."
 msgstr "<link linkend=\"zoc\">Oblast kontroly</link>."
-
-# type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#~ msgid "Alt-Space"
-#~ msgstr "Alt-Mezerník"
-
-# type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#~ msgid "End turn"
-#~ msgstr "Konec kola"
-
-# type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#~ msgid "Alt-k"
-#~ msgstr "Alt-k"
-
-# type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#~ msgid "Toggle shroud"
-#~ msgstr "Přepne zahalení tmou"
