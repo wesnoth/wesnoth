@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-29 12:23+0100\n"
+"POT-Creation-Date: 2008-12-03 19:42+0100\n"
 "PO-Revision-Date: 2008-11-21 13:30-0300\n"
 "Last-Translator: Ignacio R. Morelle <shikadilord@users.sourceforge.net>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -130,6 +130,13 @@ msgstr ""
 "Ataca primero:\n"
 "Esta unidad siempre golpea primero con este ataque, incluso cuando se "
 "defiende."
+
+#. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. [unstore_unit]
+#: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:680
+#: src/actions.cpp:1050 src/actions.cpp:1321
+msgid "slowed"
+msgstr "ralentizado"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:13
@@ -6832,10 +6839,6 @@ msgstr "envenenada"
 msgid "female^slowed"
 msgstr "ralentizada"
 
-#: src/actions.cpp:1050 src/actions.cpp:1321
-msgid "slowed"
-msgstr "ralentizado"
-
 #: src/actions.cpp:1057 src/actions.cpp:1328
 msgid "female^stone"
 msgstr "piedra"
@@ -6909,15 +6912,18 @@ msgid "addon_type^Scenario"
 msgstr "Escenario"
 
 #: src/addon_management.cpp:401
-msgid "addon_type^MP Era"
+#, fuzzy
+msgid "addon_type^MP era"
 msgstr "Era multijugador"
 
 #: src/addon_management.cpp:403
-msgid "addon_type^MP Faction"
+#, fuzzy
+msgid "addon_type^MP faction"
 msgstr "Facción multijugador"
 
 #: src/addon_management.cpp:405
-msgid "addon_type^MP Map-pack"
+#, fuzzy
+msgid "addon_type^MP map-pack"
 msgstr "Paq. mapas multijugador"
 
 #: src/addon_management.cpp:407
@@ -8386,11 +8392,13 @@ msgid "Fire a game event."
 msgstr "Desencadena un evento del juego."
 
 #: src/menu_events.cpp:2337
-msgid "Toggle overalying of x,y coordinates on hexes."
+#, fuzzy
+msgid "Toggle overlaying of x,y coordinates on hexes."
 msgstr "Alterna la visualización de coordenadas en los hexágonos."
 
 #: src/menu_events.cpp:2340
-msgid "Toggle overalying of terrain codes on hexes."
+#, fuzzy
+msgid "Toggle overlaying of terrain codes on hexes."
 msgstr "Alterna la visualización de códigos de terreno en los hexágonos."
 
 #: src/menu_events.cpp:2385
@@ -8522,7 +8530,7 @@ msgid "Login"
 msgstr "Usuario"
 
 #: src/multiplayer.cpp:203 src/multiplayer_create.cpp:325
-#: src/multiplayer_lobby.cpp:786
+#: src/multiplayer_lobby.cpp:785
 msgid "Password: "
 msgstr "Contraseña: "
 
@@ -8653,7 +8661,7 @@ msgstr ""
 msgid "Waiting for players to join..."
 msgstr "Esperando a que se conecten jugadores..."
 
-#: src/multiplayer_create.cpp:45 src/multiplayer_lobby.cpp:669
+#: src/multiplayer_create.cpp:45 src/multiplayer_lobby.cpp:668
 msgid "Create Game"
 msgstr "Crear partida"
 
@@ -8673,7 +8681,7 @@ msgstr "Era:"
 msgid "Map to play:"
 msgstr "Mapa para jugar:"
 
-#: src/multiplayer_create.cpp:76 src/multiplayer_lobby.cpp:267
+#: src/multiplayer_create.cpp:76 src/multiplayer_lobby.cpp:266
 msgid "Use map settings"
 msgstr "Usar ajustes del mapa"
 
@@ -8685,8 +8693,8 @@ msgstr "Tiempo de comienzo aleatorio"
 msgid "Fog Of War"
 msgstr "Niebla de guerra"
 
-#: src/multiplayer_create.cpp:79 src/multiplayer_lobby.cpp:542
-#: src/multiplayer_lobby.cpp:548
+#: src/multiplayer_create.cpp:79 src/multiplayer_lobby.cpp:541
+#: src/multiplayer_lobby.cpp:547
 msgid "Shroud"
 msgstr "Oscuro"
 
@@ -8851,85 +8859,85 @@ msgstr "Tamaño: "
 msgid "--no games open--"
 msgstr "--no hay partidas abiertas--"
 
-#: src/multiplayer_lobby.cpp:149
+#: src/multiplayer_lobby.cpp:147
 msgid " (Unknown Era)"
 msgstr " (Era desconocida)"
 
-#: src/multiplayer_lobby.cpp:426
+#: src/multiplayer_lobby.cpp:425
 msgid "Unknown era: $era_id"
 msgstr "Era desconocida: $era_id"
 
-#: src/multiplayer_lobby.cpp:430
+#: src/multiplayer_lobby.cpp:429
 msgid "Unknown era"
 msgstr "Era desconocida"
 
-#: src/multiplayer_lobby.cpp:491
+#: src/multiplayer_lobby.cpp:490
 msgid "Remote scenario"
 msgstr "Escenario remoto"
 
-#: src/multiplayer_lobby.cpp:498
+#: src/multiplayer_lobby.cpp:497
 msgid "Unknown scenario: $scenario_id"
 msgstr "Escenario desconocido: $scenario_id"
 
-#: src/multiplayer_lobby.cpp:502
+#: src/multiplayer_lobby.cpp:501
 msgid "Unknown scenario"
 msgstr "Escenario desconocido"
 
-#: src/multiplayer_lobby.cpp:507
+#: src/multiplayer_lobby.cpp:506
 msgid "Reloaded game"
 msgstr "Partida recargada"
 
-#: src/multiplayer_lobby.cpp:523
+#: src/multiplayer_lobby.cpp:522
 msgid "Turn "
 msgstr "Turno "
 
-#: src/multiplayer_lobby.cpp:527
+#: src/multiplayer_lobby.cpp:526
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "Plaza libre:"
 msgstr[1] "Plazas libres:"
 
-#: src/multiplayer_lobby.cpp:530 src/multiplayer_lobby.cpp:784
+#: src/multiplayer_lobby.cpp:529 src/multiplayer_lobby.cpp:783
 msgid "Password Required"
 msgstr "Contraseña Requerida"
 
-#: src/multiplayer_lobby.cpp:538
+#: src/multiplayer_lobby.cpp:537
 msgid "Fog"
 msgstr "Niebla"
 
-#: src/multiplayer_lobby.cpp:552
+#: src/multiplayer_lobby.cpp:551
 msgid "none"
 msgstr "ninguna"
 
-#: src/multiplayer_lobby.cpp:662 src/multiplayer_wait.cpp:182
+#: src/multiplayer_lobby.cpp:661 src/multiplayer_wait.cpp:182
 msgid "Game Lobby"
 msgstr "Sala de juego"
 
-#: src/multiplayer_lobby.cpp:667
+#: src/multiplayer_lobby.cpp:666
 msgid "Observe Game"
 msgstr "Observar juego"
 
-#: src/multiplayer_lobby.cpp:668
+#: src/multiplayer_lobby.cpp:667
 msgid "Join Game"
 msgstr "Unirse a la partida"
 
-#: src/multiplayer_lobby.cpp:670
+#: src/multiplayer_lobby.cpp:669
 msgid "Quick Replays"
 msgstr "Repetición rápida"
 
-#: src/multiplayer_lobby.cpp:672
+#: src/multiplayer_lobby.cpp:671
 msgid "Preferences"
 msgstr "Preferencias"
 
-#: src/multiplayer_lobby.cpp:674
+#: src/multiplayer_lobby.cpp:673
 msgid "Quit"
 msgstr "Salir"
 
-#: src/multiplayer_lobby.cpp:680
+#: src/multiplayer_lobby.cpp:679
 msgid "Skip quickly to the active turn when observing"
 msgstr "Saltar rápidamente al turno activo (cuando se observa)"
 
-#: src/multiplayer_lobby.cpp:785
+#: src/multiplayer_lobby.cpp:784
 msgid "Joining this game requires a password."
 msgstr "Unirse a este juego requiere contraseña."
 

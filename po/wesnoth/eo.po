@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-29 12:23+0100\n"
+"POT-Creation-Date: 2008-12-03 19:42+0100\n"
 "PO-Revision-Date: 2008-03-01 19:31+0200\n"
 "Last-Translator: Aleksej Korgenkov <grimpanto@mail.ru>\n"
 "Language-Team: \n"
@@ -117,6 +117,13 @@ msgid ""
 msgstr ""
 "Unua atako:\n"
 "Per ĉi tiu atako la milit-unuo ĉiam atakas kiel unua, ankaŭ ĉe defendado."
+
+#. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. [unstore_unit]
+#: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:680
+#: src/actions.cpp:1050 src/actions.cpp:1321
+msgid "slowed"
+msgstr "malrapidiga"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:13
@@ -6251,10 +6258,6 @@ msgstr "nemortinta"
 msgid "female^slowed"
 msgstr "lojala"
 
-#: src/actions.cpp:1050 src/actions.cpp:1321
-msgid "slowed"
-msgstr "malrapidiga"
-
 #: src/actions.cpp:1057 src/actions.cpp:1328
 #, fuzzy
 msgid "female^stone"
@@ -6330,15 +6333,15 @@ msgid "addon_type^Scenario"
 msgstr ""
 
 #: src/addon_management.cpp:401
-msgid "addon_type^MP Era"
+msgid "addon_type^MP era"
 msgstr ""
 
 #: src/addon_management.cpp:403
-msgid "addon_type^MP Faction"
+msgid "addon_type^MP faction"
 msgstr ""
 
 #: src/addon_management.cpp:405
-msgid "addon_type^MP Map-pack"
+msgid "addon_type^MP map-pack"
 msgstr ""
 
 #: src/addon_management.cpp:407
@@ -7800,11 +7803,11 @@ msgid "Fire a game event."
 msgstr ""
 
 #: src/menu_events.cpp:2337
-msgid "Toggle overalying of x,y coordinates on hexes."
+msgid "Toggle overlaying of x,y coordinates on hexes."
 msgstr ""
 
 #: src/menu_events.cpp:2340
-msgid "Toggle overalying of terrain codes on hexes."
+msgid "Toggle overlaying of terrain codes on hexes."
 msgstr ""
 
 #: src/menu_events.cpp:2385
@@ -7940,7 +7943,7 @@ msgid "Login"
 msgstr "Aliĝo:"
 
 #: src/multiplayer.cpp:203 src/multiplayer_create.cpp:325
-#: src/multiplayer_lobby.cpp:786
+#: src/multiplayer_lobby.cpp:785
 msgid "Password: "
 msgstr "Pasvorto:"
 
@@ -8075,7 +8078,7 @@ msgstr ""
 msgid "Waiting for players to join..."
 msgstr "Mi atendas aliĝon de ludantoj..."
 
-#: src/multiplayer_create.cpp:45 src/multiplayer_lobby.cpp:669
+#: src/multiplayer_create.cpp:45 src/multiplayer_lobby.cpp:668
 msgid "Create Game"
 msgstr "Kreu ludon"
 
@@ -8095,7 +8098,7 @@ msgstr "Erao:"
 msgid "Map to play:"
 msgstr "Mapo por ludo:"
 
-#: src/multiplayer_create.cpp:76 src/multiplayer_lobby.cpp:267
+#: src/multiplayer_create.cpp:76 src/multiplayer_lobby.cpp:266
 msgid "Use map settings"
 msgstr "Uzu pozicion el mapo"
 
@@ -8107,8 +8110,8 @@ msgstr "Hazarda komenc-tempo"
 msgid "Fog Of War"
 msgstr "Nebulo"
 
-#: src/multiplayer_create.cpp:79 src/multiplayer_lobby.cpp:542
-#: src/multiplayer_lobby.cpp:548
+#: src/multiplayer_create.cpp:79 src/multiplayer_lobby.cpp:541
+#: src/multiplayer_lobby.cpp:547
 msgid "Shroud"
 msgstr "Malkovro de mapo"
 
@@ -8272,88 +8275,88 @@ msgstr "Grandeco:"
 msgid "--no games open--"
 msgstr "--neniu malfermita ludo--"
 
-#: src/multiplayer_lobby.cpp:149
+#: src/multiplayer_lobby.cpp:147
 #, fuzzy
 msgid " (Unknown Era)"
 msgstr "Nekonata erao"
 
-#: src/multiplayer_lobby.cpp:426
+#: src/multiplayer_lobby.cpp:425
 msgid "Unknown era: $era_id"
 msgstr "Nekonata erao: $era_id"
 
-#: src/multiplayer_lobby.cpp:430
+#: src/multiplayer_lobby.cpp:429
 msgid "Unknown era"
 msgstr "Nekonata erao"
 
-#: src/multiplayer_lobby.cpp:491
+#: src/multiplayer_lobby.cpp:490
 msgid "Remote scenario"
 msgstr ""
 
-#: src/multiplayer_lobby.cpp:498
+#: src/multiplayer_lobby.cpp:497
 msgid "Unknown scenario: $scenario_id"
 msgstr "Nekonata scenejo: $scenario_id"
 
-#: src/multiplayer_lobby.cpp:502
+#: src/multiplayer_lobby.cpp:501
 msgid "Unknown scenario"
 msgstr "Nekonata scenejo"
 
-#: src/multiplayer_lobby.cpp:507
+#: src/multiplayer_lobby.cpp:506
 msgid "Reloaded game"
 msgstr ""
 
-#: src/multiplayer_lobby.cpp:523
+#: src/multiplayer_lobby.cpp:522
 msgid "Turn "
 msgstr "Movo"
 
-#: src/multiplayer_lobby.cpp:527
+#: src/multiplayer_lobby.cpp:526
 #, fuzzy
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "Vaka loko"
 msgstr[1] "Vaka loko"
 
-#: src/multiplayer_lobby.cpp:530 src/multiplayer_lobby.cpp:784
+#: src/multiplayer_lobby.cpp:529 src/multiplayer_lobby.cpp:783
 msgid "Password Required"
 msgstr ""
 
-#: src/multiplayer_lobby.cpp:538
+#: src/multiplayer_lobby.cpp:537
 msgid "Fog"
 msgstr "Nebulo"
 
-#: src/multiplayer_lobby.cpp:552
+#: src/multiplayer_lobby.cpp:551
 msgid "none"
 msgstr "nenio"
 
-#: src/multiplayer_lobby.cpp:662 src/multiplayer_wait.cpp:182
+#: src/multiplayer_lobby.cpp:661 src/multiplayer_wait.cpp:182
 msgid "Game Lobby"
 msgstr "Atendejo"
 
-#: src/multiplayer_lobby.cpp:667
+#: src/multiplayer_lobby.cpp:666
 msgid "Observe Game"
 msgstr "Observu ludon"
 
-#: src/multiplayer_lobby.cpp:668
+#: src/multiplayer_lobby.cpp:667
 msgid "Join Game"
 msgstr "Aliĝu al ludo"
 
-#: src/multiplayer_lobby.cpp:670
+#: src/multiplayer_lobby.cpp:669
 #, fuzzy
 msgid "Quick Replays"
 msgstr " registrado"
 
-#: src/multiplayer_lobby.cpp:672
+#: src/multiplayer_lobby.cpp:671
 msgid "Preferences"
 msgstr "Preferencoj"
 
-#: src/multiplayer_lobby.cpp:674
+#: src/multiplayer_lobby.cpp:673
 msgid "Quit"
 msgstr "Fino"
 
-#: src/multiplayer_lobby.cpp:680
+#: src/multiplayer_lobby.cpp:679
 msgid "Skip quickly to the active turn when observing"
 msgstr ""
 
-#: src/multiplayer_lobby.cpp:785
+#: src/multiplayer_lobby.cpp:784
 msgid "Joining this game requires a password."
 msgstr ""
 

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-29 12:23+0100\n"
+"POT-Creation-Date: 2008-12-03 19:42+0100\n"
 "PO-Revision-Date: 2008-03-13 10:11+0100\n"
 "Last-Translator: Gustav Tiger <admin@tigge.org>\n"
 "Language-Team: Swedish\n"
@@ -115,6 +115,13 @@ msgid ""
 msgstr ""
 "Första slaget:\n"
 "Denna trupp slår alltid först, även om den försvarar sig."
+
+#. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. [unstore_unit]
+#: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:680
+#: src/actions.cpp:1050 src/actions.cpp:1321
+msgid "slowed"
+msgstr "långsam"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:13
@@ -6708,10 +6715,6 @@ msgstr "vandöd"
 msgid "female^slowed"
 msgstr "lojal"
 
-#: src/actions.cpp:1050 src/actions.cpp:1321
-msgid "slowed"
-msgstr "långsam"
-
 #: src/actions.cpp:1057 src/actions.cpp:1328
 #, fuzzy
 msgid "female^stone"
@@ -6787,16 +6790,19 @@ msgid "addon_type^Scenario"
 msgstr ""
 
 #: src/addon_management.cpp:401
-msgid "addon_type^MP Era"
-msgstr ""
+#, fuzzy
+msgid "addon_type^MP era"
+msgstr "Nätverksscenario"
 
 #: src/addon_management.cpp:403
-msgid "addon_type^MP Faction"
-msgstr ""
+#, fuzzy
+msgid "addon_type^MP faction"
+msgstr "Nätverksscenario"
 
 #: src/addon_management.cpp:405
-msgid "addon_type^MP Map-pack"
-msgstr ""
+#, fuzzy
+msgid "addon_type^MP map-pack"
+msgstr "Nätverksscenario"
 
 #: src/addon_management.cpp:407
 #, fuzzy
@@ -8294,11 +8300,11 @@ msgid "Fire a game event."
 msgstr ""
 
 #: src/menu_events.cpp:2337
-msgid "Toggle overalying of x,y coordinates on hexes."
+msgid "Toggle overlaying of x,y coordinates on hexes."
 msgstr ""
 
 #: src/menu_events.cpp:2340
-msgid "Toggle overalying of terrain codes on hexes."
+msgid "Toggle overlaying of terrain codes on hexes."
 msgstr ""
 
 #: src/menu_events.cpp:2385
@@ -8434,7 +8440,7 @@ msgid "Login"
 msgstr "Logga in: "
 
 #: src/multiplayer.cpp:203 src/multiplayer_create.cpp:325
-#: src/multiplayer_lobby.cpp:786
+#: src/multiplayer_lobby.cpp:785
 msgid "Password: "
 msgstr "Lösenord:"
 
@@ -8566,7 +8572,7 @@ msgstr ""
 msgid "Waiting for players to join..."
 msgstr "Väntar på att spelare skall ansluta sig..."
 
-#: src/multiplayer_create.cpp:45 src/multiplayer_lobby.cpp:669
+#: src/multiplayer_create.cpp:45 src/multiplayer_lobby.cpp:668
 msgid "Create Game"
 msgstr "Skapa nytt spel"
 
@@ -8586,7 +8592,7 @@ msgstr "Era:"
 msgid "Map to play:"
 msgstr "Karta att spela:"
 
-#: src/multiplayer_create.cpp:76 src/multiplayer_lobby.cpp:267
+#: src/multiplayer_create.cpp:76 src/multiplayer_lobby.cpp:266
 msgid "Use map settings"
 msgstr "Använd kartinställningar"
 
@@ -8598,8 +8604,8 @@ msgstr "Slumpvald starttid"
 msgid "Fog Of War"
 msgstr "Stridsdimma"
 
-#: src/multiplayer_create.cpp:79 src/multiplayer_lobby.cpp:542
-#: src/multiplayer_lobby.cpp:548
+#: src/multiplayer_create.cpp:79 src/multiplayer_lobby.cpp:541
+#: src/multiplayer_lobby.cpp:547
 msgid "Shroud"
 msgstr "Slöja"
 
@@ -8763,86 +8769,86 @@ msgstr "Storlek: "
 msgid "--no games open--"
 msgstr "--inga öppna spel--"
 
-#: src/multiplayer_lobby.cpp:149
+#: src/multiplayer_lobby.cpp:147
 #, fuzzy
 msgid " (Unknown Era)"
 msgstr "Okänd era"
 
-#: src/multiplayer_lobby.cpp:426
+#: src/multiplayer_lobby.cpp:425
 msgid "Unknown era: $era_id"
 msgstr "Okänd era: $era_id"
 
-#: src/multiplayer_lobby.cpp:430
+#: src/multiplayer_lobby.cpp:429
 msgid "Unknown era"
 msgstr "Okänd era"
 
-#: src/multiplayer_lobby.cpp:491
+#: src/multiplayer_lobby.cpp:490
 msgid "Remote scenario"
 msgstr "Nätverksscenario"
 
-#: src/multiplayer_lobby.cpp:498
+#: src/multiplayer_lobby.cpp:497
 msgid "Unknown scenario: $scenario_id"
 msgstr "Okänt scenario: $scenario_id"
 
-#: src/multiplayer_lobby.cpp:502
+#: src/multiplayer_lobby.cpp:501
 msgid "Unknown scenario"
 msgstr "Okänt scenario"
 
-#: src/multiplayer_lobby.cpp:507
+#: src/multiplayer_lobby.cpp:506
 msgid "Reloaded game"
 msgstr "Öppna spel igen"
 
-#: src/multiplayer_lobby.cpp:523
+#: src/multiplayer_lobby.cpp:522
 msgid "Turn "
 msgstr "Drag "
 
-#: src/multiplayer_lobby.cpp:527
+#: src/multiplayer_lobby.cpp:526
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "Ledig plats:"
 msgstr[1] "Lediga platser:"
 
-#: src/multiplayer_lobby.cpp:530 src/multiplayer_lobby.cpp:784
+#: src/multiplayer_lobby.cpp:529 src/multiplayer_lobby.cpp:783
 msgid "Password Required"
 msgstr "Lösenord krävs"
 
-#: src/multiplayer_lobby.cpp:538
+#: src/multiplayer_lobby.cpp:537
 msgid "Fog"
 msgstr "Dimma"
 
-#: src/multiplayer_lobby.cpp:552
+#: src/multiplayer_lobby.cpp:551
 msgid "none"
 msgstr "inget"
 
-#: src/multiplayer_lobby.cpp:662 src/multiplayer_wait.cpp:182
+#: src/multiplayer_lobby.cpp:661 src/multiplayer_wait.cpp:182
 msgid "Game Lobby"
 msgstr "Spellobby"
 
-#: src/multiplayer_lobby.cpp:667
+#: src/multiplayer_lobby.cpp:666
 msgid "Observe Game"
 msgstr "Iaktta spel"
 
-#: src/multiplayer_lobby.cpp:668
+#: src/multiplayer_lobby.cpp:667
 msgid "Join Game"
 msgstr "Anslut till spel"
 
-#: src/multiplayer_lobby.cpp:670
+#: src/multiplayer_lobby.cpp:669
 msgid "Quick Replays"
 msgstr "Snabba repriser"
 
-#: src/multiplayer_lobby.cpp:672
+#: src/multiplayer_lobby.cpp:671
 msgid "Preferences"
 msgstr "Inställningar"
 
-#: src/multiplayer_lobby.cpp:674
+#: src/multiplayer_lobby.cpp:673
 msgid "Quit"
 msgstr "Avsluta"
 
-#: src/multiplayer_lobby.cpp:680
+#: src/multiplayer_lobby.cpp:679
 msgid "Skip quickly to the active turn when observing"
 msgstr "Hoppa till aktivt drag som observatör"
 
-#: src/multiplayer_lobby.cpp:785
+#: src/multiplayer_lobby.cpp:784
 msgid "Joining this game requires a password."
 msgstr "Du behöver ett lösenord för att gå med i det här spelet."
 

@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu-tutorial\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-29 12:24+0100\n"
+"POT-Creation-Date: 2008-12-03 19:43+0100\n"
 "PO-Revision-Date: 2008-03-16 10:36+0100\n"
 "Last-Translator: Kádár-Németh Krisztián <krisztian.7@vizslamail.hu>\n"
 "Language-Team: Hungarian\n"
@@ -121,11 +121,17 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:233
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:245
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:250
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:372
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:378
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:291
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:373
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:379
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:528
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:599
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:640
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:673
+#, fuzzy
 msgid ""
 "\n"
-"*Left click or any key to continue..."
+"*Left click or press spacebar to continue..."
 msgstr ""
 "\n"
 "*Bal kattintás vagy bármelyik billentyű a folytatáshoz..."
@@ -140,18 +146,20 @@ msgstr ""
 "A gyakorlás folyamán Li'sar karakterét fogod irányítani. "
 
 #. [event]
+#. [event]: id=student moves 0}
 #. [then]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:203
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:392
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:496
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:393
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:497
 msgid "Left click on Konrad"
 msgstr "Kattints a bal egérgombbal Konradra"
 
 #. [event]
+#. [event]: id=student moves 0}
 #. [then]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:204
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:393
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:497
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:394
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:498
 msgid "Left click on Li'sar"
 msgstr "Kattints a bal egérgombbal Li'sarra"
 
@@ -203,13 +211,12 @@ msgid "Left click on tile labeled HERE"
 msgstr "Kattints bal egérgombbal az 'IDE' címkéjű mezőre"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:290
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:289
 #, fuzzy
 msgid ""
 "*Oops!\n"
 "You moved to the wrong place! After this message, you can press 'u' to undo, "
-"then try again. \n"
-"*Left click or any key to continue..."
+"then try again."
 msgstr ""
 "*Hopsz!\n"
 "Rossz helyre léptél! Ezután az üzenet után megnyomhatod az 'u' gombot a "
@@ -217,40 +224,40 @@ msgstr ""
 "*Bal kattintás vagy bármelyik billentyű a folytatáshoz..."
 
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:313
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:314
 #, fuzzy
 msgid "Good morning, Delfador! Is it time to attack things?"
 msgstr "Jó reggelt Delfador! Harcolhatok ma végre?"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:317
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:318
 msgid "Um, well..."
 msgstr "Hát, nem is tudom..."
 
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:321
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:322
 msgid "Have you found an orc for me to fight, huh? A troll?"
 msgstr "Egy ork ellen kell küzdenem? Vagy egy trollal harcoljak?"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:325
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:326
 msgid "Quiet! I will summon an enemy for you..."
 msgstr "Nyugalom! Megidézek egy ellenfelet neked..."
 
-#. [event]
+#. [event]: id=student moves 0}
 #. [unit_type]: id=Quintain, race=mechanical
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:353
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:354
 #: data/campaigns/tutorial/units/Quintain.cfg:4
 msgid "Quintain"
 msgstr "Homokzsák"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:357
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:358
 msgid "... this quintain!"
 msgstr "... ezt a homokzsákot!"
 
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:361
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:362
 #, fuzzy
 msgid "A quintain? You want me to pretend to fight a dummy?"
 msgstr ""
@@ -258,14 +265,14 @@ msgstr ""
 "bábuval??"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:365
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:366
 msgid "Child, you have 32 hitpoints and a sword. I'm fairly sure you'll win."
 msgstr ""
 "Gyermekem, neked 32 életerőpontod van és mellé egy kardod. Egészen biztos "
 "vagyok benne, hogy nyersz."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:370
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:371
 #, fuzzy
 msgid ""
 "To attack the quintain, first select the attacker (Konrad) then the target "
@@ -277,7 +284,7 @@ msgstr ""
 "részleteiről. Amikor az 'Oké'-ra kattintasz, Konrad támadni fog."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:376
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:377
 #, fuzzy
 msgid ""
 "To attack the quintain, first select the attacker (Li'sar) then the target "
@@ -289,32 +296,32 @@ msgstr ""
 "részleteiről.  Amikor az 'Oké'-ra kattintasz, Li'sar támadni fog."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:388
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:389
 msgid "Click on the quintain to attack it"
 msgstr "Kattints a homokzsákra, hogy megtámadd"
 
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:424
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:425
 msgid "Hey! This quintain fights back!"
 msgstr "Hé! Ez a homokzsák visszaüt!"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:428
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:429
 msgid "Hmm, maybe we should have started with a doll."
 msgstr "Hmm, talán egy játékbabával kellett volna kezdenünk."
 
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:432
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:433
 msgid "Should I retreat?"
 msgstr "Nem kellene visszavonulnom?"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:436
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:437
 msgid "Good idea!"
 msgstr "Jó ötlet!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:441
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:442
 #, fuzzy
 msgid ""
 "Note: the tiny blue crown above Delfador means you will lose the game if he "
@@ -325,7 +332,7 @@ msgstr ""
 "(Konradot) megölik."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:444
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:445
 #, fuzzy
 msgid ""
 "Note: the tiny blue crown above Delfador means you will lose the game if he "
@@ -336,7 +343,7 @@ msgstr ""
 "megölik."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:454
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:455
 msgid ""
 "Unfortunately, you've used up your turn attacking the quintain. The quintain "
 "will now get a turn."
@@ -345,12 +352,12 @@ msgstr ""
 "következik."
 
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:458
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:459
 msgid "The DUMMY gets a turn?"
 msgstr "Ennek a MADÁRIJESZTŐNEK is van köre?"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:464
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:465
 #, fuzzy
 msgid ""
 "Yes. It's a magical quintain.\n"
@@ -366,12 +373,12 @@ msgstr ""
 "pontra fog esni. Szedd össze magad!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:467
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:468
 msgid "Click on the End Turn button on the bottom right"
 msgstr "Kattints a Kör vége gombra a képernyő jobb alsó sarkában"
 
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:488
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:489
 #, fuzzy
 msgid "Ouch! I need to heal! Only $student_hp hitpoints left!"
 msgstr "Aú! Gyógyulnom kell! Csak $student_hp ÉP-m maradt!"
@@ -379,12 +386,12 @@ msgstr "Aú! Gyógyulnom kell! Csak $student_hp ÉP-m maradt!"
 #. [event]
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:448
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:490
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:491
 msgid "Village"
 msgstr "Falu"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:493
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:494
 #, fuzzy
 msgid ""
 "There is a village on the other side of the river. Visiting villages is a "
@@ -394,12 +401,12 @@ msgstr ""
 "ha a körödet ott fejezed be, akkor gyógyulsz. Oda kéne visszavonulnod."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:506
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:507
 msgid "Click on the village to move Konrad"
 msgstr "Kattints a falura, hogy Konraddal oda lépj"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:507
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:508
 msgid "Click on the village to move Li'sar"
 msgstr "Kattints a falura, hogy Li'sarral oda lépj"
 
@@ -410,8 +417,7 @@ msgid ""
 "You captured a village! It now flies your flag color and has been added to "
 "your total village count at the top of the screen (house icon). Villages "
 "provide the gold needed to recruit units. Each turn, you gain two gold plus "
-"one for every village you own.\n"
-"*Left click or any key to continue..."
+"one for every village you own."
 msgstr ""
 "Most már a tied ez a falu: láthatod, felhúzták a zászlódat, és hamarosan a "
 "ház ikon mellett, a képernyő tetején egy '1'-es fog megjelenni. A falvak "
@@ -422,16 +428,16 @@ msgstr ""
 #. [event]
 #. [then]
 #. [else]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:529
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:641
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:673
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:795
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:847
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:531
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:645
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:678
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:800
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:852
 msgid "Click on the End Turn button"
 msgstr "Kattints a Kör vége gombra"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:563
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:565
 #, fuzzy
 msgid ""
 "You're about to be healed by $hp_difference hitpoints, but I think you're "
@@ -441,19 +447,19 @@ msgstr ""
 "további segítségre a homokzsák ellen."
 
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:567
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:569
 msgid "I'll recruit some elves!"
 msgstr "Toborzok néhány tündét!"
 
 #. [event]
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:964
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:569
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:571
 msgid "Keep"
 msgstr "Várkastély"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:572
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:574
 #, fuzzy
 msgid ""
 "A splendid idea. You can recruit two units if you return to the keep. You "
@@ -463,23 +469,22 @@ msgstr ""
 "Bőségesen elég aranyad van hozzá."
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:576
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:578
 msgid "Move Konrad to the keep"
 msgstr "Lépj Konraddal a várkastélyba"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:577
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:579
 msgid "Move Li'sar to the keep"
 msgstr "Lépj Li'sarral a várkastélyba"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:596
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:597
 #, fuzzy
 msgid ""
 "Whenever you're on a keep, you can recruit into castle tiles around it by "
 "right-clicking and selecting 'Recruit'. This time you will only be given one "
-"type of unit to choose: the Elvish Fighter.\n"
-"*Left click or any key to continue..."
+"type of unit to choose: the Elvish Fighter."
 msgstr ""
 "Amikor a várkastélyban vagy, toborozhatsz a mellette lévő vár mezőkre, a "
 "jobb gombos menü 'Toborzás' opcióját választva. Most csak egy fajta egység "
@@ -487,20 +492,19 @@ msgstr ""
 "*Bal kattintás vagy bármelyik billentyű a folytatáshoz..."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:599
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:602
 msgid "Right click on one castle tile and select Recruit"
 msgstr "Jobb gomb egy vár mezőn, és a Toborzás opciót válaszd"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:636
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:668
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:638
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:671
 #, fuzzy
 msgid ""
 "These newly recruited units can do nothing this turn; you will control them "
 "next turn.\n"
 "Note: after this dialog, you can move the mouse over a unit to see a "
-"description on the right of the screen.\n"
-"*Left click or any key to continue..."
+"description on the right of the screen."
 msgstr ""
 "Ezek az újonnan toborzott egységek semmit sem csinálhatnak ebben a körben: "
 "már csak a következő körben irányíthatod őket.\n"
@@ -509,13 +513,13 @@ msgstr ""
 "*Bal kattintás vagy bármelyik billentyű a folytatáshoz..."
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:646
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:678
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:650
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:683
 msgid "Right click on the other castle tile and Recruit another unit"
 msgstr "Kattints jobb gombbal a másik vár mezőre, és toborozz még egy egységet"
 
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:695
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:700
 #, fuzzy
 msgid ""
 "Hey, the quintain just healed 2 hitpoints! I'd better attack it at once!"
@@ -524,12 +528,12 @@ msgstr ""
 "megtámadnám!"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:699
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:704
 msgid "Yes, if a unit doesn't do anything for a turn, it will slowly heal."
 msgstr ""
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:711
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:716
 #, fuzzy
 msgid ""
 "But before you send your fighters against the quintain, you should know they "
@@ -540,13 +544,13 @@ msgstr ""
 "támadásuk van..."
 
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:715
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:720
 #, fuzzy
 msgid "I'll tell them to use the one that does the most damage!"
 msgstr "Megmondom majd nekik, hogy azt használják, ami többet sebez!"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:719
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:724
 #, fuzzy
 msgid ""
 "And which would that be? The sword (5-4) or the bow (3-3)? I suppose you'll "
@@ -556,18 +560,18 @@ msgstr ""
 "találni..."
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:721
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:726
 msgid "Left click on an Elvish Fighter"
 msgstr "Kattints bal gombbal a tünde harcosra"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:722
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:727
 #, fuzzy
 msgid "End your turn and attack again."
 msgstr "Fejezd be a köröd, majd támadj újra."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:739
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:744
 msgid ""
 "You wouldn't do anything stupid like charging that quintain yourself again, "
 "now would you?\n"
@@ -575,12 +579,12 @@ msgid ""
 msgstr ""
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:750
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:755
 msgid "Left click on the Quintain to attack it."
 msgstr "Kattints bal gombbal a homokzsákra, hogy megtámadd. "
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:784
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:789
 #, fuzzy
 msgid ""
 "Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
@@ -592,7 +596,7 @@ msgstr ""
 "támadásával (3-5). A távolsági támadás biztonságosabb lett volna."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:792
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:797
 #, fuzzy
 msgid ""
 "Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
@@ -606,7 +610,7 @@ msgstr ""
 "Fejezd be a köröd, majd támadj újra."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:804
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:809
 #, fuzzy
 msgid ""
 "Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
@@ -619,15 +623,15 @@ msgstr ""
 "Meg kéne parancsolnod a másik tündének, hogy az íját használja."
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:807
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:856
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:812
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:861
 #, fuzzy
 msgid "Attack with the other Elf"
 msgstr "Támadj a másik tündével"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:836
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:854
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:841
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:859
 #, fuzzy
 msgid ""
 "Your elf used a bow, which is a ranged attack (3-3; or 3 damage, 3 attacks). "
@@ -639,7 +643,7 @@ msgstr ""
 "tudta magát védeni."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:844
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:849
 #, fuzzy
 msgid ""
 "Your elf used a bow, which is a ranged attack (3-3; or 3 damage, 3 attacks). "
@@ -653,18 +657,18 @@ msgstr ""
 "Fejezd be a köröd, majd támadj újra."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:875
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:880
 #, fuzzy
 msgid "Keep attacking with both elves until the quintain is finished!"
 msgstr "Támadj addig mindkét tündével, amíg a homokzsák még él!"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:889
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:894
 msgid "Maybe you should recruit another elf?"
 msgstr "Talán toboroznod kéne még egy tündét?"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:895
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:900
 msgid ""
 "Note:\n"
 "You can right click on a unit to see a detailed Unit Description."
@@ -673,7 +677,7 @@ msgstr ""
 "Jobb gombbal kattintva az egységre megtekintheted az Egység leírását"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:918
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:923
 #, fuzzy
 msgid ""
 "Note:\n"
@@ -687,7 +691,7 @@ msgstr ""
 "összegyűjtött egységekre ügyelj."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:937
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:942
 msgid ""
 "Note:\n"
 "Each village you own can support a single unit for free. After that, each "
@@ -698,7 +702,7 @@ msgstr ""
 "többi egység fenntartása körönként egy aranyba fog kerülni."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:954
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:959
 #, fuzzy
 msgid ""
 "Note:\n"
@@ -715,7 +719,7 @@ msgstr ""
 "aranyba kerül, mint egy egyes szintűé."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:971
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:976
 #, fuzzy
 msgid ""
 "Note:\n"
@@ -733,13 +737,13 @@ msgstr ""
 "eltalálni, bármilyen terepen is állsz."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:996
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1001
 msgid "The quintain is dead, sirs, and I have gained more experience!"
 msgstr "A homokzsák halott, uraim, és tapasztalati pontokat is szereztem!"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1001
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1005
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1006
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1010
 #, fuzzy
 msgid ""
 "Yes, you gain experience through battle, especially by killing an opponent. "
@@ -749,7 +753,7 @@ msgstr ""
 "ellenséget: gyűjts elég TP-t és még erősebb leszel."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1002
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1007
 #, fuzzy
 msgid ""
 " Now, Konrad, I will leave you with more dummies to practice on! After that, "
@@ -759,7 +763,7 @@ msgstr ""
 "majd igazi feladatunk is lesz..."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1006
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1011
 #, fuzzy
 msgid ""
 " Now, Li'sar, I will leave you with more dummies to practice on! After that, "
@@ -769,7 +773,7 @@ msgstr ""
 "majd igazi feladatunk is lesz..."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1045
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1050
 msgid ""
 "Note:\n"
 "These dummies only attack if you are a single tile away. With care, you "
@@ -780,22 +784,22 @@ msgstr ""
 "vagy tőlük. Megfelelő körültekintéssel egyesével bánhatsz el velük."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1054
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1059
 msgid "Do you want to keep practicing?"
 msgstr "Szeretnél még gyakorolni?"
 
 #. [option]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1056
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1061
 msgid "Yes, I'm still figuring it out."
 msgstr "Igen, még gyakorlok egy kicsit."
 
 #. [option]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1059
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1064
 msgid "No, I think I've got it."
 msgstr "Nem, úgy érzem, már értek mindent."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1094
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1099
 #, fuzzy
 msgid ""
 "After your victory notice, the map will be grayed out to indicate that the "

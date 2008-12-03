@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3.7+svn\n"
-"POT-Creation-Date: 2008-11-22 15:05+0100\n"
+"POT-Creation-Date: 2008-12-03 19:43+0100\n"
 "PO-Revision-Date: 2008-06-05 15:21+0300\n"
 "Last-Translator: Kaido Kikkas <kaido.kikkas@kakupesa.net>\n"
 "Language-Team: none\n"
@@ -39,12 +39,13 @@ msgstr "Wesnothi Lahing on käigupõhine, fantaasiateemaline strateegiamäng."
 
 # type: Content of: <book><preface><simpara>
 #: ../../doc/manual/manual.en.xml:14
+#, fuzzy
 msgid ""
-"<emphasis>Build up a great army</emphasis>, gradually turning raw recruits "
-"into hardened veterans. In later games, recall your toughest warriors and "
-"form a deadly host against whom none can stand! Choose units from a large "
-"pool of specialists, and hand pick a force with the right strengths to fight "
-"well on different terrains against all manner of opposition."
+"Build up a great army, gradually turning raw recruits into hardened "
+"veterans. In later games, recall your toughest warriors and form a deadly "
+"host against whom none can stand! Choose units from a large pool of "
+"specialists, and hand pick a force with the right strengths to fight well on "
+"different terrains against all manner of opposition."
 msgstr ""
 "<emphasis>Kogu vägev sõjavägi</emphasis> ning tee rohelistest algajatest "
 "kogenud veteranid. Hilisemates mängudes võid kutsuda tagasi oma suurimad "
@@ -72,13 +73,13 @@ msgstr ""
 
 # type: Content of: <book><preface><simpara>
 #: ../../doc/manual/manual.en.xml:29
+#, fuzzy
 msgid ""
 "You will be able to select from among over two hundred unit types (infantry, "
 "cavalry, archers, and mages are just the beginning) and fight actions "
-"ranging from small-unit ambushes to clashes of vast armies. You can even "
-"create your own custom units, and write your own scenarios – or even full-"
-"blown campaigns. You can also challenge your friends – or strangers – and "
-"fight in epic <emphasis>multi-player</emphasis> fantasy battles."
+"ranging from small-unit ambushes to clashes of vast armies. You can also "
+"challenge your friends – or strangers – and fight in epic multi-player "
+"fantasy battles."
 msgstr ""
 "Võid valida üle kahesaja erineva üksuse hulgast (jala- ja ratsaväelased, "
 "vibukütid ja võlurid on vaid mõned neist) ning mängida läbi lahinguid "
@@ -87,18 +88,28 @@ msgstr ""
 "esitada väljakutse sõpradele - või ka võõrastele - ning korraldada suuri "
 "<emphasis>paljude mängijatega</emphasis> fantaasialahinguid."
 
+# type: Content of: <book><preface><simpara>
+#: ../../doc/manual/manual.en.xml:35
+msgid ""
+"Battle for Wesnoth is open-source software, and a thriving community of "
+"volunteers cooperates to improve the game. You can create your own custom "
+"units, write your own scenarios, and even script full-blown campaigns. User-"
+"maintained content is available from an add-on server, and the very best of "
+"it is incorporated into Battle For Wesnoth's official releases."
+msgstr ""
+
 # type: Content of: <book><chapter><title>
-#: ../../doc/manual/manual.en.xml:39
+#: ../../doc/manual/manual.en.xml:44
 msgid "Getting Started"
 msgstr "Alustuseks"
 
 # type: Content of: <book><chapter><section><title>
-#: ../../doc/manual/manual.en.xml:41
+#: ../../doc/manual/manual.en.xml:46
 msgid "The World"
 msgstr "Maailm"
 
 # type: Content of: <book><chapter><section><simpara>
-#: ../../doc/manual/manual.en.xml:42
+#: ../../doc/manual/manual.en.xml:47
 #, fuzzy
 msgid ""
 "The known portion of the Great Continent, on which Wesnoth abides, is "
@@ -111,7 +122,7 @@ msgstr ""
 "Elensefariga ning kagu haldjamaad Hõbelaanes ja selle taga."
 
 # type: Content of: <book><chapter><section><simpara>
-#: ../../doc/manual/manual.en.xml:48
+#: ../../doc/manual/manual.en.xml:53
 #, fuzzy
 msgid ""
 "The Kingdom of Wesnoth lies in the center of this land. Its borders are the "
@@ -130,7 +141,7 @@ msgstr ""
 "on Suur Jõgi ja läänepiiriks meri."
 
 # type: Content of: <book><chapter><section><simpara>
-#: ../../doc/manual/manual.en.xml:55
+#: ../../doc/manual/manual.en.xml:60
 msgid ""
 "The Northlands is the wild country north of the Great River. Various groups "
 "of orcs, dwarves, barbarians and elves populate the region.  To the north "
@@ -139,7 +150,7 @@ msgid ""
 msgstr ""
 
 # type: Content of: <book><chapter><section><simpara>
-#: ../../doc/manual/manual.en.xml:60
+#: ../../doc/manual/manual.en.xml:65
 msgid ""
 "Over the land are scattered villages where you can heal your troops and "
 "gather the income required to support your army. You will also have to cross "
@@ -155,20 +166,21 @@ msgstr ""
 "tuttaval maastikul kiiremini ja võitlevad paremini."
 
 # type: Content of: <book><chapter><section><section><title>
-#: ../../doc/manual/manual.en.xml:68
+#: ../../doc/manual/manual.en.xml:73
 msgid "The Creatures"
 msgstr "Olendid"
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:69
+#: ../../doc/manual/manual.en.xml:74
+#, fuzzy
 msgid ""
 "In the world of Wesnoth there dwell humans, elves, dwarves, orcs, drakes, "
 "saurians, mermen, nagas, and many other races yet more obscure and wondrous. "
-"In accursed lands walk undead and ghosts and specters.  Each has adapted to "
-"particular terrains. Humans inhabit primarily the temperate grasslands. In "
-"the hills, mountains and underground caves orcs and dwarves are most at "
-"home. In the forests the elves reign supreme. In the oceans and rivers "
-"mermen and nagas dominate."
+"In accursed lands walk undead and ghosts and specters; monsters lurk in its "
+"ruins and dungeons.  Each has adapted to particular terrains. Humans inhabit "
+"primarily the temperate grasslands. In the hills, mountains and underground "
+"caves orcs and dwarves are most at home. In the forests the elves reign "
+"supreme. In the oceans and rivers mermen and nagas dominate."
 msgstr ""
 "Wesnothi maailmas elavad inimesed, haldjad, päkapikud, orkid, lohed, "
 "sisalased, näkid, nagad ja mitmed veelgi iseäralikumad rassid, neetud maadel "
@@ -178,7 +190,7 @@ msgstr ""
 "valitsevad haldjad ning meredes-jõgedes näkid ja nagad."
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:77
+#: ../../doc/manual/manual.en.xml:83
 msgid ""
 "For game purposes, the races group into factions; for example, orcs often "
 "cooperate with trolls, and elves or dwarves with humans. Some other factions "
@@ -194,12 +206,12 @@ msgstr ""
 "need ka liite, nii et võid kohata lahingus enam kui üht."
 
 # type: Content of: <book><chapter><section><title>
-#: ../../doc/manual/manual.en.xml:87
+#: ../../doc/manual/manual.en.xml:93
 msgid "Finding Your Way"
 msgstr "Mängukeskkond"
 
 # type: Content of: <book><chapter><section><simpara>
-#: ../../doc/manual/manual.en.xml:88
+#: ../../doc/manual/manual.en.xml:94
 msgid ""
 "When Wesnoth first starts it displays an initial background and a column of "
 "buttons called the Main Menu. The buttons only work with a mouse. For the "
@@ -215,7 +227,7 @@ msgstr ""
 "sealt see sõjakäik."
 
 # type: Content of: <book><chapter><section><simpara><inlinemediaobject>
-#: ../../doc/manual/manual.en.xml:95
+#: ../../doc/manual/manual.en.xml:101
 msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/main-menu.jpg"
 "\"/> </imageobject>"
@@ -224,24 +236,24 @@ msgstr ""
 "\"/> </imageobject>"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:100 ../../doc/manual/manual.en.xml:332
-#: ../../doc/manual/manual.en.xml:386 ../../doc/manual/manual.en.xml:399
-#: ../../doc/manual/manual.en.xml:465 ../../doc/manual/manual.en.xml:1013
-#: ../../doc/manual/manual.en.xml:1129 ../../doc/manual/manual.en.xml:1151
-#: ../../doc/manual/manual.en.xml:1173 ../../doc/manual/manual.en.xml:1195
-#: ../../doc/manual/manual.en.xml:1217 ../../doc/manual/manual.en.xml:1239
-#: ../../doc/manual/manual.en.xml:1261 ../../doc/manual/manual.en.xml:1984
-#: ../../doc/manual/manual.en.xml:2000 ../../doc/manual/manual.en.xml:2016
-#: ../../doc/manual/manual.en.xml:2032 ../../doc/manual/manual.en.xml:2048
+#: ../../doc/manual/manual.en.xml:106 ../../doc/manual/manual.en.xml:338
+#: ../../doc/manual/manual.en.xml:392 ../../doc/manual/manual.en.xml:405
+#: ../../doc/manual/manual.en.xml:471 ../../doc/manual/manual.en.xml:1019
+#: ../../doc/manual/manual.en.xml:1135 ../../doc/manual/manual.en.xml:1157
+#: ../../doc/manual/manual.en.xml:1179 ../../doc/manual/manual.en.xml:1201
+#: ../../doc/manual/manual.en.xml:1223 ../../doc/manual/manual.en.xml:1245
+#: ../../doc/manual/manual.en.xml:1267 ../../doc/manual/manual.en.xml:1990
+#: ../../doc/manual/manual.en.xml:2006 ../../doc/manual/manual.en.xml:2022
+#: ../../doc/manual/manual.en.xml:2038 ../../doc/manual/manual.en.xml:2054
 msgid "</inlinemediaobject>"
 msgstr "</inlinemediaobject>"
 
-#: ../../doc/manual/manual.en.xml:105
+#: ../../doc/manual/manual.en.xml:111
 msgid "Tutorial"
 msgstr "Õpetus"
 
 # type: Content of: <book><chapter><section><variablelist><varlistentry><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:109
+#: ../../doc/manual/manual.en.xml:115
 msgid ""
 "The tutorial is a real, but basic, game which teaches you some of the basic "
 "controls needed to play the game. Winning or losing is not important here, "
@@ -256,12 +268,12 @@ msgstr ""
 "või printsess Li'sari rolli, keda õpetab vana võlur Delfador. Pane hästi "
 "tähele, muidu ta võib su konnakulleseks muuta!"
 
-#: ../../doc/manual/manual.en.xml:121
+#: ../../doc/manual/manual.en.xml:127
 msgid "Campaign"
 msgstr "Sõjakäigud"
 
 # type: Content of: <book><chapter><section><variablelist><varlistentry><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:125
+#: ../../doc/manual/manual.en.xml:131
 msgid ""
 "Wesnoth was primarily designed to play campaigns. Campaigns are a series of "
 "connected scenarios. Click this button to start a new campaign. You will be "
@@ -287,12 +299,12 @@ msgstr ""
 "\">strateegiajuhend</link>. Peale raskusastme valimist alustatakse sõjakäigu "
 "esimest stsenaariumit."
 
-#: ../../doc/manual/manual.en.xml:142
+#: ../../doc/manual/manual.en.xml:148
 msgid "Multiplayer"
 msgstr "Mitmekesi mäng"
 
 # type: Content of: <book><chapter><section><variablelist><varlistentry><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:146
+#: ../../doc/manual/manual.en.xml:152
 msgid ""
 "Click this button to play single scenarios against one or more opponents. "
 "You can play the games over the internet or at your computer, against "
@@ -306,12 +318,12 @@ msgstr ""
 "Täpsemalt vaata  <link linkend=\"scenarios\">stsenaariumite</link> alt."
 
 # type: Content of: <book><chapter><section><variablelist><varlistentry><term>
-#: ../../doc/manual/manual.en.xml:156
+#: ../../doc/manual/manual.en.xml:162
 msgid "Load"
 msgstr "Laadimine"
 
 # type: Content of: <book><chapter><section><variablelist><varlistentry><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:160
+#: ../../doc/manual/manual.en.xml:166
 msgid ""
 "Click this button to load a previously saved game. You will be shown a "
 "dialogue listing saved games. Select the game and click Ok to load and "
@@ -326,12 +338,12 @@ msgstr ""
 "lõpuni läbi."
 
 # type: Content of: <book><chapter><section><variablelist><varlistentry><term>
-#: ../../doc/manual/manual.en.xml:170
+#: ../../doc/manual/manual.en.xml:176
 msgid "Add-ons"
 msgstr "Lisamoodulid"
 
 # type: Content of: <book><chapter><section><variablelist><varlistentry><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:174
+#: ../../doc/manual/manual.en.xml:180
 msgid ""
 "Click this button to enter the content server where a whole lot of content "
 "created by normal users is hosted. Among the things available there are many "
@@ -345,12 +357,12 @@ msgstr ""
 "osapooled) ja mitmemängija kaarte. Nupuga \"Eemalda moodul\" saad mooduleid "
 "ka kustutada."
 
-#: ../../doc/manual/manual.en.xml:184
+#: ../../doc/manual/manual.en.xml:190
 msgid "Language"
 msgstr "Keel"
 
 # type: Content of: <book><chapter><section><variablelist><varlistentry><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:188
+#: ../../doc/manual/manual.en.xml:194
 msgid ""
 "Click this button, select your language, and click OK to use it, or Cancel "
 "to continue with the current language. The first time Wesnoth starts, it "
@@ -363,22 +375,22 @@ msgstr ""
 "tuvastada. Kui keelt muudetakse, käivitub Wesnoth järgmisel korral selles "
 "keeles."
 
-#: ../../doc/manual/manual.en.xml:197
+#: ../../doc/manual/manual.en.xml:203
 msgid "Preferences"
 msgstr "Eelistused"
 
 # type: Content of: <book><chapter><section><variablelist><varlistentry><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:201
+#: ../../doc/manual/manual.en.xml:207
 msgid "Click here to change default settings."
 msgstr "Klõpsa siia vaikimisi sätete muutmiseks"
 
 # type: Content of: <book><chapter><section><variablelist><varlistentry><term>
-#: ../../doc/manual/manual.en.xml:207
+#: ../../doc/manual/manual.en.xml:213
 msgid "Credits"
 msgstr "Autorid"
 
 # type: Content of: <book><chapter><section><variablelist><varlistentry><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:211
+#: ../../doc/manual/manual.en.xml:217
 msgid ""
 "Click this button for a list of major Wesnoth contributors. You will often "
 "be able to reach them in real time at irc.freenode.org:6667 on #wesnoth."
@@ -386,22 +398,22 @@ msgstr ""
 "Klõpsa seda nuppu Wesnothi põhitegijate nimekirja nägemiseks. Sageli võib "
 "neid leida IRC kanalil #wesnoth aadressil irc.freenode.org:6667 ."
 
-#: ../../doc/manual/manual.en.xml:219
+#: ../../doc/manual/manual.en.xml:225
 msgid "Quit"
 msgstr "Väljumine"
 
 # type: Content of: <book><chapter><section><variablelist><varlistentry><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:223
+#: ../../doc/manual/manual.en.xml:229
 msgid "Click this button to close Wesnoth."
 msgstr "Klõpsa siia Wesnothist väljumiseks."
 
 # type: Content of: <book><chapter><section><variablelist><varlistentry><term>
-#: ../../doc/manual/manual.en.xml:229
+#: ../../doc/manual/manual.en.xml:235
 msgid "Help"
 msgstr "Abiteave"
 
 # type: Content of: <book><chapter><section><variablelist><varlistentry><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:233
+#: ../../doc/manual/manual.en.xml:239
 msgid ""
 "Click this button to open the integrated in game Help System. It will "
 "provide you with information about units and all other gameplay relevant "
@@ -411,23 +423,23 @@ msgstr ""
 "mängu puutuva kohta. Enamikku neist asjust kirjeldab ka see kasutajajuhend."
 
 # type: Content of: <book><chapter><section><variablelist><varlistentry><term>
-#: ../../doc/manual/manual.en.xml:241
+#: ../../doc/manual/manual.en.xml:247
 msgid "Next"
 msgstr ""
 
 # type: Content of: <book><chapter><section><variablelist><varlistentry><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:245
+#: ../../doc/manual/manual.en.xml:251
 msgid ""
 "Click this button to read the next little tip from the \"Tome of Wesnoth\"."
 msgstr "Klõpsa seda nuppu järgmise vihje avamiseks \"Wesnothi Raamatust\"."
 
 # type: Content of: <book><chapter><section><variablelist><varlistentry><term>
-#: ../../doc/manual/manual.en.xml:251
+#: ../../doc/manual/manual.en.xml:257
 msgid "Previous"
 msgstr ""
 
 # type: Content of: <book><chapter><section><variablelist><varlistentry><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:255
+#: ../../doc/manual/manual.en.xml:261
 #, fuzzy
 msgid ""
 "Click this button to read the previous little tip from the \"Tome of Wesnoth"
@@ -435,33 +447,34 @@ msgid ""
 msgstr "Klõpsa seda nuppu järgmise vihje avamiseks \"Wesnothi Raamatust\"."
 
 # type: Content of: <book><chapter><section><variablelist><varlistentry><term>
-#: ../../doc/manual/manual.en.xml:261
+#: ../../doc/manual/manual.en.xml:267
 msgid "Envelope"
 msgstr "Ümbrik"
 
 # type: Content of: <book><chapter><section><variablelist><varlistentry><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:265
+#: ../../doc/manual/manual.en.xml:271
+#, fuzzy
 msgid ""
 "Click this button (the icon of an envelope) to open a dialog where you can "
-"enable summary uploads which will help us to further balance campaigns. This "
-"option is not active by default and all data submitted will be anonymous."
+"enable or disable summary uploads which will help us to better balance "
+"campaigns. All data submitted will be anonymous."
 msgstr ""
 "Klõpsa seda nuppu (ümbrikuikooni), et saata sõjakäikude tasakaalustamiseks "
 "kogutavat mänguinfot. Seda vaikimisi ei käivitata ning saadetav teave jääb "
 "anonüümseks."
 
 # type: Content of: <book><chapter><section><title>
-#: ../../doc/manual/manual.en.xml:274
+#: ../../doc/manual/manual.en.xml:280
 msgid "Game Modes"
 msgstr "Mänguviisid"
 
 # type: Content of: <book><chapter><section><simpara>
-#: ../../doc/manual/manual.en.xml:275
+#: ../../doc/manual/manual.en.xml:281
 msgid "There are two basic ways to play Battle for Wesnoth:"
 msgstr "Wesnothi mängimiseks on kaks peamist viisi:"
 
 # type: Content of: <book><chapter><section><itemizedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:280
+#: ../../doc/manual/manual.en.xml:286
 msgid ""
 "Play a sequence of connected scenarios, known as a campaign, against the "
 "computer."
@@ -470,17 +483,17 @@ msgstr ""
 "vastu."
 
 # type: Content of: <book><chapter><section><itemizedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:286
+#: ../../doc/manual/manual.en.xml:292
 msgid "Play a single scenario against computer or human opponents."
 msgstr "Üksikmäng arvuti või teiste inimmängijate vastu."
 
 # type: Content of: <book><chapter><section><section><title>
-#: ../../doc/manual/manual.en.xml:291
+#: ../../doc/manual/manual.en.xml:297
 msgid "Campaigns"
 msgstr "Sõjakäigud"
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:292
+#: ../../doc/manual/manual.en.xml:298
 msgid ""
 "Campaigns are sequences of battles with a connecting storyline. Typical "
 "campaigns have about 10-20 scenarios. The main advantage with campaigns is "
@@ -496,7 +509,7 @@ msgstr ""
 "säilivad ja neid saab kasutada hilisemates stsenaariumites."
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:300
+#: ../../doc/manual/manual.en.xml:306
 msgid ""
 "The campaign is the primary form in which Wesnoth is intended to be played, "
 "is probably the most enjoyable, and is the recommended way for new players "
@@ -506,12 +519,12 @@ msgstr ""
 "ka uutele mängijatele õppimiseks parim."
 
 # type: Content of: <book><chapter><section><section><title>
-#: ../../doc/manual/manual.en.xml:306
+#: ../../doc/manual/manual.en.xml:312
 msgid "Scenarios"
 msgstr "Üksikmängud"
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:307
+#: ../../doc/manual/manual.en.xml:313
 msgid ""
 "A single scenario takes about 30 minutes to 2 hours to complete. This is the "
 "fastest way to play, but your units are not saved and you cannot use "
@@ -526,7 +539,7 @@ msgstr ""
 "klõpsa peamenüüs nuppu \"Mitu mängijat\"."
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:313
+#: ../../doc/manual/manual.en.xml:319
 msgid ""
 "In general multiplayer games are played against other players via the "
 "Internet (you can also run them on your LAN if you have one). All these "
@@ -549,14 +562,14 @@ msgstr ""
 "sees."
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:324
+#: ../../doc/manual/manual.en.xml:330
 msgid ""
 "There are several possible options you are provided with when clicking on "
 "the \"Multiplayer\" button:"
 msgstr "Erinevaid mänguviise näed, kui klõpsad nuppu \"Mitu mängijat\"."
 
 # type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
-#: ../../doc/manual/manual.en.xml:327
+#: ../../doc/manual/manual.en.xml:333
 msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/multiplayer.jpg"
 "\"/> </imageobject>"
@@ -565,12 +578,12 @@ msgstr ""
 "\"/> </imageobject>"
 
 # type: Content of: <book><chapter><section><section><section><title>
-#: ../../doc/manual/manual.en.xml:335
+#: ../../doc/manual/manual.en.xml:341
 msgid "Join official Server"
 msgstr "Võta ühendust ametliku serveriga"
 
 # type: Content of: <book><chapter><section><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:336
+#: ../../doc/manual/manual.en.xml:342
 msgid ""
 "This option directly connects you to the official server. You will end in "
 "the lobby where you can create your games as you wish and where many games "
@@ -582,12 +595,12 @@ msgstr ""
 "juba ees ootavad."
 
 # type: Content of: <book><chapter><section><section><section><title>
-#: ../../doc/manual/manual.en.xml:342
+#: ../../doc/manual/manual.en.xml:348
 msgid "Connect to Host/Server"
 msgstr "Ühendu serveriga"
 
 # type: Content of: <book><chapter><section><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:343
+#: ../../doc/manual/manual.en.xml:349
 msgid ""
 "This option opens a dialog box allowing you to enter the address of the "
 "machine to join. In this dialog there also is the button \"View List\" that "
@@ -599,7 +612,7 @@ msgstr ""
 "peaserveri rikke korral varuserveritena."
 
 # type: Content of: <book><chapter><section><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:348
+#: ../../doc/manual/manual.en.xml:354
 msgid ""
 "A rather complete list of official and user setup servers is listed at this "
 "website: <ulink url=\"http://wesnoth.org/wiki/MultiplayerServers"
@@ -609,7 +622,7 @@ msgstr ""
 "\"http://wesnoth.org/wiki/MultiplayerServers\">siin</ulink>."
 
 # type: Content of: <book><chapter><section><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:351
+#: ../../doc/manual/manual.en.xml:357
 msgid ""
 "To be able to start a multiplayer game without using an external multiplayer "
 "server, you have to start the server, which is usually named "
@@ -634,12 +647,12 @@ msgstr ""
 "vaja."
 
 # type: Content of: <book><chapter><section><section><section><title>
-#: ../../doc/manual/manual.en.xml:364
+#: ../../doc/manual/manual.en.xml:370
 msgid "Local Game"
 msgstr "Kohalik mäng"
 
 # type: Content of: <book><chapter><section><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:365
+#: ../../doc/manual/manual.en.xml:371
 msgid ""
 "This creates a game just running on your computer. You can either use it as "
 "hotseat game where everyone plays at the same computers by taking turns in "
@@ -661,12 +674,12 @@ msgstr ""
 "arvuti vastu."
 
 # type: Content of: <book><chapter><section><section><title>
-#: ../../doc/manual/manual.en.xml:380
+#: ../../doc/manual/manual.en.xml:386
 msgid "The Game Screen"
 msgstr "Mänguekraan"
 
 # type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
-#: ../../doc/manual/manual.en.xml:381
+#: ../../doc/manual/manual.en.xml:387
 msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/game-screen.jpg"
 "\"/> </imageobject>"
@@ -675,7 +688,7 @@ msgstr ""
 "\"/> </imageobject>"
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:388
+#: ../../doc/manual/manual.en.xml:394
 msgid ""
 "Regardless of whether you are playing a scenario or a campaign, the basic "
 "layout of the game screen is the same. The majority of the screen is filled "
@@ -689,7 +702,7 @@ msgstr ""
 "kohta kasulikku teavet - neid kirjeldatakse täpsemalt allpool."
 
 # type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
-#: ../../doc/manual/manual.en.xml:394
+#: ../../doc/manual/manual.en.xml:400
 msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/top_pane.jpg\"/"
 "> </imageobject>"
@@ -698,68 +711,68 @@ msgstr ""
 "> </imageobject>"
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:401
+#: ../../doc/manual/manual.en.xml:407
 msgid ""
 "Across the top of the screen from left to right are the following items:"
 msgstr "Ekraani ülaservas vasakult paremale asuvad järgmised elemendid:"
 
 # type: Content of: <book><chapter><section><section><orderedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:406
+#: ../../doc/manual/manual.en.xml:412
 msgid "Menu button"
 msgstr "Menüünupp"
 
 # type: Content of: <book><chapter><section><section><orderedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:411
+#: ../../doc/manual/manual.en.xml:417
 msgid "Actions button"
 msgstr "Tegevuste nupp"
 
 # type: Content of: <book><chapter><section><section><orderedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:416
+#: ../../doc/manual/manual.en.xml:422
 msgid "Turn counter (current turn/maximum number of turns)"
 msgstr "Käiguloendur (jooksev käik/käikude koguarv)"
 
 # type: Content of: <book><chapter><section><section><orderedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:421
+#: ../../doc/manual/manual.en.xml:427
 msgid "Your gold"
 msgstr "Kullavaru"
 
 # type: Content of: <book><chapter><section><section><orderedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:426
+#: ../../doc/manual/manual.en.xml:432
 msgid "Villages (your villages/total number of villages)"
 msgstr "Külad (sinu külade arv / külade koguarv)"
 
 # type: Content of: <book><chapter><section><section><orderedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:431
+#: ../../doc/manual/manual.en.xml:437
 msgid "Your total units"
 msgstr "Sinu üksuste arv"
 
 # type: Content of: <book><chapter><section><section><orderedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:436
+#: ../../doc/manual/manual.en.xml:442
 msgid "Your upkeep"
 msgstr "Sinu elatis"
 
 # type: Content of: <book><chapter><section><section><orderedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:441
+#: ../../doc/manual/manual.en.xml:447
 msgid "Your income"
 msgstr "Sinu sissetulek"
 
 # type: Content of: <book><chapter><section><section><orderedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:446
+#: ../../doc/manual/manual.en.xml:452
 msgid "Current time or time left (in timed multiplayer games)"
 msgstr "Kellaaeg või lõpuni jääv aeg (ajapiiranguga mitmemängija mängudes)"
 
 # type: Content of: <book><chapter><section><section><orderedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:451
+#: ../../doc/manual/manual.en.xml:457
 msgid "Current hex position (x-coordinate, y-coordinate)"
 msgstr "Aktiivse välja asukoht (x-koordinaat, y-koordinaat)"
 
 # type: Content of: <book><chapter><section><section><orderedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:456
+#: ../../doc/manual/manual.en.xml:462
 msgid "Current hex type"
 msgstr "Aktiivse välja liik"
 
 # type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
-#: ../../doc/manual/manual.en.xml:460
+#: ../../doc/manual/manual.en.xml:466
 msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/right_pane.jpg"
 "\"/> </imageobject>"
@@ -768,37 +781,37 @@ msgstr ""
 "\"/> </imageobject>"
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:467
+#: ../../doc/manual/manual.en.xml:473
 msgid "Down the right of the screen from top to bottom are:"
 msgstr "Ekraani paremas servas ülalt alla asuvad:"
 
 # type: Content of: <book><chapter><section><section><orderedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:472
+#: ../../doc/manual/manual.en.xml:478
 msgid "Full map, scaled"
 msgstr "Stsenaariumi minikaart"
 
 # type: Content of: <book><chapter><section><section><orderedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:477
+#: ../../doc/manual/manual.en.xml:483
 msgid "Time of day indicator"
 msgstr "Päevaaja näidik"
 
 # type: Content of: <book><chapter><section><section><orderedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:482
+#: ../../doc/manual/manual.en.xml:488
 msgid "Unit profile for last selected unit"
 msgstr "Viimativalitud üksuse andmed"
 
 # type: Content of: <book><chapter><section><section><orderedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:487
+#: ../../doc/manual/manual.en.xml:493
 msgid "End Turn button"
 msgstr "Käigu lõpetamise nupp"
 
 # type: Content of: <book><chapter><section><section><title>
-#: ../../doc/manual/manual.en.xml:493
+#: ../../doc/manual/manual.en.xml:499
 msgid "Recruit and Recall"
 msgstr "Värbamine ja tagasikutsumine"
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:494
+#: ../../doc/manual/manual.en.xml:500
 msgid ""
 "When you first start a scenario or campaign you will only have a few units "
 "on the map. One of these will be your commander (identified by a little "
@@ -818,7 +831,7 @@ msgstr ""
 "üles tugeva väe, mis suudab vaenlast lüüa."
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:503
+#: ../../doc/manual/manual.en.xml:509
 #, fuzzy
 msgid ""
 "The first thing you will probably want to do is recruit your first unit. "
@@ -839,7 +852,7 @@ msgstr ""
 "vaatlemisele, lahing ootab võitmist."
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:512
+#: ../../doc/manual/manual.en.xml:518
 msgid ""
 "At the end of each successful scenario, all your remaining troops are "
 "automatically saved. At the start of the next scenario you may recall them "
@@ -852,12 +865,12 @@ msgstr ""
 "parem valik."
 
 # type: Content of: <book><chapter><section><section><title>
-#: ../../doc/manual/manual.en.xml:519
+#: ../../doc/manual/manual.en.xml:525
 msgid "Your Army"
 msgstr "Sinu sõjavägi"
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:520
+#: ../../doc/manual/manual.en.xml:526
 msgid ""
 "All game types use the same soldiers, called units. Each unit is identified "
 "by Race, Level, and Class. Each unit has strengths and weaknesses, based on "
@@ -870,12 +883,12 @@ msgstr ""
 "seda kirjeldatud mängu abiteabe all."
 
 # type: Content of: <book><chapter><section><section><title>
-#: ../../doc/manual/manual.en.xml:527
+#: ../../doc/manual/manual.en.xml:533
 msgid "Life and Death - Experience"
 msgstr "Elu ja surm ning kogemus"
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:528
+#: ../../doc/manual/manual.en.xml:534
 msgid ""
 "As your troops gain battle experience, they will learn more skills and "
 "become stronger. They will also die in battle, so you'll need to recruit and "
@@ -889,12 +902,12 @@ msgstr ""
 "ära."
 
 # type: Content of: <book><chapter><section><section><title>
-#: ../../doc/manual/manual.en.xml:535
+#: ../../doc/manual/manual.en.xml:541
 msgid "Victory and Defeat"
 msgstr "Võit ja kaotus"
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:536
+#: ../../doc/manual/manual.en.xml:542
 msgid ""
 "Pay careful attention to the Objectives pop-up box at the beginning of each "
 "scenario. Usually you will achieve victory by killing all enemy leaders, and "
@@ -910,7 +923,7 @@ msgstr ""
 "pidada oma jõududega vastu teatud arv käike."
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:544
+#: ../../doc/manual/manual.en.xml:550
 msgid ""
 "When you win a scenario, the map will gray over and the <emphasis>End Turn</"
 "emphasis> button will change to <emphasis>End Scenario</emphasis>. You can "
@@ -923,12 +936,12 @@ msgstr ""
 "nupuga. Seal saad veel muuta salvestussätteid (mitmemängija mängu korral) "
 "või vestelda teiste mängijatega, enne kui klõpsad lõpetamisnuppu."
 
-#: ../../doc/manual/manual.en.xml:551 ../../doc/manual/manual.en.xml:999
+#: ../../doc/manual/manual.en.xml:557 ../../doc/manual/manual.en.xml:1005
 msgid "Gold"
 msgstr "Kuld"
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:552
+#: ../../doc/manual/manual.en.xml:558
 msgid ""
 "Your army does not fight for free. It costs you gold to recruit units and "
 "gold to maintain them. You start each scenario with gold carried over from "
@@ -953,12 +966,12 @@ msgstr ""
 "\"game_screen\">mänguekraani</link> ülaservas."
 
 # type: Content of: <book><chapter><section><section><title>
-#: ../../doc/manual/manual.en.xml:566
+#: ../../doc/manual/manual.en.xml:572
 msgid "Save and Load"
 msgstr "Salvestamine ja laadimine"
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:567
+#: ../../doc/manual/manual.en.xml:573
 #, fuzzy
 msgid ""
 "At the start of each scenario, your game state is normally saved. If you are "
@@ -976,17 +989,17 @@ msgstr ""
 "seda üsna tihti harrastama."
 
 # type: Content of: <book><chapter><title>
-#: ../../doc/manual/manual.en.xml:579
+#: ../../doc/manual/manual.en.xml:585
 msgid "Playing"
 msgstr "Mängimine"
 
 # type: Content of: <book><chapter><section><title>
-#: ../../doc/manual/manual.en.xml:581
+#: ../../doc/manual/manual.en.xml:587
 msgid "Controls"
 msgstr "Mängu juhtimine"
 
 # type: Content of: <book><chapter><section><simpara>
-#: ../../doc/manual/manual.en.xml:582
+#: ../../doc/manual/manual.en.xml:588
 msgid ""
 "These are the default control keys. You can change them to your taste using "
 "the Preferences menu."
@@ -995,504 +1008,504 @@ msgstr ""
 "muuta."
 
 # type: Content of: <book><chapter><section><table><title>
-#: ../../doc/manual/manual.en.xml:589
+#: ../../doc/manual/manual.en.xml:595
 msgid "Controls and hotkeys"
 msgstr "Juht- ja kiirklahvid"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:596
+#: ../../doc/manual/manual.en.xml:602
 msgid "F1"
 msgstr "F1"
 
-#: ../../doc/manual/manual.en.xml:599
+#: ../../doc/manual/manual.en.xml:605
 msgid "The Battle for Wesnoth Help"
 msgstr "Wesnothi Lahingu käsiraamat"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:604
+#: ../../doc/manual/manual.en.xml:610
 msgid "Arrow keys"
 msgstr "Nooleklahvid"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:607
+#: ../../doc/manual/manual.en.xml:613
 msgid "Scroll"
 msgstr "Kerimine"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:612
+#: ../../doc/manual/manual.en.xml:618
 msgid "Left click"
 msgstr "Vasakklõps"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:615
+#: ../../doc/manual/manual.en.xml:621
 msgid "Select unit, move unit"
 msgstr "Vali/liiguta üksust"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:620
+#: ../../doc/manual/manual.en.xml:626
 msgid "Right click"
 msgstr "Paremklõps"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:623
+#: ../../doc/manual/manual.en.xml:629
 msgid "Main menu, cancel action"
 msgstr "Peamenüü/tühista"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:628
+#: ../../doc/manual/manual.en.xml:634
 msgid "Middle click"
 msgstr "Keskklõps"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:631
+#: ../../doc/manual/manual.en.xml:637
 msgid "Center on pointer location"
 msgstr "Keskenda kursori asukohale"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:636
+#: ../../doc/manual/manual.en.xml:642
 msgid "Escape"
 msgstr "Esc-klahv"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:639
+#: ../../doc/manual/manual.en.xml:645
 msgid "Exit game, exit menu, cancel message"
 msgstr "Välju mängust/menüüst, tühista sõnum"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:644
+#: ../../doc/manual/manual.en.xml:650
 msgid "Ctrl-r"
 msgstr "Ctrl-r"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:647
+#: ../../doc/manual/manual.en.xml:653
 msgid "Recruit unit"
 msgstr "Värba üksus"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:652
+#: ../../doc/manual/manual.en.xml:658
 msgid "Ctrl-alt-r"
 msgstr "Ctrl-alt-r"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:655
+#: ../../doc/manual/manual.en.xml:661
 msgid "Repeat last recruit"
 msgstr "Korda viimast värbamist"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:660
+#: ../../doc/manual/manual.en.xml:666
 msgid "Alt-r"
 msgstr "Alt-r"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:663
+#: ../../doc/manual/manual.en.xml:669
 msgid "Recall unit"
 msgstr "Kutsu tagasi"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:668
+#: ../../doc/manual/manual.en.xml:674
 msgid "u"
 msgstr "u"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:671
+#: ../../doc/manual/manual.en.xml:677
 msgid "Undo last move (only deterministic moves can be undone)"
 msgstr "Tühista eelmine käik (kõiki käike ei saa tagasi võtta)"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:676
+#: ../../doc/manual/manual.en.xml:682
 msgid "r"
 msgstr "r"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:679
+#: ../../doc/manual/manual.en.xml:685
 msgid "Redo move"
 msgstr "Tee käik uuesti"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:684
+#: ../../doc/manual/manual.en.xml:690
 msgid "m"
 msgstr "m"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:687
+#: ../../doc/manual/manual.en.xml:693
 msgid "Message another player (in multiplayer)"
 msgstr "Saada sõnum teisele mängijale (mitmemängija mängus)"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:692
+#: ../../doc/manual/manual.en.xml:698
 msgid "ctrl-m"
 msgstr "ctrl-m"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:695
+#: ../../doc/manual/manual.en.xml:701
 msgid "Message your allies (in multiplayer)"
 msgstr "Saada sõnum oma liitlastele (mitmemängija mängus)"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:700
+#: ../../doc/manual/manual.en.xml:706
 msgid "Alt-m"
 msgstr "Alt-m"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:703
+#: ../../doc/manual/manual.en.xml:709
 msgid "Message everyone in the game (in multiplayer)"
 msgstr "Saada sõnum kõigile osalejatele (mitmemängija mängus)"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:708
+#: ../../doc/manual/manual.en.xml:714
 msgid "Alt-c"
 msgstr "Alt-c"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:711
+#: ../../doc/manual/manual.en.xml:717
 msgid "View chat log"
 msgstr "Vaata jutulogi"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:716
+#: ../../doc/manual/manual.en.xml:722
 msgid "n"
 msgstr "n"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:719
+#: ../../doc/manual/manual.en.xml:725
 msgid "Cycle through units that have movement left"
 msgstr "Keri üksuste vahel, kes saavad veel liikuda"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:724
+#: ../../doc/manual/manual.en.xml:730
 msgid "N"
 msgstr "N"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:727
+#: ../../doc/manual/manual.en.xml:733
 msgid "Cycle through units that have movement left, in reverse order"
 msgstr "Keri üksuste vahel, kes saavad veel liikuda (tagurpidi järjestuses)"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:732
+#: ../../doc/manual/manual.en.xml:738
 msgid "Space"
 msgstr "Tühik"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:735
+#: ../../doc/manual/manual.en.xml:741
 msgid "End unit turn and cycle to next unit that has movement left"
 msgstr "Lõpeta üksuse käik ja vali järgmine, kel on veel võimalik liikuda"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:740
+#: ../../doc/manual/manual.en.xml:746
 msgid "Shift-Space"
 msgstr "Shift-tühik"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:743
+#: ../../doc/manual/manual.en.xml:749
 msgid "Make currently selected unit hold position (end its movement)"
 msgstr "Käsi valitud üksusel positsioonile jääda (lõpeta käik)"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:748
+#: ../../doc/manual/manual.en.xml:754
 msgid "Ctrl-Space"
 msgstr "Ctrl-tühik"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:751
+#: ../../doc/manual/manual.en.xml:757
 msgid "End this player's turn"
 msgstr "Lõpeta selle mängija käik"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:756
+#: ../../doc/manual/manual.en.xml:762
 msgid "Ctrl-v"
 msgstr "Ctrl-v"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:759
+#: ../../doc/manual/manual.en.xml:765
 msgid "Show enemy moves (where the enemy can move next turn)"
 msgstr "Näiita vastase käike (kuhu vastane saab järgmisel käigul liikuda)"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:764
+#: ../../doc/manual/manual.en.xml:770
 msgid "Ctrl-b"
 msgstr "Ctrl-b"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:767
+#: ../../doc/manual/manual.en.xml:773
 msgid "Show potential enemy moves, if your units were not on the map"
 msgstr "Näita vastase käike, kui sinu üksusi poleks ees"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:772
+#: ../../doc/manual/manual.en.xml:778
 msgid "Ctrl-j"
 msgstr "Ctrl-j"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:775
+#: ../../doc/manual/manual.en.xml:781
 msgid "Show scenario objectives"
 msgstr "Näita stsenaariumi eesmärke"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:780
+#: ../../doc/manual/manual.en.xml:786
 msgid "Ctrl-f"
 msgstr "Ctrl-f"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:783
+#: ../../doc/manual/manual.en.xml:789
 msgid "Toggle full screen/windowed mode"
 msgstr "Lülita akna- ja üleekraanirežiimi vahel"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:788
+#: ../../doc/manual/manual.en.xml:794
 msgid "Ctrl-a"
 msgstr "Ctrl-a"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:791
+#: ../../doc/manual/manual.en.xml:797
 msgid "Toggle accelerated game mode"
 msgstr "Lülita kiirendus sisse-välja"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:796 ../../doc/manual/manual.en.xml:916
+#: ../../doc/manual/manual.en.xml:802 ../../doc/manual/manual.en.xml:922
 msgid "Ctrl-g"
 msgstr "Ctrl-g"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:799 ../../doc/manual/manual.en.xml:919
+#: ../../doc/manual/manual.en.xml:805 ../../doc/manual/manual.en.xml:925
 msgid "Toggle grid"
 msgstr "Lülita võrgustik sisse-välja"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:804
+#: ../../doc/manual/manual.en.xml:810
 msgid "Ctrl-c"
 msgstr "Ctrl-c"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:807
+#: ../../doc/manual/manual.en.xml:813
 msgid "Clear onscreen labels"
 msgstr "Kustuta ekraanisildid"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:812
+#: ../../doc/manual/manual.en.xml:818
 msgid "Ctrl-s"
 msgstr "Ctrl-s"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:815
+#: ../../doc/manual/manual.en.xml:821
 msgid "Save game"
 msgstr "Salvesta mäng"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:820
+#: ../../doc/manual/manual.en.xml:826
 msgid "Ctrl-o"
 msgstr "Ctrl-o"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:823
+#: ../../doc/manual/manual.en.xml:829
 msgid "Load game"
 msgstr "Lae mäng"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:828
+#: ../../doc/manual/manual.en.xml:834
 msgid "Ctrl-p"
 msgstr "Ctrl-p"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:831
+#: ../../doc/manual/manual.en.xml:837
 msgid "Go to Preferences menu"
 msgstr "Mine Eelistuste menüüsse"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:836
+#: ../../doc/manual/manual.en.xml:842
 msgid "Ctrl-q"
 msgstr "Ctrl-q"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:839
+#: ../../doc/manual/manual.en.xml:845
 msgid "Quit game"
 msgstr "Lahku mängust"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:844
+#: ../../doc/manual/manual.en.xml:850
 msgid "/"
 msgstr "/"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:847
+#: ../../doc/manual/manual.en.xml:853
 msgid "Search (find label or unit by name)"
 msgstr "Otsi (silti või üksust)"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:852
+#: ../../doc/manual/manual.en.xml:858
 msgid "t"
 msgstr "t"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:855
+#: ../../doc/manual/manual.en.xml:861
 msgid "Continue interrupted unit move"
 msgstr "Jätka üksuse käiku"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:860
+#: ../../doc/manual/manual.en.xml:866
 msgid "+"
 msgstr "+"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:863
+#: ../../doc/manual/manual.en.xml:869
 msgid "Zoom in"
 msgstr "Suurenda"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:868 ../../doc/manual/manual.en.xml:2040
+#: ../../doc/manual/manual.en.xml:874 ../../doc/manual/manual.en.xml:2046
 msgid "-"
 msgstr "-"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:871
+#: ../../doc/manual/manual.en.xml:877
 msgid "Zoom out"
 msgstr "Vähenda"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:876 ../../doc/manual/manual.en.xml:1812
-#: ../../doc/manual/manual.en.xml:1818
+#: ../../doc/manual/manual.en.xml:882 ../../doc/manual/manual.en.xml:1818
+#: ../../doc/manual/manual.en.xml:1824
 msgid "0"
 msgstr "0"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:879
+#: ../../doc/manual/manual.en.xml:885
 msgid "Reset zoom to default"
 msgstr "Vaikimisi suurendus"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:884
+#: ../../doc/manual/manual.en.xml:890
 msgid "Ctrl-n"
 msgstr "Ctrl-n"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:887
+#: ../../doc/manual/manual.en.xml:893
 msgid "Rename unit"
 msgstr "Nimeta üksus ringi"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:892
+#: ../../doc/manual/manual.en.xml:898
 msgid "1-7"
 msgstr "1-7"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:895
+#: ../../doc/manual/manual.en.xml:901
 msgid "Show how far currently selected unit can move in that many turns"
 msgstr "Näita, kui kaugele valitud üksus saab vastava arvu käikudega liikuda"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:900
+#: ../../doc/manual/manual.en.xml:906
 msgid "l"
 msgstr "l"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:903
+#: ../../doc/manual/manual.en.xml:909
 msgid "Move to leader unit"
 msgstr "Vali pealik"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:908
+#: ../../doc/manual/manual.en.xml:914
 msgid "d"
 msgstr "d"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:911
+#: ../../doc/manual/manual.en.xml:917
 msgid "Describe current unit"
 msgstr "Valitud üksuse kirjeldus"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:924
+#: ../../doc/manual/manual.en.xml:930
 msgid "S"
 msgstr "S"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:927
+#: ../../doc/manual/manual.en.xml:933
 msgid "Update shroud now"
 msgstr "Uuenda pimendust"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:932
+#: ../../doc/manual/manual.en.xml:938
 msgid "D"
 msgstr "D"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:935
+#: ../../doc/manual/manual.en.xml:941
 msgid "Delay shroud updates"
 msgstr "Viivita pimenduse uuendamisega"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:940
+#: ../../doc/manual/manual.en.xml:946
 msgid "Alt-l"
 msgstr "Alt-l"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:943
+#: ../../doc/manual/manual.en.xml:949
 msgid "Attach a text label to a terrain hex"
 msgstr "Pane maastikuväljale tekstisilt"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:948
+#: ../../doc/manual/manual.en.xml:954
 msgid "Ctrl-l"
 msgstr "Ctrl-l"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:951
+#: ../../doc/manual/manual.en.xml:957
 msgid "Set team label"
 msgstr "Pane võistkonnale silt"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:956
+#: ../../doc/manual/manual.en.xml:962
 msgid "Alt-s"
 msgstr "Alt-s"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:959
+#: ../../doc/manual/manual.en.xml:965
 msgid "Show status table"
 msgstr "Näita olekutabelit"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:964
+#: ../../doc/manual/manual.en.xml:970
 msgid "s"
 msgstr "s"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:967
+#: ../../doc/manual/manual.en.xml:973
 msgid "Show statistics"
 msgstr "Näita statistikat"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:972
+#: ../../doc/manual/manual.en.xml:978
 msgid "Alt-u"
 msgstr "Alt-u"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:975
+#: ../../doc/manual/manual.en.xml:981
 msgid "Show unit list"
 msgstr "Näita üksuste nimekirja"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:980
+#: ../../doc/manual/manual.en.xml:986
 msgid "Ctrl-alt-m"
 msgstr "Ctrl-alt-m"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:983
+#: ../../doc/manual/manual.en.xml:989
 msgid "Toggle muting of game sounds"
 msgstr "Lülita helide vaigistus sisse-välja"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:988
+#: ../../doc/manual/manual.en.xml:994
 msgid ":"
 msgstr ":"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:991
+#: ../../doc/manual/manual.en.xml:997
 msgid ""
 "<ulink url=\"http://www.wesnoth.org/wiki/CommandMode\">Command mode</ulink>"
 msgstr ""
 "<ulink url=\"http://www.wesnoth.org/wiki/CommandMode\">Käsurežiim</ulink>"
 
 # type: Content of: <book><chapter><section><simpara>
-#: ../../doc/manual/manual.en.xml:1000
+#: ../../doc/manual/manual.en.xml:1006
 msgid ""
 "Each side is given some amount of gold to begin with, and receives 2 gold "
 "pieces per turn, plus 1 more gold piece for every village that side "
@@ -1506,12 +1519,12 @@ msgstr ""
 "miinimumkogusega vastavalt sellele, kumb on suurem. Miinimumkogus on "
 "enamasti seda väiksem, mida kõrgem on mängu raskusaste."
 
-#: ../../doc/manual/manual.en.xml:1007
+#: ../../doc/manual/manual.en.xml:1013
 msgid "Recruiting and Recalling"
 msgstr "Värbamine ja tagasi kutsumine"
 
 # type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
-#: ../../doc/manual/manual.en.xml:1008
+#: ../../doc/manual/manual.en.xml:1014
 msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/recruit.jpg\"/"
 "> </imageobject>"
@@ -1520,7 +1533,7 @@ msgstr ""
 "> </imageobject>"
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:1015
+#: ../../doc/manual/manual.en.xml:1021
 msgid ""
 "The major use for gold is to build your army by recruiting new units or "
 "recalling units from previous scenarios in a campaign. Units may be "
@@ -1533,7 +1546,7 @@ msgstr ""
 "üks vaba väli."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:1023
+#: ../../doc/manual/manual.en.xml:1029
 msgid ""
 "Right-click in an empty castle hex and select Recruit to recruit new units "
 "from the list that is presented. The cost to Recruit depends on the unit, "
@@ -1544,7 +1557,7 @@ msgstr ""
 "kuldraha vahel."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:1030
+#: ../../doc/manual/manual.en.xml:1036
 msgid ""
 "Right-click in an empty castle hex and select Recall to recall units from "
 "previous scenarios. Recalling costs 20 pieces of gold per unit. See <link "
@@ -1554,12 +1567,12 @@ msgstr ""
 "menüüst Kutsu  tagasi. Tagasikutsumine maksab 20 kuldraha üksuse kohta. "
 "Vaata lisaks: <link linkend=\"unit_recall\">üksuste värbamine</link>"
 
-#: ../../doc/manual/manual.en.xml:1038
+#: ../../doc/manual/manual.en.xml:1044
 msgid "Upkeep"
 msgstr "Elatis"
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:1039
+#: ../../doc/manual/manual.en.xml:1045
 msgid ""
 "Each unit also has an upkeep cost. The upkeep cost is generally equal to the "
 "level of the unit, unless the unit has the \"Loyal\" trait (<link linkend="
@@ -1576,23 +1589,23 @@ msgstr ""
 "osapoole üksuste elatisraha on suurem kui talle kuuluvate külade arv - "
 "makstav summa on nende kahe väärtuse vahe."
 
-#: ../../doc/manual/manual.en.xml:1048
+#: ../../doc/manual/manual.en.xml:1054
 msgid "Income"
 msgstr "Sissetulek"
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:1049
+#: ../../doc/manual/manual.en.xml:1055
 msgid "So, the formula for determining the income per turn is"
 msgstr "Seega igal käigul saadav sissetulek arvutatakse valemiga "
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:1052
+#: ../../doc/manual/manual.en.xml:1058
 msgid ""
 "where upkeep is equal to the sum of the levels of all your non-loyal units."
 msgstr "kus elatis võrdub kõigi sinu mitteustavate üksuste tasemete summaga."
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:1055
+#: ../../doc/manual/manual.en.xml:1061
 msgid ""
 "If the upkeep cost is greater than the number of villages+2 then the side "
 "starts losing gold, if it is equal, no income is gained or lost."
@@ -1600,12 +1613,12 @@ msgstr ""
 "Kui elatis on suurem kui külade arv + 2, hakkab mängija raha kaotama. Kui "
 "need on võrdsed, siis kullakogus ei muutu."
 
-#: ../../doc/manual/manual.en.xml:1061
+#: ../../doc/manual/manual.en.xml:1067
 msgid "Units"
 msgstr "Üksused"
 
 # type: Content of: <book><chapter><section><simpara>
-#: ../../doc/manual/manual.en.xml:1062
+#: ../../doc/manual/manual.en.xml:1068
 msgid ""
 "Battle for Wesnoth has hundreds of unit types which are characterized by a "
 "rich set of statistics. In addition, individual units can have specific "
@@ -1620,7 +1633,7 @@ msgstr ""
 "kordumatuid üksusi, et muuta mängija valikud veelgi mitmekesisemaks."
 
 # type: Content of: <book><chapter><section><simpara>
-#: ../../doc/manual/manual.en.xml:1068
+#: ../../doc/manual/manual.en.xml:1074
 msgid ""
 "The basic statistics for a unit include its hit points (HP), the number of "
 "movement points it has, and the weapons it can use and the damage they do. "
@@ -1632,12 +1645,12 @@ msgstr ""
 "erivõimed, mida kirjeldatakse lähemalt allpool."
 
 # type: Content of: <book><chapter><section><section><title>
-#: ../../doc/manual/manual.en.xml:1074
+#: ../../doc/manual/manual.en.xml:1080
 msgid "Alignment"
 msgstr "Hoiak"
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:1075
+#: ../../doc/manual/manual.en.xml:1081
 msgid ""
 "Every unit has an alignment: lawful, neutral, or chaotic. Alignment affects "
 "how units perform at different times of day. Neutral units are unaffected by "
@@ -1650,7 +1663,7 @@ msgstr ""
 "vastupidi."
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:1081
+#: ../../doc/manual/manual.en.xml:1087
 msgid ""
 "The two \"day\" and \"night\" phases are differentiated as Morning, "
 "Afternoon and First Watch, Second Watch, by the positions of the sun and "
@@ -1661,7 +1674,7 @@ msgstr ""
 "päevaaja näidik päikese ja kuu erinevate paiknemistena."
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:1085
+#: ../../doc/manual/manual.en.xml:1091
 msgid ""
 "The following table shows the effects of different times of the day on the "
 "damage dealt by lawful and chaotic units:"
@@ -1670,193 +1683,200 @@ msgstr ""
 "tehtava kahju suurusele:"
 
 # type: Content of: <book><chapter><section><section><table><title>
-#: ../../doc/manual/manual.en.xml:1092
+#: ../../doc/manual/manual.en.xml:1098
 msgid "Time of the day and damage"
 msgstr "Päevaaeg ja tehtav kahju"
 
-#: ../../doc/manual/manual.en.xml:1102
+#: ../../doc/manual/manual.en.xml:1108
 msgid "Turn"
 msgstr "Käik"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><thead><row><entry>
-#: ../../doc/manual/manual.en.xml:1105 ../../doc/manual/manual.en.xml:1966
+#: ../../doc/manual/manual.en.xml:1111 ../../doc/manual/manual.en.xml:1972
 msgid "Image"
 msgstr "Pilt"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><thead><row><entry>
-#: ../../doc/manual/manual.en.xml:1108
+#: ../../doc/manual/manual.en.xml:1114
 msgid "Day-phase"
 msgstr "Päevaaeg"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><thead><row><entry>
-#: ../../doc/manual/manual.en.xml:1111
+#: ../../doc/manual/manual.en.xml:1117
 msgid "Lawful"
 msgstr "Kuulekad"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><thead><row><entry>
-#: ../../doc/manual/manual.en.xml:1114
+#: ../../doc/manual/manual.en.xml:1120
 msgid "Chaotic"
 msgstr "Korratud"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:1121 ../../doc/manual/manual.en.xml:1823
-#: ../../doc/manual/manual.en.xml:1829
+#: ../../doc/manual/manual.en.xml:1127 ../../doc/manual/manual.en.xml:1829
+#: ../../doc/manual/manual.en.xml:1835
 msgid "1"
 msgstr "1"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject>
-#: ../../doc/manual/manual.en.xml:1124
+#: ../../doc/manual/manual.en.xml:1130
+#, fuzzy
 msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/schedule-dawn."
-"jpg\"/> </imageobject>"
+"png\"/> </imageobject>"
 msgstr ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/schedule-dawn."
 "jpg\"/> </imageobject>"
 
-#: ../../doc/manual/manual.en.xml:1132
+#: ../../doc/manual/manual.en.xml:1138
 msgid "Dawn"
 msgstr "Koit"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:1135 ../../doc/manual/manual.en.xml:1138
-#: ../../doc/manual/manual.en.xml:1201 ../../doc/manual/manual.en.xml:1204
+#: ../../doc/manual/manual.en.xml:1141 ../../doc/manual/manual.en.xml:1144
+#: ../../doc/manual/manual.en.xml:1207 ../../doc/manual/manual.en.xml:1210
 msgid "&#8212;"
 msgstr "&#8212;"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:1143 ../../doc/manual/manual.en.xml:1834
-#: ../../doc/manual/manual.en.xml:1840
+#: ../../doc/manual/manual.en.xml:1149 ../../doc/manual/manual.en.xml:1840
+#: ../../doc/manual/manual.en.xml:1846
 msgid "2"
 msgstr "2"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject>
-#: ../../doc/manual/manual.en.xml:1146
+#: ../../doc/manual/manual.en.xml:1152
+#, fuzzy
 msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/schedule-"
-"morning.jpg\"/> </imageobject>"
+"morning.png\"/> </imageobject>"
 msgstr ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/schedule-"
 "morning.jpg\"/> </imageobject>"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:1154
+#: ../../doc/manual/manual.en.xml:1160
 msgid "Day (morning)"
 msgstr "Päev (hommik)"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:1157 ../../doc/manual/manual.en.xml:1179
-#: ../../doc/manual/manual.en.xml:1226 ../../doc/manual/manual.en.xml:1248
-#: ../../doc/manual/manual.en.xml:1270
+#: ../../doc/manual/manual.en.xml:1163 ../../doc/manual/manual.en.xml:1185
+#: ../../doc/manual/manual.en.xml:1232 ../../doc/manual/manual.en.xml:1254
+#: ../../doc/manual/manual.en.xml:1276
 msgid "+25%"
 msgstr "+25%"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:1160 ../../doc/manual/manual.en.xml:1182
-#: ../../doc/manual/manual.en.xml:1223 ../../doc/manual/manual.en.xml:1245
-#: ../../doc/manual/manual.en.xml:1267
+#: ../../doc/manual/manual.en.xml:1166 ../../doc/manual/manual.en.xml:1188
+#: ../../doc/manual/manual.en.xml:1229 ../../doc/manual/manual.en.xml:1251
+#: ../../doc/manual/manual.en.xml:1273
 msgid "-25%"
 msgstr "-25%"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:1165 ../../doc/manual/manual.en.xml:1845
-#: ../../doc/manual/manual.en.xml:1851
+#: ../../doc/manual/manual.en.xml:1171 ../../doc/manual/manual.en.xml:1851
+#: ../../doc/manual/manual.en.xml:1857
 msgid "3"
 msgstr "3"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject>
-#: ../../doc/manual/manual.en.xml:1168
+#: ../../doc/manual/manual.en.xml:1174
+#, fuzzy
 msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/schedule-"
-"afternoon.jpg\"/> </imageobject>"
+"afternoon.png\"/> </imageobject>"
 msgstr ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/schedule-"
 "afternoon.jpg\"/> </imageobject>"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:1176
+#: ../../doc/manual/manual.en.xml:1182
 msgid "Day (afternoon)"
 msgstr "Päev (pärastlõuna)"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:1187 ../../doc/manual/manual.en.xml:1815
-#: ../../doc/manual/manual.en.xml:1856 ../../doc/manual/manual.en.xml:1862
+#: ../../doc/manual/manual.en.xml:1193 ../../doc/manual/manual.en.xml:1821
+#: ../../doc/manual/manual.en.xml:1862 ../../doc/manual/manual.en.xml:1868
 msgid "4"
 msgstr "4"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject>
-#: ../../doc/manual/manual.en.xml:1190
+#: ../../doc/manual/manual.en.xml:1196
+#, fuzzy
 msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/schedule-dusk."
-"jpg\"/> </imageobject>"
+"png\"/> </imageobject>"
 msgstr ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/schedule-dusk."
 "jpg\"/> </imageobject>"
 
-#: ../../doc/manual/manual.en.xml:1198
+#: ../../doc/manual/manual.en.xml:1204
 msgid "Dusk"
 msgstr "Hämarik"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:1209 ../../doc/manual/manual.en.xml:1867
-#: ../../doc/manual/manual.en.xml:1873
+#: ../../doc/manual/manual.en.xml:1215 ../../doc/manual/manual.en.xml:1873
+#: ../../doc/manual/manual.en.xml:1879
 msgid "5"
 msgstr "5"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject>
-#: ../../doc/manual/manual.en.xml:1212
+#: ../../doc/manual/manual.en.xml:1218
+#, fuzzy
 msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/schedule-"
-"firstwatch.jpg\"/> </imageobject>"
+"firstwatch.png\"/> </imageobject>"
 msgstr ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/schedule-"
 "firstwatch.jpg\"/> </imageobject>"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:1220
+#: ../../doc/manual/manual.en.xml:1226
 msgid "Night (first watch)"
 msgstr "Öö (1. öövahikord)"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:1231 ../../doc/manual/manual.en.xml:1878
-#: ../../doc/manual/manual.en.xml:1884
+#: ../../doc/manual/manual.en.xml:1237 ../../doc/manual/manual.en.xml:1884
+#: ../../doc/manual/manual.en.xml:1890
 msgid "6"
 msgstr "6"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject>
-#: ../../doc/manual/manual.en.xml:1234
+#: ../../doc/manual/manual.en.xml:1240
+#, fuzzy
 msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/schedule-"
-"secondwatch.jpg\"/> </imageobject>"
+"secondwatch.png\"/> </imageobject>"
 msgstr ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/schedule-"
 "secondwatch.jpg\"/> </imageobject>"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:1242
+#: ../../doc/manual/manual.en.xml:1248
 msgid "Night (second watch)"
 msgstr "Öö (2. öövahikord)"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:1253
+#: ../../doc/manual/manual.en.xml:1259
 msgid "Special"
 msgstr "Erimärkus"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject>
-#: ../../doc/manual/manual.en.xml:1256
+#: ../../doc/manual/manual.en.xml:1262
+#, fuzzy
 msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/schedule-"
-"underground.jpg\"/> </imageobject>"
+"underground.png\"/> </imageobject>"
 msgstr ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/schedule-"
 "underground.jpg\"/> </imageobject>"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:1264
+#: ../../doc/manual/manual.en.xml:1270
 msgid "Underground"
 msgstr "Maa-alune"
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:1276
+#: ../../doc/manual/manual.en.xml:1282
 msgid ""
 "Keep in mind that some scenarios take place underground, where it is "
 "perpetually night!"
@@ -1864,7 +1884,7 @@ msgstr ""
 "Pea meeles, et osa stsenaariume toimuvad maa all, kus valitseb alati öö!"
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:1279
+#: ../../doc/manual/manual.en.xml:1285
 msgid ""
 "For example: consider a fight between a Lawful and a Chaotic unit when both "
 "have a base damage of 12. At dawn and dusk, both will do 12 points of damage "
@@ -1881,19 +1901,19 @@ msgstr ""
 "korratu 15 punkti kahju."
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:1286
+#: ../../doc/manual/manual.en.xml:1292
 msgid ""
 "If an equivalent Neutral unit were fighting, it would always do 12 points of "
 "damage regardless of the hour."
 msgstr ""
 "Samaväärne ükskõikne üksus aga teeb alati ajast sõltumata 12 punkti kahju."
 
-#: ../../doc/manual/manual.en.xml:1291
+#: ../../doc/manual/manual.en.xml:1297
 msgid "Traits"
 msgstr "Eripärad"
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:1292
+#: ../../doc/manual/manual.en.xml:1298
 msgid ""
 "Units have traits which reflect aspects of their character. Traits are "
 "assigned randomly to units when they are created. Most units receive two "
@@ -1903,16 +1923,16 @@ msgstr ""
 "värbamise hetkel juhuslikult ning enamikul üksustest on kaks eripära."
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:1296
+#: ../../doc/manual/manual.en.xml:1302
 msgid "The possible traits for most units are as follows:"
 msgstr "Enamiku üksuste eripärad on järgmised:"
 
-#: ../../doc/manual/manual.en.xml:1301
+#: ../../doc/manual/manual.en.xml:1307
 msgid "Intelligent"
 msgstr "intelligentne"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:1305
+#: ../../doc/manual/manual.en.xml:1311
 msgid ""
 "Intelligent units require 20% less experience than usual to advance (Trolls "
 "do not get this trait).  Intelligent units are very useful at the beginning "
@@ -1930,12 +1950,12 @@ msgstr ""
 "taseme</emphasis> üksusi, võiksid kutsuda tagasi kasulikumate eripäradega "
 "üksused."
 
-#: ../../doc/manual/manual.en.xml:1317
+#: ../../doc/manual/manual.en.xml:1323
 msgid "Quick"
 msgstr "Kiire"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:1321
+#: ../../doc/manual/manual.en.xml:1327
 msgid ""
 "Quick units have 1 extra movement point, but 5% less HP than usual.  Quick "
 "is the most noticeable trait, particularly in slower moving units such as "
@@ -1952,12 +1972,12 @@ msgstr ""
 "Samas on nad teistest veidi nõrgemad ega sobi seetõttu hästi tähtsate "
 "positsioonide kaitseks."
 
-#: ../../doc/manual/manual.en.xml:1333
+#: ../../doc/manual/manual.en.xml:1339
 msgid "Resilient"
 msgstr "Vastupidav"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:1337
+#: ../../doc/manual/manual.en.xml:1343
 msgid ""
 "Resilient units have 4 HP plus 1 HP per level more than usual.  Resilient "
 "units can be useful at all stages of a campaign, and this is a useful trait "
@@ -1972,12 +1992,12 @@ msgstr ""
 "kaitsevõime ja/või kõrged vastupanuvõimed mingile rünnakule. Need üksused on "
 "eriti sobivad tähtsate positsioonide kaitsmiseks vaenlase eest."
 
-#: ../../doc/manual/manual.en.xml:1348
+#: ../../doc/manual/manual.en.xml:1354
 msgid "Strong"
 msgstr "Tugev"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:1352
+#: ../../doc/manual/manual.en.xml:1358
 msgid ""
 "Strong units do 1 more damage for every successful strike in melee combat, "
 "and have 1 more HP.  While useful for any close-combat unit, Strong is most "
@@ -1992,7 +2012,7 @@ msgstr ""
 "või sureb."
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:1362
+#: ../../doc/manual/manual.en.xml:1368
 msgid ""
 "There are also some traits that are assigned only for certain units or only "
 "for units of a certain race. These are:"
@@ -2001,12 +2021,12 @@ msgstr ""
 "Need on:"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
-#: ../../doc/manual/manual.en.xml:1368
+#: ../../doc/manual/manual.en.xml:1374
 msgid "Dextrous"
 msgstr "Osav"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:1372
+#: ../../doc/manual/manual.en.xml:1378
 msgid ""
 "Dextrous units do 1 more damage for every successful strike in ranged "
 "combat.  Dextrous is a trait possessed only by Elves. The Elven people are "
@@ -2019,12 +2039,12 @@ msgstr ""
 "vibukunsti poolest. Mõned neist on aga loomuliku andega ning ületavad isegi "
 "oma kaaslasi. Need haldjad teevad iga noolega 1 punkti võrra enam kahju."
 
-#: ../../doc/manual/manual.en.xml:1382
+#: ../../doc/manual/manual.en.xml:1388
 msgid "Healthy"
 msgstr "Tervisklik"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:1386
+#: ../../doc/manual/manual.en.xml:1392
 #, fuzzy
 msgid ""
 "Renowned for their vitality, some dwarves are sturdier than others and can "
@@ -2037,12 +2057,12 @@ msgstr ""
 "suudavad taastuda 2 punkti võrra teistest enam, kui nad ei võitle."
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
-#: ../../doc/manual/manual.en.xml:1396
+#: ../../doc/manual/manual.en.xml:1402
 msgid "Fearless"
 msgstr "Kartmatu"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:1400
+#: ../../doc/manual/manual.en.xml:1406
 msgid ""
 "Does not suffer from a negative attack bonus during its unfavorable time of "
 "day (Trolls, Walking Corpses)."
@@ -2051,7 +2071,7 @@ msgstr ""
 "vähenemine (näiteks trollid päeval)."
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:1406
+#: ../../doc/manual/manual.en.xml:1412
 msgid ""
 "There are also some traits that are not assigned randomly.  These traits can "
 "either be assigned by the scenario designer or are always assigned based on "
@@ -2060,12 +2080,12 @@ msgstr ""
 "On ka mõned eripärad, mis pole juhuslikud. Need on määratud kas stsenaariumi "
 "autori poolt või on alati selle üksusega kaasnevad:"
 
-#: ../../doc/manual/manual.en.xml:1413
+#: ../../doc/manual/manual.en.xml:1419
 msgid "Loyal"
 msgstr "Lojaalne"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:1417
+#: ../../doc/manual/manual.en.xml:1423
 msgid ""
 "Loyal units don't incur upkeep. Most units incur an upkeep cost at the end "
 "of every turn, which is equal to their level. Loyal units do not incur this "
@@ -2085,12 +2105,12 @@ msgstr ""
 "üksusi erru või rumalasse surma saata."
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
-#: ../../doc/manual/manual.en.xml:1431
+#: ../../doc/manual/manual.en.xml:1437
 msgid "Undead"
 msgstr "Kooljas"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:1435
+#: ../../doc/manual/manual.en.xml:1441
 msgid ""
 "Undead units are immune to poison, also drain and plague doesn't work on "
 "them.  Undead units generally have <emphasis>Undead</emphasis> as their only "
@@ -2104,12 +2124,12 @@ msgstr ""
 "vastu, kes seda rünnakuks kasutab."
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
-#: ../../doc/manual/manual.en.xml:1445
+#: ../../doc/manual/manual.en.xml:1451
 msgid "Mechanical"
 msgstr "Masin"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:1449
+#: ../../doc/manual/manual.en.xml:1455
 msgid ""
 "Mechanical units aren't alive and thus are immune to poison, also drain and "
 "plague doesn't work on them.  Mechanical units generally have "
@@ -2119,22 +2139,22 @@ msgstr ""
 "Masinatel on <emphasis>masin</emphasis> enamasti ainsaks eripäraks."
 
 # type: Content of: <book><chapter><section><section><title>
-#: ../../doc/manual/manual.en.xml:1458
+#: ../../doc/manual/manual.en.xml:1464
 msgid "Unit Specialties"
 msgstr "Üksuse erivõimed"
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:1459
+#: ../../doc/manual/manual.en.xml:1465
 msgid "Certain units have special attacks. These are listed below:"
 msgstr "Mõnel üksusel on olemas erivõimed. Nendeks on:"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
-#: ../../doc/manual/manual.en.xml:1464
+#: ../../doc/manual/manual.en.xml:1470
 msgid "Backstab"
 msgstr "Pussitav"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:1468
+#: ../../doc/manual/manual.en.xml:1474
 msgid ""
 "When used offensively, this attack deals double damage if there is an enemy "
 "of the target on the opposite side of the target, and that unit is not "
@@ -2144,12 +2164,12 @@ msgstr ""
 "või liitlase üksus ja see pole halvatud (näiteks kiviks muudetud)."
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
-#: ../../doc/manual/manual.en.xml:1476
+#: ../../doc/manual/manual.en.xml:1482
 msgid "Berserk"
 msgstr "Sõjahullus"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:1480
+#: ../../doc/manual/manual.en.xml:1486
 msgid ""
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the combatants is slain, or 30 rounds of attacks have occurred."
@@ -2157,12 +2177,12 @@ msgstr ""
 "See üksus jätkab ründamist 30 rünnakuringi või kuni üks võitlejatest sureb."
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
-#: ../../doc/manual/manual.en.xml:1488
+#: ../../doc/manual/manual.en.xml:1494
 msgid "Charge"
 msgstr "Tormav"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:1492
+#: ../../doc/manual/manual.en.xml:1498
 msgid ""
 "When used offensively, this attack deals double damage to the target. It "
 "also causes this unit to take double damage from the target's counterattack."
@@ -2171,12 +2191,12 @@ msgstr ""
 "vasturünnakutest ka ise."
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
-#: ../../doc/manual/manual.en.xml:1499
+#: ../../doc/manual/manual.en.xml:1505
 msgid "Drain"
 msgstr "Kurnav"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:1503
+#: ../../doc/manual/manual.en.xml:1509
 msgid ""
 "This unit drains health from living units, healing itself for half the "
 "amount of damage it deals (rounded down)."
@@ -2185,23 +2205,23 @@ msgstr ""
 "sellest (allapoole ümardatuna) enda ravimiseks."
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
-#: ../../doc/manual/manual.en.xml:1510
+#: ../../doc/manual/manual.en.xml:1516
 msgid "Firststrike"
 msgstr "Alustav"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:1514
+#: ../../doc/manual/manual.en.xml:1520
 msgid ""
 "This unit always strikes first with this attack, even if they are defending."
 msgstr "See üksus lööb alati esimesena, seda ka kaitses olles."
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
-#: ../../doc/manual/manual.en.xml:1520
+#: ../../doc/manual/manual.en.xml:1526
 msgid "Magical"
 msgstr "Võluväeline"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:1524
+#: ../../doc/manual/manual.en.xml:1530
 msgid ""
 "This attack always has a 70% chance to hit regardless of the defensive "
 "ability of the unit being attacked."
@@ -2209,23 +2229,23 @@ msgstr ""
 "See rünnak tabab alati 70% tõenäosusega, hoolimata sihtmärgi kaitsevõimest."
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
-#: ../../doc/manual/manual.en.xml:1531
+#: ../../doc/manual/manual.en.xml:1537
 msgid "Marksman"
 msgstr "Täpsuskütt"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:1535
+#: ../../doc/manual/manual.en.xml:1541
 msgid ""
 "When used offensively, this attack always has at least a 60% chance to hit."
 msgstr "Rünnakul olles on sel üksusel alati vähemalt 70%  tabamistõenäosus."
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
-#: ../../doc/manual/manual.en.xml:1541
+#: ../../doc/manual/manual.en.xml:1547
 msgid "Plague"
 msgstr "Nakatav"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:1545
+#: ../../doc/manual/manual.en.xml:1551
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a "
 "Walking Corpse on the same side as the unit with the Plague attack. This "
@@ -2234,12 +2254,12 @@ msgstr ""
 "Kui nakatav üksus tapab vastase, asendatakse see kõndiva laibaga, kes kuulub "
 "samale osapoolele kui nakataja. See ei toimi külades või kooljate vastu."
 
-#: ../../doc/manual/manual.en.xml:1553 ../../doc/manual/manual.en.xml:2210
+#: ../../doc/manual/manual.en.xml:1559 ../../doc/manual/manual.en.xml:2216
 msgid "Poison"
 msgstr "Mürk"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:1557
+#: ../../doc/manual/manual.en.xml:1563
 msgid ""
 "This attack poisons the target. Poisoned units loose 8 HP every turn until "
 "they are cured or are reduced to 1 HP. Poison can not, of itself, kill a "
@@ -2250,12 +2270,12 @@ msgstr ""
 "iseenesest üksust ei tapa."
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
-#: ../../doc/manual/manual.en.xml:1565
+#: ../../doc/manual/manual.en.xml:1571
 msgid "Slow"
 msgstr "Aeglustav"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:1569
+#: ../../doc/manual/manual.en.xml:1575
 msgid ""
 "This attack slows the target until it ends a turn. Slow halves the damage "
 "caused by attacks and the movement cost for a slowed unit is doubled. A unit "
@@ -2267,12 +2287,12 @@ msgstr ""
 "üksuse kirjelduse juures külgpaanil."
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
-#: ../../doc/manual/manual.en.xml:1578
+#: ../../doc/manual/manual.en.xml:1584
 msgid "Stone"
 msgstr "Kivistav"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:1582
+#: ../../doc/manual/manual.en.xml:1588
 msgid ""
 "This attack turns the target to stone. Units that have been turned to stone "
 "may not move or attack."
@@ -2281,12 +2301,12 @@ msgstr ""
 "rünnata."
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
-#: ../../doc/manual/manual.en.xml:1589
+#: ../../doc/manual/manual.en.xml:1595
 msgid "Swarm"
 msgstr "Rabav"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:1593
+#: ../../doc/manual/manual.en.xml:1599
 msgid ""
 "The number of strikes of this attack decreases when the unit is wounded. The "
 "number of strikes is proportional to the % of HP/maximum HP the unit has. "
@@ -2298,12 +2318,12 @@ msgstr ""
 "näiteks üksus, kel on alles 3/4 elupunktidest, suudab sooritada 3/4 "
 "rünnakutest võrreldes terve üksuse omaga."
 
-#: ../../doc/manual/manual.en.xml:1603
+#: ../../doc/manual/manual.en.xml:1609
 msgid "Abilities"
 msgstr "Võimed"
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:1604
+#: ../../doc/manual/manual.en.xml:1610
 msgid ""
 "Some units have abilities that either directly affect other units, or have "
 "an effect on how the unit interacts with other units. These abilities are "
@@ -2313,12 +2333,12 @@ msgstr ""
 "järgnevad:"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
-#: ../../doc/manual/manual.en.xml:1611
+#: ../../doc/manual/manual.en.xml:1617
 msgid "Ambush"
 msgstr "Varitsev"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:1615
+#: ../../doc/manual/manual.en.xml:1621
 msgid ""
 "This unit can hide in forest, and remain undetected by its enemies.  Enemy "
 "units cannot see this unit while it is in forest, except if they have units "
@@ -2330,12 +2350,12 @@ msgstr ""
 "avastanud üksus ei saa selle käigu jooksul enam liikuda."
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
-#: ../../doc/manual/manual.en.xml:1624
+#: ../../doc/manual/manual.en.xml:1630
 msgid "Concealment"
 msgstr "Peituv"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:1628
+#: ../../doc/manual/manual.en.xml:1634
 msgid ""
 "This unit can hide in villages (with the exception of water villages), and "
 "remain undetected by its enemies, except by those standing next to it.  "
@@ -2349,12 +2369,12 @@ msgstr ""
 "enam liikuda."
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
-#: ../../doc/manual/manual.en.xml:1638
+#: ../../doc/manual/manual.en.xml:1644
 msgid "Cures"
 msgstr "Tervendav"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:1642
+#: ../../doc/manual/manual.en.xml:1648
 msgid ""
 "A unit which can cure an ally of poison, although the ally will receive no "
 "additional healing on the turn it is cured of the poison."
@@ -2363,12 +2383,12 @@ msgstr ""
 "elupunktide taastamist samal käigul ei toimu."
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
-#: ../../doc/manual/manual.en.xml:1649
+#: ../../doc/manual/manual.en.xml:1655
 msgid "Heals +4"
 msgstr "Ravitsev +4"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:1653
+#: ../../doc/manual/manual.en.xml:1659
 msgid ""
 "Allows the unit to heal adjacent friendly units at the beginning of each "
 "turn.  A unit cared for by this healer may heal up to 4 HP per turn, or stop "
@@ -2382,12 +2402,12 @@ msgstr ""
 "peab otsima abi kas külast või tervendusvõimega üksuselt."
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
-#: ../../doc/manual/manual.en.xml:1664
+#: ../../doc/manual/manual.en.xml:1670
 msgid "Heals +8"
 msgstr "Ravitsev +8"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:1668
+#: ../../doc/manual/manual.en.xml:1674
 msgid ""
 "This unit combines herbal remedies with magic to heal units more quickly "
 "than is normally possible on the battlefield.  A unit cared for by this "
@@ -2402,12 +2422,12 @@ msgstr ""
 "üksuselt."
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
-#: ../../doc/manual/manual.en.xml:1679
+#: ../../doc/manual/manual.en.xml:1685
 msgid "Illuminates"
 msgstr "Valgustav"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:1683
+#: ../../doc/manual/manual.en.xml:1689
 msgid ""
 "This unit illuminates the surrounding area, making lawful units fight "
 "better, and chaotic units fight worse.  Any units adjacent to this unit will "
@@ -2418,12 +2438,12 @@ msgstr ""
 "korratud halvemini. Kõik selle kõrval asuvad üksused võitlevad öösel, nagu "
 "oleks hämarik, ning hämarikus, nagu oleks päev."
 
-#: ../../doc/manual/manual.en.xml:1692
+#: ../../doc/manual/manual.en.xml:1698
 msgid "Leadership"
 msgstr "Juhtimisvõime"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:1696
+#: ../../doc/manual/manual.en.xml:1702
 msgid ""
 "This unit can lead friendly units that are next to it, making them fight "
 "better.  Adjacent friendly units of lower level will do more damage in "
@@ -2437,12 +2457,12 @@ msgstr ""
 "kahju suureneb üksuse ja juhi tasemete vahe korda 25% võrra."
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
-#: ../../doc/manual/manual.en.xml:1707
+#: ../../doc/manual/manual.en.xml:1713
 msgid "Nightstalk"
 msgstr "Kummitav"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:1711
+#: ../../doc/manual/manual.en.xml:1717
 msgid ""
 "The unit becomes invisible during night.  Enemy units cannot see this unit "
 "at night, except if they have units next to it. Any enemy unit that first "
@@ -2453,12 +2473,12 @@ msgstr ""
 "liikumisvõime."
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
-#: ../../doc/manual/manual.en.xml:1720
+#: ../../doc/manual/manual.en.xml:1726
 msgid "Regenerates"
 msgstr "Taastuv"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:1724
+#: ../../doc/manual/manual.en.xml:1730
 msgid ""
 "This unit will heal itself 8HP per turn. If it is poisoned, it will remove "
 "the poison instead of healing."
@@ -2467,12 +2487,12 @@ msgstr ""
 "taastumise asemel mürgi."
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
-#: ../../doc/manual/manual.en.xml:1731
+#: ../../doc/manual/manual.en.xml:1737
 msgid "Skirmisher"
 msgstr "Tabamatu"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:1735
+#: ../../doc/manual/manual.en.xml:1741
 msgid ""
 "This unit is skilled in moving past enemies quickly, and ignores all enemy "
 "Zones of Control."
@@ -2481,12 +2501,12 @@ msgstr ""
 "mõjuvälju."
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
-#: ../../doc/manual/manual.en.xml:1742
+#: ../../doc/manual/manual.en.xml:1748
 msgid "Steadfast"
 msgstr "Vankumatu"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:1746
+#: ../../doc/manual/manual.en.xml:1752
 msgid ""
 "This unit's resistances are doubled, up to a maximum of 50%, when defending. "
 "Vulnerabilities are not affected."
@@ -2495,12 +2515,12 @@ msgstr ""
 "Haavatavusi see ei mõjuta."
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
-#: ../../doc/manual/manual.en.xml:1753
+#: ../../doc/manual/manual.en.xml:1759
 msgid "Submerge"
 msgstr "Sukelduv"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:1757
+#: ../../doc/manual/manual.en.xml:1763
 msgid ""
 "This unit can hide in deep water, and remain undetected by its enemies.  "
 "Enemy units cannot see this unit while it is in deep water, except if they "
@@ -2512,12 +2532,12 @@ msgstr ""
 "Sukelduja avastanud üksus kaotab käigu lõpuni edasise liikumisvõime."
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
-#: ../../doc/manual/manual.en.xml:1766
+#: ../../doc/manual/manual.en.xml:1772
 msgid "Teleport"
 msgstr "Ruumirändur"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:1770
+#: ../../doc/manual/manual.en.xml:1776
 msgid ""
 "This unit may teleport between any two friendly villages using one of its "
 "moves."
@@ -2526,12 +2546,12 @@ msgstr ""
 "selleks vaid ühe liikumispunkti."
 
 # type: Content of: <book><chapter><section><section><title>
-#: ../../doc/manual/manual.en.xml:1778 ../../doc/manual/manual.en.xml:2431
+#: ../../doc/manual/manual.en.xml:1784 ../../doc/manual/manual.en.xml:2437
 msgid "Experience"
 msgstr "Kogemus"
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:1779
+#: ../../doc/manual/manual.en.xml:1785
 msgid ""
 "Units are awarded experience for fighting. After obtaining enough "
 "experience, they will advance a level and become more powerful. The amount "
@@ -2549,64 +2569,64 @@ msgstr ""
 "vastase iga taseme kohta. Teiste sõnadega: "
 
 # type: Content of: <book><chapter><section><section><table><title>
-#: ../../doc/manual/manual.en.xml:1791
+#: ../../doc/manual/manual.en.xml:1797
 msgid "Experience bonuses for killing or fighting enemies of different levels"
 msgstr ""
 "Kogemuspreemiad erinevate tasemetega vastastega võitlemise ja nende "
 "alistamise eest"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><thead><row><entry>
-#: ../../doc/manual/manual.en.xml:1799
+#: ../../doc/manual/manual.en.xml:1805
 msgid "enemy level"
 msgstr "vastase tase"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><thead><row><entry>
-#: ../../doc/manual/manual.en.xml:1802
+#: ../../doc/manual/manual.en.xml:1808
 msgid "kill bonus"
 msgstr "võidupreemia"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><thead><row><entry>
-#: ../../doc/manual/manual.en.xml:1805
+#: ../../doc/manual/manual.en.xml:1811
 msgid "fighting bonus"
 msgstr "võitluspreemia"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:1826
+#: ../../doc/manual/manual.en.xml:1832
 msgid "8"
 msgstr "8"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:1837
+#: ../../doc/manual/manual.en.xml:1843
 msgid "16"
 msgstr "16"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:1848
+#: ../../doc/manual/manual.en.xml:1854
 msgid "24"
 msgstr "24"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:1859
+#: ../../doc/manual/manual.en.xml:1865
 msgid "32"
 msgstr "32"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:1870
+#: ../../doc/manual/manual.en.xml:1876
 msgid "40"
 msgstr "40"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:1881
+#: ../../doc/manual/manual.en.xml:1887
 msgid "48"
 msgstr "48"
 
 # type: Content of: <book><chapter><section><section><title>
-#: ../../doc/manual/manual.en.xml:1892
+#: ../../doc/manual/manual.en.xml:1898
 msgid "Recalling units"
 msgstr "Üksuste tagasikutsumine"
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:1893
+#: ../../doc/manual/manual.en.xml:1899
 msgid ""
 "After you complete a scenario, all surviving units will be available to "
 "recall in the next scenario. You are not able to move or attack with a unit "
@@ -2621,12 +2641,12 @@ msgstr ""
 "juures."
 
 # type: Content of: <book><chapter><section><title>
-#: ../../doc/manual/manual.en.xml:1902
+#: ../../doc/manual/manual.en.xml:1908
 msgid "Moving"
 msgstr "Liikumine"
 
 # type: Content of: <book><chapter><section><simpara>
-#: ../../doc/manual/manual.en.xml:1903
+#: ../../doc/manual/manual.en.xml:1909
 msgid ""
 "Clicking on a unit identifies all the places it can move on its current turn "
 "by dimming unreachable hexes (pressing the number keys 2-7 will identify the "
@@ -2655,7 +2675,7 @@ msgstr ""
 "on juba käinud ja millised saavad selles käigus veel liikuda."
 
 # type: Content of: <book><chapter><section><simpara>
-#: ../../doc/manual/manual.en.xml:1917
+#: ../../doc/manual/manual.en.xml:1923
 msgid ""
 "If you decide to move the selected unit, click on the hex you want to move "
 "to and your unit will move towards that space. If you select a destination "
@@ -2677,7 +2697,7 @@ msgstr ""
 "käigurežiimi."
 
 # type: Content of: <book><chapter><section><simpara>
-#: ../../doc/manual/manual.en.xml:1927
+#: ../../doc/manual/manual.en.xml:1933
 msgid ""
 "Moving onto a village that is neutral or owned by an enemy will take "
 "ownership of it and end your move for that unit."
@@ -2686,7 +2706,7 @@ msgstr ""
 "sisenenud üksuse käigu."
 
 # type: Content of: <book><chapter><section><simpara>
-#: ../../doc/manual/manual.en.xml:1930
+#: ../../doc/manual/manual.en.xml:1936
 msgid ""
 "Most units exert a Zone of Control which affects the hexes your unit can "
 "reach and the path your unit takes. These restrictions are automatically "
@@ -2698,12 +2718,12 @@ msgstr ""
 "ning sinna liikumise teedes."
 
 # type: Content of: <book><chapter><section><section><title>
-#: ../../doc/manual/manual.en.xml:1936
+#: ../../doc/manual/manual.en.xml:1942
 msgid "Zone of Control"
 msgstr "Mõjuväli"
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:1937
+#: ../../doc/manual/manual.en.xml:1943
 msgid ""
 "A unit's Zone of Control extends to the six hexes immediately adjacent to "
 "the unit, and units that move into an enemy zone of control are forced to "
@@ -2718,34 +2738,34 @@ msgstr ""
 "mõjuvälja tekitamiseks liiga nõrgaks ning selle ümber saavad teised "
 "takistamatult liikuda."
 
-#: ../../doc/manual/manual.en.xml:1947 ../../doc/manual/manual.en.xml:1955
+#: ../../doc/manual/manual.en.xml:1953 ../../doc/manual/manual.en.xml:1961
 msgid "Orbs"
 msgstr "Infokerad"
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:1948
+#: ../../doc/manual/manual.en.xml:1954
 msgid ""
 "On the top of the energy bar shown next to each unit of yours is an orb. "
 "This orb is:"
 msgstr "Iga üksuse terviseriba kohal asub märgukuul. See on:"
 
-#: ../../doc/manual/manual.en.xml:1963
+#: ../../doc/manual/manual.en.xml:1969
 #, fuzzy
 msgid "Orb"
 msgstr "Infokerad"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><thead><row><entry>
-#: ../../doc/manual/manual.en.xml:1969
+#: ../../doc/manual/manual.en.xml:1975
 msgid "Description"
 msgstr ""
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:1976
+#: ../../doc/manual/manual.en.xml:1982
 msgid "Green"
 msgstr ""
 
 # type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
-#: ../../doc/manual/manual.en.xml:1979
+#: ../../doc/manual/manual.en.xml:1985
 msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/orb-green.jpg"
 "\"/> </imageobject>"
@@ -2754,7 +2774,7 @@ msgstr ""
 "\"/> </imageobject>"
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:1987
+#: ../../doc/manual/manual.en.xml:1993
 #, fuzzy
 msgid "If you control the unit and it hasn't moved this turn"
 msgstr ""
@@ -2762,13 +2782,13 @@ msgstr ""
 "käigu jooksul veel liikunud,"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
-#: ../../doc/manual/manual.en.xml:1992
+#: ../../doc/manual/manual.en.xml:1998
 #, fuzzy
 msgid "Yellow"
 msgstr "Aeglustav"
 
 # type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
-#: ../../doc/manual/manual.en.xml:1995
+#: ../../doc/manual/manual.en.xml:2001
 msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/orb-yellow.jpg"
 "\"/> </imageobject>"
@@ -2777,7 +2797,7 @@ msgstr ""
 "\"/> </imageobject>"
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:2003
+#: ../../doc/manual/manual.en.xml:2009
 #, fuzzy
 msgid ""
 "If you control the unit and it has moved this turn, but could still move "
@@ -2787,12 +2807,12 @@ msgstr ""
 "käigul liikunud, kuid saab veel liikuda või rünnata,"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
-#: ../../doc/manual/manual.en.xml:2008
+#: ../../doc/manual/manual.en.xml:2014
 msgid "Red"
 msgstr ""
 
 # type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
-#: ../../doc/manual/manual.en.xml:2011
+#: ../../doc/manual/manual.en.xml:2017
 msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/orb-red.jpg\"/"
 "> </imageobject>"
@@ -2801,7 +2821,7 @@ msgstr ""
 "> </imageobject>"
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:2019
+#: ../../doc/manual/manual.en.xml:2025
 #, fuzzy
 msgid "If you control the unit, but it has used all its movement this turn"
 msgstr ""
@@ -2809,13 +2829,13 @@ msgstr ""
 "kulutanud kõik liikumispunktid, või"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
-#: ../../doc/manual/manual.en.xml:2024
+#: ../../doc/manual/manual.en.xml:2030
 #, fuzzy
 msgid "Blue"
 msgstr "Nakatav"
 
 # type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
-#: ../../doc/manual/manual.en.xml:2027
+#: ../../doc/manual/manual.en.xml:2033
 msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/orb-blue.jpg\"/"
 "> </imageobject>"
@@ -2824,13 +2844,13 @@ msgstr ""
 "> </imageobject>"
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:2035
+#: ../../doc/manual/manual.en.xml:2041
 #, fuzzy
 msgid "If the unit is an ally you do not control"
 msgstr "</inlinemediaobject> sinine, kui üksus kuulub liitlasele."
 
 # type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
-#: ../../doc/manual/manual.en.xml:2043
+#: ../../doc/manual/manual.en.xml:2049
 msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/orb-none.jpg\"/"
 "> </imageobject>"
@@ -2839,18 +2859,18 @@ msgstr ""
 "> </imageobject>"
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:2051
+#: ../../doc/manual/manual.en.xml:2057
 #, fuzzy
 msgid "Enemy units have no orb on the top of their energy bar"
 msgstr "</inlinemediaobject> Vaenlase üksustel märgukuuli ei ole."
 
 # type: Content of: <book><chapter><section><section><title>
-#: ../../doc/manual/manual.en.xml:2059
+#: ../../doc/manual/manual.en.xml:2065
 msgid "Ellipses, Team Colors, and Hero Icons"
 msgstr "Ellipsid, osapoolte värvid ja kangelaste ikoonid"
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:2060
+#: ../../doc/manual/manual.en.xml:2066
 msgid ""
 "Below each unit there will normally be a colored ellipses or base. The color "
 "identifies its team; in a campaign game, the human-player color is red. The "
@@ -2862,7 +2882,7 @@ msgstr ""
 "üksuse riietuses või näiteks kilbi vapikujunduses."
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:2065
+#: ../../doc/manual/manual.en.xml:2071
 msgid ""
 "Usually the ellipse will be a solid disk. On level 0 units, you will see an "
 "ellipse that has broken lines. This indicates that the unit has no Zone of "
@@ -2872,7 +2892,7 @@ msgstr ""
 "see tähistab asjaolu, et sel üksusel puudub mõjuväli."
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:2069
+#: ../../doc/manual/manual.en.xml:2075
 msgid ""
 "Some campaigns use a star-shaped base to indicate leaders and heroes (units "
 "which are somehow special and for example not allowed to die in the course "
@@ -2887,12 +2907,12 @@ msgstr ""
 "Seega on siin valik jäetud sõjakäikude autoritele."
 
 # type: Content of: <book><chapter><section><title>
-#: ../../doc/manual/manual.en.xml:2079
+#: ../../doc/manual/manual.en.xml:2085
 msgid "Fighting"
 msgstr "Võitlemine"
 
 # type: Content of: <book><chapter><section><simpara>
-#: ../../doc/manual/manual.en.xml:2080
+#: ../../doc/manual/manual.en.xml:2086
 msgid ""
 "If you move next to an enemy unit, you may attack it. Click on your unit "
 "that is next to an enemy unit, and click on the enemy you want to attack - "
@@ -2907,7 +2927,7 @@ msgstr ""
 "nagu vibu on kaugrelvad."
 
 # type: Content of: <book><chapter><section><simpara>
-#: ../../doc/manual/manual.en.xml:2087
+#: ../../doc/manual/manual.en.xml:2093
 msgid ""
 "If you attack with a melee weapon, the enemy you attack will be able to "
 "strike back at you with its melee weapon. If you attack with a ranged "
@@ -2920,7 +2940,7 @@ msgstr ""
 "rünnak, ei saa ta üldse vastu lüüa."
 
 # type: Content of: <book><chapter><section><simpara>
-#: ../../doc/manual/manual.en.xml:2094
+#: ../../doc/manual/manual.en.xml:2100
 msgid ""
 "Different types of attacks do different amounts of damage, and a certain "
 "number of strikes may be made with each weapon. For instance, an Elvish "
@@ -2934,7 +2954,7 @@ msgstr ""
 "kirjutatakse 5-4, ehk 5 punkti kahju löögi  kohta ja 4 lööki."
 
 # type: Content of: <book><chapter><section><simpara>
-#: ../../doc/manual/manual.en.xml:2100
+#: ../../doc/manual/manual.en.xml:2106
 msgid ""
 "Every unit has a chance of being hit based on the terrain it is in. For "
 "instance, units in castles and villages have a lower chance of being hit, "
@@ -2952,7 +2972,7 @@ msgstr ""
 "külgpaanil kui ka sama välja juures."
 
 # type: Content of: <book><chapter><section><simpara>
-#: ../../doc/manual/manual.en.xml:2108
+#: ../../doc/manual/manual.en.xml:2114
 msgid ""
 "You can obtain additional information, including the chance that the "
 "attacker and defender will be killed, by clicking on the \"Damage "
@@ -2962,12 +2982,12 @@ msgstr ""
 "saate nupuga \"Kahju arvutamine\" võitlust kajastavas aknas."
 
 # type: Content of: <book><chapter><section><section><title>
-#: ../../doc/manual/manual.en.xml:2113
+#: ../../doc/manual/manual.en.xml:2119
 msgid "Attack types"
 msgstr "Rünnakuliigid"
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:2117
+#: ../../doc/manual/manual.en.xml:2123
 msgid ""
 "<emphasis role=\"strong\">Blade</emphasis>: Weapons with a cutting edge, "
 "used to chop pieces of meat from a foe. Examples: dagger, scimitar, saber, "
@@ -2978,7 +2998,7 @@ msgstr ""
 "loheküüned."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:2123
+#: ../../doc/manual/manual.en.xml:2129
 msgid ""
 "<emphasis role=\"strong\">Piercing</emphasis>: Weapons with a sharp point "
 "and either a long handle or a missile, used to perforate foe's body and "
@@ -2989,7 +3009,7 @@ msgstr ""
 "tema siseelundeid. Näited: rüütli- või jalaväepiik, nooled."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:2130
+#: ../../doc/manual/manual.en.xml:2136
 msgid ""
 "<emphasis role=\"strong\">Impact</emphasis>: Weapons having neither a sharp "
 "point nor a cutting edge, but heavy enough to break an enemy's bones. "
@@ -3000,7 +3020,7 @@ msgstr ""
 "purustamiseks. Näited: oganui, sau, trolli rusikas."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:2137
+#: ../../doc/manual/manual.en.xml:2143
 #, fuzzy
 msgid ""
 "<emphasis role=\"strong\">Cold</emphasis>: Weapons based on cold or ice "
@@ -3010,7 +3030,7 @@ msgstr ""
 "rünnakud. Näide: võluri jäänool."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:2143
+#: ../../doc/manual/manual.en.xml:2149
 msgid ""
 "<emphasis role=\"strong\">Fire</emphasis>: Weapons using fire to roast the "
 "foe like a chicken. Example: A drake's fire breath."
@@ -3019,7 +3039,7 @@ msgstr ""
 "rünnakud. Näide: Lohe tulehingus."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:2149
+#: ../../doc/manual/manual.en.xml:2155
 #, fuzzy
 msgid ""
 "<emphasis role=\"strong\">Arcane</emphasis>: An attack that dispels the "
@@ -3030,12 +3050,12 @@ msgstr ""
 "viirastusi ja muid kooljaid liikumapaneva võluväe. Näide: valge maagi "
 "müstiline rünnak."
 
-#: ../../doc/manual/manual.en.xml:2157
+#: ../../doc/manual/manual.en.xml:2163
 msgid "Resistance"
 msgstr "Vastupanu"
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:2158
+#: ../../doc/manual/manual.en.xml:2164
 msgid ""
 "Each unit is more or less vulnerable to the different attack types. 6 "
 "figures in the unit description show strength and weakness of the unit "
@@ -3050,7 +3070,7 @@ msgstr ""
 "rünnakuliigi suhtes."
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:2165
+#: ../../doc/manual/manual.en.xml:2171
 msgid ""
 "Examples: Drake scales protect them from most of attack types except from "
 "piercing weapon and cold weapon. Human Cavalry units are generally well "
@@ -3064,7 +3084,7 @@ msgstr ""
 "torkerelvadele, kuid väga haavatavad löögiriistade ja müstiliste rünnakutega."
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:2171
+#: ../../doc/manual/manual.en.xml:2177
 msgid ""
 "Using the best attack type against enemy units will substantially increase "
 "your chances of killing them."
@@ -3072,12 +3092,12 @@ msgstr ""
 "Parima ründeviisi valik suurendab oluliselt võimalust vastane lõplikult "
 "alistada."
 
-#: ../../doc/manual/manual.en.xml:2177 ../../doc/manual/manual.en.xml:2609
+#: ../../doc/manual/manual.en.xml:2183 ../../doc/manual/manual.en.xml:2615
 msgid "Healing"
 msgstr "Ravimine"
 
 # type: Content of: <book><chapter><section><simpara>
-#: ../../doc/manual/manual.en.xml:2178
+#: ../../doc/manual/manual.en.xml:2184
 msgid ""
 "A unit may be healed a maximum of 8 hitpoints per turn. A unit that does not "
 "move or fight during a turn is <emphasis>resting</emphasis> and will recover "
@@ -3091,18 +3111,18 @@ msgstr ""
 "üksus saada käigu jooksul tagasi kuni 10 elupunkti."
 
 # type: Content of: <book><chapter><section><simpara>
-#: ../../doc/manual/manual.en.xml:2184
+#: ../../doc/manual/manual.en.xml:2190
 msgid "There are two basic ways for a unit to be healed:"
 msgstr "Üksuse ravimiseks on kaks peamist viisi:"
 
 # type: Content of: <book><chapter><section><itemizedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:2189
+#: ../../doc/manual/manual.en.xml:2195
 #, fuzzy
 msgid "Waiting in a village. The unit will heal 8 hitpoints every turn."
 msgstr "Külas puhkamine. Nii taastab üksus iga käiguga 8 elupunkti."
 
 # type: Content of: <book><chapter><section><itemizedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:2194
+#: ../../doc/manual/manual.en.xml:2200
 msgid ""
 "Being adjacent to units with the <emphasis>heals</emphasis> ability. The "
 "number of hitpoints healed is specified in the unit's ability description. "
@@ -3115,12 +3135,12 @@ msgstr ""
 "emphasis>."
 
 # type: Content of: <book><chapter><section><section><title>
-#: ../../doc/manual/manual.en.xml:2201
+#: ../../doc/manual/manual.en.xml:2207
 msgid "Regeneration"
 msgstr "Taastumine"
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:2202
+#: ../../doc/manual/manual.en.xml:2208
 msgid ""
 "Trolls and Woses have the ability to heal themselves naturally through "
 "regeneration. They will heal 8 points each turn if they are injured. Note "
@@ -3134,7 +3154,7 @@ msgstr ""
 "viibimisel neile mingit mõju."
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:2211
+#: ../../doc/manual/manual.en.xml:2217
 #, fuzzy
 msgid ""
 "Some attacks can inflict poison damage on your unit. When this happens the "
@@ -3156,17 +3176,17 @@ msgstr ""
 "kui mürk on eemaldatud."
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:2220
+#: ../../doc/manual/manual.en.xml:2226
 msgid "Some other hints about healing:"
 msgstr "Veel mõned nõuanded taastumise  kohta:"
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:2225
+#: ../../doc/manual/manual.en.xml:2231
 msgid "A unit may take several turns to be fully healed."
 msgstr "Täielik tervenemine võib võtta aega mitmeid käike."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:2230
+#: ../../doc/manual/manual.en.xml:2236
 msgid ""
 "Healers (Elvish Shaman, Elvish Druid, Elvish Shyde, White Mage, Mage of "
 "Light, Paladin) heal all wounded units around them, so you can keep units "
@@ -3177,24 +3197,24 @@ msgstr ""
 "üksustega ümbritseda."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:2237
+#: ../../doc/manual/manual.en.xml:2243
 msgid "Healers do not heal enemy units."
 msgstr "Ravitsejad ei ravi vaenlase üksusi."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:2242
+#: ../../doc/manual/manual.en.xml:2248
 msgid "Healers cannot heal themselves, but see next point."
 msgstr "Ravitsejad ei saa ravida iseennast, aga vaata järgmist punkti."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:2247
+#: ../../doc/manual/manual.en.xml:2253
 msgid "Use your healers in pairs, so they can heal each other if needed."
 msgstr ""
 "Kasuta ravitsejaid paarikaupa, et nad saaks vajaduse korral teineteist "
 "ravida."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:2252
+#: ../../doc/manual/manual.en.xml:2258
 #, fuzzy
 msgid ""
 "Multiple healers from different allied sides can heal the same unit and "
@@ -3204,27 +3224,27 @@ msgstr ""
 "tervenemist kiirendada."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:2258
+#: ../../doc/manual/manual.en.xml:2264
 msgid "Trolls and Woses cannot regenerate other units."
 msgstr "Trollid ja puuvaimud ei saa taastada teisi üksusi."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:2263
+#: ../../doc/manual/manual.en.xml:2269
 msgid "Trolls and Woses cure themselves from poison as a village does."
 msgstr "Trollid ja puuvaimud suudavad endalt ise mürgi eemaldada."
 
 # type: Content of: <book><chapter><title>
-#: ../../doc/manual/manual.en.xml:2271
+#: ../../doc/manual/manual.en.xml:2277
 msgid "Strategy and Tips"
 msgstr "Strateegia ja näpunäited"
 
 # type: Content of: <book><chapter><section><title>
-#: ../../doc/manual/manual.en.xml:2273
+#: ../../doc/manual/manual.en.xml:2279
 msgid "Basic Strategy"
 msgstr "Strateegia alused"
 
 # type: Content of: <book><chapter><section><simpara>
-#: ../../doc/manual/manual.en.xml:2274
+#: ../../doc/manual/manual.en.xml:2280
 msgid ""
 "The following basic combat principles and tips are intended to help starting "
 "off your career as a Wesnothian battle veteran. The minor concrete examples "
@@ -3235,12 +3255,12 @@ msgstr ""
 "määral seotud  \"Troonipärija\" sõjakäiguga."
 
 # type: Content of: <book><chapter><section><section><title>
-#: ../../doc/manual/manual.en.xml:2279
+#: ../../doc/manual/manual.en.xml:2285
 msgid "Don't waste units"
 msgstr "Ära raiska üksusi"
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:2280
+#: ../../doc/manual/manual.en.xml:2286
 msgid ""
 "Do not send wounded units to a sure death. Once a unit loses more than half "
 "of its hit points (HP), you should seriously consider retreating it to "
@@ -3254,7 +3274,7 @@ msgstr ""
 "valged võlurid) hoole alla. Ravitsejad on väga kasulikud!"
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:2286
+#: ../../doc/manual/manual.en.xml:2292
 msgid ""
 "This is for practical reasons: a heavily wounded unit cannot hold back or "
 "kill the enemy. During attack and counterattack, it most often will perish. "
@@ -3272,12 +3292,12 @@ msgstr ""
 "rindest kaugel. Nii et ära raiska oma üksusi."
 
 # type: Content of: <book><chapter><section><section><title>
-#: ../../doc/manual/manual.en.xml:2296
+#: ../../doc/manual/manual.en.xml:2302
 msgid "Out of the enemy's reach"
 msgstr "Vastase ulatusest välja"
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:2297
+#: ../../doc/manual/manual.en.xml:2303
 msgid ""
 "How do you guard wounded units? They are best guarded by being out of the "
 "adversary's reach. No enemy can attack them if enemies cannot even come near "
@@ -3289,7 +3309,7 @@ msgstr ""
 "lõik mõjuväljade kohta aga õpetab,  kuidas piirata vastase käike."
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:2302
+#: ../../doc/manual/manual.en.xml:2308
 msgid ""
 "In the Action menu, you can select \"Show Enemy Moves\" to highlight all "
 "possible hexes your adversary can actually move to. This takes your zone of "
@@ -3302,7 +3322,7 @@ msgstr ""
 "neile ligi."
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:2308
+#: ../../doc/manual/manual.en.xml:2314
 msgid ""
 "When your armies meet, you may want to try to be the first to attack. So try "
 "to end your move out of striking range of the enemy army. He cannot attack "
@@ -3313,12 +3333,12 @@ msgstr ""
 "tuleb tõenäoliselt ise löögiulatusse."
 
 # type: Content of: <book><chapter><section><section><title>
-#: ../../doc/manual/manual.en.xml:2314
+#: ../../doc/manual/manual.en.xml:2320
 msgid "Shield with your zone of control (ZOC)"
 msgstr "Kaitse üksusi enda mõjuväljaga"
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:2315
+#: ../../doc/manual/manual.en.xml:2321
 msgid ""
 "Every unit of level 1 or higher maintains a zone of control (ZOC) covering "
 "all 6 neighboring hexes. This means that once an enemy moves into one of the "
@@ -3331,7 +3351,7 @@ msgstr ""
 "eirata)."
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:2320
+#: ../../doc/manual/manual.en.xml:2326
 msgid ""
 "Because of ZOC, an enemy may not slip between two units which are aligned on "
 "a north-south or diagonal line and have exactly 1 or 2 hexes between them. "
@@ -3346,12 +3366,12 @@ msgstr ""
 "käiguulatuse piiril võib isegi üksainus üksus vaenlase kinni pidada."
 
 # type: Content of: <book><chapter><section><section><title>
-#: ../../doc/manual/manual.en.xml:2330
+#: ../../doc/manual/manual.en.xml:2336
 msgid "Maintain a defensive line"
 msgstr "Hoia kaitseliini"
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:2331
+#: ../../doc/manual/manual.en.xml:2337
 msgid ""
 "By lining up many units directly adjacent or with at most 1 hex space "
 "between them, you can build up a powerful defensive line. Note that, because "
@@ -3364,7 +3384,7 @@ msgstr ""
 "lõunasuunalised ja diagonaalread."
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:2337
+#: ../../doc/manual/manual.en.xml:2343
 msgid ""
 "Coming from one side, the enemy may attack any single of your units in the "
 "line with only 2 of his units at a time. As a rule of thumb, a healthy unit "
@@ -3376,7 +3396,7 @@ msgstr ""
 "üksus tõrjuda kahe võrdse või madalama tasemega üksuse rünnaku ja jääda ellu."
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:2342
+#: ../../doc/manual/manual.en.xml:2348
 msgid ""
 "Unfortunately, your line often has to bend to form a wedge or to fit the "
 "terrain. At these corner points, 3 enemy units may attack. This also happens "
@@ -3394,7 +3414,7 @@ msgstr ""
 "üksusi, kellel pole kuigi palju kogemuspunkte."
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:2349
+#: ../../doc/manual/manual.en.xml:2355
 msgid ""
 "Lining your troops up also prevents the enemy from surrounding any one of "
 "them. For ZOC reasons, a unit with one enemy behind it and one in front is "
@@ -3405,12 +3425,12 @@ msgstr ""
 "piiratud."
 
 # type: Content of: <book><chapter><section><section><title>
-#: ../../doc/manual/manual.en.xml:2355
+#: ../../doc/manual/manual.en.xml:2361
 msgid "Rotate your troops"
 msgstr "Vaheta üksusi"
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:2356
+#: ../../doc/manual/manual.en.xml:2362
 msgid ""
 "When a unit in the front line is heavily damaged you can move him safely "
 "behind your defensive line. To hold up the line, you will most likely have "
@@ -3424,17 +3444,17 @@ msgstr ""
 "taastuvad haavatud turvalises paigas üsna kiiresti. "
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:2362
+#: ../../doc/manual/manual.en.xml:2368
 msgid "Note that your units can pass through hexes containing your own troops."
 msgstr "NB! Sinu üksused saavad liikuda läbi väljade, kus asuvad oma üksused."
 
 # type: Content of: <book><chapter><section><section><title>
-#: ../../doc/manual/manual.en.xml:2366
+#: ../../doc/manual/manual.en.xml:2372
 msgid "Use the terrain"
 msgstr "Kasuta maastikku"
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:2367
+#: ../../doc/manual/manual.en.xml:2373
 msgid ""
 "Try to position your troops so that they are attacking from a hex with high "
 "defense against an enemy in a hex with low terrain. That way, the enemy's "
@@ -3445,7 +3465,7 @@ msgstr ""
 "vastasel raske edukalt vastu lüüa."
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:2371
+#: ../../doc/manual/manual.en.xml:2377
 msgid ""
 "For example, you might position your elves just inside of a forest edge so "
 "that attacking orcs must stand on grassland while your elves enjoy the high "
@@ -3455,12 +3475,12 @@ msgstr ""
 "peavad jääma rohumaale, haldjad aga saavad olla metsa varjus."
 
 # type: Content of: <book><chapter><section><section><title>
-#: ../../doc/manual/manual.en.xml:2377
+#: ../../doc/manual/manual.en.xml:2383
 msgid "Attacking and choosing your targets"
 msgstr "Sihtmärkide valimine ja ründamine"
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:2378
+#: ../../doc/manual/manual.en.xml:2384
 msgid ""
 "Advancing and attacking is of course the most interesting part of your way "
 "to victory. Kill or weaken enemies in your path and move your defensive line "
@@ -3471,7 +3491,7 @@ msgstr ""
 "Sellega võib aga tekkida ka probleeme, kuna vastane ei maga ja lööb vastu."
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:2383
+#: ../../doc/manual/manual.en.xml:2389
 msgid ""
 "Often, you will throw several units at a single enemy unit to finish him "
 "off, but these were forming your defensive line which is now partly broken. "
@@ -3487,7 +3507,7 @@ msgstr ""
 "virutada. Ehk ainult hobusemehed suudavad ühe käiguga vastasest jagu saada."
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:2390
+#: ../../doc/manual/manual.en.xml:2396
 msgid ""
 "Striking first is an advantage because it allows you the choice of which "
 "units will face off. Take advantage of enemy weakness: e.g. direct your "
@@ -3503,7 +3523,7 @@ msgstr ""
 "ning võib ka sinu haavatavusi ära kasutada."
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:2397
+#: ../../doc/manual/manual.en.xml:2403
 msgid ""
 "For example, Horsemen can hold up the line against Orcish Grunts and Troll "
 "Whelps very well because they have some resistances against blade and "
@@ -3516,7 +3536,7 @@ msgstr ""
 "mäekollide odameestele."
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:2402
+#: ../../doc/manual/manual.en.xml:2408
 msgid ""
 "It usually pays off if you can definitively kill (or almost kill) the faced "
 "unit. If you are unsure of finishing off the enemy in one turn, either "
@@ -3532,7 +3552,7 @@ msgstr ""
 "mitte aga oma üksuse kõige ohtlikumat rünnakut."
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:2410
+#: ../../doc/manual/manual.en.xml:2416
 msgid ""
 "In particular, use your ranged weapons if the enemy has no ranged attack. "
 "The computer's default choice only looks for the most damage you can deal, "
@@ -3543,12 +3563,12 @@ msgstr ""
 "valib vaikimisi enim kahjustava rünnaku, kuid nõnda võib sinu üksus saada "
 "rohkem kahju kui ise seda teeb."
 
-#: ../../doc/manual/manual.en.xml:2417
+#: ../../doc/manual/manual.en.xml:2423
 msgid "Time of Day"
 msgstr "Aeg"
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:2418
+#: ../../doc/manual/manual.en.xml:2424
 msgid ""
 "Remember that Lawful units like humans fight better at daytime and Chaotic "
 "units like orcs or undead fight better at night. Ideally you want to first "
@@ -3564,7 +3584,7 @@ msgstr ""
 "alustades rünnakut soodsa aja saabudes."
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:2425
+#: ../../doc/manual/manual.en.xml:2431
 msgid ""
 "For example, elves might hold out a forest during a nightly orcish onslaught "
 "and advance on sunrise. You may even note that the computer AI actively "
@@ -3575,7 +3595,7 @@ msgstr ""
 "taanduvad päeva ajal märgatavalt."
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:2432
+#: ../../doc/manual/manual.en.xml:2438
 msgid ""
 "Over the course of a campaign, it is critical that you build up a seasoned "
 "force. Later scenarios will assume you have level 2 and 3 units available "
@@ -3586,7 +3606,7 @@ msgstr ""
 "taseme üksusi."
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:2436
+#: ../../doc/manual/manual.en.xml:2442
 msgid ""
 "Your units gain most experience points (XP) from killing an enemy unit (8XP "
 "per level of the unit killed). As such, it often makes sense to have your "
@@ -3601,7 +3621,7 @@ msgstr ""
 "<emphasis>näppama</emphasis>, et kõrgemaid tasemeid saavutada."
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:2442
+#: ../../doc/manual/manual.en.xml:2448
 msgid ""
 "At the beginning (when you probably have no high level units), try to give "
 "most kills to a small handful of your units. This will fast-track them to "
@@ -3612,7 +3632,7 @@ msgstr ""
 "Pärast saad neid kasutada teiste järeleaitamiseks."
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:2446
+#: ../../doc/manual/manual.en.xml:2452
 msgid ""
 "Don't neglect to earn your leader experience. You need to keep him safe, but "
 "if you coddle him too much he will be too low level to survive future "
@@ -3623,12 +3643,12 @@ msgstr ""
 "stsenaariumites enam hakkama saada."
 
 # type: Content of: <book><chapter><section><title>
-#: ../../doc/manual/manual.en.xml:2453
+#: ../../doc/manual/manual.en.xml:2459
 msgid "Getting the Most Fun Out of the Game"
 msgstr "Tunne mängust rõõmu"
 
 # type: Content of: <book><chapter><section><simpara>
-#: ../../doc/manual/manual.en.xml:2454
+#: ../../doc/manual/manual.en.xml:2460
 msgid ""
 "Remember, the idea of a game is to have fun! Here are some recommendations "
 "from the development team on how to get the most fun out of the game:"
@@ -3637,7 +3657,7 @@ msgstr ""
 "selleks toodud mõned soovitused:"
 
 # type: Content of: <book><chapter><section><itemizedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:2460
+#: ../../doc/manual/manual.en.xml:2466
 msgid ""
 "Consider playing the campaign on \"Medium\" difficulty level, especially if "
 "you have prior experience with strategy games. We feel you'll find it much "
@@ -3647,7 +3667,7 @@ msgstr ""
 "strateegiamänge mänginud. Meie arvates on see kõige parem variant."
 
 # type: Content of: <book><chapter><section><itemizedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:2467
+#: ../../doc/manual/manual.en.xml:2473
 msgid ""
 "Don't sweat it too much when you lose some units. The campaign was designed "
 "to accommodate the player losing some units along the way."
@@ -3656,7 +3676,7 @@ msgstr ""
 "arvestatud."
 
 # type: Content of: <book><chapter><section><itemizedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:2473
+#: ../../doc/manual/manual.en.xml:2479
 msgid ""
 "Don't abuse saved games. Long ago, Wesnoth only allowed saving the game at "
 "the end of a scenario. Mid-scenario saving was added as a convenience to use "
@@ -3673,7 +3693,7 @@ msgstr ""
 "ja riske jaotama - see on tähtis osa strateegiast."
 
 # type: Content of: <book><chapter><section><itemizedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:2484
+#: ../../doc/manual/manual.en.xml:2490
 msgid ""
 "If you must load a saved game, we recommend going back to the start of the "
 "scenario, so that you choose a new strategy that works, rather than simply "
@@ -3684,7 +3704,7 @@ msgstr ""
 "juhuarvudele."
 
 # type: Content of: <book><chapter><section><itemizedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:2491
+#: ../../doc/manual/manual.en.xml:2497
 msgid ""
 "But remember, the aim is to have fun! You may have different tastes than the "
 "developers, so do what you enjoy most! If you enjoy loading the saved game "
@@ -3697,12 +3717,12 @@ msgstr ""
 "<emphasis>ideaalset</emphasis> mängu,  kus kaotusi polegi, siis - lase käia!"
 
 # type: Content of: <book><chapter><section><section><title>
-#: ../../doc/manual/manual.en.xml:2499
+#: ../../doc/manual/manual.en.xml:2505
 msgid "At the start of a scenario"
 msgstr "Stsenaariumit alustades"
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:2503
+#: ../../doc/manual/manual.en.xml:2509
 msgid ""
 "First, read the scenario objectives. Sometimes you do not have to kill enemy "
 "leaders; instead it is enough that you survive for a certain number of "
@@ -3713,14 +3733,14 @@ msgstr ""
 "eseme üleskorjamisest."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:2510
+#: ../../doc/manual/manual.en.xml:2516
 msgid ""
 "Look at the map: the terrain, the position of your leader and the other "
 "leader(s)."
 msgstr "Vaata kaarti: maastikku ja pealikute (oma ja vastase) asukohti."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:2516
+#: ../../doc/manual/manual.en.xml:2522
 msgid ""
 "Then, begin to recruit units. Cheap units are useful to soak up the first "
 "wave of an enemy's attack; advanced units can then be brought in as support. "
@@ -3733,12 +3753,12 @@ msgstr ""
 "külade hõivamisel. "
 
 # type: Content of: <book><chapter><section><section><title>
-#: ../../doc/manual/manual.en.xml:2525
+#: ../../doc/manual/manual.en.xml:2531
 msgid "During the scenario"
 msgstr "Stsenaariumi käigus"
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:2529
+#: ../../doc/manual/manual.en.xml:2535
 msgid ""
 "Try to capture and keep control of as many villages as possible to keep the "
 "gold coming in."
@@ -3747,7 +3767,7 @@ msgstr ""
 "piisav sissetulek."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:2535
+#: ../../doc/manual/manual.en.xml:2541
 msgid ""
 "Keep units in packs so the enemy cannot attack from as many sides, and so "
 "you can outnumber each enemy unit. Put your units in a line so that the "
@@ -3758,7 +3778,7 @@ msgstr ""
 "rünnata rohkem kui kahekesi."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:2542
+#: ../../doc/manual/manual.en.xml:2548
 msgid ""
 "Different units have different strengths and weaknesses depending on terrain "
 "and who they are attacking; right click on units and select \"Unit "
@@ -3769,7 +3789,7 @@ msgstr ""
 "\"Üksuse kirjeldus\"."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:2549
+#: ../../doc/manual/manual.en.xml:2555
 #, fuzzy
 msgid ""
 "You can use lower level units as cannon fodder, to slow down enemy. E.g. you "
@@ -3779,7 +3799,7 @@ msgstr ""
 "takistamiseks enda olulistele üksustele."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:2555
+#: ../../doc/manual/manual.en.xml:2561
 msgid ""
 "You can cause damage to enemies with advanced units and then finish them "
 "with lower level units - to give them more experience (and finally make them "
@@ -3790,7 +3810,7 @@ msgstr ""
 "tasemele."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:2562
+#: ../../doc/manual/manual.en.xml:2568
 msgid ""
 "When you have a White Mage (advances from Mage) or Druid (advances from "
 "Shaman), put it in the middle of a circle of units to heal them as they move "
@@ -3800,27 +3820,27 @@ msgstr ""
 "keskele. Nii saad samaaegselt liikuda mööda maastikku ja ravida üksusi."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:2569
+#: ../../doc/manual/manual.en.xml:2575
 msgid "Losing units is expected, even advanced units."
 msgstr "Üksuste (ka kõrgema taseme omade) kaotamine on paratamatu."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:2574
+#: ../../doc/manual/manual.en.xml:2580
 msgid "Time of day really matters:"
 msgstr "Päevaaeg loeb palju:"
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><itemizedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:2579
+#: ../../doc/manual/manual.en.xml:2585
 msgid "lawful units do more damage at day and less damage at night"
 msgstr "kuulekad üksused teevad rohkem kahju päeval ja vähem öösel."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><itemizedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:2584
+#: ../../doc/manual/manual.en.xml:2590
 msgid "chaotic units do more damage at night and less damage at day"
 msgstr "korratud üksused teevad rohkem kahju öösel ja vähem päeval."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><itemizedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:2589
+#: ../../doc/manual/manual.en.xml:2595
 msgid ""
 "remember to always check the time of day on the right side of the screen. "
 "Plan ahead - think about what it's going to be next turn as well as this "
@@ -3830,7 +3850,7 @@ msgstr ""
 "vähemalt paari käigu võrra ette."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:2598
+#: ../../doc/manual/manual.en.xml:2604
 msgid ""
 "Some units are resistant or vulnerable to different kind of attacks. Mounted "
 "units are weak vs pierce attacks. Fire and arcane attacks destroy undead. To "
@@ -3844,7 +3864,7 @@ msgstr ""
 "paremklõps ning seejärel vali \"Üksuse kirjeldus\" ja \"Vastupanuvõime\". "
 
 # type: Content of: <book><chapter><section><section><simpara>
-#: ../../doc/manual/manual.en.xml:2610
+#: ../../doc/manual/manual.en.xml:2616
 msgid ""
 "An important part of succeeding at Battle for Wesnoth is keeping your units "
 "healthy. When your units take damage you can heal them by moving them onto "
@@ -3857,12 +3877,12 @@ msgstr ""
 "kõrvale. Mõned üksused, näiteks trollid, suudavad ka ise taastuda."
 
 # type: Content of: <book><chapter><section><section><title>
-#: ../../doc/manual/manual.en.xml:2618
+#: ../../doc/manual/manual.en.xml:2624
 msgid "Winning a scenario"
 msgstr "Stsenaariumi võitmine"
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:2622
+#: ../../doc/manual/manual.en.xml:2628
 msgid ""
 "Advanced units are needed to quickly kill enemy commanders, and to avoid "
 "losing lots of units."
@@ -3871,7 +3891,7 @@ msgstr ""
 "kõrgema taseme üksusi."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:2628
+#: ../../doc/manual/manual.en.xml:2634
 msgid ""
 "The quicker you win a scenario, the more gold you get; you will get more "
 "gold from winning early than from all of the map's villages for the rest of "
@@ -3882,17 +3902,17 @@ msgstr ""
 "lõpetamine."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:2635
+#: ../../doc/manual/manual.en.xml:2641
 msgid "Killing all enemy leaders usually gives instant victory."
 msgstr "Kõigi vastase pealikute alistamine toob enamasti kaasa kohese võidu."
 
 # type: Content of: <book><chapter><section><section><title>
-#: ../../doc/manual/manual.en.xml:2641
+#: ../../doc/manual/manual.en.xml:2647
 msgid "More general tips"
 msgstr "Veel mõned üldised näpunäited"
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:2645
+#: ../../doc/manual/manual.en.xml:2651
 msgid ""
 "After slaughtering scenarios (where you take lots of punishment) there are "
 "usually \"breathing room\" scenarios where you can rather easily gain some "
@@ -3903,7 +3923,7 @@ msgstr ""
 "(s.t. üksusi kõrgemale tasemele arendada)"
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: ../../doc/manual/manual.en.xml:2652
+#: ../../doc/manual/manual.en.xml:2658
 msgid ""
 "Advanced units have higher upkeep than lower level units (1 gp per level), "
 "loyal units are an exception."
@@ -3912,14 +3932,12 @@ msgstr ""
 "kuldraha taseme kohta). Erandiks on ustavad üksused."
 
 # type: Content of: <book><glossary><title>
-#: ../../doc/manual/manual.en.xml:2661
-msgid "Glossary"
-msgstr "Sõnastik"
+#~ msgid "Glossary"
+#~ msgstr "Sõnastik"
 
 # type: Content of: <book><glossary><glossentry><glossdef><simpara>
-#: ../../doc/manual/manual.en.xml:2668
-msgid "<link linkend=\"zoc\">Zone Of Control</link>."
-msgstr "<link linkend=\"zoc\">Mõjuväli</link>."
+#~ msgid "<link linkend=\"zoc\">Zone Of Control</link>."
+#~ msgstr "<link linkend=\"zoc\">Mõjuväli</link>."
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #~ msgid "Alt-Space"

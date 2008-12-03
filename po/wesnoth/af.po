@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-29 12:23+0100\n"
+"POT-Creation-Date: 2008-12-03 19:42+0100\n"
 "PO-Revision-Date: 2005-12-14 12:40+0200\n"
 "Last-Translator: \n"
 "Language-Team: Afrikaans\n"
@@ -120,6 +120,13 @@ msgstr ""
 "Eerste Trefhou:\n"
 "Hierdie eenheid sal altyd eerste slaan met hierdie aanval, selfs al verdedig "
 "hy."
+
+#. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. [unstore_unit]
+#: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:680
+#: src/actions.cpp:1050 src/actions.cpp:1321
+msgid "slowed"
+msgstr "vertraag"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:13
@@ -5981,10 +5988,6 @@ msgstr "Uitvaagsel"
 msgid "female^slowed"
 msgstr "Misdadiger"
 
-#: src/actions.cpp:1050 src/actions.cpp:1321
-msgid "slowed"
-msgstr "vertraag"
-
 #: src/actions.cpp:1057 src/actions.cpp:1328
 #, fuzzy
 msgid "female^stone"
@@ -6064,16 +6067,19 @@ msgid "addon_type^Scenario"
 msgstr ""
 
 #: src/addon_management.cpp:401
-msgid "addon_type^MP Era"
-msgstr ""
+#, fuzzy
+msgid "addon_type^MP era"
+msgstr "Onbekende scenario: '"
 
 #: src/addon_management.cpp:403
-msgid "addon_type^MP Faction"
-msgstr ""
+#, fuzzy
+msgid "addon_type^MP faction"
+msgstr "Onbekende scenario: '"
 
 #: src/addon_management.cpp:405
-msgid "addon_type^MP Map-pack"
-msgstr ""
+#, fuzzy
+msgid "addon_type^MP map-pack"
+msgstr "Onbekende scenario: '"
 
 #: src/addon_management.cpp:407
 #, fuzzy
@@ -7613,11 +7619,11 @@ msgid "Fire a game event."
 msgstr ""
 
 #: src/menu_events.cpp:2337
-msgid "Toggle overalying of x,y coordinates on hexes."
+msgid "Toggle overlaying of x,y coordinates on hexes."
 msgstr ""
 
 #: src/menu_events.cpp:2340
-msgid "Toggle overalying of terrain codes on hexes."
+msgid "Toggle overlaying of terrain codes on hexes."
 msgstr ""
 
 #: src/menu_events.cpp:2385
@@ -7757,7 +7763,7 @@ msgid "Login"
 msgstr "Teken in: "
 
 #: src/multiplayer.cpp:203 src/multiplayer_create.cpp:325
-#: src/multiplayer_lobby.cpp:786
+#: src/multiplayer_lobby.cpp:785
 #, fuzzy
 msgid "Password: "
 msgstr "swaard"
@@ -7895,7 +7901,7 @@ msgstr ""
 msgid "Waiting for players to join..."
 msgstr "Wag vir spelers om aan te sluit"
 
-#: src/multiplayer_create.cpp:45 src/multiplayer_lobby.cpp:669
+#: src/multiplayer_create.cpp:45 src/multiplayer_lobby.cpp:668
 msgid "Create Game"
 msgstr "Skep Spel"
 
@@ -7915,7 +7921,7 @@ msgstr "Tydperk:"
 msgid "Map to play:"
 msgstr "Kaart om te speel:"
 
-#: src/multiplayer_create.cpp:76 src/multiplayer_lobby.cpp:267
+#: src/multiplayer_create.cpp:76 src/multiplayer_lobby.cpp:266
 msgid "Use map settings"
 msgstr "Gebruik kaart instellings"
 
@@ -7928,8 +7934,8 @@ msgstr "Willekeurige kaart (Winter)"
 msgid "Fog Of War"
 msgstr "Oorlogs-mis"
 
-#: src/multiplayer_create.cpp:79 src/multiplayer_lobby.cpp:542
-#: src/multiplayer_lobby.cpp:548
+#: src/multiplayer_create.cpp:79 src/multiplayer_lobby.cpp:541
+#: src/multiplayer_lobby.cpp:547
 msgid "Shroud"
 msgstr "Sluier"
 
@@ -8100,96 +8106,96 @@ msgstr "Grootte"
 msgid "--no games open--"
 msgstr "<geen spele oop nie>"
 
-#: src/multiplayer_lobby.cpp:149
+#: src/multiplayer_lobby.cpp:147
 #, fuzzy
 msgid " (Unknown Era)"
 msgstr "Onbekende scenario: '"
 
-#: src/multiplayer_lobby.cpp:426
+#: src/multiplayer_lobby.cpp:425
 #, fuzzy
 msgid "Unknown era: $era_id"
 msgstr "Onbekende scenario: '"
 
-#: src/multiplayer_lobby.cpp:430
+#: src/multiplayer_lobby.cpp:429
 #, fuzzy
 msgid "Unknown era"
 msgstr "Onbekende scenario: '"
 
-#: src/multiplayer_lobby.cpp:491
+#: src/multiplayer_lobby.cpp:490
 #, fuzzy
 msgid "Remote scenario"
 msgstr "Onbekende scenario: '"
 
-#: src/multiplayer_lobby.cpp:498
+#: src/multiplayer_lobby.cpp:497
 #, fuzzy
 msgid "Unknown scenario: $scenario_id"
 msgstr "Onbekende scenario: '"
 
-#: src/multiplayer_lobby.cpp:502
+#: src/multiplayer_lobby.cpp:501
 #, fuzzy
 msgid "Unknown scenario"
 msgstr "Onbekende scenario: '"
 
-#: src/multiplayer_lobby.cpp:507
+#: src/multiplayer_lobby.cpp:506
 #, fuzzy
 msgid "Reloaded game"
 msgstr "Laai 'n enkel speler gestoorde spel"
 
-#: src/multiplayer_lobby.cpp:523
+#: src/multiplayer_lobby.cpp:522
 #, fuzzy
 msgid "Turn "
 msgstr "Beurt"
 
-#: src/multiplayer_lobby.cpp:527
+#: src/multiplayer_lobby.cpp:526
 #, fuzzy
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "Vakante Gleuf"
 msgstr[1] "Vakante Gleuf"
 
-#: src/multiplayer_lobby.cpp:530 src/multiplayer_lobby.cpp:784
+#: src/multiplayer_lobby.cpp:529 src/multiplayer_lobby.cpp:783
 msgid "Password Required"
 msgstr ""
 
-#: src/multiplayer_lobby.cpp:538
+#: src/multiplayer_lobby.cpp:537
 msgid "Fog"
 msgstr "Mis"
 
-#: src/multiplayer_lobby.cpp:552
+#: src/multiplayer_lobby.cpp:551
 msgid "none"
 msgstr "geen"
 
-#: src/multiplayer_lobby.cpp:662 src/multiplayer_wait.cpp:182
+#: src/multiplayer_lobby.cpp:661 src/multiplayer_wait.cpp:182
 msgid "Game Lobby"
 msgstr "Spelsaal"
 
-#: src/multiplayer_lobby.cpp:667
+#: src/multiplayer_lobby.cpp:666
 msgid "Observe Game"
 msgstr "Spel Waarnemer"
 
-#: src/multiplayer_lobby.cpp:668
+#: src/multiplayer_lobby.cpp:667
 msgid "Join Game"
 msgstr "Sluit aan by 'n spel"
 
-#: src/multiplayer_lobby.cpp:670
+#: src/multiplayer_lobby.cpp:669
 #, fuzzy
 msgid "Quick Replays"
 msgstr " wys weer"
 
-#: src/multiplayer_lobby.cpp:672
+#: src/multiplayer_lobby.cpp:671
 #, fuzzy
 msgid "Preferences"
 msgstr "Prinses"
 
-#: src/multiplayer_lobby.cpp:674
+#: src/multiplayer_lobby.cpp:673
 msgid "Quit"
 msgstr "Verlaat"
 
-#: src/multiplayer_lobby.cpp:680
+#: src/multiplayer_lobby.cpp:679
 msgid "Skip quickly to the active turn when observing"
 msgstr ""
 
-#: src/multiplayer_lobby.cpp:785
+#: src/multiplayer_lobby.cpp:784
 msgid "Joining this game requires a password."
 msgstr ""
 

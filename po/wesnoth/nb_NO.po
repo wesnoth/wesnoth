@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.1.1\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-29 12:23+0100\n"
+"POT-Creation-Date: 2008-12-03 19:42+0100\n"
 "PO-Revision-Date: 2006-12-22 21:30+0100\n"
 "Last-Translator: YbeRn00b <asgeiraakre@gmail.com>\n"
 "Language-Team: None\n"
@@ -118,6 +118,13 @@ msgid ""
 msgstr ""
 "Førsteslag:\n"
 "Denne enheten slår alltid først, selv om den forsvarer seg."
+
+#. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. [unstore_unit]
+#: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:680
+#: src/actions.cpp:1050 src/actions.cpp:1321
+msgid "slowed"
+msgstr "forsinket"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:13
@@ -5989,10 +5996,6 @@ msgstr "Overfallskvinne"
 msgid "female^slowed"
 msgstr "Fredløs"
 
-#: src/actions.cpp:1050 src/actions.cpp:1321
-msgid "slowed"
-msgstr "forsinket"
-
 #: src/actions.cpp:1057 src/actions.cpp:1328
 #, fuzzy
 msgid "female^stone"
@@ -6072,16 +6075,19 @@ msgid "addon_type^Scenario"
 msgstr ""
 
 #: src/addon_management.cpp:401
-msgid "addon_type^MP Era"
-msgstr ""
+#, fuzzy
+msgid "addon_type^MP era"
+msgstr "Scenario hos annen spiller"
 
 #: src/addon_management.cpp:403
-msgid "addon_type^MP Faction"
-msgstr ""
+#, fuzzy
+msgid "addon_type^MP faction"
+msgstr "Scenario hos annen spiller"
 
 #: src/addon_management.cpp:405
-msgid "addon_type^MP Map-pack"
-msgstr ""
+#, fuzzy
+msgid "addon_type^MP map-pack"
+msgstr "Scenario hos annen spiller"
 
 #: src/addon_management.cpp:407
 #, fuzzy
@@ -7628,11 +7634,11 @@ msgid "Fire a game event."
 msgstr ""
 
 #: src/menu_events.cpp:2337
-msgid "Toggle overalying of x,y coordinates on hexes."
+msgid "Toggle overlaying of x,y coordinates on hexes."
 msgstr ""
 
 #: src/menu_events.cpp:2340
-msgid "Toggle overalying of terrain codes on hexes."
+msgid "Toggle overlaying of terrain codes on hexes."
 msgstr ""
 
 #: src/menu_events.cpp:2385
@@ -7771,7 +7777,7 @@ msgid "Login"
 msgstr "Kallenavn: "
 
 #: src/multiplayer.cpp:203 src/multiplayer_create.cpp:325
-#: src/multiplayer_lobby.cpp:786
+#: src/multiplayer_lobby.cpp:785
 #, fuzzy
 msgid "Password: "
 msgstr "sverd"
@@ -7907,7 +7913,7 @@ msgstr ""
 msgid "Waiting for players to join..."
 msgstr "Venter på at spillere skal bli med..."
 
-#: src/multiplayer_create.cpp:45 src/multiplayer_lobby.cpp:669
+#: src/multiplayer_create.cpp:45 src/multiplayer_lobby.cpp:668
 msgid "Create Game"
 msgstr "Opprett spill"
 
@@ -7927,7 +7933,7 @@ msgstr "Epoke:"
 msgid "Map to play:"
 msgstr "Kart:"
 
-#: src/multiplayer_create.cpp:76 src/multiplayer_lobby.cpp:267
+#: src/multiplayer_create.cpp:76 src/multiplayer_lobby.cpp:266
 msgid "Use map settings"
 msgstr "Bruk kartinnstillinger"
 
@@ -7940,8 +7946,8 @@ msgstr "Tilfeldig kart (Vinter)"
 msgid "Fog Of War"
 msgstr "Stridsdis"
 
-#: src/multiplayer_create.cpp:79 src/multiplayer_lobby.cpp:542
-#: src/multiplayer_lobby.cpp:548
+#: src/multiplayer_create.cpp:79 src/multiplayer_lobby.cpp:541
+#: src/multiplayer_lobby.cpp:547
 msgid "Shroud"
 msgstr "Skodde"
 
@@ -8107,91 +8113,91 @@ msgstr "Størrelse"
 msgid "--no games open--"
 msgstr "--ingen spill pågår--"
 
-#: src/multiplayer_lobby.cpp:149
+#: src/multiplayer_lobby.cpp:147
 #, fuzzy
 msgid " (Unknown Era)"
 msgstr "Ukjent epoke"
 
-#: src/multiplayer_lobby.cpp:426
+#: src/multiplayer_lobby.cpp:425
 #, fuzzy
 msgid "Unknown era: $era_id"
 msgstr "Ukjent epoke"
 
-#: src/multiplayer_lobby.cpp:430
+#: src/multiplayer_lobby.cpp:429
 msgid "Unknown era"
 msgstr "Ukjent epoke"
 
-#: src/multiplayer_lobby.cpp:491
+#: src/multiplayer_lobby.cpp:490
 msgid "Remote scenario"
 msgstr "Scenario hos annen spiller"
 
-#: src/multiplayer_lobby.cpp:498
+#: src/multiplayer_lobby.cpp:497
 #, fuzzy
 msgid "Unknown scenario: $scenario_id"
 msgstr "Ukjent scenario: '"
 
-#: src/multiplayer_lobby.cpp:502
+#: src/multiplayer_lobby.cpp:501
 msgid "Unknown scenario"
 msgstr "Ukjent scenario"
 
-#: src/multiplayer_lobby.cpp:507
+#: src/multiplayer_lobby.cpp:506
 #, fuzzy
 msgid "Reloaded game"
 msgstr "Fortsett et lagret spill"
 
-#: src/multiplayer_lobby.cpp:523
+#: src/multiplayer_lobby.cpp:522
 #, fuzzy
 msgid "Turn "
 msgstr "Runde"
 
-#: src/multiplayer_lobby.cpp:527
+#: src/multiplayer_lobby.cpp:526
 #, fuzzy
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "Ledig plass:"
 msgstr[1] "Ledig plass:"
 
-#: src/multiplayer_lobby.cpp:530 src/multiplayer_lobby.cpp:784
+#: src/multiplayer_lobby.cpp:529 src/multiplayer_lobby.cpp:783
 msgid "Password Required"
 msgstr ""
 
-#: src/multiplayer_lobby.cpp:538
+#: src/multiplayer_lobby.cpp:537
 msgid "Fog"
 msgstr "Stridsdis"
 
-#: src/multiplayer_lobby.cpp:552
+#: src/multiplayer_lobby.cpp:551
 msgid "none"
 msgstr "ingen"
 
-#: src/multiplayer_lobby.cpp:662 src/multiplayer_wait.cpp:182
+#: src/multiplayer_lobby.cpp:661 src/multiplayer_wait.cpp:182
 msgid "Game Lobby"
 msgstr "Vestibyle"
 
-#: src/multiplayer_lobby.cpp:667
+#: src/multiplayer_lobby.cpp:666
 msgid "Observe Game"
 msgstr "Observer spill"
 
-#: src/multiplayer_lobby.cpp:668
+#: src/multiplayer_lobby.cpp:667
 msgid "Join Game"
 msgstr "Bli med i nettverksspill"
 
-#: src/multiplayer_lobby.cpp:670
+#: src/multiplayer_lobby.cpp:669
 msgid "Quick Replays"
 msgstr "Rask reprise"
 
-#: src/multiplayer_lobby.cpp:672
+#: src/multiplayer_lobby.cpp:671
 msgid "Preferences"
 msgstr "Innstillinger"
 
-#: src/multiplayer_lobby.cpp:674
+#: src/multiplayer_lobby.cpp:673
 msgid "Quit"
 msgstr "Avslutt"
 
-#: src/multiplayer_lobby.cpp:680
+#: src/multiplayer_lobby.cpp:679
 msgid "Skip quickly to the active turn when observing"
 msgstr "Spol raskt gjennom gamle turer når du observerer et spill"
 
-#: src/multiplayer_lobby.cpp:785
+#: src/multiplayer_lobby.cpp:784
 msgid "Joining this game requires a password."
 msgstr ""
 
