@@ -13,13 +13,14 @@
 # Fernando Cerezal <kryptos21@gmail.com>, 2006.
 # Robert Romero <sildurin@gmail.com>, 2006.
 # Sergi March <sergi.march@gmail.com>, 2008.
+# Ignacio R. Morelle <shikadilord@users.sourceforge.net>, 2008.
 msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-11-29 12:24+0100\n"
-"PO-Revision-Date: 2008-03-04 22:56+0100\n"
-"Last-Translator: Sergi March <sergi.march@gmail.com>\n"
+"PO-Revision-Date: 2008-12-04 13:51-0300\n"
+"Last-Translator: Ignacio R. Morelle <shikadilord@users.sourceforge.net>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -63,9 +64,8 @@ msgstr "colmillos"
 
 #. [unit_type]: id=Dread Bat, race=bats
 #: data/core/units/bats/Bat_Dread.cfg:4
-#, fuzzy
 msgid "Dread Bat"
-msgstr "Murciélago vampiro"
+msgstr "Murciélago aterrador"
 
 #. [unit_type]: id=Dread Bat, race=bats
 #: data/core/units/bats/Bat_Dread.cfg:25
@@ -75,6 +75,11 @@ msgid ""
 "began the battle. Bloated with blood they have grown to a huge size and can "
 "feast on bigger and tougher victims."
 msgstr ""
+"Los murciélagos aterradores son rápidos y pueden drenar la sangre de sus "
+"víctimas, así curándose a sí mismos, incluso hasta volverse más fuertes de "
+"lo que fuesen al comenzar la batalla. Llenos y teñidos con sangre, han "
+"crecido a un tamaño impresionante y pueden hacerse cargo de víctimas más "
+"grandes y resistentes."
 
 #. [unit_type]: id=Vampire Bat, race=bats
 #: data/core/units/bats/Bat_Vampire.cfg:4
@@ -126,7 +131,6 @@ msgstr "Galeón pirata"
 
 #. [unit_type]: id=Pirate Galleon, race=mechanical
 #: data/core/units/boats/Pirate_Galleon.cfg:18
-#, fuzzy
 msgid ""
 "Pirate galleons are to transport ships what wolves are to sheep. The pirates "
 "who crew them are more than happy to help relieve other ships of their "
@@ -134,7 +138,7 @@ msgid ""
 msgstr ""
 "Los galeones piratas son a los barcos de transporte lo que los lobos a las "
 "ovejas. Los piratas a bordo están más que contentos de aliviar a las otras "
-"naves de su pesado cargamento..."
+"naves de su pesado cargamento."
 
 #. [attack]: type=pierce
 #: data/core/units/boats/Transport_Galleon.cfg:22
@@ -820,9 +824,8 @@ msgstr "martillo rúnico"
 
 #. [attack]: type=fire
 #: data/core/units/dwarves/Runemaster.cfg:35
-#, fuzzy
 msgid "lightning bolt"
-msgstr "Relámpago"
+msgstr "relámpago"
 
 #. [unit_type]: id=Dwarvish Sentinel, race=dwarf
 #: data/core/units/dwarves/Sentinel.cfg:4
@@ -1539,7 +1542,7 @@ msgstr "hilo de araña"
 #. [unit_type]: id=Fog Clearer, race=monster
 #: data/core/units/fake/Fog_Clearer.cfg:7
 msgid "dummy_unit^Fog Clearer"
-msgstr ""
+msgstr "Limpia-niebla"
 
 #. [unit_type]: id=Direwolf Rider, race=wolf
 #: data/core/units/goblins/Direwolf_Rider.cfg:4
@@ -2614,9 +2617,8 @@ msgstr "Archimaga"
 
 #. [unit_type]: id=Elder Mage, race=human
 #: data/core/units/humans/Mage_Elder.cfg:4
-#, fuzzy
 msgid "Elder Mage"
-msgstr "Mago de Plata"
+msgstr "Mago anciano"
 
 #. [unit_type]: id=Elder Mage, race=human
 #: data/core/units/humans/Mage_Elder.cfg:22
@@ -2625,6 +2627,9 @@ msgid ""
 "wearying years of battle. Nevertheless they remain feared on the battlefield "
 "on account of their powerful lightning bolts."
 msgstr ""
+"Alguna vez grandes, los Magos Ancianos han visto su poder disminuir y "
+"desgastarse tras años de lucha. De todos modos, siguen siendo temibles en el "
+"campo de batalla debido a los poderosos relámpagos que conjuran."
 
 #. [attack]: type=fire
 #: data/core/units/humans/Mage_Elder.cfg:34
@@ -3169,9 +3174,8 @@ msgstr "horca"
 
 #. [unit_type]: id=Royal Warrior, race=human
 #: data/core/units/humans/Royal_Warrior.cfg:8
-#, fuzzy
 msgid "Royal Warrior"
-msgstr "Troll guerrero"
+msgstr "Guerrero real"
 
 #. [unit_type]: id=Royal Warrior, race=human
 #: data/core/units/humans/Royal_Warrior.cfg:25
@@ -3179,6 +3183,8 @@ msgid ""
 "Royal warriors are the kings and princes of human noble houses, armed and "
 "armored to a degree heavier than that of their knights."
 msgstr ""
+"Los guerreros reales son los reyes y príncipes de las casas nobles de los "
+"humanos, más armados y acorazados que sus caballeros."
 
 #. [unit_type]: id=Woodsman, race=human
 #: data/core/units/humans/Woodsman.cfg:4
@@ -3867,6 +3873,9 @@ msgid ""
 "Wolves are aggressive animals that hunt in packs. Although weak "
 "individually, a wolf pack can kill even the strongest man in minutes."
 msgstr ""
+"Los lobos son animales agresivos que cazan en manadas. Pese a ser débiles "
+"por sí mismos, una manada de lobos puede aniquilar incluso al hombre más "
+"fuerte en cuestión de minutos."
 
 #. [unit_type]: id=Yeti, race=monster
 #: data/core/units/monsters/Yeti.cfg:4
@@ -4487,9 +4496,8 @@ msgstr ""
 
 #. [unit_type]: id=Troll Shaman, race=troll
 #: data/core/units/trolls/Troll_Shaman.cfg:4
-#, fuzzy
 msgid "Troll Shaman"
-msgstr "Cría de troll"
+msgstr "Chamán troll"
 
 #. [unit_type]: id=Troll Shaman, race=troll
 #: data/core/units/trolls/Troll_Shaman.cfg:24
@@ -4498,11 +4506,15 @@ msgid ""
 "or tough as other trolls, their true power lies in their fire magic, which "
 "they use to blast enemies with gouts of fire."
 msgstr ""
+"Los chamanes troll son los guías místicos de su especie. Aunque no son tan "
+"fuertes o resistentes como otros trolls, su auténtico poder radica en su "
+"magia incendiaria, que utilizan para envolver y consumir a sus enemigos en "
+"lluvias de fuego."
 
 #. [attack]: type=fire
 #: data/core/units/trolls/Troll_Shaman.cfg:41
 msgid "flame blast"
-msgstr ""
+msgstr "ráfaga incendiaria"
 
 #. [unit_type]: id=Troll Warrior, race=troll
 #: data/core/units/trolls/Warrior.cfg:4
@@ -5290,68 +5302,3 @@ msgstr ""
 "\n"
 "Los woses son absolutamente pacíficos, pero poseen una gran fuerza. Sin "
 "embargo, no están acostumbrados a moverse, ni lo hacen rápido."
-
-#, fuzzy
-#~ msgid "Dwarvish Masked Guardsman"
-#~ msgstr "Guardia Enano"
-
-#, fuzzy
-#~ msgid "Dwarvish Masked Sentinel"
-#~ msgstr "Centinela Enano"
-
-#, fuzzy
-#~ msgid "Dwarvish Masked Stalwart"
-#~ msgstr "Defensor Enano"
-
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "Special Notes:"
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "Notas especiales:"
-
-#~ msgid ""
-#~ "Knights of the highest virtue, Paladins have sworn themselves to semi-"
-#~ "monastic vows, pledging their might to the cause of righteousness. Though "
-#~ "not as imposing on the battlefield as a Grand Knight, a Paladin is a "
-#~ "powerful force in combat, and their piety grants them other gifts. A "
-#~ "Paladin is a bane to the unworldly, and has trained in ministering to the "
-#~ "wounds of his comrades.\n"
-#~ "\n"
-#~ "Special Notes:"
-#~ msgstr ""
-#~ "Los paladines son caballeros de virtud extrema, que se han consagrado a "
-#~ "votos semimonásticos, poniendo su capacidad al servicio de la justicia. "
-#~ "Aunque no son tan imponentes en el campo de batalla como los grandes "
-#~ "caballeros, los paladines constituyen una potente fuerza en combate y su "
-#~ "piedad les granjea otros beneficios. Los paladines son una auténtica "
-#~ "pesadilla para los seres de otro mundo y han sido entrenados para curar "
-#~ "las heridas de sus camaradas.\n"
-#~ "\n"
-#~ "Notas especiales:"
-
-#~ msgid ""
-#~ "Veteran criminals become notorious among the authorities for both their "
-#~ "battle prowess and ability to elude capture. Beautiful and dangerous, "
-#~ "their beauty is exceeded only by their dangerousness."
-#~ msgstr ""
-#~ "Las criminales veteranas se vuelven notorias entre las autoridades tanto "
-#~ "por su valía en la batalla como por su habilidad para eludir su captura. "
-#~ "Bellas y peligrosas, su belleza es sólo superada por su peligrosidad."
-
-#~ msgid "Outlaw Ranger"
-#~ msgstr "Montaraz forajido"
-
-#~ msgid ""
-#~ "Rangers are wild men and masters of forest and hills. They are excellent "
-#~ "trackers, scouts, and archers, moving freely through the countryside "
-#~ "under the cover of night. Most rulers are afraid of rangers and would "
-#~ "rather put them in the dungeon than put their abilities to use."
-#~ msgstr ""
-#~ "Los montaraces son hombres salvajes y maestros de los bosques y las "
-#~ "montañas. Son excelentes rastreadores, exploradores y arqueros, y son "
-#~ "capaces de moverse con total libertad a través del campo al amparo de la "
-#~ "noche. Muchos gobernantes temen a los montaraces y los encerrarían en una "
-#~ "mazmorra antes que darle un uso a sus habilidades."
