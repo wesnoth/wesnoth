@@ -21,6 +21,7 @@
 			<Add option="-DHAVE_PYTHON" />
 			<Add option="-DUSE_GZIP" />
 			<Add option="-DHAVE_FRIBIDI" />
+			<Add option="-DDISABLE_POOL_ALLOC" />
 			<Add directory="..\..\src" />
 			<Add directory="..\..\src\sdl_ttf" />
 			<Add directory="..\..\src\serialization" />
