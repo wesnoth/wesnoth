@@ -273,6 +273,11 @@ game_controller::game_controller(int argc, char** argv) :
 		font_manager_.update_font_path();
 	}
 
+#ifndef DISABLE_EDITOR2
+	const std::string app_basename = file_name(argv[0]);
+	jump_to_editor_ = app_basename.find("editor") != std::string::npos;
+#endif
+
 	for(arg_ = 1; arg_ != argc_; ++arg_) {
 		const std::string val(argv_[arg_]);
 		if(val.empty()) {
