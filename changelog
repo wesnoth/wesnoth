@@ -35,6 +35,8 @@ Version 1.5.6+svn:
  * WML engine:
    * Added the 'round' key to [set_variable].
  * Miscellaneous and bug fixes:
+   * New memory allocator introduced to the engine. It should
+     produce 5-10% savings in memory usage.
    * Included extra headers for certain g++ versions (patch #1113).
    * Fixed random memory corruption/assertion failure/massive leak due
      to story  screens.
