@@ -168,7 +168,15 @@ template <
 struct tcopy_policy : public base, public copy_policy<tcopy_policy<base, copy_policy> >
 {
 	typedef copy_policy<tcopy_policy<base, copy_policy> > policy;
-	typedef typename tcopy_policy<base, copy_policy>::rhs_type rhs_type;
+	/* 
+	 * This typedef first was
+	 * typedef typename tcopy_policy<base, copy_policy>::rhs_type rhs_type;
+	 *
+	 * Unfortunately MSVC 2008 chokes on it and aborts with an internal
+	 * compiler error. So used another name for the type.
+	 */
+	typedef typename tcopy_policy<base, copy_policy>::rhs_type 
+		tcopy_policy_rhs_type;
 
 	tcopy_policy()
 		: base()
@@ -179,7 +187,7 @@ struct tcopy_policy : public base, public copy_policy<tcopy_policy<base, copy_po
 #endif
 	}
 
-	tcopy_policy(rhs_type rhs) 
+	tcopy_policy(tcopy_policy_rhs_type rhs) 
 		: base(rhs)
 		, policy(rhs)
 	{ 
@@ -189,7 +197,7 @@ struct tcopy_policy : public base, public copy_policy<tcopy_policy<base, copy_po
 		copy(rhs); 
 	}
 
-	tcopy_policy& operator=(rhs_type rhs) 
+	tcopy_policy& operator=(tcopy_policy_rhs_type rhs) 
 	{
 #if COPY_POLICY_DEBUG
 		std::cerr << "tcopy_policy: assignment operator.\n";

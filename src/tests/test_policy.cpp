@@ -34,7 +34,14 @@ template <template<class> class copy_policy >
 struct ttest : public copy_policy<ttest<copy_policy> >
 {
 	typedef copy_policy<ttest<copy_policy> > policy;
-	typedef typename ttest<copy_policy>::rhs_type rhs_type;
+	/* 
+	 * This typedef first was
+	 * typedef typename ttest<copy_policy>::rhs_type rhs_type;
+	 *
+	 * Unfortunately MSVC 2008 chokes on it and aborts with an internal
+	 * compiler error. So used another name for the type.
+	 */
+	typedef typename ttest<copy_policy>::rhs_type ttest_rhs_type;
 
 	ttest()
 		: policy()
@@ -48,7 +55,7 @@ struct ttest : public copy_policy<ttest<copy_policy> >
 #endif
 	}
 
-	ttest(rhs_type rhs) 
+	ttest(ttest_rhs_type rhs) 
 		: policy(rhs)
 		, copied_constructed_(true)
 		, assigned_(rhs.assigned_)
@@ -61,7 +68,7 @@ struct ttest : public copy_policy<ttest<copy_policy> >
 		copy(rhs); 
 	}
 
-	ttest& operator=(rhs_type rhs) 
+	ttest& operator=(ttest_rhs_type rhs) 
 	{
 #if TEST_POLICY_DEBUG
 		std::cerr << __func__ << ".\n";
