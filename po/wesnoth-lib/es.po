@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-11-29 12:24+0100\n"
-"PO-Revision-Date: 2008-11-21 13:31-0300\n"
+"PO-Revision-Date: 2008-12-02 02:38-0300\n"
 "Last-Translator: Ignacio R. Morelle <shikadilord@users.sourceforge.net>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -514,7 +514,6 @@ msgstr "Preferencias del editor"
 
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:46
-#, fuzzy
 msgid "Time of day lighting preset"
 msgstr "Preajuste de iluminación de hora del día"
 
@@ -526,7 +525,6 @@ msgstr "Siguiente"
 
 #. [toggle_button]: id=custom_tod_toggle
 #: data/gui/default/window/editor_settings.cfg:83
-#, fuzzy
 msgid "Custom lighting setting"
 msgstr "Personalizar iluminación"
 
@@ -553,7 +551,7 @@ msgstr "Azul:"
 #. [toggle_button]: id=use_mdi
 #: data/gui/default/window/editor_settings.cfg:208
 msgid "Allow more than one map to be open at the same time (MDI)"
-msgstr ""
+msgstr "Mantener más de un mapa abierto a la vez (MDI)"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
@@ -1571,13 +1569,12 @@ msgid "Quit to Desktop"
 msgstr "Salir al escritorio"
 
 #: src/hotkeys.cpp:101
-#, fuzzy
 msgid "Close Map"
-msgstr "Cerrar"
+msgstr "Cerrar mapa"
 
 #: src/hotkeys.cpp:102
 msgid "Switch Map"
-msgstr ""
+msgstr "Cambiar mapa"
 
 #: src/hotkeys.cpp:104
 msgid "Partial Undo"
@@ -1966,12 +1963,3 @@ msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr ""
 "En la sección «[$section|]» el atributo obligatorio «$key|» no se ha "
 "establecido."
-
-#~ msgid "Ok"
-#~ msgstr "Aceptar"
-
-#~ msgid "2000"
-#~ msgstr "2000"
-
-#~ msgid "-1"
-#~ msgstr "-1"
