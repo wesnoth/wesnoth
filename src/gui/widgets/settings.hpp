@@ -157,6 +157,22 @@ struct tbutton_definition : public tcontrol_definition
 
 };
 
+struct thorizontal_scrollbar_definition : public tcontrol_definition
+{
+	thorizontal_scrollbar_definition(const config& cfg);
+
+	struct tresolution : public tresolution_definition_
+	{
+		tresolution(const config& cfg);
+
+		unsigned minimum_positioner_length;
+		unsigned maximum_positioner_length;
+
+		unsigned left_offset;
+		unsigned right_offset;
+	};
+};
+
 struct timage_definition : public tcontrol_definition
 {
 	timage_definition(const config& cfg);

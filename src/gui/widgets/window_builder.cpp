@@ -17,6 +17,7 @@
 #include "foreach.hpp"
 #include "gettext.hpp"
 #include "gui/widgets/button.hpp"
+#include "gui/widgets/horizontal_scrollbar.hpp"
 #include "gui/widgets/image.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/listbox.hpp"
@@ -161,6 +162,10 @@ tbuilder_widget_ptr create_builder_widget(const config& cfg)
 
 	if(cfg.child("button")) {
 		return new tbuilder_button(*(cfg.child("button")));
+	} else if(cfg.child("horizontal_scrollbar")) {
+		return new tbuilder_horizontal_scrollbar(
+				*(cfg.child("horizontal_scrollbar")));
+
 	} else if(cfg.child("image")) {
 		return new tbuilder_image(*(cfg.child("image")));
 	} else if(cfg.child("label")) {
@@ -186,8 +191,9 @@ tbuilder_widget_ptr create_builder_widget(const config& cfg)
 	} else if(cfg.child("toggle_panel")) {
 		return new tbuilder_toggle_panel(*(cfg.child("toggle_panel")));
 	} else if(cfg.child("vertical_scrollbar")) {
-		return 
-			new tbuilder_vertical_scrollbar(*(cfg.child("vertical_scrollbar")));
+		return new tbuilder_vertical_scrollbar(
+				*(cfg.child("vertical_scrollbar")));
+
 	} else if(cfg.child("grid")) {
 		return new tbuilder_grid(*(cfg.child("grid")));
 	} else {
@@ -447,6 +453,7 @@ tbuilder_grid::tbuilder_grid(const config& cfg) :
  * * button a button.
  * * image an image.
  * * grid a grid, this is used to nest items.
+ * * horizontal_scrollbar a horizontal scrollbar.
  * * label a label.
  * * listbox a listbox.
  * * panel a panel (a grid which can be drawn on).
@@ -622,6 +629,20 @@ twidget* tbuilder_button::build() const
 		<< definition << "'.\n";
 
 	return button;
+}
+
+twidget* tbuilder_horizontal_scrollbar::build() const
+{
+	thorizontal_scrollbar *horizontal_scrollbar = new thorizontal_scrollbar();
+
+	init_control(horizontal_scrollbar);
+
+	DBG_GUI << "Window builder:"
+		<< " placed horizontal scrollbar '" << id
+		<< "' with defintion '" << definition 
+		<< "'.\n";
+
+	return horizontal_scrollbar;
 }
 
 twidget* tbuilder_image::build() const
@@ -1219,8 +1240,10 @@ twidget* tbuilder_vertical_scrollbar::build() const
 
 	init_control(vertical_scrollbar);
 
-	DBG_GUI << "Window builder: placed text box '" << id << "' with defintion '" 
-		<< definition << "'.\n";
+	DBG_GUI << "Window builder:"
+		<< " placed vertical scrollbar '" << id
+		<< "' with defintion '" << definition 
+		<< "'.\n";
 
 	return vertical_scrollbar;
 }
