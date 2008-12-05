@@ -19,7 +19,7 @@
 
 #include <vector>
 
-#include <mysql++/mysql++.h>
+#include <mysql/mysql.h>
 #include "../md5.hpp"
 
 /**
@@ -43,7 +43,7 @@
 class fuh : public user_handler {
 	public:
 		fuh(const config& c);
-		~fuh() {}
+		~fuh();
 
 		// Throws user_handler::error
 		void add_user(const std::string& name, const std::string& mail, const std::string& password);
@@ -92,11 +92,11 @@ class fuh : public user_handler {
 		std::string db_name_, db_host_, db_user_, db_password_, db_users_table_, db_extra_table_;
 
 		// Throws user_handler::error
-		mysqlpp::Result db_query(const std::string& query);
+		MYSQL_RES* db_query(const std::string& query);
 
 		// Throws user_handler::error via db_query() 
 		std::string db_query_to_string(const std::string& query);
-		mysqlpp::Connection db_interface_;
+		MYSQL *conn;
 
 		// Query a detail for a particular user from the database
 		std::string get_detail_for_user(const std::string& name, const std::string& detail);
