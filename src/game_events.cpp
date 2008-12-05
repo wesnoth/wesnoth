@@ -1102,18 +1102,18 @@ namespace {
 			double value = lexical_cast<double>(var.c_str());
 			if (round_val == "ceil") {
 				//TODO precision stuff
-				value = ceil(value);
+				value = std::ceil(value);
 			} else if (round_val == "floor") {
 				//TODO same
-				value = floor(value);
+				value = std::floor(value);
 			} else {
 				// We assume the value is an integer.
 				// Any non-numerical values will be interpreted as 0
 				// Which is probably what was intended anyway
 				const int decimals = atoi(round_val.c_str());
-				value *= pow(10, decimals); //add $decimals zeroes
-				value = round(value);
-				value *= pow(10, -decimals); //and remove them
+				value *= std::pow(10.0, decimals); //add $decimals zeroes
+				value = round_portable(value); // round() isn't implemented everywhere
+				value *= std::pow(10.0, -decimals); //and remove them
 			}
 			var = str_cast(value);
 		}

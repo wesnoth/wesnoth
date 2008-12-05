@@ -57,6 +57,11 @@ inline int round_double(double d) {
 #endif
 }
 
+// Guaranteed to have portable results across different platforms
+inline double round_portable(double d) {
+	return (d >= 0.0) ? std::floor(d + 0.5) : std::ceil(d - 0.5);
+}
+
 struct bad_lexical_cast {};
 
 template<typename To, typename From>
