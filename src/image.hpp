@@ -78,7 +78,7 @@ namespace image {
 
 	struct SizeOne {
 		template<typename T>
-		int operator()(const T& t) const { return 1; }
+		int operator()(const T&) const { return 1; }
 	};
 
 	template<typename T, typename SizeFunctor>
