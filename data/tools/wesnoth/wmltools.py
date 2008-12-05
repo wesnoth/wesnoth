@@ -22,6 +22,9 @@ def pop_to_top(whoami):
         sys.stderr.write(whoami + ": must be run from within a Battle "
                          "for Wesnoth source tree.\n")
         sys.exit(1)
+    # In case we're looking at a whole-repo checkout in SVN
+    if os.path.exists("trunk"):
+        os.chdir("trunk")
 
 def string_strip(value):
     "String-strip the value"
