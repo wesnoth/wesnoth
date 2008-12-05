@@ -270,7 +270,7 @@ static PyTypeObject wesnoth_unittype_type = {
 	NULL,
 	NULL,
 	NULL,
-	NULL
+	NULL,
 #if PY_MAJOR_VERSION >= 2 && PY_MINOR_VERSION >= 6
 	0,
 	NULL,
@@ -405,7 +405,7 @@ static PyTypeObject wesnoth_attacktype_type = {
 	NULL,
 	NULL,
 	NULL,
-	NULL
+	NULL,
 #if PY_MAJOR_VERSION >= 2 && PY_MINOR_VERSION >= 6
 	0,
 	NULL,
@@ -725,7 +725,7 @@ static PyTypeObject wesnoth_unit_type = {
 	NULL,
 	NULL,
 	NULL,
-	NULL
+	NULL,
 #if PY_MAJOR_VERSION >= 2 && PY_MINOR_VERSION >= 6
 	0,
 	NULL,
@@ -839,7 +839,7 @@ static PyTypeObject wesnoth_location_type = {
 	NULL,
 	NULL,
 	NULL,
-	NULL
+	NULL,
 #if PY_MAJOR_VERSION >= 2 && PY_MINOR_VERSION >= 6
 	0,
 	NULL,
@@ -1015,7 +1015,7 @@ static PyTypeObject wesnoth_gamemap_type = {
 	NULL,
 	NULL,
 	NULL,
-	NULL
+	NULL,
 #if PY_MAJOR_VERSION >= 2 && PY_MINOR_VERSION >= 6
 	0,
 	NULL,
@@ -1204,7 +1204,7 @@ static PyTypeObject wesnoth_team_type = {
 	NULL,
 	NULL,
 	NULL,
-	NULL
+	NULL,
 #if PY_MAJOR_VERSION >= 2 && PY_MINOR_VERSION >= 6
 	0,
 	NULL,
@@ -1347,7 +1347,7 @@ static PyTypeObject wesnoth_gamestatus_type = {
 	NULL,
 	NULL,
 	NULL,
-	NULL
+	NULL,
 #if PY_MAJOR_VERSION >= 2 && PY_MINOR_VERSION >= 6
 	0,
 	NULL,
