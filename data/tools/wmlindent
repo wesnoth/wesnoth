@@ -159,8 +159,8 @@ def reindent(name, infp, outfp):
             saved_indent = indent
             indent = wmltools.baseindent
             inmacro = True
-        # Be sure to ignore the newlines
-        elif transformed.rstrip().endswith("#enddef"):
+        # Be sure to ignore the newlines and comments
+        elif transformed.rstrip().endswith("#enddef") and transformed.find("#") == transformed.find("#enddef"):
             indent = saved_indent
             inmacro = False
         elif not inmacro and transformed[0] in ('[', ']'):
