@@ -42,8 +42,6 @@ are the same size (4096 bytes by default, which should be the minimum).
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <sys/mman.h>
-#include <sys/types.h>
 
 void* dlmalloc(size_t size);
 void* dlcalloc(size_t count, size_t size);
