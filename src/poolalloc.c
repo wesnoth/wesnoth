@@ -357,13 +357,17 @@ void* valloc(size_t size)
 void* realloc(void* ptr, size_t size)
 {
 	if(IS_OUR_PTR(ptr)) {
-		const int old_size = get_block_from_chunk(ptr)->header.chunk_size;
-		if(old_size == 0) {
+		if(size == 0) {
 			free(ptr);
 			return NULL;
 		}
 
 		void* new_memory = malloc(size);
+		if(new_memory == NULL) {
+			return NULL;
+		}
+
+		const int old_size = get_block_from_chunk(ptr)->header.chunk_size;
 		const size_t nbytes = size < old_size ? size : old_size;
 		memcpy(new_memory, ptr, nbytes);
 		free(ptr);
