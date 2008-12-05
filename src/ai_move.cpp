@@ -553,11 +553,7 @@ std::pair<map_location,map_location> ai::choose_move(std::vector<target>& target
 			raise_user_interact();
 
 			const move_cost_calculator calc(u->second, map_, units_, u->first, dstsrc, enemy_dstsrc);
-			// FIXME: should be set to 
-			// std::min(best_target->value / best_rating, 100.0);
-			// but that causes an essertion failure.  See
-			// bug #12632.
-			const double locStopValue = 500.00;
+			const double locStopValue = std::min(best_target->value / best_rating, 100.0);
 			paths::route cur_route = a_star_search(u->first, best_target->loc, locStopValue, &calc, map_.w(), map_.h());
 
 			if (cur_route.move_left < locStopValue)
