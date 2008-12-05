@@ -1466,84 +1466,71 @@ namespace {
 
 	WML_HANDLER_FUNCTION(role,/*handler*/,/*event_info*/,cfg)
 	{
+		bool found = false;
 
-		// Get a list of the types this unit can be
-		std::vector<std::string> types = utils::split(cfg["type"]);
-		if (types.size() == 0) types.push_back("");
+		// role= represents the instruction, so we can't filter on it
+		config item = cfg.get_config();
+		item.remove_attribute("role");
+		vconfig filter(&item);
 
-		std::vector<std::string> sides = utils::split(cfg["side"]);
-
-		// Iterate over all the types, and for each type,
-		// try to find a unit that matches
-		std::vector<std::string>::iterator ti;
-		for(ti = types.begin(); ti != types.end(); ++ti) {
-			config item = cfg.get_config();
-			// Do not try to match an empty string
-			if (!ti->empty()) {
+		// try to match units on the gamemap before the recall lists
+		std::vector<std::string> types = utils::split(filter["type"]);
+		const bool has_any_types = !types.empty();
+		std::vector<std::string>::iterator ti = types.begin(),
+			ti_end = types.end();
+		// loop to give precendence based on type order
+		do {
+			if (has_any_types) {
 				item["type"] = *ti;
 			}
-			item["role"] = "";
-			vconfig filter(&item);
-
 			unit_map::iterator itor;
 			for(itor = units->begin(); itor != units->end(); ++itor) {
 				if(game_events::unit_matches_filter(itor, filter)) {
 					itor->second.assign_role(cfg["role"]);
+					found = true;
 					break;
 				}
 			}
-
-			if(itor != units->end())
-				break;
-
-			bool found = false;
-
-			if(sides.empty() == false) {
-				std::vector<std::string>::const_iterator si;
-				for(si = sides.begin(); si != sides.end(); ++si) {
-					int side_num = lexical_cast_default<int>(*si,1);
-					const std::string player_id = (*teams)[side_num-1].save_id();
-					player_info* player=state_of_game->get_player(player_id);
-
-					if(!player)
-						continue;
-
-					// Iterate over the units, and try to find one that matches
-					std::vector<unit>::iterator ui;
-					for(ui = player->available_units.begin();
-							ui != player->available_units.end(); ++ui) {
-						ui->set_game_context(units,game_map,status_ptr,teams);
-						scoped_recall_unit auto_store("this_unit", player_id,
-								(ui - player->available_units.begin()));
-						if(game_events::unit_matches_filter(*ui, filter,map_location())) {
-							ui->assign_role(cfg["role"]);
-							found=true;
-							break;
-						}
-					}
-				}
-			} else {
-				std::map<std::string, player_info>::iterator pi;
-				for(pi=state_of_game->players.begin();
-						pi!=state_of_game->players.end(); ++pi) {
-					std::vector<unit>::iterator ui;
-					// Iterate over the units, and try to find one that matches
-					for(ui = pi->second.available_units.begin();
-							ui != pi->second.available_units.end(); ++ui) {
-						ui->set_game_context(units,game_map,status_ptr,teams);
-						scoped_recall_unit auto_store("this_unit", pi->first,
-								(ui - pi->second.available_units.begin()));
-						if(game_events::unit_matches_filter(*ui, filter,map_location())) {
-							ui->assign_role(cfg["role"]);
-							found=true;
-							break;
-						}
-					}
+		} while(!found && has_any_types && ++ti != ti_end);
+		if(!found) {
+			// next try to match units on the recall lists
+			std::set<std::string> player_ids;
+			std::vector<std::string> sides = utils::split(cfg["side"]);
+			const bool has_any_sides = !sides.empty();
+			foreach(std::string const& side_str, sides) {
+				size_t side_num = lexical_cast_default<size_t>(side_str,0);
+				if(side_num > 0 && side_num <= teams->size()) {
+					player_ids.insert((teams->begin()+(side_num-1))->save_id());
 				}
 			}
-
-			// Stop searching if we found a unit:
-			if (found) break;
+			// loop to give precendence based on type order
+			std::vector<std::string>::iterator ti = types.begin();
+			do {
+				if (has_any_types) {
+					item["type"] = *ti;
+				}
+				std::map<std::string, player_info>::iterator pi,
+					pi_end = state_of_game->players.end();
+				for(pi=state_of_game->players.begin(); pi != pi_end; ++pi) {
+					std::string const& player_id = pi->first;
+					player_info& p_info = pi->second;
+					// Verify the filter's side= includes this player
+					if(has_any_sides && !player_ids.count(player_id)) {
+						continue;
+					}
+					// Iterate over the player's recall list to find a match
+					for(size_t i=0; i < p_info.available_units.size(); ++i) {
+						unit& u = p_info.available_units[i];
+						u.set_game_context(units, game_map, status_ptr, teams);
+						scoped_recall_unit auto_store("this_unit", player_id, i);
+						if(game_events::unit_matches_filter(u, filter, map_location())) {
+							u.assign_role(cfg["role"]);
+							found=true;
+							break;
+						}
+					}
+				}
+			} while(!found && has_any_types && ++ti != ti_end);
 		}
 	}
 
@@ -2914,7 +2901,7 @@ namespace {
 				if(gui2::new_widgets && options.empty() && speaker != units->end()) {
 					// Get the portrait and if found proceed to use the new dialog.
 
-					const tportrait* portrait = 
+					const tportrait* portrait =
 						speaker->second.portrait(400, tportrait::LEFT);
 					if(portrait) {
 						gui2::twml_message_left (

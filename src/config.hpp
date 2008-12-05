@@ -90,6 +90,7 @@ public:
 
 	const t_string& get_attribute(const std::string& key) const;
 	bool has_attribute(const std::string& key) const {return values.find(key) != values.end();}
+	void remove_attribute(const std::string& key) {values.erase(key);}
 
 	/**
 	 * This should only be used if there is no mapping of the key already,
