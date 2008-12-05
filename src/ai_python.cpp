@@ -271,6 +271,10 @@ static PyTypeObject wesnoth_unittype_type = {
 	NULL,
 	NULL,
 	NULL
+#if PY_MAJOR_VERSION >= 2 && PY_MINOR_VERSION >= 6
+	0,
+	NULL,
+#endif
 };
 
 static PyObject* wrap_unittype(const unit_type& type)
@@ -402,6 +406,10 @@ static PyTypeObject wesnoth_attacktype_type = {
 	NULL,
 	NULL,
 	NULL
+#if PY_MAJOR_VERSION >= 2 && PY_MINOR_VERSION >= 6
+	0,
+	NULL,
+#endif
 };
 
 static PyObject* wrap_attacktype(const attack_type& type)
@@ -718,6 +726,10 @@ static PyTypeObject wesnoth_unit_type = {
 	NULL,
 	NULL,
 	NULL
+#if PY_MAJOR_VERSION >= 2 && PY_MINOR_VERSION >= 6
+	0,
+	NULL,
+#endif
 };
 
 typedef struct {
@@ -828,6 +840,10 @@ static PyTypeObject wesnoth_location_type = {
 	NULL,
 	NULL,
 	NULL
+#if PY_MAJOR_VERSION >= 2 && PY_MINOR_VERSION >= 6
+	0,
+	NULL,
+#endif
 };
 
 static PyObject *wrap_location(const map_location& loc)
@@ -1000,6 +1016,10 @@ static PyTypeObject wesnoth_gamemap_type = {
 	NULL,
 	NULL,
 	NULL
+#if PY_MAJOR_VERSION >= 2 && PY_MINOR_VERSION >= 6
+	0,
+	NULL,
+#endif
 };
 
 static PyObject* wrapper_team_name(wesnoth_team* team, void* /*closure*/)
@@ -1185,6 +1205,10 @@ static PyTypeObject wesnoth_team_type = {
 	NULL,
 	NULL,
 	NULL
+#if PY_MAJOR_VERSION >= 2 && PY_MINOR_VERSION >= 6
+	0,
+	NULL,
+#endif
 };
 
 PyObject* python_ai::wrapper_unit_movement_cost( wesnoth_unit* unit, PyObject* args )
@@ -1324,6 +1348,10 @@ static PyTypeObject wesnoth_gamestatus_type = {
 	NULL,
 	NULL,
 	NULL
+#if PY_MAJOR_VERSION >= 2 && PY_MINOR_VERSION >= 6
+	0,
+	NULL,
+#endif
 };
 
 static PyObject* wrap_move_map(const ai_interface::move_map& wrap)
