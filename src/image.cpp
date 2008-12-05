@@ -30,6 +30,7 @@
 
 #define ERR_DP LOG_STREAM(err, display)
 #define INFO_DP LOG_STREAM(info, display)
+#define DBG_CACHE LOG_STREAM(debug, cache)
 
 namespace {
 
@@ -779,7 +780,7 @@ surface get_image(const image::locator& i_locator, TYPE type)
 	res = create_optimized_surface(res);
 	 i_locator.add_to_cache(*imap, res);
 
-	std::cerr << "IMAGES: " << (images_.size()/1024) << " HEXED: " << (images_.size()/1024) << " SCALED_TO_HEX: " << (scaled_to_hex_images_.size()/1024) << " SCALED_TO_ZOOM: " << (scaled_to_zoom_.size()/1024) << " UNMASKED: " << (unmasked_images_.size()/1024) << " BRIGHTENED: " << (brightened_images_.size()/1024) << " SEMI: " << (semi_brightened_images_.size()/1024)
+	DBG_CACHE << "IMAGES: " << (images_.size()/1024) << " HEXED: " << (images_.size()/1024) << " SCALED_TO_HEX: " << (scaled_to_hex_images_.size()/1024) << " SCALED_TO_ZOOM: " << (scaled_to_zoom_.size()/1024) << " UNMASKED: " << (unmasked_images_.size()/1024) << " BRIGHTENED: " << (brightened_images_.size()/1024) << " SEMI: " << (semi_brightened_images_.size()/1024)
     << " TOTAL: " << (images_.size() + hexed_images_.size() + scaled_to_hex_images_.size() + scaled_to_zoom_.size() + unmasked_images_.size() + brightened_images_.size() + semi_brightened_images_.size())/(1024*1024) << "\n";
 
 	return res;
@@ -888,8 +889,8 @@ void cache_type<T, SizeFunctor>::on_load(int index){
 	cache_item<T>& elt = content_[index];
 	if(!elt.loaded) return ;
 	lru_list_.push_front(index);
-	std::cerr << "cache size: " << size_functor_(elt.item) << "\n";
-	std::cerr << "cache size max: " << cache_size_ << "/" << cache_max_size_ << "\n";
+	DBG_CACHE << "cache size: " << size_functor_(elt.item) << "\n";
+	DBG_CACHE << "cache size max: " << cache_size_ << "/" << cache_max_size_ << "\n";
 	cache_size_ += size_functor_(elt.item);
 	elt.position = lru_list_.begin();
 	while(cache_size_ > cache_max_size_-100) {
