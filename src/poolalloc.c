@@ -236,7 +236,7 @@ void collect_memory_from_other_threads()
 {
 	pthread_mutex_lock(&free_chunks_mutex);
 	int n;
-	for(n = 0; n != free_chunks; ++n) {
+	for(n = 0; n != nfree_chunks; ++n) {
 		free_memory(free_chunks[n]);
 	}
 
