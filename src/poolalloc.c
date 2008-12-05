@@ -324,7 +324,7 @@ void free_memory(void* ptr)
 
 void* malloc(size_t size)
 {
-	if(pthread_self() == main_thread && size > 0 && size <= MAX_CHUNK_SIZE) {
+	if(pthread_equal(pthread_self(), main_thread) && size > 0 && size <= MAX_CHUNK_SIZE) {
 		size = ROUNDUP_SIZE(size);
 		void* result = allocate_memory(size);
 		if(result != NULL) {
@@ -383,7 +383,7 @@ void* realloc(void* ptr, size_t size)
 void free(void* ptr)
 {
 	if(IS_OUR_PTR(ptr)) {
-		if(pthread_self() != main_thread) {
+		if(!pthread_equal(pthread_self(), main_thread)) {
 			//this will queue up the free to be performed later in the
 			//main thread when it wants more memory.
 			free_memory_from_other_thread(ptr);
