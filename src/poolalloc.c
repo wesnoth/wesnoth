@@ -34,8 +34,6 @@ and then its data section. A block should be a multiple of the page size.
 A given block is dedicated to allocating chunks of a specific size. All blocks
 are the same size (4096 bytes by default, which should be the minimum).
 - superblock: we allocate one huge block from which all blocks are allocated.
-
-When the program 
 */
 
 #include <assert.h>
@@ -63,7 +61,7 @@ void dlfree(void* ptr);
 #define GET_POOL_INDEX(n) ((n)/CHUNK_SIZE_STEP)
 #define ROUNDUP_SIZE(n) (((n)%CHUNK_SIZE_STEP) ? ((n) + CHUNK_SIZE_STEP - ((n)%CHUNK_SIZE_STEP)) : (n))
 
-#define CUSTOM_MEMORY_SIZE (1024*1024*20)
+#define CUSTOM_MEMORY_SIZE (1024*1024*40)
 uint8_t* begin_superblock_range = NULL;
 uint8_t* begin_superblock = NULL;
 uint8_t* end_superblock = NULL;
@@ -74,14 +72,18 @@ pthread_t main_thread;
 void init_custom_malloc()
 {
 	main_thread = pthread_self();
-	void* alloc = mmap(NULL, CUSTOM_MEMORY_SIZE, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANON, -1, 0);
+
+	// allocate the memory -- allocate an extra block at the end, so that
+	// if the address we get back isn't block-aligned, we can advance
+	// the pointer until it is.
+	void* alloc = dlmalloc(CUSTOM_MEMORY_SIZE + BLOCK_SIZE);
 	assert(alloc);
-	begin_superblock_range = begin_superblock = (uint8_t*)alloc;
-	end_superblock = begin_superblock + CUSTOM_MEMORY_SIZE;
-	while(((intptr_t)begin_superblock)%BLOCK_SIZE) {
+	begin_superblock = (uint8_t*)alloc;
+	while(((uintptr_t)begin_superblock)%BLOCK_SIZE) {
 		++begin_superblock;
 	}
 
+	end_superblock = begin_superblock + CUSTOM_MEMORY_SIZE;
 	begin_superblock_range = begin_superblock;
 }
 
@@ -219,10 +221,69 @@ void make_block_orphan(Block* block)
 	header->next = NULL;
 }
 
+// A list of the chunks that were allocated in the main thread, but free()
+// was called in another thread. We can't deallocate them from another thread,
+// so we put them in this array. The main thread will free all these chunks,
+// whenever it can't immediately allocate memory.
+void** free_chunks;
+size_t nfree_chunks, capacity_free_chunks;
+pthread_mutex_t free_chunks_mutex = PTHREAD_MUTEX_INITIALIZER;
+
+//mutex to protect all calls to dlmalloc.
+pthread_mutex_t dlmalloc_mutex = PTHREAD_MUTEX_INITIALIZER;
+
+void free_memory(void* ptr);
+
+void collect_memory_from_other_threads()
+{
+	pthread_mutex_lock(&free_chunks_mutex);
+	int n;
+	for(n = 0; n != free_chunks; ++n) {
+		free_memory(free_chunks[n]);
+	}
+
+	nfree_chunks = 0;
+	pthread_mutex_unlock(&free_chunks_mutex);
+}
+
+void free_memory_from_other_thread(void* ptr)
+{
+	pthread_mutex_lock(&free_chunks_mutex);
+	
+	if(nfree_chunks == capacity_free_chunks) {
+		capacity_free_chunks *= 2;
+		if(capacity_free_chunks < 16) {
+			capacity_free_chunks = 16;
+		}
+
+		pthread_mutex_lock(&dlmalloc_mutex);
+		void** new_free_chunks = (void**)dlrealloc(free_chunks, sizeof(void*)*capacity_free_chunks);
+		pthread_mutex_unlock(&dlmalloc_mutex);
+		if(!new_free_chunks) {
+			pthread_mutex_unlock(&free_chunks_mutex);
+			fprintf(stderr, "DLREALLOC FAILED!\n");
+			return;
+		}
+
+		free_chunks = new_free_chunks;
+	}
+
+	free_chunks[nfree_chunks++] = ptr;
+	pthread_mutex_unlock(&free_chunks_mutex);
+}
+
 Block* get_block(uint32_t chunk_size)
 {
 	const int index = GET_POOL_INDEX(chunk_size);
 	assert(index >= 0 && index < sizeof(block_pools)/sizeof(*block_pools));
+	if(block_pools[index]) {
+		return block_pools[index];
+	}
+
+	// free memory from other threads and then try again. This requires a mutex
+	// lock, but this code should be rarely reached.
+	collect_memory_from_other_threads();
+
 	if(block_pools[index]) {
 		return block_pools[index];
 	}
@@ -263,8 +324,6 @@ void free_memory(void* ptr)
 	}
 }
 
-pthread_mutex_t malloc_mutex = PTHREAD_MUTEX_INITIALIZER;
-
 void* malloc(size_t size)
 {
 	if(pthread_self() == main_thread && size > 0 && size <= MAX_CHUNK_SIZE) {
@@ -275,25 +334,25 @@ void* malloc(size_t size)
 		}
 	}
 
-	pthread_mutex_lock(&malloc_mutex);
+	pthread_mutex_lock(&dlmalloc_mutex);
 	void* result = dlmalloc(size);
-	pthread_mutex_unlock(&malloc_mutex);
+	pthread_mutex_unlock(&dlmalloc_mutex);
 	return result;
 }
 
 void* calloc(size_t count, size_t size)
 {
-	pthread_mutex_lock(&malloc_mutex);
+	pthread_mutex_lock(&dlmalloc_mutex);
 	void* result = dlcalloc(count, size);
-	pthread_mutex_unlock(&malloc_mutex);
+	pthread_mutex_unlock(&dlmalloc_mutex);
 	return result;
 }
 
 void* valloc(size_t size)
 {
-	pthread_mutex_lock(&malloc_mutex);
+	pthread_mutex_lock(&dlmalloc_mutex);
 	void* result = dlvalloc(size);
-	pthread_mutex_unlock(&malloc_mutex);
+	pthread_mutex_unlock(&dlmalloc_mutex);
 	return result;
 }
 
@@ -313,9 +372,9 @@ void* realloc(void* ptr, size_t size)
 		return new_memory;
 	}
 
-	pthread_mutex_lock(&malloc_mutex);
+	pthread_mutex_lock(&dlmalloc_mutex);
 	void* result = dlrealloc(ptr, size);
-	pthread_mutex_unlock(&malloc_mutex);
+	pthread_mutex_unlock(&dlmalloc_mutex);
 	return result;
 }
 
@@ -323,16 +382,18 @@ void free(void* ptr)
 {
 	if(IS_OUR_PTR(ptr)) {
 		if(pthread_self() != main_thread) {
-			fprintf(stderr, "ERROR, wrong thread!\n");
+			//this will queue up the free to be performed later in the
+			//main thread when it wants more memory.
+			free_memory_from_other_thread(ptr);
 			return;
-
 		}
+
 		free_memory(ptr);
 		return;
 	}
-	pthread_mutex_lock(&malloc_mutex);
+	pthread_mutex_lock(&dlmalloc_mutex);
 	dlfree(ptr);
-	pthread_mutex_unlock(&malloc_mutex);
+	pthread_mutex_unlock(&dlmalloc_mutex);
 }
 
 #ifdef TEST_POOLED_ALLOC
