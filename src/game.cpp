@@ -1099,6 +1099,8 @@ bool game_controller::new_campaign()
 	state_.campaign = campaign["id"];
 	state_.abbrev = campaign["abbrev"];
 	state_.scenario = campaign["first_scenario"];
+	state_.end_text = campaign["end_text"];
+	state_.end_text_duration = lexical_cast_default<unsigned int>(campaign["end_text_duration"]);
 
 	const std::string difficulty_descriptions = campaign["difficulty_descriptions"];
 	std::vector<std::string> difficulty_options = utils::split(difficulty_descriptions, ';');

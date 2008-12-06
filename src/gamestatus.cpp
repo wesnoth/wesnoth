@@ -624,6 +624,9 @@ void write_game(const game_state& gamestate, config& cfg, WRITE_GAME_MODE mode)
 
 	cfg["random_seed"] = lexical_cast<std::string>(gamestate.rng().get_random_seed());
 	cfg["random_calls"] = lexical_cast<std::string>(gamestate.rng().get_random_calls());
+	
+	cfg["end_text"] = gamestate.end_text;
+	cfg["end_text_duration"] = str_cast<unsigned int>(gamestate.end_text_duration);
 
 	cfg.add_child("variables",gamestate.get_variables());
 
@@ -681,6 +684,8 @@ void write_game(config_writer &out, const game_state& gamestate, WRITE_GAME_MODE
 	out.write_key_val("random_seed", lexical_cast<std::string>(gamestate.rng().get_random_seed()));
 	out.write_key_val("random_calls", lexical_cast<std::string>(gamestate.rng().get_random_calls()));
 	out.write_key_val("next_underlying_unit_id", lexical_cast<std::string>(n_unit::id_manager::instance().get_save_id()));
+	out.write_key_val("end_text", gamestate.end_text);
+	out.write_key_val("end_text_duration", str_cast<unsigned int>(gamestate.end_text_duration));
 	out.write_child("variables", gamestate.get_variables());
 
 	for(std::map<std::string, wml_menu_item *>::const_iterator j=gamestate.wml_menu_items.begin();

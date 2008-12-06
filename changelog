@@ -47,6 +47,10 @@ Version 1.5.6+svn:
    * Added a horizontal scrollbar widget.
  * WML engine:
    * Added the 'round' key to [set_variable].
+   * It is possible to override the end-of-campaign screen text
+     and its duration using end_text and end_text_duration attributes
+     respectively, in [endlevel] or [campaign] tags. end_text_duration
+     is measured in milliseconds. (feature #10449) 
  * Miscellaneous and bug fixes:
    * New memory allocator introduced to the engine. It should
      produce 5-10% savings in memory usage on 64-bit systems.
