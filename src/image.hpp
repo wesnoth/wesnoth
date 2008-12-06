@@ -72,22 +72,13 @@ namespace image {
        	std::list<int>::iterator position;
 	};
 
-	struct SizeSurface {
-		int operator()(const surface& s) const { return 256 + (s ? s->w*s->h*4 : 0); }
-	};
-
-	struct SizeOne {
-		template<typename T>
-		int operator()(const T&) const { return 1; }
-	};
-
-	template<typename T, typename SizeFunctor>
+	template<typename T>
 	class cache_type 
 	{
 	public:
 		cache_type() :
 			cache_size_(0),
-			cache_max_size_(10000000),
+			cache_max_size_(2000),
 			lru_list_(),
 			content_()
 		{
@@ -96,13 +87,11 @@ namespace image {
 		cache_item<T>& get_element(int index);
 		void on_load(int index);
 		void flush();
-		size_t size() const { return cache_size_; }
 	private:
-		size_t cache_size_;
-		size_t cache_max_size_;
+		int cache_size_;
+		int cache_max_size_;
        	std::list<int> lru_list_;
        	std::vector<cache_item<T> > content_;
-		SizeFunctor size_functor_;
 	};
 
 	//a generic image locator. Abstracts the location of an image.
@@ -167,18 +156,18 @@ namespace image {
 		// loads the image it is pointing to from the disk
 		surface load_from_disk() const;
 
-		bool in_cache(cache_type<surface,SizeSurface>& cache) const
+		bool in_cache(cache_type<surface>& cache) const
 			{ return index_ == -1 ? false : cache.get_element(index_).loaded; }
-		surface locate_in_cache(cache_type<surface,SizeSurface>& cache) const
+		surface locate_in_cache(cache_type<surface>& cache) const
 			{ return index_ == -1 ? surface() : cache.get_element(index_).item; }
-		void add_to_cache(cache_type<surface,SizeSurface>& cache, const surface &image) const
+		void add_to_cache(cache_type<surface>& cache, const surface &image) const
 			{ if(index_ != -1 ) cache.get_element(index_) = cache_item<surface>(image); cache.on_load(index_); }
 
-		bool in_cache(cache_type<locator,SizeOne>& cache) const
+		bool in_cache(cache_type<locator>& cache) const
 			{ return index_ == -1 ? false : cache.get_element(index_).loaded; cache.on_load(index_); }
-		locator locate_in_cache(cache_type<locator,SizeOne>& cache) const
+		locator locate_in_cache(cache_type<locator>& cache) const
 			{ return index_ == -1 ? locator() : cache.get_element(index_).item; }
-		void add_to_cache(cache_type<locator,SizeOne>& cache, const locator &image) const
+		void add_to_cache(cache_type<locator>& cache, const locator &image) const
 			{ if(index_ != -1) cache.get_element(index_) = cache_item<locator>(image); }
 	protected:
 		static int last_index_;
@@ -192,8 +181,8 @@ namespace image {
 	};
 
 
-	typedef cache_type<surface,SizeSurface> image_cache;
-	typedef cache_type<locator,SizeOne> locator_cache;
+	typedef cache_type<surface> image_cache;
+	typedef cache_type<locator> locator_cache;
 	typedef std::map<t_translation::t_terrain, surface> mini_terrain_cache_map;
 	extern mini_terrain_cache_map mini_terrain_cache;
 	extern mini_terrain_cache_map mini_fogged_terrain_cache;

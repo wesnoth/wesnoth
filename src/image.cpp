@@ -67,8 +67,8 @@ namespace image {
 
 std::list<int> dummy_list;
 
-template<typename T, typename SizeFunctor>
-void cache_type<T, SizeFunctor>::flush()
+template<typename T>
+void cache_type<T>::flush()
 {
 	typename std::vector<cache_item<T> >::iterator beg = content_.begin();
 	typename std::vector<cache_item<T> >::iterator end = content_.end();
@@ -780,9 +780,6 @@ surface get_image(const image::locator& i_locator, TYPE type)
 	res = create_optimized_surface(res);
 	 i_locator.add_to_cache(*imap, res);
 
-	DBG_CACHE << "IMAGES: " << (images_.size()/1024) << " HEXED: " << (images_.size()/1024) << " SCALED_TO_HEX: " << (scaled_to_hex_images_.size()/1024) << " SCALED_TO_ZOOM: " << (scaled_to_zoom_.size()/1024) << " UNMASKED: " << (unmasked_images_.size()/1024) << " BRIGHTENED: " << (brightened_images_.size()/1024) << " SEMI: " << (semi_brightened_images_.size()/1024)
-    << " TOTAL: " << (images_.size() + hexed_images_.size() + scaled_to_hex_images_.size() + scaled_to_zoom_.size() + unmasked_images_.size() + brightened_images_.size() + semi_brightened_images_.size())/(1024*1024) << "\n";
-
 	return res;
 }
 
@@ -868,8 +865,8 @@ void precache_file_existence(const std::string& subdir)
 }
 
 
-template<typename T, typename SizeFunctor>
-cache_item<T>& cache_type<T, SizeFunctor>::get_element(int index){
+template<typename T>
+cache_item<T>& cache_type<T>::get_element(int index){
 	assert (index != -1);
 	while(static_cast<size_t>(index) >= content_.size()) {
 		content_.push_back(cache_item<T>());
@@ -883,22 +880,19 @@ cache_item<T>& cache_type<T, SizeFunctor>::get_element(int index){
 	}
 	return elt;
 }
-template<typename T, typename SizeFunctor>
-void cache_type<T, SizeFunctor>::on_load(int index){
+template<typename T>
+void cache_type<T>::on_load(int index){
 	if(index == -1) return ;
 	cache_item<T>& elt = content_[index];
 	if(!elt.loaded) return ;
 	lru_list_.push_front(index);
-	DBG_CACHE << "cache size: " << size_functor_(elt.item) << "\n";
-	DBG_CACHE << "cache size max: " << cache_size_ << "/" << cache_max_size_ << "\n";
-	cache_size_ += size_functor_(elt.item);
 	elt.position = lru_list_.begin();
 	while(cache_size_ > cache_max_size_-100) {
 		cache_item<T>& elt = content_[lru_list_.back()];
-		cache_size_ -= size_functor_(elt.item);
 		elt.loaded=false;
 		elt.item = T();
 		lru_list_.pop_back();
+		cache_size_--;
 	}
 }
 
