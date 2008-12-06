@@ -221,7 +221,7 @@ void increment_filesystem_progress () {
 	// I am assuming non parallel access here!
 	if (loadscreen::global_loadscreen != 0) {
 		if (loadscreen::global_loadscreen->filesystem_counter == 0) {
-			loadscreen::global_loadscreen->increment_progress(0, _("Verifying cache."));
+			loadscreen::global_loadscreen->increment_progress(0, _("Verifying cache"));
 		}
 		oldpct = (PRCNT_BY_FILESYSTEM * loadscreen::global_loadscreen->filesystem_counter) / CALLS_TO_FILESYSTEM;
 		newpct = (PRCNT_BY_FILESYSTEM * ++(loadscreen::global_loadscreen->filesystem_counter)) / CALLS_TO_FILESYSTEM;
@@ -240,7 +240,7 @@ void increment_binary_wml_progress () {
 	// I am assuming non parallel access here!
 	if (loadscreen::global_loadscreen != 0) {
 		if (loadscreen::global_loadscreen->binarywml_counter == 0) {
-			loadscreen::global_loadscreen->increment_progress(0, _("Reading cache."));
+			loadscreen::global_loadscreen->increment_progress(0, _("Reading cache"));
 		}
 		oldpct = (PRCNT_BY_BINARYWML * loadscreen::global_loadscreen->binarywml_counter) / CALLS_TO_BINARYWML;
 		newpct = (PRCNT_BY_BINARYWML * ++(loadscreen::global_loadscreen->binarywml_counter)) / CALLS_TO_BINARYWML;
