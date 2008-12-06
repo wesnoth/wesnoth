@@ -79,9 +79,9 @@ int thorizontal_scrollbar::on_bar(const tpoint& coordinate) const
 	}
 
 	// we also assume the bar is over the entire width of the widget.
-	if(static_cast<size_t>(coordinate.y) < get_positioner_offset()) {
+	if(static_cast<size_t>(coordinate.x) < get_positioner_offset()) {
 		return -1;
-	} else if(static_cast<size_t>(coordinate.y) > 
+	} else if(static_cast<size_t>(coordinate.x) > 
 			get_positioner_offset() + get_positioner_length()) {
 
 		return 1;
@@ -91,5 +91,4 @@ int thorizontal_scrollbar::on_bar(const tpoint& coordinate) const
 }
 
 } // namespace gui2
-
 

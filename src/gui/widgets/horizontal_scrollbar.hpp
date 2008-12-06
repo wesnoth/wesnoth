@@ -32,7 +32,7 @@ public:
 private:
 
 	/** Inherited from tscrollbar. */
-	unsigned get_length() const { return get_height(); }
+	unsigned get_length() const { return get_width(); }
 
 	/** Inherited from tscrollbar. */
 	unsigned minimum_positioner_length() const;
@@ -54,7 +54,7 @@ private:
 
 	/** Inherited from tscrollbar. */
 	int get_length_difference(const tpoint& original, const tpoint& current) const
-		{ return current.y - original.y; }
+		{ return current.x - original.x; }
 
 	/** Inherited from tcontrol. */
 	const std::string& get_control_type() const 
