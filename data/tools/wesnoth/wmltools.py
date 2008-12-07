@@ -84,7 +84,8 @@ class Forest:
             subtree.sort(lambda x, y: cmp(x, y) - 2*int(x.endswith("_main.cfg"))  + 2*int(y.endswith("_main.cfg")))
             self.forest.append(subtree)
         for i in range(len(self.forest)):
-            self.forest[i] = filter(lambda x: ".svn" not in x and ".git" not in x, self.forest[i])
+            # Ignore versiuon-control subdirectories and Emacs tempfiles
+            self.forest[i] = filter(lambda x: ".svn" not in x and ".git" not in x and '.#' not in x, self.forest[i])
             self.forest[i] = filter(lambda x: not os.path.isdir(x), self.forest[i])
             if exclude:
                 self.forest[i] = filter(lambda x: not re.search(exclude, x), self.forest[i])
