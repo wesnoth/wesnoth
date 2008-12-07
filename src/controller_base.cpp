@@ -128,8 +128,10 @@ void controller_base::post_mouse_press(const SDL_Event& /*event*/) {
 bool controller_base::handle_scroll(CKey& key, int mousex, int mousey, int mouse_flags)
 {
 	bool scrolling = false;
-	const int scroll_threshold = (preferences::mouse_scroll_enabled()) ? 5 : 0;
 	bool mouse_in_window = SDL_GetAppState() & SDL_APPMOUSEFOCUS;
+	const int scroll_threshold = (preferences::mouse_scroll_enabled()) 
+			? preferences::mouse_scroll_threshold()
+			: 0;
 
 	if ((key[SDLK_UP] && have_keyboard_focus()) 
 	|| (mousey < scroll_threshold && mouse_in_window)) {

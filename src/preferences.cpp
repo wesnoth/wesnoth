@@ -54,6 +54,11 @@ base_manager::base_manager()
 base_manager::~base_manager()
 {
 	if (no_preferences_save) return;
+	
+	// Set the 'hidden' preferences.
+	prefs["scroll_threshold"] =
+			lexical_cast<std::string>(mouse_scroll_threshold());
+
 	write_preferences();
 }
 
@@ -517,6 +522,11 @@ bool mouse_scroll_enabled()
 void enable_mouse_scroll(bool value)
 {
 	set("mouse_scrolling", value ? "yes" : "no");
+}
+
+int mouse_scroll_threshold()
+{
+	return lexical_cast_default<int>(prefs["scroll_threshold"], 10);
 }
 
 bool animate_map()

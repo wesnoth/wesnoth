@@ -130,6 +130,14 @@ namespace preferences {
 	bool mouse_scroll_enabled();
 	void enable_mouse_scroll(bool value);
 
+	/** 
+	 * Gets the threshold for when to scroll.
+	 *
+	 * This scrolling happens when the mouse is in the application and near
+	 * the border.
+	 */
+	int mouse_scroll_threshold();
+
 	/** Set editor red tint level. */
 	void set_editor_r(int value);
 	/** Set editor green tint level. */
