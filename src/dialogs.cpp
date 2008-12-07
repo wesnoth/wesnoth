@@ -720,6 +720,7 @@ unit_preview_pane::details::details() :
 	image(),
 	name(),
 	type_name(),
+	race(),
 	level(0),
 	alignment(),
 	traits(),
@@ -835,6 +836,7 @@ void unit_preview_pane::draw_contents()
 
 	std::stringstream text;
 	text << det.type_name << "\n"
+		<< det.race << "\n"
 		<< font::BOLD_TEXT << _("level") << " " << det.level << "\n"
 		<< det.alignment << "\n"
 		<< det.traits << "\n";
@@ -934,6 +936,9 @@ const unit_preview_pane::details units_list_preview_pane::get_details() const
 
 	det.name = u.name();
 	det.type_name = u.type_name();
+	if(u.race() != NULL) {
+		det.race = u.race()->name(u.gender());
+	}
 	det.level = u.level();
 	det.alignment = unit_type::alignment_description(u.alignment(), u.gender());
 	det.traits = u.traits_description();
@@ -997,6 +1002,13 @@ const unit_types_preview_pane::details unit_types_preview_pane::get_details() co
 	det.type_name = t->type_name();
 	det.level = t->level();
 	det.alignment = unit_type::alignment_description(t->alignment(), t->genders().front());
+	
+	race_map const& rcm = unit_type_data::types().races();
+	race_map::const_iterator ri = rcm.find(t->race());
+	if(ri != rcm.end()) {
+		assert(t->genders().empty() != true);
+		det.race = (*ri).second.name(t->genders().front());
+	}
 
 	//FIXME: This probably must be move into a unit_type function
 	const std::vector<config*> traits = t->possible_traits();

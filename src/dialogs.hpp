@@ -82,7 +82,7 @@ public:
 		details();
 
 		surface image;
-	  	std::string name, type_name;
+	  	std::string name, type_name, race;
 		int level;
 		std::string alignment, traits;
 		std::vector<t_string> abilities;
