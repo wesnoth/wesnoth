@@ -35,6 +35,26 @@ void twidget::set_size(const tpoint& origin, const tpoint& size)
 	y_ = origin.y;
 	w_ = size.x;
 	h_ = size.y;
+
+#ifdef NEW_DRAW	
+	screen_x_ = x_;
+	screen_y_ = y_;
+	twidget* parent = get_window();
+	if(parent && parent != this) {
+		screen_x_ += parent->get_screen_x();
+		screen_y_ += parent->get_screen_y();
+	}
+#if 0
+	std::cerr << "Id " << id()
+		<< " rect " << get_rect()
+		<< " parent "
+			<< (parent ? parent->get_screen_x() : 0)
+			<< ','
+			<< (parent ? parent->get_screen_y() : 0)
+		<< " screen origin " << screen_x_ << ',' << screen_y_
+		<< ".\n";
+#endif
+#endif
 	set_dirty();
 }
 
@@ -57,5 +77,17 @@ tdialog* twidget::dialog()
 	twindow* window = get_window();
 	return window ? window->dialog() : 0;
 }
-
+#ifdef NEW_DRAW
+void twidget::populate_dirty_list(twindow& caller, 
+		std::vector<twidget*>& call_stack)
+{
+	call_stack.push_back(this);
+	if(dirty_) {
+		caller.add_to_dirty_list(call_stack);
+	} else {
+		// virtual function which only does something for container items.
+		child_populate_dirty_list(caller, call_stack);
+	}
+}
+#endif
 } // namespace gui2

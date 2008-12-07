@@ -162,9 +162,14 @@ public:
 	 */
 	void load_config();
 
+#ifndef NEW_DRAW
 	/** Inherited from twidget. */
 	void draw(surface& surface,  const bool force = false,
 	        const bool invalidate_background = false);
+#else
+	/** Inherited from twidget. */
+	void draw_background(surface& frame_buffer);
+#endif
 
 	/** Inherited from twidget. */
 	twidget* find_widget(const tpoint& coordinate, const bool must_be_active) 
@@ -312,6 +317,7 @@ private:
 	 */
 	std::vector<tcanvas> canvas_;
 
+#ifndef NEW_DRAW
 	/**
 	 * Holds a copy of the original background.
 	 *
@@ -341,7 +347,7 @@ private:
 	 * @param dst          Background to restore.
 	 */
 	void restore_background(surface& dst);
-
+#endif
 	/**
 	 * Contains the pointer to the configuration.
 	 *

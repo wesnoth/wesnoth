@@ -117,11 +117,13 @@ private:
 	/** Inherited from tcontrol. */
 	const std::string& get_control_type() const 
 		{ static const std::string type = "scroll_label"; return type; }
-
+#ifndef NEW_DRAW
 	/** Inherited from tvertical_scrollbar_container_. */
 	void draw_content(surface& surface,  const bool force = false,
 	        const bool invalidate_background = false);
-
+#else
+//FIXME we can't draw yet.	
+#endif
 	/** Inherited from tvertical_scrollbar_container_. */
 	twidget* content_find_widget(
 		const tpoint& coordinate, const bool must_be_active);

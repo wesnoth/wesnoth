@@ -124,6 +124,18 @@ public:
 	 */
 	void draw();
 
+#ifdef NEW_DRAW
+	/**
+	 * Adds an item to the dirty_list_.
+	 *
+	 * @param call_stack          The list of widgets traversed to get to the
+	 *                            dirty wiget.
+	 */
+	void add_to_dirty_list(const std::vector<twidget*>& call_stack)
+	{
+		dirty_list_.push_back(call_stack);
+	}	
+#endif
 	/** The status of the window. */
 	enum tstatus{ 
 		NEW,                      /**< The window is new and not yet shown. */
@@ -302,9 +314,10 @@ private:
 	 */
 	bool top_level_; 
 
+#ifndef NEW_DRAW
 	/** The surface containing the window. */
 	surface window_; 
-
+#endif
 	/** When the window closes this surface is used to undraw the window. */
 	surface restorer_;
 
@@ -388,6 +401,16 @@ private:
 	 */
 	void draw(surface& surface, const bool force = false, 
 			const bool invalidate_background = false);
+
+#ifdef NEW_DRAW
+	/**
+	 * The list with dirty items in the window.
+	 *
+	 * When drawing only the widgets that are dirty are updated. The draw()
+	 * function has more information about the dirty_list_.
+	 */
+	std::vector<std::vector<twidget*> > dirty_list_;
+#endif
 
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 	tdebug_layout_graph* debug_layout_;

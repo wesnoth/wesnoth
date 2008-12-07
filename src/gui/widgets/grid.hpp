@@ -211,10 +211,18 @@ public:
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
+#ifndef NEW_DRAW
 	/** Inherited from twidget. */
 	void draw(surface& surface,  const bool force = false,
 	        const bool invalidate_background = false);
+#else
+	/** Inherited from twidget. */
+	void draw_children(surface& frame_buffer);
 
+	/** Inherited from twidget. */
+	void child_populate_dirty_list(twindow& caller,
+			const std::vector<twidget*>& call_stack);
+#endif
 	/** Inherited from twidget. */
 	twidget* find_widget(const tpoint& coordinate, const bool must_be_active);
 
@@ -251,9 +259,10 @@ public:
 	 */
 	void set_rows_cols(const unsigned rows, const unsigned cols);
 
+#ifndef NEW_DRAW
 	/** Inherited from twidget. */
 	void set_dirty(const bool dirty = true);
-
+#endif
 private:
 	/** Child item of the grid. */
 	class tchild 

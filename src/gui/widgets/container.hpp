@@ -97,13 +97,24 @@ public:
 	bool has_widget(const twidget* widget) const 
 		{ return grid_.has_widget(widget); }
 
+#ifndef NEW_DRAW
 	/** Inherited from twidget. */
 	bool is_dirty() const { return twidget::is_dirty() || grid_.is_dirty(); }
 
 	/** Inherited from tcontrol. */
 	void draw(surface& surface,  const bool force = false,
 	        const bool invalidate_background = false);
+#else	
+	/** Inherited from twidget. */
+	void draw_children(surface& frame_buffer) { grid_.draw_children(frame_buffer); }
 
+	/** Inherited from twidget. */
+	void child_populate_dirty_list(twindow& caller,
+			const std::vector<twidget*>& call_stack) 
+	{
+		grid_.child_populate_dirty_list(caller, call_stack);
+	}
+#endif
 	/** Inherited from tcontrol. */
 	twidget* find_widget(const tpoint& coordinate, const bool must_be_active) 
 		{ return grid_.find_widget(coordinate, must_be_active); }
@@ -169,9 +180,10 @@ public:
 	void set_col_grow_factor(const unsigned col, const unsigned factor)
 		{ grid_.set_col_grow_factor(col, factor); }
 
+#ifndef NEW_DRAW
 	/** Inherited from twidget. */
 	void set_dirty(const bool dirty = true);
-
+#endif
 protected:
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 

@@ -199,7 +199,7 @@ const tgrid* tlistbox::find_list(const bool must_exist) const
 	const tgrid* result = find_widget<const tgrid>("_list", false, false);
 	return result ? result : content_find_grid(must_exist);
 }
-
+#ifndef NEW_DRAW
 void tlistbox::draw_list_area_fixed_row_height(surface& surface, 
 		const bool force, const bool invalidate_background)
 {
@@ -278,7 +278,7 @@ void tlistbox::draw_list_area_variable_row_height(surface& surface,
 		offset += height;
 	}
 }
-
+#endif
 size_t tlistbox::row_at_offset(int offset, int& offset_in_widget) const
 {
 	if(assume_fixed_row_size_) {
@@ -495,7 +495,7 @@ void tlistbox::content_set_size(const SDL_Rect& rect)
 		find_scrollbar()->set_visible_items(1);
 	}
 }
-
+#ifndef NEW_DRAW
 void tlistbox::draw_content(surface& surface, const bool force, 
 		const bool invalidate_background)
 {
@@ -519,7 +519,77 @@ void tlistbox::draw_content(surface& surface, const bool force,
 			surface, force, invalidate_background);
 	}
 }
+#else
+#if 0
+void tlistbox::content_draw_background(surface& frame_buffer)
+{
 
+	unsigned offset = find_list()->get_screen_y();
+	const unsigned x = find_list()->get_screen_x();
+	for(unsigned i = 0; i < find_scrollbar()->get_visible_items(); ++i) {
+
+		// make sure we stay inside the valid range.
+		const unsigned index = i + find_scrollbar()->get_item_position();
+		if(index >= rows_.size()) {
+			return;
+		}
+		trow& row = rows_[index];
+
+		assert(row.grid());
+//		row.grid()->draw(row.canvas(), force, invalidate_background);
+//		
+//		// draw background
+//		const SDL_Rect rect = 
+//			{find_list()->get_rect().x, offset, 
+//			find_list()->get_rect().w, row.get_height() };
+//
+//		// draw widget
+//		blit_surface(row.canvas(), 0, surface, &rect);
+
+		std::cerr << "Drawing row " << i << ".\n";
+/** /
+		SDL_Rect rect = row.grid()->get_rect();
+		rect.x = x;
+		rect.y =offset;
+		row.grid()->draw_children(frame_buffer);
+/ **/
+/*		*/
+		row.grid()->set_screen_x(x);
+		row.grid()->set_screen_y(offset);
+		row.grid()->draw_children(frame_buffer);
+/* */
+		offset += row.get_height();
+	}
+
+
+}
+#endif
+void tlistbox::content_populate_dirty_list(twindow& caller,
+			const std::vector<twidget*>& call_stack)
+{
+	for(unsigned i = 0; i < find_scrollbar()->get_visible_items(); ++i) {
+
+		// make sure we stay inside the valid range.
+		const unsigned index = i + find_scrollbar()->get_item_position();
+		if(index >= rows_.size()) {
+			return;
+		}
+		trow& row = rows_[index];
+		assert(row.grid());
+/*
+		if(row.grid()->is_dirty()) {
+			caller.add_to_dirty_list(call_stack);
+			row.grid()->set_dirty(false);
+			return;
+		}
+*/		
+		std::vector<twidget*> content_call_stack = call_stack;
+		row.grid()->populate_dirty_list(caller, content_call_stack);
+	}
+
+}
+
+#endif
 twidget* tlistbox::content_find_widget(
 		const tpoint& coordinate, const bool must_be_active)
 { 

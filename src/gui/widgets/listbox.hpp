@@ -239,7 +239,7 @@ private:
 
 	/** The const version. */
 	const tgrid* find_list(const bool must_exist = true) const;
-	
+#ifndef NEW_DRAW	
 	/** 
 	 * Draws the list area if assume_fixed_row_size_ is true. 
 	 *
@@ -255,7 +255,7 @@ private:
 	 */
 	void draw_list_area_variable_row_height(surface& surface, const bool force,
 		const bool invalidate_background);
-
+#endif
 	/**
 	 * Returns the row at the wanted vertical offset.
 	 *
@@ -353,10 +353,15 @@ private:
 	const std::string& get_control_type() const 
 		{ static const std::string type = "listbox"; return type; }
 
+#ifndef NEW_DRAW
 	/** Inherited from tvertical_scrollbar_container_. */
 	void draw_content(surface& surface,  const bool force = false,
 	        const bool invalidate_background = false);
-
+#else
+	/** Inherited from tcontainer_. */
+	void content_populate_dirty_list(twindow& caller,
+			const std::vector<twidget*>& call_stack);
+#endif	
 	/** Inherited from tvertical_scrollbar_container_. */
 	twidget* content_find_widget(
 		const tpoint& coordinate, const bool must_be_active);

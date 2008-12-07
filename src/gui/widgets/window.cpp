@@ -21,6 +21,7 @@
 
 #include "cursor.hpp"
 #include "font.hpp"
+#include "foreach.hpp"
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 #include "gui/widgets/debug.hpp"
 #endif
@@ -89,7 +90,9 @@ twindow::twindow(CVideo& video,
 	, resized_(true)
 	, suspend_drawing_(true)
 	, top_level_(false)
+#ifndef NEW_DRAW
 	, window_()
+#endif	
 	, restorer_()
 	, tooltip_()
 	, help_popup_()
@@ -102,6 +105,9 @@ twindow::twindow(CVideo& video,
 	, h_(h)
 	, easy_close_(false)
 	, easy_close_blocker_()
+#ifdef NEW_DRAW
+	, dirty_list_()
+#endif
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 	, debug_layout_(new tdebug_layout_graph(this))
 #endif
@@ -231,7 +237,7 @@ int twindow::show(const bool restore, void* /*flip_function*/)
 
 	return retval_;
 }
-
+#ifndef NEW_DRAW
 void twindow::draw()
 {
 	// NOTE since we're single threaded there's no need to create a critical
@@ -328,7 +334,123 @@ void twindow::draw()
 	// Floating hack part 2.
 	font::undraw_floating_labels(frame_buffer);
 }
+#else
+void twindow::draw()
+{
+	/***** ***** ***** ***** Init ***** ***** ***** *****/
+	// Prohibited from drawing?
+	if(suspend_drawing_) {
+		return;
+	}
 
+	surface frame_buffer = video_.getSurface();
+
+	/***** ***** Layout and get dirty list ***** *****/
+	if(resized_ || need_layout_) {
+		// Restore old surface. In the future this phase will not be needed
+		// since all will be redrawn when needed with dirty rects. Since that
+		// doesn't work yet we need to undraw the window.
+		if(restorer_) {
+			SDL_Rect rect = get_rect();
+			SDL_BlitSurface(restorer_, 0, frame_buffer, &rect);
+			// Since the old area might be bigger as the new one, invalidate
+			// it.
+			update_rect(rect);
+		}
+
+		layout();
+		
+		// Get new surface for restoring
+		SDL_Rect rect = get_rect();
+		// We want the labels underneath the window so draw them and use them
+		// as restore point.
+		font::draw_floating_labels(frame_buffer);
+		restorer_ = get_surface_portion(frame_buffer, rect);
+		resized_ = false;
+	
+		// Need full redraw so only set ourselves dirty.
+		dirty_list_.push_back(std::vector<twidget*>(1, this));
+	} else {
+
+		// Find the widgets that are dirty.
+		std::vector<twidget*> call_stack(1, this);
+		populate_dirty_list(*this, call_stack);
+	}
+
+	if(dirty_list_.empty()) {
+		if(preferences::use_colour_cursors()) {
+			surface frame_buffer = get_video_surface();
+
+			cursor::draw(frame_buffer);
+			video_.flip();
+			cursor::undraw(frame_buffer);
+		}
+		return;
+	}
+
+	foreach(std::vector<twidget*>& item, dirty_list_) {
+
+		assert(!item.empty());
+
+		const SDL_Rect dirty_rect = ::create_rect(
+				item.back()->get_screen_x(),
+				item.back()->get_screen_y(),
+				item.back()->get_width(),
+				item.back()->get_height());
+
+// For testing we disable the clipping rect and force the entire screen to
+// update. This way an item rendered at the wrong place is directly visible.
+#if 0
+		dirty_list_.clear();
+		dirty_list_.push_back(std::vector<twidget*>(1, this));
+		update_rect(screen_area());
+#else
+		clip_rect_setter clip(frame_buffer, dirty_rect);
+#endif
+
+		/*
+		 * The actual update routine does the following:
+		 * - draw [begin, end) the back ground of all widgets.
+		 *
+		 * - draw the children of the last item in the list, if this item is
+		 *   a container it's children get a full redraw. If it's not a
+		 *   container nothing happens.
+		 *
+		 * - draw [rbegin, rend) the fore ground of all widgets. For items
+		 *   which have two layers eg window or panel it draws the foreground
+		 *   layer. For other widgets it's a nop.  
+		 */
+
+		// Background.
+		for(std::vector<twidget*>::iterator itor = item.begin();
+				itor != item.end(); ++itor) {
+
+			(**itor).draw_background(frame_buffer);
+		}
+
+		// Children.
+		item.back()->draw_children(frame_buffer);
+
+		// Foreground.
+		for(std::vector<twidget*>::reverse_iterator ritor = item.rbegin();
+				ritor != item.rend(); ++ritor) {
+
+			(**ritor).draw_foreground(frame_buffer);
+			(**ritor).set_dirty(false);
+		}
+		
+		update_rect(dirty_rect);
+	}
+
+	dirty_list_.clear();
+
+	SDL_Rect rect = get_rect();
+	update_rect(rect);
+	cursor::draw(frame_buffer);
+	video_.flip();
+	cursor::undraw(frame_buffer);
+}
+#endif
 void twindow::window_resize(tevent_handler&, 
 		const unsigned new_width, const unsigned new_height)
 {

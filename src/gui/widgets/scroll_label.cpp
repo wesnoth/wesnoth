@@ -140,7 +140,7 @@ void tscroll_label::content_set_size(const SDL_Rect& rect)
 		scrollbar->set_visible_items(rect.h);
 	}
 }
-
+#ifndef NEW_DRAW
 void tscroll_label::draw_content(surface& surf, const bool force,
 		const bool invalidate_background)
 {
@@ -165,7 +165,7 @@ void tscroll_label::draw_content(surface& surf, const bool force,
 
 	blit_surface(label_surf, &src_rect , surf, &dst_rect);
 }
-
+#endif
 twidget* tscroll_label::content_find_widget(
 		const tpoint& /*coordinate*/, const bool /*must_be_active*/)
 {

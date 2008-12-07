@@ -56,9 +56,17 @@ public:
 	/** Inherited from tcontrol. */
 	unsigned get_state() const { return 0; }
 
+#ifndef NEW_DRAW
 	/** Inherited from tcontrol. */
 	void draw(surface& surface,  const bool force = false,
 	        const bool invalidate_background = false);
+#else	
+	/** Inherited from tcontrol. */
+	void draw_background(surface& frame_buffer);
+
+	/** Inherited from tcontrol. */
+	void draw_foreground(surface& frame_buffer);
+#endif
 
 private:
 

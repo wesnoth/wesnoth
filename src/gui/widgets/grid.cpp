@@ -606,6 +606,7 @@ void tgrid::set_size(const tpoint& origin, const tpoint& size)
 	assert(false);
 }
 
+#ifndef NEW_DRAW
 void tgrid::draw(surface& surface, const bool force, 
 		const bool invalidate_background)
 {
@@ -619,7 +620,35 @@ void tgrid::draw(surface& surface, const bool force,
 
 	set_dirty(false);
 }
+#else
+void tgrid::draw_children(surface& frame_buffer)
+{
+	foreach(tchild& child, children_) {
 
+		twidget* widget = child.widget();
+		assert(widget);
+
+		widget->draw_background(frame_buffer);
+		widget->draw_children(frame_buffer);
+		widget->draw_foreground(frame_buffer);
+		widget->set_dirty(false);
+	}
+}
+
+void tgrid::child_populate_dirty_list(twindow& caller,
+			const std::vector<twidget*>& call_stack)
+{
+	foreach(tchild& child, children_) {
+
+		assert(child.widget());
+
+		std::vector<twidget*> child_call_stack = call_stack;
+
+		child.widget()->populate_dirty_list(caller, child_call_stack);
+	}
+
+}
+#endif
 twidget* tgrid::find_widget(const tpoint& coordinate, const bool must_be_active) 
 {
 	for(std::vector<tchild>::iterator itor = children_.begin(); 
@@ -761,6 +790,7 @@ void tgrid::set_rows_cols(const unsigned rows, const unsigned cols)
 	children_.resize(rows_ * cols_);
 }
 
+#ifndef NEW_DRAW
 void tgrid::set_dirty(const bool dirty)
 {
 	// Inherited.
@@ -776,7 +806,7 @@ void tgrid::set_dirty(const bool dirty)
 		}
 	}
 }
-
+#endif
 tpoint tgrid::tchild::get_best_size() const
 {
 	log_scope2(gui_layout, std::string("tgrid::tchild ") + __func__);

@@ -269,7 +269,7 @@ void tvertical_scrollbar_container_::key_press(tevent_handler& /*event*/,
 			break;
 	}
 }
-
+#ifndef NEW_DRAW
 void tvertical_scrollbar_container_::draw(
 		surface& surface, const bool force, const bool invalidate_background)
 {
@@ -282,7 +282,7 @@ void tvertical_scrollbar_container_::draw(
 	}
 	draw_content(surface, do_force, invalidate_background);
 }
-
+#endif
 twidget* tvertical_scrollbar_container_::find_widget(
 		const tpoint& coordinate, const bool must_be_active) 
 {

@@ -29,6 +29,16 @@ class tdialog;
 class twindow;
 
 /**
+ * -DNEW_DRAW is the rewriting of the drawing engine.
+ *
+ * The currently drawing engine works with drawing and undrawing items. The new
+ * engine will work with layers and redraw all layers on a dirty rectangle, much
+ * like the layers in the display class for the terrains and units.
+ * This engine is a work in progress so only enable the switch if you want to
+ * test and debug the engine.
+ */
+
+/**
  * Base class for all widgets.
  *
  * From this abstract all other items should inherit. It contains the minimal
@@ -48,6 +58,10 @@ public:
 		, y_(-1)
 		, w_(0)
 		, h_(0)
+#ifdef NEW_DRAW
+		, screen_x_(-1)
+		, screen_y_(-1)
+#endif		
 		, dirty_(true)
 		, layout_size_(tpoint(0,0))
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
@@ -209,7 +223,7 @@ public:
 	virtual void set_size(const tpoint& origin, const tpoint& size);
 
 	/***** ***** ***** ***** drawing ***** ***** ***** *****/
-
+#ifndef NEW_DRAW
 	/**
 	 *  Draws a widget.
 	 *
@@ -236,7 +250,7 @@ public:
 	 */
 	virtual void draw(surface& /*surface*/, const bool /*force*/ = false, 
 		const bool /*invalidate_background*/ = false) = 0;
-
+#endif
 	/***** ***** ***** ***** query ***** ***** ***** *****/
 
 	/**
@@ -421,6 +435,14 @@ public:
 	unsigned get_width() const { return w_; }
 	unsigned get_height() const { return h_; }
 
+#ifdef NEW_DRAW
+	// Setting the screen locations doesn't dirty the widget.
+	void set_screen_x(const int x) { screen_x_ = x; }
+	int get_screen_x() const { return screen_x_; }
+
+	void set_screen_y(const int y) { screen_y_ = y; }
+	int get_screen_y() const { return screen_y_; }
+#else
 	/**
 	 * Sets the widgets dirty state.
 	 *
@@ -436,7 +458,71 @@ public:
 	}
 
 	virtual bool is_dirty() const { return dirty_; }
+#endif		
 
+#ifdef NEW_DRAW
+	/**
+	 * Sets the widgets dirty state.
+	 *
+	 * @todo test whether nobody redefines the function.
+	 */
+	void set_dirty(const bool dirty = true) 
+	{ 
+		dirty_ = dirty;
+	}
+
+	/** Returns the dirty state for a widget, final function. */
+	bool get_dirty() const { return dirty_; }
+
+	/** Draws the background of a widget. */
+	virtual void draw_background(surface& /*frame_buffer*/) {}
+
+	/** 
+	 * Draws the children of a widget.
+	 *
+	 * Containers should draw their children when they get this request.
+	 *
+	 * @param frame_buffer        The surface to draw upon.
+	 */
+	virtual void draw_children(surface& /*frame_buffer*/) {}
+
+	/** 
+	 * Draws the foreground of the widgt.
+	 *
+	 * Some widgets eg panel and window have a back and foreground layer this
+	 * function requests the drawing of the foreground.
+	 *
+	 * @param frame_buffer        The surface to draw upon.
+	 */
+	virtual void draw_foreground(surface& /*frame_buffer*/) {}
+
+	/**
+	 * Adds a widget to the dirty list if it is dirty.
+	 *
+	 * See twindow::dirty_list_ for more info on the dirty list.
+	 *
+	 * If the widget is not dirty and has children it should add itself to the
+	 * call_stack and call child_populate_dirty_list with the new call_stack.
+	 *
+	 * @param caller              The parent window, if dirty it should
+	 *                            register itself to this window.
+	 * @param call_stack          The callstack of widgets traversed to reach
+	 *                            this function.
+	 */
+	void populate_dirty_list(twindow& caller, 
+			std::vector<twidget*>& call_stack);
+
+	/** 
+	 * Tries to add all children of a container to the dirty list.
+	 *
+	 * @param caller              The parent window, if dirty it should
+	 *                            register itself to this window.
+	 * @param call_stack          The callstack of widgets traversed to reach
+	 *                            this function.
+	 */
+	virtual void child_populate_dirty_list(twindow& /*caller*/, 
+			const std::vector<twidget*>& /*call_stack*/) {}
+#endif		
 protected:	
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
@@ -466,10 +552,10 @@ private:
 	 */
 	twidget* parent_;
 
-	/** The x coordinate of the widget. */
+	/** The x coordinate of the widget in it's parent container. */
 	int x_;
 
-	/** The y coordinate of the widget. */
+	/** The y coordinate of the widget in it's parent container. */
 	int y_;
 
 	/** The width of the widget. */
@@ -477,7 +563,13 @@ private:
 	
 	/** The height of the widget. */
 	unsigned h_;
+#ifdef NEW_DRAW
+	/** The x coordinate of the widget in the screen. */
+	int screen_x_;
 
+	/** The y coordinate of the widget in the screen. */
+	int screen_y_;
+#endif
 	/** 
 	 * Is the widget dirty? When a widget is dirty it needs to be redrawn at
 	 * the next drawing cycle, setting it to dirty also need to set it's parent
