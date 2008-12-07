@@ -380,7 +380,7 @@ TITLE_RESULT show_title(game_display& screen, config& tips_of_day)
 					       N_("TitleScreen button^Load"),
 					       N_("TitleScreen button^Add-ons"),
 #ifndef DISABLE_EDITOR2
-					       N_("TitleScreen button^Editor"),
+					       N_("TitleScreen button^Map Editor"),
 #endif
 					       N_("TitleScreen button^Language"),
 					       N_("TitleScreen button^Preferences"),
