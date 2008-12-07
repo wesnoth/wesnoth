@@ -43,12 +43,26 @@ void progress_bar::draw_contents()
 	SDL_Rect area = location();
 
 	if(area.w >= 2 && area.h >= 2) {
+		int fcr =  21, fcg =  53, fcb =  80;		// RGB-values for finished piece.
+		int lcr =  21, lcg =  22, lcb =  24;		// Leftover piece.
+		int bcr =   0, bcg =   0, bcb =   0;		// Border color.
+		int gcr = 255, gcg = 255, gcb = 255;		// Groove color.
+		int	lightning_thickness = 2;
+
 		SDL_Rect inner_area = {area.x+1,area.y+1,area.w-2,area.h-2};
-		SDL_FillRect(surf,&area,SDL_MapRGB(surf->format,0,0,0));
-		SDL_FillRect(surf,&inner_area,SDL_MapRGB(surf->format,255,255,255));
+		SDL_FillRect(surf,&area,SDL_MapRGB(surf->format,bcr,bcg,bcb));
+		SDL_FillRect(surf,&inner_area,SDL_MapRGB(surf->format,gcr,gcg,gcb));
 
 		inner_area.w = (inner_area.w*progress_)/100;
-		SDL_FillRect(surf,&inner_area,SDL_MapRGB(surf->format,21,53,80));
+		SDL_FillRect(surf,&inner_area,SDL_MapRGB(surf->format,fcr,fcg,fcb));
+		
+		SDL_Rect lightning = inner_area;
+		lightning.h = lightning_thickness;
+		//we add 25% of white to the color of the bar to simulate a light effect
+		SDL_FillRect(surf,&lightning,SDL_MapRGB(surf->format,(fcr*3+255)/4,(fcg*3+255)/4,(fcb*3+255)/4));
+		lightning.y = inner_area.y+inner_area.h-lightning.h;
+		//remove 50% of color to simulate a shadow effect
+		SDL_FillRect(surf,&lightning,SDL_MapRGB(surf->format,fcr/2,fcg/2,fcb/2));
 
 		const std::string text = text_.empty() ? str_cast(progress_) + "%" :
 		                         text_ + " (" + str_cast(progress_) + "%)";
