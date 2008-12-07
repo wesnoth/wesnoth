@@ -223,6 +223,9 @@ public:
 	const twidget* find_widget(const std::string& id, 
 			const bool must_be_active) const;
 
+	/** Import overloaded versions. */
+	using twidget::find_widget;
+
 	/** Inherited from twidget.*/
 	bool has_widget(const twidget* widget) const;
 
