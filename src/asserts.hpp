@@ -35,7 +35,7 @@
 
 //for custom logging.  Example usage:
 //assert_log(x != y, "x not equal to y. Value of x: " << x << ", y: " << y);
-#define ASSERT_LOG(a,b) if( !(a) ) { std::cerr << __FILE__ << ":" << __LINE__ << " ASSSERTION FAILED: " << (b) << "\n"; abort(); }
+#define ASSERT_LOG(a,b) if( !(a) ) { std::cerr << __FILE__ << ":" << __LINE__ << " ASSSERTION FAILED: " << b << "\n"; abort(); }
 
 
 #endif

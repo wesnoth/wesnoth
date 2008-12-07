@@ -18,6 +18,7 @@
  */
 
 
+#include "asserts.hpp"
 #include "filesystem.hpp"
 #include "gettext.hpp"
 #include "gui/widgets/window.hpp"
@@ -1208,10 +1209,8 @@ tresolution_definition_ptr get_control(
 	const tgui_definition::tcontrol_definition_map::const_iterator	
 		control_definition = current_gui->second.control_definition.find(control_type);
 
-	if(control_definition == current_gui->second.control_definition.end()) {
-		ERR_GUI << "Type '" << control_type << "' is unknown.\n";
-		assert(false);
-	}
+	ASSERT_LOG(control_definition != current_gui->second.control_definition.end(),
+			"Type '" << control_type << "' is unknown.");
 
 	std::map<std::string, tcontrol_definition_ptr>::const_iterator 
 		control = control_definition->second.find(definition);
