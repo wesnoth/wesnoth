@@ -20,21 +20,21 @@
 #include <iostream>
 
 //various asserts of standard "equality" tests, such as "equals", "not equals", "greater than", etc.  Example usage:
-//assert_ne(x, y);
+//ASSERT_NE(x, y);
 #define ASSERT_EQ(a,b) if((a) != (b)) { std::cerr << __FILE__ << ":" << __LINE__ << " ASSERT EQ FAILED: " << #a << " != " << #b << ": " << (a) << " != " << (b) << "\n"; abort(); }
 
 #define ASSERT_NE(a,b) if((a) == (b)) { std::cerr << __FILE__ << ":" << __LINE__ << " ASSERT NE FAILED: " << #a << " == " << #b << ": " << (a) << " == " << (b) << "\n"; abort(); }
 
-#define ASSERT_GE(a,b) if((a) < (b)) { std::cerr << __FILE__ << ":" << __LINE__ << " ASSERT GE FAILED: " << #a << " == " << #b << ": " << (a) << " == " << (b) << "\n"; abort(); }
+#define ASSERT_GE(a,b) if((a) < (b)) { std::cerr << __FILE__ << ":" << __LINE__ << " ASSERT GE FAILED: " << #a << " < " << #b << ": " << (a) << " < " << (b) << "\n"; abort(); }
 
-#define ASSERT_LE(a,b) if((a) > (b)) { std::cerr << __FILE__ << ":" << __LINE__ << " ASSERT LE FAILED: " << #a << " == " << #b << ": " << (a) << " == " << (b) << "\n"; abort(); }
+#define ASSERT_LE(a,b) if((a) > (b)) { std::cerr << __FILE__ << ":" << __LINE__ << " ASSERT LE FAILED: " << #a << " > " << #b << ": " << (a) << " > " << (b) << "\n"; abort(); }
 
-#define ASSERT_GT(a,b) if((a) <= (b)) { std::cerr << __FILE__ << ":" << __LINE__ << " ASSERT GT FAILED: " << #a << " == " << #b << ": " << (a) << " == " << (b) << "\n"; abort(); }
+#define ASSERT_GT(a,b) if((a) <= (b)) { std::cerr << __FILE__ << ":" << __LINE__ << " ASSERT GT FAILED: " << #a << " <= " << #b << ": " << (a) << " <= " << (b) << "\n"; abort(); }
 
-#define assert_lt(a,b) if((a) >= (b)) { std::cerr << __FILE__ << ":" << __LINE__ << " ASSERT LT FAILED: " << #a << " == " << #b << ": " << (a) << " == " << (b) << "\n"; abort(); }
+#define ASSERT_LT(a,b) if((a) >= (b)) { std::cerr << __FILE__ << ":" << __LINE__ << " ASSERT LT FAILED: " << #a << " >= " << #b << ": " << (a) << " >= " << (b) << "\n"; abort(); }
 
 //for custom logging.  Example usage:
-//assert_log(x != y, "x not equal to y. Value of x: " << x << ", y: " << y);
+//ASSERT_LOG(x != y, "x not equal to y. Value of x: " << x << ", y: " << y);
 #define ASSERT_LOG(a,b) if( !(a) ) { std::cerr << __FILE__ << ":" << __LINE__ << " ASSSERTION FAILED: " << b << "\n"; abort(); }
 
 
