@@ -13,7 +13,7 @@ MAINLINE = $(DATA)/core $(DATA)/multiplayer $(DATA)/themes $(DATA)/campaigns/*
 # otherwise the visibility checks aren't going to work right.
 # UMC = ../../../umc*/*
 
-sanity-check: unresolved lint images-unused
+sanity-check: unresolved lint
 
 lint:
 	# Check for obsolete WML, broken references, consistency.
@@ -44,7 +44,7 @@ utils-unused:
 # So suppress reporting them unused even if they seem to have
 # no references.  2nd option covers stuff known to be used in UMC.
 FORCE_USED = --force-used "terrain/" \
-	--force-used "portraits/|images/|attacks/|projectiles/|windmill"
+	--force-used "images/|attacks/|projectiles/"
 images-unused:
 	@echo "# Report on unused images"
 	@./wmlscope --crossreference --from images --refcount 0 $(FORCE_USED) $(MAINLINE) $(UMC)
