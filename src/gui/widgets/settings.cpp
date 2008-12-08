@@ -19,6 +19,7 @@
 
 
 #include "asserts.hpp"
+#include "config_cache.hpp"
 #include "filesystem.hpp"
 #include "gettext.hpp"
 #include "gui/widgets/window.hpp"
@@ -99,7 +100,10 @@ void load_settings()
 	config cfg;
 	const std::string& filename = "data/gui/default.cfg";
 	try {
-		scoped_istream stream = preprocess_file(filename);
+		preproc_map preproc(
+				game_config::config_cache::instance().get_preproc_map());
+		scoped_istream stream = preprocess_file(filename, &preproc);
+
 		read(cfg, *stream);
 	} catch(config::error&) {
 		ERR_G_P << "Setting: could not read file '" << filename << "'.\n";
