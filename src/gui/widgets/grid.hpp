@@ -271,8 +271,7 @@ private:
 		tchild() : 
 			flags_(0),
 			border_size_(0),
-			widget_(0),
-			clip_()
+			widget_(0)
 
 			// Fixme make a class wo we can store some properties in the cache 
 			// regarding size etc.
@@ -337,12 +336,6 @@ private:
 
 		/** Returns the space needed for the border. */
 		tpoint border_space() const;
-
-		/**
-		 * The clipping area for the widget. This is also the size of the
-		 * container.
-		 */
-		SDL_Rect clip_;
 
 	}; // class tchild
 
