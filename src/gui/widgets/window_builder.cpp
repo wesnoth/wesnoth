@@ -1009,7 +1009,8 @@ twidget* tbuilder_scroll_label::build() const
 	init_control(widget);
 
 	boost::intrusive_ptr<const tscroll_label_definition::tresolution> conf =
-		boost::dynamic_pointer_cast<const tscroll_label_definition::tresolution>(widget->config());
+		boost::dynamic_pointer_cast
+		<const tscroll_label_definition::tresolution>(widget->config());
 	assert(conf);
 
 	tgrid* grid = dynamic_cast<tgrid*>(conf->grid->build());
@@ -1250,14 +1251,18 @@ twidget* tbuilder_vertical_scrollbar::build() const
 
 twidget* tbuilder_grid::build() const
 {
-	tgrid* grid = new tgrid();
+	return build(new tgrid());
+}
 
+twidget* tbuilder_grid::build (tgrid* grid) const
+{
 	grid->set_id(id);
 	grid->set_rows_cols(rows, cols);
 
 	log_scope2(gui, "Window builder: building grid");
 
-	DBG_GUI << "Window builder: grid has " << rows << " rows and "
+	DBG_GUI << "Window builder: grid '" << id
+		<< "' has " << rows << " rows and "
 		<< cols << " columns.\n";
 
 	for(unsigned x = 0; x < rows; ++x) {

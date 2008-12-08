@@ -28,6 +28,7 @@ class CVideo;
 namespace gui2 {
 
 class twidget;
+class tgrid;
 class twindow;
 
 twindow build(CVideo& video, const std::string& type);
@@ -75,7 +76,8 @@ public:
 	/** The widgets per grid cell. */
 	std::vector<tbuilder_widget_ptr> widgets;
 
-	twidget* build () const;
+	twidget* build() const;
+	twidget* build(tgrid* grid) const;
 
 private:
 	/** After reading the general part in the constructor read extra data. */
