@@ -44,7 +44,6 @@ void progress_bar::draw_contents()
 
 	if(area.w >= 2 && area.h >= 2) {
 		int fcr =  21, fcg =  53, fcb =  80;		// RGB-values for finished piece.
-		int lcr =  21, lcg =  22, lcb =  24;		// Leftover piece.
 		int bcr =   0, bcg =   0, bcb =   0;		// Border color.
 		int gcr = 255, gcg = 255, gcb = 255;		// Groove color.
 		int	lightning_thickness = 2;
