@@ -19,14 +19,6 @@ lint:
 	# Check for obsolete WML, broken references, consistency.
 	./wmllint --dryrun $(MAINLINE) $(UMC)
 
-lint-low:
-	# Check for obsolete WML, broken references, consistency in LoW.
-	./wmllint --dryrun $(DATA)/core $(DATA)/campaigns/Legend_of_Wesmere
-
-lint-utbs:
-	# Check for obsolete WML, broken references, consistency in UtbS.
-	./wmllint --dryrun $(DATA)/core $(DATA)/campaigns/Under_the_Burning_Suns
-
 unresolved:
 	@echo "# Report on unresolved macro calls and resource references"
 	@./wmlscope --unresolved $(MAINLINE) $(UMC)
@@ -43,8 +35,7 @@ utils-unused:
 # opaque macros that trying to reference-check them is hopeless.
 # So suppress reporting them unused even if they seem to have
 # no references.  2nd option covers stuff known to be used in UMC.
-FORCE_USED = --force-used "terrain/" \
-	--force-used "images/|attacks/|projectiles/"
+FORCE_USED = --force-used "terrain/" 
 images-unused:
 	@echo "# Report on unused images"
 	@./wmlscope --crossreference --from images --refcount 0 $(FORCE_USED) $(MAINLINE) $(UMC)
