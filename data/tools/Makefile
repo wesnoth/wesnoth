@@ -31,10 +31,13 @@ utils-unused:
 	@echo "# Report on unused utility macros"
 	@./wmlscope --crossreference --from $(DATA)/core/macros --refcount 0 $(MAINLINE) $(UMC)
 
+# Beware of removing images listed in this report unless you know
+# UMC is not relying on them!
+#
 # References to terrain graphics go through so many layers of nasty
 # opaque macros that trying to reference-check them is hopeless.
 # So suppress reporting them unused even if they seem to have
-# no references.  2nd option covers stuff known to be used in UMC.
+# no references.  
 FORCE_USED = --force-used "terrain/" 
 images-unused:
 	@echo "# Report on unused images"
