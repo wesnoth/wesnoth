@@ -1770,7 +1770,7 @@ namespace {
 			player_info* const player = state_of_game->get_player(player_id);
 
 			if(player == NULL) {
-				ERR_NG << "player not found when trying to recall!\n"
+				WRN_NG << "player not found when trying to recall!\n"
 					   << "player_id: " << player_id << " index: " << index << "\n";
 				continue;
 			}
