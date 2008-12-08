@@ -95,6 +95,7 @@ wesnoth_source = \
 	gui/widgets/settings.cpp \
 	gui/widgets/scroll_label.cpp \
 	gui/widgets/scrollbar.cpp \
+	gui/widgets/scrollbar_container.cpp \
 	gui/widgets/slider.cpp \
 	gui/widgets/spacer.cpp \
 	gui/widgets/text.cpp \

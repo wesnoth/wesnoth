@@ -19,30 +19,45 @@
 #include "gui/widgets/spacer.hpp"
 
 namespace gui2 {
-
 tscroll_label::tscroll_label() 
+#ifndef NEW_DRAW
 	: tvertical_scrollbar_container_(COUNT)
+#else
+	: tscrollbar_container(COUNT)
+#endif	
 	, state_(ENABLED)
+#ifndef NEW_DRAW
 	, label_(NULL)
+#endif	
 {
 }
 
 tscroll_label::~tscroll_label() 
 {
+#ifndef NEW_DRAW
 	delete label_;
+#endif	
 }
 
 void tscroll_label::set_label(const t_string& label)
 {
 	// Inherit.
 	tcontrol::set_label(label);
-
+#ifndef NEW_DRAW
 	tlabel* widget = find_label(false);
 	if(widget) {
 		widget->set_label(label);
 	}
+#else
+	if(content_grid()) {
+		tlabel* widget = content_grid()->
+				find_widget<tlabel>("_label", false, true);
+		widget->set_label(label);
+	}
+#endif	
 }
 
+#ifndef NEW_DRAW
 tlabel* tscroll_label::find_label(const bool must_exist)
 {
 	if(label_) {
@@ -85,7 +100,25 @@ void tscroll_label::finalize()
 	label_->set_label(label());
 	label_->set_can_wrap(true);
 }
+#else
+void tscroll_label::finalize_subclass()
+{ 
+	assert(content_grid());
+	tlabel* lbl = dynamic_cast<tlabel*>(
+		   	content_grid()->find_widget("_label", false));
 
+	assert(lbl);
+	lbl->set_label(label());
+
+	/** 
+	 * @todo wrapping should be a label setting.
+	 * This setting shoul be mutual exclusive with the horizontal scrollbar.
+	 * Also the scroll_grid needs to set the status for the scrollbars.
+	 */
+	lbl->set_can_wrap(false);
+}
+#endif
+#ifndef NEW_DRAW
 tpoint tscroll_label::content_calculate_best_size() const
 {
 	assert(label_);
@@ -104,7 +137,6 @@ void tscroll_label::content_layout_wrap(const unsigned maximum_width)
 	}
 
 	label_->layout_wrap(maximum_width);
-
 	set_content_layout_size(label_->get_best_size());
 
 	DBG_G_L << "tscroll_label " << __func__ << ":"
@@ -140,6 +172,7 @@ void tscroll_label::content_set_size(const SDL_Rect& rect)
 		scrollbar->set_visible_items(rect.h);
 	}
 }
+#endif
 #ifndef NEW_DRAW
 void tscroll_label::draw_content(surface& surf, const bool force,
 		const bool invalidate_background)
@@ -165,7 +198,21 @@ void tscroll_label::draw_content(surface& surf, const bool force,
 
 	blit_surface(label_surf, &src_rect , surf, &dst_rect);
 }
+#else
+void tscroll_label::content_draw_background(surface& /*frame_buffer*/)
+{
+	assert(false); //fixme implement
+}
+
+void tscroll_label::
+		content_populate_dirty_list(twindow& /*caller*/,
+		const std::vector<twidget*>& /*call_stack*/) 
+{
+	assert(false); //fixme implement
+}
 #endif
+
+#ifndef NEW_DRAW
 twidget* tscroll_label::content_find_widget(
 		const tpoint& /*coordinate*/, const bool /*must_be_active*/)
 {
@@ -177,6 +224,7 @@ const twidget* tscroll_label::content_find_widget(const tpoint& /*coordinate*/,
 {
 	return label_;
 }
+#endif
 
 } // namespace gui2
 

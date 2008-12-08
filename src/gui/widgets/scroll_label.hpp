@@ -15,7 +15,11 @@
 #ifndef GUI_WIDGETS_SCROLL_LABEL_HPP_INCLUDED
 #define GUI_WIDGETS_SCROLL_LABEL_HPP_INCLUDED
 
+#ifndef NEW_DRAW
 #include "gui/widgets/vertical_scrollbar_container.hpp"
+#else
+#include "gui/widgets/scrollbar_container.hpp"
+#endif
 
 namespace gui2 {
 
@@ -29,7 +33,11 @@ class tspacer;
  * scrolling features. In general this widget is slower as the normal label so
  * the normal label should be preferred.
  */
+#ifndef NEW_DRAW
 class tscroll_label : public tvertical_scrollbar_container_
+#else
+class tscroll_label : public tscrollbar_container
+#endif
 {
 	friend class tbuilder_scroll_label;
 public:
@@ -70,6 +78,7 @@ private:
 	 */
 	tstate state_;
 
+#ifndef NEW_DRAW
 	/**
 	 * Helper label.
 	 *
@@ -94,9 +103,12 @@ private:
 	const tspacer* find_spacer(const bool must_exist = true) const;
 
 	void finalize();
+#else	
+	void finalize_subclass();
+#endif
 
 	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
-
+#ifndef NEW_DRAW
 	/** Inherited from tvertical_scrollbar_container_. */
 	tpoint content_calculate_best_size() const;
 
@@ -111,19 +123,25 @@ private:
 
 	/** Inherited from tvertical_scrollbar_container_. */
 	void content_set_size(const SDL_Rect& rect);
-
+#endif
 	/***** ***** ***** inherited ****** *****/
 
 	/** Inherited from tcontrol. */
 	const std::string& get_control_type() const 
 		{ static const std::string type = "scroll_label"; return type; }
-#ifndef NEW_DRAW
+
+#ifndef NEW_DRAW	
 	/** Inherited from tvertical_scrollbar_container_. */
 	void draw_content(surface& surface,  const bool force = false,
 	        const bool invalidate_background = false);
 #else
-//FIXME we can't draw yet.	
+	void content_draw_background(surface& frame_buffer);
+
+	void content_populate_dirty_list(twindow& caller,
+			const std::vector<twidget*>& call_stack);
 #endif
+
+#ifndef NEW_DRAW	
 	/** Inherited from tvertical_scrollbar_container_. */
 	twidget* content_find_widget(
 		const tpoint& coordinate, const bool must_be_active);
@@ -131,6 +149,7 @@ private:
 	/** Inherited from tvertical_scrollbar_container_. */
 	const twidget* content_find_widget(const tpoint& coordinate, 
 			const bool must_be_active) const;
+#endif	
 };
 
 } // namespace gui2

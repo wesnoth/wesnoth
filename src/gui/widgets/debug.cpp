@@ -19,6 +19,9 @@
 #include "foreach.hpp"
 #include "formatter.hpp"
 #include "gui/widgets/vertical_scrollbar_container.hpp"
+#ifdef NEW_DRAW
+#include "gui/widgets/scrollbar_container.hpp"
+#endif
 #include "gui/widgets/window.hpp"
 #include "serialization/string_utils.hpp"
 
@@ -209,6 +212,18 @@ void tdebug_layout_graph::widget_generate_info(std::ostream& out,
 				<< id << "_G"
 				<< " [label=\"(grid)\"];\n";
 		}
+		
+#ifdef NEW_DRAW
+		const tscrollbar_container* scrollbar_container = 
+			dynamic_cast<const tscrollbar_container*>(widget);
+
+		if(scrollbar_container) {
+			widget_generate_info(out, scrollbar_container->content_grid_, id + "_C", true);
+			out << "\t" << id << " -> " 
+				<< id << "_C"
+				<< " [label=\"(content)\"];\n";
+		}
+#endif
 	}
 	if(grid) {
 		grid_generate_info(out, grid, id);
@@ -281,7 +296,21 @@ void tdebug_layout_graph::widget_generate_state_info(
 				<< vertical_scrollbar_container->scrollbar_mode_ << '\n'
 			<< "</td></tr>\n";
 	}
+#ifdef NEW_DRAW
+	const tscrollbar_container* scrollbar_container = 
+		dynamic_cast<const tscrollbar_container*>(widget);
 
+	if(scrollbar_container) {
+		out << "<tr><td>\n"
+			<< "vertical_scrollbar_mode_=" 
+				<< scrollbar_container->vertical_scrollbar_mode_ << '\n'
+			<< "</td></tr>\n"
+			<< "<tr><td>\n"
+			<< "horizontal_scrollbar_mode_=" 
+				<< scrollbar_container->horizontal_scrollbar_mode_ << '\n'
+			<< "</td></tr>\n";
+	}
+#endif
 }
 
 void tdebug_layout_graph::widget_generate_size_info(

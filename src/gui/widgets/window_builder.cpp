@@ -1013,6 +1013,9 @@ twidget* tbuilder_scroll_label::build() const
 		<const tscroll_label_definition::tresolution>(widget->config());
 	assert(conf);
 
+#ifdef NEW_DRAW
+	conf->grid->build(&widget->grid());
+#else	
 	tgrid* grid = dynamic_cast<tgrid*>(conf->grid->build());
 	assert(grid);
 
@@ -1021,7 +1024,7 @@ twidget* tbuilder_scroll_label::build() const
 		tgrid::VERTICAL_GROW_SEND_TO_CLIENT 
 		| tgrid::HORIZONTAL_GROW_SEND_TO_CLIENT 
 		, 0);
-
+#endif
 	widget->finalize_setup();
 
 	DBG_GUI << "Window builder: placed scroll label '" << id << "' with defintion '" 
