@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-12-03 19:42+0100\n"
+"POT-Creation-Date: 2008-12-09 22:12+0100\n"
 "PO-Revision-Date: 2008-06-07 00:37+0300\n"
 "Last-Translator: vicza <vicza@zmail.ru>\n"
 "Language-Team:  <ru@li.org>\n"
@@ -129,26 +129,26 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:680
+#: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1237
 #: src/actions.cpp:1050 src/actions.cpp:1321
 msgid "slowed"
 msgstr "замедлен"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:13
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:16
 #: data/core/macros/abilities.cfg:10
 msgid "heals +4"
 msgstr "лечит +4"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:14
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:17
 #: data/core/macros/abilities.cfg:11
 #, fuzzy
 msgid "female^heals +4"
 msgstr "живучая"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:19
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:22
 #: data/core/macros/abilities.cfg:16
 #, fuzzy
 msgid ""
@@ -170,20 +170,20 @@ msgstr ""
 "найти деревню или целителя."
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:42
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:45
 #: data/core/macros/abilities.cfg:30
 msgid "heals +8"
 msgstr "лечит +8"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:43
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:46
 #: data/core/macros/abilities.cfg:31
 #, fuzzy
 msgid "female^heals +8"
 msgstr "живучая"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:48
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:51
 #: data/core/macros/abilities.cfg:36
 msgid ""
 "Heals +8:\n"
@@ -204,60 +204,48 @@ msgstr ""
 "Отравленный отряд не может быть полностью излечен лекарем от яда и должен "
 "найти деревню или целителя."
 
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:72
-#, fuzzy
-msgid " This unit is capable of basic healing and slowing dehydration."
-msgstr " Этот отряд обучен основам лечения."
-
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:75
-#, fuzzy
-msgid ""
-" This unit is capable of healing those around it, slowing dehydration, and "
-"curing them of poison."
-msgstr " Этот отряд способен лечить рядом стоящих и исцелять их от яда."
-
 #. [about]
 #: data/core/about.cfg:7
 msgid "Programming"
 msgstr "Программирование"
 
 #. [about]
-#: data/core/about.cfg:183
+#: data/core/about.cfg:186
 msgid "General Purpose Administration and Coordination"
 msgstr "Общецелевое администрирование и координация"
 
 #. [about]
-#: data/core/about.cfg:201
+#: data/core/about.cfg:204
 msgid "Artwork and Graphics"
 msgstr "Графика и дизайн"
 
 #. [about]
-#: data/core/about.cfg:480
+#: data/core/about.cfg:483
 msgid "Music"
 msgstr "Музыка"
 
 #. [about]
-#: data/core/about.cfg:511
+#: data/core/about.cfg:514
 msgid "Sound Effects"
 msgstr "Звуковые эффекты"
 
 #. [about]
-#: data/core/about.cfg:527
+#: data/core/about.cfg:530
 msgid "Campaign Design"
 msgstr "Разработка кампаний"
 
 #. [about]
-#: data/core/about.cfg:602
+#: data/core/about.cfg:605
 msgid "Multiplayer Maps and Balancing"
 msgstr "Сетевые карты и баланс игры"
 
 #. [about]
-#: data/core/about.cfg:643
+#: data/core/about.cfg:646
 msgid "Packagers"
 msgstr "Программные сборки"
 
 #. [about]
-#: data/core/about.cfg:709
+#: data/core/about.cfg:712
 msgid "Miscellaneous contributors"
 msgstr "Различные участники"
 
@@ -3413,7 +3401,7 @@ msgid ""
 msgstr "80% золота сохраняется в следующем сценарии"
 
 #. [deprecated_message]
-#: data/core/macros/deprecated-utils.cfg:22
+#: data/core/macros/deprecated-utils.cfg:21
 msgid "VICTORY_AND_DEFEAT_MUSIC is unnecessary and can be removed."
 msgstr ""
 
@@ -3575,26 +3563,26 @@ msgstr "Этот посох подарит тому, кто его носит, �
 msgid "Only magical beings can wield such an object."
 msgstr "Только маги могут владеть этим предметом."
 
-#: data/core/macros/items.cfg:512
+#: data/core/macros/items.cfg:542
 msgid "Only the mermen can use this item!"
 msgstr "Только водяные могут использовать данный предмет!"
 
-#: data/core/macros/items.cfg:512
+#: data/core/macros/items.cfg:542
 msgid "Should $unit.name pick up the trident?"
 msgstr ""
 
 #. [object]
-#: data/core/macros/items.cfg:514
+#: data/core/macros/items.cfg:544
 msgid "Storm Trident"
 msgstr "Штормовой Трезубец"
 
 #. [object]
-#: data/core/macros/items.cfg:517
+#: data/core/macros/items.cfg:547
 msgid "This trident allows a merman to shoot electric bolts at his enemies!"
 msgstr "Этот трезубец позволяет водяному стрелять молниями во врагов!"
 
 #. [effect]: type=fire
-#: data/core/macros/items.cfg:521
+#: data/core/macros/items.cfg:551
 msgid "storm trident"
 msgstr "штормовой трезубец"
 
@@ -5162,7 +5150,7 @@ msgid ""
 "a full two and a half centuries. While some elves possessing a high magical "
 "aptitude have been known to live an additional full century, most elves "
 "begin to grow physically frail at some point between 250 and 300 years of "
-"age and pass away rapidly (generally within a year or two) thereafter. \n"
+"age and pass away rapidly (generally within a year or two) thereafter.\n"
 "\n"
 "Elves are naturally imbued with magic to a small degree. Though most are "
 "unable to channel it directly, its latent presence gives them their keen "
@@ -6788,7 +6776,7 @@ msgstr "(нажмите $hotkey, чтобы продолжить движени�
 msgid "B"
 msgstr "б"
 
-#: src/addon_management.cpp:358 src/dialogs.cpp:1198
+#: src/addon_management.cpp:358 src/dialogs.cpp:1210
 msgid "KB"
 msgstr "кб"
 
@@ -7113,7 +7101,7 @@ msgstr "Аддон удалён"
 msgid "Add-on could not be deleted properly:"
 msgstr "Аддон не может быть удалён — файл не найден."
 
-#: src/ai.cpp:1778
+#: src/ai.cpp:1773
 msgid "Unknown unit type : "
 msgstr "Неизвестный отряд:"
 
@@ -7324,7 +7312,7 @@ msgstr "Отмена"
 msgid "OK"
 msgstr "OK"
 
-#: src/dialogs.cpp:683 src/dialogs.cpp:1174 src/dialogs.cpp:1276
+#: src/dialogs.cpp:683 src/dialogs.cpp:1186 src/dialogs.cpp:1288
 #: src/multiplayer_connect.cpp:1032 src/multiplayer_create.cpp:81
 #: src/multiplayer_wait.cpp:183
 msgid "Cancel"
@@ -7334,139 +7322,139 @@ msgstr "Отмена"
 msgid "Delete Save"
 msgstr "Удалить сохранение"
 
-#: src/dialogs.cpp:742
+#: src/dialogs.cpp:743
 msgid "Profile"
 msgstr "Профиль"
 
-#: src/dialogs.cpp:838 src/help.cpp:1238
+#: src/dialogs.cpp:840 src/help.cpp:1238
 msgid "level"
 msgstr "уровень"
 
-#: src/dialogs.cpp:851 src/help.cpp:1360
+#: src/dialogs.cpp:853 src/help.cpp:1360
 msgid "HP: "
 msgstr "ЗД: "
 
-#: src/dialogs.cpp:854
+#: src/dialogs.cpp:856
 msgid "XP: "
 msgstr "ОП: "
 
-#: src/dialogs.cpp:858 src/help.cpp:1361
+#: src/dialogs.cpp:860 src/help.cpp:1361
 msgid "Moves: "
 msgstr "Ходов: "
 
 # ?
-#: src/game.cpp:607 src/game.cpp:1394
+#: src/game.cpp:612 src/game.cpp:1401
 msgid "The Battle for Wesnoth"
 msgstr "Битва за Веснот"
 
-#: src/game.cpp:889
+#: src/game.cpp:894
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr "Внимание: загружаемый файл поврежден. Пробуем загрузить.\n"
 
-#: src/game.cpp:929 src/multiplayer_connect.cpp:1566
+#: src/game.cpp:934 src/multiplayer_connect.cpp:1566
 msgid "This save is from a version too old to be loaded."
 msgstr "Данное сохранение от слишком старой версии."
 
-#: src/game.cpp:935 src/multiplayer_connect.cpp:1573
+#: src/game.cpp:940 src/multiplayer_connect.cpp:1573
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
 msgstr "Данное сохранение из другой версии игры. Попробовать его загрузить?"
 
-#: src/game.cpp:955 src/game.cpp:958 src/multiplayer_connect.cpp:1544
+#: src/game.cpp:960 src/game.cpp:963 src/multiplayer_connect.cpp:1544
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Загружаемый файл поврежден: \""
 
-#: src/game.cpp:961
+#: src/game.cpp:966
 msgid "File I/O Error while reading the game"
 msgstr "Ошибка ввода/вывода при чтении файла с игрой"
 
-#: src/game.cpp:1064
+#: src/game.cpp:1069
 msgid "No campaigns are available.\n"
 msgstr "Нет доступных кампаний.\n"
 
-#: src/game.cpp:1068
+#: src/game.cpp:1073
 msgid "Play a campaign"
 msgstr "Играть кампанию"
 
-#: src/game.cpp:1109
+#: src/game.cpp:1116
 msgid "Difficulty"
 msgstr "Сложность"
 
-#: src/game.cpp:1110
+#: src/game.cpp:1117
 msgid "Select difficulty level:"
 msgstr "Выберите уровень сложности:"
 
-#: src/game.cpp:1272
+#: src/game.cpp:1279
 #, fuzzy
 msgid "Do you really want to start the server?"
 msgstr "Вы действительно хотите распустить её?"
 
-#: src/game.cpp:1273
+#: src/game.cpp:1280
 msgid ""
 "The server will run in a background process until all users have "
 "disconnected."
 msgstr ""
 
-#: src/game.cpp:1277
+#: src/game.cpp:1284
 #, fuzzy
 msgid "Don't show again"
 msgstr "Больше не спрашивайте меня!"
 
-#: src/game.cpp:1349
+#: src/game.cpp:1356
 #, fuzzy
 msgid "Error while starting server: "
 msgstr "Возникла ошибка во время игры: "
 
-#: src/game.cpp:1351 src/playcampaign.cpp:95 src/playcampaign.cpp:380
+#: src/game.cpp:1358 src/playcampaign.cpp:95 src/playcampaign.cpp:380
 msgid "The game could not be loaded: "
 msgstr "Игра не может быть загружена: "
 
-#: src/game.cpp:1353 src/playcampaign.cpp:97 src/playcampaign.cpp:383
+#: src/game.cpp:1360 src/playcampaign.cpp:97 src/playcampaign.cpp:383
 msgid "Error while playing the game: "
 msgstr "Возникла ошибка во время игры: "
 
-#: src/game.cpp:1373 src/playcampaign.cpp:99 src/playcampaign.cpp:386
+#: src/game.cpp:1380 src/playcampaign.cpp:99 src/playcampaign.cpp:386
 msgid "The game map could not be loaded: "
 msgstr "Игровая карта не может быть загружена: "
 
-#: src/game.cpp:1439 src/game.cpp:1560
+#: src/game.cpp:1446 src/game.cpp:1567
 msgid "Error loading game configuration files: '"
 msgstr "Ошибка при загрузке файлов с настройками игры: \""
 
-#: src/game.cpp:1440 src/game.cpp:1561
+#: src/game.cpp:1447 src/game.cpp:1568
 msgid "' (The game will now exit)"
 msgstr "\" (сейчас игра будет завершена)"
 
-#: src/game.cpp:1535
+#: src/game.cpp:1542
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "Следующий аддон имеет ошибки и не может быть загружен:"
 msgstr[1] "Следующие аддоны имеют ошибки и не могут быть загружены:"
 msgstr[2] "Следующие аддоны имеют ошибки и не могут быть загружены:"
 
-#: src/game.cpp:1542
+#: src/game.cpp:1549
 msgid "ERROR DETAILS:"
 msgstr "ПОДРОБНОСТИ ОШИБКИ:"
 
-#: src/game.cpp:1570
+#: src/game.cpp:1577
 msgid "Loading data files"
 msgstr "Чтение файлов данных"
 
-#: src/game.cpp:1981
+#: src/game.cpp:1988
 msgid "Loading game configuration."
 msgstr "Загрузка настроек игры"
 
-#: src/game.cpp:1987
+#: src/game.cpp:1994
 msgid "Re-initialize fonts for the current language."
 msgstr "Реинициализация шрифтов для текущего языка"
 
-#: src/game.cpp:1995
+#: src/game.cpp:2002
 #, fuzzy
 msgid "Searching for installed add-ons."
 msgstr "Передача аддона"
 
-#: src/game.cpp:2004
+#: src/game.cpp:2011
 msgid "Loading title screen."
 msgstr "Загрузка заглавного изображения"
 
@@ -7487,11 +7475,11 @@ msgstr "Поражение:"
 msgid "No time of day has been defined."
 msgstr "Время суток не было определено"
 
-#: src/gamestatus.cpp:738 src/gamestatus.cpp:740 src/playcampaign.cpp:414
+#: src/gamestatus.cpp:743 src/gamestatus.cpp:745 src/playcampaign.cpp:414
 msgid " replay"
 msgstr " повтор"
 
-#: src/gamestatus.cpp:875
+#: src/gamestatus.cpp:880
 msgid "Could not write to file"
 msgstr "Не могу записать в файл"
 
@@ -7776,11 +7764,13 @@ msgid "?"
 msgstr "?"
 
 #: src/loadscreen.cpp:224
-msgid "Verifying cache."
+#, fuzzy
+msgid "Verifying cache"
 msgstr "Проверка кэша"
 
 #: src/loadscreen.cpp:243
-msgid "Reading cache."
+#, fuzzy
+msgid "Reading cache"
 msgstr "Чтение из кэша"
 
 #: src/loadscreen.cpp:262
@@ -9328,7 +9318,7 @@ msgstr "Аддоны"
 
 #: src/titlescreen.cpp:383
 #, fuzzy
-msgid "TitleScreen button^Editor"
+msgid "TitleScreen button^Map Editor"
 msgstr "Выход"
 
 #: src/titlescreen.cpp:385
@@ -9465,53 +9455,53 @@ msgstr "$effect_description за уровень"
 msgid "$trait_name|: $trait_description "
 msgstr "$trait_name|: $trait_description "
 
-#: src/unit_types.cpp:194 src/unit_types.cpp:260
+#: src/unit_types.cpp:196 src/unit_types.cpp:262
 msgid "damage"
 msgid_plural "damage"
 msgstr[0] "ущерб"
 msgstr[1] "ущерба"
 msgstr[2] "ущерба"
 
-#: src/unit_types.cpp:204 src/unit_types.cpp:267
+#: src/unit_types.cpp:206 src/unit_types.cpp:269
 msgid "strike"
 msgid_plural "strikes"
 msgstr[0] "удар"
 msgstr[1] "удара"
 msgstr[2] "ударов"
 
-#: src/unit_types.cpp:215
+#: src/unit_types.cpp:217
 #, fuzzy, no-c-format
 msgid "% accuracy"
 msgstr "атака"
 
-#: src/unit_types.cpp:225
+#: src/unit_types.cpp:227
 #, no-c-format
 msgid "% parry"
 msgstr ""
 
-#: src/unit_types.cpp:1015
+#: src/unit_types.cpp:1017
 msgid "chaotic"
 msgstr "хаотичный"
 
-#: src/unit_types.cpp:1015
+#: src/unit_types.cpp:1017
 msgid "lawful"
 msgstr "порядочный"
 
-#: src/unit_types.cpp:1015
+#: src/unit_types.cpp:1017
 msgid "neutral"
 msgstr "нейтральный"
 
-#: src/unit_types.cpp:1016
+#: src/unit_types.cpp:1018
 #, fuzzy
 msgid "female^chaotic"
 msgstr "механизм"
 
-#: src/unit_types.cpp:1016
+#: src/unit_types.cpp:1018
 #, fuzzy
 msgid "female^lawful"
 msgstr "верная"
 
-#: src/unit_types.cpp:1016
+#: src/unit_types.cpp:1018
 #, fuzzy
 msgid "female^neutral"
 msgstr "мертвец"
@@ -9542,6 +9532,16 @@ msgstr "Помогите нам сделать Веснот лучше!"
 #: src/upload_log.cpp:330
 msgid "Enable summary uploads"
 msgstr "Включить отправку итогов"
+
+#, fuzzy
+#~ msgid " This unit is capable of basic healing and slowing dehydration."
+#~ msgstr " Этот отряд обучен основам лечения."
+
+#, fuzzy
+#~ msgid ""
+#~ " This unit is capable of healing those around it, slowing dehydration, "
+#~ "and curing them of poison."
+#~ msgstr " Этот отряд способен лечить рядом стоящих и исцелять их от яда."
 
 #~ msgid "Abilites"
 #~ msgstr "Способности"

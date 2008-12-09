@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-29 12:24+0100\n"
+"POT-Creation-Date: 2008-12-09 22:13+0100\n"
 "PO-Revision-Date: 2006-08-14 19:33+0200\n"
 "Last-Translator: Jaka Kranjc <wesnoth@prinas.si>\n"
 "Language-Team: Slovenian\n"
@@ -53,46 +53,63 @@ msgstr ""
 msgid "You must survive until turn 25."
 msgstr ""
 
+#. [side]
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:52
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:67
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:82
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:97
+msgid "teamname^Team 1"
+msgstr ""
+
+#. [side]: type=Death Knight
+#. [side]: type=Orcish Sovereign
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:115
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:142
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:169
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:196
+msgid "teamname^Team 2"
+msgstr ""
+
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:428
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:436
 msgid ""
 "You destroy the mushroom mine. The northwest undead now have 10 less income."
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:448
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:456
 msgid ""
 "You destroy the mushroom mine. The northeast orcs now have 10 less income."
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:468
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:476
 msgid ""
 "You destroy the mushroom mine. The southwest orcs now have 10 less income."
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:488
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:496
 msgid ""
 "You destroy the mushroom mine. The southeast undead now have 10 less income."
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:580
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:588
 msgid ""
 "One of your peasants has happened upon some spider's nests in the north and "
 "south."
 msgstr ""
 
 #. [message]: type=Peasant
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:586
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:594
 msgid ""
 "I swear I saw somebody trapped in the spider's web. Maybe we should rescue "
 "them?"
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:598
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:606
 msgid ""
 "Move any unit next to these captives and they will join your side. The "
 "spiders guarding each captive are currently wounded, the sooner you get "
@@ -100,13 +117,13 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:609
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:617
 msgid ""
 "Your men report strange sounds coming from some caves to the east and west."
 msgstr ""
 
 #. [message]
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:615
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:623
 msgid ""
 "It would seem the enemy has built some underground mushroom mines nearby - "
 "it must be where the mainstay of their resources are produced. If we could "
@@ -114,51 +131,51 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:627
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:635
 msgid ""
 "Move any unit onto these villages to destroy the mine. Each one you destroy "
 "will reduce the enemy's income by 10."
 msgstr ""
 
 #. [message]
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:639
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:647
 msgid "This battle is nearly at an end. Victory is close at hand!"
 msgstr ""
 
 #. [message]
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:650
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:658
 msgid ""
 "We have survived the onslaught! The tide of the battle has turned, victory "
 "cannot elude us now!"
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:654
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:662
 msgid "You have won the game, but you may continue if you wish..."
 msgstr ""
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:669
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:677
 msgid "I have fallen, but all is not lost!"
 msgstr ""
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:681
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:689
 msgid "I am done for, but we have yet to lose this battle!"
 msgstr ""
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:693
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:701
 msgid "Comrades, avenge me!"
 msgstr ""
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:705
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:713
 msgid "Do not fear, there is hope for us still!"
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_general_macros.cfg:78
+#: data/multiplayer/scenarios/ANL_utils/ANL_general_macros.cfg:73
 msgid "The chest contains $oc_treasure gold."
 msgstr ""
 

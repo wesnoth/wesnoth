@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-12-03 19:43+0100\n"
+"POT-Creation-Date: 2008-12-09 22:13+0100\n"
 "PO-Revision-Date: 2008-11-13 23:48+0100\n"
 "Last-Translator: Brivido <brivido(at)gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -106,12 +106,16 @@ msgstr ""
 "forme pietrificate di alcuni degli eroi più grandi di Wesnoth."
 
 #. [side]
+#: data/multiplayer/scenarios/2p_Thalins_Stronghold.cfg:33
 #: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:20
+#: data/multiplayer/scenarios/2p_Fast_To_Madness.cfg:33
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:48
 #: data/multiplayer/scenarios/4p_Hamlets.cfg:21
 #: data/multiplayer/scenarios/4p_Hamlets.cfg:57
 #: data/multiplayer/scenarios/2p_The_Freelands.cfg:20
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:20
+#: data/multiplayer/scenarios/4p_Mines_of_Mallorod.cfg:33
+#: data/multiplayer/scenarios/4p_Mines_of_Mallorod.cfg:46
 #: data/multiplayer/scenarios/3p_Morituri.cfg:20
 #: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:32
 #: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:44
@@ -136,11 +140,15 @@ msgid "teamname^North"
 msgstr "Nord"
 
 #. [side]
+#: data/multiplayer/scenarios/2p_Thalins_Stronghold.cfg:20
 #: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:31
+#: data/multiplayer/scenarios/2p_Fast_To_Madness.cfg:20
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:60
 #: data/multiplayer/scenarios/4p_Hamlets.cfg:33
 #: data/multiplayer/scenarios/4p_Hamlets.cfg:45
 #: data/multiplayer/scenarios/2p_The_Freelands.cfg:31
+#: data/multiplayer/scenarios/4p_Mines_of_Mallorod.cfg:20
+#: data/multiplayer/scenarios/4p_Mines_of_Mallorod.cfg:59
 #: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:20
 #: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:56
 #: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:68
@@ -666,38 +674,52 @@ msgstr "Siccità"
 msgid "Clear Weather"
 msgstr "Bel tempo"
 
+#. [side]
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1204
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1235
+#, fuzzy
+msgid "teamname^Revolt"
+msgstr "Ovest"
+
+#. [side]
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1254
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1270
+#, fuzzy
+msgid "teamname^Human"
+msgstr "Est"
+
 #. [then]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1419
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1423
 msgid "Single player mode - uses the reduced strength spawns."
 msgstr "Modalità a giocatore singolo – usa generazioni di forza ridotta."
 
 #. [else]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1422
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1426
 msgid "Two player mode - uses the full strength spawns."
 msgstr "Modalità a due giocatori – usa generazioni di forza massima."
 
 #. [objectives]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1442
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1446
 msgid "Survive and defeat the waves of opposition."
 msgstr "Sopravvivi e sconfiggi le ondate degli avversari."
 
 #. [objective]: condition=win
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1444
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1448
 msgid "Defeat all waves"
 msgstr "Sconfiggi tutte le ondate"
 
 #. [objective]: condition=lose
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1448
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1452
 msgid "Lose all your team's leaders"
 msgstr "Morte di tutti i tuoi condottieri"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1459
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1463
 msgid "Dark Forecast - a random survival scenario"
 msgstr "La tetra previsione – uno scenario di sopravvivenza casuale"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1481
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1485
 msgid ""
 "Your aim is to survive the spawning waves and defeat the final arch-"
 "enemies.\n"
@@ -749,12 +771,12 @@ msgstr ""
 "- implementazione WML"
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1486
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1490
 msgid "So this is the accursed valley - a land ours for the taking."
 msgstr "Dunque questa è la valle maledetta – la terra della nostra conquista."
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1490
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1494
 msgid ""
 "The inhabitants are rumored to be a strange alliance of man and beast, and "
 "our claim is not going to be unopposed. We must be prepared for the "
@@ -765,7 +787,7 @@ msgstr ""
 "sorprese in queste terre."
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1494
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1498
 msgid ""
 "Then let us discover what lies in waiting and teach them not to oppose our "
 "claim."
@@ -774,7 +796,7 @@ msgstr ""
 "non opporsi alle nostre rivendicazioni."
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1531
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1535
 msgid ""
 "Ugh! How can this be? Defeated by mere barbarians! My gods have forsaken "
 "me..."
@@ -783,7 +805,7 @@ msgstr ""
 "abbandonato..."
 
 #. [message]: speaker=second_unit
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1545
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1549
 msgid ""
 "Cheers of your enemy are the last thing you hear as you slip into death..."
 "their joy fills your last moments with pure hate."
@@ -793,7 +815,7 @@ msgstr ""
 "puro odio."
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1567
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1571
 msgid ""
 "The enemy cheers as a dark mist rises from the land, engulfing you. As "
 "ghostly wisps drain away your will, you realize that your time in this land "
@@ -817,15 +839,18 @@ msgstr ""
 "Il pericolo si nasconde in ogni angolo di questo campo di battaglia "
 "sotterraneo, una mappa per duelli dove la forza e l'astuzia si incontrano."
 
+#. [multiplayer]: id=multiplayer_Thalins_Stronghold
 #. [multiplayer]: id=multiplayer_Blue_Water_Province
 #. [multiplayer]: id=multiplayer_Loris_River
 #. [multiplayer]: id=multiplayer_Sablestone_Delta
+#. [multiplayer]: id=multiplayer_Fast_to_Madness
 #. [multiplayer]: id=multiplayer_Fallenstar_Lake
 #. [multiplayer]: id=multiplayer_Clash
 #. [multiplayer]: id=multiplayer_4p_Hamlets
 #. [multiplayer]: id=multiplayer_The_Freelands
 #. [multiplayer]: id=multiplayer_8p_Morituri
 #. [multiplayer]: id=multiplayer_Alirok_Marsh
+#. [multiplayer]: id=multiplayer_Mines_of_Mallorod
 #. [multiplayer]: id=multiplayer_3p_Morituri
 #. [multiplayer]: id=multiplayer_Den_of_Onis
 #. [multiplayer]: id=multiplayer_Weldyn_Channel
@@ -839,15 +864,18 @@ msgstr ""
 #. [multiplayer]: id=multiplayer_Hamlets
 #. [multiplayer]: id=multiplayer_Howling_Ghost_Badlands
 #. [multiplayer]: id=multiplayer_8p_Mokena_Prairie
+#: data/multiplayer/scenarios/2p_Thalins_Stronghold.cfg:6
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:7
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:9
 #: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:6
+#: data/multiplayer/scenarios/2p_Fast_To_Madness.cfg:6
 #: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:6
 #: data/multiplayer/scenarios/4p_Clash.cfg:7
 #: data/multiplayer/scenarios/4p_Hamlets.cfg:6
 #: data/multiplayer/scenarios/2p_The_Freelands.cfg:7
 #: data/multiplayer/scenarios/8p_Morituri.cfg:7
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:6
+#: data/multiplayer/scenarios/4p_Mines_of_Mallorod.cfg:6
 #: data/multiplayer/scenarios/3p_Morituri.cfg:6
 #: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:6
 #: data/multiplayer/scenarios/2p_Weldyn_Channel.cfg:7
@@ -891,11 +919,17 @@ msgstr ""
 #: data/multiplayer/scenarios/3p_Morituri.cfg:42
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:42
 #: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:20
+#: data/multiplayer/scenarios/4p_Eryn_Chethu.cfg:20
+#: data/multiplayer/scenarios/4p_Eryn_Chethu.cfg:62
 #: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:31
 #: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:42
 #: data/multiplayer/scenarios/4p_Underworld.cfg:20
 #: data/multiplayer/scenarios/4p_Underworld.cfg:53
 #: data/multiplayer/scenarios/5p_Forest_of_Fear.cfg:31
+#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:30
+#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:52
+#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:74
+#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:85
 msgid "teamname^West"
 msgstr "Ovest"
 
@@ -912,12 +946,32 @@ msgstr "Ovest"
 #: data/multiplayer/scenarios/3p_Morituri.cfg:31
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:31
 #: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:31
+#: data/multiplayer/scenarios/4p_Eryn_Chethu.cfg:34
+#: data/multiplayer/scenarios/4p_Eryn_Chethu.cfg:48
 #: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:20
 #: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:53
 #: data/multiplayer/scenarios/4p_Underworld.cfg:31
 #: data/multiplayer/scenarios/4p_Underworld.cfg:42
+#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:19
+#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:41
+#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:63
+#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:96
 msgid "teamname^East"
 msgstr "Est"
+
+#. [multiplayer]: id=multiplayer_Fast_to_Madness
+#: data/multiplayer/scenarios/2p_Fast_To_Madness.cfg:5
+#, fuzzy
+msgid "2p - Fast To Madness"
+msgstr "2p - Lago della stella cadente"
+
+#. [multiplayer]: id=multiplayer_Fast_to_Madness
+#: data/multiplayer/scenarios/2p_Fast_To_Madness.cfg:6
+msgid ""
+"For a long time these two landlords have been at loggerheads with each other "
+"and it seems that today another chapter will be added to their story of "
+"pointless skirmishes."
+msgstr ""
 
 #  XXX Hamlets, al plurale. Dovrebbe essere un piccolo villaggio, o una raggruppamento di case.
 #. [multiplayer]: id=multiplayer_Hamlets
@@ -1075,6 +1129,16 @@ msgstr "Statua di Lo-bsang"
 msgid "A stone-carved likeness of Lo-bsang, Servant of Sulla."
 msgstr "Una statua di pietra di Lo-bsang, servitore di Sulla."
 
+#. [multiplayer]: id=multiplayer_Thalins_Stronghold
+#: data/multiplayer/scenarios/2p_Thalins_Stronghold.cfg:5
+msgid "2p - Thalin's Stronghold"
+msgstr ""
+
+#. [multiplayer]: id=multiplayer_Thalins_Stronghold
+#: data/multiplayer/scenarios/2p_Thalins_Stronghold.cfg:6
+msgid "Deep within the mountains lie the castles of the dwarven lords."
+msgstr ""
+
 #. [multiplayer]: id=multiplayer_The_Freelands
 #: data/multiplayer/scenarios/2p_The_Freelands.cfg:5
 msgid "2p - The Freelands"
@@ -1195,6 +1259,24 @@ msgstr "4p - Scontro"
 #: data/multiplayer/scenarios/4p_Clash.cfg:7
 msgid "Small map for 2 vs. 2."
 msgstr "Una piccola mappa per giocare 2 contro due."
+
+#. [multiplayer]: id=multiplayer_Eryn_Chetu
+#: data/multiplayer/scenarios/4p_Eryn_Chethu.cfg:5
+msgid "4p - Eryn Chethu"
+msgstr ""
+
+#. [multiplayer]: id=multiplayer_Eryn_Chetu
+#: data/multiplayer/scenarios/4p_Eryn_Chethu.cfg:6
+#, fuzzy
+msgid " Recommended setting of 3 gold per village."
+msgstr "Si raccomanda di impostare 2 monete d'oro per villaggio."
+
+#. [multiplayer]: id=multiplayer_Eryn_Chetu
+#: data/multiplayer/scenarios/4p_Eryn_Chethu.cfg:6
+msgid ""
+"Beware wanderer, for even the elves do not know what lives in the forests of "
+"Eryn Chethu."
+msgstr ""
 
 #. [multiplayer]: id=multiplayer_4p_Hamlets
 #: data/multiplayer/scenarios/4p_Hamlets.cfg:5
@@ -1322,6 +1404,20 @@ msgstr ""
 "Una mappa 25X25 incentrata su di un fiume con due fortezze agli angoli "
 "opposti. Si consiglia di impostare i giocatori 1 e 4 contro 2 e 3. Ci sono "
 "28 villaggi e si consiglia di impostare 2 monete d'oro per villaggio."
+
+#. [multiplayer]: id=multiplayer_Mines_of_Mallorod
+#: data/multiplayer/scenarios/4p_Mines_of_Mallorod.cfg:5
+#, fuzzy
+msgid "4p - Mines of Mallorod"
+msgstr "4p - Il re della collina"
+
+#. [multiplayer]: id=multiplayer_Mines_of_Mallorod
+#: data/multiplayer/scenarios/4p_Mines_of_Mallorod.cfg:6
+msgid ""
+"The dwarves were the first to arrive when it became know that gold had found "
+"at Mallorod. Shortly after others followed and soon quarrels arose over the "
+"right to delve for the shiny metal."
+msgstr ""
 
 #. [multiplayer]: id=multiplayer_4p_Morituri
 #: data/multiplayer/scenarios/4p_Morituri.cfg:5
@@ -1650,22 +1746,6 @@ msgstr ""
 "Ispirata da Morituri, questa mappa per 8 giocatori crea un'epica scena di "
 "battaglia che richiede due squadre di coordinare l'offesa e la difesa."
 
-#. [side]
-#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:19
-#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:41
-#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:63
-#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:96
-msgid "teamname^east"
-msgstr "Est"
-
-#. [side]
-#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:30
-#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:52
-#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:74
-#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:85
-msgid "teamname^west"
-msgstr "Ovest"
-
 #. [multiplayer]: id=multiplayer_8p_Morituri
 #: data/multiplayer/scenarios/8p_Morituri.cfg:5
 msgid "8p - Morituri"
@@ -1810,6 +1890,12 @@ msgid ""
 msgstr ""
 "Un benchmark di wesnoth, usa --no-delay --multiplayer --"
 "scenario=wesbench_shroud_walk --exit-at-end."
+
+#~ msgid "teamname^east"
+#~ msgstr "Est"
+
+#~ msgid "teamname^west"
+#~ msgstr "Ovest"
 
 #~ msgid "Great War"
 #~ msgstr "Grande guerra"

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-12-03 19:42+0100\n"
+"POT-Creation-Date: 2008-12-09 22:12+0100\n"
 "PO-Revision-Date: 2006-08-14 19:33+0200\n"
 "Last-Translator: Jaka Kranjc <wesnoth@prinas.si>\n"
 "Language-Team: Slovenian\n"
@@ -125,26 +125,26 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:680
+#: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1237
 #: src/actions.cpp:1050 src/actions.cpp:1321
 msgid "slowed"
 msgstr "upočasnjen"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:13
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:16
 #: data/core/macros/abilities.cfg:10
 msgid "heals +4"
 msgstr "ranocelnik +4"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:14
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:17
 #: data/core/macros/abilities.cfg:11
 #, fuzzy
 msgid "female^heals +4"
 msgstr "Tatica"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:19
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:22
 #: data/core/macros/abilities.cfg:16
 #, fuzzy
 msgid ""
@@ -165,20 +165,20 @@ msgstr ""
 "ali pri razstrupljevalecu."
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:42
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:45
 #: data/core/macros/abilities.cfg:30
 msgid "heals +8"
 msgstr "ranocelnik +8"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:43
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:46
 #: data/core/macros/abilities.cfg:31
 #, fuzzy
 msgid "female^heals +8"
 msgstr "Tatica"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:48
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:51
 #: data/core/macros/abilities.cfg:36
 msgid ""
 "Heals +8:\n"
@@ -199,68 +199,52 @@ msgstr ""
 "Zastrupljenih enot ne more ozdraviti strupa, te morajo poiskati pomoč v vasi "
 "ali pri razstrupljevalecu."
 
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:72
-#, fuzzy
-msgid " This unit is capable of basic healing and slowing dehydration."
-msgstr ""
-" Ta enota je sposobna zdraviti druge okoli sebe in jih po potrebi "
-"razstrupiti."
-
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:75
-#, fuzzy
-msgid ""
-" This unit is capable of healing those around it, slowing dehydration, and "
-"curing them of poison."
-msgstr ""
-" Ta enota je sposobna zdraviti druge okoli sebe in jih po potrebi "
-"razstrupiti."
-
 #. [about]
 #: data/core/about.cfg:7
 msgid "Programming"
 msgstr ""
 
 #. [about]
-#: data/core/about.cfg:183
+#: data/core/about.cfg:186
 #, fuzzy
 msgid "General Purpose Administration and Coordination"
 msgstr "+Punčke za vse"
 
 #. [about]
-#: data/core/about.cfg:201
+#: data/core/about.cfg:204
 #, fuzzy
 msgid "Artwork and Graphics"
 msgstr "Grafični oblikovalci"
 
 #. [about]
-#: data/core/about.cfg:480
+#: data/core/about.cfg:483
 msgid "Music"
 msgstr "Glasba"
 
 #. [about]
-#: data/core/about.cfg:511
+#: data/core/about.cfg:514
 msgid "Sound Effects"
 msgstr ""
 
 #. [about]
-#: data/core/about.cfg:527
+#: data/core/about.cfg:530
 #, fuzzy
 msgid "Campaign Design"
 msgstr "Razvijalci kampanj"
 
 #. [about]
-#: data/core/about.cfg:602
+#: data/core/about.cfg:605
 #, fuzzy
 msgid "Multiplayer Maps and Balancing"
 msgstr "Večigralske karte"
 
 #. [about]
-#: data/core/about.cfg:643
+#: data/core/about.cfg:646
 msgid "Packagers"
 msgstr "Paketarji"
 
 #. [about]
-#: data/core/about.cfg:709
+#: data/core/about.cfg:712
 #, fuzzy
 msgid "Miscellaneous contributors"
 msgstr "Razno"
@@ -3278,7 +3262,7 @@ msgid ""
 msgstr ""
 
 #. [deprecated_message]
-#: data/core/macros/deprecated-utils.cfg:22
+#: data/core/macros/deprecated-utils.cfg:21
 msgid "VICTORY_AND_DEFEAT_MUSIC is unnecessary and can be removed."
 msgstr ""
 
@@ -3438,26 +3422,26 @@ msgstr "Ta palica bo naredila svojega nosilca hitrejšega."
 msgid "Only magical beings can wield such an object."
 msgstr "Samo čarobna bitja lahko uporabljajo tak predmet."
 
-#: data/core/macros/items.cfg:512
+#: data/core/macros/items.cfg:542
 msgid "Only the mermen can use this item!"
 msgstr "Samo povodni možje lahko uporabljajo ta predmet!"
 
-#: data/core/macros/items.cfg:512
+#: data/core/macros/items.cfg:542
 msgid "Should $unit.name pick up the trident?"
 msgstr ""
 
 #. [object]
-#: data/core/macros/items.cfg:514
+#: data/core/macros/items.cfg:544
 msgid "Storm Trident"
 msgstr "Nevihtni Trizob"
 
 #. [object]
-#: data/core/macros/items.cfg:517
+#: data/core/macros/items.cfg:547
 msgid "This trident allows a merman to shoot electric bolts at his enemies!"
 msgstr "Ta trizob povodnemu možu omogoča, da na svoje sovražnike meče strele!"
 
 #. [effect]: type=fire
-#: data/core/macros/items.cfg:521
+#: data/core/macros/items.cfg:551
 msgid "storm trident"
 msgstr "nevihtni trizob"
 
@@ -4521,7 +4505,7 @@ msgid ""
 "a full two and a half centuries. While some elves possessing a high magical "
 "aptitude have been known to live an additional full century, most elves "
 "begin to grow physically frail at some point between 250 and 300 years of "
-"age and pass away rapidly (generally within a year or two) thereafter. \n"
+"age and pass away rapidly (generally within a year or two) thereafter.\n"
 "\n"
 "Elves are naturally imbued with magic to a small degree. Though most are "
 "unable to channel it directly, its latent presence gives them their keen "
@@ -5987,7 +5971,7 @@ msgstr "(za nadaljevanje pritisnite $hotkey)"
 msgid "B"
 msgstr "B"
 
-#: src/addon_management.cpp:358 src/dialogs.cpp:1198
+#: src/addon_management.cpp:358 src/dialogs.cpp:1210
 msgid "KB"
 msgstr "KB"
 
@@ -6318,7 +6302,7 @@ msgstr "Dodatek nameščen"
 msgid "Add-on could not be deleted properly:"
 msgstr ""
 
-#: src/ai.cpp:1778
+#: src/ai.cpp:1773
 #, fuzzy
 msgid "Unknown unit type : "
 msgstr "Neznan scenarij"
@@ -6538,7 +6522,7 @@ msgstr "Prekliči"
 msgid "OK"
 msgstr "OK"
 
-#: src/dialogs.cpp:683 src/dialogs.cpp:1174 src/dialogs.cpp:1276
+#: src/dialogs.cpp:683 src/dialogs.cpp:1186 src/dialogs.cpp:1288
 #: src/multiplayer_connect.cpp:1032 src/multiplayer_create.cpp:81
 #: src/multiplayer_wait.cpp:183
 msgid "Cancel"
@@ -6548,43 +6532,43 @@ msgstr "Prekliči"
 msgid "Delete Save"
 msgstr "Izbriši shranjen položaj"
 
-#: src/dialogs.cpp:742
+#: src/dialogs.cpp:743
 msgid "Profile"
 msgstr "Profil"
 
-#: src/dialogs.cpp:838 src/help.cpp:1238
+#: src/dialogs.cpp:840 src/help.cpp:1238
 msgid "level"
 msgstr "stopnja"
 
-#: src/dialogs.cpp:851 src/help.cpp:1360
+#: src/dialogs.cpp:853 src/help.cpp:1360
 msgid "HP: "
 msgstr "HP: "
 
-#: src/dialogs.cpp:854
+#: src/dialogs.cpp:856
 msgid "XP: "
 msgstr "XP: "
 
-#: src/dialogs.cpp:858 src/help.cpp:1361
+#: src/dialogs.cpp:860 src/help.cpp:1361
 msgid "Moves: "
 msgstr "Premiki: "
 
-#: src/game.cpp:607 src/game.cpp:1394
+#: src/game.cpp:612 src/game.cpp:1401
 msgid "The Battle for Wesnoth"
 msgstr "The Battle for Wesnoth"
 
-#: src/game.cpp:889
+#: src/game.cpp:894
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr ""
 "Datoteka, ki ste jo poskušali naložiti, je pokvarjena. Vseeno bo naložena.\n"
 
-#: src/game.cpp:929 src/multiplayer_connect.cpp:1566
+#: src/game.cpp:934 src/multiplayer_connect.cpp:1566
 #, fuzzy
 msgid "This save is from a version too old to be loaded."
 msgstr ""
 "Ta shranjen položaj je iz druge različice igre. Ali ga želite poskusiti "
 "naložiti?"
 
-#: src/game.cpp:935 src/multiplayer_connect.cpp:1573
+#: src/game.cpp:940 src/multiplayer_connect.cpp:1573
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
@@ -6592,74 +6576,74 @@ msgstr ""
 "Ta shranjen položaj je iz druge različice igre. Ali ga želite poskusiti "
 "naložiti?"
 
-#: src/game.cpp:955 src/game.cpp:958 src/multiplayer_connect.cpp:1544
+#: src/game.cpp:960 src/game.cpp:963 src/multiplayer_connect.cpp:1544
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Datoteka, ki ste jo poskusili naložiti, je pokvarjena: '"
 
-#: src/game.cpp:961
+#: src/game.cpp:966
 msgid "File I/O Error while reading the game"
 msgstr "I/O Napaka pri branju igre"
 
-#: src/game.cpp:1064
+#: src/game.cpp:1069
 #, fuzzy
 msgid "No campaigns are available.\n"
 msgstr "Na voljo ni nobenih ciljev"
 
-#: src/game.cpp:1068
+#: src/game.cpp:1073
 #, fuzzy
 msgid "Play a campaign"
 msgstr "Kampanja"
 
-#: src/game.cpp:1109
+#: src/game.cpp:1116
 msgid "Difficulty"
 msgstr "Težavnost"
 
-#: src/game.cpp:1110
+#: src/game.cpp:1117
 msgid "Select difficulty level:"
 msgstr "Izberite težavnost:"
 
-#: src/game.cpp:1272
+#: src/game.cpp:1279
 #, fuzzy
 msgid "Do you really want to start the server?"
 msgstr "Ali zares želite izbrisati ta shranjeni položaj?"
 
-#: src/game.cpp:1273
+#: src/game.cpp:1280
 msgid ""
 "The server will run in a background process until all users have "
 "disconnected."
 msgstr ""
 
-#: src/game.cpp:1277
+#: src/game.cpp:1284
 #, fuzzy
 msgid "Don't show again"
 msgstr "Ne sprašuj me več!"
 
-#: src/game.cpp:1349
+#: src/game.cpp:1356
 #, fuzzy
 msgid "Error while starting server: "
 msgstr "Napaka med igranjem: "
 
-#: src/game.cpp:1351 src/playcampaign.cpp:95 src/playcampaign.cpp:380
+#: src/game.cpp:1358 src/playcampaign.cpp:95 src/playcampaign.cpp:380
 msgid "The game could not be loaded: "
 msgstr "Igre ni bilo možno naložiti: "
 
-#: src/game.cpp:1353 src/playcampaign.cpp:97 src/playcampaign.cpp:383
+#: src/game.cpp:1360 src/playcampaign.cpp:97 src/playcampaign.cpp:383
 msgid "Error while playing the game: "
 msgstr "Napaka med igranjem: "
 
-#: src/game.cpp:1373 src/playcampaign.cpp:99 src/playcampaign.cpp:386
+#: src/game.cpp:1380 src/playcampaign.cpp:99 src/playcampaign.cpp:386
 msgid "The game map could not be loaded: "
 msgstr "Karte ni bilo možno naložiti: "
 
-#: src/game.cpp:1439 src/game.cpp:1560
+#: src/game.cpp:1446 src/game.cpp:1567
 msgid "Error loading game configuration files: '"
 msgstr "Napaka pri nalaganju nastavitvenih datotek: '"
 
-#: src/game.cpp:1440 src/game.cpp:1561
+#: src/game.cpp:1447 src/game.cpp:1568
 msgid "' (The game will now exit)"
 msgstr "' (Igra se bo zaključila)"
 
-#: src/game.cpp:1535
+#: src/game.cpp:1542
 #, fuzzy
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
@@ -6668,29 +6652,29 @@ msgstr[1] "Sledeče dodatne kampanje zaradi napak ni bilo možno naložiti: "
 msgstr[2] "Sledeče dodatne kampanje zaradi napak ni bilo možno naložiti: "
 msgstr[3] "Sledeče dodatne kampanje zaradi napak ni bilo možno naložiti: "
 
-#: src/game.cpp:1542
+#: src/game.cpp:1549
 msgid "ERROR DETAILS:"
 msgstr "PODROBNOSTI NAPAKE:"
 
-#: src/game.cpp:1570
+#: src/game.cpp:1577
 #, fuzzy
 msgid "Loading data files"
 msgstr "Branje datotek enot."
 
-#: src/game.cpp:1981
+#: src/game.cpp:1988
 msgid "Loading game configuration."
 msgstr "Nalaganje nastavitev."
 
-#: src/game.cpp:1987
+#: src/game.cpp:1994
 msgid "Re-initialize fonts for the current language."
 msgstr "Ponastavi pisave za trenutni jezik."
 
-#: src/game.cpp:1995
+#: src/game.cpp:2002
 #, fuzzy
 msgid "Searching for installed add-ons."
 msgstr "Pošiljanje dodatka"
 
-#: src/game.cpp:2004
+#: src/game.cpp:2011
 msgid "Loading title screen."
 msgstr "Nalaganje uvodnega zaslona."
 
@@ -6712,11 +6696,11 @@ msgstr "Poraz:"
 msgid "No time of day has been defined."
 msgstr ""
 
-#: src/gamestatus.cpp:738 src/gamestatus.cpp:740 src/playcampaign.cpp:414
+#: src/gamestatus.cpp:743 src/gamestatus.cpp:745 src/playcampaign.cpp:414
 msgid " replay"
 msgstr "vnovično predvajanje"
 
-#: src/gamestatus.cpp:875
+#: src/gamestatus.cpp:880
 msgid "Could not write to file"
 msgstr "Ni bilo mogoče pisati v datoteko."
 
@@ -7016,11 +7000,13 @@ msgid "?"
 msgstr "?"
 
 #: src/loadscreen.cpp:224
-msgid "Verifying cache."
+#, fuzzy
+msgid "Verifying cache"
 msgstr "Preverjanje predpomnilnika."
 
 #: src/loadscreen.cpp:243
-msgid "Reading cache."
+#, fuzzy
+msgid "Reading cache"
 msgstr "Branje predpomnilnika."
 
 #: src/loadscreen.cpp:262
@@ -8598,7 +8584,7 @@ msgstr "Prenesi dodatke"
 
 #: src/titlescreen.cpp:383
 #, fuzzy
-msgid "TitleScreen button^Editor"
+msgid "TitleScreen button^Map Editor"
 msgstr "Izhod"
 
 #: src/titlescreen.cpp:385
@@ -8745,7 +8731,7 @@ msgstr ""
 msgid "$trait_name|: $trait_description "
 msgstr ""
 
-#: src/unit_types.cpp:194 src/unit_types.cpp:260
+#: src/unit_types.cpp:196 src/unit_types.cpp:262
 #, fuzzy
 msgid "damage"
 msgid_plural "damage"
@@ -8754,7 +8740,7 @@ msgstr[1] "škoda"
 msgstr[2] "škoda"
 msgstr[3] "škoda"
 
-#: src/unit_types.cpp:204 src/unit_types.cpp:267
+#: src/unit_types.cpp:206 src/unit_types.cpp:269
 #, fuzzy
 msgid "strike"
 msgid_plural "strikes"
@@ -8763,39 +8749,39 @@ msgstr[1] "udarci"
 msgstr[2] "udarci"
 msgstr[3] "udarci"
 
-#: src/unit_types.cpp:215
+#: src/unit_types.cpp:217
 #, fuzzy, no-c-format
 msgid "% accuracy"
 msgstr "Skupna škoda"
 
-#: src/unit_types.cpp:225
+#: src/unit_types.cpp:227
 #, no-c-format
 msgid "% parry"
 msgstr ""
 
-#: src/unit_types.cpp:1015
+#: src/unit_types.cpp:1017
 msgid "chaotic"
 msgstr "kaotičen"
 
-#: src/unit_types.cpp:1015
+#: src/unit_types.cpp:1017
 msgid "lawful"
 msgstr "zakonit"
 
-#: src/unit_types.cpp:1015
+#: src/unit_types.cpp:1017
 msgid "neutral"
 msgstr "nevtralen"
 
-#: src/unit_types.cpp:1016
+#: src/unit_types.cpp:1018
 #, fuzzy
 msgid "female^chaotic"
 msgstr "Tatica"
 
-#: src/unit_types.cpp:1016
+#: src/unit_types.cpp:1018
 #, fuzzy
 msgid "female^lawful"
 msgstr "Izobčenka"
 
-#: src/unit_types.cpp:1016
+#: src/unit_types.cpp:1018
 #, fuzzy
 msgid "female^neutral"
 msgstr "Vagabondka"
@@ -8828,6 +8814,20 @@ msgstr "Pomagajte nam izboljšati Wesnoth!"
 #: src/upload_log.cpp:330
 msgid "Enable summary uploads"
 msgstr "Omogoči pošiljanje povzetkov"
+
+#, fuzzy
+#~ msgid " This unit is capable of basic healing and slowing dehydration."
+#~ msgstr ""
+#~ " Ta enota je sposobna zdraviti druge okoli sebe in jih po potrebi "
+#~ "razstrupiti."
+
+#, fuzzy
+#~ msgid ""
+#~ " This unit is capable of healing those around it, slowing dehydration, "
+#~ "and curing them of poison."
+#~ msgstr ""
+#~ " Ta enota je sposobna zdraviti druge okoli sebe in jih po potrebi "
+#~ "razstrupiti."
 
 #, fuzzy
 #~ msgid "Abilites"

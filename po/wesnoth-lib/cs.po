@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-11-29 12:24+0100\n"
+"POT-Creation-Date: 2008-12-09 22:13+0100\n"
 "PO-Revision-Date: 2008-11-20 16:35+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
@@ -1326,62 +1326,62 @@ msgstr "Text nezačíná na plátně."
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr "Povinný ovládací prvek '$id' nebyl definován."
 
-#: src/gui/widgets/settings.cpp:117
+#: src/gui/widgets/settings.cpp:122
 #, fuzzy
 msgid "No default gui defined."
 msgstr "Nebyl definován žádný server."
 
-#: src/gui/widgets/settings.cpp:243
+#: src/gui/widgets/settings.cpp:252
 msgid "Window not defined."
 msgstr "Okno není definováno."
 
-#: src/gui/widgets/settings.cpp:307
+#: src/gui/widgets/settings.cpp:316
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr "Definice ovladače '$definition' neobsahuje definici pro '$id'."
 
-#: src/gui/widgets/settings.cpp:419 src/gui/widgets/window_builder.cpp:272
+#: src/gui/widgets/settings.cpp:428 src/gui/widgets/window_builder.cpp:278
 msgid "No resolution defined."
 msgstr "Není definováno žádné rozlišení."
 
-#: src/gui/widgets/settings.cpp:451
+#: src/gui/widgets/settings.cpp:460
 #, fuzzy
 msgid "No state or draw section defined."
 msgstr "Nebyl definován žádný server."
 
-#: src/gui/widgets/settings.cpp:631
+#: src/gui/widgets/settings.cpp:703
 msgid "No scrollbar defined."
 msgstr "Není definován žádný posuvník."
 
-#: src/gui/widgets/settings.cpp:787 src/gui/widgets/window_builder.cpp:363
-#: src/gui/widgets/window_builder.cpp:946
-#: src/gui/widgets/window_builder.cpp:1157
+#: src/gui/widgets/settings.cpp:859 src/gui/widgets/window_builder.cpp:369
+#: src/gui/widgets/window_builder.cpp:967
+#: src/gui/widgets/window_builder.cpp:1182
 msgid "No grid defined."
 msgstr "Není definována žádná mřížka."
 
-#: src/gui/widgets/window_builder.cpp:490
+#: src/gui/widgets/window_builder.cpp:497
 msgid "A row must have a column."
 msgstr "Řádek musí mít sloupec."
 
-#: src/gui/widgets/window_builder.cpp:491
+#: src/gui/widgets/window_builder.cpp:498
 msgid "Number of columns differ."
 msgstr "Počet sloupců se liší."
 
-#: src/gui/widgets/window_builder.cpp:715
+#: src/gui/widgets/window_builder.cpp:736
 msgid "No list defined."
 msgstr "Nebyl definován žádný seznam."
 
-#: src/gui/widgets/window_builder.cpp:718
+#: src/gui/widgets/window_builder.cpp:739
 msgid "A 'list_definition' should contain one row."
 msgstr "Pro 'list_definition' je vyžadována alespoň jedna řádka."
 
-#: src/gui/widgets/window_builder.cpp:737
+#: src/gui/widgets/window_builder.cpp:758
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr ""
 "'list_data' musí obsahovat stejný počet sloupců jako 'list_definition'."
 
-#: src/gui/widgets/window_builder.cpp:1084
+#: src/gui/widgets/window_builder.cpp:1109
 msgid "The number of value_labels and values don't match."
 msgstr "Nesouhlasí počet value_labels a values."
 

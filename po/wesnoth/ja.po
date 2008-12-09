@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-12-03 19:42+0100\n"
+"POT-Creation-Date: 2008-12-09 22:12+0100\n"
 "PO-Revision-Date: 2008-03-02 19:00+0900\n"
 "Last-Translator: naoki iimura <amatubu@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
@@ -125,26 +125,26 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:680
+#: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1237
 #: src/actions.cpp:1050 src/actions.cpp:1321
 msgid "slowed"
 msgstr "遅くなった"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:13
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:16
 #: data/core/macros/abilities.cfg:10
 msgid "heals +4"
 msgstr "回復 +4"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:14
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:17
 #: data/core/macros/abilities.cfg:11
 #, fuzzy
 msgid "female^heals +4"
 msgstr "壮健"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:19
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:22
 #: data/core/macros/abilities.cfg:16
 #, fuzzy
 msgid ""
@@ -165,20 +165,20 @@ msgstr ""
 "ユニットを捜して下さい。"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:42
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:45
 #: data/core/macros/abilities.cfg:30
 msgid "heals +8"
 msgstr "回復 +8"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:43
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:46
 #: data/core/macros/abilities.cfg:31
 #, fuzzy
 msgid "female^heals +8"
 msgstr "壮健"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:48
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:51
 #: data/core/macros/abilities.cfg:36
 msgid ""
 "Heals +8:\n"
@@ -199,62 +199,48 @@ msgstr ""
 "毒を受けているユニットの解毒を行うことはできません。 村で回復させるか、 治療"
 "ユニットを捜して下さい。"
 
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:72
-#, fuzzy
-msgid " This unit is capable of basic healing and slowing dehydration."
-msgstr ""
-" このユニットはその周りにいるユニットを回復し、毒を治療することができます。"
-
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:75
-#, fuzzy
-msgid ""
-" This unit is capable of healing those around it, slowing dehydration, and "
-"curing them of poison."
-msgstr ""
-" このユニットはその周りにいるユニットを回復し、毒を治療することができます。"
-
 #. [about]
 #: data/core/about.cfg:7
 msgid "Programming"
 msgstr "プログラミング"
 
 #. [about]
-#: data/core/about.cfg:183
+#: data/core/about.cfg:186
 msgid "General Purpose Administration and Coordination"
 msgstr "全般の管理と調整"
 
 #. [about]
-#: data/core/about.cfg:201
+#: data/core/about.cfg:204
 msgid "Artwork and Graphics"
 msgstr "アートワークおよびグラフィクス"
 
 #. [about]
-#: data/core/about.cfg:480
+#: data/core/about.cfg:483
 msgid "Music"
 msgstr "音楽"
 
 #. [about]
-#: data/core/about.cfg:511
+#: data/core/about.cfg:514
 msgid "Sound Effects"
 msgstr "サウンドエフェクト"
 
 #. [about]
-#: data/core/about.cfg:527
+#: data/core/about.cfg:530
 msgid "Campaign Design"
 msgstr "キャンペーンデザイン"
 
 #. [about]
-#: data/core/about.cfg:602
+#: data/core/about.cfg:605
 msgid "Multiplayer Maps and Balancing"
 msgstr "マルチプレイヤーマップとバランス調整"
 
 #. [about]
-#: data/core/about.cfg:643
+#: data/core/about.cfg:646
 msgid "Packagers"
 msgstr "パッケージ作成"
 
 #. [about]
-#: data/core/about.cfg:709
+#: data/core/about.cfg:712
 msgid "Miscellaneous contributors"
 msgstr "その他の貢献者"
 
@@ -3340,7 +3326,7 @@ msgid ""
 msgstr ""
 
 #. [deprecated_message]
-#: data/core/macros/deprecated-utils.cfg:22
+#: data/core/macros/deprecated-utils.cfg:21
 msgid "VICTORY_AND_DEFEAT_MUSIC is unnecessary and can be removed."
 msgstr ""
 
@@ -3500,26 +3486,26 @@ msgstr "この杖は持ち主に俊敏な動きを与えます。"
 msgid "Only magical beings can wield such an object."
 msgstr "魔法を扱えるものだけが、 その物体を扱うことができます。"
 
-#: data/core/macros/items.cfg:512
+#: data/core/macros/items.cfg:542
 msgid "Only the mermen can use this item!"
 msgstr "マーマンだけがこの道具を使用できる！"
 
-#: data/core/macros/items.cfg:512
+#: data/core/macros/items.cfg:542
 msgid "Should $unit.name pick up the trident?"
 msgstr ""
 
 #. [object]
-#: data/core/macros/items.cfg:514
+#: data/core/macros/items.cfg:544
 msgid "Storm Trident"
 msgstr "ストームトライデント"
 
 #. [object]
-#: data/core/macros/items.cfg:517
+#: data/core/macros/items.cfg:547
 msgid "This trident allows a merman to shoot electric bolts at his enemies!"
 msgstr "このトライデントを持ったマーマンは、敵に電気の矢を放つことができる！"
 
 #. [effect]: type=fire
-#: data/core/macros/items.cfg:521
+#: data/core/macros/items.cfg:551
 msgid "storm trident"
 msgstr "ストームトライデント"
 
@@ -5008,7 +4994,7 @@ msgid ""
 "a full two and a half centuries. While some elves possessing a high magical "
 "aptitude have been known to live an additional full century, most elves "
 "begin to grow physically frail at some point between 250 and 300 years of "
-"age and pass away rapidly (generally within a year or two) thereafter. \n"
+"age and pass away rapidly (generally within a year or two) thereafter.\n"
 "\n"
 "Elves are naturally imbued with magic to a small degree. Though most are "
 "unable to channel it directly, its latent presence gives them their keen "
@@ -6532,7 +6518,7 @@ msgstr "(移動し続けるには $hotkey を押して下さい)"
 msgid "B"
 msgstr "バイト"
 
-#: src/addon_management.cpp:358 src/dialogs.cpp:1198
+#: src/addon_management.cpp:358 src/dialogs.cpp:1210
 msgid "KB"
 msgstr "Kバイト"
 
@@ -6850,7 +6836,7 @@ msgstr "アドオンは削除されました"
 msgid "Add-on could not be deleted properly:"
 msgstr "アドオンは削除できませんでした。ファイルが見つかりませんでした。"
 
-#: src/ai.cpp:1778
+#: src/ai.cpp:1773
 msgid "Unknown unit type : "
 msgstr "不明のユニットタイプ : "
 
@@ -7062,7 +7048,7 @@ msgstr "キャンセル"
 msgid "OK"
 msgstr "OK"
 
-#: src/dialogs.cpp:683 src/dialogs.cpp:1174 src/dialogs.cpp:1276
+#: src/dialogs.cpp:683 src/dialogs.cpp:1186 src/dialogs.cpp:1288
 #: src/multiplayer_connect.cpp:1032 src/multiplayer_create.cpp:81
 #: src/multiplayer_wait.cpp:183
 msgid "Cancel"
@@ -7072,138 +7058,138 @@ msgstr "キャンセル"
 msgid "Delete Save"
 msgstr "保存データの削除"
 
-#: src/dialogs.cpp:742
+#: src/dialogs.cpp:743
 msgid "Profile"
 msgstr "プロフィール"
 
-#: src/dialogs.cpp:838 src/help.cpp:1238
+#: src/dialogs.cpp:840 src/help.cpp:1238
 msgid "level"
 msgstr "レベル"
 
-#: src/dialogs.cpp:851 src/help.cpp:1360
+#: src/dialogs.cpp:853 src/help.cpp:1360
 msgid "HP: "
 msgstr "HP: "
 
-#: src/dialogs.cpp:854
+#: src/dialogs.cpp:856
 msgid "XP: "
 msgstr "経験: "
 
-#: src/dialogs.cpp:858 src/help.cpp:1361
+#: src/dialogs.cpp:860 src/help.cpp:1361
 msgid "Moves: "
 msgstr "移動: "
 
-#: src/game.cpp:607 src/game.cpp:1394
+#: src/game.cpp:612 src/game.cpp:1401
 msgid "The Battle for Wesnoth"
 msgstr "The Battle for Wesnoth"
 
-#: src/game.cpp:889
+#: src/game.cpp:894
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr "警告: 読み込もうとしたファイルは壊れています。とにかく読み込みます。\n"
 
-#: src/game.cpp:929 src/multiplayer_connect.cpp:1566
+#: src/game.cpp:934 src/multiplayer_connect.cpp:1566
 msgid "This save is from a version too old to be loaded."
 msgstr "この保存データのバージョンは古すぎます。ロードすることができません。"
 
-#: src/game.cpp:935 src/multiplayer_connect.cpp:1573
+#: src/game.cpp:940 src/multiplayer_connect.cpp:1573
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
 msgstr "この保存データはゲームとは異なるバージョンです。 ロードしてみますか？"
 
-#: src/game.cpp:955 src/game.cpp:958 src/multiplayer_connect.cpp:1544
+#: src/game.cpp:960 src/game.cpp:963 src/multiplayer_connect.cpp:1544
 msgid "The file you have tried to load is corrupt: '"
 msgstr "ロードしようとしたファイルは壊れています: '"
 
-#: src/game.cpp:961
+#: src/game.cpp:966
 msgid "File I/O Error while reading the game"
 msgstr "ゲーム読み込み中のファイル入出力エラー"
 
-#: src/game.cpp:1064
+#: src/game.cpp:1069
 #, fuzzy
 msgid "No campaigns are available.\n"
 msgstr "目標がありません"
 
-#: src/game.cpp:1068
+#: src/game.cpp:1073
 msgid "Play a campaign"
 msgstr "キャンペーンをプレイする"
 
-#: src/game.cpp:1109
+#: src/game.cpp:1116
 msgid "Difficulty"
 msgstr "難易度"
 
-#: src/game.cpp:1110
+#: src/game.cpp:1117
 msgid "Select difficulty level:"
 msgstr "難易度を選択して下さい:"
 
-#: src/game.cpp:1272
+#: src/game.cpp:1279
 #, fuzzy
 msgid "Do you really want to start the server?"
 msgstr "本当に彼女を解雇しますか？"
 
-#: src/game.cpp:1273
+#: src/game.cpp:1280
 msgid ""
 "The server will run in a background process until all users have "
 "disconnected."
 msgstr ""
 
-#: src/game.cpp:1277
+#: src/game.cpp:1284
 #, fuzzy
 msgid "Don't show again"
 msgstr "二度と聞かないで！"
 
-#: src/game.cpp:1349
+#: src/game.cpp:1356
 #, fuzzy
 msgid "Error while starting server: "
 msgstr "ゲームプレイ中のエラー: "
 
-#: src/game.cpp:1351 src/playcampaign.cpp:95 src/playcampaign.cpp:380
+#: src/game.cpp:1358 src/playcampaign.cpp:95 src/playcampaign.cpp:380
 msgid "The game could not be loaded: "
 msgstr "ゲームはロードできませんでした: "
 
-#: src/game.cpp:1353 src/playcampaign.cpp:97 src/playcampaign.cpp:383
+#: src/game.cpp:1360 src/playcampaign.cpp:97 src/playcampaign.cpp:383
 msgid "Error while playing the game: "
 msgstr "ゲームプレイ中のエラー: "
 
-#: src/game.cpp:1373 src/playcampaign.cpp:99 src/playcampaign.cpp:386
+#: src/game.cpp:1380 src/playcampaign.cpp:99 src/playcampaign.cpp:386
 msgid "The game map could not be loaded: "
 msgstr "ゲームマップを読み込めませんでした: "
 
-#: src/game.cpp:1439 src/game.cpp:1560
+#: src/game.cpp:1446 src/game.cpp:1567
 msgid "Error loading game configuration files: '"
 msgstr "ゲーム設定ファイルの読み込みエラー: '"
 
-#: src/game.cpp:1440 src/game.cpp:1561
+#: src/game.cpp:1447 src/game.cpp:1568
 msgid "' (The game will now exit)"
 msgstr "' (このゲームは終了します)"
 
-#: src/game.cpp:1535
+#: src/game.cpp:1542
 #, fuzzy
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "以下のアドオンキャンペーンには問題があり、読み込めませんでした:"
 
-#: src/game.cpp:1542
+#: src/game.cpp:1549
 msgid "ERROR DETAILS:"
 msgstr "エラー詳細:"
 
-#: src/game.cpp:1570
+#: src/game.cpp:1577
 msgid "Loading data files"
 msgstr "データファイル読み込み中"
 
-#: src/game.cpp:1981
+#: src/game.cpp:1988
 msgid "Loading game configuration."
 msgstr "ゲーム設定を読み込んでいます。"
 
-#: src/game.cpp:1987
+#: src/game.cpp:1994
 msgid "Re-initialize fonts for the current language."
 msgstr "現在の言語でフォントを再初期化します。"
 
-#: src/game.cpp:1995
+#: src/game.cpp:2002
 #, fuzzy
 msgid "Searching for installed add-ons."
 msgstr "アドオンを送信しています"
 
-#: src/game.cpp:2004
+#: src/game.cpp:2011
 msgid "Loading title screen."
 msgstr "タイトル画面を読み込んでいます。"
 
@@ -7224,11 +7210,11 @@ msgstr "敗北条件:"
 msgid "No time of day has been defined."
 msgstr "時刻が定義されていません。"
 
-#: src/gamestatus.cpp:738 src/gamestatus.cpp:740 src/playcampaign.cpp:414
+#: src/gamestatus.cpp:743 src/gamestatus.cpp:745 src/playcampaign.cpp:414
 msgid " replay"
 msgstr "リプレイ"
 
-#: src/gamestatus.cpp:875
+#: src/gamestatus.cpp:880
 msgid "Could not write to file"
 msgstr "ファイルに書き込みできませんでした。"
 
@@ -7506,11 +7492,13 @@ msgid "?"
 msgstr "？"
 
 #: src/loadscreen.cpp:224
-msgid "Verifying cache."
+#, fuzzy
+msgid "Verifying cache"
 msgstr "キャッシュを検証しています。"
 
 #: src/loadscreen.cpp:243
-msgid "Reading cache."
+#, fuzzy
+msgid "Reading cache"
 msgstr "キャッシュを読み込んでいます。"
 
 #: src/loadscreen.cpp:262
@@ -9034,7 +9022,7 @@ msgstr "アドオン"
 
 #: src/titlescreen.cpp:383
 #, fuzzy
-msgid "TitleScreen button^Editor"
+msgid "TitleScreen button^Map Editor"
 msgstr "終了"
 
 #: src/titlescreen.cpp:385
@@ -9173,49 +9161,49 @@ msgstr "レベルにつき $effect_description"
 msgid "$trait_name|: $trait_description "
 msgstr "$trait_name|: $trait_description "
 
-#: src/unit_types.cpp:194 src/unit_types.cpp:260
+#: src/unit_types.cpp:196 src/unit_types.cpp:262
 msgid "damage"
 msgid_plural "damage"
 msgstr[0] "ダメージ"
 
-#: src/unit_types.cpp:204 src/unit_types.cpp:267
+#: src/unit_types.cpp:206 src/unit_types.cpp:269
 msgid "strike"
 msgid_plural "strikes"
 msgstr[0] "回数"
 
-#: src/unit_types.cpp:215
+#: src/unit_types.cpp:217
 #, fuzzy, no-c-format
 msgid "% accuracy"
 msgstr "攻撃"
 
-#: src/unit_types.cpp:225
+#: src/unit_types.cpp:227
 #, no-c-format
 msgid "% parry"
 msgstr ""
 
-#: src/unit_types.cpp:1015
+#: src/unit_types.cpp:1017
 msgid "chaotic"
 msgstr "混沌"
 
-#: src/unit_types.cpp:1015
+#: src/unit_types.cpp:1017
 msgid "lawful"
 msgstr "秩序"
 
-#: src/unit_types.cpp:1015
+#: src/unit_types.cpp:1017
 msgid "neutral"
 msgstr "中立"
 
-#: src/unit_types.cpp:1016
+#: src/unit_types.cpp:1018
 #, fuzzy
 msgid "female^chaotic"
 msgstr "機械"
 
-#: src/unit_types.cpp:1016
+#: src/unit_types.cpp:1018
 #, fuzzy
 msgid "female^lawful"
 msgstr "忠義"
 
-#: src/unit_types.cpp:1016
+#: src/unit_types.cpp:1018
 #, fuzzy
 msgid "female^neutral"
 msgstr "アンデッド"
@@ -9247,6 +9235,20 @@ msgstr "Wesnoth をもっとよくするために協力してください！"
 #: src/upload_log.cpp:330
 msgid "Enable summary uploads"
 msgstr "サマリのアップロードを有効にする"
+
+#, fuzzy
+#~ msgid " This unit is capable of basic healing and slowing dehydration."
+#~ msgstr ""
+#~ " このユニットはその周りにいるユニットを回復し、毒を治療することができま"
+#~ "す。"
+
+#, fuzzy
+#~ msgid ""
+#~ " This unit is capable of healing those around it, slowing dehydration, "
+#~ "and curing them of poison."
+#~ msgstr ""
+#~ " このユニットはその周りにいるユニットを回復し、毒を治療することができま"
+#~ "す。"
 
 #~ msgid "Abilites"
 #~ msgstr "能力"

@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-12-03 19:42+0100\n"
+"POT-Creation-Date: 2008-12-09 22:12+0100\n"
 "PO-Revision-Date: 2008-11-21 13:30-0300\n"
 "Last-Translator: Ignacio R. Morelle <shikadilord@users.sourceforge.net>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -133,25 +133,25 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:680
+#: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1237
 #: src/actions.cpp:1050 src/actions.cpp:1321
 msgid "slowed"
 msgstr "ralentizado"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:13
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:16
 #: data/core/macros/abilities.cfg:10
 msgid "heals +4"
 msgstr "sana +4"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:14
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:17
 #: data/core/macros/abilities.cfg:11
 msgid "female^heals +4"
 msgstr "sana +4"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:19
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:22
 #: data/core/macros/abilities.cfg:16
 msgid ""
 "Heals +4:\n"
@@ -172,19 +172,19 @@ msgstr ""
 "buscar el cuidado de una aldea o una unidad con la habilidad de curar."
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:42
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:45
 #: data/core/macros/abilities.cfg:30
 msgid "heals +8"
 msgstr "sana +8"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:43
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:46
 #: data/core/macros/abilities.cfg:31
 msgid "female^heals +8"
 msgstr "sana +8"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:48
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:51
 #: data/core/macros/abilities.cfg:36
 msgid ""
 "Heals +8:\n"
@@ -205,62 +205,48 @@ msgstr ""
 "A una unidad envenenada no se le puede curar con esta habilidad, y debe "
 "buscar una aldea o una unidad con la habilidad de curar."
 
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:72
-#, fuzzy
-msgid " This unit is capable of basic healing and slowing dehydration."
-msgstr "Esta unidad es capaz de realizar sanamiento básico."
-
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:75
-#, fuzzy
-msgid ""
-" This unit is capable of healing those around it, slowing dehydration, and "
-"curing them of poison."
-msgstr ""
-" Esta unidad es capaz de sanar a todos aquellos a su alrededor y curarles "
-"del veneno."
-
 #. [about]
 #: data/core/about.cfg:7
 msgid "Programming"
 msgstr "Programación"
 
 #. [about]
-#: data/core/about.cfg:183
+#: data/core/about.cfg:186
 msgid "General Purpose Administration and Coordination"
 msgstr "Administración de propósito general y coordinación"
 
 #. [about]
-#: data/core/about.cfg:201
+#: data/core/about.cfg:204
 msgid "Artwork and Graphics"
 msgstr "Trabajo artístico y gráficos"
 
 #. [about]
-#: data/core/about.cfg:480
+#: data/core/about.cfg:483
 msgid "Music"
 msgstr "Música"
 
 #. [about]
-#: data/core/about.cfg:511
+#: data/core/about.cfg:514
 msgid "Sound Effects"
 msgstr "Efectos de sonido"
 
 #. [about]
-#: data/core/about.cfg:527
+#: data/core/about.cfg:530
 msgid "Campaign Design"
 msgstr "Diseño de campañas"
 
 #. [about]
-#: data/core/about.cfg:602
+#: data/core/about.cfg:605
 msgid "Multiplayer Maps and Balancing"
 msgstr "Equilibrado y mapas para multijugador"
 
 #. [about]
-#: data/core/about.cfg:643
+#: data/core/about.cfg:646
 msgid "Packagers"
 msgstr "Empaquetadores"
 
 #. [about]
-#: data/core/about.cfg:709
+#: data/core/about.cfg:712
 msgid "Miscellaneous contributors"
 msgstr "Contribuidores misceláneos"
 
@@ -3468,7 +3454,7 @@ msgstr ""
 "20% del oro restante al finalizar añadido al siguiente escenario."
 
 #. [deprecated_message]
-#: data/core/macros/deprecated-utils.cfg:22
+#: data/core/macros/deprecated-utils.cfg:21
 msgid "VICTORY_AND_DEFEAT_MUSIC is unnecessary and can be removed."
 msgstr "La macro VICTORY_AND_DEFEAT_MUSIC es innecesaria y puede ser removida."
 
@@ -3627,28 +3613,28 @@ msgstr "Esta vara dará a su poseedor movimiento rápido."
 msgid "Only magical beings can wield such an object."
 msgstr "Sólo los seres mágicos pueden llevar este objeto."
 
-#: data/core/macros/items.cfg:512
+#: data/core/macros/items.cfg:542
 msgid "Only the mermen can use this item!"
 msgstr "¡Sólo los sirénidos pueden usar este objeto!"
 
-#: data/core/macros/items.cfg:512
+#: data/core/macros/items.cfg:542
 msgid "Should $unit.name pick up the trident?"
 msgstr "Debería $unit.name recoger el tridente?"
 
 #. [object]
-#: data/core/macros/items.cfg:514
+#: data/core/macros/items.cfg:544
 msgid "Storm Trident"
 msgstr "Tridente de las tormentas"
 
 #. [object]
-#: data/core/macros/items.cfg:517
+#: data/core/macros/items.cfg:547
 msgid "This trident allows a merman to shoot electric bolts at his enemies!"
 msgstr ""
 "¡Este tridente permite a un sirénido lanzar descargas eléctricas a sus "
 "enemigos!"
 
 #. [effect]: type=fire
-#: data/core/macros/items.cfg:521
+#: data/core/macros/items.cfg:551
 msgid "storm trident"
 msgstr "tridente de tormentas"
 
@@ -5204,7 +5190,7 @@ msgid ""
 "a full two and a half centuries. While some elves possessing a high magical "
 "aptitude have been known to live an additional full century, most elves "
 "begin to grow physically frail at some point between 250 and 300 years of "
-"age and pass away rapidly (generally within a year or two) thereafter. \n"
+"age and pass away rapidly (generally within a year or two) thereafter.\n"
 "\n"
 "Elves are naturally imbued with magic to a small degree. Though most are "
 "unable to channel it directly, its latent presence gives them their keen "
@@ -6891,7 +6877,7 @@ msgstr "(pulse $hotkey para seguir moviéndose)"
 msgid "B"
 msgstr "B"
 
-#: src/addon_management.cpp:358 src/dialogs.cpp:1198
+#: src/addon_management.cpp:358 src/dialogs.cpp:1210
 msgid "KB"
 msgstr "KB"
 
@@ -7206,7 +7192,7 @@ msgstr "Expansión eliminada"
 msgid "Add-on could not be deleted properly:"
 msgstr "El complemento no se pudo eliminar correctamente:"
 
-#: src/ai.cpp:1778
+#: src/ai.cpp:1773
 msgid "Unknown unit type : "
 msgstr "Tipo de unidad desconocido:"
 
@@ -7422,7 +7408,7 @@ msgstr "Cancelar órdenes"
 msgid "OK"
 msgstr "Aceptar"
 
-#: src/dialogs.cpp:683 src/dialogs.cpp:1174 src/dialogs.cpp:1276
+#: src/dialogs.cpp:683 src/dialogs.cpp:1186 src/dialogs.cpp:1288
 #: src/multiplayer_connect.cpp:1032 src/multiplayer_create.cpp:81
 #: src/multiplayer_wait.cpp:183
 msgid "Cancel"
@@ -7432,44 +7418,44 @@ msgstr "Cancelar"
 msgid "Delete Save"
 msgstr "Borrar partida"
 
-#: src/dialogs.cpp:742
+#: src/dialogs.cpp:743
 msgid "Profile"
 msgstr "Perfil"
 
-#: src/dialogs.cpp:838 src/help.cpp:1238
+#: src/dialogs.cpp:840 src/help.cpp:1238
 msgid "level"
 msgstr "nivel"
 
 # Aquí queda muy mal poner pv en minúscula.
-#: src/dialogs.cpp:851 src/help.cpp:1360
+#: src/dialogs.cpp:853 src/help.cpp:1360
 msgid "HP: "
 msgstr "PV: "
 
-#: src/dialogs.cpp:854
+#: src/dialogs.cpp:856
 msgid "XP: "
 msgstr "PX: "
 
-#: src/dialogs.cpp:858 src/help.cpp:1361
+#: src/dialogs.cpp:860 src/help.cpp:1361
 msgid "Moves: "
 msgstr "Movimientos: "
 
-#: src/game.cpp:607 src/game.cpp:1394
+#: src/game.cpp:612 src/game.cpp:1401
 msgid "The Battle for Wesnoth"
 msgstr "La batalla por Wesnoth"
 
-#: src/game.cpp:889
+#: src/game.cpp:894
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr ""
 "Aviso: El archivo que ha intentado cargar está corrupto. Cargando de todos "
 "modos.\n"
 
-#: src/game.cpp:929 src/multiplayer_connect.cpp:1566
+#: src/game.cpp:934 src/multiplayer_connect.cpp:1566
 msgid "This save is from a version too old to be loaded."
 msgstr ""
 "Esta partida guardada es de una versión demasiado antigua como para poder "
 "ser cargada."
 
-#: src/game.cpp:935 src/multiplayer_connect.cpp:1573
+#: src/game.cpp:940 src/multiplayer_connect.cpp:1573
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
@@ -7477,35 +7463,35 @@ msgstr ""
 "Esta partida guardada es de otra versión del juego. ¿Quiere intentar "
 "cargarla igualmente?"
 
-#: src/game.cpp:955 src/game.cpp:958 src/multiplayer_connect.cpp:1544
+#: src/game.cpp:960 src/game.cpp:963 src/multiplayer_connect.cpp:1544
 msgid "The file you have tried to load is corrupt: '"
 msgstr "El archivo que ha intentado cargar está corrupto: «"
 
-#: src/game.cpp:961
+#: src/game.cpp:966
 msgid "File I/O Error while reading the game"
 msgstr "Error de E/S mientras se intentaba cargar la partida"
 
-#: src/game.cpp:1064
+#: src/game.cpp:1069
 msgid "No campaigns are available.\n"
 msgstr "No hay campañas disponibles.\n"
 
-#: src/game.cpp:1068
+#: src/game.cpp:1073
 msgid "Play a campaign"
 msgstr "Jugar una campaña"
 
-#: src/game.cpp:1109
+#: src/game.cpp:1116
 msgid "Difficulty"
 msgstr "Dificultad"
 
-#: src/game.cpp:1110
+#: src/game.cpp:1117
 msgid "Select difficulty level:"
 msgstr "Seleccione el nivel de dificultad:"
 
-#: src/game.cpp:1272
+#: src/game.cpp:1279
 msgid "Do you really want to start the server?"
 msgstr "¿Realmente quiere iniciar el servidor?"
 
-#: src/game.cpp:1273
+#: src/game.cpp:1280
 msgid ""
 "The server will run in a background process until all users have "
 "disconnected."
@@ -7513,62 +7499,62 @@ msgstr ""
 "El servidor se ejecutará como un proceso en segundo plano hasta que todos "
 "los usuarios se desconecten."
 
-#: src/game.cpp:1277
+#: src/game.cpp:1284
 msgid "Don't show again"
 msgstr "No mostrar otra vez"
 
-#: src/game.cpp:1349
+#: src/game.cpp:1356
 msgid "Error while starting server: "
 msgstr "Error al iniciar el servidor: "
 
-#: src/game.cpp:1351 src/playcampaign.cpp:95 src/playcampaign.cpp:380
+#: src/game.cpp:1358 src/playcampaign.cpp:95 src/playcampaign.cpp:380
 msgid "The game could not be loaded: "
 msgstr "La partida no se ha podido cargar: "
 
-#: src/game.cpp:1353 src/playcampaign.cpp:97 src/playcampaign.cpp:383
+#: src/game.cpp:1360 src/playcampaign.cpp:97 src/playcampaign.cpp:383
 msgid "Error while playing the game: "
 msgstr "Error durante el juego: "
 
-#: src/game.cpp:1373 src/playcampaign.cpp:99 src/playcampaign.cpp:386
+#: src/game.cpp:1380 src/playcampaign.cpp:99 src/playcampaign.cpp:386
 msgid "The game map could not be loaded: "
 msgstr "El mapa del juego no se ha podido cargar: "
 
-#: src/game.cpp:1439 src/game.cpp:1560
+#: src/game.cpp:1446 src/game.cpp:1567
 msgid "Error loading game configuration files: '"
 msgstr "Error cargando archivos de configuración del juego: «"
 
-#: src/game.cpp:1440 src/game.cpp:1561
+#: src/game.cpp:1447 src/game.cpp:1568
 msgid "' (The game will now exit)"
 msgstr "» (el juego finalizará en este momento)"
 
-#: src/game.cpp:1535
+#: src/game.cpp:1542
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "La siguiente expansión contiene errores y no se ha podido cargar:"
 msgstr[1] ""
 "Las siguientes expansiones contienen errores y no se han podido cargar:"
 
-#: src/game.cpp:1542
+#: src/game.cpp:1549
 msgid "ERROR DETAILS:"
 msgstr "DETALLES DEL ERROR:"
 
-#: src/game.cpp:1570
+#: src/game.cpp:1577
 msgid "Loading data files"
 msgstr "Leyendo archivos de datos"
 
-#: src/game.cpp:1981
+#: src/game.cpp:1988
 msgid "Loading game configuration."
 msgstr "Cargando configuración del juego."
 
-#: src/game.cpp:1987
+#: src/game.cpp:1994
 msgid "Re-initialize fonts for the current language."
 msgstr "Reiniciando tipografías para el idioma actual."
 
-#: src/game.cpp:1995
+#: src/game.cpp:2002
 msgid "Searching for installed add-ons."
 msgstr "Buscando complementos instalados."
 
-#: src/game.cpp:2004
+#: src/game.cpp:2011
 msgid "Loading title screen."
 msgstr "Cargando pantalla inicial."
 
@@ -7589,11 +7575,11 @@ msgstr "Derrota:"
 msgid "No time of day has been defined."
 msgstr "Hace que el juego comience en un momento del día al azar"
 
-#: src/gamestatus.cpp:738 src/gamestatus.cpp:740 src/playcampaign.cpp:414
+#: src/gamestatus.cpp:743 src/gamestatus.cpp:745 src/playcampaign.cpp:414
 msgid " replay"
 msgstr " repetición"
 
-#: src/gamestatus.cpp:875
+#: src/gamestatus.cpp:880
 msgid "Could not write to file"
 msgstr "No se pudo escribir en el archivo"
 
@@ -7872,11 +7858,13 @@ msgid "?"
 msgstr "?"
 
 #: src/loadscreen.cpp:224
-msgid "Verifying cache."
+#, fuzzy
+msgid "Verifying cache"
 msgstr "Verificando caché."
 
 #: src/loadscreen.cpp:243
-msgid "Reading cache."
+#, fuzzy
+msgid "Reading cache"
 msgstr "Leyendo caché."
 
 #: src/loadscreen.cpp:262
@@ -9388,7 +9376,8 @@ msgid "TitleScreen button^Add-ons"
 msgstr "Expansiones"
 
 #: src/titlescreen.cpp:383
-msgid "TitleScreen button^Editor"
+#, fuzzy
+msgid "TitleScreen button^Map Editor"
 msgstr "Editor"
 
 #: src/titlescreen.cpp:385
@@ -9524,49 +9513,49 @@ msgstr "$effect_description por nivel"
 msgid "$trait_name|: $trait_description "
 msgstr "$trait_name|: $trait_description "
 
-#: src/unit_types.cpp:194 src/unit_types.cpp:260
+#: src/unit_types.cpp:196 src/unit_types.cpp:262
 msgid "damage"
 msgid_plural "damage"
 msgstr[0] "daño"
 msgstr[1] "daños"
 
-#: src/unit_types.cpp:204 src/unit_types.cpp:267
+#: src/unit_types.cpp:206 src/unit_types.cpp:269
 msgid "strike"
 msgid_plural "strikes"
 msgstr[0] "golpe"
 msgstr[1] "golpes"
 
-#: src/unit_types.cpp:215
+#: src/unit_types.cpp:217
 #, no-c-format
 msgid "% accuracy"
 msgstr "% puntería"
 
-#: src/unit_types.cpp:225
+#: src/unit_types.cpp:227
 #, no-c-format
 msgid "% parry"
 msgstr "% esquivar"
 
-#: src/unit_types.cpp:1015
+#: src/unit_types.cpp:1017
 msgid "chaotic"
 msgstr "caótico"
 
-#: src/unit_types.cpp:1015
+#: src/unit_types.cpp:1017
 msgid "lawful"
 msgstr "legal"
 
-#: src/unit_types.cpp:1015
+#: src/unit_types.cpp:1017
 msgid "neutral"
 msgstr "neutral"
 
-#: src/unit_types.cpp:1016
+#: src/unit_types.cpp:1018
 msgid "female^chaotic"
 msgstr "caótica"
 
-#: src/unit_types.cpp:1016
+#: src/unit_types.cpp:1018
 msgid "female^lawful"
 msgstr "leal"
 
-#: src/unit_types.cpp:1016
+#: src/unit_types.cpp:1018
 msgid "female^neutral"
 msgstr "neutral"
 
@@ -9598,3 +9587,15 @@ msgstr "¡Ayúdenos a hacer un mejor Wesnoth para todos!"
 #: src/upload_log.cpp:330
 msgid "Enable summary uploads"
 msgstr "Permitir envíos de resúmenes"
+
+#, fuzzy
+#~ msgid " This unit is capable of basic healing and slowing dehydration."
+#~ msgstr "Esta unidad es capaz de realizar sanamiento básico."
+
+#, fuzzy
+#~ msgid ""
+#~ " This unit is capable of healing those around it, slowing dehydration, "
+#~ "and curing them of poison."
+#~ msgstr ""
+#~ " Esta unidad es capaz de sanar a todos aquellos a su alrededor y curarles "
+#~ "del veneno."

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-12-03 19:42+0100\n"
+"POT-Creation-Date: 2008-12-09 22:12+0100\n"
 "PO-Revision-Date: 2008-02-26 14:53+0100\n"
 "Last-Translator: Nils Kneuper <crazy-ivanovic  AT gmx  D O  T net>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
@@ -124,26 +124,26 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:680
+#: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1237
 #: src/actions.cpp:1050 src/actions.cpp:1321
 msgid "slowed"
 msgstr "减速"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:13
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:16
 #: data/core/macros/abilities.cfg:10
 msgid "heals +4"
 msgstr "治疗+4"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:14
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:17
 #: data/core/macros/abilities.cfg:11
 #, fuzzy
 msgid "female^heals +4"
 msgstr "活力"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:19
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:22
 #: data/core/macros/abilities.cfg:16
 #, fuzzy
 msgid ""
@@ -163,20 +163,20 @@ msgstr ""
 "位可以解毒"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:42
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:45
 #: data/core/macros/abilities.cfg:30
 msgid "heals +8"
 msgstr "治疗+8"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:43
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:46
 #: data/core/macros/abilities.cfg:31
 #, fuzzy
 msgid "female^heals +8"
 msgstr "活力"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:48
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:51
 #: data/core/macros/abilities.cfg:36
 msgid ""
 "Heals +8:\n"
@@ -196,60 +196,48 @@ msgstr ""
 "'治疗+4'能力无法解除附近单位的中毒效果,只有进入村庄或者靠近拥有'治愈'能力的单"
 "位可以解毒"
 
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:72
-#, fuzzy
-msgid " This unit is capable of basic healing and slowing dehydration."
-msgstr "本单位可以治疗周围的单位，并治愈中毒效果。"
-
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:75
-#, fuzzy
-msgid ""
-" This unit is capable of healing those around it, slowing dehydration, and "
-"curing them of poison."
-msgstr "本单位可以治疗周围的单位，并治愈中毒效果。"
-
 #. [about]
 #: data/core/about.cfg:7
 msgid "Programming"
 msgstr "编程"
 
 #. [about]
-#: data/core/about.cfg:183
+#: data/core/about.cfg:186
 msgid "General Purpose Administration and Coordination"
 msgstr "整体规划和协调"
 
 #. [about]
-#: data/core/about.cfg:201
+#: data/core/about.cfg:204
 msgid "Artwork and Graphics"
 msgstr "艺术与图像设计 "
 
 #. [about]
-#: data/core/about.cfg:480
+#: data/core/about.cfg:483
 msgid "Music"
 msgstr "音乐"
 
 #. [about]
-#: data/core/about.cfg:511
+#: data/core/about.cfg:514
 msgid "Sound Effects"
 msgstr "音效"
 
 #. [about]
-#: data/core/about.cfg:527
+#: data/core/about.cfg:530
 msgid "Campaign Design"
 msgstr "战役设计"
 
 #. [about]
-#: data/core/about.cfg:602
+#: data/core/about.cfg:605
 msgid "Multiplayer Maps and Balancing"
 msgstr "多人地图和平衡性"
 
 #. [about]
-#: data/core/about.cfg:643
+#: data/core/about.cfg:646
 msgid "Packagers"
 msgstr "游戏打包人员"
 
 #. [about]
-#: data/core/about.cfg:709
+#: data/core/about.cfg:712
 msgid "Miscellaneous contributors"
 msgstr "贡献者"
 
@@ -3175,7 +3163,7 @@ msgid ""
 msgstr ""
 
 #. [deprecated_message]
-#: data/core/macros/deprecated-utils.cfg:22
+#: data/core/macros/deprecated-utils.cfg:21
 msgid "VICTORY_AND_DEFEAT_MUSIC is unnecessary and can be removed."
 msgstr ""
 
@@ -3333,26 +3321,26 @@ msgstr "法杖让持有者加速移动。"
 msgid "Only magical beings can wield such an object."
 msgstr "只有懂得魔法的人才可以使用本物品。"
 
-#: data/core/macros/items.cfg:512
+#: data/core/macros/items.cfg:542
 msgid "Only the mermen can use this item!"
 msgstr "只有人鱼可以使用本物品！"
 
-#: data/core/macros/items.cfg:512
+#: data/core/macros/items.cfg:542
 msgid "Should $unit.name pick up the trident?"
 msgstr ""
 
 #. [object]
-#: data/core/macros/items.cfg:514
+#: data/core/macros/items.cfg:544
 msgid "Storm Trident"
 msgstr "风暴三叉戟"
 
 #. [object]
-#: data/core/macros/items.cfg:517
+#: data/core/macros/items.cfg:547
 msgid "This trident allows a merman to shoot electric bolts at his enemies!"
 msgstr "这柄三叉戟能让人鱼向敌人射出闪电。"
 
 #. [effect]: type=fire
-#: data/core/macros/items.cfg:521
+#: data/core/macros/items.cfg:551
 msgid "storm trident"
 msgstr "风暴三叉戟"
 
@@ -4805,7 +4793,7 @@ msgid ""
 "a full two and a half centuries. While some elves possessing a high magical "
 "aptitude have been known to live an additional full century, most elves "
 "begin to grow physically frail at some point between 250 and 300 years of "
-"age and pass away rapidly (generally within a year or two) thereafter. \n"
+"age and pass away rapidly (generally within a year or two) thereafter.\n"
 "\n"
 "Elves are naturally imbued with magic to a small degree. Though most are "
 "unable to channel it directly, its latent presence gives them their keen "
@@ -6206,7 +6194,7 @@ msgstr "（按$hotkey键继续移动）"
 msgid "B"
 msgstr "B"
 
-#: src/addon_management.cpp:358 src/dialogs.cpp:1198
+#: src/addon_management.cpp:358 src/dialogs.cpp:1210
 msgid "KB"
 msgstr "KB"
 
@@ -6526,7 +6514,7 @@ msgstr "插件已删除"
 msgid "Add-on could not be deleted properly:"
 msgstr "无法删除插件——没有找到某个文件。"
 
-#: src/ai.cpp:1778
+#: src/ai.cpp:1773
 msgid "Unknown unit type : "
 msgstr "未知单位"
 
@@ -6734,7 +6722,7 @@ msgstr "取消"
 msgid "OK"
 msgstr "确定"
 
-#: src/dialogs.cpp:683 src/dialogs.cpp:1174 src/dialogs.cpp:1276
+#: src/dialogs.cpp:683 src/dialogs.cpp:1186 src/dialogs.cpp:1288
 #: src/multiplayer_connect.cpp:1032 src/multiplayer_create.cpp:81
 #: src/multiplayer_wait.cpp:183
 msgid "Cancel"
@@ -6744,139 +6732,139 @@ msgstr "取消"
 msgid "Delete Save"
 msgstr "删除存档"
 
-#: src/dialogs.cpp:742
+#: src/dialogs.cpp:743
 msgid "Profile"
 msgstr "资料"
 
-#: src/dialogs.cpp:838 src/help.cpp:1238
+#: src/dialogs.cpp:840 src/help.cpp:1238
 msgid "level"
 msgstr "等级"
 
-#: src/dialogs.cpp:851 src/help.cpp:1360
+#: src/dialogs.cpp:853 src/help.cpp:1360
 msgid "HP: "
 msgstr "生命值："
 
-#: src/dialogs.cpp:854
+#: src/dialogs.cpp:856
 msgid "XP: "
 msgstr "经验值："
 
-#: src/dialogs.cpp:858 src/help.cpp:1361
+#: src/dialogs.cpp:860 src/help.cpp:1361
 msgid "Moves: "
 msgstr "移动： "
 
-#: src/game.cpp:607 src/game.cpp:1394
+#: src/game.cpp:612 src/game.cpp:1401
 msgid "The Battle for Wesnoth"
 msgstr "韦诺之战"
 
-#: src/game.cpp:889
+#: src/game.cpp:894
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr "警告：您试图载入的文件已损坏。继续尝试载入。\n"
 
-#: src/game.cpp:929 src/multiplayer_connect.cpp:1566
+#: src/game.cpp:934 src/multiplayer_connect.cpp:1566
 msgid "This save is from a version too old to be loaded."
 msgstr "这个存档是由一个太早期的游戏版本保存的，现在的版本无法载入。"
 
-#: src/game.cpp:935 src/multiplayer_connect.cpp:1573
+#: src/game.cpp:940 src/multiplayer_connect.cpp:1573
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
 msgstr "这个存档来自于不同版本的游戏。您仍然想载入吗？"
 
-#: src/game.cpp:955 src/game.cpp:958 src/multiplayer_connect.cpp:1544
+#: src/game.cpp:960 src/game.cpp:963 src/multiplayer_connect.cpp:1544
 msgid "The file you have tried to load is corrupt: '"
 msgstr "您试图载入的文件已损坏： '"
 
-#: src/game.cpp:961
+#: src/game.cpp:966
 msgid "File I/O Error while reading the game"
 msgstr "当读取游戏时发生文件I/O错误。"
 
-#: src/game.cpp:1064
+#: src/game.cpp:1069
 #, fuzzy
 msgid "No campaigns are available.\n"
 msgstr "无有效目标"
 
-#: src/game.cpp:1068
+#: src/game.cpp:1073
 msgid "Play a campaign"
 msgstr "战役"
 
-#: src/game.cpp:1109
+#: src/game.cpp:1116
 msgid "Difficulty"
 msgstr "难度"
 
-#: src/game.cpp:1110
+#: src/game.cpp:1117
 msgid "Select difficulty level:"
 msgstr "选择难度："
 
-#: src/game.cpp:1272
+#: src/game.cpp:1279
 #, fuzzy
 msgid "Do you really want to start the server?"
 msgstr "您确信想解散她？"
 
-#: src/game.cpp:1273
+#: src/game.cpp:1280
 msgid ""
 "The server will run in a background process until all users have "
 "disconnected."
 msgstr ""
 
-#: src/game.cpp:1277
+#: src/game.cpp:1284
 #, fuzzy
 msgid "Don't show again"
 msgstr "不要再问我！"
 
-#: src/game.cpp:1349
+#: src/game.cpp:1356
 #, fuzzy
 msgid "Error while starting server: "
 msgstr "游戏执行出错： "
 
-#: src/game.cpp:1351 src/playcampaign.cpp:95 src/playcampaign.cpp:380
+#: src/game.cpp:1358 src/playcampaign.cpp:95 src/playcampaign.cpp:380
 msgid "The game could not be loaded: "
 msgstr "无法加载游戏： "
 
-#: src/game.cpp:1353 src/playcampaign.cpp:97 src/playcampaign.cpp:383
+#: src/game.cpp:1360 src/playcampaign.cpp:97 src/playcampaign.cpp:383
 msgid "Error while playing the game: "
 msgstr "游戏执行出错： "
 
-#: src/game.cpp:1373 src/playcampaign.cpp:99 src/playcampaign.cpp:386
+#: src/game.cpp:1380 src/playcampaign.cpp:99 src/playcampaign.cpp:386
 msgid "The game map could not be loaded: "
 msgstr "无法加载游戏地图： "
 
-#: src/game.cpp:1439 src/game.cpp:1560
+#: src/game.cpp:1446 src/game.cpp:1567
 msgid "Error loading game configuration files: '"
 msgstr "载入游戏配置文件时出错： '"
 
-#: src/game.cpp:1440 src/game.cpp:1561
+#: src/game.cpp:1447 src/game.cpp:1568
 msgid "' (The game will now exit)"
 msgstr "' （现在将退出游戏）"
 
-#: src/game.cpp:1535
+#: src/game.cpp:1542
 #, fuzzy
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "以下附加战役有错误，无法加载："
 msgstr[1] "以下附加战役有错误，无法加载："
 
-#: src/game.cpp:1542
+#: src/game.cpp:1549
 msgid "ERROR DETAILS:"
 msgstr "错误细节："
 
-#: src/game.cpp:1570
+#: src/game.cpp:1577
 msgid "Loading data files"
 msgstr "读取数据文件"
 
-#: src/game.cpp:1981
+#: src/game.cpp:1988
 msgid "Loading game configuration."
 msgstr "载入游戏配置。"
 
-#: src/game.cpp:1987
+#: src/game.cpp:1994
 msgid "Re-initialize fonts for the current language."
 msgstr "为当前语言重绘字体。"
 
-#: src/game.cpp:1995
+#: src/game.cpp:2002
 #, fuzzy
 msgid "Searching for installed add-ons."
 msgstr "发送插件"
 
-#: src/game.cpp:2004
+#: src/game.cpp:2011
 msgid "Loading title screen."
 msgstr "载入主屏幕。"
 
@@ -6897,11 +6885,11 @@ msgstr "失败："
 msgid "No time of day has been defined."
 msgstr "没有定制时间."
 
-#: src/gamestatus.cpp:738 src/gamestatus.cpp:740 src/playcampaign.cpp:414
+#: src/gamestatus.cpp:743 src/gamestatus.cpp:745 src/playcampaign.cpp:414
 msgid " replay"
 msgstr " 游戏录像"
 
-#: src/gamestatus.cpp:875
+#: src/gamestatus.cpp:880
 msgid "Could not write to file"
 msgstr "无法写入文件"
 
@@ -7177,11 +7165,13 @@ msgid "?"
 msgstr "？"
 
 #: src/loadscreen.cpp:224
-msgid "Verifying cache."
+#, fuzzy
+msgid "Verifying cache"
 msgstr "验证缓存。"
 
 #: src/loadscreen.cpp:243
-msgid "Reading cache."
+#, fuzzy
+msgid "Reading cache"
 msgstr "读取缓存。"
 
 #: src/loadscreen.cpp:262
@@ -8692,7 +8682,7 @@ msgstr "下载插件"
 
 #: src/titlescreen.cpp:383
 #, fuzzy
-msgid "TitleScreen button^Editor"
+msgid "TitleScreen button^Map Editor"
 msgstr "退出"
 
 #: src/titlescreen.cpp:385
@@ -8827,51 +8817,51 @@ msgstr "每级 $effect_description"
 msgid "$trait_name|: $trait_description "
 msgstr "$trait_name|: $trait_description "
 
-#: src/unit_types.cpp:194 src/unit_types.cpp:260
+#: src/unit_types.cpp:196 src/unit_types.cpp:262
 msgid "damage"
 msgid_plural "damage"
 msgstr[0] "伤害"
 msgstr[1] "伤害"
 
-#: src/unit_types.cpp:204 src/unit_types.cpp:267
+#: src/unit_types.cpp:206 src/unit_types.cpp:269
 msgid "strike"
 msgid_plural "strikes"
 msgstr[0] "打击"
 msgstr[1] "打击"
 
-#: src/unit_types.cpp:215
+#: src/unit_types.cpp:217
 #, fuzzy, no-c-format
 msgid "% accuracy"
 msgstr "次攻击"
 
-#: src/unit_types.cpp:225
+#: src/unit_types.cpp:227
 #, no-c-format
 msgid "% parry"
 msgstr ""
 
-#: src/unit_types.cpp:1015
+#: src/unit_types.cpp:1017
 msgid "chaotic"
 msgstr "混乱"
 
-#: src/unit_types.cpp:1015
+#: src/unit_types.cpp:1017
 msgid "lawful"
 msgstr "守序"
 
-#: src/unit_types.cpp:1015
+#: src/unit_types.cpp:1017
 msgid "neutral"
 msgstr "中立"
 
-#: src/unit_types.cpp:1016
+#: src/unit_types.cpp:1018
 #, fuzzy
 msgid "female^chaotic"
 msgstr "机械"
 
-#: src/unit_types.cpp:1016
+#: src/unit_types.cpp:1018
 #, fuzzy
 msgid "female^lawful"
 msgstr "忠诚"
 
-#: src/unit_types.cpp:1016
+#: src/unit_types.cpp:1018
 #, fuzzy
 msgid "female^neutral"
 msgstr "不死"
@@ -8902,6 +8892,16 @@ msgstr "帮助我们改进韦诺，提升您的游戏体验！"
 #: src/upload_log.cpp:330
 msgid "Enable summary uploads"
 msgstr "开启摘要上传模式"
+
+#, fuzzy
+#~ msgid " This unit is capable of basic healing and slowing dehydration."
+#~ msgstr "本单位可以治疗周围的单位，并治愈中毒效果。"
+
+#, fuzzy
+#~ msgid ""
+#~ " This unit is capable of healing those around it, slowing dehydration, "
+#~ "and curing them of poison."
+#~ msgstr "本单位可以治疗周围的单位，并治愈中毒效果。"
 
 #~ msgid "Abilites"
 #~ msgstr "能力"

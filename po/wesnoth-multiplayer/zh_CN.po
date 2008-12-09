@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-12-03 19:43+0100\n"
+"POT-Creation-Date: 2008-12-09 22:13+0100\n"
 "PO-Revision-Date: 2007-12-22 12:45+1000\n"
 "Last-Translator: luojie-dune <luojie-dune@operamail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
@@ -98,12 +98,16 @@ msgstr ""
 "远古蛇怪的巢穴。在通往胜利的道路上时不时会碰到化为石头的韦诺英雄。"
 
 #. [side]
+#: data/multiplayer/scenarios/2p_Thalins_Stronghold.cfg:33
 #: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:20
+#: data/multiplayer/scenarios/2p_Fast_To_Madness.cfg:33
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:48
 #: data/multiplayer/scenarios/4p_Hamlets.cfg:21
 #: data/multiplayer/scenarios/4p_Hamlets.cfg:57
 #: data/multiplayer/scenarios/2p_The_Freelands.cfg:20
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:20
+#: data/multiplayer/scenarios/4p_Mines_of_Mallorod.cfg:33
+#: data/multiplayer/scenarios/4p_Mines_of_Mallorod.cfg:46
 #: data/multiplayer/scenarios/3p_Morituri.cfg:20
 #: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:32
 #: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:44
@@ -128,11 +132,15 @@ msgid "teamname^North"
 msgstr "北部"
 
 #. [side]
+#: data/multiplayer/scenarios/2p_Thalins_Stronghold.cfg:20
 #: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:31
+#: data/multiplayer/scenarios/2p_Fast_To_Madness.cfg:20
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:60
 #: data/multiplayer/scenarios/4p_Hamlets.cfg:33
 #: data/multiplayer/scenarios/4p_Hamlets.cfg:45
 #: data/multiplayer/scenarios/2p_The_Freelands.cfg:31
+#: data/multiplayer/scenarios/4p_Mines_of_Mallorod.cfg:20
+#: data/multiplayer/scenarios/4p_Mines_of_Mallorod.cfg:59
 #: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:20
 #: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:56
 #: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:68
@@ -623,38 +631,52 @@ msgstr "干旱"
 msgid "Clear Weather"
 msgstr "晴天"
 
+#. [side]
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1204
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1235
+#, fuzzy
+msgid "teamname^Revolt"
+msgstr "西部"
+
+#. [side]
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1254
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1270
+#, fuzzy
+msgid "teamname^Human"
+msgstr "东部"
+
 #. [then]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1419
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1423
 msgid "Single player mode - uses the reduced strength spawns."
 msgstr "单人模式 - 较低强度的冲击"
 
 #. [else]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1422
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1426
 msgid "Two player mode - uses the full strength spawns."
 msgstr "双人模式 - 全力倾泄"
 
 #. [objectives]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1442
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1446
 msgid "Survive and defeat the waves of opposition."
 msgstr "存活并击败对立面"
 
 #. [objective]: condition=win
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1444
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1448
 msgid "Defeat all waves"
 msgstr "打败所以进攻"
 
 #. [objective]: condition=lose
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1448
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1452
 msgid "Lose all your team's leaders"
 msgstr "团队领袖们皆阵亡"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1459
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1463
 msgid "Dark Forecast - a random survival scenario"
 msgstr "黑暗预想- 未知的生存场景"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1481
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1485
 msgid ""
 "Your aim is to survive the spawning waves and defeat the final arch-"
 "enemies.\n"
@@ -702,12 +724,12 @@ msgstr ""
 "- WML 执行 (WML implementation)"
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1486
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1490
 msgid "So this is the accursed valley - a land ours for the taking."
 msgstr "所以这是被诅咒的山谷- 我们要征服的土地。"
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1490
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1494
 msgid ""
 "The inhabitants are rumored to be a strange alliance of man and beast, and "
 "our claim is not going to be unopposed. We must be prepared for the "
@@ -717,14 +739,14 @@ msgstr ""
 "须为这片土地上一切不可知的东西作好准备。 "
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1494
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1498
 msgid ""
 "Then let us discover what lies in waiting and teach them not to oppose our "
 "claim."
 msgstr "看看他们说的谎言和下场──让我们教训这些不听话的家伙."
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1531
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1535
 #, fuzzy
 msgid ""
 "Ugh! How can this be? Defeated by mere barbarians! My gods have forsaken "
@@ -732,7 +754,7 @@ msgid ""
 msgstr "哦呃! 怎么会这样? 这样失败，输给野蛮人! 神哪,你抛弃了我..."
 
 #. [message]: speaker=second_unit
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1545
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1549
 msgid ""
 "Cheers of your enemy are the last thing you hear as you slip into death..."
 "their joy fills your last moments with pure hate."
@@ -741,7 +763,7 @@ msgstr ""
 "充满你的最后时刻，留下的是他们的喜悦。"
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1567
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1571
 msgid ""
 "The enemy cheers as a dark mist rises from the land, engulfing you. As "
 "ghostly wisps drain away your will, you realize that your time in this land "
@@ -764,15 +786,18 @@ msgstr ""
 "这是一幅供2人决斗的地图，危险隐藏于地下战场的每个角落，你必须在武力与诡计中找"
 "到平衡点。"
 
+#. [multiplayer]: id=multiplayer_Thalins_Stronghold
 #. [multiplayer]: id=multiplayer_Blue_Water_Province
 #. [multiplayer]: id=multiplayer_Loris_River
 #. [multiplayer]: id=multiplayer_Sablestone_Delta
+#. [multiplayer]: id=multiplayer_Fast_to_Madness
 #. [multiplayer]: id=multiplayer_Fallenstar_Lake
 #. [multiplayer]: id=multiplayer_Clash
 #. [multiplayer]: id=multiplayer_4p_Hamlets
 #. [multiplayer]: id=multiplayer_The_Freelands
 #. [multiplayer]: id=multiplayer_8p_Morituri
 #. [multiplayer]: id=multiplayer_Alirok_Marsh
+#. [multiplayer]: id=multiplayer_Mines_of_Mallorod
 #. [multiplayer]: id=multiplayer_3p_Morituri
 #. [multiplayer]: id=multiplayer_Den_of_Onis
 #. [multiplayer]: id=multiplayer_Weldyn_Channel
@@ -786,15 +811,18 @@ msgstr ""
 #. [multiplayer]: id=multiplayer_Hamlets
 #. [multiplayer]: id=multiplayer_Howling_Ghost_Badlands
 #. [multiplayer]: id=multiplayer_8p_Mokena_Prairie
+#: data/multiplayer/scenarios/2p_Thalins_Stronghold.cfg:6
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:7
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:9
 #: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:6
+#: data/multiplayer/scenarios/2p_Fast_To_Madness.cfg:6
 #: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:6
 #: data/multiplayer/scenarios/4p_Clash.cfg:7
 #: data/multiplayer/scenarios/4p_Hamlets.cfg:6
 #: data/multiplayer/scenarios/2p_The_Freelands.cfg:7
 #: data/multiplayer/scenarios/8p_Morituri.cfg:7
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:6
+#: data/multiplayer/scenarios/4p_Mines_of_Mallorod.cfg:6
 #: data/multiplayer/scenarios/3p_Morituri.cfg:6
 #: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:6
 #: data/multiplayer/scenarios/2p_Weldyn_Channel.cfg:7
@@ -836,11 +864,17 @@ msgstr "很久以前，一颗来自天堂的星辰坠落下来，在这片针叶
 #: data/multiplayer/scenarios/3p_Morituri.cfg:42
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:42
 #: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:20
+#: data/multiplayer/scenarios/4p_Eryn_Chethu.cfg:20
+#: data/multiplayer/scenarios/4p_Eryn_Chethu.cfg:62
 #: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:31
 #: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:42
 #: data/multiplayer/scenarios/4p_Underworld.cfg:20
 #: data/multiplayer/scenarios/4p_Underworld.cfg:53
 #: data/multiplayer/scenarios/5p_Forest_of_Fear.cfg:31
+#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:30
+#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:52
+#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:74
+#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:85
 msgid "teamname^West"
 msgstr "西部"
 
@@ -857,12 +891,32 @@ msgstr "西部"
 #: data/multiplayer/scenarios/3p_Morituri.cfg:31
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:31
 #: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:31
+#: data/multiplayer/scenarios/4p_Eryn_Chethu.cfg:34
+#: data/multiplayer/scenarios/4p_Eryn_Chethu.cfg:48
 #: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:20
 #: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:53
 #: data/multiplayer/scenarios/4p_Underworld.cfg:31
 #: data/multiplayer/scenarios/4p_Underworld.cfg:42
+#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:19
+#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:41
+#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:63
+#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:96
 msgid "teamname^East"
 msgstr "东部"
+
+#. [multiplayer]: id=multiplayer_Fast_to_Madness
+#: data/multiplayer/scenarios/2p_Fast_To_Madness.cfg:5
+#, fuzzy
+msgid "2p - Fast To Madness"
+msgstr "2p - 坠星湖"
+
+#. [multiplayer]: id=multiplayer_Fast_to_Madness
+#: data/multiplayer/scenarios/2p_Fast_To_Madness.cfg:6
+msgid ""
+"For a long time these two landlords have been at loggerheads with each other "
+"and it seems that today another chapter will be added to their story of "
+"pointless skirmishes."
+msgstr ""
 
 #. [multiplayer]: id=multiplayer_Hamlets
 #: data/multiplayer/scenarios/2p_Hamlets.cfg:5
@@ -1006,6 +1060,16 @@ msgstr "Lo-bsang之像"
 msgid "A stone-carved likeness of Lo-bsang, Servant of Sulla."
 msgstr "Sulla的侍从Lo-bsang的石像。"
 
+#. [multiplayer]: id=multiplayer_Thalins_Stronghold
+#: data/multiplayer/scenarios/2p_Thalins_Stronghold.cfg:5
+msgid "2p - Thalin's Stronghold"
+msgstr ""
+
+#. [multiplayer]: id=multiplayer_Thalins_Stronghold
+#: data/multiplayer/scenarios/2p_Thalins_Stronghold.cfg:6
+msgid "Deep within the mountains lie the castles of the dwarven lords."
+msgstr ""
+
 #. [multiplayer]: id=multiplayer_The_Freelands
 #: data/multiplayer/scenarios/2p_The_Freelands.cfg:5
 msgid "2p - The Freelands"
@@ -1118,6 +1182,24 @@ msgstr "4p - 冲突"
 #: data/multiplayer/scenarios/4p_Clash.cfg:7
 msgid "Small map for 2 vs. 2."
 msgstr "适合2v2对战的小型地图。"
+
+#. [multiplayer]: id=multiplayer_Eryn_Chetu
+#: data/multiplayer/scenarios/4p_Eryn_Chethu.cfg:5
+msgid "4p - Eryn Chethu"
+msgstr ""
+
+#. [multiplayer]: id=multiplayer_Eryn_Chetu
+#: data/multiplayer/scenarios/4p_Eryn_Chethu.cfg:6
+#, fuzzy
+msgid " Recommended setting of 3 gold per village."
+msgstr " 建议设置每座村庄提供2个金币。"
+
+#. [multiplayer]: id=multiplayer_Eryn_Chetu
+#: data/multiplayer/scenarios/4p_Eryn_Chethu.cfg:6
+msgid ""
+"Beware wanderer, for even the elves do not know what lives in the forests of "
+"Eryn Chethu."
+msgstr ""
 
 #. [multiplayer]: id=multiplayer_4p_Hamlets
 #: data/multiplayer/scenarios/4p_Hamlets.cfg:5
@@ -1240,6 +1322,20 @@ msgid ""
 msgstr ""
 "这是一幅25x25的2v2对战地图，中间是河流，双方的要塞处在对角线上。适合玩家1和玩"
 "家4对阵玩家2和玩家3。图上有28座村庄。"
+
+#. [multiplayer]: id=multiplayer_Mines_of_Mallorod
+#: data/multiplayer/scenarios/4p_Mines_of_Mallorod.cfg:5
+#, fuzzy
+msgid "4p - Mines of Mallorod"
+msgstr "4p - 丘陵之王"
+
+#. [multiplayer]: id=multiplayer_Mines_of_Mallorod
+#: data/multiplayer/scenarios/4p_Mines_of_Mallorod.cfg:6
+msgid ""
+"The dwarves were the first to arrive when it became know that gold had found "
+"at Mallorod. Shortly after others followed and soon quarrels arose over the "
+"right to delve for the shiny metal."
+msgstr ""
 
 #. [multiplayer]: id=multiplayer_4p_Morituri
 #: data/multiplayer/scenarios/4p_Morituri.cfg:5
@@ -1544,22 +1640,6 @@ msgstr ""
 "根据从Morituri中得到的灵感,这个8人地图创造了一个史诗战争的场景,需要两个团队分"
 "别加入进攻方和防守方."
 
-#. [side]
-#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:19
-#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:41
-#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:63
-#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:96
-msgid "teamname^east"
-msgstr "东部"
-
-#. [side]
-#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:30
-#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:52
-#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:74
-#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:85
-msgid "teamname^west"
-msgstr "西部"
-
 #. [multiplayer]: id=multiplayer_8p_Morituri
 #: data/multiplayer/scenarios/8p_Morituri.cfg:5
 msgid "8p - Morituri"
@@ -1698,6 +1778,12 @@ msgid ""
 msgstr ""
 "这是一幅韦诺测试标准图，用法 --no-delay --multiplayer --"
 "scenario=wesbench_shroud_walk --exit-at-end。"
+
+#~ msgid "teamname^east"
+#~ msgstr "东部"
+
+#~ msgid "teamname^west"
+#~ msgstr "西部"
 
 #~ msgid "Great War"
 #~ msgstr "伟大战争"
