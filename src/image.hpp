@@ -224,10 +224,6 @@ namespace image {
 	///using NULL will reset to default TC
 	void set_team_colors(const std::vector<std::string>* colors = NULL);
 
-	///function which sets a certain image as a 'mask' for all scaled images.
-	///the 'mask' is blitted onto all scaled images.
-	void set_image_mask(const std::string& image_name);
-
 	///sets the pixel format used by the images. Is called every time the
 	///video mode changes. Invalidates all images.
 	void set_pixel_format(SDL_PixelFormat* format);

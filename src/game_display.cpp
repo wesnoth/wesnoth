@@ -144,8 +144,6 @@ void game_display::new_turn()
 	const time_of_day& tod = status_.get_time_of_day();
 
 	if( !first_turn_) {
-		image::set_image_mask("");
-
 		const time_of_day& old_tod = status_.get_previous_time_of_day();
 
 		if(old_tod.image_mask != tod.image_mask) {
@@ -185,7 +183,6 @@ void game_display::new_turn()
 	first_turn_ = false;
 
 	image::set_colour_adjustment(tod.red,tod.green,tod.blue);
-	image::set_image_mask(tod.image_mask);
 
 	invalidate_all();
 	draw();

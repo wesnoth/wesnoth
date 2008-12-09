@@ -583,23 +583,6 @@ void set_team_colors(const std::vector<std::string>* colors)
 	}
 }
 
-void set_image_mask(const std::string& /*image*/)
-{
-
-	// image_mask are blitted in display.cpp
-	// so no need to flush the cache here
-/*
-	if(image_mask != image) {
-		image_mask = image;
-		scaled_to_hex_images_.flush();
-		scaled_to_zoom_.flush();
-		brightened_images_.flush();
-		semi_brightened_images_.flush();
-		reversed_images_.clear();
-	}
-*/
-}
-
 void set_zoom(int amount)
 {
 	if(amount != zoom) {
