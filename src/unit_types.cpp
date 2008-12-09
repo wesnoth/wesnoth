@@ -27,6 +27,8 @@
 
 
 #define ERR_CONFIG LOG_STREAM(err, config)
+#define LOG_CONFIG LOG_STREAM(info,config)
+#define WRN_CONFIG LOG_STREAM(warn,config)
 #define DBG_UT LOG_STREAM(debug, engine)
 #define LOG_UT LOG_STREAM(info, engine)
 #define ERR_UT LOG_STREAM(err, engine)
@@ -1092,12 +1094,12 @@ void unit_type::add_advancement(const unit_type &to_unit,int xp)
 	const std::string &from_id =  cfg_["id"];
 
 	// Add extra advancement path to this unit type
-	lg::info(lg::config) << "adding advancement from " << from_id << " to " << to_id << "\n";
+	LOG_CONFIG << "adding advancement from " << from_id << " to " << to_id << "\n";
 	if(std::find(advances_to_.begin(), advances_to_.end(), to_id) == advances_to_.end()) {
 		advances_to_.push_back(to_id);
 	} else {
-		lg::info(lg::config) << "advancement from " << from_id
-		                     << " to " << to_id << " already known, ignoring.\n";
+		LOG_CONFIG << "advancement from " << from_id
+		           << " to " << to_id << " already known, ignoring.\n";
 		return;
 	}
 	
@@ -1107,10 +1109,10 @@ void unit_type::add_advancement(const unit_type &to_unit,int xp)
 	for(int gender=0; gender<=1; ++gender) {
 		if(gender_types_[gender] == NULL) continue;
 		if(to_unit.gender_types_[gender] == NULL) {
-			lg::warn(lg::config) << to_id << " does not support gender " << gender << "\n";
+			WRN_CONFIG << to_id << " does not support gender " << gender << "\n";
 			continue;
 		}
-		lg::info(lg::config) << "gendered advancement " << gender << ": ";
+		LOG_CONFIG << "gendered advancement " << gender << ": ";
 		gender_types_[gender]->add_advancement(*(to_unit.gender_types_[gender]),xp);
 	}
 
@@ -1120,7 +1122,7 @@ void unit_type::add_advancement(const unit_type &to_unit,int xp)
 	// and don't block advancements that would remove a variation.
 	for(variations_map::iterator v=variations_.begin();
 	    v!=variations_.end(); ++v) {
-		lg::info(lg::config) << "variation advancement: ";
+		LOG_CONFIG << "variation advancement: ";
 		v->second->add_advancement(to_unit,xp);
 	}
 }
@@ -1199,7 +1201,7 @@ void unit_type_data::unit_type_map_wrapper::set_config(const config& cfg)
         unit_type_map::iterator itor = types_.find(id);
         //	if (!insertion.second)
         // TODO: else { warning for multiple units with same id}
-        lg::info(lg::config) << "added " << id << " to unit_type list (unit_type_data.unit_types)\n";
+        LOG_CONFIG << "added " << id << " to unit_type list (unit_type_data.unit_types)\n";
 	}
 
 	build_all(unit_type::CREATED);
@@ -1212,11 +1214,11 @@ unit_type_data::unit_type_map::const_iterator unit_type_data::unit_type_map_wrap
 
     unit_type_map::iterator itor = types_.find(key);
 
-    lg::info(lg::config) << "trying to find " << key  << " in unit_type list (unit_type_data.unit_types)\n";
+    LOG_CONFIG << "trying to find " << key  << " in unit_type list (unit_type_data.unit_types)\n";
 
     //This might happen if units of another era are requested (for example for savegames)
     if (itor == types_.end()){
-        lg::info(lg::config) << "key not found, returning dummy_unit\n";
+        LOG_CONFIG << "key not found, returning dummy_unit\n";
         /*
         for (unit_type_map::const_iterator ut = types_.begin(); ut != types_.end(); ut++)
             DBG_UT << "Known unit_types: key = '" << ut->first << "', id = '" << ut->second.id() << "'\n";
