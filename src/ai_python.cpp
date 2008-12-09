@@ -255,25 +255,24 @@ static PyTypeObject wesnoth_unittype_type = {
 	unittype_methods,						/* tp_methods */
 	0,										/* tp_members */
 	unittype_getseters,						/* tp_getset */
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	0,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
+	NULL,										/* tp_base */
+	NULL,										/* tp_dict */
+	NULL,										/* tp_descr_get */
+	NULL,										/* tp_descr_set */
+	0,										/* tp_dictoffset */
+	NULL,										/* tp_init */
+	NULL,										/* tp_alloc */
+	NULL,										/* tp_new */
+	NULL,										/* tp_free */
+	NULL,										/* tp_is_gc */
+	NULL,										/* tp_bases */
+	NULL,										/* tp_mro */
+	NULL,										/* tp_cache */
+	NULL,										/* tp_subclasses */
+	NULL,										/* tp_weaklist */
+	NULL,										/* tp_del */
 #if PY_MAJOR_VERSION >= 2 && PY_MINOR_VERSION >= 6
-	0,
-	NULL,
+	0,										/* tp_version_tag */
 #endif
 };
 
@@ -390,25 +389,24 @@ static PyTypeObject wesnoth_attacktype_type = {
 	attacktype_methods,						/* tp_methods */
 	0,										/* tp_members */
 	attacktype_getseters,					/* tp_getset */
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	0,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
+	NULL,										/* tp_base */
+	NULL,										/* tp_dict */
+	NULL,										/* tp_descr_get */
+	NULL,										/* tp_descr_set */
+	0,										/* tp_dictoffset */
+	NULL,										/* tp_init */
+	NULL,										/* tp_alloc */
+	NULL,										/* tp_new */
+	NULL,										/* tp_free */
+	NULL,										/* tp_is_gc */
+	NULL,										/* tp_bases */
+	NULL,										/* tp_mro */
+	NULL,										/* tp_cache */
+	NULL,										/* tp_subclasses */
+	NULL,										/* tp_weaklist */
+	NULL,										/* tp_del */
 #if PY_MAJOR_VERSION >= 2 && PY_MINOR_VERSION >= 6
-	0,
-	NULL,
+	0,										/* tp_version_tag */
 #endif
 };
 
@@ -710,25 +708,24 @@ static PyTypeObject wesnoth_unit_type = {
 	unit_methods,			  /* tp_methods */
 	0,						   /* tp_members */
 	unit_getseters,			 /* tp_getset */
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	0,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
+	NULL,						   /* tp_base */
+	NULL,						   /* tp_dict */
+	NULL,						   /* tp_descr_get */
+	NULL,						   /* tp_descr_set */
+	0,						   /* tp_dictoffset */
+	NULL,						   /* tp_init */
+	NULL,						   /* tp_alloc */
+	NULL,						   /* tp_new */
+	NULL,						   /* tp_free */
+	NULL,						   /* tp_is_gc */
+	NULL,						   /* tp_bases */
+	NULL,						   /* tp_mro */
+	NULL,						   /* tp_cache */
+	NULL,						   /* tp_subclasses */
+	NULL,						   /* tp_weaklist */
+	NULL,						   /* tp_del */
 #if PY_MAJOR_VERSION >= 2 && PY_MINOR_VERSION >= 6
-	0,
-	NULL,
+	0,						   /* tp_version_tag */
 #endif
 };
 
@@ -824,25 +821,24 @@ static PyTypeObject wesnoth_location_type = {
 	location_methods,			  /* tp_methods */
 	0,						   /* tp_members */
 	location_getseters,			 /* tp_getset */
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	0,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
+	NULL,						   /* tp_base */
+	NULL,						   /* tp_dict */
+	NULL,						   /* tp_descr_get */
+	NULL,						   /* tp_descr_set */
+	0,						   /* tp_dictoffset */
+	NULL,						   /* tp_init */
+	NULL,						   /* tp_alloc */
+	NULL,						   /* tp_new */
+	NULL,						   /* tp_free */
+	NULL,						   /* tp_is_gc */
+	NULL,						   /* tp_bases */
+	NULL,						   /* tp_mro */
+	NULL,						   /* tp_cache */
+	NULL,						   /* tp_subclasses */
+	NULL,						   /* tp_weaklist */
+	NULL,						   /* tp_del */
 #if PY_MAJOR_VERSION >= 2 && PY_MINOR_VERSION >= 6
-	0,
-	NULL,
+	0,						   /* tp_version_tag */
 #endif
 };
 
@@ -1000,25 +996,24 @@ static PyTypeObject wesnoth_gamemap_type = {
 	gamemap_methods,			 /* tp_methods */
 	0,						   /* tp_members */
 	gamemap_getseters,			/* tp_getset */
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	0,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
+	NULL,						   /* tp_base */
+	NULL,						   /* tp_dict */
+	NULL,						   /* tp_descr_get */
+	NULL,						   /* tp_descr_set */
+	0,						   /* tp_dictoffset */
+	NULL,						   /* tp_init */
+	NULL,						   /* tp_alloc */
+	NULL,						   /* tp_new */
+	NULL,						   /* tp_free */
+	NULL,						   /* tp_is_gc */
+	NULL,						   /* tp_bases */
+	NULL,						   /* tp_mro */
+	NULL,						   /* tp_cache */
+	NULL,						   /* tp_subclasses */
+	NULL,						   /* tp_weaklist */
+	NULL,						   /* tp_del */
 #if PY_MAJOR_VERSION >= 2 && PY_MINOR_VERSION >= 6
-	0,
-	NULL,
+	0,						   /* tp_version_tag */
 #endif
 };
 
@@ -1189,25 +1184,24 @@ static PyTypeObject wesnoth_team_type = {
 	team_methods,			  /* tp_methods */
 	0,						   /* tp_members */
 	team_getseters,			 /* tp_getset */
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	0,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
+	NULL,						   /* tp_base */
+	NULL,						   /* tp_dict */
+	NULL,						   /* tp_descr_get */
+	NULL,						   /* tp_descr_set */
+	0,						   /* tp_dictoffset */
+	NULL,						   /* tp_init */
+	NULL,						   /* tp_alloc */
+	NULL,						   /* tp_new */
+	NULL,						   /* tp_free */
+	NULL,						   /* tp_is_gc */
+	NULL,						   /* tp_bases */
+	NULL,						   /* tp_mro */
+	NULL,						   /* tp_cache */
+	NULL,						   /* tp_subclasses */
+	NULL,						   /* tp_weaklist */
+	NULL,						   /* tp_del */
 #if PY_MAJOR_VERSION >= 2 && PY_MINOR_VERSION >= 6
-	0,
-	NULL,
+	0,						   /* tp_version_tag */
 #endif
 };
 
@@ -1332,25 +1326,24 @@ static PyTypeObject wesnoth_gamestatus_type = {
 	gamestatus_methods,				/* tp_methods */
 	0,						   /* tp_members */
 	gamestatus_getseters,		   /* tp_getset */
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	0,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
+	NULL,						   /* tp_base */
+	NULL,						   /* tp_dict */
+	NULL,						   /* tp_descr_get */
+	NULL,						   /* tp_descr_set */
+	0,						   /* tp_dictoffset */
+	NULL,						   /* tp_init */
+	NULL,						   /* tp_alloc */
+	NULL,						   /* tp_new */
+	NULL,						   /* tp_free */
+	NULL,						   /* tp_is_gc */
+	NULL,						   /* tp_bases */
+	NULL,						   /* tp_mro */
+	NULL,						   /* tp_cache */
+	NULL,						   /* tp_subclasses */
+	NULL,						   /* tp_weaklist */
+	NULL,						   /* tp_del */
 #if PY_MAJOR_VERSION >= 2 && PY_MINOR_VERSION >= 6
-	0,
-	NULL,
+	0,						   /* tp_version_tag */
 #endif
 };
 
