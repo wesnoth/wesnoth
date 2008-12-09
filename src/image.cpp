@@ -56,8 +56,6 @@ int red_adjust = 0, green_adjust = 0, blue_adjust = 0;
 /** List of colors used by the TC image modification */
 std::vector<std::string> team_colors;
 
-std::string image_mask;
-
 int zoom = image::tile_size;
 int cached_zoom = 0;
 
@@ -633,15 +631,7 @@ static surface get_scaled_to_hex(const locator i_locator)
 		res = surface(adjust_surface_colour(res,
 					red_adjust, green_adjust, blue_adjust));
 	}
-	/*
-	const surface mask(get_image(image_mask,UNMASKED));
-	if(mask != NULL) {
-		SDL_SetAlpha(mask,SDL_SRCALPHA|SDL_RLEACCEL,SDL_ALPHA_OPAQUE);
-		SDL_SetAlpha(res,SDL_SRCALPHA|SDL_RLEACCEL,SDL_ALPHA_OPAQUE);
 
-		//commented out pending reply from SDL team about bug report
-		//SDL_BlitSurface(mask,NULL,result,NULL);
-	}*/
 	return res;
 }
 
