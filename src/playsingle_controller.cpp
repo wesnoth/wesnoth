@@ -412,10 +412,12 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 			}
 
 			// Add all the units that survived the scenario.
+			LOG_NG << "Add units that survived the scenario to the recall list.\n";
 			for(unit_map::iterator un = units_.begin(); un != units_.end(); ++un) {
 				player_info *player=gamestate_.get_player(teams_[un->second.side()-1].save_id());
 
 				if(player) {
+					LOG_NG << "Added unit " << un->second.id() << ", " << un->second.name() << "\n";
 					un->second.new_turn();
 					un->second.new_level();
 					player->available_units.push_back(un->second);

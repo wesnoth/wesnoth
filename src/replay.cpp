@@ -167,6 +167,12 @@ void replay::set_save_info(const game_state& save)
 	saveInfo_ = save;
 }
 
+void replay::set_save_info(const game_state& save, const config::child_list& players)
+{
+	saveInfo_ = save;
+	saveInfo_.players.clear();
+	saveInfo_.load_recall_list(players);
+}
 
 void replay::set_save_info_completion(const std::string &st)
 // This function is a kluge to get around the fact that replay objects carry

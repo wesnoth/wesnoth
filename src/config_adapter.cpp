@@ -86,7 +86,7 @@ void get_player_info(const config& cfg, game_state& gamestate,
        scenarios. Snapshots and replays are loaded from savegames and
        got their own gold information, which must not be altered here
     */
-	if ( (player != NULL)  && (!snapshot) && (!replay) ) {
+	if ( (player != NULL)  && (!snapshot) ) {
 		if(player->gold_add) {
 			ngold +=  player->gold;
 		} else if(player->gold >= ngold) {

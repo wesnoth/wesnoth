@@ -530,6 +530,17 @@ game_state::game_state(const config& cfg, bool show_replay) :
 	const config* replay_start = cfg.child("replay_start");
 	if(replay_start != NULL) {
 		starting_pos = *replay_start;
+		//This is a quick hack to make replays for campaigns work again:
+		//The [player] information needs to be stored somewhere within the gamestate,
+		//because we need it later on when creating the replay savegame.
+		//We therefore put it inside the starting_pos, so it doesn't get lost.
+		//See also playcampaign::play_game, where after finishing the scenario the replay
+		//will be saved.
+		config::child_list player_list = cfg.get_children("player");
+		for (config::child_list::const_iterator p = player_list.begin(); p != player_list.end(); p++){
+			config& cfg_player = starting_pos.add_child("player");
+			cfg_player.merge_with(**p);
+		}
 	}
 
 	if(cfg.child("statistics")) {
@@ -567,6 +578,18 @@ static void write_player(const player_info& player, config& cfg)
 	}
 
 	cfg["can_recruit"] = can_recruit_str;
+}
+
+void write_players(game_state& gamestate, config& cfg)
+{
+	for(std::map<std::string, player_info>::const_iterator i=gamestate.players.begin();
+		i!=gamestate.players.end(); ++i)
+	{
+		config new_cfg;
+		write_player(i->second, new_cfg);
+		new_cfg["save_id"]=i->first;
+		cfg.add_child("player", new_cfg);
+	}
 }
 
 static void write_player(config_writer &out, const player_info& player)

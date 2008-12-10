@@ -102,6 +102,13 @@ public:
 
 	/** Return the Nth player, or NULL if no such player exists. */
 	player_info* get_player(const std::string& id);
+	
+	/**
+	 * Loads the recall list.
+	 *
+	 * @param players      Reference to the players section to load.
+	 */
+	void load_recall_list(const config::child_list& players);
 
 	std::vector<scoped_wml_variable*> scoped_variables;
 	std::map<std::string, wml_menu_item*> wml_menu_items;
@@ -160,13 +167,6 @@ private:
 	mutable config temporaries; // lengths of arrays, etc.
 	const rand_rng::set_random_generator generator_setter; /**< Make sure that rng is initialized first */
 	friend struct variable_info;
-
-	/**
-	 * Loads the recall list.
-	 *
-	 * @param players      Reference to the players section to load.
-	 */
-	void load_recall_list(const config::child_list& players);
 };
 
 /**
@@ -316,6 +316,7 @@ enum WRITE_GAME_MODE { WRITE_SNAPSHOT_ONLY, WRITE_FULL_GAME };
 
 void read_save_file(const std::string& name, config& cfg, std::string* error_log);
 
+void write_players(game_state& gamestate, config& cfg);
 void write_game(const game_state& gamestate, config& cfg, WRITE_GAME_MODE mode=WRITE_FULL_GAME);
 void write_game(config_writer &out, const game_state& gamestate, WRITE_GAME_MODE mode=WRITE_FULL_GAME);
 

@@ -416,6 +416,13 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 					gui::OK_CANCEL, _("Save Replay"), false, false) == 0) {
 				try {
 						config snapshot;
+						//If the starting position contains player information, use this for
+						//the replay savegame (this originally comes from the gamestate constructor,
+						//where the player stuff is added to the starting position to be used here.
+						config::child_list player_list = gamestate.starting_pos.get_children("player");
+						if (player_list.size() > 0) {
+							recorder.set_save_info(gamestate, player_list);
+						}
 						recorder.save_game(label, snapshot, gamestate.starting_pos);
 					} catch(game::save_game_failed&) {
 						gui::show_error_message(disp, _("The replay could not be saved"));
@@ -506,7 +513,9 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 				// Sends scenario data
 				config cfg;
 				cfg.add_child("store_next_scenario", *scenario);
-
+				//Add the player section to the starting position so we can get the correct recall list
+				//when loading the replay later on
+				write_players(gamestate, gamestate.starting_pos);
 				// Adds player information, and other state
 				// information, to the configuration object
 				assert(cfg.child("store_next_scenario") != NULL);
