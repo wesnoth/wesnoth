@@ -59,6 +59,7 @@ Version 1.5.6+svn:
      is measured in milliseconds. (feature #10449) 
  * Miscellaneous and bug fixes:
    * Fixed replays for single-player campaigns (bug #12005).
+   * Fixed the restart-replay button causing an assertion failure.
    * New memory allocator introduced to the engine. It should
      produce 5-10% savings in memory usage on 64-bit systems.
    * Included extra headers for certain g++ versions (patch #1113).
