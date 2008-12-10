@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-11-29 12:25+0100\n"
-"PO-Revision-Date: 2008-11-20 22:24+0100\n"
+"PO-Revision-Date: 2008-12-10 01:37+0100\n"
 "Last-Translator: Leandro Regueiro <leandro DOT regueiro AT gmail DOT com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "MIME-Version: 1.0\n"
@@ -39,7 +39,7 @@ msgstr "Loitador"
 msgid "(Easy)"
 msgstr "(Fácil)"
 
-# acoirazado FIXADO
+# Steelclad=acoirazado FIXADO
 #. [campaign]: id=The_Hammer_of_Thursagan
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:17
 msgid "Steelclad"
@@ -55,7 +55,7 @@ msgstr "(Normal)"
 msgid "(Challenging)"
 msgstr "(Esixente)"
 
-# Señor FIXADO
+# Lord=Señor FIXADO
 #. [campaign]: id=The_Hammer_of_Thursagan
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:18
 msgid "Lord"
@@ -217,7 +217,6 @@ msgstr "Os turnos se esgoten"
 # Dwarven Doors=Portas dos Ananos FIXADO
 #. [part]
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_The_East_Gate.cfg:113
-#, fuzzy
 msgid ""
 "In the first few years after the founding of the Northern Alliance, the "
 "dwarves of Knalga and the human population of Dwarven Doors were fully "
@@ -232,8 +231,8 @@ msgstr ""
 "ca reconstrucción que fora estragada pola longa ocupación dos orcos. Pero "
 "moi cedo prosperaron outra vez. Os ananos comezaron a explorar o seu pasado "
 "para atopar ideas sobre como reconstruir Knalga de xeito que fora máis "
-"grande ca antes, e tamén comezaron a saír fóra intentando contactar ca súa "
-"xente que estaba esparexida por todo o mundo."
+"grande incluso ca antes, e tamén comezaron a saír fóra intentando contactar "
+"ca súa xente que estaba esparexida por todo o mundo."
 
 #. [part]
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_The_East_Gate.cfg:118
@@ -250,13 +249,12 @@ msgstr ""
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_The_East_Gate.cfg:131
-#, fuzzy
 msgid ""
 "Up axes! We will be the Northern Alliance's arm today, and kill or scatter "
 "these invaders."
 msgstr ""
-"Machados arriba! Hoxe seremos o brazo da Alianza do\n"
-"Norte, e mataremos ou escorrentaremos a estes invasores."
+"Machados arriba! Hoxe seremos o brazo da Alianza do Norte, e mataremos ou "
+"escorrentaremos a estes invasores."
 
 #. [message]: speaker=Bashnark
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_The_East_Gate.cfg:135
@@ -269,7 +267,6 @@ msgstr ""
 
 #. [message]: speaker=second_unit
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_The_East_Gate.cfg:146
-#, fuzzy
 msgid ""
 "What is this? Their vanquished leader wears a cloak-pin of dwarvish make. "
 "And it bears a loremaster's emblem."
@@ -911,6 +908,8 @@ msgid ""
 "That hut near the top of the pass...something is glowing inside it. We "
 "should investigate."
 msgstr ""
+"Esa choupana preto da cima do paso... algo brilla dentro dela. Debemos "
+"investigar."
 
 #. [unit]: type=Arch Mage, id=Ratheln
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:225
@@ -982,7 +981,7 @@ msgstr ""
 #. [message]: speaker=Ratheln
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:284
 msgid "This is no fit death for a mage of fire!"
-msgstr ""
+msgstr "Isto non é unha morte digna para un mago de lume!"
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:289
@@ -990,6 +989,8 @@ msgid ""
 "The snow has redoubled its fury, as if his presence had been holding it "
 "back. I do not see a way forward for us."
 msgstr ""
+"A neve cae co dobre de forza, coma se a súa presencia a contivera. Non vexo "
+"o camiño diante nosa."
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:302
@@ -1011,15 +1012,14 @@ msgstr "Cruzamos o paso!"
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:331
-#, fuzzy
 msgid ""
 "That may not be a blessing. Something frightened those orcs we fought among "
 "the bandit villages, enough to make them push west into Alliance territory. "
 "Don't you wonder what it was?"
 msgstr ""
 "Pero iso podería non ser unha bendición. Algo fixo tolear a eses orcos cos "
-"que loitamos ata facelos fuxir cara ó oeste ata o territorio da Alianza. Non "
-"imaxinas o que foi?"
+"que loitamos nas vilas dos bandidos, tanto que os fixo fuxir cara ó oeste "
+"ata o territorio da Alianza. Non imaxinas o que foi?"
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:336
@@ -1200,7 +1200,7 @@ msgstr ""
 msgid "Fear"
 msgstr "Medo"
 
-# anano enmascarado FIXADO
+# Masked Dwarf=anano enmascarado FIXADO
 #. [unit]: type=Dwarvish Masked Steelclad, id=Gog
 #. [unit]: type=Dwarvish Masked Steelclad, id=Magog
 #. [unit]: type=Dwarvish Ulfserker, id=Hekyll
@@ -1284,7 +1284,6 @@ msgstr ""
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:147
-#, fuzzy
 msgid ""
 "Look sharp for the inhabitants here. They might have something to tell us."
 msgstr "Buscade ós habitantes de aquí. Poderían ter algo que nos contar."
@@ -1326,7 +1325,6 @@ msgstr "Os ananos enmascarados. Matan, queiman, secuestran. Mirade..."
 
 #. [message]: speaker=Masked Dwarf Leader
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:238
-#, fuzzy
 msgid ""
 "Fellow dwarves, hail! We're looking for a human refugee, one named Ollin. "
 "Have you seen him? Our master demands his life."
@@ -1336,15 +1334,11 @@ msgstr ""
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:242
-#, fuzzy
 msgid "He is here. How has he wronged your master, that you seek his death?"
-msgstr ""
-"Está aquí. Como molestou ó voso amo, para que queira\n"
-"que morra?"
+msgstr "Está aquí. Como molestou ó voso amo, para que queira que morra?"
 
 #. [message]: speaker=Masked Dwarf Leader
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:246
-#, fuzzy
 msgid ""
 "Does it matter? He is only a dirtgrubbing human, not fit to polish the boots "
 "of the true people."
@@ -1372,18 +1366,16 @@ msgstr ""
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:258
-#, fuzzy
 msgid ""
 "You speak without honor. Mine is the power of our ancient Law; speak your "
 "name and give up your murder, or the Law will cast you forth. I am a witness!"
 msgstr ""
 "Falas sen honor. O poder da nosa antiga Lei é meu; di o teu nome e confesa o "
-"teu crime, ou a Lei hate expulsar. Son un observador!"
+"teu crime, ou a Lei hate desterrar. Son un observador!"
 
 # dirtgrubber=chupasangues FIXADO
 #. [message]: speaker=Masked Dwarf Leader
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:262
-#, fuzzy
 msgid ""
 "If you were a witness of the true people, you would not let a dirtgrubber "
 "hide behind your robes. I deny you!"
@@ -1393,9 +1385,8 @@ msgstr ""
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:267
-#, fuzzy
 msgid "The Law speaks: you are cast out. You are un-dwarf. I AM A WITNESS!"
-msgstr "A Lei fala: eres un paria. Non eres un anano. SON UN OBSERVADOR!"
+msgstr "A Lei fala: estás desterrado. Non eres un anano. SON UN OBSERVADOR!"
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:271
@@ -1433,19 +1424,16 @@ msgstr ""
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:324
-#, fuzzy
 msgid ""
 "It is not something we do often. The last such was in my grandsire's time. "
 "But look at what these filth were carrying if you have any doubt it was "
 "merited."
 msgstr ""
-"Non é algo que fagamos a miúdo. A última fora nos tempos do meu gran señor. "
-"Pero mirade o que levaba esta escoura se é que tiñades dúbidas sobre se o "
-"merecia."
+"Non é algo que fagamos a miúdo. A última fora nos tempos do meu avó. Pero "
+"mirade o que levaba esta escoura se é que tiñades dúbidas sobre se o merecia."
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:328
-#, fuzzy
 msgid ""
 "Whips. Shackles. No, Angarthing, I would not doubt you, even if it were my "
 "place to doubt a loremaster."
@@ -1455,7 +1443,6 @@ msgstr ""
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:332
-#, fuzzy
 msgid ""
 "They were seeking captives. To what purpose, I cannot say. But I doubt it "
 "was any good one."
@@ -1512,7 +1499,6 @@ msgstr ""
 
 #. [message]: speaker=Elurin
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:244
-#, fuzzy
 msgid ""
 "We allow few outsiders in our forest paths, and no dwarves since the masked "
 "ones began to trouble our eastern margins. No axe-bearers shall come near "
@@ -1535,23 +1521,21 @@ msgstr "Non pasaredes por aquí."
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:259
-#, fuzzy
 msgid ""
 "Winter comes on our heels, and your forest straddles the only gap in these "
 "mountains. You leave us no choice but to fight you."
 msgstr ""
-"O inverno ha chegar cedo, e o voso bosque está no único oco destas montañas. "
-"Non nos deixades máis opción ca loitar contra vós."
+"O inverno ha chegar cedo, e o voso bosque está no único paso a través destas "
+"montañas. Non nos deixades máis opción ca loitar contra vós."
 
 #. [message]: speaker=Elurin
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:264
-#, fuzzy
 msgid ""
 "So be it, then. Yours will not be the first bones to nourish the earth of "
 "our forest."
 msgstr ""
-"Así será, entón. Os vosos non serán os primeiros ósos que fertilicen a terra "
-"do noso bosque!"
+"Entón que así sexa. Os vosos non serán os primeiros ósos que fertilicen a "
+"terra do noso bosque!"
 
 #. [objective]: condition=win
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:285
@@ -1560,7 +1544,6 @@ msgstr "Leva a Aiglondur e a Angarthing ó sinal do leste"
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:313
-#, fuzzy
 msgid ""
 "Rally on me, everyone. We have better things to do than brawl with elves."
 msgstr ""
@@ -1606,7 +1589,6 @@ msgstr "Mirade! A Porta Occidental de Kal Kartha!"
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:214
-#, fuzzy
 msgid ""
 "And under siege, I see. There is a mighty host of orcs between us and that "
 "gate."
@@ -1641,7 +1623,6 @@ msgstr "Tomaron Kal Kartha. A nosa misión fracasou."
 
 #. [message]: speaker=Dulcatulos
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:273
-#, fuzzy
 msgid ""
 "Well fought, and our thanks; we were sore pressed. You are our honored "
 "guests, and I will show you to the best quarters we have myself. Our lord, "
@@ -1653,7 +1634,6 @@ msgstr ""
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:278
-#, fuzzy
 msgid ""
 "A runemaster? There had been none such since Thursagan's day. And for one to "
 "lead a holding was unheard-of; they tended towards the solitary life."
@@ -1664,7 +1644,6 @@ msgstr ""
 
 #. [message]: speaker=Dulcatulos
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:283
-#, fuzzy
 msgid ""
 "Aye? Well, you'd know such things better than I, loremaster. Our Karrag "
 "toiled for long years to recover the craft lore. He was elevated when our "
@@ -1672,7 +1651,7 @@ msgid ""
 "wounded near to death; none thought he would recover. But he leads us today, "
 "and his runelore has oft been the only shield between us and the orcs."
 msgstr ""
-"Si? Ben, ti saberás máis desas cousas ca min, historiador. O noso Karrag "
+"É así? Ben, ti saberás máis desas cousas ca min, historiador. O noso Karrag "
 "traballou arreo durante longos anos para recuperar os coñecementos da "
 "artesanía. Foi ascendido cando o noso antigo señor caiu na batalla contra os "
 "orcos que nos asediaban. O propio Karrag foi ferido e case morreu; ningún "
@@ -1686,19 +1665,17 @@ msgstr "Colleu entón o Martelo de Thursagan?"
 
 #. [message]: speaker=Dulcatulos
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:293
-#, fuzzy
 msgid ""
 "Aye. Toils over it in a workshop in the underlevels with his personal "
 "followers. He has promised all of us that the Hammer's power will smash and "
 "scatter all our enemies."
 msgstr ""
-"Si. Traballa arreo con el nun obradoiro nos niveis inferiores\n"
-"cos seus seguidores persoais. Prometeunos a todos que o\n"
-"poder do Martelo batería nos nosos inimigos e que os dividiría."
+"Si. Traballa arreo con el nun obradoiro nos niveis inferiores cos seus "
+"seguidores persoais. Prometeunos a todos nós que o poder do Martelo batería "
+"nos nosos inimigos e que os dividiría."
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:298
-#, fuzzy
 msgid ""
 "That is strange. The Hammer is a tool of crafting and making, not a weapon. "
 "What can he mean to do with it?"
@@ -1708,7 +1685,6 @@ msgstr ""
 
 #. [message]: speaker=Dulcatulos
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:303
-#, fuzzy
 msgid ""
 "That's for lords and loremasters to worry about, not the likes of me. I must "
 "see to my troop's care. Food will be brought to you; rest well, we will "
@@ -1786,7 +1762,6 @@ msgstr ""
 
 #. [message]: speaker=Karrag
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:195
-#, fuzzy
 msgid ""
 "Trade? Your destruction of the besieging orcs was a far nobler act than "
 "trade. There can be more such victories. And there will be by the power of "
@@ -1803,7 +1778,6 @@ msgstr "En Knalga lémbrase que o Martelo se garda en Kal Kartha."
 
 #. [message]: speaker=Karrag
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:205
-#, fuzzy
 msgid ""
 "Yes! And the Hammer holds the soul of the dwarves, the true people. "
 "Together, we can march to greater victories! Will you of Knalga join me?"
@@ -1840,14 +1814,13 @@ msgstr ""
 
 #. [message]: speaker=Karrag
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:225
-#, fuzzy
 msgid ""
 "Impertinent fool! It is not for you to dictate to a lord in his own holding, "
 "much less one who holds the very soul of the dwarves in his hand."
 msgstr ""
 "Parvo impertinente! Non che corresponde a ti darlle ordes a un señor no seu "
-"propio dominio, e moito menos a un que ten a propia alma dos ananos na súa "
-"man."
+"propio dominio, e moito menos a un que ten a propia alma dos ananos nas súas "
+"mans."
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:230
@@ -1877,17 +1850,16 @@ msgstr ""
 # dirtgrubber=chupasangues FIXADO
 #. [message]: speaker=Karrag
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:273
-#, fuzzy
 msgid ""
 "And you have sealed your doom. Hundreds of dirtgrubbers have already died to "
 "weave a web of blood around the Hammer and the soul of the dwarves. You and "
 "your new friends will be the last sacrifices I require to bind the entire "
 "dwarvish race to my purpose. TAKE THEM!"
 msgstr ""
-"E xa selaches o teu destino. Xa morreron centos de chupasangues para tecer "
-"unha arañeira de sangue arredor do Martelo e a alma dos ananos. Ti e mailos "
-"teus novos amigos seredes os últimos sacrificios que requira para ligar toda "
-"a raza dos ananos ós meus propósitos. COLLÉDEOS!"
+"E selaches o teu destino. Xa morreron centos de chupasangues para tecer unha "
+"arañeira de sangue arredor do Martelo e da alma dos ananos. Ti e mailos teus "
+"novos amigos seredes os últimos sacrificios que requira para ligar toda a "
+"raza dos ananos ós meus propósitos. COLLÉDEOS!"
 
 #. [objective]: condition=win
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:282
@@ -1923,15 +1895,14 @@ msgstr ""
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:328
-#, fuzzy
 msgid ""
 "We must follow. Quickly! It may be his talk of perverting the Hammer was "
 "merely mad raving, but we cannot allow the risk that his foul spell might "
 "succeed."
 msgstr ""
 "Debemos seguilo. A présa! Pode ser que as súas faladurías de perversión do "
-"Martelo fora simplemente a súa tolemia, pero non podemos permitirnos o risco "
-"de que as súas noxentas palabras poidan ter éxito."
+"Martelo foran simplemente a súa tolemia, pero non podemos correr o risco de "
+"que as súas noxentas palabras poidan ter éxito."
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:344
@@ -1979,7 +1950,6 @@ msgstr ""
 
 #. [message]: speaker={ID_STRING}
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:241
-#, fuzzy
 msgid ""
 "I guess Karrag thought I knew too much. When his masked henchmen started "
 "raiding, plundering and taking all sorts of prisoners - which were sent to "
@@ -2010,13 +1980,12 @@ msgstr ""
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:251
-#, fuzzy
 msgid ""
 "Freeing these prisoners is more of a blow to Karrag then we thought, for now "
 "he is unable to continue his foul sorcery."
 msgstr ""
 "Liberar a estes prisioneiros é un golpe maior para Karrag do que pensabamos, "
-"xa que agora non é capaz de continuar cos seus suxos feitizos."
+"xa que agora non é capaz de continuar cos seus suxos meigallos."
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:264
@@ -2030,7 +1999,6 @@ msgstr "Este sitio cheira a morte."
 
 #. [message]: speaker=Dulcatulos
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:408
-#, fuzzy
 msgid ""
 "It's been...it's been years since I've been down here. Only Karrag and his "
 "personal followers used this level. Why did I never wonder about that before?"
@@ -2038,20 +2006,18 @@ msgstr ""
 "Hai... hai anos que estou aquí embaixo. Só Karrag e mailos seus seguidores "
 "persoais usaban este nivel. Por que nunca pensara niso antes?"
 
-# glamours=reclamos???
+# glamours=reclamos???=encantos??=feitizos??
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:414
-#, fuzzy
 msgid ""
 "Karrag's will, and his dark magic. I think he has been casting glamours on "
 "all of you ever since he passed over."
 msgstr ""
-"O desexo de Karrag, e a súa maxia escura. Penso que "
-"estivo                                  sobre todos vós dende que morreu."
+"O desexo de Karrag, e a súa maxia escura. Penso que estivo enfeitizándovos a "
+"todos vós dende que morreu."
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:419
-#, fuzzy
 msgid "Where *is* Karrag? We can't have been more than seconds behind him."
 msgstr ""
 "Onde *está* Karrag? Só pasaron uns segundos antes de comezaramos a "
@@ -2068,7 +2034,6 @@ msgstr ""
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:429
-#, fuzzy
 msgid ""
 "More likely he has cloaked himself, thinking to run ahead to gather his "
 "followers. He could be within a spear-cast of us now and we wouldn't know it "
@@ -2085,12 +2050,11 @@ msgstr "Esos son tambores de guerra!"
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:443
-#, fuzzy
 msgid ""
 "Aye. Karrag, calling his troops to battle. Only the Dark Gods know what "
 "hellspawn the lich will summon. AXES UP!"
 msgstr ""
-"Si. Karrag chamando ás súas tropas para a batalla. Só os Deuses Escuros "
+"Así é. Karrag chamando ás súas tropas para a batalla. Só os Deuses Escuros "
 "saben que criaturas demoníacas ha convocar o liche. MACHADOS ARRIBA!"
 
 #. [objective]: condition=lose
@@ -2114,7 +2078,6 @@ msgstr "Xa o veremos!"
 
 #. [message]: speaker=unit
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:534
-#, fuzzy
 msgid ""
 "It sees that guard spoke truth. These doors cannot be forced open by any "
 "means we have!"
@@ -2155,7 +2118,7 @@ msgstr "Creo que oio algún ruído, diante nosa..."
 #. [message]: speaker=Karrag
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:625
 msgid "Fresh blood! Exactly what I need to complete the rite."
-msgstr ""
+msgstr "Sangue fresco! Exactamente o que preciso para completar o rito."
 
 #. [message]: speaker=unit
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:645
@@ -2296,7 +2259,6 @@ msgstr "Moi ben, a porta está a piques de ceder. Preparádevos, todos."
 # dirtgrubber=chupasangues FIXADO
 #. [message]: speaker=Karrag
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1180
-#, fuzzy
 msgid "No! No! No! Dirtgrubbers must die! The true people must rule all!"
 msgstr ""
 "Non! Non! Non! Os chupasangues deben morrer! A verdadeira xente debe "
@@ -2370,19 +2332,17 @@ msgstr "Alaithus"
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/13_Epilogue.cfg:102
-#, fuzzy
 msgid ""
 "Dwarves of Kal Kartha, I speak the Law. Your house is cast down; you have "
 "harbored a great evil. Who now will take the burden of cleansing this "
 "holding of its taint?"
 msgstr ""
-"Ananos de Kal Kartha, eu falo da Lei. A vosa casa está maldita; refuxiastes "
-"un gran mal. Quen vai agora ocuparse da carga de limpar a súa mancha deste "
+"Ananos de Kal Kartha, eu son a Lei. A vosa casa está maldita; refuxiastes un "
+"gran mal. Quen vai ocuparse agora da carga de limpar a súa mancha deste "
 "dominio?"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/13_Epilogue.cfg:107
-#, fuzzy
 msgid ""
 "The dwarves of Kal Kartha muttered among themselves and looked at one "
 "another uneasily. None stepped forward."
@@ -2391,13 +2351,12 @@ msgstr ""
 
 #. [message]: speaker=Dulcatulos
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/13_Epilogue.cfg:113
-#, fuzzy
 msgid ""
 "Loremaster...none of us is fit to take up the lordship. Karrag fooled us "
 "all, made us the tools of his foul scheme."
 msgstr ""
 "Historiador... ningún de nós é digno de ser o señor. Karrag enganounos a "
-"todos, converténdonos nas ferramentas do seu noxento proxecto"
+"todos, converténdonos en ferramentas do seu noxento proxecto."
 
 #. [unit]: type=Lancer, id=Pelias
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/13_Epilogue.cfg:135
@@ -2406,12 +2365,11 @@ msgstr "Pelias"
 
 #. [message]: speaker=Pelias
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/13_Epilogue.cfg:143
-#, fuzzy
 msgid ""
 "I was told I'd find Aiglondur of Knalga here. I bear a message from Tallin, "
 "the Lord Protector of the Alliance."
 msgstr ""
-"Dixéronme que aquí atoparía a Aiglondur de Knalga. Porto unha mensaxe de "
+"Dixéronme que aquí atoparía a Aiglondur de Knalga. Traio unha mensaxe de "
 "Tallin, o Señor Protector da Alianza."
 
 #. [message]: speaker=Aiglondur
@@ -2421,7 +2379,6 @@ msgstr "Son eu. Dime a túa mensaxe."
 
 #. [message]: speaker=Pelias
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/13_Epilogue.cfg:154
-#, fuzzy
 msgid ""
 "I have been on your track for weeks. Word of your rout of Tan-Malgar and his "
 "allies spread, and reached Tallin. You did the Alliance better service than "
@@ -2429,10 +2386,10 @@ msgid ""
 "chieftains within the Alliance, and your victory prevented a dangerous "
 "revolt."
 msgstr ""
-"Seguínvos durante semanas. Palabras sobre a vosa ruta ditas por Tan-Malgar e "
-"os seus aliados espalláronse, e chegaron a Tallin. Fixécheslle á Alianza un "
-"servizo mellor do que crias aquel día; Tan-Malgar intercambiou mensaxes con "
-"certos xefes orcos dentro da Alianza, e a túa victoria previu unha "
+"Seguínvos durante semanas. As novas sobre a vosa ruta ditas por Tan-Malgar e "
+"mailos seus aliados espalláronse, e chegaron a Tallin. Fixécheslle á Alianza "
+"un servizo mellor do que crias aquel día; Tan-Malgar intercambiou mensaxes "
+"con certos xefes orcos dentro da Alianza, e a túa victoria previu unha "
 "sublevación máis perigosa."
 
 # Lord Companion=señor adxunto FIXADO
@@ -2448,7 +2405,6 @@ msgstr ""
 # Lord Companion=señor adxunto FIXADO
 #. [message]: speaker=Dulcatulos
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/13_Epilogue.cfg:164
-#, fuzzy
 msgid "(wonderingly) A Lord Companion? And kin of ours..."
 msgstr "(sorprendido) Un Señor Adxunto? E irmán dos nosos..."
 
@@ -2477,7 +2433,6 @@ msgstr "Parece apropiado. Os Historiadores hano aprobar."
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/13_Epilogue.cfg:185
-#, fuzzy
 msgid ""
 "Pelias, my thanks to the Lord Protector; I will attend him in the spring. "
 "But it seems that I have some work to do here first."
@@ -2485,7 +2440,7 @@ msgstr ""
 "Pelias, dalle as miñas grazas ó Señor Protector; irei onda el pola "
 "primavera. Pero parece que primeiro ainda teño algún traballo que facer aquí."
 
-# anano cronista FIXADO
+# Dwarvish Annalist=anano cronista FIXADO
 #. [unit_type]: id=Dwarvish Annalist, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Annalist.cfg:4
 msgid "Dwarvish Annalist"
@@ -2493,7 +2448,6 @@ msgstr "Anano cronista"
 
 #. [unit_type]: id=Dwarvish Annalist, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Annalist.cfg:22
-#, fuzzy
 msgid ""
 "Dwarvish Annalists are the historians of this ancient and proud race. They "
 "are few in number, and their very existence is not generally known to the "
@@ -2506,14 +2460,16 @@ msgstr ""
 "obtiveron, a través do estudo das herbas e do coñecemento dos minerais, a "
 "capacidade de curar o veleno."
 
+# MALLO??
 #. [attack]: type=impact
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Loremaster.cfg:42
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Witness.cfg:44
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Annalist.cfg:39
+#, fuzzy
 msgid "morningstar"
-msgstr ""
+msgstr "MALLO"
 
-# boleadoras FIXADO, segundo o egu é un préstamo do castelán
+# bolas=boleadoras FIXADO, segundo o egu é un préstamo do castelán
 #. [attack]: type=impact
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Loremaster.cfg:125
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Witness.cfg:126
@@ -2521,7 +2477,7 @@ msgstr ""
 msgid "bolas"
 msgstr "boleadoras"
 
-# anano historiador FIXADO
+# Dwarvish Loremaster=anano historiador FIXADO
 #. [unit_type]: id=Dwarvish Loremaster, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Loremaster.cfg:4
 msgid "Dwarvish Loremaster"
@@ -2529,7 +2485,6 @@ msgstr "Anano historiador"
 
 #. [unit_type]: id=Dwarvish Loremaster, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Loremaster.cfg:24
-#, fuzzy
 msgid ""
 "Loremasters are the sages of the dwarvish race. Their counsel is greatly "
 "valued by war-leaders and chieftains, and they are viewed with awe by "
@@ -2545,26 +2500,25 @@ msgstr ""
 "a alma dos ananos. Ademais das habilidades dos Cronistas teñen unha "
 "capacidade limitada para sandar."
 
-# anano fusileiro enmascarado FIXADO
+# Dwarvish Masked Dragonguard=anano fusileiro enmascarado FIXADO
 #. [unit_type]: id=Dwarvish Masked Dragonguard
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Dragonguard.cfg:7
 msgid "Dwarvish Masked Dragonguard"
 msgstr "Anano fusileiro enmascarado"
 
-# anano loitador enmascarado FIXADO
+# Dwarvish Masked Fighter=anano loitador enmascarado FIXADO
 #. [unit_type]: id=Dwarvish Masked Fighter
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Fighter.cfg:7
 msgid "Dwarvish Masked Fighter"
 msgstr "Anano loitador enmascarado"
 
-# señor anano enmascarado FIXADO
+# Dwarvish Masked Guardsman=Anano gardián enmascarado FIXADO
 #. [unit_type]: id=Dwarvish Masked Guardsman
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Guardian.cfg:7
-#, fuzzy
 msgid "Dwarvish Masked Guardsman"
-msgstr "Señor anano enmascarado"
+msgstr "Anano gardián enmascarado"
 
-# señor anano enmascarado FIXADO
+# Dwarvish Masked Lord=señor anano enmascarado FIXADO
 #. [unit_type]: id=Dwarvish Masked Lord
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Lord.cfg:7
 msgid "Dwarvish Masked Lord"
@@ -2572,7 +2526,6 @@ msgstr "Señor anano enmascarado"
 
 #. [unit_type]: id=Dwarvish Masked Lord
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Lord.cfg:9
-#, fuzzy
 msgid ""
 "Feared in dwarven legend is the Dwarf Lord who masks his face, using the "
 "formidable fighting powers of his kind without accounting to his peers and "
@@ -2582,27 +2535,28 @@ msgid ""
 "several paces. Though slow on their feet, these dwarves are a testament to "
 "the prowess of their kind."
 msgstr ""
-"Acoirazados cunha armadura brillante, estes ananos parecen reis de baixo as "
-"montañas. Manexan a machada e o martelo cunha destreza maxistral, e poden "
+"Temidos nas lendas dos ananos, os Señores Ananos enmascarados usan os "
+"formidables poderes de loita da súa raza sen darlle conta ós seus iguais e "
+"ós historiadores dos Ananos debido ós escuros e sanguentos usos que fai das "
+"súas armas.Coma os da súa caste que van ca cara descuberta, os Señores "
+"ananos manexan a machada e o martelo cunha destreza maxistral, e poden "
 "acadarlle a un obxectivo cunha machada lanzada ca man a diferentes "
 "velocidades. Ainda que se desprazan lentamente, estes ananos son un "
 "testimonio das capacidades da súa raza."
 
-# anano acoirazado enmascarado FIXADO
+# Dwarvish Masked Sentinel=Anano sentinela enmascarado FIXADO
 #. [unit_type]: id=Dwarvish Masked Sentinel
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Sentinel.cfg:7
-#, fuzzy
 msgid "Dwarvish Masked Sentinel"
-msgstr "Anano acoirazado enmascarado"
+msgstr "Anano sentinela enmascarado"
 
-# anano acoirazado enmascarado FIXADO
+# Dwarvish Masked Stalwart=Anano incondicional enmascarado FIXADO
 #. [unit_type]: id=Dwarvish Masked Stalwart
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Stalwart.cfg:7
-#, fuzzy
 msgid "Dwarvish Masked Stalwart"
-msgstr "Anano acoirazado enmascarado"
+msgstr "Anano incondicional enmascarado"
 
-# anano acoirazado enmascarado FIXADO
+# Dwarvish Masked Steelclad=anano acoirazado enmascarado FIXADO
 #. [unit_type]: id=Dwarvish Masked Steelclad
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Steelclad.cfg:7
 msgid "Dwarvish Masked Steelclad"
@@ -2610,28 +2564,28 @@ msgstr "Anano acoirazado enmascarado"
 
 #. [unit_type]: id=Dwarvish Masked Steelclad
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Steelclad.cfg:11
-#, fuzzy
 msgid ""
 "More experienced Dwarvish fighters wear heavy chain mail and plate armor, "
 "for which they are rightly famous. In the dark dreams of dwarvenkind, some "
 "conceal their faces behind riveted masks."
 msgstr ""
 "Os loitadores Ananos con máis experiencia visten pesadas cotas de malla e "
-"armaduras de placas, polas cales son famosos."
+"armaduras de placas, polas cales son famosos. Nos escuros soños dos ananos, "
+"algúns ocultan as súas caras detrás de máscaras remachadas."
 
-# anano arcabuceiro enmascarado FIXADO
+# Dwarvish Masked Thunderer=anano arcabuceiro enmascarado FIXADO
 #. [unit_type]: id=Dwarvish Masked Thunderer
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Thunderer.cfg:7
 msgid "Dwarvish Masked Thunderer"
 msgstr "Anano arcabuceiro enmascarado"
 
-# anano mosqueteiro enmascarado FIXADO
+# Dwarvish Masked Thunderguard=anano mosqueteiro enmascarado FIXADO
 #. [unit_type]: id=Dwarvish Masked Thunderguard
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Thunderguard.cfg:7
 msgid "Dwarvish Masked Thunderguard"
 msgstr "Anano mosqueteiro enmascarado"
 
-# anano mestre das runas FIXADO
+# Dwarvish Runemaster=anano mestre das runas FIXADO
 #. [unit_type]: id=Dwarvish Rune Lord, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:6
 msgid "Dwarvish Runemaster"
@@ -2654,19 +2608,19 @@ msgstr ""
 "súas runas fan que os golpes físicos dos seus inimigos inflixan menos dano "
 "do que sería de agardar."
 
-# martelo FIXADO
+# hammer=martelo FIXADO
 #. [attack]: type=impact
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:31
 msgid "hammer"
 msgstr "martelo"
 
-# tempestade de frialdade FIXADO
+# chill tempest=tempestade xélida FIXADO
 #. [attack]: type=cold
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:81
 msgid "chill tempest"
-msgstr "tempestade de frialdade"
+msgstr "tempestade xélida"
 
-# anano observador FIXADO
+# Dwarvish Witness=anano observador FIXADO
 #. [unit_type]: id=Dwarvish Witness, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Witness.cfg:10
 msgid "Dwarvish Witness"
@@ -2674,7 +2628,6 @@ msgstr "Anano observador"
 
 #. [unit_type]: id=Dwarvish Witness, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Witness.cfg:28
-#, fuzzy
 msgid ""
 "A Witness functions as the eyes of the dwarves' history, a deep lore that "
 "they never share with outsiders. The presence of a Witness inspires dwarvish "
@@ -2687,23 +2640,26 @@ msgstr ""
 "Un Observador é os ollos da historia dos ananos, un profundo coñecemento que "
 "nunca comparte con estraños. A presencia dun Observador incita ós ananos "
 "guerreiros co coñecemento de que as súas fazañas (e mailas súas mortes) non "
-"serán esquecidas. Apreden un estilo de loita deliberadamente diferente ó dos "
-"seus compañeiros, un deseñado para volver a famosa forza dos ananos contra "
-"eles. Os Observadores son considerados sagrados, e a miúdo son usados coma "
-"embaixadores entre clans de ananos."
+"serán esquecidas. Aprenden un estilo de loita deliberadamente diferente ó "
+"dos seus compañeiros, un deseñado para volver a famosa forza dos ananos "
+"contra eles. Os Observadores son considerados sagrados, e a miúdo son usados "
+"coma embaixadores entre clans de ananos."
 
 #: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:4
 msgid ""
 " The presence of this unit inspires own units next to it to deal more damage "
 "in combat, though this only applies to units of lower or equal level."
 msgstr ""
+" A presencia desta unidade inspira ás unidades amigas que a rodean para que "
+"inflixan máis dano no combate, ainda que isto só se aplica a unidades de "
+"menor ou igual nivel."
 
 #. [leadership]: id=inspire_0
 #: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:13
 #: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:45
 #: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:89
 msgid "inspire"
-msgstr ""
+msgstr "inspiración"
 
 #. [leadership]: id=inspire_0
 #: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:15
@@ -2713,6 +2669,11 @@ msgid ""
 "fight better. Adjacent own units of L1 will do 25% more damage; L0 units "
 "will do 50% more."
 msgstr ""
+"Inspiración:\n"
+"Esta unidade pode inspirar ás unidades amigas de nivel 0 ou 1 que están "
+"xunta ela, facendo que loiten mellor. As unidades adxacentes de nivel 1 "
+"inflixirán un 25% máis de dano; as unidades de nivel 0 inflixirán un 50% "
+"máis."
 
 #. [leadership]: id=inspire_0
 #: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:47
@@ -2722,6 +2683,11 @@ msgid ""
 "them fight better. Adjacent own units of L2 will do more 25% more damage; L1 "
 "units will do 50% more, and L0 will do 75% more."
 msgstr ""
+"Inspiración:\n"
+"Esta unidade pode inspirar ás unidades amigas de nivel 0, nivel 1 ou nivel 2 "
+"que están xunta ela, facendo que loiten mellor. As unidades adxacentes de "
+"nivel 2 inflixirán un 25% máis de dano; as unidades de nivel 1 inflixirán un "
+"50% máis, e as de nivel 0 inflixirán un 75% máis."
 
 #. [leadership]: id=inspire_0
 #: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:91
@@ -2732,6 +2698,12 @@ msgid ""
 "damage; L2 units will do 50% more, L1 will do 75% more, and L0 units will do "
 "100% more."
 msgstr ""
+"Inspiración:\n"
+"Esta unidade pode inspirar ás unidades amigas de nivel 0, nivel 1, nivel 2 "
+"ou nivel 3 que están xunta ela, facendo que loiten mellor. As unidades "
+"adxacentes de nivel 3 inflixirán un 25% máis de dano; as unidades de nivel 2 "
+"inflixirán un 50% máis, as de nivel 1 inflixirán un 75% máis, e as de nivel "
+"0 inflixirán un 100% máis."
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/utils/herodeaths.cfg:9
@@ -2762,7 +2734,7 @@ msgstr ""
 "Sen usuarios da maxia da academia do Mestre Perrin no teu grupo, xa non "
 "podes recrutar máis magos."
 
-# Bastón da Chama Xusta FIXADO
+# Staff of Righteous Flame=Bastón da Chama Xusta FIXADO
 #. [object]: id=sorf	# Prevent it from being picked up more than once.
 #: data/campaigns/The_Hammer_of_Thursagan/utils/macros.cfg:70
 msgid "Staff of Righteous Flame"
@@ -2784,10 +2756,9 @@ msgstr "Só os magos poden portar o Bastón."
 
 #. [message]: speaker=unit
 #: data/campaigns/The_Hammer_of_Thursagan/utils/macros.cfg:116
-#, fuzzy
 msgid ""
 "Aaarrgh! Though I die, the flame of righteousness shall send you down to "
 "darkness!"
 msgstr ""
-"Aaarrgh!  Ainda que morro, a chama da xustiza havos enviar de volta á "
+"Aaarrgh! Ainda que morro, a chama da xustiza havos enviar de volta á "
 "escuridade!"

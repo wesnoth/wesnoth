@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-11-29 12:24+0100\n"
-"PO-Revision-Date: 2008-11-20 21:41+0100\n"
+"PO-Revision-Date: 2008-12-08 15:39+0100\n"
 "Last-Translator: Leandro Regueiro <leandro DOT regueiro AT gmail DOT com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "MIME-Version: 1.0\n"
@@ -81,20 +81,18 @@ msgstr ""
 
 #. [brush]
 #: data/core/editor2-brushes.cfg:14
-#, fuzzy
 msgid "Radius 1 Hex"
-msgstr "Radio horizontal"
+msgstr ""
 
 #. [brush]
 #: data/core/editor2-brushes.cfg:24
-#, fuzzy
 msgid "Radius 2 Hex"
-msgstr "Radio horizontal"
+msgstr ""
 
 #. [brush]
 #: data/core/editor2-brushes.cfg:54
 msgid "Hex Line NW-SE"
-msgstr ""
+msgstr "Liña hexagonal NO-SL"
 
 #. [editor2_tool_hint]: id=editor-tool-paint
 #. [editor2_tool_hint]: id=editor-tool-fill
@@ -103,6 +101,8 @@ msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only."
 msgstr ""
+"Use o botón esquerdo/dereito do rato para pintar o terreo do primeiro/"
+"segundo plano. Prema Shift para pintar só a capa base."
 
 #. [editor2_tool_hint]: id=editor-tool-select
 #: data/core/editor2-tool-hints.cfg:19
@@ -125,6 +125,8 @@ msgid ""
 "Click to paste. Use the edit menu to transform the clipboard (rotate, "
 "mirror)."
 msgstr ""
+"Prema para pegar. Use o menú editar para transformar o portarretallos "
+"(rotar, espellar)."
 
 #. [menu]: id=menu-editor-file
 #: data/themes/editor2.cfg:120
@@ -143,9 +145,8 @@ msgstr "Mapa"
 
 #. [menu]: id=menu-editor-window
 #: data/themes/editor2.cfg:151
-#, fuzzy
 msgid "Window"
-msgstr "Desfacer"
+msgstr "Ventá"
 
 #. [label]: id=villages-icon
 #: data/themes/editor2.cfg:262
@@ -162,7 +163,7 @@ msgstr "Erro moi grave"
 
 #: src/editor2/editor_controller.cpp:255 src/editor2/editor_controller.cpp:952
 msgid "(New Map)"
-msgstr ""
+msgstr "(Novo mapa)"
 
 #: src/editor2/editor_controller.cpp:261
 msgid "Do you really want to quit?"
@@ -173,12 +174,16 @@ msgid ""
 "Do you really want to quit? Changes in the map since the last save will be "
 "lost."
 msgstr ""
+"De verdade quere saír? Hanse perder os cambios realizados no mapa dende a "
+"última vez que se gardou."
 
 #: src/editor2/editor_controller.cpp:265
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
 msgstr ""
+"De verdade desexa saír? Os seguintes mapas foron modificados e hanse perder "
+"tódolos cambios realizados dende a última vez que se gardaron:"
 
 #: src/editor2/editor_controller.cpp:270
 msgid "Quit"
@@ -190,42 +195,39 @@ msgid "Error"
 msgstr "Erro"
 
 #: src/editor2/editor_controller.cpp:327
-#, fuzzy
 msgid "No editor time-of-day found."
-msgstr "Non se atopou a hora do día do editor"
+msgstr "Non se atopou a hora do día do editor."
 
 #: src/editor2/editor_controller.cpp:363
 msgid "Unsaved Changes"
-msgstr ""
+msgstr "Cambios non gardados"
 
 #: src/editor2/editor_controller.cpp:364
-#, fuzzy
 msgid ""
 "Do you want to discard all changes you made to the map since the last save?"
-msgstr "Desexa desbotar tódolos cambios que fixo no mapa?"
+msgstr ""
+"Desexa desbotar tódolos cambios que fixo no mapa dende a última vez que o "
+"gardou?"
 
 #: src/editor2/editor_controller.cpp:377
-#, fuzzy
 msgid "Choose a Map to Open"
-msgstr "Escolla un Mapa para Cargar"
+msgstr "Seleccione un mapa para abrilo"
 
 #: src/editor2/editor_controller.cpp:381
 msgid "This map is already open."
-msgstr ""
+msgstr "Este mapa xa está aberto."
 
 #: src/editor2/editor_controller.cpp:419
 msgid "Save the Map As"
 msgstr "Gardar o Mapa Coma"
 
 #: src/editor2/editor_controller.cpp:423
-#, fuzzy
 msgid "The file already exists. Do you want to overwrite it?"
-msgstr "O mapa xa existe. Desexa sobrescribilo?"
+msgstr "O ficheiro xa existe. Desexa sobrescribilo?"
 
 #: src/editor2/editor_controller.cpp:439
-#, fuzzy
 msgid "No random map generators found."
-msgstr "Non se atoparon xeradores aleatorios de mapas"
+msgstr "Non se atoparon xeradores aleatorios de mapas."
 
 #: src/editor2/editor_controller.cpp:450
 msgid "Map creation failed."
@@ -310,12 +312,6 @@ msgstr ""
 msgid "Custom setting"
 msgstr "Opción personalizada"
 
-#~ msgid "There was a format error while loading the file:"
-#~ msgstr "Ocorreu un erro de formato mentres se cargaba o ficheiro:"
-
-#~ msgid "There was a wml error while loading the file:"
-#~ msgstr "Ocorreu un erro de wml mentres se cargaba o ficheiro:"
-
 #~ msgid "Click to paste."
 #~ msgstr "Prema para pegar."
 
@@ -324,6 +320,12 @@ msgstr "Opción personalizada"
 
 #~ msgid "There are unsaved changes in the map"
 #~ msgstr "Hai cambios sen gardar no mapa"
+
+#~ msgid "There was a format error while loading the file:"
+#~ msgstr "Ocorreu un erro de formato mentres se cargaba o ficheiro:"
+
+#~ msgid "There was a wml error while loading the file:"
+#~ msgstr "Ocorreu un erro de wml mentres se cargaba o ficheiro:"
 
 #~ msgid "Settings"
 #~ msgstr "Preferencias"

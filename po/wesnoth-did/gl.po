@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: gl_ES\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-12-09 22:13+0100\n"
-"PO-Revision-Date: 2008-11-21 02:25+0100\n"
+"PO-Revision-Date: 2008-12-08 15:58+0100\n"
 "Last-Translator: Leandro Regueiro <leandro DOT regueiro AT gmail DOT com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "MIME-Version: 1.0\n"
@@ -85,7 +85,7 @@ msgstr "Mantemento da Campaña"
 #. [about]
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:41
 msgid "Artwork and Graphics Design"
-msgstr ""
+msgstr "Traballo artístico e deseño gráfico"
 
 #. [scenario]: id=Descent_into_Darkness
 #. [editor_group]: id=did
@@ -846,8 +846,9 @@ msgstr "Gorak Cole"
 
 #. [side]
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:91
+#, fuzzy
 msgid "Free Undead"
-msgstr ""
+msgstr "Selección libre"
 
 #. [objective]: condition=win
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:109
@@ -895,13 +896,12 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:207
-#, fuzzy
 msgid ""
 "Two necromancers are at the cave entrance! Up yer axes, boys, if ye dinna' "
 "want tae be a walking pile o' bones."
 msgstr ""
-"Dous necrófitos están na entrada da cova! Matadeos coas túas hachas, "
-"rapaces, se non queredes ser unha pila de osos."
+"Dous nigromantes están na entrada da cova! Machados arriba, rapaces, se non "
+"queredes ser unha morea de ósos andante."
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:211
@@ -1105,7 +1105,7 @@ msgid ""
 "narrow place in the river men call the Longlier and Elves call the Arkan-"
 "thoria, they manage to surround the humans and force a fight."
 msgstr ""
-"O dano infrinxido por Malin e Darken Volk nos pasados anos forza ós caciques "
+"O dano inflixido por Malin e Darken Volk nos últimos anos forza ós caciques "
 "locais xeralmente divididos a unha única posición. Rara vez tentan rodear os "
 "humanos e forzalos a loitar."
 
@@ -1625,9 +1625,8 @@ msgstr "Garda"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:216
-#, fuzzy
 msgid "I feel the book is very close, somewhere to the northwest."
-msgstr "Sinto que o libro está moi perto nalgún lugar ó noroeste."
+msgstr "Sinto que o libro está moi preto, nalgures ó noroeste de aquí."
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:282
@@ -2021,7 +2020,7 @@ msgstr "Rogo que me sinto o suficiente forte como para completar o hechizo."
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:325
 #, fuzzy
 msgid "I'm ready. Do it."
-msgstr "perdeuse a súa descrición XML."
+msgstr "Combinar cara a abai_xo"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:361
@@ -2133,7 +2132,7 @@ msgstr "AAAAAAAaaaaaaaggggggghhhhhhh!!!!...... . . . ."
 #. [scenario]: id=Endless_Night
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:6
 msgid "Endless Night"
-msgstr ""
+msgstr "Noite sen fin"
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:14
@@ -2369,10 +2368,11 @@ msgstr ""
 msgid "staff"
 msgstr "bastón"
 
+# sling=tirafonda FIXADO
 #. [attack]: type=impact
 #: data/campaigns/Descent_Into_Darkness/units/frontier-baroness.cfg:102
 msgid "sling"
-msgstr "tirapedras"
+msgstr "tirafonda"
 
 # aparición horrorosa FIXADO
 #. [unit_type]: id=Ghast, race=undead

@@ -1,15 +1,15 @@
-# translation of hu-low.po to Hungarian
+# translation of hu-low_1.5(frozen).po to Hungarian
 # Fábián Balázs <nermal93@freemail.hu>, 2008.
 # Kelemen Zoltán <kelemen_zoltan@freemail.hu>, 2008.
 # Gabor Udvari <gabor.udvari@gmail.com>, 2008.
 msgid ""
 msgstr ""
-"Project-Id-Version: hu-low\n"
+"Project-Id-Version: hu-low_1.5(frozen)\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-12-09 22:13+0100\n"
-"PO-Revision-Date: 2008-09-30 17:06+0200\n"
-"Last-Translator: Gabor Udvari <gabor.udvari@gmail.com>\n"
-"Language-Team: Hungarian\n"
+"PO-Revision-Date: 2008-12-07 13:16+0100\n"
+"Last-Translator: kele <kelemen_zoltan@freemail.hu>\n"
+"Language-Team: Hungarian <en@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -25,7 +25,7 @@ msgstr "WL"
 #. [campaign]: id=LOW
 #: data/campaigns/Legend_of_Wesmere/_main.cfg:49
 msgid "Legend of Wesmere"
-msgstr "Wesmere Legendája"
+msgstr "Wesmere legendája"
 
 #. [campaign]: id=LOW
 #: data/campaigns/Legend_of_Wesmere/_main.cfg:52
@@ -36,6 +36,11 @@ msgid ""
 "\n"
 "(Intermediate level, 17 playable scenarios.)"
 msgstr ""
+"Kalenz nagyúr története, aki összefogta népét a Nagy Kontinensre való "
+"Második Ork Betörés után és a legismertebb hőssé vált a tündék feljegyzett "
+"történelmében.\n"
+"\n"
+"(Középhaladó szint, 17 játszható küldetés.)"
 
 #. [campaign]: id=LOW
 #: data/campaigns/Legend_of_Wesmere/_main.cfg:53
@@ -70,7 +75,7 @@ msgstr "Nagyúr"
 #. [about]
 #: data/campaigns/Legend_of_Wesmere/_main.cfg:64
 msgid "Creator and Lead Designer"
-msgstr "Készítő és fő tervező"
+msgstr "Készítő és főtervező"
 
 #. [entry]
 #: data/campaigns/Legend_of_Wesmere/_main.cfg:66
@@ -80,7 +85,7 @@ msgstr ""
 #. [about]
 #: data/campaigns/Legend_of_Wesmere/_main.cfg:73
 msgid "Campaign Maintenance"
-msgstr "Hadjárat karbantartás"
+msgstr "Hadjárat-karbantartás"
 
 #. [about]
 #: data/campaigns/Legend_of_Wesmere/_main.cfg:89
@@ -117,6 +122,7 @@ msgstr "Gyökeres változás"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:28
+#, fuzzy
 msgid ""
 "The great elvish hero Kalenz was born in a quiet green wood in Lintanir on "
 "the fringes of the Great Northern Forest. Though not of noble birth, he "
@@ -124,6 +130,11 @@ msgid ""
 "gained him more than usual respect among elders normally inclined to pay "
 "little heed to anyone younger than a century old."
 msgstr ""
+"A nagy tünde hős, Kalenz egy csendes zöld erdőben született Lintanirban, a "
+"Nagy Északi-erdőség peremén. Bár nem nemesi származású volt, már korán "
+"tehetségesnek bizonyult népe művészeteiben. Gyors felfogása a szokásosnál "
+"nagyobb tiszteletet ébresztett az idősek körében, akik általában hajlamosak "
+"voltak tudomást sem venni azokról, akik egy évszázadnál fiatalabbak."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:33
@@ -133,6 +144,10 @@ msgid ""
 "establishing themselves south of the Great River, and the known world was "
 "changing more rapidly than it had for a thousand years before."
 msgstr ""
+"Talán az idősek megérezték, hogy a változó idők rugalmasabb szellemet "
+"igényelnek. Ezek voltak azok az évek, amikor a Zöld-szigetről érkező emberek "
+"letelepedtek a Nagy-folyótól délre, és az ismert világ gyorsabban változott, "
+"mint korábban ezer év alatt."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:38
@@ -143,6 +158,11 @@ msgid ""
 "Kalenz's long childhood were a golden age, and the last time of untroubled "
 "peace."
 msgstr ""
+"Némely változás jó volt. A tündék, mintha egy hosszú álomból ébredtek volna, "
+"elkezdtek gyarapodni. De némely változás nagyon rossz volt, és ezek közül a "
+"legszörnyűbb a romboló, fagyilkos orkok érkezése volt. Kalenz hosszú "
+"gyerekkorának évei aranykorszaknak, és az utolsó háborítatlan béke "
+"korszakának számítottak."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:45
@@ -156,6 +176,13 @@ msgid ""
 "This is the story of Kalenz, and of the Elves in the days of the humans in "
 "Wesnoth."
 msgstr ""
+"A tündék sosem voltak harcias faj, és nem voltak felkészülve az orkok elleni "
+"elkerülhetetlen harcra. Kalenz akkor vált nagykorúvá, amikor a wesmere-i "
+"Erlornas az első ork portyázókkal harcolt. Az elkövetkező évtizedben az "
+"orkok támadásai sűrűsödtek, és árnyékuk minden korábbinál jobban elborította "
+"a tündéket.\n"
+"\n"
+"Ez a történet Kalenzről, és a tündékről szól a wesnothi emberek idejében."
 
 #. [unit]: type=Elvish Captain, id=Velon
 #: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:80
@@ -164,21 +191,18 @@ msgstr "Velon"
 
 #. [trait]: id=aged
 #: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:88
-#, fuzzy
 msgid "aged"
-msgstr "Prager"
+msgstr "idős"
 
 #. [unit]: type=Orcish Warrior, id=T'baran
 #: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:119
-#, fuzzy
 msgid "T'baran"
-msgstr "T'bhan"
+msgstr "T'baran"
 
 #. [unit]: type=Orcish Warrior, id=Wrulf
 #: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:155
-#, fuzzy
 msgid "Wrulf"
-msgstr "Grugl"
+msgstr "Wrulf"
 
 #. [unit]: type=Orcish Warrior, id=Qumseh
 #: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:191
@@ -194,13 +218,11 @@ msgstr "Graur-Tan"
 
 #. [debug_message]
 #: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:263
-#, fuzzy
 msgid "campaign started"
-msgstr "Hadjárat karbantartás"
+msgstr "a hadjárat elkezdődött"
 
 #. [unit]: type=Elvish Fighter, id=Anduilas
 #: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:280
-#, fuzzy
 msgid "Anduilas"
 msgstr "Andulias"
 
@@ -272,69 +294,60 @@ msgstr "Túlléped a körök számát"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:317
-#, fuzzy
 msgid "Orcs are pressing on us from all directions! To arms!"
-msgstr "Nézzétek, mennyi ork közeledik mindenhonnan! Fegyverbe!"
+msgstr "Orkok közelednek minden irányból! Fegyverbe!"
 
 #. [message]: id=Velon
 #: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:321
-#, fuzzy
 msgid ""
 "Hold, Kalenz. The Ka'lian council should discuss our response. Maybe we can "
 "reach an agreement with them!"
 msgstr ""
-"Ne heveskedj Kalenz! A Tanács majd megtárgyalja az ügyet. Lehet, hogy meg "
-"tudunk velük egyezni!"
+"Ne heveskedj Kalenz! A Ka'lian Tanácsnak kell határoznia a válaszunk felől. "
+"Lehet, hogy meg tudunk velük egyezni!"
 
 #. [message]: id=Qumseh
 #: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:325
-#, fuzzy
 msgid "Surrender or die, tree-shaggers!"
-msgstr "Behódoltok vagy meghaltok, nyamvadt tündék!"
+msgstr "Behódoltok vagy meghaltok, fa-lakók!"
 
 #. [message]: id=Velon
 #: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:329
-#, fuzzy
 msgid "They are too many. We have no choice but to submit!"
-msgstr ""
-"Túl sokan vannak. Félek hogy nincs más választásunk, be kell hódolnunk!"
+msgstr "Túl sokan vannak. Nincs más választásunk, be kell hódolnunk!"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:333
-#, fuzzy
 msgid ""
 "Elves must never surrender to these foul beasts! Who will fight them beside "
 "me?"
-msgstr "A tündék sosem hódolnak be ezeknek az ocsmány vadaknak! Ki tart velem?"
+msgstr ""
+"A tündék sosem hódolhatnak be ezeknek az ocsmány vadaknak! Ki küzd ellenük "
+"az oldalamon?"
 
 #. [message]: id=Landar
 #: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:337
-#, fuzzy
 msgid "We will follow you, Kalenz - but where can we go? We are surrounded!"
-msgstr "Mi követünk téged, de hova menjünk? Be vagyunk kerítve!"
+msgstr "Mi követünk téged, Kalenz - de hova menjünk? Be vagyunk kerítve!"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:341
-#, fuzzy
 msgid ""
 "We must reach the elvish council in Ka'lian and enlist their help to "
 "recapture our home. Let's storm the orcs' southern outpost before more "
 "enemies arrive!"
 msgstr ""
 "El kell jutnunk Ka'lianba, a Tünde Tanács segítségét kell kérjük, hogy "
-"visszaszerezzük az otthonunkat. Délnyugatra kell mennünk, csatlakozni a "
-"testvéreinkhez. Rohanjuk le a déli állomáshelyüket mielőtt még többen "
-"jönnének!"
+"visszaszerezzük az otthonunkat. Rohanjuk le az orkok déli állomáshelyét "
+"mielőtt még többen jönnének!"
 
 #. [message]: id=Anduilas
 #: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:345
-#, fuzzy
 msgid "Very well, Kalenz - lead us!"
 msgstr "Rendben Kalenz, vezess minket!"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:361
-#, fuzzy
 msgid "You trifled with the wrong elf!"
 msgstr "Rossz tündével kezdtél ki!"
 
@@ -351,7 +364,7 @@ msgstr "Megadjuk magunkat!"
 #. [message]: id=Graur-Tan
 #: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:390
 msgid "Did I mention that we take no prisoners? Die!"
-msgstr "Nem említettem, hogy nem ejtünk foglyokat. Halál rájuk!"
+msgstr "Említettem, hogy nem ejtünk foglyokat? Halál rájuk!"
 
 #. [message]: id=Velon
 #: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:394
@@ -359,12 +372,14 @@ msgid ""
 "Kalenz was right and I was wrong. Go; join Kalenz while yet you can. I and "
 "the remaining elders will cover your retreat as best we may."
 msgstr ""
+"Kalenznek volt igaza és én tévedtem. Menjetek, csatlakozzatok Kalenzhez, "
+"amíg tudtok! Én és a többi idős fedezzük visszavonulásotokat, amíg csak "
+"tudjuk."
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:413
-#, fuzzy
 msgid "We have escaped them, but we will not forget. We shall return!"
-msgstr "Most el kell mennünk, de nem felejtünk. Vissza fogunk térni!"
+msgstr "Megmenekültünk tőlük, de nem felejtünk. Vissza fogunk térni!"
 
 #. [message]: id=Graur-Tan
 #: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:417
@@ -374,7 +389,7 @@ msgstr "Nem juthattok messzire! Utánuk!"
 #. [message]: id=Velon
 #: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:448
 msgid "Flee, Kalenz...our hopes ride with you..."
-msgstr ""
+msgstr "Menekülj Kalenz... benned van minden reményünk..."
 
 #. [scenario]: id=02_Hostile_mountains
 #: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:4
@@ -390,6 +405,11 @@ msgid ""
 "of a great migration south. There was no choice but to make a detour through "
 "territory the elves would rather have avoided..."
 msgstr ""
+"Kalenz és csapata éppen csak kitörtek az ork gyűrűből, mikor észrevették, "
+"hogy a Ka'lianba vezető közvetlen utat már megszállták az orkok. Kalenz "
+"otthonának lerohanása úgy tűnt, csak egy kis része volt egy hatalmas "
+"népvándorlásnak dél felé. Nem volt más lehetőség, mint kerülőt tenni olyan "
+"területen, amit a tündék inkább elkerültek volna..."
 
 #. [side]: type=Troll Hero, type=Great Troll, id=Grugl
 #: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:66
@@ -398,15 +418,13 @@ msgstr "Grugl"
 
 #. [objective]: condition=win
 #: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:114
-#, fuzzy
 msgid "Kalenz must reach the signpost"
 msgstr "Kalenz eléri az útjelzőt"
 
 #. [objective]: condition=win
 #: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:118
-#, fuzzy
 msgid "Defeat Grugl"
-msgstr "Győzd le Grubr-ot!"
+msgstr "Legyőzöd Gruglot."
 
 #. [objective]: condition=lose
 #: data/campaigns/Legend_of_Wesmere/scenarios/11_Battle_of_the_book.cfg:95
@@ -418,29 +436,27 @@ msgstr "Győzd le Grubr-ot!"
 #: data/campaigns/Legend_of_Wesmere/scenarios/09_Bounty_hunters.cfg:145
 #: data/campaigns/Legend_of_Wesmere/scenarios/17_Breaking_the_siege.cfg:195
 msgid "Death of Olurf"
-msgstr "Olurf elesik"
+msgstr "Olurf elesik."
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:149
-#, fuzzy
 msgid ""
 "I had hoped to avoid these paths... The eastern way is through dwarvish "
 "territory and is shorter. I pray the dwarves will grant us safe passage, "
 "since the other path is through troll territory..."
 msgstr ""
 "Reméltem, hogy elkerülhetjük ezeket az ösvényeket... A rövidebb keleti "
-"ösvény törp területen visz át. Remélem a törpök biztosítják a biztonságos "
-"átkelést, mivel a másik út troll terület..."
+"ösvény törp területen visz át. Imádkozom, hogy a törpök biztosítsák a sima "
+"áthaladást, mivel a másik út troll területen  vezet keresztül..."
 
 #. [message]: id=Olurf
 #: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:153
-#, fuzzy
 msgid ""
 "Not even in yer dreams, elf. These are dwarvish lands, and troubles we want "
 "no part of nip at yer heels. Get out and stay out!"
 msgstr ""
-"Még álmodban sem tünde! Ez törp föld. Nem akarunk itt látni sem téged, sem a "
-"fajtádat. Kerüljetek!"
+"Ne is álmodj ilyet, tünde! Ez törp föld, nem akarjuk, hogy veletek együtt a "
+"problémáitokat is bejöjjenek. Távozzatok, és maradjatok kívül!"
 
 #. [message]: id=Landar
 #: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:157
@@ -449,62 +465,51 @@ msgid ""
 "orcs have come down from the north like a flood; if we squabble among "
 "ourselves they will feast on our discord."
 msgstr ""
+"A mi problémánk a tiéd is, akár tetszik, akár nem. Az orkok számlálatlanul "
+"özönlenek északról; a viszályunk csak az ő malmukra hajtja a vizet."
 
 #. [message]: id=Olurf
 #: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:161
-#, fuzzy
 msgid ""
 "Bah. More smooth words and trickery, by my beard. We know yer kind...and who "
 "needs yer help anyway, weaklings? Leave now, or feel my axe! That same kiss "
 "of steel will greet all intruders. Anyone who sets foot on the eastern bank "
 "o' this river will rue the day he was born!"
 msgstr ""
-"Megént egy tünde trükk, hmm? Ismerjük a fajtátokat. Ki kérte a "
-"segítségeteket, nyámnyilák? Takarodjatok azonnal, vagy megkóstoltatom "
-"veletek a bárdomat! De ez vár mindenki másra is, aki beteszi a lábát a "
-"területünkre. Mi senkitől sem ijedünk meg. Aki a folyó keleti partjára teszi "
-"a lábát, megkeserüli."
+"Bah. Még több mézesmázos szó és trükk, a szakállamra! Ismerjük a "
+"fajtátokat... és különben is ki kérte a segítségeteket, nyámnyilák? "
+"Takarodjatok azonnal, vagy megkóstoltatom veletek a bárdomat! De ugyanez a "
+"fémes csók fogad minden betolakodót. Bárki, aki a folyó keleti partjára "
+"teszi a lábát, keserűn fogja megemlegetni a napot, mikor megszületett!"
 
 #. [message]: id=Landar
 #: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:165
-#, fuzzy
 msgid "I cannot see how trolls could be any less friendly."
 msgstr "Kétlem, hogy a trollok ennél barátságtalanabbak lennének."
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:169
-#, fuzzy
 msgid ""
 "Hmm... Perhaps the dwarves' intransigence can serve our purpose. Onwards, "
 "and no matter what you do, do NOT step on the eastern band of the river!"
 msgstr ""
-"Hmm... Talán a törpök még segítségünkre LEHETNEK. Előre, nem számít, mit "
-"tesztek, de NE lépjetek a folyó keleti partjára!"
+"Hmm... Talán a törpök határvédelme még hasznunkra válhat. Előre, és nem "
+"számít, mit tesztek, de NE lépjetek a folyó keleti partjára!"
 
-# Suta
 #. [message]: speaker=second_unit
 #: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:182
-#, fuzzy
 msgid "Payback time!"
-msgstr "Most megbosszullak!"
+msgstr "Ütött az utolsó órád!"
 
-# darn1=Stoppol
-# darn2->Darn it!= a fene egy meg,
-# valamiféle negatív jelző valószínűleg megállja a helyét
 #. [message]: id=Olurf
 #: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:196
-#, fuzzy
 msgid "Those stinking trolls ha' stepped on OUR land! Attack!"
-msgstr "Ezek a pofátlan trollok beléptek a MI földünkre! Támadás!"
+msgstr "Ezek a büdös trollok beléptek a MI földünkre! Támadás!"
 
-# darn1=Stoppol
-# darn2->Darn it!= a fene egy meg,
-# valamiféle negatív jelző valószínűleg megállja a helyét
 #. [message]: id=Olurf
 #: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:246
-#, fuzzy
 msgid "Those lying elves have stepped on OUR land! Attack!"
-msgstr "Ezek a pofátlan tündék beléptek a MI földünkre! Támadás!"
+msgstr "Ezek a hazug tündék beléptek a MI földünkre! Támadás!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:291
@@ -513,9 +518,8 @@ msgstr "Megcsináltuk! Irány Wesmere!"
 
 #. [message]: id=Olurf
 #: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:295
-#, fuzzy
 msgid "Crazy elves! But at least they felled a few trolls before they left."
-msgstr "Bolond tündék! De legalább segítettek a trollok ellen"
+msgstr "Bolond tündék! De legalább levágtak néhány trollt, mielőtt távoztak."
 
 #. [scenario]: id=03_Kalian
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian.cfg:7
@@ -528,7 +532,7 @@ msgid ""
 "Kalenz and his band finally made it to the Ka'lian, but things were not as "
 "they had hoped..."
 msgstr ""
-"Kalenz és csapata végül elérték Ka'liant, de a dolgok nem úgy alakultak "
+"Kalenz és csapata végül elérték Ka'liant, de a dolgok nem úgy alakultak, "
 "ahogy várták..."
 
 #. [unit]: type=Orcish Warlord, id=Mutaf-uru
@@ -557,25 +561,18 @@ msgstr "Legyőzöd minden ellenséged"
 #. [objective]: condition=lose
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian.cfg:164
 #: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_last_stand.cfg:253
-#, fuzzy
 msgid "Death of Galtrid"
 msgstr "Galtrid elesik"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian.cfg:190
 msgid "Oh no! The Ka'lian is under attack! We must help them!"
-msgstr "Ó nem! Ka'liant megtámadták! Segítenünk kell!"
+msgstr "Ó nem! A Ka'liant megtámadták! Segítenünk kell!"
 
-# Az élharcosnál jobb a katona szerintem
-# nermal93
-# még jobb az elitosztag szerintem
-# kele
-# szerintem azt kérdezi, hogy jön-e utánunk nagyobb sereg
-#  - udi
 #. [message]: id=Galtrid
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian.cfg:194
 msgid "Are you our army's vanguard? Hurry, we are under attack!"
-msgstr "A seregünk előhírnöke vagy? Gyorsan, támadás ért bennünket!"
+msgstr "A seregünk előörse vagytok? Siessetek, támadás ért bennünket!"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian.cfg:198
@@ -584,6 +581,9 @@ msgid ""
 "talk later; we must defeat these orcs together, or at least hold them off "
 "long enough for the humans to come to our aid."
 msgstr ""
+"Nem, északkeletről menekültünk az otthonunkat ért támadás miatt. Az idő "
+"szűkös, később beszéljünk; közösen kell legyőznünk ezeket az orkokat, vagy "
+"legalább elég ideig távoltartani őket, amíg az emberek segítségünkre sietnek."
 
 #. [message]: id=Galtrid
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian.cfg:202
@@ -591,8 +591,8 @@ msgid ""
 "Then you have not heard. King Haldric has broken the treaty. The humans will "
 "not come to our help!"
 msgstr ""
-"Akkor nem halottad. Haldric király felrúgta a megállapodást. Az emberek nem "
-"jönnek segíteni!"
+"Ezek szerint nem hallottad. Haldric király felrúgta a megállapodást. Az "
+"emberek nem jönnek segíteni!"
 
 #. [message]: id=Mutaf-uru
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian.cfg:206
@@ -601,7 +601,6 @@ msgstr "Mi ez? Még több hús a katonáknak? Elkapni őket!"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian.cfg:213
-#, fuzzy
 msgid "We won! The Ka'lian is safe!"
 msgstr "Győztünk! Ka'lian most már biztonságban van!"
 
@@ -622,24 +621,30 @@ msgstr ""
 msgid ""
 "Galtrid, your men are weary from long combat. Mine are fresher; I'll go."
 msgstr ""
+"Galtrid, embereid kimerültek a hosszú csatától. Az enyéim frissebbek, majd "
+"én megyek."
 
 #. [message]: id=Huraldur
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian.cfg:251
+#, fuzzy
 msgid "Hurry! We were near overwhelmed as I left."
 msgstr ""
+"Siessetek! Már közel voltunk, hogy eltiporjanak minket, mikor eljöttem."
 
 #. [message]: id=Galtrid
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian.cfg:255
-#, fuzzy
 msgid ""
 "Yes, go, Kalenz, I'll guard the Ka'lian till our army returns from the front."
 msgstr ""
-"Menj Kalenz, megvédem Ka'liant amíg a hadseregünk visszatér a frontról."
+"Rendben, menj te, Kalenz, én őrzöm Ka'liant, amíg hadseregünk visszatér a "
+"frontról."
 
 #. [message]: speaker=unit
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian.cfg:266
 msgid "We die, but more come after us, Orcs will rule all!"
 msgstr ""
+"Meghalunk, de többen jönnek utánunk, az orkok uralkodnak majd mindenek "
+"felett!"
 
 #. [scenario]: id=04_Elvish_Treasury
 #: data/campaigns/Legend_of_Wesmere/scenarios/04_Elvish_Treasury.cfg:4
@@ -648,10 +653,11 @@ msgstr "A Tünde Kincstár"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/04_Elvish_Treasury.cfg:20
-#, fuzzy
 msgid ""
 "Kalenz and his forces raced to relieve the siege of the Elvish Treasury..."
-msgstr "Kalenz és csapata sietve közeledtek a Tünde Kincstárhoz..."
+msgstr ""
+"Kalenz és csapata vágtattak, hogy felszabadítsák a Tünde Kincstárt az ostrom "
+"alól..."
 
 #. [side]: type=Saurian Ambusher, id=Shurm
 #: data/campaigns/Legend_of_Wesmere/scenarios/04_Elvish_Treasury.cfg:40
@@ -685,26 +691,23 @@ msgstr "Cleodil elesik"
 #: data/campaigns/Legend_of_Wesmere/scenarios/04_Elvish_Treasury.cfg:132
 msgid ""
 "It seems that we are too late. The Treasury has fallen to the Saurians...."
-msgstr "Úgy tűnik, elkéstünk. A kincstárat elfoglalták a gyíkok..."
+msgstr "Úgy tűnik, elkéstünk. A kincstárt elfoglalták a gyíkok..."
 
 #. [message]: id=Huraldur
 #: data/campaigns/Legend_of_Wesmere/scenarios/04_Elvish_Treasury.cfg:136
-#, fuzzy
 msgid "and I see the remains of the garrison has been taken prisoner."
-msgstr "és láttam, hogy a maradék védőket foglyul ejtették."
+msgstr "és úgy látom, a megmaradt védőket foglyul ejtették."
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/04_Elvish_Treasury.cfg:140
-#, fuzzy
 msgid ""
 "We must free them and make these saurians pay. Attack and leave no one alive!"
 msgstr ""
-"Ki kell szabadítanunk őket. Megfizetnek a gyíkok! Támadjatok, és senkit se "
-"hagyjatok életben!"
+"Ki kell szabadítanunk őket, és megfizettetni ezt a gyíkokkal! Támadás, "
+"senkit se hagyjatok életben!"
 
 #. [message]: id=Shurm
 #: data/campaigns/Legend_of_Wesmere/scenarios/04_Elvish_Treasury.cfg:144
-#, fuzzy
 msgid ""
 "More elves are coming! Too late, we've taken all your gold and we'll get "
 "more gold from the orcs for helping them out! "
@@ -738,11 +741,11 @@ msgid ""
 "We are free! My lord Kalenz, from this day forward we are your sworn "
 "followers. And there is that which you should hear about the treasure."
 msgstr ""
+"Szabadok vagyunk! Kalenz uram, ettől a naptól kezdve felesküdött követőid "
+"vagyunk. Van valami, amit tudnod kell a kincsről."
 
-# garrison a helyes, garison angol szó nincs is
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/04_Elvish_Treasury.cfg:240
-#, fuzzy
 msgid "Without their leaders, the saurians flee in panic. Free the garrison!"
 msgstr ""
 "A vezérük nélkül a gyíkok fejvesztetten menekülnek. Szabadítsuk ki a "
@@ -750,43 +753,38 @@ msgstr ""
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/04_Elvish_Treasury.cfg:251
-#, fuzzy
 msgid ""
 "We have defeated the saurians and freed the garrison, but our gold is gone. "
 msgstr ""
-"Legyőztük a gyíkokat és kiszabadítottuk a foglyokat, de az aranyunk "
-"elveszett."
+"Legyőztük a gyíkokat és kiszabadítottuk a foglyokat, de az aranyunk eltűnt."
 
-# dastone
 #. [message]: id=Cleodil
 #: data/campaigns/Legend_of_Wesmere/scenarios/04_Elvish_Treasury.cfg:255
-#, fuzzy
 msgid ""
 "The saurians have looted our treasury. They were particularly interested in "
 "finding something they called 'dastone'. I am sorry, my lord Kalenz, I could "
 "not understand their distorted speech very well."
 msgstr ""
-"A gyíkok nyilvánvalóan elvitték a kincseinket az ő kincstárukba. Különösen "
-"valamiféle \"küvet\" kerestek. Valójában nem is tudom, mi lehet az."
+"A gyíkok kifosztották a kincstárunkat. Különösen érdekelte őket valami, amit "
+"úgy hívtak, hogy a \"kű\". Sajnálom Kalenz uram, nem nagyon tudtam megérteni "
+"az eltorzult beszédüket."
 
 #. [message]: type=Elvish Archer,Elvish Scout,Elvish Shaman,Elvish Fighter,Elvish Marshal,Elvish Champion,Elvish Avenger,Elvish Sharpshooter
 #: data/campaigns/Legend_of_Wesmere/scenarios/04_Elvish_Treasury.cfg:259
-#, fuzzy
 msgid "The war with the Orcs goes poorly. We are going to need that gold back!"
 msgstr ""
-"Úgy hallottam, hogy a háború az orkokkal nem megy valami jól. Tényleg "
-"szükségünk van arra az aranyra!"
+"A háború az orkokkal nem megy valami jól. Szükségünk lesz arra az aranyra!"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/04_Elvish_Treasury.cfg:263
-#, fuzzy
 msgid ""
 "We will hunt down those saurians and retrieve our gold. More, we must teach "
 "them that it is lethal folly to raid us, else they will plague us like rats. "
 "Let's hurry. "
 msgstr ""
-"Le fogjuk vadászni azokat a gyíkokat, és visszaszerezzük az aranyunkat. "
-"Keservesen fogják megfizetni azt, hogy kikezdtek velünk! Siessünk!"
+"Le fogjuk vadászni azokat a gyíkokat, és visszaszerezzük az aranyunkat. Sőt, "
+"meg kell tanítanunk őket, hogy halálos könnyelműség megtámadni minket, "
+"különben el fognak lepni minket, mint a patkányok. Siessünk!"
 
 #. [scenario]: id=05_Saurian_Treasury
 #: data/campaigns/Legend_of_Wesmere/scenarios/05_Saurian_Treasury.cfg:4
@@ -799,11 +797,13 @@ msgid ""
 "Elvish scouts found the trail of the Saurian war party without difficulty. "
 "The way back to the saurians' treasury was clear..."
 msgstr ""
+"A tünde felderítők gond nélkül megtalálták a gyíkcsapat nyomát. Az út a gyík "
+"kincstárhoz tiszta volt..."
 
 #. [side]: type=Saurian Ambusher, id=Hraurg
 #: data/campaigns/Legend_of_Wesmere/scenarios/05_Saurian_Treasury.cfg:37
 msgid "Hraurg"
-msgstr "Laril"
+msgstr "Hraurg"
 
 #. [side]: type=Saurian Ambusher, id=Spahr
 #. [side]: type=Saurian Flanker, id=Spahr
@@ -819,7 +819,6 @@ msgstr "Bejutsz a Gyík Kincstárba, és megszerzed az aranyat"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/05_Saurian_Treasury.cfg:126
-#, fuzzy
 msgid ""
 "There they are. They have dumped our gold in their treasury. We must strike "
 "quickly and leave with the gold before they bring in reinforcements"
@@ -840,7 +839,7 @@ msgstr ""
 #: data/campaigns/Legend_of_Wesmere/scenarios/05_Saurian_Treasury.cfg:149
 msgid ""
 "We got to the treasury. It was much easier than we thought...What's this?"
-msgstr "Elértük a kincstárat. Sokkal könnyebb volt mint gondoltuk... Mi ez?"
+msgstr "Elértük a kincstárat. Sokkal könnyebb volt, mint gondoltuk... Mi ez?"
 
 #. [unit]: id=Swirh, type=Saurian Ambusher, role=need_to_kill
 #: data/campaigns/Legend_of_Wesmere/scenarios/05_Saurian_Treasury.cfg:154
@@ -849,24 +848,21 @@ msgstr "Swirh"
 
 #. [unit]: id=Cfir, type=Saurian Skirmisher, role=need_to_kill
 #: data/campaigns/Legend_of_Wesmere/scenarios/05_Saurian_Treasury.cfg:167
-#, fuzzy
 msgid "Cfir"
-msgstr "Cfrul"
+msgstr "Cfir"
 
 #. [unit]: id=Kfir, type=Saurian Augur, role=need_to_kill
 #: data/campaigns/Legend_of_Wesmere/scenarios/05_Saurian_Treasury.cfg:180
-#, fuzzy
 msgid "Kfir"
-msgstr "Kfalru"
+msgstr "Kfir"
 
 #. [unit]: id=Hrish, type=Saurian Ambusher, role=need_to_kill
 #: data/campaigns/Legend_of_Wesmere/scenarios/05_Saurian_Treasury.cfg:195
 msgid "Hrish"
-msgstr ""
+msgstr "Hrish"
 
 #. [message]: id=Swirh
 #: data/campaigns/Legend_of_Wesmere/scenarios/05_Saurian_Treasury.cfg:211
-#, fuzzy
 msgid ""
 "Stupid elves thought the treasury would be unguarded! Guards, slay these "
 "intruders!"
@@ -877,34 +873,32 @@ msgstr ""
 #. [objective]: condition=win
 #: data/campaigns/Legend_of_Wesmere/scenarios/05_Saurian_Treasury.cfg:217
 msgid " New Objective: Defeat the units guarding the treasury."
-msgstr ""
+msgstr " Új feladat: győzd le a kincset őrző egységeket."
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/05_Saurian_Treasury.cfg:258
-#, fuzzy
 msgid "We have recovered our gold."
 msgstr "Visszaszereztük az aranyunkat."
 
 #. [message]: type=Elvish Archer,Elvish Scout,Elvish Shaman,Elvish Fighter,Elvish Marshal,Elvish Champion,Elvish Avenger,Elvish Sharpshooter
 #: data/campaigns/Legend_of_Wesmere/scenarios/05_Saurian_Treasury.cfg:263
-#, fuzzy
 msgid ""
 "We have recovered much more than our gold. These saurians would seem to have "
 "taken up robbery as a vocation!"
 msgstr ""
-"Nemcsak azt, többet szereztünk, mint ami a miénk volt. Úgy tűnik a gyíkok "
-"sok aranyat raboltak, s nemcsak tőlünk!"
+"Nemcsak azt, többet szereztünk, mint ami a miénk volt. Úgy tűnik a gyíkok a "
+"rablást hivatásszerűen űzik."
 
 #. [message]: id=Spahr
 #: data/campaigns/Legend_of_Wesmere/scenarios/05_Saurian_Treasury.cfg:268
-#, fuzzy
 msgid ""
 "They took all our gold! Quickly, place ambushers on all trails from here to "
 "Wesmere. I will give 500 gold to whoever kills their leader. They must not "
 "escape."
 msgstr ""
-"Elvették minden aranyunkat! Gyorsan, állíts fel őrségeket mindenütt! 500 "
-"aranyat adok annak, aki megöli vezérüket. Nem szabad meglépniük!"
+"Elvették minden aranyunkat! Gyorsan, küldj rajtaütőket minden ösvényre "
+"innentől Wesmere-ig! 500 aranyat adok annak, aki megöli a vezérüket. Nem "
+"szabad meglépniük!"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/05_Saurian_Treasury.cfg:273
@@ -914,18 +908,14 @@ msgid ""
 "swiftly back to Wesmere. The Saurians will likely be infesting the direct "
 "route, so we will detour to the north. "
 msgstr ""
-"A szerencse forgandó. Fogjuk az aranyat és térjünk vissza Wesmere-be. Mivel "
-"a gyíkok lesni fognak ránk, kerülőt kell tennünk északra."
+"A szerencse forgandó. Visszaszereztük az aranyat, térjünk vissza gyorsan "
+"Wesmere-be. A gyíkok valószínűleg megszállják a közvetlen utat, ezért "
+"kerülnünk kell északra."
 
-# szerintem acquittance-kiegyenlítés akar lenni, csak franciásan írták
-# ennek van értelme - most a törpök vannak bajban
-# Udi:
-# szerintem acquaintance, azaz ismerős akart lenni
 #. [scenario]: id=06_Acquaintance_in_Need
 #: data/campaigns/Legend_of_Wesmere/scenarios/06_Acquaintance_in_Need.cfg:4
-#, fuzzy
 msgid "Acquaintance in Need"
-msgstr "Ismerős a kelepcében"
+msgstr "Ismerős a pácban"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/06_Acquaintance_in_Need.cfg:19
@@ -934,20 +924,18 @@ msgid ""
 "To evade the saurians blocking the eastern approaches to Wesmere, Kalenz and "
 "his war-band moved to enter Wesmere Forest from a different direction ..."
 msgstr ""
-"Mivel a gyíkok lezárták a Wesmerebe vezető utat, Kalenz és csapata északnak "
-"indult, hogy onnan érjék el Wesmere erdejét..."
+"Hogy kikerüljék a gyík blokádot a Wesmere-be vezető keleti úton, Kalenz és "
+"csapata észak felé ment, hogy a Wesmere-erdőbe másik irányból lépjen be."
 
 #. [side]: type=Orcish Warlord, id=Urug-Tar
 #: data/campaigns/Legend_of_Wesmere/scenarios/06_Acquaintance_in_Need.cfg:62
-#, fuzzy
 msgid "Urug-Tar"
-msgstr "Urug-Telfar"
+msgstr "Urug-Tar"
 
 #. [side]: type=Troll Warrior, id=Traur
 #: data/campaigns/Legend_of_Wesmere/scenarios/06_Acquaintance_in_Need.cfg:117
-#, fuzzy
 msgid "Traur"
-msgstr "Laril"
+msgstr "Traur"
 
 #. [objective]: condition=win
 #: data/campaigns/Legend_of_Wesmere/scenarios/06_Acquaintance_in_Need.cfg:146
@@ -956,54 +944,48 @@ msgstr "Legyőzöd az ellenséges vezéreket"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/06_Acquaintance_in_Need.cfg:185
-#, fuzzy
 msgid ""
 "What's this? It appears the orcs have surrounded a dwarvish enclave. And by "
 "the sound of the bellowing I hear, I think our old friend, Olurf, is here."
 msgstr ""
-"Mi ez? Úgy tűnik mintha az orkok körülvettek volna egy törp területet. "
-"Szerintem ez a régi barátunk Olurf."
+"Mi ez? Úgy tűnik mintha az orkok körülvettek volna egy törp területet. És a "
+"bömbölés alapján, amit hallok, szerintem régi barátunk, Olurf is itt van."
 
 #. [message]: id=Olurf
 #: data/campaigns/Legend_of_Wesmere/scenarios/06_Acquaintance_in_Need.cfg:189
-#, fuzzy
 msgid ""
 "You again? Maybe ye were not completely wrong when ye predicted the orcs "
 "would attack us. We ha' been forced from our home and are now surrounded."
 msgstr ""
-"Megint azok a tündék. Lehet, hogy mégsem tévedtetek, amikor az ork támadást "
-"emlegettétek. Kiszorítottak minket az otthonainkból, s most körbe vagyunk "
-"véve."
+"Megint ti? Lehet, hogy mégsem tévedtetek, amikor előre láttátok, hogy az "
+"orkok megtámadnak minket. Kiszorítottak minket az otthonainkból, s most "
+"körbe vagyunk véve."
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/06_Acquaintance_in_Need.cfg:193
 msgid "Let us give them aid - it's clear they need it!"
-msgstr ""
+msgstr "Segítsünk rajtuk - egyértelmű, hogy szükségük van rá!"
 
 #. [message]: id=Landar
 #: data/campaigns/Legend_of_Wesmere/scenarios/06_Acquaintance_in_Need.cfg:197
-#, fuzzy
 msgid ""
 "Help them? They would not even let us pass through their land to avoid the "
 "trolls, remember?"
 msgstr ""
-"Segíteni? Még át sem engedtek bennünket a földjükön, hogy elkerüljük a "
+"Segíteni? Még a földjükön sem engedtek át bennünket, hogy elkerüljük a "
 "trollokat, emlékszel?"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/06_Acquaintance_in_Need.cfg:201
-#, fuzzy
 msgid ""
 "Our enemy is the orcs, not the dwarves. Besides, the orcs are in our way. "
 "Olurf, we cannot let you have all the fun here! "
 msgstr ""
 "A mi ellenségeink az orkok, és nem a törpök. Amellett, az orkok az utunkban "
-"állnak. Segítenünk kell a törpöknek. Olurf, nem hagyhatjuk, hogy egyedül "
-"szórakozz az orkokkal!"
+"állnak. Olurf, nem hagyhatjuk, hogy egyedül szórakozz az orkokkal!"
 
 #. [message]: id=Olurf
 #: data/campaigns/Legend_of_Wesmere/scenarios/06_Acquaintance_in_Need.cfg:205
-#, fuzzy
 msgid "For an elf, you think like a dwarf! I think I like you. (for an elf)"
 msgstr ""
 "Tünde létedre egészen törpösen gondolkodsz. Azt hiszem kedvellek (tünde "
@@ -1011,13 +993,11 @@ msgstr ""
 
 #. [message]: id=Olurf
 #: data/campaigns/Legend_of_Wesmere/scenarios/06_Acquaintance_in_Need.cfg:213
-#, fuzzy
 msgid "The orcs ha' been defeated. My lord, we are in your debt."
-msgstr "Az orkok vesztettek. Uram, az adósaid vagyunk."
+msgstr "Az orkokat legyőztük. Uram, az adósaid vagyunk."
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/06_Acquaintance_in_Need.cfg:217
-#, fuzzy
 msgid ""
 "We must put aside our differences and ally against the orcish menace. Olurf, "
 "join us!"
@@ -1031,10 +1011,11 @@ msgid ""
 "Dwarves, ally with elves? I owe ye a debt, but my kin willna' be happy at "
 "the thought."
 msgstr ""
+"Törpök szövetkezzenek tündékkel? Tartozok ugyan neked, de népem nem fog "
+"repesni a gondolattól."
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/06_Acquaintance_in_Need.cfg:225
-#, fuzzy
 msgid ""
 "There will be a big fight with the orcs in Wesmere very soon. If you can "
 "cover our flank to the north, I will pay you 400 gold."
@@ -1048,25 +1029,25 @@ msgid ""
 "A proper contract for good money? That's a different matter; I'm sure I can "
 "find some o' my people willing to fight on those terms!"
 msgstr ""
+"Egy tisztes szerződés jó pénzért? Az már más; biztos vagyok benne, hogy "
+"néhány földim hajlandó lesz küzdeni ilyen feltételek mellett!"
 
 #. [message]: id=Landar
 #: data/campaigns/Legend_of_Wesmere/scenarios/06_Acquaintance_in_Need.cfg:233
-#, fuzzy
 msgid ""
 "What? Kalenz, are you out of your mind? Surely you will not throw away 400 "
 "gold on this scheming mercenary! "
 msgstr ""
-"Micsoda? Elment az eszed, Kalenz? 400 aranyat csak úgy odadobsz ennek a "
-"fickónak?!"
+"Micsoda? Elment az eszed, Kalenz? Csak nem fogsz 400 aranyat rábízni erre az "
+"intrikus zsoldosra!"
 
 #. [message]: id=Olurf
 #: data/campaigns/Legend_of_Wesmere/scenarios/06_Acquaintance_in_Need.cfg:237
-#, fuzzy
 msgid ""
 "Where there's a contract, our honor is involved. We will be there to cover "
 "your northern flank or else I will return your gold!"
 msgstr ""
-"Uram, mi nem vagyunk csirkefogók! Természetesen ott leszünk, s fedezzük az "
+"Ahol szerződés van, ott a becsületünk a tét. Ott leszünk, hogy fedezzük az "
 "északi szárnyatokat, különben visszaszolgáltatom az aranyat."
 
 #. [message]: id=Kalenz
@@ -1077,8 +1058,9 @@ msgid ""
 "think he knows that if he does not honor his contract, next time we will not "
 "be there to come to his aid."
 msgstr ""
-"Én is úgy gondolom. Azt hiszem megértette, hogy ha nem lesz ott, egy "
-"következő alkalommal mi sem fogunk segíteni."
+"Én hiszek neki. A törpök... nyersek... a mi mércénkkel mérve, de nem "
+"hazugok. Azt hiszem tudja, hogy ha nem lesz ott, egy következő alkalommal mi "
+"sem fogunk segíteni."
 
 #. [scenario]: id=07_Elves_last_stand
 #: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_last_stand.cfg:5
@@ -1092,6 +1074,9 @@ msgid ""
 "apparently withdrawn to regroup after their defeats. Kalenz and his band "
 "returned just in time..."
 msgstr ""
+"Az út vissza Wesmere-be meglepően eseménytelen volt, az orkok láthatóan "
+"visszavonultak rendezni soraikat a vereség után. Kalenz és csapata éppen "
+"időben érkezett..."
 
 #. [unit]: type=Elvish Marshal, id=El'Isomithir
 #: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_last_stand.cfg:71
@@ -1120,25 +1105,22 @@ msgstr "Grubr"
 
 #. [event]
 #: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_last_stand.cfg:284
-#, fuzzy
 msgid "River Telfar"
-msgstr "Urug-Telfar"
+msgstr "Telfar-folyó"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_last_stand.cfg:321
-#, fuzzy
 msgid ""
 "The orcs have pushed us back to the Ka'lian. There is no way out. We must "
 "win here!"
 msgstr ""
-"Az orkok visszaszorítottak minket Ka'lianba. Nincs más megoldás. Itt kell "
+"Az orkok visszaszorítottak minket a Ka'lianhoz. Nincs kiút. Itt kell "
 "győznünk!"
 
 #. [message]: id=Galtrid
 #: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_last_stand.cfg:325
-#, fuzzy
 msgid "This is our final stand. If they take the Ka'lian, all is lost!"
-msgstr "Ez az utolsó állásunk, ha Ka'liant elfoglalják, minden elveszik."
+msgstr "Ez az utolsó állásunk, ha a Ka'liant elfoglalják, minden elveszik."
 
 #. [message]: id=Grubr
 #: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_last_stand.cfg:331
@@ -1147,13 +1129,12 @@ msgstr "Felmorzsoljuk ezeket a gyenge tündéket és megszerezzük a kűt!"
 
 #. [option]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_last_stand.cfg:336
-#, fuzzy
 msgid ""
 "I see the orcish army is big but consists mostly of inexperienced fighters. "
 "This should not take too long...."
 msgstr ""
 "Ahogy látom, az ork hadsereg nagy, ámde javarészt tapasztalatlan harcosokból "
-"áll. Ez nem tart túl sokáig..."
+"áll. Ez nem fog túl sokáig tartani..."
 
 #. [option]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_last_stand.cfg:428
@@ -1166,7 +1147,6 @@ msgstr ""
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_last_stand.cfg:473
-#, fuzzy
 msgid ""
 "We still haven't defeated the orcs, and our troops and supplies are "
 "exhausted. This is the end!"
@@ -1186,31 +1166,29 @@ msgstr "Pirorr"
 
 #. [message]: id=Pirorr
 #: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_last_stand.cfg:501
-#, fuzzy
 msgid ""
 "The elves have beaten us and they did not use da stone. Maybe they don't "
 "have it? Great Chief will not like bad news!"
 msgstr ""
 "A tündék megvertek minket anélkül, hogy használták volna a küvet? Talán "
-"náluk sem volt? A király nem fog örülni a rossz híreknek!"
+"náluk sem volt? A nagy vezér nem fog örülni a rossz híreknek!"
 
 #. [message]: id=Galtrid
 #: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_last_stand.cfg:510
 msgid "Kalenz, we are again in your debt. You returned just in time."
-msgstr ""
+msgstr "Kalenz, megint tartozunk neked. Még idejében visszaérkeztél."
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_last_stand.cfg:515
 msgid "And we have what's left of the elvish treasury with us!"
-msgstr ""
+msgstr "És elhoztuk a tünde kincstár maradékát!"
 
 #. [message]: id=unit
 #: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_last_stand.cfg:545
-#, fuzzy
 msgid ""
 "Aargh! I should have stayed in the mountains instead of joining the orcs!"
 msgstr ""
-"Aargh! A hegyekben kellett volna maradnom, ahelyett, hogy csatlakoztam az "
+"Aargh! A hegyekben kellett volna maradnom ahelyett, hogy csatlakoztam az "
 "orkokhoz."
 
 #. [message]: id=Kalenz
@@ -1218,10 +1196,8 @@ msgstr ""
 msgid "Orcs, death is all you will find in this forest!"
 msgstr "Orkok, csak a halálotokat lelitek meg az erdeinkben!"
 
-# da stone
 #. [message]: speaker=unit
 #: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_last_stand.cfg:567
-#, fuzzy
 msgid "I die without getting da stone?"
 msgstr "Meghalok anélkül, hogy megszereztük volna a küvet?"
 
@@ -1262,7 +1238,6 @@ msgstr "Merhun"
 
 #. [message]: id=Olurf
 #: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_last_stand_utils.cfg:98
-#, fuzzy
 msgid "Did ye think we'd let you have all the fun wi' the orcs by yerselves?"
 msgstr "Gondolod, hogy hagynánk, hogy egyedül szórakozz az orkokkal?"
 
@@ -1273,29 +1248,25 @@ msgstr "Ez Olurf! Sikerült neki!"
 
 #. [message]: id=Olurf
 #: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_last_stand_utils.cfg:106
-#, fuzzy
 msgid "I told ye I'd be here"
 msgstr "Mondtam, hogy itt leszek."
 
 #. [message]: id=Landar
 #: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_last_stand_utils.cfg:110
-#, fuzzy
 msgid "It's not much of an army he is bringing with him, though"
 msgstr "Habár nem valami jelentős sereggel érkezett..."
 
 #. [message]: id=Olurf
 #: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_last_stand_utils.cfg:114
-#, fuzzy
 msgid ""
 "Not much of an army? These are dwarves with mighty axes, each worth three of "
 "you and your silly plinking bows!"
 msgstr ""
-"Nem valami jelentős? Ezek törpök félelmetes bárdokkal vannak felfegyverezve, "
-"s nem íj hurcolászó tündék!"
+"Nem valami jelentős? Ezek félelmetes bárdokkal felfegyverkezett törpök, "
+"mindegyikük három magadfajtával és buta pengő íjával ér fel."
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_last_stand_utils.cfg:118
-#, fuzzy
 msgid "Olurf, is that all the dwarves you could find? Was the gold not enough?"
 msgstr "Olurf, csak ennyi törpöt tudtál toborozni? Talán kevés volt az arany?"
 
@@ -1308,14 +1279,13 @@ msgid ""
 "my clan should join us in a few days."
 msgstr ""
 "Ők nem az aranyért harcolnak, hanem a móka kedvéért. Többen is lennénk, ha "
-"egy harcosom nem ódzkodik a tündék megsegítésétől. Akárhogy is, a klánom pár "
-"nap múlva csatlakozik hozzánk."
+"az embereim elhallgatták volna, hogy a tündéket segítjük meg. De a klánom "
+"pár nap múlva csatlakozik hozzánk."
 
 #. [message]: id=Landar
 #: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_last_stand_utils.cfg:126
-#, fuzzy
 msgid "In a few days? That's too late! We want our gold back!"
-msgstr "Pár nap múlva? Akkor már túl késő lesz! Akkor vissza az aranyakkal!"
+msgstr "Pár nap múlva? Akkor már túl késő lesz! Akkor vissza az arannyal!"
 
 #. [message]: id=Olurf
 #: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_last_stand_utils.cfg:130
@@ -1329,7 +1299,6 @@ msgstr "Miféle költségeket?"
 
 #. [message]: id=Olurf
 #: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_last_stand_utils.cfg:138
-#, fuzzy
 msgid ""
 "It's an ancient dwarvish custom to buy the warriors a few drinks before the "
 "battle... So minus expenses that's about even."
@@ -1340,56 +1309,52 @@ msgstr ""
 #. [message]: id=Landar
 #: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_last_stand_utils.cfg:142
 msgid "That explains why they are so reckless in battle..."
-msgstr "Ez megmagyarázza miért oly vakmerőek a csatában..."
+msgstr "Ez megmagyarázza miért olyan vakmerőek a csatában..."
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_last_stand_utils.cfg:146
-#, fuzzy
 msgid "... Enough, gentlemen, we have a battle to fight!"
-msgstr "... Rendben van uraim, az ellenség arra van!"
+msgstr "... Elég, uraim, egy csata vár ránk!"
 
 #. [message]: id=Galtrid
 #: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_last_stand_utils.cfg:157
-#, fuzzy
 msgid ""
 "Kalenz, though very young you have been most tested in battle of any of us. "
 "Will you take the command of all our troops?"
 msgstr ""
-"Kalenz, te vagy a legtapasztaltabb parancsnokunk. Át akarod venni az "
-"egységeink felett az irányítást?"
+"Kalenz, habár nagyon fiatal vagy, közülünk te vagy a legtapasztaltabb a "
+"harcban. Elvállalod csapataink parancsnokságát?"
 
 #. [option]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_last_stand_utils.cfg:163
 msgid "You do me great honor. I will strive to be worthy of it."
-msgstr ""
+msgstr "Nagyon megtisztelsz. Igyekezni fogok megszolgálni a bizalmat."
 
 #. [option]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_last_stand_utils.cfg:173
 msgid "You do me great honor, but I am not yet ready for this."
-msgstr ""
+msgstr "Nagyon megtisztelsz, de nem állok rá készen."
 
 #. [scenario]: id=08_Council_of_hard_choices
 #: data/campaigns/Legend_of_Wesmere/scenarios/08_Council_of_hard_choices.cfg:4
-#, fuzzy
 msgid "Council of hard choices"
-msgstr "A Tanács nehéz döntés előtt"
+msgstr "Nehéz döntések tanácsa"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/08_Council_of_hard_choices.cfg:24
-#, fuzzy
 msgid ""
 "@Iradia\n"
 "\n"
 "Kalenz, you have won a great victory! Wesmere is safe. But...for what cause "
 "have you invited a dwarf to the elvish council? This is most unusual!"
 msgstr ""
-"Nagy győzelmet arattunk! Wesmere most már biztonságban van! Kalenz, sokkal "
-"tartozunk neked, de ki ez a törp barátod, akit meghívtál a tünde tanácsba? "
-"Ez merőben szokatlan!"
+"@Iradia\n"
+"\n"
+"Kalenz, nagy győzelmet arattál! Wesmere biztonságban van! De... milyen okból "
+"hívtál meg egy törpöt a tünde tanácsba? Ez merőben szokatlan!"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/08_Council_of_hard_choices.cfg:30
-#, fuzzy
 msgid ""
 "Kalenz\n"
 "\n"
@@ -1397,14 +1362,14 @@ msgid ""
 "well earned a place in this meeting. The war that comes upon us must be met "
 "by all in Wesnoth, Elves, Dwarves and Humans."
 msgstr ""
-"Uram , ő Olurf. Ő és a törpjei velünk harcoltak, és igazán kiérdemelték, "
-"hogy helyük legyen ezen a tanácskozáson, ahol döntenünk kell a következő "
-"lépésről. A döntésünk mindenkit érint Wesnothban, tündéket, törpöket, "
-"embereket."
+"Kalenz\n"
+"\n"
+"Uraim, ő Olurf. Ő és a törpjei velünk harcoltak, és igazán kiérdemelték, "
+"hogy helyük legyen ezen a tanácskozáson. A háború, ami közeleg, mindenkit "
+"érint Wesnothban, tündéket, törpöket és embereket."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/08_Council_of_hard_choices.cfg:37
-#, fuzzy
 msgid ""
 "@Uripur\n"
 "\n"
@@ -1413,14 +1378,16 @@ msgid ""
 "arrived on our shore he was very humble, but now his arrogance knows no "
 "bounds. He believes the orcs will not dare to fight him."
 msgstr ""
-"Az embereket kihagynám ebből. Haldric király felrúgta a megállapodásunkat, s "
-"minden küldöttségünket visszautasította. Amikor ő érkezett a szigetre, "
-"igencsak megtört volt, de most önteltsége nem ismer határokat. Azt hiszi, "
-"hogy az orkok nem merik őt megtámadni."
+"@Uripur\n"
+"\n"
+"Az embereket hagyd ki ebből. Haldric király felrúgta a megállapodásunkat, "
+"amit tizenegy éve kötöttünk, s minden küldöttségünket dolgavégezetlen küldte "
+"vissza. Amikor ő érkezett partjainkra, igencsak megtört volt, de most "
+"önteltsége nem ismer határokat. Azt hiszi, hogy az orkok nem merik őt "
+"megtámadni."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/08_Council_of_hard_choices.cfg:43
-#, fuzzy
 msgid ""
 "@Kalenz\n"
 "\n"
@@ -1428,9 +1395,12 @@ msgid ""
 "defeated. We must take the fight to them, recover our lost lands and smash "
 "their great horde beyond possibility that it will threaten us again."
 msgstr ""
-"Uraim, az orkokat kiszorítottuk Wesmereből, de korántsem semmisítettük meg "
-"őket. Továbbra is küzdenünk kell ellenük, visszaszerezni elvesztett "
-"területeinket, s egyszer és mindenkorra le kell velük számolnunk."
+"@Kalenz\n"
+"\n"
+"Uraim, az orkokat kiszorítottuk Wesmere-ből, de korántsem győztük le őket. A "
+"harcot az ő területükön kell folytatnunk,  visszaszerezni elvesztett "
+"területeinket, és csapást kell mérni a hatalmas hordájukra, hogy lehetőségük "
+"se legyen újabb fenyegetésre."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/08_Council_of_hard_choices.cfg:49
@@ -1442,10 +1412,16 @@ msgid ""
 "in fighting outside our forests. We have already shown the orcs that "
 "attacking us is folly; the prudent course would be to rebuild our strength."
 msgstr ""
+"@Legmir\n"
+"\n"
+"Túl sok tünde halt meg már így is. Hogy lecsaphassunk az orkokra, minden "
+"megmaradt harcosunkat be kéne vetnünk a végső csapásba. És nem vagyunk olyan "
+"képzettek az erdeinken kívüli harcban. Már megmutattuk az orkoknak, hogy "
+"megtámadni minket ostobaság; a legbölcsebb, amit tehetünk, hogy "
+"újjászervezzük erőinket."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/08_Council_of_hard_choices.cfg:55
-#, fuzzy
 msgid ""
 "@Landar\n"
 "\n"
@@ -1453,9 +1429,12 @@ msgid ""
 "fighting ever since we were forced out of our home country, in all kinds of "
 "lands. And, we are willing to die in order to defeat foul orcs!"
 msgstr ""
-"Hiszen mi egyfolytában harcolunk, s nemcsak erdőben, azóta, hogy "
-"kiszorítottak minket az északi otthonainkból. Akár meghalni is készek "
-"vagyunk, hogy ezek az aljas orkok eltűnjenek a föld színéről."
+"@Landar\n"
+"\n"
+"Mi, akik Kalenzet követjük, megmutattuk, hogy ez lehetséges. Mi egyfolytában "
+"harcolunk mindenféle terepen azóta, hogy kiszorítottak minket "
+"szülőföldünkről. Akár meghalni is készek vagyunk, hogy legyőzzük ezeket az "
+"ocsmány orkokat."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/08_Council_of_hard_choices.cfg:61
@@ -1466,17 +1445,18 @@ msgid ""
 "Our answer is still no. Prepare our defenses as best you can, but do not "
 "renew offensive war. This is the council's decision"
 msgstr ""
-"A válaszunk egyelőre nem. Erősítsük meg a védelmünket, de ne kezdjünk "
-"támadni. Ez a Tanács határozata."
+"@Iridia\n"
+"\n"
+"A válaszunk még mindig nem. Készítsétek fel a védelmünket, amennyire csak "
+"tudjátok, de ne kezdjétek újra a támadóháborút. Ez a Tanács határozata."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/08_Council_of_hard_choices.cfg:65
 msgid "After leaving the council, our friends talked in private..."
-msgstr ""
+msgstr "A tanácsot elhagyva, barátaink maguk között beszéltek..."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/08_Council_of_hard_choices.cfg:73
-#, fuzzy
 msgid ""
 "@Kalenz\n"
 "\n"
@@ -1484,8 +1464,11 @@ msgid ""
 "if we give them the time! We must have some other sort of help. Olurf, can "
 "we perhaps make a war-pact with the dwarves?"
 msgstr ""
-"Ez őrület! Az orkok visszanyerik erejüket, s újra támadni fognak. Máshonnan "
-"kell segítséget kérnünk. Olurf, köthetnénk esetleg üzletet a törpökkel?"
+"@Kalenz\n"
+"\n"
+"Ez őrület! Az orkok vissza fogják nyerni erejüket, s újra támadni fognak, ha "
+"hagyunk rá nekik időt! Másfajta segítségre van szükségünk. Olurf, köthetnénk "
+"esetleg egy paktumot a törpökkel?"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/08_Council_of_hard_choices.cfg:79
@@ -1498,23 +1481,26 @@ msgid ""
 "powerful mage in the mountains who helped our people before. Maybe he will "
 "aid us again."
 msgstr ""
-"Sajnos a népemnek fenntartásai vannak veletek tündékkel. Esetleg "
-"próbálkozhatnánk valami mással. Úgy hallottam, hogy él egy mágus valahol a "
-"hegyek közt, akinek rengeteg hasznos holmija van. Azt beszélik, már segített "
-"nekünk valamikor. Talán újra segíthet rajtunk."
+"@Olurf\n"
+"\n"
+"Nem hiszem, hogy lehetne, Kalenz. Népem nagyon gyanakvó veletek, tündékkel. "
+"Esetleg próbálkozhatnánk valami mással. Úgy hallottam, hogy él egy mágus "
+"valahol a hegyek közt, aki már segített korábban a népemnek. Talán újra "
+"segíthet rajtunk."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/08_Council_of_hard_choices.cfg:85
-#, fuzzy
 msgid ""
 "@Kalenz\n"
 "\n"
 "And where do we find this mage, if he exists?"
-msgstr "És hol találjuk ezt a mágust, ha tényleg létezik?"
+msgstr ""
+"@Kalenz\n"
+"\n"
+"És hol találjuk meg ezt a mágust, ha tényleg létezik?"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/08_Council_of_hard_choices.cfg:91
-#, fuzzy
 msgid ""
 "@Olurf\n"
 "\n"
@@ -1522,42 +1508,48 @@ msgid ""
 "anyone for free. Thoria is very dangerous, especially for elves. Even "
 "dwarves and trolls dinna' go there lightly."
 msgstr ""
-"Nem könnyű megtalálni. Thoria hegyei közt él, és soha senkinek nem segít "
-"ingyen. Thoria egyébként igen veszélyes hely, különösen tündéknek. Még a "
-"trollok és törpök is elkerülik."
+"@Olurf\n"
+"\n"
+"Nem lesz könnyű megtalálni. Thoria hegyei közt él, és soha senkinek nem "
+"segít ingyen. Thoria igen veszélyes hely, különösen tündéknek. Még a trollok "
+"és törpök sem szívesen járnak arra."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/08_Council_of_hard_choices.cfg:97
-#, fuzzy
 msgid ""
 "@Kalenz\n"
 "\n"
 "I think the orcs will be in no position to attack us for some time. Maybe we "
 "should go see this mage. Olurf, can you take us there?"
 msgstr ""
-"Azt hiszem az orkokat egy időre visszavetettük, nem fognak támadni. Meg kéne "
-"keresnünk ezt a mágust. Olurf, elvezetsz hozzá?"
+"@Kalenz\n"
+"\n"
+"Azt hiszem az orkok egy ideig nem lesznek olyan helyzetben, hogy támadjanak. "
+"Talán meg kéne keresnünk ezt a mágust. Olurf, el tudsz vezetni minket hozzá?"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/08_Council_of_hard_choices.cfg:103
-#, fuzzy
 msgid ""
 "@Olurf\n"
 "\n"
 "I think I can. But dangerous this will be!"
-msgstr "Hát, elvezethetlek. De piszok veszélyes út lesz!"
+msgstr ""
+"@Olurf\n"
+"\n"
+"Úgy gondolom, igen. De veszélyes lesz!"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/08_Council_of_hard_choices.cfg:109
-#, fuzzy
 msgid ""
 "@Kalenz\n"
 "\n"
 "Very well. We shall leave our best troops and gold here in case the orcs "
 "attack Wesmere again."
 msgstr ""
-"Rendben, induljunk, de legjobb harcosainkat és az aranyunkat itt kell "
-"hagynunk a védekezéshez, ha az orkok mégis támadnának."
+"@Kalenz\n"
+"\n"
+"Rendben. Legjobb harcosainkat és az aranyunkat itt kell hagynunk a "
+"védekezéshez, ha az orkok mégis megtámadnák Wesmere-t."
 
 #. [scenario]: id=09_Bounty_hunters
 #: data/campaigns/Legend_of_Wesmere/scenarios/09_Bounty_hunters.cfg:5
@@ -1573,10 +1565,11 @@ msgid ""
 "before starting off on the long and dangerous trip to the great mage of "
 "Thoria. They would soon find that peril was closer than they had reckoned."
 msgstr ""
-"Így aztán mivel Wesmere látszólag biztonságban van, Kalenz és Olurf elegendő "
-"sereget és készletet hátrahagyva megindultak hosszú, veszélyekkel teli "
-"útjukra Thoria nagy mágusa felé... A vész azonban sokkal közelebb volt, mint "
-"gondolták."
+"Abban a hitben, hogy Wesmere látszólagos biztonsága drága képzelgésnek "
+"bizonyulhat, Kalenz és Olurf elegendő egységet és eszközt hagyott hátra, "
+"hogy erősen védelmezzék, mielőtt elindultak a nagy és veszedelmes útra, mely "
+"a nagy mágushoz vezetett Thoriába. Hamarosan rájöttek, hogy a veszély "
+"közelebb van, mint hitték."
 
 #. [side]: type=Saurian Flanker, id=Huurgh
 #: data/campaigns/Legend_of_Wesmere/scenarios/09_Bounty_hunters.cfg:42
@@ -1605,16 +1598,14 @@ msgstr ""
 
 #. [message]: id=Huurgh
 #: data/campaigns/Legend_of_Wesmere/scenarios/09_Bounty_hunters.cfg:241
-#, fuzzy
 msgid "Yesss! It's the elves who stole our gold! The bounty is mine!"
 msgstr ""
-"Ott vannak! Azok a tündék fosztották ki a kincseskamránkat! Enyém a jutalom!"
+"Iggggen! Ők azok a tündék, akik ellopták az aranyunkat! Enyém a vérdíj!"
 
 #. [message]: id=Shhar
 #: data/campaigns/Legend_of_Wesmere/scenarios/09_Bounty_hunters.cfg:245
-#, fuzzy
 msgid "I saw them first, fool! The bounty is all mine."
-msgstr "Viccelsz? Enyém a jutalom!"
+msgstr "Én láttam meg először őket, ostoba! A jutalom mind az enyém!"
 
 #. [message]: id=Olurf
 #: data/campaigns/Legend_of_Wesmere/scenarios/09_Bounty_hunters.cfg:249
@@ -1623,33 +1614,31 @@ msgstr "Miről beszélnek ezek?"
 
 #. [message]: id=Landar
 #: data/campaigns/Legend_of_Wesmere/scenarios/09_Bounty_hunters.cfg:253
-#, fuzzy
 msgid ""
 "It would seem the saurians put a bounty on our heads for having the "
 "effrontery to take our gold back after they stole it. Are you interested?"
 msgstr ""
-"A gyíkok nyilván vérdíjat tűztek ki a fejünkre, miután visszaszereztük az "
-"aranyunkat, amit ők loptak el tőlünk. Érdekel a vérdíj?"
+"Úgy fest a gyíkok vérdíjat tűztek ki a fejünkre, amiért arcátlanul "
+"visszaszereztük az aranyunkat, amit ők előbb elloptak tőlünk. Érdekel a "
+"vérdíj?"
 
 #. [message]: id=Olurf
 #: data/campaigns/Legend_of_Wesmere/scenarios/09_Bounty_hunters.cfg:257
-#, fuzzy
 msgid ""
 "No, but my axe is interested in some saurian heads! They ha' been too "
 "friendly with the orcs for my liking!"
 msgstr ""
-"Nem, de a bárdom már szomjazik a gyíkok vérére. Túl jó barátok ezek és az "
-"orkok."
+"Nem, de a bárdomat már érdekeli néhány gyíkfej. Túl barátságosak voltak az "
+"orkokkal meglátásom szerint!"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/09_Bounty_hunters.cfg:261
-#, fuzzy
 msgid ""
 "Remember, we are here on a mission. We will fight these saurians if we must, "
 "but our mission is to get to Thoria."
 msgstr ""
 "Ne felejtsd el, hogy küldetésben vagyunk. Csak akkor harcolunk a gyíkokkal, "
-"ha muszáj, de a célunk Thoria."
+"ha muszáj, de a célunk: elérni Thoriaba."
 
 #. [message]: id=Olurf
 #: data/campaigns/Legend_of_Wesmere/scenarios/09_Bounty_hunters.cfg:265
@@ -1657,19 +1646,17 @@ msgid ""
 "Crossing the river without a bridge? We dwarves know water is a very "
 "dangerous thing!"
 msgstr ""
-"Átgázolunk a folyón híd nélkül? Mi törpök tudjuk, hogy a víz veszélyes dolog."
+"Átgázolunk a folyón? Híd nincs? Mi, törpök ismerjük a vizet: veszélyes dolog."
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/09_Bounty_hunters.cfg:269
-#, fuzzy
 msgid ""
 "Indeed, this river is, I believe, Arkan-Thoria. There are fell legends about "
 "it. May be they are but children's tales...still, be very careful when you "
 "cross it."
 msgstr ""
-"Ráadásul ez a folyó, azt hiszem ez az Arkan-Thoria. Nagyon rossz híre van, "
-"rengeteg rémtörténetet hallottam róla, úgyhogy óvatosan gázoljunk át, bár "
-"lehet, hogy csak tündérmesék azok a történetek."
+"Hogyne, főleg ez a folyó, azt hiszem ez az Arkan-Thoria. Rémmesék keringenek "
+"róla. Talán csak gyermekmesék... mégis, óvatosan keljetek át rajta."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Legend_of_Wesmere/scenarios/09_Bounty_hunters.cfg:275
@@ -1677,6 +1664,8 @@ msgid ""
 "Before Kalenz left the Ka'lian he had ordered $left_behind to stay and guard "
 "it. Kalenz is from now on able to recruit Dwarves."
 msgstr ""
+"Mielőtt Kalenz elhagyta Ka'liant $left_behind egységet hagyott hátra védelem "
+"gyanánt. Kalenz mostantól képes törpöket toborozni."
 
 #. [message]: speaker=unit
 #: data/campaigns/Legend_of_Wesmere/scenarios/09_Bounty_hunters.cfg:290
@@ -1685,16 +1674,14 @@ msgstr "Túlvagyunk rajta! Irány a Thoria."
 
 #. [message]: id=Olurf
 #: data/campaigns/Legend_of_Wesmere/scenarios/09_Bounty_hunters.cfg:294
-#, fuzzy
 msgid "At last!"
 msgstr "Végre!"
 
 #. [message]: id=Landar
 #: data/campaigns/Legend_of_Wesmere/scenarios/09_Bounty_hunters.cfg:298
-#, fuzzy
 msgid "We'll need to settle things with these saurians once and for all!"
 msgstr ""
-"Igazán elrendezhetnénk a dolgot ezekkel a gyíkokkal. Egyszer, s mindenkorra!"
+"El kell rendeznünk a dolgot ezekkel a gyíkokkal egyszer, s mindenkorra!"
 
 #. [unit]: type=Sea Serpent, id=Sealurr
 #: data/campaigns/Legend_of_Wesmere/scenarios/09_Bounty_hunters.cfg:319
@@ -1733,9 +1720,8 @@ msgstr "Kalimar"
 
 #. [unit]: type=Cuttle Fish, id=Alkamar
 #: data/campaigns/Legend_of_Wesmere/scenarios/09_Bounty_hunters.cfg:405
-#, fuzzy
 msgid "Alkamar"
-msgstr "Aldar"
+msgstr "Alkamar"
 
 #. [scenario]: id=10_Cliffs_of_Thoria
 #: data/campaigns/Legend_of_Wesmere/scenarios/10_Cliffs_of_Thoria.cfg:4
@@ -1744,7 +1730,6 @@ msgstr "Thoria sziklái"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/10_Cliffs_of_Thoria.cfg:20
-#, fuzzy
 msgid ""
 "Leaving Arkan-Thoria behind, Kalenz and his band ventured into the dangerous "
 "mountains of Thoria..."
@@ -1759,50 +1744,45 @@ msgstr "Tafrul"
 
 #. [side]: type=Gryphon, id=Gryphon Leader
 #: data/campaigns/Legend_of_Wesmere/scenarios/10_Cliffs_of_Thoria.cfg:73
-#, fuzzy
 msgid "Gryphon Leader"
-msgstr "Griff király"
+msgstr "Griff vezér"
 
 #. [objective]: condition=win
 #: data/campaigns/Legend_of_Wesmere/scenarios/10_Cliffs_of_Thoria.cfg:105
 msgid "Reach the signpost with Kalenz"
-msgstr "Eléred az útjelzőt Kalenzzel"
+msgstr "Kalenz elér az útjelzőhöz"
 
 #. [message]: id=Landar
 #: data/campaigns/Legend_of_Wesmere/scenarios/10_Cliffs_of_Thoria.cfg:152
-#, fuzzy
 msgid "I can hardly see with all that mist around, but I can sense danger."
-msgstr "Nem látok jól ebben a ködben, de valami veszélyt érzek."
+msgstr "Alig látok ebben a ködben, de valami veszélyt érzek."
 
 #. [message]: id=Olurf
 #: data/campaigns/Legend_of_Wesmere/scenarios/10_Cliffs_of_Thoria.cfg:156
-#, fuzzy
 msgid ""
 "Told ye it would be no picnic excursion, elf-boy. Are ye lily-livered to "
 "continue?"
 msgstr ""
-"Megmondtam, hogy ez nem egy vasárnapi séta lesz tünde fiú! Nagyon félsz a "
-"folytatástól?"
+"Megmondtam, hogy ez nem egy vasárnapi piknik lesz tünde fiú! Inadba szállt a "
+"bátorságod?"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/10_Cliffs_of_Thoria.cfg:160
-#, fuzzy
 msgid ""
 "Gentlemen, don't squabble. We cannot go back now. But be watchful; I don't "
 "like the feel of this country one bit."
 msgstr ""
-"Uraim, csak higgadtan! Nem fordulhatunk vissza! De legyünk óvatosak, valami "
-"rossz előérzet kerülget."
+"Uraim, ne civódjanak! Nem fordulhatunk vissza! De legyünk éberek, egy "
+"csöppet sem tetszik ennek a vidéknek a kinézete."
 
 #. [message]: id=Cleodil
 #: data/campaigns/Legend_of_Wesmere/scenarios/10_Cliffs_of_Thoria.cfg:164
-#, fuzzy
 msgid ""
 "I, too, feel we are in great danger. We should stay close together and move "
 "very carefully."
 msgstr ""
-"Én is úgy érzem, hogy nagy veszélyben vagyunk. Valószínűleg közel kéne "
-"maradnunk egymáshoz és óvatosan haladnunk."
+"Én is úgy érzem, hogy nagy veszélyben vagyunk. Közel kéne maradnunk "
+"egymáshoz és nagyon óvatosan haladnunk."
 
 #. [message]: speaker=unit
 #: data/campaigns/Legend_of_Wesmere/scenarios/10_Cliffs_of_Thoria.cfg:183
@@ -1811,9 +1791,8 @@ msgstr "Előre!"
 
 #. [message]: id=Olurf
 #: data/campaigns/Legend_of_Wesmere/scenarios/10_Cliffs_of_Thoria.cfg:187
-#, fuzzy
 msgid "Yer doing pretty well, elf-boy!"
-msgstr "Jól csináltad tündegyerek!"
+msgstr "Egész jól csinálod tündegyerek!"
 
 #. [message]: id=Cleodil
 #: data/campaigns/Legend_of_Wesmere/scenarios/10_Cliffs_of_Thoria.cfg:199
@@ -1821,13 +1800,15 @@ msgstr "Jól csináltad tündegyerek!"
 msgid ""
 "There is some greasy-looking smoke rising ahead of us! Kalenz...my lord...I "
 "feel something terribly wrong is happening!"
-msgstr "Füstöt látok előttünk. Úgy érzem valami szörnyűség történik!"
+msgstr ""
+"Sűrű füstöt látok előttünk gomolyogni. Kalenz... uram... úgy érzem valami "
+"rettentő szörnyűség történik!"
 
 #. [message]: id=Olurf
 #: data/campaigns/Legend_of_Wesmere/scenarios/10_Cliffs_of_Thoria.cfg:203
-#, fuzzy
 msgid "Crelanu's place should be close now, as I remember. Quickly, this way!"
-msgstr "Crelanu a közelben lakik, emlékszem már. Gyorsan, erre!"
+msgstr ""
+"Crelanu lakhelyének a közelben kell lennie, ha jól emlékszem. Gyorsan, erre!"
 
 #. [unit]: type=Yeti, id=Krulg
 #: data/campaigns/Legend_of_Wesmere/scenarios/10_Cliffs_of_Thoria.cfg:224
@@ -1842,7 +1823,7 @@ msgstr "Figyelj!"
 #. [message]: id=Tafrul
 #: data/campaigns/Legend_of_Wesmere/scenarios/10_Cliffs_of_Thoria.cfg:240
 msgid "It's...it's monstrous!"
-msgstr ""
+msgstr "Ez... ez szörnyű!"
 
 #. [unit]: type=Yeti, id=Tralg
 #: data/campaigns/Legend_of_Wesmere/scenarios/10_Cliffs_of_Thoria.cfg:250
@@ -1851,9 +1832,8 @@ msgstr "Tralg"
 
 #. [unit]: type=Yeti, id=Drolg
 #: data/campaigns/Legend_of_Wesmere/scenarios/10_Cliffs_of_Thoria.cfg:263
-#, fuzzy
 msgid "Drolg"
-msgstr "Urlg"
+msgstr "Drolg"
 
 #. [scenario]: id=11_Battle_of_the_book
 #: data/campaigns/Legend_of_Wesmere/scenarios/11_Battle_of_the_book.cfg:4
@@ -1863,7 +1843,7 @@ msgstr "Harc a könyvért"
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/11_Battle_of_the_book.cfg:21
 msgid "Quickening their pace, Elves and Dwarves raced towards the smoke...."
-msgstr "Lépteiket gyorsítva, a tündék és törpök a füst felé siettek..."
+msgstr "Lépteiket gyorsítva, a tündék és a törpök a füst felé siettek..."
 
 #. [side]: type=Arch Mage, id=Aquagar
 #: data/campaigns/Legend_of_Wesmere/scenarios/11_Battle_of_the_book.cfg:38
@@ -1892,17 +1872,16 @@ msgstr "Crelanu meghal"
 
 #. [message]: id=Landar
 #: data/campaigns/Legend_of_Wesmere/scenarios/11_Battle_of_the_book.cfg:128
-#, fuzzy
 msgid ""
 "Looks like your mage friend is in trouble. There is a horde of drakes "
 "attacking him!"
 msgstr ""
-"Úgy tűnik, hogy a mágus barátod bajban van. Egy hordányi perzsekény támadja!"
+"Úgy tűnik, a mágus barátod bajban van. Egy hordányi perzsekény támadja!"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/11_Battle_of_the_book.cfg:132
 msgid "Indeed. Before he can aid us, we will have to aid him."
-msgstr ""
+msgstr "Valóban. Mielőtt segíthetne nekünk, nekünk kell segítenünk neki."
 
 #. [message]: id=Aquagar
 #: data/campaigns/Legend_of_Wesmere/scenarios/11_Battle_of_the_book.cfg:136
@@ -1911,7 +1890,6 @@ msgstr "Idióták! A könyv az enyém lesz!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Legend_of_Wesmere/scenarios/11_Battle_of_the_book.cfg:148
-#, fuzzy
 msgid ""
 "I die, but I will not go unavenged! Cursed will you be Kalenz! You will "
 "never find lasting peace in all your years. You will lose your dearest. And "
@@ -1919,11 +1897,11 @@ msgid ""
 "owners to their graves! This will be the price for slaying me, Aquagar, "
 "great drake wizard of Morogoth."
 msgstr ""
-"Meghalok, de a bosszúm utolér! Átok reád Kalenz! Hosszú-hosszú évekig ne "
-"lelj nyugodalmat! És veszítsd el azt, akit legjobban szeretsz. Ez legyen az "
-"ár, amit fizetsz Morogoth nagy perzsekényvarázslójának, Aquagarnak "
-"elpusztításáért. És Crelanu, téged sem hagylak ki. Legyen átkozott a "
-"könyved, és kísértsen téged és minden eljövendő birtokosát!"
+"Meghalok, de nem megyek el bosszú nélkül! Átok reád Kalenz! Sosem lelsz "
+"tartós békét jövendő éveid során! Elveszíted, ami a legkedvesebb neked. És "
+"te, Crelanu, könyved bánatot hozzon rád, és kísértse minden jövőbeli "
+"tulajdonosát a sírig! Ez lesz az ára, hogy megölitek Aquagart, Morogoth nagy "
+"perzsekény varázslóját."
 
 #. [message]: id=Olurf
 #: data/campaigns/Legend_of_Wesmere/scenarios/11_Battle_of_the_book.cfg:152
@@ -1932,8 +1910,8 @@ msgid ""
 "Some scary fellow this Aquagar thinks he is! Come now, I think Crelanu owes "
 "us some drinks."
 msgstr ""
-"Rémes egy figura ez az Aquagar! De menjünk, úgy emlékszem Crelanu ígért "
-"valami italt..."
+"Ez az Aquagar félelmetes figurának hiszi magát. Menjünk, azt hiszem Crelanu "
+"tartozik nekünk egy kis itallal."
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/11_Battle_of_the_book.cfg:163
@@ -1947,7 +1925,6 @@ msgstr "Megvilágosodás"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:16
-#, fuzzy
 msgid ""
 "@Crelanu\n"
 "\n"
@@ -1956,26 +1933,28 @@ msgid ""
 "Thoria. Yet these are no ordinary times for this land. I know all; I have "
 "foreseen this would happen."
 msgstr ""
-"Szóval te vagy az, aki megölte Aquagart és a perzsekényeit. Te pedig "
-"bizonyára Olurf vagy, s már jártál itt, amikor még mindketten sokkal "
-"fiatalabbak voltunk. Tündék még sohasem voltak a Thorián. Igaz, egyéb "
-"rendkívüli események is zajlanak most a földön. Tudtam, hogy ez fog történni."
+"@Crelanu\n"
+"\n"
+"Szóval ti vagytok azok, akik megöltétek Aquagart és a perzsekényeit. Olurf, "
+"ismerlek téged; már jártál itt, mikor még mindketten sokkal fiatalabbak "
+"voltunk. De tündék még sohasem voltak a Thorián. Bár ezek nem szokványos "
+"idők ezen a földön. Tudtam mindent; előre láttam, hogy ez fog történni."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:22
-#, fuzzy
 msgid ""
 "@Olurf\n"
 "\n"
 "This is Kalenz, leader of the elves. I have brought him here to ask for your "
 "advice and your aid in dealing with the orcs."
 msgstr ""
+"@Olurf\n"
+"\n"
 "Ő Kalenz, a tündék vezére. Én vezettem ide, hogy a tanácsodat és a "
 "segítségedet kérje az orkok ellen."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:28
-#, fuzzy
 msgid ""
 "@Crelanu\n"
 "\n"
@@ -1984,53 +1963,61 @@ msgid ""
 "they grow stronger every day. You contend against destiny. But for the "
 "moment you have diverted the orcs' attention."
 msgstr ""
+"@Crelanu\n"
+"\n"
 "Tündék, vitézül verekedtetek, s nagy győzelmet arattatok Wesmere erdejében. "
-"Habár a támadókat még nem semmisítettétek meg. Sőt napról-napra csak "
+"Habár a támadókat még nem semmisítettétek meg. Sőt azok napról-napra csak "
 "erősödnek. A sors ellen küzdötök. Bár e pillanatban sikerült elterelni a "
 "figyelmüket."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:34
-#, fuzzy
 msgid ""
 "@Kalenz\n"
 "\n"
 "What do you mean, 'diverted their attention'?"
-msgstr "Mit értesz azon, hogy eltereltük a figyelmüket?"
+msgstr ""
+"@Kalenz\n"
+"\n"
+"Mit értesz azon, hogy 'eltereltük a figyelmüket'?"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:40
-#, fuzzy
 msgid ""
 "@Crelanu\n"
 "\n"
 "You cannot even imagine it. Why do you suppose orcs came all the way here to "
 "attack you?"
 msgstr ""
+"@Crelanu\n"
+"\n"
 "El sem tudod képzelni. Mit gondolsz, miért tettek meg ekkora utat az orkok, "
 "hogy megtámadjanak titeket?"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:46
-#, fuzzy
 msgid ""
 "@Landar\n"
 "\n"
 "Because they are orcs! Look old man, can you help us beat them or not?"
-msgstr "Mert ők orkok! Nézd öreg, tudsz nekünk segíteni ellenük vagy sem?"
+msgstr ""
+"@Landar\n"
+"\n"
+"Mert ők orkok! Nézd öreg, tudsz nekünk segíteni ellenük, vagy nem?"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:52
-#, fuzzy
 msgid ""
 "@Crelanu\n"
 "\n"
 "You must be Landar. Very brave, but also very brash."
-msgstr "Te bizonyára Landar vagy, nagyon bátor, de igencsak faragatlan."
+msgstr ""
+"@Crelanu\n"
+"\n"
+"Te bizonyára Landar vagy, nagyon bátor, de igencsak faragatlan."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:58
-#, fuzzy
 msgid ""
 "@Kalenz\n"
 "\n"
@@ -2039,65 +2026,72 @@ msgid ""
 "wise, but only help for a price. We will pay any price within our power; "
 "just name it."
 msgstr ""
-"Landar egy kissé faragatlan, de tényleg ezért jöttünk ide. Én sem értem, "
-"hogy miről beszélsz. Olurf azt mondta, hogy te nagyon bölcs vagy, de ingyen "
-"nem segítesz. Halljuk, mik a feltételeid!"
+"@Kalenz\n"
+"\n"
+"Landar faragatlan, de nyíltan beszél arról, amiért ide jöttünk. Én sem "
+"értem, hogy miről beszélsz. Olurf azt mondta, hogy te nagyon bölcs vagy, de "
+"ingyen nem segítesz. Mindent megadunk, ami erőnkből telik, nevezd meg az "
+"árat!"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:64
-#, fuzzy
 msgid ""
 "@Cleodil\n"
 "\n"
 "Are you saying the orcs attacked us looking for something?"
 msgstr ""
-"Arra gondolsz, hogy az orkok csak azért támadtak meg minket, mert kerestek "
-"valamit?"
+"@Cleodil\n"
+"\n"
+"Azt mondod, hogy az orkok azért támadtak meg minket, mert kerestek valamit?"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:70
-#, fuzzy
 msgid ""
 "@Crelanu\n"
 "\n"
 "Yes, that is what I am saying."
-msgstr "Igen, ezt mondtam."
+msgstr ""
+"@Crelanu\n"
+"\n"
+"Igen, ezt mondom."
 
-# dastone
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:76
-#, fuzzy
 msgid ""
 "@Cleodil\n"
 "\n"
 "It makes sense now. The Saurians were asking about a dastone, and also after "
 "we won in Wesmere there was an Orc mumbling something about a dastone..."
 msgstr ""
-"Most már világos: a gyíkok valamiféle küvet kerestek rajtunk, s Wesmerenél "
-"is motyogott egy ork valamiféle kűről. "
+"@Cleodil\n"
+"\n"
+"Most már világos. A gyíkok valamiféle küvet kerestek rajtunk, s miután "
+"győztünk Wesmere-nél, volt egy ork, aki szintén motyogott valamit egy kűről."
 
-# dastone
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:82
-#, fuzzy
 msgid ""
 "@Crelanu\n"
 "\n"
 "It's not a dastone, it's the stone: They mean the Ruby of Fire..."
-msgstr "Nem valamiféle kű, hanem A KŐ, a Tűz Rubinja..."
+msgstr ""
+"@Crelanu\n"
+"\n"
+"Nem egy kű, hanem a KŐ: a Tűz Rubinjára gondoltak..."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:88
-#, fuzzy
 msgid ""
 "@Kalenz\n"
 "\n"
 "What's that, and what does it have to do with us?"
-msgstr "Mi az és mi közünk van nekünk hozzá?"
+msgstr ""
+"@Kalenz\n"
+"\n"
+"Mi az, és mi közünk van nekünk hozzá?"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:94
-#, fuzzy
 msgid ""
 "@Crelanu\n"
 "\n"
@@ -2106,26 +2100,28 @@ msgid ""
 "the elves are hiding it. But now, they suspect they have been fooled. "
 "Haldric and his people will pay for his arrogance."
 msgstr ""
-"Ez okozza a ti bajaitokat: Ez a kő egy roppant erős varázseszköz, s a "
-"zsarnok Haldric birtokolja. Átejtette az orkokat, akik azt hiszik, hogy "
-"nálatok van. Bár már kezdik sejteni, hogy lóvá tették őket. Haldricnak "
-"fizetnie kell az önteltségéért."
+"@Crelanu\n"
+"\n"
+"Ez a ti bajotok forrása. Ez egy roppant erős varázseszköz. A zsarnok Haldric "
+"birtokolja, de átejtette az orkokat, akik azt hiszik, hogy a tündék "
+"rejtegetik. Bár már kezdik sejteni, hogy lóvá tették őket. Haldricnak és "
+"népének fizetnie kell az önteltségéért."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:100
-#, fuzzy
 msgid ""
 "@Kalenz\n"
 "\n"
 "Hmm... You seem to love king Haldric even less than the elf-lords of the "
 "Ka'lian do...How do you know all this of him?"
 msgstr ""
-"Hmm... Úgy látom, te még a tündéknél is kevésbe kedveled Haldric királyt... "
-"Honnan tudod mindezt?"
+"@Kalenz\n"
+"\n"
+"Hmm... Úgy látom, te még a ka'liani tünde uraknál is kevésbé kedveled "
+"Haldric királyt... Honnan tudod róla mindezt?"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:106
-#, fuzzy
 msgid ""
 "@Crelanu\n"
 "\n"
@@ -2138,42 +2134,50 @@ msgid ""
 "heart, can safely handle it outside of battle. Unshielded, its magical "
 "radiance changes Haldric a little every time he comes close to it."
 msgstr ""
-"Haldric volt az, aki száműzött engem Wesnothból. Azt mondták, hogy el "
-"akartam lopni a Rubint, hogy még hatalmasabbá váljak... Igazából a Rubin "
-"birtoklása miatt lett Haldric egyre önteltebb. Csatában bárki használhatja a "
-"Rubint, de csak az igazi mesterek képesek csatán kívül is bánni vele. "
-"Haldric védtelen a mágikus kisugárzása ellen, s egyre jobban változik, "
-"ahányszor csak megközelíti a Rubint."
+"@Crelanu\n"
+"\n"
+"Valamikor Haldricot barátnak tartottam, de ő volt az, aki száműzött engem "
+"Wesnothból. Azzal vádolt, hogy el akartam lopni a Rubint, hatalmát magamnak "
+"akarván... de az igazság az, hogy a Rubin kerítette hatalmába Haldric "
+"elméjét. Igazából a Rubin birtoklása miatt lett Haldric egyre önteltebb. "
+"Csatában bárki használhatja a Rubint, de csak az igazi mesterek képesek "
+"csatán kívül is bánni vele. Haldric védtelen a mágikus kisugárzása ellen, s "
+"egyre jobban változik, ahányszor csak megközelíti a Rubint."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:112
-#, fuzzy
 msgid ""
 "@Kalenz\n"
 "\n"
 "So the orcs will, seeking the Ruby, now attack the humans?"
-msgstr "Akkor az orkok most az embereket támadják meg?"
+msgstr ""
+"@Kalenz\n"
+"\n"
+"Tehát, az orkok, keresvén a Rubint, most az embereket támadják meg?"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:118
-#, fuzzy
 msgid ""
 "@Crelanu\n"
 "\n"
 "Yes. But after they win, your people will be next. And after you, the "
 "dwarves."
 msgstr ""
-"Igen, de miután őket legyőzték, ti lesztek a következő áldozatuk, majd a "
-"törpök következnek."
+"@Crelanu\n"
+"\n"
+"Igen. De miután győztek, a te néped lesz a következő. És utánatok a törpök."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:124
-#, fuzzy
 msgid ""
 "@Landar\n"
 "\n"
 "Don't worry overmuch about us. It is clear you have troubles of your own."
-msgstr "Miattunk ne aggódj! Úgy tűnik, neked is megvannak a magad problémái. "
+msgstr ""
+"@Landar\n"
+"\n"
+"Miattunk ne aggódj túl sokat! Tisztában vagyunk vele, hogy neked is "
+"megvannak a magad problémái."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:130
@@ -2184,24 +2188,26 @@ msgid ""
 "We are grateful for this counsel. But can you help us directly? Is there a "
 "way to stop the orcs?"
 msgstr ""
-"Valóban sokat tudsz. De nekünk tudsz-e segíteni? Megállíthatjuk valahogy az "
-"orkokat?"
+"@Kalenz\n"
+"\n"
+"Hálásak vagyunk a tanácsaidért. De tudsz nekünk közvetlenül segíteni? "
+"Megállíthatjuk valahogy az orkokat?"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:136
-#, fuzzy
 msgid ""
 "@Crelanu\n"
 "\n"
 "You cannot defeat them with the forces you can now muster. You can only gain "
 "time, in the hope that you can use it to grow strong again."
 msgstr ""
-"A jelenlegi seregeddel nem győzheted le őket. Csak időt nyerhetsz, de "
-"valószínűleg ez elég lesz arra, hogy újra megerősödj."
+"@Crelanu\n"
+"\n"
+"A jelenlegi seregeddel nem győzheted le őket. Csak időt nyerhetsz, ezalatt "
+"újra megerősödhetsz."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:142
-#, fuzzy
 msgid ""
 "@Kalenz\n"
 "\n"
@@ -2209,13 +2215,14 @@ msgid ""
 "against the river monsters, and fight trolls and yetis to come here for "
 "nothing!"
 msgstr ""
-"Hogyan? Ne mondd, hogy hiába küzdöttünk a gyíkokkal, keltünk át az Arkan-"
-"Thorián harcolva a tengeri szörnyekkel, s hiába vívtunk meg a trollokkal és "
-"a jetikkel! Az nem lehet, hogy nem tudsz segíteni!?  "
+"@Kalenz\n"
+"\n"
+"Hogyan? Ne mondd, hogy azért küzdöttünk a gyíkokkal, keltünk át az Arkan-"
+"Thorián, harcoltunk a tengeri szörnyekkel, vívtunk meg a trollokkal és a "
+"jetikkel, hogy a semmivel kelljen beérnünk!"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:148
-#, fuzzy
 msgid ""
 "@Crelanu\n"
 "\n"
@@ -2224,38 +2231,45 @@ msgid ""
 "yearn to take their Great Chief's place. You will be safe until a new leader "
 "arises strong enough to unite them again."
 msgstr ""
-"Meg kell ölnöd a királyukat, úgy, mintha egy ork végzett volna vele. Így az "
-"orkok polgárháborút kezdenek, hogy eldöntsék melyikőjük legyen a király, és "
-"addig is biztonságban lesztek, amíg nem akad egy erős vezetőjük, aki "
-"egyesíti őket."
+"@Crelanu\n"
+"\n"
+"Meg kell ölnöd a fővezérüket, és úgy elrendezni, mintha egy ork végzett "
+"volna vele. Így az orkok örökösödési háborút kezdenek, mivel sokan vágynak a "
+"fővezér helyére. Addig biztonságban lesztek, amíg nem akad egy erős "
+"vezetőjük, aki újraegyesíti őket."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:154
-#, fuzzy
 msgid ""
 "@Olurf\n"
 "\n"
 "Kill an orcish Great Chieftain? But he's guarded better than a Troll hole!"
 msgstr ""
-"Megölni egy ork királyt? De hiszen, jobban őrzik, mint egy troll barlangot!"
+"@Olurf\n"
+"\n"
+"Megölni egy ork fővezért? De hiszen, jobban őrzik, mint egy troll barlangot!"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:160
-#, fuzzy
 msgid ""
 "@Crelanu\n"
 "\n"
 "Indeed, it will not be at all easy. But maybe I can help you..."
-msgstr "Valóban nehéz lesz, de talán tudok segíteni..."
+msgstr ""
+"@Crelanu\n"
+"\n"
+"Valóban, egyáltalán nem lesz könnyű. De talán tudok segíteni nektek..."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:166
-#, fuzzy
 msgid ""
 "@Kalenz\n"
 "\n"
 "But you want something in return..."
-msgstr "S mindezért cserében azt kívánod, hogy..."
+msgstr ""
+"@Kalenz\n"
+"\n"
+"De szeretnél valamit cserébe..."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:172
@@ -2270,26 +2284,29 @@ msgid ""
 "destroy it than I could slay my own child. Aquagar is slain, but more will "
 "come. One of my allies has betrayed me, and now too many know of this book."
 msgstr ""
-"Cserében... Ezek a perzsekények a könyvemet akarták. Ez a könyv tartalmazza "
-"az összes mágikus trükköt, varázsitalt, varázslatot, amit csak ismerek. "
-"Nagyon hatásosak, de már nincs energiám a küzdelemhez. Már csak azokkal a "
-"sátáni eszközökkel élek, amivel meghosszabbítom a létezésemet... Igen, ez "
-"életem fő műve és nem akarom, hogy megsemmisüljön. Bár Aquagar kimúlt, de "
-"jöhetnek mások is. Túl sokan tudnak a könyvről, s túl sokan szeretnék "
-"megkaparintani."
+"@Crelanu\n"
+"\n"
+"Úgy van, ahogy mondod. Ezek a perzsekények a könyvemet akarták. Ez a könyv "
+"tartalmazza az összes mágiát és bűbájt, amit tudok. Nagyon hatásosak, de van "
+"egy ellenség, amit nem tudnak legyőzni, és ez a kor. A tudás arra ösztönöz, "
+"hogy életem gonosz és sötét módon hosszabbítsam meg... De ez életem fő műve, "
+"és elpusztítani annyi lenne, mint a gyermekemet megölni. Aquagart "
+"megöltétek, de jönnek helyette mások. Egyik szövetségesem elárult engem, és "
+"most már túl sokan tudnak a könyvről."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:178
-#, fuzzy
 msgid ""
 "@Kalenz\n"
 "\n"
 "If you come with us, we will protect you..."
-msgstr "Ha velünk tartasz, mi megvédünk..."
+msgstr ""
+"@Kalenz\n"
+"\n"
+"Ha velünk tartasz, mi megvédünk..."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:184
-#, fuzzy
 msgid ""
 "@Crelanu\n"
 "\n"
@@ -2298,24 +2315,27 @@ msgid ""
 "be corrupted by its power. And then find someone worthy not merely to hold "
 "it, but to use it!"
 msgstr ""
-"Nem, az én időm már kitelt... De  cserében gondoskodjatok róla, hogy a "
-"könyvem méltó kezekbe kerüljön. Valaki olyanéba, akit nem ront meg az "
-"ereje..."
+"@Crelanu\n"
+"\n"
+"Nem, az én időm már kitelt... De a kötelesség, amit rád szabok Kalenz, hogy "
+"vidd el a könyvem, és óvd alkalmatlan kezektől. Találj olyan tulajdonost, "
+"aki nem válik korrupttá erejétől. És olyan valakit, aki nem csak birtoklását "
+"érdemelte ki, hanem használatát is!"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:190
-#, fuzzy
 msgid ""
 "@Landar\n"
 "\n"
 "If your book is as powerful as you say, why not use it against the orcs?"
 msgstr ""
-"Ha könyved tényleg olyan hatalmas, mint ahogy mondtad, miért ne "
+"@Landar\n"
+"\n"
+"Ha a könyved tényleg olyan hatalmas, mint ahogy mondtad, miért ne "
 "használhatnánk az orkok ellen?"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:196
-#, fuzzy
 msgid ""
 "@Crelanu\n"
 "\n"
@@ -2323,56 +2343,64 @@ msgid ""
 "book, but only a master can vanquish the lust for power that it will bring "
 "out in him. He who fails will turn into something like Haldric, or worse..."
 msgstr ""
-"Bármilyen féleszű felhasználhatja a könyv mágiáját, de csak az igazi mester "
-"tud élni, s nem visszaélni az általa kínált hatalommal. Különben az "
-"következik, amit Haldricnál láthatunk, vagy még rosszabb..."
+"@Crelanu\n"
+"\n"
+"Mert a könyv olyan, mint a Tűz Rubinja. Bármilyen féleszű felhasználhatja a "
+"könyv mágiáját, de csak egy igazi mester tudja megsemmisíteni a hatalom "
+"vágyát, ami megszállja. Aki képtelen ellenállni, olyanná válik, mint "
+"Haldric, vagy még rosszabbá."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:202
-#, fuzzy
 msgid ""
 "@Kalenz\n"
 "\n"
 "Cleodil is pure in heart. Perhaps she can guard your book without being "
 "corrupted by its secrets..."
 msgstr ""
-"Talán Cleodil megőrizheti a könyvedet, s nem válik a titkainak rabjává..."
+"@Kalenz\n"
+"\n"
+"Cleodil tiszta szívű. Talán ő megőrizheti a könyvedet, s nem válik a "
+"titkainak rabjává..."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:208
-#, fuzzy
 msgid ""
 "@Cleodil\n"
 "\n"
 "I am sure all these secrets are far beyond my art. My art is the healing "
 "kind and I..."
 msgstr ""
+"@Cleodil\n"
+"\n"
 "Azt hiszem ezek a titkok túlnőnek rajtam. Én csak egy gyógyító vagyok, én..."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:214
-#, fuzzy
 msgid ""
 "@Crelanu\n"
 "\n"
 "There is no other option."
-msgstr "Nincs más lehetőség."
+msgstr ""
+"@Crelanu\n"
+"\n"
+"Nincs más lehetőség."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:220
-#, fuzzy
 msgid ""
 "@Kalenz\n"
 "\n"
 "Very well, suppose Cleodil accepts the guardianship of your book. How will "
 "you then help us slay the orcish Great Chief?"
 msgstr ""
+"@Kalenz\n"
+"\n"
 "Rendben, tegyük fel, hogy Cleodil megőrzi a könyvedet. Hogyan tudsz "
-"segíteni, hogy megöljük az ork királyt?"
+"segíteni, hogy megöljük az ork fővezért?"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:226
-#, fuzzy
 msgid ""
 "@Crelanu\n"
 "\n"
@@ -2380,19 +2408,23 @@ msgid ""
 "orcish camp by stealth and kill the Great Chief. There is a potion that will "
 "make you invisible for some time."
 msgstr ""
-"Lenne egy módja, de nagyon kockázatos: Ketten közületek be tudnának "
-"lopakodni az orkok táborába és meg tudnák ölni a királyt. Van egy ital, ami "
-"láthatatlanná tesz egy időre. "
+"@Crelanu\n"
+"\n"
+"Lenne egy módja, de nagyon kockázatos lesz. Közületek kettőnek be kell "
+"lopakodni az orkok táborába és megölni a fővezért. Van egy ital, ami "
+"láthatatlanná tesz egy időre."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:232
-#, fuzzy
 msgid ""
 "@Kalenz\n"
 "\n"
 "The elves have legends of such things. I suppose you have this potion, then?"
 msgstr ""
-"Sosem hallottam még ilyesmiről. Tegyük fel, hogy van ilyen italod, és aztán?"
+"@Kalenz\n"
+"\n"
+"A tündéknél vannak legendák ilyen dolgokról. Tegyük fel, hogy van ilyen "
+"italod, aztán?"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:238
@@ -2404,9 +2436,11 @@ msgid ""
 "powerful undead lich. It will make you invisible, but it is likely also to "
 "have undesirable effects, some temporary, some permanent!"
 msgstr ""
-"Valóban van, de elég kockázatos a használata. Egy hatalmas élőholt villi "
-"szeméből készült. Láthatatlanná tesz, de ezenkívül kellemetlen mellékhatásai "
-"is vannak, olyan is, ami hamar elmúlik, de olyan is, ami megmarad."
+"@Crelanu\n"
+"\n"
+"Valóban van, de elég kockázatos a használata. Egy hatalmas élőholt delevény "
+"szemeiből készült. Láthatatlanná tesz, de ezenkívül kellemetlen "
+"mellékhatásai is lehetnek, néhány múlandó, néhány állandó!"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:244
@@ -2416,19 +2450,24 @@ msgid ""
 "No! This is too dark and dangerous! I fear for you, Kalenz! I...would not "
 "see you come to harm."
 msgstr ""
+"@Cleodil\n"
+"\n"
+"Ne! Ez túl sötét és veszélyes! Féltelek ettől Kalenz! Én... nem bírnám ki, "
+"ha bajod esne."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:250
-#, fuzzy
 msgid ""
 "@Kalenz\n"
 "\n"
 "What undesirable effects?"
-msgstr "Miféle kellemetlen mellékhatásai vannak?"
+msgstr ""
+"@Kalenz\n"
+"\n"
+"Milyen kellemetlen mellékhatások?"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:256
-#, fuzzy
 msgid ""
 "@Crelanu\n"
 "\n"
@@ -2440,15 +2479,18 @@ msgid ""
 "only a small dose and finish the job quickly. Delay and you will fail in "
 "your mission; take too large a dose, and you will become as the lich was."
 msgstr ""
-"A fizikai erőd csökken, cserébe viszont könnyen használhatod a mágiát. "
-"Cleodil majd beavat. Az igazi kockázat a gonosz áramlása az ereidben. "
-"Harcolnod kell ellene, s legyőznöd. Emiatt csak kis adagot szabad meginnod, "
-"s gyorsan kell elvégezned a munkát. Ha körülményeskedsz, kifutsz az időből, "
-"s nemcsak a küldetésed bukod el, de még fogságba is esel."
+"@Crelanu\n"
+"\n"
+"A fizikai erőd csökken, cserébe viszont könnyebben és erőteljesebben "
+"használhatod a mágiát. Cleodil majd beavat. Az igazi veszélyt a delevény "
+"gonosz természetének áramlása jelenti  az ereidben. Harcolnod kell ellene, s "
+"uralkodnod felette, különben lassan magad is féldelevénnyé válsz. Emiatt "
+"csak kis adagot szabad meginnod, s gyorsan kell elvégezned a munkát. Ha "
+"Késlekedsz, elbukod a küldetésedet; ha túl nagy adagot veszel be, olyanná "
+"válsz, amilyen a delevény volt."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:262
-#, fuzzy
 msgid ""
 "@Kalenz\n"
 "\n"
@@ -2458,32 +2500,39 @@ msgid ""
 "Chief. But I will not compel anyone else to come with me, not at peril of "
 "being overwhelmed from within by evil magic. Does anyone volunteer?"
 msgstr ""
-"Nem fűlik hozzá a fogam, de nem tudok jobbat. Bármi áron, de meg kell "
-"állítanunk az orkokat. S mivel én vagyok a vezető, az egyik behatoló én "
-"leszek. Mivel igen kockázatos a dolog, senkit nem kényszerítek, hogy jöjjön "
-"velem. Akad valaki, aki önként velem tartana?"
+"@Kalenz\n"
+"\n"
+"Ez egy sötét és kétségbeesett út, amit elém vetítettél, de nem látok jobb "
+"megoldást; meg kell állítanunk az orkokat. Vezetőként nem kérhetek olyan "
+"kockázatot a többiektől, amit én nem tennék meg, így én leszek a kettő közül "
+"az egyik, aki megöli a fővezért. De nem fogok senkit se kényszeríteni, hogy "
+"jöjjön velem olyan kockázat mellett, hogy gonosz varázslat lehet rajta úrrá. "
+"Van önként jelentkező?"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:268
-#, fuzzy
 msgid ""
 "@Landar\n"
 "\n"
 "I will come with you. We shall not fail!"
-msgstr "Veled megyek. Nem bukhatunk el!"
+msgstr ""
+"@Landar\n"
+"\n"
+"Veled megyek. Nem bukhatunk el!"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:274
-#, fuzzy
 msgid ""
 "@Crelanu\n"
 "\n"
 "This does not seem the wisest of choices."
-msgstr "Ez nem látszik bölcs döntésnek."
+msgstr ""
+"@Crelanu\n"
+"\n"
+"Ez nem látszik a legbölcsebb döntésnek."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:280
-#, fuzzy
 msgid ""
 "@Kalenz\n"
 "\n"
@@ -2491,21 +2540,24 @@ msgid ""
 "should be about our task now, I think. Crelanu, your book will be safe with "
 "us. Cleodil will guard it until we find a worthy keeper."
 msgstr ""
-"Landar lehet, hogy kissé faragatlan, de nagy harcos és igaz barát. Azt "
-"hiszem készen állunk. Crelanu, a könyved biztonságban lesz nálunk, "
-"megőrizzük addig, amíg valaki méltóval nem találkozunk, akinek átadhatjuk."
+"@Kalenz\n"
+"\n"
+"Landar lehet, hogy kissé heves, de nagy harcos és igaz barát. Azt hiszem, "
+"készen állunk a feladatra. Crelanu, a könyved biztonságban lesz nálunk. "
+"Cleodil megőrzi addig, amíg méltó tulajdonosára nem akadunk."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:286
-#, fuzzy
 msgid ""
 "@Crelanu\n"
 "\n"
 "Come, I will give you and Landar the potion and show you a safe point to "
 "cross the river."
 msgstr ""
-"Gyertek velem. Te és Landar megkapjátok az italt, és megmutatom, hol "
-"kelhettek át biztonságosan a folyón."
+"@Crelanu\n"
+"\n"
+"Gyertek velem, neked és Landarnak odaadom az italt, és megmutatom, hol "
+"kelhettek át biztonságban a folyón."
 
 #. [scenario]: id=13_News_from_the_front
 #: data/campaigns/Legend_of_Wesmere/scenarios/13_News_from_the_front.cfg:11
@@ -2514,23 +2566,21 @@ msgstr "Hírek a frontról"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/13_News_from_the_front.cfg:25
-#, fuzzy
 msgid ""
 "With Crelanu's book in hand, Kalenz and his band began the long journey "
 "south to the Ka'lian..."
 msgstr ""
-"Crelanu könyvével és a varázsitalokkal Kalenz és csapata úton volt "
-"hazafelé..."
+"Crelanu könyvével a csomagban, Kalenz és csapata megkezdte hosszú útját a "
+"Ka'lian felé..."
 
 #. [message]: id=Landar
 #: data/campaigns/Legend_of_Wesmere/scenarios/13_News_from_the_front.cfg:57
-#, fuzzy
 msgid ""
 "Oh, no, I forgot my dose of Crelanu's invisibility philter. I'll go back and "
 "get it. I'll catch up with you later!"
 msgstr ""
-"Az ördögbe! Crelanu mágikus itala! Elhagytam valahol. Visszamegyek és "
-"megkeresem, később találkozunk."
+"Ó ne, ottfelejtettem az adagom Crelanu láthatatlanság bájitalából. "
+"Visszamegyek és elkérem. Később találkozunk!"
 
 #. [message]: id=Olurf
 #: data/campaigns/Legend_of_Wesmere/scenarios/13_News_from_the_front.cfg:61
@@ -2539,9 +2589,8 @@ msgstr "Néhány törpöm elkísérne..."
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/13_News_from_the_front.cfg:65
-#, fuzzy
 msgid "Go, Landar, but be careful. We need you."
-msgstr "Rendben Landar, de légy óvatos. Szükségünk van rád."
+msgstr "Menj Landar, de légy óvatos. Szükségünk van rád."
 
 #. [message]: id=narrator
 #: data/campaigns/Legend_of_Wesmere/scenarios/13_News_from_the_front.cfg:79
@@ -2549,6 +2598,8 @@ msgid ""
 "Some weeks later, as Kalenz and his companions were working their way "
 "southwards from the high peaks of the Heart Mountains into its foothills..."
 msgstr ""
+"Néhány héttel később, amint Kalenz és társai átküzdötték magukat a Szív-"
+"hegység magas ormain, s leértek a hegy lábához..."
 
 #. [unit]: id=Eonihar, type=Elvish Scout
 #: data/campaigns/Legend_of_Wesmere/scenarios/13_News_from_the_front.cfg:94
@@ -2557,7 +2608,6 @@ msgstr "Eonihar"
 
 #. [message]: id=Eonihar
 #: data/campaigns/Legend_of_Wesmere/scenarios/13_News_from_the_front.cfg:104
-#, fuzzy
 msgid ""
 "At last I have found, you alive and well! We need you back at once! The orcs "
 "have attacked the humans."
@@ -2567,84 +2617,75 @@ msgstr ""
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/13_News_from_the_front.cfg:108
-#, fuzzy
 msgid "This means we are safe for the time being, no?"
-msgstr "Akkor ez azt jelenti, hogy mi biztonságban vagyunk, nem igaz?"
+msgstr "Akkor ez azt jelenti, hogy mi jelenleg biztonságban vagyunk, nem igaz?"
 
 #. [message]: id=Eonihar
 #: data/campaigns/Legend_of_Wesmere/scenarios/13_News_from_the_front.cfg:112
-#, fuzzy
 msgid ""
 "What's more, King Haldric is dead. His successor wants to renew the treaty "
 "of alliance and has asked for our help."
 msgstr ""
-"Van még több hírem is. Haldric király meghalt. Az örököse meg akarja újítani "
-"az ősi egyezményünket és a segítségünket kérte."
+"Mi több, Haldric király meghalt. Az örököse meg akarja újítani az ősi "
+"egyezményünket és a segítségünket kérte."
 
 #. [message]: id=Landar
 #: data/campaigns/Legend_of_Wesmere/scenarios/13_News_from_the_front.cfg:133
-#, fuzzy
 msgid "How convenient! Now they need our help, they come running!"
-msgstr "Nagyon jó! Most persze jól jönne nekik a mi segítségünk!"
+msgstr "Milyen egyszerű! Mikor a segítségünk kell, futva jönnek értünk!"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/13_News_from_the_front.cfg:137
-#, fuzzy
 msgid "Landar! You're back! All is well?"
-msgstr "Landar! Visszajöttél! Minden rendben?"
+msgstr "Landar! Visszajöttél! Minden rendben van?"
 
 #. [message]: id=Landar
 #: data/campaigns/Legend_of_Wesmere/scenarios/13_News_from_the_front.cfg:141
-#, fuzzy
 msgid "Yes, I have the philter of invisibility."
-msgstr "Igen, megvan az ital."
+msgstr "Igen, megvan a láthatatlanná tevő bájital."
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/13_News_from_the_front.cfg:145
-#, fuzzy
 msgid ""
 "We face a difficult choice. I know humans did not help us when the orcs "
 "attacked, but the orcs are everybody's enemy. When humans fall, we'll be "
 "next."
 msgstr ""
-"Most ez egy nehéz döntés. Tudom, hogy az emberek nem segítettek, amikor az "
-"orkok megtámadtak minket, de az orkok mindenki ellenségei. Miután az "
-"embereket letiporták, mi következünk."
+"Nehéz döntés előtt állunk. Tudom, hogy az emberek nem segítettek, amikor az "
+"orkok megtámadtak minket, de az orkok mindenki ellenségei. Miután az emberek "
+"elbuktak, mi következünk."
 
 #. [message]: id=Eonihar
 #: data/campaigns/Legend_of_Wesmere/scenarios/13_News_from_the_front.cfg:149
-#, fuzzy
 msgid ""
 "The orcish forces are encamped south of the Great River, and have surrounded "
 "the fortified human settlement at Tath. The humans are sending all their "
 "forces there. We need to decide whether we will help them or not."
 msgstr ""
-"Az ork haderő a nagy folyótól délre táborozott le és bekerítették Weslath "
-"városát. Wesnothban minden hadrafogható embert mozgósítottak a védekezéshez. "
-"El kell döntenünk, hogy segítünk rajtuk, vagy sem. "
+"Az ork haderő a Nagy-folyótól délre táborozott le, és bekerítették a "
+"megerősített emberi települést, Tathot. Az emberek minden erejüket ide "
+"vezénylik. El kell döntenünk, hogy segítünk rajtuk, vagy sem. "
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/13_News_from_the_front.cfg:153
-#, fuzzy
 msgid ""
 "Go tell the council and the human king that we will be there! Now, let's "
 "hurry!"
 msgstr ""
-"Menj vissza a Tanácsba! Mondd meg, hogy megyünk az emberek megsegítésére. "
-"Igyekezzünk!"
+"Menj, mondd meg a tanácsnak és az emberek királyának, hogy ott leszünk! Most "
+"igyekezzünk!"
 
 #. [scenario]: id=14_Human_Alliance
 #: data/campaigns/Legend_of_Wesmere/scenarios/14_Human_Alliance.cfg:4
-#, fuzzy
 msgid "Human Alliance"
-msgstr "Ősi szövetség"
+msgstr "Emberi szövetség"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/14_Human_Alliance.cfg:23
-#, fuzzy
 msgid ""
 "With the human-elf alliance revived, our heroes hurried to the battlefield..."
-msgstr "Az ősi szerződés szellemében hőseink a csatatérre siettek..."
+msgstr ""
+"Az ember-tünde szövetség újjáélesztésével hőseink a csatatérre siettek..."
 
 #. [side]: type=General, id=Aldar
 #: data/campaigns/Legend_of_Wesmere/scenarios/14_Human_Alliance.cfg:44
@@ -2698,28 +2739,25 @@ msgstr "Aldun"
 
 #. [message]: id=Aldun
 #: data/campaigns/Legend_of_Wesmere/scenarios/14_Human_Alliance.cfg:272
-#, fuzzy
 msgid ""
 "General Aldar has received your message that you will be coming. He asks "
 "that you cut off the orcish reinforcements from the north. They must not be "
 "allowed to enter the battle! Our reinforcements should arrive in a few days."
 msgstr ""
-"Aldar tábornok megkapta az üzenetet, hogy közeledtek. Arra kér, hogy az "
-"északi ork utánpótlási vonalakat vágjátok el. Nem szabad onnan erősítést "
-"kapniuk az orkoknak. A mi utánpótlásunk napokon belül megérkezik."
+"Aldar tábornok megkapta az üzenetet, hogy jöttök. Arra kér, hogy az északi "
+"ork utánpótlási vonalakat vágjátok el. Nem szabad erősítést kapniuk! A mi "
+"utánpótlásunk napokon belül megérkezik."
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/14_Human_Alliance.cfg:276
-#, fuzzy
 msgid ""
 "Very well, but where are the elvish troops? We cannot hold without them!"
 msgstr "Rendben, de hol vannak a tünde egységek? Nem bírjuk nélkülük sokáig!"
 
 #. [unit]: id=Olontoril, type=Elvish Hero
 #: data/campaigns/Legend_of_Wesmere/scenarios/14_Human_Alliance.cfg:308
-#, fuzzy
 msgid "Olontoril"
-msgstr "Antomeril"
+msgstr "Olontoril"
 
 #. [unit]: id=Artolas, type=Elvish Archer
 #: data/campaigns/Legend_of_Wesmere/scenarios/14_Human_Alliance.cfg:320
@@ -2768,7 +2806,7 @@ msgid ""
 "not let you stand on your own."
 msgstr ""
 "A Tanács határozata szerint túl kockázatos az erőinket ideküldeni. De nem "
-"hagyhatunk titeket magatokra."
+"hagyhattunk titeket magatokra."
 
 #. [unit]: type=Paladin, id=Kulrad
 #: data/campaigns/Legend_of_Wesmere/scenarios/14_Human_Alliance.cfg:406
@@ -2817,7 +2855,6 @@ msgstr "Undor"
 
 #. [message]: id=Kulrad
 #: data/campaigns/Legend_of_Wesmere/scenarios/14_Human_Alliance.cfg:477
-#, fuzzy
 msgid "Here we are, men! Charge!"
 msgstr "Itt vagyunk emberek! Roham!"
 
@@ -2828,34 +2865,30 @@ msgstr "Még több lovas!! Pucoljunk innen!"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/14_Human_Alliance.cfg:493
-#, fuzzy
 msgid "We have stopped the orcs once again!"
-msgstr "Újra megállítottuk az orkokat!"
+msgstr "Ismét megállítottuk az orkokat!"
 
 #. [message]: id=Cleodil
 #: data/campaigns/Legend_of_Wesmere/scenarios/14_Human_Alliance.cfg:497
-#, fuzzy
 msgid "And we have revived the alliance with the humans!"
 msgstr "És felújítottuk az ősi szövetséget az emberekkel!"
 
 #. [message]: id=Aldar
 #: data/campaigns/Legend_of_Wesmere/scenarios/14_Human_Alliance.cfg:501
-#, fuzzy
 msgid "The King is here! Hail Haldric II, King of Wesnoth!"
 msgstr "Itt a király! Éljen II. Haldric, Wesnoth Királya!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Legend_of_Wesmere/scenarios/14_Human_Alliance.cfg:515
-#, fuzzy
 msgid "Tath will fall, we have failed!!"
-msgstr "Weslath elesik, elbuktunk!"
+msgstr "Tath elesik, elbuktunk!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Legend_of_Wesmere/scenarios/14_Human_Alliance.cfg:529
 #, fuzzy
 msgid ""
 "I die? Great Chief never said anything about fighting elves and dwarves!"
-msgstr "Meghalok? Az ork vezér sosem beszélt harcoló tündékről és törpökről!"
+msgstr "Meghalok? A fővezér sosem beszélt harcról tündék és törpök ellen!"
 
 #. [scenario]: id=15_The_Treaty
 #: data/campaigns/Legend_of_Wesmere/scenarios/15_The_Treaty.cfg:3
@@ -2864,19 +2897,19 @@ msgstr "Az egyezség"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/15_The_Treaty.cfg:15
-#, fuzzy
 msgid ""
 "@Haldric II\n"
 "\n"
 "Friends, today we have won a great victory, though it lost us good men. Let "
 "this be the beginning of a new alliance between our people."
 msgstr ""
-"Barátaim, rengeteg véráldozat árán vívtuk ki ezt a nagy győzelmet. Legyen ez "
-"a nap egy új szövetség kezdete népeink között."
+"@Haldric II\n"
+"\n"
+"Barátaim, ma nagy győzelmet arattunk, bár sok jó emberünkbe került. Legyen "
+"ez egy új szövetség kezdete népeink között."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/15_The_Treaty.cfg:21
-#, fuzzy
 msgid ""
 "@Kalenz\n"
 "\n"
@@ -2884,34 +2917,40 @@ msgid ""
 "dangerous adversaries. We intend to put an end to this threat and we will "
 "welcome any ally against it."
 msgstr ""
-"II. Haldric király. Nagyon örülök, hogy ezeket a szavakat hallom. Nagyon "
-"veszélyes ellenséggel állunk szemben,s elhatároztuk, hogy végleg leszámolunk "
-"velük. Ehhez szükségünk van a segítségedre is."
+"@Kalenz\n"
+"\n"
+"II. Haldric király, nagyon örülök, hogy ezeket a szavakat hallom. Nagyon "
+"veszélyes ellenséggel állunk szemben. Elhatároztuk, hogy végleg pontot "
+"teszünk ennek a fenyegetésnek a végére, és minden szövetségest szívesen "
+"látunk."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/15_The_Treaty.cfg:27
-#, fuzzy
 msgid ""
 "@Landar\n"
 "\n"
 "What? We cannot trust these humans! Where were they when we fought the orcs "
 "alone? This King is bound to betray us just as his father did!"
 msgstr ""
+"@Landar\n"
+"\n"
 "Micsoda? Nem bízhatunk ezekben az emberekben! Hol voltak, amikor egyedül "
-"küzdöttünk az orkokkal? El fog árulni minket, ahogy az apja tette!"
+"küzdöttünk az orkokkal? Ez a király is kész elárulni minket, ahogy az apja "
+"tette!"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/15_The_Treaty.cfg:33
-#, fuzzy
 msgid ""
 "@Aldar\n"
 "\n"
 "Silence! How dare you talk this way to the King!"
-msgstr "Csendet! Hogy merészelsz így beszélni a Királyról?!"
+msgstr ""
+"@Aldar\n"
+"\n"
+"Csendet! Hogy merészelsz így beszélni a királyról?!"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/15_The_Treaty.cfg:39
-#, fuzzy
 msgid ""
 "@Haldric II\n"
 "\n"
@@ -2921,42 +2960,49 @@ msgid ""
 "his last days. But *I* am the King of Wesnoth now, not my father! And it is "
 "my intention to renew our alliance by signing a new treaty here, with you."
 msgstr ""
-"Nyugalom Aldar! Igaza van. Az apám nem segített, amikor az orkok megtámadtak "
-"titeket. De az apám halott. Sok dolgot tett, amiket én nem tudok megérteni. "
-"De én vagyok most Wesnoth királya, nem az apám! És az a szándékom, hogy "
-"megújítsuk az ősi szövetséget, azáltal, hogy aláírok egy új megállapodást "
-"veled."
+"@Haldric II\n"
+"\n"
+"Nyugalom Aldar! A tünde jogosan tesz szemrehányást. Az apám nem segített, "
+"amikor az orkok megtámadtak titeket. De az apám halott. Sok dolog van, amit "
+"apám tett és én nem tudok megérteni; gyanakvóvá és furcsává vált utolsó "
+"napjaiban. De *én* vagyok most Wesnoth királya, nem az apám! És az a "
+"szándékom, hogy megújítsuk az ősi szövetséget, azáltal, hogy aláírok egy új "
+"megállapodást veletek."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/15_The_Treaty.cfg:45
-#, fuzzy
 msgid ""
 "@Kalenz\n"
 "\n"
 "The King speaks wisdom. We cannot undo the past. And we need each other to "
 "fight the orcs. I will sign the treaty on behalf of the Elves."
 msgstr ""
+"@Kalenz\n"
+"\n"
 "A királynak igaza van. Nem változtathatjuk meg a múltat. De szükségünk van "
-"egymásra az orkok ellen. Most pedig írjuk alá az egyezményt."
+"egymásra az orkok ellen. Alá fogom írni a szerződést a tündék nevében."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/15_The_Treaty.cfg:51
-#, fuzzy
 msgid ""
 "@Cleodil\n"
 "\n"
 "Your father had a certain stone, the Ruby of Fire. Do you still have it?"
 msgstr ""
+" @Cleodil\n"
+"\n"
 "Atyád birtokában volt egy bizonyos kő, a Tűz Rubinja. Még mindig megvan?"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/15_The_Treaty.cfg:58
-#, fuzzy
 msgid ""
 "@Haldric II\n"
 "\n"
 "How is it that you know about the Ruby of Fire?"
-msgstr "Honnan tudsz a Tűz Rubinjáról?"
+msgstr ""
+"@Haldric II\n"
+"\n"
+"Hogyan lehet, hogy te tudsz a Tűz Rubinjáról?"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/15_The_Treaty.cfg:64
@@ -2969,22 +3015,28 @@ msgid ""
 "advise you to enclose it in a net or filigree of pure gold charged with the "
 "magic of light."
 msgstr ""
+"@Cleodil\n"
+"\n"
+"Megtudtuk, ó királyom, hogy az energia, ami a Rubint elönti, gonosz hatással "
+"van viselőjére. Nagy eséllyel ez lehet az oka, hogy atyja magába zárkózott. "
+"Saját épsége és királysága miatt, azt tanácsoljuk, hogy a fény varázsa által "
+"feltöltött színarany hálóba vagy rácsba zárja a követ."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/15_The_Treaty.cfg:70
-#, fuzzy
 msgid ""
 "@Haldric II\n"
 "\n"
 "Yes...this would explain many things. It shall be as you say, and I am "
 "grateful for the warning."
 msgstr ""
-"Értem, ez sok mindent megmagyaráz... Köszönöm, hogy elmondtad, gondoskodni "
-"fogok róla."
+"@Haldric II\n"
+"\n"
+"Igen... ez sok mindent megmagyaráz. Úgy lesz, ahogy mondtad, köszönöm a "
+"figyelmeztetést."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/15_The_Treaty.cfg:76
-#, fuzzy
 msgid ""
 "@Kalenz\n"
 "\n"
@@ -2992,49 +3044,53 @@ msgid ""
 "the fight to the orcs before winter falls; we need you to demonstrate "
 "against them, drawing them away from the roads north. Can we count on you?"
 msgstr ""
-"Most, hogy nyélbeütöttük az egyezséget, szükségünk van a segítségedre. Még a "
-"tél beállta előtt le akarunk számolni az orkokkal, s szükség lenne egy "
-"elterelő hadműveletre. Számíthatunk rád?"
+"@Kalenz\n"
+"\n"
+"Most, hogy nyélbeütöttük az egyezséget, lépjünk a tettek mezejére. Még a tél "
+"beállta előtt meg akarjuk támadni az orkokat; szükségünk van rátok, hogy "
+"háborúba lépjetek ellenük, elterelve őket az északi utakról. Számíthatunk "
+"rátok?"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/15_The_Treaty.cfg:82
-#, fuzzy
 msgid ""
 "@Haldric II\n"
 "\n"
 "I am not sure... My late father did not pay too much attention to army "
 "matters and we have already lost very many men..."
 msgstr ""
-"Hát, nem is tudom... Az utóbbi időben atyám nem szentelt túl sok figyelmet a "
-"hadsereg felszerelésére, s elég nagy volt az emberveszteségünk..."
+"@Haldric II\n"
+"\n"
+"Nem vagyok benne biztos... Néhai atyám nem szentelt túl sok figyelmet a "
+"hadsereg felszerelésére, s már elég nagy az emberveszteségünk..."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/15_The_Treaty.cfg:88
-#, fuzzy
 msgid ""
 "@Landar\n"
 "\n"
 "I knew it! I always told you we stand alone!"
-msgstr "Tudtam! Mindig mondtam, hogy egyedül maradunk!"
+msgstr ""
+"@Landar\n"
+"\n"
+"Tudtam! Mindig mondtam, hogy egyedül állunk!"
 
 #. [scenario]: id=16_The_Chief_must_die
 #: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die.cfg:5
-#, fuzzy
 msgid "The Chief must die"
-msgstr "A királynak meg kell halnia"
+msgstr "A vezérnek meg kell halnia"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die.cfg:41
-#, fuzzy
 msgid ""
 "With the battle of Tath over, Kalenz and Landar knew the time had come to "
 "carry out Crelanu's dangerous but necessary plan. Meanwhile Cleodil had, "
 "reluctantly, been training Kalenz in a selected few of the secrets of "
 "Crelanu's book ..."
 msgstr ""
-"A weslathi csata sikeres megvívása után Kalenz és Landar tudta, hogy neki "
-"kell látniuk Crelanu legveszélyesebb tervének kivitelezéséhez. Ezalatt "
-"Cleodil megtanította Kalenzet Crelanu könyvének néhány titkára..."
+"A tathi csata végeztével Kalenz és Landar tudta, hogy neki kell látniuk "
+"Crelanu legveszélyesebb tervének kivitelezéséhez. Ezalatt Cleodil vonakodva "
+"megtanította Kalenzet Crelanu könyvének néhány válogatott titkára..."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die.cfg:47
@@ -3044,14 +3100,20 @@ msgid ""
 "safely. My heart aches when I think of you going into such danger as this. "
 "It is peril not merely to your body, but to the essence of yourself."
 msgstr ""
+"Cleodil\n"
+"Mindent megtanítottam nektek, amit mertem. Uram... Kalenz... imádkozom, hogy "
+"épségben térjetek vissza. Szívem szakad meg, ha arra gondolok, milyen "
+"veszélybe mentek. Veszedelmes nem csupán a testeteknek, de egész lényeteknek "
+"is."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die.cfg:52
-#, fuzzy
 msgid ""
 "Kalenz\n"
 "Cleodil..."
-msgstr "Cleodil"
+msgstr ""
+"Kalenz\n"
+"Cleodil..."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die.cfg:57
@@ -3060,6 +3122,9 @@ msgid ""
 "I do not think I could bear your death. Still less could I bear the "
 "corruption of your soul; the grief would ruin me."
 msgstr ""
+"Cleodil\n"
+"Nem hiszem, hogy kibírnám a halálod. Még kevésbé tudnám kibírni lelked "
+"sérülését; a bánat tönkretenne."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die.cfg:62
@@ -3068,16 +3133,19 @@ msgid ""
 "My eyes are open. To the danger, and...to you. You glow like a star in the "
 "night, Cleodil. You will be my guide out of darkness."
 msgstr ""
+"Kalenz\n"
+"Szemeim nyitva vannak. A veszélynek, és... neked. Mint csillag az "
+"éjszakában, úgy világítasz Cleodil. Te leszel a vezetőm a sötétségből kifelé."
 
 #. [side]: type=Orcish Sovereign, id=Great Chief Brurbar
 #: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die.cfg:77
 msgid "Great Chief Brurbar"
-msgstr ""
+msgstr "Brurbar Nagyvezér"
 
 #. [side]: type=Orcish Warlord, id=Tamitahan
 #: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die.cfg:93
 msgid "Tamitahan"
-msgstr ""
+msgstr "Tamitahan"
 
 #. [side]: type=Orcish Warlord, id=Khrubar
 #: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die.cfg:128
@@ -3094,20 +3162,16 @@ msgstr "Gvur"
 msgid "Ozul"
 msgstr "Ozul"
 
-# Így fordítottam, mert a játékban ez a célként van megjelölve
-# nermal93
 #. [objective]: condition=win
 #: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die.cfg:245
-#, fuzzy
 msgid "Kill the Orcish Great Chief and Kalenz must reach the signpost"
-msgstr ""
-"Megölöd az ork királyt és Kalenz eléri az erdőt a kezdő pozíciója mellett"
+msgstr "Megölöd az ork fővezért és Kalenz eléri az útjelzőt"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die.cfg:275
 msgid ""
 "Here we are at last. Landar, are you sure you want to go through with this?"
-msgstr "Na végre ideértünk. Landar, biztos, hogy velem akarsz jönni?"
+msgstr "Na végre, ideértünk. Landar, biztos, hogy velem akarsz jönni?"
 
 #. [message]: id=Landar
 #: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die.cfg:279
@@ -3116,37 +3180,33 @@ msgstr "Igen. Ne habozzunk!"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die.cfg:283
-#, fuzzy
 msgid ""
 "We need to kill the Great Chief and get out before the effect of the philter "
 "ends. Time to drink it down now!"
 msgstr ""
-"Meg kell ölnünk a királyt, s mihamarabb eltűnnünk, mielőtt az ital hatása "
-"szertefoszlik. Akkor egészségedre!"
+"Meg kell ölnünk a fővezért, s kijutnunk, mielőtt a bájital hatása megszűnik. "
+"Itt az idő, hogy fenékig ürítsük!"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die.cfg:327
-#, fuzzy
 msgid ""
 "This feels passing strange! Landar, remember to stay far from the wolves-"
 "they may be able to smell us."
 msgstr ""
-"Furcsa érzés! Landar, ne felejtsd el, hogy a farkasokat kerüljük ki, még "
-"szagot fognának..."
+"Furcsa érzés! Landar, ne felejtsd el, hogy a farkasokat kerüljük ki - még "
+"szagot fognának."
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die.cfg:345
-#, fuzzy
 msgid ""
 "The orcish chieftain is dead! Now we must make appear he was slain by an "
 "orcish hand!"
 msgstr ""
-"Az ork király halott. Rendezzük úgy a dolgokat, hogy úgy látszódjék, mintha "
-"ork kéztől esett volna el."
+"Az ork fővezér halott. Rendezzük el a dolgokat, hogy úgy látszódjék, mintha "
+"ork kéztől esett volna el!"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die.cfg:353
-#, fuzzy
 msgid "We are too late, the potion effects have worn off and we are visible!"
 msgstr "Késő, elillant az ital hatása, láthatóvá váltunk!"
 
@@ -3157,19 +3217,17 @@ msgstr "Kész!"
 
 #. [message]: id=Ozul
 #: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die.cfg:391
-#, fuzzy
 msgid ""
 "The Great Chief has been murdered! Whoever did it will only get da throne "
 "over my dead stinking body!"
 msgstr ""
-"A királyt megölték! Akárki csinálta is, az trónust csak a holttestemen át "
+"A fővezért megölték! Akárki csinálta is, a trónust csak a bűzlő hullámon át "
 "foglalhatja el!"
 
 #. [message]: id=Tamitahan
 #: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die.cfg:395
-#, fuzzy
 msgid "I am the strongest warlord! I will be Chief!"
-msgstr "Én vagyok a legerősebb hadúr! Én leszek a király!"
+msgstr "Én vagyok a legerősebb hadúr! Én leszek a fővezér!"
 
 #. [message]: id=Gvur
 #: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die.cfg:399
@@ -3178,27 +3236,24 @@ msgstr "Senki nem veheti el tőlem a trónomat!"
 
 #. [message]: id=Khrubar
 #: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die.cfg:403
-#, fuzzy
 msgid "This is my time and I will kill anyone who disputes it!"
-msgstr "Eljött az én időm, és nem ajánlom, hogy bárki is az utamba álljon!"
+msgstr "Eljött az én időm, és mindenkit megölök, aki megkérdőjelezi ezt!"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die.cfg:407
-#, fuzzy
 msgid "The plan is working! Now we will take back what's ours!"
-msgstr "Működik a terv! És most vegyük vissza azt, ami a miénk!"
+msgstr "Működik a terv! És most visszavesszük azt, ami a miénk!"
 
 #. [object]: id=invisibility_potion_{USER_ID}
 #: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die_utils.cfg:5
 msgid "Crelanu's philter affecting "
-msgstr ""
+msgstr "Crelanu bájitalának hatása"
 
 #. [hides]: id=invisible
 #: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die_utils.cfg:15
 #: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die_utils.cfg:16
-#, fuzzy
 msgid "invisible"
-msgstr "Láthatatlan tünde úr"
+msgstr "láthatatlan"
 
 #. [hides]: id=invisible
 #: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die_utils.cfg:18
@@ -3210,6 +3265,11 @@ msgid ""
 "initiate an attack on this unit. Defense is at 90 percent for every terrain "
 "except water, where it is 70 percent."
 msgstr ""
+"láthatatlan:\n"
+"Az ellenséges egységek nem látják ezt az egységet, kivéve a farkasok, amik "
+"kiszagolják, ha elég közel van. Emiatt a farkasokon kívül, az ellenséges "
+"egységek nem indítanak támadást ez ellen az egység ellen. A védelem 90 "
+"százalékos minden területen, kivéve vízben, ahol 70 százalék."
 
 #. [unit]: type=Goblin Pillager, id=Odrun
 #: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die_utils.cfg:55
@@ -3364,13 +3424,12 @@ msgstr "Muhmr"
 #. [unit]: type=Goblin Knight, id=Uhmit
 #: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die_utils.cfg:359
 msgid "Uhmit"
-msgstr ""
+msgstr "Uhmit"
 
 #. [unit]: type=Direwolf Rider, id=Mrat
 #: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die_utils.cfg:374
-#, fuzzy
 msgid "Mrat"
-msgstr "Mirqas"
+msgstr "Mrat"
 
 #. [unit]: type=Orcish Crossbowman, id=Cfrul
 #: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die_utils.cfg:389
@@ -3409,7 +3468,6 @@ msgstr "Az ostromgyűrű áttörése"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/17_Breaking_the_siege.cfg:22
-#, fuzzy
 msgid ""
 "With the orcs embroiled in a civil war, Kalenz seized the chance to take "
 "back his beloved home. Reports had been arriving of an enclave of Northern "
@@ -3417,11 +3475,11 @@ msgid ""
 "send a force to their aid. But harsh winter weather descended while it was "
 "en route..."
 msgstr ""
-"Mivel az orkok közt kitört a polgárháború, az alkalom kedvezett Kalenznek, "
-"hogy visszafoglalja szeretett hazáját. Eközben hírnök érkezett, aki arról "
-"tudósított, hogy az északi tündék maroknyi csapata körbezárva is tartja "
-"magát az ork behatolókkal szemben. Gyors döntés született a felmentésükre. "
-"De a tél is utolérte hőseinket..."
+"A polgárháborúba sodródott orkok nem fenyegettek, így Kalenz megragadta az "
+"alkalmat, hogy visszafoglalja szeretett hazáját. Hírek érkeztek az északi "
+"tündék egy maroknyi csapatáról, akik körbezárva is tartották magukat az ork "
+"behatolókkal szemben. Gyors döntés született egy felmentő sereg küldéséről. "
+"De útközben kemény tél lepte meg a vidéket..."
 
 #. [unit]: type=Orcish Warlord, id=Kior-Pur
 #: data/campaigns/Legend_of_Wesmere/scenarios/17_Breaking_the_siege.cfg:64
@@ -3446,21 +3504,19 @@ msgstr "Uradredia meghal"
 
 #. [message]: id=Kior-Pur
 #: data/campaigns/Legend_of_Wesmere/scenarios/17_Breaking_the_siege.cfg:222
-#, fuzzy
 msgid ""
 "I see troops coming from the south! It must be that our army has beaten "
 "these elves and humans and will now help us crush these remaining elves!"
 msgstr ""
-"Sereg közeledik délről! Kétségtelenül legyőztük a tündéket és az embereket, "
-"s most jönnek segíteni, hogy elsöpörjük ezeket a maradék tündéket!"
+"Sereget látok közeledni délről! Kétségtelenül legyőztük a tündéket és az "
+"embereket, s most jönnek segíteni, hogy elsöpörjük ezeket a maradék tündéket!"
 
 #. [message]: id=Uradredia
 #: data/campaigns/Legend_of_Wesmere/scenarios/17_Breaking_the_siege.cfg:226
-#, fuzzy
 msgid ""
 "Our defenses are stretched thin. Men, prepare to face another orcish attack!"
 msgstr ""
-"Meglehetősen leolvadt a véderőnk, de kitartunk! Készüljetek újabb ork "
+"Meglehetősen összezsugorodott a védelmünk. Tündék, készüljetek újabb ork "
 "rohamra!"
 
 #. [message]: id=Kalenz
@@ -3507,13 +3563,12 @@ msgstr "Orhtib"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/17_Breaking_the_siege.cfg:326
-#, fuzzy
 msgid ""
 "Before you die, know that you lost in Wesmere, you lost in Tath, you will "
 "lose here and that your Great Chief is dead!"
 msgstr ""
-"Mielőtt meghalsz, tudd meg, hogy elvesztetted Wesmeret, elvesztetted "
-"Weslathot, veszíteni fogsz itt is és a királyod halott."
+"Mielőtt meghalsz, tudd meg, hogy vesztettetek Wesmere-ben, vesztettetek "
+"Tathnál, veszteni fogtok itt is és a fővezéretek is halott."
 
 #. [scenario]: id=18_hour_of_glory
 #: data/campaigns/Legend_of_Wesmere/scenarios/18_Hour_of_Glory.cfg:3
@@ -3522,19 +3577,19 @@ msgstr "A dicsőség órája"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/18_Hour_of_Glory.cfg:15
-#, fuzzy
 msgid ""
 "@Cleodil\n"
 "\n"
 "Kalenz, your mission is complete. The orcish Great Chieftain is dead and you "
 "have recaptured your home. Yet I sense there is turmoil in your mind..."
 msgstr ""
-"Kalenz, végre teljes siker koronázta a küldetésedet. Az ork király meghalt, "
-"az otthonod felszabadult, mégsem tudsz megnyugodni..."
+"@Cleodil\n"
+"\n"
+"Kalenz, küldetésed sikerrel járt. Az ork fővezér meghalt, az otthonod "
+"felszabadult. Mégis nyugtalanságot érzek a gondolataidban..."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/18_Hour_of_Glory.cfg:21
-#, fuzzy
 msgid ""
 "@Kalenz\n"
 "\n"
@@ -3542,27 +3597,32 @@ msgid ""
 "cannot enjoy our victories, nor can I rest. I am fighting it every single "
 "moment."
 msgstr ""
-"Úgy van, ahogy mondod. Az az ital nem hagy nyugodni. Nem tudok gondtalanul "
-"örülni a győzelmeinknek, s képtelen vagyok megnyugodni. Szüntelenül "
-"harcolnom kell vele."
+"@Kalenz\n"
+"\n"
+"Úgy van, ahogy mondod, Cleodil. Az a bájital felemészt engem. Nem tudok "
+"gondtalanul örülni a győzelmeinknek, s képtelen vagyok megnyugodni. Minden "
+"egyes percben harcolnom kell vele."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/18_Hour_of_Glory.cfg:27
-#, fuzzy
 msgid ""
 "@Cleodil\n"
 "\n"
 "Crelanu warned us this might occur..."
-msgstr "Crelanu figyelmeztetett, hogy így lesz..."
+msgstr ""
+"@Cleodil\n"
+"\n"
+"Crelanu figyelmeztetett, hogy így lesz..."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/18_Hour_of_Glory.cfg:33
-#, fuzzy
 msgid ""
 "@Kalenz\n"
 "\n"
 "There was no other choice. Even if we die, it was worth it."
 msgstr ""
+"@Kalenz\n"
+"\n"
 "Nem volt más választásunk. De megérte, akkor is, ha végül belepusztulunk."
 
 #. [part]
@@ -3575,30 +3635,37 @@ msgid ""
 "you will overcome and master it. It will be hard and painful, but you will "
 "beat the potion. It is Landar that truly concerns me..."
 msgstr ""
-"Nem fogsz belehalni. Harcolnod kell ellene. Bízom benned. Harcolsz és "
-"legyőzöd. Kemény és fájdalmas küzdelem lesz, de legyőzöd az italt. De mi "
-"lesz Landarral, miatta aggódom... "
+"@Cleodil\n"
+"\n"
+"Nem fogsz belehalni. Harcolnod kell ellene. Bízom benned Kalenz... "
+"szerelmem... túl leszel rajta, és uralkodsz felette. Kemény és fájdalmas "
+"küzdelem lesz, de legyőzöd a bájitalt. Landar viszont... miatta igazán "
+"aggódom..."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/18_Hour_of_Glory.cfg:45
-#, fuzzy
 msgid ""
 "@Kalenz\n"
 "\n"
 "He seems to handle it better than do I..."
-msgstr "Pedig úgy látom sokkal jobban megbirkózik vele, mint én..."
+msgstr ""
+"@Kalenz\n"
+"\n"
+"Pedig úgy látom, sokkal jobban megbirkózik vele, mint én..."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/18_Hour_of_Glory.cfg:51
-#, fuzzy
 msgid ""
 "@Cleodil\n"
 "\n"
 "It does seem so, Kalenz. But I fear things may not be as they seem. Landar's "
 "mind has become dark and clouded to my healing senses."
 msgstr ""
-"Épp ez az, látszólag túl jól viseli. De félek, a dolgok nem úgy vannak, "
-"ahogy az kívülről látszik. Attól félek, hogy ő már a másik oldal foglya... "
+"@Cleodil\n"
+"\n"
+"Valóban úgy látszik, Kalenz. De félek, a dolgok nem úgy vannak, ahogy az "
+"kívülről látszik. Landar elméje sötét és ködös lett az én gyógyító érzékeim "
+"számára."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/18_Hour_of_Glory.cfg:57
@@ -3608,10 +3675,13 @@ msgid ""
 "I understand too well what that may portend, beloved, but I do not wish to "
 "believe it. Landar is my friend, near as dear to me as you are."
 msgstr ""
+"@Kalenz\n"
+"\n"
+"Túlságosan is értem, hogy mire célzol drágám, de nem akarom elhinni. Landar "
+"a barátom, közel olyan kedves nekem, mint te."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/18_Hour_of_Glory.cfg:63
-#, fuzzy
 msgid ""
 "@Cleodil\n"
 "\n"
@@ -3619,29 +3689,35 @@ msgid ""
 "unfriendly towards them, and ill-feeling is growing. I think the dwarves "
 "will leave us soon."
 msgstr ""
-"Néhány törpöt halva találtak a táborunkban. Landar nagyon barátságtalan "
-"hozzájuk. Azt hiszem a törpök hamarosan elhagynak minket."
+"@Cleodil\n"
+"\n"
+"Néhány törpöt halva találtak a táborunkban. Landar különösen barátságtalan "
+"hozzájuk, és az ellenszenve fokozódik. Azt hiszem, a törpök hamarosan "
+"elhagynak minket."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/18_Hour_of_Glory.cfg:69
-#, fuzzy
 msgid ""
 "@Kalenz\n"
 "\n"
 "I will try to mend matters between them..."
-msgstr "Megpróbálom elsimítani a dolgot közöttük..."
+msgstr ""
+"@Kalenz\n"
+"\n"
+"Megpróbálom elsimítani a dolgot közöttük..."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/18_Hour_of_Glory.cfg:75
-#, fuzzy
 msgid ""
 "@Cleodil\n"
 "\n"
 "I see I cannot convince you. Go, do as you must; but be careful Kalenz, for "
 "I fear for us all..."
 msgstr ""
-"Látom, nem tudtalak meggyőzni. Tedd, amit jónak látsz Kalenz, de légy "
-"óvatos, aggódom mindnyájunkért..."
+"@Cleodil\n"
+"\n"
+"Látom, nem tudtalak meggyőzni. Tedd, amit jónak látsz; de légy óvatos "
+"Kalenz, aggódom mindnyájunkért..."
 
 #. [scenario]: id=19_Costly_Revenge
 #: data/campaigns/Legend_of_Wesmere/scenarios/19_Costly_Revenge.cfg:4
@@ -3650,13 +3726,12 @@ msgstr "A bosszúnak ára van"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/19_Costly_Revenge.cfg:22
-#, fuzzy
 msgid ""
 "But Kalenz failed to persuade the dwarves. The dwarves left, and at Landar's "
 "insistence the elves marched on the empire of the Saurians..."
 msgstr ""
-"De Kalenz nem tudta visszatartani a törpöket. A törpök eltávoztak, s a "
-"Landar feltüzelte tündék a gyíkok ellen vonultak..."
+"De Kalenz nem tudta meggyőzni a törpöket. A törpök eltávoztak, s a Landar "
+"feltüzelte tündék a gyíkok birodalma ellen vonultak..."
 
 #. [side]: type=Saurian Flanker, id=Hgyr
 #: data/campaigns/Legend_of_Wesmere/scenarios/19_Costly_Revenge.cfg:69
@@ -3665,13 +3740,12 @@ msgstr "Hgyr"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/19_Costly_Revenge.cfg:140
-#, fuzzy
 msgid ""
 "We have finally reached Saurgrath, their capitol. Remember whose side they "
 "have taken in the war against us."
 msgstr ""
-"Végül elértük Saurgrathot, a gyíkok fővárosát. Ne feledjétek, melyik oldalon "
-"álltak ezekben a tündepróbáló időkben..."
+"Végre elértük Saurgrathot, a gyíkok fővárosát. Ne feledjétek, melyik oldalon "
+"álltak az ellenünk irányuló háborúban."
 
 #. [message]: id=Cleodil
 #: data/campaigns/Legend_of_Wesmere/scenarios/19_Costly_Revenge.cfg:144
@@ -3695,15 +3769,14 @@ msgstr "Tanácsi törvénykezés"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/20_Council_ruling.cfg:13
-#, fuzzy
 msgid ""
 "With the once mighty Saurian empire destroyed, saurians had been reduced to "
 "scattered bands lurking in waste places. But the Elves still had problems of "
 "their own..."
 msgstr ""
-"Miután legyőzték a hatalmas Gyík Birodalmat, a gyíkok soha többé nem tudtak "
-"államot szervezni Wesnoth földjén. Ám a tündéknek ezúttal saját köreiken "
-"belül gyűlt meg a bajuk..."
+"Miután legyőzték a valaha hatalmas Gyík Birodalmat, a túlélő gyíkok bandákba "
+"tömörülve fosztogatták az elhagyott helyeket. Ám a tündéknek még mindig "
+"megvolt a saját bajuk..."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/20_Council_ruling.cfg:24
@@ -3717,15 +3790,16 @@ msgid ""
 "attack the Saurians. These were decisions to be taken by the council, not by "
 "a field commander! "
 msgstr ""
-"Kalenz, azért állsz a Tanács előtt, hogy elszámolj tetteiddel. Úgy "
-"döntöttél, hogy megsegíted az embereket Weslathnál, kockáztatva egy még "
-"nagyobb háborút az orkokkal, csapást mértél az orkokra északon, s végül "
-"megtámadtad a gyíkokat. Ilyen döntéseket csak a Tanács hozhat, és senki más "
-"nem."
+"@Legmir\n"
+"\n"
+"Kalenz, a Tanács azért hívatott, hogy magyarázatot kérjen a tetteidre. Úgy "
+"döntöttél, hogy megsegíted az embereket Tathnál, kockáztatva egy még nagyobb "
+"háborút az orkokkal; csapást mértél az orkokra északon; s végül megtámadtad "
+"a gyíkokat. Ilyen döntéseket csak a Tanács hozhat, és nem egy mezei "
+"parancsnok!"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/20_Council_ruling.cfg:30
-#, fuzzy
 msgid ""
 "@Kalenz\n"
 "\n"
@@ -3735,89 +3809,98 @@ msgid ""
 "been beneficial to our cause: The orcs are now in a civil war for "
 "succession, the North Elves are free and the Saurians are no longer a threat."
 msgstr ""
-"Uraim, a kellő tisztelettel, de figyelmükbe ajánlanám, hogy háború volt, s "
-"még van is. Egyszerűen nem volt idő konzultációkra. Mindazonáltal minden "
-"akciónkkal az érdekeinket szolgáltuk, s célt is értünk: Az orkok "
-"trónharcokba keveredtek, az északi tündék szabadok, a gyíkok nem jelentenek "
-"többé fenyegetést. "
+"@Kalenz\n"
+"\n"
+"Uraim, a kellő tisztelettel, háború volt, s még van is. Nem vesztegethettünk "
+"időt a konzultációkra, s nem szalaszthattuk el a kedvező lehetőségeket, "
+"különben a háború hosszabbá és költségesebbé lett volna. Mindazonáltal "
+"minden tettünkkel az érdekeinket szolgáltuk: az orkok trónharcokba "
+"keveredtek, az északi tündék szabadok, és a gyíkok nem jelentenek többé "
+"fenyegetést."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/20_Council_ruling.cfg:36
-#, fuzzy
 msgid ""
 "@Uripur\n"
 "\n"
 "The council is not blind to these benefits. But, still, you cannot decide "
 "high matters of statecraft on behalf of the Elves. We cannot allow it."
 msgstr ""
-"A Tanács természetesen értékeli az elért eredményeket. De akkor sem "
-"dönthetsz egyedül a tündék nevében."
+"@Uripur\n"
+"\n"
+"A tanács nem vak, hogy ne venné észre az elért eredményeket. De akkor sem "
+"dönthetsz állami ügyekben a tündék nevében. Nem engedhetjük meg."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/20_Council_ruling.cfg:42
-#, fuzzy
 msgid ""
 "@Galtrid\n"
 "\n"
 "If it weren't for Kalenz and his men, none of us would be here to argue the "
 "point today. "
-msgstr "Ha Kalenz és csapata nem lett volna, ma nem tartanánk tanácskozást."
+msgstr ""
+"Galtrid\n"
+"\n"
+"Ha Kalenz és csapata nem lett volna, egyikünk se tárgyalná ma ezt a pontot.."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/20_Council_ruling.cfg:48
-#, fuzzy
 msgid ""
 "@Uradredia\n"
 "\n"
 "I agree. What's done is done. Let us concentrate on the future, not the "
 "past. "
 msgstr ""
+"@Uradredia\n"
+"\n"
 "Egyetértek. Ami történt, megtörtént. Nézzünk előre, ne merengjünk a múlton."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/20_Council_ruling.cfg:54
-#, fuzzy
 msgid ""
 "@Iradia\n"
 "\n"
 "Kalenz, the council has decided that you are to be stripped of all military "
 "authority. You may now go."
 msgstr ""
-"Kalenz, a Tanács úgy döntött, hogy megfoszt minden katonai tisztségedtől. "
-"Elmehetsz!"
+"@Iridia\n"
+"\n"
+"Kalenz, a tanács úgy döntött, hogy megfoszt minden katonai tisztségedtől. "
+"Most már elmehetsz!"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/20_Council_ruling.cfg:60
-#, fuzzy
 msgid ""
 "@Kalenz\n"
 "\n"
 "I lay down my burden humbly and gladly. But we need to have a strong army, "
 "as the orcs will return!"
 msgstr ""
-"Örömmel távozom. De szükségünk lesz egy erős seregre, mire az orkok "
-"visszajönnek."
+"@Kalenz\n"
+"\n"
+"Alázattal és örömmel szabadulok meg terhemtől. De szükségünk lesz egy erős "
+"seregre, mire az orkok visszajönnek!"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/20_Council_ruling.cfg:67
-#, fuzzy
 msgid ""
 "@Landar\n"
 "\n"
 "Cowards and traitors!"
-msgstr "Gyávák és árulók!"
+msgstr ""
+"@Landar\n"
+"\n"
+"Gyávák és árulók!"
 
 #. [scenario]: id=21_Elvish_Assassins
 #: data/campaigns/Legend_of_Wesmere/scenarios/21_Elvish_Assassins.cfg:12
-#, fuzzy
 msgid "Elvish Assassins"
 msgstr "Tünde orgyilkosok"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/21_Elvish_Assassins.cfg:33
-#, fuzzy
 msgid "After the council's decision, Kalenz and Cleodil retired in the North."
-msgstr "A Tanács határozata után Kalenz és Cleodil visszatért Északra.."
+msgstr "A Tanács határozata után Kalenz és Cleodil visszavonult Északra."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/21_Elvish_Assassins.cfg:37
@@ -3827,6 +3910,10 @@ msgid ""
 "the remnant evil Crelanu's philter had left in Kalenz. The two began to "
 "think of having children."
 msgstr ""
+"A háború nyomása alól felszabadulva, örömüket lelték egymásban. A szívük "
+"fonta köteléket a veszedelem és a halál közelsége csak szorosabbra fonta, és "
+"csaknem megsemmisítette a Crelanu bájitalából még megmaradt gonoszt. "
+"Családalapításon kezdtek gondolkodni."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/21_Elvish_Assassins.cfg:41
@@ -3835,6 +3922,9 @@ msgid ""
 "rising. And in the heart of Landar, who had once been their friend, evil was "
 "not vanquished, but festered and grew..."
 msgstr ""
+"De békéjük nem volt tartós. A külvilágban vérfolyamok áradtak. És Landar "
+"szívében, aki korábban barát volt, a gonosz nem pusztult el, hanem kiterjedt "
+"és nőttön nőtt..."
 
 #. [unit]: type=Elvish Ranger, id=Antaril
 #: data/campaigns/Legend_of_Wesmere/scenarios/21_Elvish_Assassins.cfg:67
@@ -3859,16 +3949,14 @@ msgstr "Kalenz eléri az útjelzőt"
 
 #. [unit]: id=Galenor, type=Elvish Scout
 #: data/campaigns/Legend_of_Wesmere/scenarios/21_Elvish_Assassins.cfg:248
-#, fuzzy
 msgid "Galenor"
-msgstr "Glen"
+msgstr "Galenor"
 
 #. [message]: id=Galenor
 #: data/campaigns/Legend_of_Wesmere/scenarios/21_Elvish_Assassins.cfg:258
-#, fuzzy
 msgid ""
 "My lord Kalenz, you are in great danger! You must leave here immediately."
-msgstr "Kalenz Úr! Nagy veszedelem fenyeget. Azonnal el kell menned innen."
+msgstr "Kalenz uram, nagy veszedelem fenyeget! Azonnal el kell menned innen."
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/21_Elvish_Assassins.cfg:262
@@ -3877,15 +3965,14 @@ msgstr "Micsoda?!"
 
 #. [message]: id=Galenor
 #: data/campaigns/Legend_of_Wesmere/scenarios/21_Elvish_Assassins.cfg:266
-#, fuzzy
 msgid ""
 "Landar has seized control of the army. He has eliminated the council and "
 "proclaimed himself High Warlord of the Elves. What is worse, there is word "
 "out that he has already ordered your assassination."
 msgstr ""
 "Landar átvette a sereg irányítását. Felszámolta a Tanácsot és magát "
-"kiáltotta ki Uralkodónak. S ami a legrosszabb, parancsot adott a "
-"kivégzésedre."
+"kiáltotta ki a tündék főparancsnokának. S ami a legrosszabb, pletykák "
+"terjednek, hogy parancsot adott a kivégzésedre."
 
 #. [message]: id=Crintil
 #: data/campaigns/Legend_of_Wesmere/scenarios/21_Elvish_Assassins.cfg:270
@@ -3894,34 +3981,30 @@ msgstr "Elkéstetek! Minden áruló meg fog halni!"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/21_Elvish_Assassins.cfg:274
-#, fuzzy
 msgid ""
 "Listen to me! We have fought and bled side by side. We must trust in each "
 "other and face the orcs together!"
 msgstr ""
-"Hallgassatok rám! Vállvetve harcoltunk egymás mellett, együtt ontottuk a "
-"vérünket. Nem harcolhatunk egymás ellen!"
+"Hallgassatok rám! Vállvetve harcoltunk és ontottuk vérünket. Meg kell "
+"egymásban bíznunk és együtt szembeszállni az orkokkal!"
 
 #. [message]: id=Oblil
 #: data/campaigns/Legend_of_Wesmere/scenarios/21_Elvish_Assassins.cfg:279
-#, fuzzy
 msgid "Do not listen to this traitor! You have all heard the order!"
-msgstr "Ne hallgassatok erre az árulóra! Hallottátok a parancsot."
+msgstr "Ne hallgassatok erre az árulóra! Mindannyian hallottátok a parancsot!"
 
 #. [message]: id=Galenor
 #: data/campaigns/Legend_of_Wesmere/scenarios/21_Elvish_Assassins.cfg:284
-#, fuzzy
 msgid ""
 "You should try to reach Uraredia and the North Elves. He too, has refused to "
 "join Landar. Word is that some troops still loyal to you are heading there."
 msgstr ""
-"Megpróbálhatnád elérni Uraderiát és az északi tündéket. Ők sem csatlakoztak "
-"Landarhoz. S néhány egység, amelyik még hűséges maradt hozzád, szintén "
-"errefelé tart."
+"Meg kell próbálnod elérni Uradrediát és az északi tündéket. Ők sem "
+"csatlakoztak Landarhoz. Hallani néhány hozzád hűséges egységről, akik "
+"szintén errefelé tartanak."
 
 #. [message]: speaker=unit
 #: data/campaigns/Legend_of_Wesmere/scenarios/21_Elvish_Assassins.cfg:303
-#, fuzzy
 msgid "Now we must fare swiftly to the North Elves!"
 msgstr "És most gyerünk az északi tündékhez!"
 
@@ -3932,18 +4015,17 @@ msgstr "Északi Háború"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/22_Northern_Battle.cfg:24
-#, fuzzy
 msgid ""
 "Kalenz and Cleodil managed to reach the North Elves to ask for help. Very "
 "soon, Landar's army appeared..."
 msgstr ""
-"Kalenz sikeresen elérte az északi tündéket, hogy segítséget kérjen. Igen "
-"hamar Landar serege is megérkezett..."
+"Kalenz és Cleodil sikeresen elérte az északi tündéket, hogy segítséget "
+"kérjenek. Igen hamar Landar serege is megérkezett..."
 
 #. [objective]: condition=win
 #: data/campaigns/Legend_of_Wesmere/scenarios/22_Northern_Battle.cfg:138
 msgid "Survive for six days"
-msgstr "Kitartasz 6 napig"
+msgstr "Kitartasz hat napig"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/22_Northern_Battle.cfg:188
@@ -3952,15 +4034,14 @@ msgid ""
 "potion. Let us help!"
 msgstr ""
 "Landar, hallgass meg! Ennek nem szabadott volna megtörténnie! Tudom, hogy az "
-"az ital az oka. Hadd segítsek!"
+"az ital az oka. Hadd segítsünk!"
 
 #. [message]: id=Landar
 #: data/campaigns/Legend_of_Wesmere/scenarios/22_Northern_Battle.cfg:192
-#, fuzzy
 msgid ""
 "Here is Kalenz. There can be no talk with traitors! Let none of them alive!"
 msgstr ""
-"Ez Kalenz. Nincs mit beszélni egy árulóval. Nem akarok élő ellenséget látni!"
+"Ez Kalenz. Nincs miről beszélni árulókkal. Senkit ne hagyjatok életben!"
 
 #. [message]: id=Landar
 #: data/campaigns/Legend_of_Wesmere/scenarios/22_Northern_Battle.cfg:211
@@ -3974,8 +4055,8 @@ msgid ""
 "We have yet to break their defenses! While we are getting weaker, the enemy "
 "is getting stronger! Retreat!"
 msgstr ""
-"Még nem tudtuk megtörni az ellenállásukat. Miközben mi gyengülünk, ők "
-"erősödnek. Vissza!"
+"Még meg kell törnünk a védelmüket! Miközben mi gyengülünk, az ellenség "
+"erősödik! Visszavonulás!"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/22_Northern_Battle.cfg:227
@@ -3989,7 +4070,6 @@ msgstr "A háború vége"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/23_End_of_War.cfg:22
-#, fuzzy
 msgid ""
 "It is said that the battle with the North Elves was the beginning of the end "
 "for Landar's revolt. But civil war smoldered on for many more years, neither "
@@ -4000,10 +4080,11 @@ msgid ""
 "Gitamoth... "
 msgstr ""
 "Azt mondják, hogy az északi tündékkel vívott csatával kezdődött Landar "
-"forradalmának bukása. Valójában a polgárháború évekig tartott, egyik fél sem "
-"tudott a másik fölé kerekedni... Landar követői közül sokan más utakra "
-"léptek. Kalenz sereget gyűjtött, majd régi barátja, mostani halálos "
-"ellensége, Landar ellen vonult a gitamothi erdőbe..."
+"forradalmának bukása. De a polgárháború még évekig elhúzódott, egyik fél sem "
+"tudott elég sereget gyűjteni a döntő győzelemhez. Egészen addig, amíg Landar "
+"egyre nyersebb és arrogánsabb módszerei el nem üldözték sok követőjét. "
+"Miután minden lehetséges hívét összegyűjtötte, Kalenz régi barátja, mostani "
+"halálos ellensége, Landar ellen vonult a gitamothi erdőbe..."
 
 #. [objective]: condition=win
 #: data/campaigns/Legend_of_Wesmere/scenarios/23_End_of_War.cfg:78
@@ -4012,7 +4093,6 @@ msgstr "Legyőzöd Landart"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/23_End_of_War.cfg:113
-#, fuzzy
 msgid ""
 "Landar, let us not spill any more elvish blood. Give up. We can help you!"
 msgstr "Landar, ne ontsunk több tünde vért. Add fel! Tudunk segíteni!"
@@ -4029,13 +4109,13 @@ msgstr "Végem van, most már pihenhetek!"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/23_End_of_War.cfg:131
-#, fuzzy
 msgid ""
 "I'm deeply grieved that it came to this, Landar. You were my best friend. I "
 "was blind to what the potion was doing to you. I was fighting it myself!"
 msgstr ""
-"Borzasztóan sajnálom Landar. Te voltál a legjobb barátom. Nem vettem észre, "
-"mit művelt veled az az ital. A saját harcommal voltam elfoglalva."
+"Borzasztóan sajnálom Landar, hogy idáig jutottunk. Te voltál a legjobb "
+"barátom. Nem vettem észre, mit művelt veled az a bájital. A saját harcommal "
+"voltam elfoglalva."
 
 #. [message]: id=Landar
 #: data/campaigns/Legend_of_Wesmere/scenarios/23_End_of_War.cfg:135
@@ -4047,22 +4127,22 @@ msgid ""
 "and brought death and disaster to our own people. I have even tried to kill "
 "my own friend. I am a disgrace to elven-kind."
 msgstr ""
-"Tudom, de én nem csak egy flaskával ittam. Biztosra akartam menni, hogy "
-"megöljük az ork királyt. S mit értem el? Elriasztottam a törp "
-"szövetségeseinket, halált és pusztulást zúdítottam népünkre. Még a legjobb "
-"barátomat is megpróbáltam megölni. Nem vagyok méltó a tünde névre."
+"Tudom. De nem a te hibád, mivel én nem csak egy flaskával ittam. Biztosra "
+"akartam menni, hogy megöljük az ork fővezért, ezért visszamentem egy második "
+"adagért, és azt is megittam. Elüldöztem a törp szövetségeseinket, halált és "
+"pusztulást zúdítottam népünkre. Még a legjobb barátomat is megpróbáltam "
+"megölni. Nem vagyok méltó a tünde névre."
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/23_End_of_War.cfg:139
-#, fuzzy
 msgid ""
 "It was not all your fault. May be the curse of Aquagar struck true, or may "
 "be yours was the blood-price fate required of us for victory. Rest well, my "
 "friend. Rest well Landar, Hero of the Elves!"
 msgstr ""
-"Nem a te bűnöd. Lehet, hogy Aquagar átka fogott, vagy ez az az ár, amit "
-"fizetnünk kell. Nyugodj békében barátom! Nyugodj békében Landar, a Tündék "
-"Hőse!"
+"Nem minden a te hibád. Lehet, hogy Aquagar átka fogott, vagy talán ez volt a "
+"vérdíj, amit a sors követelt győzelmünkért. Nyugodj békében barátom! Nyugodj "
+"békében Landar, a Tündék Hőse!"
 
 #. [scenario]: id=24_Epilogue
 #: data/campaigns/Legend_of_Wesmere/scenarios/24_Epilogue.cfg:3
@@ -4071,7 +4151,6 @@ msgstr "Epilógus"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/24_Epilogue.cfg:11
-#, fuzzy
 msgid ""
 "Kalenz buried Landar with full honors and made him a monument worthy of a "
 "true elvish hero."
@@ -4090,37 +4169,35 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/24_Epilogue.cfg:22
-#, fuzzy
 msgid ""
 "As Landar had wiped out the Elvish Council, Kalenz was unanimously chosen as "
 "High Lord of the Elves. North and South Elves swore allegiance to him."
 msgstr ""
-"Miután Landar eltörölte a Tünde Tanácsot, Kalenzet választották meg a Tündék "
-"Urának. Észak és Dél tündéi egyaránt letették a hűségesküt neki."
+"Miután Landar eltörölte a Tünde Tanácsot, Kalenzet választották meg "
+"egyhangúlag a Tündék Nagyurának. Észak és Dél tündéi egyaránt letették a "
+"hűségesküt neki."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/24_Epilogue.cfg:27
-#, fuzzy
 msgid ""
 "Kalenz reorganized the Elves so they could mobilize for war more readily. He "
 "knew that the orcish threat was not over; that the elves, through "
 "hesitation, had lost a golden opportunity to end the threat and that trouble "
 "would someday return."
 msgstr ""
-"Visszavonulása előtt gondoskodott arról, hogy a tündék készen álljanak. "
-"Tudta jól, hogy az ork fenyegetés még nem múlt el, s a tündék elvesztegették "
-"a legkedvezőbb időpontot a végső leszámolásra, s hogy ez megbosszulja "
-"magát... "
+"Kalenz újraszervezte a tündéket, hogy jobban készen álljanak a harcra. Tudta "
+"jól, hogy az ork fenyegetés még nem múlt el, hogy a tündék a habozás miatt "
+"elvesztegették a legkedvezőbb időpontot a végső leszámolásra, s a gondok egy "
+"nap visszatérnek."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/24_Epilogue.cfg:31
-#, fuzzy
 msgid ""
 "When Kalenz felt his work to have been done as well as it might be, he "
 "retired with Cleodil to their home in the Forest of Lintanir."
 msgstr ""
-"Kalenz még mindig küzdött az ereiben áramló gonosszal, így pihenésre "
-"visszatért északi otthonába Cleodillal."
+"Mikor Kalenz érezte, hogy feladatát olyan jól teljesítette, ahogy csak "
+"lehet, visszatért Cleodillal otthonukba, Lintanir erdejébe."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/24_Epilogue.cfg:36
@@ -4131,9 +4208,15 @@ msgid ""
 "accomplishment and love and laughter, Cleodil died after the manner of "
 "Elves, aging swiftly to a peaceful end."
 msgstr ""
+"Cleodil világra hozta Kalenz gyermekeit, akik magasak és gyönyörűek voltak, "
+"teljes mértékben örökölték mind anyjuk gyógyító képességét, mind apjuk "
+"tehetséges, kutató szellemét. Az idők végén, egy hosszú, eredményekkel, "
+"szeretettel és nevetéssel teli élet után, Cleodil tünde módon, gyorsan "
+"öregedve jutott el a békés véghez."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/24_Epilogue.cfg:39
+#, fuzzy
 msgid ""
 "But Kalenz's story was not yet over. Aquagar's curse was fulfilled; "
 "prolonged in life by Crelanu's philter, he outlived not only his beloved but "
@@ -4143,6 +4226,13 @@ msgid ""
 "times and places when his people were in dire straits, and succor them with "
 "wisdom or magic or his bright keen blade."
 msgstr ""
+"De Kalenz története még nem ért véget. Aquagar átka beteljesedett; Crenalu "
+"bájitala hosszú életet adományozott, nem csupán szerelmét, de gyermekeit is "
+"túlélte. Népétől halhatatlansága miatt eltávolodott, menekülve elvesztett "
+"szerettei képétől, melyek folyton felderengtek szemei előtt, elhagyta "
+"otthonát és sok évig vándorolt a Nagy Kontinensen. Gyakran váratlan időben "
+"és helyen bukkant fel, ahol népe szűkölködött, és segítette őket "
+"bölcsességével, vagy varázslattal, vagy fényes és éles pengéjével."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/24_Epilogue.cfg:42
@@ -4151,6 +4241,9 @@ msgid ""
 "was most alone, seek ye the tale of Delfador the Great and the fall of the "
 "usurping Queen Asheviere."
 msgstr ""
+"Hogy megismerd Kalenz utolsó és talán legnagyobb tetteit, és azokat, amelyek "
+"legtöbbjét egyedül hajtotta végre, keresd meg Delfador a Hatalmas és a "
+"trónbitorló Asheviere királynő bukásának történetét."
 
 #: data/campaigns/Legend_of_Wesmere/utils/characters.cfg:5
 msgid "Kalenz"
@@ -4184,12 +4277,12 @@ msgstr "Legyőztek!"
 #. [message]: speaker=unit
 #: data/campaigns/Legend_of_Wesmere/utils/deaths.cfg:44
 msgid "I am finished! I can finally rest!"
-msgstr ""
+msgstr "Végeztem! Végre megpihenhetek!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Legend_of_Wesmere/utils/deaths.cfg:50
 msgid "Farewell, Kalenz!"
-msgstr ""
+msgstr "Ég veled, Kalenz!"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/utils/deaths.cfg:56
@@ -4199,12 +4292,12 @@ msgstr "Neeem! Nem tudjuk Landar nélkül folytatni!"
 #. [message]: speaker=unit
 #: data/campaigns/Legend_of_Wesmere/utils/deaths.cfg:70
 msgid "I'm sorry I failed you, Kalenz...beloved..."
-msgstr ""
+msgstr "Sajnálom, elbuktam Kalenz... szerelmem..."
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/utils/deaths.cfg:74
 msgid "Nooo! Cleodil! Without you I cannot go on!"
-msgstr ""
+msgstr "Neee! Cleodil! Nélküled nem tudom folytatni!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Legend_of_Wesmere/utils/deaths.cfg:88
@@ -4223,8 +4316,8 @@ msgid ""
 "Before you die, know that you lost in Wesmere, you lost at Tath, you will "
 "lose here and that your Great Chief is dead!"
 msgstr ""
-"Mielőtt meghalsz, tudd meg, hogy elvesztetted Wesmeret, elvesztetted "
-"Weslathot, veszíteni fogsz itt is és a királyod halott."
+"Mielőtt meghalsz, tudd meg, hogy vesztettetek Wesmere-ben, vesztettetek "
+"Tathnál, veszteni fogtok itt is és a fővezéretek is halott."
 
 #. [message]: speaker=unit
 #: data/campaigns/Legend_of_Wesmere/utils/deaths.cfg:128
@@ -4243,9 +4336,8 @@ msgstr "Megmondtam!"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Legend_of_Wesmere/utils/deaths.cfg:147
-#, fuzzy
 msgid "Know that you perished at the hands of the Kalenz's elves!"
-msgstr "Csak hogy tudd! Kalenz tündéinek keze által pusztulsz el!"
+msgstr "Tudd meg, hogy Kalenz tündéinek keze által pusztulsz el!"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/utils/deaths.cfg:158
@@ -4256,7 +4348,7 @@ msgstr "Ne! Mindennek vége!"
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/utils/deaths.cfg:174
 msgid "Farewell $unit.name. Your loyal service won't be forgotten."
-msgstr ""
+msgstr "Ég veled $unit.name! Hűséges szolgálatodat nem feledjük."
 
 #. [message]: speaker=unit
 #: data/campaigns/Legend_of_Wesmere/utils/deaths.cfg:182
@@ -4265,9 +4357,8 @@ msgstr "Ó ne! Elkéstünk..."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Legend_of_Wesmere/utils/low-macros.cfg:148
-#, fuzzy
 msgid "You retrieve $amount_gold pieces of gold."
-msgstr "Hozzájutottál {AMOUNT} aranyhoz."
+msgstr "Hozzájutottál $amount_gold aranyhoz."
 
 #~ msgid "Maintenance toolchain"
 #~ msgstr "Karbantartási folyamat"
@@ -4281,25 +4372,24 @@ msgstr "Hozzájutottál {AMOUNT} aranyhoz."
 #~ " Teldar,js138,l'ultimo cruco,Mad Max, Rhuvaen, breversa, Sly, Zookeeper, "
 #~ "Invisible Philosopher, Big Bad Joe and many others"
 #~ msgstr ""
-#~ "A Wesnoth közösségnek a visszajelzésekért, kritikákért, a WML kód és "
-#~ "grafikával kapcsolatos segítségért. Különleges említést érdemel: Scott, "
+#~ "A Wesnoth közösségének a visszajelzésekért, kritikákért, a WML kóddal és "
+#~ "a grafikával kapcsolatos segítségért. Külön említést érdemel: Scott, "
 #~ "Turin, Selfish Weirdo,\n"
 #~ "Teldar, js138, l'ultimo cruco, Mad Max, Rhuvaen, breversa, Sly, "
 #~ "Zookeeper, Invisible Philosopher, Big Bad Joe és még sokan mások."
 
-#, fuzzy
 #~ msgid ""
 #~ "Before you die, know that you lost in Wesmere, you lost in Weslath, you "
 #~ "will lose here and that your Great Chief is dead!"
 #~ msgstr ""
-#~ "Mielőtt meghalsz, tudd meg, hogy elvesztetted Wesmeret, elvesztetted "
-#~ "Weslathot, veszíteni fogsz itt is és a királyod halott."
+#~ "Mielőtt meghalsz, tudd meg, hogy vesztettetek Wesmere-ben, vesztettetek "
+#~ "Tathnál, veszíteni fogtok itt is és a fővezéred is halott!"
 
 #~ msgid ""
 #~ "Like all Mages, the Drake Mages are capable of using magic in battle."
 #~ msgstr ""
-#~ "Mint minden mágus, a perzsekény mágusok is képesek varázslatokat "
-#~ "használni a harcban."
+#~ "Mint minden mágus, a perzsekény mágus is képes varázslatokat használni a "
+#~ "harcban."
 
 #~ msgid "staff"
 #~ msgstr "bot"
@@ -4307,33 +4397,23 @@ msgstr "Hozzájutottál {AMOUNT} aranyhoz."
 #~ msgid "fire breath"
 #~ msgstr "tűzokádás"
 
-#, fuzzy
-#~ msgid "Defeat an enemy Leader!"
-#~ msgstr "Legyőzöd az ellenséges vezéreket"
-
-#, fuzzy
 #~ msgid "Protect an allied leader!"
-#~ msgstr "Védd Galtridot"
+#~ msgstr "Védj meg egy szövetséges vezért!"
 
-#, fuzzy
 #~ msgid ""
 #~ "Follow the story of Kalenz and the Elves in Wesnoth and their fight for "
 #~ "survival from the second orcish invasion to the times of Konrad and "
 #~ "Delfador."
 #~ msgstr ""
-#~ "Kövesd végig Kalenz történetét és a wesnothi tündék élethalálharcát a "
-#~ "második ork betöréstől Konrad és Delfador idejéig."
+#~ "Kövesd végig Kalenz és a wesnothi tündék történetetét és élethalálharcát "
+#~ "a Második Ork Betöréstől Konrad és Delfador idejéig."
 
-#, fuzzy
 #~ msgid "(Intermediate level, 32 scenarios)"
-#~ msgstr "(Közepes nehézség, 32 pálya)"
+#~ msgstr "(Közepes nehézség, 32 küldetés)"
 
-#~ msgid "Version:"
-#~ msgstr "Verzió:"
-
-#, fuzzy
 #~ msgid "(for Battle for Wesnoth 1.5.5 or greater (or svn HEAD))"
-#~ msgstr "(Harc Wesnothért 1.4.x változatokhoz)"
+#~ msgstr ""
+#~ "(Harc Wesnothért 1.5.5 vagy frissebb változatokhoz (vagy svn verzióhoz))"
 
 #~ msgid ""
 #~ "In a small isolated peninsula north of Wesnoth a young elf, named Kalenz "
@@ -4345,10 +4425,9 @@ msgstr "Hozzájutottál {AMOUNT} aranyhoz."
 #~ "Wesnoth északi részén egy elzárt kis félszigeten egy fiatal tünde "
 #~ "nevelkedett. A neve Kalenz... Béke honolt a környéken, s Kalenz kiválóan "
 #~ "képzett fiatal tündévé lett. Bár ereiben nem nemesi vér csörgedezett, "
-#~ "képességeivel már kivívta a közösség tiszteletét... Ezidőtájt kezdtek az "
-#~ "emberek Wesnothba áramlani..."
+#~ "képességeivel korán kivívta a közösség tiszteletét... Ezidőtájt kezdtek "
+#~ "az emberek Wesnothba áramlani..."
 
-#, fuzzy
 #~ msgid ""
 #~ "Unfortunately, along with humans came the Orcs. The elves were never "
 #~ "happy to go to war, and they were completely unprepared for what was to "
@@ -4359,16 +4438,14 @@ msgstr "Hozzájutottál {AMOUNT} aranyhoz."
 #~ "Balszerencse volt, hogy az emberekkel egyidőben az orkok is megjelentek. "
 #~ "A tündék sosem örültek a háborúskodásnak, és ami következett, arra "
 #~ "végképp nem készültek. A helyi vezetők öregek és gyengék voltak... Ez "
-#~ "Kalenz története. Egyúttal a tündéké is, még az emberek wesnothi "
-#~ "berendezkedésének idejében."
+#~ "Kalenz története. Egyúttal a tündéké is, még a wesnothi emberek idejében."
 
-#, fuzzy
 #~ msgid ""
 #~ "Kalenz was right and I was wrong. Let a few of us hold them off while the "
 #~ "rest go join Kalenz now you still can!"
 #~ msgstr ""
 #~ "Kalenznek volt igaza, én tévedtem. Néhányan tartsuk fel az orkokat, a "
-#~ "többiek csatlakozzanak Kalenzhez, amíg még nem késő!"
+#~ "többiek csatlakozzanak Kalenzhez, amíg még tudnak!"
 
 #~ msgid ""
 #~ "Kalenz and his band were able to break their encirclement, but found out "
@@ -4383,10 +4460,9 @@ msgstr "Hozzájutottál {AMOUNT} aranyhoz."
 #~ "Look, the orcs have landed. They will be attacking you too any minute "
 #~ "now. This is no time to fight among ourselves!"
 #~ msgstr ""
-#~ "Nézd, az orkok partraszálltak. Titeket is meg fognak támadni egy percen "
+#~ "Nézd, az orkok partraszálltak. Titeket is meg fognak támadni percekenn "
 #~ "belül. Nincs időnk veletek harcolni!"
 
-#, fuzzy
 #~ msgid ""
 #~ "No, we were also attacked up north. Anyway, we'll talk later. Now let's "
 #~ "drive these foul orcs out of our forest! Then surely the allied elvish "
@@ -4420,9 +4496,8 @@ msgstr "Hozzájutottál {AMOUNT} aranyhoz."
 #~ "A tünde felderítők gyorsan megtalálták a gyíkok nyomait és Kalenz erői "
 #~ "hamarosan a kincstárukhoz értek..."
 
-#, fuzzy
 #~ msgid "Let's help the dwarves - looks like they could need some help."
-#~ msgstr "Segítsünk a törpöknek, mert úgy néz ki, rájuk férne a segítség."
+#~ msgstr "Segítsünk a törpöknek - úgy néz ki, rájuk férne egy kis segítség."
 
 #~ msgid "Join with the elves? I think you're pushing it boy!"
 #~ msgstr "Csatlakozni a tündékhez? Mit nem képzelsz fiú!"
@@ -4439,7 +4514,7 @@ msgstr "Hozzájutottál {AMOUNT} aranyhoz."
 #~ "in time..."
 #~ msgstr ""
 #~ "További összetűzések nélkül Kalenz és csapata éppen idejében ért vissza "
-#~ "Wesmerebe..."
+#~ "Wesmere-be..."
 
 #~ msgid "It's an honour for me to command our troops."
 #~ msgstr "Megtiszteltetés számomra, hogy irányíthatom az egységeinket."
@@ -4447,7 +4522,6 @@ msgstr "Hozzájutottál {AMOUNT} aranyhoz."
 #~ msgid "Sorry, i can't accept the responsibility."
 #~ msgstr "Sajnálom, nem vállalhatom a felelősséget."
 
-#, fuzzy
 #~ msgid ""
 #~ "Legmir\n"
 #~ "\n"
@@ -4455,6 +4529,8 @@ msgstr "Hozzájutottál {AMOUNT} aranyhoz."
 #~ "do follow your suggestion. Besides, we are not as skilled in fighting "
 #~ "outside our forests."
 #~ msgstr ""
+#~ "Legmir\n"
+#~ "\n"
 #~ "Sok tündét vesztettünk a háborúban. Attól tartok, nem lenne bölcs dolog "
 #~ "követni a javaslatodat. Azonkívül nem vagyunk túl képzettek az erdőn "
 #~ "kívüli harcban."
@@ -4465,17 +4541,18 @@ msgstr "Hozzájutottál {AMOUNT} aranyhoz."
 #~ "Biztosra kell mennünk, a mágusnak haja szála sem görbülhet. Segítsünk "
 #~ "neki!"
 
-#, fuzzy
 #~ msgid ""
 #~ "Cleodil\n"
 #~ "\n"
 #~ "No! this is too dark and dangerous!"
-#~ msgstr "Ne! Ez túl sötét és veszélyes!"
+#~ msgstr ""
+#~ "Cleodil\n"
+#~ "\n"
+#~ "Ne! Ez túl sötét és veszélyes!"
 
 #~ msgid "Kutrubekis"
 #~ msgstr "Kutrubekis"
 
-#, fuzzy
 #~ msgid ""
 #~ "Cleodil\n"
 #~ "\n"
@@ -4483,28 +4560,23 @@ msgstr "Hozzájutottál {AMOUNT} aranyhoz."
 #~ "radiation needs to be shielded by placing it in a pure gold encasement. "
 #~ "Maybe this is the reason for your father's strange behavior."
 #~ msgstr ""
+#~ "Cleodil\n"
+#~ "\n"
 #~ "Megtudtuk, hogy a tulajdonosára káros hatással bír. Le kell árnyékolni a "
 #~ "kisugárzását, színarany tokba kell zárni. Meglehet ez a káros kisugárzás "
 #~ "okozta atyád különös viselkedését."
 
-#~ msgid "King Brurbar"
-#~ msgstr "Brurbar király"
-
-#, fuzzy
 #~ msgid ""
 #~ "Kalenz\n"
 #~ "\n"
 #~ "No way! Why do you say this?"
-#~ msgstr "Az nem lehet! Miért mondod ezt?"
+#~ msgstr ""
+#~ "Kalenz\n"
+#~ "\n"
+#~ "Az nem lehet! Miért mondod ezt?"
 
 #~ msgid "...but things were about to get interesting again..."
 #~ msgstr "...de a dolgok újra váratlan fordulatot vettek..."
-
-#~ msgid "Gailetkis"
-#~ msgstr "Gailetkis"
-
-#~ msgid "First Epilogue"
-#~ msgstr "Első epilógus"
 
 #~ msgid "The return of trouble"
 #~ msgstr "A viharfelhők újra gyülekeznek"
@@ -4525,15 +4597,6 @@ msgstr "Hozzájutottál {AMOUNT} aranyhoz."
 #~ "övezeteit. Kalenz gyorsan összeverbuvált egy kis sereget. A háború "
 #~ "visszatért a tündék földjére."
 
-#~ msgid "Knafa-ord"
-#~ msgstr "Knafa-ord"
-
-#~ msgid "Tan-drul"
-#~ msgstr "Tan-drul"
-
-#~ msgid "Krardul"
-#~ msgstr "Krardul"
-
 #~ msgid "Clartakis"
 #~ msgstr "Clartakis"
 
@@ -4549,13 +4612,6 @@ msgstr "Hozzájutottál {AMOUNT} aranyhoz."
 #~ "This is what we have been training for! Now we drive these beasts back!"
 #~ msgstr "Ez az, amire készültünk. Söpörjük ki innen ezt a csürhét!"
 
-#~ msgid "The orcs are retreating! "
-#~ msgstr "Az orkok hátrálnak!"
-
-#~ msgid "Egonas"
-#~ msgstr "Egonas"
-
-#, fuzzy
 #~ msgid ""
 #~ "We have just received word that a large orcish force has attacked in Lake "
 #~ "Glirfindol. Galtrid is already on his way there."
@@ -4583,21 +4639,16 @@ msgstr "Hozzájutottál {AMOUNT} aranyhoz."
 #~ "korábban a béke és nyugalom szigeteként volt ismert..."
 
 #~ msgid "Big Fish"
-#~ msgstr "nagy hal"
+#~ msgstr "Nagy hal"
 
-#, fuzzy
 #~ msgid "Here we are. This mountain mist looks dangerous!."
-#~ msgstr "Itt vagyunk. Ez a hegyi köd veszélyesnek tűnik.."
+#~ msgstr "Itt vagyunk. Ez a hegyi köd veszélyesnek tűnik!"
 
 #~ msgid "River crossing"
 #~ msgstr "Átkelés a folyón"
 
-#, fuzzy
 #~ msgid "Kalenz moved North to take the fight to Zorlan..."
-#~ msgstr "Kalenz Északra ment, hogy megküzdjön Zorlannal..."
-
-#~ msgid "Brugr"
-#~ msgstr "Brugr"
+#~ msgstr "Kalenz Északra ment, hogy megtámadja Zorlant..."
 
 #~ msgid ""
 #~ "We need to cross the river. This is probably the best chance we'll get, "
@@ -4606,7 +4657,6 @@ msgstr "Hozzájutottál {AMOUNT} aranyhoz."
 #~ "Át kell kelnünk a folyón. Valószínűleg ez a legjobb lehetőségünk, de meg "
 #~ "kell küzdenünk velük."
 
-#, fuzzy
 #~ msgid "Elves! They must not cross!"
 #~ msgstr "Tündék! Nem szabad átkelniük!"
 
@@ -4665,7 +4715,6 @@ msgstr "Hozzájutottál {AMOUNT} aranyhoz."
 #~ msgid "Shadows in the dark"
 #~ msgstr "Árnyak a sötétben"
 
-#, fuzzy
 #~ msgid ""
 #~ "Following Ur-Thorodor's directions the elves moved north to meet the "
 #~ "forces of the orcs..."
@@ -4702,15 +4751,6 @@ msgstr "Hozzájutottál {AMOUNT} aranyhoz."
 #~ msgid "Nameless"
 #~ msgstr "Névtelen"
 
-#~ msgid "Hraul"
-#~ msgstr "Hraul"
-
-#~ msgid "Atrag"
-#~ msgstr "Atrag"
-
-#~ msgid "Horr"
-#~ msgstr "Horr"
-
 #~ msgid "Nfrigt"
 #~ msgstr "Nfrigt"
 
@@ -4719,18 +4759,6 @@ msgstr "Hozzájutottál {AMOUNT} aranyhoz."
 
 #~ msgid "We have more help!"
 #~ msgstr "Több segítségre van szükségünk!"
-
-#~ msgid "Haunt"
-#~ msgstr "Haunt"
-
-#~ msgid "Gdal"
-#~ msgstr "Gdal"
-
-#~ msgid "Oltr"
-#~ msgstr "Oltr"
-
-#~ msgid "Orbl"
-#~ msgstr "Orbl"
 
 #~ msgid "Nifigt"
 #~ msgstr "Nifigt"
@@ -4750,19 +4778,9 @@ msgstr "Hozzájutottál {AMOUNT} aranyhoz."
 #~ msgid "Igler"
 #~ msgstr "Igler"
 
-#~ msgid "Larsin"
-#~ msgstr "Larsin"
-
-#~ msgid "Aldrin"
-#~ msgstr "Aldrin"
-
-#~ msgid "Droni"
-#~ msgstr "Droni"
-
 #~ msgid "Arthur"
 #~ msgstr "Arthur"
 
-#, fuzzy
 #~ msgid ""
 #~ "I am Delfador the great! Foul creatures, time to be put to your final "
 #~ "rest!"
@@ -4773,30 +4791,18 @@ msgstr "Hozzájutottál {AMOUNT} aranyhoz."
 #~ msgid "We have help now! Let's take the fight to them!"
 #~ msgstr "Már van segítségünk! Harcra fel!"
 
-#, fuzzy
-#~ msgid " New Objective: Defeat all enemies"
-#~ msgstr "Legyőzöd minden ellenséged"
-
-#~ msgid "Death of Delfador"
-#~ msgstr "Delfador elesik"
-
-#~ msgid "Krumful"
-#~ msgstr "Krumful"
-
 #~ msgid "Unhul"
 #~ msgstr "Unhul"
 
-#, fuzzy
 #~ msgid ""
 #~ "So you are Delfador...Ur-Thorodor told us about you. But we thought you "
 #~ "were dead or trapped in the Land of the Dead...I am Kalenz, lord of the "
 #~ "elves. We are in your debt today."
 #~ msgstr ""
 #~ "Szóval te vagy Delfador... Ur-Thorodor beszélt nekünk rólad. De azt "
-#~ "hittük meghaltál, vagy a Holtak Földjén csapdába estél. Kalenz vagyok, a "
-#~ "Tündék Ura. Nagy szolgálatot tettél ma nekünk. Tartozunk neked."
+#~ "hittük meghaltál, vagy a Holtak Földjén csapdába estél... Kalenz vagyok, "
+#~ "a Tündék Ura. Ma az adósaid lettünk."
 
-#, fuzzy
 #~ msgid ""
 #~ "It is an honor to meet you. I escaped from the Land of the Dead. I am "
 #~ "chasing Iliah-Malal, the leader of the undead."
@@ -4817,9 +4823,8 @@ msgstr "Hozzájutottál {AMOUNT} aranyhoz."
 #~ msgstr ""
 #~ "Az orkok csapatostul kelnek át a folyón. A királyunknak minden segítségre "
 #~ "szüksége van. Szükségünk lehet a ti segítségetekre is, hogy elhárítsuk a "
-#~ "támadást. Majd később foglalkozok az élőholtakkal. "
+#~ "támadást. Majd később foglalkozom az élőholtakkal. "
 
-#, fuzzy
 #~ msgid ""
 #~ "Our experience with Wesnoth Kings has not been too good. At first we "
 #~ "thought it was that unshielded ruby of fire, but even after we told Aldar "
@@ -4828,9 +4833,10 @@ msgstr "Hozzájutottál {AMOUNT} aranyhoz."
 #~ "you."
 #~ msgstr ""
 #~ "Wesnoth királyaival kapcsolatban nincsenek túl jó tapasztalataink. "
-#~ "Először úgy gondoltuk, hogy a Tűz Rubinjának kisugárzása az oka, de hiába "
-#~ "került színarany tokba a Rubint, királyaitok önteltsége mit sem "
-#~ "változott. De tartozunk neked Delfador. Veled megyünk."
+#~ "Először úgy gondoltuk, hogy a védtelen Tűz Rubinjának kisugárzása az oka, "
+#~ "de miután mondtuk Aldarnak és II. Haldricnak, és színarany tokba került, "
+#~ "önteltségük mit sem változott. De tartozunk neked Delfador, csatlakozunk "
+#~ "hozzád."
 
 #~ msgid ""
 #~ "What? The gold in sceptre is not at all pure! I must advise the King. But "
@@ -4852,26 +4858,8 @@ msgstr "Hozzájutottál {AMOUNT} aranyhoz."
 #~ msgid "but the King was in an unenviable position..."
 #~ msgstr "de a király egyáltalán nem volt irigylésre méltó helyzetben..."
 
-#~ msgid "Garard"
-#~ msgstr "Garard"
-
-#~ msgid "Zorlan"
-#~ msgstr "Zorlan"
-
-#~ msgid "T'bhan"
-#~ msgstr "T'bhan"
-
 #~ msgid "Qgthun"
 #~ msgstr "Qgthun"
-
-#~ msgid "Trgrau"
-#~ msgstr "Trgrau"
-
-#~ msgid "Defeat Zorlan"
-#~ msgstr "Legyőzöd Zorlant "
-
-#~ msgid "Death of Garard"
-#~ msgstr "Garard elesik"
 
 #~ msgid ""
 #~ "It looks like we have arrived just in time! King Garard stands surrounded "
@@ -4890,7 +4878,7 @@ msgstr "Hozzájutottál {AMOUNT} aranyhoz."
 #~ "Elves! I heard you have been looking for me! But you will save neither "
 #~ "the human King, nor yourselves."
 #~ msgstr ""
-#~ "Tündék! Úgy hallottam engem kerestek. De nem fogjátok kimenteni az "
+#~ "Tündék! Úgy hallottam, engem kerestek. De nem fogjátok kimenteni az "
 #~ "emberek királyát, s ti is elpusztultok."
 
 #~ msgid ""
@@ -4899,9 +4887,6 @@ msgstr "Hozzájutottál {AMOUNT} aranyhoz."
 #~ msgstr ""
 #~ "Ennek kell lennie a vezérnek. Most kell őt likvidálni, mielőtt túl nagy "
 #~ "hatalomra tesz szert. "
-
-#~ msgid "Victory! "
-#~ msgstr "Győzelem!"
 
 #~ msgid ""
 #~ "Delfador! And you, elvish friends! The kingdom of Wesnoth is in your debt "
@@ -4919,17 +4904,16 @@ msgstr "Hozzájutottál {AMOUNT} aranyhoz."
 #~ msgid "We are happy to have fought by your side."
 #~ msgstr "Örülünk, hogy mellettetek harcolhattunk."
 
-#, fuzzy
 #~ msgid ""
 #~ "King Garard, we have more urgent matters. Leollyn sent me on a mission to "
 #~ "find out why the dead are restless. A foul necromancer has opened a "
 #~ "portal to the land of the dead. This must be closed at all costs and I am "
 #~ "afraid my skills are insufficient for that task."
 #~ msgstr ""
-#~ "Garard király! Van néhány sürgető feladatunk. Leollyn megbízott, hogy "
+#~ "Garard király, ennél sürgetőbb feladatunk van. Leollyn megbízott, hogy "
 #~ "derítsem ki, miért nyugtalanok a holtak. Egy aljas holtidéző kaput "
 #~ "nyitott a holtak földjéhez. Le kell zárnunk ezt a kaput, kerül, amibe "
-#~ "kerül. Csak sajnos az én képességeim ehhez nem elegendőek. "
+#~ "kerül, és félek, ehhez az én képességeim nem elegendőek."
 
 #~ msgid ""
 #~ "Kalenz, I feel Delfador is the chosen one. The one who can be trusted "
@@ -4964,8 +4948,8 @@ msgstr "Hozzájutottál {AMOUNT} aranyhoz."
 #~ msgstr ""
 #~ "Delfador! A mi fegyvereink gyengék az élőholtak ellen, de talán mégis "
 #~ "tudunk segíteni. A tünde erdők sok csapást megértek már azóta, mióta "
-#~ "Crelanu rábízta varázskönyvét Cleodilra. A könyv óriási tudásanyaggal "
-#~ "bír. Mindazt tartalmazza, amit Crelanu életében összegyűjtött."
+#~ "Crelanu rábízta varázskönyvét Cleodilra. A könyv óriási tudásanyagot "
+#~ "tartalmaz. Mindazt tartalmazza, amit Crelanu életében összegyűjtött."
 
 #~ msgid ""
 #~ "The book was entrusted to Cleodil, until someone worthy of it came along. "
@@ -5024,13 +5008,12 @@ msgstr "Hozzájutottál {AMOUNT} aranyhoz."
 #~ "élőholt fenyegetésnek, s általa bárcsak boldogabb idők jönnének rád, mint "
 #~ "amilyeneket ránk hozott..."
 
-#, fuzzy
 #~ msgid ""
 #~ "Thank you friends. May we meet in happier times. Now I must make haste, "
 #~ "for I need to study the book and prepare for the battle with the undead. "
 #~ "Then, I will talk the King into shielding the sceptre properly."
 #~ msgstr ""
-#~ "Köszönöm barátaim. Remélem találkozunk ezekben a boldogabb időkben. Most "
+#~ "Köszönöm barátaim. Remélem találkozunk majd boldogabb időkben. Most "
 #~ "gyorsan kell cselekednem, tanulmányoznom kell a könyvet, és felkészülnöm "
 #~ "az élőholtak elleni csatára. Azután beszélni fogok a királlyal a jogar "
 #~ "megfelelő tokozásáról."
@@ -5054,15 +5037,14 @@ msgstr "Hozzájutottál {AMOUNT} aranyhoz."
 #~ "De Delfador sem ügyelhetett mindenre Wesnothban. A királynő befolyása "
 #~ "egyre erősödött..."
 
-#, fuzzy
 #~ msgid ""
 #~ "One day reports came of Wesnoth forces seizing by force elvish land on "
 #~ "the border with Wesnoth. Kalenz gathered a small force and hurried to the "
 #~ "disputed land."
 #~ msgstr ""
-#~ "Egy napon arról érkeztek hírek, hogy wesnothi seregek tünde területeket "
-#~ "foglaltak el a határ mentén. Kalenz kis sereget verbuvált és a vitatott "
-#~ "területre indult."
+#~ "Egy napon arról érkeztek hírek, hogy wesnothi seregek erőszakkal tünde "
+#~ "területeket foglaltak el a határ mentén. Kalenz kis sereget verbuvált és "
+#~ "a vitatott területre indult."
 
 #~ msgid "Eldred"
 #~ msgstr "Eldred"
@@ -5070,18 +5052,14 @@ msgstr "Hozzájutottál {AMOUNT} aranyhoz."
 #~ msgid "Lowel"
 #~ msgstr "Lowel"
 
-#~ msgid "Defeat Eldred"
-#~ msgstr "Legyőzöd Eldredet"
-
-#, fuzzy
 #~ msgid ""
 #~ "Wesnoth Generals, you have attacked defenseless elvish land. You must "
 #~ "leave immediately. I am Kalenz, lord of the elves. You can ask the great "
 #~ "Delfador to confirm my words."
 #~ msgstr ""
-#~ "Wesnothi tábornokok! Védtelen tünde területet foglaltatok el. Azonnal "
-#~ "távozzatok innen. Én mondom ezt, Kalenz, a Tündék Ura. Kérdezzétek meg "
-#~ "Delfadort, igazolni fogja a szavaimat.  "
+#~ "Wesnothi tábornokok, védtelen tünde területet foglaltatok el. Azonnal "
+#~ "távozzatok innen. Kalenz vagyok, a Tündék Ura. Kérdezzétek meg a nagy "
+#~ "Delfadort, igazolni fogja a szavaimat."
 
 #~ msgid ""
 #~ "This is elvish land no more. I, Eldred, prince of Wesnoth and heir to the "
@@ -5097,7 +5075,6 @@ msgstr "Hozzájutottál {AMOUNT} aranyhoz."
 #~ msgid "Delfador"
 #~ msgstr "Delfador"
 
-#, fuzzy
 #~ msgid ""
 #~ "Peace Friends! I have been riding nonstop for days to prevent this "
 #~ "madness! Eldred, I have direct orders from the King to take you back to "
@@ -5106,10 +5083,11 @@ msgstr "Hozzájutottál {AMOUNT} aranyhoz."
 #~ "promises to do anything in his power to make amends."
 #~ msgstr ""
 #~ "Megálljatok! Napok óta megállás nélkül lovagoltam, hogy megakadályozzam "
-#~ "ezt az őrültséget. Eldred, a király személyes parancsával jövök, "
+#~ "ezt az őrültséget! Eldred, a király személyes parancsával jövök, "
 #~ "visszarendelt a palotába, ahol személyesem számol veled emiatt a "
-#~ "megbocsáthatatlan incidens miatt. A király legmélyebb sajnálatát fejezi "
-#~ "ki e sajnálatos események miatt, s kész arra, hogy elégtételt nyújtson. "
+#~ "megbocsáthatatlan tett miatt. Kalenz, a király legmélyebb sajnálatát "
+#~ "fejezi ki e sajnálatos események miatt, s megígérte hogy kárpótol "
+#~ "titeket, ahogy erejéből telik."
 
 #~ msgid ""
 #~ "Delfador! I am glad to see you. We have no demands on the King, but I "
@@ -5132,29 +5110,19 @@ msgstr "Hozzájutottál {AMOUNT} aranyhoz."
 #~ msgid "Hero's Return"
 #~ msgstr "A Hős visszatérése"
 
-#, fuzzy
 #~ msgid ""
 #~ "Sparing Eldred's life proved to be a very costly mistake. Eldred betrayed "
 #~ "his father and took the throne, only to be slain by Delfador. After the "
 #~ "subsequent ascension to the throne by Asheviere the elves had no contact "
 #~ "with the humans, save for Delfador and his new protege, Konrad."
 #~ msgstr ""
-#~ "Eldred életének megkímélése, súlyos hibának bizonyult. Azután, hogy "
-#~ "Eldred elárulta Garardot Abeznél (lásd az 'A trónörökös' című "
-#~ "hadjáratot), majd Asheviere került a trónra, a tündéknek megszakadt a "
-#~ "kapcsolatuk az emberekkel. Egyedül Delfadort és új védencét, Konrádot "
-#~ "rejtették el. Ám egy napon valóra vált Cleodil félelme: Asheviere ork "
-#~ "zsoldosaival megtámadta a déli tündéket... Kalenz gyorsan összeverbuválta "
-#~ "seregét... "
+#~ "Eldred életének megkímélése, súlyos hibának bizonyult. Eldred elárulta "
+#~ "apját, és elfoglalta a trónt, csak azért, hogy Delfador megölje. Miután "
+#~ "Asheviere lépett trónra a tündék minden kapcsolatot megszakítottak az "
+#~ "emberekkel, megmentve ezzel Delfadort és új védencét, Konrádot."
 
 #~ msgid "T'umqin"
 #~ msgstr "T'umqin"
-
-#~ msgid "Ocrhan"
-#~ msgstr "Ocrhan"
-
-#~ msgid "Vragul"
-#~ msgstr "Vragul"
 
 #~ msgid ""
 #~ "Looks like the orcs have attacked in force... This is the place Delfador "
@@ -5173,45 +5141,28 @@ msgstr "Hozzájutottál {AMOUNT} aranyhoz."
 #~ msgstr ""
 #~ "Orkok, utoljára tettétek a lábaitokat az erdeinkbe! Készüljetek a halálra!"
 
-#, fuzzy
 #~ msgid ""
 #~ "Ha! This will be your end. The humans are no longer on your side. And "
 #~ "with the Queen's gold, we can get many who will fight for us!"
 #~ msgstr ""
-#~ "Haha! Neked lesz véged! Az emberek többé nem állnak mellettetek. A "
-#~ "királynő pénzén pedig számtalan zsoldost fogadhatunk!"
+#~ "Ha! Neked lesz véged! Az emberek többé nem állnak mellettetek. A királynő "
+#~ "pénzén pedig számtalan olyant fogadhatunk, aki harcol értünk!"
 
 #~ msgid "Victory!"
 #~ msgstr "Győzelem!"
 
-#, fuzzy
 #~ msgid ""
 #~ "My Lord Kalenz, you are urgently needed at a council meeting at the "
 #~ "Ka'lian. Delfador will also be there among the human rebels!"
 #~ msgstr ""
-#~ "Kalenz Uram! Sürgősen Ka'lianba kell sietned tanácskozásra. Hamarosan "
-#~ "Delfador is megérkezik oda a lázadó emberekkel."
-
-#~ msgid "Kfalru"
-#~ msgstr "Kfalru"
-
-#~ msgid "Grituw"
-#~ msgstr "Grituw"
-
-#~ msgid "Krigrul"
-#~ msgstr "Krigrul"
-
-#~ msgid "Orthib"
-#~ msgstr "Orthib"
+#~ "Kalenz Uram! Sürgősen a Ka'lianhoz kell sietned tanácskozásra. Hamarosan "
+#~ "Delfador is megérkezik oda a lázadó emberekkel!"
 
 #~ msgid "Ukhtan"
 #~ msgstr "Ukhtan"
 
 #~ msgid "Ha! More of us are coming! You elves are lost!"
 #~ msgstr "Hohó! Még többen leszünk! Ti tündék elvesztetek!"
-
-#~ msgid "Athburil"
-#~ msgstr "Athburil"
 
 #~ msgid "Panorea"
 #~ msgstr "Panorea"
@@ -5225,21 +5176,11 @@ msgstr "Hozzájutottál {AMOUNT} aranyhoz."
 #~ msgid "Kletskis"
 #~ msgstr "Kletskis"
 
-#~ msgid "Pribol"
-#~ msgstr "Pribol"
-
 #~ msgid "Ilendal"
 #~ msgstr "Ilendal"
 
 #~ msgid "Arthanar"
 #~ msgstr "Arthanar"
-
-#~ msgid "Gliglus"
-#~ msgstr "Gliglus"
-
-#~ msgid ""
-#~ "After the end of Asheviere, Kalenz returned to his home in the North."
-#~ msgstr "Asheviere halála után, Kalenz visszatért otthonába Északra."
 
 #~ msgid ""
 #~ "Some say he lived happily there; The elves still recognized them as their "
@@ -5254,30 +5195,24 @@ msgstr "Hozzájutottál {AMOUNT} aranyhoz."
 #~ msgstr ""
 #~ "Wesnoth erdei és mezői, tündéi és emberei számtalan évszakot megértek."
 
-#, fuzzy
 #~ msgid "Kalenz's story lived from mouth to mouth for the coming generations."
 #~ msgstr ""
 #~ "Kalenz története szájról szájra terjedt tovább a következő generációk "
 #~ "alatt."
 
-#, fuzzy
 #~ msgid ""
 #~ "But even many years later many said he was still roaming the forests of "
 #~ "Wesnoth, making sure they will be forever home to the elves of Wesnoth, "
 #~ "for the elves, like humans, had paid in much blood and suffering to learn "
 #~ "that nothing in the world of Wesnoth comes for free."
 #~ msgstr ""
-#~ "De még sok-sok évvel később is az a hír járta, ott suhan az erdők fái "
-#~ "között, megbizonyosodván arról, hogy Wesnoth tündéinek megvan-e még az "
-#~ "otthonuk, az otthonuk, amelyért, akárcsak az emberek, óriási véráldozatot "
-#~ "hoztak, s tengernyi szenvedés árán tanulták meg, hogy Wesnoth földjén "
-#~ "semmit nem adnak ingyen. "
+#~ "De még sok-sok évvel később is többen állították, hogy Wesnoth erdeit "
+#~ "járja, megbizonyosodván arról, hogy Wesnoth tündéinek örökre otthont "
+#~ "biztosítanak, a tündék, ahogy az emberek is sok vérrel és szenvedéssel "
+#~ "fizettek, mire megtanulták, Wesnoth világában semmit nem adnak ingyen."
 
 #~ msgid "ice shot"
 #~ msgstr "jégcsóva"
-
-#~ msgid "sword"
-#~ msgstr "kard"
 
 #~ msgid "bow"
 #~ msgstr "íj"
@@ -5314,62 +5249,32 @@ msgstr "Hozzájutottál {AMOUNT} aranyhoz."
 #~ msgid "You will terrorize Wesnoth no more!"
 #~ msgstr "Soha többé nem terrorizáljátok Wesnothot!"
 
-#~ msgid "There goes Wesnoth's only hope!"
-#~ msgstr "Elszállt Wesnoth egyetlen reménye!"
-
 #~ msgid "The King has fallen! Now Wesnoth will fail!"
-#~ msgstr "A Király elesett! Most Wesnothnak vége!"
-
-#~ msgid "We made it! Now onward to Wesmere! Hurry!"
-#~ msgstr "Megcsináltuk! Most irány Wesmere! Gyorsan!"
+#~ msgstr "A Király elesett! Most Wesnothnak is vége!"
 
 #~ msgid "What are your orders Kalenz?"
 #~ msgstr "Mik a parancsaid Kalenz?"
 
 #~ msgid "Stay with your current orders!"
-#~ msgstr "Kövesd az aktuális utasításokat!"
+#~ msgstr "Kövesd az eddigi utasításokat!"
 
 #~ msgid "Goto the castle in the middle!"
 #~ msgstr "Menj középre a kastélyba!"
 
-#~ msgid "Protect El'Isomithir"
-#~ msgstr "Védd El'Isomithirt"
-
 #~ msgid "Protect the Southern Castle"
 #~ msgstr "Védd a Déli Kastélyt"
-
-#~ msgid "I have failed!"
-#~ msgstr "Elbuktam!"
-
-#~ msgid "No! It's hopeless without Landar!"
-#~ msgstr "Ne! Landar nélkül reménytelen!"
 
 #~ msgid "No, with Galtrid gone, we are doomed!"
 #~ msgstr "Nem! Galtrid nélkül kudarcra vagyunk ítélve!"
 
-#~ msgid "We cannot continue without Olurf!"
-#~ msgstr "Nem folytathatjuk Olurf nélkül!"
-
-#~ msgid "Not Cleodil!"
-#~ msgstr "Cleodil ne!"
-
 #~ msgid "Uripur"
 #~ msgstr "Uripur"
-
-#~ msgid "Iradia"
-#~ msgstr "Iradia"
 
 #~ msgid "Legmir"
 #~ msgstr "Legmir"
 
-#~ msgid "Watch out!!"
-#~ msgstr "Figyelj!!"
-
 #~ msgid "Haldric II"
 #~ msgstr "II. Haldric"
-
-#~ msgid "It's all over"
-#~ msgstr "Mindennek vége."
 
 #~ msgid "No! We have failed!"
 #~ msgstr "Nem! Elbuktunk!"
@@ -5402,8 +5307,8 @@ msgstr "Hozzájutottál {AMOUNT} aranyhoz."
 #~ "A tünde fejvadászok nagy gyakorlatra tettek szert a csatározás minden "
 #~ "válfajában. Őket tekintik az erdőlakók közt a legjobbaknak szerte "
 #~ "Wesnothban. Az erdőben könnyen rajtaütnek ellenségeiken, mivel a fák "
-#~ "takarásában láthatatlanokká válnak. S csak akkor észlelik őket, ha "
-#~ "támadnak. A láthatatlan egységeket nagyon rettentően ritkán találják el.\n"
+#~ "takarásában láthatatlanokká válnak. Csak akkor észlelik őket, ha "
+#~ "támadnak. A láthatatlan egységeket szinte lehetetlen eltalálni.\n"
 #~ "Különleges megjegyzés:"
 
 #~ msgid ""
@@ -5425,10 +5330,10 @@ msgstr "Hozzájutottál {AMOUNT} aranyhoz."
 #~ msgstr ""
 #~ "A tünde nagyurak félelmetes harcosok. Rövid távon kardjukkal mérnek "
 #~ "súlyos csapásokat, hosszú távon pusztító tűzgolyókat lövellnek az "
-#~ "ellenségre. Láthatatlan egységként különösen nehéz megütni őket."
+#~ "ellenségre. Láthatatlan egységként különösen nehéz eltalálni őket."
 
 #~ msgid "faerie fire"
-#~ msgstr "mesebeli tűz"
+#~ msgstr "tündéri tűz"
 
 #~ msgid ""
 #~ "The nobility of the elves are possessed of merit to match their standing "
@@ -5454,8 +5359,8 @@ msgstr "Hozzájutottál {AMOUNT} aranyhoz."
 #~ "A tünde mesterlövészek igen gyakorlott íjászok. Képességeik garantálják, "
 #~ "hogy 60%-os biztonsággal találják el az ellenséget bármely terepen. Ez a "
 #~ "nagy jártasságuk az íjászatban kompenzálja a közelharci hiányosságaikat "
-#~ "és a viszonylagos lassúságukat. Láthatatlan egység lévén, nehéz őket "
-#~ "megütni.\n"
+#~ "és a viszonylagos lassúságukat. A láthatatlan egységeket nagyon nehéz "
+#~ "eltalálni.\n"
 #~ "Különleges megjegyzés:"
 
 #~ msgid "longbow"
@@ -5476,8 +5381,8 @@ msgstr "Hozzájutottál {AMOUNT} aranyhoz."
 #~ "rövidtávú, mind a hosszútávú küzdelemben. A vadászok igazán sokoldalú "
 #~ "harcosok. A legjobbak az erdőlakók között. A vadászok eltűnnek az erdő "
 #~ "fái között, csak akkor vehetők észre, ha megtámadják az ellenséget, vagy "
-#~ "közvetlen közelségbe kerülnek azzal. Láthatatlan egység, nagyon nehéz "
-#~ "megütni.\n"
+#~ "közvetlen közelségbe kerülnek azzal. A láthatatlan egységeket nagyon "
+#~ "nehéz eltalálni.\n"
 #~ "Különleges megjegyzés:"
 
 #~ msgid "Elvish Sharpshooter Invisible"
@@ -5493,5 +5398,5 @@ msgstr "Hozzájutottál {AMOUNT} aranyhoz."
 #~ "A legkiválóbb íjászok egész Wesnothban a tünde elit íjászok. Elképesztő "
 #~ "célzóképesség és 60 %-os találati gyakoriság jellemzi őket, emellett "
 #~ "nagyon gyorsak is. Az elit íjászok kitűnőek az elsáncolt ellenség "
-#~ "tizedelésében. Láthatatlan egység, nagyon nehéz megütni őket.\n"
+#~ "tizedelésében. A láthatatlan egységeket szinte lehetetlen eltalálni.\n"
 #~ "Különleges megjegyzés:"

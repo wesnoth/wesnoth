@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-12-09 22:14+0100\n"
-"PO-Revision-Date: 2008-11-19 17:17+0100\n"
+"PO-Revision-Date: 2008-12-10 01:53+0100\n"
 "Last-Translator: Leandro Regueiro <leandro DOT regueiro AT gmail DOT com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "MIME-Version: 1.0\n"
@@ -49,7 +49,6 @@ msgstr "Cabaleiro"
 
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:21
-#, fuzzy
 msgid ""
 "An evil mage is threatening the small village of Maghre and its inhabitants. "
 "The villages mage Bjarn send for his brother to help, but not all goes as "
@@ -58,9 +57,9 @@ msgid ""
 "(Novice level, 4 scenarios; the 'Hard' version may challenge more "
 "experienced players.)"
 msgstr ""
-"Un malvado mago está ameazando á vila local e ós seus habitantes. Cando o "
-"seu líder Bjarn solicita a axuda do seu irmán Arne, resultan victoriosos, "
-"pero Bjarn é raptado. Podes rescatalo?\n"
+"Un malvado mago está ameazando á pequena vila de Maghre e ós seus "
+"habitantes. Bjarn, o mago da vila solicita a axuda do seu irmán Arne, pero "
+"non todo resulta como querian. Pódeslles axudar ti?\n"
 "\n"
 "(Nivel principiante, 4 escenarios; a versión 'Dificil' pode esixir xogadores "
 "con máis experiencia.)"
@@ -140,10 +139,13 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:56
+#, fuzzy
 msgid ""
 "Heeding the call of his amulet, Arne gathered such men as he could and "
 "hurried to Maghre to help Bjarn."
 msgstr ""
+"           a chamada do seu        amuleto    , Arne reuniu tantos homes "
+"como puido e foi a présa a Maghre para axudarlle a Bjarn."
 
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:105
@@ -265,7 +267,7 @@ msgstr "Inimigos"
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:331
 msgid "Greetings, my brother! How may my men and I be of aid?"
-msgstr ""
+msgstr "Saúdos, irmán! Como che podemos axudar eu e mailos meus homes?"
 
 #. [message]: speaker=Bjarn
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:335
@@ -282,6 +284,9 @@ msgid ""
 "I can feel Mordak's foul touch on the hidden currents of the earth and air. "
 "He is somewhere due north of here, I would say not more than two days' ride."
 msgstr ""
+"Podo sentir a noxenta man de Mordak nas correntes ocultas da terra e do "
+"aire. Está nalgures ó norte de aquí, diria que a non máis de dous días a "
+"cabalo."
 
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:343
@@ -289,6 +294,8 @@ msgid ""
 "I will lead my men, and such villagers as can keep up with us, north to slay "
 "this Mordak! What will you do?"
 msgstr ""
+"Guiarei ós meus homes, e ós viláns que poidan vir connosco, ó norte para "
+"matar a ese Mordak! Que vas facer ti?"
 
 #. [message]: speaker=Bjarn
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:347
@@ -312,6 +319,8 @@ msgid ""
 "Bjarn has not made his attack! I begin to fear for him... and it means we "
 "must deal with this Mordak ourselves!"
 msgstr ""
+"Bjarn non atacou! Empezo a temer por el... e iso significa que debemos "
+"ocuparnos nós mesmos dese Mordak!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:381
@@ -321,7 +330,7 @@ msgstr "Argh!"
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:385
 msgid "Good work, men! But what has become of my brother?"
-msgstr ""
+msgstr "Bo traballo, homes! Pero que foi do meu irmán?"
 
 #. [message]: speaker=unit
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:389
@@ -334,6 +343,7 @@ msgid ""
 "There's nothing more to be had from this one; we will have to search for "
 "Bjarn ourselves!"
 msgstr ""
+"A este non lle imos quitar máis; teremos que buscar nós mesmos a Bjarn!"
 
 #. [message]: role=Reporter
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:397
@@ -341,6 +351,8 @@ msgid ""
 "Sir, our scouts report that Bjarn was seen captured and carried away further "
 "north!"
 msgstr ""
+"Señor, os nosos exploradores informan de que viron como capturaban a Bjarn e "
+"o levaban máis ó norte!"
 
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:401
@@ -351,6 +363,7 @@ msgstr ""
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:414
 msgid "Your brother's plan to ambush me has failed. He is our prisoner now."
 msgstr ""
+"O plan do teu irmán para emboscarme fracasou. Agora é o meu prisioneiro."
 
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:418
@@ -361,14 +374,12 @@ msgstr ""
 
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:433
-#, fuzzy
 msgid "I hear these creatures are nigh-immune to our weapons, let us see!"
 msgstr ""
 "Escoitei que estas criaturas son case inmunes ás nosas armas, vexámolo!"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:448
-#, fuzzy
 msgid "That was not so hard!"
 msgstr "Non foi tan difícil!"
 
@@ -431,6 +442,8 @@ msgid ""
 "It is whispered that hungry ghosts rule this forest, and kill everyone who "
 "dares to enter."
 msgstr ""
+"Coméntase que fantasmas famentos gobernan este bosque, e que matan a todo "
+"aquel que ousa entrar nel."
 
 #. [message]: speaker=Nil-Galion
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:278
@@ -568,7 +581,7 @@ msgstr ""
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:424
 msgid "Bind him and take him with us. If he has played us false, he will die."
-msgstr ""
+msgstr "Atádeo e levémolo connosco. Se nos enganou, ha morrer."
 
 #. [unit]: id=Brena, type=Iron Mauler
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:436
@@ -581,6 +594,8 @@ msgid ""
 "Greetings. I am Brena, a knight errant. I saw you pursuing and fighting the "
 "foul undead. Are there more of them to be destroyed?"
 msgstr ""
+"Noraboa. Son Brena, un cabaleiro errante. Vinvos perseguindo e loitando "
+"contra os noxentos non mortos. Quedan máis por destruír?"
 
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:452
@@ -588,6 +603,8 @@ msgid ""
 "Aye. We think there's a nest of them north-east of here. They've captured my "
 "brother."
 msgstr ""
+"Así é. Pensamos que hai un tobo deles ó norleste de aquí. Colleron ó meu "
+"irmán."
 
 #. [message]: speaker=Brena
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:456
@@ -603,9 +620,8 @@ msgstr "Só fará que vaiamos máis lentos!"
 
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:464
-#, fuzzy
 msgid "It is my place to decide this."
-msgstr "Eu son o que decide."
+msgstr "Eu son o que decide isto."
 
 #. [option]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:466
@@ -648,14 +664,14 @@ msgstr "Escapóusenos..."
 
 #. [message]: speaker=Nil-Galion
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:534
-#, fuzzy
 msgid ""
 "Foolish human, you have killed me but you will not catch the undead in time. "
 "I have fulfilled my contract, and will be reanimated soon to become a lord "
 "of their armies."
 msgstr ""
-"Humano parvo, matáchesme pero non poderás acadar ós non mortos. Cumprin co "
-"pacto e reanimaranme cedo para señor un Señor dos seus exércitos."
+"Humano parvo, matáchesme pero non poderás acadar ós non mortos a tempo. "
+"Cumprin co meu pacto, e hanme reanimar cedo para converterme nun señor dos "
+"seus exércitos."
 
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:538
@@ -723,12 +739,12 @@ msgstr "Rescatar a Bjarn"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:319
-#, fuzzy
 msgid ""
 "Arne's men arrived at the castle and were immediately challenged by some "
 "guards."
 msgstr ""
-"Arne chegou ó castelo e foi desafiado inmediatamente por algúns dos gardas."
+"Os homes de Arne chegaron ó castelo e foron desafiados inmediatamente por "
+"algúns dos gardas."
 
 #. [message]: speaker=Guard_leader
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:323
@@ -873,13 +889,10 @@ msgstr "Hai unha chave na súa roupa."
 
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:652
-#, fuzzy
 msgid ""
 "That may well be the key to the cell they're holding Bjarn in! I will take "
 "it."
-msgstr ""
-"Esta debe ser a chave da cela onde reteñen a Bjarn! Collerei a chave. Non "
-"podo agardar para ver ó meu irmán. Veña, vaiamos liberalo."
+msgstr "Esta debe ser a chave da cela onde reteñen a Bjarn! Collerei a chave."
 
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:658
@@ -903,9 +916,8 @@ msgstr "Atopei a Bjarn. Está nesta cela."
 
 #. [message]: speaker=Bjarn
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:758
-#, fuzzy
 msgid "Good to see you, Arne. Now get out of this dungeon, please?"
-msgstr "Alégrome de verte, Arne. Axúdame a saír deste calabozo."
+msgstr "Alégrome de verte, Arne. Podemos saír agora deste calabozo?"
 
 #. [message]: speaker=Bjarn
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:764
@@ -914,21 +926,19 @@ msgstr "Debes ser un dos homes de Arne. Axúdame a saír deste calabozo."
 
 #. [message]: speaker=Bjarn
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:770
-#, fuzzy
 msgid ""
 "The accursed dark sorcerer Rotharik has imprisoned me behind this magically "
 "enhanced iron gate. It can only be opened with the correct key. You must get "
 "it from him to free me."
 msgstr ""
-"A maldita Feiticeira Escura Rotharik pechoume detrás desta porta de ferro "
-"máxica mellorada. Só se pode abrir ca chave correcta. Debes conseguila dela "
-"para liberarme."
+"A maldita feiticeira escura Rotharik pechoume detrás desta porta de ferro "
+"máxica mellorada. Só se pode abrir ca chave correcta. Debes quitarlla para "
+"liberarme."
 
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:781
-#, fuzzy
 msgid "Kill the dark sorcerer to get the cell key"
-msgstr "Mata á feiticeira escura para obter a chave da cela"
+msgstr "Mata ó feiticeiro escuro para obter a chave da cela"
 
 #. [message]: speaker=Bjarn
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:822
@@ -1004,21 +1014,19 @@ msgstr ""
 
 #. [message]: speaker=Bjarn
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:167
-#, fuzzy
 msgid ""
 "No, they are fleeing from something. We must find out what is happening over "
 "there!"
 msgstr ""
-"Non. Están fuxindo de algo. Temos que enterarnos de que está ocorrendo aquí!"
+"Non, están fuxindo de algo. Temos que enterarnos de que está ocorrendo alí!"
 
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:171
 msgid "Men! Ready your weapons!"
-msgstr ""
+msgstr "Homes! Preparade as armas!"
 
 #. [message]: speaker=Bjarn
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:175
-#, fuzzy
 msgid ""
 "We should go there and talk to Counselor Hoban. Maybe he knows what is going "
 "on here."
@@ -1028,7 +1036,6 @@ msgstr ""
 
 #. [message]: speaker=Councillor Hoban
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:186
-#, fuzzy
 msgid "I am glad to see you returned."
 msgstr "Alégrome de verte de volta."
 
@@ -1039,19 +1046,22 @@ msgstr ""
 
 #. [message]: speaker=Councillor Hoban
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:194
+#, fuzzy
 msgid ""
 "Soon after you departed we were beset by orcs. With half the men of Maghre "
 "gone, we could not stop them."
 msgstr ""
+"Pouco despois de que vos forades os orcos                 . Ca metade dos "
+"homes de Maghre fóra, non fomos quen de detelos."
 
 #. [message]: speaker=Councillor Hoban
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:198
-#, fuzzy
 msgid ""
 "The orcish warlord aims to enslave us. We will not be able to hold out for "
 "much longer."
 msgstr ""
-"O Señor da Guerra orco quere escravizarnos. Non poderemos resistir moito."
+"O Señor da Guerra orco quere escravizarnos. Non poderemos resistir moito "
+"máis."
 
 #. [message]: speaker=Councillor Hoban
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:202
@@ -1065,25 +1075,22 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:207
-#, fuzzy
 msgid "Slay the Orcish Warlord to free the village"
 msgstr "Mata ó Señor da Guerra orco para liberar á vila"
 
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:229
-#, fuzzy
 msgid "Finally the warlord is killed. Now you can go back to Maghre."
-msgstr "Por fin o orco está morto. Agora podes volver á túa vila."
+msgstr "Por fin o Señor da Guerra está morto. Agora podes volver a Maghre."
 
 #. [message]: speaker=Bjarn
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:233
-#, fuzzy
 msgid ""
 "So much has been destroyed. It will be difficult to repair all that the orcs "
 "and undead have wrecked. And they could come again."
 msgstr ""
-"Destruiuse moito. Arranxar o dano que causaron os orcos e os non mortos ha "
-"dar moito traballo. Agardo que isto non volva ocorrer nunca máis."
+"Destruiuse moito. Sera dificil reparar todo o que estragaron os orcos e "
+"mailos non mortos. E ata poden volver de novo."
 
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:237
@@ -1121,6 +1128,9 @@ msgid ""
 "people of Maghre had to work very hard, but felt better knowing Arne's men "
 "would be their firm allies in troubled times."
 msgstr ""
+"Levou anos reconstruir a vila e restaurar as granxas circundantes. A xente "
+"de Maghre tivo que traballar moi duro, pero sentíase mellor sabendo que os "
+"homes de Arne serían os seus firmes aliados en caso de que houbera problemas."
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/5_Epilog.cfg:15

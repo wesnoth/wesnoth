@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-12-09 22:13+0100\n"
-"PO-Revision-Date: 2008-11-20 22:17+0100\n"
+"PO-Revision-Date: 2008-12-08 16:00+0100\n"
 "Last-Translator: Leandro Regueiro <leandro DOT regueiro AT gmail DOT com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "MIME-Version: 1.0\n"
@@ -32,7 +32,7 @@ msgstr "aIdL"
 msgid "(Easy)"
 msgstr "(Fácil)"
 
-# lanceiro FIXADO
+# Spearman=lanceiro FIXADO
 #. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:16
 msgid "Spearman"
@@ -43,7 +43,7 @@ msgstr "Lanceiro"
 msgid "(Normal)"
 msgstr "(Normal)"
 
-# espadachín FIXADO
+# Swordsman=espadachín FIXADO
 #. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:17
 msgid "Swordsman"
@@ -54,7 +54,7 @@ msgstr "Espadachín"
 msgid "(Challenging)"
 msgstr "(Esixente)"
 
-# garda real FIXADO
+# Royal Guard=garda real FIXADO
 #. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:18
 msgid "Royal Guard"
@@ -152,7 +152,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:36
-#, fuzzy
 msgid ""
 "In the days of the king Garard I, two strong-points had been built along the "
 "near bank of the Weldyn, south of Soradoc, to stop bandits and Orcish "
@@ -160,12 +159,14 @@ msgid ""
 "River Guard posts had been abandoned, as colonists spread into the Estmarks "
 "and the orcs were driven in retreat north of the Great River."
 msgstr ""
-"Nos días do rei Garard I, construironse dous postos fortificados na "
-"fronteira do sudeste para deter ós asaltantes orcos do leste e impedir que "
-"entraran en Wesnoth. Dende aquela, as terras máis alá das montañas "
-"converteronse en pantanos, e os orcos deixaron as montañas polas terras do "
-"Norte."
+"Nos días do rei Garard I, construironse dous postos fortificados preto dos "
+"baixos do Weldyn, ó sur de Soradoc, para deter ós bandidos e mais ós Orcos "
+"incursores das Marcas do Leste e impedir que entraran en Wesnoth. Pero nos "
+"últimos anos os postos da Garda do Río foron abandonados, a medida que os "
+"colonos se asentaron nas Marcas do Leste e os orcos se retiraban ó ser "
+"expulsados cara o norte do Gran Río."
 
+# Bitter Swamp=Brañas Inhóspitas FIXADO
 #. [part]
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:40
 msgid ""
@@ -174,6 +175,11 @@ msgid ""
 "eye and hand firmly on the settled country to either side of the lower "
 "Weldyn. He sent two of the most promising young officers to them."
 msgstr ""
+"Ó haber inimigos descoñecidos que ameazaban a Wesnoth polo Leste, Konrad II "
+"decidiu reconstruir e enviar homes outra vez ós postos avanzados da Garda do "
+"Río, e usalos para que a Coroa vixilara e defendera firmemente o país "
+"situado nas dúas beiras do baixo Weldyn. Enviou a dous dos xoves oficiais "
+"máis prometedores a eles."
 
 #. [part]
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:44
@@ -526,7 +532,7 @@ msgstr "O Túnel de Fuxida"
 #: data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:113
 #: data/campaigns/Eastern_Invasion/scenarios/07b.Undead_Crossing.cfg:22
 msgid "Wesnothians"
-msgstr ""
+msgstr "Wesnoth"
 
 #. [side]: type=Troll, id=Kabak
 #: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:34
@@ -799,6 +805,10 @@ msgid ""
 "foothills of the Estmarks in a direction few Wesnothians had traveled "
 "before, into unknown forest country just south of the Great River."
 msgstr ""
+"Pero Gweddry e Owaec estábanse decatando de que volver a Wesnoth non seria "
+"tan sinxelo co túnel de fuxida pechado. Marcharon dende o pé dos outeiros "
+"das Marcas do Leste cara onde pouca xente de Wesnoth viaxara antes, a un "
+"pais boscoso descoñecido xusto ó sur do Gran Río."
 
 #. [side]: type=Lieutenant, id=Gweddry
 #. [side]: type=Elvish Ranger, id=Volas
@@ -1147,12 +1157,15 @@ msgstr "Rava-Krodaz"
 msgid "Escape from the capital by killing one of the two dark sorcerers"
 msgstr "Fuxe da capital matando a un dos dous feiticeiros escuros"
 
+# Bitter Swamp=Brañas Inhóspitas FIXADO
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:127
 msgid ""
 "The Bitter Swamp's ill reputation is, it seems, well merited. Mal-Ravanal's "
 "capital lies before us!"
 msgstr ""
+"A mala reputación das Brañas Inhóspitas parece que é ben merecida. A capital "
+"de Mal-Ravanal está diante nosa!"
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:132
@@ -1245,6 +1258,7 @@ msgstr ""
 "porque a súa maxia é demasiado forte! Debemos da a volta, é inútil intentar "
 "atacar."
 
+# Bitter Swamp=Brañas Inhóspitas FIXADO
 #. [message]: speaker=narrator
 #: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:285
 msgid ""
@@ -1253,6 +1267,10 @@ msgid ""
 "Estmarks, they were greatly relieved to see the valley of the Weldyn open "
 "before them on the other side."
 msgstr ""
+"Os homes de Gweddry retiráronse rapidamente das Brañas Inhóspitas fuxindo "
+"cara o norte e mailo oeste coma se tiveran ás nos pés. Atoparon un paso a "
+"través do norte das Marcas do Leste, e contemplaron aliviados o val do "
+"Weldyn aberto diante deles."
 
 #. [scenario]: id=Northern_Outpost
 #: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:4
@@ -1538,7 +1556,6 @@ msgstr "Mirade! O camiño divídese aquí. Por cal camiño debemos ir?"
 
 #. [message]: speaker=Owaec
 #: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:110
-#, fuzzy
 msgid ""
 "We're in the land of the Clans now; I know it well. The road north leads "
 "directly to the Great River; across it lies the orcs' home country in the "
@@ -1546,10 +1563,11 @@ msgid ""
 "a time, before we reach another crossing point north of Glyn's Forest. If we "
 "travel along that path, we will not have to fight orcs immediately."
 msgstr ""
-"Coñezo esta zona. Estiven aquí nunha patrulla anterior. Xusto ó norte de "
-"aquí hai un río que leva ás Terras do Norte, onde viven os orcos. Ó oeste "
-"hai un camiño que permanece dentro do reino de Wesnoth, durante un tempo. Se "
-"viaxamos por este camiño, non teremos que loitar inmediatamente cos orcos."
+"Estamos na terra dos Clans; coñézoa ben. O camiño do norte leva directamente "
+"ó Gran Río; máis alá viven os orcos nas Terras do Norte. O camiño do oeste "
+"levaranos por dentro do reino de Wesnoth, durante un tempo, antes de que "
+"cheguemos a outra encrucillada ó norte do bosque de Glyn. Se viaxamos por "
+"ese camiño, non teremos que loitar inmediatamente cos orcos."
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:114
@@ -1612,14 +1630,14 @@ msgstr ""
 #. [message]: speaker=Wak-Rano
 #: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:145
 msgid "Arrgh! I have failed to defend the northern homeland!"
-msgstr ""
+msgstr "Arrgh! Fracasei na defensa na miña terra no norte!"
 
 #. [message]: speaker=Mal-Arnai
 #: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:165
 msgid "I was supposed to kill you all! I have failed."
 msgstr "Supoñíase que tiña que matarvos a todos! Fallei."
 
-# aquí cruzan un río, por iso non poño encrucillada
+# The Crossing=O cruzamento   aquí cruzan un río, por iso non poño encrucillada
 #. [scenario]: id=Crossing
 #: data/campaigns/Eastern_Invasion/scenarios/07a.The_Crossing.cfg:4
 msgid "The Crossing"
@@ -2532,7 +2550,6 @@ msgstr "Iso no conseguiría nada! Os non mortos hannos matar a todos!"
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:354
-#, fuzzy
 msgid ""
 "Have you not heard what Dacyn said? Either the orcs or undead will kill us "
 "no matter what we do. Our only hope was to isolate ourselves on the Isle of "
@@ -2541,8 +2558,8 @@ msgid ""
 msgstr ""
 "Non escoitaches o que dixo Dacyn? Tanto os orcos coma os non mortos hannos "
 "matar fagamos o que fagamos. A nosa única esperanza era illarnos na Illa de "
-"Vrug. Estamos demasiado lonxe agora para volver por ese camiño, e provocamos "
-"ós orcos. Non podemos intentalo outra vez. Así que, se non temos esperanza..."
+"Vrug. Agora estamos moi lonxe para volver por ese camiño, e provocamos ós "
+"orcos. Non podemos intentalo outra vez. Así que, se non temos esperanza..."
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:358
@@ -3241,7 +3258,6 @@ msgstr "Deixarlle entrar a unha unidade inimiga na túa torre"
 
 #. [message]: speaker=Mal-Drakanal
 #: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:170
-#, fuzzy
 msgid ""
 "You people are fools! You rejected my master's offer to duel... very well, "
 "you will ALL die! And know this; my master is here to enjoy your demise. For "
@@ -3252,9 +3268,9 @@ msgid ""
 msgstr ""
 "Sodes parvos! Rexeitastes a oferta de duelo do meu amo... moi ben, TODOS vós "
 "habedes morrer! E sabede isto; o meu amo está aquí para gozar ca vosa morte. "
-"Xa que despois de todo el non vos teme, e sabe que vós nunca poderedes "
-"atopalo e matalo! Hai sete de nós, e só UN de nós é o verdadeiro líder! ha "
-"ha ha ha! Para xogar limpo, dirémosvos todos os nosos nomes."
+"Xa que el non vos teme, e sabe que vós nunca poderedes atopalo e matalo! Hai "
+"sete de nós, e só UN de nós é o verdadeiro líder! ha ha ha ha! Para xogar "
+"limpo, dirémosvos o noso nome se conseguides chegar onda nós."
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:174
@@ -3289,12 +3305,12 @@ msgstr "Mal-Larakan"
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:249
 msgid "(whispered) There he is!"
-msgstr ""
+msgstr "(murmurando) Alí o está!"
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:256
 msgid "(whispered) That isn't him..."
-msgstr ""
+msgstr "(murmurando) Non é el..."
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:268
@@ -3323,7 +3339,6 @@ msgstr "Epílogo"
 
 #. [part]
 #: data/campaigns/Eastern_Invasion/scenarios/19_Epilog.cfg:15
-#, fuzzy
 msgid ""
 "When Mal-Ravanal fell, the living creatures under his banner broke and fled; "
 "the undead simply collapsed like puppets with their strings cut. As the "
@@ -3334,15 +3349,15 @@ msgid ""
 "Men let weapons fall from nerveless fingers and horses reared in terror as "
 "that great dark pall obscured the sun..."
 msgstr ""
-"Cando Mal-Ravanal caiu, as criaturas vivas baixo o seu xugo dividironse e "
+"Cando Mal-Ravanal caiu, as criaturas vivas baixo o seu xugo dividíronse e "
 "fuxiron; os non mortos simplemente cairon coma marionetas ás que lles "
 "cortaron as cordas. Mentres o berro de morte do liche resoaba no aire, unha "
 "gran e ominosa columna sombría ergueuse do seu cadáver coma fume dun lume "
 "fumegante; entón dividiuse en cinco brazos a medida que subia, que chegaron "
 "ó ceo coma unha man pechándose.\n"
 "\n"
-"Os homes deixaron cair as armas dos dedos inanimados e os cabalos "
-"empináronse mentres esa gran nube escuridade escureceu o sol..."
+"Os homes deixaron cair as armas dos dedos sen vida e os cabalos recuaron con "
+"terror mentres esa gran nube escuridade escureceu o sol..."
 
 #. [part]
 #: data/campaigns/Eastern_Invasion/scenarios/19_Epilog.cfg:19
@@ -3453,7 +3468,6 @@ msgstr "Axeónllate, Gweddry"
 
 #. [message]: speaker=Konrad II
 #: data/campaigns/Eastern_Invasion/scenarios/19_Epilog.cfg:194
-#, fuzzy
 msgid "Quite. Now do not interrupt while I am doing mine...kneel, Gweddry."
 msgstr ""
 "Xa é dabondo. Agora non interrompades mentres fago o que me corresponde... "
@@ -3461,7 +3475,6 @@ msgstr ""
 
 #. [message]: speaker=Konrad II
 #: data/campaigns/Eastern_Invasion/scenarios/19_Epilog.cfg:203
-#, fuzzy
 msgid ""
 "And arise, Gweddry, Earl of Estmark. The land for which you shed your blood "
 "shall be put under your hand to be made green again."
@@ -3478,7 +3491,7 @@ msgstr ""
 "Con estas palabras e actos comezou a Idade Prateada de Wesnoth, coñecida "
 "neses tempos polos historiadores coma a Reconstrucción..."
 
-# señor dos cabalos FIXADO
+# Horse Lord=señor dos cabalos FIXADO
 #. [unit_type]: id=Horse Lord, race=human
 #: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:4
 msgid "Horse Lord"
@@ -3496,7 +3509,7 @@ msgstr ""
 "espadas poden matar á maioría dos inimigos correntes, e o seu mallo esmaga a "
 "aqueles que quedan."
 
-# espada FIXADO
+# sword=espada FIXADO
 #. [attack]: type=blade
 #: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:29
 #: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:22
@@ -3510,6 +3523,7 @@ msgstr "espada"
 msgid "morning star"
 msgstr "mallo"
 
+# Mounted Fighter=Loitador Montado FIXADO
 #. [unit_type]: id=Mounted Fighter, race=human
 #: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:4
 msgid "Mounted Fighter"
@@ -3528,6 +3542,7 @@ msgstr ""
 "adestrados para comandar ós seus camaradas, e son os únicos que chegan a ser "
 "capitáns dos exércitos dos Clans."
 
+# Mounted Warrior=Guerreiro Montado FIXADO
 #. [unit_type]: id=Mounted Warrior, race=human
 #: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:4
 msgid "Mounted Warrior"
@@ -3546,6 +3561,7 @@ msgstr ""
 "gran velocidade, e poden proporcionar moita da axuda necesaria en diferente "
 "frontes."
 
+# greatsword=espada grande FIXADO
 #. [attack]: type=blade
 #: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:29
 msgid "greatsword"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "POT-Creation-Date: 2008-11-29 12:26+0100\n"
-"PO-Revision-Date: 2008-11-20 22:33+0100\n"
+"PO-Revision-Date: 2008-12-08 15:46+0100\n"
 "Last-Translator: Leandro Regueiro <leandro DOT regueiro AT gmail DOT com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "MIME-Version: 1.0\n"
@@ -138,6 +138,8 @@ msgid ""
 "sets the user configuration directory to I<name> under $HOME or My Documents"
 "\\eMy Games for windows."
 msgstr ""
+"define I<name> coma o directorio da configuración do usuario en $HOME ou Os "
+"Meus Documentos\\eOs Meus Xogos en windows."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:57
@@ -158,20 +160,19 @@ msgstr "B<-d, --debug>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:64
-#, fuzzy
 msgid ""
 "enables additional command mode options in-game (see the wiki page at http://"
 "www.wesnoth.org/wiki/CommandMode for more information about command mode)."
 msgstr ""
-"mostra información de depuración adicional e habilita opcións de modo de "
-"comando adicionais no xogo (consulte o sitio web en http://www.wesnoth.org/"
-"wiki/CommandMode para obter máis información sobre o modo de comando)."
+"activa opcións de modo de comando adicionais no xogo (consulte a páxina wiki "
+"en http://www.wesnoth.org/wiki/CommandMode para obter máis información sobre "
+"o modo de comando)."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:64
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--dummy-locales>"
-msgstr "B<--dummylocales>"
+msgstr "B<--dummy-locales>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:68
@@ -179,6 +180,8 @@ msgid ""
 "use special dummy locales to switch to any language even if that language "
 "isn't installed system-wide."
 msgstr ""
+"usa localizacións falsas especiais para cambiar a calquera lingua incluso se "
+"esa lingua non está instalada para todo o sistema."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:68
@@ -189,7 +192,7 @@ msgstr "B<-e, --editor>"
 # type: Plain text
 #: ../../doc/man/wesnoth.6:71
 msgid "start the in-game map editor directly."
-msgstr ""
+msgstr "inicia directamente o editor de mapas no xogo."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:71
@@ -273,6 +276,9 @@ msgid ""
 "e> or B<--editor> option is used as well, starts the editor with the map "
 "from I<file> open."
 msgstr ""
+"carga o ficheiro de partida |<ficheiro> dende o directorio de partidas "
+"gardadas predeterminado. Se tamén se usan as opcións B<-e> ou B<--editor>, "
+"iníciase o editor aberto co mapa de |<ficheiro>."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:105 ../../doc/man/wesnothd.6:58
@@ -340,13 +346,12 @@ msgstr "B<--no-delay>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:132
-#, fuzzy
 msgid ""
 "runs the game without any delays for graphic benchmarking. This is "
 "automatically enabled by B<--nogui>."
 msgstr ""
-"executa o xogo sen tomar un tempo para facer unha proba de rendemento "
-"gráfico. Isto actívase automaticamente con B<--nogui>."
+"executa o xogo sen retrasos para probas de rendemento gráfico. Isto actívase "
+"automaticamente con B<--nogui>."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:132
@@ -401,7 +406,7 @@ msgstr "B<--python-api>"
 # type: Plain text
 #: ../../doc/man/wesnoth.6:147
 msgid "prints the runtime documentation for the python API."
-msgstr ""
+msgstr "mostra a documentación en tempo de execución da API de Python."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:147
@@ -412,7 +417,7 @@ msgstr "B<--python-shell>"
 # type: Plain text
 #: ../../doc/man/wesnoth.6:150
 msgid "invokes wesnoth's embedded python interpreter in interactive mode."
-msgstr ""
+msgstr "invoca ó intérprete de python embebido de wesnoth en modo interactivo."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:150
@@ -437,6 +442,8 @@ msgid ""
 "allows to use screen resolutions down to 800x480 and resizes a few interface "
 "elements."
 msgstr ""
+"permite usar resolucións de pantalla inferiores a 800x480 e redimensiona un "
+"poucos elementos da interface."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:157
@@ -450,6 +457,8 @@ msgid ""
 "connects to the specified host if any, otherwise connect to the first server "
 "in preferences. Example: B<--server server.wesnoth.org>"
 msgstr ""
+"conéctase á máquina especificada se existe, noutro caso conéctase ó primeiro "
+"servidor das preferencias. Exemplo: B<--server server.wesnoth.org>"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:161
@@ -471,7 +480,7 @@ msgstr "B<--validcache>"
 # type: Plain text
 #: ../../doc/man/wesnoth.6:167
 msgid "assumes that the cache is valid. (dangerous)"
-msgstr ""
+msgstr "asume que a caché é válida. (perigoso)"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:167
