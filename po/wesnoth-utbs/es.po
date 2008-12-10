@@ -1,3 +1,4 @@
+# translation of es.po to Spanish
 # translation of es.po to
 # Spanish translations for Battle for Wesnoth package.
 # Copyright (C) 2004, 2005, 2006, 2007, 2008 Wesnoth development team
@@ -5,14 +6,15 @@
 #
 # Roberto Romero <sildurin@gmail.com>, 2007.
 # Sergi March <sergi.march@gmail.com>, 2008.
+# Ignacio R. Morelle <shikadilord@users.sourceforge.net>, 2008.
 msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-12-09 22:14+0100\n"
-"PO-Revision-Date: 2008-01-28 23:50+0100\n"
-"Last-Translator: Sergi March <sergi.march@gmail.com>\n"
-"Language-Team: <Spanish <es@li.org>>\n"
+"PO-Revision-Date: 2008-12-10 04:56-0300\n"
+"Last-Translator: Ignacio R. Morelle <shikadilord@users.sourceforge.net>\n"
+"Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -71,7 +73,6 @@ msgstr "Merodeador del desierto"
 
 #. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:28
-#, fuzzy
 msgid ""
 "In the distant future a small band of elves struggles to survive amidst the "
 "ruins of fallen empires. Lead your people out of the desert on an epic "
@@ -80,15 +81,10 @@ msgid ""
 "(Expert level, 11 scenarios, some under reconstruction)\n"
 msgstr ""
 "En un futuro lejano un pequeño grupo de elfos intenta sobrevivir entre las "
-"ruinas de los imperios caídos. Saque a su gente del desierto en un viaje "
-"épico para encontrar un nuevo hogar.\n"
+"ruinas de los imperios caídos. Guíe a su gente fuera del desierto en un "
+"viaje épico para encontrar un nuevo hogar.\n"
 "\n"
-"(Nivel experto, 11 escenarios)\n"
-"\n"
-"LA CAMPAÑA ESTÁ SIENDO RECONSTRUIDA. ALGUNOS ESCENARIOS PUEDEN SER DISTINTOS "
-"A LO QUE RECUERDA, ESTAR DESEQUILIBRADOS O SER COMPLETAMENTE IMPOSIBLES DE "
-"JUGAR.\n"
-"SE AGRADECERÁN SUGERENCIAS EN LOS FOROS."
+"(Nivel experto, 11 escenarios, algunos en reconstrucción)\n"
 
 #. [about]
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:33
@@ -201,21 +197,18 @@ msgstr "Frea"
 
 #. [value]: type=Desert Archer
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:186
-#, fuzzy
 msgid "Danu"
-msgstr "Darius"
+msgstr "Danu"
 
 #. [value]: type=Desert Hunter
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:191
-#, fuzzy
 msgid "Hamuil"
-msgstr "lamento"
+msgstr "Hamuil"
 
 #. [value]: type=Desert Hunter
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:196
-#, fuzzy
 msgid "Anioh"
-msgstr "Anarion"
+msgstr "Anioh"
 
 #. [value]: type=Desert Scout
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:201
@@ -840,7 +833,6 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1244
-#, fuzzy
 msgid "Pythos"
 msgstr "Pythos"
 
@@ -1103,9 +1095,8 @@ msgstr ""
 
 #. [side]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:133
-#, fuzzy
 msgid "Undead"
-msgstr "Invasor no muerto"
+msgstr "No muertos"
 
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:183
@@ -1254,14 +1245,13 @@ msgstr "Bueno, cuanto antes alcancemos el Pico de Roca, mejor. ¡En marcha!"
 
 #. [unstore_unit]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:445
-#, fuzzy
 msgid "thirst"
-msgstr "espinas"
+msgstr "sed"
 
 #. [unstore_unit]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:485
 msgid "refreshed"
-msgstr ""
+msgstr "refrescado"
 
 #. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:619
@@ -1350,7 +1340,7 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:787
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:789
 msgid "Hunting Ogre"
-msgstr "Ogro de caza"
+msgstr "Ogro cazador"
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:824
@@ -1358,11 +1348,13 @@ msgid ""
 "Shh... Ogres ahead. Behind that dune there, we have to pass them if we want "
 "to reach the next oasis."
 msgstr ""
+"Shh... hay ogros adelante. Tras aquella duna, tenemos que pasar por ellos si "
+"queremos llegar al siguiente oasis."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:828
 msgid "No chance to sneak around?"
-msgstr ""
+msgstr "¿No hay algún modo de dar un rodeo y evitarlos?"
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:832
@@ -1371,6 +1363,9 @@ msgid ""
 "bypass them I suggest going straight north in the hopes of finding an oasis "
 "there."
 msgstr ""
+"Tendríamos que cubrir distancia adicional en terrenos difíciles de "
+"atravesar. Si queréis evitarlos sugiero ir directo al norte y rezar por que "
+"encontremos otro oasis allí."
 
 #. [message]: type=Ogre
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:847
@@ -1412,9 +1407,8 @@ msgstr ""
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:920
-#, fuzzy
 msgid "Nym! No! Don't open..."
-msgstr "¡Nym! ¡No! No abras..."
+msgstr "¡Nym! ¡No! No lo abras..."
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:930
@@ -1444,36 +1438,33 @@ msgstr ""
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:999
-#, fuzzy
 msgid ""
 "Girl, I told you not to open it. Let's go, I'd really like to get to an "
 "oasis soon."
 msgstr ""
-"No hay peros que valgan, niña, os dije que no lo abrierais. Vamos; quiero "
-"llegar cuanto antes a un oasis."
+"Niña, os dije que no lo abrierais. Vamos; realmente quisiera llegar cuanto "
+"antes a un oasis."
 
 #. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1094
-#, fuzzy
 msgid "Black Lieutenant"
-msgstr "Bandido Mano Negra"
+msgstr "Teniente negro"
 
 #. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1095
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1096
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1097
 msgid "Black Hand Bandit"
-msgstr "Bandido Mano Negra"
+msgstr "Bandido de la Mano negra"
 
 #. [message]: type=Thug
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1122
-#, fuzzy
 msgid ""
 "And I thought it was going to be another boring patrol. You there! Elf! This "
 "is our oasis, and we will water it with your blood!"
 msgstr ""
-"Y yo creía que esta iba a ser otra aburrida patrulla. ¡Eh ahí! ¡Elfo! ¡Éste "
-"es nuestro oasis, y lo regaremos con vuestra sangre!"
+"Y yo creía que ésta iba a ser otra aburrida patrulla. ¡Eh ahí, tú! ¡Elfo! "
+"¡Éste es nuestro oasis, y lo regaremos con vuestra sangre!"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1127
@@ -1688,9 +1679,8 @@ msgstr ""
 
 #. [message]: speaker=Garak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1635
-#, fuzzy
 msgid "This ruin looks oddly familiar."
-msgstr "Sabes, estas ruinas me parecen extrañamente familiares."
+msgstr "Estas ruinas me parecen extrañamente familiares."
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1640
@@ -1751,13 +1741,12 @@ msgstr ""
 
 #. [message]: speaker=$explorer.id
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1805
-#, fuzzy
 msgid ""
 "So, the outlaws have made a base around Pinnacle Rock. It's a good location, "
 "but we will drive them from it all the same."
 msgstr ""
 "Así pues, los proscritos han hecho una base en torno al Pico de Roca. Es una "
-"buena localización, pero les sacaremos de allí de todas formas"
+"buena localización, pero les sacaremos de allí de todas formas."
 
 #. [object]: id=PureWater
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1829
@@ -1766,13 +1755,12 @@ msgstr "Agua bendita"
 
 #. [object]: id=PureWater
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1831
-#, fuzzy
 msgid ""
 "This water will make your melee weapons arcane, and thus especially powerful "
 "against the undead."
 msgstr ""
-"Esta agua bendecirá tus armas de cuerpo a cuerpo, y las hará especialmente "
-"poderosas contra los no muertos."
+"Esta agua hará que vuestras armas de cuerpo a cuerpo causen daño de tipo "
+"arcano, haciéndolas particularmente poderosas contra los no muertos."
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1860
@@ -1978,6 +1966,7 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2271
 msgid "You come and rise again, spirits? Have we not defeated you before?"
 msgstr ""
+"¿Venís y os levantáis nuevamente, espíritus? ¿No os habíamos derrotado antes?"
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2276
@@ -1985,6 +1974,9 @@ msgid ""
 "These lost souls cannot hold onto anything but memories of lives long gone. "
 "They will rise to plague us again, night after night."
 msgstr ""
+"Estas almas perdidas no conservan nada más que recuerdos de vidas "
+"extinguidas ya hace mucho. Se levantarán para atacarnos como una plaga, "
+"noche tras noche."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2334
@@ -2228,11 +2220,13 @@ msgid ""
 "These champions... I will challenge them. Zhul, bless my weapons with light "
 "of Eloh."
 msgstr ""
+"Estos campeones... los desafiaré. Zhul, bendecid mis armas con la luz de "
+"Eloh."
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:657
 msgid "Garak, but the suns..."
-msgstr ""
+msgstr "Garak, pero los soles..."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:661
@@ -2240,6 +2234,9 @@ msgid ""
 "You will not do any such thing, anyone trying to fight these creeps "
 "singlehanded will surely die. We need you, we will not make it without you."
 msgstr ""
+"No haréis ninguna cosa así, cualquiera que tratase de luchar contra esos "
+"monstruos por si sólo moriría con seguridad. Os necesitamos, y no podríamos "
+"continuar sin vos."
 
 #. [message]: speaker=Garak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:665
@@ -2247,6 +2244,8 @@ msgid ""
 "I had dreams this night Kaleh, full of gloom and darkness, my journey will "
 "end here one way or another."
 msgstr ""
+"He tenido sueños esta noche Kaleh, llenos de oscuridad y caos. Mi travesía "
+"acabará aquí de uno u otro modo."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:669
@@ -2254,6 +2253,8 @@ msgid ""
 "No! That's not true, our future is what we make of it, stay behind for this "
 "fight and... "
 msgstr ""
+"¡No! ¡Eso no es cierto, nuestro futuro lo construimos nosotros mismos, "
+"manteneos atrás y lejos de esta lucha y...!"
 
 #. [message]: speaker=Garak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:673
@@ -2261,6 +2262,8 @@ msgid ""
 "And what? You'll help me become a coward? I lived long, I'm not afraid of "
 "the end, just let me give it some meaning."
 msgstr ""
+"¿Y qué? ¿Me convertiréis en un cobarde? He vivido por mucho, y no le temo al "
+"fin, sólo dejadme darle un significado."
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:677
@@ -2269,12 +2272,15 @@ msgid ""
 "memory and the promise. Lay down your bow, champion, and let your sword "
 "shine in the dark."
 msgstr ""
+"Os bendigo, campeón, con la luz que vendrá; os bendigo con el recuerdo y la "
+"promesa. Dejad vuestro arco, campeón, y dejad que vuestra espada "
+"resplandezca en la obscuridad."
 
 #. [message]: speaker=Garak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:804
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:916
 msgid "You there! Creep! Stand and face me, shade! I challenge you!"
-msgstr ""
+msgstr "¡Tú, monstruo! ¡Levantaos y enfrentadme, espectro! ¡Os desafío!"
 
 #. [message]: speaker=Grak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:814
@@ -2283,6 +2289,8 @@ msgid ""
 "Foolish mortal... For daring to challenge me, I'll devour your soul and "
 "torment it for all eternity..."
 msgstr ""
+"Mortal lunático... Por haber tenido la osadía de desafiarme, devoraré "
+"vuestra alma y la torturaré por toda la eternidad..."
 
 #. [message]: speaker=Grak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:820
@@ -2290,18 +2298,20 @@ msgid ""
 "So you destroyed Zur... Come mortal, let's cross our blades... It's time for "
 "you to take his place..."
 msgstr ""
+"Así que vos destruísteis a Zur... Venid mortal, crucemos nuestras espadas... "
+"Es hora de que toméis su lugar..."
 
 #. [message]: speaker=Garak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:828
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:940
 msgid "You there! Pile of bones! I challenge you, stand and face me!"
-msgstr ""
+msgstr "¡Tú, ahí! ¡Pila de huesos! ¡Os desafío, levantaos y enfrentadme!"
 
 #. [message]: speaker=Zur
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:838
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:950
 msgid "Puny elf... Time to die..."
-msgstr ""
+msgstr "Elfo miserable... Es hora de morir..."
 
 #. [message]: speaker=Zur
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:844
@@ -2310,12 +2320,16 @@ msgid ""
 "Grak was weak... But still you deserve respect... Meet my axe and take his "
 "place..."
 msgstr ""
+"Grak fue débil... Pero aún mereces respeto... Conoced mi hacha y tomad su "
+"lugar..."
 
 #. [message]: speaker=$challenged
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:863
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:975
 msgid "And so it ends... Your champion is dead, elves... Come join him..."
 msgstr ""
+"Y así termina todo... Vuestro campeón está muerto, elfos... Venid y reuniros "
+"con él..."
 
 #. [message]: speaker=Grak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:932
@@ -2323,11 +2337,13 @@ msgid ""
 "So you destroyed Zur... Come, mortal, let us cross our blades... It's time "
 "for you to take his place..."
 msgstr ""
+"Así que vos destruísteis a Zur... Venid mortal, crucemos nuestras espadas... "
+"Es hora de que toméis su lugar..."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1016
 msgid "Where is Garak? Has anybody seen him?"
-msgstr ""
+msgstr "¿Dónde se encuentra Garak? ¿Alguien le ha visto?"
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1020
@@ -2335,6 +2351,8 @@ msgid ""
 "I saw him jumping into deep darkness pursuing a group of enemies. Let's hope "
 "nothing happened to him."
 msgstr ""
+"Le vi saltando a la densa oscuridad persiguiendo a un grupo de enemigos. "
+"Espero que nada le haya ocurrido."
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1070
@@ -2397,34 +2415,35 @@ msgid ""
 "I will... not... yield... I defeated... your... champion... I... will... "
 "overcome... you..."
 msgstr ""
+"No... cederé... derroté a... vuestro... campeón... me... sobrepondré... a "
+"vos..."
 
 #. [message]: speaker=Possessed Garak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1151
 msgid "No, fool! Stop!"
-msgstr ""
+msgstr "¡No, necio! ¡Deteneos!"
 
 #. [message]: speaker=Garak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1166
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1616
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1907
 msgid "The dark lord... is no more..."
-msgstr ""
+msgstr "El señor oscuro... ya no existe..."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1171
 msgid ""
 "Garak collapses to the ground with his own blade sticking from his chest."
-msgstr ""
+msgstr "Garak cae al suelo con su propia hoja atravesando su pecho."
 
 #. [message]: speaker=Azkotep
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1181
-#, fuzzy
 msgid ""
 "No! How dare you? I shall have my vengeance upon you for spoiling this "
 "contest! Darkness shall reign until I have triumphed!"
 msgstr ""
-"¡No! Tendré mi venganza sobre todos vosotros. ¡La oscuridad reinará hasta "
-"que haya triunfado!"
+"¡No! ¿Cómo os atrevísteis? ¡Tendré mi venganza sobre vosotros por arruinar "
+"esta competencia! ¡La oscuridad reinará hasta que yo haya triunfado!"
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1185
@@ -2445,9 +2464,8 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1514
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1641
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1799
-#, fuzzy
 msgid "Defeat Azkotep"
-msgstr "Azkotep"
+msgstr "Derrote a  Azkotep"
 
 #. [objective]: condition=lose
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1199
@@ -2495,7 +2513,7 @@ msgstr ""
 #. [message]: speaker=Possessed Garak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1300
 msgid "Hahaha!..."
-msgstr ""
+msgstr "¡Ja, ja, ja...!"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1315
@@ -2593,13 +2611,11 @@ msgstr "Matar a Garak poseído (o)"
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1349
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1931
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2089
-#, fuzzy
 msgid "Defeat Ystara"
-msgstr "Estrella del desierto"
+msgstr "Derrote a Ystara"
 
 #. [message]: speaker=Azkotep
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1381
-#, fuzzy
 msgid ""
 "In this I shall support you, the darkness shall not break until one of us is "
 "victorious."
@@ -2612,25 +2628,24 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1742
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2032
 msgid "Hahaha!.."
-msgstr ""
+msgstr "¡Ja, ja, ja...!"
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1469
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1572
-#, fuzzy
 msgid "Eloh protect us, what has she done?"
-msgstr "Eloh protégenos, ¿qué ha hecho?"
+msgstr "Eloh protegednos, ¿qué ha hecho?"
 
 #. [message]: speaker=Possessed Garak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1601
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1892
 msgid "No fool! Stop!"
-msgstr ""
+msgstr "¡No, necio! ¡Deteneos!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1621
 msgid "Garak collapses to the ground with own blade sticking from his chest."
-msgstr ""
+msgstr "Garak cae al suelo con su propia hoja atravesando su pecho."
 
 #. [message]: speaker=Azkotep
 #. [message]: speaker=Ystara
@@ -2689,7 +2704,7 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1911
 msgid "Garak collapses to the ground with own blade sticking form his chest."
-msgstr ""
+msgstr "Garak cae al suelo con su propia hoja atravesando su pecho."
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1925
@@ -2744,37 +2759,42 @@ msgid ""
 "You got me, elf... But you won't be so lucky with the tribes of the hills... "
 "(cough)"
 msgstr ""
+"Me habéis liquidado, elfo... pero no tendréis tanta suerte con las tribus de "
+"las colinas... (cof)"
 
 #. [message]: speaker=Ganthos
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2238
 msgid "I deeply regret... I won't be able to see that..."
-msgstr ""
+msgstr "Lamento profundamente... que no podré ver eso..."
 
 #. [message]: speaker=Ganthos
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2244
 msgid "Killed by a dead creep... (cough)"
-msgstr ""
+msgstr "Asesinado por una criatura muerta... (cof)"
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2254
-#, fuzzy
 msgid "Look, he dropped something! I wonder what it is..."
-msgstr ""
-"¡Hey! Mirad aquí, han dejado caer algo... Una botella de piedra, sellada. Me "
-"gustaría saber que tiene dentro..."
+msgstr "¡Mirad, se le ha caído algo! Me pregunto de qué se trata..."
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2272
 msgid ""
 "It's some sort of a map. I think I recognize some of those hills ahead on it."
 msgstr ""
+"Parece ser alguna clase de mapa. Creo reconocer algunas de las colinas "
+"cercanas en él."
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2276
+#, fuzzy
 msgid ""
 "And these look like camps and patrol routes. A lot of camps and patrol "
 "routes. Kaleh, do you think we could sneak up between them?"
 msgstr ""
+"Y ésos parecen campamentos y rutas de patrulla. Muchos campamentos y rutas "
+"de patrulla. Kaleh, ¿creéis que fuese posible atravesarlos sin que nos "
+"encuentren?"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2280
@@ -2782,27 +2802,28 @@ msgid ""
 "Difficult, but worth a try I guess. But first we must try to survive this "
 "mess."
 msgstr ""
+"Difícil, pero valdría la pena intentarlo, creo. Pero primero debemos tratar "
+"de sobrevivir a este desastre."
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2284
 msgid "Right, sorry. Damn creeps."
-msgstr ""
+msgstr "Cierto, lo siento. Malditos espectros."
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2291
 msgid "And now we'll never know what was on that parchment. Shame."
-msgstr ""
+msgstr "Y ahora jamás sabremos qué había en ese pergamino. Qué lástima."
 
 #. [message]: race=orc
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2310
-#, fuzzy
 msgid "Chief has fallen! Flee!"
-msgstr "¿El jefe ha caído! ¡Huid por vuestras vidas!"
+msgstr "¡El jefe ha caído! ¡Huid!"
 
 #. [message]: race=goblin
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2321
 msgid "Boss dead! Run!"
-msgstr ""
+msgstr "¡Jefe muerto! ¡Correr!"
 
 #. [message]: speaker=$unit.id
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2376
@@ -2860,6 +2881,8 @@ msgstr "¿Qué? ¿Qué escuchaste?"
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2445
 msgid "I've asked and looked around, there is no sign of him or his body"
 msgstr ""
+"He preguntado y buscado por los alrededores, y no hay señales de él o su "
+"cuerpo."
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2449
@@ -3706,16 +3729,15 @@ msgstr "Una lucha subterránea"
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:93
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1513
 msgid "Trolls"
-msgstr ""
+msgstr "Trolls"
 
 #. [side]
 #. [modify_side]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:161
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:229
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1470
-#, fuzzy
 msgid "Dwarves"
-msgstr "Cinturón enano"
+msgstr "Enanos"
 
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:393
@@ -5591,7 +5613,7 @@ msgstr "En los dominios de los enanos"
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:46
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:92
 msgid "Allies"
-msgstr ""
+msgstr "Aliados"
 
 #. [side]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:61
@@ -5599,7 +5621,7 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:189
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:240
 msgid "Enemies"
-msgstr ""
+msgstr "Enemigos"
 
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:286
@@ -6939,15 +6961,14 @@ msgstr "Saliendo de la sartén"
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:47
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:306
 msgid "Elf Ally"
-msgstr ""
+msgstr "Aliado elfo"
 
 #. [side]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:48
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:137
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:231
-#, fuzzy
 msgid "Human Ally"
-msgstr "Soldado humano"
+msgstr "Aliado humano"
 
 #. [side]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:89
@@ -7154,22 +7175,21 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1459
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1496
 msgid "Bellerin"
-msgstr ""
+msgstr "Bellerin"
 
 #. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1433
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1470
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1507
 msgid "Durth"
-msgstr ""
+msgstr "Durth"
 
 #. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1444
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1481
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1518
-#, fuzzy
 msgid "Othgar"
-msgstr "Thungar"
+msgstr "Othgar"
 
 #. [message]: speaker=Durth
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1531
@@ -9891,7 +9911,7 @@ msgstr "Soldado humano"
 #. [side]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:108
 msgid "Iron Council"
-msgstr ""
+msgstr "Consejo de Hierro"
 
 #. [side]: type=Shock Trooper, id=Zelgant
 #. [unit]: type=Shock Trooper, id=Zelgant
@@ -12998,7 +13018,7 @@ msgstr "Boyicht"
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:224
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:265
 msgid "Eloh Cultists"
-msgstr ""
+msgstr "Adoradores de Eloh"
 
 #. [side]: type=Draug, id=Kelur
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:105
@@ -13132,13 +13152,12 @@ msgstr "¡Has pisado en terreno sagrado, La Única dice que debes morir!"
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:835
-#, fuzzy
 msgid ""
 "Faugh! Little one, you are not worth our time. We are the Quenoth Elves! "
 "Flee and trouble us no longer or we will squash you like a bug."
 msgstr ""
-"¡Pt! Pequeño, no mereces nuestro tiempo. ¡Somos los Elfos de Quenoth! "
-"Retírate y no nos molestes más o te estamparemos como a un bicho."
+"¡Argh! Pequeño, no mereces nuestro tiempo. ¡Somos los Elfos de Quenoth! Huid "
+"y no nos molestes más o te aplastaremos como a un bicho."
 
 #. [message]: speaker=Boyicht
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:840
@@ -13758,9 +13777,8 @@ msgstr ""
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:394
-#, fuzzy
 msgid "Nym, Zhul, $intl_ally_name|, you shouldn't have."
-msgstr "Nym, Zhul, $ally_name , no deberíais haber venido."
+msgstr "Nym, Zhul, $intl_ally_name|, no deberíais haber venido."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:401
@@ -14048,12 +14066,11 @@ msgstr ""
 
 #. [message]: speaker=$ally_name
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1541
-#, fuzzy
 msgid ""
 "Ugh. $intl_ally_name is covered in blood and guts and nasty blue goo. "
 "Whatever creature was, she doesn't smell any better dead than she did alive."
 msgstr ""
-"Ugh. $ally_name está cubierto de sangre y tripas y asquerosa cosa azul. "
+"Ugh. $intl_ally_name está cubierto de sangre y tripas y asquerosa cosa azul. "
 "Fuera lo que la criatura fuera, ella no olía mejor muerta que viva."
 
 #. [message]: speaker=Kaleh
@@ -15407,7 +15424,7 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Shyde.cfg:38
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Star.cfg:46
 msgid "SPECIAL_NOTE^ This unit can fly across any terrain except deep water."
-msgstr ""
+msgstr "Esta unidad puede sobrevolar cualquier terreno salvo aguas profundas."
 
 #. [attack]: type=impact
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Shyde.cfg:44
@@ -15424,6 +15441,8 @@ msgstr "Estrella del desierto"
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Star.cfg:46
 msgid "SPECIAL_NOTE^ It also gains a 10% bonus to resistance from all attacks."
 msgstr ""
+"También obtiene una bonificación del 10% a la resistencia a toda clase de "
+"ataques."
 
 #. [unit_type]: id=Desert Star, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Star.cfg:46
@@ -15489,14 +15508,13 @@ msgstr ""
 
 #. [unit_type]: id=Dust Devil, race=monster
 #: data/campaigns/Under_the_Burning_Suns/units/Dust_Devil.cfg:14
-#, fuzzy
 msgid ""
 "A swirl of dust and desert sand, quick as a wind, impossible to spot when "
 "resting and as dangerous as sand storm when riled."
 msgstr ""
 "Un remolino de polvo y arena del desierto, rápido como el viento, imposible "
-"de ver cuando descansa y peligroso cual tormenta de arena cuando se "
-"encuentra irritado."
+"de ver cuando descansa y peligroso cual tormenta de arena cuando es "
+"provocado."
 
 #. [attack]: type=arcane
 #: data/campaigns/Under_the_Burning_Suns/units/Dust_Devil.cfg:55
@@ -15511,7 +15529,7 @@ msgstr "tormenta de arena"
 #. [regenerate]
 #: data/campaigns/Under_the_Burning_Suns/units/Dust_Devil.cfg:86
 msgid "dust recuperation"
-msgstr ""
+msgstr "recuperación de arena"
 
 #. [regenerate]
 #: data/campaigns/Under_the_Burning_Suns/units/Dust_Devil.cfg:88
@@ -15519,23 +15537,23 @@ msgid ""
 "Dust Recuperation:\n"
 "The unit will heal itself 6 HP per turn on sand or dirt terrain."
 msgstr ""
+"Recuperación de arena:\n"
+"La unidad se sanará a sí misma 6 PV por turno en terrenos arenosos o baldíos."
 
 #. [advancement]: id=Dust1
 #: data/campaigns/Under_the_Burning_Suns/units/Dust_Devil.cfg:94
-#, fuzzy
 msgid "a stronger Dust Devil"
-msgstr "Remolino de polvo"
+msgstr "un Remolino de polvo más fuerte"
 
 #. [advancement]: id=Dust2
 #: data/campaigns/Under_the_Burning_Suns/units/Dust_Devil.cfg:113
-#, fuzzy
 msgid "a taller Dust Devil"
-msgstr "Remolino de polvo"
+msgstr "un Remolino de polvo más alto"
 
 #. [advancement]: id=Dust3
 #: data/campaigns/Under_the_Burning_Suns/units/Dust_Devil.cfg:127
 msgid "a fully-healed Dust Devil"
-msgstr ""
+msgstr "un Remolino de polvo completamente sanado"
 
 #. [unit_type]: id=Dwarvish Explorer, race=dwarf
 #: data/campaigns/Under_the_Burning_Suns/units/Dwarvish_Explorer.cfg:4
@@ -15849,49 +15867,45 @@ msgstr "espada flamígera"
 
 #. [unit_type]: id=Kaleh, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:95
-#, fuzzy
 msgid "Kaleh of the Quenoth Elves"
-msgstr "Yo soy Kaleh, líder de los elfos de Quenoth."
+msgstr "Kaleh de los elfos de Quenoth"
 
 #. [variation]
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:135
-#, fuzzy
 msgid "Desert Youth"
-msgstr "Explorador del desierto"
+msgstr "Joven del desierto"
 
 #. [unit_type]: id=Kaleh, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:332
 msgid "a leader in battle"
-msgstr ""
+msgstr "un líder en la batalla"
 
 #. [unit_type]: id=Kaleh, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:341
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:349
-#, fuzzy
 msgid "a better swordsman"
-msgstr "Jinete del desierto"
+msgstr "un mejor espadachín"
 
 #. [unit_type]: id=Kaleh, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:357
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:366
-#, fuzzy
 msgid "a better archer"
-msgstr "Arquero del desierto"
+msgstr "un mejor arquero"
 
 #. [unit_type]: id=Kaleh, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:374
 msgid "a marksman with the bow"
-msgstr ""
+msgstr "un tirador arquero"
 
 #. [unit_type]: id=Kaleh, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:385
 msgid "trained by Nym in using the bolas"
-msgstr ""
+msgstr "entrenado por Nym en el uso de boleadoras"
 
 #. [unit_type]: id=Kaleh, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:439
 msgid "gain +20% resistance under the sun"
-msgstr ""
+msgstr "ganar +20% de resistencia bajo los soles"
 
 #. [resistance]: id=sustenance
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:455
@@ -15909,18 +15923,18 @@ msgstr ""
 #. [unit_type]: id=Kaleh, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:465
 msgid "gain +10% resistance to blade, pierce and impact"
-msgstr ""
+msgstr "ganar +10% de resistencia a daños de corte, perforación e impacto"
 
 #. [unit_type]: id=Kaleh, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:488
 msgid "gain a stunning attack that disrupts enemy ZOC"
-msgstr ""
+msgstr "ganar un ataque aturdidor que anula zonas de control enemigas"
 
 #. [chance_to_hit]: id=fierce
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:501
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:504
 msgid "stun"
-msgstr ""
+msgstr "aturdir"
 
 #. [chance_to_hit]: id=fierce
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:503
@@ -16108,25 +16122,28 @@ msgstr "Jinete esqueleto"
 
 #. [unit_type]: id=Skeleton Rider, race=undead
 #: data/campaigns/Under_the_Burning_Suns/units/Undead_Horseman.cfg:34
-#, fuzzy
 msgid ""
 "Once great warriors across the plains, these mounted riders atop their "
 "skeletal horses were raised from the sands by unholy magic to spread fear "
 "and destruction."
 msgstr ""
-"Una vez grandes guerreros en las llanuras, estos invasores montados en sus "
-"caballos esqueléticos fueron levantados de las arenas por fuerzas malignas "
-"para sembrar miedo y destrucción."
+"Alguna vez grandes guerreros de las llanuras, estos invasores montados en "
+"sus caballos esqueléticos fueron levantados de las arenas por fuerzas "
+"malignas para sembrar miedo y destrucción."
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:77
 msgid " This unit is capable of basic healing and slowing dehydration."
 msgstr ""
+" Esta unidad es capaz de sanamiento básico y puede retardar la "
+"deshidratación."
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:80
 msgid ""
 " This unit is capable of healing those around it, slowing dehydration, and "
 "curing them of poison."
 msgstr ""
+" Esta unidad es capaz de sanar a las unidades próximas, retardar la "
+"deshidratación, y curar el veneno."
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/utils/deaths.cfg:20
@@ -16140,7 +16157,6 @@ msgstr "Soy demasiado joven para morir. ¿Qué le sucederá a mi gente?"
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/utils/deaths.cfg:44
-#, fuzzy
 msgid "Save me, Kaleh, I'm dying..."
 msgstr "Sálvame Kaleh, me muero..."
 
@@ -16162,9 +16178,8 @@ msgstr "Por Moradin, ¡he caído!"
 #. [message]: speaker=$ally_name
 #: data/campaigns/Under_the_Burning_Suns/utils/deaths.cfg:149
 #: data/campaigns/Under_the_Burning_Suns/utils/deaths.cfg:174
-#, fuzzy
 msgid "No, $unit.name can't die now!"
-msgstr "¡No, $ally_name no puede morir ahora!"
+msgstr "¡No, $unit.name no puede morir ahora!"
 
 #. [message]: speaker=$ally_name
 #: data/campaigns/Under_the_Burning_Suns/utils/deaths.cfg:167
@@ -17083,7 +17098,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:200
-#, fuzzy
 msgid ""
 "Chapter 10: The merfolk helped us pilot our ships far into the ocean. Some "
 "of the younger elves were actually quite adept at climbing the rigging and "
@@ -17092,25 +17106,24 @@ msgid ""
 "desert, with only the stars at night to guide my way. But without the "
 "merfolk's help we would have been hopelessly lost."
 msgstr ""
-"Capítulo 10: Los sirénidos nos ayudaron a pilotar nuestros barcos océano "
-"adentro. Algunos de nuestro elfos más jóvenes se estaban acostumbrando a "
-"escalar por los aparejos y dirigir los barcos. Por mi parte prefería estar "
-"en el cuarto del capitán, más que nada para intentar evitar marearme. El mar "
-"me recordaba a cuando estábamos en el vasto desierto, con sólo las estrellas "
+"Capítulo 10: Los sirénidos nos ayudaron a pilotear nuestros barcos océano "
+"adentro. Algunos de nuestro elfos más jóvenes se acostumbraron bastante bien "
+"a escalar por los aparejos y dirigir los barcos. Por mi parte preferí estar "
+"en el cuarto del capitán, más que nada tratando evitar marearme. El mar me "
+"recordaba a cuando estábamos en el vasto desierto, con sólo las estrellas "
 "por la noche para guiar nuestro camino. De todas formas, sin la ayuda de los "
 "sirénidos, habríamos estado desesperadamente perdidos."
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:204
-#, fuzzy
 msgid ""
 "That afternoon three of the merfolk sat in a circle and performed their "
 "ritual to determine the location of their master. Apparently it was a "
 "success, for they steered us straight towards the setting sun."
 msgstr ""
-"Al atardecer tres de los sirénidos se sentaron en un círculo y realizaron el "
-"ritual para determinar la localización de su ama. Aparentemente fue un éxito "
-"para ellos y nos dirigieron directamente hacia el sol poniente."
+"Al atardecer tres de los sirénidos se sentaron en un círculo y realizaron su "
+"ritual para determinar la ubicación de su maestra. Aparentemente fue un "
+"éxito para ellos, pues nos dirigieron directamente hacia el sol poniente."
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:208
@@ -17224,13 +17237,12 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:241
-#, fuzzy
 msgid ""
 "Chapter 12: True strength is not measured in might or knowledge, but in what "
 "you can do for those you love."
 msgstr ""
 "Capítulo 12: La verdadera fuerza no se mide en fuerza o conocimiento, sino "
-"en cuánto te sacrificas por aquellos que amas."
+"en cuánto puedes sacrificar por tus seres queridos."
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:249
@@ -17346,434 +17358,3 @@ msgstr "La Larga Oscuridad (3)"
 #: data/campaigns/Under_the_Burning_Suns/utils/time.cfg:160
 msgid "The Long Dark (4)"
 msgstr "La Larga Oscuridad (4)"
-
-#~ msgid ""
-#~ "We'll need your help in checking to see if the outer settlements are "
-#~ "okay. Who knows what kinds of damage they suffered in the night? And "
-#~ "perhaps some of the people out in the desert have been able to round up "
-#~ "some of the loose horses."
-#~ msgstr ""
-#~ "Necesitaremos tu ayuda para comprobar si los asentamientos lejanos están "
-#~ "bien. Quién sabe qué tipo de daños sufrieron en la noche. Y quizás "
-#~ "algunos de los que fueron al desierto sean capaces de volver con algunos "
-#~ "de los caballos perdidos."
-
-#~ msgid "Well, let's hope that hunting party comes back soon."
-#~ msgstr "Bien, esperemos que la partida de caza vuelva pronto."
-
-#~ msgid "Goblin Raider"
-#~ msgstr "Invasor goblin"
-
-#~ msgid "Orc Raider"
-#~ msgstr "Invasor orco"
-
-#~ msgid ""
-#~ "Huh? What happened? Must have been another stupid elf trick! Well it "
-#~ "won't stop me from killing you!"
-#~ msgstr ""
-#~ "¿Huh? ¿Qué ha ocurrido? ¡Ha debido ser otro estúpido truco elfo! Bueno, "
-#~ "¡eso no me detendrá para mataros!"
-
-#~ msgid "What happened? Where am I?"
-#~ msgstr "¿Qué ha pasado? ¿Dónde estoy?"
-
-#~ msgid "Where did you go?"
-#~ msgstr "¿Dónde te habías ido?"
-
-#~ msgid ""
-#~ "I don't know, someone just knocked me out. I didn't get a good look at "
-#~ "them."
-#~ msgstr "No lo sé, alguien me dejó sin sentido. No pude ver quién fue."
-
-#~ msgid "Huh? What happened? No time to think, must keep fighting!"
-#~ msgstr ""
-#~ "¿Uh? ¿Qué pasó? No hay tiempo para pensar, ¡debemos seguir luchando!"
-
-#~ msgid "Where did you go? Do you remember anything?"
-#~ msgstr "¿Dónde fuiste? ¿Recuerdas algo?"
-
-#~ msgid ""
-#~ "No, someone grabbed me and knocked me out. I have no idea who it was."
-#~ msgstr ""
-#~ "No, alguien me agarró y me dejó sin sentido. No tengo ni idea de quién "
-#~ "era."
-
-#, fuzzy
-#~ msgid "A Stirring in the Night (development branch)"
-#~ msgstr "Agitación nocturna"
-
-#~ msgid "Grendel"
-#~ msgstr "Grendel"
-
-#~ msgid "Dread Bat"
-#~ msgstr "Murciélago pavoroso"
-
-#~ msgid ""
-#~ "Dread Bats are fast and can drain the blood of those they attack, thereby "
-#~ "healing themselves, even to the point where they become stronger than "
-#~ "they began the battle. Bloated with blood they have grown to a huge size "
-#~ "and can feast on bigger and bigger victims."
-#~ msgstr ""
-#~ "Los murciélagos pavorosos son rápidos y pueden drenar la sangre de "
-#~ "aquellos a quienes atacan, para curarse a ellos mismos, incluso llegando "
-#~ "al punto de poder acabar más fuertes de cuando empezaron la batalla. "
-#~ "Hinchados con sangre pueden alcanzar un tamaño enorme y pueden atacar a "
-#~ "víctimas cada vez más grandes."
-
-#~ msgid ""
-#~ "Fire Guardians are spirits of smoke and flame. No one is exactly sure "
-#~ "where they come from, but they are occasionally summoned by powerful "
-#~ "mages to do their bidding. When not being controlled they like to frolic "
-#~ "in pools of lava and take great delight in burning anything they can "
-#~ "reach."
-#~ msgstr ""
-#~ "Los guardianes de fuego son espíritus de humo y llamas. Nadie está "
-#~ "exactamente seguro de dónde vienen, pero son ocasionalmente invocados por "
-#~ "magos poderosos para hacer su voluntad. Cuando no están siendo "
-#~ "controlados, les gusta juguetear en pozos de lava y tienen gran placer en "
-#~ "quemar cualquier cosa a su alcance."
-
-#~ msgid "Rocky Horror"
-#~ msgstr "Horror rocoso"
-
-#~ msgid "Raaaar!"
-#~ msgstr "¡Raaaar!"
-
-#~ msgid "I think I see movement in the stables. Is anyone there?"
-#~ msgstr "Creo que veo movimiento en los establos. ¿Hay alguien ahí?"
-
-#~ msgid "Kaleh, wake up! Scouts report movement out in the sands."
-#~ msgstr ""
-#~ "¡Kaleh, despierta! Los exploradores han descubierto movimiento en las "
-#~ "arenas."
-
-#~ msgid "Is it orc raiders?"
-#~ msgstr "¿Son invasores orcos?"
-
-#~ msgid "I don't think so..."
-#~ msgstr "No lo creo..."
-
-#~ msgid ""
-#~ "You always were an arrogant little bastard. Grek will swallow your soul "
-#~ "first, or what's left of it."
-#~ msgstr ""
-#~ "Tú siempre fuiste un arrogante y pequeño bastardo. Grek se tragará tu "
-#~ "alma antes, o lo que quede de ella."
-
-#~ msgid ""
-#~ "You spurned me once; I will make you pay. But enough of the past--to "
-#~ "battle, my minions! Behold the wrath of the dead!"
-#~ msgstr ""
-#~ "Me rechazaste una vez: te lo haré pagar. Pero basta de hablar del pasado, "
-#~ "¡a la batalla, mis secuaces! ¡Contemplad la furia de la muerte!"
-
-#~ msgid ""
-#~ "Great, ringside seats for an all-out battle between two undead lords. You "
-#~ "really know how to pick a campsite, Kaleh."
-#~ msgstr ""
-#~ "Genial, asientos en primera fila para una batalla campal entre dos "
-#~ "señores de los no muertos. Realmente sabes dónde poner un campamento, "
-#~ "Kaleh."
-
-#~ msgid ""
-#~ "But our people's encampments are in danger, they'll be slaughtered by the "
-#~ "undead hordes!"
-#~ msgstr ""
-#~ "Pero la gente de nuestro campamento está en peligro, ¡serán masacrados "
-#~ "por las hordas no muertas!"
-
-#, fuzzy
-#~ msgid ""
-#~ "There's no way we can marshal our people to escape the battle in time. We "
-#~ "must protect our people's $village_counter encampments from the undead."
-#~ msgstr ""
-#~ "No hay forma en la que podamos organizar a los nuestros para escapar de "
-#~ "la batalla a tiempo. Debemos proteger a los once campamentos de nuestro "
-#~ "pueblo de los no muertos."
-
-#~ msgid ""
-#~ "If the undead forces reach our encampments first, they will surely be "
-#~ "destroyed. I fear that if we lose more than half our encampments we will "
-#~ "not have the strength to go on. Garak, wake your men. We must hold off "
-#~ "the undead until dawn."
-#~ msgstr ""
-#~ "Si las fuerzas de los no muertos alcanzan a nuestros campamentos antes, "
-#~ "seguramente serán destruidos. Me temo que si perdemos más de la mitad de "
-#~ "nuestros campamentos no tendremos la fuerza necesaria para continuar. "
-#~ "Garak, despierta a tus hombres. Debemos rechazar a los no muertos hasta "
-#~ "el amanecer."
-
-#~ msgid ""
-#~ "But look, dawn is nigh, our salvation is almost at hand. Even the Long "
-#~ "Dark cannot last forever, and with the light of the sun the undeads' dark "
-#~ "power wanes and their magics unravel."
-#~ msgstr ""
-#~ "Pero observa, el amanecer se acerca, nuestra salvación está casi en la "
-#~ "mano. Incluso la Larga Oscuridad no puede durar eternamente, y con la luz "
-#~ "de los soles el poder oscuro de los no muertos mengua y sus magias se "
-#~ "deshacen."
-
-#~ msgid ""
-#~ "No! I shall have my vengeance upon you all. Darkness shall reign until I "
-#~ "have triumphed!"
-#~ msgstr ""
-#~ "¡No! Tendré mi venganza sobre todos vosotros. ¡La oscuridad reinará hasta "
-#~ "que haya triunfado!"
-
-#~ msgid "Kill Possessed Garak (or)"
-#~ msgstr "Matar a Garak poseído (o)"
-
-#~ msgid "Defeat remaining Undead Lord"
-#~ msgstr "Derrotar al señor no muerto restante"
-
-#~ msgid ""
-#~ "I can see the first rays of Naia shining over the horizon. She never "
-#~ "looked so beautiful. The undead forces have crumbled into dust and the "
-#~ "remaining orcs are retreating with the dawn. But what of Garak?"
-#~ msgstr ""
-#~ "Puedo ver los primeros rayos de Naia brillando sobre el horizonte. Nunca "
-#~ "me pareció tan bella. Las fuerzas de los no muertos se han reducido a "
-#~ "polvo y los orcos restantes se están retirando con el amanecer. ¿Pero qué "
-#~ "pasa con Garak?"
-
-#~ msgid ""
-#~ "Well, only $village_counter encampments remain, but we shall survive."
-#~ msgstr ""
-#~ "Bueno, sólo quedaron $village_counter campamentos, pero podremos "
-#~ "sobrevivir."
-
-#~ msgid "Curse you! I will not forget this. You will rue this night."
-#~ msgstr "¡Maldito seas! No olvidaré esto. Te arrepentirás de esta noche."
-
-#~ msgid "Noooooo! I shall have my revenge!"
-#~ msgstr "¡Noooooo! ¡Tendré mi venganza!"
-
-#~ msgid ""
-#~ "I can just barely see the sun poking over the dunes. It is almost dawn!"
-#~ msgstr ""
-#~ "Puedo ver vagamente al sol asomando sobre las dunas. ¡Ya casi es el "
-#~ "amanecer!"
-
-#~ msgid ""
-#~ "No, I shall have my revenge. I shall show you that darkness is strongest "
-#~ "just before dawn. I call upon the lord of death and decay, grant me my "
-#~ "vengeance!"
-#~ msgstr ""
-#~ "No, tendré mi venganza. Te mostraré que la oscuridad es más fuerte justo "
-#~ "antes de amanecer. ¡Llamo al señor de la muerte y la decadencia, "
-#~ "garantízame mi venganza!"
-
-#~ msgid ""
-#~ "No, I shall have my revenge. I shall show you that darkness is strongest "
-#~ "just before dawn. I call upon the powers of disease and despair, grant me "
-#~ "my vengeance!"
-#~ msgstr ""
-#~ "No, tendré mi venganza. Te mostraré que la oscuridad es más fuerte justo "
-#~ "antes de amanecer. ¡Llamo a los poderes de la enfermedad y la "
-#~ "desesperación, garantizadme mi venganza!"
-
-#~ msgid ""
-#~ "They're raising the corpses of our slain people! What a horrible fate!"
-#~ msgstr ""
-#~ "¡Están levantando los cadáveres de nuestra gente caída! ¡Qué horrible "
-#~ "destino!"
-
-#~ msgid ""
-#~ "This darkness will never end, and the undead will soon overwhelm us. I'm "
-#~ "sorry Garak, we couldn't save you."
-#~ msgstr ""
-#~ "Esta oscuridad nunca acabará, y los no muertos pronto nos aplastarán. "
-#~ "Perdóname Garak, no pudimos salvarte."
-
-#~ msgid "Troll Shaman"
-#~ msgstr "Chamán troll"
-
-#~ msgid ""
-#~ "Troll shamans are the mystical leaders of the trolls. Though not as "
-#~ "strong or tough as other trolls, their true power lies in their fire "
-#~ "magic, which they use to blast enemies with gouts of fire."
-#~ msgstr ""
-#~ "Los chamanes trolls son sus líderes místicos. Aunque no son tan fuertes o "
-#~ "duros como los otros trolls, su verdadero poder reside en su fuego "
-#~ "mágico, que usan para lanzar a sus enemigos ráfagas de fuego."
-
-#~ msgid "flame blast"
-#~ msgstr "llamarada"
-
-#~ msgid "Bernard"
-#~ msgstr "Bernard"
-
-#~ msgid "Daryl"
-#~ msgstr "Daryl"
-
-#~ msgid "Oswald"
-#~ msgstr "Oswald"
-
-#~ msgid "Blank"
-#~ msgstr "En blanco"
-
-#~ msgid "wail"
-#~ msgstr "lamento"
-
-#~ msgid "baneblade"
-#~ msgstr "espada de la perdición"
-
-#~ msgid ""
-#~ "Desert Marshals are master commanders, able to inspire confidence in any "
-#~ "level 1 or 2 unit in adjacent hexes, causing them to fight with increased "
-#~ "skill. Desert Marshals prefer engaging the enemy in melee combat, but are "
-#~ "trained in archery as well.\n"
-#~ "\n"
-#~ "Special Notes: the leadership of a Marshal enables friendly units next to "
-#~ "it to deal more damage in combat, though this only applies to units of "
-#~ "lower level"
-#~ msgstr ""
-#~ "Los mariscales del desierto son maestros comandantes, capaces de inspirar "
-#~ "confianza a cualquiera de nivel 1 ó 2 en los hexágonos adyacentes, "
-#~ "haciendo que luchen con mayor habilidad. Los mariscales del desierto "
-#~ "prefieren enfrentarse al enemigo en combate cuerpo a cuerpo, pero también "
-#~ "están entrenados en el tiro con arco.\n"
-#~ "\n"
-#~ "Notas especiales: el liderazgo de un mariscal permite a las unidades "
-#~ "amigas adyacentes hacer más daño en combate, aunque esto sólo se aplica "
-#~ "en unidades de menor nivel"
-
-#~ msgid ""
-#~ "Desert Prowlers sneak across the sands, searching out enemies and "
-#~ "protecting their people. They are trained to slip past enemies unnoticed "
-#~ "and flank them. The combination of their bolas and blades allows them to "
-#~ "cripple and kill opponents with alarming ease.\n"
-#~ "\n"
-#~ "Special Notes: The skirmish ability allows the rogue to ignore enemy "
-#~ "units' zones of control and thus move unhindered around them."
-#~ msgstr ""
-#~ "Los merodeadores del desierto acechan entre las arenas, buscando enemigos "
-#~ "para proteger a su gente. Están entrenados para pasar al lado de los "
-#~ "enemigos sin que lo noten y atacarles por el flanco. La combinación de "
-#~ "sus boleadoras y cuchillas les permite paralizar y matar enemigos con "
-#~ "alarmante facilidad.\n"
-#~ "\n"
-#~ "Notas especiales: la habilidad de hostigador permite ignorar las zonas de "
-#~ "control de las unidades enemigas y moverse sin molestias a su alrededor."
-
-#~ msgid ""
-#~ "The purpose of the masks that these creatures wear is unknown, as is the "
-#~ "countenance that they obscure. These terrible forms are rarely seen by "
-#~ "the living, and those who live to speak of them had no leisure to study "
-#~ "their foe.\n"
-#~ "\n"
-#~ "Special Notes: while a unit with the same allegiance as the Nightgaunt "
-#~ "distracts an enemy, the Nightgaunt may strike at the opponent's back, "
-#~ "inflicting double damage. Nightgaunts have very unusual resistances to "
-#~ "damage, and move quite slowly over open water. While they can move "
-#~ "through solid walls, unlike normal Nightgaunts, Ethereal Nightgaunts "
-#~ "cannot hide at night."
-#~ msgstr ""
-#~ "El propósito de las máscaras que llevan estas criaturas es desconocido, "
-#~ "como el rostro que ocultan. Estas formas terribles raramente son vistas "
-#~ "por los vivos, y a aquellos que viven para contarlo no les quedan muchas "
-#~ "ganas de estudiar a estos enemigos.\n"
-#~ "\n"
-#~ "Notas especiales: cuando una unidad del mismo equipo que la pesadilla "
-#~ "distrae a un enemigo, la pesadilla puede golpear en la espalda del "
-#~ "oponente, infligiendo el doble de daño. Las pesadillas etéreas tienen "
-#~ "resistencias muy inusuales al daño, y se mueven bastante lentas sobre "
-#~ "aguas abiertas. Aunque pueden moverse a través de paredes sólidas, a "
-#~ "diferencia de las pesadillas normales, las pesadillas etéreas no pueden "
-#~ "esconderse por la noche."
-
-#~ msgid ""
-#~ "When light came into the world and gave form to the unknown, fear was "
-#~ "forced to retreat into darkness. Since that day, the shadows of the world "
-#~ "have held terror for humanity, though it knows not why.\n"
-#~ "\n"
-#~ "That is a question which is easily answered by a necromancer.\n"
-#~ "\n"
-#~ "Special Notes: while a unit with the same allegiance as the shadow "
-#~ "distracts an enemy, the Shadow may strike at the opponent's back, "
-#~ "inflicting double damage. Shadows have very unusual resistances to "
-#~ "damage, and move quite slowly over open water. While they can move "
-#~ "through solid walls, unlike normal Shadows, Ethereal Shadows cannot hide "
-#~ "at night."
-#~ msgstr ""
-#~ "Cuando la luz vino al mundo y dio forma a lo desconocido, el miedo fue "
-#~ "forzado a retirarse a la oscuridad. Desde este día, las sombras del mundo "
-#~ "han mantenido el terror para la humanidad, aunque no sepan por qué.\n"
-#~ "\n"
-#~ "Esta es una pregunta que sería fácilmente contestada por un nigromante.\n"
-#~ "\n"
-#~ "Notas especiales: cuando una unidad del mismo equipo que la sombra "
-#~ "distrae a un enemigo, la sombra puede golpear en la espalda del oponente, "
-#~ "infligiendo el doble de daño. Las sombras etéreas tienen resistencias muy "
-#~ "inusuales al daño, y se mueven bastante lentas sobre aguas abiertas. "
-#~ "Aunque pueden moverse a través de paredes sólidas, a diferencia de las "
-#~ "sombras normales, las sombras etéreas no pueden esconderse por la noche."
-
-#~ msgid ""
-#~ "Desert Fighters make up the bulk of the Elven military in Quenoth. They "
-#~ "are trained in both sword and bow, though like most of their kin, they "
-#~ "prefer swordplay to archery. These Elves are deft of foot, and fight best "
-#~ "in the open sands."
-#~ msgstr ""
-#~ "Los luchadores del desierto son el grueso del ejército elfo en Wesnoth. "
-#~ "Están entrenados tanto en arco como en espada, aunque como muchos de sus "
-#~ "semejantes, prefieren el uso de la espada al tiro con arco. Estos elfos "
-#~ "son diestros a pie y luchan mejor en las arenas abiertas."
-
-#, fuzzy
-#~ msgid ""
-#~ "Desert Sentinels patrol the sands; they are trained to avoid enemies when "
-#~ "it is advantageous. They can cripple opponents with their bolas and are "
-#~ "deadly with their swords."
-#~ msgstr ""
-#~ "Los centinelas del desierto patrullan las arenas; están entrenados en "
-#~ "eludir enemigos cuando es ventajoso. Pueden paralizar oponentes con sus "
-#~ "boleadoras y son mortales con sus espadas."
-
-#~ msgid "Hey Naru, the rocks have stopped falling. You can come out now!"
-#~ msgstr "Hey Naru, las rocas han dejado de caer. ¡Ahora ya puedes salir!"
-
-#~ msgid ""
-#~ "Please, have mercy on us. We'm just trying to survive in this horrible "
-#~ "land."
-#~ msgstr ""
-#~ "Por favor, ten piedad de nosotros. Sólo intentamos sobrevivir en esta "
-#~ "tierra horrenda."
-
-#~ msgid "Necromancer"
-#~ msgstr "Nigromante"
-
-#~ msgid ""
-#~ "One of the greatest circles of what is considered 'black magic' is the "
-#~ "art of necromancy, the terrible ability to awaken the dead with false "
-#~ "life. It was a discovery that had terrible ramifications and caused "
-#~ "humanity's condemnation of black magic, for it has given fear a vast new "
-#~ "arsenal.\n"
-#~ "\n"
-#~ "This ability, in all aspects, is the first step towards cheating death of "
-#~ "its ultimate prize. It is the highest degree of power a dark mage can "
-#~ "attain without losing grip on humanity itself, but pales to the lethal "
-#~ "power wielded by Liches. Their mortal bodies are also made sturdier by "
-#~ "their magic, in contrast to the frail decayed form of a Lich.\n"
-#~ "\n"
-#~ "Special Notes: the necromancer's ranged attacks are magical and always "
-#~ "have a high chance of hitting an opponent. The staff of a necromancer is "
-#~ "marked with the plague, and any foe struck down by it will rise again in "
-#~ "unlife."
-#~ msgstr ""
-#~ "Uno de los más grandes círculos de lo que se considera «magia negra» es el "
-#~ "arte de la necromancia, la terrible habilidad de despertar a los muertos "
-#~ "con una vida falsa. Fue un descubrimiento que tuvo horrorosas "
-#~ "ramificaciones y fue lo que causó que la humanidad condenara a la magia "
-#~ "negra, puesto que le dio al miedo un enorme arsenal.\n"
-#~ "\n"
-#~ "Esta habilidad, en todos sus aspectos, es el primer paso hacia quitarle a "
-#~ "la muerte el premio último. Es el más alto poder que un mago oscuro puede "
-#~ "llegar a obtener sin dejar de ser humano, pero no se compara con el poder "
-#~ "letal que manejan los liches. Sus cuerpos mortales se vuelven más "
-#~ "resistentes debido a su magia, en contraste con la frágil y decadente "
-#~ "existencia de un liche.\n"
-#~ "Nota: los ataque a distancia del nigromante son mágicos y siempre tienen "
-#~ "una alta probabilidad de dar en el blanco. El bastón del nigromante está "
-#~ "marcado por la plaga, y cualquier enemigo que sea aniquilado por él "
-#~ "volverá de la muerte como un no muerto."

@@ -19,7 +19,7 @@ msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-12-09 22:12+0100\n"
-"PO-Revision-Date: 2008-11-21 13:30-0300\n"
+"PO-Revision-Date: 2008-12-10 03:52-0300\n"
 "Last-Translator: Ignacio R. Morelle <shikadilord@users.sourceforge.net>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -658,7 +658,6 @@ msgstr ""
 
 #. [topic]: id=fundamentals
 #: data/core/help.cfg:140
-#, fuzzy
 msgid ""
 "While playing, keep in mind that if you mouse-over many items in the game, "
 "such as the information displayed in the status pane, a brief description "
@@ -666,11 +665,12 @@ msgid ""
 "encounter new <ref>dst='..abilities_section' text='abilities'</ref> for the "
 "first time."
 msgstr ""
-"Mientras esté jugando, tenga presente que si sitúa su cursor sobre la "
-"mayoría de objetos del juego, como la información que se muestra en el panel "
-"de estado, obtendrá una pequeña descripción que le explique para qué sirve. "
-"Esta característica del juego será especialmente útil cuando reciba "
-"<ref>dst=abilities text=habilidades</ref> nuevas por primera vez."
+"Mientras esté jugando, tenga presente que si sitúa el cursor sobre la "
+"mayoría de los elementos del juego, como la información que se muestra en el "
+"panel de estado, obtendrá una pequeña descripción que le explica más sobre "
+"el elemento. Esta característica le será especialmente útil cuando se "
+"encuentre con nuevas <ref>dst='..abilities_section' text=habilidades</ref> "
+"por primera vez."
 
 #. [topic]: id=about_game
 #: data/core/help.cfg:145
@@ -760,7 +760,6 @@ msgstr "Reclutar y reincorporar"
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:165
-#, fuzzy
 msgid ""
 "Each side begins with one leader in their keep. At the start of any battle, "
 "and at times during it, you will need to recruit <ref>dst='..units' "
@@ -774,16 +773,16 @@ msgid ""
 "recruit it."
 msgstr ""
 "Cada bando comienza con un líder en su torreón. Al comienzo de cada batalla, "
-"y a veces durante ella, necesitará reclutar <ref>dst=units text=unidades</"
-"ref> para su ejército. Para ello, ha de tener a su líder (por ejemplo, "
-"Konrad en la campaña Heredero al trono) en la casilla del torreón de un "
-"<ref>dst=terrain_castle text=castillo</ref>. Entonces podrá reclutar tan "
-"sólo con escoger Reclutar en el menú, o bien pulsando con el botón derecho "
-"en un hexágono y seleccionando la opción <italic>text=Reclutar</italic>. Al "
-"hacer esto, se mostrará el menú de reclutamiento, donde se listan las "
-"unidades disponibles para reclutar, junto con su coste en piezas de oro. "
-"Pinche en una unidad para ver sus estadísticas a la izquierda, y pulse el "
-"botón reclutar para hacerlo."
+"y a veces durante ella, necesitará reclutar <ref>dst='..units' "
+"text='unidades'</ref> para su ejército. Para ello, ha de tener a su líder "
+"(por ejemplo, Konrad en la campaña Heredero al trono) en la casilla del "
+"torreón de un <ref>dst='terrain_castle' text='castillo'</ref>. Entonces "
+"podrá reclutar tan sólo con escoger Reclutar en el menú, o bien pulsando el "
+"botón derecho en un hexágono y seleccionando la opción "
+"<italic>text=Reclutar</italic>. Al hacer esto, se mostrará el menú de "
+"reclutamiento, donde se listan las unidades disponibles para reclutar, junto "
+"con su coste en piezas de oro. Haga clic en una unidad para ver sus "
+"estadísticas, y luego presione el botón Reclutar para hacerlo."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:167
@@ -805,7 +804,6 @@ msgstr ""
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:169
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -814,8 +812,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Las unidades reclutadas aparecen con dos <ref>dst=..traits_section "
-"text=Rasgos</ref> aleatorios que modifican sus estadísticas."
+"Las unidades reclutadas aparecen con dos <ref>dst='..traits_section' "
+"text='Rasgos'</ref> aleatorios que modifican sus estadísticas."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:171
@@ -835,7 +833,6 @@ msgstr ""
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:173
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -846,8 +843,8 @@ msgstr ""
 "\n"
 "\n"
 "Tenga en mente que las unidades no sólo cuestan oro cuando se las recluta o "
-"se las reincorpora, sino que también requieren dinero para mantenerlas. Lea "
-"la sección <ref>dst=income_and_upkeep text='Recaudación y mantenimiento'</"
+"se las reincorpora, sino que también requieren un costo de mantención. Lea "
+"la sección <ref>dst='income_and_upkeep' text='Recaudación y mantenimiento'</"
 "ref> para obtener más información."
 
 #. [topic]: id=orbs
@@ -1246,7 +1243,6 @@ msgstr ""
 
 #. [topic]: id=combat
 #: data/core/help.cfg:247
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1257,11 +1253,11 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Unas cuantas unidades tienen <ref>dst=abilities text=habilidades</ref> "
-"especiales que afectan al daño producido en combate. La más común de ellas "
-"es la <ref>dst=weaponspecial_charge text=carga</ref>, que dobla el daño que "
-"hacen tanto atacante como defensor cuando la unidad ataca utilizando la "
-"habilidad de carga."
+"Unas cuantas unidades poseen <ref>dst='..abilities_section' "
+"text='habilidades especiales'</ref> que modifican el daño inflingido en "
+"combate. La más común de ellas es la <ref>dst='weaponspecial_charge' "
+"text='carga'</ref>, que dobla el daño causado tanto por el atacante como el "
+"defensor cuando la unidad con carga es la que inicia el ataque."
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:253
@@ -1451,7 +1447,6 @@ msgstr ""
 
 #. [topic]: id=experience_and_advancement
 #: data/core/help.cfg:292
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1469,16 +1464,17 @@ msgstr ""
 "\n"
 "\n"
 "Aunque muchas unidades tienen tres niveles, no todas son así. Algunas "
-"unidades muy particulares (como los <ref>dst=unit_Mage text=magos</ref> "
+"unidades muy particulares (como los <ref>dst='unit_Mage' text='magos'</ref> "
 "pueden tener cuatro. Una vez que la unidad ha alcanzado su máximo nivel, "
-"puede tener un Avance Sobre el Máximo Nivel (ASMN, AMLA en inglés) "
-"disponible. El ASMN modificará a la unidad cada vez que la unidad alcance el "
+"puede tener un Avance Sobre el Máximo Nivel (ASMN, o AMLA en inglés) "
+"disponible. El ASMN modificará a la unidad cada vez que ésta alcance el "
 "límite de experiencia, pero la unidad seguirá siendo del mismo nivel. El "
-"efecto típico del ASMN es que la unidad eleva sus PV máximos en 3 puntos. El "
-"primer ASMN se alcanza normalmente a los 150 PX (120 PX para las unidades "
-"inteligentes). Sin embargo, conseguir un ASMN se hace progresivamente más "
-"difícil cada vez que la unidad recibe un ASMN, por lo que normalmente es más "
-"útil intentar mejorar sus unidades de bajo nivel."
+"efecto típico del ASMN es que la unidad ve incrementado su máximo de PV en 3 "
+"unidades y es completamente sanada. El primer ASMN se alcanza normalmente a "
+"los 150 PX (120 PX para las unidades inteligentes). Sin embargo, conseguir "
+"un ASMN se hace progresivamente más difícil cada vez que la unidad recibe "
+"uno, por lo que normalmente es mucho más útil intentar mejorar sus unidades "
+"de bajo nivel."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:299
@@ -1487,7 +1483,6 @@ msgstr "Sanación"
 
 #. [topic]: id=healing
 #: data/core/help.cfg:300
-#, fuzzy
 msgid ""
 "In combat, your units will inevitably take damage. When a unit "
 "<ref>dst='experience_and_advancement' text='advances'</ref>, it will heal "
@@ -1495,16 +1490,15 @@ msgid ""
 "turn or not. Wesnoth offers several other ways for your units to heal, all "
 "of which take place at the beginning of your turn, before you take action."
 msgstr ""
-"Cuando haya combate, sus unidades recibirán daño inevitablemente. Cuando una "
-"unidad <ref>dst=experience_and_advancement text='gana un nivel'</ref>, "
-"sanará completamente. Esto puede que suceda tan pronto como acabe con un "
-"enemigo, ya sea su turno o no. En Wesnoth hay varias opciones para "
-"recuperarse del daño sufrido y sanarse, todas ellas al principio de su "
-"turno, antes de empezar a realizar ninguna otra acción."
+"En combate, sus unidades inevitablemente recibirán daño. Cuando una unidad "
+"<ref>dst='experience_and_advancement' text='avanza de nivel'</ref>, sanará "
+"por completo. Esto puede que suceda tan pronto como acabe con un enemigo, ya "
+"sea durante su turno o no. En Wesnoth hay varias otras opciones para que sus "
+"unidades puedan sanar sus heridas, todas ellas al principio de su turno, "
+"antes de empezar a realizar cualquier otra acción."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:302
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1513,7 +1507,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Descanso: una unidad que no mueva, ni ataque, ni sea atacada, recuperará 2 "
+"Descanso: una unidad que no se mueva o ataque, ni sea atacada, recuperará 2 "
 "PV en su siguiente turno."
 
 #. [topic]: id=healing
@@ -1527,19 +1521,17 @@ msgstr ""
 
 #. [topic]: id=healing
 #: data/core/help.cfg:304
-#, fuzzy
 msgid ""
 "\n"
 "<ref>dst='ability_regenerates' text='Regeneration'</ref>: Certain units "
 "(such as trolls) will automatically heal 8HP every turn."
 msgstr ""
 "\n"
-"<ref>dst=ability_regenerates text=Regeneración</ref>: algunas unidades (como "
-"los trolls) automáticamente recuperarán 8 PV por turno."
+"<ref>dst='ability_regenerates' text='Regeneración'</ref>: algunas unidades "
+"(como los trolls) automáticamente recuperarán 8 PV por turno."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:305
-#, fuzzy
 msgid ""
 "\n"
 "Healing units: Units with the <ref>dst='ability_heals +4' text='Heals'</ref> "
@@ -1549,13 +1541,13 @@ msgid ""
 msgstr ""
 "\n"
 "Unidades con sanación: las unidades con la habilidad de "
-"<ref>dst=ability_heals text=sanar</ref> sanarán a las unidades adyacentes "
-"amigas, normalmente 4 u 8 PV por turno o evitarán que el veneno cause daño a "
-"esa unidad."
+"<ref>dst='ability_heals +4' text='sanar'</ref> sanarán a las unidades "
+"adyacentes amigas, normalmente <ref>dst='ability_heals +4' text='4 PV'</ref> "
+"u <ref>dst='ability_heals +8' text='8 PV'</ref> por turno, o evitarán que el "
+"veneno cause daño a esa unidad."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:306
-#, fuzzy
 msgid ""
 "\n"
 "Curing units: Units with the <ref>dst='ability_cures' text='Cures'</ref> "
@@ -1564,7 +1556,7 @@ msgid ""
 msgstr ""
 "\n"
 "Unidades con curación: las unidades con la habilidad de "
-"<ref>dst=ability_cures text=curar</ref> podrán eliminar el veneno de las "
+"<ref>dst='ability_cures' text='curar'</ref> podrán eliminar el veneno de las "
 "unidades amigas adyacentes (con preferencia sobre sanar en caso de que la "
 "unidad también tenga esta habilidad)."
 
@@ -1684,7 +1676,6 @@ msgstr "Resumiendo"
 
 #. [topic]: id=wrap_up
 #: data/core/help.cfg:330
-#, fuzzy
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
 "Basic Strategy, or familiarise yourself with <ref>dst='..traits_section' "
@@ -1693,10 +1684,11 @@ msgid ""
 "Throne campaign. Have fun, and good luck!"
 msgstr ""
 "Con esto termina la introducción a los fundamentos de Wesnoth. Puede que "
-"quiera seguir leyendo la sección de Estrategia básica, o familiarizarse con "
-"los <ref>dst=traits text=rasgos</ref> y <ref>dst=abilities text=habilidades</"
-"ref>, pero ahora ya sabe lo necesario para poder jugar en la campaña del "
-"Heredero al trono. ¡Diviértase, y buena suerte!"
+"quiera seguir leyendo la sección de Estrategia Básica, o familiarizarse con "
+"los <ref>dst='..traits_section' text='rasgos'</ref> y <ref>dst='.."
+"abilities_section' text='habilidades'</ref>, pero ahora ya sabe lo necesario "
+"para poder jugar en la campaña del Heredero al trono. ¡Diviértase, y buena "
+"suerte!"
 
 #. [topic]: id=about
 #: data/core/help.cfg:335
@@ -1723,7 +1715,6 @@ msgstr ""
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:352
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1734,14 +1725,13 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Los rasgos que hay disponibles para todas las criaturas no muertas son "
-"<ref>dst=traits_intelligent text=inteligente</ref>, <ref>dst=traits_quick "
-"text='rápido'</ref>, <ref>dst=traits_resilient text=resistente</ref>, y "
-"<ref>dst=traits_strong text=fuerte</ref>."
+"Los rasgos que se encuentran disponibles para todas las criaturas no muertas "
+"son <ref>dst='traits_intelligent' text='Inteligente'</ref>, "
+"<ref>dst='traits_quick' text='Rápido(a)'</ref>, <ref>dst='traits_resilient' "
+"text='Resistente'</ref>, y <ref>dst='traits_strong' text='Fuerte'</ref>."
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:356
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1752,9 +1742,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Los otros rasgos que pueden asignarse a las unidades son "
-"<ref>dst=traits_dextrous text=diestro</ref>,<ref>dst=traits_loyal text=leal</"
-"ref>, y <ref>dst=traits_undead text='No Muerto'</ref>.\n"
+"Otros rasgos que pueden ser asignados a las unidades son "
+"<ref>dst='traits_dextrous' text='Diestro'</ref>,<ref>dst='traits_loyal' "
+"text='Leal'</ref>, y <ref>dst='traits_undead' text='No Muerto'</ref>.\n"
 "\n"
 
 #. [topic]: id=traits_intelligent
@@ -2041,7 +2031,6 @@ msgstr ""
 
 #. [topic]: id=traits_healthy
 #: data/core/help.cfg:435
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2050,8 +2039,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Las unidades vitales tienen 2 PV más de lo normal y el descansar les sana 2 "
-"PV adicionales tras cada turno en el que no luchen."
+"Las unidades vitales tienen 1 PV más 1 PV por nivel más de lo normal y el "
+"descansar les sana 2 PV adicionales tras cada turno en el que no luchen."
 
 #. [topic]: id=..terrains
 #: data/core/help.cfg:443
@@ -2094,15 +2083,14 @@ msgstr "Camino"
 
 #. [topic]: id=terrain_road
 #: data/core/help.cfg:465
-#, fuzzy
 msgid ""
 "Roads are beaten paths of dirt, formed by many travelers passing over them. "
 "As far as gameplay is concerned, Roads behave as <ref>dst='terrain_flat' "
 "text='Flat'</ref> terrain."
 msgstr ""
 "Los caminos son sendas de arena o grava, holladas por el paso de muchos "
-"viajeros. En lo que respecta al juego, los caminos son idénticos a la "
-"<ref>dst=terrain_grassland text=pradera</ref>."
+"viajeros. En lo que respecta al juego, los caminos son idénticos a los "
+"terrenos <ref>dst='terrain_flat' text='Llanos'</ref>."
 
 #. [topic]: id=terrain_forest
 #: data/core/help.cfg:472
@@ -2290,7 +2278,6 @@ msgstr "Congelado"
 
 #. [topic]: id=terrain_frozen
 #: data/core/help.cfg:551
-#, fuzzy
 msgid ""
 "Frozen terrain represents any flat area that is covered by snow or ice. Most "
 "units are slowed down on it, and have a harder time defending themselves. "
@@ -2299,12 +2286,14 @@ msgid ""
 "\n"
 "Most units have 20 to 40% defense in frozen terrain."
 msgstr ""
-"La nieve representa cualquier área plana que esté congelada, ya sea de forma "
-"permanente (como la tundra) o temporalmente (como praderas cubiertas de "
-"nieve). La mayoría de las unidades se ven reducido su movimiento por la "
-"nieve, y les cuesta más defenderse.\n"
+"El terreno congelado representa a cualquier área plana cubierta por nieve o "
+"hielo. La mayoría de las unidades ven reducido su movimiento sobre éste, y "
+"les tiende a ser más difícil defenderse a sí mismas. Nótese que las unidades "
+"que nadan, incluso aquellas que respiran bajo el agua, no pueden nadar bajo "
+"el hielo.\n"
 "\n"
-"La mayoría de las unidades tienen de un 20% a un 40% de defensa en la nieve."
+"La mayoría de las unidades tienen entre un 20 y 40% de defensa sobre "
+"terrenos congelados."
 
 #. [topic]: id=terrain_castle
 #: data/core/help.cfg:558
@@ -2553,17 +2542,17 @@ msgstr "Intransitable"
 
 #. [topic]: id=terrain_unwalkable
 #: data/core/help.cfg:671
-#, fuzzy
 msgid ""
 "Unwalkable terrain covers any chasm or gorge which, as the name implies, "
 "cannot be crossed simply by walking. Chasms are noted for sheer walls which "
 "would take days to traverse. As far as gameplay is concerned, only units "
 "capable of flying can cross this terrain."
 msgstr ""
-"Un abismo es una hendidura en la tierra, que lleva a profundidades "
-"desconocidas. Los abismos son conocidos por tener laderas muy escarpadas que "
-"se tardan días en recorrer. A efectos de juego, sólo las unidades capaces de "
-"volar sobre los abismos pueden cruzar este tipo de terreno."
+"Los terrenos intransitables incluyen cualquier abismo o hendidura que, como "
+"indica el nombre, no es posible atravesar caminando. Los abismos son "
+"conocidos por tener laderas muy escarpadas que puede tardar varios días en "
+"recorrer. A efectos de juego, sólo las unidades capaces de volar pueden "
+"cruzar este tipo de terreno."
 
 #. [topic]: id=terrain_lava
 #: data/core/help.cfg:678
@@ -2572,7 +2561,6 @@ msgstr "Lava"
 
 #. [topic]: id=terrain_lava
 #: data/core/help.cfg:681
-#, fuzzy
 msgid ""
 "The dangers inherent in trying to walk on lava are fairly obvious. As far as "
 "movement is concerned, lava is equivalent to <ref>dst='terrain_unwalkable' "
@@ -2583,11 +2571,12 @@ msgid ""
 "from chaotic units."
 msgstr ""
 "Los peligros inherentes al intento de caminar sobre lava son bastante "
-"obvios. En tanto como concierne a la movilidad, la lava es equivalente a "
-"<ref>dst='Inste terreno sólo pueden cruzarlo unidades que sean capaces de "
-"volar a una distancia considerable sobre él. El magma incandescente también "
-"produce un sustancial brillo, que ilumina el área sobre él. Esto proporciona "
-"un bono al ataque a las unidades legales y elimina el bono de las unidades "
+"obvios. En tanto como concierne a la movilidad, la lava es equivalente al "
+"terreno <ref>dst='terrain_unwalkable' text='Intransitable'</ref>, y sólo "
+"pueden cruzarla unidades que sean capaces de volar a una distancia "
+"considerable sobre ella. El magma incandescente también produce un brillo "
+"sustancial, que ilumina el área sobre él. Esto proporciona una bonificación "
+"de ataque a las unidades legales y elimina la bonificación de las unidades "
 "caóticas."
 
 #. [topic]: id=terrain_ford
@@ -2614,9 +2603,8 @@ msgstr ""
 
 #. [topic]: id=terrain_reef
 #: data/core/help.cfg:698
-#, fuzzy
 msgid "Coastal Reef"
-msgstr "Castillo"
+msgstr "Arrecife costero"
 
 #. [topic]: id=terrain_bridge
 #: data/core/help.cfg:708
@@ -3029,7 +3017,6 @@ msgstr "liderazgo"
 #: data/core/macros/abilities.cfg:118 data/core/macros/abilities.cfg:141
 #: data/core/macros/abilities.cfg:176 data/core/macros/abilities.cfg:223
 #: data/core/macros/abilities.cfg:282
-#, fuzzy
 msgid ""
 "Leadership:\n"
 "This unit can lead our own units that are next to it, making them fight "
@@ -3041,13 +3028,13 @@ msgid ""
 "difference in their levels."
 msgstr ""
 "Liderazgo:\n"
-"Esta unidad puede liderar a las unidades amigas cercanas, haciendo que "
-"luchen mejor.\n"
+"Esta unidad puede liderar a nuestras propias unidades próximas a ella, "
+"haciendo que luchen mejor.\n"
 "\n"
 "Las unidades adyacentes de nivel inferior harán más daño en combate. Cuando "
 "una unidad adyacente de menor nivel, y en el mismo bando que la unidad con "
-"liderazgo, entre en combate, sus ataques hacen un 25% más de daño por cada "
-"nivel que las separe."
+"liderazgo, entra en combate, sus ataques hacen un 25% más de daño por cada "
+"nivel de diferencia."
 
 #. [skirmisher]: id=skirmisher
 #: data/core/macros/abilities.cfg:346
@@ -4019,7 +4006,6 @@ msgid "Kaasa,Kayya,Keyya,Kiira,Korra"
 msgstr "Kaasa,Kayya,Keyya,Kiira,Korra"
 
 #: data/core/macros/names.cfg:23
-#, fuzzy
 msgid ""
 "Addraecyn,Addraenvan,Addraer,Addraercyn,Addraryn,Addreddry,Addredry,"
 "Addregwyn,Addrenyc,Addreoddry,Addreoddyn,Addreonyc,Addreorcyn,Addreran,"
@@ -4078,8 +4064,8 @@ msgstr ""
 "Aethonnyn,Aethuc,Aethudry,Aethugwyn,Aethun,Aethunry,Aethydry,Aethynyc,Blac,"
 "Bladoc,Blaec,Blaedry,Blanry,Blebryn,Bledoc,Blemyr,Blennyn,Blenvan,Bleollyn,"
 "Blercyn,Blidd,Bliddry,Blillyn,Blinvan,Blollyn,Blubryn,Blucyn,Bludry,Blullyn,"
-"Bluran,Blybryn,Blydd,Blygwyn,Blymyr,Blyr,Cac,Cadry,Caebryn,Caedry,Caeran,"
-"Caercyn,Car,Carac,Caraddry,Caradoc,Caraedry,Caraennyn,Cararyn,Caredd,"
+"Bluran,Blybryn,Blydd,Blygwyn,Blymyr,Blyr,Bucyn,Cac,Cadry,Caebryn,Caedry,"
+"Caeran,Caercyn,Car,Carac,Caraddry,Caradoc,Caraedry,Caraennyn,Cararyn,Caredd,"
 "Careddry,Caregwyn,Caren,Careobryn,Careogwyn,Careonvan,Careorraent,Careoryn,"
 "Carercyn,Caric,Cariddry,Carocyn,Caroddyn,Caror,Caroran,Carraent,Carudoc,"
 "Carullyn,Carygwyn,Caryn,Cebryn,Cemyr,Cennyn,Ceoc,Ceoddry,Ceoddyn,Ceomyr,"
@@ -4091,34 +4077,33 @@ msgstr ""
 "Glircyn,Gloddry,Gloddyn,Glonry,Glonvan,Glumyr,Glun,Glunry,Glunvan,Glyc,Glydd,"
 "Glydoc,Glynry,Glynvan,Glyran,Goc,Gor,Gubryn,Gudd,Gullyn,Gumyr,Gur,Gwadoc,"
 "Gwaec,Gwaeddyn,Gwan,Gweddyn,Gwegwyn,Gwellyn,Gwennyn,Gwenyc,Gweocyn,Gweodd,"
-"Gweodoc,Gweodry,Gweogwyn,Gweoran,Gwidoc,Gwodd,Gwoddyn,Gwollyn,Gwor,Gwucyn,"
-"Gwudoc,Gwumyr,Gwuran,Gwybryn,Gwycyn,Gwyddry,Gwydoc,Gwymyr,Gwynnyn,Gydoc,"
-"Gyllyn,Gymyr,Labryn,Ladoc,Laellyn,Lan,Lannyn,Laran,Lec,Lemyr,Lenvan,Leogwyn,"
-"Lercyn,Ligwyn,Lin,Liryn,Lonnyn,Lorraent,Luddry,Ludoc,Lunnyn,Lunvan,Lurraent,"
-"Mac,Maddyn,Maennyn,Manry,Manyc,Marcyn,Mec,Menvan,Meollyn,Meon,Meonnyn,"
-"Meorraent,Middry,Midry,Mimyr,Modd,Moddry,Monry,Moran,Morcyn,Mubryn,Mudoc,"
-"Mugwyn,Murcyn,Mydoc,Mygwyn,Myn,Myrraent,Owac,Owadd,Owaddyn,Owaecyn,Owaedry,"
-"Owarcyn,Owaryn,Owecyn,Owedry,Oweomyr,Oweor,Oweorcyn,Oweran,Owercyn,Owidry,"
-"Owinvan,Owinyc,Owodd,Owoddry,Owogwyn,Owollyn,Oworan,Oworcyn,Oworraent,"
-"Owuddry,Owuddyn,Owugwyn,Owur,Owyran,Rabryn,Radd,Ranvan,Rar,Reoddyn,Reodry,"
-"Rhaecyn,Rhaedoc,Rhaemyr,Rhaerraent,Rhanry,Rharcyn,Rhenry,Rhenvan,Rhenyc,"
-"Rheodd,Rheoddyn,Rheollyn,Rheor,Rheoran,Rheorraent,Rheran,Rherraent,Rhobryn,"
-"Rhodry,Rhollyn,Rhonvan,Rhubryn,Rhugwyn,Rhunyc,Rhur,Rhygwyn,Rhyllyn,Rhynyc,"
-"Rhyrcyn,Rhyrraent,Rocyn,Roddyn,Romyr,Ron,Ronry,Rubryn,Ruddry,Rumyr,Run,"
-"Rurcyn,Rybryn,Rycyn,Ryddry,Rygwyn,Rynnyn,Rynry,Saec,Saellyn,Saemyr,Saenvan,"
-"Saercyn,Sanyc,Saran,Sarraent,Secyn,Seddyn,Sedry,Sellyn,Sennyn,Seoddry,"
-"Seorcyn,Sercyn,Siddry,Simyr,Siryn,Sodd,Sodry,Soran,Suc,Sudd,Surcyn,Sydd,"
-"Syran,Syryn,Tabryn,Taec,Taedd,Taedoc,Taemyr,Taenvan,Taercyn,Tanry,Tarcyn,"
-"Teddyn,Tegwyn,Ten,Tennyn,Tenvan,Teobryn,Teoddyn,Teor,Teorcyn,Terraent,Tinry,"
-"Tinvan,Tiryn,Todd,Tudd,Tuddry,Tudoc,Tunvan,Turraent,Tyddyn,Vaddyn,Vaeddyn,"
-"Vaedry,Vaennyn,Varcyn,Ven,Vennyn,Veocyn,Veoddyn,Veodry,Veogwyn,Veomyr,Vinvan,"
-"Vinyc,Virraent,Vobryn,Vogwyn,Vonry,Vuddyn,Vugwyn,Vyc,Vygwyn,Vyrcyn,Yracyn,"
-"Yraec,Yran,Yrannyn,Yranvan,Yraryn,Yredd,Yreddyn,Yregwyn,Yreryn,Yrinvan,"
-"Yrirraent,Yroddry,Yrullyn,Yrumyr,Yrunnyn,Yrunvan,Yryllyn,Yrymyr,Yrynyc,"
-"Yryrcyn"
+"Gweodoc,Gweodry,Gweogwyn,Gweoran,Gwidoc,Gwilam,Gwodd,Gwoddyn,Gwollyn,Gwor,"
+"Gwucyn,Gwudoc,Gwumyr,Gwuran,Gwybryn,Gwycyn,Gwyddry,Gwydoc,Gwymyr,Gwynnyn,"
+"Gydoc,Gyllyn,Gymyr,Haldar,Labryn,Ladoc,Laellyn,Lan,Lannyn,Laran,Lec,Lemyr,"
+"Lenvan,Leogwyn,Lercyn,Ligwyn,Lin,Liryn,Lonnyn,Lorraent,Luddry,Ludoc,Lunnyn,"
+"Lunvan,Lurraent,Mac,Maddyn,Maennyn,Manry,Manyc,Marcyn,Mec,Menvan,Meollyn,"
+"Meon,Meonnyn,Meorraent,Middry,Midry,Mimyr,Modd,Moddry,Monry,Moran,Morcyn,"
+"Mubryn,Mudoc,Mugwyn,Murcyn,Mydoc,Mygwyn,Myn,Myrraent,Owac,Owadd,Owaddyn,"
+"Owaecyn,Owaedry,Owain,Owarcyn,Owaryn,Owecyn,Owedry,Oweomyr,Oweor,Oweorcyn,"
+"Oweran,Owercyn,Owidry,Owinvan,Owinyc,Owodd,Owoddry,Owogwyn,Owollyn,Oworan,"
+"Oworcyn,Oworraent,Owuddry,Owuddyn,Owugwyn,Owur,Owyran,Rabryn,Radd,Ranvan,Rar,"
+"Reoddyn,Reodry,Rhaecyn,Rhaedoc,Rhaemyr,Rhaerraent,Rhanry,Rharcyn,Rhenry,"
+"Rhenvan,Rhenyc,Rheodd,Rheoddyn,Rheollyn,Rheor,Rheoran,Rheorraent,Rheran,"
+"Rherraent,Rhobryn,Rhodry,Rhollyn,Rhonvan,Rhubryn,Rhugwyn,Rhunyc,Rhur,Rhygwyn,"
+"Rhyllyn,Rhynyc,Rhyrcyn,Rhyrraent,Rocyn,Roddyn,Romyr,Ron,Ronry,Rubryn,Ruddry,"
+"Rumyr,Run,Rurcyn,Rybryn,Rycyn,Ryddry,Rygwyn,Rynnyn,Rynry,Saec,Saellyn,Saemyr,"
+"Saenvan,Saercyn,Sanyc,Saran,Sarraent,Secyn,Seddyn,Sedry,Sellyn,Sennyn,"
+"Seoddry,Seorcyn,Sercyn,Siddry,Simyr,Siryn,Sodd,Sodry,Soran,Suc,Sudd,Surcyn,"
+"Sydd,Syran,Syryn,Tabryn,Taec,Taedd,Taedoc,Taemyr,Taenvan,Taercyn,Tanry,"
+"Tarcyn,Teddyn,Tegwyn,Ten,Tennyn,Tenvan,Teobryn,Teoddyn,Teor,Teorcyn,Terraent,"
+"Tinry,Tinvan,Tiryn,Todd,Tudd,Tuddry,Tudoc,Tunvan,Turraent,Tyddyn,Vaddyn,"
+"Vaeddyn,Vaedry,Vaennyn,Varcyn,Ven,Vennyn,Veocyn,Veoddyn,Veodry,Veogwyn,"
+"Veomyr,Vinvan,Vinyc,Virraent,Vobryn,Vogwyn,Vonry,Vuddyn,Vugwyn,Vyc,Vygwyn,"
+"Vyrcyn,Yracyn,Yraec,Yran,Yrannyn,Yranvan,Yraryn,Yredd,Yreddyn,Yregwyn,Yreryn,"
+"Yrinvan,Yrirraent,Yroddry,Yrullyn,Yrumyr,Yrunnyn,Yrunvan,Yryllyn,Yrymyr,"
+"Yrynyc,Yryrcyn"
 
 #: data/core/macros/names.cfg:24
-#, fuzzy
 msgid ""
 "Alabrylla,Alaebrylla,Alaeniver,Alalla,Alalonna,Alaryan,Aleacla,Aleaniver,"
 "Aleara,Alearka,Alena,Alengwen,Alilonna,Alingwen,Alolla,Alolonna,Alora,"
@@ -4185,8 +4170,8 @@ msgstr ""
 "Eleanoic,Elearka,Elenoic,Elerka,Elivyan,Elulonna,Elurka,Elwllyra,Elwlonna,"
 "Elwngwen,Elwra,Elycla,Elyllyra,Elyngwen,Elyniver,Elyrka,Gwaera,Gwaessa,"
 "Gwangwen,Gweacla,Gwedda,Gwerka,Gwicla,Gwirka,Gwobrylla,Gwoll,Gwona,Gwongwen,"
-"Gwonoic,Gworyan,Gwullyra,Gwussa,Gwwcla,Gwwna,Gwwvyan,Gwycla,Gwydda,Jacla,"
-"Jaena,Jaerka,Jaevyan,Jalyan,Jana,Jarka,Jassa,Jeabrylla,Jealla,Jeanoic,"
+"Gwonoic,Gworyan,Gwullyra,Gwussa,Gwwcla,Gwwna,Gwwvyan,Gwycla,Gwydda,Heldra,"
+"Jacla,Jaena,Jaerka,Jaevyan,Jalyan,Jana,Jarka,Jassa,Jeabrylla,Jealla,Jeanoic,"
 "Jeniver,Jiryan,Jissa,Joll,Jolla,Jona,Jongwen,Jonoic,Jora,Jorka,Jovyan,Judda,"
 "Jull,Julonna,Jura,Jwll,Jwlyan,Jycla,Jyniver,Jynoic,Jyrka,Jyvyan,Laeniver,"
 "Laenoic,Laeryan,Langwen,Larka,Lassa,Lealonna,Lealyan,Ledda,Lelonna,Lelyan,"
@@ -6898,17 +6883,14 @@ msgid "addon_type^Scenario"
 msgstr "Escenario"
 
 #: src/addon_management.cpp:401
-#, fuzzy
 msgid "addon_type^MP era"
 msgstr "Era multijugador"
 
 #: src/addon_management.cpp:403
-#, fuzzy
 msgid "addon_type^MP faction"
 msgstr "Facción multijugador"
 
 #: src/addon_management.cpp:405
-#, fuzzy
 msgid "addon_type^MP map-pack"
 msgstr "Paq. mapas multijugador"
 
@@ -7858,14 +7840,12 @@ msgid "?"
 msgstr "?"
 
 #: src/loadscreen.cpp:224
-#, fuzzy
 msgid "Verifying cache"
-msgstr "Verificando caché."
+msgstr "Verificando caché"
 
 #: src/loadscreen.cpp:243
-#, fuzzy
 msgid "Reading cache"
-msgstr "Leyendo caché."
+msgstr "Leyendo caché"
 
 #: src/loadscreen.cpp:262
 msgid "Reading unit files."
@@ -8380,12 +8360,10 @@ msgid "Fire a game event."
 msgstr "Desencadena un evento del juego."
 
 #: src/menu_events.cpp:2337
-#, fuzzy
 msgid "Toggle overlaying of x,y coordinates on hexes."
-msgstr "Alterna la visualización de coordenadas en los hexágonos."
+msgstr "Alterna la visualización de coordenadas x,y en los hexágonos."
 
 #: src/menu_events.cpp:2340
-#, fuzzy
 msgid "Toggle overlaying of terrain codes on hexes."
 msgstr "Alterna la visualización de códigos de terreno en los hexágonos."
 
@@ -9376,9 +9354,8 @@ msgid "TitleScreen button^Add-ons"
 msgstr "Expansiones"
 
 #: src/titlescreen.cpp:383
-#, fuzzy
 msgid "TitleScreen button^Map Editor"
-msgstr "Editor"
+msgstr "Editor de mapas"
 
 #: src/titlescreen.cpp:385
 msgid "TitleScreen button^Language"
@@ -9587,15 +9564,3 @@ msgstr "¡Ayúdenos a hacer un mejor Wesnoth para todos!"
 #: src/upload_log.cpp:330
 msgid "Enable summary uploads"
 msgstr "Permitir envíos de resúmenes"
-
-#, fuzzy
-#~ msgid " This unit is capable of basic healing and slowing dehydration."
-#~ msgstr "Esta unidad es capaz de realizar sanamiento básico."
-
-#, fuzzy
-#~ msgid ""
-#~ " This unit is capable of healing those around it, slowing dehydration, "
-#~ "and curing them of poison."
-#~ msgstr ""
-#~ " Esta unidad es capaz de sanar a todos aquellos a su alrededor y curarles "
-#~ "del veneno."
