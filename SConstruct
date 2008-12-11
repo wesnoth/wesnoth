@@ -418,8 +418,8 @@ if env["dummy_locales"]:
             )
 
 # TODO: replace with env.Requires when compatibility with scons 0.96.93 isn't required anymore
-    env.Depends(map(File, binary_nodes), Dir("locales"))
-    env.Depends(map(File, binary_nodes), Dir("translations"))
+    env.Depends(wesnoth, Dir("locales"))
+    env.Depends(wesnoth, Dir("translations"))
 
 #
 # Unix installation productions
