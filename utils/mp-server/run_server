@@ -1,16 +1,19 @@
 #!/bin/sh
-
-if [ $# -lt 1 ]; then
-	echo "Syntax: $0 <server version> [--test] [<additional parameters for wesnothd>]" >&2
+die() { 
+	echo >&2 "$@"
 	exit 1
-fi
+}
+dietail() {
+	echo >&2 "$@"
+	echo >&2 "tail $LOG:"
+	tail $LOG
+	exit 1
+}
+[ $# -ge 1 ] || die "Syntax: $0 <server version> [--test] [<additional parameters for wesnothd>]"
 
 SERVER=$1
 SERVERBASE=$HOME/servers/$SERVER
-if ! [ -d "$SERVERBASE" ]; then
-	echo "Server '$SERVER' not found." >&2
-	exit 1
-fi
+[ -d "$SERVERBASE" ] || die "Server '$VERSION' not found."
 [ -d "$SERVERBASE/logs" ] || mkdir $SERVERBASE/logs
 
 shift
@@ -47,21 +50,18 @@ trap "$HOME/bin/send_server_message $SERVER; sleep 2; echo -n 'terminated: '; da
 while [ true ] 
 do
 	cd $SERVERBASE/build || exit 1
-	if ! [ -x bin/wesnothd-$SERVER ]; then
-		echo "Executable 'bin/wesnothd-$SERVER' not found." >&2
-		exit 1
-	fi
+	[ -x bin/wesnothd-$SERVER ] || die "Executable 'bin/wesnothd-$SERVER' not found."
+
 	DATE=$(date +"%Y%m%d-%H%M%S")
-	if [ -f "$SERVERBASE/redirect.cfg" ]; then
-		PORT=$(sed -re '/port=/!d;s/[ \t]*port="?([0-9]+)"?/\1/' $SERVERBASE/redirect.cfg)
-	fi
+	[ ! -f "$SERVERBASE/redirect.cfg" ] || PORT=$(sed -re '/port=/!d;s/[ \t]*port="?([0-9]+)"?/\1/' $SERVERBASE/redirect.cfg)
 	BUILDDIR=$(ls -ld $SERVERBASE/build | sed -e 's,.*\(\.\./builds/wesnothd-.*/\),\1,')
 	REV=r$(echo "$BUILDDIR" | sed -re "s,.*wesnothd-svn-([0-9:SM]+)_$SERVER/$,\1,")
 	LOG="wesnothd.$DATE.$REV.log"
 	COMMAND="bin/wesnothd-$SERVER -c $SERVERBASE/wesnothd.cfg --port $PORT --threads $THREADS $PARAMETERS"
 	$COMMAND &> "$SERVERBASE/logs/$LOG" &
+
 	PID=$!
-	echo "started $SERVER server with command: '$COMMAND' (revision: $REV, pid: $PID) at: $DATE"
+	echo "started $SERVER server with command: '$COMMAND' (revision: $REV, pid: $PID) logging to: $LOG"
 	# create some convenient links
 	ln -s "$SERVERBASE/logs/$LOG" "$LOG.$PID"
 	rm -f $SERVERBASE/old.log
@@ -69,13 +69,12 @@ do
 	ln -s "logs/$LOG" $SERVERBASE/current.log
 	# wait for the server to terminate
 	wait $PID
+
 	EXIT_CODE=$?
 	echo "wesnothd exited with code: $EXIT_CODE"
 	# need to use the recorded path since the build/ symlink might have changed
 	mv "$SERVERBASE/$BUILDDIR/gmon.out" "$SERVERBASE/$BUILDDIR/gmon.$DATE.$REV.out" &> /dev/null
 	# check for return code if not zero or 98 (port in use) the server should be restarted
-	if [ "$EXIT_CODE" = "0" ] || [ "$EXIT_CODE" = "98" ]; then
-		echo "run_server script shutting down."
-		exit 0
-	fi
+	[ "$EXIT_CODE" = "0" ] || (echo "run_server script shutting down."; exit 0)
+	[ "$EXIT_CODE" = "98" ] || dietail #Could not bind to port
 done
