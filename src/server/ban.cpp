@@ -500,7 +500,8 @@ namespace wesnothd {
 		}
 		// keep ban entry still in memory
 		os << "Ban on '" << **ban << "' removed.";
-		deleted_bans_.push_back(*ban);
+		// group bans don't get saved
+		if ((*ban)->get_group().empty()) deleted_bans_.push_back(*ban);
 		bans_.erase(ban);
 		dirty_ = true;
 
