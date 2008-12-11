@@ -38,8 +38,8 @@ while [ true ]
 do
 	DATE=$(date +"%Y%m%d-%H%M%S")
 	COMMAND="$HOME/bin/campaignd-$VERSION $THREADS $PARAMETERS"
-	LOG="$SERVERBASE/logs/campaignd.$DATE"
-	echo "started $VERSION campaignd with command: '$COMMAND' at: $DATE logging to: $LOG"
+	LOG="$SERVERBASE/logs/campaignd.$DATE.log"
+	echo "started $VERSION campaignd with command: '$COMMAND' logging to: $LOG"
 	$COMMAND &> $LOG
 	EXIT_CODE="$?"
 	echo "exit code: $EXIT_CODE"
