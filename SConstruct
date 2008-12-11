@@ -243,8 +243,7 @@ if env["prereqs"]:
 
     if env["forum_user_handler"]:
         env.ParseConfig("mysql_config --libs --cflags")
-        if conf.CheckLibWithHeader("mysqlpp", "mysql++/mysql++.h", "C++"):
-            env.Append(CPPDEFINES = ["HAVE_MYSQLPP"])
+        env.Append(CPPDEFINES = ["HAVE_MYSQLPP"])
 
     if env["python"]:
         env["python"] = (float(sys.version[:3]) >= 2.4) and conf.CheckPython() or Warning("Python >= 2.4 not found. Python extensions will be disabled.")
