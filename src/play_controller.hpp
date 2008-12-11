@@ -44,7 +44,7 @@ class play_controller : public controller_base, public events::observer
 {
 public:
 	play_controller(const config& level, game_state& state_of_game,
-		int ticks, int num_turns, const config& game_config, CVideo& video, bool skip_replay, bool is_replay);
+		int ticks, int num_turns, const config& game_config, CVideo& video, bool skip_replay);
 	virtual ~play_controller();
 
 	//event handler, overriden from observer
@@ -99,7 +99,7 @@ protected:
 	 */
 	bool in_context_menu(hotkey::HOTKEY_COMMAND command) const;
 
-	virtual void init(CVideo& video, bool is_replay);
+	virtual void init(CVideo& video);
 	void init_managers();
 	void fire_prestart(bool execute);
 	void fire_start(bool execute);

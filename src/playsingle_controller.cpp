@@ -37,7 +37,7 @@
 playsingle_controller::playsingle_controller(const config& level, 
 		game_state& state_of_game, const int ticks, const int num_turns, 
 		const config& game_config, CVideo& video, bool skip_replay) :
-	play_controller(level, state_of_game, ticks, num_turns, game_config, video, skip_replay, false),
+	play_controller(level, state_of_game, ticks, num_turns, game_config, video, skip_replay),
 	cursor_setter(cursor::NORMAL),
 	data_backlog_(),
 	textbox_info_(),

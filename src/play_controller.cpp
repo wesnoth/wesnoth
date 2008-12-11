@@ -33,7 +33,7 @@
 
 play_controller::play_controller(const config& level, game_state& state_of_game, 
 		int ticks, int num_turns, const config& game_config, CVideo& video, 
-		bool skip_replay, bool is_replay) :
+		bool skip_replay) :
 	controller_base(ticks, game_config, video),	
 	verify_manager_(units_), 
 	team_manager_(teams_), 
@@ -80,13 +80,13 @@ play_controller::play_controller(const config& level, game_state& state_of_game,
 	hotkey::deactivate_all_scopes();
 	hotkey::set_scope_active(hotkey::SCOPE_GENERAL);
 	hotkey::set_scope_active(hotkey::SCOPE_GAME);
-	init(video, is_replay);
+	init(video);
 }
 
 play_controller::~play_controller(){
 }
 
-void play_controller::init(CVideo& video, bool is_replay){
+void play_controller::init(CVideo& video){
 	util::scoped_resource<loadscreen::global_loadscreen_manager*, util::delete_item> scoped_loadscreen_manager;
 	loadscreen::global_loadscreen_manager* loadscreen_manager = loadscreen::global_loadscreen_manager::get();
 	if (!loadscreen_manager)
@@ -133,7 +133,7 @@ void play_controller::init(CVideo& video, bool is_replay){
 		if (first_human_team_ == -1){
 			first_human_team_ = get_first_human_team(ui, unit_cfg);
 		}
-		get_player_info(**ui, gamestate_, save_id, teams_, level_, map_, units_, status_, snapshot, is_replay );
+		get_player_info(**ui, gamestate_, save_id, teams_, level_, map_, units_, status_, snapshot);
 	}
 
 	LOG_NG << "loading units..." << (SDL_GetTicks() - ticks_) << "\n";

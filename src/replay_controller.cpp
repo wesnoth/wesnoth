@@ -54,7 +54,7 @@ LEVEL_RESULT play_replay_level(const config& game_config,
 replay_controller::replay_controller(const config& level, 
 		game_state& state_of_game, const int ticks, const int num_turns, 
 		const config& game_config, CVideo& video) :
-	play_controller(level, state_of_game, ticks, num_turns, game_config, video, false, true),
+	play_controller(level, state_of_game, ticks, num_turns, game_config, video, false),
 	teams_start_(),
 	gamestate_start_(state_of_game), 
 	status_start_(level, num_turns, &state_of_game),

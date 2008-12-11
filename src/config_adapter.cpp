@@ -53,7 +53,7 @@ std::string get_unique_saveid(const config& cfg, std::set<std::string>& seen_sav
 void get_player_info(const config& cfg, game_state& gamestate,
 					 std::string save_id, std::vector<team>& teams,
 					 const config& level, gamemap& map, unit_map& units,
-					 gamestatus& game_status, bool snapshot, bool replay)
+					 gamestatus& game_status, bool snapshot)
 {
 	player_info *player = NULL;
 
