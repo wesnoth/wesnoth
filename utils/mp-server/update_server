@@ -56,6 +56,9 @@ if [ $TYPE = campaignd ]; then
 	CXXFLAGS="$CXXFLAGS -ggdb3 -pg"
 	LDFLAGS="$LDFLAGS -pg"
 	SCONS="no"
+	if [ "$SERVER" = "trunk" ]; then
+		SCONS="yes"
+	fi
 fi
 
 REVISION=""
@@ -80,9 +83,12 @@ fi
 mkdir -p $BUILD
 
 if [ "$SCONS" = "yes" ]; then
+	if [ $TYPE = wesnothd ]; then
+		BUILD_FLAGS="fifodir=$BUILD/var/run raw_sockets=1"
+	fi
 	mkdir -p $BUILD/var/run
 	# need to remove .scons-option-cache when parameters get removed!
-	CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" scons install-wesnothd prefix=$BUILD fifodir=$BUILD/var/run raw_sockets=1 program_suffix=-$SERVER profile=0 fribidi=0 python=0 localedir= prefsdir= > $BUILD/scons.log || exit 1
+	CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" scons install-$TYPE prefix=$BUILD program_suffix=-$SERVER $BUILDFLAGS profile=0 fribidi=0 python=0 localedir= prefsdir= > $BUILD/scons.log || exit 1
 #	boostdir=$HOME/tools/include boostlibdir=$HOME/tools/lib boost_suffix=-mt
 else
 	if [ $TYPE = wesnothd ]; then
