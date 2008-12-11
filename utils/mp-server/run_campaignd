@@ -3,6 +3,12 @@ die() {
 	echo >&2 "$@"
 	exit 1
 }
+dietail() {
+	echo >&2 "$@"
+	echo >&2 "tail $LOG:"
+	tail $LOG
+	exit 1
+}
 [ $# -ge 1 ] || die "Usage: $0 <server version> [<additional parameters for campaignd>]"
 
 VERSION=$1
@@ -32,13 +38,15 @@ while [ true ]
 do
 	DATE=$(date +"%Y%m%d-%H%M%S")
 	COMMAND="$HOME/bin/campaignd-$VERSION $THREADS $PARAMETERS"
-	echo "started $VERSION campaignd with command: '$COMMAND' at: $DATE"
-	$COMMAND &> $SERVERBASE/logs/campaignd.$DATE
+	LOG="$SERVERBASE/logs/campaignd.$DATE"
+	echo "started $VERSION campaignd with command: '$COMMAND' at: $DATE logging to: $LOG"
+	$COMMAND &> $LOG
 	EXIT_CODE="$?"
-	echo "$EXIT_CODE"
+	echo "exit code: $EXIT_CODE"
 	mv gmon.out gmon.$DATE.out &> /dev/null
 	[ "$EXIT_CODE" != "0" ] || exit
-	[ "$EXIT_CODE" != "1" ] || die "File I/O error."
-	[ "$EXIT_CODE" != "2" ] || die "Could not parse config file."
-	[ "$EXIT_CODE" != "3" ] || die "Could not bind to port."
+	[ "$EXIT_CODE" != "1" ] || dietail #"File I/O error."
+	[ "$EXIT_CODE" != "2" ] || dietail #"Could not parse config file."
+	[ "$EXIT_CODE" != "3" ] || dietail #"Could not bind to port."
+	[ "$EXIT_CODE" != "127" ] || dietail #cannot open shared object file
 done
