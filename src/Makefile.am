@@ -153,7 +153,6 @@ wesnoth_source = \
 	upload_log.cpp \
 	variable.cpp \
 	variant.cpp \
-	version.cpp \
 	widgets/combo.cpp \
 	widgets/combo_drag.cpp \
 	widgets/drop_target.cpp \
@@ -319,6 +318,7 @@ libwesnoth_core_a_SOURCES = \
 	thread.cpp \
 	tstring.cpp \
 	util.cpp \
+	version.cpp \
 	serialization/binary_or_text.cpp \
 	serialization/binary_wml.cpp \
 	serialization/parser.cpp \
