@@ -41,6 +41,18 @@ BOOST_AUTO_TEST_CASE( test_version_info )
 	BOOST_CHECK( non_canonical_suffixed > non_canonical );
 	BOOST_CHECK( non_canonical < non_canonical_suffixed );
 	
+	try {
+		const version_info bad_version_info1("Viva la revolución!");
+		const version_info bad_version_info2("To infinity and beyond!");
+		
+		const bool probe = (bad_version_info1 > bad_version_info2);
+		
+		// We should have thrown an exception already...
+		BOOST_CHECK( false );
+	}
+	catch( const version_info::not_sane_exception& ) {
+		// Good.
+	}
 	
 }
 
