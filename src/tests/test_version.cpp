@@ -57,7 +57,8 @@ BOOST_AUTO_TEST_CASE( test_version_info )
 		const version_info bad_version_info1("Viva la revolución!");
 		const version_info bad_version_info2("To infinity and beyond!");
 		
-		const bool probe = (bad_version_info1 > bad_version_info2);
+		// The result of this test can be ignored since it should throw an exepction.
+		bad_version_info1 > bad_version_info2;
 		
 		// We should have thrown an exception already...
 		insanity_test = false;
