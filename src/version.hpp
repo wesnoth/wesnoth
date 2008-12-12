@@ -30,6 +30,7 @@
 class version_info
 {
 public:
+	/** Thrown when trying to compare an non-sane version_info object. */
 	struct not_sane_exception {};
 
 	version_info();                    /**< Default constructor. */
