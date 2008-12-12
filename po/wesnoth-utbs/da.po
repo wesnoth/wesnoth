@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.4\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-12-09 22:14+0100\n"
+"POT-Creation-Date: 2008-12-12 23:20+0100\n"
 "PO-Revision-Date: 2008-14-04 22:43+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
@@ -25,7 +25,7 @@ msgstr ""
 #. [campaign]: id=Under_the_Burning_Suns
 #. [editor_group]: id=utbs
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:15
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:134
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:137
 msgid "Under the Burning Suns"
 msgstr "Under de brændende sole"
 
@@ -96,17 +96,17 @@ msgid "Campaign Maintenance"
 msgstr "Kampagnevedligeholdelse"
 
 #. [about]
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:54
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:57
 msgid "Artwork and Graphics Design"
 msgstr "Tegninger og grafik"
 
 #. [about]
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:93
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:96
 msgid "Miscellaneous"
 msgstr "Tak til"
 
 #. [about]
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:106
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:109
 msgid "And special thanks to everyone else who I forgot to mention."
 msgstr "Og specielt tak til alle som jeg har glemt at nævne."
 
@@ -2355,6 +2355,8 @@ msgstr "Den mørke herre... er ikke mere..."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1171
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1621
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1911
 #, fuzzy
 msgid ""
 "Garak collapses to the ground with his own blade sticking from his chest."
@@ -2560,12 +2562,6 @@ msgstr "Må Eloh beskytte os, hvad har hun gjort?"
 msgid "No fool! Stop!"
 msgstr "Intet fjols! Stop!"
 
-#. [message]: speaker=narrator
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1621
-msgid "Garak collapses to the ground with own blade sticking from his chest."
-msgstr ""
-"Garak synker om på jorden med sin egen klinge stikkende ud fra sit bryst."
-
 #. [message]: speaker=Azkotep
 #. [message]: speaker=Ystara
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1631
@@ -2615,13 +2611,6 @@ msgid ""
 "victorious."
 msgstr ""
 "Det er vi enige om, solen skal ikke stå op igen før en af os har sejret."
-
-#. [message]: speaker=narrator
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1911
-#, fuzzy
-msgid "Garak collapses to the ground with own blade sticking form his chest."
-msgstr ""
-"Garak sank om på jorden med sin egen klinge stikkende ud fra sit bryst."
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1925
@@ -14431,7 +14420,8 @@ msgstr ""
 
 #. [unit_type]: id=Desert Druid, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Druid.cfg:4
-msgid "Desert Druid"
+#, fuzzy
+msgid "female^Desert Druid"
 msgstr "Ørkendruide"
 
 #. [unit_type]: id=Desert Druid, race=elf
@@ -14680,8 +14670,9 @@ msgstr "Ørkenvagt"
 
 #. [unit_type]: id=Desert Shaman, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Shaman.cfg:5
-msgid "Desert Shaman"
-msgstr "Ørkenshaman"
+#, fuzzy
+msgid "female^Desert Shaman"
+msgstr "Ørkenskarpskytte"
 
 #. [unit_type]: id=Desert Shaman, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Shaman.cfg:34
@@ -14725,8 +14716,9 @@ msgstr "Ørkenskarpskytte"
 
 #. [unit_type]: id=Desert Shyde, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Shyde.cfg:4
-msgid "Desert Shyde"
-msgstr "Ørkenshyde"
+#, fuzzy
+msgid "female^Desert Shyde"
+msgstr "Ørkenbueskytte"
 
 #. [unit_type]: id=Desert Shyde, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Shyde.cfg:38
@@ -14755,8 +14747,9 @@ msgstr "feberøring"
 
 #. [unit_type]: id=Desert Star, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Star.cfg:4
-msgid "Desert Star"
-msgstr "Ørkenstjerne"
+#, fuzzy
+msgid "female^Desert Star"
+msgstr "Ørkenjæger"
 
 #. [unit_type]: id=Desert Star, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Star.cfg:46
@@ -14781,7 +14774,8 @@ msgstr ""
 
 #. [unit_type]: id=Divine Avatar, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Divine_Avatar.cfg:4
-msgid "Divine Avatar"
+#, fuzzy
+msgid "female^Divine Avatar"
 msgstr "Hellig avatar"
 
 #. [unit_type]: id=Divine Avatar, race=elf
@@ -14803,7 +14797,8 @@ msgstr "lysrække"
 
 #. [unit_type]: id=Divine Incarnation, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Divine_Incarnation.cfg:4
-msgid "Divine Incarnation"
+#, fuzzy
+msgid "female^Divine Incarnation"
 msgstr "Hellig inkarnation"
 
 #. [unit_type]: id=Divine Incarnation, race=elf
@@ -16558,6 +16553,26 @@ msgstr "Det lange mørke (3)"
 #: data/campaigns/Under_the_Burning_Suns/utils/time.cfg:160
 msgid "The Long Dark (4)"
 msgstr "Det lange mærke (4)"
+
+#~ msgid ""
+#~ "Garak collapses to the ground with own blade sticking from his chest."
+#~ msgstr ""
+#~ "Garak synker om på jorden med sin egen klinge stikkende ud fra sit bryst."
+
+#, fuzzy
+#~ msgid ""
+#~ "Garak collapses to the ground with own blade sticking form his chest."
+#~ msgstr ""
+#~ "Garak sank om på jorden med sin egen klinge stikkende ud fra sit bryst."
+
+#~ msgid "Desert Shaman"
+#~ msgstr "Ørkenshaman"
+
+#~ msgid "Desert Shyde"
+#~ msgstr "Ørkenshyde"
+
+#~ msgid "Desert Star"
+#~ msgstr "Ørkenstjerne"
 
 #~ msgid "Rocky Horror"
 #~ msgstr "Rocky Horror"

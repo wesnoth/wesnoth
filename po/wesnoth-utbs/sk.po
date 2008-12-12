@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-12-09 22:14+0100\n"
+"POT-Creation-Date: 2008-12-12 23:20+0100\n"
 "PO-Revision-Date: 2008-07-22 00:37+0100\n"
 "Last-Translator: Martin Dzbor <mdzbor@yahoo.co.uk>\n"
 "Language-Team: none\n"
@@ -17,7 +17,7 @@ msgstr ""
 #. [campaign]: id=Under_the_Burning_Suns
 #. [editor_group]: id=utbs
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:15
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:134
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:137
 msgid "Under the Burning Suns"
 msgstr "Pod žeravými slnkami"
 
@@ -88,17 +88,17 @@ msgid "Campaign Maintenance"
 msgstr "Údržba kampane"
 
 #. [about]
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:54
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:57
 msgid "Artwork and Graphics Design"
 msgstr "Umelecký a grafický návrh"
 
 #. [about]
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:93
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:96
 msgid "Miscellaneous"
 msgstr "Rôzne"
 
 #. [about]
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:106
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:109
 msgid "And special thanks to everyone else who I forgot to mention."
 msgstr "A obzvlášť patrí vďaka tým, o ktorých sme sa zabudli zmieniť."
 
@@ -2362,6 +2362,8 @@ msgstr "Temný vládca... je po ňom..."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1171
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1621
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1911
 #, fuzzy
 msgid ""
 "Garak collapses to the ground with his own blade sticking from his chest."
@@ -2564,11 +2566,6 @@ msgstr "Eloh nás ochraňuj, čo to vykonala?"
 msgid "No fool! Stop!"
 msgstr "Nie, vy hlupáci! Prestaňte!"
 
-#. [message]: speaker=narrator
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1621
-msgid "Garak collapses to the ground with own blade sticking from his chest."
-msgstr "Garak odrazu padne na zem a z hrude mu trčí jeho vlastný meč."
-
 #. [message]: speaker=Azkotep
 #. [message]: speaker=Ystara
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1631
@@ -2617,12 +2614,6 @@ msgid ""
 "In this I shall support you, the darkness shall not lift until one of us is "
 "victorious."
 msgstr "V tomto máš moju podporu, slnko nevyjde, pokiaľ jeden z nás nezvíťazí."
-
-#. [message]: speaker=narrator
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1911
-#, fuzzy
-msgid "Garak collapses to the ground with own blade sticking form his chest."
-msgstr "Garak odrazu padne na zem a z hrude mu trčí jeho vlastný meč."
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1925
@@ -14782,7 +14773,8 @@ msgstr ""
 
 #. [unit_type]: id=Desert Druid, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Druid.cfg:4
-msgid "Desert Druid"
+#, fuzzy
+msgid "female^Desert Druid"
 msgstr "Púštny druid"
 
 #. [unit_type]: id=Desert Druid, race=elf
@@ -15081,8 +15073,9 @@ msgstr "Púštna hliadka"
 
 #. [unit_type]: id=Desert Shaman, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Shaman.cfg:5
-msgid "Desert Shaman"
-msgstr "Púštny šaman"
+#, fuzzy
+msgid "female^Desert Shaman"
+msgstr "Púštna ostreľovačka"
 
 #. [unit_type]: id=Desert Shaman, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Shaman.cfg:34
@@ -15129,8 +15122,9 @@ msgstr "Púštna ostrostrelkyňa"
 
 #. [unit_type]: id=Desert Shyde, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Shyde.cfg:4
-msgid "Desert Shyde"
-msgstr "Púštna víla"
+#, fuzzy
+msgid "female^Desert Shyde"
+msgstr "Púštna strelkyňa"
 
 #. [unit_type]: id=Desert Shyde, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Shyde.cfg:38
@@ -15163,8 +15157,9 @@ msgstr "magický dotyk víly"
 
 #. [unit_type]: id=Desert Star, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Star.cfg:4
-msgid "Desert Star"
-msgstr "Púštna hviezdica"
+#, fuzzy
+msgid "female^Desert Star"
+msgstr "Púštna lovkyňa"
 
 #. [unit_type]: id=Desert Star, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Star.cfg:46
@@ -15188,7 +15183,8 @@ msgstr ""
 
 #. [unit_type]: id=Divine Avatar, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Divine_Avatar.cfg:4
-msgid "Divine Avatar"
+#, fuzzy
+msgid "female^Divine Avatar"
 msgstr "Božské zjavenie"
 
 #. [unit_type]: id=Divine Avatar, race=elf
@@ -15211,7 +15207,8 @@ msgstr "slnečný lúč"
 
 #. [unit_type]: id=Divine Incarnation, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Divine_Incarnation.cfg:4
-msgid "Divine Incarnation"
+#, fuzzy
+msgid "female^Divine Incarnation"
 msgstr "Božské vtelenie"
 
 #. [unit_type]: id=Divine Incarnation, race=elf
@@ -17061,6 +17058,24 @@ msgstr "Dlhá tma (3)"
 #: data/campaigns/Under_the_Burning_Suns/utils/time.cfg:160
 msgid "The Long Dark (4)"
 msgstr "Dlhá tma (4)"
+
+#~ msgid ""
+#~ "Garak collapses to the ground with own blade sticking from his chest."
+#~ msgstr "Garak odrazu padne na zem a z hrude mu trčí jeho vlastný meč."
+
+#, fuzzy
+#~ msgid ""
+#~ "Garak collapses to the ground with own blade sticking form his chest."
+#~ msgstr "Garak odrazu padne na zem a z hrude mu trčí jeho vlastný meč."
+
+#~ msgid "Desert Shaman"
+#~ msgstr "Púštny šaman"
+
+#~ msgid "Desert Shyde"
+#~ msgstr "Púštna víla"
+
+#~ msgid "Desert Star"
+#~ msgstr "Púštna hviezdica"
 
 #~ msgid ""
 #~ "We'll need your help in checking to see if the outer settlements are "

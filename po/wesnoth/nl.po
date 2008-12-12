@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-12-09 22:12+0100\n"
+"POT-Creation-Date: 2008-12-12 23:18+0100\n"
 "PO-Revision-Date: 2008-12-01 00:18+0100\n"
 "Last-Translator: Alexander van Gessel (AI/AI0867) <AI0867_AT_gmail.com>\n"
 "Language-Team: Dutch translation <foppe.benedictus@gmail.com>\n"
@@ -3343,7 +3343,28 @@ msgstr "Vroege overwinningsbonus."
 msgid "No early finish bonus."
 msgstr "Geen vroege overwinningsbonus."
 
-#: data/core/macros/carryover-utils.cfg:16
+#: data/core/macros/carryover-utils.cfg:15
+#, fuzzy
+msgid "`(early finish bonus)"
+msgstr "Vroege overwinningsbonus."
+
+#: data/core/macros/carryover-utils.cfg:18
+#, fuzzy
+msgid "No gold carried over to the next scenario."
+msgstr ""
+"\n"
+"40% van het goud wordt meegenomen naar het volgende scenario."
+
+#: data/core/macros/carryover-utils.cfg:22
+#, fuzzy
+msgid ""
+"\n"
+"100% of finishing gold carried over to the next scenario."
+msgstr ""
+"\n"
+"40% van het goud wordt meegenomen naar het volgende scenario."
+
+#: data/core/macros/carryover-utils.cfg:26
 msgid ""
 "\n"
 "40% of finishing gold carried over to the next scenario."
@@ -3351,7 +3372,7 @@ msgstr ""
 "\n"
 "40% van het goud wordt meegenomen naar het volgende scenario."
 
-#: data/core/macros/carryover-utils.cfg:20
+#: data/core/macros/carryover-utils.cfg:30
 msgid ""
 "\n"
 "20% of finishing gold carried over to the next scenario."
@@ -7056,7 +7077,7 @@ msgstr "XP: "
 msgid "Moves: "
 msgstr "Zetten: "
 
-#: src/game.cpp:612 src/game.cpp:1401
+#: src/game.cpp:612 src/game.cpp:1398
 msgid "The Battle for Wesnoth"
 msgstr "Strijd om Wesnoth"
 
@@ -7066,11 +7087,11 @@ msgstr ""
 "Waarschuwing: Het bestand dat je hebt proberen laden is corrupt. Het wordt "
 "toch geladen.\n"
 
-#: src/game.cpp:934 src/multiplayer_connect.cpp:1566
+#: src/game.cpp:931 src/multiplayer_connect.cpp:1563
 msgid "This save is from a version too old to be loaded."
 msgstr "Dit opgeslagen spel is van een te oude versie om te laden."
 
-#: src/game.cpp:940 src/multiplayer_connect.cpp:1573
+#: src/game.cpp:937 src/multiplayer_connect.cpp:1570
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
@@ -7078,35 +7099,35 @@ msgstr ""
 "Dit opgeslagen spel is van een andere versie van Strijd om Wesnoth. Wil je "
 "proberen het te laden?"
 
-#: src/game.cpp:960 src/game.cpp:963 src/multiplayer_connect.cpp:1544
+#: src/game.cpp:957 src/game.cpp:960 src/multiplayer_connect.cpp:1544
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Het bestand dat je hebt proberen laden is corrupt: '"
 
-#: src/game.cpp:966
+#: src/game.cpp:963
 msgid "File I/O Error while reading the game"
 msgstr "Bestand I/O fout."
 
-#: src/game.cpp:1069
+#: src/game.cpp:1066
 msgid "No campaigns are available.\n"
 msgstr "Geen veldtochten beschikbaar.\n"
 
-#: src/game.cpp:1073
+#: src/game.cpp:1070
 msgid "Play a campaign"
 msgstr "Speel een veldtocht"
 
-#: src/game.cpp:1116
+#: src/game.cpp:1113
 msgid "Difficulty"
 msgstr "Niveau"
 
-#: src/game.cpp:1117
+#: src/game.cpp:1114
 msgid "Select difficulty level:"
 msgstr "Kies het spelniveau:"
 
-#: src/game.cpp:1279
+#: src/game.cpp:1276
 msgid "Do you really want to start the server?"
 msgstr "Wil je echt de server starten?"
 
-#: src/game.cpp:1280
+#: src/game.cpp:1277
 msgid ""
 "The server will run in a background process until all users have "
 "disconnected."
@@ -7114,65 +7135,65 @@ msgstr ""
 "De server zal in een achtergrondproces draaien tot alle gebruikers hun "
 "verbinding hebben verbroken."
 
-#: src/game.cpp:1284
+#: src/game.cpp:1281
 msgid "Don't show again"
 msgstr "Niet nog een keer laten zien"
 
-#: src/game.cpp:1356
+#: src/game.cpp:1353
 msgid "Error while starting server: "
 msgstr "Fout tijdens het starten van de server: "
 
-#: src/game.cpp:1358 src/playcampaign.cpp:95 src/playcampaign.cpp:380
+#: src/game.cpp:1355 src/playcampaign.cpp:95 src/playcampaign.cpp:380
 msgid "The game could not be loaded: "
 msgstr "Het spel kon niet worden geladen: "
 
-#: src/game.cpp:1360 src/playcampaign.cpp:97 src/playcampaign.cpp:383
+#: src/game.cpp:1357 src/playcampaign.cpp:97 src/playcampaign.cpp:383
 msgid "Error while playing the game: "
 msgstr "Fout tijdens spelen van het spel: "
 
-#: src/game.cpp:1380 src/playcampaign.cpp:99 src/playcampaign.cpp:386
+#: src/game.cpp:1377 src/playcampaign.cpp:99 src/playcampaign.cpp:386
 msgid "The game map could not be loaded: "
 msgstr "De kaart kon niet worden geladen: "
 
-#: src/game.cpp:1446 src/game.cpp:1567
+#: src/game.cpp:1443 src/game.cpp:1564
 msgid "Error loading game configuration files: '"
 msgstr "Fout bij het inlezen van de configuratiebestanden: '"
 
-#: src/game.cpp:1447 src/game.cpp:1568
+#: src/game.cpp:1444 src/game.cpp:1565
 msgid "' (The game will now exit)"
 msgstr "' (Het spel wordt nu gesloten)"
 
-#: src/game.cpp:1542
+#: src/game.cpp:1539
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "De volgende add-on bevat fouten en kon niet worden geladen:"
 msgstr[1] "De volgende add-ons bevatten fouten en konden niet worden geladen:"
 
-#: src/game.cpp:1549
+#: src/game.cpp:1546
 msgid "ERROR DETAILS:"
 msgstr "DETAILS VAN DE FOUT:"
 
-#: src/game.cpp:1577
+#: src/game.cpp:1574
 msgid "Loading data files"
 msgstr "Inlezen databestanden."
 
-#: src/game.cpp:1988
+#: src/game.cpp:1985
 msgid "Loading game configuration."
 msgstr "Inlezen van de configuratiebestanden: "
 
-#: src/game.cpp:1994
+#: src/game.cpp:1991
 msgid "Re-initialize fonts for the current language."
 msgstr "Hermaak de lettertypes voor de huidige taal. "
 
-#: src/game.cpp:2002
+#: src/game.cpp:1999
 msgid "Searching for installed add-ons."
 msgstr "Bezig met zoeken naar geïnstalleerde add-ons."
 
-#: src/game.cpp:2011
+#: src/game.cpp:2008
 msgid "Loading title screen."
 msgstr "Inladen titelscherm."
 
-#: src/game_config.cpp:284
+#: src/game_config.cpp:285
 msgid "Invalid color range: "
 msgstr "Ongeldige kleurbereik:"
 
@@ -7189,11 +7210,11 @@ msgstr "Nederlaag:"
 msgid "No time of day has been defined."
 msgstr "Geen tijd van de dag gedefinieerd."
 
-#: src/gamestatus.cpp:743 src/gamestatus.cpp:745 src/playcampaign.cpp:414
+#: src/gamestatus.cpp:768 src/gamestatus.cpp:770 src/playcampaign.cpp:414
 msgid " replay"
 msgstr " herhaling"
 
-#: src/gamestatus.cpp:880
+#: src/gamestatus.cpp:905
 msgid "Could not write to file"
 msgstr "Kon niet naar het bestand schrijven"
 
@@ -7648,7 +7669,7 @@ msgstr "Opgeslagen"
 msgid "The game has been saved"
 msgstr "Het spel is opgeslagen"
 
-#: src/menu_events.cpp:594 src/playcampaign.cpp:561
+#: src/menu_events.cpp:594 src/playcampaign.cpp:570
 msgid "The game could not be saved"
 msgstr "Het spel kon niet worden opgeslagen"
 
@@ -8237,11 +8258,11 @@ msgstr "Niemand"
 msgid "This is not a multiplayer save"
 msgstr "Dit is geen multiplayer opgeslagen spel."
 
-#: src/multiplayer_connect.cpp:1672
+#: src/multiplayer_connect.cpp:1669
 msgid "Cannot find era $era"
 msgstr "Kan tijdperk $era niet vinden"
 
-#: src/multiplayer_connect.cpp:1693
+#: src/multiplayer_connect.cpp:1690
 msgid ""
 "Victory:\n"
 "@Defeat enemy leader(s)"
@@ -8249,7 +8270,7 @@ msgstr ""
 "Overwinning\n"
 "@Dood de vijandelijke leider(s)"
 
-#: src/multiplayer_connect.cpp:1753
+#: src/multiplayer_connect.cpp:1750
 msgid "Waiting for players to join..."
 msgstr "Aan het wachten op netwerkspelers..."
 
@@ -8654,27 +8675,27 @@ msgstr "Fout tijdens lezen van WML: "
 msgid "Save Replay"
 msgstr "Herhaling opslaan"
 
-#: src/playcampaign.cpp:421
+#: src/playcampaign.cpp:428
 msgid "The replay could not be saved"
 msgstr "De herhaling kon niet worden opgeslagen"
 
-#: src/playcampaign.cpp:438
+#: src/playcampaign.cpp:445
 msgid "This scenario has ended. Do you want to continue the campaign?"
 msgstr "Dit scenario is afgelopen. Wil je verder gaan met de veldtocht?"
 
-#: src/playcampaign.cpp:459
+#: src/playcampaign.cpp:466
 msgid "Downloading next scenario..."
 msgstr "Download volgend scenario..."
 
-#: src/playcampaign.cpp:552
+#: src/playcampaign.cpp:561
 msgid "Do you want to save your game?"
 msgstr "Wil je dit spel opslaan?"
 
-#: src/playcampaign.cpp:553
+#: src/playcampaign.cpp:562
 msgid "Name:"
 msgstr "Naam:"
 
-#: src/playcampaign.cpp:577
+#: src/playcampaign.cpp:586
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Onbekend scenario: '$scenario|'"
 
@@ -8781,23 +8802,23 @@ msgstr "Game over"
 msgid "The game is over."
 msgstr "Het spel is over."
 
-#: src/playsingle_controller.cpp:442
+#: src/playsingle_controller.cpp:444
 msgid "Scenario Report"
 msgstr "Scenariorapport"
 
-#: src/playsingle_controller.cpp:444
+#: src/playsingle_controller.cpp:446
 msgid "Victory"
 msgstr "Overwinning"
 
-#: src/playsingle_controller.cpp:445
+#: src/playsingle_controller.cpp:447
 msgid "You have emerged victorious!"
 msgstr "Je hebt de overwinning behaald!"
 
-#: src/playsingle_controller.cpp:492 src/playsingle_controller.cpp:537
+#: src/playsingle_controller.cpp:494 src/playsingle_controller.cpp:539
 msgid "The file you have tried to load is corrupt"
 msgstr "Het bestand dat je hebt proberen laden is corrupt"
 
-#: src/playsingle_controller.cpp:502
+#: src/playsingle_controller.cpp:504
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
@@ -8805,7 +8826,7 @@ msgstr ""
 "Door een verbreking van de netwerkvebinding kan het spel niet voortgezet "
 "worden. Wil je het spel opslaan?"
 
-#: src/playsingle_controller.cpp:657
+#: src/playsingle_controller.cpp:659
 msgid "It is now $name|'s turn"
 msgstr "Het is nu $name|s beurt"
 

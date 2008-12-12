@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-12-09 22:14+0100\n"
+"POT-Creation-Date: 2008-12-12 23:20+0100\n"
 "PO-Revision-Date: 2008-11-29 16:37+0100\n"
 "Last-Translator: Luciano Montanaro <mikelima@cirulla.net>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -20,7 +20,7 @@ msgstr ""
 #. [campaign]: id=Under_the_Burning_Suns
 #. [editor_group]: id=utbs
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:15
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:134
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:137
 msgid "Under the Burning Suns"
 msgstr "Sotto i soli roventi"
 
@@ -91,17 +91,17 @@ msgid "Campaign Maintenance"
 msgstr "Manutenzione della campagna"
 
 #. [about]
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:54
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:57
 msgid "Artwork and Graphics Design"
 msgstr "Progettazione grafica e lavoro artistico"
 
 #. [about]
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:93
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:96
 msgid "Miscellaneous"
 msgstr "Varie"
 
 #. [about]
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:106
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:109
 msgid "And special thanks to everyone else who I forgot to mention."
 msgstr ""
 "E ringraziamenti speciali a tutti gli altri che ho dimenticato di citare."
@@ -2381,6 +2381,8 @@ msgstr "Il signore oscuro... non c'è più..."
 # XXX colapses -> collapses
 #. [message]: speaker=narrator
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1171
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1621
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1911
 msgid ""
 "Garak collapses to the ground with his own blade sticking from his chest."
 msgstr "Garak collassa al suolo con la propria lama conficcata nel petto."
@@ -2582,12 +2584,6 @@ msgstr "Che Eloh ci protegga, che cosa ha fatto?"
 msgid "No fool! Stop!"
 msgstr "No, pazzo! Fermati!"
 
-# XXX colapses -> collapses
-#. [message]: speaker=narrator
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1621
-msgid "Garak collapses to the ground with own blade sticking from his chest."
-msgstr "Garak collassa al suolo con la propria lama conficcata nel petto."
-
 #. [message]: speaker=Azkotep
 #. [message]: speaker=Ystara
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1631
@@ -2636,12 +2632,6 @@ msgid ""
 msgstr ""
 "In questo ti verrò incontro, l'oscurità non si diraderà fino alla vittoria "
 "di uno di noi."
-
-# XXX colapses -> collapses
-#. [message]: speaker=narrator
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1911
-msgid "Garak collapses to the ground with own blade sticking form his chest."
-msgstr "Garak collassa al suolo con la propria lama conficcata nel petto."
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1925
@@ -14853,7 +14843,8 @@ msgstr ""
 
 #. [unit_type]: id=Desert Druid, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Druid.cfg:4
-msgid "Desert Druid"
+#, fuzzy
+msgid "female^Desert Druid"
 msgstr "Driade del deserto"
 
 #. [unit_type]: id=Desert Druid, race=elf
@@ -15142,8 +15133,9 @@ msgstr "Sentinella del deserto"
 
 #. [unit_type]: id=Desert Shaman, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Shaman.cfg:5
-msgid "Desert Shaman"
-msgstr "Sciamana del deserto"
+#, fuzzy
+msgid "female^Desert Shaman"
+msgstr "Tiratrice scelta"
 
 #. [unit_type]: id=Desert Shaman, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Shaman.cfg:34
@@ -15188,8 +15180,9 @@ msgstr "Campionessa di tiro del deserto"
 
 #. [unit_type]: id=Desert Shyde, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Shyde.cfg:4
-msgid "Desert Shyde"
-msgstr "Ninfa del deserto"
+#, fuzzy
+msgid "female^Desert Shyde"
+msgstr "Arciera del deserto"
 
 #. [unit_type]: id=Desert Shyde, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Shyde.cfg:38
@@ -15221,8 +15214,9 @@ msgstr "tocco fatato"
 
 #. [unit_type]: id=Desert Star, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Star.cfg:4
-msgid "Desert Star"
-msgstr "Stella del deserto"
+#, fuzzy
+msgid "female^Desert Star"
+msgstr "Cacciatrice del deserto"
 
 #. [unit_type]: id=Desert Star, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Star.cfg:46
@@ -15249,7 +15243,8 @@ msgstr ""
 
 #. [unit_type]: id=Divine Avatar, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Divine_Avatar.cfg:4
-msgid "Divine Avatar"
+#, fuzzy
+msgid "female^Divine Avatar"
 msgstr "Avatar divino"
 
 #. [unit_type]: id=Divine Avatar, race=elf
@@ -15272,7 +15267,8 @@ msgstr "raggio di luce"
 
 #. [unit_type]: id=Divine Incarnation, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Divine_Incarnation.cfg:4
-msgid "Divine Incarnation"
+#, fuzzy
+msgid "female^Divine Incarnation"
 msgstr "Incarnazione divina"
 
 #. [unit_type]: id=Divine Incarnation, race=elf
@@ -17120,6 +17116,25 @@ msgstr "La lunga oscurità (3)"
 #: data/campaigns/Under_the_Burning_Suns/utils/time.cfg:160
 msgid "The Long Dark (4)"
 msgstr "La lunga oscurità (4)"
+
+# XXX colapses -> collapses
+#~ msgid ""
+#~ "Garak collapses to the ground with own blade sticking from his chest."
+#~ msgstr "Garak collassa al suolo con la propria lama conficcata nel petto."
+
+# XXX colapses -> collapses
+#~ msgid ""
+#~ "Garak collapses to the ground with own blade sticking form his chest."
+#~ msgstr "Garak collassa al suolo con la propria lama conficcata nel petto."
+
+#~ msgid "Desert Shaman"
+#~ msgstr "Sciamana del deserto"
+
+#~ msgid "Desert Shyde"
+#~ msgstr "Ninfa del deserto"
+
+#~ msgid "Desert Star"
+#~ msgstr "Stella del deserto"
 
 #~ msgid ""
 #~ "We'll need your help in checking to see if the outer settlements are "

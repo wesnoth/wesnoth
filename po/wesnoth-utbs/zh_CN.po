@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-12-09 22:14+0100\n"
+"POT-Creation-Date: 2008-12-12 23:20+0100\n"
 "PO-Revision-Date: 2008-03-12 21:48+0800\n"
 "Last-Translator: luojie-dune <luojie-dune@operamail.com>\n"
 "Language-Team: none\n"
@@ -13,7 +13,7 @@ msgstr ""
 #. [campaign]: id=Under_the_Burning_Suns
 #. [editor_group]: id=utbs
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:15
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:134
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:137
 msgid "Under the Burning Suns"
 msgstr "双日之下"
 
@@ -83,17 +83,17 @@ msgid "Campaign Maintenance"
 msgstr "战役维护"
 
 #. [about]
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:54
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:57
 msgid "Artwork and Graphics Design"
 msgstr "艺术与图像设计"
 
 #. [about]
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:93
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:96
 msgid "Miscellaneous"
 msgstr "其他"
 
 #. [about]
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:106
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:109
 msgid "And special thanks to everyone else who I forgot to mention."
 msgstr "特别感谢忘记提到的。"
 
@@ -2171,6 +2171,8 @@ msgstr "黑暗的主人。。。不再。。。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1171
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1621
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1911
 #, fuzzy
 msgid ""
 "Garak collapses to the ground with his own blade sticking from his chest."
@@ -2360,12 +2362,6 @@ msgstr "Eloh保佑我们. 我已经不行了."
 msgid "No fool! Stop!"
 msgstr "不傻瓜！停下！"
 
-#. [message]: speaker=narrator
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1621
-#, fuzzy
-msgid "Garak collapses to the ground with own blade sticking from his chest."
-msgstr "Garak 的尸体倒下了，自己的刀插在胸膛上。"
-
 #. [message]: speaker=Azkotep
 #. [message]: speaker=Ystara
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1631
@@ -2411,12 +2407,6 @@ msgid ""
 "In this I shall support you, the darkness shall not lift until one of us is "
 "victorious."
 msgstr "这里我支持你，太阳不会在我们中任意一人胜利之前升起。"
-
-#. [message]: speaker=narrator
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1911
-#, fuzzy
-msgid "Garak collapses to the ground with own blade sticking form his chest."
-msgstr "Garak 的尸体倒下了，刀插在自己的胸膛上。"
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1925
@@ -12299,7 +12289,8 @@ msgstr ""
 
 #. [unit_type]: id=Desert Druid, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Druid.cfg:4
-msgid "Desert Druid"
+#, fuzzy
+msgid "female^Desert Druid"
 msgstr "沙漠德鲁伊"
 
 #. [unit_type]: id=Desert Druid, race=elf
@@ -12542,8 +12533,9 @@ msgstr "沙漠护卫"
 
 #. [unit_type]: id=Desert Shaman, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Shaman.cfg:5
-msgid "Desert Shaman"
-msgstr "沙漠萨满"
+#, fuzzy
+msgid "female^Desert Shaman"
+msgstr "沙漠狙击手"
 
 #. [unit_type]: id=Desert Shaman, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Shaman.cfg:34
@@ -12582,8 +12574,8 @@ msgstr "沙漠神射手"
 #. [unit_type]: id=Desert Shyde, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Shyde.cfg:4
 #, fuzzy
-msgid "Desert Shyde"
-msgstr "沙漠仙子"
+msgid "female^Desert Shyde"
+msgstr "沙漠弓手"
 
 #. [unit_type]: id=Desert Shyde, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Shyde.cfg:38
@@ -12609,8 +12601,9 @@ msgstr "仙境之触"
 
 #. [unit_type]: id=Desert Star, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Star.cfg:4
-msgid "Desert Star"
-msgstr "沙漠之星"
+#, fuzzy
+msgid "female^Desert Star"
+msgstr "沙漠猎人"
 
 #. [unit_type]: id=Desert Star, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Star.cfg:46
@@ -12629,7 +12622,8 @@ msgstr ""
 
 #. [unit_type]: id=Divine Avatar, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Divine_Avatar.cfg:4
-msgid "Divine Avatar"
+#, fuzzy
+msgid "female^Divine Avatar"
 msgstr "伏击者"
 
 #. [unit_type]: id=Divine Avatar, race=elf
@@ -12648,7 +12642,7 @@ msgstr ""
 
 #. [unit_type]: id=Divine Incarnation, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Divine_Incarnation.cfg:4
-msgid "Divine Incarnation"
+msgid "female^Divine Incarnation"
 msgstr ""
 
 #. [unit_type]: id=Divine Incarnation, race=elf
@@ -14129,6 +14123,26 @@ msgstr "The Long Dark (3) 长夜 3"
 #: data/campaigns/Under_the_Burning_Suns/utils/time.cfg:160
 msgid "The Long Dark (4)"
 msgstr "The Long Dark (4) 长夜 4"
+
+#, fuzzy
+#~ msgid ""
+#~ "Garak collapses to the ground with own blade sticking from his chest."
+#~ msgstr "Garak 的尸体倒下了，自己的刀插在胸膛上。"
+
+#, fuzzy
+#~ msgid ""
+#~ "Garak collapses to the ground with own blade sticking form his chest."
+#~ msgstr "Garak 的尸体倒下了，刀插在自己的胸膛上。"
+
+#~ msgid "Desert Shaman"
+#~ msgstr "沙漠萨满"
+
+#, fuzzy
+#~ msgid "Desert Shyde"
+#~ msgstr "沙漠仙子"
+
+#~ msgid "Desert Star"
+#~ msgstr "沙漠之星"
 
 #~ msgid ""
 #~ "We'll need your help in checking to see if the outer settlements are "

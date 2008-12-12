@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-12-09 22:12+0100\n"
+"POT-Creation-Date: 2008-12-12 23:18+0100\n"
 "PO-Revision-Date: 2008-02-26 14:53+0100\n"
 "Last-Translator: Nils Kneuper <crazy-ivanovic  AT gmx  D O  T net>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
@@ -3150,13 +3150,28 @@ msgstr "提早结束奖励： "
 msgid "No early finish bonus."
 msgstr "提早结束奖励： "
 
-#: data/core/macros/carryover-utils.cfg:16
+#: data/core/macros/carryover-utils.cfg:15
+#, fuzzy
+msgid "`(early finish bonus)"
+msgstr "提早结束奖励： "
+
+#: data/core/macros/carryover-utils.cfg:18
+msgid "No gold carried over to the next scenario."
+msgstr ""
+
+#: data/core/macros/carryover-utils.cfg:22
+msgid ""
+"\n"
+"100% of finishing gold carried over to the next scenario."
+msgstr ""
+
+#: data/core/macros/carryover-utils.cfg:26
 msgid ""
 "\n"
 "40% of finishing gold carried over to the next scenario."
 msgstr ""
 
-#: data/core/macros/carryover-utils.cfg:20
+#: data/core/macros/carryover-utils.cfg:30
 msgid ""
 "\n"
 "20% of finishing gold carried over to the next scenario."
@@ -6752,7 +6767,7 @@ msgstr "经验值："
 msgid "Moves: "
 msgstr "移动： "
 
-#: src/game.cpp:612 src/game.cpp:1401
+#: src/game.cpp:612 src/game.cpp:1398
 msgid "The Battle for Wesnoth"
 msgstr "韦诺之战"
 
@@ -6760,115 +6775,115 @@ msgstr "韦诺之战"
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr "警告：您试图载入的文件已损坏。继续尝试载入。\n"
 
-#: src/game.cpp:934 src/multiplayer_connect.cpp:1566
+#: src/game.cpp:931 src/multiplayer_connect.cpp:1563
 msgid "This save is from a version too old to be loaded."
 msgstr "这个存档是由一个太早期的游戏版本保存的，现在的版本无法载入。"
 
-#: src/game.cpp:940 src/multiplayer_connect.cpp:1573
+#: src/game.cpp:937 src/multiplayer_connect.cpp:1570
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
 msgstr "这个存档来自于不同版本的游戏。您仍然想载入吗？"
 
-#: src/game.cpp:960 src/game.cpp:963 src/multiplayer_connect.cpp:1544
+#: src/game.cpp:957 src/game.cpp:960 src/multiplayer_connect.cpp:1544
 msgid "The file you have tried to load is corrupt: '"
 msgstr "您试图载入的文件已损坏： '"
 
-#: src/game.cpp:966
+#: src/game.cpp:963
 msgid "File I/O Error while reading the game"
 msgstr "当读取游戏时发生文件I/O错误。"
 
-#: src/game.cpp:1069
+#: src/game.cpp:1066
 #, fuzzy
 msgid "No campaigns are available.\n"
 msgstr "无有效目标"
 
-#: src/game.cpp:1073
+#: src/game.cpp:1070
 msgid "Play a campaign"
 msgstr "战役"
 
-#: src/game.cpp:1116
+#: src/game.cpp:1113
 msgid "Difficulty"
 msgstr "难度"
 
-#: src/game.cpp:1117
+#: src/game.cpp:1114
 msgid "Select difficulty level:"
 msgstr "选择难度："
 
-#: src/game.cpp:1279
+#: src/game.cpp:1276
 #, fuzzy
 msgid "Do you really want to start the server?"
 msgstr "您确信想解散她？"
 
-#: src/game.cpp:1280
+#: src/game.cpp:1277
 msgid ""
 "The server will run in a background process until all users have "
 "disconnected."
 msgstr ""
 
-#: src/game.cpp:1284
+#: src/game.cpp:1281
 #, fuzzy
 msgid "Don't show again"
 msgstr "不要再问我！"
 
-#: src/game.cpp:1356
+#: src/game.cpp:1353
 #, fuzzy
 msgid "Error while starting server: "
 msgstr "游戏执行出错： "
 
-#: src/game.cpp:1358 src/playcampaign.cpp:95 src/playcampaign.cpp:380
+#: src/game.cpp:1355 src/playcampaign.cpp:95 src/playcampaign.cpp:380
 msgid "The game could not be loaded: "
 msgstr "无法加载游戏： "
 
-#: src/game.cpp:1360 src/playcampaign.cpp:97 src/playcampaign.cpp:383
+#: src/game.cpp:1357 src/playcampaign.cpp:97 src/playcampaign.cpp:383
 msgid "Error while playing the game: "
 msgstr "游戏执行出错： "
 
-#: src/game.cpp:1380 src/playcampaign.cpp:99 src/playcampaign.cpp:386
+#: src/game.cpp:1377 src/playcampaign.cpp:99 src/playcampaign.cpp:386
 msgid "The game map could not be loaded: "
 msgstr "无法加载游戏地图： "
 
-#: src/game.cpp:1446 src/game.cpp:1567
+#: src/game.cpp:1443 src/game.cpp:1564
 msgid "Error loading game configuration files: '"
 msgstr "载入游戏配置文件时出错： '"
 
-#: src/game.cpp:1447 src/game.cpp:1568
+#: src/game.cpp:1444 src/game.cpp:1565
 msgid "' (The game will now exit)"
 msgstr "' （现在将退出游戏）"
 
-#: src/game.cpp:1542
+#: src/game.cpp:1539
 #, fuzzy
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "以下附加战役有错误，无法加载："
 msgstr[1] "以下附加战役有错误，无法加载："
 
-#: src/game.cpp:1549
+#: src/game.cpp:1546
 msgid "ERROR DETAILS:"
 msgstr "错误细节："
 
-#: src/game.cpp:1577
+#: src/game.cpp:1574
 msgid "Loading data files"
 msgstr "读取数据文件"
 
-#: src/game.cpp:1988
+#: src/game.cpp:1985
 msgid "Loading game configuration."
 msgstr "载入游戏配置。"
 
-#: src/game.cpp:1994
+#: src/game.cpp:1991
 msgid "Re-initialize fonts for the current language."
 msgstr "为当前语言重绘字体。"
 
-#: src/game.cpp:2002
+#: src/game.cpp:1999
 #, fuzzy
 msgid "Searching for installed add-ons."
 msgstr "发送插件"
 
-#: src/game.cpp:2011
+#: src/game.cpp:2008
 msgid "Loading title screen."
 msgstr "载入主屏幕。"
 
-#: src/game_config.cpp:284
+#: src/game_config.cpp:285
 msgid "Invalid color range: "
 msgstr "无效颜色"
 
@@ -6885,11 +6900,11 @@ msgstr "失败："
 msgid "No time of day has been defined."
 msgstr "没有定制时间."
 
-#: src/gamestatus.cpp:743 src/gamestatus.cpp:745 src/playcampaign.cpp:414
+#: src/gamestatus.cpp:768 src/gamestatus.cpp:770 src/playcampaign.cpp:414
 msgid " replay"
 msgstr " 游戏录像"
 
-#: src/gamestatus.cpp:880
+#: src/gamestatus.cpp:905
 msgid "Could not write to file"
 msgstr "无法写入文件"
 
@@ -7347,7 +7362,7 @@ msgstr "已保存"
 msgid "The game has been saved"
 msgstr "游戏已保存"
 
-#: src/menu_events.cpp:594 src/playcampaign.cpp:561
+#: src/menu_events.cpp:594 src/playcampaign.cpp:570
 msgid "The game could not be saved"
 msgstr "无法保存游戏"
 
@@ -7955,11 +7970,11 @@ msgstr "空位"
 msgid "This is not a multiplayer save"
 msgstr "这不是多人对战存档"
 
-#: src/multiplayer_connect.cpp:1672
+#: src/multiplayer_connect.cpp:1669
 msgid "Cannot find era $era"
 msgstr "找不到$era时期"
 
-#: src/multiplayer_connect.cpp:1693
+#: src/multiplayer_connect.cpp:1690
 msgid ""
 "Victory:\n"
 "@Defeat enemy leader(s)"
@@ -7967,7 +7982,7 @@ msgstr ""
 "胜利条件：\n"
 "@打败敌人的领袖(们)"
 
-#: src/multiplayer_connect.cpp:1753
+#: src/multiplayer_connect.cpp:1750
 msgid "Waiting for players to join..."
 msgstr "等待玩家加入..."
 
@@ -8375,27 +8390,27 @@ msgstr "读取 WML 文件时出错： "
 msgid "Save Replay"
 msgstr "保存游戏录像"
 
-#: src/playcampaign.cpp:421
+#: src/playcampaign.cpp:428
 msgid "The replay could not be saved"
 msgstr "无法保存游戏录像"
 
-#: src/playcampaign.cpp:438
+#: src/playcampaign.cpp:445
 msgid "This scenario has ended. Do you want to continue the campaign?"
 msgstr "这一幕结束了. 您想继续这个战役吗?"
 
-#: src/playcampaign.cpp:459
+#: src/playcampaign.cpp:466
 msgid "Downloading next scenario..."
 msgstr "正在下载下一幕……"
 
-#: src/playcampaign.cpp:552
+#: src/playcampaign.cpp:561
 msgid "Do you want to save your game?"
 msgstr "您想保存游戏吗？"
 
-#: src/playcampaign.cpp:553
+#: src/playcampaign.cpp:562
 msgid "Name:"
 msgstr "名称："
 
-#: src/playcampaign.cpp:577
+#: src/playcampaign.cpp:586
 msgid "Unknown scenario: '$scenario|'"
 msgstr "未知场景： '"
 
@@ -8489,29 +8504,29 @@ msgstr "游戏结束"
 msgid "The game is over."
 msgstr "本游戏结束。"
 
-#: src/playsingle_controller.cpp:442
+#: src/playsingle_controller.cpp:444
 msgid "Scenario Report"
 msgstr "场景报告"
 
-#: src/playsingle_controller.cpp:444
+#: src/playsingle_controller.cpp:446
 msgid "Victory"
 msgstr "胜利"
 
-#: src/playsingle_controller.cpp:445
+#: src/playsingle_controller.cpp:447
 msgid "You have emerged victorious!"
 msgstr "您取得了胜利！"
 
-#: src/playsingle_controller.cpp:492 src/playsingle_controller.cpp:537
+#: src/playsingle_controller.cpp:494 src/playsingle_controller.cpp:539
 msgid "The file you have tried to load is corrupt"
 msgstr "您想载入的文件已损坏"
 
-#: src/playsingle_controller.cpp:502
+#: src/playsingle_controller.cpp:504
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
 msgstr "网络连接已断开，游戏无法继续进行。您想保存游戏吗？"
 
-#: src/playsingle_controller.cpp:657
+#: src/playsingle_controller.cpp:659
 msgid "It is now $name|'s turn"
 msgstr "轮到$name|了"
 

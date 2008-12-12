@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ca\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-12-09 22:14+0100\n"
+"POT-Creation-Date: 2008-12-12 23:20+0100\n"
 "PO-Revision-Date: 2006-09-10 20:40+0200\n"
 "Last-Translator: Robert Millan <rmh@aybabtu.com>\n"
 "Language-Team: Català <wesnoth-ca@lists.ettin.org>\n"
@@ -22,7 +22,7 @@ msgstr ""
 #. [campaign]: id=Under_the_Burning_Suns
 #. [editor_group]: id=utbs
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:15
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:134
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:137
 msgid "Under the Burning Suns"
 msgstr "Sota els sols abrasadors"
 
@@ -92,17 +92,17 @@ msgid "Campaign Maintenance"
 msgstr ""
 
 #. [about]
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:54
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:57
 msgid "Artwork and Graphics Design"
 msgstr ""
 
 #. [about]
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:93
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:96
 msgid "Miscellaneous"
 msgstr ""
 
 #. [about]
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:106
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:109
 msgid "And special thanks to everyone else who I forgot to mention."
 msgstr ""
 
@@ -2366,6 +2366,8 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1171
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1621
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1911
 msgid ""
 "Garak collapses to the ground with his own blade sticking from his chest."
 msgstr ""
@@ -2571,11 +2573,6 @@ msgstr "Que Eloh ens protegisca, què ha fet?"
 msgid "No fool! Stop!"
 msgstr ""
 
-#. [message]: speaker=narrator
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1621
-msgid "Garak collapses to the ground with own blade sticking from his chest."
-msgstr ""
-
 #. [message]: speaker=Azkotep
 #. [message]: speaker=Ystara
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1631
@@ -2622,11 +2619,6 @@ msgid ""
 "In this I shall support you, the darkness shall not lift until one of us is "
 "victorious."
 msgstr "En açò et recolze, no eixirà el sol fins que un dels dos guanye."
-
-#. [message]: speaker=narrator
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1911
-msgid "Garak collapses to the ground with own blade sticking form his chest."
-msgstr ""
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1925
@@ -14759,7 +14751,8 @@ msgstr ""
 
 #. [unit_type]: id=Desert Druid, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Druid.cfg:4
-msgid "Desert Druid"
+#, fuzzy
+msgid "female^Desert Druid"
 msgstr "Druida dels Deserts"
 
 #. [unit_type]: id=Desert Druid, race=elf
@@ -15068,8 +15061,9 @@ msgstr "Sentinella dels Deserts"
 
 #. [unit_type]: id=Desert Shaman, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Shaman.cfg:5
-msgid "Desert Shaman"
-msgstr "Xaman dels Deserts"
+#, fuzzy
+msgid "female^Desert Shaman"
+msgstr "Tiradora dels Deserts"
 
 #. [unit_type]: id=Desert Shaman, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Shaman.cfg:34
@@ -15118,8 +15112,9 @@ msgstr "Fletxera dels Deserts"
 
 #. [unit_type]: id=Desert Shyde, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Shyde.cfg:4
-msgid "Desert Shyde"
-msgstr "Shyde dels Deserts"
+#, fuzzy
+msgid "female^Desert Shyde"
+msgstr "Arquera dels Deserts"
 
 #. [unit_type]: id=Desert Shyde, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Shyde.cfg:38
@@ -15153,8 +15148,9 @@ msgstr "toc de fada"
 
 #. [unit_type]: id=Desert Star, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Star.cfg:4
-msgid "Desert Star"
-msgstr "Estel dels Deserts"
+#, fuzzy
+msgid "female^Desert Star"
+msgstr "Caçadora dels Deserts"
 
 #. [unit_type]: id=Desert Star, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Star.cfg:46
@@ -15184,7 +15180,8 @@ msgstr ""
 
 #. [unit_type]: id=Divine Avatar, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Divine_Avatar.cfg:4
-msgid "Divine Avatar"
+#, fuzzy
+msgid "female^Divine Avatar"
 msgstr "Avatar Diví"
 
 #. [unit_type]: id=Divine Avatar, race=elf
@@ -15207,7 +15204,8 @@ msgstr "raig de llum"
 
 #. [unit_type]: id=Divine Incarnation, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Divine_Incarnation.cfg:4
-msgid "Divine Incarnation"
+#, fuzzy
+msgid "female^Divine Incarnation"
 msgstr "Encarnació Divina"
 
 #. [unit_type]: id=Divine Incarnation, race=elf
@@ -17059,6 +17057,15 @@ msgstr "La Llarga Nit (3)"
 #: data/campaigns/Under_the_Burning_Suns/utils/time.cfg:160
 msgid "The Long Dark (4)"
 msgstr "La Llarga Nit (4)"
+
+#~ msgid "Desert Shaman"
+#~ msgstr "Xaman dels Deserts"
+
+#~ msgid "Desert Shyde"
+#~ msgstr "Shyde dels Deserts"
+
+#~ msgid "Desert Star"
+#~ msgstr "Estel dels Deserts"
 
 #~ msgid ""
 #~ "We'll need your help in checking to see if the outer settlements are "

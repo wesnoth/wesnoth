@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bg\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-12-09 22:12+0100\n"
+"POT-Creation-Date: 2008-12-12 23:18+0100\n"
 "PO-Revision-Date: 2007-08-21 17:39+0300\n"
 "Last-Translator: Denica <dmincheva2002@gmail.com>\n"
 "Language-Team: Bulgarian <bg@li.org>\n"
@@ -3404,13 +3404,28 @@ msgstr "Бонус за предсрочно завършване: "
 msgid "No early finish bonus."
 msgstr "Бонус за предсрочно завършване: "
 
-#: data/core/macros/carryover-utils.cfg:16
+#: data/core/macros/carryover-utils.cfg:15
+#, fuzzy
+msgid "`(early finish bonus)"
+msgstr "Бонус за предсрочно завършване: "
+
+#: data/core/macros/carryover-utils.cfg:18
+msgid "No gold carried over to the next scenario."
+msgstr ""
+
+#: data/core/macros/carryover-utils.cfg:22
+msgid ""
+"\n"
+"100% of finishing gold carried over to the next scenario."
+msgstr ""
+
+#: data/core/macros/carryover-utils.cfg:26
 msgid ""
 "\n"
 "40% of finishing gold carried over to the next scenario."
 msgstr ""
 
-#: data/core/macros/carryover-utils.cfg:20
+#: data/core/macros/carryover-utils.cfg:30
 msgid ""
 "\n"
 "20% of finishing gold carried over to the next scenario."
@@ -6720,7 +6735,7 @@ msgstr "Опит: "
 msgid "Moves: "
 msgstr "Ходове: "
 
-#: src/game.cpp:612 src/game.cpp:1401
+#: src/game.cpp:612 src/game.cpp:1398
 msgid "The Battle for Wesnoth"
 msgstr "Битката за Уеснот"
 
@@ -6729,117 +6744,117 @@ msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr ""
 "Внимание: Файлът, който се опитвате да заредите е повреден. Зареждане. \n"
 
-#: src/game.cpp:934 src/multiplayer_connect.cpp:1566
+#: src/game.cpp:931 src/multiplayer_connect.cpp:1563
 msgid "This save is from a version too old to be loaded."
 msgstr "Записът е от прекалено стара версия на играта, за да бъде зареден. "
 
-#: src/game.cpp:940 src/multiplayer_connect.cpp:1573
+#: src/game.cpp:937 src/multiplayer_connect.cpp:1570
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
 msgstr "Записът е от друга версия на играта, Искате ли да го заредите?"
 
-#: src/game.cpp:960 src/game.cpp:963 src/multiplayer_connect.cpp:1544
+#: src/game.cpp:957 src/game.cpp:960 src/multiplayer_connect.cpp:1544
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Файлът който се опитвате да заредите е повреден: '"
 
-#: src/game.cpp:966
+#: src/game.cpp:963
 msgid "File I/O Error while reading the game"
 msgstr "Грешка Вход/Изход при четене на играта"
 
-#: src/game.cpp:1069
+#: src/game.cpp:1066
 #, fuzzy
 msgid "No campaigns are available.\n"
 msgstr "Няма цели"
 
-#: src/game.cpp:1073
+#: src/game.cpp:1070
 #, fuzzy
 msgid "Play a campaign"
 msgstr "Кампания"
 
-#: src/game.cpp:1116
+#: src/game.cpp:1113
 msgid "Difficulty"
 msgstr "Трудност"
 
-#: src/game.cpp:1117
+#: src/game.cpp:1114
 msgid "Select difficulty level:"
 msgstr "Избери ниво на трудност:"
 
-#: src/game.cpp:1279
+#: src/game.cpp:1276
 #, fuzzy
 msgid "Do you really want to start the server?"
 msgstr "Наистина ли искате ли да изтриете записа?"
 
-#: src/game.cpp:1280
+#: src/game.cpp:1277
 msgid ""
 "The server will run in a background process until all users have "
 "disconnected."
 msgstr ""
 
-#: src/game.cpp:1284
+#: src/game.cpp:1281
 #, fuzzy
 msgid "Don't show again"
 msgstr "Не ме питай отново."
 
-#: src/game.cpp:1356
+#: src/game.cpp:1353
 #, fuzzy
 msgid "Error while starting server: "
 msgstr "Грешка по време на игра : "
 
-#: src/game.cpp:1358 src/playcampaign.cpp:95 src/playcampaign.cpp:380
+#: src/game.cpp:1355 src/playcampaign.cpp:95 src/playcampaign.cpp:380
 msgid "The game could not be loaded: "
 msgstr "Играта не може да се зареди: "
 
-#: src/game.cpp:1360 src/playcampaign.cpp:97 src/playcampaign.cpp:383
+#: src/game.cpp:1357 src/playcampaign.cpp:97 src/playcampaign.cpp:383
 msgid "Error while playing the game: "
 msgstr "Грешка по време на игра : "
 
-#: src/game.cpp:1380 src/playcampaign.cpp:99 src/playcampaign.cpp:386
+#: src/game.cpp:1377 src/playcampaign.cpp:99 src/playcampaign.cpp:386
 msgid "The game map could not be loaded: "
 msgstr "Картата не може да се зареди: "
 
-#: src/game.cpp:1446 src/game.cpp:1567
+#: src/game.cpp:1443 src/game.cpp:1564
 msgid "Error loading game configuration files: '"
 msgstr "Грешка при зареждане на файловете с настройките: '"
 
-#: src/game.cpp:1447 src/game.cpp:1568
+#: src/game.cpp:1444 src/game.cpp:1565
 msgid "' (The game will now exit)"
 msgstr "' (Следва изход от играта)"
 
-#: src/game.cpp:1542
+#: src/game.cpp:1539
 #, fuzzy
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "Следните допълнителни кампании имаха грешки и не бяха заредени:"
 msgstr[1] "Следните допълнителни кампании имаха грешки и не бяха заредени:"
 
-#: src/game.cpp:1549
+#: src/game.cpp:1546
 msgid "ERROR DETAILS:"
 msgstr "ПОДРОБНОСТИ ЗА ГРЕШКАТА:"
 
-#: src/game.cpp:1577
+#: src/game.cpp:1574
 #, fuzzy
 msgid "Loading data files"
 msgstr "Четена на файловете с единици."
 
-#: src/game.cpp:1988
+#: src/game.cpp:1985
 msgid "Loading game configuration."
 msgstr "Зареждане на настройките на играта."
 
-#: src/game.cpp:1994
+#: src/game.cpp:1991
 msgid "Re-initialize fonts for the current language."
 msgstr "Обновяване на шрифтовете за текущият език."
 
-#: src/game.cpp:2002
+#: src/game.cpp:1999
 #, fuzzy
 msgid "Searching for installed add-ons."
 msgstr "Пращане на допълнението"
 
-#: src/game.cpp:2011
+#: src/game.cpp:2008
 msgid "Loading title screen."
 msgstr "Зареждане на главният екран."
 
-#: src/game_config.cpp:284
+#: src/game_config.cpp:285
 msgid "Invalid color range: "
 msgstr "Невалиден цвят:"
 
@@ -6857,11 +6872,11 @@ msgstr "Загуба:"
 msgid "No time of day has been defined."
 msgstr "Произволно време на денонощието в началото"
 
-#: src/gamestatus.cpp:743 src/gamestatus.cpp:745 src/playcampaign.cpp:414
+#: src/gamestatus.cpp:768 src/gamestatus.cpp:770 src/playcampaign.cpp:414
 msgid " replay"
 msgstr " повторение"
 
-#: src/gamestatus.cpp:880
+#: src/gamestatus.cpp:905
 msgid "Could not write to file"
 msgstr "Записът невъзможен "
 
@@ -7352,7 +7367,7 @@ msgstr "Запазена"
 msgid "The game has been saved"
 msgstr "Играта бе запазена"
 
-#: src/menu_events.cpp:594 src/playcampaign.cpp:561
+#: src/menu_events.cpp:594 src/playcampaign.cpp:570
 msgid "The game could not be saved"
 msgstr "Играта не бе запазена"
 
@@ -7959,11 +7974,11 @@ msgstr "Празно"
 msgid "This is not a multiplayer save"
 msgstr "Това не е игра за мрежова игра"
 
-#: src/multiplayer_connect.cpp:1672
+#: src/multiplayer_connect.cpp:1669
 msgid "Cannot find era $era"
 msgstr "Ера $era не е открита"
 
-#: src/multiplayer_connect.cpp:1693
+#: src/multiplayer_connect.cpp:1690
 msgid ""
 "Victory:\n"
 "@Defeat enemy leader(s)"
@@ -7971,7 +7986,7 @@ msgstr ""
 "Условия за победа\n"
 "@Побеждаване на вражеския водач(и)"
 
-#: src/multiplayer_connect.cpp:1753
+#: src/multiplayer_connect.cpp:1750
 msgid "Waiting for players to join..."
 msgstr "Изчакване на играчи да се присъединят..."
 
@@ -8390,27 +8405,27 @@ msgstr "Грешка при четене на WML:"
 msgid "Save Replay"
 msgstr "Повторение"
 
-#: src/playcampaign.cpp:421
+#: src/playcampaign.cpp:428
 msgid "The replay could not be saved"
 msgstr "Повторението не бе запазено"
 
-#: src/playcampaign.cpp:438
+#: src/playcampaign.cpp:445
 msgid "This scenario has ended. Do you want to continue the campaign?"
 msgstr ""
 
-#: src/playcampaign.cpp:459
+#: src/playcampaign.cpp:466
 msgid "Downloading next scenario..."
 msgstr "Сваляне на следващата мисия..."
 
-#: src/playcampaign.cpp:552
+#: src/playcampaign.cpp:561
 msgid "Do you want to save your game?"
 msgstr "Искате ли да запазите играта?"
 
-#: src/playcampaign.cpp:553
+#: src/playcampaign.cpp:562
 msgid "Name:"
 msgstr "Име:"
 
-#: src/playcampaign.cpp:577
+#: src/playcampaign.cpp:586
 #, fuzzy
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Непозната мисия: '"
@@ -8505,30 +8520,30 @@ msgstr "Край на Играта"
 msgid "The game is over."
 msgstr "Играта приключи."
 
-#: src/playsingle_controller.cpp:442
+#: src/playsingle_controller.cpp:444
 msgid "Scenario Report"
 msgstr "Доклад от мисията"
 
-#: src/playsingle_controller.cpp:444
+#: src/playsingle_controller.cpp:446
 msgid "Victory"
 msgstr "Победа"
 
-#: src/playsingle_controller.cpp:445
+#: src/playsingle_controller.cpp:447
 msgid "You have emerged victorious!"
 msgstr "Вие сте победител!"
 
-#: src/playsingle_controller.cpp:492 src/playsingle_controller.cpp:537
+#: src/playsingle_controller.cpp:494 src/playsingle_controller.cpp:539
 msgid "The file you have tried to load is corrupt"
 msgstr "Файлът е повреден"
 
-#: src/playsingle_controller.cpp:502
+#: src/playsingle_controller.cpp:504
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
 msgstr ""
 "Мрежата бе прекъсната и играта не може да продължи. Искате ли да я запазите?"
 
-#: src/playsingle_controller.cpp:657
+#: src/playsingle_controller.cpp:659
 #, fuzzy
 msgid "It is now $name|'s turn"
 msgstr "Вие сте на ход"

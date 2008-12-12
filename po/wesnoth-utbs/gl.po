@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-12-09 22:14+0100\n"
+"POT-Creation-Date: 2008-12-12 23:20+0100\n"
 "PO-Revision-Date: 2008-12-08 15:01+0100\n"
 "Last-Translator: Leandro Regueiro <leandro DOT regueiro AT gmail DOT com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
@@ -20,7 +20,7 @@ msgstr ""
 #. [campaign]: id=Under_the_Burning_Suns
 #. [editor_group]: id=utbs
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:15
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:134
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:137
 msgid "Under the Burning Suns"
 msgstr "Baixo os ardentes soles"
 
@@ -94,17 +94,17 @@ msgid "Campaign Maintenance"
 msgstr "Mantemento da campaña"
 
 #. [about]
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:54
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:57
 msgid "Artwork and Graphics Design"
 msgstr "Traballo artístico e deseño gráfico"
 
 #. [about]
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:93
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:96
 msgid "Miscellaneous"
 msgstr "Miscelánea"
 
 #. [about]
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:106
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:109
 msgid "And special thanks to everyone else who I forgot to mention."
 msgstr "E especialmente grazas a todos aqueles ós que esquecín mencionar."
 
@@ -2143,6 +2143,8 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1171
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1621
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1911
 msgid ""
 "Garak collapses to the ground with his own blade sticking from his chest."
 msgstr ""
@@ -2321,11 +2323,6 @@ msgstr ""
 msgid "No fool! Stop!"
 msgstr "Non parvo! Detente!"
 
-#. [message]: speaker=narrator
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1621
-msgid "Garak collapses to the ground with own blade sticking from his chest."
-msgstr ""
-
 #. [message]: speaker=Azkotep
 #. [message]: speaker=Ystara
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1631
@@ -2365,11 +2362,6 @@ msgstr ""
 msgid ""
 "In this I shall support you, the darkness shall not lift until one of us is "
 "victorious."
-msgstr ""
-
-#. [message]: speaker=narrator
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1911
-msgid "Garak collapses to the ground with own blade sticking form his chest."
 msgstr ""
 
 #. [message]: speaker=Nym
@@ -12139,7 +12131,8 @@ msgstr ""
 # druida do deserto FIXADO
 #. [unit_type]: id=Desert Druid, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Druid.cfg:4
-msgid "Desert Druid"
+#, fuzzy
+msgid "female^Desert Druid"
 msgstr "Druida do deserto"
 
 #. [unit_type]: id=Desert Druid, race=elf
@@ -12390,11 +12383,12 @@ msgstr ""
 msgid "female^Desert Sentinel"
 msgstr "Sentinela do deserto"
 
-# xamán do deserto FIXADO
+# tiradora do deserto FIXADO
 #. [unit_type]: id=Desert Shaman, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Shaman.cfg:5
-msgid "Desert Shaman"
-msgstr "Xamán do deserto"
+#, fuzzy
+msgid "female^Desert Shaman"
+msgstr "Tiradora do deserto"
 
 #. [unit_type]: id=Desert Shaman, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Shaman.cfg:34
@@ -12431,11 +12425,12 @@ msgstr ""
 msgid "female^Desert Sharpshooter"
 msgstr "Tiradora de élite do deserto"
 
-# Fuxidía do deserto FIXADO
+# arqueira do deserto FIXADO
 #. [unit_type]: id=Desert Shyde, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Shyde.cfg:4
-msgid "Desert Shyde"
-msgstr "Fuxidía do deserto"
+#, fuzzy
+msgid "female^Desert Shyde"
+msgstr "Arqueira do deserto"
 
 #. [unit_type]: id=Desert Shyde, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Shyde.cfg:38
@@ -12462,11 +12457,12 @@ msgstr ""
 msgid "faerie touch"
 msgstr "toque feérico"
 
-# estrela do deserto FIXADO
+# cazadora do deserto FIXADO
 #. [unit_type]: id=Desert Star, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Star.cfg:4
-msgid "Desert Star"
-msgstr "Estrela do deserto"
+#, fuzzy
+msgid "female^Desert Star"
+msgstr "Cazadora do deserto"
 
 #. [unit_type]: id=Desert Star, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Star.cfg:46
@@ -12486,7 +12482,8 @@ msgstr ""
 # avatar divino FIXADO
 #. [unit_type]: id=Divine Avatar, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Divine_Avatar.cfg:4
-msgid "Divine Avatar"
+#, fuzzy
+msgid "female^Divine Avatar"
 msgstr "Avatar divino"
 
 #. [unit_type]: id=Divine Avatar, race=elf
@@ -12507,7 +12504,8 @@ msgstr "lampexo"
 # encarnación divina FIXADO
 #. [unit_type]: id=Divine Incarnation, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Divine_Incarnation.cfg:4
-msgid "Divine Incarnation"
+#, fuzzy
+msgid "female^Divine Incarnation"
 msgstr "Encarnación divina"
 
 #. [unit_type]: id=Divine Incarnation, race=elf
@@ -13918,6 +13916,18 @@ msgstr "A longa escuridade (3)"
 #: data/campaigns/Under_the_Burning_Suns/utils/time.cfg:160
 msgid "The Long Dark (4)"
 msgstr "A longa escuridade (4)"
+
+# xamán do deserto FIXADO
+#~ msgid "Desert Shaman"
+#~ msgstr "Xamán do deserto"
+
+# Fuxidía do deserto FIXADO
+#~ msgid "Desert Shyde"
+#~ msgstr "Fuxidía do deserto"
+
+# estrela do deserto FIXADO
+#~ msgid "Desert Star"
+#~ msgstr "Estrela do deserto"
 
 #, fuzzy
 #~ msgid "Goblin Raider"

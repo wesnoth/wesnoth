@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-utbs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-12-09 22:14+0100\n"
+"POT-Creation-Date: 2008-12-12 23:20+0100\n"
 "PO-Revision-Date: 2008-10-04 17:26+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish <wesnoth-tr@googlegroups.com>\n"
@@ -21,7 +21,7 @@ msgstr ""
 #. [campaign]: id=Under_the_Burning_Suns
 #. [editor_group]: id=utbs
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:15
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:134
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:137
 msgid "Under the Burning Suns"
 msgstr "Kızgın Güneşlerin Altında"
 
@@ -92,17 +92,17 @@ msgid "Campaign Maintenance"
 msgstr "Seferberlik Bakımı"
 
 #. [about]
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:54
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:57
 msgid "Artwork and Graphics Design"
 msgstr "Sanatsal ve Çizgesel Tasarım"
 
 #. [about]
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:93
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:96
 msgid "Miscellaneous"
 msgstr "Muhtelif"
 
 #. [about]
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:106
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:109
 msgid "And special thanks to everyone else who I forgot to mention."
 msgstr "Ve burada bahsetmeyi unuttuğum herkese özellikle teşekkür ederim."
 
@@ -2345,6 +2345,8 @@ msgstr "Karanlıklar lordu.... olamaz..."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1171
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1621
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1911
 #, fuzzy
 msgid ""
 "Garak collapses to the ground with his own blade sticking from his chest."
@@ -2547,11 +2549,6 @@ msgstr "Eloh bizi koru, ne yaptı o?"
 msgid "No fool! Stop!"
 msgstr "Hayır! Dur!"
 
-#. [message]: speaker=narrator
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1621
-msgid "Garak collapses to the ground with own blade sticking from his chest."
-msgstr "Garak kılıcı göğsüne saplanmış olarak yere düşer."
-
 #. [message]: speaker=Azkotep
 #. [message]: speaker=Ystara
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1631
@@ -2599,12 +2596,6 @@ msgid ""
 msgstr ""
 "Bu konuda seni destekleyeceğim, güneş bizden biri zafer kazanana dek "
 "doğmayacak."
-
-#. [message]: speaker=narrator
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1911
-#, fuzzy
-msgid "Garak collapses to the ground with own blade sticking form his chest."
-msgstr "Garak kılıcı göğsüne saplanmış olarak yere düşer."
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1925
@@ -14195,7 +14186,8 @@ msgstr ""
 
 #. [unit_type]: id=Desert Druid, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Druid.cfg:4
-msgid "Desert Druid"
+#, fuzzy
+msgid "female^Desert Druid"
 msgstr "Çöl Rahibi"
 
 #. [unit_type]: id=Desert Druid, race=elf
@@ -14467,8 +14459,9 @@ msgstr "Usta Amazon"
 
 #. [unit_type]: id=Desert Shaman, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Shaman.cfg:5
-msgid "Desert Shaman"
-msgstr "Çöl Şamanı"
+#, fuzzy
+msgid "female^Desert Shaman"
+msgstr "Çöl Nişancısı"
 
 #. [unit_type]: id=Desert Shaman, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Shaman.cfg:34
@@ -14512,8 +14505,9 @@ msgstr "Çöl Keskin Nişancısı"
 
 #. [unit_type]: id=Desert Shyde, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Shyde.cfg:4
-msgid "Desert Shyde"
-msgstr "Çöl Yer Perisi"
+#, fuzzy
+msgid "female^Desert Shyde"
+msgstr "Çöl Okçusu"
 
 #. [unit_type]: id=Desert Shyde, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Shyde.cfg:38
@@ -14542,8 +14536,9 @@ msgstr "peri dokunuşu"
 
 #. [unit_type]: id=Desert Star, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Star.cfg:4
-msgid "Desert Star"
-msgstr "Vaha Perisi"
+#, fuzzy
+msgid "female^Desert Star"
+msgstr "Amazon"
 
 #. [unit_type]: id=Desert Star, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Star.cfg:46
@@ -14562,7 +14557,8 @@ msgstr ""
 
 #. [unit_type]: id=Divine Avatar, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Divine_Avatar.cfg:4
-msgid "Divine Avatar"
+#, fuzzy
+msgid "female^Divine Avatar"
 msgstr "Kutsal Varlık"
 
 #. [unit_type]: id=Divine Avatar, race=elf
@@ -14581,7 +14577,8 @@ msgstr "ışık hüzmesi"
 
 #. [unit_type]: id=Divine Incarnation, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Divine_Incarnation.cfg:4
-msgid "Divine Incarnation"
+#, fuzzy
+msgid "female^Divine Incarnation"
 msgstr "İlahi Varlık"
 
 #. [unit_type]: id=Divine Incarnation, race=elf
@@ -16291,6 +16288,24 @@ msgstr "Uzun Karanlık (3)"
 #: data/campaigns/Under_the_Burning_Suns/utils/time.cfg:160
 msgid "The Long Dark (4)"
 msgstr "Uzun Karanlık (4)"
+
+#~ msgid ""
+#~ "Garak collapses to the ground with own blade sticking from his chest."
+#~ msgstr "Garak kılıcı göğsüne saplanmış olarak yere düşer."
+
+#, fuzzy
+#~ msgid ""
+#~ "Garak collapses to the ground with own blade sticking form his chest."
+#~ msgstr "Garak kılıcı göğsüne saplanmış olarak yere düşer."
+
+#~ msgid "Desert Shaman"
+#~ msgstr "Çöl Şamanı"
+
+#~ msgid "Desert Shyde"
+#~ msgstr "Çöl Yer Perisi"
+
+#~ msgid "Desert Star"
+#~ msgstr "Vaha Perisi"
 
 #~ msgid ""
 #~ "We'll need your help in checking to see if the outer settlements are "

@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-12-09 22:14+0100\n"
+"POT-Creation-Date: 2008-12-12 23:20+0100\n"
 "PO-Revision-Date: 2008-11-22 20:39+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lietuvių <komp_lt@konf.lt>\n"
@@ -18,7 +18,7 @@ msgstr ""
 #. [campaign]: id=Under_the_Burning_Suns
 #. [editor_group]: id=utbs
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:15
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:134
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:137
 msgid "Under the Burning Suns"
 msgstr "Po deginančiomis saulėmis"
 
@@ -84,17 +84,17 @@ msgid "Campaign Maintenance"
 msgstr "Kampanijos priežiūra"
 
 #. [about]
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:54
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:57
 msgid "Artwork and Graphics Design"
 msgstr "Grafikos kūrimas"
 
 #. [about]
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:93
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:96
 msgid "Miscellaneous"
 msgstr "Įvairūs"
 
 #. [about]
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:106
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:109
 msgid "And special thanks to everyone else who I forgot to mention."
 msgstr "Ir ypatingas ačiū visiems kitiems, kuriuos pamiršau paminėti."
 
@@ -2036,6 +2036,8 @@ msgstr "Tamsos valdovo... daugiau nebėra..."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1171
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1621
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1911
 msgid ""
 "Garak collapses to the ground with his own blade sticking from his chest."
 msgstr "Garakas griūna ant žemės kartu su iš krūtinės kyšančiu savo kardu."
@@ -2213,11 +2215,6 @@ msgstr "Eloh, apsaugok mus, ką ji padarė?"
 msgid "No fool! Stop!"
 msgstr "Ne, kvaily! Stok!"
 
-#. [message]: speaker=narrator
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1621
-msgid "Garak collapses to the ground with own blade sticking from his chest."
-msgstr "Garakas griūna ant žemės kartu su iš krūtinės kyšančiu savo kardu."
-
 #. [message]: speaker=Azkotep
 #. [message]: speaker=Ystara
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1631
@@ -2258,11 +2255,6 @@ msgid ""
 "In this I shall support you, the darkness shall not lift until one of us is "
 "victorious."
 msgstr ""
-
-#. [message]: speaker=narrator
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1911
-msgid "Garak collapses to the ground with own blade sticking form his chest."
-msgstr "Garakas griūna ant žemės kartu su iš krūtinės kyšančiu savo kardu."
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1925
@@ -11964,7 +11956,8 @@ msgstr ""
 
 #. [unit_type]: id=Desert Druid, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Druid.cfg:4
-msgid "Desert Druid"
+#, fuzzy
+msgid "female^Desert Druid"
 msgstr "Dykumos druidas"
 
 #. [unit_type]: id=Desert Druid, race=elf
@@ -12199,8 +12192,9 @@ msgstr "Dykumos sergėtoja"
 
 #. [unit_type]: id=Desert Shaman, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Shaman.cfg:5
-msgid "Desert Shaman"
-msgstr "Dykumos šamanas"
+#, fuzzy
+msgid "female^Desert Shaman"
+msgstr "Dykumos šaulė"
 
 #. [unit_type]: id=Desert Shaman, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Shaman.cfg:34
@@ -12236,8 +12230,9 @@ msgstr "Dykumos snaiperė"
 
 #. [unit_type]: id=Desert Shyde, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Shyde.cfg:4
-msgid "Desert Shyde"
-msgstr ""
+#, fuzzy
+msgid "female^Desert Shyde"
+msgstr "Dykumos lankininkė"
 
 #. [unit_type]: id=Desert Shyde, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Shyde.cfg:38
@@ -12265,8 +12260,9 @@ msgstr ""
 
 #. [unit_type]: id=Desert Star, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Star.cfg:4
-msgid "Desert Star"
-msgstr "Dykumos žvaigždė"
+#, fuzzy
+msgid "female^Desert Star"
+msgstr "Dykumos medžiotoja"
 
 #. [unit_type]: id=Desert Star, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Star.cfg:46
@@ -12285,8 +12281,9 @@ msgstr ""
 
 #. [unit_type]: id=Divine Avatar, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Divine_Avatar.cfg:4
-msgid "Divine Avatar"
-msgstr ""
+#, fuzzy
+msgid "female^Divine Avatar"
+msgstr "Dykumos keršytoja"
 
 #. [unit_type]: id=Divine Avatar, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Divine_Avatar.cfg:19
@@ -12304,7 +12301,7 @@ msgstr "šviesos spindulys"
 
 #. [unit_type]: id=Divine Incarnation, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/Divine_Incarnation.cfg:4
-msgid "Divine Incarnation"
+msgid "female^Divine Incarnation"
 msgstr ""
 
 #. [unit_type]: id=Divine Incarnation, race=elf
@@ -13639,6 +13636,20 @@ msgstr "Ilgoji tamsa (3)"
 #: data/campaigns/Under_the_Burning_Suns/utils/time.cfg:160
 msgid "The Long Dark (4)"
 msgstr "Ilgoji tamsa (4)"
+
+#~ msgid ""
+#~ "Garak collapses to the ground with own blade sticking from his chest."
+#~ msgstr "Garakas griūna ant žemės kartu su iš krūtinės kyšančiu savo kardu."
+
+#~ msgid ""
+#~ "Garak collapses to the ground with own blade sticking form his chest."
+#~ msgstr "Garakas griūna ant žemės kartu su iš krūtinės kyšančiu savo kardu."
+
+#~ msgid "Desert Shaman"
+#~ msgstr "Dykumos šamanas"
+
+#~ msgid "Desert Star"
+#~ msgstr "Dykumos žvaigždė"
 
 #~ msgid "Well, let's hope that hunting party comes back soon."
 #~ msgstr "Na, tikėkimės, kad medžiotojai tuoj grįš."
