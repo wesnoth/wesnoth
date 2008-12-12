@@ -41,6 +41,8 @@ BOOST_AUTO_TEST_CASE( test_version_info )
 	BOOST_CHECK( non_canonical_suffixed > non_canonical );
 	BOOST_CHECK( non_canonical < non_canonical_suffixed );
 	
+	bool insanity_test = true;
+	
 	try {
 		const version_info bad_version_info1("Viva la revolución!");
 		const version_info bad_version_info2("To infinity and beyond!");
@@ -48,12 +50,13 @@ BOOST_AUTO_TEST_CASE( test_version_info )
 		const bool probe = (bad_version_info1 > bad_version_info2);
 		
 		// We should have thrown an exception already...
-		BOOST_CHECK( false );
+		insanity_test = false;
 	}
 	catch( const version_info::not_sane_exception& ) {
 		// Good.
 	}
 	
+	BOOST_CHECK( insanity_test );
 }
 
 BOOST_AUTO_TEST_SUITE_END()
