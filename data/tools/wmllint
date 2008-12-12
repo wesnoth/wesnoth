@@ -1063,7 +1063,7 @@ def translator(filename, mapxforms, textxform):
                     else:
                         fields = map(lambda x: x, line)
                     outmap.append(fields)
-                    if not maskwarn and maptype == 'map' and "_s" in line:
+                    if not maskwarn and maptype == 'map' and "_f" in line:
                         print \
                               '"%s", line %d: warning, fog in map file' \
                               % (filename, lineno+1)
