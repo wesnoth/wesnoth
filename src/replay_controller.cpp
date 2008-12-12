@@ -165,6 +165,10 @@ void replay_controller::reset_replay(){
 	teams_ = teams_start_;
 	statistics::fresh_stats();
 	if (events_manager_ ){
+		// NOTE: this double reset is required so that the new
+		// instance of game_events::manager isn't created before the
+		// old manager is actually destroyed (triggering an assertion
+		// failure)
 		events_manager_.reset();
 		events_manager_.reset(new game_events::manager(level_,map_,
 								units_,teams_, gamestate_,status_));
