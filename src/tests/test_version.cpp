@@ -41,6 +41,16 @@ BOOST_AUTO_TEST_CASE( test_version_info )
 	BOOST_CHECK( non_canonical_suffixed > non_canonical );
 	BOOST_CHECK( non_canonical < non_canonical_suffixed );
 	
+	version_info right_zero("1.2.0");
+	version_info no_right_zero("1.2");
+	
+	BOOST_CHECK( right_zero == no_right_zero );
+	
+	version_info left_zero("0.1.4");
+	version_info no_left_zero("1.4");
+	
+	BOOST_CHECK( left_zero != no_left_zero );
+	
 	bool insanity_test = true;
 	
 	try {
