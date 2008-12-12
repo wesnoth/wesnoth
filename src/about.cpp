@@ -30,7 +30,7 @@
 
 /**
  * @namespace about
- * Display credits about all contributors.
+ * Display credits %about all contributors.
  *
  * This module is used from the startup screen. \n
  * When show_about() is called, a list of contributors
