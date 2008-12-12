@@ -508,11 +508,13 @@ game_state::game_state(const game_data& data, const config& cfg, bool show_repla
         //See also playcampaign::play_game, where after finishing the scenario the replay
         //will be saved.
 		if(!starting_pos.empty()) {
-		config::child_list player_list = cfg.get_children("player");
-        for (config::child_list::const_iterator p = player_list.begin(); p != player_list.end(); p++){
-            config& cfg_player = starting_pos.add_child("player");
-            cfg_player.merge_with(**p);
-	}
+			config::child_list player_list = cfg.get_children("player");
+			for (config::child_list::const_iterator p = player_list.begin(); 
+					p != player_list.end(); p++){
+
+				config& cfg_player = starting_pos.add_child("player");
+				cfg_player.merge_with(**p);
+			}
         }
     }
 
