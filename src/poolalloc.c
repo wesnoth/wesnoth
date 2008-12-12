@@ -125,7 +125,14 @@ void* allocate_chunk_from_block(Block* b)
 	return result;
 }
 
+// inline causes linker errors in debug builds with gcc 4.3.2(-std=c99 and -O0)
+#ifdef DEBUG
+#define inline
+#endif
 inline Block* get_block_from_chunk(void* chunk)
+#ifdef DEBUG
+#undef inline
+#endif
 {
 	int8_t* block_ptr = ((int8_t*)chunk) - ((uintptr_t)chunk)%BLOCK_SIZE;
 	return (Block*)block_ptr;
