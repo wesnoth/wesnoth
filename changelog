@@ -58,6 +58,8 @@ Version 1.5.6+svn:
      respectively, in [endlevel] or [campaign] tags. end_text_duration
      is measured in milliseconds. (feature #10449) 
  * Miscellaneous and bug fixes:
+   * Compressed start-of-scenario saves are properly recognized by the
+     load-game dialog again.
    * Fixed replays for single-player campaigns (bug #12005).
    * Fixed the restart-replay button causing an assertion failure.
    * New memory allocator introduced to the engine. It should

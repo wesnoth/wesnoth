@@ -1057,7 +1057,7 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 	const config* cfg_snapshot = cfg_save.child("snapshot");
 	const config* cfg_replay_start = cfg_save.child("replay_start");
 
-	const bool has_replay = cfg_save.child("replay") != NULL;
+	const bool has_replay = (cfg_save.child("replay") != NULL && !cfg_save.child("replay")->empty());
 	const bool has_snapshot = (cfg_snapshot != NULL) && (cfg_snapshot->child("side") != NULL);
 
 	cfg_summary["replay"] = has_replay ? "yes" : "no";
