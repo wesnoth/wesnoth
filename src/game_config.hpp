@@ -15,6 +15,7 @@
 #define GAME_CONFIG_H_INCLUDED
 
 class config;
+class version_info;
 
 #include "color_range.hpp"
 #include "tstring.hpp"
@@ -111,32 +112,16 @@ namespace game_config
 	const std::vector<Uint32>& tc_info(const std::string& name);
 	const color_range& color_info(const std::string& name);
 
-	struct game_version {
-		game_version(std::string str);
-
-		//Note gcc 4.1.2(prerelease) as shipped in Debian etch doesn't
-		//like the name major and minor :( so make gcc happy
-		unsigned int major_nr;
-		unsigned int minor_nr;
-		unsigned int patch;
-		std::string extra;
-
-		std::string full;
-	};
-
-	// Note the < <= > and >= operator ignore the extra version the == and != do
-	// use the extra version.
-	bool operator<(const struct game_version& a, const struct game_version& b);
-	bool operator<=(const struct game_version& a, const struct game_version& b);
-	bool operator>(const struct game_version& a, const struct game_version& b);
-	bool operator>=(const struct game_version& a, const struct game_version& b);
-	bool operator==(const struct game_version& a, const struct game_version& b);
-	bool operator!=(const struct game_version& a, const struct game_version& b);
-
-	extern const struct game_version wesnoth_version;
-	extern const struct game_version min_savegame_version;
-	extern const struct game_version test_version;
-
+	extern const version_info wesnoth_version;
+	extern const version_info min_savegame_version;
+	extern const std::string  test_version;
+	
+	/**
+	 * Tests whether the given version is compatible with the
+	 * running version, i.e. >= MIN_SAVEGAME_VERSION.
+	 * See wesconfig.h for the criteria used for this evaluation.
+	 */
+	bool is_compatible_savegame_version(const std::string& v);
 }
 
 #endif

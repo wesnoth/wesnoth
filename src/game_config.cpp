@@ -18,6 +18,7 @@
 #include "log.hpp"
 #include "gettext.hpp"
 #include "game_config.hpp"
+#include "version.hpp"
 #include "wesconfig.h"
 #ifdef HAVE_REVISION
 #include "revision.hpp"
@@ -97,9 +98,9 @@ namespace game_config
 
 	std::map<std::string, std::vector<Uint32> > team_rgb_colors;
 
-	const struct game_version wesnoth_version(VERSION);
-	const struct game_version min_savegame_version(MIN_SAVEGAME_VERSION);
-	const struct game_version test_version("test");
+	const version_info wesnoth_version(VERSION);
+	const version_info min_savegame_version(MIN_SAVEGAME_VERSION);
+	const std::string  test_version("test");
 
 	const std::string observer_team_name = "observer";
 
@@ -304,59 +305,22 @@ namespace game_config
 		return i->second;
 	}
 
-game_version::game_version(std::string str) :
-		major_nr(0), minor_nr(0), patch(0), extra(""), full(str)
-{
-
-	size_t offset = str.find_first_not_of("0123456789");
-	major_nr = lexical_cast_default<unsigned int>(std::string(str, 0, offset), 0);
-	str.erase(0, offset + 1);
-
-	if(! str.empty()) {
-		offset = str.find_first_not_of("0123456789");
-		minor_nr = lexical_cast_default<unsigned int>(std::string(str, 0, offset ), 0);
-		str.erase(0, offset + 1);
-	}
-
-	if(! str.empty()) {
-		offset = str.find_first_not_of("0123456789");
-		patch = lexical_cast_default<unsigned int>(std::string(str, 0, offset ), 0);
-		if(offset != std::string::npos) {
-			extra = std::string(str, offset, std::string::npos);
+	bool is_compatible_savegame_version(const std::string& v)
+	{
+		bool ret = v==version;
+		if(ret) {
+			return true;
+		} else {
+			// do not load if too old, if either the savegame or the current game
+			// has the version 'test' allow loading
+			try {
+				ret = !(v < min_savegame_version && test_version != v && test_version != version);
+			} catch(version_info::not_sane_exception&) {
+				ERR_NG << "invalid version_info from saved game: '" << v << "'\n";
+				ret = false;
+			}
 		}
+		return ret;
 	}
-}
-
-bool operator<(const struct game_version& a, const struct game_version& b)
-{
-	if(a.major_nr != b.major_nr) return a.major_nr < b.major_nr;
-	if(a.minor_nr != b.minor_nr) return a.minor_nr < b.minor_nr;
-	return a.patch < b.patch;
-}
-
-bool operator<=(const struct game_version& a, const struct game_version& b)
-{
-	return a < b || a == b;
-}
-
-bool operator>(const struct game_version& a, const struct game_version& b)
-{
-	return !(a <= b);
-}
-
-bool operator>=(const struct game_version& a, const struct game_version& b)
-{
-	return !(a < b);
-}
-
-bool operator==(const struct game_version& a, const struct game_version& b)
-{
-	return a.full == b.full;
-}
-
-bool operator!=(const struct game_version& a, const struct game_version& b)
-{
-	return a.full != b.full;
-}
 
 } // game_config
