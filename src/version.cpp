@@ -42,29 +42,32 @@ version_info::version_info(unsigned int major, unsigned int minor, unsigned int 
 }
 
 version_info::version_info(const std::string& str)
-	: nums_()
-	,special_("")
+	: nums_(3,0)
+	, special_("")
 	, special_separator_('\0')
 	, sane_(true)
 {
+	if(str.empty())
+		return;
+
+	// first two components are required to be valid numbers
 	const std::vector<std::string> string_parts = utils::split(str,'.');
-	// first two components are required to be valid numbers, though
-	// only first component's existence is checked at all
 	const size_t parts = string_parts.size();
 	if(parts == 0)
 		return;
 
+	if(parts > 3)
+		nums_.resize(parts, 0);
+
 	try {
 		size_t i = 0;
-		nums_.reserve(parts); // speed up insertion a bit (preallocate memory)
-		while(i < parts - 1) {
-			nums_.push_back( lexical_cast<unsigned int>(string_parts[i]) );
-			i++;
-		}
+		for(; i < parts-1; i++)
+			nums_[i] = lexical_cast<unsigned int>(string_parts[i]);
+
+		// Check for special suffix on last number and use it
 		std::string numstr;
-		// Check for special suffix and use it
 		this->init_special_version(string_parts[i], numstr);
-		nums_.push_back( lexical_cast<unsigned int>(numstr) );
+		nums_[i] = lexical_cast<unsigned int>(numstr);
 	}
 	catch (bad_lexical_cast const&) {
 		sane_ = false;
@@ -72,9 +75,6 @@ version_info::version_info(const std::string& str)
 	catch (std::out_of_range const&) {
 		;
 	}
-	
-	if(nums_.size() < 3) nums_.resize(3,0);
-
 }
 
 void version_info::init_special_version(const std::string& full_component, std::string& number_string)
