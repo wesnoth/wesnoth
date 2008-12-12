@@ -536,10 +536,12 @@ game_state::game_state(const config& cfg, bool show_replay) :
 		//We therefore put it inside the starting_pos, so it doesn't get lost.
 		//See also playcampaign::play_game, where after finishing the scenario the replay
 		//will be saved.
-		config::child_list player_list = cfg.get_children("player");
-		for (config::child_list::const_iterator p = player_list.begin(); p != player_list.end(); p++){
-			config& cfg_player = starting_pos.add_child("player");
-			cfg_player.merge_with(**p);
+		if(!starting_pos.empty()) {
+			config::child_list player_list = cfg.get_children("player");
+			for (config::child_list::const_iterator p = player_list.begin(); p != player_list.end(); p++){
+				config& cfg_player = starting_pos.add_child("player");
+				cfg_player.merge_with(**p);
+			}
 		}
 	}
 
