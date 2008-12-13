@@ -228,8 +228,6 @@ void get_files_in_dir(const std::string directory,
 		std::sort(dirs->begin(),dirs->end());
 
 	if (files != NULL && reorder == DO_REORDER) {
-		int foundit = -1;
-		std::string *initcfg;
 		// move FINALCFG, if present, to the end of the vector
 		for (unsigned int i = 0; i < files->size(); i++) {
 			if (ends_with((*files)[i], "/" FINALCFG)) {
@@ -239,6 +237,7 @@ void get_files_in_dir(const std::string directory,
 			}
 		}
 		// move INITCFG, if present, to the beginning of the vector
+		int foundit = -1;
 		for (unsigned int i = 0; i < files->size(); i++)
 			if (ends_with((*files)[i], "/" INITCFG)) {
 				foundit = i;
