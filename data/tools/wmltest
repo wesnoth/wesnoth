@@ -4,6 +4,10 @@ wmltest -- tool to test the integrity and meaning of WML.
 
 Use --help to see usage.
 """
+#BUGS:
+#-Throwing everything into one dict (line 47) breaks ordering.
+#This allows catch-alls to be matched before the specific string.
+#odict would fix this, but is not in the standard python library.
 #TODO:
 #-Include linenumbers and filenames in "complaint messages"
 #-Write function to check dependencies
@@ -40,6 +44,7 @@ class Tester:
                     self.test(item, depth + 1)
                 else:
                     # FIXME: this code is *UGLY*, clean it up
+                    # FIXME: it's not just ugly, it breaks the ordering and thus allows catch-all regexes to be matched before the specific key
                     dicts = {}
                     for d in filter(lambda x:isinstance(x,dict),self.grammar[tag.name][0]):
                         dicts.update(d)
@@ -50,6 +55,7 @@ class Tester:
                             item.name = dicts[key]
                             self.test(item, depth + 1)
                             found = True
+                            break # Don't recurse into the catch-all
                     if not found:
                         print_indent("[%s] ******** meaningless in [%s] ********" % (item.name, tag.name), depth + 1, '*')
             elif isinstance(item, wmldata.DataText):

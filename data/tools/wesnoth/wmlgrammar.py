@@ -21,7 +21,7 @@ Grammar of the grammar:
 # KEY is either a string or a regular expression
 <KEY>               -> str | re._pattern_type
 # TAG_PLUS is a class that refers to a TAG_IDENTIFIER and adds more TAGS and/or KEYS
-<TAG_PLUS>          -> TagPlus(<TAG_IDENTIFIER>, (<ALLOWED_TAGS>, <ALLOWED_KEYS>), None) |
+<TAG_PLUS>          -> TagPlus(<TAG_IDENTIFIER>, (<ALLOWED_TAGS>, <ALLOWED_KEYS>) [ , None ] ) |
                         TagPlus(<TAG_IDENTIFIER>, <ALLOWED_TAGS>, 0) |
                         TagPlus(<TAG_IDENTIFIER>, <ALLOWED_KEYS>, 1)
 """
@@ -36,8 +36,10 @@ class TagPlus:
     def process(self, grammar):
         content = grammar[self.tag]
         if self.part is None:
-            content[0] += self.list[0]
-            content[1] += self.list[1]
+            content = (
+                content[0] + self.list[0],
+                content[1] + self.list[1]
+            )
         else:
             content = content[self.part]
             content += self.list
@@ -55,18 +57,37 @@ class Grammar:
 'about' : (
     [ 'entry', ],
     [ 'images', 'text', 'title', ]),
+'abilities' : (
+    [ 'heals', 'hides', 'illuminates', 'leadership', 'regenerate', { 'resistance' : 'resistance-ability' }, { re.compile('\w+') : 'ability-dummy' }, ],
+    []),
+'ability-dummy' : (
+    [], #TODO: the filters and adjacent_description
+    [ 'affect_allies', 'affect_enemies', 'affect_self', 'cumulative', 'description', 'description_inactive', 'female_name', 'female_name_inactive', 'id', 'name', 'name_inactive', ]),
 'add' : (
     'resolution',
     [ ]),
 'advanced_preference' : (
     [],
     [ 'default', 'field', 'name', ]),
+'advancement' : (
+    [ 'effect', ],
+    [ 'description', 'id', 'image', 'max_times', 'require_amla', 'strict_amla', ]),
+'animation' : (
+    [ { 'else' : 'animation' }, 'frame', { re.compile('\w+_frame') : 'frame' }, { 'if' : 'animation' }, ], #TODO: add filter, filter_second, filter_attack, filter_second_attack
+    [ 'apply_to', 'direction', 'frequency', 'hits', 'swing', 'terrain', 'value', # Filters
+        re.compile('(\w+_)?alpha'), re.compile('(\w+_)?blend_with'), re.compile('(\w+_)?blend_ratio'), re.compile('(\w+_)?halo'), re.compile('(\w+_)?halo_mod'), re.compile('(\w+_)?halo_x'), re.compile('(\w+_)?halo_y'), re.compile('(\w+_)?image_mod'), re.compile('(\w+_)?layer'), re.compile('(\w+_)?offset'), re.compile('(\w+_)?start_time'), re.compile('(\w+_)?submerge'), re.compile('(\w+_)?x'), re.compile('(\w+_)?y'), ]), # Frame data, got them from the wiki, I'm assuming these are all valid
+'attack' : (
+    [ 'specials', ],
+    [ 'attack_weight', 'damage', 'defense_weight', 'description', 'icon', 'movement_used', 'name', 'number', 'range', 'type', ]),
+'attacks' : TagPlus('special-dummy', ([], [ 'add', 'backstab', 'cumulative', 'multiply', 'value', ]) ),
+'berserk' : TagPlus('special-dummy', ([], [ 'value', ]) ),
 'binary_path' : (
     [],
     [ 'path', ]),
 'campaign' : (
     [ 'about', ],
     [ 'abbrev', 'define', 'description', 'difficulties', 'difficulty_descriptions', 'extra_defines', 'first_scenario', 'icon', 'id', 'image', 'name', 'rank', ]),
+'chance_to_hit' : TagPlus('special-dummy', ([], [ 'add', 'backstab', 'cumulative', 'multiply', 'value', ]) ),
 'change' : (
     [],
     [ 'font_size', 'id', 'image', 'items', 'rect', 'ref', ]), #TODO: unfinished
@@ -76,6 +97,7 @@ class Grammar:
 'color_range' : (
     [],
     [ 'id', 'name', 'rgb', ]),
+'damage' : TagPlus('special-dummy', ([], [ 'add', 'backstab', 'cumulative', 'multiply', 'value', ]) ),
 'defense' : 'movement_costs',
 'editor2_tool_hint' : 'gold-theme',
 'effect' : (
@@ -84,31 +106,39 @@ class Grammar:
 'entry' : (
     [],
     [ 'comment', 'email', 'ircuser', 'name', 'wikiuser', ]),
+'female' : TagPlus('unit_type', ( [], [ 'inherit', ] )),
 'fonts' : (
     [ 'font', ],
     [ 'order', ]),
 'font' : (
     [],
     [ 'codepoints', 'name', ]),
+'frame' : (
+    [],
+    [ 'alpha', 'begin', 'blend_color', 'blend_ratio', 'duration', 'end', 'halo', 'halo_mod', 'halo_x', 'halo_y', 'image', 'image_diagonal', 'image_mod', 'layer', 'offset', 'sound', 'submerge', 'text', 'text_color', 'x', 'y', ]),
 'game_config' : (
     [ 'color_palette', 'color_range', 'server', ],
     [ 'ally_ball_image', 'base_income', 'buttons_x', 'buttons_y', 'buttons_padding', 'cross_image', 'default_defeat_music', 'default_victory_music', 'defense_color_scale', 'ellipsis_image', 'enemy_ball_image', 'energy_image', 'flag_icon_image', 'flag_image', 'flag_rgb', 'footprint_prefix', 'footprint_teleport_enter', 'footprint_teleport_exit', 'grid_image', 'hp_bar_scaling', 'icon', 'kill_experience', 'level_image', 'lobby_music', 'lobby_refresh', 'logo', 'logo_x', 'logo_y', 'moved_ball_image', 'observer_image', 'partmoved_ball_image', 'poison_amount', 'recall_cost', 'rest_heal_amount', 'terrain_mask_image', 'tip_padding', 'tip_width', 'tip_x', 'title', 'title_music', 'tod_bright_image', 'unmoved_ball_image', 'unreachable_image', 'village_income', 'wesnothd_name', 'xp_bar_scaling', ]),
 'gold-theme' : (
     [],
     [ 'font_rgb', 'font_size', 'id', 'prefix', 'prefix_literal', 'rect', 'ref', 'xanchor', 'yanchor', ]),
+'heals' : TagPlus('ability-dummy', ([], [ 'poison', 'value', ]) ),
 'help' : (
     [ 'section', 'topic', 'toplevel' ],
     []),
+'hides' : TagPlus('ability-dummy', ([], [ 'alert', ]) ),
 'hotkey' : (
     [],
     [ 'alt', 'cmd', 'command', 'ctrl', 'key', 'shift', ]),
 'income' : 'gold-theme',
+'illuminates' : TagPlus('ability-dummy', ([], [ 'max_value', 'value', ]) ),
 'image' : (
     [],
     [ 'base', 'center', 'layer', 'name', ]),
 'label-theme' : (
     [],
     [ 'font_rgb', 'font_size', 'icon', 'id', 'image', 'text', 'rect', 'ref', 'xanchor', 'yanchor', ]),
+'leadership' : TagPlus('ability-dummy', ([], [ 'value', ]) ),
 'main_map' : (
     [],
     'panel'),
@@ -135,10 +165,15 @@ class Grammar:
 'partialresolution' : (
     [ 'add', 'change', 'remove', ],
     [ 'height', 'id', 'inherits', 'width', ]),
+'plague' : TagPlus('special-dummy', ( [], [ 'type', ] ) ),
+'portrait' : (
+    [],
+    [ 'image', 'mirror', 'side', 'size', ]),
 'position' : 'gold-theme',
 'race' : (
     [ 'trait', ],
     [ 'description', 'female_name', 'female_names', 'id', 'ignore_global_traits', 'male_name', 'male_names', 'markov_chain_size', 'name', 'num_traits', 'plural_name', ]),
+'regenerate' : TagPlus('ability-dummy', ([], [ 'poison', 'value', ]) ),
 'remove' : (
     [],
     [ 'id', ]),
@@ -147,6 +182,7 @@ class Grammar:
     []),
 'report_clock' : 'gold-theme',
 'report_countdown' : 'gold-theme',
+'resistance-ability' : TagPlus('ability-dummy', ([], [ 'active_on', 'add', 'apply_to', 'max_value', 'multiply', 'value', ]) ),
 'resistance' : (
     [],
     [ re.compile('\w+'), ]),
@@ -165,9 +201,16 @@ class Grammar:
 'side_playing' : (
     [],
     [ 'id', 'rect', 'ref', 'xanchor', 'yanchor', ]),
+'special-dummy' : (
+    [], #TODO: filters
+    [ 'active_on', 'apply_to', 'description', 'description_inactive', 'id', 'name', 'name_inactive', ]),
+'specials' : (
+    [ 'attacks', 'berserk', 'chance_to_hit', 'damage', 'plague', 'swarm', { re.compile('\w+') : 'special-dummy' }, ], #TODO: add the rest of them
+    []),
 'status' : (
     [ 'editor2_tool_hint', { 'gold' : 'gold-theme' }, 'income', 'num_units', 'observers', 'panel', 'position', 'report_clock', 'report_countdown', 'side_playing', { 'terrain' : 'terrain-theme' }, 'time_of_day', 'turn', 'unit_abilities', 'unit_advancement_options', 'unit_alignment', 'unit_amla', 'unit_hp', 'unit_image', 'unit_level', 'unit_moves', 'unit_name', 'unit_race', 'unit_side', 'unit_status', 'unit_traits', { 'unit_type' : 'unit_type-theme' } , 'unit_weapons', 'unit_xp', 'upkeep', 'villages', ],
     []),
+'swarm' : TagPlus('special-dummy', ([], ['swarm_attacks_min', 'swarm_attacks_max',]) ),
 'terrain' : (
     [],
     [ 'aliasof', 'default_base', 'def_alias', 'editor_group', 'editor_image', 'gives_income', 'heals', 'hidden', 'id', 'light', 'mvt_alias', 'name', 'recruit_from', 'recruit_onto', 'string', 'submerge', 'symbol_image', 'unit_height_adjust', ]),
@@ -209,8 +252,8 @@ class Grammar:
 'unit_status' : 'gold-theme',
 'unit_traits' : 'gold-theme',
 'unit_type' : (
-    [ { 'female' : 'unit_type' }, { 'male' : 'unit_type' }, 'variation', ],
-    [ 'advances_to', 'alignment', 'cost', 'description', 'die_sound', 'ellipse', 'experience', 'flag_rgb', 'gender', 'halo', 'hide_help', 'hitpoints', 'id', 'image', 'level', 'movement', 'movement_type', 'name', 'profile', 'race', 'undead_variation', 'usage', ]),
+    [ 'abilities', 'advancement', 'animation', { re.compile('\w+_anim') : 'animation' }, 'attack', { 'death' : 'animation' }, { 'defend' : 'animation' }, 'defense', 'female', { 'male' : 'female' }, 'movement_costs', 'portrait', 'resistance', 'trait', 'variation', ],
+    [ 'advances_to', 'alignment', 'cost', 'description', 'die_sound', 'do_not_list', 'ellipse', 'experience', 'flag_rgb', 'gender', 'halo', 'hide_help', 'hitpoints', 'id', 'ignore_race_traits', 'image', 'level', 'movement', 'movement_type', 'name', 'profile', 'race', 'undead_variation', 'usage', 'zoc', ]),
 'unit_type-theme' : 'gold-theme',
 'unit_weapons' : 'gold-theme',
 'unit_xp' : 'gold-theme',
@@ -219,7 +262,7 @@ class Grammar:
     []),
 'variation' : (
     'unit_type',
-    TagPlus('unit_type', ['variation_name',], 1) ),
+    TagPlus('unit_type', [ 'inherit', 'variation_name', ], 1) ),
 'villages' : 'gold-theme',
 'upkeep' : 'gold-theme',
 }
