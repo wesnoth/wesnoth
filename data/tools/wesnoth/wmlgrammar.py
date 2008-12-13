@@ -9,17 +9,21 @@ Grammar of the grammar:
 # TAG_IDENTIFIER doesn't have to be a tag name, it can be an alias or a psuedo-tag (WML)
 <TAG_IDENTIFIER>    -> str
 # TAG_CONTENTS either contains a pair, or points to the pair of another tag.
-<TAG_CONTENTS>      -> (<ALLOWED_TAGS>, <ALLOWED_KEYS>) | <TAG_IDENTIFIER>
+<TAG_CONTENTS>      -> (<ALLOWED_TAGS>, <ALLOWED_KEYS>) | <TAG_IDENTIFIER> | <TAG_PLUS>
 # ALLOWED_TAGS either contains a list of tags, or points to the list of another tag.
-<ALLOWED_TAGS>      -> [ <TAGS> ] | <TAG_IDENTIFIER>
+<ALLOWED_TAGS>      -> [ <TAGS> ] | <TAG_IDENTIFIER> | <TAG_PLUS>
 <TAGS>              -> <TAG>, <TAGS> | <EMPTY>
 # TAG is a string, a dict of two strings or a dict of a regex to a string
 <TAG>               -> <TAG_IDENTIFIER> | { str : <TAG_IDENTIFIER> } | { re._pattern_type : <TAG_IDENTIFIER> }
 # ALLOWED_KEYS either contains a list of keys, or points to the list of another tag.
-<ALLOWED_KEYS>      -> [ <KEYS> ] | <TAG_IDENTIFIER>
+<ALLOWED_KEYS>      -> [ <KEYS> ] | <TAG_IDENTIFIER> | <TAG_PLUS>
 <KEYS>              -> <KEY>, <KEYS> | <EMPTY>
 # KEY is either a string or a regular expression
 <KEY>               -> str | re._pattern_type
+# TAG_PLUS is a class that refers to a TAG_IDENTIFIER and adds more TAGS and/or KEYS
+<TAG_PLUS>          -> TagPlus(<TAG_IDENTIFIER>, (<ALLOWED_TAGS>, <ALLOWED_KEYS>), None) |
+                        TagPlus(<TAG_IDENTIFIER>, <ALLOWED_TAGS>, 0) |
+                        TagPlus(<TAG_IDENTIFIER>, <ALLOWED_KEYS>, 1)
 """
 class TagPlus:
     """
