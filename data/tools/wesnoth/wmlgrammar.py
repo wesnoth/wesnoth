@@ -21,6 +21,24 @@ Grammar of the grammar:
 # KEY is either a string or a regular expression
 <KEY>               -> str | re._pattern_type
 """
+class TagPlus:
+    """
+    This class exists so tags can refer to eachother AND add new things.
+    """
+    def __init__(self, tag, list, part=None):
+        self.tag = tag
+        self.list = list
+        self.part = part
+    def process(self, grammar):
+        content = grammar[self.tag]
+        if self.part is None:
+            content[0] += self.list[0]
+            content[1] += self.list[1]
+        else:
+            content = content[self.part]
+            content += self.list
+        return content
+
 class Grammar:
     import re
     _grammar = {
@@ -144,7 +162,7 @@ class Grammar:
     [],
     [ 'id', 'rect', 'ref', 'xanchor', 'yanchor', ]),
 'status' : (
-    [ 'editor2_tool_hint', { 'gold' : 'gold-theme' }, 'income', 'num_units', 'observers', 'panel', 'position', 'report_clock', 'report_countdown', 'side_playing', { 'terrain' : 'terrain-theme' }, 'time_of_day', 'turn', 'unit_abilities', 'unit_advancement_options', 'unit_alignment', 'unit_amla', 'unit_hp', 'unit_image', 'unit_level', 'unit_moves', 'unit_name', 'unit_race', 'unit_side', 'unit_status', 'unit_traits', 'unit_type', 'unit_weapons', 'unit_xp', 'upkeep', 'villages', ],
+    [ 'editor2_tool_hint', { 'gold' : 'gold-theme' }, 'income', 'num_units', 'observers', 'panel', 'position', 'report_clock', 'report_countdown', 'side_playing', { 'terrain' : 'terrain-theme' }, 'time_of_day', 'turn', 'unit_abilities', 'unit_advancement_options', 'unit_alignment', 'unit_amla', 'unit_hp', 'unit_image', 'unit_level', 'unit_moves', 'unit_name', 'unit_race', 'unit_side', 'unit_status', 'unit_traits', { 'unit_type' : 'unit_type-theme' } , 'unit_weapons', 'unit_xp', 'upkeep', 'villages', ],
     []),
 'terrain' : (
     [],
@@ -186,30 +204,44 @@ class Grammar:
 'unit_side' : 'gold-theme',
 'unit_status' : 'gold-theme',
 'unit_traits' : 'gold-theme',
-'unit_type' : 'gold-theme',
+'unit_type' : (
+    [ { 'female' : 'unit_type' }, { 'male' : 'unit_type' }, 'variation', ],
+    [ 'advances_to', 'alignment', 'cost', 'description', 'die_sound', 'ellipse', 'experience', 'flag_rgb', 'gender', 'halo', 'hide_help', 'hitpoints', 'id', 'image', 'level', 'movement', 'movement_type', 'name', 'profile', 'race', 'undead_variation', 'usage', ]),
+'unit_type-theme' : 'gold-theme',
 'unit_weapons' : 'gold-theme',
 'unit_xp' : 'gold-theme',
 'units' : (
-    [ 'movetype', 'race', 'trait', ], #TODO: unfinished (unit_type)
+    [ 'movetype', 'race', 'trait', 'unit_type' ],
     []),
+'variation' : (
+    'unit_type',
+    TagPlus('unit_type', ['variation_name',], 1) ),
 'villages' : 'gold-theme',
 'upkeep' : 'gold-theme',
 }
+
     def grammar(self):
         """Grammar pre-processor.
 
         This function is responsible for turning all the 'pointers' into actual data.
-        It can go into an infinite loop if a tag points to itself in some manner."""
+        It only dereferences once, this allows for cleaner code and prevents infinite loops."""
         out = {}
         for key in self._grammar.keys():
             out.update( { key : self._grammar[key] } )
-            while isinstance(out[key], str):
+            # First layer of dereferencing: the tags themselves
+            if isinstance(out[key], str):
                 out.update( { key :
                     self._grammar[
                         out[key]
                     ]
                 } )
-            while isinstance(out[key][0], str):
+            elif isinstance(out[key], TagPlus):
+                out.update( { key :
+                    out[key].process(self._grammar)
+                } )
+            # Second layer: the contained tags and keys
+            # First the tags
+            if isinstance(out[key][0], str):
                 out.update( { key :
                     (
                         self._grammar[
@@ -218,13 +250,28 @@ class Grammar:
                         out[key][1]
                     )
                 } )
-            while isinstance(out[key][1], str):
+            elif isinstance(out[key][0], TagPlus):
+                out.update( { key :
+                    (
+                        out[key][0].process(self._grammar),
+                        out[key][1]
+                    )
+                } )
+            # Then the keys
+            if isinstance(out[key][1], str):
                 out.update( { key :
                     (
                         out[key][0],
                         self._grammar[
                             out[key][1]
                         ][1]
+                    )
+                } )
+            elif isinstance(out[key][1], TagPlus):
+                out.update( { key :
+                    (
+                        out[key][0],
+                        out[key][1].process(self._grammar)
                     )
                 } )
         return out
