@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-12-12 23:18+0100\n"
-"PO-Revision-Date: 2008-11-21 23:48+0100\n"
-"Last-Translator: Mark de Wever <koraq@xs4all.nl>\n"
+"PO-Revision-Date: 2008-12-13 10:48+0100\n"
+"Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -3440,31 +3440,36 @@ msgid "No early finish bonus."
 msgstr "Kein Bonus für frühzeitiges Ende."
 
 #: data/core/macros/carryover-utils.cfg:15
-#, fuzzy
 msgid "`(early finish bonus)"
-msgstr "Bonus für frühzeitiges Ende."
+msgstr "`(Bonus für frühzeitiges Ende)"
 
 #: data/core/macros/carryover-utils.cfg:18
 msgid "No gold carried over to the next scenario."
-msgstr ""
+msgstr "Es wird kein Gold ins nächste Szenario übernommen."
 
 #: data/core/macros/carryover-utils.cfg:22
 msgid ""
 "\n"
 "100% of finishing gold carried over to the next scenario."
 msgstr ""
+"\n"
+"100% des restlichen Goldes werden ins nächste Szenario übernommen."
 
 #: data/core/macros/carryover-utils.cfg:26
 msgid ""
 "\n"
 "40% of finishing gold carried over to the next scenario."
 msgstr ""
+"\n"
+"40% des restlichen Goldes werden ins nächste Szenario übernommen."
 
 #: data/core/macros/carryover-utils.cfg:30
 msgid ""
 "\n"
 "20% of finishing gold carried over to the next scenario."
 msgstr ""
+"\n"
+"20% des restlichen Goldes werden ins nächste Szenario übernommen."
 
 #. [deprecated_message]
 #: data/core/macros/deprecated-utils.cfg:21
@@ -4039,7 +4044,6 @@ msgid "Kaasa,Kayya,Keyya,Kiira,Korra"
 msgstr "Kaasa,Kayya,Keyya,Kiira,Korra"
 
 #: data/core/macros/names.cfg:23
-#, fuzzy
 msgid ""
 "Addraecyn,Addraenvan,Addraer,Addraercyn,Addraryn,Addreddry,Addredry,"
 "Addregwyn,Addrenyc,Addreoddry,Addreoddyn,Addreonyc,Addreorcyn,Addreran,"
@@ -4098,8 +4102,8 @@ msgstr ""
 "Aethonnyn,Aethuc,Aethudry,Aethugwyn,Aethun,Aethunry,Aethydry,Aethynyc,Blac,"
 "Bladoc,Blaec,Blaedry,Blanry,Blebryn,Bledoc,Blemyr,Blennyn,Blenvan,Bleollyn,"
 "Blercyn,Blidd,Bliddry,Blillyn,Blinvan,Blollyn,Blubryn,Blucyn,Bludry,Blullyn,"
-"Bluran,Blybryn,Blydd,Blygwyn,Blymyr,Blyr,Cac,Cadry,Caebryn,Caedry,Caeran,"
-"Caercyn,Car,Carac,Caraddry,Caradoc,Caraedry,Caraennyn,Cararyn,Caredd,"
+"Bluran,Blybryn,Blydd,Blygwyn,Blymyr,Blyr,Bucyn,Cac,Cadry,Caebryn,Caedry,"
+"Caeran,Caercyn,Car,Carac,Caraddry,Caradoc,Caraedry,Caraennyn,Cararyn,Caredd,"
 "Careddry,Caregwyn,Caren,Careobryn,Careogwyn,Careonvan,Careorraent,Careoryn,"
 "Carercyn,Caric,Cariddry,Carocyn,Caroddyn,Caror,Caroran,Carraent,Carudoc,"
 "Carullyn,Carygwyn,Caryn,Cebryn,Cemyr,Cennyn,Ceoc,Ceoddry,Ceoddyn,Ceomyr,"
@@ -4111,34 +4115,33 @@ msgstr ""
 "Glircyn,Gloddry,Gloddyn,Glonry,Glonvan,Glumyr,Glun,Glunry,Glunvan,Glyc,Glydd,"
 "Glydoc,Glynry,Glynvan,Glyran,Goc,Gor,Gubryn,Gudd,Gullyn,Gumyr,Gur,Gwadoc,"
 "Gwaec,Gwaeddyn,Gwan,Gweddyn,Gwegwyn,Gwellyn,Gwennyn,Gwenyc,Gweocyn,Gweodd,"
-"Gweodoc,Gweodry,Gweogwyn,Gweoran,Gwidoc,Gwodd,Gwoddyn,Gwollyn,Gwor,Gwucyn,"
-"Gwudoc,Gwumyr,Gwuran,Gwybryn,Gwycyn,Gwyddry,Gwydoc,Gwymyr,Gwynnyn,Gydoc,"
-"Gyllyn,Gymyr,Labryn,Ladoc,Laellyn,Lan,Lannyn,Laran,Lec,Lemyr,Lenvan,Leogwyn,"
-"Lercyn,Ligwyn,Lin,Liryn,Lonnyn,Lorraent,Luddry,Ludoc,Lunnyn,Lunvan,Lurraent,"
-"Mac,Maddyn,Maennyn,Manry,Manyc,Marcyn,Mec,Menvan,Meollyn,Meon,Meonnyn,"
-"Meorraent,Middry,Midry,Mimyr,Modd,Moddry,Monry,Moran,Morcyn,Mubryn,Mudoc,"
-"Mugwyn,Murcyn,Mydoc,Mygwyn,Myn,Myrraent,Owac,Owadd,Owaddyn,Owaecyn,Owaedry,"
-"Owarcyn,Owaryn,Owecyn,Owedry,Oweomyr,Oweor,Oweorcyn,Oweran,Owercyn,Owidry,"
-"Owinvan,Owinyc,Owodd,Owoddry,Owogwyn,Owollyn,Oworan,Oworcyn,Oworraent,"
-"Owuddry,Owuddyn,Owugwyn,Owur,Owyran,Rabryn,Radd,Ranvan,Rar,Reoddyn,Reodry,"
-"Rhaecyn,Rhaedoc,Rhaemyr,Rhaerraent,Rhanry,Rharcyn,Rhenry,Rhenvan,Rhenyc,"
-"Rheodd,Rheoddyn,Rheollyn,Rheor,Rheoran,Rheorraent,Rheran,Rherraent,Rhobryn,"
-"Rhodry,Rhollyn,Rhonvan,Rhubryn,Rhugwyn,Rhunyc,Rhur,Rhygwyn,Rhyllyn,Rhynyc,"
-"Rhyrcyn,Rhyrraent,Rocyn,Roddyn,Romyr,Ron,Ronry,Rubryn,Ruddry,Rumyr,Run,"
-"Rurcyn,Rybryn,Rycyn,Ryddry,Rygwyn,Rynnyn,Rynry,Saec,Saellyn,Saemyr,Saenvan,"
-"Saercyn,Sanyc,Saran,Sarraent,Secyn,Seddyn,Sedry,Sellyn,Sennyn,Seoddry,"
-"Seorcyn,Sercyn,Siddry,Simyr,Siryn,Sodd,Sodry,Soran,Suc,Sudd,Surcyn,Sydd,"
-"Syran,Syryn,Tabryn,Taec,Taedd,Taedoc,Taemyr,Taenvan,Taercyn,Tanry,Tarcyn,"
-"Teddyn,Tegwyn,Ten,Tennyn,Tenvan,Teobryn,Teoddyn,Teor,Teorcyn,Terraent,Tinry,"
-"Tinvan,Tiryn,Todd,Tudd,Tuddry,Tudoc,Tunvan,Turraent,Tyddyn,Vaddyn,Vaeddyn,"
-"Vaedry,Vaennyn,Varcyn,Ven,Vennyn,Veocyn,Veoddyn,Veodry,Veogwyn,Veomyr,Vinvan,"
-"Vinyc,Virraent,Vobryn,Vogwyn,Vonry,Vuddyn,Vugwyn,Vyc,Vygwyn,Vyrcyn,Yracyn,"
-"Yraec,Yran,Yrannyn,Yranvan,Yraryn,Yredd,Yreddyn,Yregwyn,Yreryn,Yrinvan,"
-"Yrirraent,Yroddry,Yrullyn,Yrumyr,Yrunnyn,Yrunvan,Yryllyn,Yrymyr,Yrynyc,"
-"Yryrcyn"
+"Gweodoc,Gweodry,Gweogwyn,Gweoran,Gwidoc,Gwilam,Gwodd,Gwoddyn,Gwollyn,Gwor,"
+"Gwucyn,Gwudoc,Gwumyr,Gwuran,Gwybryn,Gwycyn,Gwyddry,Gwydoc,Gwymyr,Gwynnyn,"
+"Gydoc,Gyllyn,Gymyr,Haldar,Labryn,Ladoc,Laellyn,Lan,Lannyn,Laran,Lec,Lemyr,"
+"Lenvan,Leogwyn,Lercyn,Ligwyn,Lin,Liryn,Lonnyn,Lorraent,Luddry,Ludoc,Lunnyn,"
+"Lunvan,Lurraent,Mac,Maddyn,Maennyn,Manry,Manyc,Marcyn,Mec,Menvan,Meollyn,"
+"Meon,Meonnyn,Meorraent,Middry,Midry,Mimyr,Modd,Moddry,Monry,Moran,Morcyn,"
+"Mubryn,Mudoc,Mugwyn,Murcyn,Mydoc,Mygwyn,Myn,Myrraent,Owac,Owadd,Owaddyn,"
+"Owaecyn,Owaedry,Owain,Owarcyn,Owaryn,Owecyn,Owedry,Oweomyr,Oweor,Oweorcyn,"
+"Oweran,Owercyn,Owidry,Owinvan,Owinyc,Owodd,Owoddry,Owogwyn,Owollyn,Oworan,"
+"Oworcyn,Oworraent,Owuddry,Owuddyn,Owugwyn,Owur,Owyran,Rabryn,Radd,Ranvan,Rar,"
+"Reoddyn,Reodry,Rhaecyn,Rhaedoc,Rhaemyr,Rhaerraent,Rhanry,Rharcyn,Rhenry,"
+"Rhenvan,Rhenyc,Rheodd,Rheoddyn,Rheollyn,Rheor,Rheoran,Rheorraent,Rheran,"
+"Rherraent,Rhobryn,Rhodry,Rhollyn,Rhonvan,Rhubryn,Rhugwyn,Rhunyc,Rhur,Rhygwyn,"
+"Rhyllyn,Rhynyc,Rhyrcyn,Rhyrraent,Rocyn,Roddyn,Romyr,Ron,Ronry,Rubryn,Ruddry,"
+"Rumyr,Run,Rurcyn,Rybryn,Rycyn,Ryddry,Rygwyn,Rynnyn,Rynry,Saec,Saellyn,Saemyr,"
+"Saenvan,Saercyn,Sanyc,Saran,Sarraent,Secyn,Seddyn,Sedry,Sellyn,Sennyn,"
+"Seoddry,Seorcyn,Sercyn,Siddry,Simyr,Siryn,Sodd,Sodry,Soran,Suc,Sudd,Surcyn,"
+"Sydd,Syran,Syryn,Tabryn,Taec,Taedd,Taedoc,Taemyr,Taenvan,Taercyn,Tanry,"
+"Tarcyn,Teddyn,Tegwyn,Ten,Tennyn,Tenvan,Teobryn,Teoddyn,Teor,Teorcyn,Terraent,"
+"Tinry,Tinvan,Tiryn,Todd,Tudd,Tuddry,Tudoc,Tunvan,Turraent,Tyddyn,Vaddyn,"
+"Vaeddyn,Vaedry,Vaennyn,Varcyn,Ven,Vennyn,Veocyn,Veoddyn,Veodry,Veogwyn,"
+"Veomyr,Vinvan,Vinyc,Virraent,Vobryn,Vogwyn,Vonry,Vuddyn,Vugwyn,Vyc,Vygwyn,"
+"Vyrcyn,Yracyn,Yraec,Yran,Yrannyn,Yranvan,Yraryn,Yredd,Yreddyn,Yregwyn,Yreryn,"
+"Yrinvan,Yrirraent,Yroddry,Yrullyn,Yrumyr,Yrunnyn,Yrunvan,Yryllyn,Yrymyr,"
+"Yrynyc,Yryrcyn"
 
 #: data/core/macros/names.cfg:24
-#, fuzzy
 msgid ""
 "Alabrylla,Alaebrylla,Alaeniver,Alalla,Alalonna,Alaryan,Aleacla,Aleaniver,"
 "Aleara,Alearka,Alena,Alengwen,Alilonna,Alingwen,Alolla,Alolonna,Alora,"
@@ -4205,8 +4208,8 @@ msgstr ""
 "Eleanoic,Elearka,Elenoic,Elerka,Elivyan,Elulonna,Elurka,Elwllyra,Elwlonna,"
 "Elwngwen,Elwra,Elycla,Elyllyra,Elyngwen,Elyniver,Elyrka,Gwaera,Gwaessa,"
 "Gwangwen,Gweacla,Gwedda,Gwerka,Gwicla,Gwirka,Gwobrylla,Gwoll,Gwona,Gwongwen,"
-"Gwonoic,Gworyan,Gwullyra,Gwussa,Gwwcla,Gwwna,Gwwvyan,Gwycla,Gwydda,Jacla,"
-"Jaena,Jaerka,Jaevyan,Jalyan,Jana,Jarka,Jassa,Jeabrylla,Jealla,Jeanoic,"
+"Gwonoic,Gworyan,Gwullyra,Gwussa,Gwwcla,Gwwna,Gwwvyan,Gwycla,Gwydda,Heldra,"
+"Jacla,Jaena,Jaerka,Jaevyan,Jalyan,Jana,Jarka,Jassa,Jeabrylla,Jealla,Jeanoic,"
 "Jeniver,Jiryan,Jissa,Joll,Jolla,Jona,Jongwen,Jonoic,Jora,Jorka,Jovyan,Judda,"
 "Jull,Julonna,Jura,Jwll,Jwlyan,Jycla,Jyniver,Jynoic,Jyrka,Jyvyan,Laeniver,"
 "Laenoic,Laeryan,Langwen,Larka,Lassa,Lealonna,Lealyan,Ledda,Lelonna,Lelyan,"
@@ -5205,7 +5208,6 @@ msgstr "Elfen"
 
 #. [race]: id=elf
 #: data/core/units.cfg:119
-#, fuzzy
 msgid ""
 "Compared to humans, elves are somewhat taller, more agile but less sturdy. "
 "They have slightly pointy ears, pale skin and usually blond hair. Few "
@@ -5990,6 +5992,11 @@ msgid ""
 "features, and allows us to improve Wesnoth. To learn more about this or "
 "disable it, click the envelope in the bottom-right corner."
 msgstr ""
+"Battle for Wesnoth sendet automatisch anonymisierte Statistiken über Euren "
+"Spielfortschritt an einen Server, der diese Daten speichert. Dies aktiviert "
+"einige Funktionen und erlaubt den Entwicklern, Wesnoth zu verbessern. Um "
+"mehr darüber zu erfahren, klickt den Briefumschlag in der rechten unteren "
+"Ecke an."
 
 #. [tip]
 #: data/hardwired/tips.cfg:4
@@ -6763,7 +6770,6 @@ msgstr "Start"
 
 #. [menu]: id=button-playreplay, type=image
 #: data/themes/macros.cfg:75
-#, fuzzy
 msgid "continuous replay"
 msgstr "Wiederholung durchgängig abspielen"
 
@@ -6936,17 +6942,14 @@ msgid "addon_type^Scenario"
 msgstr "Szenario"
 
 #: src/addon_management.cpp:401
-#, fuzzy
 msgid "addon_type^MP era"
 msgstr "MS Epoche"
 
 #: src/addon_management.cpp:403
-#, fuzzy
 msgid "addon_type^MP faction"
 msgstr "MS Fraktion"
 
 #: src/addon_management.cpp:405
-#, fuzzy
 msgid "addon_type^MP map-pack"
 msgstr "MS Kartenpaket"
 
@@ -7049,7 +7052,12 @@ msgid_plural ""
 "Some outdated local add-ons have publishing information attached. They will "
 "not be offered for updating."
 msgstr[0] ""
+"Eine veraltete lokale Erweiterung enthält Veröffentlichungsinformationen. Es "
+"wird daher nicht auf Aktualisierungen für diese Erweiterung gesucht."
 msgstr[1] ""
+"Einige veraltete lokale Erweiterungen enthalten "
+"Veröffentlichungsinformationen. Es wird daher nicht auf Aktualisierungen für "
+"diese Erweiterungen gesucht."
 
 #: src/addon_management.cpp:715
 msgid "Could not find any updated add-ons on this server."
@@ -7059,7 +7067,7 @@ msgstr ""
 
 #: src/addon_management.cpp:715
 msgid "No add-ons to update"
-msgstr ""
+msgstr "Keine Erweiterungen zum aktualisieren"
 
 #: src/addon_management.cpp:729 src/addon_management.cpp:930
 #: src/dialogs.cpp:643 src/menu_events.cpp:199 src/menu_events.cpp:987
@@ -7134,7 +7142,6 @@ msgid "Requesting list of add-ons"
 msgstr "Empfange Erweiterungsliste"
 
 #: src/addon_management.cpp:914
-#, fuzzy
 msgid "An error occurred while communicating with the server."
 msgstr "Kommunikationsfehler mit dem Server."
 
@@ -7896,14 +7903,12 @@ msgid "?"
 msgstr "?"
 
 #: src/loadscreen.cpp:224
-#, fuzzy
 msgid "Verifying cache"
-msgstr "Prüfen des Caches."
+msgstr "Prüfen des Caches"
 
 #: src/loadscreen.cpp:243
-#, fuzzy
 msgid "Reading cache"
-msgstr "Lesen des Caches."
+msgstr "Lesen des Caches"
 
 #: src/loadscreen.cpp:262
 msgid "Reading unit files."
@@ -8229,16 +8234,20 @@ msgid ""
 "Send a query to the server. Without arguments the server should tell you the "
 "available commands."
 msgstr ""
+"Sendet eine Anfrage an den Server. Ohne Argumente aufgerufen, sollte der "
+"Server Euch sagen, welche Kommandos verfügbar sind."
 
 #: src/menu_events.cpp:2113
 msgid ""
 "Ban and kick a player or observer. If he is not in the game but on the "
 "server he will only be banned."
 msgstr ""
+"Verbannt und entfernt einen Spieler oder Beobachter. Wenn er sich nicht in "
+"einem Spiel aufhält, wird er nur verbannt."
 
 #: src/menu_events.cpp:2116
 msgid "Kick a player or observer."
-msgstr ""
+msgstr "Entfernt einen Spieler oder Beobachter."
 
 #: src/menu_events.cpp:2118
 msgid "Mute an observer."
@@ -8249,51 +8258,37 @@ msgid "Mute all observers."
 msgstr ""
 
 #: src/menu_events.cpp:2124
-#, fuzzy
 msgid "Send an emotion or personal action in chat."
-msgstr ""
-"Sendet eine Emotion oder eine persönliche Handlung im Gespräch. Verwendung: /"
-"emote <Nachricht>"
+msgstr "Sendet eine Emotion oder eine persönliche Handlung im Gespräch."
 
 #: src/menu_events.cpp:2127
-#, fuzzy
 msgid ""
 "Sends a private message. You can't send messages to players that don't "
 "control a side in a running game you are in."
 msgstr ""
 "Sendet eine private Nachricht. Ihr könnt keine Nachrichten an Spieler "
-"senden, die eine Fraktion im Spiel kontrollieren. Verwendung: /whisper "
+"senden, die keine Fraktion im Spiel kontrollieren. Verwendung: /whisper "
 "[Benutzername] [Nachricht]"
 
 #: src/menu_events.cpp:2133
 msgid "Change the log level of a log domain."
-msgstr ""
+msgstr "Schaltet die Protokolldomäne auf eine andere Protokollstufe."
 
 #: src/menu_events.cpp:2135
-#, fuzzy
 msgid "Add a nick to your ignores list."
-msgstr ""
-"Fügt einen Benutzer zur Liste der Benutzer, die Ihr ignoriert, hinzu. "
-"Verwendung: /list ignore <Benutzername>"
+msgstr "Fügt einen Benutzer zur Liste der Benutzer, die Ihr ignoriert, hinzu."
 
 #: src/menu_events.cpp:2137
-#, fuzzy
 msgid "Add a nick to your friends list."
-msgstr "Zur Freundesliste hinzugefügt:"
+msgstr "Fügt einen Benutzer Eurer Freundesliste hinzu."
 
 #: src/menu_events.cpp:2139
-#, fuzzy
 msgid "Remove a nick from your ignores or friends list."
-msgstr ""
-"Entfernt einen Benutzer aus der Liste der Benutzer, die Ihr ignoriert. "
-"Verwendung: /list remove <Benutzername>"
+msgstr "Entfernt einen Benutzer aus der Liste der Benutzer, die Ihr ignoriert."
 
 #: src/menu_events.cpp:2141
-#, fuzzy
 msgid "Show your ignores and friends list."
-msgstr ""
-"Zeigt Eure Freunde und Benutzer, die von Euch ignoriert werden. Verwendung: /"
-"list display"
+msgstr "Zeigt Eure Freunde und Benutzer, die von Euch ignoriert werden."
 
 #: src/menu_events.cpp:2144
 msgid "Display version information."
@@ -8313,7 +8308,7 @@ msgstr ""
 
 #: src/menu_events.cpp:2153
 msgid "Request information about a user."
-msgstr ""
+msgstr "Fordert Informationen über einen Benutzer an."
 
 #: src/menu_events.cpp:2155
 msgid "Request a list of details you can set for your registered username."
@@ -8321,7 +8316,7 @@ msgstr ""
 
 #: src/menu_events.cpp:2277
 msgid "Refresh gui."
-msgstr ""
+msgstr "Zeichnet die Benutzeroberfläche neu."
 
 #: src/menu_events.cpp:2279
 msgid "Switch a side to/from AI control."
@@ -8330,6 +8325,8 @@ msgstr ""
 #: src/menu_events.cpp:2282
 msgid "Assign control of a side to a different player or observer."
 msgstr ""
+"Übergibt die Kontrolle über eine Fraktion an einen anderen Spieler oder "
+"Beobachter."
 
 #: src/menu_events.cpp:2284
 msgid "Clear chat history."
@@ -8337,47 +8334,43 @@ msgstr "Löschen der Gespräche."
 
 #: src/menu_events.cpp:2286
 msgid "Visualize the screen refresh procedure."
-msgstr ""
+msgstr "Visualisiert das Neuzeichnen der Benutzeroberfläche."
 
 #: src/menu_events.cpp:2289
-#, fuzzy
 msgid "Save game."
-msgstr "Spiel speichern"
+msgstr "Speichert das Spiel."
 
 #: src/menu_events.cpp:2291
-#, fuzzy
 msgid "Quit game."
-msgstr "Spiel beenden"
+msgstr "Beendet das Spiel."
 
 #: src/menu_events.cpp:2295
 msgid "Save and quit."
-msgstr ""
+msgstr "Speichert und beendet das Spiel."
 
 #: src/menu_events.cpp:2298
 msgid "Ignore replay errors."
-msgstr ""
+msgstr "Ignoriert Fehler beim Abspielen von Spielaufzeichnungen."
 
 #: src/menu_events.cpp:2300
 msgid "Disable autosaves."
-msgstr ""
+msgstr "Deaktiviert das automatische Speichern zu Rundenbeginn."
 
 #: src/menu_events.cpp:2302
 msgid "Advance to the next scenario, or scenario identified by 'id'"
 msgstr ""
 
 #: src/menu_events.cpp:2305
-#, fuzzy
 msgid "Choose next scenario"
-msgstr "Nächstes Szenario wählen"
+msgstr "Wählt das nächste Szenario"
 
 #: src/menu_events.cpp:2308
-#, fuzzy
 msgid "Turn debug mode on."
 msgstr "Schaltet den Debugmodus ein."
 
 #: src/menu_events.cpp:2310
 msgid "Turn debug mode off."
-msgstr ""
+msgstr "Schaltet den Debugmodus aus."
 
 #: src/menu_events.cpp:2312
 msgid "Set the command used by the custom command hotkey"
@@ -8397,34 +8390,26 @@ msgstr "Zeigt den Wert einer Spielvariable."
 
 #: src/menu_events.cpp:2320
 msgid "Modify a unit variable. (Only top level keys are supported.)"
-msgstr ""
+msgstr "Modifiziert eine Einheitenvariable. "
 
 #: src/menu_events.cpp:2324
 msgid "Remove a trait from a unit. (Does not work yet.)"
 msgstr ""
+"Entfernt ein Charakteristikum von einer Einheit. (Momentan nicht "
+"funktionsfähig.)"
 
 #: src/menu_events.cpp:2326
-#, fuzzy
 msgid "Create a unit."
-msgstr "Einheit erstellen."
+msgstr "Erstellt eine Einheit."
 
 #: src/menu_events.cpp:2328
-#, fuzzy
 msgid "Toggle fog for the current player."
-msgstr ""
-"\n"
-"Aktiviert/deaktiviert den Nebel des Krieges/Schleier der Finsternis für den "
-"aktuellen Spieler.\n"
-"\n"
+msgstr "Aktiviert/deaktiviert den Nebel des Krieges für den aktuellen Spieler."
 
 #: src/menu_events.cpp:2330
-#, fuzzy
 msgid "Toggle shroud for the current player."
 msgstr ""
-"\n"
-"Aktiviert/deaktiviert den Nebel des Krieges/Schleier der Finsternis für den "
-"aktuellen Spieler.\n"
-"\n"
+"Aktiviert/deaktiviert den Schleier der Finsternis für den aktuellen Spieler."
 
 #: src/menu_events.cpp:2332
 msgid "Give gold to the current player."
@@ -8432,7 +8417,7 @@ msgstr ""
 
 #: src/menu_events.cpp:2334
 msgid "Fire a game event."
-msgstr ""
+msgstr "Aktiviert ein Spielereignis."
 
 #: src/menu_events.cpp:2337
 msgid "Toggle overlaying of x,y coordinates on hexes."
@@ -8524,7 +8509,7 @@ msgstr "Debugmodus deaktiviert!"
 
 #: src/menu_events.cpp:3003
 msgid "ai"
-msgstr ""
+msgstr "KI"
 
 #: src/menu_events.cpp:3011 src/menu_events.cpp:3026
 msgid "prompt^Command:"
@@ -8571,9 +8556,8 @@ msgid "Request password reminder for this username"
 msgstr ""
 
 #: src/multiplayer.cpp:184
-#, fuzzy
 msgid "Choose a different username"
-msgstr "Einem anderen Server beitreten"
+msgstr "Wählt Euch einen anderen Namen"
 
 #: src/multiplayer.cpp:201
 msgid "Login"
@@ -9354,12 +9338,11 @@ msgstr " übernommen aus "
 
 #: src/serialization/parser.cpp:344
 msgid "$error, value '$value', previous '$previous_value' at $pos"
-msgstr ""
+msgstr "$error, Wert '$value', vorheriger Wert '$previous_value' an $pos"
 
 #: src/serialization/parser.cpp:348
-#, fuzzy
 msgid "$error, value '$value' at $pos"
-msgstr "$error an $pos"
+msgstr "$error, Wert '$value' an $pos"
 
 #: src/statistics_dialog.cpp:66 src/statistics_dialog.cpp:121
 msgid "Recruits"
@@ -9442,9 +9425,8 @@ msgid "TitleScreen button^Add-ons"
 msgstr "Erweiterungen"
 
 #: src/titlescreen.cpp:383
-#, fuzzy
 msgid "TitleScreen button^Map Editor"
-msgstr "Editor"
+msgstr "Karteneditor"
 
 #: src/titlescreen.cpp:385
 msgid "TitleScreen button^Language"
