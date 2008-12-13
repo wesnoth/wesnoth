@@ -14,10 +14,11 @@ Use --help to see usage.
 
 import wesnoth.wmldata as wmldata
 import wesnoth.wmlparser as wmlparser
-# Not needed yet
-#import wesnoth.wmltools as wmltools
 import wesnoth.wmlgrammar as wmlgrammar
 import re
+
+def print_indent(string, depth, char=' '):
+    print "%s%s" % (depth * char, string)
 
 class Tester:
     """
@@ -32,7 +33,7 @@ class Tester:
         if not tag:
             tag = self.wmltree
         if self.verbosity > 2:
-            print "%s[%s]" % (depth * ' ', tag.name, )
+            print_indent(tag.name, depth, ' ')
         for item in tag.data:
             if isinstance(item, wmldata.DataSub):
                 if item.name in self.grammar[tag.name][0]:
@@ -50,15 +51,15 @@ class Tester:
                             self.test(item, depth + 1)
                             found = True
                     if not found:
-                        print "%s[%s] ******** meaningless in [%s] ********" % ((depth + 1) * '*', item.name, tag.name)
+                        print_indent("[%s] ******** meaningless in [%s] ********" % (item.name, tag.name), depth + 1, '*')
             elif isinstance(item, wmldata.DataText):
                 if item.name in self.grammar[tag.name][1] or any(map(lambda x:(bool)(x.search(item.name)),filter(lambda x:isinstance(x,re._pattern_type),self.grammar[tag.name][1]))):
                     if self.verbosity > 2:
-                        print "%s%s=\"%s\"" % ((depth + 1) * ' ', item.name, item.data)
+                        print_indent("%s=\"%s\"" % (item.name, item.data), depth + 1, ' ')
                 else:
-                    print "%s%s=\"%s\" ******** meaningless in [%s] ********" % ((depth + 1) * '*', item.name, item.data, tag.name)
+                    print_indent("%s=\"%s\" ******** meaningless in [%s] ********" % (item.name, item.data, tag.name), depth + 1, '*')
             else:
-                raise Exception( "WTF we found something of class %s" % (item.__class__,) )
+                raise Exception( "Wmlparser gave us an object of class %s" % (item.__class__,) )
 
 
 if __name__ == '__main__':
