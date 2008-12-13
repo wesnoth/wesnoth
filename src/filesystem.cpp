@@ -79,8 +79,9 @@ bool ends_with(const std::string& str, const std::string& suffix)
 }
 
 // These are the filenames that get special processing
-#define MAINCFG "_main.cfg"
+#define MAINCFG 	"_main.cfg"
 #define FINALCFG	"_final.cfg"
+#define INITCFG		"_init.cfg"
 
 // Don't pass directory as reference, it seems to break on 
 // arklinux with GCC-4.3.
@@ -108,7 +109,7 @@ void get_files_in_dir(const std::string directory,
 	struct stat st;
 
 	if (reorder == DO_REORDER) {
-		LOG_FS << "searching _main.cfg in directory " << directory << '\n';
+		LOG_FS << "searching for _main.cfg in directory " << directory << '\n';
 		std::string maincfg;
 		if (directory.empty() || directory[directory.size()-1] == '/'
 #ifdef __AMIGAOS4__
@@ -227,12 +228,28 @@ void get_files_in_dir(const std::string directory,
 		std::sort(dirs->begin(),dirs->end());
 
 	if (files != NULL && reorder == DO_REORDER) {
-		for (unsigned int i = 0; i < files->size(); i++)
-			if (ends_with((*files)[i], FINALCFG)) {
+		int foundit = -1;
+		std::string *initcfg;
+		// move FINALCFG, if present, to the end of the vector
+		for (unsigned int i = 0; i < files->size(); i++) {
+			if (ends_with((*files)[i], "/" FINALCFG)) {
 				files->push_back((*files)[i]);
 				files->erase(files->begin()+i);
 				break;
 			}
+		}
+		// move INITCFG, if present, to the beginning of the vector
+		for (unsigned int i = 0; i < files->size(); i++)
+			if (ends_with((*files)[i], "/" INITCFG)) {
+				foundit = i;
+				break;
+			}
+		if (foundit > 0) {
+			std::string initcfg = (*files)[foundit];
+			for (unsigned int i = foundit; i > 0; i--)
+				(*files)[i] = (*files)[i-1];
+			(*files)[0] = initcfg;
+		}
 	}
 }
 
