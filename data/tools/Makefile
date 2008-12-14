@@ -33,7 +33,7 @@ utils-unused:
 
 test:
 	# Check WML for meaning and references.
-	# No UMC testing until $(UMC) is fixed
+	# No UMC testing until $$(UMC) is fixed
 	./wmltest -p $(DATA) #-u $(UMC)
 
 # Beware of removing images listed in this report unless you know
