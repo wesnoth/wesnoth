@@ -73,7 +73,9 @@ class Grammar:
     [ 'effect', ],
     [ 'description', 'id', 'image', 'max_times', 'require_amla', 'strict_amla', ]),
 'animation' : (
-    [ { 'else' : 'animation' }, 'frame', { re.compile('\w+_frame') : 'frame' }, { 'if' : 'animation' }, ], #TODO: add filter, filter_second, filter_attack, filter_second_attack
+    #TODO: add filter, filter_second
+    [ 'filter_attack', 'filter_second_attack', # Filters
+        { 'else' : 'animation' }, 'frame', { re.compile('\w+_frame') : 'frame' }, { 'if' : 'animation' }, ], # The contents
     [ 'apply_to', 'direction', 'frequency', 'hits', 'swing', 'terrain', 'value', # Filters
         re.compile('(\w+_)?alpha'), re.compile('(\w+_)?blend_with'), re.compile('(\w+_)?blend_ratio'), re.compile('(\w+_)?halo'), re.compile('(\w+_)?halo_mod'), re.compile('(\w+_)?halo_x'), re.compile('(\w+_)?halo_y'), re.compile('(\w+_)?image_mod'), re.compile('(\w+_)?layer'), re.compile('(\w+_)?offset'), re.compile('(\w+_)?start_time'), re.compile('(\w+_)?submerge'), re.compile('(\w+_)?x'), re.compile('(\w+_)?y'), ]), # Frame data, got them from the wiki, I'm assuming these are all valid
 'attack' : (
@@ -108,6 +110,10 @@ class Grammar:
     [],
     [ 'comment', 'email', 'ircuser', 'name', 'wikiuser', ]),
 'female' : TagPlus('unit_type', ( [], [ 'inherit', ] )),
+'filter_attack' : (
+    [],
+    [ 'name', 'range', 'special', 'type', ]),
+'filter_second_attack' : 'filter_attack',
 'firststrike' : 'special-dummy',
 'fonts' : (
     [ 'font', ],
