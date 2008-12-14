@@ -1,7 +1,7 @@
 [Project]
 FileName=wesnoth.dev
 Name=wesnoth
-UnitCount=201
+UnitCount=202
 Type=0
 Ver=1
 ObjFiles=
@@ -880,19 +880,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit202]
-FileName=..\..\src\widgets\scrollpane.hpp
+FileName=..\..\src\gui\widgets\horizontal_scrollbar.cpp
 CompileCpp=1
-Folder=Wesnoth
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit203]
-FileName=..\..\src\widgets\slider.cpp
-CompileCpp=1
-Folder=Wesnoth
+Folder=wesnoth
 Compile=1
 Link=1
 Priority=1000
