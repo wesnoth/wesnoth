@@ -58,7 +58,7 @@ class Grammar:
     [ 'entry', ],
     [ 'images', 'text', 'title', ]),
 'abilities' : (
-    [ 'heals', 'hides', 'illuminates', 'leadership', 'regenerate', { 'resistance' : 'resistance-ability' }, { re.compile('\w+') : 'ability-dummy' }, ],
+    [ 'heals', 'hides', 'illuminates', 'leadership', 'regenerate', { 'resistance' : 'resistance-ability' }, 'skirmisher', 'teleport', { re.compile('\w+') : 'ability-dummy' }, ],
     []),
 'ability-dummy' : (
     [], #TODO: the filters and adjacent_description
@@ -99,6 +99,7 @@ class Grammar:
     [ 'id', 'name', 'rgb', ]),
 'damage' : TagPlus('special-dummy', ([], [ 'add', 'backstab', 'cumulative', 'multiply', 'value', ]) ),
 'defense' : 'movement_costs',
+'drains' : 'special-dummy',
 'editor2_tool_hint' : 'gold-theme',
 'effect' : (
     [ 'defense', 'movement_costs', 'resistance', ], #TODO: point tags to where they should go (specials, contents of filter_attack, { set_specials : specials }, abilities)
@@ -107,6 +108,7 @@ class Grammar:
     [],
     [ 'comment', 'email', 'ircuser', 'name', 'wikiuser', ]),
 'female' : TagPlus('unit_type', ( [], [ 'inherit', ] )),
+'firststrike' : 'special-dummy',
 'fonts' : (
     [ 'font', ],
     [ 'order', ]),
@@ -166,6 +168,7 @@ class Grammar:
     [ 'add', 'change', 'remove', ],
     [ 'height', 'id', 'inherits', 'width', ]),
 'plague' : TagPlus('special-dummy', ( [], [ 'type', ] ) ),
+'poison' : 'special-dummy',
 'portrait' : (
     [],
     [ 'image', 'mirror', 'side', 'size', ]),
@@ -201,16 +204,20 @@ class Grammar:
 'side_playing' : (
     [],
     [ 'id', 'rect', 'ref', 'xanchor', 'yanchor', ]),
+'skirmisher' : 'ability-dummy',
+'slow' : 'special-dummy',
 'special-dummy' : (
     [], #TODO: filters
     [ 'active_on', 'apply_to', 'description', 'description_inactive', 'id', 'name', 'name_inactive', ]),
 'specials' : (
-    [ 'attacks', 'berserk', 'chance_to_hit', 'damage', 'plague', 'swarm', { re.compile('\w+') : 'special-dummy' }, ], #TODO: add the rest of them
+    [ 'attacks', 'berserk', 'chance_to_hit', 'damage', 'drains', 'firststrike', 'plague', 'poison', 'slow', 'stones', 'swarm', { re.compile('\w+') : 'special-dummy' }, ], #TODO: add the rest of them
     []),
 'status' : (
     [ 'editor2_tool_hint', { 'gold' : 'gold-theme' }, 'income', 'num_units', 'observers', 'panel', 'position', 'report_clock', 'report_countdown', 'side_playing', { 'terrain' : 'terrain-theme' }, 'time_of_day', 'turn', 'unit_abilities', 'unit_advancement_options', 'unit_alignment', 'unit_amla', 'unit_hp', 'unit_image', 'unit_level', 'unit_moves', 'unit_name', 'unit_race', 'unit_side', 'unit_status', 'unit_traits', { 'unit_type' : 'unit_type-theme' } , 'unit_weapons', 'unit_xp', 'upkeep', 'villages', ],
     []),
+'stones' : 'special-dummy',
 'swarm' : TagPlus('special-dummy', ([], ['swarm_attacks_min', 'swarm_attacks_max',]) ),
+'teleport' : 'ability-dummy',
 'terrain' : (
     [],
     [ 'aliasof', 'default_base', 'def_alias', 'editor_group', 'editor_image', 'gives_income', 'heals', 'hidden', 'id', 'light', 'mvt_alias', 'name', 'recruit_from', 'recruit_onto', 'string', 'submerge', 'symbol_image', 'unit_height_adjust', ]),
