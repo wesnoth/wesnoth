@@ -4,10 +4,6 @@ wmltest -- tool to test the integrity and meaning of WML.
 
 Use --help to see usage.
 """
-#BUGS:
-#-Throwing everything into one dict (line 47) breaks ordering.
-#This allows catch-alls to be matched before the specific string.
-#odict would fix this, but is not in the standard python library.
 #TODO:
 #-Include linenumbers and filenames in "complaint messages"
 #-Write function to check dependencies
@@ -15,6 +11,7 @@ Use --help to see usage.
 #-defense,movement_costs: keys should be valid terrain
 #-resistance: keys should be valid damage types
 #-effect: valid keys vary depending on name
+#-[attack] type: value should be valid damage types
 
 import wesnoth.wmldata as wmldata
 import wesnoth.wmlparser as wmlparser
@@ -43,18 +40,15 @@ class Tester:
                 if item.name in self.grammar[tag.name][0]:
                     self.test(item, depth + 1)
                 else:
-                    # FIXME: this code is *UGLY*, clean it up
-                    # FIXME: it's not just ugly, it breaks the ordering and thus allows catch-all regexes to be matched before the specific key
-                    dicts = {}
-                    for d in filter(lambda x:isinstance(x,dict),self.grammar[tag.name][0]):
-                        dicts.update(d)
                     found = False
-                    for key in dicts.keys():
-                        if (isinstance(key, str) and key == item.name) \
-                        or (isinstance(key, re._pattern_type) and key.search(item.name)):
-                            item.name = dicts[key]
-                            self.test(item, depth + 1)
+                    for d in filter(lambda x:isinstance(x,dict),self.grammar[tag.name][0]):
+                        # We only check the first key in the dict, as it should only have one
+                        key = d.keys()[0]
+                        if isinstance(key, str) and key == item.name \
+                        or isinstance(key, re._pattern_type) and key.search(item.name):
                             found = True
+                            item.name = d[key]
+                            self.test(item, depth + 1)
                             break # Don't recurse into the catch-all
                     if not found:
                         print_indent("[%s] ******** meaningless in [%s] ********" % (item.name, tag.name), depth + 1, '*')
