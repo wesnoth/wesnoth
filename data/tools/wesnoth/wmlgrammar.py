@@ -14,6 +14,8 @@ Grammar of the grammar:
 <ALLOWED_TAGS>      -> [ <TAGS> ] | <TAG_IDENTIFIER> | <TAG_PLUS>
 <TAGS>              -> <TAG>, <TAGS> | <EMPTY>
 # TAG is a string, a dict of two strings or a dict of a regex to a string
+# The dicts here are strictly meant as aliases for overloaded or variable type names.
+# Tags that mean the same should be cloned in their definition.
 <TAG>               -> <TAG_IDENTIFIER> | { str : <TAG_IDENTIFIER> } | { re._pattern_type : <TAG_IDENTIFIER> }
 # ALLOWED_KEYS either contains a list of keys, or points to the list of another tag.
 <ALLOWED_KEYS>      -> [ <KEYS> ] | <TAG_IDENTIFIER> | <TAG_PLUS>
@@ -75,7 +77,7 @@ class Grammar:
 'animation' : (
     #TODO: add filter, filter_second
     [ 'filter_attack', 'filter_second_attack', # Filters
-        { 'else' : 'animation' }, 'frame', { re.compile('\w+_frame') : 'frame' }, { 'if' : 'animation' }, ], # The contents
+        { 'else' : 'else-animation' }, 'frame', { re.compile('\w+_frame') : 'frame' }, { 'if' : 'if-animation' }, ], # The contents
     [ 'apply_to', 'direction', 'frequency', 'hits', 'swing', 'terrain', 'value', # Filters
         re.compile('(\w+_)?alpha'), re.compile('(\w+_)?blend_with'), re.compile('(\w+_)?blend_ratio'), re.compile('(\w+_)?halo'), re.compile('(\w+_)?halo_mod'), re.compile('(\w+_)?halo_x'), re.compile('(\w+_)?halo_y'), re.compile('(\w+_)?image_mod'), re.compile('(\w+_)?layer'), re.compile('(\w+_)?offset'), re.compile('(\w+_)?start_time'), re.compile('(\w+_)?submerge'), re.compile('(\w+_)?x'), re.compile('(\w+_)?y'), ]), # Frame data, got them from the wiki, I'm assuming these are all valid
 'attack' : (
@@ -100,12 +102,15 @@ class Grammar:
     [],
     [ 'id', 'name', 'rgb', ]),
 'damage' : TagPlus('special-dummy', ([], [ 'add', 'backstab', 'cumulative', 'multiply', 'value', ]) ),
+'death' : 'animation',
+'defend' : 'animation',
 'defense' : 'movement_costs',
 'drains' : 'special-dummy',
 'editor2_tool_hint' : 'gold-theme',
 'effect' : (
     [ 'defense', 'movement_costs', 'resistance', ], #TODO: point tags to where they should go (specials, contents of filter_attack, { set_specials : specials }, abilities)
     [ 'apply_to', 'times', 'unit_type', re.compile("\w+"), ]),
+'else-animation' : 'animation',
 'entry' : (
     [],
     [ 'comment', 'email', 'ircuser', 'name', 'wikiuser', ]),
@@ -138,6 +143,7 @@ class Grammar:
 'hotkey' : (
     [],
     [ 'alt', 'cmd', 'command', 'ctrl', 'key', 'shift', ]),
+'if-animation' : 'animation',
 'income' : 'gold-theme',
 'illuminates' : TagPlus('ability-dummy', ([], [ 'max_value', 'value', ]) ),
 'image' : (
@@ -153,6 +159,7 @@ class Grammar:
 'main_map_border' : (
     [],
     [ 'background_image', 'border_image_bottom_even', 'border_image_bottom_odd', 'border_image_left', 'border_image_right', 'border_image_top_even', 'border_image_top_odd', 'border_size', 'corner_image_bottom_left', 'corner_image_bottom_right_even', 'corner_image_bottom_right_odd', 'corner_image_top_left','corner_image_top_right_even',  'corner_image_top_right_odd', 'tile_image', ]),
+'male' : TagPlus('unit_type', ( [], [ 'inherit', ] )),
 'menu' : (
     [],
     [ 'auto_tooltip', 'id', 'image', 'is_context_menu', 'items', 'title', 'title2', 'tooltip', 'type', 'rect', 'ref', 'xanchor', 'yanchor', ]),
@@ -265,7 +272,7 @@ class Grammar:
 'unit_status' : 'gold-theme',
 'unit_traits' : 'gold-theme',
 'unit_type' : (
-    [ 'abilities', 'advancement', 'animation', { re.compile('\w+_anim') : 'animation' }, 'attack', { 'death' : 'animation' }, { 'defend' : 'animation' }, 'defense', 'female', { 'male' : 'female' }, 'movement_costs', 'portrait', 'resistance', 'trait', 'variation', ],
+    [ 'abilities', 'advancement', 'animation', { re.compile('\w+_anim') : 'animation' }, 'attack', 'death', 'defend', 'defense', 'female', 'male', 'movement_costs', 'portrait', 'resistance', 'trait', 'variation', ],
     [ 'advances_to', 'alignment', 'cost', 'description', 'die_sound', 'do_not_list', 'ellipse', 'experience', 'flag_rgb', 'gender', 'halo', 'hide_help', 'hitpoints', 'id', 'ignore_race_traits', 'image', 'level', 'movement', 'movement_type', 'name', 'profile', 'race', 'undead_variation', 'usage', 'zoc', ]),
 'unit_type-theme' : 'gold-theme',
 'unit_weapons' : 'gold-theme',
