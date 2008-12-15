@@ -81,7 +81,7 @@ bool ends_with(const std::string& str, const std::string& suffix)
 // These are the filenames that get special processing
 #define MAINCFG 	"_main.cfg"
 #define FINALCFG	"_final.cfg"
-#define INITCFG		"_init.cfg"
+#define INITIALCFG	"_initial.cfg"
 
 // Don't pass directory as reference, it seems to break on 
 // arklinux with GCC-4.3.
@@ -236,18 +236,18 @@ void get_files_in_dir(const std::string directory,
 				break;
 			}
 		}
-		// move INITCFG, if present, to the beginning of the vector
+		// move INITIALCFG, if present, to the beginning of the vector
 		int foundit = -1;
 		for (unsigned int i = 0; i < files->size(); i++)
-			if (ends_with((*files)[i], "/" INITCFG)) {
+			if (ends_with((*files)[i], "/" INITIALCFG)) {
 				foundit = i;
 				break;
 			}
 		if (foundit > 0) {
-			std::string initcfg = (*files)[foundit];
+			std::string initialcfg = (*files)[foundit];
 			for (unsigned int i = foundit; i > 0; i--)
 				(*files)[i] = (*files)[i-1];
-			(*files)[0] = initcfg;
+			(*files)[0] = initialcfg;
 		}
 	}
 }
