@@ -607,14 +607,12 @@ class Parser:
         values += [value]
 
         data = []
-        j = 0
         for i in range(len(variables)):
             try:
-                data += [wmldata.DataText(variables[i], values[j])]
+                data += [wmldata.DataText(variables[i], values[i], translatable)]
             except IndexError:
                 raise Error(self, "Assignement does not match: %s = %s" % (
                     str(variables), str(values)))
-            j += 1
         return data
 
     def parse_top(self, data, state = None):
