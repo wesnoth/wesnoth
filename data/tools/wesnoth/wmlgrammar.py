@@ -240,7 +240,7 @@ class Grammar:
     [ 'map', 'no_flag', 'precedence', 'probability', 'rotations', 'set_flag', ]),
 'textdomain' : (
     [],
-    [ 'name', ]),
+    [ 'name', 'path', ]),
 'theme' : (
     [ 'partialresolution', 'resolution', ],
     [ 'name', ]),
