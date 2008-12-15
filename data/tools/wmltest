@@ -5,7 +5,6 @@ wmltest -- tool to test the integrity and meaning of WML.
 Use --help to see usage.
 """
 #TODO:
-#-Include linenumbers and filenames in "complaint messages"
 #-Write function to check dependencies
 #List of dependencies to check:
 #-defense,movement_costs: keys should be valid terrain
@@ -52,7 +51,7 @@ class Tester:
                             self.test(item, depth + 1)
                             break # Don't recurse into the catch-all
                     if not found:
-                        print_indent("[%s] ******** meaningless in [%s] ********" % (item.name, tag.name), depth + 1, '*')
+                        print_indent("[%s] (%s:%d) is meaningless in [%s] (%s:%d)" % (item.name, item.file, item.line, tag.name, tag.file, tag.line), depth + 1, '*')
             elif isinstance(item, wmldata.DataText):
                 if item.translatable:
                     underscore = " _ "
@@ -62,7 +61,7 @@ class Tester:
                     if self.verbosity > 2:
                         print_indent("%s=%s\"%s\"" % (item.name, underscore, item.data), depth + 1, ' ')
                 else:
-                    print_indent("%s=%s\"%s\" ******** meaningless in [%s] ********" % (item.name, underscore, item.data, tag.name), depth + 1, '*')
+                    print_indent("%s=%s\"%s\" (%s:%d) is meaningless in [%s] (%s:%d)" % (item.name, underscore, item.data, item.file, item.line, tag.name, tag.file, tag.line), depth + 1, '*')
             else:
                 raise Exception( "Wmlparser gave us an object of class %s" % (item.__class__,) )
 
