@@ -54,11 +54,15 @@ class Tester:
                     if not found:
                         print_indent("[%s] ******** meaningless in [%s] ********" % (item.name, tag.name), depth + 1, '*')
             elif isinstance(item, wmldata.DataText):
+                if item.translatable:
+                    underscore = " _ "
+                else:
+                    underscore = ""
                 if item.name in self.grammar[tag.name][1] or any(map(lambda x:(bool)(x.search(item.name)),filter(lambda x:isinstance(x,re._pattern_type),self.grammar[tag.name][1]))):
                     if self.verbosity > 2:
-                        print_indent("%s=\"%s\"" % (item.name, item.data), depth + 1, ' ')
+                        print_indent("%s=%s\"%s\"" % (item.name, underscore, item.data), depth + 1, ' ')
                 else:
-                    print_indent("%s=\"%s\" ******** meaningless in [%s] ********" % (item.name, item.data, tag.name), depth + 1, '*')
+                    print_indent("%s=%s\"%s\" ******** meaningless in [%s] ********" % (item.name, underscore, item.data, tag.name), depth + 1, '*')
             else:
                 raise Exception( "Wmlparser gave us an object of class %s" % (item.__class__,) )
 
