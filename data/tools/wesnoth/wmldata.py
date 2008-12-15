@@ -20,6 +20,8 @@ class Data:
     """Common subclass."""
     def __init__(self, name):
         self.name = name
+        self.file = "(None)"
+        self.line = -1
 
     def __str__( self ):
         return self.debug(show_contents = True, write = False)
@@ -58,6 +60,13 @@ class Data:
 
     def get_type(self):
         return self.__class__.__name__
+
+    def set_meta(self, file, line):
+        self.file = file
+        self.line = line
+
+    def get_meta(self):
+        return (self.file, self.line,)
 
 class DataText(Data):
     """Represents any text strings."""

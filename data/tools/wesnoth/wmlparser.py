@@ -530,6 +530,8 @@ class Parser:
         value = ""
         got_assign = False
         spaces = ""
+        file = "(None)"
+        line = -1
         while 1:
             if c == "{":
                 keep_macro = self.parse_macro()
@@ -551,6 +553,8 @@ class Parser:
                     variables += [variable.rstrip()]
                     got_assign = True
                     translatable = False
+                    file = self.filename
+                    line = self.line
                     self.skip_whitespace()
                 else:
                     if c == ",":
@@ -607,7 +611,9 @@ class Parser:
         data = []
         for i in range(len(variables)):
             try:
-                data += [wmldata.DataText(variables[i], values[i], translatable)]
+                key = wmldata.DataText(variables[i], values[i], translatable)
+                key.set_meta(file, line)
+                data.append(key)
             except IndexError:
                 raise Error(self, "Assignement does not match: %s = %s" % (
                     str(variables), str(values)))
@@ -743,6 +749,7 @@ class Parser:
                 elif name[0] == '+':
                     name = name[1:]
                 subdata = wmldata.DataSub(name)
+                subdata.set_meta(self.filename, self.line)
                 self.parse_top(subdata, name)
                 data.insert(subdata)
             elif c == '{':
