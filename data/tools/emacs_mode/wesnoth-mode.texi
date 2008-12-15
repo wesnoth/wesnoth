@@ -3,7 +3,7 @@
 @setfilename wesnoth-mode.info
 @settitle Wesnoth Mode Manual
 
-@set VERSION 1.3.2
+@set VERSION 1.3.3
 @set DATE October 2008
 
 @dircategory Emacs
@@ -117,13 +117,13 @@ game.  From the Wesnoth Wiki: "The Wesnoth Markup Language (WML) is used to
 code almost everything in Wesnoth, including scenarios, units, savefiles, and
 the user interface layout." @footnote{@uref{http://www.wesnoth.org/wiki/ReferenceWML}}
 
-Wesnoth Mode is supported under GNU Emacs 22 and 21 and (with some minor
-limitations) XEmacs 21.  Wesnoth Mode adds support for syntax
+Wesnoth Mode is supported under GNU Emacs 21 onwards and (with some
+minor limitations) XEmacs 21.  Wesnoth Mode adds support for syntax
 highlighting, automatic indentation, context-sensitive completion,
 checking and much more when editing WML.
 
 This documentation attempts to provide a comprehensive guide to
-functionality available within Wesnoth Mode, and assumes you are
+functionality available within Wesnoth Mode @value{VERSION}, and assumes you are
 familiar with basic usage, terminology and customisation of Emacs.  For
 more information, please refer to the Emacs
 manual. @footnote{@uref{http://www.gnu.org/software/emacs/manual/html_node/emacs/}}
@@ -207,7 +207,7 @@ at the beginning of the corresponding opening element.
 @kindex @kbd{C-c C-p}
 
 Tags can be inserted via @kbd{C-c C-t} and alternatively @kbd{M-TAB}
-(assuming this is not shadowed by the Window Manager, etc.).  This will
+(when this is not shadowed by the Window Manager, etc.).  This will
 prompt for the tag to add.  The tag entered into the mini-buffer prompt
 and its matching closing tag will be inserted and point positioned
 between.
@@ -221,14 +221,13 @@ is available in WML and not listed for completion, you may want to add
 it to your `addition file'.  See @ref{Wesnoth Update} for more
 information.
 
-Macro insertion can be performed via @kbd{C-c C-m}.  If the macro
-entered is known to require arguments, point will be positioned before
-the closing curly bracket ready to input any arguments, otherwise it
-will be positioned immediately after.  When within a macro definition,
-macro arguments are also available to be inserted.  Project-local macros
-will not be available until Wesnoth Mode has scanned the buffer in which
-they are defined.  For information on completing project-local macros,
-see @ref{Macro Definitions}.
+Macro insertion can be performed via @kbd{C-c C-m}.  Any arguments known
+to be required for the macro will be prompted and inserted in order.
+Insertion will be aborted if no value for an argument is provided.  When
+within a macro definition, macro arguments are also available to be
+inserted.  Project-local macros will not be available until Wesnoth Mode
+has scanned the buffer in which they are defined.  For information on
+completing project-local macros, see @ref{Macro Definitions}.
 
 Preprocessor statements are available for insertion via @kbd{C-c C-p}.
 Closing elements for preprocessor statements will be automatically
@@ -246,17 +245,21 @@ Completion can also be performed immediately within the buffer via
 @end example
 Where @code{-!-} is the position of point.  Using @kbd{TAB} in the
 example will complete to @code{vil} to @code{village_gold=}.  Tags,
-macros and preprocessor statements can be completed similarly.
+macros and preprocessor statements can be completed similarly.  When the
+current line does not contain a partially completed element, @kbd{TAB}
+will perform indentation on the current line.
 
-When there is more than one possible completion, a mini-buffer prompt
+When there is more than one possible completion, a minibuffer prompt
 will be provided, with the partial element entered.  @kbd{TAB} can be
-used here to perform completion, and if no unique match is available,
-provide a list of possible completions.
+used here to perform completion.  If multiple matches are available,
+completion will be performed up to the smallest common substring with
+further completion available via the minubuffer prompt.  When no matches
+are found, completion will not be prompted.
 
 When completing opening preprocessor statements and tags, Wesnoth Mode
 will also attempt to insert a matching closing element if one is not
 already available, acting in much the same way as if the element was
-added via the mini-buffer prompt.  However, if an matching closing
+added via the minibuffer prompt.  However, if an matching closing
 element is available, only the element at point will be completed.
 
 A numeric argument can be provided when performing tab-completion of
@@ -270,7 +273,7 @@ for more information.
 When inserting tags and some preprocessor statements, either via their
 respective insertion command or via @kbd{TAB}, an optional numeric
 argument can be provided to specify the number of `blocks' to wrap the
-element around.  For example, this was an outline of the buffer:
+element around.  For example:
 
 @example
 [multiplayer]
@@ -300,16 +303,6 @@ current buffer at point.  If all elements appear to be matched or if
 there is an excess of closing tags, an appropriate message will be
 displayed in the echo area.
 
-@i{Note: The following does not apply to XEmacs.}
-
-The region Wesnoth Mode checks for missing elements can be adjusted
-enabling transient-mark-mode prior to inserting the missing element.  To
-narrow the region checked, move to the start of the region and enable
-transient-mark-mode (this is bound to @kbd{C-Space C-Space} by default)
-at point temporarily by default.  Then move point to the location to
-insert the missing element and use @kbd{C-c C-/}.  The first missing tag
-located in the region will be inserted at point.
-
 @node Checking WML,  Customisation, Inserting Elements, Top
 @chapter Checking WML
 
@@ -320,25 +313,32 @@ located in the region will be inserted at point.
 @node Usage and Capabilities, , Checking WML, Checking WML
 @section Usage and Capabilities
 @kindex @kbd{C-c C-c}
-Checking of the current buffer can be performed using @kbd{C-c C-c}.
-Any potential problems found will be reported in a separate buffer named
-``*WML*''.  The WML checking built-in to Wesnoth Mode is not intended to
-act as an alternative to tools such as `wmllint', but may often be
-a convenient substitute while editing WML.
+@kindex @kbd{C-x `}
+@kindex @kbd{C-c C-f}
+@kindex @kbd{C-c C-b}
+Checking of the current buffer can be performed using @kbd{C-c C-c}.  A
+summary of all warnings located will be provided in a separate buffer.
+Point can be jumped to the next and previous warning using @kbd{C-c C-f}
+(or @kbd{C-x `}) and @kbd{C-c C-b}, respectively.  For visibility,
+warnings in the checked WML buffer will be underlined in red by default.
+@i{Note: Warning underlines may not be available in XEmacs.}
+
+The WML checking built-in to Wesnoth Mode is not intended to
+be an alternative to tools such as `wmllint', but may often be a
+convenient substitute while editing WML.
 
 The following conditions can be detected by WML checking in Wesnoth Mode:
 @itemize
-@item Correct tag / preprocessor nesting
+@item Correct nesting of tags and preprocessor statements
 @item Known macro definitions @footnote{see @ref{Macro Definitions}}
 @item Availability of elements within the given context
 @item Arguments are given to preprocessor statements when required
-@item Whether attributes have been given a value
+@item Attributes have a value assigned
+@item Corresponding FOREACH..NEXT pairs
 @end itemize
 
-When a problem has been found, Wesnoth Mode will provide the line number
-and a description of the problem in the report.  WML checking is
-specific to the version of WML known by Wesnoth Mode.  See @ref{Wesnoth
-Update} for more information.
+WML checking is specific to the version of WML known by Wesnoth Mode.
+See @ref{Wesnoth Update} for more information.
 
 @node Customisation, Key Index, Checking WML, Top
 @chapter Customisation
@@ -358,7 +358,7 @@ which results in all children being indented a level deeper than their
 parent.  When set to @code{nil}, children will be indented to the same
 level as their parent element.  This option is provided only for
 consistency when editing (very) old WML.  It is recommended that all new
-code be written using the `savefile style'.
+code be written using the new convention.
 
 By default, Wesnoth Mode will attempt indentation of the current line
 and create a newline and when @kbd{RET} or @kbd{C-j} are used.
@@ -372,6 +372,11 @@ performed on the current line.
 @code{wesnoth-base-indent} controls the depth of indentation for each
 level.  Its value should be an integer.  This is set to `4' by default,
 which is the convention used when indenting WML.
+
+@code{wesnoth-warning-face} is the face used to display the overlay for
+warnings detected when checking WML (See @ref{Checking WML}).  By
+default this is a red underline.  Use of this face may not be supported
+under XEmacs.
 
 @node Wesnoth Update, Macro Definitions, Indentation, Customisation
 @section Wesnoth Update

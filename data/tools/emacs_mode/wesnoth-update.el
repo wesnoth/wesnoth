@@ -59,6 +59,8 @@
 ;; available to `wesnoth-mode'.
 
 ;;; History:
+;; 0.1.3
+;; * Any arguments are now stored for each macro.
 ;; 0.1.2
 ;; * Allow forced updating of the hash table.
 ;; * Allow clearing of local macro data via a prefix argument.
@@ -71,7 +73,7 @@
 ;; * Initial version
 
 ;;; Code:
-(defvar wesnoth-update-version "0.1.1"
+(defvar wesnoth-update-version "0.1.3"
   "Version of `wesnoth-update'.")
 
 (defcustom wesnoth-root-directory nil
@@ -238,11 +240,13 @@ MACRO-LIST is the variable to append macro information."
   `(save-excursion
      (goto-char (point-min))
      (while (search-forward-regexp
-	     "#define \\(\\(\\w\\|_\\)+\\)\\([\t ]+\\(\\w\\|_\\)+\\)?"
+	     "#define \\(\\(?:\\w\\|_\\)+\\)\\(\\([\t ]+\\(\\w\\|_\\)+\\)*\\)"
 	     (point-max) t)
        (beginning-of-line)
        (add-to-list ,macro-list (list (match-string-no-properties 1)
-				      (not (null (match-string 3)))))
+				      (and (match-string 2)
+					   (split-string
+					    (match-string-no-properties 2)))))
        (end-of-line))))
 
 (defun wesnoth-determine-macro-builtins ()
@@ -252,9 +256,9 @@ MACRO-LIST is the variable to append macro information."
 (defun wesnoth-output-path ()
   "Determine the path to output wml information via `wesnoth-update'."
   (or wesnoth-update-output-directory
-      (and (boundp 'user-emacs-directory)
-	   user-emacs-directory)
-      "~/.emacs.d/"))
+      (if (boundp 'user-emacs-directory)
+	  (symbol-value 'user-emacs-directory)
+	"~/.emacs.d/")))
 
 (defun wesnoth-update-wml-additions ()
   "Update WML information contained in `wesnoth-addition-file'."
