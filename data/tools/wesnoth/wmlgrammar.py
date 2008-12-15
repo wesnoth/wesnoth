@@ -119,6 +119,7 @@ class Grammar:
     [],
     [ 'name', 'range', 'special', 'type', ]),
 'filter_second_attack' : 'filter_attack',
+'filter_weapon' : 'filter_attack',
 'firststrike' : 'special-dummy',
 'fonts' : (
     [ 'font', ],
