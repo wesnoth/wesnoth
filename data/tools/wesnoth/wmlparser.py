@@ -573,13 +573,11 @@ class Parser:
                     if value and value[i] == "_":
                         got_underscore = True
                         translatable = True
-                        # This is not the assignement =, but from e.g. MENU_IMG_TXT
-                        if i == 0 or value[i - 1] in [" ", "="]:
-                            # remove whitespace before _
-                            while i > 1:
-                                if value[i - 1] != " ": break
-                                i -= 1
-                            value = value[:i]
+                        # remove whitespace before _
+                        while i > 1:
+                            if value[i - 1] != " ": break
+                            i -= 1
+                        value = value[:i]
 
                     string = self.parse_string()
                     if got_underscore:
