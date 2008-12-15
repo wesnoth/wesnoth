@@ -551,7 +551,7 @@ class HTMLOutput:
         # TODO: what is unit_description?
         if not description: description = unit.get_text_val("unit_description")
         if not description: description = "-"
-        write("<p>%s</p>\n" % description)
+        write("<p>%s</p>\n" % __import__('re').sub("\n","\n<br />", description) )
 
         # Base info.
         hp = self.wesnoth.get_unit_value(unit, "hitpoints")
