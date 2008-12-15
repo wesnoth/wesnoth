@@ -549,7 +549,6 @@ class Parser:
             elif not got_assign:
                 if c == "=":
                     variables += [variable.rstrip()]
-                    if variables[-1] == "mode": fuck = True
                     got_assign = True
                     translatable = False
                     self.skip_whitespace()
