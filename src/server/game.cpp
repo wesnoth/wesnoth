@@ -159,7 +159,7 @@ void game::start_game(const player_map::const_iterator starter) {
 	for(simple_wml::node::child_list::const_iterator s = sides.begin(); s != sides.end(); ++s) {
 		nsides_++;
 		if((**s)["controller"] != "null" && !advance) {
-			(*s)->set_attr("controller", "network");
+			(*s)->set_attr("controller", "human");
 		}
 	}
 
@@ -1032,7 +1032,7 @@ bool game::remove_player(const network::connection player, const bool disconnect
 	for (side_vector::iterator side = sides_.begin(); side != sides_.end(); ++side)	{
 		if (*side != player) continue;
 		size_t side_num = side - sides_.begin();
-//		side_controllers_[side_num] = "network";
+		side_controllers_[side_num] = "human";
 		sides_taken_[side_num] = true;
 		sides_[side_num] = owner_;
 		// Check whether the host is actually a player and make him one if not.
