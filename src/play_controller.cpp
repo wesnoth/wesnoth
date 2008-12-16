@@ -176,6 +176,7 @@ void play_controller::init(CVideo& video){
 				gui_->set_team(i);
 			}
 		}
+		browse_ = true;
 	}
 
 	init_managers();
