@@ -354,14 +354,17 @@ void game::transfer_side_control(const network::connection sock, const simple_wm
 		return;
 	}
 
-	network::connection old_player = sides_[side_num - 1];
 	const simple_wml::string_span& newplayer_name = cfg["player"];
-	const std::string old_player_name =
-			(player_info_->find(old_player) != player_info_->end()
-			? player_info_->find(old_player)->second.name() : "");
+	const network::connection old_player = sides_[side_num - 1];
+	const player_map::const_iterator oldplayer = player_info_->find(old_player);
+	if (oldplayer == player_info_->end()) {
+		ERR_GAME << "ERROR: Could not find player in player_info_. (socket: "
+			<< old_player << ")\n";
+		return;
+	}
+	const std::string old_player_name = oldplayer->second.name();
 	// Check if the sender actually owns the side he gives away or is the host.
-	if (sock != old_player && 
-			(sock != owner_ && !newplayer_name.empty())) {
+	if (sock != old_player && (sock != owner_ || newplayer_name.empty())) {
 		std::stringstream msg;
 		msg << "You can't give away side " << side_num << ". It's controlled by '"
 			<< old_player_name << "' not you.";
@@ -370,12 +373,9 @@ void game::transfer_side_control(const network::connection sock, const simple_wm
 		return;
 	}
 	
-	if (newplayer_name.empty())
-	{
+	if (newplayer_name.empty()) {
 		// user wants to just toggle controller to ai/human
-		if (cfg["controller"] != "human_ai" 
-				&& cfg["controller"] != "human")
-		{
+		if (cfg["controller"] != "human_ai" && cfg["controller"] != "human") {
 			std::stringstream msg;
 			msg << "Wrong controller type received: '" << cfg["controller"] << "'";
 			DBG_GAME << msg.str() << "\n";
@@ -384,7 +384,7 @@ void game::transfer_side_control(const network::connection sock, const simple_wm
 		}
 		side_controllers_[side_num - 1] = cfg["controller"].to_string().replace(0, strlen("human"), "network");
 		sides_taken_[side_num - 1] = true;
-		send_change_controller(side_num, player_info_->end(), false);
+		send_change_controller(side_num, oldplayer, false);
 		return;
 	}
 	//find the player that is passed control
@@ -446,31 +446,22 @@ void game::transfer_side_control(const network::connection sock, const simple_wm
 }
 
 void game::send_change_controller(const size_t side_num,
-		const player_map::const_iterator newplayer, const bool player_left)
+		const player_map::const_iterator player, const bool player_left)
 {
-	network::connection sock;
-	std::string player;
-	if (newplayer != player_info_->end()) {
-		sock = newplayer->first;
-		player = newplayer->second.name();
-	}
-	else
-	{
-		sock = sides_[side_num -1];
-	}
+	DBG_GAME << __func__ << "...\n";
+	if (player == player_info_->end()) return;
+	const network::connection sock = player->first;
+	const std::string& player_name = player->second.name();
 
 	const std::string& side = lexical_cast<std::string, size_t>(side_num);
-	std::string controller = side_controllers_[side_num - 1];
+	const std::string& controller = side_controllers_[side_num - 1];
 	if (started_) {
-		if (!player.empty())
-		{
-			send_and_record_server_message((player
-						+ " takes control of side " + side + ".").c_str());
-		}
-		else
-		{
-			send_and_record_server_message(("Side " + side 
-						+ " changes controller to " + (controller == "network_ai"?"ai":"human") + ".").c_str());
+		if (sock == sides_[side_num -1]) {
+			send_and_record_server_message(("Side " + side + " changes controller to "
+					+ (controller == "network_ai" ? "ai" : "human") + ".").c_str());
+		} else {
+			send_and_record_server_message((player_name
+					+ " takes control of side " + side + ".").c_str());
 		}
 	}
 
@@ -478,10 +469,9 @@ void game::send_change_controller(const size_t side_num,
 	simple_wml::node& change = response.root().add_child("change_controller");
 
 	change.set_attr("side", side.c_str());
-	if (!player.empty())
-		change.set_attr("player", player.c_str());
+	change.set_attr("player", player_name.c_str());
 
-	// Tell everyone but the new player that this side is network controlled now.
+	// Tell everyone but the new player that this side's controller changed.
 	change.set_attr("controller", controller.c_str());
 	send_data(response, sock);
 
@@ -489,7 +479,7 @@ void game::send_change_controller(const size_t side_num,
 	// Just don't send it when the player left the game. (The host gets the
 	// side_drop already.)
 	if (!player_left) {
-		// make copy so original text aren't going to modified
+		// Make a copy so the original text isn't modified.
 		change.set_attr("controller", std::string(controller).replace(0,strlen("network"),"human").c_str());
 		send_to_one(response, sock);
 	}
@@ -498,10 +488,7 @@ void game::send_change_controller(const size_t side_num,
 	const simple_wml::node::child_list& side_list = level_.root().children("side");
 	const unsigned int index = side_num - 1;
 	assert(index < side_list.size());
-	if (!player.empty())
-	{
-		side_list[index]->set_attr_dup("current_player", player.c_str());
-	}
+	side_list[index]->set_attr_dup("current_player", player_name.c_str());
 	// Also update controller type
 	side_list[index]->set_attr_dup("controller", controller.c_str());
 }
