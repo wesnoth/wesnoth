@@ -1,29 +1,23 @@
-# translation of 423__hu-tb.po to Hungarian
-# translation of wesnoth-tb.pot to Hungarian
-# Hungarian translations for Battle for Wesnoth package.
-# Copyright (C) 2008 Wesnoth Development Team
-# This file is distributed under the same license as the Wescamp package.
-#
 # Con Salamander (Kovács Dániel) <consalamander@kalandozok>, 2006.
 # Kádár-Németh Krisztián <krisztian.kad@gmail.com>, 2008.
-# Gabor Udvari <gabor.udvari@gmail.com>, 2008.
+# Pintér Csaba <piere-d-siorac@freemail.hu>, 2008.
+# Kelemen Zoltán <kelemen_zoltan@freemail.hu>, 2008.
 msgid ""
 msgstr ""
-"Project-Id-Version: 423__hu-tb\n"
+"Project-Id-Version: hu-tb\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-12-09 22:14+0100\n"
-"PO-Revision-Date: 2008-11-18 17:56+0100\n"
-"Last-Translator: Gabor Udvari <gabor.udvari@gmail.com>\n"
-"Language-Team: Hungarian <en@li.org>\n"
+"PO-Revision-Date: 2008-12-16 19:15+0100\n"
+"Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
+"Language-Team: Hungarian <>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: KBabel 1.11.4\n"
+"X-Generator: Lokalize 0.2\n"
 
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:12
-#, fuzzy
 msgid "A Tale of Two Brothers"
 msgstr "Két fivér meséje"
 
@@ -42,16 +36,18 @@ msgstr "Lovas"
 msgid "(Beginner)"
 msgstr "(kezdő)"
 
+# másutt így nevezik
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:18
 msgid "(Challenging)"
-msgstr "(embert próbáló)"
+msgstr "(kihívást jelentő)"
 
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:18
 msgid "Knight"
 msgstr "Lovag"
 
+# túl szabad volt a fordítás, vagy az eredeti szöveget írták nagyon át
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:21
 #, fuzzy
@@ -63,9 +59,9 @@ msgid ""
 "(Novice level, 4 scenarios; the 'Hard' version may challenge more "
 "experienced players.)"
 msgstr ""
-"Egy gonosz mágus tartja rettegésben a közeli kis falucska minden lakóját. "
-"Vezetőjük, Bjarn, segítségért küldet testvéréhez, Arnehoz, így győzelmet "
-"arat, de őt magát elrabolják. Meg tudod menteni?\n"
+"Egy gonosz mágus tartja rettegésben a kis falu minden lakóját. A falu "
+"mágusa, Bjarn, segítségért küldet testvéréhez, Arnehoz, csakhogy a dolgok "
+"kissé másképp alakulnak, mint tervezte. Segíts helyreállítani a rendet!\n"
 "\n"
 "(Kezdő nehézségi szint, 4 pálya; a nehézséget magasabbra állítva a "
 "tapasztaltabb játékosoknak is kihívást jelenthet)"
@@ -95,13 +91,17 @@ msgstr "Egyéb közreműködés"
 msgid "And special thanks to everyone else who I forgot to mention."
 msgstr "És külön köszönet mindenki másnak, akit elfelejtettem megemlíteni."
 
+# A Mágus elleni csata -
+# nem fedi a jelentést
 #. [scenario]: id=1_Rooting_Out_A_Mage
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:4
 msgid "Rooting Out A Mage"
-msgstr "Egy mágus gyökeres kiirtása"
+msgstr "A Mágus elpusztítása"
 
+# szabad falu helyett inkább mezőváros - történelmileg inkább ez jellemző
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:40
+#, fuzzy
 msgid ""
 "The remote freehold of Maghre in the western reaches of the kingdom of "
 "Wesnoth was once a peaceful place, its inhabitants largely unaware of the "
@@ -109,6 +109,11 @@ msgid ""
 "them not, until the day a dark mage settled in the region and began seeking "
 "sacrifices for his evil summonings."
 msgstr ""
+"A távoli Maghre mezőváros a Wesnothi Királyság keleti részén feküdt. Ez "
+"valaha egy nagyon békés hely volt, lakói nem voltak tudatában a széles "
+"világban zajló eseményeknek. A háborúk és a háborús szóbeszédek nem "
+"érintették őket addig a napig, mígnem egy sötét mágus telepedett le a "
+"környéken. A mágus áldozatokat keresett a gonosz szertartásaihoz."
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:44
@@ -119,6 +124,13 @@ msgid ""
 "and their children even the bright day. But the nearest lord was more than a "
 "day's ride distant, and messengers sent to seek his help did not return."
 msgstr ""
+"A csontvázak és a zombik leölték az állatokat és felégették a földeket. "
+"'Féljetek Mordaktől a mágustól és engedelmeskedjetek neki!' kiáltották "
+"vészjósló hangon, miközben pusztítottak, amit értek. Az emberek eltűntek az "
+"elszigetelt tanyákról. A nők és a férfiak félni kezdtek az éjszakától, a "
+"gyerekek még nappal is rettegtek. Ám a legközelebbi helyőrség parancsnoka "
+"több mint egy napi lovaglásra volt, a segítséget kérő küldöncök pedig nem "
+"tértek vissza."
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:48
@@ -131,6 +143,14 @@ msgid ""
 "them down and clean and oil them. He set the smiths of Maghre to making "
 "spearheads and ax-blades for the rest."
 msgstr ""
+"Volt egy ember, Bjarn, aki tehetségesnek bizonyult fiatalkorában a "
+"varázslásban. Alduin szigetére a Nagy Akadémiára ment tanulni, majd "
+"visszatért szülőhelyére, varázstudományát itt hasznosította. Az emberek "
+"segítségért fordultak hozzá és kérték, hogy legyen a vezetőjük. Bjarn "
+"rátalált néhány rég nem használt fegyverre, amiket még a nagyapáik "
+"használtak utoljára. Úgy rendelkezett, hogy a fegyvereket tisztítsák meg és "
+"olajozzák meg. Maghre kovácsait megbízta, hogy készítsenek lándzsahegyeket "
+"és baltafejeket azoknak, akiknek nem jutott a fegyverekből."
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:52
@@ -142,6 +162,12 @@ msgid ""
 "brother, with which they might call to each other when in dire need. Bjarn "
 "sent out that call."
 msgstr ""
+"Bjarnnak volt egy testvére, Arne. Ő is elhagyta Maghret, hogy megtalálja a "
+"maga szerencséjét. Egy kisebb lovascsapat vezetője lett, akik fizetségért "
+"cserébe karavánokat őriztek. Mindenki szerencséjére amikor Bjarn még csak "
+"mágustanonc volt, készített egy pár amulettet. Egyet magának, a másikat a "
+"testvérének. Segítségükkel érintkezésbe léphettek egymással, ha szükség volt "
+"rá. Bjarn kihasználta ezt a lehetőséget."
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:56
@@ -149,11 +175,13 @@ msgid ""
 "Heeding the call of his amulet, Arne gathered such men as he could and "
 "hurried to Maghre to help Bjarn."
 msgstr ""
+"Az amulett hívását meghallva Arne annyi embert gyűjtött össze, amennyit csak "
+"tudott, és Bjarn segítségére sietett. "
 
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:105
 msgid "Slay Mordak, the evil mage"
-msgstr "Legyőzöd Mordakot, a gonosz mágust"
+msgstr "Legyőzöd Mordaket, a gonosz mágust"
 
 #. [objective]: condition=lose
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:109
@@ -249,7 +277,7 @@ msgstr "Magnus"
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:97
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:138
 msgid "Humans"
-msgstr ""
+msgstr "Emberek"
 
 #. [side]: type=Dark Sorcerer, id=Mordak
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:299
@@ -265,12 +293,12 @@ msgstr "Mordak"
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:146
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:126
 msgid "Enemies"
-msgstr ""
+msgstr "Ellenségek"
 
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:331
 msgid "Greetings, my brother! How may my men and I be of aid?"
-msgstr ""
+msgstr "Szevasz Bjarn. Na, mi a nagy helyzet?"
 
 #. [message]: speaker=Bjarn
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:335
@@ -280,6 +308,10 @@ msgid ""
 "itself! The villagers of Maghre have taken up weapons but they are not "
 "trained fighters; but we need your men, and you to lead them."
 msgstr ""
+"Egy sötét mágus jelent meg. A teremtményei Mordaknek nevezik. Eddig a távoli "
+"farmokat terrorizálták, de félek, hamarosan minket fognak megtámadni! Maghre "
+"lakosai fegyvert fogtak, de ők nem képzett harcosok, így szükség van az "
+"embereidre és rád, hogy irányítsd őket."
 
 #. [message]: speaker=Bjarn
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:339
@@ -287,6 +319,8 @@ msgid ""
 "I can feel Mordak's foul touch on the hidden currents of the earth and air. "
 "He is somewhere due north of here, I would say not more than two days' ride."
 msgstr ""
+"Érzem Mordak jelenlétét. Valahol innen északra lehet, nem messzebb, mint két "
+"napi lovaglásra."
 
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:343
@@ -294,6 +328,8 @@ msgid ""
 "I will lead my men, and such villagers as can keep up with us, north to slay "
 "this Mordak! What will you do?"
 msgstr ""
+"Északra vezetem az embereimet és azokat a falubelieket, akik lépést tudnak "
+"tartani velünk, hogy legyőzzük Mordaket. Te mit fogsz tenni?"
 
 #. [message]: speaker=Bjarn
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:347
@@ -303,6 +339,10 @@ msgid ""
 "his creatures, I will try to defeat Mordak himself with magic at an "
 "unguarded moment. Together we may accomplish what either alone may not."
 msgstr ""
+"Te lennél a jobb kéz, én pedig a bal. Én a legjobb felderítőinkkel és "
+"erdészeinkkel előre lopakodok. Miközben Mordak  ellen vonulsz és megölöd a "
+"teremtményeit, én megpróbálom varázslattal legyőzni őt magát, egy kedvező "
+"pillanatban. Együtt sikerülhet az, ami külön-külön egyikünknek sem."
 
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:358
@@ -310,13 +350,18 @@ msgid ""
 "Bjarn should be in position by now. Press them, distract the adept so Bjarn "
 "can spring his trap!"
 msgstr ""
+"Bjarnnak már a helyén kellene lennie mostanra. Támadjatok, el kell terelnünk "
+"a figyelmüket, hogy Bjarn lecsaphasson!"
 
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:366
+#, fuzzy
 msgid ""
 "Bjarn has not made his attack! I begin to fear for him... and it means we "
 "must deal with this Mordak ourselves!"
 msgstr ""
+"Bjarn nem támadott! Kezdek aggódni...úgy látszik egyedül kell leszámolnunk "
+"Mordakkel!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:381
@@ -326,12 +371,12 @@ msgstr "Arghhh!!!"
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:385
 msgid "Good work, men! But what has become of my brother?"
-msgstr ""
+msgstr "Szép munka emberek! Vajon mi történhetett a testvéremmel?"
 
 #. [message]: speaker=unit
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:389
 msgid "Worried about him, are you? E-he-he..hergh...gaargh..."
-msgstr "Izgulsz érte, ugye? He-he-he..hergh...gaargh..."
+msgstr "Izgulsz érte ugye? He-he-he..hergh...gaargh..."
 
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:393
@@ -339,6 +384,7 @@ msgid ""
 "There's nothing more to be had from this one; we will have to search for "
 "Bjarn ourselves!"
 msgstr ""
+"Semmi többet nem tudhattunk meg tőle. Magunknak kell megkeresnünk Bjarnt!"
 
 #. [message]: role=Reporter
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:397
@@ -346,16 +392,18 @@ msgid ""
 "Sir, our scouts report that Bjarn was seen captured and carried away further "
 "north!"
 msgstr ""
+"Uram, felderítőink jelentették, hogy Bjarnt elfogták és északra hurcolták!"
 
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:401
 msgid "That they should dare this! We will give chase at once."
-msgstr ""
+msgstr "Hogy merészelik! Üldözőbe vesszük őket, de azonnal!"
 
 #. [message]: speaker=Mordak
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:414
 msgid "Your brother's plan to ambush me has failed. He is our prisoner now."
 msgstr ""
+"A testvéred terve, hogy rajtamüssön megbukott. Ő most már a mi foglyunk."
 
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:418
@@ -363,18 +411,18 @@ msgid ""
 "My brother, kidnapped? I have failed you, Bjarn! And even now Mordak's "
 "forces descend upon the village!"
 msgstr ""
+"A testvéremet elrabolták? Cserben hagytalak Bjarn! Ráadásul Mordak csapatai "
+"rajtaütnek a falun!"
 
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:433
-#, fuzzy
 msgid "I hear these creatures are nigh-immune to our weapons, let us see!"
 msgstr ""
-"Úgy hallottam, ezek a lények ellen majdnem hatástalanok a fegyvereink, "
-"lássuk csak!"
+"Úgy hallottam, ezek ellen a lények ellen majdnem hatástalanok a fegyvereink. "
+"Lássuk csak!"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:448
-#, fuzzy
 msgid "That was not so hard!"
 msgstr "Ez nem is volt olyan nehéz!"
 
@@ -391,24 +439,32 @@ msgstr "A hajsza"
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:18
+#, fuzzy
 msgid ""
 "The pursuit had already run for several days when the pursuers came to the "
 "bounds of the huge forest known as the Gray Woods. Ancient tales warned of "
 "lost souls haunting the wood, hunting and killing anyone brave enough to "
 "enter it."
 msgstr ""
+"A hajsza már napok óta tartott, amikor az emberrablók egy hatalmas erdő "
+"határához értek. Számos ősi történet létezett az elveszett lelkekről, akik "
+"ebben az erdőben kísértenek és megölik mindazokat, akik elég bátrak bemenni "
+"oda."
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:23
+#, fuzzy
 msgid ""
 "Heedless of those rumors, Arne followed them. His only worry was that his "
 "horsemen would be at disadvantage if attacked in the forest."
 msgstr ""
+"A híresztelések ellenére, Arne utánuk ment az erdőbe. Egyedül amiatt "
+"agódott, hogy lovasai hátrányban vannak a fák közt, ha megtámadják őket."
 
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:88
 msgid "Fight your way through the woods before the kidnappers escape"
-msgstr "Átküzdöd magadat az erdőn, mielőtt az emberrablók meglépnének"
+msgstr "Átküzdöd magadat a fákon, mielőtt az emberrablók meglépnének"
 
 #. [side]: type=Elvish Rider, id=Nil-Galion
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:167
@@ -418,7 +474,7 @@ msgstr "Nil-Galion"
 #. [side]: type=Elvish Rider, id=Nil-Galion
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:174
 msgid "Elves"
-msgstr ""
+msgstr "Tündék"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:266
@@ -430,18 +486,23 @@ msgstr "Dulakodás hangjai szűrődtek ki az erdőből."
 msgid ""
 "Come on, men. A stroll through such lovely green woods, what could be finer?"
 msgstr ""
+"Gyerünk emberek! Egy séta a csodálatos zöld rengetegben, mi lehetne ennél "
+"jobb?"
 
 #. [message]: role=speaker
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:274
+#, fuzzy
 msgid ""
 "It is whispered that hungry ghosts rule this forest, and kill everyone who "
 "dares to enter."
 msgstr ""
+"Azt beszélik, hogy éhes szellemek uralják ezt az erdőt és mindenkit "
+"megölnek, aki be merészel menni."
 
 #. [message]: speaker=Nil-Galion
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:278
 msgid "You there! Halt and explain yourself."
-msgstr "Te ott! Állj, és mondd, ki vagy!"
+msgstr "Te ott! Állj meg és azonosítsd magad!"
 
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:282
@@ -454,6 +515,9 @@ msgid ""
 "Those men told me their prisoner had attempted to murder their master, and "
 "warned that evil men would follow him. Advance no further, or you will die."
 msgstr ""
+"Azok az emberek azt mondták nekem, hogy a foglyuk megpróbálta megölni a "
+"mesterüket és figyelmeztettek, hogy gonosz emberek üldözik őket. Ne menj "
+"tovább, vagy meghalsz."
 
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:290
@@ -461,22 +525,31 @@ msgid ""
 "So much for those ghost stories. Mere elves will not stop me from freeing my "
 "brother!"
 msgstr ""
+"Ennyit a szellemhistóriákról. Ezek a tündék nem fogják megakadályozni, hogy "
+"kiszabadítsam a testvéremet!"
 
 #. [message]: role=speaker
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:294
+#, fuzzy
 msgid ""
 "I am glad at least that we will not have to face ghosts. But those elves "
 "will have us at a disadvantage; our horses will not maneuver well in the "
 "trees."
 msgstr ""
+"Hála égnek nem szellemekkel kell szembenéznünk. Azonban a tündék előnyben "
+"vannak, mert a mi lovaink nem tudnak olyan jól manőverezni a fák között."
 
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:298
+#, fuzzy
 msgid ""
 "Bah, just stay on the paths; our spearmen and bowmen can fight in the deeper "
 "woods. We have faced and won through greater perils than those amateurs can "
 "offer."
 msgstr ""
+"Pah, maradjatok az úton. Lándzsásaink és íjlövészeink harcolhatnak a "
+"rengeteg mélyében is. Szembenéztünk már ennél nagyobb kihívással is és akkor "
+"is győztünk. "
 
 #. [unit]: type=Dark Adept, id=Muff Toras
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:313
@@ -494,11 +567,13 @@ msgid ""
 "Curses! If they had been an hour slower our master's reinforcements would "
 "already be here to meet us."
 msgstr ""
+"Átkozottak! Ha egy órával később jöttek volna, akkor a mesterünk erősítése "
+"ideérkezett volna."
 
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:370
 msgid "Kill the Dark Adept before his reinforcements arrive"
-msgstr "Legyőzöd az árnyak tanítványát, mielőtt megérkezne az erősítése"
+msgstr "Legyőzöd az Árnyak tanítványát, mielőtt megérkezne az erősítése"
 
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:388
@@ -512,6 +587,9 @@ msgid ""
 "precious brother the mage north with half my men a day since; he will be "
 "safely locked away in our master's dungeons by now."
 msgstr ""
+"Hah! Elfogtatok, de nem sokra mentek vele. A mágus testvéredet északra "
+"küldtem egy nappal ezelőtt a fele embereimmel. Mostanra már biztosan "
+"elzárták a mesterem börtönébe. "
 
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:403
@@ -519,6 +597,7 @@ msgid ""
 "My blade is at your throat. Give us the way to my brother now, or I will "
 "spill your wretched blood on the ground."
 msgstr ""
+"Torkodon van a késem. Mondd el az útirányt, vagy kiontom nyomorult véredet."
 
 #. [event]
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:406
@@ -567,14 +646,15 @@ msgid ""
 "guards are $first_password_$first_password_number and $second_password_"
 "$second_password_number|."
 msgstr ""
-"Háromnapi lovaglásra északkeletre, egy elhagyott várban. A jelszavak, amit "
-"az őröknek mondani kell $first_password_$first_password_number és "
+"Háromnapi lovaglásra északkeletre, az elhagyott várban van. A jelszavak, "
+"amit az őröknek mondani kell $first_password_$first_password_number és "
 "$second_password_$second_password_number|."
 
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:424
 msgid "Bind him and take him with us. If he has played us false, he will die."
 msgstr ""
+"Kötözzétek meg, őt is magunkkal visszük. Ha rászedett minket, akkor meghal."
 
 #. [unit]: id=Brena, type=Iron Mauler
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:436
@@ -587,6 +667,8 @@ msgid ""
 "Greetings. I am Brena, a knight errant. I saw you pursuing and fighting the "
 "foul undead. Are there more of them to be destroyed?"
 msgstr ""
+"Üdvözletem. Brena vagyok, egy vándor lovag. Láttam, hogyan üldöztétek és "
+"győztétek le az ocsmány élőholtakat. Maradt még, akit le kéne győzni?"
 
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:452
@@ -594,6 +676,8 @@ msgid ""
 "Aye. We think there's a nest of them north-east of here. They've captured my "
 "brother."
 msgstr ""
+"Hogyne. Úgy hisszük északkeletre van egy fészekre való belőlük. Elfogták a "
+"testvéremet."
 
 #. [message]: speaker=Brena
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:456
@@ -601,6 +685,8 @@ msgid ""
 "I bear a great hatred towards their kind. I will follow and fight them with "
 "you, if you permit."
 msgstr ""
+"Gyűlölöm a fajtájukat. Ha megengednéd, követnélek téged és veled harcolnék "
+"ellenük."
 
 #. [message]: type=Horseman
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:460
@@ -609,7 +695,6 @@ msgstr "Csak hátráltatna minket!"
 
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:464
-#, fuzzy
 msgid "It is my place to decide this."
 msgstr "Itt én döntök."
 
@@ -626,7 +711,7 @@ msgstr "Köszönöm. A társaim és én segíteni fogunk nemes küldetésetekben
 #. [option]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:478
 msgid "I am sorry. We have not the time to spare."
-msgstr "Sajnálom. Nincs vesztenivaló időnk."
+msgstr "Sajnálom. Nincs vesztegetnivaló időnk."
 
 #. [message]: speaker=Brena
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:482
@@ -634,7 +719,7 @@ msgid ""
 "Take this, then, for I see that you are on a quest. My comrades will help "
 "you whenever you call for them."
 msgstr ""
-"Akkor fogd ezt, látom, hogy fontos küldetésed van. A társaim segíteni "
+"Akkor fogd ezt. Látom, hogy fontos küldetésed van. A társaim segíteni "
 "fognak, akármikor is hívod őket."
 
 #. [message]: speaker=narrator
@@ -645,23 +730,22 @@ msgstr "Kaptál 70 aranyat!"
 #. [message]: speaker=Muff Toras
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:519
 msgid "My reinforcements are here!"
-msgstr "Itt az erősítésem!"
+msgstr "Ott az erősítésem!"
 
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:523
 msgid "He escaped us..."
-msgstr "Meglépett tőlünk..."
+msgstr "Meglépett előlünk..."
 
 #. [message]: speaker=Nil-Galion
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:534
-#, fuzzy
 msgid ""
 "Foolish human, you have killed me but you will not catch the undead in time. "
 "I have fulfilled my contract, and will be reanimated soon to become a lord "
 "of their armies."
 msgstr ""
 "Ti ostoba emberek megöltetek engem, de nem fogjátok elkapni az élőholtakat. "
-"A szerződésem szerint cselekedtem, és így hamarosan feltámasztanak, hogy "
+"A szerződésem szerint cselekedtem és így hamarosan feltámasztanak, hogy "
 "seregük parancsnoka lehessek."
 
 #. [message]: speaker=Arne
@@ -730,11 +814,10 @@ msgstr "Megmented Bjarnt"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:319
-#, fuzzy
 msgid ""
 "Arne's men arrived at the castle and were immediately challenged by some "
 "guards."
-msgstr "Arne megérkezett a vár alá, és néhány őr rögtön megállította."
+msgstr "Arne megérkezett a vár alá, de néhány őr megállította."
 
 #. [message]: speaker=Guard_leader
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:323
@@ -787,20 +870,18 @@ msgstr ""
 
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:400
-#, fuzzy
 msgid ""
 "My sword-arm has a say in who will do the dying. Come on, men, let's kill "
 "some orcs."
 msgstr ""
-"Tudtam, hogy harcolnunk kell a bátyám megmentéséért. Gyerünk, emberek, "
+"Tudtam, hogy harcolnunk kell a testvérem megmentéséért. Gyerünk, emberek, "
 "vágjunk le pár orkot!"
 
 #. [message]: speaker=Guard2_leader
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:449
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:565
 msgid "Are you our relief arriving? Does this mean we get to leave here now?"
-msgstr ""
-"Ti vagytok a megérkező őrváltás? Ez azt jelenti, hogy távozhatunk innen?"
+msgstr "Ti vagytok a váltás? Ez azt jelenti, hogy elmehetünk innen?"
 
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:453
@@ -854,7 +935,7 @@ msgstr "Köszönöm. Zavaró kis formalitás ez, nemde?"
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:509
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:625
 msgid "That's the wrong password! These aren't our relief! Get them!"
-msgstr "Ez hibás jelszó! Ők nem az őrváltás! Kapjátok el őket!"
+msgstr "Ez hibás jelszó! Ők nem a váltás! Kapjátok el őket!"
 
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:515
@@ -863,8 +944,8 @@ msgid ""
 "I think I should better support my men at the front to make sure we can free "
 "my brother."
 msgstr ""
-"Úgy gondolom előre kellene mennem segíteni az embereimnek, hogy biztosan "
-"sikerüljön kiszabadítani a testvéremet."
+"Talán előre kellene mennem segíteni az embereimnek, hogy biztosan sikerüljön "
+"kiszabadítani a testvéremet."
 
 #. [message]: speaker=unit
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:644
@@ -878,18 +959,17 @@ msgstr "Egy kulcs van a köntösében..."
 
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:652
-#, fuzzy
 msgid ""
 "That may well be the key to the cell they're holding Bjarn in! I will take "
 "it."
 msgstr ""
-"Ez kell legyen a kulcs Bjarn cellájához. Elviszem a kulcsot. Nem várhatok "
-"tovább, látnom kell a fivéremet. Gyerünk, szabadítsuk ki!"
+"Ez kell legyen a kulcs Bjarn cellájához. Elviszem a kulcsot. Gyerünk, "
+"szabadítsuk ki!"
 
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:658
 msgid "Move Arne to the cell with his brother to free him"
-msgstr "Elviszed Arnet az öccse cellájához, hogy kiszabadítsa"
+msgstr "Elviszed Arnet a testvére cellájához, hogy kiszabadítsa"
 
 #. [message]: speaker=unit
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:688
@@ -908,7 +988,6 @@ msgstr "Megtaláltam Bjarnt! Ebben a cellában van."
 
 #. [message]: speaker=Bjarn
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:758
-#, fuzzy
 msgid "Good to see you, Arne. Now get out of this dungeon, please?"
 msgstr ""
 "Jó újra látni téged, Arne. Kérlek, segíts kijutni ebből a várbörtönből!"
@@ -922,15 +1001,14 @@ msgstr ""
 
 #. [message]: speaker=Bjarn
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:770
-#, fuzzy
 msgid ""
 "The accursed dark sorcerer Rotharik has imprisoned me behind this magically "
 "enhanced iron gate. It can only be opened with the correct key. You must get "
 "it from him to free me."
 msgstr ""
-"Az az átkozott fekete mágus Rotharik eme varázslattal megerősített vaskapu "
-"mögé zárt. Csak a megfelelő kulcs képes kinyitni a zárat. Meg kell "
-"szereznetek tőle a kulcsot, hogy kiszabadíthassatok!"
+"Az átkozott Rotharik fekete mágus tömlöcbe vetett emögé a varázslattal "
+"megerősített vaskapu mögé. Csak a megfelelő kulcs képes kinyitni a zárat. "
+"Meg kell szereznetek tőle a kulcsot, hogy kiszabadíthassatok."
 
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:781
@@ -941,9 +1019,7 @@ msgstr "Megölöd a sötét mágust, hogy megszerezd tőle a cella kulcsát"
 #. [message]: speaker=Bjarn
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:822
 msgid "Thank you for saving me. I had almost given up hope you would free me."
-msgstr ""
-"Köszönöm, hogy megmentettetek. Már majdnem feladtam a reményt, hogy "
-"kiszabadítotok."
+msgstr "Köszönöm, hogy kiszabadítottatok. Már majdnem feladtam a reményt."
 
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:826
@@ -968,7 +1044,7 @@ msgstr "Minden elveszett, mert meghaltam..."
 #. [message]: speaker=Rotharik
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:866
 msgid "You are too late! Your brother is already dead! Muhahahaha..."
-msgstr "Elkéstél! A bátyád már halott! Muhahahaaaa..."
+msgstr "Elkéstél! A testvéred halott! Bruhahahaaaa..."
 
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:870
@@ -978,12 +1054,12 @@ msgstr "Arghh!!!"
 #. [scenario]: id=4_Return_To_The_Village
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:4
 msgid "Return to the Village"
-msgstr "Visszatérés a faluba"
+msgstr "Visszatérés Maghrebe"
 
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:56
 msgid "Find out what is happening in the village"
-msgstr "Kideríted mi folyik a faluban"
+msgstr "Kideríted, mi folyik a faluban"
 
 #. [objective]: condition=lose
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:64
@@ -1008,21 +1084,20 @@ msgid ""
 "There. Your village is just across those hills, and already I see men coming "
 "to greet us!"
 msgstr ""
-"Amott. A falunk a azokon a dombokon túl van, már látom is az embereket, akik "
-"az üdvözlésünkre sietnek!"
+"Amott. A falunk a hegyeken túl van, már látom is az embereket, akik az "
+"üdvözlésünkre sietnek!"
 
 #. [message]: speaker=Bjarn
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:167
-#, fuzzy
 msgid ""
 "No, they are fleeing from something. We must find out what is happening over "
 "there!"
-msgstr "Nem. Valami elől menekülnek. Ki kell derítenünk, hogy mi folyik ott!"
+msgstr "Nem, valamiért menekülnek. Ki kell derítenünk, hogy mi folyik ott!"
 
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:171
 msgid "Men! Ready your weapons!"
-msgstr ""
+msgstr "Emberek! Fegyverbe!"
 
 #. [message]: speaker=Bjarn
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:175
@@ -1036,14 +1111,13 @@ msgstr ""
 
 #. [message]: speaker=Councillor Hoban
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:186
-#, fuzzy
 msgid "I am glad to see you returned."
 msgstr "Örvendek, hogy viszontláthatlak titeket!"
 
 #. [message]: speaker=Bjarn
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:190
 msgid "No gladder than I am to be here. But what has happened to Maghre?"
-msgstr ""
+msgstr "Nincs örvendetesebb, mint itt lenni. Azonban mi történt Maghrevel?"
 
 #. [message]: speaker=Councillor Hoban
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:194
@@ -1051,10 +1125,11 @@ msgid ""
 "Soon after you departed we were beset by orcs. With half the men of Maghre "
 "gone, we could not stop them."
 msgstr ""
+"Nem sokkal azután, hogy elmentetek, bekerítettek az orkok. Mivel Maghre "
+"férfi lakosainak fele elment, nem tudtuk megállítani őket."
 
 #. [message]: speaker=Councillor Hoban
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:198
-#, fuzzy
 msgid ""
 "The orcish warlord aims to enslave us. We will not be able to hold out for "
 "much longer."
@@ -1063,29 +1138,25 @@ msgstr ""
 
 #. [message]: speaker=Councillor Hoban
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:202
-#, fuzzy
 msgid ""
 "Have a care, his men are fell fighters and have killed many. Very few remain "
 "who can bear arms, but I will send them to aid you in battle."
 msgstr ""
 "Légy óvatos, sokunk haláláért felelős már. Nem sokan maradtak, akik fegyvert "
-"tudnának ragadni, de a segítségetekre küldöm őket ebben a csatában."
+"tudnának ragadni, de a segítségetekre küldöm őket a csatába."
 
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:207
-#, fuzzy
 msgid "Slay the Orcish Warlord to free the village"
 msgstr "Legyőzöd az ork hadurat, és ezzel felszabadítod a falut"
 
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:229
-#, fuzzy
 msgid "Finally the warlord is killed. Now you can go back to Maghre."
-msgstr "Végre elpusztult ez az ork. Most már visszatérhettek a falvatokba."
+msgstr "Végre a hadúr halott. Most már visszatérhettek Maghrebe."
 
 #. [message]: speaker=Bjarn
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:233
-#, fuzzy
 msgid ""
 "So much has been destroyed. It will be difficult to repair all that the orcs "
 "and undead have wrecked. And they could come again."
@@ -1099,6 +1170,8 @@ msgid ""
 "I must go back to earning my living. But we have our amulets, little "
 "brother. If you are beset again, I will come."
 msgstr ""
+"Nekem vissza kell mennem, hogy megkeressem, ami a megélhetésemhez kell. Itt "
+"vannak azonban az amulettjeink. Ha ismét bekerítenének, akkor visszajövök."
 
 #. [message]: speaker=Bjarn
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:251
@@ -1120,9 +1193,8 @@ msgstr ""
 
 #. [scenario]: id=epilog
 #: data/campaigns/Two_Brothers/scenarios/5_Epilog.cfg:4
-#, fuzzy
 msgid "A Tale of Two Brothers - Epilogue"
-msgstr "Két fivér meséje"
+msgstr "Két fivér meséje - Epilógus"
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/5_Epilog.cfg:11
@@ -1131,15 +1203,104 @@ msgid ""
 "people of Maghre had to work very hard, but felt better knowing Arne's men "
 "would be their firm allies in troubled times."
 msgstr ""
+"Évekbe telt, hogy újra felépítsék a falut és újraélesszék a farmokat. Maghre "
+"lakosainak keményen kellett dolgozniuk, de megkönnyebbültek tudván, milyen "
+"hatalmas szövetségesük Arne a kemény időkben."
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/5_Epilog.cfg:15
+#, fuzzy
 msgid ""
 "Arne and his men left the village assured that it would be well guided by "
 "Bjarn. On their journeys they faced many challenges and battles. Some tales "
 "even mention Arne's name together with that of the famous elvish lord "
 "Kalenz, but this is a different story..."
 msgstr ""
+"Arne és emberei elhagyták a falut tudván, hogy azt Bjarn bölcsen fogja "
+"vezetni. Útjuk során számos kihívással és csatával néztek szembe. Néhány "
+"történet együtt említi a nevét a híres tünde lorddal, Kalenzzel, de az egy "
+"másik történet..."
+
+#~ msgid ""
+#~ "Hurry, we have to track them down. Maybe we can still get them. They have "
+#~ "to be in the north!"
+#~ msgstr ""
+#~ "Siessünk, a nyomukra kell akadnunk. Talán még elkaphatjuk őket. Valahol "
+#~ "észak felé kell lenniük."
+
+#~ msgid "Hurry to the north and stop the kidnappers"
+#~ msgstr "Északra sietsz és megállítod az emberrablókat"
+
+#~ msgid "Come on men. A bracing walk in the woods never hurt anyone, did it?"
+#~ msgstr ""
+#~ "Gyerünk, emberek! Egy frissítő erdei sétába még senki nem halt bele, igaz?"
+
+#, fuzzy
+#~ msgid ""
+#~ "Those men had some great arguments persuading me to stop you and let them "
+#~ "pass my forest. Any further, and you will die."
+#~ msgstr ""
+#~ "Azok az emberek elég nyomós indokokkal meggyőztek, hogy ne engedjelek "
+#~ "belépni titeket az erdőbe. Ha megkísérlitek, halál vár rátok."
+
+#, fuzzy
+#~ msgid "Curses! I hope the reinforcements get here to aid our escape."
+#~ msgstr ""
+#~ "Átkozottak! Remélem az erősítés idejében ideér, és hamarosan "
+#~ "kiszabadulunk."
+
+#~ msgid ""
+#~ "Hah! You got me alright, but what does that help? No harm telling you "
+#~ "now, I suppose. Your precious mage is safely locked away in our dungeons. "
+#~ "I was set up to be a decoy."
+#~ msgstr ""
+#~ "Á! Elfogtatok, de mire mentek vele? Nem sok hasznát veszitek, úgyhogy "
+#~ "elmondom... A drágalátos mágusotok biztos helyre van zárva a "
+#~ "várbörtöneink egyikében. Én voltam a csalétek."
+
+#~ msgid ""
+#~ "Nooo! Tricked again. Tell us where he is and we shall spare your "
+#~ "miserable life."
+#~ msgstr ""
+#~ "Ó nem! Újabb trükk. Mondd meg, hol van, és megkíméljük nyomorult életedet!"
+
+#, fuzzy
+#~ msgid "Thank you. Leave him, men, we ride east."
+#~ msgstr "Köszönöm. Hagyjátok, emberek, keletnek lovagolunk!"
+
+#~ msgid ""
+#~ "Greetings, I am Brena. I saw you fighting the foul undead. I like nothing "
+#~ "better than smashing those foul skeletons and their ilk. Though I came "
+#~ "too late to help in this fight, I would like to aid you in your "
+#~ "forthcoming endeavors."
+#~ msgstr ""
+#~ "Üvözlet, Brena vagyok. Láttam, ahogyan a bolond élőholtakkal küzdöttetek. "
+#~ "Semmit sem szeretek jobban, mint azokat a csontvázakat és a fajtájukat "
+#~ "aprítani. Bár lekéstem ezt a csatát, szeretnék csatlakozni hozzátok az "
+#~ "elkövetkezőkben."
+
+#~ msgid "I think your village is protected well, though."
+#~ msgstr "Úgy gondolom a falvatok azért kellően védett."
+
+#~ msgid "So am I. But what is happening to our village?"
+#~ msgstr "Én is örvendek. De mi történt a falvunkkal?"
+
+#~ msgid ""
+#~ "In the time you have been away a looting band of orcs took over this "
+#~ "region. There was noone here to stop them."
+#~ msgstr ""
+#~ "Mialatt távol voltatok, egy fosztogató ork horda uralma alá vonta a "
+#~ "környéket. Senki nem volt itt, hogy megállítsa őket."
+
+#~ msgid ""
+#~ "I have to leave you now. My men and I are needed by others, too. But "
+#~ "should you ever face another grim foe, send me a messenger. I'll come as "
+#~ "fast as I can, little brother."
+#~ msgstr ""
+#~ "Most el kell válnom tőletek. Saját és embereim szolgálataira máshol is "
+#~ "szükség van. De ha újra egy ilyen alávaló ellenséggel kerülnétek szembe, "
+#~ "azonnal küldjetek utánam egy hírvivőt. Amilyen gyorsan csak tudok, jönni "
+#~ "fogok, öcsém."
 
 #~ msgid ""
 #~ "In a remote part of Wesnoth, people lived their lives working hard and "
@@ -1160,11 +1321,8 @@ msgstr ""
 #~ msgstr ""
 #~ "Bjarn, a falu mágusa, tudta, hogy lehet szembeszállni ezzel a "
 #~ "fenyegetéssel. Megkérte bátyját, Arne-t, aki egy zsoldos lovascsapat "
-#~ "vezetője volt, hogy segítsen neki, és számos falubelit is fegyverekkel "
+#~ "vezetője volt, hogy segítsen neki, és számos falvat is fegyverekkel "
 #~ "látott el. "
-
-#~ msgid "'ello there, Bjarn. So, what's the big fuss?"
-#~ msgstr "Szevasz Bjarn. Na, mi a nagy helyzet?"
 
 #~ msgid ""
 #~ "Mordak, an evil mage, threatens our lives and livelihoods. He is "
@@ -1187,15 +1345,8 @@ msgstr ""
 #~ "I will attempt to sneak through the forest. If I can slay the evil one "
 #~ "while he is off his guard, the battle will be over in one stroke!"
 #~ msgstr ""
-#~ "Megkísérlek átlopakodni az erdőn. Ha meg tudom ölni a gonoszt míg védelme "
-#~ "távol van, akkor a csata egyetlen csapásra eldőlhet!"
-
-#~ msgid ""
-#~ "Bjarn should have been in position by now. I wonder if anything's "
-#~ "happened to him?"
-#~ msgstr ""
-#~ "Bjarnnak már a helyén kellene lennie mostanra. Remélem nem történt vele "
-#~ "semmi..."
+#~ "Megkísérlek átjutni az erdőn. Ha meg tudom ölni a gonoszt, akkor a csata "
+#~ "egyetlen csapásra eldőlhet!"
 
 #~ msgid ""
 #~ "This is worrying. What's happened to Bjarn? I suppose we must slay the "
@@ -1214,18 +1365,18 @@ msgstr ""
 #~ "Sir, he's been kidnapped! I just saw some men running off with him. They "
 #~ "looked like friends of this one."
 #~ msgstr ""
-#~ "Uram, elrabolták! Épp most láttam néhány embert elfutni vele. Úgy néztek "
-#~ "ki, mint ennek az izének a barátai."
+#~ "Uram! Szerintem elrabolták! Épp most láttam néhány embert elfutni vele. "
+#~ "Úgy néztek ki, mint ennek az izének a barátai."
 
 #~ msgid "Damn! I suppose we have to go after him, then."
-#~ msgstr "Fenébe! Feltételezem, hogy akkor utánuk kell mennünk."
+#~ msgstr "Fenébe! Feltételezem, hogy utánuk kell mennünk ezek után."
 
 #~ msgid ""
 #~ "Ha, so you thought to send a mage around and stab me in the back? Well, I "
 #~ "have news for you. We've kidnapped him!"
 #~ msgstr ""
 #~ "Á, szóval úgy gondoltad, hogy küldesz egy mágust, és hátbaszúrsz? Hát, új "
-#~ "híreim vannak számodra. Elraboltuk őt!"
+#~ "híreim vannak a számodra. Elraboltuk őt!"
 
 #~ msgid ""
 #~ "What? Bjarn kidnapped? And the evil mage still ravages the land? Noooo!"
@@ -1233,89 +1384,5 @@ msgstr ""
 #~ "Micsoda? Bjarnt elrabolták? És a fekete mágus továbbra is fosztogatja a "
 #~ "földeket? Neeem!"
 
-#~ msgid ""
-#~ "The kidnappers fled north through the forest, and Arne made to follow "
-#~ "them, although his horsemen would be at a disadvantage."
-#~ msgstr ""
-#~ "Az emberrablók észak felé menekültek az erdőn keresztül, Arne pedig "
-#~ "követte őket oda is, bár a lovasai azon a terepen hátrányban voltak."
-
-#~ msgid "Come on men. A bracing walk in the woods never hurt anyone, did it?"
-#~ msgstr ""
-#~ "Gyerünk, emberek! Egy frissítő erdei sétába még senki nem halt bele, igaz?"
-
-#~ msgid ""
-#~ "Those men had some great arguments persuading me to not allow you to "
-#~ "enter this forest. Any further, and you will die."
-#~ msgstr ""
-#~ "Azok az emberek elég nyomós indokokkal meggyőztek, hogy ne engedjelek "
-#~ "belépni titeket az erdőbe. Ha megkísérlitek, halál vár rátok."
-
 #~ msgid "A glorious combat at last, against mounted enemies!"
 #~ msgstr "Végre egy dicső küzdelem, lovas ellenfelek ellen!"
-
-#~ msgid "Curses! I hope the reinforcements get here so I can escape soon."
-#~ msgstr ""
-#~ "Átkozottak! Remélem az erősítés idejében ideér, és hamarosan kiszabadulok."
-
-#~ msgid ""
-#~ "Hah! You got me alright, but what does that help? No harm telling you "
-#~ "now, I suppose. Your precious mage is safely locked away in our dungeons. "
-#~ "I was set up to be a decoy."
-#~ msgstr ""
-#~ "Á! Elfogtatok, de mire mentek vele? Nem sok hasznát veszitek, úgyhogy "
-#~ "elmondom. A drágalátos mágusotok biztos helyre van zárva a várbörtöneink "
-#~ "egyikében. Én voltam a csalétek."
-
-#~ msgid ""
-#~ "Nooo! Tricked again. Tell us where he is and we shall spare your "
-#~ "miserable life."
-#~ msgstr ""
-#~ "Ó nem! Újabb trükk. Mondd meg, hol van, és megkíméljük nyomorult életedet!"
-
-#~ msgid "Thank you. Leave him, men, we ride East."
-#~ msgstr "Köszönöm. Hagyjátok, emberek, keletnek lovagolunk!"
-
-#~ msgid ""
-#~ "Greetings, I am Brena. I saw you fighting the foul undead. I like nothing "
-#~ "better than smashing those foul skeletons and their ilk. Though I came "
-#~ "too late to help in this fight, I would like to aid you in your "
-#~ "forthcoming endeavors."
-#~ msgstr ""
-#~ "Üdvözlet, Brena vagyok. Láttam, ahogyan az aljas élőholtakkal "
-#~ "küzdöttetek. Semmit sem szeretek jobban, mint azokat az ocsmány "
-#~ "csontvázakat és a fajtájukat aprítani. Bár lekéstem ezt a csatát, "
-#~ "szeretnék csatlakozni hozzátok az elkövetkezőkben."
-
-#~ msgid ""
-#~ "Hurry, we have to track them down. Maybe we can still get them. They have "
-#~ "to be in the north!"
-#~ msgstr ""
-#~ "Siessünk, a nyomukra kell akadnunk. Talán még elkaphatjuk őket. Valahol "
-#~ "észak felé kell lenniük!"
-
-#~ msgid "Hurry to the north and stop the kidnappers"
-#~ msgstr "Északra sietsz és megállítod az emberrablókat"
-
-#~ msgid "I think your village is protected well, though."
-#~ msgstr "Úgy gondolom a falvatok azért kellően védett."
-
-#~ msgid "So am I. But what is happening to our village?"
-#~ msgstr "Én is örvendek. De mi történt a falunkkal?"
-
-#~ msgid ""
-#~ "In the time you have been away a looting band of orcs took over this "
-#~ "region. There was noone here to stop them."
-#~ msgstr ""
-#~ "Mialatt távol voltatok, egy fosztogató ork horda uralma alá vonta a "
-#~ "környéket. Senki nem volt itt, hogy megállítsa őket."
-
-#~ msgid ""
-#~ "I have to leave you now. My men and I are needed by others, too. But "
-#~ "should you ever face another grim foe, send me a messenger. I'll come as "
-#~ "fast as I can, little brother."
-#~ msgstr ""
-#~ "Most el kell válnom tőletek. Saját és embereim szolgálataira máshol is "
-#~ "szükség van. De ha újabb alávaló ellenséggel kerülnétek szembe, azonnal "
-#~ "küldjetek utánam egy hírvivőt. Amilyen gyorsan csak tudok, jönni fogok, "
-#~ "öcsém."
