@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-12-12 23:18+0100\n"
+"POT-Creation-Date: 2008-12-17 17:28+0100\n"
 "PO-Revision-Date: 2008-12-01 23:20+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
@@ -130,8 +130,15 @@ msgstr ""
 "Tato jednotka v souboji vždy udeří první, i když se brání."
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
-#. [unstore_unit]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1237
+#. [then]
+#: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1240
+#: src/actions.cpp:1050 src/actions.cpp:1321
+msgid "female^slowed"
+msgstr "zpomalená"
+
+#. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. [else]
+#: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1243
 #: src/actions.cpp:1050 src/actions.cpp:1321
 msgid "slowed"
 msgstr "zpomalený"
@@ -4683,7 +4690,8 @@ msgstr "zdravá"
 
 #. [trait]: id=healthy
 #: data/core/macros/traits.cfg:134
-msgid "Can rest while moving, halves poison damage"
+#, fuzzy
+msgid "Can rest while moving, takes a quarter less poison damage"
 msgstr "Odpočívá i při pohybu, snižuje jedem na polovinu"
 
 #. [trait]: id=fearless
@@ -6662,10 +6670,6 @@ msgstr "Poslána neplatná zbraň, pravděpodobně kvůli Pythonové AI."
 msgid "female^poisoned"
 msgstr "otrávená"
 
-#: src/actions.cpp:1050 src/actions.cpp:1321
-msgid "female^slowed"
-msgstr "zpomalená"
-
 #: src/actions.cpp:1057 src/actions.cpp:1328
 msgid "female^stone"
 msgstr "zkamenění"
@@ -7729,7 +7733,7 @@ msgid "Random maps with an odd width aren't supported."
 msgstr "Náhodné mapy s lichou šířkou nejsou podporovány."
 
 #: src/menu_events.cpp:51 src/menu_events.cpp:724 src/menu_events.cpp:726
-#: src/play_controller.cpp:784 src/playcampaign.cpp:108
+#: src/play_controller.cpp:785 src/playcampaign.cpp:108
 msgid "Auto-Save"
 msgstr "Automatické uložení"
 
@@ -8875,15 +8879,15 @@ msgstr "Načítám jednotky"
 msgid "Initializing display"
 msgstr "Připravuji zobrazení"
 
-#: src/play_controller.cpp:190
+#: src/play_controller.cpp:191
 msgid "Starting game"
 msgstr "Zahajuji hru"
 
-#: src/play_controller.cpp:792
+#: src/play_controller.cpp:793
 msgid "Back to start"
 msgstr "Zpátky na start"
 
-#: src/play_controller.cpp:794
+#: src/play_controller.cpp:795
 msgid "Back to turn "
 msgstr "Zpět na kolo "
 

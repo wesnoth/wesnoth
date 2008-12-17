@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-12-12 23:18+0100\n"
+"POT-Creation-Date: 2008-12-17 17:28+0100\n"
 "PO-Revision-Date: 2008-05-04 12:00+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -122,8 +122,16 @@ msgstr ""
 "Јединица увек удара прва у борби, чак и када се брани."
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
-#. [unstore_unit]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1237
+#. [then]
+#: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1240
+#: src/actions.cpp:1050 src/actions.cpp:1321
+#, fuzzy
+msgid "female^slowed"
+msgstr "оданост"
+
+#. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. [else]
+#: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1243
 #: src/actions.cpp:1050 src/actions.cpp:1321
 msgid "slowed"
 msgstr "успорен"
@@ -4660,7 +4668,7 @@ msgstr "здравље"
 #. [trait]: id=healthy
 #: data/core/macros/traits.cfg:134
 #, fuzzy
-msgid "Can rest while moving, halves poison damage"
+msgid "Can rest while moving, takes a quarter less poison damage"
 msgstr "одмарање у току кретања"
 
 #. [trait]: id=fearless
@@ -6618,11 +6626,6 @@ msgstr "Послато неисправно оружје, можда криви�
 msgid "female^poisoned"
 msgstr "немртвост"
 
-#: src/actions.cpp:1050 src/actions.cpp:1321
-#, fuzzy
-msgid "female^slowed"
-msgstr "оданост"
-
 #: src/actions.cpp:1057 src/actions.cpp:1328
 #, fuzzy
 msgid "female^stone"
@@ -7699,7 +7702,7 @@ msgid "Random maps with an odd width aren't supported."
 msgstr "Насумичне мапе непарне ширине нису подржане."
 
 #: src/menu_events.cpp:51 src/menu_events.cpp:724 src/menu_events.cpp:726
-#: src/play_controller.cpp:784 src/playcampaign.cpp:108
+#: src/play_controller.cpp:785 src/playcampaign.cpp:108
 msgid "Auto-Save"
 msgstr "Самочување"
 
@@ -8864,15 +8867,15 @@ msgstr "Читам датотеке јединица."
 msgid "Initializing display"
 msgstr "Успостављам приказ"
 
-#: src/play_controller.cpp:190
+#: src/play_controller.cpp:191
 msgid "Starting game"
 msgstr "Отпочињем игру"
 
-#: src/play_controller.cpp:792
+#: src/play_controller.cpp:793
 msgid "Back to start"
 msgstr "Назад на почетак"
 
-#: src/play_controller.cpp:794
+#: src/play_controller.cpp:795
 msgid "Back to turn "
 msgstr "Назад на потез "
 

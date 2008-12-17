@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.5+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-12-12 23:18+0100\n"
+"POT-Creation-Date: 2008-12-17 17:28+0100\n"
 "PO-Revision-Date: 2008-11-04 13:44+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
@@ -120,8 +120,16 @@ msgstr ""
 "om den forsvarer sig."
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
-#. [unstore_unit]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1237
+#. [then]
+#: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1240
+#: src/actions.cpp:1050 src/actions.cpp:1321
+#, fuzzy
+msgid "female^slowed"
+msgstr "loyal"
+
+#. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. [else]
+#: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1243
 #: src/actions.cpp:1050 src/actions.cpp:1321
 msgid "slowed"
 msgstr "langsom"
@@ -4710,7 +4718,8 @@ msgstr "sund"
 
 #. [trait]: id=healthy
 #: data/core/macros/traits.cfg:134
-msgid "Can rest while moving, halves poison damage"
+#, fuzzy
+msgid "Can rest while moving, takes a quarter less poison damage"
 msgstr "Kan hvile under bevægelse, halverer giftskade"
 
 #. [trait]: id=fearless
@@ -6713,11 +6722,6 @@ msgstr "Et ugyldigt våben er sendt, hvilket sikkert skyldes Python AI."
 msgid "female^poisoned"
 msgstr "udød"
 
-#: src/actions.cpp:1050 src/actions.cpp:1321
-#, fuzzy
-msgid "female^slowed"
-msgstr "loyal"
-
 #: src/actions.cpp:1057 src/actions.cpp:1328
 #, fuzzy
 msgid "female^stone"
@@ -7761,7 +7765,7 @@ msgid "Random maps with an odd width aren't supported."
 msgstr "Tilfældige kort med en skæv bredde understøttes ikke."
 
 #: src/menu_events.cpp:51 src/menu_events.cpp:724 src/menu_events.cpp:726
-#: src/play_controller.cpp:784 src/playcampaign.cpp:108
+#: src/play_controller.cpp:785 src/playcampaign.cpp:108
 msgid "Auto-Save"
 msgstr "Auto-gem"
 
@@ -8897,15 +8901,15 @@ msgstr "Læser enhedsfiler."
 msgid "Initializing display"
 msgstr "Opretter billedet"
 
-#: src/play_controller.cpp:190
+#: src/play_controller.cpp:191
 msgid "Starting game"
 msgstr "Begynder spil"
 
-#: src/play_controller.cpp:792
+#: src/play_controller.cpp:793
 msgid "Back to start"
 msgstr "Tilbage til start"
 
-#: src/play_controller.cpp:794
+#: src/play_controller.cpp:795
 msgid "Back to turn "
 msgstr "Tilbage til runde "
 

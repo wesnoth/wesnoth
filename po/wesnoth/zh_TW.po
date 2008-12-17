@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth1.4\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-12-12 23:18+0100\n"
+"POT-Creation-Date: 2008-12-17 17:28+0100\n"
 "PO-Revision-Date: 2008-08-13 01:24+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Chinese/Traditional <steven2880@gmail.com>\n"
@@ -119,8 +119,16 @@ msgstr ""
 "即使在守勢之中，該單位永遠先攻擊敵人。"
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
-#. [unstore_unit]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1237
+#. [then]
+#: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1240
+#: src/actions.cpp:1050 src/actions.cpp:1321
+#, fuzzy
+msgid "female^slowed"
+msgstr "忠誠"
+
+#. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. [else]
+#: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1243
 #: src/actions.cpp:1050 src/actions.cpp:1321
 msgid "slowed"
 msgstr "減速"
@@ -4444,7 +4452,7 @@ msgstr "活力"
 #. [trait]: id=healthy
 #: data/core/macros/traits.cfg:134
 #, fuzzy
-msgid "Can rest while moving, halves poison damage"
+msgid "Can rest while moving, takes a quarter less poison damage"
 msgstr "能在移動中休息"
 
 #. [trait]: id=fearless
@@ -6140,11 +6148,6 @@ msgstr "傳出了一個無效的武器，可能是Python AI造成的。"
 msgid "female^poisoned"
 msgstr "不死"
 
-#: src/actions.cpp:1050 src/actions.cpp:1321
-#, fuzzy
-msgid "female^slowed"
-msgstr "忠誠"
-
 #: src/actions.cpp:1057 src/actions.cpp:1328
 #, fuzzy
 msgid "female^stone"
@@ -7197,7 +7200,7 @@ msgid "Random maps with an odd width aren't supported."
 msgstr "不支援寬度為奇數的隨機地圖(?)"
 
 #: src/menu_events.cpp:51 src/menu_events.cpp:724 src/menu_events.cpp:726
-#: src/play_controller.cpp:784 src/playcampaign.cpp:108
+#: src/play_controller.cpp:785 src/playcampaign.cpp:108
 msgid "Auto-Save"
 msgstr "自動存檔"
 
@@ -8349,15 +8352,15 @@ msgstr "載入部隊資料。"
 msgid "Initializing display"
 msgstr "初始化顯示"
 
-#: src/play_controller.cpp:190
+#: src/play_controller.cpp:191
 msgid "Starting game"
 msgstr "開始遊戲"
 
-#: src/play_controller.cpp:792
+#: src/play_controller.cpp:793
 msgid "Back to start"
 msgstr "回到開始"
 
-#: src/play_controller.cpp:794
+#: src/play_controller.cpp:795
 msgid "Back to turn "
 msgstr "回到回合"
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-12-09 22:13+0100\n"
+"POT-Creation-Date: 2008-12-17 17:27+0100\n"
 "PO-Revision-Date: 2008-05-31 21:51+0200\n"
 "Last-Translator: Samu Voutilainen <ec5983@kolumbus.fi>\n"
 "Language-Team: none\n"
@@ -337,29 +337,30 @@ msgstr "Kiveä"
 msgid "Wall"
 msgstr "Kiveä"
 
-#. [terrain]: id=void
-#: data/core/terrain.cfg:1108
-msgid "Void"
-msgstr "tyhjiö"
-
-#. [terrain]: id=flat
-#: data/core/terrain.cfg:1121
-msgid "Flat"
-msgstr ""
-
-#. [terrain]: id=frozen
-#: data/core/terrain.cfg:1128
-msgid "Frozen"
-msgstr ""
-
+#. [terrain]: id=impassable_overlay
 #. [terrain]: id=impassable
-#: data/core/terrain.cfg:1135
+#: data/core/terrain.cfg:1108 data/core/terrain.cfg:1146
 #, fuzzy
 msgid "Impassable"
 msgstr "ylitsepääsemätön vuoristo"
 
+#. [terrain]: id=void
+#: data/core/terrain.cfg:1119
+msgid "Void"
+msgstr "tyhjiö"
+
+#. [terrain]: id=flat
+#: data/core/terrain.cfg:1132
+msgid "Flat"
+msgstr ""
+
+#. [terrain]: id=frozen
+#: data/core/terrain.cfg:1139
+msgid "Frozen"
+msgstr ""
+
 #. [terrain]: id=unwalkable
-#: data/core/terrain.cfg:1142
+#: data/core/terrain.cfg:1153
 msgid "Unwalkable"
 msgstr ""
 

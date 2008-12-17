@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-12-12 23:18+0100\n"
+"POT-Creation-Date: 2008-12-17 17:28+0100\n"
 "PO-Revision-Date: 2008-07-03 23:22+0200\n"
 "Last-Translator: Benoît Timbert <benoit.timbert@free.fr>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
@@ -124,8 +124,16 @@ msgstr ""
 "Cette unité attaque toujours en premier, même quand elle se défend."
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
-#. [unstore_unit]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1237
+#. [then]
+#: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1240
+#: src/actions.cpp:1050 src/actions.cpp:1321
+#, fuzzy
+msgid "female^slowed"
+msgstr "fidèle"
+
+#. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. [else]
+#: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1243
 #: src/actions.cpp:1050 src/actions.cpp:1321
 msgid "slowed"
 msgstr "ralenti"
@@ -4743,7 +4751,7 @@ msgstr "vigoureuse"
 #. [trait]: id=healthy
 #: data/core/macros/traits.cfg:134
 #, fuzzy
-msgid "Can rest while moving, halves poison damage"
+msgid "Can rest while moving, takes a quarter less poison damage"
 msgstr "Peut récupérer en bougeant"
 
 #. [trait]: id=fearless
@@ -6776,11 +6784,6 @@ msgstr "Une arme non valide a été envoyée, sans doute par l'IA Python."
 msgid "female^poisoned"
 msgstr "morte-vivante"
 
-#: src/actions.cpp:1050 src/actions.cpp:1321
-#, fuzzy
-msgid "female^slowed"
-msgstr "fidèle"
-
 #: src/actions.cpp:1057 src/actions.cpp:1328
 #, fuzzy
 msgid "female^stone"
@@ -7855,7 +7858,7 @@ msgstr ""
 "Les cartes aléatoires avec une dimension impaire ne sont pas supportées."
 
 #: src/menu_events.cpp:51 src/menu_events.cpp:724 src/menu_events.cpp:726
-#: src/play_controller.cpp:784 src/playcampaign.cpp:108
+#: src/play_controller.cpp:785 src/playcampaign.cpp:108
 msgid "Auto-Save"
 msgstr "Sauvegarde automatique"
 
@@ -8982,15 +8985,15 @@ msgstr "Lecture des unités"
 msgid "Initializing display"
 msgstr "Initialisation de l'affichage"
 
-#: src/play_controller.cpp:190
+#: src/play_controller.cpp:191
 msgid "Starting game"
 msgstr "Début de la partie"
 
-#: src/play_controller.cpp:792
+#: src/play_controller.cpp:793
 msgid "Back to start"
 msgstr "Retour au début"
 
-#: src/play_controller.cpp:794
+#: src/play_controller.cpp:795
 msgid "Back to turn "
 msgstr "Retour au tour "
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-12-09 22:13+0100\n"
+"POT-Creation-Date: 2008-12-17 17:27+0100\n"
 "PO-Revision-Date: 2007-12-06 00:53+0900\n"
 "Last-Translator: Claus Aranha <caranha@gmail.com>\n"
 "Language-Team: Portuguese/Brazil\n"
@@ -338,29 +338,30 @@ msgstr "Parede de Caverna"
 msgid "Wall"
 msgstr "Parede de Caverna"
 
-#. [terrain]: id=void
-#: data/core/terrain.cfg:1108
-msgid "Void"
-msgstr "Vazio"
-
-#. [terrain]: id=flat
-#: data/core/terrain.cfg:1121
-msgid "Flat"
-msgstr ""
-
-#. [terrain]: id=frozen
-#: data/core/terrain.cfg:1128
-msgid "Frozen"
-msgstr ""
-
+#. [terrain]: id=impassable_overlay
 #. [terrain]: id=impassable
-#: data/core/terrain.cfg:1135
+#: data/core/terrain.cfg:1108 data/core/terrain.cfg:1146
 #, fuzzy
 msgid "Impassable"
 msgstr "Montanhas Impassáveis"
 
+#. [terrain]: id=void
+#: data/core/terrain.cfg:1119
+msgid "Void"
+msgstr "Vazio"
+
+#. [terrain]: id=flat
+#: data/core/terrain.cfg:1132
+msgid "Flat"
+msgstr ""
+
+#. [terrain]: id=frozen
+#: data/core/terrain.cfg:1139
+msgid "Frozen"
+msgstr ""
+
 #. [terrain]: id=unwalkable
-#: data/core/terrain.cfg:1142
+#: data/core/terrain.cfg:1153
 msgid "Unwalkable"
 msgstr ""
 

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-12-12 23:18+0100\n"
+"POT-Creation-Date: 2008-12-17 17:28+0100\n"
 "PO-Revision-Date: 2008-12-09 21:00+0100\n"
 "Last-Translator: Leandro Regueiro <leandro DOT regueiro AT gmail DOT com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
@@ -125,8 +125,15 @@ msgstr ""
 "Esta unidade sempre golpea primeiro, incluso cando se defende."
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
-#. [unstore_unit]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1237
+#. [then]
+#: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1240
+#: src/actions.cpp:1050 src/actions.cpp:1321
+msgid "female^slowed"
+msgstr "ralentizada"
+
+#. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. [else]
+#: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1243
 #: src/actions.cpp:1050 src/actions.cpp:1321
 msgid "slowed"
 msgstr "ralentizado"
@@ -4740,7 +4747,8 @@ msgstr "saudable"
 
 #. [trait]: id=healthy
 #: data/core/macros/traits.cfg:134
-msgid "Can rest while moving, halves poison damage"
+#, fuzzy
+msgid "Can rest while moving, takes a quarter less poison damage"
 msgstr "Pode descansar mentres se move, reduce á metade o dano do veleno"
 
 #. [trait]: id=fearless
@@ -6768,10 +6776,6 @@ msgstr "Enviouse unha arma incorrecta, posiblemente debido á IA en Python."
 msgid "female^poisoned"
 msgstr "envelenada"
 
-#: src/actions.cpp:1050 src/actions.cpp:1321
-msgid "female^slowed"
-msgstr "ralentizada"
-
 #: src/actions.cpp:1057 src/actions.cpp:1328
 msgid "female^stone"
 msgstr "petrificada"
@@ -7816,7 +7820,7 @@ msgid "Random maps with an odd width aren't supported."
 msgstr "Os mapas aleatorios cun ancho raro non están soportados."
 
 #: src/menu_events.cpp:51 src/menu_events.cpp:724 src/menu_events.cpp:726
-#: src/play_controller.cpp:784 src/playcampaign.cpp:108
+#: src/play_controller.cpp:785 src/playcampaign.cpp:108
 msgid "Auto-Save"
 msgstr "Automático"
 
@@ -8952,15 +8956,15 @@ msgstr "Cargando as unidades"
 msgid "Initializing display"
 msgstr "Iniciando a visualización"
 
-#: src/play_controller.cpp:190
+#: src/play_controller.cpp:191
 msgid "Starting game"
 msgstr "Comezando a partida"
 
-#: src/play_controller.cpp:792
+#: src/play_controller.cpp:793
 msgid "Back to start"
 msgstr "Volver ó comezo"
 
-#: src/play_controller.cpp:794
+#: src/play_controller.cpp:795
 msgid "Back to turn "
 msgstr "Volver ó turno "
 

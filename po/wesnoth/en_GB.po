@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-12-12 23:18+0100\n"
+"POT-Creation-Date: 2008-12-17 17:28+0100\n"
 "PO-Revision-Date: 2007-01-04 19:17+0000\n"
 "Last-Translator: Peter J Ross <wesnoth@pjr.britishlibrary.net>\n"
 "Language-Team: English (British) <en@li.org>\n"
@@ -121,8 +121,16 @@ msgstr ""
 "This unit always strikes first with this attack, even if they are defending."
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
-#. [unstore_unit]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1237
+#. [then]
+#: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1240
+#: src/actions.cpp:1050 src/actions.cpp:1321
+#, fuzzy
+msgid "female^slowed"
+msgstr "loyal"
+
+#. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. [else]
+#: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1243
 #: src/actions.cpp:1050 src/actions.cpp:1321
 msgid "slowed"
 msgstr "slowed"
@@ -4290,7 +4298,7 @@ msgstr "healthy"
 
 #. [trait]: id=healthy
 #: data/core/macros/traits.cfg:134
-msgid "Can rest while moving, halves poison damage"
+msgid "Can rest while moving, takes a quarter less poison damage"
 msgstr ""
 
 #. [trait]: id=fearless
@@ -5988,11 +5996,6 @@ msgstr ""
 msgid "female^poisoned"
 msgstr "undead"
 
-#: src/actions.cpp:1050 src/actions.cpp:1321
-#, fuzzy
-msgid "female^slowed"
-msgstr "loyal"
-
 #: src/actions.cpp:1057 src/actions.cpp:1328
 #, fuzzy
 msgid "female^stone"
@@ -7100,7 +7103,7 @@ msgid "Random maps with an odd width aren't supported."
 msgstr ""
 
 #: src/menu_events.cpp:51 src/menu_events.cpp:724 src/menu_events.cpp:726
-#: src/play_controller.cpp:784 src/playcampaign.cpp:108
+#: src/play_controller.cpp:785 src/playcampaign.cpp:108
 msgid "Auto-Save"
 msgstr "Auto-Save"
 
@@ -8287,16 +8290,16 @@ msgstr "Reading unit files."
 msgid "Initializing display"
 msgstr ""
 
-#: src/play_controller.cpp:190
+#: src/play_controller.cpp:191
 #, fuzzy
 msgid "Starting game"
 msgstr "Abort game"
 
-#: src/play_controller.cpp:792
+#: src/play_controller.cpp:793
 msgid "Back to start"
 msgstr "Back to start"
 
-#: src/play_controller.cpp:794
+#: src/play_controller.cpp:795
 msgid "Back to turn "
 msgstr "Back to turn "
 

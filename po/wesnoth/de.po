@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-12-12 23:18+0100\n"
+"POT-Creation-Date: 2008-12-17 17:28+0100\n"
 "PO-Revision-Date: 2008-12-13 10:48+0100\n"
 "Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
@@ -124,8 +124,15 @@ msgstr ""
 "wenn sie sich verteidigt. "
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
-#. [unstore_unit]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1237
+#. [then]
+#: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1240
+#: src/actions.cpp:1050 src/actions.cpp:1321
+msgid "female^slowed"
+msgstr "verlangsamt"
+
+#. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. [else]
+#: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1243
 #: src/actions.cpp:1050 src/actions.cpp:1321
 msgid "slowed"
 msgstr "verlangsamt"
@@ -4814,7 +4821,8 @@ msgstr "vital"
 
 #. [trait]: id=healthy
 #: data/core/macros/traits.cfg:134
-msgid "Can rest while moving, halves poison damage"
+#, fuzzy
+msgid "Can rest while moving, takes a quarter less poison damage"
 msgstr "Können ohne Pause rasten, halbierter Giftschaden"
 
 #. [trait]: id=fearless
@@ -6865,10 +6873,6 @@ msgstr ""
 msgid "female^poisoned"
 msgstr "vergiftet"
 
-#: src/actions.cpp:1050 src/actions.cpp:1321
-msgid "female^slowed"
-msgstr "verlangsamt"
-
 #: src/actions.cpp:1057 src/actions.cpp:1328
 msgid "female^stone"
 msgstr "versteinert"
@@ -7928,7 +7932,7 @@ msgstr ""
 "Zufallskarten mit einer ungeraden Zahl als Breite werden nicht unterstützt."
 
 #: src/menu_events.cpp:51 src/menu_events.cpp:724 src/menu_events.cpp:726
-#: src/play_controller.cpp:784 src/playcampaign.cpp:108
+#: src/play_controller.cpp:785 src/playcampaign.cpp:108
 msgid "Auto-Save"
 msgstr "Autospeichern"
 
@@ -9075,15 +9079,15 @@ msgstr "Lesen der Einheitendaten"
 msgid "Initializing display"
 msgstr "Initialisiere Anzeige"
 
-#: src/play_controller.cpp:190
+#: src/play_controller.cpp:191
 msgid "Starting game"
 msgstr "Spielstart"
 
-#: src/play_controller.cpp:792
+#: src/play_controller.cpp:793
 msgid "Back to start"
 msgstr "Zurück zum Anfang"
 
-#: src/play_controller.cpp:794
+#: src/play_controller.cpp:795
 msgid "Back to turn "
 msgstr "Zurück zu Runde "
 
