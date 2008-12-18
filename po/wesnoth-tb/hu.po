@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: hu-tb\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-12-17 17:29+0100\n"
-"PO-Revision-Date: 2008-12-16 19:15+0100\n"
+"PO-Revision-Date: 2008-12-18 11:36+0100\n"
 "Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
 "Language-Team: Hungarian <>\n"
 "MIME-Version: 1.0\n"
@@ -50,7 +50,6 @@ msgstr "Lovag"
 # túl szabad volt a fordítás, vagy az eredeti szöveget írták nagyon át
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:21
-#, fuzzy
 msgid ""
 "An evil mage is threatening the small village of Maghre and its inhabitants. "
 "The villages mage Bjarn send for his brother to help, but not all goes as "
@@ -101,7 +100,6 @@ msgstr "A Mágus elpusztítása"
 # szabad falu helyett inkább mezőváros - történelmileg inkább ez jellemző
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:40
-#, fuzzy
 msgid ""
 "The remote freehold of Maghre in the western reaches of the kingdom of "
 "Wesnoth was once a peaceful place, its inhabitants largely unaware of the "
@@ -109,7 +107,7 @@ msgid ""
 "them not, until the day a dark mage settled in the region and began seeking "
 "sacrifices for his evil summonings."
 msgstr ""
-"A távoli Maghre mezőváros a Wesnothi Királyság keleti részén feküdt. Ez "
+"A távoli Maghre mezőváros a Wesnothi Királyság nyugati részén feküdt. Ez "
 "valaha egy nagyon békés hely volt, lakói nem voltak tudatában a széles "
 "világban zajló eseményeknek. A háborúk és a háborús szóbeszédek nem "
 "érintették őket addig a napig, mígnem egy sötét mágus telepedett le a "
@@ -355,13 +353,12 @@ msgstr ""
 
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:368
-#, fuzzy
 msgid ""
 "Bjarn has not made his attack! I begin to fear for him... and it means we "
 "must deal with this Mordak ourselves!"
 msgstr ""
-"Bjarn nem támadott! Kezdek aggódni...úgy látszik egyedül kell leszámolnunk "
-"Mordakkel!"
+"Bjarn nem támadott! Kezdek aggódni érte...úgy látszik, egyedül kell "
+"leszámolnunk ezzel a Mordakkel!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:379
@@ -439,27 +436,26 @@ msgstr "A hajsza"
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:18
-#, fuzzy
 msgid ""
 "The pursuit had already run for several days when the pursuers came to the "
 "bounds of the huge forest known as the Gray Woods. Ancient tales warned of "
 "lost souls haunting the wood, hunting and killing anyone brave enough to "
 "enter it."
 msgstr ""
-"A hajsza már napok óta tartott, amikor az emberrablók egy hatalmas erdő "
-"határához értek. Számos ősi történet létezett az elveszett lelkekről, akik "
-"ebben az erdőben kísértenek és megölik mindazokat, akik elég bátrak bemenni "
-"oda."
+"A hajsza már napok óta tartott, amikor az emberrablók a Szürke-erdőként "
+"ismert hatalmas erdőség határához értek. Számos ősi történet regélt az "
+"elveszett lelkekről, akik ebben az erdőben kísértenek és megölik mindazokat, "
+"akik elég bátrak bemenni oda."
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:23
-#, fuzzy
 msgid ""
 "Heedless of those rumors, Arne followed them. His only worry was that his "
 "horsemen would be at disadvantage if attacked in the forest."
 msgstr ""
-"A híresztelések ellenére, Arne utánuk ment az erdőbe. Egyedül amiatt "
-"agódott, hogy lovasai hátrányban vannak a fák közt, ha megtámadják őket."
+"Ezen híresztelésekkel mit sem törődve Arne utánuk ment az erdőbe. Egyedül "
+"amiatt agódott, hogy lovasai hátrányban vannak a fák közt, ha megtámadják "
+"őket."
 
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:88
@@ -491,7 +487,6 @@ msgstr ""
 
 #. [message]: role=speaker
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:276
-#, fuzzy
 msgid ""
 "It is whispered that hungry ghosts rule this forest, and kill everyone who "
 "dares to enter."
@@ -530,18 +525,16 @@ msgstr ""
 
 #. [message]: role=speaker
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:296
-#, fuzzy
 msgid ""
 "I am glad at least that we will not have to face ghosts. But those elves "
 "will have us at a disadvantage; our horses will not maneuver well in the "
 "trees."
 msgstr ""
-"Hála égnek nem szellemekkel kell szembenéznünk. Azonban a tündék előnyben "
-"vannak, mert a mi lovaink nem tudnak olyan jól manőverezni a fák között."
+"Hála az égnek nem szellemekkel kell szembenéznünk. Azonban a tündék előnyben "
+"vannak, mert a lovaink nem tudnak olyan jól manőverezni a fák között."
 
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:300
-#, fuzzy
 msgid ""
 "Bah, just stay on the paths; our spearmen and bowmen can fight in the deeper "
 "woods. We have faced and won through greater perils than those amateurs can "
@@ -751,13 +744,12 @@ msgstr ""
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:543
 msgid "Follow their back trail!"
-msgstr ""
+msgstr "Kövessétek a nyomukat!"
 
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:548
-#, fuzzy
 msgid "Catch the kidnappers"
-msgstr "Gyerünk, emberek, kapjuk el azokat az emberrablókat!"
+msgstr "Elfogod az emberrablókat"
 
 #. [terrain]: id=magic_irongate
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:6
@@ -1012,7 +1004,6 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:785
-#, fuzzy
 msgid "Kill the dark sorcerer to get the cell key"
 msgstr "Megölöd a sötét mágust, hogy megszerezd tőle a cella kulcsát"
 
@@ -1101,7 +1092,6 @@ msgstr "Emberek! Fegyverbe!"
 
 #. [message]: speaker=Bjarn
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:175
-#, fuzzy
 msgid ""
 "We should go there and talk to Counselor Hoban. Maybe he knows what is going "
 "on here."
@@ -1209,7 +1199,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/5_Epilog.cfg:15
-#, fuzzy
 msgid ""
 "Arne and his men left the village assured that it would be well guided by "
 "Bjarn. On their journeys they faced many challenges and battles. Some tales "
@@ -1218,7 +1207,7 @@ msgid ""
 msgstr ""
 "Arne és emberei elhagyták a falut tudván, hogy azt Bjarn bölcsen fogja "
 "vezetni. Útjuk során számos kihívással és csatával néztek szembe. Néhány "
-"történet együtt említi a nevét a híres tünde lorddal, Kalenzzel, de az egy "
+"történet együtt említi a nevét a híres tünde úrral, Kalenzzel, de az egy "
 "másik történet..."
 
 #~ msgid ""
