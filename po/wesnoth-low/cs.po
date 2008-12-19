@@ -1,9 +1,20 @@
+# translation of wesnoth-low.po to Czech
+# Czech translations for Battle for Wesnoth package.
+# Český překlad hry Battle for Wesnoth (Bitva o Wesnoth).
+# Copyright (C) 2008 Wesnoth development team
+# This file is distributed under the same license as the Battle for Wesnoth package.
+#
+# Czech Wesnoth translation team <wesnoth-cs-l@nospam.buchtovi.cz>,
+#
+# Petr Šlejhar <septim@centrum.cz>, 2008,
+# Vladimír Slávik <slavik.vladimir@seznam.cz>, 2007, 2008.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-12-09 22:13+0100\n"
-"PO-Revision-Date: 2008-12-10 19:12+0100\n"
+"PO-Revision-Date: 2008-12-19 20:51+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -14,7 +25,7 @@ msgstr ""
 #. [campaign]: id=LOW
 #: data/campaigns/Legend_of_Wesmere/_main.cfg:48
 msgid "LOW"
-msgstr "LOW"
+msgstr "WL"
 
 # Název tažení
 #. [campaign]: id=LOW
@@ -81,9 +92,8 @@ msgstr "Autor a hlavní návrh"
 
 #. [entry]
 #: data/campaigns/Legend_of_Wesmere/_main.cfg:66
-#, fuzzy
 msgid "Spiros, George and Alexander Alexiou (Santi/fnaek)"
-msgstr "Spiros, George a Alexander Alexiou (Santi)"
+msgstr "Spiros, George a Alexander Alexiou (Santi/fnaek)"
 
 # Titulek
 #. [about]
@@ -613,6 +623,9 @@ msgid ""
 "talk later; we must defeat these orcs together, or at least hold them off "
 "long enough for the humans to come to our aid."
 msgstr ""
+"Ne, utíkáme před útokem na naši domovinu severně odtud. Později si "
+"promluvíme, teď musíme spolu tyto skřety porazit nebo alespoň dostatečně "
+"dlouho udržet, než nám přijdou lidé na pomoc."
 
 #. [message]: id=Galtrid
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian.cfg:202
@@ -653,7 +666,7 @@ msgstr ""
 #. [message]: id=Huraldur
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian.cfg:251
 msgid "Hurry! We were near overwhelmed as I left."
-msgstr ""
+msgstr "Rychle! Už když jsem odjížděl bylo skoro po nás! "
 
 #. [message]: id=Galtrid
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian.cfg:255
@@ -680,13 +693,11 @@ msgid ""
 msgstr ""
 "Kalenz a jeho vojáci se hnali co mohli, aby zbavili elfí poklad ohrožení..."
 
-# Jméno
 #. [side]: type=Saurian Ambusher, id=Shurm
 #: data/campaigns/Legend_of_Wesmere/scenarios/04_Elvish_Treasury.cfg:40
 msgid "Shurm"
 msgstr "Shurm"
 
-# Jméno
 #. [side]: type=Saurian Ambusher, id=Trigr
 #: data/campaigns/Legend_of_Wesmere/scenarios/04_Elvish_Treasury.cfg:61
 msgid "Trigr"
@@ -786,7 +797,7 @@ msgid ""
 "not understand their distorted speech very well."
 msgstr ""
 "Ještěráci náš poklad vydrancovali. A měli zvláštní zájem získat nějaký "
-"\"skamén\". Omlouvám se lorde Kalenzi, ale nerozuměl jsem jejich zkomolené "
+"„stenkamen“. Omlouvám se lorde Kalenzi, ale nerozuměla jsem jejich zkomolené "
 "řeči moc dobře."
 
 #. [message]: type=Elvish Archer,Elvish Scout,Elvish Shaman,Elvish Fighter,Elvish Marshal,Elvish Champion,Elvish Avenger,Elvish Sharpshooter
@@ -808,7 +819,7 @@ msgstr ""
 #. [scenario]: id=05_Saurian_Treasury
 #: data/campaigns/Legend_of_Wesmere/scenarios/05_Saurian_Treasury.cfg:4
 msgid "The Saurian Treasury"
-msgstr "Poklad ještěráků"
+msgstr "Ještěrácký poklad"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/05_Saurian_Treasury.cfg:17
@@ -816,6 +827,8 @@ msgid ""
 "Elvish scouts found the trail of the Saurian war party without difficulty. "
 "The way back to the saurians' treasury was clear..."
 msgstr ""
+"Elfí zvědové našli stopu ještěrácké bojůvky bez potíží. Cesta k ještěráckému "
+"pokladu byla jasná..."
 
 #. [side]: type=Saurian Ambusher, id=Hraurg
 #: data/campaigns/Legend_of_Wesmere/scenarios/05_Saurian_Treasury.cfg:37
@@ -920,30 +933,28 @@ msgstr ""
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/05_Saurian_Treasury.cfg:273
-#, fuzzy
 msgid ""
 "Turnabout is fair play. Now that we've retrieved the gold, let us fare "
 "swiftly back to Wesmere. The Saurians will likely be infesting the direct "
 "route, so we will detour to the north. "
 msgstr ""
-"Takže to, že si vezmeme vše je spravedlivé.\n"
-"No získali jsme zpět zlato, vraťme se rychle do Wesmérie. Ještěráci nejspíš "
-"zamoří přímou cestu, takže to obejdeme severně."
+"Tudíž to, že si vezmeme vše je spravedlivé.\n"
+"No získali jsme zlato zpátky, pojďme se svižně vrátit do Wesmérie. Ještěráci "
+"nejspíš zamoří přímou cestu, takže to obejdeme severně."
 
 #. [scenario]: id=06_Acquaintance_in_Need
 #: data/campaigns/Legend_of_Wesmere/scenarios/06_Acquaintance_in_Need.cfg:4
 msgid "Acquaintance in Need"
-msgstr ""
+msgstr "Známý v nouzi"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/06_Acquaintance_in_Need.cfg:19
-#, fuzzy
 msgid ""
 "To evade the saurians blocking the eastern approaches to Wesmere, Kalenz and "
 "his war-band moved to enter Wesmere Forest from a different direction ..."
 msgstr ""
-"Aby se vyhnul ještěrákům blokujícím východní přístupy do Wesmerského lesa, "
-"vracel se Kalenz se svou skupinou severní oklikou..."
+"Aby se vyhnul ještěrákům blokujícím východní přístupy do Wesmérie, vracel se "
+"Kalenz se svou skupinou do Wesmerského lesa severní oklikou..."
 
 #. [side]: type=Orcish Warlord, id=Urug-Tar
 #: data/campaigns/Legend_of_Wesmere/scenarios/06_Acquaintance_in_Need.cfg:62
@@ -962,23 +973,22 @@ msgstr "Poraz nepřátelské vůdce"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/06_Acquaintance_in_Need.cfg:185
-#, fuzzy
 msgid ""
 "What's this? It appears the orcs have surrounded a dwarvish enclave. And by "
 "the sound of the bellowing I hear, I think our old friend, Olurf, is here."
 msgstr ""
-"Co to vidím? Vypadá to, že skřeti obléhají trpasličí enklávu. A myslím, že "
-"vidím našeho známého Olurfa."
+"Co to vidím? Vypadá to, že skřeti obklíčili trpasličí enklávu. A podle hlasu "
+"soudím, že je tam náš starý známý Olurf."
 
+# ne "vykvačili" není chyba!
 #. [message]: id=Olurf
 #: data/campaigns/Legend_of_Wesmere/scenarios/06_Acquaintance_in_Need.cfg:189
-#, fuzzy
 msgid ""
 "You again? Maybe ye were not completely wrong when ye predicted the orcs "
 "would attack us. We ha' been forced from our home and are now surrounded."
 msgstr ""
-"Zase ti elfové. Asi ses moc nemýlil, když jsi zmiňoval, že nás taky mohou "
-"skřeti napadnout. Byli jsme vytlačeni z naší domoviny a teď nás obklíčili.  "
+"Zase vy? Ses moc nemýlil, když jsi předvídal, že by nás mohli skřeti taky "
+"napadnout. Vykvačili nás z naší domoviny a teď nás obklíčili."
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/06_Acquaintance_in_Need.cfg:193
@@ -1141,7 +1151,7 @@ msgstr "Nemůžeme ustoupit. Jestli dobudou Kalian, je vše ztraceno!"
 #. [message]: id=Grubr
 #: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_last_stand.cfg:331
 msgid "We'll crush those weak elves and I'll get da stone!"
-msgstr "Rozdrtíme tyhle slabé elfy a já získám ten kámen!"
+msgstr "Rozdrtíme tyhle slabé elfouny a já získám ten kamen!"
 
 #. [option]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_last_stand.cfg:336
@@ -1182,13 +1192,12 @@ msgstr "Pirorr"
 
 #. [message]: id=Pirorr
 #: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_last_stand.cfg:501
-#, fuzzy
 msgid ""
 "The elves have beaten us and they did not use da stone. Maybe they don't "
 "have it? Great Chief will not like bad news!"
 msgstr ""
-"Elfové nás porazili a přitom nepoužili ten kámen. Možná ho nemají? Král "
-"nebude nadšen z takových zpráv!"
+"Elfové nás porazili a nepoužili ten kamen. Možná ho nemaj? Náčelník nebude "
+"nadšenej z takovejch špatnejch zpráv!"
 
 #. [message]: id=Galtrid
 #: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_last_stand.cfg:510
@@ -1198,14 +1207,13 @@ msgstr "Kalenzi, opět ti vděčíme za pomoc. Vrátil jsi se právě včas."
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_last_stand.cfg:515
 msgid "And we have what's left of the elvish treasury with us!"
-msgstr ""
+msgstr "A máme s sebou i zbytek elfího pokladu!"
 
 #. [message]: id=unit
 #: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_last_stand.cfg:545
-#, fuzzy
 msgid ""
 "Aargh! I should have stayed in the mountains instead of joining the orcs!"
-msgstr "Aarrh! Neměl jsem se přidávat ke skřetům a radši zůstat v horách ..."
+msgstr "Aargh! Neměl já se skřety jít a radši furt v horách být..."
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_last_stand.cfg:556
@@ -1214,9 +1222,8 @@ msgstr "Jediné, co najdete v tomto lese bude vaše smrt, skřeti!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_last_stand.cfg:567
-#, fuzzy
 msgid "I die without getting da stone?"
-msgstr "Takže umírám dřív, než jsem měl možnost zkamenět věkem? "
+msgstr "Chcípám a nešahl sem si na ten kamen!?"
 
 #. [unit]: id=Bulrod, type=Dwarvish Steelclad
 #: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_last_stand_utils.cfg:5
@@ -1255,10 +1262,8 @@ msgstr "Merhun"
 
 #. [message]: id=Olurf
 #: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_last_stand_utils.cfg:98
-#, fuzzy
 msgid "Did ye think we'd let you have all the fun wi' the orcs by yerselves?"
-msgstr ""
-"Mysleli jste, že vás necháme mít všechnu zábavu se skřety jen pro sebe?"
+msgstr "Ste mysleli, že si necháte všechnu zábavu se skřety jen pro sebe?"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_last_stand_utils.cfg:102
@@ -1571,17 +1576,16 @@ msgstr "Lovci odměn"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/09_Bounty_hunters.cfg:22
-#, fuzzy
 msgid ""
 "Believing that Wesmere's seeming safety might prove a costly illusion, "
 "Kalenz and Olurf left enough troops and resources to guard it strongly "
 "before starting off on the long and dangerous trip to the great mage of "
 "Thoria. They would soon find that peril was closer than they had reckoned."
 msgstr ""
-"A tak, poté co zajistili Wesmérii dostatkem vojáků a zdrojů, zanechávajíc ji "
-"napohled v bezpečí, vyrazili Kalenz a Olurf na cestu. Na dlouhou a "
-"nebezpečnou výpravu za velkým mágem do Thorie ...\n"
-"... Ale nebezpečí číhalo mnohem blíže k domovu."
+"Věříce, že zajistili Wesmérii dostatkem vojáků a zdrojů k její ochraně, "
+"zanechávajíc ji tak napohled v bezpečí, vyrazili Kalenz a Olurf na dlouhou a "
+"nebezpečnou výpravu za velkým mágem Thorie\n"
+"Mohli však brzy zjistit, že nebezpečí číhá mnohem blíže než počítali."
 
 #. [side]: type=Saurian Flanker, id=Huurgh
 #: data/campaigns/Legend_of_Wesmere/scenarios/09_Bounty_hunters.cfg:42
@@ -1601,12 +1605,12 @@ msgstr "Kalenz překročí řeku"
 #. [set_variable]
 #: data/campaigns/Legend_of_Wesmere/scenarios/09_Bounty_hunters.cfg:199
 msgid "some experienced warriors"
-msgstr ""
+msgstr "někteří zkušení válečníci"
 
 #. [set_variable]
 #: data/campaigns/Legend_of_Wesmere/scenarios/09_Bounty_hunters.cfg:221
 msgid " and "
-msgstr ""
+msgstr " a"
 
 #. [message]: id=Huurgh
 #: data/campaigns/Legend_of_Wesmere/scenarios/09_Bounty_hunters.cfg:241
@@ -1625,33 +1629,30 @@ msgstr "O čem to žvatlaj?"
 
 #. [message]: id=Landar
 #: data/campaigns/Legend_of_Wesmere/scenarios/09_Bounty_hunters.cfg:253
-#, fuzzy
 msgid ""
 "It would seem the saurians put a bounty on our heads for having the "
 "effrontery to take our gold back after they stole it. Are you interested?"
 msgstr ""
-"Zřejmě ještěráci vypsali odměnu za naše hlavy za to, že jsme jim sebrali "
-"naše ukradené zlato. Láká tě to?"
+"Ještěráci zřejmě vypsali odměnu za naše hlavy za to, že jsme měli tu drzost "
+"sebrat jim naše ukradené zlato. Láká tě to?"
 
 #. [message]: id=Olurf
 #: data/campaigns/Legend_of_Wesmere/scenarios/09_Bounty_hunters.cfg:257
-#, fuzzy
 msgid ""
 "No, but my axe is interested in some saurian heads! They ha' been too "
 "friendly with the orcs for my liking!"
 msgstr ""
-"Ne, ale mou sekeru vábí ještěrácké lebky! Příliš se kamarádíčkovali se "
-"skřety!"
+"Ne, ale mou sekeru vábí ještěrácké lebky! Na muj fkus se příliš "
+"kamarádíčkovali se skřety!"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/09_Bounty_hunters.cfg:261
-#, fuzzy
 msgid ""
 "Remember, we are here on a mission. We will fight these saurians if we must, "
 "but our mission is to get to Thoria."
 msgstr ""
-"Pamatujte, máme určitý cíl. Budeme bojovat s ještěráky, když to bude nutné, "
-"ale chceme se především dostat do Thorie."
+"Pamatujte, máme určitý cíl. Budeme bojovat s těmi ještěráky, pokud to bude "
+"nutné, ale chceme se především dostat do Thorie."
 
 #. [message]: id=Olurf
 #: data/campaigns/Legend_of_Wesmere/scenarios/09_Bounty_hunters.cfg:265
@@ -1664,14 +1665,13 @@ msgstr ""
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/09_Bounty_hunters.cfg:269
-#, fuzzy
 msgid ""
 "Indeed, this river is, I believe, Arkan-Thoria. There are fell legends about "
 "it. May be they are but children's tales...still, be very careful when you "
 "cross it."
 msgstr ""
 "Vskutku, tahle řeka je myslím Arkan-thorie. Vypráví se o ní mnoho špatného a "
-"i když jsou to nejspíš jen pohádky, radši si dávejte pozor, až ji budete "
+"i když jsou to nejspíš jen pohádky... radši si dávejte pozor, až ji budete "
 "překračovat."
 
 #. [message]: speaker=narrator
@@ -1696,9 +1696,8 @@ msgstr "Konečně!"
 
 #. [message]: id=Landar
 #: data/campaigns/Legend_of_Wesmere/scenarios/09_Bounty_hunters.cfg:298
-#, fuzzy
 msgid "We'll need to settle things with these saurians once and for all!"
-msgstr "Opravdu bysme si to měli s těmi ještěráky vyřídit jednou a provždy! "
+msgstr "Opravdu bysme si to měli s těmi ještěráky vyřídit jednou a provždy!"
 
 #. [unit]: type=Sea Serpent, id=Sealurr
 #: data/campaigns/Legend_of_Wesmere/scenarios/09_Bounty_hunters.cfg:319
@@ -1915,6 +1914,12 @@ msgid ""
 "owners to their graves! This will be the price for slaying me, Aquagar, "
 "great drake wizard of Morogoth."
 msgstr ""
+"Umírám, ale nezůstanu nepomstěn!\n"
+"Proklínám tě, Kalenzi! Nenajdeš spočinutí do konce svých dnů a ztratíš své "
+"nejbližší!\n"
+"A tobě, Krelanu, tvá kniha přinese strast, která bude pronásledovat tebe a "
+"všechny její další držitele až za hrob! To bude daň za mou smrt, za zabití "
+"Aquagara, velkého drakonidského kouzelníka Morogothu!"
 
 #. [message]: id=Olurf
 #: data/campaigns/Legend_of_Wesmere/scenarios/11_Battle_of_the_book.cfg:152
@@ -1922,11 +1927,13 @@ msgid ""
 "Some scary fellow this Aquagar thinks he is! Come now, I think Crelanu owes "
 "us some drinks."
 msgstr ""
+"Ten Aquagar si myslí, žes nějakej bojínek!\n"
+"Pojďme, myslím že nám Krelanu dluží nějakej ten doušek."
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/11_Battle_of_the_book.cfg:163
 msgid "There goes our last hope!"
-msgstr ""
+msgstr "Je naší poslední nadějí!"
 
 #. [scenario]: id=12_Revelations
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:3
@@ -2073,6 +2080,10 @@ msgid ""
 "It makes sense now. The Saurians were asking about a dastone, and also after "
 "we won in Wesmere there was an Orc mumbling something about a dastone..."
 msgstr ""
+"@Kleodil\n"
+"\n"
+"Teď to dává smysl. Ještěráci a potom i ten skřet, co jsme ho porazili ve "
+"Wesmérii, mumlali něco o stenkameni... "
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:82
@@ -2081,6 +2092,9 @@ msgid ""
 "\n"
 "It's not a dastone, it's the stone: They mean the Ruby of Fire..."
 msgstr ""
+"@Krelanu\n"
+"\n"
+"To není „stenkamen“, ale „ten kámen“. Mysleli tím Ohnivý rubín."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:88
@@ -2397,6 +2411,10 @@ msgid ""
 "Very well, suppose Cleodil accepts the guardianship of your book. How will "
 "you then help us slay the orcish Great Chief?"
 msgstr ""
+"@Kalenz\n"
+"\n"
+"Dobrá tedy, předpokládejme, že Kleodil přijme úkol strážce tvé knihy. Jak "
+"nám pak pomůžeš zahubit Velkého náčelníka skřetů?"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:226
@@ -2407,6 +2425,11 @@ msgid ""
 "orcish camp by stealth and kill the Great Chief. There is a potion that will "
 "make you invisible for some time."
 msgstr ""
+"@Krelanu\n"
+"\n"
+"Je tu jedna možnost, ale bude dost nebezpečná. Dva z vás musí kradmo "
+"vstoupit do skřetího tábora a zabít Velkého náčelníka. Existuje lektvar, "
+"který vás učiní po nějaký čas neviditelnými."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:232
@@ -2415,6 +2438,10 @@ msgid ""
 "\n"
 "The elves have legends of such things. I suppose you have this potion, then?"
 msgstr ""
+"@Kalenz\n"
+"\n"
+"Elfí legendy vypráví o takových věcech. Přepokládám, že tedy máš tento "
+"lektvar?"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:238
@@ -2425,6 +2452,11 @@ msgid ""
 "powerful undead lich. It will make you invisible, but it is likely also to "
 "have undesirable effects, some temporary, some permanent!"
 msgstr ""
+"@Krelanu\n"
+"\n"
+"Jistě mám. Ale pro uživatele představuje riziko. Je udělán z očí mocného "
+"nemrtvého liche. Udělá tě neviditelným, ale má také nežádoucí účinky, "
+"některé dočasné, některé permanentní!"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:244
@@ -2446,6 +2478,9 @@ msgid ""
 "\n"
 "What undesirable effects?"
 msgstr ""
+"@Kalenz\n"
+"\n"
+"Jaké nežádoucí účinky?"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:256
@@ -2460,6 +2495,15 @@ msgid ""
 "only a small dose and finish the job quickly. Delay and you will fail in "
 "your mission; take too large a dose, and you will become as the lich was."
 msgstr ""
+"@Krelanu\n"
+"\n"
+"Tvá fyzická síla poklesne, naproti tomu budeš schopen užívat magii snadněji "
+"a účiněji. Kleodil ti to předvede. Ale skutečné nebezpečí spočívá v tom, že "
+"se v tvých žilách bude kradmo rozlézat zlá přirozenost liche. Bude třeba "
+"proti tomuto zlu v sobě bojovat a ujařmit ho, jinak by ses mohl pomalu "
+"proměnit v nižšího demiliche. Proto je třeba užít jen malé množství lektvaru "
+"a udělat svou práci rychle. Budeš otálet a prohraješ, užiješ příliš mnoho a "
+"staneš se podobným lichi."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:262
@@ -2472,6 +2516,13 @@ msgid ""
 "Chief. But I will not compel anyone else to come with me, not at peril of "
 "being overwhelmed from within by evil magic. Does anyone volunteer?"
 msgstr ""
+"@Kalenz\n"
+"\n"
+"Cesta již přede mě stavíš je temná a zoufalá, ale jiná není na výběr. Musíme "
+"skřety zastavit. Jako vůdce nemohu žádat po svých mužích riziko, které "
+"nejsem sám schopen nést. Proto budu jedním z těch dvou, co půjdou zabít "
+"Velkého náčelníka. Nemohu ale kohokoli nutit, aby šel se mnou, ne když hrozí "
+"nebezpečí být ovládnut zlou magií z nitra. Půjde někdo dobrovolně?"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:268
@@ -2480,6 +2531,9 @@ msgid ""
 "\n"
 "I will come with you. We shall not fail!"
 msgstr ""
+"@Landar\n"
+"\n"
+"Já s tebou půjdu. Neselžeme!"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:274
@@ -2488,6 +2542,9 @@ msgid ""
 "\n"
 "This does not seem the wisest of choices."
 msgstr ""
+"@Krelanu\n"
+"\n"
+"To nevypadá jako nejmoudřejší volba."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:280
@@ -2498,6 +2555,11 @@ msgid ""
 "should be about our task now, I think. Crelanu, your book will be safe with "
 "us. Cleodil will guard it until we find a worthy keeper."
 msgstr ""
+"@Kalenz\n"
+"\n"
+"Landar je možná zbrklý, ale je to velký bojovník a můj důvěrný přítel. "
+"Myslím, že bysme měli být domluveni. Krelanu, tvá kniha bude u nás v "
+"bezpečí. Kleodil ji bude schraňovat, dokud nenajdeme vhodného držitele."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:286
@@ -2507,6 +2569,9 @@ msgid ""
 "Come, I will give you and Landar the potion and show you a safe point to "
 "cross the river."
 msgstr ""
+"@Krelanu\n"
+"\n"
+"Pojďte, dám tobě a Landarovi lektvar a ukážu vám bezpečný brod přes řeku."
 
 #. [scenario]: id=13_News_from_the_front
 #: data/campaigns/Legend_of_Wesmere/scenarios/13_News_from_the_front.cfg:11
@@ -2519,6 +2584,8 @@ msgid ""
 "With Crelanu's book in hand, Kalenz and his band began the long journey "
 "south to the Ka'lian..."
 msgstr ""
+"S Krelanovou knihou v držení započali Kalenz a jeho skupina dlouhou cestu na "
+"jih do Kalianu..."
 
 #. [message]: id=Landar
 #: data/campaigns/Legend_of_Wesmere/scenarios/13_News_from_the_front.cfg:57
@@ -2545,6 +2612,8 @@ msgid ""
 "Some weeks later, as Kalenz and his companions were working their way "
 "southwards from the high peaks of the Heart Mountains into its foothills..."
 msgstr ""
+"Po několika týdnech cesty na jih dorazil Kalenz se svými souputníky ze srdce "
+"velehor do pahorkatiny na úpatí..."
 
 #. [unit]: id=Eonihar, type=Elvish Scout
 #: data/campaigns/Legend_of_Wesmere/scenarios/13_News_from_the_front.cfg:94
@@ -2557,7 +2626,7 @@ msgid ""
 "At last I have found, you alive and well! We need you back at once! The orcs "
 "have attacked the humans."
 msgstr ""
-"Konečně jsme vás našel, živé a zdravé! Potřebujeme, abyste se ještě vrátili! "
+"Konečně jsme vás našel, živé a zdravé! Potřebujeme, abyste se hned vrátili! "
 "Skřeti napadli království lidí."
 
 #. [message]: id=Kalenz
@@ -2591,25 +2660,24 @@ msgstr "Ano, mám lektvar neviditelnosti."
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/13_News_from_the_front.cfg:145
-#, fuzzy
 msgid ""
 "We face a difficult choice. I know humans did not help us when the orcs "
 "attacked, but the orcs are everybody's enemy. When humans fall, we'll be "
 "next."
 msgstr ""
 "Je to těžká volba. Vím, že nám lidé nepomohli, když na nás skřeti útočili, "
-"ale skřeti jdou po nás všech. Když padnou lidé, budeme na řadě my."
+"ale skřeti jsou nepřátelé všech. Když padnou lidé, budeme na řadě my."
 
 #. [message]: id=Eonihar
 #: data/campaigns/Legend_of_Wesmere/scenarios/13_News_from_the_front.cfg:149
-#, fuzzy
 msgid ""
 "The orcish forces are encamped south of the Great River, and have surrounded "
 "the fortified human settlement at Tath. The humans are sending all their "
 "forces there. We need to decide whether we will help them or not."
 msgstr ""
-"Skřeti táboří jižně od Velké řeky. Obklíčili město Weslath. Lidé tam poslali "
-"všechna svá vojska. Musíme se rozhodnout, jestli jim pomůžeme nebo ne."
+"Skřeti táboří jižně od Velké řeky. Obklíčili lidské opevnění u města Tath. "
+"Lidé tam poslali všechna svá vojska. Musíme se rozhodnout, jestli jim "
+"pomůžeme nebo ne."
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/13_News_from_the_front.cfg:153
@@ -2628,8 +2696,9 @@ msgstr "Spojenectví s lidmi"
 msgid ""
 "With the human-elf alliance revived, our heroes hurried to the battlefield..."
 msgstr ""
+"Poté co obnovili lidsko-elfí spojenectví, pospíchali naši hrdinové na "
+"bojiště..."
 
-# Jméno
 #. [side]: type=General, id=Aldar
 #: data/campaigns/Legend_of_Wesmere/scenarios/14_Human_Alliance.cfg:44
 msgid "Aldar"
@@ -2944,6 +3013,7 @@ msgstr ""
 "\n"
 "Jakto že víš o Ohnivém rubínu?"
 
+# hm... ó králi...
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/15_The_Treaty.cfg:64
 msgid ""
@@ -2955,6 +3025,13 @@ msgid ""
 "advise you to enclose it in a net or filigree of pure gold charged with the "
 "magic of light."
 msgstr ""
+"@Kleodil\n"
+"\n"
+"Zjistili jsme ó králi, že energie zaplavující Rubín může mít negativní vliv "
+"na jeho držitele. Možná to je ten důvod, proč se váš otec stával "
+"sklíčenější. Kvůli vám samotnému a kvůli vašemu království vám radíme, "
+"abyste ji nechal uzavřít do schránky či šperku z čistého zlata, nabitého "
+"magií světla."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/15_The_Treaty.cfg:70
@@ -2978,6 +3055,11 @@ msgid ""
 "the fight to the orcs before winter falls; we need you to demonstrate "
 "against them, drawing them away from the roads north. Can we count on you?"
 msgstr ""
+"@Kalenz\n"
+"\n"
+"Teď když jsme podepsali Dohodu, pojďme ji potrvdit skutkem. Chystáme se "
+"zaútočit na skřety než přijde zima a potřebujeme, aby jste se proti nim "
+"postavili a odřízli jim ústupovou cestu na sever. Můžeme s vámi počítat?"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/15_The_Treaty.cfg:82
@@ -2987,6 +3069,10 @@ msgid ""
 "I am not sure... My late father did not pay too much attention to army "
 "matters and we have already lost very many men..."
 msgstr ""
+"@Haldrik II.\n"
+"\n"
+"Nejsem si jist... Můj zemřelý otec se moc armádě nevěnoval a již jsme "
+"ztratili tak mnoho mužů..."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/15_The_Treaty.cfg:88
@@ -2995,12 +3081,14 @@ msgid ""
 "\n"
 "I knew it! I always told you we stand alone!"
 msgstr ""
+"@Landar\n"
+"\n"
+"Věděl jsem to! Vždycky jsem ti říkal, že v tom zůstaneme sami!"
 
 #. [scenario]: id=16_The_Chief_must_die
 #: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die.cfg:5
-#, fuzzy
 msgid "The Chief must die"
-msgstr "Král musí zemřít"
+msgstr "Náčelník musí zemřít"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die.cfg:41
@@ -3010,6 +3098,9 @@ msgid ""
 "reluctantly, been training Kalenz in a selected few of the secrets of "
 "Crelanu's book ..."
 msgstr ""
+"Když bitva o Tath skončila, Kalenz s Landarem si uvědomovali, že přišel čas "
+"provést Krelanův riskantní, ale nutný plán. Zatím Kleodil, ač neochotně, "
+"trénovala Kalenze v některých vybraných tajných uměních z Krelanovi knihy..."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die.cfg:47
@@ -3019,6 +3110,11 @@ msgid ""
 "safely. My heart aches when I think of you going into such danger as this. "
 "It is peril not merely to your body, but to the essence of yourself."
 msgstr ""
+"Kleodil\n"
+"Naučila jsem tě vše, co jsem si troufla. Můj lorde... Kalenzi... modlím se, "
+"aby jsi se vrátil v pořádku. U srdce mě svírá, když pomyslím, do jakého "
+"nebezpečí jdeš. Není to rizikem jen pro tvůj fyzický život, ale i pro tvou "
+"duši."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die.cfg:52
@@ -3036,6 +3132,9 @@ msgid ""
 "I do not think I could bear your death. Still less could I bear the "
 "corruption of your soul; the grief would ruin me."
 msgstr ""
+"Kleodil\n"
+"Asi neunesu pokud umřeš. A už vůbec neunesu, pokud tvá duše bude zvrácena. "
+"Ta lítost by mě zničila."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die.cfg:62
@@ -3044,11 +3143,14 @@ msgid ""
 "My eyes are open. To the danger, and...to you. You glow like a star in the "
 "night, Cleodil. You will be my guide out of darkness."
 msgstr ""
+"Kalenz\n"
+"Mé oči hledí jasně. Na nebezpečí... a na tebe. Kleodil, záříš jako hvězda ve "
+"tmách. Budeš mi průvodcem z temnoty."
 
 #. [side]: type=Orcish Sovereign, id=Great Chief Brurbar
 #: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die.cfg:77
 msgid "Great Chief Brurbar"
-msgstr ""
+msgstr "Velký náčelník Brurbar"
 
 #. [side]: type=Orcish Warlord, id=Tamitahan
 #: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die.cfg:93
@@ -3072,10 +3174,8 @@ msgstr "Ozul"
 
 #. [objective]: condition=win
 #: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die.cfg:245
-#, fuzzy
 msgid "Kill the Orcish Great Chief and Kalenz must reach the signpost"
-msgstr ""
-"Porážka Krále skřetů a Kalenz dosáhne lesa v blízkosti jeho počáteční pozice"
+msgstr "Skřetí Velký náčelník zemře a Kalenz dosáhne ukazatele"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die.cfg:275
@@ -3090,23 +3190,21 @@ msgstr "Absolutně. Jdeme na to!"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die.cfg:283
-#, fuzzy
 msgid ""
 "We need to kill the Great Chief and get out before the effect of the philter "
 "ends. Time to drink it down now!"
 msgstr ""
-"Musíme zabít krále a vypadnout dřív, než přestane lektvar působit. Tak, "
-"pojďme ho vypít!"
+"Musíme zabít Velkého náčelníka a vypadnout dřív, než přestane lektvar "
+"působit. Tak, pojďme ho vypít!"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die.cfg:327
-#, fuzzy
 msgid ""
 "This feels passing strange! Landar, remember to stay far from the wolves-"
 "they may be able to smell us."
 msgstr ""
-"Zvláštní pocit ... Landare, pamatuj, že se musíme držet dál od vlků, mohli "
-"by nás zvětřit."
+"To je zvláštní pocit! Landare, pamatuj, že se musíme držet dál od vlků, "
+"mohli by nás zvětřit."
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die.cfg:345
@@ -3159,7 +3257,7 @@ msgstr "Plán funguje! Teď si vezmeme zpět, co je naše!"
 #. [object]: id=invisibility_potion_{USER_ID}
 #: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die_utils.cfg:5
 msgid "Crelanu's philter affecting "
-msgstr ""
+msgstr "Krelanův lektvar zapůsobil"
 
 #. [hides]: id=invisible
 #: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die_utils.cfg:15
@@ -3177,6 +3275,11 @@ msgid ""
 "initiate an attack on this unit. Defense is at 90 percent for every terrain "
 "except water, where it is 70 percent."
 msgstr ""
+"neviditelný:\n"
+"Nepřátelské jednotky tuto jednotku nevidí. Jednotky s vlky však mohou tuto "
+"jednotku zvětřit, pokud je dost blízko. Proto také nepřátelské jednotky "
+"(kromě těch s vlky) nemohou na neviditelnou jednotku sami zaútočit. Tato "
+"jednotka má v jakémkoli terénu obranu 90%, kromě vody, kde má obranu 70%.  "
 
 #. [unit]: type=Goblin Pillager, id=Odrun
 #: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die_utils.cfg:55
@@ -3371,7 +3474,7 @@ msgstr "Gulmod"
 #. [scenario]: id=17_Breaking_the_siege
 #: data/campaigns/Legend_of_Wesmere/scenarios/17_Breaking_the_siege.cfg:3
 msgid "Breaking the siege"
-msgstr ""
+msgstr "Rozbití obklíčení"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/17_Breaking_the_siege.cfg:22
@@ -3382,6 +3485,11 @@ msgid ""
 "send a force to their aid. But harsh winter weather descended while it was "
 "en route..."
 msgstr ""
+"S tím, jak se skřeti zapletli do bratrovražedného boje, vycítil Kalenz "
+"příležitost získat zpět svůj domov. Dostaly se k němu zprávy o enklávě "
+"Severních elfů, čelící skřetí invazi. Rychle se rozhodl přispět jim s "
+"vojskem na pomoc. Na jejich cestě je však následovalo nevlídné zimní "
+"počasí..."
 
 #. [unit]: type=Orcish Warlord, id=Kior-Pur
 #: data/campaigns/Legend_of_Wesmere/scenarios/17_Breaking_the_siege.cfg:64
@@ -3410,17 +3518,21 @@ msgid ""
 "I see troops coming from the south! It must be that our army has beaten "
 "these elves and humans and will now help us crush these remaining elves!"
 msgstr ""
+"Vidim, že sem jde z jihu armáda! To sou určitě naši, co tam porazili ty elfy "
+"a lidi a teď nám jdou pomoct rozmáčknout i tyhle zbejvající elfy!"
 
 #. [message]: id=Uradredia
 #: data/campaigns/Legend_of_Wesmere/scenarios/17_Breaking_the_siege.cfg:226
 msgid ""
 "Our defenses are stretched thin. Men, prepare to face another orcish attack!"
 msgstr ""
+"Naše obrana je napjatá jak struna. Muži, připravte se čelit další vlně "
+"skřetího útoku!"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/17_Breaking_the_siege.cfg:230
 msgid "The North Elves still stand. Prepare for battle!"
-msgstr ""
+msgstr "Severní elfové stále odolávají. Připravte se na boj!"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/17_Breaking_the_siege.cfg:238
@@ -3432,6 +3544,7 @@ msgstr "Severní elfové jsou osvobozeni!"
 msgid ""
 "Our thanks to you, Kalenz, son of Kliada. Our troops are at your command."
 msgstr ""
+"Patří ti naše díky, Kalenzi, synu Kliadův. Teď jsi velitelem našich jednotek."
 
 #. [message]: id=Kior-Pur
 #: data/campaigns/Legend_of_Wesmere/scenarios/17_Breaking_the_siege.cfg:256
@@ -3464,6 +3577,8 @@ msgid ""
 "Before you die, know that you lost in Wesmere, you lost in Tath, you will "
 "lose here and that your Great Chief is dead!"
 msgstr ""
+"Než zemřeš, věz, že jste prohráli ve Wesmérii, u Tathu a prohrajete i tady! "
+"A že váš Velký náčelník je mrtev!"
 
 # Název scénáře
 #. [scenario]: id=18_hour_of_glory
@@ -3549,15 +3664,16 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/18_Hour_of_Glory.cfg:51
-#, fuzzy
 msgid ""
 "@Cleodil\n"
 "\n"
 "It does seem so, Kalenz. But I fear things may not be as they seem. Landar's "
 "mind has become dark and clouded to my healing senses."
 msgstr ""
-"Vypadá, že si s tím poradil až příliš snadno. Ale obávám se že věci nejdou "
-"tak, jak se jeví. Bojím se, že již přešel na druhou stranu..."
+"@Kleodil\n"
+"\n"
+"Vypadá to tak, Kalenzi. Ale bojím se že věci nejdou tak, jak se jeví. Má "
+"léčitelská intuice mi říká, že Landarova mysl se zatemňuje."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/18_Hour_of_Glory.cfg:57
@@ -3656,7 +3772,7 @@ msgstr "Vítězství je naše."
 #. [scenario]: id=20_Council_ruling
 #: data/campaigns/Legend_of_Wesmere/scenarios/20_Council_ruling.cfg:3
 msgid "Council ruling"
-msgstr ""
+msgstr "Rozhodnutí Rady"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/20_Council_ruling.cfg:13
@@ -3665,6 +3781,9 @@ msgid ""
 "scattered bands lurking in waste places. But the Elves still had problems of "
 "their own..."
 msgstr ""
+"Ještěráci byli po zničení svého kdysi mocného impéria redukováni do "
+"rozprášených band, skrývajících se v pustinách. Ale elfové stále měli své "
+"vlastní problémy..."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/20_Council_ruling.cfg:24
@@ -3677,6 +3796,13 @@ msgid ""
 "attack the Saurians. These were decisions to be taken by the council, not by "
 "a field commander! "
 msgstr ""
+"@Legmir\n"
+"\n"
+"Kalenzi, Rada tě sem zavolala, aby po tobě vyžádala omluvu za tvé akce. Ty "
+"jsi se rozhodl pomoci lidem u Tathu a tak riskovat další válku se skřety, ty "
+"jsi se rozhodl zaútočit na skřety na severu a konečně ty jsi se rozhodl "
+"zaútočit na ještěráky. Tyto rozhodnutí měla vzejít od Rady, ne od polního "
+"velitele!"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/20_Council_ruling.cfg:30
@@ -3689,6 +3815,13 @@ msgid ""
 "been beneficial to our cause: The orcs are now in a civil war for "
 "succession, the North Elves are free and the Saurians are no longer a threat."
 msgstr ""
+"@Kalenz\n"
+"\n"
+"Se vší úctou lordstvo, byli a jsme ve válce. Nemůžeme ztrácet čas "
+"konzultacemi, protože by se naši nepřátelé mohli vysmeknout z našeho sevření "
+"a prodloužit a prodražit tak válku. Kromě toho, všechny naše akce nám byly "
+"ku prospěchu: skřeti jsou v občanské válce kvůli následnictví, Severní "
+"elfové jsou osvobozeni a ještěráci už nepředstavují hrozbu."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/20_Council_ruling.cfg:36
@@ -3698,6 +3831,10 @@ msgid ""
 "The council is not blind to these benefits. But, still, you cannot decide "
 "high matters of statecraft on behalf of the Elves. We cannot allow it."
 msgstr ""
+"@Uripur\n"
+"\n"
+"Rada není slepá těmto úspěchům. Ale stále není možné, aby jsi rozhodoval "
+"závažné státnické záležitosti Elfů. Nemůžeme to dovolit."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/20_Council_ruling.cfg:42
@@ -3707,6 +3844,10 @@ msgid ""
 "If it weren't for Kalenz and his men, none of us would be here to argue the "
 "point today. "
 msgstr ""
+"@Galtrid\n"
+"\n"
+"Pokud by nebylo Kalenze a jeho mužů, nikdo z nás by se tady dnes o těchto "
+"věcech nemohl dohadovat."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/20_Council_ruling.cfg:48
@@ -3716,6 +3857,10 @@ msgid ""
 "I agree. What's done is done. Let us concentrate on the future, not the "
 "past. "
 msgstr ""
+"@Uradredia\n"
+"\n"
+"Souhlasím. Co se stalo, stalo se. Soustřeďme se na budoucnost a nechme "
+"minulost minulostí."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/20_Council_ruling.cfg:54
@@ -3725,6 +3870,9 @@ msgid ""
 "Kalenz, the council has decided that you are to be stripped of all military "
 "authority. You may now go."
 msgstr ""
+"@Iradia\n"
+"\n"
+"Kalenzi, Rada rozhodla, že jsi zbaven všeho velení. Teď můžeš jít."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/20_Council_ruling.cfg:60
@@ -3734,6 +3882,10 @@ msgid ""
 "I lay down my burden humbly and gladly. But we need to have a strong army, "
 "as the orcs will return!"
 msgstr ""
+"@Kalenz\n"
+"\n"
+"Rád se ve vší skromnosti zbavím té zodpovědnosti. Ale budeme potřebovat mít "
+"silnou armádu, až se skřeti vrátí!"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/20_Council_ruling.cfg:67
@@ -3742,6 +3894,9 @@ msgid ""
 "\n"
 "Cowards and traitors!"
 msgstr ""
+"@Landar\n"
+"\n"
+"Zbabělci a zrádci!"
 
 #. [scenario]: id=21_Elvish_Assassins
 #: data/campaigns/Legend_of_Wesmere/scenarios/21_Elvish_Assassins.cfg:12
@@ -3761,6 +3916,11 @@ msgid ""
 "the remnant evil Crelanu's philter had left in Kalenz. The two began to "
 "think of having children."
 msgstr ""
+"Osvobozeni od hrozby války, nalézali v sobě návzájem zalíbení. Láska jejich "
+"srdcí se se formovala ve uprostřed všeho toho blízkého nebezpečí a smrti, "
+"aby nakonec vytlačila i zbytky zla z Krelanova lektvaru, co setrvávaly v "
+"Kalenzově nitru.\n"
+"Začali pomýšlet na založení rodiny."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/21_Elvish_Assassins.cfg:41
@@ -3769,6 +3929,9 @@ msgid ""
 "rising. And in the heart of Landar, who had once been their friend, evil was "
 "not vanquished, but festered and grew..."
 msgstr ""
+"Ale jejich pokojný život neměl dlouhého trvání. V okolním světě se daly do "
+"pohybu krvavé události. A v srdci jejich bývalého přítele Landara hnisalo a "
+"rostlo nevyhubené zlo..."
 
 #. [unit]: type=Elvish Ranger, id=Antaril
 #: data/campaigns/Legend_of_Wesmere/scenarios/21_Elvish_Assassins.cfg:67
@@ -3789,7 +3952,7 @@ msgstr "Oblil"
 #. [objective]: condition=win
 #: data/campaigns/Legend_of_Wesmere/scenarios/21_Elvish_Assassins.cfg:173
 msgid "Kalenz reaches the signpost"
-msgstr "Kalenz je u ukazatele"
+msgstr "Kalenz dosáhne ukazatele"
 
 #. [unit]: id=Galenor, type=Elvish Scout
 #: data/campaigns/Legend_of_Wesmere/scenarios/21_Elvish_Assassins.cfg:248
@@ -3908,7 +4071,7 @@ msgstr "Vyhráli jsme!"
 #. [scenario]: id=23_End_of_War
 #: data/campaigns/Legend_of_Wesmere/scenarios/23_End_of_War.cfg:4
 msgid "End of War"
-msgstr ""
+msgstr "Závěr války"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/23_End_of_War.cfg:22
@@ -3921,6 +4084,13 @@ msgid ""
 "against his old friend and now mortal enemy, Landar, in the forest of "
 "Gitamoth... "
 msgstr ""
+"Bylo už zmíněno, že bitva se Severními elfy byla počátkem konce Landarovy "
+"revolty. Ale občasnká válka doutnala ještě po mnoho let. Žádná ze stran "
+"neshromáždila dostatek sil, aby dosáhla definitivního vítězství.\n"
+"Až konečně do doby, kdy Landarovy vzrůstající hrubé a arogantní způsoby od "
+"něj odvrátily mnoho jeho dřívějších následovníků. Kalenz, poté, co "
+"shromáždil všechna dostupná vojska, vyrazil proti svému bývalému příteli a "
+"nynějšímu zavilému nepříteli Landarovi. Střetli se v lese Gitamoth..."
 
 # Návěští scénáře
 #. [objective]: condition=win
@@ -3932,7 +4102,7 @@ msgstr "Poraz Landara"
 #: data/campaigns/Legend_of_Wesmere/scenarios/23_End_of_War.cfg:113
 msgid ""
 "Landar, let us not spill any more elvish blood. Give up. We can help you!"
-msgstr ""
+msgstr "Landare, nenech dál elfy prolévat krev. Vzdej se. Pomůžeme ti!"
 
 #. [message]: id=Landar
 #: data/campaigns/Legend_of_Wesmere/scenarios/23_End_of_War.cfg:117
@@ -3956,7 +4126,6 @@ msgstr ""
 
 #. [message]: id=Landar
 #: data/campaigns/Legend_of_Wesmere/scenarios/23_End_of_War.cfg:135
-#, fuzzy
 msgid ""
 "I know. But you are not at fault, for I did not take just one bottle. I "
 "wanted to make sure we could kill the orcish Great Chief, so I went back for "
@@ -3964,9 +4133,10 @@ msgid ""
 "and brought death and disaster to our own people. I have even tried to kill "
 "my own friend. I am a disgrace to elven-kind."
 msgstr ""
-"Vím. Ale já nevypil jen jednu lahvičku. Chtěl jsem mít jistotu, že skřetího "
-"krále budeme schopni zabít.\n"
-"Nyní jsem vinen tím, že nás opustili naši trpasličí spojenci a že jsem "
+"Vím. Ale nebyla tvoje chyba, že jsem nevypil jen jednu lahvičku. Chtěl jsem "
+"mít jistotu, že skřetího náčelníka budeme schopni zabít a tak jsem se rychle "
+"vrátil pro druhou a taky ji pak vypil.\n"
+"Teď jsem vinen tím, že nás opustili naši trpasličí spojenci a že jsem "
 "přinesl neštěstí a smrt mezi vlastní lid. Dokonce jsem chtěl zabít svého "
 "vlastního přítele. Nejsem už hoden být nazýván elfem."
 
@@ -3977,6 +4147,9 @@ msgid ""
 "be yours was the blood-price fate required of us for victory. Rest well, my "
 "friend. Rest well Landar, Hero of the Elves!"
 msgstr ""
+"Nebyla to všechno tvá chyba. Možná zapracovala Aquagarova kletba, možná si "
+"od nás osud žádal za vítězství zaplatit tuto krvavou cenu. Odpočívej v "
+"pokoji, můj příteli. Odpočívej v pokoji Landare, Elfí hrdino!"
 
 #. [scenario]: id=24_Epilogue
 #: data/campaigns/Legend_of_Wesmere/scenarios/24_Epilogue.cfg:3
@@ -4032,9 +4205,9 @@ msgstr ""
 "Když Kalenz shledal, že jeho konání je hotovo tak, jak by mělo být, odebral "
 "se s Kleodil na odpočinek do svého domova v Lintanirském lese."
 
+# trochu krkolomné
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/24_Epilogue.cfg:36
-#, fuzzy
 msgid ""
 "Cleodil bore Kalenz children who were tall, and beautiful, and inherited in "
 "full measure both their mother's healing gifts and their father's talented "
@@ -4043,7 +4216,9 @@ msgid ""
 "Elves, aging swiftly to a peaceful end."
 msgstr ""
 "Kleodil dala Kalenzovi zdravé a krásné děti, které po své matce disponovaly "
-"léčitelskými schopnostmi a po svém otci nadanou a pronikavou myslí."
+"léčitelskými schopnostmi a po svém otci nadanou a pronikavou myslí. V "
+"naplněném čase, po dlouhém a úspěšném životě, plného lásky a veselosti "
+"zemřela dle zvyku elfů v pokojném stáří."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/24_Epilogue.cfg:39
@@ -4056,6 +4231,13 @@ msgid ""
 "times and places when his people were in dire straits, and succor them with "
 "wisdom or magic or his bright keen blade."
 msgstr ""
+"Ale Kalenzův příběh ještě neskončil. Aquagarova kletba se vyplnila. Krelanův "
+"lektvar mu prodloužil život a Klaenz přežil nejen svou milovanou, ale i své "
+"děti. Opuštěn svými blízkými kvůli jejich smrtelnosti, utíkajíce od "
+"pohasínajících záblesků v očích svých umírajících drahých, odešel ze svého "
+"domova a toulal se mnoho let po Velkém kontinentu. Často se neočekávaně "
+"zjevoval v obdobích, kdy byl jeho lid v úzkých, a pomáhal jim svou "
+"moudrostí, magií či stále dobře nabroušenou čepelí."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/24_Epilogue.cfg:42
@@ -4064,13 +4246,14 @@ msgid ""
 "was most alone, seek ye the tale of Delfador the Great and the fall of the "
 "usurping Queen Asheviere."
 msgstr ""
+"Více se lze o Kalenzových posledních a asi nejslavnějších činech (během jeho "
+"největší osamělosti) dozvědět v příběhu Velkého Delfadora a pádu "
+"uchvatitelské královny Ašvíry."
 
-# Jméno
 #: data/campaigns/Legend_of_Wesmere/utils/characters.cfg:5
 msgid "Kalenz"
 msgstr "Kalenz"
 
-# Jméno
 #: data/campaigns/Legend_of_Wesmere/utils/characters.cfg:32
 msgid "Landar"
 msgstr "Landar"
@@ -4079,7 +4262,6 @@ msgstr "Landar"
 msgid "Cleodil"
 msgstr "Kleodil"
 
-# Jméno
 #: data/campaigns/Legend_of_Wesmere/utils/characters.cfg:63
 msgid "Olurf"
 msgstr "Olurf"
@@ -4088,7 +4270,6 @@ msgstr "Olurf"
 msgid "Galtrid"
 msgstr "Galtrid"
 
-# Jméno
 #: data/campaigns/Legend_of_Wesmere/utils/characters.cfg:93
 msgid "Uradredia"
 msgstr "Uradredia"
@@ -4116,7 +4297,7 @@ msgstr "Neee! Bez Landara nemůžeme dál pokračovat!"
 #. [message]: speaker=unit
 #: data/campaigns/Legend_of_Wesmere/utils/deaths.cfg:70
 msgid "I'm sorry I failed you, Kalenz...beloved..."
-msgstr ""
+msgstr "Mrzí mě, že jsem tě zklamala, Kalenzi... milovaný..."
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/utils/deaths.cfg:74
@@ -4160,7 +4341,7 @@ msgstr "Říkal jsem ti to!"
 #. [message]: speaker=second_unit
 #: data/campaigns/Legend_of_Wesmere/utils/deaths.cfg:147
 msgid "Know that you perished at the hands of the Kalenz's elves!"
-msgstr ""
+msgstr "Abys věděl, umíráš rukama Kalenzových elfů!"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/utils/deaths.cfg:158
