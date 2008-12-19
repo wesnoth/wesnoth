@@ -341,7 +341,46 @@ public:
 	
 		return widget;
 	}
+#ifdef NEW_DRAW
 
+	/**
+	 * Gets the widget at the wanted coordinates.
+	 *
+	 * @param coordinate          The screen coordinate which should be
+	 *                            inside the widget.
+	 * @param must_be_active      The widget should be active, not all widgets
+	 *                            have an active flag, those who don't ignore
+	 *                            flag.
+	 * 
+	 * @returns                   The widget with the id.
+	 * @retval 0                  No widget at the wanted coordinate found (or
+	 *                            not active if must_be_active was set).
+	 */
+	virtual twidget* find_widget2(const tpoint& coordinate, 
+			const bool /*must_be_active*/) 
+	{ 
+		return 
+				coordinate.x >= screen_x_ && 
+				coordinate.x < (screen_x_ + static_cast<int>(w_)) &&
+				coordinate.y >= screen_y_ && 
+				coordinate.y < (screen_y_ + static_cast<int>(h_)) 
+				? this 
+				: 0;
+	}
+
+	/** The const version of find_widget. */
+	virtual const twidget* find_widget2(const tpoint& coordinate, 
+			const bool /*must_be_active*/) const
+	{ 
+		return 
+				coordinate.x >= screen_x_ && 
+				coordinate.x < (screen_x_ + static_cast<int>(w_)) &&
+				coordinate.y >= screen_y_ && 
+				coordinate.y < (screen_y_ + static_cast<int>(h_)) 
+				? this 
+				: 0;
+	}
+#endif
 	/** 
 	 * Gets a widget with the wanted id.
 	 *

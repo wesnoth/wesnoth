@@ -137,7 +137,20 @@ public:
 		const twidget* result = tcontrol::find_widget(id, must_be_active);
 		return result ? result : grid_.find_widget(id, must_be_active); 
 	}
+#ifdef NEW_DRAW
+	/** Inherited from tcontrol. */
+	twidget* find_widget2(const tpoint& coordinate, const bool must_be_active) 
+	{ 
+		return grid_.find_widget2(coordinate, must_be_active); 
+	}
 
+	/** Inherited from tcontrol. */
+	const twidget* find_widget2(const tpoint& coordinate, 
+			const bool must_be_active) const
+	{ 
+		return grid_.find_widget2(coordinate, must_be_active); 
+	}
+#endif
 	/** Import overloaded versions. */
 	using tcontrol::find_widget;
 
