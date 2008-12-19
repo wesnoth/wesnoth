@@ -434,6 +434,9 @@ public:
 	 */
 	twindow* get_window();
 
+	/** The const version of get_window(). */
+	const twindow* get_window() const;
+
 	/** 
 	 * Returns the toplevel dialog.
 	 *

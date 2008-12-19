@@ -72,6 +72,20 @@ twindow* twidget::get_window()
 	return dynamic_cast<twindow*>(result);
 }
 
+const twindow* twidget::get_window() const
+{
+	// Go up into the parent tree until we find the top level
+	// parent, we can also be the toplevel so start with
+	// ourselves instead of our parent.
+	const twidget* result = this;
+	while(result->parent_) {
+		result = result->parent_;
+	}
+
+	// on error dynamic_cast return 0 which is what we want.
+	return dynamic_cast<const twindow*>(result);
+}
+
 tdialog* twidget::dialog()
 {
 	twindow* window = get_window();
