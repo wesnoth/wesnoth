@@ -1,14 +1,14 @@
 # Translators:
 #  Nils Kneuper <crazy-ivanovic@gmx.net>, 2005
 #  Christoph Berg <Christoph.Berg@kpm-sport.de>, 2005, 2006, 2007
-#  Gerfried Fuchs <alfie@ist.org>, 2006, 2008
+#  Gerfried Fuchs <rhonda@deb.at>, 2006, 2008
 #  HaJo Gurt <gurt@gmx.de>, 2007
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.5\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-12-03 19:43+0100\n"
-"PO-Revision-Date: 2008-12-18 18:56+0100\n"
+"PO-Revision-Date: 2008-12-19 13:07+0100\n"
 "Last-Translator: Gerfried Fuchs <rhonda@deb.at>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "MIME-Version: 1.0\n"
@@ -705,7 +705,6 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:976
-#, fuzzy
 msgid ""
 "Note:\n"
 "Once you select a unit, you'll see percentages for different terrain tiles. "
@@ -715,11 +714,12 @@ msgid ""
 "you wherever you stand."
 msgstr ""
 "Anmerkung:\n"
-"Wenn Ihr eine Einheit ausgewählt habt, seht Ihr Prozentzahlen an "
-"verschiedenen Orten: Höhere bedeuten bessere Verteidigung. Zum Beispiel ist "
-"die Verteidigung in Burgen und Dörfern gut, in Flüssen hingegen schlecht. "
-"Die Angriffe der Puppen sind jedoch magisch, daher haben sie unabhängig von "
-"Eurem Standort eine Wahrscheinlichkeit von 70%, euch zu treffen."
+"Wenn Ihr eine Einheit ausgewählt habt, seht Ihr Prozentzahlen für "
+"verschiedene Feldarten. Je höher die Prozentzahl ist desto besser kann sich "
+"die Einheit dort verteidigen. Zum Beispiel ist die Verteidigung in Burgen "
+"und Dörfern gut, in Flüssen hingegen schlecht. Die Angriffe der Puppen "
+"jedoch sind magisch, daher haben sie unabhängig von Eurem Standort eine "
+"Wahrscheinlichkeit von 70%, euch zu treffen."
 
 #. [message]: speaker=second_unit
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1001
@@ -972,15 +972,14 @@ msgstr "Dies ist kein Spiel, Li'sar! "
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:418
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:419
-#, fuzzy
 msgid ""
 "Orcs have encamped across the river. This is elven country; they are fools "
 "to enter here. We Elves are fast and hard to hit in forests. You must defeat "
 "their leader so they never threaten us again. I will advise you."
 msgstr ""
 "Orks haben auf der anderen Seite des Flusses ihr Lager aufgeschlagen. Dies "
-"ist unser Reich, das Reich der Elfen: Wir sind im Wald schnell unterwegs und "
-"dort schwer zu treffen. Sie sind Narren, hier einzufallen. Du musst ihren "
+"ist  das Reich der Elfen. Sie sind Narren, hier einzufallen. Wir Elfen sind "
+"im Wald schnell unterwegs und dort schwer zu treffen. Du musst ihren "
 "Häuptling besiegen, damit sie uns nie wieder behelligen. Ich werde dich "
 "beraten."
 
@@ -1415,15 +1414,14 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:946
-#, fuzzy
 msgid ""
 "You can order a unit to move for multiple turns by selecting the unit and "
 "clicking on the destination. A number will indicate how many turns it will "
 "take until that unit reaches the tile."
 msgstr ""
-"Ihr könnt eine Einheit für mehrere Züge auf die Reise schicken: Wählt die "
-"Einheit aus, dann klickt auf das Ziel. Ihr werdet eine »(2)« sehen, wenn es "
-"zwei Züge dauert, das Ziel zu erreichen."
+"Ihr könnt eine Einheit für mehrere Züge auf die Reise schicken, indem Ihr "
+"sie auswählt und hernach auf das Ziel klickt. Eine Zahl wird euch anzeigen, "
+"wieviele Züge notwendig sind, das Ziel zu erreichen."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:947
@@ -1654,53 +1652,48 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1181
-#, fuzzy
 msgid "You only need to defeat the leader to win (see Main Menu->Objectives)."
 msgstr ""
-"Ihr müsst nur den Anführer besiegen, um zu gewinnen. Um Euch Eure "
-"derzeitigen Missionsziele anzeigen zu lassen, klickt mit der linken "
-"Maustaste auf »Menü« und dann »Missionsziele«."
+"Ihr müsst lediglich den Anführer besiegen, um zu gewinnen (seht auch »Menü« "
+"und dann »Missionsziele« nach)."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1186
-#, fuzzy
 msgid ""
 "Remember to recruit troops useful for the situation. Archers are "
 "particularly effective against Grunts, Wolf Riders and their leader."
 msgstr ""
-"Vergesst nicht, bei Bedarf weitere Einheiten auszubilden: Bogenschützen sind "
-"besonders effektiv gegen Grunzer, Wolfsreiter und deren Häuptling."
+"Vergesst nicht, für die Situation passende Einheiten auszubilden. "
+"Bogenschützen sind besonders effektiv gegen Grunzer, Wolfsreiter und deren "
+"Häuptling."
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1204
-#, fuzzy
 msgid ""
 "Stay near the keep! You need to be on a keep to recruit more units, and I "
 "doubt the Orc leader will let you use his!"
 msgstr ""
-"Bleib nahe beim Burgfried: Du musst in ihm stehen, um weitere Einheiten "
+"Bleib nahe beim Burgfried! Du musst in ihm stehen, um weitere Einheiten "
 "auszubilden und ich bezweifle, dass es dir der Orkhäuptling erlaubt, seinen "
 "zu verwenden!"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1218
-#, fuzzy
 msgid ""
 "Their leader has moved into that village! He's not as stupid as I thought. "
 "The village heals him each turn and provides good defense."
 msgstr ""
 "Ihr Anführer hat sich in diesem Dorf verschanzt! Er ist nicht so dumm, wie "
-"ich dachte: Er wird nun jede Runde geheilt und hat dort eine gute "
+"ich dachte. Das Dorf heilt ihn nun jede Runde und bietet eine gute "
 "Verteidigungsposition."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1229
-#, fuzzy
 msgid ""
 "That unit has captured our village! You'd better get him out; it heals him "
 "each turn and provides good defense."
 msgstr ""
-"Diese Einheit hat unser Dorf eingenommen! Du vertreibst sie besser: Es heilt "
+"Diese Einheit hat unser Dorf eingenommen! Du vertreibst sie besser; es heilt "
 "sie in jedem Zug und bietet gute Verteidigung."
 
 #. [message]: speaker=unit
@@ -1716,7 +1709,6 @@ msgstr ""
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1277
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1293
-#, fuzzy
 msgid ""
 "You are close to killing their leader! The unit who finishes him will gain "
 "16 experience points because he is level 2. Choose your unit carefully!"
@@ -1727,24 +1719,22 @@ msgstr ""
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1336
-#, fuzzy
 msgid ""
 "We will miss $deadguy.name| because he had $deadguy.experience experience "
 "points, meaning he would have advanced to level 2 soon."
 msgstr ""
-"Wir werden $deadguy.user_description vermissen. Und er hatte $deadguy."
-"experience Erfahrungspunkte, was bedeutet, dass er bald auf Stufe 2 "
-"aufgestiegen wäre."
+"Wir werden $deadguy.name| vermissen, da er $deadguy.experience "
+"Erfahrungspunkte hatte, was bedeutet, dass er bald auf Stufe 2 aufgestiegen "
+"wäre."
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1345
-#, fuzzy
 msgid ""
 "We will miss $deadguy.name|, but it's better than one of our experienced "
 "troops dying!"
 msgstr ""
-"Wir werden $deadguy.user_description vermissen. Aber besser diese als eine "
-"unserer erfahreneren Soldaten!"
+"Wir werden $deadguy.name| vermissen. Aber besser diese als eine unserer "
+"erfahreneren Soldaten!"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1358
@@ -1756,53 +1746,48 @@ msgstr ""
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1359
-#, fuzzy
 msgid ""
 "You can see where an enemy can reach by moving the mouse over them. You can "
 "see all the possible enemy moves at once with the 'Show Enemy Moves' command "
 "from the 'Actions' menu."
 msgstr ""
-"Ihr könnt sehen, wohin ein Feind gelangt, indem ihr den Mauszeiger auf ihn "
-"bewegt. Ihr könnt allerdings auch alle möglichen feindlichen Bewegungen "
-"gleichzeitig betrachten, indem ihr »Gegn. Bewegungen zeigen« aus dem "
-"»Aktionen«-Menü auswählt."
+"Ihr könnt sehen, wohin ein Feind gelangen kann, indem ihr den Mauszeiger auf "
+"ihn bewegt. Ihr könnt allerdings auch alle möglichen feindlichen Bewegungen "
+"gleichzeitig betrachten, indem ihr den »Gegn. Bewegungen zeigen«-Befehl aus "
+"dem »Aktionen«-Menü auswählt."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1363
-#, fuzzy
 msgid ""
 "Level 2 units are powerful, but not invulnerable! Goodbye, $deadguy.name|."
 msgstr ""
 "Einheiten der Stufe 2 sind mächtig, aber nicht unverwundbar! Lebe wohl, "
-"$deadguy.user_description|."
+"$deadguy.name|."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1378
-#, fuzzy
 msgid ""
 "Beware of the Orc leader: he can do 36 hitpoints of damage at night! Attack "
 "with many units at once during the day."
 msgstr ""
-"Hütet euch vor dem Anführer: Er kann des Nachts 36 Schadenspunkte "
+"Hütet euch vor dem orkischen Anführer: Er kann des Nachts 36 Schadenspunkte "
 "verursachen! Greift ihn mit vielen Einheiten gleichzeitig an, während es Tag "
 "ist."
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1392
-#, fuzzy
 msgid ""
 "Advancing a level has fully healed me!\n"
 "I always have a 60% chance of hitting with my Marksman ability, and I deal 9 "
 "damage each for 4 attacks. Use me to dislodge hard-to-hit units."
 msgstr ""
 "Eine Stufe aufzusteigen, hat mich komplett geheilt!\n"
-"Ich habe immer eine 60% Wahrscheinlichkeit, mit meinem Bogen zu treffen, und "
-"verursache mit jedem meiner vier Angriffe 9 Schadenspunkte. Verwendet mich, "
-"um schwer treffbare Einheiten zu vertreiben."
+"Ich habe immer eine 60% Wahrscheinlichkeit, mit meiner Schießkunst-"
+"Fertigkeit zu treffen, und verursache 9 Schadenspunkte mit jedem meiner 4 "
+"Angriffe. Verwendet mich, um schwer treffbare Einheiten zu vertreiben."
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1406
-#, fuzzy
 msgid ""
 "Advancing a level has fully healed me!\n"
 "I am good with both bow and sword, and I have a special ability: ambush. I "
@@ -1811,12 +1796,11 @@ msgid ""
 msgstr ""
 "Eine Stufe aufzusteigen, hat mich komplett geheilt!\n"
 "Ich kann sowohl mit dem Bogen als auch dem Schwert umgehen. Zudem beherrsche "
-"ich eine spezielle Fertigkeit: Hinterhalt. Ich kann mich im Wald verstecken "
-"und Feinde sehen mich nur, wenn sie direkt neben mir stehen."
+"ich eine spezielle Fertigkeit: Hinterhalt. Ich kann mich im Wald verstecken, "
+"wo mich Feinde nur sehen, wenn sie direkt neben mir stehen."
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1420
-#, fuzzy
 msgid ""
 "Advancing a level has fully healed me!\n"
 "I am good with both bow and sword, and I have a special ability: leadership. "
@@ -1831,14 +1815,13 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1435
-#, fuzzy
 msgid ""
 "Advancing a level has fully healed me!\n"
 "I am particularly good with the sword, dealing 8 damage in 4 attacks."
 msgstr ""
 "Eine Stufe aufzusteigen, hat mich komplett geheilt!\n"
-"Ich bin besonders gut im Umgang mit dem Schwert: Jeder meiner vier Angriffe "
-"verursacht 8 Schadenspunkte."
+"Ich bin besonders gut im Umgang mit dem Schwert und verursache 8 "
+"Schadenspunkte mit jedem meiner 4 Angriffe."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1603
@@ -1847,17 +1830,17 @@ msgstr "Du hast zu lange gebraucht! Wir werden diese Orks nie los werden!"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1621
-#, fuzzy
 msgid ""
 "You are victorious! You may want to try Novice-level campaigns such as: The "
 "South Guard, An Orcish Incursion, A Tale of Two Brothers, and Heir to the "
 "Throne. The South Guard was specifically designed as a beginner's campaign. "
 "Konrad, Li'sar and Delfador are characters from Heir to the Throne."
 msgstr ""
-"Ihr habt die Orks besiegt. Als nächstes solltet Ihr die für Anfänger "
-"gestalteten Kampagnen »Die Südwacht«, »Die Geschichte zweier Brüder« oder »Der "
-"Thronerbe« spielen. »Die Südwacht« wurde speziell für Neulinge gestaltet. "
-"Konrad, Li'sar und Delfador sind Charaktere aus »Der Thronerbe«."
+"Ihr ward siegreich! Als nächstes solltet ihr Kampagnen mit der Einstufung "
+"Einfach ausprobieren, wie zum Beispiel: »Die Südwacht«, »Ein Einmarsch der "
+"Orks«, »Die Geschichte zweier Brüder« oder »Der Thronerbe«. »Die Südwacht« wurde "
+"speziell für Neulinge gestaltet. Konrad, Li'sar und Delfador sind Charaktere "
+"aus »Der Thronerbe«."
 
 #. [unit_type]: id=Fighter, race=human
 #: data/campaigns/tutorial/units/Fighter.cfg:4
@@ -1868,15 +1851,14 @@ msgstr "Kämpfer"
 #. [unit_type]: id=Fighter, race=human
 #: data/campaigns/tutorial/units/Fighteress.cfg:17
 #: data/campaigns/tutorial/units/Fighter.cfg:17
-#, fuzzy
 msgid ""
 "Young and brash, Fighters are skilled with swords and are vulnerable to "
 "attack from enemies. However, they have the potential to become great "
 "warriors one day."
 msgstr ""
-"Jung und stürmisch, stürzen sich die Kämpfer mit ihrem Schwert in die "
-"Schlacht. Obwohl sie leicht verletzbar sind, haben sie das Potenzial eines "
-"Tages große Krieger zu werden."
+"Jung und stürmisch stürzen sich die Kämpfer mit ihrer Schwertkunst in die "
+"Schlacht und sind leicht verletzbar. Jedoch wohnt ihnen das Potenzial inne, "
+"eines Tages große Krieger zu werden."
 
 #. [attack]: type=blade
 #: data/campaigns/tutorial/units/Fighter.cfg:22
