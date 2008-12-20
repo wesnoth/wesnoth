@@ -1706,44 +1706,49 @@ namespace {
 		assert(status_ptr != NULL);
 		assert(state_of_game != NULL);
 		unit new_unit(units,game_map,status_ptr,teams,cfg.get_parsed_config(),true, state_of_game);
-		preferences::encountered_units().insert(new_unit.type_id());
-		map_location loc = cfg_to_loc(cfg);
-
-		if(game_map->on_board(loc)) {
-			loc = find_vacant_tile(*game_map,*units,loc);
-			const bool show = screen != NULL && !(screen)->fogged(loc);
-			const bool animate = show && utils::string_bool(cfg["animate"], false);
-
-			//	If new unit is leader set current player/visible side name
-			//	to units name
-			if (new_unit.can_recruit())
-				(*teams)[new_unit.side() - 1].set_current_player(new_unit.name());
-
-			units->erase(loc);
-			units->add(new std::pair<map_location,unit>(loc,new_unit));
-			unit_mutations++;
-			if(game_map->is_village(loc)) {
-				get_village(loc,*screen,*teams,new_unit.side()-1,*units);
-			}
-
-			(screen)->invalidate(loc);
-
-			unit_map::iterator un = units->find(loc);
-
-			if(animate) {
-				unit_display::unit_recruited(loc);
-			}
-			else if(show) {
-				(screen)->draw();
-			}
+		if(cfg.has_attribute("to_variable")) {
+			config& var = state_of_game->get_variable_cfg(cfg["to_variable"]);
+			new_unit.write(var);
 		} else {
-			player_info* const player = state_of_game->get_player((*teams)[new_unit.side()-1].save_id());
+			preferences::encountered_units().insert(new_unit.type_id());
+			map_location loc = cfg_to_loc(cfg);
 
-			if(player != NULL) {
-				player->available_units.push_back(new_unit);
+			if(game_map->on_board(loc)) {
+				loc = find_vacant_tile(*game_map,*units,loc);
+				const bool show = screen != NULL && !(screen)->fogged(loc);
+				const bool animate = show && utils::string_bool(cfg["animate"], false);
+
+				//	If new unit is leader set current player/visible side name
+				//	to units name
+				if (new_unit.can_recruit())
+					(*teams)[new_unit.side() - 1].set_current_player(new_unit.name());
+
+				units->erase(loc);
+				units->add(new std::pair<map_location,unit>(loc,new_unit));
+				unit_mutations++;
+				if(game_map->is_village(loc)) {
+					get_village(loc,*screen,*teams,new_unit.side()-1,*units);
+				}
+
+				(screen)->invalidate(loc);
+
+				unit_map::iterator un = units->find(loc);
+
+				if(animate) {
+					unit_display::unit_recruited(loc);
+				}
+				else if(show) {
+					(screen)->draw();
+				}
 			} else {
-				ERR_NG << "Cannot create unit: location (" << loc.x << "," << loc.y <<") is not on the map, and player "
-					<< new_unit.side() << " has no recall list.\n";
+				player_info* const player = state_of_game->get_player((*teams)[new_unit.side()-1].save_id());
+
+				if(player != NULL) {
+					player->available_units.push_back(new_unit);
+				} else {
+					ERR_NG << "Cannot create unit: location (" << loc.x << "," << loc.y <<") is not on the map, and player "
+						<< new_unit.side() << " has no recall list.\n";
+				}
 			}
 		}
 	}
