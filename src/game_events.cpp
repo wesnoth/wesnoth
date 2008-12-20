@@ -3274,7 +3274,7 @@ namespace game_events {
 			match_it = name.begin(),
 			match_begin = name.begin(),
 			match_end = name.end();
-		unsigned skip_count = 0;
+		int skip_count = 0;
 		for(itor = it_begin; itor != it_end; ++itor) {
 			bool do_eat = false,
 				do_skip = false;
