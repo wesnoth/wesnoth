@@ -1607,10 +1607,10 @@ namespace {
 		std::string img = cfg["image"];
 		std::string halo = cfg["halo"];
 		std::string team_name = cfg["team_name"];
-		std::string fogged = cfg["fogged"];
+		std::string visible_in_fog = cfg["visible_in_fog"];
 		assert(state_of_game != NULL);
 		if(!img.empty() || !halo.empty()) {
-			(screen)->add_overlay(loc, img, halo, team_name, fogged);
+			(screen)->add_overlay(loc, img, halo, team_name, visible_in_fog);
 			(screen)->invalidate(loc);
 			(screen)->draw();
 		}
@@ -2628,7 +2628,8 @@ namespace {
 		(screen)->labels().set_label(label.location(),
 				label.text(),
 				label.team_name(),
-				label.colour());
+				label.colour(),
+				label.visible_in_fog());
 	}
 
 	WML_HANDLER_FUNCTION(heal_unit,/*handler*/,event_info,cfg)

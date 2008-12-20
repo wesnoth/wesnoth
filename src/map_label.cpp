@@ -140,7 +140,8 @@ void map_labels::set_team(const team* team)
 const terrain_label* map_labels::set_label(const map_location& loc,
 					   const std::string& text,
 					   const std::string team_name,
-					   const SDL_Color colour)
+					   const SDL_Color colour,
+					   const bool visible_in_fog)
 {
 	terrain_label* res = 0;
 	const team_label_map::const_iterator current_label_map = labels_.find(team_name);
@@ -153,7 +154,7 @@ const terrain_label* map_labels::set_label(const map_location& loc,
 		if(text.empty())
 		{
 			const_cast<terrain_label*>(current_label->second)->set_text("");
-			res = new terrain_label("",team_name,loc,*this,colour);
+			res = new terrain_label("",team_name,loc,*this,colour,visible_in_fog);
 			delete current_label->second;
 			const_cast<label_map&>(current_label_map->second).erase(loc);
 
@@ -192,7 +193,8 @@ const terrain_label* map_labels::set_label(const map_location& loc,
 				team_name,
 				loc,
 				*this,
-				colour);
+				colour,
+				visible_in_fog);
 		add_label(loc,label);
 
 		res = label;
@@ -300,11 +302,12 @@ terrain_label::terrain_label(const std::string& text,
 							 const std::string& team_name,
 							 const map_location& loc,
 							 const map_labels& parent,
-							 const SDL_Color colour)  :
+							 const SDL_Color colour,
+							 const bool visible_in_fog)  :
 		handle_(0),
 		text_(text),
 		team_name_(team_name),
-		fogged_(false),
+		visible_in_fog_(visible_in_fog),
 		colour_(colour),
 		parent_(&parent),
 		loc_(loc)
@@ -317,7 +320,7 @@ terrain_label::terrain_label(const map_labels& parent)  :
 		handle_(0),
 		text_(),
 		team_name_(),
-		fogged_(false),
+		visible_in_fog_(true),
 		colour_(),
 		parent_(&parent),
 		loc_()
@@ -332,7 +335,7 @@ terrain_label::terrain_label(const map_labels& parent,
 		handle_(0),
 		text_(),
 		team_name_(),
-		fogged_(false),
+		visible_in_fog_(true),
 		colour_(),
 		parent_(&parent),
 		loc_()
@@ -355,7 +358,7 @@ void terrain_label::read(const config& cfg, const variable_set *variables)
 
 	text_      = cfg["text"];
 	team_name_ = cfg["team_name"];
-	fogged_ = utils::string_bool(cfg["fogged"],false);
+	visible_in_fog_ = utils::string_bool(cfg["visible_in_fog"],false);
 
 	if (variables)
 	{
@@ -387,7 +390,7 @@ void terrain_label::write(config& cfg) const
 	cfg["text"] = text();
 	cfg["team_name"] = (this->team_name());
 	cfg["colour"] = cfg_colour();
-	cfg["fogged"] = fogged() ? "yes" : "no";
+	cfg["visible_in_fog"] = visible_in_fog() ? "yes" : "no";
 }
 
 const std::string& terrain_label::text() const
@@ -400,9 +403,9 @@ const std::string& terrain_label::team_name() const
 	return team_name_;
 }
 
-bool terrain_label::fogged() const
+bool terrain_label::visible_in_fog() const
 {
-	return fogged_;
+	return visible_in_fog_;
 }
 
 const map_location& terrain_label::location() const
@@ -502,7 +505,7 @@ void terrain_label::draw()
 
 bool terrain_label::visible() const
 {
-	if (fogged_)
+	if (!visible_in_fog_)
 	{
 		if (parent_->disp().fogged(loc_))
 		{

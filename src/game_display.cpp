@@ -338,7 +338,7 @@ void game_display::draw_hex(const map_location& loc)
 		for( ; overlays.first != overlays.second; ++overlays.first) {
 			if ((overlays.first->second.team_name == "" ||
 			overlays.first->second.team_name.find(teams_[playing_team()].team_name()) != std::string::npos)
-			&& !(is_fogged && !overlays.first->second.fogged))
+			&& !(is_fogged && !overlays.first->second.visible_in_fog))
 			{
 				drawing_buffer_add(LAYER_TERRAIN_BG, drawing_order, tblit(xpos, ypos,
 					image::get_image(overlays.first->second.image,image_type)));
@@ -1014,7 +1014,7 @@ void game_display::write_overlays(config& cfg) const
 		item["image"] = i->second.image;
 		item["halo"] = i->second.halo;
 		item["team_name"] = i->second.team_name;
-		item["fogged"] = i->second.fogged ? "yes" : "no";
+		item["visible_in_fog"] = i->second.visible_in_fog ? "yes" : "no";
 	}
 }
 

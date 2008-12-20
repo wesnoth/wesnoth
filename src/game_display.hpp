@@ -333,13 +333,13 @@ private:
 
 	struct overlay {
 		overlay(const std::string& img, const std::string& halo_img,
-		        int handle, const std::string& overlay_team_name, const bool can_be_fogged) : image(img), halo(halo_img),
-				team_name(overlay_team_name), halo_handle(handle) , fogged(can_be_fogged){}
+		        int handle, const std::string& overlay_team_name, const bool fogged) : image(img), halo(halo_img),
+				team_name(overlay_team_name), halo_handle(handle) , visible_in_fog(fogged){}
 		std::string image;
 		std::string halo;
 		std::string team_name;
 		int halo_handle;
-		bool fogged;
+		bool visible_in_fog;
 	};
 
 	typedef std::multimap<map_location,overlay> overlay_map;
