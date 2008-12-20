@@ -64,6 +64,7 @@ Version 1.5.6+svn:
    * Ignore whitespace at the beginning or end of event names
    * Added the 'round' key to [set_variable].
    * New attribute to_variable= in [unit] to spawn directly into a variable
+   * New attributes x,y= in [unstore_unit] to override unit location
    * It is possible to override the end-of-campaign screen text
      and its duration using end_text and end_text_duration attributes
      respectively, in [endlevel] or [campaign] tags. end_text_duration
