@@ -602,6 +602,9 @@ static void write_player(config_writer &out, const player_info& player)
 	snprintf(buf,sizeof(buf),"%d",player.gold);
 
 	out.write_key_val("gold", buf);
+	
+	const std::string gold_add = player.gold_add ? "true" : "false";
+	out.write_key_val("gold_add", gold_add);
 
 	for(std::vector<unit>::const_iterator i = player.available_units.begin();
 	    i != player.available_units.end(); ++i) {
