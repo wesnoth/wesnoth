@@ -1,4 +1,4 @@
-﻿Battle for Wesnoth User's Manual
+Battle for Wesnoth User's Manual
 ================================
 
 Preface
@@ -94,7 +94,7 @@ your language; then click the "Tutorial" button to run the tutorial;
 and then play the campaign, "A Tale of Two Brothers" by clicking the "Campaign"
 button and selecting it from the list provided.
 
-image:images/main-menu.jpg["Main Menu"]
+image:images/main-menu-1.5.7.jpg["Main Menu"]
 
 Tutorial::
  The tutorial is a real, but basic, game which teaches you some of
@@ -139,6 +139,10 @@ Add-ons::
  are many campaigns, multiplayer eras (defining factions for multiplayer
  games) and multiplayer maps. With the "Remove Add-ons" button you can remove 
  them again once you do not want them anymore.
+
+Map Editor::
+ Click this button to start the Map Editor where you can create custom maps
+ for multiplayer games or for building your own campaign upon.
 
 Language::
  Click this button, select your language, and click OK to use it, or
@@ -221,7 +225,7 @@ possible only within the scenario.
 There are several possible options you are provided with when clicking on the
 "Multiplayer" button:
 
-image:images/multiplayer.jpg["Multiplayer dialog"]
+image:images/multiplayer-1.5.7.jpg["Multiplayer dialog"]
 
 Join official Server
 ++++++++++++++++++++
@@ -230,7 +234,7 @@ This option directly connects you to the official server. You will end in the
 lobby where you can create your games as you wish and where many games are 
 already open and maybe some players already waiting to join in a new match.
 
-Connect to Host/Server
+Connect to Server
 ++++++++++++++++++++++
 
 This option opens a dialog box allowing you to enter the address of the 
@@ -241,11 +245,20 @@ that can be used as backup if the main server is currently not available.
 A rather complete list of official and user setup servers is listed at this 
 website: http://wesnoth.org/wiki/MultiplayerServers[Multiplayer servers].
 
+You can also reach servers hosted by any other player with this menu option.
+So if you got a server running in your local network, just enter the address
+and port number (default: 15000). If you for example want to connect to a server
+running on the machine with the address 192.168.0.10 and the default port, you
+would enter this in the dialog: 192.168.0.10:15000
+
+Host Networked Game
+++++++++++++++++++++++
+
 To be able to start a multiplayer game without using an external multiplayer 
 server, you have to start the server, which is usually named 'wesnothd', 
-yourself. Then you have to connect to your 
-own machine in the 'Connect to Host/Server' dialog by typing 127.0.0.1 as 
-address to use. Other players need to be able to connect to your
+yourself. This programm is automatically started in the background when selecting
+this option. It will be stopped, once all players left the server.
+Other players need to be able to connect to your
 port 15000 using TCP to play with you on your server. If you are behind a 
 firewall, you will probably need to change your firewall settings to allow 
 incoming connections to port 15000, and tell your firewall to forward such 
@@ -271,7 +284,7 @@ a game with a friend against an AI opponent.
 The Game Screen
 ^^^^^^^^^^^^^^^
 
-image:images/game-screen.jpg["Game Screen"]
+image:images/game-screen-1.5.7.jpg["Game Screen"]
 
 Regardless of whether you are playing a scenario or a campaign, the
 basic layout of the game screen is the same. The majority of the screen
@@ -279,7 +292,7 @@ is filled with a map which shows all of the action that takes place
 in the game. Around the map are various elements which provide useful
 information about the game and are described in more detail below.
 
-image:images/top_pane.jpg["Top Panel"]
+image:images/top_pane-1.5.7.jpg["Top Panel"]
 
 Across the top of the screen from left to right are the following items:
 
@@ -293,9 +306,10 @@ Across the top of the screen from left to right are the following items:
   8. Your income
   9. Current time or time left (in timed multiplayer games)
  10. Current hex position (x-coordinate, y-coordinate)
- 11. Current hex type
+ 11. Defense and movement of the currently selected unit on the marked hex
+ 12. Current hex type
 
-image:images/right_pane.jpg["Right Panel"]
+image:images/right_pane-1.5.7.jpg["Right Panel"]
 
 Down the right of the screen from top to bottom are:
 
@@ -464,7 +478,7 @@ the scenario, which is typically lower as the difficulty level increases.
 Recruiting and Recalling
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-image:images/recruit.jpg["Recruit dialog"]
+image:images/recruit-1.5.7.jpg["Recruit dialog"]
 
 The major use for gold is to build your army by recruiting new units
 or recalling units from previous scenarios in a campaign. Units may be
