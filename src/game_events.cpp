@@ -2490,7 +2490,7 @@ namespace {
 		if(next_scenario.empty() == false) {
 			state_of_game->next_scenario = next_scenario;
 		}
-		
+
 		const std::string end_of_campaign_text = cfg["end_text"];
 		if(! end_of_campaign_text.empty()) {
 			state_of_game->end_text = end_of_campaign_text;
@@ -3264,30 +3264,40 @@ namespace game_events {
 			match_it = name.begin(),
 			match_begin = name.begin(),
 			match_end = name.end();
+		unsigned skip_count = 0;
 		for(itor = it_begin; itor != it_end; ++itor) {
-			bool do_eat = false;
+			bool do_eat = false,
+				do_skip = false;
 			switch(*itor) {
 			case ',':
-				if(itor - it_begin == match_it - match_begin && match_it == match_end) {
+				if(itor - it_begin - skip_count == match_it - match_begin && match_it == match_end) {
 					return true;
 				}
 				it_begin = itor + 1;
 				match_it = match_begin;
+				skip_count = 0;
 				continue;
+			case '\f':
+			case '\n':
+			case '\r':
+			case '\t':
+			case '\v':
+				do_skip = (match_it == match_begin || match_it == match_end);
+				break;
 			case ' ':
+				do_skip = (match_it == match_begin || match_it == match_end);
+				// fall through to case '_'
 			case '_':
-				if(match_it != match_end && (*match_it == ' ' || *match_it == '_')) {
-					do_eat = true;
-				}
+				do_eat = (match_it != match_end && (*match_it == ' ' || *match_it == '_'));
 				break;
 			default:
-				if(match_it != match_end && *match_it == *itor) {
-					do_eat = true;
-				}
+				do_eat = (match_it != match_end && *match_it == *itor);
 				break;
 			}
 			if(do_eat) {
 				++match_it;
+			} else if(do_skip) {
+				++skip_count;
 			} else {
 				itor = std::find(itor, it_end, ',');
 				if(itor == it_end) {
@@ -3295,9 +3305,10 @@ namespace game_events {
 				}
 				it_begin = itor + 1;
 				match_it = match_begin;
+				skip_count = 0;
 			}
 		}
-		if(itor - it_begin == match_it - match_begin && match_it == match_end) {
+		if(itor - it_begin - skip_count == match_it - match_begin && match_it == match_end) {
 			return true;
 		}
 		return false;
