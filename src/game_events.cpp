@@ -2229,7 +2229,7 @@ namespace {
 			preferences::encountered_units().insert(u.type_id());
 			map_location loc;
 			if(cfg.has_attribute("x") && cfg.has_attribute("y")) {
-				loc = map_location(cfg.get_parsed_config(), game_events::get_state_of_game());
+				loc = map_location(cfg.get_config(), game_events::get_state_of_game());
 			} else {
 				loc = map_location(var, game_events::get_state_of_game());
 			}
