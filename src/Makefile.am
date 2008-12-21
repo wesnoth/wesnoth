@@ -83,6 +83,7 @@ wesnoth_source = \
 	gui/widgets/control.cpp \
 	gui/widgets/container.cpp \
 	gui/widgets/event_handler.cpp \
+	gui/widgets/generator.cpp \
 	gui/widgets/grid.cpp \
 	gui/widgets/helper.cpp \
 	gui/widgets/horizontal_scrollbar.cpp \

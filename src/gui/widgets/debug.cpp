@@ -20,6 +20,7 @@
 #include "formatter.hpp"
 #include "gui/widgets/vertical_scrollbar_container.hpp"
 #ifdef NEW_DRAW
+#include "gui/widgets/generator.hpp"
 #include "gui/widgets/scrollbar_container.hpp"
 #endif
 #include "gui/widgets/window.hpp"
@@ -222,6 +223,26 @@ void tdebug_layout_graph::widget_generate_info(std::ostream& out,
 			out << "\t" << id << " -> " 
 				<< id << "_C"
 				<< " [label=\"(content)\"];\n";
+		}
+
+		const tgenerator_* generator = 
+				dynamic_cast<const tgenerator_*>(widget);
+
+		if(generator) {
+			for(size_t i = 0; 
+					i < generator->get_item_count(); ++i) {
+
+				const std::string child_id = 
+					id + "_I_" + lexical_cast<std::string>(i);
+
+				widget_generate_info(out, 
+					&generator->get_item(i),
+					child_id, true);
+					
+				out << "\t" << id << " -> " 
+						<< child_id
+						<< " [label=\"(item)\"];\n";
+			}
 		}
 #endif
 	}
@@ -528,8 +549,16 @@ std::string tdebug_layout_graph::get_type(const twidget* widget) const
 		return control->get_control_type();
 	} else {
 		const tgrid* grid = dynamic_cast<const tgrid*>(widget);
+#ifdef NEW_DRAW
+		const tgenerator_* generator = 
+				dynamic_cast<const tgenerator_*>(widget);
+#endif
 		if(grid) {
 			return "grid";
+#ifdef NEW_DRAW
+		} else if(generator) {
+			return "generator";
+#endif			
 		} else {
 			return "unknown";
 		}
