@@ -30,7 +30,7 @@ void formula_callable::set_value(const std::string& key, const variant& /*value*
 }
 
 map_formula_callable::map_formula_callable(
-    	const formula_callable* fallback) : 
+    	const formula_callable* fallback) :
 	formula_callable(false),
 	values_(),
 	fallback_(fallback)
@@ -146,10 +146,10 @@ private:
 	variant execute(const formula_callable& variables) const {
 		const variant res = operand_->evaluate(variables);
 		switch(op_) {
-		case NOT: 
+		case NOT:
 			return res.as_bool() ? variant(0) : variant(1);
-		case SUB: 
-		default: 
+		case SUB:
+		default:
 			return -res;
 		}
 	}
@@ -259,33 +259,33 @@ private:
 		const variant left = left_->evaluate(variables);
 		const variant right = right_->evaluate(variables);
 		switch(op_) {
-		case AND: 
+		case AND:
 			return left.as_bool() == false ? left : right;
-		case OR: 
+		case OR:
 			return left.as_bool() ? left : right;
-		case ADD: 
+		case ADD:
 			return left + right;
-		case SUB: 
+		case SUB:
 			return left - right;
-		case MUL: 
+		case MUL:
 			return left * right;
-		case DIV: 
+		case DIV:
 			return left / right;
-		case POW: 
+		case POW:
 			return left ^ right;
-		case EQ:  
+		case EQ:
 			return left == right ? variant(1) : variant(0);
-		case NEQ: 
+		case NEQ:
 			return left != right ? variant(1) : variant(0);
-		case LTE: 
+		case LTE:
 			return left <= right ? variant(1) : variant(0);
-		case GTE: 
+		case GTE:
 			return left >= right ? variant(1) : variant(0);
-		case LT:  
+		case LT:
 			return left < right ? variant(1) : variant(0);
-		case GT:  
+		case GT:
 			return left > right ? variant(1) : variant(0);
-		case MOD: 
+		case MOD:
 			return left % right;
 		case DICE:
 		default:
@@ -525,7 +525,7 @@ void parse_function_args(const token* &i1, const token* i2,
 void parse_args(const token* i1, const token* i2,
                 std::vector<expression_ptr>* res,
 				function_symbol_table* symbols)
-{		
+{
 	int parens = 0;
 	const token* beg = i1;
 	while(i1 != i2) {
@@ -688,7 +688,7 @@ expression_ptr parse_expression(const token* i1, const token* i2, function_symbo
 	if(op == NULL) {
 		if(i1->type == TOKEN_LPARENS && (i2-1)->type == TOKEN_RPARENS) {
 			return parse_expression(i1+1,i2-1,symbols);
-		} else if( (i2-1)->type == TOKEN_RSQUARE) { //check if there is [ ] : either a list/map definition, or a operator 
+		} else if( (i2-1)->type == TOKEN_RSQUARE) { //check if there is [ ] : either a list/map definition, or a operator
 				const token* tok = i2-2;
 				int square_parens = 0;
 				while ( (tok->type != TOKEN_LSQUARE || square_parens) && tok != i1) {
@@ -698,7 +698,7 @@ expression_ptr parse_expression(const token* i1, const token* i2, function_symbo
 							square_parens--;
 						}
 						--tok;
-				}	
+				}
 				if (tok->type == TOKEN_LSQUARE) {
 					if (tok == i1) {
 						//create a list or a map
@@ -731,7 +731,7 @@ expression_ptr parse_expression(const token* i1, const token* i2, function_symbo
 				return expression_ptr(new identifier_expression(
 				                 std::string(i1->begin,i1->end)));
 			} else if(i1->type == TOKEN_INTEGER) {
-				int n = boost::lexical_cast<int>(std::string(i1->begin,i1->end));
+				int n = atoi(std::string(i1->begin,i1->end).c_str());
 				return expression_ptr(new integer_expression(n));
 			} else if(i1->type == TOKEN_STRING_LITERAL) {
 				return expression_ptr(new string_expression(std::string(i1->begin+1,i1->end-1)));
@@ -813,7 +813,7 @@ formula_ptr formula::create_optional_formula(const std::string& str, function_sy
 	return formula_ptr(new formula(str, symbols));
 }
 
-formula::formula(const std::string& str, function_symbol_table* symbols) : 
+formula::formula(const std::string& str, function_symbol_table* symbols) :
 	expr_(),
 	str_(str)
 {
@@ -831,7 +831,7 @@ formula::formula(const std::string& str, function_symbol_table* symbols) :
 	files.push_back( std::make_pair( "formula", 1 ) );
 	filenames.insert( "formula" );
 	std::set< std::string >::iterator filenames_it = filenames.begin();
-	
+
 	while(i1 != i2) {
 		try {
 
@@ -917,10 +917,10 @@ formula::formula(const std::string& str, function_symbol_table* symbols) :
 		expr_ = parse_expression(&tokens[0],&tokens[0] + tokens.size(), symbols);
 	} else {
 		expr_ = expression_ptr(new null_expression());
-	}	
+	}
 }
 
-formula::formula(const token* i1, const token* i2, function_symbol_table* symbols) : 
+formula::formula(const token* i1, const token* i2, function_symbol_table* symbols) :
 	expr_(),
 	str_()
 {
