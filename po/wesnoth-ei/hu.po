@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-ei 1.4 branch\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-12-17 17:29+0100\n"
+"POT-Creation-Date: 2008-12-21 22:49+0100\n"
 "PO-Revision-Date: 2008-03-10 20:41+0100\n"
 "Last-Translator: Németh Tamás <ntomasz@mail.kabelnet.hu>\n"
 "Language-Team: Wesnoth Hungarian Translation Team <NONE>\n"
@@ -231,6 +231,7 @@ msgstr "Gweddry"
 #. [side]: type=Lieutenant, id=Gweddry
 #. [side]: type=Dwarvish Steelclad, id=Knutan
 #. [side]: type=Mounted Fighter, id=Owaec
+#. [side]
 #. [side]: type=General, id=Konrad II
 #. [side]: type=Great Mage, id=Kaldor
 #. [side]: type=General, id=Gweddry
@@ -247,6 +248,7 @@ msgstr "Gweddry"
 #: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:33
 #: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:46
 #: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:41
+#: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:115
 #: data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:32
 #: data/campaigns/Eastern_Invasion/scenarios/19_Epilog.cfg:34
 #: data/campaigns/Eastern_Invasion/scenarios/19_Epilog.cfg:46
@@ -326,11 +328,11 @@ msgstr "Mal-Sakkat"
 #: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:69
 #: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:55
 #: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:68
-#: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:81
-#: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:98
-#: data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:54
-#: data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:67
-#: data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:89
+#: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:82
+#: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:102
+#: data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:49
+#: data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:68
+#: data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:85
 #: data/campaigns/Eastern_Invasion/scenarios/18a.The_Duel.cfg:37
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:103
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:120
@@ -339,7 +341,7 @@ msgstr "Mal-Sakkat"
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:138
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:159
 #: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:46
-#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:65
+#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:64
 #: data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:61
 #: data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:79
 #: data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:97
@@ -372,9 +374,9 @@ msgstr "Kitartasz Dacyn két nap múlva esedékes érkezéséig"
 #: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:92
 #: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:141
 #: data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:89
-#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:119
-#: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:113
-#: data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:107
+#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:108
+#: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:130
+#: data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:114
 #: data/campaigns/Eastern_Invasion/scenarios/18a.The_Duel.cfg:51
 #: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:163
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:160
@@ -383,7 +385,7 @@ msgstr "Kitartasz Dacyn két nap múlva esedékes érkezéséig"
 #: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:174
 #: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:78
 #: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:142
-#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:80
+#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:85
 #: data/campaigns/Eastern_Invasion/scenarios/09.Training_the_Ogres.cfg:70
 #: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:84
 #: data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:131
@@ -399,9 +401,10 @@ msgstr "Hé! Mi folyik ott?"
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:211
+#, fuzzy
 msgid ""
 "Look. To the east. Undead approach! But wait... I sense something... They "
-"cannot see me..."
+"must not see me..."
 msgstr ""
 "Nézzétek! Kelet felől. Azok élőholtak! De várjatok... egy különös érzés "
 "kerülget... nem láthatnak engem..."
@@ -413,7 +416,7 @@ msgstr ""
 #. [unit]: type=Ancient Lich, id=Mal-Ravanal
 #: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:183
 #: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:232
-#: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:90
+#: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:93
 #: data/campaigns/Eastern_Invasion/scenarios/18a.The_Duel.cfg:30
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:230
 msgid "Mal-Ravanal"
@@ -508,15 +511,15 @@ msgstr "Eljuttatod Gweddryt a csapóajtóhoz"
 #: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:96
 #: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:145
 #: data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:93
-#: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:117
-#: data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:111
+#: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:134
+#: data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:118
 #: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:167
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:164
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:320
 #: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:178
 #: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:82
 #: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:146
-#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:84
+#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:89
 #: data/campaigns/Eastern_Invasion/scenarios/09.Training_the_Ogres.cfg:74
 #: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:88
 #: data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:135
@@ -674,7 +677,7 @@ msgstr "Rendben van. A legjobbakat kívánjuk a csatához."
 
 #. [object]: id=holyamulet
 #: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:218
-#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:447
+#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:602
 #: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:415
 #: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:326
 msgid "Holy Amulet"
@@ -682,7 +685,7 @@ msgstr "Szent nyaklánc"
 
 #. [object]: id=holyamulet
 #: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:221
-#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:450
+#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:605
 #: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:418
 #: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:329
 msgid ""
@@ -692,7 +695,7 @@ msgstr ""
 
 #. [object]: id=holyamulet
 #: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:222
-#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:451
+#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:606
 #: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:419
 #: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:330
 msgid "I am not suited to using this item! Let another take it."
@@ -740,7 +743,7 @@ msgid "Mal-Skraat"
 msgstr "Mal-Skraat"
 
 #. [side]: type=Dark Adept, id=Mal-Tar
-#: data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:60
+#: data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:61
 msgid "Mal-Tar"
 msgstr "Mal-Tar"
 
@@ -750,17 +753,17 @@ msgid "Mal-Kallat"
 msgstr "Mal-Kallat"
 
 #. [objective]: condition=win
-#: data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:103
+#: data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:110
 msgid "Defeat either enemy dark sorcerer"
 msgstr "Legyőzöd bármelyik ellenséges holtidézőt"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:126
+#: data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:133
 msgid "We have escaped from those dark tunnels! But where are we now?"
 msgstr "Kiszabadultunk ezekből a sötét alagútakból! De hol vagyunk most?"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:130
+#: data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:137
 msgid ""
 "We are in the middle of the eastern mountains, in a mountain pass leading "
 "east and west. We need to head north, to meet Owaec, but we cannot go "
@@ -773,12 +776,12 @@ msgstr ""
 "nyugatra indulunk, és reméljük megtaláljuk őket."
 
 #. [message]: speaker=Mal-Kallat
-#: data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:134
+#: data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:141
 msgid "Hahaha! We have you surrounded!"
 msgstr "Hahaha! Körbe vagytok véve!"
 
 #. [message]: speaker=Mal-Skraat
-#: data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:138
+#: data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:145
 msgid ""
 "Why don't we see if the new recruit can handle them. After all, there are "
 "only two!"
@@ -786,17 +789,17 @@ msgstr ""
 "Nézzük meg, hogy az újonc el tud-e bánni velük. Úgyis csak ketten vannak!"
 
 #. [message]: speaker=Mal-Tar
-#: data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:142
+#: data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:149
 msgid "No!!! They'll kill me!"
 msgstr "Nem!!! Meg fognak ölni!"
 
 #. [message]: speaker=Mal-Kallat
-#: data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:146
+#: data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:153
 msgid "That would be your problem, then."
 msgstr "Ez már a te problémád lesz."
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:150
+#: data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:157
 msgid ""
 "These undead are toying with us! This adept is weak - we may be able to take "
 "his castle."
@@ -805,7 +808,7 @@ msgstr ""
 "gyengének tűnik - talán az ő várát bevehetjük."
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:154
+#: data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:161
 msgid ""
 "A good idea. Then, we must kill either of the dark sorcerers. I would prefer "
 "to attack the western one, so we can get closer to Wesnoth."
@@ -814,12 +817,12 @@ msgstr ""
 "nyugat felé lévőre gondoltam, így Wesnoth felé indulhatnánk."
 
 #. [message]: speaker=Mal-Skraat
-#: data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:165
+#: data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:172
 msgid "No! You have defeated me, and can re-enter Wesnoth!"
 msgstr "Nem! Legyőztetek engem, és most visszatérhettek Wesnothba!"
 
 #. [message]: speaker=Mal-Skraat
-#: data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:186
+#: data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:193
 msgid "You have defeated my brother, but I will follow you and kill you!"
 msgstr ""
 "Legyőztétek a tesvéremet, de én követni foglak titeket és mindannyiótokat "
@@ -1047,13 +1050,13 @@ msgid "Mal-Telnarad"
 msgstr "Mal-Telnarad"
 
 #. [objective]: condition=win
-#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:76
+#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:81
 #: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:80
 msgid "Defeat either enemy leader"
 msgstr "Legyőzöd bármelyik ellenséges vezért"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:99
+#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:104
 msgid ""
 "We have gotten out of that mountain range now, and the path northwards is "
 "clear. Let us go north, now, and try to reach Owaec at the outpost."
@@ -1062,7 +1065,7 @@ msgstr ""
 "arra, hogy elérhessük Owaec-et az őrposztnál."
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:103
+#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:108
 msgid ""
 "Wait. I am not sure that is the best option. If we go east now, we may be "
 "able to find the lich Mal-Ravanal who attacked us, and destroy him before he "
@@ -1075,7 +1078,7 @@ msgstr ""
 "gondolom keletre indult, hogy megkeressen minket."
 
 #. [message]: speaker=Mal-Skraat
-#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:107
+#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:112
 msgid ""
 "They run from me! Still, it will not help them, the border patrol will "
 "destroy them. I may even be promoted!"
@@ -1084,17 +1087,17 @@ msgstr ""
 "pusztítani őket. Talán ki is fognak tüntetni ezért!"
 
 #. [message]: speaker=Mal-Skraat
-#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:118
+#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:123
 msgid "Now I will never get promoted!"
 msgstr "Most már soha nem leszek kitüntetve!"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:122
+#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:127
 msgid "Come, let us return to Wesnoth and aid the Northern Outpost."
 msgstr "Gyertek, térjünk vissza Wesnothba és segítsük ki az északi őrposztot."
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:139
+#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:144
 #, fuzzy
 msgid ""
 "We have defeated this patrol, but we can still turn back! Do we want to go "
@@ -1108,29 +1111,29 @@ msgstr ""
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:290
 #: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:255
-#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:143
+#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:148
 msgid "Hmm..."
 msgstr "Hmm..."
 
 #. [option]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:145
+#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:150
 msgid "I wish to destroy the evil before it can spread. East we go!"
 msgstr ""
 "El szeretném pusztítani a gonoszt, mielőtt túlságosan elhatalmasodna. "
 "Keletre megyünk!"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:149
+#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:154
 msgid "I cannot say if this is a good decision, but I will follow you."
 msgstr "Nem hiszem, hogy jó döntés, de követlek."
 
 #. [message]: speaker=Mal-Skraat
-#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:153
+#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:158
 msgid "Noo!!! I can't be promoted if they run away!"
 msgstr "Nem igaz! Nem leszek kitüntetve, ha elmenekülnek!"
 
 #. [option]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:164
+#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:169
 msgid ""
 "You are right. It is foolish to go onward - we must defeat Mal-Skraat and "
 "turn back, going to the Northern Outpost."
@@ -1139,12 +1142,12 @@ msgstr ""
 "vissza kell fordulunk az északi állás felé."
 
 #. [message]: speaker=Mal-Skraat
-#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:168
+#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:173
 msgid "Good! If I defeat them, I can become a lich!"
 msgstr "Végre! Ha legyőzöm őket, akár villivé is válhatok!"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:184
+#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:189
 msgid ""
 "We failed to defeat either enemy! Now more liches will come, and we will be "
 "overwhelmed!"
@@ -1153,7 +1156,7 @@ msgstr ""
 "esélyünk sem lesz!"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:193
+#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:198
 msgid ""
 "We cannot spend any more time attempting to defeat Mal-Skraat. Like it or "
 "not, we must go further into these undead lands."
@@ -1162,7 +1165,7 @@ msgstr ""
 "kell haladnunk az élőholt földeken."
 
 #. [message]: speaker=Mal-Skraat
-#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:197
+#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:202
 msgid ""
 "Noo!!! He will reach Mal-Ravanal's capital, and I shall be punished for "
 "letting him escape!"
@@ -1191,19 +1194,24 @@ msgid "Rava-Krodaz"
 msgstr "Rava-Krodaz"
 
 #. [objective]: condition=win
-#: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:109
+#: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:126
 msgid "Escape from the capital by killing one of the two dark sorcerers"
 msgstr "Elmenekülsz a fővárosból a két holtidéző egyikét megölve"
 
+#. [unit]: type=Paladin, id=Terraent
+#: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:189
+msgid "Terraent"
+msgstr "Terraent"
+
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:132
+#: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:218
 msgid ""
 "The Bitter Swamp's ill reputation is, it seems, well merited. Mal-Ravanal's "
 "capital lies before us!"
 msgstr ""
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:137
+#: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:223
 msgid ""
 "Yes, but look! The undead forces are closing in behind us. As I said before, "
 "we cannot kill Mal-Ravanal. It was foolish to come this far, we must turn "
@@ -1214,7 +1222,7 @@ msgstr ""
 "vissza kell fordulnunk!"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:142
+#: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:228
 msgid ""
 "Perhaps. To retreat, we must kill one of these dark sorcerers that follow "
 "us. But, perhaps we can kill this Mal-Ravanal still. I might wish to try."
@@ -1224,19 +1232,14 @@ msgstr ""
 "megpróbálnám."
 
 #. [message]: speaker=Mal-Ravanal
-#: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:147
+#: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:233
 #, fuzzy
 msgid ""
 "These humans have dared foolishly to come this far into my land. Crush them!"
 msgstr "Ezek az emberek bemerészkedtek a birodalmamba. Pusztítsátok el őket!"
 
-#. [unit]: type=Paladin, id=Terraent
-#: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:165
-msgid "Terraent"
-msgstr "Terraent"
-
-#. [message]: speaker=Terraent
-#: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:171
+#. [message]: speaker=$freed_prisoner.id
+#: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:365
 msgid ""
 "Thank you for destroying that skeleton warrior! Every time you kill one of "
 "the Revenants, one of us knights is let free!"
@@ -1245,12 +1248,12 @@ msgstr ""
 "egy ellenséges bosszúállót porrá zúzol, egy szövetséges lovag szabaddá válik."
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:175
+#: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:369
 msgid "Why? Are you the undead's prisoners?"
 msgstr "Miért? Az élőholtak rabjai vagytok?"
 
-#. [message]: speaker=Terraent
-#: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:179
+#. [message]: speaker=$freed_prisoner.id
+#: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:373
 msgid ""
 "Yes. My allies and I were questing when we were ambushed by undead. The "
 "guard is playing a sick game - whenever one of their warriors dies, one of "
@@ -1262,7 +1265,7 @@ msgstr ""
 "akkor megöl egyet közülük."
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:183
+#: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:377
 msgid ""
 "This sounds dangerous. We will try to free as many of you as possible before "
 "we escape from here."
@@ -1270,8 +1273,8 @@ msgstr ""
 "Ez veszélyes játéknak tűnik. Megpróbáljuk a legtöbbjüket kiszabadítani, "
 "mielőtt itthagyjuk ezt a helyet."
 
-#. [message]: speaker=Terraent
-#: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:187
+#. [message]: speaker=$freed_prisoner.id
+#: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:381
 msgid ""
 "There are five of us still locked up in the jail. All of us will join you if "
 "you can get us free."
@@ -1280,12 +1283,12 @@ msgstr ""
 "ha kiszabadítod őket."
 
 #. [message]: speaker=Mal-Ravanal
-#: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:244
+#: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:504
 msgid "You dare to attack ME?!? Go back to your master!"
 msgstr "Hogy mertél megtámadni ENGEM?!? Takarodj vissza a mesteredhez!"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:248
+#: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:508
 msgid ""
 "This is not good; we are unable to attack Mal-Ravanal at all, for his magic "
 "is too strong! We must turn back, it was foolish to press the attack."
@@ -1295,7 +1298,7 @@ msgstr ""
 "támadást."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:290
+#: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:550
 msgid ""
 "Gweddry's men retreated swiftly from the Bitter Swamp, fleeing north and "
 "west as if their heels were winged. Finding a low pass through the northern "
@@ -1309,7 +1312,10 @@ msgid "Northern Outpost"
 msgstr "Északi őrhely"
 
 #. [side]: type=Mounted Fighter, id=Owaec
+#. [unit]: id=Owaec, type=$stored_Owaec.type
 #: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:40
+#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:486
+#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:557
 msgid "Owaec"
 msgstr "Owaec"
 
@@ -1342,12 +1348,12 @@ msgid "Evil"
 msgstr "Végszó"
 
 #. [objective]: condition=win
-#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:111
+#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:100
 msgid "Find the outlaw leader in the villages and kill him"
 msgstr "Megtalálod a törvényen kívüli vezért a falvakban és elpusztítod"
 
 #. [objective]: condition=win
-#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:115
+#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:104
 msgid "Defeat the undead leader"
 msgstr "Legyőzöd az élőholt fővezért"
 
@@ -1355,7 +1361,7 @@ msgstr "Legyőzöd az élőholt fővezért"
 #: data/campaigns/Eastern_Invasion/scenarios/07a.The_Crossing.cfg:105
 #: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:149
 #: data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:97
-#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:123
+#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:112
 #: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:171
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:168
 #: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:182
@@ -1369,12 +1375,12 @@ msgid "Death of Owaec"
 msgstr "Owaec elesik"
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:142
+#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:128
 msgid "Hail, Gweddry!"
 msgstr "Üdvözöllek, Gweddry!"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:146
+#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:132
 msgid ""
 "Greetings, Owaec! We have been forced from our positions by undead invaders. "
 "They follow us even now."
@@ -1383,7 +1389,7 @@ msgstr ""
 "Még most is üldöznek minket."
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:150
+#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:136
 msgid ""
 "Indeed, they do. And do not think you will be able to defeat them. They are "
 "too powerful. We are heading for the Northlands, where we may be able to "
@@ -1394,7 +1400,7 @@ msgstr ""
 "Csatlakoztok?"
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:154
+#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:140
 msgid ""
 "I am not sure. There are bandits in this country, and I have been told that "
 "it is my duty to defeat them, and protect the local villages. However, I "
@@ -1408,7 +1414,7 @@ msgstr ""
 "visszavonulnak a tanyákba. Nem tudom, hogy győzhetném le őket."
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:158
+#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:144
 msgid ""
 "Hoping to protect these villages is foolish; all who stay here will die. "
 "However, if we can drive these bandits out, we will be able to have all the "
@@ -1421,7 +1427,7 @@ msgstr ""
 "többé már nem nyújt biztonságot."
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:162
+#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:148
 msgid ""
 "Well, you appear to know what you're talking about... but, I have no way to "
 "remove these bandits."
@@ -1430,7 +1436,7 @@ msgstr ""
 "elűzését."
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:166
+#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:152
 msgid ""
 "I think I may be able to help you. I am a mage; I believe I will be able to "
 "cast a spell that will reveal them if you enter the villages. However, I "
@@ -1441,7 +1447,7 @@ msgstr ""
 "kell."
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:170
+#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:156
 msgid ""
 "That sounds good; it is time to drive out some bandits. Dacyn, go cast your "
 "spell!"
@@ -1450,7 +1456,7 @@ msgstr ""
 "varázslatod!"
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:174
+#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:160
 msgid ""
 "I believe there is a leader behind these outlaws; kill him, and we will have "
 "defeated these bandits."
@@ -1458,14 +1464,14 @@ msgstr ""
 "Úgy hiszem a vezér csatlósai mögött vár. Öld meg, és ezzel legyőzzük őket."
 
 #. [message]: speaker=Lanar-Skal
-#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:178
+#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:164
 msgid "Go, go far from here! But me and my kind will chase you, and kill you!"
 msgstr ""
 "Kotródj innen, jó messzire! Én és a fajtársaim üldözni fogunk téged, és ha "
 "alkalmunk nyílik rá, akkor megölünk!"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:182
+#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:168
 msgid ""
 "It seems the undead have caught up with us! We will have to kill them, too, "
 "if we want these villages to be safe. Well, I will see you when you defeat "
@@ -1477,17 +1483,17 @@ msgstr ""
 "élőholtakat!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:252
+#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:254
 msgid "They're here!"
 msgstr "Itt vannak!"
 
 #. [unit]: type=Assassin, id=Shodrano
-#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:275
+#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:384
 msgid "Shodrano"
 msgstr "Shodrano"
 
 #. [message]: speaker=Shodrano
-#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:283
+#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:389
 msgid ""
 "So, you have found my hiding place. Very well, I guess I will have to kill "
 "you!"
@@ -1496,30 +1502,30 @@ msgstr ""
 "benneteket!"
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:287
+#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:393
 msgid ""
 "That's the bandit leader! Kill him, and we will have fulfilled our duty!"
 msgstr "Ő a banditák vezére! Öljétek meg, és teljesítettük a feladatunkat!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:295
+#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:429
 msgid "No outlaws in this village."
 msgstr "Nincsen törvényen kivüli ebben a faluban."
 
 #. [message]: speaker=Shodrano
-#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:314
+#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:440
 msgid "You have defeated me! I can terrorize the villagers no more..."
 msgstr "Legyőztetek! Nem tudom többé bántalmazni a falusiakat..."
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:323
+#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:454
 msgid "We still need to defeat these undead for the villagers to be safe."
 msgstr ""
 "Továbbra is az élőholtak elpusztítása a cél, hogy a falusiak biztonságban "
 "legyenek."
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:331
+#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:462
 msgid ""
 "I have fulfilled my duty to the villages. Now I suppose I can join you in "
 "your quest."
@@ -1528,7 +1534,7 @@ msgstr ""
 "csatlakozhatok hozzád, és segíthetem küldetésedet."
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:340
+#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:471
 msgid ""
 "Good job! Now, we should move onward, north. Tell the villagers to pack "
 "their belongings and follow us."
@@ -1537,7 +1543,7 @@ msgstr ""
 "falusiaknak, hogy pakoljanak fel a szekerekre, és kövessenek minket!"
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:387
+#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:527
 msgid ""
 "There are still these outlaws to take care of - we must continue fighting "
 "here."
@@ -1546,7 +1552,7 @@ msgstr ""
 "itt a harcot."
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:393
+#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:533
 msgid ""
 "Well, both the outlaws and undead are defeated. We have some time to spare "
 "now before more undead arrive."
@@ -1555,7 +1561,7 @@ msgstr ""
 "kis egérutunk, amíg nem érkezik még több élőholt."
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:402
+#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:542
 msgid ""
 "Good work! Now, we should move onward, north. Tell the villagers to pack "
 "their belongings and follow us."

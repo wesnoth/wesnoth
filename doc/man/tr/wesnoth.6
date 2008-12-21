@@ -61,7 +61,7 @@ Kullanıcı yapılandırma dizininin yolunu basar ve çıkar.
 Oyun içi ek komut kipi seçeneklerini etkin kılar (komut kipi hakkında bilgi
 edinmek için http://www.wesnoth.org/wiki/CommandMode adresine bakınız).
 .TP 
-\fB\-\-dummy\-locales\fP
+\fB\-\-dummylocales\fP
 Dil sistem genelinde tanımlı olmasa bile o dile geçmek için taklit yereller
 kullanılır.
 .TP 
@@ -108,8 +108,9 @@ Bir çok oyunculu oyunu çalıştırır. Bu seçenekle birlikte, aşağıda aç�
 seçenekler belirtilebilir.
 .TP 
 \fB\-\-no\-delay\fP
-runs the game without any delays for graphic benchmarking. This is
-automatically enabled by \fB\-\-nogui\fP.
+Çizgesel başarımı ölçümlemek amacıyla oyunu gecikmeler olmaksızın
+çalıştırır. Bu seçenek \fB\-\-nogui\fP seçeneği tarafından kendiliğinden etkin
+kılınır.
 .TP 
 \fB\-\-nocache\fP
 Oyun verisinin belleklenmesini iptal eder.
@@ -127,7 +128,7 @@ Oyun data dizininin yerini basar ve çıkar.
 Python API için çalışma anı belgelerini basar.
 .TP 
 \fB\-\-python\-shell\fP
-invokes wesnoth's embedded python interpreter in interactive mode.
+etkileşimli kipte gömülü python yorumlayıcısını çağırır.
 .TP 
 \fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\ \fP\fIX\fP\fBx\fP\fIY\fP
 Ekran çözünürlüğünü ayarlar. Örnek: \fB\-r 800x600\fP
