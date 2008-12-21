@@ -1705,10 +1705,13 @@ namespace {
 		assert(game_map != NULL);
 		assert(status_ptr != NULL);
 		assert(state_of_game != NULL);
-		unit new_unit(units,game_map,status_ptr,teams,cfg.get_parsed_config(),true, state_of_game);
+		const config& parsed_cfg = cfg.get_parsed_config();
+		unit new_unit(units, game_map, status_ptr, teams, parsed_cfg, true, state_of_game);
 		if(cfg.has_attribute("to_variable")) {
-			config& var = state_of_game->get_variable_cfg(cfg["to_variable"]);
+			config& var = state_of_game->get_variable_cfg(parsed_cfg["to_variable"]);
 			new_unit.write(var);
+			var["x"] = parsed_cfg["x"];
+			var["y"] = parsed_cfg["y"];
 		} else {
 			preferences::encountered_units().insert(new_unit.type_id());
 			map_location loc = cfg_to_loc(cfg);
@@ -1716,7 +1719,7 @@ namespace {
 			if(game_map->on_board(loc)) {
 				loc = find_vacant_tile(*game_map,*units,loc);
 				const bool show = screen != NULL && !(screen)->fogged(loc);
-				const bool animate = show && utils::string_bool(cfg["animate"], false);
+				const bool animate = show && utils::string_bool(parsed_cfg["animate"], false);
 
 				//	If new unit is leader set current player/visible side name
 				//	to units name
@@ -2227,12 +2230,8 @@ namespace {
 			const unit u(units,game_map,status_ptr,teams,var, false);
 
 			preferences::encountered_units().insert(u.type_id());
-			map_location loc;
-			if(cfg.has_attribute("x") && cfg.has_attribute("y")) {
-				loc = map_location(cfg.get_config(), game_events::get_state_of_game());
-			} else {
-				loc = map_location(var, game_events::get_state_of_game());
-			}
+			map_location loc = cfg_to_loc(
+				(cfg.has_attribute("x") && cfg.has_attribute("y")) ? cfg : &var);
 			if(loc.valid()) {
 				if(utils::string_bool(cfg["find_vacant"])) {
 					loc = find_vacant_tile(*game_map,*units,loc);
