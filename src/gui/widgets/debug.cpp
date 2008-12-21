@@ -245,6 +245,12 @@ void tdebug_layout_graph::widget_generate_basic_info(
 		<< "</td></tr>" << '\n'
 		<< "<tr><td" << header_background << ">" << '\n'
 		<< "definition=" << widget->definition() << '\n'
+		<< "</td></tr>" << '\n'
+		<< "<tr><td" << header_background << ">" << '\n'
+		<< "address=" << widget << '\n'
+		<< "</td></tr>" << '\n'
+		<< "<tr><td" << header_background << ">" << '\n'
+		<< "parent=" << widget->parent_ << '\n'
 		<< "</td></tr>" << '\n';
 		if(control) {
 			std::string label = control->label();
