@@ -1,7 +1,7 @@
 [Project]
 FileName=wesnoth.dev
 Name=wesnoth
-UnitCount=202
+UnitCount=204
 Type=0
 Ver=1
 ObjFiles=
@@ -890,9 +890,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit204]
-FileName=..\..\src\widgets\slider.hpp
+FileName=..\..\src\formula_string_utils.cpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=wesnoth
 Compile=1
 Link=1
 Priority=1000
@@ -2609,6 +2609,16 @@ BuildCmd=
 
 [Unit193]
 FileName=..\..\src\editor2\map_context.cpp
+CompileCpp=1
+Folder=wesnoth
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit203]
+FileName=..\..\src\gui\widgets\generator.cpp
 CompileCpp=1
 Folder=wesnoth
 Compile=1

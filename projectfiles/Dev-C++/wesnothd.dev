@@ -2032,7 +2032,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit30]
-FileName=..\..\src\server\mail.cpp
+FileName=..\..\src\server\jwsmtp\mailer.cpp
 CompileCpp=1
 Folder=wesnothd
 Compile=1
@@ -2042,7 +2042,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit32]
-FileName=..\..\src\server\jwsmtp\base64.cpp
+FileName=..\..\src\server\jwsmtp\compat.cpp
 CompileCpp=1
 Folder=wesnothd
 Compile=1
@@ -2232,7 +2232,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit33]
-FileName=..\..\src\server\jwsmtp\compat.cpp
+FileName=..\..\src\version.cpp
 CompileCpp=1
 Folder=wesnothd
 Compile=1
@@ -2341,18 +2341,8 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit27]
-FileName=..\..\src\server\ban.hpp
-CompileCpp=1
-Folder=wesnothd
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
 [Unit29]
-FileName=..\..\src\server\user_handler.cpp
+FileName=..\..\src\server\mail.cpp
 CompileCpp=1
 Folder=wesnothd
 Compile=1
@@ -2362,7 +2352,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit31]
-FileName=..\..\src\server\jwsmtp\mailer.cpp
+FileName=..\..\src\server\jwsmtp\base64.cpp
 CompileCpp=1
 Folder=wesnothd
 Compile=1
@@ -2522,6 +2512,26 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit28]
+FileName=..\..\src\server\user_handler.cpp
+CompileCpp=1
+Folder=wesnothd
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit34]
+FileName=..\..\src\version.cpp
+CompileCpp=1
+Folder=wesnothd
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit27]
 FileName=..\..\src\time.cpp
 CompileCpp=1
 Folder=wesnothd
