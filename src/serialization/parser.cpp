@@ -327,7 +327,9 @@ std::string parser::lineno_string(utils::string_map &i18n_symbols, std::string c
 	}
 	if (res.empty()) res = "???";
 	i18n_symbols["pos"] = res;
-	return vgettext(error_string.c_str(), i18n_symbols);
+	// return vgettext(error_string.c_str(), i18n_symbols);
+	// vgettext causes dependency on formula ai which is unaccptable for server.
+	return error_string;
 }
 
 void parser::error(const std::string& error_type)

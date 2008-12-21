@@ -21,6 +21,7 @@
 
 #include "config.hpp"
 #include "map.hpp"
+#include "formula_string_utils.hpp"
 
 
 #define ERR_CF LOG_STREAM(err, config)

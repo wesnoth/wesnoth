@@ -30,6 +30,7 @@
 #include "serialization/binary_wml.hpp"
 #include "serialization/parser.hpp"
 #include "wml_exception.hpp"
+#include "formula_string_utils.hpp"
 
 #ifndef _MSC_VER
 #include <sys/time.h>

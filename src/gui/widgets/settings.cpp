@@ -25,6 +25,7 @@
 #include "gui/widgets/window.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
+#include "formula_string_utils.hpp"
 
 
 namespace gui2 {

@@ -38,6 +38,7 @@
 #include "statistics_dialog.hpp"
 #include "unit_display.hpp"
 #include "wml_separators.hpp"
+#include "formula_string_utils.hpp"
 
 
 #define ERR_NG LOG_STREAM(err, engine)

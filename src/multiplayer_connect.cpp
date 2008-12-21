@@ -28,6 +28,7 @@
 #include "statistics.hpp"
 #include "unit_id.hpp"
 #include "wml_separators.hpp"
+#include "formula_string_utils.hpp"
 
 #include <boost/bind.hpp>
 

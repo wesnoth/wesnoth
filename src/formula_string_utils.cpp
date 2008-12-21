@@ -1,0 +1,196 @@
+#include "formula_string_utils.hpp"
+#include "log.hpp"
+#include "formula.hpp"
+#include "gettext.hpp"
+
+#define ERR_NG LOG_STREAM(err, engine)
+
+static bool two_dots(char a, char b) { return a == '.' && b == '.'; }
+
+namespace utils {
+
+class string_map_variable_set : public variable_set
+{
+public:
+	string_map_variable_set(const string_map& map) : map_(map) {};
+
+	virtual const t_string& get_variable_const (const std::string& key) const
+	{
+		static const t_string empty_string = "";
+
+		const string_map::const_iterator itor = map_.find(key);
+		if(itor == map_.end()) {
+			return empty_string;
+		} else {
+			return itor->second;
+		}
+	};
+private:
+	const string_map& map_;
+
+};
+}
+
+static std::string do_interpolation(const std::string &str, const variable_set& set)
+{
+	std::string res = str;
+	// This needs to be able to store negative numbers to check for the while's condition
+	// (which is only false when the previous '$' was at index 0)
+	int rfind_dollars_sign_from = res.size();
+	while(rfind_dollars_sign_from >= 0) {
+		// Going in a backwards order allows nested variable-retrieval, e.g. in arrays.
+		// For example, "I am $creatures[$i].user_description!"
+		const std::string::size_type var_begin_loc = res.rfind('$', rfind_dollars_sign_from);
+
+		// If there are no '$' left then we're done.
+		if(var_begin_loc == std::string::npos) {
+			break;
+		}
+
+		// For the next iteration of the loop, search for more '$'
+		// (not from the same place because sometimes the '$' is not replaced)
+		rfind_dollars_sign_from = int(var_begin_loc) - 1;
+
+
+		const std::string::iterator var_begin = res.begin() + var_begin_loc;
+
+		// The '$' is not part of the variable name.
+		const std::string::iterator var_name_begin = var_begin + 1;
+		std::string::iterator var_end = var_name_begin;
+
+		if(var_name_begin == res.end()) {
+			// Any '$' at the end of a string is just a '$'
+			continue;
+		} else if(*var_name_begin == '(') {
+			// The $( ... ) syntax invokes a formula
+			int paren_nesting_level = 1;
+			bool in_string = false,
+				in_comment = false;
+			for(var_end += 1; var_end != res.end() && paren_nesting_level > 0; ++var_end) {
+				switch(*var_end) {
+				case '(':
+					if(!in_string && !in_comment) {
+						++paren_nesting_level;
+					}
+					break;
+				case ')':
+					if(!in_string && !in_comment) {
+						--paren_nesting_level;
+					}
+					break;
+				case '#':
+					if(!in_string) {
+						in_comment = !in_comment;
+					}
+					break;
+				case '\'':
+					if(!in_comment) {
+						in_string = !in_string;
+					}
+					break;
+				// TODO: support escape sequences when/if they are allowed in FormulaAI strings
+				}
+			}
+			if(paren_nesting_level > 0) {
+				ERR_NG << "Formula in WML string cannot be evaluated due to "
+					<< "missing closing paren:\n\t--> \""
+					<< std::string(var_begin, var_end) << "\"\n";
+				res.replace(var_begin, var_end, "");
+				continue;
+			}
+			const game_logic::formula form(std::string(var_begin+2, var_end-1));
+			res.replace(var_begin, var_end, form.execute().string_cast());
+			continue;
+		}
+
+		// Find the maximum extent of the variable name (it may be shortened later).
+		for(int bracket_nesting_level = 0; var_end != res.end(); ++var_end) {
+			const char c = *var_end;
+			if(c == '[') {
+				++bracket_nesting_level;
+			}
+			else if(c == ']') {
+				if(--bracket_nesting_level < 0) {
+					break;
+				}
+			}
+			else if(!isdigit(c) && !isalpha(c) && c != '.' && c != '_') {
+				break;
+			}
+		}
+
+		// Two dots in a row cannot be part of a valid variable name.
+		// That matters for random=, e.g. $x..$y
+		var_end = std::adjacent_find(var_name_begin, var_end, two_dots);
+
+		// If the last character is '.', then it can't be a sub-variable.
+		// It's probably meant to be a period instead. Don't include it.
+		// Would need to do it repetitively if there are multiple '.'s at the end,
+		// but don't actually need to do so because the previous check for adjacent '.'s would catch that.
+		// For example, "My score is $score." or "My score is $score..."
+		if(*(var_end-1) == '.'
+		// However, "$array[$i]" by itself does not name a variable,
+		// so if "$array[$i]." is encountered, then best to include the '.',
+		// so that it more closely follows the syntax of a variable (if only to get rid of all of it).
+		// (If it's the script writer's error, they'll have to fix it in either case.)
+		// For example in "$array[$i].$field_name", if field_name does not exist as a variable,
+		// then the result of the expansion should be "", not "." (which it would be if this exception did not exist).
+		&& *(var_end-2) != ']') {
+			--var_end;
+		}
+
+		const std::string var_name(var_name_begin, var_end);
+
+		if(var_end != res.end() && *var_end == '|') {
+			// It's been used to end this variable name; now it has no more effect.
+			// This can allow use of things like "$$composite_var_name|.x"
+			// (Yes, that's a WML 'pointer' of sorts. They are sometimes useful.)
+			// If there should still be a '|' there afterwards to affect other variable names (unlikely),
+			// just put another '|' there, one matching each '$', e.g. "$$var_containing_var_name||blah"
+			var_end++;
+		}
+
+
+		if (var_name == "") {
+			// Allow for a way to have $s in a string.
+			// $| will be replaced by $.
+			res.replace(var_begin, var_end, "$");
+		}
+		else {
+			// The variable is replaced with its value.
+			res.replace(var_begin, var_end,
+			    set.get_variable_const(var_name));
+		}
+	}
+
+	return res;
+}
+
+namespace utils {
+
+std::string interpolate_variables_into_string(const std::string &str, const string_map * const symbols)
+{
+	string_map_variable_set set(*symbols);
+	return do_interpolation(str, set);
+}
+
+std::string interpolate_variables_into_string(const std::string &str, const variable_set& variables)
+{
+	return do_interpolation(str, variables);
+}
+
+}
+
+std::string vgettext(const char *msgid, const utils::string_map& symbols)
+{
+	const std::string orig(_(msgid));
+	const std::string msg = utils::interpolate_variables_into_string(orig, &symbols);
+	return msg;
+}
+
+std::string vngettext(const char* sing, const char* plur, int n, const utils::string_map& symbols)
+{
+	const std::string orig(_n(sing, plur, n));
+	const std::string msg = utils::interpolate_variables_into_string(orig, &symbols);
+	return msg;
+}

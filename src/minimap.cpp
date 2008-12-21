@@ -21,6 +21,7 @@
 #include "map.hpp"
 #include "team.hpp"
 #include "wml_exception.hpp"
+#include "formula_string_utils.hpp"
 
 #define DBG_DP LOG_STREAM(debug, display)
 

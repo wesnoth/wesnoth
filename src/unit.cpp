@@ -31,6 +31,7 @@
 #include "unit_id.hpp"
 #include "unit_abilities.hpp"
 #include "terrain_filter.hpp"
+#include "formula_string_utils.hpp"
 
 
 #define DBG_UT LOG_STREAM(debug, engine)

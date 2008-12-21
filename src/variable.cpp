@@ -23,6 +23,7 @@
 
 #include "gamestatus.hpp"
 #include "log.hpp"
+#include "formula_string_utils.hpp"
 
 
 #define LOG_NG LOG_STREAM(info, engine)

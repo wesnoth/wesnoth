@@ -32,6 +32,7 @@
 #include "unit_abilities.hpp"
 #include "unit_display.hpp"
 #include "wml_exception.hpp"
+#include "formula_string_utils.hpp"
 
 
 #include <boost/scoped_ptr.hpp>

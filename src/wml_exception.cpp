@@ -22,6 +22,7 @@
 
 #include "gettext.hpp"
 #include "show_dialog.hpp"
+#include "formula_string_utils.hpp"
 
 
 void wml_exception(const char* cond, const char* file, 

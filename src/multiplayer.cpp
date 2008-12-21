@@ -27,6 +27,7 @@
 #include "playmp_controller.hpp"
 #include "playcampaign.hpp"
 #include "upload_log.hpp"
+#include "formula_string_utils.hpp"
 
 #define LOG_NW LOG_STREAM(info, network)
 

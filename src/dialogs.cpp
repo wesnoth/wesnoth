@@ -37,6 +37,7 @@
 #include "wml_separators.hpp"
 #include "widgets/progressbar.hpp"
 #include "wml_exception.hpp"
+#include "formula_string_utils.hpp"
 
 
 //#ifdef _WIN32

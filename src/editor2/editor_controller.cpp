@@ -30,7 +30,7 @@
 #include "../mapgen.hpp"
 #include "../random.hpp"
 
-
+#include "formula_string_utils.hpp"
 
 #include <boost/bind.hpp>
 

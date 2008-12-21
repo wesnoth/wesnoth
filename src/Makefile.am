@@ -61,6 +61,7 @@ wesnoth_source = \
 	formula_ai.cpp \
 	formula_function.cpp \
 	formula_tokenizer.cpp \
+	formula_string_utils.cpp \
 	game_display.cpp \
 	game_events.cpp \
 	game_preferences.cpp \

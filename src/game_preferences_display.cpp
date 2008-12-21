@@ -22,6 +22,7 @@
 #include "preferences_display.hpp"
 #include "wml_separators.hpp"
 #include "widgets/slider.hpp"
+#include "formula_string_utils.hpp"
 
 
 namespace preferences {

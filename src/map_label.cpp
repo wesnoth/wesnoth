@@ -16,6 +16,7 @@
 
 #include "display.hpp"
 #include "map_label.hpp"
+#include "formula_string_utils.hpp"
 
 
 namespace {

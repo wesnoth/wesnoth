@@ -27,6 +27,7 @@
 #include "pathfind.hpp"
 #include "race.hpp"
 #include "wml_exception.hpp"
+#include "formula_string_utils.hpp"
 
 
 #define ERR_CF LOG_STREAM(err, config)

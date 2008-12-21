@@ -20,6 +20,7 @@
 #include "gettext.hpp"
 #include "log.hpp"
 #include "replay.hpp"
+#include "formula_string_utils.hpp"
 
 turn_info::turn_info(game_state& state_of_game,
                      const gamestatus& status, game_display& gui, gamemap& map,

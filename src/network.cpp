@@ -164,9 +164,8 @@ static void check_timeout()
 				<< " seconds. Connection timed out.\n";
 		utils::string_map symbols;
 		symbols["timeout"] = lexical_cast<std::string>(timeout);
-		throw network::error(vngettext("No server ping since $timeout second. "
-				"Connection timed out.", "No server ping since $timeout seconds. "
-				"Connection timed out.", timeout, symbols));
+		throw network::error(std::string("No server ping since " + lexical_cast<std::string>(timeout) + " second. "
+				"Connection timed out."));
 	}
 	last_ping_check = now;
 }

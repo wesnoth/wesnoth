@@ -18,7 +18,7 @@
 
 #include "ai_dfool.hpp"
 #include "log.hpp"
-
+#include "formula_string_utils.hpp"
 
 namespace dfool {
   void dfool_ai::play_turn(){

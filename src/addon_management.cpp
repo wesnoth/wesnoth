@@ -30,6 +30,7 @@
 #include "serialization/parser.hpp"
 #include "version.hpp"
 #include "wml_separators.hpp"
+#include "formula_string_utils.hpp"
 
 
 #define DEFAULT_CAMPAIGND_PORT				15003

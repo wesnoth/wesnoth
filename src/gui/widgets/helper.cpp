@@ -16,6 +16,8 @@
 
 #include "gui/widgets/settings.hpp"
 
+#include "formula_string_utils.hpp"
+
 #include "SDL_ttf.h"
 
 namespace gui2 {

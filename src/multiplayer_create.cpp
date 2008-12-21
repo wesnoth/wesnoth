@@ -31,6 +31,7 @@
 #include "log.hpp"
 #include "wml_exception.hpp"
 #include "wml_separators.hpp"
+#include "formula_string_utils.hpp"
 
 
 #define ERR_CF LOG_STREAM(err, config)

@@ -26,6 +26,7 @@
 #include "log.hpp"
 #include "map.hpp"
 #include "wml_exception.hpp"
+#include "formula_string_utils.hpp"
 
 #define LOG_NG LOG_STREAM(info, engine)
 #define ERR_NG LOG_STREAM(err, engine)

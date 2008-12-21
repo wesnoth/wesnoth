@@ -30,6 +30,7 @@
 #include "marked-up_text.hpp"
 #include "sound.hpp"
 #include "upload_log.hpp"
+#include "formula_string_utils.hpp"
 
 #define ERR_NG LOG_STREAM(err, engine)
 #define LOG_NG LOG_STREAM(info, engine)
