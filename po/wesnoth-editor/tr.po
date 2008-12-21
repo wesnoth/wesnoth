@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-editor\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-11-29 12:24+0100\n"
-"PO-Revision-Date: 2008-10-03 17:34+0300\n"
+"PO-Revision-Date: 2008-12-19 12:42+0200\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish <wesnoth-tr@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -71,7 +71,7 @@ msgstr "kale"
 #. [editor_group]: id=special
 #: data/core/editor-groups.cfg:77
 msgid "special"
-msgstr ""
+msgstr "özel"
 
 #. [brush]
 #: data/core/editor2-brushes.cfg:4
@@ -96,17 +96,16 @@ msgstr "KB-GD Altıgen Hattı"
 #. [editor2_tool_hint]: id=editor-tool-paint
 #. [editor2_tool_hint]: id=editor-tool-fill
 #: data/core/editor2-tool-hints.cfg:7 data/core/editor2-tool-hints.cfg:13
-#, fuzzy
 msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only."
 msgstr ""
 "Arazinin ön ve art alanlarını çizmek için farenin sol ve sağ düğmelerini "
-"kullanın. Sadece zemin katmanını boyamak isterseniz ALT tuşunu basılı tutun."
+"kullanın. Sadece zemin katmanını boyamak isterseniz Shift tuşunu basılı "
+"tutun."
 
 #. [editor2_tool_hint]: id=editor-tool-select
 #: data/core/editor2-tool-hints.cfg:19
-#, fuzzy
 msgid ""
 "Left mouse button selects, right deselects. Hold Shift for magic-wand "
 "selection of tiles with same terrain."
@@ -131,6 +130,8 @@ msgid ""
 "Click to paste. Use the edit menu to transform the clipboard (rotate, "
 "mirror)."
 msgstr ""
+"Yapıştırmak için tıklayın. Pano içeriğinde dönüşüm yapmak (döndürmek, "
+"yansılamak gibi) için düzenleme menüsünü kullanın."
 
 #. [menu]: id=menu-editor-file
 #: data/themes/editor2.cfg:120
@@ -149,9 +150,8 @@ msgstr "Harita"
 
 #. [menu]: id=menu-editor-window
 #: data/themes/editor2.cfg:151
-#, fuzzy
 msgid "Window"
-msgstr "Geri al"
+msgstr "Pencere"
 
 #. [label]: id=villages-icon
 #: data/themes/editor2.cfg:262
@@ -168,7 +168,7 @@ msgstr "Ölümcül hata"
 
 #: src/editor2/editor_controller.cpp:255 src/editor2/editor_controller.cpp:952
 msgid "(New Map)"
-msgstr ""
+msgstr "(Yeni Harita)"
 
 #: src/editor2/editor_controller.cpp:261
 msgid "Do you really want to quit?"
@@ -179,12 +179,16 @@ msgid ""
 "Do you really want to quit? Changes in the map since the last save will be "
 "lost."
 msgstr ""
+"Gerçekten çıkmak mı istiyorsunuz? Son kayıttan beri yaptığınız "
+"değişiklikleri kaybedeceksiniz."
 
 #: src/editor2/editor_controller.cpp:265
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
 msgstr ""
+"Gerçekten çıkmak mı istiyorsunuz? Son kayıttan beri yaptığınız tüm "
+"değişiklikleri kaybedeceksiniz. Değiştirdiğiniz haritalar:"
 
 #: src/editor2/editor_controller.cpp:270
 msgid "Quit"
@@ -196,40 +200,37 @@ msgid "Error"
 msgstr "Hata"
 
 #: src/editor2/editor_controller.cpp:327
-#, fuzzy
 msgid "No editor time-of-day found."
-msgstr "Bir düzenleyici vakti yok."
+msgstr "Bir vakit düzenleyici yok."
 
 #: src/editor2/editor_controller.cpp:363
 msgid "Unsaved Changes"
-msgstr ""
+msgstr "Kaydedilmemiş Değişiklikler"
 
 #: src/editor2/editor_controller.cpp:364
-#, fuzzy
 msgid ""
 "Do you want to discard all changes you made to the map since the last save?"
-msgstr "Haritada yaptığınız değişiklikleri iptal etmek mi istiyorsunuz?"
+msgstr ""
+"Son kayıttan beri haritada yaptığınız değişiklikleri iptal etmek mi "
+"istiyorsunuz?"
 
 #: src/editor2/editor_controller.cpp:377
-#, fuzzy
 msgid "Choose a Map to Open"
-msgstr "Yüklemek için bir harita seç"
+msgstr "Açmak için Harita Seç"
 
 #: src/editor2/editor_controller.cpp:381
 msgid "This map is already open."
-msgstr ""
+msgstr "Bu harita zaten açık."
 
 #: src/editor2/editor_controller.cpp:419
 msgid "Save the Map As"
 msgstr "Haritayı Farklı Kaydet"
 
 #: src/editor2/editor_controller.cpp:423
-#, fuzzy
 msgid "The file already exists. Do you want to overwrite it?"
-msgstr "Bu isimde bir harita zaten var. Üzerine yazmak ister misiniz?"
+msgstr "Bu isimde bir dosya zaten var. Üzerine yazmak ister misiniz?"
 
 #: src/editor2/editor_controller.cpp:439
-#, fuzzy
 msgid "No random map generators found."
 msgstr "Bir rasgele harita üreteci yok."
 
@@ -238,19 +239,16 @@ msgid "Map creation failed."
 msgstr "Harita oluşturulamadı."
 
 #: src/editor2/editor_controller.cpp:465
-#, fuzzy
 msgid "Choose a mask to apply"
-msgstr "Yüklemek için bir harita seç"
+msgstr "Uygulanacak örüntüyü seçiniz"
 
 #: src/editor2/editor_controller.cpp:472
-#, fuzzy
 msgid "Error loading mask"
-msgstr "Harita yüklenirken hata"
+msgstr "Örüntü yüklenirken hata"
 
 #: src/editor2/editor_controller.cpp:487
-#, fuzzy
 msgid "Choose target map"
-msgstr "Oyuncu seçiniz"
+msgstr "Hedef haritayı seçiniz"
 
 #: src/editor2/editor_controller.cpp:494 src/editor2/editor_controller.cpp:607
 #: src/editor2/editor_main.cpp:51
@@ -291,7 +289,7 @@ msgstr "Oyuncu"
 
 #: src/editor2/editor_map.cpp:282
 msgid "The size of the target map is different from the current map"
-msgstr ""
+msgstr "Hedef harita bundan farklı boyutlarda"
 
 #: src/editor2/editor_palettes.cpp:493
 msgid "FG"
@@ -320,99 +318,3 @@ msgstr ""
 #: src/gui/dialogs/editor_settings.cpp:116
 msgid "Custom setting"
 msgstr "Özel Ayarlar"
-
-#, fuzzy
-#~ msgid "There was a format error while loading the file:"
-#~ msgstr "Harita yüklenirken bir biçem hatası bulundu:"
-
-#, fuzzy
-#~ msgid "There was a wml error while loading the file:"
-#~ msgstr "Harita yüklenirken bir WML hatası saptandı:"
-
-#~ msgid "Click to paste."
-#~ msgstr "Yapıştırmak için tıklayın."
-
-#~ msgid "There are unsaved changes in the map."
-#~ msgstr "Haritada kaydedilmemiş değişiklikler var."
-
-#~ msgid "There are unsaved changes in the map"
-#~ msgstr "Haritada kaydedilmemiş değişiklikler var"
-
-#~ msgid "Settings"
-#~ msgstr "Ayarlar"
-
-#~ msgid "Draw tiles"
-#~ msgstr "Kiremitleri çiz"
-
-#~ msgid "Fill"
-#~ msgstr "Doldur"
-
-#~ msgid "Set player's starting position"
-#~ msgstr "Oyuncunun başlama yerini belirle"
-
-#~ msgid "Zoom in"
-#~ msgstr "Yakınlaş"
-
-#~ msgid "Zoom out"
-#~ msgstr "Uzaklaş"
-
-#~ msgid "Zoom to default view"
-#~ msgstr "Öntanımlı görünüm"
-
-#~ msgid "Toggle grid"
-#~ msgstr "Izgarayı aç-kapa"
-
-#~ msgid "Resize the map"
-#~ msgstr "Haritayı boyutlandır"
-
-#~ msgid "Flip map"
-#~ msgstr "Haritayı ters çevir"
-
-#~ msgid "Update transitions"
-#~ msgstr "Geçişleri güncelle"
-
-#~ msgid "Delay transition updates"
-#~ msgstr "Geçiş güncellemelerine geciktir"
-
-#~ msgid "Language"
-#~ msgstr "Dil"
-
-#~ msgid "Choose your preferred language:"
-#~ msgstr "Tercih ettiğiniz dili seçin:"
-
-#~ msgid "Battle for Wesnoth Map Editor"
-#~ msgstr "Wesnoth Savaşı Harita Düzenleyici"
-
-#~ msgid "None"
-#~ msgstr "Hiçbiri"
-
-#~ msgid "Which Player?"
-#~ msgstr "Hangi oyuncu?"
-
-#~ msgid "Which player should start here?"
-#~ msgstr "Hangi oyuncu burada başlasın?"
-
-#~ msgid ""
-#~ "Warning: Illegal characters found in the map name. Please save under a "
-#~ "different name."
-#~ msgstr ""
-#~ "Uyarı: Harita isminde geçersiz karakter bulundu. Lütfen başka bir isimle "
-#~ "kayıt edin."
-
-#~ msgid "The file does not contain a valid map."
-#~ msgstr "Bu dosya geçerli bir harita içermiyor."
-
-#~ msgid "Do you want to save the map before quitting?"
-#~ msgstr "Çıkmadan önce bu haritayı kaydetmek ister misiniz?"
-
-#~ msgid "Error: Illegal character in filename."
-#~ msgstr "Hata: Dosya isminde geçersiz karakter."
-
-#~ msgid ""
-#~ "Can't resize the map, the requested size is bigger than the maximum, size="
-#~ msgstr ""
-#~ "Harita tekrar boyutlandırılamıyor, istenen boyut azami boyutu aşıyor, "
-#~ "boyut="
-
-#~ msgid " maximum="
-#~ msgstr " azami="

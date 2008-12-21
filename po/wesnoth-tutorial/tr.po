@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-tutorial\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-12-03 19:43+0100\n"
-"PO-Revision-Date: 2008-10-03 16:22+0300\n"
+"PO-Revision-Date: 2008-12-20 23:04+0200\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish <wesnoth-tr@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -127,13 +127,12 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:599
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:640
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:673
-#, fuzzy
 msgid ""
 "\n"
 "*Left click or press spacebar to continue..."
 msgstr ""
 "\n"
-"*Devam etmek için sol tıklayın veya bir tuşa basın..."
+"*Devam etmek için sol tıklayın veya boşluk tuşuna basın..."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:197
@@ -202,7 +201,6 @@ msgstr "BURAYA yazan altıgene sol tıklayın"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:289
-#, fuzzy
 msgid ""
 "*Oops!\n"
 "You moved to the wrong place! After this message, you can press 'u' to undo, "
@@ -210,8 +208,7 @@ msgid ""
 msgstr ""
 "*Hoop!\n"
 "Yanlış yere gittiniz! Bu iletiden sonra hareketi geri almak için ‘U’ tuşuna "
-"basıp tekrar deneyin.\n"
-"*Devam etmek için sol tıklayın veya bir tuşa basın..."
+"basıp tekrar deneyin."
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:314
@@ -390,7 +387,6 @@ msgstr "Lisar’ı köye götürmek için köye tıklayın"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:526
-#, fuzzy
 msgid ""
 "You captured a village! It now flies your flag color and has been added to "
 "your total village count at the top of the screen (house icon). Villages "
@@ -400,9 +396,8 @@ msgstr ""
 "Bir köy ele geçirdiniz. Kenarda kendi bayrağınızın dalgalandığını "
 "görebilirsiniz. Ayrıca bu köy ekranın üst kenarında ev simgesi ile "
 "gösterilen toplam köy sayınıza eklendi. Köyler tedavi olmanızı sağlamaktan "
-"başka sker alabilmeniz için size altın da kazandırırlar. Her el alacağınız 2 "
-"altına ek olarak sahip olduğunuz her köy için hel el 1 altın kazanırsınız.\n"
-"*Devam etmek için sol tıklayın veya bir tuşa basın..."
+"başka asker alabilmeniz için size altın da kazandırırlar. Her el alacağınız "
+"2 altına ek olarak sahip olduğunuz her köy için hel el 1 altın kazanırsınız."
 
 #. [event]
 #. [then]
@@ -457,7 +452,6 @@ msgstr "Lisar’ı iç kaleye götür"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:597
-#, fuzzy
 msgid ""
 "Whenever you're on a keep, you can recruit into castle tiles around it by "
 "right-clicking and selecting 'Recruit'. This time you will only be given one "
@@ -465,9 +459,7 @@ msgid ""
 msgstr ""
 "İç kaleye varır varmaz, iç kalenin etrafındaki burçlara sağ tıklayıp açılan "
 "menüden 'Askere al' şıkkını seçerek asker almaya başlayabilirsiniz. Bu "
-"seferlik size sadece bir tür birimi seçme şansı verilecek: Elf Savaşçı; onu "
-"seçin.\n"
-"*Devam etmek için sol tıklayın veya bir tuşa basın..."
+"seferlik size sadece bir tür birimi seçme şansı verilecek: Elf Savaşçı."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:602
@@ -477,7 +469,6 @@ msgstr "Kale burcuna sağ tıklayıp ‘Asker al’ şıkkını seçin"
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:638
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:671
-#, fuzzy
 msgid ""
 "These newly recruited units can do nothing this turn; you will control them "
 "next turn.\n"
@@ -488,8 +479,7 @@ msgstr ""
 "yollayabileceksiniz.\n"
 "\n"
 "Dikkat: Bu metin kapandıktan sonra imleci bir birimin üzerine götürün ve "
-"sağdaki durum çubuğunda birimle ilgili açıklamaya bakın.\n"
-"*Devam etmek için sol tıklayın veya bir tuşa basın..."
+"sağdaki durum çubuğunda birimle ilgili açıklamaya bakın."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:650
@@ -561,7 +551,6 @@ msgstr "Korkuluğa sol tıklayıp saldırıyı başlatın."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:789
-#, fuzzy
 msgid ""
 "Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
 "attack. Quintain defended with its melee attack (3-5). The ranged attack was "
@@ -1330,7 +1319,6 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:917
-#, fuzzy
 msgid ""
 "Excellent. Elves are well-protected in the forest. There's only a 30% chance "
 "of hitting an Elvish Archer in forests."
@@ -1810,7 +1798,6 @@ msgstr "Savaşçı"
 
 #. [attack]: type=blade
 #: data/campaigns/tutorial/units/Fighteress.cfg:21
-#, fuzzy
 msgid "saber"
 msgstr "eskrim kılıcı"
 
@@ -1828,22 +1815,3 @@ msgstr ""
 #: data/campaigns/tutorial/units/Quintain.cfg:22
 msgid "flail"
 msgstr "harman döven"
-
-#~ msgid "Elder Mage"
-#~ msgstr "Yaşlı Büyücü"
-
-#~ msgid ""
-#~ "Once great, Elder Magi have seen their power diminished from wearying "
-#~ "years of battle. Nevertheless, they remain feared on the battlefield for "
-#~ "their powerful lightning bolts."
-#~ msgstr ""
-#~ "Bir zamanların seçkin savaşçıları olan yaşlı büyücüler yılllarca süren "
-#~ "savaşların bıkkınlığı yüzünden güçlerinin azaldığını gördüler. Yine de, "
-#~ "yağdırdıkları yıldırımların hürmetine savaş alanlarının korkulan kişileri "
-#~ "olarak kaldılar."
-
-#~ msgid "staff"
-#~ msgstr "asa"
-
-#~ msgid "lightning"
-#~ msgstr "yıldırım"

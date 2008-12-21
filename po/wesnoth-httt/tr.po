@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-httt\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-12-17 17:29+0100\n"
-"PO-Revision-Date: 2008-10-03 18:05+0300\n"
+"PO-Revision-Date: 2008-12-19 03:14+0200\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish <wesnoth-tr@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -432,7 +432,6 @@ msgstr "Ve işte hikaye böyle başladı!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:314
-#, fuzzy
 msgid "Very well, we have made it this far! But where do we go next?"
 msgstr "Tamam buraya kadar geldik. Şimdi nereye gidiyoruz?"
 
@@ -557,7 +556,6 @@ msgstr "Eller tükeninceye kadar dayan"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:25
-#, fuzzy
 msgid ""
 "<255,255,255>Alternative objective:\n"
 "@Defeat the enemy leader\n"
@@ -565,7 +563,7 @@ msgid ""
 msgstr ""
 "<255,255,255>Diğer Amaç:\n"
 "@Düşman liderini yen\n"
-"`(erken bitirme ödülü)"
+"`(özel ödül)"
 
 #. [objective]: condition=lose
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:38
@@ -1659,7 +1657,6 @@ msgstr "Lanetliler Adası"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:25
-#, fuzzy
 msgid ""
 "<255,255,255>Alternative objective:\n"
 "@Defeat all enemy leaders\n"
@@ -1667,12 +1664,12 @@ msgid ""
 msgstr ""
 "<255,255,255>Diğer amaç:\n"
 "@Tüm düşman liderlerini yen\n"
-"`(erken bitirme ödülü)"
+"`(özel ödül)"
 
 #. [objectives]
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:33
 msgid "No gold carried over to the next scenario."
-msgstr ""
+msgstr "Sonraki senaryoya taşınacak altın yok."
 
 #. [part]
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:41
@@ -1732,13 +1729,12 @@ msgstr ""
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:175
-#, fuzzy
 msgid ""
 "Let's hope these rumors are not true! I have none of my men or gold with me! "
 "How could I defend myself?"
 msgstr ""
-"Umarım söylentiler doğru değildir. Adamlarımın hiçbiri yanımda değil! "
-"Kendimi nasıl savunacağım?"
+"Umarım söylentiler doğru değildir. Adamlarımın hiçbiri yanımda değil ve "
+"altınım da yok! Kendimi nasıl savunacağım?"
 
 #. [message]: speaker=Kalba
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:179
@@ -1757,18 +1753,17 @@ msgstr "Delurin"
 
 #. [message]: speaker=Delurin
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:197
-#, fuzzy
 msgid ""
 "Maybe we can make a deal! Help us defeat those evil creatures! You may use "
 "our gold reserves to lead us!"
 msgstr ""
-"Belki anlaşabiliriz! Bize bu şeytani yaratıkları yenmemiz için yardım edin."
+"Belki anlaşabiliriz! Bize bu şeytani yaratıkları yenmemiz için yardım et! "
+"Bize liderlik edersen altın birikimimizi kullanabilirsin."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:207
-#, fuzzy
 msgid "You receive 100 pieces of gold!"
-msgstr "300 altın aldınız!"
+msgstr "100 altın aldınız!"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:216
@@ -1862,6 +1857,8 @@ msgstr ""
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:520
 msgid "You regain your lost troops and $isle_damned_starting_gold gold!"
 msgstr ""
+"Kaybettiğiniz askerlerinizi ve $isle_damned_starting_gold altını geri "
+"aldınız!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:491
@@ -3026,9 +3023,8 @@ msgstr ""
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:263
-#, fuzzy
 msgid "Whoa!!"
-msgstr "Tüh!!"
+msgstr "Vaay!!"
 
 #. [then]
 #: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:317
@@ -3339,13 +3335,12 @@ msgstr "Nehri sağ salim geçtik. Şimdi nereye?"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:414
-#, fuzzy
 msgid ""
 "If we are to have any hope of penetrating into Knalga, we must continue "
 "north to seek help from the Dwarves of the Heart Mountains in the north."
 msgstr ""
-"Eğer Kanalga’ya girme ümidimiz varsa dağ cücelerinden yardım almak için daha "
-"kuzeye gitmemiz lazım."
+"Eğer Kanalga’ya girme ümidimiz varsa Yürek Dağlarınır cücelerinden yardım "
+"almak için daha kuzeye gitmemiz lazım."
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:425
@@ -4203,7 +4198,6 @@ msgstr "Cüce Binici"
 
 #. [message]: speaker=Mounted Dwarf
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:613
-#, fuzzy
 msgid "Whoa there... No need to be surly, now. Easy...easy... now GO!"
 msgstr "Yeehh! Kabalığa gerek yok. UÇ! Bakın ne kolay."
 
@@ -4338,7 +4332,6 @@ msgstr "Neden buradasın? Bunlar... trol cesetleri mi?"
 
 #. [message]: speaker=Ulfdain
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:229
-#, fuzzy
 msgid ""
 "I was brawlin' with these wee pups here defending my outpost. We got a "
 "little carried away, fell in the water, and were sucked down intae this "
@@ -4354,13 +4347,12 @@ msgstr "Ne kadardır buradasın?"
 
 #. [message]: speaker=Ulfdain
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:237
-#, fuzzy
 msgid ""
 "Och, several days at least. The troll meat is starting to stink, and I'm a "
 "little ravenous, if ye catch my drift. Canna' swim past that current, and "
 "no' for lack o' tryin'."
 msgstr ""
-"Oh, en azından bir kaç gündür. Trol yemek kokmaya başlamış ve eğer beni "
+"Oh, en azından bir kaç gündür. Trol yemeğim kokmaya başlamış ve eğer beni "
 "girdapta kurtarırsanız, bir kurt gibi yerim. Bu akıntıda yüzemiyorum ve "
 "deneme şansım da yok."
 
@@ -4371,7 +4363,6 @@ msgstr "Seni kurtaracağım. Bacaklarımı yakala, sayın cüce."
 
 #. [message]: speaker=Ulfdain
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:245
-#, fuzzy
 msgid "Thanks. Nae need to wait around here. Let's go."
 msgstr "Teşekkürler. Burada beklemenin gereği yok. Gidelim."
 
@@ -4620,7 +4611,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:49
-#, fuzzy
 msgid ""
 "Stepping through a low corridor, Konrad and Delfador emerged from the maze-"
 "like catacombs into icy blackness. Darkness seemed to crush them. Lights "
@@ -5129,7 +5119,6 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:283
-#, fuzzy
 msgid ""
 "Prince Konrad, you and your friends keep talking about avoiding the river. "
 "But we can lead you up the river. With the help of us Merfolk, you could "
@@ -5601,7 +5590,6 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:309
-#, fuzzy
 msgid ""
 "A final blow destroys the Lich, releasing a small shock-wave of energy "
 "outwards. The last Death Knight silently falls to the ground, inanimate. A "
@@ -5613,7 +5601,6 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:316
-#, fuzzy
 msgid ""
 "A final blow destroys the Lich, releasing a small shock-wave of energy "
 "outwards. The Death Knights silently fall to the ground, inanimate. A giant "
@@ -5625,7 +5612,6 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:325
-#, fuzzy
 msgid ""
 "A final blow destroys the Lich, releasing a small shock-wave of energy "
 "outwards. A giant cloud of dust bellows out as the remnants of the Lich's "
@@ -5974,7 +5960,6 @@ msgstr ""
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:537
-#, fuzzy
 msgid ""
 "Those are some of the monsters I warned about. Such undead guardians are "
 "indestructible. We must find another way to go."
@@ -6274,11 +6259,12 @@ msgstr "Kuzey Elflerinin Yurdu"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:20
-#, fuzzy
 msgid ""
 "Konrad must reach the Lintanir Forest to the east and hold that position "
 "until the turn is over"
-msgstr "Konrad elf ormanına ulaşmalı ve eller bitene kadar orada dayanmalı"
+msgstr ""
+"Konrad doğuda Lintanir Ormanına ulaşmalı ve eller bitene kadar orada "
+"dayanmalı"
 
 #. [objective]: condition=lose
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:40
@@ -6324,6 +6310,8 @@ msgid ""
 "the North Elves. I was born not far east of here...more years ago than I "
 "care to remember."
 msgstr ""
+"Nihayet kuzey elflerinin vatana Lintanir Ormanına ulaştık dostlarım. Ben "
+"buranın daha doğusunda doğdum. Hatırladığıma göre, yıllar önce..."
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:352
@@ -6351,9 +6339,8 @@ msgstr ""
 
 #. [unit]: id=Telerandor, type=Elvish Rider
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:376
-#, fuzzy
 msgid "Telerandor"
-msgstr "Delfador"
+msgstr "Telerandor"
 
 #. [message]: speaker=Telerandor
 #. [message]: speaker=Glarilon
@@ -6364,11 +6351,11 @@ msgstr "Lordlarım! Sonunda sizi bulduk."
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:398
-#, fuzzy
 msgid ""
 "Greetings, Telerandor, herald of Lintanir! Why have you been searching for "
 "us?"
-msgstr "Selam kadim dostum Egonihar! Beni neden arıyordun?"
+msgstr ""
+"Selam Lintanir'in koruyucusu, kadim dostum Telerandor! Beni neden arıyordun?"
 
 #. [message]: speaker=Telerandor
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:403
@@ -6386,15 +6373,14 @@ msgstr "Bela mı? Nasıl bir bela? "
 
 #. [message]: speaker=Telerandor
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:413
-#, fuzzy
 msgid ""
 "We have sighted a great host to the south, a host of the men of Wesnoth. And "
 "we believe they are looking for you! There is not a moment to lose. You must "
 "make haste, east to Lintanir. Only there will you be safe!"
 msgstr ""
 "Güneyde büyük bir savaş otağı gördük, Wesnoth ordusuna aitmiş. Sizi "
-"aradıklarını sanıyoruz! Kaybedilecek zaman yok. Bir an önce Elf ormanına "
-"varmalısınız. Orada emniyette olursunuz."
+"aradıklarını sanıyoruz! Kaybedilecek zaman yok. Bir an önce doğuya, Lintanir "
+"ormanına varmalısınız. Orada emniyette olursunuz."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:418
@@ -6592,13 +6578,11 @@ msgstr "Oradalar! Hücum!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:653
-#, fuzzy
 msgid "There you are! You must come quickly east to Lintanir!!"
-msgstr "İşte buradasınız! Çabuk doğudaki elf kalesine gidin!"
+msgstr "İşte buradasınız! Çabuk doğuya Lintanir'e gidin!"
 
 #. [message]: speaker=El'rien
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:668
-#, fuzzy
 msgid ""
 "Greetings, Elf-friend! Welcome to Emetria, my hold in Lintanir. You must "
 "take shelter here until the battle passes. If you stay with me here for a "
@@ -6642,7 +6626,6 @@ msgstr "Elf dostları! Selamettesiniz!"
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:757
-#, fuzzy
 msgid ""
 "El'rien, we have the Scepter of Fire with us! We must escort them to "
 "Elensiria!"
@@ -6740,15 +6723,15 @@ msgstr "Everlor"
 
 #. [message]: speaker=Uradredia
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:100
-#, fuzzy
 msgid ""
 "Greetings, and welcome to our capital. You should feel honored. It has been "
 "half a century - a generation in the way your race counts time - since any "
 "man has been considered Elf-friend enough to stand here in Elensiria."
 msgstr ""
-"Başkentimize hoş geldiniz, safalar getirdiniz. Bu onur sizin. Şu anda burada "
-"bulunmaya layık olacak kadar elf dostu sayılan bir insan gelmeyeli -sizin "
-"ırkınızın saydığı zaman cinsinden- en az yarım asır geçti."
+"Başkentimize hoş geldiniz, safalar getirdiniz. Bu onur sizin. Şu anda "
+"burada, Elensirya'da bulunmaya layık olacak kadar elf dostu sayılan bir "
+"insan gelmeyeli -sizin ırkınızın saydığı zaman cinsinden- en az yarım asır "
+"geçti."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:104
@@ -7380,7 +7363,6 @@ msgstr ""
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:217
-#, fuzzy
 msgid ""
 "We come in peace! We wish for you to aid us in our struggle against "
 "Asheviere, the evil Queen."
@@ -8002,7 +7984,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Heir_To_The_Throne/scenarios/25_HttT_Epilogue.cfg:19
-#, fuzzy
 msgid ""
 "Delfador became Li'sar's High Counselor, advising her in the most important "
 "matters of state. He lived until a ripe old age and was granted a royal "
@@ -8068,7 +8049,6 @@ msgstr ""
 #: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:115
 #: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:33
 #: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:154
-#, fuzzy
 msgid "saber"
 msgstr "eskrim kılıcı"
 
@@ -8152,7 +8132,7 @@ msgstr "asa"
 #. [attack]: type=cold
 #: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:32
 msgid "raging blizzard"
-msgstr ""
+msgstr "kar fırtınası"
 
 #. [unit_type]: id=Fighter, race=human
 #: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:18
@@ -8237,7 +8217,6 @@ msgstr "Deniz Orku"
 
 #. [unit_type]: id=Sea Orc, race=orc
 #: data/campaigns/Heir_To_The_Throne/units/Sea_Orc.cfg:17
-#, fuzzy
 msgid ""
 "While often viewed as inferior to their land-loving counterparts, Sea Orcs "
 "represent a great leap for all goblins as they have adapted to aquatic "
@@ -8246,10 +8225,10 @@ msgid ""
 "strategic weaknesses."
 msgstr ""
 "Çogunlukla karada yaşamayı seven benzerlerinden aşağı görünselerde, Deniz "
-"Orkları sulak çevreye adaptosyonlarından dolayı onlar tüm goblinimsiler için "
-"büyük bir sıçramayı temsil ederler. Kıvrımlı kılıçlarıyla becerikli savaşçı "
-"olsalarda uzun menzilli silah kullanamamaları ve karadaki zayıf savunmaları "
-"onların stratejik zayıflıklarıdır."
+"Orkları sulak çevreye uyumlarından dolayı tüm goblinimsiler için büyük bir "
+"sıçramayı temsil ederler. Kıvrımlı kılıçlarıyla becerikli savaşçı olsalar da "
+"uzun menzilli silah kullanamamaları ve karadaki zayıf savunmaları onların "
+"stratejik zayıflıklarıdır."
 
 #. [unit_type]: id=Sleeping Gryphon, race=gryphon
 #: data/campaigns/Heir_To_The_Throne/units/Sleeping_Gryphon.cfg:4
@@ -8283,9 +8262,8 @@ msgstr "Hayır! Yenildik! Sonumuz geldi!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Heir_To_The_Throne/utils/deaths.cfg:65
-#, fuzzy
 msgid "At least I die an honorable death."
-msgstr "Sondu onurumla ölüyorum"
+msgstr "Sonunda onurumla ölüyorum"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:43
@@ -8402,13 +8380,12 @@ msgstr "Ateş Asası"
 
 #. [object]: id=object_scepter
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:387
-#, fuzzy
 msgid ""
 "This ancient Scepter was forged by the great Dwarves of the Heart Mountains. "
 "A symbol of the kingship of Wesnoth, the Scepter has the power to shoot "
 "fireballs at enemies of the bearer!"
 msgstr ""
-"Bu kadim Asa Derin Dağların muhteşem Cüceleri tarafından döğüldü. Wesnoth "
+"Bu kadim Asa Yürek Dağlarının muhteşem Cüceleri tarafından döğüldü. Wesnoth "
 "krallığının bir simgesi olan Asa, düşman siperlerine ateş topları atma "
 "gücüne sahiptir."
 
@@ -8599,78 +8576,3 @@ msgstr ""
 "Wesnoth’un kuzeybatısı boyunca uzanan Eten ormanlarına kaçan Delfador, minik "
 "Konrad’ı elflerin himayesinde büyütürken diğer yandan Aşivye’nin dehşet "
 "saçan hükümdarlığı bütün diyarlara yayılmaya başlamıştı...  "
-
-#~ msgid "Early finish bonus."
-#~ msgstr "Erken bitirme ödülü."
-
-#~ msgid "Jibb"
-#~ msgstr "Jib"
-
-#~ msgid "Monry"
-#~ msgstr "Monri"
-
-#~ msgid "Gleran"
-#~ msgstr "Gleran"
-
-#~ msgid "Rogerus"
-#~ msgstr "Rogerus"
-
-#~ msgid "Rurcyn"
-#~ msgstr "Rursin"
-
-#~ msgid "Blyr"
-#~ msgstr "Bilyar"
-
-#~ msgid "Ligwyn"
-#~ msgstr "Ligvin"
-
-#~ msgid "Owaryn"
-#~ msgstr "Ovarin"
-
-#~ msgid "Heldra"
-#~ msgstr "Heldra"
-
-#~ msgid "Marcus"
-#~ msgstr "Markus"
-
-#~ msgid "Haldar"
-#~ msgstr "Haldar"
-
-#~ msgid "Goblin Knight"
-#~ msgstr "Goblin Şövalyesi"
-
-#~ msgid "Ceomyr"
-#~ msgstr "Ceomir"
-
-#~ msgid "Gwellyn"
-#~ msgstr "Givelin"
-
-#~ msgid "cold"
-#~ msgstr "soğuk"
-
-#~ msgid "Eonihar"
-#~ msgstr "Egonihar"
-
-#~ msgid ""
-#~ "At last, friends, we have almost reached the home of my people, the North "
-#~ "Elves."
-#~ msgstr ""
-#~ "Sonunda dostlarım halkımın, Kuzey elflerinin yurduna vardık sayılır. "
-
-#~ msgid "Elder Mage"
-#~ msgstr "Yaşlı büyücü"
-
-#~ msgid ""
-#~ "Once great, Elder Magi have seen their power a little diminished from "
-#~ "wearying years of battle. Nevertheless they remain feared on the "
-#~ "battlefield on account of their powerful lightning bolts."
-#~ msgstr ""
-#~ "Bir zamanlar harika olan yaşlı büyücüler güçlerinin yılllarca süren savaş "
-#~ "bıkkınlığı yüzünden azaldığını gördüler. Mamafih güçlü yıldırım "
-#~ "toplarının hürmetine savaş alanlarında korkulan kişiler olarak kaldılar."
-
-#~ msgid "staff"
-#~ msgstr "değnek"
-
-#~ msgid "lightning"
-#~ msgstr "yıldırım"

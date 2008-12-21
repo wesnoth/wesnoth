@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-lib\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-12-17 17:27+0100\n"
-"PO-Revision-Date: 2008-10-08 20:03+0300\n"
+"PO-Revision-Date: 2008-12-19 13:46+0200\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish <wesnoth-tr@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -512,7 +512,6 @@ msgstr "Düzenleyici Ayarları"
 
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:46
-#, fuzzy
 msgid "Time of day lighting preset"
 msgstr "Vaktin aydınlığını sıfırla"
 
@@ -524,9 +523,8 @@ msgstr "Sonraki"
 
 #. [toggle_button]: id=custom_tod_toggle
 #: data/gui/default/window/editor_settings.cfg:83
-#, fuzzy
 msgid "Custom lighting setting"
-msgstr "Özel aydınlatma ayarları"
+msgstr "Özel aydınlık ayarları"
 
 #. [toggle_button]: id=custom_tod_auto_refresh
 #: data/gui/default/window/editor_settings.cfg:93
@@ -551,7 +549,7 @@ msgstr "Mavi:"
 #. [toggle_button]: id=use_mdi
 #: data/gui/default/window/editor_settings.cfg:208
 msgid "Allow more than one map to be open at the same time (MDI)"
-msgstr ""
+msgstr "Aynı anda birden fazla harita açmayı mümkün kılar (MDI)"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
@@ -1545,13 +1543,12 @@ msgid "Quit to Desktop"
 msgstr "Masaüstüne Çık"
 
 #: src/hotkeys.cpp:101
-#, fuzzy
 msgid "Close Map"
-msgstr "Kapat"
+msgstr "Haritayı Kapat"
 
 #: src/hotkeys.cpp:102
 msgid "Switch Map"
-msgstr ""
+msgstr "Haritaya Geç"
 
 #: src/hotkeys.cpp:104
 msgid "Partial Undo"
@@ -1679,12 +1676,11 @@ msgstr "Harita Üret"
 
 #: src/hotkeys.cpp:155
 msgid "Apply a Mask"
-msgstr ""
+msgstr "Bir Örüntü Uygula"
 
 #: src/hotkeys.cpp:157
-#, fuzzy
 msgid "Create Mask"
-msgstr "Oyun Üret"
+msgstr "Örüntü Üret"
 
 #: src/hotkeys.cpp:159
 msgid "Refresh Display"
@@ -1937,12 +1933,3 @@ msgstr ""
 #: src/wml_exception.cpp:72
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr "‘[$section|]’ bölümünde zorunlu ‘$key|’ anahtarı belirtilmemiş."
-
-#~ msgid "Ok"
-#~ msgstr "Tamam"
-
-#~ msgid "2000"
-#~ msgstr "2000"
-
-#~ msgid "-1"
-#~ msgstr "-1"

@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-12-17 17:28+0100\n"
-"PO-Revision-Date: 2008-10-08 19:26+0300\n"
+"PO-Revision-Date: 2008-12-19 12:05+0200\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish <wesnoth-tr@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -149,7 +149,6 @@ msgstr "+4 tedavi"
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:22
 #: data/core/macros/abilities.cfg:16
-#, fuzzy
 msgid ""
 "Heals +4:\n"
 "Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
@@ -479,9 +478,8 @@ msgstr "Valensiyaca Tercüme"
 
 #. [about]
 #: data/core/about.cfg:2014
-#, fuzzy
 msgid "RACV's Translation"
-msgstr "Çince Tercüme"
+msgstr "RACV Çevirisi"
 
 #. [about]
 #: data/core/about.cfg:2021
@@ -2505,9 +2503,8 @@ msgstr ""
 
 #. [topic]: id=terrain_reef
 #: data/core/help.cfg:698
-#, fuzzy
 msgid "Coastal Reef"
-msgstr "Kale"
+msgstr "Kayalık Kıyı"
 
 #. [topic]: id=terrain_bridge
 #: data/core/help.cfg:708
@@ -2575,7 +2572,6 @@ msgstr ""
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:745
-#, fuzzy
 msgid ""
 "\n"
 "Switch debug mode on (does not work in multiplayer). See "
@@ -2920,7 +2916,6 @@ msgstr " liderlik"
 #: data/core/macros/abilities.cfg:118 data/core/macros/abilities.cfg:141
 #: data/core/macros/abilities.cfg:176 data/core/macros/abilities.cfg:223
 #: data/core/macros/abilities.cfg:282
-#, fuzzy
 msgid ""
 "Leadership:\n"
 "This unit can lead our own units that are next to it, making them fight "
@@ -3148,7 +3143,6 @@ msgid "backstab"
 msgstr "destekli"
 
 #: data/core/macros/abilities.cfg:567
-#, fuzzy
 msgid ""
 "Backstab:\n"
 "When used offensively, this attack deals double damage if there is an enemy "
@@ -3156,9 +3150,9 @@ msgid ""
 "incapacitated (turned to stone or otherwise paralyzed)."
 msgstr ""
 "Destekli:\n"
-"Bu saldırı, saldırı amaçlı kullanıldığında, hedef birimin arkasında düşmanı "
-"olan bir birim varsa ve bu düşman saldıramaz durumda (mesela taşa çevrilmiş) "
-"değilse, hedefe iki misli hasar verir."
+"Bu saldırı türü, saldırı amaçlı kullanıldığında, hedef birimin arkasında "
+"düşmanı olan bir birim varsa ve bu düşman saldıramaz durumda (mesela taşa "
+"çevrilmiş) değilse, hedefe iki misli hasar verir."
 
 #: data/core/macros/abilities.cfg:579 data/core/macros/abilities.cfg:591
 msgid "plague"
@@ -3238,7 +3232,6 @@ msgid "swarm"
 msgstr "kaynaşma"
 
 #: data/core/macros/abilities.cfg:654
-#, fuzzy
 msgid ""
 "Swarm:\n"
 "The number of strikes of this attack decreases when the unit is wounded. The "
@@ -3247,10 +3240,10 @@ msgid ""
 "number of strikes."
 msgstr ""
 "Kaynaşma:\n"
-"Bu saldırının vuruş sayısı birim yaralanınca azalır. Vuruş sayısı, o anki "
-"yaşam puanının toplam yaşam puanına oranıyla orantılı olarak azalır. Mesela "
-"toplam yaşam puanının 3/4’üne sahip birim, normalin 3/4’ü sayıda vuruş "
-"yapabilir."
+"Bu saldırı türünde, vuruş sayısı birim yaralanınca azalır. Vuruş sayısı, o "
+"anki yaşam puanının toplam yaşam puanına oranıyla orantılı olarak azalır. "
+"Mesela toplam yaşam puanının 3/4’üne sahip birim, normalin 3/4’ü sayıda "
+"vuruş yapabilir."
 
 #: data/core/macros/abilities.cfg:663
 msgid "charge"
@@ -3313,35 +3306,28 @@ msgid "Max HP bonus +"
 msgstr "En fazla YP ödülü +"
 
 #: data/core/macros/carryover-utils.cfg:9
-#, fuzzy
 msgid "Early finish bonus."
-msgstr "Erken bitirme ödülü (el başına): "
+msgstr "Erken bitirme ödülü var."
 
 #: data/core/macros/carryover-utils.cfg:12
-#, fuzzy
 msgid "No early finish bonus."
-msgstr "Erken bitirme ödülü (el başına): "
+msgstr "Erken bitirme ödülü yok. "
 
 #: data/core/macros/carryover-utils.cfg:15
-#, fuzzy
 msgid "`(early finish bonus)"
-msgstr "Erken bitirme ödülü (el başına): "
+msgstr "`(erken bitirme ödülü)"
 
 #: data/core/macros/carryover-utils.cfg:18
-#, fuzzy
 msgid "No gold carried over to the next scenario."
-msgstr ""
-"\n"
-"Bitiş altınının %40’ı sonraki senaryoya aktarılır."
+msgstr "Sonraki senaryoya altın aktarılmayacak."
 
 #: data/core/macros/carryover-utils.cfg:22
-#, fuzzy
 msgid ""
 "\n"
 "100% of finishing gold carried over to the next scenario."
 msgstr ""
 "\n"
-"Bitiş altınının %40’ı sonraki senaryoya aktarılır."
+"Bitiş altınının %100'ü sonraki senaryoya aktarılır."
 
 #: data/core/macros/carryover-utils.cfg:26
 msgid ""
@@ -3362,7 +3348,7 @@ msgstr ""
 #. [deprecated_message]
 #: data/core/macros/deprecated-utils.cfg:21
 msgid "VICTORY_AND_DEFEAT_MUSIC is unnecessary and can be removed."
-msgstr ""
+msgstr "VICTORY_AND_DEFEAT_MUSIC gereksizdir ve silinebilir."
 
 #. [message]: speaker=narrator
 #: data/core/macros/items.cfg:39
@@ -3924,7 +3910,6 @@ msgid "Kaasa,Kayya,Keyya,Kiira,Korra"
 msgstr "Kaşasa,Kayıya,Keyiya,Kişira,Korera"
 
 #: data/core/macros/names.cfg:23
-#, fuzzy
 msgid ""
 "Addraecyn,Addraenvan,Addraer,Addraercyn,Addraryn,Addreddry,Addredry,"
 "Addregwyn,Addrenyc,Addreoddry,Addreoddyn,Addreonyc,Addreorcyn,Addreran,"
@@ -4023,7 +4008,6 @@ msgstr ""
 "Yurimir,Yurinik,Yurirsin"
 
 #: data/core/macros/names.cfg:24
-#, fuzzy
 msgid ""
 "Alabrylla,Alaebrylla,Alaeniver,Alalla,Alalonna,Alaryan,Aleacla,Aleaniver,"
 "Aleara,Alearka,Alena,Alengwen,Alilonna,Alingwen,Alolla,Alolonna,Alora,"
@@ -4417,7 +4401,6 @@ msgstr ""
 "sırasında azaltır."
 
 #: data/core/macros/special-notes.cfg:29
-#, fuzzy
 msgid ""
 " The leadership of this unit enables adjacent units of the same side to deal "
 "more damage in combat, though this only applies to units of lower level."
@@ -4675,9 +4658,8 @@ msgstr "sağlıklı"
 
 #. [trait]: id=healthy
 #: data/core/macros/traits.cfg:134
-#, fuzzy
 msgid "Can rest while moving, takes a quarter less poison damage"
-msgstr "Hareket ederken dinlenebilir, zehir hasarı yarıya iner"
+msgstr "Hareket ederken dinlenebilir, zehir hasarı dörtte bir azalır"
 
 #. [trait]: id=fearless
 #: data/core/macros/traits.cfg:151 data/core/macros/traits.cfg:164
@@ -5385,7 +5367,7 @@ msgstr "Zor"
 #. [language]
 #: data/hardwired/english.cfg:6
 msgid "Nightmare"
-msgstr ""
+msgstr "Kabus"
 
 #. [language]
 #: data/hardwired/english.cfg:11
@@ -5537,11 +5519,15 @@ msgid ""
 "features, and allows us to improve Wesnoth. To learn more about this or "
 "disable it, click the envelope in the bottom-right corner."
 msgstr ""
+"Rrogram, oyununuzun gelişimi ile ilgili bilgileri kimlik bilgilerinden "
+"arındırılmış olarak saklanmak üzere bir sunucuya gönderir. Bu veriler oyunun "
+"geliştirilmesi için kullanılır. Bu konuda daha fazla bilgi veya bu özelliği "
+"kapatmak için sağ alt köşedeki zarf simgesine tıklayınız."
 
 #. [tip]
 #: data/hardwired/tips.cfg:4
 msgid "Wesnoth Developers"
-msgstr ""
+msgstr "Wesnoth Geliştiricileri"
 
 #. [tip]
 #: data/hardwired/tips.cfg:7
@@ -6275,9 +6261,8 @@ msgstr "Oyun"
 
 #. [menu]: id=button-playreplay, type=image
 #: data/themes/macros.cfg:75
-#, fuzzy
 msgid "continuous replay"
-msgstr "sürekli tekrarlar"
+msgstr "sürekli oynatır"
 
 #. [menu]: id=button-stopreplay, type=image
 #: data/themes/macros.cfg:92
@@ -6444,17 +6429,14 @@ msgid "addon_type^Scenario"
 msgstr "Senaryo"
 
 #: src/addon_management.cpp:401
-#, fuzzy
 msgid "addon_type^MP era"
 msgstr "Çağ (ÇO)"
 
 #: src/addon_management.cpp:403
-#, fuzzy
 msgid "addon_type^MP faction"
 msgstr "Hizip (ÇO)"
 
 #: src/addon_management.cpp:405
-#, fuzzy
 msgid "addon_type^MP map-pack"
 msgstr "Harita Paketi (ÇO)"
 
@@ -7248,9 +7230,8 @@ msgid "Abilities: "
 msgstr "Yetenekler: "
 
 #: src/help.cpp:1344
-#, fuzzy
 msgid "Ability Upgrades: "
-msgstr "Yetenekler: "
+msgstr "Yetenek Güncellemeleri: "
 
 #: src/help.cpp:1362
 msgid "Cost: "
@@ -7380,14 +7361,12 @@ msgid "?"
 msgstr "?"
 
 #: src/loadscreen.cpp:224
-#, fuzzy
 msgid "Verifying cache"
-msgstr "Önbellek doğrulanıyor."
+msgstr "Önbellek doğrulanıyor"
 
 #: src/loadscreen.cpp:243
-#, fuzzy
 msgid "Reading cache"
-msgstr "Önbellek okunuyor."
+msgstr "Önbellek okunuyor"
 
 #: src/loadscreen.cpp:262
 msgid "Reading unit files."
@@ -7892,12 +7871,10 @@ msgid "Fire a game event."
 msgstr "Oyundaki bir olayı ([event]) tetikler."
 
 #: src/menu_events.cpp:2337
-#, fuzzy
 msgid "Toggle overlaying of x,y coordinates on hexes."
 msgstr "x,y altıgenindeki kaplamayı açıp kapar."
 
 #: src/menu_events.cpp:2340
-#, fuzzy
 msgid "Toggle overlaying of terrain codes on hexes."
 msgstr "Altıgenlerdeki kaplamanın arazi kodlarını etkinleştirir/siler."
 
@@ -8587,9 +8564,8 @@ msgid "Unknown scenario: '$scenario|'"
 msgstr "Bilinmeyen Senaryo: ‘$scenario|’"
 
 #: src/playmp_controller.cpp:209
-#, fuzzy
 msgid "Undoing moves not yet transmitted to the server."
-msgstr "Henüz sunucuya aktarılmayan hareketler geri alınıyor."
+msgstr "Henüz sunucuya aktarılmayan hareketler geri alınır."
 
 #: src/playmp_controller.cpp:289
 msgid "End scenario"
@@ -8883,7 +8859,6 @@ msgid "TitleScreen button^Add-ons"
 msgstr "Eklentiler"
 
 #: src/titlescreen.cpp:383
-#, fuzzy
 msgid "TitleScreen button^Map Editor"
 msgstr "Haritacı"
 
@@ -9093,47 +9068,3 @@ msgstr "Wesnoth’u sizin için daha iyi hale getirmemize yardım edin!"
 #: src/upload_log.cpp:330
 msgid "Enable summary uploads"
 msgstr "Özet göndermeyi etkinleştir"
-
-#, fuzzy
-#~ msgid " This unit is capable of basic healing and slowing dehydration."
-#~ msgstr " Bu birim temel tedavileri yapabilir."
-
-#, fuzzy
-#~ msgid ""
-#~ " This unit is capable of healing those around it, slowing dehydration, "
-#~ "and curing them of poison."
-#~ msgstr " Bu birim etrafındakileri iyileştirebilir ve panzehir verebilir."
-
-#~ msgid "Abilites"
-#~ msgstr "Yetenekler"
-
-#~ msgid "[store_unit] missing required [filter] tag\n"
-#~ msgstr "[filter] etiketinin içeriğinde gerekli olan [store_unit] eksik\n"
-
-#, fuzzy
-#~ msgid "define ai location"
-#~ msgstr "Endonezyaca Tercüme"
-
-#, fuzzy
-#~ msgid "Location name?"
-#~ msgstr "Oyun Yükle"
-
-#, fuzzy
-#~ msgid "Give new orders"
-#~ msgstr "İşlemi iptal et"
-
-#, fuzzy
-#~ msgid "value: "
-#~ msgstr "İsim: "
-
-#, fuzzy
-#~ msgid "Defeat an enemy Leader!"
-#~ msgstr ""
-#~ "Galibiyet\n"
-#~ "@Düşman lider(ler)ini öldür"
-
-#~ msgid "Anti-Warlord Weaponry activated!"
-#~ msgstr "Büyücükıran Silahı Etkin!"
-
-#~ msgid "Anti-Warlord Weaponry deactivated."
-#~ msgstr "Büyücükıran Silahı Etkisiz!"

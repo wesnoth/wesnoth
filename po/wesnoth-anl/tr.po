@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-anl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-12-09 22:13+0100\n"
-"PO-Revision-Date: 2008-10-04 19:14+0300\n"
+"PO-Revision-Date: 2008-12-19 12:21+0200\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish <wesnoth-tr@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -43,6 +43,10 @@ msgid ""
 "armies that had crushed their homeland, the leaders of the resistance hoped "
 "only for enough time to rebuild their forces."
 msgstr ""
+"Büyük savaşın ardından insanlığın kalanı gözden ırak dar bir vadiye "
+"kaçtılar. Yurtlarını harabeden güçlü ordulardan uzun süre "
+"gizlenemeyeceklerini biliyorlardı. Direniş liderleri sadece biraz zaman "
+"kazanıp güç toplamayı amaçlamışlardı."
 
 #. [objectives]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:33
@@ -60,7 +64,7 @@ msgstr "25. el dayanmalısınız."
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:82
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:97
 msgid "teamname^Team 1"
-msgstr ""
+msgstr "Ekip 1"
 
 #. [side]: type=Death Knight
 #. [side]: type=Orcish Sovereign
@@ -69,7 +73,7 @@ msgstr ""
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:169
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:196
 msgid "teamname^Team 2"
-msgstr ""
+msgstr "Ekip 2"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:436
@@ -298,7 +302,6 @@ msgstr "Üniversiteler"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:68
-#, fuzzy
 msgid ""
 "Any of the 'Elvish' style villages represent universities. At the start of "
 "your turn, Mages in universities automatically add to the study progress of "
@@ -307,7 +310,7 @@ msgid ""
 msgstr ""
 "'Elf' tarzı köyler üniversiteleri temsil eder. Her elin başında "
 "üniversitedeki büyücüler seçtiğiniz araştırma türüne göre eğitim alırlar. "
-"Üniversitelerde bulunan büyücülere sağ tıklayıp eğitim konusunu "
+"Üniversitelerde bulunan büyücülere sağ tıklayıp araştırma konusunu "
 "belirleyebilirsiniz."
 
 #. [message]: speaker=narrator
@@ -321,24 +324,22 @@ msgstr "Diplomasi"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:78
-#, fuzzy
 msgid ""
 "Right-clicking on your leader when in a university allows you to select "
 "special diplomatic options."
 msgstr ""
-"Üniversitede bulunan liderinize sağ tıklayıp diplomatik seçeneklerden birini "
-"seçebilirsiniz."
+"Üniversitede bulunan liderinize sağ tıklayıp özel diplomatik seçeneklerden "
+"birini seçebilirsiniz."
 
 #. [set_menu_item]: id=anl_help
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:86
 msgid "Help"
-msgstr ""
+msgstr "Yardım"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:102
-#, fuzzy
 msgid "A New Land - Help"
-msgstr "4o - Yeni Bir Ülke"
+msgstr "Yeni Bir Ülke - Yardım"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:103
@@ -361,6 +362,8 @@ msgid ""
 "$sf_player_name|, since our wisdom exceeds yours I have instructed my "
 "scholars to further your understanding of agriculture."
 msgstr ""
+"$sf_player_name|, bilgimiz sizinkinden üstün olduğundan bilginlerime size "
+"tarımı öğretmeleri için talimat verdim."
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:91
@@ -369,6 +372,8 @@ msgid ""
 "instructed my scholars to aid you in your efforts to learn the science of "
 "mining."
 msgstr ""
+"$sm_player_name|, bilgimiz sizinkinden üstün olduğundan bilginlerime size "
+"madenciliği öğretmeleri için talimat verdim."
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:123
@@ -376,6 +381,8 @@ msgid ""
 "You know worryingly little about the arts of war, $sw_player_name|. I feel "
 "an obligation to instruct you in this vital matter."
 msgstr ""
+"Savaş sanatları hakkında biraz endişeli olduğunuzu biliyorum, "
+"$sw_player_name|. Bu hayati konuyu size öğretmeyi bir borç biliyorum."
 
 #. [set_variable]
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:189
@@ -409,7 +416,7 @@ msgstr ""
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:246
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:279
 msgid "Diplomatic Options"
-msgstr ""
+msgstr "Diplomatik Seçenekler"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:223
@@ -486,7 +493,7 @@ msgstr ""
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:378
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:400
 msgid "Negotiation Complete"
-msgstr ""
+msgstr "Antlaşma İmzalandı"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:381
@@ -509,7 +516,7 @@ msgstr ""
 #. [set_menu_item]: id=anl_choose_new_recruit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:9
 msgid "Choose New Recruit"
-msgstr ""
+msgstr "Yeni Askere Alınacakları Seç"
 
 #. [message]: speaker=unit
 #. [message]: speaker=narrator
@@ -518,7 +525,7 @@ msgstr ""
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:225
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:241
 msgid "Study Complete"
-msgstr ""
+msgstr "Eğitim Tamamlandı"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:35
@@ -528,12 +535,12 @@ msgstr "Hangi birim türünü askere alabilmeyi istersiniz?"
 #. [set_menu_item]: id=anl_oversee_research
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:54
 msgid "Oversee Research"
-msgstr ""
+msgstr "Araştırmaya Devam"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:93
 msgid "Research"
-msgstr ""
+msgstr "Araştırma"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:99
@@ -638,7 +645,7 @@ msgstr "Ağdan kurtardığınız birim size katılmayı kabul etti."
 #. [set_menu_item]: id=anl_get_to_work
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:6
 msgid "Get to Work!"
-msgstr ""
+msgstr "İş başına!"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:43
