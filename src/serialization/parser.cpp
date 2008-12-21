@@ -27,11 +27,13 @@
 #include "loadscreen.hpp"
 #include "wesconfig.h"
 #include "serialization/tokenizer.hpp"
+#include "foreach.hpp"
 
 #include <stack>
 
 #include <boost/iostreams/filtering_stream.hpp>
 #include <boost/iostreams/filter/gzip.hpp>
+#include <boost/algorithm/string/replace.hpp>
 
 #define ERR_CF LOG_STREAM(err, config)
 #define WRN_CF LOG_STREAM(warn, config)
@@ -327,9 +329,10 @@ std::string parser::lineno_string(utils::string_map &i18n_symbols, std::string c
 	}
 	if (res.empty()) res = "???";
 	i18n_symbols["pos"] = res;
-	// return vgettext(error_string.c_str(), i18n_symbols);
-	// vgettext causes dependency on formula ai which is unaccptable for server.
-	return error_string;
+	std::string result = _(error_string.c_str());
+	foreach(utils::string_map::value_type& var, i18n_symbols)
+		boost::algorithm::replace_all(result, std::string("$") + var.first, std::string(var.second));
+	return result;
 }
 
 void parser::error(const std::string& error_type)
