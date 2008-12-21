@@ -917,10 +917,6 @@ void unit::new_level()
 
 	remove_temporary_modifications();
 
-	// Re-apply all permanent modifications
-	reset_modifications();
-	apply_modifications();
-
 	heal_all();
 	set_state("slowed","");
 	set_state("poisoned","");
