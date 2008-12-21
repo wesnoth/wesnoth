@@ -21,11 +21,13 @@
 
 #include "global.hpp"
 
+#include "formula.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
 
 #define ERR_GENERAL LOG_STREAM(err, general)
+#define ERR_NG LOG_STREAM(err, engine)
 
 variable_set::~variable_set()
 {
@@ -58,9 +60,54 @@ static std::string do_interpolation(const std::string &str, const variable_set& 
 
 		// The '$' is not part of the variable name.
 		const std::string::iterator var_name_begin = var_begin + 1;
+		std::string::iterator var_end = var_name_begin;
+
+		if(var_name_begin == res.end()) {
+			// Any '$' at the end of a string is just a '$'
+			continue;
+		} else if(*var_name_begin == '(') {
+			// The $( ... ) syntax invokes a formula
+			int paren_nesting_level = 1;
+			bool in_string = false,
+				in_comment = false;
+			for(var_end += 1; var_end != res.end() && paren_nesting_level > 0; ++var_end) {
+				switch(*var_end) {
+				case '(':
+					if(!in_string && !in_comment) {
+						++paren_nesting_level;
+					}
+					break;
+				case ')':
+					if(!in_string && !in_comment) {
+						--paren_nesting_level;
+					}
+					break;
+				case '#':
+					if(!in_string) {
+						in_comment = !in_comment;
+					}
+					break;
+				case '\'':
+					if(!in_comment) {
+						in_string = !in_string;
+					}
+					break;
+				// TODO: support escape sequences when/if they are allowed in FormulaAI strings
+				}
+			}
+			if(paren_nesting_level > 0) {
+				ERR_NG << "Formula in WML string cannot be evaluated due to "
+					<< "missing closing paren:\n\t--> \""
+					<< std::string(var_begin, var_end) << "\"\n";
+				res.replace(var_begin, var_end, "");
+				continue;
+			}
+			const game_logic::formula form(std::string(var_begin+2, var_end-1));
+			res.replace(var_begin, var_end, form.execute().string_cast());
+			continue;
+		}
 
 		// Find the maximum extent of the variable name (it may be shortened later).
-		std::string::iterator var_end = var_name_begin;
 		for(int bracket_nesting_level = 0; var_end != res.end(); ++var_end) {
 			const char c = *var_end;
 			if(c == '[') {
@@ -204,8 +251,8 @@ std::vector< std::string > split(std::string const &val, char c, int flags)
 	return res;
 }
 
-std::vector< std::string > paranthetical_split(std::string const &val, 
-		const char separator, std::string const &left, 
+std::vector< std::string > paranthetical_split(std::string const &val,
+		const char separator, std::string const &left,
 		std::string const &right,int flags)
 {
 	std::vector< std::string > res;
@@ -392,7 +439,7 @@ bool isvalid_username(const std::string& username) {
 	const size_t alnum = std::count_if(username.begin(), username.end(), isalnum);
 	const size_t valid_char =
 			std::count_if(username.begin(), username.end(), is_username_char);
-	if ((alnum + valid_char != username.size()) 
+	if ((alnum + valid_char != username.size())
 			|| valid_char == username.size() || username.empty() )
 	{
 		return false;
@@ -609,7 +656,7 @@ static int byte_size_from_utf8_first(unsigned char ch)
 	return count;
 }
 
-utf8_iterator::utf8_iterator(const std::string& str) : 
+utf8_iterator::utf8_iterator(const std::string& str) :
 	current_char(0),
 	string_end(str.end()),
 	current_substr(std::make_pair(str.begin(), str.begin()))
@@ -617,7 +664,7 @@ utf8_iterator::utf8_iterator(const std::string& str) :
 	update();
 }
 
-utf8_iterator::utf8_iterator(std::string::const_iterator const &beg, 
+utf8_iterator::utf8_iterator(std::string::const_iterator const &beg,
 		std::string::const_iterator const &end) :
 	current_char(0),
 	string_end(end),

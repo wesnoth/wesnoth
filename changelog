@@ -61,6 +61,7 @@ Version 1.5.6+svn:
    * Made the border scrolling threshold a (hidden) preference and made it
      default to 10 instead of 5 pixels.
  * WML engine:
+   * Allow inline formulas "$( ... )" to be used in general WML
    * Ignore whitespace at the beginning or end of event names
    * Added the 'round' key to [set_variable].
    * New attribute to_variable= in [unit] to spawn directly into a variable
