@@ -63,10 +63,10 @@ static std::string do_interpolation(const std::string &str, const variable_set& 
 			continue;
 		} else if(*var_name_begin == '(') {
 			// The $( ... ) syntax invokes a formula
-			int paren_nesting_level = 1;
+			int paren_nesting_level = 0;
 			bool in_string = false,
 				in_comment = false;
-			for(var_end += 1; var_end != res.end() && paren_nesting_level > 0; ++var_end) {
+			do {
 				switch(*var_end) {
 				case '(':
 					if(!in_string && !in_comment) {
@@ -90,7 +90,7 @@ static std::string do_interpolation(const std::string &str, const variable_set& 
 					break;
 				// TODO: support escape sequences when/if they are allowed in FormulaAI strings
 				}
-			}
+			} while(paren_nesting_level > 0 && ++var_end != res.end());
 			if(paren_nesting_level > 0) {
 				ERR_NG << "Formula in WML string cannot be evaluated due to "
 					<< "missing closing paren:\n\t--> \""
