@@ -90,7 +90,7 @@ static std::string do_interpolation(const std::string &str, const variable_set& 
 					break;
 				// TODO: support escape sequences when/if they are allowed in FormulaAI strings
 				}
-			} while(paren_nesting_level > 0 && ++var_end != res.end());
+			} while(++var_end != res.end() && paren_nesting_level > 0);
 			if(paren_nesting_level > 0) {
 				ERR_NG << "Formula in WML string cannot be evaluated due to "
 					<< "missing closing paren:\n\t--> \""
