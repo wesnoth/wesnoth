@@ -44,6 +44,8 @@
 //#include "locale.h"
 //#endif
 
+#include <clocale>
+
 #define LOG_NG LOG_STREAM(info, engine)
 #define LOG_DP LOG_STREAM(info, display)
 #define ERR_G  LOG_STREAM(err, general)
