@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-12-21 22:48+0100\n"
-"PO-Revision-Date: 2008-11-22 16:40+0100\n"
+"PO-Revision-Date: 2008-12-22 12:01+0100\n"
 "Last-Translator: Nils Kneuper <crazy-ivanovic  AT gmx  D O  T net>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "MIME-Version: 1.0\n"
@@ -349,7 +349,7 @@ msgstr "Nichts"
 #. [terrain]: id=flat
 #: data/core/terrain.cfg:1132
 msgid "Flat"
-msgstr ""
+msgstr "Flachland"
 
 #. [terrain]: id=frozen
 #: data/core/terrain.cfg:1139
@@ -520,7 +520,7 @@ msgstr ""
 #: data/gui/default/window/editor_settings.cfg:75
 #: data/gui/default/window/editor_settings.cfg:76
 msgid "Next"
-msgstr ""
+msgstr "Nächste"
 
 #. [toggle_button]: id=custom_tod_toggle
 #: data/gui/default/window/editor_settings.cfg:83
@@ -708,7 +708,7 @@ msgstr "Einem anderem Server beitreten"
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:158
 msgid "Host Networked Game"
-msgstr ""
+msgstr "Netzwerkpartie eröffnen"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:159
@@ -1300,14 +1300,12 @@ msgid "Text doesn't start on canvas."
 msgstr ""
 
 #: src/gui/widgets/helper.cpp:167
-#, fuzzy
 msgid "Mandatory widget '$id' hasn't been defined."
-msgstr "Es wurde kein Server angegeben."
+msgstr ""
 
 #: src/gui/widgets/settings.cpp:123
-#, fuzzy
 msgid "No default gui defined."
-msgstr "Es wurde kein Server angegeben."
+msgstr ""
 
 #: src/gui/widgets/settings.cpp:253
 msgid "Window not defined."
@@ -1319,19 +1317,16 @@ msgid ""
 msgstr ""
 
 #: src/gui/widgets/settings.cpp:429 src/gui/widgets/window_builder.cpp:278
-#, fuzzy
 msgid "No resolution defined."
-msgstr "Es wurde kein Server angegeben."
+msgstr ""
 
 #: src/gui/widgets/settings.cpp:461
-#, fuzzy
 msgid "No state or draw section defined."
-msgstr "Es wurde kein Server angegeben."
+msgstr ""
 
 #: src/gui/widgets/settings.cpp:704
-#, fuzzy
 msgid "No scrollbar defined."
-msgstr "Es wurde kein Server angegeben."
+msgstr ""
 
 #: src/gui/widgets/settings.cpp:860 src/gui/widgets/window_builder.cpp:369
 #: src/gui/widgets/window_builder.cpp:967
@@ -1562,11 +1557,11 @@ msgstr "Karte schließen"
 
 #: src/hotkeys.cpp:102
 msgid "Switch Map"
-msgstr ""
+msgstr "Karte wechseln"
 
 #: src/hotkeys.cpp:104
 msgid "Partial Undo"
-msgstr ""
+msgstr "Teilweise rückgängig"
 
 #: src/hotkeys.cpp:106
 msgid "Load Map"
@@ -1673,9 +1668,8 @@ msgid "Fill Selection"
 msgstr "Ausgewählten Bereich füllen"
 
 #: src/hotkeys.cpp:145
-#, fuzzy
 msgid "Generate Tiles In Selection"
-msgstr "Auswahl rotieren"
+msgstr ""
 
 #: src/hotkeys.cpp:147
 msgid "Randomize Tiles In Selection"
