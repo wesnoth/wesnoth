@@ -41,6 +41,16 @@ Version 1.5.6+svn:
  * Graphics:
    * New or updated unit frames: Gryphon Rider, Gryphon Master, Revenant.
    * New portraits for Peasant, Swordsman, Spearman.
+   * New image-path functions:
+     * ~CS(R,G,B): do a simple color-shift by adding the argument values
+       to each color channel.
+     * ~R(v), ~G(v), ~B(v): mangled forms of ~CS() for single channel
+       manipulations.
+     * ~O(percentage%), ~O(factor): change an image's opacity by a
+       percentage value (0%-100%-*%) or a numeric factor (0.0-1.0-*),
+       respectively. Using factors/values greater than 1.0/100% causes
+       pixels with non-zero alpha value to have it increased.
+     * ~BL(radius): blur an image by the given radius.
  * Language and i18n:
    * Renamed the --dummylocales parameter to --dummy-locales.
    * Fixed the po extraction tool to also include the id field.
