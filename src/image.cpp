@@ -357,6 +357,10 @@ surface locator::load_image_sub_file() const
 		int cs_r = 0, cs_g = 0, cs_b = 0;
 		// ~BL() arguments
 		unsigned blur = 0;
+		// ~O()
+		static const fixed_t opacity_unchanged = ftofxp(-1.0f);
+		static const fixed_t opacity_full = ftofxp(1.0f);
+		fixed_t opacity = opacity_unchanged;
 
 		std::map<Uint32, Uint32> recolor_map;
 		std::vector<std::string> modlist = utils::paranthetical_split(val_.modifications_,'~');
@@ -484,6 +488,19 @@ surface locator::load_image_sub_file() const
 				else if("BL" == function) { // Blur
 					blur = std::max<int>(0, lexical_cast_default<int>(field));
 				}
+				else if("O" == function) { // Whole-surface opacity change
+					const std::string::size_type p100_pos = field.find('%');
+					float num = 0.0f;
+					if(p100_pos == std::string::npos)
+						num = lexical_cast_default<float,const std::string&>(field);
+					else {
+						// make multiplier
+						const std::string parsed_field = field.substr(0, p100_pos);
+						num = lexical_cast_default<float,const std::string&>(parsed_field);
+						num /= 100.0f;
+					}
+					opacity = ftofxp(num);
+				}
 				// ~R(), ~G() and ~B() are the children of ~CS(). Merely syntatic sugar.
 				// Hence they are at the end of the evaluation.
 				else if("R" == function) {
@@ -530,6 +547,9 @@ surface locator::load_image_sub_file() const
 		}
 		if(greyscale) {
 			surf = greyscale_image(surf);
+		}
+		if(opacity != opacity_unchanged && opacity != opacity_full) {
+			surf = adjust_surface_alpha(surf, opacity);
 		}
 		if(blur) {
 			surf = blur_alpha_surface(surf, blur);
