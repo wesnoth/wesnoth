@@ -6,7 +6,7 @@ Preface
 
 The Battle for Wesnoth is a turn-based strategy game with a fantasy theme.
 
-Build up a great army, gradually turning raw recruits into hardened
+Build up a great army, gradually training raw recruits into hardened
 veterans. In later games, recall your toughest warriors and form a
 deadly host against whom none can stand! Choose units from a large pool
 of specialists, and hand pick a force with the right strengths to fight
@@ -242,7 +242,7 @@ machine to join. In this dialog
 there also is the button "View List" that does show a list of official servers 
 that can be used as backup if the main server is currently not available.
 
-A rather complete list of official and user setup servers is listed at this 
+A complete list of official and user setup servers is listed at this 
 website: http://wesnoth.org/wiki/MultiplayerServers[Multiplayer servers].
 
 You can also reach servers hosted by any other player with this menu option.
@@ -254,16 +254,17 @@ would enter this in the dialog: 192.168.0.10:15000
 Host Networked Game
 +++++++++++++++++++
 
-To be able to start a multiplayer game without using an external multiplayer 
-server, you have to start the server, which is usually named 'wesnothd', 
-yourself. This programm is automatically started in the background when selecting
-this option. It will be stopped, once all players left the server.
-Other players need to be able to connect to your
-port 15000 using TCP to play with you on your server. If you are behind a 
-firewall, you will probably need to change your firewall settings to allow 
-incoming connections to port 15000, and tell your firewall to forward such 
-traffic to the machine hosting the game. You should not need to make firewall 
-changes to join games hosted on a public server or by someone else.
+To be able to start a multiplayer game without using an external
+multiplayer server, you have to start the server, which is usually
+named 'wesnothd', yourself. This programm is automatically started in
+the background when selecting this option. It will be stopped, once
+all players left the server.  Other players need to be able to connect
+to your port 15000 using TCP to play with you on your server. If you
+are behind a firewall, you will probably need to change your firewall
+settings to allow incoming connections to port 15000, and tell your
+firewall to forward such traffic to the machine hosting the game. You
+should not need to make firewall changes to join games hosted on a
+public server or by someone else.
 
 Local Game
 ++++++++++
