@@ -345,14 +345,17 @@ surface locator::load_image_sub_file() const
 	  surf=mask_surface(tmp, mask);
 	}
 
-
 	if(val_.modifications_.size()){
+		// ~FL() arguments
 		bool xflip = false;
 		bool yflip = false;
+		// ~GS() status
 		bool greyscale = false;
+		// ~CROP() status
 		bool slice = false;
-		bool rc = false;
 		SDL_Rect slice_rect = { 0,0,0,0 };
+		// ~RC() and ~TC() status
+		bool rc = false;
 		// ~CS() arguments
 		int cs_r = 0, cs_g = 0, cs_b = 0;
 		// ~BL() arguments
