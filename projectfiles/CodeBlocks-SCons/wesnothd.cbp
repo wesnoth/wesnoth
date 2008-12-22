@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="wesnothd" />
+		<Option makefile_is_custom="1" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="release">
+				<Option output="../../wesnothd" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="../../" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<MakeCommands>
+					<Build command="scons -C ../.. build=$target wesnothd" />
+					<CompileFile command="scons -C ../.. build=$target $file" />
+					<Clean command="scons -C ../.. build=$target -c" />
+					<DistClean command="rm -rf ../../build" />
+				</MakeCommands>
+			</Target>
+			<Target title="debug">
+				<Option output="../../wesnothd-debug" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="../../" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<MakeCommands>
+					<Build command="scons -C ../.. build=$target wesnothd" />
+					<CompileFile command="scons -C ../.. build=$target $file" />
+					<Clean command="scons -C ../.. build=$target -c" />
+					<DistClean command="rm -rf ../../build" />
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-DHAVE_PYTHON" />
+			<Add option="-DUSE_GZIP" />
+			<Add option="-mthreads" />
+			<Add option="-fexceptions" />
+			<Add option="-O3" />
+			<Add option="-march=native" />
+			<Add directory="../../src" />
+			<Add directory="../../src/server" />
+			<Add directory="../../src/serialization" />
+		</Compiler>
+		<Linker>
+			<Add option="-mthreads" />
+			<Add library="mingw32" />
+			<Add library="mingwthrd" />
+			<Add library="SDLmain" />
+			<Add library="SDL" />
+			<Add library="boost_iostreams_dw2" />
+			<Add library="intl" />
+			<Add library="SDL_net" />
+			<Add library="ws2_32" />
+			<Add library="z" />
+		</Linker>
+		<Unit filename="../../src/color_range.cpp" />
+		<Unit filename="../../src/config.cpp" />
+		<Unit filename="../../src/filesystem.cpp" />
+		<Unit filename="../../src/game_config.cpp" />
+		<Unit filename="../../src/gettext.cpp" />
+		<Unit filename="../../src/loadscreen_empty.cpp" />
+		<Unit filename="../../src/log.cpp" />
+		<Unit filename="../../src/network.cpp" />
+		<Unit filename="../../src/network_worker.cpp" />
+		<Unit filename="../../src/serialization/binary_or_text.cpp" />
+		<Unit filename="../../src/serialization/binary_wml.cpp" />
+		<Unit filename="../../src/serialization/parser.cpp" />
+		<Unit filename="../../src/serialization/preprocessor.cpp" />
+		<Unit filename="../../src/serialization/string_utils.cpp" />
+		<Unit filename="../../src/serialization/tokenizer.cpp" />
+		<Unit filename="../../src/server/ban.cpp" />
+		<Unit filename="../../src/server/game.cpp" />
+		<Unit filename="../../src/server/input_stream.cpp" />
+		<Unit filename="../../src/server/jwsmtp/base64.cpp" />
+		<Unit filename="../../src/server/jwsmtp/compat.cpp" />
+		<Unit filename="../../src/server/jwsmtp/mailer.cpp" />
+		<Unit filename="../../src/server/mail.cpp" />
+		<Unit filename="../../src/server/metrics.cpp" />
+		<Unit filename="../../src/server/player.cpp" />
+		<Unit filename="../../src/server/proxy.cpp" />
+		<Unit filename="../../src/server/server.cpp" />
+		<Unit filename="../../src/server/simple_wml.cpp" />
+		<Unit filename="../../src/server/user_handler.cpp" />
+		<Unit filename="../../src/thread.cpp" />
+		<Unit filename="../../src/time.cpp" />
+		<Unit filename="../../src/tstring.cpp" />
+		<Unit filename="../../src/util.cpp" />
+		<Unit filename="../../src/version.cpp" />
+		<Extensions>
+			<code_completion />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
