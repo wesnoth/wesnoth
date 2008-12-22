@@ -476,7 +476,7 @@ surface locator::load_image_sub_file() const
 					}
 				}
 				else if("CROP" == function){ // Slice image
-					std::vector<std::string> const slice_params = utils::split(field, ',', utils::STRIP_SPACES);
+					std::vector<std::string> const& slice_params = utils::split(field, ',', utils::STRIP_SPACES);
 					if(slice_params.empty() != true) {
 						slice = true;
 							slice_rect.x = lexical_cast_default<Sint16, const std::string&>(slice_params[0]);
