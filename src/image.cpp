@@ -355,6 +355,8 @@ surface locator::load_image_sub_file() const
 		SDL_Rect slice_rect = { 0,0,0,0 };
 		// ~CS() arguments
 		int cs_r = 0, cs_g = 0, cs_b = 0;
+		// ~BL() arguments
+		unsigned blur = 0;
 
 		std::map<Uint32, Uint32> recolor_map;
 		std::vector<std::string> modlist = utils::paranthetical_split(val_.modifications_,'~');
@@ -479,6 +481,9 @@ surface locator::load_image_sub_file() const
 							slice_rect.h = lexical_cast_default<Uint16, const std::string&>(slice_params[3]);
 					}
 				}
+				else if("BL" == function) { // Blur
+					blur = std::max<int>(0, lexical_cast_default<int>(field));
+				}
 				// ~R(), ~G() and ~B() are the children of ~CS(). Merely syntatic sugar.
 				// Hence they are at the end of the evaluation.
 				else if("R" == function) {
@@ -525,6 +530,9 @@ surface locator::load_image_sub_file() const
 		}
 		if(greyscale) {
 			surf = greyscale_image(surf);
+		}
+		if(blur) {
+			surf = blur_alpha_surface(surf, blur);
 		}
 	}
 	return surf;
