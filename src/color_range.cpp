@@ -61,8 +61,8 @@ std::map<Uint32, Uint32> recolor_range(const color_range& new_range, const std::
 			new_g=Uint32( old_rat * new_green + (1 - old_rat) * min_green);
 			new_b=Uint32( old_rat * new_blue  + (1 - old_rat) * min_blue);
 		}else if(255 - reference_avg){
-			float old_rat = (255.0 - static_cast<float>(old_avg)) /
-				(255.0 - reference_avg);
+			float old_rat = (255.0f - static_cast<float>(old_avg)) /
+				(255.0f - reference_avg);
 
 			new_r=static_cast<Uint32>( old_rat * new_red   + (1 - old_rat) * max_red);
 			new_g=static_cast<Uint32>( old_rat * new_green + (1 - old_rat) * max_green);
