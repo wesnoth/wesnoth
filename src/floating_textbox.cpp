@@ -20,6 +20,7 @@
 #include "game_preferences.hpp"
 #include "log.hpp"
 
+#include <ctime>
 
 namespace gui{
 	floating_textbox::floating_textbox() : 

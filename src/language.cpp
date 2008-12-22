@@ -24,7 +24,7 @@
 #include "serialization/preprocessor.hpp"
 
 #include <stdexcept>
-
+#include <clocale>
 #include <boost/scoped_array.hpp>
 
 #ifdef _WIN32
