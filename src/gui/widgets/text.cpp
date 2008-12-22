@@ -220,7 +220,7 @@ void ttext_::set_cursor(const size_t offset, const bool select)
 		if(selection_start_ == offset) {
 			selection_length_ = 0;
 		} else {
-			selection_length_ = - (selection_start_ - offset);
+			selection_length_ = - static_cast<int>(selection_start_ - offset);
 		}
 
 #ifdef __unix__

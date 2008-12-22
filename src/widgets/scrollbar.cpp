@@ -311,7 +311,7 @@ void scrollbar::handle_event(const SDL_Event& event)
 			new_state = DRAGGED;
 		} else if (on_groove && e.button == SDL_BUTTON_LEFT && groove.h != grip.h) {
 			if (e.y < grip.y)
-				move_position(-grip_height_);
+				move_position(-static_cast<int>(grip_height_));
 			else
 				move_position(grip_height_);
 		} else if (on_groove && e.button == SDL_BUTTON_MIDDLE) {
