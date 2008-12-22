@@ -1,9 +1,22 @@
 Version 1.5.6+svn:
  * Campaigns:
    * Eastern Invasion
-       * Gave the undead flag to relevant sides.
+     * Converted to the new gold carryover system.
+     * Gave the undead flag to relevant sides.
+     * Fixed Dacyn and Owaec not being loyal.
+     * In 'Mal-Ravanal's Capital', reworked how the prisoner knights work: now
+       they're placed on the map in cages with guards next to them, and the
+       player must kill the guard to release the prisoner.
    * Heir to the Throne
      * Added an idle animation for L2 Princess.
+     * Fixed the dwarves attacking the player in 'The Lost General'.
+     * In 'Bay of Pearls', the player receives recruitment of all lvl1 mermen
+       units if both enemy leaders are defeated, and only Mermen Fighters if
+       only one of them is.
+     * Fixed not being able to recruit mermen in 'Isle of the Damned'.
+   * Liberty
+     * Converted to the new gold carryover system.
+     * Gave the undead flag to relevant sides.
    * The Rise of Wesnoth
      * Fixed a good amount of funny inconsistencies with Familiar's
        unit type.
@@ -11,9 +24,13 @@ Version 1.5.6+svn:
      * Lady Outlaw does not lose her experience on 'Return to Oldwood'.
      * Restored missing leading animations for Noble Commander and
        Noble Lord, and gave leading animations to Wesfolk Outcast line.
-   * Liberty
-       * Gave the undead flag to relevant sides.
-   * Under the Burning Suns:
+   * Sceptre of Fire
+     * In 'Searching for the Runecrafter', the turn limit is now increased when
+       finding Thursagan.
+     * In 'Gathering Materials', all enemy sides now fight each other.
+   * Two Brothers
+     * Converted to the new gold carryover system.
+   * Under the Burning Suns
      * Made Elyssa loyal+quick instead of quick+intelligent.
      * Gave the Shyde/Star appropriate healing frames.
      * Added updated Desert Hunter sprites.
@@ -22,8 +39,7 @@ Version 1.5.6+svn:
      to start Wesnoth contains "editor" somewhere in its name (useful
      for symlinks).
  * Graphics:
-   * New or updated unit frames: Gryphon Rider, Gryphon Master,
-     Revenant.
+   * New or updated unit frames: Gryphon Rider, Gryphon Master, Revenant.
    * New portraits for Peasant, Swordsman, Spearman.
  * Language and i18n:
    * Renamed the --dummylocales parameter to --dummy-locales.
@@ -32,6 +48,8 @@ Version 1.5.6+svn:
      German, Hungarian, Italian, Lithuanian, Polish, Slovak, Spanish, Turkish
  * Terrain:
    * New graphic variations for Oasis (Dd^Do) terrain.
+   * Added a new invisible impassable overlay terrain, which can be painted on
+     top of any (non-layered) terrain to make the hex impassable.
  * Unit changes and balancing:
    * Decreased the range attack of the Drake Flare from 7-4 to 6-4.
    * Decreased the range attack of the Drake Flamehart from 9-4 to 8-4.
@@ -71,7 +89,7 @@ Version 1.5.6+svn:
      respectively, in [endlevel] or [campaign] tags. end_text_duration
      is measured in milliseconds. (feature #10449)
    * [modify_turns] now works in scenarios without a turn limit. (bug #12715)
-   * Direct modifications to a unit using [unstore_unit] will now be kept 
+   * Direct modifications to a unit using [unstore_unit] will now be kept
      when advancing to the next scenario.
  * Miscellaneous and bug fixes:
    * Compressed start-of-scenario saves are properly recognized by the
@@ -118,7 +136,7 @@ Version 1.5.6:
    * Under the Burning Suns
      * Made use of the undead flag for undead sides
      * All known bugs (e.g. in Keratur's appearances and related to Kaleh's
-       AMLAs) have been fixed. 
+       AMLAs) have been fixed.
      * Garak now gets into a duel of champions in "A Stirring In The Night".
      * The Quenoth elf graphics have been refreshed; most of their sprites
        now match the size of other 2.0 sprites and have been team-colored.

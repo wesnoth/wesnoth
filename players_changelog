@@ -4,8 +4,25 @@ changelog: http://svn.gna.org/viewcvs/*checkout*/wesnoth/trunk/changelog
 
 Version 1.5.6+svn:
   * Campaigns
+    * Eastern Invasion
+      * Converted to the new gold carryover system.
+      * Gave the undead flag to relevant sides.
+      * Fixed Dacyn and Owaec not being loyal.
+      * In 'Mal-Ravanal's Capital', reworked how the prisoner knights work: now
+        they're placed on the map in cages with guards next to them, and the
+        player must kill the guard to release the prisoner.
+
     * Heir to the Throne:
       * Added an idle animation for L2 Princess.
+      * Fixed the dwarves attacking the player in 'The Lost General'.
+      * In 'Bay of Pearls', the player receives recruitment of all lvl1 mermen
+        units if both enemy leaders are defeated, and only Mermen Fighters if
+        only one of them is.
+      * Fixed not being able to recruit mermen in 'Isle of the Damned'.
+
+    * Liberty
+      * Converted to the new gold carryover system.
+
     * The Rise of Wesnoth:
       * Fixed many funny inconsistencies related to Familiar's unit
         type.
@@ -14,6 +31,15 @@ Version 1.5.6+svn:
       * Restored missing leading animations for Noble Commander and
         Noble Lord, and gave leading animations to Wesfolk Outcast
         line.
+
+    * Sceptre of Fire
+      * In 'Searching for the Runecrafter', the turn limit is now increased when
+        finding Thursagan.
+      * In 'Gathering Materials', all enemy sides now fight each other.
+
+    * Two Brothers
+      * Converted to the new gold carryover system.
+
     * Under the Burning Suns:
       * Made Elyssa Loyal and Quick instead of Quick and Intelligent.
 
@@ -85,9 +111,9 @@ Version 1.5.6:
         you some concrete benefit in 'Tides of War'. Also, the Council of Westin
         now always appears, but the exact turn depends on the length of
         Gerrick's defense.
-    * Under the Burnings Suns:      
+    * Under the Burnings Suns:
       * All known bugs (e.g. in Keratur's appearances and related to Kaleh's
-        AMLAs) have been fixed. 
+        AMLAs) have been fixed.
       * Garak now gets into a duel of champions in "A Stirring In The Night".
       * The Quenoth elf graphics have been refreshed; most of their sprites
         now match the size of other 2.0 sprites and have been team-colored.
