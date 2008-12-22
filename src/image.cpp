@@ -353,6 +353,8 @@ surface locator::load_image_sub_file() const
 		bool slice = false;
 		bool rc = false;
 		SDL_Rect slice_rect = { 0,0,0,0 };
+		// ~CS() arguments
+		int cs_r = 0, cs_g = 0, cs_b = 0;
 
 		std::map<Uint32, Uint32> recolor_map;
 		std::vector<std::string> modlist = utils::paranthetical_split(val_.modifications_,'~');
@@ -444,6 +446,26 @@ surface locator::load_image_sub_file() const
 				else if("GS" == function){	// Grayscale image
 					greyscale=true;
 				}
+				else if("CS" == function) { // Color-shift image
+					std::vector<std::string> const factors = utils::split(field, ',');
+					const size_t s = factors.size();
+					if(s) {
+						cs_r = lexical_cast_default<int>(factors[0]);
+						if( s > 1 ) {
+							cs_g = lexical_cast_default<int>(factors[1]);
+						}
+						if( s > 2 ) {
+							cs_b = lexical_cast_default<int>(factors[2]);
+						}
+						if( lg::info.dont_log(lg::display) == false && s > 3 ) {
+							lg::info(lg::display) << "ignoring extra "
+							                      << s-3
+							                      << " arguments to ~CS() function\n";
+						}
+					} else {
+						INFO_DP << "no arguments passed to ~CS() function\n";
+					}
+				}
 				else if("CROP" == function){ // Slice image
 					std::vector<std::string> const slice_params = utils::split(field, ',', utils::STRIP_SPACES);
 					if(slice_params.empty() != true) {
@@ -489,6 +511,9 @@ surface locator::load_image_sub_file() const
 		}
 		if(greyscale) {
 			surf = greyscale_image(surf);
+		}
+		if(cs_r || cs_g || cs_b) {
+			surf = adjust_surface_colour(surf, cs_r, cs_g, cs_b);
 		}
 	}
 	return surf;
