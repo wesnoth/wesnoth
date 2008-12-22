@@ -219,7 +219,7 @@ public:
 	async_operation() : 
 		thread_(), aborted_(false), finished_(), finishedVar_(false), mutex_() 
 	{
-		while (active_.front().unique())
+		while (!active_.empty() && active_.front().unique())
 			active_.pop_front();
 	}
 	virtual ~async_operation() {}
