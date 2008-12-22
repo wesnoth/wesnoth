@@ -351,6 +351,7 @@ surface locator::load_image_sub_file() const
 		bool yflip = false;
 		bool greyscale = false;
 		bool slice = false;
+		bool rc = false;
 		SDL_Rect slice_rect = { 0,0,0,0 };
 
 		std::map<Uint32, Uint32> recolor_map;
@@ -399,6 +400,7 @@ surface locator::load_image_sub_file() const
 				}
 
 				if("RC" == function){	// Re-color range/palette function
+					rc = true;
 					std::vector<std::string> recolor=utils::split(field,'>'); // recolor palette to range
 					if(recolor.size()>1){
 						std::map<Uint32, Uint32> tmp_map;
@@ -457,7 +459,9 @@ surface locator::load_image_sub_file() const
 				}
 			}
 		}
-		surf = recolor_image(surf,recolor_map);
+		if(rc) {
+			surf = recolor_image(surf,recolor_map);
+		}
 		if(slice) {
 			// yummy, a slice of surface! this needs to get done
 			// before any other geometric transformations
