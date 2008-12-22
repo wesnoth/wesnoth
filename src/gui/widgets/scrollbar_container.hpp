@@ -41,7 +41,7 @@ class tscrollbar_container
 {
 	friend class tdebug_layout_graph;
 
-	friend class tbuilder_scroll_label;
+	friend struct tbuilder_scroll_label;
 
 public:
 	

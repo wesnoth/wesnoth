@@ -227,7 +227,7 @@ namespace game_config {
 		static config_cache_transaction& instance()
 		{ assert(active_); return *active_; }
 		friend class config_cache;
-		friend class add_define_from_file;
+		friend struct add_define_from_file;
 		friend class fake_transaction;
 		const filenames& get_define_files() const;
 		void add_define_file(const std::string&);

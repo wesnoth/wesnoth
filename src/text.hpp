@@ -23,10 +23,10 @@
 
 #include <string>
 
-class language_def;
+struct language_def;
 
 namespace gui2 {
-	class tpoint;
+	struct tpoint;
 } // namespace gui2;
 
 namespace font {

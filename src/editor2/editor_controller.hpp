@@ -38,22 +38,22 @@ class config;
 class map_generator;
 
 namespace tooltips {
-class manager;
+struct manager;
 }
 
 namespace font {
-class floating_label_context;
+struct floating_label_context;
 }
 
 namespace rand_rng {
 class rng;
-class set_random_generator;
+struct set_random_generator;
 }
 
 namespace editor2 {
 
 class brush_bar;
-class size_specs;
+struct size_specs;
 class terrain_palette;
 class editor_map;
 

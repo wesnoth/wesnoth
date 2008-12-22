@@ -17,7 +17,7 @@
 #ifndef VIEWPOINT_H_INCLUDED
 #define VIEWPOINT_H_INCLUDED
 
-class map_location;
+struct map_location;
 
 class viewpoint
 {

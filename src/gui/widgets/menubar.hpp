@@ -30,7 +30,7 @@ class tselectable_;
  */
 class tmenubar : public tcontainer_
 {
-	friend class tbuilder_menubar;
+	friend struct tbuilder_menubar;
 public:
 	/** The direction is which the items are next to eachother. */
 	enum tdirection { HORIZONTAL, VERTICAL };

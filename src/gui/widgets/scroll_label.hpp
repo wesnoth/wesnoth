@@ -39,7 +39,7 @@ class tscroll_label : public tvertical_scrollbar_container_
 class tscroll_label : public tscrollbar_container
 #endif
 {
-	friend class tbuilder_scroll_label;
+	friend struct tbuilder_scroll_label;
 public:
 	
 	tscroll_label();

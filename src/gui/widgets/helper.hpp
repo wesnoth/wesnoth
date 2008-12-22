@@ -19,7 +19,7 @@
 
 #include <string>
 
-class surface;
+struct surface;
 class t_string;
 
 namespace game_logic {

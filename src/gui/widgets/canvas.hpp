@@ -28,7 +28,7 @@
 #include <vector>
 
 class config;
-class surface;
+struct surface;
 class variant;
 
 namespace gui2 {
