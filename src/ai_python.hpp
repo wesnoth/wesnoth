@@ -20,20 +20,7 @@
 #include "ai_interface.hpp"
 #include "game_end_exceptions.hpp"
 #undef _POSIX_C_SOURCE	// avoids a spurious compiler warning
-
-// undef _DEBUG since otherwise a debug build on MSVC will require 
-// the debug version of python which is not readily available
-#ifdef _DEBUG
-#define ai_python_HAD_DEBUG
-#undef _DEBUG
-#endif
-
 #include <Python.h>
-
-//Restore _DEBUG if it was set
-#ifdef ai_python_HAD_DEBUG
-#define _DEBUG
-#endif
 
 typedef struct {
 	PyObject_HEAD
