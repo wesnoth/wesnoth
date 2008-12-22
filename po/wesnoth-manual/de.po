@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3.7+svn\n"
 "POT-Creation-Date: 2008-12-22 10:13+0100\n"
-"PO-Revision-Date: 2008-12-19 11:04+0100\n"
-"Last-Translator: Gerfried Fuchs <rhonda@deb.at>\n"
+"PO-Revision-Date: 2008-12-22 12:20+0100\n"
+"Last-Translator: Nils Kneuper <crazy-ivanovic  AT gmx  D O  T net>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -29,9 +29,8 @@ msgstr "de"
 
 # type: Content of: <book><bookinfo><title>
 #: ../../doc/manual/manual.en.xml:6
-#, fuzzy
 msgid "Battle for Wesnoth User's Manual"
-msgstr "﻿Spielanleitung für Battle for Wesnoth"
+msgstr "Spielanleitung für Battle for Wesnoth"
 
 # type: Content of: <book><preface><title>
 #: ../../doc/manual/manual.en.xml:11
@@ -48,7 +47,6 @@ msgstr ""
 
 # type: Content of: <book><preface><simpara>
 #: ../../doc/manual/manual.en.xml:14
-#, fuzzy
 msgid ""
 "Build up a great army, gradually training raw recruits into hardened "
 "veterans. In later games, recall your toughest warriors and form a deadly "
@@ -100,7 +98,6 @@ msgstr ""
 
 # type: Content of: <book><preface><simpara>
 #: ../../doc/manual/manual.en.xml:35
-#, fuzzy
 msgid ""
 "Battle for Wesnoth is open-source software, and a thriving community of "
 "volunteers cooperates to improve the game. You can create your own custom "
@@ -258,13 +255,12 @@ msgstr ""
 
 # type: Content of: <book><chapter><section><simpara><inlinemediaobject>
 #: ../../doc/manual/manual.en.xml:101
-#, fuzzy
 msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/main-menu-"
 "1.5.7.jpg\"/> </imageobject>"
 msgstr ""
-"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/de/main-menu."
-"jpg\"/> </imageobject>"
+"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/de/main-menu-"
+"1.5.7.jpg\"/> </imageobject>"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:106 ../../doc/manual/manual.en.xml:349
@@ -405,7 +401,7 @@ msgstr ""
 # type: Content of: <book><chapter><section><variablelist><varlistentry><term>
 #: ../../doc/manual/manual.en.xml:190
 msgid "Map Editor"
-msgstr ""
+msgstr "Karteneditor"
 
 # type: Content of: <book><chapter><section><variablelist><varlistentry><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:194
@@ -413,6 +409,9 @@ msgid ""
 "Click this button to start the Map Editor where you can create custom maps "
 "for multiplayer games or for building your own campaign upon."
 msgstr ""
+"Dieser Knopf bringt euch in den Karteneditor, in dem Ihr eigene Karten für "
+"Mehrspieler-Partien oder um eure eigenen Kampagnen darauf aufzubauen "
+"erstellen könnt."
 
 # type: Content of: <book><chapter><section><variablelist><varlistentry><term>
 #: ../../doc/manual/manual.en.xml:201
@@ -647,13 +646,12 @@ msgstr ""
 
 # type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #: ../../doc/manual/manual.en.xml:344
-#, fuzzy
 msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/multiplayer-"
 "1.5.7.jpg\"/> </imageobject>"
 msgstr ""
-"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/de/multiplayer."
-"jpg\"/> </imageobject>"
+"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/de/multiplayer-"
+"1.5.7.jpg\"/> </imageobject>"
 
 # type: Content of: <book><chapter><section><section><section><title>
 #: ../../doc/manual/manual.en.xml:352
@@ -676,9 +674,8 @@ msgstr ""
 
 # type: Content of: <book><chapter><section><section><section><title>
 #: ../../doc/manual/manual.en.xml:359
-#, fuzzy
 msgid "Connect to Server"
-msgstr "Mit Gastgeber/Server verbinden"
+msgstr "Mit Server verbinden"
 
 # type: Content of: <book><chapter><section><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:360
@@ -696,7 +693,6 @@ msgstr ""
 
 # type: Content of: <book><chapter><section><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:365
-#, fuzzy
 msgid ""
 "A complete list of official and user setup servers is listed at this "
 "website: <ulink url=\"http://wesnoth.org/wiki/MultiplayerServers"
@@ -715,15 +711,20 @@ msgid ""
 "connect to a server running on the machine with the address 192.168.0.10 and "
 "the default port, you would enter this in the dialog: 192.168.0.10:15000"
 msgstr ""
+"Ihr könnt über diesen Menüpunkt auch Server erreichen, die von anderen "
+"Spielern gestartet wurden. Falls Ihr also einen Server in Eurem lokalen "
+"Netzwerk habt, gebt lediglich die Adresse und die Portnummer (Standard: "
+"15000) ein. Falls Ihr Euch zum Beispiel mit einem Server verbinden wollt, "
+"der auf dem Rechner mit der Adresse 192.168.0.10 mit dem Standardport läuft, "
+"würdet Ihr in diesem Dialog folgendes eingeben: 192.168.0.10:15000"
 
 # type: Content of: <book><chapter><section><section><section><title>
 #: ../../doc/manual/manual.en.xml:376
 msgid "Host Networked Game"
-msgstr ""
+msgstr "Netzwerkpartie eröffnen"
 
 # type: Content of: <book><chapter><section><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:377
-#, fuzzy
 msgid ""
 "To be able to start a multiplayer game without using an external multiplayer "
 "server, you have to start the server, which is usually named "
@@ -739,11 +740,11 @@ msgid ""
 msgstr ""
 "Um eine Mehrspielerpartie zu beginnen, ohne einen externen Mehrspieler-"
 "Server zu verwenden, müsst Ihr den Server selbst starten, der üblicherweise "
-"<emphasis>wesnothd</emphasis> heißt. Verbindet Euch dann zu Eurem lokalen "
-"Rechner im <emphasis>Mit Gastgeber/Server verbinden</emphasis>-Dialog, indem "
-"Ihr 127.0.0.1 als zu verwendende Adresse eingebt. Andere Spieler müssen sich "
-"zu Eurem Port 15000 über TCP verbinden können, um auf Eurem Server spielen "
-"zu können. Falls Ihr Euch hinter einer Firewall befindet, solltet Ihr "
+"<emphasis>wesnothd</emphasis> heißt. Das Programm wird automatisch im "
+"Hintergrund gestartet, wenn diese Option gewählt wird; und wieder beendet, "
+"wenn alle Spieler den Server verlassen haben. Andere Spieler müssen sich zu "
+"Eurem Port 15000 über TCP verbinden können, um auf Eurem Server spielen zu "
+"können. Falls Ihr Euch hinter einer Firewall befindet, solltet Ihr "
 "vermutlich Eure Firewall-Einstellungen anpassen, um eingehende Verbindungen "
 "auf Port 15000 zuzulassen und Eurer Firewall mitteilen, diesen Netzverkehr "
 "an die Maschine weiterzuleiten, auf der der Server ausgeführt wird. Für "
@@ -790,13 +791,12 @@ msgstr "Der Spielbildschirm"
 
 # type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #: ../../doc/manual/manual.en.xml:408
-#, fuzzy
 msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/game-screen-"
 "1.5.7.jpg\"/> </imageobject>"
 msgstr ""
-"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/de/game-screen."
-"jpg\"/> </imageobject>"
+"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/de/game-screen-"
+"1.5.7.jpg\"/> </imageobject>"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:415
@@ -816,13 +816,12 @@ msgstr ""
 
 # type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #: ../../doc/manual/manual.en.xml:421
-#, fuzzy
 msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/top_pane-1.5.7."
 "jpg\"/> </imageobject>"
 msgstr ""
-"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/de/top_pane.jpg"
-"\"/> </imageobject>"
+"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/de/top_pane-"
+"1.5.7.jpg\"/> </imageobject>"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:428
@@ -886,6 +885,8 @@ msgstr "Aktuelle Feldposition (X-Koordinate, Y-Koordinate)"
 #: ../../doc/manual/manual.en.xml:483
 msgid "Defense and movement of the currently selected unit on the marked hex"
 msgstr ""
+"Verteidigung und Bewegung der aktuell gewählten Einheit auf dem markierten "
+"Feld"
 
 # type: Content of: <book><chapter><section><section><orderedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:488
@@ -894,13 +895,12 @@ msgstr "Aktueller Geländetyp des Feldes"
 
 # type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #: ../../doc/manual/manual.en.xml:492
-#, fuzzy
 msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/right_pane-"
 "1.5.7.jpg\"/> </imageobject>"
 msgstr ""
-"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/de/right_pane."
-"jpg\"/> </imageobject>"
+"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/de/right_pane-"
+"1.5.7.jpg\"/> </imageobject>"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:499
@@ -1676,13 +1676,12 @@ msgstr "Ausbildung und Einberufung"
 
 # type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #: ../../doc/manual/manual.en.xml:1040
-#, fuzzy
 msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/recruit-1.5.7."
 "jpg\"/> </imageobject>"
 msgstr ""
-"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/de/recruit.jpg"
-"\"/> </imageobject>"
+"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/de/recruit-"
+"1.5.7.jpg\"/> </imageobject>"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:1047
@@ -4270,11 +4269,3 @@ msgid ""
 msgstr ""
 "Fortgeschrittene Einheiten haben höhere Unterhaltskosten als jene mit einer "
 "geringeren Stufe (1 GP pro Stufe), loyale Einheiten bilden eine Ausnahme."
-
-# type: Content of: <book><glossary><title>
-#~ msgid "Glossary"
-#~ msgstr "Wortliste"
-
-# type: Content of: <book><glossary><glossentry><glossdef><simpara>
-#~ msgid "<link linkend=\"zoc\">Zone Of Control</link>."
-#~ msgstr "<link linkend=\"zoc\">Kontrollzone</link>."
