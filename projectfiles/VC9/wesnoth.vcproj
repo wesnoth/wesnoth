@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="9.00"
+	Version="9,00"
 	Name="wesnoth"
 	ProjectGUID="{65ACA13F-5F5C-4768-A89A-ECF6C16F1512}"
 	RootNamespace="wesnoth"
@@ -41,11 +41,11 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="../../src"
-				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;HAVE_PYTHON;USE_GZIP;HAVE_FRIBIDI;USE_EDITOR2"
+				AdditionalIncludeDirectories="..\..\src"
+				PreprocessorDefinitions="WIN32;_WINDOWS;_CRT_SECURE_NO_WARNINGS;HAVE_PYTHON;USE_GZIP;NO_HAVE_FRIBIDI;DISABLE_POOL_ALLOC"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
-				RuntimeLibrary="1"
+				RuntimeLibrary="3"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
 				DebugInformationFormat="4"
@@ -61,8 +61,9 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="libintl.lib SDL.lib SDL_image.lib SDL_ttf.lib SDL_mixer.lib SDL_net.lib fribidi.lib cairo.lib winmm.lib dxguid.lib ws2_32.lib zlib.lib libjpeg.lib libpng.lib libogg.lib libvorbisfile.lib libtiff.lib mikmod.lib native_midi.lib timidity.lib smpeg.lib SDLmain.lib pango-1.0.lib pangocairo-1.0.lib freetype.lib gobject-2.0.lib"
+				AdditionalDependencies="libintl.lib SDL.lib SDL_image.lib SDL_ttf.lib SDL_mixer.lib SDL_net.lib cairo.lib winmm.lib ws2_32.lib jpeg.lib libpng.lib libogg.lib libvorbisfile.lib SDLmain.lib pango-1.0.lib pangocairo-1.0.lib freetype.lib gobject-2.0.lib python26.lib"
 				LinkIncremental="2"
+				AdditionalLibraryDirectories=""
 				GenerateDebugInformation="true"
 				SubSystem="2"
 				TargetMachine="1"
@@ -116,9 +117,10 @@
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
-				AdditionalIncludeDirectories="../../src"
-				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;HAVE_PYTHON;USE_GZIP;HAVE_FRIBIDI;USE_EDITOR2"
-				RuntimeLibrary="0"
+				AdditionalIncludeDirectories="..\..\src"
+				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;HAVE_PYTHON;USE_GZIP;NO_HAVE_FRIBIDI"
+				MinimalRebuild="true"
+				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
@@ -137,8 +139,9 @@
 				Name="VCLinkerTool"
 				IgnoreImportLibrary="true"
 				LinkLibraryDependencies="false"
-				AdditionalDependencies="libintl.lib SDL.lib SDL_image.lib SDL_ttf.lib SDL_mixer.lib SDL_net.lib fribidi.lib cairo.lib winmm.lib dxguid.lib ws2_32.lib zlib.lib libjpeg.lib libpng.lib libogg.lib libvorbisfile.lib libtiff.lib mikmod.lib native_midi.lib timidity.lib smpeg.lib SDLmain.lib pango-1.0.lib pangocairo-1.0.lib freetype.lib gobject-2.0.lib"
+				AdditionalDependencies="libintl.lib SDL.lib SDL_image.lib SDL_ttf.lib SDL_mixer.lib SDL_net.lib cairo.lib winmm.lib ws2_32.lib jpeg.lib libpng.lib libogg.lib libvorbisfile.lib SDLmain.lib pango-1.0.lib pangocairo-1.0.lib freetype.lib gobject-2.0.lib python26.lib"
 				LinkIncremental="1"
+				AdditionalLibraryDirectories=""
 				GenerateDebugInformation="true"
 				SubSystem="2"
 				OptimizeReferences="2"
@@ -269,6 +272,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\..\src\config_cache.cpp"
+				>
+			</File>
+			<File
 				RelativePath="..\..\src\construct_dialog.cpp"
 				>
 			</File>
@@ -321,12 +328,24 @@
 				>
 			</File>
 			<File
+				RelativePath="..\..\src\formula_string_utils.cpp"
+				>
+			</File>
+			<File
 				RelativePath="..\..\src\formula_tokenizer.cpp"
 				>
 			</File>
 			<File
 				RelativePath="..\..\src\game.cpp"
 				>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						PreprocessorDefinitions="DISABLE_POOL_ALLOC"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\..\src\game_config.cpp"
@@ -417,6 +436,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\..\src\map_location.cpp"
+				>
+			</File>
+			<File
 				RelativePath="..\..\src\mapgen.cpp"
 				>
 			</File>
@@ -426,6 +449,10 @@
 			</File>
 			<File
 				RelativePath="..\..\src\marked-up_text.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\md5.cpp"
 				>
 			</File>
 			<File
@@ -637,6 +664,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\..\src\unit_id.cpp"
+				>
+			</File>
+			<File
 				RelativePath="..\..\src\unit_map.cpp"
 				>
 			</File>
@@ -658,6 +689,10 @@
 			</File>
 			<File
 				RelativePath="..\..\src\variant.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\version.cpp"
 				>
 			</File>
 			<File
@@ -716,6 +751,10 @@
 			</File>
 			<File
 				RelativePath="..\..\src\array.hpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\asserts.hpp"
 				>
 			</File>
 			<File
@@ -831,6 +870,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\..\src\formula_string_utils.hpp"
+				>
+			</File>
+			<File
 				RelativePath="..\..\src\formula_tokenizer.hpp"
 				>
 			</File>
@@ -920,6 +963,10 @@
 			</File>
 			<File
 				RelativePath="..\..\src\map_label.hpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\map_location.hpp"
 				>
 			</File>
 			<File
@@ -1188,6 +1235,10 @@
 			</File>
 			<File
 				RelativePath="..\..\src\video.hpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\viewpoint.hpp"
 				>
 			</File>
 			<File
@@ -1584,6 +1635,18 @@
 					>
 				</File>
 				<File
+					RelativePath="..\..\src\gui\widgets\debug.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\gui\widgets\debug.hpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\gui\widgets\event_executor.hpp"
+					>
+				</File>
+				<File
 					RelativePath="..\..\src\gui\widgets\event_handler.cpp"
 					>
 					<FileConfiguration
@@ -1609,6 +1672,18 @@
 				</File>
 				<File
 					RelativePath="..\..\src\gui\widgets\formula.hpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\gui\widgets\generator.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\gui\widgets\generator.hpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\gui\widgets\generator_private.hpp"
 					>
 				</File>
 				<File
@@ -1657,6 +1732,42 @@
 				</File>
 				<File
 					RelativePath="..\..\src\gui\widgets\helper.hpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\gui\widgets\horizontal_scrollbar.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\gui\widgets\horizontal_scrollbar.hpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\gui\widgets\image.cpp"
+					>
+					<FileConfiguration
+						Name="Debug|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Widgets\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Widgets\"
+						/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath="..\..\src\gui\widgets\image.hpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\gui\widgets\integer_selector.hpp"
 					>
 				</File>
 				<File
@@ -1780,6 +1891,14 @@
 					>
 				</File>
 				<File
+					RelativePath="..\..\src\gui\widgets\scroll_label.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\gui\widgets\scroll_label.hpp"
+					>
+				</File>
+				<File
 					RelativePath="..\..\src\gui\widgets\scrollbar.cpp"
 					>
 					<FileConfiguration
@@ -1801,6 +1920,18 @@
 				</File>
 				<File
 					RelativePath="..\..\src\gui\widgets\scrollbar.hpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\gui\widgets\scrollbar_container.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\gui\widgets\scrollbar_container.hpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\gui\widgets\selectable.hpp"
 					>
 				</File>
 				<File
@@ -1849,6 +1980,14 @@
 				</File>
 				<File
 					RelativePath="..\..\src\gui\widgets\slider.hpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\gui\widgets\spacer.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\gui\widgets\spacer.hpp"
 					>
 				</File>
 				<File
@@ -1948,6 +2087,14 @@
 					>
 				</File>
 				<File
+					RelativePath="..\..\src\gui\widgets\tooltip.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\gui\widgets\tooltip.hpp"
+					>
+				</File>
+				<File
 					RelativePath="..\..\src\gui\widgets\vertical_scrollbar.cpp"
 					>
 					<FileConfiguration
@@ -1969,6 +2116,14 @@
 				</File>
 				<File
 					RelativePath="..\..\src\gui\widgets\vertical_scrollbar.hpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\gui\widgets\vertical_scrollbar_container.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\gui\widgets\vertical_scrollbar_container.hpp"
 					>
 				</File>
 				<File
@@ -2164,11 +2319,23 @@
 					>
 				</File>
 				<File
+					RelativePath="..\..\src\gui\dialogs\editor_settings.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\gui\dialogs\editor_settings.hpp"
+					>
+				</File>
+				<File
 					RelativePath="..\..\src\gui\dialogs\field-fwd.hpp"
 					>
 				</File>
 				<File
 					RelativePath="..\..\src\gui\dialogs\field.hpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\gui\dialogs\helper.hpp"
 					>
 				</File>
 				<File
@@ -2193,6 +2360,14 @@
 				</File>
 				<File
 					RelativePath="..\..\src\gui\dialogs\language_selection.hpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\gui\dialogs\message.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\gui\dialogs\message.hpp"
 					>
 				</File>
 				<File
@@ -2257,6 +2432,22 @@
 				</File>
 				<File
 					RelativePath="..\..\src\gui\dialogs\mp_method_selection.hpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\gui\dialogs\title_screen.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\gui\dialogs\title_screen.hpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\gui\dialogs\wml_message.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\gui\dialogs\wml_message.hpp"
 					>
 				</File>
 			</Filter>
