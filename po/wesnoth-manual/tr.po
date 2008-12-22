@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-manual\n"
 "POT-Creation-Date: 2008-12-21 22:48+0100\n"
-"PO-Revision-Date: 2008-12-19 15:31+0200\n"
+"PO-Revision-Date: 2008-12-22 03:51+0200\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish <wesnoth-tr@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -24,9 +24,8 @@ msgstr "tr"
 
 # type: Content of: <book><bookinfo><title>
 #: ../../doc/manual/manual.en.xml:6
-#, fuzzy
 msgid "Battle for Wesnoth User's Manual"
-msgstr " Wesnoth Savaşı Kullanıcı Kılavuzu"
+msgstr "Wesnoth Savaşı Kullanıcı Kılavuzu"
 
 # type: Content of: <book><preface><title>
 #: ../../doc/manual/manual.en.xml:11
@@ -92,7 +91,6 @@ msgstr ""
 
 # type: Content of: <book><preface><simpara>
 #: ../../doc/manual/manual.en.xml:35
-#, fuzzy
 msgid ""
 "Battle for Wesnoth is open-source software, and a thriving community of "
 "volunteers cooperates to improve the game. You can create your own custom "
@@ -241,13 +239,12 @@ msgstr ""
 
 # type: Content of: <book><chapter><section><simpara><inlinemediaobject>
 #: ../../doc/manual/manual.en.xml:101
-#, fuzzy
 msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/main-menu-"
 "1.5.7.jpg\"/> </imageobject>"
 msgstr ""
-"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/tr/main-menu."
-"jpg\"/> </imageobject>"
+"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/tr/main-menu-"
+"1.5.7.jpg\"/> </imageobject>"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:106 ../../doc/manual/manual.en.xml:349
@@ -385,7 +382,7 @@ msgstr ""
 # type: Content of: <book><chapter><section><variablelist><varlistentry><term>
 #: ../../doc/manual/manual.en.xml:190
 msgid "Map Editor"
-msgstr ""
+msgstr "Haritacı"
 
 # type: Content of: <book><chapter><section><variablelist><varlistentry><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:194
@@ -393,6 +390,9 @@ msgid ""
 "Click this button to start the Map Editor where you can create custom maps "
 "for multiplayer games or for building your own campaign upon."
 msgstr ""
+"Kendi seferberliklerinizin veya çok oyunculu oyunların haritalarını "
+"oluşturmak için kullanılan Harita Düzenleyiciyi başlatmak için bu düğmeye "
+"tıklayın."
 
 #: ../../doc/manual/manual.en.xml:201
 msgid "Language"
@@ -621,13 +621,12 @@ msgstr ""
 
 # type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #: ../../doc/manual/manual.en.xml:344
-#, fuzzy
 msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/multiplayer-"
 "1.5.7.jpg\"/> </imageobject>"
 msgstr ""
-"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/tr/multiplayer."
-"jpg\"/> </imageobject>"
+"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/tr/multiplayer-"
+"1.5.7.jpg\"/> </imageobject>"
 
 # type: Content of: <book><chapter><section><section><section><title>
 #: ../../doc/manual/manual.en.xml:352
@@ -648,7 +647,6 @@ msgstr ""
 
 # type: Content of: <book><chapter><section><section><section><title>
 #: ../../doc/manual/manual.en.xml:359
-#, fuzzy
 msgid "Connect to Server"
 msgstr "Sunucuya Bağlan"
 
@@ -685,15 +683,19 @@ msgid ""
 "connect to a server running on the machine with the address 192.168.0.10 and "
 "the default port, you would enter this in the dialog: 192.168.0.10:15000"
 msgstr ""
+"Bu menü seçeneği ile başka bir oyuncu tarafından sunulan sunuculara da "
+"erişebilirsiniz. Dolayısıyla, yerel ağınızda bir sunucu çalıştırırsanız "
+"sadece adresini ve port numarasını (öntanımlı:15000) yazmanız yetecektir. "
+"Örneğin, 192.168.0.10 adresinde öntanımlı portu dinleyen bir sunucuya "
+"bağlanmak için bu diyaloğa 192.168.0.10:15000 değerini girmelisiniz."
 
 # type: Content of: <book><chapter><section><section><section><title>
 #: ../../doc/manual/manual.en.xml:376
 msgid "Host Networked Game"
-msgstr ""
+msgstr "Yerel Ağ sunucusu"
 
 # type: Content of: <book><chapter><section><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:377
-#, fuzzy
 msgid ""
 "To be able to start a multiplayer game without using an external multiplayer "
 "server, you have to start the server, which is usually named "
@@ -709,16 +711,16 @@ msgid ""
 msgstr ""
 "Bir harici çok oyunculu oyun sunucusu kullanmaksızın bir çok oyunculu oyun "
 "başlatmak isterseniz <emphasis>wesnothd</emphasis> sunucu programını "
-"çalıştırmak suretiyle kendi sunucunuzu oluşturabilirsiniz. Kendi "
-"makinenizdeki sunucuya bağlanmak için “Sunucuya Bağlan” seçeneği ile açılan "
-"pencerede adres olarak 127.0.0.1 yazmalısınız. Oyunu sizin makinenize "
-"bağlanarak oynamak isteyen oyuncular TCP kullanarak 15000 portundan sizin "
-"sunucunuza bağlanacakları için eğer güvenlik duvarı kullanıyorsanız, "
-"ayarlarınızda 15000 portuna TCP erişimine izin vermelisiniz. Bir "
-"yönlendiricinin arkasındaysanız, ağ yöneticinize 15000 portuna gelen "
-"istekleri sizin makinenize yönlendirmesini söyleyiniz. Oyun oynamak için "
-"başka bir sunucuya bağlanmak isterseniz güvenlik duvarı ve/veya yönlendirici "
-"ayarlarında bir değişiklik yapmanıza gerek yoktur."
+"çalıştırmak suretiyle kendi sunucunuzu oluşturabilirsiniz. Bu seçeneği "
+"seçtiğinizde sunucu programı kendiliğinden başlatılır ve tüm oyuncular "
+"sunucudan ayrılınca durdurulur. Oyunu sizin makinenize bağlanarak oynamak "
+"isteyen oyuncular TCP kullanarak 15000 portundan sizin sunucunuza "
+"bağlanacakları için eğer güvenlik duvarı kullanıyorsanız, ayarlarınızda "
+"15000 portuna TCP erişimine izin vermelisiniz. Bir yönlendiricinin "
+"arkasındaysanız, ağ yöneticinize 15000 portuna gelen istekleri sizin "
+"makinenize yönlendirmesini söyleyiniz. Oyun oynamak için başka bir sunucuya "
+"bağlanmak isterseniz güvenlik duvarı ve/veya yönlendirici ayarlarında bir "
+"değişiklik yapmanıza gerek yoktur."
 
 # type: Content of: <book><chapter><section><section><section><title>
 #: ../../doc/manual/manual.en.xml:390
@@ -758,13 +760,12 @@ msgstr "Oyun Ekranı"
 
 # type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #: ../../doc/manual/manual.en.xml:407
-#, fuzzy
 msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/game-screen-"
 "1.5.7.jpg\"/> </imageobject>"
 msgstr ""
-"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/tr/game-screen."
-"jpg\"/> </imageobject>"
+"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/tr/game-screen-"
+"1.5.7.jpg\"/> </imageobject>"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:414
@@ -783,13 +784,12 @@ msgstr ""
 
 # type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #: ../../doc/manual/manual.en.xml:420
-#, fuzzy
 msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/top_pane-1.5.7."
 "jpg\"/> </imageobject>"
 msgstr ""
-"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/tr/top_pane.jpg"
-"\"/> </imageobject>"
+"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/tr/top_pane-"
+"1.5.7.jpg\"/> </imageobject>"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:427
@@ -852,6 +852,8 @@ msgstr "O anki altıgenin konumu (x-koordinatı, y-koordinatı)"
 #: ../../doc/manual/manual.en.xml:482
 msgid "Defense and movement of the currently selected unit on the marked hex"
 msgstr ""
+"Seçili birimin imlecin üzerinde bulunduğu altıgendeki hareketi ve savunma "
+"direnci"
 
 # type: Content of: <book><chapter><section><section><orderedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:487
@@ -860,13 +862,12 @@ msgstr "Geçerli arazi türü"
 
 # type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #: ../../doc/manual/manual.en.xml:491
-#, fuzzy
 msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/right_pane-"
 "1.5.7.jpg\"/> </imageobject>"
 msgstr ""
-"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/tr/right_pane."
-"jpg\"/> </imageobject>"
+"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/tr/right_pane-"
+"1.5.7.jpg\"/> </imageobject>"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:498
@@ -1633,13 +1634,12 @@ msgstr "Askere alma ve geri çağırma"
 
 # type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #: ../../doc/manual/manual.en.xml:1039
-#, fuzzy
 msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/recruit-1.5.7."
 "jpg\"/> </imageobject>"
 msgstr ""
-"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/tr/recruit.jpg"
-"\"/> </imageobject>"
+"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/tr/recruit-"
+"1.5.7.jpg\"/> </imageobject>"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:1046
