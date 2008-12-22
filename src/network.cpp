@@ -159,7 +159,7 @@ static void check_timeout()
 	if (last_ping_check + 10 <= now) last_ping = now;
 	if (static_cast<time_t>(last_ping + network::ping_timeout) <= now) {
 
-		int timeout = now - last_ping;
+		time_t timeout = now - last_ping;
 		ERR_NW << "No server ping since " << timeout
 				<< " seconds. Connection timed out.\n";
 		utils::string_map symbols;
