@@ -479,6 +479,17 @@ surface locator::load_image_sub_file() const
 							slice_rect.h = lexical_cast_default<Uint16, const std::string&>(slice_params[3]);
 					}
 				}
+				// ~R(), ~G() and ~B() are the children of ~CS(). Merely syntatic sugar.
+				// Hence they are at the end of the evaluation.
+				else if("R" == function) {
+					cs_r = lexical_cast_default<int>(field);
+				}
+				else if("G" == function) {
+					cs_g = lexical_cast_default<int>(field);
+				}
+				else if("B" == function) {
+					cs_b = lexical_cast_default<int>(field);
+				}
 			}
 		}
 		if(rc) {
