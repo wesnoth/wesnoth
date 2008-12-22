@@ -27,6 +27,10 @@
 
 
 #ifdef _MSC_VER
+// This is a workaround for a VC bug; this constructor is never called
+// and so we don't care about the warnings this quick fix generates
+#pragma warning(push)
+#pragma warning(disable:4413)
 terrain_filter::terrain_filter(): 
 	cfg_(vconfig()), 
 	map_(gamemap(config(), 
@@ -34,7 +38,9 @@ terrain_filter::terrain_filter():
 	status_(gamestatus(config(), 1)), 
 	units_(unit_map())
 {
+	assert(false);
 }
+#pragma warning(pop)
 #endif
 
 terrain_filter::terrain_filter(const vconfig& cfg, const gamemap& map,
