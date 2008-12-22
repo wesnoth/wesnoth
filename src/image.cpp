@@ -509,11 +509,11 @@ surface locator::load_image_sub_file() const
 		if(yflip) {
 			surf = flop_surface(surf);
 		}
-		if(greyscale) {
-			surf = greyscale_image(surf);
-		}
 		if(cs_r || cs_g || cs_b) {
 			surf = adjust_surface_colour(surf, cs_r, cs_g, cs_b);
+		}
+		if(greyscale) {
+			surf = greyscale_image(surf);
 		}
 	}
 	return surf;
