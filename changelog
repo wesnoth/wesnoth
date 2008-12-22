@@ -102,6 +102,9 @@ Version 1.5.6+svn:
    * [modify_turns] now works in scenarios without a turn limit. (bug #12715)
    * Direct modifications to a unit using [unstore_unit] will now be kept
      when advancing to the next scenario.
+   * If there is a file called _initial.cfg in an included directory, and
+     no _main.cfg, _initial.cfg is guaranteed to be processed before other
+     files in the directory.
  * Miscellaneous and bug fixes:
    * Compressed start-of-scenario saves are properly recognized by the
      load-game dialog again.
