@@ -33,8 +33,10 @@ int show_file_chooser_dialog(display &disp, std::string &filename,
 	file_dialog d(disp, filename, title, show_directory_buttons);
 	if (!type_a_head.empty())
 		d.select_file(type_a_head);
+	std::cerr << "Filename is " << filename << "\n";
 	if(d.show(xloc, yloc) >= 0) {
 		filename = d.get_choice();
+		std::cerr << "Filename is changed to" << filename << "\n";
 	}
 	return d.result();
 }

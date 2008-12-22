@@ -345,6 +345,8 @@ private:
 		if(is_optional()) {
 			return;
 		}
+		//twidget* w = window.find_widget(id(), false);
+		//VALIDATE(w, missing_widget(id()));
 		const W* widget = dynamic_cast<const W*>(window.find_widget(id(), false));
 		VALIDATE(widget, missing_widget(id()));
 	}
