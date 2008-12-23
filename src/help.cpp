@@ -1541,7 +1541,7 @@ public:
 
 					str << "<format>color=" << color << " text='";
 					if(cannot_move) {
-						str << "-";
+						str << "'-'";
 					} else {
 						str << moves;
 					}
