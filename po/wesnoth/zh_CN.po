@@ -10,16 +10,16 @@ msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-12-21 22:51+0100\n"
-"PO-Revision-Date: 2008-02-26 14:53+0100\n"
-"Last-Translator: Nils Kneuper <crazy-ivanovic  AT gmx  D O  T net>\n"
+"PO-Revision-Date: 2008-12-22 12:15+1000\n"
+"Last-Translator: luojie <lililjlj@gmail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n>1);\n"
 "X-Poedit-Language: Chinese\n"
 "X-Poedit-Country: CHINA\n"
 "X-Poedit-SourceCharset: utf-8\n"
+"Plural-Forms: nplurals=2; plural=(n>1);\n"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:45
@@ -38,9 +38,8 @@ msgstr "地图的动画效果"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:66
-#, fuzzy
 msgid "Show Titlescreen Animation"
-msgstr "战役"
+msgstr "显示标题动画"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:73
@@ -55,7 +54,7 @@ msgstr "显示战斗"
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:95
 msgid "Only Run Safe Python AIs"
-msgstr ""
+msgstr "仅仅运行安全的Python AIs"
 
 #. [time]: id=underground
 #. [illuminated_time]: id=underground_illum
@@ -126,9 +125,8 @@ msgstr ""
 #. [then]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1240
 #: src/actions.cpp:1051 src/actions.cpp:1322
-#, fuzzy
 msgid "female^slowed"
-msgstr "忠诚"
+msgstr "减速"
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [else]
@@ -146,14 +144,12 @@ msgstr "治疗+4"
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:17
 #: data/core/macros/abilities.cfg:11
-#, fuzzy
 msgid "female^heals +4"
-msgstr "活力"
+msgstr "治疗 +4"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:22
 #: data/core/macros/abilities.cfg:16
-#, fuzzy
 msgid ""
 "Heals +4:\n"
 "Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
@@ -167,8 +163,8 @@ msgstr ""
 "允许单位在每回合开始时治疗相邻受伤的友好单位，或阻止毒药在该回合发作。\n"
 "\n"
 "本单位每回合可以为附近每个单位恢复最多4点生命值，或阻止毒药在该回合发作。\n"
-"'治疗+4'能力无法解除附近单位的中毒效果,只有进入村庄或者靠近拥有'治愈'能力的单"
-"位可以解毒"
+"'治疗+4'能力无法解除附近单位的中毒效果，只有进入村庄或者被拥有疗毒能力的单位"
+"治疗。"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:45
@@ -179,9 +175,8 @@ msgstr "治疗+8"
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:46
 #: data/core/macros/abilities.cfg:31
-#, fuzzy
 msgid "female^heals +8"
-msgstr "活力"
+msgstr "治疗 +8"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:51
@@ -256,9 +251,8 @@ msgstr "国际化管理者"
 
 #. [about]
 #: data/core/about.cfg:892
-#, fuzzy
 msgid "English strings edition"
-msgstr "英语(英国)"
+msgstr "英语版本"
 
 #. [about]
 #: data/core/about.cfg:899
@@ -267,9 +261,8 @@ msgstr "南非荷兰语"
 
 #. [about]
 #: data/core/about.cfg:915
-#, fuzzy
 msgid "Arabic Translation"
-msgstr "塞尔维亚语"
+msgstr "阿拉伯语"
 
 #. [about]
 #: data/core/about.cfg:922
@@ -293,15 +286,13 @@ msgstr "简体中文"
 
 #. [about]
 #: data/core/about.cfg:1026
-#, fuzzy
 msgid "Chinese (Taiwan) Translation"
-msgstr "正体中文"
+msgstr "繁体中文"
 
 #. [about]
 #: data/core/about.cfg:1033
-#, fuzzy
 msgid "Croatian Translation"
-msgstr "加泰罗尼亚语"
+msgstr "Croatian Translation"
 
 #. [about]
 #: data/core/about.cfg:1040
@@ -350,9 +341,8 @@ msgstr "法语"
 
 #. [about]
 #: data/core/about.cfg:1396
-#, fuzzy
 msgid "Friulian Translation"
-msgstr "菲律宾语"
+msgstr "Friulian Translation"
 
 #. [about]
 #: data/core/about.cfg:1403
@@ -406,7 +396,6 @@ msgstr "拉丁语"
 
 #. [about]
 #: data/core/about.cfg:1679
-#, fuzzy
 msgid "Latvian Translation"
 msgstr "拉丁语"
 
@@ -417,9 +406,8 @@ msgstr "立陶宛语"
 
 #. [about]
 #: data/core/about.cfg:1694
-#, fuzzy
 msgid "Macedonian Translation"
-msgstr "印度尼西亚语"
+msgstr "马其顿语"
 
 #. [about]
 #: data/core/about.cfg:1701
@@ -443,9 +431,8 @@ msgstr "葡萄牙语(巴西)"
 
 #. [about]
 #: data/core/about.cfg:1814
-#, fuzzy
 msgid "Romanian Translation"
-msgstr "爱沙尼亚语"
+msgstr "罗马尼亚语"
 
 #. [about]
 #: data/core/about.cfg:1822
@@ -489,9 +476,8 @@ msgstr " (西班牙)南加泰罗尼亚语"
 
 #. [about]
 #: data/core/about.cfg:2021
-#, fuzzy
 msgid "RACV's Translation"
-msgstr "简体中文"
+msgstr "巴伦西亚语"
 
 #. [about]
 #: data/core/about.cfg:2028
@@ -779,7 +765,6 @@ msgstr ""
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:169
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -788,7 +773,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"新兵有两个随机的<ref>dst=traits text=特质</ref>，对其数据稍有影响。"
+"新兵有两个随机的<ref>dst='..traits_section' text='特质'</ref>，对其数据稍有影"
+"响。"
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:171
@@ -1154,7 +1140,6 @@ msgstr ""
 
 #. [topic]: id=combat
 #: data/core/help.cfg:247
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1165,9 +1150,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"少数单位拥有特别的<ref>dst=abilities text=能力</ref>，会影响在战斗中的伤害输"
-"出。通常拥有<ref>dst=weaponspecial_charge text=冲锋</ref>能力的单位会使战斗中"
-"的进攻方和防守方都输出双倍的伤害。"
+"少数单位拥有特别的<ref>dst='..abilities_section' text='能力'</ref>，会影响在"
+"战斗中的伤害输出。最常见的，具有<ref>dst='weaponspecial_charge' text='冲锋'</"
+"ref>能力的单位在战斗中的使用此技能，则使进攻方和防守方都输出双倍的伤害。"
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:253
@@ -1339,7 +1324,6 @@ msgstr ""
 
 #. [topic]: id=experience_and_advancement
 #: data/core/help.cfg:292
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1356,12 +1340,12 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"大多数兵种有三个级别，但也有例外。有些单位（例如<ref>dst=unit_Mage text=法师"
-"</ref>）能升到四级。单位升到最高级以后，有可能会得到满级奖励（AMLA）。AMLA会"
-"在单位达到升级所需经验值后修改单位属性，但等级不变。典型的AMLA作用是增加3点最"
-"大生命值并补满血。通常情况下，单位会在获得100点经验值（聪慧单位是80点）后获得"
-"第一次AMLA。不过，以后每次获得AMLA的难度逐渐变大，所以让您的低等级单位升级一"
-"般会更有用处。"
+"大多数兵种有三个级别，但也有例外。有些单位（例如<ref>dst='unit_Mage' text='法"
+"师'</ref>）能升到四级。单位升到最高级以后，在次得到上限经验值可能会得到满级奖"
+"励（AMLA）。AMLA会在单位达到升级所需经验值后改变单位属性，但等级不变。典型的"
+"AMLA作用是增加3点最大生命值并补满血。通常情况下，单位会在获得150点经验值（聪"
+"慧单位是120点）后获得第一次AMLA。不过，以后每次获得AMLA的难度逐渐变大，所以让"
+"您的低等级单位升级一般会更有用处。"
 
 #. [topic]: id=healing
 #: data/core/help.cfg:299
@@ -1385,7 +1369,6 @@ msgstr ""
 
 #. [topic]: id=healing
 #: data/core/help.cfg:302
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1407,15 +1390,14 @@ msgstr ""
 
 #. [topic]: id=healing
 #: data/core/help.cfg:304
-#, fuzzy
 msgid ""
 "\n"
 "<ref>dst='ability_regenerates' text='Regeneration'</ref>: Certain units "
 "(such as trolls) will automatically heal 8HP every turn."
 msgstr ""
 "\n"
-"<ref>dst=ability_regenerates text=恢复</ref>：某些单位（如巨魔）每回合自动恢"
-"复8点生命值。"
+"<ref>dst='ability_regenerates' text='恢复'</ref>：某些单位（如巨魔）每回合自"
+"动恢复8点生命值。"
 
 #. [topic]: id=healing
 #: data/core/help.cfg:305
@@ -1546,7 +1528,6 @@ msgstr "总结"
 
 #. [topic]: id=wrap_up
 #: data/core/help.cfg:330
-#, fuzzy
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
 "Basic Strategy, or familiarise yourself with <ref>dst='..traits_section' "
@@ -1554,9 +1535,10 @@ msgid ""
 "ref>, but you now know everything you need to know to play the Heir to the "
 "Throne campaign. Have fun, and good luck!"
 msgstr ""
-"韦诺之战的基本规则就此结束。您可能需要阅读基本的游戏策略，或再熟悉一下"
-"<ref>dst=traits text=特质</ref>和<ref>dst=abilities text=能力</ref>。现在您已"
-"经有足够的经验去玩《继位者之战》这个战役了。祝您好运，玩得开心！"
+"韦诺之战的基本规则就此结束。您或许想要阅读基本的游戏策略，或再熟悉一下"
+"<ref>dst='..traits_section text'='特质'</ref>和<ref>dst='.."
+"abilities_section' text='能力'</ref>。现在您已经有足够的经验去玩《继位者之"
+"战》这个战役了。祝您好运，玩得开心！"
 
 #. [topic]: id=about
 #: data/core/help.cfg:335
@@ -1581,7 +1563,6 @@ msgstr ""
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:352
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1592,13 +1573,12 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"除了不死族之外所有可能的特质是：<ref>dst=traits_intelligent text=聪慧</ref>，"
-"<ref>dst=traits_quick text=迅捷</ref>，<ref>dst=traits_resilient text=坚韧</"
-"ref>和<ref>dst=traits_strong text=强壮</ref>。"
+"除了不死族之外，可能的特质有<ref>dst='traits_intelligent' text='聪慧'</ref>，"
+"<ref>dst='traits_quick' text='迅捷'</ref>，<ref>dst='traits_resilient' text="
+"坚韧</ref>和<ref>dst='traits_strong' text='强壮'</ref>。"
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:356
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1609,9 +1589,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"单位能获得的其它特质是：<ref>dst=traits_dextrous text=灵巧</ref>，"
-"<ref>dst=traits_loyal text=忠诚</ref>，和<ref>dst=traits_undead text=不死</"
-"ref> 。\n"
+"单位能获得的其它特质是：<ref>dst='traits_dextrous' text='灵巧'</ref>，"
+"<ref>dst='traits_loyal' text='忠诚'</ref>，和<ref>dst='traits_undead' "
+"text='不死'</ref> 。\n"
 "\n"
 
 #. [topic]: id=traits_intelligent
@@ -1865,7 +1845,6 @@ msgstr "矮人们以活力著称，有些强壮的矮人甚至可以在移动同
 
 #. [topic]: id=traits_healthy
 #: data/core/help.cfg:435
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1874,8 +1853,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"活力特质让单位拥有2点附加生命值,并且在每回合未战斗的回合之后恢复额外2点生命"
-"值."
+"活力特质让单位天生拥有1点附加生命值上限，每次升级附带额外1点生命值，并且在每"
+"回合未战斗的回合之后恢复额外2点生命值。"
 
 #. [topic]: id=..terrains
 #: data/core/help.cfg:443
@@ -1891,7 +1870,7 @@ msgstr ""
 #. [topic]: id=terrain_flat
 #: data/core/help.cfg:450
 msgid "Flat"
-msgstr ""
+msgstr "平原"
 
 #. [topic]: id=terrain_flat
 #: data/core/help.cfg:455
@@ -1917,14 +1896,13 @@ msgstr "道路"
 
 #. [topic]: id=terrain_road
 #: data/core/help.cfg:465
-#, fuzzy
 msgid ""
 "Roads are beaten paths of dirt, formed by many travelers passing over them. "
 "As far as gameplay is concerned, Roads behave as <ref>dst='terrain_flat' "
 "text='Flat'</ref> terrain."
 msgstr ""
 "道路是有许许多多旅行者在松软的泥土上行走时踩出来的。就有戏而言，道路和"
-"<ref>dst=terrain_grassland text=草原</ref>没有两样。"
+"<ref>dst=terrain_flat text=平原</ref>没有两样。"
 
 #. [topic]: id=terrain_forest
 #: data/core/help.cfg:472
@@ -2076,11 +2054,10 @@ msgstr ""
 #. [topic]: id=terrain_frozen
 #: data/core/help.cfg:546
 msgid "Frozen"
-msgstr ""
+msgstr "冰冻的"
 
 #. [topic]: id=terrain_frozen
 #: data/core/help.cfg:551
-#, fuzzy
 msgid ""
 "Frozen terrain represents any flat area that is covered by snow or ice. Most "
 "units are slowed down on it, and have a harder time defending themselves. "
@@ -2089,8 +2066,9 @@ msgid ""
 "\n"
 "Most units have 20 to 40% defense in frozen terrain."
 msgstr ""
-"雪地是上冻的平原，既有永久的（如冰冻苔原），也有暂时的（被雪覆盖的草原）。大"
-"多数单位会由于雪的影响减慢行进速度，并很难作有效的自我防御。\n"
+"雪地是上冻的平原，既有永久的（如冰冻苔原），也有暂时的（被雪覆盖的草原）。还"
+"要注意的是即使是能潜入深海的单位，也不可以在冰下游泳。大多数单位会由于雪的影"
+"响减慢行进速度，并很难作有效的自我防御。\n"
 "\n"
 "在雪地大多数单位有20%到40%的闪避几率。"
 
@@ -2145,14 +2123,13 @@ msgstr "沙漠"
 
 #. [topic]: id=terrain_desert
 #: data/core/help.cfg:587
-#, fuzzy
 msgid ""
 "Deserts have a somewhat different composition than small sand pits or "
 "beaches, however for gameplay purposes they are identical. See "
 "<ref>dst='terrain_sand' text='Sand'</ref>."
 msgstr ""
 "沙漠不同于小型沙地或沙滩，然而在游戏中，它们是一样的。参见"
-"<ref>dst=terrain_sand text=沙地</ref>。"
+"<ref>dst='terrain_sand' text='沙地'</ref>。"
 
 #. [topic]: id=terrain_cave
 #: data/core/help.cfg:594
@@ -2305,7 +2282,7 @@ msgstr ""
 #. [topic]: id=terrain_unwalkable
 #: data/core/help.cfg:668
 msgid "Unwalkable"
-msgstr ""
+msgstr "无行动能力"
 
 #. [topic]: id=terrain_unwalkable
 #: data/core/help.cfg:671
@@ -2361,9 +2338,8 @@ msgstr ""
 
 #. [topic]: id=terrain_reef
 #: data/core/help.cfg:698
-#, fuzzy
 msgid "Coastal Reef"
-msgstr "城堡"
+msgstr "礁石"
 
 #. [topic]: id=terrain_bridge
 #: data/core/help.cfg:708
@@ -2394,9 +2370,8 @@ msgstr ""
 
 #. [topic]: id=terrain_impassable
 #: data/core/help.cfg:720
-#, fuzzy
 msgid "Impassable"
-msgstr "高不可攀的大山"
+msgstr "无法通行的"
 
 #. [topic]: id=terrain_impassable
 #: data/core/help.cfg:723
@@ -2426,7 +2401,6 @@ msgstr ""
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:745
-#, fuzzy
 msgid ""
 "\n"
 "Switch debug mode on (does not work in multiplayer). See "
@@ -2434,11 +2408,6 @@ msgid ""
 "Debug mode is turned off by quitting the game or :nodebug.\n"
 "\n"
 msgstr ""
-"\n"
-"开启调试模式（在多人对战中无效）。查看<ref>dst=debug_commands text='调试模式"
-"可用命令'</ref>。\n"
-"要关闭调试模式可以使用 :nodebug 或者退出游戏。\n"
-"\n"
 
 # can someone explain this to me in other words? i have not seen this in real multiplayer yet
 #. [topic]: id=general_commands
@@ -2694,9 +2663,8 @@ msgstr "治愈"
 
 #. [heals]: id=curing
 #: data/core/macros/abilities.cfg:52
-#, fuzzy
 msgid "female^cures"
-msgstr "无畏"
+msgstr "治疗"
 
 #. [heals]: id=curing
 #: data/core/macros/abilities.cfg:54
@@ -2716,7 +2684,6 @@ msgstr "恢复"
 
 #. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:77
-#, fuzzy
 msgid "female^regenerates"
 msgstr "恢复"
 
@@ -2737,7 +2704,6 @@ msgstr "坚定"
 
 #. [resistance]: id=steadfast
 #: data/core/macros/abilities.cfg:98
-#, fuzzy
 msgid "female^steadfast"
 msgstr "坚定"
 
@@ -2763,7 +2729,6 @@ msgstr "领导"
 #: data/core/macros/abilities.cfg:114 data/core/macros/abilities.cfg:137
 #: data/core/macros/abilities.cfg:172 data/core/macros/abilities.cfg:219
 #: data/core/macros/abilities.cfg:278
-#, fuzzy
 msgid "female^leadership"
 msgstr "领导"
 
@@ -2771,7 +2736,6 @@ msgstr "领导"
 #: data/core/macros/abilities.cfg:118 data/core/macros/abilities.cfg:141
 #: data/core/macros/abilities.cfg:176 data/core/macros/abilities.cfg:223
 #: data/core/macros/abilities.cfg:282
-#, fuzzy
 msgid ""
 "Leadership:\n"
 "This unit can lead our own units that are next to it, making them fight "
@@ -2786,7 +2750,7 @@ msgstr ""
 "本单位可以领导相邻的友好单位，使之更好的战斗。\n"
 "\n"
 "相邻的低等级友好单位获得更多的伤害输出。当有领袖与低等级友好单位相邻时，这些"
-"单位的攻击比平时增加原本的25%乘以与领袖等级差别。"
+"单位的攻击比平时增加原本的 25% 乘以其与领袖等级的数量差异。"
 
 #. [skirmisher]: id=skirmisher
 #: data/core/macros/abilities.cfg:346
@@ -2795,7 +2759,6 @@ msgstr "游击"
 
 #. [skirmisher]: id=skirmisher
 #: data/core/macros/abilities.cfg:347
-#, fuzzy
 msgid "female^skirmisher"
 msgstr "游击"
 
@@ -2816,7 +2779,6 @@ msgstr "照明"
 
 #. [illuminates]: id=illumination
 #: data/core/macros/abilities.cfg:363
-#, fuzzy
 msgid "female^illuminates"
 msgstr "照明"
 
@@ -2842,20 +2804,18 @@ msgstr "传送"
 
 #. [teleport]: id=teleport
 #: data/core/macros/abilities.cfg:378
-#, fuzzy
 msgid "female^teleport"
-msgstr "聪慧"
+msgstr "传送"
 
 #. [teleport]: id=teleport
 #: data/core/macros/abilities.cfg:380
-#, fuzzy
 msgid ""
 "Teleport:\n"
 "This unit may teleport between any two empty villages owned by its side "
 "using one of its moves."
 msgstr ""
 "传送：\n"
-"本单位能花费一个移动点数在任意两个友好村庄间移动。"
+"本单位能花费一个移动点数在任意两个本方村庄间移动。"
 
 #. [hides]: id=ambush
 #: data/core/macros/abilities.cfg:389 data/core/macros/abilities.cfg:391
@@ -2864,9 +2824,8 @@ msgstr "伏击"
 
 #. [hides]: id=ambush
 #: data/core/macros/abilities.cfg:390 data/core/macros/abilities.cfg:392
-#, fuzzy
 msgid "female^ambush"
-msgstr "忠诚"
+msgstr "伏击"
 
 #. [hides]: id=ambush
 #: data/core/macros/abilities.cfg:396 data/core/macros/abilities.cfg:400
@@ -2908,9 +2867,8 @@ msgstr ""
 
 #. [hides]: id=nightstalk
 #: data/core/macros/abilities.cfg:422
-#, fuzzy
 msgid "female^nightstalk"
-msgstr "夜行"
+msgstr "nightstal"
 
 #. [hides]: id=concealment
 #: data/core/macros/abilities.cfg:441 data/core/macros/abilities.cfg:447
@@ -2919,7 +2877,6 @@ msgstr "隐蔽"
 
 #. [hides]: id=concealment
 #: data/core/macros/abilities.cfg:442 data/core/macros/abilities.cfg:448
-#, fuzzy
 msgid "female^concealment"
 msgstr "隐蔽"
 
@@ -2947,9 +2904,8 @@ msgstr "潜水"
 
 #. [hides]: id=submerge
 #: data/core/macros/abilities.cfg:468 data/core/macros/abilities.cfg:474
-#, fuzzy
 msgid "female^submerge"
-msgstr "强壮"
+msgstr "潜水"
 
 #. [hides]: id=submerge
 #: data/core/macros/abilities.cfg:472 data/core/macros/abilities.cfg:478
@@ -2970,13 +2926,12 @@ msgstr ""
 #. [dummy]: id=feeding
 #: data/core/macros/abilities.cfg:496
 msgid "feeding"
-msgstr "祭祀"
+msgstr "食尸"
 
 #. [dummy]: id=feeding
 #: data/core/macros/abilities.cfg:497
-#, fuzzy
 msgid "female^feeding"
-msgstr "无畏"
+msgstr "食尸"
 
 #. [dummy]: id=feeding
 #: data/core/macros/abilities.cfg:499
@@ -2985,8 +2940,8 @@ msgid ""
 "This unit gains 1 hitpoint added to its maximum whenever it kills a living "
 "unit."
 msgstr ""
-"祭祀:\n"
-"这种单位每杀死一个单位能为自己添加一点攻击力。"
+"食尸:\n"
+"这种单位每杀死一个单位能为自己添加一点生命值。"
 
 #: data/core/macros/abilities.cfg:523
 msgid "+1 max HP"
@@ -2997,7 +2952,6 @@ msgid "backstab"
 msgstr "背刺"
 
 #: data/core/macros/abilities.cfg:567
-#, fuzzy
 msgid ""
 "Backstab:\n"
 "When used offensively, this attack deals double damage if there is an enemy "
@@ -3005,8 +2959,8 @@ msgid ""
 "incapacitated (turned to stone or otherwise paralyzed)."
 msgstr ""
 "背刺：\n"
-"当被攻击者的对面有其敌对单位，且该敌对单位具有战斗力（例如，没有被石化）时，"
-"本攻击造成双倍伤害。"
+"进攻时，当被攻击者的对面有其敌对单位，且该敌对单位具有战斗力（例如，没有被石"
+"化）时，本攻击造成双倍伤害。"
 
 #: data/core/macros/abilities.cfg:579 data/core/macros/abilities.cfg:591
 msgid "plague"
@@ -3080,7 +3034,6 @@ msgid "swarm"
 msgstr "连击"
 
 #: data/core/macros/abilities.cfg:654
-#, fuzzy
 msgid ""
 "Swarm:\n"
 "The number of strikes of this attack decreases when the unit is wounded. The "
@@ -3097,14 +3050,14 @@ msgid "charge"
 msgstr "冲锋"
 
 #: data/core/macros/abilities.cfg:665
-#, fuzzy
 msgid ""
 "Charge:\n"
 "When used offensively, this attack deals double damage to the target. It "
 "also causes this unit to take double damage from the target's counterattack."
 msgstr ""
 "冲锋：\n"
-"本攻击对目标造成双倍伤害，攻击目标的反击也会使本单位受到双倍的伤害。"
+"主动进攻时，本攻击对目标造成双倍伤害，攻击目标的反击也会使本单位受到双倍的伤"
+"害。"
 
 #: data/core/macros/abilities.cfg:677
 msgid "drains"
@@ -3149,54 +3102,54 @@ msgid "Max HP bonus +"
 msgstr "最大生命值奖励+"
 
 #: data/core/macros/carryover-utils.cfg:9
-#, fuzzy
 msgid "Early finish bonus."
-msgstr "提早结束奖励： "
+msgstr "提前奖励。"
 
 #: data/core/macros/carryover-utils.cfg:12
-#, fuzzy
 msgid "No early finish bonus."
-msgstr "提早结束奖励： "
+msgstr "无奖励。"
 
 #: data/core/macros/carryover-utils.cfg:15
-#, fuzzy
 msgid "`(early finish bonus)"
-msgstr "提早结束奖励： "
+msgstr "`(提前奖励)"
 
 #: data/core/macros/carryover-utils.cfg:18
 msgid "No gold carried over to the next scenario."
-msgstr ""
+msgstr "金子不会带到下一场景"
 
 #: data/core/macros/carryover-utils.cfg:22
 msgid ""
 "\n"
 "100% of finishing gold carried over to the next scenario."
 msgstr ""
+"\n"
+"100% 金子会带到下一场景"
 
 #: data/core/macros/carryover-utils.cfg:26
 msgid ""
 "\n"
 "40% of finishing gold carried over to the next scenario."
 msgstr ""
+"\n"
+"40% 金子会带到下一场景"
 
 #: data/core/macros/carryover-utils.cfg:30
 msgid ""
 "\n"
 "20% of finishing gold carried over to the next scenario."
 msgstr ""
+"\n"
+"20% 金子会带到下一场景"
 
 #. [deprecated_message]
 #: data/core/macros/deprecated-utils.cfg:21
 msgid "VICTORY_AND_DEFEAT_MUSIC is unnecessary and can be removed."
-msgstr ""
+msgstr "VICTORY_AND_DEFEAT_MUSIC 不必要，可以除去。"
 
 #. [message]: speaker=narrator
 #: data/core/macros/items.cfg:39
-#, fuzzy
 msgid "You have come across a wishing well. What would you like to wish for?"
-msgstr ""
-"您经过了一个许愿井。\n"
-"您想许个什么样的愿望？"
+msgstr "您经过了一个许愿井。您想许个什么样的愿望？"
 
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:42
@@ -3237,15 +3190,13 @@ msgstr "别许愿。"
 
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:148
-#, fuzzy
 msgid "Take it"
-msgstr "重命名单位"
+msgstr "拿起。"
 
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:166
-#, fuzzy
 msgid "Leave it"
-msgstr "重命名单位"
+msgstr "放下。"
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:218
@@ -3350,7 +3301,7 @@ msgstr "只有人鱼可以使用本物品！"
 
 #: data/core/macros/items.cfg:542
 msgid "Should $unit.name pick up the trident?"
-msgstr ""
+msgstr "让 $unit.name 拿起三叉戟吗？"
 
 #. [object]
 #: data/core/macros/items.cfg:544
@@ -3748,7 +3699,6 @@ msgid "Kaasa,Kayya,Keyya,Kiira,Korra"
 msgstr "Kaasa,Kayya,Keyya,Kiira,Korra"
 
 #: data/core/macros/names.cfg:23
-#, fuzzy
 msgid ""
 "Addraecyn,Addraenvan,Addraer,Addraercyn,Addraryn,Addreddry,Addredry,"
 "Addregwyn,Addrenyc,Addreoddry,Addreoddyn,Addreonyc,Addreorcyn,Addreran,"
@@ -3807,8 +3757,8 @@ msgstr ""
 "Aethonnyn,Aethuc,Aethudry,Aethugwyn,Aethun,Aethunry,Aethydry,Aethynyc,Blac,"
 "Bladoc,Blaec,Blaedry,Blanry,Blebryn,Bledoc,Blemyr,Blennyn,Blenvan,Bleollyn,"
 "Blercyn,Blidd,Bliddry,Blillyn,Blinvan,Blollyn,Blubryn,Blucyn,Bludry,Blullyn,"
-"Bluran,Blybryn,Blydd,Blygwyn,Blymyr,Blyr,Cac,Cadry,Caebryn,Caedry,Caeran,"
-"Caercyn,Car,Carac,Caraddry,Caradoc,Caraedry,Caraennyn,Cararyn,Caredd,"
+"Bluran,Blybryn,Blydd,Blygwyn,Blymyr,Blyr,Bucyn,Cac,Cadry,Caebryn,Caedry,"
+"Caeran,Caercyn,Car,Carac,Caraddry,Caradoc,Caraedry,Caraennyn,Cararyn,Caredd,"
 "Careddry,Caregwyn,Caren,Careobryn,Careogwyn,Careonvan,Careorraent,Careoryn,"
 "Carercyn,Caric,Cariddry,Carocyn,Caroddyn,Caror,Caroran,Carraent,Carudoc,"
 "Carullyn,Carygwyn,Caryn,Cebryn,Cemyr,Cennyn,Ceoc,Ceoddry,Ceoddyn,Ceomyr,"
@@ -3820,34 +3770,33 @@ msgstr ""
 "Glircyn,Gloddry,Gloddyn,Glonry,Glonvan,Glumyr,Glun,Glunry,Glunvan,Glyc,Glydd,"
 "Glydoc,Glynry,Glynvan,Glyran,Goc,Gor,Gubryn,Gudd,Gullyn,Gumyr,Gur,Gwadoc,"
 "Gwaec,Gwaeddyn,Gwan,Gweddyn,Gwegwyn,Gwellyn,Gwennyn,Gwenyc,Gweocyn,Gweodd,"
-"Gweodoc,Gweodry,Gweogwyn,Gweoran,Gwidoc,Gwodd,Gwoddyn,Gwollyn,Gwor,Gwucyn,"
-"Gwudoc,Gwumyr,Gwuran,Gwybryn,Gwycyn,Gwyddry,Gwydoc,Gwymyr,Gwynnyn,Gydoc,"
-"Gyllyn,Gymyr,Labryn,Ladoc,Laellyn,Lan,Lannyn,Laran,Lec,Lemyr,Lenvan,Leogwyn,"
-"Lercyn,Ligwyn,Lin,Liryn,Lonnyn,Lorraent,Luddry,Ludoc,Lunnyn,Lunvan,Lurraent,"
-"Mac,Maddyn,Maennyn,Manry,Manyc,Marcyn,Mec,Menvan,Meollyn,Meon,Meonnyn,"
-"Meorraent,Middry,Midry,Mimyr,Modd,Moddry,Monry,Moran,Morcyn,Mubryn,Mudoc,"
-"Mugwyn,Murcyn,Mydoc,Mygwyn,Myn,Myrraent,Owac,Owadd,Owaddyn,Owaecyn,Owaedry,"
-"Owarcyn,Owaryn,Owecyn,Owedry,Oweomyr,Oweor,Oweorcyn,Oweran,Owercyn,Owidry,"
-"Owinvan,Owinyc,Owodd,Owoddry,Owogwyn,Owollyn,Oworan,Oworcyn,Oworraent,"
-"Owuddry,Owuddyn,Owugwyn,Owur,Owyran,Rabryn,Radd,Ranvan,Rar,Reoddyn,Reodry,"
-"Rhaecyn,Rhaedoc,Rhaemyr,Rhaerraent,Rhanry,Rharcyn,Rhenry,Rhenvan,Rhenyc,"
-"Rheodd,Rheoddyn,Rheollyn,Rheor,Rheoran,Rheorraent,Rheran,Rherraent,Rhobryn,"
-"Rhodry,Rhollyn,Rhonvan,Rhubryn,Rhugwyn,Rhunyc,Rhur,Rhygwyn,Rhyllyn,Rhynyc,"
-"Rhyrcyn,Rhyrraent,Rocyn,Roddyn,Romyr,Ron,Ronry,Rubryn,Ruddry,Rumyr,Run,"
-"Rurcyn,Rybryn,Rycyn,Ryddry,Rygwyn,Rynnyn,Rynry,Saec,Saellyn,Saemyr,Saenvan,"
-"Saercyn,Sanyc,Saran,Sarraent,Secyn,Seddyn,Sedry,Sellyn,Sennyn,Seoddry,"
-"Seorcyn,Sercyn,Siddry,Simyr,Siryn,Sodd,Sodry,Soran,Suc,Sudd,Surcyn,Sydd,"
-"Syran,Syryn,Tabryn,Taec,Taedd,Taedoc,Taemyr,Taenvan,Taercyn,Tanry,Tarcyn,"
-"Teddyn,Tegwyn,Ten,Tennyn,Tenvan,Teobryn,Teoddyn,Teor,Teorcyn,Terraent,Tinry,"
-"Tinvan,Tiryn,Todd,Tudd,Tuddry,Tudoc,Tunvan,Turraent,Tyddyn,Vaddyn,Vaeddyn,"
-"Vaedry,Vaennyn,Varcyn,Ven,Vennyn,Veocyn,Veoddyn,Veodry,Veogwyn,Veomyr,Vinvan,"
-"Vinyc,Virraent,Vobryn,Vogwyn,Vonry,Vuddyn,Vugwyn,Vyc,Vygwyn,Vyrcyn,Yracyn,"
-"Yraec,Yran,Yrannyn,Yranvan,Yraryn,Yredd,Yreddyn,Yregwyn,Yreryn,Yrinvan,"
-"Yrirraent,Yroddry,Yrullyn,Yrumyr,Yrunnyn,Yrunvan,Yryllyn,Yrymyr,Yrynyc,"
-"Yryrcyn"
+"Gweodoc,Gweodry,Gweogwyn,Gweoran,Gwidoc,Gwilam,Gwodd,Gwoddyn,Gwollyn,Gwor,"
+"Gwucyn,Gwudoc,Gwumyr,Gwuran,Gwybryn,Gwycyn,Gwyddry,Gwydoc,Gwymyr,Gwynnyn,"
+"Gydoc,Gyllyn,Gymyr,Haldar,Labryn,Ladoc,Laellyn,Lan,Lannyn,Laran,Lec,Lemyr,"
+"Lenvan,Leogwyn,Lercyn,Ligwyn,Lin,Liryn,Lonnyn,Lorraent,Luddry,Ludoc,Lunnyn,"
+"Lunvan,Lurraent,Mac,Maddyn,Maennyn,Manry,Manyc,Marcyn,Mec,Menvan,Meollyn,"
+"Meon,Meonnyn,Meorraent,Middry,Midry,Mimyr,Modd,Moddry,Monry,Moran,Morcyn,"
+"Mubryn,Mudoc,Mugwyn,Murcyn,Mydoc,Mygwyn,Myn,Myrraent,Owac,Owadd,Owaddyn,"
+"Owaecyn,Owaedry,Owain,Owarcyn,Owaryn,Owecyn,Owedry,Oweomyr,Oweor,Oweorcyn,"
+"Oweran,Owercyn,Owidry,Owinvan,Owinyc,Owodd,Owoddry,Owogwyn,Owollyn,Oworan,"
+"Oworcyn,Oworraent,Owuddry,Owuddyn,Owugwyn,Owur,Owyran,Rabryn,Radd,Ranvan,Rar,"
+"Reoddyn,Reodry,Rhaecyn,Rhaedoc,Rhaemyr,Rhaerraent,Rhanry,Rharcyn,Rhenry,"
+"Rhenvan,Rhenyc,Rheodd,Rheoddyn,Rheollyn,Rheor,Rheoran,Rheorraent,Rheran,"
+"Rherraent,Rhobryn,Rhodry,Rhollyn,Rhonvan,Rhubryn,Rhugwyn,Rhunyc,Rhur,Rhygwyn,"
+"Rhyllyn,Rhynyc,Rhyrcyn,Rhyrraent,Rocyn,Roddyn,Romyr,Ron,Ronry,Rubryn,Ruddry,"
+"Rumyr,Run,Rurcyn,Rybryn,Rycyn,Ryddry,Rygwyn,Rynnyn,Rynry,Saec,Saellyn,Saemyr,"
+"Saenvan,Saercyn,Sanyc,Saran,Sarraent,Secyn,Seddyn,Sedry,Sellyn,Sennyn,"
+"Seoddry,Seorcyn,Sercyn,Siddry,Simyr,Siryn,Sodd,Sodry,Soran,Suc,Sudd,Surcyn,"
+"Sydd,Syran,Syryn,Tabryn,Taec,Taedd,Taedoc,Taemyr,Taenvan,Taercyn,Tanry,"
+"Tarcyn,Teddyn,Tegwyn,Ten,Tennyn,Tenvan,Teobryn,Teoddyn,Teor,Teorcyn,Terraent,"
+"Tinry,Tinvan,Tiryn,Todd,Tudd,Tuddry,Tudoc,Tunvan,Turraent,Tyddyn,Vaddyn,"
+"Vaeddyn,Vaedry,Vaennyn,Varcyn,Ven,Vennyn,Veocyn,Veoddyn,Veodry,Veogwyn,"
+"Veomyr,Vinvan,Vinyc,Virraent,Vobryn,Vogwyn,Vonry,Vuddyn,Vugwyn,Vyc,Vygwyn,"
+"Vyrcyn,Yracyn,Yraec,Yran,Yrannyn,Yranvan,Yraryn,Yredd,Yreddyn,Yregwyn,Yreryn,"
+"Yrinvan,Yrirraent,Yroddry,Yrullyn,Yrumyr,Yrunnyn,Yrunvan,Yryllyn,Yrymyr,"
+"Yrynyc,Yryrcyn"
 
 #: data/core/macros/names.cfg:24
-#, fuzzy
 msgid ""
 "Alabrylla,Alaebrylla,Alaeniver,Alalla,Alalonna,Alaryan,Aleacla,Aleaniver,"
 "Aleara,Alearka,Alena,Alengwen,Alilonna,Alingwen,Alolla,Alolonna,Alora,"
@@ -3914,8 +3863,8 @@ msgstr ""
 "Eleanoic,Elearka,Elenoic,Elerka,Elivyan,Elulonna,Elurka,Elwllyra,Elwlonna,"
 "Elwngwen,Elwra,Elycla,Elyllyra,Elyngwen,Elyniver,Elyrka,Gwaera,Gwaessa,"
 "Gwangwen,Gweacla,Gwedda,Gwerka,Gwicla,Gwirka,Gwobrylla,Gwoll,Gwona,Gwongwen,"
-"Gwonoic,Gworyan,Gwullyra,Gwussa,Gwwcla,Gwwna,Gwwvyan,Gwycla,Gwydda,Jacla,"
-"Jaena,Jaerka,Jaevyan,Jalyan,Jana,Jarka,Jassa,Jeabrylla,Jealla,Jeanoic,"
+"Gwonoic,Gworyan,Gwullyra,Gwussa,Gwwcla,Gwwna,Gwwvyan,Gwycla,Gwydda,Heldra,"
+"Jacla,Jaena,Jaerka,Jaevyan,Jalyan,Jana,Jarka,Jassa,Jeabrylla,Jealla,Jeanoic,"
 "Jeniver,Jiryan,Jissa,Joll,Jolla,Jona,Jongwen,Jonoic,Jora,Jorka,Jovyan,Judda,"
 "Jull,Julonna,Jura,Jwll,Jwlyan,Jycla,Jyniver,Jynoic,Jyrka,Jyvyan,Laeniver,"
 "Laenoic,Laeryan,Langwen,Larka,Lassa,Lealonna,Lealyan,Ledda,Lelonna,Lelyan,"
@@ -4166,7 +4115,7 @@ msgstr ""
 msgid ""
 "The computer player might not be able to play side $side_number properly in "
 "this scenario. Side $side_number is intended to be played by a human player."
-msgstr ""
+msgstr "电脑玩家不能在此场景使用 $side_number 很好发挥。 $side_number "
 
 #. [time]: id=deep_underground
 #. [illuminated_time]: id=deep_underground_illum
@@ -4197,9 +4146,8 @@ msgid ""
 msgstr "本单位的奥术攻击对不死族造成巨大的伤害，对活着的生物也能造成伤害。"
 
 #: data/core/macros/special-notes.cfg:14
-#, fuzzy
 msgid " This unit is capable of basic healing."
-msgstr "本单位可以治疗周围的单位，并治愈中毒效果。"
+msgstr "本单位可以简单治疗周围的单位"
 
 #: data/core/macros/special-notes.cfg:17
 msgid ""
@@ -4226,12 +4174,11 @@ msgid ""
 msgstr "本单位的坚忍不拔使得某些攻击的伤害下降，但这支在本单位防守时有效。"
 
 #: data/core/macros/special-notes.cfg:29
-#, fuzzy
 msgid ""
 " The leadership of this unit enables adjacent units of the same side to deal "
 "more damage in combat, though this only applies to units of lower level."
 msgstr ""
-"本单位的领导能力使得相邻的友好单位获得更多的攻击输出，但只对等级较低的单位有"
+"本单位的领导能力使得相邻的友好单位获得更多的攻击输出，但只对等级更低的单位有"
 "效。"
 
 #: data/core/macros/special-notes.cfg:32
@@ -4245,13 +4192,10 @@ msgid " Illumination increases the lighting level in adjacent areas."
 msgstr "'照明'能力增加相邻区域的亮度。"
 
 #: data/core/macros/special-notes.cfg:38
-#, fuzzy
 msgid ""
 " This unit can use one move to teleport between any two empty villages "
 "controlled by its side."
-msgstr ""
-"传送：\n"
-"本单位能花费一个移动点数在任意两个友好村庄间移动。"
+msgstr "本单位能花费一个移动点数在任意两个友好村庄间移动。"
 
 #: data/core/macros/special-notes.cfg:41
 msgid ""
@@ -4292,21 +4236,20 @@ msgstr ""
 "倒下为止。"
 
 #: data/core/macros/special-notes.cfg:59
-#, fuzzy
 msgid ""
 " If there is an enemy of the target on the opposite side of the target while "
 "attacking it, this unit may backstab, inflicting double damage by creeping "
 "around behind that enemy."
 msgstr ""
-"如果本单位和某个同盟单位前后包夹敌人，本单位就可以从敌人背后进行背刺攻击，造"
-"成双倍伤害。"
+"如果敌人被本单位和其他其他对其怀有敌意的单位前后包夹，本单位就可以从敌人背后"
+"进行背刺攻击，造成双倍伤害。"
 
 #: data/core/macros/special-notes.cfg:62
-#, fuzzy
 msgid ""
 " Foes who lose their life to the plague will rise again in unlife, unless "
 "they are standing on a village."
-msgstr "被瘟疫攻击击毙的敌方单位会重生为攻击者一方的不死族的单位。"
+msgstr ""
+"被瘟疫攻击击毙的单位会重生为攻击者一方的不死族的单位，除非他们在村庄里。"
 
 #: data/core/macros/special-notes.cfg:65
 msgid ""
@@ -4328,11 +4271,10 @@ msgid ""
 msgstr "本单位的'精准'攻击保证其具有很高的命中率，但这只是在进攻时有效。"
 
 #: data/core/macros/special-notes.cfg:74
-#, fuzzy
 msgid ""
 " The unit has magical attacks, which always have a high chance of hitting an "
 "opponent."
-msgstr "本单位的远程攻击属于魔法攻击，总是有较高的命中率。"
+msgstr "本单位拥有高命中率的魔法攻击能力。"
 
 #: data/core/macros/special-notes.cfg:77
 msgid ""
@@ -4473,9 +4415,8 @@ msgstr "活力"
 
 #. [trait]: id=healthy
 #: data/core/macros/traits.cfg:134
-#, fuzzy
 msgid "Can rest while moving, takes a quarter less poison damage"
-msgstr "能在移动中休息"
+msgstr "能在移动中休息，中毒的影响只有四分之三"
 
 #. [trait]: id=fearless
 #: data/core/macros/traits.cfg:151 data/core/macros/traits.cfg:164
@@ -4495,37 +4436,32 @@ msgstr "在不适应的时段(白天/夜晚)也能正常作战"
 #. [trait]: id=weak
 #: data/core/macros/traits.cfg:174
 msgid "weak"
-msgstr ""
+msgstr "虚弱"
 
 #. [trait]: id=weak
 #: data/core/macros/traits.cfg:175
-#, fuzzy
 msgid "female^weak"
-msgstr "不死"
+msgstr "虚弱"
 
 #. [trait]: id=slow
 #: data/core/macros/traits.cfg:192
-#, fuzzy
 msgid "slow"
 msgstr "减速"
 
 #. [trait]: id=slow
 #: data/core/macros/traits.cfg:193
-#, fuzzy
 msgid "female^slow"
-msgstr "忠诚"
+msgstr "减速"
 
 #. [trait]: id=dim
 #: data/core/macros/traits.cfg:209
-#, fuzzy
 msgid "dim"
-msgstr "普通"
+msgstr ""
 
 #. [trait]: id=dim
 #: data/core/macros/traits.cfg:210
-#, fuzzy
 msgid "female^dim"
-msgstr "无畏"
+msgstr ""
 
 #. [color_range]: id=red
 #. [color_range]: id=1
@@ -4808,6 +4744,7 @@ msgstr "精灵"
 
 #. [race]: id=elf
 #: data/core/units.cfg:119
+#, fuzzy
 msgid ""
 "Compared to humans, elves are somewhat taller, more agile but less sturdy. "
 "They have slightly pointy ears, pale skin and usually blond hair. Few "
@@ -4845,6 +4782,29 @@ msgid ""
 "trolls. Many of their settlements cannot be reliably dated, undoubtedly "
 "having existed for over a millennium."
 msgstr ""
+"相较於人类，精灵长得较高且行动敏捷，但是体格方面不如人类壮硕。他们有对尖长的"
+"耳朵、较淡的肤色且通常是ㄧ头金发。跟人类稍微不一样的地方就是他们有非比寻常的"
+"寿命，除了疾病、战争及等等的意外，他们大概可以活两百五十年。大部分的精灵活到"
+"出生后250年到300年间就开始迅速虚弱死亡（一两年内），不过据了解一些拥有高魔法"
+"资质的精灵可以多活一百年。\n"
+"\n"
+"精灵天生就有微弱的魔力，虽然大部分的精灵不会运用魔法，不过这潜藏的魔力赋予他"
+"们灵敏及长寿。许多精灵会通过魔法驾驭像是射术或偷窃的能力，使他们完成令大多数"
+"生物惊讶的任务。那些通过学习掌握此道的精灵会成为杰出的力量，通常他们将这个天"
+"赋用来治疗他人。\n"
+"\n"
+"少数精灵，因为深入探索魔法而对冰冷的金属敏感，甚至会被毁灭。精灵传说这在以前"
+"是经常发生的。\n"
+"\n"
+"精灵花很多时间来锻炼技能和能力，对魔法不熟悉的就锻炼他们的体技。因此这样的精"
+"灵擅长箭术，或许这是战争重要的技术的关系。不管是在精准度或速度，通常没有一个"
+"种族可以跟精灵部队的射手匹敌。所有的精灵对自然都有种不能解释的情感。他们都很"
+"难适应暴露在空旷没有高大植被的地带，这就是为什么他们的家园会在大陆的森林中，"
+"像是Aethenwood西南地区，Wesmore西北地区，北部森林Lintanir 在北地最南部边"
+"缘。\n"
+"\n"
+"精灵是这片大陆最古老的种族（也许除了巨魔），虽然没发现确切的时间记录，无可置"
+"疑的有上百万年的历史。"
 
 #. [race]: id=goblin, description=
 #: data/core/units.cfg:129
@@ -5191,15 +5151,13 @@ msgstr ""
 
 #. [race]: id=wolf, description=
 #: data/core/units.cfg:297
-#, fuzzy
 msgid "race^Wolf"
-msgstr "精灵"
+msgstr "狼"
 
 #. [race]: id=wolf, description=
 #: data/core/units.cfg:298
-#, fuzzy
 msgid "race^Wolves"
-msgstr "精灵"
+msgstr "狼"
 
 #. [race]: id=wose, description=
 #: data/core/units.cfg:307
@@ -5239,7 +5197,7 @@ msgstr "困难"
 #. [language]
 #: data/hardwired/english.cfg:6
 msgid "Nightmare"
-msgstr ""
+msgstr "噩梦"
 
 #. [language]
 #: data/hardwired/english.cfg:11
@@ -5393,7 +5351,7 @@ msgstr ""
 #. [tip]
 #: data/hardwired/tips.cfg:4
 msgid "Wesnoth Developers"
-msgstr ""
+msgstr "Wesnoth开发者"
 
 #. [tip]
 #: data/hardwired/tips.cfg:7
@@ -5597,7 +5555,6 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:67
-#, fuzzy
 msgid ""
 "Poisoned units will lose eight hitpoints every turn until they are one point "
 "from death. They will remain at death's door until the poison is removed. "
@@ -5605,9 +5562,9 @@ msgid ""
 "not be removed unless the unit regenerates, or begins a turn in a village or "
 "next to a unit with the 'Cures' ability."
 msgstr ""
-"中毒的单位每回合损失8点血，知道他们剩下1点血为止。如果毒性不解除，他们将停留"
-"在鬼门关。治疗者可以避免毒性恶化，但是除非中毒单位自我恢复，停留在村庄一回合"
-"或者停留在拥有“治愈”技能的单位旁边，否则毒性不会消除。"
+"中毒的单位每回合损失8点生命值，直到他们剩下1点生命值为止。如果毒性不解除，他"
+"们将停留在鬼门关。治疗者可以避免毒性恶化，但是除非中毒单位自我恢复，停留在村"
+"庄一回合或者停留在拥有“治愈”技能的单位旁边，否则毒性不会消除。"
 
 #. [tip]
 #: data/hardwired/tips.cfg:71
@@ -6064,9 +6021,8 @@ msgstr "开始回放"
 
 #. [menu]: id=button-playreplay, type=image
 #: data/themes/macros.cfg:75
-#, fuzzy
 msgid "continuous replay"
-msgstr "连续回放"
+msgstr "继续回放"
 
 #. [menu]: id=button-stopreplay, type=image
 #: data/themes/macros.cfg:92
@@ -6153,14 +6109,12 @@ msgid "An invalid weapon is send, possibly due to the Python AI."
 msgstr "传出了一个无效的武器，可能是Python AI造成的。"
 
 #: src/actions.cpp:1046 src/actions.cpp:1317
-#, fuzzy
 msgid "female^poisoned"
-msgstr "不死"
+msgstr "中毒"
 
 #: src/actions.cpp:1058 src/actions.cpp:1329
-#, fuzzy
 msgid "female^stone"
-msgstr "强壮"
+msgstr "石化"
 
 #: src/actions.cpp:1058 src/actions.cpp:1329
 msgid "stone"
@@ -6172,20 +6126,20 @@ msgstr "遭到伏击！"
 
 #: src/actions.cpp:2400
 msgid "Failed teleport! Exit not empty"
-msgstr "传送失败!出口阻塞"
+msgstr "传送失败！出口阻塞"
 
 # what is the plural form all about?
 #: src/actions.cpp:2439
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "发现友好单位"
-msgstr[1] "发现$friends个友好单位"
+msgstr[1] "发现 $friends 个友好单位"
 
 #: src/actions.cpp:2442
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "发现敌方单位！"
-msgstr[1] "发现$enemies个敌方单位！"
+msgstr[1] "发现 $enemies 个敌方单位！"
 
 # Can someone show me an example of this line in real gameplay? Else I really can't understand it...
 #: src/actions.cpp:2447
@@ -6198,7 +6152,7 @@ msgstr[1] "$friends个友好单位"
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "1个敌方单位"
-msgstr[1] "$enemies个敌方单位"
+msgstr[1] "$enemies 个敌方单位"
 
 #: src/actions.cpp:2449
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
@@ -6221,56 +6175,50 @@ msgid "MB"
 msgstr "MB"
 
 #: src/addon_management.cpp:365
-#, fuzzy
 msgid "GB"
-msgstr "B"
+msgstr "GB"
 
 #: src/addon_management.cpp:398
 msgid "addon_type^Campaign"
-msgstr ""
+msgstr "战役"
 
 #: src/addon_management.cpp:400
 msgid "addon_type^Scenario"
-msgstr ""
+msgstr "场景"
 
 #: src/addon_management.cpp:402
-#, fuzzy
 msgid "addon_type^MP era"
-msgstr "远程场景"
+msgstr "时代-多人游戏"
 
 #: src/addon_management.cpp:404
-#, fuzzy
 msgid "addon_type^MP faction"
-msgstr "远程场景"
+msgstr "阵营-多人游戏"
 
 #: src/addon_management.cpp:406
-#, fuzzy
 msgid "addon_type^MP map-pack"
-msgstr "远程场景"
+msgstr "地图包-多人游戏"
 
 #: src/addon_management.cpp:408
-#, fuzzy
 msgid "addon_type^MP scenario"
-msgstr "远程场景"
+msgstr "场景-多人游戏"
 
 #: src/addon_management.cpp:410
 msgid "addon_type^MP campaign"
-msgstr ""
+msgstr "多人战役"
 
 #: src/addon_management.cpp:412
 msgid "addon_type^Resources"
-msgstr ""
+msgstr "资源"
 
 #: src/addon_management.cpp:414
 msgid "addon_type^(unknown)"
-msgstr ""
+msgstr "（未知插件）"
 
 #: src/addon_management.cpp:443
 msgid "Dependencies"
 msgstr "依赖"
 
 #: src/addon_management.cpp:444
-#, fuzzy
 msgid ""
 "This add-on depends upon the following add-on which you have not installed "
 "yet:"
@@ -6311,32 +6259,29 @@ msgid "Response"
 msgstr "回应"
 
 #: src/addon_management.cpp:572
-#, fuzzy
 msgid "Downloading add-on: $addon_title|..."
-msgstr "正在下载插件……"
+msgstr "正在下载插件 $addon_title|..."
 
 #: src/addon_management.cpp:586
 msgid ""
 "The add-on has an invalid file or directory name and can not be installed."
-msgstr ""
+msgstr "插件的文件或目录的名称问题导致无法安装。"
 
 #: src/addon_management.cpp:638
 msgid "Unchecked script files found:"
-msgstr ""
+msgstr "发现未检查过的脚本："
 
 #: src/addon_management.cpp:645
-#, fuzzy
 msgid "The add-on '$addon_title|' has been successfully installed."
-msgstr "这个插件已经安装。"
+msgstr "插件 '$addon_title|'  已经安装。"
 
 #: src/addon_management.cpp:647
 msgid "Add-on Installed"
 msgstr "插件已安装"
 
 #: src/addon_management.cpp:705
-#, fuzzy
 msgid "Outdated add-ons"
-msgstr "发送插件"
+msgstr "过期插件"
 
 #: src/addon_management.cpp:707
 msgid ""
@@ -6350,11 +6295,11 @@ msgstr[1] ""
 
 #: src/addon_management.cpp:716
 msgid "Could not find any updated add-ons on this server."
-msgstr ""
+msgstr "无法在这个服务器找到升级的插件。"
 
 #: src/addon_management.cpp:716
 msgid "No add-ons to update"
-msgstr ""
+msgstr "没有要更新的插件"
 
 #: src/addon_management.cpp:730 src/addon_management.cpp:931
 #: src/dialogs.cpp:644 src/menu_events.cpp:200 src/menu_events.cpp:988
@@ -6362,14 +6307,12 @@ msgid "Name"
 msgstr "名称"
 
 #: src/addon_management.cpp:730
-#, fuzzy
 msgid "New version"
-msgstr "版本"
+msgstr "新版本"
 
 #: src/addon_management.cpp:730
-#, fuzzy
 msgid "Old version"
-msgstr "版本"
+msgstr "旧版本"
 
 #: src/addon_management.cpp:731 src/addon_management.cpp:932
 msgid "Author"
@@ -6380,61 +6323,53 @@ msgid "Size"
 msgstr "大小"
 
 #: src/addon_management.cpp:785
-#, fuzzy
 msgid "Update Add-ons"
-msgstr "获取插件"
+msgstr "升级插件"
 
 #: src/addon_management.cpp:786
 msgid "Select an add-on to update:"
-msgstr ""
+msgstr "选择要更新的插件："
 
 #: src/addon_management.cpp:800
-#, fuzzy
 msgid "Update all"
-msgstr "洞穴墙壁"
+msgstr "全部升级"
 
 #: src/addon_management.cpp:855
-#, fuzzy
 msgid "Update failed"
-msgstr "洞穴墙壁"
+msgstr "升级失败"
 
 #: src/addon_management.cpp:857
-#, fuzzy
 msgid "The following add-on could not be downloaded or updated successfully:"
 msgid_plural ""
 "The following add-ons could not be downloaded or updated successfully:"
-msgstr[0] "以下附加战役有错误，无法加载："
-msgstr[1] "以下附加战役有错误，无法加载："
+msgstr[0] "以下插件有错误，无法下载或升级："
+msgstr[1] "以下插件有错误，无法下载或升级："
 
 #: src/addon_management.cpp:866
-#, fuzzy
 msgid "Update succeeded"
-msgstr "获取插件"
+msgstr "升级完成"
 
 #: src/addon_management.cpp:867
 msgid "Add-on updated successfully."
-msgstr ""
+msgstr "成功升级。"
 
 #: src/addon_management.cpp:868
 msgid "All add-ons updated successfully."
-msgstr ""
+msgstr "成功升级。"
 
 #: src/addon_management.cpp:891
-#, fuzzy
 msgid "Connecting to Add-ons Server..."
-msgstr "正在连接到服务器..."
+msgstr "正在连接到插件服务器..."
 
 #: src/addon_management.cpp:894
 msgid "Could not connect to host."
 msgstr "无法连接到主机。"
 
 #: src/addon_management.cpp:902
-#, fuzzy
 msgid "Requesting list of add-ons"
-msgstr "请求插件列表"
+msgstr "正在请求插件列表"
 
 #: src/addon_management.cpp:915
-#, fuzzy
 msgid "An error occurred while communicating with the server."
 msgstr "与服务器通讯错误。"
 
@@ -6485,11 +6420,10 @@ msgid "Remote host disconnected."
 msgstr "远程主机关闭。"
 
 #: src/addon_management.cpp:1067
-#, fuzzy
 msgid ""
 "A problem occurred when trying to create the files necessary to install this "
 "add-on."
-msgstr "安装这个战役所需文件创建错误。"
+msgstr "这个插件所需文件创建错误。"
 
 #: src/addon_management.cpp:1085 src/addon_management.cpp:1140
 #: src/dialogs.cpp:279 src/dialogs.cpp:287 src/menu_events.cpp:595
@@ -6498,18 +6432,16 @@ msgid "Error"
 msgstr "错误"
 
 #: src/addon_management.cpp:1086
-#, fuzzy
 msgid "You have no add-ons installed."
-msgstr "没有安装插件"
+msgstr "没有安装插件。"
 
 #: src/addon_management.cpp:1098
 msgid "Choose the add-on to remove."
 msgstr "选择要删除的插件。"
 
 #: src/addon_management.cpp:1098
-#, fuzzy
 msgid "Uninstall add-ons"
-msgstr "发送插件"
+msgstr "卸载插件"
 
 #: src/addon_management.cpp:1110
 msgid "Are you sure you want to remove the add-on '$addon|'?"
@@ -6528,9 +6460,8 @@ msgid "Add-on deleted"
 msgstr "插件已删除"
 
 #: src/addon_management.cpp:1141
-#, fuzzy
 msgid "Add-on could not be deleted properly:"
-msgstr "无法删除插件——没有找到某个文件。"
+msgstr "无法删除插件:"
 
 #: src/ai.cpp:1773
 msgid "Unknown unit type : "
@@ -6732,9 +6663,8 @@ msgid "Show replay"
 msgstr "显示游戏录像"
 
 #: src/dialogs.cpp:680
-#, fuzzy
 msgid "Cancel orders"
-msgstr "取消"
+msgstr "取消命令"
 
 #: src/dialogs.cpp:683 src/multiplayer_create.cpp:83
 msgid "OK"
@@ -6797,9 +6727,8 @@ msgid "File I/O Error while reading the game"
 msgstr "当读取游戏时发生文件I/O错误。"
 
 #: src/game.cpp:1066
-#, fuzzy
 msgid "No campaigns are available.\n"
-msgstr "无有效目标"
+msgstr "无可用战役。\n"
 
 #: src/game.cpp:1070
 msgid "Play a campaign"
@@ -6814,9 +6743,8 @@ msgid "Select difficulty level:"
 msgstr "选择难度："
 
 #: src/game.cpp:1276
-#, fuzzy
 msgid "Do you really want to start the server?"
-msgstr "您确信想解散她？"
+msgstr "真想要开启一个服务器？"
 
 #: src/game.cpp:1277
 msgid ""
@@ -6825,14 +6753,12 @@ msgid ""
 msgstr ""
 
 #: src/game.cpp:1281
-#, fuzzy
 msgid "Don't show again"
-msgstr "不要再问我！"
+msgstr "不要再次显示"
 
 #: src/game.cpp:1353
-#, fuzzy
 msgid "Error while starting server: "
-msgstr "游戏执行出错： "
+msgstr "游戏服务端开启错误： "
 
 #: src/game.cpp:1355 src/playcampaign.cpp:96 src/playcampaign.cpp:381
 msgid "The game could not be loaded: "
@@ -6855,11 +6781,10 @@ msgid "' (The game will now exit)"
 msgstr "' （现在将退出游戏）"
 
 #: src/game.cpp:1539
-#, fuzzy
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
-msgstr[0] "以下附加战役有错误，无法加载："
-msgstr[1] "以下附加战役有错误，无法加载："
+msgstr[0] "以下插件有错误，无法加载："
+msgstr[1] "以下插件有错误，无法加载："
 
 #: src/game.cpp:1546
 msgid "ERROR DETAILS:"
@@ -6878,9 +6803,8 @@ msgid "Re-initialize fonts for the current language."
 msgstr "为当前语言重绘字体。"
 
 #: src/game.cpp:1999
-#, fuzzy
 msgid "Searching for installed add-ons."
-msgstr "发送插件"
+msgstr "搜索已经安装的插件"
 
 #: src/game.cpp:2008
 msgid "Loading title screen."
@@ -6920,11 +6844,10 @@ msgid "invisible: "
 msgstr "隐形： "
 
 #: src/generate_report.cpp:103
-#, fuzzy
 msgid ""
 "This unit has been slowed. It will only deal half its normal damage when "
 "attacking and its movement cost is doubled."
-msgstr "本单位被减速了，攻击因此减半。"
+msgstr "本单位被减速了，移动能力和攻击力量因此减半。"
 
 #: src/generate_report.cpp:103
 msgid "slowed: "
@@ -6962,7 +6885,7 @@ msgstr "抗性"
 
 #: src/generate_report.cpp:172
 msgid "(Att / Def)"
-msgstr ""
+msgstr "(攻击 / 防守)"
 
 #: src/generate_report.cpp:191 src/multiplayer_create.cpp:395
 msgid "Experience Modifier: "
@@ -6981,14 +6904,14 @@ msgstr[0] "次攻击"
 msgstr[1] "次攻击"
 
 #: src/generate_report.cpp:269
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "tooltip^% accuracy"
-msgstr "次攻击"
+msgstr "% 精确度"
 
 #: src/generate_report.cpp:275
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "tooltip^% parry"
-msgstr "点伤害"
+msgstr "% 闪避"
 
 #: src/generate_report.cpp:286
 msgid "weapon range: "
@@ -7051,9 +6974,8 @@ msgid "Abilities: "
 msgstr "能力： "
 
 #: src/help.cpp:1344
-#, fuzzy
 msgid "Ability Upgrades: "
-msgstr "能力： "
+msgstr "能力升级： "
 
 #: src/help.cpp:1362
 msgid "Cost: "
@@ -7183,14 +7105,12 @@ msgid "?"
 msgstr "？"
 
 #: src/loadscreen.cpp:224
-#, fuzzy
 msgid "Verifying cache"
-msgstr "验证缓存。"
+msgstr "正在验证缓存"
 
 #: src/loadscreen.cpp:243
-#, fuzzy
 msgid "Reading cache"
-msgstr "读取缓存。"
+msgstr "正在读取缓存"
 
 #: src/loadscreen.cpp:262
 msgid "Reading unit files."
@@ -7218,9 +7138,8 @@ msgid "Do you really want to dismiss him?"
 msgstr "您真的想解散他吗？"
 
 #: src/menu_events.cpp:97
-#, fuzzy
 msgid "My lord, this unit is loyal and requires no upkeep! "
-msgstr "主人，这个单位就快升级了！"
+msgstr "主公，这个单位不要求报酬！"
 
 #: src/menu_events.cpp:98 src/menu_events.cpp:101 src/menu_events.cpp:105
 msgid "Do you really want to dismiss her?"
@@ -7239,9 +7158,8 @@ msgid "Statistics"
 msgstr "统计"
 
 #: src/menu_events.cpp:201 src/menu_events.cpp:989
-#, fuzzy
 msgid "Level^Lvl."
-msgstr "等级"
+msgstr "等级。"
 
 #: src/menu_events.cpp:204
 msgid "unit list^Traits"
@@ -7491,9 +7409,8 @@ msgid "Search"
 msgstr "搜索"
 
 #: src/menu_events.cpp:1857
-#, fuzzy
 msgid "This command is currently unavailable."
-msgstr "无有效目标"
+msgstr "目前无有效指令。"
 
 #: src/menu_events.cpp:1868
 msgid ""
@@ -7502,9 +7419,8 @@ msgid ""
 msgstr ""
 
 #: src/menu_events.cpp:1973
-#, fuzzy
 msgid " No help available."
-msgstr "无有效目标"
+msgstr "没有帮助信息。"
 
 #: src/menu_events.cpp:2111
 msgid ""
@@ -7520,66 +7436,57 @@ msgstr ""
 
 #: src/menu_events.cpp:2117
 msgid "Kick a player or observer."
-msgstr ""
+msgstr "踢出一名玩家或者观察者。"
 
 #: src/menu_events.cpp:2119
 msgid "Mute an observer."
-msgstr ""
+msgstr "让一名观察者沉默。"
 
 #: src/menu_events.cpp:2121
 msgid "Mute all observers."
-msgstr ""
+msgstr "让所有观察者沉默。"
 
 #: src/menu_events.cpp:2125
-#, fuzzy
 msgid "Send an emotion or personal action in chat."
-msgstr "在聊天中发送表情符号或者个人动作。用法： /me <消息>"
+msgstr "在聊天中发送表情符号或者个人动作。"
 
 #: src/menu_events.cpp:2128
-#, fuzzy
 msgid ""
 "Sends a private message. You can't send messages to players that don't "
 "control a side in a running game you are in."
-msgstr ""
-"发送私人消息。您不能发送消息给正在控制游戏中任何一方的玩家。用法：/msg <玩家"
-"id> <消息>"
+msgstr "发送私人消息。您不能发送消息给不在游戏中同一方的玩家。"
 
 #: src/menu_events.cpp:2134
 msgid "Change the log level of a log domain."
 msgstr ""
 
 #: src/menu_events.cpp:2136
-#, fuzzy
 msgid "Add a nick to your ignores list."
-msgstr "将玩家列入您的忽略名单。用法：/list ignore <玩家id>"
+msgstr "将玩家列入您的忽略名单。"
 
 #: src/menu_events.cpp:2138
-#, fuzzy
 msgid "Add a nick to your friends list."
-msgstr "已加入好友名单："
+msgstr "将玩家列入您的好友名单。"
 
 #: src/menu_events.cpp:2140
-#, fuzzy
 msgid "Remove a nick from your ignores or friends list."
-msgstr "将玩家从您的好友名单或忽略名单中去除。用法：/list remove <玩家id>"
+msgstr "将玩家从您的好友名单或忽略名单中去除。"
 
 #: src/menu_events.cpp:2142
-#, fuzzy
 msgid "Show your ignores and friends list."
-msgstr "显示您的好友名单和忽略名单。用法：/list display"
+msgstr "显示您的忽略名单和好友名单。"
 
 #: src/menu_events.cpp:2145
-#, fuzzy
 msgid "Display version information."
-msgstr "没有找到这个时代的信息。"
+msgstr "显示版本信息。"
 
 #: src/menu_events.cpp:2147
 msgid "Register your nick"
-msgstr ""
+msgstr "注册昵称"
 
 #: src/menu_events.cpp:2149
 msgid "Drop your nick."
-msgstr ""
+msgstr "抛弃昵称"
 
 #: src/menu_events.cpp:2151
 msgid "Update details for your username. For possible details see /details"
@@ -7587,7 +7494,7 @@ msgstr ""
 
 #: src/menu_events.cpp:2154
 msgid "Request information about a user."
-msgstr ""
+msgstr "请求一名用户的信息。"
 
 #: src/menu_events.cpp:2156
 msgid "Request a list of details you can set for your registered username."
@@ -7595,68 +7502,59 @@ msgstr ""
 
 #: src/menu_events.cpp:2278
 msgid "Refresh gui."
-msgstr ""
+msgstr "刷新界面"
 
 #: src/menu_events.cpp:2280
 msgid "Switch a side to/from AI control."
-msgstr ""
+msgstr "切换一方的AI控制。"
 
 #: src/menu_events.cpp:2283
 msgid "Assign control of a side to a different player or observer."
 msgstr ""
 
 #: src/menu_events.cpp:2285
-#, fuzzy
 msgid "Clear chat history."
-msgstr ""
-"\n"
-"清除聊天信息.\n"
-"\n"
+msgstr "清除聊天信息。"
 
 #: src/menu_events.cpp:2287
 msgid "Visualize the screen refresh procedure."
-msgstr ""
+msgstr "让屏幕刷新过程可视。"
 
 #: src/menu_events.cpp:2290
-#, fuzzy
 msgid "Save game."
-msgstr "保存游戏"
+msgstr "保存游戏。"
 
 #: src/menu_events.cpp:2292
-#, fuzzy
 msgid "Quit game."
-msgstr "退出游戏"
+msgstr "退出游戏。"
 
 #: src/menu_events.cpp:2296
 msgid "Save and quit."
-msgstr ""
+msgstr "保存并退出"
 
 #: src/menu_events.cpp:2299
 msgid "Ignore replay errors."
-msgstr ""
+msgstr "忽视回放错误。"
 
 #: src/menu_events.cpp:2301
 msgid "Disable autosaves."
-msgstr ""
+msgstr "禁止自动存档。"
 
 #: src/menu_events.cpp:2303
-#, fuzzy
 msgid "Advance to the next scenario, or scenario identified by 'id'"
-msgstr "等待下一幕游戏开始..."
+msgstr "进入下一幕游戏，或者id识别开始..."
 
 #: src/menu_events.cpp:2306
-#, fuzzy
 msgid "Choose next scenario"
-msgstr "正在下载下一幕……"
+msgstr "正在下载下一幕"
 
 #: src/menu_events.cpp:2309
-#, fuzzy
 msgid "Turn debug mode on."
-msgstr "除错模式指令"
+msgstr "打开除错模式。"
 
 #: src/menu_events.cpp:2311
 msgid "Turn debug mode off."
-msgstr ""
+msgstr "关闭除错模式。"
 
 #: src/menu_events.cpp:2313
 msgid "Set the command used by the custom command hotkey"
@@ -7664,56 +7562,40 @@ msgstr ""
 
 #: src/menu_events.cpp:2315
 msgid "Set or show alias to a command"
-msgstr ""
+msgstr "设置或者显示一条命令的alias(别名)"
 
 #: src/menu_events.cpp:2317
-#, fuzzy
 msgid "Set a scenario variable."
-msgstr ""
-"\n"
-"显示游戏变量.\n"
-"\n"
+msgstr "显示一个场景变量"
 
 #: src/menu_events.cpp:2319
-#, fuzzy
 msgid "Show a scenario variable."
-msgstr ""
-"\n"
-"显示游戏变量.\n"
-"\n"
+msgstr "显示一个场景变量"
 
 #: src/menu_events.cpp:2321
+#, fuzzy
 msgid "Modify a unit variable. (Only top level keys are supported.)"
-msgstr ""
+msgstr "改变一个但闻的变量。（只有最顶级的键支持）"
 
 #: src/menu_events.cpp:2325
 msgid "Remove a trait from a unit. (Does not work yet.)"
 msgstr ""
 
 #: src/menu_events.cpp:2327
-#, fuzzy
 msgid "Create a unit."
-msgstr "创建游戏"
+msgstr "创建一个单位"
 
 #: src/menu_events.cpp:2329
-#, fuzzy
 msgid "Toggle fog for the current player."
-msgstr ""
-"\n"
-"为当前玩家设置战争迷雾.\n"
-"\n"
+msgstr "为当前玩家设置战争迷雾。"
 
 #: src/menu_events.cpp:2331
-#, fuzzy
 msgid "Toggle shroud for the current player."
 msgstr ""
-"\n"
-"为当前玩家设置战争迷雾.\n"
-"\n"
 
 #: src/menu_events.cpp:2333
 msgid "Give gold to the current player."
-msgstr ""
+msgstr "给当前玩家金子。"
 
 #: src/menu_events.cpp:2335
 msgid "Fire a game event."
@@ -7784,9 +7666,8 @@ msgid "Can't change control of out-of-bounds side: '$side'."
 msgstr "无法改变固定方的控制权：'$side'。"
 
 #: src/menu_events.cpp:2822
-#, fuzzy
 msgid "Choose Scenario (Debug!)"
-msgstr "创建单位(调试!)"
+msgstr "选择场景(调试!)"
 
 #: src/menu_events.cpp:2835
 msgid "Debug mode activated!"
@@ -7794,7 +7675,7 @@ msgstr "调试模式开启！"
 
 #: src/menu_events.cpp:2838
 msgid "Debug mode not available in network games"
-msgstr ""
+msgstr "Debug模式在网络游戏中不可用"
 
 #: src/menu_events.cpp:2843
 msgid "Debug mode deactivated!"
@@ -7802,7 +7683,7 @@ msgstr "调试模式关闭！"
 
 #: src/menu_events.cpp:3004
 msgid "ai"
-msgstr ""
+msgstr "ai"
 
 #: src/menu_events.cpp:3012 src/menu_events.cpp:3027
 msgid "prompt^Command:"
@@ -7840,21 +7721,19 @@ msgstr "服务器重定向循环"
 
 #: src/multiplayer.cpp:183
 msgid "Log in with password"
-msgstr ""
+msgstr "用密码登录"
 
 #: src/multiplayer.cpp:184
 msgid "Request password reminder for this username"
-msgstr ""
+msgstr "此用户名需求密码"
 
 #: src/multiplayer.cpp:185
-#, fuzzy
 msgid "Choose a different username"
-msgstr "连接到官方服务器"
+msgstr "选一个不同的用户名"
 
 #: src/multiplayer.cpp:202
-#, fuzzy
 msgid "Login"
-msgstr "登录名： "
+msgstr "登录"
 
 #: src/multiplayer.cpp:204 src/multiplayer_create.cpp:326
 #: src/multiplayer_lobby.cpp:786
@@ -7906,16 +7785,15 @@ msgstr "（空槽）"
 
 #: src/multiplayer_connect.cpp:692
 msgid "(Reserved for $playername)"
-msgstr ""
+msgstr "(预留给 $playername)"
 
 #: src/multiplayer_connect.cpp:822
-#, fuzzy
 msgid "Reserved"
-msgstr "蓄水池:"
+msgstr "保留"
 
 #: src/multiplayer_connect.cpp:823
 msgid "--give--"
-msgstr ""
+msgstr "--给与--"
 
 #: src/multiplayer_connect.cpp:945
 msgid "Only random sides in the current era."
@@ -8186,9 +8064,8 @@ msgid "--no games open--"
 msgstr "—当前没有已建立的游戏—"
 
 #: src/multiplayer_lobby.cpp:148
-#, fuzzy
 msgid " (Unknown Era)"
-msgstr "未知时代"
+msgstr "（未知时代）"
 
 #: src/multiplayer_lobby.cpp:426
 msgid "Unknown era: $era_id"
@@ -8313,13 +8190,12 @@ msgid "No multiplayer sides found"
 msgstr "没发现多人对战阵营"
 
 #: src/multiplayer_wait.cpp:303
-#, fuzzy
 msgid "Choose your faction:"
 msgstr "选择阵营："
 
 #: src/multiplayer_wait.cpp:303
 msgid "Starting position: "
-msgstr ""
+msgstr "开始位置："
 
 #: src/network.cpp:103
 msgid "invalid network handle"
@@ -8342,18 +8218,16 @@ msgid "Terrain with a movement cost less than 1 encountered."
 msgstr "遇到耗费移动力小于1的地形"
 
 #: src/play_controller.cpp:98
-#, fuzzy
 msgid "Loading level"
-msgstr "载入主屏幕。"
+msgstr "正在读取关卡文件"
 
 #: src/play_controller.cpp:119
 msgid "Initializing teams"
 msgstr "初始化队伍"
 
 #: src/play_controller.cpp:140
-#, fuzzy
 msgid "Loading units"
-msgstr "读取兵种文件。"
+msgstr "正在读取兵种文件"
 
 #: src/play_controller.cpp:147 src/play_controller.cpp:155
 msgid "Initializing display"
@@ -8413,7 +8287,7 @@ msgstr "未知场景： '"
 
 #: src/playmp_controller.cpp:209
 msgid "Undoing moves not yet transmitted to the server."
-msgstr ""
+msgstr "取消还没传输到服务器的移动。"
 
 #: src/playmp_controller.cpp:289
 msgid "End scenario"
@@ -8605,12 +8479,11 @@ msgstr " 包含 "
 
 #: src/serialization/parser.cpp:346
 msgid "$error, value '$value', previous '$previous_value' at $pos"
-msgstr ""
+msgstr "位于 $pos  值 '$value', 之前的值 '$previous_value'  出现错误 $error"
 
 #: src/serialization/parser.cpp:350
-#, fuzzy
 msgid "$error, value '$value' at $pos"
-msgstr "在$pos处发生$error"
+msgstr "位置 $pos 的值 '$value'  出现 $error"
 
 #: src/statistics_dialog.cpp:66 src/statistics_dialog.cpp:121
 msgid "Recruits"
@@ -8693,9 +8566,8 @@ msgid "TitleScreen button^Add-ons"
 msgstr "下载插件"
 
 #: src/titlescreen.cpp:383
-#, fuzzy
 msgid "TitleScreen button^Map Editor"
-msgstr "退出"
+msgstr "地图编辑器"
 
 #: src/titlescreen.cpp:385
 msgid "TitleScreen button^Language"
@@ -8753,7 +8625,7 @@ msgstr "下载用户自定的战役、时代或地图集"
 
 #: src/titlescreen.cpp:403
 msgid "Start the map editor"
-msgstr ""
+msgstr "开启地图编辑器"
 
 #: src/titlescreen.cpp:405
 msgid "Change the language"
@@ -8784,18 +8656,16 @@ msgid "Upload statistics"
 msgstr "上传统计资料"
 
 #: src/titlescreen.cpp:470
-#, fuzzy
 msgid "Help Wesnoth"
-msgstr "韦诺之战"
+msgstr "帮助韦诺之战"
 
 #: src/titlescreen.cpp:471
 msgid "Help Wesnoth by sending us information"
 msgstr "发送信息，帮助韦诺"
 
 #: src/unit.cpp:590
-#, fuzzy
 msgid "Unknown unit type '$type|' while generating traits"
-msgstr "未知单位种类 '$type|'"
+msgstr "生成头像时，未知单位种类 '$type|'"
 
 #: src/unit.cpp:791
 msgid "Unknown unit type '$type|'"
@@ -8842,14 +8712,14 @@ msgstr[0] "打击"
 msgstr[1] "打击"
 
 #: src/unit_types.cpp:217
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "% accuracy"
-msgstr "次攻击"
+msgstr "% 精确度"
 
 #: src/unit_types.cpp:227
 #, no-c-format
 msgid "% parry"
-msgstr ""
+msgstr "% 回避"
 
 #: src/unit_types.cpp:1017
 msgid "chaotic"
@@ -8864,19 +8734,16 @@ msgid "neutral"
 msgstr "中立"
 
 #: src/unit_types.cpp:1018
-#, fuzzy
 msgid "female^chaotic"
-msgstr "机械"
+msgstr "混乱"
 
 #: src/unit_types.cpp:1018
-#, fuzzy
 msgid "female^lawful"
-msgstr "忠诚"
+msgstr "守序"
 
 #: src/unit_types.cpp:1018
-#, fuzzy
 msgid "female^neutral"
-msgstr "不死"
+msgstr "中立"
 
 #: src/upload_log.cpp:323
 msgid ""
@@ -8910,49 +8777,78 @@ msgstr "开启摘要上传模式"
 #~ msgstr[0] "至少$timeout 秒都没能与服务器取得联系。连接超时。"
 #~ msgstr[1] "至少$timeout秒都没能与服务器取得联系。连接超时。"
 
-#, fuzzy
 #~ msgid " This unit is capable of basic healing and slowing dehydration."
-#~ msgstr "本单位可以治疗周围的单位，并治愈中毒效果。"
+#~ msgstr " 本单位可以治疗周围单位并且缓解脱水状态。"
 
-#, fuzzy
 #~ msgid ""
 #~ " This unit is capable of healing those around it, slowing dehydration, "
 #~ "and curing them of poison."
-#~ msgstr "本单位可以治疗周围的单位，并治愈中毒效果。"
+#~ msgstr " 本单位可以治疗周围的单位，缓解脱水状态，并清除毒素。"
+
+#~ msgid "define ai location"
+#~ msgstr "定义 ai 方位"
+
+#~ msgid "Location name?"
+#~ msgstr "方位名称？"
+
+#~ msgid "Range in Hexfields?"
+#~ msgstr "六角地形的范围？"
+
+#~ msgid "enable ai_controller"
+#~ msgstr "开启 ai_controller"
+
+#~ msgid "disable ai_controller"
+#~ msgstr "禁止 ai_controller"
+
+#~ msgid "Give new orders"
+#~ msgstr "给予新命令"
+
+#~ msgid "Which ally should i command?"
+#~ msgstr "我该指挥哪支盟军？"
+
+#~ msgid "It is very important.(value 90)"
+#~ msgstr "非常重要 (90)"
+
+#~ msgid "It is important.(value 50)"
+#~ msgstr "重要(50)"
+
+#~ msgid "It is not so important.(value 25)"
+#~ msgstr "不太重要(25)"
+
+#~ msgid "value: "
+#~ msgstr "值："
+
+#~ msgid "Defeat an enemy Leader!"
+#~ msgstr "打败一个敌军领袖！"
+
+#~ msgid "Protect an allied leader!"
+#~ msgstr "保护盟军首领！"
+
+#~ msgid "Defend a location!"
+#~ msgstr "守住一个地方！"
+
+#~ msgid "Which location should i protect?"
+#~ msgstr "我该保卫哪里？"
+
+#~ msgid ""
+#~ "@I don't want to be in command any more! Take care of yourselves! "
+#~ "(Disables AI_CONTROLLER)"
+#~ msgstr "@我不想再听了！管好你自己吧！ (关闭 AI_CONTROLLER)"
+
+#~ msgid "@Execute my orders!"
+#~ msgstr "@执行我的命令！"
 
 #~ msgid "Abilites"
 #~ msgstr "能力"
 
 #, fuzzy
-#~ msgid "define ai location"
-#~ msgstr "印度尼西亚语"
-
-#, fuzzy
-#~ msgid "Location name?"
-#~ msgstr "本机游戏"
-
-#, fuzzy
-#~ msgid "Give new orders"
-#~ msgstr "取消"
-
-#, fuzzy
-#~ msgid "value: "
-#~ msgstr "名称："
-
-#, fuzzy
-#~ msgid "Defeat an enemy Leader!"
+#~ msgid "\n"
 #~ msgstr ""
-#~ "胜利条件：\n"
-#~ "@打败敌人的领袖(们)"
-
-#~ msgid "Grassland"
-#~ msgstr "草原"
-
-#~ msgid "Snow"
-#~ msgstr "雪地"
-
-#~ msgid "Ice"
-#~ msgstr "冰面"
+#~ "\n"
+#~ "开启调试模式（在多人对战中无效）。查看<ref>dst=debug_commands text='调试模"
+#~ "式可用命令'</ref>。\n"
+#~ "要关闭调试模式可以使用 :nodebug 或者退出游戏。\n"
+#~ "\n"
 
 #, fuzzy
 #~ msgid ""
