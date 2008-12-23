@@ -48,7 +48,7 @@ LEVEL_RESULT play_replay_level(const config& game_config,
 	} catch (replay::error&) {
 	}
 
-	return LEVEL_CONTINUE;
+	return VICTORY;
 }
 
 replay_controller::replay_controller(const config& level, 

@@ -2803,7 +2803,7 @@ private:
 	void console_handler::do_next_level() {
 		if (!get_data().empty())
 			menu_handler_.gamestate_.next_scenario = get_data();
-		throw end_level_exception(LEVEL_CONTINUE_NO_SAVE);
+		throw end_level_exception(VICTORY, "", 100, false, false, false, true, false);
 	}
 	void console_handler::do_choose_level() {
 		std::vector<std::string> options;
@@ -2827,7 +2827,7 @@ private:
 
 		if (size_t(choice) < options.size()) {
 			menu_handler_.gamestate_.next_scenario = options[choice];
-			throw end_level_exception(LEVEL_CONTINUE_NO_SAVE);
+			throw end_level_exception(VICTORY, "", 100, false, false, false, true, false);
 		}
 	}
 	void console_handler::do_debug() {

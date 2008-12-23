@@ -2512,6 +2512,10 @@ namespace {
 
 		const std::string result = cfg["result"].base_str(); //do not translate
 		const std::string endlevel_music = cfg["music"];
+		
+		const bool carryover_report = utils::string_bool(cfg["carryover_report"],true);
+		const bool save = utils::string_bool(cfg["save"],true);
+		const bool linger_mode = utils::string_bool(cfg["linger_mode"],true);
 
 		if(result.empty() || result == "victory") {
 			const bool bonus = utils::string_bool(cfg["bonus"],true);
@@ -2521,14 +2525,18 @@ namespace {
 			const bool gold_add = utils::string_bool(cfg["carryover_add"],
 					game_config::gold_carryover_add);
 
-			throw end_level_exception(VICTORY, endlevel_music, carry_over, gold_add, bonus);
+			throw end_level_exception(VICTORY, endlevel_music, carry_over, gold_add, bonus, carryover_report, save, linger_mode);
 		} else if(result == "continue") {
-			throw end_level_exception(LEVEL_CONTINUE, endlevel_music);
+			lg::wml_error << "continue is deprecated as result in [endlevel],"
+				<< " use the new attributes instead.\n";
+			throw end_level_exception(VICTORY, endlevel_music, 100, false, false, false, true, false);
 		} else if(result == "continue_no_save") {
-			throw end_level_exception(LEVEL_CONTINUE_NO_SAVE);
+			lg::wml_error << "continue_no_save is deprecated as result in [endlevel],"
+				<< " use the new attributes instead.\n";
+			throw end_level_exception(VICTORY, endlevel_music, 100, false, false, false, false, false);
 		} else {
 			LOG_NG << "throwing event defeat...\n";
-			throw end_level_exception(DEFEAT, endlevel_music);
+			throw end_level_exception(DEFEAT, endlevel_music, -1, false, true, carryover_report, save, linger_mode);
 		}
 	}
 

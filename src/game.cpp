@@ -1603,7 +1603,7 @@ void game_controller::launch_game(RELOAD_GAME_DATA reload)
 		const LEVEL_RESULT result = play_game(disp(),state_,game_config_, log);
 		// don't show The End for multiplayer scenario
 		// change this if MP campaigns are implemented
-		if((result == VICTORY || result == LEVEL_CONTINUE_NO_SAVE) && (state_.campaign_type.empty() || state_.campaign_type != "multiplayer")) {
+		if(result == VICTORY && (state_.campaign_type.empty() || state_.campaign_type != "multiplayer")) {
 			the_end(disp(), state_.end_text, state_.end_text_duration);
 			about::show_about(disp(),state_.campaign);
 		}

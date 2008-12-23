@@ -28,8 +28,6 @@ enum LEVEL_RESULT {
 	VICTORY,
 	DEFEAT,
 	QUIT,
-	LEVEL_CONTINUE,
-	LEVEL_CONTINUE_NO_SAVE,
 	OBSERVER_END,
 	SKIP_TO_LINGER
 };
@@ -63,9 +61,15 @@ struct end_level_exception {
 		const std::string& endlevel_music_list="",
 		const int percentage = -1,
 		const bool add = false,
-		const bool bonus=true
+		const bool bonus=true,
+		const bool report=true,
+		const bool prescenario_save=true,
+		const bool linger=true
 	)
 		: result(res)
+		, carryover_report(report)
+		, save(prescenario_save)
+		, linger_mode(linger)
 		, gold_bonus(bonus)
 		, carryover_percentage(percentage)
 		, carryover_add(add)
@@ -73,6 +77,9 @@ struct end_level_exception {
 	{}
 
 	LEVEL_RESULT result;               /**< Game outcome. */
+	bool carryover_report;			   /**< Should a summary of the scenario outcome be displayed?*/
+	bool save;						   /**< Should a prescenario be created the next game?*/
+	bool linger_mode;				   /**< Should linger mode be invoked?*/
 	bool gold_bonus;                   /**< Should early-finish bonus be applied? */
 	int carryover_percentage;          /**< How much gold is carried over to next scenario. */
 	bool carryover_add;                /**< Add or replace next scenario's minimum starting gold. */

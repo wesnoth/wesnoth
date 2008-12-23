@@ -231,7 +231,7 @@ void playsingle_controller::report_victory(
 }
 
 LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& story, upload_log& log,
-												  bool skip_replay)
+												  bool skip_replay, end_level_exception* end_level_result)
 {
 	LOG_NG << "in playsingle_controller::play_scenario()...\n";
 
@@ -319,6 +319,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 		log.quit(status_.turn());
 		throw;
 	} catch(end_level_exception& end_level) {
+		*end_level_result = end_level;
 		if(!end_level.custom_endlevel_music.empty()) {
 			switch(end_level.result) {
 			case DEFEAT:
@@ -373,10 +374,9 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 			} else {
 				return QUIT;
 			}
-		} else if (end_level.result == VICTORY
-		|| end_level.result == LEVEL_CONTINUE
-		|| end_level.result == LEVEL_CONTINUE_NO_SAVE) {
-			gamestate_.completion = (end_level.result == LEVEL_CONTINUE_NO_SAVE ?
+		} else if (end_level.result == VICTORY) 
+		{
+			gamestate_.completion = (!end_level.linger_mode ?
 			                         "running" : "victory");
 			recorder.set_save_info_completion(gamestate_.completion);
 			try {
@@ -425,19 +425,6 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 				}
 			}
 
-			// 'continue' is like a victory, except it doesn't announce victory,
-			// and the player retains 100% of gold.
-			if(end_level.result == LEVEL_CONTINUE || end_level.result == LEVEL_CONTINUE_NO_SAVE) {
-				for(i=teams_.begin(); i!=teams_.end(); ++i) {
-					player_info *player=gamestate_.get_player(i->save_id());
-					if(player) {
-						player->gold = i->gold();
-					}
-				}
-
-				return end_level.result == LEVEL_CONTINUE_NO_SAVE ? LEVEL_CONTINUE_NO_SAVE : VICTORY;
-			}
-
 			std::stringstream report;
 			std::string title;
 
@@ -482,8 +469,11 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 					}
 				}
 			}
-
-			gui::message_dialog(*gui_, title, report.str()).show();
+			
+			if(end_level.carryover_report)
+			{
+				gui::message_dialog(*gui_, title, report.str()).show();
+			}
 
 			return VICTORY;
 		} else if (end_level.result == SKIP_TO_LINGER) {
