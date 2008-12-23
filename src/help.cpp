@@ -1531,15 +1531,21 @@ public:
 
 					//movement  -  range: 1 .. 5, unit_movement_type::UNREACHABLE=impassable
 					str.str(clear_stringstream);
-					if (moves > type_.movement() )		// cannot move in this terrain
+					const bool cannot_move = moves > type_.movement();
+					if (cannot_move)		// cannot move in this terrain
 						color = "red";
 					else if (moves > 1)
 						color = "yellow";
 					else
 						color = "white";
 
-
-					str << "<format>color=" << color << " text='"<< moves << "'</format>";
+					str << "<format>color=" << color << " text='";
+					if(cannot_move) {
+						str << "-";
+					} else {
+						str << moves;
+					}
+					str << "'</format>";
 					push_tab_pair(row, str.str());
 
 					table.push_back(row);
