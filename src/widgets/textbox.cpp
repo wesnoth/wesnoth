@@ -16,7 +16,6 @@
 
 #include "widgets/textbox.hpp"
 #include "clipboard.hpp"
-#include "font.hpp"
 #include "log.hpp"
 #include "video.hpp"
 
@@ -64,7 +63,7 @@ const std::string textbox::text() const
 }
 
 // set_text does not respect max_size_
-void textbox::set_text(const std::string& text)
+void textbox::set_text(const std::string& text, const SDL_Color& color)
 {
 	text_ = utils::string_to_wstring(text);
 	cursor_ = text_.size();
@@ -72,14 +71,14 @@ void textbox::set_text(const std::string& text)
 	selstart_ = -1;
 	selend_ = -1;
 	set_dirty(true);
-	update_text_cache(true);
+	update_text_cache(true, color);
 	handle_text_changed(text_);
 }
 
-void textbox::append_text(const std::string& text, bool auto_scroll)
+void textbox::append_text(const std::string& text, bool auto_scroll, const SDL_Color& color)
 {
 	if(text_image_.get() == NULL) {
-		set_text(text);
+		set_text(text, color);
 		return;
 	}
 
@@ -90,7 +89,7 @@ void textbox::append_text(const std::string& text, bool auto_scroll)
 	const bool is_at_bottom = get_position() == get_max_position();
 	const wide_string& wtext = utils::string_to_wstring(text);
 
-	const surface new_text = add_text_line(wtext);
+	const surface new_text = add_text_line(wtext, color);
 	const surface new_surface = create_compatible_surface(text_image_,std::max<size_t>(text_image_->w,new_text->w),text_image_->h+new_text->h);
 
 	SDL_SetAlpha(new_text.get(),0,0);
@@ -248,7 +247,7 @@ void textbox::scroll(unsigned int pos)
 	set_dirty(true);
 }
 
-surface textbox::add_text_line(const wide_string& text)
+surface textbox::add_text_line(const wide_string& text, const SDL_Color& color)
 {
 	line_height_ = font::get_max_height(font_size);
 
@@ -308,19 +307,19 @@ surface textbox::add_text_line(const wide_string& text)
 	}
 
 	const std::string s = utils::wstring_to_string(wrapped_text);
-	const surface res(font::get_rendered_text(s, font_size, font::NORMAL_COLOUR));
+	const surface res(font::get_rendered_text(s, font_size, color));
 
 	return res;
 }
 
 
-void textbox::update_text_cache(bool changed)
+void textbox::update_text_cache(bool changed, const SDL_Color& color)
 {
 	if(changed) {
 		char_x_.clear();
 		char_y_.clear();
 
-		text_image_.assign(add_text_line(text_));
+		text_image_.assign(add_text_line(text_, color));
 	}
 
 	int cursor_x = char_x_[cursor_];

@@ -17,6 +17,7 @@
 #include "construct_dialog.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
+#include "marked-up_text.hpp"
 #include "multiplayer_ui.hpp"
 #include "sound.hpp"
 #include "replay.hpp"
@@ -186,42 +187,55 @@ void chat::add_message(const time_t& time, const std::string& user,
 
 void chat::init_textbox(gui::textbox& textbox)
 {
-	std::string s;
-
 	for(msg_hist::const_iterator itor = message_history_.begin();
 			itor != message_history_.end(); ++itor) {
-		s.append(format_message(*itor));
+		textbox.append_text(format_message(*itor), true, itor->user == "server" ?
+				color_message(*itor): font::NORMAL_COLOUR);
 	}
 
-	textbox.set_text(s);
 	last_update_ = message_history_.size();
-	textbox.scroll_to_bottom();
 }
 
 void chat::update_textbox(gui::textbox& textbox)
 {
-	std::string s;
-
 	for(msg_hist::const_iterator itor = message_history_.begin() + last_update_;
 			itor != message_history_.end(); ++itor) {
-		s.append(format_message(*itor));
+		textbox.append_text(format_message(*itor), true, itor->user == "server" ?
+				color_message(*itor) : font::NORMAL_COLOUR);
 	}
-
-	textbox.append_text(s,true);
 
 	last_update_ = message_history_.size();
 }
 
 std::string chat::format_message(const msg& message)
 {
+	std::string msg_text = message.message;
+	if(message.user == "server") {
+		SDL_Color c;
+		int unused;
+		std::string::const_iterator after_markup = 
+			font::parse_markup(message.message.begin(), message.message.end(), &unused, &c, &unused);
+		
+		msg_text = std::string(after_markup,message.message.end());
+	}
 	if(message.message.substr(0,3) == "/me") {
 		return preferences::get_chat_timestamp(message.time) + "<" + message.user
-				+ message.message.substr(3) + ">\n";
+				+ msg_text.substr(3) + ">\n";
 	} else {
 		return preferences::get_chat_timestamp(message.time) + "<" + message.user
-				+ "> " + message.message + "\n";
+				+ "> " + msg_text + "\n";
 	}
 }
+
+SDL_Color chat::color_message(const msg& message) {
+	SDL_Color c = font::NORMAL_COLOUR;
+	// Normal users are not allowed to color their messages
+	if(message.user == "server") {
+		int unused;
+		font::parse_markup(message.message.begin(), message.message.end(), &unused, &c, &unused);
+	}
+	return c;
+};
 
 ui::ui(game_display& disp, const std::string& title, const config& cfg, chat& c, config& gamelist) :
 	gui::widget(disp.video()),

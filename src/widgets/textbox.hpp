@@ -17,6 +17,7 @@
 
 #include "../serialization/string_utils.hpp"
 #include "../sdl_utils.hpp"
+#include "font.hpp"
 
 #include "scrollarea.hpp"
 
@@ -31,8 +32,8 @@ public:
 	virtual ~textbox();
 
 	const std::string text() const;
-	void set_text(const std::string& text);
-	void append_text(const std::string& text,bool auto_scroll = false);
+	void set_text(const std::string& text, const SDL_Color& color =font::NORMAL_COLOUR);
+	void append_text(const std::string& text,bool auto_scroll = false, const SDL_Color& color =font::NORMAL_COLOUR);
 	void clear();
 	void process();
 
@@ -91,8 +92,8 @@ private:
 	void handle_event(const SDL_Event& event);
 
 	void draw_cursor(int pos, CVideo &video) const;
-	void update_text_cache(bool reset = false);
-	surface add_text_line(const wide_string& text);
+	void update_text_cache(bool reset = false, const SDL_Color& color =font::NORMAL_COLOUR);
+	surface add_text_line(const wide_string& text, const SDL_Color& color =font::NORMAL_COLOUR);
 	bool is_selection();
 	void erase_selection();
 

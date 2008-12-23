@@ -62,6 +62,7 @@ private:
 	typedef std::deque<msg> msg_hist;
 
 	std::string format_message(const msg& message);
+	SDL_Color color_message(const msg& message);
 
 	msg_hist message_history_;
 	msg_hist::size_type last_update_;
