@@ -905,8 +905,8 @@ TCPsocket get_received_data(TCPsocket sock, config& cfg, bool* gzipped,network::
 		buffer* buf = *itor;
 		if (gzipped)
 			*gzipped = buf->gzipped;
-		received_data_queue.erase(itor);
 		bandwidth_in.reset(new network::bandwidth_in((*itor)->raw_buffer.size()));
+		received_data_queue.erase(itor);
 		delete buf;
 		return res;
 	}
