@@ -2121,6 +2121,12 @@ private:
 					_("Mute all observers."), "");
 				register_command("ping", &chat_command_handler::do_network_send,
 					"");
+				register_command("green", &chat_command_handler::do_network_send,
+					"");
+				register_command("red", &chat_command_handler::do_network_send,
+					"");
+				register_command("yellow", &chat_command_handler::do_network_send,
+					"");
 				register_command("emote", &chat_command_handler::do_emote,
 					_("Send an emotion or personal action in chat."), "<message>");
 				register_alias("emote", "me");
@@ -2417,6 +2423,12 @@ private:
 			data.add_child(cmd)["username"] = args;
 		} else if (cmd == "ping") {
 			data[cmd] = lexical_cast<std::string>(time(NULL));
+		} else if (cmd == "green") {
+			data.add_child("query")["type"] = "lobbymsg @" + args;
+		} else if (cmd == "red") {
+			data.add_child("query")["type"] = "lobbymsg #" + args;
+		} else if (cmd == "yellow") {
+			data.add_child("query")["type"] = "lobbymsg <255,255,0>" + args;
 		}
 		network::send_data(data, 0, true);
 	}
