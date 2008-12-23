@@ -324,16 +324,22 @@ void replay_controller::play_side(const unsigned int /*team_index*/, bool){
 	statistics::reset_turn_stats(current_team().save_id());
 
 	try{
-		play_controller::init_side(player_number_ - 1, true);
-
-		DBG_REPLAY << "doing replay " << player_number_ << "\n";
-		try {
-			::do_replay(*gui_, map_, units_, teams_,
-					player_number_, status_, gamestate_);
-		} catch(replay::error&) {
-			if(!continue_replay()) {
-				throw;
+		try{
+			if (player_number_ == 1) {
+				play_controller::init_turn();
 			}
+			play_controller::init_side(player_number_ - 1, true);
+
+			DBG_REPLAY << "doing replay " << player_number_ << "\n";
+			try {
+				::do_replay(*gui_, map_, units_, teams_,
+						player_number_, status_, gamestate_);
+			} catch(replay::error&) {
+				if(!continue_replay()) {
+					throw;
+				}
+			}
+		} catch(end_turn_exception) {
 		}
 
 		finish_side_turn();

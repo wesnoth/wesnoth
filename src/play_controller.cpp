@@ -389,6 +389,13 @@ void play_controller::init_gui(){
 	}
 }
 
+void play_controller::init_turn(){
+	std::stringstream turn_stream;
+	turn_stream << status_.turn();
+	game_events::fire("turn " + turn_stream.str());
+	game_events::fire("new turn");
+}
+
 void play_controller::init_side(const unsigned int team_index, bool /*is_replay*/){
 	log_scope("player turn");
 	team& current_team = teams_[team_index];
@@ -417,10 +424,10 @@ void play_controller::init_side(const unsigned int team_index, bool /*is_replay*
 	*/
 	bool real_side_change = true;
 	if(first_turn_) {
+		first_turn_ = false;
 		game_events::fire("turn " + str_cast<size_t>(start_turn_));
 		game_events::fire("new turn");
 		game_events::fire("side turn");
-		first_turn_ = false;
 	} else if (team_index != (first_player_ - 1) || status_.turn() > start_turn_) {
 		// Fire side turn event only if real side change occurs,
 		// not counting changes from void to a side
@@ -502,8 +509,6 @@ void play_controller::finish_turn(){
 		update_locker lock_display(gui_->video(),recorder.is_skipping());
 		const std::string turn_num = event_stream.str();
 		gamestate_.set_variable("turn_number",turn_num);
-		game_events::fire("turn " + turn_num);
-		game_events::fire("new turn");
 	}
 }
 

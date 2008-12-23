@@ -110,6 +110,8 @@ void playmp_controller::play_side(const unsigned int team_index, bool save){
 						gui_->invalidate_all();
 						gui_->draw(true,true);
 					}
+				} else {
+					after_human_turn();
 				}
 			}
 			LOG_NG << "human finished turn...\n";

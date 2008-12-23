@@ -104,6 +104,7 @@ protected:
 	void fire_prestart(bool execute);
 	void fire_start(bool execute);
 	virtual void init_gui();
+	void init_turn();
 	virtual void init_side(const unsigned int team_index, bool is_replay = false);
 	void place_sides_in_preferred_locations(gamemap& map, const config::child_list& sides);
 	virtual void finish_side_turn();

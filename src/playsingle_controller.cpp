@@ -516,10 +516,23 @@ void playsingle_controller::play_turn(bool save)
 
 
 	for(player_number_ = first_player_; player_number_ <= teams_.size(); player_number_++) {
-		// If a side is empty skip over it.
-		if (current_team().is_empty()) continue;
+		try {
+			if (player_number_ == first_player_) {
+				init_turn();
+			}
+			// If a side is empty skip over it.
+			if (current_team().is_empty()) continue;
 
-		init_side(player_number_ - 1);
+			init_side(player_number_ - 1);
+		} catch (end_turn_exception) {
+			if (current_team().is_network() == false) {
+				turn_info turn_data(gamestate_, status_, *gui_, map_,
+						teams_, player_number_, units_, replay_sender_, undo_stack_);
+				recorder.end_turn();
+				turn_data.sync_network();
+			}
+			continue;
+		}
 
 		if (replaying_) {
 			LOG_NG << "doing replay " << player_number_ << "\n";
@@ -800,7 +813,10 @@ void playsingle_controller::play_ai_turn(){
 	ai_obj->unit_recruited().attach_handler(this);
 	ai_obj->unit_moved().attach_handler(this);
 	ai_obj->enemy_attacked().attach_handler(this);
-	ai_obj->play_turn();
+	try {
+		ai_obj->play_turn();
+	} catch (end_turn_exception) {
+	}
 	recorder.end_turn();
 	turn_data.sync_network();
 
