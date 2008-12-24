@@ -410,6 +410,8 @@ void twindow::draw()
 
 		/*
 		 * The actual update routine does the following:
+		 * - Restore the background.
+		 *
 		 * - draw [begin, end) the back ground of all widgets.
 		 *
 		 * - draw the children of the last item in the list, if this item is
@@ -420,6 +422,10 @@ void twindow::draw()
 		 *   which have two layers eg window or panel it draws the foreground
 		 *   layer. For other widgets it's a nop.  
 		 */
+
+		// Restore.
+		SDL_Rect rect = get_rect();
+		SDL_BlitSurface(restorer_, 0, frame_buffer, &rect);
 
 		// Background.
 		for(std::vector<twidget*>::iterator itor = item.begin();
