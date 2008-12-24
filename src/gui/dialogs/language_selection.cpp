@@ -67,7 +67,8 @@ void tlanguage_selection::post_show(twindow& window)
 		tlistbox* list = dynamic_cast<tlistbox*>(window.find_widget("language_list", false));
 		assert(list);
 
-		const unsigned res = list->get_selected_row();
+		const int res = list->get_selected_row();
+		assert(res != -1);
 
 		const std::vector<language_def>& languages = get_languages();
 		::set_language(languages[res]);

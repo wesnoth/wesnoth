@@ -644,7 +644,11 @@ tlistbox_definition::tlistbox_definition(const config& cfg) :
 
 tlistbox_definition::tresolution::tresolution(const config& cfg) :
 	tresolution_definition_(cfg),
+#ifndef NEW_DRAW
 	scrollbar(0)
+#else
+	grid(NULL)
+#endif	
 
 {
 /*WIKI
@@ -700,10 +704,21 @@ tlistbox_definition::tresolution::tresolution(const config& cfg) :
 	state.push_back(tstate_definition(cfg.child("state_enabled")));
 	state.push_back(tstate_definition(cfg.child("state_disabled")));
 
+
+#ifndef NEW_DRAW
 	const config* grid = cfg.child("scrollbar");
 	VALIDATE(grid, _("No scrollbar defined."));
 
 	scrollbar = new tbuilder_grid(*grid);
+#else
+	const config* child = cfg.child("grid");
+if(child) { // HACK needed to support old grids
+	VALIDATE(child, _("No grid defined."));
+
+	grid = new tbuilder_grid(*child);
+
+}	
+#endif	
 }
 
 tmenubar_definition::tmenubar_definition(const config& cfg) :

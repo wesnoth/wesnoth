@@ -21,6 +21,9 @@
 #include "gui/widgets/image.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/listbox.hpp"
+#ifdef NEW_DRAW
+#include "gui/widgets/generator.hpp"
+#endif
 #include "gui/widgets/minimap.hpp"
 #include "gui/widgets/scroll_label.hpp"
 #include "gui/widgets/slider.hpp"
@@ -763,21 +766,35 @@ tbuilder_listbox::tbuilder_listbox(const config& cfg) :
 
 twidget* tbuilder_listbox::build() const
 {
+#ifndef NEW_DRAW
 	tlistbox *listbox = new tlistbox();
-
+#else
+	tlistbox *listbox = new tlistbox(
+			true, true, tgenerator_::vertical_list, true);
+#endif
 	init_control(listbox);
 
-	listbox->set_list_builder(list_builder);
+	listbox->set_list_builder(list_builder); // FIXME in finalize???
+#ifndef NEW_DRAW
 	listbox->set_assume_fixed_row_size(assume_fixed_row_size);
 	listbox->set_scrollbar_mode(scrollbar_mode);
-
+#else
+	// scrollbar mode
+#endif
 	DBG_GUI << "Window builder: placed listbox '" << id << "' with defintion '" 
 		<< definition << "'.\n";
 
 	boost::intrusive_ptr<const tlistbox_definition::tresolution> conf =
-		boost::dynamic_pointer_cast<const tlistbox_definition::tresolution>(listbox->config());
+		boost::dynamic_pointer_cast
+		<const tlistbox_definition::tresolution>(listbox->config());
 	assert(conf);
 
+
+#ifdef NEW_DRAW
+	conf->grid->build(&listbox->grid());
+
+	listbox->finalize(header, footer, list_data);
+#else	
 	/*
 	 * We generate the following items to put in the listbox grid
 	 * - _scrollbar_grid the grid containing the scrollbar.
@@ -856,6 +873,7 @@ twidget* tbuilder_listbox::build() const
 	}
 
 	listbox->finalize_setup();
+#endif
 
 	return listbox;
 }

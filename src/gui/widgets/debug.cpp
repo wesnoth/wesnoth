@@ -21,6 +21,7 @@
 #include "gui/widgets/vertical_scrollbar_container.hpp"
 #ifdef NEW_DRAW
 #include "gui/widgets/generator.hpp"
+#include "gui/widgets/listbox.hpp"
 #include "gui/widgets/scrollbar_container.hpp"
 #endif
 #include "gui/widgets/window.hpp"
@@ -223,6 +224,11 @@ void tdebug_layout_graph::widget_generate_info(std::ostream& out,
 			out << "\t" << id << " -> " 
 				<< id << "_C"
 				<< " [label=\"(content)\"];\n";
+		}
+
+		const tlistbox* listbox = dynamic_cast<const tlistbox*>(widget);
+		if(listbox) {
+			assert(listbox->generator_);
 		}
 
 		const tgenerator_* generator = 
