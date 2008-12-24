@@ -194,21 +194,36 @@ void tscrollbar_container::
 			content_->get_screen_x(),
 			content_->get_screen_y());
 
-	const tpoint content_size = content_grid_->get_best_size();
+	const tpoint best_size = content_grid_->get_best_size();
+	const tpoint content_size(content_->get_width(), content_->get_height());
 
-	content_grid_->set_size(content_origin, content_size);
+	const tpoint content_grid_size(
+			std::max(best_size.x, content_size.x),
+			std::max(best_size.y, content_size.y));
+
+	/*
+	 * For set_size to work properly, we need to disable the parent
+	 * temporary. Without a parent the screen coordinates won't be
+	 * remapped, which is wanted in this case. For event handling the
+	 * parent is needed. 
+	 */
+	twidget* parent = content_grid_->parent();
+	content_grid_->set_parent(NULL);
+	content_grid_->set_size(content_origin, content_grid_size);
+	content_grid_->set_parent(parent);
+
 
 	// Set vertical scrollbar
 	assert(vertical_scrollbar_);
 	if(vertical_scrollbar_mode_ != HIDE) {
-		vertical_scrollbar_->set_item_count(content_size.y);
+		vertical_scrollbar_->set_item_count(content_grid_size.y);
 		vertical_scrollbar_->set_visible_items(content_->get_height());
 	}
 
 	// Set horizontal scrollbar
 	assert(horizontal_scrollbar_);
 	if(horizontal_scrollbar_mode_ != HIDE) {
-		horizontal_scrollbar_->set_item_count(content_size.x);
+		horizontal_scrollbar_->set_item_count(content_grid_size.x);
 		horizontal_scrollbar_->set_visible_items(content_->get_width());
 	}
 }
@@ -222,7 +237,7 @@ void tscrollbar_container::draw_background(surface& frame_buffer)
 	assert(content_ && content_grid_);
 
 	// Update the location depending on the scrollbars.
-	if(vertical_scrollbar_mode_ != HIDE 
+ 	if(vertical_scrollbar_mode_ != HIDE 
 			|| horizontal_scrollbar_mode_ != HIDE) {
 
 		assert(vertical_scrollbar_ && horizontal_scrollbar_);
@@ -243,9 +258,10 @@ void tscrollbar_container::draw_background(surface& frame_buffer)
 				content_->get_screen_x() - x_offset,
 				content_->get_screen_y() - y_offset);
 
-		content_grid_->set_size(content_origin, content_size);
+		// @todo FIXME implement this function.
+//		content_grid_->set_origin(content_origin);
 	}
-	
+
 	// Make sure the content can't draw outside its canvas.
 	clip_rect_setter clip_rect(frame_buffer, ::create_rect(
 		content_->get_screen_x(),
@@ -261,6 +277,35 @@ void tscrollbar_container::draw_foreground(surface& frame_buffer)
 {
 	// Inherited.
 	tcontainer_::draw_foreground(frame_buffer);
+}
+	
+twidget* tscrollbar_container::find_widget(
+		const tpoint& coordinate, const bool must_be_active)
+{
+	assert(content_);
+
+	twidget* result = tcontainer_::find_widget(coordinate, must_be_active);
+
+	if(result != content_) {
+		return result;
+	}
+
+	return content_->find_widget(coordinate, must_be_active);
+}
+
+const twidget* tscrollbar_container::find_widget(const tpoint& coordinate, 
+		const bool must_be_active) const
+{
+	assert(content_);
+
+	const twidget* result = 
+			tcontainer_::find_widget(coordinate, must_be_active);
+
+	if(result != content_) {
+		return result;
+	}
+
+	return content_->find_widget(coordinate, must_be_active);
 }
 
 void tscrollbar_container::vertical_scrollbar_click(twidget* caller)
@@ -346,6 +391,8 @@ void tscrollbar_container::finalize_setup()
 	content_grid_ = dynamic_cast<tgrid*>(
 			grid().swap_child("_content_grid", content_, true));
 	assert(content_grid_);
+
+	content_grid_->set_parent(this);
 
 	/***** Set the easy close status. *****/
 	/** @todo needs more testing. */

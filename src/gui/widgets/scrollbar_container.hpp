@@ -122,6 +122,16 @@ public:
 	/** Inherited from tcontainer_. */
 	void draw_foreground(surface& frame_buffer);
 
+	/** Inherited from tcontainer_. */
+	twidget* find_widget(const tpoint& coordinate, const bool must_be_active);
+
+	/** Inherited from tcontainer_. */
+	const twidget* find_widget(const tpoint& coordinate, 
+			const bool must_be_active) const;
+
+	/** Import overloaded versions. */
+	using tcontainer_::find_widget;
+
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
 	void set_vertical_scrollbar_mode(const tscrollbar_mode scrollbar_mode);
