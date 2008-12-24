@@ -213,6 +213,9 @@ public:
 	virtual void set_size(const tpoint& origin, const tpoint& size) = 0;
 
 	/** Inherited from twidget. */
+	virtual void set_origin(const tpoint& origin) = 0;
+
+	/** Inherited from twidget. */
 	virtual void draw_children(surface& frame_buffer) = 0;
 
 	/** Inherited from twidget. */

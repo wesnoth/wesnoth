@@ -143,6 +143,18 @@ void tvertical_list::set_size(const tpoint& origin, const tpoint& size)
 	assert(current_origin.y == origin.y + size.y);
 }
 
+void tvertical_list::set_origin(const tpoint& origin)
+{
+	tpoint current_origin = origin;
+	for(size_t i = 0; i < get_item_count(); ++i) {
+
+		tgrid& grid = get_item(i);
+
+		grid.set_origin(current_origin);
+		current_origin.y += grid.get_height();
+	}
+}
+
 twidget* tvertical_list::find_widget(
 		const tpoint& coordinate, const bool must_be_active)
 {

@@ -183,6 +183,14 @@ struct thorizontal_list
 	void set_size(const tpoint& /*origin*/, const tpoint& /*size*/)
 		{ assert(false); } 
 
+	/** 
+	 * Sets the origin of the generator.
+	 *
+	 * @param origin              The origin of the generator.
+	 */
+	void set_origin(const tpoint& /*origin*/)
+		{ assert(false); } 
+
 	/** Inherited from tgenerator_. */
 	twidget* find_widget(const tpoint&, const bool) { assert(false); }
 
@@ -205,6 +213,9 @@ struct tvertical_list
 
 	/** See thorizontal_list::set_size(). */
 	void set_size(const tpoint& origin, const tpoint& size);
+
+	/** See thorizontal_list::set_origin(). */
+	void set_origin(const tpoint& origin);
 
 	/** See thorizontal_list::find_widget(). */
 	twidget* find_widget(const tpoint& coordinate, const bool must_be_active);
@@ -251,6 +262,10 @@ struct tmatrix
 	void set_size(const tpoint& /*origin*/, const tpoint& /*size*/)
 		{ assert(false); } 
 
+	/** See thorizontal_list::set_origin(). */
+	void set_origin(const tpoint& /*origin*/)
+		{ assert(false); } 
+
 	/** See thorizontal_list::find_widget(). */
 	twidget* find_widget(const tpoint&, const bool) { assert(false); }
 
@@ -278,6 +293,10 @@ struct tindependant
 
 	/** See thorizontal_list::set_size(). */
 	void set_size(const tpoint& /*origin*/, const tpoint& /*size*/)
+		{ assert(false); } 
+
+	/** See thorizontal_list::set_origin(). */
+	void set_origin(const tpoint& /*origin*/)
 		{ assert(false); } 
 
 	/** See thorizontal_list::find_widget(). */
@@ -511,6 +530,15 @@ public:
 		twidget::set_size(origin, size);
 
 		placement::set_size(origin, size);
+	}
+
+	/** Inherited from tgenerator_. */
+	void set_origin(const tpoint& origin)
+	{
+ 		// Inherited.
+		twidget::set_origin(origin);
+
+		placement::set_origin(origin);
 	}
 
 	/** Inherited from tgenerator_. */

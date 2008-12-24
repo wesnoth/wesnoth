@@ -621,6 +621,26 @@ void tgrid::draw(surface& surface, const bool force,
 	set_dirty(false);
 }
 #else
+void tgrid::set_origin(const tpoint& origin)
+{
+	const tpoint movement = tpoint(
+			origin.x - get_screen_x(),
+			origin.y - get_screen_y());
+
+	// Inherited.
+	twidget::set_origin(origin);
+
+	foreach(tchild& child, children_) {
+
+		twidget* widget = child.widget();
+		assert(widget);
+
+		widget->set_origin(tpoint(
+				widget->get_screen_x() + movement.x,
+				widget->get_screen_y() + movement.y));
+	}
+}
+
 void tgrid::draw_children(surface& frame_buffer)
 {
 	foreach(tchild& child, children_) {

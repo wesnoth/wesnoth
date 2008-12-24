@@ -173,6 +173,16 @@ void tcontainer_::draw(surface& surface, const bool force,
 
 	grid_.draw(surface, force, redraw_background);
 }
+#else
+void tcontainer_::set_origin(const tpoint& origin)
+{
+	// Inherited.
+	twidget::set_origin(origin);
+
+	const SDL_Rect rect = get_client_rect();
+	const tpoint client_position(rect.x, rect.y);
+	grid_.set_origin(client_position);
+}
 #endif
 void tcontainer_::set_active(const bool active)
 {

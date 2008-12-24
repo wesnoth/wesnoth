@@ -478,6 +478,21 @@ public:
 	unsigned get_height() const { return h_; }
 
 #ifdef NEW_DRAW
+
+	/**
+	 * Sets the origin of the widget.
+	 *
+	 * The origin is stored in screen_x_ and screen_y_. This function can be
+	 * used to move the widget without dirting it.
+	 *
+	 * @param origin              The new origin.
+	 */
+	virtual void set_origin(const tpoint& origin) 
+	{ 
+		screen_x_ = origin.x;
+		screen_y_ = origin.y;
+	}
+
 	// Setting the screen locations doesn't dirty the widget.
 	void set_screen_x(const int x) { screen_x_ = x; }
 	int get_screen_x() const { return screen_x_; }

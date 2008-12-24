@@ -228,6 +228,21 @@ void tscrollbar_container::
 	}
 }
 
+void tscrollbar_container:: set_origin(const tpoint& origin)
+{
+	// Inherited.
+	tcontainer_::set_origin(origin);
+
+	// Set content size
+	assert(content_ && content_grid_);
+
+	const tpoint content_origin = tpoint(
+			content_->get_screen_x(),
+			content_->get_screen_y());
+	
+	content_grid_->set_origin(content_origin);
+}
+
 void tscrollbar_container::draw_background(surface& frame_buffer)
 {
 	// Inherited.
@@ -258,8 +273,7 @@ void tscrollbar_container::draw_background(surface& frame_buffer)
 				content_->get_screen_x() - x_offset,
 				content_->get_screen_y() - y_offset);
 
-		// @todo FIXME implement this function.
-//		content_grid_->set_origin(content_origin);
+		content_grid_->set_origin(content_origin);
 	}
 
 	// Make sure the content can't draw outside its canvas.

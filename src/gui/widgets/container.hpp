@@ -106,6 +106,9 @@ public:
 	        const bool invalidate_background = false);
 #else	
 	/** Inherited from twidget. */
+	void set_origin(const tpoint& origin);
+
+	/** Inherited from twidget. */
 	void draw_children(surface& frame_buffer) { grid_.draw_children(frame_buffer); }
 
 	/** Inherited from twidget. */
