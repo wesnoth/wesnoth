@@ -107,6 +107,9 @@ if(X11_FOUND)
   add_definitions(-D_X11)
 endif(X11_FOUND)
 
+# needed to have the new memory allocator work!!!
+add_definitions(-D_GNU_SOURCE=1)
+
 add_definitions(-DHAS_RELATIVE_LOCALEDIR)
 add_definitions(-DLOCALEDIR='\"${LOCALEDIR}\"')
 set(LOCALE_INSTALL ${DATADIR}/${LOCALEDIR})
