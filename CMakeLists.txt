@@ -42,6 +42,11 @@ pkg_check_modules( PANGOCAIRO REQUIRED pangocairo>=1.14.8 )
 #use pkg-config to find fontconfig:
 pkg_check_modules( FONTCONFIG REQUIRED fontconfig>=2.4.2 )
 
+#needed to get some SDL defines in... (as of rev31694 -D_GNU_SOURCE=1 is required!)
+set(SDL_CONFIG "sdl-config" CACHE STRING "Path to sdl-config script")
+exec_program(${SDL_CONFIG} ARGS "--cflags" OUTPUT_VARIABLE SDL_CFLAGS)
+add_definitions(${SDL_CFLAGS})
+
 #
 # Options
 #
@@ -106,9 +111,6 @@ endif(NOT ENABLE_EDITOR)
 if(X11_FOUND)
   add_definitions(-D_X11)
 endif(X11_FOUND)
-
-# needed to have the new memory allocator work!!!
-add_definitions(-D_GNU_SOURCE=1)
 
 add_definitions(-DHAS_RELATIVE_LOCALEDIR)
 add_definitions(-DLOCALEDIR='\"${LOCALEDIR}\"')
