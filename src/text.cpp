@@ -432,6 +432,23 @@ void ttext::recalculate(const bool force) const
 	}
 }
 
+/**
+ * Helper function to decode pixels.
+ *
+ * @param alpha                   The value of the alpha channel, this value
+ *                                must not be zero.
+ * @param sub_pixel               The address of a sub pixel, either red,
+ *                                green or blue.
+ */
+static void decode_pixel(const unsigned char alpha, unsigned char *sub_pixel)
+{
+	unsigned colour = *sub_pixel;
+	// Sature at 255.
+	*sub_pixel = colour >= alpha 
+			? 255
+			: static_cast<unsigned char>((colour << 8) / alpha);
+}
+
 void ttext::rerender(const bool force) const
 {
 	if(surface_dirty_ || force) {
@@ -465,11 +482,30 @@ void ttext::rerender(const bool force) const
 
 		pango_cairo_show_layout(cr, layout_);
 
-		// Draw twice otherwise we have some problems due to transparency
-		// we overcome the problem with drawing twice which is a kind of hack.
+#ifndef _WIN32		
+
+		// The cairo surface is in CAIRO_FORMAT_ARGB32 which uses
+		// pre-multiplied alpha. SDL doesn't use that so the pixels need to be
+		// decoded again.
+		for(size_t y = 0; y < height; ++y) {
+			for(size_t x = 0; x < width; ++x) {
+
+				unsigned char *pixel = &surface_buffer_[(y * width + x) * 4];
+				const unsigned char alpha = *(pixel + 3);
+
+				if(alpha == 0) {
+					continue;
+				}
+
+				decode_pixel(alpha, pixel + 0);
+				decode_pixel(alpha, pixel + 1);
+				decode_pixel(alpha, pixel + 2);
+			}
+		}
+#else
+		// The solution code above doesn't seem to work properly on windows so
+		// use the old trick of drawing the same text a few times.
 		pango_cairo_show_layout(cr, layout_);
-#ifdef _WIN32		
-		// On Windows drawing twice is not enough.
 		pango_cairo_show_layout(cr, layout_);
 		pango_cairo_show_layout(cr, layout_);
 #endif
