@@ -283,9 +283,9 @@ server_manager::server_manager(int port, CREATE_SERVER create_server) : free_(fa
 		try {
 			connection_ = connect("",port);
 			server_socket = get_socket(connection_);
-		} catch(network::error& e) {
+		} catch(network::error&) {
 			if(create_server == MUST_CREATE_SERVER) {
-				throw e;
+				throw;
 			} else {
 				return;
 			}

@@ -764,7 +764,7 @@ void play_sound_internal(const std::string& files, channel_group group, unsigned
 	try {
 		chunk = load_chunk(file, group);
 		assert(chunk);
-	} catch(const chunk_load_exception& e) {
+	} catch(const chunk_load_exception&) {
 		return;
 	}
 

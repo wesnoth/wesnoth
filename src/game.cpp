@@ -1298,7 +1298,7 @@ bool game_controller::play_multiplayer()
 		{
 			try {
 				start_wesnothd();
-			} catch(game::mp_server_error)
+			} catch(game::mp_server_error&)
 			{
 				std::string path = preferences::show_wesnothd_server_search(disp());
 

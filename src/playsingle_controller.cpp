@@ -633,7 +633,7 @@ void playsingle_controller::play_side(const unsigned int team_index, bool save)
 		} else if(current_team().is_ai()) {
 			try {
 				play_ai_turn();
-			} catch(fallback_ai_to_human_exception& e) {
+			} catch(fallback_ai_to_human_exception&) {
 				//give control to human for the rest of this turn
 				player_type_changed_ = true;
 				temporary_human = true;
