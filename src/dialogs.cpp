@@ -434,7 +434,7 @@ void save_preview_pane::draw_contents()
 	int ypos = area.y;
 
 	const unit_type_data::unit_type_map::const_iterator leader = unit_type_data::types().find(summary["leader"]);
-	if(leader != unit_type_data::types().end()) {
+	if(unit_type_data::types().unit_type_exists(summary["leader"])) {
 
 #ifdef LOW_MEM
 		const surface image(image::get_image(leader->second.image()));
