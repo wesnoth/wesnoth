@@ -78,11 +78,12 @@ bool teditor_settings::get_use_mdi() const
 	return use_mdi_field_->get_cache_value();
 }
 
-void teditor_settings::update_tod_display(twindow& /*window*/)
+void teditor_settings::update_tod_display(twindow& window)
 {
 	redraw_callback_(custom_tod_red_->get_value(),
 		custom_tod_green_->get_value(),
 		custom_tod_blue_->get_value());
+	window.set_dirty(true);
 }
 
 void teditor_settings::slider_update_callback(twindow& window)
