@@ -18,6 +18,8 @@
 #define ASSERTS_HPP_INCLUDED
 
 #include <iostream>
+#include <cstdlib>
+
 #ifdef _MSC_VER
 __declspec(noreturn)
 #endif
