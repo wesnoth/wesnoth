@@ -48,7 +48,7 @@ void show_dialog(twidget* caller)
  * This shows the title screen.
  */
 
-twindow ttitle_screen::build_window(CVideo& video)
+twindow* ttitle_screen::build_window(CVideo& video)
 {
 	return build(video, get_id(TITLE_SCREEN));
 }

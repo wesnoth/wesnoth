@@ -209,44 +209,45 @@ tbuilder_widget_ptr create_builder_widget(const config& cfg)
 
 } // namespace
 
-twindow build(CVideo& video, const std::string& type)
+twindow* build(CVideo& video, const std::string& type)
 {
 	std::vector<twindow_builder::tresolution>::const_iterator 
 		definition = get_window_builder(type);
 
 	// We set the values from the definition since we can only determine the 
 	// best size (if needed) after all widgets have been placed.
-	twindow window(video, 
+	twindow* window = new twindow(video, 
 		definition->x, definition->y, definition->width, definition->height, 
 		definition->automatic_placement, 
 		definition->horizontal_placement, definition->vertical_placement,
 		definition->definition);
+	assert(window);
 
 	log_scope2(gui, "Window builder: building grid for window");
 
-	window.set_easy_close(definition->easy_close);
+	window->set_easy_close(definition->easy_close);
 
 	const unsigned rows = definition->grid->rows;
 	const unsigned cols = definition->grid->cols;
 
-	window.set_rows_cols(rows, cols);
+	window->set_rows_cols(rows, cols);
 
 	for(unsigned x = 0; x < rows; ++x) {
-		window.set_row_grow_factor(x, definition->grid->row_grow_factor[x]);
+		window->set_row_grow_factor(x, definition->grid->row_grow_factor[x]);
 		for(unsigned y = 0; y < cols; ++y) {
 
 			if(x == 0) {
-				window.set_col_grow_factor(y, definition->grid->col_grow_factor[y]);
+				window->set_col_grow_factor(y, definition->grid->col_grow_factor[y]);
 			}
 
 			twidget* widget = definition->grid->widgets[x * cols + y]->build();
-			window.set_child(widget, x, y, 
+			window->set_child(widget, x, y, 
 				definition->grid->flags[x * cols + y], 
 				definition->grid->border_size[x * cols + y]);
 		}
 	}
 
-	window.add_to_keyboard_chain(&window);
+	window->add_to_keyboard_chain(window);
 
 	return window;
 }

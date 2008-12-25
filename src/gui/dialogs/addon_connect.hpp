@@ -35,7 +35,7 @@ private:
 	std::string host_name_;
 
 	/** Inherited from tdialog. */
-	twindow build_window(CVideo& video);
+	twindow* build_window(CVideo& video);
 
 	/** Inherited from tdialog. */
 	void pre_show(CVideo& video, twindow& window);

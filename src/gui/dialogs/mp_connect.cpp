@@ -53,7 +53,7 @@ private:
 	std::string host_name_;
 
 	/** Inherited from tdialog. */
-	twindow build_window(CVideo& video)
+	twindow* build_window(CVideo& video)
 		{ return build(video, get_id(MP_SERVER_LIST)); }
 
 	/** Inherited from tdialog. */
@@ -142,7 +142,7 @@ tmp_connect::tmp_connect() :
 {
 }
 
-twindow tmp_connect::build_window(CVideo& video)
+twindow* tmp_connect::build_window(CVideo& video)
 {
 	return build(video, get_id(MP_CONNECT));
 }

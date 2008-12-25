@@ -48,7 +48,7 @@ private:
 	 *
 	 * The subclasses need to implement the left or right definition.
 	 */
-	twindow build_window(CVideo& /*video*/) = 0;
+	twindow* build_window(CVideo& /*video*/) = 0;
 
 	/** Inherited from tmessage. */
 	void pre_show(CVideo& video, twindow& window);
@@ -65,7 +65,7 @@ public:
 	}
 private:	
 	/** Inherited from twml_message_. */
-	twindow build_window(CVideo& video);
+	twindow* build_window(CVideo& video);
 };
 
 /** Shows a dialog with the portrait on the right side. */
@@ -79,7 +79,7 @@ public:
 	}
 private:	
 	/** Inherited from twml_message_. */
-	twindow build_window(CVideo& video);
+	twindow* build_window(CVideo& video);
 };
 
 } // namespace gui2

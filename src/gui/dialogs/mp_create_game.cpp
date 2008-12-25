@@ -55,7 +55,7 @@ tmp_create_game::tmp_create_game(const config& cfg) :
 {
 }
 
-twindow tmp_create_game::build_window(CVideo& video)
+twindow* tmp_create_game::build_window(CVideo& video)
 {
 	return build(video, get_id(MP_CREATE_GAME));
 }

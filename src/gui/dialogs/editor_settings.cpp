@@ -137,7 +137,7 @@ void teditor_settings::update_selected_tod_info(twindow& window)
 	window.invalidate_layout();
 }
 
-twindow teditor_settings::build_window(CVideo& video)
+twindow* teditor_settings::build_window(CVideo& video)
 {
 	return build(video, get_id(EDITOR_SETTINGS));
 }

@@ -38,7 +38,7 @@ private:
 	tfield_integer* map_height_;
 
 	/** Inherited from tdialog. */
-	twindow build_window(CVideo& video);
+	twindow* build_window(CVideo& video);
 };
 
 } // namespace gui2

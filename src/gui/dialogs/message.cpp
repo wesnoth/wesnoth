@@ -72,7 +72,7 @@ void tmessage::pre_show(CVideo& /*video*/, twindow& window)
 	}
 }
 
-twindow tmessage::build_window(CVideo& video)
+twindow* tmessage::build_window(CVideo& video)
 {
 	return build(video, get_id(MESSAGE));
 }

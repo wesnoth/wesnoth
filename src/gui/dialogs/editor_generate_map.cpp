@@ -62,7 +62,7 @@ void teditor_generate_map::update_current_generator_label(twindow& window)
 	window.invalidate_layout();
 }
 
-twindow teditor_generate_map::build_window(CVideo& video)
+twindow* teditor_generate_map::build_window(CVideo& video)
 {
 	return build(video, get_id(EDITOR_GENERATE_MAP));
 }

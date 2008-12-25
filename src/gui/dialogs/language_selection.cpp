@@ -35,7 +35,7 @@ namespace gui2 {
  *                                     available languages.
  * @end_table
  */
-twindow tlanguage_selection::build_window(CVideo& video)
+twindow* tlanguage_selection::build_window(CVideo& video)
 {
 	return build(video, get_id(LANGUAGE_SELECTION));
 }

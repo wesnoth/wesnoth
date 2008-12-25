@@ -69,7 +69,7 @@ private:
 	EXPAND_DIRECTION expand_direction_;
 
 	/** Inherited from tdialog. */
-	twindow build_window(CVideo& video);
+	twindow* build_window(CVideo& video);
 	
 	void pre_show(CVideo& video, twindow& window);
 	

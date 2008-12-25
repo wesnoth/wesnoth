@@ -29,21 +29,22 @@ tdialog::~tdialog()
 
 void tdialog::show(CVideo& video)
 {
-	twindow window = build_window(video);
+	std::auto_ptr<twindow> window(build_window(video));
+	assert(window.get());
 
-	window.set_owner(this);
+	window->set_owner(this);
 
-	init_fields(window);
+	init_fields(*window);
 
-	pre_show(video, window);
+	pre_show(video, *window);
 
-	retval_ = window.show(restore_);
+	retval_ = window->show(restore_);
 
 	if(retval_ ==  twindow::OK) {
-		finalize_fields(window);
+		finalize_fields(*window);
 	}
 
-	post_show(window);
+	post_show(*window);
 }
 
 tfield_bool* tdialog::register_bool(const std::string& id, const bool optional,

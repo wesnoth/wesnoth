@@ -44,7 +44,7 @@ int teditor_new_map::map_height() const
 	return map_height_->get_cache_value();
 }
 
-twindow teditor_new_map::build_window(CVideo& video)
+twindow* teditor_new_map::build_window(CVideo& video)
 {
 	return build(video, get_id(EDITOR_NEW_MAP));
 }

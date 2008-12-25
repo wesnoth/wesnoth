@@ -128,7 +128,7 @@ private:
 	 *
 	 * @returns                   The window to show.
 	 */
-	virtual twindow build_window(CVideo& video) = 0;
+	virtual twindow* build_window(CVideo& video) = 0;
 
 	/**
 	 * Actions to be taken before showing the window.

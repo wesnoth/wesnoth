@@ -69,7 +69,7 @@ private:
 	bool auto_close_;
 
 	/** Inherited from tdialog. */
-	twindow build_window(CVideo& video);
+	twindow* build_window(CVideo& video);
 };
 
 /**

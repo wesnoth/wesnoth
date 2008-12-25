@@ -69,7 +69,7 @@ bool teditor_resize_map::copy_edge_terrain() const
 	return copy_edge_terrain_->get_cache_value();
 }
 
-twindow teditor_resize_map::build_window(CVideo& video)
+twindow* teditor_resize_map::build_window(CVideo& video)
 {
 	return build(video, get_id(EDITOR_RESIZE_MAP));
 }

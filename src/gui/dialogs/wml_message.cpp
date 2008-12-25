@@ -27,12 +27,12 @@ void twml_message_::pre_show(CVideo& video, twindow& window)
 	window.canvas(1).set_variable("portrait_mirror", variant(mirror_));
 }
 
-twindow twml_message_left::build_window(CVideo& video)
+twindow* twml_message_left::build_window(CVideo& video)
 {
 	return build(video, get_id(WML_MESSAGE_LEFT));
 }
 
-twindow twml_message_right::build_window(CVideo& video)
+twindow* twml_message_right::build_window(CVideo& video)
 {
 	return build(video, get_id(WML_MESSAGE_RIGHT));
 }

@@ -31,8 +31,7 @@ class twidget;
 class tgrid;
 class twindow;
 
-twindow build(CVideo& video, const std::string& type);
-
+twindow* build(CVideo& video, const std::string& type);
 
 /** Contains the info needed to instantiate a widget. */
 struct tbuilder_widget : public reference_counted_object
