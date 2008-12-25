@@ -1207,6 +1207,16 @@ void unit_type_data::unit_type_map_wrapper::set_config(const config& cfg)
 	build_all(unit_type::CREATED);
 }
 
+bool unit_type_data::unit_type_map_wrapper::unit_type_exists(const std::string& key) const
+{
+    if (key.empty() || (key == "random"))
+        return false;
+
+    unit_type_map::iterator itor = types_.find(key);
+
+    return ((itor == types_.end()) ? false : true);
+}
+
 unit_type_data::unit_type_map::const_iterator unit_type_data::unit_type_map_wrapper::find(const std::string& key, unit_type::BUILD_STATUS status) const
 {
     if (key.empty() || (key == "random"))

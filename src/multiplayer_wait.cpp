@@ -95,7 +95,7 @@ void wait::leader_preview_pane::draw_contents()
 		const unit_type* ut;
 		const unit_type* utg;
 
-		if (utypes.find(leader) != utypes.end() && leader != "random") {
+		if (utypes.unit_type_exists(leader) && leader != "random") {
 			ut = &(utypes.find(leader)->second);
 			if (!gender.empty()) {
 				if (gender == "female")
@@ -112,7 +112,7 @@ void wait::leader_preview_pane::draw_contents()
 		for(std::vector<std::string>::const_iterator itor = recruit_list.begin();
 				itor != recruit_list.end(); ++itor) {
 
-			if (utypes.find(*itor) != utypes.end()) {
+			if (utypes.unit_type_exists(leader)) {
 				if(itor != recruit_list.begin())
 					recruit_string << ", ";
 				recruit_string << utypes.find(*itor)->second.type_name();
@@ -477,7 +477,7 @@ void wait::generate_menu()
 		const unit_type* ut;
 		const unit_type* utg;
 
-		if (utypes.find(leader_type) != utypes.end() && leader_type != "random") {
+		if (utypes.unit_type_exists(leader_type) && leader_type != "random") {
 			ut = &(utypes.find(leader_type)->second);
 			if (!gender_id.empty()) {
 				if (gender_id == "female")

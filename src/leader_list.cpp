@@ -127,7 +127,7 @@ void leader_list_manager::update_gender_list(const std::string& leader)
 	}
 
 	unit_type_data::unit_type_map_wrapper& utypes = unit_type_data::types();
-	if (utypes.find(leader) != utypes.end()) {
+	if (utypes.unit_type_exists(leader)) {
 		const unit_type* ut;
 		const unit_type* utg;
 		ut = &(utypes.find(leader)->second);
@@ -178,7 +178,7 @@ void leader_list_manager::populate_leader_combo(int selected_index) {
 		unit_type_data::unit_type_map_wrapper& utypes = unit_type_data::types();
 
 		//const std::string name = data_->unit_types->find(*itor).type_name();
-		if (utypes.find(*itor) != utypes.end()) {
+		if (utypes.unit_type_exists(*itor)) {
 			const unit_type* ut;
 			ut = &(utypes.find(*itor)->second);
 			if (gender_combo_ != NULL && !genders_.empty() && size_t(gender_combo_->selected()) < genders_.size()) {
