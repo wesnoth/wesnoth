@@ -18,6 +18,8 @@
 #include "copy_policy.hpp"
 #include "sdl_utils.hpp"
 
+#include <boost/noncopyable.hpp>
+
 #include <pango/pango.h>
 #include <pango/pangocairo.h>
 
@@ -46,6 +48,7 @@ namespace internal {
  * render the text. See http://pango.org for more info.
  */
 class ttext 
+	: private boost::noncopyable
 {
 public:
 
@@ -288,7 +291,15 @@ private:
  *
  * [1] http://www.parashift.com/c++-faq-lite/ctors.html#faq-10.9
  */
-typedef policies::tcopy_policy<internal::ttext, policies::tdeep_copy> ttext;
+//typedef policies::tcopy_policy<internal::ttext, policies::tdeep_copy> ttext;
+
+/** 
+ * Due to changes to the widgets the copying of a ttext object is no longer
+ * needed so just made the base itself not copyable. For now keep a typedef.
+ *
+ * @todo once stable clean up this header.
+ */
+typedef internal::ttext ttext;
 
 } // namespace font 
 
