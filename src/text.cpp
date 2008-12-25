@@ -469,10 +469,6 @@ void ttext::rerender(const bool force) const
 
 		pango_cairo_update_context (cr, context_); // Needed?
          
-		/* paint background */
-//		cairo_set_source_rgb(cr, 0.0, 0.0, 0.0); 
-//		cairo_paint(cr);
-
 		/* set colour (used for foreground). */
 		cairo_set_source_rgba(cr, 
 			 (foreground_colour_ >> 24)         / 256.0,
