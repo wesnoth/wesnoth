@@ -289,6 +289,13 @@ void tscrollbar_container::draw_background(surface& frame_buffer)
 
 void tscrollbar_container::draw_foreground(surface& frame_buffer)
 {
+	// Make sure the content can't draw outside its canvas.
+	clip_rect_setter clip_rect(frame_buffer, ::create_rect(
+		content_->get_screen_x(),
+		content_->get_screen_y(),
+		content_->get_width(),
+		content_->get_height()));
+
 	// Inherited.
 	tcontainer_::draw_foreground(frame_buffer);
 }
