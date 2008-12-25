@@ -386,7 +386,7 @@ private:
 class tlistbox
 		: public tscrollbar_container
 {
-	friend class tbuilder_listbox;
+	friend struct tbuilder_listbox;
 	friend class tdebug_layout_graph;
 
 public:
