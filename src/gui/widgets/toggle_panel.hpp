@@ -125,7 +125,21 @@ public:
 			const bool invalidate_background = false)
 		{ tcontainer_::draw(surface, force, invalidate_background); }
 #else
-	// FIXME test whether we need to implement draw_background.	
+	/** Inherited from tpanel. */
+	void draw_background(surface& frame_buffer)  
+	{
+		// We don't have a fore and background and need to draw depending on
+		// our state, like a control. So we use the controls drawing method.
+		tcontrol::draw_background(frame_buffer);
+	}
+
+	/** Inherited from tpanel. */
+	void draw_foreground(surface& frame_buffer)
+	{
+		// We don't have a fore and background and need to draw depending on
+		// our state, like a control. So we use the controls drawing method.
+		tcontrol::draw_foreground(frame_buffer);
+	}
 #endif
 	/** 
 	 * Inherited from tpanel. 
