@@ -22,8 +22,6 @@
 
 #include "gui/widgets/container.hpp"
 
-#include <boost/noncopyable.hpp>
-
 namespace gui2 {
 
 class tscrollbar_;
@@ -39,7 +37,6 @@ class tspacer;
  */
 class tscrollbar_container 
 	: public tcontainer_
-	, private boost::noncopyable
 {
 	friend class tdebug_layout_graph;
 

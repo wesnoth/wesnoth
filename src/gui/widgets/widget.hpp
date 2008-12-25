@@ -22,6 +22,8 @@
 #include "sdl_utils.hpp"
 #include "wml_exception.hpp"
 
+#include <boost/noncopyable.hpp>
+
 #include <string>
 #include <cassert>
 
@@ -47,7 +49,9 @@ class twindow;
  * info needed for a real widget and some pure abstract functions which need to
  * be implemented by classes inheriting from this class.
  */
-class twidget : public virtual tevent_executor
+class twidget 
+	: private boost::noncopyable
+	, public virtual tevent_executor
 {
 	friend class tdebug_layout_graph;
 

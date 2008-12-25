@@ -19,8 +19,6 @@
 #ifndef GUI_WIDGETS_GENERATOR_HPP_INCLUDED
 #define GUI_WIDGETS_GENERATOR_HPP_INCLUDED
 
-#include <boost/noncopyable.hpp>
-
 #include "widget.hpp"
 #include "config.hpp"
 #include "gui/widgets/window_builder.hpp"
@@ -38,8 +36,7 @@ class tgrid;
  * is the factory to generate the classes as well.
  */
 class tgenerator_ 
-		: private boost::noncopyable
-		, public twidget
+		: public twidget
 {
 	friend class tdebug_layout_graph;
 
