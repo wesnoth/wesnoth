@@ -330,7 +330,11 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 				set_victory_music_list(end_level.custom_endlevel_music);
 			}
 		}
-	
+		
+		if(!team_manager_.get_teams().size())
+		{
+			return VICTORY; // this is probably only a story scenario, i.e. has its endlevel in the prestart event
+		}
 		const bool obs = team_manager_.is_observer();
 		if (game_config::exit_at_end) {
 			exit(0);
