@@ -19,6 +19,7 @@
 
 #include "global.hpp"
 
+#include "asserts.hpp"
 #include "gettext.hpp"
 #include "loadscreen.hpp"
 #include "log.hpp"
@@ -1254,7 +1255,7 @@ const config& unit_type_data::unit_type_map_wrapper::find_config(const std::stri
     ERR_CONFIG << "unit type not found: " << key << "\n";
     ERR_CONFIG << *unit_cfg_ << "\n";
 
-    assert(false && "unit type not found");
+    ERROR_LOG("unit type not found");
 }
 
 void unit_type_data::unit_type_map_wrapper::build_all(unit_type::BUILD_STATUS status) const

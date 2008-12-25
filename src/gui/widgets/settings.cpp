@@ -1257,7 +1257,7 @@ tresolution_definition_ptr get_control(
 		}
 	}
 
-	assert(false);
+	ERROR_LOG(false);
 }
 
 std::vector<twindow_builder::tresolution>::const_iterator get_window_builder(const std::string& type)
@@ -1288,7 +1288,7 @@ std::vector<twindow_builder::tresolution>::const_iterator get_window_builder(con
 		}
 	}
 
-	assert(false);
+	ERROR_LOG(false);
 }
 
 } // namespace gui2

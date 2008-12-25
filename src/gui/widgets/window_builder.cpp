@@ -16,6 +16,7 @@
 
 #include "gui/widgets/window_builder_private.hpp"
 
+#include "asserts.hpp"
 #include "foreach.hpp"
 #include "gettext.hpp"
 #include "gui/widgets/button.hpp"
@@ -203,7 +204,7 @@ tbuilder_widget_ptr create_builder_widget(const config& cfg)
 		return new tbuilder_grid(*(cfg.child("grid")));
 	} else {
 		std::cerr << cfg;
-		assert(false);
+		ERROR_LOG(false);
 	}
 }
 

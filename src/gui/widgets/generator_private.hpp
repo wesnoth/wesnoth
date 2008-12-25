@@ -164,7 +164,7 @@ struct thorizontal_list
 	 *
 	 * @param index                  The index of the new item.
 	 */
-	void create_item(const unsigned /*index*/) { assert(false); }
+	void create_item(const unsigned /*index*/) { ERROR_LOG(false); }
 
 	/**
 	 * Calculates the best size for the generator.
@@ -172,7 +172,7 @@ struct thorizontal_list
 	 * @return                    The best size,
 	 */
 	tpoint calculate_best_size() const
-		{ assert(false); return tpoint(0,0); }
+		{ ERROR_LOG(false); }
 
 	/**
 	 * Sets the size of the generator.
@@ -181,7 +181,7 @@ struct thorizontal_list
 	 * @param size                The size of the generator.
 	 */
 	void set_size(const tpoint& /*origin*/, const tpoint& /*size*/)
-		{ assert(false); }
+		{ ERROR_LOG(false); }
 
 	/**
 	 * Sets the origin of the generator.
@@ -189,14 +189,14 @@ struct thorizontal_list
 	 * @param origin              The origin of the generator.
 	 */
 	void set_origin(const tpoint& /*origin*/)
-		{ assert(false); }
+		{ ERROR_LOG(false); }
 
 	/** Inherited from tgenerator_. */
-	twidget* find_widget(const tpoint&, const bool) { assert(false); }
+	twidget* find_widget(const tpoint&, const bool) { ERROR_LOG(false); }
 
 	/** Inherited from tgenerator_. */
 	const twidget* find_widget(const tpoint&, const bool) const
-		{ assert(false); }
+		{ ERROR_LOG(false); }
 };
 
 /** Places the items in a vertical column. */
@@ -252,26 +252,26 @@ struct tmatrix
 	: public virtual tgenerator_
 {
 	/** See thorizontal_list::create_item(). */
-	void create_item(const unsigned /*index*/) { assert(false); }
+	void create_item(const unsigned /*index*/) { ERROR_LOG(false); }
 
 	/** See thorizontal_list::calculate_best_size(). */
 	tpoint calculate_best_size() const
-		{ assert(false); return tpoint(0,0); }
+		{ ERROR_LOG(false); }
 
 	/** See thorizontal_list::set_size(). */
 	void set_size(const tpoint& /*origin*/, const tpoint& /*size*/)
-		{ assert(false); }
+		{ ERROR_LOG(false); }
 
 	/** See thorizontal_list::set_origin(). */
 	void set_origin(const tpoint& /*origin*/)
-		{ assert(false); }
+		{ ERROR_LOG(false); }
 
 	/** See thorizontal_list::find_widget(). */
-	twidget* find_widget(const tpoint&, const bool) { assert(false); }
+	twidget* find_widget(const tpoint&, const bool) { ERROR_LOG(false); }
 
 	/** See thorizontal_list::find_widget(). */
 	const twidget* find_widget(const tpoint&, const bool) const
-		{ assert(false); }
+		{ ERROR_LOG(false); }
 };
 
 /**
@@ -285,26 +285,26 @@ struct tindependant
 	: public virtual tgenerator_
 {
 	/** See thorizontal_list::create_item(). */
-	void create_item(const unsigned /*index*/) { assert(false); }
+	void create_item(const unsigned /*index*/) { ERROR_LOG(false); }
 
 	/** See thorizontal_list::calculate_best_size(). */
 	tpoint calculate_best_size() const
-		{ assert(false); return tpoint(0,0); }
+		{ ERROR_LOG(false); }
 
 	/** See thorizontal_list::set_size(). */
 	void set_size(const tpoint& /*origin*/, const tpoint& /*size*/)
-		{ assert(false); }
+		{ ERROR_LOG(false); }
 
 	/** See thorizontal_list::set_origin(). */
 	void set_origin(const tpoint& /*origin*/)
-		{ assert(false); }
+		{ ERROR_LOG(false); }
 
 	/** See thorizontal_list::find_widget(). */
-	twidget* find_widget(const tpoint&, const bool) { assert(false); }
+	twidget* find_widget(const tpoint&, const bool) { ERROR_LOG(false); }
 
 	/** See thorizontal_list::find_widget(). */
 	const twidget* find_widget(const tpoint&, const bool) const
-		{ assert(false); }
+		{ ERROR_LOG(false); }
 };
 
 } // namespace placement
