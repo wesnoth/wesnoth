@@ -558,6 +558,20 @@ public:
 		}
 	}
 
+	/** Inherited from tgenerator_. */
+	twidget* find_widget(
+			const tpoint& coordinate, const bool must_be_active)
+	{
+		return placement::find_widget(coordinate, must_be_active);
+	}
+
+	/** Inherited from tgenerator_. */
+	const twidget* find_widget(
+			const tpoint& coordinate, const bool must_be_active) const
+	{
+		return placement::find_widget(coordinate, must_be_active);
+	}
+
 protected:
 
 	/** Inherited from tgenerator_. */
