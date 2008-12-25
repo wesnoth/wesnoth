@@ -63,7 +63,8 @@ replay_controller::replay_controller(const config& level,
 	delay_(0),
 	is_playing_(false),
 	show_everything_(false),
-	show_team_(1)
+	show_team_(1),
+	skip_next_turn_(false)
 {
 	init();
 	gamestate_start_ = gamestate_;
@@ -325,8 +326,9 @@ void replay_controller::play_side(const unsigned int /*team_index*/, bool){
 
 	try{
 		try{
-			if (player_number_ == 1) {
-				play_controller::init_turn();
+			if (skip_next_turn_) {
+				skip_next_turn_ = false;
+				throw end_turn_exception();
 			}
 			play_controller::init_side(player_number_ - 1, true);
 
@@ -355,7 +357,11 @@ void replay_controller::play_side(const unsigned int /*team_index*/, bool){
 
 		if (static_cast<size_t>(player_number_) > teams_.size()){
 			status_.next_turn();
-			finish_turn();
+			try {
+				finish_turn();
+			} catch (end_turn_exception) {
+				skip_next_turn_ = true;
+			}
 			player_number_ = 1;
 			current_turn_++;
 		}

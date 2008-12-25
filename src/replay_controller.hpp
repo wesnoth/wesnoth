@@ -70,6 +70,7 @@ private:
 
 	bool show_everything_;
 	unsigned int show_team_;
+	bool skip_next_turn_;
 };
 
 

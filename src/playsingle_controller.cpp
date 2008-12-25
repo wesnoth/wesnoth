@@ -47,6 +47,7 @@ playsingle_controller::playsingle_controller(const config& level,
 	player_type_changed_(false),
 	replaying_(false),
 	turn_over_(false),
+	skip_next_turn_(false),
 	victory_music_(),
 	defeat_music_()
 {
@@ -516,13 +517,13 @@ void playsingle_controller::play_turn(bool save)
 
 
 	for(player_number_ = first_player_; player_number_ <= teams_.size(); player_number_++) {
+		// If a side is empty skip over it.
+		if (current_team().is_empty()) continue;
 		try {
-			if (player_number_ == first_player_) {
-				init_turn();
+			if (skip_next_turn_) {
+				skip_next_turn_ = false;
+				throw end_turn_exception();
 			}
-			// If a side is empty skip over it.
-			if (current_team().is_empty()) continue;
-
 			init_side(player_number_ - 1);
 		} catch (end_turn_exception) {
 			if (current_team().is_network() == false) {
@@ -572,7 +573,12 @@ void playsingle_controller::play_turn(bool save)
 	// Time has run out
 	check_time_over();
 
-	finish_turn();
+	try {
+		finish_turn();
+	} catch (end_turn_exception) {
+		// If [end_turn] is encountered, skip the first existing side's turn.
+		skip_next_turn_ = true;
+	}
 }
 
 void playsingle_controller::play_side(const unsigned int team_index, bool save)

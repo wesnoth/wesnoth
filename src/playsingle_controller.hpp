@@ -84,6 +84,7 @@ protected:
 	bool player_type_changed_;
 	bool replaying_;
 	bool turn_over_;
+	bool skip_next_turn_;
 private:
 	void report_victory(std::stringstream& report,
 		    end_level_exception& end_level,

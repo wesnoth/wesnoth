@@ -389,13 +389,6 @@ void play_controller::init_gui(){
 	}
 }
 
-void play_controller::init_turn(){
-	std::stringstream turn_stream;
-	turn_stream << status_.turn();
-	game_events::fire("turn " + turn_stream.str());
-	game_events::fire("new turn");
-}
-
 void play_controller::init_side(const unsigned int team_index, bool /*is_replay*/){
 	log_scope("player turn");
 	team& current_team = teams_[team_index];
@@ -509,6 +502,8 @@ void play_controller::finish_turn(){
 		update_locker lock_display(gui_->video(),recorder.is_skipping());
 		const std::string turn_num = event_stream.str();
 		gamestate_.set_variable("turn_number",turn_num);
+		game_events::fire("turn " + turn_num);
+		game_events::fire("new turn");
 	}
 }
 
