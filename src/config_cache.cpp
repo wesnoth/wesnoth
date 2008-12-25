@@ -32,6 +32,8 @@
 #define LOG_CACHE LOG_STREAM(info, cache)
 #define DBG_CACHE LOG_STREAM(debug, cache)
 
+#define NEW_DRAW
+
 namespace game_config {
 
 	config_cache& config_cache::instance()

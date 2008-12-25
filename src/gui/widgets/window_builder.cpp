@@ -12,6 +12,8 @@
    See the COPYING file for more details.
 */
 
+#define NEW_DRAW
+
 #include "gui/widgets/window_builder_private.hpp"
 
 #include "foreach.hpp"

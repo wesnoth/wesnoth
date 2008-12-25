@@ -12,6 +12,8 @@
    see the copying file for more details.
 */
 
+#define NEW_DRAW
+
 #ifdef NEW_DRAW
 
 #include "gui/widgets/scrollbar_container.hpp"

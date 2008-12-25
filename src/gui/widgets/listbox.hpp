@@ -12,6 +12,8 @@
    see the copying file for more details.
 */
 
+#define NEW_DRAW
+
 #ifndef GUI_WIDGETS_LISTBOX_HPP_INCLUDED
 #define GUI_WIDGETS_LISTBOX_HPP_INCLUDED
 

@@ -12,6 +12,8 @@
    see the copying file for more details.
 */
 
+#define NEW_DRAW
+
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 
 #include "gui/widgets/debug.hpp"

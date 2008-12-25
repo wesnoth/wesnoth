@@ -18,6 +18,8 @@
  *  which has the event management as well.
  */
 
+#define NEW_DRAW
+
 #ifndef GUI_WIDGETS_WINDOW_HPP_INCLUDED
 #define GUI_WIDGETS_WINDOW_HPP_INCLUDED
 
