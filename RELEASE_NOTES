@@ -24,3 +24,17 @@ Compressed start of scenario saves are recognized
 again by the load-game dialog.
 
 ***
+
+The drawing engine for the new widgets is rewritten, the engine does show
+scrollbars too often, which will be fixed later.
+
+***
+
+The game now has two ingame dialogs, the old one and a new one. The new one
+shows a transparent portait which will be scaled to fit nicely on the screen.
+This might need some tuning. This means all portraits made by Kitty and the new
+portraits of LordBob can now be shown in their full glory.
+(Note the WML part of it is not documented since the API is not stable yet,
+this will be done before 1.6.)
+
+***

@@ -2928,7 +2928,7 @@ namespace {
 			if (side_for_show && !get_replay_source().is_skipping())
 			{
 				// We whether we can show the new dialog.
-				if(gui2::new_widgets && options.empty() && speaker != units->end()) {
+				if(options.empty() && speaker != units->end()) {
 					// Get the portrait and if found proceed to use the new dialog.
 
 					const tportrait* portrait =
