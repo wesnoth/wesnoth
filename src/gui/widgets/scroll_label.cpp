@@ -115,7 +115,7 @@ void tscroll_label::finalize_subclass()
 	 * This setting shoul be mutual exclusive with the horizontal scrollbar.
 	 * Also the scroll_grid needs to set the status for the scrollbars.
 	 */
-	lbl->set_can_wrap(false);
+	lbl->set_can_wrap(true);
 }
 #endif
 #ifndef NEW_DRAW
