@@ -53,7 +53,7 @@ map_generator* teditor_generate_map::get_selected_map_generator()
 
 void teditor_generate_map::update_current_generator_label(twindow& window)
 {
-	std::stringstream ss; 
+	std::stringstream ss;
 	ss << lexical_cast<std::string>(current_map_generator_ + 1);
 	ss << "/" << lexical_cast<std::string>(map_generators_.size());
 	ss << ": " << get_selected_map_generator()->name() << ", " << get_selected_map_generator()->config_name();

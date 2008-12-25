@@ -60,13 +60,13 @@ void callback_vertical_scrollbar_button(twidget* caller)
 {
 	gui2::get_parent<gui2::tscrollbar_container>
 		(caller)->vertical_scrollbar_click(caller);
-}	
+}
 
 void callback_horizontal_scrollbar_button(twidget* caller)
 {
 	gui2::get_parent<gui2::tscrollbar_container>
 		(caller)->horizontal_scrollbar_click(caller);
-}	
+}
 
 void callback_vertical_scrollbar(twidget* caller)
 {
@@ -123,7 +123,7 @@ void tscrollbar_container::
 {
 	// Inherited.
 	twidget::layout_use_vertical_scrollbar(maximum_height);
-	
+
 	tpoint size = get_best_size();
 
 	size.y = maximum_height;
@@ -138,7 +138,7 @@ void tscrollbar_container::
 {
 	// Inherited.
 	twidget::layout_use_horizontal_scrollbar(maximum_width);
-	
+
 	tpoint size = get_best_size();
 
 	size.x = maximum_width;
@@ -148,18 +148,18 @@ void tscrollbar_container::
 
 tpoint tscrollbar_container::calculate_best_size() const
 {
-	log_scope2(gui_layout, 
+	log_scope2(gui_layout,
 		std::string("tscrollbar_container ") + __func__);
 
 	/***** get vertical scrollbar size *****/
-	const tpoint vertical_scrollbar = 
-			vertical_scrollbar_mode_ == HIDE 
+	const tpoint vertical_scrollbar =
+			vertical_scrollbar_mode_ == HIDE
 			? tpoint(0, 0)
 			: vertical_scrollbar_grid_->get_best_size();
 
 	/***** get horizontal scrollbar size *****/
-	const tpoint horizontal_scrollbar = 
-			horizontal_scrollbar_mode_ == HIDE 
+	const tpoint horizontal_scrollbar =
+			horizontal_scrollbar_mode_ == HIDE
 			? tpoint(0, 0)
 			: horizontal_scrollbar_grid_->get_best_size();
 
@@ -168,12 +168,12 @@ tpoint tscrollbar_container::calculate_best_size() const
 	const tpoint content = content_grid_->get_best_size();
 
 	const tpoint result(
-			vertical_scrollbar.x + 
+			vertical_scrollbar.x +
 				std::max(horizontal_scrollbar.x, content.x),
-			horizontal_scrollbar.y + 
+			horizontal_scrollbar.y +
 				std::max(vertical_scrollbar.y,  content.y));
 
-	DBG_G_L << "tscrollbar_container" 
+	DBG_G_L << "tscrollbar_container"
 		<< " vertical_scrollbar " << vertical_scrollbar
 		<< " horizontal_scrollbar " << horizontal_scrollbar
 		<< " content " << content
@@ -207,7 +207,7 @@ void tscrollbar_container::
 	 * For set_size to work properly, we need to disable the parent
 	 * temporary. Without a parent the screen coordinates won't be
 	 * remapped, which is wanted in this case. For event handling the
-	 * parent is needed. 
+	 * parent is needed.
 	 */
 	twidget* parent = content_grid_->parent();
 	content_grid_->set_parent(NULL);
@@ -241,7 +241,7 @@ void tscrollbar_container:: set_origin(const tpoint& origin)
 	const tpoint content_origin = tpoint(
 			content_->get_screen_x(),
 			content_->get_screen_y());
-	
+
 	content_grid_->set_origin(content_origin);
 }
 
@@ -254,7 +254,7 @@ void tscrollbar_container::draw_background(surface& frame_buffer)
 	assert(content_ && content_grid_);
 
 	// Update the location depending on the scrollbars.
- 	if(vertical_scrollbar_mode_ != HIDE 
+ 	if(vertical_scrollbar_mode_ != HIDE
 			|| horizontal_scrollbar_mode_ != HIDE) {
 
 		assert(vertical_scrollbar_ && horizontal_scrollbar_);
@@ -301,7 +301,7 @@ void tscrollbar_container::draw_foreground(surface& frame_buffer)
 	// Inherited.
 	tcontainer_::draw_foreground(frame_buffer);
 }
-	
+
 twidget* tscrollbar_container::find_widget(
 		const tpoint& coordinate, const bool must_be_active)
 {
@@ -316,12 +316,12 @@ twidget* tscrollbar_container::find_widget(
 	return content_->find_widget(coordinate, must_be_active);
 }
 
-const twidget* tscrollbar_container::find_widget(const tpoint& coordinate, 
+const twidget* tscrollbar_container::find_widget(const tpoint& coordinate,
 		const bool must_be_active) const
 {
 	assert(content_);
 
-	const twidget* result = 
+	const twidget* result =
 			tcontainer_::find_widget(coordinate, must_be_active);
 
 	if(result != content_) {
@@ -336,7 +336,7 @@ void tscrollbar_container::vertical_scrollbar_click(twidget* caller)
 	/** @todo Hack to capture the keyboard focus. */
 	get_window()->keyboard_capture(this);
 
-	const std::map<std::string, tscrollbar_::tscroll>::const_iterator 
+	const std::map<std::string, tscrollbar_::tscroll>::const_iterator
 		itor = scroll_lookup().find(caller->id());
 
 	assert(itor != scroll_lookup().end());
@@ -351,7 +351,7 @@ void tscrollbar_container::horizontal_scrollbar_click(twidget* caller)
 	/** @todo Hack to capture the keyboard focus. */
 	get_window()->keyboard_capture(this);
 
-	const std::map<std::string, tscrollbar_::tscroll>::const_iterator 
+	const std::map<std::string, tscrollbar_::tscroll>::const_iterator
 		itor = scroll_lookup().find(caller->id());
 
 	assert(itor != scroll_lookup().end());
@@ -365,7 +365,7 @@ void tscrollbar_container::finalize_setup()
 {
 	/***** Setup vertical scrollbar *****/
 
-	vertical_scrollbar_grid_ = 
+	vertical_scrollbar_grid_ =
 		find_widget<tgrid>("_vertical_scrollbar_grid", false, true);
 
 	vertical_scrollbar_ = vertical_scrollbar_grid_->
@@ -375,7 +375,7 @@ void tscrollbar_container::finalize_setup()
 		set_callback_positioner_move(callback_vertical_scrollbar);
 
 	/***** Setup horizontal scrollbar *****/
-	horizontal_scrollbar_grid_ = 
+	horizontal_scrollbar_grid_ =
 		find_widget<tgrid>("_horizontal_scrollbar_grid", false, true);
 
 	horizontal_scrollbar_ = horizontal_scrollbar_grid_->
@@ -419,7 +419,7 @@ void tscrollbar_container::finalize_setup()
 
 	/***** Set the easy close status. *****/
 	/** @todo needs more testing. */
-	set_block_easy_close(get_visible() 
+	set_block_easy_close(get_visible()
 			&& get_active() && does_block_easy_close());
 
 	/***** Let our subclasses initialize themselves. *****/
@@ -428,7 +428,7 @@ void tscrollbar_container::finalize_setup()
 
 void tscrollbar_container::
 		set_vertical_scrollbar_mode(const tscrollbar_mode scrollbar_mode)
-{ 
+{
 	if(vertical_scrollbar_mode_ != scrollbar_mode) {
 		vertical_scrollbar_mode_ = scrollbar_mode;
 		show_vertical_scrollbar(vertical_scrollbar_mode_ != HIDE);
@@ -437,7 +437,7 @@ void tscrollbar_container::
 
 void tscrollbar_container::
 		set_horizontal_scrollbar_mode(const tscrollbar_mode scrollbar_mode)
-{ 
+{
 	if(horizontal_scrollbar_mode_ != scrollbar_mode) {
 		horizontal_scrollbar_mode_ = scrollbar_mode;
 		show_horizontal_scrollbar(horizontal_scrollbar_mode_ != HIDE);
@@ -480,7 +480,7 @@ void tscrollbar_container::set_scrollbar_button_status()
 		}
 
 		/***** Set the status if the scrollbars *****/
-		vertical_scrollbar_->set_active( !(vertical_scrollbar_->at_begin() 
+		vertical_scrollbar_->set_active( !(vertical_scrollbar_->at_begin()
 				&& vertical_scrollbar_->at_end()));
 	}
 
@@ -506,7 +506,7 @@ void tscrollbar_container::set_scrollbar_button_status()
 		}
 
 		/***** Set the status if the scrollbars *****/
-		horizontal_scrollbar_->set_active( !(horizontal_scrollbar_->at_begin() 
+		horizontal_scrollbar_->set_active( !(horizontal_scrollbar_->at_begin()
 				&& horizontal_scrollbar_->at_end()));
 	}
 }

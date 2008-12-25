@@ -31,7 +31,7 @@ namespace {
  * == Multiplayer server list ==
  *
  * This shows the dialog with a list of predefined multiplayer servers.
- * 
+ *
  * @start_table = container--SPECIAL
  *     server_list listbox             Listbox with the predefined servers to
  *                                     connect to.
@@ -43,7 +43,7 @@ namespace {
 class tmp_server_list : public tdialog
 {
 public:
-	tmp_server_list() : 
+	tmp_server_list() :
 		host_name_()
 	{}
 
@@ -65,15 +65,15 @@ private:
 
 void tmp_server_list::pre_show(CVideo& /*video*/, twindow& window)
 {
-	tlistbox* list = 
+	tlistbox* list =
 		dynamic_cast<tlistbox*>(window.find_widget("server_list", false));
 	VALIDATE(list, missing_widget("server_list"));
 
-	const std::vector<game_config::server_info>& 
+	const std::vector<game_config::server_info>&
 		pref_servers = preferences::server_list();
 
 	foreach(const game_config::server_info& server, pref_servers) {
-		
+
 		std::map<std::string, string_map> data;
 		string_map item;
 
@@ -91,15 +91,15 @@ void tmp_server_list::post_show(twindow& window)
 {
 	if(get_retval() == twindow::OK) {
 
-		const tlistbox* list = 
+		const tlistbox* list =
 			dynamic_cast<tlistbox*>(window.find_widget("server_list", false));
 		assert(list);
 
 		const tgrid* row = list->get_row_grid(list->get_selected_row());
 		assert(row);
 
-		const tcontrol* address = 
-			dynamic_cast<const tcontrol*>(row->find_widget("address", false)); 
+		const tcontrol* address =
+			dynamic_cast<const tcontrol*>(row->find_widget("address", false));
 		assert(address);
 
 		host_name_ = address->label();
@@ -118,7 +118,7 @@ void callback_view_list_button(twidget* caller)
 	mp_connect->show_server_list(*window);
 }
 
-} // namespace 
+} // namespace
 
 /*WIKI
  * @page = GUIWindowWML
@@ -127,17 +127,17 @@ void callback_view_list_button(twidget* caller)
  * == Multiplayer connect ==
  *
  * This shows the dialog to the MP server to connect to.
- * 
+ *
  * @start_table = container
  *     host_name (text_box)            The name of the server to connect to.
  *     [list] (button)                 Shows a dialog with a list of predefined
  *                                     servers to connect to.
  * @end_table
  */
-tmp_connect::tmp_connect() : 
+tmp_connect::tmp_connect() :
 	video_(0),
-	host_name_(register_text("host_name", false, 
-		preferences::network_host, 
+	host_name_(register_text("host_name", false,
+		preferences::network_host,
 		preferences::set_network_host))
 {
 }
@@ -156,7 +156,7 @@ void tmp_connect::pre_show(CVideo& video, twindow& window)
 	window.keyboard_capture(host_name_->widget(window));
 
 	// Set view list callback button.
-	tbutton *view_list = 
+	tbutton *view_list =
 		dynamic_cast<tbutton*>(window.find_widget("list", false));
 	if(view_list) {
 		view_list->set_callback_mouse_left_click(callback_view_list_button);

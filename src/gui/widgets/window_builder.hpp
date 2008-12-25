@@ -57,7 +57,7 @@ private:
 
 public:
 	tbuilder_grid(const config& cfg);
-	
+
 	std::string id;
 	unsigned rows;
 	unsigned cols;
@@ -113,14 +113,14 @@ public:
 		unsigned horizontal_placement;
 
 		bool easy_close;
-		
+
 		std::string definition;
-	
+
 		tbuilder_grid_ptr grid;
 	};
 
 	std::vector<tresolution> resolutions;
-	
+
 private:
 	std::string id_;
 	std::string description_;

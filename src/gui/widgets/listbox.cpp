@@ -132,13 +132,13 @@ const tgrid* tlistbox::get_row_grid(const unsigned row) const
 	return rows_[row].grid();
 }
 
-void tlistbox::mouse_left_button_down(tevent_handler& event) 
-{ 
+void tlistbox::mouse_left_button_down(tevent_handler& event)
+{
 	/**
 	 * @todo We never get called since the mouse events are captured by our
 	 * children.
 	 */
-	DBG_G_E << "Listbox: left mouse button down.\n"; 
+	DBG_G_E << "Listbox: left mouse button down.\n";
 
 	event.keyboard_capture(this);
 }
@@ -149,7 +149,7 @@ bool tlistbox::select_row(const unsigned row, const bool select)
 		return false;
 	}
 
-	if((select && rows_[row].get_selected()) 
+	if((select && rows_[row].get_selected())
 		|| (!select && !rows_[row].get_selected())) {
 		return true;
 	}
@@ -184,7 +184,7 @@ bool tlistbox::list_row_selected(const size_t row, twidget* caller)
 			// if not allowed to deselect reselect.
 			tselectable_* selectable = dynamic_cast<tselectable_*>(caller);
 			assert(selectable);
-			selectable->set_value(true);	
+			selectable->set_value(true);
 		}
 
 		return true;
@@ -205,7 +205,7 @@ const tgrid* tlistbox::find_list(const bool must_exist) const
 	return result ? result : content_find_grid(must_exist);
 }
 #ifndef NEW_DRAW
-void tlistbox::draw_list_area_fixed_row_height(surface& surface, 
+void tlistbox::draw_list_area_fixed_row_height(surface& surface,
 		const bool force, const bool invalidate_background)
 {
 	unsigned offset = find_list()->get_rect().y;
@@ -220,10 +220,10 @@ void tlistbox::draw_list_area_fixed_row_height(surface& surface,
 
 		assert(row.grid());
 		row.grid()->draw(row.canvas(), force, invalidate_background);
-		
+
 		// draw background
-		const SDL_Rect rect = 
-			{find_list()->get_rect().x, offset, 
+		const SDL_Rect rect =
+			{find_list()->get_rect().x, offset,
 			find_list()->get_rect().w, row.get_height() };
 
 		// draw widget
@@ -233,7 +233,7 @@ void tlistbox::draw_list_area_fixed_row_height(surface& surface,
 	}
 }
 
-void tlistbox::draw_list_area_variable_row_height(surface& surface, 
+void tlistbox::draw_list_area_variable_row_height(surface& surface,
 		const bool force, const bool invalidate_background)
 {
 
@@ -251,7 +251,7 @@ void tlistbox::draw_list_area_variable_row_height(surface& surface,
 			// We might get outside of the drawable area so cut the part off if
 			// needed.
 			const unsigned top_cut = offset < start ?  start - offset : 0;
-			const unsigned bottom_cut = 
+			const unsigned bottom_cut =
 				offset + height > end ? offset + height - end : 0;
 
 			assert(row.grid());
@@ -260,14 +260,14 @@ void tlistbox::draw_list_area_variable_row_height(surface& surface,
 			// create a copy but there's no clone call.
 			::surface surf = make_neutral_surface(row.canvas());
 			if(top_cut || bottom_cut) {
-				SDL_Rect cut = 
+				SDL_Rect cut =
 					{ 0, top_cut, surf->w, surf->h - top_cut - bottom_cut };
 
 				surf = cut_surface(surf, cut);
 			}
 
 			// Draw on the surface.
-			SDL_Rect rect = { 
+			SDL_Rect rect = {
 				find_list()->get_rect().x,
 				offset + top_cut - start + find_list()->get_rect().y,
 				0,
@@ -287,19 +287,19 @@ void tlistbox::draw_list_area_variable_row_height(surface& surface,
 size_t tlistbox::row_at_offset(int offset, int& offset_in_widget) const
 {
 	if(assume_fixed_row_size_) {
-		if(rows_.size() == 0) { 
+		if(rows_.size() == 0) {
 			return -1;
 		} else {
 			// The position of the scrollbar is the offset of rows,
 			// so add to the result.
 			offset_in_widget = offset % rows_[0].get_height();
-			const size_t result = (offset / rows_[0].get_height()) 
+			const size_t result = (offset / rows_[0].get_height())
 				+ find_scrollbar()->get_item_position();
 
 			return result < rows_.size() ? result : -1;
 		}
 	} else {
-		// The position of the scrollbar is the number of pixels scrolled, 
+		// The position of the scrollbar is the number of pixels scrolled,
 		// so add to the offset.
 		offset += find_scrollbar()->get_item_position();
 		for(unsigned i = 0; i < rows_.size(); ++i) {
@@ -322,7 +322,7 @@ bool tlistbox::get_item_active(const unsigned item) const
 	return rows_[item].get_active();
 }
 
-tlistbox::trow::trow(const tbuilder_grid& list_builder_, 
+tlistbox::trow::trow(const tbuilder_grid& list_builder_,
 		const std::map<std::string /* widget id */, string_map>& data):
 	grid_(dynamic_cast<tgrid*>(list_builder_.build())),
 	height_(0),
@@ -334,16 +334,16 @@ tlistbox::trow::trow(const tbuilder_grid& list_builder_,
 	init_in_grid(grid_, data);
 }
 
-void tlistbox::trow::set_selected(const bool selected) 
+void tlistbox::trow::set_selected(const bool selected)
 {
 	selected_ = selected;
 	assert(grid_);
 	select_in_grid(grid_, selected);
 }
 
-void tlistbox::trow::init_in_grid(tgrid* grid, 
+void tlistbox::trow::init_in_grid(tgrid* grid,
 		const std::map<std::string /* widget id */, string_map>& data)
-{		
+{
 	for(unsigned row = 0; row < grid->get_rows(); ++row) {
 		for(unsigned col = 0; col < grid->get_cols(); ++col) {
 			twidget* widget = grid->widget(row, col);
@@ -413,7 +413,7 @@ tpoint tlistbox::content_calculate_best_size() const
 	foreach(const trow& row, rows_) {
 		assert(row.grid());
 		const tpoint best_size = row.grid()->get_best_size();
-		width = (static_cast<int>(width) >= best_size.x) ? 
+		width = (static_cast<int>(width) >= best_size.x) ?
 			width : static_cast<int>(best_size.x);
 
 		height += static_cast<int>(best_size.y);
@@ -459,7 +459,7 @@ void tlistbox::content_use_vertical_scrollbar(const unsigned maximum_height)
 		best_size.y = max.y;
 	}
 
-	DBG_G_L << "tlistbox: maximum height " 
+	DBG_G_L << "tlistbox: maximum height "
 			<< maximum_height << " result " << best_size << ".\n";
 
 	set_content_layout_size(best_size);
@@ -494,14 +494,14 @@ void tlistbox::content_set_size(const SDL_Rect& rect)
 				find_scrollbar()->set_visible_items(rows_.size());
 			}
 		} else {
-			find_scrollbar()->set_visible_items(rect.h); 
+			find_scrollbar()->set_visible_items(rect.h);
 		}
 	} else {
 		find_scrollbar()->set_visible_items(1);
 	}
 }
 #ifndef NEW_DRAW
-void tlistbox::draw_content(surface& surface, const bool force, 
+void tlistbox::draw_content(surface& surface, const bool force,
 		const bool invalidate_background)
 {
 	// Handle our full redraw for the spacer area.
@@ -515,7 +515,7 @@ void tlistbox::draw_content(surface& surface, const bool force,
 
 	// draw header and footer.
 	content_find_grid()->draw(surface, force, invalidate_background);
-	
+
 	// Now paint the list
 	if(assume_fixed_row_size_) {
 		draw_list_area_fixed_row_height(surface, force, invalidate_background);
@@ -542,10 +542,10 @@ void tlistbox::content_draw_background(surface& frame_buffer)
 
 		assert(row.grid());
 //		row.grid()->draw(row.canvas(), force, invalidate_background);
-//		
+//
 //		// draw background
-//		const SDL_Rect rect = 
-//			{find_list()->get_rect().x, offset, 
+//		const SDL_Rect rect =
+//			{find_list()->get_rect().x, offset,
 //			find_list()->get_rect().w, row.get_height() };
 //
 //		// draw widget
@@ -587,7 +587,7 @@ void tlistbox::content_populate_dirty_list(twindow& caller,
 			row.grid()->set_dirty(false);
 			return;
 		}
-*/		
+*/
 		std::vector<twidget*> content_call_stack = call_stack;
 		row.grid()->populate_dirty_list(caller, content_call_stack);
 	}
@@ -597,7 +597,7 @@ void tlistbox::content_populate_dirty_list(twindow& caller,
 #endif
 twidget* tlistbox::content_find_widget(
 		const tpoint& coordinate, const bool must_be_active)
-{ 
+{
 
 	int offset = 0;
 	tpoint coord = coordinate;
@@ -644,8 +644,8 @@ void callback_list_item_clicked(twidget* caller)
 
 tlistbox::tlistbox(const bool has_minimum, const bool has_maximum,
 		const tgenerator_::tplacement placement, const bool select)
-	: tscrollbar_container(2) // FIXME magic number	
-	, generator_(NULL)	
+	: tscrollbar_container(2) // FIXME magic number
+	, generator_(NULL)
 	, list_builder_(NULL)
 {
 	generator_ = tgenerator_::build(
@@ -705,10 +705,10 @@ int tlistbox::get_selected_row() const
 twidget* tlistbox::find_widget(
 		const tpoint& coordinate, const bool must_be_active)
 {
-	twidget* result = 
+	twidget* result =
 			generator_->find_widget(coordinate, must_be_active);
 
-	return result 
+	return result
 		? result
 		// Inherited.
 		: tscrollbar_container::find_widget(coordinate, must_be_active);
@@ -717,10 +717,10 @@ twidget* tlistbox::find_widget(
 const twidget* tlistbox::find_widget(
 		const tpoint& coordinate, const bool must_be_active) const
 {
-	const twidget* result = 
+	const twidget* result =
 			generator_->find_widget(coordinate, must_be_active);
 
-	return result 
+	return result
 		? result
 		// Inherited.
 		: tscrollbar_container::find_widget(coordinate, must_be_active);
@@ -744,12 +744,12 @@ void tlistbox::list_item_clicked(twidget* caller)
 	assert(false);
 }
 
-void tlistbox::child_populate_dirty_list(twindow& caller, 
+void tlistbox::child_populate_dirty_list(twindow& caller,
 		const std::vector<twidget*>& call_stack)
 {
 	// Inherited.
 	tscrollbar_container::child_populate_dirty_list(caller, call_stack);
-	
+
 	assert(generator_);
 	std::vector<twidget*> child_call_stack = call_stack;
 	generator_->populate_dirty_list(caller, child_call_stack);
@@ -758,8 +758,8 @@ void tlistbox::child_populate_dirty_list(twindow& caller,
 namespace {
 
 /**
- * Swaps an item in a grid for another one.*/	
-void swap_grid(tgrid* grid, 
+ * Swaps an item in a grid for another one.*/
+void swap_grid(tgrid* grid,
 		tgrid* content_grid, twidget* widget, const std::string& id)
 {
 	assert(content_grid);
@@ -786,8 +786,8 @@ void swap_grid(tgrid* grid,
 } // namespace
 
 void tlistbox::finalize(
-		tbuilder_grid_const_ptr header, 
-		tbuilder_grid_const_ptr footer, 
+		tbuilder_grid_const_ptr header,
+		tbuilder_grid_const_ptr footer,
 		const std::vector<string_map>& list_data)
 {
 	// "Inherited."

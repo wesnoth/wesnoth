@@ -34,8 +34,8 @@ teditor_resize_map::teditor_resize_map() :
 {
 }
 
-void teditor_resize_map::set_map_width(int value) 
-{ 
+void teditor_resize_map::set_map_width(int value)
+{
 	map_width_->set_cache_value(value);
 }
 
@@ -54,13 +54,13 @@ int teditor_resize_map::map_height() const
 	return map_height_->get_cache_value();
 }
 
-void teditor_resize_map::set_old_map_width(int value) 
-{ 
+void teditor_resize_map::set_old_map_width(int value)
+{
 	old_width_ = value;
 }
 
 void teditor_resize_map::set_old_map_height(int value)
-{ 
+{
 	old_height_ = value;
 }
 
@@ -80,17 +80,17 @@ void teditor_resize_map::pre_show(CVideo& /*video*/, twindow& window)
 	tlabel& old_height = window.get_widget<tlabel>("old_height", false);
 	height_ = &window.get_widget<tslider>("height", false);
 	width_ = &window.get_widget<tslider>("width", false);
-	
+
 	height_->set_callback_positioner_move(dialog_callback<teditor_resize_map, &teditor_resize_map::update_expand_direction>);
 	width_->set_callback_positioner_move(dialog_callback<teditor_resize_map, &teditor_resize_map::update_expand_direction>);
 	old_width.set_label(lexical_cast<std::string>(old_width_));
 	old_height.set_label(lexical_cast<std::string>(old_height_));
-	
+
 	std::string name_prefix = "expand";
 	for (int i = 0; i < 9; ++i) {
 		std::string name = name_prefix + lexical_cast<std::string>(i);
 		direction_buttons_[i] = dynamic_cast<ttoggle_button*>(window.find_widget(name, false));
-		VALIDATE(direction_buttons_[i], missing_widget(name));		
+		VALIDATE(direction_buttons_[i], missing_widget(name));
 		direction_buttons_[i]->set_callback_state_change(
 			dialog_callback<teditor_resize_map, &teditor_resize_map::update_expand_direction>);
 	}
@@ -133,7 +133,7 @@ void teditor_resize_map::update_expand_direction(twindow& window)
 		direction_buttons_[i]->set_value(false);
 		set_direction_icon(i, "none");
 	}
-	
+
 	int xdiff = map_width_->get_widget_value(window) - old_width_ ;
 	int ydiff = map_height_->get_widget_value(window) - old_height_ ;
 	int x = static_cast<int>(expand_direction_) % 3;

@@ -18,39 +18,39 @@
 
 namespace gui2 {
 
-void tbutton::mouse_enter(tevent_handler&) 
-{ 
-	DBG_G_E << "Button: mouse enter.\n"; 
+void tbutton::mouse_enter(tevent_handler&)
+{
+	DBG_G_E << "Button: mouse enter.\n";
 
 	set_state(FOCUSSED);
 }
 
-void tbutton::mouse_leave(tevent_handler&) 
-{ 
-	DBG_G_E << "Button: mouse leave.\n"; 
+void tbutton::mouse_leave(tevent_handler&)
+{
+	DBG_G_E << "Button: mouse leave.\n";
 
 	set_state(ENABLED);
 }
 
-void tbutton::mouse_left_button_down(tevent_handler& event) 
-{ 
-	DBG_G_E << "Button: left mouse button down.\n"; 
+void tbutton::mouse_left_button_down(tevent_handler& event)
+{
+	DBG_G_E << "Button: left mouse button down.\n";
 
 	event.mouse_capture();
 
 	set_state(PRESSED);
 }
 
-void tbutton::mouse_left_button_up(tevent_handler&) 
-{ 
+void tbutton::mouse_left_button_up(tevent_handler&)
+{
 	DBG_G_E << "Button: left mouse button up.\n";
 
 	set_state(FOCUSSED);
 }
 
-void tbutton::mouse_left_button_click(tevent_handler&) 
-{ 
-	DBG_G_E << "Button: left mouse button click.\n"; 
+void tbutton::mouse_left_button_click(tevent_handler&)
+{
+	DBG_G_E << "Button: left mouse button click.\n";
 
 	// If a button has a retval do the default handling.
 	if(retval_ != 0) {

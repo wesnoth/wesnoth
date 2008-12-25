@@ -24,7 +24,7 @@ namespace gui2 {
 void tmessage::pre_show(CVideo& /*video*/, twindow& window)
 {
 	if(!title_.empty()) {
-		tlabel* title = 
+		tlabel* title =
 			dynamic_cast<tlabel*>(window.find_widget("title", false));
 		VALIDATE(title, missing_widget("title"));
 
@@ -32,14 +32,14 @@ void tmessage::pre_show(CVideo& /*video*/, twindow& window)
 	}
 
 	if(!image_.empty()) {
-		timage* image = 
+		timage* image =
 			dynamic_cast<timage*>(window.find_widget("image", false));
 		VALIDATE(image, missing_widget("image"));
 
 		image->set_label(image_);
 	}
 
-	tcontrol* label = 
+	tcontrol* label =
 		dynamic_cast<tcontrol*>(window.find_widget("label", false));
 	VALIDATE(label, missing_widget("label"));
 
@@ -58,7 +58,7 @@ void tmessage::pre_show(CVideo& /*video*/, twindow& window)
 		 * returning 0,0 when called upon invisible items. Or the tgrid::tchild
 		 * should do that since an item with 0,0 might get a border.)
 		 */
-		tbutton* button = 
+		tbutton* button =
 			dynamic_cast<tbutton*>(window.find_widget("ok", false));
 		VALIDATE(button, missing_widget("ok"));
 
@@ -78,7 +78,7 @@ twindow* tmessage::build_window(CVideo& video)
 }
 
 /** @todo the caption is ignored. */
-void show_message(CVideo& video, const std::string& title, 
+void show_message(CVideo& video, const std::string& title,
 	const std::string& message, const std::string& /*button_caption*/,
 	const bool auto_close)
 {

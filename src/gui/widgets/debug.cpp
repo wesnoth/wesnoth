@@ -85,21 +85,21 @@ std::string get_base_filename()
 	const unsigned ALL = UINT_MAX;       /**< All levels/domains */
 
 	// level flags
-	const unsigned CHILD      = 1 << 0; /**< 
+	const unsigned CHILD      = 1 << 0; /**<
 										  * Shows the child records of a cell.
 										  */
-	const unsigned SIZE_INFO  = 1 << 1; /**< 
-										  * Shows the size info of 
+	const unsigned SIZE_INFO  = 1 << 1; /**<
+										  * Shows the size info of
 										  * children/widgets.
 										  */
 	const unsigned STATE_INFO = 1 << 2; /**< Shows the state info of widgets. */
 
 	// domain flags
-	const unsigned SHOW        = 1 << 0; /**< 
+	const unsigned SHOW        = 1 << 0; /**<
 										   * Shows the info when the dialog is
 										   * shown.
 										   */
-	const unsigned LAYOUT      = 1 << 1; /**< 
+	const unsigned LAYOUT      = 1 << 1; /**<
 										   * Shows the info in all layout
 										   * phases.
 										   */
@@ -129,7 +129,7 @@ void tdebug_layout_graph::set_level(const std::string& level)
 			level_ = ALL;
 			// No need to look further eventhought invalid items are now
 			// ignored.
-			return; 
+			return;
 		} else if(param == "child") {
 			level_ |= CHILD;
 		} else if(param == "size") {
@@ -158,7 +158,7 @@ void tdebug_layout_graph::set_domain(const std::string& domain)
 			domain_ = ALL;
 			// No need to look further eventhought invalid items are now
 			// ignored.
-			return; 
+			return;
 		} else if(param == "show") {
 			domain_ |= SHOW;
 		} else if(param == "layout") {
@@ -172,11 +172,11 @@ void tdebug_layout_graph::set_domain(const std::string& domain)
 
 void tdebug_layout_graph::generate_dot_file(const std::string& generator)
 {
-	const std::string filename = filename_base_ + 
+	const std::string filename = filename_base_ +
 		lexical_cast<std::string>(++sequence_number_) + "-" + generator + ".dot";
 	std::ofstream file(filename.c_str());
 
-	file << "//Basic layout graph for window id '" << window_->id() 
+	file << "//Basic layout graph for window id '" << window_->id()
 		<< "' using definition '" <<  window_->definition() << "'.\n"
 		<< "digraph window {\n"
 		<< "\tnode [shape=record, style=filled, fillcolor=\"bisque\"];\n"
@@ -188,11 +188,11 @@ void tdebug_layout_graph::generate_dot_file(const std::string& generator)
 	file << "}\n";
 }
 
-void tdebug_layout_graph::widget_generate_info(std::ostream& out, 
+void tdebug_layout_graph::widget_generate_info(std::ostream& out,
 		const twidget* widget, const std::string& id, const bool embedded) const
 {
 
-	out << "\t" << id 
+	out << "\t" << id
 		<< " [label=<<table border=\"0\" cellborder=\"1\" cellspacing=\"0\">";
 
 	widget_generate_basic_info(out, widget);
@@ -202,7 +202,7 @@ void tdebug_layout_graph::widget_generate_info(std::ostream& out,
 	out << "</table>>";
 	if(embedded) {
 		out << ", fillcolor=\"palegoldenrod\"";
-	}	
+	}
 	out << "];\n";
 
 	const tgrid* grid = dynamic_cast<const tgrid*>(widget);
@@ -212,18 +212,18 @@ void tdebug_layout_graph::widget_generate_info(std::ostream& out,
 		if(container && level_ & CHILD) { // The extra constrain needed???
 
 			widget_generate_info(out, &container->grid(), id + "_G", true);
-			out << "\t" << id << " -> " 
+			out << "\t" << id << " -> "
 				<< id << "_G"
 				<< " [label=\"(grid)\"];\n";
 		}
-		
+
 #ifdef NEW_DRAW
-		const tscrollbar_container* scrollbar_container = 
+		const tscrollbar_container* scrollbar_container =
 			dynamic_cast<const tscrollbar_container*>(widget);
 
 		if(scrollbar_container) {
 			widget_generate_info(out, scrollbar_container->content_grid_, id + "_C", true);
-			out << "\t" << id << " -> " 
+			out << "\t" << id << " -> "
 				<< id << "_C"
 				<< " [label=\"(content)\"];\n";
 		}
@@ -233,21 +233,21 @@ void tdebug_layout_graph::widget_generate_info(std::ostream& out,
 			assert(listbox->generator_);
 		}
 
-		const tgenerator_* generator = 
+		const tgenerator_* generator =
 				dynamic_cast<const tgenerator_*>(widget);
 
 		if(generator) {
-			for(size_t i = 0; 
+			for(size_t i = 0;
 					i < generator->get_item_count(); ++i) {
 
-				const std::string child_id = 
+				const std::string child_id =
 					id + "_I_" + lexical_cast<std::string>(i);
 
-				widget_generate_info(out, 
+				widget_generate_info(out,
 					&generator->get_item(i),
 					child_id, true);
-					
-				out << "\t" << id << " -> " 
+
+				out << "\t" << id << " -> "
 						<< child_id
 						<< " [label=\"(item)\"];\n";
 			}
@@ -262,8 +262,8 @@ void tdebug_layout_graph::widget_generate_info(std::ostream& out,
 void tdebug_layout_graph::widget_generate_basic_info(
 		std::ostream& out, const twidget* widget) const
 {
-	std::string header_background = level_ & (SIZE_INFO|STATE_INFO) 
-	   ? " bgcolor=\"gray\"" : "";	
+	std::string header_background = level_ & (SIZE_INFO|STATE_INFO)
+	   ? " bgcolor=\"gray\"" : "";
 	const tcontrol* control = dynamic_cast<const tcontrol*>(widget);
 
 	out << "<tr><td" << header_background << ">" << '\n'
@@ -321,27 +321,27 @@ void tdebug_layout_graph::widget_generate_state_info(
 		<< "does block easy close=" << control->does_block_easy_close() << '\n'
 		<< "</td></tr>\n";
 
-	const tvertical_scrollbar_container_* vertical_scrollbar_container = 
+	const tvertical_scrollbar_container_* vertical_scrollbar_container =
 		dynamic_cast<const tvertical_scrollbar_container_*>(widget);
 
 	if(vertical_scrollbar_container) {
 
 		out << "<tr><td>\n"
-			<< "scrollbar_mode_=" 
+			<< "scrollbar_mode_="
 				<< vertical_scrollbar_container->scrollbar_mode_ << '\n'
 			<< "</td></tr>\n";
 	}
 #ifdef NEW_DRAW
-	const tscrollbar_container* scrollbar_container = 
+	const tscrollbar_container* scrollbar_container =
 		dynamic_cast<const tscrollbar_container*>(widget);
 
 	if(scrollbar_container) {
 		out << "<tr><td>\n"
-			<< "vertical_scrollbar_mode_=" 
+			<< "vertical_scrollbar_mode_="
 				<< scrollbar_container->vertical_scrollbar_mode_ << '\n'
 			<< "</td></tr>\n"
 			<< "<tr><td>\n"
-			<< "horizontal_scrollbar_mode_=" 
+			<< "horizontal_scrollbar_mode_="
 				<< scrollbar_container->horizontal_scrollbar_mode_ << '\n'
 			<< "</td></tr>\n";
 	}
@@ -355,22 +355,22 @@ void tdebug_layout_graph::widget_generate_size_info(
 		<< "can wrap=" << widget->can_wrap() << '\n'
 		<< "</td></tr>\n"
 		<< "<tr><td>\n"
-		<< "has vertical scrollbar=" 
+		<< "has vertical scrollbar="
 			<< widget->has_vertical_scrollbar() << '\n'
 		<< "</td></tr>\n"
 		<< "<tr><td>\n"
-		<< "has horizontal scrollbar=" 
+		<< "has horizontal scrollbar="
 			<< widget->has_horizontal_scrollbar() << '\n'
 		<< "</td></tr>\n"
 		<< "<tr><td>\n"
 		<< "size=" << widget->get_rect() << '\n'
 		<< "</td></tr>\n"
-#ifdef NEW_DRAW		
+#ifdef NEW_DRAW
 		<< "<tr><td>\n"
-		<< "screen_position=" << widget->get_screen_x() 
+		<< "screen_position=" << widget->get_screen_x()
 			<< ',' <<  widget->get_screen_y() << '\n'
 		<< "</td></tr>\n"
-#endif		
+#endif
 		<< "<tr><td>\n"
 		<< "last_best_size_=" << widget->last_best_size_ << '\n'
 		<< "</td></tr>\n"
@@ -404,28 +404,28 @@ void tdebug_layout_graph::widget_generate_size_info(
 			<< "</td></tr>\n";
 	}
 
-	const tvertical_scrollbar_container_* vertical_scrollbar_container = 
+	const tvertical_scrollbar_container_* vertical_scrollbar_container =
 		dynamic_cast<const tvertical_scrollbar_container_*>(widget);
 
 	if(vertical_scrollbar_container) {
 
 		out << "<tr><td>\n"
-			<< "content_last_best_size_=" 
+			<< "content_last_best_size_="
 				<< vertical_scrollbar_container->content_last_best_size_ << '\n'
 			<< "</td></tr>\n"
 			<< "<tr><td>\n"
-			<< "content_layout_size_=" 
+			<< "content_layout_size_="
 				<< vertical_scrollbar_container->content_layout_size_ << '\n'
 			<< "</td></tr>\n";
 	}
 }
 
-void tdebug_layout_graph::grid_generate_info(std::ostream& out, 
+void tdebug_layout_graph::grid_generate_info(std::ostream& out,
 		const tgrid* grid, const std::string& parent_id) const
 {
-	const bool show_child = level_ & CHILD; 
+	const bool show_child = level_ & CHILD;
 
-	// maybe change the order to links, child, widgets so the output of the 
+	// maybe change the order to links, child, widgets so the output of the
 	// dot file might look better.
 
 	out << "\n\n\t// The children of " << parent_id << ".\n";
@@ -447,7 +447,7 @@ void tdebug_layout_graph::grid_generate_info(std::ostream& out,
 		for(unsigned row = 0; row < grid->get_rows(); ++row) {
 			for(unsigned col = 0; col < grid->get_cols(); ++col) {
 
-				child_generate_info(out, grid->child(row, col), 
+				child_generate_info(out, grid->child(row, col),
 					get_child_id(parent_id, row, col));
 			}
 		}
@@ -462,34 +462,34 @@ void tdebug_layout_graph::grid_generate_info(std::ostream& out,
 			if(show_child) {
 
 				// grid -> child
-				out << "\t" << parent_id << " -> " 
-					<< get_child_id(parent_id, row, col)  
-					<< " [label=\"(" << row << ',' << col 
+				out << "\t" << parent_id << " -> "
+					<< get_child_id(parent_id, row, col)
+					<< " [label=\"(" << row << ',' << col
 					<< ")\"];\n";
 
 				// child -> widget
-				out << "\t" << get_child_id(parent_id, row, col) << " -> " 
+				out << "\t" << get_child_id(parent_id, row, col) << " -> "
 					<< get_child_widget_id(parent_id, row, col) << ";\n";
 
 			} else {
 
 				// grid -> widget
-				out << "\t" << parent_id << " -> " 
+				out << "\t" << parent_id << " -> "
 					<< get_child_widget_id(parent_id, row, col)
-					<< " [label=\"(" << row << ',' << col 
+					<< " [label=\"(" << row << ',' << col
 					<< ")\"];\n";
 			}
 		}
 	}
 }
 
-void tdebug_layout_graph::child_generate_info(std::ostream& out, 
+void tdebug_layout_graph::child_generate_info(std::ostream& out,
 		const tgrid::tchild& child, const std::string& id) const
 {
 
 	unsigned flags = child.get_flags();
 
-	out << "\t" << id 
+	out << "\t" << id
 		<< " [style=\"\", label=<<table border=\"0\" cellborder=\"1\" cellspacing=\"0\">";
 	out << "<tr><td>"
 		<< "vertical flag=";
@@ -499,8 +499,8 @@ void tdebug_layout_graph::child_generate_info(std::ostream& out,
 		case tgrid::VERTICAL_ALIGN_TOP           : out << "align to top"; break;
 		case tgrid::VERTICAL_ALIGN_CENTER        : out << "center"; break;
 		case tgrid::VERTICAL_ALIGN_BOTTOM        : out << "align to bottom"; break;
-		default                                  : 
-			out << "unknown value(" 
+		default                                  :
+			out << "unknown value("
 				<< ((flags & tgrid::VERTICAL_MASK) >> tgrid::VERTICAL_SHIFT)
 				<< ")";
 	}
@@ -514,8 +514,8 @@ void tdebug_layout_graph::child_generate_info(std::ostream& out,
 		case tgrid::HORIZONTAL_ALIGN_LEFT          : out << "align to left"; break;
 		case tgrid::HORIZONTAL_ALIGN_CENTER        : out << "center"; break;
 		case tgrid::HORIZONTAL_ALIGN_RIGHT         : out << "align to right"; break;
-		default                                    : 
-			out << "unknown value(" 
+		default                                    :
+			out << "unknown value("
 				<< ((flags & tgrid::HORIZONTAL_MASK) >> tgrid::HORIZONTAL_SHIFT)
 				<< ")";
 	}
@@ -558,7 +558,7 @@ std::string tdebug_layout_graph::get_type(const twidget* widget) const
 	} else {
 		const tgrid* grid = dynamic_cast<const tgrid*>(widget);
 #ifdef NEW_DRAW
-		const tgenerator_* generator = 
+		const tgenerator_* generator =
 				dynamic_cast<const tgenerator_*>(widget);
 #endif
 		if(grid) {
@@ -566,7 +566,7 @@ std::string tdebug_layout_graph::get_type(const twidget* widget) const
 #ifdef NEW_DRAW
 		} else if(generator) {
 			return "generator";
-#endif			
+#endif
 		} else {
 			return "unknown";
 		}

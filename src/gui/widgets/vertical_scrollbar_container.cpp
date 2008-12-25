@@ -64,7 +64,7 @@ const std::map<std::string, tscrollbar_::tscroll>& scroll_lookup()
 } // namespace
 
 tvertical_scrollbar_container_::
-		tvertical_scrollbar_container_(const unsigned canvas_count) 
+		tvertical_scrollbar_container_(const unsigned canvas_count)
 	: tcontainer_(canvas_count)
 	, scrollbar_mode_(SHOW_WHEN_NEEDED)
 	, scrollbar_grid_(NULL)
@@ -72,7 +72,7 @@ tvertical_scrollbar_container_::
 	, content_layout_size_(tpoint(0, 0))
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 	, content_last_best_size_(tpoint(0, 0))
-#endif	
+#endif
 {
 }
 
@@ -83,7 +83,7 @@ tvertical_scrollbar_container_::~tvertical_scrollbar_container_()
 
 void tvertical_scrollbar_container_::
 		set_scrollbar_mode(const tscrollbar_mode scrollbar_mode)
-{ 
+{
 	if(scrollbar_mode_ != scrollbar_mode) {
 		scrollbar_mode_ = scrollbar_mode;
 		show_scrollbar(scrollbar_mode_ != HIDE);
@@ -116,10 +116,10 @@ void tvertical_scrollbar_container_::
 {
 	twidget::layout_use_vertical_scrollbar(maximum_height);
 
-	log_scope2(gui_layout, 
+	log_scope2(gui_layout,
 		std::string("tvertical_scrollbar_container_ ") + __func__);
 
-	DBG_G_L << "tvertical_scrollbar_container_ maximum_height " 
+	DBG_G_L << "tvertical_scrollbar_container_ maximum_height "
 		<< maximum_height << ".\n";
 
 	content_use_vertical_scrollbar(maximum_height);
@@ -129,15 +129,15 @@ void tvertical_scrollbar_container_::
 
 tpoint tvertical_scrollbar_container_::calculate_best_size() const
 {
-	log_scope2(gui_layout, 
+	log_scope2(gui_layout,
 		std::string("tvertical_scrollbar_container_ ") + __func__);
 
 	const tpoint content = content_get_best_size();
 	if(scrollbar_mode_ == HIDE) {
 		DBG_G_L << "tvertical_scrollbar_container_ result " << content << ".\n";
 		return content;
-	} 
-	
+	}
+
 	const tpoint scrollbar = find_scrollbar_grid()->get_best_size();
 	if(scrollbar_mode_ == SHOW) {
 		// We need to show the scrollbar so the biggest height of scrollbar and
@@ -160,10 +160,10 @@ tpoint tvertical_scrollbar_container_::calculate_best_size() const
 void tvertical_scrollbar_container_::set_size(const tpoint& origin, const tpoint& size)
 {
 	// Inherited. -- note we don't use client size, might change
-	tcontrol::set_size(origin, size); 
+	tcontrol::set_size(origin, size);
 
 	// Test whether we need a scrollbar.
-	/** 
+	/**
 	 * @todo the test might/will fail if the text not wrapped does fit
 	 * without a scrollbar and wrapped does need it.
 	 */
@@ -202,7 +202,7 @@ void tvertical_scrollbar_container_::set_size(const tpoint& origin, const tpoint
 	set_scrollbar_button_status();
 }
 
-void tvertical_scrollbar_container_::key_press(tevent_handler& /*event*/, 
+void tvertical_scrollbar_container_::key_press(tevent_handler& /*event*/,
 		bool& handled, SDLKey key, SDLMod /*modifier*/, Uint16 /*unicode*/)
 {
 	DBG_G_E << "Listbox: key press.\n";
@@ -218,7 +218,7 @@ void tvertical_scrollbar_container_::key_press(tevent_handler& /*event*/,
 			}
 			// FALL DOWN
 
-		case SDLK_UP : 
+		case SDLK_UP :
 
 			--row;
 			while(row >= 0 && !get_item_active(row)) {
@@ -235,7 +235,7 @@ void tvertical_scrollbar_container_::key_press(tevent_handler& /*event*/,
 				value_changed();
 			}
 			break;
-			
+
 		case SDLK_PAGEDOWN :
 			row += sb->get_visible_items() - 1;
 			if(static_cast<size_t>(row + 1) >= sb->get_item_count()) {
@@ -243,10 +243,10 @@ void tvertical_scrollbar_container_::key_press(tevent_handler& /*event*/,
 			}
 			// FALL DOWN
 
-		case SDLK_DOWN : 
+		case SDLK_DOWN :
 
 			++row;
-			while(static_cast<size_t>(row) < sb->get_item_count() 
+			while(static_cast<size_t>(row) < sb->get_item_count()
 					&& !get_item_active(row)) {
 
 				++row;
@@ -254,7 +254,7 @@ void tvertical_scrollbar_container_::key_press(tevent_handler& /*event*/,
 			if(static_cast<size_t>(row) < sb->get_item_count()) {
 				select_row(row);
 				handled = true;
-				if(static_cast<size_t>(row) >= sb->get_item_position() 
+				if(static_cast<size_t>(row) >= sb->get_item_position()
 						+ sb->get_visible_items()) {
 
 					sb->set_item_position(row + 1 - sb->get_visible_items());
@@ -284,16 +284,16 @@ void tvertical_scrollbar_container_::draw(
 }
 #endif
 twidget* tvertical_scrollbar_container_::find_widget(
-		const tpoint& coordinate, const bool must_be_active) 
+		const tpoint& coordinate, const bool must_be_active)
 {
 	SDL_Rect content = content_find_grid()->get_rect();
 
 	if(point_in_rect(coordinate.x, coordinate.y, content)) {
 
-		return content_find_widget(tpoint( 
+		return content_find_widget(tpoint(
 			coordinate.x - get_x(), coordinate.y - get_y())
 			, must_be_active);
-	} 
+	}
 
 	// Inherited
 	return tcontainer_::find_widget(coordinate, must_be_active);
@@ -305,11 +305,11 @@ const twidget* tvertical_scrollbar_container_::find_widget(
 	SDL_Rect content = content_find_grid()->get_rect();
 
 	if(point_in_rect(coordinate.x, coordinate.y, content)) {
-		
-		return content_find_widget(tpoint( 
+
+		return content_find_widget(tpoint(
 			coordinate.x - get_x(), coordinate.y - get_y())
 			, must_be_active);
-	} 
+	}
 
 	// Inherited
 	return tcontainer_::find_widget(coordinate, must_be_active);
@@ -374,7 +374,7 @@ void tvertical_scrollbar_container_::set_scrollbar_button_status()
 {
 	// Set scroll up button status
 	foreach(const std::string& name, button_up_names) {
-		tbutton* button = 
+		tbutton* button =
 			dynamic_cast<tbutton*>(tcontainer_::find_widget(name, false));
 
 		if(button) {
@@ -384,7 +384,7 @@ void tvertical_scrollbar_container_::set_scrollbar_button_status()
 
 	// Set scroll down button status
 	foreach(const std::string& name, button_down_names) {
-		tbutton* button = 
+		tbutton* button =
 			dynamic_cast<tbutton*>(tcontainer_::find_widget(name, false));
 
 		if(button) {
@@ -423,7 +423,7 @@ void tvertical_scrollbar_container_::finalize_setup()
 	typedef std::pair<std::string, tscrollbar_::tscroll> hack;
 	foreach(const hack& item, scroll_lookup()) {
 
-		tbutton* button = 
+		tbutton* button =
 			dynamic_cast<tbutton*>(tcontainer_::find_widget(item.first, false));
 
 		if(button) {
@@ -448,7 +448,7 @@ void tvertical_scrollbar_container_::scrollbar_click(twidget* caller)
 	/** @todo Hack to capture the keyboard focus. */
 	get_window()->keyboard_capture(this);
 
-	const std::map<std::string, tscrollbar_::tscroll>::const_iterator 
+	const std::map<std::string, tscrollbar_::tscroll>::const_iterator
 		itor = scroll_lookup().find(caller->id());
 
 	assert(itor != scroll_lookup().end());
@@ -472,7 +472,7 @@ tpoint tvertical_scrollbar_container_::content_get_best_size() const
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 	content_last_best_size_ = result;
 #endif
-	return result;	
+	return result;
 }
 
 

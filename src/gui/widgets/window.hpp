@@ -14,7 +14,7 @@
 
 /**
  *  @file window.hpp
- *  This file contains the window object, this object is a top level container 
+ *  This file contains the window object, this object is a top level container
  *  which has the event management as well.
  */
 
@@ -25,7 +25,7 @@
 
 #include "gui/widgets/event_handler.hpp"
 #include "gui/widgets/formula.hpp"
-#include "gui/widgets/helper.hpp" 
+#include "gui/widgets/helper.hpp"
 #include "gui/widgets/panel.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/tooltip.hpp"
@@ -43,7 +43,7 @@ class tdialog;
 class tdebug_layout_graph;
 
 /**
- * base class of top level items, the only item 
+ * base class of top level items, the only item
  * which needs to store the final canvase to draw on
  */
 class twindow : public tpanel, public tevent_handler
@@ -58,7 +58,7 @@ public:
 		tformula<unsigned>y,
 		tformula<unsigned>w,
 		tformula<unsigned>h,
-		const bool automatic_placement, 
+		const bool automatic_placement,
 		const unsigned horizontal_placement,
 		const unsigned vertical_placement,
 		const std::string& definition);
@@ -85,13 +85,13 @@ public:
 	 * callers.
 	 */
 	enum tretval {
-		NONE = 0,                      /**< 
+		NONE = 0,                      /**<
 										* Dialog is closed with no return
 										* value, should be rare but eg a
 										* message popup can do it.
 										*/
 		OK = -1,                       /**< Dialog is closed with ok button. */
-		CANCEL = -2                    /**< 
+		CANCEL = -2                    /**<
 										* Dialog is closed with the cancel
 										* button.
 										*/
@@ -136,10 +136,10 @@ public:
 	void add_to_dirty_list(const std::vector<twidget*>& call_stack)
 	{
 		dirty_list_.push_back(call_stack);
-	}	
+	}
 #endif
 	/** The status of the window. */
-	enum tstatus{ 
+	enum tstatus{
 		NEW,                      /**< The window is new and not yet shown. */
 		SHOWING,                  /**< The window is being shown. */
 		REQUEST_CLOSE,            /**< The window has been requested to be
@@ -147,10 +147,10 @@ public:
 								   *   request.
 								   */
 		CLOSED                    /**< The window has been closed. */
-		};   
+		};
 
-	/** 
-	 * Requests to close the window. 
+	/**
+	 * Requests to close the window.
 	 *
 	 * At the moment the request is always honoured but that might change in the
 	 * future.
@@ -184,12 +184,12 @@ public:
 	 * @param new_width           The new width for the window.
 	 * @param new_height          The new height for the window.
 	 */
-	void window_resize(tevent_handler& event_handler, 
+	void window_resize(tevent_handler& event_handler,
 		const unsigned new_width, const unsigned new_height);
 
-	/** 
+	/**
 	 * Updates the size of the window.
-	 * 
+	 *
 	 * If the window has automatic placement set this function recacluates the
 	 * window. To be used after creation and after modification or items which
 	 * can have different sizes eg listboxes.
@@ -197,7 +197,7 @@ public:
 	void invalidate_layout() { need_layout_ = true; }
 
 	/** Inherited from tevent_executor. */
-	void key_press(tevent_handler& event_handler, bool& handled, 
+	void key_press(tevent_handler& event_handler, bool& handled,
 		SDLKey key, SDLMod modifier, Uint16 unicode);
 
 	/** Inherited from tevent_handler. */
@@ -207,18 +207,18 @@ public:
 	const twindow& get_window() const { return *this; }
 
 	/** Inherited from tevent_handler. */
-	twidget* find_widget(const tpoint& coordinate, const bool must_be_active) 
+	twidget* find_widget(const tpoint& coordinate, const bool must_be_active)
 		{ return tpanel::find_widget(coordinate, must_be_active); }
 
 	/** Inherited from tevent_handler. */
-	const twidget* find_widget(const tpoint& coordinate, 
+	const twidget* find_widget(const tpoint& coordinate,
 			const bool must_be_active) const
 		{ return tpanel::find_widget(coordinate, must_be_active); }
 
 	/** Inherited from twidget. */
 	tdialog* dialog() { return owner_; }
 
-	/** 
+	/**
 	 * Inherited from tcontrol.
 	 *
 	 * @todo See whether we're required or simply can inherit. If needed we need
@@ -227,12 +227,12 @@ public:
 	bool needs_full_redraw() const { return false; }
 
 	/** Inherited from tcontainer_. */
-	twidget* find_widget(const std::string& id, const bool must_be_active) 
+	twidget* find_widget(const std::string& id, const bool must_be_active)
 		{ return tcontainer_::find_widget(id, must_be_active); }
-	
+
 	/** Inherited from tcontainer_. */
-	const twidget* find_widget(const std::string& id, 
-			const bool must_be_active) const 
+	const twidget* find_widget(const std::string& id,
+			const bool must_be_active) const
 		{ return tcontainer_::find_widget(id, must_be_active); }
 
 	/** Inherited from tpanel. */
@@ -262,7 +262,7 @@ public:
 	 *
 	 * @returns                   Whether or not the window closes easily.
 	 */
-	bool does_easy_close() const 
+	bool does_easy_close() const
 		{ return easy_close_ && easy_close_blocker_.empty(); }
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
@@ -297,7 +297,7 @@ private:
 	/** When set the form needs a full layout redraw cycle. */
 	bool need_layout_;
 
-	/** 
+	/**
 	 * When set the window is resized.
 	 *
 	 * This invalidates the layout background etc. So everything should be
@@ -308,17 +308,17 @@ private:
 	/** Avoid drawing the window.  */
 	bool suspend_drawing_;
 
-	/** 
+	/**
 	 * The first window shown is the toplevel window.
 	 *
 	 * The toplevel window is the one that starts and stops the drawing timer.
 	 * It's set when the timer is 0 when the window is shown.
 	 */
-	bool top_level_; 
+	bool top_level_;
 
 #ifndef NEW_DRAW
 	/** The surface containing the window. */
-	surface window_; 
+	surface window_;
 #endif
 	/** When the window closes this surface is used to undraw the window. */
 	surface restorer_;
@@ -360,7 +360,7 @@ private:
 	/** The formula to calulate the height of the dialog. */
 	tformula<unsigned>h_;
 
-	/** 
+	/**
 	 * Do we want to have easy close behaviour?
 	 *
 	 * Easy closing means that whenever a mouse click is done the dialog will be
@@ -393,15 +393,15 @@ private:
 	void easy_close();
 
 	/** Inherited from tcontrol. */
-	const std::string& get_control_type() const 
+	const std::string& get_control_type() const
 		{ static const std::string type = "window"; return type; }
 
-	/** 
+	/**
 	 * Inherited from tpanel.
 	 *
 	 * Don't call this function it's only asserts.
 	 */
-	void draw(surface& surface, const bool force = false, 
+	void draw(surface& surface, const bool force = false,
 			const bool invalidate_background = false);
 
 #ifdef NEW_DRAW
@@ -416,7 +416,7 @@ private:
 
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 	tdebug_layout_graph* debug_layout_;
-	
+
 public:
 	// The destructor only needs to delete the debug_layout_ so declared here.
 	~twindow();

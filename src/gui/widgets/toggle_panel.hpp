@@ -32,7 +32,7 @@ namespace gui2 {
 class ttoggle_panel : public tpanel, public tselectable_
 {
 public:
-	ttoggle_panel() : 
+	ttoggle_panel() :
 		tpanel(COUNT),
 		state_(ENABLED),
 		retval_(0),
@@ -65,7 +65,7 @@ public:
 	void mouse_left_button_double_click(tevent_handler&);
 
 	/** Inherited from tcontainer_ */
-	twidget* find_widget(const tpoint& coordinate, const bool must_be_active) 
+	twidget* find_widget(const tpoint& coordinate, const bool must_be_active)
 	{
 		/**
 		 * @todo since there is no mouse event nesting (or event nesting at all)
@@ -86,7 +86,7 @@ public:
 	}
 #ifdef NEW_DRAW
 	/** Inherited from tcontainer_ */
-	twidget* find_widget2(const tpoint& coordinate, const bool must_be_active) 
+	twidget* find_widget2(const tpoint& coordinate, const bool must_be_active)
 	{
 		/**
 		 * @todo since there is no mouse event nesting (or event nesting at all)
@@ -115,20 +115,20 @@ public:
 	void set_active(const bool active);
 
 	/** Inherited from tpanel. */
-	bool get_active() const 
+	bool get_active() const
 		{ return state_ != DISABLED && state_ != DISABLED_SELECTED; }
 
 	/** Inherited from tpanel. */
 	unsigned get_state() const { return state_; }
 
-#ifndef NEW_DRAW	
+#ifndef NEW_DRAW
 	/** Inherited from tpanel. */
-	void draw(surface& surface, const bool force = false, 
+	void draw(surface& surface, const bool force = false,
 			const bool invalidate_background = false)
 		{ tcontainer_::draw(surface, force, invalidate_background); }
 #else
 	/** Inherited from tpanel. */
-	void draw_background(surface& frame_buffer)  
+	void draw_background(surface& frame_buffer)
 	{
 		// We don't have a fore and background and need to draw depending on
 		// our state, like a control. So we use the controls drawing method.
@@ -143,8 +143,8 @@ public:
 		tcontrol::draw_foreground(frame_buffer);
 	}
 #endif
-	/** 
-	 * Inherited from tpanel. 
+	/**
+	 * Inherited from tpanel.
 	 *
 	 * @todo only due to the fact our definition is slightly different from
 	 * tpanel_defintion we need to override this function and do about the same,
@@ -152,8 +152,8 @@ public:
 	 */
 	SDL_Rect get_client_rect() const;
 
-	/** 
-	 * Inherited from tpanel. 
+	/**
+	 * Inherited from tpanel.
 	 *
 	 * @todo only due to the fact our definition is slightly different from
 	 * tpanel_defintion we need to override this function and do about the same,
@@ -172,7 +172,7 @@ public:
 	void set_retval(const int retval);
 
 	/** Inherited from tselectable_. */
-	void set_callback_state_change(void (*callback) (twidget*)) 
+	void set_callback_state_change(void (*callback) (twidget*))
 		{ callback_state_change_ = callback; }
 
 private:
@@ -185,14 +185,14 @@ private:
 	 * same and also that 'up' is before 'down'. 'up' has no suffix, 'down' has
 	 * the SELECTED suffix.
 	 */
-	enum tstate { 
-		ENABLED,          DISABLED,          FOCUSSED, 
-		ENABLED_SELECTED, DISABLED_SELECTED, FOCUSSED_SELECTED, 
+	enum tstate {
+		ENABLED,          DISABLED,          FOCUSSED,
+		ENABLED_SELECTED, DISABLED_SELECTED, FOCUSSED_SELECTED,
 		COUNT};
 
 	void set_state(const tstate state);
 
-	/** 
+	/**
 	 * Current state of the widget.
 	 *
 	 * The state of the widget determines what to render and how the widget
@@ -212,7 +212,7 @@ private:
 	void (*callback_state_change_) (twidget*);
 
 	/** Inherited from tpanel. */
-	const std::string& get_control_type() const 
+	const std::string& get_control_type() const
 		{ static const std::string type = "toggle_panel"; return type; }
 
 };

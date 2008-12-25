@@ -20,9 +20,9 @@
 
 namespace gui2 {
 
-static int distance(const int a, const int b) 
+static int distance(const int a, const int b)
 {
-	/** 
+	/**
 	 * @todo once this works properly the assert can be removed and the code
 	 * inlined.
 	 */
@@ -44,7 +44,7 @@ tpoint tslider::calculate_best_size() const
 			boost::dynamic_pointer_cast<const tslider_definition::tresolution>
 			(config());
 
-		assert(conf); 
+		assert(conf);
 
 		result.x = conf->left_offset + best_slider_length_ + conf->right_offset;
 	}
@@ -57,14 +57,14 @@ tpoint tslider::calculate_best_size() const
 
 }
 
-void tslider::set_value(const int value) 
-{ 
+void tslider::set_value(const int value)
+{
 	if(value == get_value()) {
 		return;
-	} 
+	}
 
 	if(value < minimum_value_) {
-		set_value(minimum_value_);	
+		set_value(minimum_value_);
 	} else if(value > get_maximum_value()) {
 		set_value(get_maximum_value());
 	} else {
@@ -121,10 +121,10 @@ t_string tslider::get_value_label() const
 	if(!value_labels_.empty()) {
 		assert(value_labels_.size() == get_item_count());
 		return value_labels_[get_item_position()];
-	} else if(!minimum_value_label_.empty() 
+	} else if(!minimum_value_label_.empty()
 			&& get_value() == get_minimum_value()) {
 		return minimum_value_label_;
-	} else if(!maximum_value_label_.empty() 
+	} else if(!maximum_value_label_.empty()
 			&& get_value() == get_maximum_value()) {
 		return maximum_value_label_;
 	} else {
@@ -133,35 +133,35 @@ t_string tslider::get_value_label() const
 }
 
 unsigned tslider::minimum_positioner_length() const
-{ 
+{
 	boost::intrusive_ptr<const tslider_definition::tresolution> conf =
 		boost::dynamic_pointer_cast<const tslider_definition::tresolution>(config());
-	assert(conf); 
-	return conf->minimum_positioner_length; 
+	assert(conf);
+	return conf->minimum_positioner_length;
 }
 
 unsigned tslider::maximum_positioner_length() const
 {
 	boost::intrusive_ptr<const tslider_definition::tresolution> conf =
 		boost::dynamic_pointer_cast<const tslider_definition::tresolution>(config());
-	assert(conf); 
-	return conf->maximum_positioner_length; 
+	assert(conf);
+	return conf->maximum_positioner_length;
 }
 
 unsigned tslider::offset_before() const
-{ 
+{
 	boost::intrusive_ptr<const tslider_definition::tresolution> conf =
 		boost::dynamic_pointer_cast<const tslider_definition::tresolution>(config());
-	assert(conf); 
-	return conf->left_offset; 
+	assert(conf);
+	return conf->left_offset;
 }
 
 unsigned tslider::offset_after() const
-{ 
+{
 	boost::intrusive_ptr<const tslider_definition::tresolution> conf =
 		boost::dynamic_pointer_cast<const tslider_definition::tresolution>(config());
-	assert(conf); 
-	return conf->right_offset; 
+	assert(conf);
+	return conf->right_offset;
 }
 
 bool tslider::on_positioner(const tpoint& coordinate) const
@@ -176,7 +176,7 @@ bool tslider::on_positioner(const tpoint& coordinate) const
 int tslider::on_bar(const tpoint& coordinate) const
 {
 	// Not on the widget, leave.
-	if(static_cast<size_t>(coordinate.x) > get_width() 
+	if(static_cast<size_t>(coordinate.x) > get_width()
 			|| static_cast<size_t>(coordinate.y) > get_height()) {
 		return 0;
 	}

@@ -27,7 +27,7 @@ namespace gui2 {
 class tscrollbar_;
 class tspacer;
 
-/** 
+/**
  * Base class for creating containers with one or two scrollbar(s).
  *
  * For now users can't instanciate this class directly and needs to use small
@@ -35,7 +35,7 @@ class tspacer;
  *
  * @todo events are not yet send to the content grid.
  */
-class tscrollbar_container 
+class tscrollbar_container
 	: public tcontainer_
 {
 	friend class tdebug_layout_graph;
@@ -44,23 +44,23 @@ class tscrollbar_container
 	friend class tlistbox;
 
 public:
-	
+
 	tscrollbar_container(const unsigned canvas_count);
 
 	~tscrollbar_container() { delete content_grid_; }
 
 	/** The way to handle the showing or hiding of the scrollbar. */
 	enum tscrollbar_mode {
-		SHOW,                     /**< 
+		SHOW,                     /**<
 								   * The scrollbar is always shown, whether
-								   * needed or not.  
+								   * needed or not.
 								   */
 		HIDE,                     /**<
 								   * The scrollbar is never shown even not when
 								   * needed. There's also no space reserved for
-								   * the scrollbar. 
+								   * the scrollbar.
 								   */
-		SHOW_WHEN_NEEDED          /**< 
+		SHOW_WHEN_NEEDED          /**<
 								   * The scrollbar is shown when the number of
 								   * items is larger as the visible items. The
 								   * space for the scrollbar is always
@@ -75,10 +75,10 @@ public:
 	void layout_init();
 
 	/** Inherited from tcontainer_. */
-	bool can_wrap() const 
-	{ 
+	bool can_wrap() const
+	{
 		// Note this function is called before the object is finalized.
-		return content_grid_ 
+		return content_grid_
 			? content_grid_->can_wrap()
 			: false;
 	}
@@ -87,14 +87,14 @@ public:
 	void layout_wrap(const unsigned maximum_width);
 
 	/** Inherited from twidget (not tcontainer_). */
-	bool has_vertical_scrollbar() const 
+	bool has_vertical_scrollbar() const
 		{ return vertical_scrollbar_mode_ != HIDE; }
 
 	/** Inherited from tcontainer_. */
 	void layout_use_vertical_scrollbar(const unsigned maximum_height);
 
 	/** Inherited from twidget (not tcontainer_). */
-	bool has_horizontal_scrollbar() const 
+	bool has_horizontal_scrollbar() const
 		{ return horizontal_scrollbar_mode_ != HIDE; }
 
 	/** Inherited from tcontainer_. */
@@ -129,7 +129,7 @@ public:
 	twidget* find_widget(const tpoint& coordinate, const bool must_be_active);
 
 	/** Inherited from tcontainer_. */
-	const twidget* find_widget(const tpoint& coordinate, 
+	const twidget* find_widget(const tpoint& coordinate,
 			const bool must_be_active) const;
 
 	/** Import overloaded versions. */
@@ -138,11 +138,11 @@ public:
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
 	void set_vertical_scrollbar_mode(const tscrollbar_mode scrollbar_mode);
-	tscrollbar_mode get_vertical_scrollbar_mode() const 
+	tscrollbar_mode get_vertical_scrollbar_mode() const
 		{ return vertical_scrollbar_mode_; }
 
 	void set_horizontal_scrollbar_mode(const tscrollbar_mode scrollbar_mode);
-	tscrollbar_mode get_horizontal_scrollbar_mode() const 
+	tscrollbar_mode get_horizontal_scrollbar_mode() const
 		{ return horizontal_scrollbar_mode_; }
 
 	void vertical_scrollbar_click(twidget* caller);
@@ -151,8 +151,8 @@ public:
 	tgrid *content_grid() { return content_grid_; }
 	const tgrid *content_grid() const { return content_grid_; }
 
-	/** 
-	 * Callback when the scrollbar moves (NOTE maybe only one callback needed). 
+	/**
+	 * Callback when the scrollbar moves (NOTE maybe only one callback needed).
 	 * Maybe also make protected or private and add a friend.
 	 */
 	void vertical_scrollbar_moved(twidget* /*caller*/)
@@ -175,9 +175,9 @@ protected:
 	 *
 	 * NOTE maybe just hardcode these in the finalize phase...
 	 *
-	 */ 
+	 */
 
-	/** 
+	/**
 	 * Sets the status of the scrollbar buttons.
 	 *
 	 * This is needed after the scrollbar moves so the status of the buttons
@@ -194,7 +194,7 @@ private:
 	 */
 	enum tstate { ENABLED, DISABLED, COUNT };
 
-	/** 
+	/**
 	 * Current state of the widget.
 	 *
 	 * The state of the widget determines what to render and how the widget
@@ -208,12 +208,12 @@ private:
 	 * This value should only be modified before showing, doing it while
 	 * showing results in UB.
 	 */
-	tscrollbar_mode 
+	tscrollbar_mode
 		vertical_scrollbar_mode_,
 		horizontal_scrollbar_mode_;
 
 	/** These are valid after finalize_setup(). */
-	tgrid 
+	tgrid
 		*vertical_scrollbar_grid_,
 		*horizontal_scrollbar_grid_;
 
@@ -231,14 +231,14 @@ private:
 	/** The builder needs to call us so we do our setup. */
 	void finalize_setup();
 
-	/** 
+	/**
 	 * Function for the subclasses to do their setup.
 	 *
 	 * This function is called at the end of finalize_setup().
 	 */
 	virtual void finalize_subclass() {}
 
-	/** 
+	/**
 	 * Shows the vertical scrollbar.
 	 *
 	 * @param show                If true the scrollbar is shown, hidden
@@ -246,7 +246,7 @@ private:
 	 */
 	void show_vertical_scrollbar(const bool show);
 
-	/** 
+	/**
 	 * Shows the horizontal scrollbar.
 	 *
 	 * @param show                If true the scrollbar is shown, hidden
@@ -255,10 +255,10 @@ private:
 	void show_horizontal_scrollbar(const bool show);
 
 	/** Inherited from tcontrol. */
-	const std::string& get_control_type() const 
-	{ 
-		static const std::string type = "scrollbar_container"; 
-		return type; 
+	const std::string& get_control_type() const
+	{
+		static const std::string type = "scrollbar_container";
+		return type;
 	}
 
 };

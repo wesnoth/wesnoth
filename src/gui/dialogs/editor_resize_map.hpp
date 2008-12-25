@@ -26,7 +26,7 @@ class teditor_resize_map : public tdialog
 {
 public:
 	teditor_resize_map();
-	
+
 	void set_map_width(int value);
 	int map_width() const;
 	void set_map_height(int value);
@@ -34,7 +34,7 @@ public:
 	void set_old_map_width(int value);
 	void set_old_map_height(int value);
 	bool copy_edge_terrain() const;
-	
+
 	enum EXPAND_DIRECTION {
 		EXPAND_BOTTOM_RIGHT,
 		EXPAND_BOTTOM,
@@ -48,7 +48,7 @@ public:
 	};
 	EXPAND_DIRECTION expand_direction() { return expand_direction_; }
 	void set_expand_direction(EXPAND_DIRECTION direction) { expand_direction_ = direction; }
-	
+
 	void update_expand_direction(twindow& window);
 
 private:
@@ -65,14 +65,14 @@ private:
 	ttoggle_button* direction_buttons_[9];
 	int old_width_;
 	int old_height_;
-	
+
 	EXPAND_DIRECTION expand_direction_;
 
 	/** Inherited from tdialog. */
 	twindow* build_window(CVideo& video);
-	
+
 	void pre_show(CVideo& video, twindow& window);
-	
+
 };
 
 } // namespace gui2

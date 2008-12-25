@@ -22,7 +22,7 @@
 
 namespace gui2 {
 #ifndef NEW_DRAW
-void tminimap::draw(surface& surface, const bool force, 
+void tminimap::draw(surface& surface, const bool force,
 		const bool invalidate_background)
 {
 	if(!is_dirty() && !force) {
@@ -40,7 +40,7 @@ void tminimap::draw_background(surface& /*frame_buffer*/)
 	assert(false); // FIXME implement.
 }
 #endif
-void tminimap::set_borders(const unsigned left, 
+void tminimap::set_borders(const unsigned left,
 		const unsigned right, const unsigned top, const unsigned bottom)
 {
 	left_border_ = left;
@@ -58,7 +58,7 @@ void tminimap::draw_map(surface& surface)
 	if(map_data_.empty()) {
 		return;
 	}
-	
+
 	try {
 		const gamemap map(*terrain_, map_data_);
 

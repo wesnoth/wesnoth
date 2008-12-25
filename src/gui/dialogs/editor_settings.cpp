@@ -116,7 +116,7 @@ void teditor_settings::update_selected_tod_info(twindow& window)
 	if (custom) {
 		current_tod_label_->set_label(_("Custom setting"));
 	} else {
-		std::stringstream ss; 
+		std::stringstream ss;
 		ss << (current_tod_ + 1);
 		ss << "/" << tods_.size();
 		ss << ": " << get_selected_tod().name;
@@ -131,7 +131,7 @@ void teditor_settings::update_selected_tod_info(twindow& window)
 	}
 	custom_tod_red_->set_active(custom);
 	custom_tod_green_->set_active(custom);
-	custom_tod_blue_->set_active(custom);	
+	custom_tod_blue_->set_active(custom);
 	current_tod_label_->set_active(!custom);
 	update_tod_display(window);
 	window.invalidate_layout();

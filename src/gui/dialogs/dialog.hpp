@@ -35,7 +35,7 @@ namespace gui2 {
 class tdialog
 {
 public:
-	tdialog() : 
+	tdialog() :
 		retval_(0),
 		fields_(),
 		restore_(true)
@@ -73,7 +73,7 @@ protected:
 	 *
 	 * @returns                   Pointer to the created widget.
 	 */
-	tfield_bool* register_bool(const std::string& id, 
+	tfield_bool* register_bool(const std::string& id,
 		const bool optional = false,
 		bool (*callback_load_value) () = NULL,
 		void (*callback_save_value) (const bool value) = NULL,
@@ -84,7 +84,7 @@ protected:
 	 *
 	 * See register_bool for more info.
 	 */
-	tfield_integer* register_integer(const std::string& id, 
+	tfield_integer* register_integer(const std::string& id,
 		const bool optional = false,
 		int (*callback_load_value) () = NULL,
 		void (*callback_save_value) (const int value) = NULL);
@@ -94,7 +94,7 @@ protected:
 	 *
 	 * See register_bool for more info.
 	 */
-	tfield_text* register_text(const std::string& id, 
+	tfield_text* register_text(const std::string& id,
 		const bool optional = false,
 		std::string (*callback_load_value) () = NULL,
 		void (*callback_save_value) (const std::string& value) = NULL);
@@ -102,7 +102,7 @@ private:
 	/** Returns the window exit status, 0 means not shown. */
 	int retval_;
 
-	/** 
+	/**
 	 * Contains the automatically managed fields.
 	 *
 	 * Since the fields are automatically managed and there are no search
@@ -111,7 +111,7 @@ private:
 	 */
 	std::vector<tfield_*> fields_;
 
-	/** 
+	/**
 	 * Restore the screen after showing?
 	 *
 	 * Most windows should restore the display after showing so this value

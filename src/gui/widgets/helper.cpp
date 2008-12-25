@@ -30,7 +30,7 @@ bool init() {
 	if(initialized_) {
 		return true;
 	}
-	
+
 	load_settings();
 
 	initialized_ = true;
@@ -38,21 +38,21 @@ bool init() {
 	return initialized_;
 }
 
-SDL_Rect create_rect(const tpoint& origin, const tpoint& size) 
-{ 
-	return ::create_rect(origin.x, origin.y, size.x, size.y); 
+SDL_Rect create_rect(const tpoint& origin, const tpoint& size)
+{
+	return ::create_rect(origin.x, origin.y, size.x, size.y);
 }
 
 tpoint& tpoint::operator+=(const tpoint& point)
-{ 
-	x += point.x; 
+{
+	x += point.x;
 	y += point.y;
 	return *this;
 }
 
 tpoint& tpoint::operator-=(const tpoint& point)
-{ 
-	x -= point.x; 
+{
+	x -= point.x;
 	y -= point.y;
 	return *this;
 }
@@ -120,7 +120,7 @@ surface save_background(const surface& background, const SDL_Rect& rect)
 			for(unsigned x = 0; x < rect.w; ++x) {
 
 				*dst_pixels++ = src_pixels[offset + x];
-			
+
 			}
 			offset += background->w;
 		}
@@ -129,7 +129,7 @@ surface save_background(const surface& background, const SDL_Rect& rect)
 	return result;
 }
 
-void restore_background(const surface& restorer, 
+void restore_background(const surface& restorer,
 		surface& background, const SDL_Rect& rect)
 {
 	assert(background);

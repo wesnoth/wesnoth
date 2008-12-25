@@ -23,9 +23,9 @@ namespace gui2 {
 class tvertical_scrollbar : public tscrollbar_
 {
 public:
-	
+
 	tvertical_scrollbar() :
-		tscrollbar_() 
+		tscrollbar_()
 	{
 	}
 
@@ -57,7 +57,7 @@ private:
 		{ return current.y - original.y; }
 
 	/** Inherited from tcontrol. */
-	const std::string& get_control_type() const 
+	const std::string& get_control_type() const
 		{ static const std::string type = "vertical_scrollbar"; return type; }
 };
 

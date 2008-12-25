@@ -22,40 +22,40 @@
 
 namespace gui2 {
 
-ttext_history ttext_history::get_history(const std::string& id, const bool enabled) 
+ttext_history ttext_history::get_history(const std::string& id, const bool enabled)
 {
 	std::vector<std::string>* vec = preferences::get_history(id);
 	return ttext_history(vec, enabled);
 }
 
-void ttext_history::push(const std::string& text) 
+void ttext_history::push(const std::string& text)
 {
 	if (!enabled_) {
-		return; 
-	} else {		
+		return;
+	} else {
 		if (!text.empty() && (history_->empty() || text != history_->back())) {
-			history_->push_back(text); 
+			history_->push_back(text);
 		}
-		
+
 		pos_ = history_->size();
 	}
 }
 
 std::string ttext_history::up(const std::string& text)
 {
-	
+
 	if (!enabled_) {
 		return "";
 	} else if (pos_ == history_->size()) {
 		unsigned curr = pos_;
 		push(text);
 		pos_ = curr;
-	}	
+	}
 
 	if (pos_ != 0) {
 		--pos_;
 	}
-	
+
 	return get_value();
 }
 
@@ -68,15 +68,15 @@ std::string ttext_history::down(const std::string& text)
 	} else {
 		pos_++;
 	}
-		
+
 	return get_value();
 }
 
-std::string ttext_history::get_value() const 
+std::string ttext_history::get_value() const
 {
 	if (!enabled_ || pos_ == history_->size()) {
 		return "";
-	} else { 
+	} else {
 		return history_->at(pos_);
 	}
 }
@@ -95,7 +95,7 @@ void ttext_box::set_size(const tpoint& origin, const tpoint& size)
 void ttext_box::update_canvas()
 {
 	/***** Gather the info *****/
-	
+
 	// Set the cursor info.
 	const unsigned start = get_selection_start();
 	const int length = get_selection_length();
@@ -126,7 +126,7 @@ void ttext_box::update_canvas()
 		tmp.set_variable("text_maximum_width", variant(max_width));
 		tmp.set_variable("text_maximum_height", variant(max_height));
 
-		tmp.set_variable("cursor_offset", 
+		tmp.set_variable("cursor_offset",
 			variant(get_cursor_position(start + length).x));
 
 		tmp.set_variable("selection_offset", variant(start_offset));
@@ -210,7 +210,7 @@ void ttext_box::handle_mouse_selection(
 	mouse.x -= get_x();
 	mouse.y -= get_y();
 	// FIXME we dont test for overflow in width
-	if(mouse.x < static_cast<int>(text_x_offset_) || 
+	if(mouse.x < static_cast<int>(text_x_offset_) ||
 	   mouse.y < static_cast<int>(text_y_offset_) ||
 	   mouse.y >= static_cast<int>(text_y_offset_ + text_height_)) {
 		return;
@@ -241,7 +241,7 @@ void ttext_box::update_offsets()
 	assert(conf);
 
 	text_height_ = font::get_max_height(conf->text_font_size);
-	
+
 	game_logic::map_formula_callable variables;
 	variables.add("height", variant(get_height()));
 	variables.add("width", variant(get_width()));
@@ -255,7 +255,7 @@ void ttext_box::update_offsets()
 	foreach(tcanvas& tmp, canvas()) {
 		tmp.set_variable("text_font_height", variant(text_height_));
 	}
- 
+
  	// Force an update of the canvas since now text_font_height is known.
 	update_canvas();
 }
@@ -267,7 +267,7 @@ void ttext_box::handle_key_up_arrow(SDLMod /*modifier*/, bool& handled)
 		if (!s.empty()) {
 			set_value(s);
 		}
-				
+
 		handled = true;
 	}
 }

@@ -32,9 +32,9 @@ void ttoggle_button::set_members(const string_map& data)
 	}
 }
 
-void ttoggle_button::mouse_enter(tevent_handler&) 
-{ 
-	DBG_G_E << "Toggle button: mouse enter.\n"; 
+void ttoggle_button::mouse_enter(tevent_handler&)
+{
+	DBG_G_E << "Toggle button: mouse enter.\n";
 
 	if(get_value()) {
 		set_state(FOCUSSED_SELECTED);
@@ -43,9 +43,9 @@ void ttoggle_button::mouse_enter(tevent_handler&)
 	}
 }
 
-void ttoggle_button::mouse_leave(tevent_handler&) 
-{ 
-	DBG_G_E << "Toggle button: mouse leave.\n"; 
+void ttoggle_button::mouse_leave(tevent_handler&)
+{
+	DBG_G_E << "Toggle button: mouse leave.\n";
 
 	if(get_value()) {
 		set_state(ENABLED_SELECTED);
@@ -54,9 +54,9 @@ void ttoggle_button::mouse_leave(tevent_handler&)
 	}
 }
 
-void ttoggle_button::mouse_left_button_click(tevent_handler&) 
-{ 
-	DBG_G_E << "Toggle button: left mouse button click.\n"; 
+void ttoggle_button::mouse_left_button_click(tevent_handler&)
+{
+	DBG_G_E << "Toggle button: left mouse button click.\n";
 
 	if(get_value()) {
 		set_state(ENABLED);
@@ -71,7 +71,7 @@ void ttoggle_button::mouse_left_button_click(tevent_handler&)
 
 void ttoggle_button::mouse_left_button_double_click(tevent_handler&)
 {
-	DBG_G_E << "Toggle button: left mouse button double click.\n"; 
+	DBG_G_E << "Toggle button: left mouse button double click.\n";
 
 	assert(retval_ != 0);
 

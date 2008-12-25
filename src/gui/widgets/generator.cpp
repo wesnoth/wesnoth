@@ -132,7 +132,7 @@ void tvertical_list::set_size(const tpoint& origin, const tpoint& size)
 		 * For set_size to work properly, we need to disable the parent
 		 * temporary. Without a parent the screen coordinates won't be
 		 * remapped, which is wanted in this case. For event handling the
-		 * parent is needed. 
+		 * parent is needed.
 		 */
 		twidget* parent = grid.parent();
 		grid.set_parent(NULL);
@@ -170,17 +170,17 @@ twidget* tvertical_list::find_widget(
 
 		tgrid& grid = get_item(i);
 
-		twidget* widget = 
+		twidget* widget =
 				grid.find_widget2(screen_coordinate, must_be_active);
 
 		if(widget) {
 			return widget;
 		}
 	}
-	return NULL;	
+	return NULL;
 }
 
-const twidget* tvertical_list::find_widget(const tpoint& coordinate, 
+const twidget* tvertical_list::find_widget(const tpoint& coordinate,
 		const bool must_be_active) const
 {
 	const twindow* window = get_window();
@@ -193,7 +193,7 @@ const twidget* tvertical_list::find_widget(const tpoint& coordinate,
 
 		const tgrid& grid = get_item(i);
 
-		const twidget* widget = 
+		const twidget* widget =
 				grid.find_widget2(screen_coordinate, must_be_active);
 
 		if(widget) {
@@ -209,9 +209,9 @@ const twidget* tvertical_list::find_widget(const tpoint& coordinate,
 
 namespace select_action {
 
-void tselect::select(tgrid& grid, const bool select) 
+void tselect::select(tgrid& grid, const bool select)
 {
-	tselectable_* selectable = 
+	tselectable_* selectable =
 			dynamic_cast<tselectable_*>(grid.widget(0, 0));
 	assert(selectable);
 
@@ -276,7 +276,7 @@ if(select) {                                               \
 } else {                                                   \
 	typedef policy::select_action::tshow select;           \
 	GENERATE_PLACEMENT                                     \
-}                                                          
+}
 #endif
 
 #ifdef GENERATE_MAXIMUM
@@ -289,7 +289,7 @@ if(has_maximum) {                                          \
 } else {                                                   \
 	typedef policy::maximum_selection::tinfinite maximum;  \
 	GENERATE_SELECT                                        \
-}                                                          
+}
 #endif
 
 #ifdef GENERATE_BODY
@@ -318,9 +318,9 @@ tgenerator_* tgenerator_::build(
 #if 0
 namespace {
 
-void pointer_test() 
+void pointer_test()
 {
-	
+
 	tgenerator_ *a = tgenerator_::build(
 			true, true, tgenerator_::horizontal_list, true);
 

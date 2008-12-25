@@ -29,7 +29,7 @@ namespace gui2 {
 class ttoggle_button : public tcontrol, public tselectable_
 {
 public:
-	ttoggle_button() : 
+	ttoggle_button() :
 		tcontrol(COUNT),
 		state_(ENABLED),
 		retval_(0),
@@ -52,7 +52,7 @@ public:
 	/** Inherted from tevent_executor. */
 	void mouse_left_button_double_click(tevent_handler&);
 
-	/** 
+	/**
 	 * Inherited from tcontrol.
 	 *
 	 * Sets the additional member
@@ -75,7 +75,7 @@ public:
 
 	/** Inherited from tcontrol. */
 	void update_canvas();
-	
+
 	/** Inherited from tselectable_ */
 	bool get_value() const { return state_ >= ENABLED_SELECTED; }
 
@@ -87,13 +87,13 @@ public:
 	void set_retval(const int retval);
 
 	/** Inherited from tselectable_. */
-	void set_callback_state_change(void (*callback) (twidget*)) 
+	void set_callback_state_change(void (*callback) (twidget*))
 		{ callback_state_change_ = callback; }
 
-	void set_icon_name(const std::string& icon_name) 
+	void set_icon_name(const std::string& icon_name)
 		{ icon_name_ = icon_name; update_canvas(); }
 	const std::string& icon_name() const { return icon_name_; }
-	
+
 private:
 	/**
 	 * Possible states of the widget.
@@ -103,21 +103,21 @@ private:
 	 * same and also that 'up' is before 'down'. 'up' has no suffix, 'down' has
 	 * the SELECTED suffix.
 	 */
-	enum tstate { 
-		ENABLED,          DISABLED,          FOCUSSED, 
-		ENABLED_SELECTED, DISABLED_SELECTED, FOCUSSED_SELECTED, 
+	enum tstate {
+		ENABLED,          DISABLED,          FOCUSSED,
+		ENABLED_SELECTED, DISABLED_SELECTED, FOCUSSED_SELECTED,
 		COUNT};
 
 	void set_state(const tstate state);
 
-	/** 
+	/**
 	 * Current state of the widget.
 	 *
 	 * The state of the widget determines what to render and how the widget
 	 * reacts to certain 'events'.
 	 */
 	tstate state_;
- 
+
 	/**
 	 * The return value of the button.
 	 *
@@ -129,14 +129,14 @@ private:
 	/** See tselectable_::set_callback_state_change. */
 	void (*callback_state_change_) (twidget*);
 
-	/** 
+	/**
 	 * The toggle button can contain an icon next to the text.
 	 * Maybe this will move the the tcontrol class if deemed needed.
 	 */
 	std::string icon_name_;
 
 	/** Inherited from tcontrol. */
-	const std::string& get_control_type() const 
+	const std::string& get_control_type() const
 		{ static const std::string type = "toggle_button"; return type; }
 
 };

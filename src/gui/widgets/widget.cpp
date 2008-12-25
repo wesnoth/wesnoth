@@ -26,7 +26,7 @@ tpoint twidget::get_best_size() const
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 	last_best_size_ = result;
 #endif
-	return result;	
+	return result;
 }
 
 void twidget::set_size(const tpoint& origin, const tpoint& size)
@@ -36,7 +36,7 @@ void twidget::set_size(const tpoint& origin, const tpoint& size)
 	w_ = size.x;
 	h_ = size.y;
 
-#ifdef NEW_DRAW	
+#ifdef NEW_DRAW
 	screen_x_ = x_;
 	screen_y_ = y_;
 	twidget* parent = get_window();
@@ -92,7 +92,7 @@ tdialog* twidget::dialog()
 	return window ? window->dialog() : 0;
 }
 #ifdef NEW_DRAW
-void twidget::populate_dirty_list(twindow& caller, 
+void twidget::populate_dirty_list(twindow& caller,
 		std::vector<twidget*>& call_stack)
 {
 	call_stack.push_back(this);

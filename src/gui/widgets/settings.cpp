@@ -59,9 +59,9 @@ namespace {
 	 * The enum twindow_type is the index of the array.
 	 */
 	std::vector<std::string> window_type_list(COUNT);
-} // namespace 
+} // namespace
 
-static void fill_window_types() 
+static void fill_window_types()
 {
 	window_type_list[ADDON_CONNECT] = "addon_connect";
 	window_type_list[LANGUAGE_SELECTION] = "language_selection";
@@ -73,7 +73,7 @@ static void fill_window_types()
 	window_type_list[MP_SERVER_LIST] = "mp_server_list";
 	window_type_list[MP_CREATE_GAME] = "mp_create_game";
 	window_type_list[TITLE_SCREEN] = "title_screen";
-#ifndef DISABLE_EDITOR2	
+#ifndef DISABLE_EDITOR2
 	window_type_list[EDITOR_NEW_MAP] = "editor_new_map";
 	window_type_list[EDITOR_GENERATE_MAP] = "editor_generate_map";
 	window_type_list[EDITOR_RESIZE_MAP] = "editor_resize_map";
@@ -88,7 +88,7 @@ const std::string& get_id(const twindow_type window_type)
 	return window_type_list[window_type];
 }
 
-void load_settings() 
+void load_settings()
 {
 	LOG_GUI << "Setting: init gui.\n";
 
@@ -140,11 +140,11 @@ const std::string& tgui_definition::read(const config& cfg)
  * the game. This can be seen as a skin and it allows the user to define the
  * visual aspect of the various items. The visual aspect can be determined
  * depending on the size of the game window.
- * 
- * Widgets have a definition and an instance, the definition contains the 
+ *
+ * Widgets have a definition and an instance, the definition contains the
  * general info/looks of a widget and the instance the actual looks. Eg the
  * where the button text is placed is the same for every button, but the
- * text of every button might differ. 
+ * text of every button might differ.
  *
  * The default gui has the id ''default'' and must exist, in the default gui
  * there must a definition of every widget with the id ''default'' and every
@@ -159,9 +159,9 @@ const std::string& tgui_definition::read(const config& cfg)
  *     id (string)                   Unique id for this gui (theme).
  *     description (t_string)        Unique translatable name for this gui.
  *
- *     widget_definitions (section)  The defintions of all 
+ *     widget_definitions (section)  The defintions of all
  *                                   [[#widget_list|widgets]].
- *     window (section)              The defintions of all 
+ *     window (section)              The defintions of all
  *                                   [[#window_list|windows]].
  *     settings (section)            The settings for the gui.
  * @end_table
@@ -170,7 +170,7 @@ const std::string& tgui_definition::read(const config& cfg)
  * @start_table = widget_definition
  *     button_definition             A push button.
  *     image_definition              An image.
- *     horizontal_scrollbar_definition 
+ *     horizontal_scrollbar_definition
  *                                   A horizontal scrollbar.
  *     menubar_definition            A menubar which is used in menus and the
  *                                   tabbar in a tabcontrol.
@@ -186,7 +186,7 @@ const std::string& tgui_definition::read(const config& cfg)
  *     slider_definition             A slider.
  *     spacer_definition             A spacer.
  *     text_box_definition           A single line text box.
- *     toggle_button_definition      A kind of button with two 'states' normal 
+ *     toggle_button_definition      A kind of button with two 'states' normal
  *                                   and selected. This is a more generic widget
  *                                   which is used for eg checkboxes and
  *                                   radioboxes.
@@ -201,7 +201,7 @@ const std::string& tgui_definition::read(const config& cfg)
  * @start_table = window_definition
  *     addon_connect                 The dialog to connect to the addon server
  *                                   and maintain locally installed addons.
- *     language_selection            The dialog to select the primairy language.  
+ *     language_selection            The dialog to select the primairy language.
  * @end_table
  *
  */
@@ -245,12 +245,12 @@ const std::string& tgui_definition::read(const config& cfg)
 	}
 
 	if(id == "default") {
-		// The default gui needs to define all window types since we're the 
+		// The default gui needs to define all window types since we're the
 		// fallback in case another gui doesn't define the window type.
 		for(std::vector<std::string>::const_iterator itor = window_type_list.begin();
 				itor != window_type_list.end(); ++itor) {
 
-			VALIDATE(window_types.find(*itor) != window_types.end(), _("Window not defined.")); 
+			VALIDATE(window_types.find(*itor) != window_types.end(), _("Window not defined."));
 		}
 	}
 
@@ -262,13 +262,13 @@ const std::string& tgui_definition::read(const config& cfg)
  * A setting section has the following variables:
  * @start_table = config
  *     popup_show_delay (unsigned = 0) The time it take before the popup shows
- *                                     if the mouse moves over the widget. 0 
+ *                                     if the mouse moves over the widget. 0
  *                                     means show directly.
  *     popup_show_time (unsigned = 0)  The time a shown popup remains visible.
- *                                     0 means until the mouse leaves the 
+ *                                     0 means until the mouse leaves the
  *                                     widget.
  *     help_show_time (unsigned = 0)   The time a shown help remains visible.
- *                                     0 means until the mouse leaves the 
+ *                                     0 means until the mouse leaves the
  *                                     widget.
  *     double_click_time (unsigned)    The time between two clicks to still be a
  *                                     double click.
@@ -304,7 +304,7 @@ void tgui_definition::load_definitions(
 		T* def = new T(**itor);
 
 		// We assume all definitions are unique if not we would leak memory.
-		assert(control_definition[definition_type].find(def->id) 
+		assert(control_definition[definition_type].find(def->id)
 			== control_definition[definition_type].end());
 
 		control_definition[definition_type].insert(std::make_pair(def->id, def));
@@ -316,7 +316,7 @@ void tgui_definition::load_definitions(
 	t_string msg(vgettext(
 		"Widget definition '$definition' doesn't contain the definition for '$id'.",
 		symbols));
-	VALIDATE(control_definition[definition_type].find("default") 
+	VALIDATE(control_definition[definition_type].find("default")
 		!= control_definition[definition_type].end(), msg);
 }
 
@@ -378,9 +378,9 @@ tresolution_definition_::tresolution_definition_(const config& cfg) :
  * definitions behind that one will never be picked.) This resolution can be
  * used as upper limit or if there's only one resolution.
  *
- * The default (and also minimum) size of a button is determined by two items, 
+ * The default (and also minimum) size of a button is determined by two items,
  * the wanted default size and the size needed for the text. The size of the
- * text differs per used widget so needs to be determined per button. 
+ * text differs per used widget so needs to be determined per button.
  *
  * Container widgets like panels and windows have other rules for their sizes.
  * Their sizes are based on the size of their children (and the border they need
@@ -388,7 +388,7 @@ tresolution_definition_::tresolution_definition_(const config& cfg) :
  *
  * @start_table = config
  *     window_width (unsigned = 0)   Width of the application window.
- *     window_height (unsigned = 0) 
+ *     window_height (unsigned = 0)
  *                                   Height of the application window.
  *     min_width (unsigned = 0)      The minimum width of the widget.
  *     min_height (unsigned = 0)     The minimum height of the widget.
@@ -400,14 +400,14 @@ tresolution_definition_::tresolution_definition_(const config& cfg) :
  *     max_height (unsigned = 0)     The maximum height of the widget.
  *
  *     text_extra_width (unsigned = 0)
- *                                   The extra width needed to determine the 
+ *                                   The extra width needed to determine the
  *                                   minimal size for the text.
  *     text_extra_height (unsigned = 0)
  *                                   The extra height needed to determine the
  *                                   minimal size for the text.
- *     text_font_size (unsigned = 0) The font size, which needs to be used to 
+ *     text_font_size (unsigned = 0) The font size, which needs to be used to
  *                                   determine the minimal size for the text.
- *     text_font_style (font_style = "")  
+ *     text_font_style (font_style = "")
  *                                   The font style, which needs to be used to
  *                                   determine the minimal size for the text.
  *
@@ -418,7 +418,7 @@ tresolution_definition_::tresolution_definition_(const config& cfg) :
  *
  */
 
-	DBG_G_P << "Parsing resolution " 
+	DBG_G_P << "Parsing resolution "
 		<< window_width << ", " << window_height << '\n';
 }
 
@@ -446,7 +446,7 @@ tstate_definition::tstate_definition(const config* cfg) :
  *
  * Definition of a state. A state contains the info what to do in a state.
  * Atm this is rather focussed on the drawing part, might change later.
- * Keys: 
+ * Keys:
  * @start_table = config
  *     full_redraw (bool = false)      Does this state need a full redraw when
  *                                     it's being drawn? Normally only required
@@ -470,7 +470,7 @@ tstate_definition::tstate_definition(const config* cfg) :
  * = Example =
  *
  * FIXME add a example here.
- * 
+ *
  * = List of widgets =
  *
  * Below the list of available widgets.
@@ -512,7 +512,7 @@ tbutton_definition::tresolution::tresolution(const config& cfg) :
 }
 
 thorizontal_scrollbar_definition::
-		thorizontal_scrollbar_definition(const config& cfg) : 
+		thorizontal_scrollbar_definition(const config& cfg) :
 	tcontrol_definition(cfg)
 {
 	DBG_G_P << "Parsing horizontal scrollbar " << id << '\n';
@@ -544,7 +544,7 @@ thorizontal_scrollbar_definition::tresolution::tresolution(const config& cfg) :
  *                                     The minumum size the positioner is
  *                                     allowed to be. The engine needs to know
  *                                     this in order to calculate the best size
- *                                     for the positioner.  
+ *                                     for the positioner.
  *     maximum_positioner_length (unsigned = 0)
  *                                     The maximum size the positioner is
  *                                     allowed to be. If minimum and maximum are
@@ -564,7 +564,7 @@ thorizontal_scrollbar_definition::tresolution::tresolution(const config& cfg) :
  * * state_focussed, the mouse is over the positioner of the horizontal scrollbar.
  */
 
-	VALIDATE(minimum_positioner_length, 
+	VALIDATE(minimum_positioner_length,
 		missing_mandatory_wml_key("resolution", "minimum_positioner_length"));
 
 	// Note the order should be the same as the enum tstate is scrollbar.hpp.
@@ -622,7 +622,7 @@ tlabel_definition::tresolution::tresolution(const config& cfg) :
  * == Label ==
  *
  * The definition of a normal label.
- * 
+ *
  * The following states exist:
  * * state_enabled, the label is enabled.
  * * state_disabled, the label is disabled.
@@ -648,7 +648,7 @@ tlistbox_definition::tresolution::tresolution(const config& cfg) :
 	scrollbar(0)
 #else
 	grid(NULL)
-#endif	
+#endif
 
 {
 /*WIKI
@@ -659,7 +659,7 @@ tlistbox_definition::tresolution::tresolution(const config& cfg) :
  *
  * The definition of a normal listbox. A listbox is multiwidget class which
  * means that it's build from multiple items.  The definition of a listbox
- * contains the definition of it's scrollbar. 
+ * contains the definition of it's scrollbar.
  *
  * The resolution for a text box also contains the following keys:
  * @start_table = config
@@ -675,7 +675,7 @@ tlistbox_definition::tresolution::tresolution(const config& cfg) :
  *     [_line_up] (button)             Move the position one item up. (NOTE if
  *                                     too many items to move per item it might
  *                                     be more items.)
- *     [_half_page_up] (button)        Move the position half the number of the 
+ *     [_half_page_up] (button)        Move the position half the number of the
  *                                     visible items up. (See note at _line_up.)
  *     [_page_up] (button)             Move the position the number of visible
  *                                     items up. (See note at _line_up.)
@@ -684,8 +684,8 @@ tlistbox_definition::tresolution::tresolution(const config& cfg) :
  *     [_end] (button)                 Moves the position to the end of the
  *                                     list.
  *     [_line_down] (button)           Move the position one item down.(See note
- *                                     at _line_up.) 
- *     [_half_page_down] (button)      Move the position half the number of the 
+ *                                     at _line_up.)
+ *     [_half_page_down] (button)      Move the position half the number of the
  *                                     visible items down. (See note at _line_up.)
  *     [_page_down] (button)            Move the position the number of visible
  *                                     items down. (See note at _line_up.)
@@ -717,8 +717,8 @@ if(child) { // HACK needed to support old grids
 
 	grid = new tbuilder_grid(*child);
 
-}	
-#endif	
+}
+#endif
 }
 
 tmenubar_definition::tmenubar_definition(const config& cfg) :
@@ -779,7 +779,7 @@ tminimap_definition::tresolution::tresolution(const config& cfg) :
 	state.push_back(tstate_definition(cfg.child("state_enabled")));
 }
 
-tpanel_definition::tpanel_definition(const config& cfg) : 
+tpanel_definition::tpanel_definition(const config& cfg) :
 	tcontrol_definition(cfg)
 {
 
@@ -795,7 +795,7 @@ tpanel_definition::tresolution::tresolution(const config& cfg) :
 	left_border(lexical_cast_default<unsigned>(cfg["left_border"])),
 	right_border(lexical_cast_default<unsigned>(cfg["right_border"]))
 {
-/*WIKI 
+/*WIKI
  * @page = GUIToolkitWML
  * @order = 1_widget_panel
  *
@@ -846,10 +846,10 @@ tscroll_label_definition::tresolution::tresolution(const config& cfg) :
  * too long to be shown for this widget. This widget is slower as a normal
  * label widget so only use this widget when the scrollbar is required (or
  * expected to become required).
- * 
+ *
  * @start_table = config
  *     grid (section)                  A grid containing the widgets for main
- *                                     widget. 
+ *                                     widget.
  * @end_table
  *
  * TODO we need one definition for a vertical scrollbar since this is the second
@@ -908,16 +908,16 @@ tslider_definition::tresolution::tresolution(const config& cfg) :
  *                                     The minumum size the positioner is
  *                                     allowed to be. The engine needs to know
  *                                     this in order to calculate the best size
- *                                     for the positioner.  
- *     maximum_positioner_length (unsigned = 0) 
+ *                                     for the positioner.
+ *     maximum_positioner_length (unsigned = 0)
  *                                     The maximum size the positioner is
  *                                     allowed to be. If minimum and maximum are
  *                                     the same value the positioner is fixed
  *                                     size. If the maximum is 0 (and the
  *                                     minimum not) there's no maximum.
- *     left_offset (unsigned = 0)      The number of pixels at the left side 
+ *     left_offset (unsigned = 0)      The number of pixels at the left side
  *                                     which can't be used by the positioner.
- *     right_offset (unsigned = 0)     The number of pixels at the right side 
+ *     right_offset (unsigned = 0)     The number of pixels at the right side
  *                                     which can't be used by the positioner.
  * @end_table
  *
@@ -929,7 +929,7 @@ tslider_definition::tresolution::tresolution(const config& cfg) :
  * * state_focussed, the mouse is over the positioner of the slider.
  *
  */
-	VALIDATE(minimum_positioner_length, 
+	VALIDATE(minimum_positioner_length,
 		missing_mandatory_wml_key("resolution", "minimum_positioner_length"));
 
 	// Note the order should be the same as the enum tstate is slider.hpp.
@@ -960,7 +960,7 @@ tspacer_definition::tresolution::tresolution(const config& cfg) :
  * The definition of a normal spacer.
  *
  * A spacer has no states so nothing to load.
- * 
+ *
  */
 }
 
@@ -988,8 +988,8 @@ ttext_box_definition::tresolution::tresolution(const config& cfg) :
  * The resolution for a text box also contains the following keys:
  * @start_table = config
  *     text_x_offset (f_unsigned = "") The x offset of the text in the text
- *                                     box. This is needed for the code to 
- *                                     determine where in the text the mouse 
+ *                                     box. This is needed for the code to
+ *                                     determine where in the text the mouse
  *                                     clicks, so it can set the cursor
  *                                     properly.
  *     text_y_offset (f_unsigned = "") The y offset of the text in the text
@@ -1009,7 +1009,7 @@ ttext_box_definition::tresolution::tresolution(const config& cfg) :
 	state.push_back(tstate_definition(cfg.child("state_focussed")));
 }
 
-ttoggle_button_definition::ttoggle_button_definition(const config& cfg) : 
+ttoggle_button_definition::ttoggle_button_definition(const config& cfg) :
 	tcontrol_definition(cfg)
 {
 	DBG_G_P << "Parsing toggle button " << id << '\n';
@@ -1049,7 +1049,7 @@ ttoggle_button_definition::tresolution::tresolution(const config& cfg) :
 	state.push_back(tstate_definition(cfg.child("state_focussed_selected")));
 }
 
-ttoggle_panel_definition::ttoggle_panel_definition(const config& cfg) : 
+ttoggle_panel_definition::ttoggle_panel_definition(const config& cfg) :
 	tcontrol_definition(cfg)
 {
 	DBG_G_P << "Parsing toggle panel " << id << '\n';
@@ -1115,7 +1115,7 @@ ttoggle_panel_definition::tresolution::tresolution(const config& cfg) :
 	state.push_back(tstate_definition(cfg.child("state_focussed_selected")));
 }
 
-ttooltip_definition::ttooltip_definition(const config& cfg) : 
+ttooltip_definition::ttooltip_definition(const config& cfg) :
 	tcontrol_definition(cfg)
 {
 	DBG_G_P << "Parsing tooltip " << id << '\n';
@@ -1144,7 +1144,7 @@ ttooltip_definition::tresolution::tresolution(const config& cfg) :
 	state.push_back(tstate_definition(cfg.child("state_enabled")));
 }
 
-tvertical_scrollbar_definition::tvertical_scrollbar_definition(const config& cfg) : 
+tvertical_scrollbar_definition::tvertical_scrollbar_definition(const config& cfg) :
 	tcontrol_definition(cfg)
 {
 	DBG_G_P << "Parsing vertical scrollbar " << id << '\n';
@@ -1176,7 +1176,7 @@ tvertical_scrollbar_definition::tresolution::tresolution(const config& cfg) :
  *                                     The minumum size the positioner is
  *                                     allowed to be. The engine needs to know
  *                                     this in order to calculate the best size
- *                                     for the positioner.  
+ *                                     for the positioner.
  *     maximum_positioner_length (unsigned = 0)
  *                                     The maximum size the positioner is
  *                                     allowed to be. If minimum and maximum are
@@ -1196,7 +1196,7 @@ tvertical_scrollbar_definition::tresolution::tresolution(const config& cfg) :
  * * state_focussed, the mouse is over the positioner of the vertical scrollbar.
  */
 
-	VALIDATE(minimum_positioner_length, 
+	VALIDATE(minimum_positioner_length,
 		missing_mandatory_wml_key("resolution", "minimum_positioner_length"));
 
 	// Note the order should be the same as the enum tstate is scrollbar.hpp.
@@ -1206,10 +1206,10 @@ tvertical_scrollbar_definition::tresolution::tresolution(const config& cfg) :
 	state.push_back(tstate_definition(cfg.child("state_focussed")));
 }
 
-twindow_definition::twindow_definition(const config& cfg) : 
+twindow_definition::twindow_definition(const config& cfg) :
 	tpanel_definition(cfg)
 {
-/*WIKI 
+/*WIKI
  * @page = GUIToolkitWML
  * @order = 1_widget_window
  *
@@ -1226,23 +1226,23 @@ twindow_definition::twindow_definition(const config& cfg) :
 tresolution_definition_ptr get_control(
 		const std::string& control_type, const std::string& definition)
 {
-	const tgui_definition::tcontrol_definition_map::const_iterator	
+	const tgui_definition::tcontrol_definition_map::const_iterator
 		control_definition = current_gui->second.control_definition.find(control_type);
 
 	ASSERT_LOG(control_definition != current_gui->second.control_definition.end(),
 			"Type '" << control_type << "' is unknown.");
 
-	std::map<std::string, tcontrol_definition_ptr>::const_iterator 
+	std::map<std::string, tcontrol_definition_ptr>::const_iterator
 		control = control_definition->second.find(definition);
 
 	if(control == control_definition->second.end()) {
-		LOG_GUI << "Control: type '" << control_type << "' definition '" 
+		LOG_GUI << "Control: type '" << control_type << "' definition '"
 			<< definition << "' not found, falling back to 'default'.\n";
 		control = control_definition->second.find("default");
 		assert(control != control_definition->second.end());
 	}
 
-	for(std::vector<tresolution_definition_ptr>::const_iterator 
+	for(std::vector<tresolution_definition_ptr>::const_iterator
 			itor = (*control->second).resolutions.begin(),
 			end = (*control->second).resolutions.end();
 			itor != end;
@@ -1264,7 +1264,7 @@ std::vector<twindow_builder::tresolution>::const_iterator get_window_builder(con
 {
 	twindow::update_screen_size();
 
-	std::map<std::string, twindow_builder>::const_iterator 
+	std::map<std::string, twindow_builder>::const_iterator
 		window = current_gui->second.window_types.find(type);
 
 	if(true) { // FIXME Test for default gui.
@@ -1273,7 +1273,7 @@ std::vector<twindow_builder::tresolution>::const_iterator get_window_builder(con
 		// FIXME Get the defintion in the default gui and do an assertion test.
 	}
 
-	for(std::vector<twindow_builder::tresolution>::const_iterator 
+	for(std::vector<twindow_builder::tresolution>::const_iterator
 			itor = window->second.resolutions.begin(),
 			end = window->second.resolutions.end();
 			itor != end;

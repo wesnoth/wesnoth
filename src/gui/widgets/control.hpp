@@ -137,14 +137,14 @@ public:
 	/** Inherited from twidget. */
 	void layout_wrap(const unsigned maximum_width);
 
-protected:	
+protected:
 	/** Inherited from twidget. */
 	tpoint calculate_best_size() const;
 public:
 
 	/** Inherited from twidget. */
 	void set_size(const tpoint& origin, const tpoint& size);
-	
+
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
 	/** Inherted from tevent_executor. */
@@ -158,7 +158,7 @@ public:
 	 *
 	 * This function shouldn't be called directly it's called by set_definition().
 	 * All classes which use this class as base should call this function in
-	 * their constructor. Abstract classes shouldn't call this routine. The 
+	 * their constructor. Abstract classes shouldn't call this routine. The
 	 *
 	 * classes which call this routine should also define get_control_type().
 	 */
@@ -174,56 +174,56 @@ public:
 #endif
 
 	/** Inherited from twidget. */
-	twidget* find_widget(const tpoint& coordinate, const bool must_be_active) 
+	twidget* find_widget(const tpoint& coordinate, const bool must_be_active)
 	{
-		return (twidget::find_widget(coordinate, must_be_active) 
+		return (twidget::find_widget(coordinate, must_be_active)
 			&& (!must_be_active || get_active())) ? this : 0;
 	}
 
 	/** Inherited from twidget. */
-	const twidget* find_widget(const tpoint& coordinate, 
+	const twidget* find_widget(const tpoint& coordinate,
 			const bool must_be_active) const
 	{
-		return (twidget::find_widget(coordinate, must_be_active) 
+		return (twidget::find_widget(coordinate, must_be_active)
 			&& (!must_be_active || get_active())) ? this : 0;
 	}
 
 	/** Inherited from twidget.*/
 	twidget* find_widget(const std::string& id, const bool must_be_active)
 	{
-		return (twidget::find_widget(id, must_be_active) 
+		return (twidget::find_widget(id, must_be_active)
 			&& (!must_be_active || get_active())) ? this : 0;
 	}
 
 	/** Inherited from twidget.*/
-	const twidget* find_widget(const std::string& id, 
+	const twidget* find_widget(const std::string& id,
 			const bool must_be_active) const
 	{
-		return (twidget::find_widget(id, must_be_active) 
+		return (twidget::find_widget(id, must_be_active)
 			&& (!must_be_active || get_active())) ? this : 0;
 	}
 #ifdef NEW_DRAW
 	/** Inherited from twidget. */
-	twidget* find_widget2(const tpoint& coordinate, const bool must_be_active) 
+	twidget* find_widget2(const tpoint& coordinate, const bool must_be_active)
 	{
-		return (twidget::find_widget2(coordinate, must_be_active) 
+		return (twidget::find_widget2(coordinate, must_be_active)
 			&& (!must_be_active || get_active())) ? this : 0;
 	}
 
 	/** Inherited from twidget. */
-	const twidget* find_widget2(const tpoint& coordinate, 
+	const twidget* find_widget2(const tpoint& coordinate,
 			const bool must_be_active) const
 	{
-		return (twidget::find_widget2(coordinate, must_be_active) 
+		return (twidget::find_widget2(coordinate, must_be_active)
 			&& (!must_be_active || get_active())) ? this : 0;
 	}
-#endif	
+#endif
 	/** Import overloaded versions. */
 	using twidget::find_widget;
-	
-	/** 
-	 * Inherited from twidget. 
-	 * 
+
+	/**
+	 * Inherited from twidget.
+	 *
 	 * This function sets the defintion of a control and should be called soon
 	 * after creating the object since a lot of internal functions depend on the
 	 * definition.
@@ -238,7 +238,7 @@ public:
 	void set_visible(const bool visible = true);
 
 	bool get_use_tooltip_on_label_overflow() const { return use_tooltip_on_label_overflow_; }
-	void set_use_tooltip_on_label_overflow(const bool use_tooltip = true) 
+	void set_use_tooltip_on_label_overflow(const bool use_tooltip = true)
 		{ use_tooltip_on_label_overflow_ = use_tooltip; }
 
 	const t_string& label() const { return label_; }
@@ -246,7 +246,7 @@ public:
 
 	const t_string& tooltip() const { return tooltip_; }
 	// Note setting the tooltip_ doesn't dirty an object.
-	void set_tooltip(const t_string& tooltip) 
+	void set_tooltip(const t_string& tooltip)
 		{ tooltip_ = tooltip; set_wants_mouse_hover(!tooltip_.empty()); }
 
 	const t_string& help_message() const { return help_message_; }
@@ -255,7 +255,7 @@ public:
 
 	// const versions will be added when needed
 	std::vector<tcanvas>& canvas() { return canvas_; }
-	tcanvas& canvas(const unsigned index) 
+	tcanvas& canvas(const unsigned index)
 		{ assert(index < canvas_.size()); return canvas_[index]; }
 
 protected:
@@ -269,7 +269,7 @@ protected:
 	/** Does the widget need to restore the surface before (re)painting? */
 	virtual bool needs_full_redraw() const;
 
-	/** 
+	/**
 	 * Updates the canvas(ses).
 	 *
 	 * This function should be called if either the size of the widget changes
@@ -277,7 +277,7 @@ protected:
 	 */
 	virtual void update_canvas();
 
-	/** 
+	/**
 	 * Returns the maximum width available for the text.
 	 *
 	 * This value makes sense after the widget has been given a size, since the
@@ -285,7 +285,7 @@ protected:
 	 */
 	int get_text_maximum_width() const;
 
-	/** 
+	/**
 	 * Returns the maximum height available for the text.
 	 *
 	 * This value makes sense after the widget has been given a size, since the
@@ -325,7 +325,7 @@ private:
 	t_string help_message_;
 
 	/**
-	 * Holds all canvas objects for a control. 
+	 * Holds all canvas objects for a control.
 	 *
 	 * A control can have multiple states, which are defined in the classes
 	 * inheriting from us. For every state there is a separate canvas, which is
@@ -347,11 +347,11 @@ private:
 
 	/**
 	 * Saves the portion of the background.
-	 * 
+	 *
 	 * We expect an empty restorer and copy the part in get_rect() to the new
 	 * surface. We copy the data since we want to put it back 1:1 and not a
 	 * blit so can't use get_surface_portion.
-	 * 
+	 *
 	 * @param src          background to save.
 	 */
 	void save_background(const surface& src);
@@ -360,7 +360,7 @@ private:
 	 * Restores a portion of the background.
 	 *
 	 * See save_background for more info.
-	 * 
+	 *
 	 * @param dst          Background to restore.
 	 */
 	void restore_background(surface& dst);
@@ -390,7 +390,7 @@ protected:
 	 * The control_type parameter for tgui_definition::get_control() To keep the
 	 * code more generic this type is required so the controls need to return
 	 * the proper string here.  Might be used at other parts as well the get the
-	 * type of 
+	 * type of
 	 * control involved.
 	 */
 	virtual const std::string& get_control_type() const = 0;
@@ -406,15 +406,15 @@ private:
 	 *
 	 * @returns                   The best size.
 	 */
-	tpoint get_best_text_size(const tpoint& minimum_size, 
+	tpoint get_best_text_size(const tpoint& minimum_size,
 		const tpoint& maximum_size = tpoint(0,0)) const;
 
-	/** 
+	/**
 	 * Contains a helper cache for the rendering.
 	 *
 	 * Creating a ttext object is quite expensive and is done on various
 	 * occasions so it's cached here.
-	 * 
+	 *
 	 * @todo Maybe if still too slow we might also copy this cache to the
 	 * canvas so it can reuse our results, but for now it seems fast enough.
 	 * Unfortunately that would make the dependency between the classes bigger

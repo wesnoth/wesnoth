@@ -31,9 +31,9 @@ void ttoggle_panel::set_child_members(const std::map<std::string /* widget id */
 	}
 }
 
-void ttoggle_panel::mouse_enter(tevent_handler&) 
-{ 
-	DBG_G_E << "Toggle panel: mouse enter.\n"; 
+void ttoggle_panel::mouse_enter(tevent_handler&)
+{
+	DBG_G_E << "Toggle panel: mouse enter.\n";
 
 	if(get_value()) {
 		set_state(FOCUSSED_SELECTED);
@@ -42,9 +42,9 @@ void ttoggle_panel::mouse_enter(tevent_handler&)
 	}
 }
 
-void ttoggle_panel::mouse_leave(tevent_handler&) 
-{ 
-	DBG_G_E << "Toggle panel: mouse leave.\n"; 
+void ttoggle_panel::mouse_leave(tevent_handler&)
+{
+	DBG_G_E << "Toggle panel: mouse leave.\n";
 
 	if(get_value()) {
 		set_state(ENABLED_SELECTED);
@@ -53,9 +53,9 @@ void ttoggle_panel::mouse_leave(tevent_handler&)
 	}
 }
 
-void ttoggle_panel::mouse_left_button_click(tevent_handler&) 
-{ 
-	DBG_G_E << "Toggle panel: left mouse button click.\n"; 
+void ttoggle_panel::mouse_left_button_click(tevent_handler&)
+{
+	DBG_G_E << "Toggle panel: left mouse button click.\n";
 
 	if(get_value()) {
 		set_state(ENABLED);
@@ -70,7 +70,7 @@ void ttoggle_panel::mouse_left_button_click(tevent_handler&)
 
 void ttoggle_panel::mouse_left_button_double_click(tevent_handler&)
 {
-	DBG_G_E << "Toggle panel: left mouse button double click.\n"; 
+	DBG_G_E << "Toggle panel: left mouse button double click.\n";
 
 	assert(retval_ != 0);
 

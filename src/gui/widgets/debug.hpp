@@ -27,7 +27,7 @@ namespace gui2 {
 class twidget;
 class twindow;
 
-/** 
+/**
  * Helper class to output the layout to dot files.
  *
  * The class will generate .dot files in the location where wesnoth is running
@@ -45,7 +45,7 @@ class twindow;
 class tdebug_layout_graph
 {
 public:
-	
+
 	/**
 	 * Constructor.
 	 *
@@ -103,7 +103,7 @@ private:
 	 * @param embedded            Is the grid embedded in a container eg parent
 	 *                            inherits from tcontainer_.
 	 */
-	void widget_generate_info(std::ostream& out, const twidget* widget, 
+	void widget_generate_info(std::ostream& out, const twidget* widget,
 			const std::string& id, const bool embedded = false) const;
 
 	/**
@@ -142,7 +142,7 @@ private:
 	 * @param grid                The grid to write the info about.
 	 * @param parent_id           The dot-file-id of the parent of the widget.
 	 */
-	void grid_generate_info(std::ostream& out, const tgrid* grid, 
+	void grid_generate_info(std::ostream& out, const tgrid* grid,
 			const std::string& parent_id) const;
 
 	/**
@@ -152,7 +152,7 @@ private:
 	 * @param child               The grid cell to write the info about.
 	 * @param id                  The dof-file-id of the child.
 	 */
-	void child_generate_info(std::ostream& out, 
+	void child_generate_info(std::ostream& out,
 			const tgrid::tchild& child, const std::string& id) const;
 
 	/***** ***** Helper ***** *****/

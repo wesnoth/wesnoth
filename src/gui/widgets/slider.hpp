@@ -21,10 +21,10 @@
 namespace gui2 {
 
 /** A slider. */
-class tslider : public tscrollbar_, public tinteger_selector_ 
+class tslider : public tscrollbar_, public tinteger_selector_
 {
 public:
-	
+
 	tslider() :
 		tscrollbar_(),
 		best_slider_length_(0),
@@ -48,7 +48,7 @@ public:
 	void set_value(const int value);
 
 	/** Inherited from tinteger_selector_. */
-	int get_value() const 
+	int get_value() const
 		{ return minimum_value_ + get_item_position() * get_step_size(); }
 
 	/** Inherited from tinteger_selector_. */
@@ -61,13 +61,13 @@ public:
 	void set_maximum_value(const int maximum_value);
 
 	/** Inherited from tinteger_selector_. */
-	int get_maximum_value() const 
+	int get_maximum_value() const
 		// The number of items needs to include the begin and end so count - 1.
 		{ return minimum_value_ + get_item_count() - 1; }
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
-	void set_best_slider_length(const unsigned length) 
+	void set_best_slider_length(const unsigned length)
 		{ best_slider_length_ = length; set_dirty(); }
 
 	void set_minimum_value_label(const t_string& minimum_value_label)
@@ -80,7 +80,7 @@ public:
 		{ value_labels_ = value_labels; }
 
 	/**
-	 * Returns the label shown for the current value. 
+	 * Returns the label shown for the current value.
 	 *
 	 * @returns                   The label for the current value, if no label
 	 *                            for the current label is defined, it returns
@@ -100,7 +100,7 @@ private:
 	 * The current value is minimum + item_position_.
 	 */
 	int minimum_value_;
-	
+
 	/** Inherited from tscrollbar. */
 	unsigned get_length() const { return get_width(); }
 
@@ -129,13 +129,13 @@ private:
 	/** Inherited from tscrollbar. */
 	void update_canvas();
 
-	/** 
+	/**
 	 * When the slider shows the minimum value can show a special text.
 	 * If this text is not empty this text is shown else the minimum value.
 	 */
 	t_string minimum_value_label_;
 
-	/** 
+	/**
 	 * When the slider shows the maximum value can show a special text.
 	 * If this text is not empty this text is shown else the maximum value.
 	 */
@@ -150,7 +150,7 @@ private:
 	std::vector<t_string> value_labels_;
 
 	/** Inherited from tcontrol. */
-	const std::string& get_control_type() const 
+	const std::string& get_control_type() const
 		{ static const std::string type = "slider"; return type; }
 };
 

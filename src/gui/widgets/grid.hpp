@@ -36,12 +36,12 @@ class tgrid : public virtual twidget
 
 public:
 
-	tgrid(const unsigned rows = 0, const unsigned cols = 0); 
+	tgrid(const unsigned rows = 0, const unsigned cols = 0);
 
 	virtual ~tgrid();
 
 	/***** ***** ***** ***** LAYOUT FLAGS ***** ***** ***** *****/
-	static const unsigned VERTICAL_SHIFT                 = 0; 
+	static const unsigned VERTICAL_SHIFT                 = 0;
 	static const unsigned VERTICAL_GROW_SEND_TO_CLIENT   = 1 << VERTICAL_SHIFT;
 	static const unsigned VERTICAL_ALIGN_TOP             = 2 << VERTICAL_SHIFT;
 	static const unsigned VERTICAL_ALIGN_CENTER          = 3 << VERTICAL_SHIFT;
@@ -59,7 +59,7 @@ public:
 	static const unsigned BORDER_BOTTOM                  = 1 << 7;
 	static const unsigned BORDER_LEFT                    = 1 << 8;
 	static const unsigned BORDER_RIGHT                   = 1 << 9;
-	static const unsigned BORDER_ALL                     = 
+	static const unsigned BORDER_ALL                     =
 		BORDER_TOP | BORDER_BOTTOM | BORDER_LEFT | BORDER_RIGHT;
 
 	/***** ***** ***** ***** ROW COLUMN MANIPULATION ***** ***** ***** *****/
@@ -82,11 +82,11 @@ public:
 	 * @param factor              The grow factor.
 	 */
 	void set_row_grow_factor(const unsigned row, const unsigned factor)
-	{ 
-		assert(row < row_grow_factor_.size()); 
-		row_grow_factor_[row] = factor; 
-		set_dirty(); 
-	} 
+	{
+		assert(row < row_grow_factor_.size());
+		row_grow_factor_[row] = factor;
+		set_dirty();
+	}
 
 	/**
 	 * Sets the grow factor for a column.
@@ -97,10 +97,10 @@ public:
 	 * @param factor              The grow factor.
 	 */
 	void set_col_grow_factor(const unsigned col, const unsigned factor)
-	{ 
+	{
 		assert(col< col_grow_factor_.size());
-		col_grow_factor_[col] = factor; 
-		set_dirty(); 
+		col_grow_factor_[col] = factor;
+		set_dirty();
 	}
 
 	/***** ***** ***** ***** CHILD MANIPULATION ***** ***** ***** *****/
@@ -120,7 +120,7 @@ public:
 	 * @param border_size         The size of the border for the cell, how the
 	 *                            border is applied depends on the flags.
 	 */
-	void set_child(twidget* widget, const unsigned row, 
+	void set_child(twidget* widget, const unsigned row,
 		const unsigned col, const unsigned flags, const unsigned border_size);
 
 	/**
@@ -176,7 +176,7 @@ public:
 		{ return child(row, col).widget(); }
 
 	/** Returns the widget in the selected cell. */
-	twidget* widget(const unsigned row, const unsigned col) 
+	twidget* widget(const unsigned row, const unsigned col)
 		{ return child(row, col).widget(); }
 
 	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
@@ -194,7 +194,7 @@ public:
 	bool can_wrap() const;
 
 	/** Inherited from twidget. */
-	void layout_wrap(const unsigned maximum_width); 
+	void layout_wrap(const unsigned maximum_width);
 
 	/** Inherited from twidget. */
 	bool has_vertical_scrollbar() const;
@@ -232,21 +232,21 @@ public:
 	twidget* find_widget(const tpoint& coordinate, const bool must_be_active);
 
 	/** Inherited from twidget. */
-	const twidget* find_widget(const tpoint& coordinate, 
+	const twidget* find_widget(const tpoint& coordinate,
 			const bool must_be_active) const;
 
 	/** Inherited from twidget.*/
 	twidget* find_widget(const std::string& id, const bool must_be_active);
 
 	/** Inherited from twidget.*/
-	const twidget* find_widget(const std::string& id, 
+	const twidget* find_widget(const std::string& id,
 			const bool must_be_active) const;
 #ifdef NEW_DRAW
 	/** Inherited from twidget. */
 	twidget* find_widget2(const tpoint& coordinate, const bool must_be_active);
 
 	/** Inherited from twidget. */
-	const twidget* find_widget2(const tpoint& coordinate, 
+	const twidget* find_widget2(const tpoint& coordinate,
 			const bool must_be_active) const;
 #endif
 	/** Import overloaded versions. */
@@ -277,18 +277,18 @@ public:
 #endif
 private:
 	/** Child item of the grid. */
-	class tchild 
+	class tchild
 	{
 	public:
-		tchild() : 
+		tchild() :
 			flags_(0),
 			border_size_(0),
 			widget_(0)
 
-			// Fixme make a class wo we can store some properties in the cache 
+			// Fixme make a class wo we can store some properties in the cache
 			// regarding size etc.
 			{}
-	
+
 		/** Returns the best size for the cell. */
 		tpoint get_best_size() const;
 
@@ -301,11 +301,11 @@ private:
 		void set_size(tpoint origin, tpoint size);
 
 		/** Returns the can_wrap for the cell. */
-		bool can_wrap() const 
+		bool can_wrap() const
 			{ return widget_ ? widget_->can_wrap() : false; }
 
 		/** Forwards layout_wrap() to the cell. */
-		void layout_wrap(const unsigned maximum_width); 
+		void layout_wrap(const unsigned maximum_width);
 
 		/** Forwards layout_use_vertical_scrollbar() to the cell. */
 		void layout_use_vertical_scrollbar(const unsigned maximum_height);
@@ -320,7 +320,7 @@ private:
 		void set_flags(const unsigned flags) { flags_ = flags; }
 
 		unsigned get_border_size() const { return border_size_; }
-		void set_border_size(const unsigned border_size) 
+		void set_border_size(const unsigned border_size)
 			{  border_size_ = border_size; }
 
 		const twidget* widget() const { return widget_; }
@@ -338,7 +338,7 @@ private:
 		 */
 		unsigned border_size_;
 
-		/** 
+		/**
 		 * Pointer to the widget.
 		 *
 		 * Once the widget is assigned to the grid we own the widget and are
@@ -353,13 +353,13 @@ private:
 
 public:
 	/** Iterator for the tchild items. */
-	class iterator 
+	class iterator
 	{
 
 	public:
 
 		iterator(std::vector<tchild>::iterator itor) :
-			itor_(itor) 
+			itor_(itor)
 			{}
 
 		iterator operator++() { return iterator(++itor_); }
@@ -399,8 +399,8 @@ private:
 	/** The grow factor for all columns. */
 	std::vector<unsigned> col_grow_factor_;
 
-	/** 
-	 * The child items. 
+	/**
+	 * The child items.
 	 *
 	 * All children are stored in a 1D vector and the formula to access a cell
 	 * is: rows_ * col + row. All other vectors use the same access formula.
@@ -414,13 +414,13 @@ private:
 	/** Layouts the children in the grid. */
 	void layout(const tpoint& origin);
 
-	/** 
+	/**
 	 * Helper function to get the best or minimum size.
 	 *
 	 * @param id                     Name to use in debug output.
-	 * @param width                  Reference to the vector width cache for the 
+	 * @param width                  Reference to the vector width cache for the
 	 *                               size function of the caller.
-	 * @param height                 Reference to the vector height cache for the 
+	 * @param height                 Reference to the vector height cache for the
 	 *                               size function of the caller.
 	 * @param size_proc              The function to call on the cells in order to
 	 *                               get their sizes.
@@ -433,7 +433,7 @@ private:
 	 *
 	 * @return                       The wanted size.
 	 */
-	tpoint get_size(const std::string& id, std::vector<unsigned>& width, 
+	tpoint get_size(const std::string& id, std::vector<unsigned>& width,
 		std::vector<unsigned>& height, tpoint (tchild::*size_proc)() const,
 		tpoint (tchild::*size_proc_max)(const tpoint&) const = NULL,
 		const tpoint& maximum_size = tpoint(0, 0)) const;

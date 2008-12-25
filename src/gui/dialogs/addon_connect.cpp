@@ -26,7 +26,7 @@ namespace gui2 {
  * == Addon connect ==
  *
  * This shows the dialog for managing addons and connecting to the addon server.
- * 
+ *
  * @start_table = container
  *     [] (button) (2)                 This button closes the dialog and starts
  *                                     the addon manager.

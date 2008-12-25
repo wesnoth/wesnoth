@@ -35,16 +35,16 @@ class tgrid;
  * the possible policies is documented in the build() function. This function
  * is the factory to generate the classes as well.
  */
-class tgenerator_ 
+class tgenerator_
 		: public twidget
 {
 	friend class tdebug_layout_graph;
 
-public:	
+public:
 	virtual ~tgenerator_() {}
 
 	/** Determines how the items are placed. */
-	enum tplacement 
+	enum tplacement
 			{ horizontal_list
 			, vertical_list
 			, grid
@@ -65,7 +65,7 @@ public:
 	 *
 	 * @returns                   A pointer to a new object. The caller gets
 	 *                            ownership of the new object.
-	 */               
+	 */
 	static tgenerator_* build(const bool has_minimum, const bool has_maximum,
 			const tplacement placement, const bool select);
 
@@ -83,7 +83,7 @@ public:
 	 * @param index               The item to (de)select.
 	 * @param select              If true selects, if false deselects.
 	 */
-	virtual void select_item(const unsigned index, 
+	virtual void select_item(const unsigned index,
 			const bool select = true) = 0;
 
 	/**
@@ -113,7 +113,7 @@ public:
 
 	/***** ***** ***** ***** Create items ***** ***** ***** *****/
 
-	/** 
+	/**
 	 * Creates a new item.
 	 *
 	 * The item_data is used for the first widget found, this normally should
@@ -128,12 +128,12 @@ public:
 	 * @param callback            The callback function to call when an item
 	 *                            in the grid is (de)selected.
 	 */
-	virtual void create_item(const int index, 
-			tbuilder_grid_const_ptr list_builder, 
+	virtual void create_item(const int index,
+			tbuilder_grid_const_ptr list_builder,
 			const string_map& item_data,
-			void (*callback)(twidget*)) = 0; 
+			void (*callback)(twidget*)) = 0;
 
-	/** 
+	/**
 	 * Creates a new item.
 	 *
 	 * The item_data is used by id, and is meant to set multiple widgets in
@@ -148,13 +148,13 @@ public:
 	 * @param callback            The callback function to call when an item
 	 *                            in the grid is (de)selected.
 	 */
-	virtual void create_item(const int index, 
-			tbuilder_grid_const_ptr list_builder, 
-			const std::map<std::string /* widget id */, 
+	virtual void create_item(const int index,
+			tbuilder_grid_const_ptr list_builder,
+			const std::map<std::string /* widget id */,
 			string_map>& data,
-			void (*callback)(twidget*)) = 0; 
+			void (*callback)(twidget*)) = 0;
 
-	/** 
+	/**
 	 * Creates one or more new item(s).
 	 *
 	 * For every item in item_data a new item is generated. This version
@@ -169,12 +169,12 @@ public:
 	 * @param callback            The callback function to call when an item
 	 *                            in the grid is (de)selected.
 	 */
-	virtual void create_items(const int index, 
-			tbuilder_grid_const_ptr list_builder, 
+	virtual void create_items(const int index,
+			tbuilder_grid_const_ptr list_builder,
 			const std::vector<string_map>& data,
-			void (*callback)(twidget*)) = 0; 
+			void (*callback)(twidget*)) = 0;
 
-	/** 
+	/**
 	 * Creates one or more new item(s).
 	 *
 	 * For every item in item_data a new item is generated. This version
@@ -189,15 +189,15 @@ public:
 	 * @param callback            The callback function to call when an item
 	 *                            in the grid is (de)selected.
 	 */
-	virtual void create_items(const int index, 
-			tbuilder_grid_const_ptr list_builder, 
+	virtual void create_items(const int index,
+			tbuilder_grid_const_ptr list_builder,
 			const std::vector<std::map<std::string /*widget id*/,
 			string_map> >& data,
-			void (*callback)(twidget*)) = 0; 
+			void (*callback)(twidget*)) = 0;
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
-	/* 
+	/*
 	 * These functions must be defined in our child classes so make sure they
 	 * become pure virtuals.
 	 */
@@ -218,7 +218,7 @@ public:
 	virtual void draw_children(surface& frame_buffer) = 0;
 
 	/** Inherited from twidget. */
-	virtual void child_populate_dirty_list(twindow& caller, 
+	virtual void child_populate_dirty_list(twindow& caller,
 			const std::vector<twidget*>& call_stack) = 0;
 
 	/** Inherited from twidget. */
@@ -234,14 +234,14 @@ protected:
 	/** Gets the grid of an item. */
 	virtual const tgrid& get_item(const unsigned index) const = 0;
 
-	/** 
+	/**
 	 * Selects a not selected item.
 	 *
 	 * @param index               The index of a not selected item.
 	 */
 	virtual void do_select_item(const unsigned index) = 0;
 
-	/** 
+	/**
 	 * Deselects a selected item.
 	 *
 	 * @param index               The index of a selected item.

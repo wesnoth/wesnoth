@@ -37,23 +37,23 @@ class tvertical_scrollbar_container_ : public tcontainer_
 	friend void callback_scrollbar_button(twidget*);
 	friend void callback_scrollbar(twidget*);
 public:
-	
+
 	tvertical_scrollbar_container_(const unsigned canvas_count);
 
 	~tvertical_scrollbar_container_();
 
 	/** The way to handle the showing or hiding of the scrollbar. */
 	enum tscrollbar_mode {
-		SHOW,                     /**< 
+		SHOW,                     /**<
 								   * The scrollbar is always shown, whether
-								   * needed or not.  
+								   * needed or not.
 								   */
 		HIDE,                     /**<
 								   * The scrollbar is never shown even not when
 								   * needed. There's also no space reserved for
-								   * the scrollbar. 
+								   * the scrollbar.
 								   */
-		SHOW_WHEN_NEEDED          /**< 
+		SHOW_WHEN_NEEDED          /**<
 								   * The scrollbar is shown when the number of
 								   * items is larger as the visible items. The
 								   * space for the scrollbar is always
@@ -62,8 +62,8 @@ public:
 								   */
 	};
 
-	/** 
-	 * Selects an entire row. 
+	/**
+	 * Selects an entire row.
 	 *
 	 * @param row                 The row to (de)select.
 	 * @param select              true select, false deselect.
@@ -71,7 +71,7 @@ public:
 	 * @returns                   false if deselecting wasn't allowed.
 	 *                            true otherwise.
 	 */
-	virtual bool select_row(const unsigned /*row*/, const bool /*select*/ = true) 
+	virtual bool select_row(const unsigned /*row*/, const bool /*select*/ = true)
 		{ return false; }
 
 	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
@@ -83,7 +83,7 @@ public:
 	bool can_wrap() const { return content_can_wrap(); }
 
 	/** Inherited from twidget (not tcontainer_). */
-	void layout_wrap(const unsigned maximum_width); 
+	void layout_wrap(const unsigned maximum_width);
 
 	/** Inherited from twidget (not tcontainer_). */
 	bool has_vertical_scrollbar() const { return scrollbar_mode_ != HIDE; }
@@ -102,7 +102,7 @@ public:
 	/***** ***** ***** inherited ****** *****/
 
 	/** Inherited from tevent_executor. */
-	void key_press(tevent_handler& event, bool& handled, 
+	void key_press(tevent_handler& event, bool& handled,
 		SDLKey key, SDLMod modifier, Uint16 unicode);
 #ifndef NEW_DRAW
 	/** Inherited from tcontainer. */
@@ -116,7 +116,7 @@ public:
 	twidget* find_widget(const tpoint& coordinate, const bool must_be_active);
 
 	/** Inherited from tcontainer_. */
-	const twidget* find_widget(const tpoint& coordinate, 
+	const twidget* find_widget(const tpoint& coordinate,
 			const bool must_be_active) const;
 
 	/** Import overloaded versions. */
@@ -132,7 +132,7 @@ public:
 
 	void set_scrollbar_mode(const tscrollbar_mode scrollbar_mode);
 	tscrollbar_mode get_scrollbar_mode() const { return scrollbar_mode_; }
-	
+
 protected:
 
 	/**
@@ -151,11 +151,11 @@ protected:
 	 *   own purposes.
 	 */
 
-	/** 
+	/**
 	 * Returns the scrollbar grid.
 	 *
 	 * This always returns the grid, regardless of the mode (active or not).
-	 * 
+	 *
 	 * @param must_exist          If true the grid must exist and the
 	 *                            function will fail if that's not the case. If
 	 *                            true the pointer returned is always valid.
@@ -178,7 +178,7 @@ protected:
 	tgrid* content_find_grid(const bool must_exist = true);
 	const tgrid* content_find_grid(const bool must_exist = true) const;
 
-	/** 
+	/**
 	 * Sets the status of the scrollbar buttons.
 	 *
 	 * This is needed after the scrollbar moves so the status of the buttons
@@ -216,9 +216,9 @@ private:
 	/** Callback when the scrollbar moves. */
 	void scrollbar_moved(twidget* /*caller*/)
 		{ set_scrollbar_button_status(); set_dirty(); }
-	/** 
+	/**
 	 * When an item scrollbar control button is clicked we need to move the
-	 * scrollbar and update the list. 
+	 * scrollbar and update the list.
 	 */
 	void scrollbar_click(twidget* caller);
 
@@ -226,7 +226,7 @@ private:
 	 * Is the wanted item active?
 	 *
 	 * Some subclasses might have items that can be inactive, those shouldn't
-	 * be selected. So add a test here. 
+	 * be selected. So add a test here.
 	 *
 	 * @param item                The item to check.
 	 *
@@ -239,12 +239,12 @@ private:
 
 	/***** ***** (pure) virtuals for the subclasses ****** *****/
 
-	/** 
+	/**
 	 * Draws the content part of the widget.
 	 *
 	 * See draw_content for more info.
 	 */
-#ifndef NEW_DRAW	
+#ifndef NEW_DRAW
 	virtual void draw_content(surface& surface, const bool force,
 	        const bool invalidate_background) = 0;
 #endif
@@ -268,8 +268,8 @@ private:
 	 */
 
 protected:
-	/** 
-	 * Returns the best size for the content part. 
+	/**
+	 * Returns the best size for the content part.
 	 *
 	 * See get_best_size() for more info.
 	 */
@@ -311,7 +311,7 @@ private:
 protected:
 
 	const tpoint& content_layout_size() const { return content_layout_size_; }
-	void set_content_layout_size(const tpoint& size) 
+	void set_content_layout_size(const tpoint& size)
 		{ content_layout_size_ = size; }
 
 private:
@@ -319,7 +319,7 @@ private:
 	tpoint content_layout_size_;
 
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
-	mutable tpoint content_last_best_size_;	
+	mutable tpoint content_last_best_size_;
 #endif
 };
 

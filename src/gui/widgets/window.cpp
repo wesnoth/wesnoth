@@ -64,19 +64,19 @@ static Uint32 draw_timer(Uint32, void*)
 
 	event.type = DRAW_EVENT;
 	event.user = data;
-	
+
 	SDL_PushEvent(&event);
 	return draw_interval;
 }
 
 } // namespace
 
-twindow::twindow(CVideo& video, 
+twindow::twindow(CVideo& video,
 		tformula<unsigned>x,
 		tformula<unsigned>y,
 		tformula<unsigned>w,
 		tformula<unsigned>h,
-		const bool automatic_placement, 
+		const bool automatic_placement,
 		const unsigned horizontal_placement,
 		const unsigned vertical_placement,
 		const std::string& definition)
@@ -92,7 +92,7 @@ twindow::twindow(CVideo& video,
 	, top_level_(false)
 #ifndef NEW_DRAW
 	, window_()
-#endif	
+#endif
 	, restorer_()
 	, tooltip_()
 	, help_popup_()
@@ -154,7 +154,7 @@ twindow::tretval twindow::get_retval_by_id(const std::string& id)
 		return OK;
 	} else if(id == "cancel") {
 		return CANCEL;
-	
+
 	/**
 	 * The ones for the title screen.
 	 *
@@ -164,10 +164,10 @@ twindow::tretval twindow::get_retval_by_id(const std::string& id)
 	 */
 	} else if(id == "tutorial") {
 		return static_cast<tretval>(gui::TUTORIAL);
-#ifndef DISABLE_EDITOR2		
+#ifndef DISABLE_EDITOR2
 	} else if(id == "editor") {
 		return static_cast<tretval>(gui::START_MAP_EDITOR);
-#endif		
+#endif
 	} else if(id == "credits") {
 		return static_cast<tretval>(gui::SHOW_ABOUT);
 	} else if(id == "quit") {
@@ -178,15 +178,15 @@ twindow::tretval twindow::get_retval_by_id(const std::string& id)
 	 * engine can't handle all dialogs yet, so it needs to fall back to the old
 	 * engine to make certain things happen.
 	 */
-	} else if(id == "campaign") { 
+	} else if(id == "campaign") {
 		return static_cast<tretval>(gui::NEW_CAMPAIGN);
-	} else if(id == "multiplayer") { 
+	} else if(id == "multiplayer") {
 		return static_cast<tretval>(gui::MULTIPLAYER);
-	} else if(id == "load") { 
+	} else if(id == "load") {
 		return static_cast<tretval>(gui::LOAD_GAME);
-	} else if(id == "addons") { 
+	} else if(id == "addons") {
 		return static_cast<tretval>(gui::GET_ADDONS);
-	} else if(id == "preferences") { 
+	} else if(id == "preferences") {
 		return static_cast<tretval>(gui::EDIT_PREFERENCES);
 
 	// default if nothing matched
@@ -241,7 +241,7 @@ int twindow::show(const bool restore, void* /*flip_function*/)
 void twindow::draw()
 {
 	// NOTE since we're single threaded there's no need to create a critical
-	// section in this drawing routine. 
+	// section in this drawing routine.
 
 	// Prohibited from drawing?
 	if(suspend_drawing_) {
@@ -282,7 +282,7 @@ void twindow::draw()
 		}
 
 		layout();
-		
+
 		// Get new surface
 		SDL_Rect rect = get_rect();
 		restorer_ = get_surface_portion(video_.getSurface(), rect);
@@ -295,7 +295,7 @@ void twindow::draw()
 	if(full_redraw) {
 		canvas(0).draw();
 		blit_surface(canvas(0).surf(), 0, window_, 0);
-	}		
+	}
 
 	for(tgrid::iterator itor = begin(); itor != end(); ++itor) {
 		if(! *itor || !itor->is_dirty()) {
@@ -310,7 +310,7 @@ void twindow::draw()
 	if(full_redraw) {
 		canvas(1).draw();
 		blit_surface(canvas(1).surf(), 0, window_, 0);
-	}		
+	}
 
 	if(tooltip_.is_dirty()) {
 		tooltip_.draw(window_);
@@ -359,7 +359,7 @@ void twindow::draw()
 		}
 
 		layout();
-		
+
 		// Get new surface for restoring
 		SDL_Rect rect = get_rect();
 		// We want the labels underneath the window so draw them and use them
@@ -367,7 +367,7 @@ void twindow::draw()
 		font::draw_floating_labels(frame_buffer);
 		restorer_ = get_surface_portion(frame_buffer, rect);
 		resized_ = false;
-	
+
 		// Need full redraw so only set ourselves dirty.
 		dirty_list_.push_back(std::vector<twidget*>(1, this));
 	} else {
@@ -420,7 +420,7 @@ void twindow::draw()
 		 *
 		 * - draw [rbegin, rend) the fore ground of all widgets. For items
 		 *   which have two layers eg window or panel it draws the foreground
-		 *   layer. For other widgets it's a nop.  
+		 *   layer. For other widgets it's a nop.
 		 */
 
 		// Restore.
@@ -444,7 +444,7 @@ void twindow::draw()
 			(**ritor).draw_foreground(frame_buffer);
 			(**ritor).set_dirty(false);
 		}
-		
+
 		update_rect(dirty_rect);
 	}
 
@@ -457,7 +457,7 @@ void twindow::draw()
 	cursor::undraw(frame_buffer);
 }
 #endif
-void twindow::window_resize(tevent_handler&, 
+void twindow::window_resize(tevent_handler&,
 		const unsigned new_width, const unsigned new_height)
 {
 	settings::screen_width = new_width;
@@ -465,7 +465,7 @@ void twindow::window_resize(tevent_handler&,
 	resized_ = true;
 }
 
-void twindow::key_press(tevent_handler& /*event_handler*/, bool& handled, 
+void twindow::key_press(tevent_handler& /*event_handler*/, bool& handled,
 		SDLKey key, SDLMod /*modifier*/, Uint16 /*unicode*/)
 {
 	if(key == SDLK_KP_ENTER || key == SDLK_RETURN) {
@@ -480,7 +480,7 @@ void twindow::key_press(tevent_handler& /*event_handler*/, bool& handled,
 		debug_layout_->generate_dot_file("manual");
 		handled = true;
 	}
-#endif	
+#endif
 }
 
 SDL_Rect twindow::get_client_rect() const
@@ -496,7 +496,7 @@ SDL_Rect twindow::get_client_rect() const
 	result.h -= conf->top_border + conf->bottom_border;
 
 	// FIXME validate for an available client area.
-	
+
 	return result;
 
 }
@@ -511,7 +511,7 @@ void twindow::add_easy_close_blocker(const std::string& id)
 void twindow::remove_easy_close_blocker(const std::string& id)
 {
 	easy_close_blocker_.erase(
-		std::remove(easy_close_blocker_.begin(), easy_close_blocker_.end(), id), 
+		std::remove(easy_close_blocker_.begin(), easy_close_blocker_.end(), id),
 		easy_close_blocker_.end());
 }
 
@@ -524,13 +524,13 @@ void twindow::layout()
 		(config());
 	assert(conf);
 
-	log_scope2(gui_layout, "Window: Recalculate size");	
+	log_scope2(gui_layout, "Window: Recalculate size");
 
 	layout_init();
 	generate_dot_file("layout_init");
 
-	const game_logic::map_formula_callable variables = 
-		get_screen_size_variables(); 
+	const game_logic::map_formula_callable variables =
+		get_screen_size_variables();
 
 	const int maximum_width = automatic_placement_ ?
 			settings::screen_width :  w_(variables);
@@ -541,11 +541,11 @@ void twindow::layout()
 	tpoint size = get_best_size();
 	generate_dot_file("get_initial_best_size");
 
-	DBG_G_L << "twindow " << __func__ << ": " << size << " maximum size " 
+	DBG_G_L << "twindow " << __func__ << ": " << size << " maximum size "
 			<< maximum_width << ',' << maximum_height << ".\n";
 
 	/***** Does the width fit in the available width? *****/
-	
+
 	// *** wrap (can change height)
 	if(size.x > maximum_width && can_wrap()) {
 		layout_wrap(maximum_width);
@@ -604,7 +604,7 @@ void twindow::layout()
 	tpoint origin(0, 0);
 
 	if(automatic_placement_) {
-		
+
 		switch(horizontal_placement_) {
 			case tgrid::HORIZONTAL_ALIGN_LEFT :
 				// Do nothing
@@ -654,7 +654,7 @@ void twindow::do_show_tooltip(const tpoint& location, const t_string& tooltip)
 
 	twidget* widget = find_widget(location, true);
 	assert(widget);
-	
+
 	const SDL_Rect widget_rect = widget->get_rect();
 	const SDL_Rect client_rect = get_client_rect();
 
@@ -681,7 +681,7 @@ void twindow::do_show_tooltip(const tpoint& location, const t_string& tooltip)
 	}
 
 	tooltip_.set_size(
-			tpoint(tooltip_rect.x, tooltip_rect.y), 
+			tpoint(tooltip_rect.x, tooltip_rect.y),
 			tpoint(tooltip_rect.w, tooltip_rect.h));
 	tooltip_.set_visible();
 }
@@ -696,7 +696,7 @@ void twindow::do_show_help_popup(const tpoint& location, const t_string& help_po
 	}
 	twidget* widget = find_widget(location, true);
 	assert(widget);
-	
+
 	const SDL_Rect widget_rect = widget->get_rect();
 	const SDL_Rect client_rect = get_client_rect();
 
@@ -723,7 +723,7 @@ void twindow::do_show_help_popup(const tpoint& location, const t_string& help_po
 	}
 
 	help_popup_.set_size(
-			tpoint(help_popup_rect.w, help_popup_rect.h), 
+			tpoint(help_popup_rect.w, help_popup_rect.h),
 			tpoint(help_popup_rect.x, help_popup_rect.y));
 	help_popup_.set_visible();
 }
@@ -735,22 +735,22 @@ void twindow::easy_close()
 	}
 }
 
-void twindow::draw(surface& /*surf*/, const bool /*force*/, 
+void twindow::draw(surface& /*surf*/, const bool /*force*/,
 		const bool /*invalidate_background*/)
 {
 	assert(false);
 }
 
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
-twindow::~twindow() 
+twindow::~twindow()
 {
-	delete debug_layout_; 
+	delete debug_layout_;
 }
 
 void twindow::generate_dot_file(const std::string& generator)
 {
 	debug_layout_->generate_dot_file(generator);
 }
-#endif	
+#endif
 } // namespace gui2
 

@@ -28,9 +28,9 @@ namespace gui2 {
  * == MP method selection ==
  *
  * This shows the dialog to select the kind of MP game the user wants to play.
- * 
+ *
  * @start_table = container
- *     user_name (text_box)            This text contains the name the user on 
+ *     user_name (text_box)            This text contains the name the user on
  *                                     the MP server. This widget will get a
  *                                     fixed maximum length by the engine.
  *     method_list (listbox)           The list with possible game methods.

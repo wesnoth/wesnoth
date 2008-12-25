@@ -52,8 +52,8 @@ private:
 	/** The title for the dialog. */
 	std::string title_;
 
-	/** 
-	 * The image which is shown in the dialog. 
+	/**
+	 * The image which is shown in the dialog.
 	 *
 	 * This image can be an icon or portrait or any other image.
 	 */
@@ -62,7 +62,7 @@ private:
 	/** The message to show to the user. */
 	std::string message_;
 
-	/** 
+	/**
 	 * Does the window need to use easy_close when the dialog doesn't need a
 	 * scrollbar.
 	 */
@@ -89,7 +89,7 @@ private:
  *                            when the message doesn't need a scrollbar to
  *                            show itself.
  */
-void show_message(CVideo& video, const std::string& title, 
+void show_message(CVideo& video, const std::string& title,
 	const std::string& message, const std::string& button_caption = "",
 	const bool auto_close = true);
 

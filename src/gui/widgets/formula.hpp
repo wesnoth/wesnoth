@@ -30,12 +30,12 @@ namespace gui2{
 template <class T>
 class tformula
 {
-public:	
+public:
 	tformula<T>(const std::string& str, const T value = T());
 
 	/**
 	 * Returns the value, can only be used it the data is no formula.
-	 * 
+	 *
 	 *  Another option would be to cache the output of the formula in value_
 	 *  and always allow this function. But for now decided that the caller
 	 *  needs to do the caching. It might be changed later.
@@ -45,7 +45,7 @@ public:
 		assert(!has_formula());
 		return value_;
 	}
-	
+
 	/** Returns the value, can always be used. */
 	T operator() (const game_logic::map_formula_callable& variables) const;
 
@@ -53,7 +53,7 @@ public:
 	bool has_formula() const { return !formula_.empty(); }
 
 private:
-	
+
 	/** Converts the string ot the template value. */
 	void convert(const std::string& str);
 
@@ -88,7 +88,7 @@ inline T tformula<T>::operator() (const game_logic::map_formula_callable& variab
 {
 	if(has_formula()) {
 		const T& result = execute(variables);
-		LOG_G_D << "Formula: execute '" << formula_ 
+		LOG_G_D << "Formula: execute '" << formula_
 			<< "' result '" << result
 			<< "'.\n";
 		return result;
@@ -156,8 +156,8 @@ inline void tformula<t_string>::convert(const std::string& str)
 
 template<class T>
 inline void tformula<T>::convert(const std::string& str)
-{ 
-	value_ = lexical_cast_default<T>(str); 
+{
+	value_ = lexical_cast_default<T>(str);
 }
 
 } // namespace gui2

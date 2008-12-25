@@ -49,7 +49,7 @@ class twindow;
  * info needed for a real widget and some pure abstract functions which need to
  * be implemented by classes inheriting from this class.
  */
-class twidget 
+class twidget
 	: private boost::noncopyable
 	, public virtual tevent_executor
 {
@@ -67,12 +67,12 @@ public:
 #ifdef NEW_DRAW
 		, screen_x_(-1)
 		, screen_y_(-1)
-#endif		
+#endif
 		, dirty_(true)
 		, layout_size_(tpoint(0,0))
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 		, last_best_size_(tpoint(0,0))
-#endif			
+#endif
 		{}
 
 	virtual ~twidget() {}
@@ -85,7 +85,7 @@ public:
 	 * loaded. The member definition_ contains the name of the definition and
 	 * function load the proper configuration.
 	 */
-	virtual void load_config() {} 
+	virtual void load_config() {}
 
 	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
 
@@ -154,7 +154,7 @@ public:
 	 *
 	 * @pre                       can_wrap() == true.
 	 */
-	virtual void layout_wrap(const unsigned /*maximum_width*/) 
+	virtual void layout_wrap(const unsigned /*maximum_width*/)
 		{ assert(can_wrap()); }
 
 	/**
@@ -173,7 +173,7 @@ public:
 	 *
 	 * @pre                       has_horizontal_scrollbar() == true.
 	 */
-	virtual void layout_use_horizontal_scrollbar(const unsigned /*maximum_width*/) 
+	virtual void layout_use_horizontal_scrollbar(const unsigned /*maximum_width*/)
 		{ assert(has_horizontal_scrollbar()); }
 
 	/**
@@ -207,7 +207,7 @@ public:
 	 *
 	 * @pre                       has_vertical_scrollbar() == true.
 	 */
-	virtual void layout_use_vertical_scrollbar(const unsigned /*maximum_height*/) 
+	virtual void layout_use_vertical_scrollbar(const unsigned /*maximum_height*/)
 		{ assert(has_vertical_scrollbar()); }
 
 	/**
@@ -237,7 +237,7 @@ public:
 	 *  widget draws itself it shouldn't clear the dirty flag. This should be
 	 *  done by the toplevel window that issued the draw. This to avoid
 	 *  inherited functions to clear the dirty flag too early.
-	 * 
+	 *
 	 *  @todo add force as parameter.
 	 *
 	 *  @param surface            The surface to draw the widget upon using the
@@ -250,11 +250,11 @@ public:
 	 *                            the background changes this 'feature' will
 	 *                            cause glitches. When this parameter is set the
 	 *                            widget need to reload the background and use
-	 *                            that as new undraw cache. 
+	 *                            that as new undraw cache.
 	 *                            \n Note if this is set the widget should also
 	 *                            be redrawn.
 	 */
-	virtual void draw(surface& /*surface*/, const bool /*force*/ = false, 
+	virtual void draw(surface& /*surface*/, const bool /*force*/ = false,
 		const bool /*invalidate_background*/ = false) = 0;
 #endif
 	/***** ***** ***** ***** query ***** ***** ***** *****/
@@ -267,22 +267,22 @@ public:
 	 * @param must_be_active      The widget should be active, not all widgets
 	 *                            have an active flag, those who don't ignore
 	 *                            flag.
-	 * 
+	 *
 	 * @returns                   The widget with the id.
 	 * @retval 0                  No widget at the wanted coordinate found (or
 	 *                            not active if must_be_active was set).
 	 */
-	virtual twidget* find_widget(const tpoint& coordinate, 
-			const bool /*must_be_active*/) 
-	{ 
+	virtual twidget* find_widget(const tpoint& coordinate,
+			const bool /*must_be_active*/)
+	{
 		return coordinate.x >= x_ && coordinate.x < (x_ + static_cast<int>(w_)) &&
 			coordinate.y >= y_ && coordinate.y < (y_ + static_cast<int>(h_)) ? this : 0;
 	}
 
 	/** The const version of find_widget. */
-	virtual const twidget* find_widget(const tpoint& coordinate, 
+	virtual const twidget* find_widget(const tpoint& coordinate,
 			const bool /*must_be_active*/) const
-	{ 
+	{
 		return coordinate.x >= x_ && coordinate.x < (x_ + static_cast<int>(w_)) &&
 			coordinate.y >= y_ && coordinate.y < (y_ + static_cast<int>(h_)) ? this : 0;
 	}
@@ -294,21 +294,21 @@ public:
 	 * @param must_be_active      The widget should be active, not all widgets
 	 *                            have an active flag, those who don't ignore
 	 *                            flag.
-	 * 
+	 *
 	 * @returns                   The widget with the id.
 	 * @retval 0                  No widget with the id found (or not active if
 	 *                            must_be_active was set).
 	 */
-	virtual twidget* find_widget(const std::string& id, 
+	virtual twidget* find_widget(const std::string& id,
 			const bool /*must_be_active*/)
 		{ return id_ == id ? this : 0; }
 
 	/** The const version of find_widget. */
-	virtual const twidget* find_widget(const std::string& id, 
+	virtual const twidget* find_widget(const std::string& id,
 			const bool /*must_be_active*/) const
 		{ return id_ == id ? this : 0; }
-		
-	/** 
+
+	/**
 	 * Gets a widget with the wanted id.
 	 *
 	 * This template function doesn't return a pointer to a generic widget but
@@ -322,29 +322,29 @@ public:
 	 *                            fail if the widget doesn't exist or is
 	 *                            inactive and must be active. Upon failure a
 	 *                            wml_error is thrown.
-	 * 
+	 *
 	 * @returns                   The widget with the id.
 	 */
 	template<class T>
-	T* find_widget(const std::string& id, 
+	T* find_widget(const std::string& id,
 			const bool must_be_active, const bool must_exist)
 	{
-		T* widget = 
+		T* widget =
 			dynamic_cast<T*>(find_widget(id, must_be_active));
 		VALIDATE(!must_exist || widget, missing_widget(id));
-	
+
 		return widget;
 	}
 
 	/** The const version of find_widget. */
 	template<class T>
-	const T* find_widget(const std::string& id, 
+	const T* find_widget(const std::string& id,
 			const bool must_be_active, const bool must_exist) const
 	{
-		const T* widget = 
+		const T* widget =
 			dynamic_cast<const T*>(find_widget(id, must_be_active));
 		VALIDATE(!must_exist || widget, missing_widget(id));
-	
+
 		return widget;
 	}
 #ifdef NEW_DRAW
@@ -357,37 +357,37 @@ public:
 	 * @param must_be_active      The widget should be active, not all widgets
 	 *                            have an active flag, those who don't ignore
 	 *                            flag.
-	 * 
+	 *
 	 * @returns                   The widget with the id.
 	 * @retval 0                  No widget at the wanted coordinate found (or
 	 *                            not active if must_be_active was set).
 	 */
-	virtual twidget* find_widget2(const tpoint& coordinate, 
-			const bool /*must_be_active*/) 
-	{ 
-		return 
-				coordinate.x >= screen_x_ && 
+	virtual twidget* find_widget2(const tpoint& coordinate,
+			const bool /*must_be_active*/)
+	{
+		return
+				coordinate.x >= screen_x_ &&
 				coordinate.x < (screen_x_ + static_cast<int>(w_)) &&
-				coordinate.y >= screen_y_ && 
-				coordinate.y < (screen_y_ + static_cast<int>(h_)) 
-				? this 
+				coordinate.y >= screen_y_ &&
+				coordinate.y < (screen_y_ + static_cast<int>(h_))
+				? this
 				: 0;
 	}
 
 	/** The const version of find_widget. */
-	virtual const twidget* find_widget2(const tpoint& coordinate, 
+	virtual const twidget* find_widget2(const tpoint& coordinate,
 			const bool /*must_be_active*/) const
-	{ 
-		return 
-				coordinate.x >= screen_x_ && 
+	{
+		return
+				coordinate.x >= screen_x_ &&
 				coordinate.x < (screen_x_ + static_cast<int>(w_)) &&
-				coordinate.y >= screen_y_ && 
-				coordinate.y < (screen_y_ + static_cast<int>(h_)) 
-				? this 
+				coordinate.y >= screen_y_ &&
+				coordinate.y < (screen_y_ + static_cast<int>(h_))
+				? this
 				: 0;
 	}
 #endif
-	/** 
+	/**
 	 * Gets a widget with the wanted id.
 	 *
 	 * This template function doesn't return a pointer to a generic widget but
@@ -397,7 +397,7 @@ public:
 	 * @param must_be_active      The widget should be active, not all widgets
 	 *                            have an active flag, those who don't ignore
 	 *                            flag.
-	 * 
+	 *
 	 * @returns                   The widget with the id.
 	 */
 	template <class T>
@@ -416,8 +416,8 @@ public:
 		VALIDATE(result, missing_widget(id));
 		return *result;
 	}
-	
-	/** 
+
+	/**
 	 * Does the widget contain the widget.
 	 *
 	 * Widgets can be containers which have more widgets inside them, this
@@ -427,7 +427,7 @@ public:
 	 * @param widget              Pointer to the widget to find.
 	 * @returns                   Whether or not the widget was found.
 	 */
-	virtual bool has_widget(const twidget* widget) const 
+	virtual bool has_widget(const twidget* widget) const
 		{ return widget == this; }
 
 	/***** ***** ***** ***** query parents ***** ***** ***** *****/
@@ -443,7 +443,7 @@ public:
 	/** The const version of get_window(). */
 	const twindow* get_window() const;
 
-	/** 
+	/**
 	 * Returns the toplevel dialog.
 	 *
 	 * A window is most of the time created by a dialog, this function returns
@@ -472,11 +472,11 @@ public:
 	 * and shouldn't be changed after showing the widget. If this is done
 	 * undefined things happen and the code doesn't enforce this rule.
 	 */
-	virtual void set_definition(const std::string& definition) 
+	virtual void set_definition(const std::string& definition)
 		{ definition_ = definition; }
 
 	/** Gets the sizes in one rect structure. */
-	SDL_Rect get_rect() const 
+	SDL_Rect get_rect() const
 		{ return ::create_rect( x_, y_, w_, h_ ); }
 	int get_x() const { return x_; }
 	int get_y() const { return y_; }
@@ -493,8 +493,8 @@ public:
 	 *
 	 * @param origin              The new origin.
 	 */
-	virtual void set_origin(const tpoint& origin) 
-	{ 
+	virtual void set_origin(const tpoint& origin)
+	{
 		screen_x_ = origin.x;
 		screen_y_ = origin.y;
 	}
@@ -514,14 +514,14 @@ public:
 	 * When set to not dirty it should also mark it's childeren as not dirty.
 	 * (Obviously only for container classes).
 	 */
-	virtual void set_dirty(const bool dirty = true) 
-	{ 
-		dirty_ = dirty; 
+	virtual void set_dirty(const bool dirty = true)
+	{
+		dirty_ = dirty;
 		if(parent_ && dirty) parent_->set_dirty(true);
 	}
 
 	virtual bool is_dirty() const { return dirty_; }
-#endif		
+#endif
 
 #ifdef NEW_DRAW
 	/**
@@ -529,8 +529,8 @@ public:
 	 *
 	 * @todo test whether nobody redefines the function.
 	 */
-	void set_dirty(const bool dirty = true) 
-	{ 
+	void set_dirty(const bool dirty = true)
+	{
 		dirty_ = dirty;
 	}
 
@@ -540,7 +540,7 @@ public:
 	/** Draws the background of a widget. */
 	virtual void draw_background(surface& /*frame_buffer*/) {}
 
-	/** 
+	/**
 	 * Draws the children of a widget.
 	 *
 	 * Containers should draw their children when they get this request.
@@ -549,7 +549,7 @@ public:
 	 */
 	virtual void draw_children(surface& /*frame_buffer*/) {}
 
-	/** 
+	/**
 	 * Draws the foreground of the widgt.
 	 *
 	 * Some widgets eg panel and window have a back and foreground layer this
@@ -572,10 +572,10 @@ public:
 	 * @param call_stack          The callstack of widgets traversed to reach
 	 *                            this function.
 	 */
-	void populate_dirty_list(twindow& caller, 
+	void populate_dirty_list(twindow& caller,
 			std::vector<twidget*>& call_stack);
 
-	/** 
+	/**
 	 * Tries to add all children of a container to the dirty list.
 	 *
 	 * @param caller              The parent window, if dirty it should
@@ -583,10 +583,10 @@ public:
 	 * @param call_stack          The callstack of widgets traversed to reach
 	 *                            this function.
 	 */
-	virtual void child_populate_dirty_list(twindow& /*caller*/, 
+	virtual void child_populate_dirty_list(twindow& /*caller*/,
 			const std::vector<twidget*>& /*call_stack*/) {}
-#endif		
-protected:	
+#endif
+protected:
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
 	void set_layout_size(const tpoint& size) { layout_size_ = size; }
@@ -595,8 +595,8 @@ protected:
 private:
 	/**
 	 * The id is the unique name of the widget in a certain context. This is
-	 * needed for certain widgets so the engine knows which widget is which. 
-	 * Eg it knows which button is pressed and thus which engine action is 
+	 * needed for certain widgets so the engine knows which widget is which.
+	 * Eg it knows which button is pressed and thus which engine action is
 	 * connected to the button. This doesn't mean that the id is unique in a
 	 * window, eg a listbox can have the same id for every row.
 	 */
@@ -623,7 +623,7 @@ private:
 
 	/** The width of the widget. */
 	unsigned w_;
-	
+
 	/** The height of the widget. */
 	unsigned h_;
 #ifdef NEW_DRAW
@@ -633,7 +633,7 @@ private:
 	/** The y coordinate of the widget in the screen. */
 	int screen_y_;
 #endif
-	/** 
+	/**
 	 * Is the widget dirty? When a widget is dirty it needs to be redrawn at
 	 * the next drawing cycle, setting it to dirty also need to set it's parent
 	 * dirty so at so point the toplevel parent knows which item to redraw.
@@ -647,13 +647,13 @@ private:
 	 * The best size for the control.
 	 *
 	 * When 0,0 the real best size is returned, but in the layout phase a
-	 * wrapping or a scrollbar might change the best size for that widget. 
+	 * wrapping or a scrollbar might change the best size for that widget.
 	 * This variable holds that best value.
 	 */
 	tpoint layout_size_;
 
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
-	/** 
+	/**
 	 * Debug helper to store last value of get_best_size().
 	 *
 	 * We're mutable so calls can stay const and this is disabled in
@@ -679,7 +679,7 @@ template<class T> T* get_parent(twidget* widget)
 		result = dynamic_cast<T*>(widget);
 
 	} while (widget && !result);
-	
+
 	assert(result);
 	return result;
 }

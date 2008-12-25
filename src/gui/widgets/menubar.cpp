@@ -65,7 +65,7 @@ void tmenubar::set_state(const tstate state)
 	}
 }
 
-void tmenubar::item_selected(twidget* widget) 
+void tmenubar::item_selected(twidget* widget)
 {
 	std::cerr << "click.\n";
 
@@ -86,7 +86,7 @@ void tmenubar::item_selected(twidget* widget)
 	if(!item->get_value()) {
 		// Deselected an item, allowed?
 		if(must_select_) {
-			item->set_value(true);	
+			item->set_value(true);
 		} else {
 			selected_item_ = -1;
 		}
@@ -111,7 +111,7 @@ const tselectable_* tmenubar::operator[](const size_t index) const
 	return widget;
 }
 
-tselectable_* tmenubar::operator[](const size_t index) 
+tselectable_* tmenubar::operator[](const size_t index)
 {
 	assert(index < get_item_count());
 

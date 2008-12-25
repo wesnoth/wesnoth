@@ -43,7 +43,7 @@ private:
 	/** Mirror the portrait? */
 	bool mirror_;
 
-	/** 
+	/**
 	 * Inherited from tmessage.
 	 *
 	 * The subclasses need to implement the left or right definition.
@@ -57,13 +57,13 @@ private:
 /** Shows a dialog with the portrait on the left side. */
 class twml_message_left : public twml_message_
 {
-public:	
+public:
 	twml_message_left(const std::string& title, const std::string& message,
 			const std::string portrait, const bool mirror)
 		: twml_message_(title, message, portrait, mirror)
 	{
 	}
-private:	
+private:
 	/** Inherited from twml_message_. */
 	twindow* build_window(CVideo& video);
 };
@@ -71,13 +71,13 @@ private:
 /** Shows a dialog with the portrait on the right side. */
 class twml_message_right : public twml_message_
 {
-public:	
+public:
 	twml_message_right(const std::string& title, const std::string& message,
 			const std::string portrait, const bool mirror)
 		: twml_message_(title, message, portrait, mirror)
 	{
 	}
-private:	
+private:
 	/** Inherited from twml_message_. */
 	twindow* build_window(CVideo& video);
 };

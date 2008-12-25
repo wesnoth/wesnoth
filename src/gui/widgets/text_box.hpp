@@ -19,7 +19,7 @@
 
 namespace gui2 {
 
-/** 
+/**
  * Class for text input history.
  *
  * The history of text items can be stored in the preferences. This class
@@ -29,7 +29,7 @@ namespace gui2 {
 class ttext_history
 {
 public:
-	/** 
+	/**
 	 * Gets history that matches id.
 	 *
 	 * @param id                  The id of the history to look for.
@@ -39,13 +39,13 @@ public:
 	 */
 	static ttext_history get_history(const std::string& id, const bool enabled);
 
-	ttext_history() : 
-		history_(0), 
-		pos_(0), 
-		enabled_(false) 
+	ttext_history() :
+		history_(0),
+		pos_(0),
+		enabled_(false)
 	{
 	}
-	
+
 	/**
 	 * Push string into the history.
 	 *
@@ -55,9 +55,9 @@ public:
 	 * @param text                   The text to push in the history.
 	 */
 	void push(const std::string& text);
-	
+
 	/**
-	 * One step up in the history. 
+	 * One step up in the history.
 	 *
 	 * Pushes text to the history if at the end.
 	 *
@@ -66,9 +66,9 @@ public:
 	 * @returns                   The current value of the history.
 	 */
 	std::string up(const std::string& text = "");
-	
+
 	/**
-	 * One step down in the history. 
+	 * One step down in the history.
 	 *
 	 * Pushes text to the history if at the end.
 	 *
@@ -77,7 +77,7 @@ public:
 	 * @returns                   The current value of the history.
 	 */
 	std::string down(const std::string& text = "");
-	
+
 	/**
 	 * Gets the current history value.
 	 *
@@ -86,25 +86,25 @@ public:
 	 *                            returned.
 	 */
 	std::string get_value() const;
-	
+
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
 	void set_enabled(bool enabled = true) { enabled_ = enabled; }
 	bool get_enabled() const { return enabled_; }
-	
+
 private:
-	ttext_history(std::vector<std::string>* history, const bool enabled) : 
-		history_(history), 
-		pos_(history->size()), 
-		enabled_(enabled) 
+	ttext_history(std::vector<std::string>* history, const bool enabled) :
+		history_(history),
+		pos_(history->size()),
+		enabled_(enabled)
 	{}
-	
+
 	/** The items in the history. */
 	std::vector<std::string>* history_;
 
 	/** The current position in the history. */
 	unsigned pos_;
-	
+
 	/** Is the history enabled. */
 	bool enabled_;
 };
@@ -120,8 +120,8 @@ public:
 		text_y_offset_(0),
 		text_height_(0),
 		dragging_(false)
-	{ 
-		set_wants_mouse_left_double_click(); 
+	{
+		set_wants_mouse_left_double_click();
 	}
 
 	/** Saves the text in the widget to the history. */
@@ -129,9 +129,9 @@ public:
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
-	void set_history(const std::string& id) 
+	void set_history(const std::string& id)
 		{ history_ = ttext_history::get_history(id, true); }
-	
+
 protected:
 
 	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
@@ -157,11 +157,11 @@ protected:
 	void mouse_left_button_double_click(tevent_handler&);
 
 	/** Inherited from ttext_. */
-	void goto_end_of_line(const bool select = false) 
+	void goto_end_of_line(const bool select = false)
 		{ goto_end_of_data(select); }
 
 	/** Inherited from ttext_. */
-	void goto_start_of_line(const bool select = false) 
+	void goto_start_of_line(const bool select = false)
 		{ goto_start_of_data(select); }
 
 	/** Inherited from ttext_. */
@@ -179,9 +179,9 @@ private:
 	/** The history text for this widget. */
 	ttext_history history_;
 
-	/** 
+	/**
 	 * The x offset in the widget where the text starts.
-	 * 
+	 *
 	 * This value is needed to translate a location in the widget to a location
 	 * in the text.
 	 */
@@ -207,7 +207,7 @@ private:
 	/** Is the mouse in dragging mode, this affects selection in mouse move */
 	bool dragging_;
 
-	/** 
+	/**
 	 * Inherited from ttext_.
 	 *
 	 * Unmodified                 If there is a history, goes one item up in the
@@ -218,7 +218,7 @@ private:
 	 */
 	void handle_key_up_arrow(SDLMod modifier, bool& handled);
 
-	/** 
+	/**
 	 * Inherited from ttext_.
 	 *
 	 * Unmodified                 If there is a history, goes one item down in the
@@ -233,12 +233,12 @@ private:
 	void handle_key_clear_line(SDLMod modifier, bool& handled);
 
 	/** Inherited from tcontrol. */
-	const std::string& get_control_type() const 
+	const std::string& get_control_type() const
 		{ static const std::string type = "text_box"; return type; }
 
 	/** Inherited from tcontrol. */
 	void load_config_extra();
-	
+
 };
 
 } //namespace gui2

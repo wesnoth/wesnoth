@@ -25,7 +25,7 @@ namespace gui2 {
  * This widget can draw items beyond the widgets it holds and in front of them.
  * A panel is always active so these functions return dummy values.
  */
-class tpanel : public tcontainer_ 
+class tpanel : public tcontainer_
 {
 
 public:
@@ -35,12 +35,12 @@ public:
 	 *
 	 * @param canvas_count        The canvas count for tcontrol.
 	 */
-	tpanel(const unsigned canvas_count = 2) : 
+	tpanel(const unsigned canvas_count = 2) :
 		tcontainer_(canvas_count)
 	{
 	}
 
-	/** 
+	/**
 	 * Returns the client rect.
 	 *
 	 * The client rect is the area which is used for child items. The rest of
@@ -60,7 +60,7 @@ public:
 	/** Inherited from tcontrol. */
 	void draw(surface& surface,  const bool force = false,
 	        const bool invalidate_background = false);
-#else	
+#else
 	/** Inherited from tcontrol. */
 	void draw_background(surface& frame_buffer);
 
@@ -71,7 +71,7 @@ public:
 private:
 
 	/** Inherited from tcontrol. */
-	const std::string& get_control_type() const 
+	const std::string& get_control_type() const
 		{ static const std::string type = "panel"; return type; }
 
 	/** Inherited from tcontainer_. */
@@ -80,7 +80,7 @@ private:
 	/** Inherited from tcontainer_. */
 	void set_self_active(const bool /*active*/) {}
 
-}; 
+};
 
 } // namespace gui2
 

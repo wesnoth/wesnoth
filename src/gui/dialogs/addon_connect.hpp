@@ -22,13 +22,13 @@ namespace gui2 {
 class taddon_connect : public tdialog
 {
 public:
-	taddon_connect() : 
+	taddon_connect() :
 		host_name_()
 	{}
 
 	const std::string& host_name() const { return host_name_; }
 
-	void set_host_name(const std::string& host_name) 
+	void set_host_name(const std::string& host_name)
 		{ host_name_ = host_name; }
 
 private:

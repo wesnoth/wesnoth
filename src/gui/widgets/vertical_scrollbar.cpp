@@ -19,35 +19,35 @@
 namespace gui2 {
 
 unsigned tvertical_scrollbar::minimum_positioner_length() const
-{ 
+{
 	boost::intrusive_ptr<const tvertical_scrollbar_definition::tresolution> conf =
 		boost::dynamic_pointer_cast<const tvertical_scrollbar_definition::tresolution>(config());
-	assert(conf); 
-	return conf->minimum_positioner_length; 
+	assert(conf);
+	return conf->minimum_positioner_length;
 }
 
 unsigned tvertical_scrollbar::maximum_positioner_length() const
-{ 
+{
 	boost::intrusive_ptr<const tvertical_scrollbar_definition::tresolution> conf =
 		boost::dynamic_pointer_cast<const tvertical_scrollbar_definition::tresolution>(config());
-	assert(conf); 
-	return conf->maximum_positioner_length; 
+	assert(conf);
+	return conf->maximum_positioner_length;
 }
 
 unsigned tvertical_scrollbar::offset_before() const
-{ 
+{
 	boost::intrusive_ptr<const tvertical_scrollbar_definition::tresolution> conf =
 		boost::dynamic_pointer_cast<const tvertical_scrollbar_definition::tresolution>(config());
-	assert(conf); 
-	return conf->top_offset; 
+	assert(conf);
+	return conf->top_offset;
 }
 
 unsigned tvertical_scrollbar::offset_after() const
-{ 
+{
 	boost::intrusive_ptr<const tvertical_scrollbar_definition::tresolution> conf =
 		boost::dynamic_pointer_cast<const tvertical_scrollbar_definition::tresolution>(config());
-	assert(conf); 
-	return conf->bottom_offset; 
+	assert(conf);
+	return conf->bottom_offset;
 }
 
 bool tvertical_scrollbar::on_positioner(const tpoint& coordinate) const
@@ -62,7 +62,7 @@ bool tvertical_scrollbar::on_positioner(const tpoint& coordinate) const
 int tvertical_scrollbar::on_bar(const tpoint& coordinate) const
 {
 	// Not on the widget, leave.
-	if(static_cast<size_t>(coordinate.x) > get_width() 
+	if(static_cast<size_t>(coordinate.x) > get_width()
 			|| static_cast<size_t>(coordinate.y) > get_height()) {
 		return 0;
 	}

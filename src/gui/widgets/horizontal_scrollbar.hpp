@@ -23,9 +23,9 @@ namespace gui2 {
 class thorizontal_scrollbar : public tscrollbar_
 {
 public:
-	
+
 	thorizontal_scrollbar() :
-		tscrollbar_() 
+		tscrollbar_()
 	{
 	}
 
@@ -57,7 +57,7 @@ private:
 		{ return current.x - original.x; }
 
 	/** Inherited from tcontrol. */
-	const std::string& get_control_type() const 
+	const std::string& get_control_type() const
 		{ static const std::string type = "horizontal_scrollbar"; return type; }
 };
 

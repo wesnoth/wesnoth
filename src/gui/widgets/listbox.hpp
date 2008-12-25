@@ -47,12 +47,12 @@ class tspacer;
 class tlistbox : public tvertical_scrollbar_container_
 {
 public:
-	
+
 	tlistbox();
 
-	/** 
+	/**
 	 * When an item in the list is selected by the user we need to
-	 * update the state. We installed a callback handler which 
+	 * update the state. We installed a callback handler which
 	 * calls us.
 	 */
 	void list_item_selected(twidget* caller);
@@ -74,7 +74,7 @@ public:
 	 * Adds single row to the grid.
 	 *
 	 * This function expect a row to have multiple widgets (either multiple
-	 * columns or one column with multiple widgets). 
+	 * columns or one column with multiple widgets).
 	 *
 	 *
 	 * @param data                The data to send to the set_members of the
@@ -96,13 +96,13 @@ public:
 	 *
 	 * @param data                Vector with the number of rows, for every row
 	 *                            it calls add_row(std::map<std::string,
-	 *                            t_string>&). 
+	 *                            t_string>&).
 	 */
 	void add_rows(const std::vector<string_map>& data);
 
 	unsigned get_item_count() const { return rows_.size(); }
 
-	/** 
+	/**
 	 * Makes a row active or inactive.
 	 *
 	 * NOTE this doesn't change the select status of the row.
@@ -132,7 +132,7 @@ public:
 	void mouse_left_button_down(tevent_handler& event);
 
 	/** Inherited from tcontainer_. */
-	void set_self_active(const bool active) 
+	void set_self_active(const bool active)
 		{ state_ = active ? ENABLED : DISABLED; }
 
 	/** Inherited from tvertical_scrollbar_container_. */
@@ -144,12 +144,12 @@ public:
 
 	unsigned get_state() const { return state_; }
 
-	void set_list_builder(tbuilder_grid_ptr list_builder) 
+	void set_list_builder(tbuilder_grid_ptr list_builder)
 		{ list_builder_ = list_builder; }
 
 	unsigned get_selected_row() const { return selected_row_; }
 
-	void set_assume_fixed_row_size(bool assume = true) 
+	void set_assume_fixed_row_size(bool assume = true)
 		{ assume_fixed_row_size_ = assume; }
 
 private:
@@ -164,7 +164,7 @@ private:
 //  It's not needed for now so keep it disabled, no definition exists yet.
 //	void set_state(const tstate state);
 
-	/** 
+	/**
 	 * Current state of the widget.
 	 *
 	 * The state of the widget determines what to render and how the widget
@@ -174,7 +174,7 @@ private:
 
 	/**
 	 * It's possible to let the engine build the contents, we need the builder
-	 * in that case 
+	 * in that case
 	 */
 	tbuilder_grid_ptr list_builder_;
 
@@ -216,7 +216,7 @@ private:
 	bool must_select_;
 
 	/** Multiple items can be selected. */
-	bool multi_select_; 
+	bool multi_select_;
 
 	/** The background of the list, needed for redrawing. */
 	surface list_background_;
@@ -248,16 +248,16 @@ private:
 
 	/** The const version. */
 	const tgrid* find_list(const bool must_exist = true) const;
-#ifndef NEW_DRAW	
-	/** 
-	 * Draws the list area if assume_fixed_row_size_ is true. 
+#ifndef NEW_DRAW
+	/**
+	 * Draws the list area if assume_fixed_row_size_ is true.
 	 *
 	 * The parameters are the same as draw().
 	 */
 	void draw_list_area_fixed_row_height(surface& surface, const bool force,
 		const bool invalidate_background);
 
-	/** 
+	/**
 	 * Draws the list area if assume_fixed_row_size_ is false.
 	 *
 	 * The parameters are the same as draw().
@@ -287,7 +287,7 @@ private:
 
 	public:
 
-		trow(const tbuilder_grid& list_builder_, 
+		trow(const tbuilder_grid& list_builder_,
 			const std::map<std::string /* widget id */, string_map>& data);
 
 		/***** ***** ***** setters / getters for members ***** ****** *****/
@@ -320,7 +320,7 @@ private:
 		/** Is the row currently selected or not. */
 		bool selected_;
 
-		/** 
+		/**
 		 * Is the row active or not?
 		 *
 		 * This value is used to store the status setting it doesn't change the
@@ -330,10 +330,10 @@ private:
 		bool active_;
 
 		/** Initializes all widgets in the grid. */
-		void init_in_grid(tgrid* grid, 
+		void init_in_grid(tgrid* grid,
 			const std::map<std::string /* widget id */, string_map>& data);
 
-		/** 
+		/**
 		 * Selects all widgets in the grid.
 		 *
 		 * Some widgets are tselectable_ and thus can be selected for those
@@ -359,7 +359,7 @@ private:
 	/***** ***** ***** inherited ****** *****/
 
 	/** Inherited from tcontrol. */
-	const std::string& get_control_type() const 
+	const std::string& get_control_type() const
 		{ static const std::string type = "listbox"; return type; }
 
 #ifndef NEW_DRAW
@@ -370,13 +370,13 @@ private:
 	/** Inherited from tcontainer_. */
 	void content_populate_dirty_list(twindow& caller,
 			const std::vector<twidget*>& call_stack);
-#endif	
+#endif
 	/** Inherited from tvertical_scrollbar_container_. */
 	twidget* content_find_widget(
 		const tpoint& coordinate, const bool must_be_active);
 
 	/** Inherited from tvertical_scrollbar_container_. */
-	const twidget* content_find_widget(const tpoint& coordinate, 
+	const twidget* content_find_widget(const tpoint& coordinate,
 			const bool must_be_active) const;
 };
 
@@ -405,9 +405,9 @@ public:
 			const tgenerator_::tplacement placement, const bool select);
 
 	/***** ***** ***** ***** Row handling. ***** ***** ****** *****/
-	/** 
+	/**
 	 * When an item in the list is selected by the user we need to
-	 * update the state. We installed a callback handler which 
+	 * update the state. We installed a callback handler which
 	 * calls us.
 	 */
 	void add_row(const string_map& item);
@@ -416,7 +416,7 @@ public:
 	 * Adds single row to the grid.
 	 *
 	 * This function expect a row to have multiple widgets (either multiple
-	 * columns or one column with multiple widgets). 
+	 * columns or one column with multiple widgets).
 	 *
 	 *
 	 * @param data                The data to send to the set_members of the
@@ -427,13 +427,13 @@ public:
 	 *                            Having both empty and non-empty id's gives
 	 *                            undefined behaviour.
 	 */
-	void add_row(const std::map<std::string /* widget id */, 
+	void add_row(const std::map<std::string /* widget id */,
 			string_map>& data);
 
 	/** Returns the number of items in the listbox. */
 	unsigned get_item_count() const;
 
-	/** 
+	/**
 	 * Makes a row active or inactive.
 	 *
 	 * NOTE this doesn't change the select status of the row.
@@ -465,7 +465,7 @@ public:
 	 */
 	bool select_row(const unsigned row, const bool select = true);
 
-	/** 
+	/**
 	 * Returns the first selected row
 	 *
 	 * @returns                   The first selected row.
@@ -492,9 +492,9 @@ public:
 
 	/** Import overloaded versions. */
 	using tscrollbar_container::find_widget;
-	
+
 	/** Inherited from tscrollbar_container. */
-	void child_populate_dirty_list(twindow& caller, 
+	void child_populate_dirty_list(twindow& caller,
 			const std::vector<twidget*>& call_stack);
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
@@ -502,7 +502,7 @@ public:
 	// FIXME implement
 	void set_callback_value_change(void (*) (twidget* caller)) {}
 
-	void set_list_builder(tbuilder_grid_ptr list_builder) 
+	void set_list_builder(tbuilder_grid_ptr list_builder)
 		{ list_builder_ = list_builder; }
 
 private:
@@ -510,15 +510,15 @@ private:
 	/**
 	 * Finishes the building initialization of the widget.
 	 *
-	 * @param header              Builder for the header. 
-	 * @param footer              Builder for the footer. 
+	 * @param header              Builder for the header.
+	 * @param footer              Builder for the footer.
 	 * @param list_data           The initial data to fill the listbox with.
 	 */
 	void finalize(
-			tbuilder_grid_const_ptr header, 
-			tbuilder_grid_const_ptr footer, 
+			tbuilder_grid_const_ptr header,
+			tbuilder_grid_const_ptr footer,
 			const std::vector<string_map>& list_data);
-	/** 
+	/**
 	 * Contains a pointer to the generator.
 	 *
 	 * The pointer is not owned by this variable.
@@ -529,7 +529,7 @@ private:
 	tbuilder_grid_const_ptr list_builder_;
 
 	/** Inherited from tcontrol. */
-	const std::string& get_control_type() const 
+	const std::string& get_control_type() const
 		{ static const std::string type = "listbox"; return type; }
 };
 

@@ -40,16 +40,16 @@ enum twindow_type {
 	ADDON_CONNECT,           /**< The addon server connection dialog. */
 	LANGUAGE_SELECTION,      /**< The language selection dialog. */
 	MESSAGE,                 /**< A generic message dialog. */
-	WML_MESSAGE_LEFT,        /**< 
+	WML_MESSAGE_LEFT,        /**<
 	                          * A WML message dialog with the portrait on
 	                          * the left side.
 	                          */
-	WML_MESSAGE_RIGHT,       /**< 
+	WML_MESSAGE_RIGHT,       /**<
 	                          * A WML message dialog with the portrait on
 	                          * the right side.
 	                          */
 	MP_CONNECT,              /**< The mp server connection dialog. */
-	MP_METHOD_SELECTION,     /**< 
+	MP_METHOD_SELECTION,     /**<
 	                          * The dialog which allows you to choose the kind
 	                          * mp game the user wants to play.
 	                          */
@@ -61,7 +61,7 @@ enum twindow_type {
 	EDITOR_RESIZE_MAP,       /**< Editor resize map dialog. */
 	EDITOR_SETTINGS,         /**< Editor settings dialog. */
 #endif
-	COUNT                    /**< 
+	COUNT                    /**<
 	                          * The last one to hold the number of items and as
 	                          * sentinel.
 	                          */
@@ -118,12 +118,12 @@ public:
 	std::vector<tstate_definition> state;
 };
 
-typedef 
-	boost::intrusive_ptr<tresolution_definition_> 
+typedef
+	boost::intrusive_ptr<tresolution_definition_>
 	tresolution_definition_ptr;
 
-typedef 
-	boost::intrusive_ptr<const tresolution_definition_> 
+typedef
+	boost::intrusive_ptr<const tresolution_definition_>
 	tresolution_definition_const_ptr;
 
 struct tcontrol_definition : public reference_counted_object
@@ -209,7 +209,7 @@ struct tlistbox_definition : public tcontrol_definition
 		tbuilder_grid_ptr scrollbar;
 #else
 		tbuilder_grid_ptr grid;
-#endif		
+#endif
 
 	};
 };
@@ -369,7 +369,7 @@ struct twindow_definition : public tpanel_definition
 
 struct tgui_definition
 {
-	tgui_definition() : 
+	tgui_definition() :
 		id(),
 		description(),
 		control_definition(),
@@ -389,9 +389,9 @@ struct tgui_definition
 
 	/** Activates a gui. */
 	void activate() const;
-	
-	typedef std::map <std::string /*control type*/, 
-		std::map<std::string /*id*/, tcontrol_definition_ptr> > 
+
+	typedef std::map <std::string /*control type*/,
+		std::map<std::string /*id*/, tcontrol_definition_ptr> >
 		tcontrol_definition_map;
 
 	tcontrol_definition_map control_definition;
@@ -401,7 +401,7 @@ struct tgui_definition
 	std::map<std::string, twindow_builder> window_types;
 private:
 	template<class T>
-	void load_definitions(const std::string& definition_type, 
+	void load_definitions(const std::string& definition_type,
 		const config::child_list& definition_list);
 
 	unsigned popup_show_delay_;
@@ -413,7 +413,7 @@ private:
 	tresolution_definition_ptr get_control(
 		const std::string& control_type, const std::string& definition);
 
-	std::vector<twindow_builder::tresolution>::const_iterator 
+	std::vector<twindow_builder::tresolution>::const_iterator
 		get_window_builder(const std::string& type);
 
 	/** Loads the setting for the theme. */

@@ -44,11 +44,11 @@ namespace gui2 {
  * The copy constructor does a shallow copy of the shapes to draw.
  * a clone() will be implemented if really needed.
  */
-class tcanvas 
+class tcanvas
 {
 public:
 
-	/** 
+	/**
 	 * Abstract base class for all other shapes.
 	 *
 	 * The other shapes are declared and defined in canvas.cpp, since the
@@ -68,7 +68,7 @@ public:
 		 *                        definition, this parameter contains the values
 		 *                        for these formulas.
 		 */
-		virtual void draw(surface& canvas, 
+		virtual void draw(surface& canvas,
 			const game_logic::map_formula_callable& variables) = 0;
 
 	protected:
@@ -103,7 +103,7 @@ public:
 		 * @param x2              The end x coordinate of the line to draw.
 		 * @param y2              The end y coordinate of the line to draw.
 		 */
-		void draw_line(surface& canvas, Uint32 colour, 
+		void draw_line(surface& canvas, Uint32 colour,
 			const unsigned x1, unsigned y1, const unsigned x2, unsigned y2);
 
 	};
@@ -116,7 +116,7 @@ public:
 	/**
 	 * Constructor.
 	 *
-	 * @param cfg                 The config object with the data to draw, see 
+	 * @param cfg                 The config object with the data to draw, see
 	 *                            http://www.wesnoth.org/wiki/GUICanvasWML
 	 */
 	tcanvas(const config& cfg);
@@ -126,7 +126,7 @@ public:
 	 *
 	 * Sets the config of the canvas to the one send and does a forced redraw.
 	 *
-	 * @param cfg                 The config object with the data to draw, see 
+	 * @param cfg                 The config object with the data to draw, see
 	 *                            http://www.wesnoth.org/wiki/GUICanvasWML
 	 */
 	void draw(const config& cfg);
@@ -142,7 +142,7 @@ public:
 	/**
 	 * Sets the config.
 	 *
-	 * @param cfg                 The config object with the data to draw, see 
+	 * @param cfg                 The config object with the data to draw, see
 	 *                            http://www.wesnoth.org/wiki/GUICanvasWML
 	 */
 	void set_cfg(const config& cfg) { parse_cfg(cfg); }
@@ -158,8 +158,8 @@ public:
 	surface& surf() { return canvas_; }
 
 	void set_variable(const std::string& key, const variant& value)
-	{ 
-		variables_.add(key, value); 
+	{
+		variables_.add(key, value);
 		set_dirty();
 	}
 
@@ -191,7 +191,7 @@ private:
 	 * the config object is no longer required and thus not stored in the
 	 * object.
 	 *
-	 * @param cfg                 The config object with the data to draw, see 
+	 * @param cfg                 The config object with the data to draw, see
 	 *                            http://www.wesnoth.org/wiki/GUICanvasWML
 	 */
 	void parse_cfg(const config& cfg);

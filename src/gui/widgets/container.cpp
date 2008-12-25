@@ -30,7 +30,7 @@ void tcontainer_::layout_wrap(const unsigned maximum_width)
 	twidget::layout_wrap(maximum_width);
 
 	log_scope2(gui_layout, "tcontainer(" + get_control_type() + ") " + __func__);
-	
+
 	// We need a copy and adjust if for the borders, no use to ask the grid for
 	// the best size if it won't fit in the end due to our borders.
 	const tpoint border_size = border_space();
@@ -48,13 +48,13 @@ void tcontainer_::layout_wrap(const unsigned maximum_width)
 	if(size.y) {
 		size.y += border_size.y;
 	}
-	
+
 	DBG_G_L << "tcontainer(" + get_control_type() + "):"
 		<< " maximum_width " << maximum_width
 		<< " border size " << border_size
-		<< " returning " << size 
+		<< " returning " << size
 		<< ".\n";
-	
+
 	set_layout_size(size);
 }
 
@@ -64,7 +64,7 @@ void tcontainer_::layout_use_vertical_scrollbar(const unsigned maximum_height)
 	twidget::layout_use_vertical_scrollbar(maximum_height);
 
 	log_scope2(gui_layout, "tcontainer(" + get_control_type() + ") " + __func__);
-	
+
 	// We need a copy and adjust if for the borders, no use to ask the grid for
 	// the best size if it won't fit in the end due to our borders.
 	const tpoint border_size = border_space();
@@ -82,13 +82,13 @@ void tcontainer_::layout_use_vertical_scrollbar(const unsigned maximum_height)
 	if(size.y) {
 		size.y += border_size.y;
 	}
-	
+
 	DBG_G_L << "tcontainer(" + get_control_type() + "):"
 		<< " maximum_height " << maximum_height
 		<< " border size " << border_size
-		<< " returning " << size 
+		<< " returning " << size
 		<< ".\n";
-	
+
 	set_layout_size(size);
 }
 
@@ -98,7 +98,7 @@ void tcontainer_::layout_use_horizontal_scrollbar(const unsigned maximum_width)
 	twidget::layout_use_horizontal_scrollbar(maximum_width);
 
 	log_scope2(gui_layout, "tcontainer(" + get_control_type() + ") " + __func__);
-	
+
 	// We need a copy and adjust if for the borders, no use to ask the grid for
 	// the best size if it won't fit in the end due to our borders.
 	const tpoint border_size = border_space();
@@ -116,13 +116,13 @@ void tcontainer_::layout_use_horizontal_scrollbar(const unsigned maximum_width)
 	if(size.y) {
 		size.y += border_size.y;
 	}
-	
+
 	DBG_G_L << "tcontainer(" + get_control_type() + "):"
 		<< " maximum_width " << maximum_width
 		<< " border size " << border_size
-		<< " returning " << size 
+		<< " returning " << size
 		<< ".\n";
-	
+
 	set_layout_size(size);
 }
 
@@ -138,7 +138,7 @@ void tcontainer_::set_size(const tpoint& origin, const tpoint& size)
 
 tpoint tcontainer_::calculate_best_size() const
 {
-	log_scope2(gui_layout, "tcontainer(" + 
+	log_scope2(gui_layout, "tcontainer(" +
 		get_control_type() + ") " + __func__);
 
 	tpoint result(grid_.get_best_size());
@@ -156,7 +156,7 @@ tpoint tcontainer_::calculate_best_size() const
 
 	DBG_G_L << "tcontainer(" + get_control_type() + "):"
 		<< " border size " << border_size
-		<< " returning " << result 
+		<< " returning " << result
 		<< ".\n";
 
 	return result;

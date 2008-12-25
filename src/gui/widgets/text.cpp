@@ -21,27 +21,27 @@ namespace gui2 {
 
 void ttext_::mouse_move(tevent_handler&)
 {
-	DBG_G_E << "Text: mouse move.\n"; 
+	DBG_G_E << "Text: mouse move.\n";
 
 	// if in select mode select text and move cursor
 }
 
-void ttext_::mouse_left_button_down(tevent_handler& event) 
-{ 
-	DBG_G_E << "Text: left mouse button down.\n"; 
+void ttext_::mouse_left_button_down(tevent_handler& event)
+{
+	DBG_G_E << "Text: left mouse button down.\n";
 
 	event.keyboard_capture(this);
 	event.mouse_capture();
 }
 
-void ttext_::mouse_left_button_up(tevent_handler&) 
-{ 
+void ttext_::mouse_left_button_up(tevent_handler&)
+{
 	// reset select  mode
 	DBG_G_E << "Text: left mouse button up.\n";
 }
 
-void ttext_::mouse_left_button_double_click(tevent_handler&) 
-{ 
+void ttext_::mouse_left_button_double_click(tevent_handler&)
+{
 	DBG_G_E << "Text: left mouse button double click.\n";
 
 	selection_start_ = 0;
@@ -59,13 +59,13 @@ void ttext_::mouse_middle_button_click(tevent_handler&)
 
 }
 
-void ttext_::key_press(tevent_handler& /*event*/, 
+void ttext_::key_press(tevent_handler& /*event*/,
 		bool& handled, SDLKey key, SDLMod modifier, Uint16 unicode)
 {
 	DBG_G_E << "Text: key press.\n";
 
-// For copy/paste we use a different key on the MAC. Other ctrl modifiers won't 
-// be modifed seems not to be required when I read the comment in 
+// For copy/paste we use a different key on the MAC. Other ctrl modifiers won't
+// be modifed seems not to be required when I read the comment in
 // widgets/textbox.cpp:516. Would be nice if somebody on a MAC would test it.
 #ifdef __APPLE__
 	const unsigned copypaste_modifier = KMOD_LMETA | KMOD_RMETA;
@@ -104,7 +104,7 @@ void ttext_::key_press(tevent_handler& /*event*/,
 				handle_key_default(handled, key, modifier, unicode);
 				break;
 			}
-			
+
 			// If ctrl-a is used for home drop the control modifier
 			modifier = static_cast<SDLMod>(modifier &~ KMOD_CTRL);
 			/* FALL DOWN */
@@ -112,13 +112,13 @@ void ttext_::key_press(tevent_handler& /*event*/,
 		case SDLK_HOME :
 			handle_key_home(modifier, handled);
 			break;
-			
+
 		case SDLK_e :
 			if(!(modifier & KMOD_CTRL)) {
 				handle_key_default(handled, key, modifier, unicode);
 				break;
 			}
-			
+
 			// If ctrl-e is used for end drop the control modifier
 			modifier = static_cast<SDLMod>(modifier &~ KMOD_CTRL);
 			/* FALL DOWN */
@@ -148,7 +148,7 @@ void ttext_::key_press(tevent_handler& /*event*/,
 				handle_key_default(handled, key, modifier, unicode);
 				break;
 			}
-			
+
 			// atm we don't care whether there is something to copy or paste
 			// if nothing is there we still don't want to be chained.
 			copy_selection(false);
@@ -160,7 +160,7 @@ void ttext_::key_press(tevent_handler& /*event*/,
 				handle_key_default(handled, key, modifier, unicode);
 				break;
 			}
-			
+
 			copy_selection(false);
 			delete_selection();
 			handled = true;
@@ -171,7 +171,7 @@ void ttext_::key_press(tevent_handler& /*event*/,
 				handle_key_default(handled, key, modifier, unicode);
 				break;
 			}
-			
+
 			paste_selection(false);
 			handled = true;
 			break;
@@ -186,7 +186,7 @@ void ttext_::set_maximum_length(const size_t maximum_length)
 {
 	const bool need_update = text_.get_length() > maximum_length;
 
-	text_.set_maximum_length(maximum_length); 
+	text_.set_maximum_length(maximum_length);
 
 	if(need_update) {
 		if(selection_start_ > maximum_length) {
@@ -196,21 +196,21 @@ void ttext_::set_maximum_length(const size_t maximum_length)
 			selection_length_ = maximum_length - selection_start_;
 		}
 		update_canvas();
-		set_dirty(); 
+		set_dirty();
 	}
 }
 
 void ttext_::set_value(const std::string& text)
-{ 
-	if(text != text_.text()) { 
+{
+	if(text != text_.text()) {
 		text_.set_text(text, false);
 
 		// default to put the cursor at the end of the buffer.
 		selection_start_ = text_.get_length();
 		selection_length_ = 0;
 		update_canvas();
-		set_dirty(); 
-	} 
+		set_dirty();
+	}
 }
 
 void ttext_::set_cursor(const size_t offset, const bool select)
@@ -286,7 +286,7 @@ void ttext_::paste_selection(const bool mouse)
 	selection_start_ += text_.insert_text(selection_start_, text);
 
 	update_canvas();
-	set_dirty(); 
+	set_dirty();
 }
 
 void  ttext_::set_selection_start(const size_t selection_start)
@@ -297,8 +297,8 @@ void  ttext_::set_selection_start(const size_t selection_start)
 	}
 }
 
-void ttext_::set_selection_length(const int selection_length) 
-{ 
+void ttext_::set_selection_length(const int selection_length)
+{
 	if(selection_length != selection_length_) {
 		selection_length_ = selection_length;
 		set_dirty();

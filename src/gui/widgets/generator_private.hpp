@@ -30,7 +30,7 @@ namespace gui2 {
 
 /**
  * Contains the policies for the tgenerator class.
- */	
+ */
 namespace policy {
 
 /***** ***** ***** ***** Minimum selection ***** ***** ***** *****/
@@ -38,11 +38,11 @@ namespace policy {
 /** Contains the policy for the minimum number of selected items. */
 namespace minimum_selection {
 
-/** Must select at least one item. */	
-struct tone 
+/** Must select at least one item. */
+struct tone
 	: public virtual tgenerator_
 {
-	/** 
+	/**
 	 * Called when an item is created.
 	 *
 	 * @param index               The index of the new item.
@@ -82,17 +82,17 @@ struct tnone
 	: public virtual tgenerator_
 {
 
-	/** See minimum_selection::tone::create_item() */	
+	/** See minimum_selection::tone::create_item() */
 	void create_item(const unsigned /*index*/) {}
 
-	/** See minimum_selection::tone::deselect_item() */	
+	/** See minimum_selection::tone::deselect_item() */
 	bool deselect_item(const unsigned index)
 	{
 		do_deselect_item(index);
 		return true;
 	}
 
-	/** See ::minimum_selection::tone::delete_item() */	
+	/** See ::minimum_selection::tone::delete_item() */
 	void delete_item(const unsigned index)
 	{
 		if(is_selected(index)) {
@@ -108,7 +108,7 @@ struct tnone
 /** Contains the policy for the maximum number of selected items. */
 namespace maximum_selection {
 
-/** May select only one item. */	
+/** May select only one item. */
 struct tone
 	: public virtual tgenerator_
 {
@@ -121,7 +121,7 @@ struct tone
 	 *
 	 * @param index               The item to select.
 	 */
-	void select_item(const unsigned index) 
+	void select_item(const unsigned index)
 	{
 		if(get_selected_item_count() == 1) {
 			// deselect current.
@@ -136,7 +136,7 @@ struct tone
 struct tinfinite
 	: public virtual tgenerator_
 {
-	void select_item(const unsigned index) 
+	void select_item(const unsigned index)
 	{
 		do_select_item(index);
 	}
@@ -149,7 +149,7 @@ struct tinfinite
 /** Controls how new items are placed. */
 namespace placement {
 
-/** 
+/**
  * Places the items in a horizontal row.
  *
  * @todo Implement.
@@ -181,21 +181,21 @@ struct thorizontal_list
 	 * @param size                The size of the generator.
 	 */
 	void set_size(const tpoint& /*origin*/, const tpoint& /*size*/)
-		{ assert(false); } 
+		{ assert(false); }
 
-	/** 
+	/**
 	 * Sets the origin of the generator.
 	 *
 	 * @param origin              The origin of the generator.
 	 */
 	void set_origin(const tpoint& /*origin*/)
-		{ assert(false); } 
+		{ assert(false); }
 
 	/** Inherited from tgenerator_. */
 	twidget* find_widget(const tpoint&, const bool) { assert(false); }
 
 	/** Inherited from tgenerator_. */
-	const twidget* find_widget(const tpoint&, const bool) const 
+	const twidget* find_widget(const tpoint&, const bool) const
 		{ assert(false); }
 };
 
@@ -221,16 +221,16 @@ struct tvertical_list
 	twidget* find_widget(const tpoint& coordinate, const bool must_be_active);
 
 	/** See thorizontal_list::find_widget(). */
-	const twidget* find_widget(const tpoint& coordinate, 
+	const twidget* find_widget(const tpoint& coordinate,
 			const bool must_be_active) const;
 
 	// FIXME we need a delete handler as well,
 	// when deleting the last item we need to remove the placed flag.
-	
-	// FIXME we also need a clear function, called when 
+
+	// FIXME we also need a clear function, called when
 	// clear is called.
 private:
-	/** 
+	/**
 	 * Has the grid already been placed?
 	 *
 	 * If the grid is placed it's no problem set the location of the new
@@ -240,7 +240,7 @@ private:
 	bool placed_;
 };
 
-/** 
+/**
  * Places the items in a grid.
  *
  * The items will be placed in rows and columns. It has to be determined
@@ -260,21 +260,21 @@ struct tmatrix
 
 	/** See thorizontal_list::set_size(). */
 	void set_size(const tpoint& /*origin*/, const tpoint& /*size*/)
-		{ assert(false); } 
+		{ assert(false); }
 
 	/** See thorizontal_list::set_origin(). */
 	void set_origin(const tpoint& /*origin*/)
-		{ assert(false); } 
+		{ assert(false); }
 
 	/** See thorizontal_list::find_widget(). */
 	twidget* find_widget(const tpoint&, const bool) { assert(false); }
 
 	/** See thorizontal_list::find_widget(). */
-	const twidget* find_widget(const tpoint&, const bool) const 
+	const twidget* find_widget(const tpoint&, const bool) const
 		{ assert(false); }
 };
 
-/** 
+/**
  * Places the items independent of eachother.
  *
  * This is mainly meant for when only one item is shown at the same time.
@@ -293,17 +293,17 @@ struct tindependant
 
 	/** See thorizontal_list::set_size(). */
 	void set_size(const tpoint& /*origin*/, const tpoint& /*size*/)
-		{ assert(false); } 
+		{ assert(false); }
 
 	/** See thorizontal_list::set_origin(). */
 	void set_origin(const tpoint& /*origin*/)
-		{ assert(false); } 
+		{ assert(false); }
 
 	/** See thorizontal_list::find_widget(). */
 	twidget* find_widget(const tpoint&, const bool) { assert(false); }
 
 	/** See thorizontal_list::find_widget(). */
-	const twidget* find_widget(const tpoint&, const bool) const 
+	const twidget* find_widget(const tpoint&, const bool) const
 		{ assert(false); }
 };
 
@@ -311,14 +311,14 @@ struct tindependant
 
 /***** ***** ***** ***** Select action ***** ***** ***** *****/
 
-/** 
+/**
  * Contains the policy for which action to take when an item is selected or
  * deselected.
  */
 namespace select_action {
 
 /** Select the item, this requires the grid to contain a tselectable_. */
-struct tselect 
+struct tselect
 	: public virtual tgenerator_
 {
 	void select(tgrid& grid, const bool select);
@@ -373,7 +373,7 @@ public:
 	{
 		clear();
 	}
-  
+
 	/***** ***** ***** inherited ***** ****** *****/
 
 	/** Inherited from tgenerator_. */
@@ -397,7 +397,7 @@ public:
 	}
 
 	/** Inherited from tgenerator_. */
-	void select_item(const unsigned index, 
+	void select_item(const unsigned index,
 			const bool select = true)
 	{
 		assert(index < items_.size());
@@ -406,7 +406,7 @@ public:
 			maximum_selection::select_item(index);
 		} else if(is_selected(index)) {
 			if(!minimum_selection::deselect_item(index)) {
-				// Some items might have deseleted themselves so 
+				// Some items might have deseleted themselves so
 				// make sure they do get selected again.
 				select_action::select(get_item(index), true);
 			}
@@ -421,15 +421,15 @@ public:
 	}
 
 	/** Inherited from tgenerator_. */
-	unsigned get_item_count() const 
-	{ 
-		return items_.size(); 
+	unsigned get_item_count() const
+	{
+		return items_.size();
 	}
 
 	/** Inherited from tgenerator_. */
-	unsigned get_selected_item_count() const 
-	{ 
-		return selected_item_count_; 
+	unsigned get_selected_item_count() const
+	{
+		return selected_item_count_;
 	}
 
 	/** Inherited from tgenerator_. */
@@ -457,9 +457,9 @@ public:
 
 	/** Inherited from tgenerator_. */
 	void create_item(const int index,
-			tbuilder_grid_const_ptr list_builder, 
+			tbuilder_grid_const_ptr list_builder,
 			const string_map& item_data,
-			void (*callback)(twidget*)) 
+			void (*callback)(twidget*))
  	{
 		std::map<std::string, string_map> data;
 
@@ -468,11 +468,11 @@ public:
 	}
 
 	/** Inherited from tgenerator_. */
-	void create_item(const int index, 
-			tbuilder_grid_const_ptr list_builder, 
-			const std::map<std::string /* widget id */, 
+	void create_item(const int index,
+			tbuilder_grid_const_ptr list_builder,
+			const std::map<std::string /* widget id */,
 			string_map>& item_data,
-			void (*callback)(twidget*)) 
+			void (*callback)(twidget*))
 	{
 		assert(list_builder);
 		assert(index == -1 || static_cast<unsigned>(index) < items_.size());
@@ -481,8 +481,8 @@ public:
 		list_builder->build(&item->grid);
 		init(&item->grid, item_data, callback);
 
-		const unsigned item_index = index == -1 
-				? items_.size() 
+		const unsigned item_index = index == -1
+				? items_.size()
 				: index;
 
 		items_.insert(items_.begin() + item_index, item);
@@ -491,20 +491,20 @@ public:
 	}
 
 	/** Inherited from tgenerator_. */
-	virtual void create_items(const int index, 
-			tbuilder_grid_const_ptr list_builder, 
+	virtual void create_items(const int index,
+			tbuilder_grid_const_ptr list_builder,
 			const std::vector<std::map<std::string /*widget id*/,
 			string_map> >& data,
-			void (*callback)(twidget*)) 
+			void (*callback)(twidget*))
 	{
 		impl_create_items(index, list_builder, data, callback);
 	}
 
 	/** Inherited from tgenerator_. */
-	virtual void create_items(const int index, 
-			tbuilder_grid_const_ptr list_builder, 
+	virtual void create_items(const int index,
+			tbuilder_grid_const_ptr list_builder,
 			const std::vector<string_map>& data,
-			void (*callback)(twidget*)) 
+			void (*callback)(twidget*))
 	{
 		impl_create_items(index, list_builder, data, callback);
 	}
@@ -550,7 +550,7 @@ public:
 	}
 
 	/** Inherited from tgenerator_. */
-	void child_populate_dirty_list(twindow& caller, 
+	void child_populate_dirty_list(twindow& caller,
 			const std::vector<twidget*>& call_stack)
 	{
 		foreach(titem* item, items_) {
@@ -609,7 +609,7 @@ private:
 	/** The items in the generator. */
 	std::vector<titem*> items_;
 
-	/** 
+	/**
 	 * Sets the selected state of an item.
 	 *
 	 * @param index               The item to modify.
@@ -640,9 +640,9 @@ private:
 	 */
 	template<class T>
 	void impl_create_items(const int index,
-			tbuilder_grid_const_ptr list_builder, 
+			tbuilder_grid_const_ptr list_builder,
 			const std::vector<T>& data,
-			void (*callback)(twidget*)) 
+			void (*callback)(twidget*))
 	{
 		int i = index;
 		foreach(const T& item_data, data) {
@@ -662,10 +662,10 @@ private:
 	 * @param callback            The callback function to call when an item
 	 *                            in the grid is (de)selected.
 	 */
-	void init(tgrid* grid, 
+	void init(tgrid* grid,
 			const std::map<std::string /* widget id */, string_map>& data,
-			void (*callback)(twidget*)) 
-	{		
+			void (*callback)(twidget*))
+	{
 		assert(grid);
 		grid->set_parent(this);
 
@@ -680,7 +680,7 @@ private:
 
 				if(btn) {
 					btn->set_callback_state_change(callback);
-					std::map<std::string, string_map>::const_iterator itor = 
+					std::map<std::string, string_map>::const_iterator itor =
 							data.find(btn->id());
 
 					if(itor == data.end()) {
@@ -695,7 +695,7 @@ private:
 				} else if(child_grid) {
 					init(child_grid, data, callback);
 				} else {
-					ERROR_LOG("Widget type '" 
+					ERROR_LOG("Widget type '"
 							<< typeid(*widget).name() << "'.");
 				}
 			}

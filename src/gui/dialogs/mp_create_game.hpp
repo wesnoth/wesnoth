@@ -30,7 +30,7 @@ public:
 	tmp_create_game(const config& cfg);
 
 private:
-	
+
 	/** Inherited from tdialog. */
 	twindow* build_window(CVideo& video);
 
@@ -48,13 +48,13 @@ private:
 	 * All fields are also in the normal field vector, but they need to be
 	 * manually controled as well so add the pointers here as well.
 	 */
-	
-	tfield_bool 
+
+	tfield_bool
 		*use_map_settings_,
 		*fog_,
 		*shroud_,
 		*start_time_;
-	
+
 	tfield_integer
 		*turns_,
 		*gold_,

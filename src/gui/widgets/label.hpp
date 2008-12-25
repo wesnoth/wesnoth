@@ -23,8 +23,8 @@ namespace gui2 {
 class tlabel : public tcontrol
 {
 public:
-	
-	tlabel() 
+
+	tlabel()
 		: tcontrol(COUNT)
 		, state_(ENABLED)
 		, can_wrap_(false)
@@ -35,7 +35,7 @@ public:
 	bool can_wrap() const { return can_wrap_; }
 
 	/** Inherited from tcontrol. */
-	void set_active(const bool active) 
+	void set_active(const bool active)
 		{ if(get_active() != active) set_state(active ? ENABLED : DISABLED); };
 
 	/** Inherited from tcontrol. */
@@ -62,7 +62,7 @@ private:
 
 	void set_state(const tstate state);
 
-	/** 
+	/**
 	 * Current state of the widget.
 	 *
 	 * The state of the widget determines what to render and how the widget
@@ -74,7 +74,7 @@ private:
 	bool can_wrap_;
 
 	/** Inherited from tcontrol. */
-	const std::string& get_control_type() const 
+	const std::string& get_control_type() const
 		{ static const std::string type = "label"; return type; }
 };
 

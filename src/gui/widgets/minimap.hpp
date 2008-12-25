@@ -32,7 +32,7 @@ namespace gui2 {
 class tminimap : public tcontrol
 {
 public:
-	tminimap() : 
+	tminimap() :
 		tcontrol(1),
 		map_data_(),
 		terrain_(NULL),
@@ -58,13 +58,13 @@ public:
 	bool does_block_easy_close() const { return false; }
 #ifndef NEW_DRAW
 	/** Inherited from tcontrol. */
-	void draw(surface& surface, const bool force = false, 
+	void draw(surface& surface, const bool force = false,
 		const bool invalidate_background = false);
 #else
 	/** Inherited from tcontrol. */
 	void draw_background(surface& frame_buffer);
 #endif
-	/** 
+	/**
 	 * Inherited from tcontrol.
 	 *
 	 * Since the old minimap might be smaller we always need to do a full
@@ -75,7 +75,7 @@ public:
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
-	void set_map_data(const std::string& map_data) 
+	void set_map_data(const std::string& map_data)
 		{ if(map_data != map_data_) { map_data_ = map_data; set_dirty(); } }
 
 	std::string get_map_data() const { return map_data_; }
@@ -85,7 +85,7 @@ public:
 	void set_config(const ::config* terrain) { terrain_ = terrain; }
 
 	/** Sets all border variables, no function to set one at the time. */
-	void set_borders(const unsigned left, 
+	void set_borders(const unsigned left,
 		const unsigned right, const unsigned top, const unsigned bottom);
 
 private:
@@ -93,14 +93,14 @@ private:
 	/** The map data to be used to generate the map. */
 	std::string map_data_;
 
-	/** 
-	 * The config object with the terrain data. 
+	/**
+	 * The config object with the terrain data.
 	 *
 	 * This config must be set before the object can be drawn.
 	 */
 	const ::config* terrain_;
 
-	/** 
+	/**
 	 * The minimap widget might have some drawing on the borders, these
 	 * variables hold the border size. The minimap itself is not drawn on that
 	 * area.
@@ -114,7 +114,7 @@ private:
 	virtual void draw_map(surface& surface);
 
 	/** Inherited from tcontrol. */
-	const std::string& get_control_type() const 
+	const std::string& get_control_type() const
 		{ static const std::string type = "minimap"; return type; }
 };
 

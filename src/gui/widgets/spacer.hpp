@@ -33,7 +33,7 @@ namespace gui2 {
 class tspacer : public tcontrol
 {
 public:
-	tspacer() : 
+	tspacer() :
 		tcontrol(0),
 		best_size_(0, 0)
 	{
@@ -44,9 +44,9 @@ public:
 private:
 	/** Inherited from tcontrol. */
 	tpoint calculate_best_size() const
-	{ 
-		return best_size_ != tpoint(0, 0) 
-			? best_size_ : tcontrol::calculate_best_size(); 
+	{
+		return best_size_ != tpoint(0, 0)
+			? best_size_ : tcontrol::calculate_best_size();
 	}
 public:
 
@@ -64,28 +64,28 @@ public:
 	/** Inherited from tcontrol. */
 	bool does_block_easy_close() const { return false; }
 
-	/** 
-	 * Inherited from tcontrol. 
+	/**
+	 * Inherited from tcontrol.
 	 *
 	 * Since we're always empty the draw does nothing.
 	 */
 #ifndef NEW_DRAW
-	void draw(surface& /*surface*/, const bool /*force*/ = false, 
+	void draw(surface& /*surface*/, const bool /*force*/ = false,
 		const bool /*invalidate_background*/ = false) {}
-#else	
+#else
 	 void draw_background(surface& /*frame_buffer*/) {}
-#endif	
+#endif
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
 	void set_best_size(const tpoint& best_size) { best_size_ = best_size; }
-	
+
 private:
 
 	/** When we're used as a fixed size item, this holds the best size. */
 	tpoint best_size_;
 
 	/** Inherited from tcontrol. */
-	const std::string& get_control_type() const 
+	const std::string& get_control_type() const
 		{ static const std::string type = "spacer"; return type; }
 };
 

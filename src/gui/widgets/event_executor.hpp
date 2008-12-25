@@ -46,8 +46,8 @@ public:
 
 	/***** ***** ***** ***** mouse movement ***** ***** ***** *****/
 
-	/** 
-	 * The mouse 'enters' the widget. 
+	/**
+	 * The mouse 'enters' the widget.
 	 *
 	 * Entering happens when the mouse moves on a widget it wasn't on before.
 	 * When the mouse is captured by another widget this event does not occur.
@@ -56,8 +56,8 @@ public:
 	 */
 	virtual void mouse_enter(tevent_handler& /*event_handler*/) {}
 
-	/** 
-	 * The mouse moves 'over' the widget. 
+	/**
+	 * The mouse moves 'over' the widget.
 	 *
 	 * The mouse either moves over the widget or it has the mouse captured in
 	 * which case every move causes a move event for the capturing widget.
@@ -90,8 +90,8 @@ public:
 
 	/***** ***** ***** ***** mouse left button ***** ***** ***** *****/
 
-	/** 
-	 * The left mouse button is pressed down. 
+	/**
+	 * The left mouse button is pressed down.
 	 *
 	 * This is a rather low level event, most of the time you want to have a
 	 * look at mouse_left_button_click instead.
@@ -100,7 +100,7 @@ public:
 	 */
 	virtual void mouse_left_button_down(tevent_handler& /*event_handler*/) {}
 
-	/** 
+	/**
 	 * The left mouse button is released down.
 	 *
 	 * This is a rather low level event, most of the time you want to have a
@@ -176,8 +176,8 @@ public:
 	 *                            pressed.
 	 * @param unicode             The unicode for the pressed key.
 	 */
-	virtual void key_press(tevent_handler& /*event_handler*/, bool& /*handled*/, 
-		SDLKey /*key*/, SDLMod /*modifier*/, Uint16 /*unicode*/) {} 
+	virtual void key_press(tevent_handler& /*event_handler*/, bool& /*handled*/,
+		SDLKey /*key*/, SDLMod /*modifier*/, Uint16 /*unicode*/) {}
 
 	/**
 	 * The F1 key was pressed.
@@ -199,28 +199,28 @@ public:
 	 * @param new_height          Height of the application window after
 	 *                            resizing.
 	 */
-	virtual void window_resize(tevent_handler&, const unsigned /* new_width */, 
+	virtual void window_resize(tevent_handler&, const unsigned /* new_width */,
 		const unsigned /* new_height */) {}
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
-	void set_wants_mouse_hover(const bool hover = true) 
+	void set_wants_mouse_hover(const bool hover = true)
 		{ wants_mouse_hover_ = hover; }
 	bool wants_mouse_hover() const { return wants_mouse_hover_; }
 
-	void set_wants_mouse_left_double_click(const bool click = true) 
+	void set_wants_mouse_left_double_click(const bool click = true)
 		{ wants_mouse_left_double_click_ = click; }
-	bool wants_mouse_left_double_click() const 
+	bool wants_mouse_left_double_click() const
 		{ return wants_mouse_left_double_click_; }
 
-	void set_wants_mouse_middle_double_click(const bool click = true) 
+	void set_wants_mouse_middle_double_click(const bool click = true)
 		{ wants_mouse_middle_double_click_ = click; }
-	bool wants_mouse_middle_double_click() const 
+	bool wants_mouse_middle_double_click() const
 		{ return wants_mouse_middle_double_click_; }
 
-	tevent_executor& set_wants_mouse_right_double_click(const bool click = true) 
+	tevent_executor& set_wants_mouse_right_double_click(const bool click = true)
 		{ wants_mouse_right_double_click_ = click; return *this; }
-	bool wants_mouse_right_double_click() const 
+	bool wants_mouse_right_double_click() const
 		{ return wants_mouse_right_double_click_; }
 
 private:
@@ -228,10 +228,10 @@ private:
 	/** Does the widget want a hover event? See mouse_hover. */
 	bool wants_mouse_hover_;
 
-	/** 
+	/**
 	 * Does the widget want a left button double click? See
 	 * mouse_left_button_double_click.
-	 */ 
+	 */
 	bool wants_mouse_left_double_click_;
 
 	/** See wants_mouse_left_double_click_ */

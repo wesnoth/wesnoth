@@ -24,8 +24,8 @@ teditor_new_map::teditor_new_map() :
 {
 }
 
-void teditor_new_map::set_map_width(int value) 
-{ 
+void teditor_new_map::set_map_width(int value)
+{
 	map_width_->set_cache_value(value);
 }
 
@@ -35,7 +35,7 @@ int teditor_new_map::map_width() const
 }
 
 void teditor_new_map::set_map_height(int value)
-{ 
+{
 	map_height_->set_cache_value(value);
 }
 

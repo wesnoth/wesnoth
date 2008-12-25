@@ -19,24 +19,24 @@
 #include "gui/widgets/spacer.hpp"
 
 namespace gui2 {
-tscroll_label::tscroll_label() 
+tscroll_label::tscroll_label()
 #ifndef NEW_DRAW
 	: tvertical_scrollbar_container_(COUNT)
 #else
 	: tscrollbar_container(COUNT)
-#endif	
+#endif
 	, state_(ENABLED)
 #ifndef NEW_DRAW
 	, label_(NULL)
-#endif	
+#endif
 {
 }
 
-tscroll_label::~tscroll_label() 
+tscroll_label::~tscroll_label()
 {
 #ifndef NEW_DRAW
 	delete label_;
-#endif	
+#endif
 }
 
 void tscroll_label::set_label(const t_string& label)
@@ -54,7 +54,7 @@ void tscroll_label::set_label(const t_string& label)
 				find_widget<tlabel>("_label", false, true);
 		widget->set_label(label);
 	}
-#endif	
+#endif
 }
 
 #ifndef NEW_DRAW
@@ -63,29 +63,29 @@ tlabel* tscroll_label::find_label(const bool must_exist)
 	if(label_) {
 		return label_;
 	} else {
-		return find_widget<tlabel>("_label", false, must_exist); 
+		return find_widget<tlabel>("_label", false, must_exist);
 	}
 }
 
 const tlabel* tscroll_label::find_label(const bool must_exist) const
-{ 
+{
 	if(label_) {
 		return label_;
 	} else {
-		return find_widget<const tlabel>("_label", false, must_exist); 
+		return find_widget<const tlabel>("_label", false, must_exist);
 	}
 }
 
 tspacer* tscroll_label::find_spacer(const bool must_exist)
 {
 	assert(label_ || !must_exist);
-	return find_widget<tspacer>("_label", false, must_exist); 
-}	
+	return find_widget<tspacer>("_label", false, must_exist);
+}
 
 const tspacer* tscroll_label::find_spacer(const bool must_exist) const
 {
 	assert(label_ || !must_exist);
-	return find_widget<const tspacer>("_label", false, must_exist); 
+	return find_widget<const tspacer>("_label", false, must_exist);
 }
 
 void tscroll_label::finalize()
@@ -102,7 +102,7 @@ void tscroll_label::finalize()
 }
 #else
 void tscroll_label::finalize_subclass()
-{ 
+{
 	assert(content_grid());
 	tlabel* lbl = dynamic_cast<tlabel*>(
 		   	content_grid()->find_widget("_label", false));
@@ -110,7 +110,7 @@ void tscroll_label::finalize_subclass()
 	assert(lbl);
 	lbl->set_label(label());
 
-	/** 
+	/**
 	 * @todo wrapping should be a label setting.
 	 * This setting shoul be mutual exclusive with the horizontal scrollbar.
 	 * Also the scroll_grid needs to set the status for the scrollbars.
@@ -206,7 +206,7 @@ void tscroll_label::content_draw_background(surface& /*frame_buffer*/)
 
 void tscroll_label::
 		content_populate_dirty_list(twindow& /*caller*/,
-		const std::vector<twidget*>& /*call_stack*/) 
+		const std::vector<twidget*>& /*call_stack*/)
 {
 	assert(false); //fixme implement
 }
@@ -219,7 +219,7 @@ twidget* tscroll_label::content_find_widget(
 	return label_;
 }
 
-const twidget* tscroll_label::content_find_widget(const tpoint& /*coordinate*/, 
+const twidget* tscroll_label::content_find_widget(const tpoint& /*coordinate*/,
 		const bool /*must_be_active*/) const
 {
 	return label_;

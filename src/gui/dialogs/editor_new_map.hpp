@@ -23,7 +23,7 @@ class teditor_new_map : public tdialog
 {
 public:
 	teditor_new_map();
-	
+
 	void set_map_width(int value);
 	int map_width() const;
 	void set_map_height(int value);

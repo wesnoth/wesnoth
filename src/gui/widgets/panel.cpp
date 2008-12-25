@@ -32,7 +32,7 @@ SDL_Rect tpanel::get_client_rect() const
 	return result;
 }
 #ifndef NEW_DRAW
-void tpanel::draw(surface& surface, const bool force, 
+void tpanel::draw(surface& surface, const bool force,
 		const bool invalidate_background)
 {
 	// Need to preserve the state and inherited draw clear the flag.

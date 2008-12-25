@@ -25,7 +25,7 @@ namespace gui2 {
 /**
  * A generic container base class.
  *
- * A container is a class build with multiple items either acting as one 
+ * A container is a class build with multiple items either acting as one
  * widget.
  *
  */
@@ -41,7 +41,7 @@ public:
 		grid_.set_parent(this);
 	}
 
-	/** 
+	/**
 	 * Returns the size of the client area.
 	 *
 	 * The client area is the area available for widgets.
@@ -53,7 +53,7 @@ public:
 	/** Inherited from tcontrol. */
 	void layout_init();
 
-private:	
+private:
 	/** Inherited from twidget. */
 	tpoint calculate_best_size() const;
 public:
@@ -62,11 +62,11 @@ public:
 	bool can_wrap() const { return grid_.can_wrap() || twidget::can_wrap(); }
 
 	/** Inherited from twidget. */
-	void layout_wrap(const unsigned maximum_width); 
+	void layout_wrap(const unsigned maximum_width);
 
-	/** 
-	 * Inherited from twidget. 
-	 * 
+	/**
+	 * Inherited from twidget.
+	 *
 	 * Since we can't define a good default behaviour we force the inheriting
 	 * classes to define this function. So inheriting classes act as one widget
 	 * others as a collection of multiple objects.
@@ -77,9 +77,9 @@ public:
 	/** Inherited from twidget. */
 	void layout_use_vertical_scrollbar(const unsigned maximum_height);
 
-	/** 
-	 * Inherited from twidget. 
-	 * 
+	/**
+	 * Inherited from twidget.
+	 *
 	 * Since we can't define a good default behaviour we force the inheriting
 	 * classes to define this function. So inheriting classes act as one widget
 	 * others as a collection of multiple objects.
@@ -96,7 +96,7 @@ public:
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
 	/** Inherited from twidget.*/
-	bool has_widget(const twidget* widget) const 
+	bool has_widget(const twidget* widget) const
 		{ return grid_.has_widget(widget); }
 
 #ifndef NEW_DRAW
@@ -106,7 +106,7 @@ public:
 	/** Inherited from tcontrol. */
 	void draw(surface& surface,  const bool force = false,
 	        const bool invalidate_background = false);
-#else	
+#else
 	/** Inherited from twidget. */
 	void set_origin(const tpoint& origin);
 
@@ -115,45 +115,45 @@ public:
 
 	/** Inherited from twidget. */
 	void child_populate_dirty_list(twindow& caller,
-			const std::vector<twidget*>& call_stack) 
+			const std::vector<twidget*>& call_stack)
 	{
 		grid_.child_populate_dirty_list(caller, call_stack);
 	}
 #endif
 	/** Inherited from tcontrol. */
-	twidget* find_widget(const tpoint& coordinate, const bool must_be_active) 
+	twidget* find_widget(const tpoint& coordinate, const bool must_be_active)
 		{ return grid_.find_widget(coordinate, must_be_active); }
 
 	/** Inherited from tcontrol. */
-	const twidget* find_widget(const tpoint& coordinate, 
+	const twidget* find_widget(const tpoint& coordinate,
 			const bool must_be_active) const
 		{ return grid_.find_widget(coordinate, must_be_active); }
 
 	/** Inherited from tcontrol.*/
 	twidget* find_widget(const std::string& id, const bool must_be_active)
-	{ 
+	{
 		twidget* result = tcontrol::find_widget(id, must_be_active);
-		return result ? result : grid_.find_widget(id, must_be_active); 
+		return result ? result : grid_.find_widget(id, must_be_active);
 	}
 
 	/** Inherited from tcontrol.*/
 	const twidget* find_widget(const std::string& id, const bool must_be_active) const
-	{ 
+	{
 		const twidget* result = tcontrol::find_widget(id, must_be_active);
-		return result ? result : grid_.find_widget(id, must_be_active); 
+		return result ? result : grid_.find_widget(id, must_be_active);
 	}
 #ifdef NEW_DRAW
 	/** Inherited from tcontrol. */
-	twidget* find_widget2(const tpoint& coordinate, const bool must_be_active) 
-	{ 
-		return grid_.find_widget2(coordinate, must_be_active); 
+	twidget* find_widget2(const tpoint& coordinate, const bool must_be_active)
+	{
+		return grid_.find_widget2(coordinate, must_be_active);
 	}
 
 	/** Inherited from tcontrol. */
-	const twidget* find_widget2(const tpoint& coordinate, 
+	const twidget* find_widget2(const tpoint& coordinate,
 			const bool must_be_active) const
-	{ 
-		return grid_.find_widget2(coordinate, must_be_active); 
+	{
+		return grid_.find_widget2(coordinate, must_be_active);
 	}
 #endif
 	/** Import overloaded versions. */
@@ -162,7 +162,7 @@ public:
 	/** Inherited from tcontrol. */
 	void set_active(const bool active);
 
-	/** 
+	/**
 	 * Inherited from tcontrol.
 	 *
 	 * NOTE normally containers don't block, but their children may. But
@@ -176,7 +176,7 @@ public:
 	tgrid::iterator begin() { return grid_.begin(); }
 	tgrid::iterator end() { return grid_.end(); }
 
-	unsigned add_row(const unsigned count = 1) 
+	unsigned add_row(const unsigned count = 1)
 		{ return grid_.add_row(count); }
 
 	void set_rows(const unsigned rows) { grid_.set_rows(rows); }
@@ -188,11 +188,11 @@ public:
 	void set_rows_cols(const unsigned rows, const unsigned cols)
 		{ grid_.set_rows_cols(rows, cols); }
 
-	void set_child(twidget* widget, const unsigned row, 
+	void set_child(twidget* widget, const unsigned row,
 		const unsigned col, const unsigned flags, const unsigned border_size)
 		{ grid_.set_child(widget, row, col, flags, border_size); }
 
-	void set_row_grow_factor(const unsigned row, const unsigned factor) 
+	void set_row_grow_factor(const unsigned row, const unsigned factor)
 		{ grid_.set_row_grow_factor(row, factor); }
 
 	void set_col_grow_factor(const unsigned col, const unsigned factor)
@@ -229,7 +229,7 @@ private:
 	 */
 	virtual void set_self_active(const bool active) = 0;
 
-	/** 
+	/**
 	 * If the background has been changed the next draw cycle needs to do a full
 	 * redraw and also tell the child items to invalidate their background. This
 	 * overrides the 'invalidate_background' parameter send to draw().

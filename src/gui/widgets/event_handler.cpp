@@ -49,7 +49,7 @@ static Uint32 hover_callback(Uint32 /*interval*/, void *param)
 
 	event.type = HOVER_EVENT;
 	event.user = data;
-	
+
 	SDL_PushEvent(&event);
 	return 0;
 }
@@ -78,7 +78,7 @@ static Uint32 popup_callback(Uint32 /*interval*/, void* /*param*/)
 
 	event.type = HOVER_REMOVE_POPUP_EVENT;
 	event.user = data;
-	
+
 	SDL_PushEvent(&event);
 	return 0;
 }
@@ -135,7 +135,7 @@ tevent_handler::tevent_handler() :
 void tevent_handler::handle_event(const SDL_Event& event)
 {
 
-	twidget* mouse_over = 0; 
+	twidget* mouse_over = 0;
 	switch(event.type) {
 		case SDL_MOUSEMOTION:
 
@@ -156,7 +156,7 @@ void tevent_handler::handle_event(const SDL_Event& event)
 				client_position(tpoint(mouse_x_, mouse_y_)), true);
 
 			switch(event.button.button) {
-				case SDL_BUTTON_LEFT : 
+				case SDL_BUTTON_LEFT :
 					DBG_G_E << "Event: Left button down.\n";
 					mouse_button_down(event, mouse_over, left_);
 					break;
@@ -170,7 +170,7 @@ void tevent_handler::handle_event(const SDL_Event& event)
 					break;
 				default:
 					// cast to avoid being printed as char.
-					WRN_G_E << "Unhandled 'mouse button down' event for button " 
+					WRN_G_E << "Unhandled 'mouse button down' event for button "
 						<< static_cast<Uint32>(event.button.button) << ".\n";
 					// The scrollwheel also behaves like a button, so ignore it.
 //					assert(false);
@@ -196,7 +196,7 @@ void tevent_handler::handle_event(const SDL_Event& event)
 				 * widget needs to process the click so calling it
 				 * unconditionally is safe.
 				 */
-				case SDL_BUTTON_LEFT : 
+				case SDL_BUTTON_LEFT :
 					DBG_G_E << "Event: Left button up.\n";
 					mouse_button_up(event, mouse_over, left_);
 					easy_close();
@@ -213,7 +213,7 @@ void tevent_handler::handle_event(const SDL_Event& event)
 					break;
 				default:
 					// cast to avoid being printed as char.
-					WRN_G_E << "Unhandled 'mouse button up' event for button " 
+					WRN_G_E << "Unhandled 'mouse button up' event for button "
 						<< static_cast<Uint32>(event.button.button) << ".\n";
 					// The scrollwheel also behaves like a button, so ignore it.
 //					assert(false);
@@ -252,7 +252,7 @@ void tevent_handler::handle_event(const SDL_Event& event)
 #endif
 
 		default:
-		
+
 			// cast to avoid being printed as char.
 			WRN_G_E << "Unhandled event " << static_cast<Uint32>(event.type) << ".\n";
 			break;
@@ -266,15 +266,15 @@ void tevent_handler::mouse_capture(const bool capture)
 }
 
 tpoint tevent_handler::get_mouse() const
-{ 
-	return get_window().client_position(tpoint(mouse_x_, mouse_y_)); 
+{
+	return get_window().client_position(tpoint(mouse_x_, mouse_y_));
 }
 
-void tevent_handler::add_to_keyboard_chain(twidget* widget) 
-{ 
+void tevent_handler::add_to_keyboard_chain(twidget* widget)
+{
 	assert(widget);
 	assert(
-		std::find(keyboard_focus_chain_.begin(), keyboard_focus_chain_.end(), widget) 
+		std::find(keyboard_focus_chain_.begin(), keyboard_focus_chain_.end(), widget)
 		== keyboard_focus_chain_.end());
 
 	keyboard_focus_chain_.push_back(widget);
@@ -288,7 +288,7 @@ void tevent_handler::remove_from_keyboard_chain(twidget* widget)
 
 	if(itor != keyboard_focus_chain_.end()) {
 		keyboard_focus_chain_.erase(itor);
-	}		
+	}
 }
 
 void tevent_handler::show_tooltip(const t_string& message, const unsigned timeout)
@@ -378,13 +378,13 @@ void tevent_handler::mouse_move(const SDL_Event& event, twidget* mouse_over)
 	// and non NULL pointer to true;
 	if(mouse_captured_) {
 		mouse_focus_->mouse_move(*this);
-		set_hover(true); 
+		set_hover(true);
 	} else {
 		if(!mouse_focus_ && mouse_over) {
 			mouse_enter(event, mouse_over);
 		} else if (mouse_focus_ && !mouse_over) {
 			mouse_leave(event, mouse_over);
-		} else if(mouse_focus_ && mouse_focus_ == mouse_over) {	
+		} else if(mouse_focus_ && mouse_focus_ == mouse_over) {
 			mouse_over->mouse_move(*this);
 			set_hover();
 		} else if(mouse_focus_ && mouse_over) {
@@ -406,7 +406,7 @@ void tevent_handler::mouse_hover(
 	if(!hover_pending_ || hover_id != hover_id_) {
 		return;
 	}
-	
+
 	assert(mouse_focus_);
 
 	mouse_focus_->mouse_hover(*this);
@@ -433,7 +433,7 @@ void tevent_handler::mouse_button_down(
 		const SDL_Event& /*event*/, twidget* mouse_over, tmouse_button& button)
 {
 	if(button.is_down) {
-		WRN_G_E << "In 'button down' for button '" << button.name 
+		WRN_G_E << "In 'button down' for button '" << button.name
 			<< "' but the mouse button is already down, we missed an event.\n";
 		return;
 	}
@@ -462,7 +462,7 @@ void tevent_handler::mouse_button_up(
 	const SDL_Event& event, twidget* mouse_over, tmouse_button& button)
 {
 	if(!button.is_down) {
-		WRN_G_E << "In 'button up' for button '" << button.name 
+		WRN_G_E << "In 'button up' for button '" << button.name
 			<< "' but the mouse button is already up, we missed an event.\n";
 		return;
 	}
@@ -513,7 +513,7 @@ void tevent_handler::mouse_click(twidget* widget, tmouse_button& button)
 		}
 
 	} else {
-	
+
 		(widget->*button.click)(*this);
 	}
 }
@@ -538,7 +538,7 @@ void tevent_handler::set_hover(const bool test_on_widget)
 	// Mouse down, no hovering
 	if(left_.is_down || middle_.is_down || right_.is_down) {
 		return;
-	} 
+	}
 
 	if(test_on_widget) {
 		// FIXME implement
@@ -554,14 +554,14 @@ void tevent_handler::set_hover(const bool test_on_widget)
 	unsigned *hover = new unsigned;
 	*hover = hover_id;
 	hover_id_ = hover_id++;
-			
+
 	SDL_AddTimer(settings::popup_show_delay, hover_callback, hover);
 }
 
 void tevent_handler::key_down(const SDL_Event& event)
 {
 	// We capture the F! for the help, but only if the mouse is on an object.
-	if(mouse_focus_/* && !mouse_captured_ 
+	if(mouse_focus_/* && !mouse_captured_
 			&& event.key.keysym.mod == 0 */ && event.key.keysym.sym == SDLK_F1) {
 
 		mouse_focus_->help_key(*this);
@@ -570,7 +570,7 @@ void tevent_handler::key_down(const SDL_Event& event)
 
 	bool handled = false;
 	if(keyboard_focus_) {
-		keyboard_focus_->key_press(*this, handled, 
+		keyboard_focus_->key_press(*this, handled,
 			event.key.keysym.sym, event.key.keysym.mod, event.key.keysym.unicode);
 	}
 
@@ -580,7 +580,7 @@ void tevent_handler::key_down(const SDL_Event& event)
 			continue;
 		}
 
-		(**ritor).key_press(*this, handled, 
+		(**ritor).key_press(*this, handled,
 			event.key.keysym.sym, event.key.keysym.mod, event.key.keysym.unicode);
 	}
 }
@@ -590,13 +590,13 @@ void tevent_handler::key_down(const SDL_Event& event)
  *
  * In this system there are two kind of focus
  * - mouse focus, the widget that will get the mouse events. There are two modes
- *   captured and uncaptured. Basically when a mouse button is pressed that 
+ *   captured and uncaptured. Basically when a mouse button is pressed that
  *   widget will capture the mouse and all following mouse events are send to
  *   that widget.
- *   
+ *
  * - keyboard focus, the widget that will get the keyboard events.
  *
- * Keyboard events are first processed by the top level window and if not 
+ * Keyboard events are first processed by the top level window and if not
  * handled it will be send to the item with the keyboard focus (if any).
  *
  * * Mouse events *
@@ -609,72 +609,72 @@ void tevent_handler::key_down(const SDL_Event& event)
  * For the mouse the following events are defined:
  * - mouse enter, the mouse moves on a widget it wasn't on before.
  * - mouse move, the mouse moves. This can either be that the mouse moves over
- *   the widget under the mouse or it's send to the widget that captured the 
+ *   the widget under the mouse or it's send to the widget that captured the
  *   focus.
  * - mouse leave, the mouse leaves the area that bounds the mouse, in captured
  *   mode the release is delayed until the focus is released.
  * - hover, a widget needs to tell it wants this event. The event will be send
- *   when the user doesn't move (or just a little) for a while. (Times are 
+ *   when the user doesn't move (or just a little) for a while. (Times are
  *   themable.)
  *
  * - mouse_button_X_down, the mouse button is being pressed on this widget.
- * - mouse_button_X_up, the mouse button has been moved up again.  
+ * - mouse_button_X_up, the mouse button has been moved up again.
  * - mouse_button_X_click, a single click on a widget.
- * - mouse_button_X_double_click, a double click on the widget. The widget 
+ * - mouse_button_X_double_click, a double click on the widget. The widget
  *   needs to subscribe to this event and when doing so a single click will be
  *   delayed a bit. (The double click time is themable.)
  *
  * * Mouse event flow chart *
  *
  *       --------------------
- *      ( mouse somewhere    ) 
+ *      ( mouse somewhere    )
  *       --------------------
  *                 |
  *  -------------->|
  * |               |
- * |               V 
- * |     --------------------        -------------------- 
+ * |               V
+ * |     --------------------        --------------------
  * |    | moves upon widget  | -->  / fire mouse enter  /
  * |     --------------------      ---------------------
  * |                                        |
  * |                                        V
  * |                                        /\  Want hover event?
  * |                                    no /  \ yes     --------------------
- * |               ----------------------- \  / -----> / place hover event /  
+ * |               ----------------------- \  / -----> / place hover event /
  * |              |                         \/         --------------------
  * |              |                                            |
  * |              |<--------------------------------------------
  * |              |
  * |              V
- * |     --------------------        -------------------- 
+ * |     --------------------        --------------------
  * |    | moves on widget    | -->  / fire mouse move   /
  * |     --------------------      ---------------------
  * |                                        |
  * |                                        V
  * |                                        /\  Want hover event?
- * |                                    no /  \ 
+ * |                                    no /  \
  * |               ----------------------- \  /
- * |              |                         \/ 
+ * |              |                         \/
  * |              |                         | yew
  * |              |                         V
- * |              |                         /\  Hover location outside threshold? 
+ * |              |                         /\  Hover location outside threshold?
  * |              |                     no /  \ yes     --------------------
- * |              |<---------------------- \  / -----> / place hover event /  
+ * |              |<---------------------- \  / -----> / place hover event /
  * |              |                         \/         --------------------
  * |              |                                            |
  * |              |<--------------------------------------------
- * |              |                                             
- * |              V                         
- * |     --------------------        -------------------- 
- * |    | receive hover event| -->  / set hover shown   /  
+ * |              |
+ * |              V
+ * |     --------------------        --------------------
+ * |    | receive hover event| -->  / set hover shown   /
  * |     --------------------      ---------------------
- * |                                        |  
+ * |                                        |
  * |                                        V
- * |                                 -------------------- 
+ * |                                 --------------------
  * |                                / fire hover event  /
  * |                               ---------------------
  * |                                        |
- * |               ------------------------- 
+ * |               -------------------------
  * |              |
  * |              |--------------------------------------------------
  * |              V                                                  |
@@ -701,21 +701,21 @@ void tevent_handler::key_down(const SDL_Event& event)
  * |                                                                 |
  * |               --------------------------------------------------
  * |              |
- * |              V                         
- * |     --------------------        -------------------- 
+ * |              V
+ * |     --------------------        --------------------
  * |    | mouse down         | -->  / cancel pending    /
- * |     --------------------      /  hover events     / 
+ * |     --------------------      /  hover events     /
  * |                               --------------------
- * |                                        |  
+ * |                                        |
  * |                                        V
- * |                                 -------------------- 
+ * |                                 --------------------
  * |                                / fire 'mouse down' /
  * |                               ---------------------
  * |                                        |
  * |               -------------------------
- * |              |              
+ * |              |
  * |              V
- * |     --------------------        -------------------- 
+ * |     --------------------        --------------------
  * |    | moves on widget    | -->  / fire mouse move   /
  * |     --------------------      ---------------------
  * |                                        |
@@ -751,28 +751,28 @@ void tevent_handler::key_down(const SDL_Event& event)
  * |                                                                 |
  * |               --------------------------------------------------
  * |              |
- * |              V 
- * |     -------------------- 
+ * |              V
+ * |     --------------------
  * |    | capture mouse      |
  * |     --------------------
- * |              |              
+ * |              |
  * |              V
- * |     --------------------        -------------------- 
+ * |     --------------------        --------------------
  * |    | moves up           | -->  / release capture   /
  * |     --------------------      ---------------------
- * |                                        |  
+ * |                                        |
  * |                                        V
- * |                                 -------------------- 
+ * |                                 --------------------
  * |                                / fire mouse up     /
  * |                               ---------------------
- * |                                        |  
+ * |                                        |
  * |                                        V
  * |                                        /\
- * |                                       /  \ Want double click? 
- * |                                       \  / no       -------------------- 
+ * |                                       /  \ Want double click?
+ * |                                       \  / no       --------------------
  * |                                        \/  ------> / fire click        /
- * |                                   yes  |          --------------------- 
- * |                                        |                  |   
+ * |                                   yes  |          ---------------------
+ * |                                        |                  |
  * |                                        V                   -----------------
  * |                                        /\                                   |
  * |                                       /  \ Has click pending?               |
@@ -787,7 +787,7 @@ void tevent_handler::key_down(const SDL_Event& event)
  * |                 |                                         |                 |
  * |                 V                                         V                 |
  *  -----------------------------------------------------------------------------
- * 
+ *
  */
 
 } // namespace gui2

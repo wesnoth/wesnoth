@@ -29,9 +29,9 @@ namespace gui2 {
  * == Language selection ==
  *
  * This shows the dialog to select the language to use.
- * 
+ *
  * @start_table = container
- *     language_list (listbox)         This text contains the list with 
+ *     language_list (listbox)         This text contains the list with
  *                                     available languages.
  * @end_table
  */

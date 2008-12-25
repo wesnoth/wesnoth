@@ -68,7 +68,7 @@ public:
 	void item_selected(twidget* widget) ;
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
-	void set_callback_selection_change(void (*callback) (twidget*)) 
+	void set_callback_selection_change(void (*callback) (twidget*))
 		{ callback_selection_change_ = callback; }
 
 	void set_must_select(const bool must_select);
@@ -86,7 +86,7 @@ private:
 
 	void set_state(const tstate state);
 
-	/** 
+	/**
 	 * Current state of the widget.
 	 *
 	 * The state of the widget determines what to render and how the widget
@@ -114,11 +114,11 @@ private:
 	void finalize_setup();
 
 	/** Inherited from tcontainer_. */
-	void set_self_active(const bool active) 
+	void set_self_active(const bool active)
 		{ state_ = active ? ENABLED : DISABLED; }
 
 	/** Inherited from tcontrol. */
-	const std::string& get_control_type() const 
+	const std::string& get_control_type() const
 		{ static const std::string type = "menubar"; return type; }
 };
 

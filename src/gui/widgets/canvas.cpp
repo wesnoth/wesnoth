@@ -51,7 +51,7 @@ class tline : public tcanvas::tshape
 {
 public:
 
-	/** 
+	/**
 	 * Constructor.
 	 *
 	 * @param cfg                 The config object to define the line see
@@ -65,7 +65,7 @@ public:
 		const game_logic::map_formula_callable& variables);
 
 private:
-	tformula<unsigned> 
+	tformula<unsigned>
 		x1_, /**< The start x coordinate of the line. */
 		y1_, /**< The start y coordinate of the line. */
 		x2_, /**< The end x coordinate of the line. */
@@ -100,7 +100,7 @@ tline::tline(const config& cfg) :
  * surface but replaces the pixels instead. A blitting flag might be added later
  * if needed.
  *
- * Keys: 
+ * Keys:
  * @start_table = config
  *     x1 (f_unsigned = 0)             The x coordinate of the startpoint.
  *     y1 (f_unsigned = 0)             The y coordinate of the startpoint.
@@ -111,7 +111,7 @@ tline::tline(const config& cfg) :
  *                                     is drawn.
  *     debug = (string = "")           Debug message to show upon creation
  *                                     this message is not stored.
- * @end_table                                    
+ * @end_table
  *
  * <span id="general_variables">Variables:</span>.
  * @start_table = formula
@@ -135,7 +135,7 @@ tline::tline(const config& cfg) :
  *
  * Note when drawing the valid coordinates are:<br>
  * 0 -> width - 1 <br>
- * 0 -> height -1 
+ * 0 -> height -1
  *
  * Drawing outside this area will result in unpredictable results including
  * crashing. (That should be fixed, when encountered.)
@@ -149,10 +149,10 @@ tline::tline(const config& cfg) :
  * param type_info description
  *
  * param                               Name of the parameter.
- * 
+ *
  * type_info = ( type = default_value) The info about a optional parameter.
  * type_info = ( type )                The info about a mandatory parameter
- * type_info = [ type_info ]           The info about a conditional parameter 
+ * type_info = [ type_info ]           The info about a conditional parameter
  *                                     description should explain the reason.
  *
  * description                         Description of the parameter.
@@ -176,7 +176,7 @@ tline::tline(const config& cfg) :
  *
  * = Variables =
  *
- * In various parts of the GUI engine the following table contains all valid 
+ * In various parts of the GUI engine the following table contains all valid
  * variable types. Note this page is automatically generated.
  *
  * @start_table = variable_types
@@ -187,7 +187,7 @@ tline::tline(const config& cfg) :
  *     int                             Signed number (whole numbers).
  *     f_int                           Signed number or formula returning an
  *                                     signed number.
- *     bool                            A boolean value accepts the normal 
+ *     bool                            A boolean value accepts the normal
  *                                     values as the rest of the game.
  *     f_bool                          Boolean value or a formula returning a
  *                                     boolean value.
@@ -198,9 +198,9 @@ tline::tline(const config& cfg) :
  *     colour                          A string which contains the colour, this
  *                                     a group of 4 numbers between 0 and 255
  *                                     separated by a comma. The numbers are red
- *                                     component, green component, blue 
+ *                                     component, green component, blue
  *                                     component and alpha. A colour of 0 is not
- *                                     available. An alpha of 255 is fully 
+ *                                     available. An alpha of 255 is fully
  *                                     transparent. Omitted values are set to 0.
  *
  *     font_style                      A string which contains the style of the
@@ -223,18 +223,18 @@ tline::tline(const config& cfg) :
  *     v_align                         Vertical alignment; how an item is
  *                                     aligned vertically in the available
  *                                     space. Possible values:
- *                                     @* top    aligned at the top  
+ *                                     @* top    aligned at the top
  *                                     @* bottom aligned at the bottom
- *                                     @* center centered 
+ *                                     @* center centered
  *                                     When nothing is set or an another value
  *                                     as in the list the item is centred.
  *
  *     h_align                         Horizontal alignment; how an item is
  *                                     aligned horizontal in the available
  *                                     space. Possible values:
- *                                     @* top    aligned at the top  
+ *                                     @* top    aligned at the top
  *                                     @* bottom aligned at the bottom
- *                                     @* center centered 
+ *                                     @* center centered
  *
  *     border                          Comma separated list of borders to use.
  *                                     Possible values:
@@ -273,27 +273,27 @@ void tline::draw(surface& canvas,
 	 * unless there has been a resize. So to optimize we should use an extra
 	 * flag or do the calculation in a separate routine.
 	 */
-	
+
 	const unsigned x1 = x1_(variables);
 	const unsigned y1 = y1_(variables);
 	const unsigned x2 = x2_(variables);
 	const unsigned y2 = y2_(variables);
 
-	DBG_G_D << "Line: draw from " 
-		<< x1 << ',' << y1 << " to " << x2 << ',' << y2 
+	DBG_G_D << "Line: draw from "
+		<< x1 << ',' << y1 << " to " << x2 << ',' << y2
 		<< " canvas size " << canvas->w << ',' << canvas->h << ".\n";
 
-	VALIDATE(static_cast<int>(x1) < canvas->w && 
-		 static_cast<int>(x2) < canvas->w && 
+	VALIDATE(static_cast<int>(x1) < canvas->w &&
+		 static_cast<int>(x2) < canvas->w &&
 		 static_cast<int>(y1) < canvas->h &&
-		 static_cast<int>(y2) < canvas->h, 
+		 static_cast<int>(y2) < canvas->h,
 		 _("Line doesn't fit on canvas."));
 
 	// @todo FIXME respect the thickness.
 
 	// now draw the line we use Bresenham's algorithm, which doesn't
 	// support antialiasing. The advantage is that it's easy for testing.
-	
+
 	// lock the surface
 	surface_lock locker(canvas);
 	if(x1 > x2) {
@@ -311,7 +311,7 @@ class trectangle : public tcanvas::tshape
 {
 public:
 
-	/** 
+	/**
 	 * Constructor.
 	 *
 	 * @param cfg                 The config object to define the rectangle see
@@ -325,28 +325,28 @@ public:
 		const game_logic::map_formula_callable& variables);
 
 private:
-	tformula<unsigned> 
+	tformula<unsigned>
 		x_, /**< The x coordinate of the rectangle. */
 		y_, /**< The y coordinate of the rectangle. */
 		w_, /**< The width of the rectangle. */
 		h_; /**< The height of the rectangle. */
 
 	/**
-	 * Border thickness. 
+	 * Border thickness.
 	 *
 	 * If 0 the fill colour is used for the entire widget.
 	 */
 	unsigned border_thickness_;
 
-	/** 
-	 * The border colour of the rectangle. 
+	/**
+	 * The border colour of the rectangle.
 	 *
 	 * If the colour is fully transparent the border isn't drawn.
 	 */
 	Uint32 border_colour_;
 
-	/** 
-	 * The border colour of the rectangle. 
+	/**
+	 * The border colour of the rectangle.
 	 *
 	 * If the colour is fully transparent the rectangle won't be filled.
 	 */
@@ -371,13 +371,13 @@ trectangle::trectangle(const config& cfg) :
  * the surface but replaces the pixels instead. A blitting flag might be added
  * later if needed.
  *
- * Keys: 
+ * Keys:
  * @start_table = config
  *     x (f_unsigned = 0)              The x coordinate of the top left corner.
  *     y (f_unsigned = 0)              The y coordinate of the top left corner.
  *     w (f_unsigned = 0)              The width of the rectangle.
  *     h (f_unsigned = 0)              The height of the rectangle.
- *     border_thickness (unsigned = 0) The thickness of the border if the 
+ *     border_thickness (unsigned = 0) The thickness of the border if the
  *                                     thickness is zero it's not drawn.
  *     border_colour (colour = "")     The colour of the border if empty it's
  *                                     not drawn.
@@ -415,13 +415,13 @@ void trectangle::draw(surface& canvas,
 	const unsigned h = h_(variables);
 
 	DBG_G_D << "Rectangle: draw from " << x << ',' << y
-		<< " width " << w << " height " << h 
+		<< " width " << w << " height " << h
 		<< " canvas size " << canvas->w << ',' << canvas->h << ".\n";
 
-	VALIDATE(static_cast<int>(x) < canvas->w && 
-		 static_cast<int>(x + w) <= canvas->w && 
+	VALIDATE(static_cast<int>(x) < canvas->w &&
+		 static_cast<int>(x + w) <= canvas->w &&
 		 static_cast<int>(y) < canvas->h &&
-		 static_cast<int>(y + h) <= canvas->h, 
+		 static_cast<int>(y + h) <= canvas->h,
 		 _("Rectangle doesn't fit on canvas."));
 
 
@@ -452,14 +452,14 @@ void trectangle::draw(surface& canvas,
 	// The fill_rect_alpha code below fails, can't remember the exact cause
 	// so use the slow line drawing method to fill the rect.
 	if(fill_colour_) {
-		
+
 		const unsigned left = x + border_thickness_;
 		const unsigned right = left + w - (2 * border_thickness_) - 1;
 		const unsigned top = y + border_thickness_;
 		const unsigned bottom = top + h - (2 * border_thickness_);
 
 		for(unsigned i = top; i < bottom; ++i) {
-			
+
 			draw_line(canvas, fill_colour_, left, i, right, i);
 		}
 	}
@@ -472,7 +472,7 @@ class timage : public tcanvas::tshape
 {
 public:
 
-	/** 
+	/**
 	 * Constructor.
 	 *
 	 * @param cfg                 The config object to define the image see
@@ -480,7 +480,7 @@ public:
 	 *                            for more info.
 	 */
 	timage(const config& cfg);
-	
+
 	/** Implement shape::draw(). */
 	void draw(surface& canvas,
 		const game_logic::map_formula_callable& variables);
@@ -498,7 +498,7 @@ private:
 	/** The image is cached in this surface. */
 	surface image_;
 
-	/** 
+	/**
 	 * Name of the image.
 	 *
 	 * This value is only used when the image name is a formula. If it isn't a
@@ -535,7 +535,7 @@ timage::timage(const config& cfg) :
  * == Image ==
  * Definition of an image.
  *
- * Keys: 
+ * Keys:
  * @start_table = config
  *     x (f_unsigned = 0)              The x coordinate of the top left corner.
  *     y (f_unsigned = 0)              The y coordinate of the top left corner.
@@ -543,13 +543,13 @@ timage::timage(const config& cfg) :
  *                                     image will be scaled to the desired width.
  *     h (f_unsigned = 0)              The height of the image, if not zero the
  *                                     image will be scaled to the desired height.
- *     stretch (bool = false)          Border images often need to be either 
+ *     stretch (bool = false)          Border images often need to be either
  *                                     stretched in the width or the height. If
  *                                     that's the case use stretch. It only works
  *                                     if only the height or the width is not zero.
  *                                     It will copy the first pixel to the others.
  *     vertical_mirror (f_bool = false)
- *                                     Mirror the image over the vertical axis. 
+ *                                     Mirror the image over the vertical axis.
  *     name (f_string = "")            The name of the image.
  *     debug = (string = "")           Debug message to show upon creation
  *                                     this message is not stored.
@@ -581,9 +581,9 @@ timage::timage(const config& cfg) :
  */
 	if(!image_name_.has_formula()) {
 		surface tmp(image::get_image(image::locator(cfg["name"])));
-		
+
 		if(!tmp) {
-			ERR_G_D << "Image: '" << cfg["name"] 
+			ERR_G_D << "Image: '" << cfg["name"]
 				<< "'not found and won't be drawn.\n";
 			return;
 		}
@@ -618,9 +618,9 @@ void timage::draw(surface& canvas,
 		}
 
 		surface tmp(image::get_image(image::locator(name)));
-		
+
 		if(!tmp) {
-			ERR_G_D << "Image: formula returned name '" 
+			ERR_G_D << "Image: formula returned name '"
 				<< name << "'not found and won't be drawn.\n";
 			return;
 		}
@@ -628,7 +628,7 @@ void timage::draw(surface& canvas,
 		image_.assign(make_neutral_surface(tmp));
 		assert(image_);
 		src_clip_ = ::create_rect(0, 0, image_->w, image_->h);
-	} else if(!image_){ 
+	} else if(!image_){
 		// The warning about no image should already have taken place
 		// so leave silently.
 		return;
@@ -656,22 +656,22 @@ void timage::draw(surface& canvas,
 		bool done = false;
 		bool stretch = stretch_ && (!!w ^ !!h);
 		if(!w) {
-			if(stretch) { 
-				DBG_G_D << "Image: vertical stretch from " << image_->w 
+			if(stretch) {
+				DBG_G_D << "Image: vertical stretch from " << image_->w
 					<< ',' << image_->h << " to a height of " << h << ".\n";
 
-				surf = stretch_surface_vertical(image_, h, false);	
+				surf = stretch_surface_vertical(image_, h, false);
 				done = true;
 			}
 			w = image_->w;
 		}
 
 		if(!h) {
-			if(stretch) { 
-				DBG_G_D << "Image: horizontal stretch from " << image_->w 
+			if(stretch) {
+				DBG_G_D << "Image: horizontal stretch from " << image_->w
 					<< ',' << image_->h << " to a width of " << w << ".\n";
 
-				surf = stretch_surface_horizontal(image_, w, false);	
+				surf = stretch_surface_horizontal(image_, w, false);
 				done = true;
 			}
 			h = image_->h;
@@ -679,7 +679,7 @@ void timage::draw(surface& canvas,
 
 		if(!done) {
 
-			DBG_G_D << "Image: scaling from " << image_->w 
+			DBG_G_D << "Image: scaling from " << image_->w
 				<< ',' << image_->h << " to " << w << ',' << h << ".\n";
 
 			surf = scale_surface(image_, w, h, false);
@@ -704,7 +704,7 @@ class ttext : public tcanvas::tshape
 {
 public:
 
-	/** 
+	/**
 	 * Constructor.
 	 *
 	 * @param cfg                 The config object to define the text see
@@ -712,7 +712,7 @@ public:
 	 *                            for more info.
 	 */
 	ttext(const config& cfg);
-	
+
 	/** Implement shape::draw(). */
 	void draw(surface& canvas,
 		const game_logic::map_formula_callable& variables);
@@ -762,7 +762,7 @@ ttext::ttext(const config& cfg) :
  * == Text ==
  * Definition of text.
  *
- * Keys: 
+ * Keys:
  * @start_table = config
  *     x (f_unsigned = 0)              The x coordinate of the top left corner.
  *     y (f_unsigned = 0)              The y coordinate of the top left corner.
@@ -802,7 +802,7 @@ void ttext::draw(surface& canvas,
 
 	assert(variables.has_key("text"));
 
-	// We first need to determine the size of the text which need the rendered 
+	// We first need to determine the size of the text which need the rendered
 	// text. So resolve and render the text first and then start to resolve
 	// the other formulas.
 	const t_string text = text_(variables);
@@ -837,21 +837,21 @@ void ttext::draw(surface& canvas,
 		<< " text width " << surf->w
 		<< " text height " << surf->h;
 */
-	//@todo formulas are now recalculated every draw cycle which is a 
+	//@todo formulas are now recalculated every draw cycle which is a
 	// bit silly unless there has been a resize. So to optimize we should
 	// use an extra flag or do the calculation in a separate routine.
-	
+
 	const unsigned x = x_(local_variables);
 	const unsigned y = y_(local_variables);
 	const unsigned w = w_(local_variables);
 	const unsigned h = h_(local_variables);
-	
+
 	DBG_G_D << "Text: drawing text '" << text
 		<< "' drawn from " << x << ',' << y
-		<< " width " << w << " height " << h 
+		<< " width " << w << " height " << h
 		<< " canvas size " << canvas->w << ',' << canvas->h << ".\n";
 
-	VALIDATE(static_cast<int>(x) < canvas->w && 
+	VALIDATE(static_cast<int>(x) < canvas->w &&
 		 static_cast<int>(y) < canvas->h,
 		 _("Text doesn't start on canvas."));
 
@@ -859,7 +859,7 @@ void ttext::draw(surface& canvas,
 	if(surf->w > static_cast<int>(w)) {
 		WRN_G_D << "Text: text is too wide for the canvas and will be clipped.\n";
 	}
-	
+
 	if(surf->h > static_cast<int>(h)) {
 		WRN_G_D << "Text: text is too high for the canvas and will be clipped.\n";
 	}
@@ -868,7 +868,7 @@ void ttext::draw(surface& canvas,
 	blit_surface(surf, 0, canvas, &dst);
 }
 
-} // namespace 
+} // namespace
 
 /***** ***** ***** ***** ***** CANVAS ***** ***** ***** ***** *****/
 
@@ -917,11 +917,11 @@ void tcanvas::draw(const bool force)
 	DBG_G_D << "Canvas: create new empty canvas.\n";
 	canvas_.assign(create_neutral_surface(w_, h_));
 
-	// draw items 
-	for(std::vector<tshape_ptr>::iterator itor = 
+	// draw items
+	for(std::vector<tshape_ptr>::iterator itor =
 			shapes_.begin(); itor != shapes_.end(); ++itor) {
 		log_scope2(gui_draw, "Canvas: draw shape.");
-		
+
 		(*itor)->draw(canvas_, variables_);
 	}
 
@@ -933,7 +933,7 @@ void tcanvas::parse_cfg(const config& cfg)
 	log_scope2(gui_parse, "Canvas: parsing config.");
 	shapes_.clear();
 
-	for(config::all_children_iterator itor = 
+	for(config::all_children_iterator itor =
 			cfg.ordered_begin(); itor != cfg.ordered_end(); ++itor) {
 
 		const std::string& type = *((*itor).first);;
@@ -963,10 +963,10 @@ void tcanvas::tshape::put_pixel(ptrdiff_t start, Uint32 colour, unsigned w, unsi
 	*reinterpret_cast<Uint32*>(start + (y * w * 4) + x * 4) = colour;
 }
 
-void tcanvas::tshape::draw_line(surface& canvas, Uint32 colour, 
+void tcanvas::tshape::draw_line(surface& canvas, Uint32 colour,
 		const unsigned x1, unsigned y1, const unsigned x2, unsigned y2)
 {
-	colour = SDL_MapRGBA(canvas->format, 
+	colour = SDL_MapRGBA(canvas->format,
 		((colour & 0xFF000000) >> 24),
 		((colour & 0x00FF0000) >> 16),
 		((colour & 0x0000FF00) >> 8),
@@ -975,7 +975,7 @@ void tcanvas::tshape::draw_line(surface& canvas, Uint32 colour,
 	ptrdiff_t start = reinterpret_cast<ptrdiff_t>(canvas->pixels);
 	unsigned w = canvas->w;
 
-	DBG_G_D << "Shape: draw line from " 
+	DBG_G_D << "Shape: draw line from "
 		<< x1 << ',' << y1 << " to " << x2 << ',' << y2
 		<< " canvas width " << w << " canvas height "
 		<< canvas->h << ".\n";
@@ -988,14 +988,14 @@ void tcanvas::tshape::draw_line(surface& canvas, Uint32 colour,
 	// use a special case for vertical lines
 	if(x1 == x2) {
 		if(y2 < y1) {
-			std::swap(y1, y2);	
+			std::swap(y1, y2);
 		}
 
 		for(unsigned y = y1; y <= y2; ++y) {
 			put_pixel(start, colour, w, x1, y);
 		}
 		return;
-	} 
+	}
 
 	// use a special case for horizontal lines
 	if(y1 == y2) {
@@ -1003,7 +1003,7 @@ void tcanvas::tshape::draw_line(surface& canvas, Uint32 colour,
 			put_pixel(start, colour, w, x, y1);
 		}
 		return;
-	} 
+	}
 
 	// draw based on Bresenham on wikipedia
 	int dx = x2 - x1;

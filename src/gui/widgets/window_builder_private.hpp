@@ -12,8 +12,8 @@
    See the COPYING file for more details.
 */
 
-/** 
- * @file window_builder_private.hpp 
+/**
+ * @file window_builder_private.hpp
  * This file contains all classes used privately in window_builder.cpp and
  * should only be included by window_builder.cpp.
  */
@@ -168,7 +168,7 @@ public:
 	/**
 	 * Listbox data.
 	 *
-	 * Contains a vector with the data to set in every cell, it's used to 
+	 * Contains a vector with the data to set in every cell, it's used to
 	 * serialize the data in the config, so the config is no longer required.
 	 */
 	std::vector<string_map>list_data;
@@ -264,7 +264,7 @@ public:
  *                                     text can be shown without the scrollbar.
  * @end_table
  */
-	tbuilder_scroll_label(const config& cfg) 
+	tbuilder_scroll_label(const config& cfg)
 		: tbuilder_control(cfg)
 		, auto_hide_scrollbar_(
 			utils::string_bool(cfg["auto_hide_scrollbar"], true))
@@ -299,7 +299,7 @@ public:
  *     height (f_unsigned = 0)         The height of the spacer.
  * @end_table
  *
- * The variable available are the same as for the window resolution see 
+ * The variable available are the same as for the window resolution see
  * http://www.wesnoth.org/wiki/GUIToolkitWML#Resolution_2 for the list of
  * items.
  */
@@ -375,7 +375,7 @@ public:
 
 	twidget* build () const;
 
-private:	
+private:
 	std::string icon_name_;
 	int retval_;
 };

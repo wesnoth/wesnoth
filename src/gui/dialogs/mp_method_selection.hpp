@@ -22,7 +22,7 @@ namespace gui2 {
 class tmp_method_selection : public tdialog
 {
 public:
-	tmp_method_selection() : 
+	tmp_method_selection() :
 		user_name_(),
 		choice_(-1)
 	{}

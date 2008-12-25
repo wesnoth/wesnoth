@@ -28,7 +28,7 @@ tcontrol::tcontrol(const unsigned canvas_count)
 	, canvas_(canvas_count)
 #ifndef NEW_DRAW
 	, restorer_()
-#endif		
+#endif
 	, config_(0)
 	, renderer_()
 	, text_maximum_width_(0)
@@ -116,9 +116,9 @@ tpoint tcontrol::get_config_maximum_size() const
 }
 
 void tcontrol::layout_init()
-{ 
+{
 	twidget::layout_init();
-	shrunken_ = false; 
+	shrunken_ = false;
 }
 
 void tcontrol::layout_wrap(const unsigned maximum_width)
@@ -134,7 +134,7 @@ void tcontrol::layout_wrap(const unsigned maximum_width)
 	} else {
 
 		tpoint size = get_best_text_size(
-				tpoint(0,0), 
+				tpoint(0,0),
 				tpoint(maximum_width - config_->text_extra_width, 0));
 
 		size.x += config_->text_extra_width;
@@ -156,7 +156,7 @@ tpoint tcontrol::calculate_best_size() const
 	if(! label_.empty()) {
 		// If no label text set we use the predefined value.
 
-		/** 
+		/**
 		 * @todo The value send should subtract the border size
 		 * and readd it after calculation to get the proper result.
 		 */
@@ -180,7 +180,7 @@ void tcontrol::set_size(const tpoint& origin, const tpoint& size)
 
 	// Note we assume that the best size has been queried but otherwise it
 	// should return false.
-	if(renderer_.is_truncated() 
+	if(renderer_.is_truncated()
 			&& use_tooltip_on_label_overflow_ && tooltip_.empty()) {
 
 		 set_tooltip(label_);
@@ -195,13 +195,13 @@ void tcontrol::set_size(const tpoint& origin, const tpoint& size)
 
 void tcontrol::mouse_hover(tevent_handler& event)
 {
-	DBG_G_E << "Control: mouse hover.\n"; 
+	DBG_G_E << "Control: mouse hover.\n";
 	event.show_tooltip(tooltip_, settings::popup_show_time);
 }
 
 void tcontrol::help_key(tevent_handler& event)
 {
-	DBG_G_E << "Control: help key.\n"; 
+	DBG_G_E << "Control: help key.\n";
 	event.show_help_popup(help_message_, settings::help_show_time);
 }
 
@@ -222,7 +222,7 @@ void tcontrol::load_config()
 }
 
 #ifndef NEW_DRAW
-void tcontrol::draw(surface& surface, const bool force, 
+void tcontrol::draw(surface& surface, const bool force,
 		const bool invalidate_background)
 {
 	assert(config_);
@@ -261,7 +261,7 @@ void tcontrol::draw(surface& surface, const bool force,
 #else
 void tcontrol::draw_background(surface& frame_buffer)
 {
-#if 0	
+#if 0
 	std::cerr << "tcontrol(" + get_control_type() + ") " + __func__ + ": "
 		<< " id " << id()
 		<< " dirty " << get_dirty()
@@ -291,12 +291,12 @@ void tcontrol::set_definition(const std::string& definition)
 }
 
 void tcontrol::set_visible(const bool visible)
-{ 
-	if(visible_ != visible) { 
+{
+	if(visible_ != visible) {
 		visible_ = visible;
 		set_block_easy_close(visible_ && does_block_easy_close());
 		set_dirty();
-	} 
+	}
 }
 
 void tcontrol::set_label(const t_string& label)
@@ -326,7 +326,7 @@ void tcontrol::update_canvas()
 		canvas.set_variable("text", variant(label_));
 		canvas.set_variable("text_maximum_width", variant(max_width));
 		canvas.set_variable("text_maximum_height", variant(max_height));
-		canvas.set_variable("text_wrap_mode", variant(can_wrap() 
+		canvas.set_variable("text_wrap_mode", variant(can_wrap()
 			? PANGO_ELLIPSIZE_NONE : PANGO_ELLIPSIZE_END));
 	}
 }
@@ -336,7 +336,7 @@ int tcontrol::get_text_maximum_width() const
 	assert(config_);
 
 	return text_maximum_width_ != 0
-		? text_maximum_width_ 
+		? text_maximum_width_
 		: get_width() - config_->text_extra_width;
 }
 
@@ -373,10 +373,10 @@ tpoint tcontrol::get_best_text_size(const tpoint& minimum_size, const tpoint& ma
 	renderer_.set_font_style(config_->text_font_style);
 
 	// Try with the minimum wanted size.
-	const int maximum_width =  text_maximum_width_ != 0 
-		? text_maximum_width_ 
+	const int maximum_width =  text_maximum_width_ != 0
+		? text_maximum_width_
 		: maximum_size.x;
-		
+
 	renderer_.set_maximum_width(maximum_width);
 
 	if(can_wrap()) {
@@ -409,7 +409,7 @@ tpoint tcontrol::get_best_text_size(const tpoint& minimum_size, const tpoint& ma
 	if(size.y < minimum_size.y) {
 		size.y = minimum_size.y;
 	}
-	
+
 	DBG_G_L << "tcontrol(" + get_control_type() + ") result " << size << ".\n";
 	return size;
 }

@@ -29,28 +29,28 @@ namespace gui2 {
 tmp_create_game::tmp_create_game(const config& cfg) :
 	cfg_(cfg),
 	scenario_(NULL),
-	use_map_settings_(register_bool("use_map_settings", false, 
-		preferences::use_map_settings, 
+	use_map_settings_(register_bool("use_map_settings", false,
+		preferences::use_map_settings,
 		preferences::set_use_map_settings,
 		dialog_callback<tmp_create_game, &tmp_create_game::update_map_settings>)),
-	fog_(register_bool("fog", false, 
-			preferences::fog, 
+	fog_(register_bool("fog", false,
+			preferences::fog,
 			preferences::set_fog)),
-	shroud_(register_bool("shroud", false, 
-			preferences::shroud, 
+	shroud_(register_bool("shroud", false,
+			preferences::shroud,
 			preferences::set_shroud)),
-	start_time_(register_bool("random_start_time", false, 
-			preferences::random_start_time, 
+	start_time_(register_bool("random_start_time", false,
+			preferences::random_start_time,
 			preferences::set_random_start_time)),
 
-	turns_(register_integer("turn_count", false, 
-		preferences::turns , 
+	turns_(register_integer("turn_count", false,
+		preferences::turns ,
 		preferences::set_turns)),
-	gold_(register_integer("village_gold", false, 
-		preferences::village_gold , 
+	gold_(register_integer("village_gold", false,
+		preferences::village_gold ,
 		preferences::set_village_gold)),
-	experience_(register_integer("experience_modifier", false, 
-		preferences::xp_modifier , 
+	experience_(register_integer("experience_modifier", false,
+		preferences::xp_modifier ,
 		preferences::set_xp_modifier))
 {
 }
@@ -87,7 +87,7 @@ void tmp_create_game::pre_show(CVideo& /*video*/, twindow& window)
 		item.insert(std::make_pair("label", map));
 		list->add_row(item);
 	}
-*/	
+*/
 
 	// Standard maps
 	int i = 0;
@@ -151,7 +151,7 @@ void tmp_create_game::update_map_settings(twindow& window)
 	turns_->widget_set_enabled(window, !use_map_settings, false);
 	gold_->widget_set_enabled(window, !use_map_settings, false);
 	experience_->widget_set_enabled(window, !use_map_settings, false);
-	
+
 	if(use_map_settings) {
 		if(scenario_) {
 

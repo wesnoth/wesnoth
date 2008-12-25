@@ -25,7 +25,7 @@ namespace gui2 {
 class tbutton : public tcontrol
 {
 public:
-	tbutton() : 
+	tbutton() :
 		tcontrol(COUNT),
 		state_(ENABLED),
 		retval_(0),
@@ -56,7 +56,7 @@ public:
 
 
 	/** Inherited from tcontrol. */
-	void set_active(const bool active) 
+	void set_active(const bool active)
 		{ if(get_active() != active) set_state(active ? ENABLED : DISABLED); };
 
 	/** Inherited from tcontrol. */
@@ -81,14 +81,14 @@ private:
 	enum tstate { ENABLED, DISABLED, PRESSED, FOCUSSED, COUNT };
 
 	void set_state(const tstate state);
-	/** 
+	/**
 	 * Current state of the widget.
 	 *
 	 * The state of the widget determines what to render and how the widget
 	 * reacts to certain 'events'.
 	 */
 	tstate state_;
- 
+
  	/**
 	 * The return value of the button.
 	 *
@@ -97,14 +97,14 @@ private:
 	 */
 	int retval_;
 
-	/** 
+	/**
 	 * This callback is used when the control gets a left click. Except when the
 	 * button has a retval_, then retval_ is set.
 	 */
 	void (*callback_mouse_left_click_) (twidget*);
 
 	/** Inherited from tcontrol. */
-	const std::string& get_control_type() const 
+	const std::string& get_control_type() const
 		{ static const std::string type = "button"; return type; }
 };
 

@@ -48,9 +48,9 @@ public:
 	/** Inherited from tcontrol. */
 	bool does_block_easy_close() const { return false; }
 
-private:	
+private:
 	/** Inherited from tcontrol. */
-	const std::string& get_control_type() const 
+	const std::string& get_control_type() const
 		{ static const std::string type = "tooltip"; return type; }
 };
 

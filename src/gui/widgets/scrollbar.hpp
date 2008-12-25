@@ -22,17 +22,17 @@ namespace gui2 {
 /**
  * Base class for a scroll bar.
  *
- * class will be subclassed for the horizontal and vertical scroll bar. 
+ * class will be subclassed for the horizontal and vertical scroll bar.
  * It might be subclassed for a slider class.
  *
- * To make this class generic we talk a lot about offset and length and use 
+ * To make this class generic we talk a lot about offset and length and use
  * pure virtual functions. The classes implementing us can use the heights or
  * widths, whichever is applicable.
  */
 class tscrollbar_ : public tcontrol
 {
 public:
-	
+
 	tscrollbar_() :
 		tcontrol(COUNT),
 		state_(ENABLED),
@@ -54,7 +54,7 @@ public:
 	 * When scrolling we always scroll a 'fixed' amount, these are the
 	 * parameters for these amounts.
 	 */
-	enum tscroll { 
+	enum tscroll {
 		BEGIN,               /**< Go to begin position. */
 		ITEM_BACKWARDS,      /**< Go one item towards the begin. */
 		HALF_JUMP_BACKWARDS, /**< Go half the visible items towards the begin. */
@@ -64,13 +64,13 @@ public:
 		HALF_JUMP_FORWARD,   /**< Go half the visible items towards the end. */
 		JUMP_FORWARD };      /**< Go the visible items towards the end. */
 
-	/** 
-	 * Sets the item position. 
+	/**
+	 * Sets the item position.
 	 *
 	 * We scroll a predefined step.
 	 *
 	 * @param scroll              'step size' to scroll.
-	 */ 
+	 */
 	void scroll(const tscroll scroll);
 
 	/** Is the positioner at the beginning of the scrollbar? */
@@ -81,7 +81,7 @@ public:
 	 *
 	 * Note both begin and end might be true at the same time.
 	 */
-	bool at_end() const 
+	bool at_end() const
 		{ return item_position_ + visible_items_ == item_count_; }
 
 	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
@@ -117,7 +117,7 @@ public:
 	void mouse_left_button_up(tevent_handler& event);
 
 	/** Inherited from tcontrol. */
-	void set_active(const bool active) 
+	void set_active(const bool active)
 		{ if(get_active() != active) set_state(active ? ENABLED : DISABLED); };
 
 	/** Inherited from tcontrol. */
@@ -150,7 +150,7 @@ public:
 	void set_step_size(const unsigned step_size)
 		{ step_size_ = step_size; recalculate(); }
 
-	void set_callback_positioner_move(void (*callback) (twidget*)) 
+	void set_callback_positioner_move(void (*callback) (twidget*))
 		{ callback_positioner_move_ = callback; }
 
 protected:
@@ -170,7 +170,7 @@ private:
 	enum tstate { ENABLED, DISABLED, PRESSED, FOCUSSED, COUNT };
 
 	void set_state(const tstate state);
-	/** 
+	/**
 	 * Current state of the widget.
 	 *
 	 * The state of the widget determines what to render and how the widget
@@ -210,7 +210,7 @@ private:
 	float pixels_per_step_;
 
 	/**
-	 * The position the mouse was at the last movement. 
+	 * The position the mouse was at the last movement.
 	 *
 	 * This is used during dragging the positioner.
 	 */
@@ -247,7 +247,7 @@ private:
 	 * top side if vertical).
 	 */
 	virtual unsigned offset_before() const = 0;
-	
+
 	/**
 	 * The number of pixels we can't use since they're used for borders.
 	 *
@@ -256,7 +256,7 @@ private:
 	 */
 	virtual unsigned offset_after() const = 0;
 
-	/** 
+	/**
 	 * Is the coordinate on the positioner?
 	 *
 	 * @param coordinate          Coordinate to test whether it's on the

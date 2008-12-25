@@ -23,15 +23,15 @@ namespace gui2 {
 class timage : public tcontrol
 {
 public:
-	
-	timage() 
+
+	timage()
 		: tcontrol(COUNT)
 	{
 	}
 
 	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
 
-private:	
+private:
 	/** Inherited from tcontrol. */
 	tpoint calculate_best_size() const;
 public:
@@ -60,7 +60,7 @@ private:
 	enum tstate { ENABLED, COUNT };
 
 	/** Inherited from tcontrol. */
-	const std::string& get_control_type() const 
+	const std::string& get_control_type() const
 		{ static const std::string type = "image"; return type; }
 };
 

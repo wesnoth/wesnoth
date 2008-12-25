@@ -31,33 +31,33 @@ class teditor_settings : public tdialog
 {
 public:
 	teditor_settings();
-		
+
 	void set_redraw_callback(boost::function<void (int, int, int)> callback) { redraw_callback_ = callback; }
-	
+
 	/** Callback for the next tod button */
 	void do_next_tod(twindow& window);
-	
+
 	void update_tod_display(twindow& window);
-	
+
 	void slider_update_callback(twindow& window);
-	
+
 	void set_tods(const std::vector<time_of_day>& tods) { tods_ = tods; }
 	const std::vector<time_of_day>& get_tods() const { return tods_; }
-	
+
 	void set_current_adjustment(int r, int g, int b);
-	
+
 	void set_selected_tod(time_of_day tod);
 	const time_of_day& get_selected_tod() const;
-	
+
 	int get_red() const;
 	int get_green() const;
 	int get_blue() const;
-	
+
 	void update_selected_tod_info(twindow& window);
-	
+
 	bool get_use_mdi() const;
 	void set_use_mdi(bool value);
-	
+
 private:
 	/** Inherited from tdialog. */
 	twindow* build_window(CVideo& video);
@@ -67,35 +67,35 @@ private:
 
 	/** Inherited from tdialog. */
 	void post_show(twindow& window);
-	
+
 	boost::function<void (int, int, int)> redraw_callback_;
-	
+
 	/** Available time_of_days */
 	std::vector<time_of_day> tods_;
-	
+
 	/** Current map generator index */
 	int current_tod_;
-	
+
 	/** Label for the current tod */
 	tlabel* current_tod_label_;
-	
+
 	/** Label for the current tod image*/
 	tlabel* current_tod_image_;
-	
+
 	ttoggle_button* custom_tod_toggle_;
 	ttoggle_button* custom_tod_auto_refresh_;
-	
+
 	tfield_bool* custom_tod_toggle_field_;
-	
+
 	tslider* custom_tod_red_;
 	tslider* custom_tod_green_;
 	tslider* custom_tod_blue_;
-	
+
 	tfield_integer* custom_tod_red_field_;
 	tfield_integer* custom_tod_green_field_;
 	tfield_integer* custom_tod_blue_field_;
-	
-	tfield_bool* use_mdi_field_;	
+
+	tfield_bool* use_mdi_field_;
 };
 
 } // namespace gui2

@@ -67,7 +67,7 @@ void ttitle_screen::pre_show(CVideo& video, twindow& window)
 	window.get_widget<tbutton>("addons", false).
 		set_callback_mouse_left_click( show_dialog<gui2::taddon_connect>);
 
-	window.canvas()[0].set_variable("revision_number", 
+	window.canvas()[0].set_variable("revision_number",
 		variant(_("Version") + std::string(" ") + game_config::revision));
 
 	/*Select a random game_title*/
@@ -77,7 +77,7 @@ void ttitle_screen::pre_show(CVideo& video, twindow& window)
 	if(game_title_list.empty()) {
 		ERR_CONFIG << "No title image defined\n";
 	} else {
-		window.canvas()[0].set_variable("background_image", 
+		window.canvas()[0].set_variable("background_image",
 			variant(game_title_list[rand()%game_title_list.size()]));
 	}
 }

@@ -18,7 +18,7 @@
 
 namespace gui2 {
 
-tpoint timage::calculate_best_size() const 
+tpoint timage::calculate_best_size() const
 {
 	surface image(get_image(image::locator(label())));
 

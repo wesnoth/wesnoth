@@ -53,14 +53,14 @@ public:
 	virtual const twindow& get_window() const = 0;
 
 	/** See twidget::find_widget() for the description. */
-	virtual twidget* find_widget(const tpoint& coordinate, 
+	virtual twidget* find_widget(const tpoint& coordinate,
 			const bool must_be_active) = 0;
 
 	/** The const version of find_widget. */
-	virtual const twidget* find_widget(const tpoint& coordinate, 
+	virtual const twidget* find_widget(const tpoint& coordinate,
 		const bool must_be_active) const = 0;
 
-	/** 
+	/**
 	 * Captures the mouse input.
 	 *
 	 * When capturing the widget that has the mouse focus does the capturing.
@@ -77,7 +77,7 @@ public:
 	 */
 	void keyboard_capture(twidget* widget) { keyboard_focus_ = widget; }
 
-	/** 
+	/**
 	 * Adds the widget to the keyboard chain.
 	 *
 	 * @param widget              The widget to add to the chain. The widget
@@ -86,7 +86,7 @@ public:
 	 */
 	void add_to_keyboard_chain(twidget* widget);
 
-	/** 
+	/**
 	 * Remove the widget from the keyborad chain.
 	 *
 	 * @parameter widget          The widget to be removed from the chain.
@@ -130,15 +130,15 @@ public:
 
 private:
 
-	/** 
+	/**
 	 * A mouse button.
 	 *
 	 * The class tracks the state of the mouse button and which functions to
 	 * invoke upon state changes.
 	 * */
 	struct tmouse_button {
-		
-		tmouse_button(const std::string& name, 
+
+		tmouse_button(const std::string& name,
 			void (tevent_executor::*down) (tevent_handler&),
 			void (tevent_executor::*up) (tevent_handler&),
 			void (tevent_executor::*click) (tevent_handler&),
@@ -206,7 +206,7 @@ private:
 										*   moving outside invalidates the
 										*   pending hover event.
 										*/
-									   
+
 	bool had_hover_;                   /**< A widget only gets one hover event
 	                                    *   per enter cycle.
 										*/
@@ -324,7 +324,7 @@ private:
 	 */
 	void key_down(const SDL_Event& event);
 
-	/** 
+	/**
 	 * The function to do the real job of showing the tooltip.
 	 *
 	 * @param location            The location in the window where to show the
@@ -337,7 +337,7 @@ private:
 	/** Function to do the real removal of the tooltip. */
 	virtual void do_remove_tooltip() = 0;
 
-	/** 
+	/**
 	 * The function to do the real job of showing the help popup.
 	 *
 	 * @param location            The location in the window where to show the

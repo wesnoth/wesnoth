@@ -39,9 +39,9 @@ bool init();
 /** Holds a 2D point. */
 struct tpoint
 {
-	tpoint(const int x_, const int y_) : 
+	tpoint(const int x_, const int y_) :
 		x(x_),
-		y(y_) 
+		y(y_)
 		{}
 
 	/** x coodinate. */
@@ -52,18 +52,18 @@ struct tpoint
 
 	bool operator==(const tpoint& point) const { return x == point.x && y == point.y; }
 	bool operator!=(const tpoint& point) const { return x != point.x || y != point.y; }
-	bool operator<(const tpoint& point) const 
+	bool operator<(const tpoint& point) const
 		{ return x < point.x || (x == point.x && y < point.y); }
 
-	bool operator<=(const tpoint& point) const 
+	bool operator<=(const tpoint& point) const
 		{ return x < point.x || (x == point.x && y <= point.y); }
-		
-	tpoint operator+(const tpoint& point) const 
+
+	tpoint operator+(const tpoint& point) const
 		{ return tpoint(x + point.x, y + point.y); }
 
 	tpoint& operator+=(const tpoint& point);
 
-	tpoint operator-(const tpoint& point) const 
+	tpoint operator-(const tpoint& point) const
 		{ return tpoint(x - point.x, y - point.y); }
 
 	tpoint& operator-=(const tpoint& point);
@@ -106,7 +106,7 @@ unsigned decode_font_style(const std::string& style);
 /**
  * Copies a portion of a surface.
  *
- * Unlike get_surface_portion it copies rather then using SDL_Blit. Using 
+ * Unlike get_surface_portion it copies rather then using SDL_Blit. Using
  * SDL_Blit gives problems with transparent surfaces.
  *
  * @param background              The surface to safe a portion from, this
@@ -125,7 +125,7 @@ surface save_background(const surface& background, const SDL_Rect& rect);
  * @param background             The surface to copy unto.
  * @param rect                   The area to copy to on the background.
  */
-void restore_background(const surface& restorer, 
+void restore_background(const surface& restorer,
 		surface& background,const SDL_Rect& rect);
 
 /**
@@ -146,7 +146,7 @@ t_string missing_widget(const std::string& id);
  */
 std::string get_uid();
 
-/** 
+/**
  * Gets a formula object with the screen size.
  *
  * @param variable                A formula object in which the screen_width
@@ -156,7 +156,7 @@ std::string get_uid();
  */
 void get_screen_size_variables(game_logic::map_formula_callable& variable);
 
-/** 
+/**
  * Gets a formula object with the screen size.
  *
  * @returns                       Formula object with the screen_width and

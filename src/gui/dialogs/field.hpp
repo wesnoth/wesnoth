@@ -53,9 +53,9 @@ public:
 	 * following:
 	 * - If no widget available exit gives feedback it the widget must exist.
 	 * - If a getter is defined we use to set value_ and the widget.
-	 * - If no setter is defined we use the widget value to set value_.  
+	 * - If no setter is defined we use the widget value to set value_.
 	 *
-	 * The function calls two functions 
+	 * The function calls two functions
 	 *  - init_generic which is to be used in the template subclass.
 	 *  - init_specialized which is to be used in subclasses of the template
 	 *     class. This way they can override this function without to use their
@@ -78,11 +78,11 @@ public:
 	 * - if a setter is defined the widget value is saved in the setter.
 	 * - The widget value is saved in value_.
 	 *
-	 * Like widget_init it calls two functions with the same purpose.  
+	 * Like widget_init it calls two functions with the same purpose.
 	 *
 	 * @param window              The window containing the widget.
 	 */
-	void widget_finalize(twindow& window) 
+	void widget_finalize(twindow& window)
 	{
 		finalize_generic(window);
 		finalize_specialized(window);
@@ -122,7 +122,7 @@ public:
 	 */
 	void widget_set_enabled(twindow& window, const bool enable, const bool sync)
 	{
-		tcontrol* widget = 
+		tcontrol* widget =
 			dynamic_cast<tcontrol*>(window.find_widget(id(), false));
 
 		if(!widget) {
@@ -218,14 +218,14 @@ public:
 	}
 
 	/** Inherited from tfield_. */
-	void widget_restore(twindow& window) 
+	void widget_restore(twindow& window)
 	{
 		validate_widget(window);
 
 		restore(window);
 	}
 
-	/** 
+	/**
 	 * Sets the value of the field.
 	 *
 	 * This sets the value in both the internal cache value and in the widget
@@ -234,13 +234,13 @@ public:
 	 * @param window              The window containing the widget.
 	 * @param value               The new value.
 	 */
-	void set_widget_value(twindow& window, CT value) 
+	void set_widget_value(twindow& window, CT value)
 	{
 		value_ = value;
 		restore(window);
 	}
 
-	/** 
+	/**
 	 * Sets the value of the field.
 	 *
 	 * This sets the internal cache value but not the widget value, this can
@@ -248,18 +248,18 @@ public:
 	 *
 	 * @param value               The new value.
 	 */
-	void set_cache_value(CT value) 
+	void set_cache_value(CT value)
 	{
 		value_ = value;
 	}
 
 	/** Inherited from tfield_. */
-	void widget_save(twindow& window) 
+	void widget_save(twindow& window)
 	{
 		save(window, false);
 	}
 
-	/** 
+	/**
 	 * Gets the value of the field.
 	 *
 	 * This function gets the value of the widget and stores that in the
@@ -268,14 +268,14 @@ public:
 	 * @param window              The window containing the widget.
 	 *
 	 * @returns                   The current value of the widget.
-	 */ 
-	T get_widget_value(twindow& window) 
+	 */
+	T get_widget_value(twindow& window)
 	{
 		save(window, false);
 		return value_;
 	}
 
-	/** 
+	/**
 	 * Gets the value of the field.
 	 *
 	 * This function returns the value internal cache, this function can be
@@ -283,32 +283,32 @@ public:
 	 * when the window is closed with succes.
 	 *
 	 * @returns                   The currently value of the internal cache.
-	 */ 
-	T get_cache_value() 
+	 */
+	T get_cache_value()
 	{
 		return value_;
 	}
 
 private:
 
-	/** 
+	/**
 	 * The value_ of the widget, this value is also available once the widget
 	 * is destroyed.
 	 */
 	T value_;
 
-	/** 
-	 * The callback function to load the value. 
-	 * 
+	/**
+	 * The callback function to load the value.
+	 *
 	 * This is used to load the initial value of the widget, if defined.
 	 */
 	T (*callback_load_value_) ();
 
 	/** Inherited from tfield_. */
-	void init_generic(twindow& window) 
+	void init_generic(twindow& window)
 	{
 		validate_widget(window);
-		
+
 		if(callback_load_value_) {
 			value_ = callback_load_value_();
 		}
@@ -317,7 +317,7 @@ private:
 	}
 
 	/** Inherited from tfield_. */
-	void finalize_generic(twindow& window) 
+	void finalize_generic(twindow& window)
 	{
 		save(window, true);
 
@@ -339,7 +339,7 @@ private:
 	 *
 	 * @param window              The window containing the widget.
 	 */
-	void validate_widget(twindow& window) 
+	void validate_widget(twindow& window)
 	{
 
 		if(is_optional()) {
@@ -357,14 +357,14 @@ private:
 	 */
 	void save(twindow& window, const bool must_be_active)
 	{
-		const W* widget = 
+		const W* widget =
 			dynamic_cast<const W*>(window.find_widget(id(), must_be_active));
 
 		if(widget) {
 			value_ = widget->get_value();
 		}
 	}
-	
+
 	/**
 	 * Stores the internal value_ in the widget.
 	 */
@@ -399,7 +399,7 @@ private:
 	void init_specialized(twindow& window)
 	{
 		if(callback_change_) {
-			tselectable_* widget = 
+			tselectable_* widget =
 				dynamic_cast<tselectable_*>(window.find_widget(id(), false));
 
 			if(widget) {
@@ -424,11 +424,11 @@ public:
 		{
 		}
 
-private:	
+private:
 	/** Overridden from tfield_. */
-	void finalize_specialized(twindow& window) 
+	void finalize_specialized(twindow& window)
 	{
-		ttext_box* widget = 
+		ttext_box* widget =
 			dynamic_cast<ttext_box*>(window.find_widget(id(), false));
 
 		if(widget) {

@@ -23,7 +23,7 @@ namespace gui2 {
  * Parts of the engine inherit this class so we can have generic
  * selectable items.
  */
-class tselectable_ 
+class tselectable_
 {
 public:
 	virtual ~tselectable_() {}

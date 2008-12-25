@@ -23,7 +23,7 @@ namespace gui2 {
  * Parts of the engine inherit this class so we can have generic
  * widgets to select an integer value.
  */
-class tinteger_selector_ 
+class tinteger_selector_
 {
 public:
 	virtual ~tinteger_selector_() {}

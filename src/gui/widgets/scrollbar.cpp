@@ -23,7 +23,7 @@ namespace gui2 {
 void tscrollbar_::scroll(const tscroll scroll)
 {
 	switch(scroll) {
-		case BEGIN : 
+		case BEGIN :
 			set_item_position(0);
 			break;
 
@@ -34,19 +34,19 @@ void tscrollbar_::scroll(const tscroll scroll)
 			break;
 
 		case HALF_JUMP_BACKWARDS :
-			set_item_position(item_position_ > (visible_items_ / 2) ? 
+			set_item_position(item_position_ > (visible_items_ / 2) ?
 				item_position_ - (visible_items_ / 2) : 0);
 			break;
 
 		case JUMP_BACKWARDS :
-			set_item_position(item_position_ > visible_items_ ? 
+			set_item_position(item_position_ > visible_items_ ?
 				item_position_ - visible_items_  : 0);
 			break;
 
 		case END :
 			set_item_position(item_count_ - 1);
 			break;
-			
+
 		case ITEM_FORWARD :
 			set_item_position(item_position_ + 1);
 			break;
@@ -96,7 +96,7 @@ void tscrollbar_::mouse_move(tevent_handler& event)
 				mouse_ = mouse;
 				move_positioner(distance);
 			}
-			break; 
+			break;
 
 		case FOCUSSED :
 			if(!on_positioner(mouse)) {
@@ -173,7 +173,7 @@ void tscrollbar_::mouse_left_button_up(tevent_handler& event)
 void tscrollbar_::set_item_position(const unsigned item_position)
 {
 	// Set the value always execute since we update a part of the state.
-	item_position_ = item_position + visible_items_ > item_count_ ? 
+	item_position_ = item_position + visible_items_ > item_count_ ?
 		item_count_ - visible_items_ : item_position;
 
 	item_position_ = (item_position_ + step_size_ - 1) / step_size_;
@@ -211,7 +211,7 @@ void tscrollbar_::recalculate()
 	}
 
 	// Get the available size for the slider to move.
-	const int available_length = 
+	const int available_length =
 		get_length() - offset_before() - offset_after();
 
 	assert(available_length > 0);
@@ -235,8 +235,8 @@ void tscrollbar_::recalculate()
 	recalculate_positioner();
 
 	// Make sure we can also show the last step, so add one more step.
-	pixels_per_step_ = 
-		(available_length - positioner_length_) 
+	pixels_per_step_ =
+		(available_length - positioner_length_)
 		/ static_cast<float>(steps + 1);
 
 	set_item_position(item_position_);
@@ -247,7 +247,7 @@ void tscrollbar_::recalculate()
 		<< " step_size_ " << step_size_
 		<< " steps " << steps
 		<< "\n"
-		<< "minimum_positioner_length() " << minimum_positioner_length() 
+		<< "minimum_positioner_length() " << minimum_positioner_length()
 		<< " maximum_positioner_length() " << maximum_positioner_length()
 		<< "\n"
 		<< " positioner_length_ " << positioner_length_
@@ -288,7 +288,7 @@ void tscrollbar_::move_positioner(const int distance)
 	}
 
 	unsigned position =
-		static_cast<unsigned>(positioner_offset_ / pixels_per_step_); 
+		static_cast<unsigned>(positioner_offset_ / pixels_per_step_);
 
 	// Note due to floating point rounding the position might be outside the
 	// available positions so set it back.
@@ -297,7 +297,7 @@ void tscrollbar_::move_positioner(const int distance)
 	}
 
 	if(position != item_position_) {
-		item_position_ = position; 
+		item_position_ = position;
 
 		if(callback_positioner_move_) {
 			callback_positioner_move_(this);
@@ -309,7 +309,7 @@ void tscrollbar_::move_positioner(const int distance)
 		<< " visible_items_ " << visible_items_
 		<< " step_size_ " << step_size_
 		<< "\n"
-		<< "minimum_positioner_length() " << minimum_positioner_length() 
+		<< "minimum_positioner_length() " << minimum_positioner_length()
 		<< " maximum_positioner_length() " << maximum_positioner_length()
 		<< "\n"
 		<< " positioner_length_ " << positioner_length_

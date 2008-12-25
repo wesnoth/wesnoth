@@ -56,7 +56,7 @@ public:
 	void mouse_middle_button_click(tevent_handler&);
 
 	/** Inherited from tevent_executor. */
-	void key_press(tevent_handler& event, 
+	void key_press(tevent_handler& event,
 		bool& handled, SDLKey key, SDLMod modifier, Uint16 unicode);
 
 	/** Inherited from tcontrol. */
@@ -78,7 +78,7 @@ public:
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
-	void set_value(const std::string& text); 
+	void set_value(const std::string& text);
 	std::string get_value() const { return text_.text(); }
 
 	const std::string& text() const { return text_.text(); }
@@ -101,7 +101,7 @@ protected:
 	 * @param select              Select the text from the original cursor
 	 *                            position till the end of the data?
 	 */
-	void goto_end_of_data(const bool select = false) 
+	void goto_end_of_data(const bool select = false)
 		{ set_cursor(text_.get_length(), select); }
 
 	/**
@@ -144,10 +144,10 @@ protected:
 
 	/**
 	 *  Deletes the character.
-	 * 
+	 *
 	 *  @param before_cursor     If true it deletes the character before the cursor
 	 *                           (backspace) else the character after the cursor
-	 *                           (delete). 
+	 *                           (delete).
 	 */
 	virtual void delete_char(const bool before_cursor) = 0;
 
@@ -175,14 +175,14 @@ protected:
 	void set_font_style(const unsigned font_style)
 		{ text_.set_font_style(font_style); }
 
-	void set_maximum_width(const int width) 
+	void set_maximum_width(const int width)
 		{ text_.set_maximum_width(width); }
-	
-	void set_maximum_height(const int height) 
+
+	void set_maximum_height(const int height)
 		{ text_.set_maximum_height(height); }
-	
+
 	/***** ***** ***** setters / getters for members ***** ****** *****/
-	
+
 	size_t get_selection_start() const { return selection_start_; }
 	void  set_selection_start(const size_t selection_start);
 
@@ -196,7 +196,7 @@ private:
 
 	void set_state(const tstate state);
 
-	/** 
+	/**
 	 * Current state of the widget.
 	 *
 	 * The state of the widget determines what to render and how the widget
@@ -210,7 +210,7 @@ private:
 	/** Start of the selected text. */
 	size_t selection_start_;
 
-	/** 
+	/**
 	 * Length of the selected text.
 	 *
 	 * * positive selection_len_ means selection to the right.
@@ -246,21 +246,21 @@ private:
 	 *                            to it.
 	 */
 
-	/** 
+	/**
 	 * Up arrow key pressed.
 	 *
 	 * The behaviour is implementation defined.
 	 */
 	virtual void handle_key_up_arrow(SDLMod modifier, bool& handled) = 0;
 
-	/** 
+	/**
 	 * Down arrow key pressed.
 	 *
 	 * The behaviour is implementation defined.
 	 */
 	virtual void handle_key_down_arrow(SDLMod modifier, bool& handled) = 0;
 
-	/** 
+	/**
 	 * Clears the current line.
 	 *
 	 * Unmodified                 Clears the current line.
@@ -270,7 +270,7 @@ private:
 	 */
 	virtual void handle_key_clear_line(SDLMod modifier, bool& handled) = 0;
 
-	/** 
+	/**
 	 * Left arrow key pressed.
 	 *
 	 * Unmodified                 Moves the cursor a character to the left.
@@ -281,7 +281,7 @@ private:
 	 */
 	virtual void handle_key_left_arrow(SDLMod modifier, bool& handled);
 
-	/** 
+	/**
 	 * Right arrow key pressed.
 	 *
 	 * Unmodified                 Moves the cursor a character to the right.

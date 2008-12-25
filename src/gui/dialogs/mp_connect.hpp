@@ -28,7 +28,7 @@ private:
 
 	/** Used in show in order to show list. */
 	CVideo* video_;
-	
+
 	/** Inherited from tdialog. */
 	twindow* build_window(CVideo& video);
 
