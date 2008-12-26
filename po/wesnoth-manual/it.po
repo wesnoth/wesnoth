@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "POT-Creation-Date: 2008-12-22 10:13+0100\n"
-"PO-Revision-Date: 2008-12-16 21:54+0100\n"
+"PO-Revision-Date: 2008-12-26 20:49+0100\n"
 "Last-Translator: Luciano Montanaro <mikelima@cirulla.net>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -27,7 +27,6 @@ msgstr "it"
 
 # type: Content of: <book><bookinfo><title>
 #: ../../doc/manual/manual.en.xml:6
-#, fuzzy
 msgid "Battle for Wesnoth User's Manual"
 msgstr "Manuale per l'utente di Battle for Wesnoth"
 
@@ -97,7 +96,6 @@ msgstr ""
 
 # type: Content of: <book><preface><simpara>
 #: ../../doc/manual/manual.en.xml:35
-#, fuzzy
 msgid ""
 "Battle for Wesnoth is open-source software, and a thriving community of "
 "volunteers cooperates to improve the game. You can create your own custom "
@@ -248,13 +246,12 @@ msgstr ""
 
 # type: Content of: <book><chapter><section><simpara><inlinemediaobject>
 #: ../../doc/manual/manual.en.xml:101
-#, fuzzy
 msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/main-menu-"
 "1.5.7.jpg\"/> </imageobject>"
 msgstr ""
-"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/main-menu.jpg"
-"\"/> </imageobject>"
+"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/main-menu-"
+"1.5.7.jpg\"/> </imageobject>"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:106 ../../doc/manual/manual.en.xml:349
@@ -384,7 +381,7 @@ msgstr ""
 # type: Content of: <book><chapter><section><variablelist><varlistentry><term>
 #: ../../doc/manual/manual.en.xml:190
 msgid "Map Editor"
-msgstr ""
+msgstr "Editor delle mappe"
 
 # type: Content of: <book><chapter><section><variablelist><varlistentry><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:194
@@ -392,6 +389,9 @@ msgid ""
 "Click this button to start the Map Editor where you can create custom maps "
 "for multiplayer games or for building your own campaign upon."
 msgstr ""
+"Fai clic su questo pulsante per avviare l'editor delle mappe da cui creare "
+"mappe personalizzate per partite multigiocatore o su cui costruire una tua "
+"campagna."
 
 #: ../../doc/manual/manual.en.xml:201
 msgid "Language"
@@ -618,13 +618,12 @@ msgstr ""
 
 # type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #: ../../doc/manual/manual.en.xml:344
-#, fuzzy
 msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/multiplayer-"
 "1.5.7.jpg\"/> </imageobject>"
 msgstr ""
-"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/multiplayer.jpg"
-"\"/> </imageobject>"
+"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/multiplayer-"
+"1.5.7.jpg\"/> </imageobject>"
 
 # type: Content of: <book><chapter><section><section><section><title>
 #: ../../doc/manual/manual.en.xml:352
@@ -645,9 +644,8 @@ msgstr ""
 
 # type: Content of: <book><chapter><section><section><section><title>
 #: ../../doc/manual/manual.en.xml:359
-#, fuzzy
 msgid "Connect to Server"
-msgstr "Connetti all'host/server"
+msgstr "Connetti al server"
 
 # type: Content of: <book><chapter><section><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:360
@@ -691,7 +689,6 @@ msgstr ""
 
 # type: Content of: <book><chapter><section><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:377
-#, fuzzy
 msgid ""
 "To be able to start a multiplayer game without using an external multiplayer "
 "server, you have to start the server, which is usually named "
@@ -705,17 +702,17 @@ msgid ""
 "make firewall changes to join games hosted on a public server or by someone "
 "else."
 msgstr ""
-"Per poter ospitare partite multigiocatori senza dover usare un server "
-"dedicato, devi avviare il server, che si chiama solitamente "
-"<emphasis>wesnothd</emphasis>. Quindi devi connetterti alla tua stessa "
-"macchina dalla finestra <emphasis>Connettiti all'host/server</emphasis> "
-"inserendo 127.0.0.1 come indirizzo da usare. Gli altri giocatori dovranno "
-"collegarsi alla tua porta 15000 con il protocollo TCP. Se sei dietro un "
-"firewall, probabilmente dovrai cambiarne le impostazioni del per accettare i "
-"collegamenti in arrivo sulla porta 15000 e incanalare questo traffico sul "
-"computer che ospita la partita. Invece non dovrebbe essere necessario "
-"modificare le impostazioni del firewall per unirsi a partite ospitate su un "
-"server pubblico o da qualcun altro."
+"Per poter ospitare partite multigiocatori senza usare un server dedicato, "
+"devi avviare il server, che si chiama solitamente <emphasis>wesnothd</"
+"emphasis>. Questo programma è avviato automaticamente in sottofondo quando "
+"selezioni questa opzione. Sarà interrotto quando tutti i giocatori "
+"abbandonano il server. Gli altri giocatori dovranno collegarsi alla tua "
+"porta 15000 con il protocollo TCP per poter giocare con te sul tuo server. "
+"Se sei dietro un firewall, probabilmente dovrai cambiarne le impostazioni "
+"del per accettare i collegamenti in arrivo sulla porta 15000 e incanalare "
+"questo traffico sul computer che ospita la partita. Invece non dovrebbe "
+"essere necessario modificare le impostazioni del firewall per unirsi a "
+"partite ospitate su un server pubblico o da qualcun altro."
 
 # type: Content of: <book><chapter><section><section><section><title>
 #: ../../doc/manual/manual.en.xml:391
@@ -757,13 +754,12 @@ msgstr "La finestra di gioco"
 
 # type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #: ../../doc/manual/manual.en.xml:408
-#, fuzzy
 msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/game-screen-"
 "1.5.7.jpg\"/> </imageobject>"
 msgstr ""
-"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/game-screen.jpg"
-"\"/> </imageobject>"
+"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/game-screen-"
+"1.5.7.jpg\"/> </imageobject>"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:415
@@ -782,13 +778,12 @@ msgstr ""
 
 # type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #: ../../doc/manual/manual.en.xml:421
-#, fuzzy
 msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/top_pane-1.5.7."
 "jpg\"/> </imageobject>"
 msgstr ""
-"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/top_pane.jpg\"/"
-"> </imageobject>"
+"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/top_pane-1.5.7."
+"jpg\"/> </imageobject>"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:428
@@ -852,6 +847,7 @@ msgstr "Posizione dell'esagono attuale (coordinata x, coordinata y)"
 #: ../../doc/manual/manual.en.xml:483
 msgid "Defense and movement of the currently selected unit on the marked hex"
 msgstr ""
+"Difesa e movimento dell'unità attualmente selezionata sull'esagono indicato"
 
 # type: Content of: <book><chapter><section><section><orderedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:488
@@ -860,13 +856,12 @@ msgstr "Tipo di esagono attuale"
 
 # type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #: ../../doc/manual/manual.en.xml:492
-#, fuzzy
 msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/right_pane-"
 "1.5.7.jpg\"/> </imageobject>"
 msgstr ""
-"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/right_pane.jpg"
-"\"/> </imageobject>"
+"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/right_pane-"
+"1.5.7.jpg\"/> </imageobject>"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:499
@@ -1632,13 +1627,12 @@ msgstr "Reclutare e richiamare"
 
 # type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #: ../../doc/manual/manual.en.xml:1040
-#, fuzzy
 msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/recruit-1.5.7."
 "jpg\"/> </imageobject>"
 msgstr ""
-"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/recruit.jpg\"/"
-"> </imageobject>"
+"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/recruit-1.5.7."
+"jpg\"/> </imageobject>"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:1047
@@ -2166,7 +2160,6 @@ msgstr "Sano"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:1418
-#, fuzzy
 msgid ""
 "Renowned for their vitality, some dwarves are sturdier than others and can "
 "rest even when traveling.  Healthy units have 1 HP plus 1 HP per level more "
@@ -2174,8 +2167,8 @@ msgid ""
 "They also suffer a quarter less damage from poison."
 msgstr ""
 "Noti per la loro vitalità, alcuni nani sono più vigorosi degli altri e "
-"possono riposarsi anche quando si spostano. Le unità in salute hanno 2 PF "
-"supplementari e riposando recuperano 2 PF in più per ogni turno in cui non "
+"possono riposarsi anche quando si spostano. Le unità in salute hanno 1 PF "
+"supplementare e riposando recuperano 2 PF in più per ogni turno in cui non "
 "combattono."
 
 #: ../../doc/manual/manual.en.xml:1428
@@ -2184,13 +2177,12 @@ msgstr "Impavido"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:1432
-#, fuzzy
 msgid ""
 "Does not suffer from a negative attack bonus during its unfavorable time of "
 "day (Heavy Infantry, Necrophage, Trolls, Walking Corpses)."
 msgstr ""
 "Non soffre di un bonus negativo all'attacco durante il periodo del giorno "
-"sfavorevole (Troll, morti viventi)."
+"sfavorevole (Fanteria pesante, necrofaghi, troll, morti viventi)."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:1438
