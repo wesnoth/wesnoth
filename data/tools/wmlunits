@@ -343,7 +343,7 @@ class HTMLOutput:
         base_unit = self.wesnoth.get_base_unit(this_unit)
         attacks = []
         if base_unit:
-            attacks = self.get_recursive_attacks(base_unit)
+            attacks = copy.deepcopy(self.get_recursive_attacks(base_unit))
 
         base_attacks_count = len(attacks)
         for i, attack in enumerate(this_unit.get_all("attack")):
