@@ -117,6 +117,12 @@ class user_handler {
 		/** Returns true if a user with the given name exists. */
 		virtual bool user_exists(const std::string& name) =0;
 
+		/** Returns true if this user is a moderator on this server */
+		virtual bool user_is_moderator(const std::string& name) =0;
+
+		/** Mark this user as a moderator */
+		virtual void set_is_moderator(const std::string& name, const bool& is_moderator) =0;
+
 		/** A simple structure to throw as an error. */
 		struct error {
 			error(const std::string& msg) : message(msg) {}

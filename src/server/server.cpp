@@ -1135,6 +1135,15 @@ void server::process_login(const network::connection sock,
 		(*g)->send_server_message_to_all((username + " has logged into the lobby").c_str());
 	}
 
+	if(user_handler_ && user_handler_->user_is_moderator(username)) {
+		LOG_SERVER << "New Admin recognized:" << "\tIP: "
+			<< network::ip_address(sock) << "\tnick: "
+			<< username << std::endl;
+		admins_.insert(sock);
+		lobby_.send_server_message("You were automatically recognized as an administrator. "
+				"If you no longer want to be automatically authenticated use '/query signout'.", sock);
+	}
+
 	// Log the IP
 	ip_log_[username] = network::ip_address(sock);
 	// Remove the oldes entry in the size of the IP log exceeds the maximum size 
@@ -1153,10 +1162,21 @@ void server::process_query(const network::connection sock,
 	const std::string& help_msg = "Available commands are: help, games, metrics,"
 			" motd, netstats [all], stats, status, wml.";
 	if (admins_.count(sock) != 0) {
-		LOG_SERVER << "Admin Command:" << "\ttype: " << command
-			<< "\tIP: "<< network::ip_address(sock) 
-			<< "\tnick: "<< pl->second.name() << std::endl;
-		response << process_command(command.to_string(), pl->second.name());
+		if (command == "signout") {
+			LOG_SERVER << "Admin signed out:" << "\tIP: "
+				<< network::ip_address(sock) << "\tnick: "
+				<< pl->second.name() << std::endl;
+			admins_.erase(sock);
+			response << "You are no longer recognized as an administrator.";
+			if(user_handler_) {
+				user_handler_->set_is_moderator(pl->second.name(), false);
+			}
+		} else {
+			LOG_SERVER << "Admin Command:" << "\ttype: " << command
+				<< "\tIP: "<< network::ip_address(sock) 
+				<< "\tnick: "<< pl->second.name() << std::endl;
+			response << process_command(command.to_string(), pl->second.name());
+		}
 	// Commands a player may issue.
 	} else if (command == "help") {
 		response << help_msg;
@@ -1179,6 +1199,9 @@ void server::process_query(const network::connection sock,
 			<< pl->second.name() << std::endl;
 		admins_.insert(sock);
 		response << "You are now recognized as an administrator.";
+		if(user_handler_) {
+			user_handler_->set_is_moderator(pl->second.name(), true);
+		}
 	} else if (admin_passwd_.empty() == false) {
 		WRN_SERVER << "FAILED Admin attempt: '" << command << "'\tIP: "
 			<< network::ip_address(sock) << "\tnick: "
@@ -1213,7 +1236,7 @@ std::string server::process_command(const std::string& query, const std::string&
 	const std::string& help_msg = "Available commands are: ban <mask> [<time>] <reason>,"
 			" bans [deleted], kick <mask>, k[ick]ban <mask> [<time>] <reason>,"
 			" help, games, metrics, netstats [all], [lobby]msg <message>, motd [<message>],"
-			" requests, stats, status [<mask>], searchlog <mask>, unban <ipmask>";
+			" requests, stats, status [<mask>], searchlog <mask>, signout, unban <ipmask>";
 	// Shutdown, restart and sample commands can only be issued via the socket.
 	if (command == "shut_down") {
 		if (issuer_name != "*socket*") return "";

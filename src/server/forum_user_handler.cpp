@@ -144,6 +144,26 @@ bool fuh::user_exists(const std::string& name) {
 	}
 }
 
+bool fuh::user_is_moderator(const std::string& name) {
+
+	try {
+		return get_writable_detail_for_user(name, "user_is_moderator") == "1";
+	} catch (error e) {
+		ERR_UH << "Could not query user_is_moderator for user '" << name << "' :" << e.message << std::endl;
+		// If the database is down mark nobody as a mod
+		return false;
+	}
+}
+
+void fuh::set_is_moderator(const std::string& name, const bool& is_moderator) {
+
+	try {
+		write_detail(name, "user_is_moderator", is_moderator ? "1" : "0");
+	} catch (error e) {
+		ERR_UH << "Could not set is_moderator for user '" << name << "' :" << e.message << std::endl;
+	}
+}
+
 void fuh::password_reminder(const std::string& name) {
 	throw error("For now please use the password recovery "
 		"function provided at http://forum.wesnoth.org");
@@ -258,7 +278,7 @@ void fuh::write_detail(const std::string& name, const std::string& detail, const
 		// Check if we do already have a row for this user in the extra table
 		if(!extra_row_exists(name)) {
 			// If not create the row
-			db_query("INSERT INTO " + db_extra_table_ + " VALUES('" + name + "','" + value + "')");
+			db_query("INSERT INTO " + db_extra_table_ + " VALUES('" + name + "','" + value + "','0')");
 		}
 		db_query("UPDATE " + db_extra_table_ + " SET " + detail + "='" + value + "' WHERE username='" + name + "'");
 	} catch (error e) {
