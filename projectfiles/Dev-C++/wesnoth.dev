@@ -1,7 +1,7 @@
 [Project]
 FileName=wesnoth.dev
 Name=wesnoth
-UnitCount=204
+UnitCount=205
 Type=0
 Ver=1
 ObjFiles=
@@ -893,16 +893,6 @@ BuildCmd=
 FileName=..\..\src\formula_string_utils.cpp
 CompileCpp=1
 Folder=wesnoth
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit205]
-FileName=..\..\src\widgets\textbox.cpp
-CompileCpp=1
-Folder=Wesnoth
 Compile=1
 Link=1
 Priority=1000
@@ -2619,6 +2609,16 @@ BuildCmd=
 
 [Unit203]
 FileName=..\..\src\gui\widgets\generator.cpp
+CompileCpp=1
+Folder=wesnoth
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit205]
+FileName=..\..\src\gui\widgets\scrollbar_container.cpp
 CompileCpp=1
 Folder=wesnoth
 Compile=1
