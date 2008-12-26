@@ -143,6 +143,7 @@ Version 1.5.6+svn:
    * Fixed the restart-replay button causing an assertion failure.
    * New memory allocator introduced to the engine. It should
      produce 5-10% savings in memory usage on 64-bit systems.
+     The allocator can be disabled with all build systems.
    * Included extra headers for certain g++ versions (patch #1113).
    * Fixed random memory corruption/assertion failure/massive leak due
      to story  screens.

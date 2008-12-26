@@ -182,6 +182,13 @@ if EDITOR
 wesnoth_source += $(wesnoth_editor_SOURCES)
 endif
 
+wesnoth_pool_alloc_SOURCES = \
+	malloc.c \
+	poolalloc.c
+
+if POOLALLOC
+wesnoth_source += $(wesnoth_pool_alloc_SOURCES)
+endif
 
 #############################################################################
 #    Wesnoth                                                                #
@@ -312,11 +319,9 @@ libwesnoth_core_a_SOURCES = \
 	game_config.cpp \
 	gettext.cpp \
 	log.cpp \
-	malloc.c \
 	map.cpp \
 	map_location.cpp \
 	md5.cpp \
-	poolalloc.c \
 	thread.cpp \
 	tstring.cpp \
 	util.cpp \

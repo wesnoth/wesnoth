@@ -258,6 +258,11 @@ AC_ARG_ENABLE([dummy-locales],
               [dummylocales=$enableval],
               [dummylocales=no])
 
+AC_ARG_ENABLE([pool-alloc],
+              AS_HELP_STRING([--disable-pool-alloc], [disable the pool allocator]),
+	      [poolalloc=$enableval],
+	      [poolalloc=yes])
+
 AC_ARG_WITH([preferences-dir],
               AS_HELP_STRING([--with-preferences-dir], [use a non-default preferences directory (.wesnoth on unix)]),
               [prefsdir=$withval
@@ -311,6 +316,7 @@ AM_CONDITIONAL([GCC], [test x$GXX = xyes])
 AM_CONDITIONAL([INCLUDEDINTL], [test x$nls_cv_use_gnu_gettext = xyes])
 AM_CONDITIONAL([INSTALLDATA], [test [ x$game = xyes || test x$editor = xyes ]])
 AM_CONDITIONAL([DUMMYLOCALES], [test x$dummylocales = xyes])
+AM_CONDITIONAL([POOLALLOC], [test x$poolalloc = xyes])
 
 if test x$editor = xno
 then
@@ -319,6 +325,11 @@ fi
 
 if test x$dummylocales = xyes; then
   AC_DEFINE([USE_DUMMYLOCALES],,[Define if the game should not use system locales])
+fi
+
+if test x$poolalloc = xno
+then
+	CXXFLAGS="$CXXFLAGS -DDISABLE_POOL_ALLOC"
 fi
 
 if test x$internaldata = xyes; then
