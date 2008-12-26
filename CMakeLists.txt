@@ -79,6 +79,7 @@ option(ENABLE_EDITOR "Enable compilation of the new map editor into the game exe
 option(ENABLE_TOOLS "Enable building and installation of tools for artists and WML maintainers")
 option(ENABLE_TESTS "Build unit tests")
 option(ENABLE_NLS "Enable building of tranlations" ON)
+option(ENABLE_POOL_ALLOC "Enable custom pool malloc" ON)
 
 set(BINARY_SUFFIX "" CACHE STRING "Suffix behind all binaries")
 set(BINARY_PREFIX "" CACHE STRING "Prefix in front of all binaries")
@@ -103,6 +104,10 @@ set(DATADIR ${DATAROOTDIR}/${DATADIRNAME})
 if(NOT WIN32)
   add_definitions(-DWESNOTH_PATH='\"${DATADIR}\"')
 endif(NOT WIN32)
+
+if(NOT ENABLE_POOL_ALLOC OR WIN32)
+  add_definitions(-DDISABLE_POOL_ALLOC)
+endif(NOT ENABLE_POOL_ALLOC OR WIN32)
 
 if(NOT ENABLE_EDITOR)
   add_definitions(-DDISABLE_EDITOR2)

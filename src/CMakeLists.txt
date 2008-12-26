@@ -106,11 +106,9 @@ SET(libwesnoth-core_STAT_SRC
     game_config.cpp
     gettext.cpp
     log.cpp
-    malloc.c
     map.cpp
     map_location.cpp
     md5.cpp
-    poolalloc.c
     thread.cpp
     tstring.cpp
     util.cpp
@@ -123,6 +121,14 @@ SET(libwesnoth-core_STAT_SRC
     serialization/tokenizer.cpp
     ${REVISION_FILE}
 )
+
+if(ENABLE_POOL_ALLOC AND NOT WIN32)
+  SET(libwesnoth-core_STAT_SRC
+      ${libwesnoth-core_STAT_SRC}
+      malloc.c
+      poolalloc.c
+  )
+endif(ENABLE_POOL_ALLOC AND NOT WIN32)
 
 # a 'lib' is automatically set in front when creating the library (as in the filename)
 # internal reference is the name given here
