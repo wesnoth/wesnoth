@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-12-21 22:48+0100\n"
+"POT-Creation-Date: 2008-12-26 22:19+0100\n"
 "PO-Revision-Date: 2006-03-21 12:58-0800\n"
 "Last-Translator: Andrew <Sfradix@hotmail.com>\n"
 "Language-Team: none\n"
@@ -368,7 +368,7 @@ msgstr ""
 #. [column]
 #: data/gui/default/window/addon_connect.cfg:32
 #: data/gui/default/window/mp_connect.cfg:31
-#: data/gui/default/window/mp_method_selection.cfg:147
+#: data/gui/default/window/mp_method_selection.cfg:151
 #: data/gui/default/window/mp_server_list.cfg:31
 msgid "Connect to Server"
 msgstr ""
@@ -415,8 +415,8 @@ msgstr ""
 #: data/gui/default/window/language_selection.cfg:136
 #: data/gui/default/window/mp_connect.cfg:190
 #: data/gui/default/window/mp_create_game.cfg:552
-#: data/gui/default/window/mp_method_selection.cfg:219
-#: data/gui/default/window/mp_server_list.cfg:212 src/construct_dialog.cpp:133
+#: data/gui/default/window/mp_method_selection.cfg:223
+#: data/gui/default/window/mp_server_list.cfg:215 src/construct_dialog.cpp:133
 #: src/construct_dialog.cpp:136
 msgid "Cancel"
 msgstr "취소"
@@ -571,7 +571,7 @@ msgstr ""
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #: data/gui/default/window/editor_settings.cfg:230
-#: data/gui/default/window/mp_method_selection.cfg:205
+#: data/gui/default/window/mp_method_selection.cfg:209
 #: src/construct_dialog.cpp:125 src/construct_dialog.cpp:132
 msgid "OK"
 msgstr "확인"
@@ -715,53 +715,53 @@ msgid "Login:"
 msgstr ""
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:136
+#: data/gui/default/window/mp_method_selection.cfg:140
 msgid "Join Official Server"
 msgstr ""
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:137
+#: data/gui/default/window/mp_method_selection.cfg:141
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr ""
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:148
+#: data/gui/default/window/mp_method_selection.cfg:152
 msgid "Join a different server"
 msgstr ""
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:158
+#: data/gui/default/window/mp_method_selection.cfg:162
 msgid "Host Networked Game"
 msgstr ""
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:159
-msgid "Host a game using dedicated server 'wesnothd"
+#: data/gui/default/window/mp_method_selection.cfg:163
+msgid "Host a game using dedicated server 'wesnothd'"
 msgstr ""
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:169
+#: data/gui/default/window/mp_method_selection.cfg:173
 #, fuzzy
 msgid "Local Game"
 msgstr "게임 로드"
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:170
+#: data/gui/default/window/mp_method_selection.cfg:174
 msgid "Play a multiplayer game with the AI or humans sharing the same machine"
 msgstr ""
 
 #. [label]
-#: data/gui/default/window/mp_server_list.cfg:84
+#: data/gui/default/window/mp_server_list.cfg:87
 msgid "Name"
 msgstr ""
 
 #. [label]
-#: data/gui/default/window/mp_server_list.cfg:96
+#: data/gui/default/window/mp_server_list.cfg:99
 msgid "Address"
 msgstr ""
 
 #. [button]: id=ok
-#: data/gui/default/window/mp_server_list.cfg:198
+#: data/gui/default/window/mp_server_list.cfg:201
 #, fuzzy
 msgid "Select"
 msgstr "모두 선택"
@@ -1348,7 +1348,7 @@ msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:429 src/gui/widgets/window_builder.cpp:278
+#: src/gui/widgets/settings.cpp:429 src/gui/widgets/window_builder.cpp:285
 msgid "No resolution defined."
 msgstr ""
 
@@ -1356,38 +1356,39 @@ msgstr ""
 msgid "No state or draw section defined."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:704
+#: src/gui/widgets/settings.cpp:710
 msgid "No scrollbar defined."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:860 src/gui/widgets/window_builder.cpp:369
-#: src/gui/widgets/window_builder.cpp:967
-#: src/gui/widgets/window_builder.cpp:1182
+#: src/gui/widgets/settings.cpp:716 src/gui/widgets/settings.cpp:875
+#: src/gui/widgets/window_builder.cpp:376
+#: src/gui/widgets/window_builder.cpp:989
+#: src/gui/widgets/window_builder.cpp:1204
 msgid "No grid defined."
 msgstr ""
 
-#: src/gui/widgets/window_builder.cpp:497
+#: src/gui/widgets/window_builder.cpp:504
 msgid "A row must have a column."
 msgstr ""
 
-#: src/gui/widgets/window_builder.cpp:498
+#: src/gui/widgets/window_builder.cpp:505
 msgid "Number of columns differ."
 msgstr ""
 
-#: src/gui/widgets/window_builder.cpp:736
+#: src/gui/widgets/window_builder.cpp:743
 msgid "No list defined."
 msgstr ""
 
-#: src/gui/widgets/window_builder.cpp:739
+#: src/gui/widgets/window_builder.cpp:746
 msgid "A 'list_definition' should contain one row."
 msgstr ""
 
-#: src/gui/widgets/window_builder.cpp:758
+#: src/gui/widgets/window_builder.cpp:765
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr ""
 
-#: src/gui/widgets/window_builder.cpp:1109
+#: src/gui/widgets/window_builder.cpp:1131
 msgid "The number of value_labels and values don't match."
 msgstr ""
 

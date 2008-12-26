@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-12-21 22:48+0100\n"
+"POT-Creation-Date: 2008-12-26 22:19+0100\n"
 "PO-Revision-Date: 2008-12-12 00:18+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
@@ -378,7 +378,7 @@ msgstr "Neschůdný"
 #. [column]
 #: data/gui/default/window/addon_connect.cfg:32
 #: data/gui/default/window/mp_connect.cfg:31
-#: data/gui/default/window/mp_method_selection.cfg:147
+#: data/gui/default/window/mp_method_selection.cfg:151
 #: data/gui/default/window/mp_server_list.cfg:31
 msgid "Connect to Server"
 msgstr "Připoj se na server"
@@ -424,8 +424,8 @@ msgstr ""
 #: data/gui/default/window/language_selection.cfg:136
 #: data/gui/default/window/mp_connect.cfg:190
 #: data/gui/default/window/mp_create_game.cfg:552
-#: data/gui/default/window/mp_method_selection.cfg:219
-#: data/gui/default/window/mp_server_list.cfg:212 src/construct_dialog.cpp:133
+#: data/gui/default/window/mp_method_selection.cfg:223
+#: data/gui/default/window/mp_server_list.cfg:215 src/construct_dialog.cpp:133
 #: src/construct_dialog.cpp:136
 msgid "Cancel"
 msgstr "Zrušit"
@@ -571,7 +571,7 @@ msgstr ""
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #: data/gui/default/window/editor_settings.cfg:230
-#: data/gui/default/window/mp_method_selection.cfg:205
+#: data/gui/default/window/mp_method_selection.cfg:209
 #: src/construct_dialog.cpp:125 src/construct_dialog.cpp:132
 msgid "OK"
 msgstr "OK"
@@ -715,53 +715,53 @@ msgid "Login:"
 msgstr "Přihlášení:"
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:136
+#: data/gui/default/window/mp_method_selection.cfg:140
 msgid "Join Official Server"
 msgstr "Připoj se na oficiální server"
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:137
+#: data/gui/default/window/mp_method_selection.cfg:141
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Přihlaš se na oficiální herní server Wesnothu"
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:148
+#: data/gui/default/window/mp_method_selection.cfg:152
 msgid "Join a different server"
 msgstr "Připoj se na jiný server"
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:158
+#: data/gui/default/window/mp_method_selection.cfg:162
 msgid "Host Networked Game"
 msgstr "Hostuj síťovou hru"
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:159
-msgid "Host a game using dedicated server 'wesnothd"
+#: data/gui/default/window/mp_method_selection.cfg:163
+msgid "Host a game using dedicated server 'wesnothd'"
 msgstr ""
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:169
+#: data/gui/default/window/mp_method_selection.cfg:173
 msgid "Local Game"
 msgstr "Místní hra"
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:170
+#: data/gui/default/window/mp_method_selection.cfg:174
 msgid "Play a multiplayer game with the AI or humans sharing the same machine"
 msgstr ""
 "Hrej hru více hráčů s lidmi nebo počítačovými protivníky na jednom stroji"
 
 #. [label]
-#: data/gui/default/window/mp_server_list.cfg:84
+#: data/gui/default/window/mp_server_list.cfg:87
 msgid "Name"
 msgstr "Název"
 
 #. [label]
-#: data/gui/default/window/mp_server_list.cfg:96
+#: data/gui/default/window/mp_server_list.cfg:99
 msgid "Address"
 msgstr "Adresa"
 
 #. [button]: id=ok
-#: data/gui/default/window/mp_server_list.cfg:198
+#: data/gui/default/window/mp_server_list.cfg:201
 #, fuzzy
 msgid "Select"
 msgstr "Vyber vše"
@@ -1339,7 +1339,7 @@ msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr "Definice ovladače '$definition' neobsahuje definici pro '$id'."
 
-#: src/gui/widgets/settings.cpp:429 src/gui/widgets/window_builder.cpp:278
+#: src/gui/widgets/settings.cpp:429 src/gui/widgets/window_builder.cpp:285
 msgid "No resolution defined."
 msgstr "Není definováno žádné rozlišení."
 
@@ -1348,39 +1348,40 @@ msgstr "Není definováno žádné rozlišení."
 msgid "No state or draw section defined."
 msgstr "Nebyl definován žádný server."
 
-#: src/gui/widgets/settings.cpp:704
+#: src/gui/widgets/settings.cpp:710
 msgid "No scrollbar defined."
 msgstr "Není definován žádný posuvník."
 
-#: src/gui/widgets/settings.cpp:860 src/gui/widgets/window_builder.cpp:369
-#: src/gui/widgets/window_builder.cpp:967
-#: src/gui/widgets/window_builder.cpp:1182
+#: src/gui/widgets/settings.cpp:716 src/gui/widgets/settings.cpp:875
+#: src/gui/widgets/window_builder.cpp:376
+#: src/gui/widgets/window_builder.cpp:989
+#: src/gui/widgets/window_builder.cpp:1204
 msgid "No grid defined."
 msgstr "Není definována žádná mřížka."
 
-#: src/gui/widgets/window_builder.cpp:497
+#: src/gui/widgets/window_builder.cpp:504
 msgid "A row must have a column."
 msgstr "Řádek musí mít sloupec."
 
-#: src/gui/widgets/window_builder.cpp:498
+#: src/gui/widgets/window_builder.cpp:505
 msgid "Number of columns differ."
 msgstr "Počet sloupců se liší."
 
-#: src/gui/widgets/window_builder.cpp:736
+#: src/gui/widgets/window_builder.cpp:743
 msgid "No list defined."
 msgstr "Nebyl definován žádný seznam."
 
-#: src/gui/widgets/window_builder.cpp:739
+#: src/gui/widgets/window_builder.cpp:746
 msgid "A 'list_definition' should contain one row."
 msgstr "Pro 'list_definition' je vyžadována alespoň jedna řádka."
 
-#: src/gui/widgets/window_builder.cpp:758
+#: src/gui/widgets/window_builder.cpp:765
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr ""
 "'list_data' musí obsahovat stejný počet sloupců jako 'list_definition'."
 
-#: src/gui/widgets/window_builder.cpp:1109
+#: src/gui/widgets/window_builder.cpp:1131
 msgid "The number of value_labels and values don't match."
 msgstr "Nesouhlasí počet value_labels a values."
 
