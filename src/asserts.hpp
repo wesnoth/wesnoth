@@ -17,36 +17,45 @@
 #ifndef ASSERTS_HPP_INCLUDED
 #define ASSERTS_HPP_INCLUDED
 
-#include <iostream>
 #include <cstdlib>
 
 #ifdef _MSC_VER
-__declspec(noreturn)
+#define BREAKPOINT() __debugbreak()
+#define WES_HALT() if (true) { BREAKPOINT(); exit(1); } else (void)0
+
+#elif __GNUG__
+#define BREAKPOINT() asm("int3")
+#define WES_HALT() if (true) { BREAKPOINT(); abort(); } else (void)0
+
+#else
+#define BREAKPOINT()
+#define WES_HALT() abort()
 #endif
-inline void wesnoth_fatal()
-{
-	abort();
-}
 
-//various asserts of standard "equality" tests, such as "equals", "not equals", "greater than", etc.  Example usage:
-//ASSERT_NE(x, y);
-#define ASSERT_EQ(a,b) if((a) != (b)) { std::cerr << __FILE__ << ":" << __LINE__ << " ASSERT EQ FAILED: " << #a << " != " << #b << ": " << (a) << " != " << (b) << "\n"; wesnoth_fatal(); abort(); }
-
-#define ASSERT_NE(a,b) if((a) == (b)) { std::cerr << __FILE__ << ":" << __LINE__ << " ASSERT NE FAILED: " << #a << " == " << #b << ": " << (a) << " == " << (b) << "\n"; wesnoth_fatal(); abort(); }
-
-#define ASSERT_GE(a,b) if((a) < (b)) { std::cerr << __FILE__ << ":" << __LINE__ << " ASSERT GE FAILED: " << #a << " < " << #b << ": " << (a) << " < " << (b) << "\n"; wesnoth_fatal(); abort(); }
-
-#define ASSERT_LE(a,b) if((a) > (b)) { std::cerr << __FILE__ << ":" << __LINE__ << " ASSERT LE FAILED: " << #a << " > " << #b << ": " << (a) << " > " << (b) << "\n"; wesnoth_fatal(); abort(); }
-
-#define ASSERT_GT(a,b) if((a) <= (b)) { std::cerr << __FILE__ << ":" << __LINE__ << " ASSERT GT FAILED: " << #a << " <= " << #b << ": " << (a) << " <= " << (b) << "\n"; wesnoth_fatal(); abort(); }
-
-#define ASSERT_LT(a,b) if((a) >= (b)) { std::cerr << __FILE__ << ":" << __LINE__ << " ASSERT LT FAILED: " << #a << " >= " << #b << ": " << (a) << " >= " << (b) << "\n"; wesnoth_fatal(); abort(); }
+#define ERROR_LOG(a) if (true) { \
+	std::cerr << __FILE__ << ":" << __LINE__ << " ASSSERTION FAILED: " << a << std::endl; \
+	WES_HALT(); \
+	} else (void)0
 
 //for custom logging.  Example usage:
 //ASSERT_LOG(x != y, "x not equal to y. Value of x: " << x << ", y: " << y);
-#define ASSERT_LOG(a,b) if( !(a) ) { std::cerr << __FILE__ << ":" << __LINE__ << " ASSSERTION FAILED: " << b << "\n"; wesnoth_fatal(); abort(); }
+#define ASSERT_LOG(a,b) if (!(a)) { ERROR_LOG(b); } else (void)0
 
-#define ERROR_LOG(a) { std::cerr << __FILE__ << ":" << __LINE__ << " ASSSERTION FAILED: " << a << "\n"; wesnoth_fatal(); abort(); }
+#define FATAL_ERROR ERROR_LOG("FATAL ERROR")
+
+//helper macro for the simple operator cases defined below
+#define ASSERT_OP(a,op,b) ASSERT_LOG((a) op (b), #a " " #op " " #b " (" << (a) << " " #op " " << (b) << ")")
+
+//various asserts of standard "equality" tests, such as "equals", "not equals", "greater than", etc. 
+//Example usage ASSERT_GE(x, y);
+//on failure this will cerr "assertion failed: x >= y (value_of_x >= value_of_y)"
+#define ASSERT_EQ(a,b) ASSERT_OP(a,==,b)
+#define ASSERT_NE(a,b) ASSERT_OP(a,!=,b)
+#define ASSERT_GE(a,b) ASSERT_OP(a,>=,b)
+#define ASSERT_LE(a,b) ASSERT_OP(a,<=,b)
+#define ASSERT_GT(a,b) ASSERT_OP(a,>,b)
+#define ASSERT_LT(a,b) ASSERT_OP(a,<,b)
+
 
 #endif
 
