@@ -88,18 +88,25 @@ AC_ARG_ENABLE([strict-compilation],
 
 if test "x$debug" = "xyes"
 then
+	# Don't use ansi for CFLAGS since it fails to compile.
+	CFLAGS="-O0 -DDEBUG -ggdb3 -W -Wall $CFLAGS"
 	CXXFLAGS="-O0 -DDEBUG -ggdb3 -W -Wall -ansi $CXXFLAGS"
 else
+	# Don't use ansi for CFLAGS since it fails to compile.
+	CFLAGS="-O2 -W -Wall $CFLAGS"
 	CXXFLAGS="-O2 -W -Wall -ansi $CXXFLAGS"
 fi
 
 if test "x$profile" = "xyes"
 then
+	CFLAGS="$CFLAGS -pg"
 	CXXFLAGS="$CXXFLAGS -pg"
 fi
 
 if test "x$strict" = "xyes"
 then
+#   Strict compilation for C files is disabled until somebody wants to clean them.
+#	CFLAGS="$CFLAGS -Werror -Wno-unused -Wno-sign-compare"
 	CXXFLAGS="$CXXFLAGS -Werror -Wno-unused -Wno-sign-compare"
 fi
 
@@ -320,6 +327,7 @@ AM_CONDITIONAL([POOLALLOC], [test x$poolalloc = xyes])
 
 if test x$editor = xno
 then
+	CFLAGS="$CFLAGS -DDISABLE_EDITOR2"
 	CXXFLAGS="$CXXFLAGS -DDISABLE_EDITOR2"
 fi
 
@@ -329,6 +337,7 @@ fi
 
 if test x$poolalloc = xno
 then
+	CFLAGS="$CFLAGS -DDISABLE_POOL_ALLOC"
 	CXXFLAGS="$CXXFLAGS -DDISABLE_POOL_ALLOC"
 fi
 
@@ -895,7 +904,7 @@ fi
 AM_PATH_ZLIB
 
 CPPFLAGS="$CPPFLAGS $ZLIB_CFLAGS"
-CFLAGS="$CPPFLAGS $ZLIB_CFLAGS"
+CFLAGS="$CFLAGS $ZLIB_CFLAGS"
 LIBS="$LIBS $ZLIB_LIBS"
 
 #######################################################################
