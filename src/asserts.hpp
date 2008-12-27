@@ -23,7 +23,7 @@
 #define BREAKPOINT() __debugbreak()
 #define WES_HALT() if (true) { BREAKPOINT(); exit(1); } else (void)0
 
-#elif __GNUG__
+#elif defined(__GNUG__) && (defined(__i386__) || defined(__x86_64__))
 #define BREAKPOINT() asm("int3")
 #define WES_HALT() if (true) { BREAKPOINT(); abort(); } else (void)0
 
