@@ -369,6 +369,11 @@ void read(config &cfg, std::string &in, std::string* error_log)
 
 void read_gz(config &cfg, std::istream &file, std::string* error_log)
 {
+	//an empty gzip file seems to confuse boost on msvc
+	//so return early if this is the case
+	if (file.peek() == EOF) {
+		return;
+	}
 	boost::iostreams::filtering_stream<boost::iostreams::input> filter;
 	filter.push(boost::iostreams::gzip_decompressor());
 	filter.push(file);
