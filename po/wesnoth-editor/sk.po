@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.4-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-12-26 22:19+0100\n"
-"PO-Revision-Date: 2008-01-02 22:06+0100\n"
+"PO-Revision-Date: 2008-12-27 15:47+0100\n"
 "Last-Translator: Viliam Búr <viliam@bur.sk>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -71,27 +71,27 @@ msgstr "hrad"
 #. [editor_group]: id=special
 #: data/core/editor-groups.cfg:77
 msgid "special"
-msgstr ""
+msgstr "špeciálne"
 
 #. [brush]
 #: data/core/editor2-brushes.cfg:4
 msgid "Single Hex"
-msgstr ""
+msgstr "Jedno políčko"
 
 #. [brush]
 #: data/core/editor2-brushes.cfg:14
 msgid "Radius 1 Hex"
-msgstr ""
+msgstr "Jedno políčko naokolo"
 
 #. [brush]
 #: data/core/editor2-brushes.cfg:24
 msgid "Radius 2 Hex"
-msgstr ""
+msgstr "Dve políčka naokolo"
 
 #. [brush]
 #: data/core/editor2-brushes.cfg:54
 msgid "Hex Line NW-SE"
-msgstr ""
+msgstr "Čiara severovýchod-juhozápad"
 
 #. [editor2_tool_hint]: id=editor-tool-paint
 #. [editor2_tool_hint]: id=editor-tool-fill
@@ -100,6 +100,8 @@ msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only."
 msgstr ""
+"Pomocou ľavého/pravého tlačidla myši kreslíte terén popredia/pozadia. Ak "
+"držíte Shift, kreslíte iba základnú vrstvu."
 
 #. [editor2_tool_hint]: id=editor-tool-select
 #: data/core/editor2-tool-hints.cfg:19
@@ -107,6 +109,8 @@ msgid ""
 "Left mouse button selects, right deselects. Hold Shift for magic-wand "
 "selection of tiles with same terrain."
 msgstr ""
+"Ľavé tlačidlo myši označuje, pravé odznačuje. So stlačeným Shift-om sa "
+"označia všetky susediace políčka s rovnakým terénom."
 
 #. [editor2_tool_hint]: id=editor-tool-starting-position
 #: data/core/editor2-tool-hints.cfg:25
@@ -115,6 +119,9 @@ msgid ""
 "scroll to the starting position, alt+number sets respective starting "
 "position under cursor, delete clears."
 msgstr ""
+"Ľavé tlačidlo myši ukazuje označenie hráča, pravé ho vymaže. Číslami sa mapa "
+"presúva na štartovú pozíciu, Alt+číslo nastaví danú štartovú pozíciu na "
+"miesto kurzora, Del ju vymaže."
 
 #. [editor2_tool_hint]: id=editor-paste
 #: data/core/editor2-tool-hints.cfg:30
@@ -122,6 +129,8 @@ msgid ""
 "Click to paste. Use the edit menu to transform the clipboard (rotate, "
 "mirror)."
 msgstr ""
+"Kliknutím vložíte. Pomocou editovacieho menu môžete transformovať obsah "
+"schránky (otočiť, preklopiť)."
 
 #. [menu]: id=menu-editor-file
 #: data/themes/editor2.cfg:120
@@ -136,13 +145,12 @@ msgstr "Edituj"
 #. [menu]: id=menu-editor-map
 #: data/themes/editor2.cfg:141
 msgid "Map"
-msgstr ""
+msgstr "Mapa"
 
 #. [menu]: id=menu-editor-window
 #: data/themes/editor2.cfg:151
-#, fuzzy
 msgid "Window"
-msgstr "Znovu"
+msgstr "Okno"
 
 #. [label]: id=villages-icon
 #: data/themes/editor2.cfg:262
@@ -155,93 +163,92 @@ msgstr "Ukonči editor"
 
 #: src/editor2/editor_controller.cpp:241
 msgid "Fatal error"
-msgstr ""
+msgstr "Fatálna chyba"
 
 #: src/editor2/editor_controller.cpp:255 src/editor2/editor_controller.cpp:952
 msgid "(New Map)"
-msgstr ""
+msgstr "(Nová mapa)"
 
 #: src/editor2/editor_controller.cpp:261
 msgid "Do you really want to quit?"
-msgstr ""
+msgstr "Naozaj chcete skončiť?"
 
 #: src/editor2/editor_controller.cpp:263
 msgid ""
 "Do you really want to quit? Changes in the map since the last save will be "
 "lost."
-msgstr ""
+msgstr "Naozaj chcete skončiť? Stratíte zmeny od posledného uloženia mapy."
 
 #: src/editor2/editor_controller.cpp:265
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
 msgstr ""
+"Naozaj chcete skončiť? Nasledujúce mapy boli zmenené, a všetky zmeny od "
+"posledného uloženia sa stratia:"
 
 #: src/editor2/editor_controller.cpp:270
 msgid "Quit"
-msgstr ""
+msgstr "Koniec"
 
 #: src/editor2/editor_controller.cpp:327 src/editor2/editor_controller.cpp:439
 #: src/editor2/editor_controller.cpp:475 src/editor2/editor_controller.cpp:497
 msgid "Error"
-msgstr ""
+msgstr "Chyba"
 
 #: src/editor2/editor_controller.cpp:327
 msgid "No editor time-of-day found."
-msgstr ""
+msgstr "Nenašiel sa rozvrh dňa pre editor."
 
 #: src/editor2/editor_controller.cpp:363
 msgid "Unsaved Changes"
-msgstr ""
+msgstr "Neuložené zmeny"
 
 #: src/editor2/editor_controller.cpp:364
 msgid ""
 "Do you want to discard all changes you made to the map since the last save?"
-msgstr ""
+msgstr "Chcete zrušiť všetky zmeny v mape od posledného uloženia?"
 
 #: src/editor2/editor_controller.cpp:377
-#, fuzzy
 msgid "Choose a Map to Open"
-msgstr "Vyber si mapu na nahranie"
+msgstr "Vyberte si mapu na nahranie"
 
 #: src/editor2/editor_controller.cpp:381
 msgid "This map is already open."
-msgstr ""
+msgstr "Táto mapa je už otvorená."
 
 #: src/editor2/editor_controller.cpp:419
 msgid "Save the Map As"
 msgstr "Ulož mapu ako"
 
 #: src/editor2/editor_controller.cpp:423
-#, fuzzy
 msgid "The file already exists. Do you want to overwrite it?"
-msgstr "Táto mapa už existuje. Chceš ju prepísať?"
+msgstr "Takýto súbor už existuje. Chcete ho prepísať?"
 
 #: src/editor2/editor_controller.cpp:439
 msgid "No random map generators found."
-msgstr ""
+msgstr "Nenašiel sa náhodný generátor mapy."
 
 #: src/editor2/editor_controller.cpp:450
 msgid "Map creation failed."
-msgstr ""
+msgstr "Nepodarilo sa vytvoriť mapu."
 
 #: src/editor2/editor_controller.cpp:465
-#, fuzzy
 msgid "Choose a mask to apply"
-msgstr "Vyber si mapu na nahranie"
+msgstr "Vyberte si masku, ktorá sa má použiť"
 
 #: src/editor2/editor_controller.cpp:472
 msgid "Error loading mask"
-msgstr ""
+msgstr "Chyba pri čítaní masky"
 
 #: src/editor2/editor_controller.cpp:487
 msgid "Choose target map"
-msgstr ""
+msgstr "Vyberte si cieľovú mapu"
 
 #: src/editor2/editor_controller.cpp:494 src/editor2/editor_controller.cpp:607
 #: src/editor2/editor_main.cpp:51
 msgid "Error loading map"
-msgstr ""
+msgstr "Chyba pri načítavaní mapy"
 
 #: src/editor2/editor_controller.cpp:583
 msgid "Map saved."
@@ -257,7 +264,7 @@ msgstr "Znovu"
 
 #: src/editor2/editor_controller.cpp:981
 msgid "Can't Undo"
-msgstr ""
+msgstr "Nemôžem vrátiť späť"
 
 #: src/editor2/editor_controller.cpp:985
 msgid "Redo"
@@ -265,11 +272,11 @@ msgstr "Späť"
 
 #: src/editor2/editor_controller.cpp:987
 msgid "Can't Redo"
-msgstr ""
+msgstr "Nemôžem urobiť znovu"
 
 #: src/editor2/editor_map.cpp:83
 msgid "Empty map file or file not found"
-msgstr ""
+msgstr "Prázdny súbor alebo sa nenašiel"
 
 #: src/editor2/editor_map.cpp:164 src/editor2/mouse_action.cpp:383
 msgid "Player"
@@ -277,7 +284,7 @@ msgstr "Hráč"
 
 #: src/editor2/editor_map.cpp:283
 msgid "The size of the target map is different from the current map"
-msgstr ""
+msgstr "Veľkosť cieľovej mapy sa líši od súčasnej mapy"
 
 #: src/editor2/editor_palettes.cpp:493
 msgid "FG"
@@ -288,23 +295,24 @@ msgid "BG"
 msgstr "Terén"
 
 #: src/editor2/mouse_action.cpp:380
-#, fuzzy
 msgid "(Player)^None"
-msgstr "Hráč"
+msgstr "Žiaden"
 
 #: src/editor2/mouse_action.cpp:387
 msgid "Choose player"
-msgstr ""
+msgstr "Vyberte si hráča"
 
 #: src/editor2/mouse_action.cpp:388
 msgid ""
 "Which player should start here? You can also use the 1-9 and delete keys to "
 "set/clear staring positions."
 msgstr ""
+"Ktorý hráč tu má začínať? Môžete použiť klávesy 1-9 a Del na nastavenie/"
+"vymazanie štartovej pozície."
 
 #: src/gui/dialogs/editor_settings.cpp:117
 msgid "Custom setting"
-msgstr ""
+msgstr "Vlastné nastavenie"
 
 #~ msgid "Settings"
 #~ msgstr "Nastavenia"
