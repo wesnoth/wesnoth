@@ -11,6 +11,7 @@
 
    See the COPYING file for more details.
 */
+#define GETTEXT_DOMAIN "wesnoth-editor"
 
 #include "action_base.hpp"
 #include "editor_map.hpp"
@@ -19,6 +20,7 @@
 #include "../display.hpp"
 #include "../filesystem.hpp"
 #include "../foreach.hpp"
+#include "../gettext.hpp"
 #include "../map_exception.hpp"
 #include "../map_label.hpp"
 #include "../pathutils.hpp"

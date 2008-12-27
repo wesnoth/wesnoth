@@ -11,6 +11,7 @@
 
    See the COPYING file for more details.
 */
+#define GETTEXT_DOMAIN "wesnoth-editor"
 
 #include "action.hpp"
 #include "brush.hpp"
@@ -18,6 +19,7 @@
 #include "mouse_action.hpp"
 
 #include "../construct_dialog.hpp"
+#include "../gettext.hpp"
 
 namespace editor2 {
 

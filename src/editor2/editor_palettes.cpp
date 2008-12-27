@@ -17,6 +17,8 @@
  * Note: this is a near-straight rip from the old editor.
 */
 
+#define GETTEXT_DOMAIN "wesnoth-editor"
+
 #include "editor_palettes.hpp"
 
 #include "../foreach.hpp"

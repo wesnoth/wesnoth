@@ -11,10 +11,12 @@
 
    See the COPYING file for more details.
 */
+#define GETTEXT_DOMAIN "wesnoth-editor"
 
 #include "editor_controller.hpp"
 
 #include "../construct_dialog.hpp"
+#include "../gettext.hpp"
 
 #include <boost/algorithm/string/replace.hpp>
 

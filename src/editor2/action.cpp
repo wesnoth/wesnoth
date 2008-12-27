@@ -16,17 +16,27 @@
  * @file action.cpp
  * Editor action classes
  */
-
+#define GETTEXT_DOMAIN "wesnoth-editor"
 #include "action.hpp"
 #include "map_context.hpp"
 
 #include "../foreach.hpp"
-
+#include "../gettext.hpp"
 
 namespace editor2 {
 
 int editor_action::next_id_ = 1;
 int editor_action::instance_count_ = 0;
+
+editor_action_creation_fail::editor_action_creation_fail()
+: editor_action_exception(_("Error creating action object"))
+{
+}
+editor_action_not_implemented::editor_action_not_implemented()
+: editor_action_exception(_("Action not implemented"))
+{
+}
+
 
 editor_action::editor_action()
 : id_(next_id_++)

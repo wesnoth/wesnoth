@@ -10,7 +10,9 @@
 
    See the COPYING file for more details.
 */
+#define GETTEXT_DOMAIN "wesnoth-editor"
 
+#include "asserts.hpp"
 #include "action.hpp"
 #include "editor_controller.hpp"
 #include "editor_palettes.hpp"
@@ -26,6 +28,7 @@
 #include "../filechooser.hpp"
 #include "../filesystem.hpp"
 #include "../foreach.hpp"
+#include "../gettext.hpp"
 #include "../map_create.hpp"
 #include "../mapgen.hpp"
 #include "../random.hpp"
