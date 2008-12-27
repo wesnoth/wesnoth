@@ -163,7 +163,7 @@ PyObject* python_ai::unittype_advances_to( wesnoth_unittype* type, PyObject* arg
 	for (size_t advance = 0; advance < type->unit_type_->advances_to().size(); advance++)
 	{
 		std::map<std::string,unit_type>::const_iterator t =
-			unit_type_data::types().find(type->unit_type_->advances_to()[advance]);
+			unit_type_data::types().find_unit_type(type->unit_type_->advances_to()[advance]);
 
 		assert(t != unit_type_data::types().end());
 		r = PyList_SetItem(list,advance,wrap_unittype(t->second));
@@ -1090,7 +1090,7 @@ PyObject* python_ai::wrapper_team_recruits( wesnoth_team* team, PyObject* args )
 	int idx = 0;
 	for (std::set<std::string>::const_iterator recruit = team->team_->recruits().begin(); recruit != team->team_->recruits().end(); ++recruit)
 	{
-		std::map<std::string,unit_type>::const_iterator t = unit_type_data::types().find(*recruit);
+		std::map<std::string,unit_type>::const_iterator t = unit_type_data::types().find_unit_type(*recruit);
 		assert(t != unit_type_data::types().end());
 		r = PyList_SetItem(list,idx++,wrap_unittype(t->second));
 	}

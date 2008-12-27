@@ -1218,7 +1218,7 @@ bool unit_type_data::unit_type_map_wrapper::unit_type_exists(const std::string& 
     return ((itor == types_.end()) ? false : true);
 }
 
-unit_type_data::unit_type_map::const_iterator unit_type_data::unit_type_map_wrapper::find(const std::string& key, unit_type::BUILD_STATUS status) const
+unit_type_data::unit_type_map::const_iterator unit_type_data::unit_type_map_wrapper::find_unit_type(const std::string& key, unit_type::BUILD_STATUS status) const
 {
     if (key.empty() || (key == "random"))
         return types_.end();

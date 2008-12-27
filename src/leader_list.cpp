@@ -130,7 +130,7 @@ void leader_list_manager::update_gender_list(const std::string& leader)
 	if (utypes.unit_type_exists(leader)) {
 		const unit_type* ut;
 		const unit_type* utg;
-		ut = &(utypes.find(leader)->second);
+		ut = &(utypes.find_unit_type(leader)->second);
 		const std::vector<unit_race::GENDER> genders = ut->genders();
 		if ( (genders.size() < 2) && (gender_combo_ != NULL) ) {
 			gender_combo_->enable(false);
@@ -180,12 +180,12 @@ void leader_list_manager::populate_leader_combo(int selected_index) {
 		//const std::string name = data_->unit_types->find(*itor).type_name();
 		if (utypes.unit_type_exists(*itor)) {
 			const unit_type* ut;
-			ut = &(utypes.find(*itor)->second);
+			ut = &(utypes.find_unit_type(*itor)->second);
 			if (gender_combo_ != NULL && !genders_.empty() && size_t(gender_combo_->selected()) < genders_.size()) {
 				if (gender_ids_[gender_combo_->selected()] == "male"){
-					ut = &(utypes.find(*itor)->second.get_gender_unit_type(unit_race::MALE));
+					ut = &(utypes.find_unit_type(*itor)->second.get_gender_unit_type(unit_race::MALE));
 				} else if (gender_ids_[gender_combo_->selected()] == "female") {
-					ut = &(utypes.find(*itor)->second.get_gender_unit_type(unit_race::FEMALE));
+					ut = &(utypes.find_unit_type(*itor)->second.get_gender_unit_type(unit_race::FEMALE));
 				}
 			}
 			const std::string name =  ut->type_name();

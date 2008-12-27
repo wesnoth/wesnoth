@@ -430,7 +430,7 @@ private:
 	variant execute(const formula_callable& variables) const {
 		const std::string type = args()[0]->evaluate(variables).as_string();
 
-		std::map<std::string,unit_type>::const_iterator unit_it = unit_type_data::types().find( type );
+		std::map<std::string,unit_type>::const_iterator unit_it = unit_type_data::types().find_unit_type( type );
 		if (unit_it != unit_type_data::types().end() )
 				return  variant( new unit_type_callable( unit_it->second ) );
 
@@ -1890,7 +1890,7 @@ variant formula_ai::get_value(const std::string& key) const
 			return variant( &vars );
 		for(std::set<std::string>::const_iterator i = recruits.begin(); i != recruits.end(); ++i)
 		{
-			std::map<std::string,unit_type>::const_iterator unit_it = unit_type_data::types().find(*i);
+			std::map<std::string,unit_type>::const_iterator unit_it = unit_type_data::types().find_unit_type(*i);
 			if (unit_it != unit_type_data::types().end() )
 			{
 				vars.push_back(variant(new unit_type_callable(unit_it->second) ));
@@ -1915,7 +1915,7 @@ variant formula_ai::get_value(const std::string& key) const
 				continue;
 			for(std::set<std::string>::const_iterator str_it = recruits.begin(); str_it != recruits.end(); ++str_it)
 			{
-				std::map<std::string,unit_type>::const_iterator unit_it = unit_type_data::types().find(*str_it);
+				std::map<std::string,unit_type>::const_iterator unit_it = unit_type_data::types().find_unit_type(*str_it);
 				if (unit_it != unit_type_data::types().end() )
 				{
 					tmp[i].push_back(variant(new unit_type_callable(unit_it->second) ));

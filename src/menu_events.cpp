@@ -831,7 +831,7 @@ private:
 		const std::set<std::string>& recruits = current_team.recruits();
 		for(std::set<std::string>::const_iterator it = recruits.begin(); it != recruits.end(); ++it) {
 			const std::map<std::string,unit_type>::const_iterator
-					u_type = unit_type_data::types().find(*it);
+					u_type = unit_type_data::types().find_unit_type(*it);
 			if(u_type == unit_type_data::types().end()) {
 				ERR_NG << "could not find unit '" << *it << "'\n";
 				return;
@@ -910,7 +910,7 @@ private:
 		}
 
 		const std::map<std::string,unit_type>::const_iterator
-				u_type = unit_type_data::types().find(name);
+				u_type = unit_type_data::types().find_unit_type(name);
 		assert(u_type != unit_type_data::types().end());
 
 		if(u_type->second.cost() > current_team.gold()) {
@@ -1489,7 +1489,7 @@ private:
 		for(unit_type_data::unit_type_map::const_iterator i = unit_type_data::types().begin(); i != unit_type_data::types().end(); ++i) {
 			std::stringstream row;
 
-            unit_type_data::types().find(i->first, unit_type::HELP_INDEX);
+            unit_type_data::types().find_unit_type(i->first, unit_type::HELP_INDEX);
 
 			std::string race;
 			const race_map::const_iterator race_it = unit_type_data::types().races().find(i->second.race());
@@ -2957,7 +2957,7 @@ private:
 	}
 	void console_handler::do_create() {
 		if (menu_handler_.map_.on_board(mouse_handler_.get_last_hex())) {
-			const unit_type_data::unit_type_map::const_iterator i = unit_type_data::types().find(get_data());
+			const unit_type_data::unit_type_map::const_iterator i = unit_type_data::types().find_unit_type(get_data());
 			if(i == unit_type_data::types().end()) {
 				command_failed("Invalid unit type");
 				return;

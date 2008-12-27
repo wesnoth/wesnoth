@@ -25,7 +25,7 @@ std::vector<std::string> create_unit_table(const statistics::stats::str_int_map&
 {
 	std::vector<std::string> table;
 	for(statistics::stats::str_int_map::const_iterator i = m.begin(); i != m.end(); ++i) {
-		const unit_type_data::unit_type_map::const_iterator type = unit_type_data::types().find(i->first);
+		const unit_type_data::unit_type_map::const_iterator type = unit_type_data::types().find_unit_type(i->first);
 		if(type == unit_type_data::types().end()) {
 			continue;
 		}

@@ -1212,7 +1212,7 @@ public:
 	unit_topic_generator(const unit_type &t): type_(t) {}
 	virtual std::string operator()() const {
 		// this will force the lazy loading to build this unit
-		unit_type_data::types().find(type_.id(), unit_type::WITHOUT_ANIMATIONS);
+		unit_type_data::types().find_unit_type(type_.id(), unit_type::WITHOUT_ANIMATIONS);
 
 		std::stringstream ss;
 		std::string clear_stringstream;
@@ -1261,7 +1261,7 @@ public:
 					++from_iter)
 			{
 				std::string unit_id = *from_iter;
-				std::map<std::string,unit_type>::const_iterator type = unit_type_data::types().find(unit_id);
+				std::map<std::string,unit_type>::const_iterator type = unit_type_data::types().find_unit_type(unit_id);
 				if (type != unit_type_data::types().end())
 				{
 					std::string lang_unit = type->second.type_name();
@@ -1289,7 +1289,7 @@ public:
 				 advance_end = next_units.end();
 				 advance_it != advance_end; ++advance_it) {
 				std::string unit_id = *advance_it;
-				std::map<std::string,unit_type>::const_iterator type = unit_type_data::types().find(unit_id);
+				std::map<std::string,unit_type>::const_iterator type = unit_type_data::types().find_unit_type(unit_id);
 				if(type != unit_type_data::types().end()) {
 					std::string lang_unit = type->second.type_name();
 					std::string ref_id;

@@ -1193,7 +1193,7 @@ attack::attack(game_display& gui, const gamemap& map,
 					// plague units make new units on the target hex
 					unit_type_data::unit_type_map::const_iterator reanimitor;
 					LOG_NG<<"trying to reanimate "<<a_stats_->plague_type<<std::endl;
-					reanimitor = unit_type_data::types().find(a_stats_->plague_type);
+					reanimitor = unit_type_data::types().find_unit_type(a_stats_->plague_type);
 					LOG_NG<<"found unit type:"<<reanimitor->second.id()<<std::endl;
 					if(reanimitor != unit_type_data::types().end()) {
 						unit newunit=unit(&units_,&map_,&state_,&teams_,&reanimitor->second,a_->second.side(),true,true);
@@ -1458,7 +1458,7 @@ attack::attack(game_display& gui, const gamemap& map,
 					// plague units make new units on the target hex.
 					unit_type_data::unit_type_map::const_iterator reanimitor;
 					LOG_NG<<"trying to reanimate "<<d_stats_->plague_type<<std::endl;
-					reanimitor = unit_type_data::types().find(d_stats_->plague_type);
+					reanimitor = unit_type_data::types().find_unit_type(d_stats_->plague_type);
 					LOG_NG<<"found unit type:"<<reanimitor->second.id()<<std::endl;
 					if(reanimitor != unit_type_data::types().end()) {
 						unit newunit=unit(&units_,&map_,&state_,&teams_,&reanimitor->second,d_->second.side(),true,true);
@@ -1811,7 +1811,7 @@ void calculate_healing(game_display& disp, const gamemap& map,
 unit get_advanced_unit(unit_map& units,
 		const map_location& loc, const std::string& advance_to)
 {
-	const std::map<std::string,unit_type>::const_iterator new_type = unit_type_data::types().find(advance_to);
+	const std::map<std::string,unit_type>::const_iterator new_type = unit_type_data::types().find_unit_type(advance_to);
 	const unit_map::iterator un = units.find(loc);
 	if(new_type != unit_type_data::types().end() && un != units.end()) {
 		unit new_unit(un->second);

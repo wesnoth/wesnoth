@@ -584,7 +584,7 @@ void unit::set_game_context(unit_map* unitmap, const gamemap* map, const gamesta
 void unit::generate_traits(bool musthaveonly, game_state* state)
 {
 	LOG_UT << "Generating a trait for unit type " << type_id() << " with musthaveonly " << musthaveonly << "\n";
-	const unit_type_data::unit_type_map::const_iterator type = unit_type_data::types().find(type_id());
+	const unit_type_data::unit_type_map::const_iterator type = unit_type_data::types().find_unit_type(type_id());
 	// Calculate the unit's traits
 	if (type == unit_type_data::types().end()) {
 		std::string error_message = _("Unknown unit type '$type|' while generating traits");
@@ -783,7 +783,7 @@ void unit::advance_to(const unit_type* t, bool use_traits, game_state* state)
 
 const unit_type* unit::type() const
 {
-	std::map<std::string,unit_type>::const_iterator i = unit_type_data::types().find(type_id());
+	std::map<std::string,unit_type>::const_iterator i = unit_type_data::types().find_unit_type(type_id());
 	if(i != unit_type_data::types().end()) {
 		return &i->second.get_gender_unit_type(gender_).get_variation(variation_);
 	}
@@ -1562,7 +1562,7 @@ void unit::write(config& cfg) const
 	cfg.append(cfg_);
 	cfg["x"] = x;
 	cfg["y"] = y;
-	std::map<std::string,unit_type>::const_iterator uti = unit_type_data::types().find(type_id());
+	std::map<std::string,unit_type>::const_iterator uti = unit_type_data::types().find_unit_type(type_id());
 	const unit_type* ut = NULL;
 	if(uti != unit_type_data::types().end()) {
 		ut = &uti->second.get_gender_unit_type(gender_).get_variation(variation_);

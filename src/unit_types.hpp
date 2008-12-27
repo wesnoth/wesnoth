@@ -350,7 +350,7 @@ public:
 			unit_type_map::const_iterator begin() const { return types_.begin(); }
 			unit_type_map::const_iterator end() const { return types_.end(); }
 			bool unit_type_exists(const std::string& key) const;
-            unit_type_map::const_iterator find(const std::string& key, unit_type::BUILD_STATUS status = unit_type::FULL) const;
+            unit_type_map::const_iterator find_unit_type(const std::string& key, unit_type::BUILD_STATUS status = unit_type::FULL) const;
 
             void build_all(unit_type::BUILD_STATUS status) const;
 

@@ -858,7 +858,7 @@ namespace {
 		if (side_num >= teams->size()) side_num = 0;
 
 		const unit_race::GENDER gender = string_gender(cfg["gender"]);
-		const unit_type_data::unit_type_map::const_iterator itor = unit_type_data::types().find(type);
+		const unit_type_data::unit_type_map::const_iterator itor = unit_type_data::types().find_unit_type(type);
 		if(itor != unit_type_data::types().end()) {
 			assert(units != NULL);
 			assert(game_map != NULL);

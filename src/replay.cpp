@@ -944,7 +944,7 @@ bool do_replay_handle(game_display& disp, const gamemap& map,
 
 			std::set<std::string>::const_iterator itor = recruits.begin();
 			std::advance(itor,val);
-			const std::map<std::string,unit_type>::const_iterator u_type = unit_type_data::types().find(*itor);
+			const std::map<std::string,unit_type>::const_iterator u_type = unit_type_data::types().find_unit_type(*itor);
 			if(u_type == unit_type_data::types().end()) {
 				std::stringstream errbuf;
 				errbuf << "recruiting illegal unit: '" << *itor << "'\n";

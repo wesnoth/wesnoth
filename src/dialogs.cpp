@@ -433,7 +433,7 @@ void save_preview_pane::draw_contents()
 
 	int ypos = area.y;
 
-	const unit_type_data::unit_type_map::const_iterator leader = unit_type_data::types().find(summary["leader"]);
+	const unit_type_data::unit_type_map::const_iterator leader = unit_type_data::types().find_unit_type(summary["leader"]);
 	if(unit_type_data::types().unit_type_exists(summary["leader"])) {
 
 #ifdef LOW_MEM
@@ -996,7 +996,7 @@ const unit_types_preview_pane::details unit_types_preview_pane::get_details() co
 		return det;
 
     //FIXME: There should be a better way to deal with this
-    unit_type_data::types().find(t->id(), unit_type::WITHOUT_ANIMATIONS);
+    unit_type_data::types().find_unit_type(t->id(), unit_type::WITHOUT_ANIMATIONS);
 
 	std::string mod = "~RC(" + t->flag_rgb() + ">" + team::get_side_colour_index(side_) + ")";
 	det.image = image::get_image(t->image()+mod);
