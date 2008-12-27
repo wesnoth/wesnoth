@@ -346,6 +346,38 @@ static void draw_background(game_display& screen)
 	LOG_DP << "drew version number\n";
 }
 
+namespace {
+
+/**
+ *  Handler for forcing a discrete ESC keypress to quit the game (bug #12747)
+ */
+class titlescreen_handler : public events::handler
+{
+public:
+	titlescreen_handler(bool ignore_esc = false)
+		: handler(), ignore_esc_(ignore_esc)
+	{
+		if(ignore_esc) {
+			LOG_DP << "ignoring held ESCAPE key\n";
+		}
+	}
+
+	bool get_esc_ignore() { return ignore_esc_; }
+	void set_esc_ignore(bool ignore) { ignore_esc_ = ignore; }
+
+	virtual void handle_event(const SDL_Event& event)
+	{
+		if(event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_ESCAPE) {
+			ignore_esc_ = false;
+			LOG_DP << "ESCAPE key no longer ignored\n";
+		}
+	}
+
+private:
+	bool ignore_esc_;
+};
+
+}	// end anon namespace
 
 namespace gui {
 
@@ -492,6 +524,8 @@ TITLE_RESULT show_title(game_display& screen, config& tips_of_day)
 	update_whole_screen();
 	background_is_dirty_ = false;
 
+	titlescreen_handler ts_handler(key[SDLK_ESCAPE]);
+
 	LOG_DP << "entering interactive loop...\n";
 
 	for(;;) {
@@ -550,7 +584,7 @@ TITLE_RESULT show_title(game_display& screen, config& tips_of_day)
 
 		screen.flip();
 
-		if (key[SDLK_ESCAPE])
+		if (key[SDLK_ESCAPE] && !ts_handler.get_esc_ignore())
 			return QUIT_GAME;
 		if (key[SDLK_F5])
 			return RELOAD_GAME_DATA;
