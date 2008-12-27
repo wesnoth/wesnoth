@@ -350,6 +350,8 @@ namespace {
 
 /**
  *  Handler for forcing a discrete ESC keypress to quit the game (bug #12747)
+ *  This hack is here because the GUI code used here doesn't handle this yet.
+ *  Once it does, revert this part of r31758.
  */
 class titlescreen_handler : public events::handler
 {
