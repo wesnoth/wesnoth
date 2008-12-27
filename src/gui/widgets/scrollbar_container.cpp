@@ -305,30 +305,31 @@ void tscrollbar_container::draw_foreground(surface& frame_buffer)
 twidget* tscrollbar_container::find_widget(
 		const tpoint& coordinate, const bool must_be_active)
 {
-	assert(content_);
+	assert(content_ && content_grid_);
 
 	twidget* result = tcontainer_::find_widget(coordinate, must_be_active);
-
 	if(result != content_) {
 		return result;
+	} else if(result == content_) {
+		return content_grid_->find_widget(coordinate, must_be_active);
 	}
-
-	return content_->find_widget(coordinate, must_be_active);
+	return NULL;
 }
 
 const twidget* tscrollbar_container::find_widget(const tpoint& coordinate,
 		const bool must_be_active) const
 {
-	assert(content_);
+	assert(content_ && content_grid_);
 
-	const twidget* result =
-			tcontainer_::find_widget(coordinate, must_be_active);
+	const twidget* result = 
+		tcontainer_::find_widget(coordinate, must_be_active);
 
 	if(result != content_) {
 		return result;
+	} else if(result == content_) {
+		return content_grid_->find_widget(coordinate, must_be_active);
 	}
-
-	return content_->find_widget(coordinate, must_be_active);
+	return NULL;
 }
 
 void tscrollbar_container::vertical_scrollbar_click(twidget* caller)

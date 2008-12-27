@@ -483,17 +483,6 @@ public:
 	/***** ***** ***** ***** inherited ***** ***** ****** *****/
 
 	/** Inherited from tscrollbar_container. */
-	twidget* find_widget(
-			const tpoint& coordinate, const bool must_be_active);
-
-	/** Inherited from tscrollbar_container. */
-	const twidget* find_widget(
-			const tpoint& coordinate, const bool must_be_active) const;
-
-	/** Import overloaded versions. */
-	using tscrollbar_container::find_widget;
-
-	/** Inherited from tscrollbar_container. */
 	void child_populate_dirty_list(twindow& caller,
 			const std::vector<twidget*>& call_stack);
 

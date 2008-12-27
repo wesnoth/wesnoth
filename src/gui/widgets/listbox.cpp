@@ -702,30 +702,6 @@ int tlistbox::get_selected_row() const
 	return generator_->get_selected_item();
 }
 
-twidget* tlistbox::find_widget(
-		const tpoint& coordinate, const bool must_be_active)
-{
-	twidget* result =
-			generator_->find_widget(coordinate, must_be_active);
-
-	return result
-		? result
-		// Inherited.
-		: tscrollbar_container::find_widget(coordinate, must_be_active);
-}
-
-const twidget* tlistbox::find_widget(
-		const tpoint& coordinate, const bool must_be_active) const
-{
-	const twidget* result =
-			generator_->find_widget(coordinate, must_be_active);
-
-	return result
-		? result
-		// Inherited.
-		: tscrollbar_container::find_widget(coordinate, must_be_active);
-}
-
 void tlistbox::list_item_clicked(twidget* caller)
 {
 	assert(caller);
