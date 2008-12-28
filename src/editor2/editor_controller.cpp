@@ -33,6 +33,7 @@
 #include "../map_create.hpp"
 #include "../mapgen.hpp"
 #include "../random.hpp"
+#include "../sound.hpp"
 
 #include "formula_string_utils.hpp"
 
@@ -115,6 +116,7 @@ editor_controller::editor_controller(const config &game_config, CVideo& video, m
 	init_map_generators(game_config);
 	init_tods(game_config);
 	init_sidebar(game_config);
+    init_music(game_config);
 	hotkey_set_mouse_action(hotkey::HOTKEY_EDITOR_TOOL_PAINT);	
 	rng_.reset(new rand_rng::rng());
 	rng_setter_.reset(new rand_rng::set_random_generator(rng_.get()));
@@ -180,7 +182,7 @@ void editor_controller::init_mouse_actions(const config& game_config)
 			}
 		}
 	}
-	foreach (const config* c, game_config.get_children("editor2_tool_hint")) {
+	foreach (const config* c, game_config.get_children("editor_tool_hint")) {
 		mouse_action_map::iterator i = mouse_actions_.find(hotkey::get_hotkey((*c)["id"]).get_id());
 		if (i != mouse_actions_.end()) {
 			mouse_action_hints_.insert(std::make_pair(i->first, (*c)["text"]));
@@ -213,6 +215,19 @@ void editor_controller::init_tods(const config& game_config)
 	foreach (const config* i, cfg->get_children("time")) {
 		tods_.push_back(time_of_day(*i));
 	}
+}
+
+void editor_controller::init_music(const config& game_config)
+{
+	const config* cfg = game_config.child("editor_music");
+	if (cfg == NULL) {
+		ERR_ED << "No editor music defined\n";
+		return;
+	}
+	foreach (const config* i, cfg->get_children("music")) {
+		sound::play_music_config(*i);
+	}
+    sound::commit_music_changes();
 }
 
 

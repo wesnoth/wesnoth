@@ -13,6 +13,7 @@
 */
 
 #include "brush.hpp"
+#include "editor_common.hpp"
 
 #include "../foreach.hpp"
 #include "../pathutils.hpp"
@@ -48,6 +49,9 @@ brush::brush(const config& cfg)
 		add_relative_location(x, y);
 		++cfg_range.first;
 	}
+    if (relative_tiles_.empty()) {
+        WRN_ED << "Empty brush definition, name=" << name_ << "\n";
+    }
 }
 
 void brush::add_relative_location(int relative_x, int relative_y)
