@@ -26,6 +26,7 @@
 #include "events.hpp"
 #include "foreach.hpp"
 #include "game_config.hpp"
+#include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "halo.hpp"
 #include "hotkeys.hpp"
@@ -1824,7 +1825,12 @@ void display::draw(bool update,bool force) {
 	update_time_of_day();
 	if(!get_map().empty()) {
 		//int simulate_delay = 0;
-		if(!invalidated_.empty()) {
+		
+		/* 
+		 * draw_invalidated() also invalidates the halos, so also needs to be
+		 * ran if invalidated_.empty() == true.
+		 */
+		if(!invalidated_.empty() || preferences::show_haloes()) {
 			changed = true;
 			draw_invalidated();	
 			invalidated_.clear();
