@@ -380,7 +380,7 @@ game_controller::game_controller(int argc, char** argv) :
 		 } else if (val.substr(0, 18) == "--debug-dot-level=") {
 			 gui2::tdebug_layout_graph::set_level(val.substr(18));
 		 } else if (val.substr(0, 19) == "--debug-dot-domain=") {
-			 gui2::tdebug_layout_graph::set_level(val.substr(19));
+			 gui2::tdebug_layout_graph::set_domain(val.substr(19));
 #endif
 		} else if(val == "--no-delay") {
 			game_config::no_delay = true;
