@@ -11,6 +11,7 @@
 
    See the COPYING file for more details.
 */
+#define GETTEXT_DOMAIN "wesnoth-editor"
 
 #include "brush.hpp"
 #include "editor_common.hpp"

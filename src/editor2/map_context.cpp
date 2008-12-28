@@ -11,6 +11,7 @@
 
    See the COPYING file for more details.
 */
+#define GETTEXT_DOMAIN "wesnoth-editor"
 
 #include "action.hpp"
 #include "map_context.hpp"

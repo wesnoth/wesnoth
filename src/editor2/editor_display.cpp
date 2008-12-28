@@ -11,11 +11,10 @@
 
    See the COPYING file for more details.
 */
+#define GETTEXT_DOMAIN "wesnoth-editor"
 
 #include "editor_display.hpp"
 #include "builder.hpp"
-
-
 
 namespace editor2 {
 
