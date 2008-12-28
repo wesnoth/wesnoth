@@ -1736,7 +1736,6 @@ static int process_command_args(int argc, char** argv) {
 			<< "                               the engine will produce dot files which can be\n"
 			<< "                               converted to images with the dot tool.\n"
 			<< "                               Available levels:\n"
-			<< "                               - child : generate the data about the grid cells.\n"
 			<< "                               - size  : generate the size info of the widget.\n"
 			<< "                               - state : generate the state info of the widget.\n"
 			<< "  --debug-dot-domain=<domain1>,<domain2>,...\n"

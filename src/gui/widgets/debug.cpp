@@ -83,15 +83,11 @@ std::string get_base_filename()
 
 	const unsigned ALL = UINT_MAX;       /**< All levels/domains */
 
-	// level flags
-	const unsigned CHILD      = 1 << 0; /**<
-	                                     * Shows the child records of a cell.
-	                                     */
-	const unsigned SIZE_INFO  = 1 << 1; /**<
+	const unsigned SIZE_INFO  = 1 << 0; /**<
 	                                     * Shows the size info of
 	                                     * children/widgets.
 	                                     */
-	const unsigned STATE_INFO = 1 << 2; /**< 
+	const unsigned STATE_INFO = 1 << 1; /**< 
 	                                     * Shows the state info of widgets.
 	                                     */
 	unsigned level_ = 0;
@@ -120,8 +116,6 @@ void tdebug_layout_graph::set_level(const std::string& level)
 			// No need to look further eventhought invalid items are now
 			// ignored.
 			return;
-		} else if(param == "child") {
-			level_ |= CHILD;
 		} else if(param == "size") {
 			level_ |= SIZE_INFO;
 		} else if(param == "state") {
@@ -205,7 +199,7 @@ void tdebug_layout_graph::widget_generate_info(std::ostream& out,
 	if(!grid) {
 		const tcontainer_* container = dynamic_cast<const tcontainer_*>(widget);
 
-		if(container && level_ & CHILD) { // The extra constrain needed???
+		if(container) {
 
 			widget_generate_info(out, &container->grid(), id + "_G", true);
 			out << "\t" << id << " -> "
@@ -419,8 +413,6 @@ void tdebug_layout_graph::widget_generate_size_info(
 void tdebug_layout_graph::grid_generate_info(std::ostream& out,
 		const tgrid* grid, const std::string& parent_id) const
 {
-	const bool show_child = level_ & CHILD;
-
 	// maybe change the order to links, child, widgets so the output of the
 	// dot file might look better.
 
@@ -437,44 +429,31 @@ void tdebug_layout_graph::grid_generate_info(std::ostream& out,
 		}
 	}
 
-	if(show_child) {
-		out << "\n\t// The grid child data of " << parent_id << ".\n";
+	out << "\n\t// The grid child data of " << parent_id << ".\n";
 
-		for(unsigned row = 0; row < grid->get_rows(); ++row) {
-			for(unsigned col = 0; col < grid->get_cols(); ++col) {
+	for(unsigned row = 0; row < grid->get_rows(); ++row) {
+		for(unsigned col = 0; col < grid->get_cols(); ++col) {
 
-				child_generate_info(out, grid->child(row, col),
-					get_child_id(parent_id, row, col));
-			}
+			child_generate_info(out, grid->child(row, col),
+				get_child_id(parent_id, row, col));
 		}
-
 	}
+
 
 	out << "\n\t// The links of " << parent_id << ".\n";
 
 	for(unsigned row = 0; row < grid->get_rows(); ++row) {
 		for(unsigned col = 0; col < grid->get_cols(); ++col) {
 
-			if(show_child) {
+			// grid -> child
+			out << "\t" << parent_id << " -> "
+				<< get_child_id(parent_id, row, col)
+				<< " [label=\"(" << row << ',' << col
+				<< ")\"];\n";
 
-				// grid -> child
-				out << "\t" << parent_id << " -> "
-					<< get_child_id(parent_id, row, col)
-					<< " [label=\"(" << row << ',' << col
-					<< ")\"];\n";
-
-				// child -> widget
-				out << "\t" << get_child_id(parent_id, row, col) << " -> "
-					<< get_child_widget_id(parent_id, row, col) << ";\n";
-
-			} else {
-
-				// grid -> widget
-				out << "\t" << parent_id << " -> "
-					<< get_child_widget_id(parent_id, row, col)
-					<< " [label=\"(" << row << ',' << col
-					<< ")\"];\n";
-			}
+			// child -> widget
+			out << "\t" << get_child_id(parent_id, row, col) << " -> "
+				<< get_child_widget_id(parent_id, row, col) << ";\n";
 		}
 	}
 }
