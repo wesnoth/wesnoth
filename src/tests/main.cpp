@@ -11,6 +11,9 @@
 
    See the COPYING file for more details.
 */
+
+#define GETTEXT_DOMAIN "wesnoth-test"
+
 #include <boost/version.hpp>
 
 #define BOOST_TEST_MODULE wesnoth unit tests master suite

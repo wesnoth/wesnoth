@@ -14,6 +14,8 @@
 
 /** @file widgets/scrollpane.cpp */
 
+#define GETTEXT_DOMAIN "wesnoth-lib"
+
 #include "global.hpp"
 
 #include <algorithm>

@@ -12,6 +12,8 @@
    See the COPYING file for more details.
 */
 
+#define GETTEXT_DOMAIN "wesnoth-lib"
+
 #include "widgets/drop_target.hpp"
 
 #include <boost/bind.hpp>

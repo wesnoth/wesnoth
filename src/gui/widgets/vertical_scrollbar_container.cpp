@@ -12,6 +12,8 @@
    see the copying file for more details.
 */
 
+#define GETTEXT_DOMAIN "wesnoth-lib"
+
 #include "gui/widgets/vertical_scrollbar_container.hpp"
 
 #include "foreach.hpp"

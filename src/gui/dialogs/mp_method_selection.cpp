@@ -12,6 +12,8 @@
    see the copying file for more details.
 */
 
+#define GETTEXT_DOMAIN "wesnoth-lib"
+
 #include "gui/dialogs/mp_method_selection.hpp"
 
 #include "gui/widgets/listbox.hpp"

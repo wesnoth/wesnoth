@@ -12,6 +12,8 @@
    See the COPYING file for more details.
 */
 
+#define GETTEXT_DOMAIN "wesnoth-test"
+
 #include "utils/test_support.hpp"
 #include "version.hpp"
 

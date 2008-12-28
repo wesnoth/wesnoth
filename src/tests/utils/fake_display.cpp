@@ -12,6 +12,8 @@
    See the COPYING file for more details.
 */
 
+#define GETTEXT_DOMAIN "wesnoth-test"
+
 #include "fake_display.hpp"
 
 #include "gamestatus.hpp"

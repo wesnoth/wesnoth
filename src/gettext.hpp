@@ -15,6 +15,21 @@
 #ifndef GETTEXT_HPP_INCLUDED
 #define GETTEXT_HPP_INCLUDED
 
+/**
+ * How to use gettext for wesnoth source files:
+ * 1) include this header file in the .cpp file
+ * 2) add this include to set the correct textdomain, in this example
+ *    wesnoth-lib (not required for the domain 'wesnoth', required for all
+ *    other textdomains):
+ *    #define GETTEXT_DOMAIN "wesnoth-lib"
+ * 3) make sure, that the source file is listed in the respective POTFILES.in
+ *    for the textdomain, in the case of wesnoth-lib it is this file:
+ *    po/wesnoth-lib/POTFILES.in
+ * This should be all that is required to have your strings that are marked
+ * translateable in the po files and translated ingame. So you at least have
+ * to mark the strings translateable, too. ;)
+ */
+
 // gettext-related declarations
 
 #include <libintl.h>

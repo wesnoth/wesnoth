@@ -12,6 +12,7 @@
    See the COPYING file for more details.
 */
 
+#define GETTEXT_DOMAIN "wesnoth-test"
 
 #include "tests/utils/play_scenario.hpp"
 #include "tests/utils/game_config_manager.hpp"

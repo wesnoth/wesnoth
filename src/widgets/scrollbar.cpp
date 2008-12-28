@@ -15,6 +15,8 @@
 
 /** @file widgets/scrollbar.cpp */
 
+#define GETTEXT_DOMAIN "wesnoth-lib"
+
 #include "global.hpp"
 
 #include "widgets/scrollbar.hpp"

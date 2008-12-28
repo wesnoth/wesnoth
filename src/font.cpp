@@ -13,6 +13,8 @@
    See the COPYING file for more details.
 */
 
+#define GETTEXT_DOMAIN "wesnoth-lib"
+
 #include "global.hpp"
 
 #include "config.hpp"

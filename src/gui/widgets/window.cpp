@@ -17,6 +17,8 @@
  *  Implementation of window.hpp.
  */
 
+#define GETTEXT_DOMAIN "wesnoth-lib"
+
 #include "gui/widgets/window.hpp"
 
 #include "cursor.hpp"

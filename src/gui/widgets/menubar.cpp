@@ -12,6 +12,8 @@
    see the copying file for more details.
 */
 
+#define GETTEXT_DOMAIN "wesnoth-lib"
+
 #include "gui/widgets/menubar.hpp"
 
 #include "gui/widgets/selectable.hpp"

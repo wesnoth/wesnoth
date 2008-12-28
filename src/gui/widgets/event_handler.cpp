@@ -19,6 +19,7 @@
  * More documentation at the end of the file.
  */
 
+#define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "clipboard.hpp"
 #include "gui/widgets/window.hpp"

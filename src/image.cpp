@@ -17,6 +17,8 @@
  * Routines for images: load, scale, re-color, etc.
  */
 
+#define GETTEXT_DOMAIN "wesnoth-lib"
+
 #include "global.hpp"
 
 #include "config.hpp"

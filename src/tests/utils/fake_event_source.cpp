@@ -12,6 +12,8 @@
    See the COPYING file for more details.
 */
 
+#define GETTEXT_DOMAIN "wesnoth-test"
+
 #include "tests/utils/fake_event_source.hpp"
 
 #include "mouse_handler_base.hpp"

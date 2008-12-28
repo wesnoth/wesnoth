@@ -14,6 +14,8 @@
 
 /** @file widgets/scrollarea.cpp */
 
+#define GETTEXT_DOMAIN "wesnoth-lib"
+
 #include "global.hpp"
 
 #include "widgets/scrollarea.hpp"

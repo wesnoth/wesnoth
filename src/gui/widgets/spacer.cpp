@@ -12,7 +12,7 @@
    see the copying file for more details.
 */
 
-
+#define GETTEXT_DOMAIN "wesnoth-lib"
 
 namespace gui2 {
 
