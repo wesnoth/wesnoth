@@ -13,7 +13,7 @@
 */
 
 #include "gui/dialogs/editor_new_map.hpp"
-
+#include "gui/widgets/integer_selector.hpp"
 #include "gui/dialogs/field.hpp"
 
 namespace gui2 {
