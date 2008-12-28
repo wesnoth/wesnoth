@@ -355,7 +355,7 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 		animations.push_back(tmp_anim);
 
 		tmp_anim = *itor;
-		tmp_anim.unit_anim_.override(0,"","",0,"0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,");
+		tmp_anim.unit_anim_.override(0,"","",0,"0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,","51");
 		tmp_anim.event_ = utils::split("movement");
 		animations.push_back(tmp_anim);
 
@@ -365,7 +365,7 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 		animations.push_back(tmp_anim);
 
 		tmp_anim = *itor;
-		tmp_anim.unit_anim_.override(-150,"","",0,"0~0.6:150,0.6~0:150");
+		tmp_anim.unit_anim_.override(-150,"","",0,"0~0.6:150,0.6~0:150","51");
 		tmp_anim.event_ = utils::split("attack");
 		tmp_anim.primary_attack_filter_.push_back(config());
 		tmp_anim.primary_attack_filter_.back()["range"] = "melee";
@@ -513,7 +513,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 
 		}
 		(**anim_itor)["apply_to"] ="movement";
-		(**anim_itor)["layer"] =lexical_cast<std::string>(display::LAYER_UNIT_DEFAULT-display::LAYER_UNIT_FIRST);
+		(**anim_itor)["layer"] =lexical_cast<std::string>(display::LAYER_UNIT_MOVE_DEFAULT-display::LAYER_UNIT_FIRST);
 		animations.push_back(unit_animation(**anim_itor));
 	}
 	expanded_cfg = unit_animation::prepare_animation(cfg,"defend");
@@ -545,7 +545,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 	const config::child_list& attack_anims = expanded_cfg.get_children("attack_anim");
 	for(config::child_list::const_iterator d = attack_anims.begin(); d != attack_anims.end(); ++d) {
 		(**d)["apply_to"] ="attack";
-		(**d)["layer"] =lexical_cast<std::string>(display::LAYER_UNIT_DEFAULT-display::LAYER_UNIT_FIRST);
+		(**d)["layer"] =lexical_cast<std::string>(display::LAYER_UNIT_MOVE_DEFAULT-display::LAYER_UNIT_FIRST);
 		if((**d)["offset"].empty() && (**d).get_children("missile_frame").empty()) {
 			(**d)["offset"] ="0~0.6,0.6~0";
 		}
@@ -606,12 +606,13 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 
 }
 
-void unit_animation::particule::override( int start_time,const std::string highlight,const std::string blend_ratio ,Uint32 blend_color ,const std::string offset)
+void unit_animation::particule::override( int start_time,const std::string highlight,const std::string blend_ratio ,Uint32 blend_color ,const std::string offset,const std::string layer)
 {
 	set_begin_time(start_time);
 	if(!highlight.empty()) parameters_.highlight(highlight);
 	if(!offset.empty()) parameters_.offset(offset);
 	if(!blend_ratio.empty()) parameters_.blend(blend_ratio,blend_color);
+	if(!layer.empty()) parameters_.drawing_layer(layer);
 
 
 }
