@@ -33,6 +33,16 @@
 namespace gui2{
 
 namespace {
+#ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
+	const unsigned MANUAL = tdebug_layout_graph::MANUAL;
+	const unsigned SHOW = tdebug_layout_graph::SHOW;
+	const unsigned LAYOUT = tdebug_layout_graph::LAYOUT;
+#else
+	// values are irrelavant when DEBUG_WINDOW_LAYOUT_GRAPHS is not defined.
+	const unsigned MANUAL = 0;
+	const unsigned SHOW = 0;
+	const unsigned LAYOUT = 0;
+#endif
 
 /**
  * The interval between draw events.
@@ -199,7 +209,7 @@ int twindow::show(const bool restore, void* /*flip_function*/)
 {
 	log_scope2(gui_draw, "Window: show.");
 
-	generate_dot_file("show");
+	generate_dot_file("show", SHOW);
 
 	assert(status_ == NEW);
 
@@ -477,7 +487,8 @@ void twindow::key_press(tevent_handler& /*event_handler*/, bool& handled,
 	}
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 	if(key == SDLK_F12) {
-		debug_layout_->generate_dot_file("manual");
+		debug_layout_->generate_dot_file(
+				"manual", tdebug_layout_graph::MANUAL);
 		handled = true;
 	}
 #endif
@@ -527,7 +538,7 @@ void twindow::layout()
 	log_scope2(gui_layout, "Window: Recalculate size");
 
 	layout_init();
-	generate_dot_file("layout_init");
+	generate_dot_file("layout_init", LAYOUT);
 
 	const game_logic::map_formula_callable variables =
 		get_screen_size_variables();
@@ -539,7 +550,7 @@ void twindow::layout()
 			settings::screen_height :  h_(variables);
 
 	tpoint size = get_best_size();
-	generate_dot_file("get_initial_best_size");
+	generate_dot_file("get_initial_best_size", LAYOUT);
 
 	DBG_G_L << "twindow " << __func__ << ": " << size << " maximum size "
 			<< maximum_width << ',' << maximum_height << ".\n";
@@ -550,21 +561,21 @@ void twindow::layout()
 	if(size.x > maximum_width && can_wrap()) {
 		layout_wrap(maximum_width);
 		size = get_best_size();
-		generate_dot_file("wrapped");
+		generate_dot_file("wrapped", LAYOUT);
 	}
 
 	// *** scrollbar (leaves height untouched)
 	if(size.x > maximum_width && has_horizontal_scrollbar()) {
 		layout_use_horizontal_scrollbar(maximum_width);
 		size = get_best_size();
-		generate_dot_file("horizontal_scrollbar");
+		generate_dot_file("horizontal_scrollbar", LAYOUT);
 	}
 
 	// *** shrink (can change height)
 	if(size.x > maximum_width) {
 		layout_shrink_width(maximum_width);
 		size = get_best_size();
-		generate_dot_file("shrink_width");
+		generate_dot_file("shrink_width", LAYOUT);
 	}
 
 	// *** failed?
@@ -581,14 +592,14 @@ void twindow::layout()
 	if(size.y > maximum_height && has_vertical_scrollbar()) {
 		layout_use_vertical_scrollbar(maximum_height);
 		size = get_best_size();
-		generate_dot_file("vertical_scrollbar");
+		generate_dot_file("vertical_scrollbar", LAYOUT);
 	}
 
 	// *** shrink (can change width)
 	if(size.y > maximum_height) {
 		layout_shrink_height(maximum_height);
 		size = get_best_size();
-		generate_dot_file("shrink_height");
+		generate_dot_file("shrink_height", LAYOUT);
 	}
 
 	// *** failed?
@@ -642,7 +653,7 @@ void twindow::layout()
 	/***** Set the window size *****/
 	set_size(origin, size);
 
-	generate_dot_file("layout_finished");
+	generate_dot_file("layout_finished", LAYOUT);
 	need_layout_ = false;
 }
 
@@ -747,9 +758,10 @@ twindow::~twindow()
 	delete debug_layout_;
 }
 
-void twindow::generate_dot_file(const std::string& generator)
+void twindow::generate_dot_file(const std::string& generator,
+		const unsigned domain)
 {
-	debug_layout_->generate_dot_file(generator);
+	debug_layout_->generate_dot_file(generator, domain);
 }
 #endif
 } // namespace gui2

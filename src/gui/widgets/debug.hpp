@@ -54,6 +54,22 @@ public:
 	 */
 	tdebug_layout_graph(const twindow* window);
 
+	/***** ***** ***** ***** FLAGS ***** ***** ***** *****/
+
+	// domain flags
+	static const unsigned MANUAL = 0 << 0; /**<
+	                                        * Shows the info when the F12 is
+	                                        * pressed. The value 0 makes sure
+	                                        * the domain is always valid.
+	                                        */
+	static const unsigned SHOW   = 1 << 0; /**<
+	                                        * Shows the info when the dialog
+	                                        * is shown.
+	                                        */
+	static const unsigned LAYOUT = 1 << 1; /**<
+	                                        * Shows the info in all layout
+	                                        * phases.
+	                                        */
 	/**
 	 * Sets the level of wanted information.
 	 *
@@ -79,7 +95,8 @@ public:
 	 *
 	 * @param generator           The location where the name was generated.
 	 */
-	void generate_dot_file(const std::string& generator);
+	void generate_dot_file(
+			const std::string& generator, const unsigned domain);
 
 private:
 

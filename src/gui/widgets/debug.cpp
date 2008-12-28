@@ -79,33 +79,23 @@ std::string get_base_filename()
 
 	return (formatter() << buf << '_' << counter << '_').c_str();
 }
-
 	/***** ***** ***** ***** FLAGS ***** ***** ***** *****/
 
 	const unsigned ALL = UINT_MAX;       /**< All levels/domains */
 
 	// level flags
 	const unsigned CHILD      = 1 << 0; /**<
-										  * Shows the child records of a cell.
-										  */
+	                                     * Shows the child records of a cell.
+	                                     */
 	const unsigned SIZE_INFO  = 1 << 1; /**<
-										  * Shows the size info of
-										  * children/widgets.
-										  */
-	const unsigned STATE_INFO = 1 << 2; /**< Shows the state info of widgets. */
-
-	// domain flags
-	const unsigned SHOW        = 1 << 0; /**<
-										   * Shows the info when the dialog is
-										   * shown.
-										   */
-	const unsigned LAYOUT      = 1 << 1; /**<
-										   * Shows the info in all layout
-										   * phases.
-										   */
-
-	unsigned level_ = ALL; /** @todo Should default to 0. */
-	unsigned domain_ = ALL; /** @todo Should default to 0. */
+	                                     * Shows the size info of
+	                                     * children/widgets.
+	                                     */
+	const unsigned STATE_INFO = 1 << 2; /**< 
+	                                     * Shows the state info of widgets.
+	                                     */
+	unsigned level_ = 0;
+	unsigned domain_ = 0;
 } //namespace
 
 tdebug_layout_graph::tdebug_layout_graph(const twindow* window)
@@ -170,8 +160,14 @@ void tdebug_layout_graph::set_domain(const std::string& domain)
 	}
 }
 
-void tdebug_layout_graph::generate_dot_file(const std::string& generator)
+void tdebug_layout_graph::generate_dot_file(
+		const std::string& generator, const unsigned domain)
 {
+	// domain == 0 must also evaluate to true.
+	if((domain_ & domain) != domain) {
+		return;
+	}
+
 	const std::string filename = filename_base_ +
 		lexical_cast<std::string>(++sequence_number_) + "-" + generator + ".dot";
 	std::ofstream file(filename.c_str());

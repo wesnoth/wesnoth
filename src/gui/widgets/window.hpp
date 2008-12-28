@@ -422,9 +422,11 @@ public:
 	~twindow();
 
 	/** wrapper for tdebug_layout_graph::generate_dot_file. */
-	void generate_dot_file(const std::string& generator);
+	void generate_dot_file(
+			const std::string& generator, const unsigned domain);
 #else
-	void generate_dot_file(const std::string&) {}
+	void generate_dot_file(const std::string&,
+			const unsigned) {}
 #endif
 };
 
