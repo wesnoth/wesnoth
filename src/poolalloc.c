@@ -37,6 +37,7 @@ are the same size (4096 bytes by default, which should be the minimum).
 */
 
 #include <assert.h>
+#include <errno.h>
 #include <inttypes.h>
 #include <pthread.h>
 #include <stdio.h>
@@ -46,6 +47,7 @@ are the same size (4096 bytes by default, which should be the minimum).
 void* dlmalloc(size_t size);
 void* dlcalloc(size_t count, size_t size);
 void* dlvalloc(size_t size);
+void* dlmemalign(size_t alignment, size_t size);
 void* dlrealloc(void* ptr, size_t size);
 void dlfree(void* ptr);
 
@@ -359,6 +361,24 @@ void* valloc(size_t size)
 	void* result = dlvalloc(size);
 	pthread_mutex_unlock(&dlmalloc_mutex);
 	return result;
+}
+
+void* memalign(size_t alignment, size_t size)
+{
+	pthread_mutex_lock(&dlmalloc_mutex);
+	void* result = dlmemalign(alignment, size);
+	pthread_mutex_unlock(&dlmalloc_mutex);
+	return result;
+}
+
+// Note this function might not be entirely POSIX compatible, but it seems to
+// work.
+int posix_memalign(void **memptr, size_t alignment, size_t size)
+{
+	pthread_mutex_lock(&dlmalloc_mutex);
+	*memptr = dlmemalign(alignment, size);
+	pthread_mutex_unlock(&dlmalloc_mutex);
+	return errno;
 }
 
 void* realloc(void* ptr, size_t size)
