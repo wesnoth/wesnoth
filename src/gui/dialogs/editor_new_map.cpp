@@ -11,6 +11,7 @@
 
    see the copying file for more details.
 */
+#define GETTEXT_DOMAIN "wesnoth-editor"
 
 #include "gui/dialogs/editor_new_map.hpp"
 #include "gui/widgets/integer_selector.hpp"

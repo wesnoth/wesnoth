@@ -11,6 +11,7 @@
 
    see the copying file for more details.
 */
+#define GETTEXT_DOMAIN "wesnoth-editor"
 
 #include "gui/dialogs/editor_resize_map.hpp"
 
