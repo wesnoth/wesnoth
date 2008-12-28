@@ -17,6 +17,8 @@
  *  Implementation for wml_exception.hpp.
  */
 
+#define GETTEXT_DOMAIN "wesnoth-lib"
+
 #include "global.hpp"
 #include "wml_exception.hpp"
 

@@ -18,6 +18,8 @@
  * E.g. "@Victory" will be shown in green.
  */
 
+#define GETTEXT_DOMAIN "wesnoth-lib"
+
 #include "global.hpp"
 
 #include "font.hpp"

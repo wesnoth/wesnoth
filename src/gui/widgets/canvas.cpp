@@ -17,6 +17,8 @@
  * Implementation of canvas.hpp.
  */
 
+#define GETTEXT_DOMAIN "wesnoth-lib"
+
 #include "gui/widgets/canvas.hpp"
 
 #include "config.hpp"

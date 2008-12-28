@@ -12,6 +12,8 @@
    See the COPYING file for more details.
 */
 
+#define GETTEXT_DOMAIN "wesnoth-lib"
+
 #include "config_cache.hpp"
 #include "filesystem.hpp"
 #include "foreach.hpp"

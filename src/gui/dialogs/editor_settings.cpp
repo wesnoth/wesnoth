@@ -12,6 +12,8 @@
    see the copying file for more details.
 */
 
+#define GETTEXT_DOMAIN "wesnoth-editor"
+
 #include "gui/dialogs/editor_settings.hpp"
 
 #include "gui/dialogs/field.hpp"

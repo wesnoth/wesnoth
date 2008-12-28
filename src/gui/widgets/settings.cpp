@@ -17,6 +17,7 @@
  * Implementation of settings.hpp.
  */
 
+#define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "asserts.hpp"
 #include "config_cache.hpp"

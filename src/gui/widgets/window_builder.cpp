@@ -14,6 +14,8 @@
 
 #define NEW_DRAW
 
+#define GETTEXT_DOMAIN "wesnoth-lib"
+
 #include "gui/widgets/window_builder_private.hpp"
 
 #include "asserts.hpp"

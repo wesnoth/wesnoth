@@ -17,6 +17,8 @@
  *  Routines for terrain-conversion.
  */
 
+#define GETTEXT_DOMAIN "wesnoth-lib"
+
 #include "global.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
