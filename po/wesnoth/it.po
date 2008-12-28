@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-12-26 22:19+0100\n"
-"PO-Revision-Date: 2008-11-29 16:41+0100\n"
+"PO-Revision-Date: 2008-12-28 15:17+0100\n"
 "Last-Translator: Luciano Montanaro <mikelima@cirulla.net>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -1106,16 +1106,16 @@ msgid ""
 "involves weapons such as swords, axes or fangs; and ranged, which usually "
 "involves weapons such as bows, spears and fireballs."
 msgstr ""
-"I combattimenti in «Battle for Wesnoth» avvengono sempre tra delle unità "
-"poste su esagoni adiacenti. Fai clic sulla tua unità e successivamente sul "
-"nemico che vuoi attaccare: la tua unità si muoverà verso l'unità nemica e "
-"quando si troveranno l'una di fianco all'altra inizieranno il combattimento. "
-"L'attaccante e il difensore alterneranno i propri colpi sino a quando non "
-"termineranno il numero di colpi a loro disposizione. L'attaccante sceglie "
-"l'arma da utilizzare durante il combattimento mentre il difensore si difende "
-"con uno dei suoi attacchi dello stesso tipo. Ci sono due tipi di attacchi: "
-"ravvicinato, che necessita di armi come spade, asce o artigli; e a lungo "
-"raggio, che generalmente comprendono armi come archi, lance e palle di fuoco."
+"I combattimenti in «Battle for Wesnoth» avvengono sempre tra unità poste su "
+"esagoni adiacenti. Fai clic sulla tua unità e successivamente sul nemico che "
+"vuoi attaccare: l'unità si muoverà verso quella nemica e quando si "
+"troveranno l'una di fronte all'altra inizieranno il combattimento. "
+"L'attaccante e il difensore alterneranno i propri colpi fino al termine dei "
+"colpi a disposizione. L'attaccante sceglie l'arma da utilizzare durante il "
+"combattimento mentre il difensore si difende con uno dei suoi attacchi dello "
+"stesso tipo. Ci sono due tipi di attacchi: ravvicinato, che necessita di "
+"armi come spade, asce o artigli; e a lungo raggio, che generalmente "
+"comprendono armi come archi, lance e palle di fuoco."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:233
@@ -1491,11 +1491,11 @@ msgid ""
 "of which take place at the beginning of your turn, before you take action."
 msgstr ""
 "Durante la battaglia le tue unità subiranno inevitabilmente dei danni. "
-"Quando una unità <ref>dst='experience_and_advancement' text='avanza'</ref> "
-"di livello, verrà curata completamente. Ciò può accadere dopo aver "
-"combattuto un nemico, che sia il tuo turno o no. Wesnoth offre vari modi per "
-"recuperare l'energia delle unità, tutti con effetto all'inizio del tuo "
-"turno, prima che inizi l'azione."
+"Quando un'unità <ref>dst='experience_and_advancement' text='avanza'</ref> di "
+"livello, verrà curata completamente. Ciò può accadere dopo aver combattuto "
+"un nemico, che sia il tuo turno o no. Wesnoth offre vari modi per recuperare "
+"l'energia delle unità, tutti con effetto all'inizio del tuo turno, prima che "
+"inizi l'azione."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:302
@@ -1542,8 +1542,8 @@ msgid ""
 msgstr ""
 "\n"
 "Unità guaritrici: le unità con l'abilità <ref>dst='ability_heals "
-"'text='Guarigione'</ref> guariranno una unità alleata adiacente fino da 4 a "
-"8 PF per turno e impediranno i danni provenienti dal veleno su questa unità."
+"'text='Guarigione'</ref> guariranno un'unità alleata adiacente fino da 4 a 8 "
+"PF per turno e impediranno i danni provenienti dal veleno su questa unità."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:306
@@ -2725,6 +2725,9 @@ msgid ""
 "Redraws the screen and reloads any image files that have been changed.\n"
 "\n"
 msgstr ""
+"\n"
+"Ridisegna lo schermo e ricarica tutti i file di immagine che sono cambiati.\n"
+"\n"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:762
@@ -2895,6 +2898,9 @@ msgid ""
 "Immediately advances to the next scenario in a campaign.\n"
 "\n"
 msgstr ""
+"\n"
+"Avanza immediatamente allo scenario successivo di una campagna.\n"
+"\n"
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:817
@@ -2958,7 +2964,7 @@ msgid ""
 "additional healing on the turn it is cured of the poison."
 msgstr ""
 "Cura:\n"
-"L'abilità cura permette di curare una unità avvelenata, ma quest'unità non "
+"L'abilità cura permette di curare un'unità avvelenata, ma quest'unità non "
 "riceve cure addizionali nel turno in cui viene curata dal veleno."
 
 #. [regenerate]: id=regenerates
@@ -3406,28 +3412,27 @@ msgstr ""
 #. [option]: type=behaviour
 #: data/core/macros/ai_controller.cfg:144
 msgid "Be more aggressive"
-msgstr ""
+msgstr "Sii più aggressivo"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:161
 msgid "aggressive."
-msgstr ""
+msgstr "aggressivo."
 
 #. [option]: type=behaviour
 #: data/core/macros/ai_controller.cfg:178
 msgid "Be more defensive"
-msgstr ""
+msgstr "Sii più difensivo"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:195
-#, fuzzy
 msgid "defensive."
-msgstr "Difesa"
+msgstr "difensivo."
 
 #. [option]: type=objective
 #: data/core/macros/ai_controller.cfg:213
 msgid "Focus on defeating..."
-msgstr ""
+msgstr "Impegnati a sconfiggere..."
 
 #. [literal]: speaker=narrator
 #. [value]: speaker=narrator
@@ -3441,12 +3446,12 @@ msgstr ""
 #: data/core/macros/ai_controller.cfg:839
 #: data/core/macros/ai_controller.cfg:879
 msgid "Instruct ally"
-msgstr ""
+msgstr "Istruisci alleato"
 
 #. [literal]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:230
 msgid "Which enemy side to focus on?"
-msgstr ""
+msgstr "Quale fazione nemica prendere di mira?"
 
 #. [then]
 #. [else]
@@ -3455,24 +3460,24 @@ msgstr ""
 #: data/core/macros/ai_controller.cfg:437
 #: data/core/macros/ai_controller.cfg:442
 msgid "(side $temp_i|)"
-msgstr ""
+msgstr "(fazione  $temp_i|)"
 
 #. [then]
 #: data/core/macros/ai_controller.cfg:288
 #: data/core/macros/ai_controller.cfg:438
 msgid "$side_i_leader.name (side $temp_i|)"
-msgstr ""
+msgstr "$side_i_leader.name (fazione $temp_i|)"
 
 #. [else]
 #: data/core/macros/ai_controller.cfg:293
 #: data/core/macros/ai_controller.cfg:443
 msgid "side $temp_i"
-msgstr ""
+msgstr "fazione $temp_i"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:313
 msgid "focusing on defeating $this_enemy_description|."
-msgstr ""
+msgstr "impegnati a sconfiggere $this_enemy_description|."
 
 #. [value]
 #. [option]: speaker=narrator
@@ -3480,66 +3485,63 @@ msgstr ""
 #: data/core/macros/ai_controller.cfg:479
 #: data/core/macros/ai_controller.cfg:864
 #: data/core/macros/ai_controller.cfg:899
-#, fuzzy
 msgid "Back"
-msgstr "Nero"
+msgstr "Indietro"
 
 #. [option]: type=objective
 #: data/core/macros/ai_controller.cfg:359
 msgid "Focus on protecting..."
-msgstr ""
+msgstr "Impegnati a proteggere..."
 
 #. [literal]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:376
 msgid "Which friendly side to protect?"
-msgstr ""
+msgstr "Quale fazione alleata proteggere?"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:463
 msgid "focusing on protecting $this_ally_description|."
-msgstr ""
+msgstr "impegnati a proteggere $this_ally_description|."
 
 #. [option]: type=objective
 #: data/core/macros/ai_controller.cfg:511
 msgid "Defend a location..."
-msgstr ""
+msgstr "Difendi una posizione..."
 
 #. [print]
 #: data/core/macros/ai_controller.cfg:525
 msgid "Right-click to select a location to defend"
-msgstr ""
+msgstr "Fai clic col tasto destro per selezionare una posizione da difendere"
 
 #. [set_menu_item]: id=ai_controller_defend_location_picker
 #: data/core/macros/ai_controller.cfg:532
 msgid "Defend this location"
-msgstr ""
+msgstr "Difendi questa posizione"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:555
 msgid "focusing on defending the area around $x1|,$y1|."
-msgstr ""
+msgstr "impegnati a difendere l'area attorno a $x1|, $y1|."
 
 #. [print]
 #: data/core/macros/ai_controller.cfg:580
 msgid "Location selection canceled"
-msgstr ""
+msgstr "Selezione posizione annullata."
 
 #. [option]
 #: data/core/macros/ai_controller.cfg:595
-#, fuzzy
 msgid "Clear objective orders"
-msgstr "Annulla gli ordini"
+msgstr "Annulla gli ordini sull'obiettivo"
 
 #. [option]
 #: data/core/macros/ai_controller.cfg:619
 msgid "Clear behaviour orders"
-msgstr ""
+msgstr "Annulla gli ordini sul comportamento"
 
 #. [option]
 #: data/core/macros/ai_controller.cfg:643
-#, fuzzy
 msgid "Clear all orders"
-msgstr "Annulla gli ordini"
+msgstr "Annulla tutti gli ordini"
 
 #. [then]
 #: data/core/macros/ai_controller.cfg:769
@@ -3554,6 +3556,8 @@ msgid ""
 "$ally_leader.name (side $ally_side|) has not been given any instructions and "
 "is acting normally."
 msgstr ""
+"$ally_leader.name (fazione $ally_side|) non ha ricevuto istruzioni e si "
+"comporta normalmente."
 
 #. [value]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:805
@@ -3564,6 +3568,10 @@ msgid ""
 "Behaviour: $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_behaviour_description"
 msgstr ""
+"Obiettivo: $ai_controller.side_$ally_side|_current_settings."
+"currently_doing_objective_description\n"
+"Comportamento: $ai_controller.side_$ally_side|_current_settings."
+"currently_doing_behaviour_description"
 
 #. [value]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:819
@@ -3571,22 +3579,22 @@ msgid ""
 "$ally_leader.name (side $ally_side|) is carrying out the following "
 "instructions:"
 msgstr ""
+"$ally_leader.name (fazione $ally_side|) sta seguendo le seguenti istruzioni:"
 
 #. [literal]
 #: data/core/macros/ai_controller.cfg:834
 msgid "Set objective..."
-msgstr ""
+msgstr "Imposta obiettivo..."
 
 #. [literal]
 #: data/core/macros/ai_controller.cfg:874
-#, fuzzy
 msgid "Set behaviour..."
-msgstr "Imposta parola d'ordine..."
+msgstr "Imposta comportamento..."
 
 #. [literal]
 #: data/core/macros/ai_controller.cfg:914
 msgid "Exit"
-msgstr ""
+msgstr "Esci"
 
 #. [advancement]: id=amla_default
 #: data/core/macros/amla.cfg:10
@@ -3612,27 +3620,20 @@ msgid "No early finish bonus."
 msgstr "Nessun premio per turni risparmiati."
 
 #: data/core/macros/carryover-utils.cfg:15
-#, fuzzy
 msgid "`(early finish bonus)"
-msgstr "Premio per i turni risparmiati."
+msgstr "`(premio per turni risparmiati)"
 
 #: data/core/macros/carryover-utils.cfg:18
-#, fuzzy
 msgid "No gold carried over to the next scenario."
-msgstr ""
-"\n"
-"Il 40% dell'oro al termine con cui si termina viene portato nello scenario "
-"successivo."
+msgstr "L'oro non è portato nello scenario successivo."
 
 #: data/core/macros/carryover-utils.cfg:22
-#, fuzzy
 msgid ""
 "\n"
 "100% of finishing gold carried over to the next scenario."
 msgstr ""
 "\n"
-"Il 40% dell'oro al termine con cui si termina viene portato nello scenario "
-"successivo."
+"Il 100% dell'oro con cui si termina portato nello scenario successivo."
 
 #: data/core/macros/carryover-utils.cfg:26
 msgid ""
@@ -3640,8 +3641,7 @@ msgid ""
 "40% of finishing gold carried over to the next scenario."
 msgstr ""
 "\n"
-"Il 40% dell'oro al termine con cui si termina viene portato nello scenario "
-"successivo."
+"Il 40% dell'oro con cui si termina portato nello scenario successivo."
 
 #: data/core/macros/carryover-utils.cfg:30
 msgid ""
@@ -3649,8 +3649,7 @@ msgid ""
 "20% of finishing gold carried over to the next scenario."
 msgstr ""
 "\n"
-"Il 20% dell'oro al termine con cui si termina viene portato nello scenario "
-"successivo."
+"Il 20% dell'oro con cui si termina viene portato nello scenario successivo."
 
 #. [deprecated_message]
 #: data/core/macros/deprecated-utils.cfg:21
@@ -3790,12 +3789,12 @@ msgstr "Questo anello guarisce a ogni turno colui che lo indossa."
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:451
 msgid "Ring of Slowness"
-msgstr "Anello del rallentamento"
+msgstr "Anello della lentezza"
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:454
 msgid "The bearer of this ring is slowed."
-msgstr "Colui che indossa questo anello viene rallentato."
+msgstr "Chi indossa questo anello viene rallentato."
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:488
@@ -4866,7 +4865,7 @@ msgid ""
 "can be cured in town or by a unit which cures."
 msgstr ""
 " Le vittime del veleno di queste unità subiranno continuamente dei danni "
-"fino a che non verranno curate in un villaggio o da una unità con l'abilità "
+"fino a che non verranno curate in un villaggio o da un'unità con l'abilità "
 "di cura."
 
 #. [trait]: id=loyal
@@ -4972,9 +4971,10 @@ msgstr "sana"
 
 #. [trait]: id=healthy
 #: data/core/macros/traits.cfg:134
-#, fuzzy
 msgid "Can rest while moving, takes a quarter less poison damage"
-msgstr "Può riposare durante gli spostamenti, dimezza il danno da veleno"
+msgstr ""
+"Può riposare durante gli spostamenti, riceve un quarto di danno da veleno in "
+"meno"
 
 #. [trait]: id=fearless
 #: data/core/macros/traits.cfg:151 data/core/macros/traits.cfg:164
@@ -7071,17 +7071,14 @@ msgid "addon_type^Scenario"
 msgstr "Scenario"
 
 #: src/addon_management.cpp:402
-#, fuzzy
 msgid "addon_type^MP era"
 msgstr "Era MG"
 
 #: src/addon_management.cpp:404
-#, fuzzy
 msgid "addon_type^MP faction"
 msgstr "Fazione MG"
 
 #: src/addon_management.cpp:406
-#, fuzzy
 msgid "addon_type^MP map-pack"
 msgstr "Raccolta di mappe MG"
 
@@ -7411,7 +7408,7 @@ msgstr "Arma inutilizzabile"
 
 #: src/attack_prediction_display.cpp:271
 msgid "Chance of being unscathed"
-msgstr ""
+msgstr "Speranza di non essere ferito"
 
 #: src/attack_prediction_display.cpp:554 src/mouse_events.cpp:636
 msgid "Damage Calculations"
@@ -7824,9 +7821,9 @@ msgid "tooltip^% accuracy"
 msgstr "% accuratezza"
 
 #: src/generate_report.cpp:275
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "tooltip^% parry"
-msgstr "danno"
+msgstr "% parate"
 
 #: src/generate_report.cpp:286
 msgid "weapon range: "
@@ -7889,9 +7886,8 @@ msgid "Abilities: "
 msgstr "Abilità: "
 
 #: src/help.cpp:1344
-#, fuzzy
 msgid "Ability Upgrades: "
-msgstr "Abilità: "
+msgstr "Aggiornamenti abilità: "
 
 #: src/help.cpp:1362
 msgid "Cost: "
@@ -8021,14 +8017,12 @@ msgid "?"
 msgstr "?"
 
 #: src/loadscreen.cpp:224
-#, fuzzy
 msgid "Verifying cache"
-msgstr "Verifica della cache."
+msgstr "Verifica della cache"
 
 #: src/loadscreen.cpp:243
-#, fuzzy
 msgid "Reading cache"
-msgstr "Lettura della cache."
+msgstr "Lettura della cache"
 
 #: src/loadscreen.cpp:262
 msgid "Reading unit files."
@@ -8252,7 +8246,7 @@ msgstr[1] "Oro"
 
 #: src/menu_events.cpp:860
 msgid "You have no units available to recruit."
-msgstr "Non hai nessuna unità disponibile per il reclutamento."
+msgstr "Non hai nessun'unità disponibile per il reclutamento."
 
 #: src/menu_events.cpp:872
 msgid "Recruit"
@@ -8411,7 +8405,7 @@ msgstr "Registra il tuo nome"
 
 #: src/menu_events.cpp:2155
 msgid "Drop your nick."
-msgstr ""
+msgstr "Scarta il tuo nome."
 
 #: src/menu_events.cpp:2157
 msgid "Update details for your username. For possible details see /details"
@@ -8531,13 +8525,11 @@ msgid "Fire a game event."
 msgstr "Scatena un evento di gioco."
 
 #: src/menu_events.cpp:2344
-#, fuzzy
 msgid "Toggle overlaying of x,y coordinates on hexes."
 msgstr ""
 "Attiva/disattiva la sovrapposizione delle coordinate x,y sugli esagoni."
 
 #: src/menu_events.cpp:2347
-#, fuzzy
 msgid "Toggle overlaying of terrain codes on hexes."
 msgstr ""
 "Attiva/disattiva la sovrapposizione dei codici del terreno sugli esagoni."
@@ -9524,9 +9516,8 @@ msgid "TitleScreen button^Add-ons"
 msgstr "Estensioni"
 
 #: src/titlescreen.cpp:383
-#, fuzzy
 msgid "TitleScreen button^Map Editor"
-msgstr "Editor"
+msgstr "Editor delle mappe"
 
 #: src/titlescreen.cpp:385
 msgid "TitleScreen button^Language"
@@ -9682,7 +9673,7 @@ msgstr "% accuratezza"
 #: src/unit_types.cpp:228
 #, no-c-format
 msgid "% parry"
-msgstr ""
+msgstr "% parate"
 
 #: src/unit_types.cpp:1018
 msgid "chaotic"

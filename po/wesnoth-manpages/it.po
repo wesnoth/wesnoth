@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "POT-Creation-Date: 2008-12-20 14:29+0100\n"
-"PO-Revision-Date: 2008-11-26 00:16+0100\n"
+"PO-Revision-Date: 2008-12-28 14:54+0100\n"
 "Last-Translator: Luciano Montanaro <mikelima@cirulla.net>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -126,7 +126,7 @@ msgstr "B<-c, --campaign>"
 # type: Plain text
 #: ../../doc/man/wesnoth.6:52
 msgid "goes directly to the campaign selection menu."
-msgstr ""
+msgstr "va direttamente al menu di selezione della campagna."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:52
@@ -160,21 +160,19 @@ msgstr "B<-d, --debug>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:64
-#, fuzzy
 msgid ""
 "enables additional command mode options in-game (see the wiki page at http://"
 "www.wesnoth.org/wiki/CommandMode for more information about command mode)."
 msgstr ""
-"mostra le informazioni aggiuntive per il debug ed abilita le opzioni "
-"aggiuntive di controllo all'interno del gioco (vedi il sito presso http://"
-"www.wesnoth.org/wiki/CommandMode per maggiori informazioni sulla shell di "
-"comando)."
+"abilita le opzioni aggiuntive di controllo all'interno del gioco (vedi il "
+"wiki presso http://www.wesnoth.org/wiki/CommandMode per maggiori "
+"informazioni sulla shell di comando)."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:64
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--dummy-locales>"
-msgstr "B<--dummylocales>"
+msgstr "B<--dummy-locales>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:68
@@ -182,6 +180,8 @@ msgid ""
 "use special dummy locales to switch to any language even if that language "
 "isn't installed system-wide."
 msgstr ""
+"Usa un locale fantoccio per poter usare una lingua qualsiasi anche se la "
+"lingua non è installata a livello di sistema."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:68
@@ -192,7 +192,7 @@ msgstr "B<-e, --editor>"
 # type: Plain text
 #: ../../doc/man/wesnoth.6:71
 msgid "start the in-game map editor directly."
-msgstr ""
+msgstr "avvia direttamente dal gioco l'editor delle mappe."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:71
@@ -344,7 +344,6 @@ msgstr "B<--no-delay>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:132
-#, fuzzy
 msgid ""
 "runs the game without any delays for graphic benchmarking. This is "
 "automatically enabled by B<--nogui>."
@@ -405,7 +404,7 @@ msgstr "B<--python-api>"
 # type: Plain text
 #: ../../doc/man/wesnoth.6:147
 msgid "prints the runtime documentation for the python API."
-msgstr ""
+msgstr "stampa la documentazione del runtime per le API di python."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:147
@@ -416,7 +415,7 @@ msgstr "B<--python-shell>"
 # type: Plain text
 #: ../../doc/man/wesnoth.6:150
 msgid "invokes wesnoth's embedded python interpreter in interactive mode."
-msgstr ""
+msgstr "invoca l'interprete di python integrato in modalità interattiva."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:150
@@ -441,6 +440,8 @@ msgid ""
 "allows to use screen resolutions down to 800x480 and resizes a few interface "
 "elements."
 msgstr ""
+"permette di usare risoluzioni dello schermo basse (fino a 800×480) e "
+"ridimensiona alcuni elementi dell'interfaccia."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:157
@@ -475,7 +476,7 @@ msgstr "B<--validcache>"
 # type: Plain text
 #: ../../doc/man/wesnoth.6:167
 msgid "assumes that the cache is valid. (dangerous)"
-msgstr ""
+msgstr "assume che la cache sia valida (pericoloso)."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:167
@@ -508,7 +509,7 @@ msgstr "B<--with-replay>"
 # type: Plain text
 #: ../../doc/man/wesnoth.6:178
 msgid "replays the game loaded with the B<--load> option."
-msgstr ""
+msgstr "esegue il replay della partita caricata con l'opzione B<--load>."
 
 # type: SH
 #: ../../doc/man/wesnoth.6:179
@@ -793,7 +794,6 @@ msgstr "B<wesnothd> B<-V>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:44
-#, fuzzy
 msgid ""
 "Manages Battle for Wesnoth multiplayer games. See http://www.wesnoth.org/"
 "wiki/ServerAdministration on what commands the server accepts via the "
@@ -801,7 +801,8 @@ msgid ""
 msgstr ""
 "Gestisce le partite multigiocatore di Battle for Wesnoth. Vedi http://www."
 "wesnoth.org/wiki/ServerAdministration per sapere quali comandi sono "
-"accettati dal server attraverso il client di wesnoth o il socket."
+"accettati dal server attraverso il client di wesnoth (/query ...) o il "
+"socket."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:47
@@ -958,7 +959,7 @@ msgstr "Caratteri globali:"
 #: ../../doc/man/wesnothd.6:110
 #, no-wrap
 msgid "B<ban_save_file>"
-msgstr ""
+msgstr "B<ban_save_file>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:114
@@ -1073,7 +1074,7 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:140
 #, no-wrap
 msgid "B<restart_command>"
-msgstr ""
+msgstr "B<restart_command>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:143
@@ -1193,7 +1194,6 @@ msgstr ""
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:187
-#, fuzzy
 msgid ""
 "B<[proxy]> A tag to tell the server to act as a proxy and forward the "
 "connected client's requests to the specified server.  Accepts the same keys "

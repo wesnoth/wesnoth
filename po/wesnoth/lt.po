@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-12-26 22:19+0100\n"
-"PO-Revision-Date: 2008-11-29 20:28+0300\n"
+"PO-Revision-Date: 2008-12-27 17:07+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lithuanian <kde-i18n-doc@lists.kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -612,8 +612,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Pradžiai geriausia pagrindiniame meniu nuspausti mygtuką "
-"<italic>text=Apmokymas</italic>. Tai jus nuves į interaktyvų apmokymą, kuris "
+"Pradžiai, geriausia pagrindiniame meniu nuspausti mygtuką "
+"<italic>text=Apmokymas</italic>. Tai nuves jus į interaktyvų apmokymą, kuris "
 "išmokys jus Wesnoth pagrindų. Po to, rekomenduojama, kad pirmiausia "
 "sužaistumėte kampaniją Sosto įpėdinis – spauskite <italic>text=Kampanija</"
 "italic>, tada <italic>text='Sosto įpėdinis'</italic>. Kadangi Mūšis dėl "
@@ -2721,28 +2721,27 @@ msgstr ""
 #. [option]: type=behaviour
 #: data/core/macros/ai_controller.cfg:144
 msgid "Be more aggressive"
-msgstr ""
+msgstr "Būti agresyvesniam"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:161
 msgid "aggressive."
-msgstr ""
+msgstr "agresyvus."
 
 #. [option]: type=behaviour
 #: data/core/macros/ai_controller.cfg:178
 msgid "Be more defensive"
-msgstr ""
+msgstr "Labiau gintis"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:195
-#, fuzzy
 msgid "defensive."
-msgstr "Gynyba"
+msgstr "gynybinis."
 
 #. [option]: type=objective
 #: data/core/macros/ai_controller.cfg:213
 msgid "Focus on defeating..."
-msgstr ""
+msgstr "Susikoncentruoti gynyboje..."
 
 #. [literal]: speaker=narrator
 #. [value]: speaker=narrator
@@ -2770,19 +2769,19 @@ msgstr ""
 #: data/core/macros/ai_controller.cfg:437
 #: data/core/macros/ai_controller.cfg:442
 msgid "(side $temp_i|)"
-msgstr ""
+msgstr "(pusė $temp_i|)"
 
 #. [then]
 #: data/core/macros/ai_controller.cfg:288
 #: data/core/macros/ai_controller.cfg:438
 msgid "$side_i_leader.name (side $temp_i|)"
-msgstr ""
+msgstr "$side_i_leader.name (pusė $temp_i|)"
 
 #. [else]
 #: data/core/macros/ai_controller.cfg:293
 #: data/core/macros/ai_controller.cfg:443
 msgid "side $temp_i"
-msgstr ""
+msgstr "pusė $temp_i"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:313
@@ -2795,9 +2794,8 @@ msgstr ""
 #: data/core/macros/ai_controller.cfg:479
 #: data/core/macros/ai_controller.cfg:864
 #: data/core/macros/ai_controller.cfg:899
-#, fuzzy
 msgid "Back"
-msgstr "Juoda"
+msgstr "Atgal"
 
 #. [option]: type=objective
 #: data/core/macros/ai_controller.cfg:359
@@ -2817,7 +2815,7 @@ msgstr ""
 #. [option]: type=objective
 #: data/core/macros/ai_controller.cfg:511
 msgid "Defend a location..."
-msgstr ""
+msgstr "Ginti vietą..."
 
 #. [print]
 #: data/core/macros/ai_controller.cfg:525
@@ -2827,7 +2825,7 @@ msgstr ""
 #. [set_menu_item]: id=ai_controller_defend_location_picker
 #: data/core/macros/ai_controller.cfg:532
 msgid "Defend this location"
-msgstr ""
+msgstr "Ginti šią vietą"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:555
@@ -2894,9 +2892,8 @@ msgstr ""
 
 #. [literal]
 #: data/core/macros/ai_controller.cfg:874
-#, fuzzy
 msgid "Set behaviour..."
-msgstr "Nustatyti slaptažodį..."
+msgstr "Nustatyti elgesį..."
 
 #. [literal]
 #: data/core/macros/ai_controller.cfg:914
@@ -2927,25 +2924,20 @@ msgid "No early finish bonus."
 msgstr "Nėra ankstyvo pabaigimo premijos."
 
 #: data/core/macros/carryover-utils.cfg:15
-#, fuzzy
 msgid "`(early finish bonus)"
-msgstr "Ankstyvo pabaigimo premija."
+msgstr "`(ankstyvo pabaigimo premija)"
 
 #: data/core/macros/carryover-utils.cfg:18
-#, fuzzy
 msgid "No gold carried over to the next scenario."
-msgstr ""
-"\n"
-"40% baigiamojo aukso pernešama į kitą scenarijų."
+msgstr "Nė kiek aukso nepernešama į kitą scenarijų."
 
 #: data/core/macros/carryover-utils.cfg:22
-#, fuzzy
 msgid ""
 "\n"
 "100% of finishing gold carried over to the next scenario."
 msgstr ""
 "\n"
-"40% baigiamojo aukso pernešama į kitą scenarijų."
+"100% baigiamojo aukso pernešama į kitą scenarijų."
 
 #: data/core/macros/carryover-utils.cfg:26
 msgid ""
@@ -4235,7 +4227,6 @@ msgstr "Elfai"
 
 #. [race]: id=elf
 #: data/core/units.cfg:119
-#, fuzzy
 msgid ""
 "Compared to humans, elves are somewhat taller, more agile but less sturdy. "
 "They have slightly pointy ears, pale skin and usually blond hair. Few "
@@ -5693,7 +5684,6 @@ msgid "addon_type^Scenario"
 msgstr "Scenarijus"
 
 #: src/addon_management.cpp:402
-#, fuzzy
 msgid "addon_type^MP era"
 msgstr "DŽ era"
 
@@ -5703,7 +5693,6 @@ msgid "addon_type^MP faction"
 msgstr "DŽ scenarijus"
 
 #: src/addon_management.cpp:406
-#, fuzzy
 msgid "addon_type^MP map-pack"
 msgstr "DŽ žemėlapių rinkinys"
 
@@ -6631,14 +6620,12 @@ msgid "?"
 msgstr "?"
 
 #: src/loadscreen.cpp:224
-#, fuzzy
 msgid "Verifying cache"
-msgstr "Tikrinamas podėlis."
+msgstr "Tikrinamas podėlis"
 
 #: src/loadscreen.cpp:243
-#, fuzzy
 msgid "Reading cache"
-msgstr "Skaitomas podėlis."
+msgstr "Skaitomas podėlis"
 
 #: src/loadscreen.cpp:262
 msgid "Reading unit files."
@@ -8109,9 +8096,8 @@ msgid "TitleScreen button^Add-ons"
 msgstr "Priedai"
 
 #: src/titlescreen.cpp:383
-#, fuzzy
 msgid "TitleScreen button^Map Editor"
-msgstr "Redaktorius"
+msgstr "Žemėlapių red."
 
 #: src/titlescreen.cpp:385
 msgid "TitleScreen button^Language"

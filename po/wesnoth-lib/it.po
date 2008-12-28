@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-12-26 22:19+0100\n"
-"PO-Revision-Date: 2008-11-23 16:59+0100\n"
+"PO-Revision-Date: 2008-12-28 15:23+0100\n"
 "Last-Translator: Luciano Montanaro <mikelima@cirulla.net>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -493,7 +493,7 @@ msgstr "Vecchia altezza:"
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:147
 msgid "Expand / shrink direction"
-msgstr ""
+msgstr "Espandi / riduci direzione"
 
 #. [toggle_button]: id=copy_edge_terrain
 #: data/gui/default/window/editor_resize_map.cfg:242
@@ -521,9 +521,8 @@ msgstr "Preimpostazioni dell'illuminazione dell'ora del giorno"
 #. [button]: id=next_tod
 #: data/gui/default/window/editor_settings.cfg:75
 #: data/gui/default/window/editor_settings.cfg:76
-#, fuzzy
 msgid "Next"
-msgstr "Unità successiva"
+msgstr "Successiva"
 
 #. [toggle_button]: id=custom_tod_toggle
 #: data/gui/default/window/editor_settings.cfg:83
@@ -715,7 +714,6 @@ msgstr "Ospita partita in rete"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:163
-#, fuzzy
 msgid "Host a game using dedicated server 'wesnothd'"
 msgstr "Ospita una partita usando il server dedicato «wesnothd»"
 
@@ -728,6 +726,8 @@ msgstr "Partita locale"
 #: data/gui/default/window/mp_method_selection.cfg:174
 msgid "Play a multiplayer game with the AI or humans sharing the same machine"
 msgstr ""
+"Gioca una partita multigiocatore con IA o umani condividendo la stessa "
+"macchina"
 
 #. [label]
 #: data/gui/default/window/mp_server_list.cfg:87
@@ -1133,7 +1133,7 @@ msgstr ""
 
 #: src/game_preferences_display.cpp:357
 msgid "Find and set path to MP server to host LAN games."
-msgstr ""
+msgstr "Trova e imposta il percorso al server MG per ospitare partite su LAN."
 
 #: src/game_preferences_display.cpp:358
 msgid "View and edit your friends and ignores list"
@@ -1272,7 +1272,7 @@ msgstr ""
 
 #: src/game_preferences_display.cpp:1217
 msgid "Find $filename server binary to host networked games"
-msgstr ""
+msgstr "Trova l'eseguibile del server $filename per ospitare partite in rete"
 
 #: src/gui/dialogs/mp_create_game.cpp:76 src/hotkeys.cpp:64
 msgid "Load Game"
@@ -1303,7 +1303,6 @@ msgid "Text doesn't start on canvas."
 msgstr "Il testo non inizia su una tela."
 
 #: src/gui/widgets/helper.cpp:167
-#, fuzzy
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr "Non è stato definito il widget obbligatorio «$id»."
 
@@ -1319,6 +1318,7 @@ msgstr "Finestra non definita."
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr ""
+"La definizione del widget «$definition» non contiene la definizione di «$id»."
 
 #: src/gui/widgets/settings.cpp:429 src/gui/widgets/window_builder.cpp:285
 msgid "No resolution defined."
@@ -1610,7 +1610,7 @@ msgstr "Strumento di selezione"
 
 #: src/hotkeys.cpp:118
 msgid "Set Starting Positions Tool"
-msgstr ""
+msgstr "Strumento per impostare la posizione iniziale"
 
 #: src/hotkeys.cpp:119
 msgid "Next Brush"
