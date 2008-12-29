@@ -20,10 +20,10 @@ for o in glob.glob("src/*.o") + glob.glob("src/*/*.o"):
     output.append((o, os.popen("nm -C %s" % o).read()))
 
 output2 = os.popen("nm -C src/wesnoth").read()
-output2 += os.popen("nm -C src/wesnoth_editor").read()
 output2 += os.popen("nm -C src/campaignd").read()
 output2 += os.popen("nm -C src/wesnothd").read()
 output2 += os.popen("nm -C src/exploder").read()
+output2 += os.popen("nm -C src/test").read()
 
 def extract(line):
     return line[11:]
