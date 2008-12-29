@@ -140,19 +140,19 @@ tmenubar::tdirection read_direction(const std::string& direction)
 	}
 }
 
-tvertical_scrollbar_container_::tscrollbar_mode
+tscrollbar_container::tscrollbar_mode
 		get_scrollbar_mode(const std::string& scrollbar_mode)
 {
 	if(scrollbar_mode == "always") {
-		return tvertical_scrollbar_container_::SHOW;
+		return tscrollbar_container::SHOW;
 	} else if(scrollbar_mode == "never") {
-		return tvertical_scrollbar_container_::HIDE;
+		return tscrollbar_container::HIDE;
 	} else {
 		if(!scrollbar_mode.empty() && scrollbar_mode != "auto") {
 			ERR_G_E << "Invalid scrollbar mode '"
 				<< scrollbar_mode << "' falling back to 'auto'.\n";
 		}
-		return tvertical_scrollbar_container_::SHOW_WHEN_NEEDED;
+		return tscrollbar_container::SHOW_WHEN_NEEDED;
 	}
 }
 
