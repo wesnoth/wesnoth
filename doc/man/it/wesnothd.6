@@ -35,9 +35,10 @@ wesnothd \- Demone di rete per multigiocatore di Battle for
 .
 .SH DESCRIZIONE
 .
-Manages Battle for Wesnoth multiplayer games. See
-http://www.wesnoth.org/wiki/ServerAdministration on what commands the server
-accepts via the wesnoth client (/query ...) or the fifo.
+Gestisce le partite multigiocatore di Battle for Wesnoth. Vedi
+http://www.wesnoth.org/wiki/ServerAdministration per sapere quali comandi
+sono accettati dal server attraverso il client di wesnoth (/query ...) o il
+socket.
 .
 .SH OPZIONI
 .
@@ -171,9 +172,9 @@ Example: time="1D12h30m" results in a ban time of 1 day, 12 hours and 30
 minutes.
 .RE
 .P
-\fB[proxy]\fP A tag to tell the server to act as a proxy and forward the
-connected client's requests to the specified server.  Accepts the same keys
-as \fB[redirect]\fP.
+\fB[proxy]\fP Un tag che indica al server di fare da proxy e di inoltrare le
+richieste dei client connessi al server specificato. Accetta le stesse
+parole chiave di \fB[redirect]\fP.
 .
 .SH AUTORE
 .

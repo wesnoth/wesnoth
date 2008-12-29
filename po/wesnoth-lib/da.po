@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-12-26 22:19+0100\n"
+"POT-Creation-Date: 2008-12-29 16:00+0100\n"
 "PO-Revision-Date: 2008-01-13 20:06+0100\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Dansk-gruppen <dansk@dansk-gruppen.dk>\n"
@@ -370,7 +370,7 @@ msgstr ""
 #. [column]
 #: data/gui/default/window/addon_connect.cfg:32
 #: data/gui/default/window/mp_connect.cfg:31
-#: data/gui/default/window/mp_method_selection.cfg:151
+#: data/gui/default/window/mp_method_selection.cfg:147
 #: data/gui/default/window/mp_server_list.cfg:31
 #, fuzzy
 msgid "Connect to Server"
@@ -419,8 +419,8 @@ msgstr ""
 #: data/gui/default/window/language_selection.cfg:136
 #: data/gui/default/window/mp_connect.cfg:190
 #: data/gui/default/window/mp_create_game.cfg:552
-#: data/gui/default/window/mp_method_selection.cfg:223
-#: data/gui/default/window/mp_server_list.cfg:215 src/construct_dialog.cpp:133
+#: data/gui/default/window/mp_method_selection.cfg:219
+#: data/gui/default/window/mp_server_list.cfg:212 src/construct_dialog.cpp:133
 #: src/construct_dialog.cpp:136
 msgid "Cancel"
 msgstr "Annuller"
@@ -576,7 +576,7 @@ msgstr ""
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #: data/gui/default/window/editor_settings.cfg:230
-#: data/gui/default/window/mp_method_selection.cfg:209
+#: data/gui/default/window/mp_method_selection.cfg:205
 #: src/construct_dialog.cpp:125 src/construct_dialog.cpp:132
 msgid "OK"
 msgstr "O.k."
@@ -721,54 +721,54 @@ msgid "Login:"
 msgstr ""
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:140
+#: data/gui/default/window/mp_method_selection.cfg:136
 msgid "Join Official Server"
 msgstr ""
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:141
+#: data/gui/default/window/mp_method_selection.cfg:137
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr ""
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:152
+#: data/gui/default/window/mp_method_selection.cfg:148
 msgid "Join a different server"
 msgstr ""
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:162
+#: data/gui/default/window/mp_method_selection.cfg:158
 msgid "Host Networked Game"
 msgstr ""
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:163
+#: data/gui/default/window/mp_method_selection.cfg:159
 msgid "Host a game using dedicated server 'wesnothd'"
 msgstr ""
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:173
+#: data/gui/default/window/mp_method_selection.cfg:169
 #, fuzzy
 msgid "Local Game"
 msgstr "Indlæs spil"
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:174
+#: data/gui/default/window/mp_method_selection.cfg:170
 msgid "Play a multiplayer game with the AI or humans sharing the same machine"
 msgstr ""
 
 #. [label]
-#: data/gui/default/window/mp_server_list.cfg:87
+#: data/gui/default/window/mp_server_list.cfg:84
 #, fuzzy
 msgid "Name"
 msgstr "Navn: "
 
 #. [label]
-#: data/gui/default/window/mp_server_list.cfg:99
+#: data/gui/default/window/mp_server_list.cfg:96
 msgid "Address"
 msgstr ""
 
 #. [button]: id=ok
-#: data/gui/default/window/mp_server_list.cfg:201
+#: data/gui/default/window/mp_server_list.cfg:198
 #, fuzzy
 msgid "Select"
 msgstr "Vælg alt"
@@ -1299,100 +1299,95 @@ msgstr "Ingen kendte temaer. Prøv at ændre inde fra et eksisterende spil."
 msgid "Find $filename server binary to host networked games"
 msgstr ""
 
-#: src/gui/dialogs/mp_create_game.cpp:76 src/hotkeys.cpp:64
+#: src/gui/dialogs/mp_create_game.cpp:78 src/hotkeys.cpp:64
 msgid "Load Game"
 msgstr "Indlæs spil"
 
-#: src/gui/dialogs/mp_create_game.cpp:77
+#: src/gui/dialogs/mp_create_game.cpp:79
 #, fuzzy
 msgid "Load Game..."
 msgstr "Indlæs spil"
 
-#: src/gui/dialogs/title_screen.cpp:71
+#: src/gui/dialogs/title_screen.cpp:73
 msgid "Version"
 msgstr ""
 
-#: src/gui/widgets/canvas.cpp:290
+#: src/gui/widgets/canvas.cpp:292
 msgid "Line doesn't fit on canvas."
 msgstr ""
 
-#: src/gui/widgets/canvas.cpp:425
+#: src/gui/widgets/canvas.cpp:427
 msgid "Rectangle doesn't fit on canvas."
 msgstr ""
 
-#: src/gui/widgets/canvas.cpp:791
+#: src/gui/widgets/canvas.cpp:793
 msgid "Text has a font size of 0."
 msgstr ""
 
-#: src/gui/widgets/canvas.cpp:856
+#: src/gui/widgets/canvas.cpp:858
 msgid "Text doesn't start on canvas."
 msgstr ""
 
-#: src/gui/widgets/helper.cpp:167
+#: src/gui/widgets/helper.cpp:169
 #, fuzzy
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr "Ingen server er defineret."
 
-#: src/gui/widgets/settings.cpp:123
+#: src/gui/widgets/settings.cpp:124
 #, fuzzy
 msgid "No default gui defined."
 msgstr "Ingen server er defineret."
 
-#: src/gui/widgets/settings.cpp:253
+#: src/gui/widgets/settings.cpp:254
 msgid "Window not defined."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:317
+#: src/gui/widgets/settings.cpp:318
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:429 src/gui/widgets/window_builder.cpp:285
+#: src/gui/widgets/settings.cpp:430 src/gui/widgets/window_builder.cpp:284
 #, fuzzy
 msgid "No resolution defined."
 msgstr "Ingen server er defineret."
 
-#: src/gui/widgets/settings.cpp:461
+#: src/gui/widgets/settings.cpp:462
 #, fuzzy
 msgid "No state or draw section defined."
 msgstr "Ingen server er defineret."
 
-#: src/gui/widgets/settings.cpp:710
-#, fuzzy
-msgid "No scrollbar defined."
-msgstr "Ingen server er defineret."
-
-#: src/gui/widgets/settings.cpp:716 src/gui/widgets/settings.cpp:875
-#: src/gui/widgets/window_builder.cpp:376
-#: src/gui/widgets/window_builder.cpp:989
-#: src/gui/widgets/window_builder.cpp:1204
+#: src/gui/widgets/settings.cpp:705 src/gui/widgets/settings.cpp:861
+#: src/gui/widgets/window_builder.cpp:375
+#: src/gui/widgets/window_builder.cpp:899
+#: src/gui/widgets/window_builder.cpp:1103
 #, fuzzy
 msgid "No grid defined."
 msgstr "Ingen server er defineret."
 
-#: src/gui/widgets/window_builder.cpp:504
+#: src/gui/widgets/window_builder.cpp:503
 msgid "A row must have a column."
 msgstr ""
 
-#: src/gui/widgets/window_builder.cpp:505
+#: src/gui/widgets/window_builder.cpp:504
 msgid "Number of columns differ."
 msgstr ""
 
-#: src/gui/widgets/window_builder.cpp:743
+#: src/gui/widgets/window_builder.cpp:742
 #, fuzzy
 msgid "No list defined."
 msgstr "Ingen server er defineret."
 
-#: src/gui/widgets/window_builder.cpp:746
+#: src/gui/widgets/window_builder.cpp:745
 msgid "A 'list_definition' should contain one row."
 msgstr ""
 
-#: src/gui/widgets/window_builder.cpp:765
+#: src/gui/widgets/window_builder.cpp:764
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr ""
 
-#: src/gui/widgets/window_builder.cpp:1131
+#: src/gui/widgets/window_builder.cpp:1030
 msgid "The number of value_labels and values don't match."
 msgstr ""
 
@@ -1902,15 +1897,15 @@ msgstr "Indland"
 msgid "Island"
 msgstr "Ø"
 
-#: src/marked-up_text.cpp:330
+#: src/marked-up_text.cpp:332
 msgid "The maximum text width is less than 1."
 msgstr "Den maksimale tekstbredde er mindre end 1."
 
-#: src/minimap.cpp:83
+#: src/minimap.cpp:85
 msgid "Could not get image for terrain: $terrain."
 msgstr "Kunne ikke indlæse terrænbillede: $terrain."
 
-#: src/minimap.cpp:107 src/minimap.cpp:119
+#: src/minimap.cpp:109 src/minimap.cpp:121
 msgid "Error creating or aquiring an image."
 msgstr "Fejl ved oprettelse eller indlæsning af billede."
 
@@ -1971,7 +1966,7 @@ msgstr "Vælg opløsning"
 msgid "Error"
 msgstr "Fejl"
 
-#: src/terrain_translation.cpp:687
+#: src/terrain_translation.cpp:689
 msgid ""
 "A terrain with a string with more than 4 characters has been found, the "
 "affected terrain is :"
@@ -1979,7 +1974,7 @@ msgstr ""
 "Et terræn med en streng på mere end 4 karakterer er fundet, det drejer sig "
 "om :"
 
-#: src/wml_exception.cpp:50
+#: src/wml_exception.cpp:52
 msgid ""
 "An error due to possible invalid WML occured\n"
 "The error message is :"
@@ -1987,11 +1982,11 @@ msgstr ""
 "En fejl på grund af mulig ugyldig WML opstod\n"
 "Fejlbeskeden er :"
 
-#: src/wml_exception.cpp:52
+#: src/wml_exception.cpp:54
 msgid "When reporting the bug please include the following error message :"
 msgstr "Når du fejlmelder så inkluder venligst den følgende fejlbesked :"
 
-#: src/wml_exception.cpp:70
+#: src/wml_exception.cpp:72
 msgid ""
 "In section '[$section|]' where '$primary_key| = $primary_value' the "
 "mandatory key '$key|' isn't set."
@@ -1999,10 +1994,14 @@ msgstr ""
 "I afsnit '[$section|]' hvor '$primary_key| = $primary_value' den krævede "
 "nøgle '$key|' ikke er indstillet."
 
-#: src/wml_exception.cpp:73
+#: src/wml_exception.cpp:75
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr ""
 "I afsnit '[$section|]' hvor den krævede nøgle '$key|' ikke er instillet."
+
+#, fuzzy
+#~ msgid "No scrollbar defined."
+#~ msgstr "Ingen server er defineret."
 
 #~ msgid "Your modifications to the map will be lost. Continue?"
 #~ msgstr "Ønsker du at fortsætte? Dine ændringer til kortet vil blive tabt."

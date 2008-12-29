@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-12-26 22:19+0100\n"
+"POT-Creation-Date: 2008-12-29 16:00+0100\n"
 "PO-Revision-Date: 2008-12-12 00:18+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
@@ -378,7 +378,7 @@ msgstr "Neschůdný"
 #. [column]
 #: data/gui/default/window/addon_connect.cfg:32
 #: data/gui/default/window/mp_connect.cfg:31
-#: data/gui/default/window/mp_method_selection.cfg:151
+#: data/gui/default/window/mp_method_selection.cfg:147
 #: data/gui/default/window/mp_server_list.cfg:31
 msgid "Connect to Server"
 msgstr "Připoj se na server"
@@ -424,8 +424,8 @@ msgstr ""
 #: data/gui/default/window/language_selection.cfg:136
 #: data/gui/default/window/mp_connect.cfg:190
 #: data/gui/default/window/mp_create_game.cfg:552
-#: data/gui/default/window/mp_method_selection.cfg:223
-#: data/gui/default/window/mp_server_list.cfg:215 src/construct_dialog.cpp:133
+#: data/gui/default/window/mp_method_selection.cfg:219
+#: data/gui/default/window/mp_server_list.cfg:212 src/construct_dialog.cpp:133
 #: src/construct_dialog.cpp:136
 msgid "Cancel"
 msgstr "Zrušit"
@@ -571,7 +571,7 @@ msgstr ""
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #: data/gui/default/window/editor_settings.cfg:230
-#: data/gui/default/window/mp_method_selection.cfg:209
+#: data/gui/default/window/mp_method_selection.cfg:205
 #: src/construct_dialog.cpp:125 src/construct_dialog.cpp:132
 msgid "OK"
 msgstr "OK"
@@ -715,53 +715,53 @@ msgid "Login:"
 msgstr "Přihlášení:"
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:140
+#: data/gui/default/window/mp_method_selection.cfg:136
 msgid "Join Official Server"
 msgstr "Připoj se na oficiální server"
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:141
+#: data/gui/default/window/mp_method_selection.cfg:137
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Přihlaš se na oficiální herní server Wesnothu"
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:152
+#: data/gui/default/window/mp_method_selection.cfg:148
 msgid "Join a different server"
 msgstr "Připoj se na jiný server"
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:162
+#: data/gui/default/window/mp_method_selection.cfg:158
 msgid "Host Networked Game"
 msgstr "Hostuj síťovou hru"
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:163
+#: data/gui/default/window/mp_method_selection.cfg:159
 msgid "Host a game using dedicated server 'wesnothd'"
 msgstr ""
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:173
+#: data/gui/default/window/mp_method_selection.cfg:169
 msgid "Local Game"
 msgstr "Místní hra"
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:174
+#: data/gui/default/window/mp_method_selection.cfg:170
 msgid "Play a multiplayer game with the AI or humans sharing the same machine"
 msgstr ""
 "Hrej hru více hráčů s lidmi nebo počítačovými protivníky na jednom stroji"
 
 #. [label]
-#: data/gui/default/window/mp_server_list.cfg:87
+#: data/gui/default/window/mp_server_list.cfg:84
 msgid "Name"
 msgstr "Název"
 
 #. [label]
-#: data/gui/default/window/mp_server_list.cfg:99
+#: data/gui/default/window/mp_server_list.cfg:96
 msgid "Address"
 msgstr "Adresa"
 
 #. [button]: id=ok
-#: data/gui/default/window/mp_server_list.cfg:201
+#: data/gui/default/window/mp_server_list.cfg:198
 #, fuzzy
 msgid "Select"
 msgstr "Vyber vše"
@@ -1293,95 +1293,91 @@ msgstr "Žádná známá témata. Zkus změnit během existující hry."
 msgid "Find $filename server binary to host networked games"
 msgstr ""
 
-#: src/gui/dialogs/mp_create_game.cpp:76 src/hotkeys.cpp:64
+#: src/gui/dialogs/mp_create_game.cpp:78 src/hotkeys.cpp:64
 msgid "Load Game"
 msgstr "Načti hru"
 
-#: src/gui/dialogs/mp_create_game.cpp:77
+#: src/gui/dialogs/mp_create_game.cpp:79
 msgid "Load Game..."
 msgstr "Načti hru..."
 
-#: src/gui/dialogs/title_screen.cpp:71
+#: src/gui/dialogs/title_screen.cpp:73
 msgid "Version"
 msgstr "Verze"
 
-#: src/gui/widgets/canvas.cpp:290
+#: src/gui/widgets/canvas.cpp:292
 msgid "Line doesn't fit on canvas."
 msgstr "Čára se nevejde na plátno."
 
-#: src/gui/widgets/canvas.cpp:425
+#: src/gui/widgets/canvas.cpp:427
 msgid "Rectangle doesn't fit on canvas."
 msgstr "Obdélník se nevejde na plátno."
 
-#: src/gui/widgets/canvas.cpp:791
+#: src/gui/widgets/canvas.cpp:793
 msgid "Text has a font size of 0."
 msgstr "Text má výšku fontu nula."
 
-#: src/gui/widgets/canvas.cpp:856
+#: src/gui/widgets/canvas.cpp:858
 msgid "Text doesn't start on canvas."
 msgstr "Text nezačíná na plátně."
 
-#: src/gui/widgets/helper.cpp:167
+#: src/gui/widgets/helper.cpp:169
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr "Povinný ovládací prvek '$id' nebyl definován."
 
-#: src/gui/widgets/settings.cpp:123
+#: src/gui/widgets/settings.cpp:124
 #, fuzzy
 msgid "No default gui defined."
 msgstr "Nebyl definován žádný server."
 
-#: src/gui/widgets/settings.cpp:253
+#: src/gui/widgets/settings.cpp:254
 msgid "Window not defined."
 msgstr "Okno není definováno."
 
-#: src/gui/widgets/settings.cpp:317
+#: src/gui/widgets/settings.cpp:318
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr "Definice ovladače '$definition' neobsahuje definici pro '$id'."
 
-#: src/gui/widgets/settings.cpp:429 src/gui/widgets/window_builder.cpp:285
+#: src/gui/widgets/settings.cpp:430 src/gui/widgets/window_builder.cpp:284
 msgid "No resolution defined."
 msgstr "Není definováno žádné rozlišení."
 
-#: src/gui/widgets/settings.cpp:461
+#: src/gui/widgets/settings.cpp:462
 #, fuzzy
 msgid "No state or draw section defined."
 msgstr "Nebyl definován žádný server."
 
-#: src/gui/widgets/settings.cpp:710
-msgid "No scrollbar defined."
-msgstr "Není definován žádný posuvník."
-
-#: src/gui/widgets/settings.cpp:716 src/gui/widgets/settings.cpp:875
-#: src/gui/widgets/window_builder.cpp:376
-#: src/gui/widgets/window_builder.cpp:989
-#: src/gui/widgets/window_builder.cpp:1204
+#: src/gui/widgets/settings.cpp:705 src/gui/widgets/settings.cpp:861
+#: src/gui/widgets/window_builder.cpp:375
+#: src/gui/widgets/window_builder.cpp:899
+#: src/gui/widgets/window_builder.cpp:1103
 msgid "No grid defined."
 msgstr "Není definována žádná mřížka."
 
-#: src/gui/widgets/window_builder.cpp:504
+#: src/gui/widgets/window_builder.cpp:503
 msgid "A row must have a column."
 msgstr "Řádek musí mít sloupec."
 
-#: src/gui/widgets/window_builder.cpp:505
+#: src/gui/widgets/window_builder.cpp:504
 msgid "Number of columns differ."
 msgstr "Počet sloupců se liší."
 
-#: src/gui/widgets/window_builder.cpp:743
+#: src/gui/widgets/window_builder.cpp:742
 msgid "No list defined."
 msgstr "Nebyl definován žádný seznam."
 
-#: src/gui/widgets/window_builder.cpp:746
+#: src/gui/widgets/window_builder.cpp:745
 msgid "A 'list_definition' should contain one row."
 msgstr "Pro 'list_definition' je vyžadována alespoň jedna řádka."
 
-#: src/gui/widgets/window_builder.cpp:765
+#: src/gui/widgets/window_builder.cpp:764
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr ""
 "'list_data' musí obsahovat stejný počet sloupců jako 'list_definition'."
 
-#: src/gui/widgets/window_builder.cpp:1131
+#: src/gui/widgets/window_builder.cpp:1030
 msgid "The number of value_labels and values don't match."
 msgstr "Nesouhlasí počet value_labels a values."
 
@@ -1881,15 +1877,15 @@ msgstr "Vnitrozemí"
 msgid "Island"
 msgstr "Ostrov"
 
-#: src/marked-up_text.cpp:330
+#: src/marked-up_text.cpp:332
 msgid "The maximum text width is less than 1."
 msgstr "Maximální šířka textu je menší než 1."
 
-#: src/minimap.cpp:83
+#: src/minimap.cpp:85
 msgid "Could not get image for terrain: $terrain."
 msgstr "Nelze načíst obrázek pro terén $terrain."
 
-#: src/minimap.cpp:107 src/minimap.cpp:119
+#: src/minimap.cpp:109 src/minimap.cpp:121
 msgid "Error creating or aquiring an image."
 msgstr "Chyba při vytváření nebo získávání obrázku."
 
@@ -1949,13 +1945,13 @@ msgstr "Vyber si rozlišení"
 msgid "Error"
 msgstr "Chyba"
 
-#: src/terrain_translation.cpp:687
+#: src/terrain_translation.cpp:689
 msgid ""
 "A terrain with a string with more than 4 characters has been found, the "
 "affected terrain is :"
 msgstr "Nalezen terén s řetězcem s více než čtyřmi znaky, postižený terén :"
 
-#: src/wml_exception.cpp:50
+#: src/wml_exception.cpp:52
 msgid ""
 "An error due to possible invalid WML occured\n"
 "The error message is :"
@@ -1963,11 +1959,11 @@ msgstr ""
 "Nastala chyba, pravděpodobně kvůli neplatnému WML.\n"
 "Chybová zpráva :"
 
-#: src/wml_exception.cpp:52
+#: src/wml_exception.cpp:54
 msgid "When reporting the bug please include the following error message :"
 msgstr "Při oznamování chyby prosím uveďte následující chybovou zprávu :"
 
-#: src/wml_exception.cpp:70
+#: src/wml_exception.cpp:72
 msgid ""
 "In section '[$section|]' where '$primary_key| = $primary_value' the "
 "mandatory key '$key|' isn't set."
@@ -1975,9 +1971,12 @@ msgstr ""
 "V sekci '[$section|]', kde '$primary_key| = $primary_value', není nastaven "
 "povinný klíč '$key|'."
 
-#: src/wml_exception.cpp:73
+#: src/wml_exception.cpp:75
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr "V sekci '[$section|]' není nastaven povinný klíč '$key|'."
+
+#~ msgid "No scrollbar defined."
+#~ msgstr "Není definován žádný posuvník."
 
 #~ msgid "Ok"
 #~ msgstr "Ok"

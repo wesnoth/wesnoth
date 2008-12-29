@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-lib\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-12-26 22:19+0100\n"
+"POT-Creation-Date: 2008-12-29 16:00+0100\n"
 "PO-Revision-Date: 2008-12-19 13:46+0200\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish <wesnoth-tr@googlegroups.com>\n"
@@ -364,7 +364,7 @@ msgstr "Yürünmez"
 #. [column]
 #: data/gui/default/window/addon_connect.cfg:32
 #: data/gui/default/window/mp_connect.cfg:31
-#: data/gui/default/window/mp_method_selection.cfg:151
+#: data/gui/default/window/mp_method_selection.cfg:147
 #: data/gui/default/window/mp_server_list.cfg:31
 msgid "Connect to Server"
 msgstr "Sunucuya Bağlan"
@@ -410,8 +410,8 @@ msgstr "Bağlan"
 #: data/gui/default/window/language_selection.cfg:136
 #: data/gui/default/window/mp_connect.cfg:190
 #: data/gui/default/window/mp_create_game.cfg:552
-#: data/gui/default/window/mp_method_selection.cfg:223
-#: data/gui/default/window/mp_server_list.cfg:215 src/construct_dialog.cpp:133
+#: data/gui/default/window/mp_method_selection.cfg:219
+#: data/gui/default/window/mp_server_list.cfg:212 src/construct_dialog.cpp:133
 #: src/construct_dialog.cpp:136
 msgid "Cancel"
 msgstr "İptal"
@@ -554,7 +554,7 @@ msgstr "Aynı anda birden fazla harita açmayı mümkün kılar (MDI)"
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #: data/gui/default/window/editor_settings.cfg:230
-#: data/gui/default/window/mp_method_selection.cfg:209
+#: data/gui/default/window/mp_method_selection.cfg:205
 #: src/construct_dialog.cpp:125 src/construct_dialog.cpp:132
 msgid "OK"
 msgstr "Tamam"
@@ -690,54 +690,54 @@ msgid "Login:"
 msgstr "Kullanıcı:"
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:140
+#: data/gui/default/window/mp_method_selection.cfg:136
 msgid "Join Official Server"
 msgstr "Resmi Sunucuya Bağlan"
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:141
+#: data/gui/default/window/mp_method_selection.cfg:137
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Resmi Wesnoth çok oyunculu oyun sunucusunda oturum açar"
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:152
+#: data/gui/default/window/mp_method_selection.cfg:148
 msgid "Join a different server"
 msgstr "Başka bir sunucuya bağlan"
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:162
+#: data/gui/default/window/mp_method_selection.cfg:158
 msgid "Host Networked Game"
 msgstr "Sunucuyu Başlat"
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:163
+#: data/gui/default/window/mp_method_selection.cfg:159
 #, fuzzy
 msgid "Host a game using dedicated server 'wesnothd'"
 msgstr "Kendi wesnothd sunucunuzu başlatırsınız"
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:173
+#: data/gui/default/window/mp_method_selection.cfg:169
 msgid "Local Game"
 msgstr "Yerel Oyun"
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:174
+#: data/gui/default/window/mp_method_selection.cfg:170
 msgid "Play a multiplayer game with the AI or humans sharing the same machine"
 msgstr ""
 "Oyunu bu makine üzerinde arkadaşlarınızla veya bilgisayara karşı oynarsınız"
 
 #. [label]
-#: data/gui/default/window/mp_server_list.cfg:87
+#: data/gui/default/window/mp_server_list.cfg:84
 msgid "Name"
 msgstr "İsim"
 
 #. [label]
-#: data/gui/default/window/mp_server_list.cfg:99
+#: data/gui/default/window/mp_server_list.cfg:96
 msgid "Address"
 msgstr "Adres"
 
 #. [button]: id=ok
-#: data/gui/default/window/mp_server_list.cfg:201
+#: data/gui/default/window/mp_server_list.cfg:198
 msgid "Select"
 msgstr "Seçiniz"
 
@@ -1263,92 +1263,88 @@ msgstr "Bilinen bir tema yok. Mevcut bir oyunun içinden değiştirmeyi deneyin.
 msgid "Find $filename server binary to host networked games"
 msgstr "Ağ oyunlarını sunacak $filename sunucu çalıştırılabilirini bulur."
 
-#: src/gui/dialogs/mp_create_game.cpp:76 src/hotkeys.cpp:64
+#: src/gui/dialogs/mp_create_game.cpp:78 src/hotkeys.cpp:64
 msgid "Load Game"
 msgstr "Oyun Yükle"
 
-#: src/gui/dialogs/mp_create_game.cpp:77
+#: src/gui/dialogs/mp_create_game.cpp:79
 msgid "Load Game..."
 msgstr "Oyun Yükle..."
 
-#: src/gui/dialogs/title_screen.cpp:71
+#: src/gui/dialogs/title_screen.cpp:73
 msgid "Version"
 msgstr "Sürüm"
 
-#: src/gui/widgets/canvas.cpp:290
+#: src/gui/widgets/canvas.cpp:292
 msgid "Line doesn't fit on canvas."
 msgstr "Çizgi tuvale sığmıyor."
 
-#: src/gui/widgets/canvas.cpp:425
+#: src/gui/widgets/canvas.cpp:427
 msgid "Rectangle doesn't fit on canvas."
 msgstr "Dörtgen tuvali sığmıyor."
 
-#: src/gui/widgets/canvas.cpp:791
+#: src/gui/widgets/canvas.cpp:793
 msgid "Text has a font size of 0."
 msgstr "Yazı tipi boyutu 0."
 
-#: src/gui/widgets/canvas.cpp:856
+#: src/gui/widgets/canvas.cpp:858
 msgid "Text doesn't start on canvas."
 msgstr "Metin tuvale sığmıyor."
 
-#: src/gui/widgets/helper.cpp:167
+#: src/gui/widgets/helper.cpp:169
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr "Zorunlu pencere gereci 'id' tanımlı değil."
 
-#: src/gui/widgets/settings.cpp:123
+#: src/gui/widgets/settings.cpp:124
 msgid "No default gui defined."
 msgstr "Tanımlı bir arayüz yok."
 
-#: src/gui/widgets/settings.cpp:253
+#: src/gui/widgets/settings.cpp:254
 msgid "Window not defined."
 msgstr "Pencere tanımsız."
 
-#: src/gui/widgets/settings.cpp:317
+#: src/gui/widgets/settings.cpp:318
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr "Pencere gereci tanımı '$definition', '$id' için tanım içermiyor."
 
-#: src/gui/widgets/settings.cpp:429 src/gui/widgets/window_builder.cpp:285
+#: src/gui/widgets/settings.cpp:430 src/gui/widgets/window_builder.cpp:284
 msgid "No resolution defined."
 msgstr "Tanımlı bir çözünürlük yok."
 
-#: src/gui/widgets/settings.cpp:461
+#: src/gui/widgets/settings.cpp:462
 msgid "No state or draw section defined."
 msgstr "Tanımlı durum veya çizim bölümü yok."
 
-#: src/gui/widgets/settings.cpp:710
-msgid "No scrollbar defined."
-msgstr "Tanımlı bir kaydırma çubuğu yok."
-
-#: src/gui/widgets/settings.cpp:716 src/gui/widgets/settings.cpp:875
-#: src/gui/widgets/window_builder.cpp:376
-#: src/gui/widgets/window_builder.cpp:989
-#: src/gui/widgets/window_builder.cpp:1204
+#: src/gui/widgets/settings.cpp:705 src/gui/widgets/settings.cpp:861
+#: src/gui/widgets/window_builder.cpp:375
+#: src/gui/widgets/window_builder.cpp:899
+#: src/gui/widgets/window_builder.cpp:1103
 msgid "No grid defined."
 msgstr "Tanımlı bir ızgara yok."
 
-#: src/gui/widgets/window_builder.cpp:504
+#: src/gui/widgets/window_builder.cpp:503
 msgid "A row must have a column."
 msgstr "Her satırın bir sütunu olmalı."
 
-#: src/gui/widgets/window_builder.cpp:505
+#: src/gui/widgets/window_builder.cpp:504
 msgid "Number of columns differ."
 msgstr "Sütun sayıları farklı."
 
-#: src/gui/widgets/window_builder.cpp:743
+#: src/gui/widgets/window_builder.cpp:742
 msgid "No list defined."
 msgstr "Tanımlı bir liste yok."
 
-#: src/gui/widgets/window_builder.cpp:746
+#: src/gui/widgets/window_builder.cpp:745
 msgid "A 'list_definition' should contain one row."
 msgstr "Bir 'list_definition' tek bir satır içermelidir."
 
-#: src/gui/widgets/window_builder.cpp:765
+#: src/gui/widgets/window_builder.cpp:764
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr "'list_data', 'list_definition' ile aynı sütun sayısında olmalı."
 
-#: src/gui/widgets/window_builder.cpp:1131
+#: src/gui/widgets/window_builder.cpp:1030
 msgid "The number of value_labels and values don't match."
 msgstr "Değer etiketleri ile değerlerin sayısı aynı değil."
 
@@ -1836,15 +1832,15 @@ msgstr "Kara"
 msgid "Island"
 msgstr "Ada"
 
-#: src/marked-up_text.cpp:330
+#: src/marked-up_text.cpp:332
 msgid "The maximum text width is less than 1."
 msgstr "Azami metin genişliği 1’den küçük."
 
-#: src/minimap.cpp:83
+#: src/minimap.cpp:85
 msgid "Could not get image for terrain: $terrain."
 msgstr "$terrain için resim alınamadı."
 
-#: src/minimap.cpp:107 src/minimap.cpp:119
+#: src/minimap.cpp:109 src/minimap.cpp:121
 msgid "Error creating or aquiring an image."
 msgstr "Bir resim edinilirken veya oluşturulurken hata."
 
@@ -1904,13 +1900,13 @@ msgstr "Çözünürlüğü Seç"
 msgid "Error"
 msgstr "Hata"
 
-#: src/terrain_translation.cpp:687
+#: src/terrain_translation.cpp:689
 msgid ""
 "A terrain with a string with more than 4 characters has been found, the "
 "affected terrain is :"
 msgstr "Dizgesi 4 karakterden daha uzun bir arazi bulundu; etkilenen zemin:"
 
-#: src/wml_exception.cpp:50
+#: src/wml_exception.cpp:52
 msgid ""
 "An error due to possible invalid WML occured\n"
 "The error message is :"
@@ -1918,13 +1914,13 @@ msgstr ""
 "Muhtemelen geçersiz bir WML’den dolayı bir hata oluştu\n"
 "Hata iletisi:"
 
-#: src/wml_exception.cpp:52
+#: src/wml_exception.cpp:54
 msgid "When reporting the bug please include the following error message :"
 msgstr ""
 "Yazılım hatası bildirirken lütfen aşağıdaki hata iletisini belirtmeyi "
 "unutmayın:"
 
-#: src/wml_exception.cpp:70
+#: src/wml_exception.cpp:72
 msgid ""
 "In section '[$section|]' where '$primary_key| = $primary_value' the "
 "mandatory key '$key|' isn't set."
@@ -1932,6 +1928,9 @@ msgstr ""
 "‘[$section|]’ bölümünde ‘$primary_key| = $primary_value’ olan yerde zorunlu "
 "‘$key|’ anahtarı belirtilmemiş."
 
-#: src/wml_exception.cpp:73
+#: src/wml_exception.cpp:75
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr "‘[$section|]’ bölümünde zorunlu ‘$key|’ anahtarı belirtilmemiş."
+
+#~ msgid "No scrollbar defined."
+#~ msgstr "Tanımlı bir kaydırma çubuğu yok."

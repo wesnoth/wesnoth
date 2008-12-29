@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-12-26 22:19+0100\n"
+"POT-Creation-Date: 2008-12-29 16:00+0100\n"
 "PO-Revision-Date: 2008-12-08 15:39+0100\n"
 "Last-Translator: Leandro Regueiro <leandro DOT regueiro AT gmail DOT com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
@@ -19,84 +19,84 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#. [editor_group]: id=all
-#: data/core/editor-groups.cfg:11
-msgid "all"
-msgstr "todo"
-
-#. [editor_group]: id=water
-#: data/core/editor-groups.cfg:17
-msgid "water"
-msgstr "auga"
-
-#. [editor_group]: id=flat
-#: data/core/editor-groups.cfg:29
-msgid "flat"
-msgstr "chaira"
-
-#. [editor_group]: id=desert
-#: data/core/editor-groups.cfg:35
-msgid "desert"
-msgstr "deserto"
-
-#. [editor_group]: id=forest
-#: data/core/editor-groups.cfg:41
-msgid "forest"
-msgstr "bosque"
-
-#. [editor_group]: id=frozen
-#: data/core/editor-groups.cfg:47
-msgid "frozen"
-msgstr "conxelado"
-
-#. [editor_group]: id=rough
-#: data/core/editor-groups.cfg:53
-msgid "rough"
-msgstr "abrupto"
-
-#. [editor_group]: id=cave
-#: data/core/editor-groups.cfg:59
-msgid "cave"
-msgstr "cova"
-
-#. [editor_group]: id=village
-#: data/core/editor-groups.cfg:65
-msgid "village"
-msgstr "vila"
-
-#. [editor_group]: id=castle
-#: data/core/editor-groups.cfg:71
-msgid "castle"
-msgstr "castelo"
-
-#. [editor_group]: id=special
-#: data/core/editor-groups.cfg:77
-msgid "special"
-msgstr "especial"
-
 #. [brush]
-#: data/core/editor2-brushes.cfg:4
+#: data/core/editor/brushes.cfg:5
 msgid "Single Hex"
 msgstr ""
 
 #. [brush]
-#: data/core/editor2-brushes.cfg:14
+#: data/core/editor/brushes.cfg:15
 msgid "Radius 1 Hex"
 msgstr ""
 
 #. [brush]
-#: data/core/editor2-brushes.cfg:24
+#: data/core/editor/brushes.cfg:25
 msgid "Radius 2 Hex"
 msgstr ""
 
 #. [brush]
-#: data/core/editor2-brushes.cfg:54
+#: data/core/editor/brushes.cfg:55
 msgid "Hex Line NW-SE"
 msgstr "Liña hexagonal NO-SL"
 
-#. [editor2_tool_hint]: id=editor-tool-paint
-#. [editor2_tool_hint]: id=editor-tool-fill
-#: data/core/editor2-tool-hints.cfg:7 data/core/editor2-tool-hints.cfg:13
+#. [editor_group]: id=all
+#: data/core/editor/terrain-groups.cfg:10
+msgid "all"
+msgstr "todo"
+
+#. [editor_group]: id=water
+#: data/core/editor/terrain-groups.cfg:16
+msgid "water"
+msgstr "auga"
+
+#. [editor_group]: id=flat
+#: data/core/editor/terrain-groups.cfg:28
+msgid "flat"
+msgstr "chaira"
+
+#. [editor_group]: id=desert
+#: data/core/editor/terrain-groups.cfg:34
+msgid "desert"
+msgstr "deserto"
+
+#. [editor_group]: id=forest
+#: data/core/editor/terrain-groups.cfg:40
+msgid "forest"
+msgstr "bosque"
+
+#. [editor_group]: id=frozen
+#: data/core/editor/terrain-groups.cfg:46
+msgid "frozen"
+msgstr "conxelado"
+
+#. [editor_group]: id=rough
+#: data/core/editor/terrain-groups.cfg:52
+msgid "rough"
+msgstr "abrupto"
+
+#. [editor_group]: id=cave
+#: data/core/editor/terrain-groups.cfg:58
+msgid "cave"
+msgstr "cova"
+
+#. [editor_group]: id=village
+#: data/core/editor/terrain-groups.cfg:64
+msgid "village"
+msgstr "vila"
+
+#. [editor_group]: id=castle
+#: data/core/editor/terrain-groups.cfg:70
+msgid "castle"
+msgstr "castelo"
+
+#. [editor_group]: id=special
+#: data/core/editor/terrain-groups.cfg:76
+msgid "special"
+msgstr "especial"
+
+#. [editor_tool_hint]: id=editor-tool-paint
+#. [editor_tool_hint]: id=editor-tool-fill
+#: data/core/editor/tool-hints.cfg:7 data/core/editor/tool-hints.cfg:13
 msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only."
@@ -104,26 +104,27 @@ msgstr ""
 "Use o botón esquerdo/dereito do rato para pintar o terreo do primeiro/"
 "segundo plano. Prema Shift para pintar só a capa base."
 
-#. [editor2_tool_hint]: id=editor-tool-select
-#: data/core/editor2-tool-hints.cfg:19
+#. [editor_tool_hint]: id=editor-tool-select
+#: data/core/editor/tool-hints.cfg:19
 msgid ""
 "Left mouse button selects, right deselects. Hold Shift for magic-wand "
 "selection of tiles with same terrain."
 msgstr ""
 
-#. [editor2_tool_hint]: id=editor-tool-starting-position
-#: data/core/editor2-tool-hints.cfg:25
+#. [editor_tool_hint]: id=editor-tool-starting-position
+#: data/core/editor/tool-hints.cfg:25
 msgid ""
 "Left mouse button displays player selection, right clears. Number keys "
 "scroll to the starting position, alt+number sets respective starting "
 "position under cursor, delete clears."
 msgstr ""
 
-#. [editor2_tool_hint]: id=editor-paste
-#: data/core/editor2-tool-hints.cfg:30
+#. [editor_tool_hint]: id=editor-paste
+#: data/core/editor/tool-hints.cfg:30
+#, fuzzy
 msgid ""
-"Click to paste. Use the edit menu to transform the clipboard (rotate, "
-"mirror)."
+"Click to paste, zoom out for more accuracy when pasting large areas. Use the "
+"edit menu to transform the clipboard (rotate, mirror)."
 msgstr ""
 "Prema para pegar. Use o menú editar para transformar o portarretallos "
 "(rotar, espellar)."
@@ -153,23 +154,31 @@ msgstr "Ventá"
 msgid "villages"
 msgstr "vilas"
 
-#: src/editor2/editor_controller.cpp:117
+#: src/editor2/action.cpp:32
+msgid "Error creating action object"
+msgstr ""
+
+#: src/editor2/action.cpp:36
+msgid "Action not implemented"
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:123
 msgid "Quit Editor"
 msgstr "Saír do Editor"
 
-#: src/editor2/editor_controller.cpp:241
+#: src/editor2/editor_controller.cpp:260
 msgid "Fatal error"
 msgstr "Erro moi grave"
 
-#: src/editor2/editor_controller.cpp:255 src/editor2/editor_controller.cpp:952
+#: src/editor2/editor_controller.cpp:274 src/editor2/editor_controller.cpp:971
 msgid "(New Map)"
 msgstr "(Novo mapa)"
 
-#: src/editor2/editor_controller.cpp:261
+#: src/editor2/editor_controller.cpp:280
 msgid "Do you really want to quit?"
 msgstr "Está seguro de que desexa saír?"
 
-#: src/editor2/editor_controller.cpp:263
+#: src/editor2/editor_controller.cpp:282
 msgid ""
 "Do you really want to quit? Changes in the map since the last save will be "
 "lost."
@@ -177,7 +186,7 @@ msgstr ""
 "De verdade quere saír? Hanse perder os cambios realizados no mapa dende a "
 "última vez que se gardou."
 
-#: src/editor2/editor_controller.cpp:265
+#: src/editor2/editor_controller.cpp:284
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -185,130 +194,130 @@ msgstr ""
 "De verdade desexa saír? Os seguintes mapas foron modificados e hanse perder "
 "tódolos cambios realizados dende a última vez que se gardaron:"
 
-#: src/editor2/editor_controller.cpp:270
+#: src/editor2/editor_controller.cpp:289
 msgid "Quit"
 msgstr "Saír"
 
-#: src/editor2/editor_controller.cpp:327 src/editor2/editor_controller.cpp:439
-#: src/editor2/editor_controller.cpp:475 src/editor2/editor_controller.cpp:497
+#: src/editor2/editor_controller.cpp:346 src/editor2/editor_controller.cpp:458
+#: src/editor2/editor_controller.cpp:494 src/editor2/editor_controller.cpp:516
 msgid "Error"
 msgstr "Erro"
 
-#: src/editor2/editor_controller.cpp:327
+#: src/editor2/editor_controller.cpp:346
 msgid "No editor time-of-day found."
 msgstr "Non se atopou a hora do día do editor."
 
-#: src/editor2/editor_controller.cpp:363
+#: src/editor2/editor_controller.cpp:382
 msgid "Unsaved Changes"
 msgstr "Cambios non gardados"
 
-#: src/editor2/editor_controller.cpp:364
+#: src/editor2/editor_controller.cpp:383
 msgid ""
 "Do you want to discard all changes you made to the map since the last save?"
 msgstr ""
 "Desexa desbotar tódolos cambios que fixo no mapa dende a última vez que o "
 "gardou?"
 
-#: src/editor2/editor_controller.cpp:377
+#: src/editor2/editor_controller.cpp:396
 msgid "Choose a Map to Open"
 msgstr "Seleccione un mapa para abrilo"
 
-#: src/editor2/editor_controller.cpp:381
+#: src/editor2/editor_controller.cpp:400
 msgid "This map is already open."
 msgstr "Este mapa xa está aberto."
 
-#: src/editor2/editor_controller.cpp:419
+#: src/editor2/editor_controller.cpp:438
 msgid "Save the Map As"
 msgstr "Gardar o Mapa Coma"
 
-#: src/editor2/editor_controller.cpp:423
+#: src/editor2/editor_controller.cpp:442
 msgid "The file already exists. Do you want to overwrite it?"
 msgstr "O ficheiro xa existe. Desexa sobrescribilo?"
 
-#: src/editor2/editor_controller.cpp:439
+#: src/editor2/editor_controller.cpp:458
 msgid "No random map generators found."
 msgstr "Non se atoparon xeradores aleatorios de mapas."
 
-#: src/editor2/editor_controller.cpp:450
+#: src/editor2/editor_controller.cpp:469
 msgid "Map creation failed."
 msgstr "Fallo ó crear o mapa."
 
-#: src/editor2/editor_controller.cpp:465
+#: src/editor2/editor_controller.cpp:484
 msgid "Choose a mask to apply"
 msgstr "Escolla unha máscara para aplicar"
 
-#: src/editor2/editor_controller.cpp:472
+#: src/editor2/editor_controller.cpp:491
 msgid "Error loading mask"
 msgstr "Produciuse un erro ó cargar a máscara"
 
-#: src/editor2/editor_controller.cpp:487
+#: src/editor2/editor_controller.cpp:506
 msgid "Choose target map"
 msgstr "Escolla o mapa de destino"
 
-#: src/editor2/editor_controller.cpp:494 src/editor2/editor_controller.cpp:607
-#: src/editor2/editor_main.cpp:51
+#: src/editor2/editor_controller.cpp:513 src/editor2/editor_controller.cpp:626
+#: src/editor2/editor_main.cpp:53
 msgid "Error loading map"
 msgstr "Erro ó cargar o mapa"
 
-#: src/editor2/editor_controller.cpp:583
+#: src/editor2/editor_controller.cpp:602
 msgid "Map saved."
 msgstr "Gardouse o mapa."
 
-#: src/editor2/editor_controller.cpp:588
+#: src/editor2/editor_controller.cpp:607
 msgid "Could not save the map: $msg"
 msgstr "Non se puido garda-lo mapa: $msg"
 
-#: src/editor2/editor_controller.cpp:979
+#: src/editor2/editor_controller.cpp:998
 msgid "Undo"
 msgstr "Desfacer"
 
-#: src/editor2/editor_controller.cpp:981
+#: src/editor2/editor_controller.cpp:1000
 msgid "Can't Undo"
 msgstr "Non se pode desfacer"
 
-#: src/editor2/editor_controller.cpp:985
+#: src/editor2/editor_controller.cpp:1004
 msgid "Redo"
 msgstr "Refacer"
 
-#: src/editor2/editor_controller.cpp:987
+#: src/editor2/editor_controller.cpp:1006
 msgid "Can't Redo"
 msgstr "Non se pode refacer"
 
-#: src/editor2/editor_map.cpp:83
+#: src/editor2/editor_map.cpp:85
 msgid "Empty map file or file not found"
 msgstr "O ficheiro de mapa está baleiro ou non se atopou ningún ficheiro"
 
-#: src/editor2/editor_map.cpp:164 src/editor2/mouse_action.cpp:383
+#: src/editor2/editor_map.cpp:166 src/editor2/mouse_action.cpp:385
 msgid "Player"
 msgstr "Xogador"
 
-#: src/editor2/editor_map.cpp:283
+#: src/editor2/editor_map.cpp:285
 msgid "The size of the target map is different from the current map"
 msgstr "O tamaño do mapa de destino é diferente ó do mapa actual"
 
-#: src/editor2/editor_palettes.cpp:493
+#: src/editor2/editor_palettes.cpp:495
 msgid "FG"
 msgstr "Primeiro Plano"
 
-#: src/editor2/editor_palettes.cpp:495
+#: src/editor2/editor_palettes.cpp:497
 msgid "BG"
 msgstr "Fondo"
 
-#: src/editor2/mouse_action.cpp:380
+#: src/editor2/mouse_action.cpp:382
 msgid "(Player)^None"
 msgstr "Ningún"
 
-#: src/editor2/mouse_action.cpp:387
+#: src/editor2/mouse_action.cpp:389
 msgid "Choose player"
 msgstr "Escolla o xogador"
 
-#: src/editor2/mouse_action.cpp:388
+#: src/editor2/mouse_action.cpp:390
 msgid ""
 "Which player should start here? You can also use the 1-9 and delete keys to "
 "set/clear staring positions."
 msgstr ""
 
-#: src/gui/dialogs/editor_settings.cpp:117
+#: src/gui/dialogs/editor_settings.cpp:119
 msgid "Custom setting"
 msgstr "Opción personalizada"
 
