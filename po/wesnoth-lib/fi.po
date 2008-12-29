@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-12-29 16:00+0100\n"
+"POT-Creation-Date: 2008-12-30 00:27+0100\n"
 "PO-Revision-Date: 2008-05-31 21:51+0200\n"
 "Last-Translator: Samu Voutilainen <ec5983@kolumbus.fi>\n"
 "Language-Team: none\n"
@@ -368,7 +368,7 @@ msgstr ""
 #. [column]
 #: data/gui/default/window/addon_connect.cfg:32
 #: data/gui/default/window/mp_connect.cfg:31
-#: data/gui/default/window/mp_method_selection.cfg:147
+#: data/gui/default/window/mp_method_selection.cfg:148
 #: data/gui/default/window/mp_server_list.cfg:31
 #, fuzzy
 msgid "Connect to Server"
@@ -417,7 +417,7 @@ msgstr ""
 #: data/gui/default/window/language_selection.cfg:136
 #: data/gui/default/window/mp_connect.cfg:190
 #: data/gui/default/window/mp_create_game.cfg:552
-#: data/gui/default/window/mp_method_selection.cfg:219
+#: data/gui/default/window/mp_method_selection.cfg:220
 #: data/gui/default/window/mp_server_list.cfg:212 src/construct_dialog.cpp:133
 #: src/construct_dialog.cpp:136
 msgid "Cancel"
@@ -574,7 +574,7 @@ msgstr ""
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #: data/gui/default/window/editor_settings.cfg:230
-#: data/gui/default/window/mp_method_selection.cfg:205
+#: data/gui/default/window/mp_method_selection.cfg:206
 #: src/construct_dialog.cpp:125 src/construct_dialog.cpp:132
 msgid "OK"
 msgstr "Ok"
@@ -719,38 +719,38 @@ msgid "Login:"
 msgstr ""
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:136
+#: data/gui/default/window/mp_method_selection.cfg:137
 msgid "Join Official Server"
 msgstr ""
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:137
+#: data/gui/default/window/mp_method_selection.cfg:138
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr ""
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:148
+#: data/gui/default/window/mp_method_selection.cfg:149
 msgid "Join a different server"
 msgstr ""
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:158
+#: data/gui/default/window/mp_method_selection.cfg:159
 msgid "Host Networked Game"
 msgstr ""
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:159
+#: data/gui/default/window/mp_method_selection.cfg:160
 msgid "Host a game using dedicated server 'wesnothd'"
 msgstr ""
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:169
+#: data/gui/default/window/mp_method_selection.cfg:170
 #, fuzzy
 msgid "Local Game"
 msgstr "Lataa peli"
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:170
+#: data/gui/default/window/mp_method_selection.cfg:171
 msgid "Play a multiplayer game with the AI or humans sharing the same machine"
 msgstr ""
 
@@ -1348,8 +1348,8 @@ msgstr "Serveriä ei ole määritetty."
 
 #: src/gui/widgets/settings.cpp:705 src/gui/widgets/settings.cpp:861
 #: src/gui/widgets/window_builder.cpp:375
-#: src/gui/widgets/window_builder.cpp:899
-#: src/gui/widgets/window_builder.cpp:1103
+#: src/gui/widgets/window_builder.cpp:908
+#: src/gui/widgets/window_builder.cpp:1112
 #, fuzzy
 msgid "No grid defined."
 msgstr "Serveriä ei ole määritetty."
@@ -1362,21 +1362,21 @@ msgstr ""
 msgid "Number of columns differ."
 msgstr ""
 
-#: src/gui/widgets/window_builder.cpp:742
+#: src/gui/widgets/window_builder.cpp:748
 #, fuzzy
 msgid "No list defined."
 msgstr "Serveriä ei ole määritetty."
 
-#: src/gui/widgets/window_builder.cpp:745
+#: src/gui/widgets/window_builder.cpp:751
 msgid "A 'list_definition' should contain one row."
 msgstr ""
 
-#: src/gui/widgets/window_builder.cpp:764
+#: src/gui/widgets/window_builder.cpp:770
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr ""
 
-#: src/gui/widgets/window_builder.cpp:1030
+#: src/gui/widgets/window_builder.cpp:1039
 msgid "The number of value_labels and values don't match."
 msgstr ""
 

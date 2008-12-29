@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-12-29 16:00+0100\n"
+"POT-Creation-Date: 2008-12-30 00:27+0100\n"
 "PO-Revision-Date: 2008-11-29 01:48+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lietuvių <komp_lt@konf.lt>\n"
@@ -362,7 +362,7 @@ msgstr "Nevaikštoma"
 #. [column]
 #: data/gui/default/window/addon_connect.cfg:32
 #: data/gui/default/window/mp_connect.cfg:31
-#: data/gui/default/window/mp_method_selection.cfg:147
+#: data/gui/default/window/mp_method_selection.cfg:148
 #: data/gui/default/window/mp_server_list.cfg:31
 msgid "Connect to Server"
 msgstr "Prisijungti prie serverio"
@@ -408,7 +408,7 @@ msgstr "Prisijungti"
 #: data/gui/default/window/language_selection.cfg:136
 #: data/gui/default/window/mp_connect.cfg:190
 #: data/gui/default/window/mp_create_game.cfg:552
-#: data/gui/default/window/mp_method_selection.cfg:219
+#: data/gui/default/window/mp_method_selection.cfg:220
 #: data/gui/default/window/mp_server_list.cfg:212 src/construct_dialog.cpp:133
 #: src/construct_dialog.cpp:136
 msgid "Cancel"
@@ -552,7 +552,7 @@ msgstr ""
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #: data/gui/default/window/editor_settings.cfg:230
-#: data/gui/default/window/mp_method_selection.cfg:205
+#: data/gui/default/window/mp_method_selection.cfg:206
 #: src/construct_dialog.cpp:125 src/construct_dialog.cpp:132
 msgid "OK"
 msgstr "Gerai"
@@ -688,37 +688,37 @@ msgid "Login:"
 msgstr ""
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:136
+#: data/gui/default/window/mp_method_selection.cfg:137
 msgid "Join Official Server"
 msgstr "Prisijungti prie oficialaus serverio"
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:137
+#: data/gui/default/window/mp_method_selection.cfg:138
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Prisijunkite prie oficialaus Wesnoth daugelio žaidėjų serverio"
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:148
+#: data/gui/default/window/mp_method_selection.cfg:149
 msgid "Join a different server"
 msgstr "Prisijungti prie kito serverio"
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:158
+#: data/gui/default/window/mp_method_selection.cfg:159
 msgid "Host Networked Game"
 msgstr ""
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:159
+#: data/gui/default/window/mp_method_selection.cfg:160
 msgid "Host a game using dedicated server 'wesnothd'"
 msgstr ""
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:169
+#: data/gui/default/window/mp_method_selection.cfg:170
 msgid "Local Game"
 msgstr "Vietinis žaidimas"
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:170
+#: data/gui/default/window/mp_method_selection.cfg:171
 msgid "Play a multiplayer game with the AI or humans sharing the same machine"
 msgstr ""
 "Žaiskite daugelio žaidėjų žaidimą su DI arba žmonėmis dalindamiesi tą patį "
@@ -1316,8 +1316,8 @@ msgstr ""
 
 #: src/gui/widgets/settings.cpp:705 src/gui/widgets/settings.cpp:861
 #: src/gui/widgets/window_builder.cpp:375
-#: src/gui/widgets/window_builder.cpp:899
-#: src/gui/widgets/window_builder.cpp:1103
+#: src/gui/widgets/window_builder.cpp:908
+#: src/gui/widgets/window_builder.cpp:1112
 msgid "No grid defined."
 msgstr "Neapibrėžtas tinklelis."
 
@@ -1329,20 +1329,20 @@ msgstr "Eilutė privalo turėti stulpelį."
 msgid "Number of columns differ."
 msgstr "Skiriasi stulpelių skaičius."
 
-#: src/gui/widgets/window_builder.cpp:742
+#: src/gui/widgets/window_builder.cpp:748
 msgid "No list defined."
 msgstr "Neapibrėžtas joks sąrašas."
 
-#: src/gui/widgets/window_builder.cpp:745
+#: src/gui/widgets/window_builder.cpp:751
 msgid "A 'list_definition' should contain one row."
 msgstr ""
 
-#: src/gui/widgets/window_builder.cpp:764
+#: src/gui/widgets/window_builder.cpp:770
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr ""
 
-#: src/gui/widgets/window_builder.cpp:1030
+#: src/gui/widgets/window_builder.cpp:1039
 msgid "The number of value_labels and values don't match."
 msgstr ""
 
