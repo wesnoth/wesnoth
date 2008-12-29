@@ -21,10 +21,10 @@ function cmp_alpha($a, $b){
 	return strcmp($langs[$a],$langs[$b]);
 }
 
-$existing_packs = explode(" ", $packages);
-$existing_corepacks = explode(" ", $corepackages);
-$existing_extra_packs_t = explode(" ", $extratpackages);
-$existing_extra_packs_b = explode(" ", $extrabpackages);
+$existing_packs = sort(explode(" ", $packages));
+$existing_corepacks = sort(explode(" ", $corepackages));
+$existing_extra_packs_t = sort(explode(" ", $extratpackages));
+$existing_extra_packs_b = sort(explode(" ", $extrabpackages));
 $stats = array();
 
 if(!isset($_GET['version'])){
@@ -128,10 +128,10 @@ Version:
 <tr>
 <td align="left">
 Show:
-<a href="index.php?package=alloff&amp;order=trans">Official packages</a>
-|| <a href="index.php?package=allcore&amp;order=trans">Official core packages</a>
-|| <a href="index.php?package=all&amp;order=trans">All packages</a>
-|| <a href="index.php?package=allun&amp;order=trans">All unofficial packages</a>
+<a href="index.php?package=alloff&amp;order=trans&amp;version=<?=$version?>">Official packages</a>
+|| <a href="index.php?package=allcore&amp;order=trans&amp;version=<?=$version?>">Official core packages</a>
+|| <a href="index.php?package=all&amp;order=trans&amp;version=<?=$version?>">All packages</a>
+|| <a href="index.php?package=allun&amp;order=trans&amp;version=<?=$version?>">All unofficial packages</a>
 || <strong>By language</strong>
 <br/>
 Language:
