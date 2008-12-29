@@ -215,7 +215,7 @@ std::string chat::format_message(const msg& message)
 		int unused;
 		std::string::const_iterator after_markup = 
 			font::parse_markup(message.message.begin(), message.message.end(), &unused, &c, &unused);
-		
+
 		msg_text = std::string(after_markup,message.message.end());
 	}
 	if(message.message.substr(0,3) == "/me") {
@@ -617,13 +617,11 @@ void ui::gamelist_updated(bool silent)
 		if(!(**user)["location"].empty()) {
 			u_elem.location = (**user)["location"];
 		}
-		std::vector<std::string> friends = utils::split(preferences::get("friends"));
-		std::vector<std::string> ignores = utils::split(preferences::get("ignores"));
 		if (u_elem.name == preferences::login()) {
 			u_elem.relation = ME;
-		} else if (std::find(ignores.begin(), ignores.end(), u_elem.name) != ignores.end()) {
+		} else if (preferences::is_ignored(u_elem.name)) {
 			u_elem.relation = IGNORED;
-		} else if (std::find(friends.begin(), friends.end(), u_elem.name) != friends.end()) {
+		} else if (preferences::is_friend(u_elem.name)) {
 			u_elem.relation = FRIEND;
 		} else {
 			u_elem.relation = NEUTRAL;
