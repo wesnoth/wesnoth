@@ -181,6 +181,38 @@ tpoint tscrollbar_container::calculate_best_size() const
 	return result;
 }
 
+static void set_scrollbar_mode(tgrid* scrollbar_grid, tscrollbar_* scrollbar,
+		tscrollbar_container::tscrollbar_mode& scrollbar_mode,
+		const unsigned items, const unsigned visible_items)
+{
+
+	assert(scrollbar_grid && scrollbar);
+	if(scrollbar_mode != tscrollbar_container::HIDE) {
+
+		scrollbar->set_item_count(items);
+		scrollbar->set_visible_items(visible_items);
+
+		const bool scrollbar_needed = 
+			items > visible_items;
+
+		if(!scrollbar_needed) {
+
+			// Hide the scrollbar
+			if(scrollbar_mode == tscrollbar_container::SHOW_WHEN_NEEDED) {
+				if(true) { // extra setting
+					scrollbar_mode = tscrollbar_container::HIDE;
+				} else {
+					scrollbar_grid->set_visible(twidget::HIDDEN);
+				}
+			}
+		}
+	}
+
+	if(scrollbar_mode == tscrollbar_container::HIDE) {
+		scrollbar_grid->set_visible(twidget::INVISIBLE);
+	}
+}
+
 void tscrollbar_container::
 		set_size(const tpoint& origin, const tpoint& size)
 {
@@ -214,21 +246,22 @@ void tscrollbar_container::
 
 
 	// Set vertical scrollbar
-	assert(vertical_scrollbar_);
-	if(vertical_scrollbar_mode_ != HIDE) {
-		vertical_scrollbar_->set_item_count(content_grid_size.y);
-		vertical_scrollbar_->set_visible_items(content_->get_height());
-	}
+	set_scrollbar_mode(vertical_scrollbar_grid_, vertical_scrollbar_,
+			vertical_scrollbar_mode_, 
+			content_grid_->get_height(),
+			content_->get_height());
 
 	// Set horizontal scrollbar
-	assert(horizontal_scrollbar_);
-	if(horizontal_scrollbar_mode_ != HIDE) {
-		horizontal_scrollbar_->set_item_count(content_grid_size.x);
-		horizontal_scrollbar_->set_visible_items(content_->get_width());
-	}
+	set_scrollbar_mode(horizontal_scrollbar_grid_, horizontal_scrollbar_,
+			horizontal_scrollbar_mode_, 
+			content_grid_->get_width(),
+			content_->get_width());
+
+	// Update the buttons.
+	set_scrollbar_button_status();
 }
 
-void tscrollbar_container:: set_origin(const tpoint& origin)
+void tscrollbar_container::set_origin(const tpoint& origin)
 {
 	// Inherited.
 	tcontainer_::set_origin(origin);
@@ -373,6 +406,8 @@ void tscrollbar_container::finalize_setup()
 	vertical_scrollbar_->
 		set_callback_positioner_move(callback_vertical_scrollbar);
 
+	show_vertical_scrollbar();
+
 	/***** Setup horizontal scrollbar *****/
 	horizontal_scrollbar_grid_ =
 		find_widget<tgrid>("_horizontal_scrollbar_grid", false, true);
@@ -382,6 +417,8 @@ void tscrollbar_container::finalize_setup()
 
 	horizontal_scrollbar_->
 		set_callback_positioner_move(callback_horizontal_scrollbar);
+
+	show_horizontal_scrollbar();
 
 	/***** Setup the scrollbar buttons *****/
 	typedef std::pair<std::string, tscrollbar_::tscroll> hack;
@@ -430,7 +467,7 @@ void tscrollbar_container::
 {
 	if(vertical_scrollbar_mode_ != scrollbar_mode) {
 		vertical_scrollbar_mode_ = scrollbar_mode;
-		show_vertical_scrollbar(vertical_scrollbar_mode_ != HIDE);
+		show_vertical_scrollbar();
 	}
 }
 
@@ -439,20 +476,34 @@ void tscrollbar_container::
 {
 	if(horizontal_scrollbar_mode_ != scrollbar_mode) {
 		horizontal_scrollbar_mode_ = scrollbar_mode;
-		show_horizontal_scrollbar(horizontal_scrollbar_mode_ != HIDE);
+		show_horizontal_scrollbar();
 	}
 }
 
-void tscrollbar_container::show_vertical_scrollbar(const bool /*show*/)
+void tscrollbar_container::show_vertical_scrollbar()
 {
-	/** @todo implement the new visibility. */
-//	vertical_scrollbar_grid_->set_visible(show);
+	if(!vertical_scrollbar_grid_) {
+		return;
+	}
+
+	if(vertical_scrollbar_mode_ == HIDE) {
+		vertical_scrollbar_grid_->set_visible(twidget::INVISIBLE);
+	} else {
+		vertical_scrollbar_grid_->set_visible(twidget::VISIBLE);
+	}
 }
 
-void tscrollbar_container::show_horizontal_scrollbar(const bool /*show*/)
+void tscrollbar_container::show_horizontal_scrollbar()
 {
-	/** @todo implement the new visibility. */
-//	horizontal_scrollbar_grid_->set_visible(show);
+	if(!horizontal_scrollbar_grid_) {
+		return;
+	}
+
+	if(horizontal_scrollbar_mode_ == HIDE) {
+		horizontal_scrollbar_grid_->set_visible(twidget::INVISIBLE);
+	} else {
+		horizontal_scrollbar_grid_->set_visible(twidget::VISIBLE);
+	}
 }
 
 void tscrollbar_container::set_scrollbar_button_status()

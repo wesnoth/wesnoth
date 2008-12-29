@@ -233,21 +233,11 @@ private:
 	 */
 	virtual void finalize_subclass() {}
 
-	/**
-	 * Shows the vertical scrollbar.
-	 *
-	 * @param show                If true the scrollbar is shown, hidden
-	 *                            otherwise.
-	 */
-	void show_vertical_scrollbar(const bool show);
+	/** Sets the visible state of the vertical scrollbar. */
+	void show_vertical_scrollbar();
 
-	/**
-	 * Shows the horizontal scrollbar.
-	 *
-	 * @param show                If true the scrollbar is shown, hidden
-	 *                            otherwise.
-	 */
-	void show_horizontal_scrollbar(const bool show);
+	/** Sets the visible state of the horizontal scrollbar. */
+	void show_horizontal_scrollbar();
 
 	/** Inherited from tcontrol. */
 	const std::string& get_control_type() const

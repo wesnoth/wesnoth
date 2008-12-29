@@ -685,7 +685,10 @@ twidget* tbuilder_label::build() const
 
 tbuilder_listbox::tbuilder_listbox(const config& cfg) :
 	tbuilder_control(cfg),
-	scrollbar_mode(get_scrollbar_mode(cfg["vertical_scrollbar_mode"])),
+	vertical_scrollbar_mode(
+			get_scrollbar_mode(cfg["vertical_scrollbar_mode"])),
+	horizontal_scrollbar_mode(
+			get_scrollbar_mode(cfg["horizontal_scrollbar_mode"])),
 	header(cfg.child("header") ? new tbuilder_grid(*(cfg.child("header"))) : 0),
 	footer(cfg.child("footer") ? new tbuilder_grid(*(cfg.child("footer"))) : 0),
 	list_builder(0),
@@ -703,6 +706,9 @@ tbuilder_listbox::tbuilder_listbox(const config& cfg) :
  * List with the listbox specific variables:
  * @start_table = config
  *     vertical_scrollbar_mode (scrollbar_mode = auto)
+ *                                     Determines whether or not to show the
+ *                                     scrollbar.
+ *     horizontal_scrollbar_mode (scrollbar_mode = auto)
  *                                     Determines whether or not to show the
  *                                     scrollbar.
  *
@@ -775,6 +781,9 @@ twidget* tbuilder_listbox::build() const
 	init_control(listbox);
 
 	listbox->set_list_builder(list_builder); // FIXME in finalize???
+
+	listbox->set_vertical_scrollbar_mode(vertical_scrollbar_mode);
+	listbox->set_horizontal_scrollbar_mode(horizontal_scrollbar_mode);
 
 	DBG_GUI << "Window builder: placed listbox '" << id << "' with defintion '"
 		<< definition << "'.\n";

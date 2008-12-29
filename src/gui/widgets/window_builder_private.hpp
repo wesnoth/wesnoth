@@ -158,7 +158,9 @@ public:
 
 	twidget* build () const;
 
-	tscrollbar_container::tscrollbar_mode scrollbar_mode;
+	tscrollbar_container::tscrollbar_mode 
+			vertical_scrollbar_mode,
+			horizontal_scrollbar_mode;
 
 	tbuilder_grid_ptr header;
 	tbuilder_grid_ptr footer;
