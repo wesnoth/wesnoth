@@ -130,6 +130,9 @@ public:
 	/** Import overloaded versions. */
 	using tcontainer_::find_widget;
 
+	/** Inherited from tcontainer_. */
+	bool does_block_easy_close() const;
+
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
 	void set_vertical_scrollbar_mode(const tscrollbar_mode scrollbar_mode);

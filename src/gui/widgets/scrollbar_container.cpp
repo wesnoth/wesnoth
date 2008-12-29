@@ -259,6 +259,10 @@ void tscrollbar_container::
 
 	// Update the buttons.
 	set_scrollbar_button_status();
+
+	// Set the easy close status.
+	set_block_easy_close(is_visible()
+			&& get_active() && does_block_easy_close());
 }
 
 void tscrollbar_container::set_origin(const tpoint& origin)
@@ -363,6 +367,24 @@ const twidget* tscrollbar_container::find_widget(const tpoint& coordinate,
 	return NULL;
 }
 
+bool tscrollbar_container::does_block_easy_close() const
+{
+	assert(vertical_scrollbar_grid_ 
+			&& vertical_scrollbar_
+			&& horizontal_scrollbar_grid_
+			&& horizontal_scrollbar_);
+
+	const bool vertical_block = vertical_scrollbar_grid_->is_visible() 
+			&& !(vertical_scrollbar_->at_begin() 
+					&& vertical_scrollbar_->at_end());
+
+	const bool horizontal_block = horizontal_scrollbar_grid_->is_visible() 
+			&& !(horizontal_scrollbar_->at_begin() 
+					&& horizontal_scrollbar_->at_end());
+
+	return vertical_block || horizontal_block;
+}
+
 void tscrollbar_container::vertical_scrollbar_click(twidget* caller)
 {
 	/** @todo Hack to capture the keyboard focus. */
@@ -454,8 +476,7 @@ void tscrollbar_container::finalize_setup()
 	content_grid_->set_parent(this);
 
 	/***** Set the easy close status. *****/
-	/** @todo needs more testing. */
-	set_block_easy_close(get_visible()
+	set_block_easy_close(is_visible()
 			&& get_active() && does_block_easy_close());
 
 	/***** Let our subclasses initialize themselves. *****/
