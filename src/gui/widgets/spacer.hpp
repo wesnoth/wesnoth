@@ -12,8 +12,6 @@
    see the copying file for more details.
 */
 
-#define NEW_DRAW
-
 #ifndef GUI_WIDGETS_SPACER_HPP_INCLUDED
 #define GUI_WIDGETS_SPACER_HPP_INCLUDED
 
@@ -69,12 +67,8 @@ public:
 	 *
 	 * Since we're always empty the draw does nothing.
 	 */
-#ifndef NEW_DRAW
-	void draw(surface& /*surface*/, const bool /*force*/ = false,
-		const bool /*invalidate_background*/ = false) {}
-#else
 	 void draw_background(surface& /*frame_buffer*/) {}
-#endif
+
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
 	void set_best_size(const tpoint& best_size) { best_size_ = best_size; }

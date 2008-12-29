@@ -38,7 +38,6 @@ void twidget::set_size(const tpoint& origin, const tpoint& size)
 	w_ = size.x;
 	h_ = size.y;
 
-#ifdef NEW_DRAW
 	screen_x_ = x_;
 	screen_y_ = y_;
 	twidget* parent = get_window();
@@ -56,7 +55,7 @@ void twidget::set_size(const tpoint& origin, const tpoint& size)
 		<< " screen origin " << screen_x_ << ',' << screen_y_
 		<< ".\n";
 #endif
-#endif
+
 	set_dirty();
 }
 
@@ -93,7 +92,7 @@ tdialog* twidget::dialog()
 	twindow* window = get_window();
 	return window ? window->dialog() : 0;
 }
-#ifdef NEW_DRAW
+
 void twidget::populate_dirty_list(twindow& caller,
 		std::vector<twidget*>& call_stack)
 {
@@ -105,5 +104,5 @@ void twidget::populate_dirty_list(twindow& caller,
 		child_populate_dirty_list(caller, call_stack);
 	}
 }
-#endif
+
 } // namespace gui2

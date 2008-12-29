@@ -12,8 +12,6 @@
    see the copying file for more details.
 */
 
-#ifdef NEW_DRAW
-
 #ifndef GUI_WIDGETS_GENERATOR_PRIVATE_HPP_INCLUDED
 #define GUI_WIDGETS_GENERATOR_PRIVATE_HPP_INCLUDED
 
@@ -719,6 +717,5 @@ private:
 
 } // namespace gui2
 
-#endif
 #endif
 

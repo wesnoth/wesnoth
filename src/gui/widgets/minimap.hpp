@@ -12,8 +12,6 @@
    see the copying file for more details.
 */
 
-#define NEW_DRAW
-
 #ifndef GUI_WIDGETS_MINIMAP_HPP_INCLUDED
 #define GUI_WIDGETS_MINIMAP_HPP_INCLUDED
 
@@ -56,14 +54,10 @@ public:
 
 	/** Inherited from tcontrol. */
 	bool does_block_easy_close() const { return false; }
-#ifndef NEW_DRAW
-	/** Inherited from tcontrol. */
-	void draw(surface& surface, const bool force = false,
-		const bool invalidate_background = false);
-#else
+
 	/** Inherited from tcontrol. */
 	void draw_background(surface& frame_buffer);
-#endif
+
 	/**
 	 * Inherited from tcontrol.
 	 *

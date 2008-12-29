@@ -12,8 +12,6 @@
    see the copying file for more details.
 */
 
-#define NEW_DRAW
-
 #ifndef GUI_WIDGETS_CONTAINER_HPP_INCLUDED
 #define GUI_WIDGETS_CONTAINER_HPP_INCLUDED
 
@@ -99,14 +97,6 @@ public:
 	bool has_widget(const twidget* widget) const
 		{ return grid_.has_widget(widget); }
 
-#ifndef NEW_DRAW
-	/** Inherited from twidget. */
-	bool is_dirty() const { return twidget::is_dirty() || grid_.is_dirty(); }
-
-	/** Inherited from tcontrol. */
-	void draw(surface& surface,  const bool force = false,
-	        const bool invalidate_background = false);
-#else
 	/** Inherited from twidget. */
 	void set_origin(const tpoint& origin);
 
@@ -119,7 +109,7 @@ public:
 	{
 		grid_.child_populate_dirty_list(caller, call_stack);
 	}
-#endif
+
 	/** Inherited from tcontrol. */
 	twidget* find_widget(const tpoint& coordinate, const bool must_be_active)
 		{ return grid_.find_widget(coordinate, must_be_active); }
@@ -142,7 +132,7 @@ public:
 		const twidget* result = tcontrol::find_widget(id, must_be_active);
 		return result ? result : grid_.find_widget(id, must_be_active);
 	}
-#ifdef NEW_DRAW
+
 	/** Inherited from tcontrol. */
 	twidget* find_widget2(const tpoint& coordinate, const bool must_be_active)
 	{
@@ -155,7 +145,7 @@ public:
 	{
 		return grid_.find_widget2(coordinate, must_be_active);
 	}
-#endif
+
 	/** Import overloaded versions. */
 	using tcontrol::find_widget;
 
@@ -198,10 +188,6 @@ public:
 	void set_col_grow_factor(const unsigned col, const unsigned factor)
 		{ grid_.set_col_grow_factor(col, factor); }
 
-#ifndef NEW_DRAW
-	/** Inherited from twidget. */
-	void set_dirty(const bool dirty = true);
-#endif
 protected:
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 

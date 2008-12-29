@@ -12,7 +12,6 @@
    See the COPYING file for more details.
 */
 
-#define NEW_DRAW
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
@@ -26,9 +25,7 @@
 #include "gui/widgets/image.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/listbox.hpp"
-#ifdef NEW_DRAW
 #include "gui/widgets/generator.hpp"
-#endif
 #include "gui/widgets/minimap.hpp"
 #include "gui/widgets/scroll_label.hpp"
 #include "gui/widgets/slider.hpp"
@@ -772,21 +769,13 @@ tbuilder_listbox::tbuilder_listbox(const config& cfg) :
 
 twidget* tbuilder_listbox::build() const
 {
-#ifndef NEW_DRAW
-	tlistbox *listbox = new tlistbox();
-#else
 	tlistbox *listbox = new tlistbox(
 			true, true, tgenerator_::vertical_list, true);
-#endif
+
 	init_control(listbox);
 
 	listbox->set_list_builder(list_builder); // FIXME in finalize???
-#ifndef NEW_DRAW
-	listbox->set_assume_fixed_row_size(assume_fixed_row_size);
-	listbox->set_scrollbar_mode(scrollbar_mode);
-#else
-	// scrollbar mode
-#endif
+
 	DBG_GUI << "Window builder: placed listbox '" << id << "' with defintion '"
 		<< definition << "'.\n";
 
@@ -796,90 +785,9 @@ twidget* tbuilder_listbox::build() const
 	assert(conf);
 
 
-#ifdef NEW_DRAW
 	conf->grid->build(&listbox->grid());
 
 	listbox->finalize(header, footer, list_data);
-#else
-	/*
-	 * We generate the following items to put in the listbox grid
-	 * - _scrollbar_grid the grid containing the scrollbar.
-	 * - _content_grid   the grid containing the content of the listbox.
-	 * - _list           if the content has a header of footer they're an extra
-	 *                   grid needed to find the scrolling content, the item
-	 *                   with the id _list holds this, so the listbox needs to
-	 *                   test for this item as well.
-	 */
-
-	tgrid* scrollbar = dynamic_cast<tgrid*>(conf->scrollbar->build());
-	assert(scrollbar);
-
-	scrollbar->set_id("_scrollbar_grid");
-
-	tgrid* content_grid = new tgrid();
-	content_grid->set_definition("default");
-	content_grid->set_id("_content_grid");
-	assert(content_grid);
-
-	if(header || footer) {
-
-		content_grid->set_rows_cols(header && footer ? 3 : 2, 1);
-
-		// Create and add the header.
-		if(header) {
-			twidget* widget = header->build();
-			assert(widget);
-
-			/**
-			 * @todo
-			 *
-			 * We need sort indicators, which are tristat_buttons;
-			 * none, acending, decending. Once we have them we can write them in.
-			 */
-			content_grid->set_child(widget, 0, 0, tgrid::HORIZONTAL_GROW_SEND_TO_CLIENT
-				| tgrid::VERTICAL_ALIGN_TOP, 0);
-		}
-
-		// Create and add the footer.
-		if(footer) {
-			twidget* widget = footer->build();
-			assert(widget);
-
-			content_grid->set_child(widget, header && footer ? 2 : 1, 0,
-				tgrid::HORIZONTAL_GROW_SEND_TO_CLIENT
-				| tgrid::VERTICAL_ALIGN_BOTTOM, 0);
-		}
-
-		// Add the list itself which needs a new grid as described above.
-		tgrid* list = new tgrid();
-		assert(list);
-
-		list->set_definition("default");
-		list->set_id("_list");
-		content_grid->set_child(list, header ? 1 : 0, 0,
-			tgrid::HORIZONTAL_GROW_SEND_TO_CLIENT
-			| tgrid::VERTICAL_GROW_SEND_TO_CLIENT
-			, 0);
-		content_grid->set_row_grow_factor( header ? 1 : 0, 1);
-	}
-
-	listbox->grid().set_rows_cols(1, 2);
-	listbox->grid().set_child(content_grid, 0, 0,
-		tgrid::VERTICAL_GROW_SEND_TO_CLIENT
-		| tgrid::HORIZONTAL_GROW_SEND_TO_CLIENT
-		, 0);
-	listbox->grid().set_col_grow_factor(0, 1);
-	listbox->grid().set_child(scrollbar, 0, 1,
-		tgrid::VERTICAL_GROW_SEND_TO_CLIENT
-		| tgrid::HORIZONTAL_ALIGN_CENTER
-		, 0);
-
-	if(!list_data.empty()) {
-		listbox->add_rows(list_data);
-	}
-
-	listbox->finalize_setup();
-#endif
 
 	return listbox;
 }
@@ -1037,18 +945,7 @@ twidget* tbuilder_scroll_label::build() const
 		<const tscroll_label_definition::tresolution>(widget->config());
 	assert(conf);
 
-#ifdef NEW_DRAW
 	conf->grid->build(&widget->grid());
-#else
-	tgrid* grid = dynamic_cast<tgrid*>(conf->grid->build());
-	assert(grid);
-
-	widget->grid().set_rows_cols(1, 1);
-	widget->grid().set_child(grid, 0, 0,
-		tgrid::VERTICAL_GROW_SEND_TO_CLIENT
-		| tgrid::HORIZONTAL_GROW_SEND_TO_CLIENT
-		, 0);
-#endif
 	widget->finalize_setup();
 
 	DBG_GUI << "Window builder: placed scroll label '" << id << "' with defintion '"

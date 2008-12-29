@@ -12,8 +12,6 @@
    see the copying file for more details.
 */
 
-#define NEW_DRAW
-
 #ifndef GUI_WIDGETS_GRID_HPP_INCLUDED
 #define GUI_WIDGETS_GRID_HPP_INCLUDED
 
@@ -213,11 +211,6 @@ public:
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
-#ifndef NEW_DRAW
-	/** Inherited from twidget. */
-	void draw(surface& surface,  const bool force = false,
-	        const bool invalidate_background = false);
-#else
 	/** Inherited from twidget. */
 	void set_origin(const tpoint& origin);
 
@@ -227,7 +220,7 @@ public:
 	/** Inherited from twidget. */
 	void child_populate_dirty_list(twindow& caller,
 			const std::vector<twidget*>& call_stack);
-#endif
+
 	/** Inherited from twidget. */
 	twidget* find_widget(const tpoint& coordinate, const bool must_be_active);
 
@@ -241,14 +234,14 @@ public:
 	/** Inherited from twidget.*/
 	const twidget* find_widget(const std::string& id,
 			const bool must_be_active) const;
-#ifdef NEW_DRAW
+
 	/** Inherited from twidget. */
 	twidget* find_widget2(const tpoint& coordinate, const bool must_be_active);
 
 	/** Inherited from twidget. */
 	const twidget* find_widget2(const tpoint& coordinate,
 			const bool must_be_active) const;
-#endif
+
 	/** Import overloaded versions. */
 	using twidget::find_widget;
 
@@ -271,10 +264,6 @@ public:
 	 */
 	void set_rows_cols(const unsigned rows, const unsigned cols);
 
-#ifndef NEW_DRAW
-	/** Inherited from twidget. */
-	void set_dirty(const bool dirty = true);
-#endif
 private:
 	/** Child item of the grid. */
 	class tchild

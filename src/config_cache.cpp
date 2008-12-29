@@ -34,8 +34,6 @@
 #define LOG_CACHE LOG_STREAM(info, cache)
 #define DBG_CACHE LOG_STREAM(debug, cache)
 
-#define NEW_DRAW
-
 namespace game_config {
 
 	config_cache& config_cache::instance()
@@ -87,9 +85,7 @@ namespace game_config {
 		defines_map_["APPLE"] = preproc_define();
 #endif
 
-#ifdef NEW_DRAW
 		defines_map_["NEW_DRAW"] = preproc_define();
-#endif
 	}
 
 	void config_cache::get_config(const std::string& path, config& cfg)

@@ -14,7 +14,6 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#define NEW_DRAW
 
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 
@@ -23,11 +22,9 @@
 #include "foreach.hpp"
 #include "formatter.hpp"
 #include "gui/widgets/vertical_scrollbar_container.hpp"
-#ifdef NEW_DRAW
 #include "gui/widgets/generator.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/scrollbar_container.hpp"
-#endif
 #include "gui/widgets/window.hpp"
 #include "serialization/string_utils.hpp"
 
@@ -209,7 +206,6 @@ void tdebug_layout_graph::widget_generate_info(std::ostream& out,
 				<< " [label=\"(grid)\"];\n";
 		}
 
-#ifdef NEW_DRAW
 		const tscrollbar_container* scrollbar_container =
 			dynamic_cast<const tscrollbar_container*>(widget);
 
@@ -244,7 +240,6 @@ void tdebug_layout_graph::widget_generate_info(std::ostream& out,
 						<< " [label=\"(item)\"];\n";
 			}
 		}
-#endif
 	}
 	if(grid) {
 		grid_generate_info(out, grid, id);
@@ -323,7 +318,7 @@ void tdebug_layout_graph::widget_generate_state_info(
 				<< vertical_scrollbar_container->scrollbar_mode_ << '\n'
 			<< "</td></tr>\n";
 	}
-#ifdef NEW_DRAW
+
 	const tscrollbar_container* scrollbar_container =
 		dynamic_cast<const tscrollbar_container*>(widget);
 
@@ -337,7 +332,6 @@ void tdebug_layout_graph::widget_generate_state_info(
 				<< scrollbar_container->horizontal_scrollbar_mode_ << '\n'
 			<< "</td></tr>\n";
 	}
-#endif
 }
 
 void tdebug_layout_graph::widget_generate_size_info(
@@ -357,12 +351,10 @@ void tdebug_layout_graph::widget_generate_size_info(
 		<< "<tr><td>\n"
 		<< "size=" << widget->get_rect() << '\n'
 		<< "</td></tr>\n"
-#ifdef NEW_DRAW
 		<< "<tr><td>\n"
 		<< "screen_position=" << widget->get_screen_x()
 			<< ',' <<  widget->get_screen_y() << '\n'
 		<< "</td></tr>\n"
-#endif
 		<< "<tr><td>\n"
 		<< "last_best_size_=" << widget->last_best_size_ << '\n'
 		<< "</td></tr>\n"
@@ -534,16 +526,13 @@ std::string tdebug_layout_graph::get_type(const twidget* widget) const
 		return control->get_control_type();
 	} else {
 		const tgrid* grid = dynamic_cast<const tgrid*>(widget);
-#ifdef NEW_DRAW
 		const tgenerator_* generator =
 				dynamic_cast<const tgenerator_*>(widget);
-#endif
+
 		if(grid) {
 			return "grid";
-#ifdef NEW_DRAW
 		} else if(generator) {
 			return "generator";
-#endif
 		} else {
 			return "unknown";
 		}

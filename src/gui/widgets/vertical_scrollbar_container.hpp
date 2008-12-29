@@ -12,8 +12,6 @@
    see the copying file for more details.
 */
 
-#define NEW_DRAW
-
 #ifndef GUI_WIDGETS_VERTICAL_SCROLLBAR_CONTAINER_HPP_INCLUDED
 #define GUI_WIDGETS_VERTICAL_SCROLLBAR_CONTAINER_HPP_INCLUDED
 
@@ -104,14 +102,7 @@ public:
 	/** Inherited from tevent_executor. */
 	void key_press(tevent_handler& event, bool& handled,
 		SDLKey key, SDLMod modifier, Uint16 unicode);
-#ifndef NEW_DRAW
-	/** Inherited from tcontainer. */
-	void draw(surface& surface,  const bool force = false,
-	        const bool invalidate_background = false);
-#else
-	// FIXME look whether this widget will remain until then don't implement
-	// the new functions.
-#endif
+
 	/** Inherited from tcontainer_. */
 	twidget* find_widget(const tpoint& coordinate, const bool must_be_active);
 
@@ -239,15 +230,6 @@ private:
 
 	/***** ***** (pure) virtuals for the subclasses ****** *****/
 
-	/**
-	 * Draws the content part of the widget.
-	 *
-	 * See draw_content for more info.
-	 */
-#ifndef NEW_DRAW
-	virtual void draw_content(surface& surface, const bool force,
-	        const bool invalidate_background) = 0;
-#endif
 	/**
 	 * Finds a widget in the content area.
 	 *

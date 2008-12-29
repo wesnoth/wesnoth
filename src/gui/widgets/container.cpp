@@ -163,19 +163,7 @@ tpoint tcontainer_::calculate_best_size() const
 
 	return result;
 }
-#ifndef NEW_DRAW
-void tcontainer_::draw(surface& surface, const bool force,
-		const bool invalidate_background)
-{
-	// Inherited.
-	tcontrol::draw(surface, force, invalidate_background);
 
-	const bool redraw_background = invalidate_background || has_background_changed();
-	set_background_changed(false);
-
-	grid_.draw(surface, force, redraw_background);
-}
-#else
 void tcontainer_::set_origin(const tpoint& origin)
 {
 	// Inherited.
@@ -185,7 +173,7 @@ void tcontainer_::set_origin(const tpoint& origin)
 	const tpoint client_position(rect.x, rect.y);
 	grid_.set_origin(client_position);
 }
-#endif
+
 void tcontainer_::set_active(const bool active)
 {
 	// Not all our children might have the proper state so let them run
@@ -201,16 +189,5 @@ void tcontainer_::set_active(const bool active)
 	set_self_active(active);
 }
 
-#ifndef NEW_DRAW
-void tcontainer_::set_dirty(const bool dirty)
-{
-	// Inherited.
-	twidget::set_dirty(dirty);
-
-	if(!dirty) {
-		grid_.set_dirty(dirty);
-	}
-}
-#endif
 } // namespace gui2
 

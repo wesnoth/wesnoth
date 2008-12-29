@@ -205,11 +205,8 @@ struct tlistbox_definition : public tcontrol_definition
 		tresolution(const config& cfg);
 
 		// NOTE maybe we need the borders...
-#ifndef NEW_DRAW
-		tbuilder_grid_ptr scrollbar;
-#else
+
 		tbuilder_grid_ptr grid;
-#endif
 
 	};
 };

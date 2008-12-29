@@ -14,10 +14,6 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#define NEW_DRAW
-
-#ifdef NEW_DRAW
-
 #include "gui/widgets/scrollbar_container.hpp"
 
 #include "foreach.hpp"
@@ -515,7 +511,4 @@ void tscrollbar_container::set_scrollbar_button_status()
 }
 
 } // namespace gui2
-
-#endif
-
 

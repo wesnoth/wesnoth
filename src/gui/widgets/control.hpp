@@ -12,8 +12,6 @@
    see the copying file for more details.
 */
 
-#define NEW_DRAW
-
 #ifndef GUI_WIDGETS_CONTROL_HPP_INCLUDED
 #define GUI_WIDGETS_CONTROL_HPP_INCLUDED
 
@@ -164,14 +162,8 @@ public:
 	 */
 	void load_config();
 
-#ifndef NEW_DRAW
-	/** Inherited from twidget. */
-	void draw(surface& surface,  const bool force = false,
-	        const bool invalidate_background = false);
-#else
 	/** Inherited from twidget. */
 	void draw_background(surface& frame_buffer);
-#endif
 
 	/** Inherited from twidget. */
 	twidget* find_widget(const tpoint& coordinate, const bool must_be_active)
@@ -202,7 +194,7 @@ public:
 		return (twidget::find_widget(id, must_be_active)
 			&& (!must_be_active || get_active())) ? this : 0;
 	}
-#ifdef NEW_DRAW
+
 	/** Inherited from twidget. */
 	twidget* find_widget2(const tpoint& coordinate, const bool must_be_active)
 	{
@@ -217,7 +209,7 @@ public:
 		return (twidget::find_widget2(coordinate, must_be_active)
 			&& (!must_be_active || get_active())) ? this : 0;
 	}
-#endif
+
 	/** Import overloaded versions. */
 	using twidget::find_widget;
 
@@ -334,37 +326,6 @@ private:
 	 */
 	std::vector<tcanvas> canvas_;
 
-#ifndef NEW_DRAW
-	/**
-	 * Holds a copy of the original background.
-	 *
-	 * This background can be used before redrawing. This is needed for
-	 * semi-tranparent items, the user defines whether it's required or not.
-	 */
-	surface restorer_;
-
-	/***** ***** ***** ***** private functions ***** ***** ***** *****/
-
-	/**
-	 * Saves the portion of the background.
-	 *
-	 * We expect an empty restorer and copy the part in get_rect() to the new
-	 * surface. We copy the data since we want to put it back 1:1 and not a
-	 * blit so can't use get_surface_portion.
-	 *
-	 * @param src          background to save.
-	 */
-	void save_background(const surface& src);
-
-	/**
-	 * Restores a portion of the background.
-	 *
-	 * See save_background for more info.
-	 *
-	 * @param dst          Background to restore.
-	 */
-	void restore_background(surface& dst);
-#endif
 	/**
 	 * Contains the pointer to the configuration.
 	 *

@@ -14,10 +14,6 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#define NEW_DRAW
-
-#ifdef NEW_DRAW
-
 #include "gui/widgets/generator_private.hpp"
 
 #include "gui/widgets/window.hpp"
@@ -388,4 +384,3 @@ void direct_test()
 
 } // namespace gui2
 
-#endif

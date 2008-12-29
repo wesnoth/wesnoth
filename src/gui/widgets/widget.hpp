@@ -12,8 +12,6 @@
    see the copying file for more details.
 */
 
-#define NEW_DRAW
-
 #ifndef GUI_WIDGETS_WIDGET_HPP_INCLUDED
 #define GUI_WIDGETS_WIDGET_HPP_INCLUDED
 
@@ -31,16 +29,6 @@ namespace gui2 {
 
 class tdialog;
 class twindow;
-
-/**
- * -DNEW_DRAW is the rewriting of the drawing engine.
- *
- * The currently drawing engine works with drawing and undrawing items. The new
- * engine will work with layers and redraw all layers on a dirty rectangle, much
- * like the layers in the display class for the terrains and units.
- * This engine is a work in progress so only enable the switch if you want to
- * test and debug the engine.
- */
 
 /**
  * Base class for all widgets.
@@ -64,10 +52,8 @@ public:
 		, y_(-1)
 		, w_(0)
 		, h_(0)
-#ifdef NEW_DRAW
 		, screen_x_(-1)
 		, screen_y_(-1)
-#endif
 		, dirty_(true)
 		, layout_size_(tpoint(0,0))
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
@@ -228,35 +214,6 @@ public:
 	 */
 	virtual void set_size(const tpoint& origin, const tpoint& size);
 
-	/***** ***** ***** ***** drawing ***** ***** ***** *****/
-#ifndef NEW_DRAW
-	/**
-	 *  Draws a widget.
-	 *
-	 *  The widget is (rather should) only (be) drawn if dirty. Note when a
-	 *  widget draws itself it shouldn't clear the dirty flag. This should be
-	 *  done by the toplevel window that issued the draw. This to avoid
-	 *  inherited functions to clear the dirty flag too early.
-	 *
-	 *  @todo add force as parameter.
-	 *
-	 *  @param surface            The surface to draw the widget upon using the
-	 *                            coordinates and size of the widget.
-	 *  @param force              Does the widget need to be drawn even if not
-	 *                            dirty?
-	 *  @param invalidate_background
-	 *                            Some widgets can cache the background in order
-	 *                            to undraw and redraw themselves if needed. If
-	 *                            the background changes this 'feature' will
-	 *                            cause glitches. When this parameter is set the
-	 *                            widget need to reload the background and use
-	 *                            that as new undraw cache.
-	 *                            \n Note if this is set the widget should also
-	 *                            be redrawn.
-	 */
-	virtual void draw(surface& /*surface*/, const bool /*force*/ = false,
-		const bool /*invalidate_background*/ = false) = 0;
-#endif
 	/***** ***** ***** ***** query ***** ***** ***** *****/
 
 	/**
@@ -347,7 +304,6 @@ public:
 
 		return widget;
 	}
-#ifdef NEW_DRAW
 
 	/**
 	 * Gets the widget at the wanted coordinates.
@@ -386,7 +342,7 @@ public:
 				? this
 				: 0;
 	}
-#endif
+
 	/**
 	 * Gets a widget with the wanted id.
 	 *
@@ -483,8 +439,6 @@ public:
 	unsigned get_width() const { return w_; }
 	unsigned get_height() const { return h_; }
 
-#ifdef NEW_DRAW
-
 	/**
 	 * Sets the origin of the widget.
 	 *
@@ -505,25 +459,7 @@ public:
 
 	void set_screen_y(const int y) { screen_y_ = y; }
 	int get_screen_y() const { return screen_y_; }
-#else
-	/**
-	 * Sets the widgets dirty state.
-	 *
-	 * When set to dirty it should also mark it's parents as dirty so that the
-	 * window easily test for it's dirty state.
-	 * When set to not dirty it should also mark it's childeren as not dirty.
-	 * (Obviously only for container classes).
-	 */
-	virtual void set_dirty(const bool dirty = true)
-	{
-		dirty_ = dirty;
-		if(parent_ && dirty) parent_->set_dirty(true);
-	}
 
-	virtual bool is_dirty() const { return dirty_; }
-#endif
-
-#ifdef NEW_DRAW
 	/**
 	 * Sets the widgets dirty state.
 	 *
@@ -585,7 +521,6 @@ public:
 	 */
 	virtual void child_populate_dirty_list(twindow& /*caller*/,
 			const std::vector<twidget*>& /*call_stack*/) {}
-#endif
 protected:
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
@@ -626,13 +561,13 @@ private:
 
 	/** The height of the widget. */
 	unsigned h_;
-#ifdef NEW_DRAW
+
 	/** The x coordinate of the widget in the screen. */
 	int screen_x_;
 
 	/** The y coordinate of the widget in the screen. */
 	int screen_y_;
-#endif
+
 	/**
 	 * Is the widget dirty? When a widget is dirty it needs to be redrawn at
 	 * the next drawing cycle, setting it to dirty also need to set it's parent

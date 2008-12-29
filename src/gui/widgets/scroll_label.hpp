@@ -12,16 +12,10 @@
    see the copying file for more details.
 */
 
-#define NEW_DRAW
-
 #ifndef GUI_WIDGETS_SCROLL_LABEL_HPP_INCLUDED
 #define GUI_WIDGETS_SCROLL_LABEL_HPP_INCLUDED
 
-#ifndef NEW_DRAW
-#include "gui/widgets/vertical_scrollbar_container.hpp"
-#else
 #include "gui/widgets/scrollbar_container.hpp"
-#endif
 
 namespace gui2 {
 
@@ -35,18 +29,12 @@ class tspacer;
  * scrolling features. In general this widget is slower as the normal label so
  * the normal label should be preferred.
  */
-#ifndef NEW_DRAW
-class tscroll_label : public tvertical_scrollbar_container_
-#else
 class tscroll_label : public tscrollbar_container
-#endif
 {
 	friend struct tbuilder_scroll_label;
 public:
 
 	tscroll_label();
-
-	~tscroll_label();
 
 	/** Inherited from tcontrol. */
 	void set_label(const t_string& label);
@@ -80,78 +68,18 @@ private:
 	 */
 	tstate state_;
 
-#ifndef NEW_DRAW
-	/**
-	 * Helper label.
-	 *
-	 * The text is rendered on a separate label widget. After rendering this
-	 * widget the part which can be shown is shown on the dummy spacer. This
-	 * dummy spacer is put in the container so it widget has a size.
-	 */
-	tlabel* label_;
-
-	/**
-	 * Returns the label widget.
-	 *
-	 * This always returns the label, regardless of the mode.
-	 */
-	tlabel* find_label(const bool must_exist = true);
-	const tlabel* find_label(const bool must_exist = true) const;
-
-	/**
-	 * Returns the spacer which is the replacement for the label
-	 */
-	tspacer* find_spacer(const bool must_exist = true);
-	const tspacer* find_spacer(const bool must_exist = true) const;
-
-	void finalize();
-#else
 	void finalize_subclass();
-#endif
 
-	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
-#ifndef NEW_DRAW
-	/** Inherited from tvertical_scrollbar_container_. */
-	tpoint content_calculate_best_size() const;
-
-	/** Inherited from tvertical_scrollbar_container_. */
-	bool content_can_wrap() const { return true; }
-
-	/** Inherited from tvertical_scrollbar_container_. */
-	void content_layout_wrap(const unsigned maximum_width);
-
-	/** Inherited from tvertical_scrollbar_container_. */
-	void content_use_vertical_scrollbar(const unsigned maximum_height);
-
-	/** Inherited from tvertical_scrollbar_container_. */
-	void content_set_size(const SDL_Rect& rect);
-#endif
 	/***** ***** ***** inherited ****** *****/
 
 	/** Inherited from tcontrol. */
 	const std::string& get_control_type() const
 		{ static const std::string type = "scroll_label"; return type; }
 
-#ifndef NEW_DRAW
-	/** Inherited from tvertical_scrollbar_container_. */
-	void draw_content(surface& surface,  const bool force = false,
-	        const bool invalidate_background = false);
-#else
 	void content_draw_background(surface& frame_buffer);
 
 	void content_populate_dirty_list(twindow& caller,
 			const std::vector<twidget*>& call_stack);
-#endif
-
-#ifndef NEW_DRAW
-	/** Inherited from tvertical_scrollbar_container_. */
-	twidget* content_find_widget(
-		const tpoint& coordinate, const bool must_be_active);
-
-	/** Inherited from tvertical_scrollbar_container_. */
-	const twidget* content_find_widget(const tpoint& coordinate,
-			const bool must_be_active) const;
-#endif
 };
 
 } // namespace gui2

@@ -271,20 +271,7 @@ void tvertical_scrollbar_container_::key_press(tevent_handler& /*event*/,
 			break;
 	}
 }
-#ifndef NEW_DRAW
-void tvertical_scrollbar_container_::draw(
-		surface& surface, const bool force, const bool invalidate_background)
-{
-	// Inherited.
-	const bool do_force = force || needs_full_redraw();
-	tcontainer_::draw(surface, do_force, invalidate_background);
 
-	if(scrollbar_mode_ != HIDE) {
-		draw_content(surface, do_force, invalidate_background);
-	}
-	draw_content(surface, do_force, invalidate_background);
-}
-#endif
 twidget* tvertical_scrollbar_container_::find_widget(
 		const tpoint& coordinate, const bool must_be_active)
 {

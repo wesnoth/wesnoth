@@ -12,8 +12,6 @@
    see the copying file for more details.
 */
 
-#define NEW_DRAW
-
 #ifndef GUI_WIDGETS_TOGGLE_PANEL_HPP_INCLUDED
 #define GUI_WIDGETS_TOGGLE_PANEL_HPP_INCLUDED
 
@@ -84,7 +82,7 @@ public:
 //		const twidget* result = tcontainer_::find_widget(coordinate, must_be_active);
 		return /*result ? result :*/ tcontrol::find_widget(coordinate, must_be_active);
 	}
-#ifdef NEW_DRAW
+
 	/** Inherited from tcontainer_ */
 	twidget* find_widget2(const tpoint& coordinate, const bool must_be_active)
 	{
@@ -105,7 +103,7 @@ public:
 //		const twidget* result = tcontainer_::find_widget2(coordinate, must_be_active);
 		return /*result ? result :*/ tcontrol::find_widget2(coordinate, must_be_active);
 	}
-#endif
+
 	// Needed to import the find_widget(const tpoint&, const bool) and it's const version
 	// inheriting from panel eventhought they are the same as tcontainer_ but it might be
 	// panel reimplements it.
@@ -121,12 +119,6 @@ public:
 	/** Inherited from tpanel. */
 	unsigned get_state() const { return state_; }
 
-#ifndef NEW_DRAW
-	/** Inherited from tpanel. */
-	void draw(surface& surface, const bool force = false,
-			const bool invalidate_background = false)
-		{ tcontainer_::draw(surface, force, invalidate_background); }
-#else
 	/** Inherited from tpanel. */
 	void draw_background(surface& frame_buffer)
 	{
@@ -142,7 +134,7 @@ public:
 		// our state, like a control. So we use the controls drawing method.
 		tcontrol::draw_foreground(frame_buffer);
 	}
-#endif
+
 	/**
 	 * Inherited from tpanel.
 	 *

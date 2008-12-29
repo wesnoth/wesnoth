@@ -102,9 +102,6 @@ twindow::twindow(CVideo& video,
 	, resized_(true)
 	, suspend_drawing_(true)
 	, top_level_(false)
-#ifndef NEW_DRAW
-	, window_()
-#endif
 	, restorer_()
 	, tooltip_()
 	, help_popup_()
@@ -117,9 +114,7 @@ twindow::twindow(CVideo& video,
 	, h_(h)
 	, easy_close_(false)
 	, easy_close_blocker_()
-#ifdef NEW_DRAW
 	, dirty_list_()
-#endif
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 	, debug_layout_(new tdebug_layout_graph(this))
 #endif
@@ -249,104 +244,7 @@ int twindow::show(const bool restore, void* /*flip_function*/)
 
 	return retval_;
 }
-#ifndef NEW_DRAW
-void twindow::draw()
-{
-	// NOTE since we're single threaded there's no need to create a critical
-	// section in this drawing routine.
 
-	// Prohibited from drawing?
-	if(suspend_drawing_) {
-		return;
-	}
-
-	// Drawing not required?
-	if(!resized_ && !need_layout_ && !is_dirty()) {
-		// If we have colour cursor we're responsible for the updates so do
-		// them otherwise the mouse move won't be visible until something else
-		// dirties the screen.
-		if(preferences::use_colour_cursors()) {
-			surface frame_buffer = get_video_surface();
-
-			cursor::draw(frame_buffer);
-			video_.flip();
-			cursor::undraw(frame_buffer);
-		}
-		return;
-	}
-
-	surface frame_buffer = get_video_surface();
-
-	/**
-	 * @todo It seems resized_ and need_layout_ need to do exactly the same so
-	 * maybe remove the resized_ flag. Wait for some testing.
-	 */
-
-	const bool full_redraw = resized_ || need_layout_;
-
-	if(resized_ || need_layout_) {
-		// Restore old surface.
-		if(restorer_) {
-			SDL_Rect rect = get_rect();
-			SDL_BlitSurface(restorer_, 0, frame_buffer, &rect);
-			// Since the old area might be bigger as the new one, invalidate it.
-			update_rect(rect);
-		}
-
-		layout();
-
-		// Get new surface
-		SDL_Rect rect = get_rect();
-		restorer_ = get_surface_portion(video_.getSurface(), rect);
-		window_ = make_neutral_surface(restorer_); // should be copy surface...
-
-		resized_ = false;
-	}
-	assert(window_ && restorer_);
-
-	if(full_redraw) {
-		canvas(0).draw();
-		blit_surface(canvas(0).surf(), 0, window_, 0);
-	}
-
-	for(tgrid::iterator itor = begin(); itor != end(); ++itor) {
-		if(! *itor || !itor->is_dirty()) {
-			continue;
-		}
-
-		log_scope2(gui_draw, "Window: draw child.");
-
-		itor->draw(window_, full_redraw, full_redraw);
-	}
-
-	if(full_redraw) {
-		canvas(1).draw();
-		blit_surface(canvas(1).surf(), 0, window_, 0);
-	}
-
-	if(tooltip_.is_dirty()) {
-		tooltip_.draw(window_);
-	}
-
-	if(help_popup_.is_dirty()) {
-		help_popup_.draw(window_);
-	}
-
-	// Floating label hack
-	font::draw_floating_labels(frame_buffer);
-
-	SDL_Rect rect = get_rect();
-	SDL_BlitSurface(window_, 0, frame_buffer, &rect);
-	update_rect(get_rect());
-	set_dirty(false);
-
-	cursor::draw(frame_buffer);
-	video_.flip();
-	cursor::undraw(frame_buffer);
-	// Floating hack part 2.
-	font::undraw_floating_labels(frame_buffer);
-}
-#else
 void twindow::draw()
 {
 	/***** ***** ***** ***** Init ***** ***** ***** *****/
@@ -468,7 +366,7 @@ void twindow::draw()
 	video_.flip();
 	cursor::undraw(frame_buffer);
 }
-#endif
+
 void twindow::window_resize(tevent_handler&,
 		const unsigned new_width, const unsigned new_height)
 {

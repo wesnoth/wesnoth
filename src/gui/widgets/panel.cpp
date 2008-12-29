@@ -33,23 +33,7 @@ SDL_Rect tpanel::get_client_rect() const
 
 	return result;
 }
-#ifndef NEW_DRAW
-void tpanel::draw(surface& surface, const bool force,
-		const bool invalidate_background)
-{
-	// Need to preserve the state and inherited draw clear the flag.
-	const bool dirty = is_dirty();
 
-	tcontainer_::draw(surface, force, invalidate_background);
-
-	// foreground
-	if(dirty || force) {
-		SDL_Rect rect = get_rect();
-    	canvas(1).draw(true);
-	    blit_surface(canvas(1).surf(), 0, surface, &rect);
-	}
-}
-#else
 void tpanel::draw_background(surface& frame_buffer)
 {
    	canvas(0).draw();
@@ -73,7 +57,7 @@ void tpanel::draw_foreground(surface& frame_buffer)
 			get_height());
 	SDL_BlitSurface(canvas(1).surf(), NULL, frame_buffer, &rect);
 }
-#endif
+
 tpoint tpanel::border_space() const
 {
 	boost::intrusive_ptr<const tpanel_definition::tresolution> conf =

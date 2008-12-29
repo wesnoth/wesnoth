@@ -608,21 +608,6 @@ void tgrid::set_size(const tpoint& origin, const tpoint& size)
 	assert(false);
 }
 
-#ifndef NEW_DRAW
-void tgrid::draw(surface& surface, const bool force,
-		const bool invalidate_background)
-{
-	for(iterator itor = begin(); itor != end(); ++itor) {
-
-		log_scope2(gui_draw, "Grid: draw child.");
-
-		assert(*itor);
-		itor->draw(surface, force, invalidate_background);
-	}
-
-	set_dirty(false);
-}
-#else
 void tgrid::set_origin(const tpoint& origin)
 {
 	const tpoint movement = tpoint(
@@ -670,7 +655,7 @@ void tgrid::child_populate_dirty_list(twindow& caller,
 	}
 
 }
-#endif
+
 twidget* tgrid::find_widget(const tpoint& coordinate, const bool must_be_active)
 {
 	for(std::vector<tchild>::iterator itor = children_.begin();
@@ -764,7 +749,7 @@ const twidget* tgrid::find_widget(const std::string& id,
 
 	return 0;
 }
-#ifdef NEW_DRAW
+
 twidget* tgrid::find_widget2(const tpoint& coordinate, const bool must_be_active)
 {
 	for(std::vector<tchild>::iterator itor = children_.begin();
@@ -805,7 +790,7 @@ const twidget* tgrid::find_widget2(const tpoint& coordinate,
 
 	return 0;
 }
-#endif
+
 bool tgrid::has_widget(const twidget* widget) const
 {
 	for(std::vector<tchild>::const_iterator itor = children_.begin();
@@ -853,23 +838,6 @@ void tgrid::set_rows_cols(const unsigned rows, const unsigned cols)
 	children_.resize(rows_ * cols_);
 }
 
-#ifndef NEW_DRAW
-void tgrid::set_dirty(const bool dirty)
-{
-	// Inherited.
-	twidget::set_dirty(dirty);
-
-	if(!dirty) {
-		for(std::vector<tchild>::iterator itor = children_.begin();
-				itor != children_.end(); ++itor) {
-
-			if(itor->widget()) {
-				itor->widget()->set_dirty(dirty);
-			}
-		}
-	}
-}
-#endif
 tpoint tgrid::tchild::get_best_size() const
 {
 	log_scope2(gui_layout, std::string("tgrid::tchild ") + __func__);

@@ -23,25 +23,12 @@
 #define ERR_C LOG_STREAM_INDENT(err, config)
 
 namespace gui2 {
-#ifndef NEW_DRAW
-void tminimap::draw(surface& surface, const bool force,
-		const bool invalidate_background)
-{
-	if(!is_dirty() && !force) {
-		return;
-	}
 
-	// Inherited.
-	tcontrol::draw(surface, force, invalidate_background);
-
-	draw_map(surface);
-}
-#else
 void tminimap::draw_background(surface& /*frame_buffer*/)
 {
 	assert(false); // FIXME implement.
 }
-#endif
+
 void tminimap::set_borders(const unsigned left,
 		const unsigned right, const unsigned top, const unsigned bottom)
 {

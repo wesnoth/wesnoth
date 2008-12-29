@@ -28,9 +28,6 @@ tcontrol::tcontrol(const unsigned canvas_count)
 	, tooltip_()
 	, help_message_()
 	, canvas_(canvas_count)
-#ifndef NEW_DRAW
-	, restorer_()
-#endif
 	, config_(0)
 	, renderer_()
 	, text_maximum_width_(0)
@@ -223,44 +220,6 @@ void tcontrol::load_config()
 	}
 }
 
-#ifndef NEW_DRAW
-void tcontrol::draw(surface& surface, const bool force,
-		const bool invalidate_background)
-{
-	assert(config_);
-
-	if(!is_dirty() && !force && !invalidate_background) {
-		return;
-	}
-
-	if(invalidate_background) {
-		restorer_ = 0;
-	}
-
-	SDL_Rect rect = get_rect();
-
-	if(!visible_) {
-		// When not visible we first restore our original surface.
-		// Next time when visible we grab the background again.
-		if(restorer_) {
-			DBG_G_D << "Control: drawing setting invisible.\n";
-			restore_background(surface);
-			restorer_ = 0;
-		}
-		return;
-	}
-
-	DBG_G_D << "Control: drawing.\n";
-	if(!restorer_) {
-		save_background(surface);
-	} else if(needs_full_redraw()) {
-		restore_background(surface);
-	}
-
-	canvas(get_state()).draw(true);
-	blit_surface(canvas(get_state()).surf(), 0, surface, &rect);
-}
-#else
 void tcontrol::draw_background(surface& frame_buffer)
 {
 #if 0
@@ -282,7 +241,6 @@ void tcontrol::draw_background(surface& frame_buffer)
 			get_height());
 	SDL_BlitSurface(canvas(get_state()).surf(), NULL, frame_buffer, &rect);
 }
-#endif
 
 void tcontrol::set_definition(const std::string& definition)
 {
@@ -348,19 +306,7 @@ int tcontrol::get_text_maximum_height() const
 
 	return get_height() - config_->text_extra_height;
 }
-#ifndef NEW_DRAW
-void tcontrol::save_background(const surface& src)
-{
-	assert(!restorer_);
 
-	restorer_ = gui2::save_background(src, get_rect());
-}
-
-void tcontrol::restore_background(surface& dst)
-{
-	gui2::restore_background(restorer_, dst, get_rect());
-}
-#endif
 tpoint tcontrol::get_best_text_size(const tpoint& minimum_size, const tpoint& maximum_size) const
 {
 	log_scope2(gui_layout, "tcontrol(" + get_control_type() + ") " + __func__);
