@@ -1,14 +1,14 @@
 # Translators:
-#  Christoph Berg <Christoph.Berg@kpm-sport.de>, 2005, 2007
+#  Christoph Berg <Christoph.Berg@kpm-sport.de>, 2005, 2007, 2008
 #  Nils Kneuper <crazy-ivanovic@gmx.net>, 2005, 2006
 #  HaJo Gurt <gurt@gmx.de>, 2007
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 1.3\n"
+"Project-Id-Version: Battle for Wesnoth 1.5\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-12-26 22:19+0100\n"
-"PO-Revision-Date: 2008-12-22 12:01+0100\n"
-"Last-Translator: Nils Kneuper <crazy-ivanovic  AT gmx  D O  T net>\n"
+"PO-Revision-Date: 2008-12-29 12:31+0100\n"
+"Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -145,15 +145,13 @@ msgstr "Tropischer Wald"
 
 #. [terrain]: id=forested_hills
 #: data/core/terrain.cfg:449
-#, fuzzy
 msgid "Forested Hills"
-msgstr "Wald"
+msgstr "Bewaldete Hügel"
 
 #. [terrain]: id=forested_snow_hills
 #: data/core/terrain.cfg:459
-#, fuzzy
 msgid "Forested Snow Hills"
-msgstr "Verschneite Hügel"
+msgstr "Bewaldete verschneite Hügel"
 
 #. [terrain]: id=grassland
 #. [terrain]: id=grassland_flowers
@@ -231,7 +229,7 @@ msgstr "Sumpf"
 #. [terrain]: id=lit
 #: data/core/terrain.cfg:673
 msgid "Lit"
-msgstr ""
+msgstr "Erhellt"
 
 #. [terrain]: id=cave
 #: data/core/terrain.cfg:683
@@ -240,9 +238,8 @@ msgstr "Höhle"
 
 #. [terrain]: id=cave_path
 #: data/core/terrain.cfg:701
-#, fuzzy
 msgid "Cave path"
-msgstr "Erhellte Höhle"
+msgstr "Höhlenpfad"
 
 #. [terrain]: id=fungus
 #: data/core/terrain.cfg:710
@@ -311,9 +308,8 @@ msgstr "Furt"
 
 #. [terrain]: id=reef
 #: data/core/terrain.cfg:1057
-#, fuzzy
 msgid "Coastal Reef"
-msgstr "Küste"
+msgstr "Küstennahes Riff"
 
 #. [terrain]: id=cloud
 #: data/core/terrain.cfg:1071
@@ -354,7 +350,7 @@ msgstr "Flachland"
 #. [terrain]: id=frozen
 #: data/core/terrain.cfg:1139
 msgid "Frozen"
-msgstr ""
+msgstr "Gefroren"
 
 #. [terrain]: id=unwalkable
 #: data/core/terrain.cfg:1153
@@ -530,7 +526,7 @@ msgstr "Benutzerdefinierte Lichteinstellungen"
 #. [toggle_button]: id=custom_tod_auto_refresh
 #: data/gui/default/window/editor_settings.cfg:93
 msgid "Auto-update map view"
-msgstr ""
+msgstr "Automatische Aktualisierung der Kartenansicht"
 
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:120
@@ -550,7 +546,7 @@ msgstr "Blau:"
 #. [toggle_button]: id=use_mdi
 #: data/gui/default/window/editor_settings.cfg:208
 msgid "Allow more than one map to be open at the same time (MDI)"
-msgstr ""
+msgstr "Mehr als eine Karte geöffnet zu haben erlauben (MDI)"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
@@ -714,6 +710,7 @@ msgstr "Netzwerkpartie eröffnen"
 #: data/gui/default/window/mp_method_selection.cfg:163
 msgid "Host a game using dedicated server 'wesnothd'"
 msgstr ""
+"Ausrichten einer Partie unter Zuhilfenahme des dedizierten »wesnothd« Servers"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:173
@@ -1285,23 +1282,23 @@ msgstr "Version"
 
 #: src/gui/widgets/canvas.cpp:290
 msgid "Line doesn't fit on canvas."
-msgstr ""
+msgstr "Die Linie passt nicht auf die Zeichenfläche."
 
 #: src/gui/widgets/canvas.cpp:425
 msgid "Rectangle doesn't fit on canvas."
-msgstr ""
+msgstr "Das Rechteckt passt nicht auf die Zeichenfläche."
 
 #: src/gui/widgets/canvas.cpp:791
 msgid "Text has a font size of 0."
-msgstr ""
+msgstr "Der Text hat eine Schriftgröße von 0."
 
 #: src/gui/widgets/canvas.cpp:856
 msgid "Text doesn't start on canvas."
-msgstr ""
+msgstr "Der Text beginnt nicht auf der Zeichenfläche."
 
 #: src/gui/widgets/helper.cpp:167
 msgid "Mandatory widget '$id' hasn't been defined."
-msgstr ""
+msgstr "Benötigtes Steuerelement '$id' wurde nicht definiert."
 
 #: src/gui/widgets/settings.cpp:123
 msgid "No default gui defined."
@@ -1309,16 +1306,18 @@ msgstr ""
 
 #: src/gui/widgets/settings.cpp:253
 msgid "Window not defined."
-msgstr ""
+msgstr "Fenster nicht definiert."
 
 #: src/gui/widgets/settings.cpp:317
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr ""
+"Die Steuerelementdefinition »$defintion« enthält nicht die Definition für "
+"»$id«."
 
 #: src/gui/widgets/settings.cpp:429 src/gui/widgets/window_builder.cpp:285
 msgid "No resolution defined."
-msgstr ""
+msgstr "Keine Auflösung definiert."
 
 #: src/gui/widgets/settings.cpp:461
 msgid "No state or draw section defined."
@@ -1337,11 +1336,11 @@ msgstr "Kein Gitternetz definiert."
 
 #: src/gui/widgets/window_builder.cpp:504
 msgid "A row must have a column."
-msgstr ""
+msgstr "Eine Zeile muss mindestens über eine Spalte verfügen."
 
 #: src/gui/widgets/window_builder.cpp:505
 msgid "Number of columns differ."
-msgstr ""
+msgstr "Die Anzahl der Spalten ist verschieden."
 
 #: src/gui/widgets/window_builder.cpp:743
 msgid "No list defined."
@@ -1349,16 +1348,18 @@ msgstr "Keine Liste definiert."
 
 #: src/gui/widgets/window_builder.cpp:746
 msgid "A 'list_definition' should contain one row."
-msgstr ""
+msgstr "Eine »Listendefinition« sollte nur eine Zeile enthalten."
 
 #: src/gui/widgets/window_builder.cpp:765
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr ""
+"Die Anzahl von Spalten eines »Listeneintrags« muss jener der "
+"»Listendefinition« entsprechen."
 
 #: src/gui/widgets/window_builder.cpp:1131
 msgid "The number of value_labels and values don't match."
-msgstr ""
+msgstr "Die Anzahl von Schlüsseln und Werten stimmt nicht überein."
 
 #: src/hotkeys.cpp:45
 msgid "Next Unit"
@@ -1586,7 +1587,7 @@ msgstr "Karteninformationen"
 
 #: src/hotkeys.cpp:112
 msgid "Swap fore- and background terrains"
-msgstr ""
+msgstr "Vorder- und Hintergrundgelände tauschen"
 
 #: src/hotkeys.cpp:113
 msgid "Next Tool"
@@ -1642,19 +1643,19 @@ msgstr "Nichts auswählen"
 
 #: src/hotkeys.cpp:131
 msgid "Rotate Clipboard Clockwise"
-msgstr ""
+msgstr "Zwischenablage im Uhrzeigersinn rotieren"
 
 #: src/hotkeys.cpp:133
 msgid "Rotate Clipboard Counter-Clockwise"
-msgstr ""
+msgstr "Zwischenablage gegen den Uhrzeigersinn rotieren"
 
 #: src/hotkeys.cpp:135
 msgid "Flip Clipboard Horizontally"
-msgstr ""
+msgstr "Zwischenablage horizontal spiegeln"
 
 #: src/hotkeys.cpp:137
 msgid "Flip Clipboard Vertically"
-msgstr ""
+msgstr "Zwischenablage vertikal spiegeln"
 
 #: src/hotkeys.cpp:139
 msgid "Rotate Selection"
@@ -1670,11 +1671,11 @@ msgstr "Ausgewählten Bereich füllen"
 
 #: src/hotkeys.cpp:145
 msgid "Generate Tiles In Selection"
-msgstr ""
+msgstr "Felder in Auswahl generieren"
 
 #: src/hotkeys.cpp:147
 msgid "Randomize Tiles In Selection"
-msgstr ""
+msgstr "Felder in Auswahl randomisieren"
 
 #: src/hotkeys.cpp:151
 msgid "Rotate Map"
@@ -1899,6 +1900,8 @@ msgstr "Dieses Tastenkürzel wird bereits verwendet."
 msgid ""
 "Warning: screenshot hotkeys not combined with Control, Alt or Meta keys."
 msgstr ""
+"Warnung: Das Tastaturkürzel für einen Schnappschuss ist weder mit Strg, Alt "
+"oder der Metataste kombiniert."
 
 #: src/preferences_display.cpp:419
 msgid "There are no alternative video modes available"
@@ -1944,69 +1947,3 @@ msgstr ""
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr ""
 "Im Abschnitt »[$section|]« ist der benötigte Schlüssel »$key|« nicht gesetzt."
-
-#~ msgid "Ok"
-#~ msgstr "Okay"
-
-#~ msgid "2000"
-#~ msgstr "2000"
-
-#~ msgid "-1"
-#~ msgstr "-1"
-
-#~ msgid "Rockbound Cave Lit"
-#~ msgstr "Erhellte unwegsame Höhle"
-
-#~ msgid "Your modifications to the map will be lost. Continue?"
-#~ msgstr "Alle Änderungen an der Karte werden verloren gehen. Fortsetzen?"
-
-#~ msgid "Random Generator Settings"
-#~ msgstr "Einstellungen für den Zufallskarten-Generator"
-
-#~ msgid "Map creation failed."
-#~ msgstr "Erstellen der Karte ist fehlgeschlagen"
-
-#~ msgid "Video Mode"
-#~ msgstr "Auflösung wechseln"
-
-#~ msgid "X offset:"
-#~ msgstr "Versatz in X-Richtung:"
-
-#~ msgid "Y offset:"
-#~ msgstr "Versatz in Y-Richtung:"
-
-#~ msgid "Smart expand"
-#~ msgstr "Intelligente Ausdehnung"
-
-#~ msgid "X-Axis"
-#~ msgstr "X-Achse"
-
-#~ msgid "Y-Axis"
-#~ msgstr "Y-Achse"
-
-#~ msgid "Flip around (this may change the dimensions of the map):"
-#~ msgstr "Karte spiegeln (könnte die Größe der Karte ändern):"
-
-#~ msgid "Set Terrain"
-#~ msgstr "Terrain festlegen"
-
-#~ msgid "Save As"
-#~ msgstr "Speichern unter"
-
-#~ msgid "Set Player's keep"
-#~ msgstr "Startposition festlegen"
-
-#~ msgid "Flood Fill"
-#~ msgstr "Alles füllen"
-
-#~ msgid "Revert from Disk"
-#~ msgstr "Rückgängig"
-
-#~ msgid "Flip Map"
-#~ msgstr "Karte spiegeln"
-
-#~ msgid "Delay transition updates"
-#~ msgstr "Übergänge verspätet aktualisieren"
-
-#~ msgid "Invalid terrain found probably an 1.2 terrain format, terrain = "
-#~ msgstr "Ungültiges Gelände gefunden. Eventuell 1.2 Geländeformat. Gelände ="

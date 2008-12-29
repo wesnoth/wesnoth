@@ -1,32 +1,28 @@
-# translation of hu-multiplayer.po to Hungarian
+# translation of wesnoth-anl.pot to Hungarian
 # Hungarian translations for Battle for Wesnoth package.
-# Copyright (C) 2004 Wesnoth development team
+# Copyright (C) 2008 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
-#
-# Automatically generated, 2004.
-# Széll Tamás <tomi@digiflex.hu>, 2005.
-# honorshark <honorshark@gmail.com>, 2008.
-# Kádár-Németh Krisztián <krisztian.7@vizslamail.hu>, 2008.
+# Németh Tamás <ntomasz@vipmail.hu>, 2008.
+# Kádár-Németh Krisztián <krisztian.kad@gmail.com>, 2008.
 msgid ""
 msgstr ""
-"Project-Id-Version: hu-multiplayer\n"
+"Project-Id-Version: wesnoth-anl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-12-26 22:20+0100\n"
-"PO-Revision-Date: 2008-02-25 19:58+0100\n"
-"Last-Translator: Kádár-Németh Krisztián <krisztian.7@vizslamail.hu>\n"
-"Language-Team: Hungarian\n"
+"PO-Revision-Date: 2008-12-29 13:29+0100\n"
+"Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
+"Language-Team: Hungarian <>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
-"X-Generator: KBabel 1.11.4\n"
+"X-Generator: Lokalize 0.2\n"
 
 #. [multiplayer]: id=multiplayer_A_New_Land
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:4
-#, fuzzy
 msgid "4p - A New Land"
-msgstr "4j - Lagúna"
+msgstr "4j - Egy új ország"
 
 #. [multiplayer]: id=multiplayer_A_New_Land
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:7
@@ -34,6 +30,8 @@ msgid ""
 "This 4p survival scenario allows you to construct buildings and terraform "
 "the land. Use map settings. Recommended starting gold=100."
 msgstr ""
+"Ezen a négyjátékos túlélőpályán lehetőség van épületek építésére és a terep "
+"átalakítására. Használd a térképbeállításokat! Ajánlott kezdőarany: 100."
 
 #. [part]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:25
@@ -43,16 +41,20 @@ msgid ""
 "armies that had crushed their homeland, the leaders of the resistance hoped "
 "only for enough time to rebuild their forces."
 msgstr ""
+"A nagy háborút követően a megmaradt emebriség egy ismeretlen, félreeső "
+"völgybe menekült. Noha tudták, hogy nem bújhatnak el a hatalmas sereg elől, "
+"amely leigázta a szülőföldjüket, az ellenállás vezetői reménykedtek benne, "
+"hogy van elég idejük újjászervezni az erőiket."
 
 #. [objectives]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:33
 msgid "Right-click on your leader during your turn for help"
-msgstr ""
+msgstr "A súgó megjelenítéséhez kattints jobb gombbal a vezéredre"
 
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:35
 msgid "You must survive until turn 25."
-msgstr ""
+msgstr "Kitartasz 25 körön keresztül."
 
 #. [side]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:52
@@ -60,7 +62,7 @@ msgstr ""
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:82
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:97
 msgid "teamname^Team 1"
-msgstr "teamname^1. csapat"
+msgstr "1. csapat"
 
 #. [side]: type=Death Knight
 #. [side]: type=Orcish Sovereign
@@ -69,31 +71,39 @@ msgstr "teamname^1. csapat"
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:169
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:196
 msgid "teamname^Team 2"
-msgstr "teamname^2. csapat"
+msgstr "2. csapat"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:436
 msgid ""
 "You destroy the mushroom mine. The northwest undead now have 10 less income."
 msgstr ""
+"Letaroltad a gombafeldolgozót. Az északnyugati élőholtak bevétele mostantól "
+"10 arannyal kevesebb."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:456
 msgid ""
 "You destroy the mushroom mine. The northeast orcs now have 10 less income."
 msgstr ""
+"Letaroltad a gombafeldolgozót. Az északkeleti orkok bevétele mostantól 10 "
+"arannyal kevesebb."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:476
 msgid ""
 "You destroy the mushroom mine. The southwest orcs now have 10 less income."
 msgstr ""
+"Letaroltad a gombafeldolgozót. A délnyugati orkok bevétele mostantól 10 "
+"arannyal kevesebb."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:496
 msgid ""
 "You destroy the mushroom mine. The southeast undead now have 10 less income."
 msgstr ""
+"Letaroltad a gombafeldolgozót. A délkeleti élőholtak bevétele mostantól 10 "
+"arannyal kevesebb."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:588
@@ -101,6 +111,7 @@ msgid ""
 "One of your peasants has happened upon some spider's nests in the north and "
 "south."
 msgstr ""
+"A parasztok egyike véletlenül ráakadt néhány pókfészekre északon és délen."
 
 #. [message]: type=Peasant
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:594
@@ -108,6 +119,8 @@ msgid ""
 "I swear I saw somebody trapped in the spider's web. Maybe we should rescue "
 "them?"
 msgstr ""
+"Esküszöm, hogy láttam néhányakat csapdába esni a pókhálóban. Talán "
+"megmenthetnénk őket?"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:606
@@ -116,12 +129,17 @@ msgid ""
 "spiders guarding each captive are currently wounded, the sooner you get "
 "there the better chance you have of killing them."
 msgstr ""
+"Vidd bármelyik egységed ezen rabok mellé, és ők csatlakoznak hozzád. A "
+"rabokat őrző minden pók pillanatnyilag sebesült, tehát minél előbb érsz oda, "
+"annál nagyobb az esélyed rá, hogy megölöd az összeset."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:617
 msgid ""
 "Your men report strange sounds coming from some caves to the east and west."
 msgstr ""
+"Az embereid jelentették, hogy erős zajt hallanak néhány keleti és nyugati "
+"barlangból."
 
 #. [message]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:623
@@ -130,6 +148,10 @@ msgid ""
 "it must be where the mainstay of their resources are produced. If we could "
 "destroy them our chances wouldn't nearly be so slim."
 msgstr ""
+"Úgy tűnik, az ellenség földalatti gombafeldolgozókat létesített a "
+"közelben... minden bizonnyal erőforrásaik legnagyobb részét onnan szerzik. "
+"Ha el tudnánk pusztítani a feldolgozókat, akkor az esélyeink jelentősen "
+"javulnának."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:635
@@ -137,11 +159,14 @@ msgid ""
 "Move any unit onto these villages to destroy the mine. Each one you destroy "
 "will reduce the enemy's income by 10."
 msgstr ""
+"Vidd bármelyik egységedet ezen falvakba a gombafeldolgozó elpusztítása "
+"érdekében. Minden egyes feldolgozó lerombolása 10 arannyal csökkenti az "
+"ellenség bevételét."
 
 #. [message]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:647
 msgid "This battle is nearly at an end. Victory is close at hand!"
-msgstr ""
+msgstr "A csatának nemsokára vége. A győzelem már a küszöbön áll!"
 
 #. [message]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:658
@@ -149,48 +174,50 @@ msgid ""
 "We have survived the onslaught! The tide of the battle has turned, victory "
 "cannot elude us now!"
 msgstr ""
+"Túléltük a támadást! A harci szerencse megfordult, immár biztosan miénk a "
+"győzelem!"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:662
 msgid "You have won the game, but you may continue if you wish..."
-msgstr ""
+msgstr "Megnyerted a játékot, de folytathatod, ha akarod..."
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:677
 msgid "I have fallen, but all is not lost!"
-msgstr ""
+msgstr "Én elbuktam, de nincs még minden veszve!"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:689
 msgid "I am done for, but we have yet to lose this battle!"
-msgstr ""
+msgstr "Végem van, de még nem vesztettük el ezt a csatát!"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:701
 msgid "Comrades, avenge me!"
-msgstr ""
+msgstr "Bajtársaim, álljatok bosszút értem!"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:713
 msgid "Do not fear, there is hope for us still!"
-msgstr ""
+msgstr "Ne féljetek, van még reményünk!"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_general_macros.cfg:73
 msgid "The chest contains $oc_treasure gold."
-msgstr ""
+msgstr "A ládában $oc_treasure arany van."
 
 #. [option]
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:5
 msgid "Return to menu"
-msgstr ""
+msgstr "Vissza a menübe"
 
 #. [message]: speaker=narrator
 #. [option]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:15
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:113
 msgid "Peasants"
-msgstr ""
+msgstr "Parasztok"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:18
@@ -199,13 +226,16 @@ msgid ""
 "peasant allows you to terraform the landscape and/or build castles, mines, "
 "farms, villages and universities."
 msgstr ""
+"A parasztok a munkásaid. A terepviszonyoktól függően jobb egérkattintás után "
+"a segítségükkel átalakíthatod a vidéket és/vagy építhetsz várakat, bányákat, "
+"farmokat, falvakat és egyetemeket."
 
 #. [message]: speaker=narrator
 #. [option]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:26
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:120
 msgid "Mages"
-msgstr ""
+msgstr "Mágusok"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:28
@@ -213,14 +243,16 @@ msgid ""
 "Mages are your wise men. They can study at universities, pursuing advances "
 "in mining, farming and recruitment."
 msgstr ""
+"A mágusok a legbölcsebb embereid. Tanulhatnak az egyetemeken, segíthetik a "
+"bányák, farmok termelésének fejlesztését és a toborzás módszereinek "
+"korszerűsítését is."
 
 #. [message]: speaker=narrator
 #. [option]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:36
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:127
-#, fuzzy
 msgid "Farms"
-msgstr "Tündér"
+msgstr "Farmok"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:38
@@ -228,13 +260,15 @@ msgid ""
 "Farms can only be planted on grassland. Move a peasant onto a farm and he "
 "will begin to automatically harvest the cash crop."
 msgstr ""
+"Farmokat csak mezőségekre telepíthetsz. Vigyél egy parasztot egy farmra, és "
+"ő automatikusan megkezdi a termények betakarítását."
 
 #. [message]: speaker=narrator
 #. [option]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:46
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:134
 msgid "Villages"
-msgstr ""
+msgstr "Falvak"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:48
@@ -243,14 +277,16 @@ msgid ""
 "usual. Right-click on a peasant in a village and you can establish a "
 "university."
 msgstr ""
+"Falvakat csak mezőségekre építhetsz. A falvak a megszokott módon bevételhez "
+"juttatnak, valamint gyógyítják a harcosaidat. Ha egy faluban lévő parasztra "
+"kattintasz jobb gombbal, lehetőséged nyílik egyetemet is alapítani."
 
 #. [message]: speaker=narrator
 #. [option]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:56
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:141
-#, fuzzy
 msgid "Mines"
-msgstr "Szörnyetegek"
+msgstr "Bányák"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:58
@@ -258,13 +294,15 @@ msgid ""
 "Mines can be built on hills or mountains. A peasant on a mine will "
 "automatically dig for gold at the start of your turn."
 msgstr ""
+"Bányákat a dombságokra és a hegyvidékekre építhetsz. Ha egy paraszt a "
+"bányában van, a köröd kezdetén automatikusan aranyat bányászik."
 
 #. [message]: speaker=narrator
 #. [option]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:66
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:148
 msgid "Universities"
-msgstr ""
+msgstr "Egyetemek"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:68
@@ -274,6 +312,10 @@ msgid ""
 "your chosen research target. Right-click on a mage in a university to change "
 "research target."
 msgstr ""
+"A \"tünde stílusú\" falvak felelnek meg az egyetemeknek. A köröd elején az "
+"egyetemeken lévő mágusok automatikusan hozzájárulnak a kitűzött tudományos "
+"célod kutatási folyamatának előmozdításához. Ha egy egyetemen lévő mágusra "
+"kattintasz jobb gombbal, megváltoztathatod a kitűzött tudományos célt."
 
 #. [message]: speaker=narrator
 #. [option]: speaker=narrator
@@ -282,7 +324,7 @@ msgstr ""
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:155
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:135
 msgid "Diplomacy"
-msgstr ""
+msgstr "Diplomácia"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:78
@@ -290,32 +332,33 @@ msgid ""
 "Right-clicking on your leader when in a university allows you to select "
 "special diplomatic options."
 msgstr ""
+"Ha jobb gombbal kattintasz a vezéredre, mikor egy egyetemen tartózkodik, "
+"akkor alkalmad nyílik speciális diplomáciai lehetőségek közül választani. "
 
 #. [set_menu_item]: id=anl_help
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:86
 msgid "Help"
-msgstr ""
+msgstr "Súgó"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:102
-#, fuzzy
 msgid "A New Land - Help"
-msgstr "4j - Lagúna"
+msgstr "Egy új ország - Súgó"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:103
 msgid "Select a topic."
-msgstr ""
+msgstr "Válassz egy témát."
 
 #. [option]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:106
 msgid "Done"
-msgstr ""
+msgstr "Kész"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:19
 msgid "I hereby donate 20 gold to the coffers of $df_player_name|."
-msgstr ""
+msgstr "Ezennel átadok 20 arany támogatást $df_player_name| játékosnak."
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:59
@@ -323,6 +366,8 @@ msgid ""
 "$sf_player_name|, since our wisdom exceeds yours I have instructed my "
 "scholars to further your understanding of agriculture."
 msgstr ""
+"$sf_player_name|, mivel a tudásunk meghaladja a tiéteket, arra utasítottam a "
+"legtanultabb embereimet, hogy gyarapítsák a mezőgazdasági ismereteiteket."
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:91
@@ -331,6 +376,9 @@ msgid ""
 "instructed my scholars to aid you in your efforts to learn the science of "
 "mining."
 msgstr ""
+"$sm_player_name|, mivel a tudásunk meghaladja a tiéteket, arra utasítottam a "
+"legtanultabb embereimet, hogy legyenek segítségetekre a bányászat "
+"tudományának elsajátításában."
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:123
@@ -338,6 +386,8 @@ msgid ""
 "You know worryingly little about the arts of war, $sw_player_name|. I feel "
 "an obligation to instruct you in this vital matter."
 msgstr ""
+"$sw_player_name|, aggasztóan keveset tudsz a hadviselés tudományáról. Úgy "
+"érzem, kötelességem tanácsokat adnom neked ebben a létfontosságú ügyben."
 
 #. [set_variable]
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:189
@@ -345,6 +395,8 @@ msgid ""
 "$player_name\n"
 "Share knowledge of agriculture"
 msgstr ""
+"$player_name\n"
+"Mezőgazdasági ismeretek megosztása"
 
 #. [set_variable]
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:196
@@ -352,6 +404,8 @@ msgid ""
 "$player_name\n"
 "Share knowledge of mining"
 msgstr ""
+"$player_name\n"
+"Bányászati ismeretek megosztása"
 
 #. [set_variable]
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:203
@@ -359,24 +413,26 @@ msgid ""
 "$player_name\n"
 "Share knowledge of warfare"
 msgstr ""
+"$player_name\n"
+"Hadviselési ismeretek megosztása"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:220
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:246
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:279
 msgid "Diplomatic Options"
-msgstr ""
+msgstr "Diplomáciai lehetőségek"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:223
 msgid "What shall I do?"
-msgstr ""
+msgstr "Mit tegyek?"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:47
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:229
 msgid "Nothing"
-msgstr ""
+msgstr "Semmit"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:239
@@ -384,17 +440,19 @@ msgid ""
 "Donate Funds\n"
 "Give 20 gold to another player"
 msgstr ""
+"Pénzt adományozok\n"
+"20 aranyat adok egy másik játékosnak"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:249
 msgid "Who will you donate funds to?"
-msgstr ""
+msgstr "Kinek adsz pénzt?"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:252
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:285
 msgid "Back"
-msgstr ""
+msgstr "Vissza"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:272
@@ -402,11 +460,13 @@ msgid ""
 "Share Knowledge\n"
 "Help an ally with their research"
 msgstr ""
+"Megosztom az ismereteket\n"
+"Segítek egy szövetségesnek a kutatásaiban"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:282
 msgid "Who will you share knowledge with?"
-msgstr ""
+msgstr "Kivel osztod meg az ismereteket?"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:319
@@ -416,6 +476,10 @@ msgid ""
 "Negotiation Progress: $player_$side_number|.leader_option_1.progress|/"
 "$player_$side_number|.leader_option_1.target"
 msgstr ""
+"Tárgyalok a törpökkel\n"
+"Lehetővé teszi egy törp egység toborzását\n"
+"A tárgyalás állása: $player_$side_number|.leader_option_1.progress|/$player_"
+"$side_number|.leader_option_1.target"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:345
@@ -425,12 +489,16 @@ msgid ""
 "Negotiation Progress: $player_$side_number|.leader_option_2.progress|/"
 "$player_$side_number|.leader_option_2.target"
 msgstr ""
+"Tárgyalok a tündékkel\n"
+"Lehetővé teszi egy tünde egység toborzását\n"
+"A tárgyalás állása: $player_$side_number|.leader_option_2.progress|/$player_"
+"$side_number|.leader_option_2.target"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:378
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:400
 msgid "Negotiation Complete"
-msgstr ""
+msgstr "A tárgyalásnak vége"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:381
@@ -438,6 +506,8 @@ msgid ""
 "Our talks are complete - the Dwarves will gladly fight by your side. Which "
 "of our brethren do you want to recruit?"
 msgstr ""
+"A megbeszélésnek vége - a törpök örömmel harcolnak a te oldaladon. Melyik "
+"testvérünket szeretnéd toborozni?"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:403
@@ -445,11 +515,13 @@ msgid ""
 "Our talks are complete - the Elves shall aid you in this battle. Which our "
 "of kin do you wish to recruit?"
 msgstr ""
+"A megbeszélésnek vége - a tündék segítségedre lesznek ebben a csatában. "
+"Melyik rokonunkat szeretnéd toborozni?"
 
 #. [set_menu_item]: id=anl_choose_new_recruit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:9
 msgid "Choose New Recruit"
-msgstr ""
+msgstr "Válassz egy új egységet"
 
 #. [message]: speaker=unit
 #. [message]: speaker=narrator
@@ -458,25 +530,26 @@ msgstr ""
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:225
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:241
 msgid "Study Complete"
-msgstr ""
+msgstr "A tanításnak vége"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:35
 msgid "Which type of unit would you like to be able to recruit?"
-msgstr ""
+msgstr "Melyik egység toborzása váljon lehetővé?"
 
 #. [set_menu_item]: id=anl_oversee_research
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:54
 msgid "Oversee Research"
-msgstr ""
+msgstr "Kutatások áttekintése"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:93
 msgid "Research"
-msgstr ""
+msgstr "Kutatás"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:99
+#, fuzzy
 msgid ""
 "We are currently studying $player_$side_number|.research.current_target|. To "
 "which end would you have our scholars devote their minds?\n"
@@ -484,11 +557,17 @@ msgid ""
 "Our farms produce $player_$side_number|.farming.gold|g\n"
 "Our mines produce $player_$side_number|.mining.gold|g\n"
 msgstr ""
+"Jelenleg ezt tanulmányozzuk: $player_$side_number|.research.current_target|. "
+"A diákjaink milyen célnak szenteljék elméjüket?\n"
+"\n"
+"A farmjaink termelése: $player_$side_number|.farming.gold|g\n"
+"A bányáink termelése: $player_$side_number|.mining.gold|g\n"
+"                                                                                "
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:103
 msgid "Continue as before"
-msgstr ""
+msgstr "Folytassák az eddigi kutatást"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:115
@@ -498,6 +577,10 @@ msgid ""
 "Study Progress: $player_$side_number|.farming.progress|/$player_"
 "$side_number|.farming.target"
 msgstr ""
+"Mezőgazdaság\n"
+"A földművesek egy arannyal többet termelnek\n"
+"A kutatás állása: $player_$side_number|.farming.progress|/player_"
+"$side_number|.farming.target"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:129
@@ -507,6 +590,10 @@ msgid ""
 "Study Progress: $player_$side_number|.mining.progress|/$player_$side_number|."
 "mining.target"
 msgstr ""
+"Bányászat\n"
+"A bányászok egy arannyal többet termelnek\n"
+"A kutatás állása: $player_$side_number|.mining.progress|/$player_"
+"$side_number|.mining.target"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:143
@@ -516,6 +603,10 @@ msgid ""
 "Study Progress: $player_$side_number|.warfare.progress|/$player_"
 "$side_number|.warfare.target"
 msgstr ""
+"Hadviselés\n"
+"Új típusú egységek toborzását teszi lehetővé\n"
+"A kutatás állása: $player_$side_number|.warfare.progress|/$player_"
+"$side_number|.warfare.target"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:210
@@ -523,6 +614,8 @@ msgid ""
 "$player_$side_number|.name|'s farms now produce $player_$side_number|."
 "farming.gold gold."
 msgstr ""
+"$player_$side_number|.name| farmjai most már $player_$side_number|.farming."
+"gold aranyat termelnek."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:227
@@ -530,6 +623,8 @@ msgid ""
 "$player_$side_number|.name|'s mines now produce $player_$side_number|.mining."
 "gold gold."
 msgstr ""
+"$player_$side_number|.name| bányái most már $player_$side_number|.mining."
+"gold aranyat termelnek."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:243
@@ -537,31 +632,36 @@ msgid ""
 "$player_$side_number|.name|, we have finished researching warfare. Right-"
 "click on a mage in a university to select a unit to recruit."
 msgstr ""
+"$player_$side_number|.name|, befejeztük a hadviselés kutatását. Kattints "
+"jobb gombbal egy egyetemen tartózkodó mágusra a toborzandó egység "
+"kiválasztásához."
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_special_macros.cfg:149
 msgid "Let's cut you free!"
-msgstr ""
+msgstr "Ne félj, kiszabadítunk!"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_special_macros.cfg:153
 msgid "You release the creature from the web and it agrees to help you."
 msgstr ""
+"Kiszabadítod a teremtményt a hálóból, az pedig örömmel hajlandó segíteni "
+"neked."
 
 #. [set_menu_item]: id=anl_get_to_work
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:6
 msgid "Get to Work!"
-msgstr ""
+msgstr "Munkára fel!"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:43
 msgid "What shall I do my liege?"
-msgstr ""
+msgstr "Mit tegyek, jó uram?"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:59
 msgid "Convert to Grassland"
-msgstr ""
+msgstr "Mezőséggé alakítás"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:59
@@ -569,1431 +669,141 @@ msgstr ""
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:266
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:402
 msgid "Cost: 0g"
-msgstr ""
+msgstr "Ára: 0 arany"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:74
 msgid "Plant Farm"
-msgstr ""
+msgstr "Farm telepítése"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:86
 msgid "Cost: 15g"
-msgstr ""
+msgstr "Ára: 15 arany"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:86
 msgid "Build Village"
-msgstr ""
+msgstr "Falu építése"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:104
 msgid "Build Castle"
-msgstr ""
+msgstr "Vár építése"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:104
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:361
 msgid "Cost: 6g"
-msgstr ""
+msgstr "Ára: 6 arany"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:121
 msgid "Flood the Field"
-msgstr ""
+msgstr "Mezőség elárasztása"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:121
 msgid "Cost: 4g"
-msgstr ""
+msgstr "Ára: 4 arany"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:138
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:281
 msgid "Cost: 1g"
-msgstr ""
+msgstr "Ára: 1 arany"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:138
 msgid "Plant Saplings"
-msgstr ""
+msgstr "Facsemeték ültetése"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:158
 msgid "Chop Down Forest"
-msgstr ""
+msgstr "Erdő kivágása"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:158
 msgid "Earns: 1g"
-msgstr ""
+msgstr "Bevétel: 1 arany"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:185
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:206
 msgid "Build Mine"
-msgstr ""
+msgstr "Bánya létesítése"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:185
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:206
 msgid "Cost: 25g"
-msgstr ""
+msgstr "Ára: 25 arany"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:227
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:319
 msgid "Cost: 3g"
-msgstr ""
+msgstr "Ára: 3 arany"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:227
 msgid "Make a Ford"
-msgstr ""
+msgstr "Gázló létesítése"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:245
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:281
 msgid "Landfill"
-msgstr ""
+msgstr "Szemétlerakó"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:245
 msgid "Cost: 5g"
-msgstr ""
+msgstr "Ára: 5 arany"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:266
 msgid "Destroy the Ford"
-msgstr ""
+msgstr "Gázló eltüntetése"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:302
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:319
 msgid "Smash Cave Floor"
-msgstr ""
+msgstr "Barlangbejárat beomlasztása"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:302
 msgid "Cost: 2g"
-msgstr ""
+msgstr "Ára: 2 arany"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:336
 msgid "Harvest Mushrooms"
-msgstr ""
+msgstr "Gomba betakarítása"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:336
 msgid "Earns: 3g"
-msgstr ""
+msgstr "Bevétel: 3 arany"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:361
 msgid "Build a Keep"
-msgstr ""
+msgstr "Vártorony építése"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:381
 msgid "Cost: 7g"
-msgstr ""
+msgstr "Ára: 7 arany"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:381
 msgid "Establish University"
-msgstr ""
+msgstr "Egyetem alapítása"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:402
-#, fuzzy
 msgid "Clear the Ground"
-msgstr "Tiszta idő"
-
-#~ msgid "User Map"
-#~ msgstr "Felhasználói térkép"
-
-#~ msgid "Random"
-#~ msgstr "Véletlenszerű"
-
-#~ msgid "Default"
-#~ msgstr "Alapértelmezett"
-
-#~ msgid "Age of Heroes"
-#~ msgstr "Hősök kora"
-
-#~ msgid "Great War"
-#~ msgstr "Nagy háború"
-
-#~ msgid "Alliance of Darkness"
-#~ msgstr "A Sötétség szövetsége"
-
-#~ msgid "Alliance of Light"
-#~ msgstr "A Fény szövetsége"
-
-#~ msgid "Drakes"
-#~ msgstr "Perzsekények"
-
-#~ msgid "Knalgan Alliance"
-#~ msgstr "Knalgai szövetség"
-
-#~ msgid "Loyalists"
-#~ msgstr "Hűségesek"
-
-#~ msgid "Northerners"
-#~ msgstr "Északiak"
-
-#~ msgid "Rebels"
-#~ msgstr "Lázadók"
-
-#~ msgid "Undead"
-#~ msgstr "Élőholtak"
-
-#~ msgid "2p - Caves of the Basilisk"
-#~ msgstr "2j - A Sárkánygyík barlangja"
-
-#~ msgid ""
-#~ "Players must maneuver their units through the divisive terrain of this "
-#~ "long-feared region, once the home of a legendary Elder Basilisk. The "
-#~ "caves and the stark wilderness surrounding them are filled with the "
-#~ "petrified forms of some of Wesnoth's greatest heroes."
-#~ msgstr ""
-#~ "A játékosoknak ezen a félelmetességéről és részekre osztott területéről "
-#~ "messzeföldön híres vidéken kell csapataikkal manőverezni, ahol réges-"
-#~ "régen a legendás Elsőszülött Sárkánygyík élt. A győzelemhez vezető utat "
-#~ "Wesnoth legdicsőbb hőseinek faragott képmásai kövezik ki."
-
-#~ msgid "teamname^North"
-#~ msgstr "teamname^Észak"
-
-#~ msgid "teamname^South"
-#~ msgstr "teamname^Dél"
-
-#, fuzzy
-#~ msgid ""
-#~ "The winds of the dark sky blew so cold,\n"
-#~ "The moon was high, the night was old,\n"
-#~ "Brave was the drake that dared forsake\n"
-#~ "His home to steal the Basilisk's gold.\n"
-#~ "\n"
-#~ "On that dark night, the skies so churned,\n"
-#~ "He disregarded what he had learned,\n"
-#~ "Foolish but brave, to the Basilisk's cave,\n"
-#~ "He flew, and the fire within him burned.\n"
-#~ "\n"
-#~ "Alas, that fire burns no more,\n"
-#~ "For the Basilisk, with one mighty roar,\n"
-#~ "Chilled him to the bone, and he turned to stone,\n"
-#~ "And so he stays forevermore.\n"
-#~ "\n"
-#~ "The winds of the sky blow so cold,\n"
-#~ "The years pass by, the days are old,\n"
-#~ "Here stands that drake, who dared forsake\n"
-#~ "His home to steal the Basilisk's gold.\n"
-#~ "(inscribed by Flametrooper)"
-#~ msgstr ""
-#~ "A sötét ég szelei oly hidegen fújtak, \n"
-#~ "A hold magasan járt, az éj öregnek tűnt, \n"
-#~ "Bátor volt a perzsekény, ki merészelte cserbenhagyni\n"
-#~ "Otthonát, hogy ellopja a Sárkánygyík aranyát.\n"
-#~ "\n"
-#~ "Azon a sötét éjjelen, az ég oly zavaros volt,\n"
-#~ "Semmibe vette mit tanult,\n"
-#~ "Bolond de bátor, a Sárkánygyík barlangjába,\n"
-#~ "Repült, s tűz égette legbelül.\n"
-#~ "\n"
-#~ "Sajnos a tűz már nem lobog,\n"
-#~ "Mert a Sárkánygyík egy hatalmas üvöltéssel\n"
-#~ "Csonttá dermesztette, s átváltoztatta kővé,\n"
-#~ "S most ott marad mindörökké.\n"
-#~ "\n"
-#~ "A sötét ég szelei oly hidegen fújtak, \n"
-#~ "A hold magasan járt, az éj öregnek tűnt, \n"
-#~ "Bátor volt a perzsekény, ki merészelte cserbenhagyni\n"
-#~ "Otthonát, hogy ellopja a Sárkánygyík aranyát.\n"
-#~ "\n"
-#~ "(írta: Flametrooper)\n"
-#~ "\n"
-#~ "(fordította: Honorshark)"
-
-#~ msgid "Xikkrisx"
-#~ msgstr "Xikkrisx"
-
-#~ msgid ""
-#~ "Xikkrisx of Syrsszk was a powerful Saurian warrior, sent to this region "
-#~ "by the Elders of the Rysssrylosszkk Clan (translation: ''The Hunts-Foes-"
-#~ "In-Boiling-Rivers Clan''). The Elders were preparing to make war on a "
-#~ "human outpost, and were in great need of the powerful magics of Oxsrrsk, "
-#~ "a Saurian Mystic who had last been seen heading in the direction of "
-#~ "Ruaskkolin Lake. Xikkrisx found the petrified body of Oxsrrsk, along with "
-#~ "a carefully bound scroll that had apparently been dropped into a small "
-#~ "crevice in the cave floor. He opened the scroll and read a brief passage "
-#~ "from the middle of the text: ''After he was bound and cast from the Upper "
-#~ "World, Chak'kso's enraged spirit sought release, and was able to exert a "
-#~ "corrupting influence on certain regions of the Upper World, channeled "
-#~ "through ''pathways of stone'' that extend from the surface into the "
-#~ "depths of the Under Reaches. This rage altered the eggs of great lizards, "
-#~ "shaping their bodies and spirits into implements of Chak'kso's hatred.'' "
-#~ "Confused, Xikkrisx fixed his attention on the task at hand. Thinking that "
-#~ "perhaps the Elders could find some way to restore Oxsrrsk, he began the "
-#~ "long and strenuous task of hauling the statue back to the domain of the "
-#~ "Rysssrylosszkk Clan. Exhausted, and not having traveled far from the "
-#~ "lake, Xikkrisx set the statue down inside of a small cave, and lay down "
-#~ "to rest. He was awoken by a bone-chilling roar."
-#~ msgstr ""
-#~ "Syrsszki Xikkrisx egy erős gyík harcos volt, akit a Rysssrylossszkk "
-#~ "(fordítás: 'A Vadászatok-Ellenségek-A-Forró-Folyóban') Törzs Bölcsei "
-#~ "küldtek erre a területre. A Bölcsek épp háborút készültek indítani egy "
-#~ "emberi őrhely ellen, s nagy szükségük volt Oxsrrsk, a gyík varázsló, "
-#~ "hatalmas mágikus erejére, kit utoljára a Ruaskkolin-tó irányába láttak "
-#~ "haladni.\n"
-#~ "\n"
-#~ " Xikkrisx megtalálta Oxsrrsk megkövesedett holttestét egy gondosan "
-#~ "összekötött tekerccsel, mely egy keskeny résbe volt dobva a barlang "
-#~ "padlóján. Kinyitotta a tekercset, s olvasott egy rövid részt a közepéről: "
-#~ "'Miután Chak'ksot láncra verték és kitaszították a Felsőbb Világból, "
-#~ "felbőszült szelleme kiutat keresett, s képes volt rontó erőt szabadítani "
-#~ "a Felsőbb Világ bizonyos részeire a 'kövek útjain' keresztül, melyek az "
-#~ "Alvilág mélységeiből egészen a felszínig terjednek. Ez a rontás "
-#~ "megváltoztatta az óriás gyíkok tojásait, testük és lelkük Chak'kso "
-#~ "gyűlöletének hordozójává lett.'\n"
-#~ "\n"
-#~ "Xikkrisx zavarodottan állt ott. Átgondolta a feladatot, amit rábíztak. "
-#~ "Úgy gondolván, hogy talán a Bölcsek találhatnak egy módot Oxsrrsk "
-#~ "felélesztésére... Xikkrisx Oxsrrsk megkövesedett testét cipelve kezdte "
-#~ "meg hosszú és fárasztó útját a Rysssrylosszkk Klán birodalma felé. "
-#~ "Xikkrisx a tótól nem túl messze elfáradt, ezért elhelyezte a szobrot egy "
-#~ "kis barlangban, és lefeküdt pihenni. Vérfagyasztó üvöltésre ébredt fel..."
-
-#~ msgid "Oxsrrsk"
-#~ msgstr "Oxsrrsk"
-
-#~ msgid ""
-#~ "Oxsrrsk was a powerful Saurian Oracle, who had, in a raid against the "
-#~ "rival Xraxss Clan, acquired (from the vaults of the now-dead Oracle Hesx-"
-#~ "Rzzak) a most fascinating scroll. The scroll was entitled ''Ney'yks of "
-#~ "the Granite Gaze,'' and told of a creature known as the ''Chak'kso "
-#~ "Ney'yks,'' a name which, in an ancient saurian tongue, meant ''Eldest "
-#~ "Child of Chak'kso.'' Chak'kso was believed to have been a powerful "
-#~ "demigod of the Under Reaches, described as a ''great demon of the earth'' "
-#~ "in the Elvish Histories. According to these histories, Chak'kso had once "
-#~ "sought to transform all life on the planet to stone; so great was his "
-#~ "hatred for creatures of flesh. He was ultimately defeated and bound by "
-#~ "powerful magics, but in the centuries following his banishment (to a "
-#~ "realm far below the surface of the world) a new breed of creature began "
-#~ "appearing in the Histories, a breed with the ability to turn any being of "
-#~ "flesh into stone. There was a period when these Basilisks (as they came "
-#~ "to be known) wreaked havoc on the world of the living, turning thousands "
-#~ "to stone. One by one, and at great cost, the Basilisks were defeated. "
-#~ "All, it would seem, but one; the Basilisk known as ''The Ney'yks,'' or "
-#~ "''The Eldest Child,'' in the modern tongue. Supremely convinced of his "
-#~ "ability to locate and bind this powerful creature into his service, "
-#~ "Oxsrrsk set out on his journey..."
-#~ msgstr ""
-#~ "Oxsrrsk egy nagyhatalmú gyík jövendőmondó volt, aki részt vett a rivális "
-#~ "Xraxss Klán elleni egyik rajtaütésen, ahol rátalált (a mostanra már "
-#~ "halott Hesx-Rzzak madárjós rejtekhelyén) egy lenyűgöző tekercsre. A "
-#~ "tekercs 'A Gránittekintetű Ney'yks'-nek volt címezve, tartalma pedig egy "
-#~ "'Chak'kso Ney'yks' nevű élőlényről szólt. Ez a név az ősi gyík nyelven "
-#~ "annyit tesz, mint 'Chak'kso Elsőszülöttje'. Régen úgy tartották, hogy "
-#~ "Chak'kso az Alvilág egyik legerősebb félistene, akit a Tünde Mondák 'a "
-#~ "föld rettegett démona'-ként emlegetnek. Ezen mondák szerint Chak'kso "
-#~ "olyan szörnyű gyűlöletet táplált a hús-vér teremtmények iránt, hogy a "
-#~ "világ összes élőlényét kővé akarta változtatni. Bár végérvényesen "
-#~ "legyőzték és erőteljes varázslatokkal megbéklyózták, évszázadokkal az "
-#~ "Alvilágba való száműzetése után egy újfajta élőlény tűnt fel a "
-#~ "Mondákban... egy olyan élőlény, mely képes volt az eleven húst kővé "
-#~ "változtatni. Volt egy időszak, mikor ezek a Sárkánygyíkok (ahogyan "
-#~ "ismertté váltak) pusztulást hoztak az élők világára, ezreket változtatván "
-#~ "kővé. Aztán egyesével, hatalmas árat fizetve legyőzték a Sárkánygyíkokat. "
-#~ "Mindegyiket, egy kivételével: a Sárkánygyík, kit 'A Ney'yks'-nek vagyis "
-#~ "'Az Elsőszülött'-nek hívtak a modern nyelvezetben. Oxsrrsk a "
-#~ "legtökéletesebben meg volt győződve arról, hogy képes megtalálni és saját "
-#~ "igája alá hajtani ezt a hatalmas erejű teremtményt... ennek tudatában "
-#~ "indult útnak..."
-
-#, fuzzy
-#~ msgid ""
-#~ "Slim of Stature, dexterous Hands\n"
-#~ "- - Seven Stones and Eleven\n"
-#~ "Left his Foes so slim a Chance\n"
-#~ "- - Seven Stones and Eleven\n"
-#~ "Marksman known as Dragonbane\n"
-#~ "'mongst the Statues here was slain\n"
-#~ "- - Seven Stones - and the Elven\n"
-#~ "(inscribed by Gauteamus)"
-#~ msgstr ""
-#~ "Vékony Alkat, ügyes Kezek\n"
-#~ "- - Hét Szikla és Tizenegy\n"
-#~ "Ellenséginek Esélye csekély\n"
-#~ "- - Hét Szikla és Tizenegy\n"
-#~ "Mesterlövész, a Sárkányölő\n"
-#~ "Szobrok között itt lett leölve\n"
-#~ "-- Hét Szikla és Tizenegy\n"
-#~ "\n"
-#~ "(írta: Gauteamus)\n"
-#~ "\n"
-#~ "(fordította: Honorshark)"
-
-#~ msgid "Blum Duk"
-#~ msgstr "Blum Duk"
-
-#~ msgid ""
-#~ "Blum Duk was renowned among his goblin clan for having tamed one of the "
-#~ "Dire Wolves of the mountains, and he had the courage to match. His "
-#~ "leadership and skills alone were what kept the area's goblins alive "
-#~ "despite human and elvish menaces. Rumor had it that his wolf had slain "
-#~ "fifty men and a hundred Elves.\n"
-#~ "Thus, when he heard of the awful monster that was inhabiting the area, it "
-#~ "was only natural that he ride out alone to face it. All the other goblins "
-#~ "expected him to slay the creature easily and drag back its carcass to "
-#~ "feast on.\n"
-#~ "He was in for quite a shock. As soon as he saw the Basilisk, Blum Duk "
-#~ "cowered in fright. He tried to wheel his wolf around to run away, but it "
-#~ "wouldn't move. As the creature stalked towards him, he screamed his last "
-#~ "words: Good Gog, dog, are yer legs made of stone?!?\n"
-#~ "(inscribed by Elvish Pillager)"
-#~ msgstr ""
-#~ "Blum Duk arról nevezetes a kobold klánján belül, hogy megszelídítette a "
-#~ "hegyek irtózatos Farkasainak egyikét, és még meglovagolni is volt "
-#~ "bátorsága. Egyedül csak az ő vezetői képessége és ügyessége tartotta "
-#~ "életben a vidék koboldjait az emberek és tündék vérengzései ellenére. A "
-#~ "híresztelések szerint a farkasa ötven embert és száz tündét mészárolt "
-#~ "le.\n"
-#~ "Így, mikor hallott a borzasztó szörnyről, ami rettegésben tartotta a "
-#~ "vidéket, természetes volt, hogy egyedül nyargaljon ki, hogy szembenézzen "
-#~ "vele. Az összes kobold arra számított, hogy könnyedén leöli a "
-#~ "szörnyeteget, s elhozza a tetemét, hogy lakomát üljenek fölötte.\n"
-#~ "Ám iszonyatos rémület lett úrrá Blum Dukon. Azon nyomban reszketni "
-#~ "kezdett a félelemtől, amint meglátta a Sárkánygyíkot. Megpróbálta úgy "
-#~ "irányítani a farkasát, hogy elmeneküljön, de az meg sem mozdult. Amint a "
-#~ "lény peckesen közeledett felé, utolsó szavait kiáltotta a világba:'Édes "
-#~ "kiskutyám, hát neked meg kővé váltak a lábaid, vagy mifene?!?'\n"
-#~ "(Írta: Elvish Pillager)"
-
-#~ msgid "Rah Ihn Mar"
-#~ msgstr "Rah Ihn Mar"
-
-#~ msgid ""
-#~ "Rah Ihn Mar, Champion of the Burning Hills, made his way to the "
-#~ "Ruaskkolin Lake region in pursuit of the Elvish Hero Terowydlithrol, "
-#~ "known amoung Elves as ''The Dragonbane.'' It was said that Terowydlithrol "
-#~ "had killed a Dragon of Fire that threatened an Elvish village, and "
-#~ "initiated a ''counterattack'' in which some 37 Drakes, camping in a "
-#~ "nearby ravine and believed to be in allegiance with the Dragon, were "
-#~ "slaughtered. Knowing that these Drakes were innocent, Rah Ihn Mar came to "
-#~ "Ruaskkolin Lake to hunt down and slay Terowydlithrol, who had been seen "
-#~ "entering the region but a day ago. Burning for vengeance, Rah Ihn Mar "
-#~ "began the hunt....."
-#~ msgstr ""
-#~ "Rah Ihn Mar az Égő Hegyek Bajnoka volt, aki eljutott a Ruaskkolin-tó "
-#~ "vidékére, miközben Terowydilithrolt, a Tünde hőst üldözte, akit a tündék "
-#~ "csak 'A Sárkányölő'-ként emlegettek. Terowydilithrol állítólag megölte a "
-#~ "Tűz Sárkányát, mely egy tünde falut tartott rettegésben, ezzel pedig egy "
-#~ "olyan 'ellentámadást' váltott ki, melyben mintegy 37, egy közelben lévő "
-#~ "szurdokban tanyázó, a sárkánnyal állítólagosan szövetségben lévő "
-#~ "perzsekényt mészároltak le. Rah Ihn Mar tudta, hogy ezek a perzsekények "
-#~ "ártatlanok voltak, ezért eljött a Ruaskkolin-tó vidékére, hogy felkutassa "
-#~ "és megölje Terowydlithrolt, akit pár nappal ezelőtt láttak megérkezni e "
-#~ "területre. Rah Ihn Mar a bosszútól fűtve kezdte meg a vadászatot..."
-
-#~ msgid ""
-#~ "He had lived there for ages upon ages, in the depths of the water, "
-#~ "preying upon the various fish and frogs and merfolk that entered his "
-#~ "domain. It was his lake, no other's, and though it was not large, he was "
-#~ "its master. Then, the Basilisk came, and looked into the Serpent's eyes. "
-#~ "And the Serpent had not died, but it was no longer alive. Thus the new "
-#~ "lord of the lake had arrived.\n"
-#~ "(inscribed by Turin)"
-#~ msgstr ""
-#~ "Sok-sok emberöltőn keresztül élt a víz mélyén, különböző halakkal, "
-#~ "békákkal és a felségterületére merészkedő sellőkkel táplálkozva. Az ő "
-#~ "tava volt és senki másé... s bár nem volt nagy, de ő volt benne az úr. "
-#~ "Aztán jött a Sárkánygyík, és belenézett a Kígyó szemeibe. S a Kígyó nem "
-#~ "halt meg, de már nem is volt élő többé. Így érkezett meg a tó új ura.\n"
-#~ "(Írta: Turin)"
-
-#~ msgid ""
-#~ "A brave hero of Wesnoth's Golden Age, this great rider and commander of "
-#~ "men came to this evil place while on a raid against the orcs. Caught "
-#~ "unaware by the foul creatures, many of his fellows were killed, but he "
-#~ "fought valiantly, slaying many a foe. But alas! The foul Basilisk turned "
-#~ "him to stone even as he slew the last orc. Now all that is left is a "
-#~ "stark reminder of his once great bearing and strength.\n"
-#~ "(inscribed by Fynmiir)"
-#~ msgstr ""
-#~ "Ez a remek lovas, ki egy embercsapat vezére is, Wesnoth Aranykorának "
-#~ "egyik hős harcosa. Csapatával épp az orkok területeire igyekezett "
-#~ "portyázni, mikor erre az elátkozott helyre érkezett. A förtelmes lények "
-#~ "váratlanul rájuk támadtak, rengeteg katonát megöltek, de e kiváló vezér "
-#~ "hősiesen küzdött és sok ellenfelet a halálba küldött. De nem volt mit "
-#~ "tenni! Az undorító Sárkánygyík rögtön kővé változtatta, amint ő az utolsó "
-#~ "orkot is lekaszabolta. Mostanra már csupán az emléke maradt meg ennek az "
-#~ "egykor oly délceg, erős vitéznek.\n"
-#~ "(írta: Fynmiir)"
-
-#~ msgid "Bramwythl"
-#~ msgstr "Bramwythl"
-
-#~ msgid ""
-#~ "Bramwythl the Wose was always considered a slow, taciturn fellow, even by "
-#~ "other Woses. More than any other Wose, he enjoyed simply standing alone "
-#~ "in the sun, arms upraised, admiring the beauty of the empty sky. Once, "
-#~ "even, he confided in a fellow that his greatest wish was to be able to "
-#~ "bask forever in the sun's glory.\n"
-#~ "However, not long after, the local wose community heard of the approach "
-#~ "of a horrible monster, powerful enough to easily destroy the few woses "
-#~ "that lived in the area. They quickly moved off (quickly for Woses, "
-#~ "anyway), but Bramwythl was left behind - in their haste, no one had "
-#~ "remembered to find him and tell him of the danger.\n"
-#~ "He was taken quite unawares by the Basilisk, and turned to stone before "
-#~ "he even recognized the beast. His petrified form still stands there "
-#~ "today, warmed by the sun's rays, under an open sky. His greatest wish has "
-#~ "been granted.\n"
-#~ "(inscribed by Elvish Pillager)"
-#~ msgstr ""
-#~ "Bramwythl, a fapásztor, mindig is egy megfontolt, lomha fickó volt, még a "
-#~ "többi fapásztorhoz viszonyítva is. Azonban még társainál is jobban "
-#~ "szeretett csak úgy egyedül sütkérezni a napon, miközben karjait felemelte "
-#~ "és a tiszta égbolt gyönyörűségét csodálta. Egyszer még azt is bevallotta "
-#~ "egyik barátjának, hogy legáhítottabb vágya, hogy örökké a nap dicső "
-#~ "sugaraiban fürdőzhessen.\n"
-#~ "Azonban nem sokkal ezután a fapásztorok helyi közösségének fülébe jutott, "
-#~ "hogy egy irtózatos szörnyeteg közeledik, aki elég erős ahhoz, hogy "
-#~ "könnyedén elintézze azt a kevés fapásztort, akik ezen a vidéken éltek. "
-#~ "Mindenki gyorsan elhúzta a csíkot (mármint egy fapásztorhoz képest "
-#~ "gyorsan), csak Bramwythl maradt - a nagy sietségben ugyanis mindenki "
-#~ "megfeledkezett arról, hogy figyelmeztesse a közelgő veszélyről.\n"
-#~ "A Sárkánygyík érkezése teljesen váratlanul érte, így az kővé változtatta "
-#~ "őt, mielőtt még fölismerhette volna a bestia szándékát. Megkövesedett "
-#~ "alakja ma is ott áll a szabad ég alatt, ahol szüntelenül a nap lágy "
-#~ "sugarai melegítik. Így vált valóra legnagyobb álma.\n"
-#~ "(írta: Elvish Pillager)"
-
-#~ msgid "Talael Ryndoc"
-#~ msgstr "Talael Ryndoc"
-
-#~ msgid ""
-#~ "General Talael Ryndoc came to this place to fight a duel with the Grand "
-#~ "Marshal Aethec Corryn, but the two men never found one another. "
-#~ msgstr ""
-#~ "Talael Ryndoc tábornok azért jött el erre a helyre, hogy párbajozzon "
-#~ "Aethec Corryn főtábornokkal, de a két ember sosem lelt egymásra."
-
-#~ msgid "Aethec Corryn"
-#~ msgstr "Aethec Corryn"
-
-#~ msgid ""
-#~ "The last words spoken by Grand Marshal Aethec Corryn: ''Talael Ryndoc! I "
-#~ "am through searching for you! I shall make my way back to Haldric's Hall, "
-#~ "and inform the court that you were too much of a coward to attend our "
-#~ "duel! Your disgrace shall be more agonizing than the death I'd have given "
-#~ "you!''\n"
-#~ "\n"
-#~ "Perhaps he should not have shouted quite so loudly.... "
-#~ msgstr ""
-#~ "Ezek voltak az utolsó szavak, melyek Aethec Corryn főtábornok szájából "
-#~ "elhangzottak: 'Talael Ryndoc! Most már elegem van a keresgélésedből! "
-#~ "Visszamegyek Haldric Csarnokába és értesítem a bíróságot, hogy annyira "
-#~ "gyáva voltál, hogy el sem mertél jönni a párbajra! Kegyvesztettséged még "
-#~ "gyötrelmesebb lesz számodra, mint ha megöltelek volna!'\n"
-#~ "\n"
-#~ "Talán nem kellett volna olyan hangosan ordítania..."
-
-#~ msgid "Rilhon"
-#~ msgstr "Rilhon"
-
-#~ msgid ""
-#~ "This brave warrior, known as Rilhon among the Naga, heard tell of a "
-#~ "fabulous treasure that had been lost in these watery caves- a spear whose "
-#~ "head was said to have been fashioned from the tooth of Chak'kso Ney'yks, "
-#~ "an Elder Basilisk slain long ago by the Elvish hero, Eloralduil. "
-#~ "According to the legend, the weapon rested somewhere on the bottom of "
-#~ "this very lake (Ruaskkolin Lake, named for a well-known Sea Serpent who "
-#~ "made it his home). Having prepared himself for battle with the Serpent, "
-#~ "Rilhon met with two rather large surprises. The first was the petrified "
-#~ "form of Ruaskkolin the Serpent. The second was the very-much-alive "
-#~ "Chak'kso Ney'yks, who was, oddly enough, in possession of all of his "
-#~ "teeth.\n"
-#~ "(inscribed by Paterson)"
-#~ msgstr ""
-#~ "Ez a bátor harcos, aki Rilhonként ismert a nagák köreiben, hallott a "
-#~ "mesés kincsről, mely az itteni vízzel telt barlangok mélyén veszett el. "
-#~ "Ez a kincs állítólag egy olyan dárda volt, mely hegyét Chak'kso Ney'yks, "
-#~ "az Elsőszülött Sárkánygyík fogából faragták, miután Eloralduil, a tünde "
-#~ "hős, legyőzte őt. A legenda szerint ez a fegyver valahol ennek a tónak a "
-#~ "legalján pihent (Ruaskkolin-tó, mely az itt élő, széles körben ismert "
-#~ "tengeri kígyó után kapta a nevét).\n"
-#~ "Miután Rilhon felvértezte magát, hogy megküzdjön a kígyóval, két "
-#~ "meglehetősen nagy meglepetéssel találta magát szembe. Az első egy kővé "
-#~ "dermedt kígyó volt, aki minden kétséget kizáróan maga Ruaskkolin volt. A "
-#~ "második pedig a nagyon-is-élő Chak'kso Ney'yks volt, aki vitathatatlanul "
-#~ "rendelkezett az összes fogával.\n"
-#~ "(írta: Paterson)"
-
-#, fuzzy
-#~ msgid ""
-#~ "Through waves and rocky channels\n"
-#~ "blue and white\n"
-#~ "she pulled and pushed the tides\n"
-#~ "and taught the fishes how to speak to planets\n"
-#~ "silver green\n"
-#~ "with magic\n"
-#~ "running from her spirit into skins of kelp and shells of snails\n"
-#~ "a twisting of her tail and hands\n"
-#~ "she sent her songs to run on pin-tipped legs about the sands\n"
-#~ "and now\n"
-#~ "and now the strangest pause\n"
-#~ "for years and years\n"
-#~ "she hasn't moved her eyes\n"
-#~ "\n"
-#~ "(inscribed by MJQ)"
-#~ msgstr ""
-#~ "Hullámokon s sziklás csatornákon keresztül\n"
-#~ "kék s fehér\n"
-#~ "megragadta s ellökte a dagályt\n"
-#~ "s megtanította a halakat hogyan beszéljenek a bolygón\n"
-#~ "ezüst zöld\n"
-#~ "mágiával\n"
-#~ "futván lelkéből tengeri moszatok bőrébe s csigák házaiba\n"
-#~ "egy csavar a farkán és kezein\n"
-#~ "elküldte dalait hogy hegyes lábain fusson a sivatagok körül\n"
-#~ "s most\n"
-#~ "s most a legfurcsább szünet\n"
-#~ "évekig s évekig\n"
-#~ "nem mozdította szemeit\n"
-#~ "\n"
-#~ "(írta: MJQ)\n"
-#~ "\n"
-#~ "(fordította: Honorshark)"
-
-#~ msgid "2p - Cynsaun Battlefield"
-#~ msgstr "2j - Cynsaun Csatamezeje"
-
-#~ msgid " Recommended settings of 150 gold and 2 gold per village."
-#~ msgstr ""
-#~ "Kezdéshez 150 arany, falvanként pedig 2 arany bevétel beállítása javasolt."
-
-#~ msgid ""
-#~ "There is much to explore in this vast battlefront, designed for players "
-#~ "who favor epic, large-scale duel matches."
-#~ msgstr ""
-#~ "Sok felfedeznivaló vár a játékosokra ezen a hatalmas csatatéren, melyet "
-#~ "azok számára terveztek, akik szeretik a hősies, nagy horderejű párbajokat."
-
-#~ msgid "2p - Dark Forecast (Survival)"
-#~ msgstr "2j - Sötét jóslat (túlélőpálya)"
-
-#~ msgid ""
-#~ "Dark Forecast is a survival scenario for solitaire or two-player "
-#~ "teambased play against randomly AI spawned units. Victory is achieved by "
-#~ "surviving all enemy waves.  During the course of gameplay, the terrain "
-#~ "will change based on random weather effects."
-#~ msgstr ""
-#~ "A Sötét jóslat egy 1 vagy 2 játékosnak szánt, csapatban játszott "
-#~ "túlélőpálya, melyen a véletlenszerűen születő, számítógép-vezérelt "
-#~ "egységek ellen kell küzdeni. A győzelem eléréséhez túl kell élni a "
-#~ "támadás összes hullámát. A játék alatt a terep a véletlenszerű időjárás "
-#~ "miatt változik."
-
-#~ msgid ""
-#~ "The screams and pleas for mercy are finally silenced, as you remove your "
-#~ "blood soaked blade from the last of the rebels. There will be no more "
-#~ "resistance from the local scum. Your reign has finally earned stability."
-#~ msgstr ""
-#~ "A kegyelemért könyörgő jajkiáltások végül elhallgatnak, amint véráztatta "
-#~ "pengédet kihúzod az utolsó lázadóból. A helyi népség többé már nem fog "
-#~ "ellenállni. Uralmad végre biztos alapokon áll."
-
-#~ msgid ""
-#~ "The last and most powerful of these creatures are almost upon us. I feel "
-#~ "that if we can finish them off in time, we shall be victorious."
-#~ msgstr ""
-#~ "E lények legutolsó, legerősebb túlélői nemsoká farkasszemet fognak nézni "
-#~ "velünk. Úgy érzem, ha időben végezni tudunk velük, miénk lesz a győzelem. "
-
-#~ msgid "Heavy Snowfall"
-#~ msgstr "Sűrű havazás"
-
-#~ msgid "Snowfall"
-#~ msgstr "Havazás"
-
-#~ msgid "Heavy Rains"
-#~ msgstr "Heves esőzés"
-
-#~ msgid "Drought"
-#~ msgstr "Aszály"
-
-#~ msgid "Single player mode - uses the reduced strength spawns."
-#~ msgstr "Egyjátékos mód - csökkentett erejű ellenfelek előhívása."
-
-#~ msgid "Two player mode - uses the full strength spawns."
-#~ msgstr "Kétjátékos mód - teljes erejű ellenfelek előhívása."
-
-#~ msgid "Survive and defeat the waves of opposition."
-#~ msgstr "Éld túl és győzd le a hullámokban érkező ellenséges támadásokat."
-
-#~ msgid "Defeat all waves"
-#~ msgstr "Visszavered az összes támadáshullámot"
-
-#~ msgid "Lose all your team's leaders"
-#~ msgstr "Elveszted a csapatod összes vezetőjét"
-
-#~ msgid "Dark Forecast - a random survival scenario"
-#~ msgstr "Sötét jóslat - egy véletlenszerű túlélőpálya"
-
-#~ msgid ""
-#~ "Your aim is to survive the spawning waves and defeat the final arch-"
-#~ "enemies.\n"
-#~ "       \n"
-#~ "The spawning waves are generated randomly and will different each time "
-#~ "Dark Forecast is played.\n"
-#~ "\n"
-#~ "\n"
-#~ "They appear along the north, south and west map edges - though they are "
-#~ "most likely to spawn on the west edge. The spawn waves appear at somewhat "
-#~ "regular intervals.\n"
-#~ "\n"
-#~ "\n"
-#~ "The weather will also change randomly, affecting the layout of the map.\n"
-#~ "\n"
-#~ "\n"
-#~ "\n"
-#~ "#Dark Forecast was made by:\n"
-#~ "\n"
-#~ "@jb\n"
-#~ "- map design, spawn groups and scenario concept\n"
-#~ "\n"
-#~ "@Rhuvaen\n"
-#~ "- WML implementation"
-#~ msgstr ""
-#~ "Célod, hogy túléld a hullámokban érkező ellenséges támadásokat, és hogy "
-#~ "legyőzd a végső fő ellenséget.\n"
-#~ "-------\n"
-#~ "A támadáshullámok egységösszetétele véletlenszerűen alakul, és minden "
-#~ "egyes alkalommal, amikor a Sötét jóslatot játszod, más és más lesz. \n"
-#~ "\n"
-#~ "\n"
-#~ "A támadók feltűnhetnek a térkép északi, déli és nyugati szélén is, "
-#~ "azonban legtöbbször nyugatról érkeznek. A hullámok valamennyire "
-#~ "rendszeres időközönként jelennek meg.\n"
-#~ "\n"
-#~ "\n"
-#~ "Az időjárás szintén véletlenszerűen alakul majd, ez pedig változtatja a "
-#~ "térkép arculatát. \n"
-#~ "\n"
-#~ "\n"
-#~ "A Sötét jóslatot készítette:\n"
-#~ "\n"
-#~ "@jb\n"
-#~ "- pályaötlet, térképtervezés, támadáshullámok\n"
-#~ "\n"
-#~ "@Rhuvaen\n"
-#~ "- WML kód megvalósítása "
-
-#~ msgid "So this is the accursed valley - a land ours for the taking."
-#~ msgstr "Tehát ez az elátkozott völgy - a föld, mely a miénk lehet."
-
-#~ msgid ""
-#~ "The inhabitants are rumored to be a strange alliance of man and beast, "
-#~ "and our claim is not going to be unopposed. We must be prepared for the "
-#~ "surprises of this land."
-#~ msgstr ""
-#~ "Úgy hírlik, hogy e vidék lakói ember és szörnyeteg valamiféle furcsa "
-#~ "keverékei, és hogy területigényünk fogadtatása nem lesz barátságos. Föl "
-#~ "kell készülnünk bármilyen meglepetésre."
-
-#~ msgid ""
-#~ "Then let us discover what lies in waiting and teach them not to oppose "
-#~ "our claim."
-#~ msgstr ""
-#~ "Fedezzük hát fel, hogy mi fekszik a homályban, és véssük mindenkinek az "
-#~ "eszébe, hogy ne merjen szembeszállni a követelésünkkel."
-
-#~ msgid ""
-#~ "Ugh!  How can this be?  Defeated by mere barbarians! My gods have "
-#~ "forsaken me..."
-#~ msgstr ""
-#~ "Jaj! Ez meg hogy lehet? Ostoba barbárok győznek le! Isteneim megátkoztak "
-#~ "engem..."
-
-#~ msgid ""
-#~ "Cheers of your enemy are the last thing you hear as you slip into death..."
-#~ "their joy fills your last moments with pure hate."
-#~ msgstr ""
-#~ "Ellenséged üdvrivalgása az utolsó dolog, amit halálba szenderülvén "
-#~ "hallasz... örömük nyers gyűlölettel tölti meg utolsó pillanatod."
-
-#~ msgid ""
-#~ "The enemy cheers as a dark mist rises from the land, engulfing you. As "
-#~ "ghostly wisps drain away your will, you realize that your time in this "
-#~ "land is over."
-#~ msgstr ""
-#~ "Az ellenség üdvrivalgásban tör ki, amint sötét köd emelkedik fel a "
-#~ "földből, és körülvesz téged. Ahogy kísérteties árnyak szívják ki "
-#~ "életerődet, rájössz, hogy időd ezennel lejárt e földön."
-
-#~ msgid "2p - Den of Onis"
-#~ msgstr "2j - Onis odúja"
-
-#~ msgid ""
-#~ "Danger lurks around every corner in this underground battlefield, a duel "
-#~ "map where players must find the balance between force and subterfuge."
-#~ msgstr ""
-#~ "Veszély leselkedik minden kanyarulat mögött e földalatti csatatéren. Ezen "
-#~ "a párbajpályán az a legfontosabb, hogy a játékosok megtalálják az "
-#~ "egyensúlyt a nyers erő és a megtévesztés között."
-
-#~ msgid " Recommended setting of 2 gold per village."
-#~ msgstr " Falvanként 2 arany bevétel beállítása javasolt."
-
-#~ msgid "2p - Fallenstar Lake"
-#~ msgstr "2j - Hullócsillag-tó"
-
-#~ msgid ""
-#~ "Long ago, a great star fell from the heavens, leaving its mark on this "
-#~ "coniferous region."
-#~ msgstr ""
-#~ "Réges-régen egy óriási meteor hullott alá az egekből, meghagyva nyomát "
-#~ "ezen a fenyvessel borított területen."
-
-#~ msgid "teamname^West"
-#~ msgstr "teamname^Nyugat"
-
-#~ msgid "teamname^East"
-#~ msgstr "teamname^Kelet"
-
-#~ msgid "2p - Hamlets"
-#~ msgstr "2j - Falvacskák"
-
-#~ msgid ""
-#~ "Warfare transforms the simple farms and villages of a peaceful region "
-#~ "into a subtly parceled battlefield."
-#~ msgstr ""
-#~ "A háborúskodás egy finoman felszabdalt csatatérré alakítja át a békés táj "
-#~ "egyszerű tanyáit és falvait."
-
-#~ msgid "2p - Hornshark Island"
-#~ msgstr "2j - Pörölycápa-sziget"
-
-#~ msgid ""
-#~ "Players must navigate the dispersive terrain of this small but "
-#~ "topographically dense island."
-#~ msgstr ""
-#~ "A játékosoknak ezen a kusza területen kell tájékozódniuk, mely kicsi "
-#~ "ugyan, de térképészetileg meglehetősen sűrű."
-
-#~ msgid "2p - Sablestone Delta"
-#~ msgstr "2j - Gyászos kövek deltavidéke"
-
-#~ msgid ""
-#~ "Two armies collide on this disjointed coastal landscape of hidden caves "
-#~ "and jagged rivers."
-#~ msgstr ""
-#~ "Két hadsereg csap össze ezen a szétszabdalt vízparti tájon, ahol rejtett "
-#~ "barlangok és egyenetlen folyószakaszok is találhatóak."
-
-#~ msgid "2p - Silverhead Crossing"
-#~ msgstr "2j - Ezüstfő útkereszteződés"
-
-#~ msgid ""
-#~ "Players must traverse all manner of terrain in pursuit of victory on this "
-#~ "multi-fronted duel map."
-#~ msgstr ""
-#~ "A játékosoknak az összes létező tereptípuson át kell vágniuk a győzelem "
-#~ "eléréséhez ezen a sokarcú párbajpályán."
-
-#~ msgid "statue"
-#~ msgstr "szobor"
-
-#~ msgid "This is a sculpture made of stone."
-#~ msgstr "Ez egy kőből készült szobor."
-
-#~ msgid "2p - Sullas Ruins"
-#~ msgstr "2j - Sullas romjai"
-
-#~ msgid ""
-#~ "Flooded by the seas and battered by the winter elements, only ruins, "
-#~ "water and ice now remain in the shadow of this once mighty empire."
-#~ msgstr ""
-#~ "A tengerek elárasztották, a tél elemei pedig szétmorzsolták, így már csak "
-#~ "romok, víz és jég maradt a régvolt, egykor hatalmas birodalom árnyékában."
-
-#~ msgid "Statue of Sulla"
-#~ msgstr "Sulla szobra"
-
-#~ msgid ""
-#~ "A stone-carved likeness of Sulla the Great, also known as Sulla the Just, "
-#~ "Sulla the Tyrant, Empress of the Sinking Tower, Lady of the Walking "
-#~ "Glacier, Sulla the Incinerator, Sulla the Proud and Sulla the Righteous."
-#~ msgstr ""
-#~ "Ez Nagy Sullának a kőből faragott képmása, akit úgy is szoktak emlegetni, "
-#~ "mint Sulla, a Becsületes, vagy Sulla, a Zsarnok, a Süllyedő Torony "
-#~ "Császárnéja, a Gyalogló Gleccser Úrnője, Sulla, a Hamuhozó, Sulla, a "
-#~ "Büszke és Sulla, az Igazságos."
-
-#~ msgid "Statue of Lhun-dup"
-#~ msgstr "Lhun-dup szobra"
-
-#~ msgid "A stone-carved likeness of Lhun-dup, Servant of Sulla."
-#~ msgstr "Ez Lhun-dupnak, Sulla szolgálójának kőből faragott képmása."
-
-#~ msgid "Statue of Ri-nzen"
-#~ msgstr "Ri-nzen szobra"
-
-#~ msgid "A stone-carved likeness of Ri-nzen, Servant of Sulla."
-#~ msgstr "Ez Ri-nzennek, Sulla szolgálójának kőből faragott képmása."
-
-#~ msgid "Statue of Ten-zin"
-#~ msgstr "Ten-zin szobra"
-
-#~ msgid "A stone-carved likeness of Ten-zin, Servant of Sulla."
-#~ msgstr "Ez Ten-zinnek, Sulla szolgálójának kőből faragott képmása."
-
-#~ msgid "Statue of Lo-bsang"
-#~ msgstr "Lo-bsang szobra"
-
-#~ msgid "A stone-carved likeness of Lo-bsang, Servant of Sulla."
-#~ msgstr "Ez Lo-bsangnak, Sulla szolgálójának kőből faragott képmása."
-
-#~ msgid "2p - The Freelands"
-#~ msgstr "2j - Szabad földek"
-
-#~ msgid "A duel map for super fast play."
-#~ msgstr "Ez egy rendkívül gyors mérkőzéshez való párbajpálya."
-
-#~ msgid "2p - Weldyn Channel"
-#~ msgstr "2j - Weldyn-csatorna"
-
-#~ msgid "2p - Wesbowl"
-#~ msgstr "2j - Wesbowling"
-
-#~ msgid ""
-#~ "In Wesbowl, a player has to get any of the balls to the other player's "
-#~ "end zone as often as possible. However, the other player can attack your "
-#~ "units. Wesbowl is played with blunt weapons, and healers are on hand, so "
-#~ "when units are killed, they return to that player's end zone with an "
-#~ "injury."
-#~ msgstr ""
-#~ "A Wesbowling lényege, hogy a játékos a saját labdáját a másik játékos "
-#~ "területeinek túloldalára vigye. Persze a másik játékos megtámadhatja az "
-#~ "ellenfele egységeit. A Wesbowlingban a fegyverek ereje tompított, és "
-#~ "gyógyítók is rendelkezésre állnak, valamint ha az egységek meghalnak, "
-#~ "akkor is visszatérnek a játékosok területeinek széléhez csupán kisebb "
-#~ "sebeket viselve."
-
-#~ msgid ""
-#~ "\n"
-#~ "Victory:\n"
-#~ "@Move either ball to your opponent's end zone more times than they move a "
-#~ "ball to yours.\n"
-#~ "Defeat:\n"
-#~ "#Opponent moves the balls to your end zone more times than you move them "
-#~ "to the opponent's end zone"
-#~ msgstr ""
-#~ "\n"
-#~ "Győzöl, ha:\n"
-#~ "@Többször sikerül bármelyik labdádat az ellenfeled területének "
-#~ "túloldalára vinned, mint őneki a saját labdáját a te területed átellenes "
-#~ "oldalára.\n"
-#~ "Veszítesz, ha:\n"
-#~ "#Az ellenfeled többször éri el labdáival a területed túloldalát, mint te "
-#~ "a tieiddel az ő területének átellenes oldalát."
-
-#~ msgid "Red scores! Current score is $redscore-$bluescore"
-#~ msgstr ""
-#~ "A Vörös csapat pontot szerzett! A jelenlegi állás $redscore-$bluescore"
-
-#~ msgid "Blue scores! Current score is $redscore-$bluescore"
-#~ msgstr ""
-#~ "A Kék csapat pontot szerzett! A jelenlegi állás $redscore-$bluescore"
-
-#~ msgid "Should I pass the ball to $passto.type ($xloc,$yloc)?"
-#~ msgstr "Átpasszoljam a labdát neki: $passto.type ($xloc,$yloc)?"
-
-#~ msgid "Yes!"
-#~ msgstr "Igen!"
-
-#~ msgid "No"
-#~ msgstr "Nem"
-
-#~ msgid "Blue team wins! Final score: $redscore-$bluescore"
-#~ msgstr "A Kék csapat győzött! Végeredmény: $redscore-$bluescore"
-
-#~ msgid "Red team wins! Final score: $redscore-$bluescore"
-#~ msgstr "A Vörös csapat győzött! Végeredmény: $redscore-$bluescore"
-
-#~ msgid "Draw! Final score: $redscore-$bluescore"
-#~ msgstr "Döntetlen! Végeredmény: $redscore-$bluescore"
-
-#~ msgid "3p - Alirok Marsh"
-#~ msgstr "3j - Alirok-mocsár"
-
-#~ msgid "Three players come head to head on this water-cut battlefield."
-#~ msgstr ""
-#~ "Három játékos kerül szembe egymással ezen a víz által felszabdalt "
-#~ "csatatéren."
-
-#~ msgid "3p - Island of the Horatii"
-#~ msgstr "3j - A Horatiak szigete"
-
-#~ msgid ""
-#~ "Controlling the central island is often the key to victory in this "
-#~ "21x21hex 3 player free for all map."
-#~ msgstr ""
-#~ "A középen elhelyezkedő sziget feletti ellenőrzés jelenti a győzelem "
-#~ "kulcsát ezen a 21x21 hatszög méretű, három játékosra tervezett (mindenki "
-#~ "mindenki ellen, MME) pályán."
-
-#~ msgid "3p - Morituri"
-#~ msgstr "3j - Morituri"
-
-#~ msgid ""
-#~ "Only one faction will emerge victorious from this tightly bordered three-"
-#~ "player map."
-#~ msgstr ""
-#~ "Csak egy játékos kerülhet ki győztesen erről a szorosan közrezárt "
-#~ "háromjátékos pályáról."
-
-#~ msgid "4p - Blue Water Province"
-#~ msgstr "4j - Kékvizű vidék"
-
-#~ msgid ""
-#~ "Historians write that Bluewater Province has been destroyed and rebuilt "
-#~ "some twenty times. Now, as armies once again converge on the rocky "
-#~ "streams and snowcapped mountains of this small province, its villagers "
-#~ "hardly seem to take notice."
-#~ msgstr ""
-#~ "A történészek úgy tudják, hogy Kékvizű vidéket már vagy hússzor "
-#~ "elpusztították, majd újjáépítették. Most, amikor újra hadseregek "
-#~ "találkoznak e kis tartomány hegyi patakjai és hófödte csúcsai közt, a "
-#~ "helybéliek mintha már alig vennének tudomást erről."
-
-#~ msgid "4p - Castle Hopping Isle"
-#~ msgstr "4j - Várfoglalós sziget"
-
-#~ msgid "Hop from castle to castle while fighting over a central isle."
-#~ msgstr "Ugrálj várról várra, miközben csatázol egy központi szigeten."
-
-#~ msgid "4p - Clash"
-#~ msgstr "4j - Összecsapás"
-
-#~ msgid "Small map for 2 vs. 2."
-#~ msgstr "Egy kis térkép 2-2 elleni játékhoz."
-
-#~ msgid "4p - Hamlets"
-#~ msgstr "4j - Falvacskák"
-
-#~ msgid "4p - Isar's Cross"
-#~ msgstr "4j - Isar keresztje"
-
-#~ msgid ""
-#~ "A very small 2 vs. 2 map. Close quarters fighting means the successful "
-#~ "rotation of units and planning of moves is important. Teams set for "
-#~ "players 1&4 vs. 2&3 (northeast vs. southwest). Designed for 75 starting "
-#~ "gold, 20 villages."
-#~ msgstr ""
-#~ "Egy nagyon szűkös 2-2 elleni pálya. A rendkívüli közelségben folyó harcok "
-#~ "miatt az egységek ügyes forgatása (a sérülteket a hátország falvaiba, míg "
-#~ "az ép egységeket a frontra küldve) és a mozgások megtervezése döntő "
-#~ "fontosságú. A csapatbeállítások a következők: az 1-es és a 4-es játékos "
-#~ "kontra a 2-es és a 3-as játékos (északkelet délnyugat ellen). A pályán 20 "
-#~ "falu található.\n"
-#~ "Kezdéshez 75 arany beállítása javasolt."
-
-#~ msgid "teamname^South-West"
-#~ msgstr "teamname^Dél-Nyugat"
-
-#~ msgid "teamname^North-East"
-#~ msgstr "teamname^Észak-Kelet"
-
-#~ msgid "4p - King of the Hill"
-#~ msgstr "4j - A Domb Királya"
-
-#~ msgid ""
-#~ "Controlling the area around the central keep is very lucrative in this "
-#~ "36X36 4 player FFA map. Works fine 2 vs. 2 as well. There are 36 villages."
-#~ msgstr ""
-#~ "Létfontosságú a középen elhelyezkedő várat és környékét ellenőrzés alatt "
-#~ "tartani ezen a 36x36 hatszög méretű, négy játékosnak (mindenki mindenki "
-#~ "ellen, MME) szánt pályán. Remekül működik 2 fős csapatokkal is. A "
-#~ "térképen 36 falu található."
-
-#~ msgid " Recommended setting of 2 gold per village and 150 starting gold."
-#~ msgstr ""
-#~ " Kezdéshez 150 arany, falvanként pedig 2 arany bevétel beállítása "
-#~ "javasolt."
-
-#~ msgid "teamname^South-East"
-#~ msgstr "teamname^Dél-Kelet"
-
-#~ msgid "teamname^North-West"
-#~ msgstr "teamname^Észak-Nyugat"
-
-#~ msgid " Recommended setting of 1 gold per village."
-#~ msgstr " Falvanként 1 arany bevétel beállítása javasolt."
-
-#~ msgid "Four factions contend for dominance over this watery settlement."
-#~ msgstr "Négy játékos verseng e vízi település feletti uralomért."
-
-#~ msgid "4p - Loris River"
-#~ msgstr "4j - Loris-folyó"
-
-#~ msgid ""
-#~ "A 25x25 2 vs. 2 map centered around a river with keeps in opposite "
-#~ "corners. Designed for players 1&4 vs. 2&3. There are 28 villages."
-#~ msgstr ""
-#~ "Egy 25x25 hatszög méretű, 2-2 elleni pálya, melyen a térkép sarkaiból 2-2 "
-#~ "várkastély néz farkasszemet egymással a folyó fölött. A csapatbeállítások "
-#~ "a következők: az 1-es és a 4-es játékos kontra a 2-es és a 3-as játékos. "
-#~ "A térképen 28 falu található."
-
-#~ msgid "4p - Morituri"
-#~ msgstr "4j - Morituri"
-
-#~ msgid "Who will emerge from the confines of this perilous battlefield?"
-#~ msgstr "Ki fog győztesen távozni erről a veszélyekkel teli csatatérről?"
-
-#~ msgid "4p - Paths of Daggers"
-#~ msgstr "4j - A tőrök útja"
-
-#~ msgid " Recommended setting of 2 gold per village, 28 villages."
-#~ msgstr ""
-#~ "Falvanként 2 arany bevétel beállítása javasolt. A térképen 28 falu "
-#~ "található."
-
-#~ msgid ""
-#~ "A 35X27 2 vs. 2 map with 5 separate paths of engagement. Balanced to be "
-#~ "played east vs. west (1&4 vs. 2&3), but works well with any teams or FFA."
-#~ msgstr ""
-#~ "Egy 35x27 hatszög méretű, 2-2 elleni pálya, melyen öt különböző útvonalon "
-#~ "keresztül lehet egymás torkának esni. A térkép a kelet kontra nyugat (az "
-#~ "1-es és a 4-es játékos kontra a 2-es és a 3-as játékos) játék esetén a "
-#~ "legkiegyensúlyozottabb, de bármilyen csapatbeállítással, vagy mindenki "
-#~ "mindenki ellen (MME) is remekül működik."
-
-#~ msgid "4p - Siege Castles"
-#~ msgstr "4j - Ostromlott várak"
-
-#~ msgid ""
-#~ "40X30 4 player map where 4 mighty castles face off at the convergence of "
-#~ "two rivers. Works well as 2 vs. 2 or FFA. There are approximately 45 "
-#~ "villages."
-#~ msgstr ""
-#~ "Egy 40x30 hatszög méretű, négy játékosnak szánt pálya, melyen négy "
-#~ "hatalmas várkastély néz farkasszemet egymással két folyó megközelítőleg T "
-#~ "alakú találkozásánál. 2-2 ellen, és mindenki mindenki ellen (MME) játszva "
-#~ "is élvezetes. A térképen körülbelül 45 falu található."
-
-#~ msgid "4p - The Wilderlands"
-#~ msgstr "4j - A Vadságok földje"
-
-#~ msgid ""
-#~ "A vast region of wild, untamed wilderness, its terrain dotted with "
-#~ "forests, caves, rivers, and the ruins of ancient fortresses."
-#~ msgstr ""
-#~ "Hatalmas, vad, műveletlen vadon, mely területét kis erdők, barlangok, "
-#~ "folyók, valamint régi erődítmények romjai tarkítják."
-
-#~ msgid "4p - Xanthe Chaos"
-#~ msgstr "4j - Xanthe káosz"
-
-#~ msgid ""
-#~ "A 24X28 2 vs. 2 map with auxiliary keeps, and a large messy battle in the "
-#~ "center common."
-#~ msgstr ""
-#~ "Egy 24x28 hatszög méretű, 2-2 elleni pálya, melyen kisegítő várak is "
-#~ "fellelhetők. A térkép közepén nem ritka a rendkívül zavaros, nagy "
-#~ "horderejű csatározás."
-
-#~ msgid "5p - Auction-X"
-#~ msgstr "5j - X-árverés"
-
-#~ msgid ""
-#~ "4 players surround a central keep, play vs the AI survival style, or as a "
-#~ "FFA or 4 vs. 1. The center player will need more gold in a 4 vs. 1 or "
-#~ "FFA, and the best way to determine how much is an auction, LOWEST bid "
-#~ "wins. It is a very small map so 75 gold is recommended for the other "
-#~ "players."
-#~ msgstr ""
-#~ "4 játékos veszi körül a középpontban lévő várat. Vagy az MI-vel lehet "
-#~ "harcolni a túlélésért, vagy mindenki játszhat mindenki ellen (MME), vagy "
-#~ "a központi játékos szállhat szembe egyedül az őt körbevevő 4 játékossal. "
-#~ "Négy egy ellen, vagy MME játék esetén a középső játékosnak több aranyra "
-#~ "lesz szüksége, mint társainak. Hogy a középső játékos mennyi aranyat is "
-#~ "kapjon, azt legcélszerűbb egy árverés keretein belül eldönteni, ahol a "
-#~ "LEGALACSONYABB licit lesz érvényes. Mivel a térkép igen kicsi, a többi "
-#~ "játékosnak 75 aranyat érdemes beállítani kezdéshez."
-
-#~ msgid "teamname^Northeast"
-#~ msgstr "teamname^Északkelet"
-
-#~ msgid "teamname^Southeast"
-#~ msgstr "teamname^Délkelet"
-
-#~ msgid "teamname^Southwest"
-#~ msgstr "teamname^Délnyugat"
-
-#~ msgid "teamname^Northwest"
-#~ msgstr "teamname^Északnyugat"
-
-#~ msgid "teamname^Center"
-#~ msgstr "teamname^Közép"
-
-#~ msgid "5p - Forest of Fear"
-#~ msgstr "5j - A félelem erdeje"
-
-#~ msgid "In this mixed landscape, five armies battle for supremacy."
-#~ msgstr ""
-#~ "Öt hadsereg küzd meg egymással a hatalomért ezen az ezerarcú területen."
-
-#~ msgid "6p - Amohsad Caldera"
-#~ msgstr "6j - Amohsad Caldera"
-
-#~ msgid ""
-#~ "Only a true tactician will survive in this deadly and confining "
-#~ "battlefield, where six boxed-in armies come to a head."
-#~ msgstr ""
-#~ "Csak egy igazi stratéga kerülhet ki győztesen erről a halálos és szűk "
-#~ "csatatérről, ahol hat összezárt sereg küzd meg egymással."
-
-#~ msgid "6p - Crusaders' Field"
-#~ msgstr "6j - Keresztes lovagok mezeje"
-
-#~ msgid ""
-#~ "The rallying cries of battle can once again be heard on this time-worn "
-#~ "field of war, where the ghosts of thousands of brave warriors float "
-#~ "invisibly through the mountains, trees and rivers."
-#~ msgstr ""
-#~ "A csatára gyülekező hadak lármája hallatszik újra ezen a sok háborút "
-#~ "látott csatamezőn, ahol bátor harcosok ezreinek szelleme lebeg "
-#~ "láthatatlanul a hegyek, fák és folyók felett."
-
-#~ msgid "6p - Hexcake"
-#~ msgstr "6j - Hatszögsüti"
-
-#~ msgid "2 vs. 2 or 3 vs. 3 team game."
-#~ msgstr "Ez egy 2-2 ellen, vagy 3-3 ellen, csapatban játszható pálya."
-
-#~ msgid "Turn 2: Loyalists"
-#~ msgstr "2. kör: Hűségesek"
-
-#~ msgid "Turn 5: Knalgans"
-#~ msgstr "5. kör: Knalgaiak"
-
-#~ msgid "Turn 8: Rebels"
-#~ msgstr "8. kör: Lázadók"
-
-#~ msgid "Turn 11: Northerners"
-#~ msgstr "11. kör: Északiak"
-
-#~ msgid "Turn 14: Drakes"
-#~ msgstr "14. kör: Perzsekények"
-
-#~ msgid "Turn 17: Undead"
-#~ msgstr "17. kör: Élőholtak"
-
-#~ msgid "Tower of Doom"
-#~ msgstr "A Végzet tornya"
-
-#~ msgid "6p - Team Survival"
-#~ msgstr "6j -Csapatos túlélés"
-
-#~ msgid "Scenario where the objective is to survive for as long as possible."
-#~ msgstr ""
-#~ "Ez egy olyan pálya, ahol a célkitűzés a lehető legtovább való túlélés."
-
-#~ msgid "Survive for 32 turns."
-#~ msgstr "Maradj életben a 32. kör végéig."
-
-#~ msgid "Hint: Learning the enemy spawnpoints and types helps alot."
-#~ msgstr ""
-#~ "Tipp: Sokat segít, ha kifigyeled, hogy a térkép mely pontjairól mikor "
-#~ "milyen ellenfelek érkeznek."
-
-#~ msgid "Survive all enemy attacks."
-#~ msgstr "Túléled az összes támadást."
-
-#~ msgid "Death of your team leaders."
-#~ msgstr "Csapatod összes vezetője elesik."
-
-#~ msgid ""
-#~ "Congratulations for surviving the map that so many people claim is "
-#~ "impossible. Frankly, I haven't got a clue as to how you did it, so send "
-#~ "me the replay by mail to: roze@roze.mine.nu. Thank You!"
-#~ msgstr ""
-#~ "Gratulálok, hogy túlélted azt a pályát, aminek túlélése sok ember szerint "
-#~ "lehetetlen. Őszintén szólva ötletem sincs, hogyan csináltad, ezért légy "
-#~ "szíves küldd el a visszajátszást drótpostán erre a címre: roze@roze.mine."
-#~ "nu. Köszönöm!"
-
-#~ msgid "Death"
-#~ msgstr "Halál"
-
-#~ msgid ""
-#~ "You have lost this game, but fear not. You can always try again. And "
-#~ "again. And again. *Muahahaha*"
-#~ msgstr ""
-#~ "Ezt a játszmát most elvesztetted, de ne félj. Mindig próbálkozhatsz újra. "
-#~ "És újra. És újra. *Muahahaha*"
-
-#~ msgid "Attacker"
-#~ msgstr "Támadó"
-
-#~ msgid "Defender"
-#~ msgstr "Védekező"
-
-#~ msgid "6p - The Manzivan Traps"
-#~ msgstr "6j - A manzivai csapdák"
-
-#~ msgid ""
-#~ "A 40X20 3 vs. 3 map. The Manzivan Traps are widely known as a difficult "
-#~ "and confusing area of terrain where it is easy to end up out of position "
-#~ "or over extended. Teams set for players 145 vs. 236 (east vs west). "
-#~ "Designed for 100 starting gold, has 33 villages."
-#~ msgstr ""
-#~ "Ez egy 40X20 hatszög méretű, 3-3 elleni pálya. A manzivai csapdák széles "
-#~ "körben úgy ismertek, mint egy olyan bonyolult, zavarba ejtő vidék, ahol "
-#~ "az ember könnyen otthagyhatja a fogát, ha nem a megfelelő helyen van, "
-#~ "vagy túlzott mértékben terjeszkedik. A csapatbeállítások a következők: az "
-#~ "145-ös játékosok a 236-os játékosok ellen (kelet kontra nyugat). "
-#~ "Kezdéshez 100 arany beállítása javasolt. A térképen 33 falu található."
-
-#~ msgid "6p - Waterloo Sunset"
-#~ msgstr "6j - Waterlooi naplemente"
-
-#~ msgid ""
-#~ "A 40X30 3 vs. 3 map. Flexible coordination of your alliance is required "
-#~ "to avoid being outnumbered. Teams set for players 145 vs. 236 (north vs. "
-#~ "south), but having players 146 or 136 as a team is also interesting. "
-#~ "Designed for 150 starting gold, has 44 villages."
-#~ msgstr ""
-#~ "Ez egy 40x40 hatszög méretű, 3-3 elleni pálya. A szövetségeknek "
-#~ "rugalmasan kell működniük, különben egyiküket elsöpörheti a túlerővel "
-#~ "érkező támadás. Kezdéshez 150 arany beállítása javasolt. A "
-#~ "csapatbeállítások a következők: az 1,4,5-ös játékosok a 2,3,6-os "
-#~ "játékosok ellen (észak kontra dél), de az 1,4,6-os, vagy az 1,3,6-os "
-#~ "játékosok is jó csapatot alkothatnak. A pályán 44 falu található."
-
-#~ msgid "8p - Mokena Prairie"
-#~ msgstr "8j - Mokena préri"
-
-#~ msgid ""
-#~ "Inspired from Morituri, this 8 player map creates an epic battle scene "
-#~ "that requires two teams to coordinate on both offense and defense."
-#~ msgstr ""
-#~ "Ez a 8 játékosnak szánt pálya a Morituri ötlete alapján készült. "
-#~ "Lenyűgöző horderejű csaták alakulhatnak ki, melyek megkövetelik a két "
-#~ "csapattól, hogy mind a támadást, mind a védekezést szorosan "
-#~ "összehangolják."
-
-#~ msgid "teamname^east"
-#~ msgstr "teamname^kelet"
-
-#~ msgid "teamname^west"
-#~ msgstr "teamname^nyugat"
-
-#~ msgid "8p - Morituri"
-#~ msgstr "8j - Morituri"
-
-#~ msgid ""
-#~ "Teamwork and tactics are key to victory in this unusual battlefield, "
-#~ "where eight armies fight to the finish."
-#~ msgstr ""
-#~ "A csapatjáték és a taktika kulcsfontosságú ezen a rendhagyó csatatéren, "
-#~ "ahol nyolc összezárt sereg küzd egymással a legvégsőkig."
-
-#, fuzzy
-#~ msgid "9p - Merkwuerdigliebe"
-#~ msgstr "9j - Merkwuerdigliebe"
-
-#~ msgid ""
-#~ "A very small 3 vs. 3 vs. 3 map. A 60sec timer is recommended due to the "
-#~ "large number of players. The teams are players 159 vs. 267 vs. 348 (north "
-#~ "vs. southeast vs. southwest). There are very few villages per player, so "
-#~ "3 gold per villages is recommended."
-#~ msgstr ""
-#~ "Ez egy nagyon szűkös, 3-3-3 elleni pálya. Játékosonként 60 másodperces "
-#~ "időkorlát használata javasolt. A csapatbeállítások a következők: az 1,5,9-"
-#~ "es játékosok kontra a 2,6,7-es játékosok kontra a 3,4,8-as játékosok "
-#~ "(észak kontra délkelet kontra délnyugat). A pályán meglehetősen kevés "
-#~ "falu található, ezért falvanként 3 arany bevétel beállítása javasolt."
-
-#~ msgid "Random map"
-#~ msgstr "Véletlenszerű pályakialakítás"
-
-#~ msgid ""
-#~ "Randomly generated map. Note: random maps are often unbalanced, but if "
-#~ "you have time, you can regenerate them until you get a good one."
-#~ msgstr ""
-#~ "Ez egy véletlenszerű pálya. Megjegyzendő, hogy a véletlenszerűen generált "
-#~ "pályák gyakran kiegyensúlyozatlanok, de ha időd engedi, akkor "
-#~ "újragenerálhatod őket, míg egy számodra megfelelő térképet nem kapsz."
-
-#~ msgid "Random map (Desert)"
-#~ msgstr "Véletlenszerű pályakialakítás (sivatag)"
-
-#~ msgid ""
-#~ "A random map with sand as the primary terrain. Note: random maps are "
-#~ "often unbalanced, but if you have time, you can regenerate them until you "
-#~ "get a good one."
-#~ msgstr ""
-#~ "Ez egy véletlenszerű pálya főként sivatagos területekkel. Megjegyzendő, "
-#~ "hogy a véletlenszerűen generált pályák gyakran kiegyensúlyozatlanok, de "
-#~ "ha időd engedi, akkor újragenerálhatod őket, míg egy számodra megfelelő "
-#~ "térképet nem kapsz."
-
-#~ msgid "Random map (Marsh)"
-#~ msgstr "Véletlenszerű pályakialakítás (láp)"
-
-#~ msgid ""
-#~ "A random map with swamp as the primary terrain. Note: random maps are "
-#~ "often unbalanced, but if you have time, you can regenerate them until you "
-#~ "get a good one."
-#~ msgstr ""
-#~ "Ez egy véletlenszerű pálya főként mocsaras területekkel. Megjegyzendő, "
-#~ "hogy a véletlenszerűen generált pályák gyakran kiegyensúlyozatlanok, de "
-#~ "ha időd engedi, akkor újragenerálhatod őket, míg egy számodra megfelelő "
-#~ "térképet nem kapsz."
-
-#~ msgid "Random map (Winter)"
-#~ msgstr "Véletlenszerű pályakialakítás (tél)"
-
-#~ msgid ""
-#~ "A random map set in the break between spring and winter, mainly with "
-#~ "snowy terrains. Note: random maps are often unbalanced, but if you have "
-#~ "time, you can regenerate them until you get a good one."
-#~ msgstr ""
-#~ "Ez egy véletlenszerű pálya, mely a tavasz hajnalán készült, főleg havas "
-#~ "területek találhatók rajta. Megjegyzendő, hogy a véletlenszerűen generált "
-#~ "pályák gyakran kiegyensúlyozatlanok, de ha időd engedi, akkor "
-#~ "újragenerálhatod őket, míg egy számodra megfelelő térképet nem kapsz."
-
-#~ msgid "Wesnoth Benchmark: AI"
-#~ msgstr "Wesnoth teljesítménymérő: MI"
-
-#~ msgid ""
-#~ "A wesnoth benchmark, use --nogui --no-delay --multiplayer --"
-#~ "scenario=wesbench_ai --exit-at-end."
-#~ msgstr ""
-#~ "Ez egy wesnoth teljesítménymérő, futtatáshoz használd ezt: --nogui --no-"
-#~ "delay --multiplayer --scenario=wesbench_ai --exit-at-end."
-
-#~ msgid "Wesnoth Benchmark: Scrolling"
-#~ msgstr "Wesnoth teljesítménymérő: Görgetés"
-
-#~ msgid ""
-#~ "A wesnoth benchmark, use --no-delay --multiplayer --"
-#~ "scenario=wesbench_scroll --exit-at-end."
-#~ msgstr ""
-#~ "Ez egy wesnoth teljesítménymérő, futtatáshoz használd ezt: --no-delay --"
-#~ "multiplayer --scenario=wesbench_scroll --exit-at-end."
-
-#~ msgid "Wesnoth Benchmark: Walking through Shroud"
-#~ msgstr "Wesnoth teljesítménymérő: Felderítés"
-
-#~ msgid ""
-#~ "A wesnoth benchmark, use --no-delay --multiplayer --"
-#~ "scenario=wesbench_shroud_walk --exit-at-end."
-#~ msgstr ""
-#~ "Ez egy wesnoth teljesítménymérő, futtatáshoz használd ezt: --no-delay --"
-#~ "multiplayer --scenario=wesbench_shroud_walk --exit-at-end."
+msgstr "Terület megtisztítása"
