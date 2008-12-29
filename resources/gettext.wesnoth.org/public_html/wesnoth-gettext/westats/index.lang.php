@@ -21,10 +21,14 @@ function cmp_alpha($a, $b){
 	return strcmp($langs[$a],$langs[$b]);
 }
 
-$existing_packs = sort(explode(" ", $packages));
-$existing_corepacks = sort(explode(" ", $corepackages));
-$existing_extra_packs_t = sort(explode(" ", $extratpackages));
-$existing_extra_packs_b = sort(explode(" ", $extrabpackages));
+$existing_packs = explode(" ", $packages);
+$existing_corepacks = explode(" ", $corepackages);
+$existing_extra_packs_t = explode(" ", $extratpackages);
+$existing_extra_packs_b = explode(" ", $extrabpackages);
+sort($existing_packs);
+sort($existing_corepacks);
+sort($existing_extra_packs_t);
+sort($existing_extra_packs_b);
 $stats = array();
 
 if(!isset($_GET['version'])){
