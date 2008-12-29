@@ -21,7 +21,6 @@
 
 #include "foreach.hpp"
 #include "formatter.hpp"
-#include "gui/widgets/vertical_scrollbar_container.hpp"
 #include "gui/widgets/generator.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/scrollbar_container.hpp"
@@ -308,17 +307,6 @@ void tdebug_layout_graph::widget_generate_state_info(
 		<< "does block easy close=" << control->does_block_easy_close() << '\n'
 		<< "</td></tr>\n";
 
-	const tvertical_scrollbar_container_* vertical_scrollbar_container =
-		dynamic_cast<const tvertical_scrollbar_container_*>(widget);
-
-	if(vertical_scrollbar_container) {
-
-		out << "<tr><td>\n"
-			<< "scrollbar_mode_="
-				<< vertical_scrollbar_container->scrollbar_mode_ << '\n'
-			<< "</td></tr>\n";
-	}
-
 	const tscrollbar_container* scrollbar_container =
 		dynamic_cast<const tscrollbar_container*>(widget);
 
@@ -385,21 +373,6 @@ void tdebug_layout_graph::widget_generate_size_info(
 	if(container) {
 		out << "<tr><td>\n"
 			<< "border_space=" << container->border_space() << '\n'
-			<< "</td></tr>\n";
-	}
-
-	const tvertical_scrollbar_container_* vertical_scrollbar_container =
-		dynamic_cast<const tvertical_scrollbar_container_*>(widget);
-
-	if(vertical_scrollbar_container) {
-
-		out << "<tr><td>\n"
-			<< "content_last_best_size_="
-				<< vertical_scrollbar_container->content_last_best_size_ << '\n'
-			<< "</td></tr>\n"
-			<< "<tr><td>\n"
-			<< "content_layout_size_="
-				<< vertical_scrollbar_container->content_layout_size_ << '\n'
 			<< "</td></tr>\n";
 	}
 }
