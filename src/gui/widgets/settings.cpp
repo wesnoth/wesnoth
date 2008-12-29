@@ -702,12 +702,9 @@ tlistbox_definition::tresolution::tresolution(const config& cfg) :
 
 
 	const config* child = cfg.child("grid");
-if(child) { // HACK needed to support old grids
 	VALIDATE(child, _("No grid defined."));
 
 	grid = new tbuilder_grid(*child);
-
-}
 }
 
 tmenubar_definition::tmenubar_definition(const config& cfg) :

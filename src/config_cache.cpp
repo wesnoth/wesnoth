@@ -85,7 +85,6 @@ namespace game_config {
 		defines_map_["APPLE"] = preproc_define();
 #endif
 
-		defines_map_["NEW_DRAW"] = preproc_define();
 	}
 
 	void config_cache::get_config(const std::string& path, config& cfg)
