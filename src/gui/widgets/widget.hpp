@@ -55,6 +55,7 @@ public:
 		, screen_x_(-1)
 		, screen_y_(-1)
 		, dirty_(true)
+		, visible_(VISIBLE)
 		, layout_size_(tpoint(0,0))
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 		, last_best_size_(tpoint(0,0))
@@ -72,6 +73,35 @@ public:
 	 * function load the proper configuration.
 	 */
 	virtual void load_config() {}
+
+	/***** ***** ***** ***** flags ***** ***** ***** *****/
+
+	/** Visibility settings done by the user. */
+	enum tvisible {
+		/**
+		 * The user set the widget visible, that means:
+		 * * widget is visible.
+		 * * widget (if active) handles events (and sends events to children)
+		 * * widget is drawn (and sends populate_dirty_list to children)
+		 */
+		VISIBLE,
+		/**
+		 * The user set the widget hidden, that means:
+		 *  * item is invisible but keeps its size
+		 *  * item doesn't handle events (and doesn't send events to children)
+		 *  * item doesn't populate_dirty_list (nor does it send the request to
+		 *    its children)
+		 */
+		HIDDEN,
+		/**
+		 * The user set the widget invisible, that means:
+		 *  * item is invisible and gridcell has size 0,0
+		 *  * item doesn't handle events (and doesn't send events to children)
+		 *  * item doesn't populate_dirty_list (nor does it send the request to
+		 *    its children)
+		 */
+		INVISIBLE };
+
 
 	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
 
@@ -460,6 +490,15 @@ public:
 	void set_screen_y(const int y) { screen_y_ = y; }
 	int get_screen_y() const { return screen_y_; }
 
+	void set_visible(const tvisible visible);
+	tvisible get_visible() const { return visible_; }
+
+	/** Returns true if the widget is visible. */
+	bool is_visible() const { return visible_ == VISIBLE; }
+
+	/** Returns true if the widget is invisible. */
+	bool is_invisible() const { return visible_ == INVISIBLE; }
+
 	/**
 	 * Sets the widgets dirty state.
 	 *
@@ -577,6 +616,9 @@ private:
 	 * optimized later on.
 	 */
 	bool dirty_;
+
+	/** Flag field for the status of the visibility. */
+	tvisible visible_;
 
 	/**
 	 * The best size for the control.

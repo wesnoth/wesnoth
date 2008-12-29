@@ -374,13 +374,14 @@ private:
 	void do_show_tooltip(const tpoint& location, const t_string& tooltip);
 
 	/** Inherited from tevent_handler. */
-	void do_remove_tooltip() { tooltip_.set_visible(false); }
 
+	void do_remove_tooltip() { tooltip_.set_visible(twidget::HIDDEN); }
 	/** Inherited from tevent_handler. */
 	void do_show_help_popup(const tpoint& location, const t_string& help_popup);
 
 	/** Inherited from tevent_handler. */
-	void do_remove_help_popup() { help_popup_.set_visible(false); }
+	void do_remove_help_popup() 
+		{ help_popup_.set_visible(twidget::HIDDEN); }
 
 	/** Inherited from tevent_handler. */
 	void easy_close();

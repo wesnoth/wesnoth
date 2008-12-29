@@ -635,6 +635,10 @@ void tgrid::draw_children(surface& frame_buffer)
 		twidget* widget = child.widget();
 		assert(widget);
 
+		if(!widget->is_visible()) {
+			continue;
+		}
+
 		widget->draw_background(frame_buffer);
 		widget->draw_children(frame_buffer);
 		widget->draw_foreground(frame_buffer);
@@ -850,10 +854,20 @@ tpoint tgrid::tchild::get_best_size() const
 		return border_space();
 	}
 
+	if(widget_->is_invisible()) {
+		DBG_G_L << "tgrid::tchild:"
+			<< " has widget " << true
+			<< " widget invisible " << true
+			<< " returning 0,0"
+			<< ".\n";
+		return tpoint(0, 0);
+	}
+
 	const tpoint best_size = widget_->get_best_size() + border_space();
 
 	DBG_G_L << "tgrid::tchild:"
 		<< " has widget " << true
+		<< " widget invisible " << false
 		<< " returning " << best_size
 		<< ".\n";
 	return best_size;
@@ -862,6 +876,9 @@ tpoint tgrid::tchild::get_best_size() const
 void tgrid::tchild::set_size(tpoint origin, tpoint size)
 {
 	assert(widget());
+	if(widget()->is_invisible()) {
+		return;
+	}
 
 	if(border_size_) {
 		if(flags_ & BORDER_TOP) {

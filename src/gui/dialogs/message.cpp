@@ -63,13 +63,11 @@ void tmessage::pre_show(CVideo& /*video*/, twindow& window)
 		tbutton* button =
 			dynamic_cast<tbutton*>(window.find_widget("ok", false));
 		VALIDATE(button, missing_widget("ok"));
-
-		button->set_visible(false);
-
+		button->set_visible(twidget::INVISIBLE);
 		window.layout();
 
 		if(! window.does_easy_close()) {
-			button->set_visible();
+			button->set_visible(twidget::VISIBLE);
 		}
 	}
 }

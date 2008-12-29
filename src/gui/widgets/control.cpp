@@ -22,8 +22,7 @@
 namespace gui2 {
 
 tcontrol::tcontrol(const unsigned canvas_count)
-	: visible_(true)
-	, label_()
+	: label_()
 	, use_tooltip_on_label_overflow_(true)
 	, tooltip_()
 	, help_message_()
@@ -226,10 +225,10 @@ void tcontrol::draw_background(surface& frame_buffer)
 	std::cerr << "tcontrol(" + get_control_type() + ") " + __func__ + ": "
 		<< " id " << id()
 		<< " dirty " << get_dirty()
-		<< " visible " << visible_
+		<< " visible " << is_visible()
 		<< ".\n";
 #endif
-	if(!visible_) {
+	if(!is_visible()) {
 		return;
 	}
 
@@ -248,15 +247,6 @@ void tcontrol::set_definition(const std::string& definition)
 	twidget::set_definition(definition);
 	load_config();
 	assert(config());
-}
-
-void tcontrol::set_visible(const bool visible)
-{
-	if(visible_ != visible) {
-		visible_ = visible;
-		set_block_easy_close(visible_ && does_block_easy_close());
-		set_dirty();
-	}
 }
 
 void tcontrol::set_label(const t_string& label)

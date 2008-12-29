@@ -126,11 +126,11 @@ twindow::twindow(CVideo& video,
 
 	tooltip_.set_definition("default");
 	tooltip_.set_parent(this);
-	tooltip_.set_visible(false);
+	tooltip_.set_visible(twidget::HIDDEN);
 
 	help_popup_.set_definition("default");
 	help_popup_.set_parent(this);
-	help_popup_.set_visible(false);
+	help_popup_.set_visible(twidget::HIDDEN);
 }
 
 void twindow::update_screen_size()
@@ -332,6 +332,15 @@ void twindow::draw()
 		 *   which have two layers eg window or panel it draws the foreground
 		 *   layer. For other widgets it's a nop.
 		 */
+
+		for(std::vector<twidget*>::iterator itor = item.begin();
+				itor != item.end(); ++itor) {
+
+			if(!(**itor).is_visible()) {
+				item.erase(itor, item.end());
+				break;
+			}
+		}
 
 		// Restore.
 		SDL_Rect rect = get_rect();
@@ -594,7 +603,8 @@ void twindow::do_show_tooltip(const tpoint& location, const t_string& tooltip)
 	tooltip_.set_size(
 			tpoint(tooltip_rect.x, tooltip_rect.y),
 			tpoint(tooltip_rect.w, tooltip_rect.h));
-	tooltip_.set_visible();
+
+	tooltip_.set_visible(twidget::VISIBLE);
 }
 
 void twindow::do_show_help_popup(const tpoint& location, const t_string& help_popup)
@@ -636,7 +646,8 @@ void twindow::do_show_help_popup(const tpoint& location, const t_string& help_po
 	help_popup_.set_size(
 			tpoint(help_popup_rect.w, help_popup_rect.h),
 			tpoint(help_popup_rect.x, help_popup_rect.y));
-	help_popup_.set_visible();
+
+	help_popup_.set_visible(twidget::VISIBLE);
 }
 
 void twindow::easy_close()

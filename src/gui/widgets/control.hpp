@@ -225,10 +225,6 @@ public:
 	void set_definition(const std::string& definition);
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
-
-	bool get_visible() const { return visible_; }
-	void set_visible(const bool visible = true);
-
 	bool get_use_tooltip_on_label_overflow() const { return use_tooltip_on_label_overflow_; }
 	void set_use_tooltip_on_label_overflow(const bool use_tooltip = true)
 		{ use_tooltip_on_label_overflow_ = use_tooltip; }
@@ -286,10 +282,6 @@ protected:
 	int get_text_maximum_height() const;
 
 private:
-
-	/** Visible state of the control, invisible controls aren't drawn. */
-	bool visible_;
-
 	/** Contain the non-editable text associated with control. */
 	t_string label_;
 

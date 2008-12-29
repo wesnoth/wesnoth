@@ -20,6 +20,8 @@ namespace gui2 {
 
 tpoint twidget::get_best_size() const
 {
+	assert(!is_invisible());
+
 	tpoint result = layout_size_;
 	if(result == tpoint(0, 0)) {
 		result = calculate_best_size();
@@ -96,6 +98,10 @@ tdialog* twidget::dialog()
 void twidget::populate_dirty_list(twindow& caller,
 		std::vector<twidget*>& call_stack)
 {
+	if(!is_visible()) {
+		return;
+	}
+
 	call_stack.push_back(this);
 	if(dirty_) {
 		caller.add_to_dirty_list(call_stack);
@@ -103,6 +109,23 @@ void twidget::populate_dirty_list(twindow& caller,
 		// virtual function which only does something for container items.
 		child_populate_dirty_list(caller, call_stack);
 	}
+}
+
+void twidget::set_visible(const tvisible visible)
+{
+	if(visible == visible_) {
+		return;
+	}
+
+	// Switching to or from invisible should invalidate the layout.
+	if(visible_ != INVISIBLE || visible == INVISIBLE) {
+		twindow *window = get_window();
+		if(window) {
+			window->invalidate_layout();
+		}
+	}
+
+	visible_ = visible;
 }
 
 } // namespace gui2
