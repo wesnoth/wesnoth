@@ -71,7 +71,7 @@ opts.AddOptions(
     BoolOption('python', 'Enable in-game python extensions.', True),
     BoolOption('raw_sockets', 'Set to use raw receiving sockets in the multiplayer network layer rather than the SDL_net facilities', False),
     BoolOption('forum_user_handler', 'Enable forum user handler in wesnothd', False),
-    BoolOption('pool_alloc', 'Enable custom pool malloc', True),
+    BoolOption('pool_alloc', 'Enable custom pool malloc', False),
     ('server_gid', 'group id of the user who runs wesnothd', ""),
     ('server_uid', 'user id of the user who runs wesnothd', ""),
     EnumOption('gui', 'Set for GUI reductions for resolutions down to 320x240 (PDAs)', "normal", ["normal", "tiny"]),

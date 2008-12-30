@@ -266,9 +266,9 @@ AC_ARG_ENABLE([dummy-locales],
               [dummylocales=no])
 
 AC_ARG_ENABLE([pool-alloc],
-              AS_HELP_STRING([--disable-pool-alloc], [disable the pool allocator]),
+              AS_HELP_STRING([--enable-pool-alloc], [enable the pool allocator]),
 	      [poolalloc=$enableval],
-	      [poolalloc=yes])
+	      [poolalloc=no])
 
 AC_ARG_WITH([preferences-dir],
               AS_HELP_STRING([--with-preferences-dir], [use a non-default preferences directory (.wesnoth on unix)]),

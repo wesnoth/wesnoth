@@ -79,7 +79,7 @@ option(ENABLE_EDITOR "Enable compilation of the new map editor into the game exe
 option(ENABLE_TOOLS "Enable building and installation of tools for artists and WML maintainers")
 option(ENABLE_TESTS "Build unit tests")
 option(ENABLE_NLS "Enable building of tranlations" ON)
-option(ENABLE_POOL_ALLOC "Enable custom pool malloc" ON)
+option(ENABLE_POOL_ALLOC "Enable custom pool malloc" OFF)
 
 set(BINARY_SUFFIX "" CACHE STRING "Suffix behind all binaries")
 set(BINARY_PREFIX "" CACHE STRING "Prefix in front of all binaries")
