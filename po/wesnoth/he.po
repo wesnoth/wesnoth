@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-12-30 00:26+0100\n"
+"POT-Creation-Date: 2008-12-30 21:39+0100\n"
 "PO-Revision-Date: 2006-02-13 01:20+0200\n"
 "Last-Translator: Ely Levy <nakeee@gmail.com>\n"
 "Language-Team: Hebrew\n"
@@ -6182,7 +6182,7 @@ msgid "Do you still want to download it?"
 msgstr "האם אתה בטוח שברצונך למחוק משחק זה?"
 
 #: src/addon_management.cpp:464 src/addon_management.cpp:538
-#: src/multiplayer.cpp:330 src/multiplayer_ui.cpp:66
+#: src/multiplayer.cpp:332 src/multiplayer_ui.cpp:66
 msgid "Connection timed out"
 msgstr "תם זמן ההמתנה לחיבור"
 
@@ -7795,22 +7795,11 @@ msgstr ""
 msgid "Choose a different username"
 msgstr "הצטרף לשרת הרשמי"
 
-#: src/multiplayer.cpp:202
-#, fuzzy
-msgid "Login"
-msgstr "שם משתמש: "
-
-#: src/multiplayer.cpp:204 src/multiplayer_create.cpp:326
-#: src/multiplayer_lobby.cpp:786
-#, fuzzy
-msgid "Password: "
-msgstr "חרב"
-
-#: src/multiplayer.cpp:226
+#: src/multiplayer.cpp:228
 msgid "You must log in to this server"
 msgstr "אתה חייב להכנס לשרת זה"
 
-#: src/multiplayer.cpp:227
+#: src/multiplayer.cpp:229
 msgid "Login: "
 msgstr "שם משתמש: "
 
@@ -8086,6 +8075,11 @@ msgstr "חובה להקליד שם."
 #: src/multiplayer_create.cpp:325
 msgid "Set Password"
 msgstr ""
+
+#: src/multiplayer_create.cpp:326 src/multiplayer_lobby.cpp:786
+#, fuzzy
+msgid "Password: "
+msgstr "חרב"
 
 #: src/multiplayer_create.cpp:326
 msgid ""
@@ -8902,6 +8896,10 @@ msgstr "עזור לנו להפוך את ווסנות' לטוב יותר בשבי
 #: src/upload_log.cpp:330
 msgid "Enable summary uploads"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Login"
+#~ msgstr "שם משתמש: "
 
 #, fuzzy
 #~ msgid "Abilites"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-12-30 00:27+0100\n"
+"POT-Creation-Date: 2008-12-30 21:39+0100\n"
 "PO-Revision-Date: 2007-02-19 17:35+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -407,6 +407,7 @@ msgstr ""
 #: data/gui/default/window/language_selection.cfg:136
 #: data/gui/default/window/mp_connect.cfg:190
 #: data/gui/default/window/mp_create_game.cfg:552
+#: data/gui/default/window/mp_login.cfg:173
 #: data/gui/default/window/mp_method_selection.cfg:220
 #: data/gui/default/window/mp_server_list.cfg:212 src/construct_dialog.cpp:133
 #: src/construct_dialog.cpp:136
@@ -672,6 +673,33 @@ msgstr ""
 #. [button]: id=ok
 #: data/gui/default/window/mp_create_game.cfg:537
 msgid "Create game"
+msgstr ""
+
+#. [window]: id=mp_login
+#: data/gui/default/window/mp_login.cfg:8
+msgid "Multiplayer server login dialog"
+msgstr ""
+
+#. [label]
+#. [button]: id=ok
+#: data/gui/default/window/mp_login.cfg:31
+#: data/gui/default/window/mp_login.cfg:131
+msgid "Login"
+msgstr ""
+
+#. [label]
+#: data/gui/default/window/mp_login.cfg:81
+msgid "Password:"
+msgstr ""
+
+#. [button]: id=change_username
+#: data/gui/default/window/mp_login.cfg:145
+msgid "Change username"
+msgstr ""
+
+#. [button]: id=password_reminder
+#: data/gui/default/window/mp_login.cfg:159
+msgid "Password Reminder"
 msgstr ""
 
 #. [label]
@@ -1282,28 +1310,28 @@ msgstr ""
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:124
+#: src/gui/widgets/settings.cpp:125
 msgid "No default gui defined."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:254
+#: src/gui/widgets/settings.cpp:255
 msgid "Window not defined."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:318
+#: src/gui/widgets/settings.cpp:319
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:430 src/gui/widgets/window_builder.cpp:284
+#: src/gui/widgets/settings.cpp:431 src/gui/widgets/window_builder.cpp:284
 msgid "No resolution defined."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:462
+#: src/gui/widgets/settings.cpp:463
 msgid "No state or draw section defined."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:705 src/gui/widgets/settings.cpp:861
+#: src/gui/widgets/settings.cpp:706 src/gui/widgets/settings.cpp:862
 #: src/gui/widgets/window_builder.cpp:375
 #: src/gui/widgets/window_builder.cpp:908
 #: src/gui/widgets/window_builder.cpp:1112

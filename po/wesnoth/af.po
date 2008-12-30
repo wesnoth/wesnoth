@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-12-30 00:26+0100\n"
+"POT-Creation-Date: 2008-12-30 21:39+0100\n"
 "PO-Revision-Date: 2005-12-14 12:40+0200\n"
 "Last-Translator: \n"
 "Language-Team: Afrikaans\n"
@@ -6349,7 +6349,7 @@ msgid "Do you still want to download it?"
 msgstr "Wil jy regtig hierdie spel uitvee?"
 
 #: src/addon_management.cpp:464 src/addon_management.cpp:538
-#: src/multiplayer.cpp:330 src/multiplayer_ui.cpp:66
+#: src/multiplayer.cpp:332 src/multiplayer_ui.cpp:66
 msgid "Connection timed out"
 msgstr "Verbindingtyd het verstryk"
 
@@ -7987,22 +7987,11 @@ msgstr ""
 msgid "Choose a different username"
 msgstr "Sluit by Amptelike Bediener aan"
 
-#: src/multiplayer.cpp:202
-#, fuzzy
-msgid "Login"
-msgstr "Teken in: "
-
-#: src/multiplayer.cpp:204 src/multiplayer_create.cpp:326
-#: src/multiplayer_lobby.cpp:786
-#, fuzzy
-msgid "Password: "
-msgstr "swaard"
-
-#: src/multiplayer.cpp:226
+#: src/multiplayer.cpp:228
 msgid "You must log in to this server"
 msgstr "Jy moet by hierdie bediener inteken"
 
-#: src/multiplayer.cpp:227
+#: src/multiplayer.cpp:229
 msgid "Login: "
 msgstr "Teken in: "
 
@@ -8280,6 +8269,11 @@ msgstr "Jy moet 'n naam invoer"
 #: src/multiplayer_create.cpp:325
 msgid "Set Password"
 msgstr ""
+
+#: src/multiplayer_create.cpp:326 src/multiplayer_lobby.cpp:786
+#, fuzzy
+msgid "Password: "
+msgstr "swaard"
 
 #: src/multiplayer_create.cpp:326
 msgid ""
@@ -9097,6 +9091,10 @@ msgstr ""
 #: src/upload_log.cpp:330
 msgid "Enable summary uploads"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Login"
+#~ msgstr "Teken in: "
 
 #, fuzzy
 #~ msgid "Abilites"

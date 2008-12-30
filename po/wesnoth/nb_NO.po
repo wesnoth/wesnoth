@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.1.1\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-12-30 00:26+0100\n"
+"POT-Creation-Date: 2008-12-30 21:39+0100\n"
 "PO-Revision-Date: 2006-12-22 21:30+0100\n"
 "Last-Translator: YbeRn00b <asgeiraakre@gmail.com>\n"
 "Language-Team: None\n"
@@ -6350,7 +6350,7 @@ msgid "Do you still want to download it?"
 msgstr "Vil du virkelig slette dette spillet?"
 
 #: src/addon_management.cpp:464 src/addon_management.cpp:538
-#: src/multiplayer.cpp:330 src/multiplayer_ui.cpp:66
+#: src/multiplayer.cpp:332 src/multiplayer_ui.cpp:66
 msgid "Connection timed out"
 msgstr "Forbindelse avbrutt"
 
@@ -7996,22 +7996,11 @@ msgstr ""
 msgid "Choose a different username"
 msgstr "Koble til offisiell server"
 
-#: src/multiplayer.cpp:202
-#, fuzzy
-msgid "Login"
-msgstr "Kallenavn: "
-
-#: src/multiplayer.cpp:204 src/multiplayer_create.cpp:326
-#: src/multiplayer_lobby.cpp:786
-#, fuzzy
-msgid "Password: "
-msgstr "sverd"
-
-#: src/multiplayer.cpp:226
+#: src/multiplayer.cpp:228
 msgid "You must log in to this server"
 msgstr "Du må logge inn på denne serveren"
 
-#: src/multiplayer.cpp:227
+#: src/multiplayer.cpp:229
 msgid "Login: "
 msgstr "Kallenavn: "
 
@@ -8287,6 +8276,11 @@ msgstr "Du må oppgi et navn."
 #: src/multiplayer_create.cpp:325
 msgid "Set Password"
 msgstr ""
+
+#: src/multiplayer_create.cpp:326 src/multiplayer_lobby.cpp:786
+#, fuzzy
+msgid "Password: "
+msgstr "sverd"
 
 #: src/multiplayer_create.cpp:326
 msgid ""
@@ -9100,6 +9094,10 @@ msgstr "Hjelp oss å gjøre Kampen om Wesnoth bedre for deg!"
 #: src/upload_log.cpp:330
 msgid "Enable summary uploads"
 msgstr "Tillat sammendragsopplasting"
+
+#, fuzzy
+#~ msgid "Login"
+#~ msgstr "Kallenavn: "
 
 #, fuzzy
 #~ msgid ""

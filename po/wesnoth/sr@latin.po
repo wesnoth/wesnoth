@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-12-30 00:26+0100\n"
+"POT-Creation-Date: 2008-12-30 21:39+0100\n"
 "PO-Revision-Date: 2008-05-04 12:00+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -6990,7 +6990,7 @@ msgid "Do you still want to download it?"
 msgstr "Želite li još uvek da ga preuzmete?"
 
 #: src/addon_management.cpp:464 src/addon_management.cpp:538
-#: src/multiplayer.cpp:330 src/multiplayer_ui.cpp:66
+#: src/multiplayer.cpp:332 src/multiplayer_ui.cpp:66
 msgid "Connection timed out"
 msgstr "Veza je istekla."
 
@@ -8579,21 +8579,11 @@ msgstr ""
 msgid "Choose a different username"
 msgstr "Na neki drugi server"
 
-#: src/multiplayer.cpp:202
-#, fuzzy
-msgid "Login"
-msgstr "prijava: "
-
-#: src/multiplayer.cpp:204 src/multiplayer_create.cpp:326
-#: src/multiplayer_lobby.cpp:786
-msgid "Password: "
-msgstr "Lozinka: "
-
-#: src/multiplayer.cpp:226
+#: src/multiplayer.cpp:228
 msgid "You must log in to this server"
 msgstr "Morate se prijaviti na ovaj server"
 
-#: src/multiplayer.cpp:227
+#: src/multiplayer.cpp:229
 msgid "Login: "
 msgstr "prijava: "
 
@@ -8861,6 +8851,10 @@ msgstr "Morate uneti ime."
 #: src/multiplayer_create.cpp:325
 msgid "Set Password"
 msgstr "Nameštanje lozinke"
+
+#: src/multiplayer_create.cpp:326 src/multiplayer_lobby.cpp:786
+msgid "Password: "
+msgstr "Lozinka: "
 
 #: src/multiplayer_create.cpp:326
 msgid ""
@@ -9666,6 +9660,10 @@ msgstr "Pomozite nam da poboljšamo Vesnot za vas!"
 #: src/upload_log.cpp:330
 msgid "Enable summary uploads"
 msgstr "Uključi slanje sažetaka"
+
+#, fuzzy
+#~ msgid "Login"
+#~ msgstr "prijava: "
 
 #~ msgid ""
 #~ "\n"

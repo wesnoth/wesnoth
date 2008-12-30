@@ -149,7 +149,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: el_gr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-12-30 00:26+0100\n"
+"POT-Creation-Date: 2008-12-30 21:39+0100\n"
 "PO-Revision-Date: 2008-01-21 18:54+0200\n"
 "Last-Translator: Konstantinos Egarhos <atixos@gmail.com>\n"
 "Language-Team:  <el@li.org>\n"
@@ -6032,7 +6032,7 @@ msgid "Do you still want to download it?"
 msgstr "Επιβεβαίωση"
 
 #: src/addon_management.cpp:464 src/addon_management.cpp:538
-#: src/multiplayer.cpp:330 src/multiplayer_ui.cpp:66
+#: src/multiplayer.cpp:332 src/multiplayer_ui.cpp:66
 msgid "Connection timed out"
 msgstr "Τό χρονικό περιθώριο της σύνδεσης έληξε"
 
@@ -7607,21 +7607,11 @@ msgstr ""
 msgid "Choose a different username"
 msgstr "Συνδεθείτε με τον Επίσημο Δακομιστή"
 
-#: src/multiplayer.cpp:202
-#, fuzzy
-msgid "Login"
-msgstr "Ονομα Εισόδου(Login):"
-
-#: src/multiplayer.cpp:204 src/multiplayer_create.cpp:326
-#: src/multiplayer_lobby.cpp:786
-msgid "Password: "
-msgstr "Κωδικός:"
-
-#: src/multiplayer.cpp:226
+#: src/multiplayer.cpp:228
 msgid "You must log in to this server"
 msgstr "Πρέπει να εισέλθετε στο εξυπηρετητή"
 
-#: src/multiplayer.cpp:227
+#: src/multiplayer.cpp:229
 msgid "Login: "
 msgstr "Ονομα Εισόδου(Login):"
 
@@ -7891,6 +7881,10 @@ msgstr "Πρέπει να πληκτρολογήσεις ένα όνομα"
 #: src/multiplayer_create.cpp:325
 msgid "Set Password"
 msgstr "Προσθήκη Κωδικού"
+
+#: src/multiplayer_create.cpp:326 src/multiplayer_lobby.cpp:786
+msgid "Password: "
+msgstr "Κωδικός:"
 
 #: src/multiplayer_create.cpp:326
 msgid ""
@@ -8666,6 +8660,10 @@ msgstr "Βοηθήστε μας να κάνουμε το Γουέσνοθ καλ
 #: src/upload_log.cpp:330
 msgid "Enable summary uploads"
 msgstr "Επέτρεψε να σταλθούν οι περιλήψεις"
+
+#, fuzzy
+#~ msgid "Login"
+#~ msgstr "Ονομα Εισόδου(Login):"
 
 #~ msgid ""
 #~ "\n"

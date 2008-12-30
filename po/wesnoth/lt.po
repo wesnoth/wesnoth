@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-12-30 00:26+0100\n"
+"POT-Creation-Date: 2008-12-30 21:39+0100\n"
 "PO-Revision-Date: 2008-12-27 17:07+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lithuanian <kde-i18n-doc@lists.kde.org>\n"
@@ -5743,7 +5743,7 @@ msgid "Do you still want to download it?"
 msgstr "Ar vis tiek jį norite atsisiųsti?"
 
 #: src/addon_management.cpp:464 src/addon_management.cpp:538
-#: src/multiplayer.cpp:330 src/multiplayer_ui.cpp:66
+#: src/multiplayer.cpp:332 src/multiplayer_ui.cpp:66
 msgid "Connection timed out"
 msgstr ""
 
@@ -7257,20 +7257,11 @@ msgstr "Pareikalauti slaptažodžio priminimą šiam naudotojo vardui"
 msgid "Choose a different username"
 msgstr "Pasirinkite kitą naudotojo vardą"
 
-#: src/multiplayer.cpp:202
-msgid "Login"
-msgstr ""
-
-#: src/multiplayer.cpp:204 src/multiplayer_create.cpp:326
-#: src/multiplayer_lobby.cpp:786
-msgid "Password: "
-msgstr "Slaptažodis: "
-
-#: src/multiplayer.cpp:226
+#: src/multiplayer.cpp:228
 msgid "You must log in to this server"
 msgstr "Jūs privalote prisijungti prie šito serverio"
 
-#: src/multiplayer.cpp:227
+#: src/multiplayer.cpp:229
 msgid "Login: "
 msgstr ""
 
@@ -7537,6 +7528,10 @@ msgstr "Jūs privalote įvesti vardą."
 #: src/multiplayer_create.cpp:325
 msgid "Set Password"
 msgstr "Nustatyti slaptažodį"
+
+#: src/multiplayer_create.cpp:326 src/multiplayer_lobby.cpp:786
+msgid "Password: "
+msgstr "Slaptažodis: "
 
 #: src/multiplayer_create.cpp:326
 msgid ""

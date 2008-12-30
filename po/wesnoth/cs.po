@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-12-30 00:26+0100\n"
+"POT-Creation-Date: 2008-12-30 21:39+0100\n"
 "PO-Revision-Date: 2008-12-01 23:20+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
@@ -7025,7 +7025,7 @@ msgid "Do you still want to download it?"
 msgstr "Chceš jej i přesto stáhnout?"
 
 #: src/addon_management.cpp:464 src/addon_management.cpp:538
-#: src/multiplayer.cpp:330 src/multiplayer_ui.cpp:66
+#: src/multiplayer.cpp:332 src/multiplayer_ui.cpp:66
 msgid "Connection timed out"
 msgstr "Časový limit pro připojení vypršel"
 
@@ -8573,21 +8573,11 @@ msgstr ""
 msgid "Choose a different username"
 msgstr "Připoj se na jiný server"
 
-#: src/multiplayer.cpp:202
-#, fuzzy
-msgid "Login"
-msgstr "Přihlášení: "
-
-#: src/multiplayer.cpp:204 src/multiplayer_create.cpp:326
-#: src/multiplayer_lobby.cpp:786
-msgid "Password: "
-msgstr "Heslo: "
-
-#: src/multiplayer.cpp:226
+#: src/multiplayer.cpp:228
 msgid "You must log in to this server"
 msgstr "K tomuto serveru se musíš přihlásit"
 
-#: src/multiplayer.cpp:227
+#: src/multiplayer.cpp:229
 msgid "Login: "
 msgstr "Přihlášení: "
 
@@ -8860,6 +8850,10 @@ msgstr "Musíš zadat jméno."
 #: src/multiplayer_create.cpp:325
 msgid "Set Password"
 msgstr "Nastavení hesla"
+
+#: src/multiplayer_create.cpp:326 src/multiplayer_lobby.cpp:786
+msgid "Password: "
+msgstr "Heslo: "
 
 #: src/multiplayer_create.cpp:326
 msgid ""
@@ -9653,6 +9647,10 @@ msgstr "Pomozte nám vylepšit Wesnoth!"
 #: src/upload_log.cpp:330
 msgid "Enable summary uploads"
 msgstr "Povolit posílání souhrnů"
+
+#, fuzzy
+#~ msgid "Login"
+#~ msgstr "Přihlášení: "
 
 #~ msgid ""
 #~ "\n"

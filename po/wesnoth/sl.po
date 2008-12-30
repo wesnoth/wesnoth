@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-12-30 00:26+0100\n"
+"POT-Creation-Date: 2008-12-30 21:39+0100\n"
 "PO-Revision-Date: 2006-08-14 19:33+0200\n"
 "Last-Translator: Jaka Kranjc <wesnoth@prinas.si>\n"
 "Language-Team: Slovenian\n"
@@ -6284,7 +6284,7 @@ msgid "Do you still want to download it?"
 msgstr "Ali zares želite izbrisati ta shranjeni položaj?"
 
 #: src/addon_management.cpp:464 src/addon_management.cpp:538
-#: src/multiplayer.cpp:330 src/multiplayer_ui.cpp:66
+#: src/multiplayer.cpp:332 src/multiplayer_ui.cpp:66
 msgid "Connection timed out"
 msgstr "Povezava je potekla"
 
@@ -7926,22 +7926,11 @@ msgstr ""
 msgid "Choose a different username"
 msgstr "Poveži se z uradnim strežnikom"
 
-#: src/multiplayer.cpp:202
-#, fuzzy
-msgid "Login"
-msgstr "Prijava: "
-
-#: src/multiplayer.cpp:204 src/multiplayer_create.cpp:326
-#: src/multiplayer_lobby.cpp:786
-#, fuzzy
-msgid "Password: "
-msgstr "meč"
-
-#: src/multiplayer.cpp:226
+#: src/multiplayer.cpp:228
 msgid "You must log in to this server"
 msgstr "Prijaviti se morate na ta strežnik"
 
-#: src/multiplayer.cpp:227
+#: src/multiplayer.cpp:229
 msgid "Login: "
 msgstr "Prijava: "
 
@@ -8215,6 +8204,11 @@ msgstr "Vnesti morate ime."
 #: src/multiplayer_create.cpp:325
 msgid "Set Password"
 msgstr ""
+
+#: src/multiplayer_create.cpp:326 src/multiplayer_lobby.cpp:786
+#, fuzzy
+msgid "Password: "
+msgstr "meč"
 
 #: src/multiplayer_create.cpp:326
 msgid ""
@@ -9043,6 +9037,10 @@ msgstr "Pomagajte nam izboljšati Wesnoth!"
 #: src/upload_log.cpp:330
 msgid "Enable summary uploads"
 msgstr "Omogoči pošiljanje povzetkov"
+
+#, fuzzy
+#~ msgid "Login"
+#~ msgstr "Prijava: "
 
 #, fuzzy
 #~ msgid ""

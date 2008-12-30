@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-12-30 00:26+0100\n"
+"POT-Creation-Date: 2008-12-30 21:39+0100\n"
 "PO-Revision-Date: 2008-03-01 19:31+0200\n"
 "Last-Translator: Aleksej Korgenkov <grimpanto@mail.ru>\n"
 "Language-Team: \n"
@@ -6611,7 +6611,7 @@ msgid "Do you still want to download it?"
 msgstr "Reale vi volas forviŝi ĉi tiun savitan ludon?"
 
 #: src/addon_management.cpp:464 src/addon_management.cpp:538
-#: src/multiplayer.cpp:330 src/multiplayer_ui.cpp:66
+#: src/multiplayer.cpp:332 src/multiplayer_ui.cpp:66
 msgid "Connection timed out"
 msgstr "Aliĝtempo pasis"
 
@@ -8167,21 +8167,11 @@ msgstr ""
 msgid "Choose a different username"
 msgstr "Aliĝu al servilo de Vesnot"
 
-#: src/multiplayer.cpp:202
-#, fuzzy
-msgid "Login"
-msgstr "Aliĝo:"
-
-#: src/multiplayer.cpp:204 src/multiplayer_create.cpp:326
-#: src/multiplayer_lobby.cpp:786
-msgid "Password: "
-msgstr "Pasvorto:"
-
-#: src/multiplayer.cpp:226
+#: src/multiplayer.cpp:228
 msgid "You must log in to this server"
 msgstr "Al ĉi servilo vi devas aliĝi"
 
-#: src/multiplayer.cpp:227
+#: src/multiplayer.cpp:229
 msgid "Login: "
 msgstr "Aliĝo:"
 
@@ -8454,6 +8444,10 @@ msgstr "Vi devas doni nomon."
 #: src/multiplayer_create.cpp:325
 msgid "Set Password"
 msgstr ""
+
+#: src/multiplayer_create.cpp:326 src/multiplayer_lobby.cpp:786
+msgid "Password: "
+msgstr "Pasvorto:"
 
 #: src/multiplayer_create.cpp:326
 msgid ""
@@ -9226,6 +9220,10 @@ msgstr ""
 #: src/upload_log.cpp:330
 msgid "Enable summary uploads"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Login"
+#~ msgstr "Aliĝo:"
 
 #~ msgid "Abilites"
 #~ msgstr "Kapabloj"

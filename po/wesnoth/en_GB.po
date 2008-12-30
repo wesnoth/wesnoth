@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-12-30 00:26+0100\n"
+"POT-Creation-Date: 2008-12-30 21:39+0100\n"
 "PO-Revision-Date: 2007-01-04 19:17+0000\n"
 "Last-Translator: Peter J Ross <wesnoth@pjr.britishlibrary.net>\n"
 "Language-Team: English (British) <en@li.org>\n"
@@ -6346,7 +6346,7 @@ msgid "Do you still want to download it?"
 msgstr "Do you really want to delete this game?"
 
 #: src/addon_management.cpp:464 src/addon_management.cpp:538
-#: src/multiplayer.cpp:330 src/multiplayer_ui.cpp:66
+#: src/multiplayer.cpp:332 src/multiplayer_ui.cpp:66
 msgid "Connection timed out"
 msgstr "Connection timed out"
 
@@ -7980,22 +7980,11 @@ msgstr ""
 msgid "Choose a different username"
 msgstr "Join Official Server"
 
-#: src/multiplayer.cpp:202
-#, fuzzy
-msgid "Login"
-msgstr "Login: "
-
-#: src/multiplayer.cpp:204 src/multiplayer_create.cpp:326
-#: src/multiplayer_lobby.cpp:786
-#, fuzzy
-msgid "Password: "
-msgstr "sword"
-
-#: src/multiplayer.cpp:226
+#: src/multiplayer.cpp:228
 msgid "You must log in to this server"
 msgstr "You must log in to this server"
 
-#: src/multiplayer.cpp:227
+#: src/multiplayer.cpp:229
 msgid "Login: "
 msgstr "Login: "
 
@@ -8269,6 +8258,11 @@ msgstr "You must enter a name."
 #: src/multiplayer_create.cpp:325
 msgid "Set Password"
 msgstr ""
+
+#: src/multiplayer_create.cpp:326 src/multiplayer_lobby.cpp:786
+#, fuzzy
+msgid "Password: "
+msgstr "sword"
 
 #: src/multiplayer_create.cpp:326
 msgid ""
@@ -9081,6 +9075,10 @@ msgstr "Help us make Wesnoth better for you!"
 #: src/upload_log.cpp:330
 msgid "Enable summary uploads"
 msgstr "Enable summary uploads"
+
+#, fuzzy
+#~ msgid "Login"
+#~ msgstr "Login: "
 
 #, fuzzy
 #~ msgid ""

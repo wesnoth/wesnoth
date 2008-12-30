@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-12-30 00:26+0100\n"
+"POT-Creation-Date: 2008-12-30 21:39+0100\n"
 "PO-Revision-Date: 2008-09-24 02:09+0100\n"
 "Last-Translator: Mavorte <mavorte1@yahoo.es>\n"
 "Language-Team: none\n"
@@ -7162,7 +7162,7 @@ msgid "Do you still want to download it?"
 msgstr "¿Encara vols descarregar-ho?"
 
 #: src/addon_management.cpp:464 src/addon_management.cpp:538
-#: src/multiplayer.cpp:330 src/multiplayer_ui.cpp:66
+#: src/multiplayer.cpp:332 src/multiplayer_ui.cpp:66
 msgid "Connection timed out"
 msgstr "Conexió perduda."
 
@@ -8750,21 +8750,11 @@ msgstr ""
 msgid "Choose a different username"
 msgstr "Unir-se a un servidor distint"
 
-#: src/multiplayer.cpp:202
-#, fuzzy
-msgid "Login"
-msgstr "Nom: "
-
-#: src/multiplayer.cpp:204 src/multiplayer_create.cpp:326
-#: src/multiplayer_lobby.cpp:786
-msgid "Password: "
-msgstr "Contrasenya:"
-
-#: src/multiplayer.cpp:226
+#: src/multiplayer.cpp:228
 msgid "You must log in to this server"
 msgstr "Has d'entrar en este servidor"
 
-#: src/multiplayer.cpp:227
+#: src/multiplayer.cpp:229
 msgid "Login: "
 msgstr "Nom: "
 
@@ -9032,6 +9022,10 @@ msgstr "Has d'introduir un nom."
 #: src/multiplayer_create.cpp:325
 msgid "Set Password"
 msgstr "Establèixer Contrasenya"
+
+#: src/multiplayer_create.cpp:326 src/multiplayer_lobby.cpp:786
+msgid "Password: "
+msgstr "Contrasenya:"
 
 #: src/multiplayer_create.cpp:326
 msgid ""
@@ -9822,6 +9816,10 @@ msgstr "¡Ajuda'ns a fer un Wesnoth millor per a tots!"
 #: src/upload_log.cpp:330
 msgid "Enable summary uploads"
 msgstr "Permetre emissions de resums"
+
+#, fuzzy
+#~ msgid "Login"
+#~ msgstr "Nom: "
 
 #~ msgid ""
 #~ "\n"

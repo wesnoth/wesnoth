@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-12-30 00:26+0100\n"
+"POT-Creation-Date: 2008-12-30 21:39+0100\n"
 "PO-Revision-Date: 2008-12-09 21:00+0100\n"
 "Last-Translator: Leandro Regueiro <leandro DOT regueiro AT gmail DOT com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
@@ -7116,7 +7116,7 @@ msgid "Do you still want to download it?"
 msgstr "Ainda desexas descargalo?"
 
 #: src/addon_management.cpp:464 src/addon_management.cpp:538
-#: src/multiplayer.cpp:330 src/multiplayer_ui.cpp:66
+#: src/multiplayer.cpp:332 src/multiplayer_ui.cpp:66
 msgid "Connection timed out"
 msgstr "A conexión expirou"
 
@@ -8661,20 +8661,11 @@ msgstr "Solicitar recordatorio de contrasinal para este nome de usuario"
 msgid "Choose a different username"
 msgstr "Escolla un nome de usuario diferente"
 
-#: src/multiplayer.cpp:202
-msgid "Login"
-msgstr ""
-
-#: src/multiplayer.cpp:204 src/multiplayer_create.cpp:326
-#: src/multiplayer_lobby.cpp:786
-msgid "Password: "
-msgstr "Contrasinal: "
-
-#: src/multiplayer.cpp:226
+#: src/multiplayer.cpp:228
 msgid "You must log in to this server"
 msgstr "Debes conectarte a este servidor"
 
-#: src/multiplayer.cpp:227
+#: src/multiplayer.cpp:229
 msgid "Login: "
 msgstr "Usuario: "
 
@@ -8944,6 +8935,10 @@ msgstr "Debes introducir un nome."
 #: src/multiplayer_create.cpp:325
 msgid "Set Password"
 msgstr "Establecer Contrasinal"
+
+#: src/multiplayer_create.cpp:326 src/multiplayer_lobby.cpp:786
+msgid "Password: "
+msgstr "Contrasinal: "
 
 #: src/multiplayer_create.cpp:326
 msgid ""

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth Latin 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-12-30 00:26+0100\n"
+"POT-Creation-Date: 2008-12-30 21:39+0100\n"
 "PO-Revision-Date: 2006-06-27 13:27+0200\n"
 "Last-Translator: Mark Polo <markpolo@gmail.com>\n"
 "Language-Team: Latin\n"
@@ -6357,7 +6357,7 @@ msgid "Do you still want to download it?"
 msgstr "Visne vere hunc lusum delere?"
 
 #: src/addon_management.cpp:464 src/addon_management.cpp:538
-#: src/multiplayer.cpp:330 src/multiplayer_ui.cpp:66
+#: src/multiplayer.cpp:332 src/multiplayer_ui.cpp:66
 msgid "Connection timed out"
 msgstr "Tempus coniunctionis exit"
 
@@ -7986,22 +7986,11 @@ msgstr ""
 msgid "Choose a different username"
 msgstr "Ad Moderatrum Officiale Coniungere"
 
-#: src/multiplayer.cpp:202
-#, fuzzy
-msgid "Login"
-msgstr "Inire: "
-
-#: src/multiplayer.cpp:204 src/multiplayer_create.cpp:326
-#: src/multiplayer_lobby.cpp:786
-#, fuzzy
-msgid "Password: "
-msgstr "gladius"
-
-#: src/multiplayer.cpp:226
+#: src/multiplayer.cpp:228
 msgid "You must log in to this server"
 msgstr "Opus est inire in moderatrum hoc"
 
-#: src/multiplayer.cpp:227
+#: src/multiplayer.cpp:229
 msgid "Login: "
 msgstr "Inire: "
 
@@ -8276,6 +8265,11 @@ msgstr "Nomen dare opus est."
 #: src/multiplayer_create.cpp:325
 msgid "Set Password"
 msgstr ""
+
+#: src/multiplayer_create.cpp:326 src/multiplayer_lobby.cpp:786
+#, fuzzy
+msgid "Password: "
+msgstr "gladius"
 
 #: src/multiplayer_create.cpp:326
 msgid ""
@@ -9089,6 +9083,10 @@ msgstr "Nos adiuva facientes Occidiseptentrionem meliorem tibi!"
 #: src/upload_log.cpp:330
 msgid "Enable summary uploads"
 msgstr "Potestatem facere summaria mittendi"
+
+#, fuzzy
+#~ msgid "Login"
+#~ msgstr "Inire: "
 
 #, fuzzy
 #~ msgid ""

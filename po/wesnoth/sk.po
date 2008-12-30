@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-12-30 00:26+0100\n"
+"POT-Creation-Date: 2008-12-30 21:39+0100\n"
 "PO-Revision-Date: 2008-09-27 22:17+0100\n"
 "Last-Translator: aceman <acelists@atlas.sk>\n"
 "Language-Team: none\n"
@@ -7012,7 +7012,7 @@ msgid "Do you still want to download it?"
 msgstr "Chceš ho naďalej stiahnuť?"
 
 #: src/addon_management.cpp:464 src/addon_management.cpp:538
-#: src/multiplayer.cpp:330 src/multiplayer_ui.cpp:66
+#: src/multiplayer.cpp:332 src/multiplayer_ui.cpp:66
 msgid "Connection timed out"
 msgstr "Čas na pripojenie vypršal"
 
@@ -8592,21 +8592,11 @@ msgstr ""
 msgid "Choose a different username"
 msgstr "Pripoj sa na iný server"
 
-#: src/multiplayer.cpp:202
-#, fuzzy
-msgid "Login"
-msgstr "Prihlasovacie meno: "
-
-#: src/multiplayer.cpp:204 src/multiplayer_create.cpp:326
-#: src/multiplayer_lobby.cpp:786
-msgid "Password: "
-msgstr "Heslo: "
-
-#: src/multiplayer.cpp:226
+#: src/multiplayer.cpp:228
 msgid "You must log in to this server"
 msgstr "Na tento server sa musíš prihlásiť"
 
-#: src/multiplayer.cpp:227
+#: src/multiplayer.cpp:229
 msgid "Login: "
 msgstr "Prihlasovacie meno: "
 
@@ -8874,6 +8864,10 @@ msgstr "Musíte zadať meno."
 #: src/multiplayer_create.cpp:325
 msgid "Set Password"
 msgstr "Nastaviť heslo"
+
+#: src/multiplayer_create.cpp:326 src/multiplayer_lobby.cpp:786
+msgid "Password: "
+msgstr "Heslo: "
 
 #: src/multiplayer_create.cpp:326
 msgid ""
@@ -9666,6 +9660,10 @@ msgstr "Pomôž nám urobiť Wesnoth lepším pre teba!"
 #: src/upload_log.cpp:330
 msgid "Enable summary uploads"
 msgstr "Umožni posielanie štatistík"
+
+#, fuzzy
+#~ msgid "Login"
+#~ msgstr "Prihlasovacie meno: "
 
 #~ msgid ""
 #~ "\n"

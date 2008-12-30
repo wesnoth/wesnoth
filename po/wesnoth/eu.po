@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.0\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-12-30 00:26+0100\n"
+"POT-Creation-Date: 2008-12-30 21:39+0100\n"
 "PO-Revision-Date: 2005-08-23 11:08+0100\n"
 "Last-Translator: Alfredo Beaumont <ziberpunk@ziberghetto.dhis.org>\n"
 "Language-Team: Basque <ziberpunk@ziberghetto.dhis.org>\n"
@@ -5623,7 +5623,7 @@ msgid "Do you still want to download it?"
 msgstr "Ziur al zaude joku hau ezabatu nahi duzula?"
 
 #: src/addon_management.cpp:464 src/addon_management.cpp:538
-#: src/multiplayer.cpp:330 src/multiplayer_ui.cpp:66
+#: src/multiplayer.cpp:332 src/multiplayer_ui.cpp:66
 msgid "Connection timed out"
 msgstr "Konexioa denboraz kanpo"
 
@@ -7241,22 +7241,11 @@ msgstr ""
 msgid "Choose a different username"
 msgstr "Sartu zerbitzari ofizialera"
 
-#: src/multiplayer.cpp:202
-#, fuzzy
-msgid "Login"
-msgstr "Saioa hasi"
-
-#: src/multiplayer.cpp:204 src/multiplayer_create.cpp:326
-#: src/multiplayer_lobby.cpp:786
-#, fuzzy
-msgid "Password: "
-msgstr "ezpata"
-
-#: src/multiplayer.cpp:226
+#: src/multiplayer.cpp:228
 msgid "You must log in to this server"
 msgstr "Zerbitzarian saioa hasi behar duzu"
 
-#: src/multiplayer.cpp:227
+#: src/multiplayer.cpp:229
 msgid "Login: "
 msgstr "Saioa hasi"
 
@@ -7535,6 +7524,11 @@ msgstr "Izen bat sartu behar duzu."
 #: src/multiplayer_create.cpp:325
 msgid "Set Password"
 msgstr ""
+
+#: src/multiplayer_create.cpp:326 src/multiplayer_lobby.cpp:786
+#, fuzzy
+msgid "Password: "
+msgstr "ezpata"
 
 #: src/multiplayer_create.cpp:326
 msgid ""
@@ -8354,6 +8348,10 @@ msgstr ""
 #: src/upload_log.cpp:330
 msgid "Enable summary uploads"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Login"
+#~ msgstr "Saioa hasi"
 
 #, fuzzy
 #~ msgid "Abilites"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-12-30 00:26+0100\n"
+"POT-Creation-Date: 2008-12-30 21:39+0100\n"
 "PO-Revision-Date: 2008-12-22 12:15+1000\n"
 "Last-Translator: luojie <lililjlj@gmail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
@@ -6454,7 +6454,7 @@ msgid "Do you still want to download it?"
 msgstr "您真的想下载这个游戏？"
 
 #: src/addon_management.cpp:464 src/addon_management.cpp:538
-#: src/multiplayer.cpp:330 src/multiplayer_ui.cpp:66
+#: src/multiplayer.cpp:332 src/multiplayer_ui.cpp:66
 msgid "Connection timed out"
 msgstr "连接超时"
 
@@ -7952,20 +7952,11 @@ msgstr "此用户名需求密码"
 msgid "Choose a different username"
 msgstr "选一个不同的用户名"
 
-#: src/multiplayer.cpp:202
-msgid "Login"
-msgstr "登录"
-
-#: src/multiplayer.cpp:204 src/multiplayer_create.cpp:326
-#: src/multiplayer_lobby.cpp:786
-msgid "Password: "
-msgstr "密码:"
-
-#: src/multiplayer.cpp:226
+#: src/multiplayer.cpp:228
 msgid "You must log in to this server"
 msgstr "您必须登录这个服务器"
 
-#: src/multiplayer.cpp:227
+#: src/multiplayer.cpp:229
 msgid "Login: "
 msgstr "登录名： "
 
@@ -8232,6 +8223,10 @@ msgstr "您必须输入名字。"
 #: src/multiplayer_create.cpp:325
 msgid "Set Password"
 msgstr "设定密码"
+
+#: src/multiplayer_create.cpp:326 src/multiplayer_lobby.cpp:786
+msgid "Password: "
+msgstr "密码:"
 
 #: src/multiplayer_create.cpp:326
 msgid ""
@@ -8992,6 +8987,9 @@ msgstr "帮助我们改进韦诺，提升您的游戏体验！"
 #: src/upload_log.cpp:330
 msgid "Enable summary uploads"
 msgstr "开启摘要上传模式"
+
+#~ msgid "Login"
+#~ msgstr "登录"
 
 #~ msgid ""
 #~ "\n"

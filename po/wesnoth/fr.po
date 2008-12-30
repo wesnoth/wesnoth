@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-12-30 00:26+0100\n"
+"POT-Creation-Date: 2008-12-30 21:39+0100\n"
 "PO-Revision-Date: 2008-07-03 23:22+0200\n"
 "Last-Translator: Benoît Timbert <benoit.timbert@free.fr>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
@@ -7130,7 +7130,7 @@ msgid "Do you still want to download it?"
 msgstr "Voulez-vous la télécharger ?"
 
 #: src/addon_management.cpp:464 src/addon_management.cpp:538
-#: src/multiplayer.cpp:330 src/multiplayer_ui.cpp:66
+#: src/multiplayer.cpp:332 src/multiplayer_ui.cpp:66
 msgid "Connection timed out"
 msgstr "Tentative de connexion expirée"
 
@@ -8691,21 +8691,11 @@ msgstr ""
 msgid "Choose a different username"
 msgstr "Se connecter à un autre serveur"
 
-#: src/multiplayer.cpp:202
-#, fuzzy
-msgid "Login"
-msgstr "Identifiant : "
-
-#: src/multiplayer.cpp:204 src/multiplayer_create.cpp:326
-#: src/multiplayer_lobby.cpp:786
-msgid "Password: "
-msgstr "Mot de passe : "
-
-#: src/multiplayer.cpp:226
+#: src/multiplayer.cpp:228
 msgid "You must log in to this server"
 msgstr "Vous devez vous identifier à ce serveur"
 
-#: src/multiplayer.cpp:227
+#: src/multiplayer.cpp:229
 msgid "Login: "
 msgstr "Identifiant : "
 
@@ -8972,6 +8962,10 @@ msgstr "Vous devez saisir un nom."
 #: src/multiplayer_create.cpp:325
 msgid "Set Password"
 msgstr "Choisir un mot de passe"
+
+#: src/multiplayer_create.cpp:326 src/multiplayer_lobby.cpp:786
+msgid "Password: "
+msgstr "Mot de passe : "
 
 #: src/multiplayer_create.cpp:326
 msgid ""
@@ -9760,6 +9754,10 @@ msgstr "Aidez-nous à améliorer Wesnoth pour vous !"
 #: src/upload_log.cpp:330
 msgid "Enable summary uploads"
 msgstr "Autoriser l'envoi de résumés"
+
+#, fuzzy
+#~ msgid "Login"
+#~ msgstr "Identifiant : "
 
 #~ msgid ""
 #~ "\n"

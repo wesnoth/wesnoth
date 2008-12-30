@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-12-30 00:26+0100\n"
+"POT-Creation-Date: 2008-12-30 21:39+0100\n"
 "PO-Revision-Date: 2008-06-07 00:37+0300\n"
 "Last-Translator: vicza <vicza@zmail.ru>\n"
 "Language-Team:  <ru@li.org>\n"
@@ -7089,7 +7089,7 @@ msgid "Do you still want to download it?"
 msgstr "Хотите ли скачать его?"
 
 #: src/addon_management.cpp:464 src/addon_management.cpp:538
-#: src/multiplayer.cpp:330 src/multiplayer_ui.cpp:66
+#: src/multiplayer.cpp:332 src/multiplayer_ui.cpp:66
 msgid "Connection timed out"
 msgstr "Превышен лимит времени подключения"
 
@@ -8686,21 +8686,11 @@ msgstr ""
 msgid "Choose a different username"
 msgstr "Подключиться к другому серверу"
 
-#: src/multiplayer.cpp:202
-#, fuzzy
-msgid "Login"
-msgstr "Имя пользователя: "
-
-#: src/multiplayer.cpp:204 src/multiplayer_create.cpp:326
-#: src/multiplayer_lobby.cpp:786
-msgid "Password: "
-msgstr "Пароль:"
-
-#: src/multiplayer.cpp:226
+#: src/multiplayer.cpp:228
 msgid "You must log in to this server"
 msgstr "Вы должны подключиться к данному серверу"
 
-#: src/multiplayer.cpp:227
+#: src/multiplayer.cpp:229
 msgid "Login: "
 msgstr "Имя пользователя: "
 
@@ -8970,6 +8960,10 @@ msgstr "Вы должны указать имя."
 #: src/multiplayer_create.cpp:325
 msgid "Set Password"
 msgstr "Установить пароль"
+
+#: src/multiplayer_create.cpp:326 src/multiplayer_lobby.cpp:786
+msgid "Password: "
+msgstr "Пароль:"
 
 #: src/multiplayer_create.cpp:326
 msgid ""
@@ -9764,6 +9758,10 @@ msgstr "Помогите нам сделать Веснот лучше!"
 #: src/upload_log.cpp:330
 msgid "Enable summary uploads"
 msgstr "Включить отправку итогов"
+
+#, fuzzy
+#~ msgid "Login"
+#~ msgstr "Имя пользователя: "
 
 #~ msgid ""
 #~ "\n"

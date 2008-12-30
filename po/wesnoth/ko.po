@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-12-30 00:26+0100\n"
+"POT-Creation-Date: 2008-12-30 21:39+0100\n"
 "PO-Revision-Date: 2006-03-21 21:06-0800\n"
 "Last-Translator: Andrew <Sfradix@hotmail.com>\n"
 "Language-Team: none\n"
@@ -5486,7 +5486,7 @@ msgid "Do you still want to download it?"
 msgstr "정말로 이 게임을 지우시겠습니까?"
 
 #: src/addon_management.cpp:464 src/addon_management.cpp:538
-#: src/multiplayer.cpp:330 src/multiplayer_ui.cpp:66
+#: src/multiplayer.cpp:332 src/multiplayer_ui.cpp:66
 msgid "Connection timed out"
 msgstr ""
 
@@ -7028,22 +7028,11 @@ msgstr ""
 msgid "Choose a different username"
 msgstr "공식 서버 접속"
 
-#: src/multiplayer.cpp:202
-#, fuzzy
-msgid "Login"
-msgstr "아이디:"
-
-#: src/multiplayer.cpp:204 src/multiplayer_create.cpp:326
-#: src/multiplayer_lobby.cpp:786
-#, fuzzy
-msgid "Password: "
-msgstr "소드"
-
-#: src/multiplayer.cpp:226
+#: src/multiplayer.cpp:228
 msgid "You must log in to this server"
 msgstr ""
 
-#: src/multiplayer.cpp:227
+#: src/multiplayer.cpp:229
 msgid "Login: "
 msgstr "아이디:"
 
@@ -7315,6 +7304,11 @@ msgstr "이름을 입력해야만 합니다."
 #: src/multiplayer_create.cpp:325
 msgid "Set Password"
 msgstr ""
+
+#: src/multiplayer_create.cpp:326 src/multiplayer_lobby.cpp:786
+#, fuzzy
+msgid "Password: "
+msgstr "소드"
 
 #: src/multiplayer_create.cpp:326
 msgid ""
@@ -8115,6 +8109,10 @@ msgstr "더 좋은 Wesnoth를 만들기 위해 도와주십시오!"
 #: src/upload_log.cpp:330
 msgid "Enable summary uploads"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Login"
+#~ msgstr "아이디:"
 
 #, fuzzy
 #~ msgid "Abilites"

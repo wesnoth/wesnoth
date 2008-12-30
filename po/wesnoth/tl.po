@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-12-30 00:26+0100\n"
+"POT-Creation-Date: 2008-12-30 21:39+0100\n"
 "PO-Revision-Date: 2008-02-21 10:21+0800\n"
 "Last-Translator: eve <eve_eso@yahoo.com>\n"
 "Language-Team: \n"
@@ -5815,7 +5815,7 @@ msgid "Do you still want to download it?"
 msgstr ""
 
 #: src/addon_management.cpp:464 src/addon_management.cpp:538
-#: src/multiplayer.cpp:330 src/multiplayer_ui.cpp:66
+#: src/multiplayer.cpp:332 src/multiplayer_ui.cpp:66
 msgid "Connection timed out"
 msgstr "Naputol ang koneksyon"
 
@@ -7327,21 +7327,11 @@ msgstr ""
 msgid "Choose a different username"
 msgstr "Sumali sa opisyal na server"
 
-#: src/multiplayer.cpp:202
-#, fuzzy
-msgid "Login"
-msgstr "Login:"
-
-#: src/multiplayer.cpp:204 src/multiplayer_create.cpp:326
-#: src/multiplayer_lobby.cpp:786
-msgid "Password: "
-msgstr "Password:"
-
-#: src/multiplayer.cpp:226
+#: src/multiplayer.cpp:228
 msgid "You must log in to this server"
 msgstr ""
 
-#: src/multiplayer.cpp:227
+#: src/multiplayer.cpp:229
 msgid "Login: "
 msgstr "Login:"
 
@@ -7607,6 +7597,10 @@ msgstr ""
 #: src/multiplayer_create.cpp:325
 msgid "Set Password"
 msgstr "I-set ang Password"
+
+#: src/multiplayer_create.cpp:326 src/multiplayer_lobby.cpp:786
+msgid "Password: "
+msgstr "Password:"
 
 #: src/multiplayer_create.cpp:326
 msgid ""
@@ -8395,6 +8389,10 @@ msgstr "Tulungan ninyo kami gawing mas maganda ang Wesnoth!"
 #: src/upload_log.cpp:330
 msgid "Enable summary uploads"
 msgstr "Bigyan ng pagkakataon ang pag-upload ng sumaryo o buod"
+
+#, fuzzy
+#~ msgid "Login"
+#~ msgstr "Login:"
 
 #~ msgid "Abilites"
 #~ msgstr "Mga abilidad"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-12-30 00:26+0100\n"
+"POT-Creation-Date: 2008-12-30 21:39+0100\n"
 "PO-Revision-Date: 2008-11-22 17:20+0200\n"
 "Last-Translator: Simo Sutela <qurnelius@netscape.net>\n"
 "Language-Team: Finnish\n"
@@ -7071,7 +7071,7 @@ msgid "Do you still want to download it?"
 msgstr "Haluatko silti ladata sen?"
 
 #: src/addon_management.cpp:464 src/addon_management.cpp:538
-#: src/multiplayer.cpp:330 src/multiplayer_ui.cpp:66
+#: src/multiplayer.cpp:332 src/multiplayer_ui.cpp:66
 msgid "Connection timed out"
 msgstr "Yhteys katkaistiin odotuksen jälkeen."
 
@@ -8637,21 +8637,11 @@ msgstr ""
 msgid "Choose a different username"
 msgstr "Ota yhteys toiseen palvelimeen"
 
-#: src/multiplayer.cpp:202
-#, fuzzy
-msgid "Login"
-msgstr "Sisäänkirjautuminen: "
-
-#: src/multiplayer.cpp:204 src/multiplayer_create.cpp:326
-#: src/multiplayer_lobby.cpp:786
-msgid "Password: "
-msgstr "Salasana: "
-
-#: src/multiplayer.cpp:226
+#: src/multiplayer.cpp:228
 msgid "You must log in to this server"
 msgstr "Tälle palvelimelle vaaditaan kirjautumista."
 
-#: src/multiplayer.cpp:227
+#: src/multiplayer.cpp:229
 msgid "Login: "
 msgstr "Sisäänkirjautuminen: "
 
@@ -8921,6 +8911,10 @@ msgstr "Sinun pitää syöttää nimi."
 #: src/multiplayer_create.cpp:325
 msgid "Set Password"
 msgstr "Aseta salasana"
+
+#: src/multiplayer_create.cpp:326 src/multiplayer_lobby.cpp:786
+msgid "Password: "
+msgstr "Salasana: "
 
 #: src/multiplayer_create.cpp:326
 msgid ""
@@ -9701,6 +9695,10 @@ msgstr "Auta meitä kehittämään Wesnothista parempi sinulle!"
 #: src/upload_log.cpp:330
 msgid "Enable summary uploads"
 msgstr "Salli yhteenvetojen lähettäminen"
+
+#, fuzzy
+#~ msgid "Login"
+#~ msgstr "Sisäänkirjautuminen: "
 
 #~ msgid ""
 #~ "\n"

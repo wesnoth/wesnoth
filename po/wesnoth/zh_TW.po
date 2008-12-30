@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth1.4\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-12-30 00:26+0100\n"
+"POT-Creation-Date: 2008-12-30 21:39+0100\n"
 "PO-Revision-Date: 2008-08-13 01:24+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Chinese/Traditional <steven2880@gmail.com>\n"
@@ -6496,7 +6496,7 @@ msgid "Do you still want to download it?"
 msgstr "您確定要下載這個檔案？"
 
 #: src/addon_management.cpp:464 src/addon_management.cpp:538
-#: src/multiplayer.cpp:330 src/multiplayer_ui.cpp:66
+#: src/multiplayer.cpp:332 src/multiplayer_ui.cpp:66
 msgid "Connection timed out"
 msgstr "連接超時"
 
@@ -8060,21 +8060,11 @@ msgstr ""
 msgid "Choose a different username"
 msgstr "連接到官方伺服器"
 
-#: src/multiplayer.cpp:202
-#, fuzzy
-msgid "Login"
-msgstr "登録名： "
-
-#: src/multiplayer.cpp:204 src/multiplayer_create.cpp:326
-#: src/multiplayer_lobby.cpp:786
-msgid "Password: "
-msgstr "密碼:"
-
-#: src/multiplayer.cpp:226
+#: src/multiplayer.cpp:228
 msgid "You must log in to this server"
 msgstr "您必須登録這個伺服器"
 
-#: src/multiplayer.cpp:227
+#: src/multiplayer.cpp:229
 msgid "Login: "
 msgstr "登録名： "
 
@@ -8342,6 +8332,10 @@ msgstr "您必須輸入名字。"
 #: src/multiplayer_create.cpp:325
 msgid "Set Password"
 msgstr "設定密碼"
+
+#: src/multiplayer_create.cpp:326 src/multiplayer_lobby.cpp:786
+msgid "Password: "
+msgstr "密碼:"
 
 #: src/multiplayer_create.cpp:326
 msgid ""
@@ -9110,6 +9104,10 @@ msgstr "幫助我們改進韋諾，提升您的遊戲體驗！"
 #: src/upload_log.cpp:330
 msgid "Enable summary uploads"
 msgstr "開啟訊息回報"
+
+#, fuzzy
+#~ msgid "Login"
+#~ msgstr "登録名： "
 
 #~ msgid ""
 #~ "\n"
