@@ -196,16 +196,18 @@ static server_type open_connection(game_display& disp, const std::string& origin
 				if(!first_time) {
 
 					//Somewhat hacky implementation, including a goto of death
-
+					
 					/** @todo A fancy textbox that displays characters as dots or asterisks would nice. */
 					if(!((*error)["password_request"].empty())) {
-						const int res = gui::show_dialog(disp, NULL, _("Login"),
-								(*error)["message"], gui::OK_CANCEL,
-								&opts, NULL, _("Password: "), &password, mp::max_login_size);
+						
+                        gui2::tmp_login dlg((*error)["message"]);
+                        dlg.show(disp.video());
 
-						switch(res) {
+                        password = dlg.password();
+
+						switch(dlg.get_retval()) {
 							//Log in with password
-							case 0:
+							case gui2::twindow::OK:
 								break;
 							//Request a password reminder
 							case 1:

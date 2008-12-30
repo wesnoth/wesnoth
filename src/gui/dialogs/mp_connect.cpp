@@ -21,6 +21,7 @@
 #include "gui/dialogs/field.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/listbox.hpp"
+#include "gui/widgets/label.hpp"
 
 namespace gui2 {
 
@@ -181,6 +182,59 @@ void tmp_connect::show_server_list(twindow& window)
 	if(dlg.get_retval() == twindow::OK) {
 		host_name_->set_widget_value(window, dlg.host_name());
 	}
+}
+
+/*WIKI
+ * @page = GUIWindowWML
+ * @order = 2_mp_login
+ *
+ * == Multiplayer connect ==
+ *
+ * This shows the dialog to log in to the MP server
+ *
+ * @start_table = container
+ *     password            (text_box)  the password
+ *     [password_reminder] (button)    Request a password reminder
+ *     [change_username]   (button)    Use a different username
+ *     [login_label]       (button)    Displays the information received
+ *                                     from the server
+ * @end_table
+ */
+
+tmp_login::tmp_login(const t_string& label) : password_(), label_(label) { }
+
+twindow* tmp_login::build_window(CVideo& video)
+{
+	return build(video, get_id(MP_LOGIN));
+}
+
+void tmp_login::pre_show(CVideo& video, twindow& window)
+{
+	ttext_box* password =
+		dynamic_cast<ttext_box*>(window.find_widget("password", false));
+	VALIDATE(password, missing_widget("password"));
+	window.keyboard_capture(password);
+
+	tbutton *password_reminder =
+		dynamic_cast<tbutton*>(window.find_widget("password_reminder", false));
+    if(password_reminder) password_reminder->set_retval(1);
+
+	tbutton* change_username =
+		dynamic_cast<tbutton*>(window.find_widget("change_username", false));
+    if(change_username) change_username->set_retval(2);
+
+	tlabel* label =
+		dynamic_cast<tlabel*>(window.find_widget("login_label", false));
+	if(label) label->set_label(label_);
+
+}
+
+void tmp_login::post_show(twindow& window)
+{
+	ttext_box* password =
+		dynamic_cast<ttext_box*>(window.find_widget("password", false));
+	VALIDATE(password, missing_widget("password"));
+	password_ = password->get_value();
 }
 
 } // namespace gui2

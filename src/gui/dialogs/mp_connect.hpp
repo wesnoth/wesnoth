@@ -16,6 +16,7 @@
 #define GUI_DIALOGS_MP_CONNECT_HPP_INCLUDED
 
 #include "gui/dialogs/dialog.hpp"
+#include "tstring.hpp"
 
 namespace gui2 {
 
@@ -42,6 +43,27 @@ public:
 
 private:
 	tfield_text* host_name_;
+};
+
+class tmp_login : public tdialog
+{
+public:
+	tmp_login(const t_string& label);
+
+	const std::string& password() const { return password_; }
+
+private:
+	/** Inherited from tdialog. */
+	twindow* build_window(CVideo& video);
+
+	/** Inherited from tdialog. */
+	void pre_show(CVideo& video, twindow& window);
+
+	/** Inherited from tdialog. */
+	void post_show(twindow& window);
+
+    std::string password_;
+    t_string label_;
 };
 
 } // namespace gui2
