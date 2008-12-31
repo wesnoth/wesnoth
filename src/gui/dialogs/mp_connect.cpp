@@ -208,7 +208,7 @@ twindow* tmp_login::build_window(CVideo& video)
 	return build(video, get_id(MP_LOGIN));
 }
 
-void tmp_login::pre_show(CVideo& video, twindow& window)
+void tmp_login::pre_show(CVideo& /*video*/, twindow& window)
 {
 	ttext_box* password =
 		dynamic_cast<ttext_box*>(window.find_widget("password", false));
