@@ -462,8 +462,8 @@ namespace {
 				const map_location vacant_dst = find_vacant_tile(*game_map,*units,dst);
 				if(game_map->on_board(vacant_dst)) {
 					const int side = u->second.side();
+					const map_location src_loc = u->first;
 
-					(screen)->invalidate(u->first);
 					std::pair<map_location,unit> *up = units->extract(u->first);
 					up->first = vacant_dst;
 					units->add(up);
@@ -475,9 +475,18 @@ namespace {
 					if(utils::string_bool(cfg["clear_shroud"],true)) {
 						clear_shroud(*screen,*game_map,*units,*teams,side-1);
 					}
+					if(utils::string_bool(cfg["animate"])) {
+						std::vector<map_location> teleport_path;
+						teleport_path.push_back(src_loc);
+						teleport_path.push_back(vacant_dst);
+						unit_display::move_unit(teleport_path,u->second,*teams);
+					} else {
+						u->second.set_standing(vacant_dst);
+						(screen)->invalidate(src_loc);
+						(screen)->invalidate(dst);
+						(screen)->draw();
+					}
 
-					(screen)->invalidate(dst);
-					(screen)->draw();
 				}
 			}
 		}
