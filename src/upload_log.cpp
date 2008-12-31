@@ -89,6 +89,8 @@ static int upload_logs(void *_ti)
 		get_files_in_dir(get_upload_dir(), &files, NULL, ENTIRE_FILE_PATH);
 
 		IPaddress ip;
+		network::manager::manager ensure_net_initialized;
+
 		if (SDLNet_ResolveHost(&ip, TARGET_HOST, TARGET_PORT) == 0) {
 			std::vector<std::string>::iterator i;
 			for (i = files.begin(); i!=files.end() && *i!=ti->lastfile; i++) {
