@@ -244,6 +244,7 @@ public:
 	 */
 	virtual void set_size(const tpoint& origin, const tpoint& size);
 
+
 	/***** ***** ***** ***** query ***** ***** ***** *****/
 
 	/**
@@ -468,6 +469,21 @@ public:
 	int get_y() const { return y_; }
 	unsigned get_width() const { return w_; }
 	unsigned get_height() const { return h_; }
+
+	/** Returns the size of the widget. */
+	tpoint get_size() const { return tpoint(w_, h_); }
+
+	/** Returns the screen origin of the widget. */
+	tpoint get_origin() const { return tpoint(screen_x_, screen_y_); }
+
+	/** 
+	 * Gets the sizes in one rect structure.
+	 *
+	 * @todo this function can be renamed to get_rect() when the old get_rect
+	 * has been removed.
+	 */
+	SDL_Rect get_screen_rect() const 
+		{ return create_rect(get_origin(), get_size()); }
 
 	/**
 	 * Sets the origin of the widget.

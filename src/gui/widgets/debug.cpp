@@ -340,8 +340,7 @@ void tdebug_layout_graph::widget_generate_size_info(
 		<< "size=" << widget->get_rect() << '\n'
 		<< "</td></tr>\n"
 		<< "<tr><td>\n"
-		<< "screen_position=" << widget->get_screen_x()
-			<< ',' <<  widget->get_screen_y() << '\n'
+		<< "screen_position=" << widget->get_origin() << '\n'
 		<< "</td></tr>\n"
 		<< "<tr><td>\n"
 		<< "last_best_size_=" << widget->last_best_size_ << '\n'

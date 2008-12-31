@@ -222,9 +222,7 @@ void tscrollbar_container::
 	// Set content size
 	assert(content_ && content_grid_);
 
-	const tpoint content_origin = tpoint(
-			content_->get_screen_x(),
-			content_->get_screen_y());
+	const tpoint content_origin = content_->get_origin();
 
 	const tpoint best_size = content_grid_->get_best_size();
 	const tpoint content_size(content_->get_width(), content_->get_height());
@@ -273,9 +271,7 @@ void tscrollbar_container::set_origin(const tpoint& origin)
 	// Set content size
 	assert(content_ && content_grid_);
 
-	const tpoint content_origin = tpoint(
-			content_->get_screen_x(),
-			content_->get_screen_y());
+	const tpoint content_origin = content_->get_origin();
 
 	content_grid_->set_origin(content_origin);
 }
@@ -314,11 +310,7 @@ void tscrollbar_container::draw_background(surface& frame_buffer)
 	}
 
 	// Make sure the content can't draw outside its canvas.
-	clip_rect_setter clip_rect(frame_buffer, ::create_rect(
-		content_->get_screen_x(),
-		content_->get_screen_y(),
-		content_->get_width(),
-		content_->get_height()));
+	clip_rect_setter clip_rect(frame_buffer, get_screen_rect());
 
 	// Draw.
 	content_grid_->draw_children(frame_buffer);
@@ -327,11 +319,7 @@ void tscrollbar_container::draw_background(surface& frame_buffer)
 void tscrollbar_container::draw_foreground(surface& frame_buffer)
 {
 	// Make sure the content can't draw outside its canvas.
-	clip_rect_setter clip_rect(frame_buffer, ::create_rect(
-		content_->get_screen_x(),
-		content_->get_screen_y(),
-		content_->get_width(),
-		content_->get_height()));
+	clip_rect_setter clip_rect(frame_buffer, get_screen_rect());
 
 	// Inherited.
 	tcontainer_::draw_foreground(frame_buffer);

@@ -37,24 +37,14 @@ SDL_Rect tpanel::get_client_rect() const
 void tpanel::draw_background(surface& frame_buffer)
 {
    	canvas(0).draw();
-
-	SDL_Rect rect = ::create_rect(
-			get_screen_x(),
-			get_screen_y(),
-			get_width(),
-			get_height());
+	SDL_Rect rect = get_screen_rect();
 	SDL_BlitSurface(canvas(0).surf(), NULL, frame_buffer, &rect);
 }
 
 void tpanel::draw_foreground(surface& frame_buffer)
 {
    	canvas(1).draw();
-
-	SDL_Rect rect = ::create_rect(
-			get_screen_x(),
-			get_screen_y(),
-			get_width(),
-			get_height());
+	SDL_Rect rect = get_screen_rect();
 	SDL_BlitSurface(canvas(1).surf(), NULL, frame_buffer, &rect);
 }
 
