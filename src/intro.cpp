@@ -19,6 +19,7 @@
  */
 
 #include "global.hpp"
+#include "foreach.hpp"
 #include "intro.hpp"
 #include "variable.hpp"
 #include "display.hpp"
@@ -29,7 +30,24 @@
 #include "game_events.hpp"
 #include "language.hpp"
 
+#define ERR_NG LOG_STREAM(err , engine)
 #define LOG_NG LOG_STREAM(info, engine)
+
+namespace {
+	void scan_deprecation_messages(const config& cfg)
+	{
+		foreach(config const * const child, cfg.get_children("deprecated_message")) {
+			if(child == NULL) {
+				ERR_NG << "NULL config while searching deprecated_messages\n";
+				continue;
+			}
+			const std::string msg = (*child)["message"];
+			if(!msg.empty()) {
+				lg::wml_error << msg << '\n';
+			}
+		}
+	}
+} // end unnamed namespace
 
 static bool show_intro_part(display &disp, const vconfig& part,
 		const std::string& scenario);
@@ -37,6 +55,7 @@ static bool show_intro_part(display &disp, const vconfig& part,
 void show_intro(display &disp, const vconfig& data, const config& level)
 {
 	LOG_NG << "showing intro sequence...\n";
+	scan_deprecation_messages(data.get_parsed_config());
 
 	// Stop the screen being resized while we're in this function
 	const resize_lock stop_resizing;
@@ -84,6 +103,7 @@ bool show_intro_part(display &disp, const vconfig& part,
 		const std::string& scenario)
 {
 	LOG_NG << "showing intro part\n";
+	scan_deprecation_messages(part.get_parsed_config());
 
 	CVideo &video = disp.video();
 	const std::string music_file = part["music"];
