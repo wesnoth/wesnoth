@@ -224,6 +224,7 @@ void unit_attack(
 
 	unit_animator animator;
 	unit_ability_list leaders = attacker.get_abilities("leadership",a);
+	unit_ability_list helpers = defender.get_abilities("resistance",b);
 
 	{
 		std::string text ;
@@ -252,10 +253,20 @@ void unit_attack(
 		animator.add_animation(&defender,"defend",def->first,damage,true,false,text  ,display::rgb(255,0,0),hit_type,&attack,secondary_attack,swing);
 
 		for(std::vector<std::pair<config*,map_location> >::iterator itor = leaders.cfgs.begin(); itor != leaders.cfgs.end(); itor++) {
+			if(itor->second == a) continue;
+			if(itor->second == b) continue;
 			unit_map::iterator leader = units.find(itor->second);
 			assert(leader != units.end());
 			leader->second.set_facing(itor->second.get_relative_dir(a));
 			animator.add_animation(&leader->second,"leading",itor->second,damage,true,false,"",0,hit_type,&attack,secondary_attack,swing);
+		}
+		for(std::vector<std::pair<config*,map_location> >::iterator itor = helpers.cfgs.begin(); itor != helpers.cfgs.end(); itor++) {
+			if(itor->second == a) continue;
+			if(itor->second == b) continue;
+			unit_map::iterator helper = units.find(itor->second);
+			assert(helper != units.end());
+			helper->second.set_facing(itor->second.get_relative_dir(b));
+			animator.add_animation(&helper->second,"resistance",itor->second,damage,true,false,"",0,hit_type,&attack,secondary_attack,swing);
 		}
 
 	}
@@ -264,9 +275,18 @@ void unit_attack(
 	animator.wait_for_end();
 
 	for(std::vector<std::pair<config*,map_location> >::iterator itor = leaders.cfgs.begin(); itor != leaders.cfgs.end(); itor++) {
+		if(itor->second == a) continue;
+		if(itor->second == b) continue;
 		unit_map::iterator leader = units.find(itor->second);
 		assert(leader != units.end());
 		leader->second.set_standing(itor->second);
+	}
+	for(std::vector<std::pair<config*,map_location> >::iterator itor = helpers.cfgs.begin(); itor != helpers.cfgs.end(); itor++) {
+		if(itor->second == a) continue;
+		if(itor->second == b) continue;
+		unit_map::iterator helper = units.find(itor->second);
+		assert(helper != units.end());
+		helper->second.set_standing(itor->second);
 	}
 	att->second.set_standing(a);
 	def->second.set_standing(b);

@@ -28,6 +28,7 @@ struct tag_name_manager {
 		names.push_back("healing_anim");
 		names.push_back("idle_anim");
 		names.push_back("leading_anim");
+		names.push_back("resistance_anim");
 		names.push_back("levelin_anim");
 		names.push_back("levelout_anim");
 		names.push_back("movement_anim");
@@ -433,6 +434,13 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 	}
 
 
+	expanded_cfg = unit_animation::prepare_animation(cfg,"resistance_anim");
+	const config::child_list& resistance_anims = expanded_cfg.get_children("resistance_anim");
+	for(anim_itor = resistance_anims.begin(); anim_itor != resistance_anims.end(); ++anim_itor) {
+		(**anim_itor)["apply_to"] ="resistance";
+		(**anim_itor)["layer"] =lexical_cast<std::string>(display::LAYER_UNIT_DEFAULT-display::LAYER_UNIT_FIRST);
+		animations.push_back(unit_animation(**anim_itor));
+	}
 	expanded_cfg = unit_animation::prepare_animation(cfg,"leading_anim");
 	const config::child_list& leading_anims = expanded_cfg.get_children("leading_anim");
 	for(anim_itor = leading_anims.begin(); anim_itor != leading_anims.end(); ++anim_itor) {
