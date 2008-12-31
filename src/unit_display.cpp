@@ -223,8 +223,7 @@ void unit_attack(
 
 
 	unit_animator animator;
-	const map_location leader_loc = under_leadership(units,a);
-	unit_map::iterator leader = units.end();
+	unit_ability_list leaders = attacker.get_abilities("leadership",a);
 
 	{
 		std::string text ;
@@ -252,18 +251,23 @@ void unit_attack(
 		animator.add_animation(&attacker,"attack",att->first,damage,true,false,text_2,display::rgb(0,255,0),hit_type,&attack,secondary_attack,swing);
 		animator.add_animation(&defender,"defend",def->first,damage,true,false,text  ,display::rgb(255,0,0),hit_type,&attack,secondary_attack,swing);
 
-		if(leader_loc.valid() && leader_loc != att->first && leader_loc != def->first){
-			leader = units.find(leader_loc);
-			leader->second.set_facing(leader_loc.get_relative_dir(a));
+		for(std::vector<std::pair<config*,map_location> >::iterator itor = leaders.cfgs.begin(); itor != leaders.cfgs.end(); itor++) {
+			unit_map::iterator leader = units.find(itor->second);
 			assert(leader != units.end());
-			animator.add_animation(&leader->second,"leading",leader_loc,damage,true,false,"",0,hit_type,&attack,secondary_attack,swing);
+			leader->second.set_facing(itor->second.get_relative_dir(a));
+			animator.add_animation(&leader->second,"leading",itor->second,damage,true,false,"",0,hit_type,&attack,secondary_attack,swing);
 		}
+
 	}
 
 	animator.start_animations();
 	animator.wait_for_end();
 
-	if(leader_loc.valid() && leader_loc != att->first && leader_loc != def->first) leader->second.set_standing(leader_loc);
+	for(std::vector<std::pair<config*,map_location> >::iterator itor = leaders.cfgs.begin(); itor != leaders.cfgs.end(); itor++) {
+		unit_map::iterator leader = units.find(itor->second);
+		assert(leader != units.end());
+		leader->second.set_standing(itor->second);
+	}
 	att->second.set_standing(a);
 	def->second.set_standing(b);
 }

@@ -243,9 +243,8 @@ map_location under_leadership(const unit_map& units,
 		return map_location::null_location;
 	}
 	unit_ability_list abil = un->second.get_abilities("leadership",loc);
-	int best_bonus = abil.highest("value").first;
 	if(bonus) {
-		*bonus = best_bonus;
+		*bonus = abil.highest("value").first;
 	}
 	return abil.highest("value").second;
 }
