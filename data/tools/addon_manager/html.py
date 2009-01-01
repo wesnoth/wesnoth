@@ -113,7 +113,7 @@ Select the add-on you want to install from the list and click "OK". The download
 </div>
 <div id="footer">
 <p><a href="http://www.wesnoth.org/wiki/Site_Map">Site map</a></p>
-<p><a href="http://www.wesnoth.org/wiki/Wesnoth:Copyrights">Copyright</a> &copy; 2003-2008 The Battle for Wesnoth</p>
+<p><a href="http://www.wesnoth.org/wiki/Wesnoth:Copyrights">Copyright</a> &copy; 2003-2009 The Battle for Wesnoth</p>
 <p>Supported by <a href="http://www.jexiste.fr/">Jexiste</a></p>
 </div>
 </body></html>""")

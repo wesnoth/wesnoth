@@ -2,7 +2,7 @@
 
 #  expand-terrain-macros.py - Expand "meta-macros" for terrain WML
 #
-#  Copyright (C) 2008 by Moritz Goebelbecker
+#  Copyright (C) 2008 - 2009 by Moritz Goebelbecker
 #  Part of the Battle for Wesnoth Project http://www.wesnoth.org
 #
 #  This program is free software; you can redistribute it and/or modify

@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 #
 # A Reader/Writer lock implementation
-# Copyright Greg Copeland, 2008
+# Copyright Greg Copeland, 2008 - 2009
 # Released under GPL license for Wesnoth. See Wesnoth's
 # licensing terms for this's module's license.
 #

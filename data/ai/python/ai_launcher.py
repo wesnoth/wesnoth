@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# Copyright Greg Copeland, 2008
+# Copyright Greg Copeland, 2008 - 2009
 # Released under GPL license for Wesnoth. See Wesnoth's
 # licensing terms for this module's specific license.
 #
