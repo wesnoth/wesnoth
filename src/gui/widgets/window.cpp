@@ -302,7 +302,7 @@ void twindow::draw()
 
 		assert(!item.empty());
 
-		const SDL_Rect dirty_rect = item.back()->get_screen_rect();
+		const SDL_Rect dirty_rect = item.back()->get_dirty_rect();
 
 // For testing we disable the clipping rect and force the entire screen to
 // update. This way an item rendered at the wrong place is directly visible.

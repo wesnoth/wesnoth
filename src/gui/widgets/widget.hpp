@@ -505,6 +505,16 @@ public:
 		{ return create_rect(get_origin(), get_size()); }
 
 	/**
+	 * Gets the dirty rect of the widget.
+	 *
+	 * Depending on the drawing action it returns the rect this widget dirties
+	 * while redrawing.
+	 *
+	 * @returns                   The dirty rect.
+	 */
+	SDL_Rect get_dirty_rect() const;
+
+	/**
 	 * Sets the origin of the widget.
 	 *
 	 * The origin is stored in screen_x_ and screen_y_. This function can be
@@ -566,8 +576,7 @@ public:
 	 *
 	 * @param frame_buffer        The surface to draw upon.
 	 */
-	void draw_background(surface& frame_buffer)
-		{ impl_draw_background(frame_buffer); }
+	void draw_background(surface& frame_buffer);
 
 	/**
 	 * Draws the children of a widget.
@@ -579,8 +588,7 @@ public:
 	 *
 	 * @param frame_buffer        The surface to draw upon.
 	 */
-	void draw_children(surface& frame_buffer)
-		{ impl_draw_children(frame_buffer); }
+	void draw_children(surface& frame_buffer);
 
 	/**
 	 * Draws the foreground of the widgt.
@@ -593,8 +601,7 @@ public:
 	 *
 	 * @param frame_buffer        The surface to draw upon.
 	 */
-	void draw_foreground(surface& frame_buffer) 
-		{ impl_draw_foreground(frame_buffer); }
+	void draw_foreground(surface& frame_buffer);
 
 	/**
 	 * Adds a widget to the dirty list if it is dirty.
