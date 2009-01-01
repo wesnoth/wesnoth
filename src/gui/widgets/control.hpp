@@ -163,9 +163,6 @@ public:
 	void load_config();
 
 	/** Inherited from twidget. */
-	void draw_background(surface& frame_buffer);
-
-	/** Inherited from twidget. */
 	twidget* find_widget(const tpoint& coordinate, const bool must_be_active)
 	{
 		return (twidget::find_widget(coordinate, must_be_active)
@@ -348,7 +345,13 @@ protected:
 	 */
 	virtual const std::string& get_control_type() const = 0;
 
+	/** Inherited from twidget. */
+	void impl_draw_background(surface& frame_buffer);
+
+	/** Inherited from twidget. */
+	void impl_draw_foreground(surface& /*frame_buffer*/) { /* do nothing */ }
 private:
+
 	/**
 	 * Gets the best size for a text.
 	 *

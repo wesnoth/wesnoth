@@ -558,17 +558,29 @@ public:
 	/** Returns the dirty state for a widget, final function. */
 	bool get_dirty() const { return dirty_; }
 
-	/** Draws the background of a widget. */
-	virtual void draw_background(surface& /*frame_buffer*/) {}
+	/** 
+	 * Draws the background of a widget.
+	 *
+	 * Subclasses should override impl_draw_background instead of changing
+	 * this function.
+	 *
+	 * @param frame_buffer        The surface to draw upon.
+	 */
+	void draw_background(surface& frame_buffer)
+		{ impl_draw_background(frame_buffer); }
 
 	/**
 	 * Draws the children of a widget.
 	 *
 	 * Containers should draw their children when they get this request.
 	 *
+	 * Subclasses should override impl_draw_children instead of changing
+	 * this function.
+	 *
 	 * @param frame_buffer        The surface to draw upon.
 	 */
-	virtual void draw_children(surface& /*frame_buffer*/) {}
+	void draw_children(surface& frame_buffer)
+		{ impl_draw_children(frame_buffer); }
 
 	/**
 	 * Draws the foreground of the widgt.
@@ -576,9 +588,13 @@ public:
 	 * Some widgets eg panel and window have a back and foreground layer this
 	 * function requests the drawing of the foreground.
 	 *
+	 * Subclasses should override impl_draw_foreground instead of changing
+	 * this function.
+	 *
 	 * @param frame_buffer        The surface to draw upon.
 	 */
-	virtual void draw_foreground(surface& /*frame_buffer*/) {}
+	void draw_foreground(surface& frame_buffer) 
+		{ impl_draw_foreground(frame_buffer); }
 
 	/**
 	 * Adds a widget to the dirty list if it is dirty.
@@ -690,6 +706,15 @@ private:
 	 */
 	mutable tpoint last_best_size_;
 #endif
+
+	/** See draw_background(). */
+	virtual void impl_draw_background(surface& /*frame_buffer*/) {}
+
+	/** See draw_children. */
+	virtual void impl_draw_children(surface& /*frame_buffer*/) {}
+
+	/** See draw_foreground. */
+	virtual void impl_draw_foreground(surface& /*frame_buffer*/) {}
 };
 
 /**

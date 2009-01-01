@@ -559,7 +559,7 @@ public:
 	}
 
 	/** Inherited from tgenerator_. */
-	void draw_children(surface& frame_buffer)
+	void impl_draw_children(surface& frame_buffer)
 	{
 		foreach(titem* item, items_) {
 			item->grid.draw_children(frame_buffer);

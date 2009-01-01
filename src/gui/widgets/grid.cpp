@@ -642,28 +642,6 @@ void tgrid::set_visible_area(const SDL_Rect& area)
 	}
 }
 
-void tgrid::draw_children(surface& frame_buffer)
-{
-	foreach(tchild& child, children_) {
-
-		twidget* widget = child.widget();
-		assert(widget);
-
-		if(!widget->is_visible()) {
-			continue;
-		}
-
-		if(widget->get_drawing_action() == twidget::NOT_DRAWN) {
-			continue;
-		}
-
-		widget->draw_background(frame_buffer);
-		widget->draw_children(frame_buffer);
-		widget->draw_foreground(frame_buffer);
-		widget->set_dirty(false);
-	}
-}
-
 void tgrid::child_populate_dirty_list(twindow& caller,
 			const std::vector<twidget*>& call_stack)
 {
@@ -1098,6 +1076,28 @@ void tgrid::layout(const tpoint& origin)
 		}
 		orig.y += row_height_[row];
 		orig.x = origin.x;
+	}
+}
+
+void tgrid::impl_draw_children(surface& frame_buffer)
+{
+	foreach(tchild& child, children_) {
+
+		twidget* widget = child.widget();
+		assert(widget);
+
+		if(!widget->is_visible()) {
+			continue;
+		}
+
+		if(widget->get_drawing_action() == twidget::NOT_DRAWN) {
+			continue;
+		}
+
+		widget->draw_background(frame_buffer);
+		widget->draw_children(frame_buffer);
+		widget->draw_foreground(frame_buffer);
+		widget->set_dirty(false);
 	}
 }
 

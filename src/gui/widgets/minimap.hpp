@@ -55,9 +55,6 @@ public:
 	/** Inherited from tcontrol. */
 	bool does_block_easy_close() const { return false; }
 
-	/** Inherited from tcontrol. */
-	void draw_background(surface& frame_buffer);
-
 	/**
 	 * Inherited from tcontrol.
 	 *
@@ -106,6 +103,9 @@ private:
 
 	/** Draws the minimap itself. */
 	virtual void draw_map(surface& surface);
+
+	/** Inherited from tcontrol. */
+	void impl_draw_background(surface& frame_buffer);
 
 	/** Inherited from tcontrol. */
 	const std::string& get_control_type() const

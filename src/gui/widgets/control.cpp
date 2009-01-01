@@ -219,24 +219,6 @@ void tcontrol::load_config()
 	}
 }
 
-void tcontrol::draw_background(surface& frame_buffer)
-{
-#if 0
-	std::cerr << "tcontrol(" + get_control_type() + ") " + __func__ + ": "
-		<< " id " << id()
-		<< " dirty " << get_dirty()
-		<< " visible " << is_visible()
-		<< ".\n";
-#endif
-	if(!is_visible()) {
-		return;
-	}
-
-	canvas(get_state()).draw();
-	SDL_Rect rect = get_screen_rect();
-	SDL_BlitSurface(canvas(get_state()).surf(), NULL, frame_buffer, &rect);
-}
-
 void tcontrol::set_definition(const std::string& definition)
 {
 	assert(!config());
@@ -291,6 +273,24 @@ int tcontrol::get_text_maximum_height() const
 	assert(config_);
 
 	return get_height() - config_->text_extra_height;
+}
+
+void tcontrol::impl_draw_background(surface& frame_buffer)
+{
+#if 0
+	std::cerr << "tcontrol(" + get_control_type() + ") " + __func__ + ": "
+		<< " id " << id()
+		<< " dirty " << get_dirty()
+		<< " visible " << is_visible()
+		<< ".\n";
+#endif
+	if(!is_visible()) {
+		return;
+	}
+
+	canvas(get_state()).draw();
+	SDL_Rect rect = get_screen_rect();
+	SDL_BlitSurface(canvas(get_state()).surf(), NULL, frame_buffer, &rect);
 }
 
 tpoint tcontrol::get_best_text_size(const tpoint& minimum_size, const tpoint& maximum_size) const

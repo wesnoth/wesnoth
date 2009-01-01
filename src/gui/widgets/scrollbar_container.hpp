@@ -118,12 +118,6 @@ public:
 	unsigned get_state() const { return state_; }
 
 	/** Inherited from tcontainer_. */
-	void draw_background(surface& frame_buffer);
-
-	/** Inherited from tcontainer_. */
-	void draw_foreground(surface& frame_buffer);
-
-	/** Inherited from tcontainer_. */
 	twidget* find_widget(const tpoint& coordinate, const bool must_be_active);
 
 	/** Inherited from tcontainer_. */
@@ -245,6 +239,12 @@ private:
 	 * This function is called at the end of finalize_setup().
 	 */
 	virtual void finalize_subclass() {}
+
+	/** Inherited from tcontainer_. */
+	void impl_draw_background(surface& frame_buffer);
+
+	/** Inherited from tcontainer_. */
+	void impl_draw_foreground(surface& frame_buffer);
 
 	/** Sets the visible state of the vertical scrollbar. */
 	void show_vertical_scrollbar();

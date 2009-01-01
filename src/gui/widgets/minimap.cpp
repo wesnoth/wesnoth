@@ -24,11 +24,6 @@
 
 namespace gui2 {
 
-void tminimap::draw_background(surface& /*frame_buffer*/)
-{
-	assert(false); // FIXME implement.
-}
-
 void tminimap::set_borders(const unsigned left,
 		const unsigned right, const unsigned top, const unsigned bottom)
 {
@@ -38,6 +33,11 @@ void tminimap::set_borders(const unsigned left,
 	bottom_border_ = bottom;
 
 	set_dirty();
+}
+
+void tminimap::impl_draw_background(surface& /*frame_buffer*/)
+{
+	assert(false); // FIXME implement.
 }
 
 void tminimap::draw_map(surface& surface)

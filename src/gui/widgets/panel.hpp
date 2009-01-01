@@ -56,13 +56,13 @@ public:
 	/** Inherited from tcontrol. */
 	unsigned get_state() const { return 0; }
 
-	/** Inherited from tcontrol. */
-	void draw_background(surface& frame_buffer);
-
-	/** Inherited from tcontrol. */
-	void draw_foreground(surface& frame_buffer);
-
 private:
+
+	/** Inherited from tcontrol. */
+	void impl_draw_background(surface& frame_buffer);
+
+	/** Inherited from tcontrol. */
+	void impl_draw_foreground(surface& frame_buffer);
 
 	/** Inherited from tcontrol. */
 	const std::string& get_control_type() const

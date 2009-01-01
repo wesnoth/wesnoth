@@ -62,13 +62,6 @@ public:
 	/** Inherited from tcontrol. */
 	bool does_block_easy_close() const { return false; }
 
-	/**
-	 * Inherited from tcontrol.
-	 *
-	 * Since we're always empty the draw does nothing.
-	 */
-	 void draw_background(surface& /*frame_buffer*/) {}
-
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
 	void set_best_size(const tpoint& best_size) { best_size_ = best_size; }
@@ -77,6 +70,13 @@ private:
 
 	/** When we're used as a fixed size item, this holds the best size. */
 	tpoint best_size_;
+
+	/**
+	 * Inherited from tcontrol.
+	 *
+	 * Since we're always empty the draw does nothing.
+	 */
+	void impl_draw_background(surface& /*frame_buffer*/) {}
 
 	/** Inherited from tcontrol. */
 	const std::string& get_control_type() const

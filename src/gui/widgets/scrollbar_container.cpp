@@ -296,56 +296,6 @@ void tscrollbar_container::set_visible_area(const SDL_Rect& area)
 	content_grid_->set_visible_area(content_visible_area_);
 }
 
-void tscrollbar_container::draw_background(surface& frame_buffer)
-{
-	// Inherited.
-	tcontainer_::draw_background(frame_buffer);
-
-	/***** **** Draw content ***** *****/
-	assert(content_ && content_grid_);
-
-	// Update the location depending on the scrollbars.
- 	if(vertical_scrollbar_mode_ != HIDE
-			|| horizontal_scrollbar_mode_ != HIDE) {
-
-		assert(vertical_scrollbar_ && horizontal_scrollbar_);
-		const int x_offset = horizontal_scrollbar_mode_ == HIDE
-				? 0
-				: horizontal_scrollbar_->get_item_position() *
-				  horizontal_scrollbar_->get_step_size();
-
-		const int y_offset = vertical_scrollbar_mode_ == HIDE
-				? 0
-				: vertical_scrollbar_->get_item_position() *
-				  vertical_scrollbar_->get_step_size();
-
-
-		const tpoint content_size = content_grid_->get_best_size();
-
-		const tpoint content_origin = tpoint(
-				content_->get_screen_x() - x_offset,
-				content_->get_screen_y() - y_offset);
-
-		content_grid_->set_origin(content_origin);
-		content_grid_->set_visible_area(content_visible_area_);
-	}
-
-	// Make sure the content can't draw outside its canvas.
-	clip_rect_setter clip_rect(frame_buffer, get_screen_rect());
-
-	// Draw.
-	content_grid_->draw_children(frame_buffer);
-}
-
-void tscrollbar_container::draw_foreground(surface& frame_buffer)
-{
-	// Make sure the content can't draw outside its canvas.
-	clip_rect_setter clip_rect(frame_buffer, get_screen_rect());
-
-	// Inherited.
-	tcontainer_::draw_foreground(frame_buffer);
-}
-
 twidget* tscrollbar_container::find_widget(
 		const tpoint& coordinate, const bool must_be_active)
 {
@@ -508,6 +458,56 @@ void tscrollbar_container::
 		horizontal_scrollbar_mode_ = scrollbar_mode;
 		show_horizontal_scrollbar();
 	}
+}
+
+void tscrollbar_container::impl_draw_background(surface& frame_buffer)
+{
+	// Inherited.
+	tcontainer_::impl_draw_background(frame_buffer);
+
+	/***** **** Draw content ***** *****/
+	assert(content_ && content_grid_);
+
+	// Update the location depending on the scrollbars.
+ 	if(vertical_scrollbar_mode_ != HIDE
+			|| horizontal_scrollbar_mode_ != HIDE) {
+
+		assert(vertical_scrollbar_ && horizontal_scrollbar_);
+		const int x_offset = horizontal_scrollbar_mode_ == HIDE
+				? 0
+				: horizontal_scrollbar_->get_item_position() *
+				  horizontal_scrollbar_->get_step_size();
+
+		const int y_offset = vertical_scrollbar_mode_ == HIDE
+				? 0
+				: vertical_scrollbar_->get_item_position() *
+				  vertical_scrollbar_->get_step_size();
+
+
+		const tpoint content_size = content_grid_->get_best_size();
+
+		const tpoint content_origin = tpoint(
+				content_->get_screen_x() - x_offset,
+				content_->get_screen_y() - y_offset);
+
+		content_grid_->set_origin(content_origin);
+		content_grid_->set_visible_area(content_visible_area_);
+	}
+
+	// Make sure the content can't draw outside its canvas.
+	clip_rect_setter clip_rect(frame_buffer, get_screen_rect());
+
+	// Draw.
+	content_grid_->draw_children(frame_buffer);
+}
+
+void tscrollbar_container::impl_draw_foreground(surface& frame_buffer)
+{
+	// Make sure the content can't draw outside its canvas.
+	clip_rect_setter clip_rect(frame_buffer, get_screen_rect());
+
+	// Inherited.
+	tcontainer_::impl_draw_foreground(frame_buffer);
 }
 
 void tscrollbar_container::show_vertical_scrollbar()

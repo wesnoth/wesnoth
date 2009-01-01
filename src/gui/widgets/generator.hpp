@@ -214,7 +214,7 @@ public:
 	void set_visible_area(const SDL_Rect& area) = 0;
 
 	/** Inherited from twidget. */
-	virtual void draw_children(surface& frame_buffer) = 0;
+	virtual void impl_draw_children(surface& frame_buffer) = 0;
 
 	/** Inherited from twidget. */
 	virtual void child_populate_dirty_list(twindow& caller,

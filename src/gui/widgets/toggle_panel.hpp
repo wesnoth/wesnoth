@@ -119,22 +119,6 @@ public:
 	/** Inherited from tpanel. */
 	unsigned get_state() const { return state_; }
 
-	/** Inherited from tpanel. */
-	void draw_background(surface& frame_buffer)
-	{
-		// We don't have a fore and background and need to draw depending on
-		// our state, like a control. So we use the controls drawing method.
-		tcontrol::draw_background(frame_buffer);
-	}
-
-	/** Inherited from tpanel. */
-	void draw_foreground(surface& frame_buffer)
-	{
-		// We don't have a fore and background and need to draw depending on
-		// our state, like a control. So we use the controls drawing method.
-		tcontrol::draw_foreground(frame_buffer);
-	}
-
 	/**
 	 * Inherited from tpanel.
 	 *
@@ -202,6 +186,23 @@ private:
 
  	/** See tselectable_::set_callback_state_change. */
 	void (*callback_state_change_) (twidget*);
+
+	/** Inherited from tpanel. */
+	void impl_draw_background(surface& frame_buffer)
+	{
+		// We don't have a fore and background and need to draw depending on
+		// our state, like a control. So we use the controls drawing method.
+		tcontrol::impl_draw_background(frame_buffer);
+	}
+
+	/** Inherited from tpanel. */
+	void impl_draw_foreground(surface& frame_buffer)
+	{
+		// We don't have a fore and background and need to draw depending on
+		// our state, like a control. So we use the controls drawing method.
+		tcontrol::impl_draw_foreground(frame_buffer);
+	}
+
 
 	/** Inherited from tpanel. */
 	const std::string& get_control_type() const

@@ -215,9 +215,6 @@ public:
 	void set_origin(const tpoint& origin);
 
 	/** Inherited from twidget. */
-	void draw_children(surface& frame_buffer);
-
-	/** Inherited from twidget. */
 	void set_visible_area(const SDL_Rect& area);
 
 	/** Inherited from twidget. */
@@ -429,6 +426,9 @@ private:
 		std::vector<unsigned>& height, tpoint (tchild::*size_proc)() const,
 		tpoint (tchild::*size_proc_max)(const tpoint&) const = NULL,
 		const tpoint& maximum_size = tpoint(0, 0)) const;
+
+	/** Inherited from twidget. */
+	void impl_draw_children(surface& frame_buffer);
 
 	/**
 	 * Gets the best height for a row.
