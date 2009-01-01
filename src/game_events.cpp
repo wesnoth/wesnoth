@@ -3041,7 +3041,8 @@ namespace {
         }
         else
         {
-            new_handlers.push_back(game_events::event_handler(cfg));
+        	const config &normal = cfg.get_config();
+		    new_handlers.push_back(game_events::event_handler(vconfig(&normal, &normal)));
         }
 	}
 
