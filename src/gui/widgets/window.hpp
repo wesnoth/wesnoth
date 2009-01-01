@@ -381,7 +381,7 @@ private:
 		{ help_popup_.set_visible(twidget::HIDDEN); }
 
 	/** Inherited from tevent_handler. */
-	void easy_close();
+	bool easy_close();
 
 	/** Inherited from tcontrol. */
 	const std::string& get_control_type() const

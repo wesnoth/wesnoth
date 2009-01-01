@@ -395,6 +395,8 @@ void twindow::key_press(tevent_handler& /*event_handler*/, bool& handled,
 	} else if(key == SDLK_ESCAPE) {
 		set_retval(CANCEL);
 		handled = true;
+	} else if(key == SDLK_SPACE) {
+		handled = easy_close();
 	}
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 	if(key == SDLK_F12) {
@@ -652,11 +654,13 @@ void twindow::do_show_help_popup(const tpoint& location, const t_string& help_po
 	help_popup_.set_visible(twidget::VISIBLE);
 }
 
-void twindow::easy_close()
+bool twindow::easy_close()
 {
 	if(does_easy_close()) {
 		set_retval(OK);
+		return true;
 	}
+	return false;
 }
 
 void twindow::draw(surface& /*surf*/, const bool /*force*/,

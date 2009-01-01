@@ -350,8 +350,13 @@ private:
 	/** Function to do the real removal of the help popup. */
 	virtual void do_remove_help_popup() = 0;
 
-	/** Handler for the easy close functionallity. */
-	virtual void easy_close() = 0;
+	/**
+	 * Handler for the easy close functionallity.
+	 *
+	 * @returns                   True if the easyclose action is performed,
+	 *                            false otherwise.
+	 */
+	virtual bool easy_close() = 0;
 };
 
 } // namespace gui2
