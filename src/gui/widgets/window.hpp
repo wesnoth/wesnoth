@@ -291,16 +291,13 @@ private:
 	/** The dialog that owns the window. */
 	tdialog* owner_;
 
-	/** When set the form needs a full layout redraw cycle. */
-	bool need_layout_;
-
 	/**
-	 * When set the window is resized.
+	 * When set the form needs a full layout redraw cycle.
 	 *
-	 * This invalidates the layout background etc. So everything should be
-	 * recalcalated.
+	 * This happens when either a widget changes it's size or visibility or
+	 * the window is resized.
 	 */
-	bool resized_;
+	bool need_layout_;
 
 	/** Avoid drawing the window.  */
 	bool suspend_drawing_;

@@ -99,7 +99,6 @@ twindow::twindow(CVideo& video,
 	, retval_(0)
 	, owner_(0)
 	, need_layout_(true)
-	, resized_(true)
 	, suspend_drawing_(true)
 	, top_level_(false)
 	, restorer_()
@@ -220,6 +219,12 @@ int twindow::show(const bool restore, void* /*flip_function*/)
 		update_screen_size();
 	}
 
+	/*
+	 * Before show has been called, some functions might have done some testing
+	 * on the window and called layout, which can give glitches. So
+	 * reinvalidate the window to avoid those glitches.
+	 */
+	invalidate_layout();
 	suspend_drawing_ = false;
 
 	// Start our loop drawing will happen here as well.
@@ -256,7 +261,7 @@ void twindow::draw()
 	surface frame_buffer = video_.getSurface();
 
 	/***** ***** Layout and get dirty list ***** *****/
-	if(resized_ || need_layout_) {
+	if(need_layout_) {
 		// Restore old surface. In the future this phase will not be needed
 		// since all will be redrawn when needed with dirty rects. Since that
 		// doesn't work yet we need to undraw the window.
@@ -276,7 +281,6 @@ void twindow::draw()
 		// as restore point.
 		font::draw_floating_labels(frame_buffer);
 		restorer_ = get_surface_portion(frame_buffer, rect);
-		resized_ = false;
 
 		// Need full redraw so only set ourselves dirty.
 		dirty_list_.push_back(std::vector<twidget*>(1, this));
@@ -379,7 +383,7 @@ void twindow::window_resize(tevent_handler&,
 {
 	settings::screen_width = new_width;
 	settings::screen_height = new_height;
-	resized_ = true;
+	invalidate_layout();
 }
 
 void twindow::key_press(tevent_handler& /*event_handler*/, bool& handled,
