@@ -1103,7 +1103,7 @@ void unit_type::add_advancement(const unit_type &to_unit,int xp)
 		           << " to " << to_id << " already known, ignoring.\n";
 		return;
 	}
-	
+
 	if(xp>0 && experience_needed_>xp) experience_needed_=xp;
 
 	// Add advancements to gendered subtypes, if supported by to_unit

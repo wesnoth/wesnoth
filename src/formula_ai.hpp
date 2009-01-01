@@ -40,7 +40,7 @@ public:
 		enemy_unit_()
 	{};
 
-	void evaluate_move(const formula_ai* ai, unit_map& units, size_t team_num); 
+	void evaluate_move(const formula_ai* ai, unit_map& units, size_t team_num);
 
 	int get_score() const {return score_;}
 	std::string get_type() const {return type_;}
@@ -50,7 +50,7 @@ public:
 
 	struct move_compare {
 		bool operator() (const boost::shared_ptr<candidate_move> lmove,
-				const boost::shared_ptr<candidate_move> rmove) const 
+				const boost::shared_ptr<candidate_move> rmove) const
 		{
 			return lmove->get_score() < rmove->get_score();
 		}
@@ -68,36 +68,36 @@ private:
 };
 
 
-typedef boost::shared_ptr<candidate_move> candidate_move_ptr; 	
+typedef boost::shared_ptr<candidate_move> candidate_move_ptr;
 typedef std::set<game_logic::candidate_move_ptr, game_logic::candidate_move::move_compare> candidate_move_set;
 
 class ai_function_symbol_table : public function_symbol_table {
 
 public:
-	explicit ai_function_symbol_table(formula_ai& ai) : 
+	explicit ai_function_symbol_table(formula_ai& ai) :
 		ai_(ai),
 		move_functions(),
 		candidate_moves()
 	{}
 
 	void register_candidate_move(const std::string name, const std::string type,
-			const_formula_ptr formula, const_formula_ptr eval, 
+			const_formula_ptr formula, const_formula_ptr eval,
 			const_formula_ptr precondition, const std::vector<std::string>& args);
 
 	std::vector<candidate_move_ptr>::iterator candidate_move_begin() {
-		return candidate_moves.begin(); 
-	}	
+		return candidate_moves.begin();
+	}
 
 	std::vector<candidate_move_ptr>::iterator candidate_move_end() {
-		return candidate_moves.end(); 
-	}	
+		return candidate_moves.end();
+	}
 
 private:
 	formula_ai& ai_;
 	std::set<std::string> move_functions;
 	std::vector<candidate_move_ptr> candidate_moves;
 	expression_ptr create_function(const std::string& fn,
-	                               const std::vector<expression_ptr>& args) const; 
+	                               const std::vector<expression_ptr>& args) const;
 };
 
 }
@@ -118,7 +118,7 @@ public:
 	std::string evaluate(const std::string& formula_str);
 
 	struct move_map_backup {
-		move_map_backup() : 
+		move_map_backup() :
 			move_maps_valid(false),
 			srcdst(),
 			dstsrc(),
@@ -144,7 +144,7 @@ public:
 
 	const variant& get_keeps_cache() const { return keeps_cache_; }
 
-	// Check if given unit loc can reach attack range of enemy loc 
+	// Check if given unit loc can reach attack range of enemy loc
 	bool can_attack (const map_location, const map_location) const;
 
 	const std::map<location,paths>& get_possible_moves() const { prepare_move(); return possible_moves_; }

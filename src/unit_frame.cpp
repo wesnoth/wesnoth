@@ -374,7 +374,7 @@ void unit_frame::redraw(const int frame_time,bool first_time,const map_location 
 	image::locator image_loc;
 	if(direction != map_location::NORTH && direction != map_location::SOUTH) {
 		image_loc = image::locator(current_data.image_diagonal,current_data.image_mod);
-	} 
+	}
 	if(image_loc.is_void() || image_loc.get_filename() == "") { // invalid diag image, or not diagonal
 		image_loc = image::locator(current_data.image,current_data.image_mod);
 	}
@@ -453,7 +453,7 @@ bool unit_frame::invalidate(const bool force,const int frame_time,const map_loca
 	image::locator image_loc;
 	if(direction != map_location::NORTH && direction != map_location::SOUTH) {
 		image_loc = current_data.image_diagonal;
-	} 
+	}
 	if(image_loc.is_void() || image_loc.get_filename() == "") { // invalid diag image, or not diagonal
 		image_loc = current_data.image;
 	}
@@ -492,14 +492,14 @@ bool unit_frame::invalidate(const bool force,const int frame_time,const map_loca
 
 const frame_parameters unit_frame::merge_parameters(int current_time,const frame_parameters & animation_val,const frame_parameters & engine_val, bool primary) const
 {
-	/** 
+	/**
 	 * this function merges the value provided by
 	 *  * the frame
 	 *  * the engine (poison, flying unit...)
 	 *  * the animation as a whole
 	 *  there is no absolute rule for merging, so creativity is the rule
 	 *  if a value is never provided by the engine, assert. (this way if it becomes used, people will easily find the right place to look)
-	 *  
+	 *
 	 */
 	frame_parameters result;
 	const frame_parameters & current_val = builder_.parameters(current_time);
@@ -566,7 +566,7 @@ const frame_parameters unit_frame::merge_parameters(int current_time,const frame
 	result.x = current_val.x?current_val.x:animation_val.x;
 
 	/** the engine provide y modification for terrain with height adjust and flying units */
-	result.y = current_val.y?current_val.y:animation_val.y; 
+	result.y = current_val.y?current_val.y:animation_val.y;
 	result.y += engine_val.y;
 
 	assert(engine_val.drawing_layer == 0);

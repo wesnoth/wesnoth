@@ -19,21 +19,21 @@ class config;
 class CVideo;
 
 namespace editor2 {
-	
+
 enum EXIT_STATUS {
 	EXIT_NORMAL,
 	EXIT_QUIT_TO_DESKTOP,
 	EXIT_ERROR
 };
 
-/** 
+/**
  * Main interface for launching the editor from the title screen.
- * @returns How the editor was exited (whether the intent was to 
+ * @returns How the editor was exited (whether the intent was to
  *          go back to the titlescreen or quit to desktop altogeter)
  */
 
 EXIT_STATUS start(config& game_config, CVideo& video, const std::string& filename = "");
-	
+
 } //end namespace editor2
 
 #endif

@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-/** @file multiplayer_lobby.cpp 
+/** @file multiplayer_lobby.cpp
  * A section on the server where players can chat, create and join games.
  */
 
@@ -43,20 +43,20 @@ gamebrowser::gamebrowser(CVideo& video, const config* map_hashes) :
 	vision_icon_locator_("misc/invisible.png"),
 	time_limit_icon_locator_("themes/sand-clock.png"),
 	observer_icon_locator_(game_config::observer_image),
-	no_observer_icon_locator_("misc/no_observer.png"), 
+	no_observer_icon_locator_("misc/no_observer.png"),
 	map_hashes_(map_hashes),
-	item_height_(100), 
-	margin_(5), 
-	minimap_size_(item_height_ - 2*margin_),  
+	item_height_(100),
+	margin_(5),
+	minimap_size_(item_height_ - 2*margin_),
 	h_padding_(5),
-	header_height_(20), 
-	selected_(0), 
+	header_height_(20),
+	selected_(0),
 	visible_range_(std::pair<size_t,size_t>(0,0)),
 	games_(),
 	redraw_items_(),
 	widths_(),
-	double_clicked_(false), 
-	ignore_next_doubleclick_(false), 
+	double_clicked_(false),
+	ignore_next_doubleclick_(false),
 	last_was_doubleclick_(false)
 {
 	set_numeric_keypress_selection(false);
@@ -147,7 +147,7 @@ void gamebrowser::draw_row(const size_t index, const SDL_Rect& item_rect, ROW_TY
 	if(!game.have_era) {
 		no_era_string = _(" (Unknown Era)");
 	}
-        
+
 	const surface status_text(font::get_rendered_text(game.status,
 	    font::SIZE_NORMAL, font_color));
 	const int status_text_width = status_text ? status_text->w : 0;
@@ -187,7 +187,7 @@ void gamebrowser::draw_row(const size_t index, const SDL_Rect& item_rect, ROW_TY
 	if(observer_icon) {
 		video().blit_surface(xpos, ypos - observer_icon->h, observer_icon);
 
-		// Set ypos to the middle of the line, so that 
+		// Set ypos to the middle of the line, so that
 		// all text and icons can be aligned symmetrical to it
 		ypos -= observer_icon->h/2;
 		xpos += observer_icon->w + 2 * h_padding_;
@@ -448,7 +448,7 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 				}
 				if (!found) {
 					// Parsing the map and generating the minimap are both cpu expensive
-					gamemap map(game_config, games_.back().map_data); 
+					gamemap map(game_config, games_.back().map_data);
 					games_.back().mini_map = image::getMinimap(minimap_size_, minimap_size_, map, 0);
 					games_.back().map_info_size = lexical_cast_default<std::string, int>(map.w(), "??")
 						+ std::string("x") + lexical_cast_default<std::string, int>(map.h(), "??");

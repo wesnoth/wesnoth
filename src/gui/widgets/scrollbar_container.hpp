@@ -223,7 +223,7 @@ private:
 	/** Dummy spacer to hold the contents location. */
 	tspacer *content_;
 
-	/** 
+	/**
 	 * Cache for the visible area for the content.
 	 *
 	 * The visible area for the content needs to be updated when scrolling.

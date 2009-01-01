@@ -65,8 +65,8 @@ class editor_action_extendable : public editor_action
 		{
 		}
 		/**
-		 * The crux of the extendable contract. This member function must be 
-		 * implemented so that the undo behaviour is consistent, exactly the 
+		 * The crux of the extendable contract. This member function must be
+		 * implemented so that the undo behaviour is consistent, exactly the
 		 * same as would be with separate undo actions for every part of
 		 * the drag.
 		 */
@@ -74,7 +74,7 @@ class editor_action_extendable : public editor_action
 };
 
 /**
- * Container action wrapping several actions into one. 
+ * Container action wrapping several actions into one.
  * The actions are performed in the order they are added,
  * i.e. in the usual iteration order through the container.
  */
@@ -88,7 +88,7 @@ class editor_action_chain : public editor_action
 			actions_()
 		{
 		}
-		
+
 		/**
 		 * Create an action chain from a deque of action pointers.
 		 * Note: the action chain assumes ownership of the pointers.
@@ -97,7 +97,7 @@ class editor_action_chain : public editor_action
 		: actions_(actions)
 		{
 		}
-		
+
 		/**
 		 * Create an action chain by wrapping around a single action pointer.
 		 * Note: the action chain assumes ownership of the pointer.
@@ -106,22 +106,22 @@ class editor_action_chain : public editor_action
 		: actions_(1, action)
 		{
 		}
-		
+
 		/**
 		 * The destructor deletes all the owned action pointers
 		 */
 		~editor_action_chain();
-		
+
 		/**
 		 * Go through the chain and add up all the action counts
 		 */
 		int action_count() const;
-		
+
 		/**
 		 * Add an action at the end of the chain
 		 */
 		void append_action(editor_action* a);
-		
+
 		/**
 		 * Add an action at the beginning of the chain
 		 */
@@ -133,13 +133,13 @@ class editor_action_chain : public editor_action
 		 * "empty" actions around.
 		 */
 		bool empty() const;
-		
+
 		/**
 		 * Remove the last added action and return it, transfering
 		 * ownership to the caller
 		 */
 		editor_action* pop_last_action();
-		
+
 		/**
 		 * Remove the first added action and return it, transfering
 		 * ownership to the caller
@@ -150,12 +150,12 @@ class editor_action_chain : public editor_action
 		 * Perform all the actions in order and create a undo action chain
 		 */
 		editor_action_chain* perform(map_context& m) const;
-		
+
 		/**
 		 * Perform all the actions in order
 		 */
 	    void perform_without_undo(map_context& m) const;
-		
+
     protected:
 		/**
 		 * The action pointers owned by this action chain
@@ -164,8 +164,8 @@ class editor_action_chain : public editor_action
 };
 
 
-/** 
- * Base class for actions which act on a specified location (and possibly on other locations 
+/**
+ * Base class for actions which act on a specified location (and possibly on other locations
  * that can be derived from the staring hex)
  */
 class editor_action_location : public editor_action
@@ -179,13 +179,13 @@ class editor_action_location : public editor_action
         map_location loc_;
 };
 
-/** Base class for actions which in addition to acting on a hex, 
+/** Base class for actions which in addition to acting on a hex,
  * act with one terrain type, i.e. paint-related actions.
  */
 class editor_action_location_terrain : public editor_action_location
 {
     public:
-        editor_action_location_terrain(map_location loc, 
+        editor_action_location_terrain(map_location loc,
 			t_translation::t_terrain t)
         : editor_action_location(loc), t_(t)
         {
@@ -230,7 +230,7 @@ class editor_action_paste : public editor_action_extendable
 };
 
 /**
- * Draw -- replace a hex at a given location with a given terrain. Since this is 
+ * Draw -- replace a hex at a given location with a given terrain. Since this is
   * a lot simpler than a brush paint, it is separate at least for now
  * (it is somewhat redundant)
  */
@@ -241,7 +241,7 @@ class editor_action_paint_hex : public editor_action_location_terrain
         : editor_action_location_terrain(loc, t)
         {
         }
-        editor_action_paint_hex* perform(map_context& mc) const;            
+        editor_action_paint_hex* perform(map_context& mc) const;
         void perform_without_undo(map_context& mc) const;
 };
 
@@ -251,7 +251,7 @@ class editor_action_paint_hex : public editor_action_location_terrain
 class editor_action_paint_area : public editor_action_area
 {
     public:
-        editor_action_paint_area(const std::set<map_location>& area, 
+        editor_action_paint_area(const std::set<map_location>& area,
 			t_translation::t_terrain t, bool one_layer=false)
         : editor_action_area(area), t_(t), one_layer_(one_layer)
         {
@@ -269,7 +269,7 @@ class editor_action_paint_area : public editor_action_area
 class editor_action_fill : public editor_action_location_terrain
 {
     public:
-        editor_action_fill(map_location loc, 
+        editor_action_fill(map_location loc,
 			t_translation::t_terrain t, bool one_layer=false)
         : editor_action_location_terrain(loc, t), one_layer_(one_layer)
         {
@@ -431,7 +431,7 @@ class editor_action_create_mask : public editor_action
 class editor_action_plot_route : public editor_action_location_terrain
 {
 	public:
-		editor_action_plot_route(map_location l1, 
+		editor_action_plot_route(map_location l1,
 			t_translation::t_terrain t, map_location l2)
 		: editor_action_location_terrain(l1, t)
 		, loc2_(l2)

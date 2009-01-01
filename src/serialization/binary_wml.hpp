@@ -35,10 +35,10 @@ struct compression_schema
 	word_char_map word_to_char;
 };
 
-//  Read and write compressed data. 
+//  Read and write compressed data.
 
 /**
- * Write compressed data. 
+ * Write compressed data.
  *
  * The schema will be created and written with the data.  However if you are
  * making successive writes (e.g. a network connection), you can re-use the

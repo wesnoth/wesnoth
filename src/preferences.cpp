@@ -13,7 +13,7 @@
 */
 
 /**
- *  @file preferences.cpp 
+ *  @file preferences.cpp
  *  Get and set user-preferences.
  */
 
@@ -54,7 +54,7 @@ base_manager::base_manager()
 base_manager::~base_manager()
 {
 	if (no_preferences_save) return;
-	
+
 	// Set the 'hidden' preferences.
 	prefs["scroll_threshold"] =
 			lexical_cast<std::string>(mouse_scroll_threshold());
@@ -455,7 +455,7 @@ bool set_music(bool ison) {
 
 namespace {
 	double scroll = 0.2;
-	
+
 	void normalize_editor_rgb(int rval)
 	{
 		if (rval < -255) {

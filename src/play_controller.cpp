@@ -31,39 +31,39 @@
 
 #define LOG_NG LOG_STREAM(info, engine)
 
-play_controller::play_controller(const config& level, game_state& state_of_game, 
-		int ticks, int num_turns, const config& game_config, CVideo& video, 
+play_controller::play_controller(const config& level, game_state& state_of_game,
+		int ticks, int num_turns, const config& game_config, CVideo& video,
 		bool skip_replay) :
-	controller_base(ticks, game_config, video),	
-	verify_manager_(units_), 
-	team_manager_(teams_), 
+	controller_base(ticks, game_config, video),
+	verify_manager_(units_),
+	team_manager_(teams_),
 	prefs_disp_manager_(),
 	tooltips_manager_(),
 	events_manager_(),
 	halo_manager_(),
-	labels_manager_(), 
-	help_manager_(&game_config, &map_), 
-	mouse_handler_(NULL, teams_, units_, map_, status_, undo_stack_, redo_stack_), 
-	menu_handler_(NULL, units_, teams_, level, map_, game_config, status_, state_of_game, undo_stack_, redo_stack_), 
+	labels_manager_(),
+	help_manager_(&game_config, &map_),
+	mouse_handler_(NULL, teams_, units_, map_, status_, undo_stack_, redo_stack_),
+	menu_handler_(NULL, units_, teams_, level, map_, game_config, status_, state_of_game, undo_stack_, redo_stack_),
 	soundsources_manager_(),
 	gui_(),
-	statistics_context_(level["name"]), 
-	level_(level), 
+	statistics_context_(level["name"]),
+	level_(level),
 	teams_(),
-	gamestate_(state_of_game), 
-	status_(level, num_turns, &state_of_game), 
+	gamestate_(state_of_game),
+	status_(level, num_turns, &state_of_game),
 	map_(game_config, level["map_data"]),
 	units_(),
 	undo_stack_(),
 	redo_stack_(),
-	xp_mod_(atoi(level["experience_modifier"].c_str()) > 0 ? atoi(level["experience_modifier"].c_str()) : 100), 
-	loading_game_(level["playing_team"].empty() == false), 
-	first_human_team_(-1), 
-	player_number_(1), 
-	first_player_(lexical_cast_default<unsigned int, std::string>(level_["playing_team"], 0) + 1), 
-	start_turn_(status_.turn()), 
-	is_host_(true), 
-	skip_replay_(skip_replay), 
+	xp_mod_(atoi(level["experience_modifier"].c_str()) > 0 ? atoi(level["experience_modifier"].c_str()) : 100),
+	loading_game_(level["playing_team"].empty() == false),
+	first_human_team_(-1),
+	player_number_(1),
+	first_player_(lexical_cast_default<unsigned int, std::string>(level_["playing_team"], 0) + 1),
+	start_turn_(status_.turn()),
+	is_host_(true),
+	skip_replay_(skip_replay),
 	linger_(false),
 	first_turn_(true),
 	savenames_(),
@@ -117,7 +117,7 @@ void play_controller::init(CVideo& video){
 
 	LOG_NG << "initialized teams... "    << (SDL_GetTicks() - ticks_) << "\n";
 	loadscreen::global_loadscreen->set_progress(60, _("Initializing teams"));
-	
+
 
 	// This *needs* to be created before the show_intro and show_map_scene
 	// as that functions use the manager state_of_game
@@ -697,7 +697,7 @@ int play_controller::find_human_team_before(const size_t team_num) const
 }
 
 void play_controller::slice_before_scroll() {
-	soundsources_manager_->update();	
+	soundsources_manager_->update();
 }
 
 void play_controller::slice_end() {
@@ -705,7 +705,7 @@ void play_controller::slice_end() {
 		dialogs::show_objectives(*gui_, level_, current_team().objectives());
 		current_team().reset_objectives_changed();
 	}
-}	
+}
 
 events::mouse_handler& play_controller::get_mouse_handler_base() {
 	return mouse_handler_;
@@ -753,7 +753,7 @@ void play_controller::process_keyup_event(const SDL_Event& event) {
 	}
 }
 
-void play_controller::post_mouse_press(const SDL_Event& /*event*/) 
+void play_controller::post_mouse_press(const SDL_Event& /*event*/)
 {
 	if (mouse_handler_.get_undo()){
 		mouse_handler_.set_undo(false);

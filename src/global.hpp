@@ -26,6 +26,6 @@
 // Disable warning about deprecated functions.
 #pragma warning(disable: 4996)
 
-#endif 
+#endif
 
 #endif

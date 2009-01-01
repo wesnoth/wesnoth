@@ -45,9 +45,9 @@ public:
 			const gamemap& map, const gamestatus& status,
 			const std::vector<team>& t, const config& theme_cfg,
 			const config& cfg, const config& level);
-			
+
 	static game_display* create_dummy_display(CVideo& video);
-	
+
 	~game_display();
 	static game_display* get_singleton() { return singleton_ ;}
 
@@ -112,7 +112,7 @@ public:
 
 	/** Reset highlighting of paths. */
 	void unhighlight_reach();
-	
+
 	/**
 	 * Sets the route along which footsteps are drawn to show movement of a
 	 * unit. If NULL, no route is displayed. route does not have to remain
@@ -147,41 +147,41 @@ protected:
 	 * game_display pre_draw does specific things related e.g. to unit rendering
 	 */
 	void pre_draw();
-	
+
 	/**
 	 * This function runs through invalidated_ and returns a vector of tiles
 	 * containing units, sorted according to a custom ordering
 	 */
 	std::vector<map_location> get_invalidated_unit_locations();
-	
+
 	/**
 	 * Hex brightening for game - take units into account
 	 */
 	image::TYPE get_image_type(const map_location& loc);
-	
+
 	/**
 	 * Draws units on specified hexes
 	 */
 	void redraw_units(const std::vector<map_location>& invalidated_unit_locations);
-	
+
 	void draw_invalidated();
-	
+
 	void post_commit();
-	
+
 	void draw_hex(const map_location& loc);
-	
+
 	void update_time_of_day();
-	
+
 	/**
 	 * Animated hex invalidation specific to gameplay
 	 */
 	void invalidate_animations();
-	
+
 	/**
 	 * Extra game per-location invalidation (village ownership)
 	 */
 	void invalidate_animations_location(const map_location& loc);
-	
+
 	virtual void draw_minimap_units();
 
 public:
@@ -194,7 +194,7 @@ public:
 	void clear_attack_indicator();
 
 	/** Function to get attack direction suffix. */
-	std::string attack_indicator_direction() const { 
+	std::string attack_indicator_direction() const {
 		return map_location::write_direction(
 			attack_indicator_src_.get_relative_dir(attack_indicator_dst_));
 	}
@@ -205,7 +205,7 @@ public:
 	 * An overlay is an image that is displayed on top of the tile.
 	 * One tile may have multiple overlays.
 	 */
-	void add_overlay(const map_location& loc, const std::string& image, 
+	void add_overlay(const map_location& loc, const std::string& image,
 		const std::string& halo="", const std::string& team_name="",
 		const std::string& fogged="yes");
 
@@ -388,7 +388,7 @@ private:
 	std::vector<animated<image::locator> > flags_;
 
 	/**
-	 * the tiles invalidated at last redraw, 
+	 * the tiles invalidated at last redraw,
 	 * to simplify the cleaning up of tiles left by units
 	 */
 	std::set<map_location> previous_invalidated_;

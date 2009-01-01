@@ -180,7 +180,7 @@ editor_action_paste* editor_action_paint_area::perform(map_context& mc) const
 	std::auto_ptr<editor_action_paste> undo(new editor_action_paste(mf));
 	perform_without_undo(mc);
 	return undo.release();
-}	
+}
 void editor_action_paint_area::perform_without_undo(map_context& mc) const
 {
 	mc.draw_terrain(t_, area_, one_layer_);
@@ -300,8 +300,8 @@ editor_action_deselect* editor_action_select_all::perform(map_context& mc) const
 	mc.get_map().select_all();
 	std::set<map_location> all = mc.get_map().selection();
 	std::set<map_location> undo_locs;
-	std::set_difference(all.begin(), all.end(), 
-		current.begin(), current.end(), 
+	std::set_difference(all.begin(), all.end(),
+		current.begin(), current.end(),
 		std::inserter(undo_locs, undo_locs.begin()));
 	mc.set_everything_changed();
 	return new editor_action_deselect(undo_locs);

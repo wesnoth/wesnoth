@@ -27,13 +27,13 @@
 #include "formula_string_utils.hpp"
 
 
-void wml_exception(const char* cond, const char* file, 
+void wml_exception(const char* cond, const char* file,
 	const int line, const char* function, const t_string& message)
 {
 	std::stringstream sstr;
-	sstr << "Condition '" << cond << "' failed at " 
+	sstr << "Condition '" << cond << "' failed at "
 		<< file << ":" << line << " in function '" << function << "'.";
-	
+
 	throw twml_exception(message, sstr.str());
 }
 
@@ -50,7 +50,7 @@ void twml_exception::show(display &disp)
 	// The extra spaces between the \n are needed, otherwise the dialog doesn't show
 	// an empty line.
 	sstr << _("An error due to possible invalid WML occured\nThe error message is :")
-		<< "\n" << user_message << "\n \n" 
+		<< "\n" << user_message << "\n \n"
 		<< _("When reporting the bug please include the following error message :")
 		<< "\n" << dev_message;
 

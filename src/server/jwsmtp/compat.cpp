@@ -41,7 +41,7 @@ bool Socket(SOCKET& s, int /*domain*/, int type, int protocol) {
    return bool(s != INVALID_SOCKET);
 #else
    return bool(s != -1);
-#endif   
+#endif
 }
 
 bool Send(int &CharsSent, SOCKET s, const char *msg, size_t len, int flags) {
@@ -50,7 +50,7 @@ bool Send(int &CharsSent, SOCKET s, const char *msg, size_t len, int flags) {
 	return bool((CharsSent != SOCKET_ERROR));
 #else
 	return bool((CharsSent != -1));
-#endif   
+#endif
 }
 
 bool Recv(int &CharsRecv, SOCKET s, char *buf, size_t len, int flags) {
@@ -59,7 +59,7 @@ bool Recv(int &CharsRecv, SOCKET s, char *buf, size_t len, int flags) {
 	return bool((CharsRecv != SOCKET_ERROR));
 #else
 	return bool((CharsRecv != -1));
-#endif  
+#endif
 }
 
 // just wrap the call to shutdown the connection on a socket

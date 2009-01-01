@@ -20,7 +20,7 @@
 
 #define WRN_CF LOG_STREAM(warn, config)
 
-static tportrait::tside get_side(const std::string& side) 
+static tportrait::tside get_side(const std::string& side)
 {
 	if(side == "both") {
 		return  tportrait::BOTH;

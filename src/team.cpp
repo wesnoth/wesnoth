@@ -104,7 +104,7 @@ team::team_info::team_info(const config& cfg) :
 		villages_per_scout(),
 		leader_value(3.0),
 		village_value(4.5),
-		aggression_(0.5), 
+		aggression_(0.5),
 		caution_(0.25),
 		targets(),
 		share_maps(false),
@@ -276,10 +276,10 @@ team::team_info::team_info(const config& cfg) :
 	for(std::vector<std::string>::const_iterator i = recruits.begin(); i != recruits.end(); ++i) {
 		can_recruit.insert(*i);
 	}
-	
+
 	if(recruitment_pattern.empty()
 ) {
-		recruitment_pattern = 
+		recruitment_pattern =
 			utils::split(global_ai_params["recruitment_pattern"]);
 		LOG_NG << "Recruitment pattern: " << global_ai_params["recruitment_pattern"] << "\n";
 	} else {
@@ -422,13 +422,13 @@ void team::merge_shroud_map_data(const std::string& shroud_data)
 	shroud_.merge(shroud_data);
 }
 
-team::team(const config& cfg, const gamemap& map, int gold) : 
+team::team(const config& cfg, const gamemap& map, int gold) :
 		gold_(gold),
 		villages_(),
 		shroud_(),
 		fog_(),
-		auto_shroud_updates_(true), 
-		info_(cfg), 
+		auto_shroud_updates_(true),
+		info_(cfg),
 		countdown_time_(0),
 		action_bonus_count_(0),
 		aiparams_(),
@@ -889,7 +889,7 @@ std::string team::shroud_map::write() const
 }
 
 void team::shroud_map::read(const std::string& str)
-{ 
+{
 	data_.clear();
 	for(std::string::const_iterator sh = str.begin(); sh != str.end(); ++sh) {
 		if(*sh == '|')
@@ -905,7 +905,7 @@ void team::shroud_map::read(const std::string& str)
 }
 
 void team::shroud_map::merge(const std::string& str)
-{ 
+{
 	int x=0, y=0;
 	for(std::string::const_iterator sh = str.begin(); sh != str.end(); ++sh) {
 		if(*sh == '|' && sh != str.begin()) {

@@ -28,10 +28,10 @@
 class config;
 
 /**
- * Reads a file, and detects it is compressed before reading it. 
+ * Reads a file, and detects it is compressed before reading it.
  *
  * If it is not a valid file at all, it will throw an error as if it was trying
- * to read it as text WML. 
+ * to read it as text WML.
  *
  * @returns                       True iff the format is compressed.
  */

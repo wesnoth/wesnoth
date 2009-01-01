@@ -216,8 +216,8 @@ public:
 
 	enum RESULT { COMPLETED, ABORTED };
 
-	async_operation() : 
-		thread_(), aborted_(false), finished_(), finishedVar_(false), mutex_() 
+	async_operation() :
+		thread_(), aborted_(false), finished_(), finishedVar_(false), mutex_()
 	{
 		while (!active_.empty() && active_.front().unique())
 			active_.pop_front();

@@ -69,7 +69,7 @@ SDL_Rect get_rect_union(const SDL_Rect& rect1, const SDL_Rect& rect2);
 
 /**
  *  Creates an empty SDL_Rect.
- * 
+ *
  *  Since SDL_Rect doesn't have a constructor it's not possible to create it as
  *  a temporary for a function parameter. This functions overcomes this limit.
  */
@@ -140,18 +140,18 @@ surface create_optimized_surface(surface const &surf);
 
 /**
  *  Streches a surface in the horizontal direction.
- * 
+ *
  *  The stretches a surface it uses the first pixel in the horizontal
  *  direction of the original surface and copies that to the destination.
  *  This means only the first column of the original is used for the destination.
  *  @param surf              The source surface.
  *  @param w                 The width of the resulting surface.
  *  @param optimize          Should the return surface be RLE optimized.
- * 
+ *
  *  @return                  An optimized surface.
- *                           returned. 
+ *                           returned.
  *  @retval 0                Returned upon error.
- *  @retval surf             Returned if w == surf->w, note this ignores the 
+ *  @retval surf             Returned if w == surf->w, note this ignores the
  *                           optimize flag.
  */
 surface stretch_surface_horizontal(
@@ -159,18 +159,18 @@ surface stretch_surface_horizontal(
 
 /**
  *  Streches a surface in the vertical direction.
- * 
+ *
  *  The stretches a surface it uses the first pixel in the vertical
  *  direction of the original surface and copies that to the destination.
  *  This means only the first row of the original is used for the destination.
  *  @param surf              The source surface.
  *  @param h                 The height of the resulting surface.
  *  @param optimize          Should the return surface be RLE optimized.
- * 
+ *
  *  @return                  An optimized surface.
- *                           returned. 
+ *                           returned.
  *  @retval 0                Returned upon error.
- *  @retval surf             Returned if h == surf->h, note this ignores the 
+ *  @retval surf             Returned if h == surf->h, note this ignores the
  *                           optimize flag.
  */
 surface stretch_surface_vertical(
@@ -214,19 +214,19 @@ surface create_compatible_surface(surface const &surf, int width = -1, int heigh
 
 /*
  *  Replacement for SDL_BlitSurface.
- * 
+ *
  *  SDL_BlitSurface has problems with blitting partly transparent surfaces so
- *  this is a replacement. It ignores the SDL_SRCALPHA and SDL_SRCCOLORKEY 
+ *  this is a replacement. It ignores the SDL_SRCALPHA and SDL_SRCCOLORKEY
  *  flags. src and dst will have the SDL_RLEACCEL flag removed.
  *  The return value of SDL_BlistSurface is normally ignored so no return value.
  *  The rectangles are const and will not be modified.
- * 
+ *
  *  @param src          The surface to blit.
  *  @param srcrect      The region of the surface to blit
  *  @param dst          The surface to blit on.
  *  @param dstrect      The offset to blit the surface on, only x and y are used.
  */
-void blit_surface(const surface& src, 
+void blit_surface(const surface& src,
 	const SDL_Rect* srcrect, surface& dst, const SDL_Rect* dstrect);
 
 void fill_rect_alpha(SDL_Rect &rect, Uint32 colour, Uint8 alpha, surface const &target);
@@ -345,6 +345,6 @@ void draw_solid_tinted_rectangle(int x, int y, int w, int h,
 void draw_centered_on_background(surface surf, const SDL_Rect& rect,
 	const SDL_Color& color, surface target);
 
-std::ostream& operator<<(std::ostream& s, const SDL_Rect& rect); 
+std::ostream& operator<<(std::ostream& s, const SDL_Rect& rect);
 
 #endif

@@ -49,9 +49,9 @@ BOOST_AUTO_TEST_CASE( test_create_group )
 
 	BOOST_CHECK_EQUAL(group0.get_group_id(), 0);
 	BOOST_CHECK_EQUAL(group1->get_group_id(), 1);
-	
+
 	delete group1;
-	
+
 	gui::drop_group_manager_ptr group2(new gui::drop_group_manager());
 
 

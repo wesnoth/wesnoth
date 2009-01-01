@@ -38,15 +38,15 @@ namespace jwsmtp {
 mailer::mailer(const char* TOaddress, const char* FROMaddress,
                const char* Subject, const std::vector<char>& Message,
                const char* Nameserver, unsigned short Port,
-               bool MXLookup): 
-	type(LOGIN), 
+               bool MXLookup):
+	type(LOGIN),
 	recipients(),
 	fromAddress(),
-	subject(Subject), 
+	subject(Subject),
 	message(),
 	messageHTML(),
 	attachments(),
-	server(getserveraddress(TOaddress)), 
+	server(getserveraddress(TOaddress)),
 	nameserver(Nameserver),
 	port(htons(Port)), // make the 'port' network byte order.
 	lookupMXRecord(MXLookup),
@@ -66,18 +66,18 @@ mailer::mailer(const char* TOaddress, const char* FROMaddress,
 mailer::mailer(const char* TOaddress, const char* FROMaddress,
                const char* Subject, const char* Message,
                const char* Nameserver, unsigned short Port,
-               bool MXLookup): 
-	type(LOGIN), 
+               bool MXLookup):
+	type(LOGIN),
 	recipients(),
 	fromAddress(),
-	subject(Subject), 
+	subject(Subject),
 	message(),
 	messageHTML(),
 	attachments(),
-	server(getserveraddress(TOaddress)), 
-	nameserver(Nameserver), 
+	server(getserveraddress(TOaddress)),
+	nameserver(Nameserver),
 	port(htons(Port)), // make the 'port' network byte order.
-	lookupMXRecord(MXLookup), 
+	lookupMXRecord(MXLookup),
 	auth(false),
 	user(),
 	pass(),
@@ -112,7 +112,7 @@ mailer::mailer(bool MXLookup, unsigned short Port):
 }
 
 mailer::~mailer() { }
-   
+
 bool mailer::setmessage(const std::string& newmessage) {
    if(!newmessage.length())
       return false;
@@ -161,7 +161,7 @@ bool mailer::setmessageHTML(const std::vector<char>& newmessage) {
 bool mailer::setmessageHTMLfile(const std::string& filename) {
    if(!filename.length())
       return false;
-   
+
    std::ifstream file(filename.c_str(), std::ios::binary | std::ios::in);
    if(!file)
       return false;
@@ -216,7 +216,7 @@ void mailer::checkRFCcompat() {
       }
    }
    else {
-      if(*(message.begin()) == '.') {         
+      if(*(message.begin()) == '.') {
          it = message.begin();
          it = message.insert(it, '.');
       }
@@ -478,7 +478,7 @@ void mailer::operator()() {
          returnstring = "554 Transaction failed: EHLO receipt";
          continue;
       }
-      
+
       buff[len1] = '\0';
       std::string greeting = returnstring = buff;
       if(returnstring.substr(0,3) != OK) {
@@ -619,11 +619,11 @@ void mailer::operator()() {
       /*if(!Send(len1, s, smtpheader.c_str(), smtpheader.length(), 0)) {*/
       if(!Send(len1, s, &smtpheader[0], smtpheader.size(), 0)) {
          returnstring = "554 DATA, server response error (actual send)";
-         continue;   
+         continue;
       }
       if(!Recv(len1, s, buff, buffsize -1, 0)) {
          returnstring = "554 DATA, server response error (actual send)";
-         continue;   
+         continue;
       }
 
       // The server should give us a 250 reply if the mail was delivered okay
@@ -651,7 +651,7 @@ void mailer::operator()() {
 
       // for future reference the server is meant to give a 221 response to a quit.
       if(returnstring.substr(0,3) != "221") {
-         // maybe will use this later   
+         // maybe will use this later
       }
       Closesocket(s); // disconnect
 
@@ -770,13 +770,13 @@ std::vector<char> mailer::makesmtpmessage() const {
    // add the subject
    headerline = "Subject: " + subject + "\r\n\r\n";
    ret.insert(ret.end(), headerline.begin(), headerline.end());
-   
+
    ///////////////////////////////////////////////////////////////////////////
    //
    // everything else added is the body of the email message.
    //
    ///////////////////////////////////////////////////////////////////////////
-   
+
    if(MIME) {
       headerline = "This is a MIME encapsulated message\r\n\r\n";
       headerline += "--" + boundary + "\r\n";
@@ -793,10 +793,10 @@ std::vector<char> mailer::makesmtpmessage() const {
          const std::string innerboundary("inner_jfd_0078hj_0_8_part_tp");
          headerline += "Content-Type: multipart/alternative;\r\n"
                        "\tboundary=\"" + innerboundary + "\"\r\n";
-         
+
          // need the inner boundary starter.
          headerline += "\r\n\r\n--" + innerboundary + "\r\n";
-         
+
          // plain text message first.
          headerline += "Content-type: text/plain; charset=iso-8859-1\r\n"
                        "Content-transfer-encoding: 7BIT\r\n\r\n";
@@ -811,7 +811,7 @@ std::vector<char> mailer::makesmtpmessage() const {
          ret.insert(ret.end(), headerline.begin(), headerline.end());
          ret.insert(ret.end(), messageHTML.begin(), messageHTML.end());
          headerline = "\r\n\r\n--" + innerboundary + "--\r\n";
-         
+
          // end the boundaries if there are no attachments
          if(!attachments.size())
             headerline += "\r\n--" + boundary + "--\r\n";
@@ -821,7 +821,7 @@ std::vector<char> mailer::makesmtpmessage() const {
       }
       ret.insert(ret.end(), headerline.begin(), headerline.end());
       headerline.clear();
-      
+
       // now add each attachment.
       for(vec_pair_char_str_const_iter it1 = attachments.begin();
                                        it1 != attachments.end(); ++ it1) {
@@ -1248,7 +1248,7 @@ mailer::Address mailer::parseaddress(const std::string& addresstoparse) {
       (addresstoparse.find('>') == std::string::npos)) ||
       ((addresstoparse.find('>') != std::string::npos) &&
       (addresstoparse.find('<') == std::string::npos))) {
-      return newaddress; // its empty, oops (this should fail at the server.) 
+      return newaddress; // its empty, oops (this should fail at the server.)
    }
 
    // we have angle bracketed delimitered address
@@ -1264,7 +1264,7 @@ mailer::Address mailer::parseaddress(const std::string& addresstoparse) {
       newaddress.address = addresstoparse.substr(sta + 1, end - sta - 1);
 
       if(sta > 0) { // name at the beginning
-         // we are cutting off the last character if the bracket address 
+         // we are cutting off the last character if the bracket address
          // continues without a space into the bracketed address
          // e.g.  "hoopla girl<hoopla@wibble.com>"
          //       name becomes 'hoopla gir'
@@ -1282,7 +1282,7 @@ mailer::Address mailer::parseaddress(const std::string& addresstoparse) {
 
          end += 2;
          if(end >= addresstoparse.length())
-            return newaddress; 
+            return newaddress;
 
          newaddress.name = addresstoparse.substr(end, addresstoparse.length()- end);
          // remove whitespace from end if need be
@@ -1303,7 +1303,7 @@ void mailer::authtype(const enum authtype Type) {
    assert(Type == LOGIN || Type == PLAIN);
    type = Type;
 }
-   
+
 // set the username for authentication.
 // If this function is called with a non empty string
 // jwSMTP will try to use authentication.
@@ -1426,7 +1426,7 @@ bool mailer::authenticate(const std::string& servergreeting, const SOCKET& s) {
       enc.push_back('\0');
       for(pos = 0; pos < pass.length(); ++pos)
          enc.push_back(pass[pos]);
-      
+
       enc = base64encode(enc, false);
       greeting = "auth plain ";
       for(std::vector<char>::const_iterator it1 = enc.begin(); it1 < enc.end(); ++it1)

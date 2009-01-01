@@ -2170,8 +2170,8 @@ int python_ai::run_shell()
     return cret; //Py_Main(argc, argv);
 }
 
-python_ai::python_ai(ai_interface::info& info) : 
-		ai_interface(info), 
+python_ai::python_ai(ai_interface::info& info) :
+		ai_interface(info),
 		exception(QUIT),
 		src_dst_(),
 		dst_src_(),

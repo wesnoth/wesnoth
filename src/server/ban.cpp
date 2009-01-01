@@ -44,7 +44,7 @@ namespace wesnothd {
 		return (*a) > (*b);
 	}
 
-	banned_compare_subnet::compare_fn banned_compare_subnet::active_ = &banned_compare_subnet::less;		
+	banned_compare_subnet::compare_fn banned_compare_subnet::active_ = &banned_compare_subnet::less;
 
 	void banned_compare_subnet::set_use_subnet_mask(bool use)
 	{
@@ -108,19 +108,19 @@ namespace wesnothd {
 		mask_ = 0xFFFFFFFF;
 	}
 
-	banned::banned(const std::string& ip, 
-				   const time_t end_time, 
-				   const std::string& reason, 
-				   const std::string& who_banned, 
+	banned::banned(const std::string& ip,
+				   const time_t end_time,
+				   const std::string& reason,
+				   const std::string& who_banned,
 				   const std::string& group,
 				   const std::string& nick) :
 		ip_(0),
 		mask_(0),
 		ip_text_(ip),
-		end_time_(end_time), 
+		end_time_(end_time),
 		start_time_(time(0)),
-		reason_(reason), 
-		who_banned_(who_banned), 
+		reason_(reason),
+		who_banned_(who_banned),
 		group_(group),
 		nick_(nick)
 	{
@@ -261,7 +261,7 @@ namespace wesnothd {
 		}
 		return banned::get_human_time(end_time_);
 	}
-	
+
 	bool banned::operator>(const banned& b) const
 	{
 		return end_time_ > b.get_end_time();
@@ -279,7 +279,7 @@ namespace wesnothd {
 		LOG_SERVER << "Reading bans from " <<  filename_ << "\n";
 		config cfg;
 		scoped_istream ban_file = istream_file(filename_);
-		read_gz(cfg, *ban_file);	
+		read_gz(cfg, *ban_file);
 
 		const config::child_list& bans = cfg.get_children("ban");
 		for (config::child_list::const_iterator itor = bans.begin();
@@ -299,7 +299,7 @@ namespace wesnothd {
 		// load deleted too
 		if (cfg.child("deleted"))
 		{
-			const config& cfg_del = *cfg.child("deleted"); 
+			const config& cfg_del = *cfg.child("deleted");
 			const config::child_list& del_bans = cfg_del.get_children("ban");
 			for (config::child_list::const_iterator itor = del_bans.begin();
 					itor != del_bans.end(); ++itor)
@@ -390,7 +390,7 @@ namespace wesnothd {
 			}
 			return mktime(loc);
 		}
-		default_ban_times::const_iterator time_itor = ban_times_.find(time_in);	
+		default_ban_times::const_iterator time_itor = ban_times_.find(time_in);
 		if (time_itor != ban_times_.end())
 			ret += time_itor->second;
 		else
@@ -448,10 +448,10 @@ namespace wesnothd {
 		return ret;
 	}
 
-	std::string ban_manager::ban(const std::string& ip, 
-								 const time_t& end_time, 
-								 const std::string& reason, 
-								 const std::string& who_banned, 
+	std::string ban_manager::ban(const std::string& ip,
+								 const time_t& end_time,
+								 const std::string& reason,
+								 const std::string& who_banned,
 								 const std::string& group,
 								 const std::string& nick)
 	{
@@ -544,8 +544,8 @@ namespace wesnothd {
 
 	void ban_manager::list_deleted_bans(std::ostringstream& out) const
 	{
-		if (deleted_bans_.empty()) 
-		{ 
+		if (deleted_bans_.empty())
+		{
 			out << "No removed bans found.";
 			return;
 		}
@@ -565,8 +565,8 @@ namespace wesnothd {
 
 	void ban_manager::list_bans(std::ostringstream& out) const
 	{
-		if (bans_.empty()) 
-		{ 
+		if (bans_.empty())
+		{
 			out << "No bans set.";
 			return;
 		}
@@ -582,7 +582,7 @@ namespace wesnothd {
 					out << "\n";
 				out << (**i);
 			} else {
-				groups.insert((*i)->get_group());				
+				groups.insert((*i)->get_group());
 			}
 		}
 
@@ -598,7 +598,7 @@ namespace wesnothd {
 	}
 
 
-	bool ban_manager::is_ip_banned(std::string ip) const 
+	bool ban_manager::is_ip_banned(std::string ip) const
 	{
 		subnet_compare_setter setter;
 		ban_set::const_iterator ban;
@@ -610,7 +610,7 @@ namespace wesnothd {
 		}
 		return ban != bans_.end();
 	}
-	
+
 	void ban_manager::init_ban_help()
 	{
 		ban_help_ = "ban <ip|nickmask> [<time>] <reason>\n"
@@ -657,8 +657,8 @@ namespace wesnothd {
 	{
 		write();
 	}
-	
-	ban_manager::ban_manager() 
+
+	ban_manager::ban_manager()
 		: bans_()
 		, deleted_bans_()
 		, time_queue_()
@@ -668,7 +668,7 @@ namespace wesnothd {
 		, dirty_(false)
 	{
 		init_ban_help();
-	}	
+	}
 
 
 }

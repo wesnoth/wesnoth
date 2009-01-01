@@ -37,9 +37,9 @@ class vconfig;
 #define MAX_MAP_AREA	65536
 
 /**
- * Encapsulates the map of the game. 
+ * Encapsulates the map of the game.
  *
- * Although the game is hexagonal, the map is stored as a grid. 
+ * Although the game is hexagonal, the map is stored as a grid.
  * Each type of terrain is represented by a multiletter terrain code.
  * @todo Update for new map-format.
  */
@@ -47,9 +47,9 @@ class gamemap
 {
 public:
 
-	// The name of the terrain is the terrain itself, 
-	// The underlying terrain is the name of the terrain for game-logic purposes. 
-	// I.e. if the terrain is simply an alias, the underlying terrain name 
+	// The name of the terrain is the terrain itself,
+	// The underlying terrain is the name of the terrain for game-logic purposes.
+	// I.e. if the terrain is simply an alias, the underlying terrain name
 	// is the name of the terrain that it's aliased to.
 	const t_translation::t_list& underlying_mvt_terrain(t_translation::t_terrain terrain) const;
 	const t_translation::t_list& underlying_def_terrain(t_translation::t_terrain terrain) const;
@@ -64,7 +64,7 @@ public:
 		incorrect_format_exception(const char* msg) : msg_(msg) {}
 		const char* const msg_;
 	};
-       
+
 	const t_translation::t_list& underlying_mvt_terrain(const map_location& loc) const
 		{ return underlying_mvt_terrain(get_terrain(loc)); }
 	const t_translation::t_list& underlying_def_terrain(const map_location& loc) const
@@ -90,12 +90,12 @@ public:
 		{ return on_board(loc) && is_castle(get_terrain(loc)); }
 	bool is_keep(const map_location& loc) const
 		{ return on_board(loc) && is_keep(get_terrain(loc)); }
-		
+
 	enum tborder {
 		NO_BORDER = 0,
 		SINGLE_TILE_BORDER
 		};
-	
+
 	enum tusage {
 		IS_MAP,
 		IS_MASK
@@ -103,7 +103,7 @@ public:
 
 	enum tmerge_mode {
 		BASE,
-		OVERLAY,    
+		OVERLAY,
         BOTH
 		};
 
@@ -152,7 +152,7 @@ public:
 		{ return tiles_[loc.x + border_size_][loc.y + border_size_]; }
 
 	/**
-	 * Looks up terrain at a particular location. 
+	 * Looks up terrain at a particular location.
 	 *
 	 * Hexes off the map may be looked up, and their 'emulated' terrain will
 	 * also be returned.  This allows proper drawing of the edges of the map.
@@ -171,7 +171,7 @@ public:
 	void set_starting_position(int side, const map_location& loc);
 
 	/**
-	 * Tell if a location is on the map. 
+	 * Tell if a location is on the map.
 	 *
 	 * Should be called before indexing using [].
 	 * @todo inline for performace? -- Ilor
@@ -215,7 +215,7 @@ public:
 	const std::map<t_translation::t_terrain, size_t>& get_weighted_terrain_frequencies() const;
 
 	/**
-	 * Remove the cached border terrain at loc. 
+	 * Remove the cached border terrain at loc.
 	 *
 	 * Needed by the editor to make tiles at the border update correctly when
 	 * drawing other tiles.
@@ -224,9 +224,9 @@ public:
 		{ borderCache_.erase(loc); }
 
 	/**
-	 * Maximum number of players supported. 
+	 * Maximum number of players supported.
 	 *
-	 * Warning: when you increase this, you need to add 
+	 * Warning: when you increase this, you need to add
 	 * more definitions to the team_colors.cfg file.
 	 */
 	enum { MAX_PLAYERS = 9 };
@@ -235,7 +235,7 @@ public:
 	tusage get_usage() const { return usage_; }
 
 	/**
-	 * The default map header, needed for maps created with 
+	 * The default map header, needed for maps created with
 	 * terrain_translation::write_game_map().
 	 */
 	static const std::string default_map_header;
@@ -246,18 +246,18 @@ public:
 	/**
 	 * Tries to merge old and new terrain using the merge_settings config
 	 * Relevant parameters are "layer" and "replace_conflicting"
-	 * "layer" specifies the layer that should be replaced (base or overlay, default is both). 
+	 * "layer" specifies the layer that should be replaced (base or overlay, default is both).
 	 * If "replace_conflicting" is true the new terrain will replace the old one if merging failed
 	 * (using the default base if new terrain is an overlay terrain)
 	 * Will return the resulting terrain or NONE_TERRAIN if merging failed
 	 */
     t_translation::t_terrain merge_terrains(const t_translation::t_terrain old_t, const t_translation::t_terrain new_t, const tmerge_mode mode, bool replace_if_failed = false);
-	
+
 protected:
 	t_translation::t_map tiles_;
 
 	/**
-	 * The size of the starting positions array is MAX_PLAYERS + 1, 
+	 * The size of the starting positions array is MAX_PLAYERS + 1,
 	 * because the positions themselves are numbered from 1.
 	 */
 	map_location startingPositions_[MAX_PLAYERS+1];
@@ -297,7 +297,7 @@ protected:
 	/** Sizes of the map including the borders. */
 	int total_width_;
 	int total_height_;
-	
+
 private:
 	/** The size of the border around the map. */
 	int border_size_;

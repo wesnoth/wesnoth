@@ -12,9 +12,9 @@
    See the COPYING file for more details.
 */
 
-/** 
+/**
  * @file editor_common.hpp
- * Main (common) editor header. Contains forward declarations for most classes, 
+ * Main (common) editor header. Contains forward declarations for most classes,
  * logging macro definitions and base exception declarations
  */
 

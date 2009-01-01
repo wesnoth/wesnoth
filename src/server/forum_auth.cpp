@@ -17,13 +17,13 @@ class forum_auth
 {
 	private :
 // The class will only hold data provided by the user and the result of their validation
-// It's not required or desirable to remember data pulled out from the forum tables.			
+// It's not required or desirable to remember data pulled out from the forum tables.
 		std::string user_name;
 		std::string user_password;
 		bool authorised;
 		bool validate();
 	public :
-// Constructor - sets the data and evaluates them		   
+// Constructor - sets the data and evaluates them
 		forum_auth(std::string name, std::string password);
 // Destructor is empty
 		~forum_auth();
@@ -40,12 +40,12 @@ forum_auth::forum_auth(std::string name, std::string password)
 	user_name = name;
 	user_password = password;
 	authorised = validate();
-} 								   
+}
 // Validation function
 bool forum_auth::validate()
 {
-// Set an alphabet-like string for use in encrytpion algorithm	 
-	std::string itoa64("./0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"); 								   
+// Set an alphabet-like string for use in encrytpion algorithm
+	std::string itoa64("./0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz");
 	std::string hash, db_name, db_host, db_user, db_password;
 // Get the database acces details
 	std::fstream db_access_file("db_auth_data.cfg", std::fstream::out);
@@ -100,7 +100,7 @@ bool forum_auth::validate()
 	do
 	{
 		temp_hash = std::string((char *) output, (char *) output + 16);
-		temp_hash.append(user_password);	  								
+		temp_hash.append(user_password);
 		md5_worker.~MD5();
 		MD5 md5_worker;
 		md5_worker.update((unsigned char *)temp_hash.c_str(),temp_hash.length());
@@ -108,7 +108,7 @@ bool forum_auth::validate()
 		output =  md5_worker.raw_digest();
 	} while (--hash_seed);
 	temp_hash = std::string((char *) output, (char *) output + 16);
-// Now encode the resulting mix 
+// Now encode the resulting mix
 	std::string encoded_hash;
 	unsigned int i = 0, value;
 	do
@@ -129,7 +129,7 @@ bool forum_auth::validate()
 	} while (i < 16);
 	free (output);
 // Get the first 12 characters from correct hash
-	std::string result = hash.substr(0,12);    
+	std::string result = hash.substr(0,12);
 // Append encoded results to the end of it
 	result.append(encoded_hash);
 // Check if reult of above matches the original hash

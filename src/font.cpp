@@ -81,31 +81,31 @@ std::vector<std::string> font_names;
 
 struct text_chunk
 {
-	text_chunk(subset_id subset) : 
+	text_chunk(subset_id subset) :
 		subset(subset),
 		text(),
 		ucs2_text()
 	{
 	}
 
-	text_chunk(subset_id subset, std::string const & text) : 
-		subset(subset), 
+	text_chunk(subset_id subset, std::string const & text) :
+		subset(subset),
 		text(text),
 		ucs2_text()
 	{
 	}
 
-	text_chunk(subset_id subset, ucs2_string const & ucs2_text) : 
-		subset(subset), 
+	text_chunk(subset_id subset, ucs2_string const & ucs2_text) :
+		subset(subset),
 		text(),
-		ucs2_text(ucs2_text) 
+		ucs2_text(ucs2_text)
 	{
 	}
 
-	text_chunk(subset_id subset, std::string const & text, ucs2_string const & ucs2_text) : 
-		subset(subset), 
-		text(text), 
-		ucs2_text(ucs2_text) 
+	text_chunk(subset_id subset, std::string const & text, ucs2_string const & ucs2_text) :
+		subset(subset),
+		text(text),
+		ucs2_text(ucs2_text)
 	{
 	}
 
@@ -312,7 +312,7 @@ void manager::update_font_path() const
 void manager::init() const
 {
 #ifdef CAIRO_HAS_FT_FONT
-	if(!FcConfigAppFontAddDir( FcConfigGetCurrent(), 
+	if(!FcConfigAppFontAddDir( FcConfigGetCurrent(),
 			reinterpret_cast<const FcChar8*>
 			((game_config::path + "/fonts/").c_str()))) {
 
@@ -325,7 +325,7 @@ void manager::init() const
 	foreach(const std::string& path, get_binary_paths("fonts")) {
 		std::vector<std::string> files;
 		get_files_in_dir(path, &files, NULL, ENTIRE_FILE_PATH);
-		foreach(const std::string& file, files) 
+		foreach(const std::string& file, files)
 			if(file.substr(file.length() - 4) == ".ttf")
 				AddFontResource(file.c_str());
 	}
@@ -342,7 +342,7 @@ void manager::deinit() const
 	foreach(const std::string& path, get_binary_paths("fonts")) {
 		std::vector<std::string> files;
 		get_files_in_dir(path, &files, NULL, ENTIRE_FILE_PATH);
-		foreach(const std::string& file, files) 
+		foreach(const std::string& file, files)
 			if(file.substr(file.length() - 4) == ".ttf")
 				RemoveFontResource(file.c_str());
 	}
@@ -485,14 +485,14 @@ void text_surface::bidi_cvt()
 }
 #endif
 
-text_surface::text_surface(std::string const &str, int size, 
+text_surface::text_surface(std::string const &str, int size,
 		SDL_Color color, int style) :
-	hash_(0), 
-	font_size_(size), 
-	color_(color), 
-	style_(style), 
-	w_(-1), 
-	h_(-1), 
+	hash_(0),
+	font_size_(size),
+	color_(color),
+	style_(style),
+	w_(-1),
+	h_(-1),
 	str_(str),
 	initialized_(false),
 	chunks_(),
@@ -508,11 +508,11 @@ text_surface::text_surface(std::string const &str, int size,
 }
 
 text_surface::text_surface(int size, SDL_Color color, int style) :
-	hash_(0), 
-	font_size_(size), 
-	color_(color), 
-	style_(style), 
-	w_(-1), 
+	hash_(0),
+	font_size_(size),
+	color_(color),
+	style_(style),
+	w_(-1),
 	h_(-1),
 	str_(),
 	initialized_(false),
@@ -564,7 +564,7 @@ void text_surface::measure() const
 			itor->ucs2_text.push_back(0);
 		}
 
-		TTF_SizeUNICODE(ttfont, 
+		TTF_SizeUNICODE(ttfont,
 			static_cast<Uint16 const *>(&(itor->ucs2_text.front())), &w, &h);
 		w_ += w;
 		h_ = std::max<int>(h_, h);
@@ -610,7 +610,7 @@ std::vector<surface> const &text_surface::get_surfaces() const
 			continue;
 		font_style_setter const style_setter(ttfont, style_);
 
-		surface s = surface(TTF_RenderUNICODE_Blended(ttfont, 
+		surface s = surface(TTF_RenderUNICODE_Blended(ttfont,
 			static_cast<Uint16 const *>(&(itor->ucs2_text.front())), color_));
 		if(!s.null())
 			surfs_.push_back(s);
@@ -676,7 +676,7 @@ static surface render_text(const std::string& text, int fontsize, const SDL_Colo
 	size_t width = 0, height = 0;
 
 	for(std::vector< std::string >::const_iterator ln = lines.begin(), ln_end = lines.end(); ln != ln_end; ++ln) {
-		
+
 		SDL_Color col = colour;
 		int sz = fontsize;
 		int text_style = style;
@@ -758,7 +758,7 @@ SDL_Rect draw_text_line(surface gui_surface, const SDL_Rect& area, int size,
 	}
 
 	if(area.w == 0) {  // no place to draw
-		SDL_Rect res = {0,0,0,0};  
+		SDL_Rect res = {0,0,0,0};
 		return res;
 	}
 
@@ -995,7 +995,7 @@ surface floating_label::create_surface()
 			// background is blurred shadow of the text
 			//TODO add a little extra space for the blur of letters with a lower part
 			surface background = shadow_image(foreground, false);
-			
+
 			if (background == NULL) {
 				ERR_FT << "could not create floating label's shadow" << std::endl;
 				surf_ = create_optimized_surface(foreground);

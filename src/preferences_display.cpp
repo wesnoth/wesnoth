@@ -13,7 +13,7 @@
 */
 
 /**
- *  @file preferences_display.cpp 
+ *  @file preferences_display.cpp
  *  Manage display-related preferences, e.g. screen-size, gamma etc.
  */
 
@@ -84,7 +84,7 @@ void set_resolution(const std::pair<int,int>& resolution)
 
 	// - Ayin: disabled the following code. Why would one want to enforce that?
 	// Some 16:9, or laptop screens, may have resolutions which do not
-	// comply to this rule (see bug 10630). 
+	// comply to this rule (see bug 10630).
 	// I'm commenting this until it proves absolutely necessary.
 	//
 	// Make sure resolutions are always divisible by 4
@@ -330,7 +330,7 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 
 					newhk.set_key(character, keycode, (mod & KMOD_SHIFT) != 0,
 							(mod & KMOD_CTRL) != 0, (mod & KMOD_ALT) != 0, (mod & KMOD_LMETA) != 0);
-		
+
 					menu_.change_item(menu_.selection(), 1, font::NULL_MARKUP + newhk.get_name());
 
 					if ((newhk.get_id() == hotkey::HOTKEY_SCREENSHOT
@@ -386,16 +386,16 @@ bool show_video_mode_dialog(display& disp)
 
 	const SDL_Rect* const * modes = SDL_ListModes(&format,FULL_SCREEN);
 
-	// The SDL documentation says that a return value of -1 
+	// The SDL documentation says that a return value of -1
 	// means that all dimensions are supported/possible.
 	if(modes == reinterpret_cast<SDL_Rect**>(-1)) {
 		std::cerr << "Can support any video mode\n";
-		// SDL says that all modes are possible, so it's OK to use a 
+		// SDL says that all modes are possible, so it's OK to use a
 		// hardcoded list here. Include tiny and small gui since they
 		// will be filter out later if not needed.
 		static const SDL_Rect scr_modes[] = {
-			{ 0, 0,  320, 240 },	
-			{ 0, 0,  640, 480 },	
+			{ 0, 0,  320, 240 },
+			{ 0, 0,  640, 480 },
 			{ 0, 0,  800, 480 },	// small-gui (EeePC resolution)
 			{ 0, 0,  800, 600 },
 			{ 0, 0, 1024, 768 },

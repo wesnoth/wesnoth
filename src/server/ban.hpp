@@ -74,9 +74,9 @@ namespace wesnothd {
 		std::string nick_;
 		static const std::string who_banned_default_;
 		typedef std::pair<unsigned int, unsigned int> ip_mask;
-		
+
 		ip_mask parse_ip(const std::string&) const;
-		
+
 		banned(const std::string& ip);
 
 	public:
@@ -114,7 +114,7 @@ namespace wesnothd {
 		unsigned int get_int_ip() const
 		{ return ip_; }
 
-		unsigned int mask() const 
+		unsigned int mask() const
 		{ return mask_; }
 
 		static banned_ptr create_dummy(const std::string& ip);
@@ -146,7 +146,7 @@ namespace wesnothd {
 	public:
 		ban_manager();
 		~ban_manager();
-		
+
 		void read();
 		void write();
 
@@ -163,9 +163,9 @@ namespace wesnothd {
 		void list_bans(std::ostringstream& out) const;
 
 		bool is_ip_banned(std::string ip) const;
-		
+
 		const std::string& get_ban_help() const
-		{ return ban_help_; }	
+		{ return ban_help_; }
 
 		void load_config(const config&);
 

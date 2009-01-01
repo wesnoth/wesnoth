@@ -16,11 +16,11 @@
  * @file action_base.hpp
  * Base class for editor actions
  *
- * An action is constructed in response to a user command, then executed on 
+ * An action is constructed in response to a user command, then executed on
  * the map. An undo action is returned by default via pointer, caller-owned).
  * It is possible to call an action without creating the undo action.
  * Actions report failure via exceptions.
- * Code that only deals with actions polymorphically should only need to 
+ * Code that only deals with actions polymorphically should only need to
  * include this header file.
  */
 
@@ -48,7 +48,7 @@ class editor_action
     public:
         editor_action();
         virtual ~editor_action();
-		
+
 		/**
 		 * Perform the action, returning an undo action that,
 		 * when performed, shall reverse any effects of this
@@ -58,17 +58,17 @@ class editor_action
 		 * return the undo object.
 		 */
 		virtual editor_action* perform(map_context&) const;
-		
+
 		/**
 		 * Perform the action without creating an undo action.
 		 */
 		virtual void perform_without_undo(map_context&) const = 0;
-		
+
 		/**
 		 * @return the actual number of actions contained within
 		 */
 		virtual int action_count() const;
-		
+
 		/**
 		 * A textual description of the action. For use
 		 * e.g. in the undo menu, to have a "Undo: Fill with
@@ -77,17 +77,17 @@ class editor_action
 		 * message.
 		 */
 		virtual std::string get_description();
-		
+
 		/**
 		 * Debugging aid. Return an unique identifier of this Action.
 		 */
 		int get_id() const { return id_; }
-		
+
 		/**
 		 * Debugging aid. Return number of existing instances of Actions.
 		 */
 		static int get_instance_count() { return instance_count_; }
-		
+
 	private:
 		static int next_id_;
 		static int instance_count_;
@@ -98,7 +98,7 @@ class editor_action
 //TODO: add messages etc
 struct editor_action_exception : public editor_exception
 {
-	editor_action_exception(const std::string& msg) 
+	editor_action_exception(const std::string& msg)
 	: editor_exception(msg)
 	{
 	}

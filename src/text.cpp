@@ -77,7 +77,7 @@ ttext::ttext() :
 	length_(0),
 	surface_dirty_(true),
 	surface_buffer_(NULL)
-{	
+{
 	// With 72 dpi the sizes are the same as with SDL_TTF so hardcoded.
 	pango_cairo_context_set_resolution(context_, 72.0);
 
@@ -216,8 +216,8 @@ gui2::tpoint ttext::get_column_line(const gui2::tpoint& position) const
 
 	// Get the index of the character.
 	int index, trailing;
-	pango_layout_xy_to_index(layout_, position.x * PANGO_SCALE, 
-		position.y * PANGO_SCALE, &index, &trailing); 
+	pango_layout_xy_to_index(layout_, position.x * PANGO_SCALE,
+		position.y * PANGO_SCALE, &index, &trailing);
 
 	// Extract the line and the offset in pixels in that line.
 	int line, offset;
@@ -251,7 +251,7 @@ void ttext::clone()
 	surface_buffer_ = 0;
 }
 
-ttext& ttext::set_text(const std::string& text, const bool markedup) 
+ttext& ttext::set_text(const std::string& text, const bool markedup)
 {
 	if(markedup != markedup_text_ || text != text_) {
 		assert(layout_);
@@ -411,7 +411,7 @@ private:
 	PangoFontDescription *font_;
 };
 
-std::ostream& operator<<(std::ostream& s, const PangoRectangle &rect) 
+std::ostream& operator<<(std::ostream& s, const PangoRectangle &rect)
 {
 	s << rect.x << ',' << rect.y << " x " << rect.width << ',' << rect.height;
 	return s;
@@ -446,7 +446,7 @@ static void decode_pixel(const unsigned char alpha, unsigned char *sub_pixel)
 {
 	unsigned colour = *sub_pixel;
 	// Sature at 255.
-	*sub_pixel = colour >= alpha 
+	*sub_pixel = colour >= alpha
 			? 255
 			: static_cast<unsigned char>((colour << 8) / alpha);
 }
@@ -470,9 +470,9 @@ void ttext::rerender(const bool force) const
 		cairo_t *cr = cairo_create(cairo_surface);
 
 		pango_cairo_update_context (cr, context_); // Needed?
-         
+
 		/* set colour (used for foreground). */
-		cairo_set_source_rgba(cr, 
+		cairo_set_source_rgba(cr,
 			 (foreground_colour_ >> 24)         / 256.0,
 			((foreground_colour_ >> 16) & 0xFF) / 256.0,
 			((foreground_colour_ >> 8)  & 0xFF) / 256.0,
@@ -480,7 +480,7 @@ void ttext::rerender(const bool force) const
 
 		pango_cairo_show_layout(cr, layout_);
 
-#ifndef _WIN32		
+#ifndef _WIN32
 
 		// The cairo surface is in CAIRO_FORMAT_ARGB32 which uses
 		// pre-multiplied alpha. SDL doesn't use that so the pixels need to be
@@ -508,7 +508,7 @@ void ttext::rerender(const bool force) const
 		pango_cairo_show_layout(cr, layout_);
 #endif
 		surface_.assign(SDL_CreateRGBSurfaceFrom(
-			surface_buffer_, width, height, 32, stride, 
+			surface_buffer_, width, height, 32, stride,
 			0x00FF0000, 0x0000FF00, 0x000000FF, 0xFF000000));
 	}
 }
@@ -525,7 +525,7 @@ void ttext::create_surface_buffer(const size_t size) const
 	memset(surface_buffer_, 0, size);
 }
 
-} // namespace internal 
+} // namespace internal
 
-} // namespace font 
+} // namespace font
 

@@ -126,14 +126,14 @@ namespace events{
 			const config& level, const gamemap& map,
 			const config& game_config, const gamestatus& status, game_state& gamestate,
 			undo_list& undo_stack, undo_list& redo_stack) :
-		gui_(gui), 
-		units_(units), 
-		teams_(teams), 
-		level_(level), 
+		gui_(gui),
+		units_(units),
+		teams_(teams),
+		level_(level),
 		map_(map),
-		game_config_(game_config), 
-		status_(status), 
-		gamestate_(gamestate), 
+		game_config_(game_config),
+		status_(status),
+		gamestate_(gamestate),
 		undo_stack_(undo_stack),
 		redo_stack_(redo_stack),
 		textbox_info_(),
@@ -185,10 +185,10 @@ namespace events{
 		//add player's name to title of dialog
 		std::stringstream title_str;
 		title_str <<  _("Statistics") << " (" << player << ")";
-		statistics_dialog stats_dialog(*gui_, 
-					       title_str.str(), 
-					       team_num, 
-					       teams_[team_num - 1].save_id(), 
+		statistics_dialog stats_dialog(*gui_,
+					       title_str.str(),
+					       team_num,
+					       teams_[team_num - 1].save_id(),
 					       player);
 		stats_dialog.show();
 	}
@@ -333,12 +333,12 @@ namespace events{
 namespace {
 class leader_scroll_dialog : public gui::dialog {
 public:
-	leader_scroll_dialog(display &disp, const std::string &title, 
-			std::vector<bool> &leader_bools, int selected, 
+	leader_scroll_dialog(display &disp, const std::string &title,
+			std::vector<bool> &leader_bools, int selected,
 			gui::DIALOG_RESULT extra_result) :
-		dialog(disp, title, "", gui::NULL_DIALOG), 
+		dialog(disp, title, "", gui::NULL_DIALOG),
 		scroll_btn_(new gui::standard_dialog_button(disp.video(), _("Scroll To"), 0, false)),
-		leader_bools_(leader_bools), 
+		leader_bools_(leader_bools),
 		extra_result_(extra_result)
 	{
 		scroll_btn_->enable(leader_bools[selected]);
@@ -386,7 +386,7 @@ private:
 		items.push_back(heading.str());
 
 		const team& viewing_team = teams_[gui_->viewing_team()];
-		
+
 		unsigned total_villages = 0;
 
 		//if the player is under shroud or fog, they don't get
@@ -990,7 +990,7 @@ private:
 					<< COLUMN_SEPARATOR << _("XP");
 #ifndef USE_TINY_GUI
 			heading << COLUMN_SEPARATOR << _("Traits");
-#endif 
+#endif
 
 			gui::menu::basic_sorter sorter;
 			sorter.set_alpha_sort(1).set_alpha_sort(2).set_id_sort(3).set_numeric_sort(4).set_alpha_sort(5);
@@ -1015,7 +1015,7 @@ private:
 					option << u->max_experience();
 				else
 					option <<  "-";
-				
+
 
 				option_to_filter << u->type_name() << " " << name << " " << u->level();
 
@@ -1520,7 +1520,7 @@ private:
 			umenu.get_menu().sort_by(0);
 			if (last_selection >= 0)
 				umenu.get_menu().move_selection(last_selection);
-			else 
+			else
 				umenu.get_menu().reset_selection();
 
 			dialogs::unit_types_preview_pane unit_preview(*gui_, &map_, unit_choices, filter, 1, dialogs::unit_types_preview_pane::SHOW_ALL);
@@ -1705,14 +1705,14 @@ private:
 	{
 		public:
 			cmd_arg_parser() :
-				str_(""), 
+				str_(""),
 				args(1, 0),
 				args_end(false)
 			{
 			}
 
 			explicit cmd_arg_parser(const std::string& str) :
-				str_(str), 
+				str_(str),
 				args(1, 0),
 				args_end(false)
 			{
@@ -2999,7 +2999,7 @@ private:
 	}
 	void console_handler::do_toggle_draw_terrain_codes() {
 		menu_handler_.gui_->set_draw_terrain_codes(!menu_handler_.gui_->get_draw_terrain_codes());
-		menu_handler_.gui_->invalidate_all();	
+		menu_handler_.gui_->invalidate_all();
 	}
 
 	void menu_handler::do_ai_formula(const std::string& str,

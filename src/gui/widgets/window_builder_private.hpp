@@ -158,7 +158,7 @@ public:
 
 	twidget* build () const;
 
-	tscrollbar_container::tscrollbar_mode 
+	tscrollbar_container::tscrollbar_mode
 			vertical_scrollbar_mode,
 			horizontal_scrollbar_mode;
 

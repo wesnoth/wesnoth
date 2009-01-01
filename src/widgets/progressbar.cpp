@@ -56,7 +56,7 @@ void progress_bar::draw_contents()
 
 		inner_area.w = (inner_area.w*progress_)/100;
 		SDL_FillRect(surf,&inner_area,SDL_MapRGB(surf->format,fcr,fcg,fcb));
-		
+
 		SDL_Rect lightning = inner_area;
 		lightning.h = lightning_thickness;
 		//we add 25% of white to the color of the bar to simulate a light effect

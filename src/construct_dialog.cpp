@@ -803,7 +803,7 @@ void dialog::action(dialog_process_info& info)
 
 		set_result(CONTINUE_DIALOG);
 				info.first_time = true;
-		
+
 	}
 }
 

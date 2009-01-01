@@ -85,7 +85,7 @@ std::string get_base_filename()
 	                                     * Shows the size info of
 	                                     * children/widgets.
 	                                     */
-	const unsigned STATE_INFO = 1 << 1; /**< 
+	const unsigned STATE_INFO = 1 << 1; /**<
 	                                     * Shows the state info of widgets.
 	                                     */
 	unsigned level_ = 0;

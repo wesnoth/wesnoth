@@ -56,7 +56,7 @@ struct player_info
 
 	std::string name;                  /**< Stores the current_player name */
 	int gold;                          /**< Amount of gold the player has saved */
-	bool gold_add;                     /**< 
+	bool gold_add;                     /**<
 										* Amount of gold is added to the
 										* starting gold, if not it uses the
 										* highest of the two.
@@ -102,7 +102,7 @@ public:
 
 	/** Return the Nth player, or NULL if no such player exists. */
 	player_info* get_player(const std::string& id);
-	
+
 	/**
 	 * Loads the recall list.
 	 *
@@ -220,12 +220,12 @@ public:
 	bool next_turn();
 
 	static bool is_start_ToD(const std::string&);
-	
+
 	/**
 	 * Adds a new local time area from config, making it follow its own
 	 * time-of-day sequence.
 	 *
-	 * @param cfg                 Config object containing x,y range/list of 
+	 * @param cfg                 Config object containing x,y range/list of
 	 *                            locations and desired [time] information.
 	 */
 	void add_time_area(const config& cfg);

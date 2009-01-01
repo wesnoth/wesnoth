@@ -46,7 +46,7 @@
 //helper macro for the simple operator cases defined below
 #define ASSERT_OP(a,op,b) ASSERT_LOG((a) op (b), #a " " #op " " #b " (" << (a) << " " #op " " << (b) << ")")
 
-//various asserts of standard "equality" tests, such as "equals", "not equals", "greater than", etc. 
+//various asserts of standard "equality" tests, such as "equals", "not equals", "greater than", etc.
 //Example usage ASSERT_GE(x, y);
 //on failure this will cerr "assertion failed: x >= y (value_of_x >= value_of_y)"
 #define ASSERT_EQ(a,b) ASSERT_OP(a,==,b)

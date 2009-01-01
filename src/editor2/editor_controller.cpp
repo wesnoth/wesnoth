@@ -117,7 +117,7 @@ editor_controller::editor_controller(const config &game_config, CVideo& video, m
 	init_tods(game_config);
 	init_sidebar(game_config);
     init_music(game_config);
-	hotkey_set_mouse_action(hotkey::HOTKEY_EDITOR_TOOL_PAINT);	
+	hotkey_set_mouse_action(hotkey::HOTKEY_EDITOR_TOOL_PAINT);
 	rng_.reset(new rand_rng::rng());
 	rng_setter_.reset(new rand_rng::set_random_generator(rng_.get()));
 	hotkey::get_hotkey(hotkey::HOTKEY_QUIT_GAME).set_description(_("Quit Editor"));
@@ -125,7 +125,7 @@ editor_controller::editor_controller(const config &game_config, CVideo& video, m
 	cursor::set(cursor::NORMAL);
 	image::set_colour_adjustment(preferences::editor_r(), preferences::editor_g(), preferences::editor_b());
 	refresh_all();
-	events::raise_draw_event();	
+	events::raise_draw_event();
 }
 
 void editor_controller::init_gui(CVideo& video)
@@ -164,11 +164,11 @@ void editor_controller::init_brushes(const config& game_config)
 
 void editor_controller::init_mouse_actions(const config& game_config)
 {
-	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_PAINT, 
+	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_PAINT,
 		new mouse_action_paint(foreground_terrain_, background_terrain_, &brush_, key_)));
-	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_FILL, 
+	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_FILL,
 		new mouse_action_fill(foreground_terrain_, background_terrain_, key_)));
-	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_SELECT, 
+	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_SELECT,
 		new mouse_action_select(&brush_, key_)));
 	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_STARTING_POSITION,
 		new mouse_action_starting_position(key_)));
@@ -187,7 +187,7 @@ void editor_controller::init_mouse_actions(const config& game_config)
 		if (i != mouse_actions_.end()) {
 			mouse_action_hints_.insert(std::make_pair(i->first, (*c)["text"]));
 		}
-	}	
+	}
 }
 
 void editor_controller::init_map_generators(const config& game_config)
@@ -312,13 +312,13 @@ void editor_controller::close_current_context()
 	if (map_contexts_.size() == 1) {
 		create_default_context();
 		map_contexts_.erase(map_contexts_.begin());
-	} else if (current_context_index_ == 
+	} else if (current_context_index_ ==
 			static_cast<int>(map_contexts_.size()) - 1) {
 
 		map_contexts_.pop_back();
 		current_context_index_--;
 	} else {
-		map_contexts_.erase(map_contexts_.begin() + current_context_index_);	
+		map_contexts_.erase(map_contexts_.begin() + current_context_index_);
 	}
 	map_context_refresher(*this, *current);
 	delete current;
@@ -354,7 +354,7 @@ void editor_controller::editor_settings_dialog()
 	image::colour_adjustment_resetter adjust_resetter;
 	dialog.set_use_mdi(use_mdi_);
 	dialog.show(gui().video());
-	
+
 	int res = dialog.get_retval();
 	if(res == gui2::twindow::OK) {
 		image::set_colour_adjustment(dialog.get_red(), dialog.get_green(), dialog.get_blue());
@@ -412,7 +412,7 @@ void editor_controller::new_map_dialog()
 	gui2::teditor_new_map dialog;
 	dialog.set_map_width(get_map().w());
 	dialog.set_map_height(get_map().h());
-	
+
 	dialog.show(gui().video());
 	int res = dialog.get_retval();
 	if(res == gui2::twindow::OK) {
@@ -526,7 +526,7 @@ void editor_controller::resize_map_dialog()
 	dialog.set_map_height(get_map().h());
 	dialog.set_old_map_width(get_map().w());
 	dialog.set_old_map_height(get_map().h());
-	
+
 	dialog.show(gui().video());
 	int res = dialog.get_retval();
 	if(res == gui2::twindow::OK) {
@@ -742,7 +742,7 @@ bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int 
 			return true; //editor hotkeys we can always do
 		case HOTKEY_EDITOR_MAP_SAVE:
 		case HOTKEY_EDITOR_SWITCH_MAP:
-		case HOTKEY_EDITOR_CLOSE_MAP:	
+		case HOTKEY_EDITOR_CLOSE_MAP:
 			return true;
 		case HOTKEY_EDITOR_MAP_REVERT:
 			return !get_map_context().get_filename().empty();
@@ -759,7 +759,7 @@ bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int 
 			return !get_map().selection().empty();
 		case HOTKEY_EDITOR_SELECTION_ROTATE:
 		case HOTKEY_EDITOR_SELECTION_FLIP:
-		case HOTKEY_EDITOR_SELECTION_GENERATE:			
+		case HOTKEY_EDITOR_SELECTION_GENERATE:
 			return false; //not implemented
 		case HOTKEY_EDITOR_PASTE:
 			return !clipboard_.empty();
@@ -870,7 +870,7 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 		case HOTKEY_EDITOR_CLIPBOARD_FLIP_VERTICAL:
 			clipboard_.flip_vertical();
 			update_mouse_action_highlights();
-			return true;			
+			return true;
 		case HOTKEY_EDITOR_BRUSH_NEXT:
 			cycle_brush();
 			return true;
@@ -970,7 +970,7 @@ void editor_controller::expand_open_maps_menu(std::vector<std::string>& items)
 				if (filename.empty()) {
 					filename = _("(New Map)");
 				}
-				std::string label = "[" + lexical_cast<std::string>(mci) + "] " 
+				std::string label = "[" + lexical_cast<std::string>(mci) + "] "
 					+ filename;
 				contexts.push_back(label);
 			}
@@ -987,7 +987,7 @@ void editor_controller::show_menu(const std::vector<std::string>& items_arg, int
 			return;
 		}
 	}
-	
+
 	std::vector<std::string> items = items_arg;
 	hotkey::HOTKEY_COMMAND command;
 	std::vector<std::string>::iterator i = items.begin();
@@ -1068,7 +1068,7 @@ void editor_controller::hotkey_set_mouse_action(hotkey::HOTKEY_COMMAND command)
 		gui().set_report_content(reports::EDIT_LEFT_BUTTON_FUNCTION,
 				hotkey::get_hotkey(command).get_description());
 		gui().set_toolbar_hint(mouse_action_hints_[command]);
-		gui().invalidate_game_status();		
+		gui().invalidate_game_status();
 	} else {
 		ERR_ED << "Invalid hotkey command (" << (int)command << ") passed to set_mouse_action\n";
 	}

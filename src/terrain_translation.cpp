@@ -70,7 +70,7 @@ namespace t_translation {
 	/**
 	 * Converts a terrain string to a number.
 	 * @param str               The terrain string with an optional number.
-	 * @param start_position    Returns the start_position, the caller should 
+	 * @param start_position    Returns the start_position, the caller should
 	 *                          set it on -1 and it's only changed it there is
 	 *                          a starting position found.
 	 * @param filler            If the terrain has only 1 layer then the filler

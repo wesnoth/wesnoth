@@ -196,7 +196,7 @@ protected:
 	const gui::label& title() const;
 
 private:
-	/** 
+	/**
 	 * Set to true when the widgets are intialized. Allows delayed
 	 * initialization on first positioning.
 	 */

@@ -18,7 +18,7 @@
 #include "serialization/preprocessor.hpp"
 #include "SDL_image.h"
 
-cutter::cutter() 
+cutter::cutter()
 	: masks_()
 	, verbose_(false)
 {

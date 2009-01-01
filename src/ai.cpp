@@ -372,10 +372,10 @@ bool ai::recruit_usage(const std::string& usage)
 		//FIXME: This message should be suppressed when WML author
 		//chooses the default recruitment pattern.
 		const std::string warning = "At difficulty level " +
-			state_.sog().difficulty + ", trying to recruit a:" + 
+			state_.sog().difficulty + ", trying to recruit a:" +
 			usage + " but no unit of that type (usage=) is"
 			" available. Check the recruit and [ai]"
-			" recruitment_pattern keys for team '" + 
+			" recruitment_pattern keys for team '" +
 			current_team().name() + "' (" +
 			lexical_cast<std::string>(info_.team_num) + ")"
 			" against the usage key of the"
@@ -1543,7 +1543,7 @@ bool ai::move_to_targets(std::map<map_location, paths>& possible_moves,
 			targets = find_targets(leader,enemy_dstsrc);
 			targets.insert(targets.end(),additional_targets_.begin(),
 			                             additional_targets_.end());
-			LOG_AI << "Found " << targets.size() << " targets\n"; 
+			LOG_AI << "Found " << targets.size() << " targets\n";
 			if(targets.empty()) {
 				return false;
 			}

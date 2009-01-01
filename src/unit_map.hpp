@@ -38,7 +38,7 @@ class unit;
 class unit_map
 {
 private:
-	
+
 	/**
 	 * Used so unit_map can keep a count of iterators and clean invalid pointers
 	 * when no iterators exist. Every iterator and accessor has a counter
@@ -48,29 +48,29 @@ private:
 		iterator_counter() : map_(NULL) {}
 		iterator_counter(const unit_map* map) : map_(map)
 			{ map_->add_iter(); }
-		
+
 		iterator_counter(const iterator_counter& i) : map_(i.map_) {
 			if (map_) map_->add_iter();
 		}
-		
+
 		iterator_counter &operator =(const iterator_counter &that) {
 			if (this == &that)
 				return *this;
-	
+
 			if (map_) map_->remove_iter();
-	
+
 			map_=that.map_;
 			if (map_) map_->add_iter();
-			
+
 			return *this;
 		}
 
 		~iterator_counter() {if (map_) map_->remove_iter(); }
-	private:	
-		const unit_map* map_;		
+	private:
+		const unit_map* map_;
 	};
 
-	
+
 public:
 	unit_map() : map_(), lmap_(), num_iters_(0), num_invalid_(0) { };
 	unit_map(const unit_map &that);
@@ -78,17 +78,17 @@ public:
 	/** A unit map with a copy of a single unit in it. */
 	explicit unit_map(const map_location &loc, const unit &u);
 	~unit_map();
-	
+
 	/**
 	 * Keyed with unit's underlying_id. bool flag is whether the following pair
 	 * pointer is valid. pointer to pair used to imitate a map<location, unit>
 	 */
 	typedef std::map<size_t,std::pair<bool, std::pair<map_location,unit>*> > umap;
-	
+
 	/** Maps locations to the underlying_id() of the unit at that location. */
 	typedef std::map<map_location, size_t> lmap;
-		
-	struct const_unit_iterator;	
+
+	struct const_unit_iterator;
 	struct unit_xy_iterator;
 	struct const_unit_xy_iterator;
 	struct xy_accessor;
@@ -105,52 +105,52 @@ public:
 			i_(),
 			map_(0)
 		{ }
-		
+
 		unit_iterator(const unit_iterator &i) : counter_(i.map_), i_(i.i_), map_(i.map_) { }
 		unit_iterator(umap::iterator i, unit_map* map) : counter_(map), i_(i), map_(map) { }
-					
+
 		std::pair<map_location,unit> *operator->() const;
 		std::pair<map_location,unit>& operator*() const;
 
 		unit_iterator operator++();
 		unit_iterator operator++(int);
-		
+
 
 		bool operator==(const unit_iterator &that) const
 			{ return that.i_ == this->i_; }
 
 		bool operator!=(const unit_iterator &that) const
 			{ return that.i_ != this->i_; }
-			
+
 		bool valid() const
 			{ return i_ != map_->map_.end() && i_->second.first; }
-			
+
 		friend struct const_unit_iterator;
 		friend struct unit_xy_iterator;
 		friend struct const_unit_xy_iterator;
 		friend struct xy_accessor;
 		friend struct const_xy_accessor;
-		
+
 	private:
 		iterator_counter counter_;
-		
+
 		umap::iterator i_;
 		unit_map* map_;
 	};
-	
+
 	struct const_unit_iterator
 	{
 		const_unit_iterator(const unit_iterator &i) : counter_(i.map_), i_(i.i_), map_(i.map_) { }
-		
+
 		const_unit_iterator() :
 			counter_(),
 			i_(),
 			map_(0)
 		{ }
-				
+
 		const_unit_iterator(const const_unit_iterator &i) : counter_(i.map_), i_(i.i_), map_(i.map_) { }
 		const_unit_iterator(umap::const_iterator i, const unit_map* map): counter_(map), i_(i), map_(map) { }
-		
+
 		const std::pair<map_location,unit>* operator->() const;
 		const std::pair<map_location,unit>& operator*() const;
 
@@ -165,23 +165,23 @@ public:
 
 		bool operator!=(const const_unit_iterator &that) const
 			{ return that.i_ != this->i_; }
-			
+
 		bool valid() const
 			{ return i_ != map_->map_.end() && i_->second.first; }
-			
+
 		friend struct const_unit_xy_iterator;
 		friend struct const_xy_accessor;
-		
-	private:	
+
+	private:
 		iterator_counter counter_;
-					
-		umap::const_iterator i_;	
+
+		umap::const_iterator i_;
 		const unit_map* map_;
 	};
-	
+
 	typedef unit_iterator iterator;
 	typedef const_unit_iterator const_iterator;
-	
+
 	/**
 	 * Similar to unit_iterator, except that becomes invalid if unit is moved
 	 * while the iterator points at it.
@@ -189,24 +189,24 @@ public:
 	struct unit_xy_iterator
 	{
 		unit_xy_iterator(const unit_iterator &i);
-		
+
 		unit_xy_iterator() :
 			counter_(),
 			i_(),
 			map_(0),
 			loc_()
 		{}
-				
-		unit_xy_iterator(const unit_xy_iterator &i) : 
-			counter_(i.map_), 
-			i_(i.i_), 
+
+		unit_xy_iterator(const unit_xy_iterator &i) :
+			counter_(i.map_),
+			i_(i.i_),
 			map_(i.map_),
 			loc_(i.valid() ? i.loc_ : map_location())
-			{ 
+			{
 			}
-			
+
 		unit_xy_iterator(umap::iterator i, unit_map* map, map_location loc): counter_(map), i_(i), map_(map), loc_(loc) { }
-		
+
 		std::pair<map_location,unit>* operator->() const;
 		std::pair<map_location,unit>& operator*() const;
 
@@ -219,48 +219,48 @@ public:
 
 		bool operator!=(const unit_xy_iterator &that) const
 			{ return that.i_ != this->i_; }
-			
+
 		bool valid() const;
-			
+
 		friend struct const_unit_xy_iterator;
 		friend struct xy_accessor;
 		friend struct const_xy_accessor;
-		
-	private:	
-		iterator_counter counter_;	
-		
-		umap::iterator i_;	
+
+	private:
+		iterator_counter counter_;
+
+		umap::iterator i_;
 		unit_map* map_;
-		
-		map_location loc_;	
+
+		map_location loc_;
 	};
-	
+
 	struct const_unit_xy_iterator
 	{
 		const_unit_xy_iterator(const unit_iterator &i);
 		const_unit_xy_iterator(const const_unit_iterator &i);
-		
+
 		const_unit_xy_iterator() :
 			counter_(),
 			i_(),
 			map_(0),
 			loc_()
-		{ 
+		{
 		}
-							
+
 		const_unit_xy_iterator(umap::const_iterator i, const unit_map* map, map_location loc): counter_(map), i_(i), map_(map), loc_(loc)  { }
-					
-		const_unit_xy_iterator(const unit_xy_iterator &i) : 
-			counter_(i.map_), 
-			i_(i.i_), 
+
+		const_unit_xy_iterator(const unit_xy_iterator &i) :
+			counter_(i.map_),
+			i_(i.i_),
 			map_(i.map_),
 			loc_(i.valid() ? i.loc_ : map_location())
 		{
 		}
 
-		const_unit_xy_iterator(const const_unit_xy_iterator &i) : 
-			counter_(i.map_), 
-			i_(i.i_), 
+		const_unit_xy_iterator(const const_unit_xy_iterator &i) :
+			counter_(i.map_),
+			i_(i.i_),
 			map_(i.map_),
 			loc_(i.valid() ? i.loc_ : map_location())
 		{
@@ -278,20 +278,20 @@ public:
 
 		bool operator!=(const const_unit_xy_iterator &that) const
 			{ return that.i_ != this->i_; }
-			
+
 		bool valid() const;
-		
+
 		friend struct const_xy_accessor;
-		
-	private:		
+
+	private:
 		iterator_counter counter_;
-		
-		umap::const_iterator i_;	
+
+		umap::const_iterator i_;
 		const unit_map* map_;
-		
-		map_location loc_;	
+
+		map_location loc_;
 	};
-	
+
 	/**
 	 * Used to access the unit at a given position. Is valid as long as any unit
 	 * is in that position. Can switch from invalid to valid.
@@ -299,58 +299,58 @@ public:
 	struct xy_accessor
 	{
 		xy_accessor(const unit_iterator &i);
-		xy_accessor(const unit_xy_iterator &i);		
+		xy_accessor(const unit_xy_iterator &i);
 		xy_accessor() :
-			counter_(), 
-			i_(), 
+			counter_(),
+			i_(),
 			map_(),
 			loc_()
 		{
 		}
-		
+
 		std::pair<map_location,unit>* operator->();
 		std::pair<map_location,unit>& operator*();
-		
+
 		bool valid();
-		
+
 	private:
 		iterator_counter counter_;
-		
+
 		umap::iterator i_;
 		unit_map* map_;
-				
-		map_location loc_;		
+
+		map_location loc_;
 	};
-	
+
 	struct const_xy_accessor
 	{
 		const_xy_accessor(const unit_iterator &i);
 		const_xy_accessor(const unit_xy_iterator &i);
 		const_xy_accessor(const const_unit_iterator &i);
 		const_xy_accessor(const const_unit_xy_iterator &i);
-				
+
 		const_xy_accessor() :
-			counter_(), 
-			i_(), 
+			counter_(),
+			i_(),
 			map_(),
 			loc_()
 		{
 		}
-		
+
 		const std::pair<map_location,unit>* operator->();
 		const std::pair<map_location,unit>& operator*();
-		
+
 		bool valid();
-		
+
 	private:
 		iterator_counter counter_;
-		
+
 		umap::const_iterator i_;
 		const unit_map* map_;
-				
-		map_location loc_;		
+
+		map_location loc_;
 	};
-	
+
 	/**
 	 * Return object can be implicitly converted to any of the other iterators
 	 * or accessors
@@ -358,7 +358,7 @@ public:
 	unit_iterator find(const map_location &loc) ;
 	unit_iterator find(const size_t& id);
 	unit_iterator find(const std::string& id);
-	
+
 	/**
 	 * Return object can be implicity converted to any of the other const
 	 * iterators or accessors
@@ -366,7 +366,7 @@ public:
 	const_unit_iterator find(const map_location &loc) const;
 	const_unit_iterator find(const size_t& id) const;
 	const_unit_iterator find(const std::string& id) const;
-	
+
 	size_t count(const map_location &loc) const {
 		return lmap_.count(loc);
 	}
@@ -383,8 +383,8 @@ public:
 	 */
 	const_unit_iterator begin() const {
 		umap::const_iterator i = map_.begin();
-		while (i != map_.end() && !i->second.first) { 
-			++i; 
+		while (i != map_.end() && !i->second.first) {
+			++i;
 		}
 		return const_unit_iterator(i, this);
 	}
@@ -403,8 +403,8 @@ public:
 	 */
 	const_unit_iterator end() const {
 		return const_iterator(map_.end(), this);
-	}	
-	
+	}
+
 	size_t size() const {
 		return lmap_.size();
 	}
@@ -431,34 +431,34 @@ public:
 		lmap_.swap(o.lmap_);
 	}
 
-		
+
 private:
 	/** Removes invalid entries in map_. Called automatically when safe and needed. */
 	void clean_invalid();
-	
-	void invalidate(umap::iterator i) 
-		{if(i == map_.end()) return; i->second.first = false; ++num_invalid_;} 
-	void validate(umap::iterator i) 
+
+	void invalidate(umap::iterator i)
+		{if(i == map_.end()) return; i->second.first = false; ++num_invalid_;}
+	void validate(umap::iterator i)
 		{if(i == map_.end()) return; i->second.first = true; --num_invalid_;}
-	
+
 	void delete_all();
-	
+
 	void add_iter() const { ++num_iters_; }
 	void remove_iter() const { --num_iters_; }
 
-	
+
 	/**
 	 * Key: unit's underlying_id. bool indicates validity of pointer. pointer to
 	 * pair used to imitate a map<location, unit>
 	 */
 	umap map_;
-	
+
 	/** location -> unit.underlying_id(). Unit_map is usually used as though it
 	 * is a map<location, unit> and so we need this map for efficient
 	 * access/modification.
 	 */
 	lmap lmap_;
-	
+
 	mutable size_t num_iters_;
 	size_t num_invalid_;
 };

@@ -44,7 +44,7 @@ namespace reports {
 	const std::string& report_name(TYPE type);
 
 	struct element {
-		explicit element(const std::string& text) : 
+		explicit element(const std::string& text) :
 				image(),
 				text(text),
 				tooltip()

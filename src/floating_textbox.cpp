@@ -23,10 +23,10 @@
 #include <ctime>
 
 namespace gui{
-	floating_textbox::floating_textbox() : 
-		box_(NULL), 
-		check_(NULL), 
-		mode_(TEXTBOX_NONE), 
+	floating_textbox::floating_textbox() :
+		box_(NULL),
+		check_(NULL),
+		mode_(TEXTBOX_NONE),
 		label_string_(),
 		label_(0)
 	{}

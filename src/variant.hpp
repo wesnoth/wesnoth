@@ -143,7 +143,7 @@ public:
 	variant_iterator(const variant_iterator&);
 	variant_iterator(const std::vector<variant>::iterator& );
 	variant_iterator(const std::map<variant, variant>::iterator& );
-	
+
 	variant operator*() const;
 	variant_iterator operator++();
 	variant_iterator operator++(int);

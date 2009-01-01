@@ -13,15 +13,15 @@
 */
 
 /**
- * @file filesystem.cpp 
+ * @file filesystem.cpp
  * File-IO
  */
 
 #include "global.hpp"
 
-// Include files for opendir(3), readdir(3), etc. 
-// These files may vary from platform to platform, 
-// since these functions are NOT ANSI-conforming functions. 
+// Include files for opendir(3), readdir(3), etc.
+// These files may vary from platform to platform,
+// since these functions are NOT ANSI-conforming functions.
 // They may have to be altered to port to new platforms
 
 //for mkdir
@@ -83,7 +83,7 @@ bool ends_with(const std::string& str, const std::string& suffix)
 #define FINALCFG	"_final.cfg"
 #define INITIALCFG	"_initial.cfg"
 
-// Don't pass directory as reference, it seems to break on 
+// Don't pass directory as reference, it seems to break on
 // arklinux with GCC-4.3.
 void get_files_in_dir(const std::string directory,
 					  std::vector<std::string>* files,
@@ -93,8 +93,8 @@ void get_files_in_dir(const std::string directory,
 					  FILE_REORDER_OPTION reorder,
 					  file_tree_checksum* checksum)
 {
-	// If we have a path to find directories in, 
-	// then convert relative pathnames to be rooted 
+	// If we have a path to find directories in,
+	// then convert relative pathnames to be rooted
 	// on the wesnoth path
 #ifndef __AMIGAOS4__
 	if(!directory.empty() && directory[0] != '/' && !game_config::path.empty()){
@@ -143,7 +143,7 @@ void get_files_in_dir(const std::string directory,
 		if(entry->d_name[0] == '.')
 			continue;
 #ifdef __APPLE__
-		// HFS Mac OS X decomposes filenames using combining unicode characters. 
+		// HFS Mac OS X decomposes filenames using combining unicode characters.
 		// Try to get the precomposed form.
 		char macname[MAXNAMLEN+1];
 		CFStringRef cstr = CFStringCreateWithCString(NULL,
@@ -159,7 +159,7 @@ void get_files_in_dir(const std::string directory,
 		CFRelease(mut_str);
 		const std::string basename = macname;
 #else
-		// generic Unix 
+		// generic Unix
 		const std::string basename = entry->d_name;
 #endif /* !APPLE */
 
@@ -187,12 +187,12 @@ void get_files_in_dir(const std::string directory,
 					}
 					checksum->sum_size += st.st_size;
 					checksum->nfiles++;
-				}	
+				}
 			} else if (S_ISDIR(st.st_mode)) {
 				if (filter == SKIP_MEDIA_DIR
 						&& (basename == "images"|| basename == "sounds"))
 					continue;
-			
+
 				if (reorder == DO_REORDER &&
 						::stat((fullname+"/"+MAINCFG).c_str(), &st)!=-1 &&
 						S_ISREG(st.st_mode)) {
@@ -461,7 +461,7 @@ const std::string PREFERENCES_DIR = ".wesnoth" + std::string(game_config::versio
 	if(path.empty()) {
 		game_config::preferences_dir = get_cwd() + "/userdata";
 	} else if (path.size() > 2 && path[1] == ':') {
-		//allow absolute path override 
+		//allow absolute path override
 		game_config::preferences_dir = path;
 	} else {
 		BOOL (*SHGetSpecialFolderPath)(HWND, LPTSTR, int, BOOL);
@@ -729,7 +729,7 @@ bool file_exists(const std::string& name)
 #ifdef _WIN32
        struct stat st;
        return (::stat(name.c_str(), &st) == 0);
-#else     
+#else
 	struct stat st;
 	return (::stat(name.c_str(), &st) != -1);
 #endif
@@ -778,13 +778,13 @@ std::string next_filename(const std::string &dirname, unsigned int max)
 
 /**
  * Returns true if the file ends with '.gz'.
- * 
+ *
  * @param filename                The name to test.
  */
 bool is_gzip_file(const std::string& filename)
-{ 
-	return (filename.length() > 3 
-		&& filename.substr(filename.length() - 3) == ".gz"); 
+{
+	return (filename.length() > 3
+		&& filename.substr(filename.length() - 3) == ".gz");
 }
 
 file_tree_checksum::file_tree_checksum()

@@ -35,8 +35,8 @@
 #define ERR_NG LOG_STREAM(err, engine)
 #define LOG_NG LOG_STREAM(info, engine)
 
-playsingle_controller::playsingle_controller(const config& level, 
-		game_state& state_of_game, const int ticks, const int num_turns, 
+playsingle_controller::playsingle_controller(const config& level,
+		game_state& state_of_game, const int ticks, const int num_turns,
 		const config& game_config, CVideo& video, bool skip_replay) :
 	play_controller(level, state_of_game, ticks, num_turns, game_config, video, skip_replay),
 	cursor_setter(cursor::NORMAL),
@@ -256,7 +256,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 	for(config::child_list::const_iterator overlay = overlays.begin(); overlay != overlays.end(); ++overlay) {
 		gui_->add_overlay(map_location(**overlay, game_events::get_state_of_game()), (**overlay)["image"], (**overlay)["halo"], (**overlay)["team_name"], (**overlay)["fogged"]);
 	}
-	
+
 	// Read sound sources
 	assert(soundsources_manager_ != NULL);
 	const config::child_list& snd_sources = level_.get_children("sound_source");
@@ -330,7 +330,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 				set_victory_music_list(end_level.custom_endlevel_music);
 			}
 		}
-		
+
 		if(!team_manager_.get_teams().size())
 		{
 			return VICTORY; // this is probably only a story scenario, i.e. has its endlevel in the prestart event
@@ -379,7 +379,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 			} else {
 				return QUIT;
 			}
-		} else if (end_level.result == VICTORY) 
+		} else if (end_level.result == VICTORY)
 		{
 			gamestate_.completion = (!end_level.linger_mode ?
 			                         "running" : "victory");
@@ -474,7 +474,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 					}
 				}
 			}
-			
+
 			if(end_level.carryover_report)
 			{
 				gui::message_dialog(*gui_, title, report.str()).show();
@@ -875,7 +875,7 @@ bool playsingle_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, 
 			return (!browse_ || linger_) && !events::commands_disabled;
 
 		case hotkey::HOTKEY_DELAY_SHROUD:
-			return !linger_ && (current_team().uses_fog() || current_team().uses_shroud()) 
+			return !linger_ && (current_team().uses_fog() || current_team().uses_shroud())
 			&& !events::commands_disabled;
 		case hotkey::HOTKEY_UPDATE_SHROUD:
 			return !linger_ && !events::commands_disabled && current_team().auto_shroud_updates() == false;

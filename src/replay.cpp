@@ -15,7 +15,7 @@
 /**
  *  @file replay.cpp
  *  Replay control code.
- * 
+ *
  *  See http://www.wesnoth.org/wiki/ReplayWML for more info.
  */
 
@@ -139,17 +139,17 @@ replay recorder;
 
 replay::replay() :
 	cfg_(),
-	pos_(0), 
-	current_(NULL), 
+	pos_(0),
+	current_(NULL),
 	saveInfo_(),
 	skip_(false),
 	message_locations()
 {}
 
-replay::replay(const config& cfg) : 
-	cfg_(cfg), 
-	pos_(0), 
-	current_(NULL), 
+replay::replay(const config& cfg) :
+	cfg_(cfg),
+	pos_(0),
+	current_(NULL),
 	saveInfo_(),
 	skip_(false),
 	message_locations()
@@ -539,7 +539,7 @@ void replay::undo()
 	// Remember commands not yet synced and skip over them.
 	// We assume that all already sent (sent=yes) data isn't undoable
 	// even if not marked explicitely with undo=no.
-	
+
 	/**
 	 * @todo Change undo= to default to "no" and explicitely mark all
 	 * undoable commands with yes.

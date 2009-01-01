@@ -46,11 +46,11 @@ class terrain_builder
 public:
 	/** Used as a parameter for the get_terrain_at function. */
 	enum ADJACENT_TERRAIN_TYPE {
-			ADJACENT_BACKGROUND,	/**< 
+			ADJACENT_BACKGROUND,	/**<
 									 * Represents terrains which are to be
 									 * drawn behind unit sprites
 									 */
-			ADJACENT_FOREGROUND	    /**< 
+			ADJACENT_FOREGROUND	    /**<
 									 * Represents terrains which are to be
 									 * drawn in front of them.
 									 */
@@ -76,15 +76,15 @@ public:
 	 */
 	terrain_builder(const config& cfg, const config &level,
 		const gamemap* map, const std::string& offmap_image);
-		
+
 	const gamemap& map() const { return *map_; }
-		
-	/** 
-	 * Updates internals that cache map size. This should be called when the map 
+
+	/**
+	 * Updates internals that cache map size. This should be called when the map
 	 * size has changed.
 	 */
 	void reload_map();
-	
+
 	void change_map(const gamemap* m);
 
 	/** Returns a vector of strings representing the images to load & blit
@@ -139,7 +139,7 @@ public:
 		rule_image_variant(const std::string &image_string, const std::string &tod) :
 			image_string(image_string),
 			image(),
-			tod(tod) 
+			tod(tod)
 			{};
 
 		/** A string representing either the filename for an image, or
@@ -221,7 +221,7 @@ public:
 	 */
 	struct terrain_constraint
 	{
-		terrain_constraint() : 
+		terrain_constraint() :
 			loc(),
 			terrain_types_match(),
 			set_flag(),
@@ -230,7 +230,7 @@ public:
 			images()
 			{};
 
-		terrain_constraint(map_location loc) : 
+		terrain_constraint(map_location loc) :
 			loc(loc),
 			terrain_types_match(),
 			set_flag(),
@@ -363,7 +363,7 @@ private:
 		/**
 		 * Constructs a tilemap of dimensions x * y
 		 */
-		tilemap(int x, int y) : 
+		tilemap(int x, int y) :
 				tiles_((x + 4) * (y + 4)),
 				x_(x),
 				y_(y)
@@ -397,7 +397,7 @@ private:
 		 * Resets the whole tile map
 		 */
 		void reset();
-		
+
 		/**
 		 * Rebuilds the map to a new set of dimensions
 		 */
@@ -723,7 +723,7 @@ private:
 	 * A pointer to the gamemap class used in the current level.
 	 */
 	const gamemap* map_;
-	
+
 	/**
 	 * The tile_map_ for the current level, which is filled by the
 	 * build_terrains_ method to contain "tiles" representing images

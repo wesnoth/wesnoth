@@ -45,12 +45,12 @@ protected:
 	 * and other things like menu.
 	 */
 	virtual void slice_before_scroll();
-	
+
 	/**
 	 * Called at the very end of play_slice
 	 */
 	virtual void slice_end();
-	
+
 	/**
 	 * Inherited from command_executor, still declared pure virtual but might
 	 * provide some defaults
@@ -64,8 +64,8 @@ protected:
 	 * Get a reference to a display member a derived class uses
 	 */
 	virtual display& get_display() = 0;
-	
-	
+
+
 	/**
 	 * Derived classes should override this to return false when arrow keys
 	 * should not scroll the map, hotkeys not processed etc, for example
@@ -73,41 +73,41 @@ protected:
 	 * @returns true when arrow keys should scroll the map, false otherwise
 	 */
 	virtual bool have_keyboard_focus();
-	
+
 	/**
 	 * Handle scrolling by keyboard and moving mouse near map edges
 	 * @see is_keyboard_scroll_active
 	 * @return true when there was any scrolling, false otherwise
 	 */
 	bool handle_scroll(CKey& key, int mousex, int mousey, int mouse_flags);
-	
-	/** 
-	 * Process mouse- and keypress-events from SDL. 
+
+	/**
+	 * Process mouse- and keypress-events from SDL.
 	 * Not virtual but calls various virtual function to allow specialized
 	 * behaviour of derived classess.
 	 */
 	void handle_event(const SDL_Event& event);
-	
-	/** 
+
+	/**
 	 * Process keydown (only when the general map display does not have focus).
 	 * Overriden in derived classes
 	 */
 	virtual void process_keydown_event(const SDL_Event& event);
-	
-	/** 
+
+	/**
 	 * Process keyup (always).
 	 * Overriden in derived classes
 	 */
 	virtual void process_keyup_event(const SDL_Event& event);
-	
-	/** 
+
+	/**
 	 * Called after processing a mouse button up or down event
 	 * Overriden in derived classes
 	 */
 	virtual void post_mouse_press(const SDL_Event& event);
-	
+
 	virtual void show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu);
-	
+
 	virtual bool in_context_menu(hotkey::HOTKEY_COMMAND command) const;
 
 	const config& game_config_;

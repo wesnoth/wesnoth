@@ -30,10 +30,10 @@
 // -DCHECK for testing correctness
 // (run tools/wesnoth-attack-sim.c --check on output)
 #if defined(BENCHMARK) || defined(CHECK)
-#include <time.h> 	 
-#include <sys/time.h> 	 
-#include <stdio.h> 	 
-#include <stdlib.h> 	 
+#include <time.h>
+#include <sys/time.h>
+#include <stdio.h>
+#include <stdlib.h>
 #endif
 
 #ifdef ATTACK_PREDICTION_DEBUG
@@ -731,16 +731,16 @@ void combatant::consider_levelup(combatant &opp) {
 		}
 		// fully healed unless dead
 		hp_dist.back() = 1 - hp_dist.front();
-		
-		
 
-	} else if (u_.experience + ((opp.u_.level == 0) ? 4 : opp.u_.level * 8) 
+
+
+	} else if (u_.experience + ((opp.u_.level == 0) ? 4 : opp.u_.level * 8)
 						 >= u_.max_experience) {
 		// if we kill, we will level up. So then the damage we had
 		// becomes less probable since it's now conditional on us not
 		// levelling up.  This doesn't apply to the probability of us
 		// dying, of course.
-		float scalefactor = 
+		float scalefactor =
 			(1 - hp_dist.front() - opp.hp_dist.front()) / (1 - hp_dist.front());
 		std::vector<double>::iterator i;
 		i = hp_dist.begin();

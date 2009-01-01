@@ -12,8 +12,8 @@
    See the COPYING file for more details.
 */
 
-/** 
- * @file multiplayer_create.cpp 
+/**
+ * @file multiplayer_create.cpp
  * Create a multiplayer-game: select map, players, options etc.
  */
 
@@ -274,7 +274,7 @@ create::parameters& create::get_parameters()
 	if(mp_countdown_reservoir_time_val > 0 && mp_countdown_init_time_val > mp_countdown_reservoir_time_val)
 		mp_countdown_init_time_val = mp_countdown_reservoir_time_val;
 
-	// Updates the values in the "parameters_" member to match 
+	// Updates the values in the "parameters_" member to match
 	// the values selected by the user with the widgets:
 	parameters_.name = name_entry_.text();
 	if (size_t(era_combo_.selected()) >= era_list.size()) {
@@ -464,7 +464,7 @@ void create::process_event()
 		parameters_.scenario_data = generator_->create_scenario(std::vector<std::string>());
 		map_changed = true;
 
-		// Set the scenario to have placing of sides 
+		// Set the scenario to have placing of sides
 		// based on the terrain they prefer
 		parameters_.scenario_data["modify_placing"] = "true";
 	}
@@ -491,7 +491,7 @@ void create::process_event()
 
 		launch_game_.enable(map.get() != NULL);
 
-		// If there are less sides in the configuration than there are 
+		// If there are less sides in the configuration than there are
 		// starting positions, then generate the additional sides
 		const int map_positions = map.get() != NULL ? map->num_valid_starting_positions() : 0;
 
@@ -552,7 +552,7 @@ void create::process_event()
 
 		// These are per player, always show values of player 1.
 		/**
-		 * @todo This might not be 100% correct, but at the moment 
+		 * @todo This might not be 100% correct, but at the moment
 		 * it is not possible to show the fog and shroud per player.
 		 * This might change in the future.
 		 * NOTE when 'load game' is selected there are no sides.

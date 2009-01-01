@@ -31,9 +31,9 @@ const unsigned DEFAULT_FADE_RANGE       = 14;
 
 unsigned int positional_source::last_id = 0;
 
-manager::manager(const display &disp) : 
+manager::manager(const display &disp) :
 	sources_(),
-	disp_(disp) 
+	disp_(disp)
 {
 	disp_.scroll_event().attach_handler(this);
 	update_positions();
@@ -110,7 +110,7 @@ void manager::write_sourcespecs(config& cfg) const
 {
 	for(positional_source_const_iterator i = sources_.begin(); i != sources_.end(); ++i) {
 		assert(i->second);
-		
+
 		config& child = cfg.add_child("sound_source");
 		child["id"] = i->first;
 		i->second->write_config(child);
@@ -217,7 +217,7 @@ void positional_source::write_config(config& cfg) const
 	cfg["delay"] = str_cast<unsigned int>(this->min_delay_);
 	cfg["chance"] = str_cast<unsigned int>(this->chance_);
 	cfg["check_fogged"] = this->check_fogged_ ? "yes" : "no";
-	
+
 	cfg["x"] = cfg["y"] = "";
 	bool first_loc = true;
 	foreach(const map_location& loc, locations_) {
@@ -230,7 +230,7 @@ void positional_source::write_config(config& cfg) const
 		cfg["x"] += str_cast<unsigned int>(loc.x);
 		cfg["y"] += str_cast<unsigned int>(loc.y);
 	}
-	
+
 	cfg["loop"] = str_cast<unsigned int>(this->loops_);
 	cfg["full_range"] = str_cast<unsigned int>(this->range_);
 	cfg["fade_range"] = str_cast<unsigned int>(this->faderange_);
@@ -249,7 +249,7 @@ sourcespec::sourcespec(const config& cfg) :
 {
 	const std::vector<std::string>& vx = utils::split(cfg["x"]);
 	const std::vector<std::string>& vy = utils::split(cfg["y"]);
-	
+
 	if(vx.empty() || vy.empty()) {
 		lg::wml_error << "missing sound source locations";
 	}

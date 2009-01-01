@@ -14,7 +14,7 @@
 
 /**
  * this file implements game config caching
- * to speed up startup 
+ * to speed up startup
  ***/
 
 #ifndef CONFIG_CACHE_HPP_INCLUDED
@@ -69,7 +69,7 @@ namespace game_config {
 				 **/
 				~scoped_preproc_define_internal()
 				{
-					if(add_) 
+					if(add_)
 					{
 						if (path_.empty())
 							T::instance().remove_define(name_);
@@ -180,7 +180,7 @@ namespace game_config {
 		 * Force cache checksum validation.
 		 **/
 		void recheck_filetree_checksum();
-		
+
 	};
 
 	struct add_define_from_file;
@@ -210,10 +210,10 @@ namespace game_config {
 
 		/**
 		 * Used to let std::for_each insert new defines to active_map
-		 * map to active 
+		 * map to active
 		 **/
 		void insert_to_active(const preproc_map::value_type& def);
-		
+
 		private:
 		static state state_;
 		static config_cache_transaction* active_;

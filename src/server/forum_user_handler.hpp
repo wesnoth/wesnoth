@@ -97,7 +97,7 @@ class fuh : public user_handler {
 		// Throws user_handler::error
 		MYSQL_RES* db_query(const std::string& query);
 
-		// Throws user_handler::error via db_query() 
+		// Throws user_handler::error via db_query()
 		std::string db_query_to_string(const std::string& query);
 		MYSQL *conn;
 

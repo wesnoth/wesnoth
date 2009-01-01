@@ -12,8 +12,8 @@
    See the COPYING file for more details.
 */
 
-/** 
- * @file display.hpp 
+/**
+ * @file display.hpp
  *
  * map_display and display: classes which take care of
  * displaying the map and game-data on the screen.
@@ -68,15 +68,15 @@ public:
 	display(CVideo& video, const gamemap* map, const config& theme_cfg,
 			const config& cfg, const config& level);
 	virtual ~display();
-	
-	/** 
-	 * Updates internals that cache map size. This should be called when the map 
+
+	/**
+	 * Updates internals that cache map size. This should be called when the map
 	 * size has changed.
 	 */
 	void reload_map();
-	
+
 	void change_map(const gamemap* m);
-	
+
 	static Uint32 rgb(Uint8 red, Uint8 green, Uint8 blue)
 		{ return 0xFF000000 | (red << 16) | (green << 8) | blue; }
 
@@ -185,7 +185,7 @@ public:
 		int left;
 		int right;
 		int top[2]; // for even and odd values of x, respectively
-		int bottom[2]; 
+		int bottom[2];
 
 		/**  very simple iterator to walk into the rect_of_hexes */
 		struct iterator {
@@ -217,7 +217,7 @@ public:
 		return viewpoint_ && viewpoint_->shrouded(loc);
 	}
 	/** Returns true if location (x,y) is covered in fog. */
-	bool fogged(const map_location& loc) const { 
+	bool fogged(const map_location& loc) const {
 		return viewpoint_ && viewpoint_->fogged(loc);
 	}
 
@@ -226,26 +226,26 @@ public:
 	 * (to more clearly show where hexes are)
 	 */
 	void set_grid(const bool grid) { grid_ = grid; }
-	
+
 	/** Getter for the x,y debug overlay on tiles */
 	bool get_draw_coordinates() { return draw_coordinates_; }
 	/** Setter for the x,y debug overlay on tiles */
 	void set_draw_coordinates(bool value) { draw_coordinates_ = value; }
-	
+
 	/** Getter for the terrain code debug overlay on tiles */
 	bool get_draw_terrain_codes() { return draw_terrain_codes_; }
 	/** Setter for the terrain code debug overlay on tiles */
-	void set_draw_terrain_codes(bool value) { draw_terrain_codes_ = value; }	
+	void set_draw_terrain_codes(bool value) { draw_terrain_codes_ = value; }
 
 	/** Save a (map-)screenshot and return the estimated file size */
 	int screenshot(std::string filename, bool map_screenshot = false);
 
 	/** Invalidates entire screen, including all tiles and sidebar. Calls redraw observers. */
 	void redraw_everything();
-	
+
 	/** Adds a redraw observer, a function object to be called when redraw_everything is used */
 	void add_redraw_observer(boost::function<void(display&)> f);
-	
+
 	/** Clear the redraw observers */
 	void clear_redraw_observers();
 
@@ -260,15 +260,15 @@ public:
 
 	// Will be overridden in the display subclass
 	virtual void draw_minimap_units() {};
-	
+
 	/** Function to invalidate all tiles. */
 	void invalidate_all();
 
 	/** Function to invalidate a specific tile for redrawing. */
 	bool invalidate(const map_location& loc);
-	
+
 	bool invalidate(const std::set<map_location>& locs);
-	
+
 	/** invalidate all hexes under the rectangle rect (in screen coordinates) */
 	bool invalidate_locations_in_rect(const SDL_Rect& rect);
 
@@ -279,7 +279,7 @@ public:
 	 * Function to invalidate animated terrains which may have changed.
 	 */
 	virtual void invalidate_animations();
-	
+
 	/**
 	 * Per-location invalidation called by invalidate_animations()
 	 * defaults to no action, overriden by derived classes
@@ -298,21 +298,21 @@ public:
 	 * These functions require a prerendered surface.
 	 * Since they are drawn at the top, they are not influenced by TOD, shroud etc.
 	 */
-	void set_hex_overlay(const map_location& loc, const surface& image) 
+	void set_hex_overlay(const map_location& loc, const surface& image)
 		{ hex_overlay_[loc] = image; }
 
 	void clear_hex_overlay(const map_location& loc);
 
-	void set_selected_hex_overlay(const surface& image) 
+	void set_selected_hex_overlay(const surface& image)
 		{ selected_hex_overlay_ = image; }
 
-	void clear_selected_hex_overlay() 
+	void clear_selected_hex_overlay()
 		{ selected_hex_overlay_ = NULL; }
 
-	void set_mouseover_hex_overlay(const surface& image) 
+	void set_mouseover_hex_overlay(const surface& image)
 		{ mouseover_hex_overlay_ = image; }
 
-	void clear_mouseover_hex_overlay() 
+	void clear_mouseover_hex_overlay()
 		{ mouseover_hex_overlay_ = NULL; }
 
 	/**
@@ -336,7 +336,7 @@ public:
 	void rebuild_all();
 
 	const theme::menu* menu_pressed();
-	
+
 	/**
 	 * Finds the menu which has a given item in it,
 	 * and enables or disables it.
@@ -347,7 +347,7 @@ public:
 
 	/** Delay routines: use these not SDL_Delay (for --nogui). */
 	void delay(unsigned int milliseconds) const;
-	
+
 	/**
 	 * Set/Get whether 'turbo' mode is on.
 	 * When turbo mode is on, everything moves much faster.
@@ -429,7 +429,7 @@ public:
 	/** Check if a tile is fully on screen. */
 	bool tile_on_screen(const map_location& loc);
 
-	/** 
+	/**
 	 * Draws invalidated items.
 	 * If update is true, will also copy the display to the frame buffer.
 	 * If force is true, will not skip frames, even if running behind.
@@ -477,13 +477,13 @@ protected:
 	 * invalidated hexes takes place. No action here by default.
 	 */
 	virtual void pre_draw() {}
-	
+
 	/**
 	 * Get the clipping rectangle for drawing.
 	 * Virtual since the editor might use a slightly different approach.
 	 */
 	virtual const SDL_Rect& get_clip_rect();
-	
+
 	/**
 	 * Only called when there's actual redrawing to do. Loops through
 	 * invalidated locations and redraws them. Derived classes can override
@@ -491,18 +491,18 @@ protected:
 	 * base class's function.
 	 */
 	virtual void draw_invalidated();
-	
+
 	/**
 	 * Hook for actions to take right after draw() calls drawing_buffer_commit
 	 * No action here by default.
 	 */
-	virtual void post_commit() {} 
-	
+	virtual void post_commit() {}
+
 	/**
 	 * Redraws a single gamemap location.
 	 */
 	virtual void draw_hex(const map_location& loc);
-	
+
 	/**
 	 * @returns the image type to be used for the passed hex
 	 * (mostly to do with brightening like for mouseover)
@@ -513,13 +513,13 @@ protected:
 	 * Update time of day member to the tod to be used in the current drawing
 	 */
 	virtual void update_time_of_day();
-	
+
 	/**
-	 * Called near the end of a draw operation, derived classes can use this 
+	 * Called near the end of a draw operation, derived classes can use this
 	 * to render a specific sidebar. Very similar to post_commit.
 	 */
 	virtual void draw_sidebar();
-	
+
 	/**
 	 * Draws the border tile overlay.
 	 * The routine determines by itself which border it is on
@@ -626,7 +626,7 @@ public:
 		int x;                      /**< x screen coordinate to render at. */
 		int y;                      /**< y screen coordinate to render at. */
 		std::vector<surface> surf;  /**< surface(s) to render. */
-		SDL_Rect clip;              /**< 
+		SDL_Rect clip;              /**<
 		                             * The clipping area of the source if
 		                             * ommitted the entire source is used.
 		                             */
@@ -639,35 +639,35 @@ public:
 	 * If needed in WML use the name and map that to the enum value.
 	 */
 	enum tdrawing_layer{
-		LAYER_TERRAIN_BG,          /**< 
+		LAYER_TERRAIN_BG,          /**<
 		                            * Layer for the terrain drawn behind the
 		                            * unit.
 		                            */
-		LAYER_TERRAIN_TMP_BG,      /**< 
+		LAYER_TERRAIN_TMP_BG,      /**<
 		                            * Layer which holds stuff that needs to be
 		                            * sorted out further, but under units.
 		                            */
 		LAYER_UNIT_FIRST,          /**< Reserve layeres to be selected for WML. */
 		LAYER_UNIT_BG = LAYER_UNIT_FIRST+10,             /**< Used for the ellipse behind the unit. */
 		LAYER_UNIT_DEFAULT=LAYER_UNIT_FIRST+40,/**<default layer for drawing units */
-		LAYER_TERRAIN_FG = LAYER_UNIT_FIRST+50, /**< 
+		LAYER_TERRAIN_FG = LAYER_UNIT_FIRST+50, /**<
 		                            * Layer for the terrain drawn in front of
 		                            * the unit.
 		                            */
 		LAYER_UNIT_MOVE_DEFAULT=LAYER_UNIT_FIRST+60/**<default layer for drawing moving units */,
-		LAYER_UNIT_FG =  LAYER_UNIT_FIRST+80, /**< 
+		LAYER_UNIT_FG =  LAYER_UNIT_FIRST+80, /**<
 		                            * Used for the ellipse in front of the
 		                            * unit.
 		                            */
 		LAYER_UNIT_MISSILE_DEFAULT = LAYER_UNIT_FIRST+90, /**< default layer for missile frames*/
 		LAYER_UNIT_LAST=LAYER_UNIT_FIRST+100,
-		LAYER_TERRAIN_TMP_FG,      /**< 
+		LAYER_TERRAIN_TMP_FG,      /**<
 		                            * Layer which holds stuff that needs to be
 		                            * sorted out further, but on top of units.
 		                            */
 		LAYER_REACHMAP,            /**< "black stripes" on unreachable hexes. */
 		LAYER_FOG_SHROUD,          /**< Fog and shroud. */
-		LAYER_UNIT_BAR,            /**< 
+		LAYER_UNIT_BAR,            /**<
 		                            * Unit bars and overlays are drawn on this
 		                            * layer (for testing here).
 		                            */
@@ -676,7 +676,7 @@ public:
 		LAYER_LINGER_OVERLAY,      /**< The overlay used for the linger mode. */
 		LAYER_BORDER,              /**< The border of the map. */
 
-		LAYER_LAST_LAYER           /**< 
+		LAYER_LAST_LAYER           /**<
 		                            * Don't draw to this layer it's a dummy to
 		                            * size the vector.
 		                            */
@@ -794,9 +794,9 @@ private:
 	double idle_anim_rate_;
 
 	surface map_screenshot_surf_;
-	
+
 	std::vector<boost::function<void(display&)> > redraw_observers_;
-	
+
 	/** Debug flag - overlay x,y coords on tiles */
 	bool draw_coordinates_;
 	/** Debug flag - overlay terrain codes on tiles */

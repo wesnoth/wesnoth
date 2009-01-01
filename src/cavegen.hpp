@@ -32,7 +32,7 @@ public:
 	void user_config(display& /* disp*/) { return; }
 
 	std::string name() const { return "cave"; }
-	
+
 	std::string config_name() const;
 
 	std::string create_map(const std::vector<std::string>& args);
@@ -70,11 +70,11 @@ private:
 	void place_passage(const passage& p);
 
 	// Note we assume a border size of 1.
-	bool on_board(const map_location& loc) const 
+	bool on_board(const map_location& loc) const
 	{
 		return loc.x > 0 && loc.y > 0 &&
 			loc.x < static_cast<long>(width_ - 2) &&
-			loc.y < static_cast<long>(height_ - 2); 
+			loc.y < static_cast<long>(height_ - 2);
 	}
 
 	void set_terrain(map_location loc, t_translation::t_terrain t);

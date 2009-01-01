@@ -39,11 +39,11 @@ int show_file_chooser_dialog(display &disp, std::string &filename,
 	return d.result();
 }
 
-file_dialog::file_dialog(display &disp, const std::string& file_path, 
+file_dialog::file_dialog(display &disp, const std::string& file_path,
 		const std::string& title, bool show_directory_buttons) :
-	gui::dialog(disp, title, file_path, gui::OK_CANCEL), 
-	show_directory_buttons_(show_directory_buttons), 
-	files_list_(NULL), 
+	gui::dialog(disp, title, file_path, gui::OK_CANCEL),
+	show_directory_buttons_(show_directory_buttons),
+	files_list_(NULL),
 	last_selection_(0),
 	last_textbox_text_(),
 	chosen_file_()
@@ -219,7 +219,7 @@ void file_dialog::action(gui::dialog_process_info &dp_info) {
 	{
 		chosen_file_ = unformat_filename(textbox_text());
 		last_textbox_text_ = textbox_text();
-		
+
 		// Do type-a-head search in listbox
 		files_list_->select_file(textbox_text());
 	}

@@ -137,12 +137,12 @@ namespace {
 		if(childpid == 0) {
 			/*** We're the child process ***/
 
-			// execute the script, we run is a separate thread and share the 
+			// execute the script, we run is a separate thread and share the
 			// output which will make the logging look ugly.
 			execlp(script.c_str(), script.c_str(), addon.c_str(), (char *)NULL);
 
 			// exec() and family never return; if they do, we have a problem
-			std::cerr << "ERROR: exec failed with errno " << errno << " for addon " << addon 
+			std::cerr << "ERROR: exec failed with errno " << errno << " for addon " << addon
 			          << '\n';
 			exit(errno);
 
@@ -166,10 +166,10 @@ namespace {
 		return lexical_cast_default<int>(cfg_["port"], DEFAULT_CAMPAIGND_PORT);
 	}
 
-	campaign_server::campaign_server(const std::string& cfgfile, 
+	campaign_server::campaign_server(const std::string& cfgfile,
 			size_t min_thread, size_t max_thread) :
 		cfg_(),
-		file_(cfgfile), 
+		file_(cfgfile),
 		net_manager_(min_thread,max_thread),
 		server_manager_(load_config()),
 		hooks_(),
@@ -237,7 +237,7 @@ namespace {
 			// Convert all addons to gzip
  			config::child_list camps = campaigns().get_children("campaign");
  			LOG_CS << "Converting all stored addons to gzip format. Number of addons: " << camps.size() <<"\n";
- 
+
  			for (config::child_list::iterator itor = camps.begin();
  					itor != camps.end(); ++itor)
  			{
@@ -250,12 +250,12 @@ namespace {
  					continue;
  				}
  				read_compressed(data, *binary_stream);
- 
+
  				scoped_ostream gzip_stream = ostream_file((**itor)["filename"]);
  				config_writer writer(*gzip_stream, true, "",compress_level_);
  				writer.write(data);
  			}
- 			
+
  			cfg_["converted_to_gzipped_data"] = "yes";
  		}
 		if (cfg_["encoded"] != "yes")
@@ -263,7 +263,7 @@ namespace {
 			// Convert all addons to gzip
  			config::child_list camps = campaigns().get_children("campaign");
  			LOG_CS << "Encoding all stored campaigns. Number of addons: " << camps.size() <<"\n";
- 
+
  			for (config::child_list::iterator itor = camps.begin();
  					itor != camps.end(); ++itor)
  			{
@@ -278,7 +278,7 @@ namespace {
 					boost::iostreams::filtering_stream<boost::iostreams::output> out_filter;
 					out_filter.push(boost::iostreams::gzip_compressor(boost::iostreams::gzip_params(compress_level_)));
 					out_filter.push(*out_file);
-					
+
 					unsigned char c = in_filter.get();
 					while( in_filter.good())
 					{
@@ -297,7 +297,7 @@ namespace {
 
 				}
 			}
- 			
+
 			cfg_["encoded"] = "yes";
 		}
  	}
@@ -305,9 +305,9 @@ namespace {
 	void campaign_server::run()
 	{
  		convert_binary_to_gzip();
- 		
+
  		if (!cfg_["control_socket"].empty())
- 			input_ = new input_stream(cfg_["control_socket"]); 
+ 			input_ = new input_stream(cfg_["control_socket"]);
 		bool gzipped;
 		network::connection sock = 0;
 		for(int increment = 0; ; ++increment) {
@@ -407,7 +407,7 @@ namespace {
  								scoped_istream stream = istream_file((*campaign)["filename"]);
  								config cfg;
  								read_gz(cfg, *stream);
-								std::cerr << " size: " << 
+								std::cerr << " size: " <<
 									(network::send_data(cfg, sock, false)/1024)
 									<< "kb\n";
 							}
@@ -541,7 +541,7 @@ namespace {
 							continue;
 						}
 
-						if((*campaign)["passphrase"] != (*erase)["passphrase"] 
+						if((*campaign)["passphrase"] != (*erase)["passphrase"]
 								&& (campaigns()["master_password"] == ""
 								|| campaigns()["master_password"] != (*erase)["passphrase"])) {
 

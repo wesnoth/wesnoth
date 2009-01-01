@@ -101,7 +101,7 @@ void editor_display::draw_sidebar()
 		refresh_report(reports::POSITION, reports::report(lexical_cast<std::string>(mouseoverHex_)));
 	}
 	refresh_report(reports::VILLAGES, reports::report(lexical_cast<std::string>(get_map().villages().size())));
-	refresh_report(reports::EDITOR2_TOOL_HINT, reports::report(toolbar_hint_));	
+	refresh_report(reports::EDITOR2_TOOL_HINT, reports::report(toolbar_hint_));
 }
 
 

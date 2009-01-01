@@ -61,12 +61,12 @@ namespace gui {
 	{
 		drop_groups::iterator end = groups_.upper_bound(group_->get_group_id());
 		drop_target::drop_groups::iterator itor
-			= std::find_if(groups_.lower_bound(group_->get_group_id()), 
+			= std::find_if(groups_.lower_bound(group_->get_group_id()),
 					end,
 					boost::bind(&drop_target::hit_rect,
 						boost::bind(&drop_groups::value_type::second,_1)
 						,loc_, id_));
-	
+
 		if (itor == end)
 			return -1;
 
@@ -90,7 +90,7 @@ namespace gui {
 			return false;
 		int this_right = loc_.x + loc_.w;
 		int this_lower = loc_.y + loc_.h;
-		
+
 		int hit_right = hit_loc.x + hit_loc.w;
 		int hit_lower = hit_loc.y + hit_loc.h;
 

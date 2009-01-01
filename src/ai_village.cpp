@@ -26,8 +26,8 @@
 
 #include <numeric>
 
-#define DBG_AI LOG_STREAM(debug, ai) 
-#define LOG_AI LOG_STREAM(info, ai) 
+#define DBG_AI LOG_STREAM(debug, ai)
+#define LOG_AI LOG_STREAM(info, ai)
 #define WRN_AI LOG_STREAM(warn, ai)
 
 // Basic strategy
@@ -39,7 +39,7 @@
 //    - If 0 ignore village.
 //    - If 1 capture and remove unit from available list.
 //    - Else store.
-// 
+//
 // 4. Remove units who can't reach a village.
 //
 // 5. Dispatch single solutions:
@@ -51,10 +51,10 @@
 //    - For villages that can be captured by 1 unit, dispatch that unit.
 //    - how many villages left?
 //      - If 1 dispatch a unit.
-// 
+//
 // 6. If no units we finish.
 //
-// At this point we have X villages with Y units left where 
+// At this point we have X villages with Y units left where
 // X > 1 && Y > 1 and every unit can reach at least 2 villages
 // and every village can be visited by at least 2 units.
 //
@@ -65,15 +65,15 @@
 //  In the following example:
 //
 //	village x1,y1   x2,y2   x3,y3   x4,y4
-//	unit  
+//	unit
 //	1       X       X       X       X
 //	2       -       X       X       -
 //	3       X       -       -       X
 //
-//	We want to find squares of 2 units who both can reach the same village. 
+//	We want to find squares of 2 units who both can reach the same village.
 //
 //	village x1,y1   x2,y2   x3,y3   x4,y4
-//	unit  
+//	unit
 //	               ___________
 //	1       X|     |X       X|     |X
 //	        _|     |         |     |_
@@ -82,17 +82,17 @@
 //	               |_________|
 //	        __                     __
 //	3       X|      -       -      |X
-//   
+//
 //  8. - Find a square where at least 1 unit can visit only 2 villages.
 //     - Dispatch the units.
 //     - Could the second unit also visit 2 villages and where the 2 villages
 //       only visitable by two units?
-//       - Yes found a perfect solution for them 
+//       - Yes found a perfect solution for them
 //         - Reduce the village count.
 //         - Restart ourselves recursively.
 //         - Finsished.
 //
-//       - No. 
+//       - No.
 //         - Remove the taken villages from the list.
 //         - Go to step 5.
 //
@@ -109,10 +109,10 @@ namespace {
 	/** debug log level for AI enabled? */
 	bool debug = false;
 
-	typedef std::map<map_location /* unit location */, 
+	typedef std::map<map_location /* unit location */,
 		std::vector<map_location /* villages we can reach */> > treachmap;
 
-	typedef std::vector<std::pair<map_location /* destination */, 
+	typedef std::vector<std::pair<map_location /* destination */,
 		map_location /* start */ > > tmoves;
 }
 
@@ -151,7 +151,7 @@ static void full_dispatch(treachmap& reachmap, tmoves& moves);
 static void dump_reachmap(treachmap& reachmap);
 
 bool ai::get_villages(std::map<map_location,paths>& possible_moves,
-		const move_map& dstsrc, const move_map& enemy_dstsrc, 
+		const move_map& dstsrc, const move_map& enemy_dstsrc,
 		unit_map::iterator &leader)
 {
 	DBG_AI << "deciding which villages we want...\n";
@@ -168,11 +168,11 @@ bool ai::get_villages(std::map<map_location,paths>& possible_moves,
 	debug = (!lg::debug.dont_log(lg::ai));
 
 	// Find our units who can move.
-	treachmap reachmap;	
+	treachmap reachmap;
 	for(unit_map::const_iterator u_itor = units_.begin();
 			u_itor != units_.end(); ++u_itor) {
 
-		if(u_itor->second.side() == team_num_ 
+		if(u_itor->second.side() == team_num_
 				&& u_itor->second.movement_left()) {
 			reachmap.insert(std::make_pair(u_itor->first,	std::vector<map_location>()));
 		}
@@ -264,15 +264,15 @@ void ai::find_villages(
 {
 	std::map<location, double> vulnerability;
 
-	const bool passive_leader = recruiting_preferred_ ||  
+	const bool passive_leader = recruiting_preferred_ ||
 		utils::string_bool(current_team().ai_parameters()["passive_leader"]);
 
 	size_t min_distance = 100000;
-	
+
 	// When a unit is dispatched we need to make sure we don't
 	// dispatch this unit a second time, so store them here.
 	std::vector<map_location> dispatched_units;
-	for(std::multimap<map_location, map_location>::const_iterator 
+	for(std::multimap<map_location, map_location>::const_iterator
 			j = dstsrc.begin();
 			j != dstsrc.end(); ++j) {
 
@@ -347,14 +347,14 @@ void ai::find_villages(
 		}
 
 		const unit& un = u->second;
-		//FIXME: suokko turned this 2:1 to 1.5:1.0.  
+		//FIXME: suokko turned this 2:1 to 1.5:1.0.
 		//and dropped the second term of the multiplication.  Is that better?
 		const double threat_multipler = (current_loc == leader_loc?2:1) * current_team().caution() * 10;
 		if(un.hitpoints() < (threat_multipler*threat*2*un.defense_modifier(map_.get_terrain(current_loc)))/100) {
 			continue;
 		}
 
-		// If the next and previous destination differs from our current destination, 
+		// If the next and previous destination differs from our current destination,
 		// we're the only one who can reach the village -> dispatch.
 		std::multimap<map_location, map_location>::const_iterator next = j;
 		++next; // j + 1 fails
@@ -363,8 +363,8 @@ void ai::find_villages(
 		if(!at_begin) {
 			--prev;
 		}
-#if 1		
-		if((next == dstsrc.end() || next->first != current_loc) 
+#if 1
+		if((next == dstsrc.end() || next->first != current_loc)
 				&& (at_begin || prev->first != current_loc)) {
 
 			DBG_AI << "Dispatched unit at " << j->second << " to village " << j->first << '\n';
@@ -374,11 +374,11 @@ void ai::find_villages(
 			dispatched_units.push_back(j->second);
 			continue;
 		}
-#endif		
+#endif
 		reachmap[j->second].push_back(current_loc);
 	}
 
-	DBG_AI << moves.size() << " units already dispatched, " 
+	DBG_AI << moves.size() << " units already dispatched, "
 		<< reachmap.size() << " left to evaluate.\n";
 }
 
@@ -407,7 +407,7 @@ static void dispatch(treachmap& reachmap, tmoves& moves)
 			} else {
 				DBG_AI << "dispatch_unit_simple() couldn't dispatch more units.\n";
 			}
-		}			
+		}
 
 		if(dispatch_village_simple(reachmap, moves, village_count)) {
 			dispatched = true;
@@ -419,7 +419,7 @@ static void dispatch(treachmap& reachmap, tmoves& moves)
 				DBG_AI << "dispatch_village_simple() couldn't dispatch more units.\n";
 			}
 		}
-		
+
 		if(reachmap.size() != 0 && dispatched) {
 			DBG_AI << reachmap.size() << " unit(s) left restarting simple dispatching.\n";
 
@@ -432,7 +432,7 @@ static void dispatch(treachmap& reachmap, tmoves& moves)
 		return;
 	}
 
-	DBG_AI << reachmap.size() << " units left for complex dispatch with " 
+	DBG_AI << reachmap.size() << " units left for complex dispatch with "
 		<< village_count << " villages left.\n";
 
 	dump_reachmap(reachmap);
@@ -445,7 +445,7 @@ static void dispatch(treachmap& reachmap, tmoves& moves)
 static bool dispatch_unit_simple(treachmap& reachmap, tmoves& moves)
 {
 	bool result = false;
-	
+
 	treachmap::iterator itor = reachmap.begin();
 	while(itor != reachmap.end()) {
 		if(itor->second.size() == 1) {
@@ -473,7 +473,7 @@ static bool dispatch_unit_simple(treachmap& reachmap, tmoves& moves)
 
 	if(reachmap.size() == 1) {
 		// One unit left.
-		DBG_AI << "Dispatched _last_ unit at " << reachmap.begin()->first 
+		DBG_AI << "Dispatched _last_ unit at " << reachmap.begin()->first
 			<< " to village " << reachmap.begin()->second[0] << '\n';
 
 		moves.push_back(std::make_pair(
@@ -497,13 +497,13 @@ static bool dispatch_village_simple(
 		dispatched = false;
 
 		// build the reverse map
-		std::map<map_location /*village location*/, 
+		std::map<map_location /*village location*/,
 			std::vector<map_location /* units that can reach it*/> >reversemap;
 
 		treachmap::const_iterator itor = reachmap.begin();
 		for(;itor != reachmap.end(); ++itor) {
 
-			for(std::vector<map_location>::const_iterator 
+			for(std::vector<map_location>::const_iterator
 					v_itor = itor->second.begin();
 			 		v_itor != itor->second.end(); ++v_itor) {
 
@@ -562,7 +562,7 @@ static treachmap::iterator remove_unit(
 	assert(unit->second.empty());
 
 	if(unit->first == leader_loc && best_leader_loc != map_location::null_location) {
-		DBG_AI << "Dispatch leader at " << leader_loc << " closer to the keep at " 
+		DBG_AI << "Dispatch leader at " << leader_loc << " closer to the keep at "
 			<< best_leader_loc << '\n';
 
 		moves.push_back(std::make_pair(best_leader_loc, leader_loc));
@@ -597,10 +597,10 @@ static void dispatch_complex(
 
 	// We want to test the units, the ones who can reach the least
 	// villages first so this is our lookup map.
-	std::multimap<size_t /* villages_per_unit value*/, 
+	std::multimap<size_t /* villages_per_unit value*/,
 		size_t /*villages_per_unit index*/> unit_lookup;
 
-	std::vector</*unit*/std::vector</*village*/bool> > 
+	std::vector</*unit*/std::vector</*village*/bool> >
 		matrix(reachmap.size(), std::vector<bool>(village_count, false));
 
 	treachmap::const_iterator itor = reachmap.begin();
@@ -615,7 +615,7 @@ static void dispatch_complex(
 
 			size_t v_index;
 			// find the index of the v in the villages
-			std::vector<map_location>::const_iterator v_itor = 
+			std::vector<map_location>::const_iterator v_itor =
 				std::find(villages.begin(), villages.end(), itor->second[v]);
 			if(v_itor == villages.end()) {
 				v_index = villages.size(); // will be the last element after push_back.
@@ -625,7 +625,7 @@ static void dispatch_complex(
 			}
 
 			units_per_village[v_index]++;
-			
+
 			matrix[u][v_index] = true;
 		}
 	}
@@ -663,8 +663,8 @@ static void dispatch_complex(
 	}
 
 	// Test the special case, everybody can reach all villages
-	const bool reach_all = ((village_count == unit_count) 
-		&& (std::accumulate(villages_per_unit.begin(), villages_per_unit.end(), size_t()) 
+	const bool reach_all = ((village_count == unit_count)
+		&& (std::accumulate(villages_per_unit.begin(), villages_per_unit.end(), size_t())
 		== (village_count * unit_count)));
 
 	if(reach_all) {
@@ -679,8 +679,8 @@ static void dispatch_complex(
 		::const_iterator src_itor =  unit_lookup.begin();
 
 	while(src_itor != unit_lookup.end() && src_itor->first == 2) {
-		
-		for(std::multimap<size_t, size_t>::const_iterator 
+
+		for(std::multimap<size_t, size_t>::const_iterator
 				dst_itor = unit_lookup.begin();
 				dst_itor != unit_lookup.end(); ++ dst_itor) {
 
@@ -697,7 +697,7 @@ static void dispatch_complex(
 				);
 
 			size_t matched = std::count(result.begin(), result.end(), true);
-			
+
 			// we found a  solution, dispatch
 			if(matched == 2) {
 				// Collect data
@@ -707,8 +707,8 @@ static void dispatch_complex(
 				const map_location village1 = villages[first - result.begin()];
 				const map_location village2 = villages[second - result.begin()];
 
-				const bool perfect = (src_itor->first == 2 && 
-					dst_itor->first == 2 && 
+				const bool perfect = (src_itor->first == 2 &&
+					dst_itor->first == 2 &&
 					units_per_village[first - result.begin()] == 2 &&
 					units_per_village[second - result.begin()] == 2);
 
@@ -724,7 +724,7 @@ static void dispatch_complex(
 				// Remove the units
 				reachmap.erase(units[src_itor->second]);
 				reachmap.erase(units[dst_itor->second]);
-				
+
 				// Evaluate and start correct function.
 				if(perfect) {
 					// We did a perfect dispatch 2 units who could visit 2 villages.
@@ -751,7 +751,7 @@ static void dispatch_complex(
 	// ***** ***** Do all permutations.
 	// Now walk through all possible permutations
 	// - test whether the suggestion is possible
-	// - does it result in max_villages 
+	// - does it result in max_villages
 	//   - dispatch and ready
 	// - is it's result better as the last best
 	//   - store
@@ -766,8 +766,8 @@ static void dispatch_complex(
 	const size_t max_options = 8;
 	if(unit_count >= max_options && village_count >= max_options) {
 
-		DBG_AI << "Too many units " << unit_count << " and villages " 
-			<< village_count<<" found, evaluate only the first " 
+		DBG_AI << "Too many units " << unit_count << " and villages "
+			<< village_count<<" found, evaluate only the first "
 			<< max_options << " options;\n";
 
 		std::vector<size_t> perm (max_options, 0);
@@ -797,7 +797,7 @@ static void dispatch_complex(
 		std::copy(best_result.begin(), best_result.end(), std::back_inserter(moves));
 
 		// Clean up the reachmap for dispatched units.
-		for(std::vector<std::pair<map_location, map_location> >::const_iterator 
+		for(std::vector<std::pair<map_location, map_location> >::const_iterator
 				itor = best_result.begin(); itor != best_result.end(); ++itor) {
 			reachmap.erase(itor->second);
 		}
@@ -838,7 +838,7 @@ static void dispatch_complex(
 
 		// clean up the reachmap we need to test whether the leader is still there
 		// and if so remove him manually to get him dispatched.
-		for(std::vector<std::pair<map_location, map_location> >::const_iterator 
+		for(std::vector<std::pair<map_location, map_location> >::const_iterator
 				itor = best_result.begin(); itor != best_result.end(); ++itor) {
 			reachmap.erase(itor->second);
 		}
@@ -881,7 +881,7 @@ static void dispatch_complex(
 
 		// clean up the reachmap we need to test whether the leader is still there
 		// and if so remove him manually to get him dispatched.
-		for(std::vector<std::pair<map_location, map_location> >::const_iterator 
+		for(std::vector<std::pair<map_location, map_location> >::const_iterator
 				itor = best_result.begin(); itor != best_result.end(); ++itor) {
 			reachmap.erase(itor->second);
 		}
@@ -897,7 +897,7 @@ static void dispatch_complex(
 static void full_dispatch(treachmap& reachmap, tmoves& moves)
 {
 	treachmap::const_iterator itor = reachmap.begin();
-	for(size_t i = 0; i < reachmap.size(); ++i, ++itor) { 
+	for(size_t i = 0; i < reachmap.size(); ++i, ++itor) {
 		DBG_AI << "Dispatched unit at " << itor->first
 				<< " to village " << itor->second[i] << '\n';
 		moves.push_back(std::make_pair(itor->second[i], itor->first));
@@ -910,16 +910,16 @@ static void dump_reachmap(treachmap& reachmap)
 		return;
 	}
 
-	for(treachmap::const_iterator itor = 
+	for(treachmap::const_iterator itor =
 			reachmap.begin(); itor != reachmap.end(); ++itor) {
-			
+
 		std::cerr << "Reachlist for unit at " << itor->first;
 
 		if(itor->second.empty()) {
 			std::cerr << "\tNone";
 		}
 
-		for(std::vector<map_location>::const_iterator 
+		for(std::vector<map_location>::const_iterator
 				v_itor = itor->second.begin();
 				v_itor != itor->second.end(); ++v_itor) {
 
@@ -934,7 +934,7 @@ static void dump_reachmap(treachmap& reachmap)
 // small helper rule to test the matching rules
 // building rule
 //make ai_village.o &&  g++-3.3 -o ai_village about.o actions.o ai.o ai_dfool.o ai_attack.o ai_move.o ai_python.o ai_village.o animated_game.o attack_prediction.o config_adapter.o dialogs.o floating_textbox.o game_display.o game_events.o game_preferences.o game_preferences_display.o gamestatus.o generate_report.o generic_event.o halo.o help.o intro.o leader_list.o menu_events.o mouse_events.o multiplayer.o multiplayer_ui.o multiplayer_wait.o multiplayer_connect.o multiplayer_create.o multiplayer_lobby.o network.o network_worker.o pathfind.o playcampaign.o play_controller.o playmp_controller.o playsingle_controller.o playturn.o publish_campaign.o replay.o replay_controller.o sha1.o settings.o statistics.o team.o terrain_filter.o titlescreen.o tooltips.o unit.o unit_abilities.o unit_animation.o unit_display.o unit_frame.o unit_map.o unit_types.o upload_log.o variable.o widgets/combo.o widgets/scrollpane.o -L. -lwesnoth-core -lSDL_image -lSDL_mixer -lSDL_net  -L/usr/lib -lSDL -L/usr/lib -lpython2.4  -lfreetype -lz  -L/usr/lib -lfribidi libwesnoth.a -lboost_iostreams  -lX11 -L/usr/lib -R/usr/lib
-/* 
+/*
 // gcc-3.3 -O0
 Option count : 1 duration 0 ms
 Option count : 2 duration 0 ms
@@ -973,7 +973,7 @@ Option count : 9 duration 261 ms
 Option count : 10 duration 2336 ms
 Option count : 11 duration 26684 ms
 
-*/ 
+*/
 int main()
 {
 	const size_t max_matrix = 100;
@@ -993,7 +993,7 @@ int main()
 	// Permutations for 0 are quite senseless.
 	std::vector<std::pair<map_location,map_location> > best_result;
 	for(size_t option = 1; option < max_matrix; ++option) {
-		// Set up the permuation 
+		// Set up the permuation
 		std::vector<size_t> perm (option, 0);
 		for(size_t i = 0; i < option; ++i) {
 			perm[i] = i;

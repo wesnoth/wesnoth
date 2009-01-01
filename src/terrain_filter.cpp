@@ -33,11 +33,11 @@
 // and so we don't care about the warnings this quick fix generates
 #pragma warning(push)
 #pragma warning(disable:4413)
-terrain_filter::terrain_filter(): 
-	cfg_(vconfig()), 
-	map_(gamemap(config(), 
-	std::string())), 
-	status_(gamestatus(config(), 1)), 
+terrain_filter::terrain_filter():
+	cfg_(vconfig()),
+	map_(gamemap(config(),
+	std::string())),
+	status_(gamestatus(config(), 1)),
 	units_(unit_map())
 {
 	assert(false);
@@ -46,11 +46,11 @@ terrain_filter::terrain_filter():
 #endif
 
 terrain_filter::terrain_filter(const vconfig& cfg, const gamemap& map,
-		const gamestatus& game_status, const unit_map& units, 
-		const bool flat_tod, const size_t max_loop) : 
-	cfg_(cfg), 
-	map_(map), 
-	status_(game_status), 
+		const gamestatus& game_status, const unit_map& units,
+		const bool flat_tod, const size_t max_loop) :
+	cfg_(cfg),
+	map_(map),
+	status_(game_status),
 	units_(units),
 	cache_(),
 	max_loop_(max_loop),
@@ -59,9 +59,9 @@ terrain_filter::terrain_filter(const vconfig& cfg, const gamemap& map,
 }
 
 terrain_filter::terrain_filter(const vconfig& cfg, const terrain_filter& original) :
-	cfg_(cfg), 
-	map_(original.map_), 
-	status_(original.status_), 
+	cfg_(cfg),
+	map_(original.map_),
+	status_(original.status_),
 	units_(original.units_),
 	cache_(),
 	max_loop_(original.max_loop_),

@@ -183,13 +183,13 @@ public:
 
 	void take_reserved_side(connect::side& side, const config& data);
 
-	/** 
+	/**
 	 * Returns the game state, which contains all information about the current
 	 * scenario.
 	 */
 	const game_state& get_state();
 
-	/** 
+	/**
 	 * Updates the current game state, resolves random factions, and sends a
 	 * "start game" message to the network.
 	 */

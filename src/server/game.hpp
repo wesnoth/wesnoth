@@ -280,7 +280,7 @@ private:
 	 * "null"    - an empty side
 	 */
 	std::vector<std::string> side_controllers_;
-	
+
 	/** Number of sides in the current scenario. */
 	int nsides_;
 	bool started_;

@@ -21,8 +21,8 @@
 
 
 terrain_type::terrain_type() :
-		minimap_image_("void"), 
-		minimap_image_overlay_("void"), 
+		minimap_image_("void"),
+		minimap_image_overlay_("void"),
 		editor_image_("void"),
 		id_(),
 		name_(),
@@ -30,19 +30,19 @@ terrain_type::terrain_type() :
 		mvt_type_(1, t_translation::VOID_TERRAIN),
 		def_type_(1, t_translation::VOID_TERRAIN),
 		union_type_(1, t_translation::VOID_TERRAIN),
-        height_adjust_(0), 
-		submerge_(0.0), 
+        height_adjust_(0),
+		submerge_(0.0),
 		light_modification_(0),
-        heals_(0), 
+        heals_(0),
 		income_description_(),
 		income_description_ally_(),
 		income_description_enemy_(),
 		income_description_own_(),
 		editor_group_(),
-		village_(false), 
-		castle_(false), 
+		village_(false),
+		castle_(false),
 		keep_(false),
-		overlay_(false), 
+		overlay_(false),
 		combined_(false),
 		editor_default_base_(t_translation::VOID_TERRAIN),
 		hide_in_editor_(false)
@@ -50,7 +50,7 @@ terrain_type::terrain_type() :
 
 terrain_type::terrain_type(const config& cfg) :
 		minimap_image_(cfg["symbol_image"]),
-		minimap_image_overlay_("void"), 
+		minimap_image_overlay_("void"),
 		editor_image_(cfg["editor_image"]),
 		id_(cfg["id"]),
 		name_(cfg["name"]),
@@ -76,19 +76,19 @@ terrain_type::terrain_type(const config& cfg) :
 		hide_in_editor_(utils::string_bool(cfg["hidden"], false))
 {
 /**
- *  @todo reenable these validations. The problem is that all MP 
+ *  @todo reenable these validations. The problem is that all MP
  *  scenarios/campaigns share the same namespace and one rogue scenario
  *  can avoid the player to create a MP game. So every scenario/campaign
- *  should get it's own namespace to be save. 
+ *  should get it's own namespace to be save.
  */
 #if 0
-	VALIDATE(number_ != t_translation::NONE_TERRAIN, 
+	VALIDATE(number_ != t_translation::NONE_TERRAIN,
 		missing_mandatory_wml_key("terrain", "string"));
-	VALIDATE(!minimap_image_.empty(), 
-		missing_mandatory_wml_key("terrain", "symbol_image", "string", 
+	VALIDATE(!minimap_image_.empty(),
+		missing_mandatory_wml_key("terrain", "symbol_image", "string",
 		t_translation::write_terrain_code(number_)));
-	VALIDATE(!name_.empty(), 
-		missing_mandatory_wml_key("terrain", "name", "string", 
+	VALIDATE(!name_.empty(),
+		missing_mandatory_wml_key("terrain", "name", "string",
 		t_translation::write_terrain_code(number_)));
 #endif
 
@@ -156,7 +156,7 @@ terrain_type::terrain_type(const config& cfg) :
 	}
 }
 
-terrain_type::terrain_type(const terrain_type& base, const terrain_type& overlay) : 
+terrain_type::terrain_type(const terrain_type& base, const terrain_type& overlay) :
 	minimap_image_(base.minimap_image_),
 	minimap_image_overlay_(overlay.minimap_image_),
 	editor_image_(overlay.editor_image_),
@@ -178,14 +178,14 @@ terrain_type::terrain_type(const terrain_type& base, const terrain_type& overlay
 	village_(base.village_ || overlay.village_),
 	castle_(base.castle_ || overlay.castle_),
 	keep_(base.keep_ || overlay.keep_),
-	overlay_(false), 
+	overlay_(false),
 	combined_(true),
 	editor_default_base_(),
 	hide_in_editor_(base.hide_in_editor_ || overlay.hide_in_editor_)
 {
 
-	merge_alias_lists(mvt_type_, base.mvt_type_); 
-	merge_alias_lists(def_type_, base.def_type_); 
+	merge_alias_lists(mvt_type_, base.mvt_type_);
+	merge_alias_lists(def_type_, base.def_type_);
 
 	union_type_ = mvt_type_;
 	union_type_.insert( union_type_.end(), def_type_.begin(), def_type_.end() );

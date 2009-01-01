@@ -360,8 +360,8 @@ namespace {
 struct road_path_calculator : cost_calculator
 {
 	road_path_calculator(const terrain_map& terrain, const config& cfg) :
-    	calls(0), 
-		map_(terrain), 
+    	calls(0),
+		map_(terrain),
 		cfg_(cfg),
 		// Find out how windy roads should be.
 		windiness_(std::max<int>(1,atoi(cfg["road_windiness"].c_str()))),
@@ -412,7 +412,7 @@ double road_path_calculator::cost(const location& /*src*/, const location& loc,
 		int noise = random % (windiness_ * 137) / 137;
 		windiness += noise;
 	}
-	
+
 	const t_translation::t_terrain c = map_[loc.x][loc.y];
 	const std::map<t_translation::t_terrain, double>::const_iterator itor = cache_.find(c);
 	if(itor != cache_.end()) {

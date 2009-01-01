@@ -1,14 +1,14 @@
-// MD5.CC - source code for the C++/object oriented translation and 
+// MD5.CC - source code for the C++/object oriented translation and
 //          modification of MD5.
 
-// Translation and modification (c) 1995 by Mordechai T. Abzug 
+// Translation and modification (c) 1995 by Mordechai T. Abzug
 
-// This translation/ modification is provided "as is," without express or 
+// This translation/ modification is provided "as is," without express or
 // implied warranty of any kind.
 
-// The translator/ modifier does not claim (1) that MD5 will do what you think 
-// it does; (2) that this translation/ modification is accurate; or (3) that 
-// this software is "merchantible."  (Language for this disclaimer partially 
+// The translator/ modifier does not claim (1) that MD5 will do what you think
+// it does; (2) that this translation/ modification is accurate; or (3) that
+// this software is "merchantible."  (Language for this disclaimer partially
 // copied from the disclaimer below).
 
 /* based on:
@@ -84,7 +84,7 @@ private:
 
 // last, the private methods, mostly static:
   void init             ();               // called by all constructors
-  void transform        (uint1 *buffer);  // does the real update work.  Note 
+  void transform        (uint1 *buffer);  // does the real update work.  Note
                                           // that length is implied to be 64.
 
   static void encode    (uint1 *dest, uint4 *src, uint4 length);
@@ -97,13 +97,13 @@ private:
   static inline uint4  G           (uint4 x, uint4 y, uint4 z);
   static inline uint4  H           (uint4 x, uint4 y, uint4 z);
   static inline uint4  I           (uint4 x, uint4 y, uint4 z);
-  static inline void   FF  (uint4& a, uint4 b, uint4 c, uint4 d, uint4 x, 
+  static inline void   FF  (uint4& a, uint4 b, uint4 c, uint4 d, uint4 x,
 			    uint4 s, uint4 ac);
-  static inline void   GG  (uint4& a, uint4 b, uint4 c, uint4 d, uint4 x, 
+  static inline void   GG  (uint4& a, uint4 b, uint4 c, uint4 d, uint4 x,
 			    uint4 s, uint4 ac);
-  static inline void   HH  (uint4& a, uint4 b, uint4 c, uint4 d, uint4 x, 
+  static inline void   HH  (uint4& a, uint4 b, uint4 c, uint4 d, uint4 x,
 			    uint4 s, uint4 ac);
-  static inline void   II  (uint4& a, uint4 b, uint4 c, uint4 d, uint4 x, 
+  static inline void   II  (uint4& a, uint4 b, uint4 c, uint4 d, uint4 x,
 			    uint4 s, uint4 ac);
 
 };

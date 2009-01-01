@@ -29,7 +29,7 @@ namespace test_utils {
 	play_scenario::play_scenario(const std::string& id) :
 		id_(id),
 		source_(),
-		game_config_(get_test_config_ref()),	
+		game_config_(get_test_config_ref()),
 		current_time_(80),
 		end_pos_()
 	{
@@ -72,7 +72,7 @@ namespace test_utils {
 		unit_map units_;
 
 		public:
-			end_position_collector(const size_t time) : 
+			end_position_collector(const size_t time) :
 				event_node(time, SDL_Event()),
 				state_(),
 				units_()
@@ -84,11 +84,11 @@ namespace test_utils {
 				// Now collect data and quit the game
 				units_ = game_display::get_singleton()->get_units();
 			}
-			
+
 			game_state& get_state()
 			{
 				return state_;
-			}		
+			}
 
 			unit_map& get_units()
 			{
@@ -106,7 +106,7 @@ namespace test_utils {
 		source_.type_key(current_time_++, SDLK_COLON, SDLMod(KMOD_LSHIFT | KMOD_SHIFT) );
 		source_.type_key(current_time_++, SDLK_q);
 		source_.type_key(current_time_++, SDLK_RETURN);
-		
+
 		upload_log no_upload(false);
 		game_state& state = end->get_state();
 		state.campaign_type = "test";

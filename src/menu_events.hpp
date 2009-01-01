@@ -128,7 +128,7 @@ private:
 	//console_handler is basically a sliced out part of menu_handler
 	//and as such needs access to menu_handler's privates
 	friend class console_handler;
-				
+
 	//void do_speak(const std::string& message, bool allies_only);
 	void do_recruit(const std::string& name, const unsigned int team_num, const map_location& last_hex);
 //	std::vector<std::string> create_unit_table(const statistics::stats::str_int_map& m,unsigned int team);

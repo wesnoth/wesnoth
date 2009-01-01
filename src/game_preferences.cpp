@@ -87,7 +87,7 @@ manager::manager() :
 		[history_id]
 			[line]
 				message = foobar
-			[/line] 
+			[/line]
 */
 		const config::child_map& history_id_list = history->all_children();
 		typedef std::pair<std::string, config::child_list> hack;
@@ -125,12 +125,12 @@ manager::~manager()
 		[history_id]
 			[line]
 				message = foobar
-			[/line] 
+			[/line]
 */
 	config history;
 	typedef std::pair<std::string, std::vector<std::string> > hack;
 	foreach(const hack& history_id, history_map) {
-		
+
 		config history_id_cfg; // [history_id]
 		foreach(const std::string& line, history_id.second) {
 			config cfg; // [line]
@@ -777,7 +777,7 @@ void set_custom_command(const std::string& command) {
 /**
  * Returns a pointer to the history vector associated with given id
  * making a new one if it doesn't exist.
- * 
+ *
  * @todo FIXME only used for gui2. Could be used for the above histories.
  */
 std::vector<std::string>* get_history(const std::string& id) {

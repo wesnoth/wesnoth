@@ -27,7 +27,7 @@ public:
 	void user_config(display& disp);
 
 	std::string name() const;
-	
+
 	std::string config_name() const;
 
 	std::string create_map(const std::vector<std::string>& args);

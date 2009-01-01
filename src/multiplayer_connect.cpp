@@ -511,11 +511,11 @@ bool connect::side::available(const std::string& name) const
 {
 	if (name.empty())
 	{
-		return allow_player_ 
-			&& ((controller_ == CNTR_NETWORK && id_.empty()) 
+		return allow_player_
+			&& ((controller_ == CNTR_NETWORK && id_.empty())
 					|| controller_ == CNTR_RESERVED);
 	}
-	return allow_player_ 
+	return allow_player_
 		&& ((controller_ == CNTR_NETWORK && id_.empty())
 			|| (controller_ == CNTR_RESERVED && current_player_ == name));
 }
@@ -1213,9 +1213,9 @@ void connect::process_network_data(const config& data, const network::connection
 
 		connected_user_list::iterator player = find_player(name);
 		if(player != users_.end()) {
-			/** 
-			 * @todo Seems like a needless limitation to only allow one side 
-			 * per player. 
+			/**
+			 * @todo Seems like a needless limitation to only allow one side
+			 * per player.
 			 */
 			if(find_player_side(name) != -1) {
 				config response;

@@ -49,7 +49,7 @@ public:
 	 * The name should not contain spaces.
 	 */
 	virtual std::string name() const = 0;
-	
+
 	/**
 	 * Return a friendly name for the generator
 	 * used to differentiate between different configs of the same generator

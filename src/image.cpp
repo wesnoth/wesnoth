@@ -176,7 +176,7 @@ locator::locator(const std::string &filename, const std::string& modifications) 
 	init_index();
 }
 
-locator::locator(const std::string &filename, 
+locator::locator(const std::string &filename,
 		const map_location &loc, const std::string& modifications) :
 	index_(-1),
 	val_(filename, loc, modifications)
@@ -184,7 +184,7 @@ locator::locator(const std::string &filename,
 	init_index();
 }
 
-locator::locator(const std::string &filename, const map_location &loc, 
+locator::locator(const std::string &filename, const map_location &loc,
 		int center_x, int center_y, const std::string& modifications) :
 	index_(-1),
 	val_(filename, loc, center_x, center_y, modifications)
@@ -202,7 +202,7 @@ locator& locator::operator=(const locator &a)
 
 locator::value::value(const locator::value& a) :
   type_(a.type_), filename_(a.filename_), loc_(a.loc_),
-  modifications_(a.modifications_), 
+  modifications_(a.modifications_),
   center_x_(a.center_x_), center_y_(a.center_y_)
 {
 }
@@ -222,7 +222,7 @@ locator::value::value(const char *filename) :
 
 
 locator::value::value(const char *filename, const std::string& modifications) :
-  type_(SUB_FILE), filename_(filename), loc_(), modifications_(modifications), 
+  type_(SUB_FILE), filename_(filename), loc_(), modifications_(modifications),
   center_x_(0), center_y_(0)
 
 {
@@ -236,14 +236,14 @@ locator::value::value(const std::string& filename) :
 }
 
 locator::value::value(const std::string& filename, const std::string& modifications) :
-  type_(SUB_FILE), filename_(filename), loc_(), modifications_(modifications), 
+  type_(SUB_FILE), filename_(filename), loc_(), modifications_(modifications),
   center_x_(0), center_y_(0)
 
 {
 }
 
 locator::value::value(const std::string& filename, const map_location& loc, const std::string& modifications) :
-  type_(SUB_FILE), filename_(filename), loc_(loc), modifications_(modifications), 
+  type_(SUB_FILE), filename_(filename), loc_(loc), modifications_(modifications),
   center_x_(0), center_y_(0)
 
 {
@@ -251,7 +251,7 @@ locator::value::value(const std::string& filename, const map_location& loc, cons
 
 locator::value::value(const std::string& filename, const map_location& loc, int center_x, int center_y, const std::string& modifications) :
   type_(SUB_FILE), filename_(filename), loc_(loc), modifications_(modifications), center_x_(center_x), center_y_(center_y)
-{	
+{
 }
 
 bool locator::value::operator==(const value& a) const
@@ -261,7 +261,7 @@ bool locator::value::operator==(const value& a) const
 	} else if(type_ == FILE) {
 		return filename_ == a.filename_;
 	} else if(type_ == SUB_FILE) {
-	  return filename_ == a.filename_ && loc_ == a.loc_ && modifications_ == a.modifications_ 
+	  return filename_ == a.filename_ && loc_ == a.loc_ && modifications_ == a.modifications_
           && center_x_ == a.center_x_ && center_y_ == a.center_y_;
 	} else {
 		return false;
@@ -396,7 +396,7 @@ surface locator::load_image_sub_file() const
 						break;
 
 					int side_n = lexical_cast_default<int>(param[0], -1);
-					std::string team_color; 
+					std::string team_color;
 					if (side_n < 1) {
 						break;
 					} else if (side_n < static_cast<int>(team_colors.size())) {
@@ -404,7 +404,7 @@ surface locator::load_image_sub_file() const
 					} else {
 					// this side is not inialized use default "n"
 						team_color = lexical_cast<std::string>(side_n);
-					}	
+					}
 
 					if(game_config::tc_info(param[1]).size()){
 						function="RC";
@@ -530,7 +530,7 @@ surface locator::load_image_sub_file() const
 			}
 			if(slice_rect.h == 0) {
 				slice_rect.h = surf->h;
-			}	
+			}
 			if(slice_rect.x < 0) {
 				ERR_DP << "start X coordinate of SECTION function is negative - truncating to zero\n";
 				slice_rect.x = 0;
@@ -598,7 +598,7 @@ SDL_PixelFormat last_pixel_format;
 void set_pixel_format(SDL_PixelFormat* format)
 {
 	assert(format != NULL);
-	
+
 	SDL_PixelFormat &f = *format;
 	SDL_PixelFormat &l = last_pixel_format;
 	// if the pixel format change, we clear the cache,

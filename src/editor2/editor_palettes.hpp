@@ -39,7 +39,7 @@ namespace editor2 {
 /**
  * Stores the info about the data in editor-groups.cfg in a nice format.
  *
- *  Helper struct which for some reason can't be moved to the cpp file. 
+ *  Helper struct which for some reason can't be moved to the cpp file.
  */
 struct terrain_group
 {
@@ -57,7 +57,7 @@ public:
 					const config& cfg,
 					t_translation::t_terrain& fore,
 					t_translation::t_terrain& back);
-	
+
 	const gamemap& map() const { return gui_.get_map(); }
 
 	/** Scroll the terrain-palette up one step if possible. */
@@ -84,7 +84,7 @@ public:
 	t_translation::t_terrain selected_fg_terrain() const;
 	/** Return the currently selected background terrain. */
 	t_translation::t_terrain selected_bg_terrain() const;
-	
+
 	void swap();
 
 	/** Select a foreground terrain. */
@@ -95,9 +95,9 @@ public:
 	void update_selected_terrains();
 
 	/**
-	 * Draw the palette. 
+	 * Draw the palette.
 	 *
-	 * If force is true everything will be redrawn, 
+	 * If force is true everything will be redrawn,
 	 * even though it is not invalidated.
 	 */
 	void draw(bool force=false);
@@ -109,7 +109,7 @@ public:
 	size_t num_terrains() const;
 
 	/**
-	 * Update the size of this widget. 
+	 * Update the size of this widget.
 	 *
 	 * Use if the size_specs have changed.
 	 */
@@ -122,9 +122,9 @@ private:
 	void draw_old(bool);
 
 	/**
-	 * To be called when a mouse click occurs. 
+	 * To be called when a mouse click occurs.
 	 *
-	 * Check if the coordinates is a terrain that may be chosen, 
+	 * Check if the coordinates is a terrain that may be chosen,
 	 * and select the terrain if that is the case.
 	 */
 	void left_mouse_click(const int mousex, const int mousey);
@@ -145,9 +145,9 @@ private:
 	unsigned int tstart_;
 
 	/**
-	 * This map contains all editor_group as defined in terrain.cfg 
-	 * and associate with the group there. 
-	 * The group 'all' is added automatically, and all terrains 
+	 * This map contains all editor_group as defined in terrain.cfg
+	 * and associate with the group there.
+	 * The group 'all' is added automatically, and all terrains
 	 * are also automatically stored in this group.
 	 */
 	std::map<std::string, t_translation::t_list> terrain_map_;
@@ -164,9 +164,9 @@ private:
 	std::vector<terrain_group> terrain_groups_;
 
 	/**
-	 * The group buttons behave like a radio group. 
+	 * The group buttons behave like a radio group.
 	 *
-	 * This one points to the selected button, this value should not be 0 
+	 * This one points to the selected button, this value should not be 0
 	 * otherwise things will fail. Thus should be set in constructor.
 	 */
 	gui::button *checked_group_btn_;
@@ -190,7 +190,7 @@ public:
 	void select_brush(int index);
 
 	/**
-	 * Draw the palette. If force is true, everything 
+	 * Draw the palette. If force is true, everything
 	 * will be redrawn, even though it is not dirty.
 	 */
 	void draw(bool force=false);
@@ -198,7 +198,7 @@ public:
 	virtual void handle_event(const SDL_Event& event);
 
 	/**
-	 * Update the size of this widget. 
+	 * Update the size of this widget.
 	 *
 	 * Use if the size_specs have changed.
 	 */
@@ -206,7 +206,7 @@ public:
 
 private:
 	/**
-	 * To be called when a mouse click occurs. 
+	 * To be called when a mouse click occurs.
 	 *
 	 * Check if the coordinates is a terrain that may be chosen, and select the
 	 * terrain if that is the case.

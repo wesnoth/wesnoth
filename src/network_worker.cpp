@@ -107,7 +107,7 @@ size_t max_threads = 0;
 size_t get_shard(TCPsocket sock) { return reinterpret_cast<uintptr_t>(sock)%NUM_SHARDS; }
 
 struct buffer {
-	explicit buffer(TCPsocket sock) : 
+	explicit buffer(TCPsocket sock) :
 		sock(sock),
 		config_buf(),
 		config_error(""),
@@ -216,7 +216,7 @@ void check_send_buffer_size(TCPsocket& s)
 bool receive_with_timeout(TCPsocket s, char* buf, size_t nbytes,
 		bool update_stats=false, int timeout_ms=60000)
 {
-#if !defined(USE_POLL) && !defined(USE_SELECT) 
+#if !defined(USE_POLL) && !defined(USE_SELECT)
 	int startTicks = SDL_GetTicks();
 	int time_used = 0;
 #endif
@@ -276,13 +276,13 @@ bool receive_with_timeout(TCPsocket s, char* buf, size_t nbytes,
 				const threading::lock lock(*stats_mutex);
 				transfer_stats[s].second.transfer(static_cast<size_t>(bytes_read));
 			}
-			
+
 			if(bytes_read > static_cast<int>(nbytes)) {
 				return false;
 			}
 			nbytes -= bytes_read;
 			// We got some data from server so reset start time so slow conenction won't timeout.
-#if !defined(USE_POLL) && !defined(USE_SELECT) 
+#if !defined(USE_POLL) && !defined(USE_SELECT)
 			startTicks = SDL_GetTicks();
 #endif
 		}
@@ -377,7 +377,7 @@ static SOCKET_STATE send_buffer(TCPsocket sock, std::vector<char>& buf, int in_s
 				poll_res = poll(&fd, 1, 60000);
 			} while(poll_res == -1 && errno == EINTR);
 
-			
+
 			if(poll_res > 0)
 				continue;
 #elif defined(USE_SELECT) && !defined(__BEOS__)
@@ -503,7 +503,7 @@ static SOCKET_STATE send_file(buffer* buf)
 		return result;
 	}
 #endif
-	// default sendfile implementation 
+	// default sendfile implementation
 	// if no system implementation is enabled
 	int send_size = 0;
 	// reserve 1024*8 bytes buffer
@@ -514,7 +514,7 @@ static SOCKET_STATE send_file(buffer* buf)
 
 	if (!file_stream->good()) {
 		ERR_NW << "send_file: Couldn't open file " << buf->config_error << "\n";
-	}		
+	}
 	if (result != SOCKET_READY)
 	{
 		return result;
@@ -538,8 +538,8 @@ static SOCKET_STATE send_file(buffer* buf)
 
 	}
 	if (upto != filesize && !file_stream->good()) {
-		ERR_NW << "send_file failed because stream not good from file " 
-			<< buf->config_error << " upto: " << upto 
+		ERR_NW << "send_file failed because stream not good from file "
+			<< buf->config_error << " upto: " << upto
 			<< " size: " << filesize << "\n";
 	}
 	return result;
@@ -549,7 +549,7 @@ static SOCKET_STATE receive_buf(TCPsocket sock, std::vector<char>& buf)
 {
 #ifdef __GNUC__
 	// The address needs to be aligned on a Sparc system, if it's not aligned
-	// the SDLNet_Read32 call will cause a SIGBUS and the server will be 
+	// the SDLNet_Read32 call will cause a SIGBUS and the server will be
 	// terminated.
 	// http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=426318
 	char num_buf[4] __attribute__ ((aligned (4)));
@@ -706,7 +706,7 @@ static int process_queue(void* shard_num)
 		}
 
 
-		if(result != SOCKET_READY || buf.empty()) 
+		if(result != SOCKET_READY || buf.empty())
 		{
 			check_socket_result(sock,result);
 		       	continue;
@@ -955,7 +955,7 @@ void queue_file(TCPsocket sock, const std::string& filename)
  	queued_buf->config_error = filename;
  	queue_buffer(sock, queued_buf);
 }
- 
+
 size_t queue_data(TCPsocket sock,const config& buf, const bool gzipped, const std::string& packet_type)
 {
 	DBG_NW << "queuing data...\n";
@@ -1024,7 +1024,7 @@ bool close_socket(TCPsocket sock, bool force)
 		const threading::lock lock(*shard_mutexes[shard]);
 
 		pending_receives[shard].erase(std::remove(pending_receives[shard].begin(),pending_receives[shard].end(),sock),pending_receives[shard].end());
-		{	
+		{
 			const threading::lock lock_schemas(*schemas_mutex);
 			schemas.erase(sock);
 		}
@@ -1042,7 +1042,7 @@ bool close_socket(TCPsocket sock, bool force)
 			lock_it->second = SOCKET_INTERRUPT;
 			return false;
 		}
-	
+
 	}
 
 

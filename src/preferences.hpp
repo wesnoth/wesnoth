@@ -126,11 +126,11 @@ namespace preferences {
 
 	int scroll_speed();
 	void set_scroll_speed(const int scroll);
-	
+
 	bool mouse_scroll_enabled();
 	void enable_mouse_scroll(bool value);
 
-	/** 
+	/**
 	 * Gets the threshold for when to scroll.
 	 *
 	 * This scrolling happens when the mouse is in the application and near
@@ -144,7 +144,7 @@ namespace preferences {
 	void set_editor_g(int value);
 	/** Set editor blue tint level. */
 	void set_editor_b(int value);
-	
+
 	/** Get editor red tint level. */
 	int editor_r();
 	/** Get editor green tint level. */

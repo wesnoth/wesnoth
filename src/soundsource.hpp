@@ -67,9 +67,9 @@ public:
 	void add_location(const map_location &loc);
 	void remove_location(const map_location &loc);
 	void replace_location(const map_location &oldloc, const map_location &newloc);
-	
+
 	int calculate_volume(const map_location &loc, const display &disp);
-	
+
 	/**
 	 * Serializes attributes as WML config.
 	 * @param cfg A reference to a [sound_source] tag object.
@@ -99,10 +99,10 @@ public:
 	void update();
 
 	void add_location(const std::string &id, const map_location &loc);
-	
+
 	// checks which sound sources are visible
 	void update_positions();
-	
+
 	/**
 	 * Serializes information into cfg as new childs of key
 	 * "sound_source", appendend to existing content.
@@ -143,62 +143,62 @@ public:
 		check_fogged_(false),
 		locations_()
 	{}
-	
+
 	/** WML constructor. */
 	sourcespec(const config& cfg);
-	
+
 	/**
 	 * Serializes information into cfg as a new (appended)
 	 * child of key "sound_source".
 	 */
 	void write(config& cfg) const;
-	
+
 	int loops() const { return loops_; }
 
 	void set_loops(int value) {
 		loops_ = value;
 	}
-	
+
 	bool check_fogged() const { return check_fogged_; }
-	
+
 	void set_check_fogged(bool value) {
 		check_fogged_ = value;
 	}
-	
+
 	const std::vector<map_location>& get_locations() const {
 		return locations_;
 	}
-	
+
 	void add_location(const map_location& loc) {
 		locations_.push_back(loc);
 	}
-	
+
 	int full_range() const { return range_; }
-	
+
 	void set_full_range(int value) {
 		range_ = value;
 	}
-	
+
 	int fade_range() const { return faderange_; }
-	
+
 	void set_fade_range(int value) {
 		faderange_ = value;
 	}
-	
+
 	int minimum_delay() const { return min_delay_; }
-	
+
 	void set_minimum_delay(int value) {
 		min_delay_ = value;
 	}
-	
+
 	int chance() const { return chance_; }
-	
+
 	void set_chance(int value) {
 		chance_ = value;
 	}
-	
+
 	const std::string& id() const { return id_; }
-	
+
 	const std::string& files() const { return files_; }
 };
 

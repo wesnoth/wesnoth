@@ -104,7 +104,7 @@ bool is_server();
 
 /**
  * Function to attempt to connect to a remote host.
- * 
+ *
  * @returns                       The new connection on success, or 0 on failure.
  * @throw error
  */
@@ -117,7 +117,7 @@ connection connect(const std::string& host, int port, threading::waiter& waiter)
  *
  * If no host is attempting to connect, it will return 0 immediately.
  * Otherwise returns the new connection.
- * 
+ *
  * @throw error
  */
 connection accept_connection();
@@ -155,7 +155,7 @@ struct bandwidth_in {
 	{
 		type_ = type;
 	}
-	
+
 	private:
 	int len_;
 	std::string type_;
@@ -169,7 +169,7 @@ typedef boost::shared_ptr<bandwidth_in> bandwidth_in_ptr;
  * or all connections if connection_num is 0.
  * Will store the data received in cfg.
  * Times out after timeout milliseconds.
- * 
+ *
  * @returns                       The connection that data was received from,
  *                                or 0 if timeout occurred.
  *
@@ -187,10 +187,10 @@ void send_file(const std::string&, connection, const std::string& packet_type = 
  *
  * @throw error
  */
-size_t send_data(const config& cfg, connection connection_num /*= 0*/, 
+size_t send_data(const config& cfg, connection connection_num /*= 0*/,
 		const bool gzipped, const std::string& packet_type = "unknown");
 
-void send_raw_data(const char* buf, int len, connection connection_num, 
+void send_raw_data(const char* buf, int len, connection connection_num,
 		const std::string& packet_type = "unknown");
 
 /**
@@ -201,7 +201,7 @@ void send_raw_data(const char* buf, int len, connection connection_num,
 void process_send_queue(connection connection_num=0, size_t max_size=0);
 
 /** Function to send data to all peers except 'connection_num'. */
-void send_data_all_except(const config& cfg, connection connection_num, 
+void send_data_all_except(const config& cfg, connection connection_num,
 		const bool gzipped, const std::string& packet_type = "unknown");
 
 /** Function to get the remote ip address of a socket. */

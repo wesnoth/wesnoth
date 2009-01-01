@@ -98,7 +98,7 @@ void loadscreen::set_progress(const int percentage, const std::string &text, con
 	int pbw = scrx/2;							//< Used width.
 	int pbh = scry/16;							//< Used heigth.
 	int	lightning_thickness = 2;
-	
+
 	surface const gdis = screen_.getSurface();
 	SDL_Rect area;
 	// Draw logo if it was succesfully loaded.

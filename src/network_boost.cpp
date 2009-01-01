@@ -50,7 +50,7 @@ namespace  network_boost {
 		virtual ~impl()
 		{
 		}
-		
+
 		virtual void connect(const std::string&, const size_t, mode) = 0;
 		virtual const connection::statistics get_statistics() const
 		{
@@ -184,33 +184,33 @@ namespace  network_boost {
 	}
 
 	size_t connection::statistics::get_total_send() const
-	{ 
-		return total_send; 
+	{
+		return total_send;
 	}
 
 	size_t connection::statistics::get_total_recv() const
-	{ 
-		return total_recv; 
+	{
+		return total_recv;
 	}
 
 	size_t connection::statistics::get_send() const
-	{ 
-		return send; 
+	{
+		return send;
 	}
 
 	size_t connection::statistics::get_recv() const
-	{ 
-		return recv; 
+	{
+		return recv;
 	}
 
 	size_t connection::statistics::get_send_limit() const
-	{ 
-		return send_limit; 
+	{
+		return send_limit;
 	}
 
 	size_t connection::statistics::get_recv_limit() const
-	{ 
-		return recv_limit; 
+	{
+		return recv_limit;
 	}
 
 	void connection::statistics::send_start(size_t len)
@@ -273,8 +273,8 @@ namespace  network_boost {
 	}
 
 
-	class connection_array : 
-		public std::vector<connection_ptr> 
+	class connection_array :
+		public std::vector<connection_ptr>
 	{
 		typedef std::vector<size_t> connection_ids;
 		connection_ids free_ids;
@@ -332,7 +332,7 @@ namespace  network_boost {
 			connection_ptr new_conn(create_connection());
 
 			new_conn->set_id(connections_.insert(new_conn));
-			
+
 			new_conn->connect(host, port, prefered_mode);
 
 			return new_conn;;
@@ -340,7 +340,7 @@ namespace  network_boost {
 
 		void handle_network(size_t)
 		{
-			
+
 		}
 
 		bool accept(connection_ptr conn)
@@ -373,7 +373,7 @@ namespace  network_boost {
 				con->disconnect();
 			}
 		};
-		
+
 		void disconnect_all()
 		{
 			std::for_each(connections_.begin(), connections_.end(), call_disconnect());
@@ -408,7 +408,7 @@ namespace  network_boost {
 	}
 
 	connection_ptr manager::listen(const size_t port)
-	{	
+	{
 		return pimpl->listen(port);
 	}
 

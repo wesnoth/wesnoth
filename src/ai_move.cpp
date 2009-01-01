@@ -840,12 +840,12 @@ void ai::move_leader_to_keep(const move_map& enemy_dstsrc)
 	if(leader == units_.end() || leader->second.incapacitated()) {
 		return;
 	}
-  	
+
 	// Find where the leader can move
 	const paths leader_paths(map_, units_, leader->first,
 	   	 teams_, false, false, current_team());
 	const map_location& start_pos = nearest_keep(leader->first);
-  	
+
 	std::map<map_location,paths> possible_moves;
 	possible_moves.insert(std::pair<map_location,paths>(leader->first,leader_paths));
 
@@ -858,13 +858,13 @@ void ai::move_leader_to_keep(const move_map& enemy_dstsrc)
 			// Make a map of the possible locations the leader can move to,
 			// ordered by the distance from the keep.
 			std::multimap<int,map_location> moves_toward_keep;
-  	
+
 			// The leader can't move to his keep, try to move to the closest location
 			// to the keep where there are no enemies in range.
 			const int current_distance = distance_between(leader->first,start_pos);
 			for(paths::routes_map::const_iterator i = leader_paths.routes.begin();
 			    i != leader_paths.routes.end(); ++i) {
-  		
+
 				const int new_distance = distance_between(i->first,start_pos);
 				if(new_distance < current_distance) {
 					moves_toward_keep.insert(std::pair<int,map_location>(new_distance,i->first));

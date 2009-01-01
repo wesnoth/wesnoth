@@ -46,18 +46,18 @@ public:
 		this->assign(o);
 		return *this;
 	}
-	
+
 	bool good() const { return this->sane_; }
 	bool is_canonical() const;
-	
+
 	// Good old setters and getters for this class. Their names should be
 	// pretty self-descriptive. I couldn't use shorter names such as
 	// major() or minor() because sys/sysmacros.h reserves them by defining
 	// some backwards-compatibility macros for stuff, and they cause
 	// conflicts in the C/C++ preprocessor on GNU/Linux (GCC).
-	
+
 	// Canonical version components.
-	
+
 	unsigned int major_version() const;  /**< Retrieves the major version number (X in "X.Y.Z"). */
 	unsigned int minor_version() const;  /**< Retrieves the minor version number (Y in "X.Y.Z"). */
 	unsigned int revision_level() const; /**< Retrieves the revision level (Z in "X.Y.Z"). */
@@ -80,7 +80,7 @@ public:
 	char special_version_separator() const {
 		return this->special_separator_;
 	}
-	
+
 	void set_major_version(unsigned int);  /**< Set major version number. */
 	void set_minor_version(unsigned int);  /**< Set minor version number. */
 	void set_revision_level(unsigned int); /**< Set revision level. */
@@ -89,9 +89,9 @@ public:
 	void set_special_version(const std::string& str) {
 		this->special_ = str;
 	}
-	
+
 	// Non-canonical version strings components.
-	
+
 	/**
 	 * Returns a component from a non-canonically formatted
 	 * version string (i.e. 'D' from A.B.C.D is index 3).
@@ -124,8 +124,8 @@ public:
 	const std::vector<unsigned int>& components() const {
 		return this->nums_;
 	}
-	
-	std::string str() const; /**< 
+
+	std::string str() const; /**<
 							   * Returns a formatted string of the form
 							   * A.B.C[.x1[.x2[...]]]kS, where xN stand for
 							   * non-canonical version components, k for the
@@ -144,7 +144,7 @@ private:
 	std::string               special_;
 	char                      special_separator_;
 	bool                      sane_;
-	
+
 	void init_special_version(const std::string& full_component, std::string& number_string);
 };
 

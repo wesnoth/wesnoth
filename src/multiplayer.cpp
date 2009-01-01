@@ -196,10 +196,10 @@ static server_type open_connection(game_display& disp, const std::string& origin
 				if(!first_time) {
 
 					//Somewhat hacky implementation, including a goto of death
-					
+
 					/** @todo A fancy textbox that displays characters as dots or asterisks would nice. */
 					if(!((*error)["password_request"].empty())) {
-						
+
                         gui2::tmp_login dlg((*error)["message"]);
                         dlg.show(disp.video());
 
@@ -272,7 +272,7 @@ static server_type open_connection(game_display& disp, const std::string& origin
 					std::string temp_hash;
 					do {
 						temp_hash = std::string((char *) output, (char *) output + 16);
-						temp_hash.append(password);	  								
+						temp_hash.append(password);
 						md5_worker.~MD5();
 						MD5 md5_worker;
 						md5_worker.update((unsigned char *)temp_hash.c_str(),temp_hash.length());
@@ -282,7 +282,7 @@ static server_type open_connection(game_display& disp, const std::string& origin
 					temp_hash = std::string((char *) output, (char *) output + 16);
 
 					// Now encode the resulting mix
-					std::string encoded_hash; 
+					std::string encoded_hash;
 					unsigned int i = 0, value;
 					do {
 						value = output[i++];
@@ -304,7 +304,7 @@ static server_type open_connection(game_display& disp, const std::string& origin
 					// Now mix the resulting hash with the random seed
 					result = encoded_hash + (*error)["random_salt"];
 
-					MD5 md5_worker2;	
+					MD5 md5_worker2;
 					md5_worker2.update((unsigned char *)result.c_str(), result.size());
 					md5_worker2.finalize();
 

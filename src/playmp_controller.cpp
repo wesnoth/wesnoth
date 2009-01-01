@@ -171,7 +171,7 @@ void playmp_controller::reset_countdown()
 		sound::stop_bell();
 	beep_warning_time_ = 0;
 }
-		
+
 
 //check if it is time to start playing the timer warning
 void playmp_controller::think_about_countdown(int ticks) {

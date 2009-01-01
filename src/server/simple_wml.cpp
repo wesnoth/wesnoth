@@ -120,7 +120,7 @@ std::ostream& operator<<(std::ostream& o, const string_span& s)
 }
 
 node::node(document& doc, node* parent) :
-	doc_(&doc), 
+	doc_(&doc),
 	attr_(),
 	parent_(parent),
 	children_(),
@@ -129,7 +129,7 @@ node::node(document& doc, node* parent) :
 }
 
 node::node(document& doc, node* parent, const char** str, int depth) :
-	doc_(&doc), 
+	doc_(&doc),
 	attr_(),
 	parent_(parent),
 	children_(),
@@ -252,7 +252,7 @@ node::~node()
 	for(child_map::iterator i = children_.begin(); i != children_.end(); ++i) {
 		for(child_list::iterator j = i->second.begin(); j != i->second.end(); ++j) {
 			debug_delete(*j);
-		}	
+		}
 	}
 }
 
@@ -699,9 +699,9 @@ void node::set_dirty()
 	}
 }
 
-document::document() : 
+document::document() :
 	compressed_buf_(),
-	output_(NULL), 
+	output_(NULL),
 	buffers_(),
 	root_(new node(*this, NULL)),
 	prev_(NULL),
@@ -710,9 +710,9 @@ document::document() :
 	attach_list();
 }
 
-document::document(char* buf, INIT_BUFFER_CONTROL control) : 
+document::document(char* buf, INIT_BUFFER_CONTROL control) :
 	compressed_buf_(),
-	output_(buf), 
+	output_(buf),
 	buffers_(),
 	root_(NULL),
 	prev_(NULL),
@@ -727,7 +727,7 @@ document::document(char* buf, INIT_BUFFER_CONTROL control) :
 	attach_list();
 }
 
-document::document(const char* buf, INIT_STATE state) : 
+document::document(const char* buf, INIT_STATE state) :
 	compressed_buf_(),
 	output_(buf),
 	buffers_(),

@@ -2521,7 +2521,7 @@ namespace {
 
 		const std::string result = cfg["result"].base_str(); //do not translate
 		const std::string endlevel_music = cfg["music"];
-		
+
 		const bool carryover_report = utils::string_bool(cfg["carryover_report"],true);
 		const bool save = utils::string_bool(cfg["save"],true);
 		const bool linger_mode = utils::string_bool(cfg["linger_mode"],true);

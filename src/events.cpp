@@ -44,9 +44,9 @@ namespace {
 
 struct context
 {
-	context() : 
+	context() :
 		handlers(),
-		focused_handler(-1) 
+		focused_handler(-1)
 	{
 	}
 

@@ -70,7 +70,7 @@ namespace test_utils {
 	};
 
 	/**
-	 * modifies SDL_GetKeyState table to have 
+	 * modifies SDL_GetKeyState table to have
 	 * correct state.
 	 **/
 	class event_node_keyboard : public event_node {
@@ -108,7 +108,7 @@ namespace test_utils {
 	 * everytime events::pump() is called.
 	 **/
 
-	class fake_event_source 
+	class fake_event_source
 		: public events::pump_monitor,
 		public boost::noncopyable
 	{

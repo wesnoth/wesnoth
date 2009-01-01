@@ -45,7 +45,7 @@ public:
 	friend std::ostream& operator<<(std::ostream& out, metrics& met);
 
 	struct sample {
-		
+
 		sample() :
 			name(),
 			nsamples(0),

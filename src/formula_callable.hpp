@@ -70,7 +70,7 @@ public:
 		serialize_to_string(str);
 	}
 
-	bool has_key(const std::string& key) const 
+	bool has_key(const std::string& key) const
 		{ return !query_value(key).is_null(); }
 
 protected:

@@ -35,7 +35,7 @@ public:
 
 protected:
 	virtual void process_event();
-	
+
 	void make_drop_down_menu();
 private:
 	void set_selected_internal(int val);

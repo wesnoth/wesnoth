@@ -42,7 +42,7 @@ namespace game_config {
 		return cache;
 	}
 
-	config_cache::config_cache() : 
+	config_cache::config_cache() :
 		force_valid_cache_(false),
 		use_cache_(true),
 		not_valid_cache_(false),
@@ -126,8 +126,8 @@ namespace game_config {
 		// call foreach define is: second.write(config_writer,first);
 		std::for_each(defines_map.begin(), defines_map.end(),
 			   	boost::bind(&preproc_define::write,
-					boost::bind(&preproc_map::value_type::second,_1), 
-					boost::ref(writer), 
+					boost::bind(&preproc_map::value_type::second,_1),
+					boost::ref(writer),
 					boost::bind(&preproc_map::value_type::first,_1)));
 
 	}
@@ -137,7 +137,7 @@ namespace game_config {
 		scoped_istream stream = istream_file(path);
 		read_gz(cfg, *stream);
 	}
-	
+
 	preproc_map& config_cache::make_copy_map()
 	{
 		return config_cache_transaction::instance().get_active_map(defines_map_);
@@ -208,7 +208,7 @@ namespace game_config {
 							config checksum_cfg;
 							read_file(fname_checksum, checksum_cfg);
 							dir_checksum = file_tree_checksum(checksum_cfg);
-						} 
+						}
 					} catch(config::error&) {
 						ERR_CACHE << "cache checksum is corrupt\n";
 					} catch(io_exception&) {
@@ -273,11 +273,11 @@ namespace game_config {
 		read_file(path, cfg);
 
 		DBG_CACHE << "Reading cached defines from: " << path << "\n";
-		
+
 		// use static preproc_define::read_pair(config*) to make a object
 		// and pass that object config_cache_transaction::insert_to_active method
 	   	std::for_each(cfg.ordered_begin(), cfg.ordered_end(),
-				add_define_from_file());	
+				add_define_from_file());
 	}
 
 	void config_cache::read_defines_queue()
@@ -302,7 +302,7 @@ namespace game_config {
 
 		{
 			// activate path defines
-			scoped_preproc_define_list defines;	
+			scoped_preproc_define_list defines;
 			std::for_each(path_defines_.lower_bound(path),path_defines_.upper_bound(path),
 					boost::bind(&scoped_preproc_define_list::push_back,
 						boost::ref(defines),
@@ -394,8 +394,8 @@ namespace game_config {
 
 	config_cache_transaction::state config_cache_transaction::state_ = FREE;
 	config_cache_transaction* config_cache_transaction::active_ = 0;
-	
-	config_cache_transaction::config_cache_transaction() 
+
+	config_cache_transaction::config_cache_transaction()
 		: define_filenames_()
 		, active_map_()
 	{
@@ -403,7 +403,7 @@ namespace game_config {
 		state_ = NEW;
 		active_ = this;
 	}
-	
+
 	config_cache_transaction::~config_cache_transaction()
 	{
 		state_ = FREE;
@@ -412,7 +412,7 @@ namespace game_config {
 
 	void config_cache_transaction::lock()
 	{
-		state_ = LOCKED;			
+		state_ = LOCKED;
 	}
 
 	const config_cache_transaction::filenames& config_cache_transaction::get_define_files() const
@@ -434,7 +434,7 @@ namespace game_config {
 					std::insert_iterator<preproc_map>(active_map_, active_map_.begin()));
 			if ( get_state() == NEW)
 				state_ = ACTIVE;
-		 } 
+		 }
 
 		return active_map_;
 	}

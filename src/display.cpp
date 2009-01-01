@@ -75,24 +75,24 @@ namespace {
 }
 
 display::display(CVideo& video, const gamemap* map, const config& theme_cfg, const config& cfg, const config& level) :
-	screen_(video), 
-	map_(map), 
-	viewpoint_(NULL), 
-	xpos_(0), 
+	screen_(video),
+	map_(map),
+	viewpoint_(NULL),
+	xpos_(0),
 	ypos_(0),
 	theme_(theme_cfg, screen_area()),
-	zoom_(DefaultZoom), 
+	zoom_(DefaultZoom),
 	last_zoom_(SmallZoom),
 	builder_(new terrain_builder(cfg, level, map, theme_.border().tile_image)),
-	minimap_(NULL), 
+	minimap_(NULL),
 	minimap_location_(empty_rect),
-	redrawMinimap_(false), 
+	redrawMinimap_(false),
 	redraw_background_(true),
-	invalidateAll_(true), 
+	invalidateAll_(true),
 	grid_(false),
-	diagnostic_label_(0), 
+	diagnostic_label_(0),
 	panelsDrawn_(false),
-	turbo_speed_(2), 
+	turbo_speed_(2),
 	turbo_(false),
 	invalidateGameStatus_(true),
 	map_labels_(new map_labels(*this, 0)),
@@ -111,11 +111,11 @@ display::display(CVideo& video, const gamemap* map, const config& theme_cfg, con
 	mouseoverHex_(),
 	highlighted_locations_(),
 	keys_(),
-#if TDRAWING_BUFFER_USES_VECTOR	
+#if TDRAWING_BUFFER_USES_VECTOR
 	drawing_buffer_(LAYER_LAST_LAYER),
-#else	
+#else
 	drawing_buffer_(),
-#endif	
+#endif
 	map_screenshot_(false),
 	fps_handle_(0),
 	idle_anim_(preferences::idle_anim()),
@@ -278,7 +278,7 @@ const map_location display::pixel_position_to_hex(int x, int y) const
 
 	return map_location(x_base + x_modifier - offset, y_base + y_modifier - offset);
 
-	
+
 	// NOTE: This code to get nearest_hex and second_nearest_hex
 	// is not used anymore. However, it can be usefull later.
 	// So, keep it here for the moment.
@@ -438,7 +438,7 @@ map_location display::minimap_location_on(int x, int y)
 		loc.x = 0;
 	else if (loc.x >= get_map().w())
 		loc.x = get_map().w() - 1;
-	
+
 	if (loc.y < 0)
 		loc.y = 0;
 	else if (loc.y >= get_map().h())
@@ -463,7 +463,7 @@ int display::screenshot(std::string filename, bool map_screenshot)
 
 		SDL_Rect area = max_map_area();
 		map_screenshot_surf_ = create_compatible_surface(screen_.getSurface(), area.w, area.h);
-		
+
 		if (map_screenshot_surf_ == NULL) {
 			// Memory problem ?
 			std::cerr << "Can't create the screenshot surface. Maybe too big, try dezooming.\n";
@@ -521,7 +521,7 @@ void display::create_buttons()
 	const std::vector<theme::menu>& buttons = theme_.menus();
 	for(std::vector<theme::menu>::const_iterator i = buttons.begin(); i != buttons.end(); ++i) {
 		gui::button b(screen_,i->title(),string_to_button_type(i->type()),i->image());
-		DBG_DP << "drawing button " << i->get_id() << "\n"; 
+		DBG_DP << "drawing button " << i->get_id() << "\n";
 		b.set_id(i->get_id());
 		const SDL_Rect& loc = i->location(screen_area());
 		b.set_location(loc.x,loc.y);
@@ -698,27 +698,27 @@ void display::drawing_buffer_commit()
 	clip_rect_setter set_clip_rect(dst, clip_rect);
 
 	// Simply go down all levels in the drawing_buffer_ and render them.
-	for(tdrawing_buffer::const_iterator 
-			layer_itor = drawing_buffer_.begin(), 
+	for(tdrawing_buffer::const_iterator
+			layer_itor = drawing_buffer_.begin(),
 			layer_itor_end = drawing_buffer_.end();
 			layer_itor != layer_itor_end; ++layer_itor) {
 
-		for(std::map<int, std::vector<tblit> >::const_iterator 
-#if TDRAWING_BUFFER_USES_VECTOR		
+		for(std::map<int, std::vector<tblit> >::const_iterator
+#if TDRAWING_BUFFER_USES_VECTOR
 				drawing_iterator = layer_itor->begin(),
 				drawing_iterator_end = layer_itor->end();
-#else				
+#else
 				drawing_iterator = layer_itor->second.begin(),
 				drawing_iterator_end = layer_itor->second.end();
-#endif				
+#endif
 				drawing_iterator != drawing_iterator_end; ++drawing_iterator) {
 
-			for(std::vector<tblit>::const_iterator 
+			for(std::vector<tblit>::const_iterator
 					blit_itor = drawing_iterator->second.begin(),
 					blit_itor_end = drawing_iterator->second.end();
 					blit_itor != blit_itor_end; ++blit_itor) {
 
-				for(std::vector<surface>::const_iterator 
+				for(std::vector<surface>::const_iterator
 						surface_itor = blit_itor->surf.begin(),
 						surface_itor_end = blit_itor->surf.end();
 						surface_itor != surface_itor_end; ++surface_itor) {
@@ -728,7 +728,7 @@ void display::drawing_buffer_commit()
 					// to pass to each call to SDL_BlitSurface.
 					SDL_Rect dstrect = { blit_itor->x, blit_itor->y, 0, 0 };
 
-					if(blit_itor->clip.x || blit_itor->clip.y 
+					if(blit_itor->clip.x || blit_itor->clip.y
 							||blit_itor->clip.w ||blit_itor->clip.h) {
 
 						SDL_Rect srcrect = blit_itor->clip;
@@ -749,16 +749,16 @@ void display::drawing_buffer_clear()
 {
 #if TDRAWING_BUFFER_USES_VECTOR
 	// Note clear the items, the vector should remain the same size.
-	for(tdrawing_buffer::iterator layer_itor = 
-			drawing_buffer_.begin(), 
+	for(tdrawing_buffer::iterator layer_itor =
+			drawing_buffer_.begin(),
 			layer_itor_end = drawing_buffer_.end();
 			layer_itor != layer_itor_end; ++layer_itor) {
 
 		layer_itor->clear();
 	}
-#else 	
+#else
 	drawing_buffer_.clear();
-#endif	
+#endif
 }
 
 void display::sunset(const size_t delay)
@@ -841,13 +841,13 @@ static void draw_panel(CVideo& video, const theme::panel& panel, std::vector<gui
 {
 	//log_scope("draw panel");
 	DBG_DP << "drawing panel " << panel.get_id() << "\n";
-			
+
 	surface surf(image::get_image(panel.image()));
 
 	const SDL_Rect screen = screen_area();
 	SDL_Rect& loc = panel.location(screen);
 
-	DBG_DP << "panel location: x=" << loc.x << ", y=" << loc.y 
+	DBG_DP << "panel location: x=" << loc.x << ", y=" << loc.y
 			<< ", w=" << loc.w << ", h=" << loc.h << "\n";
 
 	if(!surf.null()) {
@@ -960,7 +960,7 @@ static void draw_background(surface screen, const SDL_Rect& area, const std::str
 	}
 }
 
-void display::draw_text_in_hex(const map_location& loc, 
+void display::draw_text_in_hex(const map_location& loc,
 		const tdrawing_layer layer, const std::string& text,
 		size_t font_size, SDL_Color color, double x_in_hex, double y_in_hex)
 {
@@ -1001,7 +1001,7 @@ void display::clear_hex_overlay(const map_location& loc)
 	}
 }
 
-void display::render_unit_image(int x, int y,const display::tdrawing_layer drawing_layer, 
+void display::render_unit_image(int x, int y,const display::tdrawing_layer drawing_layer,
 		const int drawing_order, surface image,
 		bool hreverse, bool greyscale, fixed_t alpha,
 		Uint32 blendto, double blend_ratio, double submerged,bool vreverse)
@@ -1046,7 +1046,7 @@ void display::render_unit_image(int x, int y,const display::tdrawing_layer drawi
 
 	const int submerge_height = std::min<int>(surf->h,std::max<int>(0,int(surf->h*(1.0-submerged))));
 
-	
+
 	SDL_Rect srcrect = {0,0,surf->w,submerge_height};
 
 	drawing_buffer_add(drawing_layer, drawing_order, tblit(x, y, surf, srcrect));
@@ -1205,7 +1205,7 @@ void display::enable_menu(const std::string& item, bool enable)
 			if(index >= buttons_.size()) {
 				assert(false);
 				return;
-			} 
+			}
 			buttons_[index].enable(enable);
 		}
 	}
@@ -1640,7 +1640,7 @@ void display::scroll_to_tiles(const std::vector<map_location>& locs,
 
 	if (scroll_type == ONSCREEN) {
 		// when doing an ONSCREEN scroll we do not center the target unless needed
-		SDL_Rect r = map_area(); 
+		SDL_Rect r = map_area();
 		int map_center_x = r.x + r.w/2;
 		int map_center_y = r.y + r.h/2;
 
@@ -1790,17 +1790,17 @@ void display::redraw_everything()
 	labels().recalculate_labels();
 
 	redraw_background_ = true;
-	
+
 	int ticks1 = SDL_GetTicks();
 	invalidate_all();
 	int ticks2 = SDL_GetTicks();
 	draw(true,true);
 	int ticks3 = SDL_GetTicks();
 	INFO_DP << "invalidate and draw: " << (ticks3 - ticks2) << " and " << (ticks2 - ticks1) << "\n";
-	
+
 	foreach (boost::function<void(display&)> f, redraw_observers_) {
 		f(*this);
-	}	
+	}
 }
 
 void display::add_redraw_observer(boost::function<void(display&)> f)
@@ -1825,14 +1825,14 @@ void display::draw(bool update,bool force) {
 	update_time_of_day();
 	if(!get_map().empty()) {
 		//int simulate_delay = 0;
-		
-		/* 
+
+		/*
 		 * draw_invalidated() also invalidates the halos, so also needs to be
 		 * ran if invalidated_.empty() == true.
 		 */
 		if(!invalidated_.empty() || preferences::show_haloes()) {
 			changed = true;
-			draw_invalidated();	
+			draw_invalidated();
 			invalidated_.clear();
 		}
 		drawing_buffer_commit();
@@ -1860,7 +1860,7 @@ void display::clear_screen()
 {
 	surface const disp(screen_.getSurface());
 	SDL_Rect area = screen_area();
-	SDL_FillRect(disp, &area, SDL_MapRGB(disp->format, 0, 0, 0));	
+	SDL_FillRect(disp, &area, SDL_MapRGB(disp->format, 0, 0, 0));
 }
 
 const SDL_Rect& display::get_clip_rect()
@@ -1881,12 +1881,12 @@ void display::draw_invalidated() {
 		SDL_Rect hex_rect = {xpos, ypos, zoom_, zoom_};
 		if(!rects_overlap(hex_rect,clip_rect)) {
 			continue;
-		}			
+		}
 		draw_hex(loc);
 		// If the tile is at the border, we start to blend it
 		if(!on_map && !off_map_tile) {
 			 draw_border(loc, xpos, ypos);
-		}			
+		}
 	}
 }
 
@@ -1895,7 +1895,7 @@ void display::draw_hex(const map_location& loc) {
 	int ypos = get_location_y(loc);
 	int drawing_order = loc.get_drawing_order();
 	image::TYPE image_type = get_image_type(loc);
-	const bool on_map = get_map().on_board(loc);	
+	const bool on_map = get_map().on_board(loc);
 	const bool off_map_tile = (get_map().get_terrain(loc) == t_translation::OFF_MAP_USER);
 	if(!shrouded(loc)) {
 		// unshrouded terrain (the normal case)
@@ -1908,7 +1908,7 @@ void display::draw_hex(const map_location& loc) {
 			get_terrain_images(loc,tod_.id,image_type,ADJACENT_FOREGROUND)));
 		// drawing_buffer_add(LAYER_TERRAIN_FG, drawing_order, tblit(xpos, ypos,
 		//	get_terrain_images(*it,tod.id,image_type,ADJACENT_FOREGROUND)));
-				
+
 	// Draw the grid, if that's been enabled
 		if(grid_ && on_map && !off_map_tile) {
 			drawing_buffer_add(LAYER_TERRAIN_TMP_BG, drawing_order, tblit(xpos, ypos,
@@ -1931,7 +1931,7 @@ void display::draw_hex(const map_location& loc) {
 	if(loc == mouseoverHex_ && (on_map || (in_editor() && get_map().on_board_with_border(loc))) && mouseover_hex_overlay_ != NULL) {
 		drawing_buffer_add(LAYER_TERRAIN_TMP_BG, drawing_order, tblit(xpos, ypos, mouseover_hex_overlay_));
 	}
-	
+
 	// Apply shroud, fog and linger overlay
 	if(shrouded(loc)) {
 		// We apply void also on off-map tiles
@@ -1956,7 +1956,7 @@ void display::draw_hex(const map_location& loc) {
 			SDL_Rect bg_rect = {0, 0, text->w, text->h};
 			SDL_FillRect(bg, &bg_rect, 0xaa000000);
 			off_x -= text->w / 2;
-			if (draw_terrain_codes_) {	
+			if (draw_terrain_codes_) {
 				off_y -= text->h;
 			} else {
 				off_y -= text->h / 2;
@@ -1972,13 +1972,13 @@ void display::draw_hex(const map_location& loc) {
 			SDL_Rect bg_rect = {0, 0, text->w, text->h};
 			SDL_FillRect(bg, &bg_rect, 0xaa000000);
 			off_x -= text->w / 2;
-			if (!draw_coordinates_) {	
+			if (!draw_coordinates_) {
 				off_y -= text->h / 2;
 			}
 			drawing_buffer_add(LAYER_FOG_SHROUD, drawing_order, tblit(off_x, off_y, bg));
 			drawing_buffer_add(LAYER_FOG_SHROUD, drawing_order, tblit(off_x, off_y, text));
 		}
-	}		
+	}
 }
 
 image::TYPE display::get_image_type(const map_location& /*loc*/) {
@@ -1990,7 +1990,7 @@ void display::update_time_of_day() {
 }
 
 void display::draw_sidebar() {
-	
+
 }
 
 
@@ -2203,7 +2203,7 @@ bool display::invalidate(const map_location& loc)
 {
 	if(invalidateAll_)
 		return false;
-	
+
 	return invalidated_.insert(loc).second;
 }
 
@@ -2236,7 +2236,7 @@ bool display::rectangle_need_update(const SDL_Rect& rect) const
 {
 	if(invalidateAll_)
 		return true;
-	
+
 	rect_of_hexes hexes = hexes_under_rect(rect);
 	rect_of_hexes::iterator i = hexes.begin(), end = hexes.end();
 	for (;i != end; ++i) {

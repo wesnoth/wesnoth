@@ -110,14 +110,14 @@ DIR *opendir(char const *name)
 	DIR 	*result =	NULL;
 	DWORD	dwAttr;
 
-	// Must be a valid name 
+	// Must be a valid name
 	if( !name ||
 		!*name ||
 		(dwAttr = GetFileAttributes(name)) == 0xFFFFFFFF)
 	{
 		errno = ENOENT;
 	}
-	// Must be a directory 
+	// Must be a directory
 	else if(!(dwAttr & FILE_ATTRIBUTE_DIRECTORY))
 	{
 		errno = ENOTDIR;
@@ -142,7 +142,7 @@ DIR *opendir(char const *name)
 			}
 			else
 			{
-				// Save the directory, in case of rewind. 
+				// Save the directory, in case of rewind.
 				(void)lstrcpyA(result->directory, name);
 				(void)lstrcpyA(result->dirent.d_name, result->find_data.cFileName);
 				result->dirent.d_mode	=	(int)result->find_data.dwFileAttributes;

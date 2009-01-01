@@ -59,7 +59,7 @@ surface getMinimap(int w, int h, const gamemap& map, const viewpoint* vw)
 				const bool shrouded = vw != NULL && vw->shrouded(loc);
 				// shrouded hex are not considered fogged (no need to fog a black image)
 				const bool fogged = vw != NULL && !shrouded && vw->fogged(loc);
-				const t_translation::t_terrain terrain = shrouded ? 
+				const t_translation::t_terrain terrain = shrouded ?
 					t_translation::VOID_TERRAIN : map[loc];
 
 				bool need_fogging = false;
@@ -81,7 +81,7 @@ surface getMinimap(int w, int h, const gamemap& map, const viewpoint* vw)
 					if(tile == 0) {
 						utils::string_map symbols;
 						symbols["terrain"] = t_translation::write_terrain_code(terrain);
-						const std::string msg = 
+						const std::string msg =
 							vgettext("Could not get image for terrain: $terrain.", symbols);
 						VALIDATE(false, msg);
 					}
@@ -112,7 +112,7 @@ surface getMinimap(int w, int h, const gamemap& map, const viewpoint* vw)
 				}
 
 				surf = i->second;
-				
+
 				if (need_fogging) {
 					surf = surface(adjust_surface_colour(surf,-50,-50,-50));
 					fog_cache->insert(cache_map::value_type(terrain,surf));
@@ -137,7 +137,7 @@ surface getMinimap(int w, int h, const gamemap& map, const viewpoint* vw)
 	double wratio = w*1.0 / minimap->w;
 	double hratio = h*1.0 / minimap->h;
 	double ratio = std::min<double>(wratio, hratio);
-	
+
 	minimap = scale_surface(minimap,
 		static_cast<int>(minimap->w * ratio), static_cast<int>(minimap->h * ratio));
 

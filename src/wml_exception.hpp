@@ -29,7 +29,7 @@ class display;
 
 /**
  * The macro to use for the validation of WML
- * 
+ *
  *  @param cond         The condition to test, if false and exception is generated.
  *  @param message      The translatable message to show at the user.
  */
@@ -49,35 +49,35 @@ class display;
 
 /**
  *  Helper function, don't call this directly.
- * 
+ *
  *  @param cond         The textual presentation of the test that failed.
  *  @param file         The file in which the test failed.
  *  @param line         The line at which the test failed.
  *  @param function     The funtion in which the test failed.
  *  @param message      The translatable message to show the user.
  */
-void wml_exception(const char* cond, const char* file, 
+void wml_exception(const char* cond, const char* file,
 	const int line, const char* function, const t_string& message);
 
 /** Helper function, don't call this directly. */
-inline void wml_exception(const char* cond, const char* file, 
+inline void wml_exception(const char* cond, const char* file,
 	const int line, const char* function, const char* message)
 {
 	wml_exception(cond, file, line, function, t_string(message));
 }
 
 /** Helper function, don't call this directly. */
-inline void wml_exception(const char* cond, const char* file, 
+inline void wml_exception(const char* cond, const char* file,
 	const int line, const char* function, const std::string& message)
 {
 	wml_exception(cond, file, line, function, t_string(message));
 }
 
 /** Helper class, don't construct this directly. */
-struct twml_exception 
+struct twml_exception
 {
 	twml_exception(const t_string& user_msg, const std::string& dev_msg);
-	
+
 	/**
 	 *  The message for the user explaining what went wrong. This message can
 	 *  be translated so the user gets a explanation in his/her native tongue.
@@ -91,7 +91,7 @@ struct twml_exception
 	 */
 	std::string dev_message;
 
-	/** 
+	/**
 	 * Shows the error in a dialog.
 	 *  @param disp         The display object to show the message on.
 	 */
@@ -100,14 +100,14 @@ struct twml_exception
 
 /**
  *  Returns a standard message for a missing wml key.
- * 
+ *
  *  @param section      The section is which the key should appear.
  *  @param key          The ommitted key.
  *  @param primary_key  The primary key of the section.
  *  @param primary_value
  *                      The value of the primary key (mandatory if primary key
  *                      isn't empty).
- * 
+ *
  *  @return             The error message.
  */
 t_string missing_mandatory_wml_key(const std::string& section, const std::string& key,

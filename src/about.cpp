@@ -247,7 +247,7 @@ void show_about(display &disp, std::string campaign)
 
 	CKey key;
 	bool last_escape;
-	
+
 	surface textbox = create_compatible_surface(video.getSurface(), middle_dest.w, middle_dest.h);
 	SDL_SetAlpha(textbox, SDL_RLEACCEL, SDL_ALPHA_OPAQUE);
 	bool recalculate_textbox = true;
@@ -324,7 +324,7 @@ void show_about(display &disp, std::string campaign)
 		if (key[SDLK_DOWN] && scroll_speed > 0) {
 			--scroll_speed;
 		}
-		
+
 		events::pump();
 		events::raise_process_event();
 		events::raise_draw_event();

@@ -50,7 +50,7 @@ namespace test {
 	BOOST_FIXTURE_TEST_SUITE( save_dialog , save_dialog_fixture)
 
 		SDLKey fake_input_keys[] =  {SDLK_KP_ENTER, SDLK_RETURN, SDLK_ESCAPE, SDLK_a};
-		
+
 		WESNOTH_PARAMETERIZED_TEST_CASE( test_fake_input, SDLKey,fake_input_keys, keyid)
 		{
 			test_utils::event_node_ptr new_keypress = source.press_key(2, keyid);
@@ -68,16 +68,16 @@ namespace test {
 				BOOST_CHECK_EQUAL(key[keyid], new_keypress->is_fired());
 				if (key[keyid])
 					break;
-			}	
+			}
 			while(true)
-			{	
+			{
 				events::pump();
 				BOOST_CHECK_EQUAL(key[keyid], !new_keyrelease->is_fired());
 				if (!key[keyid])
 					break;
 			}
 		}
-		
+
 		SDLKey dialog_get_save_name_enter_pressed[] =  {SDLK_KP_ENTER, SDLK_RETURN};
 
 		WESNOTH_PARAMETERIZED_TEST_CASE( test_dialog_get_save_name_enter_pressed, SDLKey, dialog_get_save_name_enter_pressed, keyid )
@@ -91,11 +91,11 @@ namespace test {
 			// Protection agains for ever loop
 			source.press_key(10, keyid);
 			source.release_key(13, keyid);
-		
+
 			std::string fname("press_enter");
 			write_file(get_saves_dir() + "/" + fname +".gz", "böö");
 			// Start test (set ticks start time)
-			
+
 			// Activated enter press
 			events::pump();
 

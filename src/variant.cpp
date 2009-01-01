@@ -13,17 +13,17 @@
 namespace {
 std::string variant_type_to_string(variant::TYPE type) {
 	switch(type) {
-	case variant::TYPE_NULL: 
+	case variant::TYPE_NULL:
 		return "null";
-	case variant::TYPE_INT: 
+	case variant::TYPE_INT:
 		return "int";
-	case variant::TYPE_CALLABLE: 
+	case variant::TYPE_CALLABLE:
 		return "object";
-	case variant::TYPE_LIST: 
+	case variant::TYPE_LIST:
 		return "list";
-	case variant::TYPE_STRING: 
+	case variant::TYPE_STRING:
 		return "string";
-	case variant::TYPE_MAP: 
+	case variant::TYPE_MAP:
 		return "map";
 	default:
 		assert(false);
@@ -66,13 +66,13 @@ type_error::type_error(const std::string& str) : message(str) {
 variant_iterator::variant_iterator() : type_(TYPE_NULL)
 {}
 
-variant_iterator::variant_iterator(const variant_iterator& iter) : type_(iter.type_), list_iterator_(iter.list_iterator_), map_iterator_(iter.map_iterator_) 
+variant_iterator::variant_iterator(const variant_iterator& iter) : type_(iter.type_), list_iterator_(iter.list_iterator_), map_iterator_(iter.map_iterator_)
 {}
 
 variant_iterator::variant_iterator(const std::vector<variant>::iterator& iter) : type_(TYPE_LIST), list_iterator_(iter)
 {}
 
-variant_iterator::variant_iterator(const std::map<variant, variant>::iterator& iter) : type_(TYPE_MAP), map_iterator_(iter) 
+variant_iterator::variant_iterator(const std::map<variant, variant>::iterator& iter) : type_(TYPE_MAP), map_iterator_(iter)
 {}
 
 variant variant_iterator::operator*() const
@@ -97,7 +97,7 @@ variant_iterator variant_iterator::operator++()
 	} else if (type_ == TYPE_MAP)
 	{
 		++map_iterator_;
-	} 
+	}
 
 	return *this;
 }
@@ -111,7 +111,7 @@ variant_iterator variant_iterator::operator++(int)
 	} else if (type_ == TYPE_MAP)
 	{
 		++map_iterator_;
-	} 
+	}
 
 	return iter;
 }
@@ -330,11 +330,11 @@ const variant& variant::operator[](const variant v) const
 	} else if(type_ == TYPE_LIST) {
 		return operator[](v.as_int());
 	} else {
-		throw type_error((formatter() << "type error: " 
-			<< " expected a list or a map but found " 
-			<< variant_type_to_string(type_) 
+		throw type_error((formatter() << "type error: "
+			<< " expected a list or a map but found "
+			<< variant_type_to_string(type_)
 			<< " (" << to_debug_string() << ")").str());
-	}	
+	}
 }
 
 variant variant::get_keys() const
@@ -368,10 +368,10 @@ variant_iterator variant::get_iterator() const
 	}
 	if(type_ == TYPE_MAP)
 	{
-		std::map<variant,variant>::iterator i; 
+		std::map<variant,variant>::iterator i;
 		return variant_iterator( i );
 	}
-	
+
 	return variant_iterator();
 }
 
@@ -382,7 +382,7 @@ variant_iterator variant::begin() const
 
 	if(type_ == TYPE_MAP)
 		return variant_iterator( map_->elements.begin() );
-	
+
 	return variant_iterator();
 }
 variant_iterator variant::end() const
@@ -392,7 +392,7 @@ variant_iterator variant::end() const
 
 	if(type_ == TYPE_MAP)
 		return variant_iterator( map_->elements.end() );
-	
+
 	return variant_iterator();
 }
 
@@ -409,9 +409,9 @@ size_t variant::num_elements() const
 		assert(map_);
 		return map_->elements.size();
 	} else {
-		throw type_error((formatter() << "type error: " 
-			<< " expected a list or a map but found " 
-			<< variant_type_to_string(type_) 
+		throw type_error((formatter() << "type error: "
+			<< " expected a list or a map but found "
+			<< variant_type_to_string(type_)
 			<< " (" << to_debug_string() << ")").str());
 	}
 }
@@ -646,9 +646,9 @@ bool variant::operator>(const variant& v) const
 void variant::must_be(variant::TYPE t) const
 {
 	if(type_ != t) {
-		throw type_error((formatter() << "type error: " << " expected " 
-			<< variant_type_to_string(t) << " but found " 
-			<< variant_type_to_string(type_) 
+		throw type_error((formatter() << "type error: " << " expected "
+			<< variant_type_to_string(t) << " but found "
+			<< variant_type_to_string(type_)
 			<< " (" << to_debug_string() << ")").str());
 	}
 }

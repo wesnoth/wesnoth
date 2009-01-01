@@ -31,14 +31,14 @@
 // Data compression. Compression is designed for network traffic.
 // Assumptions the compression is based on:
 // - most space is taken up by element names and attribute names
-// - there are relatively few element names and attribute names 
+// - there are relatively few element names and attribute names
 //   that are repeated many times
 //
 // How it works: there are some control characters:
 // 'compress_open_element': signals that the next word found is an element.
 // Any words found that are not after this are assumed to be attributes:
 // 'compress_close_element': signals to close the current element.
-// 'compress_schema_item': signals that following is a nul-delimited string, 
+// 'compress_schema_item': signals that following is a nul-delimited string,
 //                         which should be added as a word in the schema.
 // 'compress_literal_word': signals that following is a word stored as a nul-delimited string
 //    (an attribute name, unless it was preceeded by 'compress_open_element').
@@ -47,9 +47,9 @@
 // it is mapped to the first available character. Any attribute found is always followed
 // by a nul-delimited string which is the value for the attribute.
 //
-// The schema objects are designed to be persisted. That is, in a network game, 
-// both peers can store their schema objects, and so rather than sending 
-// schema data each time, the peers use and build their schemas as the 
+// The schema objects are designed to be persisted. That is, in a network game,
+// both peers can store their schema objects, and so rather than sending
+// schema data each time, the peers use and build their schemas as the
 // game progresses, adding a new word to the schema anytime it is required.
 
 static const unsigned int

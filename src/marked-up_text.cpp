@@ -137,7 +137,7 @@ std::string del_tags(const std::string& text){
 	for(line = lines.begin(); line != lines.end(); ++line) {
 		std::string::const_iterator i1 = line->begin(),
 			i2 = line->end();
-		*line = std::string(parse_markup(i1,i2,&ignore_int,&ignore_color,&ignore_int),i2); 
+		*line = std::string(parse_markup(i1,i2,&ignore_int,&ignore_color,&ignore_int),i2);
 	}
 	return utils::join(lines, '\n');
 }
@@ -146,7 +146,7 @@ std::string nullify_markup(const std::string& text) {
 	std::vector<std::string> lines = utils::split(text, '\n', 0);
 	std::vector<std::string>::iterator line;
 	for(line = lines.begin(); line != lines.end(); ++line) {
-		*line = std::string() + NULL_MARKUP + *line; 
+		*line = std::string() + NULL_MARKUP + *line;
 	}
 	return utils::join(lines, '\n');
 }
@@ -155,9 +155,9 @@ std::string color2markup(const SDL_Color color) {
 	std::stringstream markup;
 	// The RGB of SDL_Color are Uint8, we need to cast them to int.
 	// Without cast, it gives their char equivalent.
-	markup << "<" 
-		   << static_cast<int>(color.r) << "," 
-		   << static_cast<int>(color.g) << "," 
+	markup << "<"
+		   << static_cast<int>(color.r) << ","
+		   << static_cast<int>(color.g) << ","
 		   << static_cast<int>(color.b) << ">";
 	return markup.str();
 }

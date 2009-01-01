@@ -136,7 +136,7 @@ class user_handler {
 		std::string create_salt(int length =8);
 
 		/**
-		 * Create custom salt. 
+		 * Create custom salt.
 		 *
 		 * If not needed let it return and empty string or whatever you feel like.
 		 */

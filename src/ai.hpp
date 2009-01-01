@@ -137,7 +137,7 @@ protected:
 public:
 	struct attack_analysis : public game_logic::formula_callable
 	{
-		attack_analysis() : 
+		attack_analysis() :
 			game_logic::formula_callable(),
 			target(),
 			movements(),
@@ -258,7 +258,7 @@ protected:
 
 	/**
 	 * Function to form a group of units suitable for moving along the route, 'route'.
-	 * 
+	 *
 	 * @Returns                   The location which the group may reach this
 	 *                            turn. Stores the locations of the units in
 	 *                            the group in 'units'.
@@ -378,7 +378,7 @@ private:
 		const std::multimap<map_location,map_location>& dstsrc,
 		const std::map<map_location,paths>& possible_moves,
 		const std::multimap<map_location,map_location>& enemy_dstsrc) const;
-	
+
 	int recruiting_preferred_;
 	static const int min_recruiting_value_to_force_recruit = 28;
 protected:
@@ -386,7 +386,7 @@ protected:
 };
 
 class ai_manager {
-public: 
+public:
   static boost::intrusive_ptr<ai_interface> get_ai( std::string, ai_interface::info& );
   static int reap_ais() ;
 

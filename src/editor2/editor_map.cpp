@@ -80,7 +80,7 @@ editor_map editor_map::load_from_file(const config& game_config, const std::stri
 	log_scope2(editor, "Loading map " + filename);
 	std::string map_string = read_file(filename, false);
 
-	
+
 	if (map_string.empty()) {
 		std::string message = _("Empty map file or file not found");
 		throw editor_map_load_exception(filename, message);
@@ -93,7 +93,7 @@ editor_map editor_map::load_from_file(const config& game_config, const std::stri
 	} catch (twml_exception& e) {
 		throw wrap_exc("wml", e.user_message, filename);
 	} catch (config::error& e) {
-		throw wrap_exc("config", e.message, filename);	
+		throw wrap_exc("config", e.message, filename);
 	}
 }
 
@@ -159,7 +159,7 @@ std::set<map_location> editor_map::get_contigious_terrain_tiles(const map_locati
 	} while (!queue.empty());
 	return result;
 }
-	
+
 std::set<map_location> editor_map::set_starting_position_labels(display& disp)
 {
 	std::set<map_location> label_locs;
@@ -298,7 +298,7 @@ gamemap editor_map::mask_to(const gamemap& target) const
 
 bool editor_map::same_size_as(const gamemap& other) const
 {
-	return h() == other.h() 
+	return h() == other.h()
 		&& w() == other.w();
 }
 
@@ -389,7 +389,7 @@ void editor_map::shrink_right(int count)
 	}
 	tiles_.resize(tiles_.size() - count);
 	w_ -= count;
-	total_width_ -= count;	
+	total_width_ -= count;
 }
 
 void editor_map::shrink_left(int count)
@@ -399,7 +399,7 @@ void editor_map::shrink_left(int count)
 	}
 	tiles_.erase(tiles_.begin(), tiles_.begin() + count);
 	w_ -= count;
-	total_width_ -= count;	
+	total_width_ -= count;
 }
 
 void editor_map::shrink_top(int count)

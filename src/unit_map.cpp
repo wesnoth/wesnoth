@@ -482,14 +482,14 @@ void unit_map::add(std::pair<map_location,unit> *p)
 		replace(p);
 		return;
 	} else {
-		ERR_NG << "Trying to add " << p->second.name() << 
-			" - " << p->second.id() << 
+		ERR_NG << "Trying to add " << p->second.name() <<
+			" - " << p->second.id() <<
 			" - " << p->second.underlying_id() <<
 			" ("  << p->first.x <<
 			","   << p->first.y <<
 			") "  <<
-			" over " << iter->second.second->second.name() << 
-			" - " << iter->second.second->second.id() << 
+			" over " << iter->second.second->second.name() <<
+			" - " << iter->second.second->second.id() <<
 			" - " << iter->second.second->second.underlying_id() <<
 			" ("  << iter->second.second->first.x <<
 			","   << iter->second.second->first.y <<

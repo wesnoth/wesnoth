@@ -29,7 +29,7 @@ public:
 	bool in_editor() const { return true; }
 
 	void add_brush_loc(const map_location& hex);
-	void set_brush_locs(const std::set<map_location>& hexes); 
+	void set_brush_locs(const std::set<map_location>& hexes);
 	void clear_brush_locs();
 	void remove_brush_loc(const map_location& hex);
 	const editor_map& map() const { return static_cast<const editor_map&>(get_map()); }
@@ -42,12 +42,12 @@ protected:
 	* The editor uses different rules for terrain highligting (e.g. selections)
 	*/
 	image::TYPE get_image_type(const map_location& loc);
-	
+
 	void draw_hex(const map_location& loc);
-	
+
 	const SDL_Rect& get_clip_rect();
 	void draw_sidebar();
-	
+
 	std::set<map_location> brush_locations_;
 	std::string toolbar_hint_;
 };

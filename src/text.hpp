@@ -35,7 +35,7 @@ namespace font {
 
 // add background colour and also font markup.
 
-/** 
+/**
  * The classes in this namespace should not be used directly.
  *
  * Use the typedef which sets the policy instead.
@@ -47,7 +47,7 @@ namespace internal {
  * This class stores the text to draw and uses pango with the cairo backend to
  * render the text. See http://pango.org for more info.
  */
-class ttext 
+class ttext
 	: private boost::noncopyable
 {
 public:
@@ -56,7 +56,7 @@ public:
 
 	~ttext();
 
-	/** 
+	/**
 	 * Returns the rendered text.
 	 *
 	 * Before rendering it tests whether a redraw is needed and if so it first
@@ -147,7 +147,7 @@ public:
 	gui2::tpoint get_column_line(const gui2::tpoint& position) const;
 
 	/**
-	 * Gets the length of the text in characters. 
+	 * Gets the length of the text in characters.
 	 *
 	 * The text set is utf-8 so the length of the string might not be the length
 	 * of the text.
@@ -201,7 +201,7 @@ private:
 	/** The foreground colour. */
 	Uint32 foreground_colour_;
 
-	/** 
+	/**
 	 * The maximum width of the text.
 	 *
 	 * Values less or equal to 0 mean no maximum and are internally stored as
@@ -209,7 +209,7 @@ private:
 	 */
 	int maximum_width_;
 
-	/** 
+	/**
 	 * The maximum height of the text.
 	 *
 	 * Values less or equal to 0 mean no maximum and are internally stored as
@@ -223,7 +223,7 @@ private:
 	/** The maximum length of the text. */
 	size_t maximum_length_;
 
-	/** 
+	/**
 	 * The text has two dirty states:
 	 * - The setting of the state and the size calculations.
 	 * - The rendering of the surface.
@@ -257,7 +257,7 @@ private:
 	 */
 	void rerender(const bool force = false) const;
 
-	/** 
+	/**
 	 * Buffer to store the image on.
 	 *
 	 * We use a cairo surface to draw on this buffer and then use the buffer as
@@ -265,7 +265,7 @@ private:
 	 * in the object.
 	 */
 	mutable unsigned char* surface_buffer_;
-	
+
 	/**
 	 * Creates a new buffer.
 	 *
@@ -278,10 +278,10 @@ private:
 	 *
 	 * @param size                The required size of the buffer.
 	 */
-	void create_surface_buffer(const size_t size) const; 
+	void create_surface_buffer(const size_t size) const;
 };
 
-} // namespace internal 
+} // namespace internal
 
 
 /**
@@ -293,7 +293,7 @@ private:
  */
 //typedef policies::tcopy_policy<internal::ttext, policies::tdeep_copy> ttext;
 
-/** 
+/**
  * Due to changes to the widgets the copying of a ttext object is no longer
  * needed so just made the base itself not copyable. For now keep a typedef.
  *
@@ -301,6 +301,6 @@ private:
  */
 typedef internal::ttext ttext;
 
-} // namespace font 
+} // namespace font
 
 #endif

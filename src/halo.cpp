@@ -13,7 +13,7 @@
 */
 
 /**
- * @file halo.cpp 
+ * @file halo.cpp
  * Maintain halo-effects for units and items.
  * Examples: white mage, lighthouse.
  */
@@ -99,13 +99,13 @@ std::set<int> changing_haloes;
 
 effect::effect(int xpos, int ypos, const animated<std::string>::anim_description& img,
 		const map_location& loc, ORIENTATION orientation, bool infinite) :
-	images_(img), 
-	orientation_(orientation), 
-	x_(xpos), 
+	images_(img),
+	orientation_(orientation),
+	x_(xpos),
 	y_(ypos),
-	surf_(NULL), 
-	buffer_(NULL), 
-	rect_(empty_rect), 
+	surf_(NULL),
+	buffer_(NULL),
+	rect_(empty_rect),
 	loc_(loc),
 	overlayed_hexes_()
 {
@@ -140,16 +140,16 @@ bool effect::render()
 		if(disp->shrouded(loc_)) {
 			return false;
 		} else {
-			// The location of a halo is an x,y value and not a map location. 
-			// This means when a map is zoomed, the halo's won't move, 
-			// This glitch is most visible on [item] haloes. 
-			// This workaround always recalculates the location of the halo 
-			// (item haloes have a location parameter to hide them under the shroud) 
+			// The location of a halo is an x,y value and not a map location.
+			// This means when a map is zoomed, the halo's won't move,
+			// This glitch is most visible on [item] haloes.
+			// This workaround always recalculates the location of the halo
+			// (item haloes have a location parameter to hide them under the shroud)
 			// and reapplies that location.
 			// It might be optimized by storing and comparing the zoom value.
 			set_location(
-				disp->get_location_x(loc_) + disp->hex_size() / 2, 
-				disp->get_location_y(loc_) + disp->hex_size() / 2);			
+				disp->get_location_x(loc_) + disp->hex_size() / 2,
+				disp->get_location_y(loc_) + disp->hex_size() / 2);
 		}
 	}
 
@@ -176,7 +176,7 @@ bool effect::render()
 	rect_ = rect;
 	SDL_Rect clip_rect = disp->map_outside_area();
 
-	// If rendered the first time, need to determine the area affected. 
+	// If rendered the first time, need to determine the area affected.
 	// If a halo changes size, it is not updated.
 	if(overlayed_hexes_.empty()) {
 		display::rect_of_hexes hexes = disp->hexes_under_rect(rect);
@@ -220,7 +220,7 @@ void effect::unrender()
 	SDL_Rect clip_rect = disp->map_outside_area();
 	const clip_rect_setter clip_setter(screen,clip_rect);
 
-	// Due to scrolling, the location of the rendered halo 
+	// Due to scrolling, the location of the rendered halo
 	// might have changed; recalculate
 	const map_location zero_loc(0,0);
 	const int screenx = disp->get_location_x(zero_loc);
@@ -312,7 +312,7 @@ void set_location(int handle, int x, int y)
 
 void remove(int handle)
 {
-	// Silently ignore invalid haloes. 
+	// Silently ignore invalid haloes.
 	// This happens when Wesnoth is being terminated as well.
 	if(handle == NO_HALO || haloes.find(handle) == haloes.end())  {
 		return;
@@ -355,12 +355,12 @@ void unrender(std::set<map_location> invalidated_locations)
 	// Find all halo's in a the invalidated area
 	size_t halo_count;
 
-	// Repeat until set of haloes in the invalidated area didn't change 
+	// Repeat until set of haloes in the invalidated area didn't change
 	// (including none found) or all exisiting haloes are found.
 	do {
 		halo_count = invalidated_haloes.size();
 		for(itor = haloes.begin(); itor != haloes.end(); ++itor) {
-			// Test all haloes not yet in the set 
+			// Test all haloes not yet in the set
 			// which match one of the locations
 			if(invalidated_haloes.find(itor->first) == invalidated_haloes.end() &&
 					itor->second.on_location(invalidated_locations)) {
@@ -405,11 +405,11 @@ void render()
 		return;
 	}
 
-	// Keep track of not rendered new images they have to be kept scheduled 
+	// Keep track of not rendered new images they have to be kept scheduled
 	// for rendering otherwise the invalidation area is never properly set
 	std::set<int> unrendered_new_haloes;
 
-	// Render the haloes: 
+	// Render the haloes:
 	// iterate through all the haloes and draw if in either set
 	for(std::map<int, effect>::iterator itor = haloes.begin();
 			itor != haloes.end(); ++itor) {

@@ -49,7 +49,7 @@ bool preproc_define::operator<(preproc_define const &v) const {
 
 void preproc_define::write_argument(config_writer& writer, const std::string& arg) const
 {
-	
+
 	const std::string key = "argument";
 
 	writer.open_child(key);
@@ -70,7 +70,7 @@ void preproc_define::write(config_writer& writer, const std::string& name) const
 	writer.write_key_val("linenum", lexical_cast<std::string>(linenum));
 	writer.write_key_val("location", location);
 
-	std::for_each(arguments.begin(), arguments.end(), 
+	std::for_each(arguments.begin(), arguments.end(),
 			boost::bind(&preproc_define::write_argument,
 				this,
 				boost::ref(writer),
@@ -168,16 +168,16 @@ public:
 };
 
 preprocessor_streambuf::preprocessor_streambuf(preproc_map *def, std::string *err_log) :
-	streambuf(), 
-	out_buffer_(""), 
-	buffer_(), 
-	current_(NULL), 
+	streambuf(),
+	out_buffer_(""),
+	buffer_(),
+	current_(NULL),
 	defines_(def),
 	default_defines_(),
-	textdomain_(PACKAGE), 
-	location_(""), 
+	textdomain_(PACKAGE),
+	location_(""),
 	error_log(err_log),
-	linenum_(0), 
+	linenum_(0),
 	depth_(0),
 	buffer_size_(0),
 	quoted_(false)
@@ -196,12 +196,12 @@ preprocessor_streambuf::preprocessor_streambuf(preprocessor_streambuf const &t) 
 	error_log(t.error_log),
 	linenum_(0),
 	depth_(t.depth_),
-	buffer_size_(0), 
+	buffer_size_(0),
 	quoted_(t.quoted_)
 {
 }
 
-// underflow is called when the internal buffer has been consumed 
+// underflow is called when the internal buffer has been consumed
 // so that more can be prepared
 int preprocessor_streambuf::underflow()
 {
@@ -279,11 +279,11 @@ void preprocessor_streambuf::error(const std::string& error_type, const std::str
 
 /**
  * preprocessor
- * 
+ *
  * This is the base class for all input to be parsed by the preprocessor.
  * When initialized, it will inform the stream (target_) that it is the current scope.
- * When it reaches its end of its scope, the stream will delete it, 
- * and when it is deleted, it will manage the stream 
+ * When it reaches its end of its scope, the stream will delete it,
+ * and when it is deleted, it will manage the stream
  * to cause the previous scope to resume.
  */
 preprocessor::preprocessor(preprocessor_streambuf &t, std::vector<std::string> *callstack) :
@@ -331,7 +331,7 @@ preprocessor::~preprocessor()
 /**
  *  preprocessor_file
  *
- *  This represents a WML element that resolves to a directory or file inclusion, 
+ *  This represents a WML element that resolves to a directory or file inclusion,
  *  such as '{themes/}'
  */
 class preprocessor_file: preprocessor
@@ -358,9 +358,9 @@ class preprocessor_data: preprocessor
 	std::vector< token_desc > tokens_;
 	bool is_macro;
 	int slowpath_, /** @todo FIXME: add explanation of this variable. */
-		skipping_, /**< 
+		skipping_, /**<
 		            * Will get set to true when skipping text
-		            * (e.g. #ifdef that evaluates to false) 
+		            * (e.g. #ifdef that evaluates to false)
 					*/
 		linenum_;
 
@@ -371,10 +371,10 @@ class preprocessor_data: preprocessor
 	void push_token(char);
 	void pop_token();
 	void put(char);
-	void put(std::string const & /*, int change_line 
+	void put(std::string const & /*, int change_line
 	= 0 */);
 public:
-	preprocessor_data(preprocessor_streambuf &, 
+	preprocessor_data(preprocessor_streambuf &,
                       std::vector<std::string> *,
                       std::istream *,
 	                  std::string const &history,
@@ -427,23 +427,23 @@ bool preprocessor_file::get_chunk()
 	return false;
 }
 
-preprocessor_data::preprocessor_data(preprocessor_streambuf &t, std::vector<std::string> *callstack, 
-        std::istream *i, std::string const &history, std::string const &name, int linenum, 
+preprocessor_data::preprocessor_data(preprocessor_streambuf &t, std::vector<std::string> *callstack,
+        std::istream *i, std::string const &history, std::string const &name, int linenum,
 		std::string const &directory, std::string const &domain, std::string *symbol) :
-	preprocessor(t,callstack), 
-	in_(i), 
+	preprocessor(t,callstack),
+	in_(i),
 	directory_(directory),
 	strings_(),
 	tokens_(),
 	is_macro(symbol != NULL),
-	slowpath_(0), 
-	skipping_(0), 
+	slowpath_(0),
+	skipping_(0),
 	linenum_(linenum)
 {
     if(is_macro) {
         called_macros_->push_back(*symbol);
     }
-    
+
 	std::ostringstream s;
 
 	s << history;
@@ -591,7 +591,7 @@ bool preprocessor_data::get_chunk()
 	char c = in_->get();
 	token_desc &token = tokens_.back();
 	if (!in_->good()) {
-		// The end of file was reached. 
+		// The end of file was reached.
 		// Make sure we don't have any incomplete tokens.
 		char const *s;
 		switch (token.type) {
@@ -607,7 +607,7 @@ bool preprocessor_data::get_chunk()
 		default: s = "???";
 		}
 		std::ostringstream error;
-		error<<s<<" not terminated";		
+		error<<s<<" not terminated";
         std::ostringstream location;
 		location<<linenum_<<' '<<target_.location_;
 		pop_token();
@@ -664,7 +664,7 @@ bool preprocessor_data::get_chunk()
 			int linenum = linenum_;
 			std::vector< std::string > items = utils::split(read_line(), ' ');
 			if (items.empty()) {
-				std::string error="No macro name found after #define directive";		
+				std::string error="No macro name found after #define directive";
 				std::ostringstream location;
 				location<<linenum_<<' '<<target_.location_;
 				target_.error(error, location.str());
@@ -691,7 +691,7 @@ bool preprocessor_data::get_chunk()
 					}
 			}
 			if (found_enddef != 7) {
-				std::string error="Unterminated preprocessor definition at";		
+				std::string error="Unterminated preprocessor definition at";
 		        std::ostringstream location;
 				location<<linenum_<<' '<<target_.location_;
 				target_.error(error, location.str());
@@ -804,10 +804,10 @@ bool preprocessor_data::get_chunk()
 				std::string::iterator b = symbol.begin(); // invalidated at each iteration
 				symbol.erase(b + pos, b + symbol.find('\n', pos + 1) + 1);
 			}
-			// If this is a known pre-processing symbol, then we insert it, 
+			// If this is a known pre-processing symbol, then we insert it,
 			// otherwise we assume it's a file name to load.
 			preproc_map::const_iterator macro = target_.defines_->find(symbol);
-			if(macro != target_.defines_->end()) {			
+			if(macro != target_.defines_->end()) {
 
 /**
  * @todo it seems some addons use other names instead of include so disable the
@@ -817,13 +817,13 @@ bool preprocessor_data::get_chunk()
  * ESR says: No, it was a fundamentally mistaken idea to do this here; wmllint
  * could do the same direct-recursion check without imposing runtime overhead
  * or causing the problems this code did.  Leaving this code in for
- * documentation purposes only, don't re-enable it. 
+ * documentation purposes only, don't re-enable it.
  */
-#if 0			
+#if 0
 				// INCLUDE is special and is allowed to be used recusively.
 				if(symbol != "INCLUDE") {
-				    for(std::vector<std::string>::iterator 
-							iter=called_macros_->begin(); 
+				    for(std::vector<std::string>::iterator
+							iter=called_macros_->begin();
 							iter!=called_macros_->end(); ++iter) {
 						if(*iter==symbol) {
 							std::ostringstream error;
@@ -883,7 +883,7 @@ bool preprocessor_data::get_chunk()
 								c = '\n';
 							} else if((i_end - i_beg < 6 || (!std::equal(i_beg, i_beg + 6, "define")
 							&& !std::equal(i_beg, i_beg + 6, "ifndef")))
-							&& (i_end - i_beg < 5 || (!std::equal(i_beg, i_beg + 5, "ifdef") 
+							&& (i_end - i_beg < 5 || (!std::equal(i_beg, i_beg + 5, "ifdef")
 							&& !std::equal(i_beg, i_beg + 5, "endif") && !std::equal(i_beg, i_beg + 5, "undef")))
 							&& (i_end - i_beg < 4 || !std::equal(i_beg, i_beg + 4, "else"))) {
 								// Check for define, ifdef, ifndef, endif, undef, else.
@@ -940,9 +940,9 @@ bool preprocessor_data::get_chunk()
 				std::string prefix;
 				std::string nfname;
 				std::string const &newfilename = symbol;
-				// If the filename begins with a '~', 
-				//  then look in the user's data directory. 
-				// If the filename begins with a '@', 
+				// If the filename begins with a '~',
+				//  then look in the user's data directory.
+				// If the filename begins with a '@',
 				//  then we look in the user's data directory,
 				// but default to the standard data directory if it's not found there.
 				if(newfilename != "" && (newfilename[0] == '~' || newfilename[0] == '@')) {
@@ -961,8 +961,8 @@ bool preprocessor_data::get_chunk()
 				} else if(newfilename.size() >= 2 && newfilename[0] == '.'
 					&& newfilename[1] == '/' )
 				{
-					// If the filename begins with a "./", 
-					// then look in the same directory as the file 
+					// If the filename begins with a "./",
+					// then look in the same directory as the file
 					// currrently being preprocessed.
 					nfname = newfilename;
 					nfname.erase(nfname.begin(),nfname.begin()+2);
@@ -1016,8 +1016,8 @@ struct preprocessor_deleter: std::basic_istream<char>
 	~preprocessor_deleter();
 };
 
-preprocessor_deleter::preprocessor_deleter(preprocessor_streambuf *buf, 
-		preproc_map *defines, 
+preprocessor_deleter::preprocessor_deleter(preprocessor_streambuf *buf,
+		preproc_map *defines,
 		std::vector<std::string> *callstack)
 	: std::basic_istream<char>(buf), buf_(buf), defines_(defines), callstack_(callstack), error_log(buf->error_log)
 {
@@ -1038,8 +1038,8 @@ std::istream *preprocess_file(std::string const &fname,
 	log_scope("preprocessing file...");
 	preproc_map *owned_defines = NULL;
 	if (!defines) {
-		// If no preproc_map has been given, create a new one, 
-		// and ensure it is destroyed when the stream is 
+		// If no preproc_map has been given, create a new one,
+		// and ensure it is destroyed when the stream is
 // ??
 		// by giving it to the deleter.
 		owned_defines = new preproc_map;

@@ -219,7 +219,7 @@ surface stretch_surface_horizontal(
 			for(unsigned x = 0; x < w; ++x) {
 
 				*dst_pixels++ = pixel;
-			
+
 			}
 		}
 	}
@@ -242,7 +242,7 @@ surface stretch_surface_vertical(
 	assert(h > 0);
 
 	surface dst(create_neutral_surface(surf->w, h));
-		
+
 	surface src(make_neutral_surface(surf));
 	// Now both surfaces are always in the "neutral" pixel format
 
@@ -286,7 +286,7 @@ surface scale_surface(surface const &surf, int w, int h, bool optimize)
 	assert(h >= 0);
 
 	surface dst(create_neutral_surface(w,h));
-		
+
 	if (w == 0 || h ==0) {
 		std::cerr << "Create an empty image\n";
 		return create_optimized_surface(dst);
@@ -831,7 +831,7 @@ surface adjust_surface_alpha_add(surface const &surf, int amount, bool optimize)
 				r = (*beg) >> 16;
 				g = (*beg) >> 8;
 				b = (*beg);
-				
+
 				alpha = Uint8(std::max<int>(0,std::min<int>(255,int(alpha) + amount)));
 				*beg = (alpha << 24) + (r << 16) + (g << 8) + b;
 			}
@@ -865,7 +865,7 @@ surface mask_surface(surface const &surf, surface const &mask)
 		std::cerr << "It will not be masked, please use :"<< nmask->w << "x" << nmask->h << "\n";
 		return nsurf;
 	}
-	
+
 	{
 		surface_lock lock(nsurf);
 		surface_lock mlock(nmask);
@@ -889,7 +889,7 @@ surface mask_surface(surface const &surf, surface const &mask)
 
 				*beg = (alpha << 24) + (r << 16) + (g << 8) + b;
 			}
-			
+
 			++beg;
 			++mbeg;
 		}
@@ -1309,7 +1309,7 @@ surface create_compatible_surface(surface const &surf, int width, int height)
 		                        surf->format->Rmask,surf->format->Gmask,surf->format->Bmask,surf->format->Amask);
 }
 
-void blit_surface(const surface& src, 
+void blit_surface(const surface& src,
 	const SDL_Rect* srcrect, surface& dst, const SDL_Rect* dstrect)
 {
 	assert(src);
@@ -1329,7 +1329,7 @@ void blit_surface(const surface& src,
 	}
 
 	SDL_Rect src_rect = { 0, 0, src->w, src->h };
-	if(srcrect && srcrect->w && srcrect->h) { 
+	if(srcrect && srcrect->w && srcrect->h) {
 		src_rect.x = srcrect->x;
 		src_rect.y = srcrect->y;
 
@@ -1390,7 +1390,7 @@ void blit_surface(const surface& src,
 			for(unsigned x = 0; x < width; ++x) {
 
 				// We need to do the blitting using some optimizations
-				// if the src is fully transparent we can ignore this pixel 
+				// if the src is fully transparent we can ignore this pixel
 				// if the src is fully opaque we can overwrite the destination with this pixel
 				// if the destination is fully transparent we replace us with the source
 				//
@@ -1430,7 +1430,7 @@ void blit_surface(const surface& src,
 				Uint8 dst_b = dst_pixel & 0x000000FF;
 
 				if(dst_a == 255) {
-					
+
 					// Destination fully opaque blend the source.
 					dst_r = (((src_r - dst_r) * src_a) >> 8 ) + dst_r;
 					dst_g = (((src_g - dst_g) * src_a) >> 8 ) + dst_g;
@@ -1733,7 +1733,7 @@ void draw_centered_on_background(surface surf, const SDL_Rect& rect, const SDL_C
 	update_rect(rect);
 }
 
-std::ostream& operator<<(std::ostream& s, const SDL_Rect& rect) 
+std::ostream& operator<<(std::ostream& s, const SDL_Rect& rect)
 {
 	s << rect.x << ',' << rect.y << " x "  << rect.w << ',' << rect.h;
 	return s;

@@ -47,11 +47,11 @@ bool want_new_music = false;
 int fadingout_time=5000;
 bool no_fading = false;
 
-// number of allocated channels, 
+// number of allocated channels,
 const size_t n_of_channels = 16;
 
 // we need 2 channels, because we it for timer as well
-const size_t bell_channel = 0; 
+const size_t bell_channel = 0;
 const size_t timer_channel = 1;
 
 // number of channels reserved for sound sources
@@ -160,7 +160,7 @@ music_track::music_track(const std::string &tname)
 music_track::music_track(const std::string &tname,
 						 const std::string &ms_before_str,
 						 const std::string &ms_after_str)
-	: name(tname), 
+	: name(tname),
 	ms_before(lexical_cast_default<int>(ms_before_str)),
 	ms_after(lexical_cast_default<int>(ms_after_str)),
 	once(false)
@@ -570,14 +570,14 @@ void play_music_config(const config &music)
 	}
 
 	// Avoid 2 tracks with the same name, since that can cause an infinite loop
-	// in choose_track(), 2 tracks with the same name will always return the 
+	// in choose_track(), 2 tracks with the same name will always return the
 	// current track and track_ok() doesn't allow that.
 	std::vector<music_track>::const_iterator itor = current_track_list.begin();
 	while(itor != current_track_list.end()) {
 		if(itor->name == track.name) break;
 		++itor;
 	}
-	
+
 	if(itor == current_track_list.end()) {
 		current_track_list.push_back(track);
 	} else {
@@ -688,7 +688,7 @@ void play_sound_positioned(const std::string &files, int id, int repeats, unsign
 
 struct chunk_load_exception { };
 
-static Mix_Chunk* load_chunk(const std::string& file, channel_group group) 
+static Mix_Chunk* load_chunk(const std::string& file, channel_group group)
 {
 	sound_cache_iterator it_bgn, it_end;
 	sound_cache_iterator it;
@@ -742,7 +742,7 @@ static Mix_Chunk* load_chunk(const std::string& file, channel_group group)
 	return sound_cache.begin()->get_data();
 }
 
-void play_sound_internal(const std::string& files, channel_group group, unsigned int repeats, 
+void play_sound_internal(const std::string& files, channel_group group, unsigned int repeats,
 			unsigned int distance, int id, int loop_ticks, int fadein_ticks)
 {
 	if(files.empty() || distance >= DISTANCE_SILENT || !mix_ok) {

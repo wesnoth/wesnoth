@@ -53,7 +53,7 @@ static bool has_locale(const char* s) {
 	} catch (std::runtime_error&) {
 		return false;
 	}
-}		
+}
 
 /** Test the locale for a language and it's utf-8 variations. */
 static bool has_language(const std::string& language)
@@ -71,7 +71,7 @@ static bool has_language(const std::string& language)
 	if(has_locale(utf.c_str())) {
 		return true;
 	}
-	
+
 	return false;
 }
 
@@ -119,7 +119,7 @@ bool language_def::available() const
 				}
 			}
 		}
-	
+
 		return false;
 	}
 }
@@ -414,7 +414,7 @@ void init_textdomains(const config& cfg)
 			} else {
 				DBG_FS << "  Found at " << location << "\n";
 				t_string::add_textdomain(name, location);
-			} 
+			}
 		}
 	}
 

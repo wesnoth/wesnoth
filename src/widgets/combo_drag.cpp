@@ -27,7 +27,7 @@ namespace gui {
 
 	combo_drag::combo_drag(display& disp, const std::vector<std::string>& items, const drop_group_manager_ptr group)
 		: combo(disp, items), drop_target(group, location()),
-		drag_target_(-1), old_drag_target_(-1), 
+		drag_target_(-1), old_drag_target_(-1),
 		old_location_(), drag_(NONE)
 	{
 	}
@@ -108,7 +108,7 @@ namespace gui {
 
 	void combo_drag::mouse_motion(const SDL_MouseMotionEvent& event)
 	{
-		if (drag_ == PRESSED 
+		if (drag_ == PRESSED
 				|| drag_ == MOVED
 				|| drag_ == PRESSED_MOVE)
 		{

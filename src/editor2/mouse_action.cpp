@@ -56,13 +56,13 @@ editor_action* mouse_action::click_right(
 	return NULL;
 }
 
-editor_action* mouse_action::drag_left(editor_display& /*disp*/, 
+editor_action* mouse_action::drag_left(editor_display& /*disp*/,
 		int /*x*/, int /*y*/, bool& /*partial*/, editor_action* /*last_undo*/)
 {
 	return NULL;
 }
 
-editor_action* mouse_action::drag_right(editor_display& /*disp*/, 
+editor_action* mouse_action::drag_right(editor_display& /*disp*/,
 		int /*x*/, int /*y*/, bool& /*partial*/, editor_action* /*last_undo*/)
 {
 	return NULL;
@@ -122,12 +122,12 @@ void mouse_action::set_mouse_overlay(editor_display& disp)
 	disp.set_mouseover_hex_overlay(NULL);
 }
 
-bool mouse_action::has_alt_modifier() const 
+bool mouse_action::has_alt_modifier() const
 {
 	return key_[SDLK_RALT] || key_[SDLK_LALT];
 }
 
-bool mouse_action::has_shift_modifier() const 
+bool mouse_action::has_shift_modifier() const
 {
 	return key_[SDLK_RSHIFT] || key_[SDLK_LSHIFT];
 }
@@ -135,15 +135,15 @@ bool mouse_action::has_shift_modifier() const
 void mouse_action::set_terrain_mouse_overlay(editor_display& disp, t_translation::t_terrain fg,
 		t_translation::t_terrain bg)
 {
-	surface image_fg(image::get_image("terrain/" 
+	surface image_fg(image::get_image("terrain/"
 		+ disp.get_map().get_terrain_info(fg).editor_image() + ".png"));
-	surface image_bg(image::get_image("terrain/" 
+	surface image_bg(image::get_image("terrain/"
 		+ disp.get_map().get_terrain_info(bg).editor_image() + ".png"));
 
 	if (image_fg == NULL || image_bg == NULL) {
 		ERR_ED << "Missing terrain icon\n";
 		disp.set_mouseover_hex_overlay(NULL);
-		return; 
+		return;
 	}
 
 	// Create a transparent surface of the right size.
@@ -177,7 +177,7 @@ void mouse_action::set_terrain_mouse_overlay(editor_display& disp, t_translation
 	//apply mask so the overlay is contained within the mouseover hex
 	surface mask(image::get_image("terrain/alphamask.png"));
 	image = mask_surface(image, mask);
-	
+
 	// Add the alpha factor and scale the image
 	image = scale_surface(adjust_surface_alpha(image, alpha), zoom, zoom);
 
@@ -205,13 +205,13 @@ editor_action* brush_drag_mouse_action::click_right(editor_display& disp, int x,
 	return click_perform_right(disp, affected_hexes(disp, hex));
 }
 
-editor_action* brush_drag_mouse_action::drag_left(editor_display& disp, 
+editor_action* brush_drag_mouse_action::drag_left(editor_display& disp,
 		int x, int y, bool& partial, editor_action* last_undo)
 {
 	return drag_generic<&brush_drag_mouse_action::click_perform_left>(disp, x, y, partial, last_undo);
 }
 
-editor_action* brush_drag_mouse_action::drag_right(editor_display& disp, 
+editor_action* brush_drag_mouse_action::drag_right(editor_display& disp,
 		int x, int y, bool& partial, editor_action* last_undo)
 {
 	return drag_generic<&brush_drag_mouse_action::click_perform_right>(disp, x, y, partial, last_undo);

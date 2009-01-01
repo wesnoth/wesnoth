@@ -326,7 +326,7 @@ variant terrain_callable::get_value(const std::string& key) const
 	} else
 		return variant();
 }
-	
+
 void terrain_callable::get_inputs(std::vector<game_logic::formula_input>* inputs) const
 {
 	using game_logic::FORMULA_READ_ONLY;
@@ -335,4 +335,4 @@ void terrain_callable::get_inputs(std::vector<game_logic::formula_input>* inputs
 	inputs->push_back(game_logic::formula_input("loc", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("id", FORMULA_READ_ONLY));
 }
-	
+

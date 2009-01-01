@@ -95,7 +95,7 @@ const terrain_label* map_labels::get_label(const map_location& loc, const std::s
 {
 	team_label_map::const_iterator label_map = labels_.find(team_name);
 	if (label_map != labels_.end()) {
-		map_labels::label_map::const_iterator itor = label_map->second.find(loc);;	
+		map_labels::label_map::const_iterator itor = label_map->second.find(loc);;
 		if (itor != label_map->second.end())
 			return itor->second;
 	}
@@ -520,8 +520,8 @@ bool terrain_label::visible() const
 void terrain_label::check_text_length()
 {
 	// The actual data is wide_strings so test in wide_string mode
-	// also cutting a wide_string at an arbritary place gives odd 
-	// problems. 
+	// also cutting a wide_string at an arbritary place gives odd
+	// problems.
 	utils::truncate_as_wstring(text_, parent_->get_max_chars());
 }
 

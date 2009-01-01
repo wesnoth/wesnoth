@@ -71,10 +71,10 @@ class key_value_pair : public formula_callable {
 	variant value_;
 
 	variant get_value(const std::string& key) const;
-	
-	void get_inputs(std::vector<game_logic::formula_input>* inputs) const;	
-public:	
-	explicit key_value_pair(const variant& key, const variant& value) : key_(key), value_(value) {}  
+
+	void get_inputs(std::vector<game_logic::formula_input>* inputs) const;
+public:
+	explicit key_value_pair(const variant& key, const variant& value) : key_(key), value_(value) {}
 };
 
 class formula_function_expression : public function_expression {
@@ -108,7 +108,7 @@ public:
 	{}
 
 	function_expression_ptr generate_function_expression(const std::vector<expression_ptr>& args) const;
-};	
+};
 
 class function_symbol_table {
 	std::map<std::string, formula_function> custom_formulas_;

@@ -19,8 +19,8 @@
 
 namespace game {
 struct error {
-	error() : 
-		message() 
+	error() :
+		message()
 		{}
 	error(const std::string& msg) : message(msg)
 	{}
@@ -52,7 +52,7 @@ struct game_error : public error {
 //an exception object used to signal that the user has decided to abort
 //a game, and load another game instead
 struct load_game_exception {
-	load_game_exception(const std::string& game, bool show_replay, bool cancel_orders) 
+	load_game_exception(const std::string& game, bool show_replay, bool cancel_orders)
 	: game(game), show_replay(show_replay), cancel_orders(cancel_orders) {}
 	std::string game;
 	bool show_replay;

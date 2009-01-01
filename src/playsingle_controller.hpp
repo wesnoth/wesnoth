@@ -32,7 +32,7 @@ public:
 	playsingle_controller(const config& level, game_state& state_of_game,
 		const int ticks, const int num_turns, const config& game_config, CVideo& video, bool skip_replay);
         virtual ~playsingle_controller() ;
- 
+
 	LEVEL_RESULT play_scenario(const std::vector<config*>& story, upload_log& log, bool skip_replay, end_level_exception* end_level = NULL);
 
 	virtual void handle_generic_event(const std::string& name);

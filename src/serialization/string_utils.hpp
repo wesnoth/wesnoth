@@ -73,8 +73,8 @@ std::vector< std::string > split(std::string const &val, char c = ',', int flags
  * parenthetical_split("a(b)c{d}e(f{g})h",0,"({",")}") should return
  * a vector of <"a","b","c","d","e","f{g}","h">
  */
-std::vector< std::string > paranthetical_split(std::string const &val, 
-	const char separator = 0 , std::string const &left="(", 
+std::vector< std::string > paranthetical_split(std::string const &val,
+	const char separator = 0 , std::string const &left="(",
 	std::string const &right=")",int flags = REMOVE_EMPTY | STRIP_SPACES);
 
 std::string join(std::vector< std::string > const &v, char c = ',');
@@ -117,7 +117,7 @@ std::string& strip_char(std::string &str, const char c);
 /** Convert no, false, off, 0, 0.0 to false, empty to def, and others to true */
 bool string_bool(const std::string& str,bool def=false);
 
-/** 
+/**
  * Try to complete the last word of 'text' with the 'wordlist'.
  *
  * @param[in]  'text'     Text where we try to complete the last word of.
@@ -132,14 +132,14 @@ bool word_completion(std::string& text, std::vector<std::string>& wordlist);
 /** Check if a message contains a word. */
 bool word_match(const std::string& message, const std::string& word);
 
-/**	
+/**
  * Match using '*' as any number of characters (including none), and '?' as any
  * one character.
  */
 bool wildcard_string_match(const std::string& str, const std::string& match);
 
-/** 
- * Check if the username contains only valid characters. 
+/**
+ * Check if the username contains only valid characters.
  *
  * (all alpha-numeric characters plus underscore and hyphen)
  */
@@ -204,13 +204,13 @@ utf8_string uppercase(const utf8_string&);
 /** Returns a lowercased version of the string. */
 utf8_string lowercase(const utf8_string&);
 
-/** 
+/**
  * Truncates a string.
  *
  * If the string send has more than size utf-8 characters it will be truncated
- * to this size. 
+ * to this size.
  * No assumptions can be made about the actual size of the string.
- * 
+ *
  * @param[in]  str     String which can be converted to utf-8.
  * @param[out] str     String which contains maximal size utf-8 characters.
  * @param size         The size to truncate at.

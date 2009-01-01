@@ -22,7 +22,7 @@ See the COPYING file for more details.
 struct a_star_node
 {
 public:
-	
+
 	a_star_node() :
 		g(0.0),
 		h(0.0),
@@ -57,7 +57,7 @@ public:
 		// (see shortest_path_calculator::cost)
 		return distance_between(src, dst) -
 				(300.0 - sqrt( xdiff*xdiff + ydiff*ydiff)) / 3000000.0;
-		
+
 		// TODO: move the heuristic function into the cost_calculator
 		// so we can use case-specific heuristic
 		// and clean the definition of these numbers

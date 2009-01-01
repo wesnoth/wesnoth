@@ -104,7 +104,7 @@ public:
 		 */
 		INVISIBLE };
 
-	/** 
+	/**
 	 * Visibility set by the engine.
 	 *
 	 * This state only will be used if the widget is visible, depending on
@@ -495,13 +495,13 @@ public:
 	/** Returns the screen origin of the widget. */
 	tpoint get_origin() const { return tpoint(screen_x_, screen_y_); }
 
-	/** 
+	/**
 	 * Gets the sizes in one rect structure.
 	 *
 	 * @todo this function can be renamed to get_rect() when the old get_rect
 	 * has been removed.
 	 */
-	SDL_Rect get_screen_rect() const 
+	SDL_Rect get_screen_rect() const
 		{ return create_rect(get_origin(), get_size()); }
 
 	/**
@@ -568,7 +568,7 @@ public:
 	/** Returns the dirty state for a widget, final function. */
 	bool get_dirty() const { return dirty_; }
 
-	/** 
+	/**
 	 * Draws the background of a widget.
 	 *
 	 * Subclasses should override impl_draw_background instead of changing

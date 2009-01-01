@@ -24,7 +24,7 @@
 
 namespace rand_rng {
 	class simple_rng;
-} // namespace rand_rng 
+} // namespace rand_rng
 
 
 typedef std::map<wide_string, std::vector<wchar_t> > markov_prefix_map;

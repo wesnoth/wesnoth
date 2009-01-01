@@ -78,14 +78,14 @@ public:
 protected:
 	void slice_before_scroll();
 	void slice_end();
-		
+
 	events::mouse_handler& get_mouse_handler_base();
 	game_display& get_display();
 	bool have_keyboard_focus();
 	void process_keydown_event(const SDL_Event& event);
-	void process_keyup_event(const SDL_Event& event);	
-	void post_mouse_press(const SDL_Event& event);	
-		
+	void process_keyup_event(const SDL_Event& event);
+	void post_mouse_press(const SDL_Event& event);
+
 	virtual std::string get_action_image(hotkey::HOTKEY_COMMAND, int index) const;
 	virtual hotkey::ACTION_STATE get_action_state(hotkey::HOTKEY_COMMAND command, int index) const;
 	/** Check if a command can be executed. */
@@ -156,10 +156,10 @@ protected:
 	bool skip_replay_;
 	bool linger_;
 	bool first_turn_;
-	
+
 	const std::string& select_victory_music() const;
 	const std::string& select_defeat_music()  const;
-	
+
 	void set_victory_music_list(const std::string& list);
 	void set_defeat_music_list(const std::string& list);
 

@@ -20,8 +20,8 @@ class game_display;
 
 namespace gui {
 
-/** 
- * Values for the menu-items of the main menu. 
+/**
+ * Values for the menu-items of the main menu.
  *
  * The code assumes TUTORIAL is the first item.
  * The values are also used as the button retour values, where 0 means no
@@ -30,7 +30,7 @@ namespace gui {
 enum TITLE_RESULT { TUTORIAL = 1,		/**< Start special campaign 'tutorial' */
 					NEW_CAMPAIGN,		/**< Let user select a campaign to play */
 					MULTIPLAYER,		/**< Play single scenario against humans or AI */
-					LOAD_GAME, GET_ADDONS, 
+					LOAD_GAME, GET_ADDONS,
 #ifndef DISABLE_EDITOR2
 					START_MAP_EDITOR,
 #endif
@@ -51,17 +51,17 @@ void set_background_dirty();
 
 /**
  *  Show titlepage with logo and background, menu-buttons and tip-of-the-day.
- * 
+ *
  *  After the page is shown, this routine waits
  *  for the user to click one of the menu-buttons,
  *  or a keypress.
- * 
+ *
  *  @param	screen			display object
  *  @param	tips_of_day		list of tips
  *
  *  @return	the value of the menu-item the user has choosen.
  *  @retval	see @ref TITLE_RESULT for possible values
- */ 
+ */
 TITLE_RESULT show_title(game_display& screen, config& tips_of_day);
 }
 

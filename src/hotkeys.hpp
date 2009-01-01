@@ -28,7 +28,7 @@ class display;
 //refers to a hotkey command being executed.
 namespace hotkey {
 
-/** Available hotkey scopes. The scope is used to allow command from 
+/** Available hotkey scopes. The scope is used to allow command from
  * non-overlapping areas of the game share the same key
  */
 enum scope {
@@ -37,7 +37,7 @@ enum scope {
 	SCOPE_EDITOR,
 	SCOPE_COUNT
 };
-	
+
 
 enum HOTKEY_COMMAND {
 	HOTKEY_CYCLE_UNITS,HOTKEY_CYCLE_BACK_UNITS, HOTKEY_UNIT_HOLD_POSITION,
@@ -59,7 +59,7 @@ enum HOTKEY_COMMAND {
 	HOTKEY_REPLAY_NEXT_SIDE, HOTKEY_REPLAY_SHOW_EVERYTHING,
 	HOTKEY_REPLAY_SHOW_EACH, HOTKEY_REPLAY_SHOW_TEAM1,
 	HOTKEY_REPLAY_SKIP_ANIMATION,
-	
+
 #ifndef DISABLE_EDITOR2
 	HOTKEY_EDITOR_QUIT_TO_DESKTOP,
 	HOTKEY_EDITOR_CLOSE_MAP, HOTKEY_EDITOR_SWITCH_MAP,
@@ -79,7 +79,7 @@ enum HOTKEY_COMMAND {
 	HOTKEY_EDITOR_SELECTION_ROTATE, HOTKEY_EDITOR_SELECTION_FLIP,
 	HOTKEY_EDITOR_SELECTION_FILL,
 	HOTKEY_EDITOR_SELECTION_GENERATE, HOTKEY_EDITOR_SELECTION_RANDOMIZE,
-	HOTKEY_EDITOR_MAP_RESIZE, HOTKEY_EDITOR_MAP_ROTATE, 
+	HOTKEY_EDITOR_MAP_RESIZE, HOTKEY_EDITOR_MAP_ROTATE,
 	HOTKEY_EDITOR_MAP_GENERATE, HOTKEY_EDITOR_MAP_APPLY_MASK,
 	HOTKEY_EDITOR_MAP_CREATE_MASK_TO,
 	HOTKEY_EDITOR_REFRESH, HOTKEY_EDITOR_UPDATE_TRANSITIONS,
@@ -108,7 +108,7 @@ const std::string& get_scope_label(scope s);
 
 class hotkey_item {
 public:
-	hotkey_item() : 
+	hotkey_item() :
 		id_(HOTKEY_NULL),
 		command_(),
 		description_(),
@@ -123,7 +123,7 @@ public:
 		hidden_(false)
 		{}
 
-	hotkey_item(HOTKEY_COMMAND id, const std::string& command, 
+	hotkey_item(HOTKEY_COMMAND id, const std::string& command,
 		const std::string& description, bool hidden=false,
 		scope s=SCOPE_GENERAL);
 
@@ -143,15 +143,15 @@ public:
 		BY_CHARACTER,
 		CLEARED
 	};
-	
+
 	enum type get_type() const { return type_; }
-	
-	
+
+
 	/** @return the scope of this hotkey */
 	scope get_scope() const { return scope_; }
-	
+
 	bool is_in_active_scope() const { return is_scope_active(get_scope()); }
-	
+
 	// Returns unicode value of keypress.
 	int get_character() const { return character_; }
 	bool get_alt() const { return alt_; }

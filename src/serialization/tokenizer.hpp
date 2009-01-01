@@ -229,7 +229,7 @@ class tokenizer
 		}
 		bool is_alnum(const int c) const
 		{
-			return (c >= 'a' && c <= 'z') 
+			return (c >= 'a' && c <= 'z')
 				|| (c >= 'A' && c <= 'Z') || (c >= '0' && c <= '9') || c == '_';
 		}
 		void skip_comment()
@@ -249,7 +249,7 @@ class tokenizer
 								break;
 							}
 							++i;
-						} else if(i == 9) { 
+						} else if(i == 9) {
 							if(current_ != ' ' && current_ != '\t') {
 								break;
 							}
@@ -266,7 +266,7 @@ class tokenizer
 
 				} else if(current_ == 'l') {
 					// Basically the same as textdomain but we match 'line[ |\t]d*[ |\t]s*
-					// d* is the line number 
+					// d* is the line number
 					// s* is the file name
 					// It inherited the * instead of + from the previous implementation.
 					size_t i = 0;
@@ -280,7 +280,7 @@ class tokenizer
 								break;
 							}
 							++i;
-						} else if(i == 3) { 
+						} else if(i == 3) {
 							if(current_ != ' ' && current_ != '\t') {
 								break;
 							}

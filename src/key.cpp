@@ -15,7 +15,7 @@
 #include "global.hpp"
 #include "key.hpp"
 
-CKey::CKey() : 
+CKey::CKey() :
 	key_list(0),
 	is_enabled(true)
 {

@@ -37,16 +37,16 @@ namespace{
 	const double drag_threshold = 14.0;
 }
 
-mouse_handler::mouse_handler(game_display* gui, std::vector<team>& teams, 
-		unit_map& units, gamemap& map, gamestatus& status, 
+mouse_handler::mouse_handler(game_display* gui, std::vector<team>& teams,
+		unit_map& units, gamemap& map, gamestatus& status,
 		undo_list& undo_stack, undo_list& redo_stack) :
-	mouse_handler_base(), 
+	mouse_handler_base(),
 	map_(map),
-	gui_(gui), 
-	teams_(teams), 
-	units_(units), 
+	gui_(gui),
+	teams_(teams),
+	units_(units),
 	status_(status),
-	undo_stack_(undo_stack), 
+	undo_stack_(undo_stack),
 	redo_stack_(redo_stack),
 	previous_hex_(),
 	previous_free_hex_(),
@@ -80,11 +80,11 @@ void mouse_handler::set_team(const int team_number)
 void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 {
 	if (attackmove_) return;
-	
+
 	if (mouse_handler_base::mouse_motion_default(x, y, update)) return;
-	
+
 	const map_location new_hex = gui().hex_clicked_on(x,y);
-	
+
 	if(new_hex != last_hex_) {
 		update = true;
 		if (last_hex_.valid()) {
@@ -97,7 +97,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 		}
 		last_hex_ = new_hex;
 	}
-	
+
 
 	if (reachmap_invalid_) update = true;
 
@@ -326,7 +326,7 @@ void mouse_handler::mouse_press(const SDL_MouseButtonEvent& event, const bool br
 	mouse_handler_base::mouse_press(event, browse);
 }
 
-bool mouse_handler::right_click_show_menu(int /*x*/, int /*y*/, const bool browse) 
+bool mouse_handler::right_click_show_menu(int /*x*/, int /*y*/, const bool browse)
 {
 	// The first right-click cancel the selection if any,
 	// the second open the context menu
@@ -342,9 +342,9 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 {
 	undo_ = false;
 	if (mouse_handler_base::left_click(x, y, browse)) return false;
-	
+
 	bool check_shroud = teams_[team_num_ - 1].auto_shroud_updates();
-	
+
 	//we use the last registered highlighted hex
 	//since it's what update our global state
 	map_location hex = last_hex_;

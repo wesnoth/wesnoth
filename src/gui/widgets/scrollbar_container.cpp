@@ -193,7 +193,7 @@ static void set_scrollbar_mode(tgrid* scrollbar_grid, tscrollbar_* scrollbar,
 		scrollbar->set_item_count(items);
 		scrollbar->set_visible_items(visible_items);
 
-		const bool scrollbar_needed = 
+		const bool scrollbar_needed =
 			items > visible_items;
 
 		if(!scrollbar_needed) {
@@ -246,13 +246,13 @@ void tscrollbar_container::
 
 	// Set vertical scrollbar
 	set_scrollbar_mode(vertical_scrollbar_grid_, vertical_scrollbar_,
-			vertical_scrollbar_mode_, 
+			vertical_scrollbar_mode_,
 			content_grid_->get_height(),
 			content_->get_height());
 
 	// Set horizontal scrollbar
 	set_scrollbar_mode(horizontal_scrollbar_grid_, horizontal_scrollbar_,
-			horizontal_scrollbar_mode_, 
+			horizontal_scrollbar_mode_,
 			content_grid_->get_width(),
 			content_->get_width());
 
@@ -290,7 +290,7 @@ void tscrollbar_container::set_visible_area(const SDL_Rect& area)
 	tcontainer_::set_visible_area(area);
 
 	// Now get the visible part of the content.
-	content_visible_area_ = 
+	content_visible_area_ =
 			get_rect_union(area, content_->get_screen_rect());
 
 	content_grid_->set_visible_area(content_visible_area_);
@@ -315,7 +315,7 @@ const twidget* tscrollbar_container::find_widget(const tpoint& coordinate,
 {
 	assert(content_ && content_grid_);
 
-	const twidget* result = 
+	const twidget* result =
 		tcontainer_::find_widget(coordinate, must_be_active);
 
 	if(result != content_) {
@@ -328,17 +328,17 @@ const twidget* tscrollbar_container::find_widget(const tpoint& coordinate,
 
 bool tscrollbar_container::does_block_easy_close() const
 {
-	assert(vertical_scrollbar_grid_ 
+	assert(vertical_scrollbar_grid_
 			&& vertical_scrollbar_
 			&& horizontal_scrollbar_grid_
 			&& horizontal_scrollbar_);
 
-	const bool vertical_block = vertical_scrollbar_grid_->is_visible() 
-			&& !(vertical_scrollbar_->at_begin() 
+	const bool vertical_block = vertical_scrollbar_grid_->is_visible()
+			&& !(vertical_scrollbar_->at_begin()
 					&& vertical_scrollbar_->at_end());
 
-	const bool horizontal_block = horizontal_scrollbar_grid_->is_visible() 
-			&& !(horizontal_scrollbar_->at_begin() 
+	const bool horizontal_block = horizontal_scrollbar_grid_->is_visible()
+			&& !(horizontal_scrollbar_->at_begin()
 					&& horizontal_scrollbar_->at_end());
 
 	return vertical_block || horizontal_block;

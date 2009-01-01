@@ -108,13 +108,13 @@ const struct {
 	{ hotkey::HOTKEY_EDITOR_MAP_SAVE_AS, "editor-map-save-as", N_("Save Map As"), false, hotkey::SCOPE_EDITOR },
 	{ hotkey::HOTKEY_EDITOR_MAP_REVERT, "editor-map-revert", N_("Revert All Changes"), false, hotkey::SCOPE_EDITOR },
 	{ hotkey::HOTKEY_EDITOR_MAP_INFO, "editor-map-info", N_("Map Information"), false, hotkey::SCOPE_EDITOR },
-	{ hotkey::HOTKEY_EDITOR_TERRAIN_PALETTE_SWAP, "editor-terrain-palette-swap", 
+	{ hotkey::HOTKEY_EDITOR_TERRAIN_PALETTE_SWAP, "editor-terrain-palette-swap",
 		N_("Swap fore- and background terrains"), false, hotkey::SCOPE_EDITOR },
 	{ hotkey::HOTKEY_EDITOR_TOOL_NEXT, "editor-tool-next", N_("Next Tool"), false, hotkey::SCOPE_EDITOR },
 	{ hotkey::HOTKEY_EDITOR_TOOL_PAINT, "editor-tool-paint", N_("Paint Tool"), false, hotkey::SCOPE_EDITOR },
 	{ hotkey::HOTKEY_EDITOR_TOOL_FILL, "editor-tool-fill", N_("Fill Tool"), false, hotkey::SCOPE_EDITOR },
 	{ hotkey::HOTKEY_EDITOR_TOOL_SELECT, "editor-tool-select", N_("Selection Tool"), false, hotkey::SCOPE_EDITOR },
-	{ hotkey::HOTKEY_EDITOR_TOOL_STARTING_POSITION, "editor-tool-starting-position", 
+	{ hotkey::HOTKEY_EDITOR_TOOL_STARTING_POSITION, "editor-tool-starting-position",
 		N_("Set Starting Positions Tool"), false, hotkey::SCOPE_EDITOR },
 	{ hotkey::HOTKEY_EDITOR_BRUSH_NEXT, "editor-brush-next", N_("Next Brush"), false, hotkey::SCOPE_EDITOR },
 	{ hotkey::HOTKEY_EDITOR_BRUSH_DEFAULT, "editor-brush-default", N_("Default Brush"), false, hotkey::SCOPE_EDITOR },
@@ -131,23 +131,23 @@ const struct {
 		 N_("Rotate Clipboard Clockwise"), false, hotkey::SCOPE_EDITOR },
 	{ hotkey::HOTKEY_EDITOR_CLIPBOARD_ROTATE_CCW, "editor-clipboard-rotate-ccw",
 		 N_("Rotate Clipboard Counter-Clockwise"), false, hotkey::SCOPE_EDITOR },
-	{ hotkey::HOTKEY_EDITOR_CLIPBOARD_FLIP_HORIZONTAL, "editor-clipboard-flip-horizontal", 
+	{ hotkey::HOTKEY_EDITOR_CLIPBOARD_FLIP_HORIZONTAL, "editor-clipboard-flip-horizontal",
 		N_("Flip Clipboard Horizontally"), false, hotkey::SCOPE_EDITOR },
 	{ hotkey::HOTKEY_EDITOR_CLIPBOARD_FLIP_VERTICAL, "editor-clipboard-flip-vertical",
 		N_("Flip Clipboard Vertically"), false, hotkey::SCOPE_EDITOR },
-	{ hotkey::HOTKEY_EDITOR_SELECTION_ROTATE, "editor-selection-rotate", 
+	{ hotkey::HOTKEY_EDITOR_SELECTION_ROTATE, "editor-selection-rotate",
 		N_("Rotate Selection"), false, hotkey::SCOPE_EDITOR },
-	{ hotkey::HOTKEY_EDITOR_SELECTION_FLIP, "editor-selection-flip", 
+	{ hotkey::HOTKEY_EDITOR_SELECTION_FLIP, "editor-selection-flip",
 		N_("Flip Selection"), false, hotkey::SCOPE_EDITOR },
-	{ hotkey::HOTKEY_EDITOR_SELECTION_FILL, "editor-selection-fill", 
+	{ hotkey::HOTKEY_EDITOR_SELECTION_FILL, "editor-selection-fill",
 		N_("Fill Selection"), false, hotkey::SCOPE_EDITOR },
-	{ hotkey::HOTKEY_EDITOR_SELECTION_GENERATE, "editor-selection-generate", 
+	{ hotkey::HOTKEY_EDITOR_SELECTION_GENERATE, "editor-selection-generate",
 		N_("Generate Tiles In Selection"), false, hotkey::SCOPE_EDITOR },
-	{ hotkey::HOTKEY_EDITOR_SELECTION_RANDOMIZE, "editor-selection-randomize", 
+	{ hotkey::HOTKEY_EDITOR_SELECTION_RANDOMIZE, "editor-selection-randomize",
 		N_("Randomize Tiles In Selection"), false, hotkey::SCOPE_EDITOR },
-	{ hotkey::HOTKEY_EDITOR_MAP_RESIZE, "editor-map-resize", 
+	{ hotkey::HOTKEY_EDITOR_MAP_RESIZE, "editor-map-resize",
 		N_("Resize Map"), false, hotkey::SCOPE_EDITOR },
-	{ hotkey::HOTKEY_EDITOR_MAP_ROTATE, "editor-map-rotate", 
+	{ hotkey::HOTKEY_EDITOR_MAP_ROTATE, "editor-map-rotate",
 		N_("Rotate Map"), false, hotkey::SCOPE_EDITOR },
 	{ hotkey::HOTKEY_EDITOR_MAP_GENERATE, "editor-map-generate",
 		 N_("Generate Map"), false, hotkey::SCOPE_EDITOR },
@@ -155,20 +155,20 @@ const struct {
 		 N_("Apply a Mask"), false, hotkey::SCOPE_EDITOR },
 	{ hotkey::HOTKEY_EDITOR_MAP_CREATE_MASK_TO, "editor-map-create-mask-to",
 		 N_("Create Mask"), false, hotkey::SCOPE_EDITOR },
-	{ hotkey::HOTKEY_EDITOR_REFRESH, "editor-refresh", 
+	{ hotkey::HOTKEY_EDITOR_REFRESH, "editor-refresh",
 		N_("Refresh Display"), false, hotkey::SCOPE_EDITOR },
-	{ hotkey::HOTKEY_EDITOR_UPDATE_TRANSITIONS, "editor-update-transitions", 
+	{ hotkey::HOTKEY_EDITOR_UPDATE_TRANSITIONS, "editor-update-transitions",
 		N_("Update Terrain Transitions"), false, hotkey::SCOPE_EDITOR },
-	{ hotkey::HOTKEY_EDITOR_AUTO_UPDATE_TRANSITIONS, "editor-auto-update-transitions", 
+	{ hotkey::HOTKEY_EDITOR_AUTO_UPDATE_TRANSITIONS, "editor-auto-update-transitions",
 		N_("Auto-update Terrain Transitions"), false, hotkey::SCOPE_EDITOR },
-	{ hotkey::HOTKEY_EDITOR_REFRESH_IMAGE_CACHE, "editor-refresh-image-cache", 
+	{ hotkey::HOTKEY_EDITOR_REFRESH_IMAGE_CACHE, "editor-refresh-image-cache",
 		N_("Refresh Image Cache"), false, hotkey::SCOPE_EDITOR },
-	{ hotkey::HOTKEY_EDITOR_DRAW_COORDINATES, "editor-draw-coordinates", 
+	{ hotkey::HOTKEY_EDITOR_DRAW_COORDINATES, "editor-draw-coordinates",
 		N_("Draw Hex Coordinates"), false, hotkey::SCOPE_EDITOR },
-	{ hotkey::HOTKEY_EDITOR_DRAW_TERRAIN_CODES, "editor-draw-terrain-codes", 
+	{ hotkey::HOTKEY_EDITOR_DRAW_TERRAIN_CODES, "editor-draw-terrain-codes",
 		N_("Draw Terrain Codes"), false, hotkey::SCOPE_EDITOR },
-	
-	
+
+
 #endif
 
 	{ hotkey::HOTKEY_DELAY_SHROUD, "delayshroud", N_("Delay Shroud Updates"), false, hotkey::SCOPE_GAME },
@@ -203,7 +203,7 @@ std::vector<bool> scope_active_(hotkey::SCOPE_COUNT, false);
 }
 
 namespace hotkey {
-	
+
 
 void deactivate_all_scopes()
 {
@@ -236,20 +236,20 @@ static void key_event_execute(display& disp, const SDL_KeyboardEvent& event, com
 
 const std::string CLEARED_TEXT = "__none__";
 
-hotkey_item::hotkey_item(HOTKEY_COMMAND id, 
+hotkey_item::hotkey_item(HOTKEY_COMMAND id,
 		const std::string& command, const std::string& description, bool hidden,
 		scope s) :
-	id_(id), 
-	command_(command), 
-	description_(description), 
+	id_(id),
+	command_(command),
+	description_(description),
 	scope_(s),
 	type_(UNBOUND),
 	character_(0),
-	ctrl_(false), 
-	alt_(false), 
+	ctrl_(false),
+	alt_(false),
 	cmd_(false),
 	keycode_(0),
-	shift_(false), 
+	shift_(false),
 	hidden_(hidden)
 {
 }
@@ -445,7 +445,7 @@ void load_descriptions()
 
 void set_hotkey_tag_name(const std::string& name)
 {
-	hotkey_tag_name = name;	
+	hotkey_tag_name = name;
 }
 
 void load_hotkeys(const config& cfg)
@@ -517,7 +517,7 @@ hotkey_item& get_hotkey(const std::string& command)
 	return *itor;
 }
 
-hotkey_item& get_hotkey(int character, int keycode, bool shift, bool ctrl, 
+hotkey_item& get_hotkey(int character, int keycode, bool shift, bool ctrl,
 	bool alt, bool cmd)
 {
 	std::vector<hotkey_item>::iterator itor;
@@ -859,7 +859,7 @@ void execute_command(display& disp, HOTKEY_COMMAND command, command_executor* ex
 {
 	const int zoom_amount = 4;
 	bool map_screenshot = false;
-	
+
 	if(executor != NULL) {
 		if(!executor->can_execute_command(command, index) || executor->execute_command(command, index))
 		return;

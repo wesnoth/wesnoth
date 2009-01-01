@@ -220,7 +220,7 @@ public:
 
 	void swap(document& o);
 	void clear();
-	
+
 	static std::string stats();
 
 private:

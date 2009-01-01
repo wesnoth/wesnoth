@@ -52,7 +52,7 @@ namespace preferences {
 	void clear_ignores();
 	bool is_friend(const std::string& nick);
 	bool is_ignored(const std::string& nick);
-	
+
 	bool sort_list();
 	void _set_sort_list(bool show);
 
@@ -63,7 +63,7 @@ namespace preferences {
 
 	std::string network_host();
 	void set_network_host(const std::string& host);
-	
+
 	unsigned int get_ping_timeout();
 	void set_ping_timeout(unsigned int timeout);
 

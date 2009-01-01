@@ -465,8 +465,8 @@ class variant_comparator : public formula_callable {
 		fallback_->get_inputs(inputs);
 	}
 public:
-	variant_comparator(const expression_ptr& expr, const formula_callable& fallback) : 
-		expr_(expr), 
+	variant_comparator(const expression_ptr& expr, const formula_callable& fallback) :
+		expr_(expr),
 		fallback_(&fallback),
 		a_(),
 		b_()
@@ -764,17 +764,17 @@ private:
 
 }
 
-variant key_value_pair::get_value(const std::string& key) const 
-{ 
-	if(key == "key") 
-	{ 
-		return key_; 
-	} else 
-		if(key == "value") 
-		{ 
-			return value_; 
+variant key_value_pair::get_value(const std::string& key) const
+{
+	if(key == "key")
+	{
+		return key_;
+	} else
+		if(key == "value")
+		{
+			return value_;
 		} else
-			return variant(); 
+			return variant();
 }
 
 void key_value_pair::get_inputs(std::vector<game_logic::formula_input>* inputs) const {

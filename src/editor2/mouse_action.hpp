@@ -25,7 +25,7 @@ class CKey;
 namespace editor2 {
 
 /**
- * A mouse action receives events from the controller, and responds to them by creating 
+ * A mouse action receives events from the controller, and responds to them by creating
  * an appropriate editor_action object. Mouse actions may store some temporary data
  * such as the last clicked hex for better handling of click-drag. They should *not* modify
  * the map or trigger refreshes, but may set brush locations and similar overlays that
@@ -42,28 +42,28 @@ public:
 	}
 
 	virtual ~mouse_action() {}
-		
+
 	/**
 	 * Mouse move (not a drag). Never changes anything (other than temporary highlihts and similar)
 	 */
 	void move(editor_display& disp, const map_location& hex);
-	
+
 	/**
 	 * Unconditionally update the brush highlights for the current tool when hex is the center location
 	 */
 	void update_brush_highlights(editor_display& disp, const map_location& hex);
-		
+
 	/**
 	 * Locations that would be affected by a click, used by move to update highlights. Defauts to higlight the mouseover hex.
 	 * Maybe also used for actually performing the action in click() or drag().
 	 */
 	virtual std::set<map_location> affected_hexes(editor_display& disp, const map_location& hex);
-	
+
 	/**
 	 * A click, possibly the beginning of a drag. Must be overriden.
 	 */
 	virtual editor_action* click_left(editor_display& disp, int x, int y) = 0;
-	
+
 	/**
 	 * A click, possibly the beginning of a drag. Must be overriden.
 	 */
@@ -73,7 +73,7 @@ public:
 	 * Drag operation. A click should have occured earlier. Defaults to no action.
 	 */
 	virtual editor_action* drag_left(editor_display& disp, int x, int y, bool& partial, editor_action* last_undo);
-	
+
 	/**
 	 * Drag operation. A click should have occured earlier. Defaults to no action.
 	 */
@@ -83,54 +83,54 @@ public:
 	 * The end of dragging. Defaults to no action.
 	 */
 	virtual editor_action* drag_end(editor_display& disp, int x, int y);
-	
+
 
 	virtual editor_action* up_left(editor_display& disp, int x, int y);
-	
+
 	virtual editor_action* up_right(editor_display& disp, int x, int y);
-	
+
 	/**
 	 * Function called by the controller on a key event for the current mouse action.
 	 * Defaults to starting position processing.
 	 */
 	virtual editor_action* key_event(editor_display& disp, const SDL_Event& e);
-	
+
 	/**
-	 * Helper variable setter - pointer to a toolbar menu/button used for highlighting 
+	 * Helper variable setter - pointer to a toolbar menu/button used for highlighting
 	 * the current action. Should always be NULL or point to a valid menu.
 	 */
 	void set_toolbar_button(const theme::menu* value) { toolbar_button_ = value; }
 
 	/**
-	 * Getter for the (possibly NULL) associated menu/button. 
+	 * Getter for the (possibly NULL) associated menu/button.
 	 */
 	const theme::menu* toolbar_button() const { return toolbar_button_; }
-	
+
 	/**
 	 * Set the mouse overlay for this action. Defaults to an empty overlay.
 	 */
 	virtual void set_mouse_overlay(editor_display& disp);
-	
+
 protected:
 	bool has_alt_modifier() const;
 	bool has_shift_modifier() const;
-	
-	/** 
+
+	/**
 	 * Helper function for derived classes that need a active-terrain mouse overlay
 	 */
 	void set_terrain_mouse_overlay(editor_display& disp, t_translation::t_terrain fg,
 		t_translation::t_terrain bg);
-	
+
 	/**
 	 * The hex previously used in move operations
 	 */
 	map_location previous_move_hex_;
-	
+
 	/**
 	 * Key presses, used for modifiers (alt, shift) in some operations
 	 */
 	const CKey& key_;
-	
+
 private:
 	/**
 	 * Pointer to an associated menu/button, if such exists
@@ -150,17 +150,17 @@ public:
 		, brush_(brush)
 	{
 	}
-	
+
 	/**
 	 * The affected hexes of a brush action are the result of projecting the current brush on the mouseover hex
 	 */
-	std::set<map_location> affected_hexes(editor_display& disp, const map_location& hex);	
-	
+	std::set<map_location> affected_hexes(editor_display& disp, const map_location& hex);
+
 	/**
 	 * The actual action function which is called by click() and drag(). Derived classes override this instead of click() and drag().
 	 */
 	virtual editor_action* click_perform_left(editor_display& disp, const std::set<map_location>& hexes) = 0;
-	
+
 	/**
 	 * The actual action function which is called by click() and drag(). Derived classes override this instead of click() and drag().
 	 */
@@ -175,35 +175,35 @@ public:
 	 * Calls click_perform_right()
 	 */
 	editor_action* click_right(editor_display& disp, int x, int y);
-	
+
 	/**
 	 * Calls click_perform() for every new hex the mouse is dragged into.
 	 * @todo partial actions support and merging of many drag actions into one
 	 */
 	editor_action* drag_left(editor_display& disp, int x, int y, bool& partial, editor_action* last_undo);
-	
+
 	/**
 	 * Calls click_perform for every new hex the mouse is dragged into.
 	 * @todo partial actions support and merging of many drag actions into one
 	 */
 	editor_action* drag_right(editor_display& disp, int x, int y, bool& partial, editor_action* last_undo);
-	
+
 	/**
 	 * End of dragging.
 	 * @todo partial actions (the entire drag should end up as one action)
 	 */
-	editor_action* drag_end(editor_display& disp, int x, int y);	
-	
+	editor_action* drag_end(editor_display& disp, int x, int y);
+
 protected:
 	/** Brush accessor */
 	const brush& get_brush();
-	
+
 	/**
 	 * The previous hex dragged into.
 	 * @todo keep a set of all "visited" locations to reduce action count in long drags that hit the same hexes multiple times?
 	 */
 	map_location previous_drag_hex_;
-	
+
 private:
 	/**
 	 * Template helper gathering actions common for both drag_right and drag_left.
@@ -228,15 +228,15 @@ private:
 class mouse_action_paint : public brush_drag_mouse_action
 {
 public:
-	mouse_action_paint(const t_translation::t_terrain& terrain_left, 
-		const t_translation::t_terrain& terrain_right, 
+	mouse_action_paint(const t_translation::t_terrain& terrain_left,
+		const t_translation::t_terrain& terrain_right,
 		const brush* const * const brush, const CKey& key)
 	: brush_drag_mouse_action(brush, key)
 	, terrain_left_(terrain_left)
 	, terrain_right_(terrain_right)
 	{
 	}
-	
+
 	/**
 	 * Create an appropriate editor_action and return it
 	 */
@@ -248,7 +248,7 @@ public:
 	editor_action* click_perform_right(editor_display& disp, const std::set<map_location>& hexes);
 
 	void set_mouse_overlay(editor_display& disp);
-	
+
 protected:
 	const t_translation::t_terrain& terrain_left_;
 	const t_translation::t_terrain& terrain_right_;
@@ -264,17 +264,17 @@ public:
 	: brush_drag_mouse_action(brush, key)
 	{
 	}
-	
+
 	/**
 	 * Overriden to allow special behaviour based on modifier keys
 	 */
 	std::set<map_location> affected_hexes(editor_display& disp, const map_location& hex);
-	
+
 	/**
 	 * Force a fake "move" event to update brush overlay on key event
 	 */
 	editor_action* key_event(editor_display& disp, const SDL_Event& e);
-		
+
 	/**
 	 * Left click/drag selects
 	 */
@@ -284,7 +284,7 @@ public:
 	 * Right click/drag deselects
 	 */
 	editor_action* click_perform_right(editor_display& disp, const std::set<map_location>& hexes);
-	
+
 	virtual void set_mouse_overlay(editor_display& disp);
 };
 
@@ -298,12 +298,12 @@ public:
 	: mouse_action(key), paste_(paste)
 	{
 	}
-	
+
 	/**
 	 * Show an outline of where the paste will go
 	 */
 	std::set<map_location> affected_hexes(editor_display& disp, const map_location& hex);
-	
+
 	/**
 	 * Return a paste with offset action
 	 */
@@ -313,9 +313,9 @@ public:
 	 * Right click does nothing for now
 	 */
 	editor_action* click_right(editor_display& disp, int x, int y);
-	
+
 	virtual void set_mouse_overlay(editor_display& disp);
-	
+
 protected:
 	/**
 	 * Reference to the buffer used for pasting (e.g. the clipboard)
@@ -336,31 +336,31 @@ public:
 	, terrain_right_(terrain_right)
 	{
 	}
-	
+
 	/**
 	 * Tiles that will be painted to, possibly use modifier keys here
 	 */
 	std::set<map_location> affected_hexes(editor_display& disp, const map_location& hex);
-	
+
 	/**
 	 * Left / right click fills with the respective terrain
 	 */
 	editor_action* click_left(editor_display& disp, int x, int y);
-	
+
 	/**
 	 * Left / right click fills with the respective terrain
 	 */
 	editor_action* click_right(editor_display& disp, int x, int y);
-	
+
 	virtual void set_mouse_overlay(editor_display& disp);
-	
+
 protected:
 	const t_translation::t_terrain& terrain_left_;
 	const t_translation::t_terrain& terrain_right_;
 };
 
 /**
- * Set starting position action. 
+ * Set starting position action.
  */
 class mouse_action_starting_position : public mouse_action
 {
@@ -369,7 +369,7 @@ public:
 	: mouse_action(key), click_(false)
 	{
 	}
-	
+
 	/**
 	 * Left click displays a player-number-selector dialog and then creates an action
 	 * or returns NULL if cancel was pressed or there would be no change.
@@ -383,11 +383,11 @@ public:
 	 * Do this on mouse up to avoid drag issue,
 	 */
 	editor_action* up_right(editor_display& disp, int x, int y);
-	
+
 	editor_action* click_right(editor_display& disp, int x, int y);
 
 	virtual void set_mouse_overlay(editor_display& disp);
-	
+
 private:
 	bool click_;
 };

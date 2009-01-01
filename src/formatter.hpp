@@ -24,7 +24,7 @@
  * something like this: (ostringstream() << n).str() to convert an integer to a
  * string, all in one line instead you have to use this far more tedious
  * approach:
- *  ostringstream s; 
+ *  ostringstream s;
  *  s << n;
  *  s.str();
  * This class corrects this shortcoming, allowing something like this:

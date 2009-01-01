@@ -60,19 +60,19 @@ private:
 
 struct formula_error
 {
-	formula_error() 
+	formula_error()
 		: type()
 		, formula()
 		, filename()
-		, line(0) 
+		, line(0)
 	{}
 
-	formula_error(const std::string& type, const std::string& formula, 
-			const std::string& file, int line) 
+	formula_error(const std::string& type, const std::string& formula,
+			const std::string& file, int line)
 		: type(type)
 		, formula(formula)
 		, filename(file)
-		, line(line) 
+		, line(line)
 	{}
 
 	std::string type;

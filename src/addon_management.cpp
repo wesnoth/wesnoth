@@ -80,7 +80,7 @@ bool remove_local_addon(const std::string& addon, std::string* log)
 		messages << "Failed to delete directory/file: " << addon_dir << ".cfg\n";
 		ret = false;
 	}
-	
+
 	if(log != NULL) {
 		*log = messages.str();
 	}
@@ -338,7 +338,7 @@ namespace {
 			}
 		}
 	}
-	
+
 	/**
 	 * Creates a more human-readable representation of a file size.
 	 *
@@ -350,7 +350,7 @@ namespace {
 	static std::string format_file_size(const std::string& size_str)
 	{
 		double size = lexical_cast_default<double>(size_str,0.0);
-	
+
 		const double k = 1024;
 		if(size > 0.0) {
 			std::string size_postfix = _("B");	// bytes
@@ -366,7 +366,7 @@ namespace {
 					}
 				}
 			}
-	
+
 			std::ostringstream stream;
 #ifdef _MSC_VER
 			// Visual C++ makes 'precision' set the number of decimal places.
@@ -383,7 +383,7 @@ namespace {
 			return "";
 		}
 	}
-	
+
 	/**
 	 * Return a short string describing an add-on's type.
 	 *
@@ -414,7 +414,7 @@ namespace {
 				return _("addon_type^(unknown)");
 		}
 	}
-	
+
 	/**
 	 * Checks if an add-on's dependencies are met.
 	 *
@@ -429,7 +429,7 @@ namespace {
 		std::vector<std::string>::const_iterator i;
 		std::string missing = "";
 		size_t count_missing = 0;
-	
+
 		foreach(const std::string& i, deplist) {
 			if (std::find(installed.begin(), installed.end(), i) == installed.end()) {
 				missing += "\n" + i;
@@ -452,7 +452,7 @@ namespace {
 		}
 		return true;
 	}
-	
+
 	void upload_addon_to_server(game_display& disp, const std::string& addon, network::connection sock)
 	{
 		config request_terms;
@@ -478,10 +478,10 @@ namespace {
 				return;
 			}
 		}
-	
+
 		config cfg;
 		get_addon_info(addon,cfg);
-	
+
 		std::string passphrase = cfg["passphrase"];
 		// generate a random passphrase and write it to disk
 		// if the .pbl file doesn't provide one already
@@ -493,19 +493,19 @@ namespace {
 			cfg["passphrase"] = passphrase;
 			set_addon_info(addon,cfg);
 		}
-	
+
 		cfg["name"] = addon;
-	
+
 		config addon_data;
 		archive_addon(addon,addon_data);
-	
+
 		data.clear();
 		data.add_child("upload",cfg).add_child("data",addon_data);
-	
+
 		LOG_NET << "uploading add-on...\n";
 		// @todo Should be enabled once the campaign server can be recompiled.
 		network::send_data(data, sock, true);
-	
+
 		sock = dialogs::network_send_dialog(disp,_("Sending add-on"),data,sock);
 		if(!sock) {
 			return;
@@ -518,21 +518,21 @@ namespace {
 			dlg.show();
 		}
 	}
-	
+
 	void delete_remote_addon(game_display& disp, const std::string& addon, network::connection sock)
 	{
 		config cfg;
 		get_addon_info(addon,cfg);
-	
+
 		config msg;
 		msg["name"] = addon;
 		msg["passphrase"] = cfg["passphrase"];
-	
+
 		config data;
 		data.add_child("delete",msg);
 
 		network::send_data(data, sock, true);
-	
+
 		sock = network::receive_data(data,sock,5000);
 		if(!sock) {
 			gui::show_error_message(disp, _("Connection timed out"));
@@ -545,7 +545,7 @@ namespace {
 			dlg.show();
 		}
 	}
-	
+
 	bool install_addon(game_display& disp, config& cfg, const config* const addons_tree,
 	                   const std::string& addon_id, const std::string& addon_title,
 	                   const std::string& addon_type_str, const std::string& addon_uploads_str,
@@ -586,7 +586,7 @@ namespace {
 			gui::show_error_message(disp, _("The add-on has an invalid file or directory name and can not be installed."));
 			return false;
 		}
-	
+
 		// add revision info to the addon archive
 		config* maindir = cfg.find_child("dir", "name", addon_id);
 		if(maindir == NULL) {
@@ -598,7 +598,7 @@ namespace {
 		LOG_CFG << "generating version info for addon '" << addon_id << "'\n";
 		config f;
 		f["name"] = "_info.cfg";
-		
+
 		utils::string_map info_tab;
 		info_tab["type"] = addon_type_str.empty() ? addon_type_str : std::string("unknown");
 		info_tab["uploads"] = addon_uploads_str;
@@ -652,7 +652,7 @@ namespace {
 			*do_refresh = true;
 		return true;
 	}
-	
+
 	void addons_update_dlg(game_display& disp, config& cfg, const config::child_list& remote_addons_list,
 	                       const network::manager& net_manager, const network::connection& sock,
 	                       bool* do_refresh)
@@ -711,20 +711,20 @@ namespace {
 			gui::dialog dlg(disp, warn_title, warn_entrytxt + unsafe_list.str(), gui::MESSAGE);
 			dlg.show();
 		}
-		
+
 		if(safe_matches.empty()) {
 			gui::dialog dlg(disp, _("No add-ons to update"), _("Could not find any updated add-ons on this server."),
 			                gui::MESSAGE);
 			dlg.show();
 			return;
 		}
-		
+
 		// column contents
 		std::vector<std::string> addons, titles, oldversions, newversions, options, filtered_opts;
 		std::vector<int> sizes;
-		
+
 		std::vector<std::string> types, uploads;
-		
+
 		std::string sep(1, COLUMN_SEPARATOR);
 		const std::string& heading =
 			(formatter() << HEADING_PREFIX << sep << _("Name") << sep << _("Old version") << sep << _("New version") << sep
@@ -745,7 +745,7 @@ namespace {
 			const std::string& sizef = format_file_size(size);
 			const std::string& oldver = safe_local_versions[i];
 			const std::string& newver = remote_version_map[name];
-			
+
 			std::string author = c["author"];
 			std::string title = c["title"];
 			if(title.empty()) {
@@ -755,7 +755,7 @@ namespace {
 
 			utils::truncate_as_wstring(title, 20);
 			utils::truncate_as_wstring(author, 16);
-			
+
 			//add negative sizes to reverse the sort order
 			sizes.push_back(-atoi(size.c_str()));
 
@@ -844,7 +844,7 @@ namespace {
 				failed_titles.push_back(titles[i]);
 			}
 		}
-		
+
 		if(!result) {
 			assert(failed_titles.empty() == false);
 			std::string failed_titles_list_fmt;
@@ -862,7 +862,7 @@ namespace {
 			err_dlg.show();
 			return;
 		}
-		
+
 		const std::string msg_title = _("Update succeeded");
 		const std::string msg_message = !upd_all ? _("Add-on updated successfully.") :
 		                                           _("All add-ons updated successfully.");
@@ -878,13 +878,13 @@ namespace {
 		if(address_components.empty()) {
 			return;
 		}
-		
+
 		const std::string old_host = preferences::campaign_server();
 		const int remote_port = lexical_cast_default<int>(address_components.back(),
 		                                                  DEFAULT_CAMPAIGND_PORT);
 		remote_host = address_components.front();
 		preferences::set_campaign_server(remote_host);
-		
+
 		try {
 			const network::manager net_manager;
 			const network::connection sock =
@@ -895,7 +895,7 @@ namespace {
 				preferences::set_campaign_server(old_host);
 				return;
 			}
-			
+
 			config cfg;
 			cfg.add_child("request_campaign_list");
 			network::send_data(cfg, sock, true);
@@ -909,19 +909,19 @@ namespace {
 				gui::show_error_message(disp, (*error)["message"]);
 				return;
 			}
-			
+
 			config const * const addons_tree = cfg.child("campaigns");
 			if(addons_tree == NULL) {
 				gui::show_error_message(disp, _("An error occurred while communicating with the server."));
 				return;
 			}
-			
+
 			const config::child_list& addon_cfgs = addons_tree->get_children("campaign");
 			if(update_mode) {
 				addons_update_dlg(disp, cfg, addon_cfgs, net_manager, sock, do_refresh);
 				return;
 			}
-			
+
 			// column contents
 			std::vector<std::string> addons, titles, versions, uploads, types, options, options_to_filter;
 			std::vector<int> sizes;
@@ -936,7 +936,7 @@ namespace {
 			const std::vector< std::string >& publish_options = available_addons();
 
 			std::vector< std::string > delete_options;
-			
+
 			foreach(const config* i, addon_cfgs) {
 				const config& c = *i;
 
@@ -952,27 +952,27 @@ namespace {
 				versions.push_back(c["version"]);
 				uploads.push_back(c["uploads"]);
 				types.push_back(type_str);
-				
+
 				if(std::count(publish_options.begin(), publish_options.end(), name) != 0) {
 					delete_options.push_back(name);
 				}
-				
+
 				std::string title = c["title"];
 				if(title == "") {
 					title = name;
 					std::replace(title.begin(),title.end(),'_',' ');
 				}
 				titles.push_back(title);
-				
+
 				std::string version = c["version"], author = c["author"];
 
 				utils::truncate_as_wstring(title, 20);
 				utils::truncate_as_wstring(version, 12);
 				utils::truncate_as_wstring(author, 16);
-				
+
 				//add negative sizes to reverse the sort order
 				sizes.push_back(-atoi(size.c_str()));
-				
+
 				std::string icon = c["icon"];
 				if(icon.find("units/") != std::string::npos &&
 				   icon.find_first_of('~') == std::string::npos) {
@@ -991,7 +991,7 @@ namespace {
 				// icon paths shouldn't be filtered!
 				options_to_filter.push_back(text_columns);
 			}
-			
+
 			std::string pub_option_text, del_option_text;
 
 			foreach(const std::string& pub, publish_options) {
@@ -1011,7 +1011,7 @@ namespace {
 				gui::show_error_message(disp, _("There are no add-ons available for download from this server."));
 				return;
 			}
-			
+
 			gui::menu::basic_sorter sorter;
 			sorter.set_alpha_sort(1).set_alpha_sort(2).set_alpha_sort(3).set_alpha_sort(4).set_numeric_sort(5).set_position_sort(6,sizes);
 
@@ -1019,7 +1019,7 @@ namespace {
 			                         _("Choose the add-on to download."),
 			                         gui::OK_CANCEL);
 			gui::menu::imgsel_style addon_style(gui::menu::bluebg_style);
-			
+
 			//make sure the icon isn't too big
 			addon_style.scale_images(font::relative_size(72), font::relative_size(72));
 			gui::menu *addon_menu = new gui::menu(disp.video(), options, false, -1,
@@ -1037,21 +1037,21 @@ namespace {
 			if(index < 0) {
 				return;
 			}
-			
+
 			// Handle deletion option
 			if(index >= int(addons.size() + publish_options.size())) {
 				const std::string& addon = delete_options[index - int(addons.size() + publish_options.size())];
 				delete_remote_addon(disp, addon, sock);
 				return;
 			}
-			
+
 			// Handle publish option
 			if(index >= int(addons.size())) {
 				const std::string& addon = publish_options[index - int(addons.size())];
 				upload_addon_to_server(disp, addon, sock);
 				return;
 			}
-			
+
 			// Handle download
 			install_addon(disp, cfg, addons_tree, addons[index], titles[index], types[index],
 			              uploads[index], versions[index], net_manager, sock, do_refresh);
@@ -1069,7 +1069,7 @@ namespace {
 			e.show(disp);
 		}
 	}
-	
+
 	void uninstall_local_addons(game_display& disp, bool* should_reload_cfg)
 	{
 		std::vector<std::string> addons;
@@ -1082,7 +1082,7 @@ namespace {
 
 		if (addons.empty()) {
 			/** @todo should use a dialog which always shows the close button. */
-			gui2::show_message(disp.video(), _("Error"), 
+			gui2::show_message(disp.video(), _("Error"),
 				_("You have no add-ons installed."));
 			return;
 		}
@@ -1160,7 +1160,7 @@ void manage_addons(game_display& disp)
 	bool do_refresh = false;
 	std::string remote_host;
 	const std::string default_host = preferences::campaign_server();
-	
+
 	gui2::taddon_connect addon_dlg;
 
 	addon_dlg.set_host_name(default_host);

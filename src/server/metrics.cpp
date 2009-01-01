@@ -38,12 +38,12 @@ struct compare_samples_by_time {
 };
 
 
-metrics::metrics() : 
+metrics::metrics() :
 	samples_(),
-	most_consecutive_requests_(0), 
-	current_requests_(0), 
-	nrequests_(0), 
-	nrequests_waited_(0), 
+	most_consecutive_requests_(0),
+	current_requests_(0),
+	nrequests_(0),
+	nrequests_waited_(0),
 	started_at_(time(NULL)),
 	terminations_()
 {}

@@ -25,7 +25,7 @@ class cutter
 public:
 	struct mask
 	{
-		mask() 
+		mask()
 			: name()
 			, image(NULL)
 			, filename()
@@ -43,10 +43,10 @@ public:
 	};
 	typedef std::map<std::string, mask> mask_map;
 	struct positioned_surface {
-		positioned_surface() 
+		positioned_surface()
 			: name()
 			, pos()
-			, image(NULL) 
+			, image(NULL)
 			, mask()
 		{
 		};

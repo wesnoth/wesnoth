@@ -46,25 +46,25 @@ static void truncate_message(const simple_wml::string_span& str, simple_wml::nod
 namespace wesnothd {
 int game::id_num = 1;
 
-game::game(player_map& players, const network::connection host, 
+game::game(player_map& players, const network::connection host,
 		const std::string name) :
-	player_info_(&players), 
-	id_(id_num++), 
+	player_info_(&players),
+	id_(id_num++),
 	name_(name),
 	password_(),
-	owner_(host), 
+	owner_(host),
 	players_(),
 	observers_(),
 	muted_observers_(),
-	sides_(gamemap::MAX_PLAYERS), 
-	sides_taken_(gamemap::MAX_PLAYERS), 
-	side_controllers_(gamemap::MAX_PLAYERS), 
-	nsides_(0), 
-	started_(false), 
+	sides_(gamemap::MAX_PLAYERS),
+	sides_taken_(gamemap::MAX_PLAYERS),
+	side_controllers_(gamemap::MAX_PLAYERS),
+	nsides_(0),
+	started_(false),
 	level_(),
 	history_(),
-	description_(NULL), 
-	end_turn_(0), 
+	description_(NULL),
+	end_turn_(0),
 	all_observers_muted_(false),
 	bans_(),
 	termination_()
@@ -217,7 +217,7 @@ bool game::take_side(const player_map::const_iterator user)
 			sides_taken_[side_num - 1] = true;
 			cfg.root().set_attr_dup("side", (**side)["side"]);
 			// Tell the host which side the new player should take.
-			
+
 			simple_wml::string_span data = cfg.output_compressed();
 			network::send_raw_data(data.begin(), data.size(), owner_, cfg.root().first_child().to_string());
 			DBG_GAME << "take_side: took side " << side_num << " because the name matched\n";
@@ -343,7 +343,7 @@ void game::transfer_side_control(const network::connection sock, const simple_wm
 	const unsigned int side_num = cfg["side"].to_int();
 	if(side_num < 1 || side_num > gamemap::MAX_PLAYERS) {
 		std::ostringstream msg;
-		msg << "The side number has to be between 1 and " 
+		msg << "The side number has to be between 1 and "
 		    << gamemap::MAX_PLAYERS << ".";
 		send_server_message(msg.str().c_str(), sock);
 		return;
@@ -372,7 +372,7 @@ void game::transfer_side_control(const network::connection sock, const simple_wm
 		send_server_message(msg.str().c_str(), sock);
 		return;
 	}
-	
+
 	if (newplayer_name.empty()) {
 		// user wants to just toggle controller to ai/human
 		if (cfg["controller"] != "human_ai" && cfg["controller"] != "human") {
@@ -622,7 +622,7 @@ void game::mute_observer(const simple_wml::node& mute, const player_map::const_i
 	send_and_record_server_message((user->second.name() + " has been muted.").c_str());
 }
 
-network::connection game::kick_member(const simple_wml::node& kick, 
+network::connection game::kick_member(const simple_wml::node& kick,
 		const player_map::const_iterator kicker)
 {
 	if (kicker->first != owner_) {
@@ -707,7 +707,7 @@ void game::process_message(simple_wml::document& data, const player_map::iterato
 	simple_wml::node* const message = data.root().child("message");
 	assert(message);
 	message->set_attr_dup("sender", user->second.name().c_str());
-	
+
 	const simple_wml::string_span& msg = (*message)["message"];
 	chat_message::truncate_message(msg, *message);
 
@@ -1101,7 +1101,7 @@ void game::send_to_one(simple_wml::document& data, const network::connection soc
 
 void game::send_data_team(simple_wml::document& data,
                           const simple_wml::string_span& team,
-                          const network::connection exclude, 
+                          const network::connection exclude,
 						  std::string packet_type) const
 {
 	if (packet_type.empty())

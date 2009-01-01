@@ -59,7 +59,7 @@ void archive_addon(const std::string& addon_name, class config& cfg);
 /** Unarchives an add-on from campaignd's retrieved config object. */
 void unarchive_addon(const class config& cfg);
 
-/** 
+/**
  * Shows the game add-ons manager dialog.
  *
  * @param disp game_display instance to draw on.

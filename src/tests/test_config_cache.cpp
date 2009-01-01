@@ -106,7 +106,7 @@ BOOST_AUTO_TEST_CASE( test_preproc_defines )
 	preproc_map defines_map(setup_test_preproc_map());
 
 	// check initial state
-	BOOST_REQUIRE_EQUAL_COLLECTIONS(test_defines.begin(),test_defines.end(), 
+	BOOST_REQUIRE_EQUAL_COLLECTIONS(test_defines.begin(),test_defines.end(),
 			defines_map.begin() ,defines_map.end());
 
 	// scoped
@@ -114,25 +114,25 @@ BOOST_AUTO_TEST_CASE( test_preproc_defines )
 		test_scoped_define test("TEST");
 		defines_map["TEST"] = preproc_define();
 
-		BOOST_CHECK_EQUAL_COLLECTIONS(test_defines.begin(),test_defines.end(), 
+		BOOST_CHECK_EQUAL_COLLECTIONS(test_defines.begin(),test_defines.end(),
 				defines_map.begin() ,defines_map.end());
 		defines_map.erase("TEST");
 	}
 	// Check scoped remove
 
-	BOOST_CHECK_EQUAL_COLLECTIONS(test_defines.begin(),test_defines.end(), 
+	BOOST_CHECK_EQUAL_COLLECTIONS(test_defines.begin(),test_defines.end(),
 			defines_map.begin() ,defines_map.end());
 
 	// Manual add define
 	cache.add_define("TEST");
 	defines_map["TEST"] = preproc_define();
-	BOOST_CHECK_EQUAL_COLLECTIONS(test_defines.begin(),test_defines.end(), 
+	BOOST_CHECK_EQUAL_COLLECTIONS(test_defines.begin(),test_defines.end(),
 			defines_map.begin() ,defines_map.end());
 
 	// Manual remove define
 	cache.remove_define("TEST");
 	defines_map.erase("TEST");
-	BOOST_CHECK_EQUAL_COLLECTIONS(test_defines.begin(),test_defines.end(), 
+	BOOST_CHECK_EQUAL_COLLECTIONS(test_defines.begin(),test_defines.end(),
 			defines_map.begin() ,defines_map.end());
 }
 
@@ -142,7 +142,7 @@ BOOST_AUTO_TEST_CASE( test_config_cache_defaults )
 	preproc_map defines_map(setup_test_preproc_map());
 
 	const preproc_map& test_defines = cache.get_preproc_map();
-	BOOST_CHECK_EQUAL_COLLECTIONS(test_defines.begin(),test_defines.end(), 
+	BOOST_CHECK_EQUAL_COLLECTIONS(test_defines.begin(),test_defines.end(),
 			defines_map.begin() ,defines_map.end());
 }
 
@@ -160,7 +160,7 @@ static config setup_test_config()
 	child = &test_config.add_child("test_key");
 	(*child)["define"] = "test";
 	return test_config;
-} 
+}
 
 
 BOOST_AUTO_TEST_CASE( test_load_config )

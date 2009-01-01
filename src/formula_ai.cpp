@@ -63,8 +63,8 @@ public:
 			ai.swap_move_map(backup);
 		}
 		swapper(formula_ai& ai, position_callable& pos) :
-			ai(ai), 
-			a(ai.get_info().units), 
+			ai(ai),
+			a(ai.get_info().units),
 			b(pos.units_),
 			backup()
 		{
@@ -131,7 +131,7 @@ public:
 private:
 	variant execute(const formula_callable& variables) const {
 		const map_location loc = convert_variant<location_callable>(args()[0]->evaluate(variables))->loc();
-		variant items = args()[1]->evaluate(variables); 
+		variant items = args()[1]->evaluate(variables);
 		int best = 1000000;
 		int best_i = -1;
 
@@ -245,7 +245,7 @@ private:
 					vars.push_back(variant(new unit_callable(*un)));
 				}
 			}
-			++un;			
+			++un;
 		}
 		return variant(&vars);
 	}
@@ -299,7 +299,7 @@ private:
 		if (args().size() > 3) weapon = args()[3]->evaluate(variables).as_int();
 		else weapon = -1;
 		battle_context bc(ai_.get_info().map, ai_.get_info().teams, ai_.get_info().units,
-			ai_.get_info().state, convert_variant<location_callable>(args()[1]->evaluate(variables))->loc(), 
+			ai_.get_info().state, convert_variant<location_callable>(args()[1]->evaluate(variables))->loc(),
 			convert_variant<location_callable>(args()[2]->evaluate(variables))->loc(), weapon, -1, 1.0, NULL,
 			&ai_.get_info().units.find(convert_variant<location_callable>(args()[0]->evaluate(variables))->loc())->second);
 		std::vector<double> hp_dist = bc.get_attacker_combatant().hp_dist;
@@ -326,7 +326,7 @@ private:
 			status.push_back(variant("Zombiefied"));
 		vars.push_back(variant(new outcome_callable(hitLeft, prob, status)));
 		hitLeft.clear();
-		prob.clear();		
+		prob.clear();
 		status.clear();
 		hp_dist = bc.get_defender_combatant().hp_dist;
 		it = hp_dist.begin();
@@ -676,31 +676,31 @@ private:
 };
 
 class is_unowned_village_function : public function_expression {
-public:                                                                            
+public:
 	explicit is_unowned_village_function(const args_list& args, const formula_ai& ai)
 		: function_expression("is_unowned_village", args, 2, 3),
 		  ai_(ai)
 	{}
-private:    
+private:
 	variant execute(const formula_callable& variables) const {
 
-		const gamemap& m = convert_variant<gamemap_callable>(args()[0]->evaluate(variables))->get_gamemap(); 
+		const gamemap& m = convert_variant<gamemap_callable>(args()[0]->evaluate(variables))->get_gamemap();
 		const std::set<map_location>& my_villages = ai_.current_team().villages();
 
 		map_location loc;
 		if(args().size() == 2) {
 			loc = convert_variant<location_callable>(args()[1]->evaluate(variables))->loc();
 		} else {
-			loc = map_location( args()[1]->evaluate(variables).as_int() - 1,  
-					args()[2]->evaluate(variables).as_int() - 1 ); 
-		} 
+			loc = map_location( args()[1]->evaluate(variables).as_int() - 1,
+					args()[2]->evaluate(variables).as_int() - 1 );
+		}
 
 		if(m.is_village(loc) && (my_villages.count(loc)==0) ) {
 			return variant(true);
 		} else {
 			return variant(false);
 		}
-	}                                     
+	}
 
 	const formula_ai& ai_;
 };
@@ -802,7 +802,7 @@ private:
 			if(!ai_.get_info().map.on_board(loc)) {
 				return variant();
 			}
-	
+
 			return variant(100 - un.defense_modifier(ai_.get_info().map[loc]));
 		}
 
@@ -813,7 +813,7 @@ private:
 			if(!ai_.get_info().map.on_board(loc)) {
 				return variant();
 			}
-	
+
 			return variant(100 - un.movement_type().defense_modifier(ai_.get_info().map, ai_.get_info().map[loc]));
 		}
 
@@ -847,7 +847,7 @@ private:
 			if(!ai_.get_info().map.on_board(loc)) {
 				return variant();
 			}
-	
+
 			return variant(un.defense_modifier(ai_.get_info().map[loc]));
 		}
 
@@ -858,7 +858,7 @@ private:
 			if(!ai_.get_info().map.on_board(loc)) {
 				return variant();
 			}
-	
+
 			return variant(un.movement_type().defense_modifier(ai_.get_info().map, ai_.get_info().map[loc]));
 		}
 
@@ -892,7 +892,7 @@ private:
 			if(!ai_.get_info().map.on_board(loc)) {
 				return variant();
 			}
-	
+
 			return variant(un.movement_cost(ai_.get_info().map[loc]));
 		}
 
@@ -903,7 +903,7 @@ private:
 			if(!ai_.get_info().map.on_board(loc)) {
 				return variant();
 			}
-	
+
 			return variant(un.movement_type().movement_cost(ai_.get_info().map, ai_.get_info().map[loc]));
 		}
 
@@ -965,7 +965,7 @@ private:
 
 	const formula_ai& ai_;
 };
- 
+
 
 class max_possible_damage_with_retaliation_function : public function_expression {
 public:
@@ -1016,7 +1016,7 @@ private:
 							best_ranged = dmg;
 					}
 				}
-				
+
 				//we have max damage inflicted by attacker, now we need to search for max possible damage of defender (search only for attack with the same range)
 				vars.push_back(variant(best_melee));
 				vars.push_back(variant(best_ranged));
@@ -1040,7 +1040,7 @@ private:
 				vars.push_back(variant(best_melee));
 				vars.push_back(variant(best_ranged));
 				return variant(&vars);
-			
+
 			} else
 			{
 				const unit_type& defender = convert_variant<unit_type_callable>(u2)->get_unit_type();
@@ -1084,7 +1084,7 @@ private:
 		} else
 		{
 			const unit_type& attacker = convert_variant<unit_type_callable>(u1)->get_unit_type();
-			att_attacks = attacker.attacks();	
+			att_attacks = attacker.attacks();
 
 			const unit_callable* u_defender = try_convert_variant<unit_callable>(u2);
 			if (u_defender)
@@ -1102,7 +1102,7 @@ private:
 							best_ranged = dmg;
 					}
 				}
-				
+
 				//we have max damage inflicted by attacker, now we need to search for max possible damage of defender (search only for attack with the same range)
 				vars.push_back(variant(best_melee));
 				vars.push_back(variant(best_ranged));
@@ -1126,7 +1126,7 @@ private:
 				vars.push_back(variant(best_melee));
 				vars.push_back(variant(best_ranged));
 				return variant(&vars);
-			
+
 			} else
 			{
 				const unit_type& defender = convert_variant<unit_type_callable>(u2)->get_unit_type();
@@ -1164,17 +1164,17 @@ private:
 
 				vars.push_back(variant(best_melee));
 				vars.push_back(variant(best_ranged));
-				return variant(&vars);	
+				return variant(&vars);
 			}
 		}
 	}
 
 	const formula_ai& ai_;
 };
-} 
+}
 
 
-namespace game_logic { 
+namespace game_logic {
 expression_ptr ai_function_symbol_table::create_function(const std::string &fn,
 				const std::vector<expression_ptr>& args) const {
 	if(fn == "outcomes") {
@@ -1238,25 +1238,25 @@ expression_ptr ai_function_symbol_table::create_function(const std::string &fn,
 	}
 }
 
-void ai_function_symbol_table::register_candidate_move(const std::string name, 
-		const std::string type, const_formula_ptr formula, const_formula_ptr eval, 
+void ai_function_symbol_table::register_candidate_move(const std::string name,
+		const std::string type, const_formula_ptr formula, const_formula_ptr eval,
 		const_formula_ptr precondition, const std::vector<std::string>& args)
 {
 	candidate_move_ptr new_move(new candidate_move(name,type,eval,formula));
 	candidate_moves.push_back(new_move);
-	function_symbol_table::add_formula_function(name, formula, 
+	function_symbol_table::add_formula_function(name, formula,
 			precondition, args);
 }
 
 
 }
 
-formula_ai::formula_ai(info& i) : 
+formula_ai::formula_ai(info& i) :
 	ai(i),
 	recruit_formula_(),
 	move_formula_(),
 	possible_moves_(),
-	move_maps_valid_(false), 
+	move_maps_valid_(false),
 	srcdst_(),
 	dstsrc_(),
 	full_srcdst_(),
@@ -1280,10 +1280,10 @@ formula_ai::formula_ai(info& i) :
 	}
 
 	// Register candidate moves in function symbol table
-	config::const_child_itors rc_moves = 
+	config::const_child_itors rc_moves =
 		ai_param.child_range("register_candidate_move");
 
-	for(config::const_child_iterator i = rc_moves.first; 
+	for(config::const_child_iterator i = rc_moves.first;
 			i != rc_moves.second; ++i) {
 		const t_string& name = (**i)["name"];
 		const t_string& inputs = (**i)["inputs"];
@@ -1296,12 +1296,12 @@ formula_ai::formula_ai(info& i) :
 			game_logic::const_formula_ptr eval_formula(
 					new game_logic::formula((**i)["evaluation"], &function_table));
 
-			const formula_ptr precondition_formula = 
-					game_logic::formula::create_optional_formula((**i)["precondition"], 
+			const formula_ptr precondition_formula =
+					game_logic::formula::create_optional_formula((**i)["precondition"],
 							&function_table);
 
 			function_table.register_candidate_move(name, (**i)["type"],
-									action_formula, eval_formula, 
+									action_formula, eval_formula,
 									precondition_formula, args);
 		}
 		catch(formula_error& e) {
@@ -1335,7 +1335,7 @@ formula_ai::formula_ai(info& i) :
 				handle_exception(e, "Error while registering function '" + name + "'");
 			}
 		}
-	
+
 		try{
 			recruit_formula_ = game_logic::formula::create_optional_formula(current_team().ai_parameters()["recruit"], &function_table);
 		}
@@ -1381,7 +1381,7 @@ void formula_ai::display_message(const std::string& msg)
 
 }
 
-void formula_ai::new_turn() 
+void formula_ai::new_turn()
 {
 	move_maps_valid_ = false;
 	ai::new_turn();
@@ -1612,10 +1612,10 @@ bool formula_ai::execute_variant(const variant& var, bool commandline)
 						get_info().map.w(), get_info().map.h());
 
 					int movement = unit_it->second.movement_left();
-					
+
 					for (std::vector<map_location>::const_iterator loc_iter = route.steps.begin() + 1 ; loc_iter !=route.steps.end(); ++loc_iter) {
 						const int move_cost = unit_it->second.movement_cost(get_info().map[*(loc_iter+1)]);
-				
+
 						if ( move_cost > movement ) {
 							break;
 						}
@@ -1650,10 +1650,10 @@ bool formula_ai::execute_variant(const variant& var, bool commandline)
 						get_info().map.w(), get_info().map.h());
 
 					int movement = unit_it->second.movement_left();
-					
+
 					for (std::vector<map_location>::const_iterator loc_iter = route.steps.begin() + 1 ; loc_iter !=route.steps.end(); ++loc_iter) {
 						const int move_cost = unit_it->second.movement_cost(get_info().map[*(loc_iter+1)]);
-				
+
 						if ( move_cost > movement ) {
 							break;
 						}
@@ -1848,7 +1848,7 @@ variant formula_ai::get_value(const std::string& key) const
 	} else if(key == "my_side")
 	{
 		return variant(new team_callable((*get_info().state.teams)[get_info().team_num-1]));
-	
+
 	} else if(key == "my_side_number")
 	{
 		return variant(get_info().team_num-1);
@@ -2043,7 +2043,7 @@ void formula_ai::get_inputs(std::vector<formula_input>* inputs) const
 	inputs->push_back(game_logic::formula_input("my_recruits", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("recruits_of_side", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("units", FORMULA_READ_ONLY));
-	inputs->push_back(game_logic::formula_input("units_of_side", FORMULA_READ_ONLY));	
+	inputs->push_back(game_logic::formula_input("units_of_side", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("my_units", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("enemy_units", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("villages", FORMULA_READ_ONLY));
@@ -2079,10 +2079,10 @@ variant formula_ai::get_keeps() const
 	return keeps_cache_;
 }
 
-bool formula_ai::can_attack(const map_location unit_loc, 
+bool formula_ai::can_attack(const map_location unit_loc,
 		const map_location enemy_loc) const {
 	move_map::iterator i;
-	std::pair<move_map::iterator, 
+	std::pair<move_map::iterator,
 			  move_map::iterator> unit_moves;
 	unit_moves = srcdst_.equal_range(unit_loc);
 	for(i = unit_moves.first; i != unit_moves.second; ++i) {
@@ -2095,13 +2095,13 @@ bool formula_ai::can_attack(const map_location unit_loc,
 }
 
 
-void candidate_move::evaluate_move(const formula_ai* ai, unit_map& units, 
+void candidate_move::evaluate_move(const formula_ai* ai, unit_map& units,
 		size_t team_num) {
 	score_ = -1000;
 	if(type_ == "attack") {
 		for(unit_map::unit_iterator me = units.begin() ; me != units.end() ; ++me)
 		{
-			if( (me->second.side() == team_num) && 
+			if( (me->second.side() == team_num) &&
 					(me->second.has_moved() == false) ) {
 				for(unit_map::unit_iterator target = units.begin() ; target != units.end() ; ++target) {
 					if( (target->second.side() != team_num) &&
@@ -2123,7 +2123,7 @@ void candidate_move::evaluate_move(const formula_ai* ai, unit_map& units,
 	} else {
 		for(unit_map::unit_iterator i = units.begin() ; i != units.end() ; ++i)
 		{
-			if( (i->second.side() == team_num) && 
+			if( (i->second.side() == team_num) &&
 					(i->second.has_moved() == false) ) {
 				game_logic::map_formula_callable callable((formula_callable*) ai);
 				callable.add_ref();

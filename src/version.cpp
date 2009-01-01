@@ -103,7 +103,7 @@ void version_info::init_special_version(const std::string& full_component, std::
 void version_info::assign(const version_info& o)
 {
 	if(&o == this) return;
-	
+
 	this->sane_ = o.sane_;
 	this->special_separator_ = o.special_separator_;
 	this->special_ = o.special_;
@@ -168,13 +168,13 @@ namespace {
 		static const size_t max_recursions = 256;
 		static size_t level = 0;
 	}
-	
+
 	/*
 	           x         >          y
 	x0.x1.x2.x3.[...].xN > y0.y1.y2.y3.[...].yN iff
-	
-	x0 > y0 || (x0 == y0 && (x1 > y1 || (x1 == y1 && (x2 > y2 || (x2 >= y2 || 
-	
+
+	x0 > y0 || (x0 == y0 && (x1 > y1 || (x1 == y1 && (x2 > y2 || (x2 >= y2 ||
+
 	*/
 	template<typename _Toperator, typename _Tfallback_operator>
 	bool recursive_order_operation(const std::vector<unsigned int>& l, const std::vector<unsigned int>& r, size_t k)
@@ -210,15 +210,15 @@ namespace {
 		// make compatible, missing items default to zero
 		if(lsize < csize) lc.resize(csize, 0);
 		if(rsize < csize) rc.resize(csize, 0);
-		
+
 		bool result = true;
-		
+
 		const std::vector<unsigned int>& lcc = lc;
 		const std::vector<unsigned int>& rcc = rc;
-		
+
 		switch(o)
 		{
-			case EQUAL: case NOT_EQUAL: {			
+			case EQUAL: case NOT_EQUAL: {
 				for(size_t i = 0; i < csize; ++i) {
 					unsigned int const& lvalue = lc[i];
 					unsigned int const& rvalue = rc[i];
@@ -248,7 +248,7 @@ namespace {
 		}
 		return result;
 	}
-	
+
 } // end unnamed namespace
 
 bool operator==(const version_info& l, const version_info& r)

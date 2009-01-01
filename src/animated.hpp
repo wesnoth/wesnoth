@@ -98,8 +98,8 @@ protected:
 friend class unit_animation;
 	int starting_frame_time_;
         // backward compatibility for teleport anims
-        void remove_frames_until(int starting_time); 
-        void remove_frames_after(int ending_time); 
+        void remove_frames_until(int starting_time);
+        void remove_frames_after(int ending_time);
 
 private:
 	struct frame

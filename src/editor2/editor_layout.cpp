@@ -15,7 +15,7 @@
 #define GETTEXT_DOMAIN "wesnoth-editor"
 
 /**
- * @file editor/editor_layout.cpp 
+ * @file editor/editor_layout.cpp
  * Set various sizes for the screen-layout of the map editor.
  */
 
@@ -29,7 +29,7 @@ namespace {
 
 namespace editor2 {
 
-size_specs::size_specs() 
+size_specs::size_specs()
 	: terrain_size(default_terrain_size)
 	, terrain_padding(2)
 	, terrain_space(terrain_size + terrain_padding)

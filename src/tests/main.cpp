@@ -63,7 +63,7 @@ static void exception_translator_game(const game::error& e)
 }
 
 struct wesnoth_global_fixture {
-	wesnoth_global_fixture() 
+	wesnoth_global_fixture()
 	{
 //		lg::set_log_domain_severity("all",3);
 		game_config::use_dummylocales = true;
@@ -85,7 +85,7 @@ struct wesnoth_global_fixture {
 		boost::unit_test::unit_test_monitor.register_exception_translator<network::error>(&exception_translator_network);
 		boost::unit_test::unit_test_monitor.register_exception_translator<config::error>(&exception_translator_config);
 	}
-	~wesnoth_global_fixture() 
+	~wesnoth_global_fixture()
 	{
 		SDL_Quit();
 	}

@@ -66,7 +66,7 @@ public:
 	typedef typename thelper<T>::type type;
 };
 
-} // namespace utils 
+} // namespace utils
 
 /**
  * Allow no copies.
@@ -81,7 +81,7 @@ public:
 	/** The type to use in the copy constructor and assignment operator. */
 	typedef typename utils::treference_type<const T>::type rhs_type;
 
-	void copy(rhs_type /*rhs*/) 
+	void copy(rhs_type /*rhs*/)
 	{
 		BOOST_STATIC_ASSERT(sizeof(T) == 0);
 	}
@@ -99,11 +99,11 @@ public:
 	/** The type to use in the copy constructor and assignment operator. */
 	typedef typename utils::treference_type<const T>::type rhs_type;
 
-	void copy(rhs_type /*rhs*/) 
-	{ 
+	void copy(rhs_type /*rhs*/)
+	{
 #if COPY_POLICY_DEBUG
 		std::cerr << __func__ << ".\n";
-#endif		
+#endif
 	}
 };
 
@@ -120,13 +120,13 @@ public:
 	/** The type to use in the copy constructor and assignment operator. */
 	typedef typename utils::treference_type<const T>::type rhs_type;
 
-	void copy(rhs_type rhs) 
-	{ 
+	void copy(rhs_type rhs)
+	{
 #if COPY_POLICY_DEBUG
 		std::cerr << __func__ << ".\n";
-#endif		
+#endif
 		if(&rhs != this) {
-			static_cast<typename utils::treference_type<T>::type>(*this).clone();			
+			static_cast<typename utils::treference_type<T>::type>(*this).clone();
 		}
 	}
 };
@@ -146,10 +146,10 @@ public:
 	typedef typename utils::treference_type<T>::type rhs_type;
 
 	void copy(rhs_type rhs)
-	{ 
+	{
 #if COPY_POLICY_DEBUG
 		std::cerr << __func__ << ".\n";
-#endif		
+#endif
 		if(&rhs != this) {
 			rhs.invalidate();
 		}
@@ -159,23 +159,23 @@ public:
 /**
  * Helper class to add a policy to an existing class.
  *
- * This 
+ * This
  */
 template <
 	class base,
-	template<class> class copy_policy 
+	template<class> class copy_policy
 >
 struct tcopy_policy : public base, public copy_policy<tcopy_policy<base, copy_policy> >
 {
 	typedef copy_policy<tcopy_policy<base, copy_policy> > policy;
-	/* 
+	/*
 	 * This typedef first was
 	 * typedef typename tcopy_policy<base, copy_policy>::rhs_type rhs_type;
 	 *
 	 * Unfortunately MSVC 2008 chokes on it and aborts with an internal
 	 * compiler error. So used another name for the type.
 	 */
-	typedef typename tcopy_policy<base, copy_policy>::rhs_type 
+	typedef typename tcopy_policy<base, copy_policy>::rhs_type
 		tcopy_policy_rhs_type;
 
 	tcopy_policy()
@@ -187,17 +187,17 @@ struct tcopy_policy : public base, public copy_policy<tcopy_policy<base, copy_po
 #endif
 	}
 
-	tcopy_policy(tcopy_policy_rhs_type rhs) 
+	tcopy_policy(tcopy_policy_rhs_type rhs)
 		: base(rhs)
 		, policy(rhs)
-	{ 
+	{
 #if COPY_POLICY_DEBUG
 		std::cerr << "tcopy_policy: copy constructor.\n";
 #endif
-		copy(rhs); 
+		copy(rhs);
 	}
 
-	tcopy_policy& operator=(tcopy_policy_rhs_type rhs) 
+	tcopy_policy& operator=(tcopy_policy_rhs_type rhs)
 	{
 #if COPY_POLICY_DEBUG
 		std::cerr << "tcopy_policy: assignment operator.\n";

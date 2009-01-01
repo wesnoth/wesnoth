@@ -13,7 +13,7 @@
 */
 
 /**
- * @file cavegen.cpp 
+ * @file cavegen.cpp
  * Map-generator for caves.
  */
 
@@ -27,11 +27,11 @@
 
 #define LOG_NG LOG_STREAM(info, engine)
 
-cave_map_generator::cave_map_generator(const config* cfg) : 
+cave_map_generator::cave_map_generator(const config* cfg) :
 	wall_(t_translation::CAVE_WALL),
-	clear_(t_translation::CAVE), 
+	clear_(t_translation::CAVE),
 	village_(t_translation::UNDERGROUND_VILLAGE),
-	castle_(t_translation::DWARVEN_CASTLE), 
+	castle_(t_translation::DWARVEN_CASTLE),
 	keep_(t_translation::DWARVEN_KEEP),
 	map_(),
 	starting_positions_(),
@@ -39,11 +39,11 @@ cave_map_generator::cave_map_generator(const config* cfg) :
 	chambers_(),
 	passages_(),
 	res_(),
-	cfg_(cfg), 
-	width_(50), 
+	cfg_(cfg),
+	width_(50),
 	height_(50),
-	village_density_(0), 
-	flipx_(false), 
+	village_density_(0),
+	flipx_(false),
 	flipy_(false)
 {
 	if(cfg_ == NULL) {
@@ -125,7 +125,7 @@ config cave_map_generator::create_scenario(const std::vector<std::string>& /*arg
 
 	LOG_NG << "outputting map....\n";
 
-	res_["map_data"] = gamemap::default_map_header + 
+	res_["map_data"] = gamemap::default_map_header +
 		t_translation::write_game_map(map_, starting_positions_);
 
 	LOG_NG << "returning result...\n";

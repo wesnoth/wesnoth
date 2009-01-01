@@ -57,23 +57,23 @@ public:
 	unit_map::iterator selected_unit();
 	paths::route get_route(unit_map::const_iterator un, map_location go_to, team &team);
 protected:
-	/** 
+	/**
 	 * Due to the way this class is constructed we can assume that the
 	 * display* gui_ member actually points to a game_display (derived class)
 	 */
 	game_display& gui() { return *gui_; }
 	/** Const version */
 	const game_display& gui() const { return *gui_; }
-	
+
 	team& viewing_team() { return teams_[gui().viewing_team()]; }
 	const team& viewing_team() const { return teams_[gui().viewing_team()]; }
 	team& current_team() { return teams_[team_num_-1]; }
 
-	/** 
+	/**
 	 * Use update to force an update of the mouse state.
 	 */
 	void mouse_motion(int x, int y, const bool browse, bool update=false);
-	bool right_click_show_menu(int x, int y, const bool browse);	
+	bool right_click_show_menu(int x, int y, const bool browse);
 	bool left_click(int x, int y, const bool browse);
 	void select_hex(const map_location& hex, const bool browse);
 	void clear_undo_stack();
@@ -88,7 +88,7 @@ protected:
 	unit_map::iterator find_unit(const map_location& hex);
 	bool unit_in_cycle(unit_map::const_iterator it);
 private:
-	gamemap& map_;	
+	gamemap& map_;
 	game_display* gui_;
 	std::vector<team>& teams_;
 	unit_map& units_;

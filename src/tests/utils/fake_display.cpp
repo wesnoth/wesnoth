@@ -55,9 +55,9 @@ namespace test_utils {
 	}
 
 	fake_display_manager::fake_display_manager() :
-	   	video_(CVideo::FAKE_TEST), 
-		dummy_umap_(),  
-		dummy_cfg_(), 
+	   	video_(CVideo::FAKE_TEST),
+		dummy_umap_(),
+		dummy_cfg_(),
 		dummy_map_(dummy_cfg_,""),
 		dummy_status_(dummy_cfg_, 0),
 		dummy_teams_(),

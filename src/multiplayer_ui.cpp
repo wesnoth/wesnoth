@@ -213,7 +213,7 @@ std::string chat::format_message(const msg& message)
 	if(message.user == "server") {
 		SDL_Color c;
 		int unused;
-		std::string::const_iterator after_markup = 
+		std::string::const_iterator after_markup =
 			font::parse_markup(message.message.begin(), message.message.end(), &unused, &c, &unused);
 
 		msg_text = std::string(after_markup,message.message.end());

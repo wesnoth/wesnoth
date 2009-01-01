@@ -192,7 +192,7 @@ namespace dfool {
 	  //	  LOG_STREAM(info, ai)<<"filter4:"<<std::endl;
 	  filtered_units_.push_back(*i);
 	}
-      
+
     }
     //    LOG_STREAM(info, ai)<<"filter:"<<std::endl;
     return filtered_units_;

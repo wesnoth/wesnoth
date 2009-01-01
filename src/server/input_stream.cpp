@@ -27,8 +27,8 @@
 
 #endif
 
-input_stream::input_stream(const std::string& path) : 
-	fd_(-1), 
+input_stream::input_stream(const std::string& path) :
+	fd_(-1),
 	path_(path),
 	data_()
 {

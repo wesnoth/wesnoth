@@ -52,7 +52,7 @@ void unit_die( const map_location& loc, unit& u, const attack_type* attack=NULL,
  *  The 'damage' will be subtracted from the unit's hitpoints,
  *  and a die effect will be displayed if the unit dies.
  *
- *  @retval	true                  if the defending unit is dead, should be 
+ *  @retval	true                  if the defending unit is dead, should be
  *                                removed from the playing field.
  */
 void unit_attack(

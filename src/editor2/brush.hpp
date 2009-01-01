@@ -34,12 +34,12 @@ public:
 	 * Construct a default (empty) brush. Note that not even the hotspot is affected by default,
 	 */
 	brush();
-	
+
 	/**
 	 * Construct a brush object from config
 	 */
 	explicit brush(const config& cfg);
-	
+
 	/**
 	 * Add a location to the brush. If it already exists nothing will change.
 	 */
@@ -50,23 +50,23 @@ public:
 	 * is in given location
 	 */
 	std::set<map_location> project(const map_location& hotspot) const;
-	
+
 	/**
 	 * @return the name of this brush
 	 */
 	const std::string name() const { return name_; }
-	
+
 	/**
 	 * @return the image of this brush
 	 */
 	const std::string image() const { return image_; }
-	
+
 protected:
 	/**
 	 * The relative locations of the brush
 	 */
 	std::set<map_location> relative_tiles_;
-	
+
 	std::string name_;
 	std::string image_;
 };

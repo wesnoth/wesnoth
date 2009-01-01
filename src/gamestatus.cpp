@@ -170,7 +170,7 @@ void gamestatus::remove_time_area(const std::string& area_id)
 		while(i != areas_.end()) {
 			if((*i).id == area_id) {
 				i = areas_.erase(i);
-			} else { 
+			} else {
 				++i;
 			}
 		}
@@ -271,9 +271,9 @@ time_of_day gamestatus::get_time_of_day(int illuminated, const map_location& loc
 	if(loc.valid()) {
 		for(std::vector<area_time_of_day>::const_iterator i = areas_.begin(); i != areas_.end(); ++i) {
 			if(i->hexes.count(loc) == 1) {
-	
+
 				VALIDATE(i->times.size(), _("No time of day has been defined."));
-	
+
 				res = i->times[(n_turn-1)%i->times.size()];
 				break;
 			}
@@ -391,7 +391,7 @@ void gamestatus::set_turn(unsigned int num)
 		this->add_turns(numTurns_ - num);
 	}
 	turn_ = num;
-	
+
 	LOG_NG << "changed current turn number from " << old_num << " to " << num << '\n';
 }
 
@@ -603,7 +603,7 @@ static void write_player(config_writer &out, const player_info& player)
 	snprintf(buf,sizeof(buf),"%d",player.gold);
 
 	out.write_key_val("gold", buf);
-	
+
 	const std::string gold_add = player.gold_add ? "true" : "false";
 	out.write_key_val("gold_add", gold_add);
 
@@ -653,7 +653,7 @@ void write_game(const game_state& gamestate, config& cfg, WRITE_GAME_MODE mode)
 
 	cfg["random_seed"] = lexical_cast<std::string>(gamestate.rng().get_random_seed());
 	cfg["random_calls"] = lexical_cast<std::string>(gamestate.rng().get_random_calls());
-	
+
 	cfg["end_text"] = gamestate.end_text;
 	cfg["end_text_duration"] = str_cast<unsigned int>(gamestate.end_text_duration);
 
@@ -1220,7 +1220,7 @@ static void clear_wmi(std::map<std::string, wml_menu_item*>& gs_wmi) {
 	gs_wmi.clear();
 }
 
-game_state::game_state(const game_state& state) : 
+game_state::game_state(const game_state& state) :
 	/* default construct everything to silence compiler warnings. */
 	variable_set(),
 	label(),

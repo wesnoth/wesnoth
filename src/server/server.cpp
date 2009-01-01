@@ -305,7 +305,7 @@ private:
 
 	/** Read the server config from file 'config_file_'. */
 	config read_config() const;
-	
+
 	// settings from the server config
 	std::set<std::string> accepted_versions_;
 	std::map<std::string,config> redirected_versions_;
@@ -325,7 +325,7 @@ private:
 
 	/** Parse the server config into local variables. */
 	void load_config();
-	
+
 	bool ip_exceeds_connection_limit(const std::string& ip) const;
 	bool is_ip_banned(const std::string& ip) const;
 
@@ -374,7 +374,7 @@ private:
 
 server::server(int port, const std::string& config_file, size_t min_threads,
 		size_t max_threads) :
-	net_manager_(min_threads,max_threads), 
+	net_manager_(min_threads,max_threads),
 	server_(port),
 	ban_manager_(),
 	ip_log_(),
@@ -384,10 +384,10 @@ server::server(int port, const std::string& config_file, size_t min_threads,
 	ghost_players_(),
 	games_(),
 	not_logged_in_(players_),
-	lobby_(players_), 
+	lobby_(players_),
 	input_(),
 	config_file_(config_file),
-	cfg_(read_config()), 
+	cfg_(read_config()),
 	accepted_versions_(),
 	redirected_versions_(),
 	proxy_versions_(),
@@ -404,11 +404,11 @@ server::server(int port, const std::string& config_file, size_t min_threads,
 	restart_command(),
 	max_ip_log_size_(0),
 	version_query_response_("[version]\n[/version]\n", simple_wml::INIT_COMPRESSED),
-	login_response_("[mustlogin]\n[/mustlogin]\n", simple_wml::INIT_COMPRESSED), 
+	login_response_("[mustlogin]\n[/mustlogin]\n", simple_wml::INIT_COMPRESSED),
 	join_lobby_response_("[join_lobby]\n[/join_lobby]\n", simple_wml::INIT_COMPRESSED),
 	games_and_users_list_("[gamelist]\n[/gamelist]\n", simple_wml::INIT_STATIC),
 	metrics_(),
-	last_ping_(time(NULL)), 
+	last_ping_(time(NULL)),
 	last_stats_(last_ping_),
 	last_uh_clean_(last_ping_)
 {
@@ -520,7 +520,7 @@ void server::load_config() {
 			lexical_cast_default<size_t>(cfg_["connections_allowed"],5);
 	max_ip_log_size_ =
 			lexical_cast_default<size_t>(cfg_["max_ip_log_size"],500);
-	// Example config line: 
+	// Example config line:
 	// restart_command="./wesnothd-debug -d -c ~/.wesnoth1.5/server.cfg"
 	// remember to make new one as a daemon or it will block old one
 	restart_command = cfg_["restart_command"];
@@ -640,7 +640,7 @@ void server::run() {
 				process_command(admin_cmd, "*socket*");
 			}
 
-			time_t now = time(NULL); 
+			time_t now = time(NULL);
 			if (last_ping_ + 30 <= now) {
 				if (lan_server_ && players_.empty() && last_user_seen_time_ + lan_server_ < now)
 				{
@@ -680,7 +680,7 @@ void server::run() {
  				     i != ghost_players_.end(); ++i)
  				  {
  				    DBG_SERVER << "Pinging " << i->second.name() << "(" << i->first << ").\n" ;
- 				    network::send_raw_data( s.begin(), 
+ 				    network::send_raw_data( s.begin(),
  							    s.size(),
  							    i->first, "ping" ) ;
  				  }
@@ -829,7 +829,7 @@ void server::run() {
 				lobby_.remove_player(e.socket);
 				LOG_SERVER << ip << "\t" << pl_it->second.name()
 					<< "\thas logged off. (socket: " << e.socket << ")\n";
-				                 
+
 			} else {
 				for (std::vector<wesnothd::game*>::iterator g = games_.begin();
 					g != games_.end(); ++g)
@@ -862,7 +862,7 @@ void server::run() {
 		// all user_handler exceptions are caught correctly
 		// this can removed.
 		} catch (user_handler::error e) {
-			ERR_SERVER << "Uncaught user_handler exception: " << e.message << "\n"; 
+			ERR_SERVER << "Uncaught user_handler exception: " << e.message << "\n";
 		}
 	}
 }
@@ -1080,7 +1080,7 @@ void server::process_login(const network::connection sock,
 
 	if(p != players_.end()) {
 		 if(registered) {
-			// If there is already a client using this username kick it	
+			// If there is already a client using this username kick it
 			process_command("kick " + p->second.name(), "autokick by registered user");
 		} else {
 			send_error(sock, "The username you chose is already taken.");
@@ -1146,7 +1146,7 @@ void server::process_login(const network::connection sock,
 
 	// Log the IP
 	ip_log_[username] = network::ip_address(sock);
-	// Remove the oldes entry in the size of the IP log exceeds the maximum size 
+	// Remove the oldes entry in the size of the IP log exceeds the maximum size
 	if(ip_log_.size() > max_ip_log_size_) ip_log_.erase(ip_log_.begin());
 }
 
@@ -1173,7 +1173,7 @@ void server::process_query(const network::connection sock,
 			}
 		} else {
 			LOG_SERVER << "Admin Command:" << "\ttype: " << command
-				<< "\tIP: "<< network::ip_address(sock) 
+				<< "\tIP: "<< network::ip_address(sock)
 				<< "\tnick: "<< pl->second.name() << std::endl;
 			response << process_command(command.to_string(), pl->second.name());
 		}
@@ -1217,7 +1217,7 @@ void server::start_new_server() {
 	if (restart_command.empty())
 		return;
 
-	// Example config line: 
+	// Example config line:
 	// restart_command="./wesnothd-debug -d -c ~/.wesnoth1.5/server.cfg"
 	// remember to make new one as a daemon or it will block old one
 	if (std::system(restart_command.c_str())) {
@@ -1833,7 +1833,7 @@ void server::process_data_lobby(const network::connection sock,
 void server::process_data_game(const network::connection sock,
                                simple_wml::document& data) {
 	DBG_SERVER << "in process_data_game...\n";
-	
+
 	const wesnothd::player_map::iterator pl = players_.find(sock);
 	if (pl == players_.end()) {
 		ERR_SERVER << "ERROR: Could not find player in players_. (socket: "
@@ -1872,7 +1872,7 @@ void server::process_data_game(const network::connection sock,
 			lobby_.send_server_message(msg.str().c_str(), sock);
 			return;
 		}
-		
+
 		// If this game is having its level data initialized
 		// for the first time, and is ready for players to join.
 		// We should currently have a summary of the game in g->level().
@@ -1958,7 +1958,7 @@ void server::process_data_game(const network::connection sock,
 		return;
 // Everything below should only be processed if the game is already intialized.
 	} else if (!g->level_init()) {
-		WRN_SERVER << "Received unknown data from: " << pl->second.name() 
+		WRN_SERVER << "Received unknown data from: " << pl->second.name()
 			<< " (socket:" << sock
 			<< ") while the scenario wasn't yet initialized.\n" << data.output();
 		return;
@@ -2129,7 +2129,7 @@ void server::process_data_game(const network::connection sock,
 	// The owner is kicking/banning someone from the game.
 	} else if (data.child("kick") || data.child("ban")) {
 		bool ban = (data.child("ban") != NULL);
-		const network::connection user = 
+		const network::connection user =
 				(ban ? g->ban_user(*data.child("ban"), pl)
 				: g->kick_member(*data.child("kick"), pl));
 		if (user) {
@@ -2176,7 +2176,7 @@ void server::process_data_game(const network::connection sock,
 		return;
 	}
 
-	WRN_SERVER << "Received unknown data from: " << pl->second.name() 
+	WRN_SERVER << "Received unknown data from: " << pl->second.name()
 		<< ". (socket:" << sock << ")\n" << data.output();
 }
 

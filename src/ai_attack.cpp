@@ -221,7 +221,7 @@ void ai::do_attack_analysis(
 			}
 
 			// Find out how vulnerable we are to attack from enemy units in this hex.
-			//FIXME: suokko's r29531 multiplied this by a constant 1.5. ?  
+			//FIXME: suokko's r29531 multiplied this by a constant 1.5. ?
 			const double vulnerability = power_projection(tiles[j],enemy_dstsrc);
 
 			// Calculate how much support we have on this hex from allies.
@@ -235,7 +235,7 @@ void ai::do_attack_analysis(
 			//FIXME: this code was in sukko's r29531  Correct?
 			// scale vulnerability to 60 hp unit
 			if(cur_position >= 0 && rating < best_rating
-					&& (vulnerability/surround_bonus*30.0)/unit_itor->second.hitpoints() - 
+					&& (vulnerability/surround_bonus*30.0)/unit_itor->second.hitpoints() -
 						(support*surround_bonus*30.0)/unit_itor->second.max_hitpoints()
 						> best_vulnerability - best_support) {
 				continue;
@@ -747,7 +747,7 @@ double ai::power_projection(const map_location& loc,  const move_map& dstsrc, bo
 	return res / 100000.;
 }
 
-/** 
+/**
  * There is no real hope for us: we should try to do some damage to the enemy.
  * We can spend some cycles here, since it's rare.
  */

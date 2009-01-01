@@ -19,12 +19,12 @@
 
 controller_base::controller_base(
 		int ticks, const config& game_config, CVideo& /*video*/) :
-	game_config_(game_config), 
-	ticks_(ticks), 
+	game_config_(game_config),
+	ticks_(ticks),
 	key_(),
 	browse_(false),
 	scrolling_(false)
-{	
+{
 }
 
 controller_base::~controller_base()
@@ -36,7 +36,7 @@ int controller_base::get_ticks() {
 }
 
 bool controller_base::can_execute_command(
-		hotkey::HOTKEY_COMMAND /*command*/, int /*index*/) const 
+		hotkey::HOTKEY_COMMAND /*command*/, int /*index*/) const
 {
 	return false;
 }
@@ -79,13 +79,13 @@ void controller_base::handle_event(const SDL_Event& event)
 		post_mouse_press(event);
 		if (get_mouse_handler_base().get_show_menu()){
 			show_menu(get_display().get_theme().context_menu()->items(),event.button.x,event.button.y,true);
-		}		
+		}
 		break;
 	case SDL_ACTIVEEVENT:
 		if (event.active.type == SDL_APPMOUSEFOCUS && event.active.gain == 0) {
 			if (get_mouse_handler_base().is_dragging()) {
 				//simulate mouse button up when the app has lost mouse focus
-				//this should be a general fix for the issue when the mouse 
+				//this should be a general fix for the issue when the mouse
 				//is dragged out of the game window and then the button is released
 				int x, y;
 				Uint8 mouse_flags = SDL_GetMouseState(&x, &y);
@@ -97,7 +97,7 @@ void controller_base::handle_event(const SDL_Event& event)
 					e.button.x = x;
 					e.button.y = y;
 					get_mouse_handler_base().mouse_press(event.button, browse_);
-					post_mouse_press(event);		
+					post_mouse_press(event);
 				}
 			}
 		}
@@ -107,12 +107,12 @@ void controller_base::handle_event(const SDL_Event& event)
 	}
 }
 
-bool controller_base::have_keyboard_focus() 
+bool controller_base::have_keyboard_focus()
 {
 	return true;
 }
 
-void controller_base::process_keydown_event(const SDL_Event& /*event*/) 
+void controller_base::process_keydown_event(const SDL_Event& /*event*/)
 {
 	//no action by default
 }
@@ -129,26 +129,26 @@ bool controller_base::handle_scroll(CKey& key, int mousex, int mousey, int mouse
 {
 	bool scrolling = false;
 	bool mouse_in_window = SDL_GetAppState() & SDL_APPMOUSEFOCUS;
-	const int scroll_threshold = (preferences::mouse_scroll_enabled()) 
+	const int scroll_threshold = (preferences::mouse_scroll_enabled())
 			? preferences::mouse_scroll_threshold()
 			: 0;
 
-	if ((key[SDLK_UP] && have_keyboard_focus()) 
+	if ((key[SDLK_UP] && have_keyboard_focus())
 	|| (mousey < scroll_threshold && mouse_in_window)) {
 		get_display().scroll(0,-preferences::scroll_speed());
 		scrolling = true;
 	}
-	if ((key[SDLK_DOWN] && have_keyboard_focus()) 
+	if ((key[SDLK_DOWN] && have_keyboard_focus())
 	|| (mousey > get_display().h() - scroll_threshold && mouse_in_window)) {
 		get_display().scroll(0,preferences::scroll_speed());
 		scrolling = true;
 	}
-	if ((key[SDLK_LEFT] && have_keyboard_focus()) 
+	if ((key[SDLK_LEFT] && have_keyboard_focus())
 	|| (mousex < scroll_threshold && mouse_in_window)) {
 		get_display().scroll(-preferences::scroll_speed(),0);
 		scrolling = true;
 	}
-	if ((key[SDLK_RIGHT] && have_keyboard_focus()) 
+	if ((key[SDLK_RIGHT] && have_keyboard_focus())
 	|| (mousex > get_display().w() - scroll_threshold && mouse_in_window)) {
 		get_display().scroll(preferences::scroll_speed(),0);
 		scrolling = true;
@@ -179,7 +179,7 @@ void controller_base::play_slice()
 	events::pump();
 	events::raise_process_event();
 	events::raise_draw_event();
-	
+
 	slice_before_scroll();
 	const theme::menu* const m = get_display().menu_pressed();
 	if(m != NULL) {
@@ -187,13 +187,13 @@ void controller_base::play_slice()
 		show_menu(m->items(),menu_loc.x+1,menu_loc.y + menu_loc.h + 1,false);
 		return;
 	}
-	
+
 	int mousex, mousey;
 	Uint8 mouse_flags = SDL_GetMouseState(&mousex, &mousey);
-	tooltips::process(mousex, mousey);	
+	tooltips::process(mousex, mousey);
 	bool was_scrolling = scrolling_;
 	scrolling_ = handle_scroll(key, mousex, mousey, mouse_flags);
-	
+
 	get_display().draw();
 	if (!scrolling_) {
 		if (was_scrolling) {

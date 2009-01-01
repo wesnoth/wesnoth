@@ -37,7 +37,7 @@ struct tile_info
 	: offset(offset), terrain(map.get_terrain(offset))
 	{
 	}
-	
+
 	map_location offset;
 	t_translation::t_terrain terrain;
 };
@@ -52,47 +52,47 @@ class map_fragment
 		 * Create an empty map fragment.
 		 */
 		map_fragment();
-		
+
 		/**
 		 * Create a map fragment from the specified locations on the map.
 		 */
 		map_fragment(const gamemap& map, const std::set<map_location>& area);
-		
+
 		/**
 		 * Add a single location and pull its info from the map.
 		 */
 		void add_tile(const gamemap& map, const map_location& loc);
-		
+
 		/**
 		 * Add many locations and pull their info from the map.
 		 */
 		void add_tiles(const gamemap& map, const std::set<map_location>& loc);
-		
+
 		/**
 		 * Get the tile_info vector.
 		 */
 		const std::vector<tile_info>& get_items() const { return items_; }
-		
+
 		/**
 		 * Get the area covered by this map fragment.
 		 */
 		std::set<map_location> get_area() const;
-		
+
 		/**
 		 * Get the area covered by this map fragment, shifted by an offset.
 		 */
 		std::set<map_location> get_offset_area(const map_location& offset) const;
-		
+
 		/**
 		 * Paste the map fragment into the map, treating loc as the (0,0) point (offset).
 		 */
 		void paste_into(gamemap& map, const map_location& loc) const;
-		
+
 		/**
 		 * Shift all tiles in the map fragment by the specified offset.
 		 */
 		void shift(const map_location& offset);
-		
+
 		/**
 		 * Return a location at the top left corner of this fragment's
 		 * bounding rectangle
@@ -108,27 +108,27 @@ class map_fragment
 		 * Get the center of the map fragment, mass-wise.
 		 */
 		map_location center_of_mass() const;
-		
+
 		/**
 		 * Shift the map fragment so that all locations have nonnegative coordinates
 		 */
 		void normalize();
-		
+
 		/**
 		 * Shift the map fragment so it is roughly centered around the (0,0) point, bounds-wise.
 		 */
 		void center_by_bounds();
-		
+
 		/**
 		 * Shift the map fragment so it is roughly centered around the (0,0) point, mass-wise.
 		 */
 		void center_by_mass();
-		
+
 		/**
 		 * @return true if the map_fragment is empty
 		 */
 		bool empty() const;
-		
+
 		/**
 		 * Rotate the map fragment 60 degrees clockwise around (0,0)
 		 */
@@ -138,7 +138,7 @@ class map_fragment
 		 * Rotate the map fragment 60 degrees counter-clockwise around (0,0)
 		 */
 		void rotate_60_ccw();
-		
+
 		/**
 		 * Flip the map fragment horizontally
 		 */
@@ -147,13 +147,13 @@ class map_fragment
 		/**
 		 * Flip the map fragment vertically
 		 */
-		void flip_vertical();		
-		
+		void flip_vertical();
+
 		/**
 		 * Debug dump to a string
 		 */
 		std::string dump() const;
-		
+
 	protected:
 		/**
 		 * The data of this map_fragment

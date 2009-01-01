@@ -13,7 +13,7 @@
 */
 
 /**
- * @file filesystem.hpp 
+ * @file filesystem.hpp
  * Declarations for File-IO.
  */
 
@@ -44,8 +44,8 @@ enum FILE_FILTER { NO_FILTER, SKIP_MEDIA_DIR};
 enum FILE_REORDER_OPTION { DONT_REORDER, DO_REORDER };
 
 /**
- * Populates 'files' with all the files and 
- * 'dirs' with all the directories in dir. 
+ * Populates 'files' with all the files and
+ * 'dirs' with all the directories in dir.
  * If files or dirs are NULL they will not be used.
  *
  * mode: determines whether the entire path or just the filename is retrieved.
@@ -95,7 +95,7 @@ bool delete_directory(const std::string& dirname);
 
 // Basic disk I/O:
 
-/** Basic disk I/O - read file. 
+/** Basic disk I/O - read file.
  * The bool relative_from_game_path determines whether relative paths should be treated as relative
  * to the game path (true) or to the current directory from which Wesnoth was run (false).
  * The non-const version will update the string if the game path is prepended.
@@ -157,21 +157,21 @@ int file_size(const std::string& fname);
 bool ends_with(const std::string& str, const std::string& suffix);
 
 /**
- * Returns the base filename of a file, with directory name stripped. 
+ * Returns the base filename of a file, with directory name stripped.
  * Equivalent to a portable basename() function.
  */
 std::string file_name(const std::string& file);
 
 /**
- * Returns the directory name of a file, with filename stripped. 
+ * Returns the directory name of a file, with filename stripped.
  * Equivalent to a portable dirname()
  */
 std::string directory_name(const std::string& file);
 
 /**
- *  The paths manager is responsible for recording the various paths 
- *  that binary files may be located at. 
- *  It should be passed a config object which holds binary path information. 
+ *  The paths manager is responsible for recording the various paths
+ *  that binary files may be located at.
+ *  It should be passed a config object which holds binary path information.
  *  This is in the format
  *@verbatim
  *    [binary_path]
@@ -206,7 +206,7 @@ void clear_binary_paths_cache();
 const std::vector<std::string>& get_binary_paths(const std::string& type);
 
 /**
- * Returns a complete path to the actual file of a given a type of binary, 
+ * Returns a complete path to the actual file of a given a type of binary,
  * or an empty string if the file isn't present.
  */
 std::string get_binary_file_location(const std::string& type, const std::string& filename);

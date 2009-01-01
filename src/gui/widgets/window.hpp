@@ -380,7 +380,7 @@ private:
 	void do_show_help_popup(const tpoint& location, const t_string& help_popup);
 
 	/** Inherited from tevent_handler. */
-	void do_remove_help_popup() 
+	void do_remove_help_popup()
 		{ help_popup_.set_visible(twidget::HIDDEN); }
 
 	/** Inherited from tevent_handler. */

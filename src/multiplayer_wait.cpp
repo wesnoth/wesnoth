@@ -269,7 +269,7 @@ void wait::join_game(bool observe)
 				throw config::error(_("No multiplayer sides found"));
 				return;
 			}
-			
+
 			int color = side_choice;
 			const std::string color_str = (*sides_list[side_choice])["colour"];
 			if (!color_str.empty())
@@ -282,7 +282,7 @@ void wait::join_game(bool observe)
 			{
 				const std::string& name = (**side)["name"];
 				const std::string& icon = (**side)["image"];
-				
+
 				if (!icon.empty()) {
 					std::string rgb = (**side)["flag_rgb"];
 					if (rgb.empty())

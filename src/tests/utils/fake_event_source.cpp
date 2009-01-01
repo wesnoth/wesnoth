@@ -91,7 +91,7 @@ namespace test_utils {
 	}
 
 
-	fake_event_source::fake_event_source() 
+	fake_event_source::fake_event_source()
 		: frame_count_(0)
 		, queue_()
 	{
@@ -124,7 +124,7 @@ namespace test_utils {
 	void fake_event_source::start()
 	{
 		frame_count_ = 0;
-	}	 
+	}
 
 	SDL_Event fake_event_source::make_key_event(Uint8 type, const SDLKey key, const SDLMod mod)
 	{
@@ -135,7 +135,7 @@ namespace test_utils {
 		else
 			event.key.state = SDL_RELEASED;
 		event.key.keysym.sym = key;
-		event.key.keysym.scancode = key; // 
+		event.key.keysym.scancode = key; //
 		event.key.keysym.mod = mod;
 		event.key.keysym.unicode = key; //
 		return event;
@@ -179,7 +179,7 @@ namespace test_utils {
 		add_event(new_click);
 		return new_click;
 	}
-	
+
 	event_node_ptr fake_event_source::mouse_click(const size_t time, const Uint8 button)
 	{
 		mouse_press(time, button);
@@ -201,7 +201,7 @@ namespace test_utils {
 		add_event(new_key);
 		return new_key;
 	}
-	
+
 	event_node_ptr fake_event_source::type_key(const size_t time, const SDLKey key, const SDLMod mod)
 	{
 		press_key(time,key,mod);
@@ -215,7 +215,7 @@ namespace test_utils {
 		++frame_count_;
 		if (queue_.empty())
 			return;
-		while (!queue_.empty() 
+		while (!queue_.empty()
 				&& queue_.top()->test_if_should_fire(frame_count_))
 		{
 			queue_.top()->fire_event();

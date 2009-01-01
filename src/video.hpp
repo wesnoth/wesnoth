@@ -106,7 +106,7 @@ class CVideo : private boost::noncopyable {
 	bool update_locked() const;
 
 private:
-	
+
 	void initSDL();
 
 	bool mode_changed_;

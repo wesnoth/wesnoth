@@ -136,9 +136,9 @@ static int upload_logs(void *_ti)
 
 
 // Currently only enabled when playing campaigns.
-upload_log::upload_log(bool enable) : 
+upload_log::upload_log(bool enable) :
 	config_(),
-	game_(NULL), 
+	game_(NULL),
 	filename_(next_filename(get_upload_dir(), 100)),
 	enabled_(enable)
 {

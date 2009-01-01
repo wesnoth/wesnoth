@@ -38,7 +38,7 @@ namespace test_utils {
 		timing(const size_t& t) : time_(t) {}
 
 		timing operator++()
-		{ 
+		{
 			return time_ += step_size;
 		}
 
@@ -54,14 +54,14 @@ namespace test_utils {
 
 		timing operator+(const size_t& t)
 		{ return timing(time_ + t*step_size);}
-		
+
 		timing operator+(const int& t)
 		{ return *this + size_t(t);}
 
 		timing& operator+=(const size_t& t)
 		{ time_ += t*step_size;
 		return *this;}
-		
+
 		timing& operator+=(const int& t)
 		{ return *this+= size_t(t);}
 	};

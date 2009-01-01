@@ -53,15 +53,15 @@ namespace image {
 
 	template<typename T>
 	struct cache_item {
-		cache_item() : 
-			loaded(false), 
+		cache_item() :
+			loaded(false),
 			item() ,
 			position(dummy_list.end())
 		{
 		}
 
-		cache_item(T item) : 
-			loaded(true), 
+		cache_item(T item) :
+			loaded(true),
 			item(item),
 			position(dummy_list.end())
 		{
@@ -73,7 +73,7 @@ namespace image {
 	};
 
 	template<typename T>
-	class cache_type 
+	class cache_type
 	{
 	public:
 		cache_type() :
@@ -207,9 +207,9 @@ namespace image {
 	///their pixels. i.e. add a certain colour hint to images. useful
 	///for representing day/night. Invalidates all scaled images.
 	void set_colour_adjustment(int r, int g, int b);
-	
+
 	boost::tuple<int, int, int> get_colour_adjustment();
-	
+
 	class colour_adjustment_resetter
 	{
 		public:

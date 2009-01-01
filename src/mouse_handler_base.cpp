@@ -21,7 +21,7 @@
 
 
 namespace events {
-	
+
 command_disabler::command_disabler()
 {
 	++commands_disabled;
@@ -35,7 +35,7 @@ command_disabler::~command_disabler()
 int commands_disabled= 0;
 
 const int mouse_handler_base::drag_threshold_ = 0;
-	
+
 static bool command_active()
 {
 #ifdef __APPLE__
@@ -46,14 +46,14 @@ static bool command_active()
 }
 
 mouse_handler_base::mouse_handler_base() :
-	minimap_scrolling_(false), 
-	dragging_left_(false), 
+	minimap_scrolling_(false),
+	dragging_left_(false),
 	dragging_started_(false),
-	dragging_right_(false), 
+	dragging_right_(false),
 	drag_from_x_(0),
 	drag_from_y_(0),
 	drag_from_hex_(),
-	last_hex_(), 
+	last_hex_(),
 	show_menu_(false)
 {
 }
@@ -75,7 +75,7 @@ void mouse_handler_base::mouse_update(const bool browse)
 	mouse_motion(x, y, browse, true);
 }
 
-bool mouse_handler_base::mouse_motion_default(int x, int y, bool& /*update*/) 
+bool mouse_handler_base::mouse_motion_default(int x, int y, bool& /*update*/)
 {
 	if(minimap_scrolling_) {
 		//if the game is run in a window, we could miss a LMB/MMB up event
@@ -160,7 +160,7 @@ void mouse_handler_base::mouse_press(const SDL_MouseButtonEvent& event, const bo
 		} else if (event.state == SDL_RELEASED) {
 			minimap_scrolling_ = false;
 		}
-	} else if (allow_mouse_wheel_scroll(event.x, event.y)) { 
+	} else if (allow_mouse_wheel_scroll(event.x, event.y)) {
 		if (event.button == SDL_BUTTON_WHEELUP) {
 			scrolly = - preferences::scroll_speed();
 		} else if (event.button == SDL_BUTTON_WHEELDOWN) {

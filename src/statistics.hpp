@@ -59,7 +59,7 @@ namespace statistics
 		// Expected value for damage inflicted/taken * 1000, based on
 		// probability to hit,
 		// Use this long term to see how lucky a side is.
-		
+
 		/**
 		 * @todo FIXME: Since integers are used, rounding errors accumulate.
 		 * Also, slow isn't accounted for properly. Rusty's simulator could be

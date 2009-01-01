@@ -33,9 +33,9 @@ class gamemap;
 #define MAX_MAP_AREA	65536
 
 /**
- * Encapsulates the map of the game. 
+ * Encapsulates the map of the game.
  *
- * Although the game is hexagonal, the map is stored as a grid. 
+ * Although the game is hexagonal, the map is stored as a grid.
  * Each type of terrain is represented by a multiletter terrain code.
  * @todo Update for new map-format.
  */
@@ -87,8 +87,8 @@ struct map_location {
 	map_location &legacy_difference_assign(const map_location &a);
 
 	// Location arithmetic operations treating the locations as vectors in
-	// a hex-based space. These operations form an abelian group, i.e. 
-	// everything works as you would expect addition and substraction to 
+	// a hex-based space. These operations form an abelian group, i.e.
+	// everything works as you would expect addition and substraction to
 	// work, with associativity and commutativity.
 	map_location vector_negation() const;
 	map_location vector_sum(const map_location &a) const;
@@ -96,19 +96,19 @@ struct map_location {
 	map_location vector_difference(const map_location &a) const;
 	map_location &vector_difference_assign(const map_location &a);
 
-	// Do n step in the direction d 
+	// Do n step in the direction d
 	map_location get_direction(DIRECTION d, int n = 1) const;
 	DIRECTION get_relative_dir(map_location loc) const;
 	static DIRECTION get_opposite_dir(DIRECTION d);
-	
+
 	/**
 	 * Drawing order, copied from ordered_draw in display.hpp.
 	 *
-	 * This returns the order in which the units should be drawn so they overlap 
+	 * This returns the order in which the units should be drawn so they overlap
 	 * propererly.
 	 */
 	int get_drawing_order() const
-		{ return (y * 2 + x % 2) * 1024 + x; }	
+		{ return (y * 2 + x % 2) * 1024 + x; }
 
 	static const map_location null_location;
 };

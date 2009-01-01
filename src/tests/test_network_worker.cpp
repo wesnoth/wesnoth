@@ -38,7 +38,7 @@ BOOST_AUTO_TEST_SUITE( test_network )
 const int TEST_PORT = 15010;
 const int MIN_THREADS = 1;
 const int MAX_THREADS = 5;
-const std::string LOCALHOST = "localhost"; 
+const std::string LOCALHOST = "localhost";
 
 
 network::manager* wes_manager;
@@ -188,7 +188,7 @@ static std::string create_random_sendfile(size_t size)
 	std::string filename = "sendfile.tmp";
 	scoped_ostream file = ostream_file(filename);
 	std::generate(begin,end,std::rand);
-	while( size > 0 
+	while( size > 0
 		&& !file->bad())
 	{
 		file->write(buffer, buffer_size);
@@ -227,7 +227,7 @@ WESNOTH_PARAMETERIZED_TEST_CASE( test_multi_sendfile, sendfile_param, sendfile_s
 	network::connection cl_client1, se_client1;
 	network::connection cl_client2, se_client2;
 	network::connection cl_client3, se_client3;
-	
+
 	BOOST_CHECK_MESSAGE((cl_client1 = network::connect(LOCALHOST, TEST_PORT)) > 0, "Can't connect to server!");
 	BOOST_CHECK_MESSAGE((se_client1 = network::accept_connection()) > 0, "Coulnd't accept new connection");
 	BOOST_CHECK_MESSAGE((cl_client2 = network::connect(LOCALHOST, TEST_PORT)) > 0, "Can't connect to server!");

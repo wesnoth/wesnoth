@@ -129,7 +129,7 @@ bool terrain_builder::tilemap::on_map(const map_location &loc) const
 	}
 
 	return true;
-	
+
 }
 
 terrain_builder::tile& terrain_builder::tilemap::operator[](const map_location &loc)
@@ -148,7 +148,7 @@ const terrain_builder::tile& terrain_builder::tilemap::operator[] (const map_loc
 
 terrain_builder::terrain_builder(const config& cfg, const config& level,
 		const gamemap* m, const std::string& offmap_image) :
-	map_(m), 
+	map_(m),
 	tile_map_(map().w(), map().h()),
 	terrain_by_type_(),
 	building_rules_()
@@ -245,7 +245,7 @@ void terrain_builder::rebuild_terrain(const map_location &loc)
 		img_loc.add_frame(100,image::locator("terrain/" + filename + ".png"));
 		img_loc.start_animation(0, true);
 		btile.images_background.push_back(img_loc);
-		
+
 		//Combine base and overlay image if neccessary
 		if(map().get_terrain_info(map().get_terrain(loc)).is_combined()) {
 			const std::string filename_ovl =
@@ -660,7 +660,7 @@ void terrain_builder::parse_mapstring(const std::string &mapstring,
 				add_constraints(br.constraints, map_location(x, y), t_translation::STAR, global_images);
 			} else {
 					ERR_NG << "Invalid terrain (" << t_translation::write_terrain_code(terrain) << ") in builder map\n";
-					assert(false); 
+					assert(false);
 					return;
 			}
 		x += 2;
@@ -795,9 +795,9 @@ void terrain_builder::parse_config(const config &cfg)
 
 	building_ruleset::const_iterator rule;
 	for(rule = building_rules_.begin(); rule != building_rules_.end(); ++rule) {
-		std::cerr << ">> New rule: image_background = " 
+		std::cerr << ">> New rule: image_background = "
 			<< "\n>> Location " << rule->second.location_constraints
-			<< "\n>> Probability " << rule->second.probability 
+			<< "\n>> Probability " << rule->second.probability
 			<< "\n>> Precedence " << rule->second.precedence << '\n';
 
 		for(constraint_set::const_iterator constraint = rule->second.constraints.begin();

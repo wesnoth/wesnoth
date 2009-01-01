@@ -104,7 +104,7 @@ public:
 	void set_visible_area(const SDL_Rect& area);
 
 	/** Inherited from twidget. */
-	void impl_draw_children(surface& frame_buffer) 
+	void impl_draw_children(surface& frame_buffer)
 		{ grid_.draw_children(frame_buffer); }
 
 	/** Inherited from twidget. */

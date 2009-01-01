@@ -36,7 +36,7 @@ template <template<class> class copy_policy >
 struct ttest : public copy_policy<ttest<copy_policy> >
 {
 	typedef copy_policy<ttest<copy_policy> > policy;
-	/* 
+	/*
 	 * This typedef first was
 	 * typedef typename ttest<copy_policy>::rhs_type rhs_type;
 	 *
@@ -57,20 +57,20 @@ struct ttest : public copy_policy<ttest<copy_policy> >
 #endif
 	}
 
-	ttest(ttest_rhs_type rhs) 
+	ttest(ttest_rhs_type rhs)
 		: policy(rhs)
 		, copied_constructed_(true)
 		, assigned_(rhs.assigned_)
 		, cloned_(rhs.cloned_)
 		, invalidated_(rhs.invalidated_)
-	{ 
+	{
 #if TEST_POLICY_DEBUG
 		std::cerr << "Copy constructor " << __func__ << ".\n";
 #endif
-		copy(rhs); 
+		copy(rhs);
 	}
 
-	ttest& operator=(ttest_rhs_type rhs) 
+	ttest& operator=(ttest_rhs_type rhs)
 	{
 #if TEST_POLICY_DEBUG
 		std::cerr << __func__ << ".\n";
@@ -109,7 +109,7 @@ std::ostream& operator<<(std::ostream &s, const ttest<T>& test)
 		<< " cloned_ " << test.cloned_
 		<< " invalidated_ " << test.invalidated_
 		;
-	
+
 	return s;
 }
 #endif
@@ -127,14 +127,14 @@ void copy_test(const bool orig_invalidated, const bool copy_cloned)
 
 #if TEST_POLICY_DEBUG
 	std::cerr << "orig " << orig
-		<< "\ncopy " << cpy 
+		<< "\ncopy " << cpy
 		<< ".\n";
 #endif
 
 	BOOST_REQUIRE_EQUAL(orig.copied_constructed_, false);
 	BOOST_REQUIRE_EQUAL(orig.assigned_, false);
 	BOOST_REQUIRE_EQUAL(orig.cloned_, false);
-	BOOST_REQUIRE_EQUAL(orig.invalidated_, orig_invalidated); 
+	BOOST_REQUIRE_EQUAL(orig.invalidated_, orig_invalidated);
 
 	BOOST_REQUIRE_EQUAL(cpy.copied_constructed_, true);
 	BOOST_REQUIRE_EQUAL(cpy.assigned_, false);
@@ -156,14 +156,14 @@ void assign_test(const bool orig_invalidated, const bool copy_cloned)
 
 #if TEST_POLICY_DEBUG
 	std::cerr << "orig " << orig
-		<< "\ncopy " << cpy 
+		<< "\ncopy " << cpy
 		<< ".\n";
 #endif
 
 	BOOST_REQUIRE_EQUAL(orig.copied_constructed_, false);
 	BOOST_REQUIRE_EQUAL(orig.assigned_, false);
 	BOOST_REQUIRE_EQUAL(orig.cloned_, false);
-	BOOST_REQUIRE_EQUAL(orig.invalidated_, orig_invalidated); 
+	BOOST_REQUIRE_EQUAL(orig.invalidated_, orig_invalidated);
 
 	BOOST_REQUIRE_EQUAL(cpy.copied_constructed_, false);
 	BOOST_REQUIRE_EQUAL(cpy.assigned_, true);
@@ -171,7 +171,7 @@ void assign_test(const bool orig_invalidated, const bool copy_cloned)
 	BOOST_REQUIRE_EQUAL(cpy.invalidated_, false);
 }
 
-/** 
+/**
  * Tests a policy.
  *
  * @param orig_invalidated        Should the original object be invalidated when
@@ -191,7 +191,7 @@ void test(const bool orig_invalidated, const bool copy_cloned)
 
 namespace non_intrusive {
 
-struct ttest 
+struct ttest
 {
 	ttest()
 		: cloned_(false)
@@ -204,14 +204,14 @@ struct ttest
 
 #if TEST_POLICY_DEBUG
 
-	ttest(const ttest& rhs) 
+	ttest(const ttest& rhs)
 		: cloned_(rhs.cloned_)
 		, invalidated_(rhs.invalidated_)
-	{ 
+	{
 		std::cerr << "Copy constructor " << __func__ << ".\n";
 	}
 
-	ttest& operator=(const ttest& rhs) 
+	ttest& operator=(const ttest& rhs)
 	{
 		std::cerr << "Assign operator " << __func__ << ".\n";
 
@@ -239,7 +239,7 @@ static std::ostream& operator<<(std::ostream &s, const ttest& test)
 	s << "cloned_ " << test.cloned_
 		<< " invalidated_ " << test.invalidated_
 		;
-	
+
 	return s;
 }
 #endif
@@ -257,12 +257,12 @@ void copy_test(const bool orig_invalidated, const bool copy_cloned)
 
 #if TEST_POLICY_DEBUG
 	std::cerr << "orig " << orig
-		<< "\ncopy " << cpy 
+		<< "\ncopy " << cpy
 		<< ".\n";
 #endif
 
 	BOOST_REQUIRE_EQUAL(orig.cloned_, false);
-	BOOST_REQUIRE_EQUAL(orig.invalidated_, orig_invalidated); 
+	BOOST_REQUIRE_EQUAL(orig.invalidated_, orig_invalidated);
 
 	BOOST_REQUIRE_EQUAL(cpy.cloned_, copy_cloned);
 	BOOST_REQUIRE_EQUAL(cpy.invalidated_, false);
@@ -282,18 +282,18 @@ void assign_test(const bool orig_invalidated, const bool copy_cloned)
 
 #if TEST_POLICY_DEBUG
 	std::cerr << "orig " << orig
-		<< "\ncopy " << cpy 
+		<< "\ncopy " << cpy
 		<< ".\n";
 #endif
 
 	BOOST_REQUIRE_EQUAL(orig.cloned_, false);
-	BOOST_REQUIRE_EQUAL(orig.invalidated_, orig_invalidated); 
+	BOOST_REQUIRE_EQUAL(orig.invalidated_, orig_invalidated);
 
 	BOOST_REQUIRE_EQUAL(cpy.cloned_, copy_cloned);
 	BOOST_REQUIRE_EQUAL(cpy.invalidated_, false);
 }
 
-/** 
+/**
  * Tests a policy.
  *
  * @param orig_invalidated        Should the original object be invalidated when
@@ -332,7 +332,7 @@ BOOST_AUTO_TEST_CASE( test_copy_policy )
 
 	// Must fail to compile.
 	orig = orig;
-#endif	
+#endif
 #endif
 
 #if TEST_POLICY_DEBUG

@@ -15,7 +15,7 @@
 */
 
 /**
- * @file serialization/parser.cpp 
+ * @file serialization/parser.cpp
  * Read/Write & analyse WML- and config-files.
  */
 
@@ -65,9 +65,9 @@ private:
 	tokenizer *tok_;
 
 	struct element {
-		element(config *cfg, std::string 
+		element(config *cfg, std::string
 			const &name, const size_t& start_line = 0, const std::string& file="") :
-				cfg(cfg), 
+				cfg(cfg),
 				name(name),
 				last_element_map(),
 				start_line(start_line),
@@ -86,7 +86,7 @@ private:
 };
 
 parser::parser(config &cfg, std::istream &in) :
-		cfg_(cfg), 
+		cfg_(cfg),
 		tok_(new tokenizer(in)),
 		elements()
 {

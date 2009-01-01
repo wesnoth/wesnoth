@@ -31,7 +31,7 @@ namespace test_utils {
 		va_start(vl, va_number);
 
 		bool ret = false;
-		
+
 		for (int i = 0; i < va_number; ++i)
 		{
 			param = va_arg(vl, T);

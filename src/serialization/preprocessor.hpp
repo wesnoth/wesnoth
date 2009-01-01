@@ -23,7 +23,7 @@
 #include <string>
 #include <vector>
 
-#include "game_errors.hpp" 
+#include "game_errors.hpp"
 
 class config_writer;
 class config;
@@ -69,7 +69,7 @@ std::ostream& operator<<(std::ostream& stream, const preproc_map::value_type& de
  *
  * @param defines                 A map of symbols defined.
  *
- * @returns                       The resulting preprocessed file data. 
+ * @returns                       The resulting preprocessed file data.
  */
 std::istream *preprocess_file(std::string const &fname,
                               preproc_map *defines = NULL, std::string *error_log=NULL);

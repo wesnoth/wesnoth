@@ -13,7 +13,7 @@
 */
 
 /**
- * @file intro.cpp 
+ * @file intro.cpp
  * Introduction sequence at start of a scenario, End-screen after end of
  * campaign.
  */
@@ -162,7 +162,7 @@ bool show_intro_part(display &disp, const vconfig& part,
 
 	// Use the whole screen for text
 	texty = 0;
-	
+
 	next_button.set_location(xbuttons,ybuttons-20);
 	skip_button.set_location(xbuttons,ybuttons);
 #else
@@ -171,7 +171,7 @@ bool show_intro_part(display &disp, const vconfig& part,
 	xbuttons = video.getx() - 200 - 40;
 	texty = video.gety() - 200;
 	ybuttons = video.gety() - 40;
-	
+
 	next_button.set_location(xbuttons,ybuttons-30);
 	skip_button.set_location(xbuttons,ybuttons);
 #endif
@@ -293,40 +293,40 @@ static bool show_intro_part_helper(display &disp, const vconfig& part,
 	CVideo &video = disp.video();
 
 	const int max_width = next_button.location().x - 10 - textx;
-	const std::string story = 
+	const std::string story =
 		font::word_wrap_text(part["story"], font::SIZE_PLUS, max_width);
 
 	utils::utf8_iterator itor(story);
 
 	bool skip = false, last_key = true;
 	int update_y = 0, update_h = 0;
-	
+
 	// Draw the text box
 	if(story.empty() != true)
 	{
 		// this should kill the tiniest flickering caused
 		// by the buttons being hidden and unhidden in this scope.
 		update_locker locker(disp.video());
-		
+
 		const SDL_Rect total_size = font::draw_text(NULL, screen_area(), font::SIZE_PLUS,
 				font::NORMAL_COLOUR, story, 0, 0);
-		
+
 		next_button.hide();
 		skip_button.hide();
-		
+
 		if (texty + 20 + total_size.h > screen_area().h) {
 			texty = screen_area().h > total_size.h + 1 ? screen_area().h - total_size.h - 21 : 0;
 		}
-		
+
 		update_y = texty;
 		update_h = screen_area().h-texty;
 		blur_helper(disp.video(), update_y, update_h);
-		
+
 		draw_solid_tinted_rectangle(
 			0, texty, screen_area().w, screen_area().h - texty,
 			0, 0, 0, 0.5, video.getSurface()
 		);
-		
+
 		// Draw a nice border
 		if(has_background) {
 			// FIXME: perhaps hard-coding the image path isn't a really
@@ -339,14 +339,14 @@ static bool show_intro_part_helper(display &disp, const vconfig& part,
 			blur_helper(disp.video(), update_y, top_border->h);
 			disp.video().blit_surface(0, texty - top_border->h, top_border);
 		}
-		
+
 		// Make buttons aware of the changes in the background
 		next_button.set_location(next_button.location());
 		next_button.hide(false);
 		skip_button.set_location(skip_button.location());
 		skip_button.hide(false);
 	}
-	
+
 	if(redraw_all) {
 		update_whole_screen();
 	} else if(update_h > 0) {

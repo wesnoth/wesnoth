@@ -99,7 +99,7 @@ map_location map_fragment::center_of_bounds() const
 		if (loc.y < top_left.y) top_left.y = loc.y;
 		else if (loc.y > bottom_right.y) bottom_right.y = loc.y;
 	}
-	map_location c((top_left.x + bottom_right.x) / 2, 
+	map_location c((top_left.x + bottom_right.x) / 2,
 		(top_left.y + bottom_right.y) / 2);
 	return c;
 }

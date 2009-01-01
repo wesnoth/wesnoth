@@ -102,7 +102,7 @@ public:
 	virtual void play_turn() = 0;
 
 	/**
-	 * Function called when a a new turn is played 
+	 * Function called when a a new turn is played
 	 * Derived persistant AIs should call this function each turn (expect first)
 	 */
 	virtual void new_turn() {
@@ -190,19 +190,19 @@ protected:
 	 * @param remove_destinations a pointer to a set of possible destinations
 	 *                            to omit.
 	 */
-	void calculate_possible_moves(std::map<location,paths>& possible_moves, 
-		move_map& srcdst, move_map& dstsrc, bool enemy, 
-		bool assume_full_movement=false, 
+	void calculate_possible_moves(std::map<location,paths>& possible_moves,
+		move_map& srcdst, move_map& dstsrc, bool enemy,
+		bool assume_full_movement=false,
 		const std::set<location>* remove_destinations=NULL) const;
 
  	/**
 	 * A more fundamental version of calculate_possible_moves which allows the
 	 * use of a speculative unit map.
 	 */
-	void calculate_moves(const unit_map& units, 
-		std::map<location,paths>& possible_moves, move_map& srcdst, 
+	void calculate_moves(const unit_map& units,
+		std::map<location,paths>& possible_moves, move_map& srcdst,
 		move_map& dstsrc, bool enemy, bool assume_full_movement=false,
-		const std::set<location>* remove_destinations=NULL, 
+		const std::set<location>* remove_destinations=NULL,
 		bool see_all=false) const;
 
 	/**
@@ -216,7 +216,7 @@ protected:
 	 */
 	bool recruit(const std::string& unit_name, location loc=location());
 
-	/** 
+	/**
 	 * Functions to retrieve the 'info' object.
 	 * Used by derived classes to discover all necessary game information.
 	 */

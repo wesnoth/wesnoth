@@ -61,7 +61,7 @@ token get_token(iterator& i1, iterator i2) {
 			res.type = t.type;
 			res.begin = i1;
 			i1 = res.end = i1 + match.length();
-			
+
 			return res;
 		}
 	}

@@ -290,16 +290,16 @@ void file_menu::select_file(const std::string& begin_of_filename)
 	it = std::find_if(dirs_in_current_dir_.begin(), dirs_in_current_dir_.end(), match_begin(begin_of_filename));
 	if (it != dirs_in_current_dir_.end())
 	{
-		type_a_head_ = additional_index + it - dirs_in_current_dir_.begin(); 
+		type_a_head_ = additional_index + it - dirs_in_current_dir_.begin();
 		move_selection(type_a_head_);
 		return;
 	}
 	additional_index += dirs_in_current_dir_.size();
-	
+
 	it = std::find_if(files_in_current_dir_.begin(), files_in_current_dir_.end(), match_begin(begin_of_filename));
 	if (it != files_in_current_dir_.end())
 	{
-		type_a_head_ = additional_index + it - files_in_current_dir_.begin(); 
+		type_a_head_ = additional_index + it - files_in_current_dir_.begin();
 		move_selection(type_a_head_);
 		return;
 	}

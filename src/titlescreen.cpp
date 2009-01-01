@@ -15,7 +15,7 @@
 /**
  *  @file titlescreen.cpp
  *  Shows the titlescreen, with main-menu and tip-of-the-day.
- * 
+ *
  *  The menu consists of buttons, such als Start-Tutorial, Start-Campaign,
  *  Load-Game, etc.  As decoration, the wesnoth-logo and a landmap in the
  *  background are shown.
@@ -57,18 +57,18 @@
 
 /**
  *  Fade-in the wesnoth-logo.
- * 
+ *
  *  Animation-effect: scroll-in from right. \n
  *  Used only once, after the game is started.
- * 
+ *
  *  @param	screen	surface to operate on
  *  @param	xpos	x-position of logo
  *  @param	ypos	y-position of logo
- * 
+ *
  *  @return		Result of running the routine
  *  @retval true	operation finished (successful or not)
  *  @retval false	operation failed (because modeChanged), need to retry
- */ 
+ */
 static bool fade_logo(game_display& screen, int xpos, int ypos)
 {
 	const surface logo(image::get_image(game_config::game_logo));
@@ -163,7 +163,7 @@ static void read_tips_of_day(config& tips_of_day)
 static void next_tip_of_day(config& tips_of_day, bool reverse = false)
 {
 	// we just rotate the tip list, to avoid the need to keep track
-	// of the current one, and keep it valid, cycle it, etc... 
+	// of the current one, and keep it valid, cycle it, etc...
 	config::child_itors tips = tips_of_day.child_range("tip");
 	if (tips.first != tips.second) {
 		config::child_iterator direction = reverse ? tips.first+1 : tips.second-1;
@@ -179,7 +179,7 @@ static const config* get_tip_of_day(config& tips_of_day)
 	}
 
 	const config::child_list& tips = tips_of_day.get_children("tip");
-	
+
 	// next_tip_of_day rotate tips, so better stay iterator-safe
 	for (size_t t=0; t < tips.size(); t++, next_tip_of_day(tips_of_day)) {
 		const config* tip = tips.front();
@@ -235,9 +235,9 @@ static void draw_tip_of_day(game_display& screen,
     	int tip_width = game_config::title_tip_width * screen.w() / 1024;
 
 		try {
-	        const std::string& text = 
+	        const std::string& text =
 				font::word_wrap_text((*tip)["text"], font::SIZE_NORMAL, tip_width);
-			const std::string& source = 
+			const std::string& source =
 				font::word_wrap_text((*tip)["source"], font::SIZE_NORMAL, tip_width);
 
 			const int pad = game_config::title_tip_padding;
@@ -268,7 +268,7 @@ static void draw_tip_of_day(game_display& screen,
 
 			button_x = area.x + pad;
 			help_tip_button->set_location(button_x, button_y);
-			help_tip_button->set_dirty(); 
+			help_tip_button->set_dirty();
 
 			gui::dialog_frame f(screen.video(), "", style, false);
 			tip_of_day_restorer = surface_restorer(&screen.video(), f.layout(area).exterior);
@@ -519,8 +519,8 @@ TITLE_RESULT show_title(game_display& screen, config& tips_of_day)
 	LOG_DP << "drew buttons dialog\n";
 
 	CKey key;
-	
-	size_t keyboard_button = nbuttons;	
+
+	size_t keyboard_button = nbuttons;
 	bool key_processed = false;
 
 	update_whole_screen();
@@ -579,7 +579,7 @@ TITLE_RESULT show_title(game_display& screen, config& tips_of_day)
 			}
 		} else {
 			key_processed = false;
-		}		
+		}
 
 		events::raise_process_event();
 		events::raise_draw_event();

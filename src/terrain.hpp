@@ -35,7 +35,7 @@ public:
 	const std::string& editor_image() const { return editor_image_; }
 	const t_string& name() const { return name_; }
 	const std::string& id() const { return id_; }
-	
+
 	bool hide_in_editor() const { return hide_in_editor_; }
 
 	//the character representing this terrain

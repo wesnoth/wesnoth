@@ -21,31 +21,31 @@
 #include "SDL.h"
 
 namespace events {
-	
+
 struct command_disabler
 {
 	command_disabler();
 	~command_disabler();
-};	
+};
 
 extern int commands_disabled;
-	
+
 class mouse_handler_base {
 public:
 	mouse_handler_base();
 	virtual ~mouse_handler_base() {}
 
 	/**
-	 * Reference to the used display objects. Derived classes should ensure 
+	 * Reference to the used display objects. Derived classes should ensure
 	 * this is always valid. Note the constructor of this class cannot use this.
 	 */
 	virtual display& gui() = 0;
 
 	/**
-	 * Const version. 
+	 * Const version.
 	 */
 	virtual const display& gui() const = 0;
-	
+
 	/**
 	 * @return true when the class in the "dragging" state.
 	 */
@@ -55,34 +55,34 @@ public:
 
 	/** update the mouse with a fake mouse motion */
 	void mouse_update(const bool browse);
-	
+
 	bool get_show_menu() const { return show_menu_; }
 
 	/**
 	 * This handles minimap scrolling and click-drag.
-	 * @returns true when the caller should not process the mouse motion 
+	 * @returns true when the caller should not process the mouse motion
 	 * further (i.e. should return), false otherwise.
 	 */
 	bool mouse_motion_default(int x, int y, bool& update);
-	
+
 	/**
 	 * Called when a mouse motion event takes place. Derived classes mustprovide an
 	 * implementation, possibly using mouse_motion_default().
 	 */
 	virtual void mouse_motion(int x, int y, const bool browse, bool update=false) = 0;
-	
+
 	virtual void mouse_press(const SDL_MouseButtonEvent& event, const bool browse);
 	bool is_left_click(const SDL_MouseButtonEvent& event);
 	bool is_middle_click(const SDL_MouseButtonEvent& event);
 	bool is_right_click(const SDL_MouseButtonEvent& event);
-	
+
 	/**
 	 * Derived classes can overrid this to disable mousewheel scrolling under
 	 * some circumstances, e.g. when the mouse wheel controls something else,
 	 * but the event is also received by this class
 	 */
 	virtual bool allow_mouse_wheel_scroll(int x, int y);
-	
+
 	/**
 	 * Overriden in derived classes, called on a right click (mousedown).
 	 * Defaults to process (initiate) minimap scrolling.
@@ -90,17 +90,17 @@ public:
 	 * This means do not treat the call as a start of drag movement.
 	 */
 	virtual bool left_click(int x, int y, const bool browse);
-	
+
 	/**
 	 * Called whenever the left mouse drag has "ended".
 	 */
 	virtual void left_drag_end(int x, int y, const bool browse);
-	
+
 	/**
 	 * Called when the left mouse button is up
 	 */
 	virtual void left_mouse_up(int x, int y, const bool browse);
-	
+
 	/**
 	 * Overriden in derived classes, called on a right click (mousedown).
 	 * Defaults to displaying the menu (by setting the appropriate flag)
@@ -111,7 +111,7 @@ public:
 	virtual bool right_click(int x, int y, const bool browse);
 
 	/**
-	 * Called in the default right_click when the context menu is about to 
+	 * Called in the default right_click when the context menu is about to
 	 * be shown, can be used for preprocessing and preventing the menu from
 	 * being displayed without rewriting the right click function.
 	 * @returns true when the menu should be displayed and false otherwise
@@ -122,7 +122,7 @@ public:
 	 * Called whenever the right mouse drag has "ended".
 	 */
 	virtual void right_drag_end(int x, int y, const bool browse);
-	
+
 	/**
 	 * Called when the right mouse button is up
 	 */
@@ -149,10 +149,10 @@ protected:
 
 	/** last highlighted hex */
 	map_location last_hex_;
-	
+
 	/** Show context menu flag */
 	bool show_menu_;
-	
+
 	static const int drag_threshold_;
 };
 

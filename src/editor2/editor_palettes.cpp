@@ -63,8 +63,8 @@ terrain_palette::terrain_palette(display &gui, const size_specs &sizes,
 {
 	// Get the available terrains temporary in terrains_
 	terrains_ = map().get_terrain_list();
-	
-	//move "invalid" terrains to the end 
+
+	//move "invalid" terrains to the end
 	size_t size = terrains_.size();
 	for (size_t i = 0; i < size; ++i) {
 		if (is_invalid_terrain(terrains_[i])) {
@@ -106,10 +106,10 @@ terrain_palette::terrain_palette(display &gui, const size_specs &sizes,
 			continue;
 
 		// add the terrain to the requested groups
-		const std::vector<std::string>& key = 
+		const std::vector<std::string>& key =
 			utils::split(t_info.editor_group());
-		
-		for(std::vector<std::string>::const_iterator k_itor = key.begin(); 
+
+		for(std::vector<std::string>::const_iterator k_itor = key.begin();
 				k_itor != key.end(); ++k_itor)
 		 {
 			terrain_map_[*k_itor].push_back(*t_itor);
@@ -378,7 +378,7 @@ void terrain_palette::draw(bool force) {
 	if (bot_button_.pressed()) {
 		scroll_down();
 	}
-	
+
 	foreach (terrain_group& g, terrain_groups_) {
 		if (g.button.pressed()) {
 			checked_group_btn_ = &g.button;
@@ -386,7 +386,7 @@ void terrain_palette::draw(bool force) {
 			break;
 		}
 	}
-	
+
 	foreach (terrain_group& g, terrain_groups_) {
 		if (&g.button == checked_group_btn_) {
 			g.button.set_check(true);
@@ -394,7 +394,7 @@ void terrain_palette::draw(bool force) {
 			g.button.set_check(false);
 		}
 	}
-	
+
 	if (!dirty() && !force) {
 		return;
 	}
@@ -518,9 +518,9 @@ void terrain_palette::load_tooltips()
 //	restorer_.restore();
 // }
 
-brush_bar::brush_bar(display &gui, const size_specs &sizes, 
+brush_bar::brush_bar(display &gui, const size_specs &sizes,
 	std::vector<brush>& brushes, brush** the_brush)
-: gui::widget(gui.video()), size_specs_(sizes), gui_(gui), 
+: gui::widget(gui.video()), size_specs_(sizes), gui_(gui),
 selected_(0), brushes_(brushes), the_brush_(the_brush),
 size_(30) {
 	adjust_size();
@@ -600,7 +600,7 @@ void brush_bar::draw(bool force) {
 			ERR_ED << "Image " << filename << " not found." << std::endl;
 			continue;
 		}
-		if (static_cast<unsigned>(image->w) != size_ 
+		if (static_cast<unsigned>(image->w) != size_
 		|| static_cast<unsigned>(image->h) != size_) {
 			image.assign(scale_surface(image, size_, size_));
 		}

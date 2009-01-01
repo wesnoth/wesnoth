@@ -26,7 +26,7 @@ class video;
 class game_display;
 
 /**
- * This module controls the multiplayer lobby. 
+ * This module controls the multiplayer lobby.
  *
  * A section on the server which allows players to chat, create games, and join
  * games.

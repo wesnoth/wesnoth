@@ -144,7 +144,7 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	  UI_sound_slider_(disp.video()), bell_slider_(disp.video()),
 	  scroll_slider_(disp.video()), gamma_slider_(disp.video()),
 	  chat_lines_slider_(disp.video()), buffer_size_slider_(disp.video()),
-	  idle_anim_slider_(disp.video()), autosavemax_slider_(disp.video()), 
+	  idle_anim_slider_(disp.video()), autosavemax_slider_(disp.video()),
 	  turbo_slider_(disp.video()),
 
 
@@ -1194,7 +1194,7 @@ std::string show_wesnothd_server_search(display& disp)
 
 #ifndef WESNOTH_PREFIX
 #define WESNOTH_PREFIX "/usr"
-#endif		
+#endif
 	const std::string filename = "wesnothd";
 	std::string path = WESNOTH_PREFIX + std::string("/bin");
 	if (!is_directory(path))
@@ -1215,7 +1215,7 @@ std::string show_wesnothd_server_search(display& disp)
 	symbols["filename"] = filename;
 
 	const std::string title =  vgettext("Find $filename server binary to host networked games", symbols);
-	
+
 	int res = dialogs::show_file_chooser_dialog(disp, path, title, false, filename);
 	if (res == 0)
 		return path;

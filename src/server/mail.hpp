@@ -29,7 +29,7 @@ class mailer {
 		}
 
 		struct tmail_cfg {
-			
+
 			tmail_cfg() :
 				from_address(),
 				server(),

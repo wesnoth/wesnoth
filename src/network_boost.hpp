@@ -46,7 +46,7 @@ namespace network_boost {
 		public:
 			/**
 			 * Used in networking so numbers are freezed
-			 * Only modes that are 
+			 * Only modes that are
 			 **/
 			enum mode {
 				BINARY = 1,

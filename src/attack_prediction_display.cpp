@@ -26,11 +26,11 @@ static void format_prob(char str_buf[10], const float prob)
 
 	if(prob > 0.9995) {
 		snprintf(str_buf, 10, "100 %%");
-	} else if(prob >= 0.1) { 
-		snprintf(str_buf, 10, "%4.1f %%", 
+	} else if(prob >= 0.1) {
+		snprintf(str_buf, 10, "%4.1f %%",
 			static_cast<float>(100.0 * (prob + 0.0005)));
-	} else { 
-		snprintf(str_buf, 10, " %3.1f %%", 
+	} else {
+		snprintf(str_buf, 10, " %3.1f %%",
 			static_cast<float>(100.0 * (prob + 0.0005)));
 	}
 
@@ -43,21 +43,21 @@ const int battle_prediction_pane::inter_column_gap_ = 30;
 const int battle_prediction_pane::inter_units_gap_ = 30;
 const int battle_prediction_pane::max_hp_distrib_rows_ = 10;
 
-battle_prediction_pane::battle_prediction_pane(display &disp, 
-		const battle_context& bc, const gamemap& map, const 
-		std::vector<team>& teams, const unit_map& units, 
-		const gamestatus& status, const map_location& attacker_loc, 
+battle_prediction_pane::battle_prediction_pane(display &disp,
+		const battle_context& bc, const gamemap& map, const
+		std::vector<team>& teams, const unit_map& units,
+		const gamestatus& status, const map_location& attacker_loc,
 		const map_location& defender_loc) :
-	gui::preview_pane(disp.video()), 
-	disp_(disp), 
-	bc_(bc), 
-	map_(map), 
-	teams_(teams), 
-	units_(units), 
-	status_(status), 
-	attacker_loc_(attacker_loc), 
-	defender_loc_(defender_loc), 
-	attacker_(units.find(attacker_loc)->second), 
+	gui::preview_pane(disp.video()),
+	disp_(disp),
+	bc_(bc),
+	map_(map),
+	teams_(teams),
+	units_(units),
+	status_(status),
+	attacker_loc_(attacker_loc),
+	defender_loc_(defender_loc),
+	attacker_(units.find(attacker_loc)->second),
 	defender_(units.find(defender_loc)->second),
 	attacker_label_(),
 	defender_label_(),
@@ -557,4 +557,4 @@ attack_prediction_displayer::RESULT attack_prediction_displayer::button_pressed(
 	return gui::CONTINUE_DIALOG;
 }
 
-	
+

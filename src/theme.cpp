@@ -267,13 +267,13 @@ static void do_resolve_rects(const config& cfg, config& resolved_config, config*
 		}
 	}
 
-theme::object::object() : 
-	location_modified_(false), 
+theme::object::object() :
+	location_modified_(false),
 	id_(),
-	loc_(empty_rect), 
-	relative_loc_(empty_rect), 
-	last_screen_(empty_rect), 
-	xanchor_(object::FIXED), 
+	loc_(empty_rect),
+	relative_loc_(empty_rect),
+	last_screen_(empty_rect),
+	xanchor_(object::FIXED),
 	yanchor_(object::FIXED)
 {
 }
@@ -438,9 +438,9 @@ theme::label::label() :
 {}
 
 theme::label::label(const config& cfg) :
-	object(cfg), 
-	text_(cfg["prefix"].str() + cfg["text"].str() + cfg["postfix"].str()), 
-	icon_(cfg["icon"]), 
+	object(cfg),
+	text_(cfg["prefix"].str() + cfg["text"].str() + cfg["postfix"].str()),
+	icon_(cfg["icon"]),
 	font_(atoi(cfg["font_size"].c_str())),
 	font_rgb_set_(false),
 	font_rgb_(DefaultFontRGB)
@@ -516,7 +516,7 @@ theme::status_item::status_item(const config& cfg) :
 theme::panel::panel(const config& cfg) : object(cfg), image_(cfg["image"])
 {}
 
-theme::menu::menu() : 
+theme::menu::menu() :
 	object(),
 	context_(false),
 	title_(),
@@ -591,7 +591,7 @@ bool theme::set_resolution(const SDL_Rect& screen)
 		return false;
 	}
 
-	std::map<std::string,std::string> title_stash;	
+	std::map<std::string,std::string> title_stash;
 	std::vector<theme::menu>::iterator m;
 	for (m = menus_.begin(); m != menus_.end(); ++m) {
 		if (!m->title().empty() && !m->get_id().empty())
@@ -608,11 +608,11 @@ bool theme::set_resolution(const SDL_Rect& screen)
 
 	for (m = menus_.begin(); m != menus_.end(); ++m) {
 		if (title_stash.find(m->get_id()) != title_stash.end())
-			m->set_title(title_stash[m->get_id()]); 
+			m->set_title(title_stash[m->get_id()]);
 	}
-	
+
 	theme_reset_.notify_observers();
-	
+
 	return result;
 }
 
@@ -715,7 +715,7 @@ void theme::set_object_location(theme::object& element, std::string rect_str, st
 }
 
 void theme::modify(const config* cfg){
-	std::map<std::string,std::string> title_stash;	
+	std::map<std::string,std::string> title_stash;
 	std::vector<theme::menu>::iterator m;
 	for (m = menus_.begin(); m != menus_.end(); ++m) {
 		if (!m->title().empty() && !m->get_id().empty())
@@ -750,7 +750,7 @@ void theme::modify(const config* cfg){
 	}
 	for (m = menus_.begin(); m != menus_.end(); ++m) {
 		if (title_stash.find(m->get_id()) != title_stash.end())
-			m->set_title(title_stash[m->get_id()]); 
+			m->set_title(title_stash[m->get_id()]);
 	}
 }
 
@@ -811,8 +811,8 @@ theme::menu* theme::refresh_title(const std::string& id, const std::string& new_
 	theme::menu* res = NULL;
 
 	for (std::vector<theme::menu>::iterator m = menus_.begin(); m != menus_.end(); ++m){
-		if (m->get_id() == id) { 
-			res = &(*m); 
+		if (m->get_id() == id) {
+			res = &(*m);
 			res->set_title(new_title);
 		}
 	}

@@ -263,7 +263,7 @@ void game_display::pre_draw() {
 	previous_invalidated_.swap(invalidated_);
 	invalidated_.insert(previous_invalidated_.begin(),previous_invalidated_.end());
 	// call invalidate_animation again to deal with new conflict arising from the merge
-	// no conflict, if a hex was invalidated last turn but not this turn, then 
+	// no conflict, if a hex was invalidated last turn but not this turn, then
 	// * case of no unit in neighbour hex=> no propagation
 	// * case of unit in hex but was there last turn=>its hexes are invalidated too
 	// * case of unit inhex not there last turn => it moved, so was invalidated previously
@@ -281,9 +281,9 @@ std::vector<map_location> game_display::get_invalidated_unit_locations() {
 	foreach (const map_location& loc, invalidated_) {
 		if ((temp_unit_ && temp_unit_loc_ == loc) || units_.find(loc) != units_.end()) {
 			unit_locations.push_back(loc);
-		}		
+		}
 	}
-	//sorted according to a drawing ordering object in order to render correctly 
+	//sorted according to a drawing ordering object in order to render correctly
 	std::sort(unit_locations.begin(), unit_locations.end(), ordered_draw());
 	return unit_locations;
 }
@@ -294,7 +294,7 @@ image::TYPE game_display::get_image_type(const map_location& loc) {
 		if (loc == mouseoverHex_ || loc == attack_indicator_src_) {
 			return image::BRIGHTENED;
 		} else if (loc == selectedHex_) {
-			unit_map::iterator un = find_visible_unit(units_, loc, get_map(), 
+			unit_map::iterator un = find_visible_unit(units_, loc, get_map(),
 				teams_,teams_[currentTeam_]);
 			if (un != units_.end()) {
 				return image::BRIGHTENED;
@@ -313,7 +313,7 @@ void game_display::draw_invalidated()
 	redraw_units(unit_invals);
 }
 
-void game_display::post_commit() 
+void game_display::post_commit()
 {
 	halo::render();
 }
@@ -327,11 +327,11 @@ void game_display::draw_hex(const map_location& loc)
 	int ypos = get_location_y(loc);
 	int drawing_order = loc.get_drawing_order();
 	tblit blit(xpos, ypos);
-	
+
 	image::TYPE image_type = get_image_type(loc);
 
 	display::draw_hex(loc);
-	
+
 	if(!is_shrouded) {
 		typedef overlay_map::const_iterator Itor;
 		std::pair<Itor,Itor> overlays = overlays_.equal_range(loc);
@@ -345,9 +345,9 @@ void game_display::draw_hex(const map_location& loc)
 			}
 		}
 		// village-control flags.
-		drawing_buffer_add(LAYER_TERRAIN_BG, drawing_order, tblit(xpos, ypos, get_flag(loc)));		
+		drawing_buffer_add(LAYER_TERRAIN_BG, drawing_order, tblit(xpos, ypos, get_flag(loc)));
 	}
-					
+
 	// Draw the time-of-day mask on top of the terrain in the hex.
 	// tod may differ from tod if hex is illuminated.
 	std::string tod_hex_mask = timeofday_at(status_,units_,loc,get_map()).image_mask;
@@ -396,7 +396,7 @@ void game_display::draw_hex(const map_location& loc)
 	if(!is_shrouded && on_map) {
 		draw_movement_info(loc);
 	}
-	//simulate_delay += 1;	
+	//simulate_delay += 1;
 }
 
 void game_display::update_time_of_day()

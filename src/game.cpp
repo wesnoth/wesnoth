@@ -409,9 +409,9 @@ game_controller::game_controller(int argc, char** argv) :
 #ifdef _WIN32
 			// use c_str to ensure that index 1 points to valid element since c_str() returns null-terminated string
 			if(val.c_str()[1] == ':') {
-#else				
+#else
 			if(val[0] == '/') {
-#endif				
+#endif
 				game_config::path = val;
 			} else {
 				game_config::path = get_cwd() + '/' + val;
@@ -810,7 +810,7 @@ bool game_controller::play_multiplayer_mode()
 				std::cerr << "Could not find any non-random faction for side " << side_num << "\n";
 				return false;
 			}
-			std::cerr << " Faction " << (*side)["name"] << 
+			std::cerr << " Faction " << (*side)["name"] <<
 				" selected for side " << side_num << ".\n";
 		}
 
@@ -1168,7 +1168,7 @@ bool game_controller::goto_editor()
 		if (start_editor(loaded_game_) == editor2::EXIT_QUIT_TO_DESKTOP) {
 			return false;
 		}
-		loaded_game_ = "";	
+		loaded_game_ = "";
 	}
 	return true;
 }
@@ -1840,10 +1840,10 @@ static int process_command_args(int argc, char** argv) {
 			return 0;
         } else if(val == "--python-shell") {
 			int ret = python_ai::run_shell();
-			if (ret==0) { 
+			if (ret==0) {
 			    return 0;
 		    } else {
-		       return 2; 
+		       return 2;
 		    }
 #endif
 		} else if(val == "--config-dir") {

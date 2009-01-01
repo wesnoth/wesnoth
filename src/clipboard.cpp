@@ -26,8 +26,8 @@
 #include "SDL_syswm.h"
 
 /**
- The following are two classes which wrap the SDL's interface to X, 
- including locking/unlocking, and which manage the atom internment. 
+ The following are two classes which wrap the SDL's interface to X,
+ including locking/unlocking, and which manage the atom internment.
  They exist mainly to make the actual clipboard code somewhat readable.
 */
 class XHelper
@@ -151,17 +151,17 @@ public:
 
 /**
  Note: unfortunately, SDL does not keep track of event timestamps.
- This means we are forced to use CurrentTime in many spots and 
- are unable to perform many safety checks. 
- Hence, the code below is not compliant to the ICCCM, and 
- may ocassionally suffer from race conditions if an X client 
- is connected to the server over a slow/high-latency link. 
+ This means we are forced to use CurrentTime in many spots and
+ are unable to perform many safety checks.
+ Hence, the code below is not compliant to the ICCCM, and
+ may ocassionally suffer from race conditions if an X client
+ is connected to the server over a slow/high-latency link.
  This implementation is also very minimal.
- The text is assumed to be reasonably small, as INCR transactions 
- are not supported. 
+ The text is assumed to be reasonably small, as INCR transactions
+ are not supported.
  MULTIPLE is not supported either.
 
- We provide UTF8_STRING, COMPOUND_TEXT, and TEXT, 
+ We provide UTF8_STRING, COMPOUND_TEXT, and TEXT,
  and try to grab all of them, plus STRING (which is latin1).
 */
 
@@ -169,7 +169,7 @@ public:
 /**
  We primarily. keep a copy of the string to response to data requests,
  but it also has an another function: in case we're both the source
- and destination, we just copy it across; this is so that we don't 
+ and destination, we just copy it across; this is so that we don't
  have to handle SelectionRequest events while waiting for SelectionNotify.
  To make this work, however, this gets cleared when we loose CLIPBOARD.
 */
@@ -177,7 +177,7 @@ static std::string clipboard_string;
 
 /**
  The following string is used for the mouse selection aka PRIMARY
- Unix behaviour is mouse selection is stored in primary 
+ Unix behaviour is mouse selection is stored in primary
  active selection goes to CLIPBOARD.
 */
 static std::string primary_string;
@@ -249,7 +249,7 @@ void handle_system_event(const SDL_Event& event)
 		UseX x11;
 
 		if(xev.xselectionclear.selection == x11->XA_CLIPBOARD()) {
-			clipboard_string.clear(); 
+			clipboard_string.clear();
 		} else if(xev.xselectionclear.selection == XA_PRIMARY) {
 			primary_string.clear();
 		}
@@ -267,14 +267,14 @@ void copy_to_clipboard(const std::string& text, const bool mouse)
 	if(mouse) {
 		primary_string = text;
 		XSetSelectionOwner(x11->dpy(), XA_PRIMARY, x11->window(), CurrentTime);
-	} else {		
+	} else {
 		clipboard_string = text;
 		XSetSelectionOwner(x11->dpy(), x11->XA_CLIPBOARD(), x11->window(), CurrentTime);
 	}
 }
 
 /**
- * Tries to grab a given target. 
+ * Tries to grab a given target.
  * Returns true if successful, false otherwise.
  */
 static bool try_grab_target(Atom source, Atom target, std::string& ret)
@@ -337,13 +337,13 @@ static bool try_grab_target(Atom source, Atom target, std::string& ret)
 }
 
 std::string copy_from_clipboard(const bool mouse)
-{	
+{
 	// in-wesnoth copy-paste
 	if(mouse && !primary_string.empty()) {
 		return primary_string;
 	}
 	if (!mouse && !clipboard_string.empty()) {
-		return clipboard_string; 	
+		return clipboard_string;
 	}
 
 	UseX x11;

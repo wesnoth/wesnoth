@@ -16,7 +16,7 @@
 
 #include "forum_user_handler.hpp"
 
-#include <stdlib.h> 
+#include <stdlib.h>
 #include <sstream>
 
 fuh::fuh(const config& c) {
@@ -49,7 +49,7 @@ void fuh::remove_user(const std::string& name) {
 // The hashing code is basically taken from forum_auth.cpp
 bool fuh::login(const std::string& name, const std::string& password, const std::string& seed) {
 
-	// Set an alphabet-like string for use in encrytpion algorithm	 
+	// Set an alphabet-like string for use in encrytpion algorithm
 	std::string itoa64("./0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz");
 
 	// Retrieve users' password as hash
@@ -87,7 +87,7 @@ std::string fuh::create_pepper(const std::string& name, int index) {
 		return "";
 	}
 
-	// Set an alphabet-like string for use in encrytpion algorithm	 
+	// Set an alphabet-like string for use in encrytpion algorithm
 	std::string itoa64("./0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz");
 
 	std::string hash;

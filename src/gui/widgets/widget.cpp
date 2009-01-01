@@ -63,9 +63,9 @@ void twidget::set_size(const tpoint& origin, const tpoint& size)
 
 SDL_Rect twidget::get_dirty_rect() const
 {
-	return drawing_action_ == DRAWN 
+	return drawing_action_ == DRAWN
 			? get_screen_rect()
-			: clip_rect_; 
+			: clip_rect_;
 }
 
 twindow* twidget::get_window()
@@ -108,7 +108,7 @@ void twidget::populate_dirty_list(twindow& caller,
 	if(!is_visible()) {
 		return;
 	}
-	
+
 	if(drawing_action_ == NOT_DRAWN) {
 		return;
 	}
@@ -153,32 +153,32 @@ void twidget::set_visible_area(const SDL_Rect& area)
 }
 
 void twidget::draw_background(surface& frame_buffer)
-{ 
+{
 	if(drawing_action_ == PARTLY_DRAWN) {
 		clip_rect_setter clip(frame_buffer, clip_rect_);
-		impl_draw_background(frame_buffer); 
+		impl_draw_background(frame_buffer);
 	} else {
-		impl_draw_background(frame_buffer); 
+		impl_draw_background(frame_buffer);
 	}
 }
 
 void twidget::draw_children(surface& frame_buffer)
-{ 
+{
 	if(drawing_action_ == PARTLY_DRAWN) {
 		clip_rect_setter clip(frame_buffer, clip_rect_);
-		impl_draw_children(frame_buffer); 
+		impl_draw_children(frame_buffer);
 	} else {
-		impl_draw_children(frame_buffer); 
+		impl_draw_children(frame_buffer);
 	}
 }
 
-void twidget::draw_foreground(surface& frame_buffer) 
-{ 
+void twidget::draw_foreground(surface& frame_buffer)
+{
 	if(drawing_action_ == PARTLY_DRAWN) {
 		clip_rect_setter clip(frame_buffer, clip_rect_);
-		impl_draw_foreground(frame_buffer); 
+		impl_draw_foreground(frame_buffer);
 	} else {
-		impl_draw_foreground(frame_buffer); 
+		impl_draw_foreground(frame_buffer);
 	}
 }
 

@@ -25,7 +25,7 @@ namespace gui {
 
 	class drop_target;
 	typedef boost::shared_ptr<drop_target> drop_target_ptr;
-	
+
 	typedef int drop_target_group;
 	class drop_group_manager;
 	typedef boost::shared_ptr<drop_group_manager> drop_group_manager_ptr;
@@ -49,10 +49,10 @@ namespace gui {
 		const SDL_Rect& loc_;
 		const int id_;
 		drop_group_manager_ptr group_;
-		
+
 		static drop_target_group create_group();
 		static void delete_group(const drop_target_group id);
-		
+
 		protected:
 		/**
 		 * Used to check if static storages are empty.

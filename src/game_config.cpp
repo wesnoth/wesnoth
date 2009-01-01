@@ -89,7 +89,7 @@ namespace game_config
 
 	std::string level_image;
 	std::string ellipsis_image;
-	
+
 	std::string default_victory_music;
 	std::string default_defeat_music;
 

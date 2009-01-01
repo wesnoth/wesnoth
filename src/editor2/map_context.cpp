@@ -63,7 +63,7 @@ map_context::~map_context()
 	clear_stack(redo_stack_);
 }
 
-void map_context::draw_terrain(t_translation::t_terrain terrain, 
+void map_context::draw_terrain(t_translation::t_terrain terrain,
 	const map_location& loc, bool one_layer_only)
 {
     if (!one_layer_only) {
@@ -72,12 +72,12 @@ void map_context::draw_terrain(t_translation::t_terrain terrain,
 	draw_terrain_actual(terrain, loc, one_layer_only);
 }
 
-void map_context::draw_terrain_actual(t_translation::t_terrain terrain, 
+void map_context::draw_terrain_actual(t_translation::t_terrain terrain,
 	const map_location& loc, bool one_layer_only)
 {
 	if (!map_.on_board_with_border(loc)) {
 		//requests for painting off the map are ignored in set_terrain anyway,
-		//but ideally we should not have any 
+		//but ideally we should not have any
 		LOG_ED << "Attempted to draw terrain off the map (" << loc << ")\n";
 		return;
 	}
@@ -94,7 +94,7 @@ void map_context::draw_terrain_actual(t_translation::t_terrain terrain,
 	}
 }
 
-void map_context::draw_terrain(t_translation::t_terrain terrain, 
+void map_context::draw_terrain(t_translation::t_terrain terrain,
 	const std::set<map_location>& locs, bool one_layer_only)
 {
     if (!one_layer_only) {
@@ -140,7 +140,7 @@ void map_context::clear_starting_position_labels(display& disp)
 	disp.labels().clear_all();
 	starting_position_label_locs_.clear();
 }
-	
+
 void map_context::set_starting_position_labels(display& disp)
 {
 	std::set<map_location> new_label_locs = map_.set_starting_position_labels(disp);
@@ -196,7 +196,7 @@ void map_context::perform_action(const editor_action& action)
 	trim_stack(undo_stack_);
 	clear_stack(redo_stack_);
 }
-	
+
 void map_context::perform_partial_action(const editor_action& action)
 {
 	LOG_ED << "Performing (partial) action " << action.get_id() << ", actions count is " << action.get_instance_count() << "\n";

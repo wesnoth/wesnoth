@@ -890,7 +890,7 @@ effect::effect(const unit_ability_list& list, int def, bool backstab) :
 	composite_value_(0)
 {
 
-	int value_set = def; 
+	int value_set = def;
 	bool value_is_set = false;
 	std::map<std::string,individual_effect> values_add;
 	std::map<std::string,individual_effect> values_mul;

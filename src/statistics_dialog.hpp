@@ -24,8 +24,8 @@
 class statistics_dialog : public gui::dialog
 {
 public:
-	statistics_dialog(game_display &disp, 
-		const std::string& title, 
+	statistics_dialog(game_display &disp,
+		const std::string& title,
 		const unsigned int team,
 	 	const std::string team_id,
 		const std::string& player);

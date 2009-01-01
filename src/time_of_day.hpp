@@ -22,8 +22,8 @@
 #include <string>
 #include <vector>
 
-/** 
- * Object which defines a time of day 
+/**
+ * Object which defines a time of day
  * with associated bonuses, image, sounds etc.
  */
 struct time_of_day
@@ -31,14 +31,14 @@ struct time_of_day
 	/**
 	 * A default-constructed time of day object shouldn't really be used
 	 * so this only loads some null values. Ideally, there should be
-	 * getters for properties that would emit a warning when such an object 
+	 * getters for properties that would emit a warning when such an object
 	 * is actually used, but it does not seem necessary at the moment.
 	 */
 	explicit time_of_day();
-	
+
 	/** Construct a time of day from config */
 	explicit time_of_day(const config& cfg);
-	
+
 	void write(config& cfg) const;
 
 	/** The % bonus lawful units receive. Chaotics receive -lawful_bonus. */
@@ -50,7 +50,7 @@ struct time_of_day
 	t_string name;
 	std::string id;
 
-	/** 
+	/**
 	 * The image that is to be laid over all images
 	 * while this time of day lasts.
 	 */
@@ -67,7 +67,7 @@ struct time_of_day
 	 * Played at the beginning of turn.
 	 */
 	std::string sounds;
-	
+
 	/**
 	 * Parse config and add time of day entries into passed vector
 	 */

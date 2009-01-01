@@ -40,7 +40,7 @@
 #undef INADDR_NONE
 #include <windows.h>
 #else
-#include <sys/types.h> 	 
+#include <sys/types.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <netinet/tcp.h>  // for TCP_NODELAY
@@ -180,9 +180,9 @@ sockets_list sockets;
 
 
 struct partial_buffer {
-	partial_buffer() : 
+	partial_buffer() :
 		buf(),
-		upto(0) 
+		upto(0)
 	{
 	}
 
@@ -766,7 +766,7 @@ connection receive_data(config& cfg, connection connection_num, bool* gzipped, b
 		}
 	}
 	if(!cfg.empty()) {
-		DBG_NW << "RECEIVED from: " << result << ": " << cfg; 
+		DBG_NW << "RECEIVED from: " << result << ": " << cfg;
 	}
 
 	assert(result != 0);
@@ -779,7 +779,7 @@ connection receive_data(config& cfg, connection connection_num, bool* gzipped, b
 			last_ping = now;
 		} else if (last_ping != 0) {
 			last_ping = now;
-		}			
+		}
 	}
 	return result;
 }
@@ -914,7 +914,7 @@ static bandwidth_map::iterator add_bandwidth_entry(const std::string& packet_typ
 		insertion = hour_stats[hour].insert(std::make_pair(packet_type, bandwidth_stats()));
 		inserted = insertion.first;
 	}
-	
+
 	inserted->second.day = day;
 	return inserted;
 }
@@ -927,7 +927,7 @@ struct bandwidth_stats_output {
 	{}
 	void operator()(const bandwidth_map::value_type& stats)
 	{
-		// name 
+		// name
 		ss_	<< " " << std::setw(bandwidth_stats::type_width) <<  stats.first << "| "
 			<< std::setw(bandwidth_stats::packet_width)<< stats.second.out_packets << "| "
 			<< std::setw(bandwidth_stats::bytes_width) << stats.second.out_bytes/1024 << "| "
@@ -969,7 +969,7 @@ std::string get_bandwidth_stats(int hour)
 	assert(hour < 24 && hour >= 0);
 	std::stringstream ss;
 
-	ss << "Hour stat starting from " << hour << "\n " << std::left << std::setw(bandwidth_stats::type_width) <<  "Type of packet" << "| " 
+	ss << "Hour stat starting from " << hour << "\n " << std::left << std::setw(bandwidth_stats::type_width) <<  "Type of packet" << "| "
 		<< std::setw(bandwidth_stats::packet_width)<< "out #"  << "| "
 		<< std::setw(bandwidth_stats::bytes_width) << "out kb" << "| " /* Are these bytes or bits? base10 or base2? */
 		<< std::setw(bandwidth_stats::packet_width)<< "in #"  << "| "
@@ -1018,7 +1018,7 @@ void send_file(const std::string& filename, connection connection_num, const std
 	const int packet_headers = 4;
 	add_bandwidth_out(packet_type, file_size(filename) + packet_headers);
 	network_worker_pool::queue_file(info->second.sock, filename);
-	
+
 }
 
 /**
@@ -1029,7 +1029,7 @@ void send_file(const std::string& filename, connection connection_num, const std
 size_t send_data(const config& cfg, connection connection_num, const bool gzipped, const std::string& packet_type)
 {
 	DBG_NW << "in send_data()...\n";
-	
+
 	if(cfg.empty()) {
 		return 0;
 	}

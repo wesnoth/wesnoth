@@ -178,7 +178,7 @@ public:
 				key);
 		if (itor == info_.recruitment_pattern.end())
 			return false;
-		info_.recruitment_pattern.erase(itor); 
+		info_.recruitment_pattern.erase(itor);
 		return true;
 	}
 	const std::string& name() const
