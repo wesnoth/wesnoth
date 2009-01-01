@@ -27,6 +27,7 @@
 #include "gettext.hpp"
 #include "gui/dialogs/wml_message.hpp"
 #include "gui/widgets/settings.hpp"
+#include "gui/widgets/window.hpp"
 #include "log.hpp"
 #include "map.hpp"
 #include "map_label.hpp"
@@ -2882,11 +2883,16 @@ namespace {
 					const tportrait* portrait =
 						speaker->second.portrait(400, tportrait::LEFT);
 					if(portrait) {
-						gui2::twml_message_left (
+						gui2::twml_message_left dlg(
 								caption,
 								cfg["message"],
 								portrait->image,
-								portrait->mirror).show(screen->video());
+								portrait->mirror);
+
+						dlg.show(screen->video());
+						if(dlg.get_retval() == gui2::twindow::CANCEL) {
+							handler.skip_messages() = true;
+						}
 						return;
 					}
 				}
