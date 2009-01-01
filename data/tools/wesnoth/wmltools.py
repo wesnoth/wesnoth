@@ -152,6 +152,8 @@ def formaltype(f):
         ftype = "filter"
     elif f.endswith("_WML"):
         ftype = "wml"
+    elif f in ("AFFIX",):
+        ftype = "affix"
     elif f.endswith("VALUE"):
         ftype = "any"
     else:
@@ -209,6 +211,8 @@ def argmatch(formals, actuals):
         elif atype in ("filter", "empty") and ftype == "wml":
             pass
         elif atype in ("numeric", "position") and ftype == "span":
+            pass
+        elif atype in ("shortname", "name", "empty") and ftype == "affix":
             pass
         elif atype in ("shortname", "name", "stringliteral") and ftype == "string":
             pass
