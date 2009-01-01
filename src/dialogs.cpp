@@ -203,7 +203,7 @@ bool animate_unit_advancement(unit_map& units, map_location loc, game_display& g
 		animator.add_animation(&u->second,"levelin",u->first);
 		animator.start_animations();
 		animator.wait_for_end();
-		u->second.set_standing(u->first);
+		animator.set_all_standing();
 		gui.invalidate(loc);
 		gui.draw();
 		events::pump();

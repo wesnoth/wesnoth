@@ -275,23 +275,8 @@ void unit_attack(
 
 	animator.start_animations();
 	animator.wait_for_end();
+	animator.set_all_standing();
 
-	for(std::vector<std::pair<config*,map_location> >::iterator itor = leaders.cfgs.begin(); itor != leaders.cfgs.end(); itor++) {
-		if(itor->second == a) continue;
-		if(itor->second == b) continue;
-		unit_map::iterator leader = units.find(itor->second);
-		assert(leader != units.end());
-		leader->second.set_standing(itor->second);
-	}
-	for(std::vector<std::pair<config*,map_location> >::iterator itor = helpers.cfgs.begin(); itor != helpers.cfgs.end(); itor++) {
-		if(itor->second == a) continue;
-		if(itor->second == b) continue;
-		unit_map::iterator helper = units.find(itor->second);
-		assert(helper != units.end());
-		helper->second.set_standing(itor->second);
-	}
-	att->second.set_standing(a);
-	def->second.set_standing(b);
 }
 
 
@@ -311,7 +296,7 @@ void unit_recruited(map_location& loc)
 	animator.add_animation(&u->second,"recruited",loc);
 	animator.start_animations();
 	animator.wait_for_end();
-	u->second.set_standing(loc);
+	animator.set_all_standing();
 	if (loc==disp->mouseover_hex()) disp->invalidate_unit();
 }
 
@@ -336,11 +321,7 @@ void unit_healing(unit& healed,map_location& healed_loc, std::vector<unit_map::i
 	}
 	animator.start_animations();
 	animator.wait_for_end();
-
-	healed.set_standing(healed_loc);
-	for(std::vector<unit_map::iterator>::iterator heal_sanim_it = healers.begin(); heal_sanim_it != healers.end(); ++heal_sanim_it) {
-		(*heal_sanim_it)->second.set_standing((*heal_sanim_it)->first);
-	}
+	animator.set_all_standing();
 
 }
 
