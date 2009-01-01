@@ -18,8 +18,10 @@
 #include "unit_display.hpp"
 
 #include "game_preferences.hpp"
+#include "game_events.hpp"
 #include "log.hpp"
 #include "mouse_events.hpp"
+#include "terrain_filter.hpp"
 
 
 #define LOG_DP LOG_STREAM(info, display)
@@ -342,4 +344,89 @@ void unit_healing(unit& healed,map_location& healed_loc, std::vector<unit_map::i
 
 }
 
+void wml_animation_internal(unit_animator & animator,const vconfig &cfg, const gamemap& map, const gamestatus& game_status,unit_map & units,const map_location& default_location = map_location::null_location);
+void wml_animation(const vconfig &cfg,unit_map & units, const gamemap& map, const gamestatus& game_status,const map_location& default_location)
+{
+		unit_animator animator;
+		wml_animation_internal(animator,cfg,map,game_status,units,default_location);
+		animator.start_animations();
+		animator.wait_for_end();
+		animator.set_all_standing();
+}
+
+void wml_animation_internal(unit_animator & animator,const vconfig &cfg, const gamemap& map, const gamestatus& game_status,unit_map & units,const map_location& default_location)
+{
+	unit_map::iterator u = units.find(default_location);
+
+	// Search for a valid unit filter,
+	// and if we have one, look for the matching unit
+	vconfig filter = cfg.child("filter");
+	if(!filter.null()) {
+		for(u = units.begin(); u != units.end(); ++u){
+			if(game_events::unit_matches_filter(u, filter))
+				break;
+		}
+	}
+
+	// We have found a unit that matches the filter
+	game_display* disp = game_display::get_singleton();
+	if(u != units.end() && ! disp->fogged(u->first)) {
+		attack_type *primary = NULL;
+		attack_type *secondary = NULL;
+		Uint32 text_color = 0;
+		unit_animation::hit_type hits=  unit_animation::INVALID;
+		std::vector<attack_type> attacks = u->second.attacks();
+		std::vector<attack_type>::iterator itor;
+
+		filter = cfg.child("primary_attack");
+		if(!filter.null()) {
+			for(itor = attacks.begin(); itor != attacks.end(); ++itor){
+				if(itor->matches_filter(filter.get_parsed_config())) {
+					primary = &*itor;
+					break;
+				}
+			}
+		}
+
+		filter = cfg.child("secondary_attack");
+		if(!filter.null()) {
+			for(itor = attacks.begin(); itor != attacks.end(); ++itor){
+				if(itor->matches_filter(filter.get_parsed_config())) {
+					secondary = &*itor;
+					break;
+				}
+			}
+		}
+
+		if(cfg["hit"] == "yes" || cfg["hit"] == "hit") {
+			hits = unit_animation::HIT;
+		}
+		if(cfg["hit"] == "no" || cfg["hit"] == "miss") {
+			hits = unit_animation::MISS;
+		}
+		if( cfg["hit"] == "kill" ) {
+			hits = unit_animation::KILL;
+		}
+		std::vector<std::string> tmp_string_vect=utils::split(cfg["text_color"]);
+		if(tmp_string_vect.size() ==3) text_color = display::rgb(atoi(tmp_string_vect[0].c_str()),atoi(tmp_string_vect[1].c_str()),atoi(tmp_string_vect[2].c_str()));
+		disp->scroll_to_tile(u->first);
+		vconfig t_filter = cfg.child("facing");
+		if(!t_filter.empty()) {
+			terrain_filter filter(t_filter,map,game_status,units);
+			std::set<map_location> locs;
+			filter.get_locations(locs);
+			if(!locs.empty()) {
+				u->second.set_facing(u->first.get_relative_dir(*locs.begin()));
+			}
+		}
+		animator.add_animation(&u->second,cfg["flag"],u->first,lexical_cast_default<int>(cfg["value"]),utils::string_bool(cfg["with_bars"]),
+				false,cfg["text"],text_color, hits,primary,secondary,0);
+	}
+	const vconfig::child_list sub_anims = cfg.get_children("animate");
+	vconfig::child_list::const_iterator anim_itor;
+	for(anim_itor = sub_anims.begin(); anim_itor != sub_anims.end();anim_itor++) {
+		wml_animation_internal(animator,*anim_itor,map,game_status,units);
+	}
+
+}
 } // end unit_display namespace

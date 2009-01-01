@@ -22,6 +22,8 @@
 
 #include "map_location.hpp"
 #include "unit_map.hpp"
+#include "variable.hpp"
+#include "gamestatus.hpp"
 
 class attack_type;
 class team;
@@ -67,6 +69,15 @@ void unit_recruited(map_location& loc);
  *  This will use a poisoning anim if healing<0.
  */
 void unit_healing(unit& healed,map_location& healed_loc, std::vector<unit_map::iterator> healers, int healing);
+
+
+/**
+ * parse a standard WML for animations and play the corresponding animation, returns once animation is played
+ * this is used for the animate_unit action, but can easily be generalized if other wml-decribed animations are needed
+ * 
+ */
+void wml_animation(const vconfig &cfg,unit_map & units, const gamemap& map, const gamestatus& game_status,const map_location& default_location  = map_location::null_location);
+
 }
 
 #endif

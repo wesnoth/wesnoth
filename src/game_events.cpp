@@ -2571,70 +2571,9 @@ namespace {
 
 	WML_HANDLER_FUNCTION(animate_unit,/*handler*/,event_info,cfg)
 	{
-
-		unit_map::iterator u = units->find(event_info.loc1);
-
-		// Search for a valid unit filter,
-		// and if we have one, look for the matching unit
-		vconfig filter = cfg.child("filter");
-		if(!filter.null()) {
-			for(u = units->begin(); u != units->end(); ++u){
-				if(game_events::unit_matches_filter(u, filter))
-					break;
-			}
-		}
-
-		// We have found a unit that matches the filter
-		if(u != units->end() && ! (screen)->fogged(u->first)) {
-			attack_type *primary = NULL;
-			attack_type *secondary = NULL;
-			Uint32 text_color = 0;
-			unit_animation::hit_type hits=  unit_animation::INVALID;
-			std::vector<attack_type> attacks = u->second.attacks();
-			std::vector<attack_type>::iterator itor;
-
-			filter = cfg.child("primary_attack");
-			if(!filter.null()) {
-				for(itor = attacks.begin(); itor != attacks.end(); ++itor){
-					if(itor->matches_filter(filter.get_parsed_config())) {
-						primary = &*itor;
-						break;
-					}
-				}
-			}
-
-			filter = cfg.child("secondary_attack");
-			if(!filter.null()) {
-				for(itor = attacks.begin(); itor != attacks.end(); ++itor){
-					if(itor->matches_filter(filter.get_parsed_config())) {
-						secondary = &*itor;
-						break;
-					}
-				}
-			}
-
-			if(cfg["hit"] == "yes" || cfg["hit"] == "hit") {
-				hits = unit_animation::HIT;
-			}
-			if(cfg["hit"] == "no" || cfg["hit"] == "miss") {
-				hits = unit_animation::MISS;
-			}
-			if( cfg["hit"] == "kill" ) {
-				hits = unit_animation::KILL;
-			}
-			std::vector<std::string> tmp_string_vect=utils::split(cfg["text_color"]);
-			if(tmp_string_vect.size() ==3) text_color = display::rgb(atoi(tmp_string_vect[0].c_str()),atoi(tmp_string_vect[1].c_str()),atoi(tmp_string_vect[2].c_str()));
-			(screen)->scroll_to_tile(u->first);
-			unit_animator animator;
-			animator.add_animation(&u->second,cfg["flag"],u->first,lexical_cast_default<int>(cfg["value"]),utils::string_bool(cfg["with_bars"]),
-					false,cfg["text"],text_color, hits,primary,secondary,0);
-			animator.start_animations();
-			animator.wait_for_end();
-			u->second.set_standing(u->first);
-			(screen)->invalidate(u->first);
-			(screen)->draw();
-			events::pump();
-		}
+		assert(status_ptr != NULL);
+		assert(game_map != NULL);
+		unit_display::wml_animation(cfg,*units,*game_map,*status_ptr,event_info.loc1);
 	}
 	WML_HANDLER_FUNCTION(label,/*handler*/,/*event_info*/,cfg)
 	{

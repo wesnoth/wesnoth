@@ -146,6 +146,7 @@ class unit_animator
                 void pause_animation();
                 void restart_animation();
 		void empty(){start_time_ = INT_MIN ; animated_units_.clear();};
+		void set_all_standing();
 
 
 		bool would_end() const;
