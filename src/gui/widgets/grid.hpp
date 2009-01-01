@@ -403,30 +403,6 @@ private:
 	/** Layouts the children in the grid. */
 	void layout(const tpoint& origin);
 
-	/**
-	 * Helper function to get the best or minimum size.
-	 *
-	 * @param id                     Name to use in debug output.
-	 * @param width                  Reference to the vector width cache for the
-	 *                               size function of the caller.
-	 * @param height                 Reference to the vector height cache for the
-	 *                               size function of the caller.
-	 * @param size_proc              The function to call on the cells in order to
-	 *                               get their sizes.
-	 * @param size_proc_max          The function to call on the cells if there
-	 *                               is a maximum set, this function will only
-	 *                               be called if size_proc is NULL, this
-	 *                               function should then also be valid.
-	 * @param maximum_size           The maximum size value as parameter for
-	 *                               size_proc_max.
-	 *
-	 * @return                       The wanted size.
-	 */
-	tpoint get_size(const std::string& id, std::vector<unsigned>& width,
-		std::vector<unsigned>& height, tpoint (tchild::*size_proc)() const,
-		tpoint (tchild::*size_proc_max)(const tpoint&) const = NULL,
-		const tpoint& maximum_size = tpoint(0, 0)) const;
-
 	/** Inherited from twidget. */
 	void impl_draw_children(surface& frame_buffer);
 
