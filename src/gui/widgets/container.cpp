@@ -174,6 +174,14 @@ void tcontainer_::set_origin(const tpoint& origin)
 	grid_.set_origin(client_position);
 }
 
+void tcontainer_::set_visible_area(const SDL_Rect& area)
+{
+	// Inherited.
+	twidget::set_visible_area(area);
+
+	grid_.set_visible_area(area);
+}
+
 void tcontainer_::set_active(const bool active)
 {
 	// Not all our children might have the proper state so let them run

@@ -332,7 +332,9 @@ void twindow::draw()
 		for(std::vector<twidget*>::iterator itor = item.begin();
 				itor != item.end(); ++itor) {
 
-			if(!(**itor).is_visible()) {
+			if(!(**itor).is_visible() 
+					|| (**itor).get_drawing_action() == twidget::NOT_DRAWN) {
+
 				item.erase(itor, item.end());
 				break;
 			}

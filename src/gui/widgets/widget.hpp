@@ -56,6 +56,8 @@ public:
 		, screen_y_(-1)
 		, dirty_(true)
 		, visible_(VISIBLE)
+		, drawing_action_(DRAWN)
+		, clip_rect_()
 		, layout_size_(tpoint(0,0))
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 		, last_best_size_(tpoint(0,0))
@@ -89,19 +91,36 @@ public:
 		 * The user set the widget hidden, that means:
 		 *  * item is invisible but keeps its size
 		 *  * item doesn't handle events (and doesn't send events to children)
-		 *  * item doesn't populate_dirty_list (nor does it send the request to
-		 *    its children)
+		 *  * item doesn't populate_dirty_list (nor does it send the request
+		 *    to its children)
 		 */
 		HIDDEN,
 		/**
 		 * The user set the widget invisible, that means:
 		 *  * item is invisible and gridcell has size 0,0
 		 *  * item doesn't handle events (and doesn't send events to children)
-		 *  * item doesn't populate_dirty_list (nor does it send the request to
-		 *    its children)
+		 *  * item doesn't populate_dirty_list (nor does it send the request
+		 *    to its children)
 		 */
 		INVISIBLE };
 
+	/** 
+	 * Visibility set by the engine.
+	 *
+	 * This state only will be used if the widget is visible, depending on
+	 * this state the widget might not be visible after all.
+	 */
+	enum tdrawing_action {
+		/** The widget is fully visible and should redrawn when set dirty. */
+		DRAWN,
+		/**
+		 * The widget is partly visible, in order to render it, it's clip
+		 * rect needs to be used.
+		 */
+		PARTLY_DRAWN,
+		/** The widget is not visible and should not be drawn if dirty. */
+		NOT_DRAWN
+	};
 
 	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
 
@@ -515,6 +534,17 @@ public:
 	/** Returns true if the widget is invisible. */
 	bool is_invisible() const { return visible_ == INVISIBLE; }
 
+	tdrawing_action get_drawing_action() const { return drawing_action_; }
+
+	/**
+	 * Sets the visible area for a widget.
+	 *
+	 * This function sets the drawing_state_ and the clip_rect_.
+	 *
+	 * @param area                The visible area in screen coordinates.
+	 */
+	virtual void set_visible_area(const SDL_Rect& area);
+
 	/**
 	 * Sets the widgets dirty state.
 	 *
@@ -633,8 +663,14 @@ private:
 	 */
 	bool dirty_;
 
-	/** Flag field for the status of the visibility. */
+	/** Field for the status of the visibility. */
 	tvisible visible_;
+
+	/** Field for the action to do on a drawing request. */
+	tdrawing_action drawing_action_;
+
+	/** The clip rect is a widget is partly visible. */
+	SDL_Rect clip_rect_;
 
 	/**
 	 * The best size for the control.

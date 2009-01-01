@@ -189,6 +189,14 @@ struct thorizontal_list
 	void set_origin(const tpoint& /*origin*/)
 		{ ERROR_LOG(false); }
 
+	/**
+	 * Sets the visible area of the generator.
+	 *
+	 * @param area                The visible area.
+	 */
+	void set_visible_area(const SDL_Rect& /*area*/)
+		{ ERROR_LOG(false); }
+
 	/** Inherited from tgenerator_. */
 	twidget* find_widget(const tpoint&, const bool) { ERROR_LOG(false); }
 
@@ -214,6 +222,9 @@ struct tvertical_list
 
 	/** See thorizontal_list::set_origin(). */
 	void set_origin(const tpoint& origin);
+
+	/** See thorizontal_list::set_visible_area(). */
+	void set_visible_area(const SDL_Rect& area);
 
 	/** See thorizontal_list::find_widget(). */
 	twidget* find_widget(const tpoint& coordinate, const bool must_be_active);
@@ -264,6 +275,10 @@ struct tmatrix
 	void set_origin(const tpoint& /*origin*/)
 		{ ERROR_LOG(false); }
 
+	/** See thorizontal_list::set_visible_area(). */
+	void set_visible_area(const SDL_Rect& /*area*/)
+		{ ERROR_LOG(false); }
+
 	/** See thorizontal_list::find_widget(). */
 	twidget* find_widget(const tpoint&, const bool) { ERROR_LOG(false); }
 
@@ -295,6 +310,10 @@ struct tindependant
 
 	/** See thorizontal_list::set_origin(). */
 	void set_origin(const tpoint& /*origin*/)
+		{ ERROR_LOG(false); }
+
+	/** See thorizontal_list::set_visible_area(). */
+	void set_visible_area(const SDL_Rect& /*area*/)
 		{ ERROR_LOG(false); }
 
 	/** See thorizontal_list::find_widget(). */

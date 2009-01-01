@@ -106,6 +106,9 @@ public:
 	/** Inherited from tcontainer_. */
 	void set_origin(const tpoint& origin);
 
+	/** Inherited from tcontainer_. */
+	void set_visible_area(const SDL_Rect& area);
+
 	/***** ***** ***** inherited ****** *****/
 
 	/** Inherited from tcontainer_. */
@@ -225,6 +228,13 @@ private:
 
 	/** Dummy spacer to hold the contents location. */
 	tspacer *content_;
+
+	/** 
+	 * Cache for the visible area for the content.
+	 *
+	 * The visible area for the content needs to be updated when scrolling.
+	 */
+	SDL_Rect content_visible_area_;
 
 	/** The builder needs to call us so we do our setup. */
 	void finalize_setup();

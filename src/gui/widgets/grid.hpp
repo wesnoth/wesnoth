@@ -218,6 +218,9 @@ public:
 	void draw_children(surface& frame_buffer);
 
 	/** Inherited from twidget. */
+	void set_visible_area(const SDL_Rect& area);
+
+	/** Inherited from twidget. */
 	void child_populate_dirty_list(twindow& caller,
 			const std::vector<twidget*>& call_stack);
 

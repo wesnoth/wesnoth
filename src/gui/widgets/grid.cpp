@@ -628,6 +628,20 @@ void tgrid::set_origin(const tpoint& origin)
 	}
 }
 
+void tgrid::set_visible_area(const SDL_Rect& area)
+{
+	// Inherited.
+	twidget::set_visible_area(area);
+
+	foreach(tchild& child, children_) {
+
+		twidget* widget = child.widget();
+		assert(widget);
+
+		widget->set_visible_area(area);
+	}
+}
+
 void tgrid::draw_children(surface& frame_buffer)
 {
 	foreach(tchild& child, children_) {
@@ -636,6 +650,10 @@ void tgrid::draw_children(surface& frame_buffer)
 		assert(widget);
 
 		if(!widget->is_visible()) {
+			continue;
+		}
+
+		if(widget->get_drawing_action() == twidget::NOT_DRAWN) {
 			continue;
 		}
 

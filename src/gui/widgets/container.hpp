@@ -101,6 +101,9 @@ public:
 	void set_origin(const tpoint& origin);
 
 	/** Inherited from twidget. */
+	void set_visible_area(const SDL_Rect& area);
+
+	/** Inherited from twidget. */
 	void draw_children(surface& frame_buffer) { grid_.draw_children(frame_buffer); }
 
 	/** Inherited from twidget. */

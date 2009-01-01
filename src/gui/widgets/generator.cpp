@@ -155,6 +155,21 @@ void tvertical_list::set_origin(const tpoint& origin)
 	}
 }
 
+void tvertical_list::set_visible_area(const SDL_Rect& area)
+{
+	/*
+	 * Note for most implementations this function could work only for the
+	 * tindependant class it probably fails. Evalute to make a generic
+	 * function in the tgenerator template class and call it from the wanted
+	 * placement functions.
+	 */
+	for(size_t i = 0; i < get_item_count(); ++i) {
+
+		tgrid& grid = get_item(i);
+		grid.set_visible_area(area);
+	}
+}
+
 twidget* tvertical_list::find_widget(
 		const tpoint& coordinate, const bool must_be_active)
 {

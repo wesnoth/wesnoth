@@ -300,6 +300,12 @@ void tdebug_layout_graph::widget_generate_state_info(
 		<< "visible=" << control->get_visible() << '\n'
 		<< "</td></tr>\n"
 		<< "<tr><td>\n"
+		<< "drawing action=" << control->get_drawing_action() << '\n'
+		<< "</td></tr>\n"
+		<< "<tr><td>\n"
+		<< "clip rect=" << control->clip_rect_ << '\n'
+		<< "</td></tr>\n"
+		<< "<tr><td>\n"
 		<< "use tooltip on label overflow="
 			<< control->get_use_tooltip_on_label_overflow() << '\n'
 		<< "</td></tr>\n"

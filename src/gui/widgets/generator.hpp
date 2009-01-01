@@ -211,6 +211,9 @@ public:
 	virtual void set_origin(const tpoint& origin) = 0;
 
 	/** Inherited from twidget. */
+	void set_visible_area(const SDL_Rect& area) = 0;
+
+	/** Inherited from twidget. */
 	virtual void draw_children(surface& frame_buffer) = 0;
 
 	/** Inherited from twidget. */

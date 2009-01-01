@@ -91,6 +91,7 @@ tscrollbar_container::tscrollbar_container(const unsigned canvas_count)
 	, horizontal_scrollbar_(NULL)
 	, content_grid_(NULL)
 	, content_(NULL)
+	, content_visible_area_()
 {
 }
 
@@ -261,6 +262,10 @@ void tscrollbar_container::
 	// Set the easy close status.
 	set_block_easy_close(is_visible()
 			&& get_active() && does_block_easy_close());
+
+	// Now set the visible part of the content.
+	content_visible_area_ = content_->get_screen_rect();
+	content_grid_->set_visible_area(content_visible_area_);
 }
 
 void tscrollbar_container::set_origin(const tpoint& origin)
@@ -274,6 +279,21 @@ void tscrollbar_container::set_origin(const tpoint& origin)
 	const tpoint content_origin = content_->get_origin();
 
 	content_grid_->set_origin(content_origin);
+
+	// Changing the origin also invalidates the visible area.
+	content_grid_->set_visible_area(content_visible_area_);
+}
+
+void tscrollbar_container::set_visible_area(const SDL_Rect& area)
+{
+	// Inherited.
+	tcontainer_::set_visible_area(area);
+
+	// Now get the visible part of the content.
+	content_visible_area_ = 
+			get_rect_union(area, content_->get_screen_rect());
+
+	content_grid_->set_visible_area(content_visible_area_);
 }
 
 void tscrollbar_container::draw_background(surface& frame_buffer)
@@ -307,6 +327,7 @@ void tscrollbar_container::draw_background(surface& frame_buffer)
 				content_->get_screen_y() - y_offset);
 
 		content_grid_->set_origin(content_origin);
+		content_grid_->set_visible_area(content_visible_area_);
 	}
 
 	// Make sure the content can't draw outside its canvas.

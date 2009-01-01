@@ -101,6 +101,10 @@ void twidget::populate_dirty_list(twindow& caller,
 	if(!is_visible()) {
 		return;
 	}
+	
+	if(drawing_action_ == NOT_DRAWN) {
+		return;
+	}
 
 	call_stack.push_back(this);
 	if(dirty_) {
@@ -127,5 +131,19 @@ void twidget::set_visible(const tvisible visible)
 
 	visible_ = visible;
 }
+
+void twidget::set_visible_area(const SDL_Rect& area)
+{
+	clip_rect_ = get_rect_union(area, get_screen_rect());
+
+	if(clip_rect_ == get_screen_rect()) {
+		drawing_action_ = DRAWN;
+	} else if(clip_rect_ == empty_rect) {
+		drawing_action_ = NOT_DRAWN;
+	} else {
+		drawing_action_ = PARTLY_DRAWN;
+	}
+}
+
 
 } // namespace gui2
