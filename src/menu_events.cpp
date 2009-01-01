@@ -26,6 +26,7 @@
 #include "game_end_exceptions.hpp"
 #include "game_events.hpp"
 #include "gettext.hpp"
+#include "gui/widgets/window.hpp"
 #include "help.hpp"
 #include "log.hpp"
 #include "map_label.hpp"
@@ -2789,6 +2790,7 @@ private:
 	void console_handler::do_sunset() {
 		int delay = lexical_cast_default<int>(get_data());
 		menu_handler_.gui_->sunset(delay);
+		gui2::twindow::set_sunset(delay);
 	}
 	void console_handler::do_fps() {
 		preferences::set_show_fps(!preferences::show_fps());

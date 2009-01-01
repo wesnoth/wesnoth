@@ -277,6 +277,8 @@ public:
 
 	void set_easy_close(const bool easy_close) { easy_close_ = easy_close; }
 
+	static void set_sunset(const unsigned interval)
+		{ sunset_ = interval ? interval : 5; }
 private:
 
 	/** Needed so we can change what's drawn on the screen. */
@@ -363,6 +365,15 @@ private:
 
 	/** The list with items which prevent the easy close behaviour. */
 	std::vector<std::string> easy_close_blocker_;
+
+	/**
+	 * Controls the sunset feature.
+	 *
+	 * If this value is not 0 it will darken the entire screen every
+	 * sunset_th drawing request that nothing has been modified. It's a debug
+	 * feature.
+	 */
+	static unsigned sunset_;
 
 	/** Layouts the window. */
 	void layout();
