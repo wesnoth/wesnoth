@@ -784,7 +784,7 @@ void unit::advance_to(const unit_type* t, bool use_traits, game_state* state)
 const unit_type* unit::type() const
 {
 	std::map<std::string,unit_type>::const_iterator i = unit_type_data::types().find_unit_type(type_id());
-	if(!unit_type_data::types().unit_type_exists(type_id())) {
+	if (unit_type_data::types().unit_type_exists(type_id())) {
 		return &i->second.get_gender_unit_type(gender_).get_variation(variation_);
 	}
 	if (!type_id().empty()) {
