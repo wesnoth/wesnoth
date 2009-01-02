@@ -494,18 +494,12 @@ void tscrollbar_container::impl_draw_background(surface& frame_buffer)
 		content_grid_->set_visible_area(content_visible_area_);
 	}
 
-	// Make sure the content can't draw outside its canvas.
-	clip_rect_setter clip_rect(frame_buffer, get_screen_rect());
-
 	// Draw.
 	content_grid_->draw_children(frame_buffer);
 }
 
 void tscrollbar_container::impl_draw_foreground(surface& frame_buffer)
 {
-	// Make sure the content can't draw outside its canvas.
-	clip_rect_setter clip_rect(frame_buffer, get_screen_rect());
-
 	// Inherited.
 	tcontainer_::impl_draw_foreground(frame_buffer);
 }
