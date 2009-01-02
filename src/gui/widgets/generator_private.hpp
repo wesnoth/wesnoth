@@ -559,6 +559,12 @@ public:
 	}
 
 	/** Inherited from tgenerator_. */
+	void set_visible_area(const SDL_Rect& area)
+	{
+		placement::set_visible_area(area);
+	}
+
+	/** Inherited from tgenerator_. */
 	void impl_draw_children(surface& frame_buffer)
 	{
 		foreach(titem* item, items_) {
