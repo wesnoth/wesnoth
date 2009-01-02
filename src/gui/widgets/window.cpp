@@ -66,7 +66,7 @@ static int draw_interval = 0;
  */
 static Uint32 draw_timer(Uint32, void*)
 {
-	DBG_G_E << "Pushing draw event in queue.\n";
+//	DBG_G_E << "Pushing draw event in queue.\n";
 
 	SDL_Event event;
 	SDL_UserEvent data;

@@ -360,7 +360,7 @@ void tevent_handler::remove_help_popup()
 
 void tevent_handler::mouse_enter(const SDL_Event& /*event*/, twidget* mouse_over)
 {
-	DBG_G_E << "Event: remove tooltip.\n";
+	DBG_G_E << "Event: mouse enter.\n";
 
 	assert(mouse_over);
 
@@ -372,8 +372,6 @@ void tevent_handler::mouse_enter(const SDL_Event& /*event*/, twidget* mouse_over
 
 void tevent_handler::mouse_move(const SDL_Event& event, twidget* mouse_over)
 {
-	// Note we use the fact that a NULL pointer evaluates to false
-	// and non NULL pointer to true;
 	if(mouse_captured_) {
 		mouse_focus_->mouse_move(*this);
 		set_hover(true);
@@ -415,6 +413,8 @@ void tevent_handler::mouse_hover(
 void tevent_handler::mouse_leave(
 		const SDL_Event& /*event*/, twidget* /*mouse_over*/)
 {
+	DBG_G_E << "Event: mouse leave.\n";
+
 	assert(mouse_focus_);
 
 	had_hover_ = false;
