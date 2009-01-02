@@ -48,6 +48,7 @@ struct terrain_group
 	std::string id;
 	t_string name;
 	gui::button button;
+    bool core;
 };
 
 /** Palette where the terrain to be drawn can be selected. */
@@ -163,6 +164,8 @@ private:
 	 */
 	std::vector<terrain_group> terrain_groups_;
 
+    std::set<t_translation::t_terrain> non_core_terrains_;
+
 	/**
 	 * The group buttons behave like a radio group.
 	 *
@@ -176,6 +179,7 @@ private:
 	size_t nterrains_, terrain_start_;
 	t_translation::t_terrain& selected_fg_terrain_;
 	t_translation::t_terrain& selected_bg_terrain_;
+
 };
 
 /** A bar where the brush is drawn */
