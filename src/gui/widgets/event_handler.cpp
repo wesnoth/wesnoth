@@ -360,6 +360,11 @@ void tevent_handler::remove_help_popup()
 
 void tevent_handler::mouse_enter(const SDL_Event& /*event*/, twidget* mouse_over)
 {
+	tcontrol* control = dynamic_cast<tcontrol*>(mouse_focus_);
+	if(control && !control->get_active()) {
+		return;
+	}
+
 	DBG_G_E << "Event: mouse enter.\n";
 
 	assert(mouse_over);
@@ -423,7 +428,10 @@ void tevent_handler::mouse_leave(
 	remove_tooltip();
 	remove_help_popup();
 
-	mouse_focus_->mouse_leave(*this);
+	tcontrol* control = dynamic_cast<tcontrol*>(mouse_focus_);
+	if(!control && control->get_active()) {
+		mouse_focus_->mouse_leave(*this);
+	}
 	mouse_focus_ = 0;
 }
 
