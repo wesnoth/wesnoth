@@ -297,14 +297,16 @@ void twindow::draw()
 		if(preferences::use_colour_cursors() || sunset_) {
 			surface frame_buffer = get_video_surface();
 
-			static unsigned i = 0;
-			if(++i % sunset_== 0) {
-				SDL_Rect r = {0, 0, frame_buffer->w, frame_buffer->h };
-				const Uint32 color =
-						SDL_MapRGBA(frame_buffer->format,0,0,0,255);
+			if(sunset_) {
+				static unsigned i = 0;
+				if(++i % sunset_ == 0) {
+					SDL_Rect r = {0, 0, frame_buffer->w, frame_buffer->h };
+					const Uint32 color =
+							SDL_MapRGBA(frame_buffer->format,0,0,0,255);
 
-				fill_rect_alpha(r, color, 1, frame_buffer);
-				update_rect(r);
+					fill_rect_alpha(r, color, 1, frame_buffer);
+					update_rect(r);
+				}
 			}
 
 			cursor::draw(frame_buffer);
