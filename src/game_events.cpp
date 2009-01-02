@@ -3079,7 +3079,7 @@ namespace {
 			} else if(!mref->command.empty()) {
 				mref->command["name"] = mref->name;
 				mref->command["first_time_only"] = "no";
-				event_handlers.push_back(game_events::event_handler(vconfig(&mref->command,&mref->command)));
+				event_handlers.push_back(game_events::event_handler(vconfig(&mref->command,&mref->command), true));
 			}
 			LOG_NG << "setting command for " << mref->name << "\n";
 			LOG_NG << *wcc.second;
@@ -3379,7 +3379,7 @@ namespace game_events {
 		std::map<std::string, wml_menu_item *>::iterator itor = state_of_game->wml_menu_items.begin();
 		while(itor != state_of_game->wml_menu_items.end()) {
 			if(!itor->second->command.empty()) {
-				event_handlers.push_back(game_events::event_handler(vconfig(&itor->second->command,&itor->second->command)));
+				event_handlers.push_back(game_events::event_handler(vconfig(&itor->second->command,&itor->second->command), true));
 			}
 			++itor;
 			++wmi_count;
