@@ -43,6 +43,7 @@ public:
 	vconfig& operator=(const config* cfg);
 
 	bool null() const { return cfg_ == NULL; }
+	bool is_volatile() const { return cache_key_ != NULL; }
 	const config& get_config() const { return *cfg_; }
 	const config get_parsed_config() const;
 
@@ -68,7 +69,7 @@ public:
 		typedef std::auto_ptr<value_type> pointer;
 		typedef value_type& reference;
 		typedef config::all_children_iterator Itor;
-		explicit all_children_iterator(Itor i=Itor());
+		explicit all_children_iterator(Itor i=Itor(), const config* cache_key=NULL);
 
 		all_children_iterator& operator++();
 		all_children_iterator  operator++(int);
@@ -87,6 +88,7 @@ public:
 		Itor i_;
 		unsigned inner_index_;
 		unsigned index_offset_;
+		const config* cache_key_;
 	};
 
 	struct recursion_error : public config::error {

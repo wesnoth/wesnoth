@@ -343,8 +343,8 @@ const t_string vconfig::expand(const std::string& key) const
 	return t_string(val);
 }
 
-vconfig::all_children_iterator::all_children_iterator(config::all_children_iterator i)
-: i_(i), inner_index_(0), index_offset_(0)
+vconfig::all_children_iterator::all_children_iterator(config::all_children_iterator i, const config *cache_key)
+: i_(i), inner_index_(0), index_offset_(0), cache_key_(cache_key)
 {
 }
 
@@ -405,7 +405,7 @@ const vconfig vconfig::all_children_iterator::get_child() const
 		cp = *(vinfo.as_array().first + inner_index_);
 		return vconfig(cp, cp);
 	}
-	return vconfig(&i_.get_child());
+	return vconfig(&i_.get_child(), cache_key_);
 }
 
 size_t vconfig::all_children_iterator::get_index() const
@@ -425,12 +425,12 @@ bool vconfig::all_children_iterator::operator!=(all_children_iterator i) const
 
 vconfig::all_children_iterator vconfig::ordered_begin() const
 {
-	return all_children_iterator(cfg_->ordered_begin());
+	return all_children_iterator(cfg_->ordered_begin(), cache_key_);
 }
 
 vconfig::all_children_iterator vconfig::ordered_end() const
 {
-	return all_children_iterator(cfg_->ordered_end());
+	return all_children_iterator(cfg_->ordered_end(), cache_key_);
 }
 
 namespace variable
