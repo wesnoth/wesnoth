@@ -6,13 +6,13 @@
 # Isaac Clerencia <isaac@warp.es>, 2006.
 # Roberto Romero <sildurin@gmail.com>, 2007.
 # Sergi March <sergi.march@gmail.com>, 2008.
-# Ignacio R. Morelle <shikadilord@users.sourceforge.net>, 2008.
+# Ignacio R. Morelle <shikadilord@users.sourceforge.net>, 2008, 2009.
 msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-12-30 21:39+0100\n"
-"PO-Revision-Date: 2008-12-02 02:38-0300\n"
+"PO-Revision-Date: 2009-01-02 04:28-0300\n"
 "Last-Translator: Ignacio R. Morelle <shikadilord@users.sourceforge.net>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -684,32 +684,29 @@ msgstr "Crear partida"
 #. [window]: id=mp_login
 #: data/gui/default/window/mp_login.cfg:8
 msgid "Multiplayer server login dialog"
-msgstr ""
+msgstr "Diálogo de inicio de sesión en el servidor multijugador"
 
 #. [label]
 #. [button]: id=ok
 #: data/gui/default/window/mp_login.cfg:31
 #: data/gui/default/window/mp_login.cfg:131
-#, fuzzy
 msgid "Login"
-msgstr "Nombre de usuario:"
+msgstr "Nombre de usuario"
 
 #. [label]
 #: data/gui/default/window/mp_login.cfg:81
-#, fuzzy
 msgid "Password:"
-msgstr "Contraseña"
+msgstr "Contraseña:"
 
 #. [button]: id=change_username
 #: data/gui/default/window/mp_login.cfg:145
-#, fuzzy
 msgid "Change username"
-msgstr "Insertar un nombre de usuario"
+msgstr "Cambiar nombre de usuario"
 
 #. [button]: id=password_reminder
 #: data/gui/default/window/mp_login.cfg:159
 msgid "Password Reminder"
-msgstr ""
+msgstr "Recordatorio de contraseña"
 
 #. [label]
 #. [grid]
@@ -742,13 +739,12 @@ msgstr "Unirse a otro servidor"
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:159
 msgid "Host Networked Game"
-msgstr "Alojar partida en red"
+msgstr "Servir partida en red"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:160
-#, fuzzy
 msgid "Host a game using dedicated server 'wesnothd'"
-msgstr "Alojar una partida en red usando el servidor dedicado «wesnothd»"
+msgstr "Servir una partida en red usando el servidor dedicado «wesnothd»"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:170
@@ -1039,7 +1035,7 @@ msgstr "Brillo («gamma»):"
 
 #: src/game_preferences_display.cpp:197
 msgid "Sample Rate (Hz):"
-msgstr "Velocidad de refresco (Hz):"
+msgstr "Tasa de muestreo (Hz):"
 
 #: src/game_preferences_display.cpp:198
 msgid "Frequency:"
@@ -1251,7 +1247,7 @@ msgstr "Velocidad: "
 
 #: src/game_preferences_display.cpp:690 src/game_preferences_display.cpp:692
 msgid "Maximum Auto-Saves: "
-msgstr "Auto-Guardados máximos:"
+msgstr "Auto-guardados máximos:"
 
 #: src/game_preferences_display.cpp:690
 msgid "infinite"
@@ -1993,6 +1989,3 @@ msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr ""
 "En la sección «[$section|]» el atributo obligatorio «$key|» no se ha "
 "establecido."
-
-#~ msgid "No scrollbar defined."
-#~ msgstr "No se ha definido ninguna barra de desplazamiento."

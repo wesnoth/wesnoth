@@ -4,18 +4,20 @@
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
 # Sergi March <sergi.march@gmail.com>, 2008.
+# Ignacio R. Morelle <shikadilord@users.sourceforge.net>, 2009.
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 1.3.12+svn\n"
+"Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-11-29 12:25+0100\n"
-"PO-Revision-Date: 2008-01-28 23:27+0100\n"
-"Last-Translator: Sergi March <sergi.march@gmail.com>\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2009-01-02 06:31-0300\n"
+"Last-Translator: Ignacio R. Morelle <shikadilord@users.sourceforge.net>\n"
+"Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: KBabel 1.11.4\n"
 
 #. [campaign]: id=The_Hammer_of_Thursagan
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:10
@@ -40,7 +42,7 @@ msgstr "(Fácil)"
 #. [campaign]: id=The_Hammer_of_Thursagan
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:17
 msgid "Steelclad"
-msgstr "Guardia de Acero"
+msgstr "Guardián de acero"
 
 #. [campaign]: id=The_Hammer_of_Thursagan
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:17
@@ -83,7 +85,7 @@ msgstr "Autor"
 #. [about]
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:32
 msgid "Special Guest Designer"
-msgstr ""
+msgstr "Diseñador invitado especial"
 
 #. [about]
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:38
@@ -92,8 +94,9 @@ msgstr "Arte"
 
 #. [about]
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:44
+#, fuzzy
 msgid "Brainstorming, playtesting, and spousal support"
-msgstr ""
+msgstr "Ideas, pruebas y soporte matrimonial"
 
 #. [scenario]: id=01_At_The_East_Gate
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_The_East_Gate.cfg:3
@@ -129,7 +132,7 @@ msgstr "Puerta Oriental"
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:30
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:48
 msgid "Alliance"
-msgstr ""
+msgstr "Alianza"
 
 #. [side]: type=Dwarvish Fighter, id=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:29
@@ -162,7 +165,7 @@ msgstr "Aiglondur"
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:128
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:160
 msgid "Orcs"
-msgstr ""
+msgstr "Orcos"
 
 #. [side]: type=Orcish Warrior, id=Bashnark
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_The_East_Gate.cfg:65
@@ -247,13 +250,12 @@ msgstr ""
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_The_East_Gate.cfg:131
-#, fuzzy
 msgid ""
 "Up axes! We will be the Northern Alliance's arm today, and kill or scatter "
 "these invaders."
 msgstr ""
-"¡Hachas arriba! Seremos la Alianza del Norte, hoy,\n"
-"y mataremos o dispersaremos a estos invasores."
+"¡Hachas arriba! Seremos el brazo de la Alianza del Norte hoy, y mataremos o "
+"dispersaremos a estos invasores."
 
 #. [message]: speaker=Bashnark
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_The_East_Gate.cfg:135
@@ -266,19 +268,18 @@ msgstr ""
 
 #. [message]: speaker=second_unit
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_The_East_Gate.cfg:146
-#, fuzzy
 msgid ""
 "What is this? Their vanquished leader wears a cloak-pin of dwarvish make. "
 "And it bears a loremaster's emblem."
 msgstr ""
 "¿Qué es esto? Su vencido líder lleva un broche de capa de origen enano. Y "
-"lleva un emblema de loremaster."
+"lleva un emblema de Maestro del Saber."
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_The_East_Gate.cfg:150
 msgid "The maker's mark is strange to me. We had best consult the lord Hamel."
 msgstr ""
-"La marca del fabricante me resulta desconocida. Debimos haber consultado a "
+"La marca del fabricante me resulta desconocida. Deberíamos consultar con "
 "lord Hamel."
 
 #. [scenario]: id=02_Reclaiming_The_Past
@@ -345,11 +346,10 @@ msgstr ""
 #. [message]: speaker=Hamel
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_The_Past.cfg:117
 msgid "I fear some grave ill may have become Kal Kartha."
-msgstr ""
+msgstr "Temo que algo ande mal en Kal Kartha."
 
 #. [message]: speaker=Angarthing_dummy
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_The_Past.cfg:121
-#, fuzzy
 msgid ""
 "And I fear for the Hammer of Thursagan. Our kin at Kal Kartha have been its "
 "keepers since a hero of their line recovered it from the Caverns of Flame, "
@@ -357,12 +357,12 @@ msgid ""
 msgstr ""
 "Y yo temo por el Martillo de Thursagan. Nuestros parientes en Kal Kartha han "
 "sido sus guardianes desde que un héroe de su estirpe lo recuperó de las "
-"Cavernas del Fuego, siglos atrás."
+"Cavernas de Fuego, siglos atrás."
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_The_Past.cfg:125
 msgid "The Hammer of Thursagan?"
-msgstr "El Martillo de Thursagan?"
+msgstr "¿El Martillo de Thursagan?"
 
 #. [message]: speaker=Angarthing_dummy
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_The_Past.cfg:129
@@ -373,8 +373,8 @@ msgid ""
 "forge the dwarves themselves in the heart of the earth."
 msgstr ""
 "Así es. La propia herramienta con la que nuestros grandes maestros orfebres "
-"hicieron el Cetro de Fuego. Pero es antiguo, mucho más que Thursagan; pero "
-"él fue el último que lo usó, y nuestras historias más antiguas nos hacen "
+"hicieron el Cetro de Fuego. Pero es antiguo, mucho más que Thursagan; él no "
+"fue sino el último portador, y nuestras historias más antiguas nos hacen "
 "pensar que fue este el verdadero martillo que fue usado para forjar a los "
 "propios enanos en el corazón de la tierra."
 
@@ -417,9 +417,8 @@ msgstr ""
 
 #. [message]: speaker=Hamel
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_The_Past.cfg:145
-#, fuzzy
 msgid "What is this ye say? Nae lost?"
-msgstr "¿Qué está diciendo? ¿No perdidos?"
+msgstr "¿Qué está diciendo? ¿No fueron perdidos?"
 
 #. [message]: speaker=Angarthing_dummy
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_The_Past.cfg:149
@@ -512,7 +511,7 @@ msgstr "Y has hablado mi invitado, Aiglondur. ¿No eres pues pariente mío?"
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_The_Past.cfg:189
 msgid "Your great-nephew, my lord."
-msgstr "Tu sobrino nieto, mi señor."
+msgstr "Vuestro sobrino nieto, mi señor."
 
 #. [message]: speaker=Hamel
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_The_Past.cfg:193
@@ -521,8 +520,8 @@ msgid ""
 "to use it well. I have decided. You and Angarthing will fare to Kal Kartha "
 "together, as soon as may be, with the best men of your guard."
 msgstr ""
-"Eres joven y poco granado... pero tienes el rango, y has demostrado el buen "
-"juicio para utilizarlo bien. Lo he decidido.Tu y Angarthing iréis a Kal "
+"Sois joven y poco granado... pero tenéis el rango, y habéis demostrado el "
+"buen juicio para utilizarlo. Lo he decidido.Vos y Angarthing iréis a Kal "
 "Kartha juntos, tan pronto como sea posible, con los mejores hombres de "
 "vuestra guardia."
 
@@ -564,7 +563,7 @@ msgstr "Gothras"
 #. [side]: type=Outlaw, id=Gothras
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:94
 msgid "Bandits"
-msgstr ""
+msgstr "Bandidos"
 
 #. [part]
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:125
@@ -621,22 +620,22 @@ msgstr "Lo estamos."
 #. [message]: speaker=Marth-Tak
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:179
 msgid "Well, then, honor the treaty as I have."
-msgstr ""
+msgstr "Bien entonces, honrad el tratado como yo he hecho."
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:183
 msgid "That is our duty"
-msgstr ""
+msgstr "Es nuestro trabajo"
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:187
 msgid "For the Alliance! Axes up!"
-msgstr ""
+msgstr "¡Por la Alianza! ¡Hachas arriba!"
 
 #. [objective]: condition=win
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:194
 msgid "Help Marth-Tak defeat Gothras"
-msgstr ""
+msgstr "Ayude a Marth-Tak derrotar a Gothras"
 
 #. [objective]: condition=lose
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:290
@@ -651,17 +650,17 @@ msgstr ""
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:286
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:202
 msgid "Death of Angarthing"
-msgstr ""
+msgstr "Muerte de Angarthing"
 
 #. [objective]: condition=lose
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:206
 msgid "Death of Marth-Tak"
-msgstr ""
+msgstr "Muerte de Marth-Tak"
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:224
 msgid "We have failed our duty to the Alliance."
-msgstr ""
+msgstr "Hemos fallado a nuestro deber con la Alianza."
 
 #. [message]: speaker=Marth-Tak
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:245
@@ -669,6 +668,8 @@ msgid ""
 "My thanks, dwarves. These bandits might have hacked a bloody swathe through "
 "the Alliance's tribes if we had not killed them here."
 msgstr ""
+"Mis gracias, enanos. Estos bandidos habrían conseguido causar un gran "
+"problema si no los hubiéramos matado aquí."
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:250
@@ -676,26 +677,29 @@ msgid ""
 "My thanks to you, for proving there are orcs I can fight alongside rather "
 "than against. But we cannot linger here to celebrate; we are journeying east."
 msgstr ""
+"Mis gracias a vos, por probar que hay orcos con los que puedo luchar como "
+"aliado, y no como enemigo. Pero no podemos quedarnos a celebrar; nos "
+"dirigimos al este."
 
 #. [message]: speaker=Marth-Tak
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:255
 msgid "East, eh? You won't find many friends in that direction. Travel safely."
-msgstr ""
+msgstr "¿Este, eh? No encontraréis muchos amigos por allí. Tened cuidado."
 
 #. [scenario]: id=04_Troll Bridge
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_Troll_Bridge.cfg:3
 msgid "Troll Bridge"
-msgstr ""
+msgstr "Puente del Troll"
 
 #. [side]: type=Troll, id=Gronk
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_Troll_Bridge.cfg:35
 msgid "Gronk"
-msgstr ""
+msgstr "Gronk"
 
 #. [side]: type=Troll, id=Gronk
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_Troll_Bridge.cfg:43
 msgid "Trolls"
-msgstr ""
+msgstr "Trolls"
 
 #. [part]
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_Troll_Bridge.cfg:75
@@ -704,27 +708,33 @@ msgid ""
 "very notion of fighting alongside orcs rather than against them, continued "
 "east to the easternmost edge of the Northern Alliance's lands."
 msgstr ""
+"Aiglondur y sus tropas, muchos aún sacudiendo dubitativamente sus cabezas "
+"por el sólo hecho de luchar al lado de orcos en vez de contra ellos, "
+"continuaron al este y llegaron al borde oriental de las tierras de la "
+"Alianza del Norte."
 
 #. [message]: speaker=second_unit
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_Troll_Bridge.cfg:98
 msgid "Hey! That troll was sitting on some treasure!"
-msgstr ""
+msgstr "¡Mirad! ¡Ese troll estaba sentado sobre un tesoro!"
 
 #. [message]: speaker=Gronk
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_Troll_Bridge.cfg:120
 msgid "Dis a troll bridge. You pay toll. Er..."
-msgstr ""
+msgstr "Este es puente troll. Tiene que pasear. Eh..."
 
 #. [message]: speaker=Gronk
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_Troll_Bridge.cfg:124
 msgid "Dat not right. Dis a toll bridge. You pay troll. Er..."
-msgstr ""
+msgstr "Eso no bueno. Este es puente pago. Tiene que pasar troll. Eh..."
 
 #. [message]: speaker=Gronk
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_Troll_Bridge.cfg:128
 msgid ""
 "Dat not right either. Big words confuse Gronk. You pay now or we smash you."
 msgstr ""
+"Eso tampoco bueno. Grandes palabras confundir Gronk. Pagar o los "
+"aplastaremos."
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_Troll_Bridge.cfg:132
@@ -743,17 +753,17 @@ msgstr ""
 #. [objective]: condition=win
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_Troll_Bridge.cfg:143
 msgid "Defeat Gronk"
-msgstr ""
+msgstr "Derrote a Gronk"
 
 #. [scenario]: id=05_Invaders
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:3
 msgid "Invaders"
-msgstr ""
+msgstr "Invasores"
 
 #. [label]
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:21
 msgid "Ruined Castle"
-msgstr ""
+msgstr "Castillo en ruinas"
 
 #. [part]
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:27
@@ -765,32 +775,32 @@ msgstr ""
 #. [side]: type=Orcish Warlord, id=Tan-Malgar
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:54
 msgid "Tan-Malgar"
-msgstr ""
+msgstr "Tan-Malgar"
 
 #. [side]: type=Orcish Warlord, id=Tan-Grolak
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:80
 msgid "Tan-Grolak"
-msgstr ""
+msgstr "Tan-Grolak"
 
 #. [side]: type=Orcish Warlord, id=Tan-Uthkar
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:125
 msgid "Tan-Uthkar"
-msgstr ""
+msgstr "Tan-Uthkar"
 
 #. [message]: speaker=unit
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:260
 msgid "The villagers are attacking us!"
-msgstr ""
+msgstr "¡Los aldeanos nos atacan!"
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:270
 msgid "Aye, it's still bandit country, right enough."
-msgstr ""
+msgstr "Sí, aún es tierra de bandidos, correcto."
 
 #. [message]: speaker=unit
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:288
 msgid "No bandits in this village."
-msgstr ""
+msgstr "No hay bandidos en esta aldea."
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:330
@@ -839,24 +849,24 @@ msgstr ""
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:361
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:229
 msgid "Defeat all enemies"
-msgstr ""
+msgstr "Derrote a todos los enemigos"
 
 #. [scenario]: id=06_High_Pass
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:3
 msgid "High Pass"
-msgstr ""
+msgstr "Alto paso"
 
 #. [side]: type=Gryphon, id=Kaara
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:48
 msgid "Kaara"
-msgstr ""
+msgstr "Kaara"
 
 #. [side]: type=Gryphon, id=Kaara
 #. [side]
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:52
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:68
 msgid "Monsters"
-msgstr ""
+msgstr "Monstruos"
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:125
@@ -886,7 +896,7 @@ msgstr ""
 #. [unit]: type=Arch Mage, id=Ratheln
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:225
 msgid "Ratheln"
-msgstr ""
+msgstr "Ratheln"
 
 #. [message]: speaker=Ratheln
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:239
@@ -981,22 +991,22 @@ msgstr ""
 #. [scenario]: id=07_Mages_and_Drakes
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:3
 msgid "Mages and Drakes"
-msgstr ""
+msgstr "Magos y dracos"
 
 #. [side]: type=Great Mage, id=Master Perrin
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:42
 msgid "Master Perrin"
-msgstr ""
+msgstr "Maestro Perrin"
 
 #. [side]: type=Drake Flameheart, id=Glashal
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:62
 msgid "Glashal"
-msgstr ""
+msgstr "Glashal"
 
 #. [side]: type=Drake Flameheart, id=Glashal
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:66
 msgid "Drakes"
-msgstr ""
+msgstr "Dracos"
 
 #. [unit]: type=White Mage, id=Preceptor
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:93
@@ -1078,12 +1088,12 @@ msgstr ""
 #. [unit]: type=Mage, id=Lorinne
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:191
 msgid "Lorinne"
-msgstr ""
+msgstr "Lorinne"
 
 #. [unit]: type=Mage, id=Darchas
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:199
 msgid "Darchas"
-msgstr ""
+msgstr "Darchas"
 
 #. [message]: speaker=Ratheln
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:207
@@ -1126,7 +1136,7 @@ msgstr ""
 #. [scenario]: id=08_Fear
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:3
 msgid "Fear"
-msgstr ""
+msgstr "Terror"
 
 #. [unit]: type=Dwarvish Masked Steelclad, id=Gog
 #. [unit]: type=Dwarvish Masked Steelclad, id=Magog
@@ -1158,7 +1168,7 @@ msgstr ""
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:95
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:180
 msgid "Masked Dwarf"
-msgstr ""
+msgstr "Enano enmascarado"
 
 #. [side]: type=Dwarvish Rune Lord, id=Karrag
 #. [side]: type=Dwarvish Masked Steelclad, id=Dufon
@@ -1177,7 +1187,7 @@ msgstr ""
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:171
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:46
 msgid "Evil"
-msgstr ""
+msgstr "Malignos"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:125
@@ -1185,6 +1195,8 @@ msgid ""
 "The presence of Master Perrin's journeymen gives you the ability to recruit "
 "mages."
 msgstr ""
+"La presencia de los magos viajeros del maestro Perrin le concede la "
+"habilidad de reclutar magos."
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:135
@@ -1192,11 +1204,13 @@ msgid ""
 "We should be on the outskirts of the settled country around Kal Kartha, but "
 "something doesn't feel right here."
 msgstr ""
+"Deberíamos estar en las fronteras del territorio establecido alrededor de "
+"Kal Kartha, pero algo no parece andar bien aquí."
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:139
 msgid "It's too quiet...and I think I smell traces of smoke on the wind."
-msgstr ""
+msgstr "Es demasiado silencioso aquí... y creo oler algo de humo en el viento."
 
 #. [message]: speaker=Ratheln
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:143
@@ -1204,47 +1218,49 @@ msgid ""
 "I do not sense hostile magic in the vicinity. But there has been fire near "
 "here recently, and not a clean one."
 msgstr ""
+"No siento magia hostil en la cercanía. Pero ha habido fuego aquí cerca "
+"recientemente, y no fuego limpio."
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:147
 msgid ""
 "Look sharp for the inhabitants here. They might have something to tell us."
-msgstr ""
+msgstr "Buscad a los habitantes de por aquí. Podrían tener algo que decirnos."
 
 #. [objective]: condition=win
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:154
 msgid "Find the inhabitants"
-msgstr ""
+msgstr "Encuentre a los habitantes"
 
 #. [unit]: type=Peasant, id=Ollin
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:193
 msgid "Ollin"
-msgstr ""
+msgstr "Ollin"
 
 #. [message]: speaker=Ollin
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:201
 msgid "Don't kill me, masters! Please don't kill me!"
-msgstr ""
+msgstr "¡No me matéis amos! ¡Por favor no me matéis!"
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:205
 msgid "You're in no danger from us. What lies to the east of here?"
-msgstr ""
+msgstr "No estáis en peligro con nosotros. ¿Qué hay al este de aquí?"
 
 #. [message]: speaker=Ollin
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:209
 msgid "You wear no mask. You...you're not with them?"
-msgstr ""
+msgstr "No portáis máscaras. No... ¿no sois de ellos?"
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:213
 msgid "What are you talking about?"
-msgstr ""
+msgstr "¿De qué estáis hablando?"
 
 #. [message]: speaker=Ollin
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:217
 msgid "The masked dwarves. Killing, burning, kidnapping. Look..."
-msgstr ""
+msgstr "Los enanos enmascarados. Matando, incendiando, raptando. Mirad..."
 
 #. [message]: speaker=Masked Dwarf Leader
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:238
@@ -1252,11 +1268,14 @@ msgid ""
 "Fellow dwarves, hail! We're looking for a human refugee, one named Ollin. "
 "Have you seen him? Our master demands his life."
 msgstr ""
+"¡Enanos compañeros, saludos! Buscamos a un humano refugiado, uno que se hace "
+"llamar Ollin. ¿Lo habéis visto? Nuestro maestro demanda su vida."
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:242
 msgid "He is here. How has he wronged your master, that you seek his death?"
 msgstr ""
+"El está aquí. ¿Cómo ha ofendido a vuestro maestro, qué buscáis su muerte?"
 
 #. [message]: speaker=Masked Dwarf Leader
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:246
@@ -1264,6 +1283,8 @@ msgid ""
 "Does it matter? He is only a dirtgrubbing human, not fit to polish the boots "
 "of the true people."
 msgstr ""
+"¿Acaso importa? Sólo se trata de un humano rastrero, no hecho para limpiar "
+"las botas de la gente de verdad."
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:250
@@ -1271,6 +1292,8 @@ msgid ""
 "What is your name, masked one? Will you stand behind your deed? I am a "
 "witness."
 msgstr ""
+"¿Cuál será vuestro nombre, enmascarado? ¿Os haréis responsable de vuestros "
+"actos? Soy testigo."
 
 #. [message]: speaker=Masked Dwarf Leader
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:254
@@ -1278,6 +1301,8 @@ msgid ""
 "A witness? My name is...my name is not important. My deed will speak its own "
 "truth."
 msgstr ""
+"¿Un testigo? Mi nombre... mi nombre no importa. Mis actos hablarán su propia "
+"verdad."
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:258
@@ -1285,6 +1310,8 @@ msgid ""
 "You speak without honor. Mine is the power of our ancient Law; speak your "
 "name and give up your murder, or the Law will cast you forth. I am a witness!"
 msgstr ""
+"Habláis sin honor. Mi poder es el de nuestra Ley ancestral; decid vuestro "
+"nombre y abandonad vuestro asesinato, o la Ley os desterrará. ¡Soy testigo!"
 
 #. [message]: speaker=Masked Dwarf Leader
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:262
@@ -1292,36 +1319,38 @@ msgid ""
 "If you were a witness of the true people, you would not let a dirtgrubber "
 "hide behind your robes. I deny you!"
 msgstr ""
+"Si fueseis testigo de la gente de verdad, no dejaríais a un rastrero "
+"ocultarse tras vuestros hábitos. ¡Os rechazo!"
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:267
 msgid "The Law speaks: you are cast out. You are un-dwarf. I AM A WITNESS!"
-msgstr ""
+msgstr "La Ley habla: sois desterrado. Sois un no-enano. ¡SOY TESTIGO!"
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:271
 msgid "Up axes!"
-msgstr ""
+msgstr "¡Arriba hachas!"
 
 #. [objective]: condition=win
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:278
 msgid "Defeat the Masked Dwarf"
-msgstr ""
+msgstr "Derrote al Enano enmascarado"
 
 #. [message]: speaker=Ollin
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:304
 msgid "Take that for my family's memory, you murderer!"
-msgstr ""
+msgstr "¡Tomad eso por el recuerdo de mi familia, asesino!"
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:312
 msgid "They are defeated"
-msgstr ""
+msgstr "Han sido derrotados"
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:316
 msgid "You have acted in honor. I am a witness."
-msgstr ""
+msgstr "Habéis actuado honrosamente. Soy testigo."
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:320
@@ -1329,6 +1358,9 @@ msgid ""
 "I have never seen the formal banishment before. One reads of it in the old "
 "tales, of course, but to hear it with one's own ears? It was...unsettling."
 msgstr ""
+"Jamás había visto el destierro formal antes. Uno lo ha leído en cuentos "
+"antiguos, por supuesto, ¿pero escucharlo con sus propios oídos? Fue... "
+"estremecedor."
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:324
@@ -1340,10 +1372,13 @@ msgstr ""
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:328
+#, fuzzy
 msgid ""
 "Whips. Shackles. No, Angarthing, I would not doubt you, even if it were my "
 "place to doubt a loremaster."
 msgstr ""
+"Látigos. Cadenas y esposas. No, Angarthing, jamás dudaría de vos, incluso si "
+"estuviese en mi lugar para dudar de un loremaster."
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:332
@@ -1351,16 +1386,18 @@ msgid ""
 "They were seeking captives. To what purpose, I cannot say. But I doubt it "
 "was any good one."
 msgstr ""
+"Buscaban prisioneros. Para qué propósito, lo desconozco. Pero dudo que fuera "
+"para algo bueno."
 
 #. [scenario]: id=09_Forbidden_Forest
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:3
 msgid "Forbidden Forest"
-msgstr ""
+msgstr "Bosque prohibido"
 
 #. [side]: type=Elvish High Lord, id=Telcherion
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:121
 msgid "Telcherion"
-msgstr ""
+msgstr "Telcherion"
 
 #. [side]: type=Elvish High Lord, id=Telcherion
 #. [side]: type=Elvish Lady, id=Iluvarda
@@ -1369,27 +1406,27 @@ msgstr ""
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:160
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:184
 msgid "Forest"
-msgstr ""
+msgstr "Bosque"
 
 #. [side]: type=Elvish Lady, id=Iluvarda
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:145
 msgid "Iluvarda"
-msgstr ""
+msgstr "Iluvarda"
 
 #. [side]: type=Ancient Wose, id=Burumardir-Athelorand
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:168
 msgid "Burumardir-Athelorand"
-msgstr ""
+msgstr "Burumardir-Athelorand"
 
 #. [unit]: type=Elvish Scout, id=Elurin
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:225
 msgid "Elurin"
-msgstr ""
+msgstr "Elurin"
 
 #. [message]: speaker=Elurin
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:234
 msgid "Who disturbs our forest?"
-msgstr ""
+msgstr "¿Quién osa perturbar nuestro bosque?"
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:239
@@ -1397,6 +1434,7 @@ msgid ""
 "A delegation of the Northern Alliance, seeking the road through to Kal "
 "Kartha."
 msgstr ""
+"Una delegación de la Alianza del Norte, buscando el camino hacia Kal Kartha."
 
 #. [message]: speaker=Elurin
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:244
@@ -1405,16 +1443,20 @@ msgid ""
 "ones began to trouble our eastern margins. No axe-bearers shall come near "
 "our trees. Return whence you came!"
 msgstr ""
+"Admitimos pocos extranjeros en los senderos de nuestro bosque, y no "
+"admitimos enanos en particular desde que los enmascarados comenzaron a "
+"causar problemas en los bordes orientales. Ningún portador de hachas de "
+"acercará a nuestros árboles. ¡Regresad a de dónde habéis venido!"
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:249
 msgid "No. We have our duty. We must pass."
-msgstr ""
+msgstr "No. Tenemos nuestro deber que cumplir. Debemos pasar."
 
 #. [message]: speaker=Elurin
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:254
 msgid "You shall not pass here."
-msgstr ""
+msgstr "No pasaréis por aquí."
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:259
@@ -1433,7 +1475,7 @@ msgstr ""
 #. [objective]: condition=win
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:285
 msgid "Move both Aiglondur and Angarthing to the eastern signpost"
-msgstr ""
+msgstr "Mueva tanto a Aiglondur como a Angarthing a la señal en el este"
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:313
@@ -1445,38 +1487,39 @@ msgstr ""
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:345
 msgid "Kal Kartha should be only another day's march east of here."
 msgstr ""
+"Kal Kartha debería estar a tan sólo un día más de marcha al este de aquí."
 
 #. [scenario]: id=10_The_Siege_of_Kal_Kartha
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:3
 msgid "The Siege of Kal Kartha"
-msgstr ""
+msgstr "El asedio de Kal Kartha"
 
 #. [unit]: type=Dwarvish Steelclad, id=Dulcatulos
 #. [side]: type=Dwarvish Steelclad, id=Dulcatulos
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:102
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:49
 msgid "Dulcatulos"
-msgstr ""
+msgstr "Dulcatulos"
 
 #. [side]: type=Orcish Warlord, id=Tan-Morgh
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:74
 msgid "Tan-Morgh"
-msgstr ""
+msgstr "Tan-Morgh"
 
 #. [side]: type=Orcish Warlord, id=Tan-Garukh
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:121
 msgid "Tan-Garukh"
-msgstr ""
+msgstr "Tan-Garukh"
 
 #. [side]: type=Orcish Warlord, id=Tan-Wagran
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:154
 msgid "Tan-Wagran"
-msgstr ""
+msgstr "Tan-Wagran"
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:210
 msgid "Behold! The West Gate of Kal Kartha!"
-msgstr ""
+msgstr "¡Mirad! ¡La Puerta Oeste de Kal Kartha!"
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:214
@@ -1500,7 +1543,7 @@ msgstr ""
 #. [objective]: condition=lose
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:241
 msgid "Death of West Gate commander"
-msgstr ""
+msgstr "Muerte del comandante de la Puerta Oeste"
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:259
@@ -1534,9 +1577,8 @@ msgstr ""
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:288
-#, fuzzy
 msgid "He has grasped the Hammer of Thursagan, then?"
-msgstr "El Martillo de Thursagan?"
+msgstr "¿Él posee el Martillo de Thursagan, entonces?"
 
 #. [message]: speaker=Dulcatulos
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:293
@@ -1564,7 +1606,7 @@ msgstr ""
 #. [scenario]: id=11_The_Court_of_Karrag
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:3
 msgid "The Court of Karrag"
-msgstr ""
+msgstr "La corte de Karrag"
 
 #. [side]: type=Dwarvish Rune Lord, id=Karrag
 #. [unit]: type=Lich, id=Karrag
@@ -1572,14 +1614,14 @@ msgstr ""
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:245
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:49
 msgid "Karrag"
-msgstr ""
+msgstr "Karrag"
 
 #. [side]: type=Dwarvish Rune Lord, id=Karrag
 #. [side]
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:52
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:72
 msgid "Kal Karthans"
-msgstr ""
+msgstr "Kal Karthanos"
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:165
@@ -1591,12 +1633,14 @@ msgstr ""
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:170
 msgid "(I see it. There is something very wrong here.)"
-msgstr ""
+msgstr "(Ya veo. Algo está realmente mal aquí.)"
 
 #. [message]: speaker=Karrag
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:175
 msgid "Hail, fellow dwarves. All Kal Kartha thanks you for your timely rescue."
 msgstr ""
+"Saludos, compañeros enanos. Toda Kal Kartha os agradece por vuestro preciso "
+"rescate."
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:180
@@ -1604,6 +1648,8 @@ msgid ""
 "We are from Knalga; your clans are kin to ours of old. We but did our duty "
 "to kin."
 msgstr ""
+"Venimos de Knalga, vuestros clanes son antiguos familiares de los nuestros. "
+"No hicimos más que nuestro deber."
 
 #. [message]: speaker=Karrag
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:185
@@ -1611,11 +1657,15 @@ msgid ""
 "All dwarves are kin, and must prevail against orcs and humans and other "
 "dirtgrubbers. You can be part of the fist that smites them."
 msgstr ""
+"Todos los enanos son familiares entre sí, y debemos prevalecer ante los "
+"orcos y humanos y otros rastreros. Podéis ser parte del puño que los aplaste."
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:190
 msgid "We did not come to smite anyone, but to re-open contact and trade."
 msgstr ""
+"No hemos venido a aplastar a nadie, sino que ha restablecer nuestro contacto "
+"y comercio."
 
 #. [message]: speaker=Karrag
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:195
@@ -1624,11 +1674,15 @@ msgid ""
 "trade. There can be more such victories. And there will be by the power of "
 "our ancient heirloom, the Hammer of Thursagan. "
 msgstr ""
+"¿Comercio? Vuestra destrucción de los orcos que nos asediaban fue un acto "
+"mucho más noble que el comercio. Pueden haber más victorias así. Y habrán "
+"ciertamente, por el poder de nuestro antigua herencia, el Martillo de "
+"Thursagan."
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:200
 msgid "It is remembered in Knalga that Kal Kartha holds the Hammer."
-msgstr ""
+msgstr "Se recuerda en Knalga que Kal Kartha conserva el Martillo."
 
 #. [message]: speaker=Karrag
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:205
@@ -1636,6 +1690,9 @@ msgid ""
 "Yes! And the Hammer holds the soul of the dwarves, the true people. "
 "Together, we can march to greater victories! Will you of Knalga join me?"
 msgstr ""
+"¡Sí! Y el Martillo conserva el alma de los enanos, la gente de verdad. "
+"¡Juntos, podemos marchar a victorias aun mayores! ¿Vosotros de Knalga, os "
+"uniréis a mí?"
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:210
@@ -1643,6 +1700,8 @@ msgid ""
 "On one condition. You must take off that mask and show your true face. I am "
 "a witness."
 msgstr ""
+"Bajo una condición. Debéis quitaros esa mascara y mostrar vuestro rostro "
+"real. Soy testigo."
 
 #. [message]: speaker=Karrag
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:215
@@ -1650,6 +1709,8 @@ msgid ""
 "You...do not wish to see what is beneath this mask. I was terribly wounded "
 "in an orcish attack. Disfigured."
 msgstr ""
+"Vos... no queréis ver qué hay bajo esta máscara. Fui terriblemente lastimado "
+"durante un ataque orco. Desfigurado."
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:220
@@ -1657,6 +1718,8 @@ msgid ""
 "But the Law must see. A dwarf must put his name and his face behind his "
 "deeds. I am a witness."
 msgstr ""
+"Pero la Ley debe ver. Un enano debe poner su nombre y rostro ante sus actos. "
+"Soy testigo."
 
 #. [message]: speaker=Karrag
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:225
@@ -1664,6 +1727,9 @@ msgid ""
 "Impertinent fool! It is not for you to dictate to a lord in his own holding, "
 "much less one who holds the very soul of the dwarves in his hand."
 msgstr ""
+"¡Necio impertinente! No estáis en posición de dictarle órdenes a un señor en "
+"su propio reino, mucho menos si tiene la mismísima alma de los enanos en su "
+"mano."
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:230
@@ -1671,11 +1737,13 @@ msgid ""
 "The Law speaks. Against him with the eyes to see, no deception can hold. I "
 "AM A WITNESS!"
 msgstr ""
+"La Ley habla. Contra él con los ojos para ver, no puede haber engaños. ¡SOY "
+"TESTIGO!"
 
 #. [message]: speaker=Dulcatulos
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:263
 msgid "No...no...it is horrible! My lord, how did you come to this?"
-msgstr ""
+msgstr "¡No... no... es horrible! ¿Mi señor, cómo llegásteis a esto?"
 
 #. [message]: speaker=Karrag
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:268
@@ -1698,13 +1766,15 @@ msgstr ""
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:282
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:462
 msgid "Defeat Karrag"
-msgstr ""
+msgstr "Derrote a Karrag"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:302
 msgid ""
 "Neither side can recruit or recall. You must win with the troops you have."
 msgstr ""
+"Ningún bando puede reclutar o reincorporar tropas. Debe ganar con las tropas "
+"a su alcance."
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:318
@@ -1744,12 +1814,12 @@ msgstr ""
 #. [side]: type=Lich, id=Fleleen
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:134
 msgid "Fleleen"
-msgstr ""
+msgstr "Fleleen"
 
 #. [side]: type=Lich, id=Lannex
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:148
 msgid "Lannex"
-msgstr ""
+msgstr "Lannex"
 
 #. [message]: speaker={ID_STRING}
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:231
@@ -1795,11 +1865,12 @@ msgstr ""
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:264
 msgid "I sense wrongness. Some greater evil awakens before us."
 msgstr ""
+"Percibo gran corrupción. Un mal mayor está despertando aquí ante nosotros."
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:403
 msgid "This place smells of death."
-msgstr ""
+msgstr "Este lugar huele a muerte."
 
 #. [message]: speaker=Dulcatulos
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:408
@@ -1814,11 +1885,15 @@ msgid ""
 "Karrag's will, and his dark magic. I think he has been casting glamours on "
 "all of you ever since he passed over."
 msgstr ""
+"La voluntad de Karrag, y su magia maligna. Creo que ha estado conjurando "
+"hechizos en vosotros desde su muerte."
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:419
 msgid "Where *is* Karrag? We can't have been more than seconds behind him."
 msgstr ""
+"¿Dónde *está* Karrag? No creo que hayamos llegado más que unos pocos "
+"segundos tras él."
 
 #. [message]: speaker=Dulcatulos
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:424
@@ -1838,7 +1913,7 @@ msgstr ""
 #. [message]: speaker=Dulcatulos
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:438
 msgid "Those are war-drums!"
-msgstr ""
+msgstr "¡Son tambores de guerra!"
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:443
@@ -1846,11 +1921,13 @@ msgid ""
 "Aye. Karrag, calling his troops to battle. Only the Dark Gods know what "
 "hellspawn the lich will summon. AXES UP!"
 msgstr ""
+"Sí. Karrag, llamando a sus tropas a combatir. Sólo los dioses de la "
+"Oscuridad saben qué engendro infernal invocará ese liche. ¡HACHAS ARRIBA!"
 
 #. [objective]: condition=lose
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:474
 msgid "Death of Dulcatulos"
-msgstr ""
+msgstr "Muerte de Dulcatulos"
 
 #. [message]: speaker=Dranath
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:500
@@ -1897,49 +1974,53 @@ msgstr ""
 #. [message]: speaker=Karrag
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:625
 msgid "Fresh blood! Exactly what I need to complete the rite."
-msgstr ""
+msgstr "¡Sangre fresca! Justo lo que necesito para completar el ritual."
 
 #. [message]: speaker=unit
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:645
 msgid "It's locked, but nothing that our hammers can't manage."
 msgstr ""
+"Está cerrado, pero no es nada de lo que nuestros martillos no puedan "
+"encargarse."
 
 #. [message]: speaker=unit
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:667
 msgid "A scroll with some strange writing on it..."
-msgstr ""
+msgstr "Un pergamino con algo de escritura extraña..."
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:672
 msgid "I believe that will be the key-spell for that sealed door."
-msgstr ""
+msgstr "Sospecho que se trata del hechizo que abre esa puerta sellada."
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:677
 msgid "(reads) Kannin a'kana du'masi a'forigln de'amp."
-msgstr ""
+msgstr "(lee) Kannin a'kana du'masi a'forigln de'amp."
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:682
 msgid "Now try the door again, it should open."
-msgstr ""
+msgstr "Ahora intentad la puerta una vez más, debería abrirse."
 
 #. [message]: speaker=unit
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:702
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:723
 msgid "A door. Perhaps Karrag is hiding in here..."
-msgstr ""
+msgstr "Una puerta. Quizá Karrag se oculta allí..."
 
 #. [message]: speaker=unit
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:742
 msgid "150 gold pieces. This should help."
-msgstr ""
+msgstr "150 piezas de oro. Esto debería ayudar."
 
 #. [message]: speaker=unit
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:763
 msgid ""
 "150 gold pieces. I wonder why Karrag would choose to store his gold here."
 msgstr ""
+"150 piezas de oro. Me pregunto porqué Karrag preferiría almacenar su oro "
+"aquí."
 
 #. [message]: speaker=unit
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:786
@@ -1956,22 +2037,22 @@ msgstr ""
 #. [unit]: type=Dwarvish Steelclad, id=Trisi
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:843
 msgid "Trisi"
-msgstr ""
+msgstr "Trisi"
 
 #. [unit]: type=Dwarvish Steelclad, id=Malifen
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:894
 msgid "Malifen"
-msgstr ""
+msgstr "Malifen"
 
 #. [unit]: type=Dwarvish Thunderguard, id=Borras
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:945
 msgid "Borras"
-msgstr ""
+msgstr "Borras"
 
 #. [unit]: type=Dwarvish Steelclad, id=Zamak
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:996
 msgid "Zamak"
-msgstr ""
+msgstr "Zamak"
 
 #. [message]: speaker=unit
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1040
@@ -1994,7 +2075,7 @@ msgstr ""
 #. [message]: speaker=Aragoth
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1130
 msgid "Our master's ritual must not be interrupted. Stop them!"
-msgstr ""
+msgstr "El ritual de nuestro amo no debe ser interrumpido. ¡Detenedlos!"
 
 #. [message]: speaker=unit
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1145
@@ -2002,6 +2083,8 @@ msgid ""
 "Yon doors are big, tightly locked - and, I would imagine, well barricaded. "
 "This may take a while."
 msgstr ""
+"Esas puertas son enormes, y firmemente aseguradas - y, me imagino, bien "
+"defendidas. Esto nos tomará un tiempo."
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1150
@@ -2024,75 +2107,74 @@ msgstr ""
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1180
 msgid "No! No! No! Dirtgrubbers must die! The true people must rule all!"
 msgstr ""
+"¡No! ¡No! ¡No! ¡Los rastreros deben morir! ¡La gente de verdad debe "
+"gobernarlo todo!"
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:1185
 msgid "The 'true people' speak through our axes. Die, foul lich."
 msgstr ""
+"La «gente de verdad» habla a través de nuestras hachas. Muere, liche maldito."
 
 #. [scenario]: id=13_Epilogue
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/13_Epilogue.cfg:3
 msgid "Epilogue"
-msgstr ""
+msgstr "Epílogo"
 
 #. [event]
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/13_Epilogue.cfg:87
 msgid "Glamcatsil"
-msgstr ""
+msgstr "Glamcatsil"
 
 #. [event]
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/13_Epilogue.cfg:88
 msgid "Trithdurus"
-msgstr ""
+msgstr "Trithdurus"
 
 #. [event]
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/13_Epilogue.cfg:89
 msgid "Althasol"
-msgstr ""
+msgstr "Althasol"
 
 #. [event]
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/13_Epilogue.cfg:90
 msgid "Dulalas"
-msgstr ""
+msgstr "Dulalas"
 
 #. [event]
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/13_Epilogue.cfg:91
-#, fuzzy
 msgid "Pelalsol"
-msgstr "Pelmathidrol"
+msgstr "Pelalsol"
 
 #. [event]
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/13_Epilogue.cfg:92
-#, fuzzy
 msgid "Aigthaing"
-msgstr "Angarthing"
+msgstr "Aigthaing"
 
 #. [event]
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/13_Epilogue.cfg:93
-#, fuzzy
 msgid "Pelcatol"
-msgstr "Pelmathidrol"
+msgstr "Pelcatol"
 
 #. [event]
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/13_Epilogue.cfg:94
 msgid "Narithil"
-msgstr ""
+msgstr "Narithil"
 
 #. [event]
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/13_Epilogue.cfg:95
 msgid "Glamdrsol"
-msgstr ""
+msgstr "Glamdrsol"
 
 #. [event]
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/13_Epilogue.cfg:96
-#, fuzzy
 msgid "Pelaithil"
-msgstr "Pelmathidrol"
+msgstr "Pelaithil"
 
 #. [event]
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/13_Epilogue.cfg:97
 msgid "Alaithus"
-msgstr ""
+msgstr "Alaithus"
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/13_Epilogue.cfg:102
@@ -2119,7 +2201,7 @@ msgstr ""
 #. [unit]: type=Lancer, id=Pelias
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/13_Epilogue.cfg:135
 msgid "Pelias"
-msgstr ""
+msgstr "Pelias"
 
 #. [message]: speaker=Pelias
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/13_Epilogue.cfg:143
@@ -2131,7 +2213,7 @@ msgstr ""
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/13_Epilogue.cfg:148
 msgid "I am he. Speak your message."
-msgstr ""
+msgstr "Yo soy. Decidme el mensaje."
 
 #. [message]: speaker=Pelias
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/13_Epilogue.cfg:154
@@ -2183,7 +2265,7 @@ msgstr ""
 #. [unit_type]: id=Dwarvish Annalist, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Annalist.cfg:4
 msgid "Dwarvish Annalist"
-msgstr ""
+msgstr "Analista enano"
 
 #. [unit_type]: id=Dwarvish Annalist, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Annalist.cfg:22
@@ -2198,20 +2280,21 @@ msgstr ""
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Loremaster.cfg:42
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Witness.cfg:44
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Annalist.cfg:39
+#, fuzzy
 msgid "morningstar"
-msgstr ""
+msgstr "estrella de la mañana"
 
 #. [attack]: type=impact
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Loremaster.cfg:125
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Witness.cfg:126
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Annalist.cfg:116
 msgid "bolas"
-msgstr ""
+msgstr "boleadoras"
 
 #. [unit_type]: id=Dwarvish Loremaster, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Loremaster.cfg:4
 msgid "Dwarvish Loremaster"
-msgstr ""
+msgstr "Maestro del saber enano"
 
 #. [unit_type]: id=Dwarvish Loremaster, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Loremaster.cfg:24
@@ -2232,17 +2315,17 @@ msgstr ""
 #. [unit_type]: id=Dwarvish Masked Fighter
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Fighter.cfg:7
 msgid "Dwarvish Masked Fighter"
-msgstr ""
+msgstr "Luchador enmascarado enano"
 
 #. [unit_type]: id=Dwarvish Masked Guardsman
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Guardian.cfg:7
 msgid "Dwarvish Masked Guardsman"
-msgstr ""
+msgstr "Guardia enmascarado enano"
 
 #. [unit_type]: id=Dwarvish Masked Lord
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Lord.cfg:7
 msgid "Dwarvish Masked Lord"
-msgstr ""
+msgstr "Señor enmascarado enano"
 
 #. [unit_type]: id=Dwarvish Masked Lord
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Lord.cfg:9
@@ -2259,7 +2342,7 @@ msgstr ""
 #. [unit_type]: id=Dwarvish Masked Sentinel
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Sentinel.cfg:7
 msgid "Dwarvish Masked Sentinel"
-msgstr ""
+msgstr "Sentinela enmascarado enano"
 
 #. [unit_type]: id=Dwarvish Masked Stalwart
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Stalwart.cfg:7
@@ -2292,7 +2375,7 @@ msgstr ""
 #. [unit_type]: id=Dwarvish Rune Lord, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:6
 msgid "Dwarvish Runemaster"
-msgstr ""
+msgstr "Maestro rúnico enano"
 
 #. [unit_type]: id=Dwarvish Rune Lord, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:26
@@ -2308,17 +2391,17 @@ msgstr ""
 #. [attack]: type=impact
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:31
 msgid "hammer"
-msgstr ""
+msgstr "martillo"
 
 #. [attack]: type=cold
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:81
 msgid "chill tempest"
-msgstr ""
+msgstr "tempestad gélida"
 
 #. [unit_type]: id=Dwarvish Witness, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Witness.cfg:10
 msgid "Dwarvish Witness"
-msgstr ""
+msgstr "Testigo enano"
 
 #. [unit_type]: id=Dwarvish Witness, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Witness.cfg:28
@@ -2343,7 +2426,7 @@ msgstr ""
 #: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:45
 #: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:89
 msgid "inspire"
-msgstr ""
+msgstr "inspirar"
 
 #. [leadership]: id=inspire_0
 #: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:15
@@ -2353,6 +2436,11 @@ msgid ""
 "fight better. Adjacent own units of L1 will do 25% more damage; L0 units "
 "will do 50% more."
 msgstr ""
+"Inspirar:\n"
+"Esta unidad puede inspirar a unidades del mismo bando de nivel 0 o 1 "
+"adyacentes a ella, haciendo que luchen mejor. Unidades propias adyacentes de "
+"nivel 1 causarán un 25% adicional de daño; las unidades de nivel 0 causarán "
+"un 50% adicional."
 
 #. [leadership]: id=inspire_0
 #: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:47
@@ -2376,22 +2464,22 @@ msgstr ""
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/utils/herodeaths.cfg:9
 msgid "I fall!"
-msgstr ""
+msgstr "¡He caído!"
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/utils/herodeaths.cfg:23
 msgid "Oh no! Without a loremaster we cannot complete our mission!"
-msgstr ""
+msgstr "¡Oh no! ¡Sin un maestro sabio no podemos completar nuestra misión!"
 
 #. [message]: speaker=Ratheln
 #: data/campaigns/The_Hammer_of_Thursagan/utils/herodeaths.cfg:37
 msgid "Aaarrgh! My students...what will become of them?"
-msgstr ""
+msgstr "¡Aaarrgh! Mis estudiantes... ¿qué será de ellos?"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Hammer_of_Thursagan/utils/macros.cfg:12
 msgid "You retrieve $amount_gold pieces of gold."
-msgstr ""
+msgstr "Ha obtenido $amount_gold piezas de oro."
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Hammer_of_Thursagan/utils/macros.cfg:47
@@ -2399,11 +2487,13 @@ msgid ""
 "Without magic users from Master Perrin's academy in your party, you can no "
 "longer recruit new ones."
 msgstr ""
+"Sin usuarios mágicos de la academia del Maestro Perrin en vuestro grupo, ya "
+"no podéis reclutar nuevos magos."
 
 #. [object]: id=sorf	# Prevent it from being picked up more than once.
 #: data/campaigns/The_Hammer_of_Thursagan/utils/macros.cfg:70
 msgid "Staff of Righteous Flame"
-msgstr ""
+msgstr "Báculo de la flama justiciera"
 
 #. [object]: id=sorf	# Prevent it from being picked up more than once.
 #: data/campaigns/The_Hammer_of_Thursagan/utils/macros.cfg:73
@@ -2411,11 +2501,13 @@ msgid ""
 "This staff gives a dying mage a final strike that will destroy all nearby "
 "enemies."
 msgstr ""
+"Este báculo le otorga a un mago agonizante un último ataque que destruirá a "
+"todos los enemigos próximos."
 
 #. [object]: id=sorf	# Prevent it from being picked up more than once.
 #: data/campaigns/The_Hammer_of_Thursagan/utils/macros.cfg:74
 msgid "Only mages can wield the Staff."
-msgstr ""
+msgstr "Sólo los magos pueden portar el báculo."
 
 #. [message]: speaker=unit
 #: data/campaigns/The_Hammer_of_Thursagan/utils/macros.cfg:116
@@ -2423,3 +2515,4 @@ msgid ""
 "Aaarrgh! Though I die, the flame of righteousness shall send you down to "
 "darkness!"
 msgstr ""
+"Aaarrgh! ¡Aunque muero, la flama de la justicia os enviará a la oscuridad!"

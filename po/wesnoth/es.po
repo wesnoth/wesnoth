@@ -13,13 +13,13 @@
 # Fernando Cerezal <kryptos21@gmail.com>, 2006.
 # Robert Romero <sildurin@gmail.com>, 2006.
 # Sergi March <sergi.march@gmail.com>, 2008.
-# Ignacio R. Morelle <shikadilord@users.sourceforge.net>, 2008.
+# Ignacio R. Morelle <shikadilord@users.sourceforge.net>, 2008, 2009.
 msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-12-30 21:39+0100\n"
-"PO-Revision-Date: 2008-12-10 22:51-0300\n"
+"PO-Revision-Date: 2009-01-02 04:24-0300\n"
 "Last-Translator: Ignacio R. Morelle <shikadilord@users.sourceforge.net>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -1006,7 +1006,6 @@ msgstr ""
 
 #. [topic]: id=movement
 #: data/core/help.cfg:211
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1019,13 +1018,13 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Otra cosa que hay que tener presente durante el movimiento son las zonas de "
-"control. Cada unidad genera una zona de control en los 6 hexágonos que la "
+"Otra cosa que hay que tener presente durante el movimiento son las Zonas de "
+"Control. Cada unidad genera una zona de control en los 6 hexágonos que la "
 "rodean, y cualquier unidad enemiga que entre en esos hexágonos terminará "
-"inmediatamente su movimiento. Es importante que aprenda a utilizar las zonas "
-"de control en Wesnoth, ya que las únicas unidades que pueden ignorarlas son "
-"aquellas con la habilidad de <ref>dst=ability_skirmisher text=hostigador</"
-"ref>."
+"inmediatamente su movimiento. Es importante que aprenda a utilizar y "
+"aprovechar las zonas de control en Wesnoth, ya que las únicas unidades que "
+"pueden ignorarlas son aquellas con la habilidad de "
+"<ref>dst='ability_skirmisher' text='hostigar'</ref>."
 
 #. [topic]: id=movement
 #: data/core/help.cfg:213
@@ -1194,7 +1193,6 @@ msgstr ""
 
 #. [topic]: id=combat
 #: data/core/help.cfg:241
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1205,12 +1203,13 @@ msgid ""
 "least a 60% chance to hit, regardless of terrain."
 msgstr ""
 "\n"
-"Hay dos excepciones a esta regla: los <ref>dst=weaponspecial_magical "
-"text='ataques mágicos'</ref> y la habilidad de "
-"<ref>dst=weaponspecial_marksman text=tirador</ref>. Los ataques mágicos "
-"siempre tienen un 70% de probabilidades de golpear, sin importar el terreno, "
-"y los tiradores, cuando son ellos los atacantes, siempre tienen al menos un "
-"60% de posibilidades de acierto, independientemente del terreno."
+"\n"
+"Hay dos excepciones a esta regla: los <ref>dst='weaponspecial_magical' "
+"text='ataques mágicos'</ref> y la <ref>dst='weaponspecial_marksman' "
+"text='habilidad del tirador'</ref>. Los ataques mágicos siempre tienen un "
+"70% de probabilidades de golpear, sin importar el terreno, y los tiradores, "
+"cuando son ellos los atacantes, siempre tienen al menos un 60% de "
+"posibilidades de acierto, independientemente del terreno."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:243
@@ -2622,6 +2621,13 @@ msgid ""
 "\n"
 "Mermen and Naga both receive 70% defense on coastal reefs."
 msgstr ""
+"Los arrecifes costeros son aguas someras entre rocas, corales y arena. Esto "
+"le propporciona a la mayoría de las unidades terrestres un suelo más firme y "
+"mejor defensa que si estuviesen normalmente entre aguas someras y también le "
+"otorga a la mayoría de las razas acuáticas una defensa excepcionalmente "
+"alta.\n"
+"\n"
+"Los sirénidos y nagas reciben una defensa del 70% en arrecifes costeros."
 
 #. [topic]: id=terrain_bridge
 #: data/core/help.cfg:710
@@ -2753,6 +2759,10 @@ msgid ""
 "Redraws the screen and reloads any image files that have been changed.\n"
 "\n"
 msgstr ""
+"\n"
+"Redibuja la pantalla y recarga cualquier archivo de imagen que haya "
+"cambiado. \n"
+"\n"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:762
@@ -2881,6 +2891,10 @@ msgid ""
 "campaign.\n"
 "\n"
 msgstr ""
+"\n"
+"Muestra un menú para escoger un escenario al cual ir de inmediato en una "
+"campaña.\n"
+"\n"
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:805
@@ -2921,6 +2935,9 @@ msgid ""
 "Immediately advances to the next scenario in a campaign.\n"
 "\n"
 msgstr ""
+"\n"
+"Inmediatamente avanza al escenario siguiente de una campaña.\n"
+"\n"
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:817
@@ -3435,28 +3452,27 @@ msgstr ""
 #. [option]: type=behaviour
 #: data/core/macros/ai_controller.cfg:144
 msgid "Be more aggressive"
-msgstr ""
+msgstr "Ser más agresivo"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:161
 msgid "aggressive."
-msgstr ""
+msgstr "agresivo."
 
 #. [option]: type=behaviour
 #: data/core/macros/ai_controller.cfg:178
 msgid "Be more defensive"
-msgstr ""
+msgstr "Ser más defensivo"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:195
-#, fuzzy
 msgid "defensive."
-msgstr "Defensa"
+msgstr "defensivo."
 
 #. [option]: type=objective
 #: data/core/macros/ai_controller.cfg:213
 msgid "Focus on defeating..."
-msgstr ""
+msgstr "Concentrarse en derrotar a..."
 
 #. [literal]: speaker=narrator
 #. [value]: speaker=narrator
@@ -3470,12 +3486,12 @@ msgstr ""
 #: data/core/macros/ai_controller.cfg:839
 #: data/core/macros/ai_controller.cfg:879
 msgid "Instruct ally"
-msgstr ""
+msgstr "Dar instrucciones a un aliado"
 
 #. [literal]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:230
 msgid "Which enemy side to focus on?"
-msgstr ""
+msgstr "¿En qué bando enemigo debe concentrarse?"
 
 #. [then]
 #. [else]
@@ -3484,24 +3500,24 @@ msgstr ""
 #: data/core/macros/ai_controller.cfg:437
 #: data/core/macros/ai_controller.cfg:442
 msgid "(side $temp_i|)"
-msgstr ""
+msgstr "(bando $temp_i|)"
 
 #. [then]
 #: data/core/macros/ai_controller.cfg:288
 #: data/core/macros/ai_controller.cfg:438
 msgid "$side_i_leader.name (side $temp_i|)"
-msgstr ""
+msgstr "$side_i_leader.name (bando $temp_i|)"
 
 #. [else]
 #: data/core/macros/ai_controller.cfg:293
 #: data/core/macros/ai_controller.cfg:443
 msgid "side $temp_i"
-msgstr ""
+msgstr "bando $temp_i"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:313
 msgid "focusing on defeating $this_enemy_description|."
-msgstr ""
+msgstr "concentrándose en derrotar a $this_enemy_description|."
 
 #. [value]
 #. [option]: speaker=narrator
@@ -3509,73 +3525,69 @@ msgstr ""
 #: data/core/macros/ai_controller.cfg:479
 #: data/core/macros/ai_controller.cfg:864
 #: data/core/macros/ai_controller.cfg:899
-#, fuzzy
 msgid "Back"
-msgstr "Negro"
+msgstr "Volver"
 
 #. [option]: type=objective
 #: data/core/macros/ai_controller.cfg:359
 msgid "Focus on protecting..."
-msgstr ""
+msgstr "Concentrarse en proteger a..."
 
 #. [literal]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:376
 msgid "Which friendly side to protect?"
-msgstr ""
+msgstr "¿A qué bando amigo debería proteger?"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:463
 msgid "focusing on protecting $this_ally_description|."
-msgstr ""
+msgstr "concentrándose en proteger a $this_ally_description|."
 
 #. [option]: type=objective
 #: data/core/macros/ai_controller.cfg:511
 msgid "Defend a location..."
-msgstr ""
+msgstr "Defender una ubicación..."
 
 #. [print]
 #: data/core/macros/ai_controller.cfg:525
 msgid "Right-click to select a location to defend"
-msgstr ""
+msgstr "Haga clic derecho para seleccionar una ubicación que defender"
 
 #. [set_menu_item]: id=ai_controller_defend_location_picker
 #: data/core/macros/ai_controller.cfg:532
 msgid "Defend this location"
-msgstr ""
+msgstr "Defender esta ubicación"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:555
 msgid "focusing on defending the area around $x1|,$y1|."
-msgstr ""
+msgstr "concentrándose en defender el área alrededor de $x1|,$y1|."
 
 #. [print]
 #: data/core/macros/ai_controller.cfg:580
 msgid "Location selection canceled"
-msgstr ""
+msgstr "Cancelada la selección de ubicación"
 
 #. [option]
 #: data/core/macros/ai_controller.cfg:595
-#, fuzzy
 msgid "Clear objective orders"
-msgstr "Cancelar órdenes"
+msgstr "Cancelar órdenes de objetivo"
 
 #. [option]
 #: data/core/macros/ai_controller.cfg:619
 msgid "Clear behaviour orders"
-msgstr ""
+msgstr "Cancelar órdenes de comportamiento"
 
 #. [option]
 #: data/core/macros/ai_controller.cfg:643
-#, fuzzy
 msgid "Clear all orders"
-msgstr "Cancelar órdenes"
+msgstr "Cancelar todas las órdenes"
 
 #. [then]
 #: data/core/macros/ai_controller.cfg:769
 #: data/core/macros/ai_controller.cfg:780
-#, fuzzy
 msgid "none set."
-msgstr "ninguna"
+msgstr "ninguno."
 
 #. [value]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:802
@@ -3583,6 +3595,8 @@ msgid ""
 "$ally_leader.name (side $ally_side|) has not been given any instructions and "
 "is acting normally."
 msgstr ""
+"No se le ha dado ninguna instrucción a $ally_leader.name (bando $ally_side|) "
+"y está comportándose de acuerdo a lo predeterminado."
 
 #. [value]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:805
@@ -3593,6 +3607,10 @@ msgid ""
 "Behaviour: $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_behaviour_description"
 msgstr ""
+"Objetivo: $ai_controller.side_$ally_side|_current_settings."
+"currently_doing_objective_description\n"
+"Comportamiento: $ai_controller.side_$ally_side|_current_settings."
+"currently_doing_behaviour_description"
 
 #. [value]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:819
@@ -3600,22 +3618,23 @@ msgid ""
 "$ally_leader.name (side $ally_side|) is carrying out the following "
 "instructions:"
 msgstr ""
+"$ally_leader.name (side $ally_side|) está cumpliendo con las siguientes "
+"instrucciones:"
 
 #. [literal]
 #: data/core/macros/ai_controller.cfg:834
 msgid "Set objective..."
-msgstr ""
+msgstr "Cambiar objetivo..."
 
 #. [literal]
 #: data/core/macros/ai_controller.cfg:874
-#, fuzzy
 msgid "Set behaviour..."
-msgstr "Establecer Contraseña..."
+msgstr "Cambiar comportamiento..."
 
 #. [literal]
 #: data/core/macros/ai_controller.cfg:914
 msgid "Exit"
-msgstr ""
+msgstr "Salir"
 
 #. [advancement]: id=amla_default
 #: data/core/macros/amla.cfg:10
@@ -3641,25 +3660,20 @@ msgid "No early finish bonus."
 msgstr "No hay bonificación por finalizar pronto."
 
 #: data/core/macros/carryover-utils.cfg:15
-#, fuzzy
 msgid "`(early finish bonus)"
-msgstr "Bonificación por finalizar pronto."
+msgstr "`(bonificación por terminar pronto)"
 
 #: data/core/macros/carryover-utils.cfg:18
-#, fuzzy
 msgid "No gold carried over to the next scenario."
-msgstr ""
-"\n"
-"40% del oro restante al finalizar añadido al siguiente escenario."
+msgstr "El oro no es añadido al siguiente escenario."
 
 #: data/core/macros/carryover-utils.cfg:22
-#, fuzzy
 msgid ""
 "\n"
 "100% of finishing gold carried over to the next scenario."
 msgstr ""
 "\n"
-"40% del oro restante al finalizar añadido al siguiente escenario."
+"100% del oro restante al finalizar añadido al siguiente escenario."
 
 #: data/core/macros/carryover-utils.cfg:26
 msgid ""
@@ -5000,10 +5014,10 @@ msgstr "vital"
 
 #. [trait]: id=healthy
 #: data/core/macros/traits.cfg:134
-#, fuzzy
 msgid "Can rest while moving, takes a quarter less poison damage"
 msgstr ""
-"Puede descansar mientras se mueve, disminuye daño del veneno a la mitad"
+"Puede descansar mientras se mueve, sufre un cuarto menos de daño por "
+"envenenamiento"
 
 #. [trait]: id=fearless
 #: data/core/macros/traits.cfg:151 data/core/macros/traits.cfg:164
@@ -5758,69 +5772,67 @@ msgid ""
 "individuals tend to specialize in other skills, like archery or "
 "assassination."
 msgstr ""
-"En apariencia, orcos son mitad hombres y mitad bestias. Son más altos, más "
-"fuertes y resistentes que los humanos. Son guerreros, salvajes y crueles por "
-"naturaleza. Su sangre es más oscura y más espesa que la de los seres humanos "
-"normales y tienen poco cuidado de la higiene personal o su apariencia "
+"En apariencia, los orcos son mitad hombres y mitad bestias. Son más altos, "
+"más fuertes y resistentes que los humanos. Son belicosos, salvajes y crueles "
+"por naturaleza. Su sangre es más oscura y más espesa que la de los seres "
+"humanos normales y tienen poco cuidado de la higiene o su apariencia "
 "personal. Aunque los Orcos son violentos, incluso entre ellos mismos, están "
-"orientados hacia el grupo; un orco nunca viaja mucho muy lejos o vive solo "
-"en grupos de menos de una media docena.\n"
+"hechos para trabajar en grupo; un orco nunca viaja muy lejos o vive solo en "
+"grupos de menos de una media docena.\n"
 " \n"
 "<header>text='Sociedad'</header>\n"
-"Casi todos los orcos son miembros de una tribu o de un clan. Las relaciones "
-"entre tribus vecinas suelen ser violentas, salvo en los casos que un enemigo "
-"mutuo amenaza su existencia o hay perspectivas de un saqueo de gran "
-"animosidad mutua. En ocasiones, un único gran cacique puedan surgir y "
-"comandar varias tribus de vez en cuando, por lo general a través de la "
-"intimidación de los seguidores. Una tribu de orcos en tiempos de paz tiende "
-"a centrarse casi exclusivamente en el fortalecimiento de sí misma, en "
-"preparación para el próximo conflicto armado. Se sabe de los Orcos que "
-"poseen un rudimentario sistema de escritura - normalmente en sangre - aunque "
-"es más comúnmente utilizado para comerciar con insultos o amenazas entre los "
-"jefes de las tribus.\n"
+"Casi todos los orcos son miembros de tribus o clanes. Las relaciones entre "
+"tribus vecinas suelen ser violentas, salvo en los casos que un enemigo mutuo "
+"amenaza su existencia o hay perspectivas de un saqueo de gran animosidad "
+"mutua. En ocasiones, un único gran cacique puede surgir y comandar varias "
+"tribus de vez en cuando, por lo general a través de la intimidación de los "
+"seguidores. Una tribu de orcos en tiempos de paz tiende a centrarse casi "
+"exclusivamente en el fortalecimiento de sí misma, en preparación para el "
+"próximo conflicto armado. Se sabe que los Orcos poseen un rudimentario "
+"sistema de escritura - normalmente en sangre - aunque es más comúnmente "
+"utilizado para comunicar insultos o amenazas entre los jefes tribales.\n"
 " \n"
 "Las sociedades de Orcos se basan en poco más que la fuerza; el poder da la "
-"razón, y un líder conduce y sólo sobrevive mientras nadie logra arrebatarle "
-"el título. Una constante lucha por el poder hierve entre los posibles jefes "
+"razón, y un líder conduce y sobrevive sólo mientras nadie logre arrebatarle "
+"el título. Una lucha constante por el poder hierve entre los posibles jefes "
 "tribales. Un líder orco rara vez vive más de un puñado de años para "
 "disfrutar de su autoridad absoluta antes de ser asesinado por su posición - "
 "aunque la historia conoce algunas excepciones notables. Los Orcos no "
-"sostienen ningún particular código de honor y aunque la indisputable fuerza "
-"bruta es típicamente el método preferido de mostrar poder, el asesinato, el "
-"envenenamiento y el apuñalamiento por detrás son métodos completamente "
-"viables para conseguir las propias metas.\n"
+"sostienen ningún código de honor en particular y aunque la indisputable "
+"fuerza bruta es típicamente el método preferido de mostrar poder, el "
+"asesinato, el envenenamiento y el apuñalamiento por detrás son métodos "
+"completamente viables para conseguir las propias metas.\n"
 "\n"
 "Los Orcos en su mayoría viven en las zonas rurales, a menudo en regiones "
-"montañosas o al pie de las colinas, a veces en cuevas. No mantienen cultivos "
-"ni ganadería, sino que son buenos  cazadores como consecuencia de su "
-"estatura física y su brutalidad. Debido a su gran número son capaces de "
-"cazar una zona prácticamente limpia de cualquier otra cosa más grande que "
-"roedores en un período relativamente corto de tiempo. Debido a esto y a la "
-"inestabilidad de sus dirigentes, las tribus de orcos tienden a llevar una "
-"vida semi-nómada, nunca permaneciendo en una región durante demasiado "
-"tiempo. Las tribus más grandes puede establecerse de manera firme en una "
-"zona durante años o incluso décadas, y construir campamentos casi parecidos "
-"a grandes ciudades, pero incluso estos son fácilmente desmantelados y "
-"abandonados si existe la necesidad de trasladar la horda.\n"
+"montañosas o al pie de las colinas, o a veces en cuevas. No mantienen "
+"cultivos ni ganadería, no obstante son buenos cazadores como consecuencia de "
+"su estatura y brutalidad. Debido a su gran número son capaces de dejar una "
+"zona prácticamente limpia de cualquier otra cosa más grande que roedores en "
+"un período relativamente corto de tiempo. Debido a esto y a la inestabilidad "
+"de sus dirigentes, las tribus de orcos tienden a llevar una vida semi-"
+"nómada, nunca permaneciendo en una región durante demasiado tiempo. Las "
+"tribus más grandes puede establecerse de manera firme en una zona durante "
+"años o incluso décadas, y construir campamentos casi parecidos a grandes "
+"ciudades, pero incluso estos son fácilmente desmantelados y abandonados si "
+"existe la necesidad de trasladar la horda.\n"
 "\n"
 "Los orcos más viejos conocidos han vivido alrededor de 50 a 60 años de edad, "
 "pero muy pocos viven para ver más de dos o tres décadas antes de cumplir sus "
-"fines, ya sea en la guerra o de la mano de uno de sus familiares. Los más "
-"viejos son a menudo los chamanes orcos, que son quizás los únicos que la "
-"mayor parte de su especie que se ven como confiables y neutral. Los orígenes "
-"de esta costumbre no se conocen, como los chamanes no contribuyen muy "
-"directamente a las sociedades de orcos, sino sólo como asesores - algo que "
-"orcos no tienden a tolerar de otra manera. Los chamanes son, en muchos "
-"sentidos lo contrario de la mayoría de los otros orcos, que son a menudo "
-"físicamente debilitados y frágiles en la comparación y carecen de "
-"habilidades en la batalla. A pesar de su dependencia de la fuerza bruta, "
-"casi todos los orcos están destinados a crecer a poseerla.  Muchos orcos "
-"nacen más pequeños y más débiles que el resto, y ya casi como los recién "
-"nacidos se ponen en su lugar por sus hermanos más fuertes. Los más fuertes "
-"rutinariamente captan la mayoría de los alimentos y, por tanto, crecen aún "
-"más fuertes, mientras que sus hermanos más débiles no lo hacen. Muchas de "
-"estas personas tienden a especializarse en otras competencias, como el tiro "
-"con arco o el asesinato."
+"fines, ya sea en la guerra o en manos de uno de sus familiares. Los más "
+"viejos son a menudo los chamanes, quienes son quizás los únicos que la mayor "
+"parte de su especie ve como confiables y neutrales. Los orígenes de esta "
+"costumbre no se conocen, como los chamanes no contribuyen muy directamente a "
+"las sociedades de orcos, sino sólo como asesores - algo que orcos no tienden "
+"a tolerar de otra manera. Los chamanes son, en muchos sentidos lo contrario "
+"de la mayoría de los otros orcos, que son a menudo físicamente debilitados y "
+"frágiles en la comparación y carecen de habilidades en la batalla. A pesar "
+"de su dependencia de la fuerza bruta, casi todos los orcos están destinados "
+"a crecer a poseerla.  Muchos orcos nacen más pequeños y más débiles que el "
+"resto, y ya casi como los recién nacidos se ponen en su lugar por sus "
+"hermanos más fuertes. Los más fuertes rutinariamente captan la mayoría de "
+"los alimentos y, por tanto, crecen aún más fuertes, mientras que sus "
+"hermanos más débiles no lo hacen. Muchas de estas personas tienden a "
+"especializarse en otras competencias, como el tiro con arco o el asesinato."
 
 #. [race]: id=troll
 #: data/core/units.cfg:259
@@ -6845,6 +6857,9 @@ msgid ""
 "In many campaign scenarios, you may issue simple instructions for your "
 "computer-controlled allies using the right-click context menu."
 msgstr ""
+"En muchos escenarios de campaña, puede darle instrucciones simples a sus "
+"aliados controlados por la computadora utilizando el menú contextual al "
+"hacer clic derecho."
 
 #. [menu]: id=menu-main
 #: data/themes/default.cfg:120 data/themes/dfool.cfg:134
@@ -7347,11 +7362,11 @@ msgstr "Borrar expansión: "
 
 #: src/addon_management.cpp:1011
 msgid "There are no add-ons available for download from this server."
-msgstr "No hay expansiones disponibles para descargar de este servidor."
+msgstr "No hay complementos disponibles para descargar de este servidor."
 
 #: src/addon_management.cpp:1018
 msgid "Get Add-ons"
-msgstr "Expansiones"
+msgstr "Complementos"
 
 #: src/addon_management.cpp:1019
 msgid "Choose the add-on to download."
@@ -7754,9 +7769,9 @@ msgstr "» (el juego finalizará en este momento)"
 #: src/game.cpp:1539
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
-msgstr[0] "La siguiente expansión contiene errores y no se ha podido cargar:"
+msgstr[0] "El siguiente complemento contiene errores y no se ha podido cargar:"
 msgstr[1] ""
-"Las siguientes expansiones contienen errores y no se han podido cargar:"
+"Los siguientes complementos contienen errores y no se han podido cargar:"
 
 #: src/game.cpp:1546
 msgid "ERROR DETAILS:"
@@ -9578,7 +9593,7 @@ msgstr "Cargar"
 
 #: src/titlescreen.cpp:415
 msgid "TitleScreen button^Add-ons"
-msgstr "Expansiones"
+msgstr "Complementos"
 
 #: src/titlescreen.cpp:417
 msgid "TitleScreen button^Map Editor"
@@ -9791,24 +9806,3 @@ msgstr "¡Ayúdenos a hacer un mejor Wesnoth para todos!"
 #: src/upload_log.cpp:330
 msgid "Enable summary uploads"
 msgstr "Permitir envíos de resúmenes"
-
-#~ msgid "Login"
-#~ msgstr "Usuario"
-
-#~ msgid ""
-#~ "\n"
-#~ "Redraw the screen.\n"
-#~ "\n"
-#~ msgstr ""
-#~ "\n"
-#~ "Redibujar la pantalla.\n"
-#~ "\n"
-
-#~ msgid "No server ping since $timeout second. Connection timed out."
-#~ msgid_plural "No server ping since $timeout seconds. Connection timed out."
-#~ msgstr[0] ""
-#~ "No hay respuesta del servidor desde hace $timeout segundo. Se ha agotado "
-#~ "el tiempo de espera"
-#~ msgstr[1] ""
-#~ "No hay respuesta del servidor desde hace $timeout segundos. Se ha agotado "
-#~ "el tiempo de espera"
