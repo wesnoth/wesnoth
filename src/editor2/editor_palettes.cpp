@@ -26,7 +26,6 @@
 #include "../tooltips.hpp"
 
 
-
 namespace editor2 {
 
 static bool is_invalid_terrain(t_translation::t_terrain c) {
@@ -481,13 +480,17 @@ void terrain_palette::draw(bool force) {
 		draw_rectangle(dstrect.x, dstrect.y, image->w, image->h, color, screen);
 		tooltips::clear_tooltips(dstrect);
 
-        const char* non_core_notice;
+        std::stringstream tooltip_text;
         if (non_core_terrains_.find(terrain) == non_core_terrains_.end()) {
-            non_core_notice = "";
+            //no special for now
         } else {
-            non_core_notice = "#";
+            tooltip_text << "#";
         }
-		tooltips::add_tooltip(dstrect, non_core_notice + map().get_terrain_string(terrain));
+        tooltip_text << map().get_terrain_string(terrain);
+        if (gui_.get_draw_terrain_codes()) {
+            tooltip_text << " - " << terrain;
+        }
+		tooltips::add_tooltip(dstrect, tooltip_text.str());
 		if (counter_from_zero % size_specs_.terrain_width == size_specs_.terrain_width - 1)
 			y += size_specs_.terrain_space;
 	}
