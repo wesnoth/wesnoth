@@ -355,8 +355,7 @@ void tscrollbar_container::vertical_scrollbar_click(twidget* caller)
 	assert(itor != scroll_lookup().end());
 	vertical_scrollbar_->scroll(itor->second);
 
-	set_scrollbar_button_status();
-	set_dirty();
+	scrollbar_moved();
 }
 
 void tscrollbar_container::horizontal_scrollbar_click(twidget* caller)
@@ -370,8 +369,7 @@ void tscrollbar_container::horizontal_scrollbar_click(twidget* caller)
 	assert(itor != scroll_lookup().end());
 	horizontal_scrollbar_->scroll(itor->second);
 
-	set_scrollbar_button_status();
-	set_dirty();
+	scrollbar_moved();
 }
 
 void tscrollbar_container::finalize_setup()
@@ -464,35 +462,6 @@ void tscrollbar_container::impl_draw_background(surface& frame_buffer)
 {
 	// Inherited.
 	tcontainer_::impl_draw_background(frame_buffer);
-
-	/***** **** Draw content ***** *****/
-	assert(content_ && content_grid_);
-
-	// Update the location depending on the scrollbars.
- 	if(vertical_scrollbar_mode_ != HIDE
-			|| horizontal_scrollbar_mode_ != HIDE) {
-
-		assert(vertical_scrollbar_ && horizontal_scrollbar_);
-		const int x_offset = horizontal_scrollbar_mode_ == HIDE
-				? 0
-				: horizontal_scrollbar_->get_item_position() *
-				  horizontal_scrollbar_->get_step_size();
-
-		const int y_offset = vertical_scrollbar_mode_ == HIDE
-				? 0
-				: vertical_scrollbar_->get_item_position() *
-				  vertical_scrollbar_->get_step_size();
-
-
-		const tpoint content_size = content_grid_->get_best_size();
-
-		const tpoint content_origin = tpoint(
-				content_->get_screen_x() - x_offset,
-				content_->get_screen_y() - y_offset);
-
-		content_grid_->set_origin(content_origin);
-		content_grid_->set_visible_area(content_visible_area_);
-	}
 
 	// Draw.
 	content_grid_->draw_children(frame_buffer);
@@ -594,6 +563,37 @@ void tscrollbar_container::set_scrollbar_button_status()
 		horizontal_scrollbar_->set_active( !(horizontal_scrollbar_->at_begin()
 				&& horizontal_scrollbar_->at_end()));
 	}
+}
+
+void tscrollbar_container::scrollbar_moved()
+{
+	// Init.
+	assert(content_ && content_grid_);
+	assert(vertical_scrollbar_ && horizontal_scrollbar_);
+
+	/*** Update the content location. ***/
+	const int x_offset = horizontal_scrollbar_mode_ == HIDE
+			? 0
+			: horizontal_scrollbar_->get_item_position() *
+			  horizontal_scrollbar_->get_step_size();
+
+	const int y_offset = vertical_scrollbar_mode_ == HIDE
+			? 0
+			: vertical_scrollbar_->get_item_position() *
+			  vertical_scrollbar_->get_step_size();
+
+	const tpoint content_size = content_grid_->get_best_size();
+
+	const tpoint content_origin = tpoint(
+			content_->get_screen_x() - x_offset,
+			content_->get_screen_y() - y_offset);
+
+	content_grid_->set_origin(content_origin);
+	content_grid_->set_visible_area(content_visible_area_);
+	content_grid_->set_dirty();
+
+	// Update scrollbar.
+	set_scrollbar_button_status();
 }
 
 } // namespace gui2

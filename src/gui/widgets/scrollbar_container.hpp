@@ -151,10 +151,11 @@ public:
 	 * Maybe also make protected or private and add a friend.
 	 */
 	void vertical_scrollbar_moved(twidget* /*caller*/)
-		{ set_scrollbar_button_status(); set_dirty(); }
+		{ scrollbar_moved(); }
 
 	void horizontal_scrollbar_moved(twidget* /*caller*/)
-		{ set_scrollbar_button_status(); set_dirty(); }
+		{ scrollbar_moved(); }
+
 protected:
 
 	/*
@@ -256,13 +257,15 @@ private:
 	/** Sets the visible state of the horizontal scrollbar. */
 	void show_horizontal_scrollbar();
 
+	/** Helper function which needs to be called after the scollbar moved. */
+	void scrollbar_moved();
+
 	/** Inherited from tcontrol. */
 	const std::string& get_control_type() const
 	{
 		static const std::string type = "scrollbar_container";
 		return type;
 	}
-
 };
 
 } // namespace gui2
