@@ -549,7 +549,7 @@ void tscrollbar_container::set_scrollbar_button_status()
 					find_widget<tbutton>(name, false, false);
 
 			if(button) {
-				button->set_active(vertical_scrollbar_->at_end());
+				button->set_active(!vertical_scrollbar_->at_end());
 			}
 		}
 
@@ -575,7 +575,7 @@ void tscrollbar_container::set_scrollbar_button_status()
 					find_widget<tbutton>(name, false, false);
 
 			if(button) {
-				button->set_active(horizontal_scrollbar_->at_end());
+				button->set_active(!horizontal_scrollbar_->at_end());
 			}
 		}
 
