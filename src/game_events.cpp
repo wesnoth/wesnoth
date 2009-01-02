@@ -39,6 +39,8 @@
 #include "wml_exception.hpp"
 
 #include <boost/scoped_ptr.hpp>
+#include <iomanip>
+#include <iostream>
 
 #define DBG_NG LOG_STREAM(debug, engine)
 #define LOG_NG LOG_STREAM(info, engine)
@@ -3041,8 +3043,7 @@ namespace {
         }
         else
         {
-        	const config &normal = cfg.get_config();
-		    new_handlers.push_back(game_events::event_handler(vconfig(&normal, &normal)));
+		    new_handlers.push_back(game_events::event_handler(cfg));
         }
 	}
 
@@ -3062,18 +3063,23 @@ namespace {
 		while(wmi_command_changes.size() > 0) {
 			wmi_command_change wcc = wmi_command_changes.back();
 			wml_menu_item*& mref = state_of_game->wml_menu_items[wcc.first];
-			const bool no_current_handler = mref->command.empty();
+			const bool has_current_handler = !mref->command.empty();
 			mref->command = *(wcc.second);
-			if(no_current_handler) {
-				if(!mref->command.empty()) {
+			if(has_current_handler) {
+				if(mref->command.empty()) {
 					mref->command["name"] = mref->name;
 					mref->command["first_time_only"] = "no";
-					event_handlers.push_back(game_events::event_handler(&mref->command));
+					mref->command.add_child("allow_undo");
 				}
-			} else if(mref->command.empty()) {
+				foreach(game_events::event_handler hand, event_handlers) {
+					if(hand.is_menu_item() && hand.matches_name(mref->name)) {
+						hand.read(vconfig(&mref->command,&mref->command));
+					}
+				}
+			} else if(!mref->command.empty()) {
 				mref->command["name"] = mref->name;
 				mref->command["first_time_only"] = "no";
-				mref->command.add_child("allow_undo");
+				event_handlers.push_back(game_events::event_handler(vconfig(&mref->command,&mref->command)));
 			}
 			LOG_NG << "setting command for " << mref->name << "\n";
 			LOG_NG << *wcc.second;
@@ -3208,7 +3214,10 @@ namespace game_events {
 			const std::string& cmd, const vconfig cfg)
 	{
 		log_scope2(engine, "handle_event_command");
-		LOG_NG << "handling command: '" << cmd << "'\n";
+		LOG_NG << "handling command '" << cmd << "' from "
+			<< (cfg.is_volatile()?"volatile ":"") << "cfg 0x"
+			<< std::hex << std::setiosflags(std::ios::uppercase)
+			<< reinterpret_cast<uintptr_t>(&cfg.get_config()) << std::dec << "\n";
 
 		if (!command_handlers::get().call_handler(cmd, *this, event_info, cfg))
 		{
@@ -3219,15 +3228,7 @@ namespace game_events {
 	}
 
 	bool game_events::event_handler::is_menu_item() const {
-		assert(state_of_game != NULL);
-		std::map<std::string, wml_menu_item *>::iterator itor = state_of_game->wml_menu_items.begin();
-		while(itor != state_of_game->wml_menu_items.end()) {
-			if(&cfg_.get_config() == &itor->second->command) {
-				return true;
-			}
-			++itor;
-		}
-		return false;
+		return is_menu_item_;
 	}
 
 	bool game_events::event_handler::matches_name(const std::string& name) const {
@@ -3378,7 +3379,7 @@ namespace game_events {
 		std::map<std::string, wml_menu_item *>::iterator itor = state_of_game->wml_menu_items.begin();
 		while(itor != state_of_game->wml_menu_items.end()) {
 			if(!itor->second->command.empty()) {
-				event_handlers.push_back(game_events::event_handler(&itor->second->command));
+				event_handlers.push_back(game_events::event_handler(vconfig(&itor->second->command,&itor->second->command)));
 			}
 			++itor;
 			++wmi_count;
@@ -3517,7 +3518,11 @@ namespace game_events {
 					init_event_vars = false;
 				}
 
-				LOG_NG << "processing event '" << event_name << "'\n";
+				LOG_NG << "processing event '" << event_name << "' using "
+					<< (handler.get_vconfig().is_volatile()?"volatile ":"") << "cfg 0x"
+					<< std::hex << std::setiosflags(std::ios::uppercase)
+					<< reinterpret_cast<uintptr_t>(&handler.get_vconfig().get_config())
+					<< std::dec << "\n";
 				if(process_event(handler, ev))
 					result = true;
 			}
