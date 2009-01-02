@@ -462,8 +462,13 @@ void tscrollbar_container::impl_draw_background(surface& frame_buffer)
 {
 	// Inherited.
 	tcontainer_::impl_draw_background(frame_buffer);
+}
 
-	// Draw.
+void tscrollbar_container::impl_draw_children(surface& frame_buffer)
+{
+	// Inherited.
+	tcontainer_::impl_draw_background(frame_buffer);
+
 	content_grid_->draw_children(frame_buffer);
 }
 

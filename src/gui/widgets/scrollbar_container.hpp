@@ -245,6 +245,9 @@ private:
 	void impl_draw_background(surface& frame_buffer);
 
 	/** Inherited from tcontainer_. */
+	void impl_draw_children(surface& frame_buffer);
+
+	/** Inherited from tcontainer_. */
 	void impl_draw_foreground(surface& frame_buffer);
 
 	/** Inherited from tcontainer_. */
