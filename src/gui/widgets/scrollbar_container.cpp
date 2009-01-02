@@ -504,6 +504,17 @@ void tscrollbar_container::impl_draw_foreground(surface& frame_buffer)
 	tcontainer_::impl_draw_foreground(frame_buffer);
 }
 
+void tscrollbar_container::child_populate_dirty_list(twindow& caller,
+		const std::vector<twidget*>& call_stack)
+{
+	// Inherited.
+	tcontainer_::child_populate_dirty_list(caller, call_stack);
+
+	assert(content_grid_);
+	std::vector<twidget*> child_call_stack(call_stack);
+	content_grid_->populate_dirty_list(caller, child_call_stack);
+}
+
 void tscrollbar_container::show_vertical_scrollbar()
 {
 	if(!vertical_scrollbar_grid_) {

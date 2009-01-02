@@ -246,6 +246,10 @@ private:
 	/** Inherited from tcontainer_. */
 	void impl_draw_foreground(surface& frame_buffer);
 
+	/** Inherited from tcontainer_. */
+	void child_populate_dirty_list(twindow& caller,
+		const std::vector<twidget*>& call_stack);
+
 	/** Sets the visible state of the vertical scrollbar. */
 	void show_vertical_scrollbar();
 
