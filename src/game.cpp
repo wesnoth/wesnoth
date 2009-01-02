@@ -890,9 +890,15 @@ bool game_controller::load_game()
 		std::string error_log;
 		read_save_file(game,cfg,&error_log);
 		if(!error_log.empty()) {
-			gui::show_error_message(disp(),
-					_("Warning: The file you have tried to load is corrupt. Loading anyway.\n") +
-					error_log);
+            try {
+			    gui::show_error_message(disp(),
+					    _("Warning: The file you have tried to load is corrupt. Loading anyway.\n") +
+					    error_log);
+            } catch (utils::invalid_utf8_exception&) {
+			    gui::show_error_message(disp(),
+					    _("Warning: The file you have tried to load is corrupt. Loading anyway.\n") +
+                        std::string("(UTF-8 ERROR)"));
+            }
 		}
 
 		cache_.clear_defines();
