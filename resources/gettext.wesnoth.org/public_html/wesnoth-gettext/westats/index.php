@@ -336,7 +336,7 @@ foreach($stats as $lang => $stat){
     <td>
 <? 
 if ($package=='alloff' || $package=='allun' || $package=='all' || $package=='allcore'){
-	echo "<strong>" . $langs[$lang] . "</strong> (" . $lang . ")";
+	echo "<strong><a href='index.lang.php?lang=$lang&amp;version=$version'>" . $langs[$lang] . "</a></strong> (" . $lang . ")";
 }else{
 	$repo = ($version == 'trunk') ? 'trunk' : "branches/$branch";
 	if($official){
