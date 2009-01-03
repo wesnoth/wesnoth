@@ -489,13 +489,23 @@ void ttext::rerender(const bool force) const
 			for(size_t x = 0; x < width; ++x) {
 
 				unsigned char *pixel = &surface_buffer_[(y * width + x) * 4];
-				const unsigned char alpha = *(pixel + 3);
 
+// Assume everything not compiled with gcc to be on a little endian platform.
+#if defined(__GNUC__) && defined(__BIG_ENDIAN__)
+				const unsigned char alpha = *(pixel + 0);
+#else
+				const unsigned char alpha = *(pixel + 3);
+#endif
 				if(alpha == 0) {
 					continue;
 				}
 
+// Assume everything not compiled with gcc to be on a little endian platform.
+#if defined(__GNUC__) && defined(__BIG_ENDIAN__)
+				decode_pixel(alpha, pixel + 3);
+#else
 				decode_pixel(alpha, pixel + 0);
+#endif
 				decode_pixel(alpha, pixel + 1);
 				decode_pixel(alpha, pixel + 2);
 			}
