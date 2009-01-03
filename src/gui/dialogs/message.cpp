@@ -58,11 +58,6 @@ void tmessage::pre_show(CVideo& /*video*/, twindow& window)
 		 * and thus not need a scrollbar. Also when the button is visible
 		 * easy_close will always return false.
 		 */
-		/** @todo The space for invisible items is always reserved. Look about
-		 * how to change that. (Maybe get_best_size() in twidget can do that by
-		 * returning 0,0 when called upon invisible items. Or the tgrid::tchild
-		 * should do that since an item with 0,0 might get a border.)
-		 */
 		tbutton* button =
 			dynamic_cast<tbutton*>(window.find_widget("ok", false));
 		VALIDATE(button, missing_widget("ok"));
