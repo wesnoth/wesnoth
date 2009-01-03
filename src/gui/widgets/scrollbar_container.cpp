@@ -264,7 +264,7 @@ void tscrollbar_container::
 			&& get_active() && does_block_easy_close());
 
 	// Now set the visible part of the content.
-	content_visible_area_ = content_->get_screen_rect();
+	content_visible_area_ = content_->get_rect();
 	content_grid_->set_visible_area(content_visible_area_);
 }
 
@@ -291,7 +291,7 @@ void tscrollbar_container::set_visible_area(const SDL_Rect& area)
 
 	// Now get the visible part of the content.
 	content_visible_area_ =
-			get_rect_union(area, content_->get_screen_rect());
+			get_rect_union(area, content_->get_rect());
 
 	content_grid_->set_visible_area(content_visible_area_);
 }
@@ -578,8 +578,8 @@ void tscrollbar_container::scrollbar_moved()
 	const tpoint content_size = content_grid_->get_best_size();
 
 	const tpoint content_origin = tpoint(
-			content_->get_screen_x() - x_offset,
-			content_->get_screen_y() - y_offset);
+			content_->get_x() - x_offset,
+			content_->get_y() - y_offset);
 
 	content_grid_->set_origin(content_origin);
 	content_grid_->set_visible_area(content_visible_area_);

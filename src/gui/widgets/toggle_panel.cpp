@@ -105,7 +105,7 @@ SDL_Rect ttoggle_panel::get_client_rect() const
 		boost::dynamic_pointer_cast<const ttoggle_panel_definition::tresolution>(config());
 	assert(conf);
 
-	SDL_Rect result = get_screen_rect();
+	SDL_Rect result = get_rect();
 	result.x += conf->left_border;
 	result.y += conf->top_border;
 	result.w -= conf->left_border + conf->right_border;

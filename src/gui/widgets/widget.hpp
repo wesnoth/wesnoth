@@ -48,8 +48,8 @@ public:
 		: id_("")
 		, definition_("default")
 		, parent_(0)
-		, screen_x_(-1)
-		, screen_y_(-1)
+		, x_(-1)
+		, y_(-1)
 		, w_(0)
 		, h_(0)
 		, dirty_(true)
@@ -280,16 +280,20 @@ public:
 	virtual twidget* find_widget(const tpoint& coordinate,
 			const bool /*must_be_active*/)
 	{
-		return coordinate.x >= screen_x_ && coordinate.x < (screen_x_ + static_cast<int>(w_)) &&
-			coordinate.y >= screen_y_ && coordinate.y < (screen_y_ + static_cast<int>(h_)) ? this : 0;
+		return coordinate.x >= x_
+				&& coordinate.x < (x_ + static_cast<int>(w_))
+				&& coordinate.y >= y_
+				&& coordinate.y < (y_ + static_cast<int>(h_)) ? this : 0;
 	}
 
 	/** The const version of find_widget. */
 	virtual const twidget* find_widget(const tpoint& coordinate,
 			const bool /*must_be_active*/) const
 	{
-		return coordinate.x >= screen_x_ && coordinate.x < (screen_x_ + static_cast<int>(w_)) &&
-			coordinate.y >= screen_y_ && coordinate.y < (screen_y_ + static_cast<int>(h_)) ? this : 0;
+		return coordinate.x >= x_
+				&& coordinate.x < (x_ + static_cast<int>(w_))
+				&& coordinate.y >= y_
+				&& coordinate.y < (y_ + static_cast<int>(h_)) ? this : 0;
 	}
 
 	/**
@@ -370,10 +374,10 @@ public:
 			const bool /*must_be_active*/)
 	{
 		return
-				coordinate.x >= screen_x_ &&
-				coordinate.x < (screen_x_ + static_cast<int>(w_)) &&
-				coordinate.y >= screen_y_ &&
-				coordinate.y < (screen_y_ + static_cast<int>(h_))
+				coordinate.x >= x_ &&
+				coordinate.x < (x_ + static_cast<int>(w_)) &&
+				coordinate.y >= y_ &&
+				coordinate.y < (y_ + static_cast<int>(h_))
 				? this
 				: 0;
 	}
@@ -383,10 +387,10 @@ public:
 			const bool /*must_be_active*/) const
 	{
 		return
-				coordinate.x >= screen_x_ &&
-				coordinate.x < (screen_x_ + static_cast<int>(w_)) &&
-				coordinate.y >= screen_y_ &&
-				coordinate.y < (screen_y_ + static_cast<int>(h_))
+				coordinate.x >= x_ &&
+				coordinate.x < (x_ + static_cast<int>(w_)) &&
+				coordinate.y >= y_ &&
+				coordinate.y < (y_ + static_cast<int>(h_))
 				? this
 				: 0;
 	}
@@ -486,15 +490,10 @@ public:
 	tpoint get_size() const { return tpoint(w_, h_); }
 
 	/** Returns the screen origin of the widget. */
-	tpoint get_origin() const { return tpoint(screen_x_, screen_y_); }
+	tpoint get_origin() const { return tpoint(x_, y_); }
 
-	/**
-	 * Gets the sizes in one rect structure.
-	 *
-	 * @todo this function can be renamed to get_rect() when the old get_rect
-	 * has been removed.
-	 */
-	SDL_Rect get_screen_rect() const
+	/** Gets the sizes in one rect structure. */
+	SDL_Rect get_rect() const
 		{ return create_rect(get_origin(), get_size()); }
 
 	/**
@@ -510,23 +509,22 @@ public:
 	/**
 	 * Sets the origin of the widget.
 	 *
-	 * The origin is stored in screen_x_ and screen_y_. This function can be
-	 * used to move the widget without dirting it.
+	 * This function can be used to move the widget without dirting it.
 	 *
 	 * @param origin              The new origin.
 	 */
 	virtual void set_origin(const tpoint& origin)
 	{
-		screen_x_ = origin.x;
-		screen_y_ = origin.y;
+		x_ = origin.x;
+		y_ = origin.y;
 	}
 
 	// Setting the screen locations doesn't dirty the widget.
-	void set_screen_x(const int x) { screen_x_ = x; }
-	int get_screen_x() const { return screen_x_; }
+	void set_x(const int x) { x_ = x; }
+	int get_x() const { return x_; }
 
-	void set_screen_y(const int y) { screen_y_ = y; }
-	int get_screen_y() const { return screen_y_; }
+	void set_y(const int y) { y_ = y; }
+	int get_y() const { return y_; }
 
 	void set_visible(const tvisible visible);
 	tvisible get_visible() const { return visible_; }
@@ -652,10 +650,10 @@ private:
 	twidget* parent_;
 
 	/** The x coordinate of the widget in the screen. */
-	int screen_x_;
+	int x_;
 
 	/** The y coordinate of the widget in the screen. */
-	int screen_y_;
+	int y_;
 
 	/** The width of the widget. */
 	unsigned w_;

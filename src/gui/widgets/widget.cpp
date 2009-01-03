@@ -35,8 +35,8 @@ tpoint twidget::get_best_size() const
 
 void twidget::set_size(const tpoint& origin, const tpoint& size)
 {
-	screen_x_ = origin.x;
-	screen_y_ = origin.y;
+	x_ = origin.x;
+	y_ = origin.y;
 	w_ = size.x;
 	h_ = size.y;
 
@@ -44,10 +44,10 @@ void twidget::set_size(const tpoint& origin, const tpoint& size)
 	std::cerr << "Id " << id()
 		<< " rect " << get_rect()
 		<< " parent "
-			<< (parent ? parent->get_screen_x() : 0)
+			<< (parent ? parent->get_x() : 0)
 			<< ','
-			<< (parent ? parent->get_screen_y() : 0)
-		<< " screen origin " << screen_x_ << ',' << screen_y_
+			<< (parent ? parent->get_y() : 0)
+		<< " screen origin " << x_ << ',' << y_
 		<< ".\n";
 #endif
 
@@ -57,7 +57,7 @@ void twidget::set_size(const tpoint& origin, const tpoint& size)
 SDL_Rect twidget::get_dirty_rect() const
 {
 	return drawing_action_ == DRAWN
-			? get_screen_rect()
+			? get_rect()
 			: clip_rect_;
 }
 
@@ -134,9 +134,9 @@ void twidget::set_visible(const tvisible visible)
 
 void twidget::set_visible_area(const SDL_Rect& area)
 {
-	clip_rect_ = get_rect_union(area, get_screen_rect());
+	clip_rect_ = get_rect_union(area, get_rect());
 
-	if(clip_rect_ == get_screen_rect()) {
+	if(clip_rect_ == get_rect()) {
 		drawing_action_ = DRAWN;
 	} else if(clip_rect_ == empty_rect) {
 		drawing_action_ = NOT_DRAWN;

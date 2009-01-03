@@ -244,9 +244,9 @@ int twindow::show(const bool restore, void* /*flip_function*/)
 
 	// restore area
 	if(restore) {
-		SDL_Rect rect = get_screen_rect();
+		SDL_Rect rect = get_rect();
 		SDL_BlitSurface(restorer_, 0, video_.getSurface(), &rect);
-		update_rect(get_screen_rect());
+		update_rect(get_rect());
 	}
 
 	return retval_;
@@ -268,7 +268,7 @@ void twindow::draw()
 		// since all will be redrawn when needed with dirty rects. Since that
 		// doesn't work yet we need to undraw the window.
 		if(restorer_) {
-			SDL_Rect rect = get_screen_rect();
+			SDL_Rect rect = get_rect();
 			SDL_BlitSurface(restorer_, 0, frame_buffer, &rect);
 			// Since the old area might be bigger as the new one, invalidate
 			// it.
@@ -278,7 +278,7 @@ void twindow::draw()
 		layout();
 
 		// Get new surface for restoring
-		SDL_Rect rect = get_screen_rect();
+		SDL_Rect rect = get_rect();
 		// We want the labels underneath the window so draw them and use them
 		// as restore point.
 		font::draw_floating_labels(frame_buffer);
@@ -359,7 +359,7 @@ void twindow::draw()
 		}
 
 		// Restore.
-		SDL_Rect rect = get_screen_rect();
+		SDL_Rect rect = get_rect();
 		SDL_BlitSurface(restorer_, 0, frame_buffer, &rect);
 
 		// Background.
@@ -385,7 +385,7 @@ void twindow::draw()
 
 	dirty_list_.clear();
 
-	SDL_Rect rect = get_screen_rect();
+	SDL_Rect rect = get_rect();
 	update_rect(rect);
 	cursor::draw(frame_buffer);
 	video_.flip();
@@ -427,7 +427,7 @@ SDL_Rect twindow::get_client_rect() const
 		boost::dynamic_pointer_cast<const twindow_definition::tresolution>(config());
 	assert(conf);
 
-	SDL_Rect result = get_screen_rect();
+	SDL_Rect result = get_rect();
 	result.x += conf->left_border;
 	result.y += conf->top_border;
 	result.w -= conf->left_border + conf->right_border;
@@ -593,7 +593,7 @@ void twindow::do_show_tooltip(const tpoint& location, const t_string& tooltip)
 	twidget* widget = find_widget(location, true);
 	assert(widget);
 
-	const SDL_Rect widget_rect = widget->get_screen_rect();
+	const SDL_Rect widget_rect = widget->get_rect();
 	const SDL_Rect client_rect = get_client_rect();
 
 	tooltip_.set_label(tooltip);
@@ -636,7 +636,7 @@ void twindow::do_show_help_popup(const tpoint& location, const t_string& help_po
 	twidget* widget = find_widget(location, true);
 	assert(widget);
 
-	const SDL_Rect widget_rect = widget->get_screen_rect();
+	const SDL_Rect widget_rect = widget->get_rect();
 	const SDL_Rect client_rect = get_client_rect();
 
 	help_popup_.set_label(help_popup);

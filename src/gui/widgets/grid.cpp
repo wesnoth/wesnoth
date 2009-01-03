@@ -611,8 +611,8 @@ void tgrid::set_size(const tpoint& origin, const tpoint& size)
 void tgrid::set_origin(const tpoint& origin)
 {
 	const tpoint movement = tpoint(
-			origin.x - get_screen_x(),
-			origin.y - get_screen_y());
+			origin.x - get_x(),
+			origin.y - get_y());
 
 	// Inherited.
 	twidget::set_origin(origin);
@@ -623,8 +623,8 @@ void tgrid::set_origin(const tpoint& origin)
 		assert(widget);
 
 		widget->set_origin(tpoint(
-				widget->get_screen_x() + movement.x,
-				widget->get_screen_y() + movement.y));
+				widget->get_x() + movement.x,
+				widget->get_y() + movement.y));
 	}
 }
 

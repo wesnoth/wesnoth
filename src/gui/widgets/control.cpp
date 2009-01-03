@@ -289,7 +289,7 @@ void tcontrol::impl_draw_background(surface& frame_buffer)
 	}
 
 	canvas(get_state()).draw();
-	SDL_Rect rect = get_screen_rect();
+	SDL_Rect rect = get_rect();
 	SDL_BlitSurface(canvas(get_state()).surf(), NULL, frame_buffer, &rect);
 }
 
