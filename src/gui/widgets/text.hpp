@@ -350,7 +350,7 @@ private:
 	virtual void handle_key_page_up(SDLMod /*modifier*/, bool& /*handled*/) {}
 
 	/**
-	 * Page up key.
+	 * Page down key.
 	 *
 	 * Unmodified                 Unhandled.
 	 * Control                    Ignored.
