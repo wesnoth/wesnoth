@@ -195,14 +195,6 @@ public:
 	/** Inherited from twidget. */
 	tdialog* dialog() { return owner_; }
 
-	/**
-	 * Inherited from tcontrol.
-	 *
-	 * @todo See whether we're required or simply can inherit. If needed we need
-	 * to be implemented properly
-	 */
-	bool needs_full_redraw() const { return false; }
-
 	/** Inherited from tcontainer_. */
 	twidget* find_widget(const std::string& id, const bool must_be_active)
 		{ return tcontainer_::find_widget(id, must_be_active); }

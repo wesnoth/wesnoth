@@ -437,7 +437,6 @@ void tcontrol_definition::load_resolutions(const config::child_list& resolution_
 }
 
 tstate_definition::tstate_definition(const config* cfg) :
-	full_redraw(cfg ? utils::string_bool((*cfg)["full_redraw"]) : false),
 	canvas()
 {
 /*WIKI
@@ -450,9 +449,6 @@ tstate_definition::tstate_definition(const config* cfg) :
  * Atm this is rather focussed on the drawing part, might change later.
  * Keys:
  * @start_table = config
- *     full_redraw (bool = false)      Does this state need a full redraw when
- *                                     it's being drawn? Normally only required
- *                                     if the widget is (partly) transparent.
  *     draw (section)                  Section with drawing directions for a canvas.
  * @end_table
  *
@@ -755,8 +751,6 @@ tminimap_definition::tresolution::tresolution(const config& cfg) :
  * == Minimap ==
  *
  * The definition of a normal minimap.
- * NOTE in the draw section of the minimap the value of full_redraw is ignored,
- * the minimap is always fully redrawn.
  *
  * The following states exist:
  * * state_enabled, the minimap is enabled.
@@ -1049,8 +1043,7 @@ ttoggle_panel_definition::tresolution::tresolution(const config& cfg) :
 	top_border(lexical_cast_default<unsigned>(cfg["top_border"])),
 	bottom_border(lexical_cast_default<unsigned>(cfg["bottom_border"])),
 	left_border(lexical_cast_default<unsigned>(cfg["left_border"])),
-	right_border(lexical_cast_default<unsigned>(cfg["right_border"])),
-	state_change_full_redraw(utils::string_bool(cfg["state_change_full_redraw"], true))
+	right_border(lexical_cast_default<unsigned>(cfg["right_border"]))
 {
 /*WIKI
  * @page = GUIToolkitWML
@@ -1068,15 +1061,6 @@ ttoggle_panel_definition::tresolution::tresolution(const config& cfg) :
  *     bottom_border (unsigned = 0)  The size which isn't used for the client area.
  *     left_border (unsigned = 0)    The size which isn't used for the client area.
  *     right_border (unsigned = 0)   The size which isn't used for the client area.
- *     state_change_full_redraw (bool = true)
- *                                   When the state of the toggle panel changes
- *                                   it can change it's background. If that
- *                                   happens all child items need to redraw
- *                                   themselves and need to modify their cached
- *                                   background. Set this variable to true if
- *                                   that's the case, in case of doubt set it to
- *                                   true, it might give a small performance hit
- *                                   but the drawing will always be correct.
  * @end_table
  *
  * The following layers exist:

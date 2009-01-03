@@ -159,10 +159,6 @@ void ttoggle_panel::set_state(const tstate state)
 	boost::intrusive_ptr<const ttoggle_panel_definition::tresolution> conf =
 		boost::dynamic_pointer_cast<const ttoggle_panel_definition::tresolution>(config());
 	assert(conf);
-
-	if(conf->state_change_full_redraw) {
-		set_background_changed();
-	}
 }
 
 } // namespace gui2

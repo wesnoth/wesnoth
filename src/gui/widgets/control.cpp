@@ -238,12 +238,6 @@ void tcontrol::set_label(const t_string& label)
 	set_dirty();
 }
 
-bool tcontrol::needs_full_redraw() const
-{
-	assert(config());
-	return config()->state[get_state()].full_redraw;
-}
-
 void tcontrol::update_canvas()
 {
 	const int max_width = get_text_maximum_width();

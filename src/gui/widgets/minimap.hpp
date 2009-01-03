@@ -55,15 +55,6 @@ public:
 	/** Inherited from tcontrol. */
 	bool does_block_easy_close() const { return false; }
 
-	/**
-	 * Inherited from tcontrol.
-	 *
-	 * Since the old minimap might be smaller we always need to do a full
-	 * redraw. Also the new map might be no map in which case the old one would
-	 * be shown.
-	 */
-	bool needs_full_redraw() const { return true; }
-
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
 	void set_map_data(const std::string& map_data)

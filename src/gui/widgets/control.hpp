@@ -236,9 +236,6 @@ protected:
 
 	/***** ***** ***** ***** miscellaneous ***** ***** ***** *****/
 
-	/** Does the widget need to restore the surface before (re)painting? */
-	virtual bool needs_full_redraw() const;
-
 	/**
 	 * Updates the canvas(ses).
 	 *

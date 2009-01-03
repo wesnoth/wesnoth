@@ -85,8 +85,6 @@ private:
 public:
 	tstate_definition(const config* cfg);
 
-	bool full_redraw;
-
 	tcanvas canvas;
 };
 
@@ -329,8 +327,6 @@ struct ttoggle_panel_definition : public tcontrol_definition
 
 		unsigned left_border;
 		unsigned right_border;
-
-		bool state_change_full_redraw;
 	};
 };
 
