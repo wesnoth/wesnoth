@@ -155,26 +155,6 @@ public:
 	void close() { status_ = REQUEST_CLOSE; }
 
 	/**
-	 * Converts a screen coordinate to a client coordinate.
-	 *
-	 * @param screen_position     The screen coordinate.
-	 *
-	 * @returns                   The client coordinate.
-	 */
-	tpoint client_position(const tpoint& screen_position) const
-		{ return tpoint(screen_position.x - get_x(), screen_position.y - get_y()); }
-
-	/**
-	 * Converts a client coordinate to a screen coordinate.
-	 *
-	 * @param client_position     The client coordinate.
-	 *
-	 * @returns                   The screen coordinate.
-	 */
-	tpoint screen_position(const tpoint& client_position) const
-		{ return tpoint(client_position.x + get_x(), client_position.y + get_y()); }
-
-	/**
 	 * Resize event for the window.
 	 *
 	 * @param event_handler       The handler sending the event.

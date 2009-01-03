@@ -25,7 +25,7 @@ SDL_Rect tpanel::get_client_rect() const
 		boost::dynamic_pointer_cast<const tpanel_definition::tresolution>(config());
 	assert(conf);
 
-	SDL_Rect result = get_rect();
+	SDL_Rect result = get_screen_rect();
 	result.x += conf->left_border;
 	result.y += conf->top_border;
 	result.w -= conf->left_border + conf->right_border;

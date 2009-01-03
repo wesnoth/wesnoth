@@ -77,8 +77,8 @@ void tscrollbar_::set_size(const tpoint& origin, const tpoint& size)
 void tscrollbar_::mouse_move(tevent_handler& event)
 {
 	tpoint mouse = event.get_mouse();
-	mouse.x -= get_x();
-	mouse.y -= get_y();
+	mouse.x -= get_screen_x();
+	mouse.y -= get_screen_y();
 
 	DBG_G_E << "Scrollbar: mouse move at " << mouse << ".\n";
 
@@ -123,8 +123,8 @@ void tscrollbar_::mouse_leave(tevent_handler&)
 void tscrollbar_::mouse_left_button_down(tevent_handler& event)
 {
 	tpoint mouse = event.get_mouse();
-	mouse.x -= get_x();
-	mouse.y -= get_y();
+	mouse.x -= get_screen_x();
+	mouse.y -= get_screen_y();
 
 	DBG_G_E << "Scrollbar: mouse down at " << mouse << ".\n";
 
@@ -154,8 +154,8 @@ void tscrollbar_::mouse_left_button_down(tevent_handler& event)
 void tscrollbar_::mouse_left_button_up(tevent_handler& event)
 {
 	tpoint mouse = event.get_mouse();
-	mouse.x -= get_x();
-	mouse.y -= get_y();
+	mouse.x -= get_screen_x();
+	mouse.y -= get_screen_y();
 
 	DBG_G_E << "Scrollbar: mouse up at " << mouse << ".\n";
 

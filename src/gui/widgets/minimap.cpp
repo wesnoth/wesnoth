@@ -51,7 +51,7 @@ void tminimap::draw_map(surface& surface)
 	try {
 		const gamemap map(*terrain_, map_data_);
 
-		SDL_Rect rect = get_rect();
+		SDL_Rect rect = get_screen_rect();
 		rect.x += left_border_;
 		rect.y += top_border_;
 		rect.w -= left_border_ + right_border_;

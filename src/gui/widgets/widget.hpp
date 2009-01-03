@@ -48,12 +48,10 @@ public:
 		: id_("")
 		, definition_("default")
 		, parent_(0)
-		, x_(-1)
-		, y_(-1)
-		, w_(0)
-		, h_(0)
 		, screen_x_(-1)
 		, screen_y_(-1)
+		, w_(0)
+		, h_(0)
 		, dirty_(true)
 		, visible_(VISIBLE)
 		, drawing_action_(DRAWN)
@@ -282,16 +280,16 @@ public:
 	virtual twidget* find_widget(const tpoint& coordinate,
 			const bool /*must_be_active*/)
 	{
-		return coordinate.x >= x_ && coordinate.x < (x_ + static_cast<int>(w_)) &&
-			coordinate.y >= y_ && coordinate.y < (y_ + static_cast<int>(h_)) ? this : 0;
+		return coordinate.x >= screen_x_ && coordinate.x < (screen_x_ + static_cast<int>(w_)) &&
+			coordinate.y >= screen_y_ && coordinate.y < (screen_y_ + static_cast<int>(h_)) ? this : 0;
 	}
 
 	/** The const version of find_widget. */
 	virtual const twidget* find_widget(const tpoint& coordinate,
 			const bool /*must_be_active*/) const
 	{
-		return coordinate.x >= x_ && coordinate.x < (x_ + static_cast<int>(w_)) &&
-			coordinate.y >= y_ && coordinate.y < (y_ + static_cast<int>(h_)) ? this : 0;
+		return coordinate.x >= screen_x_ && coordinate.x < (screen_x_ + static_cast<int>(w_)) &&
+			coordinate.y >= screen_y_ && coordinate.y < (screen_y_ + static_cast<int>(h_)) ? this : 0;
 	}
 
 	/**
@@ -481,11 +479,6 @@ public:
 	virtual void set_definition(const std::string& definition)
 		{ definition_ = definition; }
 
-	/** Gets the sizes in one rect structure. */
-	SDL_Rect get_rect() const
-		{ return ::create_rect( x_, y_, w_, h_ ); }
-	int get_x() const { return x_; }
-	int get_y() const { return y_; }
 	unsigned get_width() const { return w_; }
 	unsigned get_height() const { return h_; }
 
@@ -658,23 +651,17 @@ private:
 	 */
 	twidget* parent_;
 
-	/** The x coordinate of the widget in it's parent container. */
-	int x_;
+	/** The x coordinate of the widget in the screen. */
+	int screen_x_;
 
-	/** The y coordinate of the widget in it's parent container. */
-	int y_;
+	/** The y coordinate of the widget in the screen. */
+	int screen_y_;
 
 	/** The width of the widget. */
 	unsigned w_;
 
 	/** The height of the widget. */
 	unsigned h_;
-
-	/** The x coordinate of the widget in the screen. */
-	int screen_x_;
-
-	/** The y coordinate of the widget in the screen. */
-	int screen_y_;
 
 	/**
 	 * Is the widget dirty? When a widget is dirty it needs to be redrawn at

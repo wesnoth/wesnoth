@@ -35,18 +35,11 @@ tpoint twidget::get_best_size() const
 
 void twidget::set_size(const tpoint& origin, const tpoint& size)
 {
-	x_ = origin.x;
-	y_ = origin.y;
+	screen_x_ = origin.x;
+	screen_y_ = origin.y;
 	w_ = size.x;
 	h_ = size.y;
 
-	screen_x_ = x_;
-	screen_y_ = y_;
-	twidget* parent = get_window();
-	if(parent && parent != this) {
-		screen_x_ += parent->get_screen_x();
-		screen_y_ += parent->get_screen_y();
-	}
 #if 0
 	std::cerr << "Id " << id()
 		<< " rect " << get_rect()

@@ -44,7 +44,7 @@ public:
 	 *
 	 * The client area is the area available for widgets.
 	 */
-	virtual SDL_Rect get_client_rect() const { return get_rect(); }
+	virtual SDL_Rect get_client_rect() const { return get_screen_rect(); }
 
 	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
 

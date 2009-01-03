@@ -176,15 +176,12 @@ twidget* tvertical_list::find_widget(
 	twindow* window = get_window();
 	assert(window);
 
-	const tpoint screen_coordinate =
-	   		window->screen_position(coordinate);
-
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
 		tgrid& grid = get_item(i);
 
 		twidget* widget =
-				grid.find_widget2(screen_coordinate, must_be_active);
+				grid.find_widget2(coordinate, must_be_active);
 
 		if(widget) {
 			return widget;
@@ -199,15 +196,12 @@ const twidget* tvertical_list::find_widget(const tpoint& coordinate,
 	const twindow* window = get_window();
 	assert(window);
 
-	const tpoint screen_coordinate =
-	   		window->screen_position(coordinate);
-
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
 		const tgrid& grid = get_item(i);
 
 		const twidget* widget =
-				grid.find_widget2(screen_coordinate, must_be_active);
+				grid.find_widget2(coordinate, must_be_active);
 
 		if(widget) {
 			return widget;

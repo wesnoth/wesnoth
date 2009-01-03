@@ -142,8 +142,7 @@ void tevent_handler::handle_event(const SDL_Event& event)
 
 			mouse_x_ = event.motion.x;
 			mouse_y_ = event.motion.y;
-			mouse_over = find_widget(get_window().
-				client_position(tpoint(mouse_x_, mouse_y_)), true);
+			mouse_over = find_widget(tpoint(mouse_x_, mouse_y_), true);
 
 			mouse_move(event, mouse_over);
 
@@ -153,8 +152,7 @@ void tevent_handler::handle_event(const SDL_Event& event)
 
 			mouse_x_ = event.button.x;
 			mouse_y_ = event.button.y;
-			mouse_over = find_widget(get_window().
-				client_position(tpoint(mouse_x_, mouse_y_)), true);
+			mouse_over = find_widget(tpoint(mouse_x_, mouse_y_), true);
 
 			switch(event.button.button) {
 				case SDL_BUTTON_LEFT :
@@ -183,8 +181,7 @@ void tevent_handler::handle_event(const SDL_Event& event)
 
 			mouse_x_ = event.button.x;
 			mouse_y_ = event.button.y;
-			mouse_over = find_widget(get_window().
-				client_position(tpoint(mouse_x_, mouse_y_)), true);
+			mouse_over = find_widget(tpoint(mouse_x_, mouse_y_), true);
 
 			switch(event.button.button) {
 
@@ -265,7 +262,7 @@ void tevent_handler::mouse_capture(const bool capture)
 
 tpoint tevent_handler::get_mouse() const
 {
-	return get_window().client_position(tpoint(mouse_x_, mouse_y_));
+	return tpoint(mouse_x_, mouse_y_);
 }
 
 void tevent_handler::add_to_keyboard_chain(twidget* widget)
@@ -301,8 +298,7 @@ void tevent_handler::show_tooltip(const t_string& message, const unsigned timeou
 
 	tooltip_ = mouse_focus_;
 
-	do_show_tooltip(
-		get_window().client_position(tpoint(mouse_x_, mouse_y_)), message);
+	do_show_tooltip(tpoint(mouse_x_, mouse_y_), message);
 
 	if(timeout) {
 		SDL_AddTimer(timeout, popup_callback, 0);
@@ -339,8 +335,7 @@ void tevent_handler::show_help_popup(const t_string& message, const unsigned tim
 
 	help_popup_ = mouse_focus_;
 
-	do_show_help_popup(
-		get_window().client_position(tpoint(mouse_x_, mouse_y_)), message);
+	do_show_help_popup(tpoint(mouse_x_, mouse_y_), message);
 
 	if(timeout) {
 		SDL_AddTimer(timeout, popup_callback, 0);
