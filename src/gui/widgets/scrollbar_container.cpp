@@ -232,17 +232,7 @@ void tscrollbar_container::
 			std::max(best_size.x, content_size.x),
 			std::max(best_size.y, content_size.y));
 
-	/*
-	 * For set_size to work properly, we need to disable the parent
-	 * temporary. Without a parent the screen coordinates won't be
-	 * remapped, which is wanted in this case. For event handling the
-	 * parent is needed.
-	 */
-	twidget* parent = content_grid_->parent();
-	content_grid_->set_parent(NULL);
 	content_grid_->set_size(content_origin, content_grid_size);
-	content_grid_->set_parent(parent);
-
 
 	// Set vertical scrollbar
 	set_scrollbar_mode(vertical_scrollbar_grid_, vertical_scrollbar_,

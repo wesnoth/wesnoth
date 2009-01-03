@@ -126,16 +126,7 @@ void tvertical_list::set_size(const tpoint& origin, const tpoint& size)
 		// FIXME should we look at grow factors???
 		best_size.x = size.x;
 
-		/*
-		 * For set_size to work properly, we need to disable the parent
-		 * temporary. Without a parent the screen coordinates won't be
-		 * remapped, which is wanted in this case. For event handling the
-		 * parent is needed.
-		 */
-		twidget* parent = grid.parent();
-		grid.set_parent(NULL);
 		grid.set_size(current_origin, best_size);
-		grid.set_parent(parent);
 
 		current_origin.y += best_size.y;
 	}
