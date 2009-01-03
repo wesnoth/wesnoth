@@ -228,6 +228,55 @@ public:
 	virtual const twidget* find_widget(
 			const tpoint& coordinate, const bool must_be_active) const = 0;
 
+	/***** ***** ***** ***** keyboard functions ***** ***** ***** *****/
+
+	/**
+	 * Up arrow key pressed.
+	 *
+	 * @param modifier            The SDL keyboard modifier when the key was
+	 *                            pressed.
+	 * @param handled             If the function handles the key it should
+	 *                            set handled to true else do not modify it.
+	 *                            This is used in the keyboard event
+	 *                            changing.
+	 */
+	virtual void handle_key_up_arrow(SDLMod modifier, bool& handled) = 0;
+
+	/**
+	 * Down arrow key pressed.
+	 *
+	 * @param modifier            The SDL keyboard modifier when the key was
+	 *                            pressed.
+	 * @param handled             If the function handles the key it should
+	 *                            set handled to true else do not modify it.
+	 *                            This is used in the keyboard event
+	 *                            changing.
+	 */
+	virtual void handle_key_down_arrow(SDLMod modifier, bool& handled) = 0;
+
+	/**
+	 * Left arrow key pressed.
+	 *
+	 * @param modifier            The SDL keyboard modifier when the key was
+	 *                            pressed.
+	 * @param handled             If the function handles the key it should
+	 *                            set handled to true else do not modify it.
+	 *                            This is used in the keyboard event
+	 *                            changing.
+	 */
+	virtual void handle_key_left_arrow(SDLMod modifier, bool& handled) = 0;
+
+	/**
+	 * Right arrow key pressed.
+	 *
+	 * @param modifier            The SDL keyboard modifier when the key was
+	 *                            pressed.
+	 * @param handled             If the function handles the key it should
+	 *                            set handled to true else do not modify it.
+	 *                            This is used in the keyboard event
+	 *                            changing.
+	 */
+	virtual void handle_key_right_arrow(SDLMod modifier, bool& handled) = 0;
 protected:
 
 	/** Gets the grid of an item. */

@@ -133,6 +133,22 @@ public:
 	void set_list_builder(tbuilder_grid_ptr list_builder)
 		{ list_builder_ = list_builder; }
 
+protected:
+
+	/***** ***** ***** ***** keyboard functions ***** ***** ***** *****/
+
+	/** Inherited from tscrollbar_container. */
+	void handle_key_up_arrow(SDLMod modifier, bool& handled);
+
+	/** Inherited from tscrollbar_container. */
+	void handle_key_down_arrow(SDLMod modifier, bool& handled);
+
+	/** Inherited from tscrollbar_container. */
+	void handle_key_left_arrow(SDLMod modifier, bool& handled);
+
+	/** Inherited from tscrollbar_container. */
+	void handle_key_right_arrow(SDLMod modifier, bool& handled);
+
 private:
 
 	/**

@@ -118,6 +118,54 @@ void tlistbox::child_populate_dirty_list(twindow& caller,
 	generator_->populate_dirty_list(caller, child_call_stack);
 }
 
+void tlistbox::handle_key_up_arrow(SDLMod modifier, bool& handled)
+{
+	assert(generator_);
+
+	generator_->handle_key_up_arrow(modifier, handled);
+
+	// Inherited.
+	if(!handled) {
+		tscrollbar_container::handle_key_up_arrow(modifier, handled);
+	}
+}
+
+void tlistbox::handle_key_down_arrow(SDLMod modifier, bool& handled)
+{
+	assert(generator_);
+
+	generator_->handle_key_down_arrow(modifier, handled);
+
+	// Inherited.
+	if(!handled) {
+		tscrollbar_container::handle_key_down_arrow(modifier, handled);
+	}
+}
+
+void tlistbox::handle_key_left_arrow(SDLMod modifier, bool& handled)
+{
+	assert(generator_);
+
+	generator_->handle_key_left_arrow(modifier, handled);
+
+	// Inherited.
+	if(!handled) {
+		tscrollbar_container::handle_key_left_arrow(modifier, handled);
+	}
+}
+
+void tlistbox::handle_key_right_arrow(SDLMod modifier, bool& handled)
+{
+	assert(generator_);
+
+	generator_->handle_key_right_arrow(modifier, handled);
+
+	// Inherited.
+	if(!handled) {
+		tscrollbar_container::handle_key_right_arrow(modifier, handled);
+	}
+}
+
 namespace {
 
 /**

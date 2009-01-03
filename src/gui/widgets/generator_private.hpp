@@ -203,6 +203,24 @@ struct thorizontal_list
 	/** Inherited from tgenerator_. */
 	const twidget* find_widget(const tpoint&, const bool) const
 		{ ERROR_LOG(false); }
+
+	/***** ***** ***** ***** keyboard functions ***** ***** ***** *****/
+
+	/** Inherited from tgenerator_. */
+	void handle_key_up_arrow(SDLMod, bool&)
+		{ ERROR_LOG(false); }
+
+	/** Inherited from tgenerator_. */
+	void handle_key_down_arrow(SDLMod, bool&)
+		{ ERROR_LOG(false); }
+
+	/** Inherited from tgenerator_. */
+	void handle_key_left_arrow(SDLMod, bool&)
+		{ ERROR_LOG(false); }
+
+	/** Inherited from tgenerator_. */
+	void handle_key_right_arrow(SDLMod, bool&)
+		{ ERROR_LOG(false); }
 };
 
 /** Places the items in a vertical column. */
@@ -232,6 +250,22 @@ struct tvertical_list
 	/** See thorizontal_list::find_widget(). */
 	const twidget* find_widget(const tpoint& coordinate,
 			const bool must_be_active) const;
+
+	/***** ***** ***** ***** keyboard functions ***** ***** ***** *****/
+
+	/** Inherited from tgenerator_. */
+	void handle_key_up_arrow(SDLMod modifier, bool& handled);
+
+	/** Inherited from tgenerator_. */
+	void handle_key_down_arrow(SDLMod modifier, bool& handled);
+
+	/** Inherited from tgenerator_. */
+	void handle_key_left_arrow(SDLMod /*modifier*/, bool& /*handled*/)
+		{ /* do nothing */ }
+
+	/** Inherited from tgenerator_. */
+	void handle_key_right_arrow(SDLMod /*modifier*/, bool& /*handled*/)
+		{ /* do nothing */ }
 
 	// FIXME we need a delete handler as well,
 	// when deleting the last item we need to remove the placed flag.
@@ -285,6 +319,24 @@ struct tmatrix
 	/** See thorizontal_list::find_widget(). */
 	const twidget* find_widget(const tpoint&, const bool) const
 		{ ERROR_LOG(false); }
+
+	/***** ***** ***** ***** keyboard functions ***** ***** ***** *****/
+
+	/** Inherited from tgenerator_. */
+	void handle_key_up_arrow(SDLMod, bool&)
+		{ ERROR_LOG(false); }
+
+	/** Inherited from tgenerator_. */
+	void handle_key_down_arrow(SDLMod, bool&)
+		{ ERROR_LOG(false); }
+
+	/** Inherited from tgenerator_. */
+	void handle_key_left_arrow(SDLMod, bool&)
+		{ ERROR_LOG(false); }
+
+	/** Inherited from tgenerator_. */
+	void handle_key_right_arrow(SDLMod, bool&)
+		{ ERROR_LOG(false); }
 };
 
 /**
@@ -321,6 +373,24 @@ struct tindependant
 
 	/** See thorizontal_list::find_widget(). */
 	const twidget* find_widget(const tpoint&, const bool) const
+		{ ERROR_LOG(false); }
+
+	/***** ***** ***** ***** keyboard functions ***** ***** ***** *****/
+
+	/** Inherited from tgenerator_. */
+	void handle_key_up_arrow(SDLMod, bool&)
+		{ ERROR_LOG(false); }
+
+	/** Inherited from tgenerator_. */
+	void handle_key_down_arrow(SDLMod, bool&)
+		{ ERROR_LOG(false); }
+
+	/** Inherited from tgenerator_. */
+	void handle_key_left_arrow(SDLMod, bool&)
+		{ ERROR_LOG(false); }
+
+	/** Inherited from tgenerator_. */
+	void handle_key_right_arrow(SDLMod, bool&)
 		{ ERROR_LOG(false); }
 };
 
@@ -593,6 +663,32 @@ public:
 			const tpoint& coordinate, const bool must_be_active) const
 	{
 		return placement::find_widget(coordinate, must_be_active);
+	}
+
+	/***** ***** ***** ***** keyboard functions ***** ***** ***** *****/
+
+	/** Inherited from tgenerator_. */
+	void handle_key_up_arrow(SDLMod modifier, bool& handled)
+	{
+		placement::handle_key_up_arrow(modifier, handled);
+	}
+
+	/** Inherited from tgenerator_. */
+	void handle_key_down_arrow(SDLMod modifier, bool& handled)
+	{
+		placement::handle_key_down_arrow(modifier, handled);
+	}
+
+	/** Inherited from tgenerator_. */
+	void handle_key_left_arrow(SDLMod modifier, bool& handled)
+	{
+		placement::handle_key_left_arrow(modifier, handled);
+	}
+
+	/** Inherited from tgenerator_. */
+	void handle_key_right_arrow(SDLMod modifier, bool& handled)
+	{
+		placement::handle_key_right_arrow(modifier, handled);
 	}
 
 protected:

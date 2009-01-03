@@ -201,6 +201,48 @@ const twidget* tvertical_list::find_widget(const tpoint& coordinate,
 	return NULL;
 }
 
+void tvertical_list::handle_key_up_arrow(SDLMod /*modifier*/, bool& handled)
+{
+	if(get_selected_item_count() == 0) {
+		return;
+	}
+
+	// NOTE maybe this should only work if we can select only one item...
+	handled = true;
+
+	for(int i = get_selected_item() - 1; i >= 0; --i) {
+
+		// NOTE we check the first widget to be active since grids have no
+		// active flag. This method might not be entirely reliable.
+		tcontrol* control = dynamic_cast<tcontrol*>(get_item(i).widget(0, 0));
+		if(control && control->get_active()) {
+			select_item(i);
+			return;
+		}
+	}
+}
+
+void tvertical_list::handle_key_down_arrow(SDLMod /*modifier*/, bool& handled)
+{
+	if(get_selected_item_count() == 0) {
+		return;
+	}
+
+	// NOTE maybe this should only work if we can select only one item...
+	handled = true;
+
+	for(size_t i = get_selected_item() + 1; i < get_item_count(); ++i) {
+
+		// NOTE we check the first widget to be active since grids have no
+		// active flag. This method might not be entirely reliable.
+		tcontrol* control = dynamic_cast<tcontrol*>(get_item(i).widget(0, 0));
+		if(control && control->get_active()) {
+			select_item(i);
+			return;
+		}
+	}
+}
+
 } // namespace placement
 
 /***** ***** ***** ***** Select action ***** ***** ***** *****/
