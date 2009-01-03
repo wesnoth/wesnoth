@@ -33,8 +33,7 @@ class tcontainer_ : public tcontrol
 public:
 	tcontainer_(const unsigned canvas_count) :
 		tcontrol(canvas_count),
-		grid_(),
-		background_changed_(true)
+		grid_()
 	{
 		grid_.set_parent(this);
 	}
@@ -185,10 +184,6 @@ protected:
 	const tgrid& grid() const { return grid_; }
 	tgrid& grid() { return grid_; }
 
-	void set_background_changed(const bool changed = true)
-		{ background_changed_ = changed; }
-	bool has_background_changed() const { return background_changed_; }
-
 private:
 
 	/** The grid which holds the child objects. */
@@ -205,13 +200,6 @@ private:
 	 * set_active so we only need to change the state.
 	 */
 	virtual void set_self_active(const bool active) = 0;
-
-	/**
-	 * If the background has been changed the next draw cycle needs to do a full
-	 * redraw and also tell the child items to invalidate their background. This
-	 * overrides the 'invalidate_background' parameter send to draw().
-	 */
-	bool background_changed_;
 };
 
 } // namespace gui2
