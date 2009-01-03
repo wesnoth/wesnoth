@@ -286,6 +286,52 @@ void tscrollbar_container::set_visible_area(const SDL_Rect& area)
 	content_grid_->set_visible_area(content_visible_area_);
 }
 
+void tscrollbar_container::key_press(tevent_handler& /*event*/,
+		bool& handled, SDLKey key,
+		SDLMod modifier, Uint16 /*unicode*/)
+{
+	DBG_G_E << "Scrollbar container: key press.\n";
+
+	switch(key) {
+		case SDLK_HOME :
+			handle_key_home(modifier, handled);
+			break;
+
+		case SDLK_END :
+			handle_key_end(modifier, handled);
+			break;
+
+
+		case SDLK_PAGEUP :
+			handle_key_page_up(modifier, handled);
+			break;
+
+		case SDLK_PAGEDOWN :
+			handle_key_page_down(modifier, handled);
+			break;
+
+
+		case SDLK_UP :
+			handle_key_up_arrow(modifier, handled);
+			break;
+
+		case SDLK_DOWN :
+			handle_key_down_arrow(modifier, handled);
+			break;
+
+		case SDLK_LEFT :
+			handle_key_left_arrow(modifier, handled);
+			break;
+
+		case SDLK_RIGHT :
+			handle_key_right_arrow(modifier, handled);
+			break;
+		default:
+			/* ignore */
+			break;
+		}
+}
+
 twidget* tscrollbar_container::find_widget(
 		const tpoint& coordinate, const bool must_be_active)
 {
@@ -546,6 +592,94 @@ void tscrollbar_container::set_scrollbar_button_status()
 		horizontal_scrollbar_->set_active( !(horizontal_scrollbar_->at_begin()
 				&& horizontal_scrollbar_->at_end()));
 	}
+}
+
+void tscrollbar_container::handle_key_home(SDLMod /*modifier*/, bool& handled)
+{
+	assert(vertical_scrollbar_ && horizontal_scrollbar_);
+
+	vertical_scrollbar_->scroll(tscrollbar_::BEGIN);
+	horizontal_scrollbar_->scroll(tscrollbar_::BEGIN);
+	scrollbar_moved();
+
+	handled = true;
+}
+
+void tscrollbar_container::handle_key_end(SDLMod /*modifier*/, bool& handled)
+{
+	assert(vertical_scrollbar_);
+
+	vertical_scrollbar_->scroll(tscrollbar_::END);
+	scrollbar_moved();
+
+	handled = true;
+}
+
+void tscrollbar_container::
+		handle_key_page_up(SDLMod /*modifier*/, bool& handled)
+{
+	assert(vertical_scrollbar_);
+
+	vertical_scrollbar_->scroll(tscrollbar_::JUMP_BACKWARDS);
+	scrollbar_moved();
+
+	handled = true;
+}
+
+void tscrollbar_container::
+		handle_key_page_down(SDLMod /*modifier*/, bool& handled)
+
+{
+	assert(vertical_scrollbar_);
+
+	vertical_scrollbar_->scroll(tscrollbar_::JUMP_FORWARD);
+	scrollbar_moved();
+
+	handled = true;
+}
+
+void tscrollbar_container::
+		handle_key_up_arrow(SDLMod /*modifier*/, bool& handled)
+{
+	assert(vertical_scrollbar_);
+
+	vertical_scrollbar_->scroll(tscrollbar_::ITEM_BACKWARDS);
+	scrollbar_moved();
+
+	handled = true;
+}
+
+void tscrollbar_container::
+		handle_key_down_arrow( SDLMod /*modifier*/, bool& handled)
+{
+	assert(vertical_scrollbar_);
+
+	vertical_scrollbar_->scroll(tscrollbar_::ITEM_FORWARD);
+	scrollbar_moved();
+
+	handled = true;
+}
+
+void tscrollbar_container
+		::handle_key_left_arrow(SDLMod /*modifier*/, bool& handled)
+{
+	assert(horizontal_scrollbar_);
+
+	horizontal_scrollbar_->scroll(tscrollbar_::ITEM_BACKWARDS);
+	scrollbar_moved();
+
+	handled = true;
+}
+
+void tscrollbar_container
+		::handle_key_right_arrow(SDLMod /*modifier*/, bool& handled)
+{
+	assert(horizontal_scrollbar_);
+
+	horizontal_scrollbar_->scroll(tscrollbar_::ITEM_FORWARD);
+	scrollbar_moved();
+
+	handled = true;
 }
 
 void tscrollbar_container::scrollbar_moved()

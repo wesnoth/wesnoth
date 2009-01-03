@@ -111,6 +111,10 @@ public:
 
 	/***** ***** ***** inherited ****** *****/
 
+	/** Inherited from tevent_executor. */
+	void key_press(tevent_handler& event,
+		bool& handled, SDLKey key, SDLMod modifier, Uint16 unicode);
+
 	/** Inherited from tcontainer_. */
 	bool get_active() const { return state_ != DISABLED; }
 
@@ -181,6 +185,105 @@ protected:
 	 */
 	void set_scrollbar_button_status();
 
+	/***** ***** ***** ***** keyboard functions ***** ***** ***** *****/
+
+	/**
+	 * Home key pressed.
+	 *
+	 * @param modifier            The SDL keyboard modifier when the key was
+	 *                            pressed.
+	 * @param handled             If the function handles the key it should
+	 *                            set handled to true else do not modify it.
+	 *                            This is used in the keyboard event
+	 *                            changing.
+	 */
+	virtual void handle_key_home(SDLMod modifier, bool& handled);
+
+	/**
+	 * End key pressed.
+	 *
+	 * @param modifier            The SDL keyboard modifier when the key was
+	 *                            pressed.
+	 * @param handled             If the function handles the key it should
+	 *                            set handled to true else do not modify it.
+	 *                            This is used in the keyboard event
+	 *                            changing.
+	 */
+	virtual void handle_key_end(SDLMod modifier, bool& handled);
+
+
+	/**
+	 * Page up key pressed.
+	 *
+	 * @param modifier            The SDL keyboard modifier when the key was
+	 *                            pressed.
+	 * @param handled             If the function handles the key it should
+	 *                            set handled to true else do not modify it.
+	 *                            This is used in the keyboard event
+	 *                            changing.
+	 */
+	virtual void handle_key_page_up(SDLMod modifier, bool& handled);
+
+	/**
+	 * Page down key pressed.
+	 *
+	 * @param modifier            The SDL keyboard modifier when the key was
+	 *                            pressed.
+	 * @param handled             If the function handles the key it should
+	 *                            set handled to true else do not modify it.
+	 *                            This is used in the keyboard event
+	 *                            changing.
+	 */
+	virtual void handle_key_page_down(SDLMod modifier, bool& handled);
+
+
+	/**
+	 * Up arrow key pressed.
+	 *
+	 * @param modifier            The SDL keyboard modifier when the key was
+	 *                            pressed.
+	 * @param handled             If the function handles the key it should
+	 *                            set handled to true else do not modify it.
+	 *                            This is used in the keyboard event
+	 *                            changing.
+	 */
+	virtual void handle_key_up_arrow(SDLMod modifier, bool& handled);
+
+	/**
+	 * Down arrow key pressed.
+	 *
+	 * @param modifier            The SDL keyboard modifier when the key was
+	 *                            pressed.
+	 * @param handled             If the function handles the key it should
+	 *                            set handled to true else do not modify it.
+	 *                            This is used in the keyboard event
+	 *                            changing.
+	 */
+	virtual void handle_key_down_arrow(SDLMod modifier, bool& handled);
+
+	/**
+	 * Left arrow key pressed.
+	 *
+	 * @param modifier            The SDL keyboard modifier when the key was
+	 *                            pressed.
+	 * @param handled             If the function handles the key it should
+	 *                            set handled to true else do not modify it.
+	 *                            This is used in the keyboard event
+	 *                            changing.
+	 */
+	virtual void handle_key_left_arrow(SDLMod modifier, bool& handled);
+
+	/**
+	 * Right arrow key pressed.
+	 *
+	 * @param modifier            The SDL keyboard modifier when the key was
+	 *                            pressed.
+	 * @param handled             If the function handles the key it should
+	 *                            set handled to true else do not modify it.
+	 *                            This is used in the keyboard event
+	 *                            changing.
+	 */
+	virtual void handle_key_right_arrow(SDLMod modifier, bool& handled);
 private:
 
 	/**
@@ -263,6 +366,7 @@ private:
 		static const std::string type = "scrollbar_container";
 		return type;
 	}
+
 };
 
 } // namespace gui2
