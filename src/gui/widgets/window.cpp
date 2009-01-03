@@ -421,23 +421,6 @@ void twindow::key_press(tevent_handler& /*event_handler*/, bool& handled,
 #endif
 }
 
-SDL_Rect twindow::get_client_rect() const
-{
-	boost::intrusive_ptr<const twindow_definition::tresolution> conf =
-		boost::dynamic_pointer_cast<const twindow_definition::tresolution>(config());
-	assert(conf);
-
-	SDL_Rect result = get_rect();
-	result.x += conf->left_border;
-	result.y += conf->top_border;
-	result.w -= conf->left_border + conf->right_border;
-	result.h -= conf->top_border + conf->bottom_border;
-
-	// FIXME validate for an available client area.
-
-	return result;
-
-}
 void twindow::add_easy_close_blocker(const std::string& id)
 {
 	// avoid duplicates.

@@ -212,9 +212,6 @@ public:
 			const bool must_be_active) const
 		{ return tcontainer_::find_widget(id, must_be_active); }
 
-	/** Inherited from tpanel. */
-	SDL_Rect get_client_rect() const;
-
 	/**
 	 * Register a widget that prevents easy closing.
 	 *
