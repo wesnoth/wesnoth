@@ -46,6 +46,9 @@ void tmessage::pre_show(CVideo& /*video*/, twindow& window)
 	VALIDATE(label, missing_widget("label"));
 
 	label->set_label(message_);
+	// The label might not always be a scroll_label but the capturing
+	// shouldn't hurt.
+	window.keyboard_capture(label);
 
 	if(auto_close_) {
 		/*
