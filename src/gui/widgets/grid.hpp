@@ -235,13 +235,6 @@ public:
 	const twidget* find_widget(const std::string& id,
 			const bool must_be_active) const;
 
-	/** Inherited from twidget. */
-	twidget* find_widget2(const tpoint& coordinate, const bool must_be_active);
-
-	/** Inherited from twidget. */
-	const twidget* find_widget2(const tpoint& coordinate,
-			const bool must_be_active) const;
-
 	/** Import overloaded versions. */
 	using twidget::find_widget;
 

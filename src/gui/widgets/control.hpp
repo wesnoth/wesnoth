@@ -192,21 +192,6 @@ public:
 			&& (!must_be_active || get_active())) ? this : 0;
 	}
 
-	/** Inherited from twidget. */
-	twidget* find_widget2(const tpoint& coordinate, const bool must_be_active)
-	{
-		return (twidget::find_widget2(coordinate, must_be_active)
-			&& (!must_be_active || get_active())) ? this : 0;
-	}
-
-	/** Inherited from twidget. */
-	const twidget* find_widget2(const tpoint& coordinate,
-			const bool must_be_active) const
-	{
-		return (twidget::find_widget2(coordinate, must_be_active)
-			&& (!must_be_active || get_active())) ? this : 0;
-	}
-
 	/** Import overloaded versions. */
 	using twidget::find_widget;
 

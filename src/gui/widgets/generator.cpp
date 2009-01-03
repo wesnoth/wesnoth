@@ -181,7 +181,7 @@ twidget* tvertical_list::find_widget(
 		tgrid& grid = get_item(i);
 
 		twidget* widget =
-				grid.find_widget2(coordinate, must_be_active);
+				grid.find_widget(coordinate, must_be_active);
 
 		if(widget) {
 			return widget;
@@ -201,7 +201,7 @@ const twidget* tvertical_list::find_widget(const tpoint& coordinate,
 		const tgrid& grid = get_item(i);
 
 		const twidget* widget =
-				grid.find_widget2(coordinate, must_be_active);
+				grid.find_widget(coordinate, must_be_active);
 
 		if(widget) {
 			return widget;
