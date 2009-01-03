@@ -429,7 +429,7 @@ void tevent_handler::mouse_leave(
 	remove_help_popup();
 
 	tcontrol* control = dynamic_cast<tcontrol*>(mouse_focus_);
-	if(!control && control->get_active()) {
+	if(control && control->get_active()) {
 		mouse_focus_->mouse_leave(*this);
 	}
 	mouse_focus_ = 0;
