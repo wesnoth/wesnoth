@@ -6,7 +6,7 @@ die() {
 dietail() {
 	echo >&2 "$@"
 	echo >&2 "tail $LOG:"
-	tail $LOG
+	tail $SERVERBASE/logs/$LOG
 	exit 1
 }
 [ $# -ge 1 ] || die "Syntax: $0 <server version> [--test] [<additional parameters for wesnothd>]"
@@ -28,7 +28,7 @@ if [ "$1" = "--test" ]; then
 fi
 
 PARAMETERS=$*
-THREADS=4
+THREADS=0
 PORT=15000
 
 case $SERVER in
@@ -75,6 +75,6 @@ do
 	# need to use the recorded path since the build/ symlink might have changed
 	mv "$SERVERBASE/$BUILDDIR/gmon.out" "$SERVERBASE/$BUILDDIR/gmon.$DATE.$REV.out" &> /dev/null
 	# check for return code if not zero or 98 (port in use) the server should be restarted
-	[ "$EXIT_CODE" = "0" ] || (echo "run_server script shutting down."; exit 0)
-	[ "$EXIT_CODE" = "98" ] || dietail #Could not bind to port
+	[ "$EXIT_CODE" != "0" ] || (echo "run_server script shutting down."; exit 0)
+	[ "$EXIT_CODE" != "98" ] || dietail #Could not bind to port
 done
