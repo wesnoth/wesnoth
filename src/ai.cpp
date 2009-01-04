@@ -1152,6 +1152,9 @@ void ai::do_move()
 			map_location before = leader->first;
 			move_leader_to_keep(enemy_dstsrc);
 			leader = find_leader(units_,team_num_);
+			if(leader == units_.end()) {
+				return;
+			}
 			if (leader->first != before
 				&& leader->second.movement_left() > 0
 				&& recruiting_preferred_)
