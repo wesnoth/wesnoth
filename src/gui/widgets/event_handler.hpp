@@ -310,6 +310,22 @@ private:
 	 */
 	void mouse_click(twidget* widget, tmouse_button& button);
 
+	/**
+	 * Called when a scroll wheel is scrolled.
+	 *
+	 * The wheel event is always send to the widget underneath the mouse and
+	 * ignores the focus. If a widget doesn't handle the event it's send to
+	 * its parent. The event won't escape the current window. The event moves
+	 * up through inactive widgets.
+	 *
+	 * @todo document this event in the event handling document.
+	 *
+	 * @param event               The SDL_Event which was triggered.
+	 * @param widget              The widget the mouse is over, this widget
+	 *                            might not be active and be NULL so the code
+	 *                            needs to test for it.
+	 */
+	void mouse_wheel(const SDL_Event& event, twidget* widget);
 
 	/**
 	 * Called when a mouse button is pressed.

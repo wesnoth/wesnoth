@@ -198,6 +198,20 @@ protected:
 	 */
 	void set_scrollbar_button_status();
 
+	/***** ***** ***** ***** mouse wheel functions ***** ***** ***** *****/
+
+	/** Inherited from tevent_executor. */
+	void mouse_wheel_up(tevent_handler& event_handler, bool& handled);
+
+	/** Inherited from tevent_executor. */
+	void mouse_wheel_down(tevent_handler& event_handler, bool& handled);
+
+	/** Inherited from tevent_executor. */
+	void mouse_wheel_left(tevent_handler& event_handler, bool& handled);
+
+	/** Inherited from tevent_executor. */
+	void mouse_wheel_right(tevent_handler& event_handler, bool& handled);
+
 	/***** ***** ***** ***** keyboard functions ***** ***** ***** *****/
 
 	/**

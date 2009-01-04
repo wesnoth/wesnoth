@@ -150,6 +150,16 @@ void tevent_handler::handle_event(const SDL_Event& event)
 
 		case SDL_MOUSEBUTTONDOWN:
 
+			// The wheel buttons generate and up and down event we handle the
+			// up event so ignore the mouse if it's a down event
+			if(event.button.button == SDL_BUTTON_WHEELUP
+					|| event.button.button == SDL_BUTTON_WHEELDOWN
+					|| event.button.button == SDL_BUTTON_WHEELLEFT
+					|| event.button.button == SDL_BUTTON_WHEELRIGHT) {
+
+				break;
+			}
+
 			mouse_x_ = event.button.x;
 			mouse_y_ = event.button.y;
 			mouse_over = find_widget(tpoint(mouse_x_, mouse_y_), true);
@@ -184,8 +194,7 @@ void tevent_handler::handle_event(const SDL_Event& event)
 					// cast to avoid being printed as char.
 					WRN_G_E << "Unhandled 'mouse button down' event for button "
 						<< static_cast<Uint32>(event.button.button) << ".\n";
-					// The scrollwheel also behaves like a button, so ignore it.
-//					assert(false);
+					assert(false);
 					break;
 			}
 			break;
@@ -219,12 +228,19 @@ void tevent_handler::handle_event(const SDL_Event& event)
 					DBG_G_E << "Event: Right button up.\n";
 					mouse_button_up(event, mouse_over, right_);
 					break;
+				case SDL_BUTTON_WHEELUP :
+				case SDL_BUTTON_WHEELDOWN :
+				case SDL_BUTTON_WHEELLEFT :
+				case SDL_BUTTON_WHEELRIGHT :
+					DBG_G_E << "Event: Wheel\n";
+					mouse_wheel(event,
+							find_widget(tpoint(mouse_x_, mouse_y_), false));
+					break;
 				default:
 					// cast to avoid being printed as char.
 					WRN_G_E << "Unhandled 'mouse button up' event for button "
 						<< static_cast<Uint32>(event.button.button) << ".\n";
-					// The scrollwheel also behaves like a button, so ignore it.
-//					assert(false);
+					assert(false);
 					break;
 			}
 			break;
@@ -530,6 +546,49 @@ void tevent_handler::mouse_click(twidget* widget, tmouse_button& button)
 	} else {
 
 		(widget->*button.click)(*this);
+	}
+}
+
+void tevent_handler::mouse_wheel(const SDL_Event& event, twidget* widget)
+{
+	// If widget == NULL the loop won't run so no need for an explicit test.
+	bool handled = false;
+	while(widget != NULL && !handled) {
+
+		tcontrol* control = dynamic_cast<tcontrol*>(widget);
+		if(!control || control->get_active()) {
+
+			switch(event.button.button) {
+				case SDL_BUTTON_WHEELUP :
+					DBG_G_E << "Event: Wheel up.\n";
+					widget->mouse_wheel_up(*this, handled);
+					break;
+				case SDL_BUTTON_WHEELDOWN :
+					DBG_G_E << "Event: Wheel down.\n";
+					widget->mouse_wheel_down(*this, handled);
+					break;
+				case SDL_BUTTON_WHEELLEFT :
+					DBG_G_E << "Event: Wheel left.\n";
+					widget->mouse_wheel_left(*this, handled);
+					break;
+				case SDL_BUTTON_WHEELRIGHT :
+					DBG_G_E << "Event: Wheel right.\n";
+					widget->mouse_wheel_right(*this, handled);
+					break;
+				default:
+					// cast to avoid being printed as char.
+					WRN_G_E << "Unhandled wheel event for button "
+						<< static_cast<Uint32>(event.button.button) << ".\n";
+					assert(false);
+					break;
+			}
+		}
+
+		// If we handled the window abort.
+		if(dynamic_cast<twindow*>(widget)) {
+			return;
+		}
+		widget = widget->parent();
 	}
 }
 

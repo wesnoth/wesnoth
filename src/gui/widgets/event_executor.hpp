@@ -160,6 +160,28 @@ public:
 	/** See mouse_left_button_double_click. */
 	virtual void mouse_right_button_double_click(tevent_handler&) {}
 
+	/***** ***** ***** ***** mouse wheel ***** ***** ***** *****/
+
+	/**
+	 * Scrollwheel up.
+	 *
+	 * The scrollwheel events are trigger by the scrollwheel.
+	 *
+	 * @param event_handler       The event handler that send the event.
+	 * @param handled             Do we handle the event.
+	 */
+	virtual void mouse_wheel_up(
+			tevent_handler& /*event_handler*/, bool& /*handled*/) {}
+
+	/** Scrollwheel down see mouse_wheel_up.*/
+	virtual void mouse_wheel_down(tevent_handler&, bool&) {}
+
+	/** Scrollwheel to the left see mouse_wheel_up.*/
+	virtual void mouse_wheel_left(tevent_handler&, bool&) {}
+
+	/** Scrollwheel to the right see mouse_wheel_up.*/
+	virtual void mouse_wheel_right(tevent_handler&, bool&) {}
+
 	/***** ***** ***** ***** focus ***** ***** ***** *****/
 
 	/**

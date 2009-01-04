@@ -639,6 +639,54 @@ void tscrollbar_container::set_scrollbar_button_status()
 	}
 }
 
+void tscrollbar_container::
+		mouse_wheel_up(tevent_handler& /*event_handler*/, bool& handled)
+{
+	assert(vertical_scrollbar_grid_ && vertical_scrollbar_);
+
+	if(vertical_scrollbar_grid_->is_visible()) {
+		vertical_scrollbar_->scroll(tscrollbar_::HALF_JUMP_BACKWARDS);
+		scrollbar_moved();
+		handled = true;
+	}
+}
+
+void tscrollbar_container::
+		mouse_wheel_down(tevent_handler& /*event_handler*/, bool& handled)
+{
+	assert(vertical_scrollbar_grid_ && vertical_scrollbar_);
+
+	if(vertical_scrollbar_grid_->is_visible()) {
+		vertical_scrollbar_->scroll(tscrollbar_::HALF_JUMP_FORWARD);
+		scrollbar_moved();
+		handled = true;
+	}
+}
+
+void tscrollbar_container::
+		mouse_wheel_left(tevent_handler& /*event_handler*/, bool& handled)
+{
+	assert(horizontal_scrollbar_grid_ && horizontal_scrollbar_);
+
+	if(horizontal_scrollbar_grid_->is_visible()) {
+		horizontal_scrollbar_->scroll(tscrollbar_::HALF_JUMP_BACKWARDS);
+		scrollbar_moved();
+		handled = true;
+	}
+}
+
+void tscrollbar_container::
+		mouse_wheel_right(tevent_handler& /*event_handler*/, bool& handled)
+{
+	assert(horizontal_scrollbar_grid_ && horizontal_scrollbar_);
+
+	if(horizontal_scrollbar_grid_->is_visible()) {
+		horizontal_scrollbar_->scroll(tscrollbar_::HALF_JUMP_FORWARD);
+		scrollbar_moved();
+		handled = true;
+	}
+}
+
 void tscrollbar_container::handle_key_home(SDLMod /*modifier*/, bool& handled)
 {
 	assert(vertical_scrollbar_ && horizontal_scrollbar_);
