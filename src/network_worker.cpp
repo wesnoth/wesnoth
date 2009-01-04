@@ -770,11 +770,6 @@ manager::manager(size_t p_min_threads,size_t p_max_threads) : active_(!managed)
 		min_threads = p_min_threads;
 		max_threads = p_max_threads;
 
-		if (p_min_threads == 0)
-		{
-			p_min_threads = 1;
-		}
-
 		for(size_t shard = 0; shard != NUM_SHARDS; ++shard) {
 			const threading::lock lock(*shard_mutexes[shard]);
 			for(size_t n = 0; n != p_min_threads; ++n) {
