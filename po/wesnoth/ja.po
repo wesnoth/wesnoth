@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-12-30 21:39+0100\n"
-"PO-Revision-Date: 2008-03-02 19:00+0900\n"
+"PO-Revision-Date: 2008-07-21 23:50+0900\n"
 "Last-Translator: naoki iimura <amatubu@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
 "MIME-Version: 1.0\n"
@@ -270,9 +270,8 @@ msgstr "アフリカーンス語翻訳"
 
 #. [about]
 #: data/core/about.cfg:919
-#, fuzzy
 msgid "Arabic Translation"
-msgstr "セルビア語翻訳"
+msgstr "アラビア語翻訳"
 
 #. [about]
 #: data/core/about.cfg:926
@@ -296,15 +295,13 @@ msgstr "中国語翻訳"
 
 #. [about]
 #: data/core/about.cfg:1030
-#, fuzzy
 msgid "Chinese (Taiwan) Translation"
-msgstr "中国語翻訳"
+msgstr "中国語（台湾）翻訳"
 
 #. [about]
 #: data/core/about.cfg:1037
-#, fuzzy
 msgid "Croatian Translation"
-msgstr "カタロニア語翻訳"
+msgstr "クロアチア語翻訳"
 
 #. [about]
 #: data/core/about.cfg:1044
@@ -353,9 +350,8 @@ msgstr "フランス語翻訳"
 
 #. [about]
 #: data/core/about.cfg:1400
-#, fuzzy
 msgid "Friulian Translation"
-msgstr "フィリピン語翻訳"
+msgstr "フリウリ語翻訳"
 
 #. [about]
 #: data/core/about.cfg:1407
@@ -409,9 +405,8 @@ msgstr "ラテン語翻訳"
 
 #. [about]
 #: data/core/about.cfg:1683
-#, fuzzy
 msgid "Latvian Translation"
-msgstr "ラテン語翻訳"
+msgstr "ラトビア語翻訳"
 
 #. [about]
 #: data/core/about.cfg:1690
@@ -420,9 +415,8 @@ msgstr "リトアニア語翻訳"
 
 #. [about]
 #: data/core/about.cfg:1698
-#, fuzzy
 msgid "Macedonian Translation"
-msgstr "インドネシア語翻訳"
+msgstr "マケドニア語翻訳"
 
 #. [about]
 #: data/core/about.cfg:1705
@@ -446,9 +440,8 @@ msgstr "ポルトガル語（ブラジル）翻訳"
 
 #. [about]
 #: data/core/about.cfg:1818
-#, fuzzy
 msgid "Romanian Translation"
-msgstr "エストニア語翻訳"
+msgstr "ルーマニア語翻訳"
 
 #. [about]
 #: data/core/about.cfg:1826
@@ -813,8 +806,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"雇用されたユニットは、その特性値を変化させる２つのランダムな<ref>dst=traits "
-"text=特性</ref>を持ちます。"
+"雇用されたユニットはその数値を変化させる 2 つのランダムな<ref>dst=.."
+"traits_section text=特性</ref>を持ちます。"
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:171
@@ -1277,7 +1270,7 @@ msgstr ""
 "\n"
 "\n"
 "例えば、スケルトンは斬撃と貫通に対しては高い抵抗力を持ちます。 しかし、打撃と"
-"火炎には弱く、さらに神聖に対しては非常に脆弱です。"
+"火炎には弱く、さらに秘術に対しては非常に脆弱です。"
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:260
@@ -2594,7 +2587,6 @@ msgstr ""
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:750
-#, fuzzy
 msgid ""
 "\n"
 "Set or toggle player on side between human and AI player. The player/client "
@@ -3020,15 +3012,14 @@ msgstr "知的"
 
 #. [teleport]: id=teleport
 #: data/core/macros/abilities.cfg:380
-#, fuzzy
 msgid ""
 "Teleport:\n"
 "This unit may teleport between any two empty villages owned by its side "
 "using one of its moves."
 msgstr ""
 "瞬間移動:\n"
-"このユニットは１回の移動を使用して、 ２つの友好的な村の間を瞬間移動することが"
-"できます。"
+"このユニットは１回の移動を使用して、 その陣営が所有する誰もいない2つの村の間"
+"を瞬間移動することができます。"
 
 #. [hides]: id=ambush
 #: data/core/macros/abilities.cfg:389 data/core/macros/abilities.cfg:391
@@ -3039,7 +3030,7 @@ msgstr "伏兵"
 #: data/core/macros/abilities.cfg:390 data/core/macros/abilities.cfg:392
 #, fuzzy
 msgid "female^ambush"
-msgstr "忠義"
+msgstr "壮健"
 
 #. [hides]: id=ambush
 #: data/core/macros/abilities.cfg:396 data/core/macros/abilities.cfg:400
@@ -3184,9 +3175,9 @@ msgid ""
 "incapacitated (turned to stone or otherwise paralyzed)."
 msgstr ""
 "奇襲:\n"
-"もし攻撃対象の反対側にその対象の敵がいて、かつその反対側のユニットが能力を奪"
-"われて（例えば石化しているなど）いない場合、この攻撃は２倍のダメージとなりま"
-"す。"
+"攻撃時に使用された場合、もし攻撃対象の反対側にその対象の敵がいて、かつその反"
+"対側のユニットが能力を奪われて（例えば石化しているなど）いない場合、この攻撃"
+"は 2 倍のダメージとなります。"
 
 #: data/core/macros/abilities.cfg:579 data/core/macros/abilities.cfg:591
 msgid "plague"
@@ -3244,7 +3235,7 @@ msgid ""
 "may not move or attack."
 msgstr ""
 "石化:\n"
-"この攻撃は攻撃目標を石にします。 石化したユニットは移動や攻撃はできません。"
+"この攻撃は標的を石にします。 石化したユニットは移動や攻撃はできません。"
 
 #: data/core/macros/abilities.cfg:625
 msgid "marksman"
@@ -3256,7 +3247,7 @@ msgid ""
 "When used offensively, this attack always has at least a 60% chance to hit."
 msgstr ""
 "射撃:\n"
-"攻撃時に使用され、 この攻撃は命中率が最低60%はあるようになります。"
+"攻撃時に使用された場合、この攻撃は命中率が最低 60% はあるようになります。"
 
 #: data/core/macros/abilities.cfg:652
 msgid "swarm"
@@ -3281,15 +3272,14 @@ msgid "charge"
 msgstr "突撃"
 
 #: data/core/macros/abilities.cfg:665
-#, fuzzy
 msgid ""
 "Charge:\n"
 "When used offensively, this attack deals double damage to the target. It "
 "also causes this unit to take double damage from the target's counterattack."
 msgstr ""
 "突撃:\n"
-"この攻撃は攻撃目標への与えるダメージが２倍となります。 攻撃目標からの反撃の与"
-"えられるダメージも２倍となります。"
+"攻撃時に使用された場合、この攻撃は標的への与えるダメージが 2 倍となります。 "
+"標的からの反撃によって受けるダメージも 2 倍となります。"
 
 #: data/core/macros/abilities.cfg:677
 msgid "drains"
@@ -3317,9 +3307,9 @@ msgid ""
 "a unit."
 msgstr ""
 "毒:\n"
-"この攻撃は生きている攻撃目標を毒状態にします。 毒を受けているユニットは解毒す"
-"るかHPが１になるまで、 毎ターンHPが８減っていきます。毒そのものでは、ユニット"
-"が死ぬことはありません。"
+"この攻撃は生きている標的を毒状態にします。 毒を受けているユニットは解毒するか"
+"HPが１になるまで、 毎ターンHPが８減っていきます。毒そのものでは、ユニットが死"
+"ぬことはありません。"
 
 #. [option]: type=behaviour
 #: data/core/macros/ai_controller.cfg:144
@@ -3419,9 +3409,8 @@ msgstr ""
 
 #. [option]: type=objective
 #: data/core/macros/ai_controller.cfg:511
-#, fuzzy
 msgid "Defend a location..."
-msgstr "インドネシア語翻訳"
+msgstr ""
 
 #. [print]
 #: data/core/macros/ai_controller.cfg:525
@@ -3430,9 +3419,8 @@ msgstr ""
 
 #. [set_menu_item]: id=ai_controller_defend_location_picker
 #: data/core/macros/ai_controller.cfg:532
-#, fuzzy
 msgid "Defend this location"
-msgstr "インドネシア語翻訳"
+msgstr ""
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:555
@@ -3446,9 +3434,8 @@ msgstr ""
 
 #. [option]
 #: data/core/macros/ai_controller.cfg:595
-#, fuzzy
 msgid "Clear objective orders"
-msgstr "キャンセル"
+msgstr ""
 
 #. [option]
 #: data/core/macros/ai_controller.cfg:619
@@ -3457,9 +3444,8 @@ msgstr ""
 
 #. [option]
 #: data/core/macros/ai_controller.cfg:643
-#, fuzzy
 msgid "Clear all orders"
-msgstr "キャンセル"
+msgstr ""
 
 #. [then]
 #: data/core/macros/ai_controller.cfg:769
@@ -3614,7 +3600,7 @@ msgstr "願い事はしません。"
 #: data/core/macros/items.cfg:148
 #, fuzzy
 msgid "Take it"
-msgstr "ユニット名変更"
+msgstr "受けた"
 
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:166
@@ -3658,7 +3644,7 @@ msgid ""
 "This water will make melee weapons have the 'arcane' damage type until the "
 "end of the current scenario."
 msgstr ""
-"この水により、シナリオの終わりまで格闘攻撃の武器に「神聖」ダメージタイプがつ"
+"この水により、シナリオの終わりまで格闘攻撃の武器に「秘術」ダメージタイプがつ"
 "きます。"
 
 #. [object]: id={ID}
@@ -4574,14 +4560,12 @@ msgid ""
 " This unit's arcane attack deals tremendous damage to magical creatures, and "
 "even some to mundane creatures."
 msgstr ""
-" このユニットの神聖な攻撃は魔法で作られた者に著しいダメージを与えます。 また"
-"この世の生物にさえもかなりのダメージを与えます。"
+" このユニットの秘術による攻撃は魔法で作られた者に著しいダメージを与えます。 "
+"またこの世の生物にさえもかなりのダメージを与えます。"
 
 #: data/core/macros/special-notes.cfg:14
-#, fuzzy
 msgid " This unit is capable of basic healing."
-msgstr ""
-" このユニットはその周りにいるユニットを回復し、毒を治療することができます。"
+msgstr " このユニットには簡易な回復能力があります。"
 
 #: data/core/macros/special-notes.cfg:17
 msgid ""
@@ -4617,8 +4601,8 @@ msgid ""
 " The leadership of this unit enables adjacent units of the same side to deal "
 "more damage in combat, though this only applies to units of lower level."
 msgstr ""
-"このユニットの統率力により、隣接する友好的なユニットは戦闘においてより大きな "
-"ダメージを与えることができますが、より下位レベルのユニットにのみ適用されま"
+" このユニットの統率力により、隣接する友好的なユニットは戦闘においてより大き"
+"な ダメージを与えることができますが、より下位レベルのユニットにのみ適用されま"
 "す。"
 
 #: data/core/macros/special-notes.cfg:32
@@ -4634,14 +4618,12 @@ msgid " Illumination increases the lighting level in adjacent areas."
 msgstr " 照明は隣接する領域を明るくします。"
 
 #: data/core/macros/special-notes.cfg:38
-#, fuzzy
 msgid ""
 " This unit can use one move to teleport between any two empty villages "
 "controlled by its side."
 msgstr ""
-"瞬間移動:\n"
-"このユニットは１回の移動を使用して、 ２つの友好的な村の間を瞬間移動することが"
-"できます。"
+" このユニットは１回の移動を使用して、 その陣営に支配されている誰もいない2つの"
+"村の間を瞬間移動することができます。"
 
 #: data/core/macros/special-notes.cfg:41
 msgid ""
@@ -4689,14 +4671,13 @@ msgstr ""
 "れるまで攻撃し続けます。"
 
 #: data/core/macros/special-notes.cfg:59
-#, fuzzy
 msgid ""
 " If there is an enemy of the target on the opposite side of the target while "
 "attacking it, this unit may backstab, inflicting double damage by creeping "
 "around behind that enemy."
 msgstr ""
-" 標的のユニットの反対側にそのユニットの敵がいれば、このユニットはその敵の背後"
-"に忍び寄ることで、 2倍のダメージを与えるふい打ちをくらわせます。"
+" 攻撃時に標的のユニットの反対側にそのユニットの敵がいれば、奇襲を食らわせ、2"
+"倍のダメージを与えるでしょう。"
 
 #: data/core/macros/special-notes.cfg:62
 #, fuzzy
@@ -4728,12 +4709,11 @@ msgstr ""
 "し、攻撃側の場合だけです。"
 
 #: data/core/macros/special-notes.cfg:74
-#, fuzzy
 msgid ""
 " The unit has magical attacks, which always have a high chance of hitting an "
 "opponent."
 msgstr ""
-" このユニットの投射攻撃は魔法攻撃であり、常に高い確率で敵に命中します。"
+" このユニットは魔法攻撃を保有し、その攻撃は常に高い確率で敵に命中します。"
 
 #: data/core/macros/special-notes.cfg:77
 msgid ""
@@ -4877,9 +4857,8 @@ msgstr "壮健"
 
 #. [trait]: id=healthy
 #: data/core/macros/traits.cfg:134
-#, fuzzy
 msgid "Can rest while moving, takes a quarter less poison damage"
-msgstr "移動している間も休むことができる"
+msgstr ""
 
 #. [trait]: id=fearless
 #: data/core/macros/traits.cfg:151 data/core/macros/traits.cfg:164
@@ -4929,7 +4908,7 @@ msgstr "普通"
 #: data/core/macros/traits.cfg:210
 #, fuzzy
 msgid "female^dim"
-msgstr "勇敢"
+msgstr "俊敏"
 
 #. [color_range]: id=red
 #. [color_range]: id=1
@@ -5130,7 +5109,7 @@ msgstr ""
 "くにつれてより無謀になっていきます。おそらく、彼らの種族の英雄の伝説に確実に"
 "彼らの場所を確保するために。\n"
 "\n"
-"<header>text='地形'</header>\n"
+"<header>text='地理'</header>\n"
 "ドレーク族の起源は大洋の Morogor 島にあります。しかしながら、島は何世紀にもわ"
 "たってゆっくりと沈んでいたため、ドレークのコロニーは徐々に大陸へと広がってい"
 "きました。ドレーク族は彼らの卵、幼生、鍛冶場を守るために火山の近くの山岳の洞"
@@ -5657,17 +5636,28 @@ msgid ""
 "and dwarves before that."
 msgstr ""
 "アンデッドは単一の生き物の種族というわけではありませんが、しばしばそのような"
-"ものとして扱われます。ほとんどどんな死んだ生き物でも、十分に経験を積んだネク"
-"ロマンサーによって、生き返り、アンデッドとなってふたたび立ち上がることができ"
-"ます。アンデッドは大部分において自然に反する、しかし心のない構造物で、彼らを"
-"作った者ならば誰でも、質問することも考えることもなく従います。黒魔術のより大"
-"きな謎はネクロマンサーからの持続的な作用なしにどのように構造物が動き続けられ"
-"るのかということです。アンデッドの生き物は命令し、持ちこたえるためにネクロマ"
-"ンサーから継続的な注意を必要とせず、主人の命令に従って独立的に働くことができ"
-"ます。ただまれに、おそらく数ヶ月に一度、ネクロマンサーは彼の創造物を維持する"
-"必要があります。\n"
+"ものとして扱われます。どんな死んだ生き物でも、ほとんどが十分に経験を積んだネ"
+"クロマンサーによって、生き返り、アンデッドとなってふたたび立ち上がることがで"
+"きます。アンデッドは大部分において自然に反する、しかし心のない構造物で、彼ら"
+"を作った者ならば誰でも、質問することも考えることもなく従います。黒魔術のより"
+"大きな謎はネクロマンサーからの持続的な作用なしにどのように構造物が動き続けら"
+"れるのかということです。アンデッドの生き物は命令し、持ちこたえるためにネクロ"
+"マンサーから継続的な注意を必要とせず、主人の命令に従って独立的に働くことがで"
+"きます。ただまれに、おそらく数ヶ月に一度、ネクロマンサーは彼の創造物を維持す"
+"る必要があります。\n"
 "\n"
-"黒魔術はほとんどもっぱら人間に限られています。"
+"降霊術を使うのはほとんどもっぱら人間に限られています。魔法に長けた種族である"
+"エルフ族やマーマンの伝説においてさえ、彼らの種族で黒魔術を深く研究したという"
+"者はほとんどいません。降霊術の魔法を使うためには適応力があり、柔軟な精神が必"
+"要なのだと推測することができます。こういった特徴の究極のものは、ほぼ一般的に"
+"人間に見受けられます。ほとんどのネクロマンサーにとっての究極の目標は命を保つ"
+"とともに命を吹き込むこの同じ魔法を彼ら自身にかけ、どんな代償を払ってでも、彼"
+"ら自身の頭脳と精神を保ったまま死を究極的に逃れられるように彼ら自身を変えるこ"
+"とです。\n"
+"\n"
+"<header>text='地理'</header>\n"
+"相当な数のアンデッドの支配者たちが大陸に到着したのは Haldric I 世の後であり、"
+"それ以前にはエルフ族もドワーフ族もまったく聞いたことがありませんでした。"
 
 #. [race]: id=wolf, description=
 #: data/core/units.cfg:297
@@ -5859,7 +5849,7 @@ msgstr "冷気"
 #. [language]
 #: data/hardwired/english.cfg:43
 msgid "arcane"
-msgstr "神聖"
+msgstr "秘術"
 
 #. [tip]
 #: data/hardwired/tips.cfg:3
@@ -6075,11 +6065,11 @@ msgid ""
 "Right-click on a unit and select 'Unit Description' to see which attacks it "
 "is resistant to, and which will affect it the most."
 msgstr ""
-"戦闘には６種類、貫通、斬撃、打撃、火炎、冷気、そして神聖の攻撃がある。それぞ"
-"れのユニットは攻撃の種類によって異なる弱点を持っている。ユニットの上で右ク"
-"リックして、「ユニットの解説」を選択すると、ユニットがそれぞれの攻撃の種類に"
-"対してどのくらい抵抗力を持っているか、またどの種類も最も影響されるかを見るこ"
-"とができる。"
+"戦闘には６種類、貫通、斬撃、打撃、火炎、冷気、そして秘術による攻撃がある。そ"
+"れぞれのユニットは攻撃の種類によって異なる弱点を持っている。ユニットの上で右"
+"クリックして、「ユニットの解説」を選択すると、ユニットがそれぞれの攻撃の種類"
+"に対してどのくらい抵抗力を持っているか、またどの種類も最も影響されるかを見る"
+"ことができる。"
 
 #. [tip]
 #: data/hardwired/tips.cfg:63
@@ -6290,8 +6280,8 @@ msgid ""
 "Skeletons are resistant to piercing, bladed and cold-based attacks but are "
 "vulnerable to impact, fire, and arcane attacks."
 msgstr ""
-"スケルトンは、貫通、斬撃、冷気による攻撃に耐性があるが、打撃、火炎、神聖の攻"
-"撃には弱い。"
+"スケルトンは、貫通、斬撃、冷気による攻撃に耐性があるが、打撃、火炎、秘術によ"
+"る攻撃には弱い。"
 
 #. [tip]
 #: data/hardwired/tips.cfg:131
@@ -6374,7 +6364,7 @@ msgstr ""
 #. [tip]
 #: data/hardwired/tips.cfg:163
 msgid "Arcane attacks are very powerful against undead."
-msgstr "神聖な攻撃はアンデッドに対して大変強力である。"
+msgstr "秘術による攻撃はアンデッドに対して大変強力である。"
 
 #. [tip]
 #: data/hardwired/tips.cfg:164
@@ -6778,19 +6768,16 @@ msgid "addon_type^Scenario"
 msgstr ""
 
 #: src/addon_management.cpp:402
-#, fuzzy
 msgid "addon_type^MP era"
-msgstr "リモートシナリオ"
+msgstr ""
 
 #: src/addon_management.cpp:404
-#, fuzzy
 msgid "addon_type^MP faction"
-msgstr "リモートシナリオ"
+msgstr ""
 
 #: src/addon_management.cpp:406
-#, fuzzy
 msgid "addon_type^MP map-pack"
-msgstr "リモートシナリオ"
+msgstr ""
 
 #: src/addon_management.cpp:408
 #, fuzzy
@@ -6936,9 +6923,8 @@ msgid "Update all"
 msgstr "洞窟の壁"
 
 #: src/addon_management.cpp:855
-#, fuzzy
 msgid "Update failed"
-msgstr "洞窟の壁"
+msgstr ""
 
 #: src/addon_management.cpp:857
 #, fuzzy
@@ -6948,9 +6934,8 @@ msgid_plural ""
 msgstr[0] "以下のアドオンキャンペーンには問題があり、読み込めませんでした:"
 
 #: src/addon_management.cpp:866
-#, fuzzy
 msgid "Update succeeded"
-msgstr "アドオンの入手"
+msgstr ""
 
 #: src/addon_management.cpp:867
 msgid "Add-on updated successfully."
@@ -7343,9 +7328,8 @@ msgid "File I/O Error while reading the game"
 msgstr "ゲーム読み込み中のファイル入出力エラー"
 
 #: src/game.cpp:1066
-#, fuzzy
 msgid "No campaigns are available.\n"
-msgstr "目標がありません"
+msgstr "キャンペーンが存在しません。\n"
 
 #: src/game.cpp:1070
 msgid "Play a campaign"
@@ -7401,7 +7385,6 @@ msgid "' (The game will now exit)"
 msgstr "' (このゲームは終了します)"
 
 #: src/game.cpp:1539
-#, fuzzy
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "以下のアドオンキャンペーンには問題があり、読み込めませんでした:"
@@ -7425,7 +7408,7 @@ msgstr "現在の言語でフォントを再初期化します。"
 #: src/game.cpp:1998
 #, fuzzy
 msgid "Searching for installed add-ons."
-msgstr "アドオンを送信しています"
+msgstr "アドオンの一覧を要求中"
 
 #: src/game.cpp:2007
 msgid "Loading title screen."
@@ -8041,7 +8024,7 @@ msgstr "検索"
 #: src/menu_events.cpp:1857
 #, fuzzy
 msgid "This command is currently unavailable."
-msgstr "目標がありません"
+msgstr "キャンペーンが存在しません。\n"
 
 #: src/menu_events.cpp:1868
 msgid ""
@@ -8192,9 +8175,8 @@ msgid "Disable autosaves."
 msgstr ""
 
 #: src/menu_events.cpp:2309
-#, fuzzy
 msgid "Advance to the next scenario, or scenario identified by 'id'"
-msgstr "次のシナリオを待っています..."
+msgstr ""
 
 #: src/menu_events.cpp:2312
 #, fuzzy
@@ -8404,7 +8386,7 @@ msgstr ""
 #: src/multiplayer.cpp:185
 #, fuzzy
 msgid "Choose a different username"
-msgstr "公式サーバーに参加"
+msgstr "別のサーバーに参加"
 
 #: src/multiplayer.cpp:228
 msgid "You must log in to this server"
@@ -9250,7 +9232,7 @@ msgstr "アドオン"
 #: src/titlescreen.cpp:417
 #, fuzzy
 msgid "TitleScreen button^Map Editor"
-msgstr "終了"
+msgstr "再開"
 
 #: src/titlescreen.cpp:419
 msgid "TitleScreen button^Language"
@@ -9399,9 +9381,9 @@ msgid_plural "strikes"
 msgstr[0] "回数"
 
 #: src/unit_types.cpp:218
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "% accuracy"
-msgstr "攻撃"
+msgstr ""
 
 #: src/unit_types.cpp:228
 #, no-c-format
@@ -9463,58 +9445,8 @@ msgstr "Wesnoth をもっとよくするために協力してください！"
 msgid "Enable summary uploads"
 msgstr "サマリのアップロードを有効にする"
 
-#, fuzzy
-#~ msgid "Login"
-#~ msgstr "ログイン: "
-
-#~ msgid ""
-#~ "\n"
-#~ "Redraw the screen.\n"
-#~ "\n"
-#~ msgstr ""
-#~ "\n"
-#~ "画面を再描画する。\n"
-#~ "\n"
-
-#~ msgid "No server ping since $timeout second. Connection timed out."
-#~ msgid_plural "No server ping since $timeout seconds. Connection timed out."
-#~ msgstr[0] ""
-#~ "$timeout 秒前からサーバからの応答がありません。接続時間切れです。"
-
-#, fuzzy
-#~ msgid " This unit is capable of basic healing and slowing dehydration."
-#~ msgstr ""
-#~ " このユニットはその周りにいるユニットを回復し、毒を治療することができま"
-#~ "す。"
-
-#, fuzzy
-#~ msgid ""
-#~ " This unit is capable of healing those around it, slowing dehydration, "
-#~ "and curing them of poison."
-#~ msgstr ""
-#~ " このユニットはその周りにいるユニットを回復し、毒を治療することができま"
-#~ "す。"
-
 #~ msgid "Abilites"
 #~ msgstr "能力"
-
-#, fuzzy
-#~ msgid "Location name?"
-#~ msgstr "ローカルゲーム"
-
-#, fuzzy
-#~ msgid "Give new orders"
-#~ msgstr "キャンセル"
-
-#, fuzzy
-#~ msgid "value: "
-#~ msgstr "名前:"
-
-#, fuzzy
-#~ msgid "Defeat an enemy Leader!"
-#~ msgstr ""
-#~ "勝利条件\n"
-#~ "@敵のリーダー（達）を打ち負かす"
 
 #~ msgid "Grassland"
 #~ msgstr "平原"
@@ -9525,12 +9457,10 @@ msgstr "サマリのアップロードを有効にする"
 #~ msgid "Ice"
 #~ msgstr "氷"
 
-#, fuzzy
 #~ msgid ""
 #~ "Ice represents any body of frozen water. For gameplay purposes, it is "
-#~ "identical to <ref>dst='terrain_snow' text='Snow'</ref>. Note that "
-#~ "swimming units, even those who can breathe underwater, cannot swim "
-#~ "underneath ice."
+#~ "identical to <ref>dst=terrain_tundra text=Snow</ref>. Note that swimming "
+#~ "units, even those who can breathe underwater, cannot swim underneath ice."
 #~ msgstr ""
 #~ "氷は凍った水の状態を表します。ゲームプレイの目的では"
 #~ "<ref>dst=terrain_tundra text=雪原</ref>と同じ扱いです。泳ぐことのできるユ"
@@ -9540,11 +9470,10 @@ msgstr "サマリのアップロードを有効にする"
 #~ msgid "Savanna"
 #~ msgstr "サバンナ"
 
-#, fuzzy
 #~ msgid ""
 #~ "Savannas are plains of tall grass, found in the warmer climates of the "
 #~ "world. For gameplay purposes, they are identical to "
-#~ "<ref>dst='terrain_grassland' text='Grassland'</ref>."
+#~ "<ref>dst=terrain_grassland text=Grassland</ref>."
 #~ msgstr ""
 #~ "サバンナは背の高い草で覆われた平地で、暖かい気候の世界で見られます。ゲーム"
 #~ "プレイの目的では、<ref>dst=terrain_grassland text=草原</ref>と同じ扱いで"
@@ -9552,9 +9481,6 @@ msgstr "サマリのアップロードを有効にする"
 
 #~ msgid "Chasm"
 #~ msgstr "深い割目"
-
-#~ msgid "Cave Wall"
-#~ msgstr "洞窟の壁"
 
 #~ msgid ""
 #~ "Cave walls are made of solid stone, renowned for its ability to impede "
@@ -9574,33 +9500,35 @@ msgstr "サマリのアップロードを有効にする"
 #~ "とは事実上不可能です。飛ぶことのできる生き物であっても、このような空気の薄"
 #~ "い高地のギザギザの山頂を超えることはできません。"
 
-#~ msgid "Battle for Wesnoth"
-#~ msgstr "Battle for Wesnoth"
+#~ msgid ""
+#~ "\n"
+#~ "Redraw the screen.\n"
+#~ "\n"
+#~ msgstr ""
+#~ "\n"
+#~ "画面を再描画する。\n"
+#~ "\n"
 
-#~ msgid "No multiplayer sides available in this game"
-#~ msgstr "このゲームではマルチプレイヤーのチームは使えない"
+#~ msgid "Can rest while moving"
+#~ msgstr "移動している間も休むことができる"
 
-#~ msgid "Warning: Errors occurred while loading game configuration files: '"
-#~ msgstr "警告: ゲームの設定ファイル読み込み中にエラー発生: '"
+#~ msgid "ruby of fire"
+#~ msgstr "炎のルビー"
 
-#, fuzzy
-#~ msgid "testing translation reset."
-#~ msgstr "エストニア語翻訳"
+#~ msgid "Screenshot"
+#~ msgstr "スクリーンショット"
 
-#, fuzzy
-#~ msgid "Connect to add-ons server"
-#~ msgstr "ホスト/サーバーへの接続"
+#~ msgid "Connect to Server"
+#~ msgstr "サーバーへの接続"
 
-#, fuzzy
-#~ msgid "Type the address of a server to download add-ons from."
+#~ msgid "You will now connect to a server to download add-ons."
 #~ msgstr "アドオンをダウンロードするために、サーバーに接続します。"
 
 #~ msgid "Server: "
 #~ msgstr "サーバー: "
 
-#, fuzzy
-#~ msgid "Update add-ons"
-#~ msgstr "アドオンを送信しています"
+#~ msgid "Remove Add-ons"
+#~ msgstr "アドオンの削除"
 
 #~ msgid "Join Official Server"
 #~ msgstr "公式サーバーに参加"
@@ -9608,16 +9536,8 @@ msgstr "サマリのアップロードを有効にする"
 #~ msgid "Log on to the official Wesnoth multiplayer server"
 #~ msgstr "Wesnothの公式マルチプレイサーバーにログオンします。"
 
-#~ msgid "Connect to Server"
-#~ msgstr "サーバーへの接続"
-
-#, fuzzy
-#~ msgid "Join a different server"
-#~ msgstr "公式サーバーに参加"
-
-#, fuzzy
-#~ msgid "Host Networked Game"
-#~ msgstr "ゲームについて"
+#~ msgid "Local Game"
+#~ msgstr "ローカルゲーム"
 
 #~ msgid ""
 #~ "Play a multiplayer game with the AI or humans sharing the same machine"
@@ -9629,72 +9549,11 @@ msgstr "サマリのアップロードを有効にする"
 #~ msgid "Choose your preferred language:"
 #~ msgstr "お好みの言語を選んで下さい:"
 
-#~ msgid "View List"
-#~ msgstr "リストを見る"
-
-#~ msgid "List of Servers"
-#~ msgstr "サーバーリスト"
-
-#~ msgid "Choose a known server from the list"
-#~ msgstr "リストからサーバーを選んでください"
-
-#~ msgid "Address"
-#~ msgstr "アドレス"
-
-#~ msgid "Connect to Host"
-#~ msgstr "ホストに接続"
-
-#~ msgid "Choose host to connect to: "
-#~ msgstr "接続ホストを選択: "
-
-#, fuzzy
-#~ msgid "testing translation reset"
-#~ msgstr "エストニア語翻訳"
-
-#, fuzzy
-#~ msgid "test translation reset"
-#~ msgstr "ポルトガル語翻訳"
-
-#, fuzzy
-#~ msgid "File"
-#~ msgstr "フィルター: "
-
-#, fuzzy
-#~ msgid "Remove add-ons"
-#~ msgstr "アドオンの削除"
-
-#, fuzzy
-#~ msgid "--move--"
-#~ msgstr "移動"
+#~ msgid "Warning: Errors occurred while loading game configuration files: '"
+#~ msgstr "警告: ゲームの設定ファイル読み込み中にエラー発生: '"
 
 #~ msgid "Level"
 #~ msgstr "レベル"
-
-#, fuzzy
-#~ msgid "Default"
-#~ msgstr "デフォルト AI"
-
-#, fuzzy
-#~ msgid "name :"
-#~ msgstr "名前:"
-
-#, fuzzy
-#~ msgid "cancel"
-#~ msgstr "キャンセル"
-
-#, fuzzy
-#~ msgid "#(unknown campaign)"
-#~ msgstr "不明のコマンド。"
-
-#~ msgid "Usage: control <side> <nick>"
-#~ msgstr "使い方: control <陣営> <ニックネーム>"
-
-#~ msgid "Screenshot"
-#~ msgstr "スクリーンショット"
-
-#, fuzzy
-#~ msgid "Map_Screenshot"
-#~ msgstr "スクリーンショット"
 
 #~ msgid ""
 #~ "Commands: msg/whisper <nick> <message>, list <subcommand> [<argument>], "
@@ -9732,15 +9591,41 @@ msgstr "サマリのアップロードを有効にする"
 #~ msgid "Unknown command: "
 #~ msgstr "不明のコマンド: "
 
+#~ msgid "Usage: control <side> <nick>"
+#~ msgstr "使い方: control <陣営> <ニックネーム>"
+
+#~ msgid "View List"
+#~ msgstr "リストを見る"
+
+#~ msgid "List of Servers"
+#~ msgstr "サーバーリスト"
+
+#~ msgid "Choose a known server from the list"
+#~ msgstr "リストからサーバーを選んでください"
+
+#~ msgid "Address"
+#~ msgstr "アドレス"
+
+#~ msgid "Connect to Host"
+#~ msgstr "ホストに接続"
+
+#~ msgid "Choose host to connect to: "
+#~ msgstr "接続ホストを選択: "
+
+#~ msgid "No multiplayer sides available in this game"
+#~ msgstr "このゲームではマルチプレイヤーのチームは使えない"
+
+#~ msgid "No server ping since $timeout second. Connection timed out."
+#~ msgid_plural "No server ping since $timeout seconds. Connection timed out."
+#~ msgstr[0] ""
+#~ "$timeout 秒前からサーバからの応答がありません。接続時間切れです。"
+
 #~ msgid ""
 #~ " This unit is capable of basic healing, though it can only delay the "
 #~ "effects of poison, not cure them entirely."
 #~ msgstr ""
 #~ " このユニットは基本的な回復能力がありますが、毒の影響を遅らせることしかで"
 #~ "きず、 完全に治療することはできません。"
-
-#~ msgid "ruby of fire"
-#~ msgstr "炎のルビー"
 
 #~ msgid ""
 #~ " This unit can teleport between any two villages instantly, though the "
@@ -9749,6 +9634,9 @@ msgstr "サマリのアップロードを有効にする"
 #~ " このユニットは瞬時に 2 つの村の間を瞬間移動することができます。しかしなが"
 #~ "ら、 どちらの村もプレイヤーの支配下にあり、行き先の村があいている必要があ"
 #~ "ります。"
+
+#~ msgid "Connect to Host/Server"
+#~ msgstr "ホスト/サーバーへの接続"
 
 #~ msgid "Join a server or hosted game"
 #~ msgstr "サーバーか主催されたゲームに参加します。"

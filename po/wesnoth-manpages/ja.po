@@ -125,7 +125,7 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:52
 #, fuzzy, no-wrap
 msgid "B<--config-dir>I<\\ name>"
-msgstr "B<--path>"
+msgstr "B<--load>I<\\ savegame>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:57
@@ -1169,7 +1169,6 @@ msgstr ""
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:187
-#, fuzzy
 msgid ""
 "B<[proxy]> A tag to tell the server to act as a proxy and forward the "
 "connected client's requests to the specified server.  Accepts the same keys "
@@ -1198,6 +1197,34 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:206
 msgid "B<wesnoth>(6), B<wesnoth_editor>(6)"
 msgstr "B<wesnoth>(6), B<wesnoth_editor>(6)"
+
+# type: TP
+#~ msgid "B<--compress>I<\\ infile\\ outfile>"
+#~ msgstr "B<--compress>I<\\ infile\\ outfile>"
+
+# type: Plain text
+#~ msgid ""
+#~ "compresses a savefile (I<infile>)  that is in text WML format into binary "
+#~ "WML format (I<outfile>)."
+#~ msgstr ""
+#~ "テキストWML形式のセーブファイル(I<infile>)をバイナリWML形式(I<outfile>)に"
+#~ "圧縮する。"
+
+# type: TP
+#~ msgid "B<--decompress>I<\\ infile\\ outfile>"
+#~ msgstr "B<--decompress>I<\\ infile\\ outfile>"
+
+# type: Plain text
+#~ msgid ""
+#~ "decompresses a savefile (I<infile>)  that is in binary WML format into "
+#~ "text WML format (I<outfile>)."
+#~ msgstr ""
+#~ "バイナリWML形式のセーブファイル(I<infile>)をテキストWML形式(I<outfile>)に"
+#~ "展開する。"
+
+# type: Plain text
+#~ msgid "loads the file savegame from the standard save game directory."
+#~ msgstr "ファイル savegame を標準のセーブゲームディレクトリから読み込む。"
 
 # type: TH
 #~ msgid "WESNOTH_EDITOR"
@@ -1282,31 +1309,3 @@ msgstr "B<wesnoth>(6), B<wesnoth_editor>(6)"
 # type: Plain text
 #~ msgid "B<wesnoth>(6), B<wesnothd>(6)"
 #~ msgstr "B<wesnoth>(6), B<wesnothd>(6)"
-
-# type: Plain text
-#~ msgid "loads the file savegame from the standard save game directory."
-#~ msgstr "ファイル savegame を標準のセーブゲームディレクトリから読み込む。"
-
-# type: TP
-#~ msgid "B<--compress>I<\\ infile\\ outfile>"
-#~ msgstr "B<--compress>I<\\ infile\\ outfile>"
-
-# type: Plain text
-#~ msgid ""
-#~ "compresses a savefile (I<infile>)  that is in text WML format into binary "
-#~ "WML format (I<outfile>)."
-#~ msgstr ""
-#~ "テキストWML形式のセーブファイル(I<infile>)をバイナリWML形式(I<outfile>)に"
-#~ "圧縮する。"
-
-# type: TP
-#~ msgid "B<--decompress>I<\\ infile\\ outfile>"
-#~ msgstr "B<--decompress>I<\\ infile\\ outfile>"
-
-# type: Plain text
-#~ msgid ""
-#~ "decompresses a savefile (I<infile>)  that is in binary WML format into "
-#~ "text WML format (I<outfile>)."
-#~ msgstr ""
-#~ "バイナリWML形式のセーブファイル(I<infile>)をテキストWML形式(I<outfile>)に"
-#~ "展開する。"
