@@ -80,15 +80,17 @@ BUILD=$HOME/$TYPE/builds/$DIR
 if [ $TYPE = wesnothd ]; then
 	BUILD=$HOME/servers/builds/$DIR
 fi
+
+set -x
 mkdir -p $BUILD
 
 if [ "$SCONS" = "yes" ]; then
 	if [ $TYPE = wesnothd ]; then
-		BUILD_FLAGS="fifodir=$BUILD/var/run raw_sockets=1"
+		BUILD_FLAGS="fifodir=$BUILD/var/run raw_sockets=1 forum_user_handler=1"
 	fi
 	mkdir -p $BUILD/var/run
 	# need to remove .scons-option-cache when parameters get removed!
-	CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" scons install-$TYPE prefix=$BUILD program_suffix=-$SERVER $BUILDFLAGS profile=0 fribidi=0 python=0 localedir= prefsdir= > $BUILD/scons.log || exit 1
+	CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" scons install-$TYPE prefix=$BUILD program_suffix=-$SERVER $BUILD_FLAGS profile=0 fribidi=0 python=0 localedir= prefsdir= > $BUILD/scons.log || exit 1
 #	boostdir=$HOME/tools/include boostlibdir=$HOME/tools/lib boost_suffix=-mt
 else
 	if [ $TYPE = wesnothd ]; then
@@ -96,13 +98,13 @@ else
 	else
 		BUILD_FLAGS="--enable-campaign-server"
 	fi
-	echo 'autogen.sh and configure...'
+	#echo 'autogen.sh and configure...'
 	./autogen.sh > $BUILD/autogen.log
 	CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" ./configure --prefix=$BUILD --program-suffix=-$SERVER $BUILD_FLAGS --disable-game --disable-nls --enable-lite --with-boost=$HOME/tools > $BUILD/configure.log || exit 1
 	make clean > /dev/null
-	echo 'make...'
+	#echo 'make...'
 	make > $BUILD/make.log || exit 1
-	echo 'make install...'
+	#echo 'make install...'
 	make install > $BUILD/install.log || exit 1
 fi
 
@@ -120,3 +122,4 @@ ln -s ../builds/$DIR/ build
 
 cd $HOME/bin || exit 1
 ln -sf $BUILD/bin/$TYPE-$SERVER $TYPE-$SERVER
+set +x
