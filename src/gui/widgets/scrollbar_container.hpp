@@ -162,6 +162,16 @@ public:
 
 protected:
 
+	/**
+	 * Shows a certain part of the content.
+	 *
+	 * When the part to be shown is bigger as the visible viewport the top
+	 * left of the wanted rect will be the top left of the viewport.
+	 *
+	 * @param rect                The rect which should be visible.
+	 */
+	void show_content_rect(const SDL_Rect& rect);
+
 	/*
 	 * The widget contains the following three grids.
 	 *

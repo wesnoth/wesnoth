@@ -539,6 +539,50 @@ void tscrollbar_container::show_horizontal_scrollbar()
 	}
 }
 
+void tscrollbar_container::show_content_rect(const SDL_Rect& rect)
+{
+	assert(content_);
+	assert(horizontal_scrollbar_ && vertical_scrollbar_);
+
+	// Set the bottom right location first if it doesn't fit the top left
+	// will look good.
+
+	// bottom.
+	const int wanted_bottom = rect.y + rect.h;
+	const int current_bottom = content_->get_y() + content_->get_height();
+	int distance = wanted_bottom - current_bottom;
+	if(distance > 0) {
+		vertical_scrollbar_->set_item_position(
+				vertical_scrollbar_->get_item_position() + distance);
+	}
+
+	// right.
+	const int wanted_right = rect.x + rect.w;
+	const int current_right = content_->get_x() + content_->get_width();
+	distance = wanted_right - current_right;
+	if(distance > 0) {
+		horizontal_scrollbar_->set_item_position(
+				horizontal_scrollbar_->get_item_position() + distance);
+	}
+
+	// top.
+	distance = rect.y - content_->get_y();
+	if(distance < 0) {
+		 vertical_scrollbar_->set_item_position(
+				 vertical_scrollbar_->get_item_position() + distance);
+	}
+
+	// left.
+	distance = content_->get_x() - rect.x;
+	if(distance < 0) {
+		 horizontal_scrollbar_->set_item_position(
+				 horizontal_scrollbar_->get_item_position() + distance);
+	}
+
+	// Update.
+	scrollbar_moved();
+}
+
 void tscrollbar_container::set_scrollbar_button_status()
 {
 	if(true) { /** @todo scrollbar visibility. */

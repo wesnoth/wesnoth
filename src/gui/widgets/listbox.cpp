@@ -124,8 +124,11 @@ void tlistbox::handle_key_up_arrow(SDLMod modifier, bool& handled)
 
 	generator_->handle_key_up_arrow(modifier, handled);
 
-	// Inherited.
-	if(!handled) {
+	if(handled) {
+		show_content_rect(generator_->get_item(
+					generator_->get_selected_item()).get_rect());
+	} else {
+		// Inherited.
 		tscrollbar_container::handle_key_up_arrow(modifier, handled);
 	}
 }
@@ -136,9 +139,12 @@ void tlistbox::handle_key_down_arrow(SDLMod modifier, bool& handled)
 
 	generator_->handle_key_down_arrow(modifier, handled);
 
-	// Inherited.
-	if(!handled) {
-		tscrollbar_container::handle_key_down_arrow(modifier, handled);
+	if(handled) {
+		show_content_rect(generator_->get_item(
+					generator_->get_selected_item()).get_rect());
+	} else {
+		// Inherited.
+		tscrollbar_container::handle_key_up_arrow(modifier, handled);
 	}
 }
 
