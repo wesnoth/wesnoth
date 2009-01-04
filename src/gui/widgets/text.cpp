@@ -369,7 +369,9 @@ void ttext_::handle_key_backspace(SDLMod /*modifier*/, bool& handled)
 	DBG_G_E << "Text: key press: backspace.\n";
 
 	handled = true;
-	if(selection_start_){
+	if(selection_length_ != 0) {
+		delete_selection();
+	} else if(selection_start_){
 		delete_char(true);
 	}
 }
