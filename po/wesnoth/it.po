@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-12-30 21:39+0100\n"
-"PO-Revision-Date: 2008-12-28 15:17+0100\n"
+"PO-Revision-Date: 2009-01-04 15:15+0100\n"
 "Last-Translator: Luciano Montanaro <mikelima@cirulla.net>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -157,7 +157,6 @@ msgstr "guarisce +4"
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:22
 #: data/core/macros/abilities.cfg:16
-#, fuzzy
 msgid ""
 "Heals +4:\n"
 "Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
@@ -764,7 +763,6 @@ msgstr "Reclutare e richiamare"
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:165
-#, fuzzy
 msgid ""
 "Each side begins with one leader in their keep. At the start of any battle, "
 "and at times during it, you will need to recruit <ref>dst='..units' "
@@ -779,15 +777,15 @@ msgid ""
 msgstr ""
 "Ogni schieramento inizia con un comandante nella propria fortezza. "
 "All'inizio della battaglia, e a volte anche durante, avrai bisogno di "
-"reclutare le <ref>dst=units text=unità</ref> della tua armata. Per reclutare "
-"devi portare il tuo comandante (per esempio, Konrad nella campagna «L'erede "
-"al trono») nella fortezza di un <ref>dst=terrain_castle text=castello</ref>. "
-"Solo allora potrai reclutare, scegliendo «Recluta» dal menù o facendo clic "
-"con il tasto destro del mouse e selezionando <italic>text=Recluta</italic>. "
-"In questo modo apparirà il menù recluta, che elenca le unità disponibili, "
-"con il loro costo in oro. Seleziona un'unità per vedere le sue "
-"caratteristiche sulla sinistra e quindi premi il tasto recluta per "
-"reclutarla."
+"reclutare le <ref>dst='..units' text='unità'</ref> della tua armata. Per "
+"reclutare devi portare il tuo comandante (per esempio, Konrad nella campagna "
+"«L'erede al trono») nella fortezza di un <ref>dst='terrain_castle' "
+"text='castello'</ref>. Solo allora potrai reclutare, scegliendo «Recluta» dal "
+"menù o facendo clic con il tasto destro del mouse e selezionando "
+"<italic>text='Recluta'</italic>. In questo modo apparirà il menù recluta, "
+"che elenca le unità disponibili, con il loro costo in oro. Seleziona "
+"un'unità per vedere le sue caratteristiche sulla sinistra e quindi premi il "
+"tasto recluta per reclutarla."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:167
@@ -1532,7 +1530,6 @@ msgstr ""
 
 #. [topic]: id=healing
 #: data/core/help.cfg:305
-#, fuzzy
 msgid ""
 "\n"
 "Healing units: Units with the <ref>dst='ability_heals +4' text='Heals'</ref> "
@@ -1541,9 +1538,11 @@ msgid ""
 "turn, or prevent Poison from causing that unit damage."
 msgstr ""
 "\n"
-"Unità guaritrici: le unità con l'abilità <ref>dst='ability_heals "
-"'text='Guarigione'</ref> guariranno un'unità alleata adiacente fino da 4 a 8 "
-"PF per turno e impediranno i danni provenienti dal veleno su questa unità."
+"Unità guaritrici: le unità con l'abilità <ref>dst='ability_heals +4' "
+"text='Guarigione'</ref> guariranno un'unità alleata adiacente di solito di "
+"<ref>dst='ability_heals +4' text='4PF'</ref> o <ref>dst='ability_heals +8' "
+"text='8PF'</ref> PF per turno e impediranno i danni provenienti dal veleno "
+"su questa unità."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:306
@@ -2531,23 +2530,22 @@ msgstr ""
 
 #. [topic]: id=terrain_unwalkable
 #: data/core/help.cfg:668
-#, fuzzy
 msgid "Unwalkable"
 msgstr "Impervio"
 
 #. [topic]: id=terrain_unwalkable
 #: data/core/help.cfg:671
-#, fuzzy
 msgid ""
 "Unwalkable terrain covers any chasm or gorge which, as the name implies, "
 "cannot be crossed simply by walking. Chasms are noted for sheer walls which "
 "would take days to traverse. As far as gameplay is concerned, only units "
 "capable of flying can cross this terrain."
 msgstr ""
-"Un abisso è una spaccatura nel terreno che porta verso le profondità "
-"sconosciute. Gli abissi si notano per le pareti scoscese tanto da rendere "
-"impossibile l'attraversamento. Per quanto riguarda il gioco, solo le unità "
-"capaci di volare possono attraversare questo terreno."
+"I terreni impervi sono quelli come i dirupi e le gole che, come il nome "
+"suggerisce, non possono essere attraversati a piedi. Gli abissi si notano "
+"per le pareti scoscese che richiederebbero giorni per l'attraversamento. Per "
+"quanto riguarda il gioco, solo le unità capaci di volare possono "
+"attraversare questo terreno."
 
 #. [topic]: id=terrain_lava
 #: data/core/help.cfg:678
@@ -2556,7 +2554,6 @@ msgstr "Lava"
 
 #. [topic]: id=terrain_lava
 #: data/core/help.cfg:681
-#, fuzzy
 msgid ""
 "The dangers inherent in trying to walk on lava are fairly obvious. As far as "
 "movement is concerned, lava is equivalent to <ref>dst='terrain_unwalkable' "
@@ -2566,12 +2563,13 @@ msgid ""
 "This provides an attack bonus for lawful units and removes the attack bonus "
 "from chaotic units."
 msgstr ""
-"I pericoli che si corrono cercando di camminare sulla lava sono ovvi. Questo "
-"terreno può essere attraversato solo da quelle unità capaci di volare a una "
-"considerevole altezza sopra di essa. Il magma fuso inoltre produce una "
-"luminosità importante, che illumina l'area sovrastante. Questo fornisce un "
-"vantaggio per l'attacco delle unità legali e rimuove il vantaggio per le "
-"unità caotiche."
+"I pericoli che si corrono cercando di camminare sulla lava sono ovvi. Per il "
+"movimento, la lava equivale a un terreno <ref>dst='terrain_unwalkable' "
+"text='impervio'</ref>, e può essere attraversata solo dalle unità capaci di "
+"volare a una considerevole altezza sopra di essa. Il magma fuso inoltre "
+"produce una luminosità importante, che illumina l'area sovrastante. Questo "
+"fornisce un vantaggio per l'attacco delle unità legali e rimuove il "
+"vantaggio per le unità caotiche."
 
 #. [topic]: id=terrain_ford
 #: data/core/help.cfg:688
@@ -2598,7 +2596,7 @@ msgstr ""
 #. [topic]: id=terrain_reef
 #: data/core/help.cfg:698
 msgid "Coastal Reef"
-msgstr "Scogliera"
+msgstr "Secca"
 
 #. [topic]: id=terrain_reef
 #: data/core/help.cfg:703
@@ -2610,6 +2608,11 @@ msgid ""
 "\n"
 "Mermen and Naga both receive 70% defense on coastal reefs."
 msgstr ""
+"Le secche sono formate da pietra, corallo o sabbia. Ciò fornisce alla "
+"maggior parte delle unità terrestri un piede più fermo e una posizione di "
+"difesa migliore di quanto abbiano nelle acque basse, e fornisce alla maggior "
+"parte delle razze acquatiche una difesa eccezionalmente alta.\n"
+"I nereidi e i naga ricevono entrambi il 70% di difesa sulle secche."
 
 #. [topic]: id=terrain_bridge
 #: data/core/help.cfg:710
@@ -2656,6 +2659,11 @@ msgid ""
 "jagged peaks at such rarified heights, and not even the fiercest troll can "
 "smash through thick walls of stone."
 msgstr ""
+"Ostacoli che nemmeno i viaggiatori più determinati possono oltrepassare "
+"includono muri di solida pietra e montagne tanto alte da avere le cime "
+"costantemente circondate da nuvole. Neanche le creature volanti possono "
+"affrontare i picchi frastagliati a queste altitudini, né i più robusti troll "
+"possono abbattere spessi muri di roccia."
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:738
@@ -2796,8 +2804,8 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Scaccia e bandisce dal multigiocatore un utente usando l'indirizzo IP "
-"associato al suo nome utente.\n"
+"Mette al bando in una partita multigiocatore un utente usando l'indirizzo IP "
+"associato al suo nome utente e lo scaccia.\n"
 "\n"
 
 #. [topic]: id=mp_commands
@@ -2868,6 +2876,10 @@ msgid ""
 "campaign.\n"
 "\n"
 msgstr ""
+"\n"
+"Fa comparire un menù per la scelta dello scenario per avanzare "
+"immediatamente in una campagna.\n"
+"\n"
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:805
@@ -3557,9 +3569,8 @@ msgstr "Annulla tutti gli ordini"
 #. [then]
 #: data/core/macros/ai_controller.cfg:769
 #: data/core/macros/ai_controller.cfg:780
-#, fuzzy
 msgid "none set."
-msgstr "nessuno"
+msgstr "nessuno impostato."
 
 #. [value]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:802
@@ -5025,15 +5036,13 @@ msgstr "lenta"
 
 #. [trait]: id=dim
 #: data/core/macros/traits.cfg:209
-#, fuzzy
 msgid "dim"
-msgstr "Medio"
+msgstr "scuro"
 
 #. [trait]: id=dim
 #: data/core/macros/traits.cfg:210
-#, fuzzy
 msgid "female^dim"
-msgstr "impavida"
+msgstr "scura"
 
 #. [color_range]: id=red
 #. [color_range]: id=1
@@ -6155,6 +6164,10 @@ msgid ""
 "features, and allows us to improve Wesnoth. To learn more about this or "
 "disable it, click the envelope in the bottom-right corner."
 msgstr ""
+"Battle for Wesnoth invia automaticamente statistiche anonimizzate sui tuoi "
+"progressi nel gioco a un server su cui vengono memorizzate. Ciò permette "
+"molte funzioni, e permette di migliorare Wesnoth. Per saperne di più o per "
+"disabilitare l'invio, fai clic sulla busta nell'angolo in basso a destra."
 
 #. [tip]
 #: data/hardwired/tips.cfg:4
@@ -6804,6 +6817,8 @@ msgid ""
 "In many campaign scenarios, you may issue simple instructions for your "
 "computer-controlled allies using the right-click context menu."
 msgstr ""
+"In molti scenari di campagne puoi dare semplici istruzioni ai tuoi alleati "
+"controllati dal computer usando il menù contestuale del tasto destro.."
 
 #. [menu]: id=menu-main
 #: data/themes/default.cfg:120 data/themes/dfool.cfg:134
@@ -8345,6 +8360,8 @@ msgid ""
 "Available commands list and command-specific help. Use \"help all\" to "
 "include currently unavailable commands."
 msgstr ""
+"Elenco dei comandi disponibili e aiuto su comandi specifici. Usa «help all» "
+"per includere anche i comandi non disponibili al momento."
 
 #: src/menu_events.cpp:1973
 msgid " No help available."
@@ -8355,12 +8372,16 @@ msgid ""
 "Send a query to the server. Without arguments the server should tell you the "
 "available commands."
 msgstr ""
+"Invia un'interrogazione al server. Senza argomenti mostra i comandi "
+"disponibili."
 
 #: src/menu_events.cpp:2114
 msgid ""
 "Ban and kick a player or observer. If he is not in the game but on the "
 "server he will only be banned."
 msgstr ""
+"Metti al bando e scaccia un giocatore o un osservatore. Se non è in gioco ma "
+"solo sul server sarà sono messo al bando."
 
 #: src/menu_events.cpp:2117
 msgid "Kick a player or observer."
@@ -8510,14 +8531,16 @@ msgstr "Mostra una variabile dello scenario."
 #: src/menu_events.cpp:2327
 msgid "Modify a unit variable. (Only top level keys are supported.)"
 msgstr ""
+"Modifica la variabile di un'unità (Sono gestite solo le chiavi di primo "
+"livello)."
 
 #: src/menu_events.cpp:2331
 msgid "Remove a trait from a unit. (Does not work yet.)"
-msgstr "Rimuovi una caratteristica di un'unità (Non funziona ancora)"
+msgstr "Rimuovi una caratteristica di un'unità (Non funziona ancora)."
 
 #: src/menu_events.cpp:2333
 msgid "Create a unit."
-msgstr "Crea un'unità"
+msgstr "Crea un'unità."
 
 #: src/menu_events.cpp:2335
 msgid "Toggle fog for the current player."
