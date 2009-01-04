@@ -115,6 +115,9 @@ public:
 	void key_press(tevent_handler& event,
 		bool& handled, SDLKey key, SDLMod modifier, Uint16 unicode);
 
+	/** Inherted from tevent_executor. */
+	void focus(tevent_handler&);
+
 	/** Inherited from tcontainer_. */
 	bool get_active() const { return state_ != DISABLED; }
 

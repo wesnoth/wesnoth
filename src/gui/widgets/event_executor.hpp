@@ -160,7 +160,17 @@ public:
 	/** See mouse_left_button_double_click. */
 	virtual void mouse_right_button_double_click(tevent_handler&) {}
 
-	/***** ***** ***** ***** mouse right button ***** ***** ***** *****/
+	/***** ***** ***** ***** focus ***** ***** ***** *****/
+
+	/**
+	 * The widget recieves a focus event.
+	 *
+	 * Container classes are notified when a child item gets a mouse down
+	 * event. This can be used to capture the keyboard.
+	 */
+	virtual void focus(tevent_handler&) {}
+
+	/***** ***** ***** ***** keyboard ***** ***** ***** *****/
 
 	/**
 	 * A key is pressed.

@@ -332,6 +332,13 @@ void tscrollbar_container::key_press(tevent_handler& /*event*/,
 		}
 }
 
+void tscrollbar_container::focus(tevent_handler&)
+{
+	twindow* window = get_window();
+	assert(window);
+	window->keyboard_capture(this);
+}
+
 twidget* tscrollbar_container::find_widget(
 		const tpoint& coordinate, const bool must_be_active)
 {
@@ -382,9 +389,6 @@ bool tscrollbar_container::does_block_easy_close() const
 
 void tscrollbar_container::vertical_scrollbar_click(twidget* caller)
 {
-	/** @todo Hack to capture the keyboard focus. */
-	get_window()->keyboard_capture(this);
-
 	const std::map<std::string, tscrollbar_::tscroll>::const_iterator
 		itor = scroll_lookup().find(caller->id());
 
@@ -396,9 +400,6 @@ void tscrollbar_container::vertical_scrollbar_click(twidget* caller)
 
 void tscrollbar_container::horizontal_scrollbar_click(twidget* caller)
 {
-	/** @todo Hack to capture the keyboard focus. */
-	get_window()->keyboard_capture(this);
-
 	const std::map<std::string, tscrollbar_::tscroll>::const_iterator
 		itor = scroll_lookup().find(caller->id());
 

@@ -154,6 +154,19 @@ void tevent_handler::handle_event(const SDL_Event& event)
 			mouse_y_ = event.button.y;
 			mouse_over = find_widget(tpoint(mouse_x_, mouse_y_), true);
 
+			/**
+			 * @todo these two events aren't documented in the event overview
+			 * at the end of the file.
+			 */
+			if(!mouse_captured_) {
+				twidget* widget =
+						find_widget(tpoint(mouse_x_, mouse_y_), false);
+				if(widget) {
+					focus_parent_container(widget);
+					focus_parent_window(widget);
+				}
+			}
+
 			switch(event.button.button) {
 				case SDL_BUTTON_LEFT :
 					DBG_G_E << "Event: Left button down.\n";
@@ -517,6 +530,38 @@ void tevent_handler::mouse_click(twidget* widget, tmouse_button& button)
 	} else {
 
 		(widget->*button.click)(*this);
+	}
+}
+
+void tevent_handler::focus_parent_container(twidget* widget)
+{
+	assert(widget);
+
+	twidget* parent = widget->parent();
+	while(parent) {
+
+		tcontainer_* container = dynamic_cast<tcontainer_*>(parent);
+		if(container) {
+			if(container != widget->get_window() && container->get_active()) {
+				container->focus(*this);
+			}
+			return;
+		}
+
+		parent = parent->parent();
+	}
+
+}
+
+void tevent_handler::focus_parent_window(twidget* widget)
+{
+	assert(widget);
+
+	twindow* window = widget->get_window();
+	assert(window);
+
+	if(window->get_active()) {
+		window->focus(*this);
 	}
 }
 

@@ -310,6 +310,29 @@ private:
 	 */
 	void mouse_click(twidget* widget, tmouse_button& button);
 
+
+	/**
+	 * Called when a mouse button is pressed.
+	 *
+	 * When a mouse button is pressed it's direct parent container is
+	 * notified. If the parent container is the parent window this function
+	 * doesn't notify the parent. The funcion focus_parent_window will send
+	 * the event.
+	 *
+	 * @param widget              The widget that generated the event.
+	 */
+	 void focus_parent_container(twidget* widget);
+
+	/**
+	 * Called when a mouse button is pressed.
+	 *
+	 * When a mouse button is pressed it's direct parent window is send the
+	 * focus event.
+	 *
+	 * @param widget              The widget that generated the event.
+	 */
+	 void focus_parent_window(twidget* widget);
+
 	/**
 	 * Raises a hover request.
 	 *
