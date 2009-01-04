@@ -46,6 +46,7 @@ void tlanguage_selection::pre_show(CVideo& /*video*/, twindow& window)
 {
 	tlistbox* list = dynamic_cast<tlistbox*>(window.find_widget("language_list", false));
 	VALIDATE(list, missing_widget("language_list"));
+	window.keyboard_capture(list);
 
 	const std::vector<language_def>& languages = get_languages();
 	const language_def& current_language = get_language();
