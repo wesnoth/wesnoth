@@ -3,22 +3,25 @@
 # Copyright (C) 2008 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
-# Erdélyi Kristóf <kristof@erdelyi.eu>, 2007.
 # Máthé Katalin <katkadu@gmail.com>, 2008.
 # Németh Tamás <ntomasz@mail.kabelnet.hu>, 2008.
+# Kádár-Németh Krisztián <krisztian.kad@gmail.com>, 2008, 2009.
+# Gáspár Tamás <tomig90@freemail.hu>, 2008.
+# Kelemen Zoltán <kelemen_zoltan@freemail.hu>, 2008, 2009.
 msgid ""
 msgstr ""
 "Project-Id-Version: hu-did\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-12-26 22:20+0100\n"
-"PO-Revision-Date: 2008-03-31 20:42+0200\n"
-"Last-Translator: Németh Tamás <ntomasz@mail.kabelnet.hu>\n"
+"PO-Revision-Date: 2009-01-05 17:56+0100\n"
+"Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
 "Language-Team: Hungarian\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: KBabel 1.11.4\n"
+"X-Generator: Lokalize 0.2\n"
+"X-Poedit-Bookmarks: 238,-1,-1,-1,-1,-1,-1,-1,-1,-1\n"
 
 #. [campaign]: id=Descent_Into_Darkness
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:11
@@ -33,7 +36,7 @@ msgstr "AAS"
 #. [campaign]: id=Descent_Into_Darkness
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:16
 msgid "Neophyte"
-msgstr "Újonc"
+msgstr "Tanonc"
 
 #. [campaign]: id=Descent_Into_Darkness
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:16
@@ -48,7 +51,7 @@ msgstr "(Kihívást jelentő)"
 #. [campaign]: id=Descent_Into_Darkness
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:17
 msgid "Evoker"
-msgstr "Élesztő"
+msgstr "Szellemidéző"
 
 #. [campaign]: id=Descent_Into_Darkness
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:18
@@ -68,10 +71,10 @@ msgid ""
 "\n"
 "(Expert level, 11 scenarios.)\n"
 msgstr ""
-"Tanuld meg a holtidézés sötét művészetét, hogy megmentsd szeretteidet az ork "
-"betörésektől. \n"
+"Tanuld meg a holtidézés sötét művészetét, hogy megmenthesd szeretteidet az "
+"ork betörésektől. \n"
 "\n"
-"(Szakértő szint, 11 pélya)\n"
+"(Szakértő szint, 11 pálya)\n"
 
 #. [about]
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:26
@@ -86,7 +89,7 @@ msgstr "Hadjárat karbantartás"
 #. [about]
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:41
 msgid "Artwork and Graphics Design"
-msgstr ""
+msgstr "Illusztrációk és grafikai arculat"
 
 #. [scenario]: id=Descent_into_Darkness
 #. [editor_group]: id=did
@@ -102,7 +105,6 @@ msgstr "Parthyn megmentése"
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:19
-#, fuzzy
 msgid ""
 "Malin Keshar was born 10 years after the death of Haldric IV. He grew up in "
 "the northern border town of Parthyn, the second child and eldest son of the "
@@ -112,13 +114,13 @@ msgid ""
 "Malin's father led raiding parties to disrupt the orc encampments and send "
 "the orcs back to the north."
 msgstr ""
-"Malin Keshar tíz évvel IV. Haldric halála után született. Egy északi "
-"határvárosban Parthyn nőtt fel, a város grófjának második gyermeke és "
+"Malin Keshar tíz évvel IV. Haldric halála után született. Parthynban, egy "
+"északi határvárosban nőtt fel, a város grófjának második gyermekeként és "
 "legidősebb fiaként. Minden nyáron, mikor a hegyszorosok járhatóvá váltak, "
-"orkok érkeztek északról, hogy csatában bizonyítsák magukat. Hal'al őrei "
-"évről évre visszaverték a portyákat, de egypáran a lakosok közül mindig "
-"odavesztek. Malin apja rajtaütéseket vezetett, hogy szétzúzza az ork "
-"táborhelyet, és visszakényszerítse őket északra."
+"orkok érkeztek északról, hogy bizonyítsák a csatában való jártasságukat. "
+"Évről évre Parthyn védői visszaverték a portyázókat, de a lakosok közül "
+"mindig odavesztek néhányan. Malin apja rajtaütéseket vezetett, hogy "
+"lerombolja az ork táborhelyeket, és visszaűzze az orkokat északra."
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:24
@@ -132,9 +134,9 @@ msgid ""
 msgstr ""
 "Amikor Malin 10 éves volt, egy városon átutazó mágus erős varázsképességeket "
 "érzett a fiúban. A szülei látván a lehetőséget, hogy fiuk a csatáktól távol "
-"élhet, intézkedtek, hogy az Alduin sziget mágus közösségébe kerüljön. Ott "
-"tanult nyolc éven át, míg az otthonára mért ork támadások növekedtek "
-"gyakoriságban és kegyetlenségben. Mielőtt azonban Malin befejezhette volna "
+"élhet, intézkedtek, hogy Alduin sziget mágusközösségébe kerüljön. Ott tanult "
+"nyolc éven át, mialatt az otthonát ért ork támadások gyakorisága és "
+"kegyetlensége egyre nőtt. Mielőtt azonban Malin befejezhette volna "
 "tanulmányait, eltanácsolták a mágusok közül."
 
 #. [part]
@@ -146,9 +148,9 @@ msgid ""
 "chest and fell lifeless to the ground."
 msgstr ""
 "Malin a tavasz kezdetekor tért vissza Parthynba, ahol újabb szerencsétlenség "
-"várt rá. Amikor megérkezett, már egy korai, váratlan ork támadás zajlott "
-"Hal'al ellen. Malin látta, amint apját mellkason találja egy íj és "
-"élettelenül földre rogy."
+"várt rá. Amikor megérkezett, épp egy korai, váratlan ork támadás zajlott "
+"Parthyn ellen. Malin látta, amint apját mellkason találja egy íj és "
+"élettelenül a földre rogy."
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:35
@@ -159,10 +161,10 @@ msgid ""
 "skeletons cut down orc after orc and then melted back into the forest."
 msgstr ""
 "Megrendülve parancsnokuk elvesztésétől az emberi védelem kezdett "
-"összeomlani. Miközben az orkok győzelmüket érezve ordítoztak, csontváz "
-"harcosok kezdtek előseregleni az erdőből, hátba támadva az orkokat. A "
-"katonák ámulva nézték, ahogy a csontvázak egyik ork után a másikat "
-"kaszabolják le, majd eltűnnek az erdőben, ahonnan jöttek."
+"összeomlani. Miközben az orkok diadalittasan ordítoztak, csontváz harcosok "
+"kezdtek előseregleni az erdőből, hátbatámadva az orkokat. A katonák ámulva "
+"nézték, ahogy a csontvázak egyik ork után a másikat kaszabolják le, majd "
+"eltűnnek az erdőben, ahonnan jöttek."
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:47
@@ -174,12 +176,12 @@ msgid ""
 "border towns can stand without some assistance. For now, I ask only to rest "
 "in your town for a few days.'"
 msgstr ""
-"Nemsokára egy holtidéző ruhába öltözött férfi bukkant elő a fák közül. Hadd "
-"mutatkozzam be. Darken Volk vagyok. Bár tudom, hogy országotok nem szereti a "
-"fajtám, úgy gondolom, hogy félre kell tennünk a különbségeinket. Az ork "
-"veszély nőtt északon, és én kétlem, hogy bármely határváros képes lenne "
-"ellenállni némi segítség nélkül. Most csak azt kérem, hogy néhány napot "
-"pihenhessek a városotokban."
+"Nemsokára egy holtidéző csuhába öltözött férfi bukkant elő a fák közül. "
+"'Hadd mutatkozzam be. Darken Volk vagyok. Bár tudom, hogy országotok nem "
+"szereti a fajtám, de mint imént bizonyítottam, jobb ha félretesszük az "
+"előítéleteinket. Az ork veszély nő északon, és én kétlem, hogy bármely "
+"határváros képes lenne ellenállni nekik némi segítség nélkül. Most csak azt "
+"kérem, hogy néhány napot pihenhessek a városotokban.'"
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:52
@@ -190,11 +192,11 @@ msgid ""
 "return on pain of death. We thank you for your help, but need no alliances "
 "with those who deal only in dark magic.'"
 msgstr ""
-"Drogan az őrök vezetője válaszolt: Biztosan tudod, hogy a holtidézés "
-"büntetése halál. A segítségedért cserébe megígérjük, hogy békében és "
-"biztonságban pihenhetsz. Távozásod után azonban száműzünk ezen földekről, és "
-"csak halál terhe mellett térhetsz vissza. Megköszönjük a segítséged, de "
-"nincs szükségünk szövetségre olyanokkal, akik sötét mágiával foglalkoznak."
+"Drogan, az őrség kapitánya válaszolt: 'Bizonyára tudod, hogy a holtidézésért "
+"halálbüntetés jár. A segítségedért cserébe megígérjük, hogy békében és "
+"biztonságban pihenhetsz.  Távozásod után azonban száműzünk földjeinkről, és "
+"csak fővesztés terhe mellett térhetsz vissza. Megköszönjük a segítséged, de "
+"nincs szükségünk olyan szövetségesekre, akik feketemágiával foglalkoznak.'"
 
 #. [side]: type=General, id=Taylor
 #. [side]: type=Apprentice Mage, id=Malin Keshar
@@ -208,7 +210,7 @@ msgstr ""
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:43
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:93
 msgid "Defenders"
-msgstr ""
+msgstr "Védők"
 
 #. [side]: type=Apprentice Mage, id=Malin Keshar
 #. [unit]: id=Malin Keshar, type=Dark Mage
@@ -240,7 +242,7 @@ msgstr "Malin Keshar"
 #: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:96
 #: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:126
 msgid "Orcs"
-msgstr ""
+msgstr "Orkok"
 
 #. [side]: type=Orcish Warrior, id=Kreg'a'shar Trr
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:85
@@ -257,7 +259,7 @@ msgstr "Drogan"
 #. [objective]: condition=win
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:138
 msgid "Defend the river fort for two nights"
-msgstr "Megvéded a folyami erődöt két éjszakán keresztül"
+msgstr "Megvéded a folyami erődöt két napon keresztül"
 
 #. [objective]: condition=lose
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:142
@@ -295,8 +297,8 @@ msgid ""
 "be allowed to stay to help defend the town. The necromancer leaves Parthyn "
 "without incident."
 msgstr ""
-"Malin, félve apja halálának következményeitől hasztalan érvelt amellett, "
-"hogy Darken Volk maradhasson segíteni megvédeni a várost. A holtidéző "
+"Malin, akit felkavart apja halála, hasztalan érvelt amellett, hogy Darken "
+"Volk engedéllyel a városban maradhasson, s segítsen megvédeni. A holtidéző "
 "elhagyta a várost."
 
 #. [message]: speaker=narrator
@@ -311,12 +313,12 @@ msgid ""
 "out the orc encampments and leave us a relatively quiet summer."
 msgstr ""
 "Bár nem szeretek ilyen hamar portyázókat kiküldeni, de talán sikerül "
-"kiüríteniük az ork tábort és viszonylag békés nyarat biztosítani számunkra."
+"felszámolniuk az ork tábort és viszonylag békés nyarat biztosítani számunkra."
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:191
 msgid "So much for quiet, Drogan. Orcs mass north of the river!"
-msgstr "Ennyit a békésről, Drogan! Egy rakás ork van a folyótól északra."
+msgstr "Ennyit a békéről Drogan! Egy rakás ork van a folyótól északra."
 
 #. [message]: speaker=Drogan
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:195
@@ -326,10 +328,10 @@ msgid ""
 "party is due to return in two days, and the orcs will not dare fight with "
 "such a force attacking from behind."
 msgstr ""
-"Az átkozottak! Tartanod kell a folyó menti erődöt, Malin, vagy a város "
-"bizton elveszett. A maradék katonámmal segítségedre indulok. A portyázó "
-"csapat két napon belül visszatér, az orkok nem mernek majd akkora sereg "
-"ellen harcolni, mely a hátukba támad."
+"Az átkozottak! Tartanod kell a folyó menti erődöt Malin, vagy a város bizton "
+"elveszik. A maradék katonáimmal a segítségedre indulok. A portyázó csapat "
+"két napon belül visszatér, az orkok nem mernek majd akkora sereg ellen "
+"harcolni, ami a hátukba támad."
 
 #. [message]: speaker=Drogan
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:209
@@ -338,7 +340,6 @@ msgstr "Mi a csuda az? A holtidéző visszatért?"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:213
-#, fuzzy
 msgid ""
 "No, Drogan. I raised this corpse with the skills Darken Volk taught to me "
 "before he left. While I have no love for it, without the help of the dead we "
@@ -346,9 +347,9 @@ msgid ""
 "that!"
 msgstr ""
 "Nem, Drogan. Én támasztottam fel ezt a testet azzal a tudással, amit Darken "
-"Volk tanított nekem mielőtt elment. Habár nekem sincs ínyemre, a halottak "
-"segítsége nélkül kiszolgáltatjuk magunkat és családjainkat az orkok "
-"fegyvereinek! Ezt neked is be kell látnod!"
+"Volk tanított nekem, mielőtt elment. Habár nekem sincs ínyemre, de a "
+"halottak segítsége nélkül mindannyian az orkok serpenyőiben végezzük! Ezt "
+"neked is be kell látnod!"
 
 #. [message]: speaker=Drogan
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:217
@@ -358,7 +359,7 @@ msgid ""
 "was for dabbling in such arts, it is no wonder they cast you out!"
 msgstr ""
 "Nincs olyan haszon, amely megérné halottaink testének meggyalázását! Soha "
-"nem beszélsz arról, miért is küldtek haza a mágusok Alduinból, ha hasonló "
+"nem beszélsz arról, miért is küldtek haza a mágusok Alduinból; ha hasonló "
 "varázslatokkal foglalkoztál, akkor nem is csodálom, hogy kidobtak!"
 
 #. [message]: speaker=Malin Keshar
@@ -382,8 +383,8 @@ msgid ""
 "Fear is the path to the dark side. Fear leads to anger. Anger leads to hate. "
 "Hate leads to suffering."
 msgstr ""
-"A félelem út a sötét oldalra. A félelem dühöt szül. A düh gyűlöletet szül. A "
-"gyűlölet pedig szenvedést okoz."
+"A félelem a sötét oldalra visz. A félelem dühöt szül. A düh gyűlöletet szül. "
+"A gyűlölet pedig szenvedést okoz."
 
 #. [message]: speaker=Drogan
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:264
@@ -403,17 +404,17 @@ msgid ""
 "showed him mercy, however, I will give the same to you. You are hereby "
 "banished from Parthyn and all the Kingdom of Wesnoth."
 msgstr ""
-"A törvények alapján, most azonnal ki kéne végeztetnem téged Malin. Nem "
-"szabadott volna hagynom, hogy a holtidézőnek esélye legyen, hogy megrontson. "
-"Kegyelmet adtam neki, és ugyanazt megadom neked is. Ezennel száműzlek "
-"Parthynból és az egész Wesnothi Királyságból."
+"A törvények alapján, most azonnal ki kéne végeztetnem téged, Malin. Nem "
+"szabadott volna hagynom, hogy a holtidéző megrontson. Kegyelmet adtam neki, "
+"és ugyanazt megadom neked is. Ezennel száműzlek Parthynból és az egész "
+"Wesnothi Királyságból."
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:305
 msgid ""
 "Would you rather have let the orcs overrun the town and seen us both dead?"
 msgstr ""
-"Inkább hagytad volna, hogy az orkok lerohanják a várost és látnál miket "
+"Inkább hagytad volna, hogy az orkok lerohanják a várost és látnál minket "
 "holtan?"
 
 #. [message]: speaker=Drogan
@@ -423,8 +424,8 @@ msgid ""
 "rebuilt the town, just as they always have in the past. Would that the mages "
 "had taught you more sense."
 msgstr ""
-"Igen, inkább minthogy fekete mágiával foglalkozzak. Az emberek újraépítették "
-"volna a várost, ugyanúgy ahogy a múltban mindig. Bárcsak a mágusok jobb "
+"Igen inkább, minthogy feketemágiával kísérletezzek. Az emberek újraépítették "
+"volna a várost ugyanúgy, ahogy a múltban is mindig. Bárcsak a mágusok jobb "
 "ítélőképességre tanítottak volna."
 
 #. [message]: speaker=Malin Keshar
@@ -432,7 +433,8 @@ msgstr ""
 msgid ""
 "The mages taught me enough. You won't truly banish me, will you, Drogan?"
 msgstr ""
-"A mágusok eleget tanítottak engem. Ugye nem fogsz tényleg száműzni, Drogan?"
+"A mágusok épp eleget tanítottak nekem. Ugye nem fogsz tényleg száműzni, "
+"Drogan?"
 
 #. [message]: speaker=Drogan
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:317
@@ -440,7 +442,7 @@ msgid ""
 "Begone, now. I've no wish to be forced to send the soldiers after you. Your "
 "father would be ashamed to see the end to which you've come."
 msgstr ""
-"Eredj mostmár! Nem szeretném, ha katonákat kellene küldenem utánad. Az apád "
+"Eredj azonnal! Nem szeretném, ha katonákat kellene küldenem utánad. Az apád "
 "szégyenkezne, ha látná, hogy végezted."
 
 #. [message]: speaker=Drogan
@@ -451,7 +453,7 @@ msgid ""
 "was wounded in the attack. Healers attend her, but she may not live out the "
 "hour."
 msgstr ""
-"Bátran tetted, fiú, hogy visszatartottad az orkokat egymagad. A mágusok jól "
+"Bátran tetted fiú, hogy visszatartottad az orkokat egymagad. A mágusok jól "
 "tanítottak téged. Sajnos a faluból rossz hírt hozok; a húgod Dela megsérült "
 "a támadás során. A gyógyítók ellátták őt, de lehet, hogy nem éri meg a "
 "holnapot."
@@ -462,8 +464,8 @@ msgid ""
 "Orcs. Foul, pestilent creatures. The wide green world would be a better "
 "place with them all dead. Dead!"
 msgstr ""
-"Orkok. Aljas, bosszantó teremtmények. A széles zöld világ egy jobb hely "
-"lenne, ha mind halott lenne! Halott!"
+"Orkok. Aljas, bosszantó teremtmények. Az egész világ egy jobb hely lenne, ha "
+"mind halott lenne! Halott!"
 
 #. [message]: speaker=Drogan
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:331
@@ -471,8 +473,8 @@ msgid ""
 "Perhaps, but if kings and great mages have not abolished them neither you "
 "nor I are ever likely to."
 msgstr ""
-"Talán, de ha királyok és nagy mágusok nem irtották még ki őket, se te sem én "
-"nem fogjuk tudni."
+"Talán, de ha királyok és nagy mágusok nem tudták kiirtani őket, mi magunk se "
+"tudjuk."
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:335
@@ -481,13 +483,13 @@ msgid ""
 "defeated, and there will be more orcs at the other end of it. I shall pursue "
 "them."
 msgstr ""
-"Talán nem tudom mind megölni... de látom a legyőzött banda nyomait, a másik "
+"Talán nem tudom mind megölni... de látom a legyőzött banda csapását, a másik "
 "végén ott lesz a többi. Követem őket."
 
 #. [message]: speaker=Drogan
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:339
 msgid "And leave your sister?"
-msgstr "Itthagynád a nővéred?"
+msgstr "Itthagynád a húgodat?"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:343
@@ -501,8 +503,8 @@ msgid ""
 "No! We need every man who can fight here, not lost in doomed attempt to "
 "harry the orcs in their own country!"
 msgstr ""
-"Nem! Minden harcoló emberre itt van szükségünk, nem pedig holtan, mert "
-"megpróbálták elpusztítani az orkokat a saját országukban!"
+"Nem! Minden harcképes emberre élve van szükségünk, nem pedig holtan, mert "
+"esztelenül megpróbálták elpusztítani az orkokat a saját országukban!"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:351
@@ -545,10 +547,11 @@ msgid ""
 "ravaging his family and home through their ceaseless attacks."
 msgstr ""
 "Könnyeivel és dühével küzdve Malin követte az orkok nyomait. Elátkozta a "
-"bölcs mágusokat, amiért félkészen küldték el Alduin szigetéről, hogy onnan "
+"bölcs mágusokat, amiért féltudással küldték el Alduin szigetéről, hogy onnan "
 "egy ilyen konfliktusba kerüljön. Átkozta Drogant, hogy hiányzott belőle a "
-"bátorság, hogy lássa mit kell tenni.  Legvadabban pedig az orkokat átkozta, "
-"akik elpusztították családját és otthonát a szakadatlan támadásaikkal."
+"bátorság, hogy megtegye, ami elkerülhetetlen.  Legvadabban pedig az orkokat "
+"átkozta, akik elpusztították családját és otthonát a szakadatlan "
+"támadásaikkal."
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:28
@@ -560,10 +563,10 @@ msgid ""
 "magic."
 msgstr ""
 "Három nappal Parthyn elhagyása után Malin találkozott Darken Volkkal, "
-"ugyanazzal a holtidézővel aki megmentette Hal'alt és tanította Mailint a "
-"holtidézésre nem sokkal ezelőtt. A szellemidéző megszánta Malint magányában "
-"és felkérte Malint csatlakozzon hozzá. Ahogy a teltek a hetek Volk még több "
-"fekete mágiára tanította Malint. "
+"ugyanazzal a holtidézővel, aki megmentette Parthynt, és megtanította őt a "
+"holtidézésre nem sokkal ezelőtt. A holtidéző megszánta Malint magányában, és "
+"kérte, hogy csatlakozzon hozzá. Ahogy teltek a hetek, Volk még több "
+"feketemágiára tanította Malint. "
 
 #. [side]: type=Goblin Knight, id=T'shar Lggi
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:58
@@ -613,7 +616,7 @@ msgid ""
 "interested, I would be happy to take you on as my apprentice so that you "
 "can... aid me in the fight against them."
 msgstr ""
-"Igazából, osztozom az orkok iránti gyűlöletedben. Az északi földek... az "
+"Igazán osztozom az orkok iránti gyűlöletedben. Az északi földek... az "
 "otthonom... már sok éve, és az orkok egyre növekedő fertőzést jelentenek "
 "rajtuk. Megfosztották a földet szépségétől bárhova is mentek. Ha van kedved, "
 "örömmel magammal viszlek tanoncomként, így... segíthetsz az ellenük való "
@@ -639,7 +642,7 @@ msgid ""
 "Perhaps. Even Drogan would have to be thankful for a summer without orc "
 "raids."
 msgstr ""
-"Talán. Még Drogannak is hálásnak kellene lennie egy rajtaütés mentes nyárért."
+"Talán. Még Drogannak is hálásnak kellene lennie egy rajtaütésmentes nyárért."
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:140
@@ -650,8 +653,8 @@ msgid ""
 "to call in our fight against the orcs."
 msgstr ""
 "Egy kobold falu van ebben a völgyben, épp előttünk. Ez egy korcs nép, ami az "
-"orkoktól származik és segíti őket harcaikban emberek és törpök ellen. Nem "
-"tudnak jöttünkről. Legyőzésük lelkekkel gazdagít majd minket, amiket "
+"orkoktól származik és segíti őket harcaikban az emberek és a törpök ellen. "
+"Nem tudnak a jöttünkről. Legyőzésük lelkekkel gazdagít majd minket, amiket "
 "felhasználhatunk az orkok elleni harcban."
 
 #. [message]: speaker=Darken Volk
@@ -667,7 +670,7 @@ msgstr "Óvakodj a kobold őröktől a falvakban!"
 #. [then]
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:216
 msgid "Villager"
-msgstr "Falu lakó"
+msgstr "Falubeli"
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:236
@@ -698,10 +701,10 @@ msgid ""
 "within. Those that outlive their masters gravitate towards the swamps and "
 "bogs, drawn by the natural decay there."
 msgstr ""
-"Ezek hullarablók. Valaha... gonosz emberek... gyilkosok törvényen kívüliek "
-"voltak. Mágia segítségével átváltoztak, így a külsejük tükrözi a lelküket. "
-"Akik túlélik mesterüket, a mocsarakba és lápokba húzódnak, vonzza őket a "
-"természetes bomlás.  "
+"Ezek hullarablók. Valaha... gonosz emberek... gyilkosok, törvényen kívüliek "
+"voltak. Mágia segítségével átváltoztatták őket, így a külsejük tükrözi a "
+"lelküket. Akik túlélik mesterüket, a mocsarakba és lápokba húzódnak, vonzza "
+"őket a természetes bomlás.  "
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:279
@@ -742,7 +745,7 @@ msgstr "Vannak odakint zombik?"
 #. [event]
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:300
 msgid "Don't say that!"
-msgstr "Ne mondd azt!"
+msgstr "Ne mondd ki azt!"
 
 #. [event]
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:301
@@ -758,7 +761,7 @@ msgstr "Azt!"
 #. [event]
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:304
 msgid "The 'zed' word. Don't say it!"
-msgstr "A z betűs szó! Ne mond ki!"
+msgstr "A z betűs szó! Ne mondd ki!"
 
 #. [event]
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:305
@@ -773,7 +776,7 @@ msgstr "Mert nevetséges!"
 #. [event]
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:307
 msgid "Well... are there any?"
-msgstr "Jó... , akkor vannak?"
+msgstr "Jó... akkor vannak kint?"
 
 #. [event]
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:308
@@ -791,8 +794,8 @@ msgid ""
 "Sacking goblin villages is all well and good, but walking corpses and bats "
 "won't stand up to full orcish warriors."
 msgstr ""
-"Szép dolog a kobold falvak elfoglalása, de sétáló hullák és denevérek nem "
-"mérhetőek össze egy képzett ork harcossal."
+"Szép dolog a kobold falvak elfoglalása, de Eleven testek és denevérek nem "
+"bírnak el egy képzett ork harcossal."
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:343
@@ -801,17 +804,18 @@ msgid ""
 "now available for our use, you will see your forces grow quickly."
 msgstr ""
 "Kiképzésed csak most kezdődött el, Malin. Ezeknek a koboldoknak a lelkei "
-"hasznunkra válnak majd, hamarosan látni fogod növekvő seregünket."
+"hasznunkra válnak majd, hamarosan látni fogod, hogy gyorsan gyarapodik a "
+"sereged."
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:347
 msgid "Excellent. I'm eager to move on to the real foes."
-msgstr "Kitűnő. Már égek a vágytól, hogy az igazi ellenfél ellen induljunk."
+msgstr "Kitűnő. Már égek a vágytól, hogy igazi ellenfél ellen induljunk."
 
 #. [scenario]: id=A_Haunting_in_Winter
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:6
 msgid "A Haunting in Winter"
-msgstr "Szellemszállás télire"
+msgstr "Lélekvadászat télire"
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:18
@@ -821,16 +825,17 @@ msgid ""
 "find them. Malin's power grows considerably under the constant tutelage of "
 "the necromancer."
 msgstr ""
-"Malin és Darken Volk a nyarat az alsó északi földek beutazásával töltötték. "
-"Kis kobold és ork táborokat támadtak meg, amikor rájuk akadtak. Malin ereje "
-"jelentősen nőtt a holtidéző felügyelete alatt."
+"Malin és Darken Volk a nyarat és az őszt Északfölde alsó részeinek "
+"bejárásával töltötték. Kis kobold falukat és ork táborokat támadtak meg, "
+"amikor rájuk akadtak. Malin ereje jelentősen nőtt a holtidéző felügyelete "
+"alatt."
 
 #. [side]: type=Dwarvish Steelclad, id=Dap Horner
 #. [side]: type=Bandit, id=Gorak Cole
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:53
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:73
 msgid "Outlaws"
-msgstr ""
+msgstr "Törvényen kívüliek"
 
 #. [side]: type=Dwarvish Steelclad, id=Dap Horner
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:56
@@ -845,7 +850,7 @@ msgstr "Gorak Cole"
 #. [side]
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:91
 msgid "Free Undead"
-msgstr ""
+msgstr "Szabad élőholtak"
 
 #. [objective]: condition=win
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:109
@@ -865,9 +870,9 @@ msgid ""
 "already inhabit it. You should clear them out so we may use it safely."
 msgstr ""
 "A tél gyorsan közeleg, szükségünk lesz egy búvóhelyre ahol átvészelhetjük. "
-"Ez a barlang ígéretesnek néz ki, de a ki és befelé vezető nyomok szerint "
-"számos törvényen kívüli banda lakja már. Meg kell tisztítanod, hogy "
-"biztonságban legyünk itt."
+"Ez a barlang ígéretesnek néz ki, de a ki- és bevezető nyomok szerint számos "
+"törvényen kívüli banda lakja már. Meg kell tisztítanod, hogy biztonságban "
+"legyünk itt."
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:173
@@ -895,13 +900,12 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:207
-#, fuzzy
 msgid ""
 "Two necromancers are at the cave entrance! Up yer axes, boys, if ye dinna' "
 "want tae be a walking pile o' bones."
 msgstr ""
-"Két holtidéző van a barlang bejáratánál! Vegyétek elő a baltátokat fiúk, ha "
-"nem akartok egy halom mozgó csonttá válni."
+"Két holtidéző van a barlang bejáratánál! Kapjátok fel a bárdjaitokat fiúk, "
+"ha nem akartok egy halom sétáló csonttá válni."
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:211
@@ -917,15 +921,15 @@ msgid ""
 "you deal with the orc threat at its source. For now, the cave-dwellers give "
 "us no choice."
 msgstr ""
-"Az élők félnek attól amit nem értenek, és a halál a legnagyobb rejtély. Aki "
+"Az élők félnek attól, amit nem értenek, és a halál a legnagyobb rejtély. Aki "
 "vizsgálni meri ezt a rejtélyt, az félelmet és bizalmatlanságot kelt. Ne "
 "aggódj, a tieid szívesen látnak majd újra, ha leszámoltál az ork "
-"fenyegetéssel. De most a barlang lakók nem hagynak más választást!"
+"fenyegetéssel. De most a barlanglakók nem hagynak más választást!"
 
 #. [event]: type=Ghost side 4}
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:242
 msgid "Tortured Soul"
-msgstr "Kínzott lélek"
+msgstr "Megkínzott lélek"
 
 #. [message]
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:248
@@ -933,8 +937,8 @@ msgid ""
 "Free! Your foul spells cannot enslave me any longer, Malin the Damned. You "
 "shall pay for keeping me from my final rest!"
 msgstr ""
-"Szabad vagyok! Az ostoba varázslatod nem tart többé fogva, Nyomorult Malin. "
-"Fizetned kell, mert nem hagytál békében nyugodni!"
+"Szabad vagyok! Az aljas varázslatod nem tart többé fogva, Nyomorult Malin. "
+"Fizetni fogsz, mert nem hagytál békében nyugodni!"
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:252
@@ -944,10 +948,9 @@ msgid ""
 "who have died when their servants turned on them. He will attack you "
 "relentlessly."
 msgstr ""
-"Ostoba fiú! Erősebbnek kell lenned, vagy soha nem fogod tudni eléggé "
-"irányítani a katonáidat, hogy legyőzd az orkokat. Sokan vannak a fiatal "
-"holtidéző, akik meghaltak, mikor egy szolgájuk ellenük fordult. "
-"Könyörtelenül meg fog támadni."
+"Ostoba fiú! Erősebbnek kell lenned, vagy soha nem fogod tudni felügyelni a "
+"katonáidat, hogy legyőzd az orkokat. Sok fiatal holtidéző volt, aki meghalt, "
+"mikor a szolgái ellene fordultak. Könyörtelenül meg fognak támadni."
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:256
@@ -960,14 +963,15 @@ msgid ""
 "Destroy the rebel quickly and all will be well. Wait, and he will begin to "
 "turn the rest of your forces against you."
 msgstr ""
-"Pusztítsd el a lázadót gyorsan és minden rendben lesz. Várj, és akkor "
+"Pusztítsd el a lázadót gyorsan és minden rendben lesz. Ha késlekedsz, akkor "
 "elkezdi az egész seregedet ellened fordítani."
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:295
 msgid ""
 "I think I've got the rest of them under control now. That was a close call."
-msgstr "Úgy gondolom a többit már ellenőrzés alatt tartom. Ez közel volt."
+msgstr ""
+"Úgy gondolom a többit már ellenőrzésem alatt tartom. Ez meleg helyzet volt."
 
 #. [scenario]: id=Beginning_of_the_Revenge
 #: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:6
@@ -996,8 +1000,8 @@ msgid ""
 "says that he hopes to catch the orc fighters unprepared by arriving early in "
 "the year, thereby inflicting as much damage as possible."
 msgstr ""
-"Tavasz eljöttével a páros északra egy hegyszoros felé indult. Magasabban a "
-"hó épp csak kezdett olvadni, bizonytalanná téve az átjárót. Ám az idősebb "
+"Tavasz eljöttével a páros északra, egy hegyszoros felé indult. Magasabban a "
+"hó épp csak kezdett olvadni bizonytalanná téve az átjárót. Ám az idősebb "
 "holtidéző ragaszkodott az út folytatásához. Azt mondta, talán készületlenül "
 "érhetik az ork harcosokat az év ilyen korai szakában és így még több kárt "
 "okozhatnak."
@@ -1015,7 +1019,7 @@ msgstr "K'rrlar Oban "
 #. [objective]: condition=win
 #: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:108
 msgid "Move Malin to the end of the mountain pass"
-msgstr "Malin eléri a hágó végi útelágazást"
+msgstr "Malin eléri a hágó túlsó végét"
 
 #. [objective]: condition=win
 #: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:112
@@ -1038,7 +1042,7 @@ msgid ""
 "With the might of the undead at my command, many orcs will die this day. "
 "They shall pay for getting me banished from Parthyn."
 msgstr ""
-"Az élőhalottak erejével a kezemben sok ork fog meghalni a mai nap. Fizetniük "
+"Az élőholtak erejével a kezemben sok ork fog meghalni a mai napon. Fizetniük "
 "kell, amiért száműzettem Parthynból."
 
 #. [message]: speaker=Malin Keshar
@@ -1048,9 +1052,8 @@ msgstr "Érezd a haragom, aljas teremtmény!"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:183
-#, fuzzy
 msgid "The ice doesn't look very thick..."
-msgstr "A jég itt nem tűnik túl vastagnak..."
+msgstr "A jég nem tűnik túl vastagnak..."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:240
@@ -1058,8 +1061,8 @@ msgid ""
 "The weak ice gives way beneath the undead creature, who becomes mired in the "
 "thick mud at the lake's bottom."
 msgstr ""
-"A vékony jég beszakadt az élőholt alatt, aki beragadt a vastag iszapba a tó "
-"alján."
+"A vékony jég beszakadt az élőholt alatt, aki beleragadt a vastag iszapba a "
+"tó alján."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:248
@@ -1084,10 +1087,10 @@ msgid ""
 "minions. Word spreads among the orcish towns, which begin to post guards and "
 "leave torches burning all night. These measures do little to help them."
 msgstr ""
-"Egész nyáron és ősszel a holtidéző és tanítványa ork uralta területeken "
-"utazott. Éjszaka csontvázakat és a szellemeket ébresztettek az erdőkben, "
-"hogy azok rettegésben tartsák és megöljék orkot egész táborait és kobold "
-"szövetségeseiket. Hírük terjedni kezdett az ork városokban, ahol őrszemeket "
+"Egész nyáron és ősszel a holtidéző és tanítványa az orkok-uralta területeken "
+"utazott. Éjszaka csontvázakat és szellemeket idéztek meg az erdőkben, hogy "
+"azok rettegésben tartsák és megöljék az orkok és kobold szövetségeseik egész "
+"táborait. Hírük terjedni kezdett az ork városokban, ahol őrszemeket "
 "állítottak, és egész éjjelre égő fáklyákat helyeztek ki. Ezek az "
 "intézkedések azonban vajmi keveset segítettek rajtuk."
 
@@ -1100,30 +1103,30 @@ msgid ""
 "'They are quite useful in battle,' the necromancer says to Malin, 'but none "
 "of them have even a tenth of your potential power.'"
 msgstr ""
-"Délre is elér a híre az orkok ellen nyert sok csatának, mesélte Darken Volk "
-"Malinnak. Ahogy eljött a tavasz, sok sötét mágiában jártas ember utazott "
-"északra és csatlakozott a pároshoz, hogy résztvehessenek a harcokban. - "
-"Nagyon hasznosak a harcban, de egyiknek sincs tized annyi ereje sem, mint "
-"amennyi benned rejlik, Malin."
+"'Délre is elér a híre az orkok ellen nyert sok csatának' - mondta Darken "
+"Volk Malinnak. Ahogy eljött a tavasz, sok sötét mágiában jártas ember "
+"utazott északra és csatlakozott a pároshoz, hogy résztvegyenek a harcokban. "
+"'Nagyon hasznosak a harcban' - mondta a holtidéző - 'de egyiknek sincs "
+"tizedannyi ereje sem, mint neked, Malin.'"
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:33
-#, fuzzy
 msgid ""
 "The damage inflicted by Malin and Darken Volk over the past year forces the "
 "usually fractious local chieftains to unite in opposition. Eventually, at a "
 "narrow place in the river men call the Longlier and Elves call the Arkan-"
 "thoria, they manage to surround the humans and force a fight."
 msgstr ""
-"A kár, amit Malin és Darken Volk okozott az évek során, egyesítette a "
-"széttagolt orkokat ellenük.  Végül sikerült bekeríteniük és harcra "
-"kényszeríteniük őket."
+"A kár, amit Malin és Darken Volk okozott az elmúlt években, rákényszerítette "
+"az általában békétlen törzsfőnököket, hogy egyesüljenek ellenük. Végül egy "
+"folyó keskeny partján, amit az emberek Longliernek, a tündék Arkan-thoriának "
+"neveznek, az orkoknak sikerült bekeríteniük és harcra kényszeríteniük az "
+"embereket."
 
 #. [scenario]: id=Orc_war
 #: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:43
-#, fuzzy
 msgid "River Longlier"
-msgstr "Folyami erőd őr"
+msgstr "Longlier-folyó"
 
 #. [side]: type=Orcish Warlord, id=Borth
 #: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:69
@@ -1156,13 +1159,13 @@ msgid ""
 msgstr ""
 "Wesnoth alapítása óta üldözitek az embereket. Minden adandó alkalommal "
 "rajtaütöttetek az otthonomon. Letapostátok a földjeinket, levágtátok "
-"állatainkat. Háborút visztek oda, ahol béke van és halált oda, ahol élet "
-"van. Bűnbánat nélkül öltök és kifosztjátok azt, ami egykor szép volt. "
-"Megöltétek az apámat és végtelen fájdalmat okoztatok nekem. Most bosszút "
+"állatainkat. Háborút visztek oda, ahol béke van, és halált oda, ahol élet "
+"van. Bűnbánat nélkül öltök és tönkreteszitek azt, ami egykor szép volt. "
+"Megöltétek az apámat, és végtelen fájdalmat okoztatok nekem. Most bosszút "
 "állok. Ne számítsatok kegyelemre tőlem, mert már régen elveszítettétek az "
-"ahhoz való jogotokat. Porba döngöllek benneteket. Parthyn elleni "
+"ahhoz való jogotokat. Földbe döngöllek benneteket. Parthyn elleni "
 "támadásaitok itt és most véget érnek. Amikor hírül viszem pusztulásotokat, a "
-"város ujjongani fog győzedelmes visszatérésemen."
+"város ujjongani fog győzedelmes visszatérésemnek."
 
 #. [message]: speaker=Borth
 #: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:192
@@ -1170,8 +1173,8 @@ msgid ""
 "Stop your silly talk, foul necromancer. You have caused enough trouble. It "
 "is time for you to die."
 msgstr ""
-"Fejezd be ostoba beszéded, holtidéző! Elég gondot okoztál már. Itt az ideje, "
-"hogy meghalj."
+"Fejezd be ostoba beszéded, aljas holtidéző! Elég gondot okoztál már. Itt az "
+"ideje, hogy meghalj."
 
 #. [message]: speaker=P'Gareth
 #: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:196
@@ -1181,7 +1184,7 @@ msgstr "Hmmm... hacsak... nem vagy már most is halott, mint a csontvázak."
 #. [message]: speaker=K'Vark
 #: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:200
 msgid "Then, it will be time for you to die again!!!"
-msgstr "Akkor, itt az idő, hogy újra meghaljál!"
+msgstr "Akkor viszont itt az idő, hogy újra meghaljál!"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:304
@@ -1217,7 +1220,7 @@ msgstr ""
 "... Majdnem. Lenyűgözve láttam erőd növekedését. Azonban van még egy kis "
 "szívesség, amit kérni szeretnék tőled. A kiképzésed utolsó részét fogja "
 "képezni. Előbb viszont néhány... feladatot... el kell végeznem, amik nem "
-"tartoznak rád. Találkozunk innen keletre néhány hét múlva. Időközben ne "
+"tartoznak rád. Találkozunk innen nyugatra néhány hét múlva. Időközben ne "
 "hagyd, hogy az utolsó törzsfőnök megszökjön!"
 
 #. [scenario]: id=Return_to_Parthyn
@@ -1245,9 +1248,8 @@ msgstr "Néhány nap múlva Malin ismerős tájat vett észre maga körül..."
 
 #. [side]: type=Lieutenant, id=Drogan
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:74
-#, fuzzy
 msgid "Guardsmen"
-msgstr "Őr"
+msgstr "Őrség"
 
 #. [unit]: type=Frontier Baroness, id=Dela Keshar
 #. [side]: type=Frontier Baroness, id=Dela Keshar
@@ -1259,7 +1261,7 @@ msgstr "Dela Keshar"
 #. [objective]: condition=win
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:123
 msgid "Remove the traitor Drogan"
-msgstr "Eltávolítod az áruló Drogant"
+msgstr "Megölöd az áruló Drogant"
 
 #. [objective]: condition=lose
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:127
@@ -1271,12 +1273,12 @@ msgstr "Megölsz bárkit Parthynból, Drogant kivéve"
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:175
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:176
 msgid "River fort guard"
-msgstr "Folyami erőd őr"
+msgstr "A folyami erőd őrszeme"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:185
 msgid "I bring word of a great victory against the orcs, Drogan."
-msgstr "Orkok feletti nagy győzelem hírét hozom, Drogan."
+msgstr "Az orkok feletti nagy győzelem hírét hozom Drogan."
 
 #. [message]: speaker=Drogan
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:189
@@ -1284,8 +1286,8 @@ msgid ""
 "I had hoped you would never return, Malin. You have been banished, and now "
 "return. You give me no choice but to order my soldiers to attack you."
 msgstr ""
-"Reméltem, hogy soha többé nem térsz vissza Malin. Száműztünk téged és most "
-"visszatértél. Nem hagytál más választást, minthogy utasítsam a katonáimat, "
+"Reméltem, hogy soha többé nem térsz vissza Malin. Száműztünk téged, és most "
+"visszatértél. Nem hagytál más választást, mint hogy utasítsam a katonáimat, "
 "hogy támadjanak meg."
 
 #. [message]: role=advisor
@@ -1308,9 +1310,9 @@ msgid ""
 "I have eliminated two orc chieftains. I doubt that we will see any orc raids "
 "this summer. The beasts will be too busy trying to regroup."
 msgstr ""
-"Megsemmisítettem két ork törzsfőnököt. Kétlem, hogy ork rajtaütéseket "
-"látnánk a nyár alatt. A szörnyek el lesznek foglalva, hogy újraszervezzék "
-"magukat."
+"Leszámoltam két ork törzsfőnökkel. Kétlem, hogy ork rajtaütések "
+"háborgatnának idén nyáron. A szörnyek el lesznek foglalva, hogy "
+"újraszervezzék erőiket."
 
 #. [message]: speaker=Dela Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:205
@@ -1324,8 +1326,8 @@ msgid ""
 "victory! But how did they get north of the river? Let my forces be and I "
 "will deal with them."
 msgstr ""
-"A nagy győzelmem óta követem a menekülő bandát. Hogy kerültek a folyótól "
-"északra? Hagyjátok békén a csapataim, és én leszámolok velük!"
+"A nagy győzelmem óta követem a csatából elmenekült bandát. Hogy kerültek a "
+"folyótól északra? Hagyjátok békén a csapataim, és én leszámolok velük!"
 
 #. [message]: speaker=Drogan
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:213
@@ -1335,8 +1337,8 @@ msgid ""
 "will no doubt kill us where we stand. Watching you grow up, I never could "
 "have believed you would turn into a traitor."
 msgstr ""
-"Kedves mese. Szerintem inkább te hoztad ide az orkokat, hogy bosszút álljál "
-"a városon. Ha hagyjuk, nem kétlem, hogy az élőhalottaid megölnek minket most "
+"Kedves mese. Szerintem inkább te hoztad ide az orkokat, hogy bosszút állj a "
+"városon. Ha hagyjuk, nem kétlem, hogy az élőholtjaid megölnek minket most "
 "azonnal. Láttalak felnőni, és soha nem gondoltam volna, hogy árulóvá leszel."
 
 #. [message]: role=advisor
@@ -1352,7 +1354,7 @@ msgid ""
 "for the treason you commit."
 msgstr ""
 "Te vagy az áruló Drogan, hogy nem hagyod megmentenem a várost. Megvédem "
-"Parthynt. Ha utamba állsz, megöllek hitszegésedért."
+"Parthynt. Ha utamba állsz, megöllek a hitszegésedért."
 
 #. [message]: speaker=Dela Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:251
@@ -1360,6 +1362,8 @@ msgid ""
 "I am defeated but not dead, foul thing that was once my brother. Watch your "
 "back, because I will be coming for you..."
 msgstr ""
+"Legyőztél, de még élek, te ostoba teremtmény, ki egykor a fivérem voltál. "
+"Óvakodj, mert a nyomodban leszek..."
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:271
@@ -1369,7 +1373,7 @@ msgstr "A parthyni emberek most már soha nem fognak visszafogadni!"
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:292
 msgid "See what your traitorous ways have won you, Drogan?"
-msgstr "Látod, hogy mit érdemelnek az árulók, Drogan?"
+msgstr "Látod, hogy mit érdemelnek az árulók Drogan?"
 
 #. [message]: speaker=Dela Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:296
@@ -1380,7 +1384,7 @@ msgid ""
 msgstr ""
 "Meg fogsz fizetni Drogan haláláért. Most, hogy tisztán láttam a gonoszt, "
 "amivé váltál, minden katonámat az elpusztításodnak szentelem. Fájdalommal "
-"tölt el, hogy valaha az öcsém voltál."
+"tölt el, hogy valaha a bátyám voltál."
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:300
@@ -1389,12 +1393,12 @@ msgid ""
 "I must flee to the west to find Darken Volk!"
 msgstr ""
 "Még az új erőmmel sem tudok az egész várossal harcolni és közben az orkokkal "
-"is megküzdeni. Muszáj keletre menekülnöm és megtalálnom Darken Volkot!"
+"is megküzdeni. Muszáj nyugatra menekülnöm és megtalálnom Darken Volkot!"
 
 #. [objective]: condition=win
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:311
 msgid "Escape to the northwest"
-msgstr "Menekülés északnyugatra"
+msgstr "Elmenekülsz északnyugatra"
 
 #. [message]: speaker=Dela Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:330
@@ -1414,11 +1418,11 @@ msgid ""
 "'A life curse goes beyond a joke,' they said. 'Poor judgment,' they said, "
 "and expelled me from the Academy. "
 msgstr ""
-"Sötétség Istenei, hogy juthattunk idáig? A saját nővérem kívánja a halálom. "
+"Sötétség Istenei, hogy juthattunk idáig? A saját húgom kívánja a halálom. "
 "Semmi sem működik mióta...mióta az a kövér varangy Zephrin kicsúfolta északi "
-"kiejtésemet, és én elvesztettem az önuralmam és kelésekkel átkoztam meg. Egy "
-"élet átok több, mint egy vicc - mondták. Gyenge jellem - mondták, és "
-"kicsaptak az akadémiáról."
+"kiejtésemet, és én elvesztettem az önuralmam és kelésekkel átkoztam meg. "
+"'Egy életre szóló átok nem szórakozás' - mondták. 'Gyenge jellem' - mondták, "
+"és kicsaptak az Akadémiáról."
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:339
@@ -1433,7 +1437,7 @@ msgstr ""
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:363
 msgid "See how you die when you spurn the help of Malin Keshar!"
-msgstr "Lássátok hogy haltok meg, mert elutasítjátok Malin Keshar segítségét!"
+msgstr "Lássátok, hogy haltok meg, mert elutasítjátok Malin Keshar segítségét!"
 
 #. [scenario]: id=A_Small_Favor
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:6
@@ -1446,7 +1450,7 @@ msgid ""
 "Fleeing from the city of his birth, Malin heads to the west. Soon he "
 "reunites with his teacher."
 msgstr ""
-"A szülővárosából menekülve Malin kelet felé haladt. Hamarosan "
+"A szülővárosából menekülve Malin nyugat felé haladt. Hamarosan "
 "összetalálkozott tanárával."
 
 #. [part]
@@ -1458,11 +1462,11 @@ msgid ""
 "warn you that it will require you to act against your countrymen of Wesnoth, "
 "since it was one of them who stole it from me.'"
 msgstr ""
-"Utolsó tesztként,  mint a tanoncom, segítened kell visszaszerezni egy "
-"könyvet. - mondta a holtidéző. A könyvet...ellopták tőlem hosszú ideje. "
+"'Vizsgatesztként, mint tanoncomnak, segítened kell visszaszerezned egy "
+"könyvet.' - mondta a holtidéző. 'A könyvet...ellopták tőlem hosszú ideje. "
 "Mivel személyes szálak fűznek hozzá, vedd úgy, mintha egy kis szívességet "
 "kérnék tőled. Figyelmeztetnem kell azonban, hogy wesnothi honfitársaid ellen "
-"kell cselekedned, mert közülük való volt, aki ellopta tőlem a könyvet."
+"kell cselekedned, mert közülük való volt, aki ellopta tőlem a könyvet.'"
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:29
@@ -1470,7 +1474,7 @@ msgid ""
 "Malin replies, 'They are no longer countrymen of mine, since they have "
 "rejected me twice now.'"
 msgstr ""
-"Ők nem a honfitársaim többé, már másodszor vetettek ki maguk közül. - "
+"'Ők nem a honfitársaim többé, már másodszor vetettek ki maguk közül.' - "
 "válaszolt Malin."
 
 #. [part]
@@ -1482,10 +1486,10 @@ msgid ""
 "their studies. Among his library is the book we seek. We will need to break "
 "into his manor and seek the book inside.'"
 msgstr ""
-"Darken Volk folytatta: - Nagyszerű. Akkor Tath városához utazunk. Ott Karres "
+"Darken Volk folytatta: 'Nagyszerű. Akkor Tath városához utazunk. Ott Karres "
 "a város főura. Mágusnak képezték ki fiatal korában, és vagyonát arra "
 "használja, hogy mágusok képzését támogassa. A könyvtárában van a könyv, amit "
-"keresünk. Be kell törnünk az kastélyába és megkeresni a könyvet odabenn."
+"keresünk. Be kell törnünk a kastélyába, és megkeresni a könyvet odabenn.'"
 
 #. [side]: type=Apprentice Mage, id=Malin Keshar
 #. [side]
@@ -1494,7 +1498,7 @@ msgstr ""
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:22
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:55
 msgid "Intruders"
-msgstr ""
+msgstr "Betolakodók"
 
 #. [side]: type=General, id=Taylor
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:69
@@ -1504,7 +1508,7 @@ msgstr "Taylor"
 #. [objective]: condition=win
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:115
 msgid "Malin and Darken Volk enter the Mage Lord's manor"
-msgstr "Malin és Darken Volk bejut a Mágus főúr kastélyába"
+msgstr "Malin és Darken Volk bejut a Mágus Úr kastélyába"
 
 #. [event]
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:159
@@ -1539,7 +1543,7 @@ msgstr "Kapuőr"
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:184
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:191
 msgid "Head Trainer"
-msgstr "Tanító főnök  "
+msgstr "Kiképzőtiszt"
 
 #. [event]
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:183
@@ -1555,7 +1559,7 @@ msgid ""
 "seen by the night watchmen, we will have to make a run for it. Our forces "
 "are not strong enough to take the whole city."
 msgstr ""
-"Az ellopott könyv Lord Karres kastélyában a város északi végén van. Nem "
+"Az ellopott könyv Lord Karres kastélyában a város északi részében van. Nem "
 "tudjuk legyőzni az egész városi őrséget, így rejtve kell maradnunk, amíg "
 "lehet. Az éjszaka leple és a köd segít minket. Miután észrevettek az "
 "éjszakai őrszemek, gyorsan be kell rohannunk. Seregeink nem elég erősek, "
@@ -1574,7 +1578,7 @@ msgid ""
 "Sir! Undead creatures are coming out of the forest! Wake the guard "
 "immediately!"
 msgstr ""
-"Uram! Élőholtak bukkantak fel az erdőből! Ébresszétek fel az őröket azonnal!"
+"Uram! Élőholtak bukkantak fel az erdőből! Riadóztassuk az őröket azonnal!"
 
 #. [message]: speaker=Taylor
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:251
@@ -1593,7 +1597,6 @@ msgstr "Az összes ördögre a pokolban, mi a fene volt ez?"
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:300
-#, fuzzy
 msgid ""
 "This was the impact of what is known as holy water among common people. It "
 "is brewed in a complicated and mysterious procedure only known to a few "
@@ -1601,8 +1604,7 @@ msgid ""
 msgstr ""
 "Ez volt annak a hatása, amit a halandók szentelt víznek neveznek. Bonyolult "
 "és titokzatos módon főzik, csak néhány pap ismeri a titkát. Sokszor "
-"használják feltámasztottak elleni harcban a hozzákapcsolódó boszorkányságok "
-"miatt."
+"használják a feltámasztott lények elleni harcban."
 
 #. [message]: speaker=unit
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:342
@@ -1613,7 +1615,7 @@ msgstr "Itt egy bejárat! Gyorsan!"
 #. [scenario]: id=A_Small_Favor2
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:6
 msgid "A Small Favor - Part 2"
-msgstr "Egy apró szívesség - 2. Rész"
+msgstr "Egy apró szívesség - 2. rész"
 
 #. [objective]: condition=win
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:61
@@ -1639,7 +1641,7 @@ msgid ""
 "Malin and Darken Volk enter the mage lord's manor, quickly closing the heavy "
 "gates behind them."
 msgstr ""
-"Malin és Darken Volk behatoltak a mágus kastélyába gyorsan bezárva a nehéz "
+"Malin és Darken Volk behatoltak a mágus kastélyába gyorsan bezárták a nehéz "
 "kapukat maguk után."
 
 #. [message]: speaker=Malin Keshar
@@ -1669,7 +1671,7 @@ msgstr "Keresztülhaladsz az északnyugati átjárón, ami a nagy csarnokba veze
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:433
 msgid "I think I have found the passage to the great hall. Follow me quickly!"
 msgstr ""
-"Úgy hiszem megtaláltam a nagy csarnokba vezető átjárót. Gyorsan kövessetek!"
+"Úgy hiszem, megtaláltam a nagy csarnokba vezető átjárót. Gyorsan kövessetek!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:450
@@ -1678,13 +1680,13 @@ msgid ""
 "As dawn breaks, the city guards force their way into the manor and capture "
 "the two necromancers."
 msgstr ""
-"Hajnalhasadtával a város őrei behatolnak az kastélyba és elfogják a két "
+"Hajnalhasadtával a város őrei behatoltak a kastélyba és elfogták a két "
 "holtidézőt"
 
 #. [scenario]: id=A_Small_Favor3
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:6
 msgid "A Small Favor - Part 3"
-msgstr "Egy kis szívesség - 3. Rész"
+msgstr "Egy kis szívesség - 3. rész"
 
 #. [objective]: condition=win
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:80
@@ -1706,7 +1708,6 @@ msgstr "Őrző"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:216
-#, fuzzy
 msgid "I feel the book is very close, somewhere to the northwest."
 msgstr "Érzem, hogy a könyv a közelben van, valahol északnyugatra."
 
@@ -1714,7 +1715,7 @@ msgstr "Érzem, hogy a könyv a közelben van, valahol északnyugatra."
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:282
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:371
 msgid "We've got the book, but now how do we get out of here?"
-msgstr "Meg van a könyv, de most hogy jutunk ki innen?"
+msgstr "Megvan a könyv, de most hogy jutunk ki innen?"
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:286
@@ -1733,7 +1734,7 @@ msgstr "Megszöksz az északkeleti pincében lévő alagúton keresztül"
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:321
 msgid "Phew! Let's get out of here"
-msgstr "Pfff! Gyerünk ki innen!"
+msgstr "Pfúú! Gyerünk kifelé!"
 
 #. [objective]: condition=win
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:352
@@ -1748,7 +1749,7 @@ msgstr "Várj, ugye nem hagysz itt?"
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:389
 msgid "You have served me well, my apprentice."
-msgstr "Jól szolgáltál engem, tanítványom."
+msgstr "Jól szolgáltál engem tanítványom."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:393
@@ -1761,9 +1762,8 @@ msgstr ""
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:408
-#, fuzzy
 msgid "Phew! Let's get out of here."
-msgstr "Pfff! Gyerünk ki innen!"
+msgstr "Pfúú! Gyerünk kifelé!"
 
 #. [scenario]: id=Alone_at_Last
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:6
@@ -1779,9 +1779,9 @@ msgid ""
 "safe from pursuit."
 msgstr ""
 "Amint belépett az alagútba Lord Karres kastélya alatt, Darken Volk "
-"megfordult és egy szóval és mozdulattal beomlasztotta a bejáratot. A két "
-"holtidéző elindult a vaksötét alagútban, ideiglenesen biztonságban az "
-"üldözés elől."
+"megfordult és egy furcsa mozdulattal kísért varázsigét mormolva "
+"beomlasztotta a bejáratot. A két holtidéző elindult a vaksötét alagútban, "
+"ideiglenesen biztonságban az üldözőktől."
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:28
@@ -1790,13 +1790,13 @@ msgid ""
 "day, finally emerging as the last rays of sun sink below the horizon."
 msgstr ""
 "Folytatták útjukat a nedves és hideg alagútban egész reggel és napközben, "
-"míg végre a lemenő nap sugaraira előbukkantak a föld alól ."
+"míg végre napnyugtakor előbukkantak a föld alól."
 
 #. [side]
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:80
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:101
 msgid "Wesnothians"
-msgstr ""
+msgstr "Wesnothiak"
 
 #. [objective]: condition=win
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:121
@@ -1832,7 +1832,7 @@ msgstr "Darken Volk kikapta a titokzatos könyvet Malin kezéből és elindult."
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:220
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:231
 msgid "You can't just leave me here!"
-msgstr "Nem hagyhatsz csak úgy itt!"
+msgstr "Nem hagyhatsz itt csak úgy!"
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:227
@@ -1945,7 +1945,7 @@ msgid ""
 "have been tracking you for weeks, with our purpose renewed this morning upon "
 "hearing of the disaster you wreaked upon the godly city of Tath."
 msgstr ""
-"Utazásotok ebben a régióban nem maradt nyomtalan, ostoba holtidézők! Már "
+"Utazásotok ebben a régióban nem maradt észrevétlen aljas holtidézők! Már "
 "hetek óta követünk benneteket. Szándékunk megújult ma reggel, mikor "
 "meghallottuk, milyen szerencsétlenséget hoztatok Tath szent városára."
 
@@ -1956,7 +1956,7 @@ msgid ""
 "on this day you shall have to answer for your innumerable crimes."
 msgstr ""
 "Ne is gondoljatok a menekülésre , lovasaim könnyedén elkapnak titeket. Igen, "
-"ma végre megfizettek megszámlálhatatlan sok bűnötökért."
+"ma végre megfizettek megszámlálhatatlanul sok bűnötökért."
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:397
@@ -1965,7 +1965,7 @@ msgid ""
 "undead once I have finished this upstart."
 msgstr ""
 "Majd meglátjuk, hogy fellengzős szavaid mennyire védenek meg az élőholtak "
-"pengéitől, miután végeztem ezzel a nagyra törő gyerekkel."
+"pengéitől, miután végeztem ezzel a nagyravágyó gyerekkel."
 
 #. [message]: speaker=Dela Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:445
@@ -1974,9 +1974,8 @@ msgid ""
 "will not suffer you to bring any further harm to my people, and so you will "
 "not live to see another sunset."
 msgstr ""
-"Megmondtam, Malin, hogy újra megtalállak, és megtartottam a szavam. Nem "
-"tűröm tovább, hogy árts a népemnek. Nem fogod meglátni a következő "
-"naplementét."
+"Megmondtam Malin, hogy újra megtalállak, és megtartottam a szavam. Nem tűröm "
+"tovább, hogy árts a népemnek. Nem fogod megérni a következő naplementét."
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:449
@@ -1984,8 +1983,8 @@ msgid ""
 "You wrong me, sister. I have only tried to help. Have you not seen fewer "
 "orcs this past summer?"
 msgstr ""
-"Igazságtalan vagy velem, nővérem.  Én csak segíteni próbáltam. Nem kevesebb "
-"volt-e az ork ezen a nyáron?"
+"Igazságtalan vagy velem húgom.  Én csak segíteni próbáltam. Nem volt "
+"kevesebb az ork ezen a nyáron?"
 
 #. [message]: speaker=Dela Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:453
@@ -2013,7 +2012,7 @@ msgid ""
 "Pick up the book by moving a unit onto it. Bats and ghosts cannot carry the "
 "book."
 msgstr ""
-"Egy egységgel rálépve szerezd meg a könyvet! Denevérek és a szellemek nem "
+"Egy egységgel rálépve szerezd meg a könyvet! Denevérek és szellemek nem "
 "bírnak el egy ilyen nehéz tárgyat."
 
 #. [message]: speaker=unit
@@ -2038,11 +2037,10 @@ msgstr ""
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:18
 msgid "'To become a lich, one must first die.'"
-msgstr "- Hogy az ember villivé legyen, először meg kell halnia."
+msgstr "'Hogy az ember delevénnyé legyen, először meg kell halnia.'"
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:23
-#, fuzzy
 msgid ""
 "So reads the book that Malin has reclaimed. 'The spells of necromancy bind "
 "the spirit, but only once it has been unbound from the body. To become a "
@@ -2051,12 +2049,12 @@ msgid ""
 "spirits of others. Because he retains his own will, however, the lich can "
 "call upon the awesome powers of the spirit world.'"
 msgstr ""
-"Írja a könyv, melyet Malin visszaszerzett. - A holtidézés varázsigéi "
-"megkötik a lelket, de csak akkor, ha már nem kötődik testhez. Hogy elnyerje "
-"a villi-formát, a mágusnak a megfelelő varázsigét kell mondania utolsó "
+"Ezt írja a könyv, melyet Malin visszaszerzett. 'A holtidézés varázsigéi "
+"megkötik a lelket, de csak akkor, ha már nem kötődik a testhez. Hogy "
+"delevénnyé válhasson, a mágusnak a megfelelő varázsigét kell mondania utolsó "
 "lélegzetével. Így megköti a saját lelkét, hasonlóan ahhoz, ahogy a "
-"holtidézők megkötik másokét. Mivel azonban megmarad saját akarata, a villi "
-"képes lesz használni a szellem világ félelmetes erőit."
+"holtidézők megkötik másokét. Mivel azonban megmarad saját akarata, a "
+"delevény képes lesz használni a szellemvilág félelmetes erőit.'"
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:28
@@ -2071,7 +2069,7 @@ msgstr ""
 "volt számára, Malin oltalmat talált egy névtelen határfaluban, ahol keveset "
 "kérdezősködtek. Amikor a faluba híre jött, hogy Parthynt lerohanták az "
 "orkok, újraéledt a harag Malinban. Újult céltudattal feltámasztotta "
-"élőhalott seregeit és elindult észak felé."
+"élőhalott seregét és elindult észak felé."
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:33
@@ -2094,17 +2092,17 @@ msgstr ""
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:90
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:108
 msgid "Trolls"
-msgstr ""
+msgstr "Trollok"
 
 #. [objective]: condition=win
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:145
 msgid "Become a Lich"
-msgstr "Villivé válsz"
+msgstr "Delevénnyé válsz"
 
 #. [unit]: type=Ancient Wose, id=Dumdumbadoom
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:251
 msgid "Dumdumbadoom"
-msgstr ""
+msgstr "Dumdumbadoom"
 
 #. [message]: role=advisor
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:270
@@ -2122,7 +2120,7 @@ msgstr ""
 #. [message]: role=advisor
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:278
 msgid "There is another way, master. Remember the book..."
-msgstr "Van egy másik lehetőség, mester. Emlékezz a könyvre..."
+msgstr "Van egy másik lehetőség is mester. Emlékezz a könyvre..."
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:282
@@ -2132,7 +2130,7 @@ msgid ""
 "hound them until the last one falls!"
 msgstr ""
 "Igen..igen. Az orkok most még túl erősek nekem, de amikor túlestem az "
-"átváltozáson könnyedén le fogom tudni győzni őket.  És addig üldözöm majd "
+"átváltozáson, könnyedén le fogom tudni győzni őket.  És addig üldözöm majd "
 "őket, míg az utolsó is meg nem halt."
 
 #. [message]: speaker=Malin Keshar
@@ -2151,6 +2149,8 @@ msgid ""
 "With his last bits of strength, Malin assembles an altar as the book "
 "instructs."
 msgstr ""
+"Az utolsó cseppnyi erejével Malin a könyv utasításai alapján egy oltárt "
+"épített."
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:321
@@ -2159,9 +2159,8 @@ msgstr "Remélem elég erős vagyok ahhoz, hogy elvégezzem ezt a varázslatot."
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:325
-#, fuzzy
 msgid "I'm ready. Do it."
-msgstr "Nem állok készen a halálra..."
+msgstr "Kész vagyok. Csináljuk."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:361
@@ -2183,13 +2182,13 @@ msgstr "egy pillanatra."
 msgid ""
 "Then they are replaced by a pulling, a pain too strong to resist, and then..."
 msgstr ""
-"Aztán leváltja egy húzás, egy fájdalom, aminek nem lehet ellenállni, aztán "
+"Aztán felváltja egy húzás, egy fájdalom, aminek nem lehet ellenállni, aztán "
 "pedig..."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:382
 msgid "by emptiness."
-msgstr "üresség."
+msgstr "jön az üresség."
 
 #. [side]: type=Lich, id=Mal Keshar
 #. [unit]: type=Lich DiD, id=Mal Keshar
@@ -2216,7 +2215,7 @@ msgstr "Melegségre van szükségem... életre... itt érzek egy keveset!"
 #. [objective]: condition=win
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:456
 msgid "Regain your strength"
-msgstr "Visszaszerzed az erőd"
+msgstr "Visszanyered az erőd"
 
 #. [objective]: condition=lose
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:76
@@ -2239,8 +2238,8 @@ msgid ""
 msgstr ""
 "Ott, emellett az öreg út mellett érzek egy helyet, ami érdemes arra, hogy "
 "otthonommá váljon. Ott majd felépítem a seregem. Most azonban még túl gyenge "
-"vagyok, hogy kiűzzem a csőcseléket belőle. Először össze kell szednem az "
-"erőmet."
+"vagyok, hogy kiűzzem a csőcseléket belőle. Először össze kell szednem "
+"magamat."
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:521
@@ -2252,14 +2251,13 @@ msgstr ""
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:538
-#, fuzzy
 msgid "Yes, this will do until I can take my new home."
-msgstr "Igen, ez jó lesz, amíg elfoglalom új otthonomat."
+msgstr "Igen ez megteszi, amíg el tudom foglalni az új otthonomat."
 
 #. [objective]: condition=win
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:545
 msgid "Clear your new home of trolls"
-msgstr "Megtisztítod új otthonod a trolloktól"
+msgstr "Megtisztítod új otthonodat a trolloktól"
 
 #. [message]: speaker=Dumdumbadoom
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:621
@@ -2267,7 +2265,7 @@ msgid ""
 "Who has awoken me from my slumber? Undead? I shall not suffer the existence "
 "of such foul creatures."
 msgstr ""
-"Ki ébresztett fel álmomból? Élőhalottak? Nem szenvedhetem az ilyen undorító "
+"Ki ébresztett fel álmomból? Élőholtak? Nem szenvedhetem az ilyen undorító "
 "lényeket."
 
 #. [message]
@@ -2278,7 +2276,7 @@ msgstr "AAAAAAAaaaaaaaggggggghhhhhhh!!!!...... . . . ."
 #. [scenario]: id=Endless_Night
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:6
 msgid "Endless Night"
-msgstr ""
+msgstr "Végtelen Éj"
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:14
@@ -2289,10 +2287,10 @@ msgid ""
 "damage before being repelled and retreating to the caves."
 msgstr ""
 "Teltek az évek.  Minden nyáron, amikor a hegyi szorosok szabaddá váltak, a "
-"villi kiküldte harcosait, hogy megtámadja az orkokat, eltávolítva minden "
-"emberi, törp és tünde járőrt, amely az útjába került. Minden évben sikerült "
-"valamennyi kárt okoznia az élőholtaknak, mielőtt visszaszorították volna "
-"őket és visszatértek volna a barlangokba."
+"delevény kiküldte harcosait, hogy megtámadja az orkokat, elsöpörve minden "
+"emberi, törp és tünde járőrt, ami az útjukba került.  Az élőholtaknak minden "
+"évben sikerült valamennyi kárt okozniuk, mielőtt visszaszorították volna "
+"őket a barlangokba."
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:19
@@ -2300,13 +2298,13 @@ msgid ""
 "Rumors circulate of a lich that preys on scouting patrols. A hero, gathering "
 "his loyal troops to him, decides to put an end to the evil."
 msgstr ""
-"Pletykák terjedtek egy villiről, aki felderítő járőrökre leselkedik. Egy hős "
-"összegyűjtve csapatait úgy határozott, véget vet a gonosznak."
+"Pletykák keringtek egy delevényről, aki a felderítő járőrökre leselkedik. "
+"Egy hős összegyűjtve csapatait úgy határozott, véget vet a gonosznak."
 
 #. [objective]: condition=win
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:72
 msgid "Defeat the foolish hero"
-msgstr "Legyőzöd az Ostoba hőst"
+msgstr "Legyőzöd az ostoba hőst"
 
 #. [unit]: type=Royal Guard, id=Foolish Hero
 #. [unit]: type=Assassin, id=Foolish Hero
@@ -2324,7 +2322,7 @@ msgstr "Ostoba hős"
 #. [message]: speaker=Foolish Hero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:275
 msgid "Your doom is at hand, foul lich! I shall bring you down by my own hand."
-msgstr "Közel a vég, aljas villi! Saját kezemmel fogok végezni veled."
+msgstr "Közel a vég, aljas delevény! Saját kezemmel fogok végezni veled."
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:279
@@ -2341,13 +2339,13 @@ msgid ""
 "You have preyed on too many of my boys. I have come here to end this, once "
 "and for all."
 msgstr ""
-"Túl sokat ragadtál el már a fiaim közül. Azért jöttem, hogy véget vessek "
+"Túl sokat ragadtál már el a fiaim közül. Azért jöttem, hogy véget vessek "
 "ennek, most és mindörökre."
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:295
 msgid "Not even real soldiers. I will sweep you aside."
-msgstr "Nem is igazi harcosok. Elsöpörlek benneteket."
+msgstr "Nem is vagytok igazi harcosok. Kisöpörlek benneteket."
 
 #. [message]: speaker=Foolish Hero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:307
@@ -2364,7 +2362,7 @@ msgid ""
 "Fool! By leaving your forests and coming into my domain, you have sacrificed "
 "your own spirits."
 msgstr ""
-"Bolond! Azzal, hogy idejöttel a birodalmamba, elhagyva az erdőidet, "
+"Bolond! Azzal, hogy idejöttél a birodalmamba, elhagyva az erdőidet, "
 "feláldoztad a saját lelkedet."
 
 #. [message]: speaker=Foolish Hero
@@ -2374,7 +2372,7 @@ msgid ""
 "you've given me cause. Goodness knows you've got plenty of bones over there."
 msgstr ""
 "Alig vártam a lehetőséget, hogy eltörjek néhány csontot a kalapácsommal, és "
-"most te megadtad rá az okot. A jó ég tudja, elég csont van a birtokodban."
+"most te megadtad rá az esélyt. Épp elég csont van a birtokodban."
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:327
@@ -2400,8 +2398,8 @@ msgid ""
 "So, I've finally found your lair, Lich. You, who have been attacking the "
 "orcs for years and have destroyed many of our tribes."
 msgstr ""
-"Nos, végre megtaláltuk a búvóhelyedet, Villi. Évek óta támadod az orkokat és "
-"számos törzsünket elpusztítottad."
+"Nos, végre megtaláltuk a búvóhelyedet delevény. Évek óta támadod az orkokat "
+"és számos törzsünket elpusztítottad."
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:347
@@ -2411,27 +2409,26 @@ msgid ""
 "grateful to you for coming here, foolish hero. My hatred toward your race "
 "makes me stronger and I again get a chance to kill orcs!"
 msgstr ""
-"Orkok? Ti voltatok, akik arra kényszerítettek, hogy a sötét utat válasszam, "
-"és ti voltatok, akik véget vetettek halandó életemnek és arra "
-"kényszerítettetek, hogy villivé változzam. Valójában hálás vagyok neked, "
-"hogy idejöttél, ostoba hős. Gyűlöletem feléd és fajod ellen erősebbé tesz "
-"engem, és egy újabb esély, hogy orkokat ölhessek!"
+"Orkok? Ti voltatok azok, akik arra kényszerítettek, hogy a sötét utat "
+"válasszam és ti voltatok azok, akik véget vetettek halandó életemnek és arra "
+"kényszerítettek, hogy delevénnyé változzam. Valójában hálás vagyok neked, "
+"hogy idejöttél, ostoba hős. Gyűlöletem feléd és fajod felé erősebbé tesz "
+"engem, és egy újabb esélyt adsz, hogy orkokat ölhessek!"
 
 #. [message]: speaker=Foolish Hero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:351
-#, fuzzy
 msgid ""
 "Nothing will stop me from taking revenge for my father who died at your hand "
 "and for the rest of my people you and your minions have killed, Lich. Orcs, "
 "attack! The one who brings me his skull gets a bag of gold."
 msgstr ""
-"Semmi nem állíthat meg, hogy bosszút álljak apámért, aki a te kezedtől halt "
-"meg, és a többi emberemért, akit te és teremtményeid megöltek, Villi. Orkok, "
-"támadás! Aki elém hozza a koponyáját, egy zsák aranyat kap!"
+"Semmi nem állíthat meg, hogy bosszút álljak apámért, aki a te kezed által "
+"esett el... és a többi társam haláláért, akiket te és a teremtményeid öltek "
+"meg delevény. Orkok, támadás! Aki elhozza nekem a fejét, az kap egy zsák "
+"aranyat!"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:365
-#, fuzzy
 msgid ""
 "Is there an endless supply of foolish heroes with death wishes? Honestly, "
 "where do you all come from?"
@@ -2446,7 +2443,6 @@ msgstr "Nos, ez a vége a gonosznak."
 
 #. [message]: role=second
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:405
-#, fuzzy
 msgid ""
 "I wonder who he was in life, before falling into the evil ways that led him "
 "to today."
@@ -2454,13 +2450,12 @@ msgstr "Kíváncsi vagyok, ki lehetett életében, mielőtt gonosszá lett volna
 
 #. [message]: speaker=Foolish Hero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:409
-#, fuzzy
 msgid ""
 "Once he chose this unlife for himself and his soldiers, he forfeited any "
 "claim to our compassion. Does it even matter who he was?"
 msgstr ""
-"Miután ezt a 'nem'-életet választotta magának és katonáinak nem érdemelt egy "
-"szemernyi kegyelmet sem. Egyáltalán számít, hogy ki volt ő?"
+"Miután ezt a 'nem'-életet választotta magának és katonáinak, nem érdemelt "
+"egy szemernyi kegyelmet sem. Egyáltalán számít, hogy ki volt ő?"
 
 #. [message]: role=second
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:413
@@ -2478,8 +2473,8 @@ msgid ""
 "Trained in swordsmanship as a boy and the magical arts as a young man, Malin "
 "Keshar is talented at both but an expert in neither."
 msgstr ""
-"Kardforgatást tanulva gyermekkorában és a mágia tudományát, mint ifjú, Malin "
-"Keshar mindkettőben tehetséges, de egyikben sem szakértő."
+"Kardforgatást tanulva gyermekkorában és a mágiát tanulmányozva ifjúként, "
+"Malin Keshar mindkettőben tehetséges, de egyikben sem szakértő."
 
 #. [attack]: type=blade
 #: data/campaigns/Descent_Into_Darkness/units/dark-mage.cfg:23
@@ -2531,9 +2526,7 @@ msgid ""
 "increasing skill with magic more than compensates."
 msgstr ""
 "Habár Malin kardja egyre rozsdásabbá vált a törődés hiányától, a növekvő "
-"mágikus ereje ezt több, mint kompenzálja.\n"
-"\n"
-"Megjegyzés:"
+"mágikus ereje emiatt bőven kárpótolja."
 
 #. [unit_type]: id=Frontier Baroness, race=human
 #: data/campaigns/Descent_Into_Darkness/units/frontier-baroness.cfg:6
@@ -2550,8 +2543,10 @@ msgid ""
 "in combat."
 msgstr ""
 "Wesnoth határain minden jó erőben lévő férfinak és nőnek képesnek kell "
-"lennie megvédeni a várost, ha szükséges. Amíg a férfiak általában kard és íj "
-"használatban képzettek, a nők botokkal és parittyákkal tudnak bánni."
+"lennie megvédeni a várost, ha szükséges. Amíg a férfiak általában a kard és "
+"az íj használatában képzettek, a nők botokkal és parittyákkal harcolnak. A "
+"leggyakorlottabbak komoly ellenfelei az orkoknak, márha azok elég ostobák "
+"ahhoz, hogy szembeszálljanak velük."
 
 #. [attack]: type=impact
 #: data/campaigns/Descent_Into_Darkness/units/frontier-baroness.cfg:93
@@ -2578,12 +2573,12 @@ msgid ""
 "flesh straight from their foes. Once their enemy is defeated, they eat the "
 "rest of the body, gaining strength in the process."
 msgstr ""
-"Az hullazabáló az emberek legvérfagyasztóbb rémálmaiból származó teremtmény. "
+"A hullazabáló az emberek legvérfagyasztóbb rémálmaiból származó teremtmény. "
 "Nem úgy, mint kisebb rokonaik a hullafalók és hullarablók, a hullazabálók "
-"nem várják meg, míg áldozataik mérgezésben meghalnak mielőtt elfogyasztanák "
+"nem várják meg, míg áldozataik mérgezésben meghalnak, mielőtt elfogyasztanák "
 "a testüket. Rögtön támadnak hatalmas szájukkal, megpróbálják letépni a húst "
-"ellenfeleikről. Ha legyőzték ellenségüket, megeszik a test többi részét és "
-"erőt nyernek."
+"ellenfeleikről. Ha legyőzték ellenségüket, megeszik a test többi részét is "
+"és ebből merítik erejüket."
 
 #. [attack]: type=blade
 #: data/campaigns/Descent_Into_Darkness/units/ghast.cfg:39
@@ -2598,13 +2593,12 @@ msgstr "Óriás patkány"
 
 #. [unit_type]: id=Giant Rat, race=monster
 #: data/campaigns/Descent_Into_Darkness/units/giant-rat.cfg:18
-#, fuzzy
 msgid ""
 "Given an adequate supply of food, some rats can grow to truly impressive "
 "sizes. They can also grow quite aggressive."
 msgstr ""
 "Megfelelő élelemmel ellátva néhány patkány hihetetlen méretűre tud megnőni. "
-"Elég agresszívvé tudnak válni."
+"Emellett meglehetősen agresszívvé is válnak."
 
 #. [message]: speaker=unit
 #: data/campaigns/Descent_Into_Darkness/utils/deaths.cfg:12
@@ -2636,64 +2630,9 @@ msgstr ""
 #. [message]: speaker=unit
 #: data/campaigns/Descent_Into_Darkness/utils/deaths.cfg:73
 msgid "Then my battle against the orcs is lost!"
-msgstr "Akkor hát csatám az orkok ellen elveszett!"
+msgstr "Akkor hát csatámat az orkok ellen elvesztettem!"
 
 #. [terrain]: id=door
 #: data/campaigns/Descent_Into_Darkness/utils/terrain.cfg:7
 msgid "Door"
 msgstr "Ajtó"
-
-#, fuzzy
-#~ msgid "Night Watcman"
-#~ msgstr "Éjjeliőr"
-
-#~ msgid "Kerith"
-#~ msgstr "Kerith"
-
-#~ msgid "Owain"
-#~ msgstr "Owain"
-
-#~ msgid "Aethun"
-#~ msgstr "Aethun"
-
-#~ msgid "Yran"
-#~ msgstr "Yran"
-
-#~ msgid "Luddy"
-#~ msgstr "Luddy"
-
-#~ msgid "Gwilam"
-#~ msgstr "Gwilam"
-
-#~ msgid "makeshift altar"
-#~ msgstr "hevenyészett oltár"
-
-#~ msgid "Forever and Ever, Amen"
-#~ msgstr "Mindörökkön örökké, Ámen"
-
-#~ msgid "A slab of rock. It vaguely resembles an altar."
-#~ msgstr "Egy kőlap. Távolról oltárra emlékeztet."
-
-#~ msgid "reflect"
-#~ msgstr "visszaver"
-
-#~ msgid "Troll Shaman"
-#~ msgstr "Troll Sámán"
-
-#~ msgid ""
-#~ "Troll shamans are the mystical leaders of the trolls. Though not as "
-#~ "strong or tough as other trolls, their true power lies in their fire "
-#~ "magic, which they use to blast enemies with gouts of fire."
-#~ msgstr ""
-#~ "A troll sámánok a trollok misztikus vezetői. Bár nem olyan erősek vagy "
-#~ "ellenállóak, mint a többi troll, igazi erejük a tűz varázslatokban van, "
-#~ "ellenségeiket lángcsóvákkal pusztítják el."
-
-#~ msgid "fist"
-#~ msgstr "ököl"
-
-#~ msgid "flame blast"
-#~ msgstr "lángcsóva"
-
-#~ msgid "+1 max HP"
-#~ msgstr "+ 1 max. ÉP"
