@@ -127,6 +127,7 @@ namespace preferences {
 	int scroll_speed();
 	void set_scroll_speed(const int scroll);
 
+	bool middle_click_scrolls();
 	bool mouse_scroll_enabled();
 	void enable_mouse_scroll(bool value);
 

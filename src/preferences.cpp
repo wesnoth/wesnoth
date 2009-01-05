@@ -514,6 +514,11 @@ void set_scroll_speed(const int new_speed)
 	scroll = new_speed / 100.0;
 }
 
+bool middle_click_scrolls()
+{
+	return utils::string_bool(get("middle_click_scrolls"), true);
+}
+
 bool mouse_scroll_enabled()
 {
 	return utils::string_bool(get("mouse_scrolling"), true);

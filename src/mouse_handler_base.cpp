@@ -46,6 +46,7 @@ static bool command_active()
 }
 
 mouse_handler_base::mouse_handler_base() :
+	simple_warp_(false),
 	minimap_scrolling_(false),
 	dragging_left_(false),
 	dragging_started_(false),
@@ -77,6 +78,10 @@ void mouse_handler_base::mouse_update(const bool browse)
 
 bool mouse_handler_base::mouse_motion_default(int x, int y, bool& /*update*/)
 {
+	if(simple_warp_) {
+		return true;
+	}
+
 	if(minimap_scrolling_) {
 		//if the game is run in a window, we could miss a LMB/MMB up event
 		// if it occurs outside our window.
@@ -116,6 +121,9 @@ bool mouse_handler_base::mouse_motion_default(int x, int y, bool& /*update*/)
 
 void mouse_handler_base::mouse_press(const SDL_MouseButtonEvent& event, const bool browse)
 {
+	if(is_middle_click(event) && !preferences::middle_click_scrolls()) {
+		simple_warp_ = true;
+	}
 	show_menu_ = false;
 	mouse_update(browse);
 	int scrollx = 0;
@@ -149,16 +157,24 @@ void mouse_handler_base::mouse_press(const SDL_MouseButtonEvent& event, const bo
 		}
 	} else if (is_middle_click(event)) {
 		if (event.state == SDL_PRESSED) {
-			// clicked on a hex on the minimap? then initiate minimap scrolling
-			const map_location& loc = gui().minimap_location_on(event.x,event.y);
+			map_location loc = gui().minimap_location_on(event.x,event.y);
 			minimap_scrolling_ = false;
 			if(loc.valid()) {
+				simple_warp_ = false;
 				minimap_scrolling_ = true;
 				last_hex_ = loc;
 				gui().scroll_to_tile(loc,display::WARP,false);
+			} else if(simple_warp_) {
+				// middle click not on minimap, check gamemap instead
+				loc = gui().hex_clicked_on(event.x,event.y);
+				if(loc.valid()) {
+					last_hex_ = loc;
+					gui().scroll_to_tile(loc,display::WARP,false);
+				}
 			}
 		} else if (event.state == SDL_RELEASED) {
 			minimap_scrolling_ = false;
+			simple_warp_ = false;
 		}
 	} else if (allow_mouse_wheel_scroll(event.x, event.y)) {
 		if (event.button == SDL_BUTTON_WHEELUP) {

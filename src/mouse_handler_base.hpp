@@ -132,6 +132,8 @@ protected:
 	void clear_dragging(const SDL_MouseButtonEvent& event, bool browse);
 	void init_dragging(bool& dragging_flag);
 
+	/** MMB click (on game map) state flag */
+	bool simple_warp_;
 	/** minimap scrolling (scroll-drag) state flag */
 	bool minimap_scrolling_;
 	/** LMB drag init flag */

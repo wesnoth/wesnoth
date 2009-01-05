@@ -153,7 +153,7 @@ bool controller_base::handle_scroll(CKey& key, int mousex, int mousey, int mouse
 		get_display().scroll(preferences::scroll_speed(),0);
 		scrolling = true;
 	}
-	if ((mouse_flags & SDL_BUTTON_MMASK) != 0) { //middle mouse button pressed
+	if ((mouse_flags & SDL_BUTTON_MMASK) != 0 && preferences::middle_click_scrolls()) {
 		const SDL_Rect& rect = get_display().map_outside_area();
 		if (point_in_rect(mousex, mousey,rect)) {
 			// relative distance from the center to the border
