@@ -592,6 +592,19 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 	set_dirty();
 }
 
+void gamebrowser::select_game(const std::string id) {
+	if (id.empty()) return;
+
+	for (unsigned int i=0; i < games_.size(); i++) {
+		if (games_[i].id == id) {
+			selected_ = i;
+			break;
+		}
+	}
+	adjust_position(selected_);
+	set_dirty();
+}
+
 lobby::lobby_sorter::lobby_sorter(const config& cfg) : cfg_(cfg)
 {
 	set_alpha_sort(1);
@@ -772,6 +785,11 @@ void lobby::process_event()
 		}
 		ui::gamelist_updated();
 		last_selected_game_ = selected_game;
+	}
+
+	if(selected_user_changed()) {
+		set_selected_user_changed(false);
+		games_menu_.select_game(get_selected_user_game());
 	}
 
 	if(join || observe) {
