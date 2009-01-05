@@ -1640,6 +1640,15 @@ void server::process_data_game(const network::connection sock,
 			if (g->describe_slots()) {
 				update_game_in_lobby(g, user);
 			}
+			// Send all other players in the lobby the update to the gamelist.
+			simple_wml::document diff;
+			bool diff1 = make_change_diff(*games_and_users_list_.root().child("gamelist"),
+						      "gamelist", "game", g->description(), diff);
+			bool diff2 = make_change_diff(games_and_users_list_.root(), NULL,
+						      "user", pl->second.config_address(), diff);
+			if (diff1 || diff2) {
+				lobby_.send_data(diff, sock,"lobby_leave_g");
+			}
 			// Send the removed user the lobby game list.
 			send_doc(games_and_users_list_, user);
 			// FIXME: should also send a user diff to the lobby
