@@ -229,6 +229,8 @@ private:
 	std::vector<std::string> user_list_;
 
 	std::string selected_game_;
+	std::string selected_user_;
+	int selected_user_id_;
 
 	result result_;
 

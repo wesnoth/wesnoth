@@ -261,6 +261,8 @@ ui::ui(game_display& disp, const std::string& title, const config& cfg, chat& c,
 
 	user_list_(),
 	selected_game_(""),
+	selected_user_(""),
+	selected_user_id_(-1),
 
 	result_(CONTINUE),
 	gamelist_refresh_(false),
@@ -401,6 +403,11 @@ void ui::handle_event(const SDL_Event& event)
 			request.add_child("refresh_lobby");
 			network::send_data(request, 0, true);
 		}
+	}
+
+	if(selected_user_id_ != users_menu_.selection()) {
+		selected_user_id_ = users_menu_.selection();
+		selected_user_ = user_list_[selected_user_id_];
 	}
 }
 
@@ -689,6 +696,14 @@ void ui::set_selected_game(const std::string game_id)
 void ui::set_user_menu_items(const std::vector<std::string>& list)
 {
 	users_menu_.set_items(list,true,true);
+
+	// Try to keep selected player
+	std::vector<std::string>::const_iterator i =
+			std::find(user_list_.begin(), user_list_.end(), selected_user_);
+	if(i != user_list_.end()) {
+		users_menu_.reset_selection();
+		users_menu_.move_selection(i - user_list_.begin());
+	}
 }
 
 void ui::set_user_list(const std::vector<std::string>& list, bool silent)
