@@ -425,7 +425,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 				if(player) {
 					LOG_NG << "Added unit " << un->second.id() << ", " << un->second.name() << "\n";
 					un->second.new_turn();
-					un->second.new_level();
+					un->second.new_scenario();
 					player->available_units.push_back(un->second);
 				}
 			}

@@ -143,7 +143,7 @@ public:
 	void unit_hold_position() { hold_position_ = end_turn_ = true; }
 	void new_turn();
 	void end_turn();
-	void new_level();
+	void new_scenario();
 	/** Called on every draw */
 	void refresh(const game_display& disp,const map_location& loc) {
 		if (state_ == STATE_FORGET  && anim_ && anim_->animation_finished_potential()) {

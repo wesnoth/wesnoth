@@ -908,7 +908,7 @@ void unit::end_turn()
 	// Clear interrupted move
 	set_interrupted_move(map_location());
 }
-void unit::new_level()
+void unit::new_scenario()
 {
 	ai_special_ = "";
 
