@@ -262,7 +262,6 @@ ui::ui(game_display& disp, const std::string& title, const config& cfg, chat& c,
 	user_list_(),
 	selected_game_(""),
 	selected_user_(""),
-	selected_user_game_(""),
 	selected_user_changed_(false),
 
 	result_(CONTINUE),

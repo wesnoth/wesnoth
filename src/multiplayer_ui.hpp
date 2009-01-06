@@ -235,7 +235,6 @@ private:
 	std::string selected_game_;
 
 	std::string selected_user_;
-	std::string selected_user_game_;
 	bool selected_user_changed_;
 
 	result result_;
