@@ -16,6 +16,7 @@
 
 #include "construct_dialog.hpp"
 #include "gettext.hpp"
+#include "gui/dialogs/mp_cmd_wrapper.hpp"
 #include "log.hpp"
 #include "marked-up_text.hpp"
 #include "multiplayer_ui.hpp"
@@ -388,15 +389,39 @@ void ui::handle_event(const SDL_Event& event)
 	}
     if(users_menu_.double_clicked()) {
 		std::string usr_text = user_list_[users_menu_.selection()];
-		std::string caption = _("Send a private message to ") + usr_text;
-		gui::dialog d(disp(), _("Whisper"), caption, gui::OK_CANCEL);
-		d.set_textbox( _("Message: "));
 		Uint32 show_time = SDL_GetTicks();
-		if (!(d.show() || d.textbox_text().empty())) {
-			std::stringstream msg;
-			msg << "/msg " << usr_text << ' ' << d.textbox_text();
-			chat_handler::do_speak(msg.str());
+
+		gui2::tmp_cmd_wrapper dlg(_("Selected user: ") + usr_text);
+		dlg.show(disp().video());
+
+		std::stringstream msg;
+		switch(dlg.get_retval()) {
+			case 1:
+				msg << "/friend " << usr_text;
+				break;
+			case 2:
+				msg << "/ignore " << usr_text;
+				break;
+			case 3:
+				msg << "/remove " << usr_text;
+				break;
+			case 4:
+				msg << "/query status " << usr_text;
+				break;
+			case 5:
+				msg << "/query kick " << usr_text;
+				break;
+			case 6:
+				msg << "/query kban " << usr_text;
+				if(!dlg.time().empty()) msg << ' ' << dlg.time();
+				if(!dlg.reason().empty()) msg << ' ' << dlg.reason();
+				break;
+			case 7:
+				if(!dlg.message().empty()) msg << "/msg " << usr_text << ' ' << dlg.message();
         }
+
+        chat_handler::do_speak(msg.str());
+
 		if(show_time + 60000 < SDL_GetTicks()) {
 			//if the dialog has been open for a long time, refresh the lobby
 			config request;

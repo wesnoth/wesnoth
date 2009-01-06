@@ -73,6 +73,7 @@ static void fill_window_types()
 	window_type_list[MP_METHOD_SELECTION] = "mp_method_selection";
 	window_type_list[MP_SERVER_LIST] = "mp_server_list";
 	window_type_list[MP_LOGIN] = "mp_login";
+	window_type_list[MP_CMD_WRAPPER] = "mp_cmd_wrapper";
 	window_type_list[MP_CREATE_GAME] = "mp_create_game";
 	window_type_list[TITLE_SCREEN] = "title_screen";
 #ifndef DISABLE_EDITOR2
