@@ -169,6 +169,10 @@ protected:
 	void append_to_title(const std::string& name);
 	const gui::label& title() const;
 
+	std::string get_selected_user_game();
+	bool selected_user_changed() const { return selected_user_changed_; }
+	void set_selected_user_changed(const bool& changed) { selected_user_changed_ = changed; }
+
 private:
 	/** Set to true when the widgets are intialized. Allows delayed
 	 * initialization on first positioning. */
@@ -199,6 +203,9 @@ private:
 	std::vector<std::string> user_list_;
 
 	std::string selected_game_;
+
+	std::string selected_user_;
+	bool selected_user_changed_;
 
 	result result_;
 
