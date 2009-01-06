@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-12-17 17:29+0100\n"
+"POT-Creation-Date: 2009-01-06 22:10+0100\n"
 "PO-Revision-Date: 2008-12-18 23:37+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
@@ -1029,9 +1029,16 @@ msgid "The Siege Of Barag Gór"
 msgstr "Obléhání pevnosti Barag Gór"
 
 #. [objective]: condition=win
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:21
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:23
-msgid "Break the Siege of Barag Gór"
-msgstr "Prolom obležení Barag Gór"
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:513
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:21
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:543
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:119
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_Dwarvish_Stand.cfg:19
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_Coward.cfg:29
+msgid "Defeat all enemy leaders"
+msgstr "Poraz všechny nepřátelské velitele"
 
 # prozkoumat co to přesně znamená - možná "jakýkoliv šaman zemře"
 #. [objective]: condition=lose
@@ -1314,17 +1321,6 @@ msgid ""
 "That's right! Now let's drive those mincing tree-shaggers back into their "
 "forests!"
 msgstr "Pravda! Teď pojďme ty milovníky stromů vrátit do jejich lesů."
-
-#. [objective]: condition=win
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:21
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:513
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:21
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:543
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:119
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_Dwarvish_Stand.cfg:19
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_Coward.cfg:29
-msgid "Defeat all enemy leaders"
-msgstr "Poraz všechny nepřátelské velitele"
 
 #. [message]: speaker=Pirk
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:541
@@ -4745,6 +4741,9 @@ msgid ""
 "their help."
 msgstr ""
 "K čertu. Bez Inarixe vedoucího jeho národ nemůžeme počítat s jejich pomocí."
+
+#~ msgid "Break the Siege of Barag Gór"
+#~ msgstr "Prolom obležení Barag Gór"
 
 #~ msgid "Defeat Albert and his troops"
 #~ msgstr "Poraz Alberta a jeho tlupu"

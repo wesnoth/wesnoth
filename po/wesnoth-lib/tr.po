@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-lib\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-12-30 21:39+0100\n"
+"POT-Creation-Date: 2009-01-06 22:09+0100\n"
 "PO-Revision-Date: 2008-12-19 13:46+0200\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish <wesnoth-tr@googlegroups.com>\n"
@@ -408,6 +408,7 @@ msgstr "Bağlan"
 #: data/gui/default/window/editor_resize_map.cfg:275
 #: data/gui/default/window/editor_settings.cfg:240
 #: data/gui/default/window/language_selection.cfg:136
+#: data/gui/default/window/mp_cmd_wrapper.cfg:462
 #: data/gui/default/window/mp_connect.cfg:190
 #: data/gui/default/window/mp_create_game.cfg:552
 #: data/gui/default/window/mp_login.cfg:173
@@ -584,6 +585,86 @@ msgstr "Dil tercihinizi belirtin:"
 #: data/gui/default/window/language_selection.cfg:122
 msgid "Change language"
 msgstr "Dili değiştir"
+
+#. [window]: id=mp_cmd_wrapper
+#: data/gui/default/window/mp_cmd_wrapper.cfg:8
+msgid "Multiplayer command wrapper dialog"
+msgstr ""
+
+#. [label]
+#: data/gui/default/window/mp_cmd_wrapper.cfg:31
+msgid "Messaging"
+msgstr ""
+
+#. [label]
+#: data/gui/default/window/mp_cmd_wrapper.cfg:61
+msgid "Message:"
+msgstr ""
+
+#. [button]: id=send_msg
+#: data/gui/default/window/mp_cmd_wrapper.cfg:93
+#, fuzzy
+msgid "Send a private message"
+msgstr "İletileri Temizle"
+
+#. [label]
+#: data/gui/default/window/mp_cmd_wrapper.cfg:133
+#, fuzzy
+msgid "Friends/Ignored List"
+msgstr "Arkadaşlar Listesi"
+
+#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=add_friend
+#: data/gui/default/window/mp_cmd_wrapper.cfg:162
+#: src/game_preferences_display.cpp:165
+msgid "Add As Friend"
+msgstr "Arkadaş Olarak Ekle"
+
+#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=add_ignore
+#: data/gui/default/window/mp_cmd_wrapper.cfg:177
+#: src/game_preferences_display.cpp:166
+msgid "Add As Ignore"
+msgstr "Gözardı Edilen Olarak Ekle"
+
+#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=remove
+#: data/gui/default/window/mp_cmd_wrapper.cfg:192
+#: src/game_preferences_display.cpp:167
+msgid "Remove"
+msgstr "Sil"
+
+#. [label]
+#: data/gui/default/window/mp_cmd_wrapper.cfg:233
+msgid "Moderating"
+msgstr ""
+
+#. [label]
+#: data/gui/default/window/mp_cmd_wrapper.cfg:263
+msgid "Reason:"
+msgstr ""
+
+#. [label]
+#: data/gui/default/window/mp_cmd_wrapper.cfg:315
+#, fuzzy
+msgid "Time:"
+msgstr "Tema"
+
+#. [button]: id=status
+#: data/gui/default/window/mp_cmd_wrapper.cfg:366
+#, fuzzy
+msgid "Status"
+msgstr "Durum Tablosu"
+
+#. [button]: id=kick
+#: data/gui/default/window/mp_cmd_wrapper.cfg:381
+msgid "Kick"
+msgstr ""
+
+#. [button]: id=ban
+#: data/gui/default/window/mp_cmd_wrapper.cfg:396
+msgid "Ban"
+msgstr ""
 
 #. [label]
 #: data/gui/default/window/mp_connect.cfg:50
@@ -916,18 +997,6 @@ msgstr "Arkadaşlar Listesi"
 #: src/game_preferences_display.cpp:164
 msgid "Multiplayer Options"
 msgstr "Çok Oyuncu Seçenekleri"
-
-#: src/game_preferences_display.cpp:165
-msgid "Add As Friend"
-msgstr "Arkadaş Olarak Ekle"
-
-#: src/game_preferences_display.cpp:166
-msgid "Add As Ignore"
-msgstr "Gözardı Edilen Olarak Ekle"
-
-#: src/game_preferences_display.cpp:167
-msgid "Remove"
-msgstr "Sil"
 
 #: src/game_preferences_display.cpp:168
 msgid "Show Floating Labels"
@@ -1326,28 +1395,28 @@ msgstr "Metin tuvale sığmıyor."
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr "Zorunlu pencere gereci 'id' tanımlı değil."
 
-#: src/gui/widgets/settings.cpp:125
+#: src/gui/widgets/settings.cpp:126
 msgid "No default gui defined."
 msgstr "Tanımlı bir arayüz yok."
 
-#: src/gui/widgets/settings.cpp:255
+#: src/gui/widgets/settings.cpp:256
 msgid "Window not defined."
 msgstr "Pencere tanımsız."
 
-#: src/gui/widgets/settings.cpp:319
+#: src/gui/widgets/settings.cpp:320
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr "Pencere gereci tanımı '$definition', '$id' için tanım içermiyor."
 
-#: src/gui/widgets/settings.cpp:431 src/gui/widgets/window_builder.cpp:284
+#: src/gui/widgets/settings.cpp:432 src/gui/widgets/window_builder.cpp:284
 msgid "No resolution defined."
 msgstr "Tanımlı bir çözünürlük yok."
 
-#: src/gui/widgets/settings.cpp:463
+#: src/gui/widgets/settings.cpp:460
 msgid "No state or draw section defined."
 msgstr "Tanımlı durum veya çizim bölümü yok."
 
-#: src/gui/widgets/settings.cpp:706 src/gui/widgets/settings.cpp:862
+#: src/gui/widgets/settings.cpp:703 src/gui/widgets/settings.cpp:857
 #: src/gui/widgets/window_builder.cpp:375
 #: src/gui/widgets/window_builder.cpp:908
 #: src/gui/widgets/window_builder.cpp:1112

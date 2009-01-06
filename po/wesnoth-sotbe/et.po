@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-12-17 17:29+0100\n"
+"POT-Creation-Date: 2009-01-06 22:10+0100\n"
 "PO-Revision-Date: 2005-05-07 13:01+0300\n"
 "Last-Translator: Mart Tõnso <mart.tonso@ttu.ee>\n"
 "Language-Team: none\n"
@@ -918,10 +918,16 @@ msgid "The Siege Of Barag Gór"
 msgstr "Barag Góri piiramine."
 
 #. [objective]: condition=win
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:21
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:23
-#, fuzzy
-msgid "Break the Siege of Barag Gór"
-msgstr "Barag Góri piiramine."
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:513
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:21
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:543
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:119
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_Dwarvish_Stand.cfg:19
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_Coward.cfg:29
+msgid "Defeat all enemy leaders"
+msgstr "Alista kõik vaenlaste juhid"
 
 #. [objective]: condition=lose
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:35
@@ -1187,17 +1193,6 @@ msgid ""
 "That's right! Now let's drive those mincing tree-shaggers back into their "
 "forests!"
 msgstr ""
-
-#. [objective]: condition=win
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:21
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:513
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:21
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:543
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:119
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_Dwarvish_Stand.cfg:19
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_Coward.cfg:29
-msgid "Defeat all enemy leaders"
-msgstr "Alista kõik vaenlaste juhid"
 
 #. [message]: speaker=Pirk
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:541
@@ -4229,6 +4224,10 @@ msgid ""
 "Blast it, without Inarix to lead his saurians, we can no longer count on "
 "their help."
 msgstr "Kui pole Inarixi saure juhtimas, siis pole enam mingit lootust."
+
+#, fuzzy
+#~ msgid "Break the Siege of Barag Gór"
+#~ msgstr "Barag Góri piiramine."
 
 #, fuzzy
 #~ msgid "Defeat Albert and his troops"

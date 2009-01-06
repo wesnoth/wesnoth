@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-12-17 17:29+0100\n"
+"POT-Creation-Date: 2009-01-06 22:10+0100\n"
 "PO-Revision-Date: 2008-03-18 15:37+0800\n"
 "Last-Translator: Nils Kneuper <crazy-ivanovic  AT gmx  D O  T net>\n"
 "Language-Team: none\n"
@@ -982,9 +982,16 @@ msgid "The Siege Of Barag Gór"
 msgstr "围攻八拉·格"
 
 #. [objective]: condition=win
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:21
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:23
-msgid "Break the Siege of Barag Gór"
-msgstr "打破对八拉·格的包围 "
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:513
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:21
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:543
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:119
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_Dwarvish_Stand.cfg:19
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_Coward.cfg:29
+msgid "Defeat all enemy leaders"
+msgstr "击败所有敌将"
 
 #. [objective]: condition=lose
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:35
@@ -1268,17 +1275,6 @@ msgid ""
 "That's right! Now let's drive those mincing tree-shaggers back into their "
 "forests!"
 msgstr "这就对了!让我们把树虫赶回森林里去!"
-
-#. [objective]: condition=win
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:21
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:513
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:21
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:543
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_The_Harbour_Of_Tirigaz.cfg:119
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_Dwarvish_Stand.cfg:19
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_Coward.cfg:29
-msgid "Defeat all enemy leaders"
-msgstr "击败所有敌将"
 
 #. [message]: speaker=Pirk
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_Of_Barag_Gor.cfg:541
@@ -4553,6 +4549,9 @@ msgid ""
 "Blast it, without Inarix to lead his saurians, we can no longer count on "
 "their help."
 msgstr "没有依诺斯来率领他的蜥蜴，根本就没有指望征召它们。"
+
+#~ msgid "Break the Siege of Barag Gór"
+#~ msgstr "打破对八拉·格的包围 "
 
 #~ msgid "Defeat Albert and his troops"
 #~ msgstr "击败阿尔伯特和他的军队"
