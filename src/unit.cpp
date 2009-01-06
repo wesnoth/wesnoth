@@ -932,16 +932,11 @@ void unit::remove_temporary_modifications()
 		for(size_t j = 0; j != mods.size(); ++j) {
 			const config& mod = *mods[j];
 			if(mod["duration"] != "forever" && mod["duration"] != "") {
-				rebuild_from_type = true;
-				const config::child_list& effects = mod.get_children("effects");
-				for(size_t k = effects.size()-1; k >= 0; --k) {
-					const config& effect = *effects[k];
-					if(effect["apply_to"] == "type" && effect.has_attribute("prev_type")) {
-						type_ = effect["prev_type"];
-					}
+				if(mod.has_attribute("prev_type")) {
+					type_ = mod["prev_type"];
 				}
-				modifications_.remove_child(mod_name, j);
-				--j;
+				modifications_.remove_child(mod_name, j--);
+				rebuild_from_type = true;
 			}
 		}
 	}
@@ -2496,7 +2491,7 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 					variation_ = (**i.first)["name"];
 					advance_to(this->type());
 				} else if(apply_to == "type" && no_add == false) {
-					(*new_child)["prev_type"] = type_;
+					new_child->init_attribute("prev_type", type_id());
 					type_ = (**i.first)["name"];
 					int hit_points = hit_points_;
 					int experience = experience_;
