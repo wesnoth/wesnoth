@@ -475,11 +475,21 @@ bool unit_frame::invalidate(const bool force,const int frame_time,const map_loca
 		// and return whether or not our hexs was invalidated
 		const SDL_Rect r = {x,y,image->w,image->h};
 		if(force || need_update()){
-			return disp->invalidate_locations_in_rect(r);
+			bool result = false;
+			// invalidate ouself to be called at redraw time
+			result |= disp->invalidate(src);
+			// invalidate all hex we plan to overwrite
+			result |= disp->invalidate_visible_locations_in_rect(r);
+			return result;
 		}
 		// if not, check if any of our hexes is already invalidated, if any is, invalidate all of them
 		if(disp->rectangle_need_update(r)) {
-			return disp->invalidate_locations_in_rect(r);
+			bool result = false;
+			// invalidate ouself to be called at redraw time
+			result |= disp->invalidate(src);
+			// invalidate all hex we plan to overwrite
+			result |= disp->invalidate_visible_locations_in_rect(r);
+			return result;
 		}
 		return false;
 

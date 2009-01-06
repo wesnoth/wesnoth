@@ -2218,6 +2218,11 @@ bool display::invalidate(const std::set<map_location>& locs)
 	return ret;
 }
 
+bool display::invalidate_visible_locations_in_rect(const SDL_Rect& rect)
+{
+	return invalidate_locations_in_rect(intersect_rects(map_area(),rect));
+}
+
 bool display::invalidate_locations_in_rect(const SDL_Rect& rect)
 {
 	if(invalidateAll_)

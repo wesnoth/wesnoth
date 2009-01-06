@@ -271,6 +271,7 @@ public:
 
 	/** invalidate all hexes under the rectangle rect (in screen coordinates) */
 	bool invalidate_locations_in_rect(const SDL_Rect& rect);
+	bool invalidate_visible_locations_in_rect(const SDL_Rect& rect);
 
 	/** check if an hexes under the rectangle is invalidated */
 	bool rectangle_need_update(const SDL_Rect& rect) const;
