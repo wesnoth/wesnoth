@@ -120,7 +120,7 @@ void gamebrowser::draw_row(const size_t index, const SDL_Rect& item_rect, ROW_TY
 	const game_item& game = games_[index];
 	int xpos = item_rect.x + margin_;
 	int ypos = item_rect.y + margin_;
-    std::string no_era_string = "";
+	std::string no_era_string = "";
 	// Draw minimaps
 	if (game.mini_map != NULL) {
 		int minimap_x = xpos + (minimap_size_ - game.mini_map->w)/2;
@@ -419,7 +419,7 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 				games_.back().map_info = era_cfg->get_attribute("name");
 			} else {
 				if((**game)["require_era"] == "no") {
-				    games_.back().have_era = true;
+					games_.back().have_era = true;
 				} else {
 					games_.back().have_era = false;
 				}

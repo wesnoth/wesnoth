@@ -62,8 +62,8 @@ private:
 	/** Inherited from tdialog. */
 	void post_show(twindow& window);
 
-    std::string password_;
-    t_string label_;
+	std::string password_;
+	t_string label_;
 };
 
 } // namespace gui2

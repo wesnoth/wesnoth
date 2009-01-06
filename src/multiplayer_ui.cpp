@@ -387,7 +387,7 @@ void ui::handle_event(const SDL_Event& event)
 	if(event.type == SDL_KEYDOWN) {
 		handle_key_event(event.key);
 	}
-    if(users_menu_.double_clicked()) {
+	if(users_menu_.double_clicked()) {
 		std::string usr_text = user_list_[users_menu_.selection()];
 		Uint32 show_time = SDL_GetTicks();
 
@@ -418,9 +418,9 @@ void ui::handle_event(const SDL_Event& event)
 				break;
 			case 7:
 				if(!dlg.message().empty()) msg << "/msg " << usr_text << ' ' << dlg.message();
-        }
+		}
 
-        chat_handler::do_speak(msg.str());
+		chat_handler::do_speak(msg.str());
 
 		if(show_time + 60000 < SDL_GetTicks()) {
 			//if the dialog has been open for a long time, refresh the lobby
