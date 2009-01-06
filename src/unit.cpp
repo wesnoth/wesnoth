@@ -924,15 +924,29 @@ void unit::new_level()
 }
 void unit::remove_temporary_modifications()
 {
+	bool rebuild_from_type = false;
+
 	for(unsigned int i = 0; i != NumModificationTypes; ++i) {
-		const std::string& mod = ModificationTypes[i];
-		const config::child_list& mods = modifications_.get_children(mod);
+		const std::string& mod_name = ModificationTypes[i];
+		const config::child_list& mods = modifications_.get_children(mod_name);
 		for(size_t j = 0; j != mods.size(); ++j) {
-			if((*mods[j])["duration"] != "forever" && (*mods[j])["duration"] != "") {
-				modifications_.remove_child(mod,j);
+			const config& mod = *mods[j];
+			if(mod["duration"] != "forever" && mod["duration"] != "") {
+				rebuild_from_type = true;
+				const config::child_list& effects = mod.get_children("effects");
+				for(size_t k = effects.size()-1; k >= 0; --k) {
+					const config& effect = *effects[k];
+					if(effect["apply_to"] == "type" && effect.has_attribute("prev_type")) {
+						type_ = effect["prev_type"];
+					}
+				}
+				modifications_.remove_child(mod_name, j);
 				--j;
 			}
 		}
+	}
+	if(rebuild_from_type) {
+		advance_to(type());
 	}
 }
 
@@ -2438,8 +2452,9 @@ static void mod_mdr_merge(config& dst, const config& mod, bool delta)
 
 void unit::add_modification(const std::string& type, const config& mod, bool no_add)
 {
+	config *new_child = NULL;
 	if(no_add == false) {
-		modifications_.add_child(type,mod);
+		new_child = &modifications_.add_child(type,mod);
 	}
 
 	std::vector<t_string> effects_description;
@@ -2481,6 +2496,7 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 					variation_ = (**i.first)["name"];
 					advance_to(this->type());
 				} else if(apply_to == "type" && no_add == false) {
+					(*new_child)["prev_type"] = type_;
 					type_ = (**i.first)["name"];
 					int hit_points = hit_points_;
 					int experience = experience_;
