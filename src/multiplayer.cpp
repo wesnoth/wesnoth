@@ -179,11 +179,6 @@ static server_type open_connection(game_display& disp, const std::string& origin
 			bool first_time = true;
 			config* error = NULL;
 
-			std::vector<std::string> opts;
-			opts.push_back(_("Log in with password"));
-			opts.push_back(_("Request password reminder for this username"));
-			opts.push_back(_("Choose a different username"));
-
 			do {
 				if(error != NULL) {
 					gui::dialog(disp,"",(*error)["message"],gui::OK_ONLY).show();
