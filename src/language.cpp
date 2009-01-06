@@ -28,9 +28,10 @@
 #include <boost/scoped_array.hpp>
 
 #ifdef _WIN32
-//#include "locale.h"
 #include <windows.h>
+#ifndef _MSC_VER
 extern "C" int _putenv(const char*);
+#endif
 #endif
 
 #ifdef __APPLE__
