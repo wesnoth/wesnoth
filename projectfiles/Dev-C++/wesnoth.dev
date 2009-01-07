@@ -700,16 +700,6 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit180]
-FileName=..\..\src\gui\widgets\scroll_label.cpp
-CompileCpp=1
-Folder=wesnoth
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit181]
 FileName=..\..\src\game_events.cpp
 CompileCpp=1
 Folder=wesnoth
@@ -719,7 +709,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit182]
+[Unit181]
 FileName=..\..\src\gui\widgets\image.cpp
 CompileCpp=1
 Folder=wesnoth
@@ -729,7 +719,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit183]
+[Unit182]
 FileName=..\..\src\gui\dialogs\message.cpp
 CompileCpp=1
 Folder=wesnoth
@@ -739,7 +729,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit184]
+[Unit183]
 FileName=..\..\src\map_location.cpp
 CompileCpp=1
 Folder=wesnoth
@@ -749,7 +739,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit185]
+[Unit184]
 FileName=..\..\src\editor2\action.cpp
 CompileCpp=1
 Folder=wesnoth
@@ -759,7 +749,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit186]
+[Unit185]
 FileName=..\..\src\editor2\brush.cpp
 CompileCpp=1
 Folder=wesnoth
@@ -769,8 +759,8 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit188]
-FileName=..\..\src\editor2\editor_display.cpp
+[Unit186]
+FileName=..\..\src\editor2\editor_controller.cpp
 CompileCpp=1
 Folder=wesnoth
 Compile=1
@@ -779,7 +769,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit189]
+[Unit188]
 FileName=..\..\src\editor2\editor_layout.cpp
 CompileCpp=1
 Folder=wesnoth
@@ -789,7 +779,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit190]
+[Unit189]
 FileName=..\..\src\editor2\editor_main.cpp
 CompileCpp=1
 Folder=wesnoth
@@ -799,8 +789,8 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit194]
-FileName=..\..\src\editor2\map_fragment.cpp
+[Unit190]
+FileName=..\..\src\editor2\editor_map.cpp
 CompileCpp=1
 Folder=wesnoth
 Compile=1
@@ -809,7 +799,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit195]
+[Unit194]
 FileName=..\..\src\editor2\mouse_action.cpp
 CompileCpp=1
 Folder=wesnoth
@@ -819,7 +809,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit196]
+[Unit195]
 FileName=..\..\src\gui\dialogs\editor_resize_map.cpp
 CompileCpp=1
 Folder=wesnoth
@@ -829,7 +819,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit197]
+[Unit196]
 FileName=..\..\src\gui\dialogs\editor_generate_map.cpp
 CompileCpp=1
 Folder=wesnoth
@@ -839,7 +829,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit198]
+[Unit197]
 FileName=..\..\src\gui\dialogs\editor_new_map.cpp
 CompileCpp=1
 Folder=wesnoth
@@ -849,7 +839,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit199]
+[Unit198]
 FileName=..\..\src\gui\dialogs\editor_settings.cpp
 CompileCpp=1
 Folder=wesnoth
@@ -859,7 +849,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit200]
+[Unit199]
 FileName=..\..\packaging\windows\wesnoth.rc
 CompileCpp=1
 Folder=wesnoth
@@ -869,7 +859,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit201]
+[Unit200]
 FileName=..\..\src\gui\dialogs\wml_message.cpp
 CompileCpp=1
 Folder=wesnoth
@@ -879,7 +869,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit202]
+[Unit201]
 FileName=..\..\src\gui\widgets\horizontal_scrollbar.cpp
 CompileCpp=1
 Folder=wesnoth
@@ -889,8 +879,18 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
+[Unit202]
+FileName=..\..\src\gui\widgets\generator.cpp
+CompileCpp=1
+Folder=wesnoth
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
 [Unit204]
-FileName=..\..\src\formula_string_utils.cpp
+FileName=..\..\src\gui\widgets\scrollbar_container.cpp
 CompileCpp=1
 Folder=wesnoth
 Compile=1
@@ -2528,7 +2528,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit179]
-FileName=..\..\src\unit_id.cpp
+FileName=..\..\src\gui\widgets\scroll_label.cpp
 CompileCpp=1
 Folder=wesnoth
 Compile=1
@@ -2548,7 +2548,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit178]
-FileName=..\..\src\gui\widgets\vertical_scrollbar_container.cpp
+FileName=..\..\src\unit_id.cpp
 CompileCpp=1
 Folder=wesnoth
 Compile=1
@@ -2568,7 +2568,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit187]
-FileName=..\..\src\editor2\editor_controller.cpp
+FileName=..\..\src\editor2\editor_display.cpp
 CompileCpp=1
 Folder=wesnoth
 Compile=1
@@ -2578,16 +2578,6 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit191]
-FileName=..\..\src\editor2\editor_map.cpp
-CompileCpp=1
-Folder=wesnoth
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit192]
 FileName=..\..\src\editor2\editor_palettes.cpp
 CompileCpp=1
 Folder=wesnoth
@@ -2597,7 +2587,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit193]
+[Unit192]
 FileName=..\..\src\editor2\map_context.cpp
 CompileCpp=1
 Folder=wesnoth
@@ -2607,8 +2597,18 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
+[Unit193]
+FileName=..\..\src\editor2\map_fragment.cpp
+CompileCpp=1
+Folder=wesnoth
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
 [Unit203]
-FileName=..\..\src\gui\widgets\generator.cpp
+FileName=..\..\src\formula_string_utils.cpp
 CompileCpp=1
 Folder=wesnoth
 Compile=1
@@ -2618,7 +2618,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit205]
-FileName=..\..\src\gui\widgets\scrollbar_container.cpp
+FileName=..\..\src\gui\dialogs\mp_cmd_wrapper.cpp
 CompileCpp=1
 Folder=wesnoth
 Compile=1

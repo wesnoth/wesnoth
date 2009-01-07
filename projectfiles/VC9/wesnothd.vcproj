@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="9.00"
+	Version="9,00"
 	Name="wesnothd"
 	ProjectGUID="{72F28A4A-A6A2-4C49-8141-7CD0DFA9ECCE}"
 	RootNamespace="wesnothd"
@@ -228,70 +228,6 @@
 			</File>
 		</Filter>
 		<Filter
-			Name="Header Files"
-			Filter="h;hpp;hxx;hm;inl;inc;xsd"
-			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
-			>
-			<File
-				RelativePath="..\..\src\color_range.hpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\config.hpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\filesystem.hpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\game_config.hpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\gettext.hpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\loadscreen.hpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\log.hpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\network.hpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\network_worker.hpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\thread.hpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\time.hpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\tstring.hpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\util.hpp"
-				>
-			</File>
-		</Filter>
-		<Filter
-			Name="Resource Files"
-			Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav"
-			UniqueIdentifier="{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}"
-			>
-		</Filter>
-		<Filter
 			Name="Serialization"
 			>
 			<File
@@ -315,10 +251,6 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\..\src\serialization\binary_or_text.hpp"
-				>
-			</File>
-			<File
 				RelativePath="..\..\src\serialization\binary_wml.cpp"
 				>
 				<FileConfiguration
@@ -337,10 +269,6 @@
 						ObjectFile="$(IntDir)\Serialization\"
 					/>
 				</FileConfiguration>
-			</File>
-			<File
-				RelativePath="..\..\src\serialization\binary_wml.hpp"
-				>
 			</File>
 			<File
 				RelativePath="..\..\src\serialization\parser.cpp"
@@ -363,10 +291,6 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\..\src\serialization\parser.hpp"
-				>
-			</File>
-			<File
 				RelativePath="..\..\src\serialization\preprocessor.cpp"
 				>
 				<FileConfiguration
@@ -387,10 +311,6 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\..\src\serialization\preprocessor.hpp"
-				>
-			</File>
-			<File
 				RelativePath="..\..\src\serialization\string_utils.cpp"
 				>
 				<FileConfiguration
@@ -409,10 +329,6 @@
 						ObjectFile="$(IntDir)\Serialization\"
 					/>
 				</FileConfiguration>
-			</File>
-			<File
-				RelativePath="..\..\src\serialization\string_utils.hpp"
-				>
 			</File>
 			<File
 				RelativePath="..\..\src\serialization\tokenizer.cpp"
@@ -463,10 +379,6 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\..\src\server\ban.hpp"
-				>
-			</File>
-			<File
 				RelativePath="..\..\src\server\game.cpp"
 				>
 				<FileConfiguration
@@ -485,10 +397,6 @@
 						ObjectFile="$(IntDir)\Server\"
 					/>
 				</FileConfiguration>
-			</File>
-			<File
-				RelativePath="..\..\src\server\game.hpp"
-				>
 			</File>
 			<File
 				RelativePath="..\..\src\server\input_stream.cpp"
@@ -511,10 +419,6 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\..\src\server\input_stream.hpp"
-				>
-			</File>
-			<File
 				RelativePath="..\..\src\server\metrics.cpp"
 				>
 				<FileConfiguration
@@ -533,10 +437,6 @@
 						ObjectFile="$(IntDir)\Server\"
 					/>
 				</FileConfiguration>
-			</File>
-			<File
-				RelativePath="..\..\src\server\metrics.hpp"
-				>
 			</File>
 			<File
 				RelativePath="..\..\src\server\player.cpp"
@@ -559,10 +459,6 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\..\src\server\player.hpp"
-				>
-			</File>
-			<File
 				RelativePath="..\..\src\server\proxy.cpp"
 				>
 				<FileConfiguration
@@ -581,10 +477,6 @@
 						ObjectFile="$(IntDir)\Server\"
 					/>
 				</FileConfiguration>
-			</File>
-			<File
-				RelativePath="..\..\src\server\proxy.hpp"
-				>
 			</File>
 			<File
 				RelativePath="..\..\src\server\server.cpp"
@@ -625,10 +517,6 @@
 						ObjectFile="$(IntDir)\Server\"
 					/>
 				</FileConfiguration>
-			</File>
-			<File
-				RelativePath="..\..\src\server\simple_wml.hpp"
-				>
 			</File>
 		</Filter>
 	</Files>
