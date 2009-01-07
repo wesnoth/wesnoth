@@ -286,6 +286,14 @@ bool receive_with_timeout(TCPsocket s, char* buf, size_t nbytes,
 			startTicks = SDL_GetTicks();
 #endif
 		}
+		{
+			const size_t shard = get_shard(s);
+			socket_state_map::iterator lock_it = sockets_locked[shard].find(s);
+			assert(lock_it != sockets_locked[shard].end());
+			if(lock_it->second == SOCKET_INTERRUPT) {
+				return false;
+			}
+		}
 	}
 
 	return true;
