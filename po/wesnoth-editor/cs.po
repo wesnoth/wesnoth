@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-01-06 22:08+0100\n"
-"PO-Revision-Date: 2008-10-04 14:22+0100\n"
+"PO-Revision-Date: 2009-01-07 22:50+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
@@ -29,7 +29,7 @@ msgstr ""
 #. [brush]
 #: data/core/editor/brushes.cfg:5
 msgid "Single Hex"
-msgstr ""
+msgstr "Jediný hex"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:15
@@ -44,12 +44,12 @@ msgstr "Poloměr dva hexy"
 #. [brush]
 #: data/core/editor/brushes.cfg:55
 msgid "Hex Line NW-SE"
-msgstr ""
+msgstr "Linie hexů SZ-JV"
 
 #. [editor_group]: id=all
 #: data/core/editor/terrain-groups.cfg:10
 msgid "all"
-msgstr "všechno"
+msgstr "vše"
 
 #. [editor_group]: id=water
 #: data/core/editor/terrain-groups.cfg:16
@@ -99,7 +99,7 @@ msgstr "hrady"
 #. [editor_group]: id=special
 #: data/core/editor/terrain-groups.cfg:79
 msgid "special"
-msgstr ""
+msgstr "zvláštnosti"
 
 #. [editor_tool_hint]: id=editor-tool-paint
 #. [editor_tool_hint]: id=editor-tool-fill
@@ -148,9 +148,8 @@ msgstr "Mapa"
 
 #. [menu]: id=menu-editor-window
 #: data/themes/editor2.cfg:151
-#, fuzzy
 msgid "Window"
-msgstr "Zpátky"
+msgstr "Okno"
 
 #. [label]: id=villages-icon
 #: data/themes/editor2.cfg:262
@@ -163,7 +162,7 @@ msgstr ""
 
 #: src/editor2/action.cpp:36
 msgid "Action not implemented"
-msgstr ""
+msgstr "Akce není implementována"
 
 #: src/editor2/editor_controller.cpp:123
 msgid "Quit Editor"
@@ -175,7 +174,7 @@ msgstr "Kritická chyba"
 
 #: src/editor2/editor_controller.cpp:274 src/editor2/editor_controller.cpp:971
 msgid "(New Map)"
-msgstr ""
+msgstr "(Nová mapa)"
 
 #: src/editor2/editor_controller.cpp:280
 msgid "Do you really want to quit?"
@@ -203,23 +202,21 @@ msgid "Error"
 msgstr "Chyba"
 
 #: src/editor2/editor_controller.cpp:346
-#, fuzzy
 msgid "No editor time-of-day found."
-msgstr "Nenalezena žádná denní doba pro editor"
+msgstr "Nenalezena žádná denní doba pro editor."
 
 #: src/editor2/editor_controller.cpp:382
 msgid "Unsaved Changes"
-msgstr ""
+msgstr "Neuložené změny"
 
 #: src/editor2/editor_controller.cpp:383
 msgid ""
 "Do you want to discard all changes you made to the map since the last save?"
-msgstr ""
+msgstr "Opravdu si přeješ zahodit všechny změny v mapě od posledního uložení?"
 
 #: src/editor2/editor_controller.cpp:396
-#, fuzzy
 msgid "Choose a Map to Open"
-msgstr "Vyber si uloženou pozici"
+msgstr "Vyber mapu k načtení"
 
 #: src/editor2/editor_controller.cpp:400
 msgid "This map is already open."
@@ -230,9 +227,8 @@ msgid "Save the Map As"
 msgstr "Ulož mapu jako"
 
 #: src/editor2/editor_controller.cpp:442
-#, fuzzy
 msgid "The file already exists. Do you want to overwrite it?"
-msgstr "Mapa už existuje. Chceš ji přepsat?"
+msgstr "Mapa už existuje. Přeješ si ji přepsat?"
 
 #: src/editor2/editor_controller.cpp:458
 #, fuzzy
@@ -243,15 +239,15 @@ msgstr "Nenalezeny žádné náhodné generátory"
 msgid "Map creation failed."
 msgstr "Mapu se nepodařilo vygenerovat."
 
+# co to je?
 #: src/editor2/editor_controller.cpp:484
 #, fuzzy
 msgid "Choose a mask to apply"
-msgstr "Vyber si uloženou pozici"
+msgstr "Vyber masku"
 
 #: src/editor2/editor_controller.cpp:491
-#, fuzzy
 msgid "Error loading mask"
-msgstr "Chyba načítání mapy"
+msgstr "Chyba při načítání masky"
 
 #: src/editor2/editor_controller.cpp:506
 msgid "Choose target map"
@@ -312,17 +308,19 @@ msgstr "Žádný"
 
 #: src/editor2/mouse_action.cpp:389
 msgid "Choose player"
-msgstr ""
+msgstr "Vyber hráče"
 
 #: src/editor2/mouse_action.cpp:390
 msgid ""
 "Which player should start here? You can also use the 1-9 and delete keys to "
 "set/clear staring positions."
 msgstr ""
+"Který hráč zde má začínat? Počáteční pozice lze také nastavit a zrušit "
+"klávesami 1-9 a Delete."
 
 #: src/gui/dialogs/editor_settings.cpp:119
 msgid "Custom setting"
-msgstr ""
+msgstr "Vlastní nastavení"
 
 #, fuzzy
 #~ msgid "There was a format error while loading the file:"

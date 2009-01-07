@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-01-06 22:08+0100\n"
-"PO-Revision-Date: 2008-12-01 23:20+0100\n"
+"PO-Revision-Date: 2009-01-07 22:35+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
@@ -3396,7 +3396,7 @@ msgstr ""
 #: data/core/macros/ai_controller.cfg:437
 #: data/core/macros/ai_controller.cfg:442
 msgid "(side $temp_i|)"
-msgstr ""
+msgstr "(strana $temp_i|)"
 
 #. [then]
 #: data/core/macros/ai_controller.cfg:288
@@ -3408,7 +3408,7 @@ msgstr ""
 #: data/core/macros/ai_controller.cfg:293
 #: data/core/macros/ai_controller.cfg:443
 msgid "side $temp_i"
-msgstr ""
+msgstr "strana $temp_i"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:309
@@ -3421,14 +3421,13 @@ msgstr ""
 #: data/core/macros/ai_controller.cfg:479
 #: data/core/macros/ai_controller.cfg:864
 #: data/core/macros/ai_controller.cfg:899
-#, fuzzy
 msgid "Back"
-msgstr "Černá"
+msgstr "Zpět"
 
 #. [option]: type=objective
 #: data/core/macros/ai_controller.cfg:359
 msgid "Focus on protecting..."
-msgstr ""
+msgstr "Zaměř se na ochranu..."
 
 #. [literal]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:376
@@ -3466,7 +3465,7 @@ msgstr ""
 #. [print]
 #: data/core/macros/ai_controller.cfg:580
 msgid "Location selection canceled"
-msgstr ""
+msgstr "Výběr lokace zrušen"
 
 #. [option]
 #: data/core/macros/ai_controller.cfg:595
@@ -3558,25 +3557,20 @@ msgid "No early finish bonus."
 msgstr "Bez bonusu za rychlý konec."
 
 #: data/core/macros/carryover-utils.cfg:15
-#, fuzzy
 msgid "`(early finish bonus)"
-msgstr "Bonus za rychlý konec."
+msgstr "`(bonus za rychlý konec)"
 
 #: data/core/macros/carryover-utils.cfg:18
-#, fuzzy
 msgid "No gold carried over to the next scenario."
-msgstr ""
-"\n"
-"40% výsledného zlata je přeneseno do dalšího scénáře."
+msgstr "Do dalšího scénáře není přeneseno žádné zlato."
 
 #: data/core/macros/carryover-utils.cfg:22
-#, fuzzy
 msgid ""
 "\n"
 "100% of finishing gold carried over to the next scenario."
 msgstr ""
 "\n"
-"40% výsledného zlata je přeneseno do dalšího scénáře."
+"100% výsledného zlata je přeneseno do dalšího scénáře."
 
 #: data/core/macros/carryover-utils.cfg:26
 msgid ""
@@ -4905,9 +4899,8 @@ msgstr "zdravá"
 
 #. [trait]: id=healthy
 #: data/core/macros/traits.cfg:134
-#, fuzzy
 msgid "Can rest while moving, takes a quarter less poison damage"
-msgstr "Odpočívá i při pohybu, snižuje jedem na polovinu"
+msgstr "Odpočívá i při pohybu, zranění jedem pouze tři čtvrtiny"
 
 #. [trait]: id=fearless
 #: data/core/macros/traits.cfg:151 data/core/macros/traits.cfg:164
@@ -7155,9 +7148,8 @@ msgid "All add-ons updated successfully."
 msgstr "Všechna rozšíření byla úspěšně aktualizována."
 
 #: src/addon_management.cpp:891
-#, fuzzy
 msgid "Connecting to Add-ons Server..."
-msgstr "Připojuji se na server..."
+msgstr "Připojuji se na server s rozšířeními..."
 
 #: src/addon_management.cpp:894
 msgid "Could not connect to host."
@@ -7259,9 +7251,8 @@ msgid "Add-on deleted"
 msgstr "Rozšíření smazáno"
 
 #: src/addon_management.cpp:1141
-#, fuzzy
 msgid "Add-on could not be deleted properly:"
-msgstr "Rozšíření nebylo možno odstranit - soubor nebyl nalezen."
+msgstr "Rozšíření nebylo možno správně odstranit:"
 
 #: src/ai.cpp:1776
 msgid "Unknown unit type : "
@@ -7928,14 +7919,12 @@ msgid "?"
 msgstr "?"
 
 #: src/loadscreen.cpp:224
-#, fuzzy
 msgid "Verifying cache"
-msgstr "Prověřuji dočasná úložiště."
+msgstr "Prověřuji dočasná úložiště"
 
 #: src/loadscreen.cpp:243
-#, fuzzy
 msgid "Reading cache"
-msgstr "Načítám dočasná úložiště."
+msgstr "Načítám dočasná úložiště"
 
 #: src/loadscreen.cpp:262
 msgid "Reading unit files."
@@ -9326,7 +9315,7 @@ msgstr "zahrnuté z"
 
 #: src/serialization/parser.cpp:349
 msgid "$error, value '$value', previous '$previous_value' at $pos"
-msgstr ""
+msgstr "$error, hodnota '$value', předchozí '$previous_value' na $pos"
 
 #: src/serialization/parser.cpp:353
 msgid "$error, value '$value' at $pos"
