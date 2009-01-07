@@ -319,55 +319,56 @@ void replay_controller::play_side(const unsigned int /*team_index*/, bool){
 	DBG_REPLAY << "Replay_Controller turn number: " << current_turn_ << "\n";
 	DBG_REPLAY << "Player number: " << player_number_ << "\n";
 
-	// If a side is empty skip over it.
-	if (current_team().is_empty()) return;
+    try{
+        // If a side is empty skip over it.
+        if (current_team().is_empty())
+        {
+            statistics::reset_turn_stats(current_team().save_id());
 
-	statistics::reset_turn_stats(current_team().save_id());
+            try{
+                if (skip_next_turn_) {
+                    skip_next_turn_ = false;
+                    throw end_turn_exception();
+                }
+                play_controller::init_side(player_number_ - 1, true);
 
-	try{
-		try{
-			if (skip_next_turn_) {
-				skip_next_turn_ = false;
-				throw end_turn_exception();
-			}
-			play_controller::init_side(player_number_ - 1, true);
+                DBG_REPLAY << "doing replay " << player_number_ << "\n";
+                try {
+                    ::do_replay(*gui_, map_, units_, teams_,
+                            player_number_, status_, gamestate_);
+                } catch(replay::error&) {
+                    if(!continue_replay()) {
+                        throw;
+                    }
+                }
+            } catch(end_turn_exception) {
+            }
 
-			DBG_REPLAY << "doing replay " << player_number_ << "\n";
-			try {
-				::do_replay(*gui_, map_, units_, teams_,
-						player_number_, status_, gamestate_);
-			} catch(replay::error&) {
-				if(!continue_replay()) {
-					throw;
-				}
-			}
-		} catch(end_turn_exception) {
-		}
+            finish_side_turn();
 
-		finish_side_turn();
+            // This is necessary for replays in order to show possible movements.
+            for (unit_map::iterator uit = units_.begin(); uit != units_.end(); ++uit) {
+                if (uit->second.side() != static_cast<size_t>(player_number_)) {
+                    uit->second.new_turn();
+                }
+            }
+        }
 
-		// This is necessary for replays in order to show possible movements.
-		for (unit_map::iterator uit = units_.begin(); uit != units_.end(); ++uit) {
-			if (uit->second.side() != static_cast<size_t>(player_number_)) {
-				uit->second.new_turn();
-			}
-		}
+        player_number_++;
 
-		player_number_++;
+        if (static_cast<size_t>(player_number_) > teams_.size()){
+            status_.next_turn();
+            try {
+                finish_turn();
+            } catch (end_turn_exception) {
+                skip_next_turn_ = true;
+            }
+            player_number_ = 1;
+            current_turn_++;
+        }
 
-		if (static_cast<size_t>(player_number_) > teams_.size()){
-			status_.next_turn();
-			try {
-				finish_turn();
-			} catch (end_turn_exception) {
-				skip_next_turn_ = true;
-			}
-			player_number_ = 1;
-			current_turn_++;
-		}
-
-		update_teams();
-		update_gui();
+        update_teams();
+        update_gui();
 	}
 	catch (replay::error&) //if replay throws an error, we don't want to get thrown out completely
 	{
