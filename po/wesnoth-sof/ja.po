@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-12-17 17:29+0100\n"
-"PO-Revision-Date: 2009-01-04 19:15+0900\n"
+"PO-Revision-Date: 2009-01-06 17:27+0900\n"
 "Last-Translator: np <tukiplus@gmail.com>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -85,9 +85,8 @@ msgstr "キャンペーンデザイン"
 
 #. [about]
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:39
-#, fuzzy
 msgid "Campaign Maintenance"
-msgstr "キャンペーンデザイン"
+msgstr "キャンペーンメンテナンス"
 
 #. [about]
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:45
@@ -116,7 +115,7 @@ msgstr "Rugnur"
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:18
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:29
 msgid "Allies"
-msgstr ""
+msgstr "Allies"
 
 #. [side]: type=Haldric II, id=Haldric II
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:34
@@ -158,7 +157,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:98
-#, fuzzy
 msgid ""
 "Our story begins in a small border outpost in the southern hills of Knalga, "
 "with a young dwarf, named Rugnur, in charge of it. And with the second king "
@@ -167,7 +165,7 @@ msgid ""
 msgstr ""
 "私達の話はKnalgaの丘にある小さな国境の前哨基地から始まります。若いドワーフ、"
 "Rugnurがそこを任されていました。そして二代目のWesnoth王、Haldric二世が軍隊を"
-"連れて道を上ってきました。"
+"連れてAbezの浅瀬から上ってきました。"
 
 #. [objective]: condition=win
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:119
@@ -191,6 +189,9 @@ msgid ""
 "@Defeat Glildur\n"
 "`(early finish bonus)"
 msgstr ""
+"<255,255,255>他の目標:\n"
+"@Glildurを倒す\n"
+"`（早期終了ボーナス）"
 
 #. [objective]: condition=lose
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:136
@@ -248,10 +249,10 @@ msgstr "時間切れ"
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:185
 msgid "Humans, halt! Who dares bring an army into the dwarvish hills?"
 msgstr ""
+"人間ども、止まりな！軍隊をドワーフの丘に入れようなんて良い度胸じゃねぇか？"
 
 #. [message]: speaker=Haldric II
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:189
-#, fuzzy
 msgid "We come to make a bargain with you."
 msgstr "我々はあなた方と取引をするために来たのだ。"
 
@@ -599,22 +600,24 @@ msgstr ""
 #. [message]: speaker=unit
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:544
 msgid "Die, humans, in the name of Landar!"
-msgstr ""
+msgstr "人間ども、死ね、Landarの名の下に！"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:548
+#, fuzzy
 msgid "Landar? Who is this 'Landar' you speak of?"
-msgstr ""
+msgstr "Landar？そのLandarとかいうのは何者だ？"
 
 #. [message]: speaker=unit
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:565
 msgid "Die, dwarvish scum, in the name of Landar!"
-msgstr ""
+msgstr "ドワーフのクズめ、死ね、Landarの名の下に！"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:569
+#, fuzzy
 msgid "Yer precious Landar can kiss my axe."
-msgstr ""
+msgstr "お前たちの大切なLandarは俺の斧にキスできるだろうぜ。"
 
 #. [message]: speaker=Haldric II
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:605
@@ -1104,7 +1107,6 @@ msgstr ""
 
 #. [message]: speaker=Baglur
 #: data/campaigns/Sceptre_of_Fire/scenarios/2t_In_the_Dwarven_City.cfg:200
-#, fuzzy
 msgid ""
 "Well, since this boy bargained so badly, why not make him fulfill the "
 "contract himself? If he fails, it's on his head."
@@ -1171,17 +1173,16 @@ msgstr "神秘的な職人を捜して"
 
 #. [part]
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:35
-#, fuzzy
 msgid ""
 "The journey to the far northern wastelands was long and perilous. For the "
 "tunnels were winding and treacherous, and the paths were not safe from orcs, "
 "or worse. Nevertheless, they did reach the northlands, and began to search "
 "for the runesmith named Thursagan - the sage of fire."
 msgstr ""
-"彼らが北の荒れ地に着くまでには一年がかかりました。その間のトンネルは曲がりく"
-"ねり、不安定でした。そして、道程はオーク達や、もっと悪いものによって安全では"
-"ありませんでした。それでもなんとか、彼らは北の大地に到着し、ルーンの鍛冶職人"
-"にして炎の賢者、Thursaganを探し始めました。"
+"彼らが北の荒れ地に着くまでの旅は、長くて危険でした。その間のトンネルは曲がり"
+"くねり、不安定でした。そして、道程はオーク達や、もっと悪いものによって安全で"
+"はありませんでした。それでもなんとか、彼らは北の大地に到着し、ルーンの鍛冶職"
+"人にして炎の賢者、Thursaganを探し始めました。"
 
 #. [objective]: condition=win
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:96
@@ -1204,13 +1205,12 @@ msgstr "Alaninの死"
 
 #. [message]: speaker=Alanin
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:154
-#, fuzzy
 msgid ""
 "Now where are we going, anyway? We have been taking wrong turns and fighting "
 "orcs for months. This trip better have a good payoff to be worth that."
 msgstr ""
-"我々は今一体どこへ向かっているのか？我々は洞窟に居た、迷い、オーク達と戦い一"
-"年が過ぎた。この旅は割に合うのか？"
+"我々は今一体どこへ向かっているのか？我々は洞窟に居た、迷い、オーク達と戦い"
+"数ヶ月が過ぎた。この旅は割に合うのか？"
 
 #. [message]: speaker=Baglur
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:158
@@ -1571,19 +1571,17 @@ msgstr "ルビーは私のものだ、触ることは許さん！"
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:178
-#, fuzzy
 msgid ""
 "Uh, technically it's Haldric's, and I think that if Thursagan needs to see "
 "it to plan this sceptre, we must allow it."
 msgstr ""
-"うわ、まさにHaldricの言ったとおりだ。Thursaganは笏を設計するために石を見る必"
-"要があると思うのだがね。"
+"うわ、まさにHaldricの言ったとおりだ。もしThursaganが笏を設計するために石を見"
+"る必要があるなら、そうさせなければならん。"
 
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:182
-#, fuzzy
 msgid "It will be as it must, then. *grumble grumble*"
-msgstr "（不満そうに）分かった。"
+msgstr "（不満そうに）必要ならば仕方がない。（ブツブツ）"
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:188
@@ -1635,14 +1633,14 @@ msgstr ""
 
 #. [message]: speaker=Baglur
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:217
-#, fuzzy
 msgid ""
 "Wait, wait. The gold and coal... I think we can find those in the abandoned "
 "eastern mines, north of the Arkan-thoria. Trolls have overrun them, but "
 "earlier they were the source of the finest smithing materials."
 msgstr ""
-"待った、待った。金と石炭...我々は東の見捨てられた鉱山で見つけられると思いま"
-"す。トロール達に制圧されましたが、以前は最高の鍛冶材料の供給源でした。"
+"待った、待った。金と石炭...我々は東の見捨てられた鉱山、Arkan-thoriaの北で見つ"
+"けられると思います。トロール達に制圧されましたが、以前は最高の鍛冶材料の供給"
+"源でした。"
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:221
@@ -1837,7 +1835,7 @@ msgstr "金です。"
 #: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:874
 #: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:932
 msgid "Trolls"
-msgstr ""
+msgstr "トロル達"
 
 #. [scenario]: id=4t_The_Jeweler
 #: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:3
@@ -2103,11 +2101,10 @@ msgstr "Glonoin"
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:52
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:93
 msgid "Enemies"
-msgstr ""
+msgstr "敵軍"
 
 #. [part]
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:98
-#, fuzzy
 msgid ""
 "All dwarves are known for a love of gold and a heart of stone. The Shorbears "
 "were no exception. They were crafters of crafters - they made tools. The "
@@ -2163,9 +2160,8 @@ msgstr ""
 
 #. [message]: speaker=Glonoin
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:213
-#, fuzzy
 msgid "Och, its some o' them cave-dwarves. What business do you have here?"
-msgstr "おや、洞窟のドワーフさんじゃないですか。何かご用ですか？"
+msgstr "おお、洞窟のドワーフさんじゃないですか。何かご用ですか？"
 
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:217
@@ -2525,7 +2521,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:125
-#, fuzzy
 msgid ""
 "During this time, Thursagan crafted the Sceptre of Fire, first cutting the "
 "jewel, then putting it, the gold and the cold steel into the heat of the "
@@ -2535,8 +2530,8 @@ msgid ""
 msgstr ""
 "その間に、Thursaganは炎の笏を作りました。まず、宝石をカットし、次にそれをはめ"
 "込むと、金と冷たい鉄が炎の熱さになりました。笏は完成しました。しかし、何かが"
-"変でした。彼がどんなルーンの魔法を笏にかけても、それは正しく働きませんでし"
-"た。"
+"変でした。彼がどんなルーンの魔法を笏にかけても、それは思うようには働きません"
+"でした。"
 
 #. [objective]: condition=win
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:144
@@ -2717,14 +2712,14 @@ msgstr ""
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:301
-#, fuzzy
 msgid ""
 "I don't know if we will be cornered. That cave looks like it goes deep, and "
 "we can lose the elves in the caves, they move so slow there. Once we get "
 "out, we'll make our way back to Knalga."
 msgstr ""
 "わしらが窮地に立たされるとは思わんね。あの洞窟は深いようだ。そして、わしらは"
-"洞窟ではエルフ達から逃げ切れる。彼らは洞窟ではゆっくりしか動けんからな。"
+"洞窟ではエルフ達から逃げ切れる。彼らは洞窟ではゆっくりしか動けんからな。一旦"
+"外に出られれば、Knalgaへ戻れる。"
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:305
@@ -2734,6 +2729,9 @@ msgid ""
 "gathered our gold and coal. At least there Alanin will have some hope of "
 "finding us."
 msgstr ""
+"こことKnalgaの間の土地は群れをなすエルフどもでいっぱいになるだろう。俺達は金"
+"と石炭を集めたArkan-thoriaの北の見捨てられた鉱山へ向かうべきだ。Alaninはそこ"
+"で俺達を見つけられる可能性があるだろう。"
 
 #. [message]: speaker=Alanin
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:309
@@ -2771,7 +2769,6 @@ msgstr ""
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:331
-#, fuzzy
 msgid ""
 "You going south has more of a chance of success for you than staying here or "
 "going to back to the mines! And getting news to Haldric of what has happened "
@@ -2819,14 +2816,15 @@ msgstr "Rugnur、私は南へ行きます。Haldricには何と言えば良い�
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:448
-#, fuzzy
 msgid ""
 "Tell him to send forces north to aid us and fight the elves, but that we are "
 "probably going to die. We will run northeast towards the old eastern mines, "
 "and if he wants his scepter intact he'd best send troops to meet us there."
 msgstr ""
 "彼にはわしらを助け、エルフ達と戦うために援軍を送ってくれと使えてくれ。しか"
-"し、わしらは恐らく死ぬことになるだろう。わしらは洞窟に向かう。"
+"し、わしらは恐らく死ぬことになるだろう。わしらは北東の鉱山へ向かう、もし彼が"
+"傷つけられていない笏を手に入れたいなら、兵隊をわしらに会わせるために送るのが"
+"最善の策だ。"
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:486
@@ -2842,13 +2840,12 @@ msgstr "Outriding the Outriders"
 
 #. [part]
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_of_Outriders.cfg:55
-#, fuzzy
 msgid ""
 "Rugnur had fled across the Arkan-thoria, but Alanin could not do that. He "
 "went south - back to the Wesnoth border."
 msgstr ""
-"Rugnurは洞窟へ逃げました。しかし、Alaninはそうすることが出来ませんでした。彼"
-"は南へ、Wesnothの国境へ走りました。"
+"RugnurはArkan-thoriaを越えて逃げました。しかし、Alaninはそうすることが出来ま"
+"せんでした。彼は南へ、Wesnothの国境へ走りました。"
 
 #. [part]
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_of_Outriders.cfg:58
@@ -3001,8 +2998,8 @@ msgid ""
 msgstr ""
 "このように、Alaninはエルフの追跡者達から逃れることが出来ました。しかし、ド"
 "ワーフ達は彼ほど幸運ではありませんでした。こう言えるかもしれません。彼らが裏"
-"切ったDurstornに取り憑かれていたのかも。彼らは知らずに、Khrakrahs...ドラゴ"
-"ン...の洞窟へ踏み込んでしまったのです。"
+"切ったDurstornに取り憑かれていた、と。彼らは知らずに、Khrakrahs...ドラゴン..."
+"の洞窟へ踏み込んでしまったのです。"
 
 #. [objective]: condition=win
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:116
@@ -3011,12 +3008,12 @@ msgstr "トンネルの終わりに全ての英雄達を移動させる"
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:176
-#, fuzzy
 msgid ""
 "Well, Thursagan, we've reached the eastern mine, but the elves are hot on "
 "our trail. What do we do now?"
 msgstr ""
-"Thursagan、洞窟にたどり着いた。しかし、エルフ達が追ってくるぜ。どうする？"
+"Thursagan、洞窟にたどり着いた。しかし、エルフ達がぴったり付いてくるぜ。どうす"
+"る？"
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:180
@@ -3208,7 +3205,7 @@ msgstr "炎の洞窟"
 #. [side]: type=Dwarvish Fighter, id=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:26
 msgid "Dwarves"
-msgstr ""
+msgstr "ドワーフ達"
 
 #. [side]: type=Orcish Warlord
 #. [side]: type=Troll Warrior
@@ -3217,7 +3214,7 @@ msgstr ""
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:105
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:128
 msgid "Orcs"
-msgstr ""
+msgstr "オーク達"
 
 #. [part]
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:139
@@ -3273,9 +3270,8 @@ msgstr ""
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:298
-#, fuzzy
 msgid "This sounds... plausible."
-msgstr "それは...攻撃的計画だ。"
+msgstr "それは...うまい。"
 
 #. [message]: speaker=Baglur
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:302
@@ -3417,6 +3413,7 @@ msgstr "逃がすな、逃げられたら失敗だ。"
 msgid ""
 "Aghh!!! The volcano is erupting, and now our exit has been blocked off!!!"
 msgstr ""
+"アァァ！！！火山が噴火している、そして今や我々の出口は塞がれている！！！"
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:693
@@ -3624,7 +3621,6 @@ msgstr "彼は一体何を話しているのだ。"
 
 #. [message]: speaker=Alanin
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:209
-#, fuzzy
 msgid ""
 "He says that he has seen the Sceptre. Rugnur had it, but he lost it in the "
 "caves. He came to tell you, so that you would know that the dwarves did "
