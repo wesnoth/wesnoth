@@ -19,7 +19,7 @@ msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-01-06 22:08+0100\n"
-"PO-Revision-Date: 2009-01-02 04:24-0300\n"
+"PO-Revision-Date: 2009-01-09 01:15-0300\n"
 "Last-Translator: Ignacio R. Morelle <shikadilord@users.sourceforge.net>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -41,9 +41,8 @@ msgstr "Desplazamiento con ratón"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:59
-#, fuzzy
 msgid "Middle-click Scrolling"
-msgstr "Desplazamiento con ratón"
+msgstr "Desplazamiento con clic del botón medio"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:66
@@ -3306,7 +3305,6 @@ msgid "backstab"
 msgstr "apuñalar por la espalda"
 
 #: data/core/macros/abilities.cfg:567
-#, fuzzy
 msgid ""
 "Backstab:\n"
 "When used offensively, this attack deals double damage if there is an enemy "
@@ -3315,8 +3313,9 @@ msgid ""
 msgstr ""
 "Apuñalar por la espalda:\n"
 "Cuando se usa ofensivamente, este ataque causa el doble de daño si una "
-"unidad amiga está en el extremo opuesto del objetivo y esa unidad no está "
-"incapacitada (p.ej., convertida en piedra)."
+"unidad enemiga del objetivo está en su extremo opuesto, siempre y cuando esa "
+"unidad no haya sidoincapacitada (p.ej., convertida en piedra o paralizada de "
+"algún otro modo)."
 
 #: data/core/macros/abilities.cfg:579 data/core/macros/abilities.cfg:591
 msgid "plague"
@@ -3581,7 +3580,6 @@ msgstr "Cancelar órdenes de objetivo"
 
 #. [option]
 #: data/core/macros/ai_controller.cfg:619
-#, fuzzy
 msgid "Clear behavior orders"
 msgstr "Cancelar órdenes de comportamiento"
 
@@ -3608,7 +3606,6 @@ msgstr ""
 #. [value]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:805
 #: data/core/macros/ai_controller.cfg:822
-#, fuzzy
 msgid ""
 "Objective: $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_objective_description\n"
@@ -3636,7 +3633,6 @@ msgstr "Cambiar objetivo..."
 
 #. [literal]
 #: data/core/macros/ai_controller.cfg:874
-#, fuzzy
 msgid "Set behavior..."
 msgstr "Cambiar comportamiento..."
 
@@ -9156,9 +9152,8 @@ msgid "Invalid Color"
 msgstr "Color inválido"
 
 #: src/multiplayer_ui.cpp:394
-#, fuzzy
 msgid "Selected user: "
-msgstr "Seleccionar unidad:"
+msgstr "Usuario seleccionado: "
 
 #: src/multiplayer_wait.cpp:134
 msgid "Leader: "
