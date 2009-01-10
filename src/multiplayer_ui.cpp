@@ -400,6 +400,9 @@ void ui::handle_event(const SDL_Event& event)
 
 		std::stringstream msg;
 		switch(dlg.get_retval()) {
+			case -1:
+				if(!dlg.message().empty()) msg << "/msg " << usr_text << ' ' << dlg.message();
+				break;
 			case 1:
 				msg << "/friend " << usr_text;
 				break;
@@ -419,9 +422,6 @@ void ui::handle_event(const SDL_Event& event)
 				msg << "/query kban " << usr_text;
 				if(!dlg.time().empty()) msg << ' ' << dlg.time();
 				if(!dlg.reason().empty()) msg << ' ' << dlg.reason();
-				break;
-			case 7:
-				if(!dlg.message().empty()) msg << "/msg " << usr_text << ' ' << dlg.message();
 		}
 
 		chat_handler::do_speak(msg.str());

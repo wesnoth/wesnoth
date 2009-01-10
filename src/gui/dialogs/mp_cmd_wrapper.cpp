@@ -62,11 +62,7 @@ void tmp_cmd_wrapper::pre_show(CVideo& /*video*/, twindow& window)
 	if(label) label->set_label(user_);
 
 
-	tbutton* b =
-		dynamic_cast<tbutton*>(window.find_widget("send_msg", false));
-	if(b) b->set_retval(7);
-
-	b = dynamic_cast<tbutton*>(window.find_widget("add_friend", false));
+	tbutton* b = dynamic_cast<tbutton*>(window.find_widget("add_friend", false));
 	if(b) b->set_retval(1);
 
 	b = dynamic_cast<tbutton*>(window.find_widget("add_ignore", false));
