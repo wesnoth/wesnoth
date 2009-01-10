@@ -357,7 +357,7 @@ class CampaignClient:
         # Only used if it's an old-style campaign directory
         # with an external config.
         if cfgfile:
-            data.insert(put_file(name + ".cfg", file(cfgdile)))
+            data.insert(put_file(name + ".cfg", file(cfgfile)))
 
         sys.stderr.write("Adding directory %s as %s.\n" % (directory, name))
         data.insert(put_dir(name, directory))
