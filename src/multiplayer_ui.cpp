@@ -730,8 +730,7 @@ void ui::set_user_menu_items(const std::vector<std::string>& list)
 	std::vector<std::string>::const_iterator i =
 			std::find(user_list_.begin(), user_list_.end(), selected_user_);
 	if(i != user_list_.end()) {
-		users_menu_.reset_selection();
-		users_menu_.move_selection(i - user_list_.begin());
+		users_menu_.move_selection_keeping_viewport(i - user_list_.begin());
 	}
 }
 

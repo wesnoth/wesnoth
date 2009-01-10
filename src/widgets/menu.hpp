@@ -160,6 +160,7 @@ public:
 	int selection() const;
 
 	void move_selection(size_t id);
+	void move_selection_keeping_viewport(size_t id);
 	void reset_selection();
 
 	// allows user to change_item while running (dangerous)

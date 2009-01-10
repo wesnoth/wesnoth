@@ -517,6 +517,14 @@ void menu::move_selection(size_t id)
 	}
 }
 
+// public function
+void menu::move_selection_keeping_viewport(size_t id)
+{
+	if(id < item_pos_.size()) {
+		set_selection_pos(item_pos_[id], true, NO_MOVE_VIEWPORT);
+	}
+}
+
 void menu::reset_selection()
 {
 	set_selection_pos(0);
