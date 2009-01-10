@@ -391,6 +391,10 @@ void ui::handle_event(const SDL_Event& event)
 		std::string usr_text = user_list_[users_menu_.selection()];
 		Uint32 show_time = SDL_GetTicks();
 
+		// Hack: for some reason the help string stays visible for ever
+		/** @todo find out why the help string stays visible and fix it */
+		disp().video().clear_all_help_strings();
+
 		gui2::tmp_cmd_wrapper dlg(_("Selected user: ") + usr_text);
 		dlg.show(disp().video());
 
