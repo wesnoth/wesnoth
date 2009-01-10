@@ -48,6 +48,7 @@ BPath be_path;
 #include <fstream>
 #include <iomanip>
 #include <set>
+#include <boost/algorithm/string.hpp>
 
 // for strerror
 #include <cstring>
@@ -471,9 +472,10 @@ const std::string PREFERENCES_DIR = ".wesnoth" + std::string(game_config::versio
 			LOG_FS << "Using SHGetSpecialFolderPath to find My Documents\n";
 			char my_documents_path[MAX_PATH];
 			if(SHGetSpecialFolderPath(NULL, my_documents_path, 5, 1)) {
-				std::string mygames_path = std::string(my_documents_path) + "\\" + "My Games";
+				std::string mygames_path = std::string(my_documents_path) + "/" + "My Games";
+				boost::algorithm::replace_all(mygames_path, std::string("\\"), std::string("/"));
 				create_directory_if_missing(mygames_path);
-				game_config::preferences_dir = mygames_path + "\\" + path;
+				game_config::preferences_dir = mygames_path + "/" + path;
 			} else {
 				WRN_FS << "SHGetSpecialFolderPath failed\n";
 				game_config::preferences_dir = get_cwd() + "/" + path;
