@@ -211,7 +211,7 @@ void replay_controller::replay_next_turn(){
 	play_turn();
 
  	if (!skip_replay_){
-		gui_->scroll_to_leader(units_, player_number_);
+		gui_->scroll_to_leader(units_, player_number_,game_display::ONSCREEN,false);
 	}
 	is_playing_ = false;
 	gui::button* b = gui_->find_button("button-nextturn");
@@ -228,7 +228,7 @@ void replay_controller::replay_next_side(){
 	}
 
 	if (!skip_replay_) {
-		gui_->scroll_to_leader(units_, player_number_);
+		gui_->scroll_to_leader(units_, player_number_,game_display::ONSCREEN,false);
 	}
 
 	is_playing_ = false;

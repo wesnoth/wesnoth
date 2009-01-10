@@ -95,7 +95,7 @@ private:
 	            scroll_slider_, gamma_slider_, chat_lines_slider_,
 	  buffer_size_slider_, idle_anim_slider_, autosavemax_slider_;
 	gui::list_slider<double> turbo_slider_;
-	gui::button fullscreen_button_, turbo_button_, show_ai_moves_button_,
+	gui::button fullscreen_button_, scroll_to_action_button_,turbo_button_, show_ai_moves_button_,
 			show_grid_button_, save_replays_button_, delete_saves_button_,
 			show_lobby_joins_button1_,
 			show_lobby_joins_button2_,
@@ -149,6 +149,7 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 
 
 	  fullscreen_button_(disp.video(), _("Toggle Full Screen"), gui::button::TYPE_CHECK),
+	  scroll_to_action_button_(disp.video(), _("Enable scroll tracking of unit actions."), gui::button::TYPE_CHECK),
 	  turbo_button_(disp.video(), _("Accelerated Speed"), gui::button::TYPE_CHECK),
 	  show_ai_moves_button_(disp.video(), _("Skip AI Moves"), gui::button::TYPE_CHECK),
 	  show_grid_button_(disp.video(), _("Show Grid"), gui::button::TYPE_CHECK),
@@ -295,6 +296,9 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	fullscreen_button_.set_check(fullscreen());
 	fullscreen_button_.set_help_string(_("Choose whether the game should run full screen or in a window"));
 
+	scroll_to_action_button_.set_check(scroll_to_action());
+	scroll_to_action_button_.set_help_string(_("Should the map view scroll to a unit when an action or move is animated."));
+
 	turbo_button_.set_check(turbo());
 	turbo_button_.set_help_string(_("Make units move and fight faster"));
 
@@ -409,6 +413,7 @@ handler_vector preferences_dialog::handler_members()
 	h.push_back(&autosavemax_slider_);
 	h.push_back(&buffer_size_slider_);
 	h.push_back(&fullscreen_button_);
+	h.push_back(&scroll_to_action_button_);
 	h.push_back(&turbo_button_);
 	h.push_back(&idle_anim_button_);
 	h.push_back(&show_ai_moves_button_);
@@ -521,6 +526,7 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 							rect.w - gamma_label_.width() - right_border, 0 };
 	gamma_slider_.set_location(gamma_rect);
 	ypos += item_interline; fullscreen_button_.set_location(rect.x, ypos);
+	ypos += item_interline; scroll_to_action_button_.set_location(rect.x, ypos);
 	ypos += item_interline; show_colour_cursors_button_.set_location(rect.x, ypos);
 	ypos += item_interline; flip_time_button_.set_location(rect.x,ypos);
 	ypos += item_interline; show_floating_labels_button_.set_location(rect.x, ypos);
@@ -707,6 +713,8 @@ void preferences_dialog::process_event()
 			throw video_mode_change_exception(fullscreen_button_.checked()
 											? video_mode_change_exception::MAKE_FULLSCREEN
 											: video_mode_change_exception::MAKE_WINDOWED);
+		if (scroll_to_action_button_.pressed())
+			set_scroll_to_action(scroll_to_action_button_.checked());
 		if (show_colour_cursors_button_.pressed())
 			set_colour_cursors(show_colour_cursors_button_.checked());
 		if (show_haloing_button_.pressed())
@@ -1047,6 +1055,7 @@ void preferences_dialog::set_selection(int index)
 	show_colour_cursors_button_.hide(hide_display);
 	show_haloing_button_.hide(hide_display);
 	fullscreen_button_.hide(hide_display);
+	scroll_to_action_button_.hide(hide_display);
 	idle_anim_button_.hide(hide_display);
 	idle_anim_slider_label_.hide(hide_display);
 	idle_anim_slider_label_.enable(idle_anim());

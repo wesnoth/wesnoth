@@ -405,8 +405,9 @@ public:
 	 * Scroll such that location loc is on-screen.
 	 * WARP jumps to loc; SCROLL uses scroll speed;
 	 * ONSCREEN only scrolls if x,y is offscreen
+	 * force : scroll even if prefferences tell us not to
 	 */
-	void scroll_to_tile(const map_location& loc, SCROLL_TYPE scroll_type=ONSCREEN, bool check_fogged=true);
+	void scroll_to_tile(const map_location& loc, SCROLL_TYPE scroll_type=ONSCREEN, bool check_fogged=true,bool force = true);
 
 	/**
 	 * Scroll such that location loc1 is on-screen.
@@ -416,13 +417,13 @@ public:
 	 */
 	void scroll_to_tiles(map_location loc1, map_location loc2,
 	                     SCROLL_TYPE scroll_type=ONSCREEN, bool check_fogged=true,
-			     double add_spacing=0.0);
+			     double add_spacing=0.0, bool force = true);
 
 	/** Scroll to fit as many locations on-screen as possible, starting with the first. */
 	void scroll_to_tiles(const std::vector<map_location>& locs,
 	                     SCROLL_TYPE scroll_type=ONSCREEN, bool check_fogged=true,
 	                     bool only_if_possible=false,
-			     double add_spacing=0.0);
+			     double add_spacing=0.0, bool force = true);
 
 	/** Expose the event, so observers can be notified about map scrolling. */
 	events::generic_event &scroll_event() const { return _scroll_event; }
@@ -547,7 +548,7 @@ protected:
 
 	void draw_image_for_report(surface& img, SDL_Rect& rect);
 
-	void scroll_to_xy(int screenxpos, int screenypos, SCROLL_TYPE scroll_type);
+	void scroll_to_xy(int screenxpos, int screenypos, SCROLL_TYPE scroll_type,bool force = true);
 
 	CVideo& screen_;
 	const gamemap* map_;

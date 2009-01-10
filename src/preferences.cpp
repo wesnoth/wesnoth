@@ -119,6 +119,16 @@ void _set_fullscreen(bool ison)
 	prefs["fullscreen"] = (ison ? "yes" : "no");
 }
 
+bool scroll_to_action()
+{
+	return utils::string_bool(get("scroll_to_action"), true);
+}
+
+void _set_scroll_to_action(bool ison)
+{
+	prefs["scroll_to_action"] = (ison ? "yes" : "no");
+}
+
 int min_allowed_width()
 {
 #ifdef USE_TINY_GUI

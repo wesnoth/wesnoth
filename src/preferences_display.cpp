@@ -45,6 +45,7 @@ display_manager::display_manager(display* d)
 	set_turbo(turbo());
 	set_turbo_speed(turbo_speed());
 	set_fullscreen(fullscreen());
+	set_scroll_to_action(scroll_to_action());
 	set_gamma(gamma());
 	set_colour_cursors(utils::string_bool(preferences::get("colour_cursors")));
 }
@@ -78,6 +79,10 @@ void set_fullscreen(bool ison)
 	}
 }
 
+void set_scroll_to_action(bool ison)
+{
+	_set_scroll_to_action(ison);
+}
 void set_resolution(const std::pair<int,int>& resolution)
 {
 	std::pair<int,int> res = resolution;

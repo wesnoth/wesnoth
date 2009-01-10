@@ -1463,8 +1463,9 @@ bool display::tile_on_screen(const map_location& loc)
 	return !outside_area(map_area(), x, y);
 }
 
-void display::scroll_to_xy(int screenxpos, int screenypos, SCROLL_TYPE scroll_type)
+void display::scroll_to_xy(int screenxpos, int screenypos, SCROLL_TYPE scroll_type, bool force)
 {
+	if(!force && !preferences::scroll_to_action()) return;
 	if(screen_.update_locked()) {
 		return;
 	}
@@ -1544,7 +1545,7 @@ void display::scroll_to_xy(int screenxpos, int screenypos, SCROLL_TYPE scroll_ty
 	}
 }
 
-void display::scroll_to_tile(const map_location& loc, SCROLL_TYPE scroll_type, bool check_fogged)
+void display::scroll_to_tile(const map_location& loc, SCROLL_TYPE scroll_type, bool check_fogged, bool force)
 {
 	if(get_map().on_board(loc) == false) {
 		ERR_DP << "Tile at " << loc << " isn't on the map, can't scroll to the tile.\n";
@@ -1553,22 +1554,22 @@ void display::scroll_to_tile(const map_location& loc, SCROLL_TYPE scroll_type, b
 
 	std::vector<map_location> locs;
 	locs.push_back(loc);
-	scroll_to_tiles(locs, scroll_type, check_fogged);
+	scroll_to_tiles(locs, scroll_type, check_fogged,false,0.0,force);
 }
 
 void display::scroll_to_tiles(map_location loc1, map_location loc2,
                               SCROLL_TYPE scroll_type, bool check_fogged,
-			      double add_spacing)
+			      double add_spacing, bool force)
 {
 	std::vector<map_location> locs;
 	locs.push_back(loc1);
 	locs.push_back(loc2);
-	scroll_to_tiles(locs, scroll_type, check_fogged, false, add_spacing);
+	scroll_to_tiles(locs, scroll_type, check_fogged, false, add_spacing,force);
 }
 
 void display::scroll_to_tiles(const std::vector<map_location>& locs,
                               SCROLL_TYPE scroll_type, bool check_fogged,
-			      bool only_if_possible, double add_spacing)
+			      bool only_if_possible, double add_spacing, bool force)
 {
 	// basically we calculate the min/max coordinates we want to have on-screen
 	int minx = 0;
@@ -1695,7 +1696,7 @@ void display::scroll_to_tiles(const std::vector<map_location>& locs,
 		}
 	}
 
-	scroll_to_xy(target_x, target_y,scroll_type);
+	scroll_to_xy(target_x, target_y,scroll_type,force);
 }
 
 

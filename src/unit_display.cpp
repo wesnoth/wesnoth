@@ -32,7 +32,7 @@ static void teleport_unit_between( const map_location& a, const map_location& b,
 	if(!disp || disp->video().update_locked() || (disp->fogged(a) && disp->fogged(b))) {
 		return;
 	}
-	disp->scroll_to_tiles(a,b,game_display::ONSCREEN,true);
+	disp->scroll_to_tiles(a,b,game_display::ONSCREEN,true,0.0,false);
 
 	if (!disp->fogged(a)) { // teleport
 		disp->place_temporary_unit(temp_unit,a);
@@ -45,7 +45,7 @@ static void teleport_unit_between( const map_location& a, const map_location& b,
 	if (!disp->fogged(b)) { // teleport
 		disp->place_temporary_unit(temp_unit,b);
 		temp_unit.set_facing(a.get_relative_dir(b));
-		disp->scroll_to_tiles(b,a,game_display::ONSCREEN,true);
+		disp->scroll_to_tiles(b,a,game_display::ONSCREEN,true,0.0,false);
 		unit_animator animator;
 		animator.add_animation(&temp_unit,"post_teleport",b);
 		animator.start_animations();
@@ -70,7 +70,7 @@ static void move_unit_between(const map_location& a, const map_location& b, unit
 	animator.replace_anim_if_invalid(&temp_unit,"movement",a);
 	animator.start_animations();
         animator.pause_animation();
-	disp->scroll_to_tiles(a,b,game_display::ONSCREEN);
+	disp->scroll_to_tiles(a,b,game_display::ONSCREEN,true,0.0,false);
         animator.restart_animation();
 	int target_time = animator.get_animation_time_potential();
 	target_time += 150;
@@ -124,7 +124,7 @@ void move_unit(const std::vector<map_location>& path, unit& u, const std::vector
 	if(!invisible) {
 		// Scroll to the path, but only if it fully fits on screen.
 		// If it does not fit we might be able to do a better scroll later.
-		disp->scroll_to_tiles(path, game_display::ONSCREEN, true, true);
+		disp->scroll_to_tiles(path, game_display::ONSCREEN, true, true,0.0,false);
 	}
 
 	bool was_hidden = u.get_hidden();
@@ -148,7 +148,7 @@ void move_unit(const std::vector<map_location>& path, unit& u, const std::vector
 				for(size_t j = i; j < path.size(); j++) {
 					remaining_path.push_back(path[j]);
 				}
-				disp->scroll_to_tiles(remaining_path);
+				disp->scroll_to_tiles(remaining_path, game_display::ONSCREEN, true,false,0.0,false);
 			}
 
 			if( !tiles_adjacent(path[i], path[i+1])) {
@@ -207,7 +207,7 @@ void unit_attack(
 
 	if(!hide) {
 		// scroll such that there is at least half a hex spacing around fighters
-		disp->scroll_to_tiles(a,b,game_display::ONSCREEN,true,0.5);
+		disp->scroll_to_tiles(a,b,game_display::ONSCREEN,true,0.5,false);
 	}
 
 	log_scope("unit_attack");
@@ -288,7 +288,7 @@ void unit_recruited(map_location& loc)
 	if(u == disp->get_units().end()) return;
 
 	u->second.set_hidden(true);
-	disp->scroll_to_tile(loc,game_display::ONSCREEN);
+	disp->scroll_to_tile(loc,game_display::ONSCREEN,true,false);
 	disp->draw();
 	u->second.set_hidden(false);
 	u->second.set_facing(static_cast<map_location::DIRECTION>(rand()%map_location::NDIRECTIONS));
@@ -306,7 +306,7 @@ void unit_healing(unit& healed,map_location& healed_loc, std::vector<unit_map::i
 	if(!disp || disp->video().update_locked() || disp->fogged(healed_loc)) return;
 	if(healing==0) return;
 	// This is all the pretty stuff.
-	disp->scroll_to_tile(healed_loc, game_display::ONSCREEN);
+	disp->scroll_to_tile(healed_loc, game_display::ONSCREEN,true,false);
 	disp->display_unit_hex(healed_loc);
 	unit_animator animator;
 
@@ -390,7 +390,7 @@ void wml_animation_internal(unit_animator & animator,const vconfig &cfg, const g
 		}
 		std::vector<std::string> tmp_string_vect=utils::split(cfg["text_color"]);
 		if(tmp_string_vect.size() ==3) text_color = display::rgb(atoi(tmp_string_vect[0].c_str()),atoi(tmp_string_vect[1].c_str()),atoi(tmp_string_vect[2].c_str()));
-		disp->scroll_to_tile(u->first);
+		disp->scroll_to_tile(u->first, game_display::ONSCREEN,true,false);
 		vconfig t_filter = cfg.child("facing");
 		if(!t_filter.empty()) {
 			terrain_filter filter(t_filter,map,game_status,units);

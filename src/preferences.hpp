@@ -53,6 +53,9 @@ namespace preferences {
 	bool fullscreen();
 	void _set_fullscreen(bool ison);
 
+	bool scroll_to_action();
+	void _set_scroll_to_action(bool ison);
+
 	int min_allowed_width();
 	int min_allowed_height();
 

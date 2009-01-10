@@ -28,6 +28,7 @@ namespace preferences {
 	};
 
 	void set_fullscreen(bool ison);
+	void set_scroll_to_action(bool ison);
 	void set_resolution(const std::pair<int,int>& res);
 	void set_turbo(bool ison);
 	void set_grid(bool ison);
