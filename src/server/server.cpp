@@ -1140,7 +1140,8 @@ void server::process_login(const network::connection sock,
 			<< network::ip_address(sock) << "\tnick: "
 			<< username << std::endl;
 		admins_.insert(sock);
-		lobby_.send_server_message("You were automatically recognized as an administrator. "
+		// This string is parsed by the client!
+		lobby_.send_server_message("You are now recognized as an administrator. "
 				"If you no longer want to be automatically authenticated use '/query signout'.", sock);
 	}
 
@@ -1167,6 +1168,7 @@ void server::process_query(const network::connection sock,
 				<< network::ip_address(sock) << "\tnick: "
 				<< pl->second.name() << std::endl;
 			admins_.erase(sock);
+			// This string is parsed by the client!
 			response << "You are no longer recognized as an administrator.";
 			if(user_handler_) {
 				user_handler_->set_is_moderator(pl->second.name(), false);
@@ -1198,6 +1200,7 @@ void server::process_query(const network::connection sock,
 			<< network::ip_address(sock) << "\tnick: "
 			<< pl->second.name() << std::endl;
 		admins_.insert(sock);
+		// This string is parsed by the client!
 		response << "You are now recognized as an administrator.";
 		if(user_handler_) {
 			user_handler_->set_is_moderator(pl->second.name(), true);

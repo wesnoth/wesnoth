@@ -19,6 +19,7 @@
 #include "gui/dialogs/mp_cmd_wrapper.hpp"
 #include "log.hpp"
 #include "marked-up_text.hpp"
+#include "multiplayer.hpp"
 #include "multiplayer_ui.hpp"
 #include "sound.hpp"
 #include "replay.hpp"
@@ -494,6 +495,8 @@ void ui::process_message(const config& msg, const bool whisper) {
 	const std::string& message = msg["message"];
 	if (!preferences::show_lobby_join(sender, message)) return;
 	if (preferences::is_ignored(sender)) return;
+
+	admin_authentication(sender, message);
 
 	if (whisper || utils::word_match(message, preferences::login())) {
 		sound::play_UI_sound(game_config::sounds::receive_message_highlight);

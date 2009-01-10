@@ -562,6 +562,8 @@ void start_client(game_display& disp, const config& game_config,
 	const rand_rng::set_random_generator generator_setter(&recorder);
 	const network::manager net_manager(1,1);
 
+	authenticated = false;
+
 	mp::chat chat;
 	config gamelist;
 	server_type type = open_connection(disp, host);
@@ -577,6 +579,17 @@ void start_client(game_display& disp, const config& game_config,
 		break;
 	case ABORT_SERVER:
 		break;
+	}
+}
+
+bool authenticated;
+
+void admin_authentication(const std::string& sender, const std::string& message) {
+	if(sender != "server") return;
+	if(message.find("You are now recognized as an administrator.") == 0) {
+		authenticated = true;
+	} else if(message.find("You are no longer recognized as an administrator.") == 0) {
+		authenticated = false;
 	}
 }
 
