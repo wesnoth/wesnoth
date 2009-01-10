@@ -6,7 +6,9 @@ Version 1.5.7+svn:
    * Fixed several glitches with the new portrait dialog.
    * Optimized animation and invalidation of idle/standing units.
  * User interface:
-   * new advanced preference to choose whether middle-click scrolls or warps
+   * A backspace in a textbox with selection, now clears the selection.
+   * Scrollwheel mouses can scroll the new listboxes.
+   * New advanced preference to choose whether middle-click scrolls or warps
    * Fixed a glitch which closed a new dialog on the mouse up event of the old
      dialog (the effect is percieved as the new dialog not showing up).
    * Spacebar closes the dialogs without a scrollbar again.
@@ -37,8 +39,6 @@ Version 1.5.7+svn:
    * Added the sunset feature to the new dialogs.
    * Fix the calculate feature in the test scenario.
    * Fix an endian issue which rendered text wrong on big endian machines.
-   * A backspace in a textbox with selection, now clears the selection.
-   * Scrollwheel mouses can scroll the new listboxes.
    * Fix a bug with temporary objects not being removed at next scenario
    * Fix replays with empty starting positions.
 
