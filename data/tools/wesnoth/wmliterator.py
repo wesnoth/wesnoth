@@ -110,16 +110,28 @@ Important Attributes:
 
     def parseQuotes(self, lines):
         """Return the line or multiline text if a quote spans multiple lines"""
-        text = ""
-        span = 0
-        try:
-            while True:
-                text += lines[self.lineno + span]
-                span += 1
-                if text.count('"') % 2 == 0:
-                    break
-        except IndexError:
-            self.printError('unclosed string beginning here')
+        text = lines[self.lineno]
+        span = 1
+        begincomment = text.find('#')
+        if begincomment < 0:
+            begincomment = None
+        beginquote = text[:begincomment].find('"')
+        while beginquote >= 0:
+            endquote = -1
+            beginofend = beginquote+1
+            while endquote < 0:
+                endquote = text.find('"', beginofend)
+                if endquote < 0:
+                    if self.lineno + span >= len(lines):
+                        self.printError('reached EOF due to unterminated string at line', self.lineno+1)
+                        return text, span
+                    text += lines[self.lineno + span]
+                    span += 1
+                    beginofend = text.rfind('\n', beginofend, len(text)-1)
+            begincomment = text.find('#', endquote+1)
+            if begincomment < 0:
+                begincomment = None
+            beginquote = text[:begincomment].find('"', endquote+1)
         return text, span
 
     def closeScope(self, scopes, closerElement):
@@ -138,7 +150,7 @@ Important Attributes:
                 if ((isOpener(elem) and closerElement != '[/'+elem[1:]
                      and '+'+closerElement != elem[1]+'[/'+elem[2:])
                 or (elem.startswith('{') and closerElement.find('macro')<0)):
-                    self.printError('reached', closerElement, 'before closing scope', elem)
+                    self.printError('reached', closerElement, 'at line', self.lineno+1, 'before closing scope', elem)
                     scopes.append(closed) # to reduce additional errors (hopefully)
             return True
         except IndexError:
@@ -234,7 +246,7 @@ Important Attributes:
 
     def printScopeError(self, elementType):
         """Print out warning if a scope was unable to close"""
-        self.printError('attempt to close empty scope at', elementType)
+        self.printError('attempt to close empty scope at', elementType, 'line', self.lineno+1)
 
     def __iter__(self):
         """The magic iterator method"""
