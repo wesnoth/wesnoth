@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu-wesnoth_1.5\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-01-06 22:08+0100\n"
+"POT-Creation-Date: 2009-01-11 17:05+0100\n"
 "PO-Revision-Date: 2008-10-23 12:31+0200\n"
 "Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
 "Language-Team: Hungarian <nplurals=2; plural=(n != 1);>\n"
@@ -7159,7 +7159,7 @@ msgid "Do you still want to download it?"
 msgstr "Még mindig le akarod tölteni?"
 
 #: src/addon_management.cpp:464 src/addon_management.cpp:538
-#: src/multiplayer.cpp:327 src/multiplayer_ui.cpp:67
+#: src/multiplayer.cpp:327 src/multiplayer_ui.cpp:68
 msgid "Connection timed out"
 msgstr "A kapcsolat túllépte az időt"
 
@@ -7765,11 +7765,11 @@ msgstr "Kezdőképernyő betöltése"
 msgid "Invalid color range: "
 msgstr "Érvénytelen szín: "
 
-#: src/game_events.cpp:986
+#: src/game_events.cpp:1012
 msgid "Victory:"
 msgstr "Győzöl, ha:"
 
-#: src/game_events.cpp:989
+#: src/game_events.cpp:1015
 msgid "Defeat:"
 msgstr "Veszítesz, ha:"
 
@@ -8037,7 +8037,7 @@ msgstr "Kihagyás"
 msgid "The End"
 msgstr "Vége"
 
-#: src/language.cpp:162
+#: src/language.cpp:163
 msgid "System default language"
 msgstr "Alapértelmezett rendszernyelv"
 
@@ -9143,11 +9143,11 @@ msgstr ""
 msgid "Joining this game requires a password."
 msgstr "A játékhoz való csatlakozáshoz jelszó szükséges."
 
-#: src/multiplayer_ui.cpp:166
+#: src/multiplayer_ui.cpp:167
 msgid "Invalid Color"
 msgstr "Érvénytelen szín"
 
-#: src/multiplayer_ui.cpp:394
+#: src/multiplayer_ui.cpp:399
 #, fuzzy
 msgid "Selected user: "
 msgstr "Válassz egységet:"
@@ -9409,23 +9409,23 @@ msgstr "A hálózat megszakadt, így a játék nem folytatható. Elmented az ál
 msgid "It is now $name|'s turn"
 msgstr "$name következik"
 
-#: src/playturn.cpp:219
+#: src/playturn.cpp:222
 msgid "Replace with AI"
 msgstr "Helyettesítés MI-vel"
 
-#: src/playturn.cpp:220
+#: src/playturn.cpp:223
 msgid "Replace with local player"
 msgstr "Helyettesítés helyi játékossal"
 
-#: src/playturn.cpp:221
+#: src/playturn.cpp:224
 msgid "Abort game"
 msgstr "Játék megszakítása"
 
-#: src/playturn.cpp:226 src/playturn.cpp:238
+#: src/playturn.cpp:229 src/playturn.cpp:241
 msgid "Replace with $player"
 msgstr "Helyettesítés $player helyi játékossal"
 
-#: src/playturn.cpp:244
+#: src/playturn.cpp:247
 msgid "$player has left the game. What do you want to do?"
 msgstr "$player kilépett a játékból. Mit tegyünk most?"
 

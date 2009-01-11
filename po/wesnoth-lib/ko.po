@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-01-06 22:09+0100\n"
+"POT-Creation-Date: 2009-01-11 17:06+0100\n"
 "PO-Revision-Date: 2006-03-21 12:58-0800\n"
 "Last-Translator: Andrew <Sfradix@hotmail.com>\n"
 "Language-Team: none\n"
@@ -581,7 +581,7 @@ msgstr "확인"
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=apply
 #: data/gui/default/window/editor_settings.cfg:250
-#: src/game_preferences_display.cpp:189
+#: src/game_preferences_display.cpp:190
 msgid "Apply"
 msgstr ""
 
@@ -619,7 +619,7 @@ msgstr ""
 msgid "Message:"
 msgstr ""
 
-#. [button]: id=send_msg
+#. [button]: id=ok
 #: data/gui/default/window/mp_cmd_wrapper.cfg:93
 #, fuzzy
 msgid "Send a private message"
@@ -633,21 +633,21 @@ msgstr ""
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=add_friend
 #: data/gui/default/window/mp_cmd_wrapper.cfg:162
-#: src/game_preferences_display.cpp:165
+#: src/game_preferences_display.cpp:166
 msgid "Add As Friend"
 msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=add_ignore
 #: data/gui/default/window/mp_cmd_wrapper.cfg:177
-#: src/game_preferences_display.cpp:166
+#: src/game_preferences_display.cpp:167
 msgid "Add As Ignore"
 msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=remove
 #: data/gui/default/window/mp_cmd_wrapper.cfg:192
-#: src/game_preferences_display.cpp:167
+#: src/game_preferences_display.cpp:168
 #, fuzzy
 msgid "Remove"
 msgstr "재취소"
@@ -972,430 +972,439 @@ msgid "Toggle Full Screen"
 msgstr "전체 화면 전환"
 
 #: src/game_preferences_display.cpp:152
+msgid "Enable scroll tracking of unit actions."
+msgstr ""
+
+#: src/game_preferences_display.cpp:153
 msgid "Accelerated Speed"
 msgstr "빠른 속도"
 
-#: src/game_preferences_display.cpp:153
+#: src/game_preferences_display.cpp:154
 msgid "Skip AI Moves"
 msgstr "AI 움직임 생략"
 
-#: src/game_preferences_display.cpp:154
+#: src/game_preferences_display.cpp:155
 msgid "Show Grid"
 msgstr "격자 표시"
 
-#: src/game_preferences_display.cpp:155 src/game_preferences_display.cpp:337
+#: src/game_preferences_display.cpp:156 src/game_preferences_display.cpp:341
 msgid "Save Replay on SP/MP Victory or MP Defeat"
 msgstr ""
 
-#: src/game_preferences_display.cpp:156 src/game_preferences_display.cpp:340
+#: src/game_preferences_display.cpp:157 src/game_preferences_display.cpp:344
 msgid "Delete Auto-Saves on SP/MP Victory or MP Defeat"
 msgstr ""
 
-#: src/game_preferences_display.cpp:157
+#: src/game_preferences_display.cpp:158
 #, fuzzy
 msgid "Do Not Show Lobby Joins"
 msgstr "로비 접속 표시"
 
-#: src/game_preferences_display.cpp:158
+#: src/game_preferences_display.cpp:159
 #, fuzzy
 msgid "Show Lobby Joins Of Friends Only"
 msgstr "로비 접속 표시"
 
-#: src/game_preferences_display.cpp:159
+#: src/game_preferences_display.cpp:160
 #, fuzzy
 msgid "Show All Lobby Joins"
 msgstr "로비 접속 표시"
 
-#: src/game_preferences_display.cpp:160
+#: src/game_preferences_display.cpp:161
 #, fuzzy
 msgid "Sort Lobby List"
 msgstr "로비 접속 표시"
 
-#: src/game_preferences_display.cpp:161
+#: src/game_preferences_display.cpp:162
 #, fuzzy
 msgid "Iconize Lobby List"
 msgstr "로비 접속 표시"
 
-#: src/game_preferences_display.cpp:162
+#: src/game_preferences_display.cpp:163
 msgid "Set path to wesnothd"
 msgstr ""
 
-#: src/game_preferences_display.cpp:163
+#: src/game_preferences_display.cpp:164
 msgid "Friends List"
 msgstr ""
 
-#: src/game_preferences_display.cpp:164
+#: src/game_preferences_display.cpp:165
 msgid "Multiplayer Options"
 msgstr ""
 
-#: src/game_preferences_display.cpp:168
+#: src/game_preferences_display.cpp:169
 msgid "Show Floating Labels"
 msgstr "데미지 라벨 표시"
 
-#: src/game_preferences_display.cpp:169
+#: src/game_preferences_display.cpp:170
 msgid "Turn Dialog"
 msgstr "대화 켜기"
 
-#: src/game_preferences_display.cpp:170
+#: src/game_preferences_display.cpp:171
 msgid "Turn Bell"
 msgstr "벨 켜기"
 
-#: src/game_preferences_display.cpp:171
+#: src/game_preferences_display.cpp:172
 msgid "Show Team Colors"
 msgstr "팀 색 표시"
 
-#: src/game_preferences_display.cpp:172
+#: src/game_preferences_display.cpp:173
 msgid "Show Color Cursors"
 msgstr "커서 색 표시"
 
-#: src/game_preferences_display.cpp:173
+#: src/game_preferences_display.cpp:174
 #, fuzzy
 msgid "Show Haloing Effects"
 msgstr "데미지 라벨 표시"
 
-#: src/game_preferences_display.cpp:174
+#: src/game_preferences_display.cpp:175
 #, fuzzy
 msgid "Change Resolution"
 msgstr "해상도를 선택하십시오"
 
-#: src/game_preferences_display.cpp:175
+#: src/game_preferences_display.cpp:176
 msgid "Theme"
 msgstr "테마"
 
-#: src/game_preferences_display.cpp:176
+#: src/game_preferences_display.cpp:177
 msgid "Hotkeys"
 msgstr "단축키"
 
-#: src/game_preferences_display.cpp:177
+#: src/game_preferences_display.cpp:178
 msgid "Adjust Gamma"
 msgstr "밝기 조절"
 
-#: src/game_preferences_display.cpp:178
+#: src/game_preferences_display.cpp:179
 msgid "Reverse Time Graphics"
 msgstr "시간 그래픽 반전"
 
-#: src/game_preferences_display.cpp:180
+#: src/game_preferences_display.cpp:181
 msgid "Sound effects"
 msgstr "음향 효과"
 
-#: src/game_preferences_display.cpp:181
+#: src/game_preferences_display.cpp:182
 msgid "Music"
 msgstr "음악"
 
-#: src/game_preferences_display.cpp:182
+#: src/game_preferences_display.cpp:183
 msgid "Chat Timestamping"
 msgstr "채팅 시간 표시"
 
-#: src/game_preferences_display.cpp:183
+#: src/game_preferences_display.cpp:184
 msgid "sound^Advanced Options"
 msgstr ""
 
-#: src/game_preferences_display.cpp:184
+#: src/game_preferences_display.cpp:185
 msgid "sound^Standard Options"
 msgstr ""
 
-#: src/game_preferences_display.cpp:185
+#: src/game_preferences_display.cpp:186
 msgid "User Interface Sounds"
 msgstr ""
 
-#: src/game_preferences_display.cpp:188
+#: src/game_preferences_display.cpp:189
 #, fuzzy
 msgid "Custom"
 msgstr "잘라내기"
 
-#: src/game_preferences_display.cpp:190
+#: src/game_preferences_display.cpp:191
 msgid "Show Unit Idle Animations"
 msgstr ""
 
-#: src/game_preferences_display.cpp:192
+#: src/game_preferences_display.cpp:193
 msgid "Music Volume:"
 msgstr "음악 볼륨:"
 
-#: src/game_preferences_display.cpp:192
+#: src/game_preferences_display.cpp:193
 msgid "SFX Volume:"
 msgstr "음향 볼륨:"
 
-#: src/game_preferences_display.cpp:193
+#: src/game_preferences_display.cpp:194
 #, fuzzy
 msgid "UI Sound Volume:"
 msgstr "음향 볼륨:"
 
-#: src/game_preferences_display.cpp:194
+#: src/game_preferences_display.cpp:195
 #, fuzzy
 msgid "Bell Volume:"
 msgstr "음향 볼륨:"
 
-#: src/game_preferences_display.cpp:194
+#: src/game_preferences_display.cpp:195
 msgid "Scroll Speed:"
 msgstr "스크롤 속도:"
 
-#: src/game_preferences_display.cpp:195
+#: src/game_preferences_display.cpp:196
 msgid "Gamma:"
 msgstr "밝기:"
 
-#: src/game_preferences_display.cpp:197
+#: src/game_preferences_display.cpp:198
 msgid "Sample Rate (Hz):"
 msgstr ""
 
-#: src/game_preferences_display.cpp:198
+#: src/game_preferences_display.cpp:199
 msgid "Frequency:"
 msgstr ""
 
-#: src/game_preferences_display.cpp:222
+#: src/game_preferences_display.cpp:223
 msgid "Sound effects on/off"
 msgstr "음향 효과 켜기/끄기"
 
-#: src/game_preferences_display.cpp:226
+#: src/game_preferences_display.cpp:227
 #, fuzzy
 msgid "Change the sound effects volume"
 msgstr "음악 볼륨 설정"
 
-#: src/game_preferences_display.cpp:229
+#: src/game_preferences_display.cpp:230
 msgid "Music on/off"
 msgstr "음악 켜기/끄기"
 
-#: src/game_preferences_display.cpp:233
+#: src/game_preferences_display.cpp:234
 msgid "Change the music volume"
 msgstr "음악 볼륨 설정"
 
-#: src/game_preferences_display.cpp:239
+#: src/game_preferences_display.cpp:240
 #, fuzzy
 msgid "Change the bell volume"
 msgstr "음악 볼륨 설정"
 
-#: src/game_preferences_display.cpp:242
+#: src/game_preferences_display.cpp:243
 msgid "Turn menu and button sounds on/off"
 msgstr ""
 
-#: src/game_preferences_display.cpp:246
+#: src/game_preferences_display.cpp:247
 msgid "Change the sound volume for button clicks, etc."
 msgstr ""
 
-#: src/game_preferences_display.cpp:248
+#: src/game_preferences_display.cpp:249
 #, fuzzy
 msgid "Change the sample rate"
 msgstr "언어 설정"
 
-#: src/game_preferences_display.cpp:257
+#: src/game_preferences_display.cpp:258
 #, fuzzy
 msgid "User defined sample rate"
 msgstr "언어 설정"
 
-#: src/game_preferences_display.cpp:266 src/game_preferences_display.cpp:270
+#: src/game_preferences_display.cpp:267 src/game_preferences_display.cpp:271
 #, fuzzy
 msgid "Change the buffer size"
 msgstr "음악 볼륨 설정"
 
-#: src/game_preferences_display.cpp:268 src/game_preferences_display.cpp:822
+#: src/game_preferences_display.cpp:269 src/game_preferences_display.cpp:830
 msgid "Buffer Size: "
 msgstr ""
 
-#: src/game_preferences_display.cpp:275
+#: src/game_preferences_display.cpp:276
 msgid "Change the speed of scrolling around the map"
 msgstr ""
 
-#: src/game_preferences_display.cpp:280 src/game_preferences_display.cpp:282
+#: src/game_preferences_display.cpp:281 src/game_preferences_display.cpp:283
 msgid "Set the amount of chat lines shown"
 msgstr ""
 
-#: src/game_preferences_display.cpp:285
+#: src/game_preferences_display.cpp:286
 msgid "Add a timestamp to chat messages"
 msgstr ""
 
-#: src/game_preferences_display.cpp:288 src/game_preferences_display.cpp:293
+#: src/game_preferences_display.cpp:289 src/game_preferences_display.cpp:294
 msgid "Change the brightness of the display"
 msgstr ""
 
-#: src/game_preferences_display.cpp:296
+#: src/game_preferences_display.cpp:297
 msgid "Choose whether the game should run full screen or in a window"
 msgstr ""
 
-#: src/game_preferences_display.cpp:299
+#: src/game_preferences_display.cpp:300
+msgid ""
+"Should the map view scroll to a unit when an action or move is animated."
+msgstr ""
+
+#: src/game_preferences_display.cpp:303
 msgid "Make units move and fight faster"
 msgstr ""
 
-#: src/game_preferences_display.cpp:316
+#: src/game_preferences_display.cpp:320
 msgid "Units move and fight speed"
 msgstr ""
 
-#: src/game_preferences_display.cpp:319
+#: src/game_preferences_display.cpp:323
 msgid "Show unit idle animations"
 msgstr ""
 
-#: src/game_preferences_display.cpp:325
+#: src/game_preferences_display.cpp:329
 msgid "Set the frequency of unit idle animations"
 msgstr ""
 
-#: src/game_preferences_display.cpp:330
+#: src/game_preferences_display.cpp:334
 msgid "Set maximum number of automatic saves to be retained"
 msgstr ""
 
-#: src/game_preferences_display.cpp:334
+#: src/game_preferences_display.cpp:338
 msgid "Do not animate AI units moving"
 msgstr ""
 
-#: src/game_preferences_display.cpp:342
+#: src/game_preferences_display.cpp:346
 msgid "Overlay a grid onto the map"
 msgstr ""
 
-#: src/game_preferences_display.cpp:345
+#: src/game_preferences_display.cpp:349
 msgid "Sort the player list in the lobby by player groups"
 msgstr ""
 
-#: src/game_preferences_display.cpp:348
+#: src/game_preferences_display.cpp:352
 msgid "Show icons in front of the player names in the lobby."
 msgstr ""
 
-#: src/game_preferences_display.cpp:351
+#: src/game_preferences_display.cpp:355
 msgid "Do not show messages about players joining the multiplayer lobby"
 msgstr ""
 
-#: src/game_preferences_display.cpp:353
+#: src/game_preferences_display.cpp:357
 msgid "Show messages about your friends joining the multiplayer lobby"
 msgstr ""
 
-#: src/game_preferences_display.cpp:355
+#: src/game_preferences_display.cpp:359
 msgid "Show messages about all players joining the multiplayer lobby"
 msgstr ""
 
-#: src/game_preferences_display.cpp:357
+#: src/game_preferences_display.cpp:361
 msgid "Find and set path to MP server to host LAN games."
 msgstr ""
 
-#: src/game_preferences_display.cpp:358
+#: src/game_preferences_display.cpp:362
 msgid "View and edit your friends and ignores list"
 msgstr ""
 
-#: src/game_preferences_display.cpp:359
+#: src/game_preferences_display.cpp:363
 msgid "Back to the multiplayer options"
 msgstr ""
 
-#: src/game_preferences_display.cpp:360
+#: src/game_preferences_display.cpp:364
 msgid "Add this username to your friends list"
 msgstr ""
 
-#: src/game_preferences_display.cpp:361
+#: src/game_preferences_display.cpp:365
 msgid "Add this username to your ignores list"
 msgstr ""
 
-#: src/game_preferences_display.cpp:362
+#: src/game_preferences_display.cpp:366
 msgid "Remove this username from your list"
 msgstr ""
 
-#: src/game_preferences_display.cpp:365
+#: src/game_preferences_display.cpp:369
 msgid "Insert a username"
 msgstr ""
 
-#: src/game_preferences_display.cpp:368
+#: src/game_preferences_display.cpp:372
 msgid "Show text above a unit when it is hit to display damage inflicted"
 msgstr ""
 
-#: src/game_preferences_display.cpp:370
+#: src/game_preferences_display.cpp:374
 #, fuzzy
 msgid "Change the resolution the game runs at"
 msgstr "언어 설정"
 
-#: src/game_preferences_display.cpp:371
+#: src/game_preferences_display.cpp:375
 msgid "Change the theme the game runs with"
 msgstr ""
 
-#: src/game_preferences_display.cpp:374
+#: src/game_preferences_display.cpp:378
 msgid "Display a dialog at the beginning of your turn"
 msgstr ""
 
-#: src/game_preferences_display.cpp:377
+#: src/game_preferences_display.cpp:381
 msgid "Play a bell sound at the beginning of your turn"
 msgstr ""
 
-#: src/game_preferences_display.cpp:380
+#: src/game_preferences_display.cpp:384
 msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
 msgstr ""
 
-#: src/game_preferences_display.cpp:383
+#: src/game_preferences_display.cpp:387
 msgid "Choose whether the sun moves left-to-right or right-to-left"
 msgstr ""
 
-#: src/game_preferences_display.cpp:386
+#: src/game_preferences_display.cpp:390
 msgid "Use colored mouse cursors (may be slower)"
 msgstr "마우스 색 표시 (약간 느려짐)"
 
-#: src/game_preferences_display.cpp:389
+#: src/game_preferences_display.cpp:393
 #, fuzzy
 msgid "Use graphical special effects (may be slower)"
 msgstr "마우스 색 표시 (약간 느려짐)"
 
-#: src/game_preferences_display.cpp:391
+#: src/game_preferences_display.cpp:395
 msgid "View and configure keyboard shortcuts"
 msgstr ""
 
-#: src/game_preferences_display.cpp:685
+#: src/game_preferences_display.cpp:691
 #, fuzzy
 msgid "Speed: "
 msgstr "스크롤 속도:"
 
-#: src/game_preferences_display.cpp:690 src/game_preferences_display.cpp:692
+#: src/game_preferences_display.cpp:696 src/game_preferences_display.cpp:698
 msgid "Maximum Auto-Saves: "
 msgstr ""
 
-#: src/game_preferences_display.cpp:690
+#: src/game_preferences_display.cpp:696
 msgid "infinite"
 msgstr ""
 
-#: src/game_preferences_display.cpp:872
+#: src/game_preferences_display.cpp:880
 msgid "Chat Lines: "
 msgstr "줄 수:"
 
-#: src/game_preferences_display.cpp:894 src/game_preferences_display.cpp:902
+#: src/game_preferences_display.cpp:902 src/game_preferences_display.cpp:910
 msgid "Invalid username"
 msgstr ""
 
-#: src/game_preferences_display.cpp:974
+#: src/game_preferences_display.cpp:982
 msgid "yes"
 msgstr "예"
 
-#: src/game_preferences_display.cpp:976
+#: src/game_preferences_display.cpp:984
 msgid "no"
 msgstr "아니오"
 
-#: src/game_preferences_display.cpp:1007
+#: src/game_preferences_display.cpp:1015
 msgid "(empty list)"
 msgstr ""
 
-#: src/game_preferences_display.cpp:1126
+#: src/game_preferences_display.cpp:1135
 msgid "Prefs section^General"
 msgstr "일반"
 
-#: src/game_preferences_display.cpp:1127
+#: src/game_preferences_display.cpp:1136
 msgid "Prefs section^Display"
 msgstr "디스플레이"
 
-#: src/game_preferences_display.cpp:1128
+#: src/game_preferences_display.cpp:1137
 msgid "Prefs section^Sound"
 msgstr "소리"
 
-#: src/game_preferences_display.cpp:1129
+#: src/game_preferences_display.cpp:1138
 msgid "Prefs section^Multiplayer"
 msgstr "멀티플레이"
 
-#: src/game_preferences_display.cpp:1130
+#: src/game_preferences_display.cpp:1139
 msgid "Advanced section^Advanced"
 msgstr "고급"
 
-#: src/game_preferences_display.cpp:1165
+#: src/game_preferences_display.cpp:1174
 msgid "Saved Theme Preference: "
 msgstr "저장 된 테마:"
 
-#: src/game_preferences_display.cpp:1171
+#: src/game_preferences_display.cpp:1180
 msgid "New theme will take effect on next new or loaded game."
 msgstr ""
 
-#: src/game_preferences_display.cpp:1175
+#: src/game_preferences_display.cpp:1184
 msgid "No known themes. Try changing from within an existing game."
 msgstr ""
 
-#: src/game_preferences_display.cpp:1217
+#: src/game_preferences_display.cpp:1226
 msgid "Find $filename server binary to host networked games"
 msgstr ""
 
@@ -1940,7 +1949,7 @@ msgstr "스크린 샷"
 msgid "Screenshot failed"
 msgstr "스크린 샷"
 
-#: src/mapgen_dialog.cpp:109 src/preferences_display.cpp:217
+#: src/mapgen_dialog.cpp:109 src/preferences_display.cpp:222
 msgid "Close Window"
 msgstr "창 닫기"
 
@@ -2004,52 +2013,52 @@ msgstr ""
 msgid "Error creating or aquiring an image."
 msgstr ""
 
-#: src/preferences_display.cpp:73 src/preferences_display.cpp:106
+#: src/preferences_display.cpp:74 src/preferences_display.cpp:111
 msgid ""
 "The video mode could not be changed. Your window manager must be set to 16 "
 "bits per pixel to run the game in windowed mode. Your display must support "
 "1024x768x16 to run the game full screen."
 msgstr ""
 
-#: src/preferences_display.cpp:221
+#: src/preferences_display.cpp:226
 msgid "Hotkey Settings"
 msgstr "단축키 설정"
 
-#: src/preferences_display.cpp:227 src/preferences_display.cpp:295
+#: src/preferences_display.cpp:232 src/preferences_display.cpp:300
 msgid "Press desired Hotkey (Esc cancels)"
 msgstr ""
 
-#: src/preferences_display.cpp:246
+#: src/preferences_display.cpp:251
 msgid "Action"
 msgstr "행동"
 
-#: src/preferences_display.cpp:246
+#: src/preferences_display.cpp:251
 msgid "Binding"
 msgstr ""
 
-#: src/preferences_display.cpp:258
+#: src/preferences_display.cpp:263
 msgid "Change Hotkey"
 msgstr "단축키 바꾸기"
 
-#: src/preferences_display.cpp:261
+#: src/preferences_display.cpp:266
 #, fuzzy
 msgid "Clear Hotkey"
 msgstr "단축키 바꾸기"
 
-#: src/preferences_display.cpp:328
+#: src/preferences_display.cpp:333
 msgid "This Hotkey is already in use."
 msgstr "이 단축키는 이미 사용되고 있습니다."
 
-#: src/preferences_display.cpp:340
+#: src/preferences_display.cpp:345
 msgid ""
 "Warning: screenshot hotkeys not combined with Control, Alt or Meta keys."
 msgstr ""
 
-#: src/preferences_display.cpp:419
+#: src/preferences_display.cpp:424
 msgid "There are no alternative video modes available"
 msgstr ""
 
-#: src/preferences_display.cpp:448
+#: src/preferences_display.cpp:453
 msgid "Choose Resolution"
 msgstr "해상도를 선택하십시오"
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-01-06 22:08+0100\n"
+"POT-Creation-Date: 2009-01-11 17:05+0100\n"
 "PO-Revision-Date: 2006-03-21 21:06-0800\n"
 "Last-Translator: Andrew <Sfradix@hotmail.com>\n"
 "Language-Team: none\n"
@@ -5487,7 +5487,7 @@ msgid "Do you still want to download it?"
 msgstr "정말로 이 게임을 지우시겠습니까?"
 
 #: src/addon_management.cpp:464 src/addon_management.cpp:538
-#: src/multiplayer.cpp:327 src/multiplayer_ui.cpp:67
+#: src/multiplayer.cpp:327 src/multiplayer_ui.cpp:68
 msgid "Connection timed out"
 msgstr ""
 
@@ -6095,11 +6095,11 @@ msgstr ""
 msgid "Invalid color range: "
 msgstr ""
 
-#: src/game_events.cpp:986
+#: src/game_events.cpp:1012
 msgid "Victory:"
 msgstr ""
 
-#: src/game_events.cpp:989
+#: src/game_events.cpp:1015
 msgid "Defeat:"
 msgstr ""
 
@@ -6359,7 +6359,7 @@ msgstr ""
 msgid "The End"
 msgstr ""
 
-#: src/language.cpp:162
+#: src/language.cpp:163
 msgid "System default language"
 msgstr ""
 
@@ -7435,11 +7435,11 @@ msgstr ""
 msgid "Joining this game requires a password."
 msgstr ""
 
-#: src/multiplayer_ui.cpp:166
+#: src/multiplayer_ui.cpp:167
 msgid "Invalid Color"
 msgstr ""
 
-#: src/multiplayer_ui.cpp:394
+#: src/multiplayer_ui.cpp:399
 #, fuzzy
 msgid "Selected user: "
 msgstr "유닛 선택:"
@@ -7691,24 +7691,24 @@ msgstr ""
 msgid "It is now $name|'s turn"
 msgstr ""
 
-#: src/playturn.cpp:219
+#: src/playturn.cpp:222
 msgid "Replace with AI"
 msgstr "AI로 교체"
 
-#: src/playturn.cpp:220
+#: src/playturn.cpp:223
 msgid "Replace with local player"
 msgstr "로컬 플레이어로 교체"
 
-#: src/playturn.cpp:221
+#: src/playturn.cpp:224
 msgid "Abort game"
 msgstr "게임 나가기"
 
-#: src/playturn.cpp:226 src/playturn.cpp:238
+#: src/playturn.cpp:229 src/playturn.cpp:241
 #, fuzzy
 msgid "Replace with $player"
 msgstr "로컬 플레이어로 교체"
 
-#: src/playturn.cpp:244
+#: src/playturn.cpp:247
 #, fuzzy
 msgid "$player has left the game. What do you want to do?"
 msgstr "이(가) 나갔습니다. 무엇을 하시겠습니까?"

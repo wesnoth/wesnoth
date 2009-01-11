@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-01-06 22:09+0100\n"
+"POT-Creation-Date: 2009-01-11 17:06+0100\n"
 "PO-Revision-Date: 2009-01-07 22:25+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
@@ -237,8 +237,8 @@ msgstr ""
 #: data/core/units/drakes/Clasher.cfg:77
 #: data/core/units/humans/Woodsman_Ranger.cfg:45
 #: data/core/units/humans/Loyalist_Longbowman.cfg:27
-#: data/core/units/humans/Loyalist_General.cfg:43
-#: data/core/units/humans/Loyalist_Sergeant.cfg:34
+#: data/core/units/humans/Loyalist_General.cfg:56
+#: data/core/units/humans/Loyalist_Sergeant.cfg:47
 #: data/core/units/humans/Horse_Grand_Knight.cfg:24
 #: data/core/units/humans/Loyalist_Royal_Guard.cfg:40
 #: data/core/units/humans/Loyalist_Master_Bowman.cfg:27
@@ -246,10 +246,10 @@ msgstr ""
 #: data/core/units/humans/Loyalist_Swordsman.cfg:39
 #: data/core/units/humans/Horse_Knight.cfg:23
 #: data/core/units/humans/Horse_Paladin.cfg:40
-#: data/core/units/humans/Loyalist_Lieutenant.cfg:33
+#: data/core/units/humans/Loyalist_Lieutenant.cfg:46
 #: data/core/units/humans/Loyalist_Cavalier.cfg:38
 #: data/core/units/humans/Loyalist_Dragoon.cfg:37
-#: data/core/units/humans/Loyalist_Grand_Marshal.cfg:39
+#: data/core/units/humans/Loyalist_Grand_Marshal.cfg:52
 msgid "sword"
 msgstr "meč"
 
@@ -361,7 +361,7 @@ msgstr ""
 #: data/core/units/humans/Outlaw_Bandit.cfg:35
 #: data/core/units/humans/Outlaw.cfg:23
 #: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:37
-#: data/core/units/humans/Loyalist_Iron_Mauler.cfg:26
+#: data/core/units/humans/Loyalist_Iron_Mauler.cfg:39
 #: data/core/units/humans/Outlaw_Highwayman.cfg:25
 #: data/core/units/humans/Outlaw_Fugitive.cfg:28
 msgid "mace"
@@ -1916,13 +1916,13 @@ msgstr ""
 #: data/core/units/orcs/Crossbowman.cfg:42 data/core/units/orcs/Slurbow.cfg:38
 #: data/core/units/orcs/Slurbow.cfg:47
 #: data/core/units/humans/Loyalist_Duelist.cfg:81
-#: data/core/units/humans/Loyalist_General.cfg:52
-#: data/core/units/humans/Loyalist_Sergeant.cfg:43
+#: data/core/units/humans/Loyalist_General.cfg:65
+#: data/core/units/humans/Loyalist_Sergeant.cfg:56
 #: data/core/units/humans/Loyalist_Master_at_Arms.cfg:40
-#: data/core/units/humans/Loyalist_Lieutenant.cfg:42
+#: data/core/units/humans/Loyalist_Lieutenant.cfg:55
 #: data/core/units/humans/Loyalist_Cavalier.cfg:47
 #: data/core/units/humans/Loyalist_Dragoon.cfg:46
-#: data/core/units/humans/Loyalist_Grand_Marshal.cfg:48
+#: data/core/units/humans/Loyalist_Grand_Marshal.cfg:61
 #: data/core/units/undead/Skele_Death_Knight.cfg:55
 msgid "crossbow"
 msgstr "kuše"
@@ -2045,7 +2045,7 @@ msgid "General"
 msgstr "Generál"
 
 #. [unit_type]: id=General, race=human
-#: data/core/units/humans/Loyalist_General.cfg:29
+#: data/core/units/humans/Loyalist_General.cfg:30
 msgid ""
 "As the leaders of their armies, Generals are responsible for the protection "
 "of large or important areas in the kingdoms to which they have sworn fealty."
@@ -2059,7 +2059,7 @@ msgid "Grand Marshal"
 msgstr "Velký maršál"
 
 #. [unit_type]: id=Grand Marshal, race=human
-#: data/core/units/humans/Loyalist_Grand_Marshal.cfg:25
+#: data/core/units/humans/Loyalist_Grand_Marshal.cfg:26
 msgid ""
 "The rank of Grand Marshal is one of the most esteemed in the armies of "
 "humanity, and those who bear its title have survived many trials by fire, "
@@ -2136,7 +2136,7 @@ msgid "Iron Mauler"
 msgstr "Železný bijec"
 
 #. [unit_type]: id=Iron Mauler, race=human
-#: data/core/units/humans/Loyalist_Iron_Mauler.cfg:20
+#: data/core/units/humans/Loyalist_Iron_Mauler.cfg:21
 msgid ""
 "Iron Maulers are given their name for reasons which are all too obvious to "
 "their foes. The men within these suits of armor can match ogres in contests "
@@ -2190,7 +2190,7 @@ msgid "Lieutenant"
 msgstr "Poručík"
 
 #. [unit_type]: id=Lieutenant, race=human
-#: data/core/units/humans/Loyalist_Lieutenant.cfg:24
+#: data/core/units/humans/Loyalist_Lieutenant.cfg:25
 msgid ""
 "Trained at swords and crossbows, Lieutenants lead small groups of human "
 "soldiers, coordinating their attacks."
@@ -2333,7 +2333,7 @@ msgid "Sergeant"
 msgstr "Seržant"
 
 #. [unit_type]: id=Sergeant, race=human
-#: data/core/units/humans/Loyalist_Sergeant.cfg:25
+#: data/core/units/humans/Loyalist_Sergeant.cfg:26
 msgid ""
 "The Sergeant is a low-ranking officer in the ranks of an army. Though "
 "academically trained, he will need some experience in the field before his "
@@ -2349,7 +2349,7 @@ msgid "Shock Trooper"
 msgstr "Úderná jednotka"
 
 #. [unit_type]: id=Shock Trooper, race=human
-#: data/core/units/humans/Loyalist_Shock_Trooper.cfg:17
+#: data/core/units/humans/Loyalist_Shock_Trooper.cfg:18
 msgid ""
 "Shock troopers are the elite of the heavy infantry, and a significant part "
 "of their use is mere intimidation. The only men who can enter their ranks "
@@ -2371,7 +2371,7 @@ msgstr ""
 
 #. [attack]: type=impact
 #: data/core/units/humans/Mage_of_Light.cfg:111
-#: data/core/units/humans/Loyalist_Shock_Trooper.cfg:23
+#: data/core/units/humans/Loyalist_Shock_Trooper.cfg:36
 msgid "morning star"
 msgstr "řemdih"
 
@@ -3612,7 +3612,7 @@ msgstr ""
 #: data/core/units/monsters/Yeti.cfg:36
 #: data/core/units/monsters/Giant_Mudcrawler.cfg:47
 #: data/core/units/trolls/Rocklobber.cfg:27
-#: data/core/units/trolls/Whelp.cfg:26
+#: data/core/units/trolls/Whelp.cfg:39
 #: data/core/units/trolls/Troll_Shaman.cfg:31
 #: data/core/units/undead/Skeleton_Archer.cfg:31
 msgid "fist"
@@ -4378,7 +4378,7 @@ msgid "Troll Whelp"
 msgstr "Trollí mládě"
 
 #. [unit_type]: id=Troll Whelp, race=troll
-#: data/core/units/trolls/Whelp.cfg:19
+#: data/core/units/trolls/Whelp.cfg:20
 msgid ""
 "Describing a troll as a whelp is something of an oxymoron, given that their "
 "bodies are already much hardier than that of a grown man. They are clumsy "
