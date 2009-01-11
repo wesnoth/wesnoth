@@ -33,6 +33,9 @@ Version 1.5.7+svn:
    * add an "animate" key to the [teleport] event
    * add a resistance_anim block used whenever a unit uses a [resistance]
      ability on a neghbour
+   * deprecated tag [debug_message]; use [wml_message] instead, which
+     now offers the debug/dbg logger and uses the "events" log domain
+     (i.e. --log-*=events should be used instead of --log-*=notifs).
    * the animate_unit action can now animate multiple units
    * the animate_unit action can now change the direction the unit is facing
      with a SLF
