@@ -74,11 +74,6 @@ class WmlIterator(object):
     Initialize with a list of lines or a file; if the the line list is
     empty and the filename is specified, lines will be read from the file.
 
-    This is meant to be subclassed.  It needs a printError method  but
-    does not have one.  The method should take any number of string arguments,
-    compose them into an error notification, and deliver it.  It may fire
-    more than once during the instance lifetime.
-
     Note: if changes are made to lines while iterating, this may produce
     unexpected results. In such case, seek() to the linenumber of a
     scope behind where changes were made.
@@ -344,14 +339,7 @@ Important Attributes:
         scopeItor.endScope = self.scopes[-1]
         return scopeItor
 
-
-if 0:
-     # This is Sapient's original error hook.  If you use it, pleaae
-     # paste it into your application so it doesn't have to be carried
-     # by all .pyc copies nade from this module.  You probably also
-     # want to change the message prefix from "wmliterator" to
-     # something else.     
-     def printErrorNoDups(nav, *misc):
+    def printError(nav, *misc):
         """Print error associated with a given file; avoid printing duplicates"""
         if nav.fname:
             if not hasattr(nav, 'silenceErrors'):
@@ -388,7 +376,7 @@ if __name__ == '__main__':
         f = open(fname)
         itor = WmlIterator(f.readlines())
         for i in itor:
-            print "Element = %s, text = %s, ancestors = %s" % (`i.element`, `i.text`, i.ancestors())
+            pass
         f.close()
         print itor.lineno + itor.span, 'lines read.'
     if not didSomething:
