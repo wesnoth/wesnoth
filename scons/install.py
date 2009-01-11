@@ -1,7 +1,7 @@
 # vi: syntax=python:et:ts=4
 from SCons.Script import *
 import shutil, os
-from subprocess import call
+from subprocess import call, Popen, PIPE
 
 def InstallFilteredHook(target, source, env):
     CopyFilter = env["copy_filter"]
