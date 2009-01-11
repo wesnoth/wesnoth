@@ -342,8 +342,6 @@ Important Attributes:
     def printError(nav, *misc):
         """Print error associated with a given file; avoid printing duplicates"""
         if nav.fname:
-            if not hasattr(nav, 'silenceErrors'):
-                nav.silenceErrors = {}
             silenceValue = ' '.join(map(str, misc))
             if nav.fname not in silenceErrors:
                 print >>sys.stderr, nav.fname
