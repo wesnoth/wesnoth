@@ -126,6 +126,34 @@ namespace {
 #endif
 
 /**
+ * Helper function for show_wml_errors(), which gathers
+ * the messages from a stringstream.
+ */
+static void fill_wml_messages_map(std::map<std::string, int>& msg_map, std::stringstream& source)
+{
+	while(true) {
+		std::string msg;
+		std::getline(source, msg);
+
+		if(source.eof()) {
+			break;
+		}
+
+		if(msg == "") {
+			continue;
+		}
+
+		if(msg_map.find(msg) == msg_map.end()) {
+			msg_map[msg] = 1;
+		} else {
+			msg_map[msg]++;
+		}
+	}
+	// Make sure the eof flag is cleared otherwise no new messages are shown
+	source.clear();
+}
+
+/**
  * Shows a summary of the errors encountered in WML thusfar,
  * to avoid a lot of the same messages to be shown.
  * Identical messages are shown once, with (between braces)
@@ -139,26 +167,7 @@ static void show_wml_errors()
 	// Get all unique messages in messages,
 	// with the number of encounters for these messages
 	std::map<std::string, int> messages;
-	while(true) {
-		std::string msg;
-		std::getline(lg::wml_error, msg);
-
-		if(lg::wml_error.eof()) {
-			break;
-		}
-
-		if(msg == "") {
-			continue;
-		}
-
-		if(messages.find(msg) == messages.end()) {
-			messages[msg] = 1;
-		} else {
-			messages[msg]++;
-		}
-	}
-	// Make sure the eof flag is cleared otherwise no new messages are shown
-	lg::wml_error.clear();
+	fill_wml_messages_map(messages, lg::wml_error);
 
 	// Show the messages collected
 	std::string caption = "Invalid WML found";
