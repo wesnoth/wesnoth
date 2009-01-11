@@ -50,9 +50,9 @@
 #define LOG_DP LOG_STREAM(info, display)
 #define ERR_CF LOG_STREAM(err, config)
 
-#define LOG_NO LOG_STREAM(info, notifs)
-#define WRN_NO LOG_STREAM(warn, notifs)
-#define ERR_NO LOG_STREAM(err, notifs)
+#define LOG_EV LOG_STREAM(info, events)
+#define WRN_EV LOG_STREAM(warn, events)
+#define ERR_EV LOG_STREAM(err, events)
 
 namespace {
 
@@ -1963,11 +1963,11 @@ namespace {
 	{
 		const std::string log_level = cfg["logger"];
 		if (log_level == "err" || log_level == "error")
-			ERR_NO << cfg["message"] << "\n";
+			ERR_EV << cfg["message"] << "\n";
 		else if (log_level == "warn" || log_level == "wrn" || log_level == "warning")
-			WRN_NO << cfg["message"] << "\n";
+			WRN_EV << cfg["message"] << "\n";
 		else
-			LOG_NO << cfg["message"] << "\n";
+			LOG_EV << cfg["message"] << "\n";
 	}
 
 
