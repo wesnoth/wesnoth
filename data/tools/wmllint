@@ -142,6 +142,9 @@ linechanges = (
         # This changed after 1.5.5, to enable mechanical spellchecking
         ("sabre", "saber"),
         ("nr-sad.ogg", "sad.ogg"),
+        # Changed after 1.5.7
+        ("[debug_message]", "[wml_message]"),
+        ("[/debug_message]", "[/wml_message]"),
         )
 
 def validate_stack(stack, filename, lineno):
