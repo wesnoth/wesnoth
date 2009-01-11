@@ -50,6 +50,7 @@
 #define LOG_DP LOG_STREAM(info, display)
 #define ERR_CF LOG_STREAM(err, config)
 
+#define DBG_EV LOG_STREAM(debug,events)
 #define LOG_EV LOG_STREAM(info, events)
 #define WRN_EV LOG_STREAM(warn, events)
 #define ERR_EV LOG_STREAM(err, events)
@@ -1979,6 +1980,8 @@ namespace {
 			ERR_EV << cfg["message"] << "\n";
 		else if (log_level == "warn" || log_level == "wrn" || log_level == "warning")
 			WRN_EV << cfg["message"] << "\n";
+		else if (log_level == "debug" || log_level == "dbg")
+			DBG_EV << cfg["message"] << "\n";
 		else
 			LOG_EV << cfg["message"] << "\n";
 	}
