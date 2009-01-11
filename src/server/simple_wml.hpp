@@ -144,8 +144,8 @@ private:
 	node(const node&);
 	void operator=(const node&);
 
-	child_list& get_children(const string_span& name);
-	child_list& get_children(const char* name);
+	int get_children(const string_span& name);
+	int get_children(const char* name);
 
 	void set_dirty();
 	void shift_buffers(ptrdiff_t offset);
@@ -163,6 +163,23 @@ private:
 	static child_map::const_iterator find_in_map(const child_map& m, const string_span& attr);
 	static child_map::iterator find_in_map(child_map& m, const string_span& attr);
 	child_map children_;
+
+	//a node position indicates the index into the child map where the node
+	//is, and then the index into the child list within where the node is.
+	struct node_pos {
+		node_pos(int child_map_index, int child_list_index)
+		  : child_map_index(child_map_index), child_list_index(child_list_index)
+		{}
+		unsigned short child_map_index;
+		unsigned short child_list_index;
+	};
+
+	//a list of all the children in order.
+	std::vector<node_pos> ordered_children_;
+
+	void insert_ordered_child(int child_map_index, int child_list_index);
+	void remove_ordered_child(int child_map_index, int child_list_index);
+	void remove_ordered_child_list(int child_map_index);
 
 	string_span output_cache_;
 };

@@ -162,11 +162,12 @@ node::node(document& doc, node* parent, const char** str, int depth) :
 				throw error("unterminated element");
 			}
 
-			child_list& list = get_children(string_span(s, end - s));
+			const int list_index = get_children(string_span(s, end - s));
 
 			s = end + 1;
 
-			list.push_back(new node(doc, this, str, depth+1));
+			children_[list_index].second.push_back(new node(doc, this, str, depth+1));
+			ordered_children_.push_back(node_pos(list_index, children_[list_index].second.size() - 1));
 
 			break;
 		}
@@ -339,12 +340,14 @@ node& node::add_child_at(const char* name, size_t index)
 {
 	set_dirty();
 
-	child_list& list = get_children(name);
+	const int list_index = get_children(name);
+	child_list& list = children_[list_index].second;
 	if(index > list.size()) {
 		index = list.size();
 	}
 
 	list.insert(list.begin() + index, new node(*doc_, this));
+	insert_ordered_child(list_index, index);
 	return *list[index];
 }
 
@@ -353,8 +356,10 @@ node& node::add_child(const char* name)
 {
 	set_dirty();
 
-	child_list& list = get_children(name);
+	const int list_index = get_children(name);
+	child_list& list = children_[list_index].second;
 	list.push_back(new node(*doc_, this));
+	ordered_children_.push_back(node_pos(list_index, list.size() - 1));
 	return *list.back();
 }
 
@@ -373,11 +378,61 @@ void node::remove_child(const string_span& name, size_t index)
 		return;
 	}
 
+	remove_ordered_child(itor - children_.begin(), index);
+
 	debug_delete(list[index]);
 	list.erase(list.begin() + index);
 
 	if(list.empty()) {
+		remove_ordered_child_list(itor - children_.begin());
 		children_.erase(itor);
+	}
+}
+
+void node::insert_ordered_child(int child_map_index, int child_list_index)
+{
+	
+	std::vector<node_pos>::iterator i = ordered_children_.begin();
+	while(i != ordered_children_.end()) {
+		if(i->child_map_index == child_map_index && i->child_list_index > child_list_index) {
+			i->child_list_index++;
+		} else if(i->child_map_index == child_map_index && i->child_list_index == child_list_index) {
+			i->child_list_index++;
+			i = ordered_children_.insert(i, node_pos(child_map_index, child_list_index));
+			++i;
+		}
+
+		++i;
+	}
+}
+
+void node::remove_ordered_child(int child_map_index, int child_list_index)
+{
+	std::vector<node_pos>::iterator i = ordered_children_.begin();
+	while(i != ordered_children_.end()) {
+		if(i->child_map_index == child_map_index && i->child_list_index == child_list_index) {
+			i = ordered_children_.erase(i);
+		} else {
+			if(i->child_map_index == child_map_index && i->child_list_index > child_list_index) {
+				i->child_list_index--;
+			}
+			++i;
+		}
+	}
+}
+
+void node::remove_ordered_child_list(int child_map_index)
+{
+	std::vector<node_pos>::iterator i = ordered_children_.begin();
+	while(i != ordered_children_.end()) {
+		if(i->child_map_index == child_map_index) {
+			i = ordered_children_.erase(i);
+		} else {
+			if(i->child_map_index > child_map_index) {
+				i->child_map_index--;
+			}
+			i->child_map_index--;
+		}
 	}
 }
 
@@ -425,21 +480,21 @@ const node::child_list& node::children(const char* name) const
 	return empty;
 }
 
-node::child_list& node::get_children(const char* name)
+int node::get_children(const char* name)
 {
 	return get_children(string_span(name));
 }
 
-node::child_list& node::get_children(const string_span& name)
+int node::get_children(const string_span& name)
 {
 	for(child_map::iterator i = children_.begin(); i != children_.end(); ++i) {
 		if(i->first == name) {
-			return i->second;
+			return i - children_.begin();
 		}
 	}
 
 	children_.push_back(child_pair(string_span(name), child_list()));
-	return children_.back().second;
+	return children_.size() - 1;
 }
 
 node::child_map::const_iterator node::find_in_map(const child_map& m, const string_span& attr)
@@ -487,12 +542,16 @@ int node::output_size() const
 		res += i->first.size() + i->second.size() + 4;
 	}
 
+	int count_children = 0;
 	for(child_map::const_iterator i = children_.begin(); i != children_.end(); ++i) {
 		for(child_list::const_iterator j = i->second.begin(); j != i->second.end(); ++j) {
 			res += i->first.size()*2 + 7;
 			res += (*j)->output_size();
+			++count_children;
 		}
 	}
+
+	assert(count_children == ordered_children_.size());
 
 	return res;
 }
@@ -541,23 +600,24 @@ void node::output(char*& buf)
 		*buf++ = '\n';
 	}
 
-	for(child_map::iterator i = children_.begin(); i != children_.end(); ++i) {
-		assert(i->second.empty() == false);
-		for(child_list::iterator j = i->second.begin(); j != i->second.end(); ++j) {
-			*buf++ = '[';
-			memcpy(buf, i->first.begin(), i->first.size());
-			i->first = string_span(buf, i->first.size());
-			buf += i->first.size();
-			*buf++ = ']';
-			*buf++ = '\n';
-			(*j)->output(buf);
-			*buf++ = '[';
-			*buf++ = '/';
-			memcpy(buf, i->first.begin(), i->first.size());
-			buf += i->first.size();
-			*buf++ = ']';
-			*buf++ = '\n';
-		}
+	for(std::vector<node_pos>::const_iterator i = ordered_children_.begin();
+	    i != ordered_children_.end(); ++i) {
+		assert(i->child_map_index < children_.size());
+		assert(i->child_list_index < children_[i->child_map_index].second.size());
+		string_span& attr = children_[i->child_map_index].first;
+		*buf++ = '[';
+		memcpy(buf, attr.begin(), attr.size());
+		attr = string_span(buf, attr.size());
+		buf += attr.size();
+		*buf++ = ']';
+		*buf++ = '\n';
+		children_[i->child_map_index].second[i->child_list_index]->output(buf);
+		*buf++ = '[';
+		*buf++ = '/';
+		memcpy(buf, attr.begin(), attr.size());
+		buf += attr.size();
+		*buf++ = ']';
+		*buf++ = '\n';
 	}
 
 	output_cache_ = string_span(begin, buf - begin);
@@ -574,17 +634,13 @@ void node::copy_into(node& n) const
 		n.set_attr(key, value);
 	}
 
-	for(child_map::const_iterator i = children_.begin(); i != children_.end(); ++i) {
-		if(i->second.empty()) {
-			continue;
-		}
-
-		char* buf = i->first.duplicate();
+	for(std::vector<node_pos>::const_iterator i = ordered_children_.begin();
+	    i != ordered_children_.end(); ++i) {
+		assert(i->child_map_index < children_.size());
+		assert(i->child_list_index < children_[i->child_map_index].second.size());
+		char* buf = children_[i->child_map_index].first.duplicate();
 		n.doc_->take_ownership_of_buffer(buf);
-
-		for(child_list::const_iterator j = i->second.begin(); j != i->second.end(); ++j) {
-			(*j)->copy_into(n.add_child(buf));
-		}
+		children_[i->child_map_index].second[i->child_list_index]->copy_into(n.add_child(buf));
 	}
 }
 
