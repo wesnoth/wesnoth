@@ -99,7 +99,7 @@ display::display(CVideo& video, const gamemap* map, const config& theme_cfg, con
 	shroud_image_("terrain/" + get_map().get_terrain_info(t_translation::VOID_TERRAIN).minimap_image() + ".png"),
 	fog_image_("terrain/" + get_map().get_terrain_info(t_translation::FOGGED).minimap_image() + ".png"),
 	tod_(time_of_day()),
-	_scroll_event("scrolled"),
+	scroll_event_("scrolled"),
 	nextDraw_(0),
 	report_(),
 	buttons_(),
@@ -1410,7 +1410,7 @@ void display::scroll(int xmove, int ymove)
 		r.w = abs(dx);
 		invalidate_locations_in_rect(r);
 	}
-	_scroll_event.notify_observers();
+	scroll_event_.notify_observers();
 	update_rect(map_area());
 
 	redrawMinimap_ = true;

@@ -426,7 +426,7 @@ public:
 			     double add_spacing=0.0, bool force = true);
 
 	/** Expose the event, so observers can be notified about map scrolling. */
-	events::generic_event &scroll_event() const { return _scroll_event; }
+	events::generic_event &scroll_event() const { return scroll_event_; }
 
 	/** Check if a tile is fully on screen. */
 	bool tile_on_screen(const map_location& loc);
@@ -575,7 +575,7 @@ protected:
 	time_of_day tod_;
 
 	/** Event raised when the map is being scrolled */
-	mutable events::generic_event _scroll_event;
+	mutable events::generic_event scroll_event_;
 
 	/**
 	 * Holds the tick count for when the next drawing event is scheduled.
