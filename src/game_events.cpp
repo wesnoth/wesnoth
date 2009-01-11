@@ -2565,7 +2565,7 @@ namespace {
 		if(handler.rebuild_screen()) {
 			handler.rebuild_screen() = false;
 			(screen)->recalculate_minimap();
-//			(screen)->rebuild_all();
+			(screen)->rebuild_all();
 		}
 		(screen)->invalidate_all();
 		(screen)->draw(true,true);
@@ -3178,7 +3178,7 @@ static bool process_event(game_events::event_handler& handler, const game_events
 		handler.rebuild_screen() = false;
 		(screen)->recalculate_minimap();
 		(screen)->invalidate_all();
-//		(screen)->rebuild_all();
+		(screen)->rebuild_all();
 	}
 
 
