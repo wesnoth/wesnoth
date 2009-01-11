@@ -94,7 +94,10 @@ def InstallData(env, datadir, component, source, subdir = ""):
             else:
                 dirs.append(Dir(source))
     if dirs:
-        install = map(lambda x : env.InstallFiltered(os.path.join(installdir.path, x.name), x.path), dirs)
+        if len(dirs) == 1:
+            install = env.InstallFiltered(installdir.path, dirs[0].path)
+        else:
+            install = map(lambda x : env.InstallFiltered(os.path.join(installdir.path, x.name), x.path), dirs)
         AlwaysBuild(install)
         env.Alias("install-" + component, install)
 

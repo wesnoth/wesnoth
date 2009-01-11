@@ -431,8 +431,11 @@ if env["dummy_locales"]:
 for d in installdirs:
     exec d + ' = os.path.join(env["destdir"], env[d].lstrip("/"))'
 installable_subs = Split('data fonts images sounds')
-if env['nls']:
-    installable_subs.append("translations")
+if os.path.isabs(env["localedirname"]):
+    env["localedir"] = env["localedirname"]
+else:
+    env["localedir"] = "$datadir/$localedirname"
+        
 if env["dummy_locales"]:
     installable_subs.append("locales")
 pythontools = Split("wmlscope wmllint wmlindent wesnoth_addon_manager")
@@ -456,6 +459,8 @@ def InstallManpages(env, component):
 
 env.InstallData("datadir", "wesnoth", map(Dir, installable_subs))
 env.InstallData("docdir",  "wesnoth", Dir("doc/manual"))
+if env["nls"]:
+    env.InstallData("localedir", "wesnoth", Dir("translations"))
 
 # The game and associated resources
 env.InstallBinary(wesnoth)
