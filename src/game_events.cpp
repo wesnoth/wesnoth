@@ -1959,7 +1959,20 @@ namespace {
 		lg::wml_error << message << '\n';
 	}
 
+	/** @deprecated Use [wml_message]. */
 	WML_HANDLER_FUNCTION(debug_message,/*handler*/,/*event_info*/,cfg)
+	{
+		lg::wml_error << "[debug_message] is deprecated and will be removed in 1.5.10; use [wml_message] instead" << '\n';
+		const std::string log_level = cfg["logger"];
+		if (log_level == "err" || log_level == "error")
+			ERR_EV << cfg["message"] << "\n";
+		else if (log_level == "warn" || log_level == "wrn" || log_level == "warning")
+			WRN_EV << cfg["message"] << "\n";
+		else
+			LOG_EV << cfg["message"] << "\n";
+	}
+
+	WML_HANDLER_FUNCTION(wml_message,/*handler*/,/*event_info*/,cfg)
 	{
 		const std::string log_level = cfg["logger"];
 		if (log_level == "err" || log_level == "error")
