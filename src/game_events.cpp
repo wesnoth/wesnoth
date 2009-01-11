@@ -86,6 +86,32 @@ namespace {
 			}
 	};
 
+	class pump_manager {
+		public:
+		pump_manager() :
+			x1_(state_of_game->get_variable("x1")),
+			x2_(state_of_game->get_variable("x2")),
+			y1_(state_of_game->get_variable("y1")),
+			y2_(state_of_game->get_variable("y2"))
+		{
+			++instance_count;
+		}
+		~pump_manager() {
+			state_of_game->set_variable("x1", x1_);
+			state_of_game->set_variable("x2", x2_);
+			state_of_game->set_variable("y1", y1_);
+			state_of_game->set_variable("y2", y2_);
+			--instance_count;
+		}
+		int recursion_count() {
+			return std::max<int>(0,instance_count-1);
+		}
+		private:
+		static int instance_count;
+		t_string x1_, x2_, y1_, y2_;
+	};
+	int pump_manager::instance_count=0;
+
 } // end anonymous namespace (1)
 
 #ifdef _MSC_VER
@@ -2017,20 +2043,6 @@ namespace {
 					if (fire_event)
 					{
 						game_events::fire("die", death_loc, death_loc);
-
-						char buf[50];
-						snprintf(buf,sizeof(buf),"%d",event_info.loc1.x+1);
-						state_of_game->set_variable("x1", buf);
-
-						snprintf(buf,sizeof(buf),"%d",event_info.loc1.y+1);
-						state_of_game->set_variable("y1", buf);
-
-						snprintf(buf,sizeof(buf),"%d",event_info.loc2.x+1);
-						state_of_game->set_variable("x2", buf);
-
-						snprintf(buf,sizeof(buf),"%d",event_info.loc2.y+1);
-						state_of_game->set_variable("y2", buf);
-
 						un = units->find(death_loc);
 						if(un != units->end() && death_loc.matches_unit(un->second)) {
 							units->erase(un);
@@ -2093,19 +2105,6 @@ namespace {
 			data.add_child("second", cfg.child("secondary_attack").get_parsed_config());
 		}
 		game_events::fire(cfg["name"],loc1,loc2,data);
-
-		char buf[50];
-		snprintf(buf,sizeof(buf),"%d",event_info.loc1.x+1);
-		state_of_game->set_variable("x1", buf);
-
-		snprintf(buf,sizeof(buf),"%d",event_info.loc1.y+1);
-		state_of_game->set_variable("y1", buf);
-
-		snprintf(buf,sizeof(buf),"%d",event_info.loc2.x+1);
-		state_of_game->set_variable("x2", buf);
-
-		snprintf(buf,sizeof(buf),"%d",event_info.loc2.y+1);
-		state_of_game->set_variable("y2", buf);
 	}
 
 	// Setting of menu items
@@ -2566,7 +2565,7 @@ namespace {
 		if(handler.rebuild_screen()) {
 			handler.rebuild_screen() = false;
 			(screen)->recalculate_minimap();
-			(screen)->rebuild_all();
+//			(screen)->rebuild_all();
 		}
 		(screen)->invalidate_all();
 		(screen)->draw(true,true);
@@ -3179,7 +3178,7 @@ static bool process_event(game_events::event_handler& handler, const game_events
 		handler.rebuild_screen() = false;
 		(screen)->recalculate_minimap();
 		(screen)->invalidate_all();
-		(screen)->rebuild_all();
+//		(screen)->rebuild_all();
 	}
 
 
@@ -3485,6 +3484,7 @@ namespace game_events {
 		if(!events_init())
 			return false;
 
+		pump_manager pump_instance;
 		bool result = false;
 
 		while(events_queue.empty() == false) {
@@ -3526,9 +3526,11 @@ namespace game_events {
 				if(process_event(handler, ev))
 					result = true;
 			}
-
-			commit_wmi_commands();
-			commit_new_handlers();
+			if(!pump_instance.recursion_count()) {
+				// only commit new event handlers when finished iterating over event_handlers
+				commit_wmi_commands();
+				commit_new_handlers();
+			}
 
 			// Dialogs can only be shown if the display is not locked
 			if(! (screen)->video().update_locked()) {
