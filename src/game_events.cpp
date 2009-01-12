@@ -104,14 +104,14 @@ namespace {
 			state_of_game->set_variable("y2", y2_);
 			--instance_count;
 		}
-		int recursion_count() {
-			return std::max<int>(0,instance_count-1);
+		static unsigned recursion_count() {
+			return std::max<unsigned>(1,instance_count)-1;
 		}
 		private:
-		static int instance_count;
+		static unsigned instance_count;
 		t_string x1_, x2_, y1_, y2_;
 	};
-	int pump_manager::instance_count=0;
+	unsigned pump_manager::instance_count=0;
 
 } // end anonymous namespace (1)
 
@@ -3508,6 +3508,10 @@ namespace game_events {
 		assert(manager_running);
 		if(!events_init())
 			return false;
+		if(pump_manager::recursion_count() >= game_config::max_loop) {
+			ERR_NG << "game_events::pump() waiting to process new events because "
+				<< "recursion level would exceed maximum " << game_config::max_loop << '\n';
+		}
 
 		pump_manager pump_instance;
 		bool result = false;
@@ -3551,7 +3555,7 @@ namespace game_events {
 				if(process_event(handler, ev))
 					result = true;
 			}
-			if(!pump_instance.recursion_count()) {
+			if(pump_manager::recursion_count() == 0) {
 				// only commit new event handlers when finished iterating over event_handlers
 				commit_wmi_commands();
 				commit_new_handlers();
