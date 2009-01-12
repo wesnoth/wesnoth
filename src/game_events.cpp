@@ -133,14 +133,15 @@ namespace {
  */
 static void put_wml_message(const std::string& logger, const std::string& message)
 {
-	if (logger == "err" || logger == "error")
+	if (logger == "err" || logger == "error") {
 		ERR_WML << message << "\n";
-	else if (logger == "warn" || logger == "wrn" || logger == "warning")
+	} else if (logger == "warn" || logger == "wrn" || logger == "warning") {
 		WRN_WML << message << "\n";
-	else if (logger == "debug" || logger == "dbg")
+	} else if (logger == "debug" || logger == "dbg") {
 		DBG_WML << message << "\n";
-	else
+	} else {
 		LOG_WML << message << "\n";
+	}
 }
 
 /**
