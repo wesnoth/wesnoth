@@ -549,7 +549,7 @@ namespace {
 		}
 	}
 
-	bool install_addon(game_display& disp, config& cfg, const config* const addons_tree,
+	bool install_addon(game_display& disp, config const& addons_tree,
 	                   const std::string& addon_id, const std::string& addon_title,
 	                   const std::string& addon_type_str, const std::string& addon_uploads_str,
 	                   const std::string& addon_version_str,
@@ -558,7 +558,7 @@ namespace {
 	                   bool show_result = true)
 	{
 		// Get all dependencies of the addon/campaign selected for download.
-		const config * const selected_campaign = addons_tree->find_child("campaign", "name", addon_id);
+		const config * const selected_campaign = addons_tree.find_child("campaign", "name", addon_id);
 		assert(selected_campaign != NULL);
 		// Get all dependencies which are not already installed.
 		// TODO: Somehow determine if the version is outdated.
@@ -574,6 +574,8 @@ namespace {
 		const std::string& download_dlg_title =
 			utils::interpolate_variables_into_string(_("Downloading add-on: $addon_title|..."), &syms);
 
+		// WML structure where the add-on archive, or any error messages, are stored.
+		config cfg;
 		network::connection res = dialogs::network_receive_dialog(disp, download_dlg_title, cfg, sock);
 		if(!res) {
 			return false;
@@ -828,10 +830,12 @@ namespace {
 		bool result = true;
 		std::vector<std::string> failed_titles;
 
+		assert(cfg.child("campaigns") != NULL);
+
 		if(upd_all) {
 			for(size_t i = 0; i < addons.size() && i < remote_matches_cfgs.size(); ++i)
 			{
-				if(!install_addon(disp, cfg, cfg.child("campaigns"), addons[i], titles[i],
+				if(!install_addon(disp, * cfg.child("campaigns"), addons[i], titles[i],
 				                   types[i], uploads[i], newversions[i], net_manager, sock,
 				                   do_refresh, false)) {
 					result=false;
@@ -840,7 +844,7 @@ namespace {
 			}
 		} else {
 			const size_t i = static_cast<size_t>(index);
-			if(!install_addon(disp, cfg, cfg.child("campaigns"), addons[i], titles[i],
+			if(!install_addon(disp, * cfg.child("campaigns"), addons[i], titles[i],
 				               types[i], uploads[i], newversions[i], net_manager, sock,
 				               do_refresh, false)) {
 				result=false;
@@ -1056,7 +1060,7 @@ namespace {
 			}
 
 			// Handle download
-			install_addon(disp, cfg, addons_tree, addons[index], titles[index], types[index],
+			install_addon(disp, * addons_tree, addons[index], titles[index], types[index],
 			              uploads[index], versions[index], net_manager, sock, do_refresh);
 
 		} catch(config::error& e) {

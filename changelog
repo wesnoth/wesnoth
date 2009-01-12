@@ -49,6 +49,8 @@ Version 1.5.7+svn:
    * Fix an endian issue which rendered text wrong on big endian machines.
    * Fix a bug with temporary objects not being removed at next scenario
    * Fix replays with empty starting positions.
+   * Prevent access to invalidated memory after the first download when
+     updating all installed add-ons (bug #12837).
 
 Version 1.5.7:
  * Campaigns:
