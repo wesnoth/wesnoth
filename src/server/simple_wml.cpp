@@ -542,7 +542,7 @@ int node::output_size() const
 		res += i->first.size() + i->second.size() + 4;
 	}
 
-	int count_children = 0;
+	size_t count_children = 0;
 	for(child_map::const_iterator i = children_.begin(); i != children_.end(); ++i) {
 		for(child_list::const_iterator j = i->second.begin(); j != i->second.end(); ++j) {
 			res += i->first.size()*2 + 7;
