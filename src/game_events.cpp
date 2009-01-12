@@ -50,10 +50,10 @@
 #define LOG_DP LOG_STREAM(info, display)
 #define ERR_CF LOG_STREAM(err, config)
 
-#define DBG_EV LOG_STREAM(debug,events)
-#define LOG_EV LOG_STREAM(info, events)
-#define WRN_EV LOG_STREAM(warn, events)
-#define ERR_EV LOG_STREAM(err, events)
+#define DBG_WML LOG_STREAM(debug,wml)
+#define LOG_WML LOG_STREAM(info, wml)
+#define WRN_WML LOG_STREAM(warn, wml)
+#define ERR_WML LOG_STREAM(err,  wml)
 
 namespace {
 
@@ -1975,24 +1975,24 @@ namespace {
 		lg::wml_error << "[debug_message] is deprecated and will be removed in 1.5.10; use [wml_message] instead" << '\n';
 		const std::string log_level = cfg["logger"];
 		if (log_level == "err" || log_level == "error")
-			ERR_EV << cfg["message"] << "\n";
+			ERR_WML << cfg["message"] << "\n";
 		else if (log_level == "warn" || log_level == "wrn" || log_level == "warning")
-			WRN_EV << cfg["message"] << "\n";
+			WRN_WML << cfg["message"] << "\n";
 		else
-			LOG_EV << cfg["message"] << "\n";
+			LOG_WML << cfg["message"] << "\n";
 	}
 
 	WML_HANDLER_FUNCTION(wml_message,/*handler*/,/*event_info*/,cfg)
 	{
 		const std::string log_level = cfg["logger"];
 		if (log_level == "err" || log_level == "error")
-			ERR_EV << cfg["message"] << "\n";
+			ERR_WML << cfg["message"] << "\n";
 		else if (log_level == "warn" || log_level == "wrn" || log_level == "warning")
-			WRN_EV << cfg["message"] << "\n";
+			WRN_WML << cfg["message"] << "\n";
 		else if (log_level == "debug" || log_level == "dbg")
-			DBG_EV << cfg["message"] << "\n";
+			DBG_WML << cfg["message"] << "\n";
 		else
-			LOG_EV << cfg["message"] << "\n";
+			LOG_WML << cfg["message"] << "\n";
 	}
 
 
