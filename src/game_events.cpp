@@ -2143,7 +2143,7 @@ namespace {
 	}
 
 	// Fire any events
-	WML_HANDLER_FUNCTION(fire_event,/*handler*/,event_info,cfg)
+	WML_HANDLER_FUNCTION(fire_event,/*handler*/,/*event_info*/,cfg)
 	{
 		map_location loc1,loc2;
 		config data;
