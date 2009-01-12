@@ -57,6 +57,8 @@
 
 namespace {
 
+	std::stringstream wml_messages_stream;
+
 	bool manager_running = false;
 	game_display* screen = NULL;
 	soundsource::manager* soundsources = NULL;
@@ -124,6 +126,22 @@ namespace {
 #endif
 #endif
 #endif
+
+/**
+ * Helper function which determines whether a wml_message text can
+ * really be pushed into the wml_messages_stream, and does it.
+ */
+static void put_wml_message(const std::string& logger, const std::string& message)
+{
+	if (logger == "err" || logger == "error")
+		ERR_WML << message << "\n";
+	else if (logger == "warn" || logger == "wrn" || logger == "warning")
+		WRN_WML << message << "\n";
+	else if (logger == "debug" || logger == "dbg")
+		DBG_WML << message << "\n";
+	else
+		LOG_WML << message << "\n";
+}
 
 /**
  * Helper function for show_wml_errors(), which gathers
@@ -1973,26 +1991,18 @@ namespace {
 	WML_HANDLER_FUNCTION(debug_message,/*handler*/,/*event_info*/,cfg)
 	{
 		lg::wml_error << "[debug_message] is deprecated and will be removed in 1.5.10; use [wml_message] instead" << '\n';
-		const std::string log_level = cfg["logger"];
-		if (log_level == "err" || log_level == "error")
-			ERR_WML << cfg["message"] << "\n";
-		else if (log_level == "warn" || log_level == "wrn" || log_level == "warning")
-			WRN_WML << cfg["message"] << "\n";
-		else
-			LOG_WML << cfg["message"] << "\n";
+		const std::string& logger = cfg["logger"];
+		const std::string& msg = cfg["message"];
+
+		put_wml_message(logger,msg);
 	}
 
 	WML_HANDLER_FUNCTION(wml_message,/*handler*/,/*event_info*/,cfg)
 	{
-		const std::string log_level = cfg["logger"];
-		if (log_level == "err" || log_level == "error")
-			ERR_WML << cfg["message"] << "\n";
-		else if (log_level == "warn" || log_level == "wrn" || log_level == "warning")
-			WRN_WML << cfg["message"] << "\n";
-		else if (log_level == "debug" || log_level == "dbg")
-			DBG_WML << cfg["message"] << "\n";
-		else
-			LOG_WML << cfg["message"] << "\n";
+		const std::string& logger = cfg["logger"];
+		const std::string& msg = cfg["message"];
+
+		put_wml_message(logger,msg);
 	}
 
 
