@@ -180,10 +180,6 @@ static server_type open_connection(game_display& disp, const std::string& origin
 			config* error = NULL;
 
 			do {
-				if(error != NULL) {
-					gui::dialog(disp,"",(*error)["message"],gui::OK_ONLY).show();
-				}
-
 				std::string login = preferences::login();
 				std::string password = "";
 				std::string password_reminder = "";
@@ -220,7 +216,7 @@ static server_type open_connection(game_display& disp, const std::string& origin
 						new_username:
 
 						const int res = gui::show_dialog(disp, NULL, "",
-								_("You must log in to this server"), gui::OK_CANCEL,
+								(*error)["message"], gui::OK_CANCEL,
 								NULL, NULL, _("Login: "), &login, mp::max_login_size);
 						if(res != 0 || login.empty()) {
 							return ABORT_SERVER;
