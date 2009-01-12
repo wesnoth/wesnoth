@@ -600,7 +600,7 @@ namespace {
 		f["name"] = "_info.cfg";
 
 		utils::string_map info_tab;
-		info_tab["type"] = addon_type_str.empty() ? addon_type_str : std::string("unknown");
+		info_tab["type"] = !addon_type_str.empty() ? addon_type_str : std::string("unknown");
 		info_tab["uploads"] = addon_uploads_str;
 		info_tab["version"] = addon_version_str;
 
