@@ -84,7 +84,7 @@ bool remove_local_addon(const std::string& addon, std::string* log)
 	if(log != NULL) {
 		*log = messages.str();
 	}
-	ERR_CFG << "removal of add-on " << addon << " failed:\n" << messages;
+	ERR_CFG << "removal of add-on " << addon << " failed:\n" << messages.str();
 
 	return ret;
 }
