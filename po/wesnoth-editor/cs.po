@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-01-11 17:06+0100\n"
-"PO-Revision-Date: 2009-01-07 22:50+0100\n"
+"PO-Revision-Date: 2009-01-12 19:47+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
@@ -108,6 +108,8 @@ msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only."
 msgstr ""
+"Pro kreslení terénu popředí, respektive pozadí, použijte levé resp. pravé "
+"tlačítko myši. Se shiftem se kreslí pouze základní vrstva."
 
 #. [editor_tool_hint]: id=editor-tool-select
 #: data/core/editor/tool-hints.cfg:19
@@ -115,6 +117,8 @@ msgid ""
 "Left mouse button selects, right deselects. Hold Shift for magic-wand "
 "selection of tiles with same terrain."
 msgstr ""
+"Levé tlačítko myši přidává do výběru, pravé odebírá. Se shiftem jsou vybrána "
+"všechny políčka se stejným terénem."
 
 #. [editor_tool_hint]: id=editor-tool-starting-position
 #: data/core/editor/tool-hints.cfg:25
@@ -123,6 +127,9 @@ msgid ""
 "scroll to the starting position, alt+number sets respective starting "
 "position under cursor, delete clears."
 msgstr ""
+"Levé tlačítko myši zobrazí vybraného hráče, pravé odstraní. Klávesy s čísly "
+"posouvají pohled k počáteční pozici odpovídajcího hráče, alt+číslo nastaví "
+"startovní pozici pod kurzor, delete ji smaže."
 
 #. [editor_tool_hint]: id=editor-paste
 #: data/core/editor/tool-hints.cfg:30
@@ -130,6 +137,8 @@ msgid ""
 "Click to paste, zoom out for more accuracy when pasting large areas. Use the "
 "edit menu to transform the clipboard (rotate, mirror)."
 msgstr ""
+"Kliknutí vkládá; při vkládání větších oblastí je vhodné oddálit pohled. Pro "
+"transformace obsahu schránky (rotace, překlápění) použijte menu úprav."
 
 #. [menu]: id=menu-editor-file
 #: data/themes/editor2.cfg:120
@@ -158,7 +167,7 @@ msgstr "vesnic"
 
 #: src/editor2/action.cpp:32
 msgid "Error creating action object"
-msgstr ""
+msgstr "Chyba při vytváření objektu akce"
 
 #: src/editor2/action.cpp:36
 msgid "Action not implemented"
@@ -185,12 +194,15 @@ msgid ""
 "Do you really want to quit? Changes in the map since the last save will be "
 "lost."
 msgstr ""
+"Opravdu si přeješ skončit? Změny v mapě od posledního uložení budou ztraceny."
 
 #: src/editor2/editor_controller.cpp:284
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
 msgstr ""
+"Opravdu si přeješ skončit? Následující mapy byly změněny; všechny změny od "
+"posledního uložení budou ztraceny:"
 
 #: src/editor2/editor_controller.cpp:289
 msgid "Quit"
@@ -220,7 +232,7 @@ msgstr "Vyber mapu k načtení"
 
 #: src/editor2/editor_controller.cpp:400
 msgid "This map is already open."
-msgstr ""
+msgstr "Tato mapa již je otevřena."
 
 #: src/editor2/editor_controller.cpp:438
 msgid "Save the Map As"
@@ -231,19 +243,17 @@ msgid "The file already exists. Do you want to overwrite it?"
 msgstr "Mapa už existuje. Přeješ si ji přepsat?"
 
 #: src/editor2/editor_controller.cpp:458
-#, fuzzy
 msgid "No random map generators found."
-msgstr "Nenalezeny žádné náhodné generátory"
+msgstr "Nebyly nalezeny žádné generátory map."
 
 #: src/editor2/editor_controller.cpp:469
 msgid "Map creation failed."
 msgstr "Mapu se nepodařilo vygenerovat."
 
-# co to je?
+# co je zase toto?
 #: src/editor2/editor_controller.cpp:484
-#, fuzzy
 msgid "Choose a mask to apply"
-msgstr "Vyber masku"
+msgstr "Vyber masku k aplikaci"
 
 #: src/editor2/editor_controller.cpp:491
 msgid "Error loading mask"
@@ -251,7 +261,7 @@ msgstr "Chyba při načítání masky"
 
 #: src/editor2/editor_controller.cpp:506
 msgid "Choose target map"
-msgstr ""
+msgstr "vyber cílovou mapu"
 
 #: src/editor2/editor_controller.cpp:513 src/editor2/editor_controller.cpp:626
 #: src/editor2/editor_main.cpp:53
@@ -292,7 +302,7 @@ msgstr "Hráč"
 
 #: src/editor2/editor_map.cpp:285
 msgid "The size of the target map is different from the current map"
-msgstr ""
+msgstr "Velikost cílové mapy je odlišná od současné mapy"
 
 #: src/editor2/editor_palettes.cpp:516
 msgid "FG"
@@ -321,97 +331,3 @@ msgstr ""
 #: src/gui/dialogs/editor_settings.cpp:119
 msgid "Custom setting"
 msgstr "Vlastní nastavení"
-
-#, fuzzy
-#~ msgid "There was a format error while loading the file:"
-#~ msgstr "Při načítání mapy se vyskytla chyba formátu:"
-
-#, fuzzy
-#~ msgid "There was a wml error while loading the file:"
-#~ msgstr "Při načítání mapy se vyskytla chyba WML:"
-
-#~ msgid "There are unsaved changes in the map."
-#~ msgstr "Na mapě jsou neuložené změny."
-
-#~ msgid "Settings"
-#~ msgstr "Nastavení"
-
-#~ msgid "Draw tiles"
-#~ msgstr "Kresli políčka"
-
-#~ msgid "Fill"
-#~ msgstr "Vyplň"
-
-#~ msgid "Set player's starting position"
-#~ msgstr "Urči hráčovu startovní pozici"
-
-#~ msgid "Zoom in"
-#~ msgstr "Přibliž pohled"
-
-#~ msgid "Zoom out"
-#~ msgstr "Oddal pohled"
-
-#~ msgid "Zoom to default view"
-#~ msgstr "Přibliž/oddal na implicitní pohled"
-
-#~ msgid "Toggle grid"
-#~ msgstr "Přepni mřížku"
-
-#~ msgid "Resize the map"
-#~ msgstr "Změň velikost mapy"
-
-#~ msgid "Flip map"
-#~ msgstr "Obrať mapu"
-
-#~ msgid "Update transitions"
-#~ msgstr "Obnov přechody"
-
-#~ msgid "Delay transition updates"
-#~ msgstr "Pozdrž překreslování přechodů"
-
-#~ msgid "Language"
-#~ msgstr "Jazyk"
-
-#~ msgid "Choose your preferred language:"
-#~ msgstr "Vyber si preferovaný jazyk:"
-
-#~ msgid "Battle for Wesnoth Map Editor"
-#~ msgstr "Editor hry Bitva o Wesnoth"
-
-#~ msgid "None"
-#~ msgstr "Nic"
-
-#~ msgid "Which Player?"
-#~ msgstr "Který hráč?"
-
-#~ msgid "Which player should start here?"
-#~ msgstr "Který hráč by zde měl začínat?"
-
-#~ msgid ""
-#~ "Warning: Illegal characters found in the map name. Please save under a "
-#~ "different name."
-#~ msgstr "Upozornění: Nedovolený znak v názvu mapy. Ulož pod jiným názvem."
-
-#~ msgid "The file does not contain a valid map."
-#~ msgstr "Soubor neobsahuje platnou mapu."
-
-#~ msgid "Do you want to save the map before quitting?"
-#~ msgstr "Chceš mapu před ukončením uložit?"
-
-#~ msgid "Error: Illegal character in filename."
-#~ msgstr "Chyba: nedovolený znak v názvu souboru"
-
-#~ msgid ""
-#~ "Can't resize the map, the requested size is bigger than the maximum, size="
-#~ msgstr ""
-#~ "Nelze změnit velikost mapy, požadovaná velikost přesahuje maximum; "
-#~ "velikost="
-
-#~ msgid " maximum="
-#~ msgstr " maximum="
-
-#~ msgid "Tool"
-#~ msgstr "Nástroj"
-
-#~ msgid "Error loading map (format)"
-#~ msgstr "Chyba načítání mapy (formát)"

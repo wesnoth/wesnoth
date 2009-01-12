@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-01-11 17:06+0100\n"
-"PO-Revision-Date: 2008-12-12 00:18+0100\n"
+"PO-Revision-Date: 2009-01-12 19:47+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
@@ -412,7 +412,7 @@ msgstr "Odstranit rozšíření"
 #: data/gui/default/window/mp_connect.cfg:175
 #: data/gui/default/window/mp_connect.cfg:176
 msgid "Connect"
-msgstr ""
+msgstr "Připojit"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
@@ -617,7 +617,7 @@ msgstr ""
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:61
 msgid "Message:"
-msgstr ""
+msgstr "Zpráva:"
 
 #. [button]: id=ok
 #: data/gui/default/window/mp_cmd_wrapper.cfg:93
@@ -1021,9 +1021,11 @@ msgstr "Seřaď seznam v čekárně"
 msgid "Iconize Lobby List"
 msgstr "Ikony v čekárně"
 
+# kratší?
 #: src/game_preferences_display.cpp:163
+#, fuzzy
 msgid "Set path to wesnothd"
-msgstr ""
+msgstr "Nastavit umístění serveru wesnothd"
 
 #: src/game_preferences_display.cpp:164
 msgid "Friends List"
@@ -2083,121 +2085,3 @@ msgstr ""
 #: src/wml_exception.cpp:75
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr "V sekci '[$section|]' není nastaven povinný klíč '$key|'."
-
-#~ msgid "No scrollbar defined."
-#~ msgstr "Není definován žádný posuvník."
-
-#~ msgid "Ok"
-#~ msgstr "Ok"
-
-#~ msgid "2000"
-#~ msgstr "2000"
-
-#~ msgid "-1"
-#~ msgstr "-1"
-
-#~ msgid "Your modifications to the map will be lost. Continue?"
-#~ msgstr "Přijdeš o změny, které jsi v mapě udělal. Pokračovat?"
-
-#~ msgid "Generate New Map"
-#~ msgstr "Vygeneruj novou mapu"
-
-#~ msgid "Random Generator Settings"
-#~ msgstr "Nastavení generátoru"
-
-#~ msgid "Map creation failed."
-#~ msgstr "Mapu se nepodařilo vygenerovat."
-
-#~ msgid "Video Mode"
-#~ msgstr "Grafický mód"
-
-#~ msgid "Lighting levels (time of day):"
-#~ msgstr "Nastavení osvětlení mapy (denní doba):"
-
-#~ msgid "light_level^Red:"
-#~ msgstr "Červené:"
-
-#~ msgid "light_level^Green:"
-#~ msgstr "Zelené:"
-
-#~ msgid "light_level^Blue:"
-#~ msgstr "Modré:"
-
-#~ msgid "X offset:"
-#~ msgstr "offset X:"
-
-#~ msgid "Y offset:"
-#~ msgstr "offset Y:"
-
-#~ msgid "Smart expand"
-#~ msgstr "Chytré rozšíření"
-
-#~ msgid "X-Axis"
-#~ msgstr "X-ová osa"
-
-#~ msgid "Y-Axis"
-#~ msgstr "Y-ová osa"
-
-#~ msgid "Flip around (this may change the dimensions of the map):"
-#~ msgstr "Převrať dokola (může změnit rozměry mapy):"
-
-#~ msgid "Set Terrain"
-#~ msgstr "Nastav terén"
-
-#~ msgid "Save As"
-#~ msgstr "Ulož jako"
-
-#~ msgid "Set Player's keep"
-#~ msgstr "Urči hráčovu pevnost"
-
-#~ msgid "Flood Fill"
-#~ msgstr "Vyplň plochu"
-
-#~ msgid "Revert from Disk"
-#~ msgstr "Obnov z disku"
-
-#~ msgid "Flip Map"
-#~ msgstr "Otoč mapu"
-
-#~ msgid "Draw Terrain"
-#~ msgstr "Nakresli terén"
-
-#~ msgid "Delay transition updates"
-#~ msgstr "Pozdrž překreslování přechodů"
-
-#~ msgid "Flip Map along X axis"
-#~ msgstr "Otoč mapu podle osy X"
-
-#~ msgid "Flip Map along Y axis"
-#~ msgstr "Otoč mapu podle osy Y"
-
-#~ msgid "Cave Lit"
-#~ msgstr "Osvětlená jeskyně"
-
-#~ msgid "Rockbound Cave Lit"
-#~ msgstr "Osvětlená skalnatá jeskyně"
-
-#~ msgid "Invalid terrain found probably an 1.2 terrain format, terrain = "
-#~ msgstr "Nalezen nepoužitelný terén, pravděpodobně verze 1.2; vstup: "
-
-#, fuzzy
-#~ msgid "No default window defined."
-#~ msgstr "Nebyl definován žádný server."
-
-#, fuzzy
-#~ msgid "No default button defined."
-#~ msgstr "Nebyl definován žádný server."
-
-#, fuzzy
-#~ msgid "No layer or draw section defined."
-#~ msgstr "Nebyl definován žádný server."
-
-#~ msgid "Save replays on SP victory or SP/MP defeat."
-#~ msgstr "Ukládej záznamy při vítězství v tažení a jakékoliv porážce."
-
-#~ msgid "Automatically delete saves on SP victory or SP/MP defeat"
-#~ msgstr ""
-#~ "Maž automaticky uložené pozice při vítězství v tažení a jakékoliv porážce."
-
-#~ msgid "Save Hotkeys"
-#~ msgstr "Ulož klávesové zkratky"
