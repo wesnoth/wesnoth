@@ -130,12 +130,16 @@ static void put_wml_message(const std::string& logger, const std::string& messag
 {
 	if (logger == "err" || logger == "error") {
 		lg::err(lg::wml) << message << "\n";
+		wml_messages_stream << _("Error: ") << message << "\n";
 	} else if (logger == "warn" || logger == "wrn" || logger == "warning") {
 		lg::warn(lg::wml) << message << "\n";
+		wml_messages_stream << _("Warning: ") << message << "\n";
 	} else if((logger == "debug" || logger == "dbg") && !lg::debug.dont_log(lg::wml)) {
 		lg::debug(lg::wml) << message << "\n";
-	} else {
+		wml_messages_stream << _("Debug: ") << message << "\n";
+	} else if(!lg::info.dont_log(lg::wml)) {
 		lg::info(lg::wml) << message << "\n";
+		wml_messages_stream << _("Info: ") << message << "\n";
 	}
 }
 
@@ -185,6 +189,30 @@ static void show_wml_errors()
 
 	// Show the messages collected
 	std::string caption = "Invalid WML found";
+	for(std::map<std::string, int>::const_iterator itor = messages.begin();
+			itor != messages.end(); ++itor) {
+
+		std::stringstream msg;
+		msg << itor->first;
+		if(itor->second > 1) {
+			msg << " (" << itor->second << ")";
+		}
+
+		(screen)->add_chat_message(time(NULL), caption, 0, msg.str(),
+				game_display::MESSAGE_PUBLIC, false);
+		std::cerr << caption << ": " << msg.str() << '\n';
+	}
+}
+
+static void show_wml_messages()
+{
+	// Get all unique messages in messages,
+	// with the number of encounters for these messages
+	std::map<std::string, int> messages;
+	fill_wml_messages_map(messages, wml_messages_stream);
+
+	// Show the messages collected
+	std::string caption = "WML";
 	for(std::map<std::string, int>::const_iterator itor = messages.begin();
 			itor != messages.end(); ++itor) {
 
@@ -3570,6 +3598,7 @@ namespace game_events {
 			// Dialogs can only be shown if the display is not locked
 			if(! (screen)->video().update_locked()) {
 				show_wml_errors();
+				show_wml_messages();
 			}
 		}
 
