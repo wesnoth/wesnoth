@@ -40,6 +40,7 @@ opts.AddOptions(
     ListOption('default_targets', 'Targets that will be built if no target is specified in command line.',
         "wesnoth,wesnothd,test", Split("wesnoth wesnothd campaignd cutter exploder test")),
     EnumOption('build', 'Build variant: debug, release profile or base (no subdirectory)', "release", ["release", "debug", "glibcxx_debug", "profile","base"]),
+    ('extra_flags_config', 'Extra compiler and linker flags to use for configuration and all builds', ""),
     ('extra_flags_base', 'Extra compiler and linker flags to use for release builds', ""),
     ('extra_flags_release', 'Extra compiler and linker flags to use for release builds', ""),
     ('extra_flags_debug', 'Extra compiler and linker flags to use for debug builds', ""),
@@ -209,6 +210,7 @@ from metasconf import init_metasconf
 configure_args = dict(custom_tests = init_metasconf(env, ["cplusplus", "python_devel", "sdl", "boost", "pango", "pkgconfig", "gettext"]), config_h = "config.h",
     log_file="build/config.log", conf_dir="build/sconf_temp")
 
+env.MergeFlags(env["extra_flags_config"])
 if env["prereqs"]:
     conf = env.Configure(**configure_args)
     have_server_prereqs = \
