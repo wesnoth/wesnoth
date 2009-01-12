@@ -50,11 +50,6 @@
 #define LOG_DP LOG_STREAM(info, display)
 #define ERR_CF LOG_STREAM(err, config)
 
-#define DBG_WML LOG_STREAM(debug,wml)
-#define LOG_WML LOG_STREAM(info, wml)
-#define WRN_WML LOG_STREAM(warn, wml)
-#define ERR_WML LOG_STREAM(err,  wml)
-
 namespace {
 
 	std::stringstream wml_messages_stream;
@@ -134,13 +129,13 @@ namespace {
 static void put_wml_message(const std::string& logger, const std::string& message)
 {
 	if (logger == "err" || logger == "error") {
-		ERR_WML << message << "\n";
+		lg::err(lg::wml) << message << "\n";
 	} else if (logger == "warn" || logger == "wrn" || logger == "warning") {
-		WRN_WML << message << "\n";
-	} else if (logger == "debug" || logger == "dbg") {
-		DBG_WML << message << "\n";
+		lg::warn(lg::wml) << message << "\n";
+	} else if((logger == "debug" || logger == "dbg") && !lg::debug.dont_log(lg::wml)) {
+		lg::debug(lg::wml) << message << "\n";
 	} else {
-		LOG_WML << message << "\n";
+		lg::info(lg::wml) << message << "\n";
 	}
 }
 
