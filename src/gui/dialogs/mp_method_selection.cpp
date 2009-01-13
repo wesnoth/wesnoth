@@ -19,6 +19,7 @@
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/window.hpp"
 #include "gui/widgets/text_box.hpp"
+#include "gui/widgets/toggle_button.hpp"
 #include "multiplayer.hpp"
 
 namespace gui2 {
@@ -58,6 +59,10 @@ void tmp_method_selection::pre_show(CVideo& /*video*/, twindow& window)
 
 	password_widget->set_value(preferences::password());
 
+	ttoggle_button* remember_password
+			= dynamic_cast<ttoggle_button*>(window.find_widget("remember_password", false));
+	if(remember_password) remember_password->set_value(preferences::remember_password());
+
 	tlistbox* list = dynamic_cast<tlistbox*>(window.find_widget("method_list", false));
 	VALIDATE(list, missing_widget("method_list"));
 
@@ -77,6 +82,10 @@ void tmp_method_selection::post_show(twindow& window)
 
 		tlistbox* list = dynamic_cast<tlistbox*>(window.find_widget("method_list", false));
 		assert(list);
+
+		ttoggle_button* remember_password
+				= dynamic_cast<ttoggle_button*>(window.find_widget("remember_password", false));
+		if(remember_password) preferences::set_remember_password(remember_password->get_value());
 
 		choice_ = list->get_selected_row();
 

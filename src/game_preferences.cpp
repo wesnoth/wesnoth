@@ -337,19 +337,45 @@ std::string login()
 	return res;
 }
 
-std::string password()
-{
-	return preferences::get("password");
-}
-
 void set_login(const std::string& username)
 {
 	preferences::set("login", username);
 }
 
+namespace prv {
+	std::string password;
+}
+
+std::string password()
+{
+	if(remember_password()) {
+		return preferences::get("password");
+	} else {
+		return prv::password;
+	}
+}
+
 void set_password(const std::string& password)
 {
-	preferences::set("password", password);
+	prv::password = password;
+	if(remember_password()) {
+		preferences::set("password", password);
+	}
+}
+
+bool remember_password()
+{
+	return utils::string_bool(preferences::get("remember_password"), false);
+}
+
+void set_remember_password(bool remember)
+{
+	preferences::set("remember_password", remember ? "yes" : "no");
+
+	// Clear the password
+	if(!remember) {
+		preferences::set("password", "");
+	}
 }
 
 bool turn_dialog()

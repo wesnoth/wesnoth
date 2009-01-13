@@ -22,6 +22,7 @@
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/label.hpp"
+#include "gui/widgets/toggle_button.hpp"
 
 namespace gui2 {
 
@@ -234,21 +235,31 @@ void tmp_login::pre_show(CVideo& /*video*/, twindow& window)
 		dynamic_cast<tlabel*>(window.find_widget("login_label", false));
 	if(label) label->set_label(label_);
 
+	ttoggle_button* remember_password
+			= dynamic_cast<ttoggle_button*>(window.find_widget("remember_password", false));
+	if(remember_password) remember_password->set_value(preferences::remember_password());
+
 }
 
 void tmp_login::post_show(twindow& window)
 {
-	ttext_box* username =
-		dynamic_cast<ttext_box*>(window.find_widget("user_name", false));
-	assert(username);
+	if(get_retval() == twindow::OK) {
+		ttoggle_button* remember_password
+				= dynamic_cast<ttoggle_button*>(window.find_widget("remember_password", false));
+		if(remember_password) preferences::set_remember_password(remember_password->get_value());
 
-	preferences::set_login(username->get_value());
+		ttext_box* username =
+			dynamic_cast<ttext_box*>(window.find_widget("user_name", false));
+		assert(username);
 
-	ttext_box* password =
-		dynamic_cast<ttext_box*>(window.find_widget("password", false));
-	assert(password);
+		preferences::set_login(username->get_value());
 
-	preferences::set_password(password->get_value());
+		ttext_box* password =
+			dynamic_cast<ttext_box*>(window.find_widget("password", false));
+		assert(password);
+
+		preferences::set_password(password->get_value());
+	}
 }
 
 } // namespace gui2
