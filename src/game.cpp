@@ -2022,7 +2022,9 @@ static int do_gameloop(int argc, char** argv)
 
 		statistics::fresh_stats();
 
-		sound::play_music_repeatedly(game_config::title_music);
+        if (!game.is_loading()) {
+            sound::play_music_repeatedly(game_config::title_music);
+        }
 
 		if(game.play_test() == false) {
 			return 0;

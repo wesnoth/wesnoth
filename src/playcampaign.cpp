@@ -367,7 +367,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 				LOG_G << "generated map\n";
 			}
 
-			sound::play_no_music();
+			sound::empty_playlist();
 
 			switch (io_type){
 			case IO_NONE:
