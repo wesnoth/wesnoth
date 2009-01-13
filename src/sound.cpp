@@ -486,6 +486,11 @@ void play_no_music()
 	}
 }
 
+void empty_playlist()
+{
+    current_track_list = std::vector<music_track>();
+}
+
 void play_music()
 {
 	music_start_time = 1; //immediate (same as effect as SDL_GetTicks())
