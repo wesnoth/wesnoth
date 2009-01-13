@@ -3105,6 +3105,23 @@ namespace {
         }
 	}
 
+	// Experimental map replace
+	WML_HANDLER_FUNCTION(replace_map,handler,/*event_info*/,cfg)
+	{
+		gamemap map(*game_map);
+		try {
+			map.read(cfg["map"]);
+		} catch(incorrect_map_format_exception&) {
+			ERR_NG << "terrain mask is in the incorrect format, and couldn't be applied\n";
+			return;
+		} catch(twml_exception& e) {
+			e.show(*screen);
+			return;
+		}
+		*game_map = map;
+        screen->reload_map();
+		handler.rebuild_screen() = true;
+	}
 
 	/** Handles all the different types of actions that can be triggered by an event. */
 
