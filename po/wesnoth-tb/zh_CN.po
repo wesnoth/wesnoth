@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-01-11 17:07+0100\n"
-"PO-Revision-Date: 2008-03-01 00:10+0100\n"
-"Last-Translator: Nils Kneuper <crazy-ivanovic  AT gmx  D O  T net>\n"
+"PO-Revision-Date: 2009-01-13 21:00+1000\n"
+"Last-Translator: luojie <lililjlj@gmail.com>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -12,7 +12,6 @@ msgstr ""
 
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:12
-#, fuzzy
 msgid "A Tale of Two Brothers"
 msgstr "兄弟传说"
 
@@ -43,7 +42,6 @@ msgstr "骑士"
 
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:21
-#, fuzzy
 msgid ""
 "An evil mage is threatening the small village of Maghre and its inhabitants. "
 "The village's mage Bjarn send for his brother to help, but not all goes as "
@@ -52,9 +50,10 @@ msgid ""
 "(Novice level, 4 scenarios; the 'Hard' version may challenge more "
 "experienced players.)"
 msgstr ""
-"一个邪恶的巫师给附近的乡村和村民带来了威胁，他们的领袖Bjarn向他的哥哥Arne求"
-"助，并且取得胜利，但Bjarn本人却不幸被俘，你能救回他吗？\n"
-"(初学者级别, 共4幕;  \"挑战\"难度也许对入门的玩家有一定挑战性)"
+"一个邪恶的巫师给小镇Maghre周边带来了威胁，城镇的法师Bjarn向他的兄弟求助，但发"
+"展并不与计划中的一致，你能帮忙吗？\n"
+"\n"
+"(初学者级别, 共4幕;  '艰难'级别也许对已经入门的玩家有一定挑战性)"
 
 #. [about]
 #: data/campaigns/Two_Brothers/_main.cfg:28
@@ -173,68 +172,57 @@ msgstr "回合耗尽"
 #: data/campaigns/Two_Brothers/scenarios/5_Epilog.cfg:48
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:147
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:90
-#, fuzzy
 msgid "Arne"
 msgstr "Arne"
 
 #. [unit]: id=Bjarn, type=Red Mage
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:171
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:725
-#, fuzzy
 msgid "Bjarn"
 msgstr "Bjarn"
 
 #. [unit]: type=Spearman
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:183
-#, fuzzy
 msgid "Alwyn"
 msgstr "Alwyn"
 
 #. [unit]: type=Spearman
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:194
-#, fuzzy
 msgid "Brent"
 msgstr "Brent"
 
 #. [unit]: type=Spearman
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:205
-#, fuzzy
 msgid "Cadell"
 msgstr "Cadell"
 
 #. [unit]: type=Bowman
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:216
-#, fuzzy
 msgid "Dannen"
 msgstr "Dannen"
 
 #. [unit]: type=Bowman
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:227
-#, fuzzy
 msgid "Efran"
 msgstr "Efran"
 
 #. [unit]: type=Footpad
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:238
-#, fuzzy
 msgid "Fargus"
 msgstr "Fargus"
 
 #. [unit]: id=Erik, type=Horseman
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:252
-#, fuzzy
 msgid "Erik"
 msgstr "Erik"
 
 #. [unit]: id=Heine, type=Horseman
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:264
-#, fuzzy
 msgid "Heine"
 msgstr "Heine"
 
 #. [unit]: id=Magnus, type=Horseman
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:276
-#, fuzzy
 msgid "Magnus"
 msgstr "Magnus"
 
@@ -246,11 +234,10 @@ msgstr "Magnus"
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:97
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:138
 msgid "Humans"
-msgstr ""
+msgstr "人类"
 
 #. [side]: type=Dark Sorcerer, id=Mordak
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:301
-#, fuzzy
 msgid "Mordak"
 msgstr "Mordak"
 
@@ -263,13 +250,12 @@ msgstr "Mordak"
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:146
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:126
 msgid "Enemies"
-msgstr ""
+msgstr "敌人"
 
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:333
-#, fuzzy
 msgid "Greetings, my brother! How may my men and I be of aid?"
-msgstr "你们好, Bjarn。有什么如此大惊小怪的?"
+msgstr "你好，我的兄弟！我们能帮上什么呢？"
 
 #. [message]: speaker=Bjarn
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:337
@@ -292,7 +278,7 @@ msgstr ""
 msgid ""
 "I will lead my men, and such villagers as can keep up with us, north to slay "
 "this Mordak! What will you do?"
-msgstr ""
+msgstr "我带着我的部队，镇里的人可以跟着我们去北面解决Mordak！你做什么？"
 
 #. [message]: speaker=Bjarn
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:349
@@ -305,11 +291,11 @@ msgstr ""
 
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:360
-#, fuzzy
 msgid ""
 "Bjarn should be in position by now. Press them, distract the adept so Bjarn "
 "can spring his trap!"
-msgstr "Bjarn应该到了. 恐怕有什么事发生."
+msgstr ""
+"Bjarn应该到了。恐怕有什么事发生！压制他们，扰乱那家伙，让Bjarn可以脱离陷阱！"
 
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:368
@@ -326,7 +312,7 @@ msgstr "啊!"
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:383
 msgid "Good work, men! But what has become of my brother?"
-msgstr ""
+msgstr "大伙干得好！但是我的兄弟怎么样？"
 
 #. [message]: speaker=unit
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:387
@@ -366,13 +352,11 @@ msgstr ""
 
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:436
-#, fuzzy
 msgid "I hear these creatures are nigh-immune to our weapons, let us see!"
-msgstr "听说那些东西不惧我们的武器, 让我们看看!"
+msgstr "听说那些东西对我们的武器免疫, 让我们看看!"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:451
-#, fuzzy
 msgid "That was not so hard!"
 msgstr "没有那么困难呢!"
 
@@ -398,7 +382,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:23
-#, fuzzy
 msgid ""
 "Heedless of those rumors, Arne followed them. His only worry was that his "
 "horsemen would be at disadvantage if attacked in the forest."
@@ -417,7 +400,7 @@ msgstr "Nil-Galion"
 #. [side]: type=Elvish Rider, id=Nil-Galion
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:176
 msgid "Elves"
-msgstr ""
+msgstr "精灵"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:268
@@ -521,49 +504,41 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:410
-#, fuzzy
 msgid "Sithrak"
 msgstr "Sithrak"
 
 #. [event]
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:411
-#, fuzzy
 msgid "Eleben"
-msgstr "Eleben."
+msgstr "Eleben"
 
 #. [event]
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:412
-#, fuzzy
 msgid "Jarlom"
 msgstr "Jarlom"
 
 #. [event]
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:413
-#, fuzzy
 msgid "Hamik"
 msgstr "Hamik"
 
 #. [event]
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:416
-#, fuzzy
 msgid "Akranbral"
 msgstr "Akranbral"
 
 #. [event]
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:417
-#, fuzzy
 msgid "Drakanal"
 msgstr "Drakanal"
 
 #. [event]
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:418
-#, fuzzy
 msgid "Xaskanat"
 msgstr "Xaskanat"
 
 #. [event]
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:419
-#, fuzzy
 msgid "Katklagad"
 msgstr "Katklagad"
 
@@ -584,7 +559,6 @@ msgstr ""
 
 #. [unit]: id=Brena, type=Iron Mauler
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:440
-#, fuzzy
 msgid "Brena"
 msgstr "Brena"
 
@@ -616,9 +590,8 @@ msgstr "他只能拖慢我们的速度!"
 
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:468
-#, fuzzy
 msgid "It is my place to decide this."
-msgstr "我是带头的."
+msgstr "决策者是我。"
 
 #. [option]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:470
@@ -660,14 +633,13 @@ msgstr "他逃跑了..."
 
 #. [message]: speaker=Nil-Galion
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:539
-#, fuzzy
 msgid ""
 "Foolish human, you have killed me but you will not catch the undead in time. "
 "I have fulfilled my contract, and will be reanimated soon to become a lord "
 "of their armies."
 msgstr ""
-"愚蠢的人类, 你们杀了我但会死在不死的手里。 而我已订了契约，不久就会复活成为他"
-"们的领主。"
+"愚蠢的人, 你们杀了我但会死在不死族的手里。 而我已完成了契约，不久就会复活成为"
+"他们的领主。"
 
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:543
@@ -676,9 +648,8 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:548
-#, fuzzy
 msgid "Catch the kidnappers"
-msgstr "快, 战士们! 我们去逮住那些绑架者!"
+msgstr "逮住绑架者"
 
 #. [terrain]: id=magic_irongate
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:6
@@ -692,7 +663,6 @@ msgstr "戒备的城堡"
 
 #. [side]: type=Dark Sorcerer, id=Rotharik
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:87
-#, fuzzy
 msgid "Rotharik"
 msgstr "Rotharik"
 
@@ -736,11 +706,10 @@ msgstr "解救Bjarn"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:321
-#, fuzzy
 msgid ""
 "Arne's men arrived at the castle and were immediately challenged by some "
 "guards."
-msgstr "Arne到达城堡, 立刻被守卫拦住."
+msgstr "Arne的部队刚到达城堡, 立刻被守卫拦住."
 
 #. [message]: speaker=Guard_leader
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:325
@@ -791,12 +760,10 @@ msgstr "哈哈! 我们好久没杀人了。武器渴望鲜血，现在杀掉他�
 
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:402
-#, fuzzy
 msgid ""
 "My sword-arm has a say in who will do the dying. Come on, men, let's kill "
 "some orcs."
-msgstr ""
-"我知道现在不得不为我兄弟的自由而战! 上吧, 战士们, 让我们首先解决些兽人."
+msgstr "我的剑士们会说究竟谁会死。上吧, 战士们, 让我们首先解决些兽人."
 
 #. [message]: speaker=Guard2_leader
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:451
@@ -878,11 +845,10 @@ msgstr "长袍里有一把钥匙。"
 
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:654
-#, fuzzy
 msgid ""
 "That may well be the key to the cell they're holding Bjarn in! I will take "
 "it."
-msgstr "这肯定是Bjarn牢房的钥匙!  快, 让我们救出他吧."
+msgstr "这肯定是Bjarn牢房的钥匙! 我拿到了。"
 
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:660
@@ -906,9 +872,8 @@ msgstr "我找到Bjarn了, 他在这间牢房里."
 
 #. [message]: speaker=Bjarn
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:762
-#, fuzzy
 msgid "Good to see you, Arne. Now get out of this dungeon, please?"
-msgstr "很高兴见到你, Arne。请帮我脱离这里。"
+msgstr "很高兴见到你, Arne。请帮我脱离这里，好吧？"
 
 #. [message]: speaker=Bjarn
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:768
@@ -917,18 +882,16 @@ msgstr "你一定是Arne的战士。 请帮我脱离这里。"
 
 #. [message]: speaker=Bjarn
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:774
-#, fuzzy
 msgid ""
 "The accursed dark sorcerer Rotharik has imprisoned me behind this magically "
 "enhanced iron gate. It can only be opened with the correct key. You must get "
 "it from him to free me."
 msgstr ""
-"可恶的黑暗法师Rotharik把我囚禁在这魔法们后, 只能用一把合适的钥匙开门, 就是说"
+"可恶的黑暗法师Rotharik把我囚禁在这魔法门后, 只能用一把合适的钥匙开门, 就是说"
 "你只能用它来释放我。"
 
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:785
-#, fuzzy
 msgid "Kill the dark sorcerer to get the cell key"
 msgstr "杀黑暗法师获取牢房钥匙"
 
@@ -986,7 +949,6 @@ msgstr "Bjarn战死"
 #. [side]: type=Orcish Warlord, id=Tairach
 #: data/campaigns/Two_Brothers/scenarios/5_Epilog.cfg:58
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:104
-#, fuzzy
 msgid "Tairach"
 msgstr "Tairach"
 
@@ -1004,30 +966,27 @@ msgstr "喂. 你的"
 
 #. [message]: speaker=Bjarn
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:167
-#, fuzzy
 msgid ""
 "No, they are fleeing from something. We must find out what is happening over "
 "there!"
-msgstr "不是. 他们在逃跑. 我们应该问问发生了什么!"
+msgstr "不是，他们在逃跑。我们必须问问那边发生了什么！"
 
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:171
 msgid "Men! Ready your weapons!"
-msgstr ""
+msgstr "大伙！准备上了！"
 
 #. [message]: speaker=Bjarn
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:175
-#, fuzzy
 msgid ""
 "We should go there and talk to Counselor Hoban. Maybe he knows what is going "
 "on here."
-msgstr "可以的话, 去和委员会说说或Hoban. 他可能知道发生了什么."
+msgstr "可以的话, 我们去和委员Hoban说说。他可能知道什么。"
 
 #. [message]: speaker=Councillor Hoban
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:186
-#, fuzzy
 msgid "I am glad to see you returned."
-msgstr "非常高兴地看到你回来!"
+msgstr "非常高兴看到你回来!"
 
 #. [message]: speaker=Bjarn
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:190
@@ -1043,41 +1002,38 @@ msgstr ""
 
 #. [message]: speaker=Councillor Hoban
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:198
-#, fuzzy
 msgid ""
 "The orcish warlord aims to enslave us. We will not be able to hold out for "
 "much longer."
-msgstr "兽人军阀需要奴役我们。但我们不会一直这样拖下去的。"
+msgstr "兽人军阀力求奴役我们。但我们不会一直这样拖下去的。"
 
 #. [message]: speaker=Councillor Hoban
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:202
-#, fuzzy
 msgid ""
 "Have a care, his men are fell fighters and have killed many. Very few remain "
 "who can bear arms, but I will send them to aid you in battle."
-msgstr "小心, 他杀死了很多人。少数存活的人可以上阵, 我会命令他们跟随您战斗。"
+msgstr ""
+"小心, 他们很厉害，杀死了很多人。我们只有少数人可以上阵，我会命令他们跟随您战"
+"斗。"
 
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:207
-#, fuzzy
 msgid "Slay the Orcish Warlord to free the village"
 msgstr "击杀兽人军阀使村庄重获自由"
 
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:229
-#, fuzzy
 msgid "Finally the warlord is killed. Now you can go back to Maghre."
-msgstr "最终兽人被杀了。 你可以回村了。"
+msgstr "最终军阀死了。你们可以回到Maghre了。"
 
 #. [message]: speaker=Bjarn
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:233
-#, fuzzy
 msgid ""
 "So much has been destroyed. It will be difficult to repair all that the orcs "
 "and undead have wrecked. And they could come again."
 msgstr ""
-"我们修复重建的过程将会很漫长。 兽人和不死破坏了这里。 我真心希望这些不再发"
-"生。"
+"城镇受到了很大损失，重建的过程将会很漫长。兽人和不死破坏了这里，而且他们也可"
+"能再来。"
 
 #. [message]: speaker=Arne
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:237
@@ -1103,9 +1059,8 @@ msgstr "我无法保护那些人。 啊, 为什么会这样?!?"
 
 #. [scenario]: id=epilog
 #: data/campaigns/Two_Brothers/scenarios/5_Epilog.cfg:4
-#, fuzzy
 msgid "A Tale of Two Brothers - Epilogue"
-msgstr "兄弟传说"
+msgstr "兄弟传说 - 前言"
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/5_Epilog.cfg:11
@@ -1123,6 +1078,8 @@ msgid ""
 "even mention Arne's name together with that of the famous elvish lord "
 "Kalenz, but this is a different story..."
 msgstr ""
+"Arne和部队离开村子，那里由Bjarn良好的经营。他们旅程中面对了很多挑战。传说中"
+"Arne的名字和著名精灵领主Kalenz并列在一起，虽然是不同的故事..."
 
 #~ msgid ""
 #~ "Hurry, we have to track them down. Maybe we can still get them. They have "

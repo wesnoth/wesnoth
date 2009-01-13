@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3.7+svn\n"
 "POT-Creation-Date: 2008-12-22 10:13+0100\n"
-"PO-Revision-Date: 2008-02-26 20:58+1000\n"
-"Last-Translator: luojie <luojie-dune@operamail.com>\n"
+"PO-Revision-Date: 2009-01-13 20:47+1000\n"
+"Last-Translator: luojie <lililjlj@gmail.com>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -17,7 +17,7 @@ msgstr ""
 # type: Attribute 'lang' of: <book>
 #: ../../doc/manual/manual.en.xml:4
 msgid "en"
-msgstr "en"
+msgstr "zh_CN"
 
 # type: Content of: <book><bookinfo><title>
 #: ../../doc/manual/manual.en.xml:6
@@ -34,7 +34,7 @@ msgstr "序"
 #: ../../doc/manual/manual.en.xml:12
 msgid ""
 "The Battle for Wesnoth is a turn-based strategy game with a fantasy theme."
-msgstr "韦诺之战是一个有很好主题的回合制游戏"
+msgstr "韦诺之战是一个奇幻主题的回合制策略游戏"
 
 # type: Content of: <book><preface><simpara>
 #: ../../doc/manual/manual.en.xml:14
@@ -99,7 +99,7 @@ msgstr "新手上路"
 # type: Content of: <book><chapter><section><title>
 #: ../../doc/manual/manual.en.xml:46
 msgid "The World"
-msgstr "世界"
+msgstr "这个世界"
 
 # type: Content of: <book><chapter><section><simpara>
 #: ../../doc/manual/manual.en.xml:47
@@ -110,8 +110,8 @@ msgid ""
 "lawless; the kingdom of Wesnoth and its occasional principality, Elensefar; "
 "and the domain of the Southwest Elves in the Aethenwood and beyond."
 msgstr ""
-"Wesnoth所在大陆已知的部分主要有3大块：北方大陆，这个地方渐渐失去了统治秩序；"
-"Wesnoth王国和它目前的诸侯国Elensefar；以及西南部Aethenwood丛林中的精灵族。"
+"Wesnoth所在大陆已知的部分主要有3大块：北方大陆，这个地方基本无秩序；Wesnoth王"
+"国和它目前的诸侯国Elensefar；以及西南部Aethenwood及周边丛林中的精灵族。"
 
 # type: Content of: <book><chapter><section><simpara>
 #: ../../doc/manual/manual.en.xml:53
@@ -124,12 +124,12 @@ msgid ""
 "loosely defined line with Wesnoth to the east, the Bay of Pearls to the "
 "south, and the ocean to the west."
 msgstr ""
-"Wesnoth王国在整个大陆的中心。北面是Great River（大河），东南面是Lower hills"
-"（丘陵），西南面是Green Swamp（绿色沼泽），西面是Ocean（海洋）。Elensefar曾经"
-"是Wesnoth的一个州。北面是Great River（大河），东面与Wesnoth界限并不清楚，南面"
-"是Bay of Pearls（珍珠海湾），西面是Ocean（海洋）。北方大陆没有政府的统治。来"
-"自兽族，矮人，野蛮人和精灵的部落生存在这片土地上。它北面和东面都没有界定，南"
-"面是Great River(大河)，西面是Ocean(海洋)。"
+"Wesnoth韦诺王国在整个大陆的中心。北面边界是Great River（大河），东南面是"
+"Lower Hills（丘陵），西南面是Green Swamp（绿色沼泽），西面是Ocean（海洋）。"
+"Elensefar曾经是Wesnoth的一个省，由北面Great River（大河）界隔划分，东面与"
+"Wesnoth界限并不清楚，南面是Bay of Pearls（珍珠海湾），西面是Ocean（海洋）。北"
+"方大陆没有政府的统治。兽人，矮人，野蛮人和精灵的群体生存在这块区域上。它南面"
+"和东面都没有界定，北面界限是Great River(大河)，西面也是Ocean(海洋)。"
 
 # type: Content of: <book><chapter><section><simpara>
 #: ../../doc/manual/manual.en.xml:60
@@ -206,16 +206,19 @@ msgid ""
 "play the campaign, \"A Tale of Two Brothers\" by clicking the \"Campaign\" "
 "button and selecting it from the list provided."
 msgstr ""
-"wesnoth启动后显示背景画面和主菜单。主菜单由右边的一列按钮组成，只能用鼠标操"
-"作。如果你很着急，那么建议你：单击\"语言\"按钮设置语言；单击\"教程\"按钮运行"
+"Wesnoth启动后显示背景画面和主菜单。主菜单由右边的一列按钮组成，只能用鼠标操"
+"作。如果你急着进入游戏，建议：单击\"语言\"按钮设置语言；单击\"教程\"按钮运行"
 "教程；然后玩一玩\"兄弟\"这个战役。（战役->选择\"兄弟\"）"
 
 # type: Content of: <book><chapter><section><simpara><inlinemediaobject>
 #: ../../doc/manual/manual.en.xml:101
+#, fuzzy
 msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/main-menu-"
 "1.5.7.jpg\"/> </imageobject>"
 msgstr ""
+"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/main-menu.jpg"
+"\"/> </imageobject>"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:106 ../../doc/manual/manual.en.xml:349
@@ -228,7 +231,7 @@ msgstr ""
 #: ../../doc/manual/manual.en.xml:2032 ../../doc/manual/manual.en.xml:2048
 #: ../../doc/manual/manual.en.xml:2064 ../../doc/manual/manual.en.xml:2080
 msgid "</inlinemediaobject>"
-msgstr ""
+msgstr "</inlinemediaobject>"
 
 #: ../../doc/manual/manual.en.xml:111
 msgid "Tutorial"
@@ -281,7 +284,6 @@ msgstr "多人对战"
 
 # type: Content of: <book><chapter><section><variablelist><varlistentry><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:152
-#, fuzzy
 msgid ""
 "Click this button to play single scenarios against one or more opponents. "
 "You can play the games over the internet or at your computer, against "
@@ -289,9 +291,9 @@ msgid ""
 "appear and allow you to choose how you want to play the scenario. To learn "
 "more, see <link linkend=\"scenarios\">scenarios</link>."
 msgstr ""
-"单击这个按钮开始一个场景游戏。你可以选择一个或者多个对手，可以选择本地游戏也"
-"可以联机游戏，可以和电脑对战也可以和人对战。选择这个按钮后会弹出一个对话框让"
-"你选择要怎么玩这个场景。更多信息参考<xref linkend=\"scenarios\"/>。"
+"单击这个按钮开始一个场景游戏，对抗一个或者多个对手。可以选择本地游戏也可以联"
+"机游戏，可以和电脑对战也可以和人对战。按下这个按钮后会弹出一个对话框让你选择"
+"要怎么玩这个场景。更多信息参考 <link linkend=\"scenarios\">scenarios</link>"
 
 # type: Content of: <book><chapter><section><variablelist><varlistentry><term>
 #: ../../doc/manual/manual.en.xml:162
@@ -408,7 +410,7 @@ msgstr ""
 # type: Content of: <book><chapter><section><variablelist><varlistentry><term>
 #: ../../doc/manual/manual.en.xml:258
 msgid "Next"
-msgstr ""
+msgstr "下一个"
 
 # type: Content of: <book><chapter><section><variablelist><varlistentry><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:262
@@ -419,15 +421,14 @@ msgstr "单击这个按钮查看每日提示"
 # type: Content of: <book><chapter><section><variablelist><varlistentry><term>
 #: ../../doc/manual/manual.en.xml:268
 msgid "Previous"
-msgstr ""
+msgstr "前一个"
 
 # type: Content of: <book><chapter><section><variablelist><varlistentry><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:272
-#, fuzzy
 msgid ""
 "Click this button to read the previous little tip from the \"Tome of Wesnoth"
 "\"."
-msgstr "单击这个按钮查看每日提示"
+msgstr "单击这个按钮查看每日提示——源于\"韦诺典籍\""
 
 # type: Content of: <book><chapter><section><variablelist><varlistentry><term>
 #: ../../doc/manual/manual.en.xml:278
@@ -518,7 +519,6 @@ msgstr ""
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:330
-#, fuzzy
 msgid ""
 "In general multiplayer games are played against other players via the "
 "Internet (you can also run them on your LAN if you have one). All these "
@@ -531,8 +531,8 @@ msgid ""
 "scenario to the next, so building up your army's strength is possible only "
 "within the scenario."
 msgstr ""
-"总的来说多人游戏是通过Internet联网和其他玩家对战。（局域网也可以）这种游戏由"
-"wesnoth多人游戏服务器提供服务。多人游戏时间可能从1小时到10小时不等，这取决于"
+"总的来说多人游戏是通过Internet联网和其他玩家对战（局域网也可以），这种游戏由"
+"Wesnoth多人游戏服务器提供支持。多人游戏时间可能从1小时到10小时不等，这取决于"
 "地图大小和参与人数。平均一局要玩3到7个小时。游戏可以随时在中途存档或者读档。"
 "由于这个原因，有些游戏可以持续1到2个星期，尽管实际游戏时间才几个小时而已。多"
 "人游戏里面的单位不能从一个场景保留到下一个。你的部队的战斗力只能在正在玩的场"
@@ -547,10 +547,13 @@ msgstr "单击“多人游戏”按钮可能会出现这几个选项："
 
 # type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #: ../../doc/manual/manual.en.xml:344
+#, fuzzy
 msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/multiplayer-"
 "1.5.7.jpg\"/> </imageobject>"
 msgstr ""
+"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/multiplayer.jpg"
+"\"/> </imageobject>"
 
 # type: Content of: <book><chapter><section><section><section><title>
 #: ../../doc/manual/manual.en.xml:352
@@ -576,7 +579,6 @@ msgstr "连接到主机/服务器"
 
 # type: Content of: <book><chapter><section><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:360
-#, fuzzy
 msgid ""
 "This option opens a dialog box allowing you to enter the address of the "
 "machine to join. In this dialog there also is the button \"View List\" that "
@@ -611,7 +613,7 @@ msgstr ""
 # type: Content of: <book><chapter><section><section><section><title>
 #: ../../doc/manual/manual.en.xml:376
 msgid "Host Networked Game"
-msgstr "建立联网游戏"
+msgstr ""
 
 # type: Content of: <book><chapter><section><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:377
@@ -629,10 +631,10 @@ msgid ""
 "make firewall changes to join games hosted on a public server or by someone "
 "else."
 msgstr ""
-"只要使用一般的客户端就可以建立联网游戏，不需要专用的服务器。要让别人加入你用"
-"一般的客户端建立的游戏，你需要开放计算机的TCP的15000端口。如果有防火墙，你需"
-"要打开防火墙的这个端口。加入别人建立的游戏，或者连接专用的服务器不需要调整防"
-"火墙设置。"
+"不用外界服务器，你可以自己建立服务器，需要运行 <emphasis>wesnothd</"
+"emphasis>，要让别人加入你用一般的客户端建立的游戏，连接自己的服务器输入 "
+"127.0.0.1  ，需要开放计算机的TCP的15000端口。如果有防火墙，你需要打开防火墙的"
+"这个端口。加入别人建立的游戏，或者连接专用的服务器不需要调整防火墙设置。"
 
 # type: Content of: <book><chapter><section><section><section><title>
 #: ../../doc/manual/manual.en.xml:391
@@ -666,10 +668,13 @@ msgstr "游戏画面"
 
 # type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #: ../../doc/manual/manual.en.xml:408
+#, fuzzy
 msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/game-screen-"
 "1.5.7.jpg\"/> </imageobject>"
 msgstr ""
+"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/game-screen.jpg"
+"\"/> </imageobject>"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:415
@@ -686,10 +691,13 @@ msgstr ""
 
 # type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #: ../../doc/manual/manual.en.xml:421
+#, fuzzy
 msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/top_pane-1.5.7."
 "jpg\"/> </imageobject>"
 msgstr ""
+"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/top_pane.jpg\"/"
+"> </imageobject>"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:428
@@ -760,10 +768,13 @@ msgstr "当前格地形"
 
 # type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #: ../../doc/manual/manual.en.xml:492
+#, fuzzy
 msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/right_pane-"
 "1.5.7.jpg\"/> </imageobject>"
 msgstr ""
+"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/right_pane.jpg"
+"\"/> </imageobject>"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:499
@@ -797,7 +808,6 @@ msgstr "招募和召回"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:526
-#, fuzzy
 msgid ""
 "When you first start a scenario or campaign you will only have a few units "
 "on the map. One of these will be your commander (identified by a little "
@@ -811,8 +821,7 @@ msgstr ""
 "在游戏刚开始的时候你只拥有少量的单位。其中之一是指挥官（有小皇冠标记）。开始"
 "时指挥官通常在城堡的一个特殊位置，称为主楼(Keep)。当指挥官站在主楼并且有足够"
 "钱时，你就可以招募军队。战役里面如果有之前场景存活下来的老兵，也可以召回。招"
-"募或召回时，指挥官不仅可以站在自己的城堡上，也可以在你已经攻克的敌人的城堡"
-"上。"
+"募或召回时，指挥官不仅可以站在自己的城堡上，也可以位于你的敌人的城堡上。"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:535
@@ -915,7 +924,6 @@ msgstr "金币"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:584
-#, fuzzy
 msgid ""
 "Your army does not fight for free. It costs you gold to recruit units and "
 "gold to maintain them. You start each scenario with gold carried over from "
@@ -943,7 +951,6 @@ msgstr "存档、读档"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:599
-#, fuzzy
 msgid ""
 "At the start of each scenario, your game state is normally saved. If you are "
 "defeated, you may load it and try again. Once you have succeeded, you will "
@@ -952,10 +959,10 @@ msgid ""
 "Just remember, a good Battle for Wesnoth player never needs to save during a "
 "scenario. However, most beginners tend to do so rather often."
 msgstr ""
-"每个场景开始时你都有机会存档。如果你失败了可以读档再来。如果成功了，游戏提示"
+"每个场景开始时你都会自动存档。如果你失败了可以读档再来。如果成功了，游戏提示"
 "你保存并进入下一场景。如果玩到一半有其它事情要做，可以先存档，日后读档继续"
-"玩。但是要记住，一个好的韦诺之战玩家永远不需要在一个场景中途存档。事实上，很"
-"多新手开始经常这样做。"
+"玩。但是要记住，一个好的韦诺之战玩家永远不需要在一个场景中途存档。然而，很多"
+"新手开始经常这样做。"
 
 # type: Content of: <book><chapter><title>
 #: ../../doc/manual/manual.en.xml:611
@@ -1468,6 +1475,7 @@ msgstr ":"
 msgid ""
 "<ulink url=\"http://www.wesnoth.org/wiki/CommandMode\">Command mode</ulink>"
 msgstr ""
+"<ulink url=\"http://www.wesnoth.org/wiki/CommandMode\">Command mode</ulink>"
 
 # type: Content of: <book><chapter><section><simpara>
 #: ../../doc/manual/manual.en.xml:1032
@@ -1488,10 +1496,13 @@ msgstr "招募与召回"
 
 # type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #: ../../doc/manual/manual.en.xml:1040
+#, fuzzy
 msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/recruit-1.5.7."
 "jpg\"/> </imageobject>"
 msgstr ""
+"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/recruit.jpg\"/"
+"> </imageobject>"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:1047
@@ -1574,7 +1585,6 @@ msgstr "单位"
 
 # type: Content of: <book><chapter><section><simpara>
 #: ../../doc/manual/manual.en.xml:1094
-#, fuzzy
 msgid ""
 "Battle for Wesnoth has hundreds of unit types which are characterized by a "
 "rich set of statistics. In addition, individual units can have specific "
@@ -1583,8 +1593,8 @@ msgid ""
 "units to their campaigns to further expand the options available to players."
 msgstr ""
 "韦诺之战拥有上百种单位。他们是根据很丰富的统计资料来定义的。另外，每个单位可"
-"以有专门的特质<xref linkend=\"traits\"/>使得同一类型的单位略有不同。最后，战"
-"役设计者可以添加自己特有的单位来扩充玩家的选择。"
+"以有专门的 <link linkend=\"特质\">特质</link> 使得同一类型的单位略有不同。最"
+"后，战役设计者可以添加自己特有的单位来扩充玩家的选择。"
 
 # type: Content of: <book><chapter><section><simpara>
 #: ../../doc/manual/manual.en.xml:1100
@@ -1668,10 +1678,13 @@ msgstr "1"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject>
 #: ../../doc/manual/manual.en.xml:1156
+#, fuzzy
 msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/schedule-dawn."
 "png\"/> </imageobject>"
 msgstr ""
+"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/schedule-dawn."
+"jpg\"/> </imageobject>"
 
 #: ../../doc/manual/manual.en.xml:1164
 msgid "Dawn"
@@ -1691,10 +1704,13 @@ msgstr "2"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject>
 #: ../../doc/manual/manual.en.xml:1178
+#, fuzzy
 msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/schedule-"
 "morning.png\"/> </imageobject>"
 msgstr ""
+"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/schedule-"
+"morning.jpg\"/> </imageobject>"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:1186
@@ -1723,10 +1739,13 @@ msgstr "3"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject>
 #: ../../doc/manual/manual.en.xml:1200
+#, fuzzy
 msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/schedule-"
 "afternoon.png\"/> </imageobject>"
 msgstr ""
+"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/schedule-"
+"afternoon.jpg\"/> </imageobject>"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:1208
@@ -1741,10 +1760,13 @@ msgstr "4"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject>
 #: ../../doc/manual/manual.en.xml:1222
+#, fuzzy
 msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/schedule-dusk."
 "png\"/> </imageobject>"
 msgstr ""
+"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/schedule-dusk."
+"jpg\"/> </imageobject>"
 
 #: ../../doc/manual/manual.en.xml:1230
 msgid "Dusk"
@@ -1758,10 +1780,13 @@ msgstr "5"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject>
 #: ../../doc/manual/manual.en.xml:1244
+#, fuzzy
 msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/schedule-"
 "firstwatch.png\"/> </imageobject>"
 msgstr ""
+"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/schedule-"
+"firstwatch.jpg\"/> </imageobject>"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:1252
@@ -1776,10 +1801,13 @@ msgstr "6"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject>
 #: ../../doc/manual/manual.en.xml:1266
+#, fuzzy
 msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/schedule-"
 "secondwatch.png\"/> </imageobject>"
 msgstr ""
+"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/schedule-"
+"secondwatch.jpg\"/> </imageobject>"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:1274
@@ -1793,10 +1821,13 @@ msgstr "特殊"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject>
 #: ../../doc/manual/manual.en.xml:1288
+#, fuzzy
 msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/schedule-"
 "underground.png\"/> </imageobject>"
 msgstr ""
+"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/schedule-"
+"underground.jpg\"/> </imageobject>"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:1296
@@ -1965,7 +1996,8 @@ msgid ""
 "They also suffer a quarter less damage from poison."
 msgstr ""
 "矮人以活力著称，其中有些比一般同伴更强健，他们在旅途中也能休息。壮实单位比一"
-"般单位多2点血量，每回合如果不战斗自动回血2点。"
+"般单位多1点血量，每一级别又比别人多1点，每回合如果不战斗自动回血2点。而且毒素"
+"的影响只有一半。"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: ../../doc/manual/manual.en.xml:1428
@@ -2062,12 +2094,11 @@ msgstr "背刺"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:1500
-#, fuzzy
 msgid ""
 "When used offensively, this attack deals double damage if there is an enemy "
 "of the target on the opposite side of the target, and that unit is not "
 "incapacitated (e.g. turned to stone)."
-msgstr "当敌人被后还有其它对他/她有敌意的单位时，背刺攻击能产生双倍攻击。"
+msgstr "本攻击对目标造成双倍伤害，攻击目标的反击也会使本单位受到双倍的伤害。"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: ../../doc/manual/manual.en.xml:1508
@@ -2090,7 +2121,6 @@ msgstr "冲锋"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:1524
-#, fuzzy
 msgid ""
 "When used offensively, this attack deals double damage to the target. It "
 "also causes this unit to take double damage from the target's counterattack."
@@ -2518,7 +2548,6 @@ msgstr "移动"
 
 # type: Content of: <book><chapter><section><simpara>
 #: ../../doc/manual/manual.en.xml:1935
-#, fuzzy
 msgid ""
 "Clicking on a unit identifies all the places it can move on its current turn "
 "by dimming unreachable hexes (pressing the number keys 2-7 will identify the "
@@ -2535,11 +2564,12 @@ msgid ""
 "have already moved or can move further in the current turn."
 msgstr ""
 "单击一个单位来确定所有当前回合能移动到的位置。按住数字键2－7可以确定对应回合"
-"数可以移动到的位置。这时把光标移到某一格上会出现移动的路径和额外信息。可能是"
-"那个地点的防御力或者如果需要大于1回合才能到达，需要的回合数。如果你不想移动单"
-"位，可以通过选择其他单位（通过单击新单位，或者使用<literal>n</literal>/"
-"<literal>N</literal>快捷键），或者单击鼠标右键取消移动。单位左上角的<xref "
-"linkend=\"orbs\"/>可以帮你区分哪些单位已经移动过了，哪些还有剩余移动力。"
+"数可以移动到的位置。这时把光标移到某一格上会出现移动的路径和数字，可能是那个"
+"地点的防御力或者如果需要大于1回合才能到达。如果你不想移动单位，可以通过选择其"
+"他单位（通过单击新单位，或者使用<literal>n</literal>/<literal>N</literal>快捷"
+"键），或者单击鼠标右键（Mac OS X是按住Command点击鼠标）取消移动。单位左上角的"
+"能量条<link linkend=\"orbs\">orbs</link>可以帮你区分哪些单位已经移动过了，哪"
+"些还有剩余移动力。"
 
 # type: Content of: <book><chapter><section><simpara>
 #: ../../doc/manual/manual.en.xml:1949
@@ -2610,19 +2640,18 @@ msgid ""
 msgstr "环状图标位于单位左上角，能量条上方当这个图标颜色是："
 
 #: ../../doc/manual/manual.en.xml:1995
-#, fuzzy
 msgid "Orb"
 msgstr "环状图标"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><thead><row><entry>
 #: ../../doc/manual/manual.en.xml:2001
 msgid "Description"
-msgstr ""
+msgstr "描述"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:2008
 msgid "Green"
-msgstr ""
+msgstr "绿"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject>
 #: ../../doc/manual/manual.en.xml:2011
@@ -2630,18 +2659,18 @@ msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/orb-green.jpg"
 "\"/> </imageobject>"
 msgstr ""
+"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/orb-green.jpg"
+"\"/> </imageobject>"
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2019
-#, fuzzy
 msgid "If you control the unit and it hasn't moved this turn"
-msgstr "</inlinemediaobject> 你控制这个单位，并且该单位当前回合尚未移动。"
+msgstr "你控制这个单位，并且该单位当前回合尚未移动。"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: ../../doc/manual/manual.en.xml:2024
-#, fuzzy
 msgid "Yellow"
-msgstr "缓慢"
+msgstr "黄"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject>
 #: ../../doc/manual/manual.en.xml:2027
@@ -2649,21 +2678,21 @@ msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/orb-yellow.jpg"
 "\"/> </imageobject>"
 msgstr ""
+"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/orb-yellow.jpg"
+"\"/> </imageobject>"
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2035
-#, fuzzy
 msgid ""
 "If you control the unit and it has moved this turn, but could still move "
 "further or attack"
 msgstr ""
-"</inlinemediaobject> 你控制这个单位，该单位当前回合已经移动过，但还可以继续移"
-"动或者攻击敌人。"
+"你控制这个单位，该单位当前回合已经移动过，但还可以继续移动或者攻击敌人。"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:2040
 msgid "Red"
-msgstr ""
+msgstr "红"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject>
 #: ../../doc/manual/manual.en.xml:2043
@@ -2671,18 +2700,18 @@ msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/orb-red.jpg\"/"
 "> </imageobject>"
 msgstr ""
+"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/orb-red.jpg\"/"
+"> </imageobject>"
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2051
-#, fuzzy
 msgid "If you control the unit, but it has used all its movement this turn"
-msgstr "</inlinemediaobject> 你控制这个单位，该单位已经没有剩余行动力。"
+msgstr "你控制这个单位，该单位已经没有剩余行动力。"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: ../../doc/manual/manual.en.xml:2056
-#, fuzzy
 msgid "Blue"
-msgstr "瘟疫"
+msgstr "蓝"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject>
 #: ../../doc/manual/manual.en.xml:2059
@@ -2690,12 +2719,13 @@ msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/orb-blue.jpg\"/"
 "> </imageobject>"
 msgstr ""
+"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/orb-blue.jpg\"/"
+"> </imageobject>"
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2067
-#, fuzzy
 msgid "If the unit is an ally you do not control"
-msgstr "</inlinemediaobject> 你不能控制的友军单位"
+msgstr "你不能控制的友军单位"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject>
 #: ../../doc/manual/manual.en.xml:2075
@@ -2703,12 +2733,13 @@ msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/orb-none.jpg\"/"
 "> </imageobject>"
 msgstr ""
+"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/orb-none.jpg\"/"
+"> </imageobject>"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2083
-#, fuzzy
 msgid "Enemy units have no orb on the top of their energy bar"
-msgstr "</inlinemediaobject> 敌方单位不显示环状图标。"
+msgstr "敌方单位顶部不显示环状图标。"
 
 # type: Content of: <book><chapter><section><section><title>
 #: ../../doc/manual/manual.en.xml:2091
@@ -2738,7 +2769,6 @@ msgstr ""
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2101
-#, fuzzy
 msgid ""
 "Some campaigns use a star-shaped base to indicate leaders and heroes (units "
 "which are somehow special and for example not allowed to die in the course "
@@ -2746,8 +2776,9 @@ msgid ""
 "mark heroes. Still others have no specific hero indicator at all. Which (if "
 "any) is used is a stylistic choice left to campaign designers."
 msgstr ""
-"有些战役里面指挥官是用星形光环表示，有些是用右上角的盾形徽章表示，还有一些没"
-"有特别表示。用哪一种方式来表示指挥官取决于设计者的设计风格。"
+"有些战役里面指挥官是用星形光环表示，有些是用右上角的盾形徽章表示（一些也不能"
+"失去的特殊人物），还有一些没有特别表示。用哪一种方式来表示指挥官取决于设计者"
+"的设计风格。"
 
 # type: Content of: <book><chapter><section><title>
 #: ../../doc/manual/manual.en.xml:2111
@@ -2876,7 +2907,6 @@ msgstr ""
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2181
-#, fuzzy
 msgid ""
 "<emphasis role=\"strong\">Arcane</emphasis>: An attack that dispels the "
 "magic animating zombies, specters, and other undead creatures and spirits. "
@@ -2948,9 +2978,8 @@ msgstr "单位可以通过两种方式接受治疗："
 
 # type: Content of: <book><chapter><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2221
-#, fuzzy
 msgid "Waiting in a village. The unit will heal 8 hitpoints every turn."
-msgstr "通过在村庄休息。每回合回8点血。"
+msgstr "通过在村庄停留。此单位每回合回复8点血。"
 
 # type: Content of: <book><chapter><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2226
@@ -2983,7 +3012,6 @@ msgstr ""
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2243
-#, fuzzy
 msgid ""
 "Some attacks can inflict poison damage on your unit. When this happens the "
 "poisoned unit will take 8 damage each turn until it is cured. Poison can be "
@@ -3038,11 +3066,10 @@ msgstr "成对使用治疗者，这样他们可以在需要的时候互相治疗
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2284
-#, fuzzy
 msgid ""
 "Multiple healers from different allied sides can heal the same unit and "
 "speed up healing."
-msgstr "多个治疗者可以治疗同一个单位，加速单位回复。（不过记得有8点的上限）"
+msgstr "多个同一联盟治疗者可以共同治疗一个单位，加速单位回复。 "
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2290
@@ -3806,11 +3833,3 @@ msgstr "高等级单位比低等级单位维护费高（每等级高1点）。�
 #, fuzzy
 #~ msgid "<phrase>No orb</phrase>"
 #~ msgstr "<phrase>空</phrase>"
-
-# type: Content of: <book><glossary><glossentry>
-#~ msgid "<glossterm> ZOC </glossterm>"
-#~ msgstr "<glossterm> ZOC </glossterm>"
-
-# type: Content of: <book><chapter><section><section><title>
-#~ msgid "Money"
-#~ msgstr "经济"
