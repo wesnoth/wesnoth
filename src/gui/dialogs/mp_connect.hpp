@@ -50,8 +50,6 @@ class tmp_login : public tdialog
 public:
 	tmp_login(const t_string& label);
 
-	const std::string& password() const { return password_; }
-
 private:
 	/** Inherited from tdialog. */
 	twindow* build_window(CVideo& video);
@@ -62,7 +60,6 @@ private:
 	/** Inherited from tdialog. */
 	void post_show(twindow& window);
 
-	std::string password_;
 	t_string label_;
 };
 

@@ -337,9 +337,19 @@ std::string login()
 	return res;
 }
 
+std::string password()
+{
+	return preferences::get("password");
+}
+
 void set_login(const std::string& username)
 {
 	preferences::set("login", username);
+}
+
+void set_password(const std::string& password)
+{
+	preferences::set("password", password);
 }
 
 bool turn_dialog()

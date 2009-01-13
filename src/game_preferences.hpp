@@ -73,6 +73,9 @@ namespace preferences {
 	std::string login();
 	void set_login(const std::string& username);
 
+	std::string password();
+	void set_password(const std::string& password);
+
 	bool turn_dialog();
 	void set_turn_dialog(bool ison);
 

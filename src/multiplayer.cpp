@@ -176,133 +176,16 @@ static server_type open_connection(game_display& disp, const std::string& origin
 
 		//if we got a direction to login
 		if(data.child("mustlogin")) {
-			bool first_time = true;
-			config* error = NULL;
 
-			do {
-				std::string login = preferences::login();
-				std::string password = "";
+			for(;;) {
 				std::string password_reminder = "";
 
-				if(!first_time) {
-
-					//Somewhat hacky implementation, including a goto of death
-
-					/** @todo A fancy textbox that displays characters as dots or asterisks would nice. */
-					if(!((*error)["password_request"].empty())) {
-
-                        gui2::tmp_login dlg((*error)["message"]);
-                        dlg.show(disp.video());
-
-                        password = dlg.password();
-
-						switch(dlg.get_retval()) {
-							//Log in with password
-							case gui2::twindow::OK:
-								break;
-							//Request a password reminder
-							case 1:
-								password_reminder = "yes";
-								break;
-							//Choose a different username
-							case 2:
-								password = "";
-								goto new_username;
-								break;
-							default: return ABORT_SERVER;
-						}
-
-					} else {
-						new_username:
-
-						const int res = gui::show_dialog(disp, NULL, "",
-								(*error)["message"], gui::OK_CANCEL,
-								NULL, NULL, _("Login: "), &login, mp::max_login_size);
-						if(res != 0 || login.empty()) {
-							return ABORT_SERVER;
-						}
-						preferences::set_login(login);
-					}
-				}
-
-				first_time = false;
+				std::string login = preferences::login();
 
 				config response ;
 				config &sp = response.add_child("login") ;
 				sp["username"] = login ;
 				sp["password_reminder"] = password_reminder;
-
-				// If password is not empty start hashing
-
-				std::string result;
-				if(!(password.empty())) {
-
-					// Check if we have everything we need
-					if((*error)["salt"].empty() || (*error)["hash_seed"].empty()) {
-						return ABORT_SERVER;
-					}
-
-					std::string itoa64("./0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz");
-
-					std::string salt = (*error)["salt"];
-					int hash_seed;
-					try {
-						hash_seed = lexical_cast_default<int>((*error)["hash_seed"]);
-					} catch (bad_lexical_cast) {
-						std::cerr << "Bad lexical cast reading hash_seed\n";
-						return ABORT_SERVER;
-					}
-
-					// Start the MD5 hashing
-					salt.append(password);
-					MD5 md5_worker;
-					md5_worker.update((unsigned char *)salt.c_str(),salt.length());
-					md5_worker.finalize();
-					unsigned char * output = (unsigned char *) malloc (sizeof(unsigned char) * 16);
-					output = md5_worker.raw_digest();
-					std::string temp_hash;
-					do {
-						temp_hash = std::string((char *) output, (char *) output + 16);
-						temp_hash.append(password);
-						md5_worker.~MD5();
-						MD5 md5_worker;
-						md5_worker.update((unsigned char *)temp_hash.c_str(),temp_hash.length());
-						md5_worker.finalize();
-						output =  md5_worker.raw_digest();
-					} while (--hash_seed);
-					temp_hash = std::string((char *) output, (char *) output + 16);
-
-					// Now encode the resulting mix
-					std::string encoded_hash;
-					unsigned int i = 0, value;
-					do {
-						value = output[i++];
-						encoded_hash.append(itoa64.substr(value & 0x3f,1));
-						if(i < 16)
-							value |= (int)output[i] << 8;
-						encoded_hash.append(itoa64.substr((value >> 6) & 0x3f,1));
-						if(i++ >= 16)
-							break;
-						if(i < 16)
-							value |= (int)output[i] << 16;
-						encoded_hash.append(itoa64.substr((value >> 12) & 0x3f,1));
-						if(i++ >= 16)
-							break;
-						encoded_hash.append(itoa64.substr((value >> 18) & 0x3f,1));
-					} while (i < 16);
-					free (output);
-
-					// Now mix the resulting hash with the random seed
-					result = encoded_hash + (*error)["random_salt"];
-
-					MD5 md5_worker2;
-					md5_worker2.update((unsigned char *)result.c_str(), result.size());
-					md5_worker2.finalize();
-
-					result = std::string(md5_worker2.hex_digest());
-				}
-
-				sp["password"] = result;
 
 				// Login and enable selective pings -- saves server bandwidth
 				// If ping_timeout has a non-zero value, do not enable
@@ -318,13 +201,139 @@ static server_type open_connection(game_display& disp, const std::string& origin
 				}
 				network::send_data(response, 0, true);
 
+				// Get response for our login request...
 				network::connection data_res = network::receive_data(data, 0, 3000);
 				if(!data_res) {
 					throw network::error(_("Connection timed out"));
 				}
 
-				error = data.child("error");
-			} while(error != NULL);
+				config* error = data.child("error");
+
+				// ... and get us out of here if the server did not complain
+				if(!error) break;
+
+				do {
+					std::string password = preferences::password();
+
+					// If the server asks for a password, provide one if we can,
+					// otherwise go directly to the username/password dialog
+					if(!((*error)["password_request"].empty()) && !(password.empty())) {
+
+						// start the hashing
+						std::string result;
+
+						// Check if we have everything we need
+						if((*error)["salt"].empty() || (*error)["hash_seed"].empty()) {
+							return ABORT_SERVER;
+						}
+
+						std::string itoa64("./0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz");
+
+						std::string salt = (*error)["salt"];
+						int hash_seed;
+						try {
+							hash_seed = lexical_cast_default<int>((*error)["hash_seed"]);
+						} catch (bad_lexical_cast) {
+							std::cerr << "Bad lexical cast reading hash_seed\n";
+							return ABORT_SERVER;
+						}
+
+						// Start the MD5 hashing
+						salt.append(password);
+						MD5 md5_worker;
+						md5_worker.update((unsigned char *)salt.c_str(),salt.length());
+						md5_worker.finalize();
+						unsigned char * output = (unsigned char *) malloc (sizeof(unsigned char) * 16);
+						output = md5_worker.raw_digest();
+						std::string temp_hash;
+						do {
+							temp_hash = std::string((char *) output, (char *) output + 16);
+							temp_hash.append(password);
+							md5_worker.~MD5();
+							MD5 md5_worker;
+							md5_worker.update((unsigned char *)temp_hash.c_str(),temp_hash.length());
+							md5_worker.finalize();
+							output =  md5_worker.raw_digest();
+						} while (--hash_seed);
+						temp_hash = std::string((char *) output, (char *) output + 16);
+
+						// Now encode the resulting mix
+						std::string encoded_hash;
+						unsigned int i = 0, value;
+						do {
+							value = output[i++];
+							encoded_hash.append(itoa64.substr(value & 0x3f,1));
+							if(i < 16)
+								value |= (int)output[i] << 8;
+							encoded_hash.append(itoa64.substr((value >> 6) & 0x3f,1));
+							if(i++ >= 16)
+								break;
+							if(i < 16)
+								value |= (int)output[i] << 16;
+							encoded_hash.append(itoa64.substr((value >> 12) & 0x3f,1));
+							if(i++ >= 16)
+								break;
+							encoded_hash.append(itoa64.substr((value >> 18) & 0x3f,1));
+						} while (i < 16);
+						free (output);
+
+						// Now mix the resulting hash with the random seed
+						result = encoded_hash + (*error)["random_salt"];
+
+						MD5 md5_worker2;
+						md5_worker2.update((unsigned char *)result.c_str(), result.size());
+						md5_worker2.finalize();
+
+						result = std::string(md5_worker2.hex_digest());
+
+						sp["password"] = result;
+
+						// Once again send our request...
+						network::send_data(response, 0, true);
+
+						network::connection data_res = network::receive_data(data, 0, 3000);
+						if(!data_res) {
+							throw network::error(_("Connection timed out"));
+						}
+
+						error = data.child("error");
+
+						// ... and get us out of here if the server is happy now
+						if(!error) break;
+
+
+					}
+
+					// Providing a password either was not attempted because we did not
+					// have any or failed:
+					// Now show a dialog that displays the error and allows to
+					// enter a new user name and/or password
+
+					/** @todo A fancy textbox that displays characters as dots or asterisks would nice. */
+
+					gui2::tmp_login dlg((*error)["message"]);
+					dlg.show(disp.video());
+
+					switch(dlg.get_retval()) {
+						//Log in with password
+						case gui2::twindow::OK:
+							break;
+						//Request a password reminder
+						case 1:
+							password_reminder = "yes";
+							break;
+						// Cancel
+						default: return ABORT_SERVER;
+					}
+
+				// If we have got a new username we have to start all over again
+				} while(login == preferences::login());
+
+				// Somewhat hacky...
+				// If we broke out of the do-while loop above error
+				// is still going to be NULL
+				if(!error) break;
+			} // end login loop
 		}
 	} while(!(data.child("join_lobby") || data.child("join_game")));
 

@@ -193,6 +193,7 @@ void tmp_connect::show_server_list(twindow& window)
  * This shows the dialog to log in to the MP server
  *
  * @start_table = container
+ *     user_name            (text_box) the login user name
  *     password            (text_box)  the password
  *     [password_reminder] (button)    Request a password reminder
  *     [change_username]   (button)    Use a different username
@@ -201,7 +202,7 @@ void tmp_connect::show_server_list(twindow& window)
  * @end_table
  */
 
-tmp_login::tmp_login(const t_string& label) : password_(), label_(label) { }
+tmp_login::tmp_login(const t_string& label) : label_(label) { }
 
 twindow* tmp_login::build_window(CVideo& video)
 {
@@ -210,10 +211,16 @@ twindow* tmp_login::build_window(CVideo& video)
 
 void tmp_login::pre_show(CVideo& /*video*/, twindow& window)
 {
+	ttext_box* username =
+		dynamic_cast<ttext_box*>(window.find_widget("user_name", false));
+	VALIDATE(username, missing_widget("user_name"));
+	username->set_value(preferences::login());
+	window.keyboard_capture(username);
+
 	ttext_box* password =
 		dynamic_cast<ttext_box*>(window.find_widget("password", false));
 	VALIDATE(password, missing_widget("password"));
-	window.keyboard_capture(password);
+	password->set_value(preferences::password());
 
 	tbutton *password_reminder =
 		dynamic_cast<tbutton*>(window.find_widget("password_reminder", false));
@@ -231,10 +238,17 @@ void tmp_login::pre_show(CVideo& /*video*/, twindow& window)
 
 void tmp_login::post_show(twindow& window)
 {
+	ttext_box* username =
+		dynamic_cast<ttext_box*>(window.find_widget("user_name", false));
+	assert(username);
+
+	preferences::set_login(username->get_value());
+
 	ttext_box* password =
 		dynamic_cast<ttext_box*>(window.find_widget("password", false));
-	VALIDATE(password, missing_widget("password"));
-	password_ = password->get_value();
+	assert(password);
+
+	preferences::set_password(password->get_value());
 }
 
 } // namespace gui2
