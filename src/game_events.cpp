@@ -224,7 +224,6 @@ static void show_wml_messages()
 
 		(screen)->add_chat_message(time(NULL), caption, 0, msg.str(),
 				game_display::MESSAGE_PUBLIC, false);
-		std::cerr << caption << ": " << msg.str() << '\n';
 	}
 }
 
