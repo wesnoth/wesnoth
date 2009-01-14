@@ -7,20 +7,22 @@
 # Automatically generated, 2004.
 # Automatically generated <tomi@digiflex.hu>, 2004.
 # Széll Tamás <tomi@digiflex.hu>, 2005.
-# Kádár-Németh Krisztián <krisztian.7@vizslamail.hu>, 2008.
+# Gáspár Tamás <tomig90@freemail.hu>, 2008.
+# Kádár-Németh Krisztián <krisztian.kad@gmail.com>, 2008, 2009.
+# Kelemen Zoltán <kelemen_zoltan@freemail.hu>, 2009.
 msgid ""
 msgstr ""
 "Project-Id-Version: hu-trow\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-01-06 22:10+0100\n"
-"PO-Revision-Date: 2008-02-28 23:03+0100\n"
-"Last-Translator: Kádár-Németh Krisztián <krisztian.7@vizslamail.hu>\n"
-"Language-Team: Hungarian\n"
+"PO-Revision-Date: 2009-01-13 22:28+0100\n"
+"Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
+"Language-Team: Hungarian <>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms:  nplurals=2; plural=(n != 1);\n"
-"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 0.2\n"
 
 #. [scenario]: id=Rise_of_Wesnoth
 #. [campaign]: id=The_Rise_Of_Wesnoth
@@ -62,7 +64,7 @@ msgstr "(embert próbáló)"
 #. [campaign]: id=The_Rise_Of_Wesnoth
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:18
 msgid "Lord"
-msgstr "Nemesúr"
+msgstr "Úr"
 
 #. [campaign]: id=The_Rise_Of_Wesnoth
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:22
@@ -73,9 +75,9 @@ msgid ""
 "\n"
 "(Intermediate level, 25 scenarios.)"
 msgstr ""
-"Vezesd át Haldric herceget a Zöld-sziget elpusztulásán és az óceánon túl, "
-"hogy megalapítsa magát a Wesnothi Királyságát! Közeleg a szembeszállás "
-"Jevyan villi-úrral... \n"
+"Vezesd át Haldric herceget a Zöld-sziget pusztulása után az óceánon túlra, "
+"hogy megalapítsa magát a Wesnoth Királyságot! Közeleg a szembeszállás Jevyan "
+"delevény-úrral... \n"
 "\n"
 "(Középhaladó szint, 25 pálya)"
 
@@ -97,12 +99,12 @@ msgstr "Illusztrációk és grafikai arculat"
 #. [about]
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:54
 msgid "WML Contributors"
-msgstr ""
+msgstr "WML-kód hozzájárulók"
 
 #. [scenario]: id=A_Summer_of_Storms
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:4
 msgid "A Summer of Storms"
-msgstr "Egy viharos nyár"
+msgstr "Viharok nyara"
 
 #. [side]: id=Prince Haldric, type=Noble Commander
 #. [side]: type=Noble Commander, id=Prince Haldric
@@ -140,9 +142,8 @@ msgstr "Haldric herceg"
 
 #. [side]: type=Noble Youth, type=Noble Fighter, id=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:32
-#, fuzzy
 msgid "Haldric"
-msgstr "Haldric."
+msgstr "Haldric"
 
 #. [side]: type=Wesfolk Outcast, id=Wesfolk Leader
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:37
@@ -153,9 +154,8 @@ msgstr "Wesfolk vezér"
 #. [side]: type=Wesfolk Outcast, id=Wesfolk Leader
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:53
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:48
-#, fuzzy
 msgid "Wesfolk"
-msgstr "Wesfolk vezér"
+msgstr "Wesfolkok"
 
 #. [event]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:61
@@ -166,7 +166,7 @@ msgstr "IV. Eldaric király"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:156
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:67
 msgid "Defeat the Wesfolk Leader"
-msgstr "Legyőzöd a Wesfolk vezért"
+msgstr "Legyőzöd a wesfolk vezért"
 
 #. [objective]: condition=lose
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:266
@@ -232,7 +232,7 @@ msgid ""
 "The trouble seems to have finally reached to the heart of the Isle, to the "
 "isolated lands of King Eldaric IV."
 msgstr ""
-"Úgy tűnik, a gondok elértek a sziget szívébe is, IV. Eldaric király eldugott "
+"Úgy tűnik, a gondok elértek a Sziget szívébe is, IV. Eldaric király eldugott "
 "földjeire."
 
 #. [message]: speaker=King Eldaric IV
@@ -254,7 +254,7 @@ msgid ""
 "You're showing initiative, son! I'm proud of you! You may lead our forces to "
 "battle, but I'll stay near to keep an eye on you."
 msgstr ""
-"Komoly kezdeményező erőt mutatsz, fiam! Büszke vagyok rád! Vezetheted az "
+"Komoly kezdeményező erőt mutatsz fiam! Büszke vagyok rád! Vezetheted az "
 "erőinket, de a közeledben fogok maradni, hogy rajtad tarthassam a szemem."
 
 #. [message]: speaker=Prince Haldric
@@ -268,8 +268,8 @@ msgid ""
 "Look, a little princeling and his merry men! We'll teach you a lesson for "
 "what your kind did to us!"
 msgstr ""
-"Nézzétek, egy hercegecske és jókedélyű emberei! Most megleckéztetjük őket "
-"azért, amit a fajtájuk ellenünk tett!"
+"Nézzétek, egy hercegecske és jókedélyű emberei! Most megleckéztetünk titeket "
+"azért, amit a fajtátok ellenünk tett!"
 
 #. [message]: speaker=King Eldaric IV
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:128
@@ -286,7 +286,7 @@ msgstr ""
 #. [message]: speaker=unit
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:147
 msgid "I invoke the right of surrender! Don't kill me..."
-msgstr "Vissza fogok vonulni! Ne ölj meg..."
+msgstr "Megadom magam! Ne ölj meg..."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:151
@@ -299,9 +299,9 @@ msgid ""
 "Trouble your lands! Bah! Your fool Prince of Southbay has attacked our "
 "lands. The Lich-Lords had no choice... They opened a gate... and..."
 msgstr ""
-"Bajt keverni? Nocsak! A Déli-öböl ostoba hercege betört a mi területünkre. A "
-"villi-uraknak nem volt választási lehetőségük... Kinyitottak egy kaput... "
-"és..."
+"Bajt keverni a földjeitekre? Nocsak! Déliöböl ostoba hercege tört be a mi "
+"területünkre. A delevény-uraknak nem volt választási lehetőségük... "
+"Kinyitottak egy kaput... és..."
 
 #. [message]: speaker=King Eldaric IV
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:159
@@ -315,9 +315,9 @@ msgid ""
 "built a great stone gate to the heart of the homeland of the orcs in the "
 "distant west! Now even we Wesfolk must flee or be slaves."
 msgstr ""
-"Elhatározták, hogy a pokol összes rémületét a sziget felszínére hozzák. Egy "
-"monumentális kőkaput építettek messze nyugaton, az orkok földjének szívében. "
-"Most nekünk is menekülnünk kell, ha nem akarunk behódolni."
+"Elhatározták, hogy a pokol összes teremtményét a Sziget felszínére hozzák. "
+"Egy monumentális kőkaput építettek messze nyugaton, az orkok földjének "
+"szívében. Most nekünk is menekülnünk kell, ha nem akarunk rabszolgákká válni."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:167
@@ -357,14 +357,14 @@ msgid ""
 "that you may invoke surrender but once. If we meet again, I won't be so "
 "merciful."
 msgstr ""
-"Távozhatsz. Tekintve, hogy nem okozol több bajt, nincsenek feltételem. "
+"Távozhatsz. Tekintve, hogy nem okozol több bajt, nincsenek feltételeim. "
 "Szabadon elvonulhatsz, de utoljára. Ha még egyszer találkozunk, nem leszek "
 "ilyen kegyes."
 
 #. [message]: speaker=King Eldaric IV
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:203
 msgid "We have run out of time... The crops shall spoil, we'll starve!"
-msgstr "Kifutottunk az időből... A termények tönkre mennek, éhínség vár ránk!"
+msgstr "Kifutottunk az időből... A termények tönkremennek, éhínség vár ránk!"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:214
@@ -379,12 +379,12 @@ msgstr "Érezd a haragom, sátánfajzat!"
 #. [scenario]: id=The_Fall
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:4
 msgid "The Fall"
-msgstr "Az ősz"
+msgstr "Őszi söprés"
 
 #. [side]: type=Noble Fighter, id=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:28
 msgid "Stormvale"
-msgstr ""
+msgstr "stormvale-iek"
 
 #. [side]: type=Orcish Warlord, id=Tan-Rarbag
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:61
@@ -438,7 +438,7 @@ msgstr "Tan-Rarbag"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:39
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:64
 msgid "Orcs"
-msgstr ""
+msgstr "Orkok"
 
 #. [side]: type=Orcish Warrior, id=Tan-Erang
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:85
@@ -501,7 +501,7 @@ msgstr ""
 "Haldric, nem sikerült úgy, ahogy elterveztem! Az orkok megérkeztek. Az "
 "északi fellegvárban vártuk be őket, de túl sokan voltak. A hegyek közt "
 "keletre kényszerítettek minket. Most még tartja a személyes testőrgárdám az "
-"északi hágót, de nem sokáig tarthatják őket fel... Ki kell menekítenünk az "
+"északi hágót, de nem sokáig tarthatnak ki... Ki kell menekítenünk az "
 "otthonunk lakóit."
 
 #. [message]: speaker=Prince Haldric
@@ -552,7 +552,7 @@ msgstr "Umm, leteszem a fegyv..."
 #. [message]: speaker=King Eldaric IV
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:267
 msgid "Nay! Off with your hea- - -"
-msgstr "Ihajja! Porba a fejeddel - - -"
+msgstr "Ihajja! Porba a fej- - -"
 
 #. [message]: speaker=unit
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:272
@@ -561,7 +561,7 @@ msgid ""
 "road ahead!"
 msgstr ""
 "De segíthetnék! Tényleg! Hasznotokra lehetnének az embereim és jómagam "
-"képességei!"
+"képességei útközben!"
 
 #. [message]: speaker=King Eldaric IV
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:277
@@ -603,7 +603,6 @@ msgstr "Törvényen kívüli úrnő"
 
 #. [option]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:338
-#, fuzzy
 msgid "Your word can't be trusted. Prepare to meet your gods!"
 msgstr ""
 "Nem bízhat senki a szavaidban. Készülj fel az isteneiddel való találkozásra!"
@@ -611,13 +610,14 @@ msgstr ""
 #. [message]: speaker=Wesfolk Leader
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:343
 msgid "Arrogant fools! (Reaches into pocket) POOF!"
-msgstr "Arrogáns bolondok! (Zsebébe nyúl) PUFF!"
+msgstr "Felfújt hólyagok! (Zsebébe nyúl) PUFF!"
 
 #. [message]: speaker=King Eldaric IV
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:371
 msgid "Argh, she's gone. Next time, more sword, less chat."
 msgstr ""
-"Ááá, elment. Legközelebb több kardcsattogtatás, és kevesebb bájcsevegés."
+"Ááá, elment. Legközelebb több kardcsapást, és kevesebb bájcsevegést eressz "
+"meg."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:376
@@ -701,7 +701,7 @@ msgstr "Szívszaggató távozás"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:25
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:28
 msgid "Refugees"
-msgstr ""
+msgstr "Menekültek"
 
 #. [side]: type=Orcish Warlord, id=Tan-Schmog
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:34
@@ -761,7 +761,7 @@ msgid ""
 "They're already holding the mouth of the pass. We have to get out of the "
 "mountain pass before winter comes or we're all dead meat!"
 msgstr ""
-"Ááá, az ork előcsapatok egész messzire keletre elüldöztek minket! Máris a "
+"Ááá, az ork előőrsök egész messzire keletre elüldöztek minket! Máris a "
 "kezükben van a hágó bejárata. Ki kell jutnunk a hegyszorosból a tél beállta "
 "előtt, ha nem akarunk a prédájukká válni!"
 
@@ -776,7 +776,8 @@ msgid ""
 "I'd drop the sentiment and pick up your sword. There's plenty of fighting "
 "ahead of us!"
 msgstr ""
-"A helyedben eldobnám az érzéseim, és kardot ragadnék. Sok harc vár még ránk!"
+"A helyedben felhagynék az érzelgősséggel és kardot ragadnék. Sok harc vár "
+"még ránk!"
 
 #. [message]: speaker=Tan-Schmog
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:145
@@ -786,7 +787,7 @@ msgstr "Nem fogsz sokáig jutni, fiú. Grrrr!"
 #. [message]: speaker=unit
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:159
 msgid "Who goes there?"
-msgstr "Ki megy ott?"
+msgstr "Ki van ott?"
 
 #. [unit]: id=Burin the Lost, type=Dwarvish Steelclad
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:164
@@ -796,7 +797,7 @@ msgstr "Burin, az elveszett"
 #. [message]: speaker=Burin the Lost
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:179
 msgid "Burin, Burin the Lost. Who be ye?"
-msgstr "Burin, Burin, az elveszett. Ki vagy te?"
+msgstr "Burin, Burin az elveszett. Ki vagy te?"
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:184
@@ -805,7 +806,7 @@ msgid ""
 "the pass... What are you?"
 msgstr ""
 "Haldric herceg vagyok, nincs sok időnk beszélni. Sietünk túljutni a "
-"hegyszoroson... Ti kik vagytok?"
+"hegyszoroson... Ki vagy te?"
 
 #. [message]: speaker=Burin the Lost
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:189
@@ -814,9 +815,9 @@ msgid ""
 "almost a century ago. I've never found my way home. But it seems nice enough "
 "here."
 msgstr ""
-"Egy törp vagyok, ostoba suhanc! Elkeveredtem, miközben a mélyeket derítettem "
-"fel, már majdnem száz éve ennek. Máig nem találtam meg a haza vezető utat. "
-"De elég kellemes errefelé."
+"Egy törp vagyok, ostoba suhanc! Elkeveredtem, miközben a mélységeket "
+"derítettem fel, már majdnem száz éve ennek. Máig nem találtam meg a haza "
+"vezető utat. De elég kellemes errefelé."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:194
@@ -829,7 +830,7 @@ msgid ""
 "Orcs! It's been a long time since I felt the satisfying crunch of one of "
 "those under my axe. Time for a fight!"
 msgstr ""
-"Orkok?! Már régóta nem éreztem azt az andalító reccsenést, amit a baltám "
+"Orkok?! Már régóta nem éreztem azt az andalító reccsenést, amit a bárdom "
 "súlya alatt hallatnak. Itt az idő a harcra!"
 
 #. [message]: speaker=Prince Haldric
@@ -842,7 +843,7 @@ msgstr "Harcoltál korábban is ellenük?"
 msgid ""
 "Fool boy! Where did you grow up? Enough of this, let's go get some orcs!"
 msgstr ""
-"Ostoba suhanc! Hol nőttél fel? Ebből elég, most már menjünk az orkokért!"
+"Ostoba suhanc! Hol nőttél fel? Ebből elég, most már menjünk az orkokra!"
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:217
@@ -865,7 +866,7 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:261
 msgid "GO HOME! AIN'T NUTTIN TO SEE HEER!"
-msgstr "MENJEN HAZA! NINCS ITT SEMMI LÁTNIVALÓ!"
+msgstr "MENJ HAZA! NINCS ITT SEMMI LÁTNIVALÓ!"
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:271
@@ -876,9 +877,9 @@ msgid ""
 "there now."
 msgstr ""
 "Akkor, délkeletre vegyem az irányt, a Folyó-úton, vagy délnyugatra "
-"Középföldén keresztül? A Folyó-út átvezet az Esteni lápon, így talán még az "
-"orkok se mennének oda. Középfölde gyönyörű volt régen, de ki tudja mi folyik "
-"most arrafelé."
+"Középföldén keresztül? A Folyó-út átvezet az Esteni-lápon, így talán még az "
+"orkok se mennének oda. Középfölde gyönyörű volt régen, de ki tudja, mi "
+"folyik most arrafelé."
 
 #. [option]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:274
@@ -889,15 +890,15 @@ msgstr "Azt hiszem a Folyó-utat választom..."
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:278
 msgid "Good. The Midlands are probably an orc-infested ruin by now."
 msgstr ""
-"Jó. Középfölde minden bizonnyal romokban áll már az orkok pusztításától."
+"Jó. Középfölde minden bizonnyal romokban áll s az orkok garázdálkodnak ott."
 
 #. [message]: speaker=Burin the Lost
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:283
 msgid ""
 "SWAMP! I'm under 5 feet tall, and I don't float! Argh, have it your way."
 msgstr ""
-"MOCSÁR! Nem vagyok 150 centiméter se, és nem lebegek! Áá, menjetek amerre "
-"akartok."
+"MOCSÁR! Nem vagyok 150 centiméter se, és nem tudok úszni! Áá, menjetek, "
+"amerre akartok."
 
 #. [option]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:295
@@ -915,13 +916,13 @@ msgid ""
 "It's better than the swamp. I'm under 5 feet tall, and I don't float! "
 "Besides, I'd rather enjoy meeting more orcs."
 msgstr ""
-"Jobb, mint a mocsár. Nem vagyok 150 centiméter se, és nem lebegek a víz "
-"felszínén! Viszont szívesen találkoznék újabb orkokkal."
+"Jobb, mint a mocsár. Nem vagyok 150 centiméter se, és nem tudok úszni! "
+"Viszont szívesen találkoznék újabb orkokkal."
 
 #. [message]: speaker=Tan-NauVong
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:364
 msgid "Come and get it!"
-msgstr "Gyere és szerezd meg!"
+msgstr "Rejtett tartalék támadás!"
 
 #. [message]: speaker=Hashnak
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:368
@@ -938,7 +939,7 @@ msgstr "Uh-óh!"
 #. [message]: speaker=Tan-Schmog
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:424
 msgid "I'll not go so easily!"
-msgstr "Nem kapsz meg olyan könnyen!"
+msgstr "Nem megy ez olyan könnyen!"
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:442
@@ -948,8 +949,8 @@ msgid ""
 "(Sigh)"
 msgstr ""
 "Kiértünk a szorosból. Hát, legalább megtudtuk, hogy az orkokat is meg lehet "
-"verni. Hmm, attól tartok most örökre itt kell hagynom az otthonom... és "
-"apámat. (Sóhaj)"
+"verni. Hmm, attól tartok, most örökre itt kell hagynom az otthonom... és "
+"apámat. *SÓHAJT*"
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:446
@@ -958,19 +959,18 @@ msgid ""
 "should be able to make a stand there. Failing that, there's always "
 "Clearwater Port."
 msgstr ""
-"Déli-öböl felé kellene indulnunk. Az a sziget legnagyobb városa. Ott ki "
-"tudnánk tartani. De ha nem sikerülne, még mindig ott van Kristályvíz "
-"kikötője."
+"Déliöböl felé kellene indulnunk. Az a sziget legnagyobb városa. Ott ki "
+"tudnánk tartani. De ha nem sikerülne, még mindig ott van Kristályvízkikötő."
 
 #. [scenario]: id=The_River_Road
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_River_Road.cfg:4
 msgid "The Swamp of Esten"
-msgstr "Az Esteni láp"
+msgstr "Az Esteni-láp"
 
 #. [side]: type=Dark Sorcerer, id=Cleon
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_River_Road.cfg:36
 msgid "Cleon"
-msgstr "Kleon"
+msgstr "Cleon"
 
 #. [side]: type=Dark Sorcerer, id=Cleon
 #. [side]: type=Dark Sorcerer, id=Lollyra
@@ -979,17 +979,17 @@ msgstr "Kleon"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_River_Road.cfg:77
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_River_Road.cfg:105
 msgid "Cultists"
-msgstr ""
+msgstr "Holtidéző Szekta"
 
 #. [side]: type=Dark Sorcerer, id=Lollyra
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_River_Road.cfg:56
 msgid "Lollyra"
-msgstr "Lollira"
+msgstr "Lollyra"
 
 #. [side]: type=Dark Sorcerer, id=Clurka
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_River_Road.cfg:83
 msgid "Clurka"
-msgstr "Klurka"
+msgstr "Clurka"
 
 #. [event]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_River_Road.cfg:118
@@ -1031,9 +1031,8 @@ msgid ""
 "of Esten. In the center of that very swamp a shroud of fog descends over "
 "Young Prince Haldric."
 msgstr ""
-"Haldric herceg lázas sietséggel vezette menekülő csapatát az Esteni lápba. A "
-"hatalmas ingovány kellős közepén mély köd szállt körös-körül a fiatal "
-"hercegre."
+"Haldric herceg lázas sietséggel vezette menekülő csapatát az Esteni-lápba. A "
+"hatalmas ingovány kellős közepén sűrű köd borította el a fiatal herceget."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_River_Road.cfg:171
@@ -1042,8 +1041,8 @@ msgid ""
 "Before these troubles started we used to have to clear the swamp every "
 "spring and fall."
 msgstr ""
-"Nagyon rossz érzéseim vannak. Ez az undorító láp, meg a bizonytalan "
-"misztérium ami övezi... A gondok érkezése előtt minden tavasszal és ősszel "
+"Nagyon rossz érzésem van. Ez az undorító láp, meg az a rémes kultusz, amit "
+"itt művelnek... Az orkok érkezése előtt minden tavasszal és ősszel "
 "kitakarítottuk a mocsarat."
 
 #. [message]: speaker=Prince Haldric
@@ -1061,7 +1060,7 @@ msgid ""
 "I miss the orcs... We go all this way, and (SNIFF) what a lovely smell we "
 "have discovered."
 msgstr ""
-"Hiányolom az orkokat... Erre haladunk már mióta, és (SZIPPANT) milyen jó "
+"Hiányolom az orkokat... Erre haladunk már mióta, és *SZIPPANT* milyen jó "
 "illatot érzek most."
 
 #. [message]: speaker=Lady Outlaw
@@ -1077,7 +1076,7 @@ msgstr "Várjatok, azt hiszem hallok valamit... Fegyverbe!"
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_River_Road.cfg:235
 msgid "Careful, you don't know what's lurking in there!"
-msgstr "Óvatosan, nem tudhatod mi rejtőzködik arra!"
+msgstr "Óvatosan, nem tudhatod mi rejtőzködik ott!"
 
 #. [unit]: type=White Mage, id=Minister Edmond
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_River_Road.cfg:241
@@ -1090,14 +1089,14 @@ msgid ""
 "Back you vile--- Oh, sorry I thought you were undead. When are those goofs "
 "in Clearwater Port going to clear the swamp again?"
 msgstr ""
-"Vissza, hitványok--- Ó, bocsássatok meg, azt hittem élőholtak vagytok. Mikor "
-"fogják végre azok a tökfilkók Kristályvíz kikötőjéből újra kitakarítani a "
+"Vissza, hitványok--- Ó, bocsássatok meg, azt hittem, élőholtak vagytok. "
+"Mikor fogják végre azok a tökfilkók Kristályvízkikötőből újra kitakarítani a "
 "lápot?"
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_River_Road.cfg:257
 msgid "Maybe they'll clear it some time after the APOCALYPSE is OVER!"
-msgstr "Talán gyorsan kitakarítják, HA VÉGE LESZ AZ APOKALIPSZISNEK!"
+msgstr "Talán kitakarítják, HA VÉGE LESZ AZ APOKALIPSZISNEK!"
 
 #. [message]: speaker=Minister Edmond
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_River_Road.cfg:262
@@ -1107,7 +1106,7 @@ msgstr "Óóó! Ezt vehetem úgy, hogy nem ártana, ha segítenék rajtatok?"
 #. [message]: speaker=unit
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_River_Road.cfg:277
 msgid "Hey, there's somebody hidden in the temple. Ack! Hold there!"
-msgstr "Hej, valaki a templomban bújt meg. Rendben! Maradj ott!"
+msgstr "Hej, valaki a templomban bújt meg. Huhh! Maradjatok!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_River_Road.cfg:362
@@ -1126,12 +1125,12 @@ msgstr "Az élő-halálban örökké élhetek!"
 #. [message]: speaker=Clurka
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_River_Road.cfg:389
 msgid "Ohh! To be risen again!"
-msgstr "Óó! Újra fel fog kelni!"
+msgstr "Óó! Újra fel fogok támadni!"
 
 #. [message]: speaker=Cleon
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_River_Road.cfg:400
 msgid "A prayer for life immortal!"
-msgstr "Ima a halhatatlan életért!"
+msgstr "Imádkozom a halhatatlanságért!"
 
 #. [unit]: type=Knight, id=Sir Ruddry
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_River_Road.cfg:415
@@ -1153,7 +1152,7 @@ msgid ""
 "I'm Haldric; my father was King Eldaric IV in the lands northwest of here. "
 "Soldier, have you deserted your post?"
 msgstr ""
-"Haldric vagyok, az északnyugati földekről, IV. Eldaric király fia. Katona, "
+"Haldric vagyok, az északnyugati területről, IV. Eldaric király fia. Katona, "
 "elhagytad az állásod?"
 
 #. [message]: speaker=Sir Ruddry
@@ -1163,14 +1162,14 @@ msgid ""
 "Trust me, you can't continue down this road, Sir. Especially with the "
 "refugees, you'll be slaughtered."
 msgstr ""
-"Nem uram! Én vagyok Kristályvíz kikötő felderítő erőinek egyetlen túlélője. "
+"Nem uram! Én vagyok Kristályvízkikötő felderítő erőinek egyetlen túlélője. "
 "Bízz a szavamban, nem mehetsz ezen az úton tovább. Főleg a menekülőkkel, le "
 "fognak titeket mészárolni."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_River_Road.cfg:449
 msgid "Tell me, does Clearwater Port still stand? Is the port free?"
-msgstr "Mondd, Kristályvíz kikötője még mindig ellenáll? Szabad a kikötő?"
+msgstr "Mondd, Kristályvízkikötő még mindig ellenáll? Szabad a kikötő?"
 
 #. [message]: speaker=Sir Ruddry
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_River_Road.cfg:454
@@ -1179,7 +1178,7 @@ msgid ""
 "bodied men and boys into service when I left. That orcish army is huge, but "
 "they haven't met the main body of our forces yet."
 msgstr ""
-"Ahogyan én tudom, igen, uram. Nagy seregünk van, és minden harcképes férfit "
+"Ahogyan én tudom igen, uram. Nagy seregünk van, és minden harcképes férfit "
 "és fiút hadba állítottak, amikor eljöttem onnan. Az orkok serege óriási, de "
 "még nem találkoztak a mi főerőinkkel."
 
@@ -1191,8 +1190,8 @@ msgid ""
 "Port or Southbay."
 msgstr ""
 "Hát, nem fordulhatunk vissza, és az út előttünk is le van zárva. Azt hiszem, "
-"meg kell kockáztatnunk átmenni az Öregerdőn, és aztán kilépni Kirstályvíz "
-"kikötője, vagy Déli-öböl felé."
+"meg kell kockáztatnunk átmenni az Öregerdőn, és aztán áttörni "
+"Kirstályvízkikötő, vagy Déliöböl felé."
 
 #. [message]: speaker=Burin the Lost
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_River_Road.cfg:464
@@ -1214,7 +1213,7 @@ msgstr "Uram, ha nem bánod, akkor veled tartanék."
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_River_Road.cfg:474
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:413
 msgid "On we go..."
-msgstr "Akkor induljunk..."
+msgstr "Akkor induljunk végre..."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_River_Road.cfg:494
@@ -1249,8 +1248,8 @@ msgid ""
 "Prince Haldric leads his refugee band into the Midlands and smoke is in the "
 "air."
 msgstr ""
-"Haldric herceg elvezeti a menekültek csoportját Középföldére, és füst száll "
-"a levegőbe."
+"Haldric herceg elvezeti a menekültek csoportját Középföldére, ahol füst "
+"száll a levegőben."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:166
@@ -1271,7 +1270,7 @@ msgstr "Rendben! Roham!"
 #. [message]: speaker=Lady Outlaw
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:177
 msgid "Feel my wrath, you orcish scum!"
-msgstr "Megérezheted a dühöm, te senkiházi ork!"
+msgstr "Érezd a dühöm, te senkiházi ork!"
 
 #. [message]: speaker=Tan-Vrodis
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:183
@@ -1288,7 +1287,7 @@ msgstr ""
 #. [message]: speaker=Tan-Hogar
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:196
 msgid "Shut yer mouth! Let's just get 'em."
-msgstr "Tartsd meg magadnak! Egyszerűen kapjuk el őket!"
+msgstr "Tartsd meg magadnak a bölcsességedet! Egyszerűen kapjuk el őket!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:214
@@ -1298,7 +1297,7 @@ msgstr "DK - Az Öregerdő. Belépés csak saját felelősségre!"
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:235
 msgid "SW - Southbay."
-msgstr "DNy - Déli-öböl."
+msgstr "DNy - Déliöböl."
 
 #. [event]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:256
@@ -1318,7 +1317,8 @@ msgstr "Vrogar"
 #. [message]: speaker=Vrogar
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:291
 msgid "How'd they get behind us? I hate to miss such tasty meat."
-msgstr "Hogyan kerültek mögénk? Nem szeretem az ilyen ízletes húst kihagyni."
+msgstr ""
+"Hogyan kerültek mögénk? Nem szeretem az ilyen ízletes húst elszalasztani."
 
 #. [message]: speaker=Tan-Hogar
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:313
@@ -1327,9 +1327,8 @@ msgstr "Inkább őt, mint engem! A tartalék sereget!"
 
 #. [message]: speaker=Tan-Bok
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:334
-#, fuzzy
 msgid "Hogar was a fool! Reserves!"
-msgstr "Holgar bolond volt!A tartalék sereget!"
+msgstr "Hogar bolond volt! A tartalék sereget!"
 
 #. [unit]: type=Knight, id=Sir Ladoc
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:354
@@ -1344,8 +1343,8 @@ msgid ""
 "army of nightmarish size."
 msgstr ""
 "Állj! Nem mehetsz tovább! Már belebotlottál a hátvédként álló ork "
-"egységekbe. A fő hadtestük a Déli-öböl felé vezető úton menetel. Az pedig "
-"egy rettenetesen nagy sereg."
+"egységekbe. A fő hadtestük a Déliöböl felé vezető úton menetel. Az pedig egy "
+"rettenetesen nagy sereg."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:378
@@ -1362,13 +1361,13 @@ msgid ""
 "They overran my post. I got hit on the head pretty good. When I came to the "
 "orcish army had already passed my position."
 msgstr ""
-"Lerohanták a helyőrségemet. Kaptam egy rendeset a fejemre is. Már túl is "
-"haladtak rajtunk amikor eljöttem."
+"Lerohanták a helyőrségemet. Kaptam egy rendeset a fejemre is. Mire magamhoz "
+"tértem, már messze jártak."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:388
 msgid "Tell me, how fares Southbay?"
-msgstr "Mesélj, hogyan boldogulnak Déli-öbölben?"
+msgstr "Mesélj, hogyan boldogulnak Déliöbölben?"
 
 #. [message]: speaker=Sir Ladoc
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:393
@@ -1376,7 +1375,7 @@ msgid ""
 "Southbay won't fall without one hell of a fight, sir. They'll stand to the "
 "last! I only wish I was there!"
 msgstr ""
-"Déli-öböl nem fog elesni egykönnyen, uram. Az utolsókig küzdeni fognak! "
+"Déliöböl nem fog elesni egykönnyen, uram. Az utolsó emberig küzdeni fognak! "
 "Bárcsak én is velük lehetnék!"
 
 #. [message]: speaker=Sir Ladoc
@@ -1388,7 +1387,7 @@ msgid ""
 msgstr ""
 "Hát, nem indulhatunk visszafelé, az utat meg elállják előttünk... azt "
 "hiszem, meg kell kockáztatnunk, hogy átmenjünk az Öregerdőn, hogy aztán "
-"Kristályvíz kikötője felé mehessünk tovább."
+"Kristályvízkikötő felé mehessünk tovább."
 
 #. [message]: speaker=Burin the Lost
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:403
@@ -1396,8 +1395,8 @@ msgid ""
 "Oh great, now a forest. I should have stayed at home and took my chances "
 "with the orcs!"
 msgstr ""
-"Ó, óriási, most meg egy erdő. Inkább maradtam volna otthon, és kipróbáltam "
-"volna a szerencsémet az orkokkal szemben!"
+"Ó, óriási, most meg egy erdő. Inkább maradtam volna otthon, és próbáltam "
+"volna ki a szerencsémet az orkokkal szemben!"
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:431
@@ -1480,7 +1479,7 @@ msgid ""
 msgstr ""
 "Haldric és csapata nemsokára a titokzatos Öregerdő szívében találták "
 "magukat. Az út egyre keskenyebb lett, míg alig lett több egy egyszerű "
-"csapásnál. Az ágak olyan magasra szöktek, hogy alig szüremlett át rajtuk a "
+"csapásnál. Az ágak olyan magasra nőttek, hogy alig szüremlett át rajtuk a "
 "napfény... A mély erdő sejtelmes hangjai visszhangoztak mindenfelől."
 
 #. [message]: speaker=Burin the Lost
@@ -1533,19 +1532,19 @@ msgid ""
 "You claim to be a tree-friend; show it to be true. For we are in dire need, "
 "or you may meet your fate with the rest of these monsters."
 msgstr ""
-"Azt állítjátok, hogy fabarátok vagytok; most bizonyítsátok is be! Szükségünk "
-"van rátok, de választhatjátok magatoknak az ellenségeinkre váró csapásokat "
-"is."
+"Azt állítjátok, hogy fabarátok vagytok; lehet, hogy igazat mondotok. "
+"Akárhogy is van, meg vagyunk szorulva, de ezek a szörnyek titeket sem fognak "
+"megkímélni."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:236
 msgid "We will help. (Quietly) Be careful with the trees."
-msgstr "Segítségetekre leszünk. (Halkan) Vigyázzatok a fákkal!"
+msgstr "Segítségetekre leszünk. *Halkan* Vigyázzatok a fákkal!"
 
 #. [message]: speaker=Burin the Lost
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:240
 msgid "What! What are you looking at me for?"
-msgstr "Micsoda! Mit bámulsz rajtam?"
+msgstr "Micsoda! Miért nézel rám ilyen gyanakodva?"
 
 #. [message]: speaker=unit
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:253
@@ -1572,8 +1571,8 @@ msgid ""
 "Without the help of these tree-folk we'll be trapped in these woods till we "
 "die! There will be nothing to hold the orcs back!"
 msgstr ""
-"Ezeknek a fanépeknek a segítsége nélkül örök életre ebben az erdőben "
-"ragadnánk! És akkor mi tarthatná vissza az orkokat?"
+"Ezeknek a fa-népeknek a segítsége nélkül örökre ebben az erdőben ragadnánk! "
+"És akkor mi tarthatná vissza az orkokat?"
 
 #. [message]: speaker=Burin the Lost
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:288
@@ -1595,8 +1594,8 @@ msgid ""
 msgstr ""
 "Ezen a napon bebizonyítottátok, hogy valóban fabarátok vagytok. Hosszú ideig "
 "csak az éles szerszámaitokat ismertük. Ti építettétek azokat a hatalmas "
-"kőépítményeket is. Meglehet, hogy a gyökereink lassúak, de erősek is "
-"ugyanakkor, és szépen lassan minden követ vissza fogunk szerezni a földnek."
+"kőépítményeket is. Meglehet, hogy a gyökereink lassúak, de erősek és szépen "
+"lassan minden követ vissza fogunk szerezni a földnek."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:308
@@ -1634,7 +1633,7 @@ msgstr ""
 "Az én fajtám az erdőhöz van kötve, nem lennénk a segítségedre, ha át kellene "
 "lépnünk a határainkat. De talán még a segítségedre lehetünk egy dologban. "
 "Nem is olyan régen, a te néped háborújában, az egyik királyotok elfogott egy "
-"gonosz villit, és bezárta az erdő közepén található templom "
+"gonosz delevényt, és bezárta az erdő közepén található templom "
 "katakombarendszerébe. Ott voltunk és láttunk mindent."
 
 #. [message]: speaker=Elilmaldur-Rithrandil
@@ -1658,7 +1657,7 @@ msgid ""
 "The Lich was carrying a powerful artifact. We know, we can feel it. This "
 "artifact may aid you in your quest."
 msgstr ""
-"A villi egy pusztító erejű tárgyat hordoz. Tudjuk, érezzük. Ez a tárgy "
+"A delevény egy pusztító erejű tárgyat hordoz. Tudjuk, érezzük. Ez a tárgy "
 "biztosan a segítségedre lenne a küldetésedben."
 
 #. [message]: speaker=Lady Outlaw
@@ -1670,7 +1669,7 @@ msgid ""
 msgstr ""
 "Biztosan a Tűz Rubinjáról beszél. Az volt a leghatalmasabb varázstárgyunk. "
 "Keletről hoztuk magunkkal. Azt hittük, elveszett a köztünk dúló háborúban, "
-"amikor is Lenvan villi-úr elesett."
+"amikor is Lenvan delevény-úr elesett."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:341
@@ -1680,7 +1679,7 @@ msgstr "Most minden segítségre szükségünk van!"
 #. [message]: speaker=Elilmaldur-Rithrandil
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:345
 msgid "Then I will open the catacombs for you..."
-msgstr "Akkor ki fogom nyitni nektek a katakombát..."
+msgstr "Akkor ki fogom nyitni nektek a katakombákat..."
 
 #. [message]: speaker=Lady Outlaw
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:355
@@ -1689,14 +1688,14 @@ msgid ""
 "with that orcish scum, I can't bring myself to fight against one of the "
 "greatest leaders of my people."
 msgstr ""
-"Ifjú hercegem, bár a villi-urak elárultak minket, amikor az ork csőcselékkel "
-"szövetkeztek, nem tehetem meg, hogy népem egyik legnagyobb vezetője ellen "
-"harcoljak."
+"Ifjú hercegem, bár a delevény-urak elárultak minket, amikor az ork "
+"csőcselékkel szövetkeztek, nem tehetem meg, hogy népem egyik legnagyobb "
+"vezetője ellen harcoljak."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:359
 msgid "Lady, why would you let those monsters lead your people?"
-msgstr "Úrnőm, miért engednéd, hogy azok a szörnyek vezessék a népedet?"
+msgstr "Úrnőm, miért engedtétek, hogy azok a szörnyek vezessék a népedet?"
 
 #. [message]: speaker=Lady Outlaw
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:363
@@ -1708,9 +1707,9 @@ msgid ""
 msgstr ""
 "Haldric, mi egy ősi nép vagyunk, amely olyan földön élt, ahol minden rendű "
 "és rangú ember és szörnyeteg megtalálható volt. Szükségünk volt átlátni a "
-"csekélyes emberi éveken. A holtidézés művészete lehetővé tette népünk "
+"sekélyes emberi korlátokon. A holtidézés művészete lehetővé tette népünk "
 "legjobbjainak és legkitűnőbbjeinek, hogy örökké élhessenek, valamint, hogy a "
-"leghitványabbak esztelenül kiszolgálják őket."
+"leghitványabbak vakon kiszolgálják őket."
 
 #. [message]: speaker=Lady Outlaw
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:367
@@ -1721,10 +1720,10 @@ msgid ""
 "down in that hole for so long I don't imagine he's too happy."
 msgstr ""
 "Miután nyugaton elvesztettük a háborút, majd a menekültjeink veletek "
-"kerültek szembe, sőt az orkokkal is kellett valamit tennünk, nem kötöttünk "
-"rossz alkut. Lenvan villi-úr egyike volt a legnagyobb vezéreinknek, ő "
-"vezetett minket nyugatra. Habár ennyi idő után, amit abban a lyukban "
-"töltött, nem lehet túl rózsás kedve."
+"kerültek szembe, sőt az orkokkal; kellett valamit tennünk, s nem kötöttünk "
+"rossz alkut. Lenvan delevény-úr egyike volt a legnagyobb vezéreinknek, ő "
+"vezetett minket nyugatról. Habár ennyi idő után, amit abban a lyukban "
+"töltött, nem lehet túl rózsás a kedve."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:371
@@ -1733,8 +1732,8 @@ msgid ""
 "your best and brightest into undead is what causes them to fall into "
 "darkness?"
 msgstr ""
-"Ahha. Nem gondoltad, hogy ez a szentségtelen mód, hogy a legkitűnőbbeket "
-"élőholttá változtatjátok, okozza a sötétségbe való eltűnésüket?"
+"Ahha. Nem gondoltátok, hogy ez a szentségtelen mód, hogy a legkitűnőbbeket "
+"élőholttá változtatjátok, okozta a sötétségbe való elmerülésüket?"
 
 #. [message]: speaker=Lady Outlaw
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:375
@@ -1744,8 +1743,8 @@ msgid ""
 "return in a few days."
 msgstr ""
 "Ezt később is megvitathatjuk. Ettől még a segítségetekre lehetek. Fel fogom "
-"deríteni az előttünk húzódó utakat. Tudnunk kell, hogy eljuthatunk-e Déli-"
-"öbölbe. Pár nap múlva vissza fogok térni."
+"deríteni az előttünk húzódó utakat. Tudnunk kell, hogy eljuthatunk-e "
+"Déliöbölbe. Pár nap múlva vissza fogok térni."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:398
@@ -1761,7 +1760,7 @@ msgstr "Templom a mélységben"
 #. [side]: type=Lich, id=Lich-Lord Lenvan
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/06_Temple_of_the_Deep.cfg:38
 msgid "Lich-Lord Lenvan"
-msgstr "Lenvan villi-úr"
+msgstr "Lenvan delevény-úr"
 
 #. [side]: type=Spectre, id=Isorfilad
 #. [side]: type=Spectre, id=Tinoldor
@@ -1772,17 +1771,17 @@ msgstr "Lenvan villi-úr"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/06_Temple_of_the_Deep.cfg:45
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:123
 msgid "Undead"
-msgstr ""
+msgstr "Élőholtak"
 
 #. [objective]: condition=win
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/06_Temple_of_the_Deep.cfg:109
 msgid "Defeat the Lich-Lord and"
-msgstr "Legyőzöd a villi-urat és"
+msgstr "Legyőzöd a delevény-urat és"
 
 #. [objective]: condition=win
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/06_Temple_of_the_Deep.cfg:113
 msgid "Retrieve the Fire Ruby (with Prince Haldric)"
-msgstr "Visszaszerzed a Tűz Rubinját (Haldric herceggel)"
+msgstr "megszerzed a Tűz Rubinját (Haldric herceggel)"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/06_Temple_of_the_Deep.cfg:134
@@ -1791,9 +1790,9 @@ msgid ""
 "below the temple, buried deep in the bedrock, in the very roots of the world "
 "itself. In the distance Haldric hears a booming voice."
 msgstr ""
-"Haldric herceg és társai hajthatatlan kíváncsisággal szálltak le a templom "
-"alatt elterülő katakombarendszerbe, mélyen a kövekbe ásva, az egész világ "
-"gyökereinél. A távolból egyre emelkedő hang ütötte meg Haldric fülét."
+"Haldric herceg és társai óvatos kíváncsisággal szálltak le a templom alatt "
+"elterülő katakombarendszerbe, amelyet mélyen a kövekbe, az egész világ "
+"alapjaiba véstek. A távolból egyre emelkedő hang ütötte meg Haldric fülét."
 
 #. [message]: speaker=Lich-Lord Lenvan
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/06_Temple_of_the_Deep.cfg:139
@@ -1801,7 +1800,7 @@ msgid ""
 "Free! I'm free at last! No mere magi could seal me in here forever! Rise, my "
 "soldiers of darkness, the world will be ours once more!"
 msgstr ""
-"Szabadság! Végre szabad vagyok! Még azok a vézna mágusok sem tarthattak "
+"Szabadság! Végre szabad vagyok! Még azok a hitvány mágusok sem tarthattak "
 "örökre itt! Emelkedjetek fel, sötét katonáim, a világ újra a miénk lesz!"
 
 #. [message]: speaker=Burin the Lost
@@ -1825,7 +1824,7 @@ msgstr "Napjaim végleg leperegtek."
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/06_Temple_of_the_Deep.cfg:167
 msgid "The world won't miss him one bit."
-msgstr "A világ egyáltalán nem fogja hiányolni."
+msgstr "A világ egyáltalán nem fog hiányolni."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/06_Temple_of_the_Deep.cfg:188
@@ -1876,7 +1875,7 @@ msgid ""
 "actually know what this thing does, I'll just put it in the bottom of my "
 "pack for right now."
 msgstr ""
-"Meglepő, hogy a villi-úr nem tartotta ezt magánál. Mivel még nem tudom, "
+"Meglepő, hogy a delevény-úr nem tartotta ezt magánál. Mivel még nem tudom, "
 "hogyan használhatnám, most beteszem a csomagom aljába."
 
 #. [message]: speaker=narrator
@@ -1890,13 +1889,13 @@ msgid ""
 "I'm glad that's over! We have the Ruby of Fire, and that Lich-Lord is now a "
 "pile of dust, let's get out of these catacombs!"
 msgstr ""
-"Örülök, hogy véget ért! Megszereztük a Tűz Rubinját, és az a villi-úr már "
+"Örülök, hogy véget ért! Megszereztük a Tűz Rubinját, és az a delevény-úr már "
 "csak por és hamu, most tűnjünk el ezekből a katakombákból!"
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/06_Temple_of_the_Deep.cfg:347
 msgid "He's raising our dead!"
-msgstr "Megidézi a halottainkat!"
+msgstr "Feltámasztja a halottainkat!"
 
 #. [scenario]: id=Return_to_Oldwood
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:6
@@ -1915,7 +1914,7 @@ msgstr "Meglepően-Faszerű"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:46
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:57
 msgid "Treefolk"
-msgstr ""
+msgstr "Fapásztorok"
 
 #. [side]: type=Wose, id=Theylook-Thesame-Toyou
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:42
@@ -1945,10 +1944,10 @@ msgid ""
 "It is late into the fall, and the first snows should fall any day. Prince "
 "Haldric has returned to his forest keep, and is pondering what to do next..."
 msgstr ""
-"Haldric herceg elhagyta a villi-úr katakombáit, a Tűz Rubinjával a "
+"Haldric herceg elhagyta a delevény-úr katakombáit, a Tűz Rubinjával a "
 "birtokában. Az erdő kifejezetten világos volt aznap, de fagyos szellő fújt. "
-"Már régen benne jártunk az őszben, és az első hó bármikor leeshetett. "
-"Haldric herceg visszatért az erdei fellegvárba, és a jövőt latolgatta..."
+"Már régen benne jártak az őszben, és az első hó bármikor leeshetett. Haldric "
+"herceg visszatért az erdei fellegvárba, és a jövőt latolgatta..."
 
 #. [message]: speaker=Elilmaldur-Rithrandil
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:111
@@ -1956,8 +1955,8 @@ msgid ""
 "So, you have defeated the Lich and returned with his jewel of power. The "
 "earth feels happy beneath my toes."
 msgstr ""
-"Tehát legyőzted a villit, és a kincsével tértél vissza. A föld is sugárzik a "
-"boldogságtól a talpam alatt."
+"Tehát legyőzted a delevényt, és a mágikus kincsével tértél vissza. A föld is "
+"sugárzik a boldogságtól a talpam alatt."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:115
@@ -1978,7 +1977,7 @@ msgid ""
 msgstr ""
 "Nálam van ez a kincs, de ötletem sincs, hogyan használhatnám. És ami a "
 "legrosszabb, fogalmam sincs, mi is zajlik az erdő határain kívül. A "
-"menekültek száma napról-napra nő. El kell mennünk Déli-öbölbe, de nem merem "
+"menekültek száma napról-napra nő. El kell mennünk Déliöbölbe, de nem merem "
 "az embereket a síkságra vezetni, nehogy lemészároljanak minket."
 
 #. [message]: speaker=Elilmaldur-Rithrandil
@@ -1988,7 +1987,7 @@ msgid ""
 "tree-friend, I would there were more I could do to help you."
 msgstr ""
 "Az én szemeim nem látnak ki az erdőből. A fák jó barátja voltál, bárcsak "
-"lenne valami, amiben segíthetnék rajtad."
+"lenne valami, amivel segíthetnék rajtad."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:127
@@ -1997,14 +1996,14 @@ msgid ""
 "hospitality, though generously meant, has barely sufficed. Hold - I see "
 "somebody!"
 msgstr ""
-"Nem maradhatunk itt mindannyian a télre, mind éheznénk, vagy megfagynánk. A "
+"Nem maradhatunk itt mindannyian a télre, éhenhalnánk, vagy megfagynánk. A "
 "vendégszeretetetek eddig is éppen elég sokat segített rajtunk. Egy pillanat, "
 "látok valakit!"
 
 #. [message]: speaker=Lady Outlaw
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:156
 msgid "You thought that I ran away, didn't you?"
-msgstr "Azt hitted, elfutottam, nem?"
+msgstr "Azt hitted ugye, hogy elfutottam?"
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:160
@@ -2014,7 +2013,7 @@ msgstr "Átfutott az agyamon."
 #. [message]: speaker=Lady Outlaw
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:164
 msgid "Well, I come bearing news of the road to Southbay!"
-msgstr "Hát, hírekkel érkeztem a Déli-öböl felé vezető útról."
+msgstr "Hát, hírekkel érkeztem a Déliöböl felé vezető útról."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:168
@@ -2028,9 +2027,9 @@ msgid ""
 "Southbay. We clearly can't go that way. However, the road to Clearwater Port "
 "is free of orcs. Apparently they're bogged down in the swamp of Esten."
 msgstr ""
-"Nem jó hírekkel. Az orkok fő tábora az erdő és Déli-öböl közt fekszik, "
-"egyszerűen nem mehetünk arra. Azonban, a Kristályvíz kikötőjéhez vezető úton "
-"egy szem ork sincs. Kétségtelenül bennragadtak az esteni lápban."
+"Nem jó hírekkel. Az orkok fő tábora az erdő és Déliöböl közt fekszik, "
+"egyszerűen nem mehetünk arra. Azonban a Kristályvízkikötőhöz vezető úton egy "
+"szem ork sincs. Kétségtelenül bennragadtak az Esteni-lápban."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:176
@@ -2059,7 +2058,7 @@ msgstr "Már megint te?!"
 #. [message]: speaker=Lady Outlaw
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:194
 msgid "I come bearing news of the road to Southbay!"
-msgstr "Hírekkel érkeztem a Déli-öböl felé vezető útról!"
+msgstr "Hírekkel érkeztem a Déliöböl felé vezető útról!"
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:198
@@ -2073,15 +2072,16 @@ msgid ""
 "and Southbay. You clearly can't go that way. However, the road to Clearwater "
 "Port is free of orcs. Apparently they're bogged down in the swamp of Esten."
 msgstr ""
-"Fontos, de nem jó hírekkel. Az orkok fő tábora az erdő és Déli-öböl közt "
-"fekszik, egyszerűen nem mehetünk arra. Azonban, a Kristályvíz kikötőjéhez "
-"vezető úton egy szem ork sincs. Kétségtelenül bennragadtak az esteni lápban."
+"Pedig fontos, de nem jó híreim vannak. Az orkok fő tábora az erdő és "
+"Déliöböl közt fekszik, egyszerűen nem mehetünk arra. Azonban, a "
+"Kristályvízkikötőhöz vezető úton egy szem ork sincs. Kétségtelenül "
+"bennragadtak az Esteni-lápban."
 
 #. [message]: speaker=Lady Outlaw
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:206
 msgid "I propose we join forces, and make a break for Clearwater Port."
 msgstr ""
-"Azt javaslom, egyesítsük az erőinket, és induljunk Kristályvíz kikötőjébe."
+"Azt javaslom, egyesítsük az erőinket, és induljunk Kristályvízkikötőbe."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:210
@@ -2096,8 +2096,8 @@ msgstr ""
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:214
 msgid "Lady, why would you let those undead monsters lead your people?"
 msgstr ""
-"Hölgyem, miért hagynád azokat az élőholt szörnyetegeket, hogy vezessék a "
-"néped?"
+"Hölgyem, miért hagytátok azoknak az élőholt szörnyetegeknek, hogy vezessék a "
+"népedet?"
 
 #. [message]: speaker=Lady Outlaw
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:218
@@ -2109,9 +2109,9 @@ msgid ""
 msgstr ""
 "Haldric, mi egy ősi nép vagyunk, amely olyan földön élt, ahol minden rendű "
 "és rangú ember és szörnyeteg megtalálható volt. Szükségünk volt átlátni a "
-"csekélyes emberi éveken. A holtidézés művészete lehetővé tette népünk "
+"sekélyes emberi korlátokon. A holtidézés művészete lehetővé tette népünk "
 "legjobbjainak és legkitűnőbbjeinek, hogy örökké élhessenek, valamint, hogy a "
-"leghitványabbak esztelenül kiszolgálják őket."
+"leghitványabbak vakon kiszolgálják őket."
 
 #. [message]: speaker=Lady Outlaw
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:222
@@ -2119,8 +2119,9 @@ msgid ""
 "Other than losing our war back west, then our refugee war to your people, "
 "and this orc thing, it wasn't such a bad deal."
 msgstr ""
-"Ha csak a nyugati háborúnkat, majd a veletek vívott menekültháborút, "
-"valamint ezt az ork mizériát tekintjük, ez nem is volt olyan rossz üzlet."
+"Elvesztvén a nyugati háborúnkat, majd a veletek vívott menekültháborút, "
+"valamint az ork háborút is, nem maradt más választásunk.S nem is volt olyan "
+"rossz üzlet."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:226
@@ -2129,8 +2130,8 @@ msgid ""
 "your best and brightest into undead is what caused them to fall into "
 "darkness?"
 msgstr ""
-"Ahha. Nem gondoltad, hogy ez a szentségtelen mód, hogy a legkitűnőbbeket "
-"élőholttá változtatjátok, okozza a sötétségbe való eltűnésüket?"
+"Ahha. Nem gondoltátok, hogy ez a szentségtelen mód, hogy a legkitűnőbbeket "
+"élőholttá változtatjátok, okozta a sötétségbe való elmerülésüket?"
 
 #. [message]: speaker=Lady Outlaw
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:230
@@ -2150,7 +2151,7 @@ msgstr ""
 #. [message]: speaker=Lady Outlaw
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:243
 msgid "Bah, have it your way!"
-msgstr "Ahh, akkor csináld egyedül!"
+msgstr "Ahh, Legyen, ha akarod!"
 
 #. [unit]: id=Lady Jessica, type=$lady_store.type
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:253
@@ -2164,8 +2165,8 @@ msgid ""
 "the Lich-Lords' dark pact with the orcs, in no small part because your fool "
 "Prince of Southbay convinced them that their immortal un-lives were over!"
 msgstr ""
-"Jessica úrnő vagyok, egy nemes, a wesfolkok hercegnője! A villi-urak sötét "
-"megállapodása az orkokkal elárult minket. Nem kis részben a 'ti' déli-öbli "
+"Jessica úrnő vagyok, egy nemes, a wesfolkok hercegnője! A delevény-urak "
+"sötét megállapodása az orkokkal elárult engem. Nem kis részben a TI déliöbli "
 "hercegetek a hibás ebben, mivel meggyőzte őket arról, hogy élőholt "
 "halhatatlanságuknak vége!"
 
@@ -2177,11 +2178,11 @@ msgid ""
 "Lich-Lords, or they may not have, but I do know that the orcs are not going "
 "to tolerate living humans outside of the slave mines or stew pot!"
 msgstr ""
-"És most, így én is menekült vagyok. Őszintén, fogalmam sincs, hogy a villi-"
-"urak együttműködnek-e az orkokkal. Az orkoknak lehet, hogy már elegük lett a "
-"villi-urakból, de az is lehet, hogy nem... de abban biztos vagyok, hogy az "
-"orkok nem engedik az embereket élni a rabszolgák bányáin és a húsos kondérok "
-"falain kívül."
+"És így én is menekült vagyok. Őszintén, fogalmam sincs, hogy a delevény-urak "
+"együttműködnek-e az orkokkal vagy sem. Az orkoknak lehet, hogy már elegük "
+"lett a delevény-urakból, de az is lehet, hogy nem... de abban biztos vagyok, "
+"hogy az orkok élő embert csak rabszolgaként a bányákban vagy a húsosfazékba-"
+"kerülés előtt tűrnek el."
 
 #. [message]: speaker=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:292
@@ -2194,7 +2195,7 @@ msgid ""
 "Fair enough. We will head for Clearwater Port. Thank you, Elilmaldur-"
 "Rithrandil, I will remember your hospitality!"
 msgstr ""
-"Rendben van, indulunk Kristályvíz kikötője felé. Köszönjük, Elilmaldur-"
+"Rendben van, indulunk Kristályvízkikötő felé. Köszönjük, Elilmaldur-"
 "Rithrandil. Sosem fogom elfelejteni a vendégszeretetedet!"
 
 #. [message]: speaker=Elilmaldur-Rithrandil
@@ -2209,14 +2210,14 @@ msgstr ""
 #. [message]: speaker=Burin the Lost
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:304
 msgid "Finally, we're getting out of this forest!"
-msgstr "Végül is kijutunk ebből az erdőből!"
+msgstr "Végül csak kijutunk ebből az erdőből!"
 
 #. [message]: speaker=narrator
 #. [scenario]: id=Clearwater_Port
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:4
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:467
 msgid "Clearwater Port"
-msgstr "Kristályvíz kikötője"
+msgstr "Kristályvízkikötő"
 
 #. [side]: id=Prince Haldric, type=Noble Commander
 #. [side]: type=Grand Knight, id=King Addroran IX
@@ -2229,7 +2230,7 @@ msgstr "Kristályvíz kikötője"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:31
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:58
 msgid "Humans"
-msgstr ""
+msgstr "Emberek"
 
 #. [then]
 #. [side]: type=Lieutenant, id=Commander Aethyr
@@ -2258,7 +2259,7 @@ msgstr "Ut'Tan-Vrork"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:218
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:219
 msgid "Angry Farmer"
-msgstr "Bosszús földműves"
+msgstr "Haragos földműves"
 
 #. [objective]: condition=win
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:225
@@ -2317,14 +2318,14 @@ msgid ""
 "the orcs haven't caught up with him yet, the winter snow has, and the ships "
 "seem to be missing from the port."
 msgstr ""
-"Hercegünknek sikerült eljutnia Kristályvíz kikötőjébe, az orkokkal a "
-"sarkában. Bár az orkokkal nem találkozott még szembe, a téli hóeséssel igen, "
-"és úgy tűnt, a kikötőbe sem érkeznek hajók."
+"Hercegünknek sikerült eljutnia Kristályvízkikötőbe az orkokkal a sarkában. "
+"Bár az orkokkal nem találkozott még szembe, a téli hóeséssel igen, és úgy "
+"tűnt, a kikötőben sem horgonyoznak hajók."
 
 #. [message]: speaker=Sir Ruddry
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:273
 msgid "Ha! Clearwater Port still stands!"
-msgstr "Hahh! Kristályvíz kikötője még áll!"
+msgstr "Hahh! Kristályvízkikötő még áll!"
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:278
@@ -2343,10 +2344,11 @@ msgid ""
 "days. Our forces engaged the orcs as they exited the Swamp of Esten. At "
 "first, we prevailed, and pushed them back into the swamp!"
 msgstr ""
-"Jómagam, uram, a helyőrség vezetője vagyok. Jelenleg a teljes halászflottánk "
-"Déli-öböl felé menekíti az embereket. A hajóknak néhány napon belül kell "
-"visszatérniük. Seregeink megmérkőztek az orkokkal, amikor azok kijutottak az "
-"esteni lápból. Sikerült még vissza is szorítani őket az ingoványba!"
+"Jómagam uram, én vagyok a helyőrség parancsnoka. Jelenleg a teljes "
+"halászflottánk Déliöböl felé menekíti az embereket. A hajóknak néhány napon "
+"belül kell visszatérniük. Seregeink megmérkőztek az orkokkal, amikor azok "
+"kijutottak az Esteni-lápból. Először sikerült visszaszorítani őket az "
+"ingoványba."
 
 #. [message]: speaker=Commander Aethyr
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:288
@@ -2357,7 +2359,7 @@ msgid ""
 msgstr ""
 "Sajnos az csak egy színlelt támadás volt, és az orkok az erősítéssel gyorsan "
 "lerohanták az állásainkat. Hadseregünk nagy részét elvesztettük, beleértve "
-"Kristályvíz királyát is, aki bátran élére állt a támadásnak."
+"Kristályvízkikötő királyát is, aki bátran élére állt a támadásnak."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:293
@@ -2376,9 +2378,9 @@ msgid ""
 msgstr ""
 "Sok jó katona vére áztatta a fagyos tájat aznap. Az orkok még most is "
 "előretörnek. A király nem hagyott hátra utódot, és ráadásul a nemesek is "
-"elmenekültek már Déli-öbölbe. Minket leköt az ittmaradottak kimenekítése. A "
+"elmenekültek már Déliöbölbe. Minket leköt az ittmaradottak kimenekítése. A "
 "hadsereg elegendő időt nyert nekünk, hogy népünk nagy részét megmenthessük, "
-"a téli készletekkel egyetemben. Déli-öbölbe mentek, ami valószínűleg már "
+"a téli készletekkel egyetemben. Déliöbölbe mentek, ami valószínűleg már "
 "csordultig telt a mindenfelől érkező menekültekkel."
 
 #. [message]: speaker=Commander Aethyr
@@ -2390,11 +2392,11 @@ msgid ""
 "help we can get to hold our walls. Otherwise I fear that we will be overrun "
 "before the last of the people can be evacuated."
 msgstr ""
-"Csak addig tartjuk a várost, amíg az utolsó menekült nem hagyta el. Te, "
-"uram, biztonságba vonulhatsz akár az első hajóval is. De, ha beszélhetek "
-"őszintén, véderőink nagyon is gyengék, így bárminemű segítségre szükségünk "
-"lehet a városfalak megtartásában. Máskülönben, attól tartok, le fognak "
-"minket rohanni, mielőtt mindenkit kimenekíthetnénk."
+"Csak addig tartjuk a várost, amíg az utolsó menekült nem hagyta el. Te uram, "
+"biztonságba vonulhatsz akár az első hajóval is. De, ha beszélhetek őszintén, "
+"véderőink nagyon is gyengék, így bárminemű segítségre szükségünk lehet a "
+"városfalak megtartásában. Máskülönben, attól tartok, le fognak minket "
+"rohanni, mielőtt mindenkit kimenekíthetnénk."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:308
@@ -2405,9 +2407,9 @@ msgid ""
 "will help you defend these walls as long as we can."
 msgstr ""
 "Hát, mi vagyunk lakóhelyünk utolsó menekültjei, és az orkok a nyomunkban "
-"vannak. Wesfolkok is velünk tartanak, szolgálatunkra voltak, így őket is ki "
+"vannak. Wesfolkok is tartanak velünk, szolgálatunkra voltak, így őket is ki "
 "kell menekíteni. Messziről jöttünk, és sok sebesültet hordozunk, de amíg "
-"csak tudunk, segítségedre leszünk a város falainak védésében."
+"csak tudunk, segítségedre leszünk a város falainak védelmében."
 
 #. [message]: speaker=Commander Aethyr
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:313
@@ -2443,7 +2445,7 @@ msgid ""
 "the orcs will help take my mind off things."
 msgstr ""
 "Hajók! Senki sem beszélt eddig hajókról. Vajon vége lesz egyszer is ennek a "
-"gyötrelemnek?! Óó, majd az orkok elfeledtetik velem ezeket a kínzó "
+"vesszőfutásnak?! Óó, majd az orkok elfeledtetik velem ezeket a kínzó "
 "gondolatokat."
 
 #. [message]: speaker=Commander Aethyr
@@ -2453,10 +2455,10 @@ msgid ""
 "boatloads. Until then, let us make those orcs pay dearly for every inch of "
 "our land. For our homes, for our people, for our fallen king!"
 msgstr ""
-"Mindenki az állásába, emberek! Három hajóflottával ki tudunk mindenkit "
-"menekíteni. Addig is, ne hagyjuk az orkokat, hogy büntetlenül megszerezzenek "
-"akár csak egy talpalatnyi földet is! Az otthonainkért, a népünkért, a hősi "
-"halált halt királyunkért!"
+"Mindenki az állásába, emberek! Három hajóval ki tudunk mindenkit menekíteni. "
+"Addig is, ne hagyjuk az orkokat, hogy büntetlenül megszerezzenek akár csak "
+"egy talpalatnyi földet is! Az otthonainkért, a népünkért, a hősi halált halt "
+"királyunkért!"
 
 #. [message]: speaker=Angry Farmer
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:349
@@ -2469,8 +2471,8 @@ msgid ""
 "'Bring these Wesfolk too? It would be...highly irregular.' Bah! I'll show "
 "you irregular..."
 msgstr ""
-"'De a wesfolkokat is menekítsük ki? Ahh! 'Ez nagyon is... rendhagyó lenne.' "
-"Majd megmutatom én neked, mi a rendhagyó..."
+"'De a wesfolkokat is magunkkal vigyük? Ez nagyon is... rendhagyó lenne.' "
+"Bahhh! Majd megmutatom én neked, mi a rendhagyó..."
 
 #. [message]: speaker=Ut'Tan-Vrork
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:368
@@ -2494,7 +2496,7 @@ msgstr "A Halott Ember gázlója"
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:446
 msgid "The River Road - To the Swamp of Esten."
-msgstr "Folyó-út - Az esteni láp felé"
+msgstr "Folyó-út - Az Esteni-láp felé"
 
 #. [message]: speaker=Commander Aethyr
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:638
@@ -2503,7 +2505,7 @@ msgid ""
 "must leave for Southbay just go to the pier to board the ship."
 msgstr ""
 "Uram, az első hajó befutott. Haldric herceg, ha embereiddel indulnod kell "
-"Déli-öböl felé, akkor lépj a kikötőgátra és szálljatok fel."
+"Déliöböl felé, akkor lépj a mólóra és szálljatok fel."
 
 #. [message]: speaker=Commander Aethyr
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:656
@@ -2521,7 +2523,7 @@ msgid ""
 "want to leave for Southbay just go to the pier to board the ship."
 msgstr ""
 "Uram, a második hajó is befutott. Haldric herceg, ha embereiddel indulnod "
-"kell Déli-öböl felé, akkor lépj a kikötőgátra és szálljatok fel."
+"kell Déliöböl felé, akkor lépj a mólóra és szálljatok fel."
 
 #. [message]: speaker=Commander Aethyr
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:706
@@ -2539,9 +2541,9 @@ msgid ""
 "to safety. Prince Haldric, you and your men must go now! Go to the pier to "
 "board the ship for Southbay."
 msgstr ""
-"Uram, az utolsó hajó is befutott! Végre népük mind egy szálig biztonságos "
+"Uram, az utolsó hajó is befutott! Végre népünk mind egy szálig biztonságos "
 "helyre távozhat. Haldric herceg, most már távoznod kell az emberiddel! Lépj "
-"a kikötőgátra, hogy felszállhass a Déli-öböl felé induló hajóra."
+"a mólóra, hogy felszállhass a Déliöböl felé induló hajóra."
 
 #. [message]: speaker=Commander Aethyr
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:756
@@ -2554,7 +2556,7 @@ msgstr "Uram, az utolsó hajó is kifutott a kikötőből. Itt ragadtunk!"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:920
 msgid "My lord, the ship isn't here yet. Come help us defend against the orcs."
 msgstr ""
-"Uram, a hajó még nincs itt. Gyere és segíts megfékeznünk az orkokat addig."
+"Uram, a hajó még nincs itt. Gyere és segíts visszatartani az orkokat addig."
 
 #. [message]: speaker=Commander Aethyr
 #. [message]: speaker=narrator
@@ -2572,7 +2574,6 @@ msgstr ""
 
 #. [message]: speaker=Commander Aethyr
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:950
-#, fuzzy
 msgid "Let me have peace in Death! My love, I'll be there soon--"
 msgstr ""
 "Hagyjatok békében nyugodni! Szerelmem, hamarosan újra látjuk egymást..."
@@ -2589,7 +2590,7 @@ msgid ""
 "Southbay."
 msgstr ""
 "Meglógtunk az orkok elől, még mielőtt a jég csapdájába estünk volna! Most "
-"pedig, irány Déli-öböl!"
+"pedig, irány Déliöböl!"
 
 #. [message]: speaker=Burin the Lost
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:973
@@ -2613,7 +2614,8 @@ msgid ""
 "know that Lich you have petrified just outside of Southbay-"
 msgstr ""
 "Nálad van a Tűz Rubinja, de ötleted sincs, hogyan használhatnád, igaz? "
-"Ismered a villit, akit közvetlenül Déli-öböl határán dermesztettetek kővé..."
+"Hallottál a delevényről, akit közvetlenül Déliöböl határán változtattatok "
+"kővé..."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:993
@@ -2621,8 +2623,8 @@ msgid ""
 "Yes, Lich Point! Where we first used our magi in battle, and turned the tide "
 "of war against your people."
 msgstr ""
-"Igen, Villi-fok! Ahol először vetettük be mágusainkat csatában, és a te "
-"népedre zúdítottuk a háborút."
+"Igen, a Delevény-foknál van! Ahol először vetettük be mágusainkat csatában, "
+"és a te népedre zúdítottuk a háborút."
 
 #. [message]: speaker=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:999
@@ -2631,16 +2633,16 @@ msgid ""
 "Lenvan. He coveted the ruby, and was studying it. The only copy of his "
 "study, the Book of Fire and Darkness, was petrified along with him."
 msgstr ""
-"Ööö, igen... szóval ő Caror volt, Lenvan villi-úr legfőbb riválisa. Szemet "
-"vetett a rubinra, és tanulmányozta. Jegyzeteinek egyetlen példánya kővé "
-"dermedt vele együtt."
+"Ööö, igen... szóval ő Caror volt, Lenvan delevény-úr legfőbb riválisa. "
+"Szemet vetett a rubinra, és tanulmányozta az erejét. Jegyzeteinek egyetlen "
+"példánya, A Tűz és a Sötétség Könyve, kővé vált vele együtt."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:1004
 msgid ""
 "If we make landfall outside of Southbay, we'll be trapped. Of that I am sure!"
 msgstr ""
-"Ha Déli-öblön kívül kötünk ki, akkor csapdába esünk. Ebben biztosak lehettek!"
+"Ha Déliöblön kívül kötünk ki, akkor csapdába esünk. Ebben biztosak lehettek!"
 
 #. [message]: speaker=Commander Aethyr
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:1009
@@ -2648,8 +2650,8 @@ msgid ""
 "My family was from Southbay. My father was a soldier there. The city's sewer "
 "entrance is near that fossil of a lich."
 msgstr ""
-"A családom Déli-öbölből származik, apám ott szolgált. A város "
-"csatornarendszerének bejárata nincs messze annak a villinek a maradványaitól."
+"A családom Déliöbölből származik, apám ott szolgált. A város "
+"csatornarendszerének bejárata nincs messze annak a delevénynek a szobrától."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:1014
@@ -2657,7 +2659,7 @@ msgid ""
 "Wow, this is beginning to sound dangerously like a plan. Commander Aethyr, "
 "will you join us?"
 msgstr ""
-"Hoppá, ez veszélyesen úgy hangzik, mint egy terv. Aethyr hadnagy, "
+"Hoppá, ez veszélyesen úgy hangzik, mint egy terv. Aethyr parancsnok, "
 "csatlakozol hozzánk?"
 
 #. [message]: speaker=Commander Aethyr
@@ -2668,8 +2670,8 @@ msgid ""
 "from me there'll be nothing but rubble left!"
 msgstr ""
 "Nem. Ezek a szörnyek megölték a családom. A feleségem, a lányaim. Semmim se "
-"maradt. Én maradok, hogy mire az orkok el akarják venni tőlem Kristályvíz "
-"kikötőjét, csak kőtörmeléket találjanak!"
+"maradt. Én maradok, hogy mire az orkok el akarják venni tőlem "
+"Kristályvízkikötőt, csak kőtörmeléket találjanak!"
 
 #. [message]: speaker=Commander Aethyr
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:1024
@@ -2691,7 +2693,7 @@ msgstr ""
 #. [scenario]: id=Fallen_Lich_Point
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:4
 msgid "Fallen Lich Point"
-msgstr "Az Elesett Villi-fok"
+msgstr "Az Elesett Delevény-fok"
 
 #. [side]: type=Orcish Warlord, id=Ut'Tan-Grilg
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:35
@@ -2706,17 +2708,17 @@ msgstr "Tan-Pulk"
 #. [side]: type=Lich, id=Lich-Lord Caror
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:113
 msgid "Lich-Lord Caror"
-msgstr "Caror villi-úr"
+msgstr "Caror delevény-úr"
 
 #. [objective]: condition=win
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:179
 msgid "Kill the Lich to get his book and"
-msgstr "Legyőzöd a villit, hogy elvedd tőle a könyvét és"
+msgstr "Legyőzöd a delevényt, hogy elvedd tőle a könyvét és"
 
 #. [objective]: condition=win
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:183
 msgid "Haldric enters Southbay's sewer"
-msgstr "Haldric belép Déli-öböl csatornarendszerébe"
+msgstr "Haldric belép Déliöböl csatornarendszerébe"
 
 #. [objective]: condition=win
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:187
@@ -2729,8 +2731,8 @@ msgid ""
 "Da big bosses said we'd be in da city by winter. Bosses wrong, human-worms "
 "still there, and I'm a tinkin- -"
 msgstr ""
-"A nagyfőnökök azt ígérték, télre a városban leszünk. Tévedtek, a büdös "
-"emberek kezén van még mindig, és arra gondoltam..."
+"A nagyfőnökök azt ígérték, télre a városba' leszünk. Tévedtek, a büdös "
+"emberek kezén van még mindig, és nekem vac..."
 
 #. [message]: speaker=Ut'Tan-Grilg
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:217
@@ -2743,8 +2745,8 @@ msgid ""
 "Prince Haldric has arrived at Fallen Lich Point, to retrieve the Lich-Lord "
 "Caror's Book of Fire and Darkness, and flee into the Sewers of Southbay."
 msgstr ""
-"Haldric herceg megérkezett az Elesett Villi-fokhoz, hogy visszaszerezze a "
-"villi könyvét, majd elmeneküljön Déli-öböl csatornarendszerén keresztül."
+"Haldric herceg megérkezett az Elesett Delevény-fokhoz, hogy visszaszerezze a "
+"delevény könyvét, majd elmeneküljön Déliöböl csatornarendszerén keresztül."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:261
@@ -2752,13 +2754,13 @@ msgid ""
 "Okay. Let's unstone that lich and take his book, then get into the sewers. "
 "Umm, what language would that book be in?"
 msgstr ""
-"Rendben. Élesszük újra azt a villit és fogjuk a könyvét, majd vegyük az "
-"irányt a csatornák felé. Uhmm, vajon milyen nyelven íródott az a könyv?"
+"Rendben. Élesszük újra azt a delevényt és fogjuk a könyvét, majd vegyük az "
+"irányt a csatornák felé. Hmm, vajon milyen nyelven íródott az a könyv?"
 
 #. [message]: speaker=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:265
 msgid "Some pep talk. The book will probably be in the Old Wesfolk tongue."
-msgstr "Lendületes beszéd. A könyv valószínűleg ősi wesfolk nyelven van."
+msgstr "Ha ez megnyugtat, a könyv nyilván ősi wesfolk nyelven íródott."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:269
@@ -2773,7 +2775,7 @@ msgstr "Csak szerezzétek meg, azt hiszem, le fogom tudni fordítani."
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:277
 msgid "Then, into Southbay's sewer."
-msgstr "És akkor irány Déli-öböl csatornarendszere!"
+msgstr "Aztán irány Déliöböl csatornarendszere!"
 
 #. [message]: speaker=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:281
@@ -2787,7 +2789,7 @@ msgid ""
 "with the Lich-Lord...I should investigate more closely."
 msgstr ""
 "A közelben egy páratlan, különös monolit található. Talán kapcsolatban áll "
-"valahogyan a villi-úrral... közelebbről kéne megvizsgálnom."
+"valahogyan a delevény-úrral... közelebbről kéne megvizsgálnom."
 
 #. [message]: speaker=unit
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:312
@@ -2801,7 +2803,7 @@ msgid ""
 "Lich. Maybe you should get yourself over here."
 msgstr ""
 "Haldric, úgy tűnik, van egy munka a számodra, ami talán kapcsolatos a "
-"villivel. Talán ide kéne jönnöd."
+"delevénnyel. Talán ide kéne jönnöd."
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:337
@@ -2811,8 +2813,8 @@ msgid ""
 "stone. To end the spell a noble of the line of Kings should utter the "
 "following..."
 msgstr ""
-"FELIRAT: Ezt a monolitot én, <ELMÁLLOTT>, a Zöld-sziget jóakaratú népének "
-"első Mágusa emeltem. Ereje által záratott kőfogságba a Villi-úr. A varázs "
+"FELIRAT: Ezt a monolitot én, <ELMÁLLOTT>, Zöld-sziget jóakaratú népének Első "
+"Mágusa emeltem. Ereje által záratott kőfogságba a delevény-úr. A varázs "
 "megtöréséhez egy Királyi Sarjnak kell végrehajtania a következőkben "
 "foglaltakat..."
 
@@ -2827,7 +2829,7 @@ msgid ""
 "The Lich is free! Let's bash him and grab that book. That sounds like a job "
 "for you, Lady Jessica!"
 msgstr ""
-"A villi kiszabadult! Támadjuk le és szerezzük meg tőle a könyvet. Ez egy "
+"A delevény kiszabadult! Támadjuk le és szerezzük meg tőle a könyvet. Ez egy "
 "neked való feladatnak látszik, Jessica úrnő!"
 
 #. [message]: speaker=Lady Jessica
@@ -2845,7 +2847,7 @@ msgstr ""
 #. [message]: speaker=Minister Edmond
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:408
 msgid "No you won't, you soldier of darkness!"
-msgstr "Nem, nem fogod megszerezni, te, a sötétség katonája!"
+msgstr "Nem, nem fogod megszerezni te, sötétség katonája!"
 
 #. [option]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:414
@@ -2856,8 +2858,8 @@ msgstr "Azt hiszem, várok még bármiféle varázsige felhasználásával."
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:419
 msgid "We have more pressing matters to deal with before we free that Lich."
 msgstr ""
-"Vannak még sokkal sürgősebb feladataink is, mielőtt még a villivel tudnánk "
-"foglalkozni."
+"Vannak még sokkal sürgősebb feladataink is, mielőtt még a delevénnyel "
+"tudnánk foglalkozni."
 
 #. [message]: speaker=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:424
@@ -2872,17 +2874,17 @@ msgstr "Ez úgy hangzik, mintha Haldric herceg feladata lenne, remélhetőleg."
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:447
 msgid "The Lich-Lord is already free."
-msgstr "A villi-úr már ki is szabadult."
+msgstr "A delevény-úr már kiszabadult."
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:470
 msgid "NW - Southbay."
-msgstr "ÉNy - Déli-öböl"
+msgstr "ÉNy - Déliöböl"
 
 #. [message]: speaker=unit
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:475
 msgid "More Like NW - Every orc on the Isle. Hmph!"
-msgstr "Inkább ÉNy - A szigeten található összes ork. Úú!"
+msgstr "ÉNy - Inkább: A szigeten található összes ork. Huhh!"
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:506
@@ -2897,7 +2899,7 @@ msgstr "Zene füleimnek."
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:541
 msgid "I feel like I'm forgetting something. Ohh, the book!"
-msgstr "Úgy látszik, valamit elfelejtettem. Ó, a könyv!"
+msgstr "Azt hiszem, valamit elfelejtettem. Ó, a könyv!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:550
@@ -2936,12 +2938,12 @@ msgstr "Raul-Rarlg"
 #. [message]: speaker=Lich-Lord Caror
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:614
 msgid "So close. So close."
-msgstr "Közel. Mennyire közel!"
+msgstr "Közel volt. Olyan közel volt!"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:619
 msgid "I found the book in what was left of his robes! Let's get out of here!"
-msgstr "Megtaláltam a könyvet a palástjában! Távozzunk innen!"
+msgstr "Megtaláltam a könyvet a palástjában! Húzzunk el innen!"
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:672
@@ -2958,7 +2960,7 @@ msgstr "Csatornarendszer - Omlásveszély, belépni tilos!"
 #. [scenario]: id=Sewer
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/10_Sewer.cfg:5
 msgid "Sewer of Southbay"
-msgstr "Déli-öböl csatornarendszere"
+msgstr "Déliöböl csatornarendszere"
 
 #. [side]: type=Arch Mage, id=Daellyn the Red
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/10_Sewer.cfg:38
@@ -2970,7 +2972,7 @@ msgstr "Vörös Daellyn"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/10_Sewer.cfg:46
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/10_Sewer.cfg:68
 msgid "Red Wizards"
-msgstr ""
+msgstr "Tűzvarázslók serege"
 
 #. [side]: type=Arch Mage, id=Tinry the Red
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/10_Sewer.cfg:60
@@ -2998,7 +3000,7 @@ msgid ""
 "In the last leg of their journey to Southbay, Haldric and his companions "
 "find themselves in the Sewers of Southbay."
 msgstr ""
-"Déli-öböl felé tartó útjuk utolsó állomásaként Haldric és társai a város "
+"Déliöböl felé tartó útjuk utolsó állomásaként Haldric és társai a város "
 "csatornarendszerében találták magukat."
 
 #. [message]: speaker=Burin the Lost
@@ -3008,7 +3010,7 @@ msgid ""
 "Hey, is that a pair of boots?"
 msgstr ""
 "Csak egy ember tehet tönkre egy ilyen csodás kis barlangjáratot. Emberek. "
-"Héj, ez nem egy szakadt csizma?"
+"Héjj, ez nem egy szakadt csizma?"
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/10_Sewer.cfg:162
@@ -3018,7 +3020,7 @@ msgid ""
 "river for its own use, and let their own effluent run down the old river bed."
 msgstr ""
 "Óvatosan kell itt lent járnunk. Ez nem egy sima esőcsatorna elvezetése, ezek "
-"Déli-öböl csatornái. Állítólag a városiak kivezették a felszínre a föld "
+"Déliöböl csatornái. Állítólag a városiak kivezették a felszínre a föld "
 "alatti folyót, és a régi medret most a saját szennyük elvezetésére "
 "használják."
 
@@ -3033,8 +3035,8 @@ msgid ""
 "That a King banished a pair of twin Magi and their devoted followers down "
 "here after the Wesfolk war!"
 msgstr ""
-"Egy király ide, a föld alá űzött számon egy mágus ikerpárt és hű követőiket, "
-"a wesfolkokkal vívott háborút követően."
+"Egy király ide, a föld alá száműzött egy mágus ikerpárt és hű követőiket, a "
+"wesfolkokkal vívott háborút követően."
 
 #. [message]: speaker=Daellyn the Red
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/10_Sewer.cfg:174
@@ -3042,8 +3044,8 @@ msgid ""
 "Can you feel it, brother? This one bears the Ruby of Fire. After all our "
 "time searching, it has come to us!"
 msgstr ""
-"Te is érzed, testvérem? Nála van a Tűz Rubinja. Olyan hosszú idő után ő maga "
-"jött el hozzánk!"
+"Te is érzed, testvérem? Nála van a Tűz Rubinja. Olyan hosszú ideig kerestük, "
+"s most ő maga jött el hozzánk!"
 
 #. [message]: speaker=Tinry the Red
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/10_Sewer.cfg:178
@@ -3067,7 +3069,7 @@ msgid ""
 msgstr ""
 "Haldric, valami különös sejtelem kerülget. Észrevetted, hogy a rubint minden "
 "varázslatokat jól ismerő lény megérzi? Elilmaldur-Rithrandil, majd Caror "
-"villi-úr, és most ezek ketten, mind megérezték."
+"delevény-úr, és most ezek ketten, mind megérezték."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/10_Sewer.cfg:200
@@ -3076,14 +3078,15 @@ msgid ""
 "ruby, even with it in my pack. Let's work out what it does, before we decide "
 "what to do with it."
 msgstr ""
-"Már megszereztük a villi könyvét, és szó szerint én is érzem az erejét, még "
-"ha csak a csomagjaim közt van is. Találjuk ki, hogyan használhatnánk, "
+"Már megszereztük a delevény könyvét, és szó szerint én is érzem az erejét, "
+"még ha csak a csomagjaim közt van is. Találjuk ki, hogyan használhatnánk, "
 "mielőtt döntenénk a sorsa felől."
 
 #. [message]: speaker=second_unit
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/10_Sewer.cfg:219
 msgid "Hmm. He seems to have had a map, and some gold!"
-msgstr "Hmm. Úgy látszik, volt nála egy térkép, meg egy kevés arany!"
+msgstr ""
+"Hmm. Úgy látszik, ez a csatorna térképe, meg egy kevés arany is volt nála!"
 
 #. [message]: speaker=Daellyn the Red
 #. [message]: speaker=Tinry the Red
@@ -3095,7 +3098,7 @@ msgstr "Testvérem!"
 #. [message]: speaker=second_unit
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/10_Sewer.cfg:265
 msgid "Hmm. He seems to have had a map."
-msgstr "Hmm. Úgy látszik, volt nála egy térkép."
+msgstr "Hmm. Úgy látszik, ez a csatorna térképe."
 
 #. [message]: speaker=unit
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/10_Sewer.cfg:306
@@ -3109,7 +3112,7 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/10_Sewer.cfg:323
 msgid "To Southbay"
-msgstr "Déli-öböl felé"
+msgstr "Déliöböl"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/10_Sewer.cfg:372
@@ -3117,28 +3120,28 @@ msgid ""
 "It's not very Heroic if Prince Haldric isn't the one to lead his band from "
 "the Sewers of Southbay."
 msgstr ""
-"Nem túl hősies, ha Haldric herceg csapatai mögé bújva próbál kijutni Déli-"
-"öböl csatornarendszeréből."
+"Nem túl hősies, ha Haldric herceg csapatai mögé bújva próbál kijutni "
+"Déliöböl csatornarendszeréből."
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/10_Sewer.cfg:390
 msgid "Danger Ahead!"
-msgstr "Vigyázz, előttünk!"
+msgstr "Veszély előttünk!"
 
 #. [message]: speaker=unit
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/10_Sewer.cfg:396
 msgid "Ahead, so far it's been danger everywhere."
-msgstr "Előttünk?! Eddig mindenhol csak veszélyekkel találkoztunk."
+msgstr "Előttünk?! Mindenhol csak veszélyekkel találkoztunk."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/10_Sewer.cfg:407
 msgid "Finally, on to Southbay!"
-msgstr "Végre Déli-öbölben!"
+msgstr "Végre Déliöbölben vagyunk!"
 
 #. [scenario]: id=Southbay_in_Winter
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/11_Southbay_in_Winter.cfg:4
 msgid "Southbay in Winter"
-msgstr "Déli-öböl télen"
+msgstr "Déliöböl télen"
 
 #. [side]: type=Grand Knight, id=King Addroran IX
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:40
@@ -3153,19 +3156,21 @@ msgid ""
 "the city. After some commotion, he gains an audience with the King of "
 "Southbay."
 msgstr ""
-"Haldric herceg a város kellős közepébe csöppent kijutva a csatornából, ezzel "
-"nem kis meglepetést okozva. A zavartság elültével bebocsátást nyert Déli-"
-"öböl királyához."
+"Haldric herceg kijutva a csatornából a város kellős közepébe csöppent, s "
+"ezzel nem kis meglepetést okozott. A zavartság elültével bebocsátást nyert "
+"Déliöböl királyához."
 
 #. [message]: speaker=King Addroran IX
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/11_Southbay_in_Winter.cfg:96
 msgid "So, Prince, you bring refugees, but do you bring swords as well?"
-msgstr "Herceg úrfi, tehát menekültekkel érkeztél, de fegyverek nélkül?"
+msgstr "Herceg úrfi, tehát menekültekkel érkeztél, fegyvereid is vannak?"
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/11_Southbay_in_Winter.cfg:100
 msgid "I bear both, and all are loyal to the King of Southbay!"
-msgstr "Mindkettővel rendelkezem, és mind hűségesek Déli-öböl királyához!"
+msgstr ""
+"Embereim és fegyvereim is vannak és mindannyian Déliöböl királyának "
+"szolgálatára állunk!"
 
 #. [message]: speaker=King Addroran IX
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/11_Southbay_in_Winter.cfg:104
@@ -3188,8 +3193,8 @@ msgid ""
 "your father proud. Far better than my legacy, a dead adventurer and a "
 "missing fool! It is fitting that my line should end with my kingdom."
 msgstr ""
-"Igazad van. Nehéz időket élünk, hercegem. Apád büszke lenne rád. Nem úgy, "
-"mint én a saját örökségemre, egy elhunyt kalandorra és egy eltűnt bolondra. "
+"Igazad van. Nehéz időket élünk hercegem. Apád büszke lenne rád. Nem úgy, "
+"mint én a saját utódaimra, egy elhunyt kalandorra és egy eltűnt bolondra. "
 "Úgy tűnik, én leszek a dinasztia utolsó uralkodója."
 
 #. [message]: speaker=Prince Haldric
@@ -3226,13 +3231,13 @@ msgid ""
 "What? On your word alone, boy? And what of the other Wesfolk that have "
 "drifted to our gate?"
 msgstr ""
-"Mi? A te egyedüli kívánságodra? És mi legyen a többi wesfolkkal, akik a "
-"kapuk elé gyűltek?"
+"Mi? A két szép szemedért? És mi legyen a többi wesfolkkal, akik a kapuk elé "
+"gyűltek?"
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/11_Southbay_in_Winter.cfg:137
 msgid "Let them all in! For the sake of humanity on this isle!"
-msgstr "Engedd be mindannyiukat! Az sziget emberiessége okán!"
+msgstr "Engedd be mindannyiukat! A sziget embereinek érdekében!"
 
 #. [message]: speaker=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/11_Southbay_in_Winter.cfg:141
@@ -3259,8 +3264,8 @@ msgid ""
 "Fire. The artifact should help with what must come."
 msgstr ""
 "Először is, le tudom fordítani a könyvet, aminek a segítségével Haldric "
-"herceg használhatja a Tűz Rubinját. Ez a kegytárgy segíteni fog az eljövendő "
-"időkben."
+"herceg használhatja a Tűz Rubinját. Ez a varázseszköz segíteni fog az "
+"eljövendő időkben."
 
 #. [message]: speaker=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/11_Southbay_in_Winter.cfg:153
@@ -3274,7 +3279,7 @@ msgstr ""
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/11_Southbay_in_Winter.cfg:157
 msgid "Compan- - What?"
-msgstr "Útitá - Micsoda?"
+msgstr "Útitá... - Micsoda?"
 
 #. [message]: speaker=Burin the Lost
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/11_Southbay_in_Winter.cfg:161
@@ -3288,7 +3293,7 @@ msgid ""
 "but my people came here on purpose. You'd all still be herding sheep and "
 "living in grass huts if it wasn't for my people."
 msgstr ""
-"Én voltam a vezető. Haldric, a te néped egyszerűen csak partra vetődött itt "
+"Én voltam a kalauza. Haldric, a te néped egyszerűen csak partra vetődött itt "
 "réges-régen. Az én népem szándékosan érkezett. Még mindig juhokat "
 "terelgetnétek és vályogházakban élnétek, ha nem jött volna az én népem."
 
@@ -3313,7 +3318,7 @@ msgid ""
 msgstr ""
 "Ez nem a legalkalmasabb idő a hősködésre. Keletre kell indulnod, mégpedig "
 "azért, mert népem nyugatról jött, ami már hemzseg mindenféle ember és szörny "
-"tömkelegétől, amit csak el lehet képzelni. Gyakorlatilag ott már nincs is "
+"tömkelegétől, amit csak el lehet képzelni. Gyakorlatilag ott már nincs "
 "szabad hely. Ha azt hitted, mi gonoszak vagyunk, látnod kéne, kik vannak még "
 "a nyomunkban. Itt rabszolgákká vagy holtakká válnátok."
 
@@ -3358,7 +3363,7 @@ msgid ""
 msgstr ""
 "Nem. Meneküljetek csak keletnek. Az én kötelességem, hogy addig tartsam ezt "
 "a várost, amíg csak bírom. Így aki csak képes rá, elhagyhatja a várost. Ez "
-"azt jelenti, hogy Haldric-kal a ti feladatotok lesz a kimenekítés "
+"azt jelenti, hogy Haldrickal a ti feladatotok lesz a kimenekítés "
 "megszervezése."
 
 #. [message]: speaker=Prince Haldric
@@ -3368,7 +3373,7 @@ msgid ""
 "will bear the flag of Southbay. A new throne and new lands await you in the "
 "east."
 msgstr ""
-"Királyom, keleten új királyság fog születni, és a távozó tömeg Déli-öböl "
+"Királyom, keleten új királyság fog születni, és a távozó tömeg Déliöböl "
 "zászlaját fogja hordozni. Új trón és új földek várnak rád keleten."
 
 #. [message]: speaker=King Addroran IX
@@ -3379,8 +3384,8 @@ msgid ""
 "blood. We old men are still of some value. We will make the orcs pay dearly "
 "when they come to take this place!"
 msgstr ""
-"Az én vérvonalam kihalt a fiammal, és én már idős vagyok. A hajók először az "
-"asszonyokat, a gyermekeket és a fiatalokat vigyék el. Az új királyságnak "
+"Az én vérvonalam kihalt a fiaimmal, és én már idős vagyok. A hajók először "
+"az asszonyokat, a gyermekeket és a fiatalokat vigyék el. Az új királyságnak "
 "friss vérből kell születnie. Nekünk, öregeknek, más feladatunk van. Keményen "
 "meg fogjuk fizettetni az orkokkal ennek a helynek az árát!"
 
@@ -3390,8 +3395,8 @@ msgid ""
 "If there is no other way. May the bards forever sing of the valor of the "
 "Kings of Southbay! Jessica, about that book?"
 msgstr ""
-"Rendben, ha nincs más lehetőség. Énekeljék örökké a bárdok Déli-öböl "
-"királyainak vitézségét! Jessica, mi van a könyvvel?"
+"Rendben, ha nincs más lehetőség. Énekeljék örökké a bárdok Déliöböl "
+"királyainak vitézségét! Jessica, a könyvvel kapcsolatban..."
 
 #. [message]: speaker=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/11_Southbay_in_Winter.cfg:205
@@ -3426,7 +3431,7 @@ msgstr "Tan-Gulo"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:215
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:216
 msgid "Southbay Guard"
-msgstr "Déli-öböl őre"
+msgstr "Déliöböl őre"
 
 #. [object]: id=ruby_of_fire
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:221
@@ -3435,7 +3440,7 @@ msgid ""
 "to scorch enemies into submission."
 msgstr ""
 "A messzi nyugaton a Tűz Rubinja mágiával lett átitatva, és kiváló eszköz "
-"arra, hogy engedelmességre bírjuk vele ellenségeinket."
+"arra, hogy eltüntessük vele ellenségeinket."
 
 #. [effect]: type=fire
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:230
@@ -3454,13 +3459,13 @@ msgid ""
 "Several months pass. Jessica has translated Lich-Lord Caror's Book of Fire "
 "and Darkness. Prince Haldric is busy probing the secrets of the Ruby of Fire."
 msgstr ""
-"Néhány hónap elteltével Jessica lefordította Caror villi-úr könyvét. Haldric "
-"herceg pedig próbálta kifürkészni a Tűz Rubinjának titkait."
+"Néhány hónap elteltével Jessica lefordította Caror delevény-úr könyvét. "
+"Haldric herceg pedig megpróbálta kifürkészni a Tűz Rubinjának titkait."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:295
 msgid "I think I've figured something out. Look."
-msgstr "Úgy hiszem, rájöttem valamire. Nézd!"
+msgstr "Úgy hiszem, rájöttem valamire. Nézzétek!"
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:307
@@ -3469,13 +3474,13 @@ msgid ""
 "scepter or something! I think I'll save it for closer-ranged combat for now."
 msgstr ""
 "Jaj! Ez nagyon forró. Igazán kellene már valami jogarféle, hogy ne szabad "
-"kézzel kelljen fogni ezt követ. Mindenesetre megtartom, mert jó lesz még a "
+"kézzel kelljen fogni ezt a követ. Mindenesetre megtartom, mert jó lesz még a "
 "későbbi harcok során."
 
 #. [message]: speaker=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:311
 msgid "Watch it! Well, at least you're improving."
-msgstr "Figyeld! Legalább fejlődsz valamelyest."
+msgstr "Tanulmányozd! Legalább fejlődsz valamelyest."
 
 #. [message]: speaker=Burin the Lost
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:315
@@ -3483,7 +3488,7 @@ msgid ""
 "Humph. Fool of a boy's just gonna burn us all up. Humans, always playing at "
 "being wizards."
 msgstr ""
-"Ehh. Egy bolond fiú fel akar égetni mindannyiunkat. Az emberek mindig "
+"Ehh. Ez a bolond fiú fel akar gyújtani mindannyiunkat. Az emberek mindig "
 "varázslósdit játszanak."
 
 #. [message]: speaker=Southbay Guard 1
@@ -3496,7 +3501,7 @@ msgstr "Orkokat látunk! Átlépték a határt! Fegyverbe! Fegyverbe!"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:323
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:742
 msgid "For the glory of Southbay!"
-msgstr "Déli-öböl dicsőségéért!"
+msgstr "Déliöböl dicsőségéért!"
 
 #. [message]: speaker=King Addroran IX
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:327
@@ -3505,10 +3510,10 @@ msgid ""
 "orcs. The ships aren't ready yet. We must defeat this army of orcs to buy us "
 "more time. Try not to kill us all with that ruby!"
 msgstr ""
-"Haldric herceg! Én Déli-öböl védelmére fogok figyelni, miközben neked le "
-"kell győznöd az orkokat. A hajók még nem állnak készen és meg kell "
-"semmisítenünk az ellenséges hadsereget, hogy időt nyerjünk. Vigyázz, nehogy "
-"azzal a rubinnal túl nagy bajt keverjél!"
+"Haldric herceg! Én Déliöböl védelmére fogok figyelni, miközben neked le kell "
+"győznöd az orkokat. A hajók még nem állnak készen és meg kell semmisítenünk "
+"az ellenséges hadsereget, hogy időt nyerjünk. Vigyázz, nehogy azzal a "
+"rubinnal túl nagy bajt keverjél!"
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:331
@@ -3540,13 +3545,12 @@ msgid ""
 msgstr ""
 "Nagy része van abban, hogy fiad eljutott a kelet messzi vidékeire. Typhon úr "
 "gyöngyöket adott nekünk és kíséretet biztosított számunkra, amikért cserébe "
-"acél szigonyokat és halkampókat kért. Nehéz kovácsnak lenni a víz alatt, "
-"ugyebár."
+"acélszigonyokat és horgokat kért. Nehéz kovácsnak lenni a víz alatt, ugyebár."
 
 #. [message]: speaker=Lord Typhon
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:361
 msgid "Indeed it is. But where is the Prince?"
-msgstr "Így is van. De hol van a herceg?"
+msgstr "Így igaz. De hol van a herceg?"
 
 #. [message]: speaker=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:365
@@ -3579,7 +3583,7 @@ msgid ""
 "might of the Merfolk at your disposal!"
 msgstr ""
 "Jó. Nekünk acél kell, hogy megvívjuk saját csatáinkat a mélyben. Formálisan "
-"rendelkezésedre bocsátom a sellő-nép fölötti hatalmat."
+"rendelkezésedre bocsátom a sellőnép fölötti hatalmat."
 
 #. [objective]: condition=lose
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:402
@@ -3601,7 +3605,7 @@ msgstr "Gyorsabban! Biztosítanunk kell a határokat, különben mindennek vége
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:283
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:264
 msgid "Familiar"
-msgstr "A bizalmas"
+msgstr "Bizalmas"
 
 #. [event]
 #. [side]: type=Ancient Lich, id=Lich-Lord Jevyan
@@ -3609,7 +3613,7 @@ msgstr "A bizalmas"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:283
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:45
 msgid "Lich-Lord Jevyan"
-msgstr "Jevyan villi-úr"
+msgstr "Jevyan delevény-úr"
 
 #. [message]: speaker=Lich-Lord Jevyan
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:452
@@ -3619,8 +3623,8 @@ msgid ""
 "I sense, I sense the Ruby of Fire."
 msgstr ""
 "Addroran király! A napod leáldozott. Készülj fel, mert porba fogunk tiporni. "
-"Ha szerencsés vagy, talán feltámasztalak mint élőholt, és szolgálhatsz engem "
-"az idők végezetéig. Várjunk csak! Valamit érzek a levegőben! Ez a Tűz "
+"Ha szerencsés vagy, talán feltámasztalak mint élőholtat, és szolgálhatsz "
+"engem az idők végezetéig. Várjunk csak! Valamit érzek a levegőben! Ez a Tűz "
 "Rubinja!"
 
 #. [message]: speaker=Lady Jessica
@@ -3643,7 +3647,7 @@ msgid ""
 "you'll be joining him soon enough."
 msgstr ""
 "Bolond lány! Az én törekvéseimnek nincsenek határai. Túl fogok élni mindent. "
-"Csak ennyit mondhatok neked. Addroran király, te pedig találkozz fiaddal! "
+"Csak ennyit mondhatok neked. Addroran király, te pedig találkozz a fiaddal! "
 "Nemsokára te is követed őt."
 
 #. [message]: speaker=King Addroran IX
@@ -3672,17 +3676,17 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:536
 msgid "Southbay"
-msgstr "Déli-öböl"
+msgstr "Déliöböl"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:556
 msgid "To Clearwater Port"
-msgstr "Kristályvíz kikötője felé"
+msgstr "Kristályvízkikötő felé"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:576
 msgid "To the Midlands & Oldwood"
-msgstr "Középfölde és az Öregerdő felé"
+msgstr "Középfölde és Öregerdő felé"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:596
@@ -3697,12 +3701,12 @@ msgstr "Középfölde felé"
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:636
 msgid "New Southbay"
-msgstr "Új Déli-öböl"
+msgstr "Új Déliöböl"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:656
 msgid "They sealed it, there is no escape for you!"
-msgstr "Elzárták. Nincs menekvés számodra."
+msgstr "Lezárták. Nem tudsz megszökni."
 
 #. [message]: speaker=unit
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:670
@@ -3712,21 +3716,20 @@ msgstr "Végem van."
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:674
 msgid "We needed him to hold Southbay. We're done for!"
-msgstr "Szükségünk lett volna rá, hogy megtartsuk Déli-öblöt. Végünk van!"
+msgstr "Szükségünk lett volna rá, hogy megtartsuk Déliöblöt. Végünk van!"
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:687
 msgid "We've defeated the orcs. Let's rig the ships and get out of here."
-msgstr ""
-"Legyőztük az orkokat. Árbócozzuk fel a hajókat és minél hamarabb menjünk el "
-"innen."
+msgstr "Legyőztük az orkokat. Vitorlákat fel! Minél hamarabb menjünk el innen."
 
 #. [message]: speaker=King Addroran IX
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:691
 msgid ""
 "Oh, for my sons... - As we agreed. I will hold Southbay until my last breath."
 msgstr ""
-"Fiaim, ahogyan megegyeztünk. Tartani fogom Déli-öblöt az utolsó leheletemig."
+"A fiaimért... ahogyan megegyeztünk. Tartani fogom Déliöblöt az utolsó "
+"leheletemig."
 
 #. [message]: speaker=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:695
@@ -3735,9 +3738,8 @@ msgid ""
 "good re-provisioning point, we should be able to embark for the great lands "
 "that are to the east."
 msgstr ""
-"A sellő-nép segítségével, és az én tudásommal, találhatunk egy szigetet, ami "
-"jó alap lesz az újrafegyverkezéshez. Így mihamarabb megint hajóra "
-"szállhatunk, hogy eljussunk a kelet nagy földjeihez."
+"A sellőnép segítségével, eljuthatunk egy szigetre, ahol tartalékokat "
+"halmozhatunk fel, s onnan indulhatunk kelet nagy földjeihez."
 
 #. [message]: speaker=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:699
@@ -3746,9 +3748,9 @@ msgid ""
 "capital is named, betrayed my people. To make matters worse, he knows that "
 "you have that ruby."
 msgstr ""
-"Az a tény, hogy Jevyan villi-úr, akiről fővárosunk a nevét kapta, elárulta a "
-"népemet, nem igazán nyerte el tetszésemet. A dolgokat csak súlyosbítja, hogy "
-"pontosan tudja, hogy nálad van az a rubinkő."
+"Az a tény, hogy Jevyan delevény-úr, akiről fővárosunk a nevét kapta, "
+"elárulta a népemet, nem igazán nyerte el a tetszésemet. A dolgokat csak "
+"súlyosbítja, hogy pontosan tudja, hogy nálad van az a rubinkő."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:703
@@ -3757,7 +3759,7 @@ msgid ""
 "in honor of my father. About that island..."
 msgstr ""
 "Most már nem sok mindent tehetünk. Ezt a hajót, az Eldaricot, apám "
-"tiszteletére újítottam fel. A szigetről pedig...."
+"tiszteletére újítottam fel. Arról a szigetről pedig...."
 
 #. [message]: speaker=Burin the Lost
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:707
@@ -3771,7 +3773,7 @@ msgid ""
 "may still be survivors in Southbay."
 msgstr ""
 "Miután elértél arra az új földre, küldj vissza néhány hajót, hátha maradnak "
-"túlélők Déli-öbölben."
+"még túlélők Déliöbölben."
 
 #. [message]: speaker=King Addroran IX
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:729
@@ -3795,7 +3797,7 @@ msgstr "Kegrid"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:65
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:95
 msgid "Drakes"
-msgstr ""
+msgstr "Perzsekények"
 
 #. [side]: type=Drake Flameheart, id=Gerrick
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:59
@@ -3833,12 +3835,12 @@ msgstr ""
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:208
 msgid "We come in peace. We only seek to re-provision our ships."
-msgstr "Békében jöttünk. Csak hajóink raktárát szeretnénk újra feltölteni."
+msgstr "Békében jöttünk. Csak átmeneti raktárakat szeretnénk itt létesíteni."
 
 #. [message]: speaker=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:212
 msgid "(whispered) I don't think diplomacy is going to work."
-msgstr "(suttogva) Nem hiszem, hogy a diplomácia itt járható út lenne."
+msgstr " *suttogva* Nem hiszem, hogy a diplomácia itt járható út lenne."
 
 #. [message]: speaker=Gerrick
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:217
@@ -3846,13 +3848,13 @@ msgid ""
 "Ssso humansss, you've come to trouble usss again. Prepare to die! For the "
 "glory of the Lords of Morogor!"
 msgstr ""
-"Ssszóval emberek, azért jöttetek, hogy újra bajt hozzzzatok fejünkre. "
+"Ssszóval emberek, azért jöttetek, hogy újra bajt hozzzzatok a fejünkre. "
 "Készüljetek a halálra! Morogor urainak dicsőségére!"
 
 #. [message]: speaker=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:221
 msgid "(whispered) Do I need to say, 'I told you so'?"
-msgstr "(súgva) Én megmondtam előre ..."
+msgstr " *súgva* Én megmondtam előre ..."
 
 #. [event]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:236
@@ -3902,8 +3904,8 @@ msgid ""
 "I'm sure they'll eventually evacuate. Just like us right now."
 msgstr ""
 "Elég értelmesnek tűnnek. Minden bizonnyal sokan vannak, és mint láttuk, "
-"eléggé talpraesett nép. Biztos vagyok benne, hogy el fogják hagyni a "
-"szigetet, pontosan úgy, ahogy mi is tettük ezt nemrég."
+"eléggé talpraesett népek. Biztos vagyok benne, hogy el fogják hagyni a "
+"szigetet, pontosan úgy, ahogy mi is a miénket."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:274
@@ -3923,7 +3925,7 @@ msgstr "Níp! Níp!"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:314
 msgid ""
 "The fleet is starving, we'll never pacify this island before we all die!"
-msgstr "A flotta éhezik, soha nem fogjuk megbékíteni ezt a szigetet."
+msgstr "A flotta éhezik, soha nem fogjuk biztosítani ezt a szigetet."
 
 #. [scenario]: id=Rough_Landing
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:4
@@ -3944,7 +3946,7 @@ msgstr "Abraxas"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:69
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:97
 msgid "Naga"
-msgstr ""
+msgstr "Nagák"
 
 #. [side]: type=Naga Warrior, id=Xamalia
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:63
@@ -3980,8 +3982,8 @@ msgid ""
 "like to scavenge metal from ships that they capture here."
 msgstr ""
 "Legyetek óvatosak, ezek a szigetek nem biztonságosak. Naga területen "
-"vagyunk, de csak ez az egy hely van a kikötésre. Leginkább a hajón található "
-"fémek vannak veszélyben, amik nagy értéket képviselnek errefelé."
+"vagyunk, de csak ez az egy hely alkalmas a kikötésre. Leginkább a hajó "
+"fémrészei vannak veszélyben, amik nagy értéket képviselnek errefelé."
 
 #. [message]: speaker=Xamalia
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:201
@@ -3998,7 +4000,7 @@ msgstr ""
 #. [event]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:221
 msgid "Chompey the Serpent"
-msgstr "Marcangos, a kígyó"
+msgstr "Marcangoló, a kígyó"
 
 #. [event]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:250
@@ -4008,12 +4010,12 @@ msgstr "Pikkelyes, a kígyó"
 #. [event]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:279
 msgid "Toothey the Serpent"
-msgstr "Fogas, a kígyó"
+msgstr "Agyaros, a kígyó"
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:301
 msgid "We've defeated the nagas. The fleet should be able to regroup here."
-msgstr "Legyőztük a nagákat. Most már biztosított a helyszín a találkozásra."
+msgstr "Legyőztük a nagákat. Most már nyugodtan újraszervezhetjük a flottát."
 
 #. [message]: speaker=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:306
@@ -4025,7 +4027,9 @@ msgstr "A következő nagy föld, amit látni fogunk, már a keleti kontinens le
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:311
 msgid ""
 "I'll be glad when this voyage is over. We're almost there. Almost there."
-msgstr "Örülök, hogy véget ért tengeri utazásunk. Már majdnem ott vagyunk..."
+msgstr ""
+"Örülök, mikor véget ér a tengeri utazásunk. Már majdnem ott vagyunk. Már "
+"majdnem..."
 
 #. [message]: speaker=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:343
@@ -4038,12 +4042,13 @@ msgid ""
 "We were too slow... The fleet will be scattered to the four corners of the "
 "world!"
 msgstr ""
-"Túl lassúak vagyunk... A flotta szét fog szóródni a világ négy sarka felé!"
+"Túl lassúak vagyunk... A flotta szét fog szóródni a szélrózsa minden "
+"irányába!"
 
 #. [scenario]: id=A_New_Land
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_New_Land.cfg:4
 msgid "A New Land"
-msgstr "Egy új ország"
+msgstr "Egy új föld"
 
 #. [side]: type=Elvish Captain, id=Glimir
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_New_Land.cfg:35
@@ -4057,7 +4062,7 @@ msgstr "Glimir"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_New_Land.cfg:59
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_New_Land.cfg:77
 msgid "Continentals"
-msgstr ""
+msgstr "Bennszülöttek"
 
 #. [side]: type=Dwarvish Stalwart, id=Dursil
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_New_Land.cfg:53
@@ -4080,6 +4085,8 @@ msgid ""
 "Alas, the shore of the Great Continent was not so tranquil a place as it had "
 "appeared from at sea."
 msgstr ""
+"Sajnos azonban a Nagy Kontinens partja nem volt olyan háborítatlan, mint "
+"amilyennek tűnt a tengerről nézve."
 
 #. [message]: speaker=Glimir
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_New_Land.cfg:112
@@ -4099,9 +4106,9 @@ msgid ""
 "the Great River, and force us onto only the hills and mountains of the "
 "north? There are hills and mountains as good as any here in the south!"
 msgstr ""
-"Benépesítettük földjeinket, és barlangjaink a világ mélyéig elhatolnak. Már "
+"Benépesítettük földjeinket és barlangjaink a világ mélyéig elhatolnak. Már "
 "megküzdöttünk a sötétség szörnyeivel. Milyen jogon követelitek az összes "
-"erdőségeket, és az összes, Nagy Folyótól délre lévő területet? Miért akartok "
+"erdőségeket és az összes, Nagy Folyótól délre lévő területet? Miért akartok "
 "az északi dombok és hegyek közé szorítani minket? Itt délen is ugyanolyan jó "
 "helyünk van!"
 
@@ -4117,10 +4124,9 @@ msgid ""
 "Our axes can get the wood for a fifth of the cost! I can charge half of what "
 "your people do, and still be rich, and I'm not the first to have the thought!"
 msgstr ""
-"Pff! Ti pihe-puha tündék: 'Nem vágjuk ki az erdőt, mi ápoljuk.' Mi, a "
-"baltáinkkal ötödannyiért tudjuk kivágni a fákat! Feleannyiért tudnánk vele "
-"kereskedni, mint a te néped, és még úgyis gazdagok lennénk, és ez nem nekem "
-"jutott először eszembe!"
+"Pff! Ti pihe-puha tündék: 'Nem vágjuk ki a fákat, mi ápoljuk az erdőt.' Mi "
+"ötödáron vágnánk ki a fákat! Feleannyi költséget számítanék fel, mint a te "
+"néped, és még úgyis gazdag lennék, és ez nem nekem jutott először eszembe!"
 
 #. [message]: speaker=Glimir
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_New_Land.cfg:129
@@ -4139,7 +4145,7 @@ msgstr ""
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_New_Land.cfg:195
 msgid "We come in peace. May our peoples-"
-msgstr "Békével jöttünk. A népeink szeretnének..."
+msgstr "Békével jöttünk. A népeink élhetnének..."
 
 #. [message]: speaker=Dursil
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_New_Land.cfg:199
@@ -4163,8 +4169,8 @@ msgid ""
 "In the name of... This is the continent of my home. But I set out east. I "
 "must have traveled clear around the world."
 msgstr ""
-"Népem nevében... Ez az otthonom földje. Pedig keletre indultam. Bizonyára az "
-"egész Földet megkerültem."
+"Az istenekre mondom... Hiszen ez a kontinens az otthonom. Pedig keletre "
+"indultam. Bizonyára az egész világot megkerültem."
 
 #. [message]: speaker=Burin the Lost
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_New_Land.cfg:211
@@ -4172,8 +4178,8 @@ msgid ""
 "My people are too far south. I don't know what's going on here. I'll stick "
 "with you until the end. You've been a good friend. Just no more sea voyages."
 msgstr ""
-"Az én népem túl messze él innen dél felé. Fogalmam sincs, mi történik itt. "
-"De ki fogok állni mellettetek a végéig. Jó bajtársaim voltatok. Csak ne "
+"Az én népem nagyon messze él innen dél felé. Fogalmam sincs, mi történik "
+"itt. De kitartok mellettetek a végsőkig. Jó bajtársaim voltatok. Csak ne "
 "kelljen újra tengerre szállnunk."
 
 #. [side]: type=Elvish Shyde, id=Lord Dionli
@@ -4187,7 +4193,7 @@ msgstr "Dionli úrnő"
 #. [message]: speaker=Lord Dionli
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_New_Land.cfg:230
 msgid "What? What's going on here? Dwarves? Humans? Ships? Glimir, tell me."
-msgstr "Micsoda? Mi folyik itt? Törpök? Emberek? Hajók? Glimir, tájékoztass."
+msgstr "Mi ez? Mi folyik itt? Törpök? Emberek? Hajók? Glimir, tájékoztass."
 
 #. [message]: speaker=Glimir
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_New_Land.cfg:234
@@ -4200,7 +4206,7 @@ msgstr ""
 "A történetek igazak. Kell, hogy legyenek törp telepek Barna-dombság "
 "területén. Ezt a csapatot a fák pusztítása közben kaptuk el az öböltől nem "
 "messze. Aztán megláttuk a sok hajót. A korábbiaktól eltérően nem az az ifjú "
-"jött egyedül a saját hajójával. Mindig érdeklődve fogadtuk, amikor erre járt."
+"jött Déliöbölből egy hajóval. Őt mindig szívesen fogadtuk, amikor erre járt."
 
 #. [message]: speaker=Glimir
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_New_Land.cfg:239
@@ -4208,9 +4214,8 @@ msgid ""
 "We thought we were being invaded. We, erm, put our differences aside with "
 "the dwarves, for the moment, and decided to deal with this first."
 msgstr ""
-"Azt hittük, lerohannak minket. Így, köhöm, félretettük viszályunkat a "
-"törpökkel egy pillanat erejéig, és úgy döntöttünk, ezzel foglalkozunk "
-"először."
+"Azt hittük, lerohannak minket. Így, khm, félretettük viszályunkat a "
+"törpökkel egy pillanatra, és úgy döntöttünk, ezzel foglalkozunk először."
 
 #. [message]: speaker=Lord Dionli
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_New_Land.cfg:243
@@ -4219,8 +4224,8 @@ msgid ""
 "spare you. For on this day the Council of Lords is meeting in a forest not "
 "far from here."
 msgstr ""
-"Aggasztó változások vannak. Emberek, ez pusztán szerencse kérdése volt, hogy "
-"itt találtatok engem, és megkímélhetlek titeket. Ma az Urak Tanácsa ülésezik "
+"Aggasztó híreket mondasz. Emberek, ez pusztán szerencse kérdése volt, hogy "
+"itt találtatok engem, és megmenthetlek titeket. Ma az Urak Tanácsa ülésezik "
 "az erdőben, nem is olyan messze innen."
 
 #. [message]: speaker=Prince Haldric
@@ -4239,7 +4244,7 @@ msgid ""
 "As for you, dwarf, return to the Brown Hills. Then tell your people to "
 "prepare to return to the north."
 msgstr ""
-"Te, törp, térj vissza a Barna-dombságba, és vidd a hírt népednek, hogy "
+"Te törp, térj vissza a Barna-dombságba, és vidd meg a hírt népednek, hogy "
 "készüljenek az északra költözésre!"
 
 #. [message]: speaker=Dursil
@@ -4263,9 +4268,7 @@ msgstr ""
 msgid ""
 "(whispered) Maybe it'd be best if you didn't mention our little friend "
 "following us..."
-msgstr ""
-"(suttogva) Talán nem kellett volna kis barátocskánknak azt mondani, hogy "
-"kövessen minket..."
+msgstr "(suttogva) Talán nem kellene kis barátunkat is magunkkal vinnünk..."
 
 #. [message]: speaker=Lord Typhon
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_New_Land.cfg:294
@@ -4284,8 +4287,8 @@ msgid ""
 "remain with you. You have kept your word, and you may avail of my services "
 "in the future."
 msgstr ""
-"Vissza kell térnem a népemhez. Az embereim, akik veled harcoltak, továbbra "
-"is a szolgálatodra lesznek. Megtartottad a szavadat, így a jövőben is "
+"Vissza kell térnem a népemhez. A harcosok, akik veled harcoltak, továbbra is "
+"a szolgálatodra lesznek. Megtartottad a szavadat, így a jövőben is "
 "számíthatsz rám."
 
 #. [message]: speaker=Prince Haldric
@@ -4296,10 +4299,10 @@ msgid ""
 "more survivors. If they return tell them to keep returning until no more "
 "survivors are found."
 msgstr ""
-"Legyen kellemes utad, barátom. (Suttogva) Jessica, indulj el a paranccsal, "
-"hogy a flotta harmada térjen vissza a Zöld-szigetre, és keressenek további "
-"túlélőket! Ha visszatérnek, küldd el őket újra meg újra, amíg csak találnak "
-"túlélőket!"
+"Az áramlások hordozzanak utadon, barátom. (Suttogva) Jessica, küldj "
+"parancsot, hogy a flotta harmada térjen vissza a Zöld-szigetre, és "
+"keressenek további túlélőket! Ha visszatérnek, küldd el őket újra meg újra, "
+"amíg csak találnak túlélőket!"
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_New_Land.cfg:318
@@ -4310,11 +4313,11 @@ msgid ""
 "Make haste, return before it is time to meet with these, what are they? Ahh, "
 "elves."
 msgstr ""
-"(Még mindig suttogva) Vegyél fel csontváz legénységet a hajókra, és add "
-"nekik a megmaradt tartalékainkat! Typhon urat értesítsd a dologról! De "
-"csakis a flotta harmadát küldd el! Nem juthat egy teljes, felszerelt flotta "
-"az orkok kezére. Siess, térj vissza, még mielőtt találkozunk ezekkel a... "
-"kik is ezek? Ah, igen, tündékkel!"
+"(Még mindig suttogva) Csak minimális legénységet szervezz a hajókra, és adj "
+"nekik kevés felszerelést! Typhon urat értesítsd a dologról! De csakis a "
+"flotta harmadát küldd el! Nem juthat egy teljes, felszerelt flotta az orkok "
+"kezére. Siess, térj vissza, még mielőtt találkozunk ezekkel a... kik is "
+"ezek? Ah, igen, tündékkel!"
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_New_Land.cfg:322
@@ -4322,7 +4325,8 @@ msgid ""
 "This is the second Eldaric I get to say goodbye to. At least this time it is "
 "easier than the first."
 msgstr ""
-"Másodszor kell elköszönnöm Eldaric-tól. De legalább most könnyebb volt."
+"A második Eldaricnak kell búcsút mondanom. De legalább ezt most könnyebb "
+"szívvel teszem."
 
 #. [message]: speaker=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_New_Land.cfg:368
@@ -4344,7 +4348,7 @@ msgstr "A Ka'lian"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:46
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:57
 msgid "Elves"
-msgstr ""
+msgstr "Tündék"
 
 #. [side]: type=Elvish Champion, id=Lord Logalmier
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:43
@@ -4377,7 +4381,7 @@ msgstr "Logalmier úr, majd én legyőzöm a sárkányodat."
 #. [message]: speaker=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:172
 msgid "Umm, you already beat the dragon, Haldric."
-msgstr "Hümm, már verekedtél vele, Haldric."
+msgstr "Hmmm, a sárkányt már elintézted Haldric."
 
 #. [option]: id=Elf_Lords
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:182
@@ -4392,7 +4396,7 @@ msgstr "Haragom utoléri majd azokat a hidegvérű szörnyeket!"
 #. [message]: speaker=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:213
 msgid "Umm, you already cleared the beach."
-msgstr "Hümm, már megtisztítottad a partot."
+msgstr "Hmmm, már megtisztítottad a partot."
 
 #. [option]: id=Elf_Lords
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:223
@@ -4404,10 +4408,11 @@ msgstr "Tisztítsuk meg azt a troll lyukat!"
 msgid "So what exactly is a troll?"
 msgstr "Tehát, miféle szerzet egy troll egészen pontosan?"
 
+# Ez melléfogás, inkább a gyíkokra utal, javítottam
 #. [message]: speaker=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:253
 msgid "Haldric, the trolls, scales and fangs - you don't remember?"
-msgstr "Haldric, a trollok, sziklák és karmok, már nem emlékszel?"
+msgstr "Haldric, a trollok, kőkemények és nagyokat ütnek - hát nem emlékszel?"
 
 #. [option]: id=Elf_Lords
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:263
@@ -4422,7 +4427,7 @@ msgstr "Élőholtak. Hehh! Gyakorlottak vagyunk az irtásukban."
 #. [message]: speaker=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:293
 msgid "How could you possibly forget the horror of the Isle of Tears?"
-msgstr "Hogyan felejthetted el a Könnyek Szigetén zajló szörnyűségeket??"
+msgstr "Hogyan felejthetted el a Könnyek Szigetén lezajlott szörnyűségeket??"
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:304
@@ -4470,9 +4475,9 @@ msgid ""
 "curse. Their souls still haunt that place and no elf will go there. You "
 "should clear this isle, and put their souls to rest."
 msgstr ""
-"Réges-régen egy szigeten egy tündecsoport sötét átok fogságába esett. A "
-"lelkeik még mindig kísértenek, de tündék már régóta nem jártak arra. Meg "
-"kéne tisztítanod ezt a szigetet, és örök nyugalomba helyezni a lelkeket."
+"Réges-régen a Könnyek Szigetén egy tündecsoportra sötét átok szállt. A "
+"lelkeik még mindig kísértenek, de tündék nem merészkednek arra a vidékre. "
+"Meg kéne tisztítanod ezt a szigetet, és örök nyugalomba helyezni a lelkeket."
 
 #. [message]: speaker=Lord Logalmier
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:376
@@ -4480,8 +4485,8 @@ msgid ""
 "Ahh, you have defeated the dragon, man of the west-north, you are truly "
 "impressive for a human."
 msgstr ""
-"Áá, legyőzted a sárkányt, északnyugati ember, ez elég meggyőző ahhoz képest, "
-"hogy csak egy ember vagy."
+"Áá, legyőzted a sárkányt, északnyugati ember, ez elég meggyőző, ahhoz "
+"képest, hogy csak egy ember vagy."
 
 #. [message]: speaker=Lord Aryad
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:388
@@ -4504,7 +4509,7 @@ msgid ""
 "Haldric and his companions find themselves before the Ka'lian, or the "
 "Council of Elven Lords."
 msgstr ""
-"Haldric és útitársai a Ka'lian, vagyis a Tünde Urak Tanácsa előtt találták "
+"Haldric és kísérői a Ka'lian, vagyis a Tünde Urak Tanácsa előtt találták "
 "magukat."
 
 #. [message]: speaker=Lord Logalmier
@@ -4518,7 +4523,7 @@ msgid ""
 "They are of the same people as the Prince of Southbay. They come as "
 "refugees. I can see a use for them."
 msgstr ""
-"Ugyanannak a népnek a gyermekei, mint Déli-öböl hercege. Menekültekként "
+"Ugyanannak a népnek a gyermekei, mint Déliöböl hercege. Menekültekként "
 "érkeztek. Szerintem hasznunkra lehetnek."
 
 #. [message]: speaker=Lord Aryad
@@ -4534,7 +4539,7 @@ msgid ""
 "grow like weeds when in an empty field. There is trouble brewing."
 msgstr ""
 "A törpök beköltöztek a Barna-dombság területére. Miközben hosszú életűek, "
-"addig ráadásul úgy sokasodnak, mint a gyom a parlagon. Baj közeleg."
+"úgy sokasodnak, mint a gyom a parlagon. Baj közeleg."
 
 #. [message]: speaker=Lord Dionli
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:452
@@ -4543,9 +4548,9 @@ msgid ""
 "of Southbay was good, he was a credit to his people. Maybe these ones are "
 "made of the same stuff."
 msgstr ""
-"Jobb három közül a legerősebbnek lenni, mint kettőből a gyengébbnek. Déli-"
-"öböl hercege jóindulatú volt, népének jó hírét terjesztette, talán ezeket is "
-"ugyanabból a fából faragták."
+"Jobb három közül a legerősebbnek lenni, mint kettőből a gyengébbnek. "
+"Déliöböl hercege jóindulatú volt, népének jó hírét terjesztette, talán "
+"ezeket is ugyanabból a fából faragták."
 
 #. [message]: speaker=Lord El'Isomithir
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:456
@@ -4560,8 +4565,8 @@ msgid ""
 "forfeit."
 msgstr ""
 "A népünk békével jött. Háború tört ki a szülőföldünkön. Menekültekké "
-"váltunk. Új hazát keresünk itt, mivel az északnyugati szigetünk elveszett "
-"számunkra."
+"váltunk. Új hazát keresünk itt, mivel az északnyugatra fekvő szigetünk "
+"elveszett számunkra."
 
 #. [message]: speaker=Lord El'Isomithir
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:464
@@ -4578,8 +4583,9 @@ msgid ""
 "the elves are people of the forests, we only seek some of the space in "
 "between."
 msgstr ""
-"Csak békében szeretnénk tovább élni. A törpök a dombok lakói, a tündék az "
-"erdőket népesítik be, nekünk a kettő közti üres földek is megfelelnek."
+"Csak békében szeretnénk tovább élni. A törpök a dombok és hegyek lakói, a "
+"tündék az erdőket népesítik be, nekünk a kettő közti üres földek is "
+"megfelelnek."
 
 #. [message]: speaker=Lord Dionli
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:472
@@ -4598,17 +4604,17 @@ msgstr "Próbára kéne tenni őket, mielőtt ilyen kegyben részesülhetnének.
 #. [message]: speaker=Lord El'Isomithir
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:480
 msgid "A quest for each of us then?"
-msgstr "Egy küldetés mindahányunknak?"
+msgstr "Egy küldetés mindegyikünktől?"
 
 #. [message]: speaker=Lord Logalmier
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:492
 msgid "Agreed. (Sigh)"
-msgstr "Megegyeztünk. (Sóhaj)"
+msgstr "Megegyeztünk. *Sóhajt*"
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:496
 msgid "Umm, agreed."
-msgstr "Hümm, elfogadom."
+msgstr "Hmmm, elfogadom."
 
 #. [message]: speaker=Lord Aryad
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:500
@@ -4628,8 +4634,7 @@ msgstr ""
 msgid ""
 "Very good, but this is just the start, human. There is still much more for "
 "you to do."
-msgstr ""
-"Kitűnő, de ez még csak a kezdet, emberek. A neheze még hátra van számotokra."
+msgstr "Kitűnő, de ez még csak a kezdet, emberek. A neheze még hátra van."
 
 #. [message]: speaker=Lord Logalmier
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:548
@@ -4647,7 +4652,7 @@ msgstr ""
 #. [message]: speaker=Lord Dionli
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:603
 msgid "You were successful, Prince Haldric. I knew you could do it."
-msgstr "Sikeres voltál, Haldric herceg. Tudtam, hogy meg fogod tudni csinálni."
+msgstr "Sikeres voltál Haldric herceg. Tudtam, hogy meg fogod tudni csinálni."
 
 #. [message]: speaker=Lord Logalmier
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:608
@@ -4682,9 +4687,9 @@ msgid ""
 "Fair enough. I decree a 'Pact of Mutual Aid' between our peoples. But, "
 "aren't you setting us in conflict with the Dwarves?"
 msgstr ""
-"Ez igazságosan hangzik. Határozatba foglalok egy 'Kölcsönös segítségnyújtási "
-"paktumot' a népeink közt. De nem arra számítotok, hogy a törpök majd belénk "
-"ütköznek helyettetek?"
+"Ez igazságosan hangzik. Határozatba foglalok egy 'Kölcsönös Segítségnyújtási "
+"Egyezményt' a népeink közt. De nem arra számítotok, hogy a törpök majd "
+"belénk ütköznek helyettetek?"
 
 #. [message]: speaker=Lord Logalmier
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:633
@@ -4694,7 +4699,7 @@ msgid ""
 "trade with you."
 msgstr ""
 "Nem. A törpök visszatértek északra. De az emberek is bányásznak, nem? Az "
-"erőforrások immár a tiétek, őrködjetek felettük. A jövőben szeretnénk "
+"erőforrások immár a tieitek, őrködjetek felettük. A jövőben szeretnénk "
 "kereskedni veletek."
 
 #. [message]: speaker=Lord Logalmier
@@ -4708,7 +4713,7 @@ msgid ""
 "It's Commander Aethyr, of Clearwater Port. I was sure you perished in the "
 "fighting there?"
 msgstr ""
-"Aethyr hadnagy, Kristályvíz kikötőjéből. Azt hittem, hogy elestél a harc "
+"Aethyr parancsnok, Kristályvízkikötőből. Azt hittem, hogy elestél a harc "
 "közben."
 
 #. [message]: speaker=Commander Aethyr
@@ -4718,9 +4723,9 @@ msgid ""
 "making our last stand at the lighthouse when one of your ships came. One of "
 "my men conked me on the head, then I woke up at sea."
 msgstr ""
-"Nem, uram. Én vezettem Kristályvíz kikötőjének utolsó túlélőit. A csata "
-"végén a világítótoronyba vettük be magunkat, amikor is megpillantottuk a te "
-"egyik hajódat. Az egyik emberem fejbe kólintott, és már a tengeren ébredtem."
+"Nem uram. Én vezettem Kristályvízkikötő utolsó túlélőit. A csata végén a "
+"világítótoronyba vettük be magunkat, amikor is megpillantottuk a te egyik "
+"hajódat. Az egyik emberem fejbe kólintott, és már a tengeren ébredtem fel."
 
 #. [message]: speaker=Commander Aethyr
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:663
@@ -4728,8 +4733,8 @@ msgid ""
 "I come bearing news. Some 'old friends' have decided to make an appearance. "
 "You should go 'greet' them."
 msgstr ""
-"Hírekkel érkeztem. Néhány 'régi barát' úgy döntött, meg fog jelenni. Eléjük "
-"kéne menned 'üdvözölni' őket."
+"Hírekkel érkeztem. Néhány 'régi barát' úgy döntött, meglátogat minket. "
+"Eléjük kéne menned 'üdvözölni' őket."
 
 #. [message]: speaker=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:668
@@ -4737,7 +4742,7 @@ msgid ""
 "(whispered) I fear our friend has said too much. You go on ahead, I'll catch "
 "up with you."
 msgstr ""
-"(Suttogva) Attól tartok, hogy barátunk túl sokat mondott. Menj előre, majd "
+"(Suttogva) Attól tartok, hogy a barátunk túl sokat mondott. Menj előre, majd "
 "utolérlek."
 
 #. [scenario]: id=The_Dragon
@@ -4758,9 +4763,8 @@ msgstr "Irix"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:76
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:109
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:143
-#, fuzzy
 msgid "Saurians"
-msgstr "Satras"
+msgstr "Gyíkok"
 
 #. [side]: type=Saurian Flanker, id=Vriss
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:70
@@ -4780,13 +4784,13 @@ msgstr "Satras"
 #. [objective]: condition=win
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:209
 msgid "Slay the Dragon"
-msgstr "Leölöd a sárkányt"
+msgstr "Megölöd a sárkányt"
 
 #. [objective]: condition=win
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:213
 msgid "Heroic: Slay the Dragon and defeat all enemies"
 msgstr ""
-"Hősiesen: Leölöd a sárkányt és valamennyi ellenség felett győzedelmeskedsz"
+"Hősiesen: Megölöd a sárkányt és valamennyi ellenség felett győzedelmeskedsz"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:238
@@ -4795,7 +4799,7 @@ msgid ""
 "of swamp. A small island with a mountain dominates the view. That can only "
 "be the home of the dragon."
 msgstr ""
-"A néhány napos utat követően Haldric egy óriási, üres láphoz ért. A környék "
+"A néhány napos utat követően Haldric egy óriási láphoz ért. A környék "
 "látképét egy kis sziget - rajta egy heggyel - uralja. Ez minden bizonnyal a "
 "sárkány otthona."
 
@@ -4820,13 +4824,13 @@ msgid ""
 "I'm glad that's over. The elves certainly aren't taking it easy on us. It's "
 "a miracle any of us are alive at all."
 msgstr ""
-"Örülök, hogy végre vége van. A tündék tényleg biztosra mennek velünk "
-"kapcsolatban. Kész csoda, hogy egyáltalán még életben vagyunk."
+"Örülök, hogy végre vége van. A tündék tényleg próbára tesznek minket. Kész "
+"csoda, hogy egyáltalán még életben vagyunk."
 
 #. [message]: speaker=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:268
 msgid "I'm still not calling you 'the Dragonbane'."
-msgstr "Még most se hívlak 'Sárkányölőnek'."
+msgstr "Akkor se hívlak 'Sárkányölőnek'."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:307
@@ -4842,7 +4846,7 @@ msgstr "Shek'kahan"
 #. [message]: speaker=Shek'kahan
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:354
 msgid "It is unwise to trifle with dragons, boy!"
-msgstr "Nem bölcs dolog sárkányokkal tréfálkozni, fiacskám!"
+msgstr "Nem bölcs dolog sárkányokkal tréfálkozni fiacskám!"
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:358
@@ -4883,7 +4887,7 @@ msgstr "Végeztünk a sárkánnyal: "
 #. [option]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:473
 msgid "Let's get out of here!"
-msgstr "Most fussunk innen!"
+msgstr "Most tűnjünk el innen!"
 
 #. [option]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:484
@@ -4898,7 +4902,7 @@ msgstr "Több gyík is érkezik. Bekerítettek minket! Elvesztünk."
 #. [scenario]: id=A_Beach
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17b_A_Beach.cfg:4
 msgid "Lizard Beach"
-msgstr "Gyík part"
+msgstr "Gyíkpart"
 
 #. [side]: type=Saurian Flanker, id=Tirasch
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17b_A_Beach.cfg:36
@@ -4910,7 +4914,7 @@ msgstr "Tirasch"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17b_A_Beach.cfg:42
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17b_A_Beach.cfg:68
 msgid "Monsters"
-msgstr ""
+msgstr "Szörnyek"
 
 #. [side]: type=Saurian Flanker, id=Ssirk
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17b_A_Beach.cfg:62
@@ -4924,8 +4928,8 @@ msgid ""
 "sunny beach. While normally this would be a pleasant occurrence, they find "
 "the saurians hard at work there."
 msgstr ""
-"A hosszú út egy napsütötte partra vitte Haldric herceget és társait. Bár ez "
-"kellemesnek is hangozhat, hamar összefutottak a lázasan serénykedő gyíkokkal."
+"A hosszú út után egy napsütötte part várta Haldric herceget és társait. Bár "
+"ez kellemesnek tűnt, hamar összefutottak a lázasan serénykedő gyíkokkal."
 
 #. [message]: speaker=Ssirk
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17b_A_Beach.cfg:141
@@ -4945,7 +4949,7 @@ msgstr "Mi szörnyek? Hmm... készüljetek, hamarosan kardélre hányunk titeket
 #. [message]: speaker=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17b_A_Beach.cfg:157
 msgid "(Sigh) I bet he sees none of the irony in that."
-msgstr "(Sóhaj) Szerintem ő még csak meg se érezte a benne lévő iróniát."
+msgstr " *Sóhajt* Szerintem még csak meg se érezte az iróniát."
 
 #. [message]: speaker=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17b_A_Beach.cfg:165
@@ -4955,7 +4959,7 @@ msgstr "Túl lassúak voltunk... a tenger összes nagája minket fog üldözni!"
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17b_A_Beach.cfg:189
 msgid "Ick! When you kill them they divide."
-msgstr "Fene! Ha megölöd őket, kettéválnak."
+msgstr "A fenébe! Ha megölöd őket, kettéválnak."
 
 #. [event]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17b_A_Beach.cfg:241
@@ -4990,9 +4994,8 @@ msgstr "Erart"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17c_Troll_Hole.cfg:69
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17c_Troll_Hole.cfg:95
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17c_Troll_Hole.cfg:121
-#, fuzzy
 msgid "Trolls"
-msgstr "Tromas"
+msgstr "Trollok"
 
 #. [side]: type=Troll Warrior, id=Raol
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17c_Troll_Hole.cfg:63
@@ -5028,7 +5031,7 @@ msgid ""
 "elven guide leads them to a gaping cave mouth, and they descend into the "
 "darkness."
 msgstr ""
-"Nem tellett sokba, és Haldric csapata elérte a Barna-dombságot. Egy tünde "
+"Nem telt sok időbe, és Haldric csapata elérte a Barna-dombságot. Egy tünde "
 "vezető megmutatta nekik a barlang tátongó száját, ők pedig leereszkedtek a "
 "sötétségbe."
 
@@ -5067,8 +5070,8 @@ msgstr "Igazatok van. Akkor kapjuk el őket!"
 msgid ""
 "We have failed... More of the trolls' kin are arriving through the entrance."
 msgstr ""
-"Kudarcot vallottunk... A trollok fajtájából egyre többen érkeznek a "
-"bejáraton keresztül."
+"Kudarcot vallottunk... A trollfajzatok egyre többen érkeznek a bejáraton "
+"keresztül."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17c_Troll_Hole.cfg:341
@@ -5076,13 +5079,13 @@ msgid ""
 "The trolls are beaten, but they were no easy opponents. It is no wonder why "
 "the elves pressed us to do their dirty work."
 msgstr ""
-"A trollok kikaptak, de nem voltak könnyű ellenfelek. Nem csodálom, hogy a "
+"A trollokat levertük, de nem voltak könnyű ellenfelek. Nem csodálom, hogy a "
 "tündék inkább velünk végeztetik el a piszkos munkát."
 
 #. [scenario]: id=Cursed_Isle
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:4
 msgid "Cursed Isle"
-msgstr "Az Elátkozott Sziget"
+msgstr "Az elátkozott sziget"
 
 #. [side]: type=Spectre, id=Isorfilad
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:38
@@ -5142,7 +5145,7 @@ msgid ""
 "Tears. A fog hangs in the air."
 msgstr ""
 "Egy rövid tengeri út vitte Haldric herceget a tündék elátkozott szigetére: a "
-"Könnyek Szigetére. A környékre nehéz köd nehezedett."
+"Könnyek Szigetére. A környékre sűrű köd telepedett."
 
 #. [message]: speaker=Burin the Lost
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:333
@@ -5150,14 +5153,15 @@ msgid ""
 "I said no more ships. Double crossing humans! Ahh, I've been with you this "
 "far. Who'd have thought, a nautical dwarf."
 msgstr ""
-"Azt mondtam soha többé hajókat. Elvetemült emberek! Jaj, már olyan régóta "
+"Azt mondtam soha többé hajókat. Kétszínű emberek! Jaj, már olyan régóta "
 "veletek tartok. Ki gondolta volna, az első tengeri törp."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:338
 msgid "I expect we'll be facing more undead. Be careful."
 msgstr ""
-"Azt hiszem, nemsokára több élőholttal is fogunk találkozni. Légy óvatos!"
+"Azt hiszem, nemsokára több élőholttal is fogunk találkozni. Legyetek "
+"óvatosak!"
 
 #. [message]: speaker=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:343
@@ -5240,72 +5244,68 @@ msgstr "Jessica elrejtőzve"
 
 #. [message]: speaker=Lord Logalmier
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:114
-#, fuzzy
 msgid ""
 "So a doom has followed them here from their old home. My Outriders have "
 "reported that orcs have made landfall. Orcs! The tree-killers of our most "
 "ancient legends. Some thought them only a nightmare to frighten children, "
 "and never real at all."
 msgstr ""
-"Szóval szörnyű átok üldözte el őket a régi hazájukból. A felderítőim azt "
-"jelentették, hogy az orkok partra szálltak. Orkok, itt, évszázadok óta "
-"először!"
+"Szóval szörnyű csapás követte őket ide, a régi hazájukból. A felderítőim azt "
+"jelentették, hogy orkok szálltak partra. Orkok! A legősibb legendáinkban "
+"szereplő fagyilkosok. Sokan nem hitték, hogy léteznek, csupán egy ijedt "
+"gyermek rémálmának gondolták őket."
 
 #. [message]: speaker=Lord Dionli
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:118
-#, fuzzy
 msgid ""
 "And he bears an artifact of some power. The orcs would not be able to sense "
 "that. There is some hand we cannot see at work here."
 msgstr ""
-"És egy nagy erejű mágikus tárgy van a birtokában. Az orkok nem szimatolnák "
-"ezt ki. Valami nagyobb erő dolgozik ellenünk."
+"És egy nagy erejű mágikus tárgy van a birtokában. Az orkok nem tudnák "
+"érzékelni ezt. Van itt egy erő, aminek nem láthatjuk a működését."
 
 #. [message]: speaker=Lord Aryad
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:122
-#, fuzzy
 msgid ""
 "We may have decided wrongly. If the humans drive the orcs off we should "
 "honor our pledge. If more trouble follows them here we should let them fight "
 "it out, then we should 'deal' with the survivors, and make a compromise with "
 "the Dwarves."
 msgstr ""
-"Lehet, hogy rosszul döntöttünk. Ha az emberek elüldözik az orkokat, talán "
-"megbecsülhetnénk az ígéretünket. Ha még több veszély érkezik a nyomukban, "
-"rájuk kellene hagyni, hogy intézzék el maguk. Aztán csak a túlélőkkel "
-"kellene tárgyalnunk, valamint alkut kellene kötnünk a törpökkel."
+"Lehet, hogy rosszul döntöttünk. Ha az emberek elüldözik az orkokat, akkor "
+"teljesítenünk kell az ígéretünket. Ha még több probléma érkezik a nyomukban, "
+"akkor maguknak kell megoldani azokat. Aztán 'foglalkoznánk' a túlélőkkel és "
+"megegyezhetnénk a törpökkel is."
 
 #. [message]: speaker=Lord Dionli
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:126
 msgid ""
 "But we spoke a Pact with this Haldric and these men of the west-north..."
 msgstr ""
-"De hiszen megegyeztünk ezzel a Haldric-kal és az északnyugati emberekkel -"
+"De hiszen megegyeztünk ezzel a Haldrickal és az északnyugati emberekkel -"
 
 #. [message]: speaker=Lord Logalmier
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:131
-#, fuzzy
 msgid ""
 "We are the people of the forest, you know that all words spoken to these un-"
 "people are of secondary importance to our own needs. As Lord Aryad said, 'If "
 "more trouble follows them here we should let them fight it out, then we "
 "should 'deal' with the survivors, and make a compromise with the Dwarves.'"
 msgstr ""
-"Az erdő népe vagyunk, tudod, hogy minden kiejtett szó csak másodlagosan "
-"fontos számunkra. Aryad úr a következőket mondta: 'Ha még több veszély "
-"érkezik a nyomukban, rájuk kellene hagyni, hogy intézzék el maguk. Aztán "
-"csak a túlélőkkel kellene tárgyalnunk, valamint alkut kellene kötnünk a "
-"törpökkel.'"
+"Az erdő népe vagyunk, tudod, hogy minden a nem-erdeieknek tett ígéret csak "
+"másodlagosan fontos számunkra. Aryad úr a következőket mondta: 'Ha még több "
+"probléma érkezik a nyomukban, akkor maguknak kell megoldani azokat. Aztán "
+"'foglalkoznánk' a túlélőkkel és megegyezhetnénk a törpökkel is.'"
 
 #. [message]: speaker=Lord Dionli
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:139
 msgid "(Sigh) Agreed."
-msgstr "(Sóhaj) Rendben."
+msgstr " *Sóhajt* Rendben."
 
 #. [message]: speaker=Jessica in Hiding
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:148
 msgid "(whispered) Some friends. I must tell Haldric."
-msgstr "(suttogva) Néhány igazi jóbarát. El kell mondanom Haldric-nak!"
+msgstr " *Suttogva* Néhány igazi jóbarát. El kell mondanom Haldricnak!"
 
 #. [scenario]: id=The_Vanguard
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:4
@@ -5346,7 +5346,7 @@ msgstr "Haldric, a tündék, már nem bízhatunk bennük!"
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:247
 msgid "I could have told you that."
-msgstr "Ezt elmondhattam volna."
+msgstr "Ezt elmondhattam volna én is."
 
 #. [message]: speaker=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:251
@@ -5372,7 +5372,7 @@ msgid ""
 msgstr ""
 "Ezt követően több orkra is számíthatunk, a Rubin miatt biztos vagyok ebben. "
 "Ha tényleg jönni fognak még, akkor a tündék örülhetnek, hogy szembeszállunk "
-"velük. Akkor pedig, állítólag, 'gondoskodni fognak a túlélőkről'."
+"velük. Azután pedig, ahogy fogalmaztak, 'foglalkozni fognak a túlélőkkel'."
 
 #. [message]: speaker=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:263
@@ -5391,13 +5391,13 @@ msgid ""
 "I have a plan. Jessica, remember that troll-hole? Here, take the Ruby of "
 "Fire, hide it in the hole."
 msgstr ""
-"Van egy tervem. Jessica, emlékszel arra a Troll lyukra? Tessék, itt van a "
+"Van egy tervem. Jessica, emlékszel arra a troll lyukra? Tessék, itt van a "
 "Tűz Rubinja, rejtsd el abba a lyukba!"
 
 #. [message]: speaker=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:271
 msgid "Haldric! What! Why?"
-msgstr "Haldric! Mi! Minek?"
+msgstr "Haldric! Mi? Miért?"
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:275
@@ -5410,8 +5410,8 @@ msgid ""
 "Commander Aethyr, did these orcs come on our ships? Did they capture the "
 "fleet we sent out?"
 msgstr ""
-"Aethyr hadnagy, ezek az orkok a mi hajóinkon érkeztek? Lehet, hogy elfogták "
-"a flottát, amit kiküldtünk?"
+"Aethyr parancsnok, ezek az orkok a mi hajóinkon érkeztek? Lehet, hogy "
+"elfogták a flottát, amit kiküldtünk?"
 
 #. [message]: speaker=Commander Aethyr
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:283
@@ -5444,7 +5444,7 @@ msgid ""
 "Drop the gold where it is! We've paid our friends enough. There are humans "
 "about, I can smell 'em!"
 msgstr ""
-"Állj! Dobjátok el az aranyat! Rendesen megfizettük a barátainkat. Emberek "
+"Állj! Hagyjátok az aranyat! Rendesen megfizettük a barátainkat. Emberek "
 "vannak a közelben, érzem a szagukat!"
 
 #. [message]: speaker=Prince Haldric
@@ -5479,7 +5479,7 @@ msgid ""
 "Never trust the living to do the job of the undead. Prepare to meet the "
 "inevitable!"
 msgstr ""
-"Sosem szabad az élőholtak munkáját az élőkre bízni. Készülj fel az "
+"Sosem szabad az élőholtak munkáját az élőkre bízni. Készüljetek fel az "
 "elkerülhetetlenre!"
 
 #. [message]: speaker=Minister Edmond
@@ -5488,8 +5488,8 @@ msgid ""
 "The only job of the dead is to remain dead. Prepare to be reunited with the "
 "ground."
 msgstr ""
-"A holtak egyetlen feladata halottnak is maradni. Készülj visszatérni a "
-"porba, ahonnan jöttél!"
+"A holtak egyetlen feladata halottnak maradni. Készülj visszatérni a porba, "
+"ahonnan jöttél!"
 
 #. [message]: speaker=Tan-Gagar
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:428
@@ -5525,8 +5525,8 @@ msgid ""
 "Ahh, it's great to be home! I'm not much for the politics, but it's great to "
 "be home!"
 msgstr ""
-"Áá, jó újra itthon lenni! Nem szoktam foglalkozni a közügyekkel, de jó, hogy "
-"visszaköltözhetünk!"
+"Ah, jó újra itthon lenni! Nem szoktam foglalkozni a közügyekkel, de jó, hogy "
+"hazajöttünk!"
 
 #. [scenario]: id=Return_of_the_Fleet
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:4
@@ -5559,8 +5559,8 @@ msgid ""
 "Haldric reaches the site where the fleet is due to return. Several ships "
 "have already docked. The orcs are on the frontier."
 msgstr ""
-"Haldric elérte a partot, ahol a flottának ki kell kötnie. Néhány hajó már be "
-"is futott. Az orkok a határon állomásoztak."
+"Haldric elérte a partot, ahol a flottának ki kellett kötnie. Néhány hajó már "
+"be is futott. Az orkok a határon állomásoztak."
 
 #. [message]: speaker=Commander Aethyr
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:227
@@ -5594,7 +5594,7 @@ msgstr ""
 #. [message]: speaker=Burin the Lost
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:240
 msgid "Well, that settles it. Enough talking, time to fight!"
-msgstr "Hát, akkor nincs más választásunk. Elég a beszédből, ideje harcolni!"
+msgstr "Hát akkor nincs más választásunk. Elég a beszédből, ideje harcolni!"
 
 #. [message]: speaker=Commander Aethyr
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:244
@@ -5604,7 +5604,7 @@ msgstr "Zöld-sziget embereinek dicsőségéért!"
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:248
 msgid "No, for the glory of all of the people of the west-north! Charge!"
-msgstr "Dehogy, egész észak-nyugat embereinek a dicsőségéért! Roham!"
+msgstr "Dehogy, egész északnyugat népeinek a dicsőségéért! Roham!"
 
 #. [message]: speaker=Tan-Rinak
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:252
@@ -5634,7 +5634,7 @@ msgid ""
 "war, but you're the real monster! You sacrificed your own people to preserve "
 "your immortal un-life."
 msgstr ""
-"Majd meglátjuk. Déli-öböl bolond hercege tévedett, amikor elindította ezt a "
+"Majd meglátjuk. Déliöböl bolond hercege tévedett, amikor elindította ezt a "
 "háborút, de te vagy az igazi szörnyeteg! Feláldoztad a saját embereidet, "
 "hogy megalapozd élőholt létedet."
 
@@ -5657,7 +5657,7 @@ msgstr "Szálljatok ki rendezett sorokban, és induljatok dél felé!"
 #. [message]: speaker=unit
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:380
 msgid "Hmm, they left off the 'or the orcs will eat you' part."
-msgstr "Hmm, most kihagyták a 'különben orkok martalékává lesztek' szöveget."
+msgstr "Hmm, most kihagyták a 'különben orkok eledelévé lesztek' szöveget."
 
 #. [message]: speaker=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:416
@@ -5685,7 +5685,7 @@ msgid ""
 "We've defeated Jevyan's forces. The ships must disembark their passengers "
 "quickly-"
 msgstr ""
-"Legyőztük Jevyan seregét. A hajókból gyorsan ki kell szállnia mindenkinek.-"
+"Legyőztük Jevyan seregét. A hajókból gyorsan ki kell szállnia mindenkinek-"
 
 #. [message]: speaker=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:436
@@ -5695,7 +5695,7 @@ msgstr "Haldric, mi folyik itt? Mi a terved?"
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:440
 msgid "We're going to confront Jevyan and destroy him."
-msgstr "Hát, megtámadjuk Jevyant és végzünk vele!"
+msgstr "Semmi bonyolult, megtámadjuk Jevyant és végzünk vele!"
 
 #. [message]: speaker=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:444
@@ -5704,9 +5704,9 @@ msgid ""
 "Lords will follow. It's because of that ruby. If I were paranoid I'd say "
 "that our dear old 'tree-friend' might have known as much."
 msgstr ""
-"Könnyű azt mondani. Ha még le is győznénk, a többi villi-úr követné őt. Ez a "
-"Tűz Rubinja miatt biztosra vehető. Ha üldözési mániám volna, azt mondanám, "
-"még a kedves, öreg fa barátocskánk is rájönne erre."
+"Könnyű azt mondani. Még ha le is győznénk, a többi delevény-úr követné őt. "
+"Ez a Tűz Rubinja miatt biztosra vehető. Ha üldözési mániám volna, azt "
+"mondanám, még a kedves, öreg fa-barátunk is rájönne erre."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:448
@@ -5734,15 +5734,15 @@ msgid ""
 "You Again. You will sssuffer for your attack against my people! Shek'kahan, "
 "our Naga friendsss- You'll pay! We have new friends now."
 msgstr ""
-"Megint ti. Meg fogsssz lakolni, amiért megtámadtad a népem! Shek'kahan, naga "
-"bártocccskáink- megfizzzettek! Vannak új társssaink."
+"Megint te. Meg fogsssz lakolni, amiért megtámadtad a népemet! Shek'kahant, "
+"naga barrrrátainkat- megfizzzettek! Vannak új társssaink."
 
 #. [message]: speaker=Tan-Halg
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:554
 msgid ""
 "My people are like a rock slide, you can run, but we will crush you...Ahhck!"
 msgstr ""
-"A népem olyan, mint a földcsuszamlás. Futhatsz, de akkor is eltiprunk... - "
+"A népem olyan, mint a földcsuszamlás. Futhatsz, de akkor is letarolunk... - "
 "Áákkr!"
 
 #. [message]: speaker=Tan-Rinak
@@ -5768,7 +5768,7 @@ msgid ""
 "they'll go looking for our not-so-loyal elven allies first."
 msgstr ""
 "Meg kell győznünk Jevyant, hogy a Tűz Rubinját a tündéknek adtuk azért, hogy "
-"biztonságban megalapíthassuk az országot. Aztán majd ha az orkok "
+"biztonságban megalapíthassuk az országunkat. Aztán, majd ha az orkok "
 "visszatérnek, remélhetőleg a nem túl hűséges tünde szövetségesek után fognak "
 "eredni."
 
@@ -5791,7 +5791,7 @@ msgid ""
 msgstr ""
 "Igen, és akár meg is segíthetjük őket. Mérlegelnünk kell majd a "
 "lehetőségeket, ha eljön az idő. Ha az orkok nagy számban érkeznek, a rohamuk "
-"javának máson kell csattannia. Ki tudja, talán cserben is hagyjuk majd a "
+"javát másoknak kell felfognia. Ki tudja, talán cserben is hagyjuk majd a "
 "tündéket -"
 
 #. [message]: speaker=Lady Jessica
@@ -5810,14 +5810,14 @@ msgid ""
 "Recent events have taught me one thing: that survival trumps honor. Besides, "
 "they won't be screaming at me - I'll be dead."
 msgstr ""
-"Az utóbbi idők eseményei egy tanulsággal szolgáltak számomra: hogy a túlélés "
-"előrébb való a becsületnél. Máskülönben nem hánynának semmit a szememre - "
-"mivel halott lennék."
+"Az utóbbi idők eseményei egy tanulsággal szolgáltak számomra: a túlélés "
+"előrébb való a becsületnél. Máskülönben nem hányhatnak semmit a szememre - "
+"mivel halott leszek."
 
 #. [message]: speaker=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/21_The_Plan.cfg:135
 msgid "WHAT!"
-msgstr "MICSODA!"
+msgstr "MICSODA!?"
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/21_The_Plan.cfg:139
@@ -5875,8 +5875,7 @@ msgid ""
 "There is no way I'm letting you go through with this, sir! Over our dead "
 "bodies, right Jessica?"
 msgstr ""
-"Nem engedhetem, hogy ezt véghez vidd, uram! Csak a testünkön át, ugye "
-"Jessica?"
+"Nem engedhetem, hogy ezt véghezvidd, uram! Csak a testünkön át, ugye Jessica?"
 
 #. [message]: speaker=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/21_The_Plan.cfg:192
@@ -5902,14 +5901,14 @@ msgid ""
 "Clearwater Port, and once again when your ships rescued me. I'll not be "
 "denied in this a third time!"
 msgstr ""
-"Már kétszer megtagadtad tőlem a hősi halált. Egyszer, amikor Kristályvíz "
-"kikötőjébe érkeztél, aztán amikor a hajóid kimentettek minket. Harmadszorra "
-"nem fogom engedni!"
+"Már kétszer megtagadtad tőlem a hősi halált. Egyszer, amikor "
+"Kristályvízkikötőbe érkeztél, aztán amikor a hajóid kimentettek minket. "
+"Harmadszorra nem fogom engedni!"
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/21_The_Plan.cfg:208
 msgid "No, this is my sacrifice to make!"
-msgstr "Nem, ezt az áldozatot nekem kell meghozni!"
+msgstr "Nem, ezt az áldozatot nekem kell meghoznom!"
 
 #. [message]: speaker=Commander Aethyr
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/21_The_Plan.cfg:214
@@ -5917,8 +5916,8 @@ msgid ""
 "Sir, my family has been slaughtered, and my home lost. All I long for is to "
 "join them. Give me this honorable death... Please, Sir! I beg you!"
 msgstr ""
-"Uram, az otthonomat elvesztettem, a családomat lemészárolták. Vissza akarok "
-"már térni hozzájuk. Add meg nekem a hősi halált... Kérlek uram! Esedezem!"
+"Uram, az otthonomat elvesztettem, a családomat lemészárolták. Meg akarok már "
+"térni hozzájuk. Add meg nekem a hősi halált... Kérlek uram! Esedezem!"
 
 #. [message]: speaker=Commander Aethyr
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/21_The_Plan.cfg:218
@@ -5969,7 +5968,7 @@ msgid ""
 "death'?"
 msgstr ""
 "Vigyáznunk kell, hogy az egyik ork vezért engedjük elmenekülni a Zöld-sziget "
-"felé azzal az információval, hogy a Tűz Rubinja a tündéknél van. Szzz... "
+"felé azzal az információval, hogy a Tűz Rubinja a tündéknél van. Huhh... "
 "Mire föl ez a bolond vágyakozás a 'hősi halál' után a ti fajtátokban?"
 
 #. [side]: type=Ancient Lich, id=Lich-Lord Jevyan
@@ -5982,9 +5981,8 @@ msgstr ""
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:123
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:160
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:198
-#, fuzzy
 msgid "Evil"
-msgstr "Eriol"
+msgstr "Gonoszok"
 
 #. [side]: type=Orcish Warlord, id=Tan-Vragish
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:80
@@ -6009,12 +6007,12 @@ msgstr "Tan-Prodash"
 #. [objective]: condition=win
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:275
 msgid "Commander Aethyr sacrifices himself to Lich-Lord Jevyan and"
-msgstr "Aethyr hadnagy feláldozza magát Jevyan villi-úrnak és"
+msgstr "Aethyr parancsnok feláldozza magát Jevyan delevény-úrnak és"
 
 #. [objective]: condition=win
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:279
 msgid "Destroy Lich-Lord Jevyan and"
-msgstr "Elpusztítod Jevyan villi-urat és"
+msgstr "Elpusztítod Jevyan delevény-urat és"
 
 #. [objective]: condition=win
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:283
@@ -6024,12 +6022,12 @@ msgstr "Vereséget mérsz egy híján az összes ellenséges vezérre "
 #. [objective]: condition=lose
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:295
 msgid "Death of Commander Aethyr by somebody other than Jevyan"
-msgstr "Aethyr hadnagy halálát nem Jevyan villi-úr okozza"
+msgstr "Aethyr parancsnok halálát nem Jevyan delevény-úr okozza"
 
 #. [objective]: condition=lose
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:299
 msgid "Fail to leave one enemy leader behind"
-msgstr "Nem sikerül egy ellenséges vezért hátrahagyni"
+msgstr "Egyetlen elleséges vezér sem marad életben"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:313
@@ -6037,8 +6035,8 @@ msgid ""
 "Haldric approaches the place where Lich-Lord Jevyan has made landfall. The "
 "final confrontation looms before him."
 msgstr ""
-"Haldric gyorsan elérte a helyet, ahol Jevyan villi-úr partra szállt. A végső "
-"találkozás már közel volt...."
+"Haldric gyorsan elérte a helyet, ahol Jevyan delevény-úr partra szállt. A "
+"végső találkozás már közel volt...."
 
 #. [message]: speaker=Lich-Lord Jevyan
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:318
@@ -6051,8 +6049,8 @@ msgid ""
 "This ends here, Jevyan. Even if I believed your words I couldn't give you "
 "the Ruby of Fire."
 msgstr ""
-"Itt most minden véget ér, Jevyan! Még ha el is hinném szavaidat, nem adhatom "
-"oda a Tűz Rubinját."
+"Itt most minden véget ér Jevyan! Még ha el is hinném a szavaidat, akkor sem "
+"adhatnám oda a Tűz Rubinját."
 
 #. [message]: speaker=Lich-Lord Jevyan
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:327
@@ -6060,8 +6058,8 @@ msgid ""
 "Bah! Even if you have learned to conceal the power of the Ruby of Fire you "
 "will deliver it unto me in death!"
 msgstr ""
-"Ugyan! Ha meg is tanultad, hogyan kell elrejteni a Tűz Rubinjának hatalmát, "
-"ide fogod hozni nekem halálod után."
+"Ugyan! Ha meg is tanultad, hogyan kell elrejteni a Tűz Rubinjának "
+"kisugárzását, ide fogod hozni nekem halálod után."
 
 #. [message]: speaker=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:331
@@ -6070,7 +6068,7 @@ msgid ""
 "give the elves the Ruby of Fire. We just signed a treaty with the elves "
 "ensuring our place here."
 msgstr ""
-"Jevyan, te bolond. Honnét gondolod, hogy csak úgy adtak nekünk egy országot "
+"Jevyan, te bolond. Miből gondolod, hogy csak úgy adtak nekünk egy országot "
 "ezen a vidéken? Oda kellett adnunk a Tűz Rubinját a tündéknek, hogy földet "
 "kaphassunk."
 
@@ -6108,7 +6106,7 @@ msgstr ""
 #. [message]: speaker=Minister Edmond
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:352
 msgid "Ha. Let all of the minions of Darkness be cast down!"
-msgstr "Hááá. A Sötétség katonái legyenek megidézve!"
+msgstr "Hááá. A Sötétség minden katonája támadjon fel!"
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:356
@@ -6118,12 +6116,12 @@ msgstr "Nem sokat számít, mert itt és most el fogsz bukni!"
 #. [message]: speaker=Sir Ruddry
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:361
 msgid "For all of the good people of Clearwater Port!"
-msgstr "Kristályvíz kikötőjének minden jóravaló emberéért!"
+msgstr "Kristályvízkikötő minden jóravaló emberéért!"
 
 #. [message]: speaker=Sir Ladoc
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:365
 msgid "For the honor of Southbay!"
-msgstr "Déli-öböl dicsőségéért!"
+msgstr "Déliöböl dicsőségéért!"
 
 #. [message]: speaker=Commander Aethyr
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:369
@@ -6132,7 +6130,7 @@ msgid ""
 "decrepit sack of bones! For the honor of all of the people of the west-north!"
 msgstr ""
 "Nincs szükségünk mágikus trükkökre, hogy legyőzzünk téged. Készülj fel, hogy "
-"találkozz a sorsoddal, te rokkant csontok halmaza! Az észak-nyugati népekért "
+"találkozz a sorsoddal, te rokkant csonthalmaz! Az északnyugati népekért "
 "előre!"
 
 #. [message]: speaker=Prince Haldric
@@ -6157,17 +6155,17 @@ msgstr "Nemsokára kiderül, hogy kinél is van a Tűz Rubinja!"
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:391
 msgid "(whispered) Commander, you remember the plan right?"
-msgstr "(súgva) Hadnagy, emlékszel a tervre, ugye?"
+msgstr " *súgva* Parancsnok emlékszel a tervre, ugye?"
 
 #. [message]: speaker=Commander Aethyr
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:395
 msgid "(whispered) Yes, sir. I am ready."
-msgstr "(súgva) Igen, uram. Készen állok."
+msgstr " *súgva* Igen, uram. Készen állok."
 
 #. [message]: speaker=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:406
 msgid "He's raising our dead! Be careful!"
-msgstr "Saját halottainkat fordítja ellenünk! Légy óvatos!"
+msgstr "Saját halottainkat fordítja ellenünk! Legyetek óvatosak!"
 
 #. [message]: speaker=Commander Aethyr
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:429
@@ -6176,9 +6174,9 @@ msgid ""
 "going to stop me from destroying you. For my family! For the people of "
 "Clearwater Port!"
 msgstr ""
-"Érezd gyűlöletem, Jevyan, érted jövök! A zsebeimben lévő értékes iratok sem "
-"állíthatnak meg abban, hogy elpusztítsalak. A családomért és Kristályvíz "
-"kikötőjének népéért!"
+"Érezd a gyűlöletem, Jevyan, érted jövök! A zsebeimben lévő értékes iratok "
+"sem állíthatnak meg abban, hogy elpusztítsalak. A családomért és "
+"Kristályvízkikötő népéért!"
 
 #. [message]: speaker=Lich-Lord Jevyan
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:433
@@ -6193,12 +6191,12 @@ msgstr "Na, maradj veszteg csak egy pillanatra..."
 #. [message]: speaker=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:455
 msgid "For the Wesfolk!"
-msgstr "A Wesfolkokért!"
+msgstr "A wesfolkokért!"
 
 #. [message]: speaker=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:469
 msgid "Be careful, Commander!"
-msgstr "Legyen óvatos, hadnagy!"
+msgstr "Legyen óvatos, parancsnok!"
 
 #. [message]: speaker=Tan-Vragish
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:525
@@ -6262,7 +6260,7 @@ msgid ""
 "assault has been stopped."
 msgstr ""
 "Vissza kell térnünk a Zöld Szigetre. A tündéknél van a Tűz Rubinja, és a "
-"támadásunkat megfékezték."
+"támadásunkat visszaverték."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:591
@@ -6291,8 +6289,8 @@ msgid ""
 "Aethyr! No! He was critical for convincing Jevyan that the elves have the "
 "Ruby of Fire."
 msgstr ""
-"Aethyr hadnagy! Nem lehet! Ő volt a legfontosabb láncszem abban, hogy "
-"elhitessük Jevyannal, hogy a tündéknél van a Tűz Rubinja."
+"Aethyr! Nem lehet! Ő volt a legfontosabb láncszem abban, hogy elhitessük "
+"Jevyannal, hogy a tündéknél van a Tűz Rubinja."
 
 #. [message]: speaker=Commander Aethyr
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:698
@@ -6325,7 +6323,7 @@ msgstr ""
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:713
 msgid "We'll see about that. For the honor of Commander Aethyr, forward!"
-msgstr "Majd meglátjuk. Aethyr hadnagy tiszteletére, előre!"
+msgstr "Majd meglátjuk. Aethyr parancsnok tiszteletére, előre!"
 
 #. [message]: speaker=Lich-Lord Jevyan
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:724
@@ -6333,7 +6331,7 @@ msgid ""
 "I am fallen before my plans have reached fruition. A curse upon you Haldric, "
 "may you and your descendants know nothing but strife!"
 msgstr ""
-"Elestem, mielőtt a terveim megértek volna. Átkozott légy, Haldric, te és "
+"Elestem, mielőtt a terveim beértek volna. Átkozott légy, Haldric, te és "
 "utódaid ne ismerjenek mást, csak viszályt!"
 
 #. [message]: speaker=Commander Aethyr
@@ -6393,7 +6391,7 @@ msgstr "Karmos"
 #. [message]: speaker=unit
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:969
 msgid "Our advance is thwarted, that monster has destroyed the bridge!"
-msgstr "Az haladásunkat meggátolták. A szörnyeteg lerombolta a hidat!"
+msgstr "A haladásunkat meggátolták. A szörnyeteg lerombolta a hidat!"
 
 #. [message]: speaker=Abraxas
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:1024
@@ -6422,7 +6420,7 @@ msgstr "Níp! SPLAT!"
 #. [message]: speaker=second_unit
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:1117
 msgid "Ahh... That almost makes it all worth while!"
-msgstr "Ahh... Ezért máris majdnem megérte!"
+msgstr "Ahh... Ezért máris majdnem megérte a kaland!"
 
 #. [message]: speaker=Lich-Lord Jevyan
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:1121
@@ -6446,7 +6444,7 @@ msgid ""
 "rest and discuss what is to come in the following days."
 msgstr ""
 "Jevyan elpusztult, de szörnyű árat fizettünk érte. Temessük el Aethyr "
-"hadnagyot, majd vitassuk meg, mitévők legyünk ezután."
+"parancsnokot, majd vitassuk meg, mitévők legyünk ezután."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:1216
@@ -6464,7 +6462,7 @@ msgstr "Epilógus"
 #. [side]: type=Noble Commander, id=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:23
 msgid "Wesnothians"
-msgstr ""
+msgstr "Wesnothiak"
 
 #. [message]: speaker=Minister Edmond
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:141
@@ -6473,7 +6471,7 @@ msgid ""
 "has been preceded by his wife and loving daughters. For his heroism in the "
 "face of adversity a place of glory is assured to him in the Halls of Light..."
 msgstr ""
-"Legyen békés az útja Aethyr hadnagynak a másvilág felé, ahol felesége és "
+"Legyen békés az útja Aethyr parancsnoknak a másvilág felé, ahol felesége és "
 "szerető lányai várják már. A csapások közt mutatott hősies magatartása örök "
 "dicsőséget szerzett neki a Fény Csarnokában..."
 
@@ -6485,9 +6483,9 @@ msgid ""
 "Eldaric and King Addroran have fallen, and with them many other good people. "
 "However, there is hope, and a new land is open before us!"
 msgstr ""
-"A hadnagy nemes áldozata híján nem vészelhettük volna át ezt a napot. Ma "
+"A parancsnok nemes áldozata híján nem vészelhettük volna át ezt a napot. Ma "
 "nagy győzelmet arattunk, de sokan odavesztek. Apám, Eldaric, Addroran "
-"király, és velük együtt sok más jóravaló ember is. Bárhogyan is, van remény, "
+"király, és velük együtt sok más jóravaló ember is. Bárhogyan is, van remény "
 "és egy új ország kapui nyíltak meg előttünk!"
 
 #. [message]: speaker=Prince Haldric
@@ -6532,7 +6530,7 @@ msgid ""
 "they return they will come looking for the elves."
 msgstr ""
 "A Tűz Rubinja nincs a tündék kezében. Kicseleztük az orkokat. Ha "
-"visszatérnek, a tündéket fogják keresni."
+"visszatérnek, a tündéken fogják keresni."
 
 #. [message]: speaker=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:188
@@ -6540,8 +6538,8 @@ msgid ""
 "To be fair to you, Haldric, the elves were considering betraying their pact "
 "with us."
 msgstr ""
-"Hogy őszinte legyek, Haldric, a tündék felülvizsgálták a velünk kötött "
-"egyezséget."
+"Hogy megmagyarázzam Haldric tettét, a tündék a velünk kötött egyezség "
+"felülvizsgálatára készültek."
 
 #. [message]: speaker=Burin the Lost
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:192
@@ -6595,14 +6593,14 @@ msgid ""
 "prosperity in this new land."
 msgstr ""
 "Később városokat kéne alapítanunk a tündéktől kapott területeken. A "
-"fővárosunknak beljebb, a parttól távol kéne elhelyezkednie. Remélem, hogy a "
-"jó észak-nyugati, Zöld-szigeti népek gyermekei jólétre találnak új "
+"fővárosunknak beljebb, a parttól távol kéne elhelyezkednie. Remélem, hogy "
+"Zöld Sziget jó északnyugati népeinek gyermekei jólétre találnak új "
 "országukban."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:237
 msgid "So what of the rest of you?"
-msgstr "És mi legyen a többiekkel?"
+msgstr "És mi lesz a többiekkel?"
 
 #. [message]: speaker=Burin the Lost
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:242
@@ -6648,7 +6646,7 @@ msgid ""
 msgstr ""
 "Én csak a korona egy szerény szolgálója vagyok. Alapítok majd egy új "
 "lovagrendet az új ország számára... az új király számára... már ha "
-"megengeded, hogy szolgáljak zászlód alatt."
+"megengeded, hogy szolgáljak a zászlód alatt."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:262
@@ -6682,7 +6680,7 @@ msgid ""
 "in honor of our old home."
 msgstr ""
 "A wesfolk szó a ti ősi nyelvetekből ered. Azt jelenti, hogy 'a Nyugat Népe'. "
-"A tündék az észak-nyugat népének hívnak minket. Az ősi nyelven ez 'Wes Noth' "
+"A tündék az északnyugat népének hívnak minket. Az ősi nyelven ez 'Wes Noth' "
 "lenne. Tehát azt javaslom, viselje a királyság a Wesnoth nevet, elhagyott "
 "otthonunk emlékére."
 
@@ -6724,10 +6722,10 @@ msgid ""
 "and his descendants would pay for that betrayal without knowing the whole "
 "truth."
 msgstr ""
-"Az eljövendő időkben a dalnokok 'Az Egyezség Felrúgásának' történetét "
-"énekeltek meg, ami Haldric-nak a tündékkel szembeni árulását foglalta "
-"eposzba. Ennek az árulásnak a káráról sugdolóztak anélkül, hogy ismerték "
-"volna a teljes igazságot."
+"Későbbi korokban a dalnokok 'Az Egyezség Felrúgásának' történetét énekelték "
+"meg, ami Haldricnak a tündékkel szembeni árulását foglalta eposzba. Ennek az "
+"árulásnak az áráról sugdolóztak anélkül, hogy ismerték volna a teljes "
+"igazságot."
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:306
@@ -6735,7 +6733,7 @@ msgid ""
 "But some of us have remembered the true story of our arrival on this great "
 "continent. The true story of the Rise of Wesnoth."
 msgstr ""
-"De néhányunk még emlékszik az igaz történetre, mely során erre a gyönyörű "
+"De néhányunk még emlékszik az igaz történetre, melynek során erre a gyönyörű "
 "földrészre érkeztünk. Wesnoth felemelkedésének igaz történetére."
 
 #. [unit_type]: id=Fireball, race=mechanical
@@ -6747,7 +6745,9 @@ msgstr "Tűzgolyó"
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Fireball.cfg:24
 msgid ""
 "A Fireball. This is not to be used for anything else than a 'Move_Unit_Fake'!"
-msgstr "Egy tűzgolyó. Kizárólag csak erre használandó: 'Move_Unit_Fake'!"
+msgstr ""
+"Egy tűzgolyó. Kizárólag csak erre használandó: 'Move_Unit_Fake', azaz "
+"Haldric játszadozására!"
 
 #. [attack]: type=fire
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Fireball.cfg:28
@@ -6757,7 +6757,7 @@ msgstr "tűz"
 #. [unit_type]: id=Noble Commander, race=human
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Commander.cfg:4
 msgid "Noble Commander"
-msgstr "Nemes vezér"
+msgstr "Nemes parancsnok"
 
 #. [unit_type]: id=Noble Commander, race=human
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Commander.cfg:21
@@ -6768,11 +6768,11 @@ msgid ""
 "with the sword, although they also carry a bow to use when necessary. If the "
 "Commander is lost, so is the battle."
 msgstr ""
-"A nemes vezér rangja azt illeti meg, aki csapatokat vezet a harcban. Vezetői "
-"képességei révén javítja a mellette lévő hatszögeken csatázó alacsonyabb "
-"szintű egységek harci teljesítményét. A vezér legjobban a karddal tud bánni, "
-"bár nyilat is használhat, ha a szükség megkívánja. Egy vezér halálával a "
-"csata is elveszett..."
+"A nemes parancsnok rangja azt illeti meg, aki harcoló egységeket vezet a "
+"csatába. Vezetői képességei révén javítja a mellette lévő mezőkön csatázó "
+"alacsonyabb szintű egységek harci teljesítményét. A parancsnok legjobban a "
+"karddal tud bánni, bár nyilat is használhat, ha a szükség megkívánja. Egy "
+"parancsnok halálával a csata is elveszik..."
 
 #. [attack]: type=blade
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Lord.cfg:28
@@ -6799,7 +6799,7 @@ msgid ""
 "attacks from enemies. However they have the potential to become great "
 "Commanders one day."
 msgstr ""
-"A fiatal és szemtelen harcos karddal küzd, és sebezhető a távolsági "
+"A fiatal és vakmerő harcos karddal küzd, így sebezhetővé válik a távolsági "
 "támadásokkal szemben. Ám mégis megvan a lehetősége rá, hogy egyszer nagy "
 "parancsnok váljon belőle."
 
@@ -6851,7 +6851,8 @@ msgid ""
 "Cold and beautiful, she maintains her eternal youthful appearance drinking "
 "the blood of the living."
 msgstr ""
-"Hideg és megkapó. Örökké fiatal megjelenését az élők vérének ivásával éri el."
+"Hideg és megkapó. Örökké fiatal megjelenését az élők vérének kiszívásával "
+"éri el."
 
 #. [attack]: type=blade
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:23
@@ -6875,8 +6876,8 @@ msgid ""
 "protecting their subjects. Kings can coordinate the attacks of level 1 and 2 "
 "units, thereby increasing their fighting efficiency."
 msgstr ""
-"Mint az emberi királyságok vezetői, a királyok képesek vezetni és megvédeni "
-"alattvalóikat. Képesek összehangolni az 1. és 2. szintű egységeik "
+"Mint az emberi királyságok vezetői, a királyok felelősek irányítani és "
+"megvédeni alattvalóikat. Képesek összehangolni az 1. és 2. szintű egységeik "
 "támadásait, így növelik azok harcértékét."
 
 #. [unit_type]: id=Wesfolk Lady, race=human
@@ -6896,10 +6897,10 @@ msgid ""
 "which continues increasing with time, as does her natural leadership."
 msgstr ""
 "A wesfolk nemességbe született, de őt és embereit kitaszították a "
-"közösségből, mivel hűbéresei elárulták hűségüket a Haldric elleni háború "
-"elvesztésekor. Bár kiközösítették, megtartotta nemességre való hajlamát, a "
+"közösségből, mivel uraik elárulták alattvalóikat a Haldric népe elleni "
+"háború elvesztésekor. Bár kiközösítették, megtartotta nemesi karakterét, a "
 "csaták folyamán értékes tapasztalatokat szerzett, amelyek idővel még tovább "
-"nőnek, mint ahogy természetes vezetői képessége is."
+"nőnek, ahogy természetadta vezetői képessége is."
 
 #. [attack]: type=impact
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Leader.cfg:99
@@ -6917,9 +6918,8 @@ msgstr "parittya"
 
 #. [unit_type]: id=Wesfolk Leader, race=human
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Leader.cfg:4
-#, fuzzy
 msgid "female^Wesfolk Leader"
-msgstr "Wesfolk úrnő"
+msgstr "Wesfolk vezér"
 
 #. [unit_type]: id=Wesfolk Outcast, race=human
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Outcast.cfg:4
@@ -6936,8 +6936,8 @@ msgid ""
 "which she can lend to her people for turning a fight in their favour."
 msgstr ""
 "A wesfolk nemességbe született, de őt és embereit kitaszították a "
-"közösségből, mivel hűbéresei elárulták hűségüket a Haldric elleni háború "
-"elvesztésekor. Bár kiközösítették, megtartotta nemességre való hajlamát, a "
+"közösségből, mivel uraik elárulták alattvalóikat a Haldric népe elleni "
+"háború elvesztésekor. Bár kiközösítették, megtartotta nemesi karakterét, a "
 "csaták folyamán értékes tapasztalatokat szerzett, melyeket idővel átadhat "
 "bajtársainak, hogy a csatát kedvező irányba fordíthassák."
 
@@ -6964,7 +6964,7 @@ msgstr ""
 "ritkán láthatják őket. A tündéktől tudjuk, hogy ezek a lények nem a fák "
 "leszármazottai annak ellenére, hogy nagyban hasonlatosak hozzájuk. A "
 "fapásztorok a tündéktől eltérő módon, de még náluk is jobban kapcsolódnak a "
-"titokzatos mesevilághoz. Tetteikről nincsenek ismereteink, mégis sokan "
+"titokzatos tündérvilághoz. Tetteikről nincsenek ismereteink, mégis sokan "
 "magabiztosan állítják, hogy a fapásztorok a természeti világ felügyelői.\n"
 "\n"
 "A fapásztorok a végletekig békések, de hatalmas erő birtokosai. Amikor "
@@ -6982,30 +6982,27 @@ msgstr "zúzás"
 #. [skirmisher]: id=distract
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-abilities.cfg:6
 msgid "distract"
-msgstr "figyelemelterelés"
+msgstr "zavarás"
 
 #. [skirmisher]: id=distract
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-abilities.cfg:8
-#, fuzzy
 msgid ""
 "Distract:\n"
 "This unit negates enemy Zones of Control around itself for allied units (but "
 "not for itself)."
 msgstr ""
-"Figyelemelterelés:\n"
-"Ez az egység kioltja maga körül az ellenség területellenőrzését, így a "
-"szövetséges egységek (de saját maga nem) akadálytalanul haladhatnak át az "
-"ellenség által ellenőrzött szomszédos területeken."
+"Zavarás:\n"
+"Ez az egység semlegesíti az ellenséges ellenőrzési zónát maga körül a baráti "
+"egységek számára (de önmagának nem)."
 
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-abilities.cfg:23
-#, fuzzy
 msgid ""
 "This unit is capable of distracting opponents, allowing allied units to "
 "trespass their Zones of Control and move unhindered around them."
 msgstr ""
-"Ez az egység képes magára vonni az ellenség figyelmét, ezzel segítve a "
-"társait, hogy akadálytalanul haladhassanak át az ellenség által ellenőrzött, "
-"körülötte lévő területeken."
+" Ez az egység képes megzavarni ellenfeleit, lehetővé téve a baráti "
+"egységeknek, hogy átjárják az ellenséges ellenőrzési zónát és akadálytalanul "
+"mozogjanak."
 
 #. [message]: speaker=unit
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-deaths.cfg:12
@@ -7028,7 +7025,8 @@ msgid ""
 "Bah! I'm not dying today! (POOF! The Lady Outlaw vanishes in a puff of "
 "smoke.)"
 msgstr ""
-"Áá! Nem ma halok meg! (PUFF! A Törvényen kívüli úrnő eltűnik a füstfelhőben.)"
+"Bahhh! Nem ma halok meg! (PUFF! A törvényen kívüli úrnő eltűnik a "
+"füstfelhőben.)"
 
 #. [message]: speaker=unit
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-deaths.cfg:77
@@ -7038,7 +7036,7 @@ msgstr "Bolond fiú, soha nem lett volna szabad követnem."
 #. [message]: speaker=unit
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-deaths.cfg:88
 msgid "Hail the Kings, may their bloodlines continue beyond my time!"
-msgstr "Éljenek a királyok, az ő vérvonaluk folytassa majd, amit én elkezdtem!"
+msgstr "Éljenek a királyok, uralkodjanak az idők végezetéig!"
 
 #. [message]: speaker=unit
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-deaths.cfg:99
@@ -7114,8 +7112,8 @@ msgid ""
 "Haldric, just before we arrived here I got word that the your 'third of a "
 "fleet' has departed for our old home, the Green Isle."
 msgstr ""
-"Haldric, épp, mielőtt ideérkeztünk volna, üzenetet kaptam, hogy a 'harmad "
-"flottád' visszaindult a régi otthonunk, Zöld Sziget felé."
+"Haldric, épp, mielőtt ideérkeztünk volna, üzenetet kaptam, hogy a "
+"'flottaharmad' visszaindult a régi otthonunk, Zöld Sziget felé."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-nlmsg.cfg:94
@@ -7131,7 +7129,7 @@ msgid ""
 "orders a third of the fleet has headed back out."
 msgstr ""
 "Haldric, a hírvivők most értesítettek, hogy a flotta vissza is tért. Majdnem "
-"akkora flottával jöttek, mint amivel mi is eredetileg, és Déli-öböl még "
+"akkora flottával jöttek, mint amivel mi is eredetileg, és Déliöböl még "
 "mindig áll. Ez csodás hír. A 'harmad flottás' terved igazán bevált."
 
 #. [message]: speaker=Prince Haldric
@@ -7141,7 +7139,7 @@ msgid ""
 "business at hand."
 msgstr ""
 "Ez tényleg nagyon jó hír. Már kétszer annyian vagyunk. És most törődjünk a "
-"kéznél lévő üggyel!"
+"soron következő üggyel!"
 
 #. [part]
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-story.cfg:7
@@ -7150,8 +7148,7 @@ msgid ""
 "country of Wesnoth, we came from an island kingdom far to the west..."
 msgstr ""
 "Azokban az időkben, mielőtt még Első Haldric megmentette volna népünket és "
-"megalapította volna Wesnoth királyságát, egy messzi, nyugati szigetről "
-"érkeztünk."
+"megalapította volna Wesnoth királyságát, egy messzi, nyugati szigeten éltünk."
 
 #. [part]
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-story.cfg:12
@@ -7192,16 +7189,15 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-story.cfg:35
-#, fuzzy
 msgid ""
 "You must recall that the route from the western continent to our Green Isle "
 "was perilous at the best of times - so perilous that a stable trading "
 "relationship between the mainland and the Isle could never be maintained."
 msgstr ""
-"Ez a történet több évszázaddal később folytatódott. Fontos megjegyezni, hogy "
-"a nyugatra fekvő kontinens és a mi Zöld Szigetünk közötti útvonal a legjobb "
-"időkben is veszélyes volt. Olyan veszélyes, hogy az állandó kereskedelem és "
-"a kapcsolat a szárazföld és a sziget között sohasem volt fenntartható."
+"Fontos megjegyezni, hogy a nyugatra fekvő kontinens és a mi Zöld Szigetünk "
+"közötti útvonal a legjobb időkben is veszélyes volt. Olyan veszélyes, hogy "
+"az állandó kereskedelem és a kapcsolat a szárazföld és a sziget között "
+"sohasem volt fenntartható."
 
 #. [part]
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-story.cfg:44
@@ -7211,11 +7207,10 @@ msgid ""
 "horribly off course. Ships that traveled east and returned reported nothing "
 "but open ocean and vile sea monsters..."
 msgstr ""
-"A dolgok még rosszabbak voltak a keleti hajózás tekintetében. Egy kemény, "
-"hideg óceáni áramlat nemrégiben minden hajót tönkretett, elsöpört. Az áradás "
-"északról érte el a keleti óceánrészt. Amely hajók keletnek tartottak, és "
-"visszatértek, azt jelentették, hogy nincs más, csak a nyílt óceán és tengeri "
-"szörnyek..."
+"A dolgok még rosszabbak voltak a keleti hajózás tekintetében. Egy erős, "
+"északról induló hidegáramlás a Keleti-óceánban majd minden hajót tönkretett, "
+"elsodort. Azok a hajók, amelyek keletnek tartottak, és visszatértek, azt "
+"jelentették, hogy nincs más arra, csak a nyílt óceán és tengeri szörnyek..."
 
 #. [part]
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-story.cfg:53
@@ -7226,11 +7221,11 @@ msgid ""
 "aggressively sailing to the east and north, to compensate for southern pull "
 "of the ocean."
 msgstr ""
-"Ez idő alatt kiváló navigátoraink lettek. Aztán egy napon Déli-öböl "
+"Az idők folyamán kiváló navigátoraink lettek. Aztán egy napon Déliöböl "
 "koronahercege egy különös mesével tért haza egy hosszú vándorútról. Azt "
-"mondta, keleten földek vannak, melyeket csak erős szívvel lehet megtalálni, "
-"és kitartóan északkeletnek kell hajózni, hogy ki lehessen egyenlíteni az "
-"óceán dél felé tartó áramlását."
+"mondta, keleten földek vannak, melyeket csak nagy kitartással lehet "
+"megtalálni, és hosszan északkeletnek kell hajózni, hogy ki lehessen "
+"egyenlíteni az óceán dél felé tartó áramlását."
 
 #. [part]
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-story.cfg:57
@@ -7241,11 +7236,11 @@ msgid ""
 "suspicion cast upon him. He conspired to start a war of distraction with the "
 "poor Wesfolk kingdoms and their Lich-Lords."
 msgstr ""
-"Nem sokkal azután, hogy a nagy koronaherceg visszatért keleti "
-"felfedezőútjáról, ágynak esett, és különös körülmények között meghalt. Az "
-"öccse, aki így a trón várományosa lett, felbőszült a körülötte ólálkodó "
-"gyanú miatt. Eszelős módon úgy határozott, hogy háborút kezd a szegényebb "
-"wesfolk királyságokkal és az ő villi-uraikkal."
+"Nem sokkal azután, hogy a koronaherceg visszatért keleti felfedezőútjáról, "
+"ágynak esett, és rejtélyes körülmények között meghalt. Az öccse, aki így a "
+"trón várományosa lett, felbőszült a rávetődő gyanú miatt. Eszelős módon úgy "
+"határozott, hogy háborút kezd a szegényebb wesfolk királyságokkal és az ő "
+"delevény-uraikkal."
 
 #. [part]
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-story.cfg:66
@@ -7259,12 +7254,12 @@ msgstr ""
 #. [part]
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-story.cfg:70
 msgid "...with the plight of a different prince on the same Isle..."
-msgstr "...egy másik herceg szemével, ugyanazon a szigeten..."
+msgstr "...egy másik herceg szemével, ugyanazon a Szigeten..."
 
 #. [part]
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-story.cfg:75
 msgid "For this is the story of Haldric the First and the Rise of Wesnoth..."
-msgstr "Mert ez Első Haldric-nak és Wesnoth felemelkedésének története..."
+msgstr "Mert ez Első Haldricnak és Wesnoth felemelkedésének története..."
 
 #. [part]
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-story.cfg:89
@@ -7286,13 +7281,11 @@ msgid ""
 msgstr ""
 "Tehát így esett meg, hogy Haldric hercegnek el kellett hagynia az otthonát, "
 "hogy aztán soha ne térhessen vissza. Apja nemes áldozata lehetővé tette, "
-"hogy elmenekülhessen a déli hágón keresztül. Elhagyta az ismerős földeket, "
-"és végeláthatatlan messzeségekben népének délen fekvő királyságai nyújtóztak "
-"előtte."
+"hogy elmenekülhessen a déli hágón keresztül. Elhagyta az ismerős földeket. "
+"Elérhetetlennek tűnő messzeségben voltak népének délen fekvő királyságai."
 
 #. [part]
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-story.cfg:109
-#, fuzzy
 msgid ""
 "To the southwest lay the Midlands. These were prosperous kingdoms, nestled "
 "between hill and forest. These had been the breadbasket of the Green Isle, "
@@ -7301,10 +7294,10 @@ msgid ""
 "lay waste to all this."
 msgstr ""
 "Délnyugatra feküdt Középfölde. Itt gazdag királyságok voltak dombok és erdők "
-"árnyékában. Ők voltak a környék éléskamrája, és jelentős forrásai a fának és "
-"a drágaköveknek is. Ezek a királyságok látták el Déli-öböl városát, a sziget "
-"legnagyobb fellegvárát. Jóllehet azonban, hogy ezek a területek az orkok "
-"eljövetelét követően mostanra már pusztasággá váltak."
+"árnyékában. Ez volt a Zöld Sziget éléskamrája, és jelentős forrása a fának "
+"és a drágaköveknek is. Ezek a királyságok látták el Déliöbölt, a sziget "
+"legnagyobb városát. Az orkok eljövetele azzal fenyegetett, hogy ez a mesés "
+"vidék pusztasággá válik."
 
 #. [part]
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-story.cfg:115
@@ -7316,31 +7309,27 @@ msgid ""
 "of a great battle. Now the swamp is home to a Wesfolk-imitating cult."
 msgstr ""
 "A folyóparti út a sziget legnagyobb folyóját követte délkeleti irányban. Ez "
-"az út a második legnagyobb városba, Kristályvíz kikötőjébe vezetett. Minden "
+"az út a második legnagyobb városba, Kristályvízkikötőbe vezetett. Minden "
 "bizonnyal a sziget legnagyobb városa lehetett volna, ha nem jött volna a "
-"wesfolk háború. A villi-urak vonulása bemocskolta a folyó környékét egy nagy "
-"csata folyamán. Most egy wesfolkokkal rokonszenvező nép élt a lápos "
-"területen."
+"wesfolk háború. A delevény-urak elmocsarasították a folyó környékét a háború "
+"folyamán. Most egy wesfolk kultuszt követő nép élt a lápos területen."
 
 #. [part]
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-story.cfg:127
-#, fuzzy
 msgid ""
 "Several days later Prince Haldric departs in his ship, the Eldaric, his home "
 "and the Green Isle lost to him forever. Before him lay a vast expanse of "
 "stormy seas, and the mysterious island that Lady Jessica has mentioned, and "
 "even more exotic lands even further to the East."
 msgstr ""
-"Néhány nappal később Haldric herceg útnak indult hajóján, az Eldaric-on, "
-"örökre maga mögött hagyva az otthonát és a szigetet. A szíve mélyén ő is "
-"érezte, hogy soha többé nem fogja újra látni az ő elhagyatott kis völgyét. "
-"Csak az óriási, viharos, nyílt tenger terült el előtte, és a titokzatos "
-"sziget, amelyről Jessica úrnő beszélt... no meg a még keletebbre található, "
-"még egzotikusabb területek."
+"Néhány nappal később Haldric herceg útnak indult hajóján, az Eldaricon, "
+"örökre maga mögött hagyva az otthonát és a Zöld Szigetet. Csak az óriási, "
+"viharos, nyílt tenger terült el előtte, és a titokzatos sziget, amelyről "
+"Jessica úrnő beszélt... no meg a még keletebbre található, még egzotikusabb "
+"területek."
 
 #. [part]
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-story.cfg:133
-#, fuzzy
 msgid ""
 "The island that King Haldric and his crew are approaching was at one time a "
 "volcano that is now slowly sinking into the sea. The elder Crown Prince of "
@@ -7348,11 +7337,11 @@ msgid ""
 "belligerent nature of its reptilian inhabitants. There will be little left "
 "of that foothold by now."
 msgstr ""
-"Úgy tűnik, hogy a sziget, amely felé Haldric és a legénysége közeledtek, egy "
-"vulkán volt valamikor, ami lassan egyre inkább a tengerbe merült. Déli-öböl "
-"idősebb koronahercege sikeresen létrehozott egy kicsi telepet annak "
-"ellenére, hogy a szigeten nagyszámú barátságtalan természetű hüllő "
-"bennszülött élt. Nem sok túlélő maradhatott eddigre ezen a telepen."
+"A sziget, amely felé Haldric és a legénysége közeledtek, egy vulkán volt "
+"valamikor, ami lassan egyre inkább a tengerbe merült. Déliöböl idősebb "
+"koronahercege sikeresen létrehozott egy kicsi erősséget annak ellenére, hogy "
+"a szigeten nagyszámú barátságtalan természetű hüllő bennszülött élt. Nem sok "
+"túlélő maradhatott eddigre ezen a telepen."
 
 #. [part]
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-story.cfg:152
@@ -7361,6 +7350,10 @@ msgid ""
 "hunt small game, relieved to have land beneath their feet. When they depart, "
 "even the sea-weather is milder."
 msgstr ""
+"Miután Haldric és űzött csapata legyőzte a nagákat, kisebb vadakon és friss "
+"vízen éltek, miközben módfelett örültek, hogy szilárd talaj van a lábaik "
+"alatt. Amikor tengerre szálltak, még az időjárás is sokkal barátságosabb "
+"volt."
 
 #. [part]
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-story.cfg:155
@@ -7369,6 +7362,9 @@ msgid ""
 "gulls and feel the loom of the land. The Great Continent appears before them "
 "over the summer-lit seas."
 msgstr ""
+"Egy hétig folyamatosan keletnek hajóztak, amikor megpillantották a "
+"szárazföld bizonytalan körvonalait és meghallották a sirályok hangját. A "
+"Nagy Kontinens a nyári napsütötte tenger habjai közt tűnt fel előttük."
 
 #~ msgid "Miscellaneous"
 #~ msgstr "Egyéb közreműködés"
@@ -7389,7 +7385,7 @@ msgstr ""
 #~ msgstr "Orgyilkos"
 
 #~ msgid "Crossbow"
-#~ msgstr "Nyílpuskás"
+#~ msgstr "Számszeríjász"
 
 #~ msgid "Tentacle"
 #~ msgstr "Polipkar"
@@ -7482,3 +7478,6 @@ msgstr ""
 #~ "terméke, életét a törvényen kívül kell leélnie. Arról álmodik, hogy az "
 #~ "utakon végbevitt fosztogatás segítségével rakja le saját uradalmának "
 #~ "alapjait, és ettől nem is áll olyan messze."
+
+#~ msgid "Lizardoids"
+#~ msgstr "Gyíkok"
