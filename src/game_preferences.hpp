@@ -73,6 +73,14 @@ namespace preferences {
 	std::string login();
 	void set_login(const std::string& username);
 
+	// If password remembering is turned off use
+	// prv::password instead. This way we will not
+	// have to worry about whether to remember the
+	// password or not anywhere else in the code.
+	//
+	// It is put into a separate namespace to make clear
+	// it is "private" and not supposed to be edit outside
+	// of the preferences functions.
 	namespace prv {
 		extern std::string password;
 	}

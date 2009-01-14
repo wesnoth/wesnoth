@@ -371,11 +371,7 @@ bool remember_password()
 void set_remember_password(bool remember)
 {
 	preferences::set("remember_password", remember ? "yes" : "no");
-
-	// Clear the password
-	if(!remember) {
-		preferences::set("password", "");
-	}
+	preferences::set("password", remember ? prv::password : "");
 }
 
 bool turn_dialog()
