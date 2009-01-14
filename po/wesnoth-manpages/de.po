@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "POT-Creation-Date: 2009-01-06 22:08+0100\n"
-"PO-Revision-Date: 2008-12-22 10:16+0100\n"
-"Last-Translator: Gerfried Fuchs <rhonda@deb.at>\n"
+"PO-Revision-Date: 2009-01-14 20:37+0100\n"
+"Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,9 +25,9 @@ msgstr "WESNOTH"
 
 # type: TH
 #: ../../doc/man/wesnoth.6:16 ../../doc/man/wesnothd.6:16
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "2009"
-msgstr "2007"
+msgstr "2009"
 
 # type: TH
 #: ../../doc/man/wesnoth.6:16
@@ -1254,122 +1254,3 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:206
 msgid "B<wesnoth>(6), B<wesnoth_editor>(6)"
 msgstr "B<wesnoth>(6), B<wesnoth_editor>(6)"
-
-# type: TP
-#~ msgid "B<--compress>I<\\ infile\\ outfile>"
-#~ msgstr "B<--compress>I<\\ entpackte_datei\\ komprimierte_datei>"
-
-# type: Plain text
-#~ msgid ""
-#~ "compresses a savefile (I<infile>)  that is in text WML format into binary "
-#~ "WML format (I<outfile>)."
-#~ msgstr ""
-#~ "Wandelt eine normale WML-Textdatei (I<entpackte_datei>) in einen als WML-"
-#~ "Binärdatei komprimierten Spielstand (I<komprimierte_datei>) um."
-
-# type: TP
-#~ msgid "B<--decompress>I<\\ infile\\ outfile>"
-#~ msgstr "B<--decompress>I<\\ komprimierte_datei\\ entpackte_datei>"
-
-# type: Plain text
-#~ msgid ""
-#~ "decompresses a savefile (I<infile>)  that is in binary WML format into "
-#~ "text WML format (I<outfile>)."
-#~ msgstr ""
-#~ "Wandelt einen als WML-Binärdatei komprimierten Spielstand "
-#~ "(I<komprimierte_datei>)  in eine normale WML-Textdatei "
-#~ "(I<entpackte_datei>) um."
-
-# type: Plain text
-#~ msgid "loads the file savegame from the standard save game directory."
-#~ msgstr ""
-#~ "Lädt die Datei `Spielstand' aus dem Standardverzeichnis für gespeicherte "
-#~ "Spiele."
-
-# type: TH
-#~ msgid "WESNOTH_EDITOR"
-#~ msgstr "WESNOTH_EDITOR"
-
-# type: TH
-#~ msgid "wesnoth_editor"
-#~ msgstr "wesnoth_editor"
-
-# type: Plain text
-#~ msgid "Battle for Wesnoth map editor"
-#~ msgstr "Battle for Wesnoth - Karteneditor"
-
-# type: Plain text
-#~ msgid "wesnoth_editor - Battle for Wesnoth map editor"
-#~ msgstr "wesnoth_editor - Battle for Wesnoth - Karteneditor"
-
-# type: Plain text
-#~ msgid "B<wesnoth_editor> [I<OPTIONS>] [I<MAP>]"
-#~ msgstr "B<wesnoth_editor> [I<OPTIONEN>] [I<KARTE>]"
-
-# type: Plain text
-#~ msgid "Battle for B<Wesnoth> map editor."
-#~ msgstr "Battle for B<Wesnoth> -Karteneditor."
-
-# type: TP
-#~ msgid "B<--bpp>\\ number"
-#~ msgstr "B<--bpp>\\ Nummer"
-
-# type: TP
-#~ msgid "B<--datadir>"
-#~ msgstr "B<--datadir>"
-
-# type: Plain text
-#~ msgid "selects the data directory to use."
-#~ msgstr ""
-#~ "Gibt das Verzeichnis an, in welchem nach Spieldaten gesucht werden soll."
-
-# type: TP
-#~ msgid "B<-f>,B<\\ --fullscreen>"
-#~ msgstr "B<-f>,B<\\ --fullscreen>"
-
-# type: Plain text
-#~ msgid "runs the editor in full screen mode."
-#~ msgstr "Startet den Editor im Vollbildmodus."
-
-# type: TP
-#~ msgid "B<-h>,B<\\ --help>"
-#~ msgstr "B<-h>,B<\\ --help>"
-
-# type: TP
-#~ msgid "B<--log->levelB<=>domain1B<,>domain2B<,>..."
-#~ msgstr "B<--log->StufelB<=>Domäne1B<,>Domäne2B<,>..."
-
-# type: Plain text
-#~ msgid "sets screen resolution. Example: B<-r 800x600>"
-#~ msgstr ""
-#~ "Ermöglicht es, die Auflösung zu bestimmen, in der der Editor gestartet "
-#~ "wird. Bsp: B<-r 800x600>"
-
-# type: TP
-#~ msgid "B<-v>,B<\\ --version>"
-#~ msgstr "B<-v>,B<\\ --version>"
-
-# type: Plain text
-#~ msgid "prints version number and exits."
-#~ msgstr "Zeigt die Versionsnummer an und beendet das Programm."
-
-# type: TP
-#~ msgid "B<-w>,B<\\ --windowed>"
-#~ msgstr "B<-w>,B<\\ --windowed>"
-
-# type: Plain text
-#~ msgid "runs the editor in windowed mode."
-#~ msgstr "Startet den Editor im Fenstermodus."
-
-# type: Plain text
-#~ msgid ""
-#~ "Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt> and ott "
-#~ "E<lt>ott@gaon.netE<gt>."
-#~ msgstr ""
-#~ "Bearbeitet von Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>und ott "
-#~ "E<lt>ott@gaon.netE<gt>. Übersetzt von Jan-Heiner Laberenz E<lt>Jan-"
-#~ "Heiner@arcor.deE<gt> und Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>."
-
-# type: Plain text
-#~ msgid "B<wesnoth>(6), B<wesnothd>(6)"
-#~ msgstr "B<wesnoth>(6), B<wesnothd>(6)"
