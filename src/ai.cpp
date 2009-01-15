@@ -258,12 +258,12 @@ ai_interface* create_ai(const std::string& name, ai_interface::info& info)
 //  	  return new pyai::PythonAI( info ) ;
 #else
     {
-		LOG_STREAM(err, ai) << "No Python AI support available in this Wesnoth build!\n";
-		return new ai2(info);
+		ERR_AI << "No Python AI support available in this Wesnoth build! Using the default AI instead.\n";
+		return new ai(info);
     }
 #endif
-	else if(name != "") {
-		LOG_STREAM(err, ai) << "AI not found: '" << name << "'\n";
+	else if(name != "" && name != "default") {
+		ERR_AI << "AI not found: '" << name << "'. Using default instead.\n";
 	}
 
 	return new ai(info);
@@ -2489,40 +2489,33 @@ ai_manager::AINameMap ai_manager::ais = ai_manager::AINameMap();
 boost::intrusive_ptr<ai_interface> ai_manager::get_ai( std::string ai_algo,
 						       ai_interface::info& ai_info )
 {
-  int ai_key = ai_info.team_num - 1 ;
-  boost::intrusive_ptr<ai_interface> ai_obj;
+	int ai_key = ai_info.team_num - 1 ;
+	boost::intrusive_ptr<ai_interface> ai_obj;
 
-  // If we are dealing with an AI - try to find it
-  if( ai_algo.size() )
-    {
-      AINameMap::const_iterator itor = ais.find(ai_key);
-      LOG_AI << "ai_manager::get_ai() for algorithm: " << ai_algo << std::endl ;
-      if(itor == ais.end())
-	{
-	  LOG_AI << "manager did not find AI - creating..." << std::endl ;
-	  ai_obj = create_ai(ai_algo, ai_info) ;
-	  LOG_AI << "Asking newly created AI if it wants to be managed." << std::endl ;
-	  if( ai_obj->manager_manage_ai() )
-	    {
-	      LOG_AI << "AI has requested itself be managed: " << ai_algo << std::endl ;
-	      AINameMap::value_type new_ai_pair( ai_key, ai_obj ) ;
-	      itor = ais.insert(new_ai_pair).first ;
-	    }
+	// If we are dealing with an AI - try to find it
+	if(!ai_algo.empty() && ai_algo != "default") {
+		AINameMap::const_iterator itor = ais.find(ai_key);
+		LOG_AI << "ai_manager::get_ai() for algorithm: " << ai_algo << std::endl;
+		if (itor == ais.end()) {
+			LOG_AI << "manager did not find AI - creating..." << std::endl;
+			ai_obj = create_ai(ai_algo, ai_info);
+			LOG_AI << "Asking newly created AI if it wants to be managed." << std::endl;
+			if (ai_obj->manager_manage_ai()) {
+				LOG_AI << "AI has requested itself be managed: " << ai_algo << std::endl;
+				AINameMap::value_type new_ai_pair(ai_key, ai_obj);
+				itor = ais.insert(new_ai_pair).first;
+			}
+		} else {
+			// AI was found - so return it
+			LOG_AI << "Reusing managed AI" << std::endl;
+			ai_obj = itor->second;
+		}
+	} else {
+		// No AI algorithm - simply create the instance
+		ai_obj = create_ai(ai_algo, ai_info);
 	}
-      else
-	{
-	  // AI was found - so return it
-	  LOG_AI << "Reusing managed AI" << std::endl ;
-	  ai_obj = itor->second ;
-	}
-    }
-  else
-    {
-      // No AI algorithm - simply create the instance
-      ai_obj = create_ai(ai_algo, ai_info) ;
-    }
 
-  return ai_obj ;
+	return ai_obj ;
 }
 
 
