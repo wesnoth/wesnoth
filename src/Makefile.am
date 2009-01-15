@@ -95,6 +95,7 @@ wesnoth_source = \
 	gui/widgets/menubar.cpp \
 	gui/widgets/minimap.cpp \
 	gui/widgets/panel.cpp \
+	gui/widgets/password_box.cpp \
 	gui/widgets/settings.cpp \
 	gui/widgets/scroll_label.cpp \
 	gui/widgets/scrollbar.cpp \
