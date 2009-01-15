@@ -1081,7 +1081,7 @@ void server::process_login(const network::connection sock,
 	if(p != players_.end()) {
 		 if(registered) {
 			// If there is already a client using this username kick it
-			process_command("kick " + p->second.name(), "autokick by registered user");
+			process_command("kick " + p->second.name() + " autokick by registered user", username);
 		} else {
 			send_error(sock, "The username you chose is already taken.");
 			return;
@@ -1237,7 +1237,7 @@ std::string server::process_command(const std::string& query, const std::string&
 	std::string parameters = (i == query.end() ? "" : std::string(i+1,query.end()));
 	utils::strip(parameters);
 	const std::string& help_msg = "Available commands are: ban <mask> [<time>] <reason>,"
-			" bans [deleted], kick <mask>, k[ick]ban <mask> [<time>] <reason>,"
+			" bans [deleted], kick <mask> [<reason>], k[ick]ban <mask> [<time>] <reason>,"
 			" help, games, metrics, netstats [all], [lobby]msg <message>, motd [<message>],"
 			" requests, stats, status [<mask>], searchlog <mask>, signout, unban <ipmask>";
 	// Shutdown, restart and sample commands can only be issued via the socket.
@@ -1453,18 +1453,24 @@ std::string server::process_command(const std::string& query, const std::string&
 		if (parameters == "") {
 			return "You must enter a mask to kick.";
 		}
+		std::string::iterator i = std::find(parameters.begin(), parameters.end(), ' ');
+		const std::string kick_mask = std::string(parameters.begin(), i);
+		const std::string kick_message =
+				(i == parameters.end() ? "You have been kicked."
+				: "You have been kicked. Reason: " + std::string(i + 1, parameters.end()));
 		bool kicked = false;
 		// if we find a '.' consider it an ip mask
-		if (std::count(parameters.begin(), parameters.end(), '.') >= 1) {
+		if (std::count(kick_mask.begin(), kick_mask.end(), '.') >= 1) {
 			for (wesnothd::player_map::const_iterator pl = players_.begin();
 				pl != players_.end(); ++pl)
 			{
-				if (utils::wildcard_string_match(network::ip_address(pl->first), parameters)) {
+				if (utils::wildcard_string_match(network::ip_address(pl->first), kick_mask)) {
 					if (kicked) out << "\n";
 					else kicked = true;
 					out << "Kicked " << pl->second.name() << " ("
-						<< network::ip_address(pl->first) << ").";
-					send_error(pl->first, "You have been kicked.");
+						<< network::ip_address(pl->first) << "). '"
+						<< kick_message << "'";
+					send_error(pl->first, kick_message.c_str());
 					network::queue_disconnect(pl->first);
 				}
 			}
@@ -1472,17 +1478,18 @@ std::string server::process_command(const std::string& query, const std::string&
 			for (wesnothd::player_map::const_iterator pl = players_.begin();
 				pl != players_.end(); ++pl)
 			{
-				if (utils::wildcard_string_match(pl->second.name(), parameters)) {
+				if (utils::wildcard_string_match(pl->second.name(), kick_mask)) {
 					if (kicked) out << "\n";
 					else kicked = true;
 					out << "Kicked " << pl->second.name() << " ("
-						<< network::ip_address(pl->first) << ").";
-					send_error(pl->first, "You have been kicked.");
+						<< network::ip_address(pl->first) << "). '"
+						<< kick_message << "'";
+					send_error(pl->first, kick_message.c_str());
 					network::queue_disconnect(pl->first);
 				}
 			}
 		}
-		if (!kicked) out << "No user matched '" << parameters << "'.";
+		if (!kicked) out << "No user matched '" << kick_mask << "'.";
 	} else if (command == "motd") {
 		if (parameters == "") {
 			if (motd_ != "") {
