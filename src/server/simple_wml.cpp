@@ -408,10 +408,12 @@ void node::insert_ordered_child(int child_map_index, int child_list_index)
 
 void node::remove_ordered_child(int child_map_index, int child_list_index)
 {
+	int erase_count = 0;
 	std::vector<node_pos>::iterator i = ordered_children_.begin();
 	while(i != ordered_children_.end()) {
 		if(i->child_map_index == child_map_index && i->child_list_index == child_list_index) {
 			i = ordered_children_.erase(i);
+			++erase_count;
 		} else {
 			if(i->child_map_index == child_map_index && i->child_list_index > child_list_index) {
 				i->child_list_index--;
@@ -419,6 +421,8 @@ void node::remove_ordered_child(int child_map_index, int child_list_index)
 			++i;
 		}
 	}
+
+	assert(erase_count == 1);
 }
 
 void node::remove_ordered_child_list(int child_map_index)
@@ -426,6 +430,7 @@ void node::remove_ordered_child_list(int child_map_index)
 	std::vector<node_pos>::iterator i = ordered_children_.begin();
 	while(i != ordered_children_.end()) {
 		if(i->child_map_index == child_map_index) {
+			assert(false);
 			i = ordered_children_.erase(i);
 		} else {
 			if(i->child_map_index > child_map_index) {
@@ -551,6 +556,9 @@ int node::output_size() const
 		}
 	}
 
+	if(count_children != ordered_children_.size()) {
+		fprintf(stderr, "count_children: %d; ordered_children: %d\n", (int)count_children, (int)ordered_children_.size());
+	}
 	assert(count_children == ordered_children_.size());
 
 	return res;
