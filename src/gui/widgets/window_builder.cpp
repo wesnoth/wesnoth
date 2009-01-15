@@ -27,6 +27,7 @@
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/generator.hpp"
 #include "gui/widgets/minimap.hpp"
+#include "gui/widgets/password_box.hpp"
 #include "gui/widgets/scroll_label.hpp"
 #include "gui/widgets/slider.hpp"
 #include "gui/widgets/spacer.hpp"
@@ -191,6 +192,8 @@ tbuilder_widget_ptr create_builder_widget(const config& cfg)
 		return new tbuilder_spacer(*(cfg.child("spacer")));
 	} else if(cfg.child("text_box")) {
 		return new tbuilder_text_box(*(cfg.child("text_box")));
+	} else if(cfg.child("password_box")) {
+		return new tbuilder_password_box(*(cfg.child("password_box")));
 	} else if(cfg.child("toggle_button")) {
 		return new tbuilder_toggle_button(*(cfg.child("toggle_button")));
 	} else if(cfg.child("toggle_panel")) {
@@ -1166,6 +1169,25 @@ twidget* tbuilder_text_box::build() const
 		<< definition << "'.\n";
 
 	return text_box;
+}
+
+twidget* tbuilder_password_box::build() const
+{
+	tpassword_box* password_box = new tpassword_box();
+
+	init_control(password_box);
+
+	// A textbox doesn't have a label but a text
+	password_box->set_value(label);
+
+	if (!history_.empty()) {
+		password_box->set_history(history_);
+	}
+
+	DBG_GUI << "Window builder: placed password box '" << id << "' with defintion '"
+		<< definition << "'.\n";
+
+	return password_box;
 }
 
 twidget* tbuilder_vertical_scrollbar::build() const

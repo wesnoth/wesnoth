@@ -309,8 +309,6 @@ static server_type open_connection(game_display& disp, const std::string& origin
 					// Now show a dialog that displays the error and allows to
 					// enter a new user name and/or password
 
-					/** @todo A fancy textbox that displays characters as dots or asterisks would nice. */
-
 					gui2::tmp_login dlg((*error)["message"]);
 					dlg.show(disp.video());
 

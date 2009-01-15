@@ -230,6 +230,8 @@ const std::string& tgui_definition::read(const config& cfg)
 	load_definitions<tslider_definition>("slider", cfg.get_children("slider_definition"));
 	load_definitions<tspacer_definition>("spacer", cfg.get_children("spacer_definition"));
 	load_definitions<ttext_box_definition>("text_box", cfg.get_children("text_box_definition"));
+	// use the same definition for password boxes
+	load_definitions<ttext_box_definition>("password_box", cfg.get_children("text_box_definition"));
 	load_definitions<ttoggle_button_definition>("toggle_button", cfg.get_children("toggle_button_definition"));
 	load_definitions<ttoggle_panel_definition>("toggle_panel", cfg.get_children("toggle_panel_definition"));
 	load_definitions<ttooltip_definition>("tooltip", cfg.get_children("tooltip_definition"));

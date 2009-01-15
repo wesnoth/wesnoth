@@ -17,6 +17,7 @@
 #include "gui/dialogs/mp_method_selection.hpp"
 
 #include "gui/widgets/listbox.hpp"
+#include "gui/widgets/password_box.hpp"
 #include "gui/widgets/window.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/toggle_button.hpp"
@@ -54,7 +55,7 @@ void tmp_method_selection::pre_show(CVideo& /*video*/, twindow& window)
 	user_widget->set_maximum_length(mp::max_login_size);
 	window.keyboard_capture(user_widget);
 
-	ttext_box* password_widget = dynamic_cast<ttext_box*>(window.find_widget("password", false));
+	tpassword_box* password_widget = dynamic_cast<tpassword_box*>(window.find_widget("password", false));
 	VALIDATE(password_widget, missing_widget("password"));
 
 	password_widget->set_value(preferences::password());
@@ -77,7 +78,7 @@ void tmp_method_selection::post_show(twindow& window)
 		ttext_box* user_widget = dynamic_cast<ttext_box*>(window.find_widget("user_name", false));
 		assert(user_widget);
 
-		ttext_box* password_widget = dynamic_cast<ttext_box*>(window.find_widget("password", false));
+		tpassword_box* password_widget = dynamic_cast<tpassword_box*>(window.find_widget("password", false));
 		assert(password_widget);
 
 		tlistbox* list = dynamic_cast<tlistbox*>(window.find_widget("method_list", false));
@@ -93,7 +94,7 @@ void tmp_method_selection::post_show(twindow& window)
 		user_name_= user_widget->get_value();
 		preferences::set_login(user_name_);
 
-		preferences::set_password(password_widget->get_value());
+		preferences::set_password(password_widget->get_real_value());
 	}
 }
 

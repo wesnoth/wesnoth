@@ -22,6 +22,7 @@
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/label.hpp"
+#include "gui/widgets/password_box.hpp"
 #include "gui/widgets/toggle_button.hpp"
 
 namespace gui2 {
@@ -218,8 +219,8 @@ void tmp_login::pre_show(CVideo& /*video*/, twindow& window)
 	username->set_value(preferences::login());
 	window.keyboard_capture(username);
 
-	ttext_box* password =
-		dynamic_cast<ttext_box*>(window.find_widget("password", false));
+	tpassword_box* password =
+		dynamic_cast<tpassword_box*>(window.find_widget("password", false));
 	VALIDATE(password, missing_widget("password"));
 	password->set_value(preferences::password());
 
@@ -254,11 +255,11 @@ void tmp_login::post_show(twindow& window)
 
 		preferences::set_login(username->get_value());
 
-		ttext_box* password =
-			dynamic_cast<ttext_box*>(window.find_widget("password", false));
+		tpassword_box* password =
+			dynamic_cast<tpassword_box*>(window.find_widget("password", false));
 		assert(password);
 
-		preferences::set_password(password->get_value());
+		preferences::set_password(password->get_real_value());
 	}
 }
 

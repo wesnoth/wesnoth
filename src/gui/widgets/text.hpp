@@ -140,7 +140,7 @@ protected:
 	 *
 	 * @param unicode             The unicode value of the character to insert.
 	 */
-	void insert_char(const Uint16 unicode);
+	virtual void insert_char(const Uint16 unicode);
 
 	/**
 	 *  Deletes the character.
