@@ -1066,8 +1066,15 @@ attack::attack(game_display& gui, const gamemap& map,
 			}
 
 			// Used for stat calcualtion
-			const int drains_damage = a_stats_->drains ?
-				std::min<int>(damage_defender_takes / 2,a_->second.max_hitpoints() - a_->second.hitpoints()) : 0;
+			int drains_damage = 0;
+			if (a_stats_->drains){
+			    if (damage_defender_takes / 2 > d_->second.hitpoints())
+                    // don't drain more than the defenders remaining hitpoints
+                    drains_damage = d_->second.hitpoints();
+                else
+                    // don't drain so much that the attacker gets more than his maximum hitpoints
+                    drains_damage = std::min<int>(damage_defender_takes / 2,a_->second.max_hitpoints() - a_->second.hitpoints());
+			}
 			const int damage_done = std::min<int>(d_->second.hitpoints(), attacker_damage_);
 			bool dies = d_->second.take_hit(damage_defender_takes);
 			LOG_NG << "defender took " << damage_defender_takes << (dies ? " and died" : "") << "\n";
@@ -1117,7 +1124,15 @@ attack::attack(game_display& gui, const gamemap& map,
 
 			DBG_NG << "done attacking\n";
 			if(dies || hits) {
-				int amount_drained = a_stats_->drains ? attacker_damage_ / 2 : 0;
+				int amount_drained = 0;
+				if (a_stats_->drains){
+                    if (attacker_damage_ / 2 > d_->second.hitpoints())
+                        // don't drain more than the defenders remaining hitpoints
+                        amount_drained = d_->second.hitpoints();
+                    else
+                        // don't drain so much that the attacker gets more than his maximum hitpoints
+                        amount_drained = std::min<int>(attacker_damage_ / 2,a_->second.max_hitpoints() - a_->second.hitpoints());
+				}
 
 				if(amount_drained > 0) {
 					a_->second.heal(amount_drained);
@@ -1336,7 +1351,15 @@ attack::attack(game_display& gui, const gamemap& map,
 			}
 
 			// used for stats calculation
-			const int drains_damage = d_stats_->drains ? std::min<int>(damage_attacker_takes / 2,d_->second.max_hitpoints() - d_->second.hitpoints()): 0;
+			int drains_damage = 0;
+			if (d_stats_->drains){
+			    if (damage_attacker_takes / 2 > a_->second.hitpoints())
+                    // don't drain more than the attackers remaining hitpoints
+                    drains_damage = a_->second.hitpoints();
+                else
+                    // don't drain so much that the defender gets more than his maximum hitpoints
+                    drains_damage = std::min<int>(damage_attacker_takes / 2,d_->second.max_hitpoints() - d_->second.hitpoints());
+			}
 			const int damage_done   = std::min<int>(a_->second.hitpoints(), defender_damage_);
 			bool dies = a_->second.take_hit(damage_attacker_takes);
 			LOG_NG << "attacker took " << damage_attacker_takes << (dies ? " and died" : "") << "\n";
@@ -1382,6 +1405,14 @@ attack::attack(game_display& gui, const gamemap& map,
 					: statistics::attack_context::MISSES, damage_done, drains_damage);
 			if(hits || dies){
 				int amount_drained = d_stats_->drains ? defender_damage_ / 2 : 0;
+				if (d_stats_->drains){
+                    if (defender_damage_ / 2 > a_->second.hitpoints())
+                        // don't drain more than the attackers remaining hitpoints
+                        amount_drained = a_->second.hitpoints();
+                    else
+                        // don't drain so much that the defender gets more than his maximum hitpoints
+                        amount_drained = std::min<int>(defender_damage_ / 2,d_->second.max_hitpoints() - d_->second.hitpoints());
+				}
 
 				if(amount_drained > 0) {
 					d_->second.heal(amount_drained);
