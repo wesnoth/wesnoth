@@ -354,7 +354,7 @@ void wml_animation_internal(unit_animator & animator,const vconfig &cfg, const g
 	if(u != units.end() && ! disp->fogged(u->first)) {
 		attack_type *primary = NULL;
 		attack_type *secondary = NULL;
-		Uint32 text_color = 0;
+		Uint32 text_color;
 		unit_animation::hit_type hits=  unit_animation::INVALID;
 		std::vector<attack_type> attacks = u->second.attacks();
 		std::vector<attack_type>::iterator itor;
@@ -388,8 +388,11 @@ void wml_animation_internal(unit_animator & animator,const vconfig &cfg, const g
 		if( cfg["hit"] == "kill" ) {
 			hits = unit_animation::KILL;
 		}
-		std::vector<std::string> tmp_string_vect=utils::split(cfg["text_color"]);
-		if(tmp_string_vect.size() ==3) text_color = display::rgb(atoi(tmp_string_vect[0].c_str()),atoi(tmp_string_vect[1].c_str()),atoi(tmp_string_vect[2].c_str()));
+		if(cfg["red"].empty() && cfg["green"].empty() && cfg["blue"].empty()) {
+			text_color = display::rgb(0xff,0xff,0xff);
+		} else {
+			text_color = display::rgb(atoi(cfg["red"].c_str()),atoi(cfg["green"].c_str()),atoi(cfg["blue"].c_str()));
+		}
 		disp->scroll_to_tile(u->first, game_display::ONSCREEN,true,false);
 		vconfig t_filter = cfg.child("facing");
 		if(!t_filter.empty()) {
