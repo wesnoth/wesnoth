@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-01-11 17:05+0100\n"
-"PO-Revision-Date: 2008-12-29 14:38+0100\n"
+"PO-Revision-Date: 2009-01-16 12:41+0100\n"
 "Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "MIME-Version: 1.0\n"
@@ -31,9 +31,8 @@ msgstr "Mit der Maus scrollen"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:59
-#, fuzzy
 msgid "Middle-click Scrolling"
-msgstr "Mit der Maus scrollen"
+msgstr "Scrollen mit Hilfe der mittleren Maustaste"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:66
@@ -2632,6 +2631,13 @@ msgid ""
 "\n"
 "Mermen and Naga both receive 70% defense on coastal reefs."
 msgstr ""
+"Küstennahe Riffe sind Sandbänke, geformt aus Stein, Korallen und Sand. "
+"Dieser Untergrund gibt Landbewohnern besseren Halt und eine bessere "
+"Verteidigungsposition im Vergleich zu seichtem Wasser. Meeresbewohner "
+"profitieren ebenfalls davon und genießen hier außerordentlichen Schutz.\n"
+"\n"
+"Angehörige des Meervolkes sowie Naga haben 70% Verteidigung in küstennahen "
+"Riffen."
 
 #. [topic]: id=terrain_bridge
 #: data/core/help.cfg:710
@@ -3574,9 +3580,8 @@ msgstr "Wählt mit einem Rechtsklick jenen Ort aus, welchen ich beschützen soll
 
 #. [set_menu_item]: id=ai_controller_defend_location_picker
 #: data/core/macros/ai_controller.cfg:532
-#, fuzzy
 msgid "Defend this location"
-msgstr "Indonesische Übersetzung"
+msgstr "Verteidigt diesen Ort"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:551
@@ -3586,7 +3591,7 @@ msgstr "verteidigt die Gegend um $x1|,$y1|."
 #. [print]
 #: data/core/macros/ai_controller.cfg:580
 msgid "Location selection canceled"
-msgstr ""
+msgstr "Ortsauswahl abgebrochen"
 
 #. [option]
 #: data/core/macros/ai_controller.cfg:595
@@ -3595,7 +3600,6 @@ msgstr "Zielbefehle verwerfen"
 
 #. [option]
 #: data/core/macros/ai_controller.cfg:619
-#, fuzzy
 msgid "Clear behavior orders"
 msgstr "Verhaltensbefehle verwerfen"
 
@@ -3622,7 +3626,6 @@ msgstr ""
 #. [value]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:805
 #: data/core/macros/ai_controller.cfg:822
-#, fuzzy
 msgid ""
 "Objective: $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_objective_description\n"
@@ -3648,7 +3651,6 @@ msgstr "Ziel auswählen..."
 
 #. [literal]
 #: data/core/macros/ai_controller.cfg:874
-#, fuzzy
 msgid "Set behavior..."
 msgstr "Verhalten beeinflussen..."
 
@@ -8012,7 +8014,7 @@ msgstr "Fertigkeiten: "
 
 #: src/help.cpp:1344
 msgid "Ability Upgrades: "
-msgstr ""
+msgstr "Fertigkeitsverbesserungen:"
 
 #: src/help.cpp:1362
 msgid "Cost: "
@@ -8177,7 +8179,7 @@ msgstr "Möchtet Ihr ihn wirklich entlassen?"
 
 #: src/menu_events.cpp:98
 msgid "My lord, this unit is loyal and requires no upkeep! "
-msgstr ""
+msgstr "Diese Einheit ist loyal und verlangt keinen Unterhalt!"
 
 #: src/menu_events.cpp:99 src/menu_events.cpp:102 src/menu_events.cpp:106
 msgid "Do you really want to dismiss her?"
@@ -8462,6 +8464,8 @@ msgid ""
 "Available commands list and command-specific help. Use \"help all\" to "
 "include currently unavailable commands."
 msgstr ""
+"Verfügbare Befehlsliste und Befehls-spezifische Hilfe. Verwendet »help all« "
+"um auch die momentan nicht verfügbaren Befehle auszugeben."
 
 #: src/menu_events.cpp:1974
 msgid " No help available."
@@ -8534,15 +8538,17 @@ msgstr "Zeigt Versionsinformationen an."
 
 #: src/menu_events.cpp:2154
 msgid "Register your nick"
-msgstr ""
+msgstr "Registriert Euren Benutzernamen."
 
 #: src/menu_events.cpp:2156
 msgid "Drop your nick."
-msgstr ""
+msgstr "Entfernt die Registrierung Eures Benutzernamens."
 
 #: src/menu_events.cpp:2158
 msgid "Update details for your username. For possible details see /details"
 msgstr ""
+"Aktualisiert Einstellungen Eures Benutzernames. Um mögliche Einstellungen zu "
+"erfahren, verwendet /details"
 
 #: src/menu_events.cpp:2161
 msgid "Request information about a user."
@@ -8551,6 +8557,8 @@ msgstr "Fordert Informationen über einen Benutzer an."
 #: src/menu_events.cpp:2163
 msgid "Request a list of details you can set for your registered username."
 msgstr ""
+"Fordert eine Liste mit Einstellungen an, welche Ihr für Euren registrierten "
+"Benutzernamen setzen könnt."
 
 #: src/menu_events.cpp:2285
 msgid "Refresh gui."
@@ -8559,6 +8567,7 @@ msgstr "Zeichnet die Benutzeroberfläche neu."
 #: src/menu_events.cpp:2287
 msgid "Switch a side to/from AI control."
 msgstr ""
+"Wechselt die Kontrolle einer Fraktion zwischen KI und einem normalen Spieler."
 
 #: src/menu_events.cpp:2290
 msgid "Assign control of a side to a different player or observer."
@@ -8596,7 +8605,7 @@ msgstr "Deaktiviert das automatische Speichern zu Rundenbeginn."
 
 #: src/menu_events.cpp:2310
 msgid "Advance to the next scenario, or scenario identified by 'id'"
-msgstr ""
+msgstr "Wechselt zum nächsten oder dem mit »ID« angegebenen Szenario"
 
 #: src/menu_events.cpp:2313
 msgid "Choose next scenario"
@@ -8612,7 +8621,7 @@ msgstr "Schaltet den Debugmodus aus."
 
 #: src/menu_events.cpp:2320
 msgid "Set the command used by the custom command hotkey"
-msgstr ""
+msgstr "Weist einen Befehl dem Tastaturkürzel »Benutzerdefinierter Befehl« zu."
 
 #: src/menu_events.cpp:2322
 msgid "Set or show alias to a command"
@@ -8897,7 +8906,7 @@ msgstr "Dies ist kein Mehrspieler-Spielstand"
 
 #: src/multiplayer_connect.cpp:1670
 msgid "Cannot find era $era"
-msgstr "Kann die Ära $era nicht finden"
+msgstr "Kann die Epoche $era nicht finden"
 
 #: src/multiplayer_connect.cpp:1691
 msgid ""
@@ -9038,11 +9047,11 @@ msgstr "Nichts teilen"
 
 #: src/multiplayer_create.cpp:208
 msgid "No eras found."
-msgstr "Keine Ära gefunden."
+msgstr "Keine Epoche gefunden."
 
 #: src/multiplayer_create.cpp:209
 msgid "No eras found"
-msgstr "Keine Ära gefunden"
+msgstr "Keine Epochen gefunden"
 
 #: src/multiplayer_create.cpp:222
 msgid "$login's game"
@@ -9050,7 +9059,7 @@ msgstr "$login|s Partie"
 
 #: src/multiplayer_create.cpp:281
 msgid "Invalid era selected"
-msgstr "Ungültige Ära ausgewählt"
+msgstr "Ungültige Epoche ausgewählt"
 
 #: src/multiplayer_create.cpp:320
 msgid "You must enter a name."
@@ -9202,9 +9211,8 @@ msgid "Invalid Color"
 msgstr "Ungültige Farbe"
 
 #: src/multiplayer_ui.cpp:399
-#, fuzzy
 msgid "Selected user: "
-msgstr "Einheit auswählen:"
+msgstr "Benutzer auswählen:"
 
 #: src/multiplayer_wait.cpp:134
 msgid "Leader: "
@@ -9333,6 +9341,7 @@ msgstr "Unbekanntes Szenario: '$scenario|'"
 #: src/playmp_controller.cpp:211
 msgid "Undoing moves not yet transmitted to the server."
 msgstr ""
+"Rücknahme der Bewegungen, die dem Server noch nicht übermittelt wurden."
 
 #: src/playmp_controller.cpp:291
 msgid "End scenario"
