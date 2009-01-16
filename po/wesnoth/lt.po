@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-01-11 17:05+0100\n"
-"PO-Revision-Date: 2008-12-27 17:07+0300\n"
+"PO-Revision-Date: 2009-01-13 10:23+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lithuanian <kde-i18n-doc@lists.kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -38,9 +38,8 @@ msgstr "Animuoti žemėlapį"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:73
-#, fuzzy
 msgid "Show Titlescreen Animation"
-msgstr "Kampanija"
+msgstr "Rodyti titulinio ekrano animaciją"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:80
@@ -226,7 +225,7 @@ msgstr "Pakuotojai"
 #. [about]
 #: data/core/about.cfg:716
 msgid "Miscellaneous contributors"
-msgstr "Įvairūs pagalbininkai"
+msgstr "Įvairūs talkininkai"
 
 #. [about]
 #: data/core/about.cfg:871
@@ -2757,7 +2756,7 @@ msgstr "gynybinis."
 #. [option]: type=objective
 #: data/core/macros/ai_controller.cfg:213
 msgid "Focus on defeating..."
-msgstr "Susikoncentruoti gynyboje..."
+msgstr ""
 
 #. [literal]: speaker=narrator
 #. [value]: speaker=narrator
@@ -2771,12 +2770,12 @@ msgstr "Susikoncentruoti gynyboje..."
 #: data/core/macros/ai_controller.cfg:839
 #: data/core/macros/ai_controller.cfg:879
 msgid "Instruct ally"
-msgstr ""
+msgstr "Duoti nurodymus sąjungininkui"
 
 #. [literal]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:230
 msgid "Which enemy side to focus on?"
-msgstr ""
+msgstr "Ties kuria priešų puse susikoncentruoti?"
 
 #. [then]
 #. [else]
@@ -2816,12 +2815,12 @@ msgstr "Atgal"
 #. [option]: type=objective
 #: data/core/macros/ai_controller.cfg:359
 msgid "Focus on protecting..."
-msgstr ""
+msgstr "Koncentruotis gynyboje..."
 
 #. [literal]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:376
 msgid "Which friendly side to protect?"
-msgstr ""
+msgstr "Kurią draugišką pusę ginti?"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:459
@@ -2851,32 +2850,28 @@ msgstr ""
 #. [print]
 #: data/core/macros/ai_controller.cfg:580
 msgid "Location selection canceled"
-msgstr ""
+msgstr "Atšauktas vietos pažymėjimas"
 
 #. [option]
 #: data/core/macros/ai_controller.cfg:595
-#, fuzzy
 msgid "Clear objective orders"
-msgstr "Atšaukti nurodymus"
+msgstr "Atšaukti tikslo nurodymus"
 
 #. [option]
 #: data/core/macros/ai_controller.cfg:619
-#, fuzzy
 msgid "Clear behavior orders"
-msgstr "Atšaukti nurodymus"
+msgstr "Atšaukti elgesio nurodymus"
 
 #. [option]
 #: data/core/macros/ai_controller.cfg:643
-#, fuzzy
 msgid "Clear all orders"
-msgstr "Atšaukti nurodymus"
+msgstr "Atšaukti visus nurodymus"
 
 #. [then]
 #: data/core/macros/ai_controller.cfg:769
 #: data/core/macros/ai_controller.cfg:780
-#, fuzzy
 msgid "none set."
-msgstr "nieko"
+msgstr "nieko nenustatyta."
 
 #. [value]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:802
@@ -2884,6 +2879,8 @@ msgid ""
 "$ally_leader.name (side $ally_side|) has not been given any instructions and "
 "is acting normally."
 msgstr ""
+"$ally_leader.name (pusė $ally_side|) negavo jokių nurodymų ir elgiasi "
+"normaliai."
 
 #. [value]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:805
@@ -2894,29 +2891,32 @@ msgid ""
 "Behavior: $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_behaviour_description"
 msgstr ""
+"Tikslas: $ai_controller.side_$ally_side|_current_settings."
+"currently_doing_objective_description\n"
+"Elgesys: $ai_controller.side_$ally_side|_current_settings."
+"currently_doing_behaviour_description"
 
 #. [value]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:819
 msgid ""
 "$ally_leader.name (side $ally_side|) is carrying out the following "
 "instructions:"
-msgstr ""
+msgstr "$ally_leader.name (pusė $ally_side|) vykdo šiuos nurodymus:"
 
 #. [literal]
 #: data/core/macros/ai_controller.cfg:834
 msgid "Set objective..."
-msgstr ""
+msgstr "Nustatyti tikslą..."
 
 #. [literal]
 #: data/core/macros/ai_controller.cfg:874
-#, fuzzy
 msgid "Set behavior..."
 msgstr "Nustatyti elgesį..."
 
 #. [literal]
 #: data/core/macros/ai_controller.cfg:914
 msgid "Exit"
-msgstr ""
+msgstr "Išeiti"
 
 #. [advancement]: id=amla_default
 #: data/core/macros/amla.cfg:10
@@ -3958,9 +3958,8 @@ msgstr "sveika"
 
 #. [trait]: id=healthy
 #: data/core/macros/traits.cfg:134
-#, fuzzy
 msgid "Can rest while moving, takes a quarter less poison damage"
-msgstr "Gali ilsėtis judėdamas, dvigubai sumažina nuodų žalą"
+msgstr "Gali ilsėtis judėdamas, patiria ketvirtadaliu mažesnę nuodų žalą"
 
 #. [trait]: id=fearless
 #: data/core/macros/traits.cfg:151 data/core/macros/traits.cfg:164
@@ -6501,9 +6500,8 @@ msgid "Abilities: "
 msgstr "Gebėjimai: "
 
 #: src/help.cpp:1344
-#, fuzzy
 msgid "Ability Upgrades: "
-msgstr "Gebėjimai: "
+msgstr "Gebėjimų patobulinimai: "
 
 #: src/help.cpp:1362
 msgid "Cost: "
@@ -6772,6 +6770,8 @@ msgid ""
 "scenario settings^Base\n"
 "Income"
 msgstr ""
+"scenario settings^Bazinės\n"
+"pajamos"
 
 #: src/menu_events.cpp:491
 msgid ""
@@ -7030,7 +7030,7 @@ msgstr ""
 
 #: src/menu_events.cpp:2285
 msgid "Refresh gui."
-msgstr ""
+msgstr "Atnaujinti grafinę sąsają."
 
 #: src/menu_events.cpp:2287
 msgid "Switch a side to/from AI control."
@@ -7662,9 +7662,8 @@ msgid "Invalid Color"
 msgstr "Netinkama spalva"
 
 #: src/multiplayer_ui.cpp:399
-#, fuzzy
 msgid "Selected user: "
-msgstr "Pasirinkite dalinį:"
+msgstr "Pasirinkite naudotoją:"
 
 #: src/multiplayer_wait.cpp:134
 msgid "Leader: "
@@ -7697,7 +7696,7 @@ msgstr ""
 #: src/multiplayer_wait.cpp:303
 #, fuzzy
 msgid "Choose your faction:"
-msgstr "Pasirinkite savo pusę:"
+msgstr "Pasirinkite savo:"
 
 #: src/multiplayer_wait.cpp:303
 msgid "Starting position: "

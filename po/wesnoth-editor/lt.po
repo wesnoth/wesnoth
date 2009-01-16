@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-01-11 17:06+0100\n"
-"PO-Revision-Date: 2008-11-23 01:18+0300\n"
+"PO-Revision-Date: 2009-01-10 18:54+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
 "MIME-Version: 1.0\n"
@@ -147,11 +147,11 @@ msgstr "kaimai"
 
 #: src/editor2/action.cpp:32
 msgid "Error creating action object"
-msgstr ""
+msgstr "Klaida, kuriant veiksmo objektą"
 
 #: src/editor2/action.cpp:36
 msgid "Action not implemented"
-msgstr ""
+msgstr "Veiksmas neužprogramuotas"
 
 #: src/editor2/editor_controller.cpp:123
 msgid "Quit Editor"
@@ -234,19 +234,16 @@ msgid "Map creation failed."
 msgstr "Žemėlapio sukūrimas nepavyko."
 
 #: src/editor2/editor_controller.cpp:484
-#, fuzzy
 msgid "Choose a mask to apply"
-msgstr "Pasirinkite žemėlapį įkėlimui"
+msgstr "Pasirinkite kaukę, kurią pritaikysite"
 
 #: src/editor2/editor_controller.cpp:491
-#, fuzzy
 msgid "Error loading mask"
-msgstr "Klaida, įkeliant žemėlapį"
+msgstr "Klaida, įkeliant kaukę"
 
 #: src/editor2/editor_controller.cpp:506
-#, fuzzy
 msgid "Choose target map"
-msgstr "Pasirinkite žaidėją"
+msgstr "Pasirinkite žemėlapį"
 
 #: src/editor2/editor_controller.cpp:513 src/editor2/editor_controller.cpp:626
 #: src/editor2/editor_main.cpp:53
@@ -287,7 +284,7 @@ msgstr "Žaidėjas"
 
 #: src/editor2/editor_map.cpp:285
 msgid "The size of the target map is different from the current map"
-msgstr ""
+msgstr "Pritaikomo žemėlapio dydis skiriasi nuo dabartinio žemėlapio dydžio"
 
 #: src/editor2/editor_palettes.cpp:516
 msgid "FG"
@@ -315,10 +312,4 @@ msgstr ""
 
 #: src/gui/dialogs/editor_settings.cpp:119
 msgid "Custom setting"
-msgstr ""
-
-#~ msgid "There was a format error while loading the file:"
-#~ msgstr "Įkeliant failą rasta formato klaida:"
-
-#~ msgid "There was a wml error while loading the file:"
-#~ msgstr "Įkeliant failą rasta wml klaida:"
+msgstr "Savas nustatymas"
