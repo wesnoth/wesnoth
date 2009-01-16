@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.5.5+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-01-11 17:06+0100\n"
+"POT-Creation-Date: 2009-01-16 21:54+0100\n"
 "PO-Revision-Date: 2008-10-25 11:30+0200\n"
 "Last-Translator: Robert Millan <rmh@aybabtu.com>\n"
 "Language-Team: Catalan <wesnoth-ca@lists.ettin.org>\n"
@@ -365,7 +365,7 @@ msgstr "Impracticable"
 #. [column]
 #: data/gui/default/window/addon_connect.cfg:32
 #: data/gui/default/window/mp_connect.cfg:31
-#: data/gui/default/window/mp_method_selection.cfg:148
+#: data/gui/default/window/mp_method_selection.cfg:251
 #: data/gui/default/window/mp_server_list.cfg:31
 msgid "Connect to Server"
 msgstr "Connecta al servidor"
@@ -412,8 +412,8 @@ msgstr "Connecta"
 #: data/gui/default/window/mp_cmd_wrapper.cfg:462
 #: data/gui/default/window/mp_connect.cfg:190
 #: data/gui/default/window/mp_create_game.cfg:552
-#: data/gui/default/window/mp_login.cfg:173
-#: data/gui/default/window/mp_method_selection.cfg:220
+#: data/gui/default/window/mp_login.cfg:262
+#: data/gui/default/window/mp_method_selection.cfg:323
 #: data/gui/default/window/mp_server_list.cfg:212 src/construct_dialog.cpp:133
 #: src/construct_dialog.cpp:136
 msgid "Cancel"
@@ -561,7 +561,7 @@ msgstr ""
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #: data/gui/default/window/editor_settings.cfg:230
-#: data/gui/default/window/mp_method_selection.cfg:206
+#: data/gui/default/window/mp_method_selection.cfg:309
 #: src/construct_dialog.cpp:125 src/construct_dialog.cpp:132
 msgid "OK"
 msgstr "D'acord"
@@ -772,25 +772,32 @@ msgstr ""
 #. [label]
 #. [button]: id=ok
 #: data/gui/default/window/mp_login.cfg:31
-#: data/gui/default/window/mp_login.cfg:131
+#: data/gui/default/window/mp_login.cfg:234
 #, fuzzy
 msgid "Login"
 msgstr "Nom d'usuari:"
 
 #. [label]
 #: data/gui/default/window/mp_login.cfg:81
+#: data/gui/default/window/mp_method_selection.cfg:61
+msgid "Login:"
+msgstr "Nom d'usuari:"
+
+#. [label]
+#: data/gui/default/window/mp_login.cfg:134
+#: data/gui/default/window/mp_method_selection.cfg:114
 #, fuzzy
 msgid "Password:"
 msgstr "Establix la contrasenya"
 
-#. [button]: id=change_username
-#: data/gui/default/window/mp_login.cfg:145
-#, fuzzy
-msgid "Change username"
-msgstr "Introduïu el nom d'un usuari"
+#. [toggle_button]: id=remember_password
+#: data/gui/default/window/mp_login.cfg:190
+#: data/gui/default/window/mp_method_selection.cfg:170
+msgid "Save password to preferences (clear text)"
+msgstr ""
 
 #. [button]: id=password_reminder
-#: data/gui/default/window/mp_login.cfg:159
+#: data/gui/default/window/mp_login.cfg:248
 msgid "Password Reminder"
 msgstr ""
 
@@ -801,44 +808,39 @@ msgstr ""
 msgid "Multiplayer"
 msgstr "Multijugador"
 
-#. [label]
-#: data/gui/default/window/mp_method_selection.cfg:61
-msgid "Login:"
-msgstr "Nom d'usuari:"
-
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:137
+#: data/gui/default/window/mp_method_selection.cfg:240
 msgid "Join Official Server"
 msgstr "Entra al servidor oficial"
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:138
+#: data/gui/default/window/mp_method_selection.cfg:241
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Entra al servidor oficial de Wesnoth per partides multijugador"
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:149
+#: data/gui/default/window/mp_method_selection.cfg:252
 msgid "Join a different server"
 msgstr "Entra a un altre servidor"
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:159
+#: data/gui/default/window/mp_method_selection.cfg:262
 msgid "Host Networked Game"
 msgstr "Servix una partida en xarxa"
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:160
+#: data/gui/default/window/mp_method_selection.cfg:263
 #, fuzzy
 msgid "Host a game using dedicated server 'wesnothd'"
 msgstr "Servix una partida utilitzar un servidor dedicat «wesnothd»"
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:170
+#: data/gui/default/window/mp_method_selection.cfg:273
 msgid "Local Game"
 msgstr "Partida local"
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:171
+#: data/gui/default/window/mp_method_selection.cfg:274
 msgid "Play a multiplayer game with the AI or humans sharing the same machine"
 msgstr ""
 "Juga una partida multijugador contra l'IA o compartint la mateixa màquina"
@@ -1419,52 +1421,52 @@ msgstr ""
 msgid "No default gui defined."
 msgstr "No s'ha definit la interfície predeterminada."
 
-#: src/gui/widgets/settings.cpp:256
+#: src/gui/widgets/settings.cpp:258
 msgid "Window not defined."
 msgstr "No s'ha definit la finestra."
 
-#: src/gui/widgets/settings.cpp:320
+#: src/gui/widgets/settings.cpp:322
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:432 src/gui/widgets/window_builder.cpp:284
+#: src/gui/widgets/settings.cpp:434 src/gui/widgets/window_builder.cpp:287
 msgid "No resolution defined."
 msgstr "No hi ha cap resolució definida."
 
-#: src/gui/widgets/settings.cpp:460
+#: src/gui/widgets/settings.cpp:462
 msgid "No state or draw section defined."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:703 src/gui/widgets/settings.cpp:857
-#: src/gui/widgets/window_builder.cpp:375
-#: src/gui/widgets/window_builder.cpp:908
-#: src/gui/widgets/window_builder.cpp:1112
+#: src/gui/widgets/settings.cpp:705 src/gui/widgets/settings.cpp:859
+#: src/gui/widgets/window_builder.cpp:378
+#: src/gui/widgets/window_builder.cpp:911
+#: src/gui/widgets/window_builder.cpp:1115
 msgid "No grid defined."
 msgstr "No s'ha definit la graella."
 
-#: src/gui/widgets/window_builder.cpp:503
+#: src/gui/widgets/window_builder.cpp:506
 msgid "A row must have a column."
 msgstr "Una fila ha de tenir una columna."
 
-#: src/gui/widgets/window_builder.cpp:504
+#: src/gui/widgets/window_builder.cpp:507
 msgid "Number of columns differ."
 msgstr "El nombre de columnes diferix."
 
-#: src/gui/widgets/window_builder.cpp:748
+#: src/gui/widgets/window_builder.cpp:751
 msgid "No list defined."
 msgstr "No s'ha definit la llista."
 
-#: src/gui/widgets/window_builder.cpp:751
+#: src/gui/widgets/window_builder.cpp:754
 msgid "A 'list_definition' should contain one row."
 msgstr ""
 
-#: src/gui/widgets/window_builder.cpp:770
+#: src/gui/widgets/window_builder.cpp:773
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr ""
 
-#: src/gui/widgets/window_builder.cpp:1039
+#: src/gui/widgets/window_builder.cpp:1042
 msgid "The number of value_labels and values don't match."
 msgstr ""
 
@@ -2052,6 +2054,10 @@ msgstr ""
 #: src/wml_exception.cpp:75
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr "A la secció «[$section|]», la clau obligatòria «$key|» no està definida."
+
+#, fuzzy
+#~ msgid "Change username"
+#~ msgstr "Introduïu el nom d'un usuari"
 
 #~ msgid "No scrollbar defined."
 #~ msgstr "No s'ha definit la barra de desplaçament."

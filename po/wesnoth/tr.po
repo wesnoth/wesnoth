@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-01-11 17:05+0100\n"
+"POT-Creation-Date: 2009-01-16 21:53+0100\n"
 "PO-Revision-Date: 2008-12-19 12:05+0200\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish <wesnoth-tr@googlegroups.com>\n"
@@ -21,43 +21,43 @@ msgstr ""
 "X-Generator: KBabel 1.11.4\n"
 
 #. [advanced_preference]: type=boolean
-#: data/_main.cfg:45
+#: data/_main.cfg:49
 msgid "Compressed Saves"
 msgstr "Sıkıştırılmış Kayıtlar"
 
 #. [advanced_preference]: type=boolean
-#: data/_main.cfg:52
+#: data/_main.cfg:56
 msgid "Mouse Scrolling"
 msgstr "Fare Kaydırması"
 
 #. [advanced_preference]: type=boolean
-#: data/_main.cfg:59
+#: data/_main.cfg:63
 #, fuzzy
 msgid "Middle-click Scrolling"
 msgstr "Fare Kaydırması"
 
 #. [advanced_preference]: type=boolean
-#: data/_main.cfg:66
+#: data/_main.cfg:70
 msgid "Animate Map"
 msgstr "Haritayı Canlandır"
 
 #. [advanced_preference]: type=boolean
-#: data/_main.cfg:73
+#: data/_main.cfg:77
 msgid "Show Titlescreen Animation"
 msgstr "Karşılama Ekranında Canlandırmaları Göster"
 
 #. [advanced_preference]: type=boolean
-#: data/_main.cfg:80
+#: data/_main.cfg:84
 msgid "Unit Standing Animations"
 msgstr "Boştaki Birim Canlandırmaları"
 
 #. [advanced_preference]: type=boolean
-#: data/_main.cfg:87
+#: data/_main.cfg:91
 msgid "Show Combat"
 msgstr "Çarpışmayı Göster"
 
 #. [advanced_preference]: type=boolean
-#: data/_main.cfg:102
+#: data/_main.cfg:106
 msgid "Only Run Safe Python AIs"
 msgstr "Sadece Güvenli Python SA’ları Çalışsın"
 
@@ -3353,11 +3353,11 @@ msgstr ""
 #. [set_menu_item]: id=ai_controller
 #: data/core/macros/ai_controller.cfg:227
 #: data/core/macros/ai_controller.cfg:373
-#: data/core/macros/ai_controller.cfg:676
-#: data/core/macros/ai_controller.cfg:801
-#: data/core/macros/ai_controller.cfg:818
-#: data/core/macros/ai_controller.cfg:839
-#: data/core/macros/ai_controller.cfg:879
+#: data/core/macros/ai_controller.cfg:682
+#: data/core/macros/ai_controller.cfg:807
+#: data/core/macros/ai_controller.cfg:824
+#: data/core/macros/ai_controller.cfg:845
+#: data/core/macros/ai_controller.cfg:885
 msgid "Instruct ally"
 msgstr ""
 
@@ -3396,8 +3396,8 @@ msgstr ""
 #. [option]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:329
 #: data/core/macros/ai_controller.cfg:479
-#: data/core/macros/ai_controller.cfg:864
-#: data/core/macros/ai_controller.cfg:899
+#: data/core/macros/ai_controller.cfg:870
+#: data/core/macros/ai_controller.cfg:905
 #, fuzzy
 msgid "Back"
 msgstr "Siyah"
@@ -3423,12 +3423,12 @@ msgid "Defend a location..."
 msgstr ""
 
 #. [print]
-#: data/core/macros/ai_controller.cfg:525
+#: data/core/macros/ai_controller.cfg:527
 msgid "Right-click to select a location to defend"
 msgstr ""
 
 #. [set_menu_item]: id=ai_controller_defend_location_picker
-#: data/core/macros/ai_controller.cfg:532
+#: data/core/macros/ai_controller.cfg:534
 msgid "Defend this location"
 msgstr ""
 
@@ -3438,45 +3438,45 @@ msgid "focusing on defending the area around $x1|,$y1|."
 msgstr ""
 
 #. [print]
-#: data/core/macros/ai_controller.cfg:580
+#: data/core/macros/ai_controller.cfg:586
 msgid "Location selection canceled"
 msgstr ""
 
 #. [option]
-#: data/core/macros/ai_controller.cfg:595
+#: data/core/macros/ai_controller.cfg:601
 #, fuzzy
 msgid "Clear objective orders"
 msgstr "İşlemi iptal et"
 
 #. [option]
-#: data/core/macros/ai_controller.cfg:619
+#: data/core/macros/ai_controller.cfg:625
 #, fuzzy
 msgid "Clear behavior orders"
 msgstr "İşlemi iptal et"
 
 #. [option]
-#: data/core/macros/ai_controller.cfg:643
+#: data/core/macros/ai_controller.cfg:649
 #, fuzzy
 msgid "Clear all orders"
 msgstr "İşlemi iptal et"
 
 #. [then]
-#: data/core/macros/ai_controller.cfg:769
-#: data/core/macros/ai_controller.cfg:780
+#: data/core/macros/ai_controller.cfg:775
+#: data/core/macros/ai_controller.cfg:786
 #, fuzzy
 msgid "none set."
 msgstr "hiçbiri"
 
 #. [value]: speaker=narrator
-#: data/core/macros/ai_controller.cfg:802
+#: data/core/macros/ai_controller.cfg:808
 msgid ""
 "$ally_leader.name (side $ally_side|) has not been given any instructions and "
 "is acting normally."
 msgstr ""
 
 #. [value]: speaker=narrator
-#: data/core/macros/ai_controller.cfg:805
-#: data/core/macros/ai_controller.cfg:822
+#: data/core/macros/ai_controller.cfg:811
+#: data/core/macros/ai_controller.cfg:828
 msgid ""
 "Objective: $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_objective_description\n"
@@ -3485,25 +3485,25 @@ msgid ""
 msgstr ""
 
 #. [value]: speaker=narrator
-#: data/core/macros/ai_controller.cfg:819
+#: data/core/macros/ai_controller.cfg:825
 msgid ""
 "$ally_leader.name (side $ally_side|) is carrying out the following "
 "instructions:"
 msgstr ""
 
 #. [literal]
-#: data/core/macros/ai_controller.cfg:834
+#: data/core/macros/ai_controller.cfg:840
 msgid "Set objective..."
 msgstr ""
 
 #. [literal]
-#: data/core/macros/ai_controller.cfg:874
+#: data/core/macros/ai_controller.cfg:880
 #, fuzzy
 msgid "Set behavior..."
 msgstr "Parola Ata..."
 
 #. [literal]
-#: data/core/macros/ai_controller.cfg:914
+#: data/core/macros/ai_controller.cfg:920
 msgid "Exit"
 msgstr ""
 
@@ -6624,63 +6624,63 @@ msgstr "Birimler göründü! ($friends dost, $enemies düşman)"
 msgid "(press $hotkey to keep moving)"
 msgstr "(devam etmek için $hotkey tuşuna basınız)"
 
-#: src/addon_management.cpp:356
+#: src/addon_management.cpp:359
 msgid "B"
 msgstr "B"
 
-#: src/addon_management.cpp:359 src/dialogs.cpp:1213
+#: src/addon_management.cpp:362 src/dialogs.cpp:1213
 msgid "KB"
 msgstr "kB"
 
-#: src/addon_management.cpp:362
+#: src/addon_management.cpp:365
 msgid "MB"
 msgstr "MB"
 
-#: src/addon_management.cpp:365
+#: src/addon_management.cpp:368
 msgid "GB"
 msgstr "GB"
 
-#: src/addon_management.cpp:398
+#: src/addon_management.cpp:401
 msgid "addon_type^Campaign"
 msgstr "Seferberlik"
 
-#: src/addon_management.cpp:400
+#: src/addon_management.cpp:403
 msgid "addon_type^Scenario"
 msgstr "Senaryo"
 
-#: src/addon_management.cpp:402
+#: src/addon_management.cpp:405
 msgid "addon_type^MP era"
 msgstr "Çağ (ÇO)"
 
-#: src/addon_management.cpp:404
+#: src/addon_management.cpp:407
 msgid "addon_type^MP faction"
 msgstr "Hizip (ÇO)"
 
-#: src/addon_management.cpp:406
+#: src/addon_management.cpp:409
 msgid "addon_type^MP map-pack"
 msgstr "Harita Paketi (ÇO)"
 
-#: src/addon_management.cpp:408
+#: src/addon_management.cpp:411
 msgid "addon_type^MP scenario"
 msgstr "Senaryo (ÇO)"
 
-#: src/addon_management.cpp:410
+#: src/addon_management.cpp:413
 msgid "addon_type^MP campaign"
 msgstr "Seferberlik (ÇO)"
 
-#: src/addon_management.cpp:412
+#: src/addon_management.cpp:415
 msgid "addon_type^Resources"
 msgstr "Özkaynak"
 
-#: src/addon_management.cpp:414
+#: src/addon_management.cpp:417
 msgid "addon_type^(unknown)"
 msgstr "(bilinmiyor)"
 
-#: src/addon_management.cpp:443
+#: src/addon_management.cpp:446
 msgid "Dependencies"
 msgstr "Bağımlılıklar"
 
-#: src/addon_management.cpp:444
+#: src/addon_management.cpp:447
 msgid ""
 "This add-on depends upon the following add-on which you have not installed "
 "yet:"
@@ -6690,62 +6690,62 @@ msgid_plural ""
 msgstr[0] "Bu eklenti sizde kurulu olmayan şu eklentilere bağımlı:"
 msgstr[1] "Bu eklenti sizde kurulu olmayan şu eklentilere bağımlı:"
 
-#: src/addon_management.cpp:449
+#: src/addon_management.cpp:452
 msgid "Do you still want to download it?"
 msgstr "Yine de indirmek istiyor musunuz?"
 
-#: src/addon_management.cpp:464 src/addon_management.cpp:538
-#: src/multiplayer.cpp:327 src/multiplayer_ui.cpp:68
+#: src/addon_management.cpp:467 src/addon_management.cpp:541
+#: src/multiplayer.cpp:207 src/multiplayer.cpp:295 src/multiplayer_ui.cpp:68
 msgid "Connection timed out"
 msgstr "Bağlantı süresi aşıldı"
 
-#: src/addon_management.cpp:467
+#: src/addon_management.cpp:470
 msgid "The server responded with an error: \"$error|\""
 msgstr "Sunucu bir hata ile karşılık verdi: \"$error|\""
 
-#: src/addon_management.cpp:475
+#: src/addon_management.cpp:478
 msgid "Terms"
 msgstr "Şartlar"
 
-#: src/addon_management.cpp:509
+#: src/addon_management.cpp:512
 msgid "Sending add-on"
 msgstr "Eklenti gönderiliyor"
 
-#: src/addon_management.cpp:513 src/addon_management.cpp:540
+#: src/addon_management.cpp:516 src/addon_management.cpp:543
 msgid "The server responded with an error: \""
 msgstr "Sunucu bir hata ile karşılık verdi: \""
 
-#: src/addon_management.cpp:517 src/addon_management.cpp:544
+#: src/addon_management.cpp:520 src/addon_management.cpp:547
 #: src/multiplayer_wait.cpp:408
 msgid "Response"
 msgstr "Yanıt"
 
-#: src/addon_management.cpp:572
+#: src/addon_management.cpp:575
 msgid "Downloading add-on: $addon_title|..."
 msgstr "Eklenti indiriliyor: $addon_title|..."
 
-#: src/addon_management.cpp:586
+#: src/addon_management.cpp:591
 msgid ""
 "The add-on has an invalid file or directory name and can not be installed."
 msgstr "Eklenti geçersiz bir dizin veya dosya içerdiğinden kurulamıyor."
 
-#: src/addon_management.cpp:638
+#: src/addon_management.cpp:643
 msgid "Unchecked script files found:"
 msgstr "Kondtol edilmemiş betik dosyaları bulundu:"
 
-#: src/addon_management.cpp:645
+#: src/addon_management.cpp:650
 msgid "The add-on '$addon_title|' has been successfully installed."
 msgstr "Eklenti '$addon_title|' sorunsuzca kuruldu."
 
-#: src/addon_management.cpp:647
+#: src/addon_management.cpp:652
 msgid "Add-on Installed"
 msgstr "Eklenti kurulu"
 
-#: src/addon_management.cpp:705
+#: src/addon_management.cpp:710
 msgid "Outdated add-ons"
 msgstr "Eskimiş eklentiler"
 
-#: src/addon_management.cpp:707
+#: src/addon_management.cpp:712
 msgid ""
 "An outdated local add-on has publishing information attached. It will not be "
 "offered for updating."
@@ -6759,133 +6759,133 @@ msgstr[1] ""
 "Yayınlama bilgisine sahip eskimiş bir yerel eklenti bulundu. "
 "Güncellenmeyecek."
 
-#: src/addon_management.cpp:716
+#: src/addon_management.cpp:721
 msgid "Could not find any updated add-ons on this server."
 msgstr "Bu sunucuda güncel eklenti bulunamadı."
 
-#: src/addon_management.cpp:716
+#: src/addon_management.cpp:721
 msgid "No add-ons to update"
 msgstr "Güncellenecek bir eklenti yok"
 
-#: src/addon_management.cpp:730 src/addon_management.cpp:931
+#: src/addon_management.cpp:735 src/addon_management.cpp:938
 #: src/dialogs.cpp:646 src/menu_events.cpp:201 src/menu_events.cpp:989
 msgid "Name"
 msgstr "İsim"
 
-#: src/addon_management.cpp:730
+#: src/addon_management.cpp:735
 msgid "New version"
 msgstr "Yeni sürüm"
 
-#: src/addon_management.cpp:730
+#: src/addon_management.cpp:735
 msgid "Old version"
 msgstr "Eski sürüm"
 
-#: src/addon_management.cpp:731 src/addon_management.cpp:932
+#: src/addon_management.cpp:736 src/addon_management.cpp:939
 msgid "Author"
 msgstr "Yazar"
 
-#: src/addon_management.cpp:731 src/addon_management.cpp:932
+#: src/addon_management.cpp:736 src/addon_management.cpp:939
 msgid "Size"
 msgstr "Boyut"
 
-#: src/addon_management.cpp:785
+#: src/addon_management.cpp:790
 msgid "Update Add-ons"
 msgstr "Eklentileri Güncelle"
 
-#: src/addon_management.cpp:786
+#: src/addon_management.cpp:791
 msgid "Select an add-on to update:"
 msgstr "Güncellenecek eklentiyi seçiniz:"
 
-#: src/addon_management.cpp:800
+#: src/addon_management.cpp:805
 msgid "Update all"
 msgstr "Hepsini Güncelle"
 
-#: src/addon_management.cpp:855
+#: src/addon_management.cpp:862
 msgid "Update failed"
 msgstr "Güncelleme başarısız"
 
-#: src/addon_management.cpp:857
+#: src/addon_management.cpp:864
 msgid "The following add-on could not be downloaded or updated successfully:"
 msgid_plural ""
 "The following add-ons could not be downloaded or updated successfully:"
 msgstr[0] "Şu eklenti indirilip güncellenemedi:"
 msgstr[1] "Şu eklenti indirilip güncellenemedi:"
 
-#: src/addon_management.cpp:866
+#: src/addon_management.cpp:873
 msgid "Update succeeded"
 msgstr "Güncelleme tamamlandı"
 
-#: src/addon_management.cpp:867
+#: src/addon_management.cpp:874
 msgid "Add-on updated successfully."
 msgstr "Güncelleme sorunsuzca bitirildi."
 
-#: src/addon_management.cpp:868
+#: src/addon_management.cpp:875
 msgid "All add-ons updated successfully."
 msgstr "Tüm güncellemeler sorunsuzca tamamlandı."
 
-#: src/addon_management.cpp:891
+#: src/addon_management.cpp:898
 msgid "Connecting to Add-ons Server..."
 msgstr "Eklenti Sunucusuna bağlanılıyor..."
 
-#: src/addon_management.cpp:894
+#: src/addon_management.cpp:901
 msgid "Could not connect to host."
 msgstr "Sunucuya bağlanılamadı."
 
-#: src/addon_management.cpp:902
+#: src/addon_management.cpp:909
 msgid "Requesting list of add-ons"
 msgstr "Eklenti listesi isteniyor"
 
-#: src/addon_management.cpp:915
+#: src/addon_management.cpp:922
 msgid "An error occurred while communicating with the server."
 msgstr "Sunucu ile iletişim sırasında bir hata oluştu."
 
-#: src/addon_management.cpp:931 src/titlescreen.cpp:331
+#: src/addon_management.cpp:938 src/titlescreen.cpp:331
 msgid "Version"
 msgstr "Sürüm"
 
-#: src/addon_management.cpp:932
+#: src/addon_management.cpp:939
 msgid "Downloads"
 msgstr "İndirmeler"
 
-#: src/addon_management.cpp:932 src/help.cpp:1386 src/menu_events.cpp:200
+#: src/addon_management.cpp:939 src/help.cpp:1386 src/menu_events.cpp:200
 #: src/menu_events.cpp:988 src/menu_events.cpp:1487
 msgid "Type"
 msgstr "Tür"
 
-#: src/addon_management.cpp:999
+#: src/addon_management.cpp:1006
 msgid "Publish add-on: "
 msgstr "Eklenti yayınla: "
 
-#: src/addon_management.cpp:1005
+#: src/addon_management.cpp:1012
 msgid "Delete add-on: "
 msgstr "Eklenti sil: "
 
-#: src/addon_management.cpp:1011
+#: src/addon_management.cpp:1018
 msgid "There are no add-ons available for download from this server."
 msgstr "Bu sunucuda indirilebilecek bir eklenti yok."
 
-#: src/addon_management.cpp:1018
+#: src/addon_management.cpp:1025
 msgid "Get Add-ons"
 msgstr "Eklentileri al"
 
-#: src/addon_management.cpp:1019
+#: src/addon_management.cpp:1026
 msgid "Choose the add-on to download."
 msgstr "İndirilecek eklentiyi seçiniz."
 
-#: src/addon_management.cpp:1031 src/dialogs.cpp:671 src/menu_events.cpp:1047
+#: src/addon_management.cpp:1038 src/dialogs.cpp:671 src/menu_events.cpp:1047
 #: src/menu_events.cpp:1516
 msgid "Filter: "
 msgstr "Süzgeç: "
 
-#: src/addon_management.cpp:1061
+#: src/addon_management.cpp:1068
 msgid "Network communication error."
 msgstr "Ağ iletişim hatası."
 
-#: src/addon_management.cpp:1064
+#: src/addon_management.cpp:1071
 msgid "Remote host disconnected."
 msgstr "Uzak sunucuyla bağlantı koptu."
 
-#: src/addon_management.cpp:1067
+#: src/addon_management.cpp:1074
 msgid ""
 "A problem occurred when trying to create the files necessary to install this "
 "add-on."
@@ -6893,41 +6893,41 @@ msgstr ""
 "Bu eklentiyi kurmak için gerekli dosyalar oluşturulurken bir sorunla "
 "karşılaşıldı."
 
-#: src/addon_management.cpp:1085 src/addon_management.cpp:1140
+#: src/addon_management.cpp:1092 src/addon_management.cpp:1147
 #: src/dialogs.cpp:281 src/dialogs.cpp:289 src/menu_events.cpp:596
 #: src/multiplayer_create.cpp:529
 msgid "Error"
 msgstr "Hata"
 
-#: src/addon_management.cpp:1086
+#: src/addon_management.cpp:1093
 msgid "You have no add-ons installed."
 msgstr "Kurulu eklenti yok."
 
-#: src/addon_management.cpp:1098
+#: src/addon_management.cpp:1105
 msgid "Choose the add-on to remove."
 msgstr "Silinecek eklentiyi seçiniz."
 
-#: src/addon_management.cpp:1098
+#: src/addon_management.cpp:1105
 msgid "Uninstall add-ons"
 msgstr "Eklentiler siliniyor"
 
-#: src/addon_management.cpp:1110
+#: src/addon_management.cpp:1117
 msgid "Are you sure you want to remove the add-on '$addon|'?"
 msgstr "‘$addon|’ eklentisini gerçekten silmek istiyor musunuz?"
 
-#: src/addon_management.cpp:1115
+#: src/addon_management.cpp:1122
 msgid "Confirm"
 msgstr "Onay"
 
-#: src/addon_management.cpp:1127
+#: src/addon_management.cpp:1134
 msgid "Add-on '$addon|' deleted."
 msgstr "‘$addon|’ eklentisi silindi."
 
-#: src/addon_management.cpp:1132
+#: src/addon_management.cpp:1139
 msgid "Add-on deleted"
 msgstr "Eklenti silindi"
 
-#: src/addon_management.cpp:1141
+#: src/addon_management.cpp:1148
 msgid "Add-on could not be deleted properly:"
 msgstr "Eklenti tamamen silinemedi:"
 
@@ -7286,11 +7286,29 @@ msgstr "Ana ekran yükleniyor."
 msgid "Invalid color range: "
 msgstr "Geçersiz renk aralığı: "
 
-#: src/game_events.cpp:1012
+#: src/game_events.cpp:133
+#, fuzzy
+msgid "Error: "
+msgstr "Hata"
+
+#: src/game_events.cpp:136
+#, fuzzy
+msgid "Warning: "
+msgstr "Sabah"
+
+#: src/game_events.cpp:139
+msgid "Debug: "
+msgstr ""
+
+#: src/game_events.cpp:142
+msgid "Info: "
+msgstr ""
+
+#: src/game_events.cpp:1063
 msgid "Victory:"
 msgstr "Galibiyet:"
 
-#: src/game_events.cpp:1015
+#: src/game_events.cpp:1066
 msgid "Defeat:"
 msgstr "Mağlubiyet:"
 
@@ -8209,14 +8227,6 @@ msgstr ""
 #: src/multiplayer.cpp:159
 msgid "Server-side redirect loop"
 msgstr "Sunucu taraflı yönlendirme döngüsü"
-
-#: src/multiplayer.cpp:223
-msgid "You must log in to this server"
-msgstr "Bu sunucuya oturum açmanız lazım"
-
-#: src/multiplayer.cpp:224
-msgid "Login: "
-msgstr "Giriş: "
 
 #: src/multiplayer_connect.cpp:82 src/multiplayer_connect.cpp:496
 #: src/multiplayer_connect.cpp:623
@@ -9256,6 +9266,12 @@ msgstr "Wesnoth’u sizin için daha iyi hale getirmemize yardım edin!"
 #: src/upload_log.cpp:332
 msgid "Enable summary uploads"
 msgstr "Özet göndermeyi etkinleştir"
+
+#~ msgid "You must log in to this server"
+#~ msgstr "Bu sunucuya oturum açmanız lazım"
+
+#~ msgid "Login: "
+#~ msgstr "Giriş: "
 
 #~ msgid "VICTORY_AND_DEFEAT_MUSIC is unnecessary and can be removed."
 #~ msgstr "VICTORY_AND_DEFEAT_MUSIC gereksizdir ve silinebilir."

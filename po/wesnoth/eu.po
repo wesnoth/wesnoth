@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.0\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-01-11 17:05+0100\n"
+"POT-Creation-Date: 2009-01-16 21:53+0100\n"
 "PO-Revision-Date: 2005-08-23 11:08+0100\n"
 "Last-Translator: Alfredo Beaumont <ziberpunk@ziberghetto.dhis.org>\n"
 "Language-Team: Basque <ziberpunk@ziberghetto.dhis.org>\n"
@@ -23,45 +23,45 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 
 #. [advanced_preference]: type=boolean
-#: data/_main.cfg:45
+#: data/_main.cfg:49
 msgid "Compressed Saves"
 msgstr ""
 
 #. [advanced_preference]: type=boolean
-#: data/_main.cfg:52
+#: data/_main.cfg:56
 #, fuzzy
 msgid "Mouse Scrolling"
 msgstr "Sendaketak"
 
 #. [advanced_preference]: type=boolean
-#: data/_main.cfg:59
+#: data/_main.cfg:63
 #, fuzzy
 msgid "Middle-click Scrolling"
 msgstr "Sendaketak"
 
 #. [advanced_preference]: type=boolean
-#: data/_main.cfg:66
+#: data/_main.cfg:70
 msgid "Animate Map"
 msgstr ""
 
 #. [advanced_preference]: type=boolean
-#: data/_main.cfg:73
+#: data/_main.cfg:77
 #, fuzzy
 msgid "Show Titlescreen Animation"
 msgstr "Kanpaina"
 
 #. [advanced_preference]: type=boolean
-#: data/_main.cfg:80
+#: data/_main.cfg:84
 msgid "Unit Standing Animations"
 msgstr ""
 
 #. [advanced_preference]: type=boolean
-#: data/_main.cfg:87
+#: data/_main.cfg:91
 msgid "Show Combat"
 msgstr "Borrokak erakutsi"
 
 #. [advanced_preference]: type=boolean
-#: data/_main.cfg:102
+#: data/_main.cfg:106
 msgid "Only Run Safe Python AIs"
 msgstr ""
 
@@ -2741,11 +2741,11 @@ msgstr ""
 #. [set_menu_item]: id=ai_controller
 #: data/core/macros/ai_controller.cfg:227
 #: data/core/macros/ai_controller.cfg:373
-#: data/core/macros/ai_controller.cfg:676
-#: data/core/macros/ai_controller.cfg:801
-#: data/core/macros/ai_controller.cfg:818
-#: data/core/macros/ai_controller.cfg:839
-#: data/core/macros/ai_controller.cfg:879
+#: data/core/macros/ai_controller.cfg:682
+#: data/core/macros/ai_controller.cfg:807
+#: data/core/macros/ai_controller.cfg:824
+#: data/core/macros/ai_controller.cfg:845
+#: data/core/macros/ai_controller.cfg:885
 msgid "Instruct ally"
 msgstr ""
 
@@ -2784,8 +2784,8 @@ msgstr ""
 #. [option]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:329
 #: data/core/macros/ai_controller.cfg:479
-#: data/core/macros/ai_controller.cfg:864
-#: data/core/macros/ai_controller.cfg:899
+#: data/core/macros/ai_controller.cfg:870
+#: data/core/macros/ai_controller.cfg:905
 #, fuzzy
 msgid "Back"
 msgstr "< Atzera"
@@ -2812,12 +2812,12 @@ msgid "Defend a location..."
 msgstr "+Estoniera itzulpena"
 
 #. [print]
-#: data/core/macros/ai_controller.cfg:525
+#: data/core/macros/ai_controller.cfg:527
 msgid "Right-click to select a location to defend"
 msgstr ""
 
 #. [set_menu_item]: id=ai_controller_defend_location_picker
-#: data/core/macros/ai_controller.cfg:532
+#: data/core/macros/ai_controller.cfg:534
 #, fuzzy
 msgid "Defend this location"
 msgstr "+Estoniera itzulpena"
@@ -2828,45 +2828,45 @@ msgid "focusing on defending the area around $x1|,$y1|."
 msgstr ""
 
 #. [print]
-#: data/core/macros/ai_controller.cfg:580
+#: data/core/macros/ai_controller.cfg:586
 msgid "Location selection canceled"
 msgstr ""
 
 #. [option]
-#: data/core/macros/ai_controller.cfg:595
+#: data/core/macros/ai_controller.cfg:601
 #, fuzzy
 msgid "Clear objective orders"
 msgstr "Utzi"
 
 #. [option]
-#: data/core/macros/ai_controller.cfg:619
+#: data/core/macros/ai_controller.cfg:625
 #, fuzzy
 msgid "Clear behavior orders"
 msgstr "Utzi"
 
 #. [option]
-#: data/core/macros/ai_controller.cfg:643
+#: data/core/macros/ai_controller.cfg:649
 #, fuzzy
 msgid "Clear all orders"
 msgstr "Utzi"
 
 #. [then]
-#: data/core/macros/ai_controller.cfg:769
-#: data/core/macros/ai_controller.cfg:780
+#: data/core/macros/ai_controller.cfg:775
+#: data/core/macros/ai_controller.cfg:786
 #, fuzzy
 msgid "none set."
 msgstr "bat ere ez"
 
 #. [value]: speaker=narrator
-#: data/core/macros/ai_controller.cfg:802
+#: data/core/macros/ai_controller.cfg:808
 msgid ""
 "$ally_leader.name (side $ally_side|) has not been given any instructions and "
 "is acting normally."
 msgstr ""
 
 #. [value]: speaker=narrator
-#: data/core/macros/ai_controller.cfg:805
-#: data/core/macros/ai_controller.cfg:822
+#: data/core/macros/ai_controller.cfg:811
+#: data/core/macros/ai_controller.cfg:828
 msgid ""
 "Objective: $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_objective_description\n"
@@ -2875,24 +2875,24 @@ msgid ""
 msgstr ""
 
 #. [value]: speaker=narrator
-#: data/core/macros/ai_controller.cfg:819
+#: data/core/macros/ai_controller.cfg:825
 msgid ""
 "$ally_leader.name (side $ally_side|) is carrying out the following "
 "instructions:"
 msgstr ""
 
 #. [literal]
-#: data/core/macros/ai_controller.cfg:834
+#: data/core/macros/ai_controller.cfg:840
 msgid "Set objective..."
 msgstr ""
 
 #. [literal]
-#: data/core/macros/ai_controller.cfg:874
+#: data/core/macros/ai_controller.cfg:880
 msgid "Set behavior..."
 msgstr ""
 
 #. [literal]
-#: data/core/macros/ai_controller.cfg:914
+#: data/core/macros/ai_controller.cfg:920
 msgid "Exit"
 msgstr ""
 
@@ -5547,69 +5547,69 @@ msgstr "Unitateak ikustatuta! ($friends lagun, $enemies etsai)"
 msgid "(press $hotkey to keep moving)"
 msgstr "(sakatu $hotkey jarraitzeko)"
 
-#: src/addon_management.cpp:356
+#: src/addon_management.cpp:359
 msgid "B"
 msgstr "B"
 
-#: src/addon_management.cpp:359 src/dialogs.cpp:1213
+#: src/addon_management.cpp:362 src/dialogs.cpp:1213
 msgid "KB"
 msgstr "KB"
 
-#: src/addon_management.cpp:362
+#: src/addon_management.cpp:365
 msgid "MB"
 msgstr "MB"
 
-#: src/addon_management.cpp:365
+#: src/addon_management.cpp:368
 #, fuzzy
 msgid "GB"
 msgstr "B"
 
-#: src/addon_management.cpp:398
+#: src/addon_management.cpp:401
 msgid "addon_type^Campaign"
 msgstr ""
 
-#: src/addon_management.cpp:400
+#: src/addon_management.cpp:403
 msgid "addon_type^Scenario"
 msgstr ""
 
-#: src/addon_management.cpp:402
+#: src/addon_management.cpp:405
 #, fuzzy
 msgid "addon_type^MP era"
 msgstr "Guda leku ezezaguna: '"
 
-#: src/addon_management.cpp:404
+#: src/addon_management.cpp:407
 #, fuzzy
 msgid "addon_type^MP faction"
 msgstr "Guda leku ezezaguna: '"
 
-#: src/addon_management.cpp:406
+#: src/addon_management.cpp:409
 #, fuzzy
 msgid "addon_type^MP map-pack"
 msgstr "Guda leku ezezaguna: '"
 
-#: src/addon_management.cpp:408
+#: src/addon_management.cpp:411
 #, fuzzy
 msgid "addon_type^MP scenario"
 msgstr "Guda leku ezezaguna: '"
 
-#: src/addon_management.cpp:410
+#: src/addon_management.cpp:413
 msgid "addon_type^MP campaign"
 msgstr ""
 
-#: src/addon_management.cpp:412
+#: src/addon_management.cpp:415
 msgid "addon_type^Resources"
 msgstr ""
 
-#: src/addon_management.cpp:414
+#: src/addon_management.cpp:417
 msgid "addon_type^(unknown)"
 msgstr ""
 
-#: src/addon_management.cpp:443
+#: src/addon_management.cpp:446
 #, fuzzy
 msgid "Dependencies"
 msgstr "Printzesa"
 
-#: src/addon_management.cpp:444
+#: src/addon_management.cpp:447
 msgid ""
 "This add-on depends upon the following add-on which you have not installed "
 "yet:"
@@ -5619,69 +5619,69 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/addon_management.cpp:449
+#: src/addon_management.cpp:452
 #, fuzzy
 msgid "Do you still want to download it?"
 msgstr "Ziur al zaude joku hau ezabatu nahi duzula?"
 
-#: src/addon_management.cpp:464 src/addon_management.cpp:538
-#: src/multiplayer.cpp:327 src/multiplayer_ui.cpp:68
+#: src/addon_management.cpp:467 src/addon_management.cpp:541
+#: src/multiplayer.cpp:207 src/multiplayer.cpp:295 src/multiplayer_ui.cpp:68
 msgid "Connection timed out"
 msgstr "Konexioa denboraz kanpo"
 
-#: src/addon_management.cpp:467
+#: src/addon_management.cpp:470
 #, fuzzy
 msgid "The server responded with an error: \"$error|\""
 msgstr "Zerbitzariak errore batekin erantzun du: \""
 
-#: src/addon_management.cpp:475
+#: src/addon_management.cpp:478
 msgid "Terms"
 msgstr "Terminoak"
 
-#: src/addon_management.cpp:509
+#: src/addon_management.cpp:512
 #, fuzzy
 msgid "Sending add-on"
 msgstr "Kanpaina jeisten..."
 
-#: src/addon_management.cpp:513 src/addon_management.cpp:540
+#: src/addon_management.cpp:516 src/addon_management.cpp:543
 msgid "The server responded with an error: \""
 msgstr "Zerbitzariak errore batekin erantzun du: \""
 
-#: src/addon_management.cpp:517 src/addon_management.cpp:544
+#: src/addon_management.cpp:520 src/addon_management.cpp:547
 #: src/multiplayer_wait.cpp:408
 msgid "Response"
 msgstr "Erantzuna"
 
-#: src/addon_management.cpp:572
+#: src/addon_management.cpp:575
 #, fuzzy
 msgid "Downloading add-on: $addon_title|..."
 msgstr "Kanpaina jeisten..."
 
-#: src/addon_management.cpp:586
+#: src/addon_management.cpp:591
 msgid ""
 "The add-on has an invalid file or directory name and can not be installed."
 msgstr ""
 
-#: src/addon_management.cpp:638
+#: src/addon_management.cpp:643
 msgid "Unchecked script files found:"
 msgstr ""
 
-#: src/addon_management.cpp:645
+#: src/addon_management.cpp:650
 #, fuzzy
 msgid "The add-on '$addon_title|' has been successfully installed."
 msgstr "Kanpaina instalatua izan da"
 
-#: src/addon_management.cpp:647
+#: src/addon_management.cpp:652
 #, fuzzy
 msgid "Add-on Installed"
 msgstr "Kanpaina instalatua"
 
-#: src/addon_management.cpp:705
+#: src/addon_management.cpp:710
 #, fuzzy
 msgid "Outdated add-ons"
 msgstr "Kanpaina jeisten..."
 
-#: src/addon_management.cpp:707
+#: src/addon_management.cpp:712
 msgid ""
 "An outdated local add-on has publishing information attached. It will not be "
 "offered for updating."
@@ -5691,56 +5691,56 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/addon_management.cpp:716
+#: src/addon_management.cpp:721
 msgid "Could not find any updated add-ons on this server."
 msgstr ""
 
-#: src/addon_management.cpp:716
+#: src/addon_management.cpp:721
 msgid "No add-ons to update"
 msgstr ""
 
-#: src/addon_management.cpp:730 src/addon_management.cpp:931
+#: src/addon_management.cpp:735 src/addon_management.cpp:938
 #: src/dialogs.cpp:646 src/menu_events.cpp:201 src/menu_events.cpp:989
 msgid "Name"
 msgstr "Izena"
 
-#: src/addon_management.cpp:730
+#: src/addon_management.cpp:735
 #, fuzzy
 msgid "New version"
 msgstr "Bertsioa"
 
-#: src/addon_management.cpp:730
+#: src/addon_management.cpp:735
 #, fuzzy
 msgid "Old version"
 msgstr "Bertsioa"
 
-#: src/addon_management.cpp:731 src/addon_management.cpp:932
+#: src/addon_management.cpp:736 src/addon_management.cpp:939
 msgid "Author"
 msgstr "Egilea"
 
-#: src/addon_management.cpp:731 src/addon_management.cpp:932
+#: src/addon_management.cpp:736 src/addon_management.cpp:939
 msgid "Size"
 msgstr "Tamaina"
 
-#: src/addon_management.cpp:785
+#: src/addon_management.cpp:790
 msgid "Update Add-ons"
 msgstr ""
 
-#: src/addon_management.cpp:786
+#: src/addon_management.cpp:791
 msgid "Select an add-on to update:"
 msgstr ""
 
-#: src/addon_management.cpp:800
+#: src/addon_management.cpp:805
 #, fuzzy
 msgid "Update all"
 msgstr "Leize horma"
 
-#: src/addon_management.cpp:855
+#: src/addon_management.cpp:862
 #, fuzzy
 msgid "Update failed"
 msgstr "Leize horma"
 
-#: src/addon_management.cpp:857
+#: src/addon_management.cpp:864
 #, fuzzy
 msgid "The following add-on could not be downloaded or updated successfully:"
 msgid_plural ""
@@ -5748,135 +5748,135 @@ msgid_plural ""
 msgstr[0] "Ezin izan da joku mapa kargatu: "
 msgstr[1] "Ezin izan da joku mapa kargatu: "
 
-#: src/addon_management.cpp:866
+#: src/addon_management.cpp:873
 #, fuzzy
 msgid "Update succeeded"
 msgstr "Kanpaina jeisten..."
 
-#: src/addon_management.cpp:867
+#: src/addon_management.cpp:874
 msgid "Add-on updated successfully."
 msgstr ""
 
-#: src/addon_management.cpp:868
+#: src/addon_management.cpp:875
 msgid "All add-ons updated successfully."
 msgstr ""
 
-#: src/addon_management.cpp:891
+#: src/addon_management.cpp:898
 #, fuzzy
 msgid "Connecting to Add-ons Server..."
 msgstr "Zerbitzarira konektatzen..."
 
-#: src/addon_management.cpp:894
+#: src/addon_management.cpp:901
 msgid "Could not connect to host."
 msgstr "Ezin izan da ostalariari konektatu."
 
-#: src/addon_management.cpp:902
+#: src/addon_management.cpp:909
 msgid "Requesting list of add-ons"
 msgstr ""
 
-#: src/addon_management.cpp:915
+#: src/addon_management.cpp:922
 #, fuzzy
 msgid "An error occurred while communicating with the server."
 msgstr "Errorea zerbitzariarekin komunikatzen."
 
-#: src/addon_management.cpp:931 src/titlescreen.cpp:331
+#: src/addon_management.cpp:938 src/titlescreen.cpp:331
 msgid "Version"
 msgstr "Bertsioa"
 
-#: src/addon_management.cpp:932
+#: src/addon_management.cpp:939
 msgid "Downloads"
 msgstr "Deskargak"
 
-#: src/addon_management.cpp:932 src/help.cpp:1386 src/menu_events.cpp:200
+#: src/addon_management.cpp:939 src/help.cpp:1386 src/menu_events.cpp:200
 #: src/menu_events.cpp:988 src/menu_events.cpp:1487
 msgid "Type"
 msgstr "Mota"
 
-#: src/addon_management.cpp:999
+#: src/addon_management.cpp:1006
 #, fuzzy
 msgid "Publish add-on: "
 msgstr "Kanpaina argitaratu: "
 
-#: src/addon_management.cpp:1005
+#: src/addon_management.cpp:1012
 #, fuzzy
 msgid "Delete add-on: "
 msgstr "Kanpaina ezabatu: "
 
-#: src/addon_management.cpp:1011
+#: src/addon_management.cpp:1018
 #, fuzzy
 msgid "There are no add-ons available for download from this server."
 msgstr "Ez dago jeisteko kanpainarik zerbitzari honetan."
 
-#: src/addon_management.cpp:1018
+#: src/addon_management.cpp:1025
 msgid "Get Add-ons"
 msgstr ""
 
-#: src/addon_management.cpp:1019
+#: src/addon_management.cpp:1026
 #, fuzzy
 msgid "Choose the add-on to download."
 msgstr "Hautatu jeitsi nahi duzun kanpaina"
 
-#: src/addon_management.cpp:1031 src/dialogs.cpp:671 src/menu_events.cpp:1047
+#: src/addon_management.cpp:1038 src/dialogs.cpp:671 src/menu_events.cpp:1047
 #: src/menu_events.cpp:1516
 #, fuzzy
 msgid "Filter: "
 msgstr "Trebetasunak:"
 
-#: src/addon_management.cpp:1061
+#: src/addon_management.cpp:1068
 msgid "Network communication error."
 msgstr "Sare komunikazio errorea."
 
-#: src/addon_management.cpp:1064
+#: src/addon_management.cpp:1071
 msgid "Remote host disconnected."
 msgstr "Urruneko ostalariak deskonektatu egin du."
 
-#: src/addon_management.cpp:1067
+#: src/addon_management.cpp:1074
 #, fuzzy
 msgid ""
 "A problem occurred when trying to create the files necessary to install this "
 "add-on."
 msgstr "Arazo bat egon da kanpaina instalatzeko behar den fitxategia sortzen."
 
-#: src/addon_management.cpp:1085 src/addon_management.cpp:1140
+#: src/addon_management.cpp:1092 src/addon_management.cpp:1147
 #: src/dialogs.cpp:281 src/dialogs.cpp:289 src/menu_events.cpp:596
 #: src/multiplayer_create.cpp:529
 msgid "Error"
 msgstr "Okerra"
 
-#: src/addon_management.cpp:1086
+#: src/addon_management.cpp:1093
 #, fuzzy
 msgid "You have no add-ons installed."
 msgstr "Kanpaina instalatua izan da"
 
-#: src/addon_management.cpp:1098
+#: src/addon_management.cpp:1105
 #, fuzzy
 msgid "Choose the add-on to remove."
 msgstr "Hautatu jeitsi nahi duzun kanpaina"
 
-#: src/addon_management.cpp:1098
+#: src/addon_management.cpp:1105
 #, fuzzy
 msgid "Uninstall add-ons"
 msgstr "Kanpaina jeisten..."
 
-#: src/addon_management.cpp:1110
+#: src/addon_management.cpp:1117
 msgid "Are you sure you want to remove the add-on '$addon|'?"
 msgstr ""
 
-#: src/addon_management.cpp:1115
+#: src/addon_management.cpp:1122
 msgid "Confirm"
 msgstr ""
 
-#: src/addon_management.cpp:1127
+#: src/addon_management.cpp:1134
 #, fuzzy
 msgid "Add-on '$addon|' deleted."
 msgstr "Kanpaina instalatua"
 
-#: src/addon_management.cpp:1132
+#: src/addon_management.cpp:1139
 #, fuzzy
 msgid "Add-on deleted"
 msgstr "Kanpaina instalatua"
 
-#: src/addon_management.cpp:1141
+#: src/addon_management.cpp:1148
 msgid "Add-on could not be deleted properly:"
 msgstr ""
 
@@ -6260,11 +6260,29 @@ msgstr ""
 msgid "Invalid color range: "
 msgstr "Baliogabeko kolorea"
 
-#: src/game_events.cpp:1012
+#: src/game_events.cpp:133
+#, fuzzy
+msgid "Error: "
+msgstr "Okerra"
+
+#: src/game_events.cpp:136
+#, fuzzy
+msgid "Warning: "
+msgstr "Goiza"
+
+#: src/game_events.cpp:139
+msgid "Debug: "
+msgstr ""
+
+#: src/game_events.cpp:142
+msgid "Info: "
+msgstr ""
+
+#: src/game_events.cpp:1063
 msgid "Victory:"
 msgstr "Garaipena:"
 
-#: src/game_events.cpp:1015
+#: src/game_events.cpp:1066
 msgid "Defeat:"
 msgstr "Gainditu:"
 
@@ -7229,14 +7247,6 @@ msgstr ""
 #: src/multiplayer.cpp:159
 msgid "Server-side redirect loop"
 msgstr ""
-
-#: src/multiplayer.cpp:223
-msgid "You must log in to this server"
-msgstr "Zerbitzarian saioa hasi behar duzu"
-
-#: src/multiplayer.cpp:224
-msgid "Login: "
-msgstr "Saioa hasi"
 
 #: src/multiplayer_connect.cpp:82 src/multiplayer_connect.cpp:496
 #: src/multiplayer_connect.cpp:623
@@ -8328,6 +8338,12 @@ msgstr ""
 #: src/upload_log.cpp:332
 msgid "Enable summary uploads"
 msgstr ""
+
+#~ msgid "You must log in to this server"
+#~ msgstr "Zerbitzarian saioa hasi behar duzu"
+
+#~ msgid "Login: "
+#~ msgstr "Saioa hasi"
 
 #, fuzzy
 #~ msgid "Choose a different username"

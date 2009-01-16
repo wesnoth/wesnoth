@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-01-11 17:05+0100\n"
+"POT-Creation-Date: 2009-01-16 21:53+0100\n"
 "PO-Revision-Date: 2008-06-07 00:37+0300\n"
 "Last-Translator: vicza <vicza@zmail.ru>\n"
 "Language-Team:  <ru@li.org>\n"
@@ -26,44 +26,44 @@ msgstr ""
 "X-Poedit-Country: RUSSIAN FEDERATION\n"
 
 #. [advanced_preference]: type=boolean
-#: data/_main.cfg:45
+#: data/_main.cfg:49
 msgid "Compressed Saves"
 msgstr "Сжатые сохранения"
 
 #. [advanced_preference]: type=boolean
-#: data/_main.cfg:52
+#: data/_main.cfg:56
 msgid "Mouse Scrolling"
 msgstr "Прокрутка мыши"
 
 #. [advanced_preference]: type=boolean
-#: data/_main.cfg:59
+#: data/_main.cfg:63
 #, fuzzy
 msgid "Middle-click Scrolling"
 msgstr "Прокрутка мыши"
 
 #. [advanced_preference]: type=boolean
-#: data/_main.cfg:66
+#: data/_main.cfg:70
 msgid "Animate Map"
 msgstr "Анимированная карта"
 
 #. [advanced_preference]: type=boolean
-#: data/_main.cfg:73
+#: data/_main.cfg:77
 #, fuzzy
 msgid "Show Titlescreen Animation"
 msgstr "Кампания"
 
 #. [advanced_preference]: type=boolean
-#: data/_main.cfg:80
+#: data/_main.cfg:84
 msgid "Unit Standing Animations"
 msgstr "Анимация стоящих отрядов"
 
 #. [advanced_preference]: type=boolean
-#: data/_main.cfg:87
+#: data/_main.cfg:91
 msgid "Show Combat"
 msgstr "Показывать битву"
 
 #. [advanced_preference]: type=boolean
-#: data/_main.cfg:102
+#: data/_main.cfg:106
 msgid "Only Run Safe Python AIs"
 msgstr ""
 
@@ -3432,11 +3432,11 @@ msgstr ""
 #. [set_menu_item]: id=ai_controller
 #: data/core/macros/ai_controller.cfg:227
 #: data/core/macros/ai_controller.cfg:373
-#: data/core/macros/ai_controller.cfg:676
-#: data/core/macros/ai_controller.cfg:801
-#: data/core/macros/ai_controller.cfg:818
-#: data/core/macros/ai_controller.cfg:839
-#: data/core/macros/ai_controller.cfg:879
+#: data/core/macros/ai_controller.cfg:682
+#: data/core/macros/ai_controller.cfg:807
+#: data/core/macros/ai_controller.cfg:824
+#: data/core/macros/ai_controller.cfg:845
+#: data/core/macros/ai_controller.cfg:885
 msgid "Instruct ally"
 msgstr ""
 
@@ -3475,8 +3475,8 @@ msgstr ""
 #. [option]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:329
 #: data/core/macros/ai_controller.cfg:479
-#: data/core/macros/ai_controller.cfg:864
-#: data/core/macros/ai_controller.cfg:899
+#: data/core/macros/ai_controller.cfg:870
+#: data/core/macros/ai_controller.cfg:905
 msgid "Back"
 msgstr "Назад"
 
@@ -3502,12 +3502,12 @@ msgid "Defend a location..."
 msgstr "Эстонский перевод"
 
 #. [print]
-#: data/core/macros/ai_controller.cfg:525
+#: data/core/macros/ai_controller.cfg:527
 msgid "Right-click to select a location to defend"
 msgstr ""
 
 #. [set_menu_item]: id=ai_controller_defend_location_picker
-#: data/core/macros/ai_controller.cfg:532
+#: data/core/macros/ai_controller.cfg:534
 #, fuzzy
 msgid "Defend this location"
 msgstr "Эстонский перевод"
@@ -3518,45 +3518,45 @@ msgid "focusing on defending the area around $x1|,$y1|."
 msgstr ""
 
 #. [print]
-#: data/core/macros/ai_controller.cfg:580
+#: data/core/macros/ai_controller.cfg:586
 msgid "Location selection canceled"
 msgstr ""
 
 #. [option]
-#: data/core/macros/ai_controller.cfg:595
+#: data/core/macros/ai_controller.cfg:601
 #, fuzzy
 msgid "Clear objective orders"
 msgstr "Отмена"
 
 #. [option]
-#: data/core/macros/ai_controller.cfg:619
+#: data/core/macros/ai_controller.cfg:625
 #, fuzzy
 msgid "Clear behavior orders"
 msgstr "Отмена"
 
 #. [option]
-#: data/core/macros/ai_controller.cfg:643
+#: data/core/macros/ai_controller.cfg:649
 #, fuzzy
 msgid "Clear all orders"
 msgstr "Отмена"
 
 #. [then]
-#: data/core/macros/ai_controller.cfg:769
-#: data/core/macros/ai_controller.cfg:780
+#: data/core/macros/ai_controller.cfg:775
+#: data/core/macros/ai_controller.cfg:786
 #, fuzzy
 msgid "none set."
 msgstr "нет"
 
 #. [value]: speaker=narrator
-#: data/core/macros/ai_controller.cfg:802
+#: data/core/macros/ai_controller.cfg:808
 msgid ""
 "$ally_leader.name (side $ally_side|) has not been given any instructions and "
 "is acting normally."
 msgstr ""
 
 #. [value]: speaker=narrator
-#: data/core/macros/ai_controller.cfg:805
-#: data/core/macros/ai_controller.cfg:822
+#: data/core/macros/ai_controller.cfg:811
+#: data/core/macros/ai_controller.cfg:828
 msgid ""
 "Objective: $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_objective_description\n"
@@ -3565,25 +3565,25 @@ msgid ""
 msgstr ""
 
 #. [value]: speaker=narrator
-#: data/core/macros/ai_controller.cfg:819
+#: data/core/macros/ai_controller.cfg:825
 msgid ""
 "$ally_leader.name (side $ally_side|) is carrying out the following "
 "instructions:"
 msgstr ""
 
 #. [literal]
-#: data/core/macros/ai_controller.cfg:834
+#: data/core/macros/ai_controller.cfg:840
 msgid "Set objective..."
 msgstr ""
 
 #. [literal]
-#: data/core/macros/ai_controller.cfg:874
+#: data/core/macros/ai_controller.cfg:880
 #, fuzzy
 msgid "Set behavior..."
 msgstr "Установить пароль..."
 
 #. [literal]
-#: data/core/macros/ai_controller.cfg:914
+#: data/core/macros/ai_controller.cfg:920
 msgid "Exit"
 msgstr ""
 
@@ -7013,68 +7013,68 @@ msgstr "Замечены отряды! ($friendphrase, $enemyphrase)"
 msgid "(press $hotkey to keep moving)"
 msgstr "(нажмите $hotkey, чтобы продолжить движение)"
 
-#: src/addon_management.cpp:356
+#: src/addon_management.cpp:359
 msgid "B"
 msgstr "б"
 
-#: src/addon_management.cpp:359 src/dialogs.cpp:1213
+#: src/addon_management.cpp:362 src/dialogs.cpp:1213
 msgid "KB"
 msgstr "кб"
 
-#: src/addon_management.cpp:362
+#: src/addon_management.cpp:365
 msgid "MB"
 msgstr "Мб"
 
-#: src/addon_management.cpp:365
+#: src/addon_management.cpp:368
 #, fuzzy
 msgid "GB"
 msgstr "б"
 
-#: src/addon_management.cpp:398
+#: src/addon_management.cpp:401
 msgid "addon_type^Campaign"
 msgstr ""
 
-#: src/addon_management.cpp:400
+#: src/addon_management.cpp:403
 msgid "addon_type^Scenario"
 msgstr ""
 
-#: src/addon_management.cpp:402
+#: src/addon_management.cpp:405
 #, fuzzy
 msgid "addon_type^MP era"
 msgstr "Удаленный сценарий"
 
-#: src/addon_management.cpp:404
+#: src/addon_management.cpp:407
 #, fuzzy
 msgid "addon_type^MP faction"
 msgstr "Удаленный сценарий"
 
-#: src/addon_management.cpp:406
+#: src/addon_management.cpp:409
 #, fuzzy
 msgid "addon_type^MP map-pack"
 msgstr "Удаленный сценарий"
 
-#: src/addon_management.cpp:408
+#: src/addon_management.cpp:411
 #, fuzzy
 msgid "addon_type^MP scenario"
 msgstr "Удаленный сценарий"
 
-#: src/addon_management.cpp:410
+#: src/addon_management.cpp:413
 msgid "addon_type^MP campaign"
 msgstr ""
 
-#: src/addon_management.cpp:412
+#: src/addon_management.cpp:415
 msgid "addon_type^Resources"
 msgstr ""
 
-#: src/addon_management.cpp:414
+#: src/addon_management.cpp:417
 msgid "addon_type^(unknown)"
 msgstr ""
 
-#: src/addon_management.cpp:443
+#: src/addon_management.cpp:446
 msgid "Dependencies"
 msgstr "Зависимости"
 
-#: src/addon_management.cpp:444
+#: src/addon_management.cpp:447
 #, fuzzy
 msgid ""
 "This add-on depends upon the following add-on which you have not installed "
@@ -7086,65 +7086,65 @@ msgstr[0] "Этому аддону необходимы следующие за�
 msgstr[1] "Этому аддону необходимы следующие зависимости:"
 msgstr[2] "Этому аддону необходимы следующие зависимости:"
 
-#: src/addon_management.cpp:449
+#: src/addon_management.cpp:452
 msgid "Do you still want to download it?"
 msgstr "Хотите ли скачать его?"
 
-#: src/addon_management.cpp:464 src/addon_management.cpp:538
-#: src/multiplayer.cpp:327 src/multiplayer_ui.cpp:68
+#: src/addon_management.cpp:467 src/addon_management.cpp:541
+#: src/multiplayer.cpp:207 src/multiplayer.cpp:295 src/multiplayer_ui.cpp:68
 msgid "Connection timed out"
 msgstr "Превышен лимит времени подключения"
 
-#: src/addon_management.cpp:467
+#: src/addon_management.cpp:470
 msgid "The server responded with an error: \"$error|\""
 msgstr "Сервер ответил с ошибкой: \"$error|\""
 
-#: src/addon_management.cpp:475
+#: src/addon_management.cpp:478
 msgid "Terms"
 msgstr "Условия"
 
-#: src/addon_management.cpp:509
+#: src/addon_management.cpp:512
 msgid "Sending add-on"
 msgstr "Передача аддона"
 
-#: src/addon_management.cpp:513 src/addon_management.cpp:540
+#: src/addon_management.cpp:516 src/addon_management.cpp:543
 msgid "The server responded with an error: \""
 msgstr "Сервер ответил с ошибкой: \""
 
-#: src/addon_management.cpp:517 src/addon_management.cpp:544
+#: src/addon_management.cpp:520 src/addon_management.cpp:547
 #: src/multiplayer_wait.cpp:408
 msgid "Response"
 msgstr "Ответ"
 
-#: src/addon_management.cpp:572
+#: src/addon_management.cpp:575
 #, fuzzy
 msgid "Downloading add-on: $addon_title|..."
 msgstr "Загружаем аддон..."
 
-#: src/addon_management.cpp:586
+#: src/addon_management.cpp:591
 msgid ""
 "The add-on has an invalid file or directory name and can not be installed."
 msgstr ""
 
-#: src/addon_management.cpp:638
+#: src/addon_management.cpp:643
 msgid "Unchecked script files found:"
 msgstr ""
 
-#: src/addon_management.cpp:645
+#: src/addon_management.cpp:650
 #, fuzzy
 msgid "The add-on '$addon_title|' has been successfully installed."
 msgstr "Аддон был установлен."
 
-#: src/addon_management.cpp:647
+#: src/addon_management.cpp:652
 msgid "Add-on Installed"
 msgstr "Аддон установлен"
 
-#: src/addon_management.cpp:705
+#: src/addon_management.cpp:710
 #, fuzzy
 msgid "Outdated add-ons"
 msgstr "Передача аддона"
 
-#: src/addon_management.cpp:707
+#: src/addon_management.cpp:712
 msgid ""
 "An outdated local add-on has publishing information attached. It will not be "
 "offered for updating."
@@ -7155,57 +7155,57 @@ msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
-#: src/addon_management.cpp:716
+#: src/addon_management.cpp:721
 msgid "Could not find any updated add-ons on this server."
 msgstr ""
 
-#: src/addon_management.cpp:716
+#: src/addon_management.cpp:721
 msgid "No add-ons to update"
 msgstr ""
 
-#: src/addon_management.cpp:730 src/addon_management.cpp:931
+#: src/addon_management.cpp:735 src/addon_management.cpp:938
 #: src/dialogs.cpp:646 src/menu_events.cpp:201 src/menu_events.cpp:989
 msgid "Name"
 msgstr "Название"
 
-#: src/addon_management.cpp:730
+#: src/addon_management.cpp:735
 #, fuzzy
 msgid "New version"
 msgstr "Версия"
 
-#: src/addon_management.cpp:730
+#: src/addon_management.cpp:735
 #, fuzzy
 msgid "Old version"
 msgstr "Версия"
 
-#: src/addon_management.cpp:731 src/addon_management.cpp:932
+#: src/addon_management.cpp:736 src/addon_management.cpp:939
 msgid "Author"
 msgstr "Автор"
 
-#: src/addon_management.cpp:731 src/addon_management.cpp:932
+#: src/addon_management.cpp:736 src/addon_management.cpp:939
 msgid "Size"
 msgstr "Размер"
 
-#: src/addon_management.cpp:785
+#: src/addon_management.cpp:790
 #, fuzzy
 msgid "Update Add-ons"
 msgstr "Аддоны"
 
-#: src/addon_management.cpp:786
+#: src/addon_management.cpp:791
 msgid "Select an add-on to update:"
 msgstr ""
 
-#: src/addon_management.cpp:800
+#: src/addon_management.cpp:805
 #, fuzzy
 msgid "Update all"
 msgstr "Стена пещеры"
 
-#: src/addon_management.cpp:855
+#: src/addon_management.cpp:862
 #, fuzzy
 msgid "Update failed"
 msgstr "Стена пещеры"
 
-#: src/addon_management.cpp:857
+#: src/addon_management.cpp:864
 #, fuzzy
 msgid "The following add-on could not be downloaded or updated successfully:"
 msgid_plural ""
@@ -7214,85 +7214,85 @@ msgstr[0] "Следующий аддон имеет ошибки и не мож�
 msgstr[1] "Следующие аддоны имеют ошибки и не могут быть загружены:"
 msgstr[2] "Следующие аддоны имеют ошибки и не могут быть загружены:"
 
-#: src/addon_management.cpp:866
+#: src/addon_management.cpp:873
 #, fuzzy
 msgid "Update succeeded"
 msgstr "Аддоны"
 
-#: src/addon_management.cpp:867
+#: src/addon_management.cpp:874
 msgid "Add-on updated successfully."
 msgstr ""
 
-#: src/addon_management.cpp:868
+#: src/addon_management.cpp:875
 msgid "All add-ons updated successfully."
 msgstr ""
 
-#: src/addon_management.cpp:891
+#: src/addon_management.cpp:898
 #, fuzzy
 msgid "Connecting to Add-ons Server..."
 msgstr "Подключение к серверу..."
 
-#: src/addon_management.cpp:894
+#: src/addon_management.cpp:901
 msgid "Could not connect to host."
 msgstr "Не могу подключиться к серверу."
 
-#: src/addon_management.cpp:902
+#: src/addon_management.cpp:909
 #, fuzzy
 msgid "Requesting list of add-ons"
 msgstr "Запрос списка аддонов"
 
-#: src/addon_management.cpp:915
+#: src/addon_management.cpp:922
 #, fuzzy
 msgid "An error occurred while communicating with the server."
 msgstr "Ошибка при подключении к серверу."
 
-#: src/addon_management.cpp:931 src/titlescreen.cpp:331
+#: src/addon_management.cpp:938 src/titlescreen.cpp:331
 msgid "Version"
 msgstr "Версия"
 
-#: src/addon_management.cpp:932
+#: src/addon_management.cpp:939
 msgid "Downloads"
 msgstr "Загрузки"
 
-#: src/addon_management.cpp:932 src/help.cpp:1386 src/menu_events.cpp:200
+#: src/addon_management.cpp:939 src/help.cpp:1386 src/menu_events.cpp:200
 #: src/menu_events.cpp:988 src/menu_events.cpp:1487
 msgid "Type"
 msgstr "Тип"
 
-#: src/addon_management.cpp:999
+#: src/addon_management.cpp:1006
 msgid "Publish add-on: "
 msgstr "Опубликовать аддон: "
 
-#: src/addon_management.cpp:1005
+#: src/addon_management.cpp:1012
 msgid "Delete add-on: "
 msgstr "Удалить аддон: "
 
-#: src/addon_management.cpp:1011
+#: src/addon_management.cpp:1018
 msgid "There are no add-ons available for download from this server."
 msgstr "На этом сервере нет доступных для загрузки аддонов."
 
-#: src/addon_management.cpp:1018
+#: src/addon_management.cpp:1025
 msgid "Get Add-ons"
 msgstr "Аддоны"
 
-#: src/addon_management.cpp:1019
+#: src/addon_management.cpp:1026
 msgid "Choose the add-on to download."
 msgstr "Выберите аддон для загрузки."
 
-#: src/addon_management.cpp:1031 src/dialogs.cpp:671 src/menu_events.cpp:1047
+#: src/addon_management.cpp:1038 src/dialogs.cpp:671 src/menu_events.cpp:1047
 #: src/menu_events.cpp:1516
 msgid "Filter: "
 msgstr "Фильтр: "
 
-#: src/addon_management.cpp:1061
+#: src/addon_management.cpp:1068
 msgid "Network communication error."
 msgstr "Ошибка при подключении к сети."
 
-#: src/addon_management.cpp:1064
+#: src/addon_management.cpp:1071
 msgid "Remote host disconnected."
 msgstr "Удалённый хост отключился."
 
-#: src/addon_management.cpp:1067
+#: src/addon_management.cpp:1074
 #, fuzzy
 msgid ""
 "A problem occurred when trying to create the files necessary to install this "
@@ -7301,43 +7301,43 @@ msgstr ""
 "Возникла проблема с созданием файлов, необходимых для полной установки этого "
 "аддона."
 
-#: src/addon_management.cpp:1085 src/addon_management.cpp:1140
+#: src/addon_management.cpp:1092 src/addon_management.cpp:1147
 #: src/dialogs.cpp:281 src/dialogs.cpp:289 src/menu_events.cpp:596
 #: src/multiplayer_create.cpp:529
 msgid "Error"
 msgstr "Ошибка"
 
-#: src/addon_management.cpp:1086
+#: src/addon_management.cpp:1093
 #, fuzzy
 msgid "You have no add-ons installed."
 msgstr "У вас нет установленных аддонов."
 
-#: src/addon_management.cpp:1098
+#: src/addon_management.cpp:1105
 msgid "Choose the add-on to remove."
 msgstr "Выберите аддон для удаления."
 
-#: src/addon_management.cpp:1098
+#: src/addon_management.cpp:1105
 #, fuzzy
 msgid "Uninstall add-ons"
 msgstr "Передача аддона"
 
-#: src/addon_management.cpp:1110
+#: src/addon_management.cpp:1117
 msgid "Are you sure you want to remove the add-on '$addon|'?"
 msgstr "Вы уверены, что хотите удалить аддон '$addon|'?"
 
-#: src/addon_management.cpp:1115
+#: src/addon_management.cpp:1122
 msgid "Confirm"
 msgstr "Подтвердить"
 
-#: src/addon_management.cpp:1127
+#: src/addon_management.cpp:1134
 msgid "Add-on '$addon|' deleted."
 msgstr "Аддон '$addon|' удалён."
 
-#: src/addon_management.cpp:1132
+#: src/addon_management.cpp:1139
 msgid "Add-on deleted"
 msgstr "Аддон удалён"
 
-#: src/addon_management.cpp:1141
+#: src/addon_management.cpp:1148
 #, fuzzy
 msgid "Add-on could not be deleted properly:"
 msgstr "Аддон не может быть удалён — файл не найден."
@@ -7703,11 +7703,29 @@ msgstr "Загрузка заглавного изображения"
 msgid "Invalid color range: "
 msgstr "Неверный цвет:"
 
-#: src/game_events.cpp:1012
+#: src/game_events.cpp:133
+#, fuzzy
+msgid "Error: "
+msgstr "Ошибка"
+
+#: src/game_events.cpp:136
+#, fuzzy
+msgid "Warning: "
+msgstr "До полудня"
+
+#: src/game_events.cpp:139
+msgid "Debug: "
+msgstr ""
+
+#: src/game_events.cpp:142
+msgid "Info: "
+msgstr ""
+
+#: src/game_events.cpp:1063
 msgid "Victory:"
 msgstr "Победа:"
 
-#: src/game_events.cpp:1015
+#: src/game_events.cpp:1066
 msgid "Defeat:"
 msgstr "Поражение:"
 
@@ -8674,14 +8692,6 @@ msgstr ""
 #: src/multiplayer.cpp:159
 msgid "Server-side redirect loop"
 msgstr "Редирект со стороны сервера"
-
-#: src/multiplayer.cpp:223
-msgid "You must log in to this server"
-msgstr "Вы должны подключиться к данному серверу"
-
-#: src/multiplayer.cpp:224
-msgid "Login: "
-msgstr "Имя пользователя: "
 
 #: src/multiplayer_connect.cpp:82 src/multiplayer_connect.cpp:496
 #: src/multiplayer_connect.cpp:623
@@ -9740,6 +9750,12 @@ msgstr "Помогите нам сделать Веснот лучше!"
 #: src/upload_log.cpp:332
 msgid "Enable summary uploads"
 msgstr "Включить отправку итогов"
+
+#~ msgid "You must log in to this server"
+#~ msgstr "Вы должны подключиться к данному серверу"
+
+#~ msgid "Login: "
+#~ msgstr "Имя пользователя: "
 
 #, fuzzy
 #~ msgid "Choose a different username"

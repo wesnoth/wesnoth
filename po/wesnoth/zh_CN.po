@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-01-11 17:05+0100\n"
+"POT-Creation-Date: 2009-01-16 21:53+0100\n"
 "PO-Revision-Date: 2008-12-22 12:15+1000\n"
 "Last-Translator: luojie <lililjlj@gmail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
@@ -22,43 +22,43 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n>1);\n"
 
 #. [advanced_preference]: type=boolean
-#: data/_main.cfg:45
+#: data/_main.cfg:49
 msgid "Compressed Saves"
 msgstr "压缩存档"
 
 #. [advanced_preference]: type=boolean
-#: data/_main.cfg:52
+#: data/_main.cfg:56
 msgid "Mouse Scrolling"
 msgstr "鼠标滚屏"
 
 #. [advanced_preference]: type=boolean
-#: data/_main.cfg:59
+#: data/_main.cfg:63
 #, fuzzy
 msgid "Middle-click Scrolling"
 msgstr "鼠标滚屏"
 
 #. [advanced_preference]: type=boolean
-#: data/_main.cfg:66
+#: data/_main.cfg:70
 msgid "Animate Map"
 msgstr "地图的动画效果"
 
 #. [advanced_preference]: type=boolean
-#: data/_main.cfg:73
+#: data/_main.cfg:77
 msgid "Show Titlescreen Animation"
 msgstr "显示标题动画"
 
 #. [advanced_preference]: type=boolean
-#: data/_main.cfg:80
+#: data/_main.cfg:84
 msgid "Unit Standing Animations"
 msgstr "单位站立动画"
 
 #. [advanced_preference]: type=boolean
-#: data/_main.cfg:87
+#: data/_main.cfg:91
 msgid "Show Combat"
 msgstr "显示战斗"
 
 #. [advanced_preference]: type=boolean
-#: data/_main.cfg:102
+#: data/_main.cfg:106
 msgid "Only Run Safe Python AIs"
 msgstr "仅仅运行安全的Python AIs"
 
@@ -3149,11 +3149,11 @@ msgstr ""
 #. [set_menu_item]: id=ai_controller
 #: data/core/macros/ai_controller.cfg:227
 #: data/core/macros/ai_controller.cfg:373
-#: data/core/macros/ai_controller.cfg:676
-#: data/core/macros/ai_controller.cfg:801
-#: data/core/macros/ai_controller.cfg:818
-#: data/core/macros/ai_controller.cfg:839
-#: data/core/macros/ai_controller.cfg:879
+#: data/core/macros/ai_controller.cfg:682
+#: data/core/macros/ai_controller.cfg:807
+#: data/core/macros/ai_controller.cfg:824
+#: data/core/macros/ai_controller.cfg:845
+#: data/core/macros/ai_controller.cfg:885
 msgid "Instruct ally"
 msgstr ""
 
@@ -3192,8 +3192,8 @@ msgstr ""
 #. [option]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:329
 #: data/core/macros/ai_controller.cfg:479
-#: data/core/macros/ai_controller.cfg:864
-#: data/core/macros/ai_controller.cfg:899
+#: data/core/macros/ai_controller.cfg:870
+#: data/core/macros/ai_controller.cfg:905
 #, fuzzy
 msgid "Back"
 msgstr "黑"
@@ -3221,12 +3221,12 @@ msgid "Defend a location..."
 msgstr "守住一个地方！"
 
 #. [print]
-#: data/core/macros/ai_controller.cfg:525
+#: data/core/macros/ai_controller.cfg:527
 msgid "Right-click to select a location to defend"
 msgstr ""
 
 #. [set_menu_item]: id=ai_controller_defend_location_picker
-#: data/core/macros/ai_controller.cfg:532
+#: data/core/macros/ai_controller.cfg:534
 #, fuzzy
 msgid "Defend this location"
 msgstr "守住一个地方！"
@@ -3237,45 +3237,45 @@ msgid "focusing on defending the area around $x1|,$y1|."
 msgstr ""
 
 #. [print]
-#: data/core/macros/ai_controller.cfg:580
+#: data/core/macros/ai_controller.cfg:586
 msgid "Location selection canceled"
 msgstr ""
 
 #. [option]
-#: data/core/macros/ai_controller.cfg:595
+#: data/core/macros/ai_controller.cfg:601
 #, fuzzy
 msgid "Clear objective orders"
 msgstr "取消命令"
 
 #. [option]
-#: data/core/macros/ai_controller.cfg:619
+#: data/core/macros/ai_controller.cfg:625
 #, fuzzy
 msgid "Clear behavior orders"
 msgstr "取消命令"
 
 #. [option]
-#: data/core/macros/ai_controller.cfg:643
+#: data/core/macros/ai_controller.cfg:649
 #, fuzzy
 msgid "Clear all orders"
 msgstr "取消命令"
 
 #. [then]
-#: data/core/macros/ai_controller.cfg:769
-#: data/core/macros/ai_controller.cfg:780
+#: data/core/macros/ai_controller.cfg:775
+#: data/core/macros/ai_controller.cfg:786
 #, fuzzy
 msgid "none set."
 msgstr "无"
 
 #. [value]: speaker=narrator
-#: data/core/macros/ai_controller.cfg:802
+#: data/core/macros/ai_controller.cfg:808
 msgid ""
 "$ally_leader.name (side $ally_side|) has not been given any instructions and "
 "is acting normally."
 msgstr ""
 
 #. [value]: speaker=narrator
-#: data/core/macros/ai_controller.cfg:805
-#: data/core/macros/ai_controller.cfg:822
+#: data/core/macros/ai_controller.cfg:811
+#: data/core/macros/ai_controller.cfg:828
 msgid ""
 "Objective: $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_objective_description\n"
@@ -3284,25 +3284,25 @@ msgid ""
 msgstr ""
 
 #. [value]: speaker=narrator
-#: data/core/macros/ai_controller.cfg:819
+#: data/core/macros/ai_controller.cfg:825
 msgid ""
 "$ally_leader.name (side $ally_side|) is carrying out the following "
 "instructions:"
 msgstr ""
 
 #. [literal]
-#: data/core/macros/ai_controller.cfg:834
+#: data/core/macros/ai_controller.cfg:840
 msgid "Set objective..."
 msgstr ""
 
 #. [literal]
-#: data/core/macros/ai_controller.cfg:874
+#: data/core/macros/ai_controller.cfg:880
 #, fuzzy
 msgid "Set behavior..."
 msgstr "设定密码..."
 
 #. [literal]
-#: data/core/macros/ai_controller.cfg:914
+#: data/core/macros/ai_controller.cfg:920
 msgid "Exit"
 msgstr ""
 
@@ -6385,63 +6385,63 @@ msgstr "发现非我方控制单位！（$friendphrase, $enemyphrase）"
 msgid "(press $hotkey to keep moving)"
 msgstr "（按$hotkey键继续移动）"
 
-#: src/addon_management.cpp:356
+#: src/addon_management.cpp:359
 msgid "B"
 msgstr "B"
 
-#: src/addon_management.cpp:359 src/dialogs.cpp:1213
+#: src/addon_management.cpp:362 src/dialogs.cpp:1213
 msgid "KB"
 msgstr "KB"
 
-#: src/addon_management.cpp:362
+#: src/addon_management.cpp:365
 msgid "MB"
 msgstr "MB"
 
-#: src/addon_management.cpp:365
+#: src/addon_management.cpp:368
 msgid "GB"
 msgstr "GB"
 
-#: src/addon_management.cpp:398
+#: src/addon_management.cpp:401
 msgid "addon_type^Campaign"
 msgstr "战役"
 
-#: src/addon_management.cpp:400
+#: src/addon_management.cpp:403
 msgid "addon_type^Scenario"
 msgstr "场景"
 
-#: src/addon_management.cpp:402
+#: src/addon_management.cpp:405
 msgid "addon_type^MP era"
 msgstr "时代-多人游戏"
 
-#: src/addon_management.cpp:404
+#: src/addon_management.cpp:407
 msgid "addon_type^MP faction"
 msgstr "阵营-多人游戏"
 
-#: src/addon_management.cpp:406
+#: src/addon_management.cpp:409
 msgid "addon_type^MP map-pack"
 msgstr "地图包-多人游戏"
 
-#: src/addon_management.cpp:408
+#: src/addon_management.cpp:411
 msgid "addon_type^MP scenario"
 msgstr "场景-多人游戏"
 
-#: src/addon_management.cpp:410
+#: src/addon_management.cpp:413
 msgid "addon_type^MP campaign"
 msgstr "多人战役"
 
-#: src/addon_management.cpp:412
+#: src/addon_management.cpp:415
 msgid "addon_type^Resources"
 msgstr "资源"
 
-#: src/addon_management.cpp:414
+#: src/addon_management.cpp:417
 msgid "addon_type^(unknown)"
 msgstr "（未知插件）"
 
-#: src/addon_management.cpp:443
+#: src/addon_management.cpp:446
 msgid "Dependencies"
 msgstr "依赖"
 
-#: src/addon_management.cpp:444
+#: src/addon_management.cpp:447
 msgid ""
 "This add-on depends upon the following add-on which you have not installed "
 "yet:"
@@ -6451,62 +6451,62 @@ msgid_plural ""
 msgstr[0] "这个插件要求以下额外的依赖:"
 msgstr[1] "这个插件要求以下额外的依赖:"
 
-#: src/addon_management.cpp:449
+#: src/addon_management.cpp:452
 msgid "Do you still want to download it?"
 msgstr "您真的想下载这个游戏？"
 
-#: src/addon_management.cpp:464 src/addon_management.cpp:538
-#: src/multiplayer.cpp:327 src/multiplayer_ui.cpp:68
+#: src/addon_management.cpp:467 src/addon_management.cpp:541
+#: src/multiplayer.cpp:207 src/multiplayer.cpp:295 src/multiplayer_ui.cpp:68
 msgid "Connection timed out"
 msgstr "连接超时"
 
-#: src/addon_management.cpp:467
+#: src/addon_management.cpp:470
 msgid "The server responded with an error: \"$error|\""
 msgstr "服务器返回一个错误： \""
 
-#: src/addon_management.cpp:475
+#: src/addon_management.cpp:478
 msgid "Terms"
 msgstr "条件"
 
-#: src/addon_management.cpp:509
+#: src/addon_management.cpp:512
 msgid "Sending add-on"
 msgstr "发送插件"
 
-#: src/addon_management.cpp:513 src/addon_management.cpp:540
+#: src/addon_management.cpp:516 src/addon_management.cpp:543
 msgid "The server responded with an error: \""
 msgstr "服务器响应错误： \""
 
-#: src/addon_management.cpp:517 src/addon_management.cpp:544
+#: src/addon_management.cpp:520 src/addon_management.cpp:547
 #: src/multiplayer_wait.cpp:408
 msgid "Response"
 msgstr "回应"
 
-#: src/addon_management.cpp:572
+#: src/addon_management.cpp:575
 msgid "Downloading add-on: $addon_title|..."
 msgstr "正在下载插件 $addon_title|..."
 
-#: src/addon_management.cpp:586
+#: src/addon_management.cpp:591
 msgid ""
 "The add-on has an invalid file or directory name and can not be installed."
 msgstr "插件的文件或目录的名称问题导致无法安装。"
 
-#: src/addon_management.cpp:638
+#: src/addon_management.cpp:643
 msgid "Unchecked script files found:"
 msgstr "发现未检查过的脚本："
 
-#: src/addon_management.cpp:645
+#: src/addon_management.cpp:650
 msgid "The add-on '$addon_title|' has been successfully installed."
 msgstr "插件 '$addon_title|'  已经安装。"
 
-#: src/addon_management.cpp:647
+#: src/addon_management.cpp:652
 msgid "Add-on Installed"
 msgstr "插件已安装"
 
-#: src/addon_management.cpp:705
+#: src/addon_management.cpp:710
 msgid "Outdated add-ons"
 msgstr "过期插件"
 
-#: src/addon_management.cpp:707
+#: src/addon_management.cpp:712
 msgid ""
 "An outdated local add-on has publishing information attached. It will not be "
 "offered for updating."
@@ -6516,173 +6516,173 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/addon_management.cpp:716
+#: src/addon_management.cpp:721
 msgid "Could not find any updated add-ons on this server."
 msgstr "无法在这个服务器找到升级的插件。"
 
-#: src/addon_management.cpp:716
+#: src/addon_management.cpp:721
 msgid "No add-ons to update"
 msgstr "没有要更新的插件"
 
-#: src/addon_management.cpp:730 src/addon_management.cpp:931
+#: src/addon_management.cpp:735 src/addon_management.cpp:938
 #: src/dialogs.cpp:646 src/menu_events.cpp:201 src/menu_events.cpp:989
 msgid "Name"
 msgstr "名称"
 
-#: src/addon_management.cpp:730
+#: src/addon_management.cpp:735
 msgid "New version"
 msgstr "新版本"
 
-#: src/addon_management.cpp:730
+#: src/addon_management.cpp:735
 msgid "Old version"
 msgstr "旧版本"
 
-#: src/addon_management.cpp:731 src/addon_management.cpp:932
+#: src/addon_management.cpp:736 src/addon_management.cpp:939
 msgid "Author"
 msgstr "作者"
 
-#: src/addon_management.cpp:731 src/addon_management.cpp:932
+#: src/addon_management.cpp:736 src/addon_management.cpp:939
 msgid "Size"
 msgstr "大小"
 
-#: src/addon_management.cpp:785
+#: src/addon_management.cpp:790
 msgid "Update Add-ons"
 msgstr "升级插件"
 
-#: src/addon_management.cpp:786
+#: src/addon_management.cpp:791
 msgid "Select an add-on to update:"
 msgstr "选择要更新的插件："
 
-#: src/addon_management.cpp:800
+#: src/addon_management.cpp:805
 msgid "Update all"
 msgstr "全部升级"
 
-#: src/addon_management.cpp:855
+#: src/addon_management.cpp:862
 msgid "Update failed"
 msgstr "升级失败"
 
-#: src/addon_management.cpp:857
+#: src/addon_management.cpp:864
 msgid "The following add-on could not be downloaded or updated successfully:"
 msgid_plural ""
 "The following add-ons could not be downloaded or updated successfully:"
 msgstr[0] "以下插件有错误，无法下载或升级："
 msgstr[1] "以下插件有错误，无法下载或升级："
 
-#: src/addon_management.cpp:866
+#: src/addon_management.cpp:873
 msgid "Update succeeded"
 msgstr "升级完成"
 
-#: src/addon_management.cpp:867
+#: src/addon_management.cpp:874
 msgid "Add-on updated successfully."
 msgstr "成功升级。"
 
-#: src/addon_management.cpp:868
+#: src/addon_management.cpp:875
 msgid "All add-ons updated successfully."
 msgstr "成功升级。"
 
-#: src/addon_management.cpp:891
+#: src/addon_management.cpp:898
 msgid "Connecting to Add-ons Server..."
 msgstr "正在连接到插件服务器..."
 
-#: src/addon_management.cpp:894
+#: src/addon_management.cpp:901
 msgid "Could not connect to host."
 msgstr "无法连接到主机。"
 
-#: src/addon_management.cpp:902
+#: src/addon_management.cpp:909
 msgid "Requesting list of add-ons"
 msgstr "正在请求插件列表"
 
-#: src/addon_management.cpp:915
+#: src/addon_management.cpp:922
 msgid "An error occurred while communicating with the server."
 msgstr "与服务器通讯错误。"
 
-#: src/addon_management.cpp:931 src/titlescreen.cpp:331
+#: src/addon_management.cpp:938 src/titlescreen.cpp:331
 msgid "Version"
 msgstr "版本"
 
-#: src/addon_management.cpp:932
+#: src/addon_management.cpp:939
 msgid "Downloads"
 msgstr "下载数"
 
-#: src/addon_management.cpp:932 src/help.cpp:1386 src/menu_events.cpp:200
+#: src/addon_management.cpp:939 src/help.cpp:1386 src/menu_events.cpp:200
 #: src/menu_events.cpp:988 src/menu_events.cpp:1487
 msgid "Type"
 msgstr "类型"
 
-#: src/addon_management.cpp:999
+#: src/addon_management.cpp:1006
 msgid "Publish add-on: "
 msgstr "发布插件： "
 
-#: src/addon_management.cpp:1005
+#: src/addon_management.cpp:1012
 msgid "Delete add-on: "
 msgstr "删除插件： "
 
-#: src/addon_management.cpp:1011
+#: src/addon_management.cpp:1018
 msgid "There are no add-ons available for download from this server."
 msgstr "这个服务器上无可供下载的插件。"
 
-#: src/addon_management.cpp:1018
+#: src/addon_management.cpp:1025
 msgid "Get Add-ons"
 msgstr "获取插件"
 
-#: src/addon_management.cpp:1019
+#: src/addon_management.cpp:1026
 msgid "Choose the add-on to download."
 msgstr "选择要下载的插件。"
 
-#: src/addon_management.cpp:1031 src/dialogs.cpp:671 src/menu_events.cpp:1047
+#: src/addon_management.cpp:1038 src/dialogs.cpp:671 src/menu_events.cpp:1047
 #: src/menu_events.cpp:1516
 msgid "Filter: "
 msgstr "过滤： "
 
-#: src/addon_management.cpp:1061
+#: src/addon_management.cpp:1068
 msgid "Network communication error."
 msgstr "网络通讯错误。"
 
-#: src/addon_management.cpp:1064
+#: src/addon_management.cpp:1071
 msgid "Remote host disconnected."
 msgstr "远程主机关闭。"
 
-#: src/addon_management.cpp:1067
+#: src/addon_management.cpp:1074
 msgid ""
 "A problem occurred when trying to create the files necessary to install this "
 "add-on."
 msgstr "这个插件所需文件创建错误。"
 
-#: src/addon_management.cpp:1085 src/addon_management.cpp:1140
+#: src/addon_management.cpp:1092 src/addon_management.cpp:1147
 #: src/dialogs.cpp:281 src/dialogs.cpp:289 src/menu_events.cpp:596
 #: src/multiplayer_create.cpp:529
 msgid "Error"
 msgstr "错误"
 
-#: src/addon_management.cpp:1086
+#: src/addon_management.cpp:1093
 msgid "You have no add-ons installed."
 msgstr "没有安装插件。"
 
-#: src/addon_management.cpp:1098
+#: src/addon_management.cpp:1105
 msgid "Choose the add-on to remove."
 msgstr "选择要删除的插件。"
 
-#: src/addon_management.cpp:1098
+#: src/addon_management.cpp:1105
 msgid "Uninstall add-ons"
 msgstr "卸载插件"
 
-#: src/addon_management.cpp:1110
+#: src/addon_management.cpp:1117
 msgid "Are you sure you want to remove the add-on '$addon|'?"
 msgstr "您确定您要删除插件 '$addon|'?"
 
-#: src/addon_management.cpp:1115
+#: src/addon_management.cpp:1122
 msgid "Confirm"
 msgstr "确认"
 
-#: src/addon_management.cpp:1127
+#: src/addon_management.cpp:1134
 msgid "Add-on '$addon|' deleted."
 msgstr "插件'$addon|'已删除"
 
-#: src/addon_management.cpp:1132
+#: src/addon_management.cpp:1139
 msgid "Add-on deleted"
 msgstr "插件已删除"
 
-#: src/addon_management.cpp:1141
+#: src/addon_management.cpp:1148
 msgid "Add-on could not be deleted properly:"
 msgstr "无法删除插件:"
 
@@ -7037,11 +7037,29 @@ msgstr "载入主屏幕。"
 msgid "Invalid color range: "
 msgstr "无效颜色"
 
-#: src/game_events.cpp:1012
+#: src/game_events.cpp:133
+#, fuzzy
+msgid "Error: "
+msgstr "错误"
+
+#: src/game_events.cpp:136
+#, fuzzy
+msgid "Warning: "
+msgstr "上午"
+
+#: src/game_events.cpp:139
+msgid "Debug: "
+msgstr ""
+
+#: src/game_events.cpp:142
+msgid "Info: "
+msgstr ""
+
+#: src/game_events.cpp:1063
 msgid "Victory:"
 msgstr "胜利："
 
-#: src/game_events.cpp:1015
+#: src/game_events.cpp:1066
 msgid "Defeat:"
 msgstr "失败："
 
@@ -7941,14 +7959,6 @@ msgstr "本服务器须要版本“$version1”，而您的版本是“$version2
 #: src/multiplayer.cpp:159
 msgid "Server-side redirect loop"
 msgstr "服务器重定向循环"
-
-#: src/multiplayer.cpp:223
-msgid "You must log in to this server"
-msgstr "您必须登录这个服务器"
-
-#: src/multiplayer.cpp:224
-msgid "Login: "
-msgstr "登录名： "
 
 #: src/multiplayer_connect.cpp:82 src/multiplayer_connect.cpp:496
 #: src/multiplayer_connect.cpp:623
@@ -8970,6 +8980,12 @@ msgstr "帮助我们改进韦诺，提升您的游戏体验！"
 #: src/upload_log.cpp:332
 msgid "Enable summary uploads"
 msgstr "开启摘要上传模式"
+
+#~ msgid "You must log in to this server"
+#~ msgstr "您必须登录这个服务器"
+
+#~ msgid "Login: "
+#~ msgstr "登录名： "
 
 #~ msgid "VICTORY_AND_DEFEAT_MUSIC is unnecessary and can be removed."
 #~ msgstr "VICTORY_AND_DEFEAT_MUSIC 不必要，可以除去。"
