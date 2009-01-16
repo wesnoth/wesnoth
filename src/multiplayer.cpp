@@ -249,7 +249,6 @@ static server_type open_connection(game_display& disp, const std::string& origin
 						do {
 							temp_hash = std::string((char *) output, (char *) output + 16);
 							temp_hash.append(password);
-							md5_worker.~MD5();
 							MD5 md5_worker;
 							md5_worker.update((unsigned char *)temp_hash.c_str(),temp_hash.length());
 							md5_worker.finalize();
