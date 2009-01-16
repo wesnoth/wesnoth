@@ -1,5 +1,5 @@
 ;;; wesnoth-update.el --- Update known WML data via existing valid WML.
-;; Copyright (C) 2008 Chris Mann
+;; Copyright (C) 2008, 2009 Chris Mann
 
 ;; This file is part of wesnoth-mode.
 
@@ -59,6 +59,9 @@
 ;; available to `wesnoth-mode'.
 
 ;;; History:
+;; 0.1.4
+;; * Fixed inaccuracies when updating project information.
+;; * WML data from the addition file can now read when as it is required.
 ;; 0.1.3
 ;; * Any arguments are now stored for each macro.
 ;; 0.1.2
@@ -73,7 +76,7 @@
 ;; * Initial version
 
 ;;; Code:
-(defvar wesnoth-update-version "0.1.3"
+(defvar wesnoth-update-version "0.1.4"
   "Version of `wesnoth-update'.")
 
 (defcustom wesnoth-root-directory nil
@@ -99,6 +102,12 @@ This is relative to the wesnoth directory in `wesnoth-root-directory.'.")
 (defvar wesnoth-found-cfgs '()
   "Temporary list of all .cfg files found.")
 
+(defvar wesnoth-tmp-tag-data '()
+  "Temporary list of tag data.")
+
+(defvar wesnoth-tmp-macro-data '()
+  "Temporary list of macro data.")
+
 (defvar wesnoth-tag-data '()
   "All information regarding the relation of tags and attributes.")
 
@@ -112,12 +121,15 @@ This is relative to the wesnoth directory in `wesnoth-root-directory.'.")
 						:size 350)
   "Hash table of known WML tag data.")
 
-(defun wesnoth-create-wml-hash-table (&optional force)
-  "Handle generation of `wesnoth-tag-hash-table'."
+(defun wesnoth-create-wml-hash-table (tag-data &optional force)
+  "Handle generation of `wesnoth-tag-hash-table'.
+TAG-DATA is the data to add to the hash-table.  If FORCE is
+non-nil, update the hash-table regardless of whether it replacing
+any existing data."
   (when (or (= (hash-table-count wesnoth-tag-hash-table) 0)
 	    force)
     (clrhash wesnoth-tag-hash-table)
-    (dolist (tag wesnoth-tag-data)
+    (dolist (tag tag-data)
       (puthash (car tag) (cdr tag) wesnoth-tag-hash-table))))
 
 (defun wesnoth-file-cfg-p (file)
@@ -216,9 +228,9 @@ DIR-OR-FILE can be a file, a directory, or a list of files."
 (defun wesnoth-append-tag-information (tag subtag attribute)
   "Add the information regarding TAG to the list.
 SUBTAG and ATTRIBUTE are a children of TAG to be added."
-  (let ((match (assoc tag wesnoth-tag-data)))
+  (let ((match (assoc tag wesnoth-tmp-tag-data)))
     (if (not match)
-	(add-to-list 'wesnoth-tag-data (list tag (and subtag (list subtag))
+	(add-to-list 'wesnoth-tmp-tag-data (list tag (and subtag (list subtag))
 					     (and attribute (list attribute))))
       (if subtag
 	  (let ((tmp (nth 1 match)))
@@ -229,29 +241,27 @@ SUBTAG and ATTRIBUTE are a children of TAG to be added."
 			  (when (not (member attribute tmp))
 			    (add-to-list 'tmp attribute)
 			    (setq match (list tag (nth 1 match) tmp))))))
-      (setq wesnoth-tag-data
-	    (remove (assoc tag wesnoth-tag-data)
-		    wesnoth-tag-data))
-      (add-to-list 'wesnoth-tag-data match))))
+      (setq wesnoth-tmp-tag-data
+	    (remove (assoc tag wesnoth-tmp-tag-data)
+		    wesnoth-tmp-tag-data))
+      (add-to-list 'wesnoth-tmp-tag-data match))))
 
-(defmacro wesnoth-determine-macro-information (macro-list)
+(defun wesnoth-determine-macro-information ()
   "Process the buffer, retrieving macro definition information.
 MACRO-LIST is the variable to append macro information."
-  `(save-excursion
-     (goto-char (point-min))
-     (while (search-forward-regexp
-	     "#define \\(\\(?:\\w\\|_\\)+\\)\\(\\([\t ]+\\(\\w\\|_\\)+\\)*\\)"
-	     (point-max) t)
-       (beginning-of-line)
-       (add-to-list ,macro-list (list (match-string-no-properties 1)
-				      (and (match-string 2)
-					   (split-string
-					    (match-string-no-properties 2)))))
-       (end-of-line))))
-
-(defun wesnoth-determine-macro-builtins ()
-  "Retrieve built-in macro definition information."
-  (wesnoth-determine-macro-information 'wesnoth-macro-data))
+  (save-excursion
+    (goto-char (point-min))
+    (while (search-forward-regexp
+	    "#define \\(\\(?:\\w\\|_\\)+\\)\\(\\([\t ]+\\(\\w\\|_\\)+\\)*\\)"
+	    (point-max) t)
+      (beginning-of-line)
+      (add-to-list 'wesnoth-tmp-macro-data
+		   (list (match-string-no-properties 1)
+			 (and (match-string 2)
+			      (split-string
+			       (match-string-no-properties 2)))))
+      (end-of-line))
+    wesnoth-tmp-macro-data))
 
 (defun wesnoth-output-path ()
   "Determine the path to output wml information via `wesnoth-update'."
@@ -260,12 +270,29 @@ MACRO-LIST is the variable to append macro information."
 	  (symbol-value 'user-emacs-directory)
 	"~/.emacs.d/")))
 
-(defun wesnoth-update-wml-additions ()
-  "Update WML information contained in `wesnoth-addition-file'."
+(defun wesnoth-read-tmp-tag-data ()
+  "Read `wesnoth-tmp-tag-data' and reset its value."
+  (let ((results wesnoth-tmp-tag-data))
+    (setq wesnoth-tmp-tag-data nil)
+    results))
+
+(defun wesnoth-tag-additions ()
+  "Update WML tag information contained in `wesnoth-addition-file'."
+  (setq wesnoth-tmp-tag-data nil)
   (wesnoth-determine-details wesnoth-addition-file
 			     'wesnoth-extract-tag-information)
-  (wesnoth-determine-details wesnoth-addition-file
-			     'wesnoth-determine-macro-builtins))
+  (wesnoth-read-tmp-tag-data))
+
+(defun wesnoth-macro-additions ()
+  "Update WML macro information contained in `wesnoth-addition-file'."
+  (setq wesnoth-tmp-macro-data nil)
+  (wesnoth-determine-details
+   wesnoth-addition-file
+   (lambda ()
+     (wesnoth-determine-macro-information)))
+  (let ((results wesnoth-tmp-macro-data))
+    (setq wesnoth-tmp-macro-data nil)
+    results))
 
 (defun wesnoth-update ()
   "Update WML information.
@@ -274,7 +301,9 @@ Path to WML information included in wesnoth is set by
   (interactive)
   (setq wesnoth-tag-data nil
 	wesnoth-macro-data nil
-	wesnoth-found-cfgs nil)
+	wesnoth-found-cfgs nil
+	wesnoth-tmp-macro-data nil
+	wesnoth-tmp-tag-data nil)
   (unless (and (stringp wesnoth-root-directory)
 	       (file-exists-p wesnoth-root-directory))
     ;; Update failed; restore data.
@@ -284,10 +313,14 @@ Path to WML information included in wesnoth is set by
   (message "Updating WML information...")
   (wesnoth-determine-details wesnoth-root-directory
 			     'wesnoth-extract-tag-information)
-  (wesnoth-update-wml-additions)
-  (wesnoth-determine-details (concat wesnoth-root-directory
-				     wesnoth-macro-directory)
-			     'wesnoth-determine-macro-builtins)
+  (wesnoth-determine-details
+   (concat wesnoth-root-directory wesnoth-macro-directory)
+   (lambda ()
+     (wesnoth-determine-macro-information)))
+  (setq wesnoth-tag-data wesnoth-tmp-tag-data
+	wesnoth-tmp-tag-data nil
+	wesnoth-macro-data wesnoth-tmp-macro-data
+	wesnoth-tmp-macro-data nil)
   (with-temp-buffer
     (insert (format "(setq wesnoth-tag-data '%S)\n\n" wesnoth-tag-data))
     (insert (format "(setq wesnoth-macro-data '%S)\n\n" wesnoth-macro-data))
@@ -295,26 +328,63 @@ Path to WML information included in wesnoth is set by
     (write-file (expand-file-name (format "wesnoth-wml-data.el")
 				  (wesnoth-output-path)))
     (load "wesnoth-wml-data"))
-  (wesnoth-create-wml-hash-table t)
   (message "Updating WML information...done"))
 
+(defun wesnoth-merge-macro-data (&rest macro-data)
+  "Merge WML macro information and return the result.
+MACRO-DATA is the macro-data to merge."
+  (let ((set-data '())
+	(macro-base-data (car macro-data)))
+    (while (setq macro-data (cdr macro-data))
+      (setq set-data (car macro-data))
+      (while set-data
+	(setq macro-base-data
+	      (append (list (car set-data))
+		      (remove (assoc (car (car set-data)) macro-base-data)
+			      macro-base-data))
+	      set-data (cdr set-data))))
+    macro-base-data))
+
+(defun wesnoth-merge-tag-data (&rest tag-data)
+  "Merge WML tag information and return the result.
+TAG-DATA is the tag-data to merge."
+  (setq wesnoth-tmp-tag-data (car tag-data))
+  (let ((set-data '()))
+    (while (setq tag-data (cdr tag-data))
+      (setq set-data (car tag-data))
+      (while set-data
+	(let ((subtags (nth 1 (car set-data))))
+	  (while subtags
+	    (wesnoth-append-tag-information (caar set-data) (car subtags)
+					    nil)
+	    (setq subtags (cdr subtags))))
+	(let ((attributes (nth 2 (car set-data))))
+	  (while attributes
+	    (wesnoth-append-tag-information (caar set-data) nil
+					    (car attributes))
+	    (setq attributes (cdr attributes))))
+	(setq set-data (cdr set-data))))
+    (wesnoth-read-tmp-tag-data)))
+
 (defun wesnoth-update-project-information (&optional clear)
-  "Update WML macro information for the current project."
+  "Update WML macro information for the current project.
+If CLEAR is non-nil, reset `wesnoth-local-macro-data'."
   (interactive "P")
+  (setq wesnoth-tmp-macro-data nil)
   (if clear
       (setq wesnoth-local-macro-data nil)
-    (wesnoth-determine-macro-information 'wesnoth-local-macro-data)))
+    (setq wesnoth-local-macro-data
+	  (wesnoth-merge-macro-data wesnoth-local-macro-data
+				    (wesnoth-determine-macro-information)))
+    (setq wesnoth-tmp-macro-data nil)))
 
-(defun wesnoth-update-teach-wesnoth-mode (file-or-dir)
-  "Update WML tag and attribute information for the current project.
-If FILE-OR-DIR is provided, perform the update using only that location."
-  (interactive)
-  (wesnoth-determine-details
-   file-or-dir
-   (lambda ()
-     (wesnoth-determine-macro-information 'wesnoth-macro-data)))
-  (wesnoth-determine-details file-or-dir
-			     'wesnoth-extract-tag-information))
+(defun wesnoth-refresh-wml-data ()
+  "Return merged WML tag data and WML data from the addition file."
+  (save-match-data
+    (let ((result (wesnoth-merge-tag-data
+		   wesnoth-tag-data (wesnoth-tag-additions))))
+      (wesnoth-create-wml-hash-table result t)
+      result)))
 
 (provide 'wesnoth-update)
 

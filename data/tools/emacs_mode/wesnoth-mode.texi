@@ -3,8 +3,8 @@
 @setfilename wesnoth-mode.info
 @settitle Wesnoth Mode Manual
 
-@set VERSION 1.3.3
-@set DATE October 2008
+@set VERSION 1.3.4
+@set DATE January 2009
 
 @dircategory Emacs
 @direntry
@@ -20,7 +20,7 @@
 @copying
 This manual is for Wesnoth Mode (version @value{VERSION}).
 
-Copyright @copyright{} 2008 Chris Mann
+Copyright @copyright{} 2008, 2009 Chris Mann
 
 @quotation
 This program is free software; you can redistribute it and/or modify it
@@ -60,11 +60,10 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 
 @menu
 * Introduction::                Getting started
-* Navigation::                  Moving around within WML
+* Basic Usage::                 Moving around within WML
 * Inserting Elements::          Insertion and completion of elements
 * Checking WML::                Checking WML for common problems
 * Customisation::               Available customisation options
-* Key Index::                   Index of Key-Bindings
 
 @detailmenu
  --- Detailed Node Listing ---
@@ -74,11 +73,10 @@ Introduction
 * Summary::                     Introduction to Wesnoth Mode
 * Getting Started::             How to start Wesnoth Mode
 
-Navigation
+Basic Usage
 
-* Navigation Introduction::     Common WML navigation
-* Moving Across Elements::      Moving backward and forward across elements
-* Matching Elements::           Moving to the matching element
+* Indentation::                 Indentation usage and styles
+* Navigation::                  Common WML navigation
 
 Inserting Elements
 
@@ -100,7 +98,7 @@ Customisation
 @end detailmenu
 @end menu
 
-@node Introduction, Navigation, Top, Top
+@node Introduction, Basic Usage, Top, Top
 @chapter Introduction
 
 @menu
@@ -111,11 +109,12 @@ Customisation
 @node Summary, Getting Started, Introduction, Introduction
 @section Summary
 
-Wesnoth Mode is a major mode for Emacs which assists in the editing of the
-markup language extensively used in Wesnoth, a turn-based fantasy strategy
-game.  From the Wesnoth Wiki: "The Wesnoth Markup Language (WML) is used to
-code almost everything in Wesnoth, including scenarios, units, savefiles, and
-the user interface layout." @footnote{@uref{http://www.wesnoth.org/wiki/ReferenceWML}}
+Wesnoth Mode is a major mode for Emacs which assists in the editing of
+the markup language extensively used in Wesnoth, a turn-based fantasy
+strategy game.  From the Wesnoth Wiki: "The Wesnoth Markup Language
+(WML) is used to code almost everything in Wesnoth, including scenarios,
+units, savefiles, and the user interface layout."
+@footnote{@uref{http://www.wesnoth.org/wiki/ReferenceWML}}
 
 Wesnoth Mode is supported under GNU Emacs 21 onwards and (with some
 minor limitations) XEmacs 21.  Wesnoth Mode adds support for syntax
@@ -123,9 +122,9 @@ highlighting, automatic indentation, context-sensitive completion,
 checking and much more when editing WML.
 
 This documentation attempts to provide a comprehensive guide to
-functionality available within Wesnoth Mode @value{VERSION}, and assumes you are
-familiar with basic usage, terminology and customisation of Emacs.  For
-more information, please refer to the Emacs
+functionality available within Wesnoth Mode @value{VERSION}, and assumes
+you are familiar with basic usage, terminology and customisation of
+Emacs.  For more information, please refer to the Emacs
 manual. @footnote{@uref{http://www.gnu.org/software/emacs/manual/html_node/emacs/}}
 
 @node Getting Started, , Summary, Introduction
@@ -140,46 +139,48 @@ Optionally adding:
 @lisp
 (add-to-list 'auto-mode-alist '("\\.cfg\\'" . wesnoth-mode))
 @end lisp
-to automatically load Wesnoth Mode for all files with a `.cfg' extension.
+to automatically load Wesnoth Mode for all files with a `.cfg'
+extension.
 
-If Wesnoth Mode is not the currently active major-mode for the current
-buffer, it can be started via @kbd{M-x wesnoth-mode}.
+Wesnoth Mode can be activated as the current major-mode for a buffer via
+@kbd{M-x wesnoth-mode}.
 
-The latest version of Wesnoth Mode along with release notes can be found at
-@uref{http://www.wesnoth.org/forum/viewtopic.php?t=13798}.
+The latest version of Wesnoth Mode along with release notes can be found
+at @uref{http://www.wesnoth.org/forum/viewtopic.php?t=13798}.
 
-@node Navigation, Inserting Elements, Introduction, Top
-@chapter Navigation
+@node Basic Usage, Inserting Elements, Introduction, Top
+@chapter Basic Usage
 
 @menu
-* Navigation Introduction::     Common WML navigation
-* Moving Across Elements::      Moving backward and forward across elements
-* Matching Elements::           Moving to the matching element
+* Indentation::                     Common WML navigation
+* Navigation::                      Moving backward and forward across elements
 @end menu
 
-@node Navigation Introduction, Moving Across Elements, Navigation, Navigation
-@section Navigation Introduction
+@node Indentation, Navigation, Basic Usage, Basic Usage
+@section Indentation
+@kindex @kbd{TAB}
+By default, Wesnoth Mode provides a style of indentation equivalent to
+that provided by the @code{wmlindent} tool included with Wesnoth.
+@kbd{TAB} can be used to indent the current line manually.  Wesnoth Mode
+will, by default, indent the current line appropriately before inserting
+a newline when @kbd{RET} or @kbd{C-j} is used. (@kbd{C-j} will also
+attempt to indent the new line.)
 
-Emacs provides many powerful built-in navigation commands which are
-ideal for editing WML.  Common navigation commands, such as @kbd{C-n},
-@kbd{C-s}, and (in recent Emacsen) @kbd{M-g g}, will behave as usual
-within Wesnoth Mode.  However, some navigation commands have been
-adjusted or added for increased productivity.  These will be explained
-in the following sections.
+See @ref{Modifying Indentation} for information on how to customise the
+behaviour of automatic indentation.
 
-@node Moving Across Elements, Matching Elements, Navigation Introduction, Navigation
-@section Moving Across Elements
-@kindex @kbd{C-M-a}
-@kindex @kbd{C-M-e}
+@kbd{TAB} performs two actions depending on the context of point.  When
+there is an incomplete element immediately preceeding point, completion
+will be attempted, otherwise @kbd{TAB} will perform indentation.  See
+@ref{Tab-Completion}.
+
+@node Navigation,  , Indentation, Basic Usage
+@section Navigation
 
 Next and previous opening elements can be navigated using @kbd{C-M-e}
 and @kbd{C-M-a}, respectively.  In each case, point will be positioned
-immediately before the element.  When there are no more elements are
-available in that direction, point will not move.
-
-@node Matching Elements,  , Moving Across Elements, Navigation
-@section Matching Elements
-@kindex @kbd{C-c C-o}
+immediately before the element.  When no more elements are available in
+that direction, point will not move.
 
 Moving to the matching element in a pair or locating the parent element
 (depending on the position of point) can be performed via @kbd{C-c C-o}.
@@ -188,7 +189,7 @@ tag or opening preprocessor statement it will be moved to the start of
 the matching closing element.  Otherwise, the jump will position point
 at the beginning of the corresponding opening element.
 
-@node Inserting Elements, Checking WML, Navigation, Top
+@node Inserting Elements, Checking WML, Basic Usage, Top
 @chapter Inserting Elements
 
 @menu
@@ -200,34 +201,28 @@ at the beginning of the corresponding opening element.
 
 @node Standard Completion, Tab-Completion, Inserting Elements, Inserting Elements
 @section Standard Completion
-@kindex @kbd{C-c C-t}
-@kindex @kbd{M-TAB}
-@kindex @kbd{C-c C-a}
-@kindex @kbd{C-c C-m}
-@kindex @kbd{C-c C-p}
 
 Tags can be inserted via @kbd{C-c C-t} and alternatively @kbd{M-TAB}
-(when this is not shadowed by the Window Manager, etc.).  This will
-prompt for the tag to add.  The tag entered into the mini-buffer prompt
+(when this is not shadowed by the Window Manager, etc.) which will
+prompt for the tag to add.  The tag entered into the minibuffer prompt
 and its matching closing tag will be inserted and point positioned
 between.
 
-Attributes can be inserted via @kbd{C-c C-a}.  The attribute entered at
+Attributes can be inserted via @kbd{C-c C-a}.  Any attribute entered at
 the prompt will be inserted along with the `=', with point immediately
-after.
+following.
 
 Both tag and attribute completion is context-sensitive.  If an element
-is available in WML and not listed for completion, you may want to add
-it to your `addition file'.  See @ref{Wesnoth Update} for more
-information.
+is available in WML and not listed for completion, it can be added to
+the `addition file'.  See @ref{Wesnoth Update} for more information.
 
 Macro insertion can be performed via @kbd{C-c C-m}.  Any arguments known
 to be required for the macro will be prompted and inserted in order.
 Insertion will be aborted if no value for an argument is provided.  When
-within a macro definition, macro arguments are also available to be
-inserted.  Project-local macros will not be available until Wesnoth Mode
-has scanned the buffer in which they are defined.  For information on
-completing project-local macros, see @ref{Macro Definitions}.
+within a macro definition, the arguments for the current macro are also
+available for completion.  Any project-local or custom macros can be
+made available for completion by opening the file in which they are
+defined.  For information, see @ref{Macro Definitions}.
 
 Preprocessor statements are available for insertion via @kbd{C-c C-p}.
 Closing elements for preprocessor statements will be automatically
@@ -236,7 +231,7 @@ point will be placed immediately after the inserted text.
 
 @node Tab-Completion, Wrapping Elements, Standard Completion, Inserting Elements
 @section Tab-Completion
-@kindex @kbd{TAB}
+
 Completion can also be performed immediately within the buffer via
 @kbd{TAB} on a partial element.  For example:
 @example
@@ -254,7 +249,7 @@ will be provided, with the partial element entered.  @kbd{TAB} can be
 used here to perform completion.  If multiple matches are available,
 completion will be performed up to the smallest common substring with
 further completion available via the minubuffer prompt.  When no matches
-are found, completion will not be prompted.
+are found for the partial element, completion will not be prompted.
 
 When completing opening preprocessor statements and tags, Wesnoth Mode
 will also attempt to insert a matching closing element if one is not
@@ -263,7 +258,7 @@ added via the minibuffer prompt.  However, if an matching closing
 element is available, only the element at point will be completed.
 
 A numeric argument can be provided when performing tab-completion of
-opening elements to wrap around the following @i{n} blocks.  For
+opening elements to wrap around the next @i{n} blocks.  For
 example, to wrap the completed opening and closing pair around the next
 three blocks, @kbd{C-u 3 TAB} can be used.  See @ref{Wrapping Elements}
 for more information.
@@ -288,22 +283,21 @@ element around.  For example:
 @end example
 
 Where point is at the position indicated by @code{-!-}.  A pair of
-@code{story} tags can be inserted around both existing @code{part} tags using
-@kbd{C-u 2 C-c C-t story}.  When the number of blocks specified to wrap
-around exceeds the number of blocks available, Wesnoth Mode will only
-wrap around the number of available so that the nesting of elements is
-correct.
+@code{story} tags can be inserted around both existing @code{part} tags
+using @kbd{C-u 2 C-c C-t story}.  When the number of blocks specified to
+wrap around exceeds the number of blocks available, Wesnoth Mode will
+only wrap around the number of available so that the nesting of elements
+is correct.
 
 @node Missing Elements, , Wrapping Elements, Inserting Elements
 @section Missing Elements
-@kindex @kbd{C-c C-/}
 Missing closing elements can be inserted using @kbd{C-c C-/}.  By
 default, this will insert the first missing closing element found in the
 current buffer at point.  If all elements appear to be matched or if
-there is an excess of closing tags, an appropriate message will be
-displayed in the echo area.
+there is an excess of closing tags, a notification will be displayed and
+no element will be inserted.
 
-@node Checking WML,  Customisation, Inserting Elements, Top
+@node Checking WML, Customisation, Inserting Elements, Top
 @chapter Checking WML
 
 @menu
@@ -312,22 +306,20 @@ displayed in the echo area.
 
 @node Usage and Capabilities, , Checking WML, Checking WML
 @section Usage and Capabilities
-@kindex @kbd{C-c C-c}
-@kindex @kbd{C-x `}
-@kindex @kbd{C-c C-f}
-@kindex @kbd{C-c C-b}
-Checking of the current buffer can be performed using @kbd{C-c C-c}.  A
-summary of all warnings located will be provided in a separate buffer.
+
+Checking WML in the current buffer can be performed using @kbd{C-c C-c},
+with a summary of all warnings found reported in a separate buffer.
 Point can be jumped to the next and previous warning using @kbd{C-c C-f}
 (or @kbd{C-x `}) and @kbd{C-c C-b}, respectively.  For visibility,
-warnings in the checked WML buffer will be underlined in red by default.
-@i{Note: Warning underlines may not be available in XEmacs.}
+warnings will be underlined in red by default.  @i{Note: Warning
+underlines may not be available in XEmacs.}
 
-The WML checking built-in to Wesnoth Mode is not intended to
-be an alternative to tools such as `wmllint', but may often be a
-convenient substitute while editing WML.
+The WML checking built-in to Wesnoth Mode is not intended to be an
+alternative to tools such as `wmllint', but may often be a convenient
+substitute while editing WML.
 
-The following conditions can be detected by WML checking in Wesnoth Mode:
+The following conditions can be detected by WML checking in Wesnoth
+Mode:
 @itemize
 @item Correct nesting of tags and preprocessor statements
 @item Known macro definitions @footnote{see @ref{Macro Definitions}}
@@ -340,25 +332,30 @@ The following conditions can be detected by WML checking in Wesnoth Mode:
 WML checking is specific to the version of WML known by Wesnoth Mode.
 See @ref{Wesnoth Update} for more information.
 
-@node Customisation, Key Index, Checking WML, Top
+@node Customisation, , Checking WML, Top
 @chapter Customisation
 
 @menu
-* Indentation::                 Customising WML indentation
+* Modifying Indentation::       Customising WML indentation
 * Wesnoth Update::              Using and configuring Wesnoth Update
 * Macro Definitions::           making project-local macros known
 @end menu
 
-@node Indentation, Wesnoth Update, Customisation, Customisation
-@section Indentation
+@node Modifying Indentation, Wesnoth Update, Customisation, Customisation
+@section Modifying Indentation
 
 The style of indentation can be customised using
-@code{wesnoth-indent-savefile}.  The default value is @code{non-nil},
+@code{wesnoth-indent-savefile}.  The default value is @code{t},
 which results in all children being indented a level deeper than their
 parent.  When set to @code{nil}, children will be indented to the same
 level as their parent element.  This option is provided only for
-consistency when editing (very) old WML.  It is recommended that all new
-code be written using the new convention.
+consistency when editing (very) old WML.  It is recommended that this be
+non-nil for all new WML.
+
+@code{wesnoth-indent-preprocessor-bol} controls how preprocessor
+statements should be indented.  If non-nil, all preprocessor statements
+will be indented to the beginning of the line.  Otherwise, preprocessor
+statements will be indented as to the level indicated by its context.
 
 By default, Wesnoth Mode will attempt indentation of the current line
 and create a newline and when @kbd{RET} or @kbd{C-j} are used.
@@ -369,22 +366,38 @@ affect the behaviour of @kbd{C-j} performing indentation following the
 newline; this only determines whether indentation will be automatically
 performed on the current line.
 
+The following can be used to change @kbd{RET} to automatically indent the
+newline:
+@example
+(add-hook 'wesnoth-mode-hook
+  '(lambda ()
+    (define-key wesnoth-mode-map (kbd ``C-m'')
+    'wesnoth-newline-and-indent)))
+@end example
+
 @code{wesnoth-base-indent} controls the depth of indentation for each
 level.  Its value should be an integer.  This is set to `4' by default,
 which is the convention used when indenting WML.
 
+By default, Wesnoth Mode will use spaces for indentation.  Tabs can instead be used with the following:
+@example
+(add-hook 'wesnoth-mode-hook
+  '(lambda ()
+    (setq indent-tabs-mode t
+          tab-width wesnoth-base-indent)))
+@end example
+
 @code{wesnoth-warning-face} is the face used to display the overlay for
 warnings detected when checking WML (See @ref{Checking WML}).  By
-default this is a red underline.  Use of this face may not be supported
-under XEmacs.
+default this is a red underline.  @i{Note: use of this face may not be supported
+under XEmacs.}
 
-@node Wesnoth Update, Macro Definitions, Indentation, Customisation
+@node Wesnoth Update, Macro Definitions, Modifying Indentation, Customisation
 @section Wesnoth Update
 
 Wesnoth Update controls the known WML data for Wesnoth Mode.  To update
-this information, three variables need to be set appropriately:
-@code{wesnoth-root-directory}, @code{wesnoth-update-output-directory}
-and @code{wesnoth-addition-file}.
+this information, two variables need to be set appropriately:
+@code{wesnoth-root-directory} and @code{wesnoth-update-output-directory}.
 
 @code{wesnoth-root-directory} should be the path to the root directory
 of a Wesnoth installation or Wesnoth source code.  Wesnoth Update will
@@ -395,26 +408,34 @@ found to provide context-sensitive completion and WML checking.
 WML data found.  This path should be within the @code{load-path}, and
 preferably, in the same directory as Wesnoth Mode.
 
-@code{wesnoth-addition-file} specifies the `addition file' to use.  An
-addition file is an outline of a valid WML file which is processed for
-additional element data.  This should be set as the path a suitable
-addition file.  A sample addition file is included with Wesnoth Mode.
-
 For example:
 @example
 (setq wesnoth-root-directory "/usr/local/share/wesnoth/"
-      wesnoth-addition-file
-      "~/.emacs.d/wesnoth-mode/wesnoth-wml-additions.cfg"
-      wesnoth-update-output-directory "~/.emacs.d/wesnoth-mode/"
+      wesnoth-update-output-directory "~/.emacs.d/wesnoth-mode/")
 @end example
 
 Once set, @kbd{M-x wesnoth-update} will generate and load a new cache of
-WML data ready for use for the current and future sessions.  (Please
-note, @code{wesnoth-update} may take some time to run.)
+WML data ready for use for the current and future sessions.  @i{Note:
+@code{wesnoth-update} may take some time to run.}
+
+@code{wesnoth-addition-file} specifies the `addition file' to use.  An
+addition file is an outline of a valid WML file which is processed for
+additional element data which may not have been detected when running
+@code{wesnoth-update}.  This should be set as the path to a suitable
+addition file.  A sample addition file is included with Wesnoth Mode.
+
+The addition data is read from the file and updated any time tag
+information is required, therefore no action needs to be taken to adjust
+tag data other than saving the addition file when modified.
+
+For example, the following could be used to specify an addition file:
+@example
+(setq wesnoth-addition-file
+      "~/.emacs.d/wesnoth-mode/wesnoth-wml-additions.cfg")
+@end example
 
 @node Macro Definitions, , Wesnoth Update, Customisation
 @section Macro Definitions
-@kindex @kbd{C-c C-u}
 
 While built-in macros are always available, local macro definitions are
 automatically scanned and made known to Wesnoth Mode for each WML file
@@ -424,10 +445,6 @@ modified. (Note that this is not required when the macro is defined in
 the WML file currently being edited as such definitions will be
 automatically updated when needed.)  @kbd{C-u C-c C-u} can be used to
 clear known local macro definitions.
-
-@node Key Index,  , Customisation, Top
-@unnumbered Key Index
-@printindex ky
 
 @bye
 
