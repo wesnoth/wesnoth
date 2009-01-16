@@ -101,8 +101,8 @@ namespace {
 			state_of_game->set_variable("y2", y2_);
 			--instance_count;
 		}
-		static unsigned recursion_count() {
-			return std::max<unsigned>(1,instance_count)-1;
+		static unsigned count() {
+			return instance_count;
 		}
 		private:
 		static unsigned instance_count;
@@ -3547,8 +3547,8 @@ namespace game_events {
 		if(std::find(unit_wml_ids.begin(),unit_wml_ids.end(),id) == unit_wml_ids.end()) {
 			unit_wml_ids.insert(id);
 			for(config::child_list::const_iterator new_ev = cfgs.begin(); new_ev != cfgs.end(); ++ new_ev) {
-				// the child list memory is not persistant so use vconfig(*,*) to manage a copy
-				event_handlers.push_back(game_events::event_handler(vconfig(*new_ev, *new_ev)));
+				std::vector<game_events::event_handler> &temp = (pump_manager::count()) ? new_handlers : event_handlers;
+				temp.push_back(game_events::event_handler(vconfig(*new_ev, *new_ev)));
 			}
 		}
 	}
@@ -3558,14 +3558,14 @@ namespace game_events {
 		assert(manager_running);
 		if(!events_init())
 			return false;
-		if(pump_manager::recursion_count() >= game_config::max_loop) {
+
+		pump_manager pump_instance;
+		if(pump_manager::count() >= game_config::max_loop) {
 			ERR_NG << "game_events::pump() waiting to process new events because "
 				<< "recursion level would exceed maximum " << game_config::max_loop << '\n';
 		}
 
-		pump_manager pump_instance;
 		bool result = false;
-
 		while(events_queue.empty() == false) {
 			game_events::queued_event ev = events_queue.front();
 			events_queue.pop_front();	// pop now for exception safety
@@ -3605,7 +3605,7 @@ namespace game_events {
 				if(process_event(handler, ev))
 					result = true;
 			}
-			if(pump_manager::recursion_count() == 0) {
+			if(pump_manager::count() == 1) {
 				// only commit new event handlers when finished iterating over event_handlers
 				commit_wmi_commands();
 				commit_new_handlers();
