@@ -1,7 +1,17 @@
 Version 1.5.7+svn:
  * Campaigns:
-   * The Rise of Wesnoth:
+   * An Orcish Incursion
+     * Converted to the new gold carryover system.
+   * Eastern Invasion
+     * Fixed victory not triggering correctly in 'The Crossing'.
+     * Fixed missing time of day schedules in several scenarios.
+     * Fixed various problems in 'Northern Outpost'.
+   * The Hammer of Thursagan
+     * Converted to the new gold carryover system.
+   * The Rise of Wesnoth
      * Renamed "Lord Dionli" to "Lady Dionli".
+   * Son of the Black Eye
+     * Made scenarios 'Silent Forest' and 'Shan Taum the Smug' harder.
  * Graphics:
    * New portraits for Royal Guard, Heavy Infantry, Iron Mauler, Sergeant,
      Lieutenant, General, Grand Marshal with 1 alternate, Saurian Augur line,
@@ -14,14 +24,9 @@ Version 1.5.7+svn:
    * updated translations: Chinese (Simplified), Czech, Danish, German,
      Hungarian, Italian, Japanese, Lithuanian, Russian, Slovak, Spanish
    * updated DejaVuSans to 2.28
- * Multiplayer ui
-   * Added a gui front-end to various commands, brought up by double clicking
-     a player name, replacing the old whisper dialog
-   * Automatically select the game the selected player is in
-   * Try to preserve the selected player when the player list is updated
-   * Added an option to avoid auto-scroll to ennemy units during oponent's
-     turn
- * Networking
+ * Unit changes and balancing:
+   * Updated most units' defense and movement values on coastal reef.
+ * Networking:
    * Ensure SDL_net is initialized before attempting to send upload_log
  * User interface:
    * Pressing backspace in a textbox with selection now clears the selection.
@@ -33,6 +38,13 @@ Version 1.5.7+svn:
    * Pressing escape in a new dialog, behaves like in the old dialogs again.
    * The new portrait dialogs can get higher so the scrollbars are less often
      visible.
+ * Multiplayer ui:
+   * Added a gui front-end to various commands, brought up by double clicking
+     a player name, replacing the old whisper dialog
+   * Automatically select the game the selected player is in
+   * Try to preserve the selected player when the player list is updated
+   * Added an option to avoid auto-scroll to ennemy units during oponent's
+     turn
  * WML engine:
    * add an "animate" key to the [teleport] event
    * add a resistance_anim block used whenever a unit uses a [resistance]

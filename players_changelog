@@ -3,6 +3,20 @@ changes may be omitted). For a complete list of changes, see the main
 changelog: http://svn.gna.org/viewcvs/*checkout*/wesnoth/trunk/changelog
 
 Version 1.5.7+svn:
+  * Campaigns
+    * An Orcish Incursion
+      * Converted to the new gold carryover system.
+    * Eastern Invasion
+      * Fixed victory not triggering correctly in 'The Crossing'.
+      * Fixed missing time of day schedules in several scenarios.
+      * Fixed various problems in 'Northern Outpost'.
+    * The Hammer of Thursagan
+      * Converted to the new gold carryover system.
+    * The Rise of Wesnoth
+      * Renamed "Lord Dionli" to "Lady Dionli".
+    * Son of the Black Eye
+      * Made scenarios 'Silent Forest' and 'Shan Taum the Smug' harder.
+     
   * Graphics
     * New portraits for Royal Guard, Heavy Infantry, Iron Mauler, Sergeant,
       Lieutenant, General, Grand Marshal with 1 alternate, Saurian Augur line,
@@ -13,15 +27,15 @@ Version 1.5.7+svn:
     * Fixed several glitches in with the listboxes and new portrait dialog.
     * Pressing escape in a new dialog, behaves like in the old dialogs again.
     * Spacebar closes the dialogs without a scrollbar again.
+    
+  * Multiplayer user interface
+    * Added a gui front-end to various commands, brought up by double clicking
+      a player name, replacing the old whisper dialog.
+    * Automatically select the game the selected player is in.
 
   * Language and translations
     * updated translations: Chinese (Simplified), Czech, Danish, German,
       Hungarian, Italian, Japanese, Lithuanian, Russian, Slovak, Spanish.
-
-  * Multiplayer ui
-    * Added a gui front-end to various commands, brought up by double clicking
-      a player name, replacing the old whisper dialog
-    * Automatically select the game the selected player is in
 
   * Miscellaneous and bugfixes
     * Fixed a crash when more than one add-on is being updated.
