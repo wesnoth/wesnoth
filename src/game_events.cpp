@@ -2941,8 +2941,36 @@ namespace {
 			{
 				// We whether we can show the new dialog.
 				if(options.empty() && !has_text_input && speaker != units->end()) {
-					// Get the portrait and if found proceed to use the new dialog.
+					
+					
+					// At the moment we use a hack if the image in portrait has
+					// an image with the same name in the directory transparent
+					// that image is used.
+					std::string image = speaker->second.profile();
+					const int offset = image.find_last_of('/');
+					image.insert(offset, "/transparent");
 
+					::surface surf(image::get_image(image::locator(image)));
+					if(!surf) {
+						image = speaker->second.profile();
+					}
+
+					gui2::twml_message_left dlg(
+							caption,
+							cfg["message"],
+							image,
+							false);
+
+					dlg.show(screen->video());
+					if(dlg.get_retval() == gui2::twindow::CANCEL) {
+						handler.skip_messages() = true;
+					}
+					return;
+
+					/**
+					 * @todo enable portrait code in 1.7 and write a clean api.
+					 */
+#if 0	
 					const tportrait* portrait =
 						speaker->second.portrait(400, tportrait::LEFT);
 					if(portrait) {
@@ -2958,6 +2986,7 @@ namespace {
 						}
 						return;
 					}
+#endif					
 				}
 
 				const t_string msg = cfg["message"];
