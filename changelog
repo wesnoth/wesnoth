@@ -49,6 +49,8 @@ Version 1.5.7+svn:
      with a SLF
    * add a [replace_map] map="file" event that can load a map of a different
      size in a scenario
+   * make [remove_shroud] and [place_shroud] use true Standard Location Filters,
+     not just location lists/ranges.
  * Miscellaneous and bug fixes:
    * Added the sunset feature to the new dialogs.
    * Fix the calculate feature in the test scenario.

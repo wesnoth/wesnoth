@@ -496,8 +496,12 @@ namespace {
 		const size_t index = side_num-1;
 
 		if(index < teams->size()) {
-			const std::vector<map_location>& locs = multiple_locs(cfg);
-			for(std::vector<map_location>::const_iterator j = locs.begin(); j != locs.end(); ++j) {
+			std::set<map_location> locs;
+			terrain_filter filter(cfg, *game_map, *status_ptr, *units);
+			filter.restrict_size(game_config::max_loop);
+			filter.get_locations(locs);
+			
+			for(std::set<map_location>::const_iterator j = locs.begin(); j != locs.end(); ++j) {
 				if(remove) {
 					(*teams)[index].clear_shroud(*j);
 				} else {
