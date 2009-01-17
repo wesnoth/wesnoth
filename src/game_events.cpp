@@ -3596,6 +3596,7 @@ namespace game_events {
 		if(pump_manager::count() >= game_config::max_loop) {
 			ERR_NG << "game_events::pump() waiting to process new events because "
 				<< "recursion level would exceed maximum " << game_config::max_loop << '\n';
+			return false;
 		}
 
 		bool result = false;
