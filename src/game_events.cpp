@@ -2947,8 +2947,12 @@ namespace {
 					// an image with the same name in the directory transparent
 					// that image is used.
 					std::string image = speaker->second.profile();
-					const int offset = image.find_last_of('/');
-					image.insert(offset, "/transparent");
+					const size_t offset = image.find_last_of('/');
+					if(offset != std::string::npos) {
+						image.insert(offset, "/transparent");
+					} else {
+						image = "transparent/" + image;
+					}
 
 					::surface surf(image::get_image(image::locator(image)));
 					if(!surf) {
