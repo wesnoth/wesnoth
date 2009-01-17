@@ -2955,6 +2955,24 @@ namespace {
 						image = speaker->second.profile();
 					}
 
+					const size_t right_offset = image.find("~RIGHT()");
+					if(right_offset != std::string::npos) {
+						image.erase(right_offset);
+
+						gui2::twml_message_right dlg(
+								caption,
+								cfg["message"],
+								image,
+								false);
+
+						dlg.show(screen->video());
+						if(dlg.get_retval() == gui2::twindow::CANCEL) {
+							handler.skip_messages() = true;
+						}
+						return;
+
+					}
+
 					gui2::twml_message_left dlg(
 							caption,
 							cfg["message"],
