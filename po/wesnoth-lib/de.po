@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.5\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-01-16 21:54+0100\n"
-"PO-Revision-Date: 2008-12-29 12:31+0100\n"
+"PO-Revision-Date: 2009-01-17 12:07+0100\n"
 "Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "MIME-Version: 1.0\n"
@@ -490,12 +490,12 @@ msgstr "Alte Höhe:"
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:147
 msgid "Expand / shrink direction"
-msgstr ""
+msgstr "Richtung erweitern/verringern"
 
 #. [toggle_button]: id=copy_edge_terrain
 #: data/gui/default/window/editor_resize_map.cfg:242
 msgid "Copy edge terrain"
-msgstr ""
+msgstr "Rahmengelände kopieren"
 
 #. [button]: id=ok
 #: data/gui/default/window/editor_resize_map.cfg:264
@@ -512,7 +512,7 @@ msgstr "Editoreinstellungen"
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:46
 msgid "Time of day lighting preset"
-msgstr ""
+msgstr "Tageszeitvoreinstellungen"
 
 #. [button]: id=next_tod
 #: data/gui/default/window/editor_settings.cfg:75
@@ -586,29 +586,27 @@ msgstr "Sprache ändern"
 #. [window]: id=mp_cmd_wrapper
 #: data/gui/default/window/mp_cmd_wrapper.cfg:8
 msgid "Multiplayer command wrapper dialog"
-msgstr ""
+msgstr "Mehrspielerkommandos"
 
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:31
 msgid "Messaging"
-msgstr ""
+msgstr "Nachrichten"
 
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:61
 msgid "Message:"
-msgstr ""
+msgstr "Nachricht:"
 
 #. [button]: id=ok
 #: data/gui/default/window/mp_cmd_wrapper.cfg:93
-#, fuzzy
 msgid "Send a private message"
-msgstr "Mitteilungen löschen"
+msgstr "Sendet eine private Nachricht"
 
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:133
-#, fuzzy
 msgid "Friends/Ignored List"
-msgstr "Freundesliste"
+msgstr "Freundes-/Ignorierliste"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=add_friend
@@ -634,34 +632,32 @@ msgstr "Entfernen"
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:233
 msgid "Moderating"
-msgstr ""
+msgstr "Moderation"
 
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:263
 msgid "Reason:"
-msgstr ""
+msgstr "Grund:"
 
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:315
-#, fuzzy
 msgid "Time:"
-msgstr "Grafikthema"
+msgstr "Zeit:"
 
 #. [button]: id=status
 #: data/gui/default/window/mp_cmd_wrapper.cfg:366
-#, fuzzy
 msgid "Status"
-msgstr "Spielübersicht"
+msgstr "Status"
 
 #. [button]: id=kick
 #: data/gui/default/window/mp_cmd_wrapper.cfg:381
 msgid "Kick"
-msgstr ""
+msgstr "Vom Server werfen"
 
 #. [button]: id=ban
 #: data/gui/default/window/mp_cmd_wrapper.cfg:396
 msgid "Ban"
-msgstr ""
+msgstr "Verbannen"
 
 #. [label]
 #: data/gui/default/window/mp_connect.cfg:50
@@ -759,13 +755,12 @@ msgstr "Partie eröffnen"
 #. [window]: id=mp_login
 #: data/gui/default/window/mp_login.cfg:8
 msgid "Multiplayer server login dialog"
-msgstr ""
+msgstr "Anmelden am Mehrspielerserver"
 
 #. [label]
 #. [button]: id=ok
 #: data/gui/default/window/mp_login.cfg:31
 #: data/gui/default/window/mp_login.cfg:234
-#, fuzzy
 msgid "Login"
 msgstr "Euer Name: "
 
@@ -778,20 +773,19 @@ msgstr "Euer Name: "
 #. [label]
 #: data/gui/default/window/mp_login.cfg:134
 #: data/gui/default/window/mp_method_selection.cfg:114
-#, fuzzy
 msgid "Password:"
-msgstr "Passwort festlegen"
+msgstr "Passwort:"
 
 #. [toggle_button]: id=remember_password
 #: data/gui/default/window/mp_login.cfg:190
 #: data/gui/default/window/mp_method_selection.cfg:170
 msgid "Save password to preferences (clear text)"
-msgstr ""
+msgstr "Speichert das Passwort in der Konfigurationsdatei (im Klartext)"
 
 #. [button]: id=password_reminder
 #: data/gui/default/window/mp_login.cfg:248
 msgid "Password Reminder"
-msgstr ""
+msgstr "Passworterinnerung"
 
 #. [label]
 #. [grid]
@@ -945,7 +939,7 @@ msgstr "Vollbild"
 
 #: src/game_preferences_display.cpp:152
 msgid "Enable scroll tracking of unit actions."
-msgstr ""
+msgstr "Zentrierung auf Einheiten, wenn diese Aktionen ausführen"
 
 #: src/game_preferences_display.cpp:153
 msgid "Accelerated Speed"
@@ -1177,6 +1171,8 @@ msgstr "Das Spiel im Vollbild- oder Fenstermodus betreiben"
 msgid ""
 "Should the map view scroll to a unit when an action or move is animated."
 msgstr ""
+"Bewegt die Kartenansicht zu der jeweiligen Einheit, wenn diese eine Aktion "
+"oder Bewegung ausführt."
 
 #: src/game_preferences_display.cpp:303
 msgid "Make units move and fight faster"
@@ -1235,7 +1231,7 @@ msgstr ""
 
 #: src/game_preferences_display.cpp:361
 msgid "Find and set path to MP server to host LAN games."
-msgstr ""
+msgstr "Gebt den Pfad zum MS Server an, um Mehrspielerpartien auszurichten."
 
 #: src/game_preferences_display.cpp:362
 msgid "View and edit your friends and ignores list"
@@ -1377,7 +1373,7 @@ msgstr ""
 
 #: src/game_preferences_display.cpp:1226
 msgid "Find $filename server binary to host networked games"
-msgstr ""
+msgstr "Sucht den $filename Server um Mehrspielerpartien auszurichten"
 
 #: src/gui/dialogs/mp_create_game.cpp:78 src/hotkeys.cpp:64
 msgid "Load Game"
@@ -1413,7 +1409,7 @@ msgstr "Benötigtes Steuerelement '$id' wurde nicht definiert."
 
 #: src/gui/widgets/settings.cpp:126
 msgid "No default gui defined."
-msgstr ""
+msgstr "Keine Standard GUI definiert."
 
 #: src/gui/widgets/settings.cpp:258
 msgid "Window not defined."
@@ -1432,7 +1428,7 @@ msgstr "Keine Auflösung definiert."
 
 #: src/gui/widgets/settings.cpp:462
 msgid "No state or draw section defined."
-msgstr ""
+msgstr "Kein Zustands- oder Zeichenabschnitt definiert."
 
 #: src/gui/widgets/settings.cpp:705 src/gui/widgets/settings.cpp:859
 #: src/gui/widgets/window_builder.cpp:378
@@ -1714,7 +1710,7 @@ msgstr "Auswahlwerkzeug"
 
 #: src/hotkeys.cpp:118
 msgid "Set Starting Positions Tool"
-msgstr ""
+msgstr "Startpositionswerkzeug"
 
 #: src/hotkeys.cpp:119
 msgid "Next Brush"

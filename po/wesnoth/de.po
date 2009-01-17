@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-01-16 21:53+0100\n"
-"PO-Revision-Date: 2009-01-16 12:41+0100\n"
+"PO-Revision-Date: 2009-01-17 11:44+0100\n"
 "Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "MIME-Version: 1.0\n"
@@ -264,9 +264,8 @@ msgstr "Internationalisierungsleitung"
 
 #. [about]
 #: data/core/about.cfg:896
-#, fuzzy
 msgid "English strings edition"
-msgstr "Englische (GB) Übersetzung"
+msgstr "Verbesserung des englischen Orginals"
 
 #. [about]
 #: data/core/about.cfg:903
@@ -490,9 +489,8 @@ msgstr "Valencianische (südliches Katalonien) Übersetzung"
 
 #. [about]
 #: data/core/about.cfg:2020
-#, fuzzy
 msgid "RACV's Translation"
-msgstr "Chinesische Übersetzung"
+msgstr "Valenzianische (nach der RACV) Übersetzung"
 
 #. [about]
 #: data/core/about.cfg:2027
@@ -2557,18 +2555,17 @@ msgstr "Unbegehbar"
 
 #. [topic]: id=terrain_unwalkable
 #: data/core/help.cfg:671
-#, fuzzy
 msgid ""
 "Unwalkable terrain covers any chasm or gorge which, as the name implies, "
 "cannot be crossed simply by walking. Chasms are noted for sheer walls which "
 "would take days to traverse. As far as gameplay is concerned, only units "
 "capable of flying can cross this terrain."
 msgstr ""
-"Eine Kluft stellt einen tiefen Schlund im Boden dar, deren Tiefen ins "
-"Unbekannte reichen. Sie zeichnen sich durch ihre hohen Wände aus, die zu "
-"durchqueren viele Tagesmärsche in Anspruch nehmen. Da das Durchqueren einer "
-"Kluft für Reiter und Fußtruppen viel zu lange dauern würde, können nur "
-"fliegende Einheiten dieses Hindernis passieren."
+"Unbegehbares Gelände stellt jede Art von Schlund oder Kluft im Boden dar, "
+"deren Tiefen ins Unbekannte reichen. Sie zeichnen sich durch ihre hohen "
+"Wände aus, die zu durchqueren viele Tagesmärsche in Anspruch nehmen. Da das "
+"Durchqueren von unbegehbarem Gelände für Reiter und Fußtruppen viel zu lange "
+"dauern würde, können nur fliegende Einheiten dieses Hindernis passieren."
 
 #. [topic]: id=terrain_lava
 #: data/core/help.cfg:678
@@ -7846,22 +7843,20 @@ msgid "Invalid color range: "
 msgstr "Ungültiger Farbbereich: "
 
 #: src/game_events.cpp:133
-#, fuzzy
 msgid "Error: "
-msgstr "Fehler"
+msgstr "Fehler:"
 
 #: src/game_events.cpp:136
-#, fuzzy
 msgid "Warning: "
-msgstr "Vormittag"
+msgstr "Warnung:"
 
 #: src/game_events.cpp:139
 msgid "Debug: "
-msgstr ""
+msgstr "Debug: "
 
 #: src/game_events.cpp:142
 msgid "Info: "
-msgstr ""
+msgstr "Information:"
 
 #: src/game_events.cpp:1063
 msgid "Victory:"
