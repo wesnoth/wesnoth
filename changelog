@@ -23,6 +23,9 @@ Version 1.5.7+svn:
    * Optimized animation and invalidation of idle/standing units.
    * Removed the black background from most of the old portraits.
  * Language and i18n:
+   * Fixed a small bug that was causing the translations engine to look
+     at badly mixed up paths when trying to locate UMC translations,
+     rendering them unusable (bug #12872).
    * updated translations: Chinese (Simplified), Czech, Danish, German,
      Hungarian, Italian, Japanese, Lithuanian, Russian, Slovak, Spanish
    * updated DejaVuSans to 2.28

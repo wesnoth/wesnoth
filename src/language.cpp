@@ -401,9 +401,10 @@ void init_textdomains(const config& cfg)
 
 			const std::vector<std::string>& paths = get_binary_paths(path);
 			for(std::vector<std::string>::const_iterator i = paths.begin(); i != paths.end(); ++i) {
-				DBG_FS << "  Checking " << *i << "\n";
-				if(is_directory(*i + path)) {
-					location = *i + path;
+				const std::string loc = *i + "/" + path;
+				DBG_FS << "  Checking " << loc << "\n";
+				if(is_directory(loc)) {
+					location = loc;
 					break;
 				}
 			}
@@ -418,7 +419,6 @@ void init_textdomains(const config& cfg)
 			}
 		}
 	}
-
 }
 
 /* vim:set encoding=utf-8: */
