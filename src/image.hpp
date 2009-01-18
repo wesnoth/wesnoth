@@ -153,6 +153,19 @@ namespace image {
 		// returns true if the locator does not correspond to any
 		// actual image
 		bool is_void() const { return val_.type_ == NONE; }
+
+		/**
+		 * Tests whether the file the locater points at exists.
+		 *
+		 * is_void doesn't seem to work before the image is loaded and also in
+		 * debug mode a placeholder is returned. So it's not possible to test
+		 * for the existance of a file. So this function does that. (Note it
+		 * tests for existance not whether or not it's a valid image.)
+		 *
+		 * @return                Whether or not the file exists.
+		 */
+		bool file_exists(); 
+
 		// loads the image it is pointing to from the disk
 		surface load_from_disk() const;
 

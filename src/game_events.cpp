@@ -2954,8 +2954,8 @@ namespace {
 						image = "transparent/" + image;
 					}
 
-					::surface surf(image::get_image(image::locator(image)));
-					if(!surf) {
+					image::locator locator(image);
+					if(!locator.file_exists()) {
 						image = speaker->second.profile();
 					}
 
