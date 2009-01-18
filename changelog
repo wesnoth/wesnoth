@@ -29,10 +29,21 @@ Version 1.5.7+svn:
    * updated translations: Chinese (Simplified), Czech, Danish, German,
      Hungarian, Italian, Japanese, Lithuanian, Russian, Slovak, Spanish
    * updated DejaVuSans to 2.28
- * Unit changes and balancing:
-   * Updated most units' defense and movement values on coastal reef.
+ * Multiplayer ui:
+   * Added a gui front-end to various commands, brought up by double clicking
+     a player name, replacing the old whisper dialog
+   * Automatically select the game the selected player is in
+   * Try to preserve the selected player when the player list is updated
+   * Added an option to avoid auto-scroll to ennemy units during oponent's
+   * Cleared the login dialog mess: Now there is a single dialog to display error
+     messages from the server and to choose a different username and/or password
+   * Added the possibility to provide a password in the main multiplayer dialog
+   * Added an option to save the password to the preferences
+     turn
  * Networking:
    * Ensure SDL_net is initialized before attempting to send upload_log
+ * Unit changes and balancing:
+   * Updated most units' defense and movement values on coastal reef.
  * User interface:
    * Pressing backspace in a textbox with selection now clears the selection.
    * Scrollwheel mouses can scroll the new listboxes.
@@ -46,17 +57,6 @@ Version 1.5.7+svn:
    * Added a password box that hides its input
    * The new portrait dialogs can now show the old images as well and also the
      right hand side images.
- * Multiplayer ui:
-   * Added a gui front-end to various commands, brought up by double clicking
-     a player name, replacing the old whisper dialog
-   * Automatically select the game the selected player is in
-   * Try to preserve the selected player when the player list is updated
-   * Added an option to avoid auto-scroll to ennemy units during oponent's
-   * Cleared the login dialog mess: Now there is a single dialog to display error
-     messages from the server and to choose a different username and/or password
-   * Added the possibility to provide a password in the main multiplayer dialog
-   * Added an option to save the password to the preferences
-     turn
  * WML engine:
    * add an "animate" key to the [teleport] event
    * add a resistance_anim block used whenever a unit uses a [resistance]
