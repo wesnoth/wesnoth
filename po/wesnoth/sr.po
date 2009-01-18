@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-01-16 21:53+0100\n"
+"POT-Creation-Date: 2009-01-18 14:00+0100\n"
 "PO-Revision-Date: 2008-05-04 12:00+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -71,7 +71,7 @@ msgstr "подземље"
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:303
-#: src/actions.cpp:1045 src/actions.cpp:1316
+#: src/actions.cpp:1045 src/actions.cpp:1328
 msgid "poisoned"
 msgstr "отрован"
 
@@ -130,7 +130,7 @@ msgstr ""
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [then]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1241
-#: src/actions.cpp:1050 src/actions.cpp:1321
+#: src/actions.cpp:1050 src/actions.cpp:1333
 #, fuzzy
 msgid "female^slowed"
 msgstr "оданост"
@@ -138,7 +138,7 @@ msgstr "оданост"
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [else]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1244
-#: src/actions.cpp:1050 src/actions.cpp:1321
+#: src/actions.cpp:1050 src/actions.cpp:1333
 msgid "slowed"
 msgstr "успорен"
 
@@ -6843,29 +6843,29 @@ msgstr "Изабрано неисправно оружје, можда крив�
 msgid "An invalid weapon is send, possibly due to the Python AI."
 msgstr "Послато неисправно оружје, можда кривицом питонске ВИ."
 
-#: src/actions.cpp:1045 src/actions.cpp:1316
+#: src/actions.cpp:1045 src/actions.cpp:1328
 #, fuzzy
 msgid "female^poisoned"
 msgstr "немртвост"
 
-#: src/actions.cpp:1057 src/actions.cpp:1328
+#: src/actions.cpp:1057 src/actions.cpp:1340
 #, fuzzy
 msgid "female^stone"
 msgstr "кршност"
 
-#: src/actions.cpp:1057 src/actions.cpp:1328
+#: src/actions.cpp:1057 src/actions.cpp:1340
 msgid "stone"
 msgstr "окамењен"
 
-#: src/actions.cpp:2392
+#: src/actions.cpp:2417
 msgid "Ambushed!"
 msgstr "Заседа!"
 
-#: src/actions.cpp:2399
+#: src/actions.cpp:2424
 msgid "Failed teleport! Exit not empty"
 msgstr "Неуспешна телепортација! Излаз није празан."
 
-#: src/actions.cpp:2438
+#: src/actions.cpp:2463
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "Уочена $friends савезничка јединица"
@@ -6873,7 +6873,7 @@ msgstr[1] "Уочене $friends савезничке јединице"
 msgstr[2] "Уочено $friends савезничких јединица"
 msgstr[3] "Уочена савезничка јединица"
 
-#: src/actions.cpp:2441
+#: src/actions.cpp:2466
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "Уочена $enemies непријатељска јединица!"
@@ -6881,7 +6881,7 @@ msgstr[1] "Уочене $enemies непријатељске јединице!"
 msgstr[2] "Уочено $enemies непријатељских јединица!"
 msgstr[3] "Уочена непријатељска јединица!"
 
-#: src/actions.cpp:2446
+#: src/actions.cpp:2471
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "$friends савезничка"
@@ -6889,7 +6889,7 @@ msgstr[1] "$friends савезничке"
 msgstr[2] "$friends савезничких"
 msgstr[3] "једна савезничка"
 
-#: src/actions.cpp:2447
+#: src/actions.cpp:2472
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "$enemies непријатељска"
@@ -6897,11 +6897,11 @@ msgstr[1] "$enemies непријатељске"
 msgstr[2] "$enemies непријатељских"
 msgstr[3] "једна непријатељска"
 
-#: src/actions.cpp:2448
+#: src/actions.cpp:2473
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Уочене јединице! ($friendphrase, $enemyphrase)"
 
-#: src/actions.cpp:2457
+#: src/actions.cpp:2482
 msgid "(press $hotkey to keep moving)"
 msgstr "(притисните $hotkey да продужи)"
 
@@ -7618,11 +7618,11 @@ msgstr ""
 msgid "Info: "
 msgstr ""
 
-#: src/game_events.cpp:1063
+#: src/game_events.cpp:1067
 msgid "Victory:"
 msgstr "победа:"
 
-#: src/game_events.cpp:1066
+#: src/game_events.cpp:1070
 msgid "Defeat:"
 msgstr "пораз:"
 

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.0\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-01-16 21:53+0100\n"
+"POT-Creation-Date: 2009-01-18 14:00+0100\n"
 "PO-Revision-Date: 2005-08-23 11:08+0100\n"
 "Last-Translator: Alfredo Beaumont <ziberpunk@ziberghetto.dhis.org>\n"
 "Language-Team: Basque <ziberpunk@ziberghetto.dhis.org>\n"
@@ -75,7 +75,7 @@ msgstr "Lurazpia"
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:303
-#: src/actions.cpp:1045 src/actions.cpp:1316
+#: src/actions.cpp:1045 src/actions.cpp:1328
 msgid "poisoned"
 msgstr "pozoindua"
 
@@ -131,7 +131,7 @@ msgstr ""
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [then]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1241
-#: src/actions.cpp:1050 src/actions.cpp:1321
+#: src/actions.cpp:1050 src/actions.cpp:1333
 #, fuzzy
 msgid "female^slowed"
 msgstr "Iheslaria"
@@ -139,7 +139,7 @@ msgstr "Iheslaria"
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [else]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1244
-#: src/actions.cpp:1050 src/actions.cpp:1321
+#: src/actions.cpp:1050 src/actions.cpp:1333
 msgid "slowed"
 msgstr "mantsotua"
 
@@ -5489,60 +5489,60 @@ msgstr ""
 msgid "An invalid weapon is send, possibly due to the Python AI."
 msgstr ""
 
-#: src/actions.cpp:1045 src/actions.cpp:1316
+#: src/actions.cpp:1045 src/actions.cpp:1328
 #, fuzzy
 msgid "female^poisoned"
 msgstr "Andretxarra"
 
-#: src/actions.cpp:1057 src/actions.cpp:1328
+#: src/actions.cpp:1057 src/actions.cpp:1340
 #, fuzzy
 msgid "female^stone"
 msgstr "Andretxarra"
 
-#: src/actions.cpp:1057 src/actions.cpp:1328
+#: src/actions.cpp:1057 src/actions.cpp:1340
 msgid "stone"
 msgstr "harria"
 
-#: src/actions.cpp:2392
+#: src/actions.cpp:2417
 msgid "Ambushed!"
 msgstr "Segada batean harrapatuta!"
 
-#: src/actions.cpp:2399
+#: src/actions.cpp:2424
 msgid "Failed teleport! Exit not empty"
 msgstr ""
 
-#: src/actions.cpp:2438
+#: src/actions.cpp:2463
 #, fuzzy
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "Unitate lagun bat ikustatua"
 msgstr[1] "Unitate lagun bat ikustatua"
 
-#: src/actions.cpp:2441
+#: src/actions.cpp:2466
 #, fuzzy
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "Unitate etsai bat ikustatua!"
 msgstr[1] "Unitate etsai bat ikustatua!"
 
-#: src/actions.cpp:2446
+#: src/actions.cpp:2471
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/actions.cpp:2447
+#: src/actions.cpp:2472
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/actions.cpp:2448
+#: src/actions.cpp:2473
 #, fuzzy
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Unitateak ikustatuta! ($friends lagun, $enemies etsai)"
 
-#: src/actions.cpp:2457
+#: src/actions.cpp:2482
 #, fuzzy
 msgid "(press $hotkey to keep moving)"
 msgstr "(sakatu $hotkey jarraitzeko)"
@@ -6278,11 +6278,11 @@ msgstr ""
 msgid "Info: "
 msgstr ""
 
-#: src/game_events.cpp:1063
+#: src/game_events.cpp:1067
 msgid "Victory:"
 msgstr "Garaipena:"
 
-#: src/game_events.cpp:1066
+#: src/game_events.cpp:1070
 msgid "Defeat:"
 msgstr "Gainditu:"
 
