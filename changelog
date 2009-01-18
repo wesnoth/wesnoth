@@ -1,11 +1,11 @@
-Version 1.5.7+svn:
+Version 1.5.8:
  * Campaigns:
    * An Orcish Incursion
-     * Converted to the new gold carryover system.
+     * Converted to the new gold carryover system
    * Eastern Invasion
-     * Fixed victory not triggering correctly in 'The Crossing'.
-     * Fixed missing time of day schedules in several scenarios.
-     * Fixed various problems in 'Northern Outpost'.
+     * Fixed victory not triggering correctly in 'The Crossing'
+     * Fixed missing time of day schedules in several scenarios
+     * Fixed various problems in 'Northern Outpost'
    * The Hammer of Thursagan
      * Converted to the new gold carryover system.
    * The Rise of Wesnoth
@@ -13,19 +13,20 @@ Version 1.5.7+svn:
    * Son of the Black Eye
      * Made scenarios 'Silent Forest' and 'Shan Taum the Smug' harder.
    * Legend of Wesmere 
-     * Fixed the bug with savegames in scenario 3.
+     * Fixed the bug with savegames in scenario 3
  * Graphics:
    * New portraits for Royal Guard, Heavy Infantry, Iron Mauler, Sergeant,
      Lieutenant, General, Grand Marshal with 1 alternate, Saurian Augur line,
-     Saurian Skirmisher line, Troll Whelp, Death Knight.
-   * Fixed drawing glitches in the listboxes.
-   * Fixed several glitches with the new portrait dialog.
-   * Optimized animation and invalidation of idle/standing units.
-   * Removed the black background from most of the old portraits.
+     Saurian Skirmisher line, Troll Whelp, Death Knight
+   * Fixed drawing glitches in the listboxes
+   * Fixed several glitches with the new portrait dialog
+   * Optimized animation and invalidation of idle/standing units
+   * Removed the black background from most of the old portraits
  * Language and i18n:
    * Fixed a small bug that was causing the translations engine to look
      at badly mixed up paths when trying to locate UMC translations,
-     rendering them unusable (bug #12872).
+     rendering them unusable (bug #12872)
+   * Fixed translation of 'A New Land' not being shown
    * updated translations: Chinese (Simplified), Czech, Danish, German,
      Hungarian, Italian, Japanese, Lithuanian, Russian, Slovak, Spanish
    * updated DejaVuSans to 2.28
@@ -35,39 +36,40 @@ Version 1.5.7+svn:
    * Automatically select the game the selected player is in
    * Try to preserve the selected player when the player list is updated
    * Added an option to avoid auto-scroll to ennemy units during oponent's
-   * Cleared the login dialog mess: Now there is a single dialog to display error
-     messages from the server and to choose a different username and/or password
+   * Cleared the login dialog mess: Now there is a single dialog to display
+     error messages from the server and to choose a different username and/or
+     password
    * Added the possibility to provide a password in the main multiplayer dialog
    * Added an option to save the password to the preferences
      turn
  * Networking:
    * Ensure SDL_net is initialized before attempting to send upload_log
  * Unit changes and balancing:
-   * Updated most units' defense and movement values on coastal reef.
+   * Updated most units' defense and movement values on coastal reef
  * User interface:
    * Pressing backspace in a textbox with selection now clears the selection.
-   * Scrollwheel mouses can scroll the new listboxes.
+   * Scrollwheel mouses can scroll the new listboxes
    * New advanced preference to choose whether middle-click scrolls or warps
    * Fixed a glitch which closed a new dialog on the mouse up event of the old
-     dialog (the effect is percieved as the new dialog not showing up).
-   * Spacebar closes the dialogs without a scrollbar again.
-   * Pressing escape in a new dialog, behaves like in the old dialogs again.
+     dialog (the effect is percieved as the new dialog not showing up)
+   * Spacebar closes the dialogs without a scrollbar again
+   * Pressing escape in a new dialog, behaves like in the old dialogs again
    * The new portrait dialogs can get higher so the scrollbars are less often
-     visible.
+     visible
    * Added a password box that hides its input
    * The new portrait dialogs can now show the old images as well and also the
-     right hand side images.
+     right hand side images
  * WML engine:
    * add an "animate" key to the [teleport] event
    * add a resistance_anim block used whenever a unit uses a [resistance]
      ability on a neghbour
    * deprecated tag [debug_message]; use [wml_message] instead, which
      now offers the debug/dbg logger and uses the "wml" log domain
-     (i.e. --log-*=wml should be used instead of --log-*=notifs).
+     (i.e. --log-*=wml should be used instead of --log-*=notifs)
    * The text output created by [wml_message] to stderr is echoed in-game
      using the chat user interface like [deprecated_message] and other
      Invalid-WML messages; the level of verbosity is controlled by the log
-     level for the "wml" log domain.
+     level for the "wml" log domain
    * the animate_unit action can now animate multiple units
    * the animate_unit action can now change the direction the unit is facing
      with a SLF
@@ -78,11 +80,11 @@ Version 1.5.7+svn:
  * Miscellaneous and bug fixes:
    * Added the sunset feature to the new dialogs.
    * Fix the calculate feature in the test scenario.
-   * Fix an endian issue which rendered text wrong on big endian machines.
+   * Fix an endian issue which rendered text wrong on big endian machines
    * Fix a bug with temporary objects not being removed at next scenario
    * Fix replays with empty starting positions.
    * Prevent access to invalidated memory after the first download when
-     updating all installed add-ons (bug #12837).
+     updating all installed add-ons (bug #12837)
    * Adjusts drain game mechanics to match attack prediction (bug #7702)
 
 Version 1.5.7:
