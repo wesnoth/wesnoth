@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "POT-Creation-Date: 2009-01-06 22:08+0100\n"
-"PO-Revision-Date: 2008-09-27 00:17+0100\n"
+"PO-Revision-Date: 2009-01-18 20:05+0100\n"
 "Last-Translator: aceman <acelists@atlas.sk>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -24,9 +24,9 @@ msgstr "WESNOTH"
 
 # type: TH
 #: ../../doc/man/wesnoth.6:16 ../../doc/man/wesnothd.6:16
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "2009"
-msgstr "2007"
+msgstr "2009"
 
 # type: TH
 #: ../../doc/man/wesnoth.6:16
@@ -115,20 +115,20 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnoth.6:49
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<-c, --campaign>"
-msgstr "B<-d, --daemon>"
+msgstr "B<-c, --campaign>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:52
 msgid "goes directly to the campaign selection menu."
-msgstr ""
+msgstr "skočí priamo do menu výberu výpravy."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:52
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--config-dir>I<\\ name>"
-msgstr "B<--load>I<\\ uložená_hra>"
+msgstr "B<--config-dir>I<\\ názov>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:57
@@ -136,18 +136,19 @@ msgid ""
 "sets the user configuration directory to I<name> under $HOME or \"My "
 "Documents\\eMy Games\" for windows."
 msgstr ""
+"nastaví adresár s používateľskými nastaveniami na I<meno> pod $HOME alebo "
+"\"My Documents\\eMy Games\" vo Windows."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:57
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--config-path>"
-msgstr "B<--path>"
+msgstr "B<--config-path>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:60
-#, fuzzy
 msgid "prints the path of the user configuration directory and exits."
-msgstr "vypíše názov dátového adresára hry a skončí."
+msgstr "vypíše názov adresára s používateľskými nastaveniami a skončí."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:60
@@ -157,20 +158,18 @@ msgstr "B<-d, --debug>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:64
-#, fuzzy
 msgid ""
 "enables additional command mode options in-game (see the wiki page at http://"
 "www.wesnoth.org/wiki/CommandMode for more information about command mode)."
 msgstr ""
-"zobrazí dodatočné ladiace informácie a umožní ďalšie možnosti príkazového "
-"riadku hry (ďalšie informácie o príkazovom riadku hry viď webová stránka "
-"http://www.wesnoth.org/wiki/CommandMode )."
+"zapne ďalšie možnosti príkazového režimu hry (ďalšie informácie o príkazovom "
+"režime na http://www.wesnoth.org/wiki/CommandMode)."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:64
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--dummy-locales>"
-msgstr "B<--nocache>"
+msgstr "B<--dummy-locales>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:68
@@ -178,17 +177,19 @@ msgid ""
 "use special dummy locales to switch to any language even if that language "
 "isn't installed system-wide."
 msgstr ""
+"použije špeciálne locale na prepnutie do akéhokoľvek jazyka aj keď nie je "
+"nainštalovaný v celom systéme."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:68
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<-e, --editor>"
-msgstr "B<-t, --test>"
+msgstr "B<-e, --editor>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:71
 msgid "start the in-game map editor directly."
-msgstr ""
+msgstr "priamo spustí zabudovaný editor máp."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:71
@@ -260,9 +261,9 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnoth.6:93
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<-l,\\ --load>I<\\ file>"
-msgstr "B<--load>I<\\ uložená_hra>"
+msgstr "B<-l,\\ --load>I<\\ súbor>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:105
@@ -271,6 +272,9 @@ msgid ""
 "e> or B<--editor> option is used as well, starts the editor with the map "
 "from I<file> open."
 msgstr ""
+"loads the savegame I<file> from the standard save game directory.  If the B<-"
+"e> or B<--editor> option is used as well, starts the editor with the map "
+"from I<file> open."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:105 ../../doc/man/wesnothd.6:58
@@ -317,9 +321,9 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnoth.6:122
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<-m, --multiplayer>"
-msgstr "B<--multiplayer>"
+msgstr "B<-m, --multiplayer>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:128
@@ -338,13 +342,12 @@ msgstr "B<--no-delay>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:132
-#, fuzzy
 msgid ""
 "runs the game without any delays for graphic benchmarking. This is "
 "automatically enabled by B<--nogui>."
 msgstr ""
-"spustí hru bez akýchkoľvek páuz, kvôli meraniu rýchlosti grafiky. Toto je "
-"automaticky zahrnuté v B<--nogui>."
+"spustí hru bez akýchkoľvek spomalení, kvôli meraniu rýchlosti grafiky. Toto "
+"je automaticky zahrnuté pri B<--nogui>."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:132
@@ -359,15 +362,14 @@ msgstr "vypne ukladanie herných dát do cache."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:135
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--nomusic>"
-msgstr "B<--nogui>"
+msgstr "B<--nomusic>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:138
-#, fuzzy
 msgid "runs the game without music."
-msgstr "spustí hru bez zvukov a hudby."
+msgstr "spustí hru bez hudby."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:138
@@ -393,25 +395,25 @@ msgstr "vypíše názov dátového adresára hry a skončí."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:144
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--python-api>"
-msgstr "B<--path>"
+msgstr "B<--python-api>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:147
 msgid "prints the runtime documentation for the python API."
-msgstr ""
+msgstr "zobrazí dokumentáciu k behu pythonovského API ."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:147
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--python-shell>"
-msgstr "B<--path>"
+msgstr "B<--python-shell>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:150
 msgid "invokes wesnoth's embedded python interpreter in interactive mode."
-msgstr ""
+msgstr "spustí zabudovaný interpreter pythonu v interaktívnom režime."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:150
@@ -426,9 +428,9 @@ msgstr "nastaví rozlíšenie obrazovky. Napríklad: B<-r 800x600>"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:154
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--smallgui>"
-msgstr "B<--nogui>"
+msgstr "B<--smallgui>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:157
@@ -436,12 +438,14 @@ msgid ""
 "allows to use screen resolutions down to 800x480 and resizes a few interface "
 "elements."
 msgstr ""
+"umožní použiť malé rozlíšenia obrazovky až 800x480 a zmenší niektoré prvky "
+"užívateľského rozhrania."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:157
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<-s,\\ --server\\ [host]>"
-msgstr "B<-v, --verbose>"
+msgstr "B<-s,\\ --server\\ [hostiteľský server]>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:161
@@ -449,6 +453,8 @@ msgid ""
 "connects to the specified host if any, otherwise connect to the first server "
 "in preferences. Example: B<--server server.wesnoth.org>"
 msgstr ""
+"pripojí sa na server, ak je zadaný, inak na prvý server uvedený v "
+"nastaveniach. Príklad: B<--server server.wesnoth.org>"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:161
@@ -463,14 +469,14 @@ msgstr "spustí hru s malou testovacou scénou."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:164
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--validcache>"
-msgstr "B<--nocache>"
+msgstr "B<--validcache>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:167
 msgid "assumes that the cache is valid. (dangerous)"
-msgstr ""
+msgstr "predpokladá, že vyrovnávacia pamäť je platná. (nebezpečné)"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:167
@@ -496,14 +502,14 @@ msgstr "spustí hru v grafickom okne."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:173
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--with-replay>"
-msgstr "B<--no-delay>"
+msgstr "B<--with-replay>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:178
 msgid "replays the game loaded with the B<--load> option."
-msgstr ""
+msgstr "prehrá záznam hry načítanej cez voľbu B<--load>."
 
 # type: SH
 #: ../../doc/man/wesnoth.6:179
@@ -1217,116 +1223,3 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:206
 msgid "B<wesnoth>(6), B<wesnoth_editor>(6)"
 msgstr "B<wesnoth>(6), B<wesnoth_editor>(6)"
-
-# type: TH
-#~ msgid "WESNOTH_EDITOR"
-#~ msgstr "WESNOTH_EDITOR"
-
-# type: TH
-#~ msgid "wesnoth_editor"
-#~ msgstr "wesnoth_editor"
-
-# type: Plain text
-#~ msgid "Battle for Wesnoth map editor"
-#~ msgstr "Editor máp pre Bitku o Wesnoth"
-
-# type: Plain text
-#~ msgid "wesnoth_editor - Battle for Wesnoth map editor"
-#~ msgstr "wesnoth_editor - Editor máp pre Bitku o Wesnoth"
-
-# type: Plain text
-#~ msgid "B<wesnoth_editor> [I<OPTIONS>] [I<MAP>]"
-#~ msgstr "B<wesnoth_editor> [I<MOŽNOSTI>] [I<MAPA>]"
-
-# type: Plain text
-#~ msgid "Battle for B<Wesnoth> map editor."
-#~ msgstr "Editor máp pre Bitku o B<Wesnoth>."
-
-# type: TP
-#~ msgid "B<--bpp>\\ number"
-#~ msgstr "B<--bpp>\\ číslo"
-
-# type: TP
-#~ msgid "B<--datadir>"
-#~ msgstr "B<--datadir>"
-
-# type: Plain text
-#~ msgid "selects the data directory to use."
-#~ msgstr "nastaví dátový adresár, ktorý sa má použiť."
-
-# type: TP
-#~ msgid "B<-f>,B<\\ --fullscreen>"
-#~ msgstr "B<-f>,B<\\ --fullscreen>"
-
-# type: Plain text
-#~ msgid "runs the editor in full screen mode."
-#~ msgstr "spustí editor na ploche celej obrazovky."
-
-# type: TP
-#~ msgid "B<-h>,B<\\ --help>"
-#~ msgstr "B<-h>,B<\\ --help>"
-
-# type: TP
-#~ msgid "B<--log->levelB<=>domain1B<,>domain2B<,>..."
-#~ msgstr "B<--log->levelB<=>doména1B<,>doména2B<,>..."
-
-# type: Plain text
-#~ msgid "sets screen resolution. Example: B<-r 800x600>"
-#~ msgstr "nastaví rozlíšenie obrazovky. Napríklad: B<-r 800x600>"
-
-# type: TP
-#~ msgid "B<-v>,B<\\ --version>"
-#~ msgstr "B<-v>,B<\\ --version>"
-
-# type: Plain text
-#~ msgid "prints version number and exits."
-#~ msgstr "vypíše číslo verzie a skončí."
-
-# type: TP
-#~ msgid "B<-w>,B<\\ --windowed>"
-#~ msgstr "B<-w>,B<\\ --windowed>"
-
-# type: Plain text
-#~ msgid "runs the editor in windowed mode."
-#~ msgstr "spustí editor v grafickom okne."
-
-# type: Plain text
-#~ msgid ""
-#~ "Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt> and ott "
-#~ "E<lt>ott@gaon.netE<gt>."
-#~ msgstr ""
-#~ "Editovali Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott "
-#~ "E<lt>ott@gaon.netE<gt>. Preložil Viliam Búr E<lt>viliam@bur.skE<gt>."
-
-# type: Plain text
-#~ msgid "B<wesnoth>(6), B<wesnothd>(6)"
-#~ msgstr "B<wesnoth>(6), B<wesnothd>(6)"
-
-# type: Plain text
-#~ msgid "loads the file savegame from the standard save game directory."
-#~ msgstr ""
-#~ "načíta uloženú hru z daného súboru v štandardnom adresári uložených hier"
-
-# type: TP
-#~ msgid "B<--compress>I<\\ infile\\ outfile>"
-#~ msgstr "B<--compress>I<\\ vstupný_súbor\\ výstupný_súbor>"
-
-# type: Plain text
-#~ msgid ""
-#~ "compresses a savefile (I<infile>)  that is in text WML format into binary "
-#~ "WML format (I<outfile>)."
-#~ msgstr ""
-#~ "zbalí uloženú hru v textovom formáte WML (I<vstupný_súbor>) do binárneho "
-#~ "formátu WML (I<výstupný_súbor>)."
-
-# type: TP
-#~ msgid "B<--decompress>I<\\ infile\\ outfile>"
-#~ msgstr "B<--decompress>I<\\ vstupný_súbor\\ výstupný_súbor>"
-
-# type: Plain text
-#~ msgid ""
-#~ "decompresses a savefile (I<infile>)  that is in binary WML format into "
-#~ "text WML format (I<outfile>)."
-#~ msgstr ""
-#~ "rozbalí uloženú hru v binárnom formáte WML (I<vstupný_súbor>) do "
-#~ "textového formátu WML (I<výstupný_súbor>)."

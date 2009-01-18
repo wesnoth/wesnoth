@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-01-06 22:09+0100\n"
-"PO-Revision-Date: 2008-10-21 23:04+0100\n"
+"PO-Revision-Date: 2009-01-16 21:51+0100\n"
 "Last-Translator: aceman <acelists@atlas.sk>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -92,6 +92,8 @@ msgid ""
 "Basilisk. The petrified forms of his victims remain as monuments to his "
 "savage power."
 msgstr ""
+"Tieto jaskyne boli kedysi brlohom legendárneho baziliška Chak'kso Ney'yksa. "
+"Skamenelé postavy jeho obetí zotrvali ako monumenty jeho neskrotenej moci."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Thalins_Stronghold.cfg:33
@@ -356,7 +358,6 @@ msgstr "Rah Ihn Mar"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:138
-#, fuzzy
 msgid ""
 "Rah Ihn Mar, Champion of the Burning Hills, made his way to the Ruaskkolin "
 "Lake region in pursuit of the Elvish Hero Terowydlithrol, known among Elves "
@@ -368,15 +369,15 @@ msgid ""
 "Terowydlithrol, who had been seen entering the region but a day ago. Burning "
 "for vengeance, Rah Ihn Mar began the hunt....."
 msgstr ""
-"Rah Ihn Mar, šampión Horiacich kopcov, sa vydal na cestu do oblasti "
-"Ruaskkolinského jazera jazier pri prenasledovaní elfského hrdinu "
-"Terowydlithrola, známeho medzi elfmi ako \"Drakobijca\". Hovorilo sa, že "
-"Terowydlithrol zabil Ohnivého draka, ktorý ohrozoval elfskú dedinu a začal "
-"\"protiútok\", pri ktorom bolo usmrtených 37 jašterov usadených v blízkej "
-"rokline a o ktorých sa domnieval, že patria k drakovi. Rah Ihn Mar vedel, že "
-"jašteri boli nevinní, preto prišiel k Ruaskkolinskému jazeru vyhľadať a "
-"zabiť Terowydlithrola, ktorého deň predtým zahliadli v tejto oblasti. Bažiac "
-"po pomste začal Rah Ihn Mar lov....."
+"Rah Ihn Mar, šampión Horiacich kopcov, sa vydal na cestu do Ruaskkolinského "
+"regiónu jazier pri prenasledovaní elfského hrdinu Terowydlithrola, známeho "
+"medzi elfmi ako \"Drakobijca\". Hovorilo sa, že Terowydlithrol zabil "
+"Ohnivého draka, ktorý ohrozoval elfskú dedinu, a začal \"protiútok\", pri "
+"ktorom bolo usmrtených 37 jašterov usadených v blízkej rokline a o ktorých "
+"sa domnieval, že patria k drakovi. Rah Ihn Mar vedel, že jašteri boli "
+"nevinní, preto prišiel k Ruaskkolinskému jazeru vyhľadať a zabiť "
+"Terowydlithrola, ktorého deň predtým zahliadli v tejto oblasti. Bažiac po "
+"pomste začal Rah Ihn Mar lov....."
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:146
@@ -568,6 +569,8 @@ msgid ""
 "Cynsaun Province was named for Warrior-Queen Cynsaun the First, who drove "
 "the necromancers from these lands in 961 YW."
 msgstr ""
+"Provincia Cynsaun bola pomenovaná po bojovnej kráľovnej Cynsaun Prvej, ktorá "
+"z týchto krajov vyhnala černokňažníkov v 961 R.W."
 
 #. [multiplayer]: id=multiplayer_2p_Dark_Forecast
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:5
@@ -576,7 +579,6 @@ msgstr "(2) - Temná predpoveď (Prežitie)"
 
 #. [multiplayer]: id=multiplayer_2p_Dark_Forecast
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:8
-#, fuzzy
 msgid ""
 "Dark Forecast is a survival scenario for solitaire or two-player team-based "
 "play against randomly AI spawned units. Victory is achieved by surviving all "
@@ -588,7 +590,10 @@ msgstr ""
 "Temná predpoveď je scenár o prežití pre jedného alebo dvoch hráčov "
 "spolupracujúcich proti náhodným počítačom privolávaným jednotkám. Víťazstvo "
 "hráči dosiahnu ak prežijú útoky všetkých nepriateľských nájazdov. Počas "
-"hrania sa terén mení podľa náhodných poveternostných podmienok."
+"hrania sa terén mení podľa náhodných poveternostných podmienok.\n"
+"\n"
+"Poznámka: Pre správnu funkciu scény je potrebné použiť predvolené nastavenia "
+"mapy."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:473
@@ -638,16 +643,14 @@ msgstr "Jasné počasie"
 #. [side]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1204
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1235
-#, fuzzy
 msgid "teamname^Revolt"
-msgstr "Západ"
+msgstr "Vzbura"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1254
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1270
-#, fuzzy
 msgid "teamname^Human"
-msgstr "Východ"
+msgstr "Ľudia"
 
 #. [then]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1423
@@ -756,7 +759,6 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1535
-#, fuzzy
 msgid ""
 "Ugh! How can this be? Defeated by mere barbarians! My gods have forsaken "
 "me..."
@@ -788,7 +790,7 @@ msgstr ""
 #. [multiplayer]: id=multiplayer_Den_of_Onis
 #: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:6
 msgid "2p - Den of Onis"
-msgstr "(2) - Onisov brloh"
+msgstr "(2) - Brloh Oni"
 
 #. [multiplayer]: id=multiplayer_Den_of_Onis
 #: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:7
@@ -801,6 +803,12 @@ msgid ""
 "the Den of Onis, hoping to unlock the strange and mysterious magics of its "
 "creators."
 msgstr ""
+"Táto najneobyčajnejšia z jaskýň bola kedysi známa ako Komnata Smejúcich sa "
+"diablov a bola vnútornou citadelou Kah Ruuk Oni. Kah Ruuk boli krutou a "
+"rafinovanou rasou ľudožravých démonov, ktorí terorizovali ľudí Východných "
+"zemí skoro štyristo rokov. Potom zmizli z Irdye bez stopy. Od tej doby mnohé "
+"skupiny súperili o ovládnutie Brlohu Oni v nádeji, že uvoľnia tajomnú mágiu "
+"jeho tvorcov."
 
 #. [multiplayer]: id=multiplayer_Fallenstar_Lake
 #: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:5
@@ -871,9 +879,8 @@ msgstr "Východ"
 
 #. [multiplayer_]: id=multiplayer_Fast_to_Madness
 #: data/multiplayer/scenarios/2p_Fast_To_Madness.cfg:5
-#, fuzzy
 msgid "2p - Fast To Madness"
-msgstr "(2) - Meteoritické jazero"
+msgstr "(2) - Rýchle šialenstvo"
 
 #. [multiplayer_]: id=multiplayer_Fast_to_Madness
 #: data/multiplayer/scenarios/2p_Fast_To_Madness.cfg:6
@@ -882,6 +889,8 @@ msgid ""
 "and it seems that today another chapter will be added to their story of "
 "pointless skirmishes."
 msgstr ""
+"Dlhú dobu boli títo dvaja zemepáni v hlúpych šarvátkach a zdá sa, že dnes "
+"bude pridaná ďalšia kapitola ich príbehu nezmyselných potýčok."
 
 #. [multiplayer_]: id=multiplayer_Thalins_Stronghold
 #. [multiplayer]: id=multiplayer_Blue_Water_Province
@@ -949,7 +958,7 @@ msgstr ""
 #. [multiplayer]: id=multiplayer_Howling_Ghost_Badlands
 #: data/multiplayer/scenarios/2p_Howling_Ghost_Badlands.cfg:5
 msgid "2p - Howling Ghost Badlands"
-msgstr ""
+msgstr "(2) - Pustatina kvíliacich duchov"
 
 #. [multiplayer]: id=multiplayer_Howling_Ghost_Badlands
 #: data/multiplayer/scenarios/2p_Howling_Ghost_Badlands.cfg:6
@@ -957,6 +966,8 @@ msgid ""
 "Little remains of this once wealthy mining colony, now a haven for raiders "
 "and thieves."
 msgstr ""
+"Málo zostalo z tejto kedysi bohatej baníckej kolónie. Teraz je to prístav "
+"pre nájazdníkov a zlodejov."
 
 #. [multiplayer]: id=multiplayer_Sablestone_Delta
 #: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:5
@@ -998,9 +1009,8 @@ msgstr "Toto je kamenná socha."
 
 #. [multiplayer]: id=multiplayer_Sullas_Ruins
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:39
-#, fuzzy
 msgid "2p - Sulla's Ruins"
-msgstr "(2) - Ruiny Sullas"
+msgstr "(2) - Ruiny Sully"
 
 #. [multiplayer]: id=multiplayer_Sullas_Ruins
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:40
@@ -1070,17 +1080,17 @@ msgstr "V kameni vytesaná podoba Lo-bsanga, Sullinho služobníka."
 #. [multiplayer_]: id=multiplayer_Thalins_Stronghold
 #: data/multiplayer/scenarios/2p_Thalins_Stronghold.cfg:5
 msgid "2p - Thalin's Stronghold"
-msgstr ""
+msgstr "(2) - Thalinova pevnosť"
 
 #. [multiplayer_]: id=multiplayer_Thalins_Stronghold
 #: data/multiplayer/scenarios/2p_Thalins_Stronghold.cfg:6
 msgid "Deep within the mountains lie the castles of the dwarven lords."
-msgstr ""
+msgstr "Hlboko v horách ležia hrady trpasličích pánov."
 
 #. [multiplayer]: id=multiplayer_The_Freelands
 #: data/multiplayer/scenarios/2p_The_Freelands.cfg:6
 msgid "2p - The Freelands"
-msgstr "(2) - Divočina"
+msgstr "(2) - Slobodné pláne"
 
 #. [multiplayer]: id=multiplayer_The_Freelands
 #: data/multiplayer/scenarios/2p_The_Freelands.cfg:8
@@ -1092,6 +1102,12 @@ msgid ""
 "for hundreds of years, repelling great beasts from their western borders, "
 "and Carorathian Imperialists from their eastern borders."
 msgstr ""
+"Slobodné pláne, taktiež známe ľudom ďalekého východu ako Krajina bez kráľov, "
+"ležia medzi Divočinou a Kráľovstvom Carorath, oddeľujúc krajinu absolútneho "
+"poriadku od krajiny absolútnej nespútanosti. Obyvatelia Slobodných plání "
+"bojovali proti chtivým dobyvateľom týchto území stovky rokov, odháňali veľké "
+"netvory od svojich západných hraníc a imperialistov z Carorathu od "
+"východných hraníc."
 
 #. [multiplayer]: id=multiplayer_Weldyn_Channel
 #: data/multiplayer/scenarios/2p_Weldyn_Channel.cfg:5
@@ -1104,6 +1120,8 @@ msgid ""
 "This vital supply route has played a key role in many of Wesnoth's greatest "
 "battles."
 msgstr ""
+"Táto dôležitá zásobovacia trasa zohrala kľúčovú úlohu v mnohých veľkých "
+"bitkách Wesnothu."
 
 #. [multiplayer]: id=multiplayer_Alirok_Marsh
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:5
@@ -1209,13 +1227,12 @@ msgstr "Malá mapa pre 2 proti 2."
 #. [multiplayer_]: id=multiplayer_Eryn_Chetu
 #: data/multiplayer/scenarios/4p_Eryn_Chethu.cfg:5
 msgid "4p - Eryn Chethu"
-msgstr ""
+msgstr "(4) - Eryn Chethu"
 
 #. [multiplayer_]: id=multiplayer_Eryn_Chetu
 #: data/multiplayer/scenarios/4p_Eryn_Chethu.cfg:6
-#, fuzzy
 msgid " Recommended setting of 3 gold per village."
-msgstr " Odporúča sa nastaviť 2 zlatky za dedinu."
+msgstr " Odporúča sa nastaviť 3 zlatky za dedinu."
 
 #. [multiplayer_]: id=multiplayer_Eryn_Chetu
 #: data/multiplayer/scenarios/4p_Eryn_Chethu.cfg:6
@@ -1223,6 +1240,8 @@ msgid ""
 "Beware wanderer, for even the elves do not know what lives in the forests of "
 "Eryn Chethu."
 msgstr ""
+"Pútnici majte sa na pozore, pretože ani elfovia nevedia, čo žije v lesoch "
+"Eryn Chethu."
 
 #. [multiplayer]: id=multiplayer_4p_Hamlets
 #: data/multiplayer/scenarios/4p_Hamlets.cfg:5
@@ -1349,9 +1368,8 @@ msgstr ""
 
 #. [multiplayer_]: id=multiplayer_Mines_of_Mallorod
 #: data/multiplayer/scenarios/4p_Mines_of_Mallorod.cfg:5
-#, fuzzy
 msgid "4p - Mines of Mallorod"
-msgstr "(4) - Kráľ kopca"
+msgstr "(4) - Mallorodské bane"
 
 #. [multiplayer_]: id=multiplayer_Mines_of_Mallorod
 #: data/multiplayer/scenarios/4p_Mines_of_Mallorod.cfg:6
@@ -1360,6 +1378,9 @@ msgid ""
 "found at Mallorod. Shortly after others followed and soon quarrels arose "
 "over the right to delve for the shiny metal."
 msgstr ""
+"Keď sa zistilo, že v Mallorode sa našlo zlato, trpaslíci prišli prví. "
+"Čoskoro na to ich nasledovali iní a vznikli hádky o právo kopať za žiarivým "
+"kovom."
 
 #. [multiplayer]: id=multiplayer_4p_Morituri
 #: data/multiplayer/scenarios/4p_Morituri.cfg:5
@@ -1423,12 +1444,12 @@ msgstr ""
 #. [multiplayer]: id=multiplayer_4p_Underworld
 #: data/multiplayer/scenarios/4p_Underworld.cfg:5
 msgid "4p - Underworld"
-msgstr ""
+msgstr "(4) - Podsvetie"
 
 #. [multiplayer]: id=multiplayer_4p_Underworld
 #: data/multiplayer/scenarios/4p_Underworld.cfg:6
 msgid "A fast-paced 2 vs. 2 map set deep below the surface."
-msgstr ""
+msgstr "Rýchla mapa pre 2 proti 2 umiestnená hlboko pod zemským povrchom."
 
 #. [multiplayer]: id=multiplayer_Xanthe_Chaos
 #: data/multiplayer/scenarios/4p_Xanthe_Chaos.cfg:7
@@ -1522,7 +1543,7 @@ msgstr "(6) - Šesťuholníkový koláč"
 #. [multiplayer]: id=multiplayer_Hexcake
 #: data/multiplayer/scenarios/6p_Hexcake.cfg:7
 msgid "2 vs. 2 or 3 vs. 3 team game."
-msgstr "(2 proti 2) alebo (3 proti 3) tímová hra."
+msgstr "Tímová hra 2 proti 2 alebo 3 proti 3."
 
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:200
 msgid "Turn 2: Loyalists"
