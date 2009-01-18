@@ -48,7 +48,8 @@ private:
 class tmp_login : public tdialog
 {
 public:
-	tmp_login(const t_string& label);
+	tmp_login(const t_string& label,
+		const bool& focus_password =false);
 
 private:
 	/** Inherited from tdialog. */
@@ -61,6 +62,7 @@ private:
 	void post_show(twindow& window);
 
 	t_string label_;
+	bool focus_password_;
 };
 
 } // namespace gui2

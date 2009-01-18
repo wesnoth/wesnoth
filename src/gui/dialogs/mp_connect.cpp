@@ -204,7 +204,8 @@ void tmp_connect::show_server_list(twindow& window)
  * @end_table
  */
 
-tmp_login::tmp_login(const t_string& label) : label_(label) { }
+tmp_login::tmp_login(const t_string& label,	const bool& focus_password) :
+		label_(label), focus_password_(focus_password) { }
 
 twindow* tmp_login::build_window(CVideo& video)
 {
@@ -217,12 +218,13 @@ void tmp_login::pre_show(CVideo& /*video*/, twindow& window)
 		dynamic_cast<ttext_box*>(window.find_widget("user_name", false));
 	VALIDATE(username, missing_widget("user_name"));
 	username->set_value(preferences::login());
-	window.keyboard_capture(username);
 
 	tpassword_box* password =
 		dynamic_cast<tpassword_box*>(window.find_widget("password", false));
 	VALIDATE(password, missing_widget("password"));
 	password->set_value(preferences::password());
+
+	window.keyboard_capture(focus_password_ ? password : username);
 
 	tbutton *password_reminder =
 		dynamic_cast<tbutton*>(window.find_widget("password_reminder", false));

@@ -308,7 +308,8 @@ static server_type open_connection(game_display& disp, const std::string& origin
 					// Now show a dialog that displays the error and allows to
 					// enter a new user name and/or password
 
-					gui2::tmp_login dlg((*error)["message"]);
+					gui2::tmp_login dlg((*error)["message"],
+							!((*error)["password_request"].empty()));
 					dlg.show(disp.video());
 
 					switch(dlg.get_retval()) {
