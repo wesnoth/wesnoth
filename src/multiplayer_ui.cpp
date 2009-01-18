@@ -418,6 +418,7 @@ void ui::handle_event(const SDL_Event& event)
 				break;
 			case 5:
 				msg << "/query kick " << usr_text;
+				if(!dlg.reason().empty()) msg << ' ' << dlg.reason();
 				break;
 			case 6:
 				msg << "/query kban " << usr_text;
