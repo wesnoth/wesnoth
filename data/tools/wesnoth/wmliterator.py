@@ -125,9 +125,9 @@ Important Attributes:
                     if self.lineno + span >= len(lines):
                         self.printError('reached EOF due to unterminated string at line', self.lineno+1)
                         return text, span
+                    beginofend = len(text)
                     text += lines[self.lineno + span]
                     span += 1
-                    beginofend = text.rfind('\n', beginofend, len(text)-1)
             begincomment = text.find('#', endquote+1)
             if begincomment < 0:
                 begincomment = None
