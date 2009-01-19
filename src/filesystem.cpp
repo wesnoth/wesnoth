@@ -395,6 +395,14 @@ bool delete_directory(const std::string& path)
 	}
 
 	errno = 0;
+#ifdef _WIN32
+	// remove() doesn't delete directories on windows.
+	int (*remove)(const char*);
+	if(is_directory(path))
+		remove = rmdir;
+	else
+		remove = ::remove;
+#endif
 	if(remove(path.c_str()) != 0) {
 		LOG_FS << "remove(" << path << "): " << strerror(errno) << "\n";
 		ret = false;
