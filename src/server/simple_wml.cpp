@@ -163,11 +163,13 @@ node::node(document& doc, node* parent, const char** str, int depth) :
 			}
 
 			const int list_index = get_children(string_span(s, end - s));
+			check_ordered_children();
 
 			s = end + 1;
 
 			children_[list_index].second.push_back(new node(doc, this, str, depth+1));
 			ordered_children_.push_back(node_pos(list_index, children_[list_index].second.size() - 1));
+			check_ordered_children();
 
 			break;
 		}
@@ -246,6 +248,7 @@ node::node(document& doc, node* parent, const char** str, int depth) :
 	}
 
 	output_cache_ = string_span(begin, s - begin);
+	check_ordered_children();
 }
 
 node::~node()
@@ -346,8 +349,19 @@ node& node::add_child_at(const char* name, size_t index)
 		index = list.size();
 	}
 
+	fprintf(stderr, "add child at: %d, %d\n", list_index, index);
+	for(int n = 0; n != ordered_children_.size(); ++n) {
+		fprintf(stderr, "ordered child: %d, %d\n", ordered_children_[n].child_map_index, ordered_children_[n].child_list_index);
+	}
+
+	check_ordered_children();
 	list.insert(list.begin() + index, new node(*doc_, this));
 	insert_ordered_child(list_index, index);
+	fprintf(stderr, "done add child at: %d, %d\n", list_index, index);
+	for(int n = 0; n != ordered_children_.size(); ++n) {
+		fprintf(stderr, "ordered child: %d, %d\n", ordered_children_[n].child_map_index, ordered_children_[n].child_list_index);
+	}
+	check_ordered_children();
 	return *list[index];
 }
 
@@ -357,9 +371,11 @@ node& node::add_child(const char* name)
 	set_dirty();
 
 	const int list_index = get_children(name);
+	check_ordered_children();
 	child_list& list = children_[list_index].second;
 	list.push_back(new node(*doc_, this));
 	ordered_children_.push_back(node_pos(list_index, list.size() - 1));
+	check_ordered_children();
 	return *list.back();
 }
 
@@ -391,18 +407,23 @@ void node::remove_child(const string_span& name, size_t index)
 
 void node::insert_ordered_child(int child_map_index, int child_list_index)
 {
-	
+	bool inserted = false;
 	std::vector<node_pos>::iterator i = ordered_children_.begin();
 	while(i != ordered_children_.end()) {
 		if(i->child_map_index == child_map_index && i->child_list_index > child_list_index) {
 			i->child_list_index++;
 		} else if(i->child_map_index == child_map_index && i->child_list_index == child_list_index) {
+			inserted = true;
 			i->child_list_index++;
 			i = ordered_children_.insert(i, node_pos(child_map_index, child_list_index));
 			++i;
 		}
 
 		++i;
+	}
+
+	if(!inserted) {
+		ordered_children_.push_back(node_pos(child_map_index, child_list_index));
 	}
 }
 
@@ -425,6 +446,16 @@ void node::remove_ordered_child(int child_map_index, int child_list_index)
 	assert(erase_count == 1);
 }
 
+void node::insert_ordered_child_list(int child_map_index)
+{
+	std::vector<node_pos>::iterator i = ordered_children_.begin();
+	while(i != ordered_children_.end()) {
+		if(i->child_map_index >= child_map_index) {
+			i->child_map_index++;
+		}
+	}
+}
+
 void node::remove_ordered_child_list(int child_map_index)
 {
 	std::vector<node_pos>::iterator i = ordered_children_.begin();
@@ -438,6 +469,33 @@ void node::remove_ordered_child_list(int child_map_index)
 			}
 			
 			++i;
+		}
+	}
+}
+
+void node::check_ordered_children() const
+{
+	std::vector<node_pos>::const_iterator i = ordered_children_.begin();
+	while(i != ordered_children_.end()) {
+		assert(i->child_map_index < children_.size());
+		assert(i->child_list_index < children_[i->child_map_index].second.size());
+		++i;
+	}
+
+	for(child_map::const_iterator j = children_.begin(); j != children_.end(); ++j) {
+		const unsigned short child_map_index = j - children_.begin();
+		for(child_list::const_iterator k = j->second.begin(); k != j->second.end(); ++k) {
+			const unsigned short child_list_index = k - j->second.begin();
+			bool found = false;
+			for(int n = 0; n != ordered_children_.size(); ++n) {
+				if(ordered_children_[n].child_map_index == child_map_index &&
+				   ordered_children_[n].child_list_index == child_list_index) {
+					found = true;
+					break;
+				}
+			}
+
+			assert(found);
 		}
 	}
 }
@@ -539,6 +597,7 @@ const string_span& node::first_child() const
 
 int node::output_size() const
 {
+	check_ordered_children();
 	if(output_cache_.empty() == false) {
 		return output_cache_.size();
 	}

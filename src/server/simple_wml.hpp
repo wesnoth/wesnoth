@@ -104,9 +104,23 @@ public:
 
 	bool has_attr(const char* key) const;
 
+	//sets an attribute in the WML node. The node will keep a direct reference
+	//to key and value which it will maintain for its lifetime. The caller
+	//MUST guarantee that the key and value buffers remain valid for the
+	//lifetime of the node.
 	node& set_attr(const char* key, const char* value);
+
+	//functions which are identical to set_attr() except that the buffer
+	//referred to by 'value' will be duplicated and the new buffer managed by
+	//the node. The caller may destroy the value buffer as soon as the function
+	//returns. The key buffer must remain valid for the lifetime of the node.
 	node& set_attr_dup(const char* key, const char* value);
 	node& set_attr_dup(const char* key, const string_span& value);
+
+	//sets an attribute with identical behavior to set_attr_dup, except that
+	//the buffer referred to by 'key' will also be duplicated and managed by
+	//the node. The caller may destroy both key and value as soon as the
+	//call returns.
 	node& set_attr_dup_key_and_value(const char* key, const char* value);
 
 	node& set_attr_int(const char* key, int value);
@@ -179,7 +193,10 @@ private:
 
 	void insert_ordered_child(int child_map_index, int child_list_index);
 	void remove_ordered_child(int child_map_index, int child_list_index);
+	void insert_ordered_child_list(int child_map_index);
 	void remove_ordered_child_list(int child_map_index);
+
+	void check_ordered_children() const;
 
 	string_span output_cache_;
 };
