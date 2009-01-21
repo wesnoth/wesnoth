@@ -12,9 +12,10 @@
 				<Option working_dir="../../" />
 				<Option type="1" />
 				<Option compiler="gcc" />
+				<Option object_output="." />
 				<MakeCommands>
 					<Build command="scons -C ../.. build=$target wesnothd" />
-					<CompileFile command="scons -C ../.. build=$target $file" />
+					<CompileFile command="TARGET=$file;scons -C ../.. build=$target build/$target/${TARGET:6}" />
 					<Clean command="scons -C ../.. build=$target -c" />
 					<DistClean command="rm -rf ../../build" />
 				</MakeCommands>
@@ -24,37 +25,15 @@
 				<Option working_dir="../../" />
 				<Option type="1" />
 				<Option compiler="gcc" />
+				<Option object_output="." />
 				<MakeCommands>
 					<Build command="scons -C ../.. build=$target wesnothd" />
-					<CompileFile command="scons -C ../.. build=$target $file" />
+					<CompileFile command="TARGET=$file;scons -C ../.. build=$target build/$target/${TARGET:6}" />
 					<Clean command="scons -C ../.. build=$target -c" />
 					<DistClean command="rm -rf ../../build" />
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Compiler>
-			<Add option="-DHAVE_PYTHON" />
-			<Add option="-DUSE_GZIP" />
-			<Add option="-mthreads" />
-			<Add option="-fexceptions" />
-			<Add option="-O3" />
-			<Add option="-march=native" />
-			<Add directory="../../src" />
-			<Add directory="../../src/server" />
-			<Add directory="../../src/serialization" />
-		</Compiler>
-		<Linker>
-			<Add option="-mthreads" />
-			<Add library="mingw32" />
-			<Add library="mingwthrd" />
-			<Add library="SDLmain" />
-			<Add library="SDL" />
-			<Add library="boost_iostreams_dw2" />
-			<Add library="intl" />
-			<Add library="SDL_net" />
-			<Add library="ws2_32" />
-			<Add library="z" />
-		</Linker>
 		<Unit filename="../../src/color_range.cpp" />
 		<Unit filename="../../src/config.cpp" />
 		<Unit filename="../../src/filesystem.cpp" />

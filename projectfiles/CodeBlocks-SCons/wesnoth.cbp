@@ -12,9 +12,10 @@
 				<Option working_dir="..\..\" />
 				<Option type="0" />
 				<Option compiler="gcc" />
+				<Option object_output="." />
 				<MakeCommands>
 					<Build command="scons -C ../.. build=$target wesnoth" />
-					<CompileFile command="scons -C ../.. build=$target $file" />
+					<CompileFile command="TARGET=$file;scons -C ../.. build=$target build/$target/${TARGET:6}" />
 					<Clean command="scons -C ../.. build=$target wesnoth -c" />
 					<DistClean command="rm -rf ../../build" />
 				</MakeCommands>
@@ -24,54 +25,15 @@
 				<Option working_dir="..\..\" />
 				<Option type="0" />
 				<Option compiler="gcc" />
+				<Option object_output="." />
 				<MakeCommands>
 					<Build command="scons -C ../.. build=$target wesnoth" />
-					<CompileFile command="scons -C ../.. build=$target $file" />
+					<CompileFile command="TARGET=$file;scons -C ../.. build=$target build/$target/${TARGET:6}" />
 					<Clean command="scons -C ../.. build=$target wesnoth -c" />
 					<DistClean command="rm -rf ../../build" />
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Compiler>
-			<Add option="-O3" />
-			<Add option="-mthreads" />
-			<Add option="-march=native" />
-			<Add option="-fexceptions" />
-			<Add option="-DHAVE_PYTHON" />
-			<Add option="-DUSE_GZIP" />
-			<Add option="-DHAVE_FRIBIDI" />
-			<Add option="-DDISABLE_POOL_ALLOC" />
-			<Add directory="..\..\src" />
-			<Add directory="..\..\src\sdl_ttf" />
-			<Add directory="..\..\src\serialization" />
-			<Add directory="..\..\src\widgets" />
-		</Compiler>
-		<Linker>
-			<Add option="-mthreads" />
-			<Add library="mingwthrd" />
-			<Add library="mingw32" />
-			<Add library="SDLmain" />
-			<Add library="SDL" />
-			<Add library="SDL_image" />
-			<Add library="SDL_net" />
-			<Add library="SDL_mixer" />
-			<Add library="SDL_ttf" />
-			<Add library="freetype" />
-			<Add library="intl" />
-			<Add library="python25" />
-			<Add library="png" />
-			<Add library="boost_iostreams_dw2" />
-			<Add library="boost_regex_dw2" />
-			<Add library="z" />
-			<Add library="ws2_32" />
-			<Add library="jpeg" />
-			<Add library="fribidi" />
-			<Add library="pango-1.0" />
-			<Add library="pangocairo-1.0" />
-			<Add library="cairo" />
-			<Add library="gobject-2.0" />
-			<Add library="fontconfig" />
-		</Linker>
 		<Unit filename="..\..\packaging\windows\wesnoth.rc">
 			<Option compilerVar="WINDRES" />
 		</Unit>
