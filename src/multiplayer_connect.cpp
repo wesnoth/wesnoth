@@ -411,7 +411,8 @@ void connect::side::process_event()
 		parent_->sides_[drop_target].update_ui();
 	}
 	else if(combo_controller_->changed() && combo_controller_->selected() >= 0) {
-		const int cntr_last = (save_id_.empty()?CNTR_LAST - 1 :CNTR_LAST);
+		const int cntr_boundary = parent_->local_only_ ? 1 : 0;
+		const int cntr_last = (save_id_.empty() ? CNTR_LAST-1 : CNTR_LAST) - (parent_->local_only_ ? 1 : 0);
 		if (combo_controller_->selected() == cntr_last) {
 			update_controller_ui();
 		} else if (combo_controller_->selected() < cntr_last) {
@@ -419,7 +420,8 @@ void connect::side::process_event()
 			// we must kick it!
 
 			// Update controller first, or else kick will reset it.
-			controller_ = mp::controller(combo_controller_->selected());
+			// Correct entry number if CNTR_NETWORK is not allowed for combo_controller_
+			controller_ = mp::controller(combo_controller_->selected() + (parent_->local_only_ ? 1 : 0));
 
 			// Don't kick an empty player or the game creator
 			if(!id_.empty()) {
@@ -528,14 +530,15 @@ bool connect::side::allow_player() const
 void connect::side::update_controller_ui()
 {
 	if (id_.empty()) {
-		combo_controller_->set_selected(controller_);
+		combo_controller_->set_selected(controller_ - (parent_->local_only_ ? 1 : 0));
 	} else {
 		connected_user_list::iterator player = parent_->find_player(id_);
 
 		if (player != parent_->users_.end()) {
 			const int no_reserve = save_id_.empty()?-1:0;
-			combo_controller_->set_selected(CNTR_LAST + no_reserve + 1 + (player - parent_->users_.begin()));
+			combo_controller_->set_selected(CNTR_LAST + no_reserve + 1 + (player - parent_->users_.begin()) - (parent_->local_only_ ? 1 : 0));
 		} else {
+			assert(parent_->local_only_ != true);
 			combo_controller_->set_selected(CNTR_NETWORK);
 		}
 	}
@@ -1002,8 +1005,9 @@ void connect::side::resolve_random()
 
 connect::connect(game_display& disp, const config& game_config,
 		chat& c, config& gamelist, const create::parameters& params,
-		mp::controller default_controller) :
+		mp::controller default_controller, bool local_players_only) :
 	mp::ui(disp, _("Game Lobby: ") + params.name, game_config, c, gamelist),
+	local_only_(local_players_only),
 	level_(),
 	state_(),
 	params_(params),
@@ -1431,7 +1435,9 @@ void connect::layout_children(const SDL_Rect& rect)
 void connect::lists_init()
 {
 	// Options
-	player_types_.push_back(_("Network Player"));
+	if(!local_only_) {
+		player_types_.push_back(_("Network Player"));
+	}
 	player_types_.push_back(_("Local Player"));
 	player_types_.push_back(_("Computer Player"));
 	player_types_.push_back(_("Empty"));

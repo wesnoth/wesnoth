@@ -177,7 +177,7 @@ public:
 
 	connect(game_display& disp, const config& game_config,
 			chat& c, config& gamelist, const create::parameters& params,
-			mp::controller default_controller);
+			mp::controller default_controller, bool local_players_only = false);
 
 	virtual void process_event();
 
@@ -245,6 +245,8 @@ private:
 
 	/** Removes a player and kicks it from the game. */
 	void kick_player(const std::string& name);
+
+	bool local_only_;
 
 	config level_;
 

@@ -404,11 +404,11 @@ static void enter_wait_mode(game_display& disp, const config& game_config, mp::c
 	}
 }
 
-static void enter_create_mode(game_display& disp, const config& game_config, mp::chat& chat, config& gamelist, mp::controller default_controller);
+static void enter_create_mode(game_display& disp, const config& game_config, mp::chat& chat, config& gamelist, mp::controller default_controller, bool local_players_only = false);
 
 static void enter_connect_mode(game_display& disp, const config& game_config,
 		mp::chat& chat, config& gamelist, const mp::create::parameters& params,
-		mp::controller default_controller)
+		mp::controller default_controller, bool local_players_only = false)
 {
 	mp::ui::result res;
 	game_state state;
@@ -420,7 +420,7 @@ static void enter_connect_mode(game_display& disp, const config& game_config,
 	statistics::fresh_stats();
 
 	{
-		mp::connect ui(disp, game_config, chat, gamelist, params, default_controller);
+		mp::connect ui(disp, game_config, chat, gamelist, params, default_controller, local_players_only);
 		run_lobby_loop(disp, ui);
 
 		res = ui.get_result();
@@ -440,7 +440,7 @@ static void enter_connect_mode(game_display& disp, const config& game_config,
 
 		break;
 	case mp::ui::CREATE:
-		enter_create_mode(disp, game_config, chat, gamelist, default_controller);
+		enter_create_mode(disp, game_config, chat, gamelist, default_controller, local_players_only);
 		break;
 	case mp::ui::QUIT:
 	default:
@@ -449,7 +449,7 @@ static void enter_connect_mode(game_display& disp, const config& game_config,
 	}
 }
 
-static void enter_create_mode(game_display& disp, const config& game_config, mp::chat& chat, config& gamelist, mp::controller default_controller)
+static void enter_create_mode(game_display& disp, const config& game_config, mp::chat& chat, config& gamelist, mp::controller default_controller, bool local_players_only)
 {
 	if(gui2::new_widgets) {
 
@@ -472,7 +472,7 @@ static void enter_create_mode(game_display& disp, const config& game_config, mp:
 
 		switch (res) {
 		case mp::ui::CREATE:
-			enter_connect_mode(disp, game_config, chat, gamelist, params, default_controller);
+			enter_connect_mode(disp, game_config, chat, gamelist, params, default_controller, local_players_only);
 			break;
 		case mp::ui::QUIT:
 		default:
@@ -553,7 +553,7 @@ void start_local_game(game_display& disp, const config& game_config,
 	config gamelist;
 	playmp_controller::set_replay_last_turn(0);
 	preferences::set_message_private(false);
-	enter_create_mode(disp, game_config, chat, gamelist, default_controller);
+	enter_create_mode(disp, game_config, chat, gamelist, default_controller, true);
 }
 
 void start_client(game_display& disp, const config& game_config,
