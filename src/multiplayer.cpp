@@ -548,7 +548,7 @@ namespace mp {
 void start_local_game(game_display& disp, const config& game_config,
 		mp::controller default_controller)
 {
-        const rand_rng::set_random_generator generator_setter(&recorder);
+	const rand_rng::set_random_generator generator_setter(&recorder);
 	mp::chat chat;
 	config gamelist;
 	playmp_controller::set_replay_last_turn(0);
