@@ -1,6 +1,7 @@
 # vi: syntax=python:et:ts=4
 from os.path import join
 from glob import glob
+import SCons.Node
 Import("env")
 
 binaries = ["wesnoth"]
@@ -21,7 +22,7 @@ def WindowsInstaller(env, files):
     for file in files:
         if not file:
             continue
-        if file.isdir():
+        if file.isdir() or isinstance(file, SCons.Node.FS.Dir):
             env["NSIS_INSTALL_FILES"] += 'SetOutPath "$INSTDIR\\' + file.path + '"\n  '
             env["NSIS_INSTALL_FILES"] += "File /r /x .* " + file.path + "\\*.*\n  "
             env["NSIS_UNINSTALL_FILES"] += "RMDir /r $INSTDIR\\" + file.name + "\n  "
