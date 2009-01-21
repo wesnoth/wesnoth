@@ -548,15 +548,15 @@ static void enter_lobby_mode(game_display& disp, const config& game_config, mp::
 
 namespace mp {
 
-void start_server(game_display& disp, const config& game_config,
-		mp::controller default_controller, bool is_server)
+void start_local_game(game_display& disp, const config& game_config,
+		mp::controller default_controller)
 {
         const rand_rng::set_random_generator generator_setter(&recorder);
 	mp::chat chat;
 	config gamelist;
 	playmp_controller::set_replay_last_turn(0);
 	preferences::set_message_private(false);
-	enter_create_mode(disp, game_config, chat, gamelist, default_controller, is_server);
+	enter_create_mode(disp, game_config, chat, gamelist, default_controller, false);
 }
 
 void start_client(game_display& disp, const config& game_config,

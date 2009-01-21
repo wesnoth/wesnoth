@@ -1338,9 +1338,8 @@ bool game_controller::play_multiplayer()
 			config game_data;
 
 			const mp::controller cntr = mp::CNTR_LOCAL;
-			const bool is_server = false;
 
-			mp::start_server(disp(), game_config_, cntr, is_server);
+			mp::start_local_game(disp(), game_config_, cntr);
 
 		} else if((res >= 0 && res <= 2) || res == 4) {
 			std::string host;

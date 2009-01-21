@@ -28,15 +28,14 @@ const size_t max_login_size = 18;
  * This is the main entry points of multiplayer mode.
  */
 
-/** Starts a multiplayer game in server mode, or in single-user mode.
+/** Starts a multiplayer game in single-user mode.
  *
  * @param disp        The global display
  * @param game_config The global, top-level WML configuration for the game
  * @param default_controller The default controller type
- * @param is_server   Whether to open a port to the outside, or not.
  */
-void start_server(game_display& disp, const config& game_config,
-		mp::controller default_controller, bool is_server);
+void start_local_game(game_display& disp, const config& game_config,
+		mp::controller default_controller);
 
 /** Starts a multiplayer game in client mode.
  *
