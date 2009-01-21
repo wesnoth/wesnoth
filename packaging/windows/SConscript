@@ -31,5 +31,7 @@ def WindowsInstaller(env, files):
             env["NSIS_UNINSTALL_FILES"] += "Delete $INSTDIR\\" + file.name + "\n  "
     env.ScanReplace("#/Wesnoth.nsi", "#/packaging/windows/Wesnoth.nsi.in")
 
+    env.Alias("windows-installer", [files, "#/Wesnoth.nsi"], "makensis ${SOURCES[-1]}")
+
 from SCons.Script.SConscript import SConsEnvironment
 SConsEnvironment.WindowsInstaller = WindowsInstaller
