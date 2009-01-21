@@ -30,6 +30,7 @@
 #endif
 #include <fstream>
 #include <cassert>
+#include <time.h>
 #include "mailer.h"
 #include "base64.h"
 
