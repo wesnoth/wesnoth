@@ -12,6 +12,7 @@ namespace simple_wml {
 
 struct error {
 	error(const char* msg);
+	std::string message;
 };
 
 class string_span

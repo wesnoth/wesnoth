@@ -109,6 +109,7 @@ char* string_span::duplicate() const
 }
 
 error::error(const char* msg)
+  : message(msg)
 {
 	std::cerr << "ERROR: '" << msg << "'\n";
 }
