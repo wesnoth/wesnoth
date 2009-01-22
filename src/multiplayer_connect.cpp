@@ -411,7 +411,6 @@ void connect::side::process_event()
 		parent_->sides_[drop_target].update_ui();
 	}
 	else if(combo_controller_->changed() && combo_controller_->selected() >= 0) {
-		const int cntr_boundary = parent_->local_only_ ? 1 : 0;
 		const int cntr_last = (save_id_.empty() ? CNTR_LAST-1 : CNTR_LAST) - (parent_->local_only_ ? 1 : 0);
 		if (combo_controller_->selected() == cntr_last) {
 			update_controller_ui();
