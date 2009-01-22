@@ -349,18 +349,10 @@ node& node::add_child_at(const char* name, size_t index)
 		index = list.size();
 	}
 
-	fprintf(stderr, "add child at: %d, %d\n", list_index, index);
-	for(int n = 0; n != ordered_children_.size(); ++n) {
-		fprintf(stderr, "ordered child: %d, %d\n", ordered_children_[n].child_map_index, ordered_children_[n].child_list_index);
-	}
-
 	check_ordered_children();
 	list.insert(list.begin() + index, new node(*doc_, this));
 	insert_ordered_child(list_index, index);
-	fprintf(stderr, "done add child at: %d, %d\n", list_index, index);
-	for(int n = 0; n != ordered_children_.size(); ++n) {
-		fprintf(stderr, "ordered child: %d, %d\n", ordered_children_[n].child_map_index, ordered_children_[n].child_list_index);
-	}
+
 	check_ordered_children();
 	return *list[index];
 }
@@ -475,6 +467,8 @@ void node::remove_ordered_child_list(int child_map_index)
 
 void node::check_ordered_children() const
 {
+// only define this symbol in debug mode to work out child ordering.
+#ifdef CHECK_ORDERED_CHILDREN
 	std::vector<node_pos>::const_iterator i = ordered_children_.begin();
 	while(i != ordered_children_.end()) {
 		assert(i->child_map_index < children_.size());
@@ -498,6 +492,7 @@ void node::check_ordered_children() const
 			assert(found);
 		}
 	}
+#endif // CHECK_ORDERED_CHILDREN
 }
 
 void node::remove_child(const char* name, size_t index)
@@ -616,9 +611,6 @@ int node::output_size() const
 		}
 	}
 
-	if(count_children != ordered_children_.size()) {
-		fprintf(stderr, "count_children: %d; ordered_children: %d\n", (int)count_children, (int)ordered_children_.size());
-	}
 	assert(count_children == ordered_children_.size());
 
 	return res;
