@@ -136,7 +136,7 @@ node::node(document& doc, node* parent, const char** str, int depth) :
 	children_(),
 	output_cache_()
 {
-	if(depth >= 30) {
+	if(depth >= 1000) {
 		throw error("elements nested too deep");
 	}
 
