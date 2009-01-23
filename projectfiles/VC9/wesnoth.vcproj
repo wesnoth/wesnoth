@@ -42,7 +42,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				AdditionalIncludeDirectories="..\..\src"
-				PreprocessorDefinitions="WIN32;_WINDOWS;_CRT_SECURE_NO_WARNINGS;HAVE_PYTHON;USE_GZIP;NO_HAVE_FRIBIDI;DISABLE_POOL_ALLOC"
+				PreprocessorDefinitions="WIN32;_WINDOWS;_CRT_SECURE_NO_WARNINGS;HAVE_PYTHON;USE_GZIP;NO_HAVE_FRIBIDI"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -339,6 +339,14 @@
 			<File
 				RelativePath="..\..\src\game.cpp"
 				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						PreprocessorDefinitions="DISABLE_POOL_ALLOC"
+					/>
+				</FileConfiguration>
 				<FileConfiguration
 					Name="Release|Win32"
 					>
@@ -882,6 +890,14 @@
 				RelativePath="..\..\src\editor2\map_context.cpp"
 				>
 				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Editor2\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
 					Name="Release|Win32"
 					>
 					<Tool
@@ -1208,6 +1224,10 @@
 							ObjectFile="$(IntDir)\Gui\Widgets\"
 						/>
 					</FileConfiguration>
+				</File>
+				<File
+					RelativePath="..\..\src\gui\widgets\password_box.cpp"
+					>
 				</File>
 				<File
 					RelativePath="..\..\src\gui\widgets\scroll_label.cpp"

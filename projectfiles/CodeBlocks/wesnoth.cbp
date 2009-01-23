@@ -6,11 +6,22 @@
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
-			<Target title="default">
+			<Target title="Release">
 				<Option output="..\..\wesnoth_cb" prefix_auto="1" extension_auto="1" />
 				<Option working_dir="..\..\" />
+				<Option object_output=".objs-release" />
 				<Option type="0" />
 				<Option compiler="gcc" />
+			</Target>
+			<Target title="Debug">
+				<Option output="..\..\wesnoth_cb-debug" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="..\..\" />
+				<Option object_output=".objs-debug" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
 			</Target>
 		</Build>
 		<Compiler>
@@ -21,7 +32,6 @@
 			<Add option="-DHAVE_PYTHON" />
 			<Add option="-DUSE_GZIP" />
 			<Add option="-DHAVE_FRIBIDI" />
-			<Add option="-DDISABLE_POOL_ALLOC" />
 			<Add directory="..\..\src" />
 			<Add directory="..\..\src\sdl_ttf" />
 			<Add directory="..\..\src\serialization" />
@@ -106,7 +116,9 @@
 		<Unit filename="..\..\src\formula_function.cpp" />
 		<Unit filename="..\..\src\formula_string_utils.cpp" />
 		<Unit filename="..\..\src\formula_tokenizer.cpp" />
-		<Unit filename="..\..\src\game.cpp" />
+		<Unit filename="..\..\src\game.cpp">
+			<Option compiler="gcc" use="1" buildCommand="$compiler $options -DDISABLE_POOL_ALLOC $includes -c $file -o $object" />
+		</Unit>
 		<Unit filename="..\..\src\game_config.cpp" />
 		<Unit filename="..\..\src\game_display.cpp" />
 		<Unit filename="..\..\src\game_events.cpp" />
@@ -145,6 +157,7 @@
 		<Unit filename="..\..\src\gui\widgets\menubar.cpp" />
 		<Unit filename="..\..\src\gui\widgets\minimap.cpp" />
 		<Unit filename="..\..\src\gui\widgets\panel.cpp" />
+		<Unit filename="..\..\src\gui\widgets\password_box.cpp" />
 		<Unit filename="..\..\src\gui\widgets\scroll_label.cpp" />
 		<Unit filename="..\..\src\gui\widgets\scrollbar.cpp" />
 		<Unit filename="..\..\src\gui\widgets\scrollbar_container.cpp" />
@@ -170,6 +183,10 @@
 		<Unit filename="..\..\src\leader_list.cpp" />
 		<Unit filename="..\..\src\loadscreen.cpp" />
 		<Unit filename="..\..\src\log.cpp" />
+		<Unit filename="..\..\src\malloc.c">
+			<Option compilerVar="CC" />
+			<Option compiler="gcc" use="1" buildCommand="$compiler $options -DDISABLE_POOL_ALLOC $includes -c $file -o $object" />
+		</Unit>
 		<Unit filename="..\..\src\map.cpp" />
 		<Unit filename="..\..\src\map_create.cpp" />
 		<Unit filename="..\..\src\map_label.cpp" />
@@ -197,6 +214,10 @@
 		<Unit filename="..\..\src\playmp_controller.cpp" />
 		<Unit filename="..\..\src\playsingle_controller.cpp" />
 		<Unit filename="..\..\src\playturn.cpp" />
+		<Unit filename="..\..\src\poolalloc.c">
+			<Option compilerVar="CC" />
+			<Option compiler="gcc" use="1" buildCommand="$compiler $options -DDISABLE_POOL_ALLOC $includes -c $file -o $object" />
+		</Unit>
 		<Unit filename="..\..\src\portrait.cpp" />
 		<Unit filename="..\..\src\preferences.cpp" />
 		<Unit filename="..\..\src\preferences_display.cpp" />
@@ -263,6 +284,7 @@
 		<Extensions>
 			<code_completion />
 			<debugger />
+			<envvars />
 		</Extensions>
 	</Project>
 </CodeBlocks_project_file>

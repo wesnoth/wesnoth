@@ -1,7 +1,7 @@
 [Project]
 FileName=wesnoth.dev
 Name=wesnoth
-UnitCount=205
+UnitCount=208
 Type=0
 Ver=1
 ObjFiles=
@@ -900,9 +900,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit206]
-FileName=..\..\src\widgets\textbox.hpp
+FileName=..\..\src\gui\widgets\password_box.cpp
 CompileCpp=1
-Folder=Wesnoth
+Folder=wesnoth
 Compile=1
 Link=1
 Priority=1000
@@ -910,9 +910,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit207]
-FileName=..\..\src\widgets\widget.cpp
+FileName=..\..\src\malloc.c
 CompileCpp=1
-Folder=Wesnoth
+Folder=wesnoth
 Compile=1
 Link=1
 Priority=1000
@@ -920,7 +920,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit208]
-FileName=..\..\src\unit_abilities.cpp
+FileName=..\..\src\poolalloc.c
 CompileCpp=1
 Folder=wesnoth
 Compile=1

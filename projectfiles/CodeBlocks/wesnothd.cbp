@@ -6,11 +6,22 @@
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
-			<Target title="default">
+			<Target title="Release">
 				<Option output="..\..\wesnothd_cb" prefix_auto="1" extension_auto="1" />
 				<Option working_dir="..\..\" />
+				<Option object_output=".objs-release" />
 				<Option type="1" />
 				<Option compiler="gcc" />
+			</Target>
+			<Target title="Debug">
+				<Option output="..\..\wesnothd_cb-debug" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="..\..\" />
+				<Option object_output=".objs-debug" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
 			</Target>
 		</Build>
 		<Compiler>
@@ -72,6 +83,7 @@
 		<Extensions>
 			<code_completion />
 			<debugger />
+			<envvars />
 		</Extensions>
 	</Project>
 </CodeBlocks_project_file>
