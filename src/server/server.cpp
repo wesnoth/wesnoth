@@ -749,20 +749,29 @@ void server::run() {
 				char* buf_ptr = new char [buf.size()];
 				memcpy(buf_ptr, &buf[0], buf.size());
 				simple_wml::string_span compressed_buf(buf_ptr, buf.size());
-				simple_wml::document data(compressed_buf);
-				data.take_ownership_of_buffer(buf_ptr);
-				std::vector<char>().swap(buf);
+				try {
+					simple_wml::document data(compressed_buf); // might throw a simple_wml::error
+					data.take_ownership_of_buffer(buf_ptr);
+					std::vector<char>().swap(buf);
 
-				const clock_t after_parsing = get_cpu_time(sample);
+					const clock_t after_parsing = get_cpu_time(sample);
 
-				process_data(sock, data);
+					process_data(sock, data);
 
-				bandwidth_type->set_type(data.root().first_child().to_string());
-				if(sample) {
-					const clock_t after_processing = get_cpu_time(sample);
-					metrics_.record_sample(data.root().first_child(),
-					          after_parsing - before_parsing,
-							  after_processing - after_parsing);
+					bandwidth_type->set_type(data.root().first_child().to_string());
+					if(sample) {
+						const clock_t after_processing = get_cpu_time(sample);
+						metrics_.record_sample(data.root().first_child(),
+						          after_parsing - before_parsing,
+								  after_processing - after_parsing);
+					}
+				} catch (simple_wml::error& e) {
+					// Most likely the error happened in scenario data so just give a server
+					// message instead of send_error() which would kick the client out.
+					lobby_.send_server_message(std::string("Invalid WML received: '"
+							+ e.message + "'. You might have to quit.").c_str(), sock);
+					delete buf_ptr;
+					continue;
 				}
 			}
 
