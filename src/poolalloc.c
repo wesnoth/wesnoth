@@ -1,4 +1,5 @@
 /* $Id$ */
+#ifndef DISABLE_POOL_ALLOC
 /*
    Copyright (C) 2008 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
@@ -463,4 +464,5 @@ int main()
 
 	return 0;
 }
+#endif
 #endif

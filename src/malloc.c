@@ -1,5 +1,7 @@
 /* $Id$ */
 
+#ifndef DISABLE_POOL_ALLOC
+
 #define USE_DL_PREFIX
 
 /*
@@ -5063,3 +5065,4 @@ History:
          structure of old version,  but most details differ.)
  
 */
+#endif
