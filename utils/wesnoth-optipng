@@ -146,15 +146,16 @@ EOSTREAM
 	shift
 done
 
+# FIXME: disabled because it isn't working for Ivanovic.
 # Probe optipng
-nice -n $opti_nice optipng -v 2> /dev/null 1> /dev/null ||
-	report_absent_tool optipng 'http://www.cs.toronto.edu/~cosmin/pngtech/optipng/'
+#nice -n $opti_nice optipng -v 2> /dev/null 1> /dev/null ||
+#	report_absent_tool optipng 'http://www.cs.toronto.edu/~cosmin/pngtech/optipng/'
 # Probe IM's convert
-nice -n $opti_nice convert --help 2> /dev/null 1> /dev/null ||
-	report_absent_tool convert 'http://www.imagemagick.org'
+#nice -n $opti_nice convert --help 2> /dev/null 1> /dev/null ||
+#	report_absent_tool convert 'http://www.imagemagick.org'
 # Probe advdef
-nice -n $opti_nice advdef --help 2> /dev/null 1> /dev/null ||
-	report_absent_tool advdef 'http://advancemame.sourceforge.net/comp-readme.html'
+#nice -n $opti_nice advdef --help 2> /dev/null 1> /dev/null ||
+#	report_absent_tool advdef 'http://advancemame.sourceforge.net/comp-readme.html'
 
 # Set-up a trap to avoid leaving orphan tempfiles behind.
 trap user_int HUP INT TERM
