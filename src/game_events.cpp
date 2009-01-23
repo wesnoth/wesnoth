@@ -2957,6 +2957,12 @@ namespace {
 					image::locator locator(image);
 					if(!locator.file_exists()) {
 						image = speaker->second.profile();
+
+#ifndef LOW_MEM
+						if(image == speaker->second.absolute_image()) {
+							image += speaker->second.image_mods();
+						}
+#endif							
 					}
 
 					const size_t right_offset = image.find("~RIGHT()");
