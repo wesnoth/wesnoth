@@ -10,6 +10,10 @@ Version 1.5.8+svn:
    * Potraits with an icon are TC'ed again.
  * WML Engine:
    * Prevent duplicate id conflicts when cloning units with WML (bug #12894)
+   * [time_area], in EventWML, can now accept comma-separated lists of area ids
+     for removing, but not for inserting; in the latter case, only the first id
+     is considered to avoid stacking time_areas over a single location by
+     accident.
 
 Version 1.5.8:
  * Campaigns:

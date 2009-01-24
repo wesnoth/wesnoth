@@ -3180,17 +3180,31 @@ std::string get_caption(const vconfig& cfg, unit_map::iterator speaker)
 		log_scope("time_area");
 
 		const bool remove = utils::string_bool(cfg["remove"],false);
-		const std::string& id = cfg["id"];
+		const std::string& ids = cfg["id"];
 
 		if(remove) {
-			status_ptr->remove_time_area(id);
+			const std::vector<std::string> id_list =
+				utils::split(ids, ',', utils::STRIP_SPACES | utils::REMOVE_EMPTY);
+			foreach(const std::string& id, id_list) {
+				status_ptr->remove_time_area(id);
+				LOG_NG << "event WML removed time_area '" << id << "'\n";
+			}
 		}
 		else {
+			std::string id;
+			if(ids.find(',') != std::string::npos) {
+				id = utils::split(ids,',',utils::STRIP_SPACES | utils::REMOVE_EMPTY).front();
+				ERR_NG << "multiple ids for inserting a new time_area; will use only the first\n";
+			} else {
+				id = ids;
+			}
 			std::set<map_location> locs;
 			terrain_filter filter(cfg, *game_map, *status_ptr, *units);
 			filter.restrict_size(game_config::max_loop);
 			filter.get_locations(locs);
-			status_ptr->add_time_area(id, locs, cfg.get_parsed_config());
+			config parsed_cfg = cfg.get_parsed_config();
+			status_ptr->add_time_area(id, locs, parsed_cfg);
+			LOG_NG << "event WML inserted time_area '" << id << "'\n";
 		}
 	}
 
