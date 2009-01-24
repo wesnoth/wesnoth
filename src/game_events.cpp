@@ -2832,6 +2832,14 @@ unit_map::iterator handle_speaker(
 	return speaker;
 }
 
+/**
+ * Helper to handle the image part of the message.
+ *
+ * @param cfg                     cfg of message.
+ * @param speaker                 The speaker of the message.
+ *
+ * @returns                       The image to show.
+ */
 std::string get_image(const vconfig& cfg, unit_map::iterator speaker)
 {
 	std::string image = cfg["image"];
@@ -2849,6 +2857,14 @@ std::string get_image(const vconfig& cfg, unit_map::iterator speaker)
 	return image;
 }
 
+/**
+ * Helper to handle the caption part of the message.
+ *
+ * @param cfg                     cfg of message.
+ * @param speaker                 The speaker of the message.
+ *
+ * @returns                       The caption to show.
+ */
 std::string get_caption(const vconfig& cfg, unit_map::iterator speaker)
 {
 	std::string caption = cfg["caption"];
