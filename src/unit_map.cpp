@@ -15,6 +15,7 @@
 /** @file unit_map.cpp */
 
 #include "unit.hpp"
+#include "unit_id.hpp"
 #include "log.hpp"
 
 
@@ -485,17 +486,17 @@ void unit_map::add(std::pair<map_location,unit> *p)
 		ERR_NG << "Trying to add " << p->second.name() <<
 			" - " << p->second.id() <<
 			" - " << p->second.underlying_id() <<
-			" ("  << p->first.x <<
-			","   << p->first.y <<
-			") "  <<
-			" over " << iter->second.second->second.name() <<
+			" ("  << p->first <<
+			") over " << iter->second.second->second.name() <<
 			" - " << iter->second.second->second.id() <<
 			" - " << iter->second.second->second.underlying_id() <<
-			" ("  << iter->second.second->first.x <<
-			","   << iter->second.second->first.y <<
-			") \n";
-
-		assert(false && "Duplicated underlying_id not allowed");
+			" ("  << iter->second.second->first <<
+			"). The new unit will be assigned underlying_id="
+			<< (1 + n_unit::id_manager::instance().get_save_id())
+			<< " to prevent duplicate id conflicts.\n";
+		p->second.clone(false);
+		add(p);
+		return;
 	}
 
 	DBG_NG << "Adding unit " << p->second.underlying_id()<< " - " << p->second.id() << " to location: (" << p->first.x+1 << "," << p->first.y+1

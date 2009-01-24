@@ -308,8 +308,10 @@ public:
 	bool invisible(const map_location& loc,
 		const unit_map& units,const std::vector<team>& teams, bool see_all=true) const;
 
-	/** Mark this unit as clone so it can be insterted to unit_map */
-	void clone();
+	/** Mark this unit as clone so it can be insterted to unit_map
+	 * @returns                   self (for convenience)
+	 **/
+	unit& clone(bool is_temporary=true);
 
 	/**
 	 * Make sure that invisibility cache is revalidate

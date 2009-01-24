@@ -36,6 +36,7 @@
 
 #define DBG_UT LOG_STREAM(debug, engine)
 #define LOG_UT LOG_STREAM(info, engine)
+#define WRN_UT LOG_STREAM(warn, engine)
 #define ERR_UT LOG_STREAM(err, engine)
 #define ERR_CONFIG LOG_STREAM(err, config)
 
@@ -2958,10 +2959,22 @@ void unit::set_underlying_id() {
 	}
 }
 
-void unit::clone()
+unit& unit::clone(bool is_temporary)
 {
-	underlying_id_ = n_unit::id_manager::instance().next_fake_id();
-
+	if(is_temporary) {
+		underlying_id_ = n_unit::id_manager::instance().next_fake_id();
+	} else {
+		underlying_id_ = n_unit::id_manager::instance().next_id();
+		std::string::size_type pos = id_.find_last_of('-');
+		if(pos != std::string::npos && pos+1 < id_.size()
+		&& id_.find_first_not_of("0123456789", pos+1) == std::string::npos) {
+			// this appears to be a duplicate of a generic unit, so give it a new id
+			WRN_UT << "assigning new id to clone of generic unit " << id_ << "\n";
+			id_.clear();
+			set_underlying_id();
+		}
+	}
+	return *this;
 }
 
 int team_units(const unit_map& units, unsigned int side)
