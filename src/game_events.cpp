@@ -2828,6 +2828,7 @@ unit_map::iterator handle_speaker(
 	}
 
 	(screen)->draw(false);
+	LOG_DP << "done scrolling to speaker...\n";
 	return speaker;
 }
 
@@ -2924,7 +2925,6 @@ unit_map::iterator handle_speaker(
 					caption = speaker->second.type_name();
 				}
 			}
-			LOG_DP << "done scrolling to speaker...\n";
 		}
 
 
