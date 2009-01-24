@@ -2832,6 +2832,35 @@ unit_map::iterator handle_speaker(
 	return speaker;
 }
 
+std::string get_image(const vconfig& cfg, unit_map::iterator speaker)
+{
+	std::string image = cfg["image"];
+	if(image.empty() && speaker != units->end()) {
+
+		image = speaker->second.profile();
+		/** @todo Handle the transparent stuff here. */
+#ifdef LOW_MEM
+		if(image == speaker->second.absolute_image()) {
+			image += speaker->second.image_mods();
+		}
+#endif
+
+	}
+	return image;
+}
+
+std::string get_caption(const vconfig& cfg, unit_map::iterator speaker)
+{
+	std::string caption = cfg["caption"];
+	if(caption.empty() && speaker != units->end()) {
+		caption = speaker->second.name();
+		if(caption.empty()) {
+			caption = speaker->second.type_name();
+		}
+	}
+	return caption;
+}
+
 } // namespace
 
 		// Display a message dialog
@@ -2893,39 +2922,13 @@ unit_map::iterator handle_speaker(
 			return;
 		}
 
-
 		std::string sfx = cfg["sound"];
 		if(sfx != "") {
 			sound::play_sound(sfx);
 		}
 
-		std::string image = cfg["image"];
-		std::string caption = cfg["caption"];
-
-		if(speaker != units->end()) {
-
-			if(image.empty()) {
-				image = speaker->second.profile();
-				if(image == speaker->second.absolute_image()) {
-					std::stringstream ss;
-
-#ifdef LOW_MEM
-					ss	<< image;
-#else
-					ss	<< image << speaker->second.image_mods();
-#endif
-
-					image = ss.str();
-				}
-			}
-
-			if(caption.empty()) {
-				caption = speaker->second.name();
-				if(caption.empty()) {
-					caption = speaker->second.type_name();
-				}
-			}
-		}
+		std::string image = get_image(cfg, speaker);
+		std::string caption = get_caption(cfg, speaker);
 
 
 		std::vector<std::string> options;
