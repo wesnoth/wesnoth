@@ -2784,6 +2784,54 @@ namespace {
 		}
 	}
 
+// Helper namespace to do some subparts for message function	
+namespace {	
+
+/**
+ * Helper to handle the speaker part of the message.
+ *
+ * @param event_info              event_info of message.
+ * @param cfg                     cfg of message.
+ *
+ * @returns                       The unit who's the speaker or units->end().
+ */
+unit_map::iterator handle_speaker(
+		const game_events::queued_event& event_info,
+		const vconfig& cfg)
+{
+	unit_map::iterator speaker = units->end();
+	const std::string speaker_str = cfg["speaker"];
+
+	if(speaker_str == "unit") {
+		speaker = units->find(event_info.loc1);
+	} else if(speaker_str == "second_unit") {
+		speaker = units->find(event_info.loc2);
+	} else if(speaker_str != "narrator") {
+		for(speaker = units->begin(); speaker != units->end(); ++speaker){
+			if(game_events::unit_matches_filter(speaker,cfg))
+				break;
+		}
+	}
+	if(speaker != units->end()) {
+		LOG_NG << "set speaker to '" << speaker->second.name() << "'\n";
+
+		LOG_DP << "scrolling to speaker..\n";
+		(screen)->highlight_hex(speaker->first);
+		const int offset_from_center = std::max<int>(0, speaker->first.y - 1);
+		(screen)->scroll_to_tile(map_location(speaker->first.x,offset_from_center));
+		(screen)->highlight_hex(speaker->first);
+	} else if(speaker_str == "narrator") {
+		LOG_NG << "no speaker\n";
+		(screen)->highlight_hex(map_location::null_location);
+	} else {
+		return speaker;
+	}
+
+	(screen)->draw(false);
+	return speaker;
+}
+
+} // namespace
 
 		// Display a message dialog
 	WML_HANDLER_FUNCTION(message,handler,event_info,cfg)
@@ -2833,33 +2881,17 @@ namespace {
 				DBG_NG << "player isn't controlling side which should get message\n";
 			}
 		}
-		unit_map::iterator speaker = units->end();
 
-		std::string speaker_str = cfg["speaker"];
 		assert(state_of_game != NULL);
-		if(speaker_str == "unit") {
-			speaker = units->find(event_info.loc1);
-		} else if(speaker_str == "second_unit") {
-			speaker = units->find(event_info.loc2);
-		} else if(speaker_str != "narrator") {
-			for(speaker = units->begin(); speaker != units->end(); ++speaker){
-				if(game_events::unit_matches_filter(speaker,cfg))
-					break;
-			}
-		}
 
-		if(speaker == units->end() && speaker_str != "narrator") {
+		unit_map::iterator speaker = handle_speaker(event_info, cfg);
+		if(speaker == units->end() && cfg["speaker"] != "narrator") {
 			// No matching unit found, so the dialog can't come up.
 			// Continue onto the next message.
 			WRN_NG << "cannot show message\n";
 			return;
 		}
 
-		if(speaker != units->end()) {
-			LOG_NG << "set speaker to '" << speaker->second.name() << "'\n";
-		} else {
-			LOG_NG << "no speaker\n";
-		}
 
 		std::string sfx = cfg["sound"];
 		if(sfx != "") {
@@ -2870,11 +2902,6 @@ namespace {
 		std::string caption = cfg["caption"];
 
 		if(speaker != units->end()) {
-			LOG_DP << "scrolling to speaker..\n";
-			(screen)->highlight_hex(speaker->first);
-			const int offset_from_center = std::max<int>(0, speaker->first.y - 1);
-			(screen)->scroll_to_tile(map_location(speaker->first.x,offset_from_center));
-			(screen)->highlight_hex(speaker->first);
 
 			if(image.empty()) {
 				image = speaker->second.profile();
@@ -2898,10 +2925,8 @@ namespace {
 				}
 			}
 			LOG_DP << "done scrolling to speaker...\n";
-		} else {
-			(screen)->highlight_hex(map_location::null_location);
 		}
-		(screen)->draw(false);
+
 
 		std::vector<std::string> options;
 		std::vector<vconfig::child_list> option_events;
