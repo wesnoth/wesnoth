@@ -23,6 +23,7 @@
 #include "serialization/parser.hpp"
 
 #include "config.hpp"
+#include "log.hpp"
 #include "gettext.hpp"
 #include "loadscreen.hpp"
 #include "wesconfig.h"
@@ -119,7 +120,14 @@ void parser::operator()(std::string* error_log)
 				parse_variable();
 				break;
 			default:
-				error(_("Unexpected characters at line start"));
+				if (tok_->current_token().value[0] == static_cast<signed char>(0xEF)
+					&& tok_->next_token().value[0] == static_cast<signed char>(0xBB)
+					&& tok_->next_token().value[0] == static_cast<signed char>(0xBF)
+				){
+					ERR_CF << "Skipping over a utf8 BOM\n";
+				} else {
+					error(_("Unexpected characters at line start"));
+				}
 				break;
 			case token::END:
 				break;
