@@ -39,5 +39,24 @@ twindow* twml_message_right::build_window(CVideo& video)
 	return build(video, get_id(WML_MESSAGE_RIGHT));
 }
 
+int show_wml_message(const bool left_side
+		, CVideo& video
+		, const std::string& title
+		, const std::string& message
+		, const std::string& portrait
+		, const bool mirror)
+{
+	std::auto_ptr<twml_message_> dlg;
+	if(left_side) {
+		dlg.reset(new twml_message_left(title, message, portrait, mirror));
+	} else {
+		dlg.reset(new twml_message_right(title, message, portrait, mirror));
+	}
+	assert(dlg.get());
+	
+	dlg->show(video);
+	return dlg->get_retval();
+}
+
 } // namespace gui2
 

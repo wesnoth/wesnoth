@@ -3010,31 +3010,20 @@ std::string get_caption(const vconfig& cfg, unit_map::iterator speaker)
 					}
 
 					const size_t right_offset = image.find("~RIGHT()");
-					if(right_offset != std::string::npos) {
+					const bool left_side = (right_offset == std::string::npos);
+					if(!left_side) {
 						image.erase(right_offset);
-
-						gui2::twml_message_right dlg(
-								caption,
-								cfg["message"],
-								image,
-								false);
-
-						dlg.show(screen->video());
-						if(dlg.get_retval() == gui2::twindow::CANCEL) {
-							handler.skip_messages() = true;
-						}
-						return;
-
 					}
 
-					gui2::twml_message_left dlg(
+					const int dlg_result = gui2::show_wml_message(
+							left_side,
+							screen->video(),
 							caption,
 							cfg["message"],
 							image,
 							false);
 
-					dlg.show(screen->video());
-					if(dlg.get_retval() == gui2::twindow::CANCEL) {
+					if(dlg_result == gui2::twindow::CANCEL) {
 						handler.skip_messages() = true;
 					}
 					return;

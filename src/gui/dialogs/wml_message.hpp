@@ -82,6 +82,25 @@ private:
 	twindow* build_window(CVideo& video);
 };
 
+
+/**
+ *  Helper function to show a portrait.
+ *
+ *  @param left_side              If true the portrait is shown on the left, 
+ *                                on the right side otherwise.
+ *  @param video                  The display variable.
+ *  @param title                  The title of the dialog.
+ *  @param message                The message to show.
+ *  @param portrait               Filename of the portrait.
+ *  @param mirror                 Does the portrait need to be mirrored?
+ */
+int show_wml_message(const bool left_side
+		, CVideo& video
+		, const std::string& title
+		, const std::string& message
+		, const std::string& portrait
+		, const bool mirror);
+
 } // namespace gui2
 
 #endif
