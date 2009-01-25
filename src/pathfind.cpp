@@ -282,12 +282,12 @@ int route_turns_to_complete(const unit& u, paths::route& rt, const team &viewing
 shortest_path_calculator::shortest_path_calculator(unit const &u, team const &t,
 		unit_map const &units, std::vector<team> const &teams, gamemap const &map,
 		bool ignore_unit, bool ignore_defense)
-	: unit_(u), viewing_team_(t), units_(units), teams_(teams), map_(map),
+	: cost_calculator(u.total_movement()),
+	  unit_(u), viewing_team_(t), units_(units), teams_(teams), map_(map),
 	  movement_left_(unit_.movement_left()),
 	  total_movement_(unit_.total_movement()),
 	  ignore_unit_(ignore_unit), ignore_defense_(ignore_defense)
-{
-}
+{}
 
 double shortest_path_calculator::cost(const map_location& /*src*/,const map_location& loc, const double so_far) const
 {
@@ -365,9 +365,8 @@ double shortest_path_calculator::cost(const map_location& /*src*/,const map_loca
 }
 
 emergency_path_calculator::emergency_path_calculator(const unit& u, const gamemap& map)
-	: unit_(u), map_(map)
-{
-}
+	: cost_calculator(u.total_movement()), unit_(u), map_(map)
+{}
 
 double emergency_path_calculator::cost(const map_location&,const map_location& loc, const double) const
 {
@@ -376,9 +375,9 @@ double emergency_path_calculator::cost(const map_location&,const map_location& l
 	return unit_.movement_cost(map_[loc]);
 }
 
-dummy_path_calculator::dummy_path_calculator(const unit&, const gamemap&)
-{
-}
+dummy_path_calculator::dummy_path_calculator(const unit& u, const gamemap&)
+	: cost_calculator(u.total_movement())
+{}
 
 double dummy_path_calculator::cost(const map_location&, const map_location&, const double) const
 {

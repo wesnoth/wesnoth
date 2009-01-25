@@ -32,7 +32,8 @@ struct move_cost_calculator : cost_calculator
 			     const map_location& loc,
 						 const ai::move_map& dstsrc,
 						 const ai::move_map& enemy_dstsrc)
-	  : unit_(u), map_(map), units_(units),
+	  : cost_calculator(u.total_movement()),
+	    unit_(u), map_(map), units_(units),
 	    loc_(loc), dstsrc_(dstsrc), enemy_dstsrc_(enemy_dstsrc),
 		avoid_enemies_(u.usage() == "scout")
 	{}

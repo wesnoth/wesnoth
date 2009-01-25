@@ -197,7 +197,10 @@ paths::route a_star_search(map_location const &src, map_location const &dst,
 			locCurNode = locCurNode->nodeParent;
 		}
 		std::reverse(locRoute.steps.begin(), locRoute.steps.end());
-		locRoute.move_left = int(locDestNode->g);
+		int move_left = int(costCalculator->max_cost()) - int(locDestNode->g);
+
+		if (move_left > 0)
+			locRoute.move_left = move_left;
 
 		assert(locRoute.steps.front() == src);
 		assert(locRoute.steps.back() == dst);
