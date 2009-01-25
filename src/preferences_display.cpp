@@ -64,7 +64,8 @@ void set_fullscreen(bool ison)
 		CVideo& video = disp->video();
 		if(video.isFullScreen() != ison) {
 			const int flags = ison ? FULL_SCREEN : 0;
-			const int bpp = video.modePossible(res.first,res.second,16,flags);
+			int bpp = video.modePossible(res.first,res.second,32,flags);
+			if (bpp <= 0) bpp = video.modePossible(res.first,res.second,16,flags);
 			if(bpp > 0) {
 				video.setMode(res.first,res.second,bpp,flags);
 				disp->redraw_everything();
