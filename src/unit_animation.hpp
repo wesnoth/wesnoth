@@ -83,7 +83,7 @@ class unit_animation
 			explicit particule(const config& cfg,const std::string frame_string ="frame");
 			virtual ~particule();
 			bool need_update() const;
-			void override(int start_time,const std::string highlight="", const std::string blend_ratio ="",Uint32 blend_color = 0,const std::string offset="",const std::string layer="");
+			void override(int start_time,int duration, const std::string highlight="", const std::string blend_ratio ="",Uint32 blend_color = 0,const std::string offset="",const std::string layer="");
 			void redraw( const frame_parameters& value,const map_location &src, const map_location &dst, const bool primary=false);
 			bool invalidate(const frame_parameters& value,const map_location &src, const map_location &dst,  const bool primary = false);
 			void start_animation(int start_time, bool cycles=false);

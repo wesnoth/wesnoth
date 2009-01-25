@@ -316,7 +316,7 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 		}
 	}
 	if( animation_base.empty() )
-		animation_base.push_back(unit_animation(0,frame_builder().image(default_image).duration(600),"",unit_animation::DEFAULT_ANIM));
+		animation_base.push_back(unit_animation(0,frame_builder().image(default_image).duration(1),"",unit_animation::DEFAULT_ANIM));
 
 	animations.push_back(unit_animation(0,frame_builder().image(default_image).duration(1),"_disabled_",0));
 	animations.push_back(unit_animation(0,frame_builder().image(default_image).duration(1).
@@ -325,7 +325,6 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 		unit_animation tmp_anim = *itor;
 		// provide all default anims
 		//no event, providing a catch all anim
-		tmp_anim.unit_anim_.remove_frames_after(600);
 		animations.push_back(tmp_anim);
 
 		tmp_anim = *itor;
@@ -333,55 +332,51 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 		animations.push_back(tmp_anim);
 
 		tmp_anim = *itor;
-		tmp_anim.unit_anim_.override(0,"","0.0~0.3:100,0.3~0.0:200",display::rgb(255,255,255));
+		tmp_anim.unit_anim_.override(0,300,"","0.0~0.3:100,0.3~0.0:200",display::rgb(255,255,255));
 		tmp_anim.event_ = utils::split("selected");
 		animations.push_back(tmp_anim);
 
 		tmp_anim = *itor;
-		tmp_anim.unit_anim_.override(0,"0~1:600");
+		tmp_anim.unit_anim_.override(0,600,"0~1:600");
 		tmp_anim.event_ = utils::split("recruited");
-		tmp_anim.unit_anim_.remove_frames_after(600);
 		animations.push_back(tmp_anim);
 
 		tmp_anim = *itor;
-		tmp_anim.unit_anim_.override(0,"","1~0:600",display::rgb(255,255,255));
+		tmp_anim.unit_anim_.override(0,600,"","1~0:600",display::rgb(255,255,255));
 		tmp_anim.event_ = utils::split("levelin");
-		tmp_anim.unit_anim_.remove_frames_after(600);
 		animations.push_back(tmp_anim);
 
 		tmp_anim = *itor;
-		tmp_anim.unit_anim_.override(0,"","0~1:600,1",display::rgb(255,255,255));
+		tmp_anim.unit_anim_.override(0,600,"","0~1:600,1",display::rgb(255,255,255));
 		tmp_anim.event_ = utils::split("levelout");
-		tmp_anim.unit_anim_.remove_frames_after(600);
 		animations.push_back(tmp_anim);
 
 		tmp_anim = *itor;
-		tmp_anim.unit_anim_.override(0,"","",0,"0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,","51");
+		tmp_anim.unit_anim_.override(0,5100,"","",0,"0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,","51");
 		tmp_anim.event_ = utils::split("movement");
 		animations.push_back(tmp_anim);
 
 		tmp_anim = *itor;
-		tmp_anim.unit_anim_.override(-150);
+		tmp_anim.unit_anim_.override(-150,150);
 		tmp_anim.event_ = utils::split("defend");
 		animations.push_back(tmp_anim);
 
 		tmp_anim = *itor;
-		tmp_anim.unit_anim_.override(-150,"","",0,"0~0.6:150,0.6~0:150","51");
+		tmp_anim.unit_anim_.override(-150,300,"","",0,"0~0.6:150,0.6~0:150","51");
 		tmp_anim.event_ = utils::split("attack");
 		tmp_anim.primary_attack_filter_.push_back(config());
 		tmp_anim.primary_attack_filter_.back()["range"] = "melee";
 		animations.push_back(tmp_anim);
 
 		tmp_anim = *itor;
-		tmp_anim.unit_anim_.override(-150);
+		tmp_anim.unit_anim_.override(-150,150);
 		tmp_anim.event_ = utils::split("attack");
 		tmp_anim.primary_attack_filter_.push_back(config());
 		tmp_anim.primary_attack_filter_.back()["range"] = "ranged";
 		animations.push_back(tmp_anim);
 
 		tmp_anim = *itor;
-		tmp_anim.unit_anim_.override(0,"1~0:600");
-		tmp_anim.unit_anim_.remove_frames_after(600);
+		tmp_anim.unit_anim_.override(0,600,"1~0:600");
 		tmp_anim.event_ = utils::split("death");
 		animations.push_back(tmp_anim);
 		animations.back().sub_anims_["_death_sound"] = particule();
@@ -390,20 +385,17 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 
 
 		tmp_anim = *itor;
-		tmp_anim.unit_anim_.override(0,"1~0:150");
-		tmp_anim.unit_anim_.remove_frames_after(150);
+		tmp_anim.unit_anim_.override(0,150,"1~0:150");
 		tmp_anim.event_ = utils::split("pre_teleport");
 		animations.push_back(tmp_anim);
 
 		tmp_anim = *itor;
-		tmp_anim.unit_anim_.override(0,"0~1:150,1");
-		tmp_anim.unit_anim_.remove_frames_after(150);
+		tmp_anim.unit_anim_.override(0,150,"0~1:150,1");
 		tmp_anim.event_ = utils::split("post_teleport");
 		animations.push_back(tmp_anim);
 
 		tmp_anim = *itor;
-		tmp_anim.unit_anim_.override(0,"","0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30",display::rgb(255,255,255));
-		tmp_anim.unit_anim_.remove_frames_after(300);
+		tmp_anim.unit_anim_.override(0,300,"","0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30",display::rgb(255,255,255));
 		tmp_anim.event_ = utils::split("healed");
 		animations.push_back(tmp_anim);
 		animations.back().sub_anims_["_healed_sound"] = particule();
@@ -411,8 +403,7 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 		animations.back().sub_anims_["_healed_sound"].add_frame(1,frame_builder().sound("heal.wav"),true);
 
 		tmp_anim = *itor;
-		tmp_anim.unit_anim_.override(0,"","0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30",display::rgb(0,255,0));
-		tmp_anim.unit_anim_.remove_frames_after(300);
+		tmp_anim.unit_anim_.override(0,300,"","0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30",display::rgb(0,255,0));
 		tmp_anim.event_ = utils::split("poisoned");
 		animations.push_back(tmp_anim);
 		animations.back().sub_anims_["_poison_sound"] = particule();
@@ -614,13 +605,23 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 
 }
 
-void unit_animation::particule::override( int start_time,const std::string highlight,const std::string blend_ratio ,Uint32 blend_color ,const std::string offset,const std::string layer)
+void unit_animation::particule::override( int start_time,int duration, const std::string highlight,const std::string blend_ratio ,Uint32 blend_color ,const std::string offset,const std::string layer)
 {
 	set_begin_time(start_time);
 	if(!highlight.empty()) parameters_.highlight(highlight);
 	if(!offset.empty()) parameters_.offset(offset);
 	if(!blend_ratio.empty()) parameters_.blend(blend_ratio,blend_color);
 	if(!layer.empty()) parameters_.drawing_layer(layer);
+
+
+	parameters_.duration(duration);
+	parameters_.recalculate_duration();
+	if(get_animation_duration() < duration) {
+		const unit_frame & last_frame = get_last_frame();
+		add_frame(duration -get_animation_duration(), last_frame);
+	} else if(get_animation_duration() > duration) {
+		remove_frames_after(duration);
+	}
 
 
 }
@@ -708,7 +709,7 @@ int unit_animation::get_end_time() const
 	int result = unit_anim_.get_end_time();
 	std::map<std::string,particule>::const_iterator anim_itor =sub_anims_.end();
 	for( /*null*/; anim_itor != sub_anims_.end() ; anim_itor++) {
-		result= std::min<int>(result,anim_itor->second.get_end_time());
+		result= std::max<int>(result,anim_itor->second.get_end_time());
 	}
 	return result;
 }
