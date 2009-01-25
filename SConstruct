@@ -517,7 +517,7 @@ def Uninstall(nodes):
         else:
             deletes.append(Delete(str(node)))
     return deletes
-uninstall = env.Command('uninstall', '', Flatten(Uninstall(Alias("install"))))
+uninstall = env.Command('uninstall', '', Flatten(Uninstall(Alias("install"))) or "")
 env.AlwaysBuild(uninstall)
 env.Precious(uninstall)
 
