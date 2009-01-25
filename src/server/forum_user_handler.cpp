@@ -136,7 +136,7 @@ bool fuh::user_exists(const std::string& name) {
 
 	// Make a test query for this username
 	try {
-		return mysql_fetch_row(db_query("SELECT username FROM " + db_users_table_ + " WHERE username='" + name + "'"));
+		return mysql_fetch_row(db_query("SELECT username FROM " + db_users_table_ + " WHERE UPPER(username)=UPPER('" + name + "')"));
 	} catch (error e) {
 		ERR_UH << "Could not execute test query for user '" << name << "' :" << e.message << std::endl;
 		// If the database is down just let all usernames log in
@@ -265,12 +265,12 @@ std::string fuh::db_query_to_string(const std::string& sql) {
 
 
 std::string fuh::get_detail_for_user(const std::string& name, const std::string& detail) {
-	return db_query_to_string("SELECT " + detail + " FROM " + db_users_table_ + " WHERE username='" + name + "'");
+	return db_query_to_string("SELECT " + detail + " FROM " + db_users_table_ + " WHERE UPPER(username)=UPPER('" + name + "')");
 }
 
 std::string fuh::get_writable_detail_for_user(const std::string& name, const std::string& detail) {
 	if(!extra_row_exists(name)) return "";
-	return db_query_to_string("SELECT " + detail + " FROM " + db_extra_table_ + " WHERE username='" + name + "'");
+	return db_query_to_string("SELECT " + detail + " FROM " + db_extra_table_ + " WHERE UPPER(username)=UPPER('" + name + "')");
 }
 
 void fuh::write_detail(const std::string& name, const std::string& detail, const std::string& value) {
@@ -280,7 +280,7 @@ void fuh::write_detail(const std::string& name, const std::string& detail, const
 			// If not create the row
 			db_query("INSERT INTO " + db_extra_table_ + " VALUES('" + name + "','" + value + "','0')");
 		}
-		db_query("UPDATE " + db_extra_table_ + " SET " + detail + "='" + value + "' WHERE username='" + name + "'");
+		db_query("UPDATE " + db_extra_table_ + " SET " + detail + "='" + value + "' WHERE UPPER(username)=UPPER('" + name + "')");
 	} catch (error e) {
 		ERR_UH << "Could not set detail for user '" << name << "': " << e.message << std::endl;
 	}
@@ -290,7 +290,7 @@ bool fuh::extra_row_exists(const std::string& name) {
 
 	// Make a test query for this username
 	try {
-		return mysql_fetch_row(db_query("SELECT username FROM " + db_extra_table_ + " WHERE username='" + name + "'"));
+		return mysql_fetch_row(db_query("SELECT username FROM " + db_extra_table_ + " WHERE UPPER(username)=UPPER('" + name + "')"));
 	} catch (error e) {
 		ERR_UH << "Could not execute test query for user '" << name << "' :" << e.message << std::endl;
 		return false;
