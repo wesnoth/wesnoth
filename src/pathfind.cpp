@@ -379,7 +379,7 @@ int emergency_path_calculator::get_max_cost() const
 	return unit_.movement_left();
 }
 
-dummy_path_calculator::dummy_path_calculator(const unit& u, const gamemap&)
+dummy_path_calculator::dummy_path_calculator(const unit&, const gamemap&)
 {}
 
 double dummy_path_calculator::cost(const map_location&, const map_location&, const double) const
