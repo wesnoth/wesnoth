@@ -14,7 +14,10 @@ Version 1.5.8+svn:
      for removing, but not for inserting; in the latter case, only the first id
      is considered to avoid stacking time_areas over a single location by
      accident.
-
+ * Miscellaneous and bug fixes
+   * Fix clients not agreeing on remaining movepoints (bug #12467)
+   * Fix summoning of other players recruit list on turn 1 (bug #12783)
+   
 Version 1.5.8:
  * Campaigns:
    * An Orcish Incursion
@@ -103,7 +106,6 @@ Version 1.5.8:
    * Prevent access to invalidated memory after the first download when
      updating all installed add-ons (bug #12837)
    * Adjusts drain game mechanics to match attack prediction (bug #7702)
-   * Fix clients not agreeing on remaining movepoints (bug #12467)
 
 Version 1.5.7:
  * Campaigns:
