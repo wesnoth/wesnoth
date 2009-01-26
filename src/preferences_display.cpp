@@ -102,7 +102,8 @@ void set_resolution(const std::pair<int,int>& resolution)
 	if(disp != NULL) {
 		CVideo& video = disp->video();
 		const int flags = fullscreen() ? FULL_SCREEN : 0;
-		const int bpp = video.modePossible(res.first,res.second,16,flags);
+		int bpp = video.modePossible(res.first,res.second,32,flags);
+		if (bpp == 0) bpp = video.modePossible(res.first,res.second, 16, flags);
 		if(bpp != 0) {
 			video.setMode(res.first,res.second,bpp,flags);
 			disp->redraw_everything();
