@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-01-18 14:00+0100\n"
-"PO-Revision-Date: 2009-01-26 00:06+0100\n"
-"Last-Translator: Karol Nowak <grywacz@gmail.com>\n"
+"PO-Revision-Date: 2009-01-26 20:08+0100\n"
+"Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team:  <z.banach@wsisiz.edu.pl>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -155,7 +155,6 @@ msgstr "leczy +4"
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:22
 #: data/core/macros/abilities.cfg:16
-#, fuzzy
 msgid ""
 "Heals +4:\n"
 "Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
@@ -170,8 +169,8 @@ msgstr ""
 "\n"
 "Jednostka pod opieką leczącego może odzyskać do 4 PŻ na turę lub nie odczuć "
 "efektów działania trucizny.\n"
-"Jednostka zatruta nie zostanie wyleczona przez leczącego, lecz musi szukać "
-"opieki w wiosce lub u uzdrowiciela."
+"Jednostka lecząca nie może uzdrowić zatrutego - jednostka zatruta musi "
+"szukać opieki w wiosce lub u uzdrowiciela."
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:45
@@ -484,9 +483,8 @@ msgstr "Tłumaczenie walenckie (południowy kataloński)"
 
 #. [about]
 #: data/core/about.cfg:2020
-#, fuzzy
 msgid "RACV's Translation"
-msgstr "Tłumaczenie chińskie"
+msgstr "Tłumaczenie RACV"
 
 #. [about]
 #: data/core/about.cfg:2027
@@ -659,7 +657,6 @@ msgstr ""
 
 #. [topic]: id=fundamentals
 #: data/core/help.cfg:140
-#, fuzzy
 msgid ""
 "While playing, keep in mind that if you mouse-over many items in the game, "
 "such as the information displayed in the status pane, a brief description "
@@ -667,10 +664,11 @@ msgid ""
 "encounter new <ref>dst='..abilities_section' text='abilities'</ref> for the "
 "first time."
 msgstr ""
-"Pamiętaj, że w czasie gry możesz korzystać z podręcznej pomocy, wyświetlanej "
-"po najechaniu myszą na większość elementów znajdujących się w menu po prawej "
-"stronie ekranu. Pomoc ta jest szczególnie użyteczna, gdy po raz pierwszy "
-"spotkasz się z nowymi <ref>dst=abilities text=umiejętnościami</ref>."
+"Podczas gry pamiętaj, że po najechaniu kursorem myszy na wiele elementów "
+"interfejsu gry (na przykład na informacje w pasku statusu) zobaczysz krótką "
+"podpowiedź opisującą dany element. Jest to szczególnie przydatne przy "
+"pierwszym napotkaniu nowej <ref>dst='..abilities_section' "
+"text='umiejętności'</ref>."
 
 #. [topic]: id=about_game
 #: data/core/help.cfg:145
@@ -760,7 +758,6 @@ msgstr "Rekrutacja i przywoływanie"
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:165
-#, fuzzy
 msgid ""
 "Each side begins with one leader in their keep. At the start of any battle, "
 "and at times during it, you will need to recruit <ref>dst='..units' "
@@ -774,16 +771,16 @@ msgid ""
 "recruit it."
 msgstr ""
 "Każda ze stron rozpoczyna z przywódcą, który znajduje się w twierdzy. Na "
-"początku bitwy oraz podczas jej trwania będziesz rekrutować <ref>dst=units "
-"text=jednostki</ref> do swojej armii. Aby rekrutować jednostki, twój "
-"przywódca (na przykład Konrad w kampanii Następca Tronu) musi znajdować się "
-"w <ref>dst=terrain_castle text=zamkowym</ref> donżonie. Można wtedy "
-"rekrutować jednostki wybierając z menu opcję 'Rekrutuj' lub klikając prawym "
-"przyciskiem myszy na heksie zamku i wybierając <italic>text=Rekrutuj</"
-"italic>. Spowoduje to pojawienie się menu rekrutacji z listą dostępnych "
-"jednostek i ich kosztem. Kliknij na jednostkę, by zobaczyć jej statystyki, a "
-"następnie kliknij przycisk 'Rekrutuj', by powołać daną jednostkę do swojej "
-"armii."
+"początku bitwy oraz podczas jej trwania będziesz rekrutować <ref>dst='.."
+"units' text='jednostki'</ref> do swojej armii. Aby rekrutować jednostki, "
+"twój przywódca (na przykład Konrad w kampanii Następca Tronu) musi znajdować "
+"się w <ref>dst='terrain_castle' text='zamku'</ref>, na polu twierdzy. Można "
+"wtedy rekrutować jednostki wybierając z menu opcję Rekrutuj lub klikając "
+"prawym przyciskiem myszy na polu zamku i wybierając opcję "
+"<italic>text=Rekrutuj</italic>. Spowoduje to pojawienie się menu rekrutacji "
+"z listą dostępnych jednostek i ich kosztem. Kliknij na jednostkę, by "
+"zobaczyć jej statystyki, a następnie kliknij przycisk Rekrutuj, by powołać "
+"wybraną jednostkę do swojej armii."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:167
@@ -805,7 +802,6 @@ msgstr ""
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:169
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -814,8 +810,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Rekrutowane jednostki mają dwie losowe <ref>dst=..traits_section text=Cechy</"
-"ref>, które wpływają na ich statystyki."
+"Rekrutowane jednostki mają po dwie losowe <ref>dst='..traits_section' "
+"text='Cechy'</ref>, które wpływają na ich statystyki."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:171
@@ -835,7 +831,6 @@ msgstr ""
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:173
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -845,9 +840,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Za jednostki nie tylko płacisz przy rekrutacji lub przywołaniu, ale musisz "
-"też opłacać ich utrzymanie podczas gry. Zobacz <ref>dst=income_and_upkeep "
-"text='Dochód i utrzymanie'</ref>, by dowiedzieć się więcej na ten temat."
+"Jednostki wymagają złota nie tylko w chwili rekrutacji lub przywołania - "
+"kosztuje również ich utrzymanie podczas gry. Zobacz temat "
+"<ref>dst='income_and_upkeep' text='Dochód i utrzymanie'</ref>, by dowiedzieć "
+"się więcej."
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:180
@@ -921,7 +917,6 @@ msgstr ""
 
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:199
-#, fuzzy
 msgid ""
 "The hitpoints are also indicated by an energy bar next to each unit, which "
 "is green, yellow or red. A unit with at least 1 experience point has a blue "
@@ -930,8 +925,8 @@ msgid ""
 msgstr ""
 "Punkty życia wskazuje też pasek energii znajdujący się obok jednostki, który "
 "może być zielony, żółty lub czerwony. Jednostka z co najmniej 1 punktem "
-"doświadczenia ma też niebieski pasek, który zmienia się w biały, gdy "
-"jednostka zbliża się do <ref>dst=experience_and_advancement "
+"doświadczenia ma niebieski pasek doświadczenia, który zmienia się w biały, "
+"gdy jednostka zbliża się do <ref>dst='experience_and_advancement' "
 "text='osiągnięcia następnego poziomu'</ref>."
 
 #. [topic]: id=movement
@@ -998,7 +993,6 @@ msgstr ""
 
 #. [topic]: id=movement
 #: data/core/help.cfg:211
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1015,8 +1009,8 @@ msgstr ""
 "są Strefy kontroli (ZOC). Każda jednostka tworzy strefę kontroli na "
 "przylegających do niej polach i każdy przeciwnik, który się na nich "
 "znajdzie, kończy swój ruch. Opanowanie zasad stref kontroli jest ważne, "
-"ponieważ tylko jednostki z umiejętnością <ref>dst=ability_skirmisher "
-"text='Harcownik'</ref> mogą je ignorować."
+"ponieważ tylko jednostki z umiejętnością <ref>dst='ability_skirmisher' "
+"text='harcownik'</ref> potrafią je ignorować."
 
 #. [topic]: id=movement
 #: data/core/help.cfg:213
@@ -1181,7 +1175,6 @@ msgstr ""
 
 #. [topic]: id=combat
 #: data/core/help.cfg:241
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1192,11 +1185,11 @@ msgid ""
 "least a 60% chance to hit, regardless of terrain."
 msgstr ""
 "\n"
-"Istnieją dwa wyjątki od tej reguły: <ref>dst=weaponspecial_magical "
-"text='ataki magiczne'</ref> i <ref>dst=weaponspecial_marksman "
-"text=strzelectwo</ref>. Ataki magiczne mają 70% szansę trafienia bez względu "
-"na teren, zaś strzelcy, jeśli atakują, zawsze mają co najmniej 60% szansę "
-"trafienia."
+"Istnieją dwa wyjątki od tej reguły: <ref>dst='weaponspecial_magical' "
+"text='ataki magiczne'</ref> i <ref>dst='weaponspecial_marksman' "
+"text='strzelcy wyborowi'</ref>. Ataki magiczne zawsze mają szansę trafienia "
+"70% bez względu na teren, zaś strzelcy wyborowi zawsze mają w ataku szansę "
+"trafienia co najmniej 60%, również niezależnie od terenu."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:243
@@ -1211,7 +1204,6 @@ msgstr ""
 
 #. [topic]: id=combat
 #: data/core/help.cfg:245
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1228,14 +1220,13 @@ msgstr ""
 "Każdy celny cios zadaje podstawową ilość obrażeń, zależną od typu ataku. Na "
 "przykład elficki wojownik wykonujący mieczem atak 5-4 zadaje bazowo 5 "
 "punktów obrażeń. Liczba ta jest zazwyczaj modyfikowana przez dwa czynniki: "
-"<ref>dst=damage_types_and_resistance text=odporność</ref> i "
-"<ref>dst=time_of_day text='porę dnia'</ref>. Aby zobaczyć, jak panujące "
-"warunki zmieniają podstawowe obrażenia, wybierz <italic>text='Obliczenia "
-"obrażeń'</italic> w menu wyboru ataku."
+"<ref>dst='damage_types_and_resistance' text='odporność'</ref> i "
+"<ref>dst='time_of_day' text='porę dnia'</ref>. Aby zobaczyć, jak panujące "
+"warunki zmieniają podstawowe obrażenia, wybierz w menu wyboru ataku opcję "
+"<italic>text='obliczenia obrażeń'</italic>."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:247
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1246,10 +1237,11 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Kilka jednostek posiada specjalne <ref>dst=abilities text=zdolności</ref>, "
-"które wpływają na obrażenia zadawane w walce. Najpowszechniejszą z nich jest "
-"<ref>dst=weaponspecial_charge text=szarża</ref>, która podwaja obrażenia "
-"zadawane zarówno przez atakującego, jak i przez broniącego się przed szarżą."
+"Niektóre jednostki posiadają specjalne <ref>dst='..abilities_section' "
+"text='zdolności'</ref>, które wpływają na obrażenia zadawane w walce. "
+"Najpowszechniejszą z nich jest <ref>dst='weaponspecial_charge' "
+"text='szarża'</ref>, która podwaja obrażenia zadawane zarówno przez "
+"atakującego, jak i przez broniącego się przed szarżą."
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:253
@@ -1436,7 +1428,6 @@ msgstr ""
 
 #. [topic]: id=experience_and_advancement
 #: data/core/help.cfg:292
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1454,7 +1445,7 @@ msgstr ""
 "\n"
 "\n"
 "Choć większość jednostek ma trzy poziomy, to zdarzają się wyjątki. Niektóre "
-"(takie jak <ref>dst=unit_Mage text=magowie</ref>) mogą mieć cztery. Gdy "
+"(takie jak <ref>dst='unit_Mage' text='magowie'</ref>) mogą mieć cztery. Gdy "
 "jednostka osiągnie maksymalny poziom, może uzyskać Awans Po Ostatnim "
 "Poziomie (APOP). APOP zmienia jednostkę za każdym razem, gdy osiąga ona "
 "wymagany poziom doświadczenia, jednak jednostka pozostaje na tym samym "
@@ -1471,7 +1462,6 @@ msgstr "Leczenie"
 
 #. [topic]: id=healing
 #: data/core/help.cfg:300
-#, fuzzy
 msgid ""
 "In combat, your units will inevitably take damage. When a unit "
 "<ref>dst='experience_and_advancement' text='advances'</ref>, it will heal "
@@ -1480,15 +1470,14 @@ msgid ""
 "of which take place at the beginning of your turn, before you take action."
 msgstr ""
 "Twoje jednostki nie unikną obrażeń w walce. Gdy jednostka "
-"<ref>dst=experience_and_advancement text='osiąga kolejny poziom'</ref>, "
-"odzyskuje wszystkie punkty życia. Może stać się to po zakończonej walce z "
-"przeciwnikiem, bez względu na to, w czyjej turze. Wesnoth daje kilka "
-"możliwości leczenia jednostek, z których wszystkie mają miejsce na początku "
-"twojej tury, przed wykonaniem jakichkolwiek czynności."
+"<ref>dst='experience_and_advancement' text='osiąga kolejny poziom'</ref>, "
+"odzyskuje wszystkie punkty życia. Może stać się to po każdej zakończonej "
+"walce z przeciwnikiem, bez względu na to, czyja przypada tura. Istnieje też "
+"kilka innych możliwości leczenia jednostek. Leczenie odbywa się zawsze na "
+"początku twojej tury, przed wykonaniem jakichkolwiek czynności."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:302
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1497,8 +1486,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Odpoczywanie: jednostka, która nie rusza się, nie atakuje, ani nie jest "
-"atakowana odzyska w następnej turze 2PŻ."
+"Odpoczywanie: Jednostka, która się nie poruszy, nie zaatakuje i nie zostanie "
+"zaatakowana odzyska w następnej turze 2PŻ."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:303
@@ -1511,19 +1500,17 @@ msgstr ""
 
 #. [topic]: id=healing
 #: data/core/help.cfg:304
-#, fuzzy
 msgid ""
 "\n"
 "<ref>dst='ability_regenerates' text='Regeneration'</ref>: Certain units "
 "(such as trolls) will automatically heal 8HP every turn."
 msgstr ""
 "\n"
-"<ref>dst=ability_regenerates text=Regeneracja</ref>: Niektóre jednostki (na "
-"przykład trolle) automatycznie odzyskują 8 PŻ w każdej turze."
+"<ref>dst='ability_regenerates' text='Regeneracja'</ref>: Niektóre jednostki "
+"(na przykład trolle) automatycznie odzyskują co turę 8 PŻ."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:305
-#, fuzzy
 msgid ""
 "\n"
 "Healing units: Units with the <ref>dst='ability_heals +4' text='Heals'</ref> "
@@ -1532,13 +1519,14 @@ msgid ""
 "turn, or prevent Poison from causing that unit damage."
 msgstr ""
 "\n"
-"Jednostki leczące: jednostki z umiejętnością <ref>dst=ability_heals "
-"text=leczenia</ref> leczą sąsiadujące jednostki sojusznicze, zazwyczaj o 4 "
-"lub 8 PŻ na turę, lub sprawiają, że trucizna nie zadaje obrażeń."
+"Jednostki leczące: Jednostki z umiejętnością <ref>dst='ability_heals +4' "
+"text='leczenia'</ref> leczą sąsiadujące jednostki sojusznicze, zazwyczaj o "
+"<ref>dst='ability_heals +4' text='4PŻ'</ref> lub <ref>dst='ability_heals +8' "
+"text='8PŻ'</ref> na turę, lub zapobiegają utracie sił przez jednostkę "
+"zatrutą."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:306
-#, fuzzy
 msgid ""
 "\n"
 "Curing units: Units with the <ref>dst='ability_cures' text='Cures'</ref> "
@@ -1546,10 +1534,10 @@ msgid ""
 "healing, if it has that ability as well)."
 msgstr ""
 "\n"
-"Jednostki uzdrawiające: jednostki z umiejętnością <ref>dst=ability_cures "
-"text=uzdrawiania</ref> leczą spod wpływu trucizny wszystkie sąsiadujące "
-"jednostki sojusznicze (ma to większy priorytet niż leczenie, jeżeli "
-"jednostka posiada i tę umiejętność)."
+"Jednostki uzdrawiające: Jednostki z umiejętnością <ref>dst='ability_cures' "
+"text='uzdrawiania'</ref> leczą z trucizny wszystkie sąsiadujące jednostki "
+"sojusznicze. Jeśli jednostka posiada również umiejętność leczenia, "
+"uzdrawianie ma pierwszeństwo przed leczeniem."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:308
@@ -1664,7 +1652,6 @@ msgstr "Podsumowanie"
 
 #. [topic]: id=wrap_up
 #: data/core/help.cfg:330
-#, fuzzy
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
 "Basic Strategy, or familiarise yourself with <ref>dst='..traits_section' "
@@ -1672,10 +1659,11 @@ msgid ""
 "ref>, but you now know everything you need to know to play the Heir to the "
 "Throne campaign. Have fun, and good luck!"
 msgstr ""
-"Na tym kończy się nauka podstaw Bitwy o Wesnoth. Teraz możesz przeczytać o "
-"Podstawach strategii albo zapoznać się z <ref>dst=traits text=Cechami</ref> "
-"i <ref>dst=abilities text=Zdolnościami</ref>, lecz wiesz już wszystko, co "
-"potrzebne do rozegrania kampanii Następca Tronu. Baw się dobrze i powodzenia!"
+"Na tym kończy się nauka podstaw Bitwy o Wesnoth. Możesz jeszcze poczytać o "
+"podstawach strategii lub zapoznać się z <ref>dst='..traits_section' "
+"text='cechami'</ref> i <ref>dst='..abilities_section' text='zdolnościami'</"
+"ref>, ale wiesz już wszystko, co potrzebne do rozegrania kampanii Następca "
+"Tronu. Baw się dobrze i powodzenia!"
 
 #. [topic]: id=about
 #: data/core/help.cfg:335
@@ -1702,7 +1690,6 @@ msgstr ""
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:352
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1714,13 +1701,12 @@ msgstr ""
 "\n"
 "\n"
 "Cechy, które są dostępne dla wszystkich oprócz nieumarłych, to "
-"<ref>dst=traits_intelligent text=inteligentna</ref>, <ref>dst=traits_quick "
-"text=szybka</ref>, <ref>dst=traits_resillient text=wytrzymała</ref> oraz "
-"<ref>dst=traits_strong text=silna</ref>."
+"<ref>dst='traits_intelligent' text='inteligentna'</ref>, "
+"<ref>dst='traits_quick' text='szybka'</ref>, <ref>dst='traits_resillient' "
+"text='wytrzymała'</ref> i <ref>dst='traits_strong' text='silna'</ref>."
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:356
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1731,9 +1717,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Inne cechy, które mogą zostać przypisane jednostkom to "
-"<ref>dst=traits_dextrous text=zręczna</ref>, <ref>dst=traits_loyal "
-"text=lojalna</ref>, <ref>dst=traits_undead text=nieumarła</ref>.\n"
+"Inne cechy, które mogą być przypisane jednostkom, to "
+"<ref>dst='traits_dextrous' text='zręczna'</ref>, <ref>dst='traits_loyal' "
+"text='lojalna'</ref> i <ref>dst='traits_undead' text=nieumarła</ref>.\n"
 "\n"
 
 #. [topic]: id=traits_intelligent
@@ -2019,7 +2005,6 @@ msgstr ""
 
 #. [topic]: id=traits_healthy
 #: data/core/help.cfg:435
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2028,8 +2013,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Zdrowe jednostki mają o 2 PŻ więcej, niż normalnie, a podczas odpoczynku "
-"(każdej tury, w której nie walczyły) odzyskują dodatkowe 2 PŻ."
+"Zdrowe jednostki mają o 1PŻ więcej od pozostałych jednostek, plus dodatkowy "
+"1PŻ za każdy poziom. Gdy odpoczywają, odzyskują 2PŻ po każdej turze, w "
+"której nie walczyły."
 
 #. [topic]: id=..terrains
 #: data/core/help.cfg:443
@@ -2074,7 +2060,6 @@ msgstr "Droga"
 
 #. [topic]: id=terrain_road
 #: data/core/help.cfg:465
-#, fuzzy
 msgid ""
 "Roads are beaten paths of dirt, formed by many travelers passing over them. "
 "As far as gameplay is concerned, Roads behave as <ref>dst='terrain_flat' "
@@ -2082,7 +2067,7 @@ msgid ""
 msgstr ""
 "Drogi to ziemiste ścieżki ubite przez wielu przemieszczających się po nich "
 "podróżników. W grze drogi mają takie same własności jak "
-"<ref>dst=terrain_grassland text=łąki</ref>"
+"<ref>dst='terrain_flat' text='równiny'</ref>."
 
 #. [topic]: id=terrain_forest
 #: data/core/help.cfg:472
@@ -2264,7 +2249,6 @@ msgstr "Zamarznięty"
 
 #. [topic]: id=terrain_frozen
 #: data/core/help.cfg:551
-#, fuzzy
 msgid ""
 "Frozen terrain represents any flat area that is covered by snow or ice. Most "
 "units are slowed down on it, and have a harder time defending themselves. "
@@ -2273,11 +2257,12 @@ msgid ""
 "\n"
 "Most units have 20 to 40% defense in frozen terrain."
 msgstr ""
-"Śnieg reprezentuje dowolną płaską przestrzeń, która jest zamarznięta na "
-"stałe (jak tundra), lub tymczasowo (jak pokryta śniegiem trawa). Większość "
-"jednostek porusza się na nim wolniej i mają problemy z bronieniem się.\n"
+"Teren zamarznięty reprezentuje dowolny płaski obszar pokryty śniegiem lub "
+"lodem. Większość jednostek porusza się na nim wolniej i ma utrudnioną "
+"obronę. Jednostki pływające nie mogą pływać pod lodem (nawet jednostki "
+"zdolne oddychać pod wodą).\n"
 "\n"
-"Większość jednostek posiada na śniegu obronę na poziomie 20 do 40%."
+"Większość jednostek ma na terenie zamarzniętym obronę na poziomie 20 do 40%."
 
 #. [topic]: id=terrain_castle
 #: data/core/help.cfg:558
@@ -2335,14 +2320,14 @@ msgstr "Pustynia"
 
 #. [topic]: id=terrain_desert
 #: data/core/help.cfg:587
-#, fuzzy
 msgid ""
 "Deserts have a somewhat different composition than small sand pits or "
 "beaches, however for gameplay purposes they are identical. See "
 "<ref>dst='terrain_sand' text='Sand'</ref>."
 msgstr ""
-"Pustynie różnią się nieco od łat piachu i plaż, ale na potrzeby rozgrywki "
-"działają identycznie jak <ref>dst=terrain_sand text=piasek</ref>"
+"Pustynie różnią się nieco od piaszczystych wydm i plaż, ale dla potrzeb "
+"rozgrywki wszystkie te tereny działają identycznie - patrz "
+"<ref>dst='terrain_sand' text='piasek'</ref>."
 
 #. [topic]: id=terrain_cave
 #: data/core/help.cfg:594
@@ -2351,7 +2336,6 @@ msgstr "Jaskinia"
 
 #. [topic]: id=terrain_cave
 #: data/core/help.cfg:599
-#, fuzzy
 msgid ""
 "Cave terrain represents any underground cavern with enough room for a unit "
 "to pass. Most units are wholly unfamiliar with the terrain, and thus are "
@@ -2369,8 +2353,8 @@ msgstr ""
 "osłabione. Krasnoludy i trolle zamieszkują jaskinie, więc nie mają problemów "
 "z poruszaniem się w nich. Dotyczy to w szczególności krasnoludów, które "
 "dzięki niewielkiemu wzrostowi mogą pokonywać przeszkody nie do przebycia dla "
-"innych ras. Jaskinie bywają też <ref>dst=terrain_illuminated_cave "
-"text=oświetlone</ref>.\n"
+"innych ras. Jaskinie bywają też <ref>dst='terrain_illuminated_cave' "
+"text='oświetlone'</ref>.\n"
 "\n"
 "Większość jednostek otrzymuje w jaskiniach obronę na poziomie od 20 do 40%, "
 "a krasnoludy 50%."
@@ -2382,7 +2366,6 @@ msgstr "Kamienista jaskinia"
 
 #. [topic]: id=terrain_rockbound_cave
 #: data/core/help.cfg:611
-#, fuzzy
 msgid ""
 "Rockbound cave terrain is formed by the action of water and wind, carrying "
 "erosive particles that carve the rock. It resembles a scraggy underground "
@@ -2401,7 +2384,7 @@ msgstr ""
 "trolle, które są głównymi mieszkańcami jaskiń, poruszają się w tym terenie "
 "ze względną łatwością. Ponadto krasnoludy dzięki swojemu małemu wzrostowi "
 "czerpią pełne korzyści z takiego ukształtowania terenu. Jaskinie bywają "
-"niekiedy <ref>dst=terrain_illuminated_cave text=oświetlone</ref>.\n"
+"niekiedy <ref>dst='terrain_illuminated_cave' text='oświetlone'</ref>.\n"
 "\n"
 "Większość jednostek ma w kamienistych jaskiniach obronę na poziomie 50%, zaś "
 "kawaleria ograniczona jest do 40%. Krasnoludy korzystają z obrony 60%."
@@ -2657,7 +2640,6 @@ msgstr ""
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:747
-#, fuzzy
 msgid ""
 "\n"
 "Switch debug mode on (does not work in multiplayer). See "
@@ -2667,8 +2649,9 @@ msgid ""
 msgstr ""
 "\n"
 "Przełącz w tryb debugowania (nie działa w grze wieloosobowej). Patrz "
-"<ref>dst=debug_commands text='Polecenia trybu debugowania'</ref>. Tryb "
-"debugowania można wyłączyć wychodząc z gry lub wpisując polecenie :nodebug.\n"
+"<ref>dst='debug_commands' text='Polecenia trybu debugowania'</ref>.\n"
+"Tryb debugowania można wyłączyć wychodząc z gry lub wpisując polecenie :"
+"nodebug.\n"
 "\n"
 
 #. [topic]: id=general_commands
@@ -3015,7 +2998,6 @@ msgstr "dowodzenie"
 #: data/core/macros/abilities.cfg:118 data/core/macros/abilities.cfg:141
 #: data/core/macros/abilities.cfg:176 data/core/macros/abilities.cfg:223
 #: data/core/macros/abilities.cfg:282
-#, fuzzy
 msgid ""
 "Leadership:\n"
 "This unit can lead our own units that are next to it, making them fight "
@@ -3042,9 +3024,8 @@ msgstr "harcownik"
 
 #. [skirmisher]: id=skirmisher
 #: data/core/macros/abilities.cfg:347
-#, fuzzy
 msgid "female^skirmisher"
-msgstr "harcownik"
+msgstr "harcowniczka"
 
 #. [skirmisher]: id=skirmisher
 #: data/core/macros/abilities.cfg:349
@@ -3111,9 +3092,8 @@ msgstr "zasadzka"
 
 #. [hides]: id=ambush
 #: data/core/macros/abilities.cfg:390 data/core/macros/abilities.cfg:392
-#, fuzzy
 msgid "female^ambush"
-msgstr "lojalna"
+msgstr "zasadzka"
 
 #. [hides]: id=ambush
 #: data/core/macros/abilities.cfg:396 data/core/macros/abilities.cfg:400
@@ -3157,20 +3137,18 @@ msgstr ""
 
 #. [hides]: id=nightstalk
 #: data/core/macros/abilities.cfg:422
-#, fuzzy
 msgid "female^nightstalk"
 msgstr "skradanie się"
 
 #. [hides]: id=concealment
 #: data/core/macros/abilities.cfg:441 data/core/macros/abilities.cfg:447
 msgid "concealment"
-msgstr "ukrywanie"
+msgstr "ukrywanie się"
 
 #. [hides]: id=concealment
 #: data/core/macros/abilities.cfg:442 data/core/macros/abilities.cfg:448
-#, fuzzy
 msgid "female^concealment"
-msgstr "ukrywanie"
+msgstr "ukrywanie się"
 
 #. [hides]: id=concealment
 #: data/core/macros/abilities.cfg:446 data/core/macros/abilities.cfg:452
@@ -3199,9 +3177,8 @@ msgstr "zanurzenie"
 
 #. [hides]: id=submerge
 #: data/core/macros/abilities.cfg:468 data/core/macros/abilities.cfg:474
-#, fuzzy
 msgid "female^submerge"
-msgstr "silna"
+msgstr "zanurzenie"
 
 #. [hides]: id=submerge
 #: data/core/macros/abilities.cfg:472 data/core/macros/abilities.cfg:478
@@ -3229,9 +3206,8 @@ msgstr "żerowanie"
 
 #. [dummy]: id=feeding
 #: data/core/macros/abilities.cfg:497
-#, fuzzy
 msgid "female^feeding"
-msgstr "nieustraszona"
+msgstr "żerowanie"
 
 #. [dummy]: id=feeding
 #: data/core/macros/abilities.cfg:499
@@ -3342,7 +3318,6 @@ msgid "swarm"
 msgstr "rój"
 
 #: data/core/macros/abilities.cfg:654
-#, fuzzy
 msgid ""
 "Swarm:\n"
 "The number of strikes of this attack decreases when the unit is wounded. The "
@@ -3352,9 +3327,9 @@ msgid ""
 msgstr ""
 "Rój:\n"
 "Liczba uderzeń wykonywanych przy tym ataku zmniejsza się, gdy jednostka "
-"zostanie zraniona. Liczba ataków jest proporcjonalna do % PŻ posiadanych "
-"przez jednostkę. Na przykład jednostka z 3/4 swoich maksymalnych PŻ zadaje "
-"3/4 ciosów."
+"zostanie zraniona. Liczba ataków jest proporcjonalna do procent PŻ "
+"posiadanych przez jednostkę. Na przykład jednostka z 3/4 swoich maksymalnych "
+"PŻ zadaje 3/4 ciosów."
 
 #: data/core/macros/abilities.cfg:663
 msgid "charge"
@@ -3408,7 +3383,7 @@ msgstr "Graj bardziej agresywnie"
 #. [command]
 #: data/core/macros/ai_controller.cfg:161
 msgid "aggressive."
-msgstr ""
+msgstr "atakujący."
 
 #. [option]: type=behaviour
 #: data/core/macros/ai_controller.cfg:178
@@ -3417,9 +3392,8 @@ msgstr "Graj bardziej defensywnie"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:191
-#, fuzzy
 msgid "defensive."
-msgstr "Obrona"
+msgstr "defensywny."
 
 #. [option]: type=objective
 #: data/core/macros/ai_controller.cfg:213
@@ -3438,12 +3412,12 @@ msgstr "Skup się na obronie..."
 #: data/core/macros/ai_controller.cfg:845
 #: data/core/macros/ai_controller.cfg:885
 msgid "Instruct ally"
-msgstr ""
+msgstr "Przekaż instrukcje sojusznikowi"
 
 #. [literal]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:230
 msgid "Which enemy side to focus on?"
-msgstr ""
+msgstr "Na której wrogiej stronie mamy się skoncentrować?"
 
 #. [then]
 #. [else]
@@ -3458,13 +3432,13 @@ msgstr "(strona $temp_i|)"
 #: data/core/macros/ai_controller.cfg:288
 #: data/core/macros/ai_controller.cfg:438
 msgid "$side_i_leader.name (side $temp_i|)"
-msgstr ""
+msgstr "$side_i_leader.name (strona $temp_i|)"
 
 #. [else]
 #: data/core/macros/ai_controller.cfg:293
 #: data/core/macros/ai_controller.cfg:443
 msgid "side $temp_i"
-msgstr ""
+msgstr "strona $temp_i"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:309
@@ -3478,17 +3452,17 @@ msgstr ""
 #: data/core/macros/ai_controller.cfg:870
 #: data/core/macros/ai_controller.cfg:905
 msgid "Back"
-msgstr ""
+msgstr "Wróć"
 
 #. [option]: type=objective
 #: data/core/macros/ai_controller.cfg:359
 msgid "Focus on protecting..."
-msgstr ""
+msgstr "Skoncentruj się na chronieniu..."
 
 #. [literal]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:376
 msgid "Which friendly side to protect?"
-msgstr ""
+msgstr "Którą przyjazną stronę mamy chronić?"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:459
@@ -3503,7 +3477,7 @@ msgstr "Broń lokacji..."
 #. [print]
 #: data/core/macros/ai_controller.cfg:527
 msgid "Right-click to select a location to defend"
-msgstr ""
+msgstr "Kliknij prawym przyciskiem myszy miejsce, które ma być bronione"
 
 #. [set_menu_item]: id=ai_controller_defend_location_picker
 #: data/core/macros/ai_controller.cfg:534
@@ -3518,19 +3492,17 @@ msgstr ""
 #. [print]
 #: data/core/macros/ai_controller.cfg:586
 msgid "Location selection canceled"
-msgstr ""
+msgstr "Anulowano wybór miejsca"
 
 #. [option]
 #: data/core/macros/ai_controller.cfg:601
-#, fuzzy
 msgid "Clear objective orders"
-msgstr "Anuluj"
+msgstr "Wyczyść rozkazy dotyczące celów"
 
 #. [option]
 #: data/core/macros/ai_controller.cfg:625
-#, fuzzy
 msgid "Clear behavior orders"
-msgstr "Anuluj"
+msgstr "Wyczyść rozkazy dotyczące zachowania"
 
 #. [option]
 #: data/core/macros/ai_controller.cfg:649
@@ -3540,9 +3512,8 @@ msgstr "Usuń wszystkie rozkazy"
 #. [then]
 #: data/core/macros/ai_controller.cfg:775
 #: data/core/macros/ai_controller.cfg:786
-#, fuzzy
 msgid "none set."
-msgstr "brak"
+msgstr "nie ustawiono."
 
 #. [value]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:808
@@ -3607,9 +3578,8 @@ msgid "No early finish bonus."
 msgstr "Brak nagrody za wczesne zakończenie."
 
 #: data/core/macros/carryover-utils.cfg:15
-#, fuzzy
 msgid "`(early finish bonus)"
-msgstr "Nagroda za wczesne zakończenie:"
+msgstr "`(premia za wczesne zakończenie)"
 
 #: data/core/macros/carryover-utils.cfg:18
 msgid "No gold carried over to the next scenario."
@@ -3798,7 +3768,7 @@ msgstr "Tylko mermeni mogą używać tego przedmiotu."
 
 #: data/core/macros/items.cfg:542
 msgid "Should $unit.name pick up the trident?"
-msgstr ""
+msgstr "Czy jednostka $unit.name ma wziąć trójząb?"
 
 #. [object]
 #: data/core/macros/items.cfg:544
@@ -4196,7 +4166,6 @@ msgid "Kaasa,Kayya,Keyya,Kiira,Korra"
 msgstr "Kaasa,Kayya,Keyya,Kiira,Korra"
 
 #: data/core/macros/names.cfg:23
-#, fuzzy
 msgid ""
 "Addraecyn,Addraenvan,Addraer,Addraercyn,Addraryn,Addreddry,Addredry,"
 "Addregwyn,Addrenyc,Addreoddry,Addreoddyn,Addreonyc,Addreorcyn,Addreran,"
@@ -4255,8 +4224,8 @@ msgstr ""
 "Aethonnyn,Aethuc,Aethudry,Aethugwyn,Aethun,Aethunry,Aethydry,Aethynyc,Blac,"
 "Bladoc,Blaec,Blaedry,Blanry,Blebryn,Bledoc,Blemyr,Blennyn,Blenvan,Bleollyn,"
 "Blercyn,Blidd,Bliddry,Blillyn,Blinvan,Blollyn,Blubryn,Blucyn,Bludry,Blullyn,"
-"Bluran,Blybryn,Blydd,Blygwyn,Blymyr,Blyr,Cac,Cadry,Caebryn,Caedry,Caeran,"
-"Caercyn,Car,Carac,Caraddry,Caradoc,Caraedry,Caraennyn,Cararyn,Caredd,"
+"Bluran,Blybryn,Blydd,Blygwyn,Blymyr,Blyr,Bucyn,Cac,Cadry,Caebryn,Caedry,"
+"Caeran,Caercyn,Car,Carac,Caraddry,Caradoc,Caraedry,Caraennyn,Cararyn,Caredd,"
 "Careddry,Caregwyn,Caren,Careobryn,Careogwyn,Careonvan,Careorraent,Careoryn,"
 "Carercyn,Caric,Cariddry,Carocyn,Caroddyn,Caror,Caroran,Carraent,Carudoc,"
 "Carullyn,Carygwyn,Caryn,Cebryn,Cemyr,Cennyn,Ceoc,Ceoddry,Ceoddyn,Ceomyr,"
@@ -4268,34 +4237,33 @@ msgstr ""
 "Glircyn,Gloddry,Gloddyn,Glonry,Glonvan,Glumyr,Glun,Glunry,Glunvan,Glyc,Glydd,"
 "Glydoc,Glynry,Glynvan,Glyran,Goc,Gor,Gubryn,Gudd,Gullyn,Gumyr,Gur,Gwadoc,"
 "Gwaec,Gwaeddyn,Gwan,Gweddyn,Gwegwyn,Gwellyn,Gwennyn,Gwenyc,Gweocyn,Gweodd,"
-"Gweodoc,Gweodry,Gweogwyn,Gweoran,Gwidoc,Gwodd,Gwoddyn,Gwollyn,Gwor,Gwucyn,"
-"Gwudoc,Gwumyr,Gwuran,Gwybryn,Gwycyn,Gwyddry,Gwydoc,Gwymyr,Gwynnyn,Gydoc,"
-"Gyllyn,Gymyr,Labryn,Ladoc,Laellyn,Lan,Lannyn,Laran,Lec,Lemyr,Lenvan,Leogwyn,"
-"Lercyn,Ligwyn,Lin,Liryn,Lonnyn,Lorraent,Luddry,Ludoc,Lunnyn,Lunvan,Lurraent,"
-"Mac,Maddyn,Maennyn,Manry,Manyc,Marcyn,Mec,Menvan,Meollyn,Meon,Meonnyn,"
-"Meorraent,Middry,Midry,Mimyr,Modd,Moddry,Monry,Moran,Morcyn,Mubryn,Mudoc,"
-"Mugwyn,Murcyn,Mydoc,Mygwyn,Myn,Myrraent,Owac,Owadd,Owaddyn,Owaecyn,Owaedry,"
-"Owarcyn,Owaryn,Owecyn,Owedry,Oweomyr,Oweor,Oweorcyn,Oweran,Owercyn,Owidry,"
-"Owinvan,Owinyc,Owodd,Owoddry,Owogwyn,Owollyn,Oworan,Oworcyn,Oworraent,"
-"Owuddry,Owuddyn,Owugwyn,Owur,Owyran,Rabryn,Radd,Ranvan,Rar,Reoddyn,Reodry,"
-"Rhaecyn,Rhaedoc,Rhaemyr,Rhaerraent,Rhanry,Rharcyn,Rhenry,Rhenvan,Rhenyc,"
-"Rheodd,Rheoddyn,Rheollyn,Rheor,Rheoran,Rheorraent,Rheran,Rherraent,Rhobryn,"
-"Rhodry,Rhollyn,Rhonvan,Rhubryn,Rhugwyn,Rhunyc,Rhur,Rhygwyn,Rhyllyn,Rhynyc,"
-"Rhyrcyn,Rhyrraent,Rocyn,Roddyn,Romyr,Ron,Ronry,Rubryn,Ruddry,Rumyr,Run,"
-"Rurcyn,Rybryn,Rycyn,Ryddry,Rygwyn,Rynnyn,Rynry,Saec,Saellyn,Saemyr,Saenvan,"
-"Saercyn,Sanyc,Saran,Sarraent,Secyn,Seddyn,Sedry,Sellyn,Sennyn,Seoddry,"
-"Seorcyn,Sercyn,Siddry,Simyr,Siryn,Sodd,Sodry,Soran,Suc,Sudd,Surcyn,Sydd,"
-"Syran,Syryn,Tabryn,Taec,Taedd,Taedoc,Taemyr,Taenvan,Taercyn,Tanry,Tarcyn,"
-"Teddyn,Tegwyn,Ten,Tennyn,Tenvan,Teobryn,Teoddyn,Teor,Teorcyn,Terraent,Tinry,"
-"Tinvan,Tiryn,Todd,Tudd,Tuddry,Tudoc,Tunvan,Turraent,Tyddyn,Vaddyn,Vaeddyn,"
-"Vaedry,Vaennyn,Varcyn,Ven,Vennyn,Veocyn,Veoddyn,Veodry,Veogwyn,Veomyr,Vinvan,"
-"Vinyc,Virraent,Vobryn,Vogwyn,Vonry,Vuddyn,Vugwyn,Vyc,Vygwyn,Vyrcyn,Yracyn,"
-"Yraec,Yran,Yrannyn,Yranvan,Yraryn,Yredd,Yreddyn,Yregwyn,Yreryn,Yrinvan,"
-"Yrirraent,Yroddry,Yrullyn,Yrumyr,Yrunnyn,Yrunvan,Yryllyn,Yrymyr,Yrynyc,"
-"Yryrcyn"
+"Gweodoc,Gweodry,Gweogwyn,Gweoran,Gwidoc,Gwilam,Gwodd,Gwoddyn,Gwollyn,Gwor,"
+"Gwucyn,Gwudoc,Gwumyr,Gwuran,Gwybryn,Gwycyn,Gwyddry,Gwydoc,Gwymyr,Gwynnyn,"
+"Gydoc,Gyllyn,Gymyr,Haldar,Labryn,Ladoc,Laellyn,Lan,Lannyn,Laran,Lec,Lemyr,"
+"Lenvan,Leogwyn,Lercyn,Ligwyn,Lin,Liryn,Lonnyn,Lorraent,Luddry,Ludoc,Lunnyn,"
+"Lunvan,Lurraent,Mac,Maddyn,Maennyn,Manry,Manyc,Marcyn,Mec,Menvan,Meollyn,"
+"Meon,Meonnyn,Meorraent,Middry,Midry,Mimyr,Modd,Moddry,Monry,Moran,Morcyn,"
+"Mubryn,Mudoc,Mugwyn,Murcyn,Mydoc,Mygwyn,Myn,Myrraent,Owac,Owadd,Owaddyn,"
+"Owaecyn,Owaedry,Owain,Owarcyn,Owaryn,Owecyn,Owedry,Oweomyr,Oweor,Oweorcyn,"
+"Oweran,Owercyn,Owidry,Owinvan,Owinyc,Owodd,Owoddry,Owogwyn,Owollyn,Oworan,"
+"Oworcyn,Oworraent,Owuddry,Owuddyn,Owugwyn,Owur,Owyran,Rabryn,Radd,Ranvan,Rar,"
+"Reoddyn,Reodry,Rhaecyn,Rhaedoc,Rhaemyr,Rhaerraent,Rhanry,Rharcyn,Rhenry,"
+"Rhenvan,Rhenyc,Rheodd,Rheoddyn,Rheollyn,Rheor,Rheoran,Rheorraent,Rheran,"
+"Rherraent,Rhobryn,Rhodry,Rhollyn,Rhonvan,Rhubryn,Rhugwyn,Rhunyc,Rhur,Rhygwyn,"
+"Rhyllyn,Rhynyc,Rhyrcyn,Rhyrraent,Rocyn,Roddyn,Romyr,Ron,Ronry,Rubryn,Ruddry,"
+"Rumyr,Run,Rurcyn,Rybryn,Rycyn,Ryddry,Rygwyn,Rynnyn,Rynry,Saec,Saellyn,Saemyr,"
+"Saenvan,Saercyn,Sanyc,Saran,Sarraent,Secyn,Seddyn,Sedry,Sellyn,Sennyn,"
+"Seoddry,Seorcyn,Sercyn,Siddry,Simyr,Siryn,Sodd,Sodry,Soran,Suc,Sudd,Surcyn,"
+"Sydd,Syran,Syryn,Tabryn,Taec,Taedd,Taedoc,Taemyr,Taenvan,Taercyn,Tanry,"
+"Tarcyn,Teddyn,Tegwyn,Ten,Tennyn,Tenvan,Teobryn,Teoddyn,Teor,Teorcyn,Terraent,"
+"Tinry,Tinvan,Tiryn,Todd,Tudd,Tuddry,Tudoc,Tunvan,Turraent,Tyddyn,Vaddyn,"
+"Vaeddyn,Vaedry,Vaennyn,Varcyn,Ven,Vennyn,Veocyn,Veoddyn,Veodry,Veogwyn,"
+"Veomyr,Vinvan,Vinyc,Virraent,Vobryn,Vogwyn,Vonry,Vuddyn,Vugwyn,Vyc,Vygwyn,"
+"Vyrcyn,Yracyn,Yraec,Yran,Yrannyn,Yranvan,Yraryn,Yredd,Yreddyn,Yregwyn,Yreryn,"
+"Yrinvan,Yrirraent,Yroddry,Yrullyn,Yrumyr,Yrunnyn,Yrunvan,Yryllyn,Yrymyr,"
+"Yrynyc,Yryrcyn"
 
 #: data/core/macros/names.cfg:24
-#, fuzzy
 msgid ""
 "Alabrylla,Alaebrylla,Alaeniver,Alalla,Alalonna,Alaryan,Aleacla,Aleaniver,"
 "Aleara,Alearka,Alena,Alengwen,Alilonna,Alingwen,Alolla,Alolonna,Alora,"
@@ -4362,8 +4330,8 @@ msgstr ""
 "Eleanoic,Elearka,Elenoic,Elerka,Elivyan,Elulonna,Elurka,Elwllyra,Elwlonna,"
 "Elwngwen,Elwra,Elycla,Elyllyra,Elyngwen,Elyniver,Elyrka,Gwaera,Gwaessa,"
 "Gwangwen,Gweacla,Gwedda,Gwerka,Gwicla,Gwirka,Gwobrylla,Gwoll,Gwona,Gwongwen,"
-"Gwonoic,Gworyan,Gwullyra,Gwussa,Gwwcla,Gwwna,Gwwvyan,Gwycla,Gwydda,Jacla,"
-"Jaena,Jaerka,Jaevyan,Jalyan,Jana,Jarka,Jassa,Jeabrylla,Jealla,Jeanoic,"
+"Gwonoic,Gworyan,Gwullyra,Gwussa,Gwwcla,Gwwna,Gwwvyan,Gwycla,Gwydda,Heldra,"
+"Jacla,Jaena,Jaerka,Jaevyan,Jalyan,Jana,Jarka,Jassa,Jeabrylla,Jealla,Jeanoic,"
 "Jeniver,Jiryan,Jissa,Joll,Jolla,Jona,Jongwen,Jonoic,Jora,Jorka,Jovyan,Judda,"
 "Jull,Julonna,Jura,Jwll,Jwlyan,Jycla,Jyniver,Jynoic,Jyrka,Jyvyan,Laeniver,"
 "Laenoic,Laeryan,Langwen,Larka,Lassa,Lealonna,Lealyan,Ledda,Lelonna,Lelyan,"
@@ -4684,13 +4652,12 @@ msgstr ""
 "niektórych ataków, ale tylko podczas obrony."
 
 #: data/core/macros/special-notes.cfg:29
-#, fuzzy
 msgid ""
 " The leadership of this unit enables adjacent units of the same side to deal "
 "more damage in combat, though this only applies to units of lower level."
 msgstr ""
 " Zdolności przywódcze tej jednostki sprawiają, że znajdujące się obok niej "
-"przyjazne jednostki zadają w walce większe obrażenia, ale dotyczy to tylko "
+"przyjazne jednostki zadają w walce większe obrażenia, choć dotyczy to tylko "
 "jednostek niższego poziomu od dowódcy."
 
 #: data/core/macros/special-notes.cfg:32
@@ -4771,13 +4738,12 @@ msgstr ""
 "obrażenia cios w plecy, jeżeli tylko zdoła zakraść się za przeciwnika."
 
 #: data/core/macros/special-notes.cfg:62
-#, fuzzy
 msgid ""
 " Foes who lose their life to the plague will rise again in unlife, unless "
 "they are standing on a village."
 msgstr ""
-" Przeciwnicy, którzy stracą życie w kontakcie z zarazą, powstają ponownie "
-"jako nieumarli."
+" Przeciwnicy, którzy stracą życie z powodu zarazy, powstają ponownie jako "
+"nieumarli - chyba że znajdują się właśnie w wiosce."
 
 #: data/core/macros/special-notes.cfg:65
 msgid ""
@@ -5087,7 +5053,6 @@ msgstr "Smoki"
 
 #. [race]: id=drake
 #: data/core/units.cfg:68
-#, fuzzy
 msgid ""
 "Drakes are large, winged and fire-breathing creatures, reminiscent of true "
 "dragons. On average, an adult drake stands around three meters tall and "
@@ -5205,14 +5170,14 @@ msgstr ""
 "zapewnienia sobie miejsca w heroicznych legendach swojego ludu.\n"
 "\n"
 "<header>text='Geografia'</header>\n"
-"Smoki pochodzą z wyspy Morogor na Wielkim Oceanie. Ponieważ jednak wyspa ta "
-"od wieków powoli zapada się pod wodę, plemiona smoków stopniowo "
-"rozprzestrzeniły się na Wielki Kontynent. Smoki często wybierają na swoje "
-"domostwa pieczary w pobliżu wulkanów, aby chronić swoje smoczęta, jaja i "
-"kuźnie. Choć smoki są z natury ciepłolubne, ich wewnętrzny ogień z "
-"powodzeniem wystarcza do podtrzymywania życia nawet w dość zimnym klimacie, "
-"co pozwoliło niektórym plemionom zamieszkać nawet w górach na dalekiej "
-"północy Wielkiego Kontynentu."
+"Smoki pierwotnie zamieszkiwały archipelag wysp wulkanicznych na Wielkim "
+"Oceanie, jednak z powodu coraz pokaźniejszej populacji i pochłonięcia części "
+"wysp przez ocean plemiona smoków stopniowo rozprzestrzeniły się na Wielki "
+"Kontynent. Smoki często wybierają na swoje domostwa pieczary w pobliżu "
+"wulkanów, aby chronić swoje smoczęta, jaja i kuźnie. Choć smoki są z natury "
+"ciepłolubne, ich wewnętrzny ogień z powodzeniem wystarcza do podtrzymywania "
+"życia nawet w dość zimnym klimacie, co pozwoliło niektórym plemionom "
+"zamieszkać nawet w górach na dalekiej północy Wielkiego Kontynentu."
 
 #. [race]: id=dwarf
 #: data/core/units.cfg:88
@@ -5231,7 +5196,6 @@ msgstr "Krasnoludy"
 
 #. [race]: id=dwarf
 #: data/core/units.cfg:95
-#, fuzzy
 msgid ""
 "The dwarves are a race famed for their miners, blacksmiths, merchants and "
 "warriors. Considered as the third oldest race on the great continent after "
@@ -5306,10 +5270,7 @@ msgstr ""
 "wzbudzało w nich poczucie solidarności. Poza tym sojusz z banitami niósł dla "
 "krasnoludów ważne korzyści: zezwalając ludziom na osiedlanie się na "
 "równinach, w lasach i na mokradłach, krasnoludy zdejmowały ze swoich barków "
-"konieczność obrony terenów, w których nie same czuły się dobrze. Gdy "
-"pojawiło się zagrożenie ze strony orków, krasnoludy zawiązały ze swoimi "
-"ludzkimi sojusznikami Sojusz Knalgański, by bronić wspólnie zajmowanych "
-"ziem.\n"
+"konieczność obrony terenów, w których nie same czuły się dobrze.\n"
 "\n"
 "Choć w porównaniu z ludźmi krasnoludy wydają się być dość nikczemnej "
 "postury, bynajmniej nie są kruche ani delikatne - krasnoludzcy wojownicy są "
@@ -5346,7 +5307,6 @@ msgstr "Elfy"
 
 #. [race]: id=elf
 #: data/core/units.cfg:119
-#, fuzzy
 msgid ""
 "Compared to humans, elves are somewhat taller, more agile but less sturdy. "
 "They have slightly pointy ears, pale skin and usually blond hair. Few "
@@ -5390,15 +5350,22 @@ msgstr ""
 "niezwykle długie życie - większość elfów dożywa dwóch stuleci, chyba że ich "
 "żywot skróci choroba, wypadek lub wojna. Choć zdarza się, że elfy o "
 "szczególnie rozwiniętych zdolnościach magicznych dożywają nawet trzystu lat, "
-"większość zaczyna słabnąć na ciele, gdy zbliża się ich dwudziesta dekada i "
-"odchodzi w ciągu kilkudziesięciu kolejnych lat. Wszystkie elfy mają naturę w "
-"pewnym stopniu magiczną. Choć większość nie potrafi bezpośrednio wykorzystać "
-"tej energii, wrodzone predyspozycje magiczne zapewniają elfom niezwykle "
-"długie życie i wyostrzone zmysły, a często również nadnaturalną wręcz dla "
-"innych ras biegłość w strzelectwie i umiejętność pozostania niezauważonym. "
-"Gdy elf nauczy się wykorzystywać swoją magiczną naturę do bardziej ogólnych "
-"celów, często osiąga niezwykłe rezultaty w wybranej dziedzinie. Wiele elfów "
-"wykorzystuje swój dar, by leczyć innych.\n"
+"większość zaczyna słabnąć na ciele, gdy zbliża się ich dwudziesta piąta "
+"dekada i szybko (w ciągu kilku lat) umiera.\n"
+"\n"
+"Wszystkie elfy mają naturę w pewnym stopniu magiczną. Choć większość nie "
+"potrafi bezpośrednio wykorzystać tej energii, wrodzone predyspozycje "
+"magiczne zapewniają elfom niezwykle długie życie i wyostrzone zmysły, a "
+"często również nadnaturalną wręcz dla innych ras biegłość w strzelectwie i "
+"umiejętność pozostania niezauważonym. Gdy elf nauczy się wykorzystywać swoją "
+"magiczną naturę do bardziej ogólnych celów, często osiąga niezwykłe "
+"rezultaty w wybranej dziedzinie. Wiele elfów wykorzystuje swój dar, by "
+"leczyć innych.\n"
+"\n"
+"Nieliczne elfy, które przebyły dostatecznie długą drogę na ścieżkach magii i "
+"mistyki, zyskują zdolność wyczuwania żelaza, a jego dotyk zaczyna je parzyć. "
+"Jeśli wierzyć elfickim legendom, w przeszłości zdarzało się to znacznie "
+"częściej.\n"
 "\n"
 "Elfy poświęcają dużo czasu na rozwijanie swoich naturalnych i nabytych "
 "zdolności, przy czym jednostki mniej predysponowane ku sztukom magicznym "
@@ -5408,8 +5375,10 @@ msgstr ""
 "łucznicy żadnej innej rasy nie dorównują elfom pod względem "
 "szybkostrzelności i celności. Wszystkie elfy czują głęboką więź z pierwotną, "
 "nieskalaną przyrodą. Na otwartych przestrzeniach czują się nieswojo, przez "
-"co na swe siedliska wybierają lasy Wielkiego Kontynentu, takie jak las "
-"Aethenwood na południowym zachodzie czy też Wesmere na północnym zachodzie. "
+"co na swe siedliska wybrały lasy Wielkiego Kontynentu, takie jak las "
+"Aethenwood na południowym zachodzie, knieje Wesmere na północnym zachodzie i "
+"wielkie lasy północy, których południową granicę wyznacza Las Lintanir.\n"
+"\n"
 "Elfy są najstarszą ze znanych ras kontynentu, być może z wyjątkiem trolli. "
 "Wiele z ich osad jest tak starych, że trudno ustalić datę ich założenia, ale "
 "ich wiek z pewnością przekracza tysiąc lat."
@@ -5636,7 +5605,6 @@ msgstr "Orkowie"
 
 #. [race]: id=orc
 #: data/core/units.cfg:252
-#, fuzzy
 msgid ""
 "In appearance, orcs are half men and half beasts. They are taller, sturdier "
 "and stronger than humans. They are warlike, savage, and cruel by nature. "
@@ -5724,7 +5692,7 @@ msgstr ""
 "kodeksu honorowego, zabójstwo, trucizna lub sztylet w plecy również nie są "
 "pogardzane, gdy stawką jest przewodzenie klanowi.\n"
 "\n"
-"Orkowie najczęściej mieszkają na terenach wiejskich, często w górach lub na "
+"Orki najczęściej mieszkają na terenach wiejskich, często w górach lub na "
 "pogórzach, a niekiedy również w jaskiniach. Nie uprawiają ziemi ani nie "
 "hodują zwierząt, ale za sprawą potężnej budowy i brutalnej natury są "
 "niezłymi myśliwymi. Ponieważ zawsze obozują w dużych grupach, potrafią w "
@@ -5772,7 +5740,6 @@ msgstr "Trolle"
 
 #. [race]: id=troll
 #: data/core/units.cfg:267
-#, fuzzy
 msgid ""
 "Trolls are ancient creatures, one of the oldest known races known to inhabit "
 "the Great Continent. They are large, slow, simple-minded, and live extremely "
@@ -5841,9 +5808,9 @@ msgstr ""
 "pradawnych dziejów.\n"
 "\n"
 "<header>text='Geografia'</header>\n"
-"Trolle zamieszkują góry Wielkiego Kontynentu znacznie dłużej, niż "
-"krasnoludy, które tam przywędrowały. Trolle są częstym widokiem na pasmach "
-"górskich północy i wschodu Wesnoth oraz u boku każdej większej hordy orków."
+"Trolle zamieszkują góry Wielkiego Kontynentu znacznie dłużej niż krasnoludy, "
+"które tam przywędrowały. Trolle są częstym widokiem na pasmach górskich "
+"północy i wschodu Wesnoth oraz u boku każdej większej hordy orków."
 
 #. [race]: id=undead
 #: data/core/units.cfg:281
@@ -5862,7 +5829,6 @@ msgstr "Nieumarli"
 
 #. [race]: id=undead
 #: data/core/units.cfg:289
-#, fuzzy
 msgid ""
 "Undead are not really a single race of creatures, although often treated as "
 "such. Almost any dead creature can, by a sufficiently skilled necromancer, "
@@ -6352,7 +6318,6 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:67
-#, fuzzy
 msgid ""
 "Poisoned units will lose eight hitpoints every turn until they are one point "
 "from death. They will remain at death's door until the poison is removed. "
@@ -6362,8 +6327,8 @@ msgid ""
 msgstr ""
 "Zatruta jednostka traci co turę osiem punktów życia, aż od śmierci będzie ją "
 "dzielić tylko jeden punkt. Jednostka taka pozostanie o krok od śmierci, "
-"dopóki nie zostanie uzdrowiona. Sąsiadująca jednostka z umiejętnością "
-"leczenia zapobiegnie utracie punktów życia, ale usunięcie zatrucia nastąpi "
+"dopóki nie zostanie uzdrowiona. Jednostki leczące potrafią zapobiec utracie "
+"punktów życia z powodu trucizny, ale pełne usunięcie zatrucia nastąpi "
 "dopiero wtedy, gdy jednostka zregeneruje się bądź rozpocznie turę w wiosce "
 "lub obok jednostki z umiejętnością uzdrawiania."
 
@@ -6976,9 +6941,8 @@ msgid "female^poisoned"
 msgstr "zatruta"
 
 #: src/actions.cpp:1057 src/actions.cpp:1340
-#, fuzzy
 msgid "female^stone"
-msgstr "silna"
+msgstr "zamiana w kamień"
 
 #: src/actions.cpp:1057 src/actions.cpp:1340
 msgid "stone"
@@ -7207,13 +7171,18 @@ msgid "Update failed"
 msgstr "Aktualizacja się nie powiodła"
 
 #: src/addon_management.cpp:864
-#, fuzzy
 msgid "The following add-on could not be downloaded or updated successfully:"
 msgid_plural ""
 "The following add-ons could not be downloaded or updated successfully:"
-msgstr[0] "Następujący dodatek zawierał błędy i nie mógł zostać załadowany:"
-msgstr[1] "Następujące dodatki zawierały błędy i nie mogły zostać załadowane:"
-msgstr[2] "Następujące dodatki zawierały błędy i nie mogły zostać załadowane:"
+msgstr[0] ""
+"Następujący dodatek zawierał błędy i nie mógł zostać pobrany lub "
+"zaktualizowany:"
+msgstr[1] ""
+"Następujące dodatki zawierały błędy i nie mogły zostać pobrane lub "
+"zaktualizowane:"
+msgstr[2] ""
+"Następujące dodatki zawierały błędy i nie mogły zostać pobrane lub "
+"zaktualizowane:"
 
 #: src/addon_management.cpp:873
 msgid "Update succeeded"
@@ -7744,13 +7713,12 @@ msgid "invisible: "
 msgstr "niewidzialna: "
 
 #: src/generate_report.cpp:103
-#, fuzzy
 msgid ""
 "This unit has been slowed. It will only deal half its normal damage when "
 "attacking and its movement cost is doubled."
 msgstr ""
 "Ta jednostka została spowolniona. Podczas ataku będzie zadawała tylko połowę "
-"normalnych obrażeń."
+"normalnych obrażeń, a jej koszt ruchu ulegnie podwojeniu."
 
 #: src/generate_report.cpp:103
 msgid "slowed: "
@@ -8419,12 +8387,19 @@ msgid "Refresh gui."
 msgstr "Odśwież interfejs."
 
 #: src/menu_events.cpp:2287
+#, fuzzy
 msgid "Switch a side to/from AI control."
 msgstr ""
+"W takim razie powinniśmy wydrzeć tę ziemię z ich rąk. Do broni, żołnierze!"
 
 #: src/menu_events.cpp:2290
+#, fuzzy
 msgid "Assign control of a side to a different player or observer."
 msgstr ""
+"\n"
+"Zmień kontrolera danej strony \"side\" (podając jej numer) na \"username"
+"\" (podaj ksywkę obserwującego gracza).\n"
+"\n"
 
 #: src/menu_events.cpp:2292
 msgid "Clear chat history."
@@ -9388,8 +9363,9 @@ msgid " included from "
 msgstr " dołączone z "
 
 #: src/serialization/parser.cpp:349
+#, fuzzy
 msgid "$error, value '$value', previous '$previous_value' at $pos"
-msgstr ""
+msgstr "Brakujący znacznik zamykający dla znacznika $tag w $pos"
 
 #: src/serialization/parser.cpp:353
 msgid "$error, value '$value' at $pos"

@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-01-16 21:54+0100\n"
-"PO-Revision-Date: 2009-01-26 00:03+0100\n"
-"Last-Translator: Karol Nowak <grywacz@gmail.com>\n"
+"PO-Revision-Date: 2009-01-26 20:11+0100\n"
+"Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team:  <z.banach@wsisiz.edu.pl>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -360,7 +360,7 @@ msgstr "Zamarznięty"
 #. [terrain]: id=unwalkable
 #: data/core/terrain.cfg:1153
 msgid "Unwalkable"
-msgstr ""
+msgstr "Nie do chodzenia"
 
 #. [label]
 #. [column]
@@ -499,8 +499,10 @@ msgstr ""
 
 #. [toggle_button]: id=copy_edge_terrain
 #: data/gui/default/window/editor_resize_map.cfg:242
+#, fuzzy
 msgid "Copy edge terrain"
 msgstr ""
+"Znaleziono niepoprawny teren, prawdopodobnie w formacie wersji 1.2. Teren = "
 
 #. [button]: id=ok
 #: data/gui/default/window/editor_resize_map.cfg:264
@@ -527,13 +529,15 @@ msgstr "Następna"
 
 #. [toggle_button]: id=custom_tod_toggle
 #: data/gui/default/window/editor_settings.cfg:83
+#, fuzzy
 msgid "Custom lighting setting"
-msgstr ""
+msgstr " Zalecane ustawienie to 2 sztuki złota na wioskę."
 
 #. [toggle_button]: id=custom_tod_auto_refresh
 #: data/gui/default/window/editor_settings.cfg:93
+#, fuzzy
 msgid "Auto-update map view"
-msgstr ""
+msgstr "Ustaw domyślne zbliżenie"
 
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:120
@@ -580,7 +584,7 @@ msgstr "Język"
 #. [label]
 #: data/gui/default/window/language_selection.cfg:50
 msgid "Choose your preferred language:"
-msgstr ""
+msgstr "Wybierz preferowany język:"
 
 #. [button]: id=ok
 #: data/gui/default/window/language_selection.cfg:121
@@ -590,8 +594,9 @@ msgstr "Zmień język"
 
 #. [window]: id=mp_cmd_wrapper
 #: data/gui/default/window/mp_cmd_wrapper.cfg:8
+#, fuzzy
 msgid "Multiplayer command wrapper dialog"
-msgstr ""
+msgstr "Kromph potrzebuje rozkazów. Rozkazuj mi!"
 
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:31
@@ -657,18 +662,19 @@ msgstr "Status"
 #. [button]: id=kick
 #: data/gui/default/window/mp_cmd_wrapper.cfg:381
 msgid "Kick"
-msgstr ""
+msgstr "Wyrzuć"
 
 #. [button]: id=ban
 #: data/gui/default/window/mp_cmd_wrapper.cfg:396
 msgid "Ban"
-msgstr ""
+msgstr "Zbanuj"
 
 #. [label]
 #: data/gui/default/window/mp_connect.cfg:50
 #: data/gui/default/window/mp_server_list.cfg:51
+#, fuzzy
 msgid "You will now connect to the multiplayer server."
-msgstr ""
+msgstr "Połączysz się teraz z serwerem, by pobrać dodatki."
 
 #. [button]: id=list
 #: data/gui/default/window/mp_connect.cfg:148
@@ -759,8 +765,9 @@ msgstr "Stwórz grę"
 
 #. [window]: id=mp_login
 #: data/gui/default/window/mp_login.cfg:8
+#, fuzzy
 msgid "Multiplayer server login dialog"
-msgstr ""
+msgstr "Zaloguj się na oficjalny serwer gier wieloosobowych Wesnoth"
 
 #. [label]
 #. [button]: id=ok
@@ -806,8 +813,9 @@ msgstr "Połącz z oficjalnym serwerem"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:241
+#, fuzzy
 msgid "Log on to the official Wesnoth multiplayer server"
-msgstr ""
+msgstr "Zaloguj się na oficjalny serwer gier wieloosobowych Wesnoth"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:252
@@ -831,8 +839,11 @@ msgstr "Gra lokalna"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:274
+#, fuzzy
 msgid "Play a multiplayer game with the AI or humans sharing the same machine"
 msgstr ""
+"Gra dla wielu graczy przeciwko komputerowi lub innym graczom na tej samej "
+"maszynie"
 
 #. [label]
 #: data/gui/default/window/mp_server_list.cfg:84
@@ -1672,7 +1683,7 @@ msgstr "Zapisz mapę jako"
 
 #: src/hotkeys.cpp:109
 msgid "Revert All Changes"
-msgstr ""
+msgstr "Wycofaj wszystkie zmiany"
 
 #: src/hotkeys.cpp:110
 msgid "Map Information"
@@ -1699,8 +1710,9 @@ msgid "Selection Tool"
 msgstr "Zaznaczanie"
 
 #: src/hotkeys.cpp:118
+#, fuzzy
 msgid "Set Starting Positions Tool"
-msgstr ""
+msgstr "Ustaw początkową pozycję gracza"
 
 #: src/hotkeys.cpp:119
 msgid "Next Brush"
@@ -1735,20 +1747,24 @@ msgid "Select None"
 msgstr "Usuń zaznaczenie"
 
 #: src/hotkeys.cpp:131
+#, fuzzy
 msgid "Rotate Clipboard Clockwise"
-msgstr ""
+msgstr "Zmieniaj jednostki liniowe"
 
 #: src/hotkeys.cpp:133
+#, fuzzy
 msgid "Rotate Clipboard Counter-Clockwise"
-msgstr ""
+msgstr "Licznik tur (bieżąca tura/maksymalna liczba tur)"
 
 #: src/hotkeys.cpp:135
+#, fuzzy
 msgid "Flip Clipboard Horizontally"
-msgstr ""
+msgstr "Obróć (wymiary mapy mogą zostać zmienione)"
 
 #: src/hotkeys.cpp:137
+#, fuzzy
 msgid "Flip Clipboard Vertically"
-msgstr ""
+msgstr "Obróć (wymiary mapy mogą zostać zmienione)"
 
 #: src/hotkeys.cpp:139
 msgid "Rotate Selection"
@@ -1766,11 +1782,12 @@ msgstr "Wybór wypełnienia"
 #: src/hotkeys.cpp:145
 #, fuzzy
 msgid "Generate Tiles In Selection"
-msgstr "Obróć zaznaczenie"
+msgstr "Rekrutuj dwóch elfickich łuczników na polach na zachód od siebie"
 
 #: src/hotkeys.cpp:147
+#, fuzzy
 msgid "Randomize Tiles In Selection"
-msgstr ""
+msgstr "Losowy wybór początkowej pory dnia"
 
 #: src/hotkeys.cpp:151
 msgid "Rotate Map"
@@ -1853,9 +1870,8 @@ msgid "Enter user command"
 msgstr "Wprowadź komendę"
 
 #: src/hotkeys.cpp:185
-#, fuzzy
 msgid "Custom command"
-msgstr "Wprowadź komendę"
+msgstr "Polecenie niestandardowe"
 
 #: src/hotkeys.cpp:186
 msgid "Run AI formula"
