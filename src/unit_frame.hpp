@@ -85,7 +85,7 @@ class frame_parameters{
 	submerge(0.0),
 	x(0),
 	y(0),
-	drawing_layer(0)
+	drawing_layer(display::LAYER_UNIT_DEFAULT-display::LAYER_UNIT_FIRST)
 	{};
 
 	image::locator image;
@@ -134,7 +134,7 @@ class frame_builder {
 		submerge_(""),
 		x_(""),
 		y_(""),
-		drawing_layer_("")
+		drawing_layer_(lexical_cast<std::string>(display::LAYER_UNIT_DEFAULT-display::LAYER_UNIT_FIRST))
 	{};
 		frame_builder(const config& cfg,const std::string &frame_string = "");
 		/** allow easy chained modifications will raised assert if used after initialization */

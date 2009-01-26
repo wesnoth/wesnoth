@@ -352,7 +352,7 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 		animations.push_back(tmp_anim);
 
 		tmp_anim = *itor;
-		tmp_anim.unit_anim_.override(0,5100,"","",0,"0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,","51");
+		tmp_anim.unit_anim_.override(0,5100,"","",0,"0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,",lexical_cast<std::string>(display::LAYER_UNIT_MOVE_DEFAULT-display::LAYER_UNIT_FIRST));
 		tmp_anim.event_ = utils::split("movement");
 		animations.push_back(tmp_anim);
 
@@ -362,7 +362,7 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 		animations.push_back(tmp_anim);
 
 		tmp_anim = *itor;
-		tmp_anim.unit_anim_.override(-150,300,"","",0,"0~0.6:150,0.6~0:150","51");
+		tmp_anim.unit_anim_.override(-150,300,"","",0,"0~0.6:150,0.6~0:150",lexical_cast<std::string>(display::LAYER_UNIT_MOVE_DEFAULT-display::LAYER_UNIT_FIRST));
 		tmp_anim.event_ = utils::split("attack");
 		tmp_anim.primary_attack_filter_.push_back(config());
 		tmp_anim.primary_attack_filter_.back()["range"] = "melee";

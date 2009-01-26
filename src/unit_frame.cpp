@@ -579,7 +579,7 @@ const frame_parameters unit_frame::merge_parameters(int current_time,const frame
 	result.y = current_val.y?current_val.y:animation_val.y;
 	result.y += engine_val.y;
 
-	assert(engine_val.drawing_layer == 0);
+	assert(engine_val.drawing_layer == display::LAYER_UNIT_DEFAULT-display::LAYER_UNIT_FIRST);
 	result.drawing_layer = current_val.drawing_layer?current_val.drawing_layer:animation_val.drawing_layer;
 
 	return result;
