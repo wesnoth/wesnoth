@@ -32,11 +32,12 @@ struct move_cost_calculator : cost_calculator
 			     const map_location& loc,
 						 const ai::move_map& dstsrc,
 						 const ai::move_map& enemy_dstsrc)
-	  : cost_calculator(u.total_movement()),
-	    unit_(u), map_(map), units_(units),
+	  : unit_(u), map_(map), units_(units),
 	    loc_(loc), dstsrc_(dstsrc), enemy_dstsrc_(enemy_dstsrc),
 		avoid_enemies_(u.usage() == "scout")
 	{}
+
+	virtual int get_max_cost() const { return unit_.movement_left(); };
 
 	virtual double cost(const map_location&, const map_location& loc, const double) const
 	{

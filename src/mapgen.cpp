@@ -360,7 +360,6 @@ namespace {
 struct road_path_calculator : cost_calculator
 {
 	road_path_calculator(const terrain_map& terrain, const config& cfg) :
-		cost_calculator(0),
     	calls(0),
 		map_(terrain),
 		cfg_(cfg),

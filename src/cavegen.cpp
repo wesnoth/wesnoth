@@ -308,7 +308,6 @@ struct passage_path_calculator : cost_calculator
 {
 	passage_path_calculator(const t_translation::t_map& mapdata,
 	t_translation::t_terrain wall, double laziness, size_t windiness):
-		cost_calculator(0),
 		map_(mapdata), wall_(wall), laziness_(laziness), windiness_(windiness)
 	{}
 

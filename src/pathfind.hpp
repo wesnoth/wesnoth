@@ -73,16 +73,17 @@ bool enemy_zoc(gamemap const &map,
 
 struct cost_calculator
 {
-	cost_calculator(double max_cost) : max_cost_(max_cost) {};
 	virtual double cost(const map_location& src, const map_location& loc, const double so_far) const = 0;
 	virtual ~cost_calculator() {}
+
+	// This represents the maximum cost that is allowed for a route.
+	// Currently there is only one use: Get the remaining movement of units to calculate the movepoints
+	// left at the end of the route.
+	virtual int get_max_cost() const { return 0; }
+
 	inline double getNoPathValue() const { return (42424242.0); }
 
-	double max_cost() const { return max_cost_; }
-
 private:
-	// This represents the maximum cost that is allowed for a route.
-	// Currently there is only one use: Get the max_movement of units to calculate the movepoints left to it.
 	double max_cost_;
 };
 
@@ -156,6 +157,7 @@ struct shortest_path_calculator : cost_calculator
                              bool ignore_unit = false, bool ignore_defense_ = false);
 	virtual double cost(const map_location& src, const map_location& loc, const double so_far) const;
 
+	virtual int get_max_cost() const { return movement_left_; }
 private:
 	unit const &unit_;
 	team const &viewing_team_;
@@ -176,6 +178,7 @@ struct emergency_path_calculator : cost_calculator
 {
 	emergency_path_calculator(const unit& u, const gamemap& map);
 	virtual double cost(const map_location& src, const map_location& loc, const double so_far) const;
+	virtual int get_max_cost() const;
 
 private:
 	unit const &unit_;
@@ -190,6 +193,8 @@ struct dummy_path_calculator : cost_calculator
 {
 	dummy_path_calculator(const unit& u, const gamemap& map);
 	virtual double cost(const map_location& src, const map_location& loc, const double so_far) const;
+	virtual int get_max_cost() const;
+
 };
 
 #endif
