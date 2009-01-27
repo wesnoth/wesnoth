@@ -952,14 +952,13 @@ const std::string& unit_type::image_profile() const
 		return image_profile_;
 }
 
-const t_string& unit_type::unit_description() const
+const t_string unit_type::unit_description() const
 {
-	static const t_string default_val("No description available");
-
-	if(description_.empty())
-		return default_val;
-	else
+	if(description_.empty()) {
+		return (_("No description available."));
+	} else {
 		return description_;
+	}
 }
 
 const std::vector<unit_animation>& unit_type::animations() const {

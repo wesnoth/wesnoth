@@ -196,7 +196,9 @@ public:
 	const t_string& type_name() const { return type_name_; }
 
 	const std::string& id() const { return id_; }
-	const t_string& unit_description() const;
+	// NOTE: this used to be a const object reference, but it messed up with the
+	// translation engine upon changing the language in the same session.
+	const t_string unit_description() const;
 	int hitpoints() const { return hitpoints_; }
 	int level() const { return level_; }
 	int movement() const { return movement_; }
