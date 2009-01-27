@@ -126,6 +126,9 @@ class preprocessor_data;
 class preprocessor_streambuf;
 struct preprocessor_deleter;
 
+/**
+ * Base class for preprocessing an input.
+ */
 class preprocessor
 {
 	preprocessor *const old_preprocessor_;
@@ -137,16 +140,24 @@ protected:
 	std::vector<std::string> *called_macros_;
 	preprocessor(preprocessor_streambuf &, std::vector<std::string> *);
 public:
+	/**
+	 * Preprocesses and sends some text to the #target_ buffer.
+	 * @return false when the input has no data left.
+	 */
 	virtual bool get_chunk() = 0;
 	virtual ~preprocessor();
 };
 
+/**
+ * Target for sending preprocessed output.
+ * Objects of this class can be plugged into an STL stream.
+ */
 class preprocessor_streambuf: public streambuf
 {
-	std::string out_buffer_;
+	std::string out_buffer_;      /**< Buffer read by the STL stream. */
 	virtual int underflow();
-	std::ostringstream buffer_;
-	preprocessor *current_;
+	std::stringstream buffer_;    /**< Buffer filled by the #current_ preprocessor. */
+	preprocessor *current_;       /**< Input preprocessor. */
 	preproc_map *defines_;
 	preproc_map default_defines_;
 	std::string textdomain_;
@@ -154,7 +165,6 @@ class preprocessor_streambuf: public streambuf
 	std::string *error_log;
 	int linenum_;
 	int depth_;
-	int buffer_size_;
 	bool quoted_;
 	friend class preprocessor;
 	friend class preprocessor_file;
@@ -179,7 +189,6 @@ preprocessor_streambuf::preprocessor_streambuf(preproc_map *def, std::string *er
 	error_log(err_log),
 	linenum_(0),
 	depth_(0),
-	buffer_size_(0),
 	quoted_(false)
 {
 }
@@ -196,13 +205,16 @@ preprocessor_streambuf::preprocessor_streambuf(preprocessor_streambuf const &t) 
 	error_log(t.error_log),
 	linenum_(0),
 	depth_(t.depth_),
-	buffer_size_(0),
 	quoted_(t.quoted_)
 {
 }
 
-// underflow is called when the internal buffer has been consumed
-// so that more can be prepared
+/**
+ * Called by an STL stream whenever it has reached the end of #out_buffer_.
+ * Fills #buffer_ by calling the #current_ preprocessor, then copies its
+ * content into #out_buffer_.
+ * @return the first character of #out_buffer_ if any, EOF otherwise.
+ */
 int preprocessor_streambuf::underflow()
 {
 	unsigned sz = 0;
@@ -224,12 +236,12 @@ int preprocessor_streambuf::underflow()
 		{
 			buffer_ << out_buffer_;
 		}
-	        buffer_size_ = sz;
 	} else {
 		// The internal get-data pointer is null
 	}
 	const int desired_fill_amount = 2000;
-	while (current_ && buffer_size_ < desired_fill_amount) {
+	while (current_ && buffer_.rdbuf()->in_avail() < desired_fill_amount)
+	{
 		// Process files and data chunks until the desired buffer size is reached
 		if (!current_->get_chunk()) {
 			 // Delete the current preprocessor item to restore its predecessor
@@ -278,13 +290,9 @@ void preprocessor_streambuf::error(const std::string& error_type, const std::str
 
 
 /**
- * preprocessor
- *
- * This is the base class for all input to be parsed by the preprocessor.
- * When initialized, it will inform the stream (target_) that it is the current scope.
- * When it reaches its end of its scope, the stream will delete it,
- * and when it is deleted, it will manage the stream
- * to cause the previous scope to resume.
+ * Sets up a new preprocessor for stream buffer \a t.
+ * Saves the current preprocessing context of #target_. It will be
+ * automatically restored on destruction.
  */
 preprocessor::preprocessor(preprocessor_streambuf &t, std::vector<std::string> *callstack) :
 	old_preprocessor_(t.current_),
@@ -298,15 +306,11 @@ preprocessor::preprocessor(preprocessor_streambuf &t, std::vector<std::string> *
 	target_.current_ = this;
 }
 
-namespace {
-void count_extra_digits(int const& line_number, int& buffer_size) {
-	for(int digit_mark = 10; line_number >= digit_mark; digit_mark *= 10) {
-		// The number is larger than one digit, calculate additional string size
-		++buffer_size;
-	}
-}
-} // end anonymous namespace
-
+/**
+ * Restores the old preprocessing context of #target_.
+ * Appends location and domain directives to the buffer, so that the parser
+ * notices these changes.
+ */
 preprocessor::~preprocessor()
 {
 	assert(target_.current_ == this);
@@ -316,23 +320,17 @@ preprocessor::~preprocessor()
 	target_.textdomain_ = old_textdomain_;
 	if (!old_location_.empty()) {
 		target_.buffer_ << "\376line " << old_linenum_ << ' ' << old_location_ << '\n';
-		const int fixed_char_count = 9;
-		count_extra_digits(old_linenum_, target_.buffer_size_);
-		target_.buffer_size_ += old_location_.size() + fixed_char_count;
     }
 	if (!old_textdomain_.empty()) {
 		target_.buffer_ << "\376textdomain " << old_textdomain_ << '\n';
-		const int fixed_char_count = 13;
-		target_.buffer_size_ += old_textdomain_.size() + fixed_char_count;
     }
 	--target_.depth_;
 }
 
 /**
- *  preprocessor_file
- *
- *  This represents a WML element that resolves to a directory or file inclusion,
- *  such as '{themes/}'
+ * Specialized preprocessor for handling a file or a set of files.
+ * A preprocessor_file object is created when a preprocessor encounters an
+ * inclusion directive that resolves to a file or directory, e.g. '{themes/}'.
  */
 class preprocessor_file: preprocessor
 {
@@ -343,8 +341,13 @@ public:
 	virtual bool get_chunk();
 };
 
+/**
+ * Specialized preprocessor for handling any kind of input stream.
+ * This is the core of the preprocessor.
+ */
 class preprocessor_data: preprocessor
 {
+	/** Description of a preprocessing chunk. */
 	struct token_desc
 	{
 		/** @todo FIXME: add enum for token type, with explanation of the different types. */
@@ -352,17 +355,26 @@ class preprocessor_data: preprocessor
 		int stack_pos;
 		int linenum;
 	};
-	scoped_istream in_;
+	scoped_istream in_; /**< Input stream. */
 	std::string directory_;
+	/** Buffer for delayed input processing. */
 	std::vector< std::string > strings_;
+	/** Stack of nested preprocessing chunks. */
 	std::vector< token_desc > tokens_;
 	bool is_macro;
-	int slowpath_, /** @todo FIXME: add explanation of this variable. */
-		skipping_, /**<
-		            * Will get set to true when skipping text
-		            * (e.g. #ifdef that evaluates to false)
-					*/
-		linenum_;
+	/**
+	 * Set to true whenever input tokens cannot be directly sent to the target
+	 * buffer. For instance, this happens with macro arguments. In that case,
+	 * the output is redirected toward #strings_ until it can be processed.
+	 */
+	int slowpath_;
+	/**
+	 * When non-zero, the preprocessor is currently skipping some input text.
+	 * Increased whenever entering a conditional branch that is not useful,
+	 * e.g. a ifdef that evaluates to false.
+	 */
+	int skipping_;
+	int linenum_;
 
 	std::string read_word();
 	std::string read_line();
@@ -461,9 +473,6 @@ preprocessor_data::preprocessor_data(preprocessor_streambuf &t, std::vector<std:
 
 	t.buffer_ << "\376line " << linenum
 		<< ' ' << t.location_ << "\n\376textdomain " << domain << '\n';
-	const int fixed_char_count = 22;
-	count_extra_digits(linenum, t.buffer_size_);
-	t.buffer_size_ += t.location_.size() + domain.size() + fixed_char_count;
 
 	push_token('*');
 }
@@ -563,14 +572,10 @@ void preprocessor_data::put(char c)
 
 		target_.buffer_ << "\376line " << target_.linenum_
 			<< ' ' << target_.location_ << '\n';
-		const int fixed_char_count = 9;
-		count_extra_digits(target_.linenum_, target_.buffer_size_);
-		target_.buffer_size_ += target_.location_.size() + fixed_char_count;
 	}
 	if (c == '\n')
 		++target_.linenum_;
 	target_.buffer_ << c;
-    target_.buffer_size_ += 1;
 }
 
 void preprocessor_data::put(std::string const &s /*, int line_change*/)
@@ -583,7 +588,6 @@ void preprocessor_data::put(std::string const &s /*, int line_change*/)
 	}
 	target_.buffer_ << s;
 //	target_.linenum_ += line_change;
-    target_.buffer_size_ += s.size();
 }
 
 bool preprocessor_data::get_chunk()
