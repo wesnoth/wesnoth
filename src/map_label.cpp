@@ -359,7 +359,7 @@ void terrain_label::read(const config& cfg, const variable_set *variables)
 
 	text_      = cfg["text"];
 	team_name_ = cfg["team_name"];
-	visible_in_fog_ = utils::string_bool(cfg["visible_in_fog"],false);
+	visible_in_fog_ = utils::string_bool(cfg["visible_in_fog"],true);
 
 	if (variables)
 	{
