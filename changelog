@@ -17,7 +17,11 @@ Version 1.5.8+svn:
  * Miscellaneous and bug fixes
    * Fix clients not agreeing on remaining movepoints (bug #12467)
    * Fix summoning of other players recruit list on turn 1 (bug #12783)
-   
+   * Fix [item] overlays with visible_in_fog=yes magically becoming
+     visible_in_fog=no (the default for a missing attribute) when loading
+     saved games - because the game was looking for a fogged= attribute
+     instead on loading.
+
 Version 1.5.8:
  * Campaigns:
    * An Orcish Incursion

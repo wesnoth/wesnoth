@@ -965,12 +965,12 @@ void game_display::clear_attack_indicator()
 	set_attack_indicator(map_location::null_location, map_location::null_location);
 }
 
-void game_display::add_overlay(const map_location& loc, const std::string& img, const std::string& halo,const std::string& team_name,const std::string& fogged)
+void game_display::add_overlay(const map_location& loc, const std::string& img, const std::string& halo,const std::string& team_name, bool visible_under_fog)
 {
 	const int halo_handle = halo::add(get_location_x(loc) + hex_size() / 2,
 			get_location_y(loc) + hex_size() / 2, halo, loc);
 
-	const overlay item(img, halo, halo_handle, team_name, utils::string_bool(fogged,false));
+	const overlay item(img, halo, halo_handle, team_name, visible_under_fog);
 	overlays_.insert(overlay_map::value_type(loc,item));
 }
 

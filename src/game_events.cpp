@@ -1700,7 +1700,7 @@ namespace {
 		const std::string img = cfg["image"];
 		const std::string halo = cfg["halo"];
 		const std::string team_name = cfg["team_name"];
-		const std::string visible_in_fog = cfg["visible_in_fog"];
+		const bool visible_in_fog = utils::string_bool(cfg["visible_in_fog"],false);
 		assert(state_of_game != NULL);
 		if(!img.empty() || !halo.empty()) {
 			(screen)->add_overlay(loc, img, halo, team_name, visible_in_fog);
