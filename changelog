@@ -18,9 +18,11 @@ Version 1.5.8+svn:
    * Fix clients not agreeing on remaining movepoints (bug #12467)
    * Fix summoning of other players recruit list on turn 1 (bug #12783)
    * Fix [item] overlays with visible_in_fog=yes magically becoming
-     visible_in_fog=no (the default for a missing attribute) when loading
+     visible_in_fog=no (the former default for a missing attribute) when loading
      saved games - because the game was looking for a fogged= attribute
      instead on loading.
+   * Made [item] overlays always default to visible_in_fog=yes if not
+     specified.
 
 Version 1.5.8:
  * Campaigns:
