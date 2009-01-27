@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-01-16 21:54+0100\n"
-"PO-Revision-Date: 2009-01-04 15:17+0100\n"
+"PO-Revision-Date: 2009-01-26 23:26+0100\n"
 "Last-Translator: Luciano Montanaro <mikelima@cirulla.net>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -589,31 +589,28 @@ msgstr "Cambia la lingua"
 
 #. [window]: id=mp_cmd_wrapper
 #: data/gui/default/window/mp_cmd_wrapper.cfg:8
-#, fuzzy
 msgid "Multiplayer command wrapper dialog"
-msgstr "Finestra di accesso al server multigiocatore"
+msgstr "Finestra di comando multigiocatore"
 
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:31
 msgid "Messaging"
-msgstr ""
+msgstr "Messaggi"
 
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:61
 msgid "Message:"
-msgstr ""
+msgstr "Messaggio:"
 
 #. [button]: id=ok
 #: data/gui/default/window/mp_cmd_wrapper.cfg:93
-#, fuzzy
 msgid "Send a private message"
-msgstr "Pulisci i messaggi"
+msgstr "Invia un messaggio privato"
 
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:133
-#, fuzzy
 msgid "Friends/Ignored List"
-msgstr "Elenco degli amici"
+msgstr "Elenco degli amici/ignorati"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=add_friend
@@ -639,34 +636,32 @@ msgstr "Rimuovi"
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:233
 msgid "Moderating"
-msgstr ""
+msgstr "Moderatore"
 
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:263
 msgid "Reason:"
-msgstr ""
+msgstr "Motivo:"
 
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:315
-#, fuzzy
 msgid "Time:"
-msgstr "Tema"
+msgstr "Ora:"
 
 #. [button]: id=status
 #: data/gui/default/window/mp_cmd_wrapper.cfg:366
-#, fuzzy
 msgid "Status"
-msgstr "Tabella di stato"
+msgstr "Stato"
 
 #. [button]: id=kick
 #: data/gui/default/window/mp_cmd_wrapper.cfg:381
 msgid "Kick"
-msgstr ""
+msgstr "Scaccia"
 
 #. [button]: id=ban
 #: data/gui/default/window/mp_cmd_wrapper.cfg:396
 msgid "Ban"
-msgstr ""
+msgstr "Metti al bando"
 
 #. [label]
 #: data/gui/default/window/mp_connect.cfg:50
@@ -789,7 +784,7 @@ msgstr "Password:"
 #: data/gui/default/window/mp_login.cfg:190
 #: data/gui/default/window/mp_method_selection.cfg:170
 msgid "Save password to preferences (clear text)"
-msgstr ""
+msgstr "Salva la password nelle preferenze (testo in chiaro)"
 
 #. [button]: id=password_reminder
 #: data/gui/default/window/mp_login.cfg:248
@@ -949,7 +944,7 @@ msgstr "Schermo intero"
 
 #: src/game_preferences_display.cpp:152
 msgid "Enable scroll tracking of unit actions."
-msgstr ""
+msgstr "Abilita lo scorrimento per seguire le azioni delle unità."
 
 #: src/game_preferences_display.cpp:153
 msgid "Accelerated Speed"
@@ -1185,6 +1180,8 @@ msgstr ""
 msgid ""
 "Should the map view scroll to a unit when an action or move is animated."
 msgstr ""
+"Se la vista della mappa scorre verso un'unità quando un'azione o mossa è "
+"animata."
 
 #: src/game_preferences_display.cpp:303
 msgid "Make units move and fight faster"

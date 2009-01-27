@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-01-18 14:00+0100\n"
-"PO-Revision-Date: 2009-01-04 15:15+0100\n"
+"PO-Revision-Date: 2009-01-26 23:22+0100\n"
 "Last-Translator: Luciano Montanaro <mikelima@cirulla.net>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -37,9 +37,8 @@ msgstr "Scrolling del mouse"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:63
-#, fuzzy
 msgid "Middle-click Scrolling"
-msgstr "Scrolling del mouse"
+msgstr "Scrolling con il clic centrale"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:70
@@ -997,7 +996,7 @@ msgstr ""
 "si sposta in un nuovo esagono in base al tipo di “terreno” di quel "
 "determinato esagono. Per esempio, la prateria generalmente necessita di 1 "
 "movimento per essere attraversata. Più precisamente il numero di punti "
-"movimento necessari a entrare in un esagono dipende dal tipo di unità - "
+"movimento necessari a entrare in un esagono dipende dal tipo di unità – "
 "nella foresta le unità degli elfi utilizzano solo 1 punto movimento, la "
 "maggior parte delle unità di uomini o di orchi utilizzano 2, mentre i "
 "cavalieri ne utilizzano 3. Puoi sapere quanti punti movimento sono necessari "
@@ -1428,7 +1427,7 @@ msgid ""
 msgstr ""
 "Se ambedue le unità sopravvivono al combattimento, guadagnano un numero di "
 "punti esperienza pari al livello dell'unità con cui stanno combattendo. Se "
-"un'unità uccide un'altra durante lo scontro guadagna molta più esperienza - "
+"un'unità uccide un'altra durante lo scontro guadagna molta più esperienza – "
 "4 per le unità di livello 0, 8 per quelle di livello 1, 16 per il livello 2, "
 "24 per il livello 3 e così via."
 
@@ -3564,7 +3563,6 @@ msgstr "Annulla gli ordini sull'obiettivo"
 
 #. [option]
 #: data/core/macros/ai_controller.cfg:625
-#, fuzzy
 msgid "Clear behavior orders"
 msgstr "Annulla gli ordini sul comportamento"
 
@@ -3591,7 +3589,6 @@ msgstr ""
 #. [value]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:811
 #: data/core/macros/ai_controller.cfg:828
-#, fuzzy
 msgid ""
 "Objective: $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_objective_description\n"
@@ -3618,7 +3615,6 @@ msgstr "Imposta obiettivo..."
 
 #. [literal]
 #: data/core/macros/ai_controller.cfg:880
-#, fuzzy
 msgid "Set behavior..."
 msgstr "Imposta comportamento..."
 
@@ -5134,7 +5130,6 @@ msgstr "Draghi"
 
 #. [race]: id=drake
 #: data/core/units.cfg:68
-#, fuzzy
 msgid ""
 "Drakes are large, winged and fire-breathing creatures, reminiscent of true "
 "dragons. On average, an adult drake stands around three meters tall and "
@@ -5282,7 +5277,6 @@ msgstr "Nani"
 
 #. [race]: id=dwarf
 #: data/core/units.cfg:95
-#, fuzzy
 msgid ""
 "The dwarves are a race famed for their miners, blacksmiths, merchants and "
 "warriors. Considered as the third oldest race on the great continent after "
@@ -5332,10 +5326,10 @@ msgid ""
 msgstr ""
 "I nani sono una razza famosa per i loro minatori, fabbri, mercanti e "
 "guerrieri. Considerata la terza tra le razze più antiche sul grande "
-"continente dopo elfi e troll, la storia del loro inizio è avvolta nel "
-"mistero. Le leggende raccontano di un tempo a lungo dimenticato quando la "
-"loro gente iniziò a emergere dal mondo del sottosuolo attraverso le caverne. "
-"Non si sa nulla sulla loro vita prima del loro arrivo, né i motivi che li "
+"continente dopo elfi e troll, la storia della loro origine è avvolta nel "
+"mistero. Le leggende raccontano del tempo ormai dimenticato in cui la loro "
+"gente iniziò a emergere dal mondo del sottosuolo attraverso le caverne. Non "
+"si sa nulla sulla loro vita prima del loro arrivo, né i motivi che li "
 "spinsero in superficie, ma da allora sono stati parte integrante della "
 "storia del continente. Poco dopo la loro emersione, i nani entrarono in "
 "conflitto con gli abitanti originali della terra, gli elfi. La ragione "
@@ -5365,21 +5359,20 @@ msgstr ""
 "\n"
 "I nani sono di piccola statura secondo le misure umane, ma non sono per "
 "niente fragili. I loro guerrieri, resistenti e potenti sono temuti e "
-"rispettati per il continente per le loro prodezze in battaglia. Inoltre, i "
-"nani sono famosi per il loro intelletto calcolatore e il sublime "
-"artigianato. I fabbri dei nani sono rinomati per le loro armi mortali e "
-"pesanti armature. Queste opere non hanno rivali in qualità, forse sono "
-"pareggiate solo da quelle prodotti dagli armaioli dei draghi. La loro "
-"intelligenza e la loro naturale curiosità ne ha fatto anche la razza più "
-"avanzata tecnologicamente sul continente. Una delle più famose o temute "
-"delle loro scoperte, fu una misteriosa polvere che produce enormi esplosioni "
-"quando viene esposta al fuoco o a una scintilla. Alcuni guerrieri nani  "
-"usano questa polvere per scagliare piccoli oggetti a velocità straordinarie. "
-"A causa delle loro inclinazioni tecnologiche, i nani tendono a non fidarsi "
-"dei maghi. Comunque alcuni di loro praticano una forma di magia basata "
-"sull'incisione di rune. Chiamati fabbri delle rune, impiegano queste "
-"iscrizioni per incantare oggetti per aumentare alcuni aspetti della loro "
-"natura."
+"rispettati per le loro prodezze in battaglia. Inoltre sono famosi per il "
+"loro intelletto calcolatore e il sublime artigianato. I fabbri dei nani sono "
+"rinomati per le loro armi mortali e pesanti armature. Queste opere non hanno "
+"rivali in qualità, forse sono pareggiate solo da quelle prodotti dagli "
+"armaioli dei draghi. La loro intelligenza e la loro naturale curiosità ne ha "
+"fatto anche la razza più avanzata tecnologicamente sul continente. Una delle "
+"più famose o temute delle loro scoperte, fu una misteriosa polvere che "
+"produce enormi esplosioni quando viene esposta al fuoco o a una scintilla. "
+"Alcuni guerrieri nani  usano questa polvere per scagliare piccoli oggetti a "
+"velocità straordinarie. A causa delle loro inclinazioni tecnologiche, i nani "
+"tendono a non fidarsi dei maghi. Comunque alcuni di loro praticano una forma "
+"di magia basata sull'incisione di rune. Chiamati fabbri delle rune, "
+"impiegano queste iscrizioni per incantare oggetti per aumentare alcuni "
+"aspetti della loro natura."
 
 #. [race]: id=elf
 #: data/core/units.cfg:107
@@ -5398,7 +5391,6 @@ msgstr "Elfi"
 
 #. [race]: id=elf
 #: data/core/units.cfg:119
-#, fuzzy
 msgid ""
 "Compared to humans, elves are somewhat taller, more agile but less sturdy. "
 "They have slightly pointy ears, pale skin and usually blond hair. Few "
@@ -5439,7 +5431,7 @@ msgstr ""
 "In confronto agli uomini, gli elfi sono un po' più alti, più agili e meno "
 "robusti. Hanno orecchie leggermente a punta, incarnato chiaro e, di solito, "
 "capelli biondi. Poche differenze tra uomini ed elfi sono così pronunciate "
-"come la durata di vita prolungata di questi ultimi - la maggior parte vive "
+"come la durata di vita prolungata di questi ultimi – la maggior parte vive "
 "per più due secoli, a meno che non venga colpita da una malattia, un "
 "incidente o una guerra. Anche se si sa che alcuni elfi alcuni elfi, che "
 "avevano una spiccata attitudine alla magia, hanno vissuto per un altro "
@@ -5690,7 +5682,6 @@ msgstr "Orchi"
 
 #. [race]: id=orc
 #: data/core/units.cfg:252
-#, fuzzy
 msgid ""
 "In appearance, orcs are half men and half beasts. They are taller, sturdier "
 "and stronger than humans. They are warlike, savage, and cruel by nature. "
@@ -5765,7 +5756,7 @@ msgstr ""
 "l'intimidazione dei suoi sostenitori. Una tribù di orchi in tempo di pace "
 "tende a focalizzarsi praticamente solo sul rafforzarsi in preparazione del "
 "prossimo conflitto armato. Gli orchi sono noti per possedere un rudimentale "
-"sistema di scrittura - di solito con il sangue - anche se per la gran parte "
+"sistema di scrittura – di solito con il sangue – anche se per la gran parte "
 "dei casi è usato per scambiare ingiurie o minacce tra i capitribù.\n"
 "\n"
 "Le società degli orchi sono basate su poco oltre la forza: il potere "
@@ -5773,7 +5764,7 @@ msgstr ""
 "strappargli il titolo. Uno sforzo costante per il potere freme tra i "
 "potenziali capi tribali. Un capo degli orchi raramente vive pù di qualche "
 "anno per godersi la sua autorità assoluta, prima di essere ucciso per il suo "
-"titolo - anche se la storia riporta importanti eccezioni. Gli orchi non "
+"titolo – anche se la storia riporta importanti eccezioni. Gli orchi non "
 "hanno un particolare codice d'onore e anche se di solito l'indiscussa forza "
 "bruta è il metodo preferito per mostrare il proprio potere, assassinio, "
 "avvelenamento e pugnalate sono mezzi perfettamente validi per conseguire i "
@@ -5796,7 +5787,7 @@ msgstr ""
 "sciamani, che sono forse gli unici che la maggior parte della loro razza "
 "considera fidati e neutrali. Le origine di questo costume è sconosciuta, "
 "dato che gli sciamani non agiscono direttamente nelle comunità degli orchi, "
-"tranne come consiglieri - cosa che gli orchi tendono comunque a tollerare. "
+"tranne come consiglieri – cosa che gli orchi tendono comunque a tollerare. "
 "Gli sciamani sono per molti versi il contrario degli altri orchi: sono "
 "spesso fisicamente deperiti e fragili al confronto e incapaci nel "
 "combattimento. Nonostante si affidino alla forza bruta, non tutti gli orchi "
@@ -5823,7 +5814,6 @@ msgstr "Troll"
 
 #. [race]: id=troll
 #: data/core/units.cfg:267
-#, fuzzy
 msgid ""
 "Trolls are ancient creatures, one of the oldest known races known to inhabit "
 "the Great Continent. They are large, slow, simple-minded, and live extremely "
@@ -5910,7 +5900,6 @@ msgstr "Non-morti"
 
 #. [race]: id=undead
 #: data/core/units.cfg:289
-#, fuzzy
 msgid ""
 "Undead are not really a single race of creatures, although often treated as "
 "such. Almost any dead creature can, by a sufficiently skilled necromancer, "
@@ -7753,22 +7742,20 @@ msgid "Invalid color range: "
 msgstr "Gamma di colori non valida: "
 
 #: src/game_events.cpp:133
-#, fuzzy
 msgid "Error: "
-msgstr "Errore"
+msgstr "Errore: "
 
 #: src/game_events.cpp:136
-#, fuzzy
 msgid "Warning: "
-msgstr "Mattino"
+msgstr "Warning: "
 
 #: src/game_events.cpp:139
 msgid "Debug: "
-msgstr ""
+msgstr "Debug: "
 
 #: src/game_events.cpp:142
 msgid "Info: "
-msgstr ""
+msgstr "Info: "
 
 #: src/game_events.cpp:1067
 msgid "Victory:"
@@ -8749,7 +8736,7 @@ msgstr "Riservata"
 
 #: src/multiplayer_connect.cpp:823
 msgid "--give--"
-msgstr ""
+msgstr "--dà--"
 
 #: src/multiplayer_connect.cpp:945
 msgid "Only random sides in the current era."
@@ -9113,9 +9100,8 @@ msgid "Invalid Color"
 msgstr "Colore non valido"
 
 #: src/multiplayer_ui.cpp:399
-#, fuzzy
 msgid "Selected user: "
-msgstr "Seleziona unità:"
+msgstr "Utente selezionato:"
 
 #: src/multiplayer_wait.cpp:134
 msgid "Leader: "
