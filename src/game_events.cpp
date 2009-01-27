@@ -1697,10 +1697,10 @@ namespace {
 	WML_HANDLER_FUNCTION(item,/*handler*/,/*event_info*/,cfg)
 	{
 		map_location loc = cfg_to_loc(cfg);
-		std::string img = cfg["image"];
-		std::string halo = cfg["halo"];
-		std::string team_name = cfg["team_name"];
-		std::string visible_in_fog = cfg["visible_in_fog"];
+		const std::string img = cfg["image"];
+		const std::string halo = cfg["halo"];
+		const std::string team_name = cfg["team_name"];
+		const std::string visible_in_fog = cfg["visible_in_fog"];
 		assert(state_of_game != NULL);
 		if(!img.empty() || !halo.empty()) {
 			(screen)->add_overlay(loc, img, halo, team_name, visible_in_fog);
