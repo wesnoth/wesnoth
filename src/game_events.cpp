@@ -2847,7 +2847,7 @@ std::string get_image(const vconfig& cfg, unit_map::iterator speaker)
 
 		image = speaker->second.profile();
 		/** @todo Handle the transparent stuff here. */
-#ifdef LOW_MEM
+#ifndef LOW_MEM
 		if(image == speaker->second.absolute_image()) {
 			image += speaker->second.image_mods();
 		}
