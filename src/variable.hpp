@@ -30,6 +30,12 @@ class unit_map;
 /**
  * A variable-expanding proxy for the config class. This class roughly behaves
  * as a constant config object, but automatically expands variables.
+ *
+ * @todo A default constructed vconfig doesn't work properly in all cases
+ * since cfg_ will be deferred without testing in some cases. Fixing it by
+ * adding a dummy config seems to fail as well (some test cases failed). The
+ * entire class needs to be review to make it safe for using the default
+ * constructor.
  */
 class vconfig
 {
