@@ -44,6 +44,8 @@ public:
 
 	void set_message(const std::string& message) {  message_ = message; }
 
+	void set_auto_close(const bool auto_close) { auto_close_ = auto_close; }
+
 protected:
 	/** Inherited from tdialog. */
 	void pre_show(CVideo& video, twindow& window);
