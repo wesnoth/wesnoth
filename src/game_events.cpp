@@ -2984,7 +2984,7 @@ std::string get_caption(const vconfig& cfg, unit_map::iterator speaker)
 			if (side_for_show && !get_replay_source().is_skipping())
 			{
 				// We whether we can show the new dialog.
-				if(options.empty() && !has_text_input && speaker != units->end()) {
+				if(options.empty() && speaker != units->end()) {
 					
 					
 					// At the moment we use a hack if the image in portrait has
@@ -3015,18 +3015,42 @@ std::string get_caption(const vconfig& cfg, unit_map::iterator speaker)
 						image.erase(right_offset);
 					}
 
+					// Parse input text, if not available all fields are empty
+					const std::string text_input_label = 
+							text_input_element["label"];
+					std::string text_input_content = 
+							text_input_element["text"];
+					unsigned input_max_size = 
+							lexical_cast_default<unsigned>(
+								text_input_element["max_length"], 256);
+					if(input_max_size > 1024 || input_max_size < 1){
+						lg::wml_error << "invalid maximum size for input "
+								<< input_max_size<<"\n";
+						input_max_size=256;
+					}
+
 					const int dlg_result = gui2::show_wml_message(
 							left_side,
 							screen->video(),
 							caption,
 							cfg["message"],
 							image,
-							false);
+							false,
+							text_input_label,
+							&text_input_content,
+							input_max_size);
 
+					if(has_text_input) {
+						recorder.text_input(text_input_content);
+						text_input_result = text_input_content;
+					}
 					if(dlg_result == gui2::twindow::CANCEL) {
 						handler.skip_messages() = true;
 					}
-					return;
+
+					// This goto skips the old dialog but makes sure the
+					// options and text input are properly processed.
+					goto outro;
 
 					/**
 					 * @todo enable portrait code in 1.7 and write a clean api.
@@ -3130,7 +3154,7 @@ std::string get_caption(const vconfig& cfg, unit_map::iterator speaker)
 				text_input_result = (*(action->get_children("input").front()))["text"];
 			}
 		}
-
+outro:
 		// Implement the consequences of the choice
 		if(options.empty() == false) {
 			if(size_t(option_chosen) >= menu_items.size()) {

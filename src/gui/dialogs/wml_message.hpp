@@ -32,8 +32,22 @@ public:
 		: tmessage(title, message, true)
 		, portrait_(portrait)
 		, mirror_(mirror)
+		, input_caption_("")
+		, input_text_(NULL)
+	    , input_maximum_lenght_(0)
 	{
 	}
+
+	/**
+	 * Sets the input text variables.
+	 *
+	 * @param caption             The caption for the label.
+	 * @param text                The initial text, after showing the final
+	 *                            text.
+	 * @param maximum_length      The maximum length of the text.
+	 */
+	void set_input(const std::string& caption,
+			std::string* text, const unsigned maximum_length);
 
 private:
 
@@ -42,6 +56,18 @@ private:
 
 	/** Mirror the portrait? */
 	bool mirror_;
+
+	/** The caption to show for the input text. */
+	std::string input_caption_;
+
+	/** The text input. */
+	std::string* input_text_;
+
+	/** The maximum length of the input text. */
+	unsigned input_maximum_lenght_;
+
+	/** Does the dialog have an input text? */
+	bool has_input() { return !input_caption_.empty(); }
 
 	/**
 	 * Inherited from tmessage.
@@ -52,6 +78,9 @@ private:
 
 	/** Inherited from tmessage. */
 	void pre_show(CVideo& video, twindow& window);
+
+	/** Inherited from tdialog. */
+	void post_show(twindow& window);
 };
 
 /** Shows a dialog with the portrait on the left side. */
@@ -93,13 +122,24 @@ private:
  *  @param message                The message to show.
  *  @param portrait               Filename of the portrait.
  *  @param mirror                 Does the portrait need to be mirrored?
+ *
+ *  @param input_caption          The caption for the optional input text
+ *                                box. If this value != "" there is an input
+ *                                and the input text parameter is mandatory.
+ *  @param input_text             Pointer to the initial text value will be
+ *                                set to the result.
+ *  @param maximum_length         The maximum length of the text.
  */
 int show_wml_message(const bool left_side
 		, CVideo& video
 		, const std::string& title
 		, const std::string& message
 		, const std::string& portrait
-		, const bool mirror);
+		, const bool mirror
+		, const std::string& input_caption
+		, std::string* input_text
+	    , const unsigned maximum_length);
+
 
 } // namespace gui2
 
