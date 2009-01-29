@@ -2151,17 +2151,25 @@ namespace {
 		map_location loc1,loc2;
 		config data;
 		if (cfg.has_child("primary_unit")) {
-			vconfig u = cfg.child("primary_unit");
-			if (u.has_attribute("x") && u.has_attribute("y"))
-				loc1 = cfg_to_loc(u);
+			vconfig primary_unit_filter = cfg.child("primary_unit");
+			for(unit_map::iterator i = units->begin(); i != units->end(); ++i) {
+				if(game_events::unit_matches_filter(i,primary_unit_filter)) {
+					loc1 = (*i).first;
+					break;
+				}
+			}
 		}
 		if (cfg.has_child("primary_attack")) {
 			data.add_child("first", cfg.child("primary_attack").get_parsed_config());
 		}
 		if (cfg.has_child("secondary_unit")) {
-			vconfig u = cfg.child("secondary_unit");
-			if (u.has_attribute("x") && u.has_attribute("y"))
-				loc2 = cfg_to_loc(u);
+			vconfig secondary_unit_filter = cfg.child("secondary_unit");
+			for(unit_map::iterator i = units->begin(); i != units->end(); ++i) {
+				if(game_events::unit_matches_filter(i,secondary_unit_filter)) {
+					loc2 = (*i).first;
+					break;
+				}
+			}
 		}
 		if (cfg.has_child("secondary_attack")) {
 			data.add_child("second", cfg.child("secondary_attack").get_parsed_config());
