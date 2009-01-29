@@ -147,7 +147,7 @@ void suh::check_name(const std::string& name) {
 	}
 }
 
-void suh::check_mail(const std::string& mail) {
+void suh::check_mail(const std::string& /*mail*/) {
 	return;
 }
 
