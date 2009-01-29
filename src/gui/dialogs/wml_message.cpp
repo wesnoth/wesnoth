@@ -57,6 +57,7 @@ void twml_message_::pre_show(CVideo& video, twindow& window)
 		input->set_value(*input_text_);
 		input->set_maximum_length(input_maximum_lenght_);
 		window.keyboard_capture(input);
+		window.set_easy_close(false);
 	} else {
 		caption->set_visible(twidget::INVISIBLE);
 		input->set_visible(twidget::INVISIBLE);
