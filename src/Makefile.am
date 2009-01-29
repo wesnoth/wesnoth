@@ -219,6 +219,7 @@ wesnothd_SOURCES = \
 	server/simple_wml.cpp \
 	server/user_handler.cpp \
 	server/forum_user_handler.cpp \
+	server/sample_user_handler.cpp \
 	server/jwsmtp/mailer.cpp \
 	server/jwsmtp/compat.cpp \
 	server/jwsmtp/base64.cpp \

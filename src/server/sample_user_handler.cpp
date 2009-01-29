@@ -75,6 +75,16 @@ std::string suh::get_valid_details() {
 	return "'mail', 'password', 'realname';";
 }
 
+
+bool suh::user_is_moderator(const std::string& name) {
+	if(!user_exists(name)) return false;
+	return users_[name].is_moderator;
+}
+
+void suh::set_is_moderator(const std::string& name, const bool& is_moderator) {
+	users_[name].is_moderator == is_moderator;
+}
+
 void suh::set_mail(const std::string& user, const std::string& mail) {
 	check_mail(mail);
 	users_[user].mail = mail;
@@ -179,7 +189,7 @@ void suh::clean_up() {
 	}
 }
 
-bool suh::login(const std::string& name, const std::string& password) {
+bool suh::login(const std::string& name, const std::string& password, const std::string&) {
 	return password == get_password(name);
 }
 

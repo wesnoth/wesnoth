@@ -39,9 +39,7 @@
 #include "ban.hpp"
 
 #include "user_handler.hpp"
-// For now sample_user_handler is broken due
-// to the hardcoding of the phpbb hashing algorithms
-// #include "sample_user_handler.hpp"
+#include "sample_user_handler.hpp"
 
 #ifdef HAVE_MYSQLPP
 #include "forum_user_handler.hpp"
@@ -445,7 +443,7 @@ void server::send_password_request(network::connection sock, const char* msg, co
 	std::string salt1 = user_handler_->create_salt();
 	std::string salt2 = user_handler_->create_pepper(user, 0);
 	std::string salt3 = user_handler_->create_pepper(user, 1);
-	if(salt2.empty() || salt3.empty()) {
+	if(user_handler_->use_phpbb_encryption() && (salt2.empty() || salt3.empty())) {
 		send_error(sock, "Even though your nick is registered on this server you "
 					"cannot log in due to an error in the hashing algorithm. "
 					"Logging into your forum account on http://forum.wesnoth.org "
@@ -571,8 +569,11 @@ void server::load_config() {
 	user_handler_.reset();
 
 	if (const config* user_handler = cfg_.child("user_handler")) {
+		if(uh_name_ == "sample") {
+			user_handler_.reset(new suh(*user_handler));
+		}
 #ifdef HAVE_MYSQLPP
-		if(uh_name_ == "forum" || uh_name_.empty()) {
+		else if(uh_name_ == "forum" || uh_name_.empty()) {
 			user_handler_.reset(new fuh(*user_handler));
 		}
 #endif

@@ -381,6 +381,7 @@ SET(wesnothd_SRC
     server/simple_wml.cpp
     server/user_handler.cpp
     server/forum_user_handler.cpp
+    server/sample_user_handler.cpp
     network.cpp
 	time.cpp
     network_worker.cpp

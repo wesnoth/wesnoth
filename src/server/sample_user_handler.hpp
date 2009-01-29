@@ -34,26 +34,39 @@ class suh : public user_handler {
 
 		void clean_up();
 
-		bool login(const std::string& name, const std::string& password);
+		bool login(const std::string& name, const std::string& password, const std::string&);
 		void user_logged_in(const std::string& name);
 
 		void password_reminder(const std::string& name);
 
 		bool user_exists(const std::string& name);
 
+		bool user_is_moderator(const std::string& name);
+		void set_is_moderator(const std::string& name, const bool& is_moderator);
+
 		std::string user_info(const std::string& name);
 
 		struct user {
-			user() : registrationdate(time(NULL)) {}
+			user() :
+					password(),
+					realname(),
+					mail(),
+					lastlogin(time(NULL)),
+					registrationdate(time(NULL)),
+					is_moderator(false) {}
 			std::string password;
 			std::string realname;
 			std::string mail;
 			time_t lastlogin;
 			time_t registrationdate;
+			bool is_moderator;
 		};
 
 		void set_user_detail(const std::string& user, const std::string& detail, const std::string& value);
 		std::string get_valid_details();
+
+		std::string create_pepper(const std::string&, int) { return ""; }
+		bool use_phpbb_encryption() const { return false; }
 
 	private:
 		std::string get_mail(const std::string& user);
