@@ -82,7 +82,7 @@ bool suh::user_is_moderator(const std::string& name) {
 }
 
 void suh::set_is_moderator(const std::string& name, const bool& is_moderator) {
-	users_[name].is_moderator == is_moderator;
+	users_[name].is_moderator = is_moderator;
 }
 
 void suh::set_mail(const std::string& user, const std::string& mail) {
