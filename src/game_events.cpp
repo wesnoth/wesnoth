@@ -2158,6 +2158,9 @@ namespace {
 					break;
 				}
 			}
+			if(!game_map->on_board(loc1)) {
+				WRN_NG << "failed to match [primary_unit] in [fire_event] with a single on-board unit\n";
+			}
 		}
 		if (cfg.has_child("primary_attack")) {
 			data.add_child("first", cfg.child("primary_attack").get_parsed_config());
@@ -2169,6 +2172,9 @@ namespace {
 					loc2 = (*i).first;
 					break;
 				}
+			}
+			if(!game_map->on_board(loc2)) {
+				WRN_NG << "failed to match [secondary_unit] in [fire_event] with a single on-board unit\n";
 			}
 		}
 		if (cfg.has_child("secondary_attack")) {

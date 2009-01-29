@@ -15,6 +15,11 @@ Version 1.5.8+svn:
      for removing, but not for inserting; in the latter case, only the first id
      is considered to avoid stacking time_areas over a single location by
      accident.
+   * [fire_event] children tags [primary_unit] and [secondary_unit] now
+     take a real Standard Unit Filter instead of a x,y coordinate pair.
+     When a filter matching multiple units is used, only the first matching
+     unit will be taken for firing the event. Recall list filters and
+     invalid locations are silently ignored.
  * Miscellaneous and bug fixes
    * Fix clients not agreeing on remaining movepoints (bug #12467)
    * Fix summoning of other players recruit list on turn 1 (bug #12783)
