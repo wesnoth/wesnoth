@@ -165,6 +165,10 @@ class preprocessor_streambuf: public streambuf
 	std::string *error_log;
 	int linenum_;
 	int depth_;
+	/**
+	 * Set to true if one preprocessor for this target started to read a string.
+	 * Deeper-nested preprocessors are then forbidden to.
+	 */
 	bool quoted_;
 	friend class preprocessor;
 	friend class preprocessor_file;
@@ -350,8 +354,20 @@ class preprocessor_data: preprocessor
 	/** Description of a preprocessing chunk. */
 	struct token_desc
 	{
-		/** @todo FIXME: add enum for token type, with explanation of the different types. */
+		/** @todo FIXME: add enum for token type. */
+		/**
+		 * Preprocessor state.
+		 * - 'i': processing the "if" branch of a ifdef/ifndef (the "else" branch will be skipped)
+		 * - 'j': processing the "else" branch of a ifdef/ifndef
+		 * - 'I': skipping the "if" branch of a ifdef/ifndef (the "else" branch, if any, will be processed)
+		 * - 'J': skipping the "else" branch of a ifdef/ifndef
+		 * - '"': processing a string
+		 * - '{': processing between chunks of a macro call (skip spaces)
+		 * - '[': processing inside a chunk of a macro call (stop on space or '(')
+		 * - '(': processing a parenthesized macro argument
+		 */
 		char type;
+		/** Starting position in #strings_ of the delayed text for this chunk. */
 		int stack_pos;
 		int linenum;
 	};
@@ -369,7 +385,7 @@ class preprocessor_data: preprocessor
 	 */
 	int slowpath_;
 	/**
-	 * When non-zero, the preprocessor is currently skipping some input text.
+	 * Non-zero when the preprocessor has to skip some input text.
 	 * Increased whenever entering a conditional branch that is not useful,
 	 * e.g. a ifdef that evaluates to false.
 	 */
