@@ -82,6 +82,8 @@ class fuh : public user_handler {
 		void set_user_detail(const std::string& user, const std::string& detail, const std::string& value);
 		std::string get_valid_details();
 
+		bool use_phpbb_encryption() const { return true; }
+
 	private:
 		std::string get_hash(const std::string& user);
 		std::string get_mail(const std::string& user);

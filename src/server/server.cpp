@@ -322,6 +322,7 @@ private:
 	time_t last_user_seen_time_;
 	std::string restart_command;
 	size_t max_ip_log_size_;
+	std::string uh_name_;
 
 	/** Parse the server config into local variables. */
 	void load_config();
@@ -403,6 +404,7 @@ server::server(int port, const std::string& config_file, size_t min_threads,
 	last_user_seen_time_(time(NULL)),
 	restart_command(),
 	max_ip_log_size_(0),
+	uh_name_(),
 	version_query_response_("[version]\n[/version]\n", simple_wml::INIT_COMPRESSED),
 	login_response_("[mustlogin]\n[/mustlogin]\n", simple_wml::INIT_COMPRESSED),
 	join_lobby_response_("[join_lobby]\n[/join_lobby]\n", simple_wml::INIT_COMPRESSED),
@@ -456,6 +458,8 @@ void server::send_password_request(network::connection sock, const char* msg, co
 	simple_wml::document doc;
 	doc.root().add_child("error").set_attr("message", msg);
 	(*(doc.root().child("error"))).set_attr("password_request", "yes");
+	(*(doc.root().child("error"))).set_attr("phpbb_encryption",
+			user_handler_->use_phpbb_encryption() ? "yes" : "no");
 	(*(doc.root().child("error"))).set_attr("random_salt", salt1.c_str());
 	(*(doc.root().child("error"))).set_attr("hash_seed", salt2.c_str());
 	(*(doc.root().child("error"))).set_attr("salt", salt3.c_str());
@@ -497,6 +501,7 @@ void server::load_config() {
 	admin_passwd_ = cfg_["passwd"];
 	motd_ = cfg_["motd"];
 	lan_server_ = lexical_cast_default<time_t>(cfg_["lan_server"], 0);
+	uh_name_ = cfg_["user_handler"];
 
 	disallowed_names_.clear();
 	if (cfg_["disallow_names"] == "") {
@@ -520,6 +525,7 @@ void server::load_config() {
 			lexical_cast_default<size_t>(cfg_["connections_allowed"],5);
 	max_ip_log_size_ =
 			lexical_cast_default<size_t>(cfg_["max_ip_log_size"],500);
+
 	// Example config line:
 	// restart_command="./wesnothd-debug -d -c ~/.wesnoth1.5/server.cfg"
 	// remember to make new one as a daemon or it will block old one
@@ -564,14 +570,16 @@ void server::load_config() {
 	// NULL everytime we want to use it.
 	user_handler_.reset();
 
-#ifdef HAVE_MYSQLPP
 	if (const config* user_handler = cfg_.child("user_handler")) {
-		user_handler_.reset(new fuh(*user_handler));
+#ifdef HAVE_MYSQLPP
+		if(uh_name_ == "forum" || uh_name_.empty()) {
+			user_handler_.reset(new fuh(*user_handler));
+		}
+#endif
 		// Initiate the mailer class with the [mail] tag
 		// from the config file
 		if (user_handler_) user_handler_->init_mailer(cfg_.child("mail"));
 	}
-#endif
 }
 
 bool server::ip_exceeds_connection_limit(const std::string& ip) const {

@@ -142,6 +142,13 @@ class user_handler {
 		 */
 		virtual std::string create_pepper(const std::string& name, int index) =0;
 
+		/**
+		 * Does this user_handler want passwords passed encrypted using phpbb's algorithm?
+		 *
+		 * Let it return true if it does and false if it does not.
+		 */
+		virtual bool use_phpbb_encryption() const =0;
+
 	protected:
 
 		/**
