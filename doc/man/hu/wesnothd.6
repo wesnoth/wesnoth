@@ -33,16 +33,17 @@ wesnothd \- Harc \fBWesnoth\fPért többjátékos hálózati démon
 .
 .SH LEÍRÁS
 .
-Manages Battle for Wesnoth multiplayer games. See
-http://www.wesnoth.org/wiki/ServerAdministration on what commands the server
-accepts via the wesnoth client (/query ...) or the fifo.
+A Harc Wesnothért többjátékos mérkőzéseit kezeli. A klienstől (/query ...)
+vagy a fifoból  érkező elfogadott parancsokról itt tájékozódhatsz:
+http://www.wesnoth.org/wiki/ServerAdministration .
 .
 .SH BEÁLLÍTÁSOK
 .
 .TP 
 \fB\-c\ \fP\fIútvonal\fP\fB,\ \-\-config\fP\fI\ útvonal\fP
 megadja a wesnothd programnak, hogy hol keresse a konfigurációs fájlt. A
-szintaxisról lásd alább a \fBKISZOLGÁLÓ BEÁLLÍTÁSA\fP részt.
+szintaxisról lásd alább a \fBKISZOLGÁLÓ BEÁLLÍTÁSA\fP részt. A konfigurációt
+újratöltheted SIGHUP küldésével a kiszolgálói folyamatnak.
 .TP 
 \fB\-d, \-\-daemon\fP
 démon szolgáltatásként futtatja a wesnothd programot.
@@ -62,17 +63,17 @@ a megadott portra köti a kiszolgálót. Ha nincs más meghatározva, akkor a
 .TP 
 \fB\-t\ \fP\fIszám\fP\fB,\ \-\-threads\fP\fI\ szám\fP
 beállítja a teljesítésre váró hálózati I/O folyamatok maximális számát n\-re
-(alapértelmezett: \fB5\fP, legfeljebb: \fB30\fP)
+(alapértelmezett: \fB5\fP, legfeljebb: \fB30\fP).
 .TP 
 \fB\-T\ \fP\fIszám\fP\fB,\ \-\-max\-threads\fP\fI\ szám\fP
 meghatározza a teljesítésre váró folyamatok maximális számát, mely 0 esetén
-korlátlan (alapértelmezett: \fB0\fP)
+korlátlan (alapértelmezett: \fB0\fP).
 .TP 
 \fB\-V, \-\-version\fP
 kiírja a verziószámot, majd kilép.
 .TP 
 \fB\-v, \-\-verbose\fP
-bekapcsolja a részletesebb parancssori naplózást.
+bekapcsolja a debug szintű naplózást.
 .
 .SH "KISZOLGÁLÓ BEÁLLÍTÁSA"
 .
@@ -81,33 +82,35 @@ bekapcsolja a részletesebb parancssori naplózást.
 .P
 [\fInyitó tag\fP]
 .IP
-key="\fIérték\fP"
+kulcs="\fIérték\fP"
 .IP
-key="\fIérték\fP,\fIérték\fP,..."
+kulcs="\fIérték\fP,\fIérték\fP,..."
 .P
 [/\fIzáró tag\fP]
 .
-.SS "Globális kapcsolók:"
+.SS "Globális kulcsok:"
 .
 .TP 
 \fBban_save_file\fP
-Full or relative path to a (gzip compressed) file that the server can read
-and write.  Bans will be saved to this file and read again on server start.
+Teljes, vagy relatív elérési út egy gzippel tömörített fájlhoz, amit a
+szerver olvasni és írni is tud. A tiltások ebbe a fájlba mentődnek és innen
+lesznek kiolvasva szerver indításánál.
 .TP 
 \fBconnections_allowed\fP
 Az azonos IP címről engedélyezett párhuzamos kapcsolatok száma. \fB0\fP esetén
 korlátlan.(alapértelmezett: \fB5\fP)
 .TP 
 \fBdisallow_names\fP
-Azok a nevek/becenevek, melyeket a kiszolgáló visszautasít. A `*' és `?'
+Azok a nevek/becenevek, melyeket a kiszolgáló visszautasít. A '*' és '?'
 jelzések is használhatóak. Lásd a \fBglob\fP(7) részt a
-részletekért. Alapértelmezett értékek (ha más nincsen megadva):
-\fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
+részletekért. Alapértelmezett értékek (ha más nincsen megadva): \fB*admin*,
+*admln*,*server*,ai,ai?,computer,human,network,player\fP.
 .TP 
 \fBfifo_path\fP
-The path to the fifo you can echo server commands into (same as /query
-\&... from wesnoth).  If not specified defaults to the compile\-time specified
-path (default: /var/run/socket/wesnothd/socket).
+A fifo elérési útvonala, amibe szerver parancsokat irathatsz ki (ugyanaz
+mint /query ... a wesnothban). Ha nincs meghatározva, alapértelmezettként a
+forgatásnál meghatározott értékkel egyezik meg
+(/var/run/socket/wesnothd/socket).
 .TP 
 \fBmax_messages\fP
 A megadott időtartam (\fBmessages_time_period\fP) alatt küldhető üzenetek
@@ -126,18 +129,17 @@ A jelszó, amivel adminisztrátori jogok nyerhetőek. Általában az 'admin'
 szóval kezdődik.
 .TP 
 \fBrestart_command\fP
-The command that the server uses to start a new server process via the
-`restart' command. (Can only be issued via the fifo.)
+A parancs, amivel a szerver új kiszolgálói folyamatot indít a 'restart'
+paranccsal. (Csak a fifon keresztül adható ki.)
 .TP 
 \fBversions_accepted\fP
 Egy vesszőkkel elválasztott lista azokról a verziószámokról, amelyeket a
-kiszolgáló elfogad. A `*' és `?' jelzések is
-használhatóak. (alapértelmezetten csak az adott verzióval megegyező
-elfogadott)
+kiszolgáló elfogad. A '*' és '?' jelzések is használhatóak(alapértelmezetten
+csak az adott verzióval megegyező elfogadott).
 .br
 Példa: \fBversions_accepted="*"\fP bármilyen verziót elfogad.
 .
-.SS "Globális tag\-ek:"
+.SS "Globális tagek:"
 .
 .P
 \fB[redirect]\fP Bizonyos kliens verziók átirányítása egy másik, megadott
@@ -156,24 +158,24 @@ kiszolgáló átirányít. A különleges jelzések ( '*' és '?') a
 \fBversions_accepted\fP\-hez hasonlóan használhatóak.
 .RE
 .P
-\fB[ban_time]\fP A tag to define convenient keywords for temporary ban time
-lengths.
+\fB[ban_time]\fP Egy tag az átmeneti tiltási idők kényelmes, kulcsszavas
+meghatározásához.
 .RS
 .TP 
 \fBname\fP
-The name used to reference the ban time.
+A név, amivel a tiltási időre hivatkozunk.
 .TP 
 \fBtime\fP
-The time length definition.  The format is: %d[%s[%d%s[...]]] where %s is s
-(seconds), m (minutes), h (hours), D (days), M (months) or Y (years) and %d
-is a number.  If no time modifier is given minutes (m) are assumed.
-Example: time="1D12h30m" results in a ban time of 1 day, 12 hours and 30
-minutes.
+Az időhossz meghatározás. A formátum a következő: %d[%s[%d%s[...]]], ahol %s
+lehet: s (másodpercek), m (percek), h (órák), D (napok), M (hónapok) vagy Y
+(évek), és %d egy szám. Ha nincs meghatározva a mértékegység, akkor
+percekként (m) lesz értelmezve. Példa: time="1D12h30m" egy 1 napos, 12 órás
+és 30 perces tiltási időt határoz meg.
 .RE
 .P
-\fB[proxy]\fP A tag to tell the server to act as a proxy and forward the
-connected client's requests to the specified server.  Accepts the same keys
-as \fB[redirect]\fP.
+\fB[proxy]\fP Proxyként való viselkedés, azaz a bejövő kliens kapcsolatok
+továbbítása a megadott kiszolgáló felé. Ugyanazokat az értékeket fogadja el,
+mint a \fB[redirect]\fP.
 .
 .SH SZERZŐ
 .
@@ -183,11 +185,12 @@ Soliton <soliton.de@gmail.com>.
 Ennek a dokumentumnak az eredetijét Cyril Bouthors
 <cyril@bouthors.org> írta.
 Magyarra fordították: Gilluin <gilluin@citromail.hu>, Széll Tamás
-<tomi@digiflex.hu>, Pintér Csaba és Kádár\-Németh Krisztián
-<krisztian.7@vizslamail.hu>.
+<tomi@digiflex.hu>, Pintér Csaba, Kádár\-Németh Krisztián
+<krisztian.kad@gmail.com> és Udvari Gábor
+<gabor.udvari@gmail.com>.
 .br
 Látogasd meg a hivatalos honlapot: http://www.wesnoth.org/ illetve a magyar
-közösségi portált: http://users.cwi.hu/wesnoth
+közösségi portált: http://wesnoth.fsf.hu/
 .
 .SH "SZERZŐI JOGOK"
 .
