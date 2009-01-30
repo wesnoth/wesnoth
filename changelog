@@ -1,10 +1,23 @@
 Version 1.5.8+svn:
+ * Campaigns:
+   * Descent into Darkness
+     * In 'Endless Night', the enemy's gold now increases faster.
+   * The South Guard
+     * Made 'Tides of War' a bit easier.
+   * Sceptre of Fire
+     * Fix the player's keep disappearing in 'Gathering Materials'.
+     * New graphics for the Dwarvish Miner.
+   * Under the Burning Suns:
+     * New base frames for the Desert Sentinel and Prowler.
  * Graphics:
    * Removed the black background from some remaining old portraits
    * New portrait for Dwarf Thunderer, Dwarf Dragonguard, Human Pikeman, Dwarf Fighter, Dwarf Lord.
  * Language and i18n:
    * updated translations: Chinese (Traditional), Czech, French, German,
      Hungarian, Italian, Polish, Slovak, Spanish
+ * Multiplayer:
+   * Fixed the Default Era quick leaders not getting the -5% HP reduction.
+   * Made leaders with 4 MP receive the quick trait also in Age of Heroes.
  * User interface:
    * Hide the "Network Player" option for Local MP Games (bug #12596).
    * Portraits with an icon are TC'ed again.
@@ -20,7 +33,7 @@ Version 1.5.8+svn:
      When a filter matching multiple units is used, only the first matching
      unit will be taken for firing the event. Recall list filters and
      invalid locations are silently ignored.
- * Miscellaneous and bug fixes
+ * Miscellaneous and bug fixes:
    * Fix clients not agreeing on remaining movepoints (bug #12467)
    * Fix summoning of other players recruit list on turn 1 (bug #12783)
    * Fix [item] overlays with visible_in_fog=yes magically becoming

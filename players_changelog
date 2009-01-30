@@ -3,6 +3,15 @@ changes may be omitted). For a complete list of changes, see the main
 changelog: http://svn.gna.org/viewcvs/*checkout*/wesnoth/trunk/changelog
 
 Version 1.5.8+svn:
+  * Campaigns
+    * The South Guard
+      * Made 'Tides of War' a bit easier.
+    * Sceptre of Fire
+      * Fix the player's keep disappearing in 'Gathering Materials'.
+      * New graphics for the Dwarvish Miner.
+    * Under the Burning Suns:
+      * New base frames for the Desert Sentinel and Prowler.
+    
   * Language and translations
     * updated translations: Chinese (Traditional), Czech, French, German,
       Hungarian, Italian, Polish, Slovak, Spanish.
@@ -10,6 +19,10 @@ Version 1.5.8+svn:
   * Graphics
     * New portrait for Dwarf Thunderer, Dwarf Dragonguard, Human Pikeman, Dwarf Fighter, Dwarf Lord.
     * Removed the black background from some remaining old portraits.
+    
+  * Multiplayer
+    * Fixed the Default Era quick leaders not getting the -5% HP reduction.
+    * Made leaders with 4 MP receive the quick trait also in Age of Heroes.
 
   * User interface
     * Disable the "Network Player" option when playing a non-networked MP
