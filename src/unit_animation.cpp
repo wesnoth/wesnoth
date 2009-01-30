@@ -357,7 +357,14 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 		animations.push_back(tmp_anim);
 
 		tmp_anim = *itor;
-		tmp_anim.unit_anim_.override(-150,150,"","0.5:75,0.0:75,0.5:75,0.0",game_display::rgb(255,0,0));
+		tmp_anim.unit_anim_.override(0,225,"","0.0,0.5:75,0.0:75,0.5:75,0.0",game_display::rgb(255,0,0));
+		tmp_anim.hits_.push_back(HIT);
+		tmp_anim.hits_.push_back(KILL);
+		tmp_anim.event_ = utils::split("defend");
+		animations.push_back(tmp_anim);
+
+		tmp_anim = *itor;
+		tmp_anim.unit_anim_.override(0,1,"");
 		tmp_anim.event_ = utils::split("defend");
 		animations.push_back(tmp_anim);
 
@@ -520,24 +527,19 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 	for(anim_itor = defends.begin(); anim_itor != defends.end(); ++anim_itor) {
 		(**anim_itor)["apply_to"] ="defend";
 		(**anim_itor)["layer"] =lexical_cast<std::string>(display::LAYER_UNIT_DEFAULT-display::LAYER_UNIT_FIRST);
-		if(!(**anim_itor)["damage"].empty()) {
+		if(!(**anim_itor)["damage"].empty()&& (**anim_itor)["value"].empty()) {
 			(**anim_itor)["value"]=(**anim_itor)["damage"];
+		}
+		if((**anim_itor)["hits"].empty())
+		{
+			(**anim_itor)["hits"]="no";
 			animations.push_back(unit_animation(**anim_itor));
-			if(atoi((**anim_itor)["value"].c_str()) != 0) {
-				animations.back().add_frame(225,frame_builder()
-							.image(animations.back().get_last_frame().parameters(0).image)
-							.duration(225)
-							.blend("0.5:75,0.0:75,0.5:75,0.0",game_display::rgb(255,0,0)));
-			}
-		} else {
-			(**anim_itor)["value"]="0";
-			animations.push_back(unit_animation(**anim_itor));
-			(**anim_itor)["value"]="";
+			(**anim_itor)["hits"]="yes";
 			animations.push_back(unit_animation(**anim_itor));
 			animations.back().add_frame(225,frame_builder()
 					.image(animations.back().get_last_frame().parameters(0).image)
 					.duration(225)
-					.blend("0.5:75,0.0:75,0.5:75,0.0",game_display::rgb(255,0,0)));
+					.blend("0.0,0.5:75,0.0:75,0.5:75,0.0",game_display::rgb(255,0,0)));
 		}
 	}
 	expanded_cfg = unit_animation::prepare_animation(cfg,"attack_anim");

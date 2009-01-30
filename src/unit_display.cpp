@@ -379,13 +379,13 @@ void wml_animation_internal(unit_animator & animator,const vconfig &cfg, const g
 			}
 		}
 
-		if(cfg["hit"] == "yes" || cfg["hit"] == "hit") {
+		if(cfg["hits"] == "yes" || cfg["hits"] == "hit") {
 			hits = unit_animation::HIT;
 		}
-		if(cfg["hit"] == "no" || cfg["hit"] == "miss") {
+		if(cfg["hits"] == "no" || cfg["hits"] == "miss") {
 			hits = unit_animation::MISS;
 		}
-		if( cfg["hit"] == "kill" ) {
+		if( cfg["hits"] == "kill" ) {
 			hits = unit_animation::KILL;
 		}
 		if(cfg["red"].empty() && cfg["green"].empty() && cfg["blue"].empty()) {
