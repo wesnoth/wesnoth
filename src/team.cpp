@@ -665,6 +665,8 @@ void team::change_team(const std::string& name, const std::string& user_name)
 	if(teams != NULL) {
 		for(std::vector<team>::const_iterator i = teams->begin(); i != teams->end(); ++i) {
 			i->enemies_.clear();
+			i->ally_shroud_.clear();
+			i->ally_fog_.clear();
 		}
 	}
 }
