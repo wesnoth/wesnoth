@@ -356,6 +356,9 @@ surface locator::load_image_sub_file() const
 		// ~CROP() status
 		bool slice = false;
 		SDL_Rect slice_rect = { 0,0,0,0 };
+		// ~SCALE() status
+		bool scale = false;
+		int scale_w = 0, scale_h = 0;
 		// ~RC() and ~TC() status
 		bool rc = false;
 		// ~CS() arguments
@@ -490,6 +493,18 @@ surface locator::load_image_sub_file() const
 							slice_rect.h = lexical_cast_default<Uint16, const std::string&>(slice_params[3]);
 					}
 				}
+				else if("SCALE" == function) { // Scale image
+					std::vector<std::string> const& scale_params = utils::split(field, ',', utils::STRIP_SPACES);
+					if(scale_params.empty()) {
+						ERR_DP << "no arguments passed to the ~SCALE() function\n";
+					} else {
+						scale = true;
+							scale_w = lexical_cast_default<int, const std::string&>(scale_params[0]);
+						if(scale_params.size() > 1) {
+							scale_h = lexical_cast_default<int, const std::string&>(scale_params[1]);
+						}
+					}
+				}
 				else if("BL" == function) { // Blur
 					blur = std::max<int>(0, lexical_cast_default<int>(field));
 				}
@@ -546,6 +561,26 @@ surface locator::load_image_sub_file() const
 		}
 		if(yflip) {
 			surf = flop_surface(surf);
+		}
+		if(scale) {
+			const int old_w = surf->w;
+			const int old_h = surf->h;
+			if(scale_w <= 0) {
+				if(scale_w < 0) {
+					ERR_DP << "width of SCALE is negative - resetting to original width\n";
+				}
+				scale_w = old_w;
+			}
+			if(scale_h <= 0) {
+				if(scale_h < 0) {
+					ERR_DP << "height of SCALE is negative - resetting to original height\n";
+				}
+				scale_h = old_h;
+			}
+
+			if(scale_w != old_w || scale_h != old_h) {
+				surf = scale_surface(surf, scale_w, scale_h);
+			}
 		}
 		if(cs_r || cs_g || cs_b) {
 			surf = adjust_surface_colour(surf, cs_r, cs_g, cs_b);
