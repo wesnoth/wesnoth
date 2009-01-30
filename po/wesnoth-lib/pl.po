@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-01-16 21:54+0100\n"
+"POT-Creation-Date: 2009-01-30 20:58+0100\n"
 "PO-Revision-Date: 2009-01-26 20:11+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team:  <z.banach@wsisiz.edu.pl>\n"
@@ -366,7 +366,7 @@ msgstr "Nie do chodzenia"
 #. [column]
 #: data/gui/default/window/addon_connect.cfg:32
 #: data/gui/default/window/mp_connect.cfg:31
-#: data/gui/default/window/mp_method_selection.cfg:251
+#: data/gui/default/window/mp_method_selection.cfg:255
 #: data/gui/default/window/mp_server_list.cfg:31
 msgid "Connect to Server"
 msgstr "Połącz z serwerem"
@@ -414,7 +414,7 @@ msgstr "Połącz"
 #: data/gui/default/window/mp_connect.cfg:190
 #: data/gui/default/window/mp_create_game.cfg:552
 #: data/gui/default/window/mp_login.cfg:262
-#: data/gui/default/window/mp_method_selection.cfg:323
+#: data/gui/default/window/mp_method_selection.cfg:327
 #: data/gui/default/window/mp_server_list.cfg:212 src/construct_dialog.cpp:133
 #: src/construct_dialog.cpp:136
 msgid "Cancel"
@@ -562,8 +562,10 @@ msgstr ""
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #: data/gui/default/window/editor_settings.cfg:230
-#: data/gui/default/window/mp_method_selection.cfg:309
-#: src/construct_dialog.cpp:125 src/construct_dialog.cpp:132
+#: data/gui/default/window/mp_method_selection.cfg:313
+#: data/gui/default/window/wml_message.cfg:360
+#: data/gui/default/window/wml_message.cfg:531 src/construct_dialog.cpp:125
+#: src/construct_dialog.cpp:132
 msgid "OK"
 msgstr "OK"
 
@@ -790,7 +792,7 @@ msgstr "Hasło:"
 
 #. [toggle_button]: id=remember_password
 #: data/gui/default/window/mp_login.cfg:190
-#: data/gui/default/window/mp_method_selection.cfg:170
+#: data/gui/default/window/mp_method_selection.cfg:174
 msgid "Save password to preferences (clear text)"
 msgstr "Zapisz hasło w preferencjach (otwartym tekstem)"
 
@@ -806,39 +808,50 @@ msgstr "Przypomnienie hasła"
 msgid "Multiplayer"
 msgstr "Gra wieloosobowa"
 
+#. [password_box]: id=password
+#: data/gui/default/window/mp_method_selection.cfg:134
+msgid ""
+"You may login to the official multiplayer server with your forum username "
+"and password.\n"
+"Note that registration is not required to join the server: you need to "
+"supply a password only if you wish to use a registered username.\n"
+"\n"
+"The Battle for Wesnoth forum can be found at http://www.wesnoth.org/forum/"
+msgstr ""
+
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:240
+#: data/gui/default/window/mp_method_selection.cfg:244
 msgid "Join Official Server"
 msgstr "Połącz z oficjalnym serwerem"
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:241
+#: data/gui/default/window/mp_method_selection.cfg:245
 #, fuzzy
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Zaloguj się na oficjalny serwer gier wieloosobowych Wesnoth"
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:252
+#: data/gui/default/window/mp_method_selection.cfg:256
 msgid "Join a different server"
 msgstr "Połącz z innym serwerem"
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:262
+#: data/gui/default/window/mp_method_selection.cfg:266
 msgid "Host Networked Game"
 msgstr "Załóż grę sieciową"
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:263
+#: data/gui/default/window/mp_method_selection.cfg:267
 msgid "Host a game using dedicated server 'wesnothd'"
 msgstr "Załóż grę sieciową używając dedykowanego serwera \"wesnothd\""
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:273
+#: data/gui/default/window/mp_method_selection.cfg:277
 msgid "Local Game"
 msgstr "Gra lokalna"
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:274
+#: data/gui/default/window/mp_method_selection.cfg:278
 #, fuzzy
 msgid "Play a multiplayer game with the AI or humans sharing the same machine"
 msgstr ""
@@ -953,7 +966,7 @@ msgid "Toggle Full Screen"
 msgstr "Przełącz pełny ekran"
 
 #: src/game_preferences_display.cpp:152
-msgid "Enable scroll tracking of unit actions."
+msgid "Enable scroll tracking of unit actions"
 msgstr ""
 
 #: src/game_preferences_display.cpp:153
@@ -1905,7 +1918,7 @@ msgstr "Zrzut zapisany"
 msgid "Screenshot failed"
 msgstr "Zrzut się nie powiódł"
 
-#: src/mapgen_dialog.cpp:109 src/preferences_display.cpp:222
+#: src/mapgen_dialog.cpp:109 src/preferences_display.cpp:224
 msgid "Close Window"
 msgstr "Zamknij okno"
 
@@ -1969,7 +1982,7 @@ msgstr "Nie można pobrać grafiki terenu: $terrain."
 msgid "Error creating or aquiring an image."
 msgstr "Błąd podczas tworzenia lub pobierania grafiki."
 
-#: src/preferences_display.cpp:74 src/preferences_display.cpp:111
+#: src/preferences_display.cpp:75 src/preferences_display.cpp:113
 msgid ""
 "The video mode could not be changed. Your window manager must be set to 16 "
 "bits per pixel to run the game in windowed mode. Your display must support "
@@ -1980,44 +1993,44 @@ msgstr ""
 "bitowego. Do gry w trybie pełnoekranowym wymagana jest rozdzielczość co "
 "najmniej 1024x768x16."
 
-#: src/preferences_display.cpp:226
+#: src/preferences_display.cpp:228
 msgid "Hotkey Settings"
 msgstr "Skróty"
 
-#: src/preferences_display.cpp:232 src/preferences_display.cpp:300
+#: src/preferences_display.cpp:234 src/preferences_display.cpp:302
 msgid "Press desired Hotkey (Esc cancels)"
 msgstr "Wciśnij wybrany skrót (Esc anuluje)"
 
-#: src/preferences_display.cpp:251
+#: src/preferences_display.cpp:253
 msgid "Action"
 msgstr "Akcja"
 
-#: src/preferences_display.cpp:251
+#: src/preferences_display.cpp:253
 msgid "Binding"
 msgstr "Przypisanie"
 
-#: src/preferences_display.cpp:263
+#: src/preferences_display.cpp:265
 msgid "Change Hotkey"
 msgstr "Zmień skrót"
 
-#: src/preferences_display.cpp:266
+#: src/preferences_display.cpp:268
 msgid "Clear Hotkey"
 msgstr "Usuń skrót"
 
-#: src/preferences_display.cpp:333
+#: src/preferences_display.cpp:335
 msgid "This Hotkey is already in use."
 msgstr "Ten skrót jest już używany."
 
-#: src/preferences_display.cpp:345
+#: src/preferences_display.cpp:347
 msgid ""
 "Warning: screenshot hotkeys not combined with Control, Alt or Meta keys."
 msgstr ""
 
-#: src/preferences_display.cpp:424
+#: src/preferences_display.cpp:426
 msgid "There are no alternative video modes available"
 msgstr "Inne tryby graficzne nie są dostępne"
 
-#: src/preferences_display.cpp:453
+#: src/preferences_display.cpp:455
 msgid "Choose Resolution"
 msgstr "Wybierz rozdzielczość"
 
@@ -2034,8 +2047,9 @@ msgstr ""
 "terenu: "
 
 #: src/wml_exception.cpp:52
+#, fuzzy
 msgid ""
-"An error due to possible invalid WML occured\n"
+"An error due to possibly invalid WML occurred\n"
 "The error message is :"
 msgstr ""
 "Wystąpił błąd z powodu potencjalnie błędnego kodu WML.\n"

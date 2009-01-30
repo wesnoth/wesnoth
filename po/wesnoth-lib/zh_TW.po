@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-01-16 21:54+0100\n"
+"POT-Creation-Date: 2009-01-30 20:58+0100\n"
 "PO-Revision-Date: 2008-08-11 01:15+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Chinese/Traditional <steven2880@gmail.com>\n"
@@ -364,7 +364,7 @@ msgstr "無法步行"
 #. [column]
 #: data/gui/default/window/addon_connect.cfg:32
 #: data/gui/default/window/mp_connect.cfg:31
-#: data/gui/default/window/mp_method_selection.cfg:251
+#: data/gui/default/window/mp_method_selection.cfg:255
 #: data/gui/default/window/mp_server_list.cfg:31
 #, fuzzy
 msgid "Connect to Server"
@@ -415,7 +415,7 @@ msgstr ""
 #: data/gui/default/window/mp_connect.cfg:190
 #: data/gui/default/window/mp_create_game.cfg:552
 #: data/gui/default/window/mp_login.cfg:262
-#: data/gui/default/window/mp_method_selection.cfg:323
+#: data/gui/default/window/mp_method_selection.cfg:327
 #: data/gui/default/window/mp_server_list.cfg:212 src/construct_dialog.cpp:133
 #: src/construct_dialog.cpp:136
 msgid "Cancel"
@@ -572,8 +572,10 @@ msgstr ""
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #: data/gui/default/window/editor_settings.cfg:230
-#: data/gui/default/window/mp_method_selection.cfg:309
-#: src/construct_dialog.cpp:125 src/construct_dialog.cpp:132
+#: data/gui/default/window/mp_method_selection.cfg:313
+#: data/gui/default/window/wml_message.cfg:360
+#: data/gui/default/window/wml_message.cfg:531 src/construct_dialog.cpp:125
+#: src/construct_dialog.cpp:132
 msgid "OK"
 msgstr "確定"
 
@@ -809,7 +811,7 @@ msgstr ""
 
 #. [toggle_button]: id=remember_password
 #: data/gui/default/window/mp_login.cfg:190
-#: data/gui/default/window/mp_method_selection.cfg:170
+#: data/gui/default/window/mp_method_selection.cfg:174
 msgid "Save password to preferences (clear text)"
 msgstr ""
 
@@ -826,39 +828,50 @@ msgstr ""
 msgid "Multiplayer"
 msgstr "多人遊戲設定"
 
+#. [password_box]: id=password
+#: data/gui/default/window/mp_method_selection.cfg:134
+msgid ""
+"You may login to the official multiplayer server with your forum username "
+"and password.\n"
+"Note that registration is not required to join the server: you need to "
+"supply a password only if you wish to use a registered username.\n"
+"\n"
+"The Battle for Wesnoth forum can be found at http://www.wesnoth.org/forum/"
+msgstr ""
+
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:240
+#: data/gui/default/window/mp_method_selection.cfg:244
 msgid "Join Official Server"
 msgstr ""
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:241
+#: data/gui/default/window/mp_method_selection.cfg:245
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr ""
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:252
+#: data/gui/default/window/mp_method_selection.cfg:256
 msgid "Join a different server"
 msgstr ""
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:262
+#: data/gui/default/window/mp_method_selection.cfg:266
 msgid "Host Networked Game"
 msgstr ""
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:263
+#: data/gui/default/window/mp_method_selection.cfg:267
 msgid "Host a game using dedicated server 'wesnothd'"
 msgstr ""
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:273
+#: data/gui/default/window/mp_method_selection.cfg:277
 #, fuzzy
 msgid "Local Game"
 msgstr "讀取遊戲"
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:274
+#: data/gui/default/window/mp_method_selection.cfg:278
 msgid "Play a multiplayer game with the AI or humans sharing the same machine"
 msgstr ""
 
@@ -975,7 +988,7 @@ msgid "Toggle Full Screen"
 msgstr "全螢幕顯示"
 
 #: src/game_preferences_display.cpp:152
-msgid "Enable scroll tracking of unit actions."
+msgid "Enable scroll tracking of unit actions"
 msgstr ""
 
 #: src/game_preferences_display.cpp:153
@@ -1929,7 +1942,7 @@ msgstr "截圖中"
 msgid "Screenshot failed"
 msgstr "截圖失敗"
 
-#: src/mapgen_dialog.cpp:109 src/preferences_display.cpp:222
+#: src/mapgen_dialog.cpp:109 src/preferences_display.cpp:224
 msgid "Close Window"
 msgstr "關閉視窗"
 
@@ -1993,7 +2006,7 @@ msgstr "無法獲取該地形圖片: $terrain。"
 msgid "Error creating or aquiring an image."
 msgstr "創建或獲取圖像文件錯誤。"
 
-#: src/preferences_display.cpp:74 src/preferences_display.cpp:111
+#: src/preferences_display.cpp:75 src/preferences_display.cpp:113
 msgid ""
 "The video mode could not be changed. Your window manager must be set to 16 "
 "bits per pixel to run the game in windowed mode. Your display must support "
@@ -2002,45 +2015,45 @@ msgstr ""
 "無法改變影像模式。以視窗模式執行遊戲需要將視窗解析度設為16位元，全螢幕模式需"
 "要您的顯示器支援1024x768解析度和16位元。"
 
-#: src/preferences_display.cpp:226
+#: src/preferences_display.cpp:228
 msgid "Hotkey Settings"
 msgstr "快捷鍵設定"
 
-#: src/preferences_display.cpp:232 src/preferences_display.cpp:300
+#: src/preferences_display.cpp:234 src/preferences_display.cpp:302
 #, fuzzy
 msgid "Press desired Hotkey (Esc cancels)"
 msgstr "請輸入您要設定的快捷鍵（按Esc取消）"
 
-#: src/preferences_display.cpp:251
+#: src/preferences_display.cpp:253
 msgid "Action"
 msgstr "動作"
 
-#: src/preferences_display.cpp:251
+#: src/preferences_display.cpp:253
 msgid "Binding"
 msgstr "綁定鍵"
 
-#: src/preferences_display.cpp:263
+#: src/preferences_display.cpp:265
 msgid "Change Hotkey"
 msgstr "更改快捷鍵"
 
-#: src/preferences_display.cpp:266
+#: src/preferences_display.cpp:268
 msgid "Clear Hotkey"
 msgstr "更改快捷鍵"
 
-#: src/preferences_display.cpp:333
+#: src/preferences_display.cpp:335
 msgid "This Hotkey is already in use."
 msgstr "此快捷鍵已經被使用"
 
-#: src/preferences_display.cpp:345
+#: src/preferences_display.cpp:347
 msgid ""
 "Warning: screenshot hotkeys not combined with Control, Alt or Meta keys."
 msgstr "警告:截圖快捷鍵不可以是Control、Alt和Meta keys。"
 
-#: src/preferences_display.cpp:424
+#: src/preferences_display.cpp:426
 msgid "There are no alternative video modes available"
 msgstr "没有其他可用的顯示模式"
 
-#: src/preferences_display.cpp:453
+#: src/preferences_display.cpp:455
 msgid "Choose Resolution"
 msgstr "選擇解析度"
 
@@ -2055,8 +2068,9 @@ msgid ""
 msgstr "找到一個由超過4個字符描述的地形，受影響的地形是："
 
 #: src/wml_exception.cpp:52
+#, fuzzy
 msgid ""
-"An error due to possible invalid WML occured\n"
+"An error due to possibly invalid WML occurred\n"
 "The error message is :"
 msgstr ""
 "發現一個錯誤，可能是由于無效的WML導致的\n"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-01-18 14:01+0100\n"
+"POT-Creation-Date: 2009-01-30 20:59+0100\n"
 "PO-Revision-Date: 2008-10-04 21:37+0100\n"
 "Last-Translator: Martin Dzbor <mdzbor@yahoo.co.uk>\n"
 "Language-Team: none\n"
@@ -627,7 +627,7 @@ msgid "Dwarvish Dragonguard"
 msgstr "Trpaslík dračí strážca"
 
 #. [unit_type]: id=Dwarvish Dragonguard, race=dwarf
-#: data/core/units/dwarves/Dragonguard.cfg:20
+#: data/core/units/dwarves/Dragonguard.cfg:21
 #, fuzzy
 msgid ""
 "It is not clear why the Dragonguards are called what they are, a name given "
@@ -649,9 +649,9 @@ msgstr ""
 #. [attack]: type=blade
 #: data/core/units/orcs/Archer.cfg:71 data/core/units/orcs/Assassin.cfg:26
 #: data/core/units/orcs/Slayer.cfg:27
-#: data/core/units/dwarves/Dragonguard.cfg:26
-#: data/core/units/dwarves/Thunderer.cfg:41
-#: data/core/units/dwarves/Thunderguard.cfg:26
+#: data/core/units/dwarves/Dragonguard.cfg:39
+#: data/core/units/dwarves/Thunderer.cfg:54
+#: data/core/units/dwarves/Thunderguard.cfg:39
 #: data/core/units/humans/Outlaw_Assassin.cfg:28
 #: data/core/units/humans/Outlaw_Rogue.cfg:27
 #: data/core/units/humans/Woodsman_Trapper.cfg:70
@@ -665,7 +665,7 @@ msgid "dagger"
 msgstr "dýka"
 
 #. [attack]: type=pierce
-#: data/core/units/dwarves/Dragonguard.cfg:35
+#: data/core/units/dwarves/Dragonguard.cfg:48
 msgid "dragonstaff"
 msgstr "dračia palica"
 
@@ -687,7 +687,7 @@ msgstr ""
 "sila a vytrvalosť vyvažuje ich pomalý krok."
 
 #. [attack]: type=blade
-#: data/core/units/dwarves/Fighter.cfg:35
+#: data/core/units/dwarves/Fighter.cfg:47
 #: data/core/units/undead/Skele_Deathblade.cfg:149
 #: data/core/units/undead/Skele_Revenant.cfg:30
 #: data/core/units/undead/Skeleton.cfg:106
@@ -696,8 +696,8 @@ msgid "axe"
 msgstr "sekera"
 
 #. [attack]: type=impact
-#: data/core/units/dwarves/Steelclad.cfg:39
-#: data/core/units/dwarves/Lord.cfg:39 data/core/units/dwarves/Fighter.cfg:43
+#: data/core/units/dwarves/Steelclad.cfg:51
+#: data/core/units/dwarves/Lord.cfg:51 data/core/units/dwarves/Fighter.cfg:55
 #: data/core/units/trolls/Warrior.cfg:27 data/core/units/trolls/Great.cfg:27
 msgid "hammer"
 msgstr "kladivo"
@@ -750,14 +750,14 @@ msgstr ""
 "sekerkou. Pri chôdzi sú pomalí, ale inak sú dôkazom zručnosti svojho druhu."
 
 #. [attack]: type=blade
-#: data/core/units/dwarves/Steelclad.cfg:30
-#: data/core/units/dwarves/Lord.cfg:30
+#: data/core/units/dwarves/Steelclad.cfg:42
+#: data/core/units/dwarves/Lord.cfg:42
 #: data/core/units/undead/Skele_Death_Knight.cfg:59
 msgid "battle axe"
 msgstr "bojová sekera"
 
 #. [attack]: type=blade
-#: data/core/units/dwarves/Lord.cfg:47
+#: data/core/units/dwarves/Lord.cfg:59
 msgid "hatchet"
 msgstr "valaška"
 
@@ -850,7 +850,7 @@ msgid "Dwarvish Thunderer"
 msgstr "Trpaslík hromobijca"
 
 #. [unit_type]: id=Dwarvish Thunderer, race=dwarf
-#: data/core/units/dwarves/Thunderer.cfg:19
+#: data/core/units/dwarves/Thunderer.cfg:20
 #, fuzzy
 msgid ""
 "When the men of Wesnoth first encountered the dwarves, they were mystified "
@@ -867,8 +867,8 @@ msgstr ""
 "tajnostkárstvom ohľadom toho, ako tieto zariadenia vlastne fungujú."
 
 #. [attack]: type=pierce
-#: data/core/units/dwarves/Thunderer.cfg:50
-#: data/core/units/dwarves/Thunderguard.cfg:35
+#: data/core/units/dwarves/Thunderer.cfg:63
+#: data/core/units/dwarves/Thunderguard.cfg:48
 msgid "thunderstick"
 msgstr "hromová palica"
 
@@ -878,7 +878,7 @@ msgid "Dwarvish Thunderguard"
 msgstr "Trpaslík hromový strážca"
 
 #. [unit_type]: id=Dwarvish Thunderguard, race=dwarf
-#: data/core/units/dwarves/Thunderguard.cfg:21
+#: data/core/units/dwarves/Thunderguard.cfg:22
 #, fuzzy
 msgid ""
 "The Dwarven Thunderguards are famed for their curious weaponry, these "
@@ -2308,7 +2308,7 @@ msgstr ""
 "a taktike dokážu kopijníci odraziť aj útok pechoty."
 
 #. [attack]: type=pierce
-#: data/core/units/humans/Loyalist_Pikeman.cfg:53
+#: data/core/units/humans/Loyalist_Pikeman.cfg:65
 msgid "pike"
 msgstr "pika"
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-low\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-01-18 14:01+0100\n"
+"POT-Creation-Date: 2009-01-30 20:59+0100\n"
 "PO-Revision-Date: 2008-12-19 15:01+0200\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish <wesnoth-tr@googlegroups.com>\n"
@@ -211,14 +211,9 @@ msgstr "Kumşeh"
 #. [unit]: type=Orcish Warrior, id=Graur-Tan
 #. [side]: type=Orcish Warlord, id=Graur-Tan
 #: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:230
-#: data/campaigns/Legend_of_Wesmere/scenarios/06_Acquaintance_in_Need.cfg:128
+#: data/campaigns/Legend_of_Wesmere/scenarios/06_Acquaintance_in_Need.cfg:143
 msgid "Graur-Tan"
 msgstr "Gror-Tan"
-
-#. [wml_message]
-#: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:265
-msgid "campaign started"
-msgstr "sefer başladı"
 
 #. [unit]: type=Elvish Fighter, id=Anduilas
 #: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:282
@@ -242,8 +237,8 @@ msgstr "Yol işaretine ulaş"
 #: data/campaigns/Legend_of_Wesmere/scenarios/22_Northern_Battle.cfg:140
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian.cfg:187
 #: data/campaigns/Legend_of_Wesmere/scenarios/14_Human_Alliance.cfg:214
-#: data/campaigns/Legend_of_Wesmere/scenarios/06_Acquaintance_in_Need.cfg:185
-#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:54
+#: data/campaigns/Legend_of_Wesmere/scenarios/06_Acquaintance_in_Need.cfg:200
+#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:340
 #: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_last_stand.cfg:264
 #: data/campaigns/Legend_of_Wesmere/scenarios/19_Costly_Revenge.cfg:103
 #: data/campaigns/Legend_of_Wesmere/scenarios/09_Bounty_hunters.cfg:133
@@ -261,8 +256,8 @@ msgstr "Kalenz’in ölümü"
 #: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:304
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian.cfg:191
 #: data/campaigns/Legend_of_Wesmere/scenarios/14_Human_Alliance.cfg:218
-#: data/campaigns/Legend_of_Wesmere/scenarios/06_Acquaintance_in_Need.cfg:189
-#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:58
+#: data/campaigns/Legend_of_Wesmere/scenarios/06_Acquaintance_in_Need.cfg:204
+#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:344
 #: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_last_stand.cfg:268
 #: data/campaigns/Legend_of_Wesmere/scenarios/19_Costly_Revenge.cfg:107
 #: data/campaigns/Legend_of_Wesmere/scenarios/09_Bounty_hunters.cfg:137
@@ -281,8 +276,8 @@ msgstr "Landar’ın ölümü"
 #: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:308
 #: data/campaigns/Legend_of_Wesmere/scenarios/21_Elvish_Assassins.cfg:184
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian.cfg:199
-#: data/campaigns/Legend_of_Wesmere/scenarios/06_Acquaintance_in_Need.cfg:201
-#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:66
+#: data/campaigns/Legend_of_Wesmere/scenarios/06_Acquaintance_in_Need.cfg:216
+#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:352
 #: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_last_stand.cfg:284
 #: data/campaigns/Legend_of_Wesmere/scenarios/19_Costly_Revenge.cfg:115
 #: data/campaigns/Legend_of_Wesmere/scenarios/09_Bounty_hunters.cfg:149
@@ -407,61 +402,28 @@ msgstr ""
 "küçük bir kısmıydı. Kalya’ya ulaşmak için ülkeyi etrafından dolaşmaktan "
 "başka çare yoktu."
 
-#. [objective]: condition=win
-#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:46
-msgid "Kalenz must reach the signpost"
-msgstr "Kalenz’i yol işaretine ulaştır"
-
-#. [objective]: condition=win
-#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:50
-msgid "Defeat Grugl"
-msgstr "Grugul’u yen"
-
-#. [objective]: condition=lose
-#: data/campaigns/Legend_of_Wesmere/scenarios/11_Battle_of_the_book.cfg:95
-#: data/campaigns/Legend_of_Wesmere/scenarios/10_Cliffs_of_Thoria.cfg:125
-#: data/campaigns/Legend_of_Wesmere/scenarios/14_Human_Alliance.cfg:222
-#: data/campaigns/Legend_of_Wesmere/scenarios/06_Acquaintance_in_Need.cfg:193
-#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:62
-#: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_last_stand.cfg:276
-#: data/campaigns/Legend_of_Wesmere/scenarios/09_Bounty_hunters.cfg:145
-#: data/campaigns/Legend_of_Wesmere/scenarios/17_Breaking_the_siege.cfg:194
-msgid "Death of Olurf"
-msgstr "Olurf’un ölümü"
-
 #. [message]: speaker=second_unit
-#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:84
+#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:48
 msgid "Payback time!"
 msgstr "Ödeşme zamanı!"
 
-#. [message]: speaker=unit
-#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:97
-msgid "We made it. Onwards to Wesmere!"
-msgstr "Başardık. Doğru Vesmer’e!"
-
 #. [message]: id=Olurf
-#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:101
-msgid "Crazy elves! But at least they felled a few trolls before they left."
-msgstr ""
-"Kaçık elfler! Fakat en azından geçerken bir kaç trolün icabına baktılar."
-
-#. [message]: id=Olurf
-#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:178
+#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:126
 msgid "Those stinking trolls ha' stepped on OUR land! Attack!"
 msgstr "Bu lanet troller topraklarımıza adım attı! Saldırın!"
 
 #. [message]: id=Olurf
-#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:223
+#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:171
 msgid "Those lying elves have stepped on OUR land! Attack!"
 msgstr "Bu lanet elfler topraklarımıza adım attı! Saldırın!"
 
 #. [side]: type=Troll Hero, type=Great Troll, id=Grugl
-#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:276
+#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:224
 msgid "Grugl"
 msgstr "Grugul"
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:352
+#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:301
 msgid ""
 "I had hoped to avoid these paths... The eastern way is through dwarvish "
 "territory and is shorter. I pray the dwarves will grant us safe passage, "
@@ -472,7 +434,7 @@ msgstr ""
 "topraklarından geçiyor..."
 
 #. [message]: id=Olurf
-#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:356
+#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:305
 msgid ""
 "Not even in yer dreams, elf. These are dwarvish lands, and troubles we want "
 "no part of nip at yer heels. Get out and stay out!"
@@ -481,7 +443,7 @@ msgstr ""
 "buralarda istemiyoruz! Uza da boyunu görelim!"
 
 #. [message]: id=Landar
-#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:360
+#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:309
 msgid ""
 "Our troubles will be yours, too, whether either of us will it or not. The "
 "orcs have come down from the north like a flood; if we squabble among "
@@ -492,7 +454,7 @@ msgstr ""
 "seyredip eğlenmek kalır."
 
 #. [message]: id=Olurf
-#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:364
+#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:313
 msgid ""
 "Bah. More smooth words and trickery, by my beard. We know yer kind...and who "
 "needs yer help anyway, weaklings? Leave now, or feel my axe! That same kiss "
@@ -505,18 +467,51 @@ msgstr ""
 "kusurumuza bakmasın!"
 
 #. [message]: id=Landar
-#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:368
+#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:317
 msgid "I cannot see how trolls could be any less friendly."
 msgstr "Troller daha ne kadar kötü dostluk gösterebilirdi, anlayamadım."
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:372
+#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:321
 msgid ""
 "Hmm... Perhaps the dwarves' intransigence can serve our purpose. Onwards, "
 "and no matter what you do, do NOT step on the eastern band of the river!"
 msgstr ""
 "Hımm... Belki cüceler dolaylı da olsa hala yardımcı olabilir. İleri! Nehrin "
 "güney kıyısına adımınızı atmayın da ne yaparsanız yapın!"
+
+#. [objective]: condition=win
+#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:332
+msgid "Kalenz must reach the signpost"
+msgstr "Kalenz’i yol işaretine ulaştır"
+
+#. [objective]: condition=win
+#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:336
+msgid "Defeat Grugl"
+msgstr "Grugul’u yen"
+
+#. [objective]: condition=lose
+#: data/campaigns/Legend_of_Wesmere/scenarios/11_Battle_of_the_book.cfg:95
+#: data/campaigns/Legend_of_Wesmere/scenarios/10_Cliffs_of_Thoria.cfg:125
+#: data/campaigns/Legend_of_Wesmere/scenarios/14_Human_Alliance.cfg:222
+#: data/campaigns/Legend_of_Wesmere/scenarios/06_Acquaintance_in_Need.cfg:208
+#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:348
+#: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_last_stand.cfg:276
+#: data/campaigns/Legend_of_Wesmere/scenarios/09_Bounty_hunters.cfg:145
+#: data/campaigns/Legend_of_Wesmere/scenarios/17_Breaking_the_siege.cfg:194
+msgid "Death of Olurf"
+msgstr "Olurf’un ölümü"
+
+#. [message]: speaker=unit
+#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:367
+msgid "We made it. Onwards to Wesmere!"
+msgstr "Başardık. Doğru Vesmer’e!"
+
+#. [message]: id=Olurf
+#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:371
+msgid "Crazy elves! But at least they felled a few trolls before they left."
+msgstr ""
+"Kaçık elfler! Fakat en azından geçerken bir kaç trolün icabına baktılar."
 
 #. [scenario]: id=03_Kalian
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian.cfg:7
@@ -667,7 +662,7 @@ msgstr "Trigir"
 #: data/campaigns/Legend_of_Wesmere/scenarios/21_Elvish_Assassins.cfg:180
 #: data/campaigns/Legend_of_Wesmere/scenarios/22_Northern_Battle.cfg:144
 #: data/campaigns/Legend_of_Wesmere/scenarios/14_Human_Alliance.cfg:226
-#: data/campaigns/Legend_of_Wesmere/scenarios/06_Acquaintance_in_Need.cfg:197
+#: data/campaigns/Legend_of_Wesmere/scenarios/06_Acquaintance_in_Need.cfg:212
 #: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_last_stand.cfg:272
 #: data/campaigns/Legend_of_Wesmere/scenarios/19_Costly_Revenge.cfg:111
 #: data/campaigns/Legend_of_Wesmere/scenarios/09_Bounty_hunters.cfg:141
@@ -913,22 +908,22 @@ msgstr ""
 "ormanına başka bir yerden girmek üzere harekete geçti ..."
 
 #. [side]: type=Orcish Warlord, id=Urug-Tar
-#: data/campaigns/Legend_of_Wesmere/scenarios/06_Acquaintance_in_Need.cfg:98
+#: data/campaigns/Legend_of_Wesmere/scenarios/06_Acquaintance_in_Need.cfg:113
 msgid "Urug-Tar"
 msgstr "Urug-Tar"
 
 #. [side]: type=Troll Warrior, id=Traur
-#: data/campaigns/Legend_of_Wesmere/scenarios/06_Acquaintance_in_Need.cfg:153
+#: data/campaigns/Legend_of_Wesmere/scenarios/06_Acquaintance_in_Need.cfg:168
 msgid "Traur"
 msgstr "Tror"
 
 #. [objective]: condition=win
-#: data/campaigns/Legend_of_Wesmere/scenarios/06_Acquaintance_in_Need.cfg:181
+#: data/campaigns/Legend_of_Wesmere/scenarios/06_Acquaintance_in_Need.cfg:196
 msgid "Defeat enemy leaders"
 msgstr "Düşman liderlerini yen"
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/06_Acquaintance_in_Need.cfg:212
+#: data/campaigns/Legend_of_Wesmere/scenarios/06_Acquaintance_in_Need.cfg:227
 msgid ""
 "What's this? It appears the orcs have surrounded a dwarvish enclave. And by "
 "the sound of the bellowing I hear, I think our old friend, Olurf, is here."
@@ -937,7 +932,7 @@ msgstr ""
 "eski dostumuz Olurf’a ait."
 
 #. [message]: id=Olurf
-#: data/campaigns/Legend_of_Wesmere/scenarios/06_Acquaintance_in_Need.cfg:216
+#: data/campaigns/Legend_of_Wesmere/scenarios/06_Acquaintance_in_Need.cfg:231
 msgid ""
 "You again? Maybe ye were not completely wrong when ye predicted the orcs "
 "would attack us. We ha' been forced from our home and are now surrounded."
@@ -946,12 +941,12 @@ msgstr ""
 "yanılmıyordunuz. Tam yola çıkıyorduk, kuşatıldık."
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/06_Acquaintance_in_Need.cfg:220
+#: data/campaigns/Legend_of_Wesmere/scenarios/06_Acquaintance_in_Need.cfg:235
 msgid "Let us give them aid - it's clear they need it!"
 msgstr "Yardıma gidelim - bize ihtiyaçları olduğu açık!"
 
 #. [message]: id=Landar
-#: data/campaigns/Legend_of_Wesmere/scenarios/06_Acquaintance_in_Need.cfg:224
+#: data/campaigns/Legend_of_Wesmere/scenarios/06_Acquaintance_in_Need.cfg:239
 msgid ""
 "Help them? They would not even let us pass through their land to avoid the "
 "trolls, remember?"
@@ -960,7 +955,7 @@ msgstr ""
 "vermemişlerdi, unuttun mu?"
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/06_Acquaintance_in_Need.cfg:228
+#: data/campaigns/Legend_of_Wesmere/scenarios/06_Acquaintance_in_Need.cfg:243
 msgid ""
 "Our enemy is the orcs, not the dwarves. Besides, the orcs are in our way. "
 "Olurf, we cannot let you have all the fun here! "
@@ -970,19 +965,19 @@ msgstr ""
 "veremeyiz!"
 
 #. [message]: id=Olurf
-#: data/campaigns/Legend_of_Wesmere/scenarios/06_Acquaintance_in_Need.cfg:232
+#: data/campaigns/Legend_of_Wesmere/scenarios/06_Acquaintance_in_Need.cfg:247
 msgid "For an elf, you think like a dwarf! I think I like you. (for an elf)"
 msgstr ""
 "Bir elf olarak, tıpkı bir cüce gibi düşünüyorsun! Ben de senin gibi (bir elf "
 "gibi) düşünüyorum."
 
 #. [message]: id=Olurf
-#: data/campaigns/Legend_of_Wesmere/scenarios/06_Acquaintance_in_Need.cfg:240
+#: data/campaigns/Legend_of_Wesmere/scenarios/06_Acquaintance_in_Need.cfg:255
 msgid "The orcs ha' been defeated. My lord, we are in your debt."
 msgstr "Orklar yenildi. Size borçlandık, dostum."
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/06_Acquaintance_in_Need.cfg:244
+#: data/campaigns/Legend_of_Wesmere/scenarios/06_Acquaintance_in_Need.cfg:259
 msgid ""
 "We must put aside our differences and ally against the orcish menace. Olurf, "
 "join us!"
@@ -991,7 +986,7 @@ msgstr ""
 "etmeliyiz. Olurf, katıl bize!"
 
 #. [message]: id=Olurf
-#: data/campaigns/Legend_of_Wesmere/scenarios/06_Acquaintance_in_Need.cfg:248
+#: data/campaigns/Legend_of_Wesmere/scenarios/06_Acquaintance_in_Need.cfg:263
 msgid ""
 "Dwarves, ally with elves? I owe ye a debt, but my kin willna' be happy at "
 "the thought."
@@ -1000,7 +995,7 @@ msgstr ""
 "hoşuna gitmeyecek."
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/06_Acquaintance_in_Need.cfg:252
+#: data/campaigns/Legend_of_Wesmere/scenarios/06_Acquaintance_in_Need.cfg:267
 msgid ""
 "There will be a big fight with the orcs in Wesmere very soon. If you can "
 "cover our flank to the north, I will pay you 400 gold."
@@ -1009,7 +1004,7 @@ msgstr ""
 "tutarsan 400 altın ödeyeceğim."
 
 #. [message]: id=Olurf
-#: data/campaigns/Legend_of_Wesmere/scenarios/06_Acquaintance_in_Need.cfg:256
+#: data/campaigns/Legend_of_Wesmere/scenarios/06_Acquaintance_in_Need.cfg:271
 msgid ""
 "A proper contract for good money? That's a different matter; I'm sure I can "
 "find some o' my people willing to fight on those terms!"
@@ -1018,14 +1013,14 @@ msgstr ""
 "gönüllü olacaklarına eminim!"
 
 #. [message]: id=Landar
-#: data/campaigns/Legend_of_Wesmere/scenarios/06_Acquaintance_in_Need.cfg:260
+#: data/campaigns/Legend_of_Wesmere/scenarios/06_Acquaintance_in_Need.cfg:275
 msgid ""
 "What? Kalenz, are you out of your mind? Surely you will not throw away 400 "
 "gold on this scheming mercenary! "
 msgstr "Neee? Kalenz, kafayı mı yedin? 400 altını bu cüceye kaptıramazsın! "
 
 #. [message]: id=Olurf
-#: data/campaigns/Legend_of_Wesmere/scenarios/06_Acquaintance_in_Need.cfg:264
+#: data/campaigns/Legend_of_Wesmere/scenarios/06_Acquaintance_in_Need.cfg:279
 msgid ""
 "Where there's a contract, our honor is involved. We will be there to cover "
 "your northern flank or else I will return your gold!"
@@ -1034,7 +1029,7 @@ msgstr ""
 "Eğer bunu sağlayamazsak altını size geri veririz!"
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/06_Acquaintance_in_Need.cfg:268
+#: data/campaigns/Legend_of_Wesmere/scenarios/06_Acquaintance_in_Need.cfg:283
 msgid ""
 "I believe him. Dwarves are...rough...by our standards, but not liars. I "
 "think he knows that if he does not honor his contract, next time we will not "
@@ -1273,26 +1268,8 @@ msgstr "Burası son kalemiz. Kalya’yı alırlarsa yokoluruz!"
 msgid "We'll crush those weak elves and I'll get da stone!"
 msgstr "Bu cılız elfleri ezip taşı alacağız!"
 
-#. [option]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_last_stand.cfg:346
-#, fuzzy
-msgid ""
-"These are hardened orc and troll veterans. Men, prepare for a long, hard "
-"fight..."
-msgstr ""
-"Bunlar zorlu ork ve trol askerleri. Uzun ve zorlu bir döğüşe hazır olun!"
-
-#. [option]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_last_stand.cfg:350
-msgid ""
-"I see the orcish army is big but consists mostly of inexperienced fighters. "
-"This should not take too long...."
-msgstr ""
-"Ork ordusu büyük ama çoğunlukla deneyimsiz döğüşçülerden oluşuyor gibi "
-"görünüyor. Sonuç almamız uzun sürmeyecek..."
-
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_last_stand.cfg:492
+#: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_last_stand.cfg:493
 msgid ""
 "We still haven't defeated the orcs, and our troops and supplies are "
 "exhausted. This is the end!"
@@ -1300,17 +1277,17 @@ msgstr ""
 "Orkları hala yenemedik, askerlerimiz ve erzağımız tükendi. Sonumuz geldi!"
 
 #. [message]: id=Galtrid
-#: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_last_stand.cfg:500
+#: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_last_stand.cfg:501
 msgid "At last! The orcs are defeated."
 msgstr "Sonunda! Orklar yenildi."
 
 #. [unit]: type=Orcish Warrior, id=Pirorr
-#: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_last_stand.cfg:511
+#: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_last_stand.cfg:512
 msgid "Pirorr"
 msgstr "Piroror"
 
 #. [message]: id=Pirorr
-#: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_last_stand.cfg:520
+#: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_last_stand.cfg:521
 msgid ""
 "The elves have beaten us and they did not use da stone. Maybe they don't "
 "have it? Great Chief will not like bad news!"
@@ -1319,28 +1296,28 @@ msgstr ""
 "olmayabilir. Orkbaşı bu kötü haberi sevmeyecek!"
 
 #. [message]: id=Galtrid
-#: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_last_stand.cfg:528
+#: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_last_stand.cfg:529
 msgid "Kalenz, we are again in your debt. You returned just in time."
 msgstr "Kalenz, bir kere daha sana borçlandık. Tam zamanında döndün."
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_last_stand.cfg:533
+#: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_last_stand.cfg:534
 msgid "And we have what's left of the elvish treasury with us!"
 msgstr "Ve elf hazinesinin kalanı da yanımda!"
 
 #. [message]: id=unit
-#: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_last_stand.cfg:563
+#: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_last_stand.cfg:564
 msgid ""
 "Aargh! I should have stayed in the mountains instead of joining the orcs!"
 msgstr "Aaahh! Orklara katılmayıp dağlarda kalmalıydım."
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_last_stand.cfg:574
+#: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_last_stand.cfg:575
 msgid "Orcs, death is all you will find in this forest!"
 msgstr "Orklar, bu ormandan ölünüz çıkacak!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_last_stand.cfg:585
+#: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_last_stand.cfg:586
 msgid "I die without getting da stone?"
 msgstr "Taşı alamadan mı ölüyorum?"
 
@@ -4443,6 +4420,23 @@ msgstr "Olamaz! Çok geç kaldık..."
 #: data/campaigns/Legend_of_Wesmere/utils/low-macros.cfg:154
 msgid "You retrieve $amount_gold pieces of gold."
 msgstr " $amount_gold altın aldınız."
+
+#~ msgid "campaign started"
+#~ msgstr "sefer başladı"
+
+#, fuzzy
+#~ msgid ""
+#~ "These are hardened orc and troll veterans. Men, prepare for a long, hard "
+#~ "fight..."
+#~ msgstr ""
+#~ "Bunlar zorlu ork ve trol askerleri. Uzun ve zorlu bir döğüşe hazır olun!"
+
+#~ msgid ""
+#~ "I see the orcish army is big but consists mostly of inexperienced "
+#~ "fighters. This should not take too long...."
+#~ msgstr ""
+#~ "Ork ordusu büyük ama çoğunlukla deneyimsiz döğüşçülerden oluşuyor gibi "
+#~ "görünüyor. Sonuç almamız uzun sürmeyecek..."
 
 #~ msgid " and "
 #~ msgstr " ve "

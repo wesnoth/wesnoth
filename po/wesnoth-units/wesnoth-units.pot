@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-01-18 14:01+0100\n"
+"POT-Creation-Date: 2009-01-30 20:59+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -327,17 +327,17 @@ msgid "Dwarvish Dragonguard"
 msgstr ""
 
 #. [unit_type]: id=Dwarvish Dragonguard, race=dwarf
-#: data/core/units/dwarves/Dragonguard.cfg:20
+#: data/core/units/dwarves/Dragonguard.cfg:21
 msgid "It is not clear why the Dragonguards are called what they are, a name given by their dwarven brethren. Some speculate that the name comes from their weapon of choice, these strange staffs that belch fire and death. Others have surmised that it is because such weapons would be a threat against even a true Dragon, should such a thing be seen again in the known world. Whatever the case, it is for these weapons that the guardians of the great Dwarven citadels are both renowned and feared; weapons that have broken the mightiest of warriors in a single blow."
 msgstr ""
 
 #. [attack]: type=blade
-#: data/core/units/orcs/Archer.cfg:71 data/core/units/orcs/Assassin.cfg:26 data/core/units/orcs/Slayer.cfg:27 data/core/units/dwarves/Dragonguard.cfg:26 data/core/units/dwarves/Thunderer.cfg:41 data/core/units/dwarves/Thunderguard.cfg:26 data/core/units/humans/Outlaw_Assassin.cfg:28 data/core/units/humans/Outlaw_Rogue.cfg:27 data/core/units/humans/Woodsman_Trapper.cfg:70 data/core/units/humans/Outlaw_Thief.cfg:176 data/core/units/humans/Woodsman.cfg:28 data/core/units/humans/Woodsman_Huntsman.cfg:36 data/core/units/humans/Woodsman_Poacher.cfg:36 data/core/units/undead/Skele_Banebow.cfg:31 data/core/units/undead/Skele_Bone_Shooter.cfg:29
+#: data/core/units/orcs/Archer.cfg:71 data/core/units/orcs/Assassin.cfg:26 data/core/units/orcs/Slayer.cfg:27 data/core/units/dwarves/Dragonguard.cfg:39 data/core/units/dwarves/Thunderer.cfg:54 data/core/units/dwarves/Thunderguard.cfg:39 data/core/units/humans/Outlaw_Assassin.cfg:28 data/core/units/humans/Outlaw_Rogue.cfg:27 data/core/units/humans/Woodsman_Trapper.cfg:70 data/core/units/humans/Outlaw_Thief.cfg:176 data/core/units/humans/Woodsman.cfg:28 data/core/units/humans/Woodsman_Huntsman.cfg:36 data/core/units/humans/Woodsman_Poacher.cfg:36 data/core/units/undead/Skele_Banebow.cfg:31 data/core/units/undead/Skele_Bone_Shooter.cfg:29
 msgid "dagger"
 msgstr ""
 
 #. [attack]: type=pierce
-#: data/core/units/dwarves/Dragonguard.cfg:35
+#: data/core/units/dwarves/Dragonguard.cfg:48
 msgid "dragonstaff"
 msgstr ""
 
@@ -352,12 +352,12 @@ msgid "Dwarvish Fighters wield mighty battle axes and hammers, which make them f
 msgstr ""
 
 #. [attack]: type=blade
-#: data/core/units/dwarves/Fighter.cfg:35 data/core/units/undead/Skele_Deathblade.cfg:149 data/core/units/undead/Skele_Revenant.cfg:30 data/core/units/undead/Skeleton.cfg:106 data/core/units/undead/Skele_Draug.cfg:30
+#: data/core/units/dwarves/Fighter.cfg:47 data/core/units/undead/Skele_Deathblade.cfg:149 data/core/units/undead/Skele_Revenant.cfg:30 data/core/units/undead/Skeleton.cfg:106 data/core/units/undead/Skele_Draug.cfg:30
 msgid "axe"
 msgstr ""
 
 #. [attack]: type=impact
-#: data/core/units/dwarves/Steelclad.cfg:39 data/core/units/dwarves/Lord.cfg:39 data/core/units/dwarves/Fighter.cfg:43 data/core/units/trolls/Warrior.cfg:27 data/core/units/trolls/Great.cfg:27
+#: data/core/units/dwarves/Steelclad.cfg:51 data/core/units/dwarves/Lord.cfg:51 data/core/units/dwarves/Fighter.cfg:55 data/core/units/trolls/Warrior.cfg:27 data/core/units/trolls/Great.cfg:27
 msgid "hammer"
 msgstr ""
 
@@ -387,12 +387,12 @@ msgid "Clad in shining armor, these dwarves look like kings from under the mount
 msgstr ""
 
 #. [attack]: type=blade
-#: data/core/units/dwarves/Steelclad.cfg:30 data/core/units/dwarves/Lord.cfg:30 data/core/units/undead/Skele_Death_Knight.cfg:59
+#: data/core/units/dwarves/Steelclad.cfg:42 data/core/units/dwarves/Lord.cfg:42 data/core/units/undead/Skele_Death_Knight.cfg:59
 msgid "battle axe"
 msgstr ""
 
 #. [attack]: type=blade
-#: data/core/units/dwarves/Lord.cfg:47
+#: data/core/units/dwarves/Lord.cfg:59
 msgid "hatchet"
 msgstr ""
 
@@ -452,12 +452,12 @@ msgid "Dwarvish Thunderer"
 msgstr ""
 
 #. [unit_type]: id=Dwarvish Thunderer, race=dwarf
-#: data/core/units/dwarves/Thunderer.cfg:19
+#: data/core/units/dwarves/Thunderer.cfg:20
 msgid "When the men of Wesnoth first encountered the dwarves, they were mystified by the power of the Dwarvish Thunderers, who were able to hurl death from afar through the apparatus of these strange wands they carried into battle. The deafening noise of these 'thundersticks' is terrifying to behold, and is made more so by the secrecy which dwarves wrap about their workings."
 msgstr ""
 
 #. [attack]: type=pierce
-#: data/core/units/dwarves/Thunderer.cfg:50 data/core/units/dwarves/Thunderguard.cfg:35
+#: data/core/units/dwarves/Thunderer.cfg:63 data/core/units/dwarves/Thunderguard.cfg:48
 msgid "thunderstick"
 msgstr ""
 
@@ -467,7 +467,7 @@ msgid "Dwarvish Thunderguard"
 msgstr ""
 
 #. [unit_type]: id=Dwarvish Thunderguard, race=dwarf
-#: data/core/units/dwarves/Thunderguard.cfg:21
+#: data/core/units/dwarves/Thunderguard.cfg:22
 msgid ""
 "The Dwarven Thunderguards are famed for their curious weaponry, these strange staffs of wood and iron that make a thunderous noise in their anger. The machinations behind this weaponry are a mystery, a secret taken to the grave by the dwarves of Knalga who wield them, and are assumed to have even forged them. The most that is known are reports of dwarves pouring a strange black dust into the mouth of their weapons, which some say is a food to fuel the beast imprisoned within.\n"
 "\n"
@@ -1186,7 +1186,7 @@ msgid "Promising spearmen in the armies of Wesnoth are often graduated to wieldi
 msgstr ""
 
 #. [attack]: type=pierce
-#: data/core/units/humans/Loyalist_Pikeman.cfg:53
+#: data/core/units/humans/Loyalist_Pikeman.cfg:65
 msgid "pike"
 msgstr ""
 

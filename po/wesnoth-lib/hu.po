@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu-lib_1.5\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-01-16 21:54+0100\n"
+"POT-Creation-Date: 2009-01-30 20:58+0100\n"
 "PO-Revision-Date: 2009-01-18 18:17+0100\n"
 "Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
 "Language-Team: Hungarian <>\n"
@@ -365,7 +365,7 @@ msgstr "Járhatatlan terület"
 #. [column]
 #: data/gui/default/window/addon_connect.cfg:32
 #: data/gui/default/window/mp_connect.cfg:31
-#: data/gui/default/window/mp_method_selection.cfg:251
+#: data/gui/default/window/mp_method_selection.cfg:255
 #: data/gui/default/window/mp_server_list.cfg:31
 msgid "Connect to Server"
 msgstr "Csatlakozás a kiszolgálóhoz"
@@ -414,7 +414,7 @@ msgstr "Kapcsolódás"
 #: data/gui/default/window/mp_connect.cfg:190
 #: data/gui/default/window/mp_create_game.cfg:552
 #: data/gui/default/window/mp_login.cfg:262
-#: data/gui/default/window/mp_method_selection.cfg:323
+#: data/gui/default/window/mp_method_selection.cfg:327
 #: data/gui/default/window/mp_server_list.cfg:212 src/construct_dialog.cpp:133
 #: src/construct_dialog.cpp:136
 msgid "Cancel"
@@ -558,8 +558,10 @@ msgstr "Egynél több térkép egyszerre történő megnyitásának engedélyez�
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #: data/gui/default/window/editor_settings.cfg:230
-#: data/gui/default/window/mp_method_selection.cfg:309
-#: src/construct_dialog.cpp:125 src/construct_dialog.cpp:132
+#: data/gui/default/window/mp_method_selection.cfg:313
+#: data/gui/default/window/wml_message.cfg:360
+#: data/gui/default/window/wml_message.cfg:531 src/construct_dialog.cpp:125
+#: src/construct_dialog.cpp:132
 msgid "OK"
 msgstr "Rendben"
 
@@ -783,7 +785,7 @@ msgstr "Jelszó: "
 
 #. [toggle_button]: id=remember_password
 #: data/gui/default/window/mp_login.cfg:190
-#: data/gui/default/window/mp_method_selection.cfg:170
+#: data/gui/default/window/mp_method_selection.cfg:174
 msgid "Save password to preferences (clear text)"
 msgstr "Jelszó mentése a beállítások fájljába (kódolatlan szöveg)"
 
@@ -799,38 +801,49 @@ msgstr "Jelszóemlékeztető"
 msgid "Multiplayer"
 msgstr "Többjátékos"
 
+#. [password_box]: id=password
+#: data/gui/default/window/mp_method_selection.cfg:134
+msgid ""
+"You may login to the official multiplayer server with your forum username "
+"and password.\n"
+"Note that registration is not required to join the server: you need to "
+"supply a password only if you wish to use a registered username.\n"
+"\n"
+"The Battle for Wesnoth forum can be found at http://www.wesnoth.org/forum/"
+msgstr ""
+
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:240
+#: data/gui/default/window/mp_method_selection.cfg:244
 msgid "Join Official Server"
 msgstr "Csatlakozás a hivatalos kiszolgálóhoz"
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:241
+#: data/gui/default/window/mp_method_selection.cfg:245
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Bejelentkezés a Wesnoth hivatalos többjátékos kiszolgálójára"
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:252
+#: data/gui/default/window/mp_method_selection.cfg:256
 msgid "Join a different server"
 msgstr "Csatlakozás másik kiszolgálóhoz"
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:262
+#: data/gui/default/window/mp_method_selection.cfg:266
 msgid "Host Networked Game"
 msgstr "Hálózati játék készítése"
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:263
+#: data/gui/default/window/mp_method_selection.cfg:267
 msgid "Host a game using dedicated server 'wesnothd'"
 msgstr "Hálózati játék készítése a \"wesnothd\" kiszolgáló használatával"
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:273
+#: data/gui/default/window/mp_method_selection.cfg:277
 msgid "Local Game"
 msgstr "Helyi játék"
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:274
+#: data/gui/default/window/mp_method_selection.cfg:278
 msgid "Play a multiplayer game with the AI or humans sharing the same machine"
 msgstr ""
 "Többjátékos játék MI-vel vagy más emberekkel egyazon számítógép megosztásával"
@@ -943,7 +956,8 @@ msgid "Toggle Full Screen"
 msgstr "Teljes képernyős mód beállítása"
 
 #: src/game_preferences_display.cpp:152
-msgid "Enable scroll tracking of unit actions."
+#, fuzzy
+msgid "Enable scroll tracking of unit actions"
 msgstr "Egységműveletek görgetéses követése"
 
 #: src/game_preferences_display.cpp:153
@@ -1905,7 +1919,7 @@ msgstr "Képernyőkép elkészítve"
 msgid "Screenshot failed"
 msgstr "Képernyőkép készítése sikertelen"
 
-#: src/mapgen_dialog.cpp:109 src/preferences_display.cpp:222
+#: src/mapgen_dialog.cpp:109 src/preferences_display.cpp:224
 msgid "Close Window"
 msgstr "Ablak bezárása"
 
@@ -1969,7 +1983,7 @@ msgstr "Nincs kép a következő tereptípushoz: $terrain"
 msgid "Error creating or aquiring an image."
 msgstr "Hiba a kép létrehozása vagy lekérdezése közben."
 
-#: src/preferences_display.cpp:74 src/preferences_display.cpp:111
+#: src/preferences_display.cpp:75 src/preferences_display.cpp:113
 msgid ""
 "The video mode could not be changed. Your window manager must be set to 16 "
 "bits per pixel to run the game in windowed mode. Your display must support "
@@ -1980,46 +1994,46 @@ msgstr ""
 "Emellett a képernyődnek támogatnia kell az 1024x768-as felbontást ahhoz, "
 "hogy a játék teljes képernyőn fusson."
 
-#: src/preferences_display.cpp:226
+#: src/preferences_display.cpp:228
 msgid "Hotkey Settings"
 msgstr "Gyorsbillentyűk beállításai"
 
-#: src/preferences_display.cpp:232 src/preferences_display.cpp:300
+#: src/preferences_display.cpp:234 src/preferences_display.cpp:302
 msgid "Press desired Hotkey (Esc cancels)"
 msgstr "Nyomd le a kívánt gyorsbillentyűt (Esc a visszalépéshez)"
 
-#: src/preferences_display.cpp:251
+#: src/preferences_display.cpp:253
 msgid "Action"
 msgstr "Cselekvés"
 
-#: src/preferences_display.cpp:251
+#: src/preferences_display.cpp:253
 msgid "Binding"
 msgstr "Összekötés"
 
-#: src/preferences_display.cpp:263
+#: src/preferences_display.cpp:265
 msgid "Change Hotkey"
 msgstr "Gyorsbillentyű megváltoztatása"
 
-#: src/preferences_display.cpp:266
+#: src/preferences_display.cpp:268
 msgid "Clear Hotkey"
 msgstr "Gyorsbillentyű törlése"
 
-#: src/preferences_display.cpp:333
+#: src/preferences_display.cpp:335
 msgid "This Hotkey is already in use."
 msgstr "Ez a gyorsbillentyű már használatban van."
 
-#: src/preferences_display.cpp:345
+#: src/preferences_display.cpp:347
 msgid ""
 "Warning: screenshot hotkeys not combined with Control, Alt or Meta keys."
 msgstr ""
 "Figyelmeztetés: a képernyőkép-készítés gyorsbillentyűje nincs Control, Alt "
 "vagy Meta billentyűvel kombinálva."
 
-#: src/preferences_display.cpp:424
+#: src/preferences_display.cpp:426
 msgid "There are no alternative video modes available"
 msgstr "Nincsenek más megjelenítési módok"
 
-#: src/preferences_display.cpp:453
+#: src/preferences_display.cpp:455
 msgid "Choose Resolution"
 msgstr "Felbontás kiválasztása"
 
@@ -2036,8 +2050,9 @@ msgstr ""
 "tereptípus a(z): "
 
 #: src/wml_exception.cpp:52
+#, fuzzy
 msgid ""
-"An error due to possible invalid WML occured\n"
+"An error due to possibly invalid WML occurred\n"
 "The error message is :"
 msgstr ""
 "Hiba történt egy esetleg helytelen WML kód miatt\n"
