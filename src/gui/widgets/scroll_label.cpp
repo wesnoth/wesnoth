@@ -56,17 +56,5 @@ void tscroll_label::finalize_subclass()
 	lbl->set_can_wrap(true);
 }
 
-void tscroll_label::content_draw_background(surface& /*frame_buffer*/)
-{
-	assert(false); //fixme implement
-}
-
-void tscroll_label::
-		content_populate_dirty_list(twindow& /*caller*/,
-		const std::vector<twidget*>& /*call_stack*/)
-{
-	assert(false); //fixme implement
-}
-
 } // namespace gui2
 

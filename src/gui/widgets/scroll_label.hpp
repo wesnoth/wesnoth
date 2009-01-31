@@ -76,10 +76,6 @@ private:
 	const std::string& get_control_type() const
 		{ static const std::string type = "scroll_label"; return type; }
 
-	void content_draw_background(surface& frame_buffer);
-
-	void content_populate_dirty_list(twindow& caller,
-			const std::vector<twidget*>& call_stack);
 };
 
 } // namespace gui2
