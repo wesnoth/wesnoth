@@ -16,7 +16,9 @@
 
 #include "gui/dialogs/wml_message.hpp"
 
+#include "foreach.hpp"
 #include "gui/widgets/label.hpp"
+#include "gui/widgets/listbox.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/window.hpp"
 
@@ -31,6 +33,18 @@ void twml_message_::set_input(const std::string& caption,
 	input_caption_ = caption;
 	input_text_ = text;
 	input_maximum_lenght_ = maximum_length;
+
+	set_auto_close(false);
+}
+
+void twml_message_::set_option_list(
+		const std::vector<std::string>& option_list, int* choosen_option)
+{
+	assert(!option_list.empty());
+	assert(choosen_option);
+
+	option_list_ = option_list;
+	chosen_option_ = choosen_option;
 
 	set_auto_close(false);
 }
@@ -62,6 +76,36 @@ void twml_message_::pre_show(CVideo& video, twindow& window)
 		caption->set_visible(twidget::INVISIBLE);
 		input->set_visible(twidget::INVISIBLE);
 	}
+
+	// Find the option list related fields.
+	tlistbox* options = dynamic_cast<tlistbox*>(
+			window.find_widget("input_list", true));
+	VALIDATE(options, missing_widget("input_list"));
+
+	if(!option_list_.empty()) {
+		string_map row_data;
+		foreach(const std::string& option, option_list_) {
+			row_data["label"] = option;
+			options->add_row(row_data);
+		}
+		// Avoid negetive and 0 since item 0 is already selected.
+		if(*chosen_option_ > 0 
+				&& static_cast<size_t>(*chosen_option_) 
+				< option_list_.size()) {
+
+			options->select_row(*chosen_option_);
+		}
+
+		if(!has_input()) {
+			window.keyboard_capture(options);
+			window.set_easy_close(false); 
+		} else {
+			window.add_to_keyboard_chain(options);
+			// easy_close has been disabled due to the input.
+		}
+	} else {
+		options->set_visible(twidget::INVISIBLE);
+	}
 }
 
 void twml_message_::post_show(twindow& window)
@@ -72,6 +116,14 @@ void twml_message_::post_show(twindow& window)
 		VALIDATE(input, missing_widget("input"));
 
 		*input_text_ = input->get_value();
+	}
+
+	if(!option_list_.empty()) {
+		tlistbox* options = dynamic_cast<tlistbox*>(
+				window.find_widget("input_list", true));
+		VALIDATE(options, missing_widget("input_list"));
+
+		*chosen_option_ = options->get_selected_row();
 	}
 }
 
@@ -93,7 +145,9 @@ int show_wml_message(const bool left_side
 		, const bool mirror
 		, const std::string& input_caption
 		, std::string* input_text
-	    , const unsigned maximum_length)
+		, const unsigned maximum_length
+		, const std::vector<std::string>& option_list
+		, int* chosen_option)
 {
 	std::auto_ptr<twml_message_> dlg;
 	if(left_side) {
@@ -105,6 +159,10 @@ int show_wml_message(const bool left_side
 
 	if(!input_caption.empty()) {
 		dlg->set_input(input_caption, input_text, maximum_length);
+	}
+
+	if(!option_list.empty()) {
+		dlg->set_option_list(option_list, chosen_option);
 	}
 	
 	dlg->show(video);

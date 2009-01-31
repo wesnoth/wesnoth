@@ -2998,7 +2998,7 @@ std::string get_caption(const vconfig& cfg, unit_map::iterator speaker)
 			if (side_for_show && !get_replay_source().is_skipping())
 			{
 				// We whether we can show the new dialog.
-				if(options.empty() && speaker != units->end()) {
+				if(speaker != units->end()) {
 					
 					
 					// At the moment we use a hack if the image in portrait has
@@ -3043,6 +3043,7 @@ std::string get_caption(const vconfig& cfg, unit_map::iterator speaker)
 						input_max_size=256;
 					}
 
+					option_chosen = 0; // can be initialized to 0 at the top later.
 					const int dlg_result = gui2::show_wml_message(
 							left_side,
 							screen->video(),
@@ -3052,8 +3053,13 @@ std::string get_caption(const vconfig& cfg, unit_map::iterator speaker)
 							false,
 							text_input_label,
 							&text_input_content,
-							input_max_size);
+							input_max_size,
+							options,
+							&option_chosen);
 
+					if(!options.empty()) {
+						recorder.choose_option(option_chosen);
+					}
 					if(has_text_input) {
 						recorder.text_input(text_input_content);
 						text_input_result = text_input_content;

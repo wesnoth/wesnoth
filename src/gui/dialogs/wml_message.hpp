@@ -34,7 +34,9 @@ public:
 		, mirror_(mirror)
 		, input_caption_("")
 		, input_text_(NULL)
-	    , input_maximum_lenght_(0)
+		, input_maximum_lenght_(0)
+		, option_list_()
+		, chosen_option_(NULL)
 	{
 	}
 
@@ -48,6 +50,9 @@ public:
 	 */
 	void set_input(const std::string& caption,
 			std::string* text, const unsigned maximum_length);
+
+	void set_option_list(
+			const std::vector<std::string>& option_list, int* choosen_option);
 
 private:
 
@@ -65,6 +70,12 @@ private:
 
 	/** The maximum length of the input text. */
 	unsigned input_maximum_lenght_;
+
+	/** The list of options the user can choose. */
+	std::vector<std::string> option_list_;
+
+	/** The chosen option. */
+	int *chosen_option_;
 
 	/** Does the dialog have an input text? */
 	bool has_input() { return !input_caption_.empty(); }
@@ -129,6 +140,11 @@ private:
  *  @param input_text             Pointer to the initial text value will be
  *                                set to the result.
  *  @param maximum_length         The maximum length of the text.
+ *
+ *  @param option_list            A list of options to select in the dialog.
+ *  @param chosen_option          Pointer to the initially chosen option.
+ *                                Will be set to the chosen_option when the
+ *                                dialog closes.
  */
 int show_wml_message(const bool left_side
 		, CVideo& video
@@ -138,7 +154,9 @@ int show_wml_message(const bool left_side
 		, const bool mirror
 		, const std::string& input_caption
 		, std::string* input_text
-	    , const unsigned maximum_length);
+	    , const unsigned maximum_length
+		, const std::vector<std::string>& option_list
+		, int* chosen_option);
 
 
 } // namespace gui2
