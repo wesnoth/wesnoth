@@ -1,58 +1,59 @@
 Version 1.5.8+svn:
  * Campaigns:
    * Descent into Darkness
-     * In 'Endless Night', the enemy's gold now increases faster.
+     * In 'Endless Night', the enemy's gold now increases faster
    * The South Guard
-     * Made 'Tides of War' a bit easier.
+     * Made 'Tides of War' a bit easier
    * Sceptre of Fire
-     * Fix the player's keep disappearing in 'Gathering Materials'.
-     * New graphics for the Dwarvish Miner.
+     * Fix the player's keep disappearing in 'Gathering Materials'
+     * New graphics for the Dwarvish Miner
    * Under the Burning Suns:
-     * New base frames for the Desert Sentinel and Prowler.
+     * New base frames for the Desert Sentinel and Prowler
  * Graphics:
    * Removed the black background from some remaining old portraits
-   * New portrait for Dwarf Thunderer, Dwarf Dragonguard, Human Pikeman, Dwarf Fighter, Dwarf Lord, Dwarf Guard.
+   * New portrait for Dwarf Thunderer, Dwarf Dragonguard, Human Pikeman, Dwarf
+     Fighter, Dwarf Lord, Dwarf Guard
    * Image-path functions:
      * All image path functions except RC() and TC() can now be stacked
        correctly and the order of precedence is from left to right. This
        may impact performance slightly.
      * New function, SCALE(W,H): scale down an image to the specified width
        (W) and height (H) for rendering. Negative or null (zero) numbers are
-       ignored when scaling in the respective direction.
-   * Restructured portraits directory to be based on unit types rather than authors,
-     added an authors file for recording portrait credits.
+       ignored when scaling in the respective direction
+   * Restructured portraits directory to be based on unit types rather than
+     authors, added an authors file for recording portrait credits
  * Language and i18n:
-   * updated translations: Catalan, Chinese (Traditional), Czech, French,
-     German, Hungarian, Italian, Polish, Slovak, Spanish, Valencian
+   * updated translations: Catalan, Chinese (Traditional), Czech, Dutch,
+     French, German, Hungarian, Italian, Polish, Slovak, Spanish, Valencian
  * Multiplayer:
-   * Fixed the Default Era quick leaders not getting the -5% HP reduction.
-   * Made leaders with 4 MP receive the quick trait also in Age of Heroes.
+   * Fixed the Default Era quick leaders not getting the -5% HP reduction
+   * Made leaders with 4 MP receive the quick trait also in Age of Heroes
  * User interface:
-   * Hide the "Network Player" option for Local MP Games (bug #12596).
-   * Portraits with an icon are TC'ed again.
-   * All [message] based dialogs are now converted to the new dialogs.
+   * Hide the "Network Player" option for Local MP Games (bug #12596)
+   * Portraits with an icon are TC'ed again
+   * All [message] based dialogs are now converted to the new dialogs
  * WML Engine:
    * Prevent duplicate id conflicts when cloning units with WML (bug #12894)
    * [time_area], in EventWML, can now accept comma-separated lists of area ids
      for removing, but not for inserting; in the latter case, only the first id
      is considered to avoid stacking time_areas over a single location by
-     accident.
+     accident
    * [fire_event] children tags [primary_unit] and [secondary_unit] now
-     take a real Standard Unit Filter instead of a x,y coordinate pair.
+     take a real Standard Unit Filter instead of a x,y coordinate pair
      When a filter matching multiple units is used, only the first matching
      unit will be taken for firing the event. Recall list filters and
-     invalid locations are silently ignored.
+     invalid locations are silently ignored
  * Miscellaneous and bug fixes:
    * Fix clients not agreeing on remaining movepoints (bug #12467)
    * Fix summoning of other players recruit list on turn 1 (bug #12783)
    * Fix [item] overlays with visible_in_fog=yes magically becoming
      visible_in_fog=no (the former default for a missing attribute) when loading
      saved games - because the game was looking for a fogged= attribute
-     instead on loading.
+     instead on loading
    * Made [item] overlays always default to visible_in_fog=yes if not
-     specified.
+     specified
    * Made [label] overlays always default to visible_in_fog=yes if not
-     specified.
+     specified
 
 Version 1.5.8:
  * Campaigns:

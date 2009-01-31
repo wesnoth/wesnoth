@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-01-30 22:43+0100\n"
-"PO-Revision-Date: 2008-12-01 00:18+0100\n"
+"PO-Revision-Date: 2008-12-07 01:40+0100\n"
 "Last-Translator: Alexander van Gessel (AI/AI0867) <AI0867_AT_gmail.com>\n"
 "Language-Team: Dutch translation <foppe.benedictus@gmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -659,7 +659,6 @@ msgstr ""
 
 #. [topic]: id=fundamentals
 #: data/core/help.cfg:140
-#, fuzzy
 msgid ""
 "While playing, keep in mind that if you mouse-over many items in the game, "
 "such as the information displayed in the status pane, a brief description "
@@ -670,7 +669,8 @@ msgstr ""
 "Door tijdens het spel met de muis over de zijbalk aan de rechterkant van het "
 "scherm te bewegen krijg je voor veel van de onderdelen een korte "
 "beschrijving. Dit is bijvoorbeeld erg handig wanneer je een bepaald "
-"<ref>dst=abilities text=vermogen</ref> voor het eerst tegenkomt."
+"<ref>dst='..abilities_section' text='vermogen'</ref> voor het eerst "
+"tegenkomt."
 
 #. [topic]: id=about_game
 #: data/core/help.cfg:145
@@ -758,7 +758,6 @@ msgstr "Rekruteren en Oproepen"
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:165
-#, fuzzy
 msgid ""
 "Each side begins with one leader in their keep. At the start of any battle, "
 "and at times during it, you will need to recruit <ref>dst='..units' "
@@ -771,10 +770,12 @@ msgid ""
 "Click on a unit to see its statistics, then press the recruit button to "
 "recruit it."
 msgstr ""
-"Aan het begin van een slag, en soms ook tijdens een slag, zul je troepen "
-"voor je leger moeten rekruteren. Om te kunnen rekruteren moet je leider "
-"(Konrad in \"De Kroonprins\") op het donjonvakje van een kasteel staan. Je "
-"kunt dan of uit het Acties-menu of na rechtsklikken op een kasteelvakje "
+"Elke zijde begint met een leider in hun donjon. Aan het begin van een slag, "
+"en soms ook tijdens een slag, zul je <ref>dst='..units' text='eenheden'</"
+"ref> voor je leger moeten rekruteren. Om te kunnen rekruteren moet je leider "
+"(bijvoorbeeld, Konrad in \"De Kroonprins\") op het donjonvakje van een "
+"<ref>dst='terrain_castle' text='kasteel'</ref> staan. Je kunt dan of uit het "
+"Acties-menu of na rechtsklikken op een kasteelvakje "
 "<italic>text='Rekruteren'</italic> kiezen. Dit brengt een venster te "
 "voorschijn met een lijst van eenheden die je kunt rekruteren en het aantal "
 "goudstukken dat elk van hen kost. Selecteer een eenheid om zijn gegevens te "
@@ -2322,7 +2323,6 @@ msgstr "Grot"
 
 #. [topic]: id=terrain_cave
 #: data/core/help.cfg:599
-#, fuzzy
 msgid ""
 "Cave terrain represents any underground cavern with enough room for a unit "
 "to pass. Most units are wholly unfamiliar with the terrain, and thus are "
@@ -2336,10 +2336,11 @@ msgid ""
 msgstr ""
 "Een grot representeert een ondergrondse ruimte, ruim genoeg voor een eenheid "
 "om erdoor te kunnen.De meeste eenheden zijn volstrekt onbekend met het "
-"terrein en worden daardoor in hun voortgang gehinderd. Dwergen en Trollen, "
-"die in grotten huizen, hebben het er makkelijker. Zeker dwergen, die door "
-"hun geringe grootte makkelijker de obstakels in de grot kunnen ontwijken. "
-"Soms zijn grotten <ref>dst=terrain_illuminated_cave text=verlicht</ref>.\n"
+"terrein en worden daardoor zowel in hun voortgang als hun verdediging "
+"gehinderd. Dwergen en Trollen, die in grotten huizen, hebben het er "
+"makkelijker. Zeker dwergen, die door hun geringe grootte makkelijker de "
+"obstakels in de grot kunnen ontwijken. Soms zijn grotten "
+"<ref>dst='terrain_illuminated_cave' text='verlicht'</ref>.\n"
 "\n"
 "De meeste eenheden krijgen 20% tot 40% verdediging in grotten, dwergen 50%."
 
@@ -2350,7 +2351,6 @@ msgstr "Rotsgrot"
 
 #. [topic]: id=terrain_rockbound_cave
 #: data/core/help.cfg:611
-#, fuzzy
 msgid ""
 "Rockbound cave terrain is formed by the action of water and wind, carrying "
 "erosive particles that carve the rock. It resembles a scraggy underground "
@@ -2367,10 +2367,10 @@ msgstr ""
 "hindert de voortgang van de meeste eenheden, maar verhoogt de defensie. "
 "Dwergen en trollen, die in grotten leven, hebben het hier makkelijker, met "
 "name dwergen die hun geringe lengte mee hebben. Soms zijn grotten "
-"<ref>dst=terrain_illuminated_cave text=verlicht</ref>.\n"
+"<ref>dst='terrain_illuminated_cave' text='verlicht'</ref>.\n"
 "\n"
 "De meeste eenheden hebben 50% verdediging in deze grotten, cavalerie niet "
-"meer dan 40%, dwergen geniet 60% verdediging. "
+"meer dan 40%, dwergen genieten 60% verdediging. "
 
 #. [topic]: id=terrain_illuminated_cave
 #: data/core/help.cfg:618
@@ -2483,16 +2483,16 @@ msgstr "Onbegaanbaar"
 
 #. [topic]: id=terrain_unwalkable
 #: data/core/help.cfg:671
-#, fuzzy
 msgid ""
 "Unwalkable terrain covers any chasm or gorge which, as the name implies, "
 "cannot be crossed simply by walking. Chasms are noted for sheer walls which "
 "would take days to traverse. As far as gameplay is concerned, only units "
 "capable of flying can cross this terrain."
 msgstr ""
-"Een afgrond is een kloof in de grond, die naar onbekende diepten leidt. Een "
-"afgrond heeft loodrechte wanden waarlangs men niet naar beneden kan klimmen. "
-"Alleen vliegende eenheden kunnen over een afgrond heen."
+"Onbeloopbaar terrein bestrijkt elke afgrond of kloof die, zoals de naam al "
+"zegt, niet overbrugd kan worden door middel van lopen. Afgronden zijn bekend "
+"om de steile muren die dagen zouden kosten om te beklimmen. Wat betreft het "
+"spel kunnen alleen vliegende eenheden kunnen over een dit terrein heen."
 
 #. [topic]: id=terrain_lava
 #: data/core/help.cfg:678
@@ -3489,9 +3489,8 @@ msgstr "Bevelen annuleren"
 
 #. [option]
 #: data/core/macros/ai_controller.cfg:625
-#, fuzzy
 msgid "Clear behavior orders"
-msgstr "Bevelen annuleren"
+msgstr ""
 
 #. [option]
 #: data/core/macros/ai_controller.cfg:649
@@ -4167,7 +4166,6 @@ msgid "Kaasa,Kayya,Keyya,Kiira,Korra"
 msgstr "Kaasa,Kayya,Keyya,Kiira,Korra"
 
 #: data/core/macros/names.cfg:23
-#, fuzzy
 msgid ""
 "Addraecyn,Addraenvan,Addraer,Addraercyn,Addraryn,Addreddry,Addredry,"
 "Addregwyn,Addrenyc,Addreoddry,Addreoddyn,Addreonyc,Addreorcyn,Addreran,"
@@ -4226,8 +4224,8 @@ msgstr ""
 "Aethonnyn,Aethuc,Aethudry,Aethugwyn,Aethun,Aethunry,Aethydry,Aethynyc,Blac,"
 "Bladoc,Blaec,Blaedry,Blanry,Blebryn,Bledoc,Blemyr,Blennyn,Blenvan,Bleollyn,"
 "Blercyn,Blidd,Bliddry,Blillyn,Blinvan,Blollyn,Blubryn,Blucyn,Bludry,Blullyn,"
-"Bluran,Blybryn,Blydd,Blygwyn,Blymyr,Blyr,Cac,Cadry,Caebryn,Caedry,Caeran,"
-"Caercyn,Car,Carac,Caraddry,Caradoc,Caraedry,Caraennyn,Cararyn,Caredd,"
+"Bluran,Blybryn,Blydd,Blygwyn,Blymyr,Blyr,Bucyn,Cac,Cadry,Caebryn,Caedry,"
+"Caeran,Caercyn,Car,Carac,Caraddry,Caradoc,Caraedry,Caraennyn,Cararyn,Caredd,"
 "Careddry,Caregwyn,Caren,Careobryn,Careogwyn,Careonvan,Careorraent,Careoryn,"
 "Carercyn,Caric,Cariddry,Carocyn,Caroddyn,Caror,Caroran,Carraent,Carudoc,"
 "Carullyn,Carygwyn,Caryn,Cebryn,Cemyr,Cennyn,Ceoc,Ceoddry,Ceoddyn,Ceomyr,"
@@ -4239,34 +4237,33 @@ msgstr ""
 "Glircyn,Gloddry,Gloddyn,Glonry,Glonvan,Glumyr,Glun,Glunry,Glunvan,Glyc,Glydd,"
 "Glydoc,Glynry,Glynvan,Glyran,Goc,Gor,Gubryn,Gudd,Gullyn,Gumyr,Gur,Gwadoc,"
 "Gwaec,Gwaeddyn,Gwan,Gweddyn,Gwegwyn,Gwellyn,Gwennyn,Gwenyc,Gweocyn,Gweodd,"
-"Gweodoc,Gweodry,Gweogwyn,Gweoran,Gwidoc,Gwodd,Gwoddyn,Gwollyn,Gwor,Gwucyn,"
-"Gwudoc,Gwumyr,Gwuran,Gwybryn,Gwycyn,Gwyddry,Gwydoc,Gwymyr,Gwynnyn,Gydoc,"
-"Gyllyn,Gymyr,Labryn,Ladoc,Laellyn,Lan,Lannyn,Laran,Lec,Lemyr,Lenvan,Leogwyn,"
-"Lercyn,Ligwyn,Lin,Liryn,Lonnyn,Lorraent,Luddry,Ludoc,Lunnyn,Lunvan,Lurraent,"
-"Mac,Maddyn,Maennyn,Manry,Manyc,Marcyn,Mec,Menvan,Meollyn,Meon,Meonnyn,"
-"Meorraent,Middry,Midry,Mimyr,Modd,Moddry,Monry,Moran,Morcyn,Mubryn,Mudoc,"
-"Mugwyn,Murcyn,Mydoc,Mygwyn,Myn,Myrraent,Owac,Owadd,Owaddyn,Owaecyn,Owaedry,"
-"Owarcyn,Owaryn,Owecyn,Owedry,Oweomyr,Oweor,Oweorcyn,Oweran,Owercyn,Owidry,"
-"Owinvan,Owinyc,Owodd,Owoddry,Owogwyn,Owollyn,Oworan,Oworcyn,Oworraent,"
-"Owuddry,Owuddyn,Owugwyn,Owur,Owyran,Rabryn,Radd,Ranvan,Rar,Reoddyn,Reodry,"
-"Rhaecyn,Rhaedoc,Rhaemyr,Rhaerraent,Rhanry,Rharcyn,Rhenry,Rhenvan,Rhenyc,"
-"Rheodd,Rheoddyn,Rheollyn,Rheor,Rheoran,Rheorraent,Rheran,Rherraent,Rhobryn,"
-"Rhodry,Rhollyn,Rhonvan,Rhubryn,Rhugwyn,Rhunyc,Rhur,Rhygwyn,Rhyllyn,Rhynyc,"
-"Rhyrcyn,Rhyrraent,Rocyn,Roddyn,Romyr,Ron,Ronry,Rubryn,Ruddry,Rumyr,Run,"
-"Rurcyn,Rybryn,Rycyn,Ryddry,Rygwyn,Rynnyn,Rynry,Saec,Saellyn,Saemyr,Saenvan,"
-"Saercyn,Sanyc,Saran,Sarraent,Secyn,Seddyn,Sedry,Sellyn,Sennyn,Seoddry,"
-"Seorcyn,Sercyn,Siddry,Simyr,Siryn,Sodd,Sodry,Soran,Suc,Sudd,Surcyn,Sydd,"
-"Syran,Syryn,Tabryn,Taec,Taedd,Taedoc,Taemyr,Taenvan,Taercyn,Tanry,Tarcyn,"
-"Teddyn,Tegwyn,Ten,Tennyn,Tenvan,Teobryn,Teoddyn,Teor,Teorcyn,Terraent,Tinry,"
-"Tinvan,Tiryn,Todd,Tudd,Tuddry,Tudoc,Tunvan,Turraent,Tyddyn,Vaddyn,Vaeddyn,"
-"Vaedry,Vaennyn,Varcyn,Ven,Vennyn,Veocyn,Veoddyn,Veodry,Veogwyn,Veomyr,Vinvan,"
-"Vinyc,Virraent,Vobryn,Vogwyn,Vonry,Vuddyn,Vugwyn,Vyc,Vygwyn,Vyrcyn,Yracyn,"
-"Yraec,Yran,Yrannyn,Yranvan,Yraryn,Yredd,Yreddyn,Yregwyn,Yreryn,Yrinvan,"
-"Yrirraent,Yroddry,Yrullyn,Yrumyr,Yrunnyn,Yrunvan,Yryllyn,Yrymyr,Yrynyc,"
-"Yryrcyn"
+"Gweodoc,Gweodry,Gweogwyn,Gweoran,Gwidoc,Gwilam,Gwodd,Gwoddyn,Gwollyn,Gwor,"
+"Gwucyn,Gwudoc,Gwumyr,Gwuran,Gwybryn,Gwycyn,Gwyddry,Gwydoc,Gwymyr,Gwynnyn,"
+"Gydoc,Gyllyn,Gymyr,Haldar,Labryn,Ladoc,Laellyn,Lan,Lannyn,Laran,Lec,Lemyr,"
+"Lenvan,Leogwyn,Lercyn,Ligwyn,Lin,Liryn,Lonnyn,Lorraent,Luddry,Ludoc,Lunnyn,"
+"Lunvan,Lurraent,Mac,Maddyn,Maennyn,Manry,Manyc,Marcyn,Mec,Menvan,Meollyn,"
+"Meon,Meonnyn,Meorraent,Middry,Midry,Mimyr,Modd,Moddry,Monry,Moran,Morcyn,"
+"Mubryn,Mudoc,Mugwyn,Murcyn,Mydoc,Mygwyn,Myn,Myrraent,Owac,Owadd,Owaddyn,"
+"Owaecyn,Owaedry,Owain,Owarcyn,Owaryn,Owecyn,Owedry,Oweomyr,Oweor,Oweorcyn,"
+"Oweran,Owercyn,Owidry,Owinvan,Owinyc,Owodd,Owoddry,Owogwyn,Owollyn,Oworan,"
+"Oworcyn,Oworraent,Owuddry,Owuddyn,Owugwyn,Owur,Owyran,Rabryn,Radd,Ranvan,Rar,"
+"Reoddyn,Reodry,Rhaecyn,Rhaedoc,Rhaemyr,Rhaerraent,Rhanry,Rharcyn,Rhenry,"
+"Rhenvan,Rhenyc,Rheodd,Rheoddyn,Rheollyn,Rheor,Rheoran,Rheorraent,Rheran,"
+"Rherraent,Rhobryn,Rhodry,Rhollyn,Rhonvan,Rhubryn,Rhugwyn,Rhunyc,Rhur,Rhygwyn,"
+"Rhyllyn,Rhynyc,Rhyrcyn,Rhyrraent,Rocyn,Roddyn,Romyr,Ron,Ronry,Rubryn,Ruddry,"
+"Rumyr,Run,Rurcyn,Rybryn,Rycyn,Ryddry,Rygwyn,Rynnyn,Rynry,Saec,Saellyn,Saemyr,"
+"Saenvan,Saercyn,Sanyc,Saran,Sarraent,Secyn,Seddyn,Sedry,Sellyn,Sennyn,"
+"Seoddry,Seorcyn,Sercyn,Siddry,Simyr,Siryn,Sodd,Sodry,Soran,Suc,Sudd,Surcyn,"
+"Sydd,Syran,Syryn,Tabryn,Taec,Taedd,Taedoc,Taemyr,Taenvan,Taercyn,Tanry,"
+"Tarcyn,Teddyn,Tegwyn,Ten,Tennyn,Tenvan,Teobryn,Teoddyn,Teor,Teorcyn,Terraent,"
+"Tinry,Tinvan,Tiryn,Todd,Tudd,Tuddry,Tudoc,Tunvan,Turraent,Tyddyn,Vaddyn,"
+"Vaeddyn,Vaedry,Vaennyn,Varcyn,Ven,Vennyn,Veocyn,Veoddyn,Veodry,Veogwyn,"
+"Veomyr,Vinvan,Vinyc,Virraent,Vobryn,Vogwyn,Vonry,Vuddyn,Vugwyn,Vyc,Vygwyn,"
+"Vyrcyn,Yracyn,Yraec,Yran,Yrannyn,Yranvan,Yraryn,Yredd,Yreddyn,Yregwyn,Yreryn,"
+"Yrinvan,Yrirraent,Yroddry,Yrullyn,Yrumyr,Yrunnyn,Yrunvan,Yryllyn,Yrymyr,"
+"Yrynyc,Yryrcyn"
 
 #: data/core/macros/names.cfg:24
-#, fuzzy
 msgid ""
 "Alabrylla,Alaebrylla,Alaeniver,Alalla,Alalonna,Alaryan,Aleacla,Aleaniver,"
 "Aleara,Alearka,Alena,Alengwen,Alilonna,Alingwen,Alolla,Alolonna,Alora,"
@@ -4333,8 +4330,8 @@ msgstr ""
 "Eleanoic,Elearka,Elenoic,Elerka,Elivyan,Elulonna,Elurka,Elwllyra,Elwlonna,"
 "Elwngwen,Elwra,Elycla,Elyllyra,Elyngwen,Elyniver,Elyrka,Gwaera,Gwaessa,"
 "Gwangwen,Gweacla,Gwedda,Gwerka,Gwicla,Gwirka,Gwobrylla,Gwoll,Gwona,Gwongwen,"
-"Gwonoic,Gworyan,Gwullyra,Gwussa,Gwwcla,Gwwna,Gwwvyan,Gwycla,Gwydda,Jacla,"
-"Jaena,Jaerka,Jaevyan,Jalyan,Jana,Jarka,Jassa,Jeabrylla,Jealla,Jeanoic,"
+"Gwonoic,Gworyan,Gwullyra,Gwussa,Gwwcla,Gwwna,Gwwvyan,Gwycla,Gwydda,Heldra,"
+"Jacla,Jaena,Jaerka,Jaevyan,Jalyan,Jana,Jarka,Jassa,Jeabrylla,Jealla,Jeanoic,"
 "Jeniver,Jiryan,Jissa,Joll,Jolla,Jona,Jongwen,Jonoic,Jora,Jorka,Jovyan,Judda,"
 "Jull,Julonna,Jura,Jwll,Jwlyan,Jycla,Jyniver,Jynoic,Jyrka,Jyvyan,Laeniver,"
 "Laenoic,Laeryan,Langwen,Larka,Lassa,Lealonna,Lealyan,Ledda,Lelonna,Lelyan,"
@@ -4655,13 +4652,12 @@ msgstr ""
 "tijdens de verdediging."
 
 #: data/core/macros/special-notes.cfg:29
-#, fuzzy
 msgid ""
 " The leadership of this unit enables adjacent units of the same side to deal "
 "more damage in combat, though this only applies to units of lower level."
 msgstr ""
-" Het leiderschap van deze eenheid motiveert bevriende eenheden met lagere "
-"rang die naast hem staan, hun klappen komen daardoor harder aan bij de "
+" Het leiderschap van deze eenheid motiveert aangrenzende eenheden van "
+"dezelfde zijde en lagere rang, hun klappen komen daardoor harder aan bij de "
 "vijand."
 
 #: data/core/macros/special-notes.cfg:32
@@ -4729,15 +4725,14 @@ msgstr ""
 "slachtoffer erbij neervalt."
 
 #: data/core/macros/special-notes.cfg:59
-#, fuzzy
 msgid ""
 " If there is an enemy of the target on the opposite side of the target while "
 "attacking it, this unit may backstab, inflicting double damage by creeping "
 "around behind that enemy."
 msgstr ""
-" Deze eenheid kan een vijand in de rug aanvallen en dubbele schade "
-"aanrichten als een andere, bevriende, eenheid de vijand van de andere kant "
-"afleidt."
+" Als een een vijand van het doelwit aan de andere kant van het doelwit staat "
+"wanner het aangevallen wordt, kan deze eenheid een ruggesteek plegen en zo "
+"dubbele schade aanrichten."
 
 #: data/core/macros/special-notes.cfg:62
 msgid ""
@@ -5055,7 +5050,6 @@ msgstr "Draaklingen"
 
 #. [race]: id=drake
 #: data/core/units.cfg:68
-#, fuzzy
 msgid ""
 "Drakes are large, winged and fire-breathing creatures, reminiscent of true "
 "dragons. On average, an adult drake stands around three meters tall and "
@@ -5121,18 +5115,71 @@ msgid ""
 "some of the mountains of the far north of the Great Continent."
 msgstr ""
 "Draaklingen zijn grote, gevleugelde en vuurspuwende wezens, afstammelingen "
-"van echte draken. Gemiddeld is een volwassen Draakling ongeveer drie meter "
+"van echte draken. Gemiddeld is een volwassen draakling ongeveer drie meter "
 "lang en weegt makkelijk meer dan een man en paard tezamen. Hun huid is "
 "gemaakt van harde schubben, weerbaar tegen de meeste fysieke aanvallen, "
-"behalve puntige en kou aanvallen. De meeste Draaklingen zijn in staat te "
+"behalve puntige en kou aanvallen. De meeste draaklingen zijn in staat te "
 "vliegen en kunnen snel grote afstand afleggen. Hoewel hun gewicht en omvang "
-"beperkt hun vlucht wel, wat ze lomp maakt in de lucht. Waar mogelijk zullen "
+"hun vlucht wel beperkt, wat ze lomp maakt in de lucht. Waar mogelijk zullen "
 "ze gebruik maken van het terrein, zoals heuvels, bergen en bomen als "
 "startplek om meer hoogte en snelheid te maken. Gelukkig voor hun vijanden "
 "zijn ze desondanks onhandige wezens en verbazingwekkend traag in gevechten. "
 "Dit gecombineerd met hun grootte maakt ze makkelijke doelwitten voor hen die "
 "hun durft aan te vallen.\n"
 "\n"
+"Draaklingen zijn inherent magische wezens, met een mysterieus intern vuur "
+"dat ze voorziet van leven. Dit kan makkelijk worden aanschouwd als een van "
+"hun soort sterft in een gevecht: het interne vuur is bevrijd en verbrandt "
+"hun overblijfselen tot as. Dit vuur is ook hun grootste zwakte, het maakt ze "
+"extreem vatbaar voor koude aanvallen. Hoewel draaklingen magisch zijn van "
+"nature, zijn ze niet in staat om deze magie in een gecontroleerde manier te "
+"gebruiken. Hoewel de magie die het lichaam van een draakling bezielt het "
+"leven geeft en de mogelijkheid om vuur te spuwen, hebben ze geen bewuste "
+"controle over de functies van deze magie.\n"
+"\n"
+"<header>text='Maatschappij'</header>\n"
+"Draaklingen zijn een relatief oorlogszuchtig ras en hun beschavingen kunnen "
+"het beste beschreven worden als beschaafde krijgsorganisaties. De kern van "
+"een draaklingenstam is een kleine groep van veteranen met vooraanstaand een "
+"gerespecteerde (of simpelweg gevreesde) leider die de stam leidt met een "
+"ijzeren hand. Van elke draakling wordt verwacht dat deze zijn plaats "
+"verdient in de strikte hiërarchie, zijn superieuren gehoorzaamt en zijn "
+"inferieuren beveelt. Toegang tot de regerende elite is alleen mogelijk door "
+"het uitdagen en verslaan van een superieure in een tweegevecht, wat de "
+"manier is waarop de hiërarchie van de elite zelf is gevestigd. Het gebruik "
+"van deceptie van welke soort dan ook tegen een andere draakling wordt, "
+"zonder uitzondering, gezien als laf en onacceptabel.\n"
+"\n"
+"Hoewel hun krijgshaftige natuur en territorialiteit hun ertoe drijft hun "
+"territorium woest te verdedigen, vallen draaklingen zelden landen binnen die "
+"al bezet zijn door andere grote rassen. In plaats daarvan vestigen ze zich "
+"in onbewoonde gebieden om daar hun eigen territorium te stichten. Ze voeden "
+"zich voornamelijk met groot wild dat ze bejagen in de laaglanden rond hun "
+"thuis, maar jongen en draaklingen van lagere kasten voeden zich ook met "
+"bepaalde soorten van mos en schimmels die ze verbouwen diep in hun "
+"spelonken. De enige technologie die draaklingen waarderen is die van het "
+"wapen- en pantsersmeden, ze kennen geen andere wetenscap of cultuur en "
+"hebben die ook niet nodig. De weinige werktuigen die ze wel maken zijn bijna "
+"ongeëvenaard in kwaliteit, hun mogelijk enige concurrent zijn die die "
+"gemaakt zijn in de beste dwergse smederijen.\n"
+"\n"
+"Draaklingen worden uitgebroed uit eieren en leven normaalgesproken tussen de "
+"20 en 30 jaar. Dood in een gevecht is de meest geliefde manier voor een "
+"draakling om deze wereld te verlaten. Anders dan de oudere leden van andere "
+"rassen worden draaklingen van nature meer agressief tegen het einde van hun "
+"natuurlijke levens, mogelijk om te helpen hun plaats in de heroïsche "
+"legenden te verzekeren.\n"
+"\n"
+"<header>text='Geografie'</header>\n"
+"Draaklingen komen oorspronkelijk van een rij vulkanische eilanden in de "
+"Grote Oceaan. Een combinatie van populatiedruk en het afzinken van hun "
+"thuiseilanden heeft er voor gezorgd dat vele koloniën van draaklingen zich "
+"hebben verspreid naar het Grote Continent. Draaklingen maken hun thuis in "
+"bergspelonken in de buurt van vulkanen om hun eieren, jongen en smederijen "
+"te beschermen. Hoewel draaklingen van nature warmte verkiezen, is hun "
+"interne vuur meer dan in staat om hun zelfs in een relatief koud klimaat "
+"staande te houden, een eigenschap die ze heeft geholpen zelfs een aantal van "
+"de bergen in het verre noorden van het Grote Continent te bevolken."
 
 #. [race]: id=dwarf
 #: data/core/units.cfg:88
@@ -5151,7 +5198,6 @@ msgstr "Dwergen"
 
 #. [race]: id=dwarf
 #: data/core/units.cfg:95
-#, fuzzy
 msgid ""
 "The dwarves are a race famed for their miners, blacksmiths, merchants and "
 "warriors. Considered as the third oldest race on the great continent after "
@@ -5215,6 +5261,37 @@ msgstr ""
 "beter bekend als de noordlanden. Sindsdien hebben ze fantastisch forten en "
 "nederzettingen gebouwd diep in de bergen en hellingen van hun territorium.\n"
 "\n"
+"Mogelijk door hun isolatie, zijn dwergen in het algemeen wantrouwen of "
+"vijandig tegen de meeste andere rassen, voornamelijk de elfen. De enige "
+"uitzondering voor dit temperament zijn mensen. Dit kan teruggeleid worden "
+"tot de tijden van Haldric I en de aankomst van mensen en orks op het "
+"continent. Op dit punt begonnen dwergen sommige mensen, vooral afvalligen en "
+"voortvluchtigen van het Koninkrijk van Wesnoth, toe te staan om in bepaalde "
+"gebieden van de Noordlanden te leven. Hun motivatie was niet "
+"verbazingwekkend. De situatie van deze individuen herinnerde de dwergen aan "
+"hun eigen geschiedenis vervolging, wat een gevoel van solidariteit ontlokte. "
+"De dwergen hadden ook veel te winnen met een verbintenis met deze "
+"verschoppelingen. Ze zouden zich vestigen in de gebieden waar dwergen zelf "
+"niet graag woonden: vlakten, bossen en moerassen, wat ze ontsloeg van de "
+"noodzaak om deze zelf te verdedigen.\n"
+"\n"
+"Dwergen hebben een klein postuur bij menselijke maten, maar zijn zeker niet "
+"fragiel. Hun strijders, robuust en sterk, zijn zowel gevreesd als "
+"gerespecteerd door het hele continent voor hun dapperheid in de strijd. Ook "
+"zijn dwergen bekend voor hun calculerend intellect en uitmuntend "
+"vakmanschap. Dwergse smeden zijn beroemd om hun dodelijke wapens en zware "
+"pantsers. Deze uitrustingen zijn ongeëvenaard in kwaliteit, hun enige "
+"mogelijke concurrent zijn de wapensmeden van de draaklingen. Hun "
+"intelligentie en natuurlijke nieuwsgierigheid maakt ze ook tot het meest "
+"technologisch geavanceerd ras op het continent. Een van hun meest beroemde "
+"en gevreesde uitvindingen is een mysterieus poeder dat een enorme explosie "
+"produceert wanneer het wordt blootgesteld aan vuur of vonken. Sommige "
+"dwergenstrijders gebruiken dit poeder om kleine objecten weg te schieten op "
+"enorme snelheden. Door hun technologische genegenheid wantrouwen de meeste "
+"dwergen de gebruikers van magie. Hoewel sommigen een vorm van magie "
+"gebruiken die gebaseerd is op het kerven van runen. Runesmeden genaamd, "
+"gebruiken ze de kervingen om objecten te betoveren om zo een zeker aspect "
+"ervan te versterken."
 
 #. [race]: id=elf
 #: data/core/units.cfg:107
@@ -5275,7 +5352,39 @@ msgstr ""
 "robuust. Ze hebben licht gepunte oren, bleke huid en meestal blond haar. "
 "Weinig verschillen tussen Mensen en Elfen zijn duidelijker als de lange "
 "levensverwachting van Elfen - afgezien van ziekte, ongelukken of oorlog "
-"kunnen ze twee eeuwen oud worden."
+"kunnen ze twee en een halve eeuw oud worden. Hoewel sommige elfen met groot "
+"talent voor magie een volledige extra eeuw hebben geleefd, worden de meesten "
+"fragiel ergens tussen 250 en 300 jaar oud en sterven binnen twee jaar "
+"daarna.\n"
+"\n"
+"Elfen zijn van nature bezield met een kleine hoeveelheid magie. Hoewel de "
+"meeste niet instaat zijn dit direct te gebruiken, geeft de slapende "
+"aanwezigheid ze hun scherpe zintuigen en lange leven. De meeste elfen hebben "
+"magie-gedreven talenten zoals grote precisie en de vaardigheid nagenoeg "
+"onzichtbaar te worden, taken die normale wezens verbazingwekkend zouden "
+"vinden. De elfen die leren deze kracht in een meer algemene manier te "
+"gebruiken kunnen zeer formidabel worden in het gebruik ervan. Velen kiezen "
+"ervoor hun gave te gebruiken om anderen te genezen.\n"
+"\n"
+"Enkele elfen die ver en diep het pad van de magie en mystiek inslaan worden "
+"gevoelig voor de aanwezigheid van koud ijzer en kunnen er zelfs door "
+"verbrand worden. Elfenlegenden geven aan dat dit in het verleden meer "
+"voorkwam.\n"
+"\n"
+"Elfen gebruiken veel van hun tijd voor het aanscherpen van hun talenten en "
+"vaardigheden. Zij die niet bedreven zijn in de magie spenderen hun tijd aan "
+"hun fysieke vaardigheden. Het resultaat is dat elfen uitblinken in de "
+"boogschietkunst, die misschien hun belangrijkste vorm van oorlogvoering is. "
+"De meeste elfentroepen dragen een boog en geen ander ras kan hun "
+"boogschutters overtreffen in snelheid en precisie. Alle elfen delen ook een "
+"liefde voor onbeschadigde natuur. Ze voelen zich vaak oncomfortabel in "
+"onbegroeide gebieden. Ze leven vooral in de bossen van het Grote Continent, "
+"het Woud Aethen in het zuidwesten, Wesmere in het noordwesten en de grote "
+"noorderlijke wouden waarvan het Lintanir bos de meest zuidelijke rand is. \n"
+"\n"
+"Elfen zijn het oudste ras van het continent, met de mogelijke uitzondering "
+"van trollen. Velen van hun nederzettingen kunnen niet betrouwbaar worden "
+"gedateerd en hebben ongetwijfeld meer een millennium bestaan."
 
 #. [race]: id=goblin, description=
 #: data/core/units.cfg:129
@@ -5363,6 +5472,48 @@ msgid ""
 "general, the Clan warriors are less organized than the civilized fighters, "
 "and the strengths and weaknesses of these groups complement each other."
 msgstr ""
+"Het menselijk ras is extreem divers. Hoewel ze oorspronkelijk van het Oude "
+"Continent kwamen, hebben mensen zich overal over de wereld verspreid en zijn "
+"opgesplitst in vele verschillende culturen en rassen. Hoewel ze niet bezield "
+"zijn met magie zoals andere wezens, kunnen mensen het leren te gebruiken en "
+"zijn in staat meer soorten te leren dan de meeste anderen. Ze hebben geen "
+"speciale vaardigheden en talenten anders dan hun veelzijdigheid en "
+"gedrevenheid. Hoewel ze vaak onvrede hebben met alle rassen, vormen ze af en "
+"toe bondgenootschappen met de minder aggressieve rassen zoals elfen en "
+"dwergen. De gewetenlozen schrikken er ook niet voor terug om orkse "
+"huurlingen in te gebruiken. Ze hebben geen natuurlijke vijanden, hoewel de "
+"meerderheid van de mensen, zoals de meesten van alle rassen, een "
+"instinctieve afkeer hebben van de ondoden. Mensen zijn korter dan elfen, "
+"maar nog steeds langer dan dwergen. Hun huidskleur kan variëren, van bijna "
+"wit tot donkerbruin.\n"
+"\n"
+"<header>text='Onderdanen van de Kroon'</header>\n"
+"Er zijn vele verschillende groepen van mensen, maar de meerderheid van ze op "
+"het Grote Continent leeft onder de heerschappij van de Kroon van Wesnoth. De "
+"mensen verschenen voor het eerst op het Grote Continent van een land ver "
+"over de oceaan in het westen, het Groene Eiland, en vestigden al snel hun "
+"hoofdstad in de binnenlandse stad Weldyn. Tijdens de volgende eeuwen hebben "
+"ze een aantal steden over het continent opgebouwd. De soldaten van de Kroon "
+"van Wesnoth verdedigen het land en vormen de meest georganiseerde militaire "
+"macht in de bekende wereld. De strijders komen van de voornaamste "
+"provinciën, waar alle mannen op een jonge leeftijd aan de dienstplicht "
+"moeten voldoen.\n"
+"\n"
+"<header>text='De Clanleden'</header>\n"
+"De oostelijke provinciën van Wesnoth, bekend als de Thuislanden van de "
+"Clans, hebben een geografie die bestaat uit meer open velden en rollende "
+"heuvels dan de westelijke, meer geciviliseerde provinciën. Ze zijn het thuis "
+"van de Paarden Clans, die geallieerd zijn met de Kroon van Wesnoth, maar "
+"onafhankelijk opereren en hun eigen identiteit behouden. Sommigen beschouwen "
+"ze als een bijstaat, die voedsel en soldaten naar de Kroon stuurt in ruil "
+"voor verdediging. Anderen zeggen dat ze op gelijke voet staan met de "
+"westelijke helft van Wesnoth. In ieder geval hebben de oostelijke provinciën "
+"geen dienstplichtig leger zoals Westelijk Wesnoth dat heeft. "
+"Gevechtstraining is een onderdeel van het leven van de Clans, ouders leren "
+"hun om paarden te bereiden, te vechten en pijl en boog te gebruiken op een "
+"jonge leeftijd. Over het algemeen zijn Clanstrijders minder georganiseerd "
+"dan de geciviliseerde strijders en de sterke en zwakke punten van deze "
+"groepen vullen elkaar aan."
 
 #. [race]: id=lizard, description=
 #: data/core/units.cfg:178
@@ -5461,7 +5612,6 @@ msgstr "Boemannen"
 
 #. [race]: id=orc
 #: data/core/units.cfg:252
-#, fuzzy
 msgid ""
 "In appearance, orcs are half men and half beasts. They are taller, sturdier "
 "and stronger than humans. They are warlike, savage, and cruel by nature. "
@@ -5520,7 +5670,60 @@ msgid ""
 "assassination."
 msgstr ""
 "In uiterlijk zijn Orks half Mens en half beest. Ze zijn langer, robuuster en "
-"sterker als Mensen. "
+"sterker dan Mensen. Ze zijn van nature oorlogszuchtig, wild en wreed. Hun "
+"bloed is donkerder in dikker dan dat van mensen en ze geven weinig om hun "
+"persoonlijke hygiëne of uiterlijk. Hoewel orks gewelddadig zijn, zelfs tegen "
+"elkaar, zijn ze groepsgeoriënteerd; een ork zal zelden in een groep kleiner "
+"dan een half dozijn leven of reizen.\n"
+"\n"
+"<header>text='Maatschappij'</header>\n"
+"Bijna elke ork is lid van een stam of clan. De relaties tussen naburige "
+"stammen zijn meestal gewelddadig, behalve als een gemeenschappelijke vijand "
+"hun voortbestaan bedreigt of uitzicht op een grote buit sterker is dan de "
+"wederzijdse vijandigheid. Nu en dan verschijnt er een enkel, sterk "
+"opperhoofd dat meerdere stammen tegelijk leidt, meestal door middel van "
+"intimidatie. Een orkse stam houdt zich in tijden van vrede vooral bezig met "
+"de voorbereidingen voor het volgende conflict. Orks hebben een primitief "
+"alfabet dat, meestal wordt geschreven, vooral wordt gebruikt om beledigingen "
+"en dreigementen uit te wisselen tussen stamhoofden.\n"
+"\n"
+"Orkse maatschappijen zijn vooral gebaseerd op kracht; het recht van de "
+"sterkste geldt, en een leider leidt en overleeft alleen zolang niemand "
+"anders zijn titel van hem weet te veroveren. Een constant gevecht voor macht "
+"speelt zich af tussen potentiële leiders van de stam. Een orks opperhoofd "
+"geniet zelden meer dan enkele jaren van zijn absolute macht voordat hij "
+"wordt vermoord voor zijn positie, hoewel de geschiedenis vertelt van enkele "
+"opmerkelijke uitzonderingen. Orks hebben geen erecode en hoewel brute kracht "
+"de meest voorkomende manier is om macht te uiten, zijn ook sluipmoorden, "
+"vergiftigingen en ruggesteken volkomen acceptabele manieren om de eigen "
+"agenda te bevorderen.\n"
+"\n"
+"Orks leven vooral in landelijke gebieden, meestal in heuvels of bergachtige "
+"regio's, soms in grotten. Ze doen niet aan landbouw en houden geen vee, maar "
+"zijn bekwame jagers door hun fysieke postuur en brutaliteit. Door hun grote "
+"aantallen zijn ze in staat om een gebied in korte tijd leeg te jagen van "
+"alles groter dan een rat. Door dit en hun instabiele leiderschap, hebben de "
+"meeste orkse stammen een semi-nomadisch levensstijl en blijven ze nooit lang "
+"in een gebied. De grotere stammen kunnen zich stevig in een gebied vestigen "
+"voor soms tientallen jaren en bouwen grote kampen die zelfs op steden gaan "
+"lijken, maar ook deze zijn gemakkelijk ontmanteld en achtergelaten als er "
+"een noodzaak is om de horde te verplaatsen.\n"
+"\n"
+"De oudste bekende orks waren rond de 50 a 60 jaar oud, maar slechts enkele "
+"leven meer dan 30 jaar voordat ze sterven door oorlog of door de hand van "
+"hun stamleden. De oudste orks zijn meestal sjamanen, die misschien de enigen "
+"zijn die door andere orks gezien worden als betrouwbaar en neutraal. De "
+"oorsprong van dit gebruik is onbekend, aangezien de sjamanen niet direct "
+"bijdragen aan de orkse maatschappij, maar functioneren als adviseurs, niet "
+"iets dat in andere gevallen getolereerd wordt. Sjamanen zijn in vele "
+"opzichten het tegenovergestelde van andere orks: ze zijn vaak tenger en "
+"fragiel in vergelijking en zijn onbekwaam in het gevecht. Hoewel orks "
+"vertrouwen op brute kracht zullen lang niet alle orks hier veel van "
+"bezitten. Velen worden kleiner en zwakker geboren dan de rest en worden "
+"zelfs als zuigelingen al op hun plaats gezet door hun grotere broers en "
+"zussen. De groteren pakken vaak het meeste voedsel en worden zo nog sterker, "
+"terwijl de kleineren dat niet doen. Vele van dezen specialiseren in andere "
+"vaardigheden, zoals boogschieten en uitvoeren van sluipmoorden."
 
 #. [race]: id=troll
 #: data/core/units.cfg:259
@@ -5575,6 +5778,39 @@ msgid ""
 "dwarves who migrated there. Trolls are a common sight on the mountain ranges "
 "north and east of Wesnoth, and wherever Orcish hordes travel."
 msgstr ""
+"Trollen zijn oude wezens, een van de oudste bekende rassen die op het Grote "
+"Continent leven. Ze zijn groot, traag, eenvoudig en leven extreem lange "
+"levens in diepe grotten of op hoge bergen. Het meest unieke kenmerk is hun "
+"interne levenskracht die ze in stand houdt en geneest van binnen. Als "
+"resultaat leven ze heel andere levens dan bijna elk ander wezen. Trollen "
+"hebben weinig echte behoeften: ze hebben maar beetje voedsel of water nodig "
+"en hebben dus weinig aansporing om doelen na te jagen anders dan bescherming "
+"tegen vijanden. Dit betekent dat ze zich zelden ergens zorgen over hoeven te "
+"maken en veel van hun tijd kun gebruiken om te slapen of na te denken. "
+"Trollen hebben een aparte affiniteit met de natuur. Ze voelen zich niet "
+"verwant met levende dingen zoals elfen, maar met aarde en steen. Ze zijn ook "
+"enigszins nieuwsgierig over hun omgeving en vele jongere welpen houden er "
+"zelfs van om te reizen en de wereld te zien. Als trollen ouder worden, "
+"worden ze steeds passiever, verliezen langzaam hun interesse in hun omgeving "
+"en spenderen meer van hun tijd aan het slapen in een stil, bekend hoekje van "
+"hun huis-grot. Dit is totdat ze uiteindelijk sterven als hun lichamen "
+"langzaam veranderen in levenloze beelden van steen.\n"
+"\n"
+"Trollen worden door de meesten gezien als weinig anders dan weer een ander "
+"ras van wilde monsters. Deze wijdverspreide misvatting wordt gedeeltelijk in "
+"stand gehouden door orks die trollen overhalen zich aan te sluiten bij hun "
+"legers om zo wraak te nemen op diegenen die hun bejaagden. Deze nieuwe "
+"rekruten wordt daarna opgedragen om de huidige vijand van de orks aan te "
+"vallen, of die te voren een vijand van de trollen waren of niet, wat alleen "
+"maar meer vijanden oplevert voor de misleide trollen. De meest voorkomende "
+"vijand van trollen zijn dwergen, de vijandigheid tussen deze twee rassen is "
+"eeuwenoud.\n"
+"\n"
+"<header>text='Geographie'</header>\n"
+"Trollen hebben de bergen van het Grote Continent langer bewoond dan de "
+"dwergen, die erheen migreerden. Trollen zijn een bekende bezienswaardigheid "
+"in de bergketens ten noorden en oosten van Wesnoth, en waar de orkse hordes "
+"heenreizen."
 
 #. [race]: id=undead
 #: data/core/units.cfg:281
@@ -7616,7 +7852,7 @@ msgstr "<header>text='Eenheden met dit vermogen'</header>"
 
 #: src/help.cpp:1258
 msgid "Advances from: "
-msgstr "Promoveert van:"
+msgstr "Promoveert van: "
 
 #: src/help.cpp:1287
 msgid "Advances to: "
@@ -7628,7 +7864,7 @@ msgstr "Allerlei"
 
 #: src/help.cpp:1320
 msgid "Race: "
-msgstr "Ras:"
+msgstr "Ras: "
 
 #: src/help.cpp:1327
 msgid "Abilities: "
@@ -7712,7 +7948,7 @@ msgstr "Volgende >"
 
 #: src/help.cpp:2697
 msgid "Reference to unknown topic: "
-msgstr "Verwijzing naar onbekend onderwerp:"
+msgstr "Verwijzing naar onbekend onderwerp: "
 
 #: src/help.cpp:2951
 msgid "corrupted original file"
@@ -7724,7 +7960,7 @@ msgstr "Strijd om Wesnoth Help"
 
 #: src/help.cpp:3113
 msgid "Parse error when parsing help text: "
-msgstr "Fout bij het verwerken van de helptekst:"
+msgstr "Fout bij het verwerken van de helptekst: "
 
 #: src/intro.cpp:118
 msgid "Next"
@@ -7802,7 +8038,7 @@ msgstr "Wil je hem werkelijk wegsturen?"
 
 #: src/menu_events.cpp:98
 msgid "My lord, this unit is loyal and requires no upkeep! "
-msgstr "Heer, deze eenheid is loyaal en vraagt geen onderhoud!"
+msgstr "Heer, deze eenheid is loyaal en vraagt geen onderhoud! "
 
 #: src/menu_events.cpp:99 src/menu_events.cpp:102 src/menu_events.cpp:106
 msgid "Do you really want to dismiss her?"
@@ -7810,16 +8046,17 @@ msgstr "Wil je haar werkelijk wegsturen?"
 
 #: src/menu_events.cpp:101
 msgid "My lord, this unit is an experienced one, having advanced levels! "
-msgstr "Heer, deze eenheid is ervaren en is al gepromoveerd!"
+msgstr "Heer, deze eenheid is ervaren en is al gepromoveerd! "
 
 #: src/menu_events.cpp:105
 msgid "My lord, this unit is close to advancing a level! "
-msgstr "Heer, deze eenheid is bijna gepromoveerd!"
+msgstr "Heer, deze eenheid is bijna gepromoveerd! "
 
 #: src/menu_events.cpp:188
 msgid "Statistics"
 msgstr "Statistieken"
 
+# 'Rang' lijkt me kort genoeg, of heeft iemand een beter idee?
 #: src/menu_events.cpp:202 src/menu_events.cpp:990
 #, fuzzy
 msgid "Level^Lvl."
@@ -8061,7 +8298,7 @@ msgstr "Label plaatsen"
 
 #: src/menu_events.cpp:1572 src/menu_events.cpp:1575
 msgid "Label: "
-msgstr "Label:"
+msgstr "Label: "
 
 #: src/menu_events.cpp:1577
 msgid "Team only"
@@ -8322,7 +8559,7 @@ msgstr "Verwijderd van lijst: "
 
 #: src/menu_events.cpp:2527
 msgid "There are no players on your friends or ignore list."
-msgstr "Er zijn geen spelers in je vrienden of negeer lijst"
+msgstr "Er zijn geen spelers in je vrienden of negeer lijst."
 
 #: src/menu_events.cpp:2695
 msgid "Couldn't find label or unit containing the string '$search'."
@@ -8378,11 +8615,11 @@ msgstr "Vijand aanvallen"
 
 #: src/mouse_events.cpp:648
 msgid "Choose weapon:"
-msgstr "Kies wapen: "
+msgstr "Kies wapen:"
 
 #: src/multiplayer.cpp:127 src/multiplayer.cpp:165
 msgid "Connecting to Server..."
-msgstr "Verbinden met Server"
+msgstr "Bezig met verbinden met Server..."
 
 #: src/multiplayer.cpp:137
 msgid "Reading from Server..."
@@ -8455,7 +8692,7 @@ msgstr "Geen leider gevonden voor de factie $faction"
 
 #: src/multiplayer_connect.cpp:1008
 msgid "Game Lobby: "
-msgstr "Spellobby"
+msgstr "Spellobby: "
 
 #: src/multiplayer_connect.cpp:1028
 msgid "Player/Type"
@@ -8665,7 +8902,7 @@ msgstr "Wachtwoord instellen"
 
 #: src/multiplayer_create.cpp:326 src/multiplayer_lobby.cpp:804
 msgid "Password: "
-msgstr "Wachtwoord:"
+msgstr "Wachtwoord: "
 
 #: src/multiplayer_create.cpp:326
 msgid ""
@@ -8712,7 +8949,7 @@ msgstr "Spelers: "
 
 #: src/multiplayer_create.cpp:527
 msgid "Size: "
-msgstr "Grootte:"
+msgstr "Grootte: "
 
 #: src/multiplayer_lobby.cpp:115
 msgid "--no games open--"
@@ -8748,7 +8985,7 @@ msgstr "Geladen opgeslagen spel"
 
 #: src/multiplayer_lobby.cpp:523
 msgid "Turn "
-msgstr "Beurt"
+msgstr "Beurt "
 
 #: src/multiplayer_lobby.cpp:527
 msgid "Vacant Slot:"
@@ -8811,15 +9048,15 @@ msgstr "Selecteer een eenheid:"
 
 #: src/multiplayer_wait.cpp:134
 msgid "Leader: "
-msgstr "Leider:"
+msgstr "Leider: "
 
 #: src/multiplayer_wait.cpp:136
 msgid "Gender: "
-msgstr "Geslacht:"
+msgstr "Geslacht: "
 
 #: src/multiplayer_wait.cpp:138
 msgid "Recruits: "
-msgstr "Rekruten:"
+msgstr "Rekruten: "
 
 #: src/multiplayer_wait.cpp:185
 msgid "Waiting for game to start..."
@@ -8843,7 +9080,7 @@ msgstr "Kies je factie:"
 
 #: src/multiplayer_wait.cpp:303
 msgid "Starting position: "
-msgstr "Startpositie:"
+msgstr "Startpositie: "
 
 #: src/network.cpp:103
 msgid "invalid network handle"
@@ -8990,7 +9227,7 @@ msgstr "Goud: "
 
 #: src/playsingle_controller.cpp:198
 msgid "Carry over percentage: "
-msgstr "Overdrachtspercentage:"
+msgstr "Overdrachtspercentage: "
 
 #: src/playsingle_controller.cpp:201
 msgid "Bonus Gold: "
@@ -9138,7 +9375,7 @@ msgstr "Niet gesloten string"
 
 #: src/serialization/parser.cpp:329
 msgid " included from "
-msgstr " geïncludeerd vanuit"
+msgstr " geïncludeerd vanuit "
 
 #: src/serialization/parser.cpp:357
 msgid "$error, value '$value', previous '$previous_value' at $pos"
@@ -9339,7 +9576,7 @@ msgstr "Onbekende eenheid '$type|'"
 
 #: src/unit.cpp:2532 src/unit.cpp:2737 src/unit.cpp:2793
 msgid " and "
-msgstr " en"
+msgstr " en "
 
 #: src/unit.cpp:2543
 msgid "$attack_list|: $effect_description"
@@ -9444,11 +9681,26 @@ msgstr "Help ons Wesnoth te verbeteren!"
 msgid "Enable summary uploads"
 msgstr "Samenvattingen uploaden aan"
 
-#~ msgid "You must log in to this server"
-#~ msgstr "Je moet op deze server inloggen"
+#~ msgid " This unit is capable of basic healing and slowing dehydration."
+#~ msgstr ""
+#~ " Deze eenheid kan de beginselen van verpleging toepassen en dehydratie "
+#~ "vertragen."
 
-#~ msgid "Login: "
-#~ msgstr "Login: "
+#~ msgid ""
+#~ " This unit is capable of healing those around it, slowing dehydration, "
+#~ "and curing them of poison."
+#~ msgstr ""
+#~ " Deze eenheid kan degenen die hem omringen verplegen, dehydratie "
+#~ "vertragen en vergiftiging genezen."
+
+#~ msgid ""
+#~ "\n"
+#~ "Redraw the screen.\n"
+#~ "\n"
+#~ msgstr ""
+#~ "\n"
+#~ "Scherm hertekenen.\n"
+#~ "\n"
 
 #~ msgid "VICTORY_AND_DEFEAT_MUSIC is unnecessary and can be removed."
 #~ msgstr "VICTORY_AND_DEFEAT_MUSIC is onnodig en kan worden verwijderd."
@@ -9462,43 +9714,28 @@ msgstr "Samenvattingen uploaden aan"
 #~ msgid "Choose a different username"
 #~ msgstr "Kies een andere gebruikersnaam"
 
+#~ msgid "Login"
+#~ msgstr "Login"
+
+#~ msgid "You must log in to this server"
+#~ msgstr "Je moet op deze server inloggen"
+
+#~ msgid "Login: "
+#~ msgstr "Login: "
+
 #~ msgid "Send a private message to "
-#~ msgstr "Stuur een privebericht naar"
+#~ msgstr "Stuur een privebericht naar "
 
 #~ msgid "Whisper"
 #~ msgstr "Fluister"
 
 #~ msgid "Message: "
-#~ msgstr "Bericht:"
-
-#~ msgid "Login"
-#~ msgstr "Login"
-
-#~ msgid ""
-#~ "\n"
-#~ "Redraw the screen.\n"
-#~ "\n"
-#~ msgstr ""
-#~ "\n"
-#~ "Scherm hertekenen.\n"
-#~ "\n"
+#~ msgstr "Bericht: "
 
 #~ msgid "No server ping since $timeout second. Connection timed out."
 #~ msgid_plural "No server ping since $timeout seconds. Connection timed out."
 #~ msgstr[0] "Geen server ping sinds $timeout seconde. Connectie verbroken."
 #~ msgstr[1] "Geen server ping sinds $timeout seconden. Connectie verbroken."
-
-#~ msgid " This unit is capable of basic healing and slowing dehydration."
-#~ msgstr ""
-#~ " Deze eenheid kan de beginselen van verpleging toepassen en dehydratie "
-#~ "vertragen."
-
-#~ msgid ""
-#~ " This unit is capable of healing those around it, slowing dehydration, "
-#~ "and curing them of poison."
-#~ msgstr ""
-#~ " Deze eenheid kan degenen die hem omringen verplegen, dehydratie "
-#~ "vertragen en vergiftiging genezen."
 
 #~ msgid "Abilites"
 #~ msgstr "Vermogens"
@@ -9513,7 +9750,7 @@ msgstr "Samenvattingen uploaden aan"
 
 #, fuzzy
 #~ msgid "value: "
-#~ msgstr "Naam:"
+#~ msgstr "Naam: "
 
 #, fuzzy
 #~ msgid "Defeat an enemy Leader!"
