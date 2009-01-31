@@ -46,6 +46,7 @@
 #endif
 
 #include <boost/scoped_ptr.hpp>
+#include <boost/scoped_array.hpp>
 #include <algorithm>
 #include <cassert>
 #include <cerrno>
@@ -738,19 +739,6 @@ void server::run() {
 					continue;
 				}
 
-				//TODO: this is a HUGE HACK. There was a bug in Wesnoth 1.4
-				//that caused it to still use binary WML for the leave game
-				//message. (ugh). We will see if this looks like binary WML
-				//and if it does, assume it's a leave_game message
-				if(buf.front() < 5) {
-				  std::cerr << "hit wesnoth bug...forcing disconnection incorrectly." << buf.front() << std::endl ;
-					static simple_wml::document leave_game_doc(
-					    "[leave_game]\n[/leave_game]\n",
-						simple_wml::INIT_COMPRESSED);
-					process_data(sock, leave_game_doc);
-					continue;
-				}
-
 				const bool sample = request_sample_frequency >= 1 && (sample_counter++ % request_sample_frequency) == 0;
 
 				const clock_t before_parsing = get_cpu_time(sample);
@@ -758,30 +746,37 @@ void server::run() {
 				char* buf_ptr = new char [buf.size()];
 				memcpy(buf_ptr, &buf[0], buf.size());
 				simple_wml::string_span compressed_buf(buf_ptr, buf.size());
+				boost::scoped_ptr<simple_wml::document> data_ptr;
 				try {
-					simple_wml::document data(compressed_buf); // might throw a simple_wml::error
-					data.take_ownership_of_buffer(buf_ptr);
-					std::vector<char>().swap(buf);
+					data_ptr.reset(new simple_wml::document(compressed_buf)); // might throw a simple_wml::error
+					data_ptr->take_ownership_of_buffer(buf_ptr);
 
-					const clock_t after_parsing = get_cpu_time(sample);
-
-					process_data(sock, data);
-
-					bandwidth_type->set_type(data.root().first_child().to_string());
-					if(sample) {
-						const clock_t after_processing = get_cpu_time(sample);
-						metrics_.record_sample(data.root().first_child(),
-						          after_parsing - before_parsing,
-								  after_processing - after_parsing);
-					}
 				} catch (simple_wml::error& e) {
 					// Most likely the error happened in scenario data so just give a server
 					// message instead of send_error() which would kick the client out.
-					lobby_.send_server_message(std::string("Invalid WML received: '"
-							+ e.message + "'. You might have to quit.").c_str(), sock);
-					delete buf_ptr;
+					send_error(sock, "Invalid WML received. You might have to quit.");
+					delete [] buf_ptr;
 					continue;
+				} catch(...) {
+					delete [] buf_ptr;
+					throw;
 				}
+
+				simple_wml::document& data = *data_ptr;
+				std::vector<char>().swap(buf);
+
+				const clock_t after_parsing = get_cpu_time(sample);
+
+				process_data(sock, data);
+
+				bandwidth_type->set_type(data.root().first_child().to_string());
+				if(sample) {
+					const clock_t after_processing = get_cpu_time(sample);
+					metrics_.record_sample(data.root().first_child(),
+					          after_parsing - before_parsing,
+							  after_processing - after_parsing);
+				}
+
 			}
 
 			metrics_.no_requests();
@@ -789,7 +784,7 @@ void server::run() {
 		} catch(config::error& e) {
 			WRN_CONFIG << "Warning: error in received data: " << e.message << "\n";
 		} catch(simple_wml::error& e) {
-			WRN_CONFIG << "Warning: error in received data\n";
+			WRN_CONFIG << "Warning: error in received data: " << e.message << "\n";
 		} catch(network::error& e) {
 			if (e.message == "shut down") {
 				LOG_SERVER << "Try to disconnect all users...\n";
