@@ -349,6 +349,7 @@ libwesnoth_a_SOURCES = \
 	font.cpp \
 	hotkeys.cpp \
 	image.cpp \
+	image_function.cpp \
 	key.cpp \
 	language.cpp \
 	loadscreen.cpp \

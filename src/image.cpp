@@ -23,8 +23,10 @@
 
 #include "config.hpp"
 #include "filesystem.hpp"
+#include "foreach.hpp"
 #include "game_config.hpp"
 #include "image.hpp"
+#include "image_function.hpp"
 #include "log.hpp"
 
 #include "SDL_image.h"
@@ -348,167 +350,224 @@ surface locator::load_image_sub_file() const
 	}
 
 	if(val_.modifications_.size()){
-		// ~FL() arguments
-		bool xflip = false;
-		bool yflip = false;
-		// ~GS() status
-		bool greyscale = false;
-		// ~CROP() status
-		bool slice = false;
-		SDL_Rect slice_rect = { 0,0,0,0 };
-		// ~SCALE() status
-		bool scale = false;
-		int scale_w = 0, scale_h = 0;
-		// ~RC() and ~TC() status
-		bool rc = false;
-		// ~CS() arguments
-		int cs_r = 0, cs_g = 0, cs_b = 0;
-		// ~BL() arguments
-		unsigned blur = 0;
-		// ~O()
-		static const fixed_t opacity_unchanged = ftofxp(-1.0f);
-		static const fixed_t opacity_full = ftofxp(1.0f);
-		fixed_t opacity = opacity_unchanged;
+		// The RC functor is very special; it must be applied
+		// before anything else, and it is not accumulative.
+		rc_function rc;
+		// The FL functor is delayed until the end of the sequence.
+		// This allows us to ignore things like ~FL(horiz)~FL(horiz)
+		fl_function fl;
+		// Regular functors
+		std::vector< image::function_base* > functor_queue;
 
-		std::map<Uint32, Uint32> recolor_map;
-		std::vector<std::string> modlist = utils::paranthetical_split(val_.modifications_,'~');
-		for(std::vector<std::string>::const_iterator i=modlist.begin();
-			i!= modlist.end();i++){
-			std::vector<std::string> tmpmod = utils::paranthetical_split(*i);
-			std::vector<std::string>::const_iterator j=tmpmod.begin();
+		const std::vector<std::string> modlist = utils::paranthetical_split(val_.modifications_,'~');
+
+		foreach(const std::string& s, modlist) {
+			const std::vector<std::string> tmpmod = utils::paranthetical_split(s);
+			std::vector<std::string>::const_iterator j = tmpmod.begin();
 			while(j!= tmpmod.end()){
-				std::string function=*j++;
-				if(j==tmpmod.end()){
+				const std::string function = *j++;
+				if(j == tmpmod.end()){
 					if(function.size()){
 						ERR_DP << "error parsing image modifications: "
 							<< val_.modifications_<< "\n";
 					}
 					break;
 				}
-				std::string field = *j++;
+				const std::string field = *j++;
 
-				// ~TC() is the only function which is an alias to another one,
-				// so it must be out of the if-elseif chain.
-				/** @todo: move RC functionality into a different method
-				 *         that is called by both functions to avoid the
-				 *         unneeded load of string comparison.
-				 */
-				if("TC" == function){
+				// Team color (TC), a subset of RC's functionality
+				if("TC" == function) {
 					std::vector<std::string> param = utils::split(field,',');
-					if(param.size() < 2)
+					if(param.size() < 2) {
+						ERR_DP << "too few arguments passed to the ~TC() function\n";
 						break;
+					}
 
 					int side_n = lexical_cast_default<int>(param[0], -1);
 					std::string team_color;
 					if (side_n < 1) {
+						ERR_DP << "invalid team (" << side_n << ") passed to the ~TC() function\n";
 						break;
-					} else if (side_n < static_cast<int>(team_colors.size())) {
+					}
+					else if (side_n < static_cast<int>(team_colors.size())) {
 						team_color = team_colors[side_n - 1];
-					} else {
-					// this side is not inialized use default "n"
-						team_color = lexical_cast<std::string>(side_n);
 					}
-
-					if(game_config::tc_info(param[1]).size()){
-						function="RC";
-						field = param[1] + ">" + team_color;
-					}
-				}
-
-				if("RC" == function){	// Re-color range/palette function
-					rc = true;
-					std::vector<std::string> recolor=utils::split(field,'>'); // recolor palette to range
-					if(recolor.size()>1){
-						std::map<Uint32, Uint32> tmp_map;
+					else {
+						// This side is not initialized; use default "n"
 						try {
-							color_range const& new_color = game_config::color_info(recolor[1]);
-							std::vector<Uint32> const& old_color = game_config::tc_info(recolor[0]);
-							tmp_map = recolor_range(new_color,old_color);
-						} catch (config::error& e) {
-							ERR_DP << "caught config::error... " << e.message << std::endl;
+							team_color = lexical_cast<std::string>(side_n);
+						} catch(bad_lexical_cast const&) {
+							ERR_DP << "bad things happen\n";
 						}
-						for(std::map<Uint32, Uint32>::const_iterator tmp = tmp_map.begin(); tmp!= tmp_map.end(); tmp++){
-							recolor_map[tmp->first] = tmp->second;
+					}
+
+					//
+					// Pass parameters for RC functor
+					//
+					if(game_config::tc_info(param[1]).size()){
+						try {
+							color_range const& new_color =
+								game_config::color_info(team_color);
+							std::vector<Uint32> const& old_color =
+								game_config::tc_info(param[1]);
+
+							rc.map() = recolor_range(new_color,old_color);
 						}
-					} else {
-						std::vector<std::string> remap = utils::split(field,'='); // recolor palette to new palette
-						if(remap.size() > 1) {
-							std::map<Uint32, Uint32> tmp_map;
+						catch(config::error const& e) {
+							ERR_DP
+								<< "caught config::error while processing TC: "
+								<< e.message
+								<< '\n';
+							ERR_DP
+								<< "bailing out from TC\n";
+							rc.map().clear();
+						}
+					}
+					else {
+						ERR_DP
+							<< "could not load TC info for '" << param[1] << "' palette\n";
+						ERR_DP
+							<< "bailing out from TC\n";
+						rc.map().clear();
+					}
+					
+				}
+				// Palette recolor (RC)
+				else if("RC" == function) {
+					const std::vector<std::string> recolor_params = utils::split(field,'>');
+					if(recolor_params.size()>1){
+						//
+						// recolor source palette to color range
+						//
+						try {
+							color_range const& new_color =
+								game_config::color_info(recolor_params[1]);
+							std::vector<Uint32> const& old_color =
+								game_config::tc_info(recolor_params[0]);
+
+							rc.map() = recolor_range(new_color,old_color);
+						}
+						catch (config::error& e) {
+							ERR_DP
+								<< "caught config::error while processing color-range RC: "
+								<< e.message
+								<< '\n';
+							ERR_DP
+								<< "bailing out from RC\n";
+							rc.map().clear();
+						}
+					}
+					else {
+						//
+						// try to recolor source palette to target palette (palette switch)
+						//
+						const std::vector<std::string> remap_params = utils::split(field,'=');
+						if(remap_params.size() > 1) {
 							try {
-								std::vector<Uint32> const& old_palette = game_config::tc_info(remap[0]);
-								std::vector<Uint32> const& new_palette = game_config::tc_info(remap[1]);
+								std::vector<Uint32> const& old_palette =
+									game_config::tc_info(remap_params[0]);
+								std::vector<Uint32> const& new_palette =
+									game_config::tc_info(remap_params[1]);
+
 								for(size_t i = 0; i < old_palette.size() && i < new_palette.size(); ++i) {
-									tmp_map[old_palette[i]] = new_palette[i];
+									rc.map()[old_palette[i]] = new_palette[i];
 								}
-							} catch(config::error& e) {
-								ERR_DP << "caught config::error... " << e.message << '\n';
 							}
-							for(std::map<Uint32, Uint32>::const_iterator tmp = tmp_map.begin(); tmp!= tmp_map.end(); tmp++){
-								recolor_map[tmp->first] = tmp->second;
+							catch(config::error& e) {
+								ERR_DP
+									<< "caught config::error while processing palette switch RC: "
+									<< e.message
+									<< '\n';
+								ERR_DP
+									<< "bailing out from RC\n";
+								rc.map().clear();
 							}
 						}
 					}
 				}
-				else if("FL" == function){	// Flip layer
+				// Flip-flop (FL)
+				else if("FL" == function) {
 					if(field.empty() || field.find("horiz") != std::string::npos) {
-						xflip = !xflip;
+						fl.toggle_horiz();
 					}
 					if(field.find("vert") != std::string::npos) {
-						yflip = !yflip;
+						fl.toggle_vert();
 					}
 				}
-				else if("GS" == function){	// Grayscale image
-					greyscale=true;
+				// Grayscale (GS)
+				else if("GS" == function) {
+					functor_queue.push_back(new gs_function());
 				}
-				else if("CS" == function) { // Color-shift image
+				// Color-shift (CS)
+				else if("CS" == function) {
 					std::vector<std::string> const factors = utils::split(field, ',');
 					const size_t s = factors.size();
 					if(s) {
-						cs_r = lexical_cast_default<int>(factors[0]);
+						int r = 0, g = 0, b = 0;
+
+						r = lexical_cast_default<int>(factors[0]);
 						if( s > 1 ) {
-							cs_g = lexical_cast_default<int>(factors[1]);
+							g = lexical_cast_default<int>(factors[1]);
 						}
 						if( s > 2 ) {
-							cs_b = lexical_cast_default<int>(factors[2]);
+							b = lexical_cast_default<int>(factors[2]);
 						}
-						if( lg::info.dont_log(lg::display) == false && s > 3 ) {
-							lg::info(lg::display) << "ignoring extra "
-							                      << s-3
-							                      << " arguments to ~CS() function\n";
-						}
-					} else {
-						INFO_DP << "no arguments passed to ~CS() function\n";
+
+						functor_queue.push_back(new cs_function(r,g,b));
+					}
+					else {
+						INFO_DP << "no arguments passed to the ~CS() function\n";
 					}
 				}
-				else if("CROP" == function){ // Slice image
+				// Crop/slice (CROP)
+				else if("CROP" == function) {
 					std::vector<std::string> const& slice_params = utils::split(field, ',', utils::STRIP_SPACES);
-					if(slice_params.empty() != true) {
-						slice = true;
-							slice_rect.x = lexical_cast_default<Sint16, const std::string&>(slice_params[0]);
-						if(slice_params.size() > 1)
+					const size_t s = slice_params.size();
+					if(s) {
+						SDL_Rect slice_rect = { 0, 0, 0, 0 };
+
+						slice_rect.x = lexical_cast_default<Sint16, const std::string&>(slice_params[0]);
+						if(s > 1) {
 							slice_rect.y = lexical_cast_default<Sint16, const std::string&>(slice_params[1]);
-						if(slice_params.size() > 2)
-							slice_rect.w = lexical_cast_default<Uint16, const std::string&>(slice_params[2]);
-						if(slice_params.size() > 3)
-							slice_rect.h = lexical_cast_default<Uint16, const std::string&>(slice_params[3]);
-					}
-				}
-				else if("SCALE" == function) { // Scale image
-					std::vector<std::string> const& scale_params = utils::split(field, ',', utils::STRIP_SPACES);
-					if(scale_params.empty()) {
-						ERR_DP << "no arguments passed to the ~SCALE() function\n";
-					} else {
-						scale = true;
-							scale_w = lexical_cast_default<int, const std::string&>(scale_params[0]);
-						if(scale_params.size() > 1) {
-							scale_h = lexical_cast_default<int, const std::string&>(scale_params[1]);
 						}
+						if(s > 2) {
+							slice_rect.w = lexical_cast_default<Uint16, const std::string&>(slice_params[2]);
+						}
+						if(s > 3) {
+							slice_rect.h = lexical_cast_default<Uint16, const std::string&>(slice_params[3]);
+						}
+
+						functor_queue.push_back(new crop_function(slice_rect));
+					}
+					else {
+						ERR_DP << "no arguments passed to the ~CROP() function\n";
 					}
 				}
-				else if("BL" == function) { // Blur
-					blur = std::max<int>(0, lexical_cast_default<int>(field));
+				// Scale (SCALE)
+				else if("SCALE" == function) {
+					std::vector<std::string> const& scale_params = utils::split(field, ',', utils::STRIP_SPACES);
+					const size_t s = scale_params.size();
+					if(s) {
+						int w = 0, h = 0;
+
+						w = lexical_cast_default<int, const std::string&>(scale_params[0]);
+						if(s > 1) {
+							h = lexical_cast_default<int, const std::string&>(scale_params[1]);
+						}
+
+						functor_queue.push_back(new scale_function(w, h));
+					}
+					else {
+						ERR_DP << "no arguments passed to the ~SCALE() function\n";
+					}
 				}
-				else if("O" == function) { // Whole-surface opacity change
+				// Gaussian-like blur (BL)
+				else if("BL" == function) {
+					const int depth = std::max<int>(0, lexical_cast_default<int>(field));
+					functor_queue.push_back(new bl_function(depth));
+				}
+				// Opacity-shift (O)
+				else if("O" == function) {
 					const std::string::size_type p100_pos = field.find('%');
 					float num = 0.0f;
 					if(p100_pos == std::string::npos)
@@ -519,82 +578,48 @@ surface locator::load_image_sub_file() const
 						num = lexical_cast_default<float,const std::string&>(parsed_field);
 						num /= 100.0f;
 					}
-					opacity = ftofxp(num);
+					functor_queue.push_back(new o_function(num));
 				}
+				//
 				// ~R(), ~G() and ~B() are the children of ~CS(). Merely syntatic sugar.
 				// Hence they are at the end of the evaluation.
+				//
+				// Red component color-shift (R)
 				else if("R" == function) {
-					cs_r = lexical_cast_default<int>(field);
+					const int r = lexical_cast_default<int>(field);
+					functor_queue.push_back(new cs_function(r,0,0));
 				}
+				// Green component color-shift (G)
 				else if("G" == function) {
-					cs_g = lexical_cast_default<int>(field);
+					const int g = lexical_cast_default<int>(field);
+					functor_queue.push_back(new cs_function(0,g,0));
 				}
+				// Blue component color-shift (B)
 				else if("B" == function) {
-					cs_b = lexical_cast_default<int>(field);
+					const int b = lexical_cast_default<int>(field);
+					functor_queue.push_back(new cs_function(0,0,b));
 				}
 			}
 		}
-		if(rc) {
-			surf = recolor_image(surf,recolor_map);
-		}
-		if(slice) {
-			// yummy, a slice of surface! this needs to get done
-			// before any other geometric transformations
-			if(slice_rect.w == 0) {
-				slice_rect.w = surf->w;
-			}
-			if(slice_rect.h == 0) {
-				slice_rect.h = surf->h;
-			}
-			if(slice_rect.x < 0) {
-				ERR_DP << "start X coordinate of SECTION function is negative - truncating to zero\n";
-				slice_rect.x = 0;
-			}
-			if(slice_rect.y < 0) {
-				ERR_DP << "start Y coordinate of SECTION function is negative - truncating to zero\n";
-				slice_rect.y = 0;
-			}
-			surf = cut_surface(surf, slice_rect);
-		}
-		if(xflip) {
-			surf = flip_surface(surf);
-		}
-		if(yflip) {
-			surf = flop_surface(surf);
-		}
-		if(scale) {
-			const int old_w = surf->w;
-			const int old_h = surf->h;
-			if(scale_w <= 0) {
-				if(scale_w < 0) {
-					ERR_DP << "width of SCALE is negative - resetting to original width\n";
-				}
-				scale_w = old_w;
-			}
-			if(scale_h <= 0) {
-				if(scale_h < 0) {
-					ERR_DP << "height of SCALE is negative - resetting to original height\n";
-				}
-				scale_h = old_h;
-			}
 
-			if(scale_w != old_w || scale_h != old_h) {
-				surf = scale_surface(surf, scale_w, scale_h);
+		if(!rc.no_op()) {
+			surf = rc(surf);
+		}
+
+		if(!fl.no_op()) {
+			surf = fl(surf);
+		}
+
+		foreach(function_base* f, functor_queue) {
+			if(f == NULL) {
+				ERR_DP << "somebody set up us the bomb\n";
+				continue;
 			}
-		}
-		if(cs_r || cs_g || cs_b) {
-			surf = adjust_surface_colour(surf, cs_r, cs_g, cs_b);
-		}
-		if(greyscale) {
-			surf = greyscale_image(surf);
-		}
-		if(opacity != opacity_unchanged && opacity != opacity_full) {
-			surf = adjust_surface_alpha(surf, opacity);
-		}
-		if(blur) {
-			surf = blur_alpha_surface(surf, blur);
+			surf = (*f)(surf);
+			delete f;
 		}
 	}
+
 	return surf;
 }
 

@@ -12,3 +12,12 @@ The release team should empty this file after each release.
 
 ***
 
+The image path functions (~RC(), ~TC(), ~FL() et al) parsing has been heavily
+modified. Now all functions in a path are stacked in a left-to-right order, with
+the sole exceptions of ~RC() and ~TC(), which continue to be non-accumulable.
+
+Additionally, a new note-worthy image path function, ~SCALE(width,height), was
+introduced; it scales graphics, of course.
+
+***
+
