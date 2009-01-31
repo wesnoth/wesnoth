@@ -11,11 +11,13 @@ Version 1.5.8+svn:
      * New base frames for the Desert Sentinel and Prowler.
  * Graphics:
    * Removed the black background from some remaining old portraits
-   * New portrait for Dwarf Thunderer, Dwarf Dragonguard, Human Pikeman, Dwarf Fighter, Dwarf Lord.
+   * New portrait for Dwarf Thunderer, Dwarf Dragonguard, Human Pikeman, Dwarf Fighter, Dwarf Lord, Dwarf Guard.
    * New image-path functions:
      * SCALE(W,H): scale down an image to the specified width (W) and height (H)
        for rendering. Negative or null (zero) numbers are ignored when scaling
        in the respective direction.
+   * Restructured portraits directory to be based on unit types rather than authors,
+     added an authors file for recording portrait credits.
  * Language and i18n:
    * updated translations: Chinese (Traditional), Czech, French, German,
      Hungarian, Italian, Polish, Slovak, Spanish
