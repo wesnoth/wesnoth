@@ -1,7 +1,7 @@
 [Project]
 FileName=wesnothd.dev
 Name=wesnothd
-UnitCount=33
+UnitCount=35
 Type=1
 Ver=1
 ObjFiles=
@@ -2052,7 +2052,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit36]
-FileName=..\..\src\unit_animation.cpp
+FileName=..\..\src\server\sample_user_handler.cpp
 CompileCpp=1
 Folder=wesnothd
 Compile=1
@@ -2242,7 +2242,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit35]
-FileName=..\..\src\terrain_filter.cpp
+FileName=..\..\src\server\forum_user_handler.cpp
 CompileCpp=1
 Folder=wesnothd
 Compile=1
@@ -2521,16 +2521,6 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit34]
-FileName=..\..\src\version.cpp
-CompileCpp=1
-Folder=wesnothd
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
 [Unit27]
 FileName=..\..\src\time.cpp
 CompileCpp=1
@@ -2540,4 +2530,3 @@ Link=1
 Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
-

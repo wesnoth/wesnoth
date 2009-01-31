@@ -226,6 +226,10 @@
 				RelativePath="..\..\src\util.cpp"
 				>
 			</File>
+			<File
+				RelativePath="..\..\src\version.cpp"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="Serialization"
@@ -350,10 +354,6 @@
 					/>
 				</FileConfiguration>
 			</File>
-			<File
-				RelativePath="..\..\src\serialization\tokenizer.hpp"
-				>
-			</File>
 		</Filter>
 		<Filter
 			Name="Server"
@@ -377,6 +377,10 @@
 						ObjectFile="$(IntDir)\Server\"
 					/>
 				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="..\..\src\server\forum_user_handler.cpp"
+				>
 			</File>
 			<File
 				RelativePath="..\..\src\server\game.cpp"
@@ -417,6 +421,10 @@
 						ObjectFile="$(IntDir)\Server\"
 					/>
 				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="..\..\src\server\mail.cpp"
+				>
 			</File>
 			<File
 				RelativePath="..\..\src\server\metrics.cpp"
@@ -518,6 +526,26 @@
 					/>
 				</FileConfiguration>
 			</File>
+			<File
+				RelativePath="..\..\src\server\user_handler.cpp"
+				>
+			</File>
+			<Filter
+				Name="jwsmtp"
+				>
+				<File
+					RelativePath="..\..\src\server\jwsmtp\base64.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\server\jwsmtp\compat.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\server\jwsmtp\mailer.cpp"
+					>
+				</File>
+			</Filter>
 		</Filter>
 	</Files>
 	<Globals>
