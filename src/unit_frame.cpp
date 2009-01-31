@@ -394,6 +394,7 @@ void unit_frame::redraw(const int frame_time,bool first_time,const map_location 
 		bool facing_west = direction == map_location::NORTH_WEST || direction == map_location::SOUTH_WEST;
 #endif
 		bool facing_north = direction == map_location::NORTH_WEST || direction == map_location::NORTH || direction == map_location::NORTH_EAST;
+		if(primary) facing_north = true;
 		game_display::get_singleton()->render_unit_image(x + current_data.x- image->w/2,
 			       	y  + current_data.y- image->h/2,
 			       	(display::tdrawing_layer)(display::LAYER_UNIT_FIRST+current_data.drawing_layer),
@@ -413,10 +414,18 @@ void unit_frame::redraw(const int frame_time,bool first_time,const map_location 
 				break;
 			case map_location::SOUTH_EAST:
 			case map_location::SOUTH:
-				orientation = halo::VREVERSE;
+				if(primary) {
+					orientation = halo::NORMAL;
+				} else {
+					orientation = halo::VREVERSE;
+				}
 				break;
 			case map_location::SOUTH_WEST:
-				orientation = halo::HVREVERSE;
+				if(primary) {
+					orientation = halo::HREVERSE;
+				} else {
+					orientation = halo::HVREVERSE;
+				}
 				break;
 			case map_location::NORTH_WEST:
 				orientation = halo::HREVERSE;

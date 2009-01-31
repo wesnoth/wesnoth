@@ -1837,10 +1837,6 @@ void unit::redraw_unit(game_display& disp, const map_location& loc, const bool f
 
 
 	if(utils::string_bool(get_state("stoned"))) params.image_mod +="~GS()";
-	if(facing_ == map_location::SOUTH_WEST || facing_ == map_location::SOUTH_EAST || facing_ == map_location::SOUTH ) {
-		params.image_mod +="~FL(vertical)";
-		params.halo_mod +="~FL(vertical)";
-	}
 
 	const frame_parameters adjusted_params = anim_->get_current_params(params,true);
 
@@ -2039,12 +2035,6 @@ bool unit::invalidate(const map_location &loc)
 			params.blend_ratio = 0.25;
 		}
 		params.image_mod = image_mods();
-		if(facing_ == map_location::SOUTH_WEST ||
-				facing_ == map_location::SOUTH_EAST ||
-			       	facing_ == map_location::SOUTH ) {
-			params.image_mod +="~FL(vertical)";
-			params.halo_mod +="~FL(vertical)";
-		}
 
                 //get_animation()->update_last_draw_time();
 		frame_parameters adjusted_params= get_animation()->get_current_params(params);
