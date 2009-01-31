@@ -302,8 +302,7 @@ class CampaignClient:
 
         return None
 
-    def put_campaign(self, title, name, author, passphrase, description,
-            version, icon, cfgfile, directory):
+    def put_campaign(self, name, cfgfile, directory, stuff):
         """
         Uploads a campaign to the server. The title, name, author, passphrase,
         description, version and icon parameters are what would normally be
@@ -314,14 +313,9 @@ class CampaignClient:
         The directory is the name of the campaign's directory.
         """
         request = wmldata.DataSub("upload")
-        request.set_text_val("author", author)
-        request.set_text_val("description", description)
-        request.set_text_val("name", name)
-        request.set_text_val("passphrase", passphrase)
-        request.set_text_val("title", title)
-        request.set_text_val("version", version)
-        request.set_text_val("icon", icon)
-        
+        for k, v in stuff.items():
+            request.set_text_val(k, v)
+
         data = wmldata.DataSub("data")
         request.insert(data)
 

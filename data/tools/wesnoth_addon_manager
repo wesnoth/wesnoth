@@ -262,17 +262,14 @@ if __name__ == "__main__":
             name = os.path.splitext(name)[0]
             wmldir = os.path.join(os.path.dirname(options.upload), name)
             cfgfile = options.upload.replace(".pbl", ".cfg")
+            
+        stuff = {}
+        for field in ["title", "author", "passphrase", "description",
+            "version", "icon", "type", "email"]:
+            stuff[field] = pbl.get_text_val(field)
 
         pbl = wmldata.read_file(pblfile, "PBL")
-        mythread = cs.put_campaign_async(
-            pbl.get_text_val("title"),
-            name,
-            pbl.get_text_val("author"),
-            pbl.get_text_val("passphrase"),
-            pbl.get_text_val("description"),
-            pbl.get_text_val("version"),
-            pbl.get_text_val("icon"),
-            cfgfile, wmldir)
+        mythread = cs.put_campaign_async(name, cfgfile, wmldir, stuff)
 
         pcounter = 0
         while not mythread.event.isSet():
