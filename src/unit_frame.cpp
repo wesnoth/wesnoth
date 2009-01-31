@@ -388,7 +388,11 @@ void unit_frame::redraw(const int frame_time,bool first_time,const map_location 
 	const int x = static_cast<int>(tmp_offset * xdst + (1.0-tmp_offset) * xsrc) + d2;
 	const int y = static_cast<int>(tmp_offset * ydst + (1.0-tmp_offset) * ysrc) + d2;
 	if (image != NULL) {
+#ifdef LOW_MEM
+		bool facing_west = false;
+#else
 		bool facing_west = direction == map_location::NORTH_WEST || direction == map_location::SOUTH_WEST;
+#endif
 		bool facing_north = direction == map_location::NORTH_WEST || direction == map_location::NORTH || direction == map_location::NORTH_EAST;
 		game_display::get_singleton()->render_unit_image(x + current_data.x- image->w/2,
 			       	y  + current_data.y- image->h/2,
@@ -514,13 +518,17 @@ const frame_parameters unit_frame::merge_parameters(int current_time,const frame
 	frame_parameters result;
 	const frame_parameters & current_val = builder_.parameters(current_time);
 
-	/** engine provides an image to force the base image in low mem, so always force it */
+	/** engine provides a default image to use for the unit when none is available */
 	result.image = current_val.image.is_void() || current_val.image.get_filename() == ""?animation_val.image:current_val.image;
-	if(!engine_val.image.is_void() && !engine_val.image.get_filename().empty()) result.image = engine_val.image;
+	if(primary && ( result.image.is_void() || result.image.get_filename().empty())) {
+		result.image = engine_val.image;
+	}	
 
-	/** engine provides an image to force the base image in low mem, so always force it */
-	result.image_diagonal = current_val.image_diagonal.is_void()|| current_val.image_diagonal.get_filename() == ""?animation_val.image_diagonal:current_val.image_diagonal;
-	if(!engine_val.image_diagonal.is_void() && !engine_val.image_diagonal.get_filename().empty()) result.image_diagonal = engine_val.image_diagonal;
+	/** engine provides a default image to use for the unit when none is available */
+	result.image_diagonal = current_val.image_diagonal.is_void() || current_val.image_diagonal.get_filename() == ""?animation_val.image_diagonal:current_val.image_diagonal;
+	if(primary && ( result.image_diagonal.is_void() || result.image_diagonal.get_filename().empty())) {
+		result.image_diagonal = engine_val.image_diagonal;
+	}	
 
 	/** engine provides a string for "stoned" and "team color" modifications */
 		result.image_mod = current_val.image_mod +animation_val.image_mod;
@@ -582,5 +590,11 @@ const frame_parameters unit_frame::merge_parameters(int current_time,const frame
 	assert(engine_val.drawing_layer == display::LAYER_UNIT_DEFAULT-display::LAYER_UNIT_FIRST);
 	result.drawing_layer = current_val.drawing_layer?current_val.drawing_layer:animation_val.drawing_layer;
 
+#ifdef LOW_MEM
+	if(primary) {
+		result.image= engine_val.image;
+		result.image_diagonal= engine_val.image;
+	}
+#endif
 	return result;
 }

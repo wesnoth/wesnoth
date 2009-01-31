@@ -1833,11 +1833,9 @@ void unit::redraw_unit(game_display& disp, const map_location& loc, const bool f
 		params.blend_ratio = 0.25;
 	}
 	params.image_mod = image_mods();
-#ifdef LOW_MEM
 	params.image= absolute_image();
-	params.image_diagonal= absolute_image();
-	params.image_mod +="~FL(horizontal)";
-#endif
+
+
 	if(utils::string_bool(get_state("stoned"))) params.image_mod +="~GS()";
 	if(facing_ == map_location::SOUTH_WEST || facing_ == map_location::SOUTH_EAST || facing_ == map_location::SOUTH ) {
 		params.image_mod +="~FL(vertical)";
