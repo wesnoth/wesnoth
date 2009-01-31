@@ -102,7 +102,6 @@ class CampaignClient:
         """
         Read binary data from the server.
         """
-        sys.stderr.write("read_packet\n")
         packet = ""
         while len(packet) < 4 and not self.canceled:
             packet += self.sock.recv(4 - len(packet))
@@ -358,7 +357,6 @@ class CampaignClient:
         data.insert(put_dir(name, directory))
 
         packet = self.make_packet(request)
-        sys.stderr.write("Packet length is %d bytes.\n" % len(packet))
         open("packet.dump", "wb").write(packet)
         self.send_packet(packet)
 
