@@ -2859,13 +2859,27 @@ std::string get_image(const vconfig& cfg, unit_map::iterator speaker)
 	std::string image = cfg["image"];
 	if(image.empty() && speaker != units->end()) {
 
-		image = speaker->second.profile();
-		/** @todo Handle the transparent stuff here. */
-#ifndef LOW_MEM
-		if(image == speaker->second.absolute_image()) {
-			image += speaker->second.image_mods();
+		// At the moment we use a hack if the image in portrait has
+		// an image with the same name in the directory transparent
+		// that image is used.
+		/*std::string*/ image = speaker->second.profile();
+		const size_t offset = image.find_last_of('/');
+		if(offset != std::string::npos) {
+			image.insert(offset, "/transparent");
+		} else {
+			image = "transparent/" + image;
 		}
-#endif
+
+		image::locator locator(image);
+		if(!locator.file_exists()) {
+			image = speaker->second.profile();
+
+#ifndef LOW_MEM
+			if(image == speaker->second.absolute_image()) {
+				image += speaker->second.image_mods();
+			}
+#endif							
+		}
 
 	}
 	return image;
@@ -2981,12 +2995,7 @@ std::string get_caption(const vconfig& cfg, unit_map::iterator speaker)
 		const vconfig text_input_element = has_text_input ?
 			text_input_elements.front() : vconfig();
 
-		surface surface(NULL);
-		if(image.empty() == false) {
-			surface.assign(image::get_image(image));
-		}
-
-		int option_chosen = -1;
+		int option_chosen = 0;
 		std::string text_input_result;
 
 		DBG_DP << "showing dialog...\n";
@@ -2997,153 +3006,70 @@ std::string get_caption(const vconfig& cfg, unit_map::iterator speaker)
 
 			if (side_for_show && !get_replay_source().is_skipping())
 			{
-				// We whether we can show the new dialog.
-				if(speaker != units->end()) {
 					
-					
-					// At the moment we use a hack if the image in portrait has
-					// an image with the same name in the directory transparent
-					// that image is used.
-					std::string image = speaker->second.profile();
-					const size_t offset = image.find_last_of('/');
-					if(offset != std::string::npos) {
-						image.insert(offset, "/transparent");
-					} else {
-						image = "transparent/" + image;
-					}
+				const size_t right_offset = image.find("~RIGHT()");
+				const bool left_side = (right_offset == std::string::npos);
+				if(!left_side) {
+					image.erase(right_offset);
+				}
 
-					image::locator locator(image);
-					if(!locator.file_exists()) {
-						image = speaker->second.profile();
+				// Parse input text, if not available all fields are empty
+				const std::string text_input_label = 
+						text_input_element["label"];
+				std::string text_input_content = text_input_element["text"];
+				unsigned input_max_size = lexical_cast_default<unsigned>(
+							text_input_element["max_length"], 256);
+				if(input_max_size > 1024 || input_max_size < 1){
+					lg::wml_error << "invalid maximum size for input "
+							<< input_max_size<<"\n";
+					input_max_size=256;
+				}
 
-#ifndef LOW_MEM
-						if(image == speaker->second.absolute_image()) {
-							image += speaker->second.image_mods();
-						}
-#endif							
-					}
+				const int dlg_result = gui2::show_wml_message(
+						left_side,
+						screen->video(),
+						caption,
+						cfg["message"],
+						image,
+						false,
+						text_input_label,
+						&text_input_content,
+						input_max_size,
+						options,
+						&option_chosen);
 
-					const size_t right_offset = image.find("~RIGHT()");
-					const bool left_side = (right_offset == std::string::npos);
-					if(!left_side) {
-						image.erase(right_offset);
-					}
+				if(!options.empty()) {
+					recorder.choose_option(option_chosen);
+				}
+				if(has_text_input) {
+					recorder.text_input(text_input_content);
+					text_input_result = text_input_content;
+				}
+				if(dlg_result == gui2::twindow::CANCEL) {
+					handler.skip_messages() = true;
+				}
 
-					// Parse input text, if not available all fields are empty
-					const std::string text_input_label = 
-							text_input_element["label"];
-					std::string text_input_content = 
-							text_input_element["text"];
-					unsigned input_max_size = 
-							lexical_cast_default<unsigned>(
-								text_input_element["max_length"], 256);
-					if(input_max_size > 1024 || input_max_size < 1){
-						lg::wml_error << "invalid maximum size for input "
-								<< input_max_size<<"\n";
-						input_max_size=256;
-					}
-
-					option_chosen = 0; // can be initialized to 0 at the top later.
-					const int dlg_result = gui2::show_wml_message(
-							left_side,
-							screen->video(),
+				/**
+				 * @todo enable portrait code in 1.7 and write a clean api.
+				 */
+#if 0	
+				const tportrait* portrait =
+					speaker->second.portrait(400, tportrait::LEFT);
+				if(portrait) {
+					gui2::twml_message_left dlg(
 							caption,
 							cfg["message"],
-							image,
-							false,
-							text_input_label,
-							&text_input_content,
-							input_max_size,
-							options,
-							&option_chosen);
+							portrait->image,
+							portrait->mirror);
 
-					if(!options.empty()) {
-						recorder.choose_option(option_chosen);
-					}
-					if(has_text_input) {
-						recorder.text_input(text_input_content);
-						text_input_result = text_input_content;
-					}
-					if(dlg_result == gui2::twindow::CANCEL) {
+					dlg.show(screen->video());
+					if(dlg.get_retval() == gui2::twindow::CANCEL) {
 						handler.skip_messages() = true;
 					}
-
-					// This goto skips the old dialog but makes sure the
-					// options and text input are properly processed.
-					goto outro;
-
-					/**
-					 * @todo enable portrait code in 1.7 and write a clean api.
-					 */
-#if 0	
-					const tportrait* portrait =
-						speaker->second.portrait(400, tportrait::LEFT);
-					if(portrait) {
-						gui2::twml_message_left dlg(
-								caption,
-								cfg["message"],
-								portrait->image,
-								portrait->mirror);
-
-						dlg.show(screen->video());
-						if(dlg.get_retval() == gui2::twindow::CANCEL) {
-							handler.skip_messages() = true;
-						}
-						return;
-					}
+					return;
+				}
 #endif					
-				}
 
-				const t_string msg = cfg["message"];
-				const std::string duration_str = cfg["duration"];
-				const unsigned int lifetime = average_frame_time * lexical_cast_default<unsigned int>(duration_str, prevent_misclick_duration);
-				const SDL_Rect& map_area = (screen)->map_outside_area();
-
-				try {
-					wml_event_dialog to_show(*screen, ((surface.null())? caption : ""),
-							msg, ((options.empty()&& !has_text_input)? gui::MESSAGE : gui::OK_ONLY));
-					if(!surface.null()) {
-						to_show.set_image(surface, caption);
-					}
-					if(!options.empty()) {
-						to_show.set_menu(options);
-					}
-					if(has_text_input) {
-						std::string text_input_label=text_input_element["label"];
-						std::string text_input_content=text_input_element["text"];
-						std::string max_size_str=text_input_element["max_length"];
-						int input_max_size=lexical_cast_default<int>(max_size_str, 256);
-						if(input_max_size>1024||input_max_size<1){
-							lg::wml_error << "invalid maximum size for input "<<input_max_size<<"\n";
-							input_max_size=256;
-						}
-						to_show.set_textbox(text_input_label, text_input_content, input_max_size);
-					}
-					gui::dialog::dimension_measurements dim = to_show.layout();
-					to_show.get_menu().set_width( dim.menu_width );
-					to_show.get_menu().set_max_width( dim.menu_width );
-					to_show.get_menu().wrap_words();
-					static const int dialog_top_offset = 26;
-					to_show.layout(-1, map_area.y + dialog_top_offset);
-					option_chosen = to_show.show(lifetime);
-					if(has_text_input) {
-						text_input_result=to_show.textbox_text();
-					}
-					LOG_DP << "showed dialog...\n";
-
-					if (option_chosen == gui::ESCAPE_DIALOG) {
-						handler.skip_messages() = true;
-					}
-
-					if(!options.empty()) {
-						recorder.choose_option(option_chosen);
-					}
-					if(has_text_input) {
-						recorder.text_input(text_input_result);
-					}
-				} catch(utils::invalid_utf8_exception&) {
-					// we already had a warning so do nothing.
-				}
 			}
 
 			// Otherwise if an input has to be made, get it from the replay data
@@ -3174,7 +3100,7 @@ std::string get_caption(const vconfig& cfg, unit_map::iterator speaker)
 				text_input_result = (*(action->get_children("input").front()))["text"];
 			}
 		}
-outro:
+
 		// Implement the consequences of the choice
 		if(options.empty() == false) {
 			if(size_t(option_chosen) >= menu_items.size()) {
