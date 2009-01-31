@@ -167,7 +167,7 @@ class cs_function : public function_base
 {
 public:
 	cs_function(int r, int g, int b)
-		: r_(g), g_(g), b_(b)
+		: r_(r), g_(g), b_(b)
 	{}
 	virtual surface operator()(const surface& src) const;
 
