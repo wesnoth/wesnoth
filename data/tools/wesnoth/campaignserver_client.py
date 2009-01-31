@@ -315,6 +315,7 @@ class CampaignClient:
         request = wmldata.DataSub("upload")
         for k, v in stuff.items():
             request.set_text_val(k, v)
+        request.set_text_val("name", name)
 
         data = wmldata.DataSub("data")
         request.insert(data)
