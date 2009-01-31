@@ -23,6 +23,7 @@
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/password_box.hpp"
+#include "gui/widgets/scroll_label.hpp"
 #include "gui/widgets/toggle_button.hpp"
 
 namespace gui2 {
@@ -234,8 +235,10 @@ void tmp_login::pre_show(CVideo& /*video*/, twindow& window)
 		dynamic_cast<tbutton*>(window.find_widget("change_username", false));
     if(change_username) change_username->set_retval(2);
 
-	tlabel* label =
-		dynamic_cast<tlabel*>(window.find_widget("login_label", false));
+	// Needs to be a scroll_label since the text can get long and a normal label
+	// can't wrap (at the moment).
+	tcontrol* label =
+		dynamic_cast<tscroll_label*>(window.find_widget("login_label", false));
 	if(label) label->set_label(label_);
 
 	ttoggle_button* remember_password
