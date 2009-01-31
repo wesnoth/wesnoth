@@ -3053,6 +3053,13 @@ std::string get_caption(const vconfig& cfg, unit_map::iterator speaker)
 						options,
 						&option_chosen);
 
+				// Since gui2::show_wml_message needs to do undrawing the
+				// chatlines can get garbled and look dirty on screen. Force a
+				// redraw to fix it. 
+				/** @todo This hack can be removed once gui2 is finished. */
+				screen->invalidate_all();
+				screen->draw(true,true);
+
 				if(!options.empty()) {
 					recorder.choose_option(option_chosen);
 				}
