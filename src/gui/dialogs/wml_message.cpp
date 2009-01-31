@@ -82,12 +82,63 @@ void twml_message_::pre_show(CVideo& video, twindow& window)
 			window.find_widget("input_list", true));
 	VALIDATE(options, missing_widget("input_list"));
 
+	/*
+	 * The options have some special markup:
+	 * A line starting with a * means select that line.
+	 * A line starting with a & means more special markup.
+	 * - The part until the = is the name of an image.
+	 * - The part until the second = is the first column.
+	 * - The rest is the third column (the wiki only specifies two columns
+	 *   so only implement two of them).
+	 */
+	/** 
+	 * @todo This syntax looks like a bad hack, it would be nice to write
+	 * a new syntax which doesn't use those hacks (also avoids the problem
+	 * with special meanings for certain characters.
+	 */ 	
 	if(!option_list_.empty()) {
-		string_map row_data;
-		foreach(const std::string& option, option_list_) {
-			row_data["label"] = option;
-			options->add_row(row_data);
+		std::map<std::string, string_map> data;
+		for(size_t i = 0; i < option_list_.size(); ++i) {
+			std::string icon = "";
+			std::string label = option_list_[i];
+			std::string description = "";
+
+			// Handle selection.
+			if(!label.empty() && label[0] == '*') {
+				// Number of items hasn't been increased yet so i is ok.
+				*chosen_option_ = i;
+				label.erase(0, 1);
+			}
+
+			// Handle the special case with an image.
+			if(!label.empty() && label[0] == '&') {
+				label.erase(0, 1);
+
+				std::vector<std::string> row_data = utils::split(label, '=');
+				label = "";
+
+				assert(!row_data.empty());
+				icon = row_data[0];
+
+				if(row_data.size() > 0) {
+					label = row_data[1];
+
+					for(size_t j = 2; j < row_data.size(); ++j) {
+						description += row_data[j];
+						if(j +1  < row_data.size()) {
+							description += '=';
+						}
+					}
+				}
+			}
+
+			// Add the data.
+			data["icon"]["label"] = icon;
+			data["label"]["label"] = label;
+			data["description"]["label"] = description;
+			options->add_row(data);
 		}
+
 		// Avoid negetive and 0 since item 0 is already selected.
 		if(*chosen_option_ > 0 
 				&& static_cast<size_t>(*chosen_option_) 
