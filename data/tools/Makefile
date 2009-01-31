@@ -11,7 +11,7 @@ MAINLINE = $(DATA)/core $(DATA)/multiplayer $(DATA)/themes $(DATA)/campaigns/*
 # Define UMC to point to a local copy of user-made content to run checks on.
 # Note, this needs to expand to a list with one subdirectory per UMC campaign,
 # otherwise the visibility checks aren't going to work right.
-# UMC = ../../../umc*/*
+#UMC = ../../../../wesnoth-umc-dev/trunk/*
 
 sanity-check: unresolved lint
 
