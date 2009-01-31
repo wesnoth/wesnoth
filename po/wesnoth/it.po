@@ -7,13 +7,13 @@
 #
 # Automatically generated, 2004.
 # Alessio D'Ascanio <otaku@fastwebnet.it>, 2004, 2005.
-# Luciano Montanaro <mikelima@cirulla.net>, 2006, 2007, 2008.
+# Luciano Montanaro <mikelima@cirulla.net>, 2006, 2007, 2008, 2009.
 msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-01-30 22:43+0100\n"
-"PO-Revision-Date: 2009-01-26 23:22+0100\n"
+"PO-Revision-Date: 2009-01-31 10:27+0100\n"
 "Last-Translator: Luciano Montanaro <mikelima@cirulla.net>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -6814,32 +6814,31 @@ msgstr ""
 "controllati dal computer usando il menù contestuale del tasto destro.."
 
 #: data/temp-file_send_data_strings.cfg:12
-#, fuzzy
 msgid "About to upload statistics - Help us make Wesnoth better for you!"
-msgstr "Aiutaci a migliorare Wesnoth!"
+msgstr "Sto per inviare le statistiche – Aiutaci a migliorare Wesnoth!"
 
 #: data/temp-file_send_data_strings.cfg:13
 msgid "Save my reply and do not ask again"
-msgstr ""
+msgstr "Salva il mio reply e non chiedermelo più"
 
 #: data/temp-file_send_data_strings.cfg:14
 msgid ""
 "To change the setting later on, click on the envelope icon in the main menu."
 msgstr ""
+"Per modificare le impostazioni più avanti, fai clic sull'icona della busta "
+"dal menu principale."
 
 #: data/temp-file_send_data_strings.cfg:15
-#, fuzzy
 msgid "Send"
-msgstr "Sabbia"
+msgstr "Invia"
 
 #: data/temp-file_send_data_strings.cfg:16
-#, fuzzy
 msgid "Don't send"
-msgstr "Non chiedermelo più!"
+msgstr "Non inviare!"
 
 #: data/temp-file_send_data_strings.cfg:18
 msgid "Do not ask every time before sending data"
-msgstr ""
+msgstr "Non chiedere ogni volta prima dell'invio dei dati"
 
 #. [menu]: id=menu-main
 #: data/themes/default.cfg:120 data/themes/dfool.cfg:134
@@ -7228,7 +7227,11 @@ msgid_plural ""
 "Some outdated local add-ons have publishing information attached. They will "
 "not be offered for updating."
 msgstr[0] ""
-msgstr[1] "informazione allegato."
+"Un'estensione locale antiquata ha le informazioni di pubblicazione allegate. "
+"Non verrà proposta per l'aggiornamento."
+msgstr[1] ""
+"Alcune estensioni locali antiquate hanno le informazioni di pubblicazione "
+"allegate. Non verranno proposte per l'aggiornamento."
 
 #: src/addon_management.cpp:721
 msgid "Could not find any updated add-ons on this server."
@@ -9714,9 +9717,8 @@ msgid "% parry"
 msgstr "% parate"
 
 #: src/unit_types.cpp:958
-#, fuzzy
 msgid "No description available."
-msgstr " Nessun aiuto disponibile."
+msgstr "Nessuna descrizione disponibile."
 
 #: src/unit_types.cpp:1017
 msgid "chaotic"
@@ -9769,61 +9771,3 @@ msgstr "Aiutaci a migliorare Wesnoth!"
 #: src/upload_log.cpp:332
 msgid "Enable summary uploads"
 msgstr "Abilita l'invio del sommario"
-
-#~ msgid "You must log in to this server"
-#~ msgstr "Devi effettuare il login al server"
-
-#~ msgid "Login: "
-#~ msgstr "Login: "
-
-#~ msgid "VICTORY_AND_DEFEAT_MUSIC is unnecessary and can be removed."
-#~ msgstr "VICTORY_AND_DEFEAT_MUSIC non è necessario e può essere rimosso."
-
-#~ msgid "Log in with password"
-#~ msgstr "Accesso con password"
-
-#~ msgid "Request password reminder for this username"
-#~ msgstr "Richiedi il ricorda-password per questo nome utente"
-
-#~ msgid "Choose a different username"
-#~ msgstr "Scegli un nome utente diverso"
-
-#~ msgid "Send a private message to "
-#~ msgstr "Invia un messaggio privato a "
-
-#~ msgid "Whisper"
-#~ msgstr "Sussurra"
-
-#~ msgid "Message: "
-#~ msgstr "Messaggio: "
-
-#~ msgid "Login"
-#~ msgstr "Login"
-
-#~ msgid ""
-#~ "\n"
-#~ "Redraw the screen.\n"
-#~ "\n"
-#~ msgstr ""
-#~ "\n"
-#~ "Ridisegna la schermata.\n"
-#~ "\n"
-
-#~ msgid "No server ping since $timeout second. Connection timed out."
-#~ msgid_plural "No server ping since $timeout seconds. Connection timed out."
-#~ msgstr[0] ""
-#~ "Nessun ping del server negli ultimi $timeout secondi. Connessione scaduta."
-#~ msgstr[1] ""
-#~ "Nessun ping del server negli ultimi $timeout secondi. Connessione scaduta."
-
-#~ msgid " This unit is capable of basic healing and slowing dehydration."
-#~ msgstr ""
-#~ " Questa unità è in grado di fornire cure di primo soccorso e di "
-#~ "rallentare la deidratazione."
-
-#~ msgid ""
-#~ " This unit is capable of healing those around it, slowing dehydration, "
-#~ "and curing them of poison."
-#~ msgstr ""
-#~ " Questa unità è in grado di guarire quelle che la circondano, rallentare "
-#~ "la deidratazione e curare dal veleno."

@@ -4,13 +4,13 @@
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
 # Automatically generated, 2004.
-# Luciano Montanaro <mikelima@cirulla.net>, 2007, 2008.
+# Luciano Montanaro <mikelima@cirulla.net>, 2007, 2008, 2009.
 msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-01-30 20:58+0100\n"
-"PO-Revision-Date: 2008-12-28 14:49+0100\n"
+"PO-Revision-Date: 2009-01-31 10:27+0100\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -128,13 +128,13 @@ msgstr ""
 
 #. [editor_tool_hint]: id=editor-paste
 #: data/core/editor/tool-hints.cfg:30
-#, fuzzy
 msgid ""
 "Click to paste, zoom out for more accuracy when pasting large areas. Use the "
 "edit menu to transform the clipboard (rotate, mirror)."
 msgstr ""
-"Fai clic per incollare. Usa il menù Modifiche per trasformare ciò che vuoi "
-"incollare (ruotarlo, immagine speculare)."
+"Fai clic per incollare. Fai zoom all'indietro per maggiore accurateza "
+"nell'incollare aree grandi. Usa il menù Modifiche per trasformare ciò che "
+"vuoi incollare (ruotarlo, immagine speculare)."
 
 #. [menu]: id=menu-editor-file
 #: data/themes/editor2.cfg:120
@@ -163,11 +163,11 @@ msgstr "villaggi"
 
 #: src/editor2/action.cpp:32
 msgid "Error creating action object"
-msgstr ""
+msgstr "Errore nella creazione dell'oggetto di azione"
 
 #: src/editor2/action.cpp:36
 msgid "Action not implemented"
-msgstr ""
+msgstr "Azione non implementata"
 
 #: src/editor2/editor_controller.cpp:123
 msgid "Quit Editor"
@@ -318,7 +318,6 @@ msgid "Choose player"
 msgstr "Scegli giocatore"
 
 #: src/editor2/mouse_action.cpp:390
-#, fuzzy
 msgid ""
 "Which player should start here? You can also use the 1-9 and delete keys to "
 "set/clear starting positions."

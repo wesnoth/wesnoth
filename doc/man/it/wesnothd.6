@@ -97,7 +97,10 @@ key="\fIvalore\fP,\fIvalore\fP,..."
 \fBban_save_file\fP
 Percorso completo o relativo ad un file (compresso con gzip) che il server
 possa scrivere e leggere. L'elenco degli utenti messi al bando sarà
-conservato in questo file e letto a tutti gli avvii del server.
+conservato in questo file e letto a tutti gli avvii del server.Percorso
+completo o relativo ad un file (compresso con gzip) che il server possa
+scrivere e leggere. L'elenco degli utenti messi al bando sarà conservato in
+questo file e letto a tutti gli avvii del server.
 .TP 
 \fBconnections_allowed\fP
 Il numero di connessioni permesse dallo stesso IP. \fB0\fP indica infinite
@@ -158,12 +161,12 @@ Una lista separata da virgole delle versioni daredirigere. Si comporta come
 \fBversions_accepted\fP per quello che riguarda lo schema dei caratteri jolly.
 .RE
 .P
-\fB[ban_time]\fP A tag to define convenient keywords for temporary ban time
-lengths.
+\fB[ban_time]\fP Un'etichetta per definire parole chiave comode per periodi di
+messa al bando temporanei.
 .RS
 .TP 
 \fBnome\fP
-The name used to reference the ban time.
+Il nome usato per fare riferimento al periodo di messa al bando.
 .TP 
 \fBperiodo\fP
 The time length definition.  The format is: %d[%s[%d%s[...]]] where %s is s
