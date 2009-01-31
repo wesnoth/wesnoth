@@ -54,6 +54,34 @@ void twidget::set_size(const tpoint& origin, const tpoint& size)
 	set_dirty();
 }
 
+twidget* twidget::find_widget(const tpoint& coordinate,
+		const bool must_be_active)
+{
+	if(visible_ == INVISIBLE 
+			|| (visible_ == HIDDEN && must_be_active)) {
+		return 0;
+	}
+
+	return coordinate.x >= x_
+			&& coordinate.x < (x_ + static_cast<int>(w_))
+			&& coordinate.y >= y_
+			&& coordinate.y < (y_ + static_cast<int>(h_)) ? this : 0;
+}
+
+const twidget* twidget::find_widget(const tpoint& coordinate,
+		const bool must_be_active) const
+{
+	if(visible_ == INVISIBLE 
+			|| (visible_ == HIDDEN && must_be_active)) {
+		return 0;
+	}
+
+	return coordinate.x >= x_
+			&& coordinate.x < (x_ + static_cast<int>(w_))
+			&& coordinate.y >= y_
+			&& coordinate.y < (y_ + static_cast<int>(h_)) ? this : 0;
+}
+
 SDL_Rect twidget::get_dirty_rect() const
 {
 	return drawing_action_ == DRAWN
