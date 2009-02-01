@@ -409,7 +409,7 @@ bool ai_interface::recruit(const std::string& unit_name, location loc)
 	replay_undo replay_guard(recorder);
 
 	unit_type_data::unit_type_map::const_iterator u = unit_type_data::types().find_unit_type(unit_name);
-	if(u == unit_type_data::types().end()) {
+	if(u == unit_type_data::types().end() || u->first == "dummy_unit") {
 		return false;
 	}
 
@@ -1760,7 +1760,7 @@ void ai::analyze_potential_recruit_combat()
 	std::set<std::string>::const_iterator i;
 	for(i = recruits.begin(); i != recruits.end(); ++i) {
 		const unit_type_data::unit_type_map::const_iterator info = unit_type_data::types().find_unit_type(*i);
-		if(info == unit_type_data::types().end() || not_recommended_units_.count(*i)) {
+		if(info == unit_type_data::types().end() || info->first == "dummy_unit" || not_recommended_units_.count(*i)) {
 			continue;
 		}
 
@@ -1773,7 +1773,7 @@ void ai::analyze_potential_recruit_combat()
 
 			unit const &un = j->second;
 			const unit_type_data::unit_type_map::const_iterator enemy_info = unit_type_data::types().find_unit_type(un.type_id());
-			VALIDATE((enemy_info != unit_type_data::types().end()), _("Unknown unit type : ") + un.type_id() + " while soring units.");
+			VALIDATE((enemy_info != unit_type_data::types().end()), _("Unknown unit type : ") + un.type_id() + " while scoring units.");
 
 			int weight = un.cost() * un.hitpoints() / un.max_hitpoints();
 			weighting += weight;
@@ -1798,7 +1798,7 @@ void ai::analyze_potential_recruit_combat()
 	// the best unit of that usage type.
 	for(i = recruits.begin(); i != recruits.end(); ++i) {
 		const unit_type_data::unit_type_map::const_iterator info = unit_type_data::types().find_unit_type(*i);
-		if(info == unit_type_data::types().end() || not_recommended_units_.count(*i)) {
+		if(info == unit_type_data::types().end() || info->first == "dummy_unit" || not_recommended_units_.count(*i)) {
 			continue;
 		}
 
@@ -1861,7 +1861,7 @@ void ai::analyze_potential_recruit_movements()
 
 	for(std::set<std::string>::const_iterator i = recruits.begin(); i != recruits.end(); ++i) {
 		const unit_type_data::unit_type_map::const_iterator info = unit_type_data::types().find_unit_type(*i);
-		if(info == unit_type_data::types().end()) {
+		if(info == unit_type_data::types().end() || info->first == "dummy_unit") {
 			continue;
 		}
 
@@ -1914,7 +1914,7 @@ void ai::analyze_potential_recruit_movements()
 		const unit_type_data::unit_type_map::const_iterator info =
 			unit_type_data::types().find_unit_type(j->first);
 
-		if(info == unit_type_data::types().end()) {
+		if(info == unit_type_data::types().end() || info->first == "dummy_unit") {
 			continue;
 		}
 
