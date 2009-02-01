@@ -49,6 +49,12 @@ void twml_message_::set_option_list(
 	set_auto_close(false);
 }
 
+/**
+ * @todo This function enables the wml markup for all items, but the interface
+ * is a bit hacky. Especially the fiddling in the internals of the listbox is
+ * ugly. There needs to be a clean interface to set whether a widget has a
+ * markup and what kind of markup. These fixes will be post 1.6.
+ */
 void twml_message_::pre_show(CVideo& video, twindow& window)
 {
 	// Inherited.
@@ -56,6 +62,17 @@ void twml_message_::pre_show(CVideo& video, twindow& window)
 
 	window.canvas(1).set_variable("portrait_image", variant(portrait_));
 	window.canvas(1).set_variable("portrait_mirror", variant(mirror_));
+
+	// Set the markup
+	tlabel* title =
+			dynamic_cast<tlabel*>(window.find_widget("title", false));
+	assert(title);
+	title->set_markup_mode(tcontrol::WML_MARKUP);
+
+	tcontrol* label =
+			dynamic_cast<tcontrol*>(window.find_widget("label", false));
+	assert(label);
+	label->set_markup_mode(tcontrol::WML_MARKUP);
 
 	// Find the input box related fields.
 	tlabel* caption = dynamic_cast<tlabel*>(
@@ -68,6 +85,7 @@ void twml_message_::pre_show(CVideo& video, twindow& window)
 
 	if(has_input()) {
 		caption->set_label(input_caption_);
+		caption->set_markup_mode(tcontrol::WML_MARKUP);
 		input->set_value(*input_text_);
 		input->set_maximum_length(input_maximum_lenght_);
 		window.keyboard_capture(input);
@@ -137,6 +155,20 @@ void twml_message_::pre_show(CVideo& video, twindow& window)
 			data["label"]["label"] = label;
 			data["description"]["label"] = description;
 			options->add_row(data);
+
+			// Set the markup flag.
+			assert(options->generator_);			
+			tgrid& grid = options->generator_->get_item(i);
+
+			tcontrol* control = dynamic_cast<tcontrol*>(
+					grid.find_widget("label", false));
+			assert(control);
+			control->set_markup_mode(tcontrol::WML_MARKUP);
+
+			control = dynamic_cast<tcontrol*>(
+					grid.find_widget("description", false));
+			assert(control);
+			control->set_markup_mode(tcontrol::WML_MARKUP);
 		}
 
 		// Avoid negetive and 0 since item 0 is already selected.
