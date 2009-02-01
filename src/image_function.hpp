@@ -28,9 +28,6 @@ namespace image {
 class function_base
 {
 public:
-
-	virtual ~function_base() {}
-
 	/**
 	 * Applies the image-path function on the specified surface.
 	 */
