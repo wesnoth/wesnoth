@@ -738,6 +738,9 @@ private:
 	/** The text to draw. */
 	tformula<t_string> text_;
 
+	/** The text markup switch of the text. */
+	tformula<bool> text_markup_;
+
 	/** The maximum width for the text. */
 	tformula<int> maximum_width_;
 
@@ -754,6 +757,7 @@ ttext::ttext(const config& cfg) :
 	font_style_(decode_font_style(cfg["font_style"])),
 	colour_(decode_colour(cfg["colour"])),
 	text_(cfg["text"]),
+	text_markup_(cfg["text_markup"], false),
 	maximum_width_(cfg["maximum_width"], -1),
 	maximum_height_(cfg["maximum_height"], -1)
 {
@@ -773,7 +777,8 @@ ttext::ttext(const config& cfg) :
  *     font_size (unsigned)            The size of the font to draw in.
  *     font_style (font_style = "")    The style of the text.
  *     colour (colour = "")            The colour of the text.
- *     text (tstring = "")             The text to draw (translatable).
+ *     text (f_tstring = "")           The text to draw (translatable).
+ *     test_markup (f_bool = false)    Can the text have markup?
  *     maximum_width (f_int = -1)      The maximum width the text is allowed to be.
  *     maximum_height (f_int = -1)     The maximum height the text is allowed to be.
  *     debug = (string = "")           Debug message to show upon creation
@@ -816,7 +821,7 @@ void ttext::draw(surface& canvas,
 
 	static font::ttext text_renderer;
 
-	text_renderer.set_text(text, false).
+	text_renderer.set_text(text, text_markup_(variables)).
 		set_font_size(font_size_).
 		set_font_style(font_style_).
 		set_foreground_colour(colour_).
