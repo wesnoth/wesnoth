@@ -104,9 +104,23 @@ public:
 
 	bool has_attr(const char* key) const;
 
+	//sets an attribute in the WML node. The node will keep a direct reference
+	//to key and value which it will maintain for its lifetime. The caller
+	//MUST guarantee that the key and value buffers remain valid for the
+	//lifetime of the node.
 	node& set_attr(const char* key, const char* value);
+
+	//functions which are identical to set_attr() except that the buffer
+	//referred to by 'value' will be duplicated and the new buffer managed by
+	//the node. The caller may destroy the value buffer as soon as the function
+	//returns. The key buffer must remain valid for the lifetime of the node.
 	node& set_attr_dup(const char* key, const char* value);
 	node& set_attr_dup(const char* key, const string_span& value);
+
+	//sets an attribute with identical behavior to set_attr_dup, except that
+	//the buffer referred to by 'key' will also be duplicated and managed by
+	//the node. The caller may destroy both key and value as soon as the
+	//call returns.
 	node& set_attr_dup_key_and_value(const char* key, const char* value);
 
 	node& set_attr_int(const char* key, int value);
@@ -144,8 +158,8 @@ private:
 	node(const node&);
 	void operator=(const node&);
 
-	child_list& get_children(const string_span& name);
-	child_list& get_children(const char* name);
+	int get_children(const string_span& name);
+	int get_children(const char* name);
 
 	void set_dirty();
 	void shift_buffers(ptrdiff_t offset);
@@ -163,6 +177,26 @@ private:
 	static child_map::const_iterator find_in_map(const child_map& m, const string_span& attr);
 	static child_map::iterator find_in_map(child_map& m, const string_span& attr);
 	child_map children_;
+
+	//a node position indicates the index into the child map where the node
+	//is, and then the index into the child list within where the node is.
+	struct node_pos {
+		node_pos(int child_map_index, int child_list_index)
+		  : child_map_index(child_map_index), child_list_index(child_list_index)
+		{}
+		unsigned short child_map_index;
+		unsigned short child_list_index;
+	};
+
+	//a list of all the children in order.
+	std::vector<node_pos> ordered_children_;
+
+	void insert_ordered_child(int child_map_index, int child_list_index);
+	void remove_ordered_child(int child_map_index, int child_list_index);
+	void insert_ordered_child_list(int child_map_index);
+	void remove_ordered_child_list(int child_map_index);
+
+	void check_ordered_children() const;
 
 	string_span output_cache_;
 };
