@@ -27,16 +27,15 @@ fuh::fuh(const config& c) {
 	db_users_table_ = c["db_users_table"];
 	db_extra_table_ = c["db_extra_table"];
 
-	// Connect to the database
-	try {
-		conn_.connect(db_name_.c_str(), db_host_.c_str(), db_user_.c_str(), db_password_.c_str());
-	} catch(...) {
-		 ERR_UH << "Could not connect to database: " << conn_.error() << std::endl;
-	}
+	conn = mysql_init(NULL);
 
+	if(!conn || !mysql_real_connect(conn, db_host_.c_str(),  db_user_.c_str(), db_password_.c_str(), db_name_.c_str(), 0, NULL, 0)) {
+		ERR_UH << "Could not connect to database: " << mysql_errno(conn) << ": " << mysql_error(conn) << std::endl;
+	}
 }
 
 fuh::~fuh() {
+	mysql_close(conn);
 }
 
 void fuh::add_user(const std::string& name, const std::string& mail, const std::string& password) {
@@ -137,7 +136,7 @@ bool fuh::user_exists(const std::string& name) {
 
 	// Make a test query for this username
 	try {
-		return db_query("SELECT username FROM " + db_users_table_ + " WHERE UPPER(username)=UPPER('" + name + "')").num_rows() > 0;
+		return mysql_fetch_row(db_query("SELECT username FROM " + db_users_table_ + " WHERE UPPER(username)=UPPER('" + name + "')"));
 	} catch (error e) {
 		ERR_UH << "Could not execute test query for user '" << name << "' :" << e.message << std::endl;
 		// If the database is down just let all usernames log in
@@ -247,31 +246,23 @@ void fuh::set_lastlogin(const std::string& user, const time_t& lastlogin) {
 	}
 }
 
-mysqlpp::StoreQueryResult fuh::db_query(const std::string& sql) {
-	try {
-		mysqlpp::Query query = conn_.query();
-		query << sql;
-		return query.store();
-	} catch(...) {
+MYSQL_RES* fuh::db_query(const std::string& sql) {
+	if(mysql_query(conn, sql.c_str())) {
 		WRN_UH << "not connected to database, reconnecting..." << std::endl;
-		//Try to reconnect
-		try {
-			conn_.connect(db_name_.c_str(), db_host_.c_str(), db_user_.c_str(), db_password_.c_str());
-
-			// Execute the query again
-			mysqlpp::Query query = conn_.query();
-			query << sql;
-			return query.store();
-		} catch(...) {
-			ERR_UH << "Could not connect to database: " << conn_.error() << std::endl;
+		//Try to reconnect and execute query again
+		if(!mysql_real_connect(conn, db_host_.c_str(),  db_user_.c_str(), db_password_.c_str(), db_name_.c_str(), 0, NULL, 0)
+				|| mysql_query(conn, sql.c_str())) {
+			ERR_UH << "Could not connect to database: " << mysql_errno(conn) << ": " << mysql_error(conn) << std::endl;
 			throw error("Error querying database.");
 		}
 	}
+	return mysql_store_result(conn);
 }
 
-std::string fuh::db_query_to_string(const std::string& query) {
-	return std::string(db_query(query).at(0).at(0));
+std::string fuh::db_query_to_string(const std::string& sql) {
+	return std::string(mysql_fetch_row(db_query(sql))[0]);
 }
+
 
 std::string fuh::get_detail_for_user(const std::string& name, const std::string& detail) {
 	return db_query_to_string("SELECT " + detail + " FROM " + db_users_table_ + " WHERE UPPER(username)=UPPER('" + name + "')");
@@ -299,7 +290,7 @@ bool fuh::extra_row_exists(const std::string& name) {
 
 	// Make a test query for this username
 	try {
-		return db_query("SELECT username FROM " + db_extra_table_ + " WHERE UPPER(username)=UPPER('" + name + "')").num_rows() > 0;
+		return mysql_fetch_row(db_query("SELECT username FROM " + db_extra_table_ + " WHERE UPPER(username)=UPPER('" + name + "')"));
 	} catch (error e) {
 		ERR_UH << "Could not execute test query for user '" << name << "' :" << e.message << std::endl;
 		return false;
