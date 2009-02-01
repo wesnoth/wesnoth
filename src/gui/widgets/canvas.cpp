@@ -615,7 +615,7 @@ void timage::draw(surface& canvas,
 		const std::string& name = image_name_(variables);
 
 		if(name.empty()) {
-			ERR_G_D << "Image: formula returned no value, will not be drawn.\n";
+			DBG_G_D << "Image: formula returned no value, will not be drawn.\n";
 			return;
 		}
 
