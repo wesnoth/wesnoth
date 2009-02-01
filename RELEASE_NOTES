@@ -12,6 +12,13 @@ The release team should empty this file after each release.
 
 ***
 
+
+From this version onward, the developement team will only focus on bug-fixing. The WML API will probably have very little changes.
+
+Thus, now is a good time to port all User Made Content to 1.5
+
+
+***
 The image path functions (~RC(), ~TC(), ~FL() et al) parsing has been heavily
 modified. Now all functions in a path are stacked in a left-to-right order, with
 the sole exceptions of ~RC() and ~TC(), which continue to be non-accumulable.
