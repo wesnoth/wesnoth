@@ -35,3 +35,8 @@ engine and report bugs if they find them.
 
 ***
 
+The defaults for "fog of war" and "random start time" have been changed to on.
+Add-on maintainers may want to explicitely set those properties if they're
+important to the way the scenario works (like for survivals with specific
+chaotic/lawful waves etc.) so that they have the right values when played with
+"use map settings" on.
