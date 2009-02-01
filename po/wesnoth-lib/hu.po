@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: hu-lib_1.5\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-01-30 20:58+0100\n"
-"PO-Revision-Date: 2009-01-18 18:17+0100\n"
+"PO-Revision-Date: 2009-01-31 22:21+0100\n"
 "Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
 "Language-Team: Hungarian <>\n"
 "MIME-Version: 1.0\n"
@@ -811,6 +811,13 @@ msgid ""
 "\n"
 "The Battle for Wesnoth forum can be found at http://www.wesnoth.org/forum/"
 msgstr ""
+"A hivatalos többjátékos kiszolgálóra bejelentkezhetsz a fórumban használatos "
+"felhasználóneveddel és jelszavaddal is.\n"
+"Megjegyzendő, hogy ez az azonosítás nem előfeltétele a kiszolgálóhoz való "
+"csatlakozásnak: jelszót csak akkor kell megadnod, ha egy regisztrált "
+"felhasználónevet szeretnél használni.\n"
+"\n"
+"A Harc Wesnothért fórum a http://www.wesnoth.org/forum/ címen érhető el."
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:244
@@ -956,7 +963,6 @@ msgid "Toggle Full Screen"
 msgstr "Teljes képernyős mód beállítása"
 
 #: src/game_preferences_display.cpp:152
-#, fuzzy
 msgid "Enable scroll tracking of unit actions"
 msgstr "Egységműveletek görgetéses követése"
 
@@ -2050,7 +2056,6 @@ msgstr ""
 "tereptípus a(z): "
 
 #: src/wml_exception.cpp:52
-#, fuzzy
 msgid ""
 "An error due to possibly invalid WML occurred\n"
 "The error message is :"
