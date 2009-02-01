@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-01-30 20:58+0100\n"
-"PO-Revision-Date: 2009-01-26 20:11+0100\n"
-"Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
+"PO-Revision-Date: 2009-02-01 14:56+0100\n"
+"Last-Translator: Karol Nowak <grywacz@gmail.com>\n"
 "Language-Team:  <z.banach@wsisiz.edu.pl>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -340,7 +340,7 @@ msgstr "Ściana"
 #. [terrain]: id=impassable
 #: data/core/terrain.cfg:1108 data/core/terrain.cfg:1146
 msgid "Impassable"
-msgstr "Nieprzekraczalny"
+msgstr "Nie do przebycia"
 
 #. [terrain]: id=void
 #: data/core/terrain.cfg:1119
@@ -360,7 +360,7 @@ msgstr "Zamarznięty"
 #. [terrain]: id=unwalkable
 #: data/core/terrain.cfg:1153
 msgid "Unwalkable"
-msgstr "Nie do chodzenia"
+msgstr "Nie do przejścia"
 
 #. [label]
 #. [column]
@@ -499,10 +499,8 @@ msgstr ""
 
 #. [toggle_button]: id=copy_edge_terrain
 #: data/gui/default/window/editor_resize_map.cfg:242
-#, fuzzy
 msgid "Copy edge terrain"
-msgstr ""
-"Znaleziono niepoprawny teren, prawdopodobnie w formacie wersji 1.2. Teren = "
+msgstr "Skopiuj krawędź terenu"
 
 #. [button]: id=ok
 #: data/gui/default/window/editor_resize_map.cfg:264
@@ -529,15 +527,13 @@ msgstr "Następna"
 
 #. [toggle_button]: id=custom_tod_toggle
 #: data/gui/default/window/editor_settings.cfg:83
-#, fuzzy
 msgid "Custom lighting setting"
-msgstr " Zalecane ustawienie to 2 sztuki złota na wioskę."
+msgstr "Własne ustawienia oświetlenia"
 
 #. [toggle_button]: id=custom_tod_auto_refresh
 #: data/gui/default/window/editor_settings.cfg:93
-#, fuzzy
 msgid "Auto-update map view"
-msgstr "Ustaw domyślne zbliżenie"
+msgstr "Automatyczna aktualizacja widoku mapy"
 
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:120
@@ -557,7 +553,7 @@ msgstr "Niebieski:"
 #. [toggle_button]: id=use_mdi
 #: data/gui/default/window/editor_settings.cfg:208
 msgid "Allow more than one map to be open at the same time (MDI)"
-msgstr ""
+msgstr "Pozwól na otworzenie więcej niż jednej mapy w tym samym czasie (MDI)"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
@@ -596,9 +592,8 @@ msgstr "Zmień język"
 
 #. [window]: id=mp_cmd_wrapper
 #: data/gui/default/window/mp_cmd_wrapper.cfg:8
-#, fuzzy
 msgid "Multiplayer command wrapper dialog"
-msgstr "Kromph potrzebuje rozkazów. Rozkazuj mi!"
+msgstr ""
 
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:31
@@ -674,9 +669,8 @@ msgstr "Zbanuj"
 #. [label]
 #: data/gui/default/window/mp_connect.cfg:50
 #: data/gui/default/window/mp_server_list.cfg:51
-#, fuzzy
 msgid "You will now connect to the multiplayer server."
-msgstr "Połączysz się teraz z serwerem, by pobrać dodatki."
+msgstr "Połączysz się teraz z serwerem gier wieloosobowych."
 
 #. [button]: id=list
 #: data/gui/default/window/mp_connect.cfg:148
@@ -767,9 +761,8 @@ msgstr "Stwórz grę"
 
 #. [window]: id=mp_login
 #: data/gui/default/window/mp_login.cfg:8
-#, fuzzy
 msgid "Multiplayer server login dialog"
-msgstr "Zaloguj się na oficjalny serwer gier wieloosobowych Wesnoth"
+msgstr "Dialog logowania do serwera gier wieloosobowych"
 
 #. [label]
 #. [button]: id=ok
@@ -818,6 +811,12 @@ msgid ""
 "\n"
 "The Battle for Wesnoth forum can be found at http://www.wesnoth.org/forum/"
 msgstr ""
+"Możesz zalogować się na oficjalny serwer gier wieloosobowych używając nazwy "
+"użytkownika i hasła, których używasz na forum Wesnoth.\n"
+"Rejestracja nie jest wymagana żeby połączyć się z serwerem: hasło potrzebne "
+"jest jedynie wtedy, gdy chcesz użyć zarejestrowanej nazwy użytkownika.\n"
+"\n"
+"Forum Bitwy o Wesnoth znajduje się pod adresem: http://www.wesnoth.org/forum/"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:244
@@ -826,7 +825,6 @@ msgstr "Połącz z oficjalnym serwerem"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:245
-#, fuzzy
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Zaloguj się na oficjalny serwer gier wieloosobowych Wesnoth"
 
@@ -852,7 +850,6 @@ msgstr "Gra lokalna"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:278
-#, fuzzy
 msgid "Play a multiplayer game with the AI or humans sharing the same machine"
 msgstr ""
 "Gra dla wielu graczy przeciwko komputerowi lub innym graczom na tej samej "
@@ -966,8 +963,9 @@ msgid "Toggle Full Screen"
 msgstr "Przełącz pełny ekran"
 
 #: src/game_preferences_display.cpp:152
+#, fuzzy
 msgid "Enable scroll tracking of unit actions"
-msgstr ""
+msgstr "Włącz śledzenie akcji jednostek"
 
 #: src/game_preferences_display.cpp:153
 msgid "Accelerated Speed"
@@ -1197,6 +1195,8 @@ msgstr "Wybierz, czy gra ma działać w trybie okienkowym, czy pełnoekranowym."
 msgid ""
 "Should the map view scroll to a unit when an action or move is animated."
 msgstr ""
+"Określa, czy widok mapy będzie przesuwał się do jednostki wykonującej "
+"czynność lub poruszające się."
 
 #: src/game_preferences_display.cpp:303
 msgid "Make units move and fight faster"
@@ -1253,6 +1253,8 @@ msgstr ""
 #: src/game_preferences_display.cpp:361
 msgid "Find and set path to MP server to host LAN games."
 msgstr ""
+"Wybierz i ustaw ścieżkę do serwera gier wieloosobowych żeby grać w sieci "
+"lokalnej."
 
 #: src/game_preferences_display.cpp:362
 msgid "View and edit your friends and ignores list"
@@ -1423,7 +1425,7 @@ msgstr ""
 #: src/gui/widgets/helper.cpp:169
 #, fuzzy
 msgid "Mandatory widget '$id' hasn't been defined."
-msgstr "Nie zdefiniowano serwera."
+msgstr "Wymagany widżet '$id' nie został zdefiniowany."
 
 #: src/gui/widgets/settings.cpp:126
 msgid "No default gui defined."
@@ -1467,16 +1469,16 @@ msgstr "Nie zdefiniowano listy."
 
 #: src/gui/widgets/window_builder.cpp:754
 msgid "A 'list_definition' should contain one row."
-msgstr ""
+msgstr "'list_definition' powinien zawierać jeden rząd"
 
 #: src/gui/widgets/window_builder.cpp:773
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
-msgstr ""
+msgstr "'list_data' musi mieć taką samą liczbę kolumn jak 'list_definition'"
 
 #: src/gui/widgets/window_builder.cpp:1042
 msgid "The number of value_labels and values don't match."
-msgstr ""
+msgstr "Liczby elementów value_label i value się nie zgadzają."
 
 #: src/hotkeys.cpp:45
 msgid "Next Unit"
@@ -1704,7 +1706,7 @@ msgstr "Informacje o mapie"
 
 #: src/hotkeys.cpp:112
 msgid "Swap fore- and background terrains"
-msgstr ""
+msgstr "Zamień pierwszo- i drugoplanowy teren"
 
 #: src/hotkeys.cpp:113
 msgid "Next Tool"
@@ -1723,9 +1725,8 @@ msgid "Selection Tool"
 msgstr "Zaznaczanie"
 
 #: src/hotkeys.cpp:118
-#, fuzzy
 msgid "Set Starting Positions Tool"
-msgstr "Ustaw początkową pozycję gracza"
+msgstr "Narzędzie ustawiające pozycje początkowe"
 
 #: src/hotkeys.cpp:119
 msgid "Next Brush"
@@ -1760,47 +1761,40 @@ msgid "Select None"
 msgstr "Usuń zaznaczenie"
 
 #: src/hotkeys.cpp:131
-#, fuzzy
 msgid "Rotate Clipboard Clockwise"
-msgstr "Zmieniaj jednostki liniowe"
+msgstr "Obróć zawartość schowka w prawo"
 
 #: src/hotkeys.cpp:133
-#, fuzzy
 msgid "Rotate Clipboard Counter-Clockwise"
-msgstr "Licznik tur (bieżąca tura/maksymalna liczba tur)"
+msgstr "Obróć zawartość schowka w lewo"
 
 #: src/hotkeys.cpp:135
-#, fuzzy
 msgid "Flip Clipboard Horizontally"
-msgstr "Obróć (wymiary mapy mogą zostać zmienione)"
+msgstr "Odwróć zawartość schowka w poziomie"
 
 #: src/hotkeys.cpp:137
-#, fuzzy
 msgid "Flip Clipboard Vertically"
-msgstr "Obróć (wymiary mapy mogą zostać zmienione)"
+msgstr "Odwróć zawartość schowka w pionie"
 
 #: src/hotkeys.cpp:139
 msgid "Rotate Selection"
 msgstr "Obróć zaznaczenie"
 
 #: src/hotkeys.cpp:141
-#, fuzzy
 msgid "Flip Selection"
-msgstr "Wybór wypełnienia"
+msgstr "Odwróć zaznaczenie"
 
 #: src/hotkeys.cpp:143
 msgid "Fill Selection"
 msgstr "Wybór wypełnienia"
 
 #: src/hotkeys.cpp:145
-#, fuzzy
 msgid "Generate Tiles In Selection"
-msgstr "Rekrutuj dwóch elfickich łuczników na polach na zachód od siebie"
+msgstr "Wygeneruj zaznaczone pola "
 
 #: src/hotkeys.cpp:147
-#, fuzzy
 msgid "Randomize Tiles In Selection"
-msgstr "Losowy wybór początkowej pory dnia"
+msgstr "Wylosuj zaznaczone pola"
 
 #: src/hotkeys.cpp:151
 msgid "Rotate Map"
@@ -2025,6 +2019,8 @@ msgstr "Ten skrót jest już używany."
 msgid ""
 "Warning: screenshot hotkeys not combined with Control, Alt or Meta keys."
 msgstr ""
+"Ostrzeżenie: skrót do zrzutu ekranu niepowiązany z klawiszami Control, Alt "
+"lub Meta."
 
 #: src/preferences_display.cpp:426
 msgid "There are no alternative video modes available"
@@ -2047,12 +2043,11 @@ msgstr ""
 "terenu: "
 
 #: src/wml_exception.cpp:52
-#, fuzzy
 msgid ""
 "An error due to possibly invalid WML occurred\n"
 "The error message is :"
 msgstr ""
-"Wystąpił błąd z powodu potencjalnie błędnego kodu WML.\n"
+"Wystąpił błąd z powodu potencjalnie błędnego kodu WML\n"
 "Komunikat o błędzie: "
 
 #: src/wml_exception.cpp:54
