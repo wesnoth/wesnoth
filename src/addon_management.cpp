@@ -787,7 +787,7 @@ namespace {
 
 		// Create dialog
 		gui::dialog upd_dialog(disp,
-			_("Update Add-ons"),
+			_("Update add-ons"),
 			_("Select an add-on to update:"), gui::OK_CANCEL);
 
 		// Create widgets
@@ -895,7 +895,7 @@ namespace {
 		try {
 			const network::manager net_manager;
 			const network::connection sock =
-				dialogs::network_connect_dialog(disp, _("Connecting to Add-ons Server..."),
+				dialogs::network_connect_dialog(disp, _("Connecting to add-ons server..."),
 				                                remote_host, remote_port);
 			if(!sock) {
 				gui::show_error_message(disp, _("Could not connect to host."));
@@ -1022,7 +1022,7 @@ namespace {
 			gui::menu::basic_sorter sorter;
 			sorter.set_alpha_sort(1).set_alpha_sort(2).set_alpha_sort(3).set_alpha_sort(4).set_numeric_sort(5).set_position_sort(6,sizes);
 
-			gui::dialog addon_dialog(disp, _("Get Add-ons"),
+			gui::dialog addon_dialog(disp, _("Get add-ons"),
 			                         _("Choose the add-on to download."),
 			                         gui::OK_CANCEL);
 			gui::menu::imgsel_style addon_style(gui::menu::bluebg_style);
