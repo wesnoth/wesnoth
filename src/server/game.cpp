@@ -1126,17 +1126,14 @@ void game::send_data_observers(simple_wml::document& data, const network::connec
 }
 
 bool game::is_on_team(const simple_wml::string_span& team, const network::connection player) const {
-	side_vector::const_iterator side = std::find(sides_.begin(), sides_.end(), player);
-	if(side == sides_.end()) {
-		return false;
-	}
-	const std::string side_str =
-		lexical_cast<std::string, size_t>(side - sides_.begin() + 1);
 	const simple_wml::node::child_list& side_list = level_.root().children("side");
-	for(simple_wml::node::child_list::const_iterator i = side_list.begin();
-	    i != side_list.end(); ++i) {
-		if((**i)["side"] == side_str.c_str()) {
-			return (**i)["team_name"] == team;
+	for (side_vector::const_iterator side = std::find(sides_.begin(), sides_.end(), player);
+			side != sides_.end(); ++side) {
+		for (simple_wml::node::child_list::const_iterator i = side_list.begin();
+				i != side_list.end(); ++i) {
+			if ((**i)["side"].to_int() == side - sides_.begin() + 1) {
+				if ((**i)["team_name"] == team) return true;
+			}
 		}
 	}
 
