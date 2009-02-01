@@ -3047,6 +3047,7 @@ std::string get_caption(const vconfig& cfg, unit_map::iterator speaker)
 						cfg["message"],
 						image,
 						false,
+						has_text_input,
 						text_input_label,
 						&text_input_content,
 						input_max_size,

@@ -32,6 +32,7 @@ public:
 		: tmessage(title, message, true)
 		, portrait_(portrait)
 		, mirror_(mirror)
+		, has_input_(false)
 		, input_caption_("")
 		, input_text_(NULL)
 		, input_maximum_lenght_(0)
@@ -62,6 +63,9 @@ private:
 	/** Mirror the portrait? */
 	bool mirror_;
 
+	/** Do we need to show an input box? */
+	bool has_input_;
+
 	/** The caption to show for the input text. */
 	std::string input_caption_;
 
@@ -76,9 +80,6 @@ private:
 
 	/** The chosen option. */
 	int *chosen_option_;
-
-	/** Does the dialog have an input text? */
-	bool has_input() { return !input_caption_.empty(); }
 
 	/**
 	 * Inherited from tmessage.
@@ -134,6 +135,7 @@ private:
  *  @param portrait               Filename of the portrait.
  *  @param mirror                 Does the portrait need to be mirrored?
  *
+ *  @param has_input              Do we need to show the input box.
  *  @param input_caption          The caption for the optional input text
  *                                box. If this value != "" there is an input
  *                                and the input text parameter is mandatory.
@@ -152,6 +154,7 @@ int show_wml_message(const bool left_side
 		, const std::string& message
 		, const std::string& portrait
 		, const bool mirror
+		, const bool has_input
 		, const std::string& input_caption
 		, std::string* input_text
 	    , const unsigned maximum_length

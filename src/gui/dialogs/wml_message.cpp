@@ -27,9 +27,9 @@ namespace gui2 {
 void twml_message_::set_input(const std::string& caption,
 		std::string* text, const unsigned maximum_length)
 {
-	assert(!caption.empty());
 	assert(text);
 
+	has_input_ = true;
 	input_caption_ = caption;
 	input_text_ = text;
 	input_maximum_lenght_ = maximum_length;
@@ -83,7 +83,7 @@ void twml_message_::pre_show(CVideo& video, twindow& window)
 			 window.find_widget("input", true));
 	VALIDATE(input, missing_widget("input"));
 
-	if(has_input()) {
+	if(has_input_) {
 		caption->set_label(input_caption_);
 		caption->set_markup_mode(tcontrol::WML_MARKUP);
 		input->set_value(*input_text_);
@@ -179,7 +179,7 @@ void twml_message_::pre_show(CVideo& video, twindow& window)
 			options->select_row(*chosen_option_);
 		}
 
-		if(!has_input()) {
+		if(!has_input_) {
 			window.keyboard_capture(options);
 			window.set_easy_close(false); 
 		} else {
@@ -193,7 +193,7 @@ void twml_message_::pre_show(CVideo& video, twindow& window)
 
 void twml_message_::post_show(twindow& window)
 {
-	if(has_input()) {
+	if(has_input_) {
 		ttext_box* input = dynamic_cast<ttext_box*>(
 				 window.find_widget("input", true));
 		VALIDATE(input, missing_widget("input"));
@@ -226,6 +226,7 @@ int show_wml_message(const bool left_side
 		, const std::string& message
 		, const std::string& portrait
 		, const bool mirror
+		, const bool has_input
 		, const std::string& input_caption
 		, std::string* input_text
 		, const unsigned maximum_length
@@ -240,7 +241,7 @@ int show_wml_message(const bool left_side
 	}
 	assert(dlg.get());
 
-	if(!input_caption.empty()) {
+	if(has_input) {
 		dlg->set_input(input_caption, input_text, maximum_length);
 	}
 
