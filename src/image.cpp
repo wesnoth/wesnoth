@@ -374,6 +374,7 @@ surface locator::load_image_sub_file() const
 					break;
 				}
 				const std::string field = *j++;
+				typedef std::pair<Uint32,Uint32> rc_entry_type;
 
 				// Team color (TC), a subset of RC's functionality
 				if("TC" == function) {
@@ -405,13 +406,14 @@ surface locator::load_image_sub_file() const
 					// Pass parameters for RC functor
 					//
 					if(game_config::tc_info(param[1]).size()){
+						std::map<Uint32, Uint32> tmp_map;
 						try {
 							color_range const& new_color =
 								game_config::color_info(team_color);
 							std::vector<Uint32> const& old_color =
 								game_config::tc_info(param[1]);
 
-							rc.map() = recolor_range(new_color,old_color);
+							tmp_map = recolor_range(new_color,old_color);
 						}
 						catch(config::error const& e) {
 							ERR_DP
@@ -420,7 +422,11 @@ surface locator::load_image_sub_file() const
 								<< '\n';
 							ERR_DP
 								<< "bailing out from TC\n";
-							rc.map().clear();
+							tmp_map.clear();
+						}
+
+						foreach(const rc_entry_type& rc_entry, tmp_map) {
+							rc.map()[rc_entry.first] = rc_entry.second;
 						}
 					}
 					else {
@@ -428,7 +434,6 @@ surface locator::load_image_sub_file() const
 							<< "could not load TC info for '" << param[1] << "' palette\n";
 						ERR_DP
 							<< "bailing out from TC\n";
-						rc.map().clear();
 					}
 					
 				}
@@ -439,13 +444,14 @@ surface locator::load_image_sub_file() const
 						//
 						// recolor source palette to color range
 						//
+						std::map<Uint32, Uint32> tmp_map;
 						try {
 							color_range const& new_color =
 								game_config::color_info(recolor_params[1]);
 							std::vector<Uint32> const& old_color =
 								game_config::tc_info(recolor_params[0]);
 
-							rc.map() = recolor_range(new_color,old_color);
+							tmp_map = recolor_range(new_color,old_color);
 						}
 						catch (config::error& e) {
 							ERR_DP
@@ -454,7 +460,11 @@ surface locator::load_image_sub_file() const
 								<< '\n';
 							ERR_DP
 								<< "bailing out from RC\n";
-							rc.map().clear();
+							tmp_map.clear();
+						}
+
+						foreach(const rc_entry_type& rc_entry, tmp_map) {
+							rc.map()[rc_entry.first] = rc_entry.second;
 						}
 					}
 					else {
@@ -463,6 +473,7 @@ surface locator::load_image_sub_file() const
 						//
 						const std::vector<std::string> remap_params = utils::split(field,'=');
 						if(remap_params.size() > 1) {
+							std::map<Uint32, Uint32> tmp_map;
 							try {
 								std::vector<Uint32> const& old_palette =
 									game_config::tc_info(remap_params[0]);
@@ -470,7 +481,7 @@ surface locator::load_image_sub_file() const
 									game_config::tc_info(remap_params[1]);
 
 								for(size_t i = 0; i < old_palette.size() && i < new_palette.size(); ++i) {
-									rc.map()[old_palette[i]] = new_palette[i];
+									tmp_map[old_palette[i]] = new_palette[i];
 								}
 							}
 							catch(config::error& e) {
@@ -480,7 +491,11 @@ surface locator::load_image_sub_file() const
 									<< '\n';
 								ERR_DP
 									<< "bailing out from RC\n";
-								rc.map().clear();
+								tmp_map.clear();
+							}
+
+							foreach(const rc_entry_type& rc_entry, tmp_map) {
+								rc.map()[rc_entry.first] = rc_entry.second;
 							}
 						}
 					}
