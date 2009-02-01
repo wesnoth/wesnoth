@@ -39,6 +39,18 @@ void tscroll_label::set_label(const t_string& label)
 	}
 }
 
+void tscroll_label::set_markup_mode(const tmarkup_mode markup_mode)
+{
+	// Inherit.
+	tcontrol::set_markup_mode(markup_mode);
+
+	if(content_grid()) {
+		tlabel* widget = content_grid()->
+				find_widget<tlabel>("_label", false, true);
+		widget->set_markup_mode(markup_mode);
+	}
+}
+
 void tscroll_label::finalize_subclass()
 {
 	assert(content_grid());

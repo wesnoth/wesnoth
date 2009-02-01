@@ -35,6 +35,26 @@ public:
 
 	virtual ~tcontrol() {}
 
+	/** 
+	 * The markup mode of the label.
+	 *
+	 * The markup could have been a boolean but since we have the old 
+	 * wml markup as well we need to convert that markup to the markup used
+	 * by pango.
+	 *
+	 * @todo once the wml markup is phased out this enum can be removed.
+	 */
+	enum tmarkup_mode {
+		NO_MARKUP,    /**< The control doesn't use markup for its text. */
+		PANGO_MARKUP, /**< The control uses the pango markup feature. */
+		WML_MARKUP   /**< 
+					    * The control uses the wml_markup feature.
+					    * The engine can only handle pango markup and this 
+					    * markup will be converted to pango markup before
+					    * sending to the layout engine.
+					    */
+	};
+
 	/**
 	 * Sets the members of the control.
 	 *
@@ -214,6 +234,9 @@ public:
 	const t_string& label() const { return label_; }
 	virtual void set_label(const t_string& label);
 
+	virtual void set_markup_mode(const tmarkup_mode markup_mode);
+	tmarkup_mode get_markup_mode() const { return markup_mode_; }
+
 	const t_string& tooltip() const { return tooltip_; }
 	// Note setting the tooltip_ doesn't dirty an object.
 	void set_tooltip(const t_string& tooltip)
@@ -263,6 +286,9 @@ protected:
 private:
 	/** Contain the non-editable text associated with control. */
 	t_string label_;
+
+	/** The markup mode of the label_. */
+	tmarkup_mode markup_mode_;
 
 	/**
 	 * If the text doesn't fit on the label should the text be used as tooltip?
@@ -365,6 +391,9 @@ private:
 
 	/** Is the widget smaller as it's best size? */
 	bool shrunken_;
+
+	/** Converts the label_ to a pango markup string. */
+	std::string get_pango_markup() const;
 };
 
 } // namespace gui2

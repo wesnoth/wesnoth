@@ -16,13 +16,18 @@
 
 #include "control.hpp"
 
+#include "font.hpp"
 #include "foreach.hpp"
 #include "gui/widgets/window.hpp"
+#include "marked-up_text.hpp"
+
+#include <iomanip>
 
 namespace gui2 {
 
 tcontrol::tcontrol(const unsigned canvas_count)
 	: label_()
+	, markup_mode_(NO_MARKUP)
 	, use_tooltip_on_label_overflow_(true)
 	, tooltip_()
 	, help_message_()
@@ -238,6 +243,17 @@ void tcontrol::set_label(const t_string& label)
 	set_dirty();
 }
 
+void tcontrol::set_markup_mode(const tmarkup_mode markup_mode)
+{
+	if(markup_mode == markup_mode_) {
+		return;
+	}
+
+	markup_mode_ = markup_mode;
+	update_canvas();
+	set_dirty();
+}
+
 void tcontrol::update_canvas()
 {
 	const int max_width = get_text_maximum_width();
@@ -245,7 +261,22 @@ void tcontrol::update_canvas()
 
 	// set label in canvases
 	foreach(tcanvas& canvas, canvas_) {
-		canvas.set_variable("text", variant(label_));
+		switch(markup_mode_) {
+			case NO_MARKUP :
+				canvas.set_variable("text", variant(label_));
+				canvas.set_variable("text_markup", variant(false));
+				break;
+			case PANGO_MARKUP :
+				canvas.set_variable("text", variant(label_));
+				canvas.set_variable("text_markup", variant(true));
+				break;
+			case WML_MARKUP :
+				canvas.set_variable("text", variant(get_pango_markup()));
+				canvas.set_variable("text_markup", variant(true));
+				break;
+			default:
+				assert(false);
+		}
 		canvas.set_variable("text_maximum_width", variant(max_width));
 		canvas.set_variable("text_maximum_height", variant(max_height));
 		canvas.set_variable("text_wrap_mode", variant(can_wrap()
@@ -296,7 +327,20 @@ tpoint tcontrol::get_best_text_size(const tpoint& minimum_size, const tpoint& ma
 	const tpoint border(config_->text_extra_width, config_->text_extra_height);
 	tpoint size = minimum_size - border;
 
-	renderer_.set_text(label_, false);
+	switch(markup_mode_) {
+		case NO_MARKUP :
+			renderer_.set_text(label_, false);
+			break;
+		case PANGO_MARKUP :
+			renderer_.set_text(label_, true);
+			break;
+		case WML_MARKUP :
+			renderer_.set_text(get_pango_markup(), true);
+			break;
+		default:
+			assert(false);
+	}
+
 	renderer_.set_font_size(config_->text_font_size);
 	renderer_.set_font_style(config_->text_font_style);
 
@@ -340,6 +384,126 @@ tpoint tcontrol::get_best_text_size(const tpoint& minimum_size, const tpoint& ma
 
 	DBG_G_L << "tcontrol(" + get_control_type() + ") result " << size << ".\n";
 	return size;
+}
+
+namespace {
+
+/** Converts a SDL_Color to a pango colour prefix. */
+std::string colour_prefix(const SDL_Color& colour)
+{
+	std::stringstream result;
+
+	result << "<span foreground=\"#"
+			<< std::hex 
+			<< std::setfill('0') << std::setw(2) << colour.r
+			<< std::setfill('0') << std::setw(2) << colour.g
+			<< std::setfill('0') << std::setw(2) << colour.b
+			<< "\">";
+
+	return result.str();
+}
+
+} // namespace
+
+std::string tcontrol::get_pango_markup() const
+{
+	std::vector<std::string> lines = utils::split(label_, '\n', 0);
+
+	foreach(std::string& line, lines) {
+		if(line.empty()) {
+			continue;
+		}
+
+		std::string pre = "";
+		std::string post = "";
+		bool proceed = true;
+
+		while(!line.empty() && proceed) {
+			const char c = line[0];
+			// The font 'constants' aren't seen as const so it's not possible
+			// to use a switch statement.
+			if(c == font::BAD_TEXT) {
+				pre += colour_prefix(font::BAD_COLOUR);
+				post = "</span>" + post;
+				line.erase(0, 1);
+			} else if(c == font::GOOD_TEXT) {
+				pre += colour_prefix(font::GOOD_COLOUR);
+				post = "</span>" + post;
+				line.erase(0, 1);
+			} else if(c == font::NORMAL_TEXT) {
+				pre += colour_prefix(font::NORMAL_COLOUR);
+				post = "</span>" + post;
+				line.erase(0, 1);
+			} else if(c == font::BLACK_TEXT) {
+				pre += colour_prefix(font::BLACK_COLOUR);
+				post = "</span>" + post;
+				line.erase(0, 1);
+			} else if(c == font::GRAY_TEXT) {
+				pre += colour_prefix(font::GRAY_COLOUR);
+				post = "</span>" + post;
+				line.erase(0, 1);
+			} else if(c == font::LARGE_TEXT) {
+				pre += "<big>";
+				post = "</big>" + post;
+				line.erase(0, 1);
+			} else if(c == font::SMALL_TEXT) {
+				pre += "<small>";
+				post = "</small>" + post;
+				line.erase(0, 1);
+			} else if(c == font::BOLD_TEXT) {
+				pre += "<b>";
+				post = "</b>" + post;
+				line.erase(0, 1);
+
+			} else if(c == font::COLOR_TEXT) {
+				/*
+				 * Crude parsing of <1,23,123>.
+				 * 
+				 * The old engine didn't specify the error behaviour so we
+				 * define our own.
+				 *
+				 * If no > found the entire line is discarded.
+				 * If not three colours are found the colour part is ignored.
+				 * Invalid colour channels are seen as 0.
+				 */
+
+				// Find the closing >.
+				const size_t pos = line.find('>');
+				if(pos == std::string::npos) {
+					line.clear();
+					continue;
+				}
+
+				std::vector<std::string> rgb = utils::split(
+						line.substr(1, pos - 1));
+
+				// Remove the colour part of the string it's no longer needed
+				// and the next test might fail so we need to clean the
+				// string here.
+				line.erase(0, pos + 1);
+
+				if(rgb.size() != 3) {
+					continue;
+				}
+
+				SDL_Color colour;
+				colour.r = lexical_cast_default<Uint8>(rgb[0]);
+				colour.g = lexical_cast_default<Uint8>(rgb[1]);
+				colour.b = lexical_cast_default<Uint8>(rgb[2]);
+
+				pre += colour_prefix(colour);
+				post = "</span>" + post;
+			} else if(c == font::NULL_MARKUP) {
+				line.erase(0, 1);
+				proceed = false;
+			} else {
+				proceed = false;
+			}
+		}
+
+		line = pre + line + post;
+	}
+	return utils::join(lines, '\n');
 }
 
 } // namespace gui2

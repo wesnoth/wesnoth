@@ -39,6 +39,9 @@ public:
 	/** Inherited from tcontrol. */
 	void set_label(const t_string& label);
 
+	/** Inherited from tcontrol. */
+	void set_markup_mode(const tmarkup_mode markup_mode);
+
 	/** Inherited from tcontainer_. */
 	void set_self_active(const bool active)
 		{ state_ = active ? ENABLED : DISABLED; }
