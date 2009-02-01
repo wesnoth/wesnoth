@@ -50,12 +50,12 @@ int get_xp_modifier(const std::string& value)
 
 bool use_fog(const std::string& value)
 {
-	return utils::string_bool(value, false);
+	return utils::string_bool(value, true);
 }
 
 bool use_random_start_time(const std::string& value)
 {
-	return utils::string_bool(value, false);
+	return utils::string_bool(value, true);
 }
 
 bool use_shroud(const std::string& value)
