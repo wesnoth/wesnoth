@@ -752,9 +752,7 @@ void server::run() {
 					data_ptr->take_ownership_of_buffer(buf_ptr);
 
 				} catch (simple_wml::error& e) {
-					// Most likely the error happened in scenario data so just give a server
-					// message instead of send_error() which would kick the client out.
-					send_error(sock, "Invalid WML received. You might have to quit.");
+					send_error(sock, ("Invalid WML received: " + e.message).c_str());
 					delete [] buf_ptr;
 					continue;
 				} catch(...) {
