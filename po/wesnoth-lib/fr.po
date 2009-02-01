@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-01-30 20:58+0100\n"
+"POT-Creation-Date: 2009-02-01 17:58+0100\n"
 "PO-Revision-Date: 2008-07-03 22:55+0200\n"
 "Last-Translator: Benoît Timbert <benoit.timbert@free.fr>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
@@ -575,9 +575,10 @@ msgstr ""
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #: data/gui/default/window/editor_settings.cfg:230
+#: data/gui/default/window/mp_login.cfg:234
 #: data/gui/default/window/mp_method_selection.cfg:313
-#: data/gui/default/window/wml_message.cfg:360
-#: data/gui/default/window/wml_message.cfg:531 src/construct_dialog.cpp:125
+#: data/gui/default/window/wml_message.cfg:452
+#: data/gui/default/window/wml_message.cfg:636 src/construct_dialog.cpp:125
 #: src/construct_dialog.cpp:132
 msgid "OK"
 msgstr "Ok"
@@ -797,9 +798,7 @@ msgid "Multiplayer server login dialog"
 msgstr ""
 
 #. [label]
-#. [button]: id=ok
 #: data/gui/default/window/mp_login.cfg:31
-#: data/gui/default/window/mp_login.cfg:234
 msgid "Login"
 msgstr ""
 
@@ -1442,11 +1441,11 @@ msgstr "La ligne ne tient pas dans le cadre."
 msgid "Rectangle doesn't fit on canvas."
 msgstr "Le rectangle ne tient pas dans le cadre."
 
-#: src/gui/widgets/canvas.cpp:793
+#: src/gui/widgets/canvas.cpp:798
 msgid "Text has a font size of 0."
 msgstr ""
 
-#: src/gui/widgets/canvas.cpp:858
+#: src/gui/widgets/canvas.cpp:863
 msgid "Text doesn't start on canvas."
 msgstr "Le texte ne commence pas dans le cadre."
 

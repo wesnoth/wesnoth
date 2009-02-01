@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-01-30 20:58+0100\n"
+"POT-Creation-Date: 2009-02-01 17:58+0100\n"
 "PO-Revision-Date: 2009-01-21 22:11+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
@@ -572,9 +572,10 @@ msgstr "Lze otevřít více map zaráz (MDI)"
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #: data/gui/default/window/editor_settings.cfg:230
+#: data/gui/default/window/mp_login.cfg:234
 #: data/gui/default/window/mp_method_selection.cfg:313
-#: data/gui/default/window/wml_message.cfg:360
-#: data/gui/default/window/wml_message.cfg:531 src/construct_dialog.cpp:125
+#: data/gui/default/window/wml_message.cfg:452
+#: data/gui/default/window/wml_message.cfg:636 src/construct_dialog.cpp:125
 #: src/construct_dialog.cpp:132
 msgid "OK"
 msgstr "OK"
@@ -779,9 +780,7 @@ msgid "Multiplayer server login dialog"
 msgstr "Přihlášení na server hry více hráčů"
 
 #. [label]
-#. [button]: id=ok
 #: data/gui/default/window/mp_login.cfg:31
-#: data/gui/default/window/mp_login.cfg:234
 msgid "Login"
 msgstr "Uživatel:"
 
@@ -1423,11 +1422,11 @@ msgstr "Čára se nevejde na plátno."
 msgid "Rectangle doesn't fit on canvas."
 msgstr "Obdélník se nevejde na plátno."
 
-#: src/gui/widgets/canvas.cpp:793
+#: src/gui/widgets/canvas.cpp:798
 msgid "Text has a font size of 0."
 msgstr "Text má výšku fontu nula."
 
-#: src/gui/widgets/canvas.cpp:858
+#: src/gui/widgets/canvas.cpp:863
 msgid "Text doesn't start on canvas."
 msgstr "Text nezačíná na plátně."
 

@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-httt\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-01-30 20:59+0100\n"
+"POT-Creation-Date: 2009-02-01 18:02+0100\n"
 "PO-Revision-Date: 2008-03-17 11:39+0800\n"
 "Last-Translator: \n"
 "Language-Team: Chinese/Traditional <steven2880@gmail.com>\n"
@@ -1801,7 +1801,7 @@ msgstr "阿革達爾"
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:113
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:79
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:94
-#: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:112
+#: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:121
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:96
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:139
 msgid "Evil"
@@ -2320,7 +2320,7 @@ msgstr "艾柏喬"
 #: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:651
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:59
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:82
-#: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:376
+#: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:385
 #: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:83
 msgid "Li'sar"
 msgstr "麗莎"
@@ -4244,7 +4244,7 @@ msgid ""
 msgstr ""
 "康拉德，吾不得知。然此路唯領吾等下行。吾等將繼續向東北，至此窑洞最深之處。"
 
-#. [scenario]: id=16_Hasty_Alliance
+#. [scenario]: id=16_Hasty_Alliance, id=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:4
 msgid "Hasty Alliance"
 msgstr "快速聯盟"
@@ -4306,37 +4306,37 @@ msgid "Humans"
 msgstr ""
 
 #. [side]: type=Troll Warrior, id=Haaf-Garga
-#: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:97
+#: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:106
 msgid "Haaf-Garga"
 msgstr "哈俄－戛戛"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:138
+#: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:147
 msgid "Where are we? Which way now? I am tired of this darkness!"
 msgstr "此乃何處？又該往何處行？吾已厭倦此漆黑！"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:142
+#: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:151
 msgid "I am not sure of the way. Let me think for a moment."
 msgstr "吾不曉得。讓吾想想。"
 
 #. [message]: speaker=Li'sar
-#: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:200
+#: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:209
 msgid "En garde!"
 msgstr "趕快護駕！"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:204
+#: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:213
 msgid "What in the world are you doing here?"
 msgstr "汝來此處做何勾當？"
 
 #. [message]: speaker=Li'sar
-#: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:208
+#: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:217
 msgid "Tracking you down, of course! You have escaped me for the last time!"
 msgstr "自是追殺汝等！汝現已無計可脱！"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:212
+#: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:221
 msgid ""
 "Foolish girl! We are in the deepest of caverns, probably surrounded by all "
 "manner of creatures, and you still want to fight us? You will bring us all "
@@ -4344,7 +4344,7 @@ msgid ""
 msgstr "無知少婦！于此地下深坑内，怪獸無數，爾竟戰吾？如此吾等皆休矣！"
 
 #. [message]: speaker=Li'sar
-#: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:216
+#: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:225
 msgid ""
 "Don't try to trick me! I know why you have come here! But I will put an end "
 "to you and your treason here. Then I will get the Scepter, and return to the "
@@ -4353,24 +4353,24 @@ msgstr "休想騙吾！吾知汝之所欲，將滅汝亂黨于此。吾乃將得
 
 # I translated this race based on my understanding of the creature in Wesnoth.po. Literally, my translation is "Giant Human-like demon".
 #. [event]
-#: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:235
+#: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:244
 msgid "Troll"
 msgstr "巨魔"
 
 #. [message]: type=Goblin Knight
-#: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:327
+#: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:336
 msgid "Surprise! Die, you sun-lovers!"
 msgstr "出乎預料吧！死吧！順陽者！"
 
 #. [message]: speaker=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:331
+#: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:340
 msgid ""
 "Now we are surrounded! Do you still want to fight us, Princess? Surely that "
 "would lead to doom for us all!"
 msgstr "吾等現已遭包圍！公主尚想鬥吾等否？若此吾雙方皆葬身于此！"
 
 #. [message]: speaker=Li'sar
-#: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:335
+#: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:344
 msgid ""
 "I see we have little choice but to help each other. Let us fight together "
 "until we return to the surface. Agreed?"
@@ -4378,7 +4378,7 @@ msgstr "已彆無選擇，唯聯盟耳。吾倆就并肩作戰，直到地面，
 
 # Probably memorised by Lisar's beauty, Konrad delivered a "touching" promise to "live or die together" with her. How romantic! First sign of love indeed!
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:339
+#: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:348
 msgid ""
 "Very well, I promise that you will reach the surface again, or we shall all "
 "perish together, Princess."
@@ -4386,19 +4386,19 @@ msgstr "很好公主，吾誓護汝到地面，若不行，就一同葬身此地
 
 # Angry words indeed! But full of "cover-ups" to have more time to be with Konrad. How un-romantically romantic! (Wonder why women behaves this way. If in love, just say so! ;-）
 #. [message]: speaker=Li'sar
-#: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:343
+#: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:352
 msgid "But once we escape from this hole, I have a score to settle with you!"
 msgstr "却逃出此洞，吾將與汝算賬！"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:352
+#: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:361
 msgid ""
 "Well, we have helped each other survive so far, Princess. Now let's continue "
 "together. What do you say?"
 msgstr "公主看哪，此聯盟以助生還！不如繼續，不知公主看如何？"
 
 #. [message]: speaker=Li'sar
-#: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:356
+#: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:365
 msgid ""
 "Yes. We agreed to help each other get out of these pits alive, did we not? "
 "Let us continue to pool our resources. I pledge to you my gold."
@@ -4406,12 +4406,12 @@ msgstr ""
 "此話有理。吾倆同意助對方，直至離此洞穴。所有的資源共同使用。此吾滿金袋。"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:361
+#: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:370
 msgid "Thank you, Princess. Come, men. Let us find the Scepter!"
 msgstr "多謝公主。來人，探取權杖耳！"
 
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:405
+#: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:414
 #: data/campaigns/Heir_To_The_Throne/utils/deaths.cfg:24
 msgid "I can't believe it should end like this!"
 msgstr "我不信就此數盡！"

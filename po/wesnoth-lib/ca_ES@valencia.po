@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.5.5+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-01-30 20:58+0100\n"
+"POT-Creation-Date: 2009-02-01 17:58+0100\n"
 "PO-Revision-Date: 2008-10-25 11:30+0200\n"
 "Last-Translator: Robert Millan <rmh@aybabtu.com>\n"
 "Language-Team: Catalan <wesnoth-ca@lists.ettin.org>\n"
@@ -561,9 +561,10 @@ msgstr ""
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #: data/gui/default/window/editor_settings.cfg:230
+#: data/gui/default/window/mp_login.cfg:234
 #: data/gui/default/window/mp_method_selection.cfg:313
-#: data/gui/default/window/wml_message.cfg:360
-#: data/gui/default/window/wml_message.cfg:531 src/construct_dialog.cpp:125
+#: data/gui/default/window/wml_message.cfg:452
+#: data/gui/default/window/wml_message.cfg:636 src/construct_dialog.cpp:125
 #: src/construct_dialog.cpp:132
 msgid "OK"
 msgstr "D'acord"
@@ -772,9 +773,7 @@ msgid "Multiplayer server login dialog"
 msgstr ""
 
 #. [label]
-#. [button]: id=ok
 #: data/gui/default/window/mp_login.cfg:31
-#: data/gui/default/window/mp_login.cfg:234
 #, fuzzy
 msgid "Login"
 msgstr "Nom d'usuari:"
@@ -1418,11 +1417,11 @@ msgstr "La línia no s'ajusta al llenç."
 msgid "Rectangle doesn't fit on canvas."
 msgstr "El rectangle no s'ajusta al llenç."
 
-#: src/gui/widgets/canvas.cpp:793
+#: src/gui/widgets/canvas.cpp:798
 msgid "Text has a font size of 0."
 msgstr "La grandària del tipus de lletra del text és 0."
 
-#: src/gui/widgets/canvas.cpp:858
+#: src/gui/widgets/canvas.cpp:863
 msgid "Text doesn't start on canvas."
 msgstr ""
 

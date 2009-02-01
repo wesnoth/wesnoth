@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-01-30 20:58+0100\n"
+"POT-Creation-Date: 2009-02-01 17:58+0100\n"
 "PO-Revision-Date: 2008-12-09 21:18+0100\n"
 "Last-Translator: Leandro Regueiro <leandro DOT regueiro AT gmail DOT com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
@@ -561,9 +561,10 @@ msgstr ""
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #: data/gui/default/window/editor_settings.cfg:230
+#: data/gui/default/window/mp_login.cfg:234
 #: data/gui/default/window/mp_method_selection.cfg:313
-#: data/gui/default/window/wml_message.cfg:360
-#: data/gui/default/window/wml_message.cfg:531 src/construct_dialog.cpp:125
+#: data/gui/default/window/wml_message.cfg:452
+#: data/gui/default/window/wml_message.cfg:636 src/construct_dialog.cpp:125
 #: src/construct_dialog.cpp:132
 msgid "OK"
 msgstr "Aceptar"
@@ -773,9 +774,7 @@ msgid "Multiplayer server login dialog"
 msgstr ""
 
 #. [label]
-#. [button]: id=ok
 #: data/gui/default/window/mp_login.cfg:31
-#: data/gui/default/window/mp_login.cfg:234
 msgid "Login"
 msgstr ""
 
@@ -1419,11 +1418,11 @@ msgstr "A liña non colle no lenzo."
 msgid "Rectangle doesn't fit on canvas."
 msgstr "O rectángulo non colle no lenzo."
 
-#: src/gui/widgets/canvas.cpp:793
+#: src/gui/widgets/canvas.cpp:798
 msgid "Text has a font size of 0."
 msgstr "O tipo de letra ten 0 coma tamaño."
 
-#: src/gui/widgets/canvas.cpp:858
+#: src/gui/widgets/canvas.cpp:863
 msgid "Text doesn't start on canvas."
 msgstr "O texto non comeza no lenzo."
 

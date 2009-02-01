@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-lib\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-01-30 20:58+0100\n"
+"POT-Creation-Date: 2009-02-01 17:58+0100\n"
 "PO-Revision-Date: 2008-12-19 13:46+0200\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish <wesnoth-tr@googlegroups.com>\n"
@@ -556,9 +556,10 @@ msgstr "Aynı anda birden fazla harita açmayı mümkün kılar (MDI)"
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #: data/gui/default/window/editor_settings.cfg:230
+#: data/gui/default/window/mp_login.cfg:234
 #: data/gui/default/window/mp_method_selection.cfg:313
-#: data/gui/default/window/wml_message.cfg:360
-#: data/gui/default/window/wml_message.cfg:531 src/construct_dialog.cpp:125
+#: data/gui/default/window/wml_message.cfg:452
+#: data/gui/default/window/wml_message.cfg:636 src/construct_dialog.cpp:125
 #: src/construct_dialog.cpp:132
 msgid "OK"
 msgstr "Tamam"
@@ -767,9 +768,7 @@ msgid "Multiplayer server login dialog"
 msgstr ""
 
 #. [label]
-#. [button]: id=ok
 #: data/gui/default/window/mp_login.cfg:31
-#: data/gui/default/window/mp_login.cfg:234
 #, fuzzy
 msgid "Login"
 msgstr "Kullanıcı:"
@@ -1407,11 +1406,11 @@ msgstr "Çizgi tuvale sığmıyor."
 msgid "Rectangle doesn't fit on canvas."
 msgstr "Dörtgen tuvali sığmıyor."
 
-#: src/gui/widgets/canvas.cpp:793
+#: src/gui/widgets/canvas.cpp:798
 msgid "Text has a font size of 0."
 msgstr "Yazı tipi boyutu 0."
 
-#: src/gui/widgets/canvas.cpp:858
+#: src/gui/widgets/canvas.cpp:863
 msgid "Text doesn't start on canvas."
 msgstr "Metin tuvale sığmıyor."
 
