@@ -260,8 +260,8 @@ void merge_alias_lists(t_translation::t_list& first, const t_translation::t_list
 			//if we are in reverse mode, insert PLUS before and MINUS after the base list
             //so calculation of base aliases will work normal
 			if(revert) {
-				insert_it = first.insert(insert_it, t_translation::PLUS);
-                insert_it++;
+//				insert_it = first.insert(insert_it, t_translation::PLUS);
+//				insert_it++;
 				insert_it = first.insert(insert_it, t_translation::MINUS);
 			}
 			else {
