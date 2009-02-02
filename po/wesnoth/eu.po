@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.0\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-02-01 18:00+0100\n"
+"POT-Creation-Date: 2009-02-02 07:58+0100\n"
 "PO-Revision-Date: 2005-08-23 11:08+0100\n"
 "Last-Translator: Alfredo Beaumont <ziberpunk@ziberghetto.dhis.org>\n"
 "Language-Team: Basque <ziberpunk@ziberghetto.dhis.org>\n"
@@ -4803,7 +4803,8 @@ msgstr ""
 #: data/hardwired/tips.cfg:60 data/hardwired/tips.cfg:64
 #: data/hardwired/tips.cfg:68 data/hardwired/tips.cfg:72
 #: data/hardwired/tips.cfg:84 data/hardwired/tips.cfg:88
-#: data/hardwired/tips.cfg:100 data/hardwired/tips.cfg:120
+#: data/hardwired/tips.cfg:100 data/hardwired/tips.cfg:108
+#: data/hardwired/tips.cfg:112 data/hardwired/tips.cfg:120
 #: data/hardwired/tips.cfg:144 data/hardwired/tips.cfg:148
 #: data/hardwired/tips.cfg:152 data/hardwired/tips.cfg:160
 #: data/hardwired/tips.cfg:168 data/hardwired/tips.cfg:176
@@ -4823,7 +4824,7 @@ msgid ""
 msgstr ""
 
 #. [tip]
-#: data/hardwired/tips.cfg:16 data/hardwired/tips.cfg:108
+#: data/hardwired/tips.cfg:16
 msgid "- King Konrad, 536YW"
 msgstr ""
 
@@ -5061,11 +5062,6 @@ msgstr ""
 msgid ""
 "If you are attacked from several directions, it may be a good idea to send "
 "expendable units in some directions to delay enemy units."
-msgstr ""
-
-#. [tip]
-#: data/hardwired/tips.cfg:112
-msgid "- King Konrad, 552YW"
 msgstr ""
 
 #. [tip]
@@ -5508,12 +5504,9 @@ msgstr ""
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "Ez dago gaztelu gelaxka librerik unitateak biltzeko."
 
-#: src/actions.cpp:266 src/actions.cpp:289 src/actions.cpp:294
+#: src/actions.cpp:266 src/actions.cpp:273 src/actions.cpp:289
+#: src/actions.cpp:294
 msgid "An invalid weapon is selected, possibly by the Python AI."
-msgstr ""
-
-#: src/actions.cpp:273
-msgid "An invalid weapon is send, possibly due to the Python AI."
 msgstr ""
 
 #: src/actions.cpp:1045 src/actions.cpp:1328
@@ -5750,8 +5743,9 @@ msgid "Size"
 msgstr "Tamaina"
 
 #: src/addon_management.cpp:790
-msgid "Update Add-ons"
-msgstr ""
+#, fuzzy
+msgid "Update add-ons"
+msgstr "Kanpaina jeisten..."
 
 #: src/addon_management.cpp:791
 msgid "Select an add-on to update:"
@@ -5790,7 +5784,7 @@ msgstr ""
 
 #: src/addon_management.cpp:898
 #, fuzzy
-msgid "Connecting to Add-ons Server..."
+msgid "Connecting to add-ons server..."
 msgstr "Zerbitzarira konektatzen..."
 
 #: src/addon_management.cpp:901
@@ -5835,8 +5829,9 @@ msgid "There are no add-ons available for download from this server."
 msgstr "Ez dago jeisteko kanpainarik zerbitzari honetan."
 
 #: src/addon_management.cpp:1025
-msgid "Get Add-ons"
-msgstr ""
+#, fuzzy
+msgid "Get add-ons"
+msgstr "Kanpaina jeisten..."
 
 #: src/addon_management.cpp:1026
 #, fuzzy
@@ -8453,10 +8448,6 @@ msgstr ""
 
 #~ msgid "Server: "
 #~ msgstr "Zerbitzaria:"
-
-#, fuzzy
-#~ msgid "Update add-ons"
-#~ msgstr "Kanpaina jeisten..."
 
 #~ msgid "Join Official Server"
 #~ msgstr "Sartu zerbitzari ofizialera"

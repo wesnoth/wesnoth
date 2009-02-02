@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-02-01 18:00+0100\n"
+"POT-Creation-Date: 2009-02-02 07:58+0100\n"
 "PO-Revision-Date: 2008-12-07 01:40+0100\n"
 "Last-Translator: Alexander van Gessel (AI/AI0867) <AI0867_AT_gmail.com>\n"
 "Language-Team: Dutch translation <foppe.benedictus@gmail.com>\n"
@@ -6128,7 +6128,8 @@ msgstr ""
 #: data/hardwired/tips.cfg:60 data/hardwired/tips.cfg:64
 #: data/hardwired/tips.cfg:68 data/hardwired/tips.cfg:72
 #: data/hardwired/tips.cfg:84 data/hardwired/tips.cfg:88
-#: data/hardwired/tips.cfg:100 data/hardwired/tips.cfg:120
+#: data/hardwired/tips.cfg:100 data/hardwired/tips.cfg:108
+#: data/hardwired/tips.cfg:112 data/hardwired/tips.cfg:120
 #: data/hardwired/tips.cfg:144 data/hardwired/tips.cfg:148
 #: data/hardwired/tips.cfg:152 data/hardwired/tips.cfg:160
 #: data/hardwired/tips.cfg:168 data/hardwired/tips.cfg:176
@@ -6152,7 +6153,7 @@ msgstr ""
 "troepen hebt."
 
 #. [tip]
-#: data/hardwired/tips.cfg:16 data/hardwired/tips.cfg:108
+#: data/hardwired/tips.cfg:16
 msgid "- King Konrad, 536YW"
 msgstr "- Koning Konrad, 536YW"
 
@@ -6465,11 +6466,6 @@ msgstr ""
 "Wanneer je uit verschillende richtingen wordt aangevallen kan het een goed "
 "idee zijn om een paar niet onmisbare eenheden naar de vijand toe te sturen "
 "om deze te vertragen."
-
-#. [tip]
-#: data/hardwired/tips.cfg:112
-msgid "- King Konrad, 552YW"
-msgstr "- Koning Konrad, 552YW"
 
 #. [tip]
 #: data/hardwired/tips.cfg:115
@@ -6950,13 +6946,10 @@ msgstr ""
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "Er zijn geen lege velden waarop een eenheid kan worden gerekruteerd."
 
-#: src/actions.cpp:266 src/actions.cpp:289 src/actions.cpp:294
+#: src/actions.cpp:266 src/actions.cpp:273 src/actions.cpp:289
+#: src/actions.cpp:294
 msgid "An invalid weapon is selected, possibly by the Python AI."
 msgstr "Een ongeldig wapen is geselecteerd, mogelijk door de Python AI."
-
-#: src/actions.cpp:273
-msgid "An invalid weapon is send, possibly due to the Python AI."
-msgstr "Een ongeldig wapen is gestuurd, waarschijnlijk door de Python AI."
 
 #: src/actions.cpp:1045 src/actions.cpp:1328
 msgid "female^poisoned"
@@ -7184,8 +7177,9 @@ msgid "Size"
 msgstr "Grootte"
 
 #: src/addon_management.cpp:790
-msgid "Update Add-ons"
-msgstr "Add-ons updaten"
+#, fuzzy
+msgid "Update add-ons"
+msgstr "Add-on wordt verstuurd"
 
 #: src/addon_management.cpp:791
 msgid "Select an add-on to update:"
@@ -7219,7 +7213,8 @@ msgid "All add-ons updated successfully."
 msgstr "Alle add-ons succesvol geupdate."
 
 #: src/addon_management.cpp:898
-msgid "Connecting to Add-ons Server..."
+#, fuzzy
+msgid "Connecting to add-ons server..."
 msgstr "Bezig met verbinden met de Add-ons Server..."
 
 #: src/addon_management.cpp:901
@@ -7260,7 +7255,8 @@ msgid "There are no add-ons available for download from this server."
 msgstr "Er zijn geen add-ons beschikbaar om te downloaden van deze server."
 
 #: src/addon_management.cpp:1025
-msgid "Get Add-ons"
+#, fuzzy
+msgid "Get add-ons"
 msgstr "Add-ons downloaden"
 
 #: src/addon_management.cpp:1026
@@ -9681,6 +9677,15 @@ msgstr "Help ons Wesnoth te verbeteren!"
 msgid "Enable summary uploads"
 msgstr "Samenvattingen uploaden aan"
 
+#~ msgid "- King Konrad, 552YW"
+#~ msgstr "- Koning Konrad, 552YW"
+
+#~ msgid "An invalid weapon is send, possibly due to the Python AI."
+#~ msgstr "Een ongeldig wapen is gestuurd, waarschijnlijk door de Python AI."
+
+#~ msgid "Update Add-ons"
+#~ msgstr "Add-ons updaten"
+
 #~ msgid " This unit is capable of basic healing and slowing dehydration."
 #~ msgstr ""
 #~ " Deze eenheid kan de beginselen van verpleging toepassen en dehydratie "
@@ -9839,10 +9844,6 @@ msgstr "Samenvattingen uploaden aan"
 
 #~ msgid "Server: "
 #~ msgstr "Server:"
-
-#, fuzzy
-#~ msgid "Update add-ons"
-#~ msgstr "Add-on wordt verstuurd"
 
 #~ msgid "Join Official Server"
 #~ msgstr "Inloggen op de officiële server"

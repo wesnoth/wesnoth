@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.5.8+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-02-01 18:00+0100\n"
+"POT-Creation-Date: 2009-02-02 07:58+0100\n"
 "PO-Revision-Date: 2009-01-31 21:25+0100\n"
 "Last-Translator: Robert Millan <rmh@aybabtu.com>\n"
 "Language-Team: Catalan <wesnoth-ca@lists.ettin.org>\n"
@@ -5761,7 +5761,8 @@ msgstr ""
 #: data/hardwired/tips.cfg:60 data/hardwired/tips.cfg:64
 #: data/hardwired/tips.cfg:68 data/hardwired/tips.cfg:72
 #: data/hardwired/tips.cfg:84 data/hardwired/tips.cfg:88
-#: data/hardwired/tips.cfg:100 data/hardwired/tips.cfg:120
+#: data/hardwired/tips.cfg:100 data/hardwired/tips.cfg:108
+#: data/hardwired/tips.cfg:112 data/hardwired/tips.cfg:120
 #: data/hardwired/tips.cfg:144 data/hardwired/tips.cfg:148
 #: data/hardwired/tips.cfg:152 data/hardwired/tips.cfg:160
 #: data/hardwired/tips.cfg:168 data/hardwired/tips.cfg:176
@@ -5781,7 +5782,7 @@ msgid ""
 msgstr ""
 
 #. [tip]
-#: data/hardwired/tips.cfg:16 data/hardwired/tips.cfg:108
+#: data/hardwired/tips.cfg:16
 msgid "- King Konrad, 536YW"
 msgstr "- Rei Konrad, 536AW"
 
@@ -6063,11 +6064,6 @@ msgid ""
 msgstr ""
 "Si sou atacat des de diferents flancs, tal vegada siga una bona idea enviar "
 "tropes prescindibles per retrasar l'atac."
-
-#. [tip]
-#: data/hardwired/tips.cfg:112
-msgid "- King Konrad, 552YW"
-msgstr "- Rei Konrad, 552AW"
 
 #. [tip]
 #: data/hardwired/tips.cfg:115
@@ -6537,12 +6533,9 @@ msgstr ""
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "El castell no disposa de més zones lliures per reclutar."
 
-#: src/actions.cpp:266 src/actions.cpp:289 src/actions.cpp:294
+#: src/actions.cpp:266 src/actions.cpp:273 src/actions.cpp:289
+#: src/actions.cpp:294
 msgid "An invalid weapon is selected, possibly by the Python AI."
-msgstr ""
-
-#: src/actions.cpp:273
-msgid "An invalid weapon is send, possibly due to the Python AI."
 msgstr ""
 
 #: src/actions.cpp:1045 src/actions.cpp:1328
@@ -6764,7 +6757,8 @@ msgid "Size"
 msgstr "Grandària"
 
 #: src/addon_management.cpp:790
-msgid "Update Add-ons"
+#, fuzzy
+msgid "Update add-ons"
 msgstr "Actualitza els complements"
 
 #: src/addon_management.cpp:791
@@ -6800,7 +6794,8 @@ msgid "All add-ons updated successfully."
 msgstr ""
 
 #: src/addon_management.cpp:898
-msgid "Connecting to Add-ons Server..."
+#, fuzzy
+msgid "Connecting to add-ons server..."
 msgstr "Connectant amb el servidor de complements..."
 
 #: src/addon_management.cpp:901
@@ -6841,7 +6836,8 @@ msgid "There are no add-ons available for download from this server."
 msgstr "No hi ha complements disponibles per a descarregar en este servidor."
 
 #: src/addon_management.cpp:1025
-msgid "Get Add-ons"
+#, fuzzy
+msgid "Get add-ons"
 msgstr "Obté complements"
 
 #: src/addon_management.cpp:1026
@@ -9239,6 +9235,9 @@ msgstr "Ajuda'ns a millorar Wesnoth!"
 #: src/upload_log.cpp:332
 msgid "Enable summary uploads"
 msgstr "Permetre la pujada de resums"
+
+#~ msgid "- King Konrad, 552YW"
+#~ msgstr "- Rei Konrad, 552AW"
 
 #~ msgid "You must log in to this server"
 #~ msgstr "Heu d'entrar en aquest servidor"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-02-01 18:00+0100\n"
+"POT-Creation-Date: 2009-02-02 07:58+0100\n"
 "PO-Revision-Date: 2008-12-22 12:15+1000\n"
 "Last-Translator: luojie <lililjlj@gmail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
@@ -5601,7 +5601,8 @@ msgstr ""
 #: data/hardwired/tips.cfg:60 data/hardwired/tips.cfg:64
 #: data/hardwired/tips.cfg:68 data/hardwired/tips.cfg:72
 #: data/hardwired/tips.cfg:84 data/hardwired/tips.cfg:88
-#: data/hardwired/tips.cfg:100 data/hardwired/tips.cfg:120
+#: data/hardwired/tips.cfg:100 data/hardwired/tips.cfg:108
+#: data/hardwired/tips.cfg:112 data/hardwired/tips.cfg:120
 #: data/hardwired/tips.cfg:144 data/hardwired/tips.cfg:148
 #: data/hardwired/tips.cfg:152 data/hardwired/tips.cfg:160
 #: data/hardwired/tips.cfg:168 data/hardwired/tips.cfg:176
@@ -5623,7 +5624,7 @@ msgstr ""
 "种单位，可以更快地拥有高等级单位。"
 
 #. [tip]
-#: data/hardwired/tips.cfg:16 data/hardwired/tips.cfg:108
+#: data/hardwired/tips.cfg:16
 msgid "- King Konrad, 536YW"
 msgstr "- King Konrad, 536YW"
 
@@ -5899,11 +5900,6 @@ msgid ""
 "If you are attacked from several directions, it may be a good idea to send "
 "expendable units in some directions to delay enemy units."
 msgstr "如果您多面受敌，最好的策略是让可以损失的单位去拖延敌人。"
-
-#. [tip]
-#: data/hardwired/tips.cfg:112
-msgid "- King Konrad, 552YW"
-msgstr "- King Konrad, 552YW"
 
 #. [tip]
 #: data/hardwired/tips.cfg:115
@@ -6351,13 +6347,10 @@ msgstr "您的领袖必须在要塞里才能征募或召回单位。"
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "城堡内没有空格，无法征兵。"
 
-#: src/actions.cpp:266 src/actions.cpp:289 src/actions.cpp:294
+#: src/actions.cpp:266 src/actions.cpp:273 src/actions.cpp:289
+#: src/actions.cpp:294
 msgid "An invalid weapon is selected, possibly by the Python AI."
 msgstr "选择了一个无效的武器，可能是Python AI选择的。"
-
-#: src/actions.cpp:273
-msgid "An invalid weapon is send, possibly due to the Python AI."
-msgstr "传出了一个无效的武器，可能是Python AI造成的。"
 
 #: src/actions.cpp:1045 src/actions.cpp:1328
 msgid "female^poisoned"
@@ -6574,8 +6567,9 @@ msgid "Size"
 msgstr "大小"
 
 #: src/addon_management.cpp:790
-msgid "Update Add-ons"
-msgstr "升级插件"
+#, fuzzy
+msgid "Update add-ons"
+msgstr "发送插件"
 
 #: src/addon_management.cpp:791
 msgid "Select an add-on to update:"
@@ -6609,7 +6603,8 @@ msgid "All add-ons updated successfully."
 msgstr "成功升级。"
 
 #: src/addon_management.cpp:898
-msgid "Connecting to Add-ons Server..."
+#, fuzzy
+msgid "Connecting to add-ons server..."
 msgstr "正在连接到插件服务器..."
 
 #: src/addon_management.cpp:901
@@ -6650,7 +6645,8 @@ msgid "There are no add-ons available for download from this server."
 msgstr "这个服务器上无可供下载的插件。"
 
 #: src/addon_management.cpp:1025
-msgid "Get Add-ons"
+#, fuzzy
+msgid "Get add-ons"
 msgstr "获取插件"
 
 #: src/addon_management.cpp:1026
@@ -9014,6 +9010,15 @@ msgstr "帮助我们改进韦诺，提升您的游戏体验！"
 msgid "Enable summary uploads"
 msgstr "开启摘要上传模式"
 
+#~ msgid "- King Konrad, 552YW"
+#~ msgstr "- King Konrad, 552YW"
+
+#~ msgid "An invalid weapon is send, possibly due to the Python AI."
+#~ msgstr "传出了一个无效的武器，可能是Python AI造成的。"
+
+#~ msgid "Update Add-ons"
+#~ msgstr "升级插件"
+
 #~ msgid "You must log in to this server"
 #~ msgstr "您必须登录这个服务器"
 
@@ -9189,10 +9194,6 @@ msgstr "开启摘要上传模式"
 
 #~ msgid "Server: "
 #~ msgstr "服务器： "
-
-#, fuzzy
-#~ msgid "Update add-ons"
-#~ msgstr "发送插件"
 
 #~ msgid "Join Official Server"
 #~ msgstr "连接到官方服务器"

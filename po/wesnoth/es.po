@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-02-01 18:00+0100\n"
+"POT-Creation-Date: 2009-02-02 07:58+0100\n"
 "PO-Revision-Date: 2009-01-30 19:32-0300\n"
 "Last-Translator: Ignacio R. Morelle <shikadilord@users.sourceforge.net>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -6245,7 +6245,8 @@ msgstr ""
 #: data/hardwired/tips.cfg:60 data/hardwired/tips.cfg:64
 #: data/hardwired/tips.cfg:68 data/hardwired/tips.cfg:72
 #: data/hardwired/tips.cfg:84 data/hardwired/tips.cfg:88
-#: data/hardwired/tips.cfg:100 data/hardwired/tips.cfg:120
+#: data/hardwired/tips.cfg:100 data/hardwired/tips.cfg:108
+#: data/hardwired/tips.cfg:112 data/hardwired/tips.cfg:120
 #: data/hardwired/tips.cfg:144 data/hardwired/tips.cfg:148
 #: data/hardwired/tips.cfg:152 data/hardwired/tips.cfg:160
 #: data/hardwired/tips.cfg:168 data/hardwired/tips.cfg:176
@@ -6269,7 +6270,7 @@ msgstr ""
 "alto nivel más pronto."
 
 #. [tip]
-#: data/hardwired/tips.cfg:16 data/hardwired/tips.cfg:108
+#: data/hardwired/tips.cfg:16
 msgid "- King Konrad, 536YW"
 msgstr "- Rey Konrad, 536DW"
 
@@ -6589,11 +6590,6 @@ msgid ""
 msgstr ""
 "Si el enemigo ataca por varios flancos, puede ser una buena idea enviar "
 "tropas prescindibles para retrasar el ataque."
-
-#. [tip]
-#: data/hardwired/tips.cfg:112
-msgid "- King Konrad, 552YW"
-msgstr "- Rey Konrad, 552DW"
 
 #. [tip]
 #: data/hardwired/tips.cfg:115
@@ -7082,15 +7078,11 @@ msgstr ""
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "No hay zonas del castillo libres para reclutar unidades."
 
-#: src/actions.cpp:266 src/actions.cpp:289 src/actions.cpp:294
+#: src/actions.cpp:266 src/actions.cpp:273 src/actions.cpp:289
+#: src/actions.cpp:294
 msgid "An invalid weapon is selected, possibly by the Python AI."
 msgstr ""
 "Se ha seleccionado una arma inválida, posiblemente por la IA de Python."
-
-#: src/actions.cpp:273
-msgid "An invalid weapon is send, possibly due to the Python AI."
-msgstr ""
-"Se ha enviado una arma inválida, posiblemente debido a la IA de Python."
 
 #: src/actions.cpp:1045 src/actions.cpp:1328
 msgid "female^poisoned"
@@ -7315,7 +7307,8 @@ msgid "Size"
 msgstr "Tamaño"
 
 #: src/addon_management.cpp:790
-msgid "Update Add-ons"
+#, fuzzy
+msgid "Update add-ons"
 msgstr "Actualizar complementos"
 
 #: src/addon_management.cpp:791
@@ -7353,7 +7346,8 @@ msgid "All add-ons updated successfully."
 msgstr "Todos los complementos fueron actualizados exitosamente."
 
 #: src/addon_management.cpp:898
-msgid "Connecting to Add-ons Server..."
+#, fuzzy
+msgid "Connecting to add-ons server..."
 msgstr "Conectando al servidor de complementos..."
 
 #: src/addon_management.cpp:901
@@ -7394,7 +7388,8 @@ msgid "There are no add-ons available for download from this server."
 msgstr "No hay complementos disponibles para descargar de este servidor."
 
 #: src/addon_management.cpp:1025
-msgid "Get Add-ons"
+#, fuzzy
+msgid "Get add-ons"
 msgstr "Complementos"
 
 #: src/addon_management.cpp:1026
@@ -9827,3 +9822,10 @@ msgstr "¡Ayúdenos a hacer un mejor Wesnoth para todos!"
 #: src/upload_log.cpp:332
 msgid "Enable summary uploads"
 msgstr "Permitir envíos de resúmenes"
+
+#~ msgid "- King Konrad, 552YW"
+#~ msgstr "- Rey Konrad, 552DW"
+
+#~ msgid "An invalid weapon is send, possibly due to the Python AI."
+#~ msgstr ""
+#~ "Se ha enviado una arma inválida, posiblemente debido a la IA de Python."

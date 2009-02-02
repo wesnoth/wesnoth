@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-02-01 18:00+0100\n"
+"POT-Creation-Date: 2009-02-02 07:58+0100\n"
 "PO-Revision-Date: 2006-08-14 19:33+0200\n"
 "Last-Translator: Jaka Kranjc <wesnoth@prinas.si>\n"
 "Language-Team: Slovenian\n"
@@ -5378,7 +5378,8 @@ msgstr ""
 #: data/hardwired/tips.cfg:60 data/hardwired/tips.cfg:64
 #: data/hardwired/tips.cfg:68 data/hardwired/tips.cfg:72
 #: data/hardwired/tips.cfg:84 data/hardwired/tips.cfg:88
-#: data/hardwired/tips.cfg:100 data/hardwired/tips.cfg:120
+#: data/hardwired/tips.cfg:100 data/hardwired/tips.cfg:108
+#: data/hardwired/tips.cfg:112 data/hardwired/tips.cfg:120
 #: data/hardwired/tips.cfg:144 data/hardwired/tips.cfg:148
 #: data/hardwired/tips.cfg:152 data/hardwired/tips.cfg:160
 #: data/hardwired/tips.cfg:168 data/hardwired/tips.cfg:176
@@ -5398,7 +5399,7 @@ msgid ""
 msgstr ""
 
 #. [tip]
-#: data/hardwired/tips.cfg:16 data/hardwired/tips.cfg:108
+#: data/hardwired/tips.cfg:16
 msgid "- King Konrad, 536YW"
 msgstr ""
 
@@ -5681,11 +5682,6 @@ msgid ""
 msgstr ""
 "Če vas napadajo iz večih strani, je dobro vsaj v eno od njih poslati par "
 "pogrešljivih enot, da zadržijo sovražnika."
-
-#. [tip]
-#: data/hardwired/tips.cfg:112
-msgid "- King Konrad, 552YW"
-msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:115
@@ -6160,12 +6156,9 @@ msgstr ""
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "Na voljo ni prostih gradov, kjer bi lahko vpoklicovali."
 
-#: src/actions.cpp:266 src/actions.cpp:289 src/actions.cpp:294
+#: src/actions.cpp:266 src/actions.cpp:273 src/actions.cpp:289
+#: src/actions.cpp:294
 msgid "An invalid weapon is selected, possibly by the Python AI."
-msgstr ""
-
-#: src/actions.cpp:273
-msgid "An invalid weapon is send, possibly due to the Python AI."
 msgstr ""
 
 #: src/actions.cpp:1045 src/actions.cpp:1328
@@ -6413,8 +6406,8 @@ msgstr "Velikost"
 
 #: src/addon_management.cpp:790
 #, fuzzy
-msgid "Update Add-ons"
-msgstr "Dobi dodatke"
+msgid "Update add-ons"
+msgstr "Pošiljanje dodatka"
 
 #: src/addon_management.cpp:791
 msgid "Select an add-on to update:"
@@ -6455,7 +6448,7 @@ msgstr ""
 
 #: src/addon_management.cpp:898
 #, fuzzy
-msgid "Connecting to Add-ons Server..."
+msgid "Connecting to add-ons server..."
 msgstr "Povezovanje s strežnikom ..."
 
 #: src/addon_management.cpp:901
@@ -6498,7 +6491,8 @@ msgid "There are no add-ons available for download from this server."
 msgstr "Na tem strežniku ni na voljo nobenega dodatka."
 
 #: src/addon_management.cpp:1025
-msgid "Get Add-ons"
+#, fuzzy
+msgid "Get add-ons"
 msgstr "Dobi dodatke"
 
 #: src/addon_management.cpp:1026
@@ -9061,6 +9055,10 @@ msgstr "Pomagajte nam izboljšati Wesnoth!"
 msgid "Enable summary uploads"
 msgstr "Omogoči pošiljanje povzetkov"
 
+#, fuzzy
+#~ msgid "Update Add-ons"
+#~ msgstr "Dobi dodatke"
+
 #~ msgid "You must log in to this server"
 #~ msgstr "Prijaviti se morate na ta strežnik"
 
@@ -9198,10 +9196,6 @@ msgstr "Omogoči pošiljanje povzetkov"
 
 #~ msgid "Server: "
 #~ msgstr "Strežnik: "
-
-#, fuzzy
-#~ msgid "Update add-ons"
-#~ msgstr "Pošiljanje dodatka"
 
 #~ msgid "Join Official Server"
 #~ msgstr "Poveži se z uradnim strežnikom"

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bg\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-02-01 18:00+0100\n"
+"POT-Creation-Date: 2009-02-02 07:58+0100\n"
 "PO-Revision-Date: 2007-08-21 17:39+0300\n"
 "Last-Translator: Denica <dmincheva2002@gmail.com>\n"
 "Language-Team: Bulgarian <bg@li.org>\n"
@@ -5546,7 +5546,8 @@ msgstr ""
 #: data/hardwired/tips.cfg:60 data/hardwired/tips.cfg:64
 #: data/hardwired/tips.cfg:68 data/hardwired/tips.cfg:72
 #: data/hardwired/tips.cfg:84 data/hardwired/tips.cfg:88
-#: data/hardwired/tips.cfg:100 data/hardwired/tips.cfg:120
+#: data/hardwired/tips.cfg:100 data/hardwired/tips.cfg:108
+#: data/hardwired/tips.cfg:112 data/hardwired/tips.cfg:120
 #: data/hardwired/tips.cfg:144 data/hardwired/tips.cfg:148
 #: data/hardwired/tips.cfg:152 data/hardwired/tips.cfg:160
 #: data/hardwired/tips.cfg:168 data/hardwired/tips.cfg:176
@@ -5566,7 +5567,7 @@ msgid ""
 msgstr ""
 
 #. [tip]
-#: data/hardwired/tips.cfg:16 data/hardwired/tips.cfg:108
+#: data/hardwired/tips.cfg:16
 msgid "- King Konrad, 536YW"
 msgstr ""
 
@@ -5858,11 +5859,6 @@ msgstr ""
 "Ако ви атакуват от няколко страни е добре да разпръснете част от единиците "
 "си, от които можете да се лишите, в различни посоки, за да забавите "
 "единиците на противника."
-
-#. [tip]
-#: data/hardwired/tips.cfg:112
-msgid "- King Konrad, 552YW"
-msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:115
@@ -6348,12 +6344,9 @@ msgstr ""
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "Няма свободни полета замък в които да наберете единица."
 
-#: src/actions.cpp:266 src/actions.cpp:289 src/actions.cpp:294
+#: src/actions.cpp:266 src/actions.cpp:273 src/actions.cpp:289
+#: src/actions.cpp:294
 msgid "An invalid weapon is selected, possibly by the Python AI."
-msgstr ""
-
-#: src/actions.cpp:273
-msgid "An invalid weapon is send, possibly due to the Python AI."
 msgstr ""
 
 #: src/actions.cpp:1045 src/actions.cpp:1328
@@ -6584,8 +6577,8 @@ msgstr "Размер"
 
 #: src/addon_management.cpp:790
 #, fuzzy
-msgid "Update Add-ons"
-msgstr "Свали допълнения"
+msgid "Update add-ons"
+msgstr "Пращане на допълнението"
 
 #: src/addon_management.cpp:791
 msgid "Select an add-on to update:"
@@ -6624,7 +6617,7 @@ msgstr ""
 
 #: src/addon_management.cpp:898
 #, fuzzy
-msgid "Connecting to Add-ons Server..."
+msgid "Connecting to add-ons server..."
 msgstr "Свързване към сървър..."
 
 #: src/addon_management.cpp:901
@@ -6667,7 +6660,8 @@ msgid "There are no add-ons available for download from this server."
 msgstr "Няма допълнения за сваляне на този сървър."
 
 #: src/addon_management.cpp:1025
-msgid "Get Add-ons"
+#, fuzzy
+msgid "Get add-ons"
 msgstr "Свали допълнения"
 
 #: src/addon_management.cpp:1026
@@ -9176,6 +9170,10 @@ msgstr "Помогнете ни да направим Уеснот по-добъ
 msgid "Enable summary uploads"
 msgstr "Позволи качване на обобщения"
 
+#, fuzzy
+#~ msgid "Update Add-ons"
+#~ msgstr "Свали допълнения"
+
 #~ msgid "You must log in to this server"
 #~ msgstr "Трябва да влезете в сървъра"
 
@@ -9325,10 +9323,6 @@ msgstr "Позволи качване на обобщения"
 
 #~ msgid "Server: "
 #~ msgstr "Сървър: "
-
-#, fuzzy
-#~ msgid "Update add-ons"
-#~ msgstr "Пращане на допълнението"
 
 #~ msgid "Join Official Server"
 #~ msgstr "Присъединяване към официален сървър"

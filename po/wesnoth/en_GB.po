@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-02-01 18:00+0100\n"
+"POT-Creation-Date: 2009-02-02 07:58+0100\n"
 "PO-Revision-Date: 2009-01-23 23:38+0100\n"
 "Last-Translator: Nils Kneuper <crazy-ivanovic  AT gmx  D O  T net>\n"
 "Language-Team: English (British) <en@li.org>\n"
@@ -163,7 +163,8 @@ msgid ""
 "care of a village or a unit that can cure."
 msgstr ""
 "Heals +4:\n"
-"Allows the unit to heal adjacent allied units at the beginning of each turn.\n"
+"Allows the unit to heal adjacent allied units at the beginning of each "
+"turn.\n"
 "\n"
 "A unit cared for by this healer may heal up to 4 HP per turn, or stop poison "
 "from taking effect for that turn.\n"
@@ -1695,8 +1696,7 @@ msgstr ""
 "\n"
 "Other traits that may be assigned to units are <ref>dst=traits_dextrous "
 "text=Dextrous</ref>, <ref>dst=traits_loyal text=Loyal</ref>, and "
-"<ref>dst=traits_undead text=Undead</ref>."
-"\n"
+"<ref>dst=traits_undead text=Undead</ref>.\n"
 
 #. [topic]: id=traits_intelligent
 #: data/core/help.cfg:362
@@ -1873,9 +1873,11 @@ msgstr "Undead"
 #. [topic]: id=traits_undead
 #: data/core/help.cfg:409
 msgid ""
-"Undead units are immune to poison, also drain and plague doesn't work on them."
+"Undead units are immune to poison, also drain and plague doesn't work on "
+"them."
 msgstr ""
-"Undead units are immune to poison, also drain and plague doesn't work on them."
+"Undead units are immune to poison, also drain and plague doesn't work on "
+"them."
 
 #. [topic]: id=traits_undead
 #: data/core/help.cfg:411
@@ -2065,8 +2067,7 @@ msgstr ""
 "\n"
 "Most units have 50% defence in forests, but cavalry are limited to 40%. "
 "Elves, on the other hand, enjoy 60 to 70% defence, even their mounted units. "
-"Dwarves generally receive only 30% defence in forests."
-"\n"
+"Dwarves generally receive only 30% defence in forests.\n"
 
 #. [topic]: id=terrain_hills
 #: data/core/help.cfg:486
@@ -2245,8 +2246,7 @@ msgstr ""
 "enemy can simply sneak into the castle unchallenged, gaining the same "
 "defensive bonus as everyone inside.\n"
 "\n"
-"Most units have about 60% defence in a castle."
-"\n"
+"Most units have about 60% defence in a castle.\n"
 
 #. [topic]: id=terrain_sand
 #: data/core/help.cfg:572
@@ -2416,8 +2416,7 @@ msgstr ""
 "poison.\n"
 "\n"
 "Most units have 50 to 60% defence in villages, whereas cavalry receive only "
-"40%."
-"\n"
+"40%.\n"
 
 #. [topic]: id=terrain_water_village
 #: data/core/help.cfg:656
@@ -2484,10 +2483,10 @@ msgstr ""
 "The dangers inherent in trying to walk on lava are fairly obvious. This "
 "terrain can only be crossed by those units capable of flying a considerable "
 "distance above it. The molten magma also produces a substantial glow, "
-"illuminating the area immediately above it.  The molten magma also "
-"produces a substantial glow, illuminating the area immediately above it. "
-"This provides an attack bonus for lawful units and removes the attack bonus "
-"from chaotic units."
+"illuminating the area immediately above it.  The molten magma also produces "
+"a substantial glow, illuminating the area immediately above it. This "
+"provides an attack bonus for lawful units and removes the attack bonus from "
+"chaotic units."
 
 #. [topic]: id=terrain_ford
 #: data/core/help.cfg:688
@@ -2753,8 +2752,7 @@ msgstr ""
 "\n"
 "Kick a user in multiplayer. They will be able to rejoin the game. Generally "
 "a friendly way to remove someone who is having connection or other "
-"difficulties."
-"\n"
+"difficulties.\n"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:790
@@ -3334,8 +3332,8 @@ msgid ""
 msgstr ""
 "Poison:\n"
 "This attack poisons the target. Poisoned units lose 8 HP every turn until "
-"they are cured or are reduced to 1 HP. Poison can not, of itself, kill "
-"a unit."
+"they are cured or are reduced to 1 HP. Poison can not, of itself, kill a "
+"unit."
 
 #. [option]: type=behaviour
 #: data/core/macros/ai_controller.cfg:144
@@ -4591,7 +4589,6 @@ msgstr ""
 #: data/core/macros/special-notes.cfg:14
 msgid " This unit is capable of basic healing."
 msgstr " This unit is capable of basic healing."
-
 
 #: data/core/macros/special-notes.cfg:17
 msgid ""
@@ -6081,7 +6078,8 @@ msgstr ""
 #: data/hardwired/tips.cfg:60 data/hardwired/tips.cfg:64
 #: data/hardwired/tips.cfg:68 data/hardwired/tips.cfg:72
 #: data/hardwired/tips.cfg:84 data/hardwired/tips.cfg:88
-#: data/hardwired/tips.cfg:100 data/hardwired/tips.cfg:120
+#: data/hardwired/tips.cfg:100 data/hardwired/tips.cfg:108
+#: data/hardwired/tips.cfg:112 data/hardwired/tips.cfg:120
 #: data/hardwired/tips.cfg:144 data/hardwired/tips.cfg:148
 #: data/hardwired/tips.cfg:152 data/hardwired/tips.cfg:160
 #: data/hardwired/tips.cfg:168 data/hardwired/tips.cfg:176
@@ -6104,7 +6102,7 @@ msgstr ""
 "some high-level troops sooner."
 
 #. [tip]
-#: data/hardwired/tips.cfg:16 data/hardwired/tips.cfg:108
+#: data/hardwired/tips.cfg:16
 msgid "- King Konrad, 536YW"
 msgstr "- King Konrad, 536YW"
 
@@ -6212,8 +6210,10 @@ msgstr "- Royal Compendium of Battle Terminology - Volume II, 212YW"
 
 #. [tip]
 #: data/hardwired/tips.cfg:51
-msgid "An otherwise sound plan can fail if you attack at the wrong time of day."
-msgstr "An otherwise sound plan can fail if you attack at the wrong time of day."
+msgid ""
+"An otherwise sound plan can fail if you attack at the wrong time of day."
+msgstr ""
+"An otherwise sound plan can fail if you attack at the wrong time of day."
 
 #. [tip]
 #: data/hardwired/tips.cfg:52 data/hardwired/tips.cfg:76
@@ -6883,7 +6883,8 @@ msgstr "You must have your leader on a keep to recruit or recall units."
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "There are no vacant castle tiles in which to recruit a unit."
 
-#: src/actions.cpp:266 src/actions.cpp:289 src/actions.cpp:294
+#: src/actions.cpp:266 src/actions.cpp:273 src/actions.cpp:289
+#: src/actions.cpp:294
 msgid "An invalid weapon is selected, possibly by the Python AI."
 msgstr "An invalid weapon is selected, possibly by the Python AI."
 
@@ -7109,8 +7110,8 @@ msgid "Size"
 msgstr "Size"
 
 #: src/addon_management.cpp:790
-msgid "Update Add-ons"
-msgstr "Update Add-ons"
+msgid "Update add-ons"
+msgstr "Update add-ons"
 
 #: src/addon_management.cpp:791
 msgid "Select an add-on to update:"
@@ -7146,7 +7147,8 @@ msgid "All add-ons updated successfully."
 msgstr "All add-ons updated successfully."
 
 #: src/addon_management.cpp:898
-msgid "Connecting to Add-ons Server..."
+#, fuzzy
+msgid "Connecting to add-ons server..."
 msgstr "Connecting to Add-ons Server..."
 
 #: src/addon_management.cpp:901
@@ -7187,7 +7189,8 @@ msgid "There are no add-ons available for download from this server."
 msgstr "There are no add-ons available for download from this server."
 
 #: src/addon_management.cpp:1025
-msgid "Get Add-ons"
+#, fuzzy
+msgid "Get add-ons"
 msgstr "Get add-ons"
 
 #: src/addon_management.cpp:1026
@@ -8815,8 +8818,10 @@ msgid "Password: "
 msgstr "Password: "
 
 #: src/multiplayer_create.cpp:326
-msgid "Set the password that people wanting to join your game as players must enter."
-msgstr "Set the password that people wanting to join your game as players must enter."
+msgid ""
+"Set the password that people wanting to join your game as players must enter."
+msgstr ""
+"Set the password that people wanting to join your game as players must enter."
 
 #: src/multiplayer_create.cpp:334
 msgid "Turns: "
@@ -9370,7 +9375,7 @@ msgstr "Add-ons"
 
 #: src/titlescreen.cpp:417
 msgid "TitleScreen button^Map Editor"
-msgstr "Map Editor" 
+msgstr "Map Editor"
 
 #: src/titlescreen.cpp:419
 msgid "TitleScreen button^Language"
@@ -9582,6 +9587,9 @@ msgstr "Help us make Wesnoth better for you!"
 msgid "Enable summary uploads"
 msgstr "Enable summary uploads"
 
+#~ msgid "Update Add-ons"
+#~ msgstr "Update Add-ons"
+
 #~ msgid "You must log in to this server"
 #~ msgstr "You must log in to this server"
 
@@ -9697,9 +9705,6 @@ msgstr "Enable summary uploads"
 #~ msgid "Server: "
 #~ msgstr "Server: "
 
-#~ msgid "Update add-ons"
-#~ msgstr "Update add-ons"
-
 #~ msgid "Join Official Server"
 #~ msgstr "Join Official Server"
 
@@ -9718,8 +9723,10 @@ msgstr "Enable summary uploads"
 #~ msgid "Host a game using dedicated server 'wesnothd'"
 #~ msgstr "Host a game using dedicated server 'wesnothd'"
 
-#~ msgid "Play a multiplayer game with the AI or humans sharing the same machine"
-#~ msgstr "Play a multiplayer game with the AI or humans sharing the same machine"
+#~ msgid ""
+#~ "Play a multiplayer game with the AI or humans sharing the same machine"
+#~ msgstr ""
+#~ "Play a multiplayer game with the AI or humans sharing the same machine"
 
 #~ msgid "Language"
 #~ msgstr "Language"

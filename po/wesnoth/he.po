@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-02-01 18:00+0100\n"
+"POT-Creation-Date: 2009-02-02 07:58+0100\n"
 "PO-Revision-Date: 2006-02-13 01:20+0200\n"
 "Last-Translator: Ely Levy <nakeee@gmail.com>\n"
 "Language-Team: Hebrew\n"
@@ -5304,7 +5304,8 @@ msgstr ""
 #: data/hardwired/tips.cfg:60 data/hardwired/tips.cfg:64
 #: data/hardwired/tips.cfg:68 data/hardwired/tips.cfg:72
 #: data/hardwired/tips.cfg:84 data/hardwired/tips.cfg:88
-#: data/hardwired/tips.cfg:100 data/hardwired/tips.cfg:120
+#: data/hardwired/tips.cfg:100 data/hardwired/tips.cfg:108
+#: data/hardwired/tips.cfg:112 data/hardwired/tips.cfg:120
 #: data/hardwired/tips.cfg:144 data/hardwired/tips.cfg:148
 #: data/hardwired/tips.cfg:152 data/hardwired/tips.cfg:160
 #: data/hardwired/tips.cfg:168 data/hardwired/tips.cfg:176
@@ -5324,7 +5325,7 @@ msgid ""
 msgstr ""
 
 #. [tip]
-#: data/hardwired/tips.cfg:16 data/hardwired/tips.cfg:108
+#: data/hardwired/tips.cfg:16
 msgid "- King Konrad, 536YW"
 msgstr ""
 
@@ -5603,11 +5604,6 @@ msgid ""
 msgstr ""
 "אם אתה מותקף ממספר כיוונים, זה יכול להיות טוב לשלוב יחידות עליהם ניתן לוותר "
 "למספר כיוונים כדי לעקב את יחדות האוייב."
-
-#. [tip]
-#: data/hardwired/tips.cfg:112
-msgid "- King Konrad, 552YW"
-msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:115
@@ -6068,12 +6064,9 @@ msgstr "המנהיג שלך חייב להיות על מצודה כדי לגיי�
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "אין אריח טירה פנוי שניתן לגייס אליו את היחידה."
 
-#: src/actions.cpp:266 src/actions.cpp:289 src/actions.cpp:294
+#: src/actions.cpp:266 src/actions.cpp:273 src/actions.cpp:289
+#: src/actions.cpp:294
 msgid "An invalid weapon is selected, possibly by the Python AI."
-msgstr ""
-
-#: src/actions.cpp:273
-msgid "An invalid weapon is send, possibly due to the Python AI."
 msgstr ""
 
 #: src/actions.cpp:1045 src/actions.cpp:1328
@@ -6310,8 +6303,9 @@ msgid "Size"
 msgstr "גודל"
 
 #: src/addon_management.cpp:790
-msgid "Update Add-ons"
-msgstr ""
+#, fuzzy
+msgid "Update add-ons"
+msgstr "שולח מערכה"
 
 #: src/addon_management.cpp:791
 msgid "Select an add-on to update:"
@@ -6350,7 +6344,7 @@ msgstr ""
 
 #: src/addon_management.cpp:898
 #, fuzzy
-msgid "Connecting to Add-ons Server..."
+msgid "Connecting to add-ons server..."
 msgstr "מתחבר לשרת..."
 
 #: src/addon_management.cpp:901
@@ -6395,8 +6389,9 @@ msgid "There are no add-ons available for download from this server."
 msgstr "אין מערכות להורדה משרת זה."
 
 #: src/addon_management.cpp:1025
-msgid "Get Add-ons"
-msgstr ""
+#, fuzzy
+msgid "Get add-ons"
+msgstr "שולח מערכה"
 
 #: src/addon_management.cpp:1026
 #, fuzzy
@@ -9033,10 +9028,6 @@ msgstr ""
 
 #~ msgid "Server: "
 #~ msgstr "שרת: "
-
-#, fuzzy
-#~ msgid "Update add-ons"
-#~ msgstr "שולח מערכה"
 
 #~ msgid "Join Official Server"
 #~ msgstr "הצטרף לשרת הרשמי"

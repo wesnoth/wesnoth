@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-02-01 18:00+0100\n"
+"POT-Creation-Date: 2009-02-02 07:58+0100\n"
 "PO-Revision-Date: 2009-01-19 00:03+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
@@ -6103,7 +6103,8 @@ msgstr ""
 #: data/hardwired/tips.cfg:60 data/hardwired/tips.cfg:64
 #: data/hardwired/tips.cfg:68 data/hardwired/tips.cfg:72
 #: data/hardwired/tips.cfg:84 data/hardwired/tips.cfg:88
-#: data/hardwired/tips.cfg:100 data/hardwired/tips.cfg:120
+#: data/hardwired/tips.cfg:100 data/hardwired/tips.cfg:108
+#: data/hardwired/tips.cfg:112 data/hardwired/tips.cfg:120
 #: data/hardwired/tips.cfg:144 data/hardwired/tips.cfg:148
 #: data/hardwired/tips.cfg:152 data/hardwired/tips.cfg:160
 #: data/hardwired/tips.cfg:168 data/hardwired/tips.cfg:176
@@ -6126,7 +6127,7 @@ msgstr ""
 "co nejdříve jednotky vyšších úrovní."
 
 #. [tip]
-#: data/hardwired/tips.cfg:16 data/hardwired/tips.cfg:108
+#: data/hardwired/tips.cfg:16
 msgid "- King Konrad, 536YW"
 msgstr "- Král Konrád, 536 YW"
 
@@ -6431,11 +6432,6 @@ msgid ""
 msgstr ""
 "Pokud na tebe útočí z několika stran, může být dobrý nápad poslat "
 "postradatelné jednotky do některých stran, aby zdržely nepřátelské jednotky."
-
-#. [tip]
-#: data/hardwired/tips.cfg:112
-msgid "- King Konrad, 552YW"
-msgstr "- Král Konrád, 552 YW"
 
 #. [tip]
 #: data/hardwired/tips.cfg:115
@@ -6916,13 +6912,10 @@ msgstr "Musíš mít hrdinu v tvrzi, abys mohl někoho naverbovat nebo přivolat
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "Nejsou žádné volné hrady, ve kterých by se daly verbovat jednotky."
 
-#: src/actions.cpp:266 src/actions.cpp:289 src/actions.cpp:294
+#: src/actions.cpp:266 src/actions.cpp:273 src/actions.cpp:289
+#: src/actions.cpp:294
 msgid "An invalid weapon is selected, possibly by the Python AI."
 msgstr "Vybrána neplatná zbraň, pravděpodobně kvůli Pythonové AI."
-
-#: src/actions.cpp:273
-msgid "An invalid weapon is send, possibly due to the Python AI."
-msgstr "Poslána neplatná zbraň, pravděpodobně kvůli Pythonové AI."
 
 #: src/actions.cpp:1045 src/actions.cpp:1328
 msgid "female^poisoned"
@@ -7156,7 +7149,8 @@ msgid "Size"
 msgstr "Velikost"
 
 #: src/addon_management.cpp:790
-msgid "Update Add-ons"
+#, fuzzy
+msgid "Update add-ons"
 msgstr "Aktualizace rozšíření"
 
 #: src/addon_management.cpp:791
@@ -7192,7 +7186,8 @@ msgid "All add-ons updated successfully."
 msgstr "Všechna rozšíření byla úspěšně aktualizována."
 
 #: src/addon_management.cpp:898
-msgid "Connecting to Add-ons Server..."
+#, fuzzy
+msgid "Connecting to add-ons server..."
 msgstr "Připojuji se na server s rozšířeními..."
 
 #: src/addon_management.cpp:901
@@ -7233,7 +7228,8 @@ msgid "There are no add-ons available for download from this server."
 msgstr "Na tomto serveru nejsou k dispozici žádná rozšíření ke stažení."
 
 #: src/addon_management.cpp:1025
-msgid "Get Add-ons"
+#, fuzzy
+msgid "Get add-ons"
 msgstr "Získat rozšíření"
 
 #: src/addon_management.cpp:1026
@@ -9670,6 +9666,12 @@ msgstr "Pomozte nám vylepšit Wesnoth!"
 #: src/upload_log.cpp:332
 msgid "Enable summary uploads"
 msgstr "Povolit posílání souhrnů"
+
+#~ msgid "- King Konrad, 552YW"
+#~ msgstr "- Král Konrád, 552 YW"
+
+#~ msgid "An invalid weapon is send, possibly due to the Python AI."
+#~ msgstr "Poslána neplatná zbraň, pravděpodobně kvůli Pythonové AI."
 
 #~ msgid "You must log in to this server"
 #~ msgstr "K tomuto serveru se musíš přihlásit"

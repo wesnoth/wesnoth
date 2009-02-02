@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-02-01 18:00+0100\n"
+"POT-Creation-Date: 2009-02-02 07:58+0100\n"
 "PO-Revision-Date: 2009-01-13 10:23+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lithuanian <kde-i18n-doc@lists.kde.org>\n"
@@ -4902,7 +4902,8 @@ msgstr ""
 #: data/hardwired/tips.cfg:60 data/hardwired/tips.cfg:64
 #: data/hardwired/tips.cfg:68 data/hardwired/tips.cfg:72
 #: data/hardwired/tips.cfg:84 data/hardwired/tips.cfg:88
-#: data/hardwired/tips.cfg:100 data/hardwired/tips.cfg:120
+#: data/hardwired/tips.cfg:100 data/hardwired/tips.cfg:108
+#: data/hardwired/tips.cfg:112 data/hardwired/tips.cfg:120
 #: data/hardwired/tips.cfg:144 data/hardwired/tips.cfg:148
 #: data/hardwired/tips.cfg:152 data/hardwired/tips.cfg:160
 #: data/hardwired/tips.cfg:168 data/hardwired/tips.cfg:176
@@ -4925,7 +4926,7 @@ msgstr ""
 "kad greičiau gautumėte aukšto lygio karių."
 
 #. [tip]
-#: data/hardwired/tips.cfg:16 data/hardwired/tips.cfg:108
+#: data/hardwired/tips.cfg:16
 msgid "- King Konrad, 536YW"
 msgstr "- Karalius Konradas, 536WM"
 
@@ -5186,11 +5187,6 @@ msgid ""
 "If you are attacked from several directions, it may be a good idea to send "
 "expendable units in some directions to delay enemy units."
 msgstr ""
-
-#. [tip]
-#: data/hardwired/tips.cfg:112
-msgid "- King Konrad, 552YW"
-msgstr "- Karalius Konradas, 552WM"
 
 #. [tip]
 #: data/hardwired/tips.cfg:115
@@ -5635,13 +5631,10 @@ msgstr ""
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "Nėra laisvų pilies laukelių, kuriuose galima samdyti dalinį."
 
-#: src/actions.cpp:266 src/actions.cpp:289 src/actions.cpp:294
+#: src/actions.cpp:266 src/actions.cpp:273 src/actions.cpp:289
+#: src/actions.cpp:294
 msgid "An invalid weapon is selected, possibly by the Python AI."
 msgstr "Pasirinktas netinkalas ginklas, gal būt dėt Python'o DI."
-
-#: src/actions.cpp:273
-msgid "An invalid weapon is send, possibly due to the Python AI."
-msgstr "Nusiųstas netinkamas ginklas, gal būt dėt Python'o DI."
 
 #: src/actions.cpp:1045 src/actions.cpp:1328
 msgid "female^poisoned"
@@ -5863,7 +5856,8 @@ msgid "Size"
 msgstr "Dydis"
 
 #: src/addon_management.cpp:790
-msgid "Update Add-ons"
+#, fuzzy
+msgid "Update add-ons"
 msgstr "Atnaujinti priedus"
 
 #: src/addon_management.cpp:791
@@ -5902,7 +5896,8 @@ msgid "All add-ons updated successfully."
 msgstr "Visi priedai sėkmingai atnaujinti."
 
 #: src/addon_management.cpp:898
-msgid "Connecting to Add-ons Server..."
+#, fuzzy
+msgid "Connecting to add-ons server..."
 msgstr "Jungiamasi prie priedų serverio..."
 
 #: src/addon_management.cpp:901
@@ -5943,7 +5938,8 @@ msgid "There are no add-ons available for download from this server."
 msgstr ""
 
 #: src/addon_management.cpp:1025
-msgid "Get Add-ons"
+#, fuzzy
+msgid "Get add-ons"
 msgstr "Gauti priedų"
 
 #: src/addon_management.cpp:1026
@@ -8333,6 +8329,12 @@ msgstr "Padėkite mums padaryti Wesnoth geresnį jums!"
 #: src/upload_log.cpp:332
 msgid "Enable summary uploads"
 msgstr "Įgalinti santraukų siuntimą"
+
+#~ msgid "- King Konrad, 552YW"
+#~ msgstr "- Karalius Konradas, 552WM"
+
+#~ msgid "An invalid weapon is send, possibly due to the Python AI."
+#~ msgstr "Nusiųstas netinkamas ginklas, gal būt dėt Python'o DI."
 
 #~ msgid "You must log in to this server"
 #~ msgstr "Jūs privalote prisijungti prie šito serverio"
