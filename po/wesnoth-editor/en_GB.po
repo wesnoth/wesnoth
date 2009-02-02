@@ -14,77 +14,77 @@ msgstr ""
 #. [brush]
 #: data/core/editor/brushes.cfg:5
 msgid "Single Hex"
-msgstr ""
+msgstr "Single Hex"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:15
 msgid "Radius 1 Hex"
-msgstr ""
+msgstr "Radius 1 Hex"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:25
 msgid "Radius 2 Hex"
-msgstr ""
+msgstr "Radius 2 Hex"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:55
 msgid "Hex Line NW-SE"
-msgstr ""
+msgstr "Hex Line NW-SE"
 
 #. [editor_group]: id=all
 #: data/core/editor/terrain-groups.cfg:10
 msgid "all"
-msgstr ""
+msgstr "all"
 
 #. [editor_group]: id=water
 #: data/core/editor/terrain-groups.cfg:16
 msgid "water"
-msgstr ""
+msgstr "water"
 
 #. [editor_group]: id=flat
 #: data/core/editor/terrain-groups.cfg:23
 msgid "flat"
-msgstr ""
+msgstr "flat"
 
 #. [editor_group]: id=desert
 #: data/core/editor/terrain-groups.cfg:30
 msgid "desert"
-msgstr ""
+msgstr "desert"
 
 #. [editor_group]: id=forest
 #: data/core/editor/terrain-groups.cfg:37
 msgid "forest"
-msgstr ""
+msgstr "forest"
 
 #. [editor_group]: id=frozen
 #: data/core/editor/terrain-groups.cfg:44
 msgid "frozen"
-msgstr ""
+msgstr "frozen"
 
 #. [editor_group]: id=rough
 #: data/core/editor/terrain-groups.cfg:51
 msgid "rough"
-msgstr ""
+msgstr "rough"
 
 #. [editor_group]: id=cave
 #: data/core/editor/terrain-groups.cfg:58
 msgid "cave"
-msgstr ""
+msgstr "cave"
 
 #. [editor_group]: id=village
 #: data/core/editor/terrain-groups.cfg:65
 msgid "village"
-msgstr ""
+msgstr "village"
 
 #. [editor_group]: id=castle
 #: data/core/editor/terrain-groups.cfg:72
 msgid "castle"
-msgstr ""
+msgstr "castle"
 
 #. [editor_group]: id=special
 #: data/core/editor/terrain-groups.cfg:79
 msgid "special"
-msgstr ""
+msgstr "special"
 
 #. [editor_tool_hint]: id=editor-tool-paint
 #. [editor_tool_hint]: id=editor-tool-fill
@@ -93,6 +93,8 @@ msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only."
 msgstr ""
+"Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
+"paint base layer only."
 
 #. [editor_tool_hint]: id=editor-tool-select
 #: data/core/editor/tool-hints.cfg:19
@@ -100,6 +102,8 @@ msgid ""
 "Left mouse button selects, right deselects. Hold Shift for magic-wand "
 "selection of tiles with same terrain."
 msgstr ""
+"Left mouse button selects, right deselects. Hold Shift for magic-wand "
+"selection of tiles with same terrain."
 
 #. [editor_tool_hint]: id=editor-tool-starting-position
 #: data/core/editor/tool-hints.cfg:25
@@ -108,6 +112,9 @@ msgid ""
 "scroll to the starting position, alt+number sets respective starting "
 "position under cursor, delete clears."
 msgstr ""
+"Left mouse button displays player selection, right clears. Number keys "
+"scroll to the starting position, alt+number sets respective starting "
+"position under cursor, delete clears."
 
 #. [editor_tool_hint]: id=editor-paste
 #: data/core/editor/tool-hints.cfg:30
@@ -115,6 +122,8 @@ msgid ""
 "Click to paste, zoom out for more accuracy when pasting large areas. Use the "
 "edit menu to transform the clipboard (rotate, mirror)."
 msgstr ""
+"Click to paste, zoom out for more accuracy when pasting large areas. Use the "
+"edit menu to transform the clipboard (rotate, mirror)."
 
 #. [menu]: id=menu-editor-file
 #: data/themes/editor2.cfg:120
@@ -129,26 +138,25 @@ msgstr "Edit"
 #. [menu]: id=menu-editor-map
 #: data/themes/editor2.cfg:141
 msgid "Map"
-msgstr ""
+msgstr "Map"
 
 #. [menu]: id=menu-editor-window
 #: data/themes/editor2.cfg:151
-#, fuzzy
 msgid "Window"
-msgstr "Undo"
+msgstr "Window"
 
 #. [label]: id=villages-icon
 #: data/themes/editor2.cfg:262
 msgid "villages"
-msgstr ""
+msgstr "villages"
 
 #: src/editor2/action.cpp:32
 msgid "Error creating action object"
-msgstr ""
+msgstr "Error creating action object"
 
 #: src/editor2/action.cpp:36
 msgid "Action not implemented"
-msgstr ""
+msgstr "Action not implemented"
 
 #: src/editor2/editor_controller.cpp:123
 msgid "Quit Editor"
@@ -156,21 +164,23 @@ msgstr "Quit Editor"
 
 #: src/editor2/editor_controller.cpp:260
 msgid "Fatal error"
-msgstr ""
+msgstr "Fatal error"
 
 #: src/editor2/editor_controller.cpp:274 src/editor2/editor_controller.cpp:971
 msgid "(New Map)"
-msgstr ""
+msgstr "(New Map)"
 
 #: src/editor2/editor_controller.cpp:280
 msgid "Do you really want to quit?"
-msgstr ""
+msgstr "Do you really want to quit?"
 
 #: src/editor2/editor_controller.cpp:282
 msgid ""
 "Do you really want to quit? Changes in the map since the last save will be "
 "lost."
 msgstr ""
+"Do you really want to quit? Changes in the map since the last save will be "
+"lost."
 
 #: src/editor2/editor_controller.cpp:284
 msgid ""
@@ -180,69 +190,67 @@ msgstr ""
 
 #: src/editor2/editor_controller.cpp:289
 msgid "Quit"
-msgstr ""
+msgstr "Quit"
 
 #: src/editor2/editor_controller.cpp:346 src/editor2/editor_controller.cpp:458
 #: src/editor2/editor_controller.cpp:494 src/editor2/editor_controller.cpp:516
 msgid "Error"
-msgstr ""
+msgstr "Error"
 
 #: src/editor2/editor_controller.cpp:346
 msgid "No editor time-of-day found."
-msgstr ""
+msgstr "No editor time-of-day found."
 
 #: src/editor2/editor_controller.cpp:382
 msgid "Unsaved Changes"
-msgstr ""
+msgstr "Unsaved Changes"
 
 #: src/editor2/editor_controller.cpp:383
 msgid ""
 "Do you want to discard all changes you made to the map since the last save?"
 msgstr ""
+"Do you want to discard all changes you made to the map since the last save?"
 
 #: src/editor2/editor_controller.cpp:396
-#, fuzzy
 msgid "Choose a Map to Open"
-msgstr "Choose a Map to Load"
+msgstr "Choose a Map to Open"
 
 #: src/editor2/editor_controller.cpp:400
 msgid "This map is already open."
-msgstr ""
+msgstr "This map is already open."
 
 #: src/editor2/editor_controller.cpp:438
 msgid "Save the Map As"
 msgstr "Save the Map As"
 
 #: src/editor2/editor_controller.cpp:442
-#, fuzzy
 msgid "The file already exists. Do you want to overwrite it?"
-msgstr "The map already exists. Do you want to overwrite it?"
+msgstr "The file already exists. Do you want to overwrite it?"
 
 #: src/editor2/editor_controller.cpp:458
 msgid "No random map generators found."
-msgstr ""
+msgstr "No random map generators found."
 
 #: src/editor2/editor_controller.cpp:469
 msgid "Map creation failed."
-msgstr ""
+msgstr "Map creation failed."
 
 #: src/editor2/editor_controller.cpp:484
-#, fuzzy
 msgid "Choose a mask to apply"
-msgstr "Choose a Map to Load"
+msgstr "Choose a mask to apply"
 
 #: src/editor2/editor_controller.cpp:491
 msgid "Error loading mask"
-msgstr ""
+msgstr "Error loading mask"
 
 #: src/editor2/editor_controller.cpp:506
 msgid "Choose target map"
-msgstr ""
+msgstr "Choose target map"
 
 #: src/editor2/editor_controller.cpp:513 src/editor2/editor_controller.cpp:626
 #: src/editor2/editor_main.cpp:53
 msgid "Error loading map"
-msgstr ""
+msgstr "Error loading map"
 
 #: src/editor2/editor_controller.cpp:602
 msgid "Map saved."
@@ -258,7 +266,7 @@ msgstr "Undo"
 
 #: src/editor2/editor_controller.cpp:1000
 msgid "Can't Undo"
-msgstr ""
+msgstr "Can't Undo"
 
 #: src/editor2/editor_controller.cpp:1004
 msgid "Redo"
@@ -266,11 +274,11 @@ msgstr "Redo"
 
 #: src/editor2/editor_controller.cpp:1006
 msgid "Can't Redo"
-msgstr ""
+msgstr "Can't Redo"
 
 #: src/editor2/editor_map.cpp:85
 msgid "Empty map file or file not found"
-msgstr ""
+msgstr "Empty map file or file not found"
 
 #: src/editor2/editor_map.cpp:166 src/editor2/mouse_action.cpp:385
 msgid "Player"
@@ -278,7 +286,7 @@ msgstr "Player"
 
 #: src/editor2/editor_map.cpp:285
 msgid "The size of the target map is different from the current map"
-msgstr ""
+msgstr "The size of the target map is different from the current map"
 
 #: src/editor2/editor_palettes.cpp:516
 msgid "FG"
@@ -295,17 +303,19 @@ msgstr "Player"
 
 #: src/editor2/mouse_action.cpp:389
 msgid "Choose player"
-msgstr ""
+msgstr "Choose player"
 
 #: src/editor2/mouse_action.cpp:390
 msgid ""
 "Which player should start here? You can also use the 1-9 and delete keys to "
 "set/clear starting positions."
 msgstr ""
+"Which player should start here? You can also use the 1-9 and delete keys to "
+"set/clear starting positions."
 
 #: src/gui/dialogs/editor_settings.cpp:119
 msgid "Custom setting"
-msgstr ""
+msgstr "Custom setting"
 
 #~ msgid "Settings"
 #~ msgstr "Settings"
