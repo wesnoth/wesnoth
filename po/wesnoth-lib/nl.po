@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-02-02 07:58+0100\n"
-"PO-Revision-Date: 2008-11-20 08:38+0100\n"
-"Last-Translator: Foppe Benedictus <foppe.benedictus@gmail.com>\n"
+"PO-Revision-Date: 2009-02-01 22:45+0100\n"
+"Last-Translator: Alexander van Gessel (AI/AI0867) <AI0867@gmail.com>\n"
 "Language-Team: Dutch <foppe.benedictus@gmail.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -156,15 +156,13 @@ msgstr "Tropisch Woud"
 
 #. [terrain]: id=forested_hills
 #: data/core/terrain.cfg:514
-#, fuzzy
 msgid "Forested Hills"
-msgstr "Bos"
+msgstr "Beboste Heuvels"
 
 #. [terrain]: id=forested_snow_hills
 #: data/core/terrain.cfg:524
-#, fuzzy
 msgid "Forested Snow Hills"
-msgstr "Besneeuwde Heuvels"
+msgstr "Beboste Besneeuwde Heuvels"
 
 #. [terrain]: id=grassland
 #. [terrain]: id=grassland_flowers
@@ -242,7 +240,7 @@ msgstr "Moeras"
 #. [terrain]: id=lit
 #: data/core/terrain.cfg:738
 msgid "Lit"
-msgstr ""
+msgstr "Verlicht"
 
 #. [terrain]: id=cave
 #: data/core/terrain.cfg:748
@@ -251,9 +249,8 @@ msgstr "Grot"
 
 #. [terrain]: id=cave_path
 #: data/core/terrain.cfg:766
-#, fuzzy
 msgid "Cave path"
-msgstr "Verlichte Grot"
+msgstr "Grotpad"
 
 #. [terrain]: id=fungus
 #: data/core/terrain.cfg:775
@@ -322,9 +319,8 @@ msgstr "Rivierwade"
 
 #. [terrain]: id=reef
 #: data/core/terrain.cfg:1122
-#, fuzzy
 msgid "Coastal Reef"
-msgstr "Kust"
+msgstr "Kustrif"
 
 #. [terrain]: id=cloud
 #: data/core/terrain.cfg:1136
@@ -349,9 +345,8 @@ msgstr "Muur"
 #. [terrain]: id=impassable_overlay
 #. [terrain]: id=impassable
 #: data/core/terrain.cfg:1173 data/core/terrain.cfg:1211
-#, fuzzy
 msgid "Impassable"
-msgstr "Onbegaanbaar Gebergte"
+msgstr "Onbegaanbaar"
 
 #. [terrain]: id=void
 #: data/core/terrain.cfg:1184
@@ -379,14 +374,13 @@ msgstr "Onbegaanbaar"
 #: data/gui/default/window/mp_connect.cfg:31
 #: data/gui/default/window/mp_method_selection.cfg:255
 #: data/gui/default/window/mp_server_list.cfg:31
-#, fuzzy
 msgid "Connect to Server"
-msgstr "Ga door met zet"
+msgstr "Verbind met Server"
 
 #. [label]
 #: data/gui/default/window/addon_connect.cfg:51
 msgid "You will now connect to a server to download add-ons."
-msgstr ""
+msgstr "Je zal nu verbinden met een server om add-ons te downloaden."
 
 #. [label]
 #: data/gui/default/window/addon_connect.cfg:81
@@ -397,16 +391,14 @@ msgstr "Server:"
 #. [button]
 #: data/gui/default/window/addon_connect.cfg:135
 #: data/gui/default/window/addon_connect.cfg:136
-#, fuzzy
 msgid "Update add-ons"
-msgstr "Update transities"
+msgstr "Update add-ons"
 
 #. [button]
 #: data/gui/default/window/addon_connect.cfg:168
 #: data/gui/default/window/addon_connect.cfg:169
-#, fuzzy
 msgid "Remove Add-ons"
-msgstr "Verwijderen"
+msgstr "Verwijder Add-ons"
 
 #. [button]: id=ok
 #: data/gui/default/window/addon_connect.cfg:201
@@ -442,16 +434,14 @@ msgstr "Willekeurige kaart genereren"
 #. [button]: id=next_generator
 #: data/gui/default/window/editor_generate_map.cfg:67
 #: data/gui/default/window/editor_generate_map.cfg:68
-#, fuzzy
 msgid "Next Generator"
-msgstr "Kaartgenerator"
+msgstr "Volgende Generator"
 
 #. [button]: id=settings
 #: data/gui/default/window/editor_generate_map.cfg:90
 #: data/gui/default/window/editor_generate_map.cfg:91
-#, fuzzy
 msgid "Settings"
-msgstr "Sneltoetsinstellingen"
+msgstr "Instellingen"
 
 #. [button]: id=ok
 #: data/gui/default/window/editor_generate_map.cfg:101
@@ -500,44 +490,40 @@ msgstr "Oude breedte:"
 
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:95
-#, fuzzy
 msgid "New height:"
-msgstr "Hoogte:"
+msgstr "Nieuwe hoogte:"
 
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:119
-#, fuzzy
 msgid "Old height:"
-msgstr "Hoogte:"
+msgstr "Oude hoogte:"
 
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:147
 msgid "Expand / shrink direction"
-msgstr ""
+msgstr "Uitzet / krimp richting"
 
 #. [toggle_button]: id=copy_edge_terrain
 #: data/gui/default/window/editor_resize_map.cfg:242
 msgid "Copy edge terrain"
-msgstr ""
+msgstr "Kopieer randterrein"
 
 #. [button]: id=ok
 #: data/gui/default/window/editor_resize_map.cfg:264
 #: data/gui/default/window/editor_resize_map.cfg:265
-#, fuzzy
 msgid "Resize map"
-msgstr "Dimensies aanpassen"
+msgstr "Kaartdimensies aanpassen"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:38 src/hotkeys.cpp:103
-#, fuzzy
 msgid "Editor Settings"
-msgstr "Sneltoetsinstellingen"
+msgstr "Editorinstellingen"
 
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:46
 msgid "Time of day lighting preset"
-msgstr ""
+msgstr "Tijd van de dag verlichtingsstandaardinstelling"
 
 #. [button]: id=next_tod
 #: data/gui/default/window/editor_settings.cfg:75
@@ -548,12 +534,12 @@ msgstr "Volgende"
 #. [toggle_button]: id=custom_tod_toggle
 #: data/gui/default/window/editor_settings.cfg:83
 msgid "Custom lighting setting"
-msgstr ""
+msgstr "Gebruikersverlichtingsinstelling"
 
 #. [toggle_button]: id=custom_tod_auto_refresh
 #: data/gui/default/window/editor_settings.cfg:93
 msgid "Auto-update map view"
-msgstr ""
+msgstr "Update kaart automatisch"
 
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:120
@@ -573,7 +559,7 @@ msgstr "Blauw:"
 #. [toggle_button]: id=use_mdi
 #: data/gui/default/window/editor_settings.cfg:208
 msgid "Allow more than one map to be open at the same time (MDI)"
-msgstr ""
+msgstr "Laat meer dan een kaart tegelijk open zijn (MDI)"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
@@ -614,29 +600,27 @@ msgstr "Taal veranderen"
 #. [window]: id=mp_cmd_wrapper
 #: data/gui/default/window/mp_cmd_wrapper.cfg:8
 msgid "Multiplayer command wrapper dialog"
-msgstr ""
+msgstr "Multiplayer commando verpakker dialoog"
 
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:31
 msgid "Messaging"
-msgstr ""
+msgstr "Berichten versturen"
 
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:61
 msgid "Message:"
-msgstr ""
+msgstr "Bericht:"
 
 #. [button]: id=ok
 #: data/gui/default/window/mp_cmd_wrapper.cfg:93
-#, fuzzy
 msgid "Send a private message"
-msgstr "Berichten verwijderen"
+msgstr "Stuur een privébericht"
 
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:133
-#, fuzzy
 msgid "Friends/Ignored List"
-msgstr "Vriendenlijst"
+msgstr "Vrienden-/Negeerlijst"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=add_friend
@@ -662,51 +646,48 @@ msgstr "Verwijderen"
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:233
 msgid "Moderating"
-msgstr ""
+msgstr "Modereren"
 
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:263
 msgid "Reason:"
-msgstr ""
+msgstr "Reden:"
 
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:315
-#, fuzzy
 msgid "Time:"
-msgstr "Thema"
+msgstr "Tijd:"
 
 #. [button]: id=status
 #: data/gui/default/window/mp_cmd_wrapper.cfg:366
-#, fuzzy
 msgid "Status"
-msgstr "Statustabel"
+msgstr "Status"
 
 #. [button]: id=kick
 #: data/gui/default/window/mp_cmd_wrapper.cfg:381
 msgid "Kick"
-msgstr ""
+msgstr "Verwijder"
 
 #. [button]: id=ban
 #: data/gui/default/window/mp_cmd_wrapper.cfg:396
 msgid "Ban"
-msgstr ""
+msgstr "Verban"
 
 #. [label]
 #: data/gui/default/window/mp_connect.cfg:50
 #: data/gui/default/window/mp_server_list.cfg:51
 msgid "You will now connect to the multiplayer server."
-msgstr ""
+msgstr "Je zal nu verbinden met de multiplayer server."
 
 #. [button]: id=list
 #: data/gui/default/window/mp_connect.cfg:148
-#, fuzzy
 msgid "View List"
-msgstr "Vriendenlijst"
+msgstr "Bekijk Lijst"
 
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:33
 msgid "Create Game"
-msgstr ""
+msgstr "Creëer Spel"
 
 #. [label]
 #. [text_box]: id=game_name
@@ -748,7 +729,7 @@ msgstr "Kaart om te spelen:"
 #. [toggle_button]: id=use_map_settings
 #: data/gui/default/window/mp_create_game.cfg:315
 msgid "Use map settings"
-msgstr ""
+msgstr "Gebruik kaartinstellingen"
 
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:333
@@ -768,7 +749,7 @@ msgstr "Dorpgoud"
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:414
 msgid "Experience modifier"
-msgstr ""
+msgstr "Ervaring veranderaar"
 
 #. [toggle_button]: id=fog
 #: data/gui/default/window/mp_create_game.cfg:454
@@ -778,7 +759,7 @@ msgstr "Oorlogssluier"
 #. [toggle_button]: id=random_start_time
 #: data/gui/default/window/mp_create_game.cfg:495
 msgid "Random start time"
-msgstr ""
+msgstr "Willekeurige starttijd"
 
 #. [button]: id=ok
 #: data/gui/default/window/mp_create_game.cfg:537
@@ -788,13 +769,12 @@ msgstr "Spel maken"
 #. [window]: id=mp_login
 #: data/gui/default/window/mp_login.cfg:8
 msgid "Multiplayer server login dialog"
-msgstr ""
+msgstr "Multiplayer server inlog dialoog"
 
 #. [label]
 #: data/gui/default/window/mp_login.cfg:31
-#, fuzzy
 msgid "Login"
-msgstr "Login:"
+msgstr "Login"
 
 #. [label]
 #: data/gui/default/window/mp_login.cfg:81
@@ -805,20 +785,19 @@ msgstr "Login:"
 #. [label]
 #: data/gui/default/window/mp_login.cfg:134
 #: data/gui/default/window/mp_method_selection.cfg:114
-#, fuzzy
 msgid "Password:"
-msgstr "Wachtwoord instellen"
+msgstr "Wachtwoord:"
 
 #. [toggle_button]: id=remember_password
 #: data/gui/default/window/mp_login.cfg:190
 #: data/gui/default/window/mp_method_selection.cfg:174
 msgid "Save password to preferences (clear text)"
-msgstr ""
+msgstr "Sla wachtwoord op in voorkeuren (in leesbare vorm)"
 
 #. [button]: id=password_reminder
 #: data/gui/default/window/mp_login.cfg:248
 msgid "Password Reminder"
-msgstr ""
+msgstr "Wachtwoord Herinnering"
 
 #. [label]
 #. [grid]
@@ -837,31 +816,39 @@ msgid ""
 "\n"
 "The Battle for Wesnoth forum can be found at http://www.wesnoth.org/forum/"
 msgstr ""
+"Je kan inloggen op de officiële multiplayer server met je forum "
+"gebruikersnaam en wachtwoord.\n"
+"Registratie is niet nodig om met de server te verbinden: je hoeft alleen een "
+"wachtwoord in te typen als je een geregistreerde gebruikersnaam wil "
+"gebruiken.\n"
+"\n"
+"Het Battle for Wesnoth forum kan gevonden worden op http://www.wesnoth.org/"
+"forum/"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:244
 msgid "Join Official Server"
-msgstr ""
+msgstr "Verbinden met Officiële Server"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:245
 msgid "Log on to the official Wesnoth multiplayer server"
-msgstr ""
+msgstr "Log in op de officiële Wesnoth multiplayer server"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:256
 msgid "Join a different server"
-msgstr ""
+msgstr "Verbind met een andere server"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:266
 msgid "Host Networked Game"
-msgstr ""
+msgstr "Host Netwerkspel"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:267
 msgid "Host a game using dedicated server 'wesnothd'"
-msgstr ""
+msgstr "Host een spel met toegewijde server 'wesnothd'"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:277
@@ -872,6 +859,7 @@ msgstr "Lokaal spel"
 #: data/gui/default/window/mp_method_selection.cfg:278
 msgid "Play a multiplayer game with the AI or humans sharing the same machine"
 msgstr ""
+"Speel een multiplayer spel met de AI of mensen die dezelfde computer delen"
 
 #. [label]
 #: data/gui/default/window/mp_server_list.cfg:84
@@ -891,7 +879,7 @@ msgstr "Selecteren"
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:77
 msgid "Tutorial"
-msgstr ""
+msgstr "Oefenspel"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:78
@@ -923,7 +911,7 @@ msgstr "Instellingen"
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:85
 msgid "Credits"
-msgstr ""
+msgstr "Aftiteling"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
@@ -982,7 +970,7 @@ msgstr "Volledig scherm"
 
 #: src/game_preferences_display.cpp:152
 msgid "Enable scroll tracking of unit actions"
-msgstr ""
+msgstr "Zet het schuif-volgen van eenheidacties aan"
 
 #: src/game_preferences_display.cpp:153
 msgid "Accelerated Speed"
@@ -1026,7 +1014,7 @@ msgstr "Iconiseer lobbylijst"
 
 #: src/game_preferences_display.cpp:163
 msgid "Set path to wesnothd"
-msgstr ""
+msgstr "Stel pad naar wesnoth in"
 
 #: src/game_preferences_display.cpp:164
 msgid "Friends List"
@@ -1213,6 +1201,8 @@ msgstr ""
 msgid ""
 "Should the map view scroll to a unit when an action or move is animated."
 msgstr ""
+"Moet de kaart schuiven naar een eenheid wanneer een actie of beweging wordt "
+"geanimeerd."
 
 #: src/game_preferences_display.cpp:303
 msgid "Make units move and fight faster"
@@ -1264,7 +1254,7 @@ msgstr "Toon berichten over alle spelers die de multiplayer lobby binnenkomen"
 
 #: src/game_preferences_display.cpp:361
 msgid "Find and set path to MP server to host LAN games."
-msgstr ""
+msgstr "Vind en stel pad naar MP server in om LAN spellen te hosten."
 
 #: src/game_preferences_display.cpp:362
 msgid "View and edit your friends and ignores list"
@@ -1403,7 +1393,7 @@ msgstr ""
 
 #: src/game_preferences_display.cpp:1226
 msgid "Find $filename server binary to host networked games"
-msgstr ""
+msgstr "Vind $filename server programma om netwerkspellen te hosten"
 
 #: src/gui/dialogs/mp_create_game.cpp:78 src/hotkeys.cpp:64
 msgid "Load Game"
@@ -1419,82 +1409,77 @@ msgstr "Versie"
 
 #: src/gui/widgets/canvas.cpp:292
 msgid "Line doesn't fit on canvas."
-msgstr ""
+msgstr "Lijn past niet op canvas."
 
 #: src/gui/widgets/canvas.cpp:427
 msgid "Rectangle doesn't fit on canvas."
-msgstr ""
+msgstr "Rechthoek past niet op canvas."
 
 #: src/gui/widgets/canvas.cpp:798
 msgid "Text has a font size of 0."
-msgstr ""
+msgstr "Tekst heeft een lettergrootte van 0."
 
 #: src/gui/widgets/canvas.cpp:863
 msgid "Text doesn't start on canvas."
-msgstr ""
+msgstr "Tekst begint niet op canvas."
 
 #: src/gui/widgets/helper.cpp:169
-#, fuzzy
 msgid "Mandatory widget '$id' hasn't been defined."
-msgstr "Er is geen server gedefiniëerd."
+msgstr "Verplicht widget '$id' is niet gedefiniëerd."
 
 #: src/gui/widgets/settings.cpp:126
-#, fuzzy
 msgid "No default gui defined."
-msgstr "Er is geen server gedefiniëerd."
+msgstr "Er is geen standaardgui gedefiniëerd."
 
 #: src/gui/widgets/settings.cpp:258
 msgid "Window not defined."
-msgstr ""
+msgstr "Venster niet gedefiniëerd."
 
 #: src/gui/widgets/settings.cpp:322
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
-msgstr ""
+msgstr "Widget definitie '$definition' bevat niet de definitie voor '$id'."
 
 #: src/gui/widgets/settings.cpp:434 src/gui/widgets/window_builder.cpp:287
-#, fuzzy
 msgid "No resolution defined."
-msgstr "Er is geen server gedefiniëerd."
+msgstr "Er is geen resolutie gedefiniëerd."
 
 #: src/gui/widgets/settings.cpp:462
-#, fuzzy
 msgid "No state or draw section defined."
-msgstr "Er is geen server gedefiniëerd."
+msgstr "Er is geen status of tekensectie gedefiniëerd."
 
 #: src/gui/widgets/settings.cpp:705 src/gui/widgets/settings.cpp:859
 #: src/gui/widgets/window_builder.cpp:378
 #: src/gui/widgets/window_builder.cpp:911
 #: src/gui/widgets/window_builder.cpp:1115
-#, fuzzy
 msgid "No grid defined."
-msgstr "Er is geen server gedefiniëerd."
+msgstr "Er is geen rooster gedefiniëerd."
 
 #: src/gui/widgets/window_builder.cpp:506
 msgid "A row must have a column."
-msgstr ""
+msgstr "Een regel moet een kolom hebben."
 
 #: src/gui/widgets/window_builder.cpp:507
 msgid "Number of columns differ."
-msgstr ""
+msgstr "Aantal kolommen verschilt."
 
 #: src/gui/widgets/window_builder.cpp:751
-#, fuzzy
 msgid "No list defined."
-msgstr "Er is geen server gedefiniëerd."
+msgstr "Er is geen lijst gedefiniëerd."
 
 #: src/gui/widgets/window_builder.cpp:754
 msgid "A 'list_definition' should contain one row."
-msgstr ""
+msgstr "Een 'list_definition' moet één rij bevatten."
 
 #: src/gui/widgets/window_builder.cpp:773
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr ""
+"'list_data' moet hetzelfde aantal kolommen bevatten als 'list_definition'."
 
 #: src/gui/widgets/window_builder.cpp:1042
 msgid "The number of value_labels and values don't match."
-msgstr ""
+msgstr "Het aantal value_labels en values komt niet overeen."
 
 #: src/hotkeys.cpp:45
 msgid "Next Unit"
@@ -1541,9 +1526,8 @@ msgid "Screenshot"
 msgstr "Schermafdruk maken"
 
 #: src/hotkeys.cpp:57
-#, fuzzy
 msgid "Map Screenshot"
-msgstr "Schermafdruk maken"
+msgstr "Kaart Schermafdruk"
 
 #: src/hotkeys.cpp:58
 msgid "Accelerated"
@@ -1687,20 +1671,19 @@ msgstr "Animatie overslaan"
 
 #: src/hotkeys.cpp:100
 msgid "Quit to Desktop"
-msgstr ""
+msgstr "Sluit af naar Desktop"
 
 #: src/hotkeys.cpp:101
-#, fuzzy
 msgid "Close Map"
-msgstr "Sluiten"
+msgstr "Sluit Kaart"
 
 #: src/hotkeys.cpp:102
 msgid "Switch Map"
-msgstr ""
+msgstr "Schakel Kaart"
 
 #: src/hotkeys.cpp:104
 msgid "Partial Undo"
-msgstr ""
+msgstr "Gedeeltelijk Ongedaanmaken"
 
 #: src/hotkeys.cpp:106
 msgid "Load Map"
@@ -1711,54 +1694,48 @@ msgid "Save Map"
 msgstr "Kaart opslaan"
 
 #: src/hotkeys.cpp:108
-#, fuzzy
 msgid "Save Map As"
-msgstr "Kaart opslaan"
+msgstr "Kaart Opslaan Als"
 
 #: src/hotkeys.cpp:109
 msgid "Revert All Changes"
-msgstr ""
+msgstr "Draai Alle Verandering Terug"
 
 #: src/hotkeys.cpp:110
-#, fuzzy
 msgid "Map Information"
-msgstr "Kaartgenerator"
+msgstr "Kaart Informatie"
 
 #: src/hotkeys.cpp:112
 msgid "Swap fore- and background terrains"
-msgstr ""
+msgstr "Verwissel voor- en achtergrond terrein"
 
 #: src/hotkeys.cpp:113
-#, fuzzy
 msgid "Next Tool"
-msgstr "Volgende beurt"
+msgstr "Volgende Instrument"
 
 #: src/hotkeys.cpp:114
 msgid "Paint Tool"
-msgstr ""
+msgstr "Teken Instrument"
 
 #: src/hotkeys.cpp:115
 msgid "Fill Tool"
-msgstr ""
+msgstr "Opvul Instrument"
 
 #: src/hotkeys.cpp:116
-#, fuzzy
 msgid "Selection Tool"
-msgstr "Alles selecteren"
+msgstr "Selectie Instrument"
 
 #: src/hotkeys.cpp:118
 msgid "Set Starting Positions Tool"
-msgstr ""
+msgstr "Zet Startpositie Instrument"
 
 #: src/hotkeys.cpp:119
-#, fuzzy
 msgid "Next Brush"
-msgstr "Volgende beurt"
+msgstr "Volgende Kwast"
 
 #: src/hotkeys.cpp:120
-#, fuzzy
 msgid "Default Brush"
-msgstr "Standaardzoom"
+msgstr "Standaardkwast"
 
 #: src/hotkeys.cpp:121
 msgid "Cut"
@@ -1778,84 +1755,75 @@ msgstr "Alles selecteren"
 
 #: src/hotkeys.cpp:127
 msgid "Select Inverse"
-msgstr ""
+msgstr "Inverteer Selectie"
 
 #: src/hotkeys.cpp:129
-#, fuzzy
 msgid "Select None"
-msgstr "Alles selecteren"
+msgstr "Selecteer Niets"
 
 #: src/hotkeys.cpp:131
 msgid "Rotate Clipboard Clockwise"
-msgstr ""
+msgstr "Draai Klembord Klokwaards"
 
 #: src/hotkeys.cpp:133
 msgid "Rotate Clipboard Counter-Clockwise"
-msgstr ""
+msgstr "Draai Klembord Antiklokwaards"
 
 #: src/hotkeys.cpp:135
 msgid "Flip Clipboard Horizontally"
-msgstr ""
+msgstr "Spiegel Klembord Horizontaal"
 
 #: src/hotkeys.cpp:137
 msgid "Flip Clipboard Vertically"
-msgstr ""
+msgstr "Spiegel Klembord Vertikaal"
 
 #: src/hotkeys.cpp:139
 msgid "Rotate Selection"
 msgstr "Selectie roteren"
 
 #: src/hotkeys.cpp:141
-#, fuzzy
 msgid "Flip Selection"
-msgstr "Selectie opvullen"
+msgstr "Keer Selectie Om"
 
 #: src/hotkeys.cpp:143
 msgid "Fill Selection"
 msgstr "Selectie opvullen"
 
 #: src/hotkeys.cpp:145
-#, fuzzy
 msgid "Generate Tiles In Selection"
-msgstr "Selectie roteren"
+msgstr "Genereer Vakjes in Selectie"
 
 #: src/hotkeys.cpp:147
 msgid "Randomize Tiles In Selection"
-msgstr ""
+msgstr "Maak Vakjes In Selectie Willekeurig Terrein"
 
 #: src/hotkeys.cpp:151
-#, fuzzy
 msgid "Rotate Map"
-msgstr "Kaart laden"
+msgstr "Roteer Kaart"
 
 #: src/hotkeys.cpp:153
-#, fuzzy
 msgid "Generate Map"
-msgstr "Nieuwe kaart genereren"
+msgstr "Genereer Kaart"
 
 #: src/hotkeys.cpp:155
 msgid "Apply a Mask"
-msgstr ""
+msgstr "Breng een Masker aan"
 
 #: src/hotkeys.cpp:157
-#, fuzzy
 msgid "Create Mask"
-msgstr "Spel opslaan"
+msgstr "Creëer Masker"
 
 #: src/hotkeys.cpp:159
-#, fuzzy
 msgid "Refresh Display"
-msgstr "Beeld"
+msgstr "Ververs Beeld"
 
 #: src/hotkeys.cpp:161
-#, fuzzy
 msgid "Update Terrain Transitions"
-msgstr "Update transities"
+msgstr "Update Terrein Transities"
 
 #: src/hotkeys.cpp:163
-#, fuzzy
 msgid "Auto-update Terrain Transitions"
-msgstr "Update transities"
+msgstr "Update Terrein Transities Automatisch"
 
 #: src/hotkeys.cpp:165
 msgid "Refresh Image Cache"
@@ -1863,12 +1831,11 @@ msgstr "Cache afbeelding vernieuwen"
 
 #: src/hotkeys.cpp:167
 msgid "Draw Hex Coordinates"
-msgstr ""
+msgstr "Teken Hexcoordinaten"
 
 #: src/hotkeys.cpp:169
-#, fuzzy
 msgid "Draw Terrain Codes"
-msgstr "Terrein tekenen"
+msgstr "Teken Terreincodes"
 
 #: src/hotkeys.cpp:174
 msgid "Delay Shroud Updates"
@@ -1911,13 +1878,12 @@ msgid "Enter user command"
 msgstr "Typ gebruikerscommando in"
 
 #: src/hotkeys.cpp:185
-#, fuzzy
 msgid "Custom command"
-msgstr "Typ gebruikerscommando in"
+msgstr "Gebruikerscommando"
 
 #: src/hotkeys.cpp:186
 msgid "Run AI formula"
-msgstr ""
+msgstr "Run AI formule"
 
 #: src/hotkeys.cpp:187
 msgid "Clear messages"
@@ -2027,9 +1993,8 @@ msgid "Hotkey Settings"
 msgstr "Sneltoetsinstellingen"
 
 #: src/preferences_display.cpp:234 src/preferences_display.cpp:302
-#, fuzzy
 msgid "Press desired Hotkey (Esc cancels)"
-msgstr "Druk op de gewenste sneltoets"
+msgstr "Druk op de gewenste sneltoets (Esc annuleert)"
 
 #: src/preferences_display.cpp:253
 msgid "Action"
@@ -2055,6 +2020,8 @@ msgstr "Deze sneltoets is al in gebruik."
 msgid ""
 "Warning: screenshot hotkeys not combined with Control, Alt or Meta keys."
 msgstr ""
+"Waarschuwing: schermafdruk sneltoets niet gecombineerd met Control, Alt of "
+"Meta knop."
 
 #: src/preferences_display.cpp:426
 msgid "There are no alternative video modes available"
@@ -2077,7 +2044,6 @@ msgstr ""
 "bedoelde terrein is :"
 
 #: src/wml_exception.cpp:52
-#, fuzzy
 msgid ""
 "An error due to possibly invalid WML occurred\n"
 "The error message is :"
