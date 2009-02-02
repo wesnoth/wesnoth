@@ -115,6 +115,7 @@ twindow::twindow(CVideo& video,
 	, h_(h)
 	, easy_close_(false)
 	, easy_close_blocker_()
+	, escape_disabled_(false)
 	, dirty_list_()
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 	, debug_layout_(new tdebug_layout_graph(this))
@@ -406,7 +407,7 @@ void twindow::key_press(tevent_handler& /*event_handler*/, bool& handled,
 	if(key == SDLK_KP_ENTER || key == SDLK_RETURN) {
 		set_retval(OK);
 		handled = true;
-	} else if(key == SDLK_ESCAPE) {
+	} else if(key == SDLK_ESCAPE && !escape_disabled_) {
 		set_retval(CANCEL);
 		handled = true;
 	} else if(key == SDLK_SPACE) {

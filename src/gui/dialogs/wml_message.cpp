@@ -90,6 +90,7 @@ void twml_message_::pre_show(CVideo& video, twindow& window)
 		input->set_maximum_length(input_maximum_lenght_);
 		window.keyboard_capture(input);
 		window.set_easy_close(false);
+		window.set_escape_disabled(true);
 	} else {
 		caption->set_visible(twidget::INVISIBLE);
 		input->set_visible(twidget::INVISIBLE);
@@ -182,6 +183,7 @@ void twml_message_::pre_show(CVideo& video, twindow& window)
 		if(!has_input_) {
 			window.keyboard_capture(options);
 			window.set_easy_close(false); 
+			window.set_escape_disabled(true);
 		} else {
 			window.add_to_keyboard_chain(options);
 			// easy_close has been disabled due to the input.

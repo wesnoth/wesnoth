@@ -231,6 +231,17 @@ public:
 	bool does_easy_close() const
 		{ return easy_close_ && easy_close_blocker_.empty(); }
 
+	/**
+	 * Disable the escape key.
+	 *
+	 * This is added to block dialogs from being closed automatically.
+	 *
+	 * @todo this function should be merged with the hotkey support once
+	 * that has been added.
+	 */
+	void set_escape_disabled(const bool escape_disabled) 
+		{ escape_disabled_ = escape_disabled; }
+
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
 	/**
@@ -334,6 +345,9 @@ private:
 
 	/** The list with items which prevent the easy close behaviour. */
 	std::vector<std::string> easy_close_blocker_;
+
+	/** Disable the escape key see our setter for more info. */
+	bool escape_disabled_;
 
 	/**
 	 * Controls the sunset feature.
