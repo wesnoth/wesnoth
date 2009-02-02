@@ -24,9 +24,14 @@
 #  define LOCALEDIR "translations"
 # endif
 #endif
-#ifndef VERSION
-#define VERSION "1.5.9+svn"
+
+//always use the version string in here, otherwise autotools can override in
+//a bad way...
+#ifdef VERSION
+  #undef VERSION
 #endif
+#define VERSION "1.5.9+svn"
+
 #ifndef PACKAGE
 #define PACKAGE "wesnoth"
 #endif
