@@ -2155,12 +2155,12 @@ private:
 				register_command("drop", &chat_command_handler::do_drop,
 					_("Drop your nick."));
 				register_command("set", &chat_command_handler::do_set,
-					_("Update details for your username. For possible details see /details"),
+					_("Update details for your nick. For possible details see '/details'."),
 					"<detail> <value>");
 				register_command("info", &chat_command_handler::do_info,
-					_("Request information about a user."), "<nick>");
+					_("Request information about a nick."), "<nick>");
 				register_command("details", &chat_command_handler::do_details,
-					_("Request a list of details you can set for your registered username."));
+					_("Request a list of details you can set for your registered nick."));
 			}
 		private:
 			chat_handler& chat_handler_;
