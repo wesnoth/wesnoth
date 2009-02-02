@@ -13,30 +13,10 @@ The release team should empty this file after each release.
 ***
 
 
-From this version onward, the developement team will only focus on bug-fixing. The WML API will probably have very little changes.
-
-Thus, now is a good time to port all User Made Content to 1.5
-
-
-***
-The image path functions (~RC(), ~TC(), ~FL() et al) parsing has been heavily
-modified. Now all functions in a path are stacked in a left-to-right order, with
-the sole exceptions of ~RC() and ~TC(), which continue to be non-accumulable.
-
-Additionally, a new note-worthy image path function, ~SCALE(width,height), was
-introduced; it scales graphics, of course.
 
 ***
 
-The conversion of the old message dialogs to the new message dialogs is mostly
-complete. The code needs some more polishing. WML authors who use advanced
-features of the [message] tag are encouraged to test their addons with the new
-engine and report bugs if they find them.
+
 
 ***
 
-The defaults for "fog of war" and "random start time" have been changed to on.
-Add-on maintainers may want to explicitely set those properties if they're
-important to the way the scenario works (like for survivals with specific
-chaotic/lawful waves etc.) so that they have the right values when played with
-"use map settings" on.
