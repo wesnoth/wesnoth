@@ -127,7 +127,7 @@ namespace t_translation {
 	extern const t_terrain MINUS;	// -
 	extern const t_terrain NOT;		// !
 	extern const t_terrain STAR;	// *
-	extern const t_terrain BASE;	// references the base terrain in movement/defence aliases
+	extern const t_terrain BASE;	// references the base terrain in movement/defense aliases
 
 	/**
 	 * Reads a single terrain from a string.

@@ -482,7 +482,7 @@ int unit_movement_type::defense_modifier(const gamemap& map,
 	}
 
 	if(res < 0) {
-		ERR_CONFIG << "Defence '" << res << "' is '< 0' reset to 0 (100% defence).\n";
+		ERR_CONFIG << "Defence '" << res << "' is '< 0' reset to 0 (100% defense).\n";
 		res = 0;
 	}
 
