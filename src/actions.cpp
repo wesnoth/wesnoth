@@ -270,7 +270,7 @@ battle_context::battle_context(const gamemap& map, const std::vector<team>& team
 
 	if (attacker_weapon == -1) {
 		VALIDATE(defender_weapon == -1,
-				_("An invalid weapon is send, possibly due to the Python AI."));
+				_("An invalid weapon is selected, possibly by the Python AI."));
 
 		attacker_weapon = choose_attacker_weapon(attacker, defender, map, teams, units,
 				status, attacker_loc, defender_loc,
