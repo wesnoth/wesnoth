@@ -1422,6 +1422,8 @@ msgid ""
 "harder for each AMLA the unit receives, and so it is usually more useful to "
 "try to advance your lower level units."
 msgstr ""
+"\n"
+"\n"
 "While most units have three levels, not all do. Occasional units (such as "
 "<ref>dst='unit_Mage' text='Magi'</ref>) may have four. Once a unit has "
 "reached its maximum level, it may have an After Maximum Level Advancement "
@@ -1694,6 +1696,7 @@ msgstr ""
 "Other traits that may be assigned to units are <ref>dst=traits_dextrous "
 "text=Dextrous</ref>, <ref>dst=traits_loyal text=Loyal</ref>, and "
 "<ref>dst=traits_undead text=Undead</ref>."
+"\n"
 
 #. [topic]: id=traits_intelligent
 #: data/core/help.cfg:362
@@ -2063,6 +2066,7 @@ msgstr ""
 "Most units have 50% defence in forests, but cavalry are limited to 40%. "
 "Elves, on the other hand, enjoy 60 to 70% defence, even their mounted units. "
 "Dwarves generally receive only 30% defence in forests."
+"\n"
 
 #. [topic]: id=terrain_hills
 #: data/core/help.cfg:486
@@ -2242,6 +2246,7 @@ msgstr ""
 "defensive bonus as everyone inside.\n"
 "\n"
 "Most units have about 60% defence in a castle."
+"\n"
 
 #. [topic]: id=terrain_sand
 #: data/core/help.cfg:572
@@ -2412,6 +2417,7 @@ msgstr ""
 "\n"
 "Most units have 50 to 60% defence in villages, whereas cavalry receive only "
 "40%."
+"\n"
 
 #. [topic]: id=terrain_water_village
 #: data/core/help.cfg:656
@@ -2748,6 +2754,7 @@ msgstr ""
 "Kick a user in multiplayer. They will be able to rejoin the game. Generally "
 "a friendly way to remove someone who is having connection or other "
 "difficulties."
+"\n"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:790
@@ -7044,8 +7051,7 @@ msgstr ""
 
 #: src/addon_management.cpp:643
 msgid "Unchecked script files found:"
-msgstr ""
-msgid "Unchecked script files found:"
+msgstr "Unchecked script files found:"
 
 #: src/addon_management.cpp:650
 msgid "The add-on '$addon_title|' has been successfully installed."
@@ -9156,7 +9162,11 @@ msgid_plural ""
 "You will start the next scenario with $gold or its defined minimum starting "
 "gold, whichever is higher."
 msgstr[0] ""
+"You will start the next scenario with $gold or its defined minimum starting "
+"gold, whichever is higher."
 msgstr[1] ""
+"You will start the next scenario with $gold or its defined minimum starting "
+"gold, whichever is higher."
 
 #: src/playsingle_controller.cpp:355
 msgid "Game Over"
@@ -9608,9 +9618,6 @@ msgstr "Enable summary uploads"
 #~ msgstr ""
 #~ " This unit is capable of healing those around it, slowing dehydration, "
 #~ "and curing them of poison."
-
-#~ msgid "Abilities"
-#~ msgstr "Abilities"
 
 #~ msgid "Location name?"
 #~ msgstr "Location name?"
