@@ -28,6 +28,7 @@ $langs['la'] = 'Latin';
 $langs['lt'] = 'Lithuanian';
 $langs['lv'] = 'Latvian';
 $langs['mk'] = 'Macedonian';
+$langs['mr'] = 'Marathi';
 $langs['nl'] = 'Dutch';
 $langs['nb_NO'] = 'Norwegian';
 //$langs['oc'] = 'Occitan';
