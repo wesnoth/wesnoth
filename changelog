@@ -50,6 +50,8 @@ Version 1.5.9:
      When a filter matching multiple units is used, only the first matching
      unit will be taken for firing the event. Recall list filters and
      invalid locations are silently ignored
+   * [set_variable] can now handle both integer and floating point values
+     properly. The functions round, ipart and fpart were added (bug #12546)
  * Miscellaneous and bug fixes:
    * Fix clients not agreeing on remaining movepoints (bug #12467)
    * Fix summoning of other players recruit list on turn 1 (bug #12783)
