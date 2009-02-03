@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth1.4\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-02-02 07:58+0100\n"
+"POT-Creation-Date: 2009-02-03 21:23+0100\n"
 "PO-Revision-Date: 2008-08-13 01:24+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Chinese/Traditional <steven2880@gmail.com>\n"
@@ -418,78 +418,84 @@ msgid "Macedonian Translation"
 msgstr "馬其頓語翻譯團隊"
 
 #. [about]
-#: data/core/about.cfg:1704
+#: data/core/about.cfg:1705
+#, fuzzy
+msgid "Marathi Translation"
+msgstr "拉丁文翻譯團隊"
+
+#. [about]
+#: data/core/about.cfg:1712
 msgid "Norwegian Translation"
 msgstr "挪威文翻譯團隊"
 
 #. [about]
-#: data/core/about.cfg:1726
+#: data/core/about.cfg:1734
 msgid "Polish Translation"
 msgstr "波蘭文翻譯團隊"
 
 #. [about]
-#: data/core/about.cfg:1775
+#: data/core/about.cfg:1783
 msgid "Portuguese Translation"
 msgstr "葡萄牙文翻譯團隊"
 
 #. [about]
-#: data/core/about.cfg:1782
+#: data/core/about.cfg:1790
 msgid "Portuguese (Brazil) Translation"
 msgstr "葡萄牙文(巴西)翻譯團隊"
 
 #. [about]
-#: data/core/about.cfg:1817
+#: data/core/about.cfg:1825
 msgid "Romanian Translation"
 msgstr "羅馬尼亞語翻譯團隊"
 
 #. [about]
-#: data/core/about.cfg:1825
+#: data/core/about.cfg:1833
 msgid "Russian Translation"
 msgstr "俄羅斯文翻譯團隊"
 
 #. [about]
-#: data/core/about.cfg:1861
+#: data/core/about.cfg:1869
 msgid "Serbian Translation"
 msgstr "塞爾維亞語翻譯團隊"
 
 #. [about]
-#: data/core/about.cfg:1876
+#: data/core/about.cfg:1884
 msgid "Slovak Translation"
 msgstr "斯洛伐克語翻譯團隊"
 
 #. [about]
-#: data/core/about.cfg:1902
+#: data/core/about.cfg:1910
 msgid "Slovenian Translation"
 msgstr "斯洛文尼亞語翻譯團隊"
 
 #. [about]
-#: data/core/about.cfg:1912
+#: data/core/about.cfg:1923
 msgid "Spanish Translation"
 msgstr "西班牙文翻譯團隊"
 
 #. [about]
-#: data/core/about.cfg:1965
+#: data/core/about.cfg:1976
 msgid "Swedish Translation"
 msgstr "瑞典語翻譯團隊"
 
 #. [about]
-#: data/core/about.cfg:1994
+#: data/core/about.cfg:2005
 msgid "Turkish Translation"
 msgstr "土耳其文翻譯團隊"
 
 #. [about]
-#: data/core/about.cfg:2016
+#: data/core/about.cfg:2027
 msgid "Valencian (southern Catalan) Translation"
 msgstr "南加泰羅尼亞語(西班牙)翻譯團隊"
 
 #. [about]
-#: data/core/about.cfg:2029
+#: data/core/about.cfg:2040
 #, fuzzy
 msgid "RACV's Translation"
 msgstr "簡體中文翻譯團隊"
 
 #. [about]
-#: data/core/about.cfg:2036
+#: data/core/about.cfg:2047
 #, fuzzy
 msgid "Bots"
 msgstr "電腦"
@@ -7835,15 +7841,16 @@ msgid "Drop your nick."
 msgstr ""
 
 #: src/menu_events.cpp:2158
-msgid "Update details for your username. For possible details see /details"
+msgid "Update details for your nick. For possible details see '/details'."
 msgstr ""
 
 #: src/menu_events.cpp:2161
-msgid "Request information about a user."
-msgstr ""
+#, fuzzy
+msgid "Request information about a nick."
+msgstr "没有找到這個時代的信息。"
 
 #: src/menu_events.cpp:2163
-msgid "Request a list of details you can set for your registered username."
+msgid "Request a list of details you can set for your registered nick."
 msgstr ""
 
 #: src/menu_events.cpp:2285

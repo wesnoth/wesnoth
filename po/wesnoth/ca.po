@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.5.8+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-02-02 07:58+0100\n"
+"POT-Creation-Date: 2009-02-03 21:23+0100\n"
 "PO-Revision-Date: 2009-01-31 21:24+0100\n"
 "Last-Translator: Jordà Polo <jorda@ettin.org>\n"
 "Language-Team: Catalan <wesnoth-ca@lists.ettin.org>\n"
@@ -425,77 +425,83 @@ msgid "Macedonian Translation"
 msgstr "Traducció al macedònic"
 
 #. [about]
-#: data/core/about.cfg:1704
+#: data/core/about.cfg:1705
+#, fuzzy
+msgid "Marathi Translation"
+msgstr "Traducció al llatí"
+
+#. [about]
+#: data/core/about.cfg:1712
 msgid "Norwegian Translation"
 msgstr "Traducció al noruec"
 
 #. [about]
-#: data/core/about.cfg:1726
+#: data/core/about.cfg:1734
 msgid "Polish Translation"
 msgstr "Traducció al polonès"
 
 #. [about]
-#: data/core/about.cfg:1775
+#: data/core/about.cfg:1783
 msgid "Portuguese Translation"
 msgstr "Traducció al portuguès"
 
 #. [about]
-#: data/core/about.cfg:1782
+#: data/core/about.cfg:1790
 msgid "Portuguese (Brazil) Translation"
 msgstr "Traducció al portuguès (Brasil)"
 
 #. [about]
-#: data/core/about.cfg:1817
+#: data/core/about.cfg:1825
 msgid "Romanian Translation"
 msgstr "Traducció al romanès"
 
 #. [about]
-#: data/core/about.cfg:1825
+#: data/core/about.cfg:1833
 msgid "Russian Translation"
 msgstr "Traducció al rus"
 
 #. [about]
-#: data/core/about.cfg:1861
+#: data/core/about.cfg:1869
 msgid "Serbian Translation"
 msgstr "Traducció al serbi"
 
 #. [about]
-#: data/core/about.cfg:1876
+#: data/core/about.cfg:1884
 msgid "Slovak Translation"
 msgstr "Traducció a l'eslovac"
 
 #. [about]
-#: data/core/about.cfg:1902
+#: data/core/about.cfg:1910
 msgid "Slovenian Translation"
 msgstr "Traducció a l'eslovè"
 
 #. [about]
-#: data/core/about.cfg:1912
+#: data/core/about.cfg:1923
 msgid "Spanish Translation"
 msgstr "Traducció al castellà"
 
 #. [about]
-#: data/core/about.cfg:1965
+#: data/core/about.cfg:1976
 msgid "Swedish Translation"
 msgstr "Traducció al suec"
 
 #. [about]
-#: data/core/about.cfg:1994
+#: data/core/about.cfg:2005
 msgid "Turkish Translation"
 msgstr "Traducció al turc"
 
 #. [about]
-#: data/core/about.cfg:2016
+#: data/core/about.cfg:2027
 msgid "Valencian (southern Catalan) Translation"
 msgstr "Traducció al valencià (català meridional)"
 
 #. [about]
-#: data/core/about.cfg:2029
+#: data/core/about.cfg:2040
 msgid "RACV's Translation"
 msgstr "Traducció a l'idioma de la RACV"
 
 #. [about]
-#: data/core/about.cfg:2036
+#: data/core/about.cfg:2047
 msgid "Bots"
 msgstr "Robots"
 
@@ -7982,15 +7988,16 @@ msgid "Drop your nick."
 msgstr ""
 
 #: src/menu_events.cpp:2158
-msgid "Update details for your username. For possible details see /details"
+msgid "Update details for your nick. For possible details see '/details'."
 msgstr ""
 
 #: src/menu_events.cpp:2161
-msgid "Request information about a user."
-msgstr ""
+#, fuzzy
+msgid "Request information about a nick."
+msgstr "No s'ha trobat la informació sobre les eres."
 
 #: src/menu_events.cpp:2163
-msgid "Request a list of details you can set for your registered username."
+msgid "Request a list of details you can set for your registered nick."
 msgstr ""
 
 #: src/menu_events.cpp:2285

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.1.1\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-02-02 07:58+0100\n"
+"POT-Creation-Date: 2009-02-03 21:23+0100\n"
 "PO-Revision-Date: 2006-12-22 21:30+0100\n"
 "Last-Translator: YbeRn00b <asgeiraakre@gmail.com>\n"
 "Language-Team: None\n"
@@ -435,80 +435,86 @@ msgid "Macedonian Translation"
 msgstr "Indonesisk oversettelse"
 
 #. [about]
-#: data/core/about.cfg:1704
+#: data/core/about.cfg:1705
+#, fuzzy
+msgid "Marathi Translation"
+msgstr "Latinsk oversettelse"
+
+#. [about]
+#: data/core/about.cfg:1712
 msgid "Norwegian Translation"
 msgstr "Norsk oversettelse"
 
 #. [about]
-#: data/core/about.cfg:1726
+#: data/core/about.cfg:1734
 msgid "Polish Translation"
 msgstr "Polsk oversettelse"
 
 #. [about]
-#: data/core/about.cfg:1775
+#: data/core/about.cfg:1783
 msgid "Portuguese Translation"
 msgstr "Portugisisk oversettelse"
 
 #. [about]
-#: data/core/about.cfg:1782
+#: data/core/about.cfg:1790
 msgid "Portuguese (Brazil) Translation"
 msgstr "Portugisisk (Brasil) oversettelse"
 
 #. [about]
-#: data/core/about.cfg:1817
+#: data/core/about.cfg:1825
 #, fuzzy
 msgid "Romanian Translation"
 msgstr "Estisk oversettelse"
 
 #. [about]
-#: data/core/about.cfg:1825
+#: data/core/about.cfg:1833
 msgid "Russian Translation"
 msgstr "Russisk oversettelse"
 
 #. [about]
-#: data/core/about.cfg:1861
+#: data/core/about.cfg:1869
 msgid "Serbian Translation"
 msgstr "Serbisk oversettelse"
 
 #. [about]
-#: data/core/about.cfg:1876
+#: data/core/about.cfg:1884
 msgid "Slovak Translation"
 msgstr "Slovakisk oversettelse"
 
 #. [about]
-#: data/core/about.cfg:1902
+#: data/core/about.cfg:1910
 msgid "Slovenian Translation"
 msgstr "Slovensk oversettelse"
 
 #. [about]
-#: data/core/about.cfg:1912
+#: data/core/about.cfg:1923
 msgid "Spanish Translation"
 msgstr "Spansk oversettelse"
 
 #. [about]
-#: data/core/about.cfg:1965
+#: data/core/about.cfg:1976
 msgid "Swedish Translation"
 msgstr "Svensk oversettelse"
 
 #. [about]
-#: data/core/about.cfg:1994
+#: data/core/about.cfg:2005
 msgid "Turkish Translation"
 msgstr "Tyrkisk oversettelse"
 
 #. [about]
-#: data/core/about.cfg:2016
+#: data/core/about.cfg:2027
 #, fuzzy
 msgid "Valencian (southern Catalan) Translation"
 msgstr "Slovensk oversettelse"
 
 #. [about]
-#: data/core/about.cfg:2029
+#: data/core/about.cfg:2040
 #, fuzzy
 msgid "RACV's Translation"
 msgstr "Kinesisk oversettelse"
 
 #. [about]
-#: data/core/about.cfg:2036
+#: data/core/about.cfg:2047
 msgid "Bots"
 msgstr "'Bots'"
 
@@ -7778,15 +7784,16 @@ msgid "Drop your nick."
 msgstr ""
 
 #: src/menu_events.cpp:2158
-msgid "Update details for your username. For possible details see /details"
+msgid "Update details for your nick. For possible details see '/details'."
 msgstr ""
 
 #: src/menu_events.cpp:2161
-msgid "Request information about a user."
-msgstr ""
+#, fuzzy
+msgid "Request information about a nick."
+msgstr "Ingen epoker funnet"
 
 #: src/menu_events.cpp:2163
-msgid "Request a list of details you can set for your registered username."
+msgid "Request a list of details you can set for your registered nick."
 msgstr ""
 
 #: src/menu_events.cpp:2285

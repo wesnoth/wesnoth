@@ -1,0 +1,227 @@
+.\" This program is free software; you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation; either version 2 of the License, or
+.\" (at your option) any later version.
+.\"
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program; if not, write to the Free Software
+.\" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+.\"
+.
+.\"*******************************************************************
+.\"
+.\" This file was generated with po4a. Translate the source file.
+.\"
+.\"*******************************************************************
+.TH WESNOTH 6 2009 wesnoth "Battle for Wesnoth"
+.
+.SH NAME
+wesnoth \- Battle for Wesnoth, a turn\-based fantasy strategy game
+.
+.SH SYNOPSIS
+.
+\fBwesnoth\fP [\fIOPTIONS\fP] [\fIPATH_TO_DATA\fP]
+.
+.SH DESCRIPTION
+.
+Battle for \fBWesnoth\fP is a turn\-based fantasy strategy game.
+
+Defeat all enemy leaders using a well\-chosen cadre of troops, taking care to
+manage your resources of gold and villages. All units have their own
+strengths and weaknesses; to win, deploy your forces to their best advantage
+while denying your foes the chance to do the same. As units gain experience,
+they acquire new abilities and become more powerful. Play in your own
+language and test your skill against a smart computer opponent, or join
+Wesnoth's large community of on\-line players. Create your own custom units,
+scenarios or campaigns, and share them with others.
+.
+.SH OPTIONS
+.
+.TP 
+\fB\-\-bpp\fP\fI\ number\fP
+sets BitsPerPixel value. Example: \fB\-\-bpp 32\fP
+.TP 
+\fB\-c, \-\-campaign\fP
+goes directly to the campaign selection menu.
+.TP 
+\fB\-\-config\-dir\fP\fI\ name\fP
+sets the user configuration directory to \fIname\fP under $HOME or "My
+Documents\eMy Games" for windows.
+.TP 
+\fB\-\-config\-path\fP
+prints the path of the user configuration directory and exits.
+.TP 
+\fB\-d, \-\-debug\fP
+enables additional command mode options in\-game (see the wiki page at
+http://www.wesnoth.org/wiki/CommandMode for more information about command
+mode).
+.TP 
+\fB\-\-dummy\-locales\fP
+use special dummy locales to switch to any language even if that language
+isn't installed system\-wide.
+.TP 
+\fB\-e, \-\-editor\fP
+start the in\-game map editor directly.
+.TP 
+\fB\-\-fps\fP
+displays the number of frames per second the game is currently running at,
+in a corner of the screen.
+.TP 
+\fB\-f, \-\-fullscreen\fP
+runs the game in full screen mode.
+.TP 
+\fB\-\-gunzip\fP\fI\ infile.gz\fP
+decompresses a file which should be in gzip format and stores it without the
+\&.gz suffix. The \fIinfile.gz\fP will be removed.
+.TP 
+\fB\-\-gzip\fP\fI\ infile\fP
+compresses a file in gzip format, stores it as \fIinfile\fP.gz and removes
+\fIinfile\fP.
+.TP 
+\fB\-h, \-\-help\fP
+displays a summary of command line options to standard output, and exits.
+.TP 
+\fB\-l,\ \-\-load\fP\fI\ file\fP
+loads the savegame \fIfile\fP from the standard save game directory.  If the
+\fB\-e\fP or \fB\-\-editor\fP option is used as well, starts the editor with the map
+from \fIfile\fP open.
+.TP 
+\fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIdomain1\fP\fB,\fP\fIdomain2\fP\fB,\fP\fI...\fP
+sets the severity level of the log domains.  \fBall\fP can be used to match any
+log domain. Available levels: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP.
+By default the \fBerror\fP level is used.
+.TP 
+\fB\-\-logdomains\fP
+Dumps a list of all log domains and exits.
+.TP 
+\fB\-\-max\-fps\fP
+the number of frames per second the game can show, the value should be
+between the 1 and 1000, the default is \fB50\fP.
+.TP 
+\fB\-m, \-\-multiplayer\fP
+runs a multiplayer game. There are additional options that can be used
+together with \fB\-\-multiplayer\fP as explained below.
+.TP 
+\fB\-\-no\-delay\fP
+runs the game without any delays for graphic benchmarking. This is
+automatically enabled by \fB\-\-nogui\fP.
+.TP 
+\fB\-\-nocache\fP
+disables caching of game data.
+.TP 
+\fB\-\-nomusic\fP
+runs the game without music.
+.TP 
+\fB\-\-nosound\fP
+runs the game without sounds and music.
+.TP 
+\fB\-\-path\fP
+prints the name of the game data directory and exits.
+.TP 
+\fB\-\-python\-api\fP
+prints the runtime documentation for the python API.
+.TP 
+\fB\-\-python\-shell\fP
+invokes wesnoth's embedded python interpreter in interactive mode.
+.TP 
+\fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\ \fP\fIX\fP\fBx\fP\fIY\fP
+sets the screen resolution. Example: \fB\-r 800x600\fP
+.TP 
+\fB\-\-smallgui\fP
+allows to use screen resolutions down to 800x480 and resizes a few interface
+elements.
+.TP 
+\fB\-s,\ \-\-server\ [host]\fP
+connects to the specified host if any, otherwise connect to the first server
+in preferences. Example: \fB\-\-server server.wesnoth.org\fP
+.TP 
+\fB\-t, \-\-test\fP
+runs the game in a small test scenario.
+.TP 
+\fB\-\-validcache\fP
+assumes that the cache is valid. (dangerous)
+.TP 
+\fB\-v, \-\-version\fP
+shows the version number and exits.
+.TP 
+\fB\-w, \-\-windowed\fP
+runs the game in windowed mode.
+.TP 
+\fB\-\-with\-replay\fP
+replays the game loaded with the \fB\-\-load\fP option.
+.
+.SH "Options for \-\-multiplayer"
+.
+The side\-specific multiplayer options are marked with \fInumber\fP.  \fInumber\fP
+has to be replaced by a side number. It usually is 1 or 2 but depends on the
+number of players possible in the chosen scenario.
+.TP 
+\fB\-\-algorithm\fP\fInumber\fP\fB=\fP\fIvalue\fP
+selects a non\-standard algorithm to be used by the AI controller for this
+side. Available values: \fBidle_ai\fP and \fBsample_ai\fP.
+.TP  
+\fB\-\-controller\fP\fInumber\fP\fB=\fP\fIvalue\fP
+selects the controller for this side. Available values: \fBhuman\fP and \fBai\fP.
+.TP  
+\fB\-\-era=\fP\fIvalue\fP
+use this option to play in the selected era instead of the \fBDefault\fP
+era. The era is chosen by an id. Eras are described in the
+\fBdata/multiplayer/eras.cfg\fP file.
+.TP 
+\fB\-\-exit\-at\-end\fP
+exits once the scenario is over, without displaying victory/defeat dialog
+which requires the user to click OK.  This is also used for scriptable
+benchmarking.
+.TP 
+\fB\-\-nogui\fP
+runs the game without the GUI. Must appear before \fB\-\-multiplayer\fP to have
+the desired effect.
+.TP 
+\fB\-\-parm\fP\fInumber\fP\fB=\fP\fIname\fP\fB:\fP\fIvalue\fP
+sets additional parameters for this side. This parameter depends on the
+options used with \fB\-\-controller\fP and \fB\-\-algorithm\fP.  It should only be
+useful for people designing their own AI. (not yet documented completely)
+.TP 
+\fB\-\-scenario=\fP\fIvalue\fP
+selects a multiplayer scenario by id. The default scenario id is
+\fBmultiplayer_The_Freelands\fP.
+.TP 
+\fB\-\-side\fP\fInumber\fP\fB=\fP\fIvalue\fP
+selects a faction of the current era for this side. The faction is chosen by
+an id. Factions are described in the data/multiplayer.cfg file.
+.TP 
+\fB\-\-turns=\fP\fIvalue\fP
+sets the number of turns for the chosen scenario. The default is \fB50\fP.
+.TP 
+Example to test your own AI against the default AI without starting the GUI:
+\fBwesnoth \-\-nogui \-\-multiplayer \-\-controller1=ai \-\-controller2=ai
+\-\-algorithm2=python_ai \-\-parm2=python_script:py/my_own_python_ai.py\fP
+.
+.SH AUTHOR
+.
+Written by David White <davidnwhite@verizon.net>.
+.br
+Edited by Nils Kneuper <crazy\-ivanovic@gmx.net>, ott
+<ott@gaon.net> and Soliton <soliton.de@gmail.com>.
+.br
+This manual page was originally written by Cyril Bouthors
+<cyril@bouthors.org>.
+.br
+Visit the official homepage: http://www.wesnoth.org/
+.
+.SH COPYRIGHT
+.
+Copyright \(co 2003\-2007 David White <davidnwhite@verizon.net>
+.br
+This is Free Software; this software is licensed under the GPL version 2, as
+published by the Free Software Foundation.  There is NO warranty; not even
+for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+.
+.SH "SEE ALSO"
+.
+\fBwesnoth_editor\fP(6), \fBwesnothd\fP(6)
