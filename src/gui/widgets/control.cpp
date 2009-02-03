@@ -407,6 +407,28 @@ std::string colour_prefix(const SDL_Color& colour)
 	return result.str();
 }
 
+/** escapes a string to be used in a pango formatted string. */
+std::string escape_string(const std::string& str)
+{
+	struct tconverter
+	{
+		tconverter(const std::string& string) 
+			: str(g_markup_escape_text(string.c_str(), -1))
+		{
+		}
+
+		~tconverter()
+		{
+			g_free(str);
+		}
+
+		gchar* str;	
+	};
+
+	tconverter converter(str);
+	return std::string(converter.str);
+}
+
 } // namespace
 
 std::string tcontrol::get_pango_markup() const
@@ -505,7 +527,7 @@ std::string tcontrol::get_pango_markup() const
 			}
 		}
 
-		line = pre + line + post;
+		line = pre + escape_string(line) + post;
 	}
 	return utils::join(lines, '\n');
 }
