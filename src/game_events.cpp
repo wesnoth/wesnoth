@@ -1117,6 +1117,16 @@ namespace {
 		}
 	}
 
+// Helper function(s) for [set_variable]
+namespace {
+	bool isint(const std::string &var) {
+		return var.find('.') == std::string::npos;
+	}
+	bool isint(const t_string &var) {
+		return isint(var.str());
+	}
+} // End anonymous namespace
+
 	WML_HANDLER_FUNCTION(set_variable,/*handler*/,/*event_info*/,cfg)
 	{
 		assert(state_of_game != NULL);
@@ -1146,46 +1156,45 @@ namespace {
 
 		const std::string add = cfg["add"];
 		if(add.empty() == false) {
-			int value = int(atof(var.c_str()));
-			value += atoi(add.c_str());
-			char buf[50];
-			snprintf(buf,sizeof(buf),"%d",value);
-			var = buf;
+			if(isint(var.str()) && isint(add)) {
+				var = str_cast( atoi(var.c_str()) + atoi(add.c_str()) );
+			} else {
+				var = str_cast( atof(var.c_str()) + atof(add.c_str()) );
+			}
 		}
 
 		const std::string multiply = cfg["multiply"];
 		if(multiply.empty() == false) {
-			int value = int(atof(var.c_str()));
-			value = int(double(value) * atof(multiply.c_str()));
-			char buf[50];
-			snprintf(buf,sizeof(buf),"%d",value);
-			var = buf;
+			if(isint(var) && isint(multiply)) {
+				var = str_cast( atoi(var.c_str()) * atoi(multiply.c_str()) );
+			} else {
+				var = str_cast( atof(var.c_str()) * atof(multiply.c_str()) );
+			}
 		}
 
 		const std::string divide = cfg["divide"];
 		if(divide.empty() == false) {
-			int value = int(atof(var.c_str()));
-			double divider = atof(divide.c_str());
-			if (divider == 0) {
+			if (atof(divide.c_str()) == 0) {
 				ERR_NG << "division by zero on variable " << name << "\n";
 				return;
+			}
+			if(isint(var) && isint(divide)) {
+				var = str_cast( atoi(var.c_str()) / atoi(divide.c_str()) );
 			} else {
-				value = int(double(value) / divider);
-				char buf[50];
-				snprintf(buf,sizeof(buf),"%d",value);
-				var = buf;
+				var = str_cast( atof(var.c_str()) / atof(divide.c_str()) );
 			}
 		}
 
 		const std::string modulo = cfg["modulo"];
 		if(modulo.empty() == false) {
-			int value = atoi(var.c_str());
-			int divider = atoi(modulo.c_str());
-			if (divider == 0) {
+			if(atof(modulo.c_str()) == 0) {
 				ERR_NG << "division by zero on variable " << name << "\n";
 				return;
+			}
+			if(isint(var) && isint(modulo)) {
+				var = str_cast( atoi(var.c_str()) % atoi(modulo.c_str()) );
 			} else {
-				value %= divider;
+				double value = fmod( atof(var.c_str()), atof(modulo.c_str()) );
 				var = str_cast(value);
 			}
 		}
@@ -1194,10 +1203,8 @@ namespace {
 		if(round_val.empty() == false) {
 			double value = lexical_cast<double>(var.c_str());
 			if (round_val == "ceil") {
-				//TODO precision stuff
 				value = std::ceil(value);
 			} else if (round_val == "floor") {
-				//TODO same
 				value = std::floor(value);
 			} else {
 				// We assume the value is an integer.
@@ -1209,6 +1216,22 @@ namespace {
 				value *= std::pow(10.0, -decimals); //and remove them
 			}
 			var = str_cast(value);
+		}
+
+		const t_string ipart = cfg["ipart"];
+		if(ipart.empty() == false) {
+			const std::string orig = state_of_game->get_variable(ipart);
+			double result;
+			modf( atof(ipart.c_str()), &result );
+			var = str_cast(result);
+		}
+
+		const t_string fpart = cfg["fpart"];
+		if(fpart.empty() == false) {
+			const std::string orig = state_of_game->get_variable(fpart);
+			double ignore;
+			double result = modf( atof(fpart.c_str()), &ignore );
+			var = str_cast(result);
 		}
 
 		const t_string string_length_target = cfg["string_length"];
