@@ -49,6 +49,7 @@ void progress_bar::draw_contents()
 		int bcr =   0, bcg =   0, bcb =   0;		// Border color.
 		int gcr = 255, gcg = 255, gcb = 255;		// Groove color.
 		int	lightning_thickness = 2;
+		static const SDL_Color selected_text_color = {0xBB,0xBB,0xBB,0};
 
 		SDL_Rect inner_area = {area.x+1,area.y+1,area.w-2,area.h-2};
 		SDL_FillRect(surf,&area,SDL_MapRGB(surf->format,bcr,bcg,bcb));
@@ -72,7 +73,30 @@ void progress_bar::draw_contents()
 		text_area.x = area.x + area.w/2 - text_area.w/2;
 		text_area.y = area.y + area.h/2 - text_area.h/2;
 
-		font::draw_text(&video(),location(),font::SIZE_NORMAL,font::BLACK_COLOUR,text,text_area.x,text_area.y);
+		font::draw_text(
+			&video(),
+			location(),
+			font::SIZE_NORMAL,
+			font::BLACK_COLOUR,
+			text,
+			text_area.x,
+			text_area.y
+		);
+
+		// Draw a white text section for the hilighted area
+		// of the bar
+		SDL_Rect selected_text_location = location();
+		selected_text_location.w = inner_area.w;
+		selected_text_location.h = inner_area.h;
+		font::draw_text(
+			&video(),
+			selected_text_location,
+			font::SIZE_NORMAL,
+			selected_text_color,
+			text,
+			text_area.x,
+			text_area.y
+		);
 	}
 
 	update_rect(location());
