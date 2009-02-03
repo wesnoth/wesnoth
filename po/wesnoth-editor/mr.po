@@ -1,0 +1,308 @@
+# #-#-#-#-#  wesnoth-editor.cpp1.po (Battle for Wesnoth VERSION)  #-#-#-#-#
+# Marathi translations for Battle for Wesnoth package.
+# Copyright (C) 2009 Wesnoth development team
+# This file is distributed under the same license as the Battle for Wesnoth package.
+# Automatically generated, 2009.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Battle for Wesnoth 1.5.9+svn\n"
+"Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
+"POT-Creation-Date: 2009-01-30 20:58+0100\n"
+"PO-Revision-Date: 2009-01-30 20:58+0100\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. [brush]
+#: data/core/editor/brushes.cfg:5
+msgid "Single Hex"
+msgstr ""
+
+#. [brush]
+#: data/core/editor/brushes.cfg:15
+msgid "Radius 1 Hex"
+msgstr ""
+
+#. [brush]
+#: data/core/editor/brushes.cfg:25
+msgid "Radius 2 Hex"
+msgstr ""
+
+#. [brush]
+#: data/core/editor/brushes.cfg:55
+msgid "Hex Line NW-SE"
+msgstr ""
+
+#. [editor_group]: id=all
+#: data/core/editor/terrain-groups.cfg:10
+msgid "all"
+msgstr ""
+
+#. [editor_group]: id=water
+#: data/core/editor/terrain-groups.cfg:16
+msgid "water"
+msgstr ""
+
+#. [editor_group]: id=flat
+#: data/core/editor/terrain-groups.cfg:23
+msgid "flat"
+msgstr ""
+
+#. [editor_group]: id=desert
+#: data/core/editor/terrain-groups.cfg:30
+msgid "desert"
+msgstr ""
+
+#. [editor_group]: id=forest
+#: data/core/editor/terrain-groups.cfg:37
+msgid "forest"
+msgstr ""
+
+#. [editor_group]: id=frozen
+#: data/core/editor/terrain-groups.cfg:44
+msgid "frozen"
+msgstr ""
+
+#. [editor_group]: id=rough
+#: data/core/editor/terrain-groups.cfg:51
+msgid "rough"
+msgstr ""
+
+#. [editor_group]: id=cave
+#: data/core/editor/terrain-groups.cfg:58
+msgid "cave"
+msgstr ""
+
+#. [editor_group]: id=village
+#: data/core/editor/terrain-groups.cfg:65
+msgid "village"
+msgstr ""
+
+#. [editor_group]: id=castle
+#: data/core/editor/terrain-groups.cfg:72
+msgid "castle"
+msgstr ""
+
+#. [editor_group]: id=special
+#: data/core/editor/terrain-groups.cfg:79
+msgid "special"
+msgstr ""
+
+#. [editor_tool_hint]: id=editor-tool-paint
+#. [editor_tool_hint]: id=editor-tool-fill
+#: data/core/editor/tool-hints.cfg:7 data/core/editor/tool-hints.cfg:13
+msgid ""
+"Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
+"paint base layer only."
+msgstr ""
+
+#. [editor_tool_hint]: id=editor-tool-select
+#: data/core/editor/tool-hints.cfg:19
+msgid ""
+"Left mouse button selects, right deselects. Hold Shift for magic-wand "
+"selection of tiles with same terrain."
+msgstr ""
+
+#. [editor_tool_hint]: id=editor-tool-starting-position
+#: data/core/editor/tool-hints.cfg:25
+msgid ""
+"Left mouse button displays player selection, right clears. Number keys "
+"scroll to the starting position, alt+number sets respective starting "
+"position under cursor, delete clears."
+msgstr ""
+
+#. [editor_tool_hint]: id=editor-paste
+#: data/core/editor/tool-hints.cfg:30
+msgid ""
+"Click to paste, zoom out for more accuracy when pasting large areas. Use the "
+"edit menu to transform the clipboard (rotate, mirror)."
+msgstr ""
+
+#. [menu]: id=menu-editor-file
+#: data/themes/editor2.cfg:120
+msgid "File"
+msgstr ""
+
+#. [menu]: id=menu-editor-edit
+#: data/themes/editor2.cfg:131
+msgid "Edit"
+msgstr ""
+
+#. [menu]: id=menu-editor-map
+#: data/themes/editor2.cfg:141
+msgid "Map"
+msgstr ""
+
+#. [menu]: id=menu-editor-window
+#: data/themes/editor2.cfg:151
+msgid "Window"
+msgstr ""
+
+#. [label]: id=villages-icon
+#: data/themes/editor2.cfg:262
+msgid "villages"
+msgstr ""
+
+#: src/editor2/action.cpp:32
+msgid "Error creating action object"
+msgstr ""
+
+#: src/editor2/action.cpp:36
+msgid "Action not implemented"
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:123
+msgid "Quit Editor"
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:260
+msgid "Fatal error"
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:274 src/editor2/editor_controller.cpp:971
+msgid "(New Map)"
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:280
+msgid "Do you really want to quit?"
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:282
+msgid ""
+"Do you really want to quit? Changes in the map since the last save will be "
+"lost."
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:284
+msgid ""
+"Do you really want to quit? The following maps were modified and all changes "
+"since the last save will be lost:"
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:289
+msgid "Quit"
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:346 src/editor2/editor_controller.cpp:458
+#: src/editor2/editor_controller.cpp:494 src/editor2/editor_controller.cpp:516
+msgid "Error"
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:346
+msgid "No editor time-of-day found."
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:382
+msgid "Unsaved Changes"
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:383
+msgid ""
+"Do you want to discard all changes you made to the map since the last save?"
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:396
+msgid "Choose a Map to Open"
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:400
+msgid "This map is already open."
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:438
+msgid "Save the Map As"
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:442
+msgid "The file already exists. Do you want to overwrite it?"
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:458
+msgid "No random map generators found."
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:469
+msgid "Map creation failed."
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:484
+msgid "Choose a mask to apply"
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:491
+msgid "Error loading mask"
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:506
+msgid "Choose target map"
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:513 src/editor2/editor_controller.cpp:626
+#: src/editor2/editor_main.cpp:53
+msgid "Error loading map"
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:602
+msgid "Map saved."
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:607
+msgid "Could not save the map: $msg"
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:998
+msgid "Undo"
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:1000
+msgid "Can't Undo"
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:1004
+msgid "Redo"
+msgstr ""
+
+#: src/editor2/editor_controller.cpp:1006
+msgid "Can't Redo"
+msgstr ""
+
+#: src/editor2/editor_map.cpp:85
+msgid "Empty map file or file not found"
+msgstr ""
+
+#: src/editor2/editor_map.cpp:166 src/editor2/mouse_action.cpp:385
+msgid "Player"
+msgstr ""
+
+#: src/editor2/editor_map.cpp:285
+msgid "The size of the target map is different from the current map"
+msgstr ""
+
+#: src/editor2/editor_palettes.cpp:516
+msgid "FG"
+msgstr ""
+
+#: src/editor2/editor_palettes.cpp:518
+msgid "BG"
+msgstr ""
+
+#: src/editor2/mouse_action.cpp:382
+msgid "(Player)^None"
+msgstr ""
+
+#: src/editor2/mouse_action.cpp:389
+msgid "Choose player"
+msgstr ""
+
+#: src/editor2/mouse_action.cpp:390
+msgid ""
+"Which player should start here? You can also use the 1-9 and delete keys to "
+"set/clear starting positions."
+msgstr ""
+
+#: src/gui/dialogs/editor_settings.cpp:119
+msgid "Custom setting"
+msgstr ""
