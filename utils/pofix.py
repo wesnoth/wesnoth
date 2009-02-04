@@ -153,7 +153,7 @@ if __name__ == '__main__':
     modified = 0
     pocount = 0
     for path in sys.argv[1:]:
-        if not path.endswith(".po") and not path.endswith(".pot"):
+        if not path.endswith(".po") and not path.endswith(".pot") and not path.endswith(".cfg"):
             continue
         try:
             pocount += 1
