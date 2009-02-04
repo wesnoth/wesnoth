@@ -132,7 +132,7 @@ stringfixes = {
 ("Shut up you little snot", "Shut up, you little snot"),
 ("I wasn't talking to you lich", "I wasn't talking to you, lich"),
 ("I am honored sir", "I am honored, sir"),
-("Rest assured, sir", "Rest assured, sir"),
+("Rest assured sir", "Rest assured, sir"),
 ("I propose is the creation", "I propose the creation"),
 ("Heck yeah", "Heck, yeah"),
 ("Thank you Tallin.", "Thank you, Tallin."),
@@ -164,7 +164,11 @@ if __name__ == '__main__':
             after = before
             for (domain, fixes) in stringfixes.items():
                 for (old, new) in fixes:
-                    if new in after and old in after and old is not new:
+                    if old is new:
+                        #complain loudly
+                        print "pofix: old string\n\t\"%s\"\n equals new string\n\t\"%s\"\nexiting." % (old, new)
+                        sys.exit(1)
+                    elif new in after and old in after:
                         print "pofix: %s has a msgid \n\t\"%s\"\nand a typoed version \n\t\"%s\"\nthis needs handfixing for now." % (path, old, new)
                     else:
                         after = after.replace(old, new)
