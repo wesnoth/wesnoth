@@ -15,6 +15,8 @@
 #include "image_function.hpp"
 #include "log.hpp"
 
+#define GETTEXT_DOMAIN "wesnoth-lib"
+
 #define ERR_DP LOG_STREAM(err, display)
 
 namespace image {
