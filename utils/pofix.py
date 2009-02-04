@@ -164,7 +164,10 @@ if __name__ == '__main__':
             after = before
             for (domain, fixes) in stringfixes.items():
                 for (old, new) in fixes:
-                    after = after.replace(old, new)
+                    if new in after and old in after and old is not new:
+                        print "pofix: %s has a msgid \n\t\"%s\"\nand a typoed version \n\t\"%s\"\nthis needs handfixing for now." % (path, old, new)
+                    else:
+                        after = after.replace(old, new)
             if after != before:
                 print "pofix: %s modified" % path
                 modified += 1
