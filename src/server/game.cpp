@@ -1012,6 +1012,7 @@ bool game::remove_player(const network::connection player, const bool disconnect
 	if (host) {
 		owner_ = players_.front();
 		notify_new_host();
+		transfer_ai_sides();
 	}
 
 	// Look for all sides the player controlled and drop them.
@@ -1040,7 +1041,6 @@ bool game::remove_player(const network::connection player, const bool disconnect
 
 		send_to_one(drop, owner_);
 	}
-	if (host) transfer_ai_sides();
 	DBG_GAME << debug_player_info();
 
 	send_user_list(player);
