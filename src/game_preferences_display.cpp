@@ -993,12 +993,14 @@ void preferences_dialog::set_advanced_menu()
 
 void preferences_dialog::set_friends_menu()
 {
-	const std::vector<std::string>& friends = utils::split(preferences::get_friends());
-	const std::vector<std::string>& ignores = utils::split(preferences::get_ignores());
+	const std::set<std::string>& friends = preferences::get_friends();
+	const std::set<std::string>& ignores = preferences::get_ignores();
+
 	std::vector<std::string> friends_items;
 	std::vector<std::string> friends_names;
 	std::string const imgpre = IMAGE_PREFIX + std::string("misc/status-");
-	std::vector<std::string>::const_iterator i;
+
+	std::set<std::string>::const_iterator i;
 	for (i = friends.begin(); i != friends.end(); ++i)
 	{
 		friends_items.push_back(imgpre + "friend.png" + COLUMN_SEPARATOR

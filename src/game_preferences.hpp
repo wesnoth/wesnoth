@@ -42,8 +42,8 @@ namespace preferences {
 	void _set_lobby_joins(int show);
 	enum { SHOW_NONE, SHOW_FRIENDS, SHOW_ALL };
 
-	std::string get_friends();
-	std::string get_ignores();
+	const std::set<std::string> & get_friends();
+	const std::set<std::string> & get_ignores();
 	bool add_friend(const std::string& nick);
 	bool add_ignore(const std::string& nick);
 	void remove_friend(const std::string& nick);

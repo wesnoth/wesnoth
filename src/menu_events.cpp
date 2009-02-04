@@ -2449,14 +2449,17 @@ private:
 		chat_command_handler cch(*this, allies_only);
 		cch.dispatch(cmd);
 	}
+
 	void chat_command_handler::do_emote()
 	{
 		chat_handler_.send_chat_message("/me " + get_data(), allies_only_);
 	}
+
 	void chat_command_handler::do_network_send()
 	{
 		chat_handler_.send_command(get_cmd(), get_data());
 	}
+
 	void chat_command_handler::do_whisper()
 	{
 		if (get_data(1).empty()) return command_failed_need_arg(1);
@@ -2471,6 +2474,7 @@ private:
 			cwhisper["message"], game_display::MESSAGE_PRIVATE);
 		network::send_data(data, 0, true);
 	}
+
 	void chat_command_handler::do_log()
 	{
 		chat_handler_.change_logging(get_data());
@@ -2479,10 +2483,10 @@ private:
 	void chat_command_handler::do_ignore()
 	{
 		if (get_arg(1).empty()) {
-			const std::string& tmp = preferences::get_ignores();
-			print("ignores list", tmp.empty() ? "(empty)" : tmp);
+			const std::set<std::string>& tmp = preferences::get_ignores();
+			print("ignores list", tmp.empty() ? "(empty)" : utils::join(tmp));
 		} else {
-			for(int i = 1;!get_arg(i).empty();i++){
+			for(int i = 1; !get_arg(i).empty(); i++){
 				if (preferences::add_ignore(get_arg(i))) {
 					print("ignore",  _("Added to ignore list: ") + get_arg(i));
 				} else {
@@ -2491,11 +2495,12 @@ private:
 			}
 		}
 	}
+
 	void chat_command_handler::do_friend()
 	{
 		if (get_arg(1).empty()) {
-			const std::string& tmp = preferences::get_friends();
-			print("friends list", tmp.empty() ? "(empty)" : tmp);
+			const std::set<std::string>& tmp = preferences::get_friends();
+			print("friends list", tmp.empty() ? "(empty)" : utils::join(tmp));
 		} else {
 			for(int i = 1;!get_arg(i).empty();i++){
 				if (preferences::add_friend(get_arg(i))) {
@@ -2506,6 +2511,7 @@ private:
 			}
 		}
 	}
+
 	void chat_command_handler::do_remove()
 	{
 		for(int i = 1;!get_arg(i).empty();i++){
@@ -2514,19 +2520,25 @@ private:
 			print("list", _("Removed from list: ") + get_arg(i));
 		}
 	}
+
 	void chat_command_handler::do_display()
 	{
-		const std::string& text_friend = preferences::get_friends();
-		const std::string& text_ignore = preferences::get_ignores();
-		if (!text_friend.empty()) {
-			print("friends list", text_friend);
+		const std::set<std::string> & friends = preferences::get_friends();
+		const std::set<std::string> & ignores = preferences::get_ignores();
+
+		if (!friends.empty()) {
+			print("friends list", utils::join(friends));
 		}
-		if (!text_ignore.empty()) {
-			print("ignores list", text_ignore);
-		} else if (text_friend.empty()) {
+
+		if (!ignores.empty()) {
+			print("ignores list", utils::join(ignores));
+		} 
+		
+		if (friends.empty() && ignores.empty()) {
 			print("list", _("There are no players on your friends or ignore list."));
 		}
 	}
+
 	void chat_command_handler::do_version() {
 		print("version", game_config::revision);
 	}

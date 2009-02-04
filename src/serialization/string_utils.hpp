@@ -20,8 +20,10 @@
 
 #include <algorithm>
 #include <map>
+#include <sstream>
 #include <string>
 #include <vector>
+#include <boost/utility.hpp>
 #include "../tstring.hpp"
 #include "../util.hpp"
 
@@ -77,7 +79,18 @@ std::vector< std::string > paranthetical_split(std::string const &val,
 	const char separator = 0 , std::string const &left="(",
 	std::string const &right=")",int flags = REMOVE_EMPTY | STRIP_SPACES);
 
-std::string join(std::vector< std::string > const &v, char c = ',');
+template <typename T>
+std::string join(T const &v, char c = ',')
+{
+        std::stringstream str;
+        for(typename T::const_iterator i = v.begin(); i != v.end(); ++i) {
+                str << *i;
+                if (boost::next(i) != v.end())
+                        str << c;
+        }
+ 
+        return str.str();
+}
 
 /**
  * This function is identical to split(), except it does not split

@@ -390,18 +390,6 @@ bool wildcard_string_match(const std::string& str, const std::string& match) {
 	return matches;
 }
 
-std::string join(std::vector< std::string > const &v, char c)
-{
-	std::stringstream str;
-	for(std::vector< std::string >::const_iterator i = v.begin(); i != v.end(); ++i) {
-		str << *i;
-		if (i + 1 != v.end())
-			str << c;
-	}
-
-	return str.str();
-}
-
 std::vector< std::string > quoted_split(std::string const &val, char c, int flags, char quote)
 {
 	std::vector<std::string> res;

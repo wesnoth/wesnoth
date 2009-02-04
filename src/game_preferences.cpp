@@ -39,19 +39,10 @@ std::set<t_translation::t_terrain> encountered_terrains_set;
 std::map<std::string, std::vector<std::string> > history_map;
 const unsigned max_history_saved = 50;
 
-/** Add a nick to the specified relation setting. */
-void add_relation(const std::string& nick, const std::string& relation) {
-	std::vector<std::string> r = utils::split(preferences::get(relation));
-	r.push_back(nick);
-	preferences::set(relation, utils::join(r));
-}
-
-/** Remove a nick from the specified relation setting. */
-void remove_relation(const std::string& nick, const std::string& relation) {
-	std::vector<std::string> r = utils::split(preferences::get(relation));
-	r.erase(std::remove(r.begin(), r.end(), nick), r.end());
-	preferences::set(relation, utils::join(r));
-}
+std::set<std::string> friends;
+std::set<std::string> ignores;
+bool friends_initialized = false;
+bool ignores_initialized = false;
 
 } // anon namespace
 
@@ -149,32 +140,58 @@ manager::~manager()
 	set_ping_timeout(network::ping_timeout);
 }
 
-std::string get_friends() {
-	return preferences::get("friends");
+const std::set<std::string> & get_friends() {
+	if(!friends_initialized) {
+		std::vector<std::string> names = utils::split(preferences::get("friends"));
+		std::set<std::string> tmp(names.begin(), names.end());
+		friends.swap(tmp);
+
+		friends_initialized = true;
+	}
+
+	return friends;
 }
 
-std::string get_ignores() {
-	return preferences::get("ignores");
+const std::set<std::string> & get_ignores() {
+	if(!ignores_initialized) {
+		std::vector<std::string> names = utils::split(preferences::get("ignores"));
+		std::set<std::string> tmp(names.begin(), names.end());
+		ignores.swap(tmp);
+
+		ignores_initialized = true;
+	}
+
+	return ignores;
 }
 
 bool add_friend(const std::string& nick) {
 	if (!utils::isvalid_wildcard(nick)) return false;
-	add_relation(nick, "friends");
+	friends.insert(nick);
+	preferences::set("friends", utils::join(friends));
 	return true;
 }
 
 bool add_ignore(const std::string& nick) {
 	if (!utils::isvalid_wildcard(nick)) return false;
-	add_relation(nick, "ignores");
+	ignores.insert(nick);
+	preferences::set("ignores", utils::join(ignores));
 	return true;
 }
 
 void remove_friend(const std::string& nick) {
-	remove_relation(nick, "friends");
+	std::set<std::string>::iterator i = friends.find(nick);
+	if(i != friends.end()) {
+		friends.erase(i);
+		preferences::set("friends", utils::join(friends));
+	}
 }
 
 void remove_ignore(const std::string& nick) {
-	remove_relation(nick, "ignores");
+	std::set<std::string>::iterator i = ignores.find(nick);
+	if(i != ignores.end()) {
+		ignores.erase(i);
+		preferences::set("ignores", utils::join(ignores));
+	}
 }
 
 void clear_friends() {
@@ -186,21 +203,11 @@ void clear_ignores() {
 }
 
 bool is_friend(const std::string& nick) {
-	const std::vector<std::string>& friends = utils::split(get_friends());
-    foreach(const std::string& var, friends) {
-        if(utils::wildcard_string_match(nick, var))
-            return true;
-    }
-    return false;
+	return friends.find(nick) != friends.end();
 }
 
 bool is_ignored(const std::string& nick) {
-	const std::vector<std::string>& ignores = utils::split(get_ignores());
-    foreach(const std::string& var, ignores) {
-        if(utils::wildcard_string_match(nick, var))
-            return true;
-    }
-    return false;
+	return ignores.find(nick) != ignores.end();
 }
 
 bool show_lobby_join(const std::string& sender, const std::string& message) {
