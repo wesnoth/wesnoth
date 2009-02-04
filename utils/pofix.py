@@ -143,7 +143,8 @@ stringfixes = {
 }
 
 # Speak, if all argument files are newer than this timestamp
-timecheck = 1233737832	# Wed Feb  4 03:57:12 2009
+# Try to use UTC here
+timecheck = 1233746577 # Wed Feb  4 11:22:57 UTC 2009
 
 import os, sys, time, stat
 
