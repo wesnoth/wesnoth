@@ -1,0 +1,182 @@
+#!/usr/bin/env python
+
+# pofix - perform string fixups on incoming .po files.
+#
+# The purpose of this script is to save translators from having to
+# apply various string fixes needed before 1.6 by hand.  It is
+# intended to be run on each incoming .po file as the Lord of
+# Translations receives it.  However, translators may run it on their
+# own .po files to be sure, as a second application will harmlessly do
+# nothing.
+#
+# To use this script, give it one or more paths to .po files as
+# command-line arguments.  Each file will be tweaked as needed.
+# It should work on Windows and MacOS X as well as Linux, provided
+# you have Python installed.
+#
+# This script will emit a report line for each file it modifies,
+# and save a backup copy of the original with extension "-bak".
+#
+# This script will tell you when it is obsolete.  Run it against all .po
+# files in the main Wesnoth tree; when it says none are older than this script,
+# it can be discarded (assunming that it has in fact been used to transform
+# all incoming .po files in the meantime).
+#
+# Three lines in the structure below, marked with "#*", imply changes of
+# meaning that may require a change in translation.
+
+stringfixes = {
+
+"wesnoth-aoi" : (
+# Typo fix.
+#
+("Edition", "Editing"),
+),
+
+"wesnoth-did" : (
+# Typo shifted the meaning slightly, but changing the
+# translation is optional
+#
+("the godly city of Tath", "the goodly city of Tath"),
+),
+
+"wesnoth-httt" : (
+# Missing comma clarifies that Lisar is ordering her duelist to attack,
+# not ordering someone to attack him!  Translators will probably have picked
+# this up already.
+#
+("attack my loyal duelist", "attack, my loyal duelist"),
+),
+
+"wesnoth-manual" : (
+# In English, if you "chop a piece of meat", there is a strong 
+# implication that you regard it as food. The term "flesh" does
+# not have this implication.
+#
+("chop pieces of meat", "chop pieces of flesh"),
+),
+
+"wesnoth-thot" : (
+# These are typo fixes not caught by the spell checker
+#
+("It sees that guard", "It seems that guard"),
+("Go thorough that rubble", "Go through that rubble"),
+),
+
+# Changes in the wesnoth domain make consistent the use of the American
+# spelling "defense" in key strings.
+#
+"wesnoth" : (
+("have good defences in water", "have good defenses in water"),
+("have a low defence", "have a low defense"),
+),
+
+"wesnoth-trow" :(
+# Most changes to TROW simply fix inconsistent capitalization
+# of the word "lich" and the phrase "lich-lord", applying the
+# following rules:
+# 1) "lich" and "lich-lord" as the name of type of monster is a common noun
+#    and should not be capitalized.
+# 2) Lich-Lord as a title of address should be capitalized.
+# 3) "Lich-Lords" as the proper name of a particular set of lich-lords
+#    (e.g. those of the Wesfolk) should be capitalized.
+#
+("funny that the lich-Lord", "funny that the lich-lord"),
+("evil Lich in the catacombs", "evil lich in the catacombs"),
+("The Lich was carrying", "The lich was carrying"),
+("defeated the Lich and returned", "defeated the lich and returned",), 
+("know that Lich you",  "know that lich you"),
+("Lich. Maybe you", "lich. Maybe you"),
+("Young Prince Haldric.", "young Prince Haldric."),
+),
+
+"wesnoth-tsg" :(
+# In The South Guard, one change fixes comma placement.
+#
+# One other change (marked "#*") places a question mark where needed.
+# This may imply a translation change in languages with question
+# inflections in their grammar.
+#
+# One other change replaces "menfolk" with "humans"; the former 
+# has an idiomatic sense in American English that you don't want.
+#
+("Now Deoran, take", "Now, Deoran, take"),
+("can you do against the dead!", "can you do against the dead?"),
+("undead are hiding in the forest.", "undead are hiding in the forest?"), #*
+("menfolk", "humans"),
+),
+
+"wesnoth-nr" :(
+# Most NR changes are comma-placement or typo fixes.  The first two
+# are exceptions, required by our policy of not allowing anything in
+# Wesnoth to resemble real-world religious behavior.
+#
+("Thank god you are free!", "Thank the Bright Gods you are free!"),	#*
+("My God, such a fierce", "Bright Gods, such a fierce"),		#*
+("get of her high horse", "get off her high horse"),
+("2 000 gold", "2,000 gold"),
+("Oh, don't mind him", "Oh, dinna mind him"),
+("Southern Tunnels friends", "Southern Tunnels, friends"),
+("Thank you Lord Tallin.", "Thank you, Lord Tallin."),
+("Northern Elves extremely few", "Northern Elves are extremely few"),
+("14, 318 AD", "14,318 AD"),
+("He is just dissolving.", "He is dissolving."),
+("To do this Tallin", "To do this, Tallin"),
+("I refuse utter", "I refuse to utter"),
+("right, the I feel that", "right, I feel that"),
+("seek the surface Tallin", "seek the surface, Tallin"),
+("demented Sorcerer", "demented sorcerer"),
+("who lead his people", "who led his people"),
+("No Tallin, you are not dead", "No, Tallin, you are not dead"),
+("Greater Gods then so be it.", "Greater Gods, then so be it."),
+("Shut up you little snot", "Shut up, you little snot"),
+("I wasn't talking to you lich", "I wasn't talking to you, lich"),
+("I am honored sir", "I am honored, sir"),
+("Rest assured, sir", "Rest assured, sir"),
+("I propose is the creation", "I propose the creation"),
+("Heck yeah", "Heck, yeah"),
+("Thank you Tallin.", "Thank you, Tallin."),
+("lords of light", "Lords of Light"),
+),
+
+}
+
+# Speak, if all argument files are newer than this timestamp
+timecheck = 1233737832	# Wed Feb  4 03:57:12 2009
+
+import os, sys, time, stat
+
+if __name__ == '__main__':
+    newer = 0
+    modified = 0
+    pocount = 0
+    for path in sys.argv[1:]:
+        if not path.endswith(".po"):
+            continue
+        try:
+            pocount += 1
+            # Notice how many files are newer than the time check
+            statinfo = os.stat(path)
+            if statinfo.st_mtime > timecheck:
+                newer += 1
+            # Read the content of each file and transform it
+            before = open(path, "r").read()
+            after = before
+            for (domain, fixes) in stringfixes.items():
+                for (old, new) in fixes:
+                    after = after.replace(old, new)
+            if after != before:
+                print "pofix: %s modified" % path
+                modified += 1
+                # Save a backup
+                os.rename(path, path + "-bak")
+                # Write out transformed version
+                ofp = open(path, "w")
+                ofp.write(after)
+                ofp.close()
+        except OSError:
+            print >>sys.stderr, "pofix: I can't see %s" % path
+    print "pofix: %d files processed, %d files modified, %d files newer" \
+          % (pocount, modified, newer)
+    if pocount > 1 and newer == pocount:
+        print "pofix: script may be obsolete"
