@@ -1022,7 +1022,6 @@ bool game::remove_player(const network::connection player, const bool disconnect
 		size_t side_num = side - sides_.begin();
 		side_controllers_[side_num] = "human";
 		sides_taken_[side_num] = true;
-		sides_[side_num] = owner_;
 		// Check whether the host is actually a player and make him one if not.
 		if (!is_player(owner_)) {
 			DBG_GAME << "making the owner a player...\n";
@@ -1031,6 +1030,7 @@ bool game::remove_player(const network::connection player, const bool disconnect
 			send_observerquit(player_info_->find(owner_));
 		}
 		send_change_controller(side_num + 1, player_info_->find(owner_));
+		sides_[side_num] = owner_;
 
 		//send the host a notification of removal of this side
 		char side_drop_buf[64];
