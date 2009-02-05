@@ -115,7 +115,7 @@ stringfixes = {
 ("My God, such a fierce", "Bright Gods, such a fierce"),		#*
 ("get of her high horse", "get off her high horse"),
 ("2 000 gold", "2,000 gold"),
-("Oh, don't mind him", "Oh, dinna mind him"),
+("Oh, don't mind him", "Oh, dinna' mind him"),
 ("Southern Tunnels friends", "Southern Tunnels, friends"),
 ("Thank you Lord Tallin.", "Thank you, Lord Tallin."),
 ("Northern Elves extremely few", "Northern Elves are extremely few"),
