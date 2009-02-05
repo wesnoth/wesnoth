@@ -16,6 +16,7 @@
 #include "map.hpp"
 #include "halo.hpp"
 #include "unit.hpp"
+#include "foreach.hpp"
 
 struct tag_name_manager {
 	tag_name_manager() : names() {
@@ -527,7 +528,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 	for(anim_itor = defends.begin(); anim_itor != defends.end(); ++anim_itor) {
 		(**anim_itor)["apply_to"] ="defend";
 		(**anim_itor)["layer"] =lexical_cast<std::string>(display::LAYER_UNIT_DEFAULT-display::LAYER_UNIT_FIRST);
-		if(!(**anim_itor)["damage"].empty()&& (**anim_itor)["value"].empty()) {
+		if(!(**anim_itor)["damage"].empty() && (**anim_itor)["value"].empty()) {
 			(**anim_itor)["value"]=(**anim_itor)["damage"];
 		}
 		if((**anim_itor)["hits"].empty())
@@ -540,6 +541,18 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 					.image(animations.back().get_last_frame().parameters(0).image)
 					.duration(225)
 					.blend("0.0,0.5:75,0.0:75,0.5:75,0.0",game_display::rgb(255,0,0)));
+		} else {
+			foreach(std::string hit_type, utils::split((**anim_itor)["hits"])) {
+				config tmp = **anim_itor;
+				tmp["hits"]=hit_type;
+				animations.push_back(unit_animation(tmp));
+				if(hit_type == "yes" || hit_type == "hit" || hit_type=="kill") {
+					animations.back().add_frame(225,frame_builder()
+							.image(animations.back().get_last_frame().parameters(0).image)
+							.duration(225)
+							.blend("0.0,0.5:75,0.0:75,0.5:75,0.0",game_display::rgb(255,0,0)));
+				}
+			}
 		}
 	}
 	expanded_cfg = unit_animation::prepare_animation(cfg,"attack_anim");
