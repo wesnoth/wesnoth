@@ -461,8 +461,8 @@ void ttext::rerender(const bool force) const
 
 		const unsigned width = rect_.x + rect_.width;
 		const unsigned height = rect_.y + rect_.height;
-		const unsigned stride = (width+1) * 4;
-		create_surface_buffer(stride * (height+1));
+		const unsigned stride = width * 4;
+		create_surface_buffer(stride * height);
 
 		cairo_surface_t *cairo_surface =
 			cairo_image_surface_create_for_data(surface_buffer_,
@@ -488,8 +488,6 @@ void ttext::rerender(const bool force) const
 		for(size_t y = 0; y < height; ++y) {
 			for(size_t x = 0; x < width; ++x) {
 
-				if ( (y*width + x) * 4 > surface_buffer_.size())
-					y = y - 1;
 				unsigned char *pixel = &surface_buffer_[(y * width + x) * 4];
 
 // Assume everything not compiled with gcc to be on a little endian platform.
