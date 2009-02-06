@@ -9,35 +9,35 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-02-04 14:25+0100\n"
-"PO-Revision-Date: 2007-11-30 18:25+0100\n"
-"Last-Translator: Stefan Bergström (tephlon) <stefan DOT bergstrom AT gmail "
-"DOT com>\n"
+"PO-Revision-Date: 2009-02-05 00:57+0100\n"
+"Last-Translator: Gustav Tiger <admin@tigge.org>\n"
 "Language-Team: Swedish\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms:  nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: KBabel 1.11.4\n"
+"X-Poedit-Basepath: /home/tigge/Source/Wesnoth/Source/Wesnoth-trunk\n"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:5
 msgid "Single Hex"
-msgstr ""
+msgstr "Enkel hex"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:15
 msgid "Radius 1 Hex"
-msgstr ""
+msgstr "Radie 1-hex"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:25
 msgid "Radius 2 Hex"
-msgstr ""
+msgstr "Radie 2-hex"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:55
 msgid "Hex Line NW-SE"
-msgstr ""
+msgstr "Hex-linje NV-SÖ"
 
 #. [editor_group]: id=all
 #: data/core/editor/terrain-groups.cfg:10
@@ -92,7 +92,7 @@ msgstr "slott"
 #. [editor_group]: id=special
 #: data/core/editor/terrain-groups.cfg:79
 msgid "special"
-msgstr ""
+msgstr "speciell"
 
 #. [editor_tool_hint]: id=editor-tool-paint
 #. [editor_tool_hint]: id=editor-tool-fill
@@ -101,6 +101,8 @@ msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only."
 msgstr ""
+"Använd vänster/höger musknapp för att rita för-/bakgrundsterräng. Håll ner "
+"shift för att enbart rita baslagret."
 
 #. [editor_tool_hint]: id=editor-tool-select
 #: data/core/editor/tool-hints.cfg:19
@@ -108,6 +110,8 @@ msgid ""
 "Left mouse button selects, right deselects. Hold Shift for magic-wand "
 "selection of tiles with same terrain."
 msgstr ""
+"Vänster musknapp markerar, höger avmarkerar. Håll ner shift för trollspö-"
+"markering av rutor med samma terräng."
 
 #. [editor_tool_hint]: id=editor-tool-starting-position
 #: data/core/editor/tool-hints.cfg:25
@@ -116,6 +120,9 @@ msgid ""
 "scroll to the starting position, alt+number sets respective starting "
 "position under cursor, delete clears."
 msgstr ""
+"Vänster musknapp visar spelarmarkering, höger musknapp rensar. Sifferknappar "
+"rullar till startposition, alt+siffra sätter respektive startposition under "
+"markören, delete rensar."
 
 #. [editor_tool_hint]: id=editor-paste
 #: data/core/editor/tool-hints.cfg:30
@@ -123,6 +130,9 @@ msgid ""
 "Click to paste, zoom out for more accuracy when pasting large areas. Use the "
 "edit menu to transform the clipboard (rotate, mirror)."
 msgstr ""
+"Klicka för att klistra in, zooma ut för större noggrannhet vid inklistring "
+"av större ytor. Använd redigera-menyn för att transformera urklipp (rotera, "
+"spegla)."
 
 #. [menu]: id=menu-editor-file
 #: data/themes/editor2.cfg:120
@@ -137,13 +147,12 @@ msgstr "Redigera"
 #. [menu]: id=menu-editor-map
 #: data/themes/editor2.cfg:141
 msgid "Map"
-msgstr ""
+msgstr "Karta"
 
 #. [menu]: id=menu-editor-window
 #: data/themes/editor2.cfg:151
-#, fuzzy
 msgid "Window"
-msgstr "Ångra"
+msgstr "Fönster"
 
 #. [label]: id=villages-icon
 #: data/themes/editor2.cfg:262
@@ -152,11 +161,11 @@ msgstr "byar"
 
 #: src/editor2/action.cpp:32
 msgid "Error creating action object"
-msgstr ""
+msgstr "Fel vid skapande av händelseobjekt"
 
 #: src/editor2/action.cpp:36
 msgid "Action not implemented"
-msgstr ""
+msgstr "Åtgärd ej implementerad"
 
 #: src/editor2/editor_controller.cpp:123
 msgid "Quit Editor"
@@ -164,93 +173,96 @@ msgstr "Vill du verkligen sluta?"
 
 #: src/editor2/editor_controller.cpp:260
 msgid "Fatal error"
-msgstr ""
+msgstr "Allvarligt fel"
 
 #: src/editor2/editor_controller.cpp:274 src/editor2/editor_controller.cpp:971
 msgid "(New Map)"
-msgstr ""
+msgstr "(Ny karta)"
 
 #: src/editor2/editor_controller.cpp:280
 msgid "Do you really want to quit?"
-msgstr ""
+msgstr "Vill du verkligen avsluta?"
 
 #: src/editor2/editor_controller.cpp:282
 msgid ""
 "Do you really want to quit? Changes in the map since the last save will be "
 "lost."
 msgstr ""
+"Vill du verkligen avsluta? Ändringar i kartan sedan den senast sparats "
+"kommer att förloras."
 
 #: src/editor2/editor_controller.cpp:284
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
 msgstr ""
+"Vill du verkligen avsluta? Följande kartor har modifierats och alla "
+"ändringar sedan de senast sparats kommer att förloras."
 
 #: src/editor2/editor_controller.cpp:289
 msgid "Quit"
-msgstr ""
+msgstr "Avsluta"
 
 #: src/editor2/editor_controller.cpp:346 src/editor2/editor_controller.cpp:458
 #: src/editor2/editor_controller.cpp:494 src/editor2/editor_controller.cpp:516
 msgid "Error"
-msgstr ""
+msgstr "Fel"
 
 #: src/editor2/editor_controller.cpp:346
 msgid "No editor time-of-day found."
-msgstr ""
+msgstr "Ingen tid-på-dan för editorn hittades."
 
 #: src/editor2/editor_controller.cpp:382
 msgid "Unsaved Changes"
-msgstr ""
+msgstr "Osparade ändringar"
 
 #: src/editor2/editor_controller.cpp:383
 msgid ""
 "Do you want to discard all changes you made to the map since the last save?"
 msgstr ""
+"Vill du överge alla ändringar du har gjort i kartan sedan den senast "
+"sparades?"
 
 #: src/editor2/editor_controller.cpp:396
-#, fuzzy
 msgid "Choose a Map to Open"
 msgstr "Välj en karta att öppna"
 
 #: src/editor2/editor_controller.cpp:400
 msgid "This map is already open."
-msgstr ""
+msgstr "Den här kartan är redan öppen."
 
 #: src/editor2/editor_controller.cpp:438
 msgid "Save the Map As"
 msgstr "Spara kartan som"
 
 #: src/editor2/editor_controller.cpp:442
-#, fuzzy
 msgid "The file already exists. Do you want to overwrite it?"
-msgstr "Kartan finns redan. Vill du skriva över den?"
+msgstr "Filen existerar redan. Vill du skriva över den?"
 
 #: src/editor2/editor_controller.cpp:458
 msgid "No random map generators found."
-msgstr ""
+msgstr "Ingen slumpgeneratorer för kartor hittades."
 
 #: src/editor2/editor_controller.cpp:469
 msgid "Map creation failed."
-msgstr ""
+msgstr "Misslyckades med att skapa karta."
 
 #: src/editor2/editor_controller.cpp:484
-#, fuzzy
 msgid "Choose a mask to apply"
-msgstr "Välj en karta att öppna"
+msgstr "Välj en markering att applicera"
 
 #: src/editor2/editor_controller.cpp:491
 msgid "Error loading mask"
-msgstr ""
+msgstr "Fel vid öppning av markering"
 
 #: src/editor2/editor_controller.cpp:506
 msgid "Choose target map"
-msgstr ""
+msgstr "Välj målkarta"
 
 #: src/editor2/editor_controller.cpp:513 src/editor2/editor_controller.cpp:626
 #: src/editor2/editor_main.cpp:53
 msgid "Error loading map"
-msgstr ""
+msgstr "Fel vid öppning av karta"
 
 #: src/editor2/editor_controller.cpp:602
 msgid "Map saved."
@@ -266,7 +278,7 @@ msgstr "Ångra"
 
 #: src/editor2/editor_controller.cpp:1000
 msgid "Can't Undo"
-msgstr ""
+msgstr "Kan inte ångra"
 
 #: src/editor2/editor_controller.cpp:1004
 msgid "Redo"
@@ -274,11 +286,11 @@ msgstr "Gör om"
 
 #: src/editor2/editor_controller.cpp:1006
 msgid "Can't Redo"
-msgstr ""
+msgstr "Kan inte göra om"
 
 #: src/editor2/editor_map.cpp:85
 msgid "Empty map file or file not found"
-msgstr ""
+msgstr "Tom kartfil eller filen kunde inte hittas"
 
 #: src/editor2/editor_map.cpp:166 src/editor2/mouse_action.cpp:385
 msgid "Player"
@@ -286,7 +298,7 @@ msgstr "Spelare"
 
 #: src/editor2/editor_map.cpp:285
 msgid "The size of the target map is different from the current map"
-msgstr ""
+msgstr "Storleken på målkartan är skiljer sig från den aktuella kartan"
 
 #: src/editor2/editor_palettes.cpp:516
 msgid "FG"
@@ -297,23 +309,24 @@ msgid "BG"
 msgstr "BG"
 
 #: src/editor2/mouse_action.cpp:382
-#, fuzzy
 msgid "(Player)^None"
-msgstr "Spelare"
+msgstr "Ingen"
 
 #: src/editor2/mouse_action.cpp:389
 msgid "Choose player"
-msgstr ""
+msgstr "Välj spelare"
 
 #: src/editor2/mouse_action.cpp:390
 msgid ""
 "Which player should start here? You can also use the 1-9 and delete keys to "
 "set/clear starting positions."
 msgstr ""
+"Vilken spelare ska börja här? Du kan också använda knapparna 1 - 9 och "
+"delete för att sätta/rensa startpositioner."
 
 #: src/gui/dialogs/editor_settings.cpp:119
 msgid "Custom setting"
-msgstr ""
+msgstr "Egen inställning"
 
 #~ msgid "Settings"
 #~ msgstr "Inställningar"
