@@ -89,16 +89,16 @@ void progress_bar::draw_contents()
 		selected_text_location.w = inner_area.w;
 		selected_text_location.h = inner_area.h;
 		{
-		clip_rect_setter clippy(surf, selected_text_location);
-		font::draw_text(
-			&video(),
-			selected_text_location,
-			font::SIZE_NORMAL,
-			selected_text_color,
-			text,
-			text_area.x,
-			text_area.y
-		);
+			clip_rect_setter clippy(surf, selected_text_location);
+			font::draw_text(
+				&video(),
+				selected_text_location,
+				font::SIZE_NORMAL,
+				selected_text_color,
+				text,
+				text_area.x,
+				text_area.y
+			);
 		}
 	}
 
