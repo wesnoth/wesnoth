@@ -11,7 +11,7 @@ ResourceIncludes=..\..\packaging\windows
 MakeIncludes=
 Compiler=_@@_
 CppCompiler=-DHAVE_PYTHON_@@_-DUSE_GZIP_@@_-DHAVE_FRIBIDI_@@_-DDISABLE_POOL_ALLOC_@@_-mthreads_@@_-march=native_@@_-fexceptions_@@_-O3_@@__@@__@@__@@__@@__@@_
-Linker=-lmingwthrd_@@_-lmingw32_@@_-mthreads_@@_-lSDLmain _@@_-lSDL _@@_-lSDL_image _@@_-lSDL_net _@@_-lSDL_mixer _@@_-lSDL_ttf_@@_-lfreetype _@@_-lintl _@@_-lpython25_@@_-lpng_@@_-lboost_iostreams_dw2_@@_-lboost_regex_dw2_@@_-lz_@@_-lws2_32_@@_-ljpeg_@@_-lfribidi_@@_-lpango-1.0_@@_-lpangocairo-1.0_@@_-lcairo_@@_-lgobject-2.0_@@_-lfontconfig_@@_
+Linker=-lmingwthrd_@@_-lmingw32_@@_-mthreads_@@_-lSDLmain _@@_-lSDL _@@_-lSDL_image _@@_-lSDL_net _@@_-lSDL_mixer _@@_-lSDL_ttf_@@_-lfreetype _@@_-lintl _@@_-lpython25_@@_-lpng_@@_-lboost_iostreams_dw2_@@_-lboost_regex_dw2_@@_-lz_@@_-lws2_32_@@_-ljpeg_@@_-lfribidi_@@_-lpango-1.0_@@_-lpangocairo-1.0_@@_-lcairo_@@_-lgobject-2.0_@@_-lfontconfig_@@_-lglib-2.0_@@_
 IsCpp=1
 Icon=
 ExeOutput=..\..

@@ -2242,7 +2242,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit35]
-FileName=..\..\src\server\forum_user_handler.cpp
+FileName=..\..\src\server\sample_user_handler.cpp
 CompileCpp=1
 Folder=wesnothd
 Compile=1
@@ -2530,3 +2530,14 @@ Link=1
 Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
+
+[Unit34]
+FileName=..\..\src\server\forum_user_handler.cpp
+CompileCpp=1
+Folder=wesnothd
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
