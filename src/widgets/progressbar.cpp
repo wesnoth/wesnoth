@@ -88,6 +88,8 @@ void progress_bar::draw_contents()
 		SDL_Rect selected_text_location = location();
 		selected_text_location.w = inner_area.w;
 		selected_text_location.h = inner_area.h;
+		{
+		clip_rect_setter clippy(surf, selected_text_location);
 		font::draw_text(
 			&video(),
 			selected_text_location,
@@ -97,6 +99,7 @@ void progress_bar::draw_contents()
 			text_area.x,
 			text_area.y
 		);
+		}
 	}
 
 	update_rect(location());
