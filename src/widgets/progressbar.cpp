@@ -49,7 +49,7 @@ void progress_bar::draw_contents()
 		int bcr =   0, bcg =   0, bcb =   0;		// Border color.
 		int gcr = 255, gcg = 255, gcb = 255;		// Groove color.
 		int	lightning_thickness = 2;
-		static const SDL_Color selected_text_color = {0xBB,0xBB,0xBB,0};
+		static const SDL_Color selected_text_color = {0xCC,0xCC,0xCC,0};
 
 		SDL_Rect inner_area = {area.x+1,area.y+1,area.w-2,area.h-2};
 		SDL_FillRect(surf,&area,SDL_MapRGB(surf->format,bcr,bcg,bcb));
