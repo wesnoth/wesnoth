@@ -186,7 +186,7 @@ bool editor_map::add_to_selection(const map_location& loc)
 
 bool editor_map::remove_from_selection(const map_location& loc)
 {
-	return selection_.erase(loc);
+	return selection_.erase(loc) != 0;
 }
 
 void editor_map::clear_selection()
