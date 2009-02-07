@@ -1067,7 +1067,7 @@ void editor_controller::hotkey_set_mouse_action(hotkey::HOTKEY_COMMAND command)
 		redraw_toolbar();
 		gui().set_report_content(reports::EDIT_LEFT_BUTTON_FUNCTION,
 				hotkey::get_hotkey(command).get_description());
-		gui().set_toolbar_hint(mouse_action_hints_[command]);
+        gui().set_toolbar_hint(_("Mouseover for a hint") + std::string("\n") + mouse_action_hints_[command]);
 		gui().invalidate_game_status();
 	} else {
 		ERR_ED << "Invalid hotkey command (" << (int)command << ") passed to set_mouse_action\n";
