@@ -1,4 +1,4 @@
-/* $Id */
+/* $Id$ */
 /*
    Copyright (C) 2009 by Thomas Baumhauer <thomas.baumhauer@NOSPAMgmail.com>
    Copyright (C) 2009 by Mark de Wever <koraq@xs4all.nl>
