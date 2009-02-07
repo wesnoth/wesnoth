@@ -429,11 +429,11 @@ void game::transfer_side_control(const network::connection sock, const simple_wm
 			notify_new_host();
 		}*/
 	}
+	send_change_controller(side_num, newplayer, false);
 	side_controllers_[side_num - 1] = "network";
 	sides_taken_[side_num - 1] = true;
 	sides_[side_num - 1] = newplayer->first;
 
-	send_change_controller(side_num, newplayer, false);
 	if (host_leave) transfer_ai_sides();
 
 	// If we gave the new side to an observer add him to players_.
@@ -1012,16 +1012,17 @@ bool game::remove_player(const network::connection player, const bool disconnect
 	if (host) {
 		owner_ = players_.front();
 		notify_new_host();
-		transfer_ai_sides();
 	}
 
 	// Look for all sides the player controlled and drop them.
 	// (Give them to the host.)
 	for (side_vector::iterator side = sides_.begin(); side != sides_.end(); ++side)	{
-		if (*side != player) continue;
 		size_t side_num = side - sides_.begin();
+		if (*side != player || side_controllers_[side_num] == "ai") continue;
+		send_change_controller(side_num + 1, player_info_->find(owner_));
 		side_controllers_[side_num] = "human";
 		sides_taken_[side_num] = true;
+		sides_[side_num] = owner_;
 		// Check whether the host is actually a player and make him one if not.
 		if (!is_player(owner_)) {
 			DBG_GAME << "making the owner a player...\n";
@@ -1029,8 +1030,6 @@ bool game::remove_player(const network::connection player, const bool disconnect
 			players_.push_back(owner_);
 			send_observerquit(player_info_->find(owner_));
 		}
-		send_change_controller(side_num + 1, player_info_->find(owner_));
-		sides_[side_num] = owner_;
 
 		//send the host a notification of removal of this side
 		char side_drop_buf[64];
@@ -1041,6 +1040,7 @@ bool game::remove_player(const network::connection player, const bool disconnect
 
 		send_to_one(drop, owner_);
 	}
+	if (host) transfer_ai_sides();
 	DBG_GAME << debug_player_info();
 
 	send_user_list(player);
