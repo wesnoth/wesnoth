@@ -409,16 +409,28 @@ bool show_video_mode_dialog(display& disp)
 		// SDL says that all modes are possible, 
 		// so it's OK to use a hardcoded list here.
 		static const SDL_Rect scr_modes[] = {
-			{ 0, 0,  800, 600 },
-			{ 0, 0, 1024, 768 },
-			{ 0, 0, 1280, 960 },
+			{ 0, 0,  800, 600  },
+			{ 0, 0, 1024, 768  },
+			{ 0, 0, 1280, 960  },
 			{ 0, 0, 1280, 1024 },
+			{ 0, 0, 1440, 900  },
+			{ 0, 0, 1440, 1200 },
+			{ 0, 0, 1600, 1200 },
+			{ 0, 0, 1680, 1050 },
+			{ 0, 0, 1920, 1080 },
+			{ 0, 0, 1920, 1200 },
 		};
 		static const SDL_Rect * const scr_modes_list[] = {
 			&scr_modes[0],
 			&scr_modes[1],
 			&scr_modes[2],
 			&scr_modes[3],
+			&scr_modes[4],
+			&scr_modes[5],
+			&scr_modes[6],
+			&scr_modes[7],
+			&scr_modes[8],
+			&scr_modes[9],
 			NULL
 		};
 
