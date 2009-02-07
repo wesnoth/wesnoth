@@ -26,6 +26,7 @@
 #include "formula_string_utils.hpp"
 
 #define DBG_DP LOG_STREAM(debug, display)
+#define WRN_DP LOG_STREAM(warn, display)
 
 namespace image {
 
@@ -88,17 +89,22 @@ surface getMinimap(int w, int h, const gamemap& map, const viewpoint* vw)
 
 					//Compose images of base and overlay if neccessary
 					if(map.get_terrain_info(terrain).is_combined()) {
-						surface overlay(get_image("terrain/" + map.get_terrain_info(terrain).minimap_image_overlay() + ".png",image::HEXED));
-						if(overlay != 0) {
+						surface overlay(get_image("terrain/" + map.get_terrain_info(terrain).minimap_image_overlay() + ".png", image::HEXED));
+						if(overlay != 0 && overlay != tile) {
 							surface combined = create_compatible_surface(tile, tile->w, tile->h);
-
 							SDL_Rect r;
 							r.x = 0;
 							r.y = 0;
 							SDL_BlitSurface(tile, NULL, combined, &r);
 							r.x = std::max(0, (tile->w - overlay->w)/2);
 							r.y = std::max(0, (tile->h - overlay->h)/2);
-							blit_surface(overlay, NULL, combined, &r);
+                            if ((overlay->flags & SDL_RLEACCEL) == 0) {
+                                blit_surface(overlay, NULL, combined, &r);
+                            } else {
+                                WRN_DP << map.get_terrain_info(terrain).minimap_image_overlay() << ".png overlay is RLE-encoded, creating a neutral surface\n";
+                                surface overlay_neutral = make_neutral_surface(overlay);
+							    blit_surface(overlay_neutral, NULL, combined, &r);
+                            }
 							tile = combined;
 						}
 
