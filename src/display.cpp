@@ -1393,11 +1393,18 @@ void display::scroll(int xmove, int ymove)
 	srcrect.y -= dy;
 	if (!screen_.update_locked())
 		SDL_BlitSurface(screen,&srcrect,screen,&dstrect);
+#ifdef SDL_BLIT_CRASH_WORKAROUND
+#ifdef _MSC_VER
+    __asm{cld};
+#elif defined(__GNUG__)
+    asm("cld");
+#endif
+#endif
 
 	// Invalidate locations in the newly visible rects
 
 	if (dy != 0) {
-		SDL_Rect r = map_area();
+		SDL_Rect r = this->map_area();
 		if(dy < 0)
 			r.y = r.y + r.h + dy;
 		r.h = abs(dy);
