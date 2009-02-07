@@ -78,6 +78,10 @@
 #include <boost/iostreams/filtering_streambuf.hpp>
 #include <boost/iostreams/filter/gzip.hpp>
 
+#ifdef __amigaos4__
+const char __attribute__((used)) stackcookie[] = "\0$STACK: 16000000";
+#endif
+
 #define ERR_CONFIG LOG_STREAM(err, config)
 #define WRN_CONFIG LOG_STREAM(warn, config)
 #define LOG_CONFIG LOG_STREAM(info, config)
