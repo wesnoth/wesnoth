@@ -427,6 +427,8 @@ bool show_video_mode_dialog(display& disp)
 			&scr_modes[8],
 			&scr_modes[9],
 			&scr_modes[10],
+			&scr_modes[11],
+			&scr_modes[12],
 			NULL
 		};
 
