@@ -409,6 +409,9 @@ bool show_video_mode_dialog(display& disp)
 		// SDL says that all modes are possible, 
 		// so it's OK to use a hardcoded list here.
 		static const SDL_Rect scr_modes[] = {
+			{ 0, 0,  320, 240  },
+			{ 0, 0,  640, 480  },
+			{ 0, 0,  800, 480  },	// small-gui (EeePC resolution)
 			{ 0, 0,  800, 600  },
 			{ 0, 0, 1024, 768  },
 			{ 0, 0, 1280, 960  },
@@ -431,6 +434,9 @@ bool show_video_mode_dialog(display& disp)
 			&scr_modes[7],
 			&scr_modes[8],
 			&scr_modes[9],
+			&scr_modes[10],
+			&scr_modes[11],
+			&scr_modes[12],
 			NULL
 		};
 
