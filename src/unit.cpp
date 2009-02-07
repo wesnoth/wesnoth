@@ -960,6 +960,11 @@ void unit::heal(int amount)
 	}
 }
 
+const std::map<std::string,std::string>& unit::get_states() const
+{
+	return states_;
+}
+
 std::string unit::get_state(const std::string& state) const
 {
 	std::map<std::string,std::string>::const_iterator i = states_.find(state);

@@ -59,6 +59,8 @@ public: \
 	} \
 };
 
+template <typename T, typename K> variant convert_map( const std::map<T,K>& map );
+
 class terrain_callable : public game_logic::formula_callable {
 public:
 	typedef map_location location;

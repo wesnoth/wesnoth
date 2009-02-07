@@ -164,6 +164,7 @@ public:
 	bool resting() const { return resting_; }
 	void set_resting(bool rest) { resting_ = rest; }
 
+	const std::map<std::string,std::string>& get_states() const;
 	std::string get_state(const std::string& state) const;
 	void set_state(const std::string& state, const std::string& value);
 

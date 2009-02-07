@@ -11,8 +11,18 @@
    See the COPYING file for more details.
 */
 
-
 #include "callable_objects.hpp"
+
+template <typename T, typename K> 
+variant convert_map( const std::map<T, K>& input_map ) {
+	std::map<variant,variant> tmp;
+
+	for(typename std::map< T, K>::const_iterator i = input_map.begin(); i != input_map.end(); ++i) {
+			tmp[ variant(i->first) ] = variant( i->second );
+	}
+
+	return variant( &tmp );
+}
 
 variant location_callable::get_value(const std::string& key) const
 {
@@ -213,6 +223,10 @@ variant unit_callable::get_value(const std::string& key) const
 			res.push_back( variant(*it) );
 		}
 		return variant( &res );
+	} else if(key == "states") {
+		const std::map<std::string, std::string>& states_map = u_.get_states();
+
+		return convert_map( states_map );
 	} else if(key == "side") {
 		return variant(u_.side()-1);
 	} else if(key == "cost") {
@@ -249,6 +263,7 @@ void unit_callable::get_inputs(std::vector<game_logic::formula_input>* inputs) c
 	inputs->push_back(game_logic::formula_input("total_movement", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("movement_left", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("side", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("states", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("cost", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("vars", FORMULA_READ_ONLY));
 }
