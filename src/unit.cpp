@@ -830,11 +830,11 @@ SDL_Colour unit::hp_color() const
 		energy_colour.b = 0;
 	} else if(unit_energy >= 0.5) {
 		energy_colour.r = 255;
-		energy_colour.g = 155;
+		energy_colour.g = 175;
 		energy_colour.b = 0;
 	} else if(unit_energy >= 0.25) {
 		energy_colour.r = 255;
-		energy_colour.g = 175;
+		energy_colour.g = 155;
 		energy_colour.b = 0;
 	} else {
 		energy_colour.r = 255;
