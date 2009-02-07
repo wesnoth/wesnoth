@@ -37,6 +37,38 @@ void tpassword_box::delete_char(const bool before_cursor) {
 	post_function();
 }
 
+void tpassword_box::handle_key_backspace(SDLMod modifier, bool& handled) {
+	pre_function();
+
+	// Copy & paste from ttext_::handle_key_backspace()
+	DBG_G_E << "Text: key press: backspace.\n";
+
+	handled = true;
+	if(get_selection_length() != 0) {
+		delete_selection();
+	} else if(get_selection_start()){
+		delete_char(true);
+	}
+
+	post_function();
+}
+
+void tpassword_box::handle_key_delete(SDLMod modifier, bool& handled) {
+	pre_function();
+
+	// Copy & paste from ttext_::handle_key_delete()
+	DBG_G_E << "Text: key press: delete.\n";
+
+	handled = true;
+	if(get_selection_length() != 0) {
+		delete_selection();
+	} else if (get_selection_start() < text().size()) {
+		delete_char(false);
+	}
+
+	post_function();
+}
+
 void tpassword_box::paste_selection(const bool mouse) {
 	pre_function();
 	ttext_box::paste_selection(mouse);
