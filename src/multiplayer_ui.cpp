@@ -191,8 +191,7 @@ void chat::init_textbox(gui::textbox& textbox)
 {
 	for(msg_hist::const_iterator itor = message_history_.begin();
 			itor != message_history_.end(); ++itor) {
-		textbox.append_text(format_message(*itor), true, itor->user == "server" ?
-				color_message(*itor): font::NORMAL_COLOUR);
+		textbox.append_text(format_message(*itor), true, color_message(*itor));
 	}
 
 	last_update_ = message_history_.size();
@@ -202,8 +201,7 @@ void chat::update_textbox(gui::textbox& textbox)
 {
 	for(msg_hist::const_iterator itor = message_history_.begin() + last_update_;
 			itor != message_history_.end(); ++itor) {
-		textbox.append_text(format_message(*itor), true, itor->user == "server" ?
-				color_message(*itor) : font::NORMAL_COLOUR);
+		textbox.append_text(format_message(*itor), true, color_message(*itor));
 	}
 
 	last_update_ = message_history_.size();
