@@ -853,13 +853,19 @@ SDL_Rect line_size(const std::string& line, int font_size, int style)
 	return res;
 }
 
-std::string make_text_ellipsis(const std::string &text, int font_size, int max_width, bool with_tags)
+std::string make_text_ellipsis(const std::string &text, int font_size,
+		int max_width, bool with_tags, bool parse_for_style)
 {
 	static const std::string ellipsis = "...";
 
-	if(line_width(with_tags ? text : del_tags(text), font_size) <= max_width)
+	SDL_Color unused_color;
+	int unused_int;
+	int style = TTF_STYLE_NORMAL;
+	if(parse_for_style) parse_markup(text.begin(), text.end(), &unused_int, &unused_color, &style);
+
+	if(line_width(with_tags ? text : del_tags(text), font_size, style) <= max_width)
 		return text;
-	if(line_width(ellipsis, font_size) > max_width)
+	if(line_width(ellipsis, font_size, style) > max_width)
 		return "";
 
 	std::string current_substring;
@@ -871,7 +877,7 @@ std::string make_text_ellipsis(const std::string &text, int font_size, int max_w
 		tmp.append(itor.substr().first, itor.substr().second);
 		tmp += ellipsis;
 
-		if (line_width(with_tags ? tmp : del_tags(tmp), font_size) > max_width) {
+		if (line_width(with_tags ? tmp : del_tags(tmp), font_size, style) > max_width) {
 			return current_substring + ellipsis;
 		}
 

@@ -913,7 +913,7 @@ void menu::draw_row(const size_t row_index, const SDL_Rect& rect, ROW_TYPE type)
 				const std::string to_show =
 					(use_ellipsis_ && !has_wrap) ?
 						font::make_text_ellipsis(str, style_->get_font_size(),
-							loc.w - (xpos - rect.x) - 2*style_->get_thickness(), false)
+							loc.w - (xpos - rect.x) - 2*style_->get_thickness(), false, true)
 						: str;
 				const SDL_Rect& text_size = font::text_area(str,style_->get_font_size());
 				const size_t y = rect.y + (rect.h - text_size.h)/2;
