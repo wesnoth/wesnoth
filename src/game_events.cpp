@@ -39,6 +39,7 @@
 #include "wml_exception.hpp"
 
 #include <boost/scoped_ptr.hpp>
+#include <algorithm>
 #include <iomanip>
 #include <iostream>
 
@@ -1303,9 +1304,7 @@ namespace {
 						ss.clear();
 
 						if (low > high) {
-							tmp = low;
-							low = high;
-							high = tmp;
+							std::swap(low, high);
 						}
 						ranges.push_back(std::pair<long, long>(low,high));
 						num_choices += (high - low) + 1;
@@ -1387,9 +1386,7 @@ namespace {
 					ss.clear();
 
 					if (low > high) {
-						tmp = low;
-						low = high;
-						high = tmp;
+						std::swap(low, high);
 					}
 					ranges.push_back(std::pair<long, long>(low,high));
 					num_choices += (high - low) + 1;
