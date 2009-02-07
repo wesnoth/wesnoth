@@ -100,6 +100,11 @@
 #include <boost/iostreams/filtering_streambuf.hpp>
 #include <boost/iostreams/filter/gzip.hpp>
 
+// Minimum stack cookie to prevent stack overflow on AmigaOS4
+#ifdef __amigaos4__
+const char __attribute__((used)) stackcookie[] = "\0$STACK: 16000000";
+#endif
+
 #define ERR_CONFIG LOG_STREAM(err, config)
 #define WRN_CONFIG LOG_STREAM(warn, config)
 #define DBG_CONFIG LOG_STREAM(debug, config)
