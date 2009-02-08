@@ -60,6 +60,7 @@ public: \
 };
 
 template <typename T, typename K> variant convert_map( const std::map<T,K>& map );
+template <typename T> variant convert_vector( const std::vector<T>& input_vector );
 
 class terrain_callable : public game_logic::formula_callable {
 public:

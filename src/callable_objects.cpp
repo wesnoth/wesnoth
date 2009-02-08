@@ -24,6 +24,17 @@ variant convert_map( const std::map<T, K>& input_map ) {
 	return variant( &tmp );
 }
 
+template <typename T> 
+variant convert_vector( const std::vector<T>& input_vector ) {
+	std::vector<variant> tmp;
+
+	for(typename std::vector<T>::const_iterator i = input_vector.begin(); i != input_vector.end(); ++i) {
+			tmp.push_back( variant( *i ) );
+	}
+
+	return variant( &tmp );
+}
+
 variant location_callable::get_value(const std::string& key) const
 {
 	if(key == "x") {
@@ -114,35 +125,15 @@ variant attack_type_callable::get_value(const std::string& key) const
 		return variant(att_.num_attacks());
 	} else if(key == "special") {
 		std::string specials = att_.weapon_specials(true);
-		std::vector<variant> res;
 
-		if(specials == "")
+		if(specials == "") {
+			std::vector<variant> res;
 			return variant( &res );
+		}
 
-		if (att_.has_special_by_id("stones"))
-			return variant( "stones" );
-		if (att_.has_special_by_id("magical"))
-			return variant( "magical" );
-		if (att_.has_special_by_id("marksman"))
-			return variant( "marksman" );
-		if (att_.has_special_by_id("drains"))
-			return variant( "drains" );
-		if (att_.has_special_by_id("charge"))
-			return variant( "charge" );
-		if (att_.has_special_by_id("poison"))
-			return variant( "poison" );
-		if (att_.has_special_by_id("berserk"))
-			return variant( "berserk" );
-		if (att_.has_special_by_id("backstab"))
-			return variant( "backstab" );
-		if (att_.has_special_by_id("slow"))
-			return variant( "slow" );
-		if (att_.has_special_by_id("plague"))
-			return variant( "plague" );
-		if (att_.has_special_by_id("firststrike"))
-			return variant( "firststrike" );
+		std::vector< std::string > string_vector = utils::split( specials );
 
-		return variant( &res );
+		return convert_vector( string_vector );
 	}
 
 	return variant();

@@ -1,4 +1,4 @@
-faifile 'scounting_move.fai'
+faifile 'scouting_move.fai'
 
 if(size(villages) != 0, 
 	move(me.loc, nearest_loc(nearest_loc(me.loc,villages),unit_moves(me.loc))),
