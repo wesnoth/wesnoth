@@ -37,7 +37,7 @@ void tpassword_box::delete_char(const bool before_cursor) {
 	post_function();
 }
 
-void tpassword_box::handle_key_backspace(SDLMod modifier, bool& handled) {
+void tpassword_box::handle_key_backspace(SDLMod /*modifier*/, bool& handled) {
 	pre_function();
 
 	// Copy & paste from ttext_::handle_key_backspace()
@@ -53,7 +53,7 @@ void tpassword_box::handle_key_backspace(SDLMod modifier, bool& handled) {
 	post_function();
 }
 
-void tpassword_box::handle_key_delete(SDLMod modifier, bool& handled) {
+void tpassword_box::handle_key_delete(SDLMod /*modifier*/, bool& handled) {
 	pre_function();
 
 	// Copy & paste from ttext_::handle_key_delete()
