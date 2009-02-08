@@ -1791,7 +1791,7 @@ void unit::set_facing(map_location::DIRECTION dir) {
 	// Else look at yourself (not available so continue to face the same direction)
 }
 
-void unit::redraw_unit(game_display& disp, const map_location& loc, const bool fake)
+void unit::redraw_unit(game_display& disp, const map_location& loc)
 {
 	const gamemap & map = disp.get_map();
 	if(!loc.valid() || hidden_ || disp.fogged(loc)

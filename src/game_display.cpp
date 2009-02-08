@@ -415,7 +415,7 @@ void game_display::redraw_units(const std::vector<map_location>& invalidated_uni
 			//simulate_delay += 1;
 		}
 		if (temp_unit_ && temp_unit_loc_ == loc) {
-			temp_unit_->redraw_unit(*this, temp_unit_loc_, true);
+			temp_unit_->redraw_unit(*this, temp_unit_loc_);
 			//simulate_delay += 1;
 		}
 	}
