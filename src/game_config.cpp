@@ -13,13 +13,15 @@
 */
 
 #include "global.hpp"
+#include "game_config.hpp"
 
 #include "config.hpp"
-#include "log.hpp"
 #include "gettext.hpp"
-#include "game_config.hpp"
+#include "log.hpp"
+#include "util.hpp"
 #include "version.hpp"
 #include "wesconfig.h"
+#include "serialization/string_utils.hpp"
 #ifdef HAVE_REVISION
 #include "revision.hpp"
 #endif /* HAVE_REVISION */
