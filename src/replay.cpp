@@ -1036,7 +1036,6 @@ bool do_replay_handle(game_display& disp, const gamemap& map,
 			}
 		}
 		else if((child = cfg->child("move")) != NULL) {
-
 			const config* const destination = child->child("destination");
 			const config* const source = child->child("source");
 
@@ -1087,64 +1086,7 @@ bool do_replay_handle(game_display& disp, const gamemap& map,
 
 			paths::route route = a_star_search(src, dst, 10000.0, &calc, map.w(), map.h(), &allowed_teleports);
 
-			if(route.steps.empty()) {
-				std::stringstream errbuf;
-				errbuf << "src cannot get to dst: " << src << " -> " << dst
-				       << " with " << u->second.movement_left() << " MP left\n";
-				replay::throw_error(errbuf.str());
-			}
-
-			if(!get_replay_source().is_skipping()) {
-				unit_display::move_unit(route.steps,u->second,teams);
-			}
-			else{
-				//unit location needs to be updated
-				u->second.set_goto(*(route.steps.end() - 1));
-			}
-			u->second.set_movement(route.move_left);
-
-			std::pair<map_location,unit> *up = units.extract(u->first);
-			up->first = dst;
-			units.add(up);
-			unit::clear_status_caches();
-			if (up->first == up->second.get_goto())
-			{
-				//if unit has arrived to destination, goto variable is cleaned
-				up->second.set_goto(map_location());
-			}
-			up->second.set_standing(up->first);
-			u = units.find(dst);
-			check_checksums(disp,units,*cfg);
-			// Get side now, in case game events change the unit.
-			int u_team = u->second.side()-1;
-			if(map.is_village(dst)) {
-				const int orig_owner = village_owner(dst,teams) + 1;
-				if(orig_owner != team_num) {
-					u->second.set_movement(0);
-					get_village(dst,disp,teams,team_num-1,units);
-				}
-			}
-
-			if(!get_replay_source().is_skipping()) {
-				disp.invalidate(dst);
-				disp.draw();
-			}
-
-			game_events::fire("moveto",dst);
-			//FIXME: what's special about team 1? regroup it with next block
-			if(team_num != 1 && (teams.front().uses_shroud() || teams.front().uses_fog()) && !teams.front().fogged(dst)) {
-				game_events::fire("sighted",dst);
-			}
-			for(std::vector<team>::iterator my_team = teams.begin() ; my_team != teams.end() ; my_team++) {
-				if((my_team->uses_shroud() || my_team->uses_fog()) && !my_team->fogged(dst)) {
-					my_team->see(u_team);
-				}
-			}
-
-			fix_shroud = !get_replay_source().is_skipping();
-
-			// would have to go via mousehandler to make this work:
-			//disp.unhighlight_reach();
+			::move_unit(&disp, map, units, teams, route.steps, NULL, NULL, NULL, true, true, true);
 		}
 
 		else if((child = cfg->child("attack")) != NULL) {

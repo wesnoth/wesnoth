@@ -2175,7 +2175,7 @@ size_t move_unit(game_display* disp,
 		std::vector<map_location> route,
 		replay* move_recorder, undo_list* undo_stack,
 		map_location *next_unit, bool continue_move,
-		bool should_clear_shroud)
+		bool should_clear_shroud, bool is_replay)
 {
 	assert(route.empty() == false);
 
@@ -2216,11 +2216,13 @@ size_t move_unit(game_display* disp,
 	std::string ambushed_string;
 
 	for(step = route.begin()+1; step != route.end(); ++step) {
+		const bool skirmisher = ui->second.get_ability_bool("skirmisher",*step);
 		const t_translation::t_terrain terrain = map[*step];
 
 		const int cost = ui->second.movement_cost(terrain);
 		if(cost >moves_left || discovered_unit || (continue_move == false && seen_units.empty() == false)) {
-			break; // not enough MP or spotted new enemies
+			if ((!is_replay) || (!skirmisher))
+				break; // not enough MP or spotted new enemies
 		}
 
 		const unit_map::const_iterator enemy_unit = units.find(*step);
@@ -2269,7 +2271,6 @@ size_t move_unit(game_display* disp,
 		team_num = ui->second.side()-1;
 		team = teams[team_num];
 
-		const bool skirmisher = ui->second.get_ability_bool("skirmisher",*step);
 		if(!skirmisher && enemy_zoc(map,units,teams,*step,team,ui->second.side())) {
 			moves_left = 0;
 		}
