@@ -663,10 +663,6 @@ public:
 		                            */
 		LAYER_UNIT_MISSILE_DEFAULT = LAYER_UNIT_FIRST+90, /**< default layer for missile frames*/
 		LAYER_UNIT_LAST=LAYER_UNIT_FIRST+100,
-		LAYER_TERRAIN_TMP_FG,      /**<
-		                            * Layer which holds stuff that needs to be
-		                            * sorted out further, but on top of units.
-		                            */
 		LAYER_REACHMAP,            /**< "black stripes" on unreachable hexes. */
 		LAYER_FOG_SHROUD,          /**< Fog and shroud. */
 		LAYER_UNIT_BAR,            /**<
