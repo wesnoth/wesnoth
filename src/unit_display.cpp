@@ -220,10 +220,16 @@ void unit_attack(
 
 	const unit_map::iterator def = units.find(b);
 	assert(def != units.end());
-	unit& defender = def->second;
+	// do a copy so we can change the caracteristics
+	unit defender = def->second;
+	bool was_hidden = defender.get_hidden();
+	def->second.set_hidden(true);
+	disp->place_temporary_unit(defender,def->first);
+
 
 	att->second.set_facing(a.get_relative_dir(b));
 	def->second.set_facing(b.get_relative_dir(a));
+	defender.set_facing(b.get_relative_dir(a));
 
 
 	unit_animator animator;
@@ -276,8 +282,22 @@ void unit_attack(
 	}
 
 	animator.start_animations();
+	animator.wait_until(0);
+	int damage_left = damage;
+	while(damage_left > 0 && !animator.would_end()) {
+		int step_left = (animator.get_end_time() - animator.get_animation_time() )/50;
+		int removed_hp = damage_left/step_left;
+		if(removed_hp < 1) removed_hp = 1;
+		if(step_left < 1) step_left = 1;
+		defender.take_hit(removed_hp);
+		damage_left -= removed_hp;
+		animator.wait_until(animator.get_animation_time_potential() +50);
+	}
 	animator.wait_for_end();
 	animator.set_all_standing();
+	disp->remove_temporary_unit();
+	def->second.set_hidden(was_hidden);
+	def->second.set_standing(def->first);
 
 }
 

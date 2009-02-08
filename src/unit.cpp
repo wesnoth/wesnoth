@@ -1873,8 +1873,8 @@ void unit::redraw_unit(game_display& disp, const map_location& loc, const bool f
 
 
 
-	// We draw bars only if wanted, visible on the map view and not a fake unit
-	bool draw_bars = draw_bars_ && !fake;
+	// We draw bars only if wanted, visible on the map view
+	bool draw_bars = draw_bars_ ;
 	if (draw_bars) {
 		const int d = disp.hex_size();
 		SDL_Rect unit_rect = {xsrc, ysrc +adjusted_params.y, d, d};
