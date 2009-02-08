@@ -191,7 +191,6 @@ bool show_intro_part(display &disp, const vconfig& part,
 		// Redraw all
 		events::raise_draw_event();
 		update_whole_screen();
-		disp.flip();
 
 		// Draw images
 		bool pass = false;
@@ -244,7 +243,12 @@ bool show_intro_part(display &disp, const vconfig& part,
 						continue;
 					}
 
-					disp.flip();
+					// Update display only if there's a slideshow going on.
+					// This prevents the textbox from flickering in the most
+					// common scenario.
+					if(images.size() > 1 && delay > 0) {
+						disp.flip();
+					}
 				}
 			}
 
