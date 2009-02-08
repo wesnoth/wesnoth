@@ -53,6 +53,8 @@ protected:
 	virtual void whisper();
 	virtual void shout();
 	virtual void clear_labels();
+	virtual void start_network();
+	virtual void stop_network();
 	virtual bool can_execute_command(hotkey::HOTKEY_COMMAND command, int index=-1) const;
 
 	virtual void play_side(const unsigned int team_index, bool save);
@@ -65,6 +67,7 @@ protected:
 	turn_info* turn_data_;
 
 	int beep_warning_time_;
+	mutable bool network_processing_stopped_;
 private:
 	void process_oos(const std::string& err_msg);
 	void set_end_scenario_button();

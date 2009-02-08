@@ -77,6 +77,8 @@ const struct {
 	{ hotkey::HOTKEY_OBJECTIVES, "objectives", N_("Scenario Objectives"), false, hotkey::SCOPE_GAME },
 	{ hotkey::HOTKEY_UNIT_LIST, "unitlist", N_("Unit List"), false, hotkey::SCOPE_GAME },
 	{ hotkey::HOTKEY_STATISTICS, "statistics", N_("Statistics"), false, hotkey::SCOPE_GAME },
+	{ hotkey::HOTKEY_STOP_NETWORK, "stopnetwork", N_("Stop"), false, hotkey::SCOPE_GAME },
+	{ hotkey::HOTKEY_START_NETWORK, "startnetwork", N_("Play"), false, hotkey::SCOPE_GAME },
 	{ hotkey::HOTKEY_QUIT_GAME, "quit", N_("Quit Game"), false, hotkey::SCOPE_GENERAL },
 	{ hotkey::HOTKEY_LABEL_TEAM_TERRAIN, "labelteamterrain", N_("Set Team Label"), false, hotkey::SCOPE_GAME },
 	{ hotkey::HOTKEY_LABEL_TERRAIN, "labelterrain", N_("Set Label"), false, hotkey::SCOPE_GAME },
@@ -761,6 +763,12 @@ bool command_executor::execute_command(HOTKEY_COMMAND command, int /*index*/)
 			break;
 		case HOTKEY_STATISTICS:
 			show_statistics();
+			break;
+		case HOTKEY_STOP_NETWORK:
+			stop_network();
+			break;
+		case HOTKEY_START_NETWORK:
+			start_network();
 			break;
 		case HOTKEY_LABEL_TEAM_TERRAIN:
 			label_terrain(true);

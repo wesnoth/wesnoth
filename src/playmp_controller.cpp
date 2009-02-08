@@ -45,7 +45,7 @@ playmp_controller::playmp_controller(const config& level,
 		skip_replay_ = false;
 	}
 
-
+	network_processing_stopped_ = false;
 
 }
 
@@ -74,6 +74,16 @@ void playmp_controller::whisper(){
 
 void playmp_controller::shout(){
 	menu_handler_.shout();
+}
+
+void playmp_controller::start_network(){
+	network_processing_stopped_ = false;
+	LOG_NG << "network processing activated again";
+}
+
+void playmp_controller::stop_network(){
+	network_processing_stopped_ = true;
+	LOG_NG << "network processing stopped";
 }
 
 void playmp_controller::play_side(const unsigned int team_index, bool save){
@@ -468,42 +478,48 @@ void playmp_controller::play_network_turn(){
 
 	for(;;) {
 
-		bool have_data = false;
-		config cfg;
+		if (!network_processing_stopped_){
+			bool have_data = false;
+			config cfg;
 
-		network::connection from = network::null_connection;
+			network::connection from = network::null_connection;
 
-		if(data_backlog_.empty() == false) {
-			have_data = true;
-			cfg = data_backlog_.front();
-			data_backlog_.pop_front();
-		} else {
-			from = network::receive_data(cfg);
-			have_data = from != network::null_connection;
-		}
-
-		if(have_data) {
-			if (skip_replay_ && replay_last_turn_ <= status_.turn()){
-					skip_replay_ = false;
+			if(data_backlog_.empty() == false) {
+				have_data = true;
+				cfg = data_backlog_.front();
+				data_backlog_.pop_front();
+			} else {
+				from = network::receive_data(cfg);
+				have_data = from != network::null_connection;
 			}
-			try{
-				const turn_info::PROCESS_DATA_RESULT result = turn_data.process_network_data(cfg,from,data_backlog_,skip_replay_);
-				if(result == turn_info::PROCESS_RESTART_TURN) {
-					player_type_changed_ = true;
-					return;
-				} else if(result == turn_info::PROCESS_END_TURN) {
-					break;
+
+			if(have_data) {
+				if (skip_replay_ && replay_last_turn_ <= status_.turn()){
+						skip_replay_ = false;
 				}
-			}
-			catch (replay::error e){
-				process_oos(e.message);
-				throw e;
-			}
+				try{
+					const turn_info::PROCESS_DATA_RESULT result = turn_data.process_network_data(cfg,from,data_backlog_,skip_replay_);
+					if(result == turn_info::PROCESS_RESTART_TURN) {
+						player_type_changed_ = true;
+						return;
+					} else if(result == turn_info::PROCESS_END_TURN) {
+						break;
+					}
+				}
+				catch (replay::error e){
+					process_oos(e.message);
+					throw e;
+				}
 
+			}
 		}
 
 		play_slice();
-		turn_data.send_data();
+
+		if (!network_processing_stopped_){
+			turn_data.send_data();
+		}
+
 		gui_->draw();
 	}
 
@@ -563,6 +579,16 @@ bool playmp_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int 
 		case hotkey::HOTKEY_SPEAK_ALLY:
 		case hotkey::HOTKEY_SPEAK_ALL:
 			res = res && network::nconnections() > 0;
+			break;
+		case hotkey::HOTKEY_START_NETWORK:
+		case hotkey::HOTKEY_STOP_NETWORK:
+			res = is_observer();
+			break;
+		case hotkey::HOTKEY_STOP_REPLAY:
+			if (is_observer()){
+				network_processing_stopped_ = true;
+				LOG_NG << "network processing stopped";
+			}
 			break;
 	    default:
 			return playsingle_controller::can_execute_command(command, index);
