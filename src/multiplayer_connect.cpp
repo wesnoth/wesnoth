@@ -1150,7 +1150,7 @@ void connect::start_game()
 
 	// Build the gamestate object after updating the level
 
-	level_to_gamestate(level_, state_, params_.saved_game);
+	level_to_gamestate(level_, state_);
 
 	network::send_data(config("start_game"), 0, true);
 }
@@ -1604,15 +1604,26 @@ void connect::load_game()
 		level_["mp_countdown_action_bonus"] = start_data["mp_countdown_action_bonus"];
 		level_["experience_modifier"] = start_data["experience_modifier"];
 		level_["observer"] = start_data["observer"];
-		level_.add_child("snapshot") = start_data;
+		//Start-of-scenario save
+		if(state_.snapshot.empty()){
+			//For a start-of-scenario-save, write the data to the starting_pos and not the snapshot, since
+			//there should only be snapshots for midgame reloads
+			if(level_.child("replay_start") == NULL)
+			{
+				level_.add_child("replay_start") = start_data;
+			} else {
+				level_.child("replay_data")->merge_with(start_data);
+			}
+			level_.add_child("snapshot") = config();
+		} else {
+			level_.add_child("snapshot") = start_data;
+		}
 		level_["random_seed"] = start_data["random_seed"];
 		level_["random_calls"] = start_data["random_calls"];
 
 		// Adds the replay data, and the replay start, to the level,
 		// so clients can receive it.
 		level_.add_child("replay") = state_.replay_data;
-		if(!state_.starting_pos.empty())
-			level_.add_child("replay_start") = state_.starting_pos;
 		level_.add_child("statistics") = statistics::write_stats();
 
 	} else {
@@ -1700,12 +1711,16 @@ void connect::load_game()
 
 config* connect::current_config(){
 	config* cfg_level = NULL;
-
-	if (level_.child("snapshot") != NULL){
+	
+	//It might make sense to invent a mechanism of some sort to check whether a config node contains information
+	//that you can load from(side information, specifically)
+	if (level_.child("snapshot") != NULL && level_.child("snapshot")->child("side") != NULL){
 		// Savegame
 		cfg_level = level_.child("snapshot");
-	}
-	else{
+	} else if(level_.child("side") == NULL) {
+		// Start-of-scenario save, the info has to be taken from the starting_pos
+		cfg_level = &state_.starting_pos;
+	} else {
 		// Fresh game, no snapshot available
 		cfg_level = &level_;
 	}

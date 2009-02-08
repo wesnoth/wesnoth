@@ -349,7 +349,7 @@ void wait::start_game()
 	 * stored.)
 	 */
 	if(level_.child("player") == 0) {
-		level_to_gamestate(level_, state_, level_["savegame"] == "yes");
+		level_to_gamestate(level_, state_);
 	} else {
 
 		state_ = game_state(level_);
@@ -360,7 +360,7 @@ void wait::start_game()
 		// error. This seems to work and have no side effects....
 		if(!state_.scenario.empty() && state_.scenario != "null") {
 			DBG_NW << "Falling back to loading the old way.\n";
-			level_to_gamestate(level_, state_, level_["savegame"] == "yes");
+			level_to_gamestate(level_, state_);
 		}
 	}
 
