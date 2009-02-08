@@ -394,9 +394,9 @@ class AI:
                     return location
         return location
 
-import sys
+#import sys
 print "Running sample ai."
 print "Wesnoth", wesnoth.get_version()
-print "Python", sys.version
+#print "Python", sys.version
 
 AI()

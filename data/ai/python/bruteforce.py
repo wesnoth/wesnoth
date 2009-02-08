@@ -530,10 +530,10 @@ class AI:
 #import time
 #st = time.time()
 
-import sys
+#import sys
 print "Running bruteforce ai."
 print "Wesnoth", wesnoth.get_version()
-print "Python", sys.version
+#print "Python", sys.version
 
 ai = AI()
 ai.recruit()
