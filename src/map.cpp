@@ -19,14 +19,17 @@
 
 #include "global.hpp"
 
+#include <cassert>
+
+#include "map.hpp"
+
+#include "formula_string_utils.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
-#include "map.hpp"
 #include "map_exception.hpp"
 #include "pathfind.hpp"
 #include "serialization/parser.hpp"
 #include "wml_exception.hpp"
-#include "formula_string_utils.hpp"
 
 #define ERR_CF LOG_STREAM(err, config)
 #define LOG_G LOG_STREAM(info, general)
