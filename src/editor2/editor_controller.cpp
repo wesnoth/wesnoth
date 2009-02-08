@@ -176,7 +176,8 @@ void editor_controller::init_mouse_actions(const config& game_config)
 		new mouse_action_paste(clipboard_, key_)));
 	foreach (const theme::menu& menu, gui().get_theme().menus()) {
 		if (menu.items().size() == 1) {
-			mouse_action_map::iterator i = mouse_actions_.find(hotkey::get_hotkey(menu.items().front()).get_id());
+            hotkey::HOTKEY_COMMAND hk = hotkey::get_hotkey(menu.items().front()).get_id();
+			mouse_action_map::iterator i = mouse_actions_.find(hk);
 			if (i != mouse_actions_.end()) {
 				i->second->set_toolbar_button(&menu);
 			}
@@ -185,6 +186,13 @@ void editor_controller::init_mouse_actions(const config& game_config)
 	foreach (const config* c, game_config.get_children("editor_tool_hint")) {
 		mouse_action_map::iterator i = mouse_actions_.find(hotkey::get_hotkey((*c)["id"]).get_id());
 		if (i != mouse_actions_.end()) {
+            if ((*c)["id"] != "editor-paste") {
+                std::stringstream dss;
+                dss << hotkey::get_hotkey((*c)["id"]).get_description();
+                dss << "\n";
+                dss << (*c)["text"];
+                hotkey::get_hotkey((*c)["id"]).set_description(dss.str());
+            }
 			mouse_action_hints_.insert(std::make_pair(i->first, (*c)["text"]));
 		}
 	}

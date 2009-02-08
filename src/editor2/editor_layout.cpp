@@ -47,14 +47,12 @@ size_specs::size_specs()
 void adjust_sizes(const display &disp, size_specs &sizes) {
 	/** @todo Hardcoded coordinates for brush selection, make it themeable. */
 	sizes.brush_x = disp.map_outside_area().w + 10;
-	sizes.brush_y = 270;
+	sizes.brush_y = 209;
 	/** @todo Hardcoded coordinates for terrain palette, make it themeable. */
 	sizes.palette_x = disp.map_outside_area().w + 16;
-	sizes.palette_y = sizes.brush_y + 92;
+	sizes.palette_y = sizes.brush_y + 72;
 	sizes.palette_w = sizes.terrain_space * default_palette_width;
-	//the '-5' make sure that the scroll down button can not be outside of
-	//the window, this is probably a bug in placement anyway...
-	sizes.palette_h = disp.h() - sizes.palette_y - 5;
+	sizes.palette_h = disp.h() - sizes.palette_y;
 }
 
 } // end namespace editor2
