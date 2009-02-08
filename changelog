@@ -6,6 +6,7 @@ Version 1.5.9+svn:
  * User interface:
    * Fixed an exception when a certain characters weren't escaped
  * Miscellaneous and bug fixes:
+   * Fix bug #12946: [menu_item]/[command] losing function when called again
    * Fix flickering of units in the second part of the tutorial (bug #12923)
    * Fix high CPU usage in multiplayer lobby due to inefficient handling of
      friends and ignores lists.

@@ -501,7 +501,7 @@ namespace {
 			terrain_filter filter(cfg, *game_map, *status_ptr, *units);
 			filter.restrict_size(game_config::max_loop);
 			filter.get_locations(locs);
-			
+
 			for(std::set<map_location>::const_iterator j = locs.begin(); j != locs.end(); ++j) {
 				if(remove) {
 					(*teams)[index].clear_shroud(*j);
@@ -2818,8 +2818,8 @@ namespace {
 		}
 	}
 
-// Helper namespace to do some subparts for message function	
-namespace {	
+// Helper namespace to do some subparts for message function
+namespace {
 
 /**
  * Helper to handle the speaker part of the message.
@@ -2898,7 +2898,7 @@ std::string get_image(const vconfig& cfg, unit_map::iterator speaker)
 			if(image == speaker->second.absolute_image()) {
 				image += speaker->second.image_mods();
 			}
-#endif							
+#endif
 		}
 
 	} else if(!image.empty()) {
@@ -3041,7 +3041,7 @@ std::string get_caption(const vconfig& cfg, unit_map::iterator speaker)
 
 			if (side_for_show && !get_replay_source().is_skipping())
 			{
-					
+
 				const size_t right_offset = image.find("~RIGHT()");
 				const bool left_side = (right_offset == std::string::npos);
 				if(!left_side) {
@@ -3049,7 +3049,7 @@ std::string get_caption(const vconfig& cfg, unit_map::iterator speaker)
 				}
 
 				// Parse input text, if not available all fields are empty
-				const std::string text_input_label = 
+				const std::string text_input_label =
 						text_input_element["label"];
 				std::string text_input_content = text_input_element["text"];
 				unsigned input_max_size = lexical_cast_default<unsigned>(
@@ -3076,7 +3076,7 @@ std::string get_caption(const vconfig& cfg, unit_map::iterator speaker)
 
 				// Since gui2::show_wml_message needs to do undrawing the
 				// chatlines can get garbled and look dirty on screen. Force a
-				// redraw to fix it. 
+				// redraw to fix it.
 				/** @todo This hack can be removed once gui2 is finished. */
 				screen->invalidate_all();
 				screen->draw(true,true);
@@ -3095,7 +3095,7 @@ std::string get_caption(const vconfig& cfg, unit_map::iterator speaker)
 				/**
 				 * @todo enable portrait code in 1.7 and write a clean api.
 				 */
-#if 0	
+#if 0
 				const tportrait* portrait =
 					speaker->second.portrait(400, tportrait::LEFT);
 				if(portrait) {
@@ -3111,7 +3111,7 @@ std::string get_caption(const vconfig& cfg, unit_map::iterator speaker)
 					}
 					return;
 				}
-#endif					
+#endif
 
 			}
 
@@ -3252,34 +3252,36 @@ std::string get_caption(const vconfig& cfg, unit_map::iterator speaker)
 			new_handlers.pop_back();
 		}
 	}
-
 	static void commit_wmi_commands() {
 		// Commit WML Menu Item command changes
 		while(wmi_command_changes.size() > 0) {
-			wmi_command_change wcc = wmi_command_changes.back();
+			wmi_command_change wcc = wmi_command_changes.front();
+			const bool is_empty_command = wcc.second->empty();
+
 			wml_menu_item*& mref = state_of_game->wml_menu_items[wcc.first];
 			const bool has_current_handler = !mref->command.empty();
+
 			mref->command = *(wcc.second);
+			mref->command["name"] = mref->name;
+			mref->command["first_time_only"] = "no";
+
 			if(has_current_handler) {
-				if(mref->command.empty()) {
-					mref->command["name"] = mref->name;
-					mref->command["first_time_only"] = "no";
+				if(is_empty_command) {
 					mref->command.add_child("allow_undo");
 				}
-				foreach(game_events::event_handler hand, event_handlers) {
+				foreach(game_events::event_handler& hand, event_handlers) {
 					if(hand.is_menu_item() && hand.matches_name(mref->name)) {
+						LOG_NG << "changing command for " << mref->name << " to:\n" << *wcc.second;
 						hand.read(vconfig(&mref->command,&mref->command));
 					}
 				}
-			} else if(!mref->command.empty()) {
-				mref->command["name"] = mref->name;
-				mref->command["first_time_only"] = "no";
+			} else if(!is_empty_command) {
+				LOG_NG << "setting command for " << mref->name << " to:\n" << *wcc.second;
 				event_handlers.push_back(game_events::event_handler(vconfig(&mref->command,&mref->command), true));
 			}
-			LOG_NG << "setting command for " << mref->name << "\n";
-			LOG_NG << *wcc.second;
+
 			delete wcc.second;
-			wmi_command_changes.pop_back();
+			wmi_command_changes.erase(wmi_command_changes.begin());
 		}
 	}
 
@@ -3393,6 +3395,10 @@ namespace game_events {
 		if(cfg.null()) {
 			cfg = cfg_;
 		}
+		if(is_menu_item()) {
+			DBG_NG << cfg_["name"] << " will now invoke the following command(s):\n" << cfg.get_config();
+		}
+
 		for(vconfig::all_children_iterator i = cfg.ordered_begin();
 				i != cfg.ordered_end(); ++i) {
 
