@@ -183,12 +183,13 @@ bool animate_unit_advancement(unit_map& units, map_location loc, game_display& g
 		::advance_unit(units,loc,chosen_unit);
 	} else {
 		unit amla_unit(u->second);
+		config mod_option(*mod_options[choice - options.size()]);
 
 		LOG_NG << "firing advance event (AMLA)\n";
 		game_events::fire("advance",loc);
 
 		amla_unit.get_experience(-amla_unit.max_experience()); // subtract xp required
-		amla_unit.add_modification("advance",*mod_options[choice - options.size()]);
+		amla_unit.add_modification("advance",mod_option);
 		units.replace(new std::pair<map_location,unit>(loc,amla_unit));
 
 		LOG_NG << "firing post_advance event (AMLA)\n";
