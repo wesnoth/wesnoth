@@ -123,9 +123,23 @@ editor_controller::editor_controller(const config &game_config, CVideo& video, m
 	hotkey::get_hotkey(hotkey::HOTKEY_QUIT_GAME).set_description(_("Quit Editor"));
 	get_map_context().set_starting_position_labels(gui());
 	cursor::set(cursor::NORMAL);
-	image::set_colour_adjustment(preferences::editor_r(), preferences::editor_g(), preferences::editor_b());
+    image::set_colour_adjustment(preferences::editor_r(), preferences::editor_g(), preferences::editor_b());
+    theme& theme = gui().get_theme();
+    const theme::menu* default_tool_menu = NULL;
+    foreach (const theme::menu& m, theme.menus()) {
+        std::string s = m.get_id();
+        if (m.get_id() == "draw_button_editor") {
+            default_tool_menu = &m;
+            break;
+        }
+    }
 	refresh_all();
 	events::raise_draw_event();
+	if (default_tool_menu != NULL) {
+		const SDL_Rect& menu_loc = default_tool_menu->location(get_display().screen_area());
+		show_menu(default_tool_menu->items(),menu_loc.x+1,menu_loc.y + menu_loc.h + 1,false);
+		return;
+	}
 }
 
 void editor_controller::init_gui(CVideo& video)
@@ -1020,7 +1034,10 @@ void editor_controller::show_menu(const std::vector<std::string>& items_arg, int
 		}
 		++i;
 	}
-	expand_open_maps_menu(items);
+    if (!items.empty() && items.front() == "editor-switch-map") {
+	    expand_open_maps_menu(items);
+        context_menu = true; //FIXME hack to display a one-item menu
+    }
 	command_executor::show_menu(items, xloc, yloc, context_menu, gui());
 }
 
