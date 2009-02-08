@@ -12,8 +12,14 @@ def include(matchob):
     names = [x.strip() for x in matchob.group(1).split(",")]
     r = ""
     for name in names:
+        alias = None
+        if " as " in name:
+            (name, ignored, alias) = name.split(' ')
         if name in whitelisted:
-            modules[name] = __import__(name)
+            if alias:
+                modules[alias] = __import__(name)
+            else:
+                modules[name] = __import__(name)
             continue
         for path in pathes:
             includefile = os.path.join(path, name)

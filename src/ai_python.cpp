@@ -62,6 +62,7 @@
 #include <marshal.h>
 
 #define LOG_AI LOG_STREAM(info, ai)
+#define ERR_AI LOG_STREAM(err, ai)
 
 #if PY_MAJOR_VERSION == 2 && PY_MINOR_VERSION == 4
 #define Py_ssize_t int
@@ -2206,7 +2207,11 @@ void python_ai::play_turn()
 		std::cerr << "\"" << script_name << "\" is not a valid script name.\n";
 		return;
 	}
-	std::string script = get_binary_file_location("data", "ai/python" + script_name);
+	std::string script = get_binary_file_location("data", "ai/python/" + script_name);
+	if (script == "") {
+		ERR_AI << "Python AI script '" << script_name << "' not found.\n";
+		throw exception;
+	}
 
 	PyErr_Clear();
 
