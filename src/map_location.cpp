@@ -19,6 +19,8 @@
 
 #include "global.hpp"
 
+#include <cassert>
+
 #include "config.hpp"
 #include "map.hpp"
 #include "formula_string_utils.hpp"
