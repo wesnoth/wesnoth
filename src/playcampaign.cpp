@@ -504,11 +504,43 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 						player_info *player = gamestate.get_player(id);
 						if (player) {
 							(**side)["current_player"] = player->name;
-							/** @todo TODO : remove (see TODO line 276 in server/game.cpp) */
-							(**side)["name"] = player->name;
 						}
 						(**side)["controller"] = ctr->second.controller;
 					}
+				}
+
+				// If the entire scenario should be randomly generated
+				if((*scenario)["scenario_generation"] != "") {
+					LOG_G << "randomly generating scenario...\n";
+					const cursor::setter cursor_setter(cursor::WAIT);
+
+					static config scenario2;
+					scenario2 = random_generate_scenario((*scenario)["scenario_generation"], scenario->child("generator"));
+					//level_ = scenario;
+
+					gamestate.starting_pos = scenario2;
+					scenario = &scenario2;
+				}
+				std::string map_data = (*scenario)["map_data"];
+				if(map_data.empty() && (*scenario)["map"] != "") {
+					map_data = read_map((*scenario)["map"]);
+				}
+
+				// If the map should be randomly generated
+				if(map_data.empty() && (*scenario)["map_generation"] != "") {
+					const cursor::setter cursor_setter(cursor::WAIT);
+					map_data = random_generate_map((*scenario)["map_generation"],scenario->child("generator"));
+
+					// Since we've had to generate the map,
+					// make sure that when we save the game,
+					// it will not ask for the map to be generated again on reload
+					static config new_level;
+					new_level = *scenario;
+					new_level.values["map_data"] = map_data;
+					scenario = &new_level;
+
+					gamestate.starting_pos = new_level;
+					LOG_G << "generated map\n";
 				}
 
 				// Sends scenario data
