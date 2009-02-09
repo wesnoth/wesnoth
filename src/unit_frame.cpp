@@ -229,7 +229,7 @@ const frame_parameters frame_builder::parameters(int current_time) const
 	result.submerge = submerge_.get_current_element(current_time);
 	result.x = x_.get_current_element(current_time);
 	result.y = y_.get_current_element(current_time);
-	result.drawing_layer = drawing_layer_.get_current_element(current_time);
+	result.drawing_layer = drawing_layer_.get_current_element(current_time,display::LAYER_UNIT_DEFAULT-display::LAYER_UNIT_FIRST);
 	return result;
 }
 frame_builder & frame_builder::image(const image::locator image ,const std::string & image_mod)
@@ -595,7 +595,8 @@ const frame_parameters unit_frame::merge_parameters(int current_time,const frame
 	result.y += engine_val.y;
 
 	assert(engine_val.drawing_layer == display::LAYER_UNIT_DEFAULT-display::LAYER_UNIT_FIRST);
-	result.drawing_layer = current_val.drawing_layer?current_val.drawing_layer:animation_val.drawing_layer;
+	result.drawing_layer = current_val.drawing_layer !=  display::LAYER_UNIT_DEFAULT-display::LAYER_UNIT_FIRST?
+		current_val.drawing_layer:animation_val.drawing_layer;
 
 #ifdef LOW_MEM
 	if(primary) {
