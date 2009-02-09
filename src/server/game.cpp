@@ -909,11 +909,6 @@ bool game::add_player(const network::connection player, bool observer) {
 		send_data(observer_join, player);
 	}
 	DBG_GAME << debug_player_info();
-
-	const std::string clones = has_same_ip(player, observer || became_observer);
-	if (!clones.empty()) {
-		send_and_record_server_message((user->second.name() + " has the same IP as: " + clones).c_str());
-	}
 	// Send the user the game data.
 	//std::cerr << "SENDING LEVEL {{{" << level_.output() << "}}}\n";
 	simple_wml::string_span level_data = level_.output_compressed();
@@ -931,6 +926,11 @@ bool game::add_player(const network::connection player, bool observer) {
 		send_history(player);
 	} else {
 		send_user_list();
+	}
+
+	const std::string clones = has_same_ip(player, observer || became_observer);
+	if (!clones.empty()) {
+		send_and_record_server_message((user->second.name() + " has the same IP as: " + clones).c_str());
 	}
 
 	if (became_observer) {
