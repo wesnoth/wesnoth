@@ -361,7 +361,7 @@ std::string word_wrap_text(const std::string& unwrapped_text, int font_size, int
 			font_sz = font_size;
 			style = TTF_STYLE_NORMAL;
 			parse_markup(format_string.begin(),format_string.end(),&font_sz,&color,&style);
-			current_line = format_string;
+			current_line.clear();
 			start_of_line = false;
 		}
 
