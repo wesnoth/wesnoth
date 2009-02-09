@@ -1105,12 +1105,15 @@ void game_display::add_chat_message(const time_t& time, const std::string& speak
 	}
 
 	bool action = false;
-	std::string msg;
+
+	// We also need to disable markup for the message itself
+	std::string msg(1, font::NULL_MARKUP);
+
 	if (message.find("/me ") == 0) {
-		msg.assign(message, 4, message.size());
+		msg.assign(message, 5, message.size());
 		action = true;
 	} else {
-		msg = message;
+		msg += message;
 	}
 
 	try {
@@ -1134,6 +1137,7 @@ void game_display::add_chat_message(const time_t& time, const std::string& speak
 	SDL_Color message_colour = chat_message_colour;
 	std::stringstream str;
 	std::stringstream message_str;
+
 	if(type == MESSAGE_PUBLIC) {
 		if(action) {
 			str << "<" << speaker << " " << msg << ">";
