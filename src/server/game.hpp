@@ -198,10 +198,14 @@ private:
 	 */
 	bool take_side(const player_map::const_iterator user);
 
-	/** Send [change_controller] message to tell all clients the new controller's name. */
-	void send_change_controller(const size_t side_num,
+	/**
+	 * Send [change_controller] message to tell all clients the new controller's name
+	 * or controller type (human or ai).
+	 */
+	void change_controller(const size_t side_num,
 			const player_map::const_iterator newplayer,
-			const bool player_left=true);
+			const bool player_left = true,
+			const std::string controller = "");
 	void transfer_ai_sides();
 	void send_data_team(simple_wml::document& data, const simple_wml::string_span& team,
 			const network::connection exclude=0, std::string packet_type = "") const;
@@ -279,9 +283,8 @@ private:
 
 	/**
 	 * A vector of controller strings indicating the type.
-	 * "network" - a side controlled by some member of the game (not the owner)
-	 * "human"   - a side controlled by the owner
-	 * "ai"      - a side of the owner controlled by an AI
+	 * "human"   - a side controlled by a human
+	 * "ai"      - a side controlled by an AI
 	 * "null"    - an empty side
 	 */
 	std::vector<std::string> side_controllers_;
