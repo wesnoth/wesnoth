@@ -286,7 +286,7 @@ void unit_attack(
 	int damage_left = damage;
 	while(damage_left > 0 && !animator.would_end()) {
 		int step_left = (animator.get_end_time() - animator.get_animation_time() )/50;
-		int removed_hp = damage_left/step_left;
+		int removed_hp = step_left ? damage_left/step_left : 1;
 		if(removed_hp < 1) removed_hp = 1;
 		if(step_left < 1) step_left = 1;
 		defender.take_hit(removed_hp);
