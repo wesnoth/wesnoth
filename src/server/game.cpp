@@ -419,7 +419,7 @@ void game::transfer_side_control(const network::connection sock, const simple_wm
 			notify_new_host();
 		}*/
 	}
-	change_controller(side_num + 1, newplayer, false);
+	change_controller(side_num - 1, newplayer, false);
 
 	if (host_leave) transfer_ai_sides();
 
