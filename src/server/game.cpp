@@ -57,7 +57,6 @@ game::game(player_map& players, const network::connection host,
 	observers_(),
 	muted_observers_(),
 	sides_(gamemap::MAX_PLAYERS),
-	sides_taken_(gamemap::MAX_PLAYERS),
 	side_controllers_(gamemap::MAX_PLAYERS),
 	nsides_(0),
 	started_(false),
@@ -211,10 +210,9 @@ bool game::take_side(const player_map::const_iterator user)
 		{
 			side_num = (**side)["side"].to_int();
 			if (side_num < 1 || side_num > gamemap::MAX_PLAYERS) continue;
-			if (sides_taken_[side_num - 1]) continue;
+			if (sides_[side_num - 1] != 0) continue;
 			side_controllers_[side_num - 1] = "human";
 			sides_[side_num - 1] = user->first;
-			sides_taken_[side_num - 1] = true;
 			cfg.root().set_attr_dup("side", (**side)["side"]);
 			// Tell the host which side the new player should take.
 
@@ -233,11 +231,10 @@ bool game::take_side(const player_map::const_iterator user)
 				side_num = (**side)["side"].to_int();
 			} catch (bad_lexical_cast&) { continue; }
 			if (side_num < 1 || side_num > gamemap::MAX_PLAYERS) continue;
-			if (sides_taken_[side_num - 1]) continue;
+			if (sides_[side_num - 1] != 0) continue;
 			// we expect that the host will really use our proposed side number (he could do different)
 			side_controllers_[side_num - 1] = "human";
 			sides_[side_num - 1] = user->first;
-			sides_taken_[side_num - 1] = true;
 			cfg.root().set_attr_dup("side", (**side)["side"]);
 			// Tell the host which side the new player should take.
 			simple_wml::string_span data = cfg.output_compressed();
@@ -260,9 +257,6 @@ void game::update_side_data() {
 
 	side_controllers_.clear();
 	side_controllers_.resize(gamemap::MAX_PLAYERS);
-	sides_taken_.clear();
-	// Resize because we assume a default of 'false' for all sides later.
-	sides_taken_.resize(gamemap::MAX_PLAYERS);
 	sides_.clear();
 	sides_.resize(gamemap::MAX_PLAYERS);
 	players_.clear();
@@ -290,19 +284,17 @@ void game::update_side_data() {
 		{
 			int side_num = (**side)["side"].to_int() - 1;
 			if (side_num < 0 || side_num >= gamemap::MAX_PLAYERS
-					|| sides_taken_[side_num]) continue;
+					|| sides_[side_num] != 0) continue;
 
 			if ((**side)["controller"] == "network") {
 				if ((**side)["current_player"] == info->second.name().c_str()) {
 					side_controllers_[side_num] = "human";
 					sides_[side_num] = *user;
-					sides_taken_[side_num] = true;
 					side_found = true;
 				}
 			} else if ((**side)["controller"] == "ai" || (**side)["controller"] == "human") {
 				side_controllers_[side_num] = (**side)["controller"].to_string();
 				sides_[side_num] = owner_;
-				sides_taken_[side_num] = true;
 				side_found = true;
 			} else {
 				// "null", "reserved"
@@ -537,8 +529,7 @@ bool game::describe_slots() {
 		if (((**it)["allow_player"].to_bool(true) == false) || (**it)["controller"] == "null") {
 			num_sides--;
 		} else {
-			if (!sides_taken_[i])
-				available_slots++;
+			if (sides_[i] == 0) ++available_slots;
 		}
 	}
 	char buf[50];

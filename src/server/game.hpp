@@ -278,9 +278,6 @@ private:
 	/** A vector of side owners. */
 	side_vector sides_;
 
-	/** A vector indicating what sides are actually taken. (Really needed?) */
-	std::vector<bool> sides_taken_;
-
 	/**
 	 * A vector of controller strings indicating the type.
 	 * "human"   - a side controlled by a human
