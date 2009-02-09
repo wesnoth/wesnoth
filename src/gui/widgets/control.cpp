@@ -23,6 +23,8 @@
 
 #include <iomanip>
 
+#define WRN_CF LOG_STREAM(warn, config)
+
 namespace gui2 {
 
 tcontrol::tcontrol(const unsigned canvas_count)
@@ -407,8 +409,13 @@ std::string colour_prefix(const SDL_Color& colour)
 	return result.str();
 }
 
-/** escapes a string to be used in a pango formatted string. */
-std::string escape_string(const std::string& str)
+/** 
+ * Escapes a string to be used in a pango formatted string.
+ *
+ * This function also changes every "\x" to "x" thus also "\\" to "\". This
+ * is used to mimic the old dialog behaviour.
+ */
+std::string escape_string(std::string str)
 {
 	struct tconverter
 	{
@@ -425,6 +432,13 @@ std::string escape_string(const std::string& str)
 		gchar* str;	
 	};
 
+	size_t offset = str.find('\\', 0);
+	while (offset != std::string::npos) {
+		str.erase(offset, 1);
+		++offset;
+		offset = str.find('\\', offset);
+	}
+	
 	tconverter converter(str);
 	return std::string(converter.str);
 }
