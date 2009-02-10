@@ -120,7 +120,8 @@ else:
 
 if env.get('cxxtool',""):
     env['CXX'] = env['cxxtool']
-    env['ENV']['HOME'] = os.environ['HOME']
+    if 'HOME' in os.environ:
+        env['ENV']['HOME'] = os.environ['HOME']
 
 if env['jobs'] > 1:
     SetOption("num_jobs", env['jobs'])
