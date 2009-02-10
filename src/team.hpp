@@ -281,7 +281,7 @@ public:
 	/** Merge a WML shroud map with the shroud data of this player. */
 	void merge_shroud_map_data(const std::string& shroud_data);
 
-	bool knows_about_team(size_t index) const;
+	bool knows_about_team(size_t index, bool is_multiplayer) const;
 	bool copy_ally_shroud();
 
 	bool auto_shroud_updates() const { return auto_shroud_updates_; }

@@ -400,7 +400,7 @@ private:
 				continue;
 			}
 
-			const bool known = viewing_team.knows_about_team(n);
+			const bool known = viewing_team.knows_about_team(n, network::nconnections() > 0);
 			const bool enemy = viewing_team.is_enemy(n+1);
 
 			std::stringstream str;
@@ -514,7 +514,7 @@ private:
 			if(leader != units_.end()) {
 				// Add leader image. If it's fogged
 				// show only a random leader image.
-				if (viewing_team.knows_about_team(n) || game_config::debug) {
+				if (viewing_team.knows_about_team(n, network::nconnections() > 0) || game_config::debug) {
 					str << IMAGE_PREFIX << leader->second.absolute_image();
 					leader_bools.push_back(true);
 				} else {
@@ -2532,8 +2532,8 @@ private:
 
 		if (!ignores.empty()) {
 			print("ignores list", utils::join(ignores));
-		} 
-		
+		}
+
 		if (friends.empty() && ignores.empty()) {
 			print("list", _("There are no players on your friends or ignore list."));
 		}

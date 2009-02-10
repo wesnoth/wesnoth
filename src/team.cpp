@@ -23,7 +23,6 @@
 #include "gamestatus.hpp"
 #include "log.hpp"
 #include "map.hpp"
-#include "network.hpp"
 
 
 #define LOG_NG LOG_STREAM(info, engine)
@@ -738,7 +737,7 @@ const std::vector<const team::shroud_map*>& team::ally_fog(const std::vector<tea
 	return ally_fog_;
 }
 
-bool team::knows_about_team(size_t index) const
+bool team::knows_about_team(size_t index, bool is_multiplayer) const
 {
 	const team& t = (*teams)[index];
 
@@ -752,7 +751,7 @@ bool team::knows_about_team(size_t index) const
 	if(is_enemy(index+1)) return false;
 
 	// We know our allies in multiplayer
-	if(network::nconnections() > 0) return true;
+	if (is_multiplayer) return true;
 
 	// We know about allies we're sharing maps with
 	if(share_maps() && t.uses_shroud()) return true;
