@@ -1811,6 +1811,20 @@ namespace {
 		handler.rebuild_screen() = true;
 	}
 
+    static bool try_add_unit_to_recall_list(const map_location& loc, const unit& u)
+    {
+		player_info* const player = state_of_game->get_player((*teams)[u.side()-1].save_id());
+
+		if(player != NULL) {
+			player->available_units.push_back(u);
+            return true;
+		} else {
+			ERR_NG << "Cannot create unit: location (" << loc.x << "," << loc.y <<") is not on the map, and player "
+				<< u.side() << " has no recall list.\n";
+            return false;
+		}
+    }
+
 	// If we should spawn a new unit on the map somewhere
 	WML_HANDLER_FUNCTION(unit,/*handler*/,/*event_info*/,cfg)
 	{
@@ -1857,14 +1871,7 @@ namespace {
 					(screen)->draw();
 				}
 			} else {
-				player_info* const player = state_of_game->get_player((*teams)[new_unit.side()-1].save_id());
-
-				if(player != NULL) {
-					player->available_units.push_back(new_unit);
-				} else {
-					ERR_NG << "Cannot create unit: location (" << loc.x << "," << loc.y <<") is not on the map, and player "
-						<< new_unit.side() << " has no recall list.\n";
-				}
+                try_add_unit_to_recall_list(loc, new_unit);
 			}
 		}
 	}
@@ -3232,12 +3239,38 @@ std::string get_caption(const vconfig& cfg, unit_map::iterator speaker)
 		try {
 			map.read(cfg["map"]);
 		} catch(incorrect_map_format_exception&) {
-			ERR_NG << "terrain mask is in the incorrect format, and couldn't be applied\n";
+            lg::wml_error << "replace_map: Unable to load map " << cfg["map"] << "\n";
 			return;
 		} catch(twml_exception& e) {
 			e.show(*screen);
 			return;
 		}
+        if (map.total_width() > game_map->total_width()
+        || map.total_height() > game_map->total_height()) {
+            if (!utils::string_bool(cfg["expand"])) {
+                lg::wml_error << "replace_map: Map dimension(s) increase but expand is not set\n";
+                return;
+            }
+        }
+        if (map.total_width() < game_map->total_width()
+        || map.total_height() < game_map->total_height()) {
+            if (!utils::string_bool(cfg["shrink"])) {
+                lg::wml_error << "replace_map: Map dimension(s) decrease but shrink is not set\n";
+                return;
+            }
+			unit_map::iterator itor;
+			for (itor = units->begin(); itor != units->end(); ) {
+                if (!map.on_board(itor->first)) {
+                    if (!try_add_unit_to_recall_list(itor->first, itor->second)) {
+                        lg::wml_error << "replace_map: Cannot add a unit that would become off-map to the recall list\n";
+                    }
+                    units->erase(itor++);
+                    unit_mutations++;
+                } else {
+                    ++itor;
+                }
+            }
+        }
 		*game_map = map;
         screen->reload_map();
 		handler.rebuild_screen() = true;
