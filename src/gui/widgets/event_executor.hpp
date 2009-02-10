@@ -195,6 +195,27 @@ public:
 	/***** ***** ***** ***** keyboard ***** ***** ***** *****/
 
 	/**
+	 * Called when a widget receives the keyboard focus.
+	 *
+	 * @todo add to the event schedule, first lose then recieve.
+	 *
+	 * @param event_handler       The event handler that send the event.
+	 */
+	virtual void recieve_keyboard_focus(tevent_handler& /*event_handler*/) {}
+
+	/**
+	 * Called when a widget loses the keyboard focus.
+	 *
+	 * @todo add to the event schedule, first lose then recieve.
+	 *
+	 * @param event_handler       The event handler that send the event, most
+	 *                            of the time the widget will be the one
+	 *                            receiving the focus, but that's not
+	 *                            guaranteed.
+	 */
+	virtual void lose_keyboard_focus(tevent_handler& /*event_handler*/) {}
+
+	/**
 	 * A key is pressed.
 	 *
 	 * When a key is pressed it's send to the widget that has the focus, if this

@@ -289,6 +289,19 @@ void tevent_handler::mouse_capture(const bool capture)
 	mouse_captured_ = capture;
 }
 
+void tevent_handler::keyboard_capture(twidget* widget) 
+{
+	if(keyboard_focus_) {
+		keyboard_focus_->lose_keyboard_focus(*this);
+	}
+
+	keyboard_focus_ = widget;
+
+	if(keyboard_focus_) {
+		keyboard_focus_->recieve_keyboard_focus(*this);
+	}
+}
+
 tpoint tevent_handler::get_mouse() const
 {
 	return tpoint(mouse_x_, mouse_y_);

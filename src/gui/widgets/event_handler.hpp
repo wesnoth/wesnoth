@@ -75,7 +75,7 @@ public:
 	 * @param widget              The widget which should capture the keyboard.
 	 *                            Sending NULL releases the capturing.
 	 */
-	void keyboard_capture(twidget* widget) { keyboard_focus_ = widget; }
+	void keyboard_capture(twidget* widget);
 
 	/**
 	 * Adds the widget to the keyboard chain.
