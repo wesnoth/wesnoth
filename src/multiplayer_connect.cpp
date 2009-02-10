@@ -415,21 +415,9 @@ void connect::side::process_event()
 		if (combo_controller_->selected() == cntr_last) {
 			update_controller_ui();
 		} else if (combo_controller_->selected() < cntr_last) {
-			// If the current side corresponds to an existing user,
-			// we must kick it!
-
-			// Update controller first, or else kick will reset it.
 			// Correct entry number if CNTR_NETWORK is not allowed for combo_controller_
 			controller_ = mp::controller(combo_controller_->selected() + (parent_->local_only_ ? 1 : 0));
-
-			// Don't kick an empty player or the game creator
-			if(!id_.empty()) {
-				if (id_ != preferences::login()
-						&& std::count_if(parent_->sides_.begin(), parent_->sides_.end(), boost::bind(&connect::side::is_owned_by, _1, boost::ref(id_))) == 1) {
-					parent_->kick_player(id_);
-				}
-				id_ = "";
-			}
+			id_ = "";
 			changed_ = true;
 		} else {
 			// give user second side
