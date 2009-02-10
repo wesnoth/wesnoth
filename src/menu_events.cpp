@@ -1904,7 +1904,7 @@ private:
 			{
 				return cap_.get_data(argn);
 			}
-			std::string get_cmd() const
+			virtual std::string get_cmd() const
 			{
 				return cap_.get_cmd();
 			}
