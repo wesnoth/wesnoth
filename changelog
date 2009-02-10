@@ -11,6 +11,9 @@ Version 1.5.9+svn:
    * Updated maps: 4p Clash.
  * User interface:
    * Fixed an exception when a certain characters weren't escaped
+ * WML Engine
+   * [replace_map] changes the map completely, changing the map size is 
+     posible - off-map units go into the recall list
  * Multiplayer
    * Added support for observers to pause and continue the game at any time
    * Fixed bug #12896: Map generator does not sync between clients when
@@ -23,6 +26,8 @@ Version 1.5.9+svn:
    * AmigaOS4: Minimum stack cookie to prevent stack overflow (patch #1107)
    * Additional screenmodes when SDL can't guess them (patch #1108)
    * Python AI works again. (bug #12955, bug #12913)
+   * Fixed the :query command to work while in a multiplayer game, not only 
+     when in chat (as /query)
 
 Version 1.5.9:
  * Campaigns:
