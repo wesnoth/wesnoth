@@ -275,7 +275,8 @@ private:
 
 	// The same as send_error(), we just add an extra child to the response
 	// telling the client the chosen username requires a password.
-	void send_password_request(network::connection sock, const char* msg, const std::string& user);
+	void send_password_request(network::connection sock, const char* msg,
+			const std::string& user, bool force_confirmation =false);
 
 	const network::manager net_manager_;
 	network::server_manager server_;
@@ -438,7 +439,8 @@ void server::send_error_dup(network::connection sock, const std::string& msg) co
 	network::send_raw_data(output.begin(), output.size(), sock, "error");
 }
 
-void server::send_password_request(network::connection sock, const char* msg, const std::string& user)
+void server::send_password_request(network::connection sock, const char* msg,
+	const std::string& user, bool force_confirmation)
 {
 
 	std::string salt1 = user_handler_->create_salt();
@@ -462,6 +464,8 @@ void server::send_password_request(network::connection sock, const char* msg, co
 	(*(doc.root().child("error"))).set_attr("random_salt", salt1.c_str());
 	(*(doc.root().child("error"))).set_attr("hash_seed", salt2.c_str());
 	(*(doc.root().child("error"))).set_attr("salt", salt3.c_str());
+	(*(doc.root().child("error"))).set_attr("force_confirmation",
+			force_confirmation ? "yes" : "no");
 
 	simple_wml::string_span output = doc.output_compressed();
 	network::send_raw_data(output.begin(), output.size(), sock);
@@ -1062,7 +1066,7 @@ void server::process_login(const network::connection sock,
 			if(password.empty()) {
 				send_password_request(sock, ("The username '" + username + "' is registered on this server." +
 						(p != players_.end() ? "\n \nWARNING: There is already a client using this username, "
-						"logging in will cause that client to be kicked!" : "")).c_str(), username);
+						"logging in will cause that client to be kicked!" : "")).c_str(), username, p != players_.end());
 				return;
 			}
 			// A password (or hashed password) was provided, however

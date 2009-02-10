@@ -214,12 +214,17 @@ static server_type open_connection(game_display& disp, const std::string& origin
 				do {
 					std::string password = preferences::password();
 
+					bool fall_through = (*error)["force_confirmation"] == "yes" ?
+						gui::dialog(disp,_("Please confirm you want to continue"),(*error)["message"],gui::OK_CANCEL).show() :
+						false;
+
 					const bool is_pw_request = !((*error)["password_request"].empty()) && !(password.empty());
 
 					// If the server asks for a password, provide one if we can
 					// or request a password reminder.
-					// Otherwise go directly to the username/password dialog
-					if(is_pw_request || !password_reminder.empty()) {
+					// Otherwise or if the user pressed 'cancel' in the confirmation dialog
+					// above go directly to the username/password dialog
+					if((is_pw_request || !password_reminder.empty()) && !fall_through) {
 						if(is_pw_request) {
 							if((*error)["phpbb_encryption"] == "yes") {
 
