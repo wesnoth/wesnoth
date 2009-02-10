@@ -56,6 +56,12 @@ public:
 	void mouse_middle_button_click(tevent_handler&);
 
 	/** Inherited from tevent_executor. */
+	void recieve_keyboard_focus(tevent_handler& event_handler);
+
+	/** Inherited from tevent_executor. */
+	void lose_keyboard_focus(tevent_handler& event_handler);
+
+	/** Inherited from tevent_executor. */
 	void key_press(tevent_handler& event,
 		bool& handled, SDLKey key, SDLMod modifier, Uint16 unicode);
 

@@ -61,6 +61,20 @@ void ttext_::mouse_middle_button_click(tevent_handler&)
 
 }
 
+void ttext_::recieve_keyboard_focus(tevent_handler& /*event_handler*/)
+{
+	DBG_G_E << "Text: recieve focus.\n";
+
+	set_state(FOCUSSED);
+}
+
+void ttext_::lose_keyboard_focus(tevent_handler& /*event_handler*/)
+{
+	DBG_G_E << "Text: lose focus.\n";
+
+	set_state(ENABLED);
+}
+
 void ttext_::key_press(tevent_handler& /*event*/,
 		bool& handled, SDLKey key, SDLMod modifier, Uint16 unicode)
 {
