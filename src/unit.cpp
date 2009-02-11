@@ -2207,7 +2207,7 @@ int unit::defense_modifier(t_translation::t_terrain terrain, int recurse_count) 
 		}
 	}
 	if(res < 0) {
-		ERR_CONFIG << "Defence '" << res << "' is '< 0' reset to 0 (100% defense).\n";
+		ERR_CONFIG << "Defense '" << res << "' is '< 0' reset to 0 (100% defense).\n";
 		res = 0;
 	}
 
