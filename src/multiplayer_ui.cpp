@@ -148,12 +148,17 @@ void level_to_gamestate(config& level, game_state& state)
 	//In any type of reload(normal save or start-of-scenario) the players could have
 	//changed and need to be replaced
 	if(saved_game || start_of_scenario){
-		const config::child_list& snapshot_sides = state.snapshot.get_children("side");
+		const config::child_list& saved_sides = (saved_game ?
+			state.snapshot.get_children("side") :
+			state.starting_pos.get_children("side"));
+			
 		const config::child_list& level_sides = level.get_children("side");
-		for(config::child_list::const_iterator side = snapshot_sides.begin(); side != snapshot_sides.end(); ++side) {
+		for(config::child_list::const_iterator side = saved_sides.begin(); side != saved_sides.end(); ++side) {
 			for(config::child_list::const_iterator lside = level_sides.begin(); lside != level_sides.end(); ++lside) {
-				if ( ((**side)["side"] == (**lside)["side"])
-					&& ((**side)["current_player"] != (**lside)["current_player"]) ){
+				if ( ((**side)["side"] == (**lside)["side"]) && (
+					 ((**side)["current_player"] != (**lside)["current_player"]) ||
+					 ((**side)["controller"] != (**lside)["controller"]) )){
+
 					(**side)["current_player"] = (**lside)["current_player"];
 					(**side)["id"] = (**lside)["id"];
 					(**side)["save_id"] = (**lside)["save_id"];
