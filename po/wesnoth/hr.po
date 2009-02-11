@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.4+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-02-05 22:45+0100\n"
+"POT-Creation-Date: 2009-02-11 23:27+0100\n"
 "PO-Revision-Date: 2008-04-01 15:36+0100\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
@@ -76,13 +76,13 @@ msgid "poisoned"
 msgstr ""
 
 #. [berserk]: id=berserk
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:734
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:732
 #: data/core/macros/abilities.cfg:553
 msgid "berserk"
 msgstr ""
 
 #. [berserk]: id=berserk
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:736
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:734
 #: data/core/macros/abilities.cfg:555
 msgid ""
 "Berserk:\n"
@@ -91,13 +91,13 @@ msgid ""
 msgstr ""
 
 #. [chance_to_hit]: id=magical
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:749
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:747
 #: data/core/macros/abilities.cfg:639
 msgid "magical"
 msgstr "magičan"
 
 #. [chance_to_hit]: id=magical
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:751
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:749
 #: data/core/macros/abilities.cfg:641
 msgid ""
 "Magical:\n"
@@ -106,13 +106,13 @@ msgid ""
 msgstr ""
 
 #. [firststrike]: id=firststrike
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:763
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:761
 #: data/core/macros/abilities.cfg:688
 msgid "firststrike"
 msgstr "prvi udarac"
 
 #. [firststrike]: id=firststrike
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:765
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:763
 #: data/core/macros/abilities.cfg:690
 msgid ""
 "First Strike:\n"
@@ -5169,8 +5169,8 @@ msgstr ""
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=label-hp
 #: data/themes/default.cfg:212 data/themes/dfool.cfg:232
-#: data/themes/experimental.cfg:181 src/menu_events.cpp:203 src/unit.cpp:2563
-#: src/unit.cpp:2737
+#: data/themes/experimental.cfg:181 src/menu_events.cpp:203 src/unit.cpp:2564
+#: src/unit.cpp:2738
 msgid "HP"
 msgstr ""
 
@@ -5304,8 +5304,8 @@ msgstr ""
 msgid "Skip animation"
 msgstr ""
 
-#: src/about.cpp:52 src/multiplayer_connect.cpp:495
-#: src/multiplayer_connect.cpp:623 src/multiplayer_wait.cpp:535
+#: src/about.cpp:52 src/multiplayer_connect.cpp:483
+#: src/multiplayer_connect.cpp:611 src/multiplayer_wait.cpp:535
 msgid "+"
 msgstr ""
 
@@ -5347,47 +5347,47 @@ msgstr ""
 msgid "stone"
 msgstr ""
 
-#: src/actions.cpp:2417
+#: src/actions.cpp:2418
 msgid "Ambushed!"
 msgstr ""
 
-#: src/actions.cpp:2424
+#: src/actions.cpp:2425
 msgid "Failed teleport! Exit not empty"
 msgstr ""
 
-#: src/actions.cpp:2463
+#: src/actions.cpp:2464
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
-#: src/actions.cpp:2466
+#: src/actions.cpp:2467
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
-#: src/actions.cpp:2471
+#: src/actions.cpp:2472
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
-#: src/actions.cpp:2472
+#: src/actions.cpp:2473
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
-#: src/actions.cpp:2473
+#: src/actions.cpp:2474
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr ""
 
-#: src/actions.cpp:2482
+#: src/actions.cpp:2483
 msgid "(press $hotkey to keep moving)"
 msgstr ""
 
@@ -5395,7 +5395,7 @@ msgstr ""
 msgid "B"
 msgstr ""
 
-#: src/addon_management.cpp:362 src/dialogs.cpp:1213
+#: src/addon_management.cpp:362 src/dialogs.cpp:1214
 msgid "KB"
 msgstr ""
 
@@ -5463,7 +5463,7 @@ msgid "Do you still want to download it?"
 msgstr ""
 
 #: src/addon_management.cpp:467 src/addon_management.cpp:541
-#: src/multiplayer.cpp:206 src/multiplayer.cpp:306 src/multiplayer_ui.cpp:68
+#: src/multiplayer.cpp:207 src/multiplayer.cpp:312 src/multiplayer_ui.cpp:68
 msgid "Connection timed out"
 msgstr ""
 
@@ -5533,7 +5533,7 @@ msgid "No add-ons to update"
 msgstr ""
 
 #: src/addon_management.cpp:735 src/addon_management.cpp:938
-#: src/dialogs.cpp:646 src/menu_events.cpp:201 src/menu_events.cpp:989
+#: src/dialogs.cpp:647 src/menu_events.cpp:201 src/menu_events.cpp:989
 msgid "Name"
 msgstr ""
 
@@ -5639,7 +5639,7 @@ msgstr ""
 msgid "Choose the add-on to download."
 msgstr ""
 
-#: src/addon_management.cpp:1038 src/dialogs.cpp:671 src/menu_events.cpp:1047
+#: src/addon_management.cpp:1038 src/dialogs.cpp:672 src/menu_events.cpp:1047
 #: src/menu_events.cpp:1516
 msgid "Filter: "
 msgstr ""
@@ -5659,7 +5659,7 @@ msgid ""
 msgstr ""
 
 #: src/addon_management.cpp:1092 src/addon_management.cpp:1147
-#: src/dialogs.cpp:281 src/dialogs.cpp:289 src/menu_events.cpp:596
+#: src/dialogs.cpp:282 src/dialogs.cpp:290 src/menu_events.cpp:596
 #: src/multiplayer_create.cpp:529
 msgid "Error"
 msgstr ""
@@ -5680,7 +5680,7 @@ msgstr ""
 msgid "Are you sure you want to remove the add-on '$addon|'?"
 msgstr ""
 
-#: src/addon_management.cpp:1122
+#: src/addon_management.cpp:1122 src/multiplayer.cpp:219
 msgid "Confirm"
 msgstr ""
 
@@ -5766,311 +5766,311 @@ msgstr ""
 msgid "What should our victorious unit become?"
 msgstr ""
 
-#: src/dialogs.cpp:220
+#: src/dialogs.cpp:221
 msgid "No objectives available"
 msgstr ""
 
-#: src/dialogs.cpp:245
+#: src/dialogs.cpp:246
 msgid "Save Game"
 msgstr ""
 
-#: src/dialogs.cpp:255
+#: src/dialogs.cpp:256
 msgid "Quit Game"
 msgstr ""
 
-#: src/dialogs.cpp:260
+#: src/dialogs.cpp:261
 msgid "Ignore All"
 msgstr ""
 
-#: src/dialogs.cpp:282
+#: src/dialogs.cpp:283
 msgid ""
 "Save names may not contain colons, slashes, or backslashes. Please choose a "
 "different name."
 msgstr ""
 
-#: src/dialogs.cpp:290
+#: src/dialogs.cpp:291
 msgid "Save names should not end on '.gz'. Please choose a different name."
 msgstr ""
 
-#: src/dialogs.cpp:298
+#: src/dialogs.cpp:299
 msgid "Save already exists. Do you want to overwrite it?"
 msgstr ""
 
-#: src/dialogs.cpp:299 src/menu_events.cpp:584 src/playcampaign.cpp:417
+#: src/dialogs.cpp:300 src/menu_events.cpp:584 src/playcampaign.cpp:417
 msgid "Name: "
 msgstr ""
 
-#: src/dialogs.cpp:300
+#: src/dialogs.cpp:301
 msgid "Overwrite?"
 msgstr ""
 
-#: src/dialogs.cpp:337
+#: src/dialogs.cpp:338
 msgid "Do you really want to delete this game?"
 msgstr ""
 
-#: src/dialogs.cpp:339
+#: src/dialogs.cpp:340
 msgid "Don't ask me again!"
 msgstr ""
 
-#: src/dialogs.cpp:506
+#: src/dialogs.cpp:507
 msgid "%a %b %d %H:%M %Y"
 msgstr ""
 
-#: src/dialogs.cpp:526
+#: src/dialogs.cpp:527
 msgid "#(Invalid)"
 msgstr ""
 
-#: src/dialogs.cpp:540
+#: src/dialogs.cpp:541
 msgid "Campaign: $campaign_name"
 msgstr ""
 
-#: src/dialogs.cpp:547
+#: src/dialogs.cpp:548
 msgid "Multiplayer"
 msgstr ""
 
-#: src/dialogs.cpp:549
+#: src/dialogs.cpp:550
 msgid "Tutorial"
 msgstr ""
 
-#: src/dialogs.cpp:557 src/menu_events.cpp:570
+#: src/dialogs.cpp:558 src/menu_events.cpp:570
 msgid "replay"
 msgstr ""
 
-#: src/dialogs.cpp:559 src/menu_events.cpp:572
+#: src/dialogs.cpp:560 src/menu_events.cpp:572
 msgid "Turn"
 msgstr ""
 
-#: src/dialogs.cpp:561
+#: src/dialogs.cpp:562
 msgid "Scenario Start"
 msgstr ""
 
-#: src/dialogs.cpp:564
+#: src/dialogs.cpp:565
 msgid "Difficulty: "
 msgstr ""
 
-#: src/dialogs.cpp:566
+#: src/dialogs.cpp:567
 msgid "Version: "
 msgstr ""
 
-#: src/dialogs.cpp:590 src/dialogs.cpp:606
+#: src/dialogs.cpp:591 src/dialogs.cpp:607
 msgid "%b %d %y"
 msgstr ""
 
-#: src/dialogs.cpp:596
+#: src/dialogs.cpp:597
 msgid "%H:%M"
 msgstr ""
 
-#: src/dialogs.cpp:599
+#: src/dialogs.cpp:600
 msgid "%A, %H:%M"
 msgstr ""
 
-#: src/dialogs.cpp:602
+#: src/dialogs.cpp:603
 msgid "%b %d"
 msgstr ""
 
-#: src/dialogs.cpp:630
+#: src/dialogs.cpp:631
 msgid "No Saved Games"
 msgstr ""
 
-#: src/dialogs.cpp:631
+#: src/dialogs.cpp:632
 msgid ""
 "There are no saved games to load.\n"
 "\n"
 "(Games are saved automatically when you complete a scenario)"
 msgstr ""
 
-#: src/dialogs.cpp:646
+#: src/dialogs.cpp:647
 msgid "Date"
 msgstr ""
 
-#: src/dialogs.cpp:663 src/multiplayer_create.cpp:101
+#: src/dialogs.cpp:664 src/multiplayer_create.cpp:101
 msgid "Load Game"
 msgstr ""
 
-#: src/dialogs.cpp:664
+#: src/dialogs.cpp:665
 msgid "Choose the game to load"
 msgstr ""
 
-#: src/dialogs.cpp:678
+#: src/dialogs.cpp:679
 msgid "Show replay"
 msgstr ""
 
-#: src/dialogs.cpp:682
+#: src/dialogs.cpp:683
 msgid "Cancel orders"
 msgstr ""
 
-#: src/dialogs.cpp:685 src/multiplayer_create.cpp:83
+#: src/dialogs.cpp:686 src/multiplayer_create.cpp:83
 msgid "OK"
 msgstr ""
 
-#: src/dialogs.cpp:686 src/dialogs.cpp:1189 src/dialogs.cpp:1291
-#: src/multiplayer_connect.cpp:1036 src/multiplayer_create.cpp:82
+#: src/dialogs.cpp:687 src/dialogs.cpp:1190 src/dialogs.cpp:1292
+#: src/multiplayer_connect.cpp:1024 src/multiplayer_create.cpp:82
 #: src/multiplayer_wait.cpp:184
 msgid "Cancel"
 msgstr ""
 
-#: src/dialogs.cpp:689
+#: src/dialogs.cpp:690
 msgid "Delete Save"
 msgstr ""
 
-#: src/dialogs.cpp:746
+#: src/dialogs.cpp:747
 msgid "Profile"
 msgstr ""
 
-#: src/dialogs.cpp:843 src/help.cpp:1238
+#: src/dialogs.cpp:844 src/help.cpp:1238
 msgid "level"
 msgstr ""
 
-#: src/dialogs.cpp:856 src/help.cpp:1360
+#: src/dialogs.cpp:857 src/help.cpp:1360
 msgid "HP: "
 msgstr ""
 
-#: src/dialogs.cpp:859
+#: src/dialogs.cpp:860
 msgid "XP: "
 msgstr ""
 
-#: src/dialogs.cpp:863 src/help.cpp:1361
+#: src/dialogs.cpp:864 src/help.cpp:1361
 msgid "Moves: "
 msgstr ""
 
-#: src/game.cpp:612 src/game.cpp:1403
+#: src/game.cpp:617 src/game.cpp:1408
 msgid "The Battle for Wesnoth"
 msgstr ""
 
-#: src/game.cpp:895 src/game.cpp:899
+#: src/game.cpp:900 src/game.cpp:904
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr ""
 
-#: src/game.cpp:937 src/multiplayer_connect.cpp:1569
+#: src/game.cpp:942 src/multiplayer_connect.cpp:1557
 msgid "This save is from a version too old to be loaded."
 msgstr ""
 
-#: src/game.cpp:943 src/multiplayer_connect.cpp:1576
+#: src/game.cpp:948 src/multiplayer_connect.cpp:1564
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
 msgstr ""
 
-#: src/game.cpp:963 src/game.cpp:966 src/multiplayer_connect.cpp:1550
+#: src/game.cpp:968 src/game.cpp:971 src/multiplayer_connect.cpp:1538
 msgid "The file you have tried to load is corrupt: '"
 msgstr ""
 
-#: src/game.cpp:969
+#: src/game.cpp:974
 msgid "File I/O Error while reading the game"
 msgstr ""
 
-#: src/game.cpp:1072
+#: src/game.cpp:1077
 msgid "No campaigns are available.\n"
 msgstr ""
 
-#: src/game.cpp:1076
+#: src/game.cpp:1081
 msgid "Play a campaign"
 msgstr ""
 
-#: src/game.cpp:1119
+#: src/game.cpp:1124
 msgid "Difficulty"
 msgstr ""
 
-#: src/game.cpp:1120
+#: src/game.cpp:1125
 msgid "Select difficulty level:"
 msgstr ""
 
-#: src/game.cpp:1282
+#: src/game.cpp:1287
 msgid "Do you really want to start the server?"
 msgstr ""
 
-#: src/game.cpp:1283
+#: src/game.cpp:1288
 msgid ""
 "The server will run in a background process until all users have "
 "disconnected."
 msgstr ""
 
-#: src/game.cpp:1287
+#: src/game.cpp:1292
 msgid "Don't show again"
 msgstr ""
 
-#: src/game.cpp:1358
+#: src/game.cpp:1363
 msgid "Error while starting server: "
 msgstr ""
 
-#: src/game.cpp:1360 src/playcampaign.cpp:96 src/playcampaign.cpp:382
+#: src/game.cpp:1365 src/playcampaign.cpp:96 src/playcampaign.cpp:382
 msgid "The game could not be loaded: "
 msgstr ""
 
-#: src/game.cpp:1362 src/playcampaign.cpp:98 src/playcampaign.cpp:385
+#: src/game.cpp:1367 src/playcampaign.cpp:98 src/playcampaign.cpp:385
 msgid "Error while playing the game: "
 msgstr ""
 
-#: src/game.cpp:1382 src/playcampaign.cpp:100 src/playcampaign.cpp:388
+#: src/game.cpp:1387 src/playcampaign.cpp:100 src/playcampaign.cpp:388
 msgid "The game map could not be loaded: "
 msgstr ""
 
-#: src/game.cpp:1448 src/game.cpp:1569
+#: src/game.cpp:1453 src/game.cpp:1574
 msgid "Error loading game configuration files: '"
 msgstr ""
 
-#: src/game.cpp:1449 src/game.cpp:1570
+#: src/game.cpp:1454 src/game.cpp:1575
 msgid "' (The game will now exit)"
 msgstr ""
 
-#: src/game.cpp:1544
+#: src/game.cpp:1549
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
-#: src/game.cpp:1551
+#: src/game.cpp:1556
 msgid "ERROR DETAILS:"
 msgstr ""
 
-#: src/game.cpp:1579
+#: src/game.cpp:1584
 msgid "Loading data files"
 msgstr ""
 
-#: src/game.cpp:1989
+#: src/game.cpp:1994
 msgid "Loading game configuration."
 msgstr ""
 
-#: src/game.cpp:1995
+#: src/game.cpp:2000
 msgid "Re-initialize fonts for the current language."
 msgstr ""
 
-#: src/game.cpp:2003
+#: src/game.cpp:2008
 msgid "Searching for installed add-ons."
 msgstr ""
 
-#: src/game.cpp:2012
+#: src/game.cpp:2017
 msgid "Loading title screen."
 msgstr ""
 
-#: src/game_config.cpp:285
+#: src/game_config.cpp:287
 msgid "Invalid color range: "
 msgstr ""
 
-#: src/game_events.cpp:133
+#: src/game_events.cpp:134
 #, fuzzy
 msgid "Error: "
 msgstr "greška"
 
-#: src/game_events.cpp:136
+#: src/game_events.cpp:137
 #, fuzzy
 msgid "Warning: "
 msgstr "Jutro"
 
-#: src/game_events.cpp:139
+#: src/game_events.cpp:140
 msgid "Debug: "
 msgstr ""
 
-#: src/game_events.cpp:142
+#: src/game_events.cpp:143
 msgid "Info: "
 msgstr ""
 
-#: src/game_events.cpp:1067
+#: src/game_events.cpp:1068
 msgid "Victory:"
 msgstr "Pobjeda:"
 
-#: src/game_events.cpp:1070
+#: src/game_events.cpp:1071
 msgid "Defeat:"
 msgstr "Poraz:"
 
@@ -6324,7 +6324,7 @@ msgstr "Sljedeći"
 msgid "Skip"
 msgstr "Preskoči"
 
-#: src/intro.cpp:435
+#: src/intro.cpp:439
 msgid "The End"
 msgstr "Završetak"
 
@@ -6371,7 +6371,7 @@ msgstr ""
 msgid "Reading files and creating cache."
 msgstr ""
 
-#: src/map.cpp:159
+#: src/map.cpp:162
 msgid "A map without a header is not supported"
 msgstr ""
 
@@ -6440,11 +6440,11 @@ msgstr ""
 msgid "Leader"
 msgstr ""
 
-#: src/menu_events.cpp:374 src/multiplayer_connect.cpp:1021
+#: src/menu_events.cpp:374 src/multiplayer_connect.cpp:1009
 msgid "Team"
 msgstr "Tim"
 
-#: src/menu_events.cpp:375 src/multiplayer_connect.cpp:1032
+#: src/menu_events.cpp:375 src/multiplayer_connect.cpp:1020
 #: src/multiplayer_wait.cpp:529
 msgid "Gold"
 msgstr "Zlato"
@@ -6461,7 +6461,7 @@ msgstr ""
 msgid "Upkeep"
 msgstr "Održavanje"
 
-#: src/menu_events.cpp:379 src/multiplayer_connect.cpp:1033
+#: src/menu_events.cpp:379 src/multiplayer_connect.cpp:1021
 #: src/multiplayer_wait.cpp:533
 msgid "Income"
 msgstr "Prihod"
@@ -6528,7 +6528,7 @@ msgstr "Spremljeno"
 msgid "The game has been saved"
 msgstr ""
 
-#: src/menu_events.cpp:596 src/playcampaign.cpp:571
+#: src/menu_events.cpp:596 src/playcampaign.cpp:603
 msgid "The game could not be saved"
 msgstr ""
 
@@ -6949,138 +6949,186 @@ msgstr ""
 msgid "Choose weapon:"
 msgstr "Odaberi oružje:"
 
-#: src/multiplayer.cpp:127 src/multiplayer.cpp:165
+#: src/multiplayer.cpp:128 src/multiplayer.cpp:166
 msgid "Connecting to Server..."
 msgstr ""
 
-#: src/multiplayer.cpp:137
+#: src/multiplayer.cpp:138
 msgid "Reading from Server..."
 msgstr "Čitam sa servera..."
 
-#: src/multiplayer.cpp:147
+#: src/multiplayer.cpp:148
 msgid ""
 "The server requires version '$version1' while you are using version "
 "'$version2'"
 msgstr ""
 
-#: src/multiplayer.cpp:159
+#: src/multiplayer.cpp:160
 msgid "Server-side redirect loop"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:82 src/multiplayer_connect.cpp:497
-#: src/multiplayer_connect.cpp:625
+#: src/multiplayer.cpp:333
+#, fuzzy
+msgid "Unknown error."
+msgstr "Nepoznata naredba."
+
+#: src/multiplayer.cpp:335
+msgid "You must login first."
+msgstr ""
+
+#: src/multiplayer.cpp:337
+msgid "The username you chose is already taken."
+msgstr ""
+
+#: src/multiplayer.cpp:339
+msgid ""
+"This username contains invalid characters. Only alpha-numeric characters, "
+"underscores and hyphens are allowed."
+msgstr ""
+
+#: src/multiplayer.cpp:343
+msgid "This username is too long. Usernames must be 18 characers or less."
+msgstr ""
+
+#: src/multiplayer.cpp:346
+msgid "The nick you chose is reserved and cannot be used by players"
+msgstr ""
+
+#: src/multiplayer.cpp:348
+msgid "This username is registered on this server."
+msgstr ""
+
+#: src/multiplayer.cpp:350
+msgid ""
+"This username is registered on this server.\n"
+" \n"
+"WARNING: There is already a client using this username, logging in will "
+"cause that client to be kicked!"
+msgstr ""
+
+#: src/multiplayer.cpp:354
+msgid ""
+"Error in the login procedure (the server had no seed for your connection)."
+msgstr ""
+
+#: src/multiplayer.cpp:357
+msgid "The password you provided was incorrect."
+msgstr ""
+
+#: src/multiplayer_connect.cpp:82 src/multiplayer_connect.cpp:485
+#: src/multiplayer_connect.cpp:613
 msgid "Normal"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:493 src/multiplayer_connect.cpp:621
+#: src/multiplayer_connect.cpp:481 src/multiplayer_connect.cpp:609
 #: src/multiplayer_wait.cpp:525 src/multiplayer_wait.cpp:533
 msgid "("
 msgstr ""
 
-#: src/multiplayer_connect.cpp:493 src/multiplayer_connect.cpp:621
+#: src/multiplayer_connect.cpp:481 src/multiplayer_connect.cpp:609
 #: src/multiplayer_wait.cpp:525 src/multiplayer_wait.cpp:536
 msgid ")"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:578
+#: src/multiplayer_connect.cpp:566
 msgid "Default AI"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:654
+#: src/multiplayer_connect.cpp:642
 msgid "(Vacant slot)"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:662
+#: src/multiplayer_connect.cpp:650
 msgid "Anonymous local player"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:684
+#: src/multiplayer_connect.cpp:672
 msgid "Computer player"
 msgstr "Računalni igrač"
 
-#: src/multiplayer_connect.cpp:687
+#: src/multiplayer_connect.cpp:675
 msgid "(Empty slot)"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:694
+#: src/multiplayer_connect.cpp:682
 msgid "(Reserved for $playername)"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:824
+#: src/multiplayer_connect.cpp:812
 msgid "Reserved"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:825
+#: src/multiplayer_connect.cpp:813
 msgid "--give--"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:947
+#: src/multiplayer_connect.cpp:935
 msgid "Only random sides in the current era."
 msgstr ""
 
-#: src/multiplayer_connect.cpp:971
+#: src/multiplayer_connect.cpp:959
 msgid "Unable to find a leader type for faction $faction"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:1008
+#: src/multiplayer_connect.cpp:996
 msgid "Game Lobby: "
 msgstr ""
 
-#: src/multiplayer_connect.cpp:1028
+#: src/multiplayer_connect.cpp:1016
 msgid "Player/Type"
 msgstr "Igrač/Tip"
 
-#: src/multiplayer_connect.cpp:1029
+#: src/multiplayer_connect.cpp:1017
 msgid "Faction"
 msgstr "Frakcija"
 
-#: src/multiplayer_connect.cpp:1030
+#: src/multiplayer_connect.cpp:1018
 msgid "Team/Gender"
 msgstr "Tim/Spol"
 
-#: src/multiplayer_connect.cpp:1031
+#: src/multiplayer_connect.cpp:1019
 msgid "Color"
 msgstr "Boja"
 
-#: src/multiplayer_connect.cpp:1035
+#: src/multiplayer_connect.cpp:1023
 msgid "I'm Ready"
 msgstr "Spreman sam"
 
-#: src/multiplayer_connect.cpp:1046
+#: src/multiplayer_connect.cpp:1034
 msgid "The scenario is invalid because it has no sides."
 msgstr ""
 
-#: src/multiplayer_connect.cpp:1438
+#: src/multiplayer_connect.cpp:1426
 msgid "Network Player"
 msgstr "Mrežni igrač"
 
-#: src/multiplayer_connect.cpp:1440
+#: src/multiplayer_connect.cpp:1428
 msgid "Local Player"
 msgstr "Lokalni igrač"
 
-#: src/multiplayer_connect.cpp:1441
+#: src/multiplayer_connect.cpp:1429
 msgid "Computer Player"
 msgstr "Računalni igrač"
 
-#: src/multiplayer_connect.cpp:1442
+#: src/multiplayer_connect.cpp:1430
 msgid "Empty"
 msgstr "Prazno"
 
-#: src/multiplayer_connect.cpp:1558
+#: src/multiplayer_connect.cpp:1546
 msgid "This is not a multiplayer save"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:1675
+#: src/multiplayer_connect.cpp:1674
 msgid "Cannot find era $era"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:1696
+#: src/multiplayer_connect.cpp:1695
 msgid ""
 "Victory:\n"
 "@Defeat enemy leader(s)"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:1756
+#: src/multiplayer_connect.cpp:1759
 msgid "Waiting for players to join..."
 msgstr ""
 
@@ -7366,11 +7414,11 @@ msgstr ""
 msgid "Joining this game requires a password."
 msgstr ""
 
-#: src/multiplayer_ui.cpp:167
+#: src/multiplayer_ui.cpp:188
 msgid "Invalid Color"
 msgstr ""
 
-#: src/multiplayer_ui.cpp:399
+#: src/multiplayer_ui.cpp:418
 msgid "Selected user: "
 msgstr ""
 
@@ -7487,31 +7535,31 @@ msgstr ""
 msgid "Downloading next scenario..."
 msgstr ""
 
-#: src/playcampaign.cpp:562
+#: src/playcampaign.cpp:594
 msgid "Do you want to save your game?"
 msgstr ""
 
-#: src/playcampaign.cpp:563
+#: src/playcampaign.cpp:595
 msgid "Name:"
 msgstr "Ime:"
 
-#: src/playcampaign.cpp:587
+#: src/playcampaign.cpp:619
 msgid "Unknown scenario: '$scenario|'"
 msgstr ""
 
-#: src/playmp_controller.cpp:211
+#: src/playmp_controller.cpp:221
 msgid "Undoing moves not yet transmitted to the server."
 msgstr ""
 
-#: src/playmp_controller.cpp:291
+#: src/playmp_controller.cpp:301
 msgid "End scenario"
 msgstr "Završi scenarij"
 
-#: src/playmp_controller.cpp:395
+#: src/playmp_controller.cpp:405
 msgid "Waiting for next scenario..."
 msgstr ""
 
-#: src/playmp_controller.cpp:519
+#: src/playmp_controller.cpp:535
 msgid ""
 "The game is out of sync, and cannot continue. There are a number of reasons "
 "this could happen: this can occur if you or another player have modified "
@@ -7886,31 +7934,31 @@ msgstr ""
 msgid "Unknown unit type '$type|'"
 msgstr ""
 
-#: src/unit.cpp:2520 src/unit.cpp:2725 src/unit.cpp:2781
+#: src/unit.cpp:2521 src/unit.cpp:2726 src/unit.cpp:2782
 msgid " and "
 msgstr "i"
 
-#: src/unit.cpp:2531
+#: src/unit.cpp:2532
 msgid "$attack_list|: $effect_description"
 msgstr ""
 
-#: src/unit.cpp:2596
+#: src/unit.cpp:2597
 msgid "moves"
 msgstr ""
 
-#: src/unit.cpp:2614 src/unit.cpp:2752
+#: src/unit.cpp:2615 src/unit.cpp:2753
 msgid "XP to advance"
 msgstr ""
 
-#: src/unit.cpp:2744
+#: src/unit.cpp:2745
 msgid " move"
 msgstr ""
 
-#: src/unit.cpp:2760
+#: src/unit.cpp:2761
 msgid "$effect_description per level"
 msgstr ""
 
-#: src/unit.cpp:2790
+#: src/unit.cpp:2791
 msgid "$trait_name|: $trait_description "
 msgstr ""
 
@@ -8055,9 +8103,6 @@ msgstr ""
 
 #~ msgid "Unknown subcommand."
 #~ msgstr "Nepoznata podnaredba."
-
-#~ msgid "Unknown command."
-#~ msgstr "Nepoznata naredba."
 
 #~ msgid "Unknown command: "
 #~ msgstr "Nepoznata naredba:"
