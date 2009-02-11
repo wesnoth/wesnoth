@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-02-11 23:27+0100\n"
+"POT-Creation-Date: 2009-02-12 00:21+0100\n"
 "PO-Revision-Date: 2006-03-21 21:06-0800\n"
 "Last-Translator: Andrew <Sfradix@hotmail.com>\n"
 "Language-Team: none\n"
@@ -7061,50 +7061,48 @@ msgstr ""
 msgid "Server-side redirect loop"
 msgstr ""
 
-#: src/multiplayer.cpp:333
+#: src/multiplayer.cpp:335
 msgid "Unknown error."
 msgstr ""
 
-#: src/multiplayer.cpp:335
+#: src/multiplayer.cpp:337
 msgid "You must login first."
 msgstr ""
 
-#: src/multiplayer.cpp:337
-msgid "The username you chose is already taken."
+#: src/multiplayer.cpp:339
+msgid "The nick '$nick' is already taken."
 msgstr ""
 
-#: src/multiplayer.cpp:339
+#: src/multiplayer.cpp:341
 msgid ""
-"This username contains invalid characters. Only alpha-numeric characters, "
+"The nick '$nick' contains invalid characters. Only alpha-numeric characters, "
 "underscores and hyphens are allowed."
 msgstr ""
 
-#: src/multiplayer.cpp:343
-msgid "This username is too long. Usernames must be 18 characers or less."
-msgstr ""
-
-#: src/multiplayer.cpp:346
-msgid "The nick you chose is reserved and cannot be used by players"
+#: src/multiplayer.cpp:345
+msgid "The nick '$nick' is too long. Nicks must be 18 characers or less."
 msgstr ""
 
 #: src/multiplayer.cpp:348
-msgid "This username is registered on this server."
+msgid "The nick '$nick' is reserved and cannot be used by players."
 msgstr ""
 
-#: src/multiplayer.cpp:350
+#: src/multiplayer.cpp:350 src/multiplayer.cpp:352
+msgid "The nick '$nick' is registered on this server."
+msgstr ""
+
+#: src/multiplayer.cpp:353
 msgid ""
-"This username is registered on this server.\n"
-" \n"
-"WARNING: There is already a client using this username, logging in will "
-"cause that client to be kicked!"
+"WARNING: There is already a client using this nick, logging in will cause "
+"that client to be kicked!"
 msgstr ""
 
-#: src/multiplayer.cpp:354
+#: src/multiplayer.cpp:356
 msgid ""
 "Error in the login procedure (the server had no seed for your connection)."
 msgstr ""
 
-#: src/multiplayer.cpp:357
+#: src/multiplayer.cpp:359
 msgid "The password you provided was incorrect."
 msgstr ""
 

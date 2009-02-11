@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.4 Estonian translation\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-02-11 23:27+0100\n"
+"POT-Creation-Date: 2009-02-12 00:21+0100\n"
 "PO-Revision-Date: 2008-06-06 13:39+0300\n"
 "Last-Translator: Kaido Kikkas <kaido.kikkas@kakupesa.net>\n"
 "Language-Team: Kaido Kikkas <kakk@kakupesa.net>\n"
@@ -8543,52 +8543,50 @@ msgstr "See server tahab versiooni '$version1', sul on aga '$version2'"
 msgid "Server-side redirect loop"
 msgstr "Serveripoolne ümbersuunamine"
 
-#: src/multiplayer.cpp:333
+#: src/multiplayer.cpp:335
 #, fuzzy
 msgid "Unknown error."
 msgstr "Tundmatu ajastu"
 
-#: src/multiplayer.cpp:335
+#: src/multiplayer.cpp:337
 #, fuzzy
 msgid "You must login first."
 msgstr "See server nõuab sisselogimist"
 
-#: src/multiplayer.cpp:337
-msgid "The username you chose is already taken."
+#: src/multiplayer.cpp:339
+msgid "The nick '$nick' is already taken."
 msgstr ""
 
-#: src/multiplayer.cpp:339
+#: src/multiplayer.cpp:341
 msgid ""
-"This username contains invalid characters. Only alpha-numeric characters, "
+"The nick '$nick' contains invalid characters. Only alpha-numeric characters, "
 "underscores and hyphens are allowed."
 msgstr ""
 
-#: src/multiplayer.cpp:343
-msgid "This username is too long. Usernames must be 18 characers or less."
-msgstr ""
-
-#: src/multiplayer.cpp:346
-msgid "The nick you chose is reserved and cannot be used by players"
+#: src/multiplayer.cpp:345
+msgid "The nick '$nick' is too long. Nicks must be 18 characers or less."
 msgstr ""
 
 #: src/multiplayer.cpp:348
-msgid "This username is registered on this server."
+msgid "The nick '$nick' is reserved and cannot be used by players."
 msgstr ""
 
-#: src/multiplayer.cpp:350
+#: src/multiplayer.cpp:350 src/multiplayer.cpp:352
+msgid "The nick '$nick' is registered on this server."
+msgstr ""
+
+#: src/multiplayer.cpp:353
 msgid ""
-"This username is registered on this server.\n"
-" \n"
-"WARNING: There is already a client using this username, logging in will "
-"cause that client to be kicked!"
+"WARNING: There is already a client using this nick, logging in will cause "
+"that client to be kicked!"
 msgstr ""
 
-#: src/multiplayer.cpp:354
+#: src/multiplayer.cpp:356
 msgid ""
 "Error in the login procedure (the server had no seed for your connection)."
 msgstr ""
 
-#: src/multiplayer.cpp:357
+#: src/multiplayer.cpp:359
 msgid "The password you provided was incorrect."
 msgstr ""
 
