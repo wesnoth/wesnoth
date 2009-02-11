@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu-low_1.5(frozen)\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-01-30 20:59+0100\n"
+"POT-Creation-Date: 2009-02-11 17:56+0100\n"
 "PO-Revision-Date: 2009-01-20 18:26+0100\n"
 "Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
 "Language-Team: Hungarian <>\n"
@@ -88,27 +88,27 @@ msgid "Campaign Maintenance"
 msgstr "Hadjárat-karbantartás"
 
 #. [about]
-#: data/campaigns/Legend_of_Wesmere/_main.cfg:85
+#: data/campaigns/Legend_of_Wesmere/_main.cfg:80
 msgid "Prose-doctoring and adaptation for mainline"
 msgstr "Szöveg gondozása és Wesnoth történelmébe való integrálás"
 
 #. [about]
-#: data/campaigns/Legend_of_Wesmere/_main.cfg:95
+#: data/campaigns/Legend_of_Wesmere/_main.cfg:90
 msgid "WML Assistance"
 msgstr "WML közreműködés"
 
 #. [about]
-#: data/campaigns/Legend_of_Wesmere/_main.cfg:110
+#: data/campaigns/Legend_of_Wesmere/_main.cfg:105
 msgid "Graphics"
 msgstr "Grafika"
 
 #. [about]
-#: data/campaigns/Legend_of_Wesmere/_main.cfg:126
+#: data/campaigns/Legend_of_Wesmere/_main.cfg:121
 msgid "Additional thanks to"
 msgstr "Külön köszönet"
 
 #. [entry]
-#: data/campaigns/Legend_of_Wesmere/_main.cfg:186
+#: data/campaigns/Legend_of_Wesmere/_main.cfg:181
 msgid ""
 "And the rest of the Wesnoth community for feedback,\n"
 "criticism, help with WML code and graphics."
@@ -185,45 +185,55 @@ msgstr ""
 "\n"
 "Ez a történet Kalenzről, és a tündékről szól a wesnothi emberek idejében."
 
+#. [unit]: type=Elvish Fighter, id=Anduilas
+#: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:78
+msgid "Anduilas"
+msgstr "Andulias"
+
+#. [message]: speaker=second_unit
+#: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:100
+msgid "You trifled with the wrong elf!"
+msgstr "Rossz tündével kezdtél ki!"
+
+#. [message]: speaker=second_unit
+#: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:110
+msgid "Take that, you orcish scum!"
+msgstr "Nesze, te alávaló ork!"
+
 #. [unit]: type=Elvish Captain, id=Velon
-#: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:82
+#: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:126
 msgid "Velon"
 msgstr "Velon"
 
 #. [trait]: id=aged
-#: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:90
+#: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:134
 msgid "aged"
 msgstr "idős"
 
 #. [unit]: type=Orcish Warrior, id=T'baran
-#: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:121
+#: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:165
 msgid "T'baran"
 msgstr "T'baran"
 
 #. [unit]: type=Orcish Warrior, id=Wrulf
-#: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:157
+#: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:201
 msgid "Wrulf"
 msgstr "Wrulf"
 
 #. [unit]: type=Orcish Warrior, id=Qumseh
-#: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:193
+#: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:237
 msgid "Qumseh"
 msgstr "Qumseh"
 
 #. [unit]: type=Orcish Warrior, id=Graur-Tan
 #. [side]: type=Orcish Warlord, id=Graur-Tan
-#: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:230
+#: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:274
 #: data/campaigns/Legend_of_Wesmere/scenarios/06_Acquaintance_in_Need.cfg:143
 msgid "Graur-Tan"
 msgstr "Graur-Tan"
 
-#. [unit]: type=Elvish Fighter, id=Anduilas
-#: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:282
-msgid "Anduilas"
-msgstr "Andulias"
-
 #. [objective]: condition=win
-#: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:296
+#: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:311
 msgid "Reach the signpost"
 msgstr "Kalenz eléri az útjelző táblát"
 
@@ -234,13 +244,13 @@ msgstr "Kalenz eléri az útjelző táblát"
 #: data/campaigns/Legend_of_Wesmere/scenarios/11_Battle_of_the_book.cfg:87
 #: data/campaigns/Legend_of_Wesmere/scenarios/10_Cliffs_of_Thoria.cfg:113
 #: data/campaigns/Legend_of_Wesmere/scenarios/23_End_of_War.cfg:82
-#: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:300
+#: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:315
 #: data/campaigns/Legend_of_Wesmere/scenarios/21_Elvish_Assassins.cfg:176
-#: data/campaigns/Legend_of_Wesmere/scenarios/22_Northern_Battle.cfg:140
+#: data/campaigns/Legend_of_Wesmere/scenarios/22_Northern_Battle.cfg:142
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian.cfg:187
 #: data/campaigns/Legend_of_Wesmere/scenarios/14_Human_Alliance.cfg:214
 #: data/campaigns/Legend_of_Wesmere/scenarios/06_Acquaintance_in_Need.cfg:200
-#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:340
+#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:336
 #: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_last_stand.cfg:264
 #: data/campaigns/Legend_of_Wesmere/scenarios/19_Costly_Revenge.cfg:103
 #: data/campaigns/Legend_of_Wesmere/scenarios/09_Bounty_hunters.cfg:133
@@ -255,11 +265,11 @@ msgstr "Kalenz elesik"
 #: data/campaigns/Legend_of_Wesmere/scenarios/05_Saurian_Treasury.cfg:232
 #: data/campaigns/Legend_of_Wesmere/scenarios/11_Battle_of_the_book.cfg:91
 #: data/campaigns/Legend_of_Wesmere/scenarios/10_Cliffs_of_Thoria.cfg:117
-#: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:304
+#: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:319
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian.cfg:191
 #: data/campaigns/Legend_of_Wesmere/scenarios/14_Human_Alliance.cfg:218
 #: data/campaigns/Legend_of_Wesmere/scenarios/06_Acquaintance_in_Need.cfg:204
-#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:344
+#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:340
 #: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_last_stand.cfg:268
 #: data/campaigns/Legend_of_Wesmere/scenarios/19_Costly_Revenge.cfg:107
 #: data/campaigns/Legend_of_Wesmere/scenarios/09_Bounty_hunters.cfg:137
@@ -275,11 +285,11 @@ msgstr "Landar elesik"
 #: data/campaigns/Legend_of_Wesmere/scenarios/11_Battle_of_the_book.cfg:107
 #: data/campaigns/Legend_of_Wesmere/scenarios/10_Cliffs_of_Thoria.cfg:129
 #: data/campaigns/Legend_of_Wesmere/scenarios/23_End_of_War.cfg:90
-#: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:308
+#: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:323
 #: data/campaigns/Legend_of_Wesmere/scenarios/21_Elvish_Assassins.cfg:184
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian.cfg:199
 #: data/campaigns/Legend_of_Wesmere/scenarios/06_Acquaintance_in_Need.cfg:216
-#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:352
+#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:348
 #: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_last_stand.cfg:284
 #: data/campaigns/Legend_of_Wesmere/scenarios/19_Costly_Revenge.cfg:115
 #: data/campaigns/Legend_of_Wesmere/scenarios/09_Bounty_hunters.cfg:149
@@ -289,12 +299,12 @@ msgid "Turns run out"
 msgstr "Túlléped a körök számát"
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:319
+#: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:334
 msgid "Orcs are pressing on us from all directions! To arms!"
 msgstr "Orkok közelednek minden irányból! Fegyverbe!"
 
 #. [message]: id=Velon
-#: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:323
+#: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:338
 msgid ""
 "Hold, Kalenz. The Ka'lian council should discuss our response. Maybe we can "
 "reach an agreement with them!"
@@ -303,17 +313,17 @@ msgstr ""
 "Lehet, hogy meg tudunk velük egyezni!"
 
 #. [message]: id=Qumseh
-#: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:327
+#: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:342
 msgid "Surrender or die, tree-shaggers!"
 msgstr "Behódoltok vagy meghaltok, faimádók!"
 
 #. [message]: id=Velon
-#: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:331
+#: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:346
 msgid "They are too many. We have no choice but to submit!"
 msgstr "Túl sokan vannak. Nincs más választásunk, be kell hódolnunk!"
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:335
+#: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:350
 msgid ""
 "Elves must never surrender to these foul beasts! Who will fight them beside "
 "me?"
@@ -322,12 +332,12 @@ msgstr ""
 "az oldalamon?"
 
 #. [message]: id=Landar
-#: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:339
+#: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:354
 msgid "We will follow you, Kalenz - but where can we go? We are surrounded!"
 msgstr "Mi követünk téged, Kalenz - de hova menjünk? Be vagyunk kerítve!"
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:343
+#: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:358
 msgid ""
 "We must reach the elvish council in Ka'lian and enlist their help to "
 "recapture our home. Let's storm the orcs' southern outpost before more "
@@ -338,32 +348,22 @@ msgstr ""
 "mielőtt még többen jönnének!"
 
 #. [message]: id=Anduilas
-#: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:347
+#: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:362
 msgid "Very well, Kalenz - lead us!"
 msgstr "Rendben Kalenz, vezess minket!"
 
-#. [message]: speaker=second_unit
-#: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:363
-msgid "You trifled with the wrong elf!"
-msgstr "Rossz tündével kezdtél ki!"
-
-#. [message]: speaker=second_unit
-#: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:374
-msgid "Take that, you orcish scum!"
-msgstr "Nesze, te alávaló ork!"
-
 #. [message]: id=Velon
-#: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:388
+#: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:381
 msgid "We surrender!"
 msgstr "Megadjuk magunkat!"
 
 #. [message]: id=Graur-Tan
-#: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:392
+#: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:385
 msgid "Did I mention that we take no prisoners? Die!"
 msgstr "Említettem, hogy nem ejtünk foglyokat? Halál rájuk!"
 
 #. [message]: id=Velon
-#: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:396
+#: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:389
 msgid ""
 "Kalenz was right and I was wrong. Go; join Kalenz while yet you can. I and "
 "the remaining elders will cover your retreat as best we may."
@@ -372,20 +372,21 @@ msgstr ""
 "amíg tudtok! Én és a többi idős fedezzük visszavonulásotokat, amíg csak "
 "tudjuk."
 
+#. [message]: id=Velon
+#: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:407
+#: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:447
+msgid "Flee, Kalenz...our hopes ride with you..."
+msgstr "Menekülj Kalenz... benned van minden reményünk..."
+
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:415
+#: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:411
 msgid "We have escaped them, but we will not forget. We shall return!"
 msgstr "Megmenekültünk tőlük, de nem felejtünk. Vissza fogunk térni!"
 
 #. [message]: id=Graur-Tan
-#: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:419
+#: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:415
 msgid "You won't get very far! After them!"
 msgstr "Nem juthattok messzire! Utánuk!"
-
-#. [message]: id=Velon
-#: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:450
-msgid "Flee, Kalenz...our hopes ride with you..."
-msgstr "Menekülj Kalenz... benned van minden reményünk..."
 
 #. [scenario]: id=02_Hostile_mountains
 #: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:4
@@ -408,7 +409,7 @@ msgstr ""
 "területen, amit a tündék inkább elkerültek volna..."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:48
+#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:49
 msgid "Payback time!"
 msgstr "Ütött az utolsó órád!"
 
@@ -418,17 +419,17 @@ msgid "Those stinking trolls ha' stepped on OUR land! Attack!"
 msgstr "Ezek a büdös trollok beléptek a MI földünkre! Támadás!"
 
 #. [message]: id=Olurf
-#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:171
+#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:167
 msgid "Those lying elves have stepped on OUR land! Attack!"
 msgstr "Ezek a hazug tündék beléptek a MI földünkre! Támadás!"
 
 #. [side]: type=Troll Hero, type=Great Troll, id=Grugl
-#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:224
+#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:220
 msgid "Grugl"
 msgstr "Grugl"
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:301
+#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:297
 msgid ""
 "I had hoped to avoid these paths... The eastern way is through dwarvish "
 "territory and is shorter. I pray the dwarves will grant us safe passage, "
@@ -439,7 +440,7 @@ msgstr ""
 "áthaladást, mivel a másik út troll területen  vezet keresztül..."
 
 #. [message]: id=Olurf
-#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:305
+#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:301
 msgid ""
 "Not even in yer dreams, elf. These are dwarvish lands, and troubles we want "
 "no part of nip at yer heels. Get out and stay out!"
@@ -448,7 +449,7 @@ msgstr ""
 "problémáitokat is béhozzátok. Távozzatok, és maradjatok kívül!"
 
 #. [message]: id=Landar
-#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:309
+#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:305
 msgid ""
 "Our troubles will be yours, too, whether either of us will it or not. The "
 "orcs have come down from the north like a flood; if we squabble among "
@@ -458,7 +459,7 @@ msgstr ""
 "özönlenek északról; a viszályunk csak az ő malmukra hajtja a vizet."
 
 #. [message]: id=Olurf
-#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:313
+#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:309
 msgid ""
 "Bah. More smooth words and trickery, by my beard. We know yer kind...and who "
 "needs yer help anyway, weaklings? Leave now, or feel my axe! That same kiss "
@@ -472,12 +473,12 @@ msgstr ""
 "teszi a lábát, keserűn fogja megemlegetni a napot, mikó megszületett!"
 
 #. [message]: id=Landar
-#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:317
+#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:313
 msgid "I cannot see how trolls could be any less friendly."
 msgstr "Kétlem, hogy a trollok ennél barátságtalanabbak lennének."
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:321
+#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:317
 msgid ""
 "Hmm... Perhaps the dwarves' intransigence can serve our purpose. Onwards, "
 "and no matter what you do, do NOT step on the eastern band of the river!"
@@ -486,12 +487,12 @@ msgstr ""
 "számít, mit tesztek, de NE lépjetek a folyó keleti partjára!"
 
 #. [objective]: condition=win
-#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:332
+#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:328
 msgid "Kalenz must reach the signpost"
 msgstr "Kalenz eléri az útjelzőt"
 
 #. [objective]: condition=win
-#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:336
+#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:332
 msgid "Defeat Grugl"
 msgstr "Legyőzöd Gruglot."
 
@@ -500,7 +501,7 @@ msgstr "Legyőzöd Gruglot."
 #: data/campaigns/Legend_of_Wesmere/scenarios/10_Cliffs_of_Thoria.cfg:125
 #: data/campaigns/Legend_of_Wesmere/scenarios/14_Human_Alliance.cfg:222
 #: data/campaigns/Legend_of_Wesmere/scenarios/06_Acquaintance_in_Need.cfg:208
-#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:348
+#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:344
 #: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_last_stand.cfg:276
 #: data/campaigns/Legend_of_Wesmere/scenarios/09_Bounty_hunters.cfg:145
 #: data/campaigns/Legend_of_Wesmere/scenarios/17_Breaking_the_siege.cfg:194
@@ -508,12 +509,12 @@ msgid "Death of Olurf"
 msgstr "Olurf elesik."
 
 #. [message]: speaker=unit
-#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:367
+#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:363
 msgid "We made it. Onwards to Wesmere!"
 msgstr "Megcsináltuk! Irány Wesmere!"
 
 #. [message]: id=Olurf
-#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:371
+#: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:367
 msgid "Crazy elves! But at least they felled a few trolls before they left."
 msgstr "Bolond tündék! De legalább levágtak néhány trollt, mielőtt távoztak."
 
@@ -552,7 +553,7 @@ msgstr "Murudin"
 #: data/campaigns/Legend_of_Wesmere/scenarios/04_Elvish_Treasury.cfg:99
 #: data/campaigns/Legend_of_Wesmere/scenarios/05_Saurian_Treasury.cfg:84
 #: data/campaigns/Legend_of_Wesmere/scenarios/10_Cliffs_of_Thoria.cfg:109
-#: data/campaigns/Legend_of_Wesmere/scenarios/22_Northern_Battle.cfg:132
+#: data/campaigns/Legend_of_Wesmere/scenarios/22_Northern_Battle.cfg:134
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian.cfg:183
 #: data/campaigns/Legend_of_Wesmere/scenarios/14_Human_Alliance.cfg:206
 #: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_last_stand.cfg:260
@@ -671,7 +672,7 @@ msgstr "Trigr"
 #: data/campaigns/Legend_of_Wesmere/scenarios/10_Cliffs_of_Thoria.cfg:121
 #: data/campaigns/Legend_of_Wesmere/scenarios/23_End_of_War.cfg:86
 #: data/campaigns/Legend_of_Wesmere/scenarios/21_Elvish_Assassins.cfg:180
-#: data/campaigns/Legend_of_Wesmere/scenarios/22_Northern_Battle.cfg:144
+#: data/campaigns/Legend_of_Wesmere/scenarios/22_Northern_Battle.cfg:146
 #: data/campaigns/Legend_of_Wesmere/scenarios/14_Human_Alliance.cfg:226
 #: data/campaigns/Legend_of_Wesmere/scenarios/06_Acquaintance_in_Need.cfg:212
 #: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_last_stand.cfg:272
@@ -3620,7 +3621,7 @@ msgid "Tan-Durr"
 msgstr "Tan-Durr"
 
 #. [objective]: condition=lose
-#: data/campaigns/Legend_of_Wesmere/scenarios/22_Northern_Battle.cfg:148
+#: data/campaigns/Legend_of_Wesmere/scenarios/22_Northern_Battle.cfg:150
 #: data/campaigns/Legend_of_Wesmere/scenarios/17_Breaking_the_siege.cfg:190
 msgid "Death of Uradredia"
 msgstr "Uradredia meghal"
@@ -4053,7 +4054,7 @@ msgstr "Antaril"
 
 #. [unit]: type=Elvish Captain, id=Crintil
 #: data/campaigns/Legend_of_Wesmere/scenarios/21_Elvish_Assassins.cfg:87
-#: data/campaigns/Legend_of_Wesmere/scenarios/22_Northern_Battle.cfg:93
+#: data/campaigns/Legend_of_Wesmere/scenarios/22_Northern_Battle.cfg:95
 msgid "Crintil"
 msgstr "Crintil"
 
@@ -4144,12 +4145,12 @@ msgstr ""
 "kérjenek. Igen hamar Landar serege is megérkezett..."
 
 #. [objective]: condition=win
-#: data/campaigns/Legend_of_Wesmere/scenarios/22_Northern_Battle.cfg:136
+#: data/campaigns/Legend_of_Wesmere/scenarios/22_Northern_Battle.cfg:138
 msgid "Survive for six days"
 msgstr "Kitartasz hat napig"
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/22_Northern_Battle.cfg:186
+#: data/campaigns/Legend_of_Wesmere/scenarios/22_Northern_Battle.cfg:188
 msgid ""
 "Landar, listen to me! It does not have to come to this. I know about the "
 "potion. Let us help!"
@@ -4158,19 +4159,19 @@ msgstr ""
 "az ital az oka. Hadd segítsünk!"
 
 #. [message]: id=Landar
-#: data/campaigns/Legend_of_Wesmere/scenarios/22_Northern_Battle.cfg:190
+#: data/campaigns/Legend_of_Wesmere/scenarios/22_Northern_Battle.cfg:192
 msgid ""
 "Here is Kalenz. There can be no talk with traitors! Let none of them alive!"
 msgstr ""
 "Ez Kalenz. Nincs miről beszélni árulókkal. Senkit ne hagyjatok életben!"
 
 #. [message]: id=Landar
-#: data/campaigns/Legend_of_Wesmere/scenarios/22_Northern_Battle.cfg:209
+#: data/campaigns/Legend_of_Wesmere/scenarios/22_Northern_Battle.cfg:208
 msgid "Things are not going well! Retreat! We will meet again, traitors!"
 msgstr "A dolgok nem jól alakulnak! Vissza! Még találkozunk, árulók!"
 
 #. [message]: id=Landar
-#: data/campaigns/Legend_of_Wesmere/scenarios/22_Northern_Battle.cfg:221
+#: data/campaigns/Legend_of_Wesmere/scenarios/22_Northern_Battle.cfg:220
 msgid ""
 "We have yet to break their defenses! While we are getting weaker, the enemy "
 "is getting stronger! Retreat!"
@@ -4179,7 +4180,7 @@ msgstr ""
 "erősödik! Visszavonulás!"
 
 #. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/scenarios/22_Northern_Battle.cfg:225
+#: data/campaigns/Legend_of_Wesmere/scenarios/22_Northern_Battle.cfg:224
 msgid "We won!"
 msgstr "Győztünk!"
 

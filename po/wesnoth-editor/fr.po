@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.4-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-02-04 14:25+0100\n"
+"POT-Creation-Date: 2009-02-11 17:55+0100\n"
 "PO-Revision-Date: 2009-01-25 22:50+0100\n"
 "Last-Translator: Benoît Timbert <benoit.timbert@free.fr>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
@@ -173,19 +173,19 @@ msgstr "Action non implémentée"
 msgid "Quit Editor"
 msgstr "Quitter l'éditeur"
 
-#: src/editor2/editor_controller.cpp:260
+#: src/editor2/editor_controller.cpp:282
 msgid "Fatal error"
 msgstr "Erreur fatale"
 
-#: src/editor2/editor_controller.cpp:274 src/editor2/editor_controller.cpp:971
+#: src/editor2/editor_controller.cpp:296 src/editor2/editor_controller.cpp:993
 msgid "(New Map)"
 msgstr "(Nouvelle carte)"
 
-#: src/editor2/editor_controller.cpp:280
+#: src/editor2/editor_controller.cpp:302
 msgid "Do you really want to quit?"
 msgstr "Voulez-vous vraiment quitter ?"
 
-#: src/editor2/editor_controller.cpp:282
+#: src/editor2/editor_controller.cpp:304
 msgid ""
 "Do you really want to quit? Changes in the map since the last save will be "
 "lost."
@@ -193,7 +193,7 @@ msgstr ""
 "Voulez-vous vraiment quitter ? Les modifications effectuées sur la carte "
 "depuis la dernière sauvergarde seront perdus."
 
-#: src/editor2/editor_controller.cpp:284
+#: src/editor2/editor_controller.cpp:306
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -202,92 +202,92 @@ msgstr ""
 "tout les modifications effectuées depuis la dernière sauvergarde seront "
 "perdus :"
 
-#: src/editor2/editor_controller.cpp:289
+#: src/editor2/editor_controller.cpp:311
 msgid "Quit"
 msgstr "Quitter"
 
-#: src/editor2/editor_controller.cpp:346 src/editor2/editor_controller.cpp:458
-#: src/editor2/editor_controller.cpp:494 src/editor2/editor_controller.cpp:516
+#: src/editor2/editor_controller.cpp:368 src/editor2/editor_controller.cpp:480
+#: src/editor2/editor_controller.cpp:516 src/editor2/editor_controller.cpp:538
 msgid "Error"
 msgstr "Erreur"
 
-#: src/editor2/editor_controller.cpp:346
+#: src/editor2/editor_controller.cpp:368
 msgid "No editor time-of-day found."
 msgstr "Aucune période du jour définie dans l'éditeur."
 
-#: src/editor2/editor_controller.cpp:382
+#: src/editor2/editor_controller.cpp:404
 msgid "Unsaved Changes"
 msgstr "Modifications non sauvegardées"
 
-#: src/editor2/editor_controller.cpp:383
+#: src/editor2/editor_controller.cpp:405
 msgid ""
 "Do you want to discard all changes you made to the map since the last save?"
 msgstr ""
 "Voulez-vous annuler toutes les modifications de la carte depuis la dernière "
 "sauvegarde ?"
 
-#: src/editor2/editor_controller.cpp:396
+#: src/editor2/editor_controller.cpp:418
 msgid "Choose a Map to Open"
 msgstr "Choisir la carte à ouvrir"
 
-#: src/editor2/editor_controller.cpp:400
+#: src/editor2/editor_controller.cpp:422
 msgid "This map is already open."
 msgstr "Cette carte est déja ouverte."
 
-#: src/editor2/editor_controller.cpp:438
+#: src/editor2/editor_controller.cpp:460
 msgid "Save the Map As"
 msgstr "Enregistrer la carte sous"
 
-#: src/editor2/editor_controller.cpp:442
+#: src/editor2/editor_controller.cpp:464
 msgid "The file already exists. Do you want to overwrite it?"
 msgstr "Le fichier existe déjà. Souhaitez-vous l'écraser ?"
 
-#: src/editor2/editor_controller.cpp:458
+#: src/editor2/editor_controller.cpp:480
 msgid "No random map generators found."
 msgstr "Aucun générateur de carte aléatoire trouvé."
 
-#: src/editor2/editor_controller.cpp:469
+#: src/editor2/editor_controller.cpp:491
 msgid "Map creation failed."
 msgstr "Échec de création de la carte."
 
-#: src/editor2/editor_controller.cpp:484
+#: src/editor2/editor_controller.cpp:506
 msgid "Choose a mask to apply"
 msgstr "Choisir le masque à appliquer"
 
-#: src/editor2/editor_controller.cpp:491
+#: src/editor2/editor_controller.cpp:513
 msgid "Error loading mask"
 msgstr "Erreur lord du chargement du masque"
 
-#: src/editor2/editor_controller.cpp:506
+#: src/editor2/editor_controller.cpp:528
 msgid "Choose target map"
 msgstr "Choisir la carte de destination"
 
-#: src/editor2/editor_controller.cpp:513 src/editor2/editor_controller.cpp:626
+#: src/editor2/editor_controller.cpp:535 src/editor2/editor_controller.cpp:648
 #: src/editor2/editor_main.cpp:53
 msgid "Error loading map"
 msgstr "Erreur lors du chargement de la carte"
 
-#: src/editor2/editor_controller.cpp:602
+#: src/editor2/editor_controller.cpp:624
 msgid "Map saved."
 msgstr "Carte sauvegardée."
 
-#: src/editor2/editor_controller.cpp:607
+#: src/editor2/editor_controller.cpp:629
 msgid "Could not save the map: $msg"
 msgstr "Impossible de sauvegarder la carte : $msg"
 
-#: src/editor2/editor_controller.cpp:998
+#: src/editor2/editor_controller.cpp:1020
 msgid "Undo"
 msgstr "Annuler"
 
-#: src/editor2/editor_controller.cpp:1000
+#: src/editor2/editor_controller.cpp:1022
 msgid "Can't Undo"
 msgstr "Impossible d'annuler"
 
-#: src/editor2/editor_controller.cpp:1004
+#: src/editor2/editor_controller.cpp:1026
 msgid "Redo"
 msgstr "Refaire"
 
-#: src/editor2/editor_controller.cpp:1006
+#: src/editor2/editor_controller.cpp:1028
 msgid "Can't Redo"
 msgstr "Impossible de refaire"
 
