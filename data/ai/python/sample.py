@@ -218,8 +218,10 @@ class AI:
 
         def recruit_score(recruit, speed, defense, aggression, resistance):
             """Score for recruiting the given unit type."""
-            need_for_speed = 3 * (villages / self.scout_villages -
-                units_recruited)
+            vscout_minus_recruits = self.scout_villages - units_recruited
+            if vscout_minus_recruits == 0:
+                vscout_minus_recruits = 0 # prevent div-by-zero
+            need_for_speed = 3 * (villages / vscout_minus_recruits)
             if need_for_speed < 0: need_for_speed = 0
             v = speed * need_for_speed + defense * 0.1 + aggression + resistance
             v += 1
@@ -250,8 +252,9 @@ class AI:
                 enemy = wesnoth.get_units()[location]
                 aggression += attack_score(recruit, enemy)
                 resistance -= attack_score(enemy, recruit)
-            aggression /= n
-            resistance /= n
+            if n > 0:
+                aggression /= n
+                resistance /= n
 
             debug("%s: speed: %f, defense: %f, aggression: %f, resistance: %f" %
                 (recruit.name, speed, defense, aggression, resistance))
