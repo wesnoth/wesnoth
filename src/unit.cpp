@@ -1907,19 +1907,15 @@ void unit::redraw_unit(game_display& disp, const map_location& loc)
 		ellipse_front.assign(image::get_image(image::locator(buf), image::SCALED_TO_ZOOM));
 	}
 
-	// FIXME: Use the hack to draw ellipses in the unit layer
-	// but with a different drawing_order, so it's rendered behind/above unit
-	const int drawing_order = loc.get_drawing_order();
-
 	if (ellipse_back != NULL) {
-		//disp.drawing_buffer_add(display::LAYER_UNIT_BG, drawing_order,
-		disp.drawing_buffer_add(display::LAYER_UNIT_FIRST, drawing_order-10,
+		//disp.drawing_buffer_add(display::LAYER_UNIT_BG, loc,
+		disp.drawing_buffer_add(display::LAYER_UNIT_FIRST, loc,
 			display::tblit(xsrc, ysrc +adjusted_params.y-ellipse_floating, ellipse_back));
 	}
 
 	if (ellipse_front != NULL) {
-		//disp.drawing_buffer_add(display::LAYER_UNIT_FG, drawing_order,
-		disp.drawing_buffer_add(display::LAYER_UNIT_FIRST, drawing_order+10,
+		//disp.drawing_buffer_add(display::LAYER_UNIT_FG, loc,
+		disp.drawing_buffer_add(display::LAYER_UNIT_FIRST, loc,
 			display::tblit(xsrc, ysrc +adjusted_params.y-ellipse_floating, ellipse_front));
 	}
 
@@ -1949,7 +1945,7 @@ void unit::redraw_unit(game_display& disp, const map_location& loc)
 		surface orb(image::get_image(*movement_file,image::SCALED_TO_ZOOM));
 		if (orb != NULL) {
 			disp.drawing_buffer_add(display::LAYER_UNIT_BAR,
-				drawing_order, display::tblit(xsrc, ysrc +adjusted_params.y, orb));
+				loc, display::tblit(xsrc, ysrc +adjusted_params.y, orb));
 		}
 
 		double unit_energy = 0.0;
@@ -1966,7 +1962,7 @@ void unit::redraw_unit(game_display& disp, const map_location& loc)
 		const fixed_t bar_alpha = (loc == disp.mouseover_hex() || loc == disp.selected_hex()) ? ftofxp(1.0): ftofxp(0.8);
 
 		disp.draw_bar(*energy_file, xsrc+bar_shift, ysrc +adjusted_params.y,
-			drawing_order, hp_bar_height, unit_energy,hp_color(), bar_alpha);
+			loc, hp_bar_height, unit_energy,hp_color(), bar_alpha);
 
 		if(experience() > 0 && can_advance()) {
 			const double filled = double(experience())/double(max_experience());
@@ -1975,7 +1971,7 @@ void unit::redraw_unit(game_display& disp, const map_location& loc)
 
 			SDL_Color colour=xp_color();
 			disp.draw_bar(*energy_file, xsrc, ysrc +adjusted_params.y,
-				drawing_order, xp_bar_height, filled, colour, bar_alpha);
+				loc, xp_bar_height, filled, colour, bar_alpha);
 		}
 
 		if (can_recruit()) {
@@ -1985,7 +1981,7 @@ void unit::redraw_unit(game_display& disp, const map_location& loc)
 				//	crown = adjust_surface_alpha(crown, bar_alpha);
 				//}
 				disp.drawing_buffer_add(display::LAYER_UNIT_BAR,
-					drawing_order, display::tblit(xsrc, ysrc +adjusted_params.y, crown));
+					loc, display::tblit(xsrc, ysrc +adjusted_params.y, crown));
 			}
 		}
 
@@ -1993,7 +1989,7 @@ void unit::redraw_unit(game_display& disp, const map_location& loc)
 			const surface ov_img(image::get_image(*ov, image::SCALED_TO_ZOOM));
 			if(ov_img != NULL) {
 				disp.drawing_buffer_add(display::LAYER_UNIT_BAR,
-					drawing_order, display::tblit(xsrc, ysrc +adjusted_params.y, ov_img));
+					loc, display::tblit(xsrc, ysrc +adjusted_params.y, ov_img));
 			}
 		}
 	}

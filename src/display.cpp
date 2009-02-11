@@ -697,50 +697,106 @@ void display::drawing_buffer_commit()
 	surface const dst(get_screen_surface());
 	clip_rect_setter set_clip_rect(dst, clip_rect);
 
-	// Simply go down all levels in the drawing_buffer_ and render them.
-	for(tdrawing_buffer::const_iterator
-			layer_itor = drawing_buffer_.begin(),
-			layer_itor_end = drawing_buffer_.end();
-			layer_itor != layer_itor_end; ++layer_itor) {
+	/*
+	 * Info regarding the rendering algorithm.
+	 *
+	 * In order to render a hex properly it needs to be rendered per row. On
+	 * this row several layers need to be drawn at the same time. Mainly the
+	 * unit and the background terrain. This is needed since both can spill
+	 * in the next hex. The foreground terrain needs to be drawn before to
+	 * avoid decapitation a unit.
+	 *
+	 * This ended in the following algorithm.
+	 *
+	 * - Loop over all layer groups.
+	 * - For all layers in this group proceed to render from low to high.
+	 *   - Render all rows (a row has a constant y) from low to high.
+	 *   - In the row render the columns from low to high.
+	 */
 
-		for(std::map<int, std::vector<tblit> >::const_iterator
+	// The drawing is done per layer_group.
+	static const tdrawing_layer layer_groups[] = {
+		LAYER_TERRAIN_BG,
+		LAYER_UNIT_FIRST,
+		LAYER_UNIT_MOVE_DEFAULT,		
+		LAYER_LAST_LAYER };
+
+	for(size_t z = 1; z < sizeof(layer_groups)/sizeof(layer_groups[0]); ++z) {
+
+		for(int y = -get_map().border_size(); 
+				y < get_map().total_height(); ++y) {
+
 #if TDRAWING_BUFFER_USES_VECTOR
-				drawing_iterator = layer_itor->begin(),
-				drawing_iterator_end = layer_itor->end();
-#else
-				drawing_iterator = layer_itor->second.begin(),
-				drawing_iterator_end = layer_itor->second.end();
-#endif
-				drawing_iterator != drawing_iterator_end; ++drawing_iterator) {
+			int layer = -1;
+#endif			
+			for(tdrawing_buffer::const_iterator
+					layer_itor = drawing_buffer_.begin(),
+					layer_itor_end = drawing_buffer_.end();
+					layer_itor != layer_itor_end; ++layer_itor) {
 
-			for(std::vector<tblit>::const_iterator
-					blit_itor = drawing_iterator->second.begin(),
-					blit_itor_end = drawing_iterator->second.end();
-					blit_itor != blit_itor_end; ++blit_itor) {
-
-				for(std::vector<surface>::const_iterator
-						surface_itor = blit_itor->surf.begin(),
-						surface_itor_end = blit_itor->surf.end();
-						surface_itor != surface_itor_end; ++surface_itor) {
-
-					// Note that dstrect can be changed by SDL_BlitSurface
-					// and so a new instance should be initialized
-					// to pass to each call to SDL_BlitSurface.
-					SDL_Rect dstrect = { blit_itor->x, blit_itor->y, 0, 0 };
-
-					if(blit_itor->clip.x || blit_itor->clip.y
-							||blit_itor->clip.w ||blit_itor->clip.h) {
-
-						SDL_Rect srcrect = blit_itor->clip;
-						SDL_BlitSurface(*surface_itor, &srcrect, dst, &dstrect);
-					} else {
-						SDL_BlitSurface(*surface_itor, NULL, dst, &dstrect);
-					}
+#if TDRAWING_BUFFER_USES_VECTOR
+				++layer;
+				if(!(layer >= layer_groups[z - 1] &&
+							layer < layer_groups[z])) {
+					// The current layer is not in the layer group, skip.
+					continue;
 				}
-				update_rect(blit_itor->x, blit_itor->y, zoom_, zoom_);
-			}
-		}
-	}
+#else
+				if(!(layer_itor->first >= layer_groups[z - 1] &&
+							layer_itor->first < layer_groups[z])) {
+					// The current layer is not in the layer group, skip.
+					continue;
+				}
+#endif
+
+				for(tblit_map::const_iterator
+#if TDRAWING_BUFFER_USES_VECTOR
+						drawing_iterator = layer_itor->begin(),
+						drawing_iterator_end = layer_itor->end();
+#else
+						drawing_iterator = layer_itor->second.begin(),
+						drawing_iterator_end = layer_itor->second.end();
+#endif
+						drawing_iterator != drawing_iterator_end; 
+						++drawing_iterator) {
+
+					if(drawing_iterator->first.y != y) {
+						// The current row is not the row to render, skip.
+						continue;
+					}
+
+					for(std::vector<tblit>::const_iterator
+							blit_itor = drawing_iterator->second.begin(),
+							blit_itor_end = drawing_iterator->second.end();
+							blit_itor != blit_itor_end; ++blit_itor) {
+
+						for(std::vector<surface>::const_iterator
+								surface_itor = blit_itor->surf.begin(),
+								surface_itor_end = blit_itor->surf.end();
+								surface_itor != surface_itor_end; ++surface_itor) {
+
+							// Note that dstrect can be changed by SDL_BlitSurface
+							// and so a new instance should be initialized
+							// to pass to each call to SDL_BlitSurface.
+							SDL_Rect dstrect = { blit_itor->x, blit_itor->y, 0, 0 };
+
+							if(blit_itor->clip.x || blit_itor->clip.y
+									||blit_itor->clip.w ||blit_itor->clip.h) {
+
+								SDL_Rect srcrect = blit_itor->clip;
+								SDL_BlitSurface(*surface_itor,
+										&srcrect, dst, &dstrect);
+							} else {
+								SDL_BlitSurface(*surface_itor,
+										NULL, dst, &dstrect);
+							}
+						}
+						update_rect(blit_itor->x, blit_itor->y, zoom_, zoom_);
+					} // for blit_itor
+				} // for drawing_iterator
+			} // for layer_itor
+		} // for y
+	} // for z
 
 	drawing_buffer_clear();
 }
@@ -966,8 +1022,6 @@ void display::draw_text_in_hex(const map_location& loc,
 {
 	if (text.empty()) return;
 
-	const int drawing_order = loc.get_drawing_order();
-
 	const size_t font_sz = static_cast<size_t>(font_size * get_zoom_factor()
 #ifdef USE_TINY_GUI
 		/ 2	// the hex is only half size
@@ -984,11 +1038,11 @@ void display::draw_text_in_hex(const map_location& loc,
 	for (int dy=-1; dy <= 1; dy++) {
 		for (int dx=-1; dx <= 1; dx++) {
 			if (dx!=0 || dy!=0) {
-				drawing_buffer_add(layer, drawing_order, tblit(x + dx, y + dy, back_surf));
+				drawing_buffer_add(layer, loc, tblit(x + dx, y + dy, back_surf));
 			}
 		}
 	}
-	drawing_buffer_add(layer, drawing_order, tblit(x, y, text_surf));
+	drawing_buffer_add(layer, loc, tblit(x, y, text_surf));
 }
 
 void display::clear_hex_overlay(const map_location& loc)
@@ -1002,7 +1056,7 @@ void display::clear_hex_overlay(const map_location& loc)
 }
 
 void display::render_unit_image(int x, int y,const display::tdrawing_layer drawing_layer,
-		const int drawing_order, surface image,
+		const map_location& loc, surface image,
 		bool hreverse, bool greyscale, fixed_t alpha,
 		Uint32 blendto, double blend_ratio, double submerged,bool vreverse)
 {
@@ -1049,7 +1103,7 @@ void display::render_unit_image(int x, int y,const display::tdrawing_layer drawi
 
 	SDL_Rect srcrect = {0,0,surf->w,submerge_height};
 
-	drawing_buffer_add(drawing_layer, drawing_order, tblit(x, y, surf, srcrect));
+	drawing_buffer_add(drawing_layer, loc, tblit(x, y, surf, srcrect));
 
 	if(submerge_height != surf->h) {
 		surf.assign(adjust_surface_alpha(surf,ftofxp(0.2),false));
@@ -1058,7 +1112,7 @@ void display::render_unit_image(int x, int y,const display::tdrawing_layer drawi
 		srcrect.h = surf->h-submerge_height;
 		y += submerge_height;
 
-		drawing_buffer_add(drawing_layer, drawing_order, tblit(x, y, surf, srcrect));
+		drawing_buffer_add(drawing_layer, loc, tblit(x, y, surf, srcrect));
 	}
 
 }
@@ -1257,58 +1311,56 @@ void display::draw_border(const map_location& loc, const int xpos, const int ypo
 	 * This way this code doesn't need modifications for other border sizes.
 	 */
 
-	const int drawing_order = loc.get_drawing_order();
-
 	// First handle the corners :
 	if(loc.x == -1 && loc.y == -1) { // top left corner
-		drawing_buffer_add(LAYER_BORDER, drawing_order, tblit(xpos + zoom_/4, ypos,
+		drawing_buffer_add(LAYER_BORDER, loc, tblit(xpos + zoom_/4, ypos,
 			image::get_image(theme_.border().corner_image_top_left, image::SCALED_TO_ZOOM)));
 	} else if(loc.x == get_map().w() && loc.y == -1) { // top right corner
 		// We use the map idea of odd and even, and map coords are internal coords + 1
 		if(loc.x%2 == 0) {
-			drawing_buffer_add(LAYER_BORDER, drawing_order, tblit(xpos, ypos + zoom_/2,
+			drawing_buffer_add(LAYER_BORDER, loc, tblit(xpos, ypos + zoom_/2,
 				image::get_image(theme_.border().corner_image_top_right_odd, image::SCALED_TO_ZOOM)));
 		} else {
-			drawing_buffer_add(LAYER_BORDER, drawing_order, tblit(xpos, ypos,
+			drawing_buffer_add(LAYER_BORDER, loc, tblit(xpos, ypos,
 				image::get_image(theme_.border().corner_image_top_right_even, image::SCALED_TO_ZOOM)));
 		}
 	} else if(loc.x == -1 && loc.y == get_map().h()) { // bottom left corner
-		drawing_buffer_add(LAYER_BORDER, drawing_order, tblit(xpos + zoom_/4, ypos,
+		drawing_buffer_add(LAYER_BORDER, loc, tblit(xpos + zoom_/4, ypos,
 			image::get_image(theme_.border().corner_image_bottom_left, image::SCALED_TO_ZOOM)));
 
 	} else if(loc.x == get_map().w() && loc.y == get_map().h()) { // bottom right corner
 		// We use the map idea of odd and even, and map coords are internal coords + 1
 		if(loc.x%2 == 1) {
-			drawing_buffer_add(LAYER_BORDER, drawing_order, tblit(xpos, ypos,
+			drawing_buffer_add(LAYER_BORDER, loc, tblit(xpos, ypos,
 				image::get_image(theme_.border().corner_image_bottom_right_even, image::SCALED_TO_ZOOM)));
 		} else {
-			drawing_buffer_add(LAYER_BORDER, drawing_order, tblit(xpos, ypos,
+			drawing_buffer_add(LAYER_BORDER, loc, tblit(xpos, ypos,
 				image::get_image(theme_.border().corner_image_bottom_right_odd, image::SCALED_TO_ZOOM)));
 		}
 
 	// Now handle the sides:
 	} else if(loc.x == -1) { // left side
-		drawing_buffer_add(LAYER_BORDER, drawing_order, tblit(xpos + zoom_/4, ypos,
+		drawing_buffer_add(LAYER_BORDER, loc, tblit(xpos + zoom_/4, ypos,
 			image::get_image(theme_.border().border_image_left, image::SCALED_TO_ZOOM)));
 	} else if(loc.x == get_map().w()) { // right side
-		drawing_buffer_add(LAYER_BORDER, drawing_order, tblit(xpos + zoom_/4, ypos,
+		drawing_buffer_add(LAYER_BORDER, loc, tblit(xpos + zoom_/4, ypos,
 			image::get_image(theme_.border().border_image_right, image::SCALED_TO_ZOOM)));
 	} else if(loc.y == -1) { // top side
 		// We use the map idea of odd and even, and map coords are internal coords + 1
 		if(loc.x%2 == 1) {
-			drawing_buffer_add(LAYER_BORDER, drawing_order, tblit(xpos, ypos,
+			drawing_buffer_add(LAYER_BORDER, loc, tblit(xpos, ypos,
 				image::get_image(theme_.border().border_image_top_even, image::SCALED_TO_ZOOM)));
 		} else {
-			drawing_buffer_add(LAYER_BORDER, drawing_order, tblit(xpos, ypos + zoom_/2,
+			drawing_buffer_add(LAYER_BORDER, loc, tblit(xpos, ypos + zoom_/2,
 				image::get_image(theme_.border().border_image_top_odd, image::SCALED_TO_ZOOM)));
 		}
 	} else if(loc.y == get_map().h()) { // bottom side
 		// We use the map idea of odd and even, and map coords are internal coords + 1
 		if(loc.x%2 == 1) {
-			drawing_buffer_add(LAYER_BORDER, drawing_order, tblit(xpos, ypos,
+			drawing_buffer_add(LAYER_BORDER, loc, tblit(xpos, ypos,
 				image::get_image(theme_.border().border_image_bottom_even, image::SCALED_TO_ZOOM)));
 		} else {
-			drawing_buffer_add(LAYER_BORDER, drawing_order, tblit(xpos, ypos + zoom_/2,
+			drawing_buffer_add(LAYER_BORDER, loc, tblit(xpos, ypos + zoom_/2,
 				image::get_image(theme_.border().border_image_bottom_odd, image::SCALED_TO_ZOOM)));
 		}
 	}
@@ -1903,25 +1955,20 @@ void display::draw_invalidated() {
 void display::draw_hex(const map_location& loc) {
 	int xpos = get_location_x(loc);
 	int ypos = get_location_y(loc);
-	int drawing_order = loc.get_drawing_order();
 	image::TYPE image_type = get_image_type(loc);
 	const bool on_map = get_map().on_board(loc);
 	const bool off_map_tile = (get_map().get_terrain(loc) == t_translation::OFF_MAP_USER);
 	if(!shrouded(loc)) {
 		// unshrouded terrain (the normal case)
-		drawing_buffer_add(LAYER_TERRAIN_BG, drawing_order, tblit(xpos, ypos,
+		drawing_buffer_add(LAYER_TERRAIN_BG, loc, tblit(xpos, ypos,
 			get_terrain_images(loc,tod_.id, image_type, ADJACENT_BACKGROUND)));
 
-		//FIXME: Use a hack to draw terrain in the unit layer
-		// but with a higher drawing_order, so it's rendered on top of the unit
-		drawing_buffer_add(LAYER_UNIT_FIRST, drawing_order+100, tblit(xpos, ypos,
+		 drawing_buffer_add(LAYER_TERRAIN_FG, loc, tblit(xpos, ypos,
 			get_terrain_images(loc,tod_.id,image_type,ADJACENT_FOREGROUND)));
-		// drawing_buffer_add(LAYER_TERRAIN_FG, drawing_order, tblit(xpos, ypos,
-		//	get_terrain_images(*it,tod.id,image_type,ADJACENT_FOREGROUND)));
 
 	// Draw the grid, if that's been enabled
 		if(grid_ && on_map && !off_map_tile) {
-			drawing_buffer_add(LAYER_TERRAIN_TMP_BG, drawing_order, tblit(xpos, ypos,
+			drawing_buffer_add(LAYER_TERRAIN_TMP_BG, loc, tblit(xpos, ypos,
 				image::get_image(game_config::grid_image, image::SCALED_TO_HEX)));
 		}
 	}
@@ -1931,30 +1978,30 @@ void display::draw_hex(const map_location& loc) {
 	if(!hex_overlay_.empty()) {
 		std::map<map_location, surface>::const_iterator itor = hex_overlay_.find(loc);
 		if(itor != hex_overlay_.end())
-			drawing_buffer_add(LAYER_TERRAIN_TMP_BG, drawing_order, tblit(xpos, ypos, itor->second));
+			drawing_buffer_add(LAYER_TERRAIN_TMP_BG, loc, tblit(xpos, ypos, itor->second));
 	}
 
 	// Paint selection and mouseover overlays
 	if(loc == selectedHex_ && on_map && selected_hex_overlay_ != NULL) {
-		drawing_buffer_add(LAYER_TERRAIN_TMP_BG, drawing_order, tblit(xpos, ypos, selected_hex_overlay_));
+		drawing_buffer_add(LAYER_TERRAIN_TMP_BG, loc, tblit(xpos, ypos, selected_hex_overlay_));
 	}
 	if(loc == mouseoverHex_ && (on_map || (in_editor() && get_map().on_board_with_border(loc))) && mouseover_hex_overlay_ != NULL) {
-		drawing_buffer_add(LAYER_TERRAIN_TMP_BG, drawing_order, tblit(xpos, ypos, mouseover_hex_overlay_));
+		drawing_buffer_add(LAYER_TERRAIN_TMP_BG, loc, tblit(xpos, ypos, mouseover_hex_overlay_));
 	}
 
 	// Apply shroud, fog and linger overlay
 	if(shrouded(loc)) {
 		// We apply void also on off-map tiles
 		// to shroud the half-hexes too
-		drawing_buffer_add(LAYER_FOG_SHROUD, drawing_order, tblit(xpos, ypos,
+		drawing_buffer_add(LAYER_FOG_SHROUD, loc, tblit(xpos, ypos,
 			image::get_image(shroud_image_, image_type)));
 	} else if(fogged(loc)) {
-		drawing_buffer_add(LAYER_FOG_SHROUD, drawing_order, tblit(xpos, ypos,
+		drawing_buffer_add(LAYER_FOG_SHROUD, loc, tblit(xpos, ypos,
 			image::get_image(fog_image_, image_type)));
 	}
 
 	if(!shrouded(loc)) {
-		drawing_buffer_add(LAYER_FOG_SHROUD, drawing_order, tblit(xpos, ypos,
+		drawing_buffer_add(LAYER_FOG_SHROUD, loc, tblit(xpos, ypos,
 			get_terrain_images(loc, tod_.id, image_type, ADJACENT_FOGSHROUD)));
 	}
 	if (on_map) {
@@ -1971,8 +2018,8 @@ void display::draw_hex(const map_location& loc) {
 			} else {
 				off_y -= text->h / 2;
 			}
-			drawing_buffer_add(LAYER_FOG_SHROUD, drawing_order, tblit(off_x, off_y, bg));
-			drawing_buffer_add(LAYER_FOG_SHROUD, drawing_order, tblit(off_x, off_y, text));
+			drawing_buffer_add(LAYER_FOG_SHROUD, loc, tblit(off_x, off_y, bg));
+			drawing_buffer_add(LAYER_FOG_SHROUD, loc, tblit(off_x, off_y, text));
 		}
 		if (draw_terrain_codes_ && (game_config::debug || !shrouded(loc))) {
 			int off_x = xpos + hex_size()/2;
@@ -1985,8 +2032,8 @@ void display::draw_hex(const map_location& loc) {
 			if (!draw_coordinates_) {
 				off_y -= text->h / 2;
 			}
-			drawing_buffer_add(LAYER_FOG_SHROUD, drawing_order, tblit(off_x, off_y, bg));
-			drawing_buffer_add(LAYER_FOG_SHROUD, drawing_order, tblit(off_x, off_y, text));
+			drawing_buffer_add(LAYER_FOG_SHROUD, loc, tblit(off_x, off_y, bg));
+			drawing_buffer_add(LAYER_FOG_SHROUD, loc, tblit(off_x, off_y, text));
 		}
 	}
 }

@@ -101,15 +101,6 @@ struct map_location {
 	DIRECTION get_relative_dir(map_location loc) const;
 	static DIRECTION get_opposite_dir(DIRECTION d);
 
-	/**
-	 * Drawing order, copied from ordered_draw in display.hpp.
-	 *
-	 * This returns the order in which the units should be drawn so they overlap
-	 * propererly.
-	 */
-	int get_drawing_order() const
-		{ return (y * 2 + x % 2) * 1024 + x; }
-
 	static const map_location null_location;
 };
 

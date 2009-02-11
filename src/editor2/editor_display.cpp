@@ -77,12 +77,11 @@ void editor_display::draw_hex(const map_location& loc)
 {
 	int xpos = get_location_x(loc);
 	int ypos = get_location_y(loc);
-	int drawing_order = loc.get_drawing_order();
 	tblit blit(xpos, ypos);
 	display::draw_hex(loc);
 	if (map().on_board_with_border(loc)) {
 		if (map().in_selection(loc)) {
-			drawing_buffer_add(LAYER_FOG_SHROUD, drawing_order, tblit(xpos, ypos,
+			drawing_buffer_add(LAYER_FOG_SHROUD, loc, tblit(xpos, ypos,
 				image::get_image("editor/selection-overlay.png", image::SCALED_TO_HEX)));
 		}
 	}

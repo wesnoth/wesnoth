@@ -325,7 +325,6 @@ void game_display::draw_hex(const map_location& loc)
 	const bool is_fogged = fogged(loc);
 	int xpos = get_location_x(loc);
 	int ypos = get_location_y(loc);
-	int drawing_order = loc.get_drawing_order();
 	tblit blit(xpos, ypos);
 
 	image::TYPE image_type = get_image_type(loc);
@@ -340,22 +339,22 @@ void game_display::draw_hex(const map_location& loc)
 			overlays.first->second.team_name.find(teams_[playing_team()].team_name()) != std::string::npos)
 			&& !(is_fogged && !overlays.first->second.visible_in_fog))
 			{
-				drawing_buffer_add(LAYER_TERRAIN_BG, drawing_order, tblit(xpos, ypos,
+				drawing_buffer_add(LAYER_TERRAIN_BG, loc, tblit(xpos, ypos,
 					image::get_image(overlays.first->second.image,image_type)));
 			}
 		}
 		// village-control flags.
-		drawing_buffer_add(LAYER_TERRAIN_BG, drawing_order, tblit(xpos, ypos, get_flag(loc)));
+		drawing_buffer_add(LAYER_TERRAIN_BG, loc, tblit(xpos, ypos, get_flag(loc)));
 	}
 
 	// Draw the time-of-day mask on top of the terrain in the hex.
 	// tod may differ from tod if hex is illuminated.
 	std::string tod_hex_mask = timeofday_at(status_,units_,loc,get_map()).image_mask;
 	if(tod_hex_mask1 != NULL || tod_hex_mask2 != NULL) {
-		drawing_buffer_add(LAYER_TERRAIN_FG, drawing_order, tblit(xpos, ypos, tod_hex_mask1));
-		drawing_buffer_add(LAYER_TERRAIN_FG, drawing_order, tblit(xpos, ypos, tod_hex_mask2));
+		drawing_buffer_add(LAYER_TERRAIN_FG, loc, tblit(xpos, ypos, tod_hex_mask1));
+		drawing_buffer_add(LAYER_TERRAIN_FG, loc, tblit(xpos, ypos, tod_hex_mask2));
 	} else if(tod_hex_mask != "") {
-		drawing_buffer_add(LAYER_TERRAIN_FG, drawing_order, tblit(xpos, ypos,
+		drawing_buffer_add(LAYER_TERRAIN_FG, loc, tblit(xpos, ypos,
 			image::get_image(tod_hex_mask,image::UNMASKED)));
 	}
 
@@ -364,23 +363,23 @@ void game_display::draw_hex(const map_location& loc)
 	// that we want to attack.
 	if (!is_shrouded && !reach_map_.empty()
 			&& reach_map_.find(loc) == reach_map_.end() && loc != attack_indicator_dst_) {
-		drawing_buffer_add(LAYER_REACHMAP, drawing_order, tblit(xpos, ypos,
+		drawing_buffer_add(LAYER_REACHMAP, loc, tblit(xpos, ypos,
 			image::get_image(game_config::unreachable_image,image::UNMASKED)));
 	}
 
 	// Footsteps indicating a movement path
-	drawing_buffer_add(LAYER_TERRAIN_TMP_BG, drawing_order, tblit(xpos, ypos, footsteps_images(loc)));
+	drawing_buffer_add(LAYER_TERRAIN_TMP_BG, loc, tblit(xpos, ypos, footsteps_images(loc)));
 	// Draw cross images for debug highlights
 	if(game_config::debug && debugHighlights_.count(loc)) {
-		drawing_buffer_add(LAYER_TERRAIN_TMP_BG, drawing_order, tblit(xpos, ypos,
+		drawing_buffer_add(LAYER_TERRAIN_TMP_BG, loc, tblit(xpos, ypos,
 			image::get_image(game_config::cross_image, image::UNMASKED)));
 	}
 	// Draw the attack direction indicator
 	if(on_map && loc == attack_indicator_src_) {
-		drawing_buffer_add(LAYER_ATTACK_INDICATOR, drawing_order, tblit(xpos, ypos,
+		drawing_buffer_add(LAYER_ATTACK_INDICATOR, loc, tblit(xpos, ypos,
 			image::get_image("misc/attack-indicator-src-" + attack_indicator_direction() + ".png", image::UNMASKED)));
 	} else if (on_map && loc == attack_indicator_dst_) {
-		drawing_buffer_add(LAYER_ATTACK_INDICATOR, drawing_order, tblit(xpos, ypos,
+		drawing_buffer_add(LAYER_ATTACK_INDICATOR, loc, tblit(xpos, ypos,
 			image::get_image("misc/attack-indicator-dst-" + attack_indicator_direction() + ".png", image::UNMASKED)));
 	}
 
@@ -388,7 +387,7 @@ void game_display::draw_hex(const map_location& loc)
 	// so it's drawn over the shroud and fog.
 	if(game_mode_ != RUNNING) {
 		blit.surf.push_back(image::get_image(game_config::linger_image, image::SCALED_TO_HEX));
-		drawing_buffer_add(LAYER_LINGER_OVERLAY, drawing_order, blit);
+		drawing_buffer_add(LAYER_LINGER_OVERLAY, loc, blit);
 		blit.surf.clear();
 	}
 
@@ -524,7 +523,8 @@ void game_display::draw_minimap_units()
 }
 
 void game_display::draw_bar(const std::string& image, int xpos, int ypos,
-	const int drawing_order, size_t height, double filled, const SDL_Color& col, fixed_t alpha)
+		const map_location& loc, size_t height, double filled, 
+		const SDL_Color& col, fixed_t alpha)
 {
 
 	filled = std::min<double>(std::max<double>(filled,0.0),1.0);
@@ -577,8 +577,8 @@ void game_display::draw_bar(const std::string& image, int xpos, int ypos,
 	SDL_Rect bot = {0,bar_loc.y+skip_rows,surf->w,0};
 	bot.h = surf->w - bot.y;
 
-	drawing_buffer_add(LAYER_UNIT_BAR, drawing_order, tblit(xpos, ypos, surf, top));
-	drawing_buffer_add(LAYER_UNIT_BAR, drawing_order, tblit(xpos, ypos + top.h, surf, bot));
+	drawing_buffer_add(LAYER_UNIT_BAR, loc, tblit(xpos, ypos, surf, top));
+	drawing_buffer_add(LAYER_UNIT_BAR, loc, tblit(xpos, ypos + top.h, surf, bot));
 
 	const size_t unfilled = static_cast<const size_t>(height*(1.0 - filled));
 
@@ -587,7 +587,7 @@ void game_display::draw_bar(const std::string& image, int xpos, int ypos,
 		surface filled_surf = create_compatible_surface(bar_surf, bar_loc.w, height - unfilled);
 		SDL_Rect filled_area = {0, 0, bar_loc.w, height-unfilled};
 		SDL_FillRect(filled_surf,&filled_area,SDL_MapRGBA(bar_surf->format,col.r,col.g,col.b, r_alpha));
-		drawing_buffer_add(LAYER_UNIT_BAR, drawing_order, tblit(xpos + bar_loc.x, ypos + bar_loc.y + unfilled, filled_surf));
+		drawing_buffer_add(LAYER_UNIT_BAR, loc, tblit(xpos + bar_loc.x, ypos + bar_loc.y + unfilled, filled_surf));
 	}
 }
 
@@ -601,8 +601,6 @@ void game_display::set_game_mode(const tgame_mode game_mode)
 
 void game_display::draw_movement_info(const map_location& loc)
 {
-	const int drawing_order = loc.get_drawing_order();
-
 	// Search if there is a waypoint here
 	std::map<map_location, paths::route::waypoint>::iterator w = route_.waypoints.find(loc);
 
@@ -625,17 +623,17 @@ void game_display::draw_movement_info(const map_location& loc)
 			int ypos = get_location_y(loc);
 
             if (w->second.invisible) {
-				drawing_buffer_add(LAYER_MOVE_INFO, drawing_order, tblit(xpos, ypos,
+				drawing_buffer_add(LAYER_MOVE_INFO, loc, tblit(xpos, ypos,
 					image::get_image("misc/hidden.png", image::UNMASKED)));
 			}
 
 			if (w->second.zoc) {
-				drawing_buffer_add(LAYER_MOVE_INFO, drawing_order, tblit(xpos, ypos,
+				drawing_buffer_add(LAYER_MOVE_INFO, loc, tblit(xpos, ypos,
 					image::get_image("misc/zoc.png", image::UNMASKED)));
 			}
 
 			if (w->second.capture) {
-				drawing_buffer_add(LAYER_MOVE_INFO, drawing_order, tblit(xpos, ypos,
+				drawing_buffer_add(LAYER_MOVE_INFO, loc, tblit(xpos, ypos,
 					image::get_image("misc/capture.png", image::UNMASKED)));
 			}
 

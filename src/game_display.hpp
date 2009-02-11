@@ -273,7 +273,8 @@ public:
 
 	virtual bool in_game() const { return in_game_; }
 	void draw_bar(const std::string& image, int xpos, int ypos,
-		const int drawing_order, size_t height, double filled, const SDL_Color& col, fixed_t alpha);
+		const map_location& loc, size_t height, double filled, 
+		const SDL_Color& col, fixed_t alpha);
 
 	/**
 	 * Sets the linger mode for the display.

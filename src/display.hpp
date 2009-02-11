@@ -692,7 +692,7 @@ public:
 	 *            (presumably under water) and thus shouldn't be drawn
 	 */
 	void render_unit_image(int x, int y, const display::tdrawing_layer drawing_layer,
-			const int drawing_order, surface image,
+			const map_location& loc, surface image,
 			bool hreverse=false, bool greyscale=false,
 			fixed_t alpha=ftofxp(1.0), Uint32 blendto=0,
 			double blend_ratio=0, double submerged=0.0,bool vreverse =false);
@@ -723,6 +723,20 @@ protected:
 	// with TDRAWING_BUFFER_USES_VECTOR
 	//     20080308 -- Mordante
 
+	/** 
+	 * Compare functor for the blitting.
+	 *
+	 * The blitting order must be sorted on y value first instead of x so added
+	 * another functor since map_location::operator< sorts on x value.
+	 */
+	struct draw_order
+	{
+		bool operator()(const map_location& lhs, const map_location& rhs)
+		{
+			return lhs.y < rhs.y || (lhs.y == rhs.y && lhs.x < rhs.x);
+		}
+	};
+
 	/**
 	 * * Surfaces are rendered per level in a map.
 	 * * Per level the items are rendered per location these locations are
@@ -731,10 +745,11 @@ protected:
 	 *   coordinate to render at.
 	 * * every vector element has a vector with surfaces to render.
 	 */
+	typedef std::map<map_location, std::vector<tblit>, draw_order> tblit_map;
 #if TDRAWING_BUFFER_USES_VECTOR
-	typedef std::vector<std::map<int /*drawing_order*/, std::vector<tblit> > > tdrawing_buffer;
+	typedef std::vector<tblit_map> tdrawing_buffer;
 #else
-	typedef std::map<tdrawing_layer, std::map<int /*drawing_order*/, std::vector<tblit> > > tdrawing_buffer;
+	typedef std::map<tdrawing_layer, tblit_map> tdrawing_buffer;
 #endif
 	tdrawing_buffer drawing_buffer_;
 
@@ -744,11 +759,15 @@ public:
 	 * Add an item to the drawing buffer.
 	 *
 	 * @param layer              The layer to draw on.
-	 * @param drawing_order      The order in which to draw, needed for units.
+	 * @param loc                The hex the image belongs to, needed for the
+	 *                           drawing order.
 	 * @param blit               The structure to blit.
 	 */
-	void drawing_buffer_add(const tdrawing_layer layer, const int drawing_order, const tblit& blit)
-		{ drawing_buffer_[layer][drawing_order].push_back(blit); }
+	void drawing_buffer_add(const tdrawing_layer layer, 
+			const map_location& loc, const tblit& blit)
+	{ 
+		drawing_buffer_[layer][loc].push_back(blit); 
+	}
 
 protected:
 
