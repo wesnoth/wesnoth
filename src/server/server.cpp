@@ -25,6 +25,7 @@
 #include "../map.hpp" // gamemap::MAX_PLAYERS
 #include "../network.hpp"
 #include "../filesystem.hpp"
+#include "../multiplayer_error_codes.hpp"
 #include "../time.hpp"
 #include "../serialization/parser.hpp"
 #include "../serialization/preprocessor.hpp"
@@ -270,13 +271,14 @@ public:
 	server(int port, const std::string& config_file, size_t min_threads,size_t max_threads);
 	void run();
 private:
-	void send_error(network::connection sock, const char* msg) const;
+	void send_error(network::connection sock, const char* msg, const char* error_code ="") const;
 	void send_error_dup(network::connection sock, const std::string& msg) const;
 
 	// The same as send_error(), we just add an extra child to the response
 	// telling the client the chosen username requires a password.
 	void send_password_request(network::connection sock, const char* msg,
-			const std::string& user, bool force_confirmation =false);
+			const std::string& user, const char* error_code ="",
+			bool force_confirmation =false);
 
 	const network::manager net_manager_;
 	network::server_manager server_;
@@ -423,10 +425,11 @@ server::server(int port, const std::string& config_file, size_t min_threads,
 	signal(SIGTERM, exit_sigterm);
 }
 
-void server::send_error(network::connection sock, const char* msg) const
+void server::send_error(network::connection sock, const char* msg, const char* error_code) const
 {
 	simple_wml::document doc;
 	doc.root().add_child("error").set_attr("message", msg);
+	if(strlen(error_code)) (*(doc.root().child("error"))).set_attr("error_code", error_code);
 	simple_wml::string_span output = doc.output_compressed();
 	network::send_raw_data(output.begin(), output.size(), sock, "error");
 }
@@ -440,9 +443,8 @@ void server::send_error_dup(network::connection sock, const std::string& msg) co
 }
 
 void server::send_password_request(network::connection sock, const char* msg,
-	const std::string& user, bool force_confirmation)
+	const std::string& user, const char* error_code, bool force_confirmation)
 {
-
 	std::string salt1 = user_handler_->create_salt();
 	std::string salt2 = user_handler_->create_pepper(user, 0);
 	std::string salt3 = user_handler_->create_pepper(user, 1);
@@ -466,6 +468,7 @@ void server::send_password_request(network::connection sock, const char* msg,
 	(*(doc.root().child("error"))).set_attr("salt", salt3.c_str());
 	(*(doc.root().child("error"))).set_attr("force_confirmation",
 			force_confirmation ? "yes" : "no");
+	if(strlen(error_code)) (*(doc.root().child("error"))).set_attr("error_code", error_code);
 
 	simple_wml::string_span output = doc.output_compressed();
 	network::send_raw_data(output.begin(), output.size(), sock);
@@ -996,7 +999,7 @@ void server::process_login(const network::connection sock,
 	const simple_wml::node* const login = data.child("login");
 	// Client must send a login first.
 	if (login == NULL) {
-		send_error(sock, "You must login first.");
+		send_error(sock, "You must login first.", MP_MUST_LOGIN);
 		return;
 	}
 
@@ -1005,11 +1008,12 @@ void server::process_login(const network::connection sock,
 	if (!utils::isvalid_username(username)) {
 		send_error(sock, "This username contains invalid "
 			"characters. Only alpha-numeric characters, underscores and hyphens"
-			"are allowed.");
+			"are allowed.", MP_INVALID_CHARS_IN_NAME_ERROR);
 		return;
 	}
 	if (username.size() > 18) {
-		send_error(sock, "This username is too long. Usernames must be 18 characers or less.");
+		send_error(sock, "This username is too long. Usernames must be 18 characers or less.",
+			MP_NAME_TOO_LONG_ERROR);
 		return;
 	}
 	// Check if the username is allowed.
@@ -1019,7 +1023,8 @@ void server::process_login(const network::connection sock,
 		if (utils::wildcard_string_match(utils::lowercase(username),
 			utils::lowercase(*d_it)))
 		{
-			send_error(sock, "The nick you chose is reserved and cannot be used by players");
+			send_error(sock, "The nick you chose is reserved and cannot be used by players",
+				MP_NAME_RESERVED_ERROR);
 			return;
 		}
 	}
@@ -1065,22 +1070,28 @@ void server::process_login(const network::connection sock,
 		if(user_handler_->user_exists(username)) {
 			// This name is registered and no password provided
 			if(password.empty()) {
-				send_password_request(sock, ("The username '" + username + "' is registered on this server." +
-						(p != players_.end() ? "\n \nWARNING: There is already a client using this username, "
-						"logging in will cause that client to be kicked!" : "")).c_str(), username, p != players_.end());
+				if(p == players_.end()) {
+					send_password_request(sock, ("The username '" + username +"' is registered on this server.").c_str(),
+							username, MP_PASSWORD_REQUEST);
+				} else {
+					send_password_request(sock, ("The username '" + username + "' is registered on this server."
+							"\n \nWARNING: There is already a client using this username, "
+							"logging in will cause that client to be kicked!").c_str(),
+							username, MP_PASSWORD_REQUEST_FOR_LOGGED_IN_NAME, true);
+				}
 				return;
 			}
 			// A password (or hashed password) was provided, however
 			// there is no seed
 			if(seeds_[sock].empty()) {
-				send_password_request(sock, "Please try again.", username);
+				send_password_request(sock, "Please try again.", username, MP_NO_SEED_ERROR);
 			}
 			// This name is registered and an incorrect password provided
 			else if(!(user_handler_->login(username, password, seeds_[sock]))) {
 				// Reset the random seed
 				seeds_.erase(sock);
 				send_password_request(sock, ("The password you provided for the username '" + username +
-						"' was incorrect.").c_str(), username);
+						"' was incorrect.").c_str(), username, MP_INCORRECT_PASSWORD_ERROR);
 
 				LOG_SERVER << network::ip_address(sock) << "\t"
 						<< "Login attempt with incorrect password for username '" << username << "'.\n";
@@ -1099,7 +1110,7 @@ void server::process_login(const network::connection sock,
 			// If there is already a client using this username kick it
 			process_command("kick " + p->second.name() + " autokick by registered user", username);
 		} else {
-			send_error(sock, "The username you chose is already taken.");
+			send_error(sock, "The username you chose is already taken.", MP_NAME_TAKEN_ERROR);
 			return;
 		}
 	}

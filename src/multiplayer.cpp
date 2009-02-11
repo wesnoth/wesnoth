@@ -22,6 +22,7 @@
 #include "md5.hpp"
 #include "multiplayer.hpp"
 #include "multiplayer_connect.hpp"
+#include "multiplayer_error_codes.hpp"
 #include "multiplayer_wait.hpp"
 #include "multiplayer_lobby.hpp"
 #include "playmp_controller.hpp"
@@ -326,8 +327,39 @@ static server_type open_connection(game_display& disp, const std::string& origin
 					// Now show a dialog that displays the error and allows to
 					// enter a new user name and/or password
 
-					gui2::tmp_login dlg((*error)["message"],
-							!((*error)["password_request"].empty()));
+					std::string error_message;
+
+					if((*error)["error_code"] == MP_UNKNOWN_ERROR) {
+						error_message = _("Unknown error.");
+					} else if((*error)["error_code"] == MP_MUST_LOGIN) {
+						error_message = _("You must login first.");
+					} else if((*error)["error_code"] == MP_NAME_TAKEN_ERROR) {
+						error_message = _("The username you chose is already taken.");
+					} else if((*error)["error_code"] == MP_INVALID_CHARS_IN_NAME_ERROR) {
+						error_message = _("This username contains invalid "
+								"characters. Only alpha-numeric characters, underscores and "
+								"hyphens are allowed.");
+					} else if((*error)["error_code"] == MP_NAME_TOO_LONG_ERROR) {
+						error_message = _("This username is too long. Usernames must "
+								"be 18 characers or less.");
+					} else if((*error)["error_code"] == MP_NAME_RESERVED_ERROR) {
+						error_message = _("The nick you chose is reserved and cannot be used by players");
+					} else if((*error)["error_code"] == MP_PASSWORD_REQUEST) {
+						error_message = _("This username is registered on this server.");
+					} else if((*error)["error_code"] == MP_PASSWORD_REQUEST_FOR_LOGGED_IN_NAME) {
+						error_message = _("This username is registered on this server."
+								"\n \nWARNING: There is already a client using this username, "
+								"logging in will cause that client to be kicked!");
+					} else if((*error)["error_code"] == MP_NO_SEED_ERROR) {
+						error_message = _("Error in the login procedure (the server had no "
+								"seed for your connection).");
+					} else if((*error)["error_code"] == MP_INCORRECT_PASSWORD_ERROR) {
+						error_message = _("The password you provided was incorrect.");
+					} else {
+						error_message = (*error)["message"];
+					}
+
+					gui2::tmp_login dlg(error_message, !((*error)["password_request"].empty()));
 					dlg.show(disp.video());
 
 					switch(dlg.get_retval()) {
