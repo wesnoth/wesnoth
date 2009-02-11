@@ -220,7 +220,7 @@ class AI:
             """Score for recruiting the given unit type."""
             vscout_minus_recruits = self.scout_villages - units_recruited
             if vscout_minus_recruits == 0:
-                vscout_minus_recruits = 0 # prevent div-by-zero
+                vscout_minus_recruits = 1 # prevent div-by-zero
             need_for_speed = 3 * (villages / vscout_minus_recruits)
             if need_for_speed < 0: need_for_speed = 0
             v = speed * need_for_speed + defense * 0.1 + aggression + resistance
