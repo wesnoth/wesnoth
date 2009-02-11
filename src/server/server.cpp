@@ -1006,13 +1006,13 @@ void server::process_login(const network::connection sock,
 	// Check if the username is valid (all alpha-numeric plus underscore and hyphen)
 	std::string username = (*login)["username"].to_string();
 	if (!utils::isvalid_username(username)) {
-		send_error(sock, "This username contains invalid "
+		send_error(sock, ("The nick '" + username + "' contains invalid "
 			"characters. Only alpha-numeric characters, underscores and hyphens"
-			"are allowed.", MP_INVALID_CHARS_IN_NAME_ERROR);
+			"are allowed.").c_str(), MP_INVALID_CHARS_IN_NAME_ERROR);
 		return;
 	}
 	if (username.size() > 18) {
-		send_error(sock, "This username is too long. Usernames must be 18 characers or less.",
+		send_error(sock, ("The nick '" + username + "' is too long. Nicks must be 18 characers or less.").c_str(),
 			MP_NAME_TOO_LONG_ERROR);
 		return;
 	}
@@ -1023,7 +1023,7 @@ void server::process_login(const network::connection sock,
 		if (utils::wildcard_string_match(utils::lowercase(username),
 			utils::lowercase(*d_it)))
 		{
-			send_error(sock, "The nick you chose is reserved and cannot be used by players",
+			send_error(sock, ("The nick '" + username + "' is reserved and cannot be used by players").c_str(),
 				MP_NAME_RESERVED_ERROR);
 			return;
 		}
@@ -1071,11 +1071,11 @@ void server::process_login(const network::connection sock,
 			// This name is registered and no password provided
 			if(password.empty()) {
 				if(p == players_.end()) {
-					send_password_request(sock, ("The username '" + username +"' is registered on this server.").c_str(),
+					send_password_request(sock, ("The nick '" + username +"' is registered on this server.").c_str(),
 							username, MP_PASSWORD_REQUEST);
 				} else {
-					send_password_request(sock, ("The username '" + username + "' is registered on this server."
-							"\n \nWARNING: There is already a client using this username, "
+					send_password_request(sock, ("The nick '" + username + "' is registered on this server."
+							"\n\nWARNING: There is already a client using this username, "
 							"logging in will cause that client to be kicked!").c_str(),
 							username, MP_PASSWORD_REQUEST_FOR_LOGGED_IN_NAME, true);
 				}
@@ -1090,11 +1090,11 @@ void server::process_login(const network::connection sock,
 			else if(!(user_handler_->login(username, password, seeds_[sock]))) {
 				// Reset the random seed
 				seeds_.erase(sock);
-				send_password_request(sock, ("The password you provided for the username '" + username +
+				send_password_request(sock, ("The password you provided for the nick '" + username +
 						"' was incorrect.").c_str(), username, MP_INCORRECT_PASSWORD_ERROR);
 
 				LOG_SERVER << network::ip_address(sock) << "\t"
-						<< "Login attempt with incorrect password for username '" << username << "'.\n";
+						<< "Login attempt with incorrect password for nick '" << username << "'.\n";
 				return;
 			}
 		// This name exists and the password was neither empty nor incorrect
@@ -1110,7 +1110,7 @@ void server::process_login(const network::connection sock,
 			// If there is already a client using this username kick it
 			process_command("kick " + p->second.name() + " autokick by registered user", username);
 		} else {
-			send_error(sock, "The username you chose is already taken.", MP_NAME_TAKEN_ERROR);
+			send_error(sock, ("The nick '" + username + "' is already taken.").c_str(), MP_NAME_TAKEN_ERROR);
 			return;
 		}
 	}

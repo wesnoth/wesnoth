@@ -328,27 +328,29 @@ static server_type open_connection(game_display& disp, const std::string& origin
 					// enter a new user name and/or password
 
 					std::string error_message;
+					utils::string_map i18n_symbols;
+					i18n_symbols["nick"] = login;
 
 					if((*error)["error_code"] == MP_UNKNOWN_ERROR) {
 						error_message = _("Unknown error.");
 					} else if((*error)["error_code"] == MP_MUST_LOGIN) {
 						error_message = _("You must login first.");
 					} else if((*error)["error_code"] == MP_NAME_TAKEN_ERROR) {
-						error_message = _("The username you chose is already taken.");
+						error_message = vgettext("The nick '$nick' is already taken.", i18n_symbols);
 					} else if((*error)["error_code"] == MP_INVALID_CHARS_IN_NAME_ERROR) {
-						error_message = _("This username contains invalid "
+						error_message = vgettext("The nick '$nick' contains invalid "
 								"characters. Only alpha-numeric characters, underscores and "
-								"hyphens are allowed.");
+								"hyphens are allowed.", i18n_symbols);
 					} else if((*error)["error_code"] == MP_NAME_TOO_LONG_ERROR) {
-						error_message = _("This username is too long. Usernames must "
-								"be 18 characers or less.");
+						error_message = vgettext("The nick '$nick' is too long. Nicks must "
+								"be 18 characers or less.", i18n_symbols);
 					} else if((*error)["error_code"] == MP_NAME_RESERVED_ERROR) {
-						error_message = _("The nick you chose is reserved and cannot be used by players");
+						error_message = vgettext("The nick '$nick' is reserved and cannot be used by players.", i18n_symbols);
 					} else if((*error)["error_code"] == MP_PASSWORD_REQUEST) {
-						error_message = _("This username is registered on this server.");
+						error_message = vgettext("The nick '$nick' is registered on this server.", i18n_symbols);
 					} else if((*error)["error_code"] == MP_PASSWORD_REQUEST_FOR_LOGGED_IN_NAME) {
-						error_message = _("This username is registered on this server."
-								"\n \nWARNING: There is already a client using this username, "
+						error_message = vgettext("The nick '$nick' is registered on this server.", i18n_symbols)
+								+ "\n\n" + _("WARNING: There is already a client using this nick, "
 								"logging in will cause that client to be kicked!");
 					} else if((*error)["error_code"] == MP_NO_SEED_ERROR) {
 						error_message = _("Error in the login procedure (the server had no "
