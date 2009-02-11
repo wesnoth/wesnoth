@@ -598,7 +598,7 @@ namespace wesnothd {
 	}
 
 
-	bool ban_manager::is_ip_banned(std::string ip) const
+	std::string ban_manager::is_ip_banned(const std::string& ip) const
 	{
 		subnet_compare_setter setter;
 		ban_set::const_iterator ban;
@@ -608,7 +608,8 @@ namespace wesnothd {
 			ERR_SERVER << e.message << " in is_ip_banned\n";
 			return false;
 		}
-		return ban != bans_.end();
+		if (ban == bans_.end()) return "";
+		return (*ban)->get_reason();
 	}
 
 	void ban_manager::init_ban_help()

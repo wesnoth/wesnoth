@@ -162,7 +162,7 @@ namespace wesnothd {
 		void list_deleted_bans(std::ostringstream& out) const;
 		void list_bans(std::ostringstream& out) const;
 
-		bool is_ip_banned(std::string ip) const;
+		std::string is_ip_banned(const std::string& ip) const;
 
 		const std::string& get_ban_help() const
 		{ return ban_help_; }

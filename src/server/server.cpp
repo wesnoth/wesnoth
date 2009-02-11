@@ -328,7 +328,7 @@ private:
 	void load_config();
 
 	bool ip_exceeds_connection_limit(const std::string& ip) const;
-	bool is_ip_banned(const std::string& ip) const;
+	std::string is_ip_banned(const std::string& ip) const;
 
 	simple_wml::document version_query_response_;
 	simple_wml::document login_response_;
@@ -600,7 +600,7 @@ bool server::ip_exceeds_connection_limit(const std::string& ip) const {
 	return connections >= concurrent_connections_;
 }
 
-bool server::is_ip_banned(const std::string& ip) const {
+std::string server::is_ip_banned(const std::string& ip) const {
 	return ban_manager_.is_ip_banned(ip);
 }
 
@@ -714,10 +714,11 @@ void server::run() {
 
 			network::connection sock = network::accept_connection();
 			if (sock) {
-				const std::string& ip = network::ip_address(sock);
-				if (is_ip_banned(ip)) {
+				const std::string ip = network::ip_address(sock);
+				const std::string reason = is_ip_banned(ip);
+				if (!reason.empty()) {
 					LOG_SERVER << ip << "\trejected banned user.\n";
-					send_error(sock, "You are banned.");
+					send_error(sock, ("You are banned. Reason: " + reason).c_str());
 					network::disconnect(sock);
 				} else if (ip_exceeds_connection_limit(ip)) {
 					LOG_SERVER << ip << "\trejected ip due to excessive connections\n";
@@ -1400,15 +1401,15 @@ std::string server::process_command(const std::string& query, const std::string&
 		if (std::count(target.begin(), target.end(), '.') >= 1) {
 			banned = true;
 
-			std::string err = ban_manager_.ban(target, parsed_time, reason, issuer_name, group);
-			out << err;
+			out << ban_manager_.ban(target, parsed_time, reason, issuer_name, group);
 
 			if (kick) {
 				for (wesnothd::player_map::const_iterator pl = players_.begin();
 						pl != players_.end(); ++pl)
 				{
 					if (utils::wildcard_string_match(network::ip_address(pl->first), target)) {
-						out << "\nKicked " << pl->second.name() << ".";
+						out << "\nKicked " << pl->second.name() << " ("
+							<< network::ip_address(pl->first) << ").";
 						send_error(pl->first, ("You have been banned. Reason: " + reason).c_str());
 						network::queue_disconnect(pl->first);
 					}
@@ -1421,15 +1422,12 @@ std::string server::process_command(const std::string& query, const std::string&
 			{
 				if (utils::wildcard_string_match(pl->second.name(), target)) {
 					banned = true;
-					const std::string& ip = network::ip_address(pl->first);
-					if (!is_ip_banned(ip)) {
-						std::string err = ban_manager_.ban(ip, parsed_time, reason, issuer_name, group, target);
-						out << err;
-					}
+					const std::string ip = network::ip_address(pl->first);
+					out << ban_manager_.ban(ip, parsed_time, reason, issuer_name, group, target);
 					if (kick) {
 						if (kicked) out << "\n";
 						else kicked = true;
-						out << "\nKicked " << pl->second.name() << ".";
+						out << "\nKicked " << pl->second.name() << " (" << ip << ").";
 						send_error(pl->first, ("You have been banned. Reason: " + reason).c_str());
 						network::queue_disconnect(pl->first);
 					}
@@ -1443,9 +1441,7 @@ std::string server::process_command(const std::string& query, const std::string&
 							i != ip_log_.end(); i++) {
 						if (i->first == target) {
 							banned = true;
-							if (!is_ip_banned(i->second)) {
-								out << ban_manager_.ban(i->second, parsed_time, reason, issuer_name, group, target);
-							}
+							out << ban_manager_.ban(i->second, parsed_time, reason, issuer_name, group, target);
 						}
 					}
 				}
