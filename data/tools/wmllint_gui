@@ -132,46 +132,49 @@ class MainFrame(wx.Frame):
 
         self.process = wx.Process(self)
         self.process.Redirect()
-        wx.Execute(cmd, wx.EXEC_ASYNC, self.process)
+        self.wmllint_pid = wx.Execute(cmd, wx.EXEC_ASYNC, self.process)
 
     def button_convert(self, event): # wxGlade: MainFrame.<event_handler>
-        self.text_output.clear()
-        
-        path = self.path_ctrl.GetValue()
-        
-        clean = False
-        diffs = False
-        dryrun = False
-        future = False
-        revert = False
-        stringfreeze = False
-        stripcr = False
-        spell_check = False
-        verbose = 0
-        
-        mode = self.action_choice.GetStringSelection()
-        if(mode == "Clean"):
-            clean = True
-        if(mode == "Diff"):
-            diffs = True
-        if(mode == "Dryrun"):
-            dryrun = True
-        if(mode == "Revert"):
-            revert = True
-        
-        spell_check = self.spell_check.GetValue()
-        stripcr = self.unix_endings.GetValue()
-        
-        verbose = self.verbosity.GetSelection()
-        
-        if not os.path.exists(path):
-            self.text_output.write("Path could not be found.")
-            return
-        
-        self.start_wmllint(self.text_output, [path], clean, diffs, dryrun, future, revert,\
-            stringfreeze, stripcr, spell_check, verbose)
-            
-        self.set_running(True)
+    	if self.process:
+    		self.process.Kill(self.wmllint_pid)
+    	else:
+			self.text_output.clear()
+			
+			path = self.path_ctrl.GetValue()
+			
+			clean = False
+			diffs = False
+			dryrun = False
+			future = False
+			revert = False
+			stringfreeze = False
+			stripcr = False
+			spell_check = False
+			verbose = 0
+			
+			mode = self.action_choice.GetStringSelection()
+			if(mode == "Clean"):
+				clean = True
+			if(mode == "Diff"):
+				diffs = True
+			if(mode == "Dryrun"):
+				dryrun = True
+			if(mode == "Revert"):
+				revert = True
+			
+			spell_check = self.spell_check.GetValue()
+			stripcr = self.unix_endings.GetValue()
+			
+			verbose = self.verbosity.GetSelection()
+			
+			if not os.path.exists(path):
+				self.text_output.write("Path could not be found.")
+				return
+			
+			self.start_wmllint(self.text_output, [path], clean, diffs, dryrun, future, revert,\
+				stringfreeze, stripcr, spell_check, verbose)
+				
+			self.set_running(True)
         
     def set_running(self, val):
         if val == True:
@@ -191,11 +194,7 @@ class MainFrame(wx.Frame):
             self.path_ctrl.Enable(True)
             self.choose_file.Enable(True)
             
-    def subprocess_finished(self, result):
-        if result == 0:
-            self.text_output.write("Failed!")
-        else:
-            self.text_output.write("Completed.")
+    def subprocess_finished(self, event):
         self.set_running(False)
         self.process = None
         
