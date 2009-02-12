@@ -38,6 +38,10 @@ stringfixes = {
 # translation is optional
 #
 ("the godly city of Tath", "the goodly city of Tath"),
+# See the desription of the TROW changes
+("So, I've finally found your lair, Lich.", "So, I've finally found your lair, lich."),
+("made me turn into a Lich.", "made me turn into a lich."),
+("you and your minions have killed, Lich", "you and your minions have killed, lich"),
 ),
 
 "wesnoth-httt" : (
@@ -46,6 +50,11 @@ stringfixes = {
 # this up already.
 #
 ("attack my loyal duelist", "attack, my loyal duelist"),
+# Lich capitalization problem
+("Lich Lord", "Lich-Lord"),
+("remnants of the Lich's once-mortal skin", "remnants of the lich's once-mortal skin"),
+# Bad English usage.  Translators probably got this right from context
+("lodged loose", "dislodged"),
 ),
 
 "wesnoth-manual" : (
@@ -69,6 +78,7 @@ stringfixes = {
 "wesnoth" : (
 ("have good defences in water", "have good defenses in water"),
 ("have a low defence", "have a low defense"),
+("characers", "characters"),
 ),
 
 "wesnoth-trow" :(
@@ -88,6 +98,14 @@ stringfixes = {
 ("know that Lich you",  "know that lich you"),
 ("Lich. Maybe you", "lich. Maybe you"),
 ("Young Prince Haldric.", "young Prince Haldric."),
+("Kill the Lich to get his book and", "Kill the lich to get his book and"),
+("The Lich is free!", "The lich is free!"),
+("before we free that Lich","before we free that lich"),
+),
+
+"wesnoth-httt" :(
+# See the explanation of the changes for TROW.
+("A final blow destroys the Lich,", "A final blow destroys the lich,"),
 ),
 
 "wesnoth-tsg" :(
