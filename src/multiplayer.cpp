@@ -343,7 +343,7 @@ static server_type open_connection(game_display& disp, const std::string& origin
 								"hyphens are allowed.", i18n_symbols);
 					} else if((*error)["error_code"] == MP_NAME_TOO_LONG_ERROR) {
 						error_message = vgettext("The nick '$nick' is too long. Nicks must "
-								"be 18 characers or less.", i18n_symbols);
+								"be 18 characters or less.", i18n_symbols);
 					} else if((*error)["error_code"] == MP_NAME_RESERVED_ERROR) {
 						error_message = vgettext("The nick '$nick' is reserved and cannot be used by players.", i18n_symbols);
 					} else if((*error)["error_code"] == MP_PASSWORD_REQUEST) {
