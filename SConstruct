@@ -17,8 +17,10 @@ from os import access, F_OK
 for dir in ["release", "debug", "profile"]:
     if glob(os.path.join("build", dir, "*.cpp")):
         shutil.rmtree(os.path.join("build", dir), True)
-for base_file in glob("src/*-base"):
-    os.remove(base_file)
+try:
+    os.remove("wesnoth-base")
+except:
+    pass
 
 SConsignFile("build/sconsign.dblite")
 

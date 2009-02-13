@@ -294,7 +294,10 @@ libwesnoth_extras = env.Library("wesnoth_extras", wesnoth_sources)
 
 def WesnothProgram(env, target, source, can_build, **kw):
     if can_build:
-        bin = env.Program("#/" + target + build_suffix, source, **kw)
+        if env["build"] == "base":
+            bin = env.Program(target, source, **kw)
+        else:
+            bin = env.Program("#/" + target + build_suffix, source, **kw)
     else:
         bin = None
     env.Alias(target, bin)
