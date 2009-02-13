@@ -459,7 +459,7 @@ bool unit_frame::invalidate(const bool force,const int frame_time,const map_loca
 
 	const frame_parameters current_data = merge_parameters(frame_time,animation_val,engine_val,primary);
 	double tmp_offset = current_data.offset;
-	//unused var - int d2 = disp->hex_size() / 2;
+	int d2 = game_display::get_singleton()->hex_size() / 2;
 
 	image::locator image_loc;
 	if(direction != map_location::NORTH && direction != map_location::SOUTH) {
@@ -479,8 +479,8 @@ bool unit_frame::invalidate(const bool force,const int frame_time,const map_loca
 				image::SCALED_TO_ZOOM
 				);
 	}
-	const int x = static_cast<int>(tmp_offset * xdst + (1.0-tmp_offset) * xsrc)+current_data.x;
-	const int y = static_cast<int>(tmp_offset * ydst + (1.0-tmp_offset) * ysrc)+current_data.y;
+	const int x = static_cast<int>(tmp_offset * xdst + (1.0-tmp_offset) * xsrc)+current_data.x+d2-(image->w/2);
+	const int y = static_cast<int>(tmp_offset * ydst + (1.0-tmp_offset) * ysrc)+current_data.y+d2-(image->h/2);
 	if (image != NULL) {
 		// if we need to update ourselve because we changed, invalidate our hexes
 		// and return whether or not our hexs was invalidated
