@@ -1382,7 +1382,7 @@ private:
 		for(unit_map::const_iterator un = units_.begin(); un != units_.end(); ++un) {
 			if(un->second.side() == team_num) {
 				units_alive++;
-				if(unit_can_move(un->first,units_,map_,teams_)) {
+				if(unit_can_move(un->first,un->second,units_,map_,teams_)) {
 					if(!un->second.has_moved()) {
 						unmoved_units = true;
 					}

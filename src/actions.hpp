@@ -385,7 +385,7 @@ void apply_shroud_changes(undo_list& undos, game_display* disp, const gamemap& m
  * Will return true iff the unit at 'loc' has any possible moves
  * it can do (including attacking etc).
  */
-bool unit_can_move(const map_location& loc, const unit_map& units,
+bool unit_can_move(const map_location& loc, const unit& u, const unit_map& units,
                    const gamemap& map, const std::vector<team>& teams);
 
 

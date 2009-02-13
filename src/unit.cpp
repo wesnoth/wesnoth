@@ -1935,8 +1935,7 @@ void unit::redraw_unit(game_display& disp, const map_location& loc)
 			if(disp.playing_team() == disp.viewing_team() && !user_end_turn()) {
 				if (movement_left() == total_movement()) {
 					movement_file = &game_config::unmoved_ball_image;
-					// unit_can_move assumes that it's not a fake unit (= in unit_map)
-				} else if(unit_can_move(loc,disp.get_units(),map,disp.get_teams())) {
+				} else if(unit_can_move(loc,*this,disp.get_units(),map,disp.get_teams())) {
 					movement_file = &game_config::partmoved_ball_image;
 				}
 			}

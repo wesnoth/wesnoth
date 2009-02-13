@@ -131,7 +131,7 @@ void move_unit(const std::vector<map_location>& path, unit& u, const std::vector
 	// Original unit is usually hidden (but still on map, so count is correct)
 	unit temp_unit = u;
 	u.set_hidden(true);
-	temp_unit.set_standing(path[0]);
+	temp_unit.set_standing(path[0],false);
 	temp_unit.set_hidden(false);
 	disp->place_temporary_unit(temp_unit,path[0]);
         disp->draw();

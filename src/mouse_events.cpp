@@ -716,7 +716,7 @@ bool mouse_handler::unit_in_cycle(unit_map::const_iterator it)
 		return false;
 
 	if(it->second.side() != team_num_ || it->second.user_end_turn()
-			|| gui().fogged(it->first) || !unit_can_move(it->first,units_,map_,teams_))
+			|| gui().fogged(it->first) || !unit_can_move(it->first,it->second,units_,map_,teams_))
 		return false;
 
 	if (current_team().is_enemy(int(gui().viewing_team()+1)) &&

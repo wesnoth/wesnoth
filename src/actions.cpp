@@ -2500,13 +2500,9 @@ size_t move_unit(game_display* disp,
 	return steps.size();
 }
 
-bool unit_can_move(const map_location& loc, const unit_map& units,
+bool unit_can_move(const map_location& loc,const unit& u, const unit_map& units,
 		const gamemap& map, const std::vector<team>& teams)
 {
-	const unit_map::const_iterator u_it = units.find(loc);
-	assert(u_it != units.end());
-
-	const unit& u = u_it->second;
 	const team& current_team = teams[u.side()-1];
 
 	if(!u.attacks_left() && u.movement_left()==0)
