@@ -17,6 +17,8 @@ from os import access, F_OK
 for dir in ["release", "debug", "profile"]:
     if glob(os.path.join("build", dir, "*.cpp")):
         shutil.rmtree(os.path.join("build", dir), True)
+for base_file in glob("src/*-base"):
+    os.remove(base_file)
 
 SConsignFile("build/sconsign.dblite")
 
@@ -382,8 +384,8 @@ if build == "base":
 else:
     build_dir = os.path.join("build", build)
 
-if build == "release" : build_suffix = "" + env["PROGSUFFIX"]
-else                  : build_suffix = "-" + build + env["PROGSUFFIX"]
+if build == "release" : build_suffix = ""
+else                  : build_suffix = "-" + build
 Export("build_suffix")
 SConscript("src/SConscript", build_dir = build_dir, duplicate = False)
 Import(binaries + ["sources"])

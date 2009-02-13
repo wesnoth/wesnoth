@@ -3,7 +3,6 @@
 import commands, os
 from subprocess import Popen, PIPE
 from glob import glob
-from install import HardLink
 
 Import("*")
 
@@ -295,12 +294,10 @@ libwesnoth_extras = env.Library("wesnoth_extras", wesnoth_sources)
 
 def WesnothProgram(env, target, source, can_build, **kw):
     if can_build:
-        bin = env.Program(target, source, **kw)
-        link = env.Command("#/" + target + build_suffix, bin, HardLink("$TARGET", "$SOURCE"))
+        bin = env.Program("#/" + target + build_suffix, source, **kw)
     else:
         bin = None
-        link = None
-    env.Alias(target, link)
+    env.Alias(target, bin)
     exec target + " = bin"
     Export(target)
 
