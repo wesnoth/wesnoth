@@ -331,9 +331,7 @@ static server_type open_connection(game_display& disp, const std::string& origin
 					utils::string_map i18n_symbols;
 					i18n_symbols["nick"] = login;
 
-					if((*error)["error_code"] == MP_UNKNOWN_ERROR) {
-						error_message = _("Unknown error.");
-					} else if((*error)["error_code"] == MP_MUST_LOGIN) {
+					if((*error)["error_code"] == MP_MUST_LOGIN) {
 						error_message = _("You must login first.");
 					} else if((*error)["error_code"] == MP_NAME_TAKEN_ERROR) {
 						error_message = vgettext("The nick '$nick' is already taken.", i18n_symbols);
