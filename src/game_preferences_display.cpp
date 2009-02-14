@@ -101,7 +101,7 @@ private:
 			show_lobby_joins_button2_,
 			show_lobby_joins_button3_,
 			sort_list_by_group_button_, iconize_list_button_,
-			mp_server_search_button_,
+			remember_pw_button_, mp_server_search_button_,
 			friends_list_button_, friends_back_button_,
 			friends_add_friend_button_, friends_add_ignore_button_,
 			friends_remove_button_, show_floating_labels_button_,
@@ -160,6 +160,7 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	  show_lobby_joins_button3_(disp.video(), _("Show All Lobby Joins"), gui::button::TYPE_CHECK),
 	  sort_list_by_group_button_(disp.video(), _("Sort Lobby List"), gui::button::TYPE_CHECK),
 	  iconize_list_button_(disp.video(), _("Iconize Lobby List"), gui::button::TYPE_CHECK),
+	  remember_pw_button_(disp.video(), _("Save password to preferences (clear text)"), gui::button::TYPE_CHECK),
 	  mp_server_search_button_(disp.video(), _("Set path to wesnothd")),
 	  friends_list_button_(disp.video(), _("Friends List")),
 	  friends_back_button_(disp.video(), _("Multiplayer Options")),
@@ -351,6 +352,8 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	iconize_list_button_.set_check(iconize_list());
 	iconize_list_button_.set_help_string(_("Show icons in front of the player names in the lobby."));
 
+	remember_pw_button_.set_check(remember_password());
+
 	show_lobby_joins_button1_.set_check(lobby_joins() == SHOW_NONE);
 	show_lobby_joins_button1_.set_help_string(_("Do not show messages about players joining the multiplayer lobby"));
 	show_lobby_joins_button2_.set_check(lobby_joins() == SHOW_FRIENDS);
@@ -422,6 +425,7 @@ handler_vector preferences_dialog::handler_members()
 	h.push_back(&show_grid_button_);
 	h.push_back(&sort_list_by_group_button_);
 	h.push_back(&iconize_list_button_);
+	h.push_back(&remember_pw_button_);
 	h.push_back(&show_lobby_joins_button1_);
 	h.push_back(&show_lobby_joins_button2_);
 	h.push_back(&show_lobby_joins_button3_);
@@ -614,6 +618,7 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 								rect.w - horizontal_padding - right_border, 0 };
 	chat_lines_slider_.set_location(chat_lines_rect);
 	ypos += item_interline; chat_timestamp_button_.set_location(rect.x, ypos);
+	ypos += item_interline; remember_pw_button_.set_location(rect.x, ypos);
 	ypos += item_interline; sort_list_by_group_button_.set_location(rect.x, ypos);
 	ypos += item_interline; iconize_list_button_.set_location(rect.x, ypos);
 
@@ -858,6 +863,8 @@ void preferences_dialog::process_event()
 			set_sort_list(sort_list_by_group_button_.checked());
 		if (iconize_list_button_.pressed())
 			set_iconize_list(iconize_list_button_.checked());
+		if (remember_pw_button_.pressed())
+			set_remember_password(iconize_list_button_.checked());
 		if (chat_timestamp_button_.pressed())
 			set_chat_timestamping(chat_timestamp_button_.checked());
 		if (friends_list_button_.pressed())
@@ -1107,6 +1114,7 @@ void preferences_dialog::set_selection(int index)
 	chat_timestamp_button_.hide(hide_multiplayer);
 	sort_list_by_group_button_.hide(hide_multiplayer);
 	iconize_list_button_.hide(hide_multiplayer);
+	remember_pw_button_.hide(hide_multiplayer);
 	show_lobby_joins_button1_.hide(hide_multiplayer);
 	show_lobby_joins_button2_.hide(hide_multiplayer);
 	show_lobby_joins_button3_.hide(hide_multiplayer);
