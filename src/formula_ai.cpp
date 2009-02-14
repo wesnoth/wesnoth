@@ -1355,12 +1355,12 @@ formula_ai::formula_ai(info& i) :
 
 }
 
-void formula_ai::handle_exception(game_logic::formula_error& e)
+void formula_ai::handle_exception(game_logic::formula_error& e) const
 {
 	handle_exception(e, "Error while parsing formula");
 }
 
-void formula_ai::handle_exception(game_logic::formula_error& e, const std::string& failed_operation)
+void formula_ai::handle_exception(game_logic::formula_error& e, const std::string& failed_operation) const
 {
 	LOG_AI << failed_operation << ": " << e.formula << std::endl;
 	display_message(failed_operation + ": " + e.formula);
@@ -1374,7 +1374,7 @@ void formula_ai::handle_exception(game_logic::formula_error& e, const std::strin
 	}
 }
 
-void formula_ai::display_message(const std::string& msg)
+void formula_ai::display_message(const std::string& msg) const
 {
 	get_info().disp.add_chat_message(time(NULL), "fai", get_info(). team_num, msg,
 				game_display::MESSAGE_PUBLIC, false);
@@ -1437,7 +1437,7 @@ void formula_ai::play_turn()
 }
 
 void formula_ai::make_candidate_moves() {
-
+        move_maps_valid_ = false;
 	build_move_list();
 	candidate_move_set::iterator best_move = candidate_moves_.begin();
 
@@ -2081,9 +2081,11 @@ variant formula_ai::get_keeps() const
 
 bool formula_ai::can_attack(const map_location unit_loc,
 		const map_location enemy_loc) const {
+        prepare_move();
 	move_map::iterator i;
 	std::pair<move_map::iterator,
 			  move_map::iterator> unit_moves;
+
 	unit_moves = srcdst_.equal_range(unit_loc);
 	for(i = unit_moves.first; i != unit_moves.second; ++i) {
 		map_location diff(((*i).second).vector_difference(enemy_loc));
@@ -2106,16 +2108,26 @@ void candidate_move::evaluate_move(const formula_ai* ai, unit_map& units,
 				for(unit_map::unit_iterator target = units.begin() ; target != units.end() ; ++target) {
 					if( (target->second.side() != team_num) &&
 							(ai->can_attack(me->first, target->first)) ) {
+                                                int res = -1000;
+
 						game_logic::map_formula_callable callable((formula_callable*) ai);
 						callable.add_ref();
 						callable.add("me", variant(new unit_callable(*me)));
 						callable.add("target", variant(new unit_callable(*target)));
-						int res = (formula::evaluate(eval_, callable)).as_int();
+
+                                                try {
+                                                    res = (formula::evaluate(eval_, callable)).as_int();
+                                                } catch(formula_error& e) {
+                                                        ai->handle_exception(e);
+                                                } catch(type_error& e) {
+                                                        LOG_AI << "formula type error while evaluating candidate move: " << e.message << "\n";
+                                                }
 						if(res > score_) {
 							score_ = res;
 							action_unit_ = me;
 							enemy_unit_ = target;
 						}
+                                                ai->invalidate_move_maps();
 					}
 				}
 			}
@@ -2125,14 +2137,22 @@ void candidate_move::evaluate_move(const formula_ai* ai, unit_map& units,
 		{
 			if( (i->second.side() == team_num) &&
 					(i->second.has_moved() == false) ) {
+                                int res = -1000;
 				game_logic::map_formula_callable callable((formula_callable*) ai);
 				callable.add_ref();
 				callable.add("me", variant(new unit_callable(*i)));
-				int res = (formula::evaluate(eval_, callable)).as_int();
+                                try {
+                                    res = (formula::evaluate(eval_, callable)).as_int();
+                                } catch(formula_error& e) {
+                                    ai->handle_exception(e);
+                                } catch(type_error& e) {
+                                    LOG_AI << "formula type error while evaluating candidate move: " << e.message << "\n";
+                                }
 				if(res > score_) {
 					score_ = res;
 					action_unit_ = i;
 				}
+                                ai->invalidate_move_maps();
 			}
 		}
 	}

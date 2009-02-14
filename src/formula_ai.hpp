@@ -149,10 +149,13 @@ public:
 
 	const std::map<location,paths>& get_possible_moves() const { prepare_move(); return possible_moves_; }
 
+	void handle_exception(game_logic::formula_error& e) const;
+	void handle_exception(game_logic::formula_error& e, const std::string& failed_operation) const;
+
+        void invalidate_move_maps() const { move_maps_valid_ = false; }
+
 private:
-	void handle_exception(game_logic::formula_error& e);
-	void handle_exception(game_logic::formula_error& e, const std::string& failed_operation);
-	void display_message(const std::string& msg);
+	void display_message(const std::string& msg) const;
 	bool do_recruitment();
 	bool make_move(game_logic::const_formula_ptr formula_, const game_logic::formula_callable& variables);
 	bool execute_variant(const variant& var, bool commandline=false);
