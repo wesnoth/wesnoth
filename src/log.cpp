@@ -129,7 +129,7 @@ void scope_logger::do_log_entry(log_domain const &domain, const std::string& str
 	output_ = &debug(domain, false, true);
 	str_ = str;
 	ticks_ = SDL_GetTicks();
-	(*output_) << "BEGIN: " << str_ << "\n";
+	(*output_) << "{ BEGIN: " << str_ << "\n";
 	++indent;
 }
 
@@ -139,7 +139,7 @@ void scope_logger::do_log_exit()
 	--indent;
 	do_indent();
 	if (timestamp) (*output_) << get_timestamp(time(NULL));
-	(*output_) << "END: " << str_ << " (took " << ticks << "ms)\n";
+	(*output_) << "} END: " << str_ << " (took " << ticks << "ms)\n";
 }
 
 void scope_logger::do_indent() const
