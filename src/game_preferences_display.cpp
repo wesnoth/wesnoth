@@ -869,7 +869,7 @@ void preferences_dialog::process_event()
 		if (iconize_list_button_.pressed())
 			set_iconize_list(iconize_list_button_.checked());
 		if (remember_pw_button_.pressed())
-			set_remember_password(iconize_list_button_.checked());
+			set_remember_password(remember_pw_button_.checked());
 		if (chat_timestamp_button_.pressed())
 			set_chat_timestamping(chat_timestamp_button_.checked());
 		if (friends_list_button_.pressed())
