@@ -50,6 +50,8 @@
    * Fixed the :query command to work while in a multiplayer game, not only 
      when in chat (as /query)
    * Fixed invalid memory access with AMLAs (bug #12911)
+   * Closing a message with escape caused the message to skip on the next
+     execution of that event (unless it required input)
 
 Version 1.5.9:
  * Campaigns:

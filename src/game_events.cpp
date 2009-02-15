@@ -3399,7 +3399,10 @@ static bool process_event(game_events::event_handler& handler, const game_events
 		return false;
 	}
 
-	// The event hasn't been filtered out, so execute the handler
+	// The event hasn't been filtered out, so execute the handler.
+	// First reset the skip_messages to avoid the escape of the previous event
+	// to be carried over into the next.
+	handler.skip_messages() = false;
 	const bool res = handler.handle_event(ev);
 	if(ev.name == "select") {
 		state_of_game->last_selected = ev.loc1;
