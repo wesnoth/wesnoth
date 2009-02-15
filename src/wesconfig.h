@@ -30,7 +30,7 @@
 #ifdef VERSION
   #undef VERSION
 #endif
-#define VERSION "1.5.10-1_6beta2"
+#define VERSION "1.5.10+svn"
 
 #ifndef PACKAGE
 #define PACKAGE "wesnoth"
