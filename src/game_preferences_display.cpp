@@ -401,6 +401,10 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	set_friends_menu();
 }
 
+/** 
+ * @todo the gamma correction seems to cause quite some bugs and the feature
+ * seems a bit useless so disable the code to evaluate the usefulness.
+ */
 handler_vector preferences_dialog::handler_members()
 {
 	handler_vector h;
@@ -409,7 +413,7 @@ handler_vector preferences_dialog::handler_members()
 	h.push_back(&bell_slider_);
 	h.push_back(&UI_sound_slider_);
 	h.push_back(&scroll_slider_);
-	h.push_back(&gamma_slider_);
+//	h.push_back(&gamma_slider_);
 	h.push_back(&chat_lines_slider_);
 	h.push_back(&turbo_slider_);
 	h.push_back(&idle_anim_slider_);
@@ -446,7 +450,7 @@ handler_vector preferences_dialog::handler_members()
 	h.push_back(&video_mode_button_);
 	h.push_back(&theme_button_);
 	h.push_back(&hotkeys_button_);
-	h.push_back(&gamma_button_);
+//	h.push_back(&gamma_button_);
 	h.push_back(&flip_time_button_);
 	h.push_back(&advanced_button_);
 	h.push_back(&sound_button_);
@@ -463,7 +467,7 @@ handler_vector preferences_dialog::handler_members()
 	h.push_back(&bell_label_);
 	h.push_back(&UI_sound_label_);
 	h.push_back(&scroll_label_);
-	h.push_back(&gamma_label_);
+//	h.push_back(&gamma_label_);
 	h.push_back(&turbo_slider_label_);
 	h.push_back(&idle_anim_slider_label_);
 	h.push_back(&autosavemax_slider_label_);
