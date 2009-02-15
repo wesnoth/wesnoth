@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-02-12 12:16+0100\n"
+"POT-Creation-Date: 2009-02-15 12:27+0100\n"
 "PO-Revision-Date: 2008-05-04 12:00+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -6703,8 +6703,8 @@ msgstr "Крај"
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=label-hp
 #: data/themes/default.cfg:212 data/themes/dfool.cfg:232
-#: data/themes/experimental.cfg:181 src/menu_events.cpp:203 src/unit.cpp:2564
-#: src/unit.cpp:2738
+#: data/themes/experimental.cfg:181 src/menu_events.cpp:203 src/unit.cpp:2563
+#: src/unit.cpp:2737
 msgid "HP"
 msgstr "УП"
 
@@ -8607,48 +8607,43 @@ msgstr "Петља преусмеравања на страни сервера"
 
 #: src/multiplayer.cpp:335
 #, fuzzy
-msgid "Unknown error."
-msgstr "непозната епоха"
-
-#: src/multiplayer.cpp:337
-#, fuzzy
 msgid "You must login first."
 msgstr "Морате се пријавити на овај сервер"
 
-#: src/multiplayer.cpp:339
+#: src/multiplayer.cpp:337
 msgid "The nick '$nick' is already taken."
 msgstr ""
 
-#: src/multiplayer.cpp:341
+#: src/multiplayer.cpp:339
 msgid ""
 "The nick '$nick' contains invalid characters. Only alpha-numeric characters, "
 "underscores and hyphens are allowed."
 msgstr ""
 
-#: src/multiplayer.cpp:345
+#: src/multiplayer.cpp:343
 msgid "The nick '$nick' is too long. Nicks must be 18 characters or less."
 msgstr ""
 
-#: src/multiplayer.cpp:348
+#: src/multiplayer.cpp:346
 msgid "The nick '$nick' is reserved and cannot be used by players."
 msgstr ""
 
-#: src/multiplayer.cpp:350 src/multiplayer.cpp:352
+#: src/multiplayer.cpp:348 src/multiplayer.cpp:350
 msgid "The nick '$nick' is registered on this server."
 msgstr ""
 
-#: src/multiplayer.cpp:353
+#: src/multiplayer.cpp:351
 msgid ""
 "WARNING: There is already a client using this nick, logging in will cause "
 "that client to be kicked!"
 msgstr ""
 
-#: src/multiplayer.cpp:356
+#: src/multiplayer.cpp:354
 msgid ""
 "Error in the login procedure (the server had no seed for your connection)."
 msgstr ""
 
-#: src/multiplayer.cpp:359
+#: src/multiplayer.cpp:357
 msgid "The password you provided was incorrect."
 msgstr ""
 
@@ -9610,31 +9605,31 @@ msgstr "Непознат тип јединице ‘$type|’"
 msgid "Unknown unit type '$type|'"
 msgstr "Непознат тип јединице ‘$type|’"
 
-#: src/unit.cpp:2521 src/unit.cpp:2726 src/unit.cpp:2782
+#: src/unit.cpp:2520 src/unit.cpp:2725 src/unit.cpp:2781
 msgid " and "
 msgstr " и "
 
-#: src/unit.cpp:2532
+#: src/unit.cpp:2531
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/unit.cpp:2597
+#: src/unit.cpp:2596
 msgid "moves"
 msgstr "кретњи"
 
-#: src/unit.cpp:2615 src/unit.cpp:2753
+#: src/unit.cpp:2614 src/unit.cpp:2752
 msgid "XP to advance"
 msgstr "ИП за напредовање"
 
-#: src/unit.cpp:2745
+#: src/unit.cpp:2744
 msgid " move"
 msgstr " покрет"
 
-#: src/unit.cpp:2761
+#: src/unit.cpp:2760
 msgid "$effect_description per level"
 msgstr "$effect_description по нивоу"
 
-#: src/unit.cpp:2791
+#: src/unit.cpp:2790
 msgid "$trait_name|: $trait_description "
 msgstr "$trait_name|: $trait_description "
 
@@ -9722,6 +9717,10 @@ msgstr "Помозите нам да побољшамо Веснот за вас
 #: src/upload_log.cpp:332
 msgid "Enable summary uploads"
 msgstr "Укључи слање сажетака"
+
+#, fuzzy
+#~ msgid "Unknown error."
+#~ msgstr "непозната епоха"
 
 #~ msgid "- King Konrad, 552YW"
 #~ msgstr "— краљ Конрад, 552.гв."

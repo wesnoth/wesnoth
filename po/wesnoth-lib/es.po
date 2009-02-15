@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-02-11 17:55+0100\n"
+"POT-Creation-Date: 2009-02-15 12:28+0100\n"
 "PO-Revision-Date: 2009-01-30 19:26-0300\n"
 "Last-Translator: Ignacio R. Morelle <shikadilord@users.sourceforge.net>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -375,7 +375,7 @@ msgstr "Intransitable"
 #. [column]
 #: data/gui/default/window/addon_connect.cfg:32
 #: data/gui/default/window/mp_connect.cfg:31
-#: data/gui/default/window/mp_method_selection.cfg:255
+#: data/gui/default/window/mp_method_selection.cfg:152
 #: data/gui/default/window/mp_server_list.cfg:31
 msgid "Connect to Server"
 msgstr "Conectar al servidor"
@@ -423,7 +423,7 @@ msgstr "Conectar"
 #: data/gui/default/window/mp_connect.cfg:190
 #: data/gui/default/window/mp_create_game.cfg:552
 #: data/gui/default/window/mp_login.cfg:262
-#: data/gui/default/window/mp_method_selection.cfg:327
+#: data/gui/default/window/mp_method_selection.cfg:224
 #: data/gui/default/window/mp_server_list.cfg:212 src/construct_dialog.cpp:133
 #: src/construct_dialog.cpp:136
 msgid "Cancel"
@@ -568,7 +568,7 @@ msgstr "Mantener más de un mapa abierto a la vez (MDI)"
 #. [button]: id=ok
 #: data/gui/default/window/editor_settings.cfg:230
 #: data/gui/default/window/mp_login.cfg:234
-#: data/gui/default/window/mp_method_selection.cfg:313
+#: data/gui/default/window/mp_method_selection.cfg:210
 #: data/gui/default/window/wml_message.cfg:452
 #: data/gui/default/window/wml_message.cfg:636 src/construct_dialog.cpp:125
 #: src/construct_dialog.cpp:132
@@ -578,7 +578,7 @@ msgstr "Aceptar"
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=apply
 #: data/gui/default/window/editor_settings.cfg:250
-#: src/game_preferences_display.cpp:190
+#: src/game_preferences_display.cpp:191
 msgid "Apply"
 msgstr "Aplicar"
 
@@ -628,21 +628,21 @@ msgstr "Lista de amigos/ignorados"
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=add_friend
 #: data/gui/default/window/mp_cmd_wrapper.cfg:162
-#: src/game_preferences_display.cpp:166
+#: src/game_preferences_display.cpp:167
 msgid "Add As Friend"
 msgstr "Añadir como amigo"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=add_ignore
 #: data/gui/default/window/mp_cmd_wrapper.cfg:177
-#: src/game_preferences_display.cpp:167
+#: src/game_preferences_display.cpp:168
 msgid "Add As Ignore"
 msgstr "Añadir como ignorado"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=remove
 #: data/gui/default/window/mp_cmd_wrapper.cfg:192
-#: src/game_preferences_display.cpp:168
+#: src/game_preferences_display.cpp:169
 msgid "Remove"
 msgstr "Eliminar"
 
@@ -787,13 +787,13 @@ msgstr "Nombre de usuario:"
 
 #. [label]
 #: data/gui/default/window/mp_login.cfg:134
-#: data/gui/default/window/mp_method_selection.cfg:114
 msgid "Password:"
 msgstr "Contraseña:"
 
+#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=remember_password
 #: data/gui/default/window/mp_login.cfg:190
-#: data/gui/default/window/mp_method_selection.cfg:174
+#: src/game_preferences_display.cpp:163
 msgid "Save password to preferences (clear text)"
 msgstr "Guardar contraseña en preferencias (no cifrada)"
 
@@ -809,8 +809,8 @@ msgstr "Recordatorio de contraseña"
 msgid "Multiplayer"
 msgstr "Multijugador"
 
-#. [password_box]: id=password
-#: data/gui/default/window/mp_method_selection.cfg:134
+#. [text_box]: id=user_name
+#: data/gui/default/window/mp_method_selection.cfg:82
 msgid ""
 "You may login to the official multiplayer server with your forum username "
 "and password.\n"
@@ -829,38 +829,38 @@ msgstr ""
 "forum/ (sólo en inglés)."
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:244
+#: data/gui/default/window/mp_method_selection.cfg:141
 msgid "Join Official Server"
 msgstr "Unirse al servidor oficial"
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:245
+#: data/gui/default/window/mp_method_selection.cfg:142
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr ""
 "Iniciar sesión en el servidor oficial para múltiples jugadores de Wesnoth"
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:256
+#: data/gui/default/window/mp_method_selection.cfg:153
 msgid "Join a different server"
 msgstr "Unirse a otro servidor"
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:266
+#: data/gui/default/window/mp_method_selection.cfg:163
 msgid "Host Networked Game"
 msgstr "Servir partida en red"
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:267
+#: data/gui/default/window/mp_method_selection.cfg:164
 msgid "Host a game using dedicated server 'wesnothd'"
 msgstr "Servir una partida en red usando el servidor dedicado «wesnothd»"
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:277
+#: data/gui/default/window/mp_method_selection.cfg:174
 msgid "Local Game"
 msgstr "Partida local"
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:278
+#: data/gui/default/window/mp_method_selection.cfg:175
 msgid "Play a multiplayer game with the AI or humans sharing the same machine"
 msgstr ""
 "Jugar una partida multijugador contra la IA o humanos compartiendo la misma "
@@ -989,13 +989,13 @@ msgstr "Omitir los movimientos de la inteligencia artificial"
 msgid "Show Grid"
 msgstr "Mostrar rejilla"
 
-#: src/game_preferences_display.cpp:156 src/game_preferences_display.cpp:341
+#: src/game_preferences_display.cpp:156 src/game_preferences_display.cpp:342
 msgid "Save Replay on SP/MP Victory or MP Defeat"
 msgstr ""
 "Guardar Repetición en Victorias de un jugador/multijugador o Derrotas "
 "multijugador."
 
-#: src/game_preferences_display.cpp:157 src/game_preferences_display.cpp:344
+#: src/game_preferences_display.cpp:157 src/game_preferences_display.cpp:345
 msgid "Delete Auto-Saves on SP/MP Victory or MP Defeat"
 msgstr ""
 "Borrar guardados automáticos en las Victorias de un jugador/multijugador o "
@@ -1021,309 +1021,313 @@ msgstr "Ordenar la lista de partidas de la sala de juego"
 msgid "Iconize Lobby List"
 msgstr "Minimizar la lista de partidas de la sala de juego"
 
-#: src/game_preferences_display.cpp:163
+#: src/game_preferences_display.cpp:164
 msgid "Set path to wesnothd"
 msgstr "Establecer ruta a wesnothd"
 
-#: src/game_preferences_display.cpp:164
+#: src/game_preferences_display.cpp:165
 msgid "Friends List"
 msgstr "Lista de amigos"
 
-#: src/game_preferences_display.cpp:165
+#: src/game_preferences_display.cpp:166
 msgid "Multiplayer Options"
 msgstr "Opciones multijugador"
 
-#: src/game_preferences_display.cpp:169
+#: src/game_preferences_display.cpp:170
 msgid "Show Floating Labels"
 msgstr "Mostrar etiquetas flotantes"
 
-#: src/game_preferences_display.cpp:170
+#: src/game_preferences_display.cpp:171
 msgid "Turn Dialog"
 msgstr "Diálogo de turno"
 
-#: src/game_preferences_display.cpp:171
+#: src/game_preferences_display.cpp:172
 msgid "Turn Bell"
 msgstr "Campana de turno"
 
-#: src/game_preferences_display.cpp:172
+#: src/game_preferences_display.cpp:173
 msgid "Show Team Colors"
 msgstr "Mostrar colores de equipo"
 
-#: src/game_preferences_display.cpp:173
+#: src/game_preferences_display.cpp:174
 msgid "Show Color Cursors"
 msgstr "Mostrar cursores coloreados"
 
-#: src/game_preferences_display.cpp:174
+#: src/game_preferences_display.cpp:175
 msgid "Show Haloing Effects"
 msgstr "Mostrar halos"
 
-#: src/game_preferences_display.cpp:175
+#: src/game_preferences_display.cpp:176
 msgid "Change Resolution"
 msgstr "Cambiar resolución"
 
-#: src/game_preferences_display.cpp:176
+#: src/game_preferences_display.cpp:177
 msgid "Theme"
 msgstr "Tema"
 
-#: src/game_preferences_display.cpp:177
+#: src/game_preferences_display.cpp:178
 msgid "Hotkeys"
 msgstr "Accesos rápidos"
 
-#: src/game_preferences_display.cpp:178
+#: src/game_preferences_display.cpp:179
 msgid "Adjust Gamma"
 msgstr "Ajustar el brillo («gamma»)"
 
-#: src/game_preferences_display.cpp:179
+#: src/game_preferences_display.cpp:180
 msgid "Reverse Time Graphics"
 msgstr "Invertir gráficos de tiempo"
 
-#: src/game_preferences_display.cpp:181
+#: src/game_preferences_display.cpp:182
 msgid "Sound effects"
 msgstr "Efectos de sonido"
 
-#: src/game_preferences_display.cpp:182
+#: src/game_preferences_display.cpp:183
 msgid "Music"
 msgstr "Música"
 
-#: src/game_preferences_display.cpp:183
+#: src/game_preferences_display.cpp:184
 msgid "Chat Timestamping"
 msgstr "Marcas temporales de conversación"
 
-#: src/game_preferences_display.cpp:184
+#: src/game_preferences_display.cpp:185
 msgid "sound^Advanced Options"
 msgstr "Opciones Avanzadas"
 
-#: src/game_preferences_display.cpp:185
+#: src/game_preferences_display.cpp:186
 msgid "sound^Standard Options"
 msgstr "Opciones Estándar"
 
-#: src/game_preferences_display.cpp:186
+#: src/game_preferences_display.cpp:187
 msgid "User Interface Sounds"
 msgstr "Sonidos del interfaz de usuario"
 
-#: src/game_preferences_display.cpp:189
+#: src/game_preferences_display.cpp:190
 msgid "Custom"
 msgstr "Personalizado"
 
-#: src/game_preferences_display.cpp:191
+#: src/game_preferences_display.cpp:192
 msgid "Show Unit Idle Animations"
 msgstr "Mostrar las animaciones de las unidades inactivas"
 
-#: src/game_preferences_display.cpp:193
+#: src/game_preferences_display.cpp:194
 msgid "Music Volume:"
 msgstr "Volumen de la música:"
 
-#: src/game_preferences_display.cpp:193
+#: src/game_preferences_display.cpp:194
 msgid "SFX Volume:"
 msgstr "Volumen de los efectos de sonido:"
 
-#: src/game_preferences_display.cpp:194
+#: src/game_preferences_display.cpp:195
 msgid "UI Sound Volume:"
 msgstr "Volumen del interfaz de usuario:"
 
-#: src/game_preferences_display.cpp:195
+#: src/game_preferences_display.cpp:196
 msgid "Bell Volume:"
 msgstr "Volumen de la campana:"
 
-#: src/game_preferences_display.cpp:195
+#: src/game_preferences_display.cpp:196
 msgid "Scroll Speed:"
 msgstr "Velocidad de desplazamiento:"
 
-#: src/game_preferences_display.cpp:196
+#: src/game_preferences_display.cpp:197
 msgid "Gamma:"
 msgstr "Brillo («gamma»):"
 
-#: src/game_preferences_display.cpp:198
+#: src/game_preferences_display.cpp:199
 msgid "Sample Rate (Hz):"
 msgstr "Tasa de muestreo (Hz):"
 
-#: src/game_preferences_display.cpp:199
+#: src/game_preferences_display.cpp:200
 msgid "Frequency:"
 msgstr "Frecuencia:"
 
-#: src/game_preferences_display.cpp:223
+#: src/game_preferences_display.cpp:224
 msgid "Sound effects on/off"
 msgstr "Activa o desactiva los efectos de sonido"
 
-#: src/game_preferences_display.cpp:227
+#: src/game_preferences_display.cpp:228
 msgid "Change the sound effects volume"
 msgstr "Cambia el volumen de los efectos de sonido"
 
-#: src/game_preferences_display.cpp:230
+#: src/game_preferences_display.cpp:231
 msgid "Music on/off"
 msgstr "Activa o desactiva la música"
 
-#: src/game_preferences_display.cpp:234
+#: src/game_preferences_display.cpp:235
 msgid "Change the music volume"
 msgstr "Cambia el volumen de la música"
 
-#: src/game_preferences_display.cpp:240
+#: src/game_preferences_display.cpp:241
 msgid "Change the bell volume"
 msgstr "Cambia el volumen de la campana"
 
-#: src/game_preferences_display.cpp:243
+#: src/game_preferences_display.cpp:244
 msgid "Turn menu and button sounds on/off"
 msgstr "Activar o desactivar los sonidos del menú y los botones"
 
-#: src/game_preferences_display.cpp:247
+#: src/game_preferences_display.cpp:248
 msgid "Change the sound volume for button clicks, etc."
 msgstr ""
 "Cambiar el volumen del sonido para las pulsaciones de los botones, etc."
 
-#: src/game_preferences_display.cpp:249
+#: src/game_preferences_display.cpp:250
 msgid "Change the sample rate"
 msgstr "Cambia la velocidad de refresco"
 
-#: src/game_preferences_display.cpp:258
+#: src/game_preferences_display.cpp:259
 msgid "User defined sample rate"
 msgstr "Velocidad de refresco definida por el usuario"
 
-#: src/game_preferences_display.cpp:267 src/game_preferences_display.cpp:271
+#: src/game_preferences_display.cpp:268 src/game_preferences_display.cpp:272
 msgid "Change the buffer size"
 msgstr "Cambia el tamaño de la memoria intermedia"
 
-#: src/game_preferences_display.cpp:269 src/game_preferences_display.cpp:830
+#: src/game_preferences_display.cpp:270 src/game_preferences_display.cpp:840
 msgid "Buffer Size: "
 msgstr "Tamaño de la memoria intermedia: "
 
-#: src/game_preferences_display.cpp:276
+#: src/game_preferences_display.cpp:277
 msgid "Change the speed of scrolling around the map"
 msgstr "Cambia la velocidad de desplazamiento del mapa"
 
-#: src/game_preferences_display.cpp:281 src/game_preferences_display.cpp:283
+#: src/game_preferences_display.cpp:282 src/game_preferences_display.cpp:284
 msgid "Set the amount of chat lines shown"
 msgstr "Establecer el número de líneas de conversación mostradas"
 
-#: src/game_preferences_display.cpp:286
+#: src/game_preferences_display.cpp:287
 msgid "Add a timestamp to chat messages"
 msgstr "Añadir marca temporal a mensajes de conversación"
 
-#: src/game_preferences_display.cpp:289 src/game_preferences_display.cpp:294
+#: src/game_preferences_display.cpp:290 src/game_preferences_display.cpp:295
 msgid "Change the brightness of the display"
 msgstr "Cambia el brillo"
 
-#: src/game_preferences_display.cpp:297
+#: src/game_preferences_display.cpp:298
 msgid "Choose whether the game should run full screen or in a window"
 msgstr "Elija si el programa funciona a pantalla completa o en modo ventana"
 
-#: src/game_preferences_display.cpp:300
+#: src/game_preferences_display.cpp:301
 msgid ""
 "Should the map view scroll to a unit when an action or move is animated."
 msgstr ""
 "Elija si debe la vista del mapa desplazarse a una unidad cuando una acción o "
 "movimiento causa una animación."
 
-#: src/game_preferences_display.cpp:303
+#: src/game_preferences_display.cpp:304
 msgid "Make units move and fight faster"
 msgstr "Hace que las unidades se muevan y luchen más deprisa"
 
-#: src/game_preferences_display.cpp:320
+#: src/game_preferences_display.cpp:321
 msgid "Units move and fight speed"
 msgstr "Velocidad de lucha y movimiento de las unidades"
 
-#: src/game_preferences_display.cpp:323
+#: src/game_preferences_display.cpp:324
 msgid "Show unit idle animations"
 msgstr "Mostrar las animaciones de las unidades inactivas"
 
-#: src/game_preferences_display.cpp:329
+#: src/game_preferences_display.cpp:330
 msgid "Set the frequency of unit idle animations"
 msgstr "Establecer la frecuencia de las animaciones de las unidades inactivas"
 
-#: src/game_preferences_display.cpp:334
+#: src/game_preferences_display.cpp:335
 msgid "Set maximum number of automatic saves to be retained"
 msgstr ""
 "Establecer el número máximo guardados automáticos que se deben conservar"
 
-#: src/game_preferences_display.cpp:338
+#: src/game_preferences_display.cpp:339
 msgid "Do not animate AI units moving"
 msgstr ""
 "No animar el movimiento de las unidades controladas por la inteligencia "
 "artificial"
 
-#: src/game_preferences_display.cpp:346
+#: src/game_preferences_display.cpp:347
 msgid "Overlay a grid onto the map"
 msgstr "Dibuja una rejilla por encima del mapa"
 
-#: src/game_preferences_display.cpp:349
+#: src/game_preferences_display.cpp:350
 msgid "Sort the player list in the lobby by player groups"
 msgstr "Ordena por grupos la lista de jugadores de la sala de juego"
 
-#: src/game_preferences_display.cpp:352
+#: src/game_preferences_display.cpp:353
 msgid "Show icons in front of the player names in the lobby."
 msgstr ""
 "Muestra íconos delante de los nombres de jugadores en la sala de juego."
 
-#: src/game_preferences_display.cpp:355
+#: src/game_preferences_display.cpp:356
+msgid "Uncheck to delete the saved password (on exit)."
+msgstr ""
+
+#: src/game_preferences_display.cpp:359
 msgid "Do not show messages about players joining the multiplayer lobby"
 msgstr ""
 "No mostrar mensajes para advertir cuando entran jugadores en la sala de "
 "juego multijugador"
 
-#: src/game_preferences_display.cpp:357
+#: src/game_preferences_display.cpp:361
 msgid "Show messages about your friends joining the multiplayer lobby"
 msgstr ""
 "Muestra mensajes para advertir cuando sus amigos entran en la sala de juego "
 "multijugador"
 
-#: src/game_preferences_display.cpp:359
+#: src/game_preferences_display.cpp:363
 msgid "Show messages about all players joining the multiplayer lobby"
 msgstr ""
 "Muestra mensajes para advertir cuando cualquier jugador entra en la sala de "
 "juego multijugador"
 
-#: src/game_preferences_display.cpp:361
+#: src/game_preferences_display.cpp:365
 msgid "Find and set path to MP server to host LAN games."
 msgstr ""
 "Buscar y establecer ruta al servidor multijugador para alojar partidas de "
 "red LAN"
 
-#: src/game_preferences_display.cpp:362
+#: src/game_preferences_display.cpp:366
 msgid "View and edit your friends and ignores list"
 msgstr "Ver y editar su lista de amigos y jugadores ignorados"
 
-#: src/game_preferences_display.cpp:363
+#: src/game_preferences_display.cpp:367
 msgid "Back to the multiplayer options"
 msgstr "Regresar a las opciones multijugador"
 
-#: src/game_preferences_display.cpp:364
+#: src/game_preferences_display.cpp:368
 msgid "Add this username to your friends list"
 msgstr "Añadir a este usuario a su lista de amigos"
 
-#: src/game_preferences_display.cpp:365
+#: src/game_preferences_display.cpp:369
 msgid "Add this username to your ignores list"
 msgstr "Añadir a este usuario a su lista de usuarios ignorados"
 
-#: src/game_preferences_display.cpp:366
+#: src/game_preferences_display.cpp:370
 msgid "Remove this username from your list"
 msgstr "Eliminar a este usuario de su lista"
 
-#: src/game_preferences_display.cpp:369
+#: src/game_preferences_display.cpp:373
 msgid "Insert a username"
 msgstr "Insertar un nombre de usuario"
 
-#: src/game_preferences_display.cpp:372
+#: src/game_preferences_display.cpp:376
 msgid "Show text above a unit when it is hit to display damage inflicted"
 msgstr ""
 "Muestra un texto encima de la unidad cuando sufre daño para indicar cuánto "
 "ha recibido"
 
-#: src/game_preferences_display.cpp:374
+#: src/game_preferences_display.cpp:378
 msgid "Change the resolution the game runs at"
 msgstr "Cambia la resolución en la que funciona el juego"
 
-#: src/game_preferences_display.cpp:375
+#: src/game_preferences_display.cpp:379
 msgid "Change the theme the game runs with"
 msgstr "Cambia el tema gráfico del juego"
 
-#: src/game_preferences_display.cpp:378
+#: src/game_preferences_display.cpp:382
 msgid "Display a dialog at the beginning of your turn"
 msgstr "Anuncia con un cuadro de diálogo el inicio de su turno"
 
-#: src/game_preferences_display.cpp:381
+#: src/game_preferences_display.cpp:385
 msgid "Play a bell sound at the beginning of your turn"
 msgstr "Hace sonar una campana al inicio de su turno"
 
-#: src/game_preferences_display.cpp:384
+#: src/game_preferences_display.cpp:388
 msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
@@ -1331,90 +1335,90 @@ msgstr ""
 "Distingue a las unidades de cada bando dibujando un círculo de un "
 "determinado color en su base"
 
-#: src/game_preferences_display.cpp:387
+#: src/game_preferences_display.cpp:391
 msgid "Choose whether the sun moves left-to-right or right-to-left"
 msgstr ""
 "Escoja si quiere que el sol se mueva de izquierda a derecha o viceversa"
 
-#: src/game_preferences_display.cpp:390
+#: src/game_preferences_display.cpp:394
 msgid "Use colored mouse cursors (may be slower)"
 msgstr "Usa punteros coloreados (podría ser más lento)"
 
-#: src/game_preferences_display.cpp:393
+#: src/game_preferences_display.cpp:397
 msgid "Use graphical special effects (may be slower)"
 msgstr "Usa efectos especiales (podría ser más lento)"
 
-#: src/game_preferences_display.cpp:395
+#: src/game_preferences_display.cpp:399
 msgid "View and configure keyboard shortcuts"
 msgstr "Muestra y configura los accesos rápidos de teclado"
 
-#: src/game_preferences_display.cpp:691
+#: src/game_preferences_display.cpp:701
 msgid "Speed: "
 msgstr "Velocidad: "
 
-#: src/game_preferences_display.cpp:696 src/game_preferences_display.cpp:698
+#: src/game_preferences_display.cpp:706 src/game_preferences_display.cpp:708
 msgid "Maximum Auto-Saves: "
 msgstr "Auto-guardados máximos:"
 
-#: src/game_preferences_display.cpp:696
+#: src/game_preferences_display.cpp:706
 msgid "infinite"
 msgstr "Infinito"
 
-#: src/game_preferences_display.cpp:880
+#: src/game_preferences_display.cpp:892
 msgid "Chat Lines: "
 msgstr "Líneas de conversación: "
 
-#: src/game_preferences_display.cpp:902 src/game_preferences_display.cpp:910
+#: src/game_preferences_display.cpp:914 src/game_preferences_display.cpp:922
 msgid "Invalid username"
 msgstr "Nombre de usuario inválido"
 
-#: src/game_preferences_display.cpp:982
+#: src/game_preferences_display.cpp:994
 msgid "yes"
 msgstr "sí"
 
-#: src/game_preferences_display.cpp:984
+#: src/game_preferences_display.cpp:996
 msgid "no"
 msgstr "no"
 
-#: src/game_preferences_display.cpp:1017
+#: src/game_preferences_display.cpp:1029
 msgid "(empty list)"
 msgstr "(lista vacía)"
 
-#: src/game_preferences_display.cpp:1137
+#: src/game_preferences_display.cpp:1150
 msgid "Prefs section^General"
 msgstr "General"
 
-#: src/game_preferences_display.cpp:1138
+#: src/game_preferences_display.cpp:1151
 msgid "Prefs section^Display"
 msgstr "Vídeo"
 
-#: src/game_preferences_display.cpp:1139
+#: src/game_preferences_display.cpp:1152
 msgid "Prefs section^Sound"
 msgstr "Sonido"
 
-#: src/game_preferences_display.cpp:1140
+#: src/game_preferences_display.cpp:1153
 msgid "Prefs section^Multiplayer"
 msgstr "Multijugador"
 
-#: src/game_preferences_display.cpp:1141
+#: src/game_preferences_display.cpp:1154
 msgid "Advanced section^Advanced"
 msgstr "Avanzada"
 
-#: src/game_preferences_display.cpp:1176
+#: src/game_preferences_display.cpp:1189
 msgid "Saved Theme Preference: "
 msgstr "Preferencia de tema gráfico guardada: "
 
-#: src/game_preferences_display.cpp:1182
+#: src/game_preferences_display.cpp:1195
 msgid "New theme will take effect on next new or loaded game."
 msgstr ""
 "El nuevo tema tendrá efecto la próxima vez que se inicie o cargue una "
 "partida."
 
-#: src/game_preferences_display.cpp:1186
+#: src/game_preferences_display.cpp:1199
 msgid "No known themes. Try changing from within an existing game."
 msgstr "No hay temas conocidos. Intente cambiarlos desde un juego existente."
 
-#: src/game_preferences_display.cpp:1228
+#: src/game_preferences_display.cpp:1241
 msgid "Find $filename server binary to host networked games"
 msgstr ""
 "Seleccione binario $filename del servidor para alojar partidas multijugador"

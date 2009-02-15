@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-lib\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-02-11 17:55+0100\n"
+"POT-Creation-Date: 2009-02-15 12:28+0100\n"
 "PO-Revision-Date: 2008-12-19 13:46+0200\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish <wesnoth-tr@googlegroups.com>\n"
@@ -372,7 +372,7 @@ msgstr "Yürünmez"
 #. [column]
 #: data/gui/default/window/addon_connect.cfg:32
 #: data/gui/default/window/mp_connect.cfg:31
-#: data/gui/default/window/mp_method_selection.cfg:255
+#: data/gui/default/window/mp_method_selection.cfg:152
 #: data/gui/default/window/mp_server_list.cfg:31
 msgid "Connect to Server"
 msgstr "Sunucuya Bağlan"
@@ -420,7 +420,7 @@ msgstr "Bağlan"
 #: data/gui/default/window/mp_connect.cfg:190
 #: data/gui/default/window/mp_create_game.cfg:552
 #: data/gui/default/window/mp_login.cfg:262
-#: data/gui/default/window/mp_method_selection.cfg:327
+#: data/gui/default/window/mp_method_selection.cfg:224
 #: data/gui/default/window/mp_server_list.cfg:212 src/construct_dialog.cpp:133
 #: src/construct_dialog.cpp:136
 msgid "Cancel"
@@ -565,7 +565,7 @@ msgstr "Aynı anda birden fazla harita açmayı mümkün kılar (MDI)"
 #. [button]: id=ok
 #: data/gui/default/window/editor_settings.cfg:230
 #: data/gui/default/window/mp_login.cfg:234
-#: data/gui/default/window/mp_method_selection.cfg:313
+#: data/gui/default/window/mp_method_selection.cfg:210
 #: data/gui/default/window/wml_message.cfg:452
 #: data/gui/default/window/wml_message.cfg:636 src/construct_dialog.cpp:125
 #: src/construct_dialog.cpp:132
@@ -575,7 +575,7 @@ msgstr "Tamam"
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=apply
 #: data/gui/default/window/editor_settings.cfg:250
-#: src/game_preferences_display.cpp:190
+#: src/game_preferences_display.cpp:191
 msgid "Apply"
 msgstr "Uygula"
 
@@ -627,21 +627,21 @@ msgstr "Arkadaşlar Listesi"
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=add_friend
 #: data/gui/default/window/mp_cmd_wrapper.cfg:162
-#: src/game_preferences_display.cpp:166
+#: src/game_preferences_display.cpp:167
 msgid "Add As Friend"
 msgstr "Arkadaş Olarak Ekle"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=add_ignore
 #: data/gui/default/window/mp_cmd_wrapper.cfg:177
-#: src/game_preferences_display.cpp:167
+#: src/game_preferences_display.cpp:168
 msgid "Add As Ignore"
 msgstr "Gözardı Edilen Olarak Ekle"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=remove
 #: data/gui/default/window/mp_cmd_wrapper.cfg:192
-#: src/game_preferences_display.cpp:168
+#: src/game_preferences_display.cpp:169
 msgid "Remove"
 msgstr "Sil"
 
@@ -789,14 +789,14 @@ msgstr "Kullanıcı:"
 
 #. [label]
 #: data/gui/default/window/mp_login.cfg:134
-#: data/gui/default/window/mp_method_selection.cfg:114
 #, fuzzy
 msgid "Password:"
 msgstr "Parola Ata"
 
+#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=remember_password
 #: data/gui/default/window/mp_login.cfg:190
-#: data/gui/default/window/mp_method_selection.cfg:174
+#: src/game_preferences_display.cpp:163
 msgid "Save password to preferences (clear text)"
 msgstr ""
 
@@ -812,8 +812,8 @@ msgstr ""
 msgid "Multiplayer"
 msgstr "Çok Oyunculu"
 
-#. [password_box]: id=password
-#: data/gui/default/window/mp_method_selection.cfg:134
+#. [text_box]: id=user_name
+#: data/gui/default/window/mp_method_selection.cfg:82
 msgid ""
 "You may login to the official multiplayer server with your forum username "
 "and password.\n"
@@ -824,38 +824,38 @@ msgid ""
 msgstr ""
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:244
+#: data/gui/default/window/mp_method_selection.cfg:141
 msgid "Join Official Server"
 msgstr "Resmi Sunucuya Bağlan"
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:245
+#: data/gui/default/window/mp_method_selection.cfg:142
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Resmi Wesnoth çok oyunculu oyun sunucusunda oturum açar"
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:256
+#: data/gui/default/window/mp_method_selection.cfg:153
 msgid "Join a different server"
 msgstr "Başka bir sunucuya bağlan"
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:266
+#: data/gui/default/window/mp_method_selection.cfg:163
 msgid "Host Networked Game"
 msgstr "Sunucuyu Başlat"
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:267
+#: data/gui/default/window/mp_method_selection.cfg:164
 #, fuzzy
 msgid "Host a game using dedicated server 'wesnothd'"
 msgstr "Kendi wesnothd sunucunuzu başlatırsınız"
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:277
+#: data/gui/default/window/mp_method_selection.cfg:174
 msgid "Local Game"
 msgstr "Yerel Oyun"
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:278
+#: data/gui/default/window/mp_method_selection.cfg:175
 msgid "Play a multiplayer game with the AI or humans sharing the same machine"
 msgstr ""
 "Oyunu bu makine üzerinde arkadaşlarınızla veya bilgisayara karşı oynarsınız"
@@ -983,11 +983,11 @@ msgstr "Saldırı Arabirimi Hareketlerini Atla"
 msgid "Show Grid"
 msgstr "Izgarayı Göster"
 
-#: src/game_preferences_display.cpp:156 src/game_preferences_display.cpp:341
+#: src/game_preferences_display.cpp:156 src/game_preferences_display.cpp:342
 msgid "Save Replay on SP/MP Victory or MP Defeat"
 msgstr "TO/ÇO Zaferi veya ÇO Yenilgisinde Oyunu Kaydet"
 
-#: src/game_preferences_display.cpp:157 src/game_preferences_display.cpp:344
+#: src/game_preferences_display.cpp:157 src/game_preferences_display.cpp:345
 msgid "Delete Auto-Saves on SP/MP Victory or MP Defeat"
 msgstr ""
 "TO/ÇO Galibiyetinde veya ÇO Yenilgisinde kendiliğinden kaydedilenleri sil"
@@ -1012,295 +1012,299 @@ msgstr "Salondakiler Listesini Sırala"
 msgid "Iconize Lobby List"
 msgstr "Salondakiler Listesini Simgeleştir"
 
-#: src/game_preferences_display.cpp:163
+#: src/game_preferences_display.cpp:164
 msgid "Set path to wesnothd"
 msgstr "wesnothd için dosya yolu tanımlar"
 
-#: src/game_preferences_display.cpp:164
+#: src/game_preferences_display.cpp:165
 msgid "Friends List"
 msgstr "Arkadaşlar Listesi"
 
-#: src/game_preferences_display.cpp:165
+#: src/game_preferences_display.cpp:166
 msgid "Multiplayer Options"
 msgstr "Çok Oyuncu Seçenekleri"
 
-#: src/game_preferences_display.cpp:169
+#: src/game_preferences_display.cpp:170
 msgid "Show Floating Labels"
 msgstr "Seyyar Etiketleri Göster"
 
-#: src/game_preferences_display.cpp:170
+#: src/game_preferences_display.cpp:171
 msgid "Turn Dialog"
 msgstr "Sıra Gelme Kutusu"
 
-#: src/game_preferences_display.cpp:171
+#: src/game_preferences_display.cpp:172
 msgid "Turn Bell"
 msgstr "Sıra Gelme Gongu"
 
-#: src/game_preferences_display.cpp:172
+#: src/game_preferences_display.cpp:173
 msgid "Show Team Colors"
 msgstr "Takım Renklerini Göster"
 
-#: src/game_preferences_display.cpp:173
+#: src/game_preferences_display.cpp:174
 msgid "Show Color Cursors"
 msgstr "Renkli İmleçleri Göster"
 
-#: src/game_preferences_display.cpp:174
+#: src/game_preferences_display.cpp:175
 msgid "Show Haloing Effects"
 msgstr "Nur Efektlerini Göster"
 
-#: src/game_preferences_display.cpp:175
+#: src/game_preferences_display.cpp:176
 msgid "Change Resolution"
 msgstr "Çözünürlüğü Değiştir"
 
-#: src/game_preferences_display.cpp:176
+#: src/game_preferences_display.cpp:177
 msgid "Theme"
 msgstr "Tema"
 
-#: src/game_preferences_display.cpp:177
+#: src/game_preferences_display.cpp:178
 msgid "Hotkeys"
 msgstr "Klavye kısayolları"
 
-#: src/game_preferences_display.cpp:178
+#: src/game_preferences_display.cpp:179
 msgid "Adjust Gamma"
 msgstr "Gammayı Ayarla"
 
-#: src/game_preferences_display.cpp:179
+#: src/game_preferences_display.cpp:180
 msgid "Reverse Time Graphics"
 msgstr "Zaman Çizgelerini Ters Çevir"
 
-#: src/game_preferences_display.cpp:181
+#: src/game_preferences_display.cpp:182
 msgid "Sound effects"
 msgstr "Ses efektleri"
 
-#: src/game_preferences_display.cpp:182
+#: src/game_preferences_display.cpp:183
 msgid "Music"
 msgstr "Müzik"
 
-#: src/game_preferences_display.cpp:183
+#: src/game_preferences_display.cpp:184
 msgid "Chat Timestamping"
 msgstr "Yazışma zaman bilgisi"
 
-#: src/game_preferences_display.cpp:184
+#: src/game_preferences_display.cpp:185
 msgid "sound^Advanced Options"
 msgstr "Gelişmiş Seçenekler"
 
-#: src/game_preferences_display.cpp:185
+#: src/game_preferences_display.cpp:186
 msgid "sound^Standard Options"
 msgstr "Stardart Seçenekler"
 
-#: src/game_preferences_display.cpp:186
+#: src/game_preferences_display.cpp:187
 msgid "User Interface Sounds"
 msgstr "Kullanıcı Arayüzü Sesleri"
 
-#: src/game_preferences_display.cpp:189
+#: src/game_preferences_display.cpp:190
 msgid "Custom"
 msgstr "Özel"
 
-#: src/game_preferences_display.cpp:191
+#: src/game_preferences_display.cpp:192
 msgid "Show Unit Idle Animations"
 msgstr "Boştaki Birimleri Canlandır"
 
-#: src/game_preferences_display.cpp:193
+#: src/game_preferences_display.cpp:194
 msgid "Music Volume:"
 msgstr "Müzik Ses Düzeyi:"
 
-#: src/game_preferences_display.cpp:193
+#: src/game_preferences_display.cpp:194
 msgid "SFX Volume:"
 msgstr "Olayların Ses Düzeyi:"
 
-#: src/game_preferences_display.cpp:194
+#: src/game_preferences_display.cpp:195
 msgid "UI Sound Volume:"
 msgstr "KA Ses Düzeyi:"
 
-#: src/game_preferences_display.cpp:195
+#: src/game_preferences_display.cpp:196
 msgid "Bell Volume:"
 msgstr "Gong Ses Düzeyi:"
 
-#: src/game_preferences_display.cpp:195
+#: src/game_preferences_display.cpp:196
 msgid "Scroll Speed:"
 msgstr "Kaydırma Hızı:"
 
-#: src/game_preferences_display.cpp:196
+#: src/game_preferences_display.cpp:197
 msgid "Gamma:"
 msgstr "Gamma:"
 
-#: src/game_preferences_display.cpp:198
+#: src/game_preferences_display.cpp:199
 msgid "Sample Rate (Hz):"
 msgstr "Örnekleme Hızı (Hz):"
 
-#: src/game_preferences_display.cpp:199
+#: src/game_preferences_display.cpp:200
 msgid "Frequency:"
 msgstr "Sıklık:"
 
-#: src/game_preferences_display.cpp:223
+#: src/game_preferences_display.cpp:224
 msgid "Sound effects on/off"
 msgstr "Olay seslerini açar/kapar"
 
-#: src/game_preferences_display.cpp:227
+#: src/game_preferences_display.cpp:228
 msgid "Change the sound effects volume"
 msgstr "Olay seslerinin seviyesini değiştir"
 
-#: src/game_preferences_display.cpp:230
+#: src/game_preferences_display.cpp:231
 msgid "Music on/off"
 msgstr "Müziği açar/kapar"
 
-#: src/game_preferences_display.cpp:234
+#: src/game_preferences_display.cpp:235
 msgid "Change the music volume"
 msgstr "Müzik ses seviyesini değiştirir"
 
-#: src/game_preferences_display.cpp:240
+#: src/game_preferences_display.cpp:241
 msgid "Change the bell volume"
 msgstr "Gong ses seviyesini değiştirir"
 
-#: src/game_preferences_display.cpp:243
+#: src/game_preferences_display.cpp:244
 msgid "Turn menu and button sounds on/off"
 msgstr "Menü ve düğme seslerini açar/kapar"
 
-#: src/game_preferences_display.cpp:247
+#: src/game_preferences_display.cpp:248
 msgid "Change the sound volume for button clicks, etc."
 msgstr "Düğme tıklama, vs. seslerinin seviyesini değiştirir"
 
-#: src/game_preferences_display.cpp:249
+#: src/game_preferences_display.cpp:250
 msgid "Change the sample rate"
 msgstr "Ses örnekleme hızını değiştirir"
 
-#: src/game_preferences_display.cpp:258
+#: src/game_preferences_display.cpp:259
 msgid "User defined sample rate"
 msgstr "Kullanıcı tanımlı ses örnekleme hızı"
 
-#: src/game_preferences_display.cpp:267 src/game_preferences_display.cpp:271
+#: src/game_preferences_display.cpp:268 src/game_preferences_display.cpp:272
 msgid "Change the buffer size"
 msgstr "Tampon boyunu değiştir"
 
-#: src/game_preferences_display.cpp:269 src/game_preferences_display.cpp:830
+#: src/game_preferences_display.cpp:270 src/game_preferences_display.cpp:840
 msgid "Buffer Size: "
 msgstr "Tampon Boyu:"
 
-#: src/game_preferences_display.cpp:276
+#: src/game_preferences_display.cpp:277
 msgid "Change the speed of scrolling around the map"
 msgstr "Haritanın ekrandaki kayma hızını değiştir"
 
-#: src/game_preferences_display.cpp:281 src/game_preferences_display.cpp:283
+#: src/game_preferences_display.cpp:282 src/game_preferences_display.cpp:284
 msgid "Set the amount of chat lines shown"
 msgstr "Gösterilecek yazışma satırlarının sayısını ayarlar"
 
-#: src/game_preferences_display.cpp:286
+#: src/game_preferences_display.cpp:287
 msgid "Add a timestamp to chat messages"
 msgstr "Yazışma iletilerine zaman bilgisi ekler"
 
-#: src/game_preferences_display.cpp:289 src/game_preferences_display.cpp:294
+#: src/game_preferences_display.cpp:290 src/game_preferences_display.cpp:295
 msgid "Change the brightness of the display"
 msgstr "Ekranın parlaklığını değiştir"
 
-#: src/game_preferences_display.cpp:297
+#: src/game_preferences_display.cpp:298
 msgid "Choose whether the game should run full screen or in a window"
 msgstr ""
 "Oyunun tam ekran mı yoksa pencere içinde mi çalışması gerektiğini seçer"
 
-#: src/game_preferences_display.cpp:300
+#: src/game_preferences_display.cpp:301
 msgid ""
 "Should the map view scroll to a unit when an action or move is animated."
 msgstr ""
 
-#: src/game_preferences_display.cpp:303
+#: src/game_preferences_display.cpp:304
 msgid "Make units move and fight faster"
 msgstr "Birimlerin daha hızlı hareket etmesi ve savaşmasını sağlar"
 
-#: src/game_preferences_display.cpp:320
+#: src/game_preferences_display.cpp:321
 msgid "Units move and fight speed"
 msgstr "Birimlerin hareket ve döğüş hızı"
 
-#: src/game_preferences_display.cpp:323
+#: src/game_preferences_display.cpp:324
 msgid "Show unit idle animations"
 msgstr "Boştaki birimleri canlandırır"
 
-#: src/game_preferences_display.cpp:329
+#: src/game_preferences_display.cpp:330
 msgid "Set the frequency of unit idle animations"
 msgstr "Boştaki birim canlandırmalarının sıklığını ayarlar"
 
-#: src/game_preferences_display.cpp:334
+#: src/game_preferences_display.cpp:335
 msgid "Set maximum number of automatic saves to be retained"
 msgstr "Kendiliğinden yapılan kayıtların azami sayısını ayarla"
 
-#: src/game_preferences_display.cpp:338
+#: src/game_preferences_display.cpp:339
 msgid "Do not animate AI units moving"
 msgstr "Saldırı Arayüzü birimlerinin hareketleri canlandırılmaz"
 
-#: src/game_preferences_display.cpp:346
+#: src/game_preferences_display.cpp:347
 msgid "Overlay a grid onto the map"
 msgstr "Haritanın üzerine bir ızgara yerleştirir"
 
-#: src/game_preferences_display.cpp:349
+#: src/game_preferences_display.cpp:350
 msgid "Sort the player list in the lobby by player groups"
 msgstr "Salondaki oyuncuların listesini oyuncu gruplarına göre listeler"
 
-#: src/game_preferences_display.cpp:352
+#: src/game_preferences_display.cpp:353
 msgid "Show icons in front of the player names in the lobby."
 msgstr "Salondaki oyuncu isimlerinin önünde simge gösterir."
 
-#: src/game_preferences_display.cpp:355
+#: src/game_preferences_display.cpp:356
+msgid "Uncheck to delete the saved password (on exit)."
+msgstr ""
+
+#: src/game_preferences_display.cpp:359
 msgid "Do not show messages about players joining the multiplayer lobby"
 msgstr "Çokoyuncu salonuna giren oyuncular hakkındaki iletileri göstermez"
 
-#: src/game_preferences_display.cpp:357
+#: src/game_preferences_display.cpp:361
 msgid "Show messages about your friends joining the multiplayer lobby"
 msgstr "ÇO salonuna giren arkadaşlarla ilgili iletiler gösterilir."
 
-#: src/game_preferences_display.cpp:359
+#: src/game_preferences_display.cpp:363
 msgid "Show messages about all players joining the multiplayer lobby"
 msgstr "ÇO salonuna giren tüm oyuncularla ilgili iletiler gösterilir."
 
-#: src/game_preferences_display.cpp:361
+#: src/game_preferences_display.cpp:365
 msgid "Find and set path to MP server to host LAN games."
 msgstr "Ağ oyunlarını sunacak ÇO sunucu için dosya yolunu tanımlar veya bulur."
 
-#: src/game_preferences_display.cpp:362
+#: src/game_preferences_display.cpp:366
 msgid "View and edit your friends and ignores list"
 msgstr ""
 "Arkadaşlar ve gözardı edilenler listeleriniz gösterilir ve düzenlenebilir"
 
-#: src/game_preferences_display.cpp:363
+#: src/game_preferences_display.cpp:367
 msgid "Back to the multiplayer options"
 msgstr "Çok Oyuncu seçeneklerine geri dönülür"
 
-#: src/game_preferences_display.cpp:364
+#: src/game_preferences_display.cpp:368
 msgid "Add this username to your friends list"
 msgstr "Bu kullanıcı adı arkadaşlar listenize eklenir"
 
-#: src/game_preferences_display.cpp:365
+#: src/game_preferences_display.cpp:369
 msgid "Add this username to your ignores list"
 msgstr "Bu kullanıcı adı gözardı edilenler listenize eklenir"
 
-#: src/game_preferences_display.cpp:366
+#: src/game_preferences_display.cpp:370
 msgid "Remove this username from your list"
 msgstr "Bu kullanıcı adı listenizden silinir"
 
-#: src/game_preferences_display.cpp:369
+#: src/game_preferences_display.cpp:373
 msgid "Insert a username"
 msgstr "Bir kullanıcı adını yerleştirir"
 
-#: src/game_preferences_display.cpp:372
+#: src/game_preferences_display.cpp:376
 msgid "Show text above a unit when it is hit to display damage inflicted"
 msgstr ""
 "Bir birim darbe aldığında üzerinde aldığı hasarı gösteren bir yazı göster"
 
-#: src/game_preferences_display.cpp:374
+#: src/game_preferences_display.cpp:378
 msgid "Change the resolution the game runs at"
 msgstr "Oyunun çalıştığı çözünürlüğü değiştirir"
 
-#: src/game_preferences_display.cpp:375
+#: src/game_preferences_display.cpp:379
 msgid "Change the theme the game runs with"
 msgstr "Oyunun çalıştığı temayı değiştirir"
 
-#: src/game_preferences_display.cpp:378
+#: src/game_preferences_display.cpp:382
 msgid "Display a dialog at the beginning of your turn"
 msgstr "Sıranız geldiğinde bir uyarı gösterir"
 
-#: src/game_preferences_display.cpp:381
+#: src/game_preferences_display.cpp:385
 msgid "Play a bell sound at the beginning of your turn"
 msgstr "Sıranız geldiğinde bir gong sesi duyulur"
 
-#: src/game_preferences_display.cpp:384
+#: src/game_preferences_display.cpp:388
 msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
@@ -1308,89 +1312,89 @@ msgstr ""
 "Her birimin bastığı yerin etrafında hangi taraftan olduğunu belli eden "
 "renkli bir çember gösterilir"
 
-#: src/game_preferences_display.cpp:387
+#: src/game_preferences_display.cpp:391
 msgid "Choose whether the sun moves left-to-right or right-to-left"
 msgstr "Güneşin soldan sağa mı sağdan sola mı hareket edeceğini seçer"
 
-#: src/game_preferences_display.cpp:390
+#: src/game_preferences_display.cpp:394
 msgid "Use colored mouse cursors (may be slower)"
 msgstr "Renkli fare imleçleri kullanılır (yavaşlatabilir)"
 
-#: src/game_preferences_display.cpp:393
+#: src/game_preferences_display.cpp:397
 msgid "Use graphical special effects (may be slower)"
 msgstr "Görsel özel efektler kullanılır (yavaşlatabilir)"
 
-#: src/game_preferences_display.cpp:395
+#: src/game_preferences_display.cpp:399
 msgid "View and configure keyboard shortcuts"
 msgstr "Klavye kısayolları gösterilir ve değiştirilir"
 
-#: src/game_preferences_display.cpp:691
+#: src/game_preferences_display.cpp:701
 msgid "Speed: "
 msgstr "Hız: "
 
-#: src/game_preferences_display.cpp:696 src/game_preferences_display.cpp:698
+#: src/game_preferences_display.cpp:706 src/game_preferences_display.cpp:708
 msgid "Maximum Auto-Saves: "
 msgstr "Azami Kayıt Sayısı: "
 
-#: src/game_preferences_display.cpp:696
+#: src/game_preferences_display.cpp:706
 msgid "infinite"
 msgstr "sonsuz"
 
-#: src/game_preferences_display.cpp:880
+#: src/game_preferences_display.cpp:892
 msgid "Chat Lines: "
 msgstr "Yazışma Satırları: "
 
-#: src/game_preferences_display.cpp:902 src/game_preferences_display.cpp:910
+#: src/game_preferences_display.cpp:914 src/game_preferences_display.cpp:922
 msgid "Invalid username"
 msgstr "Geçersiz kullanıcı adı"
 
-#: src/game_preferences_display.cpp:982
+#: src/game_preferences_display.cpp:994
 msgid "yes"
 msgstr "evet"
 
-#: src/game_preferences_display.cpp:984
+#: src/game_preferences_display.cpp:996
 msgid "no"
 msgstr "hayır"
 
-#: src/game_preferences_display.cpp:1017
+#: src/game_preferences_display.cpp:1029
 msgid "(empty list)"
 msgstr "(boş liste)"
 
-#: src/game_preferences_display.cpp:1137
+#: src/game_preferences_display.cpp:1150
 msgid "Prefs section^General"
 msgstr "Genel"
 
-#: src/game_preferences_display.cpp:1138
+#: src/game_preferences_display.cpp:1151
 msgid "Prefs section^Display"
 msgstr "Görüntü"
 
-#: src/game_preferences_display.cpp:1139
+#: src/game_preferences_display.cpp:1152
 msgid "Prefs section^Sound"
 msgstr "Ses"
 
-#: src/game_preferences_display.cpp:1140
+#: src/game_preferences_display.cpp:1153
 msgid "Prefs section^Multiplayer"
 msgstr "Çok Oyunculu"
 
-#: src/game_preferences_display.cpp:1141
+#: src/game_preferences_display.cpp:1154
 msgid "Advanced section^Advanced"
 msgstr "Gelişmiş"
 
-#: src/game_preferences_display.cpp:1176
+#: src/game_preferences_display.cpp:1189
 msgid "Saved Theme Preference: "
 msgstr "Kayıtlı Tema Tercihleri: "
 
-#: src/game_preferences_display.cpp:1182
+#: src/game_preferences_display.cpp:1195
 msgid "New theme will take effect on next new or loaded game."
 msgstr ""
 "Yeni tema bir sonraki yeni oyunda ya da yüklenen oyunda etkili olmaya "
 "başlayacak."
 
-#: src/game_preferences_display.cpp:1186
+#: src/game_preferences_display.cpp:1199
 msgid "No known themes. Try changing from within an existing game."
 msgstr "Bilinen bir tema yok. Mevcut bir oyunun içinden değiştirmeyi deneyin."
 
-#: src/game_preferences_display.cpp:1228
+#: src/game_preferences_display.cpp:1241
 msgid "Find $filename server binary to host networked games"
 msgstr "Ağ oyunlarını sunacak $filename sunucu çalıştırılabilirini bulur."
 

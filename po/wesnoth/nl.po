@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-02-12 12:16+0100\n"
+"POT-Creation-Date: 2009-02-15 12:27+0100\n"
 "PO-Revision-Date: 2009-02-12 17:23+0100\n"
 "Last-Translator: Alexander van Gessel (AI/AI0867) <AI0867@gmail.com>\n"
 "Language-Team: Dutch translation <foppe.benedictus@gmail.com>\n"
@@ -6796,8 +6796,8 @@ msgstr "Einde scenario"
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=label-hp
 #: data/themes/default.cfg:212 data/themes/dfool.cfg:232
-#: data/themes/experimental.cfg:181 src/menu_events.cpp:203 src/unit.cpp:2564
-#: src/unit.cpp:2738
+#: data/themes/experimental.cfg:181 src/menu_events.cpp:203 src/unit.cpp:2563
+#: src/unit.cpp:2737
 msgid "HP"
 msgstr "HP"
 
@@ -8630,18 +8630,14 @@ msgid "Server-side redirect loop"
 msgstr "Server-side verwijzingslus"
 
 #: src/multiplayer.cpp:335
-msgid "Unknown error."
-msgstr "Onbekende error."
-
-#: src/multiplayer.cpp:337
 msgid "You must login first."
 msgstr "Je moet eerst inloggen."
 
-#: src/multiplayer.cpp:339
+#: src/multiplayer.cpp:337
 msgid "The nick '$nick' is already taken."
 msgstr "De bijnaam '$nick' is al in gebruik."
 
-#: src/multiplayer.cpp:341
+#: src/multiplayer.cpp:339
 msgid ""
 "The nick '$nick' contains invalid characters. Only alpha-numeric characters, "
 "underscores and hyphens are allowed."
@@ -8649,21 +8645,21 @@ msgstr ""
 "De bijnaam '$nick' bevat ongeldige karakters. Alleen alpha-numerieke "
 "karakters, underscores ('_') en hyphens ('-') zijn toegestaan."
 
-#: src/multiplayer.cpp:345
+#: src/multiplayer.cpp:343
 msgid "The nick '$nick' is too long. Nicks must be 18 characters or less."
 msgstr ""
 "De bijnaam '$nick' is te lang. Bijnamen moeten 18 karakters of minder zijn."
 
-#: src/multiplayer.cpp:348
+#: src/multiplayer.cpp:346
 msgid "The nick '$nick' is reserved and cannot be used by players."
 msgstr ""
 "De bijnaam '$nick' is gereserveerd en kan niet door spelers worden gebruikt."
 
-#: src/multiplayer.cpp:350 src/multiplayer.cpp:352
+#: src/multiplayer.cpp:348 src/multiplayer.cpp:350
 msgid "The nick '$nick' is registered on this server."
 msgstr "De bijnaam '$nick' is geregistreerd op deze server."
 
-#: src/multiplayer.cpp:353
+#: src/multiplayer.cpp:351
 msgid ""
 "WARNING: There is already a client using this nick, logging in will cause "
 "that client to be kicked!"
@@ -8671,13 +8667,13 @@ msgstr ""
 "WAARSCHUWING: Er is al een gebruiker met deze bijnaam, inloggen zal deze van "
 "de server verwijderen!"
 
-#: src/multiplayer.cpp:356
+#: src/multiplayer.cpp:354
 #, fuzzy
 msgid ""
 "Error in the login procedure (the server had no seed for your connection)."
 msgstr "Fout in de login procedure."
 
-#: src/multiplayer.cpp:359
+#: src/multiplayer.cpp:357
 msgid "The password you provided was incorrect."
 msgstr "Het wachtwoord dat je hebt ingevuld was niet correct."
 
@@ -9618,31 +9614,31 @@ msgstr "Onbekende eenheid '$type|' tijdens het genereren van de kenmerken"
 msgid "Unknown unit type '$type|'"
 msgstr "Onbekende eenheid '$type|'"
 
-#: src/unit.cpp:2521 src/unit.cpp:2726 src/unit.cpp:2782
+#: src/unit.cpp:2520 src/unit.cpp:2725 src/unit.cpp:2781
 msgid " and "
 msgstr " en "
 
-#: src/unit.cpp:2532
+#: src/unit.cpp:2531
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/unit.cpp:2597
+#: src/unit.cpp:2596
 msgid "moves"
 msgstr "zetten"
 
-#: src/unit.cpp:2615 src/unit.cpp:2753
+#: src/unit.cpp:2614 src/unit.cpp:2752
 msgid "XP to advance"
 msgstr "XP om te promoveren"
 
-#: src/unit.cpp:2745
+#: src/unit.cpp:2744
 msgid " move"
 msgstr " zet"
 
-#: src/unit.cpp:2761
+#: src/unit.cpp:2760
 msgid "$effect_description per level"
 msgstr "$effect_description per level"
 
-#: src/unit.cpp:2791
+#: src/unit.cpp:2790
 msgid "$trait_name|: $trait_description "
 msgstr "$trait_name|: $trait_description "
 
@@ -9723,6 +9719,9 @@ msgstr "Help ons Wesnoth te verbeteren!"
 #: src/upload_log.cpp:332
 msgid "Enable summary uploads"
 msgstr "Samenvattingen uploaden aan"
+
+#~ msgid "Unknown error."
+#~ msgstr "Onbekende error."
 
 #~ msgid "- King Konrad, 552YW"
 #~ msgstr "- Koning Konrad, 552YW"
