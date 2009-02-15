@@ -382,7 +382,8 @@ bool ai::recruit_usage(const std::string& usage)
 			" units in question! Removing invalid"
 			" recruitment_pattern entry and continuing...\n";
 		WRN_AI << warning;
-		lg::wml_error << warning;
+		// Uncommented until the recruitment limiting macro can be fixed to not trigger this warning.
+		//lg::wml_error << warning;
 		return current_team().remove_recruitment_pattern_entry(usage);
 	}
 	return false;
