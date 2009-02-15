@@ -35,7 +35,7 @@ if(!isset($_GET['package'])){
 }
 
 if(!isset($_GET['version'])){
-	$version = 'branch';
+	$version = 'trnuk';
 }else{
 	$version = $_GET['version'];
 }
