@@ -731,7 +731,7 @@ protected:
 	 */
 	struct draw_order
 	{
-		bool operator()(const map_location& lhs, const map_location& rhs)
+		bool operator()(const map_location& lhs, const map_location& rhs) const
 		{
 			return lhs.y < rhs.y || (lhs.y == rhs.y && lhs.x < rhs.x);
 		}
