@@ -1098,9 +1098,9 @@ unsigned tgrid::column_use_horizontal_scrollbar(
 		const tpoint size(cell.get_best_size());
 
 		if(required_width == 0
-				|| static_cast<size_t>(size.y) > required_width) {
+				|| static_cast<size_t>(size.x) > required_width) {
 
-			required_width = size.y;
+			required_width = size.x;
 		}
 	}
 
