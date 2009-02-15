@@ -45,7 +45,15 @@ namespace {
 std::string get_child_id(
 		const std::string& parent_id, const unsigned row, const unsigned col)
 {
-	return (formatter() << parent_id << "_C_" << row << '_' << col).c_str();
+	// Originally used this formatter function but it managed to return empty
+	// trings. No idea why so switched to using the good old lexical_cast
+	// instead.
+//	return (formatter() << parent_id << "_C_" << row << '_' << col).c_str();
+	std::string result = parent_id + "_C_"
+			+ lexical_cast<std::string>(row) + '_'
+			+ lexical_cast<std::string>(col);
+
+	return result;
 }
 
 /**
@@ -179,6 +187,7 @@ void tdebug_layout_graph::generate_dot_file(
 void tdebug_layout_graph::widget_generate_info(std::ostream& out,
 		const twidget* widget, const std::string& id, const bool embedded) const
 {
+	assert(!id.empty());
 
 	out << "\t" << id
 		<< " [label=<<table border=\"0\" cellborder=\"1\" cellspacing=\"0\">";
@@ -385,6 +394,8 @@ void tdebug_layout_graph::widget_generate_size_info(
 void tdebug_layout_graph::grid_generate_info(std::ostream& out,
 		const tgrid* grid, const std::string& parent_id) const
 {
+	assert(!parent_id.empty());
+
 	// maybe change the order to links, child, widgets so the output of the
 	// dot file might look better.
 
@@ -433,6 +444,7 @@ void tdebug_layout_graph::grid_generate_info(std::ostream& out,
 void tdebug_layout_graph::child_generate_info(std::ostream& out,
 		const tgrid::tchild& child, const std::string& id) const
 {
+	assert(!id.empty());
 
 	unsigned flags = child.get_flags();
 
