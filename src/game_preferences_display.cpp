@@ -353,6 +353,7 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	iconize_list_button_.set_help_string(_("Show icons in front of the player names in the lobby."));
 
 	remember_pw_button_.set_check(remember_password());
+	remember_pw_button_.set_help_string(_("Uncheck to delete the saved password (on exit)."));
 
 	show_lobby_joins_button1_.set_check(lobby_joins() == SHOW_NONE);
 	show_lobby_joins_button1_.set_help_string(_("Do not show messages about players joining the multiplayer lobby"));
