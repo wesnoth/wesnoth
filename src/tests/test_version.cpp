@@ -70,6 +70,10 @@ BOOST_AUTO_TEST_CASE( test_version_info )
 	}
 
 	BOOST_CHECK( insanity_test );
+
+	version_info somewhat_complex("1.5.10-1.6beta2");
+
+	BOOST_CHECK( somewhat_complex.major_version() == 1 && somewhat_complex.minor_version() == 5 && somewhat_complex.revision_level() == 10 && somewhat_complex.special_version() == "1.6beta2" && somewhat_complex.special_version_separator() == '-' );
 }
 
 BOOST_AUTO_TEST_SUITE_END()
