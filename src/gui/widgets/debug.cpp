@@ -437,8 +437,9 @@ void tdebug_layout_graph::child_generate_info(std::ostream& out,
 	unsigned flags = child.get_flags();
 
 	out << "\t" << id
-		<< " [style=\"\", label=<<table border=\"0\" cellborder=\"1\" cellspacing=\"0\">";
-	out << "<tr><td>"
+		<< " [style=\"\", label=<<table border=\"0\" "
+			"cellborder=\"1\" cellspacing=\"0\">\n";
+	out << "<tr><td>\n"
 		<< "vertical flag=";
 
 	switch(flags & tgrid::VERTICAL_MASK) {
@@ -452,8 +453,8 @@ void tdebug_layout_graph::child_generate_info(std::ostream& out,
 				<< ")";
 	}
 
-	out	<< "</td></tr>"
-		<< "<tr><td>"
+	out	<< "\n</td></tr>\n"
+		<< "<tr><td>\n"
 		<< "horizontal flag=";
 
 	switch(flags & tgrid::HORIZONTAL_MASK) {
@@ -467,8 +468,8 @@ void tdebug_layout_graph::child_generate_info(std::ostream& out,
 				<< ")";
 	}
 
-	out	<< "</td></tr>"
-		<< "<tr><td>"
+	out	<< "\n</td></tr>\n"
+		<< "<tr><td>\n"
 		<< "border location=";
 
 	if((flags & tgrid::BORDER_ALL) == 0) {
@@ -489,10 +490,10 @@ void tdebug_layout_graph::child_generate_info(std::ostream& out,
 		out << result;
 	}
 
-	out	<< "</td></tr>"
-		<< "<tr><td>"
+	out	<< "\n</td></tr>\n"
+		<< "<tr><td>\n"
 		<< "border_size="<< child.get_border_size()
-		<< "</td></tr>";
+		<< "\n</td></tr>\n";
 
 	out << "</table>>];\n";
 }
