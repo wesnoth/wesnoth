@@ -759,10 +759,9 @@ int unit_animation::get_begin_time() const
 
 void unit_animation::start_animation(int start_time,const map_location &src, const map_location &dst, bool cycles, const std::string text, const Uint32 text_color,const bool accelerate)
 {
-		unit_anim_.accelerate = accelerate;
-		src_ = src;
-		dst_ = dst;
-		new_animation_frame();
+	unit_anim_.accelerate = accelerate;
+	src_ = src;
+	dst_ = dst;
 	unit_anim_.start_animation(start_time, cycles);
 	if(!text.empty()) {
 		particule crude_build;
@@ -949,7 +948,6 @@ void unit_animator::wait_until(int animation_time) const
 			static_cast<int>((animation_time - get_animation_time()) * speed))));
 	}
 	disp->delay(std::max<int>(0,end_tick - SDL_GetTicks() +5));
-	new_animation_frame();
 }
 void unit_animator::wait_for_end() const
 {

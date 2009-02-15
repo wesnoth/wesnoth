@@ -267,7 +267,7 @@ void game_display::pre_draw() {
 	// * case of no unit in neighbour hex=> no propagation
 	// * case of unit in hex but was there last turn=>its hexes are invalidated too
 	// * case of unit inhex not there last turn => it moved, so was invalidated previously
-	// invalidate_animations();
+	//invalidate_animations();
 	process_reachmap_changes();
 	/**
 	 * @todo FIXME: must modify changed, but best to do it at the
@@ -901,6 +901,7 @@ void game_display::invalidate_animations_location(const map_location& loc) {
 
 void game_display::invalidate_animations()
 {
+	new_animation_frame();
 	display::invalidate_animations();
 	unit_map::iterator unit;
 	for(unit=units_.begin() ; unit != units_.end() ; unit++)
@@ -918,7 +919,6 @@ void game_display::invalidate_animations()
 			new_inval |=temp_unit_->invalidate(temp_unit_loc_);
 		}
 	}
-	new_animation_frame();
 }
 
 void game_display::debug_highlight(const map_location& loc, fixed_t amount)
