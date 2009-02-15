@@ -4,6 +4,8 @@ changelog: http://svn.gna.org/viewcvs/*checkout*/wesnoth/trunk/changelog
 
 Version 1.5.9+svn:
   * Campaigns
+    * The South Guard
+      * Made 'Into the Depths' a bit easier.
     * Under the Burning Suns
       * Fixed a crash due to double-advancement of dehydrated units
         in scenario 2.
@@ -16,15 +18,21 @@ Version 1.5.9+svn:
       Naga Fighter, Naga Myrmidon.
     * New idle animations: Dwarvish Thunderer, Naga Fighter.
     * Rewrote the rendering engine which should fix the drawing order.
+    * New graphical variations for the water villages.
     
   * Language and translations
-    * new translations: Marathi
-    * updated translations: British English, Dutch, French, German, Hungarian,
+    * New translations: Marathi.
+    * Updated translations: British English, Dutch, French, German, Hungarian,
       Italian, Russian, Slovenian, Spanish, Swedish.
     
   * Multiplayer
     * Updated maps: Clash, Cynsaun Battlefield, Den of Onis, Silverhead Crossing,
       Howling Ghost Badlands, The Wilderlands, Forest of Fear.
+      
+  * Terrains
+    * Enabled mixed deciduous-pine forest terrains.
+    * Forested hills variations now available for the deciduous and mixed
+      forests.
 
   * User interface
     * Removed the gamma correction option.
