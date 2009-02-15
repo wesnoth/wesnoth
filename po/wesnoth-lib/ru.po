@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-lib.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-02-15 12:28+0100\n"
+"POT-Creation-Date: 2009-02-15 20:44+0100\n"
 "PO-Revision-Date: 2008-03-02 01:14+0300\n"
 "Last-Translator: vicza <vicza@zmail.ru>\n"
 "Language-Team:  <http://bugs.wesnoth.org>\n"
@@ -139,8 +139,10 @@ msgid "Oasis"
 msgstr "Оазис"
 
 #. [terrain]: id=snow_forest
-#. [terrain]: id=deciduous_forest_winter
-#: data/core/terrain.cfg:405 data/core/terrain.cfg:465
+#. [terrain]: id=deciduous_forest_winter_snow
+#. [terrain]: id=mixed_forest_winter_snow
+#: data/core/terrain.cfg:405 data/core/terrain.cfg:475
+#: data/core/terrain.cfg:516
 msgid "Snow Forest"
 msgstr "Снежный лес"
 
@@ -152,12 +154,14 @@ msgstr "Большое дерево"
 #. [terrain]: id=forest
 #. [terrain]: id=deciduous_forest_summer
 #. [terrain]: id=deciduous_forest_fall
+#. [terrain]: id=deciduous_forest_winter
 #. [terrain]: id=mixed_forest_summer
 #. [terrain]: id=mixed_forest_fall
 #. [terrain]: id=mixed_forest_winter
 #: data/core/terrain.cfg:426 data/core/terrain.cfg:445
-#: data/core/terrain.cfg:455 data/core/terrain.cfg:476
+#: data/core/terrain.cfg:455 data/core/terrain.cfg:465
 #: data/core/terrain.cfg:486 data/core/terrain.cfg:496
+#: data/core/terrain.cfg:506
 msgid "Forest"
 msgstr "Лес"
 
@@ -167,13 +171,25 @@ msgid "Tropical Forest"
 msgstr "Тропический лес"
 
 #. [terrain]: id=forested_hills
-#: data/core/terrain.cfg:511
+#. [terrain]: id=deciduous_forest_summer_hills
+#. [terrain]: id=deciduous_forest_fall_hills
+#. [terrain]: id=deciduous_forest_winter_hills
+#. [terrain]: id=mixed_forest_summer_hills
+#. [terrain]: id=mixed_forest_fall_hills
+#. [terrain]: id=mixed_forest_winter_hills
+#: data/core/terrain.cfg:531 data/core/terrain.cfg:551
+#: data/core/terrain.cfg:561 data/core/terrain.cfg:571
+#: data/core/terrain.cfg:591 data/core/terrain.cfg:601
+#: data/core/terrain.cfg:611
 #, fuzzy
 msgid "Forested Hills"
 msgstr "Лес"
 
 #. [terrain]: id=forested_snow_hills
-#: data/core/terrain.cfg:521
+#. [terrain]: id=deciduous_forest_winter_snow_hills
+#. [terrain]: id=mixed_forest_winter_snow_hills
+#: data/core/terrain.cfg:541 data/core/terrain.cfg:581
+#: data/core/terrain.cfg:621
 #, fuzzy
 msgid "Forested Snow Hills"
 msgstr "Заснеженные холмы"
@@ -181,104 +197,104 @@ msgstr "Заснеженные холмы"
 #. [terrain]: id=grassland
 #. [terrain]: id=grassland_flowers
 #. [terrain]: id=windmill
-#: data/core/terrain.cfg:535 data/core/terrain.cfg:544
-#: data/core/terrain.cfg:553
+#: data/core/terrain.cfg:635 data/core/terrain.cfg:644
+#: data/core/terrain.cfg:653
 msgid "Grassland"
 msgstr "Луг"
 
 #. [terrain]: id=savanna
-#: data/core/terrain.cfg:562
+#: data/core/terrain.cfg:662
 msgid "Savanna"
 msgstr "Саванна"
 
 #. [terrain]: id=snow_hills
-#: data/core/terrain.cfg:575
+#: data/core/terrain.cfg:675
 msgid "Snow Hills"
 msgstr "Заснеженные холмы"
 
 #. [terrain]: id=desert_hills
-#: data/core/terrain.cfg:585
+#: data/core/terrain.cfg:685
 msgid "Dunes"
 msgstr "Дюны"
 
 #. [terrain]: id=hills
-#: data/core/terrain.cfg:595
+#: data/core/terrain.cfg:695
 msgid "Hills"
 msgstr "Холмы"
 
 #. [terrain]: id=desert_mountains
 #. [terrain]: id=mountains
 #. [terrain]: id=snow_mountains
-#: data/core/terrain.cfg:607 data/core/terrain.cfg:616
-#: data/core/terrain.cfg:624
+#: data/core/terrain.cfg:707 data/core/terrain.cfg:716
+#: data/core/terrain.cfg:724
 msgid "Mountains"
 msgstr "Горы"
 
 #. [terrain]: id=canyon
-#: data/core/terrain.cfg:638
+#: data/core/terrain.cfg:738
 msgid "Chasm"
 msgstr "Пропасть"
 
 #. [terrain]: id=lava_chasm
-#: data/core/terrain.cfg:647
+#: data/core/terrain.cfg:747
 msgid "Lava chasm"
 msgstr "Пропасть с лавой"
 
 #. [terrain]: id=lava
-#: data/core/terrain.cfg:657
+#: data/core/terrain.cfg:757
 msgid "Lava"
 msgstr "Лава"
 
 #. [terrain]: id=road
 #. [terrain]: id=stone_path
-#: data/core/terrain.cfg:671 data/core/terrain.cfg:689
-#: data/core/terrain.cfg:698
+#: data/core/terrain.cfg:771 data/core/terrain.cfg:789
+#: data/core/terrain.cfg:798
 msgid "Road"
 msgstr "Дорога"
 
 #. [terrain]: id=dirt
-#: data/core/terrain.cfg:680
+#: data/core/terrain.cfg:780
 msgid "Dirt"
 msgstr "Грязь"
 
 #. [terrain]: id=farm
-#: data/core/terrain.cfg:707
+#: data/core/terrain.cfg:807
 msgid "Farmland"
 msgstr "Фермы"
 
 #. [terrain]: id=swamp_water
-#: data/core/terrain.cfg:721
+#: data/core/terrain.cfg:821
 msgid "Swamp"
 msgstr "Болото"
 
 #. [terrain]: id=lit
-#: data/core/terrain.cfg:735
+#: data/core/terrain.cfg:835
 msgid "Lit"
 msgstr ""
 
 #. [terrain]: id=cave
-#: data/core/terrain.cfg:745
+#: data/core/terrain.cfg:845
 msgid "Cave"
 msgstr "Пещера"
 
 #. [terrain]: id=cave_path
-#: data/core/terrain.cfg:763
+#: data/core/terrain.cfg:863
 #, fuzzy
 msgid "Cave path"
 msgstr "Освещенная пещера"
 
 #. [terrain]: id=fungus
-#: data/core/terrain.cfg:772
+#: data/core/terrain.cfg:872
 msgid "Mushroom Grove"
 msgstr "Грибная роща"
 
 #. [terrain]: id=fungus_beam
-#: data/core/terrain.cfg:781
+#: data/core/terrain.cfg:881
 msgid "Mushroom Grove Lit"
 msgstr "Освещённая грибная роща"
 
 #. [terrain]: id=rocky_cave
-#: data/core/terrain.cfg:792
+#: data/core/terrain.cfg:892
 msgid "Rockbound Cave"
 msgstr "Каменистая пещера"
 
@@ -302,87 +318,87 @@ msgstr "Каменистая пещера"
 #. [terrain]: id=mermen_village
 #. [terrain]: id=swamp_village
 #. [terrain]: id=swamp_merfolk-village
-#: data/core/terrain.cfg:819 data/core/terrain.cfg:830
-#: data/core/terrain.cfg:843 data/core/terrain.cfg:854
-#: data/core/terrain.cfg:867 data/core/terrain.cfg:878
-#: data/core/terrain.cfg:888 data/core/terrain.cfg:899
-#: data/core/terrain.cfg:910 data/core/terrain.cfg:922
-#: data/core/terrain.cfg:933 data/core/terrain.cfg:944
-#: data/core/terrain.cfg:955 data/core/terrain.cfg:968
-#: data/core/terrain.cfg:979 data/core/terrain.cfg:990
-#: data/core/terrain.cfg:1001 data/core/terrain.cfg:1012
-#: data/core/terrain.cfg:1023 data/core/terrain.cfg:1034
-#: data/core/terrain.cfg:1047 data/core/terrain.cfg:1062
-#: data/core/terrain.cfg:1073
+#: data/core/terrain.cfg:919 data/core/terrain.cfg:930
+#: data/core/terrain.cfg:943 data/core/terrain.cfg:954
+#: data/core/terrain.cfg:967 data/core/terrain.cfg:978
+#: data/core/terrain.cfg:988 data/core/terrain.cfg:999
+#: data/core/terrain.cfg:1010 data/core/terrain.cfg:1022
+#: data/core/terrain.cfg:1033 data/core/terrain.cfg:1044
+#: data/core/terrain.cfg:1055 data/core/terrain.cfg:1068
+#: data/core/terrain.cfg:1079 data/core/terrain.cfg:1090
+#: data/core/terrain.cfg:1101 data/core/terrain.cfg:1112
+#: data/core/terrain.cfg:1123 data/core/terrain.cfg:1134
+#: data/core/terrain.cfg:1147 data/core/terrain.cfg:1162
+#: data/core/terrain.cfg:1173
 msgid "Village"
 msgstr "Деревня"
 
 #. [terrain]: id=deep_water
-#: data/core/terrain.cfg:1088
+#: data/core/terrain.cfg:1188
 msgid "Deep Water"
 msgstr "Глубокая вода"
 
 #. [terrain]: id=shallow_water
-#: data/core/terrain.cfg:1098
+#: data/core/terrain.cfg:1198
 msgid "Shallow Water"
 msgstr "Отмель"
 
 #. [terrain]: id=ford
-#: data/core/terrain.cfg:1108
+#: data/core/terrain.cfg:1208
 msgid "River Ford"
 msgstr "Брод"
 
 #. [terrain]: id=reef
-#: data/core/terrain.cfg:1119
+#: data/core/terrain.cfg:1219
 #, fuzzy
 msgid "Coastal Reef"
 msgstr "Береговой"
 
 #. [terrain]: id=cloud
-#: data/core/terrain.cfg:1133
+#: data/core/terrain.cfg:1233
 msgid "Impassable Mountains"
 msgstr "Непроходимые горы"
 
 #. [terrain]: id=clouddesert
-#: data/core/terrain.cfg:1142
+#: data/core/terrain.cfg:1242
 msgid "Impassable Desert Mountains"
 msgstr "Непроходимые пустынные горы"
 
 #. [terrain]: id=cavewall
-#: data/core/terrain.cfg:1151
+#: data/core/terrain.cfg:1251
 msgid "Cave Wall"
 msgstr "Стена пещеры"
 
 #. [terrain]: id=wall_stone
-#: data/core/terrain.cfg:1160
+#: data/core/terrain.cfg:1260
 #, fuzzy
 msgid "Wall"
 msgstr "Стена пещеры"
 
 #. [terrain]: id=impassable_overlay
 #. [terrain]: id=impassable
-#: data/core/terrain.cfg:1170 data/core/terrain.cfg:1208
+#: data/core/terrain.cfg:1270 data/core/terrain.cfg:1308
 #, fuzzy
 msgid "Impassable"
 msgstr "Непроходимые горы"
 
 #. [terrain]: id=void
-#: data/core/terrain.cfg:1181
+#: data/core/terrain.cfg:1281
 msgid "Void"
 msgstr "пусто"
 
 #. [terrain]: id=flat
-#: data/core/terrain.cfg:1194
+#: data/core/terrain.cfg:1294
 msgid "Flat"
 msgstr ""
 
 #. [terrain]: id=frozen
-#: data/core/terrain.cfg:1201
+#: data/core/terrain.cfg:1301
 msgid "Frozen"
 msgstr ""
 
 #. [terrain]: id=unwalkable
-#: data/core/terrain.cfg:1215
+#: data/core/terrain.cfg:1315
 msgid "Unwalkable"
 msgstr ""
 
