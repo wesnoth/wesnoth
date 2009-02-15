@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-02-12 12:16+0100\n"
-"PO-Revision-Date: 2009-02-02 11:05+0100\n"
-"Last-Translator: Foppe Benedictus <foppe.benedictus@gmail.com>\n"
+"PO-Revision-Date: 2009-02-12 17:23+0100\n"
+"Last-Translator: Alexander van Gessel (AI/AI0867) <AI0867@gmail.com>\n"
 "Language-Team: Dutch translation <foppe.benedictus@gmail.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -419,9 +419,8 @@ msgstr "Macedonische Vertaling"
 
 #. [about]
 #: data/core/about.cfg:1705
-#, fuzzy
 msgid "Marathi Translation"
-msgstr "Latijnse Vertaling"
+msgstr "Marathi Vertaling"
 
 #. [about]
 #: data/core/about.cfg:1714
@@ -8395,23 +8394,19 @@ msgid "Drop your nick."
 msgstr "Verwerp je bijnaam."
 
 #: src/menu_events.cpp:2158
-#, fuzzy
 msgid "Update details for your nick. For possible details see '/details'."
 msgstr ""
-"Vernieuw de details van uw gebruikersnaam. Voor mogelijke details, zie /"
-"details"
+"Vernieuw de details van uw bijnaam. Voor mogelijke details, zie '/details'."
 
 #: src/menu_events.cpp:2161
-#, fuzzy
 msgid "Request information about a nick."
-msgstr "Vraag informatie over een gebruiker op."
+msgstr "Vraag informatie over een bijnaam op."
 
 #: src/menu_events.cpp:2163
-#, fuzzy
 msgid "Request a list of details you can set for your registered nick."
 msgstr ""
 "Vraag een lijst aan van details die u kan zetten voor uw geregistreerde "
-"gebruikersnaam."
+"bijnaam."
 
 #: src/menu_events.cpp:2285
 msgid "Refresh gui."
@@ -8635,51 +8630,56 @@ msgid "Server-side redirect loop"
 msgstr "Server-side verwijzingslus"
 
 #: src/multiplayer.cpp:335
-#, fuzzy
 msgid "Unknown error."
-msgstr "Tijdperk niet gevonden"
+msgstr "Onbekende error."
 
 #: src/multiplayer.cpp:337
-#, fuzzy
 msgid "You must login first."
-msgstr "Je moet op deze server inloggen"
+msgstr "Je moet eerst inloggen."
 
 #: src/multiplayer.cpp:339
 msgid "The nick '$nick' is already taken."
-msgstr ""
+msgstr "De bijnaam '$nick' is al in gebruik."
 
 #: src/multiplayer.cpp:341
 msgid ""
 "The nick '$nick' contains invalid characters. Only alpha-numeric characters, "
 "underscores and hyphens are allowed."
 msgstr ""
+"De bijnaam '$nick' bevat ongeldige karakters. Alleen alpha-numerieke "
+"karakters, underscores ('_') en hyphens ('-') zijn toegestaan."
 
 #: src/multiplayer.cpp:345
 msgid "The nick '$nick' is too long. Nicks must be 18 characters or less."
 msgstr ""
+"De bijnaam '$nick' is te lang. Bijnamen moeten 18 karakters of minder zijn."
 
 #: src/multiplayer.cpp:348
 msgid "The nick '$nick' is reserved and cannot be used by players."
 msgstr ""
+"De bijnaam '$nick' is gereserveerd en kan niet door spelers worden gebruikt."
 
 #: src/multiplayer.cpp:350 src/multiplayer.cpp:352
 msgid "The nick '$nick' is registered on this server."
-msgstr ""
+msgstr "De bijnaam '$nick' is geregistreerd op deze server."
 
 #: src/multiplayer.cpp:353
 msgid ""
 "WARNING: There is already a client using this nick, logging in will cause "
 "that client to be kicked!"
 msgstr ""
+"WAARSCHUWING: Er is al een gebruiker met deze bijnaam, inloggen zal deze van "
+"de server verwijderen!"
 
 #: src/multiplayer.cpp:356
+#, fuzzy
 msgid ""
 "Error in the login procedure (the server had no seed for your connection)."
-msgstr ""
+msgstr "Fout in de login procedure."
 
 #: src/multiplayer.cpp:359
 msgid "The password you provided was incorrect."
-msgstr ""
+msgstr "Het wachtwoord dat je hebt ingevuld was niet correct."
 
 #: src/multiplayer_connect.cpp:82 src/multiplayer_connect.cpp:485
 #: src/multiplayer_connect.cpp:613
