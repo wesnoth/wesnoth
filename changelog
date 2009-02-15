@@ -13,24 +13,25 @@ Version 1.5.9+svn:
      Naga Fighter, Naga Myrmidon
    * New idle animations: Dwarvish Thunderer, Naga Fighter
    * New portrait for the Halberdier, dwarf Ulfserker line
-   * New merman village tile variations
    * Unit HP bar decrease progressively when unit gets hit
    * Rewrote the rendering engine which should fix the drawing order
  * Language and i18n:
    * new translations: Marathi
    * updated translations: British English, Dutch, French, German, Hungarian,
      Italian, Russian, Slovenian, Spanish, Swedish
- * Multiplayer:
+ * Multiplayer
+   * Added support for observers to pause and continue the game at any time
+   * Fixed bug #12896: Map generator does not sync between clients when
+     advancing in MP campaigns
    * Updated maps: 4p Clash.
+ * Terrains:
+   * Enabled mixed deciduous-pine forest terrains
+   * New merman village terrain variations
  * User interface:
    * Fixed an exception when certain characters weren't escaped
  * WML Engine
    * [replace_map] changes the map completely, changing the map size is 
      posible - off-map units go into the recall list
- * Multiplayer
-   * Added support for observers to pause and continue the game at any time
-   * Fixed bug #12896: Map generator does not sync between clients when
-     advancing in MP campaigns
  * Miscellaneous and bug fixes:
    * Fix bug #12946: [menu_item]/[command] losing function when called again
    * Fix flickering of units in the second part of the tutorial (bug #12923)
