@@ -2522,23 +2522,27 @@ boost::intrusive_ptr<ai_interface> ai_manager::get_ai( std::string ai_algo,
 // clean up is returned.
 int ai_manager::reap_ais()
 {
-  int counter = 0 ;
-  for( AINameMap::iterator itor = ais.begin() ; itor != ais.end() ; ++itor )
-    {
-      // Request the AI clean up after it self. If it does not which to
-      // be purged, it must return false. If it returns true, the AI
-      // is deleted from the AI map.
+	int counter = 0 ;
+	for( AINameMap::iterator itor = ais.begin() ; itor != ais.end() ; ++itor ) {
+		// Request the AI clean up after it self. If it does not which to
+		// be purged, it must return false. If it returns true, the AI
+		// is deleted from the AI map.
 
-	// TODO: currently if ais are not erased they maintain references to the current gamestate info,
-	// when we later try to reuse the ai, the dangling references are dereferenced... this is bad.
-	// See bug#13003 for more info.
-      if( itor->second->manager_reap_ai() || true)
-	{
-	  // Delete the AI from the managed map
-	  ais.erase( itor ) ;
-	  ++counter ;
+		// TODO: currently if ais are not erased they maintain references to
+		// the current gamestate info, when we later try to reuse the ai, the
+		// dangling references are dereferenced... this is bad.  See bug#13003
+		// for more info. For now disabled the if and made the condition
+		// unconditionally.
+		/*
+		   if( itor->second->manager_reap_ai()) {
+		   */		  
+		// Delete the AI from the managed map
+		ais.erase( itor ) ;
+		++counter ;
+		/*		
+				}
+				*/		
 	}
-    }
 
-  return counter ;
+	return counter ;
 }
