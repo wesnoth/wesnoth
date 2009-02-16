@@ -620,8 +620,6 @@ map_location ai_interface::move_unit_partial(location from, location to,
 
 			if(show_move && unit_display::unit_visible_on_path(steps,
 						u_it->second, info_.units,info_.teams)) {
-
-
 				info_.disp.display_unit_hex(from);
 
 				unit_map::iterator up = info_.units.find(u_it->first);
@@ -2530,7 +2528,11 @@ int ai_manager::reap_ais()
       // Request the AI clean up after it self. If it does not which to
       // be purged, it must return false. If it returns true, the AI
       // is deleted from the AI map.
-      if( itor->second->manager_reap_ai() )
+
+	// TODO: currently if ais are not erased they maintain references to the current gamestate info,
+	// when we later try to reuse the ai, the dangling references are dereferenced... this is bad.
+	// See bug#13003 for more info.
+      if( itor->second->manager_reap_ai() || true)
 	{
 	  // Delete the AI from the managed map
 	  ais.erase( itor ) ;
