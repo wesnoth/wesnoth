@@ -49,7 +49,7 @@ class tmp_login : public tdialog
 {
 public:
 	tmp_login(const t_string& label,
-		const bool& focus_password =false);
+		const bool focus_password = false);
 
 private:
 	/** Inherited from tdialog. */

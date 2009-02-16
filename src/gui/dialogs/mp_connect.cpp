@@ -205,7 +205,7 @@ void tmp_connect::show_server_list(twindow& window)
  * @end_table
  */
 
-tmp_login::tmp_login(const t_string& label,	const bool& focus_password) :
+tmp_login::tmp_login(const t_string& label,	const bool focus_password) :
 		label_(label), focus_password_(focus_password) { }
 
 twindow* tmp_login::build_window(CVideo& video)
