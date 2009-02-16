@@ -163,15 +163,14 @@ void show_about(display &disp, std::string campaign)
 {
 	cursor::set(cursor::WAIT);
 	CVideo &video = disp.video();
+	surface screen = video.getSurface();
+	if (screen == NULL) return;
+	
 	std::vector<std::string> text = about::get_text(campaign);
-	SDL_Rect rect = {0, 0, video.getx(), video.gety()};
+	SDL_Rect screen_rect = {0, 0, screen->w, screen->h};
 
-	const surface_restorer restorer(&video, rect);
+	const surface_restorer restorer(&video, screen_rect);
 
-	// Clear the screen
-	draw_solid_tinted_rectangle(0,0,video.getx()-1,video.gety()-1,
-	                                 0,0,0,1.0,video.getSurface());
-	update_whole_screen();
 	cursor::set(cursor::NORMAL);
 
 	std::vector<std::string> image_list;
@@ -180,21 +179,18 @@ void show_about(display &disp, std::string campaign)
 	}else{
 		image_list=utils::split(images_default,',',utils::STRIP_SPACES);
 	}
-	surface map_image(scale_surface(image::get_image(image_list[0]), disp.w(), disp.h()));
+	surface map_image(scale_surface(image::get_image(image_list[0]), screen->w, screen->h));
 	if(! map_image){
 		image_list[0]=game_config::game_title;
-		map_image=surface(scale_surface(image::get_image(image_list[0]), disp.w(), disp.h()));
+		map_image=surface(scale_surface(image::get_image(image_list[0]), screen->w, screen->h));
 	}
 
-	SDL_Rect map_rect;
-	map_rect.x = video.getx()/2 - map_image->w/2;
-	map_rect.y = video.gety()/2 - map_image->h/2;
-	map_rect.w = map_image->w;
-	map_rect.h = map_image->h;
-
 	gui::button close(video,_("Close"));
-	close.set_location((video.getx()/2)-(close.width()/2), video.gety() - 30);
+	close.set_location((screen->w/2)-(close.width()/2), screen->h - 30);
 	close.set_volatile(true);
+
+	const int def_size = font::SIZE_XLARGE;
+	const SDL_Color def_color = font::NORMAL_COLOUR;
 
 	//substitute in the correct control characters for '+' and '-'
 	std::string before_header(2, ' ');
@@ -215,45 +211,50 @@ void show_about(display &disp, std::string campaign)
 
 	int startline = 0;
 
-	// the following two lines should be changed if the image of the map is changed
-	const int top_margin = 60;		// distance from top of map image to top of scrolling text
-	const int bottom_margin = 40;	// distance from bottom of scrolling text to bottom of map image
+	//TODO: use values proportionnal to screen ?
+	// distance from top of map image to top of scrolling text
+	const int top_margin = 60;
+	// distance from bottom of scrolling text to bottom of map image		
+	const int bottom_margin = 40;
+	// distance from left of scrolling text to the frame border
+	const int text_left_padding = screen->w/32;
 
 	int offset = 0;
 	bool is_new_line = true;
 
 	int first_line_height = 0;
 
-	// the following rectangles define the top, middle and bottom of the background image
-	// the upper and lower part is later used to mask the upper and lower line of scrolling text
-	SDL_Rect upper_src = {0, 0, map_rect.w, top_margin};
-	SDL_Rect upper_dest = {map_rect.x, map_rect.y, map_rect.w, top_margin};
-	SDL_Rect middle_src = {0, top_margin, map_rect.w, map_rect.h - top_margin - bottom_margin};
-	SDL_Rect middle_dest = {map_rect.x, map_rect.y + top_margin, map_rect.w, map_rect.h - top_margin - bottom_margin};
-	SDL_Rect lower_src = {0, map_rect.h - bottom_margin, map_rect.w, bottom_margin};
-	SDL_Rect lower_dest = {map_rect.x, map_rect.y + map_rect.h - bottom_margin, map_rect.w, bottom_margin};
-
 	SDL_Rect frame_area = {
-		map_rect.x + map_rect.w * 3/32,
-		map_rect.y + top_margin,
-		map_rect.w * 13 / 16,
-		map_rect.h - top_margin - bottom_margin
+		screen->w * 3/32,
+		top_margin,
+		screen->w * 13 / 16,
+		screen->h - top_margin - bottom_margin
 	};
 
 	// we use a dialog to contains the text. Strange idea but at least the style
 	// will be consistent with the titlescreen
-	gui::dialog_frame f(disp.video(), "", gui::dialog_frame::titlescreen_style, false);
-	f.layout(frame_area);
+	gui::dialog_frame f(video, "", gui::dialog_frame::titlescreen_style, false);
+
+	// set the layout and get the interior rectangle
+	SDL_Rect text_rect = f.layout(frame_area).interior;
+	text_rect.x += text_left_padding;
+	text_rect.w -= text_left_padding;
+	// make a copy to prevent SDL_blit to change its w and h
+	SDL_Rect text_rect_blit = text_rect;
 
 	CKey key;
 	bool last_escape;
 
-	surface textbox = create_compatible_surface(video.getSurface(), middle_dest.w, middle_dest.h);
-	SDL_SetAlpha(textbox, SDL_RLEACCEL, SDL_ALPHA_OPAQUE);
-	bool recalculate_textbox = true;
+	surface text_surf = create_compatible_surface(screen, text_rect.w, text_rect.h);
+	SDL_SetAlpha(text_surf, SDL_RLEACCEL, SDL_ALPHA_OPAQUE);
 
-	int image_count=0;
-	int scroll_speed = 4;		// scroll_speed*50 = speed of scroll in pixel per second
+	int image_count = 0;
+	int scroll_speed = 4;	// scroll_speed*50 = speed of scroll in pixel per second
+
+	// initialy redraw all
+	bool redraw_mapimage = true;
+	int max_text_width = text_rect.w;
+
 	do {
 		last_escape = key[SDLK_ESCAPE] != 0;
 
@@ -263,43 +264,65 @@ void show_about(display &disp, std::string campaign)
 				static_cast<int>(text.size())))){
 
 			image_count++;
-			surface temp=surface(scale_surface(image::get_image(image_list[image_count]), disp.w(), disp.h()));
+			surface temp=surface(scale_surface(image::get_image(image_list[image_count]), screen->w, screen->h));
 			map_image=temp?temp:map_image;
-			recalculate_textbox = true;
+			redraw_mapimage = true;
 		}
 
-		if (recalculate_textbox) {
-			SDL_BlitSurface(map_image, &middle_src, video.getSurface(), &middle_dest);
+		if (redraw_mapimage) {
+			// draw map to screen, thus erasing all text
+			SDL_BlitSurface(map_image, NULL, screen, NULL);
+			update_rect(screen_rect);
+
+			// redraw the dialog
 			f.draw_background();
-			SDL_BlitSurface(video.getSurface(), &middle_dest, textbox, NULL);
-			recalculate_textbox = false;
+			f.draw_border();
+			// cache the dialog background (alpha blending + blurred map)
+			SDL_BlitSurface(screen, &text_rect, text_surf, NULL);
+			redraw_mapimage = false;
+		} else {
+			// redraw the saved part of the dialog where text scrolled
+			// thus erasing all text
+			SDL_Rect modified = {0,0, max_text_width, text_rect.h};
+			SDL_BlitSurface(text_surf, &modified, screen, &text_rect_blit);
+			update_rect(text_rect);
 		}
-		// draw map to screen, thus erasing all text
-		SDL_BlitSurface(textbox, NULL, video.getSurface(), &middle_dest);
 
-		// draw one screen full of text
 		const int line_spacing = 5;
-		int y = map_rect.y + top_margin - offset;
+
+		int y = text_rect.y - offset;
 		int line = startline;
 		int cur_line = 0;
+		max_text_width = 0;
 
-		do {
-			SDL_Rect tr = font::draw_text(&video,screen_area(),font::SIZE_XLARGE,font::NORMAL_COLOUR,
-					              text[line], map_rect.x + map_rect.w / 8,y);
+		{
+		// clip to keep text into the frame (thus the new code block)
+		clip_rect_setter set_clip_rect(screen, text_rect);
+			do {
+				// draw the text (with ellipsis if needed)
+				// update the max_text_width for future cleaning
+				int w = font::draw_text(&video, text_rect, def_size, def_color,
+										text[line], text_rect.x, y).w;
+				max_text_width = std::max<int>(max_text_width, w);
+				// since the real drawing on screen is clipped,
+				// we do a dummy one to get the height of the not clipped line.
+				// (each time because special format characters may change it)
+				const int line_height = font::draw_text(NULL, text_rect, def_size, def_color,
+										text[line], 0,0).h;
 
-			if(is_new_line) {
-				is_new_line = false;
-				first_line_height = tr.h + line_spacing;
-			}
-			line++;
-			if(size_t(line) > text.size()-1)
-				line = 0;
-			y += tr.h + line_spacing;
-			cur_line++;
-		} while(y<map_rect.y + map_rect.h - bottom_margin);
-
+				if(is_new_line) {
+					is_new_line = false;
+					first_line_height = line_height + line_spacing;
+				}
+				line++;
+				if(size_t(line) > text.size()-1)
+					line = 0;
+				y += line_height + line_spacing;
+				cur_line++;
+			} while(y < text_rect.y + text_rect.h);
+		}
+		
 		// performs the actual scrolling
-
 		offset += scroll_speed;
 		if (offset>=first_line_height) {
 			offset -= first_line_height;
@@ -311,16 +334,6 @@ void show_about(display &disp, std::string campaign)
 			}
 		}
 
-		// mask off the upper and lower half of the map,
-		// so text will scroll into view rather than
-		// suddenly appearing out of nowhere
-		SDL_BlitSurface(map_image,&upper_src,video.getSurface(),&upper_dest);
-		SDL_BlitSurface(map_image,&lower_src,video.getSurface(),&lower_dest);
-
-		// drawing the border (also fix small glitches on the sides)
-		// FIXME: a bit slow, need caching
-		f.draw_border();
-		
 		// handle events
 		if (key[SDLK_UP] && scroll_speed < 20) {
 			++scroll_speed;
@@ -333,14 +346,11 @@ void show_about(display &disp, std::string campaign)
 		events::raise_process_event();
 		events::raise_draw_event();
 
-		// update screen and wait, so the text does not scroll too fast
-		update_rect(map_rect);
-		close.set_dirty(true);
+		// flip screen and wait, so the text does not scroll too fast
 		disp.flip();
 		disp.delay(20);
 
 	} while(!close.pressed() && (last_escape || !key[SDLK_ESCAPE]));
-
 }
 
 } // end namespace about
