@@ -317,6 +317,10 @@ void show_about(display &disp, std::string campaign)
 		SDL_BlitSurface(map_image,&upper_src,video.getSurface(),&upper_dest);
 		SDL_BlitSurface(map_image,&lower_src,video.getSurface(),&lower_dest);
 
+		// drawing the border (also fix small glitches on the sides)
+		// FIXME: a bit slow, need caching
+		f.draw_border();
+		
 		// handle events
 		if (key[SDLK_UP] && scroll_speed < 20) {
 			++scroll_speed;
