@@ -1427,6 +1427,7 @@ attack::attack(game_display& gui, const gamemap& map,
 				game_events::entity_location defender_loc(d_);
 				const int attacker_side = a_->second.side();
 				fire_event("attack_end");
+				refresh_bc();
 
 				// get weapon info for last_breath and die events
 				config dat;
