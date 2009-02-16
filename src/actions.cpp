@@ -1148,6 +1148,7 @@ attack::attack(game_display& gui, const gamemap& map,
 				std::string undead_variation = d_->second.undead_variation();
 				const int defender_side = d_->second.side();
 				fire_event("attack_end");
+				refresh_bc();
 
 				// get weapon info for last_breath and die events
 				config dat;
