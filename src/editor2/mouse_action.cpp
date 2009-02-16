@@ -387,7 +387,7 @@ editor_action* mouse_action_starting_position::up_left(editor_display& disp, int
 	}
 	gui::dialog pmenu = gui::dialog(disp,
 				       _("Choose player"),
-				       _("Which player should start here? You can also use the 1-9 and delete keys to set/clear starting positions."),
+				       _("Which player should start here? You can use alt and a number key to set the starting position for a player, and del to clear the starting position under the cursor. Pressing a number key by itself will scroll to that player's starting position."),
 				       gui::OK_CANCEL);
 	pmenu.set_menu(players);
 	int res = pmenu.show();
