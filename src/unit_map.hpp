@@ -136,7 +136,7 @@ public:
 
 		map_type* get_map() const { return map_; }
 
-		template <template <typename> class X, typename Y> friend class iterator_base;
+		template <template <typename> class X, typename Y> friend struct iterator_base;
 	
 	private:	 
 		iter_policy<iter_types> policy_;
