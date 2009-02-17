@@ -302,7 +302,10 @@ void file_menu::select_file(const std::string& begin_of_filename)
 		type_a_head_ = additional_index + it - files_in_current_dir_.begin();
 		move_selection(type_a_head_);
 		return;
-	}
+    } else {
+        type_a_head_ = 0;
+        move_selection(0);
+    }
 }
 
 void file_menu::update_file_lists() {
