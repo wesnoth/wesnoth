@@ -73,6 +73,7 @@ void play_replay(display& disp, game_state& gamestate, const config& game_config
 	if (gamestate.starting_pos.empty()){
 		// Backwards compatibility code for 1.2 and 1.2.1
 		scenario = game_config.find_child(type,"id",gamestate.scenario);
+		assert(scenario != NULL);
 		gamestate.starting_pos = *scenario;
 	}
 	recorder.set_save_info(gamestate);
