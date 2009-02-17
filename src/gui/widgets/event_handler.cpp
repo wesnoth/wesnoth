@@ -510,6 +510,7 @@ void tevent_handler::mouse_button_down(
 		if(mouse_over != mouse_focus_) {
 			WRN_G_E << "Mouse down event on non focussed widget "
 				<< "and mouse not captured, we missed events.\n";
+			mouse_focus_ = mouse_over;
 		}
 
 		button.focus = mouse_over;
