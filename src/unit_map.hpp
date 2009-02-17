@@ -18,22 +18,15 @@
 #define UNIT_MAP_H_INCLUDED
 
 class unit;
+#include <cassert>
 #include <cstring>
+#include <boost/static_assert.hpp>
 #include "map_location.hpp"
 
-// We used to just open-code a std::map<location,unit>,
-// but as unit gained weight leading up to 1.1.3,
-// manipulating the map caused significant performance issues
-// for the AI, which had to actually move units for accurate
-// simulation with the new, more powerful filtering.
-// This class eases the transition, by providing a wrapper
-// which acts like a map of units, not unit pointers,
-// except implemented with pointers and hence providing
-// a cheap move function.
-//
-// Further extended to prevent invalidating iterators when
-// changes are made to the map, and to add more powerful iterators/
-// accessors.
+// unit_map is used primarily as a map<location, unit>, but we need to be able to move a unit
+// without copying it as the ai moves units a lot.
+// Also, we want iterators to remain valid as much as reasonable as the underlying map is changed
+// and we want a way to test an iterator for validity.
 
 class unit_map
 {
@@ -41,415 +34,315 @@ private:
 
 	/**
 	 * Used so unit_map can keep a count of iterators and clean invalid pointers
-	 * when no iterators exist. Every iterator and accessor has a counter
+	 * only when no iterators exist. Every iterator and accessor has a counter
 	 * instance.
 	 */
 	struct iterator_counter {
 		iterator_counter() : map_(NULL) {}
 		iterator_counter(const unit_map* map) : map_(map)
-			{ map_->add_iter(); }
+			{ if (map_) map_->add_iter(); }
 
-		iterator_counter(const iterator_counter& i) : map_(i.map_) {
-			if (map_) map_->add_iter();
-		}
+		iterator_counter(const iterator_counter& i) : map_(i.map_) 
+			{ if (map_) map_->add_iter(); }
 
-		iterator_counter &operator =(const iterator_counter &that) {
-			if (this == &that)
-				return *this;
-
+		iterator_counter& operator=(const iterator_counter &that) {
 			if (map_) map_->remove_iter();
 
-			map_=that.map_;
+			map_ = that.map_;
 			if (map_) map_->add_iter();
 
 			return *this;
 		}
 
-		~iterator_counter() {if (map_) map_->remove_iter(); }
+		~iterator_counter() 
+			{if (map_) map_->remove_iter(); }
 	private:
 		const unit_map* map_;
 	};
 
+	struct node {
+		bool valid_;
+		std::pair<map_location, unit>* ptr_;
+
+		node(bool v, std::pair<map_location, unit>* p) : valid_(v), ptr_(p) { }
+		node() : valid_(0), ptr_(NULL) { }
+
+		bool is_valid() const { return valid_; }
+		bool& get_valid() { return valid_; }
+		unit& get_unit() const;
+		map_location& get_location() const;
+	};
 
 public:
+
+	/** unit.underlying_id() type */
+	typedef size_t unit_id_type;
+
+	/** unit.underlying_id() -> unit_map::node . This requires that underlying_id() be unique (which is enforced in unit_map::add).*/
+	typedef std::map<unit_id_type,node> umap;
+
+	/** location -> unit.underlying_id() of the unit at that location */
+	typedef std::map<map_location, unit_id_type> lmap;
+
 	unit_map() : map_(), lmap_(), num_iters_(0), num_invalid_(0) { };
 	unit_map(const unit_map &that);
-	unit_map &operator =(const unit_map &that);
+	unit_map& operator=(const unit_map &that);
+
 	/** A unit map with a copy of a single unit in it. */
-	explicit unit_map(const map_location &loc, const unit &u);
+	unit_map(const map_location &loc, const unit &u);
 	~unit_map();
 
-	/**
-	 * Keyed with unit's underlying_id. bool flag is whether the following pair
-	 * pointer is valid. pointer to pair used to imitate a map<location, unit>
-	 */
-	typedef std::map<size_t,std::pair<bool, std::pair<map_location,unit>*> > umap;
 
-	/** Maps locations to the underlying_id() of the unit at that location. */
-	typedef std::map<map_location, size_t> lmap;
+// ~~~ Begin iterator code ~~~
 
-	struct const_unit_iterator;
-	struct unit_xy_iterator;
-	struct const_unit_xy_iterator;
-	struct xy_accessor;
-	struct const_xy_accessor;
+	template <typename X, typename Y>
+	struct convertible;
 
-	/**
-	 * For iterating over every unit. Iterator is valid as long as there is
-	 * there is a unit w/ matching underlying_id in the map.
-	 */
-	struct unit_iterator
-	{
-		unit_iterator() :
-			counter_(),
-			i_(),
-			map_(0)
-		{ }
+	template <template <typename> class iter_policy, typename iter_types>
+	struct iterator_base {
+		typedef typename iter_types::map_type map_type;
+		typedef typename iter_types::iterator_type iterator_type;
+		typedef typename iter_types::value_type value_type;
+		typedef typename iter_types::reference_type reference_type;
+		typedef typename iter_types::pointer_type pointer_type;
 
-		unit_iterator(const unit_iterator &i) : counter_(i.map_), i_(i.i_), map_(i.map_) { }
-		unit_iterator(umap::iterator i, unit_map* map) : counter_(map), i_(i), map_(map) { }
+		iterator_base() : policy_(), counter_(), map_(NULL), i_() { }
+		iterator_base(iterator_type i, map_type* m) : policy_(i, m), counter_(m), map_(m), i_(i) { }
 
-		std::pair<map_location,unit> *operator->() const;
-		std::pair<map_location,unit>& operator*() const;
+		pointer_type operator->() const { assert(policy_.valid(i_, map_)); return i_->second.ptr_; }
+		reference_type operator*() const { assert(policy_.valid(i_, map_)); return *i_->second.ptr_; }
 
-		unit_iterator operator++();
-		unit_iterator operator++(int);
+		iterator_base& operator++();
+		iterator_base operator++(int);
 
+		iterator_base& operator--();
+		iterator_base operator--(int);
 
-		bool operator==(const unit_iterator &that) const
-			{ return that.i_ == this->i_; }
+		bool valid() const { return policy_.valid(i_, map_); }
 
-		bool operator!=(const unit_iterator &that) const
-			{ return that.i_ != this->i_; }
+		bool operator==(const iterator_base& rhs) const { return i_ == rhs.i_; }
+		bool operator!=(const iterator_base& rhs) const { return !operator==(rhs); }		
 
-		bool valid() const
-			{ return i_ != map_->map_.end() && i_->second.first; }
+		template <template <typename> class that_policy, typename that_types>
+		iterator_base(const iterator_base<that_policy, that_types>& that) :
+			policy_(that.i_, that.map_),
+			counter_(that.counter_),
+			map_(that.map_),
+			i_(that.i_)
+		{ 
+			BOOST_STATIC_ASSERT(sizeof(convertible<that_policy<that_types>, iter_policy<iter_types> >) != 0);
+			BOOST_STATIC_ASSERT(sizeof(convertible<that_types, iter_types>) != 0);
+		}
 
-		friend struct const_unit_iterator;
-		friend struct unit_xy_iterator;
-		friend struct const_unit_xy_iterator;
-		friend struct xy_accessor;
-		friend struct const_xy_accessor;
-
-	private:
+		template <template <typename> class X, typename Y> friend class iterator_base;
+		template <typename X> friend class xy_accessor_base;
+	
+	private:	 
+		iter_policy<iter_types> policy_;
 		iterator_counter counter_;
-
-		umap::iterator i_;
-		unit_map* map_;
+		map_type* map_;
+		iterator_type i_;
 	};
 
-	struct const_unit_iterator
-	{
-		const_unit_iterator(const unit_iterator &i) : counter_(i.map_), i_(i.i_), map_(i.map_) { }
-
-		const_unit_iterator() :
-			counter_(),
-			i_(),
-			map_(0)
-		{ }
-
-		const_unit_iterator(const const_unit_iterator &i) : counter_(i.map_), i_(i.i_), map_(i.map_) { }
-		const_unit_iterator(umap::const_iterator i, const unit_map* map): counter_(map), i_(i), map_(map) { }
-
-		const std::pair<map_location,unit>* operator->() const;
-		const std::pair<map_location,unit>& operator*() const;
-
-		const_unit_iterator operator++();
-
-		const_unit_iterator operator++(int);
-
-		const_unit_iterator operator--();
-
-		bool operator==(const const_unit_iterator &that) const
-			{ return that.i_ == this->i_; }
-
-		bool operator!=(const const_unit_iterator &that) const
-			{ return that.i_ != this->i_; }
-
-		bool valid() const
-			{ return i_ != map_->map_.end() && i_->second.first; }
-
-		friend struct const_unit_xy_iterator;
-		friend struct const_xy_accessor;
-
-	private:
-		iterator_counter counter_;
-
-		umap::const_iterator i_;
-		const unit_map* map_;
+	struct standard_iter_types {
+		typedef unit_map map_type;
+		typedef unit_map::umap::iterator iterator_type;
+		typedef std::pair<map_location, unit> value_type;
+		typedef value_type* pointer_type;
+		typedef value_type& reference_type;
 	};
 
+	struct const_iter_types {
+		typedef const unit_map map_type;
+		typedef unit_map::umap::const_iterator iterator_type;
+		typedef const std::pair<map_location, unit> value_type;
+		typedef value_type* pointer_type;
+		typedef value_type& reference_type;
+	};
+
+	template <typename iter_types>
+	struct unit_policy {
+		typedef typename iter_types::iterator_type iterator_type;
+
+		unit_policy() { }
+		unit_policy(const iterator_type& i, const unit_map* map) { }
+		
+		void update(const iterator_type& i, const unit_map* map) { }
+
+		bool valid(const iterator_type& i, const unit_map* map) const { return i != map->map_.end() && i->second.is_valid(); }
+	};
+
+	template <typename iter_types>
+	struct unit_xy_policy {		
+		typedef typename iter_types::iterator_type iterator_type;
+
+		unit_xy_policy() { }
+		unit_xy_policy(const iterator_type& i, const unit_map* map) : loc_(i->second.get_location()) { }
+
+		void update(iterator_type& iter, const unit_map* map) {
+			loc_ = iter->second.get_location();
+		}
+
+		bool valid(const iterator_type& iter, const unit_map* map) const {
+			return iter != map->map_.end() && iter->second.is_valid() && iter->second.get_location() == loc_;
+		} 		
+	private:
+		map_location loc_;
+	};
+
+	template <typename iter_types>
+	struct xy_accessor_base {		
+		typedef typename iter_types::map_type map_type;
+		typedef typename iter_types::iterator_type iterator_type;
+		typedef typename iter_types::reference_type reference_type;
+
+		xy_accessor_base() : counter_(), loc_(), map_(NULL) { }
+		xy_accessor_base(const iterator_type& iter, const unit_map* map) : counter_(), loc_(iter->second.get_location()), map_(map) { }
+
+		template <typename that_types>
+		xy_accessor_base(const xy_accessor_base<that_types>& that) :
+			counter_(that.counter_),
+			loc_(that.loc_),
+			map_(that.map_) 
+		{
+			BOOST_STATIC_ASSERT(sizeof(convertible<that_types, iter_types>) != 0);
+		}
+
+		template <typename that_types>
+		xy_accessor_base(const iterator_base<unit_policy, that_types>& that) :
+			counter_(that.counter_),
+			loc_(),
+			map_(that.map_)
+		{
+			BOOST_STATIC_ASSERT(sizeof(convertible<that_types, iter_types>) != 0);
+			if (that.valid()) loc_ = that->first;
+		}
+
+		iterator_base<unit_policy, iter_types> operator->() const { assert(valid()); return map_->find(loc_); }
+		reference_type operator*() const { assert(valid()); return *map_->find(loc_); }
+
+		bool operator==(const xy_accessor_base& rhs) { return loc_ == rhs.loc_; }
+		bool operator!=(const xy_accessor_base& rhs) { return !operator==(rhs); }
+
+		bool valid() const { return map_->find(loc_) != map_->end(); }
+	private:
+		iterator_counter counter_;
+		map_location loc_;
+		map_type* map_;
+	};
+
+// ~~~ End iterator code ~~~
+
+
+
+	/**
+	 * All iterators are invalidated on unit_map::clear(), unit_map::swap(), unit_map::delete_all(), etc.
+	 * Several implicit conversion are supplied, you can convert from more restrictive to less restrictive.
+	 * That is:
+	 * non-const -> const
+	 * unit_iter -> xy_unit_iter
+	 * unit_iter -> xy_accessor
+	 */
+	
+	/** 
+	 * unit_iterators iterate over all units in the unit_map. A unit_iterator is invalidated if 
+	 * unit_map::erase, unit_map::extract, or unit_map::replace are called with the location of the
+	 * unit that the unit_iterator points to. It will become valid again if unit_map::add is called with
+	 * a pair containing the unit that the iterator points to. Basically, as long as the unit is on the
+	 * gamemap somewhere, the iterator will be valid.
+	 */
+	typedef iterator_base<unit_policy, standard_iter_types> unit_iterator;
+	typedef iterator_base<unit_policy, const_iter_types> const_unit_iterator;
+
+	/**
+	 * unit_xy_iterators have all the constraints of unit_iterators and will also be invalidated if the unit
+	 * is not at the same location as when the iterator first pointed at it. That is, as long as the unit stays
+	 * in the same spot, the iterator is valid.
+	 */
+	typedef iterator_base<unit_xy_policy, standard_iter_types> unit__xy_iterator;
+	typedef iterator_base<unit_xy_policy, const_iter_types> const_unit_xy_iterator;
+
+	/**
+	 * xy_accessors cannot be incremented or decremented. An xy_accessor is valid as long as there is a unit at
+	 * the map_location that it is created at, and it allows access to the unit at that location.
+	 */
+	typedef xy_accessor_base<standard_iter_types> xy_accessor;
+	typedef xy_accessor_base<const_iter_types> const_xy_accessor;
+
+	/** provided as a convenience as unit_map used to be an std::map */
 	typedef unit_iterator iterator;
 	typedef const_unit_iterator const_iterator;
 
-	/**
-	 * Similar to unit_iterator, except that becomes invalid if unit is moved
-	 * while the iterator points at it.
-	 */
-	struct unit_xy_iterator
-	{
-		unit_xy_iterator(const unit_iterator &i);
-
-		unit_xy_iterator() :
-			counter_(),
-			i_(),
-			map_(0),
-			loc_()
-		{}
-
-		unit_xy_iterator(const unit_xy_iterator &i) :
-			counter_(i.map_),
-			i_(i.i_),
-			map_(i.map_),
-			loc_(i.valid() ? i.loc_ : map_location())
-			{
-			}
-
-		unit_xy_iterator(umap::iterator i, unit_map* map, map_location loc): counter_(map), i_(i), map_(map), loc_(loc) { }
-
-		std::pair<map_location,unit>* operator->() const;
-		std::pair<map_location,unit>& operator*() const;
-
-		unit_xy_iterator operator++();
-
-		unit_xy_iterator operator++(int);
-
-		bool operator==(const unit_xy_iterator &that) const
-			{ return that.i_ == this->i_; }
-
-		bool operator!=(const unit_xy_iterator &that) const
-			{ return that.i_ != this->i_; }
-
-		bool valid() const;
-
-		friend struct const_unit_xy_iterator;
-		friend struct xy_accessor;
-		friend struct const_xy_accessor;
-
-	private:
-		iterator_counter counter_;
-
-		umap::iterator i_;
-		unit_map* map_;
-
-		map_location loc_;
-	};
-
-	struct const_unit_xy_iterator
-	{
-		const_unit_xy_iterator(const unit_iterator &i);
-		const_unit_xy_iterator(const const_unit_iterator &i);
-
-		const_unit_xy_iterator() :
-			counter_(),
-			i_(),
-			map_(0),
-			loc_()
-		{
-		}
-
-		const_unit_xy_iterator(umap::const_iterator i, const unit_map* map, map_location loc): counter_(map), i_(i), map_(map), loc_(loc)  { }
-
-		const_unit_xy_iterator(const unit_xy_iterator &i) :
-			counter_(i.map_),
-			i_(i.i_),
-			map_(i.map_),
-			loc_(i.valid() ? i.loc_ : map_location())
-		{
-		}
-
-		const_unit_xy_iterator(const const_unit_xy_iterator &i) :
-			counter_(i.map_),
-			i_(i.i_),
-			map_(i.map_),
-			loc_(i.valid() ? i.loc_ : map_location())
-		{
-		}
-
-		const std::pair<map_location,unit>* operator->() const;
-		const std::pair<map_location,unit>& operator*() const;
-
-		const_unit_xy_iterator operator++();
-
-		const_unit_xy_iterator operator++(int);
-
-		bool operator==(const const_unit_xy_iterator &that) const
-			{ return that.i_ == this->i_; }
-
-		bool operator!=(const const_unit_xy_iterator &that) const
-			{ return that.i_ != this->i_; }
-
-		bool valid() const;
-
-		friend struct const_xy_accessor;
-
-	private:
-		iterator_counter counter_;
-
-		umap::const_iterator i_;
-		const unit_map* map_;
-
-		map_location loc_;
-	};
 
 	/**
-	 * Used to access the unit at a given position. Is valid as long as any unit
-	 * is in that position. Can switch from invalid to valid.
+	 * Lookups can be done by map_location, by unit::underlying_id(), or by unit::id(). 
+	 * Looking up with unit::id() is slow. 
+	 * Returned iterators can be implicitly converted to the other types.
 	 */
-	struct xy_accessor
-	{
-		xy_accessor(const unit_iterator &i);
-		xy_accessor(const unit_xy_iterator &i);
-		xy_accessor() :
-			counter_(),
-			i_(),
-			map_(),
-			loc_()
-		{
-		}
-
-		std::pair<map_location,unit>* operator->();
-		std::pair<map_location,unit>& operator*();
-
-		bool valid();
-
-	private:
-		iterator_counter counter_;
-
-		umap::iterator i_;
-		unit_map* map_;
-
-		map_location loc_;
-	};
-
-	struct const_xy_accessor
-	{
-		const_xy_accessor(const unit_iterator &i);
-		const_xy_accessor(const unit_xy_iterator &i);
-		const_xy_accessor(const const_unit_iterator &i);
-		const_xy_accessor(const const_unit_xy_iterator &i);
-
-		const_xy_accessor() :
-			counter_(),
-			i_(),
-			map_(),
-			loc_()
-		{
-		}
-
-		const std::pair<map_location,unit>* operator->();
-		const std::pair<map_location,unit>& operator*();
-
-		bool valid();
-
-	private:
-		iterator_counter counter_;
-
-		umap::const_iterator i_;
-		const unit_map* map_;
-
-		map_location loc_;
-	};
-
-	/**
-	 * Return object can be implicitly converted to any of the other iterators
-	 * or accessors
-	 */
-	unit_iterator find(const map_location &loc) ;
-	unit_iterator find(const size_t& id);
+	unit_iterator find(const map_location& loc) ;
+	unit_iterator find(const unit_id_type& id);
 	unit_iterator find(const std::string& id);
 
-	/**
-	 * Return object can be implicity converted to any of the other const
-	 * iterators or accessors
-	 */
-	const_unit_iterator find(const map_location &loc) const;
-	const_unit_iterator find(const size_t& id) const;
+	const_unit_iterator find(const map_location& loc) const;
+	const_unit_iterator find(const unit_id_type& id) const;
 	const_unit_iterator find(const std::string& id) const;
 
-	size_t count(const map_location &loc) const {
-		return lmap_.count(loc);
-	}
+	size_t count(const map_location& loc) const { return lmap_.count(loc); }
 
 	/**
-	 * Return object can be implicitly converted to any of the other iterators
-	 * or accessors
+	 * Return iterators are implicitly converted to other types as needed.
 	 */
 	unit_iterator begin();
+	const_unit_iterator begin() const;
 
-	/**
-	 * Return object can be implicity converted to any of the other const
-	 * iterators or accessors
-	 */
-	const_unit_iterator begin() const {
-		umap::const_iterator i = map_.begin();
-		while (i != map_.end() && !i->second.first) {
-			++i;
-		}
-		return const_unit_iterator(i, this);
-	}
-
-	/**
-	 * Return object can be implicitly converted to any of the other iterators
-	 * or accessors
-	 */
-	unit_iterator end() {
-		return iterator(map_.end(), this);
-	}
-
-	/**
-	 * Return object can be implicity converted to any of the other const
-	 * iterators or accessors
-	 */
-	const_unit_iterator end() const {
-		return const_iterator(map_.end(), this);
-	}
-
-	size_t size() const {
-		return lmap_.size();
-	}
+	unit_iterator end() { return iterator(map_.end(), this); }
+	const_unit_iterator end() const { return const_iterator(map_.end(), this); }
+	
+	size_t size() const { return lmap_.size(); }
 
 	void clear();
 
-	/** Extract (like erase, but don't delete). */
-	std::pair<map_location,unit> *extract(const map_location &loc);
-
 	/**
 	 * Map owns pointer after this.  Loc must be currently empty. unit's
-	 * underlying_id should not be present in the map already
+	 * underlying_id should not be present in the map already.
 	 */
 	void add(std::pair<map_location,unit> *p);
 
 	/** Like add, but loc must be occupied (implicitly erased). */
 	void replace(std::pair<map_location,unit> *p);
 
+	/** Erases the pair<location, unit> of this location. */
 	void erase(xy_accessor pos);
 	size_t erase(const map_location &loc);
 
+	/** Extract (like erase, but don't delete). */
+	std::pair<map_location,unit>* extract(const map_location& loc);
+
+	/** Invalidates all iterators on both maps */
 	void swap(unit_map& o) {
-		map_.swap(o.map_);
-		lmap_.swap(o.lmap_);
+		std::swap(map_, o.map_);
+		std::swap(lmap_, o.lmap_);
+		std::swap(num_invalid_, o.num_invalid_);
 	}
 
-
 private:
-	/** Removes invalid entries in map_. Called automatically when safe and needed. */
+	/** Removes invalid entries in map_ if safe and needed. */
 	void clean_invalid();
 
-	void invalidate(umap::iterator i)
-		{if(i == map_.end()) return; i->second.first = false; ++num_invalid_;}
-	void validate(umap::iterator i)
-		{if(i == map_.end()) return; i->second.first = true; --num_invalid_;}
+	void invalidate(umap::iterator& i)
+		{ if(i == map_.end()) return; i->second.get_valid() = false; ++num_invalid_; }
+	void validate(umap::iterator& i)
+		{ if(i == map_.end()) return; i->second.get_valid() = true; --num_invalid_; }
 
 	void delete_all();
 
 	void add_iter() const { ++num_iters_; }
 	void remove_iter() const { --num_iters_; }
 
+	bool is_valid(const umap::const_iterator& i) const { return i != map_.end() && i->second.is_valid(); }
 
 	/**
-	 * Key: unit's underlying_id. bool indicates validity of pointer. pointer to
-	 * pair used to imitate a map<location, unit>
+	 * unit.underlying_id() -> unit_map::node
 	 */
 	umap map_;
 
@@ -462,5 +355,60 @@ private:
 	mutable size_t num_iters_;
 	size_t num_invalid_;
 };
+
+// define allowed conversions.
+template <>
+struct unit_map::convertible<unit_map::standard_iter_types, unit_map::const_iter_types> { };
+
+template <typename T>
+struct unit_map::convertible<T, T> { };
+
+template <typename X, typename Y>
+struct unit_map::convertible<unit_map::unit_policy<X>, unit_map::unit_policy<Y> > { };
+
+template <typename X, typename Y>
+struct unit_map::convertible<unit_map::unit_policy<X>, unit_map::unit_xy_policy<Y> > { };
+
+template <typename X, typename Y>
+struct unit_map::convertible<unit_map::unit_xy_policy<X>, unit_map::unit_xy_policy<Y> > { };
+
+
+
+template <template <typename> class iter_policy, typename iter_types>
+unit_map::iterator_base<iter_policy, iter_types>& unit_map::iterator_base<iter_policy, iter_types>::operator++() {
+	assert(i_ != map_->map_.end());
+	++i_;
+	while (i_ != map_->map_.end() && !i_->second.is_valid()) ++i_;
+
+	if (i_ != map_->map_.end()) policy_.update(i_, map_);
+
+	return *this;	
+}
+
+template <template <typename> class iter_policy, typename iter_types>
+unit_map::iterator_base<iter_policy, iter_types> unit_map::iterator_base<iter_policy, iter_types>::operator++(int) {
+	unit_map::iterator_base<iter_policy, iter_types> temp(*this);
+	operator++();
+	return temp;
+}
+
+template <template <typename> class iter_policy, typename iter_types>
+unit_map::iterator_base<iter_policy, iter_types>& unit_map::iterator_base<iter_policy, iter_types>::operator--() {
+	assert(i_ != map_->map_.begin());
+	
+	--i_;
+	while (i_ != map_->map_.begin() && !i_->second.is_valid()) --i_;
+
+	if (i_->second.is_valid()) policy_.update(i_, map_);
+
+	return *this;	
+}
+
+template <template <typename> class iter_policy, typename iter_types>
+unit_map::iterator_base<iter_policy, iter_types> unit_map::iterator_base<iter_policy, iter_types>::operator--(int) {
+	unit_map::iterator_base<iter_policy, iter_types> temp(*this);
+	operator--();
+	return temp;
+}
 
 #endif	// UNIT_MAP_H_INCLUDED
