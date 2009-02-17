@@ -566,6 +566,9 @@ void twindow::layout()
 
 	generate_dot_file("layout_finished", LAYOUT);
 	need_layout_ = false;
+
+	// The widgets might have moved so set the mouse location properly.
+	init_mouse_location();
 }
 
 void twindow::do_show_tooltip(const tpoint& location, const t_string& tooltip)

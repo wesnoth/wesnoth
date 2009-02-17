@@ -97,6 +97,14 @@ public:
 	tpoint get_mouse() const;
 
 	/**
+	 * Initializes the location of the mouse.
+	 *
+	 * After a layout of the window the mouse location needs to be updated to
+	 * test whether it entered or left a widget.
+	 */
+	void init_mouse_location();
+
+	/**
 	 * Shows a tooltip.
 	 *
 	 * A tooltip is a small shortly visible item which is meant to show the user

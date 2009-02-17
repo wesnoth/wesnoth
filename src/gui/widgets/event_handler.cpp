@@ -307,6 +307,22 @@ tpoint tevent_handler::get_mouse() const
 	return tpoint(mouse_x_, mouse_y_);
 }
 
+void tevent_handler::init_mouse_location()
+{
+	// Fix the mouse location by pushing a dummy event.
+	int x;
+	int y;
+	SDL_GetMouseState(&x, &y);
+
+	SDL_Event event;
+	event.type = SDL_MOUSEMOTION;
+	event.motion.type = SDL_MOUSEMOTION;
+	event.motion.x = x;
+	event.motion.y = y;
+
+	x = SDL_PushEvent(&event);
+}
+
 void tevent_handler::add_to_keyboard_chain(twidget* widget)
 {
 	assert(widget);
