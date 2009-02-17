@@ -1,6 +1,9 @@
 Version 1.4.7+svn:
  * language and i18n:
    * updated translations: French, Italian, Japanese
+ * multiplayer:
+   * server:
+     * create the fifo group accessible (instead of only user accessible)
  * miscellaneous and bug fixes:
    * AmigaOS4: Minimum stack cookie to prevent stack overflow (patch #1107)
    * Additional screenmodes for when SDL can't guess them (patch #1108)
