@@ -2523,7 +2523,7 @@ boost::intrusive_ptr<ai_interface> ai_manager::get_ai( std::string ai_algo,
 int ai_manager::reap_ais()
 {
 	int counter = 0 ;
-	for( AINameMap::iterator itor = ais.begin() ; itor != ais.end() ; ++itor ) {
+	for( AINameMap::iterator itor = ais.begin() ; itor != ais.end() ; ) {
 		// Request the AI clean up after it self. If it does not which to
 		// be purged, it must return false. If it returns true, the AI
 		// is deleted from the AI map.
@@ -2537,7 +2537,7 @@ int ai_manager::reap_ais()
 		   if( itor->second->manager_reap_ai()) {
 		   */		  
 		// Delete the AI from the managed map
-		ais.erase( itor ) ;
+		ais.erase( itor++ ) ;
 		++counter ;
 		/*		
 				}
