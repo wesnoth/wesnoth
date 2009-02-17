@@ -318,7 +318,7 @@ std::string terrain_palette::get_terrain_string(const t_translation::t_terrain t
 
 void terrain_palette::left_mouse_click(const int mousex, const int mousey) {
 	int tselect = tile_selected(mousex, mousey);
-	if(tselect >= 0) {
+    if(tselect >= 0 && (tstart_+tselect) < terrains_.size()) {
 		select_fg_terrain(terrains_[tstart_+tselect]);
 		gui_.invalidate_game_status();
 	}
@@ -326,7 +326,7 @@ void terrain_palette::left_mouse_click(const int mousex, const int mousey) {
 
 void terrain_palette::right_mouse_click(const int mousex, const int mousey) {
 	int tselect = tile_selected(mousex, mousey);
-	if(tselect >= 0) {
+	if(tselect >= 0 && (tstart_+tselect) < terrains_.size()) {
 		select_bg_terrain(terrains_[tstart_+tselect]);
 		gui_.invalidate_game_status();
 	}
@@ -416,6 +416,12 @@ void terrain_palette::draw(bool force) {
 	}
 	const SDL_Rect &loc = location();
 	int y = terrain_start_;
+	SDL_Rect palrect;
+	palrect.x = loc.x;
+	palrect.y = terrain_start_;
+	palrect.w = size_specs_.palette_w;
+	palrect.h = size_specs_.palette_h;
+    tooltips::clear_tooltips(palrect);
 	for(unsigned int counter = starting; counter < ending; counter++){
 		const t_translation::t_terrain terrain = terrains_[counter];
 		const t_translation::t_terrain base_terrain = map().get_terrain_info(terrain).default_base();
@@ -478,7 +484,6 @@ void terrain_palette::draw(bool force) {
 			color = SDL_MapRGB(screen->format,0x00,0x00,0x00);
 		}
 		draw_rectangle(dstrect.x, dstrect.y, image->w, image->h, color, screen);
-		tooltips::clear_tooltips(dstrect);
 
         std::stringstream tooltip_text;
         if (non_core_terrains_.find(terrain) == non_core_terrains_.end()) {
