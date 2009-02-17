@@ -134,8 +134,9 @@ public:
 			BOOST_STATIC_ASSERT(sizeof(convertible<that_types, iter_types>) != 0);
 		}
 
+		map_type* get_map() const { return map_; }
+
 		template <template <typename> class X, typename Y> friend class iterator_base;
-		template <typename X> friend class xy_accessor_base;
 	
 	private:	 
 		iter_policy<iter_types> policy_;
@@ -210,9 +211,9 @@ public:
 
 		template <typename that_types>
 		xy_accessor_base(const iterator_base<unit_policy, that_types>& that) :
-			counter_(that.counter_),
+			counter_(that.get_map()),
 			loc_(),
-			map_(that.map_)
+			map_(that.get_map())
 		{
 			BOOST_STATIC_ASSERT(sizeof(convertible<that_types, iter_types>) != 0);
 			if (that.valid()) loc_ = that->first;
