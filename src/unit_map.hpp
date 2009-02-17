@@ -166,9 +166,9 @@ public:
 		typedef typename iter_types::iterator_type iterator_type;
 
 		unit_policy() { }
-		unit_policy(const iterator_type& i, const unit_map* map) { }
+		unit_policy(const iterator_type& /*i*/, const unit_map* /*map*/) { }
 		
-		void update(const iterator_type& i, const unit_map* map) { }
+		void update(const iterator_type& /*i*/, const unit_map* /*map*/) { }
 
 		bool valid(const iterator_type& i, const unit_map* map) const { return i != map->map_.end() && i->second.is_valid(); }
 	};
