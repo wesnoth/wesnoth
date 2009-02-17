@@ -24,6 +24,7 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <unistd.h>
+#include <cerrno>
 
 #endif
 
@@ -37,15 +38,15 @@ input_stream::input_stream(const std::string& path) :
 		return;
 	}
 
-	const int res = mkfifo(path.c_str(),0600);
+	const int res = mkfifo(path.c_str(),0660);
 	if(res != 0) {
-		std::cerr << "could not make fifo at '" << path << "'\n";
+		std::cerr << "could not make fifo at '" << path << "' (" << errno << ")\n";
 	}
 
 	fd_ = open(path.c_str(),O_RDONLY|O_NONBLOCK);
 
 	if(fd_ == -1) {
-		std::cerr << "failed to open fifo at '" << path << "'\n";
+		std::cerr << "failed to open fifo at '" << path << "' (" << errno << ")\n";
 	} else {
 		std::cerr << "opened fifo at '" << path << "'. Server commands may be written to this file.\n";
 	}
