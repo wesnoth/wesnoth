@@ -27,6 +27,7 @@
 #include "serialization/parser.hpp"
 #include "game_config.hpp"
 #include "addon_checks.hpp"
+#include "version.hpp"
 #include "server/input_stream.hpp"
 
 #include <csignal>
@@ -428,7 +429,10 @@ namespace {
 							network::send_data(construct_error("No add-on data was supplied."), sock, gzipped);
 						} else if(addon_name_legal((*upload)["name"]) == false) {
 							LOG_CS << "Upload aborted - invalid add-on name.\n";
-							network::send_data(construct_error("The name of the add-on is invalid"), sock, gzipped);
+							network::send_data(construct_error("The name of the add-on is invalid."), sock, gzipped);
+						} else if(((*upload)["type"]).empty()) {
+							LOG_CS << "Upload aborted - no add-on type specified.\n";
+							network::send_data(construct_error("The type of the add-on is empty. Please specify an appropriate type."), sock, gzipped);
 						} else if(check_names_legal(*data) == false) {
 							LOG_CS << "Upload aborted - invalid file names in add-on data.\n";
 							network::send_data(construct_error("The add-on contains an illegal file or directory name."), sock, gzipped);
@@ -441,6 +445,10 @@ namespace {
 									&& campaigns()["master_password"] == (*upload)["passphrase"]) {
 
 								std::string message = "Add-on accepted.";
+
+								if (!version_info((*upload)["version"]).good()) {
+									message += "\n#Note: The version you specified is invalid. This addon will be ignored for automatic update checks.";
+								}
 
 								std::string filename = (*campaign)["filename"];
 								(*data)["title"] = (*campaign)["title"];
@@ -477,6 +485,11 @@ namespace {
 						} else {
 							LOG_CS << "Upload is owner upload.\n";
 							std::string message = "Add-on accepted.";
+
+							if (!version_info((*upload)["version"]).good()) {
+								message += "\n#Note: The version you specified is invalid. This add-on will be ignored for automatic update checks.";
+							}
+
 							if(campaign == NULL) {
 								campaign = &campaigns().add_child("campaign");
 							}
