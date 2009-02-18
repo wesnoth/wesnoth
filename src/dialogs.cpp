@@ -337,7 +337,7 @@ gui::dialog_button_action::RESULT delete_save::button_pressed(int menu_selection
 			gui::dialog dmenu(disp_,"",
 					       _("Do you really want to delete this game?"),
 					       gui::YES_NO);
-			dmenu.add_option(_("Don't ask me again!"), true);
+			dmenu.add_option(_("Don't ask me again!"), false);
 			const int res = dmenu.show();
 			// See if the user doesn't want to be asked this again
 			if(dmenu.option_checked()) {
