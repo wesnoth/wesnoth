@@ -2223,6 +2223,15 @@ void server::delete_game(std::vector<wesnothd::game*>::iterator game_it) {
 
 	simple_wml::node* const gamelist = games_and_users_list_.child("gamelist");
 	assert(gamelist != NULL);
+
+	// Send a diff of the gamelist with the game deleted to players in the lobby
+	simple_wml::document diff;
+	bool send_diff = false;
+	if(make_delete_diff(*gamelist, "gamelist", "game",
+	                    (*game_it)->description(), diff)) {
+		send_diff = true;
+	}
+
 	// Delete the game from the games_and_users_list_.
 	const simple_wml::node::child_list& games = gamelist->children("game");
 	const simple_wml::node::child_list::const_iterator g =
@@ -2235,15 +2244,6 @@ void server::delete_game(std::vector<wesnothd::game*>::iterator game_it) {
 		LOG_SERVER << "Could not find game (" << (*game_it)->id()
 			<< ") to delete in games_and_users_list_.\n";
 	}
-
-	// Send a diff of the gamelist with the game deleted to players in the lobby.
-	simple_wml::document diff;
-	bool send_diff = false;
-	if(make_delete_diff(*gamelist, "gamelist", "game",
-	                    (*game_it)->description(), diff)) {
-		send_diff = true;
-	}
-
 	const wesnothd::user_vector& users = (*game_it)->all_game_users();
 	// Set the availability status for all quitting users.
 	for (wesnothd::user_vector::const_iterator user = users.begin();
