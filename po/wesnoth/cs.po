@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-02-15 20:44+0100\n"
-"PO-Revision-Date: 2009-01-19 00:03+0100\n"
+"PO-Revision-Date: 2009-02-18 23:20+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
@@ -429,9 +429,8 @@ msgstr "Makedonský překlad"
 
 #. [about]
 #: data/core/about.cfg:1710
-#, fuzzy
 msgid "Marathi Translation"
-msgstr "Latinský překlad"
+msgstr "Překlad do Maráthštiny"
 
 #. [about]
 #: data/core/about.cfg:1719
@@ -498,7 +497,7 @@ msgstr "Turecký překlad"
 msgid "Valencian (southern Catalan) Translation"
 msgstr "Valencijský překlad (jižní Katalánie)"
 
-# RACV je nějaká univerzita vydávajícídirektivy ohledně vývoje jazyka, v rozporu se státem nebo něco takového, je kolem toho dost politiky, víc nevím.
+# RACV je nějaká univerzita vydávající direktivy ohledně vývoje jazyka, v rozporu se státem nebo něco takového, je kolem toho dost politiky, víc nevím.
 # Každopádně RACV představuje zkratku instituce, proto tato forma.
 #. [about]
 #: data/core/about.cfg:2047
@@ -6697,32 +6696,29 @@ msgstr ""
 "menu po kliknutí pravým tlačítkem na vůdce."
 
 #: data/temp-file_send_data_strings.cfg:12
-#, fuzzy
 msgid "About to upload statistics - Help us make Wesnoth better for you!"
-msgstr "Pomozte nám vylepšit Wesnoth!"
+msgstr "Odeslání statistik - Pomozte nám vylepšit Wesnoth!"
 
 #: data/temp-file_send_data_strings.cfg:13
 msgid "Save my reply and do not ask again"
-msgstr ""
+msgstr "Ulož volbu a již se neptej"
 
 #: data/temp-file_send_data_strings.cfg:14
 msgid ""
 "To change the setting later on, click on the envelope icon in the main menu."
-msgstr ""
+msgstr "Pro pozdější změnu nastavení klikněte na ikonku obálky v hlavním menu."
 
 #: data/temp-file_send_data_strings.cfg:15
-#, fuzzy
 msgid "Send"
-msgstr "Písek"
+msgstr "Odeslat"
 
 #: data/temp-file_send_data_strings.cfg:16
-#, fuzzy
 msgid "Don't send"
-msgstr "Už se mě nikdy neptej!"
+msgstr "Neposílat"
 
 #: data/temp-file_send_data_strings.cfg:18
 msgid "Do not ask every time before sending data"
-msgstr ""
+msgstr "Neptat se před každým odesláním dat"
 
 #. [menu]: id=menu-main
 #: data/themes/default.cfg:120 data/themes/dfool.cfg:134
@@ -7155,7 +7151,6 @@ msgid "Size"
 msgstr "Velikost"
 
 #: src/addon_management.cpp:790
-#, fuzzy
 msgid "Update add-ons"
 msgstr "Aktualizace rozšíření"
 
@@ -7192,7 +7187,6 @@ msgid "All add-ons updated successfully."
 msgstr "Všechna rozšíření byla úspěšně aktualizována."
 
 #: src/addon_management.cpp:898
-#, fuzzy
 msgid "Connecting to add-ons server..."
 msgstr "Připojuji se na server s rozšířeními..."
 
@@ -7234,7 +7228,6 @@ msgid "There are no add-ons available for download from this server."
 msgstr "Na tomto serveru nejsou k dispozici žádná rozšíření ke stažení."
 
 #: src/addon_management.cpp:1025
-#, fuzzy
 msgid "Get add-ons"
 msgstr "Získat rozšíření"
 
@@ -8380,19 +8373,16 @@ msgid "Drop your nick."
 msgstr "Zahodí přezdívku."
 
 #: src/menu_events.cpp:2158
-#, fuzzy
 msgid "Update details for your nick. For possible details see '/details'."
 msgstr ""
-"Aktualizuje podrobnosti vašeho uživatelského jména. Možné detaily viz /"
-"details"
+"Aktualizuje podrobnosti vašeho uživatelského jména. Možné detaily viz '/"
+"details'."
 
 #: src/menu_events.cpp:2161
-#, fuzzy
 msgid "Request information about a nick."
 msgstr "Vyžádá informace o uživateli."
 
 #: src/menu_events.cpp:2163
-#, fuzzy
 msgid "Request a list of details you can set for your registered nick."
 msgstr ""
 "Vyžádá seznam podrobností, které můžete nastavit pro vaši registrovanou "
@@ -8617,46 +8607,47 @@ msgid "Server-side redirect loop"
 msgstr "Serverově orientované přesměrování"
 
 #: src/multiplayer.cpp:335
-#, fuzzy
 msgid "You must login first."
-msgstr "K tomuto serveru se musíš přihlásit"
+msgstr "Nejprve se musíš přihlásit."
 
 #: src/multiplayer.cpp:337
 msgid "The nick '$nick' is already taken."
-msgstr ""
+msgstr "Přezdívka '$nick' již je registrována někým jiným."
 
 #: src/multiplayer.cpp:339
 msgid ""
 "The nick '$nick' contains invalid characters. Only alpha-numeric characters, "
 "underscores and hyphens are allowed."
 msgstr ""
+"Přezdívka '$nick' obsahuje neplatné znaky. Povoleny jsou pouze písmena, "
+"čísla, podtržítka a pomlčky."
 
 #: src/multiplayer.cpp:343
 msgid "The nick '$nick' is too long. Nicks must be 18 characters or less."
-msgstr ""
+msgstr "Přezdívka '$nick' je příliš dlouhá. Maximální délka je 18 znaků."
 
 #: src/multiplayer.cpp:346
 msgid "The nick '$nick' is reserved and cannot be used by players."
-msgstr ""
+msgstr "Přezdívka '$nick' je rezervovaná a hráči ji nemohou registrovat."
 
 #: src/multiplayer.cpp:348 src/multiplayer.cpp:350
 msgid "The nick '$nick' is registered on this server."
-msgstr ""
+msgstr "Přezdívka '$nick' je na tomto serveru registrovaná."
 
 #: src/multiplayer.cpp:351
 msgid ""
 "WARNING: There is already a client using this nick, logging in will cause "
 "that client to be kicked!"
-msgstr ""
+msgstr "Varování: Tuto přezdívku již někdo používá, přihlášení jej vyhodí!"
 
 #: src/multiplayer.cpp:354
 msgid ""
 "Error in the login procedure (the server had no seed for your connection)."
-msgstr ""
+msgstr "Chyba při přihlašování (server nemá seed pro vaše připojení)."
 
 #: src/multiplayer.cpp:357
 msgid "The password you provided was incorrect."
-msgstr ""
+msgstr "Zadané heslo není správné."
 
 #: src/multiplayer_connect.cpp:82 src/multiplayer_connect.cpp:485
 #: src/multiplayer_connect.cpp:613
@@ -9661,10 +9652,10 @@ msgstr "% přesnosti"
 msgid "% parry"
 msgstr "% vykrývání"
 
+# v nápovědě podrobnosti jednotky když k ní není žádný text
 #: src/unit_types.cpp:958
-#, fuzzy
 msgid "No description available."
-msgstr " K dispozici není žádná nápověda."
+msgstr "Žádné informace nejsou k dispozici."
 
 #: src/unit_types.cpp:1017
 msgid "chaotic"

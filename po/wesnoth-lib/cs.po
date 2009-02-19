@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-02-15 20:44+0100\n"
-"PO-Revision-Date: 2009-01-21 22:11+0100\n"
+"PO-Revision-Date: 2009-02-18 23:22+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
@@ -849,6 +849,12 @@ msgid ""
 "\n"
 "The Battle for Wesnoth forum can be found at http://www.wesnoth.org/forum/"
 msgstr ""
+"Na oficiální server hry více hráčů se lze přihlásit pomocí přezdívky a hesla "
+"pro oficiální fórum.\n"
+"Registrace není vyžadována, heslo je zapotřebí pouze v případě, že chcete "
+"využívat registrovanou přezdívku.\n"
+"\n"
+"Oficiální fórum Bitvy o Wesnoth se nachází na http://www.wesnoth.org/forum/"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:141
@@ -997,13 +1003,12 @@ msgid "Toggle Full Screen"
 msgstr "Okno/Celá obrazovka"
 
 #: src/game_preferences_display.cpp:152
-#, fuzzy
 msgid "Enable scroll tracking of unit actions"
-msgstr "Posouvat obrazovku za činností."
+msgstr "Posouvat obrazovku za činností"
 
 #: src/game_preferences_display.cpp:153
 msgid "Accelerated Speed"
-msgstr "Zrychleno"
+msgstr "Zrychlená hra"
 
 #: src/game_preferences_display.cpp:154
 msgid "Skip AI Moves"
@@ -1276,7 +1281,7 @@ msgstr "Ukazuj ikony před jmény hráčů v čekárně"
 
 #: src/game_preferences_display.cpp:356
 msgid "Uncheck to delete the saved password (on exit)."
-msgstr ""
+msgstr "Vypněte pro smazání uložených hesel (při ukončení programu)."
 
 #: src/game_preferences_display.cpp:359
 msgid "Do not show messages about players joining the multiplayer lobby"
@@ -2079,7 +2084,6 @@ msgid ""
 msgstr "Nalezen terén s řetězcem s více než čtyřmi znaky, postižený terén :"
 
 #: src/wml_exception.cpp:52
-#, fuzzy
 msgid ""
 "An error due to possibly invalid WML occurred\n"
 "The error message is :"

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "POT-Creation-Date: 2009-01-30 22:44+0100\n"
-"PO-Revision-Date: 2009-01-12 19:47+0100\n"
+"PO-Revision-Date: 2009-02-17 20:52+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
@@ -593,18 +593,17 @@ msgstr ""
 
 # type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #: ../../doc/manual/manual.en.xml:344
-#, fuzzy
 msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/multiplayer-"
 "1.5.9.jpg\"/> </imageobject>"
 msgstr ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/multiplayer-"
-"1.5.7.jpg\"/> </imageobject>"
+"1.5.9.jpg\"/> </imageobject>"
 
 # type: Content of: <book><chapter><section><section><section><title>
 #: ../../doc/manual/manual.en.xml:352
 msgid "Login"
-msgstr ""
+msgstr "Přezdívka"
 
 # type: Content of: <book><chapter><section><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:353
@@ -614,11 +613,15 @@ msgid ""
 "may use the same username and password for joining the official server. You "
 "cannot use a registered name without the password."
 msgstr ""
+"Toto bude Vaše jméno na serveru hry více hráčů. Pokud již máte účet na "
+"<ulink url=\"http://www.wesnoth.org/forum\">Oficiálním fóru Wesnothu</"
+"ulink>, můžete na oficiálním serveru použít stejné uživatelské jméno a "
+"heslo. Registrovanou přezdívku nelze použít bez zadání hesla."
 
 # type: Content of: <book><chapter><section><section><section><title>
 #: ../../doc/manual/manual.en.xml:360
 msgid "Password"
-msgstr ""
+msgstr "Heslo"
 
 # type: Content of: <book><chapter><section><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:361
@@ -626,6 +629,8 @@ msgid ""
 "You only need to supply a password when you wish to use a registered "
 "username.  In all other cases, just leave it blank."
 msgstr ""
+"Heslo je zapotřebí, pouze pokud používáte registrovanou přezdívku. V "
+"ostatních případech jej ponechte prázdné."
 
 # type: Content of: <book><chapter><section><section><section><title>
 #: ../../doc/manual/manual.en.xml:366
@@ -692,7 +697,6 @@ msgstr "Hostuj síťovou hru"
 
 # type: Content of: <book><chapter><section><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:391
-#, fuzzy
 msgid ""
 "To be able to start a multiplayer game without using an external multiplayer "
 "server, you have to start the server, which is usually named "
@@ -1583,7 +1587,6 @@ msgstr ""
 
 # type: Content of: <book><chapter><section><simpara>
 #: ../../doc/manual/manual.en.xml:1046
-#, fuzzy
 msgid ""
 "Each side is given some amount of gold to begin with, and receives 2 gold "
 "pieces per turn, plus 2 more gold pieces for every village that side "
@@ -1591,11 +1594,11 @@ msgid ""
 "ended the previous scenario with, and a minimum amount defined by the "
 "scenario, which is typically lower as the difficulty level increases."
 msgstr ""
-"Každá strana dostává do začátku stejné množství zlata a dostává za kolo 2 "
-"zlaté plus 1 zlatý za každou ovládanou vesnici. V taženích je počáteční "
-"zlato větší hodnota z buď 80% množství vlastněného na konci předešlého "
-"scénáře nebo minimálního množství definovaného scénářem (obvykle čím vyšší "
-"obtížnost, tím nižší)."
+"Každá strana dostává do začátku množství zlata a v průběhu hry dostává za "
+"kolo 2 zlaté plus 2 zlaté za každou ovládanou vesnici. V taženích je "
+"počáteční zlato větší hodnota z buď 80% množství vlastněného na konci "
+"předešlého scénáře nebo minimálního množství definovaného scénářem (obvykle "
+"čím vyšší obtížnost, tím nižší)."
 
 #: ../../doc/manual/manual.en.xml:1053
 msgid "Recruiting and Recalling"
@@ -2344,7 +2347,6 @@ msgstr "Jed"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:1603
-#, fuzzy
 msgid ""
 "This attack poisons the target. Poisoned units lose 8 HP every turn until "
 "they are cured or are reduced to 1 HP. Poison can not, of itself, kill a "
