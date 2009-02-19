@@ -478,8 +478,11 @@ void tgrid::layout_use_horizontal_scrollbar(const unsigned maximum_width)
 	unsigned reduced = 0;
 	for(size_t x = 0; x < cols_; ++x) {
 
-		const unsigned wanted_width = (too_wide - reduced) >= col_width_[x]
-			? 1 : col_width_[x] - (too_wide - reduced);
+		if(too_wide - reduced >= col_width_[x]) {
+			DBG_G_L << "tgrid: col " << x << " is too small to be reduced.\n";
+			continue;
+		}
+		const unsigned wanted_width = col_width_[x] - (too_wide - reduced);
 
 		const unsigned width = column_use_horizontal_scrollbar(x, wanted_width);
 
