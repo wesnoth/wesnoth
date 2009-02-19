@@ -35,6 +35,9 @@ tpoint twidget::get_best_size() const
 
 void twidget::set_size(const tpoint& origin, const tpoint& size)
 {
+	assert(size.x >= 0);
+	assert(size.y >= 0);
+
 	x_ = origin.x;
 	y_ = origin.y;
 	w_ = size.x;
