@@ -549,7 +549,6 @@ std::string tcontrol::get_pango_markup() const
 		}
 
 		line = pre + escape_string(line) + post;
-		std::cerr << line << '\n';
 	}
 	return utils::join(lines, '\n');
 }
