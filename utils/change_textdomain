@@ -132,7 +132,7 @@ svnmove()
 add_textdomain()
 # Add '#textdomain wesnoth' to files that don't have it. 
 {
-    for file in `find data -name "*.cfg" -print | grep -v 'data/languages'`
+    for file in `find data -name "*.cfg" -print | grep -v 'data/languages\|lan_server.cfg'`
     do
 	if grep '#textdomain' $file >/dev/null
 	then
