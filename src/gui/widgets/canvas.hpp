@@ -170,7 +170,7 @@ private:
 	/** Width of the canvas. */
 	unsigned w_;
 
-	/** Height ot the canvas. */
+	/** Height of the canvas. */
 	unsigned h_;
 
 	/** The surface we draw all items on. */
