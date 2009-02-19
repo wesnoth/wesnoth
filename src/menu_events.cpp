@@ -2436,13 +2436,17 @@ private:
 
 	void chat_handler::do_speak(const std::string& message, bool allies_only)
 	{
-		if(message == "") {
+		if(message == "" || message == "/") {
 			return;
 		}
-		bool is_command = (message.at(0) == '/');
+		bool is_command = (message[0] == '/');
+		bool quoted_command = (is_command && message[1] == ' ');
 
 		if(!is_command) {
 			send_chat_message(message, allies_only);
+			return;
+		} else if (quoted_command) {
+			send_chat_message(std::string(message.begin() + 2, message.end()), allies_only);
 			return;
 		}
 		std::string cmd(message.begin() + 1, message.end());
