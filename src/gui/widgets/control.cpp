@@ -527,9 +527,16 @@ std::string tcontrol::get_pango_markup() const
 				}
 
 				SDL_Color colour;
+#if 0
+				/** @todo Test why this doesn't work. */
 				colour.r = lexical_cast_default<Uint8>(rgb[0]);
 				colour.g = lexical_cast_default<Uint8>(rgb[1]);
 				colour.b = lexical_cast_default<Uint8>(rgb[2]);
+#else
+				colour.r = atoi(rgb[0].c_str());
+				colour.g = atoi(rgb[1].c_str());
+				colour.b = atoi(rgb[2].c_str());
+#endif
 
 				pre += colour_prefix(colour);
 				post = "</span>" + post;
@@ -542,6 +549,7 @@ std::string tcontrol::get_pango_markup() const
 		}
 
 		line = pre + escape_string(line) + post;
+		std::cerr << line << '\n';
 	}
 	return utils::join(lines, '\n');
 }
