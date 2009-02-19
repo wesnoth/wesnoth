@@ -395,8 +395,12 @@ void tgrid::layout_use_vertical_scrollbar(const unsigned maximum_height)
 	unsigned reduced = 0;
 	for(size_t y = 0; y < rows_; ++y) {
 
-		const unsigned wanted_height = (too_high - reduced) >= row_height_[y]
-			? 1 : row_height_[y] - (too_high - reduced);
+		if(too_high - reduced >=  row_height_[y]) {
+			DBG_G_L << "tgrid: row " << y << " is too small to be reduced.\n";
+			continue;
+		}
+
+		const unsigned wanted_height = row_height_[y] - (too_high - reduced);
 
 		const unsigned height = row_use_vertical_scrollbar(y, wanted_height);
 
