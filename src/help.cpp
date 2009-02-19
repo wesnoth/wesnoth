@@ -1080,7 +1080,7 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 
 			std::vector<t_string> specials = (*it).special_tooltips(true);
 			for (std::vector<t_string>::iterator sp_it = specials.begin();
-					sp_it != specials.end() && sp_it+1 != specials.end(); ++++sp_it)
+					sp_it != specials.end() && sp_it+1 != specials.end(); sp_it+=2)
 			{
 				if (special_description.find(*sp_it) == special_description.end()) {
 					std::string description = *(sp_it+1);
