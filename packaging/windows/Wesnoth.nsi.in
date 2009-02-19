@@ -10,6 +10,8 @@
   !define MULTIUSER_INSTALLMODE_INSTDIR "Battle for Wesnoth %version"
   !include "MultiUser.nsh"
   !include "MUI2.nsh"
+  !include "nsDialogs.nsh"
+  !include "LogicLib.nsh"
 
 ;--------------------------------
 ;General
@@ -23,7 +25,15 @@
 
   Var StartMenuFolder
   !define UserdataDir Wesnoth1.5
-  !define UserdataFlags "--config-dir ${UserdataDir}"  
+  Var UserdataFlags
+
+;Userdata page variables
+
+  Var Dialog
+  Var UserdataMyDocumentsRadioButton
+  Var UserdataMyDocumentsRadioButtonState
+  Var UserdataInstalldirRadioButton
+  Var UserdataInstalldirRadioButtonState
 
 ;--------------------------------
 ;Interface Settings
@@ -55,10 +65,12 @@
   
   !insertmacro MUI_PAGE_STARTMENU Application $StartMenuFolder
 
+  Page custom UserdataPage UserdataPageLeave
+
   !insertmacro MUI_PAGE_INSTFILES
 
   !define MUI_FINISHPAGE_RUN $INSTDIR\wesnoth.exe
-  !define MUI_FINISHPAGE_RUN_PARAMETERS "${UserdataFlags}"
+  !define MUI_FINISHPAGE_RUN_PARAMETERS "$UserdataFlags"
   !insertmacro MUI_PAGE_FINISH
   
   !insertmacro MUI_UNPAGE_CONFIRM
@@ -165,10 +177,15 @@ Section "Battle for Wesnoth" BfWSection
 
   !insertmacro MUI_STARTMENU_WRITE_BEGIN Application
     
+  ${If} $UserdataMyDocumentsRadioButtonState == ${BST_CHECKED}
+    StrCpy $UserdataFlags "--config-dir ${UserdataDir}"
+  ${Else}
+    StrCpy $UserdataFlags ""
+  ${EndIf}
     ;Create shortcuts
     CreateDirectory "$SMPROGRAMS\$StartMenuFolder"
-    CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Battle for Wesnoth.lnk" "$INSTDIR\wesnoth.exe" "${UserdataFlags}"
-    CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Map editor.lnk" "$INSTDIR\wesnoth.exe" "-e ${UserdataFlags}" "$INSTDIR\wesnoth_editor-icon.ico"
+    CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Battle for Wesnoth.lnk" "$INSTDIR\wesnoth.exe" $UserdataFlags
+    CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Map editor.lnk" "$INSTDIR\wesnoth.exe" "-e $UserdataFlags" "$INSTDIR\wesnoth_editor-icon.ico"
     CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Multiplayer server.lnk" "$INSTDIR\wesnothd.exe"
     CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Manual.lnk" "$INSTDIR\manual\manual.en.html"
     CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Uninstall.lnk" "$INSTDIR\Uninstall.exe"
@@ -184,6 +201,37 @@ Function .onInit
 
   !insertmacro MULTIUSER_INIT
   !insertmacro MUI_LANGDLL_DISPLAY
+
+  StrCpy $UserdataMyDocumentsRadioButtonState ${BST_CHECKED}
+
+FunctionEnd
+
+Function UserdataPage
+
+        nsDialogs::Create /NOUNLOAD 1018
+        Pop $Dialog
+
+        ${If} $Dialog == error
+                Abort
+        ${EndIf}
+
+	${NSD_CreateRadioButton} 0 30u 100%% 10u "Store userdata (preferences, saved games..) in My Documents\My Games\${UserdataDir}"
+        Pop $UserdataMyDocumentsRadioButton
+
+	${NSD_CreateRadioButton} 0 50u 100%% 10u "Store userdata in the install location"
+        Pop $UserdataInstalldirRadioButton
+
+        ${NSD_SetState} $UserdataMyDocumentsRadioButton $UserdataMyDocumentsRadioButtonState
+	${NSD_SetState} $UserdataInstalldirRadioButton $UserdataInstalldirRadioButtonState
+
+	nsDialogs::Show
+
+FunctionEnd
+
+Function UserdataPageLeave
+
+        ${NSD_GetState} $UserdataMyDocumentsRadioButton $UserdataMyDocumentsRadioButtonState
+	${NSD_GetState} $UserdataInstalldirRadioButton $UserdataInstalldirRadioButtonState
 
 FunctionEnd
 
