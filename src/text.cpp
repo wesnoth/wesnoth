@@ -259,6 +259,12 @@ ttext& ttext::set_text(const std::string& text, const bool markedup)
 		if(markedup) {
 			pango_layout_set_markup(layout_, text.c_str(), text.size());
 		} else {
+			/*
+			 * pango_layout_set_text after pango_layout_set_markup might
+			 * leave the layout in an undefined state regarding markup so
+			 * clear it unconditionally.
+			 */
+			pango_layout_set_attributes(layout_, NULL);
 			pango_layout_set_text(layout_, text.c_str(), text.size());
 		}
 		text_ = text;
