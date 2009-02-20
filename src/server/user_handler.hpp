@@ -50,6 +50,11 @@ class user_handler {
 	// implementations
 
 	public:
+		user_handler()
+			: mailer_(NULL)
+		{
+		}
+
 		virtual ~user_handler() {}
 
 		/**
