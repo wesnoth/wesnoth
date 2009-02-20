@@ -18,6 +18,7 @@
 
 #include "foreach.hpp"
 #include "gui/widgets/window.hpp"
+#include "sound.hpp"
 
 namespace gui2 {
 
@@ -58,6 +59,8 @@ void ttoggle_panel::mouse_leave(tevent_handler&)
 void ttoggle_panel::mouse_left_button_click(tevent_handler&)
 {
 	DBG_G_E << "Toggle panel: left mouse button click.\n";
+
+	sound::play_UI_sound(settings::sound_toggle_panel_click);
 
 	if(get_value()) {
 		set_state(ENABLED);
