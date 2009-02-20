@@ -80,10 +80,10 @@ wesnoth_source = \
 	gui/dialogs/title_screen.cpp \
 	gui/dialogs/wml_message.cpp \
 	gui/widgets/button.cpp \
-	gui/widgets/debug.cpp \
 	gui/widgets/canvas.cpp \
 	gui/widgets/control.cpp \
 	gui/widgets/container.cpp \
+	gui/widgets/debug.cpp \
 	gui/widgets/event_handler.cpp \
 	gui/widgets/generator.cpp \
 	gui/widgets/grid.cpp \
