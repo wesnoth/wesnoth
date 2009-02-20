@@ -196,7 +196,7 @@ bool effect::render()
 	const clip_rect_setter clip_setter(screen,clip_rect);
 	if(buffer_ == NULL || buffer_->w != rect.w || buffer_->h != rect.h) {
 		SDL_Rect rect = rect_;
-		buffer_.assign(get_surface_portion(screen,rect,false));
+		buffer_.assign(get_screen_portion(rect));
 	} else {
 		SDL_Rect rect = rect_;
 		SDL_BlitSurface(screen,&rect,buffer_,NULL);

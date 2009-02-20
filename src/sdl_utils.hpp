@@ -186,8 +186,20 @@ surface shadow_image(surface const &surf, bool optimize=true);
 surface recolor_image(surface surf, const std::map<Uint32, Uint32>& map_rgb, bool optimize=true);
 
 surface brighten_image(surface const &surf, fixed_t amount, bool optimize=true);
-// send NULL if the portion is outside of the surface
+
+/** Get a portion of the screen.
+ *  Send NULL if the portion is outside of the surface.
+ */
 surface get_surface_portion(surface const &surf, SDL_Rect &rect, bool optimize=true);
+
+/**
+ *  Get a portion of the screen.
+ *  Send NULL if the portion is outside of the screen.
+ *  Operation and resulting surface is optimized for screen surface.
+ *  Use this if you want to backup/restore underlying screen portion.
+ */
+surface get_screen_portion(SDL_Rect &rect);
+
 surface adjust_surface_alpha(surface const &surf, fixed_t amount, bool optimize=true);
 surface adjust_surface_alpha_add(surface const &surf, int amount, bool optimize=true);
 

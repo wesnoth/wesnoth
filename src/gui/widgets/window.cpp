@@ -283,7 +283,7 @@ void twindow::draw()
 		// We want the labels underneath the window so draw them and use them
 		// as restore point.
 		font::draw_floating_labels(frame_buffer);
-		restorer_ = get_surface_portion(frame_buffer, rect, false);
+		restorer_ = get_screen_portion(rect);
 
 		// Need full redraw so only set ourselves dirty.
 		dirty_list_.push_back(std::vector<twidget*>(1, this));

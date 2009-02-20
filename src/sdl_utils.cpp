@@ -1488,7 +1488,6 @@ surface get_surface_portion(surface const &src, SDL_Rect &area, bool optimize)
 {
 	// Check if there is something in the portion
 	if(area.x >= src->w || area.y >= src->h || area.x + area.w < 0 || area.y + area.h < 0) {
-		//std::cerr << "illegal surface portion...\n";
 		return NULL;
 	}
 
@@ -1500,6 +1499,7 @@ surface get_surface_portion(surface const &src, SDL_Rect &area, bool optimize)
 	}
 
 	surface dst = create_neutral_surface(area.w,area.h);
+
 	if(dst == NULL) {
 		std::cerr << "Could not create a new surface in get_surface_portion()\n";
 		return NULL;
@@ -1508,6 +1508,37 @@ surface get_surface_portion(surface const &src, SDL_Rect &area, bool optimize)
 	SDL_BlitSurface(src, &area, dst, NULL);
 
 	return optimize ? create_optimized_surface(dst) : dst;
+}
+
+surface get_screen_portion(SDL_Rect &area)
+{
+	surface screen = SDL_GetVideoSurface();
+	if (screen == NULL) {
+		return NULL;
+	}
+
+	if(area.x >= screen->w || area.y >= screen->h ||
+			 area.x + area.w < 0 || area.y + area.h < 0) {
+		return NULL;
+	}
+
+	if(area.x + area.w > screen->w) {
+		area.w = screen->w - area.x;
+	}
+	if(area.y + area.h > screen->h) {
+		area.h = screen->h - area.y;
+	}
+
+	surface surf = create_compatible_surface(screen, area.w, area.h);
+
+	if(surf == NULL) {
+		std::cerr << "Could not create a new compatible surface in get_screen_portion()\n";
+		return NULL;
+	}
+	
+	SDL_BlitSurface(screen, &area, surf, NULL);
+
+	return surf;
 }
 
 namespace {
