@@ -161,6 +161,14 @@ protected:
 	/** After a recalculation the canvasses also need to be updated. */
 	virtual void update_canvas();
 
+	/**
+	 * Callback for subclasses to get notified about positioner movement.
+	 *
+	 * @todo This is a kind of hack due to the fact there's no simple
+	 * callback slot mechanism. See whether we can implement a generic way to
+	 * attach callback which would remove quite some extra code.
+	 */
+	virtual void child_callback_positioner_moved() {}
 private:
 	/**
 	 * Possible states of the widget.

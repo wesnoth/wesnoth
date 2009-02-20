@@ -87,6 +87,10 @@ public:
 	 *                            the result of get_value().
 	 */
 	t_string get_value_label() const;
+protected:
+
+	/** Inherited from tscrollbar. */
+	void child_callback_positioner_moved();
 
 private:
 

@@ -301,6 +301,8 @@ void tscrollbar_::move_positioner(const int distance)
 	if(position != item_position_) {
 		item_position_ = position;
 
+		child_callback_positioner_moved();
+
 		if(callback_positioner_move_) {
 			callback_positioner_move_(this);
 		}

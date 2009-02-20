@@ -18,7 +18,7 @@
 
 #include "foreach.hpp"
 #include "formatter.hpp"
-
+#include "sound.hpp"
 
 namespace gui2 {
 
@@ -132,6 +132,11 @@ t_string tslider::get_value_label() const
 	} else {
 		return t_string((formatter() << get_value()).str());
 	}
+}
+
+void tslider::child_callback_positioner_moved()
+{
+	sound::play_UI_sound(settings::sound_slider_adjust);
 }
 
 unsigned tslider::minimum_positioner_length() const
