@@ -50,6 +50,7 @@ terrain_palette::terrain_palette(display &gui, const size_specs &sizes,
 	, terrain_map_()
 	, terrains_()
 	, terrain_groups_()
+	, non_core_terrains_()
 	, checked_group_btn_(0)
 	, top_button_(gui.video(), "", gui::button::TYPE_PRESS, "uparrow-button")
 	, bot_button_(gui.video(), "", gui::button::TYPE_PRESS, "downarrow-button")
