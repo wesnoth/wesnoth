@@ -14,7 +14,10 @@
 
 #include "sample_user_handler.hpp"
 
-suh::suh(config c) {
+suh::suh(config c)
+	: user_expiration_(0)
+	, users_()
+{
 
 	if(c["user_expiration"].empty()) {
 		user_expiration_ = 60;
