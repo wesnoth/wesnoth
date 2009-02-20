@@ -125,6 +125,7 @@ node::node(document& doc, node* parent) :
 	attr_(),
 	parent_(parent),
 	children_(),
+	ordered_children_(),
 	output_cache_()
 {
 }
@@ -134,6 +135,7 @@ node::node(document& doc, node* parent, const char** str, int depth) :
 	attr_(),
 	parent_(parent),
 	children_(),
+	ordered_children_(),
 	output_cache_()
 {
 	if(depth >= 1000) {
