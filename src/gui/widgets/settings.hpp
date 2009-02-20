@@ -364,16 +364,19 @@ struct twindow_definition : public tpanel_definition
 
 struct tgui_definition
 {
-	tgui_definition() :
-		id(),
-		description(),
-		control_definition(),
-		windows(),
-		window_types(),
-		popup_show_delay_(0),
-		popup_show_time_(0),
-		help_show_time_(0),
-		double_click_time_(0)
+	tgui_definition()
+		: id()
+		, description()
+		, control_definition()
+		, windows()
+		, window_types()
+		, popup_show_delay_(0)
+		, popup_show_time_(0)
+		, help_show_time_(0)
+		, double_click_time_(0)
+		, sound_button_click_()
+		, sound_toggle_button_click_()
+		, sound_slider_adjust_()
 	{
 	}
 
@@ -403,6 +406,11 @@ private:
 	unsigned popup_show_time_;
 	unsigned help_show_time_;
 	unsigned double_click_time_;
+
+	std::string sound_button_click_;
+	std::string sound_toggle_button_click_;
+	std::string sound_toggle_panel_click_;
+	std::string sound_slider_adjust_;
 };
 
 	tresolution_definition_ptr get_control(
@@ -430,6 +438,11 @@ private:
 		extern unsigned popup_show_time;
 		extern unsigned help_show_time;
 		extern unsigned double_click_time;
+
+		extern std::string sound_button_click;
+		extern std::string sound_toggle_button_click;
+		extern std::string sound_toggle_panel_click;
+		extern std::string sound_slider_adjust;
 	}
 
 } // namespace gui2

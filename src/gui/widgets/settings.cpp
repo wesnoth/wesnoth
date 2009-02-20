@@ -42,6 +42,11 @@ namespace settings {
 	unsigned help_show_time = 0;
 	unsigned double_click_time = 0;
 
+	std::string sound_button_click = "";
+	std::string sound_toggle_button_click = "";
+	std::string sound_toggle_panel_click = "";
+	std::string sound_slider_adjust = "";
+
 } // namespace settings
 
 namespace {
@@ -277,7 +282,32 @@ const std::string& tgui_definition::read(const config& cfg)
  *                                     widget.
  *     double_click_time (unsigned)    The time between two clicks to still be a
  *                                     double click.
+ *
+ *     sound_button_click (string = "")
+ *                                     The sound played if a button is
+ *                                     clicked.
+ *     sound_toggle_button_click (string = "")
+ *                                     The sound played if a toggle button is
+ *                                     clicked.
+ *     sound_toggle_panel_click (string = "")
+ *                                     The sound played if a toggle panel is
+ *                                     clicked. Normally the toggle panels
+ *                                     are the items in a listbox. If a
+ *                                     toggle button is in the listbox it's
+ *                                     sound is played.
+ *     sound_slider_adjust (string = "")
+ *                                     The sound played if a slider is
+ *                                     adjusted.
  * @end_table
+ */
+
+/**
+ * @todo Regarding sounds:
+ * Need to evaluate but probably we want the widget definition be able to:
+ * - Override the default (and clear it). This will allow toggle buttons in a
+ *   listbox to sound like a toggle panel.
+ * - Override the default and above per instance of the widget, some buttons
+ *   can give a different sound.
  */
 	const config& settings = *cfg.child("settings");
 
@@ -288,6 +318,11 @@ const std::string& tgui_definition::read(const config& cfg)
 
 	VALIDATE(double_click_time_, missing_mandatory_wml_key("settings", "double_click_time"));
 
+	sound_button_click_ = settings["sound_button_click"];
+	sound_toggle_button_click_ = settings["sound_toggle_button_click"];
+	sound_toggle_panel_click_ = settings["sound_toggle_panel_click"];
+	sound_slider_adjust_ = settings["sound_slider_adjust"];
+
 	return id;
 }
 
@@ -297,6 +332,10 @@ void tgui_definition::activate() const
 	settings::popup_show_time = popup_show_time_;
 	settings::help_show_time = help_show_time_;
 	settings::double_click_time = double_click_time_;
+	settings::sound_button_click = sound_button_click_;
+	settings::sound_toggle_button_click = sound_toggle_button_click_;
+	settings::sound_toggle_panel_click = sound_toggle_panel_click_;
+	settings::sound_slider_adjust = sound_slider_adjust_;
 }
 
 template<class T>
