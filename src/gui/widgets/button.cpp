@@ -17,6 +17,7 @@
 #include "gui/widgets/button.hpp"
 
 #include "gui/widgets/window.hpp"
+#include "sound.hpp"
 
 namespace gui2 {
 
@@ -53,6 +54,8 @@ void tbutton::mouse_left_button_up(tevent_handler&)
 void tbutton::mouse_left_button_click(tevent_handler&)
 {
 	DBG_G_E << "Button: left mouse button click.\n";
+
+	sound::play_UI_sound(settings::sound_button_click);
 
 	// If a button has a retval do the default handling.
 	if(retval_ != 0) {
