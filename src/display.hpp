@@ -723,7 +723,7 @@ protected:
 	// with TDRAWING_BUFFER_USES_VECTOR
 	//     20080308 -- Mordante
 
-	/** 
+	/**
 	 * Compare functor for the blitting.
 	 *
 	 * The blitting order must be sorted on y value first instead of x so added
@@ -763,10 +763,10 @@ public:
 	 *                           drawing order.
 	 * @param blit               The structure to blit.
 	 */
-	void drawing_buffer_add(const tdrawing_layer layer, 
+	void drawing_buffer_add(const tdrawing_layer layer,
 			const map_location& loc, const tblit& blit)
-	{ 
-		drawing_buffer_[layer][loc].push_back(blit); 
+	{
+		drawing_buffer_[layer][loc].push_back(blit);
 	}
 
 protected:

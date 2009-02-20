@@ -35,10 +35,10 @@ public:
 
 	virtual ~tcontrol() {}
 
-	/** 
+	/**
 	 * The markup mode of the label.
 	 *
-	 * The markup could have been a boolean but since we have the old 
+	 * The markup could have been a boolean but since we have the old
 	 * wml markup as well we need to convert that markup to the markup used
 	 * by pango.
 	 *
@@ -47,9 +47,9 @@ public:
 	enum tmarkup_mode {
 		NO_MARKUP,    /**< The control doesn't use markup for its text. */
 		PANGO_MARKUP, /**< The control uses the pango markup feature. */
-		WML_MARKUP   /**< 
+		WML_MARKUP   /**<
 					    * The control uses the wml_markup feature.
-					    * The engine can only handle pango markup and this 
+					    * The engine can only handle pango markup and this
 					    * markup will be converted to pango markup before
 					    * sending to the layout engine.
 					    */

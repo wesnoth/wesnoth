@@ -435,7 +435,7 @@ surface locator::load_image_sub_file() const
 						ERR_DP
 							<< "bailing out from TC\n";
 					}
-					
+
 				}
 				// Palette recolor (RC)
 				else if("RC" == function) {

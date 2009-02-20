@@ -462,7 +462,7 @@ void node::remove_ordered_child_list(int child_map_index)
 			if(i->child_map_index > child_map_index) {
 				i->child_map_index--;
 			}
-			
+
 			++i;
 		}
 	}

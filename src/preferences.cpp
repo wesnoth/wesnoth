@@ -235,7 +235,7 @@ void set_language(const std::string& s)
 	preferences::set("locale", s);
 }
 
-/** 
+/**
  * @todo the gamma correction seems to cause quite some bugs and the feature
  * seems a bit useless so disable the code to evaluate the usefulness.
  */
@@ -260,7 +260,7 @@ int gamma()
 	}
 
 	return lexical_cast_default<int>(get("gamma"), default_value);
-*/	
+*/
 }
 
 void _set_gamma(int gamma)

@@ -2535,13 +2535,13 @@ int ai_manager::reap_ais()
 		// unconditionally.
 		/*
 		   if( itor->second->manager_reap_ai()) {
-		   */		  
+		   */
 		// Delete the AI from the managed map
 		ais.erase( itor++ ) ;
 		++counter ;
-		/*		
+		/*
 				}
-				*/		
+				*/
 	}
 
 	return counter ;

@@ -402,7 +402,7 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	set_friends_menu();
 }
 
-/** 
+/**
  * @todo the gamma correction seems to cause quite some bugs and the feature
  * seems a bit useless so disable the code to evaluate the usefulness.
  */

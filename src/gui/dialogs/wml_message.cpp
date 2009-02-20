@@ -110,11 +110,11 @@ void twml_message_::pre_show(CVideo& video, twindow& window)
 	 * - The rest is the third column (the wiki only specifies two columns
 	 *   so only implement two of them).
 	 */
-	/** 
+	/**
 	 * @todo This syntax looks like a bad hack, it would be nice to write
 	 * a new syntax which doesn't use those hacks (also avoids the problem
 	 * with special meanings for certain characters.
-	 */ 	
+	 */
 	if(!option_list_.empty()) {
 		std::map<std::string, string_map> data;
 		for(size_t i = 0; i < option_list_.size(); ++i) {
@@ -138,7 +138,7 @@ void twml_message_::pre_show(CVideo& video, twindow& window)
 					label.erase(0, 1);
 				}
 
-				std::vector<std::string> row_data = 
+				std::vector<std::string> row_data =
 						utils::split(label, '=', 0);
 				label = "";
 
@@ -164,7 +164,7 @@ void twml_message_::pre_show(CVideo& video, twindow& window)
 			options->add_row(data);
 
 			// Set the markup flag.
-			assert(options->generator_);			
+			assert(options->generator_);
 			tgrid& grid = options->generator_->get_item(i);
 
 			tcontrol* control = dynamic_cast<tcontrol*>(
@@ -179,8 +179,8 @@ void twml_message_::pre_show(CVideo& video, twindow& window)
 		}
 
 		// Avoid negetive and 0 since item 0 is already selected.
-		if(*chosen_option_ > 0 
-				&& static_cast<size_t>(*chosen_option_) 
+		if(*chosen_option_ > 0
+				&& static_cast<size_t>(*chosen_option_)
 				< option_list_.size()) {
 
 			options->select_row(*chosen_option_);
@@ -188,7 +188,7 @@ void twml_message_::pre_show(CVideo& video, twindow& window)
 
 		if(!has_input_) {
 			window.keyboard_capture(options);
-			window.set_easy_close(false); 
+			window.set_easy_close(false);
 			window.set_escape_disabled(true);
 		} else {
 			window.add_to_keyboard_chain(options);
@@ -256,7 +256,7 @@ int show_wml_message(const bool left_side
 	if(!option_list.empty()) {
 		dlg->set_option_list(option_list, chosen_option);
 	}
-	
+
 	dlg->show(video);
 	return dlg->get_retval();
 }

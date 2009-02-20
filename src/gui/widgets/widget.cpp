@@ -60,7 +60,7 @@ void twidget::set_size(const tpoint& origin, const tpoint& size)
 twidget* twidget::find_widget(const tpoint& coordinate,
 		const bool must_be_active)
 {
-	if(visible_ == INVISIBLE 
+	if(visible_ == INVISIBLE
 			|| (visible_ == HIDDEN && must_be_active)) {
 		return 0;
 	}
@@ -74,7 +74,7 @@ twidget* twidget::find_widget(const tpoint& coordinate,
 const twidget* twidget::find_widget(const tpoint& coordinate,
 		const bool must_be_active) const
 {
-	if(visible_ == INVISIBLE 
+	if(visible_ == INVISIBLE
 			|| (visible_ == HIDDEN && must_be_active)) {
 		return 0;
 	}

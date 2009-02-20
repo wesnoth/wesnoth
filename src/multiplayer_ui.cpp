@@ -120,10 +120,10 @@ void level_to_gamestate(config& level, game_state& state)
 		state.set_variables(*vars);
 	}
 	state.set_menu_items(level.get_children("menu_item"));
-	
+
 	//Check whether it is a save-game by looking for snapshot data
 	const bool saved_game = (level.child("snapshot") && level.child("snapshot")->child("side"));
-	
+
 	//It might be a MP campaign start-of-scenario save
 	//In this case, it's not entirely a new game, but not a save, either
 	//Check whether it is no savegame and the starting_pos contains [player] information
@@ -138,7 +138,7 @@ void level_to_gamestate(config& level, game_state& state)
 		}
 		state.set_menu_items(state.snapshot.get_children("menu_item"));
 	}
-	
+
 	//If it is a start-of-scenario save, we need to load the player information from
 	//the [player] tags
 	if(start_of_scenario){
@@ -151,7 +151,7 @@ void level_to_gamestate(config& level, game_state& state)
 		const config::child_list& saved_sides = (saved_game ?
 			state.snapshot.get_children("side") :
 			state.starting_pos.get_children("side"));
-			
+
 		const config::child_list& level_sides = level.get_children("side");
 		for(config::child_list::const_iterator side = saved_sides.begin(); side != saved_sides.end(); ++side) {
 			for(config::child_list::const_iterator lside = level_sides.begin(); lside != level_sides.end(); ++lside) {

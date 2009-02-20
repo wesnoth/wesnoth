@@ -529,13 +529,13 @@ const frame_parameters unit_frame::merge_parameters(int current_time,const frame
 	result.image = current_val.image.is_void() || current_val.image.get_filename() == ""?animation_val.image:current_val.image;
 	if(primary && ( result.image.is_void() || result.image.get_filename().empty())) {
 		result.image = engine_val.image;
-	}	
+	}
 
 	/** engine provides a default image to use for the unit when none is available */
 	result.image_diagonal = current_val.image_diagonal.is_void() || current_val.image_diagonal.get_filename() == ""?animation_val.image_diagonal:current_val.image_diagonal;
 	if(primary && ( result.image_diagonal.is_void() || result.image_diagonal.get_filename().empty())) {
 		result.image_diagonal = engine_val.image_diagonal;
-	}	
+	}
 
 	/** engine provides a string for "stoned" and "team color" modifications */
 		result.image_mod = current_val.image_mod +animation_val.image_mod;

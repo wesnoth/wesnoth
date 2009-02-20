@@ -165,7 +165,7 @@ void show_about(display &disp, std::string campaign)
 	CVideo &video = disp.video();
 	surface screen = video.getSurface();
 	if (screen == NULL) return;
-	
+
 	std::vector<std::string> text = about::get_text(campaign);
 	SDL_Rect screen_rect = {0, 0, screen->w, screen->h};
 
@@ -214,7 +214,7 @@ void show_about(display &disp, std::string campaign)
 	//TODO: use values proportionnal to screen ?
 	// distance from top of map image to top of scrolling text
 	const int top_margin = 60;
-	// distance from bottom of scrolling text to bottom of map image		
+	// distance from bottom of scrolling text to bottom of map image
 	const int bottom_margin = 40;
 	// distance from left of scrolling text to the frame border
 	const int text_left_padding = screen->w/32;
@@ -321,7 +321,7 @@ void show_about(display &disp, std::string campaign)
 				cur_line++;
 			} while(y < text_rect.y + text_rect.h);
 		}
-		
+
 		// performs the actual scrolling
 		offset += scroll_speed;
 		if (offset>=first_line_height) {

@@ -88,7 +88,7 @@ std::string join(T const &v, char c = ',')
                 if (boost::next(i) != v.end())
                         str << c;
         }
- 
+
         return str.str();
 }
 

@@ -1535,7 +1535,7 @@ surface get_screen_portion(SDL_Rect &area)
 		std::cerr << "Could not create a new compatible surface in get_screen_portion()\n";
 		return NULL;
 	}
-	
+
 	SDL_BlitSurface(screen, &area, surf, NULL);
 
 	return surf;

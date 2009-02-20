@@ -239,7 +239,7 @@ public:
 	 * @todo this function should be merged with the hotkey support once
 	 * that has been added.
 	 */
-	void set_escape_disabled(const bool escape_disabled) 
+	void set_escape_disabled(const bool escape_disabled)
 		{ escape_disabled_ = escape_disabled; }
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/

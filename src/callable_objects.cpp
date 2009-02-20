@@ -13,7 +13,7 @@
 
 #include "callable_objects.hpp"
 
-template <typename T, typename K> 
+template <typename T, typename K>
 variant convert_map( const std::map<T, K>& input_map ) {
 	std::map<variant,variant> tmp;
 
@@ -24,7 +24,7 @@ variant convert_map( const std::map<T, K>& input_map ) {
 	return variant( &tmp );
 }
 
-template <typename T> 
+template <typename T>
 variant convert_vector( const std::vector<T>& input_vector ) {
 	std::vector<variant> tmp;
 

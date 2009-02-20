@@ -273,7 +273,7 @@ public:
 
 	virtual bool in_game() const { return in_game_; }
 	void draw_bar(const std::string& image, int xpos, int ypos,
-		const map_location& loc, size_t height, double filled, 
+		const map_location& loc, size_t height, double filled,
 		const SDL_Color& col, fixed_t alpha);
 
 	/**

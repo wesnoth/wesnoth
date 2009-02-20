@@ -397,8 +397,8 @@ std::string colour_prefix(const SDL_Color& colour)
 
 	// Cast to unsigned is needed to avoid being interpreted as a char.
 	result << "<span foreground=\"#"
-			<< std::hex 
-			<< std::setfill('0') << std::setw(2) 
+			<< std::hex
+			<< std::setfill('0') << std::setw(2)
 			<< static_cast<unsigned>(colour.r)
 			<< std::setfill('0') << std::setw(2)
 			<< static_cast<unsigned>(colour.g)
@@ -409,7 +409,7 @@ std::string colour_prefix(const SDL_Color& colour)
 	return result.str();
 }
 
-/** 
+/**
  * Escapes a string to be used in a pango formatted string.
  *
  * This function also changes every "\x" to "x" thus also "\\" to "\". This
@@ -419,7 +419,7 @@ std::string escape_string(std::string str)
 {
 	struct tconverter
 	{
-		tconverter(const std::string& string) 
+		tconverter(const std::string& string)
 			: str(g_markup_escape_text(string.c_str(), -1))
 		{
 		}
@@ -429,7 +429,7 @@ std::string escape_string(std::string str)
 			g_free(str);
 		}
 
-		gchar* str;	
+		gchar* str;
 	};
 
 	size_t offset = str.find('\\', 0);
@@ -438,7 +438,7 @@ std::string escape_string(std::string str)
 		++offset;
 		offset = str.find('\\', offset);
 	}
-	
+
 	tconverter converter(str);
 	return std::string(converter.str);
 }
@@ -498,7 +498,7 @@ std::string tcontrol::get_pango_markup() const
 			} else if(c == font::COLOR_TEXT) {
 				/*
 				 * Crude parsing of <1,23,123>.
-				 * 
+				 *
 				 * The old engine didn't specify the error behaviour so we
 				 * define our own.
 				 *

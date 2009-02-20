@@ -119,7 +119,7 @@ terrain_palette::terrain_palette(display &gui, const size_specs &sizes,
                 }
             }
 		}
-        // A terrain is considered core iff it does not appear in any 
+        // A terrain is considered core iff it does not appear in any
         // non-core terrain group
         if (core) {
     		// Add the terrain to the default group

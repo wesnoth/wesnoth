@@ -523,7 +523,7 @@ void game_display::draw_minimap_units()
 }
 
 void game_display::draw_bar(const std::string& image, int xpos, int ypos,
-		const map_location& loc, size_t height, double filled, 
+		const map_location& loc, size_t height, double filled,
 		const SDL_Color& col, fixed_t alpha)
 {
 

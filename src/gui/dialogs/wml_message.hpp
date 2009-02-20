@@ -127,7 +127,7 @@ private:
 /**
  *  Helper function to show a portrait.
  *
- *  @param left_side              If true the portrait is shown on the left, 
+ *  @param left_side              If true the portrait is shown on the left,
  *                                on the right side otherwise.
  *  @param video                  The display variable.
  *  @param title                  The title of the dialog.

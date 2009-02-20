@@ -1699,7 +1699,7 @@ void connect::load_game()
 
 config* connect::current_config(){
 	config* cfg_level = NULL;
-	
+
 	//It might make sense to invent a mechanism of some sort to check whether a config node contains information
 	//that you can load from(side information, specifically)
 	if (level_.child("snapshot") != NULL && level_.child("snapshot")->child("side") != NULL){

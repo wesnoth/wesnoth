@@ -718,17 +718,17 @@ void display::drawing_buffer_commit()
 	static const tdrawing_layer layer_groups[] = {
 		LAYER_TERRAIN_BG,
 		LAYER_UNIT_FIRST,
-		LAYER_UNIT_MOVE_DEFAULT,		
+		LAYER_UNIT_MOVE_DEFAULT,
 		LAYER_LAST_LAYER };
 
 	for(size_t z = 1; z < sizeof(layer_groups)/sizeof(layer_groups[0]); ++z) {
 
-		for(int y = -get_map().border_size(); 
+		for(int y = -get_map().border_size();
 				y < get_map().total_height(); ++y) {
 
 #if TDRAWING_BUFFER_USES_VECTOR
 			int layer = -1;
-#endif			
+#endif
 			for(tdrawing_buffer::const_iterator
 					layer_itor = drawing_buffer_.begin(),
 					layer_itor_end = drawing_buffer_.end();
@@ -757,7 +757,7 @@ void display::drawing_buffer_commit()
 						drawing_iterator = layer_itor->second.begin(),
 						drawing_iterator_end = layer_itor->second.end();
 #endif
-						drawing_iterator != drawing_iterator_end; 
+						drawing_iterator != drawing_iterator_end;
 						++drawing_iterator) {
 
 					if(drawing_iterator->first.y != y) {

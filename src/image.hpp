@@ -164,7 +164,7 @@ namespace image {
 		 *
 		 * @return                Whether or not the file exists.
 		 */
-		bool file_exists(); 
+		bool file_exists();
 
 		// loads the image it is pointing to from the disk
 		surface load_from_disk() const;
