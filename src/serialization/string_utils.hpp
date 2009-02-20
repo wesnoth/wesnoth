@@ -23,7 +23,7 @@
 #include <sstream>
 #include <string>
 #include <vector>
-#include <boost/utility.hpp>
+#include <boost/next_prior.hpp>
 #include "../tstring.hpp"
 #include "../util.hpp"
 
