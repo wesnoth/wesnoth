@@ -199,7 +199,7 @@ void gamemap::read(const std::string& data)
 	} catch(t_translation::error& e) {
 		// We re-throw the error but as map error.
 		// Since all codepaths test for this, it's the least work.
-		throw incorrect_map_format_exception(e.message.c_str());
+		throw incorrect_map_format_exception(e.message);
 	}
 
 	// Convert the starting positions to the array

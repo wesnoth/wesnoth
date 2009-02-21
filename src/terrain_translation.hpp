@@ -24,6 +24,7 @@
 
 namespace t_translation {
 
+
 	typedef Uint32 t_layer;
 	const t_layer WILDCARD = 0x2A000000;
 	const t_layer NO_LAYER = 0xFFFFFFFF;
@@ -94,8 +95,8 @@ namespace t_translation {
 	// Note: atm most thrown result in a crash, but I like
 	// an uncatched exception better than an assert.
 	struct error {
-		error(const std::string& msg) : message(msg) {}
-		std::string message;
+		error(const char* msg) : message(msg) {}
+		const char* const message;
 	};
 
 	// Some types of terrain which must be known, and can't just
