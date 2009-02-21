@@ -191,24 +191,35 @@ class attack {
 		game_display& gui_;
 		const gamemap& map_;
 		std::vector<team>& teams_;
-		map_location attacker_;
-		map_location defender_;
-		int attack_with_;
-		int defend_with_;
-		unit_map& units_;
-		const gamestatus& state_;
-		unit_map::iterator a_,d_; // attacker and defender
-		size_t a_id_, d_id_;
-		std::string a_weap_id_, d_weap_id_;
-		std::stringstream errbuf_;
+
+		/** structure holding unit info used in the attack action */
+		struct unit_info {
+			const map_location loc_;
+			int weapon_;
+			const unit_map::iterator iter_;
+			size_t id_;    /**< unit.underlying_id() */
+			std::string weap_id_;
+			int orig_attacks_;    
+			int n_attacks_;    /**< number of attacks left */
+			int cth_;
+			int damage_;
+			int xp_;	
+
+			unit_info(const map_location& loc, int weapon, unit_map& units);
+			unit& get_unit();
+			bool valid();
+
+			std::string dump();		
+		};
+
 		battle_context* bc_;
 		const battle_context::unit_stats* a_stats_;
 		const battle_context::unit_stats* d_stats_;
-		int orig_attacks_,orig_defends_;
-		int n_attacks_,n_defends_;
-		int attacker_cth_,defender_cth_;
-		int attacker_damage_,defender_damage_;
-		int attackerxp_,defenderxp_;
+
+		unit_info a_, d_;
+		unit_map& units_;
+		const gamestatus& state_;
+		std::stringstream errbuf_;
 
 		bool update_display_;
 		bool OOS_error_;
