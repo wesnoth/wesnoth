@@ -714,11 +714,13 @@ void display::drawing_buffer_commit()
 	 *   - In the row render the columns from low to high.
 	 */
 
-	// The drawing is done per layer_group.
+	// The drawing is done per layer_group, the range per group is [low, high).
 	static const tdrawing_layer layer_groups[] = {
 		LAYER_TERRAIN_BG,
 		LAYER_UNIT_FIRST,
 		LAYER_UNIT_MOVE_DEFAULT,
+		// Make sure the movement doesn't show above fog and reachmap.
+		LAYER_REACHMAP, 
 		LAYER_LAST_LAYER };
 
 	for(size_t z = 1; z < sizeof(layer_groups)/sizeof(layer_groups[0]); ++z) {
