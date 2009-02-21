@@ -280,7 +280,7 @@ static void blur_helper(CVideo&,int,int)
 static void blur_helper(CVideo& video, int y, int h)
 {
 	SDL_Rect blur_rect = { 0, y, screen_area().w, h };
-	surface blur = get_screen_portion(blur_rect);
+	surface blur = get_surface_portion(video.getSurface(), blur_rect);
 	blur = blur_surface(blur, 1, false);
 	video.blit_surface(0, y, blur);
 }

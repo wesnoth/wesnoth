@@ -169,7 +169,7 @@ surface stretch_surface_horizontal(
  *
  *  @return                  An optimized surface.
  *                           returned.
- *  @retval 0                Returned upon error.
+ * 
  *  @retval surf             Returned if h == surf->h, note this ignores the
  *                           optimize flag.
  */
@@ -183,22 +183,24 @@ surface greyscale_image(surface const &surf, bool optimize=true);
 surface darken_image(surface const &surf, bool optimize=true);
 /** create an heavy shadow of the image, by blurring, increasing alpha and darkening */
 surface shadow_image(surface const &surf, bool optimize=true);
-surface recolor_image(surface surf, const std::map<Uint32, Uint32>& map_rgb, bool optimize=true);
+surface recolor_image(surface surf, const std::map<Uint32, Uint32>& map_rgb,
+	bool optimize=true);
 
 surface brighten_image(surface const &surf, fixed_t amount, bool optimize=true);
 
 /** Get a portion of the screen.
- *  Send NULL if the portion is outside of the surface.
+ *  Send NULL 
+ *  @param surf              The source surface.
+ *  @param rect              The portion of the source surface to copy.
+ *  @param optimize          Optimize by converting to result to display format.
+ *                           Note that it's only useful if the source is not the
+ *                           screen and you plan to blit the result on screen.
+ *  @return                  A surface containing the portion of the source.
+ *                           No RLE or Alpha bits are set.
+ *  @retval 0                if error or the portion is outside of the surface.
  */
-surface get_surface_portion(surface const &surf, SDL_Rect &rect, bool optimize=true);
-
-/**
- *  Get a portion of the screen.
- *  Send NULL if the portion is outside of the screen.
- *  Operation and resulting surface is optimized for screen surface.
- *  Use this if you want to backup/restore underlying screen portion.
- */
-surface get_screen_portion(SDL_Rect &rect);
+surface get_surface_portion(surface const &surf, SDL_Rect &rect,
+	bool optimize_format=false);
 
 surface adjust_surface_alpha(surface const &surf, fixed_t amount, bool optimize=true);
 surface adjust_surface_alpha_add(surface const &surf, int amount, bool optimize=true);
