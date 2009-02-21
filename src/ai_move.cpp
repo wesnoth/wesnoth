@@ -133,35 +133,40 @@ std::vector<ai::target> ai::find_targets(unit_map::const_iterator leader, const 
 	}
 
 	double corner_distance = distance_between(map_location(0,0), map_location(map_.w(),map_.h()));
+	double village_value = current_team().village_value();
 	if(has_leader && current_team().village_value() > 0.0) {
 		const std::vector<location>& villages = map_.villages();
 		for(std::vector<location>::const_iterator t =
 				villages.begin(); t != villages.end(); ++t) {
 
 			assert(map_.on_board(*t));
-			bool get_village = true;
-			for(size_t i = 0; i != teams_.size(); ++i) {
-				if(!current_team().is_enemy(i+1) && teams_[i].owns_village(*t)) {
-					// check if our village is threatened
-					if (is_accessible(*t, enemy_dstsrc))
-					{
-						// Our village is threated by enemy
-						// We calculate enemy_power/our_power and multiple village value with that
-						// to get value for adding more defense
-						const double enemy = power_projection(*t, enemy_dstsrc)*1.7;
-						const double our = power_projection(*t, friends_dstsrc);
-						const double value = current_team().village_value()*our/enemy;
-						add_target(target(*t, value, target::SUPPORT));
-					}
-					get_village = false;
+			bool ally_village = false;
+			for (size_t i = 0; i != teams_.size(); ++i)
+			{
+				if (!current_team().is_enemy(i + 1) && teams_[i].owns_village(*t)) {
+					ally_village = true;
 					break;
 				}
 			}
 
-			if(get_village) {
-				double value = current_team().village_value();
-				value *= 1.0 - static_cast<double>(distance_between(*t,leader->first))/corner_distance;
-				LOG_AI << "found village target... " << *t << " with value: " << value << " distance: " << static_cast<double>(distance_between(*t,leader->first)) << "\n";
+			if (ally_village)
+			{
+				double enemy = power_projection(*t, enemy_dstsrc);
+				if (enemy > 0)
+				{
+					enemy *= 1.7;
+					double our = power_projection(*t, friends_dstsrc);
+					double value = village_value * our / enemy;
+					add_target(target(*t, value, target::SUPPORT));
+				}
+			}
+			else
+			{
+				double leader_distance = distance_between(*t, leader->first);
+				double value = village_value * (1.0 - leader_distance / corner_distance);
+				LOG_AI << "found village target... " << *t
+					<< " with value: " << value
+					<< " distance: " << leader_distance << '\n';
 				targets.push_back(target(*t,value,target::VILLAGE));
 			}
 		}
