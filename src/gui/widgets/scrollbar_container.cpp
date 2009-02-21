@@ -546,7 +546,13 @@ void tscrollbar_container::show_content_rect(const SDL_Rect& rect)
 	assert(horizontal_scrollbar_ && vertical_scrollbar_);
 
 	// Set the bottom right location first if it doesn't fit the top left
-	// will look good.
+	// will look good. First calculate the left and top position depending on
+	// the current position.
+
+	const int left_position = horizontal_scrollbar_->get_item_position() 
+			+ (rect.x - content_->get_x());
+	const int top_position = vertical_scrollbar_->get_item_position() 
+			+ (rect.y - content_->get_y());
 
 	// bottom.
 	const int wanted_bottom = rect.y + rect.h;
@@ -567,17 +573,17 @@ void tscrollbar_container::show_content_rect(const SDL_Rect& rect)
 	}
 
 	// top.
-	distance = rect.y - content_->get_y();
-	if(distance < 0) {
-		 vertical_scrollbar_->set_item_position(
-				 vertical_scrollbar_->get_item_position() + distance);
+	if(top_position < static_cast<int>(
+				vertical_scrollbar_->get_item_position())) {
+
+		vertical_scrollbar_->set_item_position(top_position);
 	}
 
 	// left.
-	distance = content_->get_x() - rect.x;
-	if(distance < 0) {
-		 horizontal_scrollbar_->set_item_position(
-				 horizontal_scrollbar_->get_item_position() + distance);
+	if(left_position < static_cast<int>(
+				horizontal_scrollbar_->get_item_position())) {
+
+		horizontal_scrollbar_->set_item_position(left_position);
 	}
 
 	// Update.
