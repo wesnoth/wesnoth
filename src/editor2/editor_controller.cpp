@@ -457,7 +457,7 @@ void editor_controller::save_map_as_dialog()
 	int overwrite_res = 1;
 	do {
 		input_name = old_input_name;
-		res = dialogs::show_file_chooser_dialog(gui(), input_name, _("Save the Map As"));
+		res = dialogs::show_file_chooser_dialog_save(gui(), input_name, _("Save the Map As"));
 		if (res == 0) {
 			if (file_exists(input_name)) {
 				overwrite_res = gui::dialog(gui(), "",

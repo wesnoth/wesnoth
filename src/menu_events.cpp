@@ -609,7 +609,7 @@ private:
 		int res = 0;
 		int overwrite = 1;
 		do {
-			res = dialogs::show_file_chooser_dialog(*gui_, input_name, _("Save the Map As"));
+			res = dialogs::show_file_chooser_dialog_save(*gui_, input_name, _("Save the Map As"));
 			if (res == 0) {
 
 				if (file_exists(input_name)) {

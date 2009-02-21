@@ -38,6 +38,8 @@ public:
 
 	void select_file(const std::string& file);
 
+    void set_autocomplete(bool value) { autocomplete_ = value; }
+
 protected:
 	void action(gui::dialog_process_info &dp_info);
 	std::string unformat_filename(const std::string& filename) const;
@@ -50,6 +52,7 @@ private:
 	int last_selection_;
 	std::string last_textbox_text_;
 	std::string chosen_file_;
+    bool autocomplete_;
 };
 
 /// Show a dialog where the user can navigate through files and select a
@@ -62,6 +65,12 @@ int show_file_chooser_dialog(display &displ, std::string &filename,
 							 const std::string& file_to_search = "",
 							 int xloc = -1, int yloc = -1);
 
+/// Show a filechooser dialog in a "save" mode, that is, without relying
+/// on autocomplete to allow saving under any filename
+int show_file_chooser_dialog_save(display &displ, std::string &filename,
+                             std::string const &title, bool show_directory_buttons = true,
+							 const std::string& file_to_search = "",
+							 int xloc = -1, int yloc = -1);
 } // end of dialogs namespace
 
 #endif

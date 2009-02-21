@@ -39,6 +39,21 @@ int show_file_chooser_dialog(display &disp, std::string &filename,
 	return d.result();
 }
 
+int show_file_chooser_dialog_save(display &disp, std::string &filename,
+                             std::string const &title, bool show_directory_buttons,
+							 const std::string& type_a_head,
+							 int xloc, int yloc) {
+
+	file_dialog d(disp, filename, title, show_directory_buttons);
+    d.set_autocomplete(false);
+	if (!type_a_head.empty())
+		d.select_file(type_a_head);
+	if(d.show(xloc, yloc) >= 0) {
+		filename = d.get_choice();
+	}
+	return d.result();
+}
+
 file_dialog::file_dialog(display &disp, const std::string& file_path,
 		const std::string& title, bool show_directory_buttons) :
 	gui::dialog(disp, title, file_path, gui::OK_CANCEL),
@@ -46,7 +61,8 @@ file_dialog::file_dialog(display &disp, const std::string& file_path,
 	files_list_(NULL),
 	last_selection_(0),
 	last_textbox_text_(),
-	chosen_file_()
+	chosen_file_(),
+    autocomplete_(true)
 {
 	files_list_ = new gui::file_menu(disp.video(), file_path);
 	const unsigned file_list_height = (disp.h() / 2);
@@ -221,7 +237,9 @@ void file_dialog::action(gui::dialog_process_info &dp_info) {
 		last_textbox_text_ = textbox_text();
 
 		// Do type-a-head search in listbox
-		files_list_->select_file(textbox_text());
+        if (autocomplete_) {
+		    files_list_->select_file(textbox_text());
+        }
 	}
 
 	if(result() >=0) {
