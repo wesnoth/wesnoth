@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-editor\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-02-11 17:55+0100\n"
+"POT-Creation-Date: 2009-02-21 14:37+0100\n"
 "PO-Revision-Date: 2008-12-19 12:42+0200\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish <wesnoth-tr@googlegroups.com>\n"
@@ -300,11 +300,11 @@ msgstr "Oyuncu"
 msgid "The size of the target map is different from the current map"
 msgstr "Hedef harita bundan farklı boyutlarda"
 
-#: src/editor2/editor_palettes.cpp:516
+#: src/editor2/editor_palettes.cpp:522
 msgid "FG"
 msgstr "ÖP"
 
-#: src/editor2/editor_palettes.cpp:518
+#: src/editor2/editor_palettes.cpp:524
 msgid "BG"
 msgstr "AP"
 
@@ -317,14 +317,21 @@ msgid "Choose player"
 msgstr "Oyuncu seçiniz"
 
 #: src/editor2/mouse_action.cpp:390
-#, fuzzy
 msgid ""
-"Which player should start here? You can also use the 1-9 and delete keys to "
-"set/clear starting positions."
+"Which player should start here? You can use alt and a number key to set the "
+"starting position for a player, and del to clear the starting position under "
+"the cursor. Pressing a number key by itself will scroll to that player's "
+"starting position."
 msgstr ""
-"Burada hangi oyuncu oyuna başlayacak? Başlangıç konumunu belirlemek için 1-9 "
-"tuşlarını, silmek için Del tuşunu kullanabilirsiniz."
 
 #: src/gui/dialogs/editor_settings.cpp:119
 msgid "Custom setting"
 msgstr "Özel Ayarlar"
+
+#, fuzzy
+#~ msgid ""
+#~ "Which player should start here? You can also use the 1-9 and delete keys "
+#~ "to set/clear starting positions."
+#~ msgstr ""
+#~ "Burada hangi oyuncu oyuna başlayacak? Başlangıç konumunu belirlemek için "
+#~ "1-9 tuşlarını, silmek için Del tuşunu kullanabilirsiniz."

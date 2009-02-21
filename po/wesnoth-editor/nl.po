@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-editor\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-02-11 17:55+0100\n"
+"POT-Creation-Date: 2009-02-21 14:37+0100\n"
 "PO-Revision-Date: 2009-02-01 22:48+0100\n"
 "Last-Translator: Alexander van Gessel (AI/AI0867) <AI0867@gmail.com>\n"
 "Language-Team: Dutch\n"
@@ -297,11 +297,11 @@ msgstr "Speler"
 msgid "The size of the target map is different from the current map"
 msgstr "De groote van het doelmap verschilt van die van de huidige kaart"
 
-#: src/editor2/editor_palettes.cpp:516
+#: src/editor2/editor_palettes.cpp:522
 msgid "FG"
 msgstr "FG"
 
-#: src/editor2/editor_palettes.cpp:518
+#: src/editor2/editor_palettes.cpp:524
 msgid "BG"
 msgstr "BG"
 
@@ -315,15 +315,22 @@ msgstr "Kies speler"
 
 #: src/editor2/mouse_action.cpp:390
 msgid ""
-"Which player should start here? You can also use the 1-9 and delete keys to "
-"set/clear starting positions."
+"Which player should start here? You can use alt and a number key to set the "
+"starting position for a player, and del to clear the starting position under "
+"the cursor. Pressing a number key by itself will scroll to that player's "
+"starting position."
 msgstr ""
-"Welke speler moet hier starten? U kunt ook de 1-9 and delete toetsen "
-"gebruiken om de startposities in te stellen of wissen."
 
 #: src/gui/dialogs/editor_settings.cpp:119
 msgid "Custom setting"
 msgstr "Eigen instelligen"
+
+#~ msgid ""
+#~ "Which player should start here? You can also use the 1-9 and delete keys "
+#~ "to set/clear starting positions."
+#~ msgstr ""
+#~ "Welke speler moet hier starten? U kunt ook de 1-9 and delete toetsen "
+#~ "gebruiken om de startposities in te stellen of wissen."
 
 #~ msgid "There was a format error while loading the file:"
 #~ msgstr "Er is een fout opgetreden bij het opladen van bestand :"

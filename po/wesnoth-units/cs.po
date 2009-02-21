@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-02-15 12:28+0100\n"
+"POT-Creation-Date: 2009-02-21 14:37+0100\n"
 "PO-Revision-Date: 2009-01-12 19:48+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
@@ -176,7 +176,7 @@ msgstr ""
 #: data/core/units/monsters/Skeletal_Dragon.cfg:42
 #: data/core/units/gryphons/Gryphon_Rider.cfg:29
 #: data/core/units/gryphons/Gryphon_Master.cfg:29
-#: data/core/units/gryphons/Gryphon.cfg:28 data/core/units/drakes/Fire.cfg:71
+#: data/core/units/gryphons/Gryphon.cfg:40 data/core/units/drakes/Fire.cfg:71
 #: data/core/units/drakes/Burner.cfg:64
 #: data/core/units/drakes/Armageddon.cfg:85
 #: data/core/units/drakes/Inferno.cfg:72
@@ -316,18 +316,18 @@ msgstr ""
 #: data/core/units/dwarves/Stalwart.cfg:46
 #: data/core/units/dwarves/Guardsman.cfg:43
 #: data/core/units/dwarves/Sentinel.cfg:51
-#: data/core/units/merfolk/Hunter.cfg:24 data/core/units/merfolk/Hunter.cfg:32
-#: data/core/units/merfolk/Netcaster.cfg:23
-#: data/core/units/merfolk/Entangler.cfg:24
-#: data/core/units/merfolk/Spearman.cfg:23
-#: data/core/units/merfolk/Spearman.cfg:31
-#: data/core/units/merfolk/Javelineer.cfg:24
-#: data/core/units/merfolk/Javelineer.cfg:32
+#: data/core/units/merfolk/Hunter.cfg:25 data/core/units/merfolk/Hunter.cfg:33
+#: data/core/units/merfolk/Netcaster.cfg:24
+#: data/core/units/merfolk/Entangler.cfg:25
+#: data/core/units/merfolk/Spearman.cfg:24
+#: data/core/units/merfolk/Spearman.cfg:32
+#: data/core/units/merfolk/Javelineer.cfg:25
+#: data/core/units/merfolk/Javelineer.cfg:33
 #: data/core/units/drakes/Enforcer.cfg:84
 #: data/core/units/drakes/Gladiator.cfg:75
 #: data/core/units/drakes/Clasher.cfg:86
 #: data/core/units/humans/Horseman.cfg:24
-#: data/core/units/humans/Loyalist_Javelineer.cfg:28
+#: data/core/units/humans/Loyalist_Javelineer.cfg:40
 #: data/core/units/humans/Loyalist_Spearman.cfg:75
 #: data/core/units/goblins/Rouser.cfg:37
 #: data/core/units/goblins/Spearman.cfg:28
@@ -739,7 +739,7 @@ msgstr ""
 #: data/core/units/dwarves/Stalwart.cfg:55
 #: data/core/units/dwarves/Guardsman.cfg:52
 #: data/core/units/dwarves/Sentinel.cfg:60
-#: data/core/units/humans/Loyalist_Javelineer.cfg:39
+#: data/core/units/humans/Loyalist_Javelineer.cfg:51
 #: data/core/units/humans/Loyalist_Spearman.cfg:87
 msgid "javelin"
 msgstr "oštěp"
@@ -1598,8 +1598,8 @@ msgid "torch"
 msgstr "louč"
 
 #. [attack]: type=impact
-#: data/core/units/merfolk/Netcaster.cfg:31
-#: data/core/units/merfolk/Entangler.cfg:32
+#: data/core/units/merfolk/Netcaster.cfg:32
+#: data/core/units/merfolk/Entangler.cfg:33
 #: data/core/units/goblins/Pillager.cfg:52
 msgid "net"
 msgstr "síť"
@@ -1687,7 +1687,7 @@ msgid "Gryphon"
 msgstr "Gryfon"
 
 #. [unit_type]: id=Gryphon, race=gryphon
-#: data/core/units/gryphons/Gryphon.cfg:18
+#: data/core/units/gryphons/Gryphon.cfg:19
 msgid ""
 "These majestic and powerful creatures are masters of the sky. Gryphons are "
 "both dangerous and wary of other intelligent creatures, and thus should not "
@@ -3265,7 +3265,7 @@ msgid "Merman Entangler"
 msgstr "Mořský zaplétač"
 
 #. [unit_type]: id=Merman Entangler, race=merman
-#: data/core/units/merfolk/Entangler.cfg:19
+#: data/core/units/merfolk/Entangler.cfg:20
 msgid ""
 "The weighted nets used by mermen in warfare are a difficult weapon to use "
 "well; those who master it are valued and revered by their comrades. This "
@@ -3284,7 +3284,7 @@ msgid "Merman Fighter"
 msgstr "Mořský bojovník"
 
 #. [unit_type]: id=Merman Fighter, race=merman
-#: data/core/units/merfolk/Fighter.cfg:19
+#: data/core/units/merfolk/Fighter.cfg:20
 msgid ""
 "Skilled creatures of the sea, Mermen are powerful and quick in any watery "
 "environment, but lose most of their mobility on land."
@@ -3294,10 +3294,10 @@ msgstr ""
 
 #. [attack]: type=pierce
 #. [attack]: type=blade
-#: data/core/units/merfolk/Warrior.cfg:23
-#: data/core/units/merfolk/Triton.cfg:25 data/core/units/merfolk/Triton.cfg:33
-#: data/core/units/merfolk/Fighter.cfg:24
-#: data/core/units/merfolk/Hoplite.cfg:35
+#: data/core/units/merfolk/Warrior.cfg:24
+#: data/core/units/merfolk/Triton.cfg:26 data/core/units/merfolk/Triton.cfg:34
+#: data/core/units/merfolk/Fighter.cfg:25
+#: data/core/units/merfolk/Hoplite.cfg:36
 msgid "trident"
 msgstr "trojzubec"
 
@@ -3307,7 +3307,7 @@ msgid "Merman Hoplite"
 msgstr "Mořský těžkooděnec"
 
 #. [unit_type]: id=Merman Hoplite, race=merman
-#: data/core/units/merfolk/Hoplite.cfg:20
+#: data/core/units/merfolk/Hoplite.cfg:21
 msgid ""
 "With their towering shields, the Merman Hoplites form the elite guard of the "
 "watery realm. Their powerful armor and rigid discipline allow them to hold a "
@@ -3325,7 +3325,7 @@ msgid "Merman Hunter"
 msgstr "Mořský lovec"
 
 #. [unit_type]: id=Merman Hunter, race=merman
-#: data/core/units/merfolk/Hunter.cfg:19
+#: data/core/units/merfolk/Hunter.cfg:20
 msgid ""
 "The skills employed by mermen in spear-fishing are easily translated into "
 "warfare, especially against those who are not at home in the water. In times "
@@ -3366,7 +3366,7 @@ msgid "Merman Javelineer"
 msgstr "Mořský muž oštěpař"
 
 #. [unit_type]: id=Merman Javelineer, race=merman
-#: data/core/units/merfolk/Javelineer.cfg:19
+#: data/core/units/merfolk/Javelineer.cfg:20
 msgid ""
 "Those mermen who master the art of the javelin can become nearly as "
 "effective as an archer - though the heft of their weapons impedes their "
@@ -3384,7 +3384,7 @@ msgid "Merman Netcaster"
 msgstr "Mořský vrhač sítí"
 
 #. [unit_type]: id=Merman Netcaster, race=merman
-#: data/core/units/merfolk/Netcaster.cfg:18
+#: data/core/units/merfolk/Netcaster.cfg:19
 msgid ""
 "Fishing, as practiced by mermen, is largely a matter of chasing schools of "
 "fish into waiting nets. These are not very damaging in themselves, but they "
@@ -3462,7 +3462,7 @@ msgid "Merman Spearman"
 msgstr "Mořský kopiník"
 
 #. [unit_type]: id=Merman Spearman, race=merman
-#: data/core/units/merfolk/Spearman.cfg:18
+#: data/core/units/merfolk/Spearman.cfg:19
 msgid ""
 "Archery is little favored by the mermen, for whom use of javelins serves a "
 "similar function. Though thrown javelins are of little use under the water, "
@@ -3483,7 +3483,7 @@ msgid "Merman Triton"
 msgstr "Mořský triton"
 
 #. [unit_type]: id=Merman Triton, race=merman
-#: data/core/units/merfolk/Triton.cfg:20
+#: data/core/units/merfolk/Triton.cfg:21
 msgid ""
 "Tritons are combat masters of the sea. Skilled in use of the trident, "
 "Tritons easily defeat any enemy foolish enough to wander into their "
@@ -3498,7 +3498,7 @@ msgid "Merman Warrior"
 msgstr "Mořský válečník"
 
 #. [unit_type]: id=Merman Warrior, race=merman
-#: data/core/units/merfolk/Warrior.cfg:18
+#: data/core/units/merfolk/Warrior.cfg:19
 msgid ""
 "The Mermen Warriors form the core of the mermen armies. Wielding powerful "
 "tridents, they are a bane to any who dare enter their waters."

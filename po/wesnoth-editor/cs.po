@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-02-11 17:55+0100\n"
+"POT-Creation-Date: 2009-02-21 14:37+0100\n"
 "PO-Revision-Date: 2009-02-04 10:32+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
@@ -304,11 +304,11 @@ msgstr "Hráč"
 msgid "The size of the target map is different from the current map"
 msgstr "Velikost cílové mapy je odlišná od současné mapy"
 
-#: src/editor2/editor_palettes.cpp:516
+#: src/editor2/editor_palettes.cpp:522
 msgid "FG"
 msgstr "Popředí"
 
-#: src/editor2/editor_palettes.cpp:518
+#: src/editor2/editor_palettes.cpp:524
 msgid "BG"
 msgstr "Pozadí"
 
@@ -322,12 +322,19 @@ msgstr "Vyber hráče"
 
 #: src/editor2/mouse_action.cpp:390
 msgid ""
-"Which player should start here? You can also use the 1-9 and delete keys to "
-"set/clear starting positions."
+"Which player should start here? You can use alt and a number key to set the "
+"starting position for a player, and del to clear the starting position under "
+"the cursor. Pressing a number key by itself will scroll to that player's "
+"starting position."
 msgstr ""
-"Který hráč zde má začínat? Počáteční pozice lze také nastavit a zrušit "
-"klávesami 1-9 a Delete."
 
 #: src/gui/dialogs/editor_settings.cpp:119
 msgid "Custom setting"
 msgstr "Vlastní nastavení"
+
+#~ msgid ""
+#~ "Which player should start here? You can also use the 1-9 and delete keys "
+#~ "to set/clear starting positions."
+#~ msgstr ""
+#~ "Který hráč zde má začínat? Počáteční pozice lze také nastavit a zrušit "
+#~ "klávesami 1-9 a Delete."

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-02-12 12:17+0100\n"
+"POT-Creation-Date: 2009-02-21 14:38+0100\n"
 "PO-Revision-Date: 2008-08-29 00:47+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
@@ -205,7 +205,7 @@ msgstr ""
 #: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:27
 #: data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:27
 #: data/campaigns/Eastern_Invasion/scenarios/07b.Undead_Crossing.cfg:24
-#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:30
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:28
 msgid "Gweddry"
 msgstr "柯維卓"
 
@@ -252,7 +252,7 @@ msgstr "柯維卓"
 #: data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:32
 #: data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:116
 #: data/campaigns/Eastern_Invasion/scenarios/07b.Undead_Crossing.cfg:29
-#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:35
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:33
 msgid "Wesnothians"
 msgstr ""
 
@@ -371,7 +371,7 @@ msgstr "堅守直到戴森回來(兩日內)"
 #: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:84
 #: data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:133
 #: data/campaigns/Eastern_Invasion/scenarios/07b.Undead_Crossing.cfg:65
-#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:107
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:113
 msgid "Death of Gweddry"
 msgstr "柯維卓死亡"
 
@@ -494,7 +494,7 @@ msgstr "讓柯維卓抵達暗門"
 #: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:88
 #: data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:137
 #: data/campaigns/Eastern_Invasion/scenarios/07b.Undead_Crossing.cfg:69
-#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:111
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:117
 msgid "Death of Dacyn"
 msgstr "戴森死亡"
 
@@ -634,45 +634,51 @@ msgstr "我的族人在這個洞穴生活了數百年了。我們不會因為一
 msgid "Very well. The best of luck in your battle."
 msgstr "那好，祝你在戰鬥中無往不利。"
 
-#. [object]: id=holyamulet
-#: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:218
-#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:639
-#: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:415
-#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:328
-msgid "Holy Amulet"
-msgstr "神聖護身符"
-
-#. [object]: id=holyamulet
-#: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:221
-#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:642
-#: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:418
-#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:331
+#. [scenario]: id=Escape_Tunnel
+#. [scenario]: id=Northern_Outpost
+#. [scenario]: id=Captured
+#. [scenario]: id=Xenophobia
+#: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:203
+#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:624
+#: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:400
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:319
 msgid ""
 "Wearing this amulet will cause every blow you deal to inflict arcane damage!"
 msgstr "這個護身符會讓你每次攻擊附加祕術效果！"
 
-#. [object]: id=holyamulet
-#: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:222
-#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:643
-#: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:419
-#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:332
+#. [scenario]: id=Escape_Tunnel
+#. [scenario]: id=Northern_Outpost
+#. [scenario]: id=Captured
+#. [scenario]: id=Xenophobia
+#: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:204
+#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:625
+#: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:401
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:320
 msgid "I am not suited to using this item! Let another take it."
 msgstr "我不適合用這個裝備！給其他人試試。"
 
+#. [object]
+#: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:206
+#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:627
+#: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:403
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:322
+msgid "Holy Amulet"
+msgstr "神聖護身符"
+
 #. [message]: speaker=unit
-#: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:261
+#: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:242
 msgid ""
 "There is a great fortune in this chest of treasure! I can count two hundred "
 "pieces of gold."
 msgstr "這個寶箱裡有大量的財寶！大概有兩百枚金幣。"
 
 #. [message]: speaker=Mal-Bakral
-#: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:337
+#: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:318
 msgid "We have found you, fleshbag! Prepare to die!"
 msgstr "我們找到你了，人類！等死吧！"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:341
+#: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:322
 msgid ""
 "They follow us... we must get out of this tunnel. It looks like it is "
 "leading east. That is unfortunate, for it will take us further from Weldyn. "
@@ -682,7 +688,7 @@ msgstr ""
 "我們離維丁更遠，可是我們沒有別的選擇."
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:354
+#: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:335
 msgid "We have reached the end of the tunnel. I see daylight above us!"
 msgstr "我們已經來到隧道盡頭了。我看到上頭有陽光！"
 
@@ -944,7 +950,7 @@ msgid "No! This is the first time I have failed a mission, and it is my last!"
 msgstr "不！我第一次任務失敗，也是最後一次！"
 
 #. [message]: speaker=Gruga-Har
-#: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:227
+#: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:231
 msgid ""
 "My assassin is dead! The elves must pay, not for his death, but for stopping "
 "him in his mission!"
@@ -952,24 +958,24 @@ msgstr ""
 "我的刺客死了！精靈要付出代價，不是因為他的死，而是你們竟然阻止他完成任務！"
 
 #. [message]: speaker=Volas
-#: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:238
+#: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:242
 msgid "You have failed me, man of Wesnoth..."
 msgstr "你們失去我了，韋諾的人..."
 
 #. [message]: speaker=Volas
-#: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:249
+#: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:253
 msgid "We have defeated the orcs! Now you can rest, and then leave."
 msgstr "我們擊敗了獸人！現在你們可以休息一下，然後離開."
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:253
+#: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:257
 msgid ""
 "We have not the time. This battle has wasted too much of it already. We must "
 "leave now."
 msgstr "我們沒時間了。這場戰爭已經浪費了太多的時間，我們必須馬上離開。"
 
 #. [message]: speaker=Volas
-#: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:257
+#: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:261
 msgid "Very well. I will send guides to lead you to your allies."
 msgstr "好吧，我將會向引領你們到你的同盟那裡。"
 
@@ -1025,12 +1031,12 @@ msgid "Now I will never get promoted!"
 msgstr "現在我永遠不會晉升！"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:136
+#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:140
 msgid "Come, let us return to Wesnoth and aid the Northern Outpost."
 msgstr "來吧，我們回到韋諾去，並支援北方前哨站。"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:153
+#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:157
 #, fuzzy
 msgid ""
 "We have defeated this patrol, but we can still turn back! Do we want to go "
@@ -1043,27 +1049,27 @@ msgstr ""
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:290
 #: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:255
-#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:157
+#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:161
 msgid "Hmm..."
 msgstr "恩.."
 
 #. [option]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:159
+#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:163
 msgid "I wish to destroy the evil before it can spread. East we go!"
 msgstr "我希望能在他們繼續做惡前先消滅他們。讓我們往東邊去！"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:163
+#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:167
 msgid "I cannot say if this is a good decision, but I will follow you."
 msgstr "我不知道這是不是一個好的決議，但是我仍會跟隨你。"
 
 #. [message]: speaker=Mal-Skraat
-#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:167
+#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:171
 msgid "Noo!!! I can't be promoted if they run away!"
 msgstr "不！！！如果他們逃跑的話我就不能晉升了！"
 
 #. [option]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:178
+#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:182
 msgid ""
 "You are right. It is foolish to go onward - we must defeat Mal-Skraat and "
 "turn back, going to the Northern Outpost."
@@ -1071,19 +1077,19 @@ msgstr ""
 "你是對的。不該繼續往前 － 我們必須打敗麥爾-斯格亞特然後回頭，去北部前哨站。"
 
 #. [message]: speaker=Mal-Skraat
-#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:182
+#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:186
 msgid "Good! If I defeat them, I can become a lich!"
 msgstr "好噎！如果我打敗他們，我就能成為一名巫妖！"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:198
+#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:202
 msgid ""
 "We failed to defeat either enemy! Now more liches will come, and we will be "
 "overwhelmed!"
 msgstr "打敗敵人的計畫失敗了！更多的巫妖將會到來，我們會被擊潰！"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:207
+#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:211
 msgid ""
 "We cannot spend any more time attempting to defeat Mal-Skraat. Like it or "
 "not, we must go further into these undead lands."
@@ -1092,7 +1098,7 @@ msgstr ""
 "死族領土。"
 
 #. [message]: speaker=Mal-Skraat
-#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:211
+#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:215
 msgid ""
 "Noo!!! He will reach Mal-Ravanal's capital, and I shall be punished for "
 "letting him escape!"
@@ -1287,7 +1293,7 @@ msgstr "打敗不死族領袖"
 #: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:92
 #: data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:141
 #: data/campaigns/Eastern_Invasion/scenarios/07b.Undead_Crossing.cfg:73
-#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:115
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:121
 msgid "Death of Owaec"
 msgstr "歐維克死亡"
 
@@ -1804,27 +1810,27 @@ msgid "Xenophobia"
 msgstr "克若夫必恩"
 
 #. [side]: type=Dwarvish Lord, id=Pelathsil
-#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:44
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:42
 msgid "Pelathsil"
 msgstr "帕拉斯樂"
 
 #. [side]: type=Orcish Warlord, id=Prok-Bak
-#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:61
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:59
 msgid "Prok-Bak"
 msgstr "波克-布"
 
 #. [side]: type=Elvish Marshal, id=Elandin
-#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:81
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:79
 msgid "Elandin"
 msgstr "伊蘭丹"
 
 #. [objective]: condition=win
-#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:103
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:109
 msgid "Defeat all enemy leaders"
 msgstr "打敗所有敵人領袖"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:136
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:142
 msgid ""
 "Hail, dwarves! Will you help us get by these foul orcs? We need to get "
 "further along this path."
@@ -1832,62 +1838,62 @@ msgstr ""
 "喔，矮人們！你們會幫助我們打擊這些邪惡骯臟的獸人嗎？我們要走到這小徑的深處。"
 
 #. [message]: speaker=Prok-Bak
-#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:140
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:146
 msgid "You human! Call us foul, will you?!?!"
 msgstr "你們，人類！說我們骯臟邪惡，是嗎？！？！"
 
 #. [message]: speaker=Pelathsil
-#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:144
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:150
 msgid "Why should we help you? You're not a dwarf!"
 msgstr "為什麼我們要幫助你們？你們又不是矮人！"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:148
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:154
 msgid ""
 "Your people helped us in the past, in the tunnels in the south. Will you not "
 "help us now?"
 msgstr "你們的人民以前幫助過我們，在南邊的隧道。為什麼你們現在不幫忙了？"
 
 #. [message]: speaker=Pelathsil
-#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:152
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:158
 #, fuzzy
 msgid "Impossible! I canna' believe any of my kin would ha' helped a human!"
 msgstr "不可能！我不相信任何我們的族人會幫助一個人類！"
 
 #. [message]: speaker=Elandin
-#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:156
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:162
 msgid "Indeed. Why should any of us help those not of our people?"
 msgstr "沒錯！為什麼我們一定要幫你們這些非我族類？"
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:160
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:166
 msgid "Will you but let us pass, so that we may fight the orcs on our own?"
 msgstr "那你們能讓我們通過嗎，那樣我們可以自己與獸人戰鬥？"
 
 #. [message]: speaker=Elandin
-#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:164
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:170
 msgid "I am afraid that is... impossible."
 msgstr "我想那是...不可能的。"
 
 #. [message]: speaker=Prok-Bak
-#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:169
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:175
 msgid "Orcs, kill'em all! Humans, elves or dwarves, it don't matter!"
 msgstr "獸人們，殺掉所有的人！人類，精靈或矮人，都隨便拉！"
 
 #. [message]: speaker=Elandin
-#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:173
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:179
 msgid ""
 "These orcs will die. But so will you, human. You have trespassed on elvish "
 "land."
 msgstr "這些獸人會死掉，但是你們也是，人類。你們侵犯了精靈之地。"
 
 #. [message]: speaker=Pelathsil
-#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:177
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:183
 msgid "Oh, elvish land is it now? Die, ye elf-dog! And you too, human!"
 msgstr "噢，精靈之地在這兒？死吧，你這狗精靈！還有你們也得死，人類！"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:181
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:187
 msgid ""
 "These people won't listen to reason, they are all blinded by their beliefs "
 "in their own supposed superiority. We probably will have to fight them, "
@@ -1897,7 +1903,7 @@ msgstr ""
 "雖然我們也許能繞過他們。"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:185
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:191
 msgid ""
 "True. As much as I dislike killing anything but orcs and undead, it seems we "
 "will have to kill these elves, and these dwarves, before they do the same to "
@@ -1907,42 +1913,42 @@ msgstr ""
 "前，先殺掉他們。"
 
 #. [message]: speaker=Pelathsil
-#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:196
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:202
 msgid "Argh! I'm dead! Well, dwarves are still the best!"
 msgstr "啊！我死了！不過，矮人仍然是最強的！"
 
 #. [message]: speaker=Prok-Bak
-#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:214
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:220
 msgid "I die? Orcs rule all!"
 msgstr "我死了？不過獸人仍統治一切！"
 
 #. [message]: speaker=Elandin
-#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:235
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:241
 msgid "It seems these humans are more powerful than I thought. Ugh."
 msgstr "看來這些人類比我想象的還要強大，哼。"
 
 #. [message]: speaker=Elandin
-#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:256
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:262
 msgid "Cursed dwarves! Perhaps we should have allied with the humans..."
 msgstr "該死的矮人！我們也許該和人類結盟..."
 
 #. [message]: speaker=Elandin
-#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:269
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:275
 msgid "Foul orcs! Perhaps we should have allied with the humans..."
 msgstr "卑鄙的獸人！我們也許該和人類結盟..."
 
 #. [message]: speaker=Pelathsil
-#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:282
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:288
 msgid "It seems yon humans are mightier than I kenned..."
 msgstr "看來這些人類比我想象中還要厲害..."
 
 #. [message]: speaker=Pelathsil
-#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:295
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:301
 msgid "Foul orcs! Perhaps we should ha' allied wi' the humans..."
 msgstr "卑鄙的獸人！我們也許該和人類結盟..."
 
 #. [message]: speaker=Pelathsil
-#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:308
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:314
 msgid "Cursed elves! Perhaps we should have allied wi' the humans..."
 msgstr "該死的精靈！我們也許該和人類結盟..."
 
@@ -2180,12 +2186,12 @@ msgid "Huh? Who's there, who said that?"
 msgstr "嗯？誰在那，誰在說話？"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:458
+#: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:439
 msgid "I see the exit to the tunnel! Onward!"
 msgstr "我看到了隧道的出口！前進！"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:462
+#: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:443
 msgid ""
 "Wait! We cannot go out that way. There are too many orcs. We must exit "
 "through the south-west gates."
@@ -2193,12 +2199,12 @@ msgstr ""
 "等一下，我們不能從這裡出去。這邊獸人太多了。我們必須從西南邊的大門逃走。"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:466
+#: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:447
 msgid "Very well. We must go the other way."
 msgstr "很好，我們應該走另一條路。"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:481
+#: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:462
 msgid "Good! We have escaped these accursed caves!"
 msgstr "真棒！我們終於從這該死的洞穴中逃出來了！"
 

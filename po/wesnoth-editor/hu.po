@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu-editor_1.5\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-02-11 17:55+0100\n"
+"POT-Creation-Date: 2009-02-21 14:37+0100\n"
 "PO-Revision-Date: 2009-02-14 00:10+0100\n"
 "Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
 "Language-Team: Hungarian <wesnoth-hungtrans@gna.org>\n"
@@ -298,11 +298,11 @@ msgstr "Játékos"
 msgid "The size of the target map is different from the current map"
 msgstr "A célpálya mérete különbözik a jelenlegi pálya méretétől"
 
-#: src/editor2/editor_palettes.cpp:516
+#: src/editor2/editor_palettes.cpp:522
 msgid "FG"
 msgstr "Előtér"
 
-#: src/editor2/editor_palettes.cpp:518
+#: src/editor2/editor_palettes.cpp:524
 msgid "BG"
 msgstr "Háttér"
 
@@ -316,12 +316,19 @@ msgstr "Válassz játékost"
 
 #: src/editor2/mouse_action.cpp:390
 msgid ""
-"Which player should start here? You can also use the 1-9 and delete keys to "
-"set/clear starting positions."
+"Which player should start here? You can use alt and a number key to set the "
+"starting position for a player, and del to clear the starting position under "
+"the cursor. Pressing a number key by itself will scroll to that player's "
+"starting position."
 msgstr ""
-"Melyik játékos kezdjen itt? Használhatod az 1-9 számokat a kezdőhely "
-"kijelöléséhez, vagy a Delete billentyűt a törléshez."
 
 #: src/gui/dialogs/editor_settings.cpp:119
 msgid "Custom setting"
 msgstr "Egyedi beállítások"
+
+#~ msgid ""
+#~ "Which player should start here? You can also use the 1-9 and delete keys "
+#~ "to set/clear starting positions."
+#~ msgstr ""
+#~ "Melyik játékos kezdjen itt? Használhatod az 1-9 számokat a kezdőhely "
+#~ "kijelöléséhez, vagy a Delete billentyűt a törléshez."

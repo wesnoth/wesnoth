@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.4-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-02-11 17:55+0100\n"
+"POT-Creation-Date: 2009-02-21 14:37+0100\n"
 "PO-Revision-Date: 2009-01-25 22:50+0100\n"
 "Last-Translator: Benoît Timbert <benoit.timbert@free.fr>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
@@ -305,11 +305,11 @@ msgstr ""
 "La taille de la carte de destination est différente de celle de la carte "
 "actuelle"
 
-#: src/editor2/editor_palettes.cpp:516
+#: src/editor2/editor_palettes.cpp:522
 msgid "FG"
 msgstr "PP"
 
-#: src/editor2/editor_palettes.cpp:518
+#: src/editor2/editor_palettes.cpp:524
 msgid "BG"
 msgstr "AP"
 
@@ -322,17 +322,24 @@ msgid "Choose player"
 msgstr "Choisir le joueur"
 
 #: src/editor2/mouse_action.cpp:390
-#, fuzzy
 msgid ""
-"Which player should start here? You can also use the 1-9 and delete keys to "
-"set/clear starting positions."
+"Which player should start here? You can use alt and a number key to set the "
+"starting position for a player, and del to clear the starting position under "
+"the cursor. Pressing a number key by itself will scroll to that player's "
+"starting position."
 msgstr ""
-"Quel joueur démarrera ici ? Vous pouvez aussi utiliser les touches 1-9 et "
-"Suppr pour créer ou effacer des positions de départ."
 
 #: src/gui/dialogs/editor_settings.cpp:119
 msgid "Custom setting"
 msgstr "Réglages personnalisés"
+
+#, fuzzy
+#~ msgid ""
+#~ "Which player should start here? You can also use the 1-9 and delete keys "
+#~ "to set/clear starting positions."
+#~ msgstr ""
+#~ "Quel joueur démarrera ici ? Vous pouvez aussi utiliser les touches 1-9 et "
+#~ "Suppr pour créer ou effacer des positions de départ."
 
 #~ msgid "Settings"
 #~ msgstr "Paramètres"

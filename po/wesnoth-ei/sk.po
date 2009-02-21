@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-02-12 12:17+0100\n"
+"POT-Creation-Date: 2009-02-21 14:38+0100\n"
 "PO-Revision-Date: 2008-12-27 15:30+0100\n"
 "Last-Translator: Viliam Búr <viliam@bur.sk>\n"
 "Language-Team: none\n"
@@ -222,7 +222,7 @@ msgstr ""
 #: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:27
 #: data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:27
 #: data/campaigns/Eastern_Invasion/scenarios/07b.Undead_Crossing.cfg:24
-#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:30
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:28
 msgid "Gweddry"
 msgstr "Gweddry"
 
@@ -269,7 +269,7 @@ msgstr "Gweddry"
 #: data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:32
 #: data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:116
 #: data/campaigns/Eastern_Invasion/scenarios/07b.Undead_Crossing.cfg:29
-#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:35
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:33
 msgid "Wesnothians"
 msgstr "Wesnothskí"
 
@@ -388,7 +388,7 @@ msgstr "Vydržíš odolávať dva dni do Dacynovho návratu"
 #: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:84
 #: data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:133
 #: data/campaigns/Eastern_Invasion/scenarios/07b.Undead_Crossing.cfg:65
-#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:107
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:113
 msgid "Death of Gweddry"
 msgstr "Zomrie Gweddry"
 
@@ -518,7 +518,7 @@ msgstr "Dostaneš Gweddryho k padacím dverám"
 #: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:88
 #: data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:137
 #: data/campaigns/Eastern_Invasion/scenarios/07b.Undead_Crossing.cfg:69
-#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:111
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:117
 msgid "Death of Dacyn"
 msgstr "Zomrie Dacyn"
 
@@ -666,45 +666,51 @@ msgstr ""
 msgid "Very well. The best of luck in your battle."
 msgstr "Dobre teda. Želám ti veľa šťastia pri boji."
 
-#. [object]: id=holyamulet
-#: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:218
-#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:639
-#: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:415
-#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:328
-msgid "Holy Amulet"
-msgstr "Svätý amulet"
-
-#. [object]: id=holyamulet
-#: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:221
-#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:642
-#: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:418
-#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:331
+#. [scenario]: id=Escape_Tunnel
+#. [scenario]: id=Northern_Outpost
+#. [scenario]: id=Captured
+#. [scenario]: id=Xenophobia
+#: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:203
+#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:624
+#: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:400
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:319
 msgid ""
 "Wearing this amulet will cause every blow you deal to inflict arcane damage!"
 msgstr "Tento amulet spôsobí, že každý tvoj úder spôsobí magické zranenie!"
 
-#. [object]: id=holyamulet
-#: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:222
-#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:643
-#: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:419
-#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:332
+#. [scenario]: id=Escape_Tunnel
+#. [scenario]: id=Northern_Outpost
+#. [scenario]: id=Captured
+#. [scenario]: id=Xenophobia
+#: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:204
+#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:625
+#: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:401
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:320
 msgid "I am not suited to using this item! Let another take it."
 msgstr "Ja tento predmet nemôžem použiť! Nech si ho vezme niekto iný."
 
+#. [object]
+#: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:206
+#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:627
+#: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:403
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:322
+msgid "Holy Amulet"
+msgstr "Svätý amulet"
+
 #. [message]: speaker=unit
-#: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:261
+#: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:242
 msgid ""
 "There is a great fortune in this chest of treasure! I can count two hundred "
 "pieces of gold."
 msgstr "V tejto truhlici je obrovské bohatstvo! Je to dvesto zlatých!"
 
 #. [message]: speaker=Mal-Bakral
-#: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:337
+#: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:318
 msgid "We have found you, fleshbag! Prepare to die!"
 msgstr "Našli sme ťa, kopa mäsa! Priprav sa na smrť!"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:341
+#: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:322
 msgid ""
 "They follow us... we must get out of this tunnel. It looks like it is "
 "leading east. That is unfortunate, for it will take us further from Weldyn. "
@@ -715,7 +721,7 @@ msgstr ""
 "možnosť."
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:354
+#: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:335
 msgid "We have reached the end of the tunnel. I see daylight above us!"
 msgstr "Dosiahli sme koniec tunela. Nad nami vidím denné svetlo!"
 
@@ -991,7 +997,7 @@ msgid "No! This is the first time I have failed a mission, and it is my last!"
 msgstr "Nie! To je prvýkrát, čo som nesplnil poslanie, a zároveň aj posledný!"
 
 #. [message]: speaker=Gruga-Har
-#: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:227
+#: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:231
 msgid ""
 "My assassin is dead! The elves must pay, not for his death, but for stopping "
 "him in his mission!"
@@ -1000,24 +1006,24 @@ msgstr ""
 "nedovolili splniť úlohu!"
 
 #. [message]: speaker=Volas
-#: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:238
+#: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:242
 msgid "You have failed me, man of Wesnoth..."
 msgstr "Nepomohol si mi, človeče z Wesnothu..."
 
 #. [message]: speaker=Volas
-#: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:249
+#: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:253
 msgid "We have defeated the orcs! Now you can rest, and then leave."
 msgstr "Porazili sme orkov! Teraz si môžete odpočinúť a potom ísť ďalej."
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:253
+#: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:257
 msgid ""
 "We have not the time. This battle has wasted too much of it already. We must "
 "leave now."
 msgstr "Nemáme čas. Táto bitka nás už stála príliš mnoho. Musíme odísť hneď."
 
 #. [message]: speaker=Volas
-#: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:257
+#: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:261
 msgid "Very well. I will send guides to lead you to your allies."
 msgstr "Dobre. Pošlem s vami sprievod, až k vašim priateľom."
 
@@ -1074,12 +1080,12 @@ msgid "Now I will never get promoted!"
 msgstr "Teraz ma už nepovýšia!"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:136
+#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:140
 msgid "Come, let us return to Wesnoth and aid the Northern Outpost."
 msgstr "Poďte, vrátime sa do Wesnothu a podporíme severnú hliadku."
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:153
+#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:157
 msgid ""
 "We have defeated this patrol, but we can still turn back! Do we want to go "
 "further east now, or do we want to try to turn back and defeat this dark "
@@ -1092,27 +1098,27 @@ msgstr ""
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:290
 #: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:255
-#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:157
+#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:161
 msgid "Hmm..."
 msgstr "Hmmm..."
 
 #. [option]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:159
+#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:163
 msgid "I wish to destroy the evil before it can spread. East we go!"
 msgstr "Musíme zničiť zlo skôr ako sa rozšíri. Poďme na východ!"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:163
+#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:167
 msgid "I cannot say if this is a good decision, but I will follow you."
 msgstr "Neviem povedať, či je to dobré rozhodnutie, ale pôjdem za tebou."
 
 #. [message]: speaker=Mal-Skraat
-#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:167
+#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:171
 msgid "Noo!!! I can't be promoted if they run away!"
 msgstr "Nie!!! Ak mi ujdú, nepovýšia ma!"
 
 #. [option]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:178
+#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:182
 msgid ""
 "You are right. It is foolish to go onward - we must defeat Mal-Skraat and "
 "turn back, going to the Northern Outpost."
@@ -1121,12 +1127,12 @@ msgstr ""
 "sa, ísť do severnej hliadky."
 
 #. [message]: speaker=Mal-Skraat
-#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:182
+#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:186
 msgid "Good! If I defeat them, I can become a lich!"
 msgstr "Dobre! Ak ich porazím, bude zo mňa kostej!"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:198
+#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:202
 msgid ""
 "We failed to defeat either enemy! Now more liches will come, and we will be "
 "overwhelmed!"
@@ -1135,7 +1141,7 @@ msgstr ""
 "a prevalcujú nás!"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:207
+#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:211
 msgid ""
 "We cannot spend any more time attempting to defeat Mal-Skraat. Like it or "
 "not, we must go further into these undead lands."
@@ -1144,7 +1150,7 @@ msgstr ""
 "musíme ísť hlbšie to tejto krajiny nemŕtvych."
 
 #. [message]: speaker=Mal-Skraat
-#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:211
+#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:215
 msgid ""
 "Noo!!! He will reach Mal-Ravanal's capital, and I shall be punished for "
 "letting him escape!"
@@ -1351,7 +1357,7 @@ msgstr "Porazíš veliteľa nemŕtvych"
 #: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:92
 #: data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:141
 #: data/campaigns/Eastern_Invasion/scenarios/07b.Undead_Crossing.cfg:73
-#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:115
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:121
 msgid "Death of Owaec"
 msgstr "Zomrie Owaec"
 
@@ -1896,27 +1902,27 @@ msgid "Xenophobia"
 msgstr "Xenofóbia"
 
 #. [side]: type=Dwarvish Lord, id=Pelathsil
-#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:44
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:42
 msgid "Pelathsil"
 msgstr "Pelathsil"
 
 #. [side]: type=Orcish Warlord, id=Prok-Bak
-#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:61
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:59
 msgid "Prok-Bak"
 msgstr "Prok-Bak"
 
 #. [side]: type=Elvish Marshal, id=Elandin
-#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:81
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:79
 msgid "Elandin"
 msgstr "Elandin"
 
 #. [objective]: condition=win
-#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:103
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:109
 msgid "Defeat all enemy leaders"
 msgstr "Porazíš všetkých nepriateľských veliteľov"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:136
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:142
 msgid ""
 "Hail, dwarves! Will you help us get by these foul orcs? We need to get "
 "further along this path."
@@ -1925,17 +1931,17 @@ msgstr ""
 "Musíme pokračovať touto cestou."
 
 #. [message]: speaker=Prok-Bak
-#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:140
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:146
 msgid "You human! Call us foul, will you?!?!"
 msgstr "Ty, človek! Opovažuješ sa nás nazvať hnusnými?!?!"
 
 #. [message]: speaker=Pelathsil
-#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:144
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:150
 msgid "Why should we help you? You're not a dwarf!"
 msgstr "Prečo by sme ti mali pomôcť? Ty nie si trpaslík!"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:148
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:154
 msgid ""
 "Your people helped us in the past, in the tunnels in the south. Will you not "
 "help us now?"
@@ -1944,33 +1950,33 @@ msgstr ""
 "teraz?"
 
 #. [message]: speaker=Pelathsil
-#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:152
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:158
 msgid "Impossible! I canna' believe any of my kin would ha' helped a human!"
 msgstr "Nemožné! Nemôžem uveriť, že by niekto z našej krvi pomáhal človeku!"
 
 #. [message]: speaker=Elandin
-#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:156
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:162
 msgid "Indeed. Why should any of us help those not of our people?"
 msgstr ""
 "A vôbec. Prečo by niekto z nás pomáhal tomu, kto nepatrí do nášho národa?"
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:160
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:166
 msgid "Will you but let us pass, so that we may fight the orcs on our own?"
 msgstr "Necháte nás teda aspoň prejsť, aby sme mohli bojovať proti orkom?"
 
 #. [message]: speaker=Elandin
-#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:164
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:170
 msgid "I am afraid that is... impossible."
 msgstr "Obávam sa, že je to... nemožné."
 
 #. [message]: speaker=Prok-Bak
-#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:169
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:175
 msgid "Orcs, kill'em all! Humans, elves or dwarves, it don't matter!"
 msgstr "Orkovia, pobite ich všetkých! Ľudia, elfovia, trpaslíci, všetko jedno!"
 
 #. [message]: speaker=Elandin
-#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:173
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:179
 msgid ""
 "These orcs will die. But so will you, human. You have trespassed on elvish "
 "land."
@@ -1978,13 +1984,13 @@ msgstr ""
 "Títo orkovia zomrú. Ale takisto aj ty, človeče. Prenikol si na elfské územie."
 
 #. [message]: speaker=Pelathsil
-#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:177
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:183
 msgid "Oh, elvish land is it now? Die, ye elf-dog! And you too, human!"
 msgstr ""
 "Ale, elfské územie je to zrazu? Skap, ty elfský pes! A ty tiež, človek!"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:181
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:187
 msgid ""
 "These people won't listen to reason, they are all blinded by their beliefs "
 "in their own supposed superiority. We probably will have to fight them, "
@@ -1995,7 +2001,7 @@ msgstr ""
 "sa nám podarí aj obísť ich."
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:185
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:191
 msgid ""
 "True. As much as I dislike killing anything but orcs and undead, it seems we "
 "will have to kill these elves, and these dwarves, before they do the same to "
@@ -2006,42 +2012,42 @@ msgstr ""
 "nás."
 
 #. [message]: speaker=Pelathsil
-#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:196
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:202
 msgid "Argh! I'm dead! Well, dwarves are still the best!"
 msgstr "Argh! Som mŕtvy! No a čo, trpaslíci sú aj tak najlepší!"
 
 #. [message]: speaker=Prok-Bak
-#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:214
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:220
 msgid "I die? Orcs rule all!"
 msgstr "Zomieram? Orkovia raz zvíťazia!"
 
 #. [message]: speaker=Elandin
-#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:235
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:241
 msgid "It seems these humans are more powerful than I thought. Ugh."
 msgstr "Zdá sa, že títo ľudia sú mocnejší než som si myslel. Ugh."
 
 #. [message]: speaker=Elandin
-#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:256
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:262
 msgid "Cursed dwarves! Perhaps we should have allied with the humans..."
 msgstr "Prekliati trpaslíci! Asi sme sa mali spojiť s ľuďmi..."
 
 #. [message]: speaker=Elandin
-#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:269
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:275
 msgid "Foul orcs! Perhaps we should have allied with the humans..."
 msgstr "Hnusní orkovia! Asi sme sa mali spojiť s ľuďmi..."
 
 #. [message]: speaker=Pelathsil
-#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:282
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:288
 msgid "It seems yon humans are mightier than I kenned..."
 msgstr "Zdá sa, že títo ľudia sú mocnejší než som si myslel..."
 
 #. [message]: speaker=Pelathsil
-#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:295
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:301
 msgid "Foul orcs! Perhaps we should ha' allied wi' the humans..."
 msgstr "Hnusní orkovia! Asi sme sa mali spojiť s ľuďmi..."
 
 #. [message]: speaker=Pelathsil
-#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:308
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:314
 msgid "Cursed elves! Perhaps we should have allied wi' the humans..."
 msgstr "Prekliati elfovia! Asi sme sa mali spojiť s ľuďmi..."
 
@@ -2292,12 +2298,12 @@ msgid "Huh? Who's there, who said that?"
 msgstr "He? Kto je tam? Kto to povedal?"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:458
+#: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:439
 msgid "I see the exit to the tunnel! Onward!"
 msgstr "Vidím východ z tunela! Vpred!"
 
 #. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:462
+#: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:443
 msgid ""
 "Wait! We cannot go out that way. There are too many orcs. We must exit "
 "through the south-west gates."
@@ -2306,12 +2312,12 @@ msgstr ""
 "bránu."
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:466
+#: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:447
 msgid "Very well. We must go the other way."
 msgstr "Dobre teda. Musíme zmeniť cestu."
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:481
+#: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:462
 msgid "Good! We have escaped these accursed caves!"
 msgstr "Dobre! Unikli sme z tých prekliatych jaskýň!"
 
