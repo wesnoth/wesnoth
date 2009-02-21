@@ -61,7 +61,7 @@ file_dialog::file_dialog(display &disp, const std::string& file_path,
 	files_list_(NULL),
 	last_selection_(0),
 	last_textbox_text_(),
-	chosen_file_(),
+	chosen_file_(".."),
     autocomplete_(true)
 {
 	files_list_ = new gui::file_menu(disp.video(), file_path);
@@ -250,7 +250,7 @@ void file_dialog::action(gui::dialog_process_info &dp_info) {
 			get_message().set_text(format_dirname(files_list_->get_directory()));
 
 			//reset the chosen file
-			chosen_file_ = files_list_->get_choice();
+			chosen_file_ = "..";
 			get_textbox().set_text(format_filename(chosen_file_));
 			set_result(gui::CONTINUE_DIALOG);
 		}
