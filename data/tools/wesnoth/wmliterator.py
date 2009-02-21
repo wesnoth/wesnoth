@@ -26,6 +26,7 @@ keySplit = re.compile(r'[=,\s]')
 tagPattern = re.compile(r'(^|(?<![\w\|\}]))(\[.*?\])')
 macroOpenPattern = re.compile(r'(\{[^\s\}\{]*)')
 macroClosePattern = re.compile(r'\}')
+closeMacroType = 'end of macro'
 
 silenceErrors = {}
 
@@ -142,14 +143,26 @@ Important Attributes:
             if isDirective(closerElement):
                 while not isDirective(scopes.pop()):
                     pass
+            elif (closerElement==closeMacroType):
+                elem = ''
+                while not elem.startswith('{'):
+                    closed = scopes.pop()
+                    elem = closed
+                    if isinstance(closed, WmlIterator):
+                        elem = closed.element
+                    if isDirective(elem):
+                        self.printScopeError(closerElement)
+                        scopes.append(closed) # to reduce additional errors (hopefully)
+                        return True
             elif not isDirective(scopes[-1]):
                 closed = scopes.pop()
                 elem = closed
                 if isinstance(closed, WmlIterator):
                     elem = closed.element
-                if ((isOpener(elem) and closerElement != '[/'+elem[1:]
-                     and '+'+closerElement != elem[1]+'[/'+elem[2:])
-                or (elem.startswith('{') and closerElement.find('macro')<0)):
+                if (elem.startswith('{') and closerElement != closeMacroType):
+                    scopes.append(closed)
+                elif (isOpener(elem) and closerElement != '[/'+elem[1:]
+                and '+'+closerElement != elem[1]+'[/'+elem[2:]):
                     self.printError('reached', closerElement, 'at line', self.lineno+1, 'before closing scope', elem)
                     scopes.append(closed) # to reduce additional errors (hopefully)
             return True
@@ -177,7 +190,6 @@ Important Attributes:
             {MACRO_NAME - opens a scope
             } - closes a scope (not an element)
         """
-        closeMacroType = 'end of macro'
         elements = [] #(elementType, sortPos, scopeDelta)
         # first remove any quoted strings
         beginquote = text.find('"')
