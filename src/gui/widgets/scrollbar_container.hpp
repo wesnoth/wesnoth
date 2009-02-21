@@ -153,6 +153,9 @@ public:
 	tgrid *content_grid() { return content_grid_; }
 	const tgrid *content_grid() const { return content_grid_; }
 
+	const SDL_Rect& content_visible_area() const 
+		{ return content_visible_area_; }
+
 	/**
 	 * Callback when the scrollbar moves (NOTE maybe only one callback needed).
 	 * Maybe also make protected or private and add a friend.
@@ -237,7 +240,6 @@ protected:
 	 *                            changing.
 	 */
 	virtual void handle_key_end(SDLMod modifier, bool& handled);
-
 
 	/**
 	 * Page up key pressed.
@@ -393,7 +395,6 @@ private:
 		static const std::string type = "scrollbar_container";
 		return type;
 	}
-
 };
 
 } // namespace gui2
