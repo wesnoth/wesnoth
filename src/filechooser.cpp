@@ -59,7 +59,7 @@ file_dialog::file_dialog(display &disp, const std::string& file_path,
 	gui::dialog(disp, title, file_path, gui::OK_CANCEL),
 	show_directory_buttons_(show_directory_buttons),
 	files_list_(NULL),
-	last_selection_(0),
+	last_selection_(-1),
 	last_textbox_text_(),
 	chosen_file_(".."),
     autocomplete_(true)
