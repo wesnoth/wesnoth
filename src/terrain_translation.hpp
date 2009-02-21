@@ -24,6 +24,11 @@
 
 namespace t_translation {
 
+    /** 
+     * Return the maximum allowed map size (in either dimension),
+     * the maximum map area is, therefore, this value squared.
+     */
+    size_t max_map_size();
 
 	typedef Uint32 t_layer;
 	const t_layer WILDCARD = 0x2A000000;

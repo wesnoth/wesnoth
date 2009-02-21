@@ -32,6 +32,10 @@
 
 namespace t_translation {
 
+    size_t max_map_size() {
+        return 200; //TODO make this overridable by the user without having to rebuild
+    }
+
 /***************************************************************************************/
 // forward declaration of internal functions
 
@@ -320,6 +324,10 @@ t_map read_game_map(const std::string& str,	std::map<int, coordinate>& starting_
 					ERR_G << "Map not a rectangle error occured at line offset " << y << " position offset " << x << "\n";
 					throw error("Map not a rectangle.");
 				}
+                if (y > max_map_size()) {
+					ERR_G << "Map size exceeds limit (y > " << max_map_size() << ")\n";
+					throw error("Map height limit exceeded.");
+                }
 			}
 
 			// Prepare next iteration
@@ -342,6 +350,10 @@ t_map read_game_map(const std::string& str,	std::map<int, coordinate>& starting_
 		} else {
 			++x;
 			offset = pos_separator + 1;
+            if (x > max_map_size()) {
+				ERR_G << "Map size exceeds limit (x > " << max_map_size() << ")\n";
+				throw error("Map width limit exceeded.");
+            }
 		}
 
 	}
