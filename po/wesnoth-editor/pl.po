@@ -9,13 +9,14 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-02-21 14:37+0100\n"
-"PO-Revision-Date: 2009-01-26 00:05+0100\n"
-"Last-Translator: Karol Nowak <grywacz@gmail.com>\n"
+"PO-Revision-Date: 2009-02-20 20:47+0100\n"
+"Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-Basepath: /home/karol/programowanie/wesnoth/wesnoth-git\n"
+"X-Poedit-Basepath: /usr/local/wesnoth\n"
+"X-Poedit-SearchPath-0: /usr/local/wesnoth\n"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:5
@@ -99,6 +100,8 @@ msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only."
 msgstr ""
+"Używaj lewego/prawego przycisku myszy do rysowania terenu na pierwszym/"
+"drugim planie. Przytrzymaj Shift, by malować tylko warstwę bazową."
 
 #. [editor_tool_hint]: id=editor-tool-select
 #: data/core/editor/tool-hints.cfg:19
@@ -106,6 +109,8 @@ msgid ""
 "Left mouse button selects, right deselects. Hold Shift for magic-wand "
 "selection of tiles with same terrain."
 msgstr ""
+"Lewy przycisk myszy zaznacza, prawy anuluje zaznaczenie. Przytrzymaj Shift, "
+"aby automatycznie zaznaczyć pola o tym samym terenie."
 
 #. [editor_tool_hint]: id=editor-tool-starting-position
 #: data/core/editor/tool-hints.cfg:25
@@ -114,13 +119,17 @@ msgid ""
 "scroll to the starting position, alt+number sets respective starting "
 "position under cursor, delete clears."
 msgstr ""
+"Lewy przycisk myszy wyświetla wybór gracza, prawy go anuluje. Klawisze cyfr "
+"umożliwiają przechodzenie do pozycji początkowych. Alt+cyfra ustawia "
+"odpowiednią pozycję początkową na zaznaczonym polu, Delete anuluje "
+"ustawienie."
 
 #. [editor_tool_hint]: id=editor-paste
 #: data/core/editor/tool-hints.cfg:30
 msgid ""
 "Click to paste, zoom out for more accuracy when pasting large areas. Use the "
 "edit menu to transform the clipboard (rotate, mirror)."
-msgstr ""
+msgstr "Kliknij, aby wkleić. Podczas wklejania "
 
 #. [menu]: id=menu-editor-file
 #: data/themes/editor2.cfg:120
@@ -198,7 +207,7 @@ msgstr "Błąd"
 
 #: src/editor2/editor_controller.cpp:368
 msgid "No editor time-of-day found."
-msgstr ""
+msgstr "Nie znaleziono pory dnia edytora."
 
 #: src/editor2/editor_controller.cpp:404
 msgid "Unsaved Changes"
@@ -289,11 +298,11 @@ msgstr "Rozmiar docelowej mapy jest inny niż obecnie załadowanej"
 
 #: src/editor2/editor_palettes.cpp:522
 msgid "FG"
-msgstr "FG"
+msgstr "1P"
 
 #: src/editor2/editor_palettes.cpp:524
 msgid "BG"
-msgstr "BG"
+msgstr "2P"
 
 #: src/editor2/mouse_action.cpp:382
 msgid "(Player)^None"
@@ -313,15 +322,14 @@ msgstr ""
 
 #: src/gui/dialogs/editor_settings.cpp:119
 msgid "Custom setting"
-msgstr ""
+msgstr "Ustawienie niestandardowe"
 
-#, fuzzy
 #~ msgid ""
 #~ "Which player should start here? You can also use the 1-9 and delete keys "
 #~ "to set/clear starting positions."
 #~ msgstr ""
-#~ "Który gracz ma tu zaczynać? Możesz użyć klawiszy 1-9 i delete żeby "
-#~ "ustawiać/usuwać pozycje startowe."
+#~ "Który gracz ma tu zaczynać? Do ustawiania i usuwania pozycji początkowych "
+#~ "możesz też używać klawiszy 1-9 i Delete."
 
 #~ msgid "Settings"
 #~ msgstr "Ustawienia"

@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: wesnoth.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-02-21 14:37+0100\n"
-"PO-Revision-Date: 2009-02-16 01:29+0300\n"
+"PO-Revision-Date: 2009-02-21 02:08+0300\n"
 "Last-Translator: Victor Sergienko <singalen@gmail.com>\n"
 "Language-Team:  <ru@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -2621,7 +2621,6 @@ msgstr ""
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:747
-#, fuzzy
 msgid ""
 "\n"
 "Switch debug mode on (does not work in multiplayer). See "
@@ -3142,10 +3141,10 @@ msgid ""
 msgstr ""
 "Скрытность:\n"
 "Этот боец может прятаться в деревнях (за исключением водных) и оставаться "
-"незамеченным для врагов, за исключением стоящих рядом с ним.\n"
+"незамеченным для врагов, за исключением стоящих рядом.\n"
 "\n"
 "Вражеские бойцы не будут видеть этого, если только они не будут стоять рядом "
-"с ним. Любой вражеский отряд, первым обнаруживший его, немедленно теряет все "
+"с ним. Любой вражеский боец, первым обнаруживший его, немедленно теряет все "
 "оставшиеся ходы."
 
 #. [hides]: id=submerge
@@ -3230,8 +3229,8 @@ msgid ""
 "doesn't work on Undead or units in villages."
 msgstr ""
 "Чума:\n"
-"Когда боец убит чумой, он заменяется на идентичный отряд убившего, и "
-"переходит на его сторону. (Это не работает на мертвецов или на отряды, "
+"Когда боец убит чумой, он заменяется бойца, идентичного противнику, и "
+"переходит на его сторону. (Это не работает для нежити или для бойцов, "
 "находящиеся в деревнях)."
 
 #: data/core/macros/abilities.cfg:593
@@ -3242,9 +3241,8 @@ msgid ""
 "doesn't work on Undead or units in villages."
 msgstr ""
 "Чума:\n"
-"Когда отряд убит Чумной атакой, то он заменяется на Ходячий труп на стороне "
-"отряда, убившего его. Это не действует на мертвецов, или на отряды, "
-"находящиеся в деревнях."
+"Когда боец убит чумой, он превращается в Ходячий труп, и переходит на его "
+"сторону. (Это не работает для нежити или для бойцов, находящиеся в деревнях)."
 
 #: data/core/macros/abilities.cfg:603
 msgid "slows"
@@ -3259,8 +3257,8 @@ msgid ""
 "is selected."
 msgstr ""
 "Замедление:\n"
-"Эта атака замедляет жертву до конца хода. Замедленный отряд будет наносить в "
-"два раза меньший ущерб и перемещаться в два раза медленнее. Когда отряд "
+"Эта атака замедляет жертву до конца хода. Замедленный боец будет наносить в "
+"два раза меньший ущерб и перемещаться в два раза медленнее. Когда боец "
 "замедлен, к его описанию в правой части экрана добавляется значок улитки."
 
 #: data/core/macros/abilities.cfg:614
@@ -3274,7 +3272,7 @@ msgid ""
 "may not move or attack."
 msgstr ""
 "Камень:\n"
-"Данный вид атаки превращает цель в камень. Отряды, превращённые в камень, не "
+"Данный вид атаки превращает цель в камень. Бойцы, превращённые в камень, не "
 "могут перемещаться и атаковать."
 
 #: data/core/macros/abilities.cfg:625
@@ -3304,7 +3302,7 @@ msgstr ""
 "Рой:\n"
 "Число наносимых ударов при атаке бойца сокращается, если он будет ранен. "
 "Число ударов пропорционально процентному отношению текущего и максимального "
-"ЗД отряда. Например, отряд, имеющий 3/4 от максимального ЗД, сможет наносить "
+"ЗД бойца. Например, боец, имеющий 3/4 от максимального ЗД, сможет наносить "
 "только 3/4 от числа возможных ударов."
 
 #: data/core/macros/abilities.cfg:663
@@ -3318,8 +3316,8 @@ msgid ""
 "also causes this unit to take double damage from the target's counterattack."
 msgstr ""
 "Бросок:\n"
-"При использовании в нападении эта атака наносит двойной урон цели. Отряд "
-"также будет получать двойной урон при ответном ударе цели."
+"При использовании в нападении эта атака наносит двойной урон цели. Боец "
+"также будет получать двойной урон от ответного удара атакуемого."
 
 #: data/core/macros/abilities.cfg:677
 msgid "drains"
@@ -3332,8 +3330,8 @@ msgid ""
 "amount of damage it deals (rounded down)."
 msgstr ""
 "Высасывает:\n"
-"Этот отряд высасывает здоровье из живых отрядов, получая для себя половину "
-"нанесенного количества ущерба (округляется вниз)."
+"Этот боец высасывает здоровье из живых врагов, приобретая здоровье в "
+"половину нанесенного ущерба (округляется вниз)."
 
 #: data/core/macros/abilities.cfg:699
 msgid "poison"
@@ -3347,9 +3345,9 @@ msgid ""
 "a unit."
 msgstr ""
 "Яд:\n"
-"Данный вид атаки отравляет живых. Отравленный отряд теряет 8 ЗД каждый ход "
-"до тех пор, пока не исцелится, либо пока его здоровье не уменьшится до 1 ЗД. "
-"Яд сам по себе не может убить жертву."
+"Данный вид атаки отравляет живых. Отравленный боец теряет 8 ЗД каждый ход до "
+"тех пор, пока не исцелится, либо пока его здоровье не уменьшится до 1 ЗД. Яд "
+"сам по себе не может убить жертву."
 
 #. [option]: type=behaviour
 #: data/core/macros/ai_controller.cfg:144
@@ -3554,9 +3552,8 @@ msgid "No early finish bonus."
 msgstr "Нет бонуса за быстрый финиш."
 
 #: data/core/macros/carryover-utils.cfg:15
-#, fuzzy
 msgid "`(early finish bonus)"
-msgstr "Бонус за быстрый финиш."
+msgstr "`(бонус за быстрый финиш)"
 
 #: data/core/macros/carryover-utils.cfg:18
 msgid "No gold carried over to the next scenario."
@@ -3663,7 +3660,7 @@ msgstr "Яд"
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:267
 msgid "Poison is seeping through the veins of this unit at this very moment."
-msgstr "В настоящий момент по венам данного отряда течет яд."
+msgstr "Сейчас жилам бойца течет яд."
 
 #. [object]
 #: data/core/macros/items.cfg:289 data/core/macros/items.cfg:295
@@ -3701,7 +3698,7 @@ msgstr "Снадобье разрушения"
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:371
 msgid "This poor unit drank something really bad."
-msgstr "Этот бедный отряд выпил что-то действительно плохое."
+msgstr "Этот несчастный боец выпил что-то очень плохое."
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:405
@@ -4630,38 +4627,38 @@ msgid ""
 " This unit's arcane attack deals tremendous damage to magical creatures, and "
 "even some to mundane creatures."
 msgstr ""
-" Мистическая атака этого отряда наносит огромный ущерб магическим созданиям "
-"и некоторый ущерб даже обычным созданиям."
+" Мистическая атака этого бойца наносит огромный ущерб магическим созданиям и "
+"некоторый ущерб даже обычным созданиям."
 
 #: data/core/macros/special-notes.cfg:14
 msgid " This unit is capable of basic healing."
-msgstr " Этот отряд обучен основам лечения."
+msgstr " Этот боец обучен основам лечения."
 
 #: data/core/macros/special-notes.cfg:17
 msgid ""
 " This unit is capable of healing those around it, and curing them of poison."
-msgstr " Этот отряд способен лечить рядом стоящих и исцелять их от яда."
+msgstr " Этот боец способен лечить рядом стоящих и исцелять их от яда."
 
 #: data/core/macros/special-notes.cfg:20
 msgid ""
 " This unit is capable of neutralizing the effects of poison in units around "
 "it."
-msgstr " Этот отряд способен сдерживать действие яда в отрядах вокруг него."
+msgstr " Этот боец способен сдерживать действие яда в бойцах вокруг него."
 
 #: data/core/macros/special-notes.cfg:23
 msgid ""
 " This unit regenerates, which allows it to heal as though always stationed "
 "in a village."
 msgstr ""
-" Этот отряд возрождается, что позволяет ему восстанавливать здоровье так, "
-"как будто он находится в деревне."
+" Этот боец возрождается, что позволяет ему восстанавливать здоровье так, как "
+"будто он находится в деревне."
 
 #: data/core/macros/special-notes.cfg:26
 msgid ""
 " The steadiness of this unit reduces damage from some attacks, but only "
 "while defending."
 msgstr ""
-" Стойкость этого отряда снижает урон от некоторых видов атак, но только при "
+" Стойкость этого бойца снижает урон от некоторых видов атак, но только при "
 "защите."
 
 #: data/core/macros/special-notes.cfg:29
@@ -4669,8 +4666,8 @@ msgid ""
 " The leadership of this unit enables adjacent units of the same side to deal "
 "more damage in combat, though this only applies to units of lower level."
 msgstr ""
-" Лидерство этого отряда позволяет рядом стоящим дружественным войскам "
-"наносить больше урона в бою, хотя это применимо только к отрядам более "
+" Лидерство этого бойца позволяет рядом стоящим дружественным войскам "
+"наносить больше урона в бою, хотя это применимо только к бойцам более "
 "низкого уровня."
 
 #: data/core/macros/special-notes.cfg:32
@@ -4678,8 +4675,8 @@ msgid ""
 " This unit's skill at skirmishing allows it to ignore enemies' zones of "
 "control and thus move unhindered around them."
 msgstr ""
-" Способности Неуловимого позволяют этому отряду игнорировать зоны контроля "
-"противника и беспрепятственно двигаться вокруг них."
+" Способности Неуловимого позволяют этому бойцу игнорировать зоны контроля "
+"врагов и беспрепятственно проходить мимо них."
 
 #: data/core/macros/special-notes.cfg:35
 msgid " Illumination increases the lighting level in adjacent areas."
@@ -4690,7 +4687,7 @@ msgid ""
 " This unit can use one move to teleport between any two empty villages "
 "controlled by its side."
 msgstr ""
-" Данный отряд может использовать один ход, чтобы телепортироваться между "
+" Данный боец может использовать один ход, чтобы телепортироваться между "
 "двумя пустыми деревнями, принадлежащими его стороне."
 
 #: data/core/macros/special-notes.cfg:41
@@ -4698,29 +4695,28 @@ msgid ""
 " In woodlands, this unit's ambush skill renders it invisible to enemies "
 "unless it is immediately adjacent or has revealed itself by attacking."
 msgstr ""
-" В лесу этот отряд может замаскироваться и стать невидимым для противника до "
+" В лесу этот боец может замаскироваться и стать невидимым для противника до "
 "тех пор, пока тот не он не окажется рядом с ним, либо он не обнаружит себя, "
 "атаковав противника."
 
 #: data/core/macros/special-notes.cfg:44
 msgid " This unit is able to hide at night, leaving no trace of its presence."
 msgstr ""
-" Этот отряд способен скрываться в ночи, не оставляя следов своего "
-"присутствия."
+" Этот боец способен скрываться в ночи, не оставляя следов своего присутствия."
 
 #: data/core/macros/special-notes.cfg:47
 msgid ""
 " This unit can hide in villages (with the exception of water villages), and "
 "remain undetected by its enemies, except by those standing next to it."
 msgstr ""
-"Этот отряд может прятаться в деревнях (за исключением водных) и оставаться "
+"Этот боец может прятаться в деревнях (за исключением водных) и оставаться "
 "незамеченным для противника, кроме стоящих рядом с ним."
 
 #: data/core/macros/special-notes.cfg:50
 msgid ""
 " This unit can move unseen in deep water, requiring no air from the surface."
 msgstr ""
-" Этот отряд может передвигаться незамеченным в глубокой воде, так как ему не "
+" Этот боец может передвигаться незамеченным в глубокой воде, так как ему не "
 "требуется дышать воздухом."
 
 #: data/core/macros/special-notes.cfg:53
@@ -4728,8 +4724,8 @@ msgid ""
 " This unit gains 1 hitpoint added to its maximum whenever it kills a living "
 "unit."
 msgstr ""
-"Этот отряд увеличивает своё максимальное здоровье на 1 каждый раз, когда он "
-"убивает живой отряд."
+"Этот боец увеличивает своё максимальное здоровье на 1 каждый раз, когда он "
+"убивает живого врага."
 
 #: data/core/macros/special-notes.cfg:56
 msgid ""
@@ -4745,8 +4741,8 @@ msgid ""
 "attacking it, this unit may backstab, inflicting double damage by creeping "
 "around behind that enemy."
 msgstr ""
-" Если при атаке кто-нибудь из союзников стоит напротив противника, этот "
-"отряд может ударить в спину, причинив двойной урон."
+" Если при атаке кто-нибудь из союзников стоит напротив противника, этот боец "
+"может ударить в спину, причинив двойной урон."
 
 #: data/core/macros/special-notes.cfg:62
 msgid ""
@@ -4761,21 +4757,21 @@ msgid ""
 " This unit is able to slow its enemies, halving their movement speed and "
 "attack damage until they end a turn."
 msgstr ""
-" Этот отряд способен замедлять противника, вдвое уменьшая скорость "
+" Этот боец способен замедлять противника, вдвое уменьшая скорость "
 "передвижения и количество атак до его следующего хода."
 
 #: data/core/macros/special-notes.cfg:68
 msgid ""
 " The ability to turn the living to stone makes this unit extremely dangerous."
 msgstr ""
-" Способность превращать живых в камень делает этот отряд очень опасным."
+" Способность превращать живых в камень делает этого бойца очень опасным."
 
 #: data/core/macros/special-notes.cfg:71
 msgid ""
 " This unit's marksmanship gives it a high chance of hitting targeted "
 "enemies, but only on the attack."
 msgstr ""
-" Высокая точность стрельбы этого отряда дает высокие шансы поразить мишень, "
+" Высокая точность стрельбы этого бойца дает высокие шансы поразить мишень, "
 "но лишь при атаке. "
 
 #: data/core/macros/special-notes.cfg:74
@@ -4783,14 +4779,14 @@ msgid ""
 " The unit has magical attacks, which always have a high chance of hitting an "
 "opponent."
 msgstr ""
-" Этот отряд имеет магическую атаку, что всегда даёт высокий шанс поразить "
+" Этот боец имеет магическую атаку, что всегда даёт высокий шанс поразить "
 "противника."
 
 #: data/core/macros/special-notes.cfg:77
 msgid ""
 " The swarming attacks of this unit become less deadly whenever its members "
 "are wounded."
-msgstr " При ранении роевая атака этого отряда становится менее убийственной."
+msgstr " При ранении роевая атака этого бойца становится менее убийственной."
 
 #: data/core/macros/special-notes.cfg:80
 msgid ""
@@ -4805,7 +4801,7 @@ msgid ""
 " During battle, this unit can drain life from victims to renew its own "
 "health."
 msgstr ""
-" Во время битвы этот отряд способен высасывать жизненные силы у жертвы, "
+" Во время битвы этот боец способен высасывать жизненные силы у жертвы, "
 "увеличивая собственное здоровье."
 
 #: data/core/macros/special-notes.cfg:86
@@ -4813,15 +4809,14 @@ msgid ""
 " The length of this unit's weapon allows it to strike first in melee, even "
 "in defense."
 msgstr ""
-" Длина оружия этого отряда позволяет ему наносить удар первым, даже в "
-"обороне."
+" Длина оружия этого бойца позволяет ему наносить удар первым, даже в обороне."
 
 #: data/core/macros/special-notes.cfg:89
 msgid ""
 " The victims of this unit's poison will continually take damage until they "
 "can be cured in town or by a unit which cures."
 msgstr ""
-" Жертвы от яда этого отряда будут постоянно терять здоровье, пока не будут "
+" Жертвы от яда этого бойца будут постоянно терять здоровье, пока не будут "
 "излечены в деревне или целителем."
 
 #. [trait]: id=loyal
@@ -5318,7 +5313,6 @@ msgstr "Эльфы"
 
 #. [race]: id=elf
 #: data/core/units.cfg:119
-#, fuzzy
 msgid ""
 "Compared to humans, elves are somewhat taller, more agile but less sturdy. "
 "They have slightly pointy ears, pale skin and usually blond hair. Few "
@@ -5732,7 +5726,6 @@ msgstr "Тролли"
 
 #. [race]: id=troll
 #: data/core/units.cfg:267
-#, fuzzy
 msgid ""
 "Trolls are ancient creatures, one of the oldest known races known to inhabit "
 "the Great Continent. They are large, slow, simple-minded, and live extremely "
@@ -5927,7 +5920,7 @@ msgid ""
 "Day: +25% Damage\n"
 "Night: -25% Damage"
 msgstr ""
-"Порядочные отряды лучше сражаются днем и хуже ночью.\n"
+"Порядочные бойцы лучше сражаются днем и хуже ночью.\n"
 "\n"
 "День: +25% ущерба\n"
 "Ночь: -25% ущерба"
@@ -5937,7 +5930,7 @@ msgstr ""
 msgid ""
 "Neutral units are unaffected by day and night, fighting equally well under "
 "both conditions."
-msgstr "Нейтральные отряды сражаются как днем, так и ночью с одинаковой силой."
+msgstr "Нейтральные бойцы сражаются как днем, так и ночью с одинаковой силой."
 
 #. [language]
 #: data/hardwired/english.cfg:16
@@ -5947,7 +5940,7 @@ msgid ""
 "Day: -25% Damage\n"
 "Night: +25% Damage"
 msgstr ""
-"Хаотичные отряды лучше сражаются ночью, а в течение дня хуже.\n"
+"Хаотичные бойцы лучше сражаются ночью, а в течение дня хуже.\n"
 "\n"
 "День: -25% ущерба\n"
 "Ночь: +25% ущерба"
@@ -6103,8 +6096,8 @@ msgid ""
 msgstr ""
 "В меню \"Действия\" вы можете выбрать \"Показать ходы противника\", чтобы "
 "подсветить все ячейки, куда ваш противник может пойти (при условии, что ваши "
-"отряды стоят там, где они сейчас). Так можно проверить, что враг не сможет "
-"на следующем ходу добраться до ваших слабых или раненых отрядов."
+"бойцы стоят там, где они сейчас). Так можно проверить, что враг не сможет на "
+"следующем ходу добраться до ваших слабых или раненых бойцов."
 
 #. [tip]
 #: data/hardwired/tips.cfg:12 data/hardwired/tips.cfg:24
@@ -6132,8 +6125,8 @@ msgid ""
 "Early in a campaign, try to give killing blows to these units so you can get "
 "some high-level troops sooner."
 msgstr ""
-"Отрядам со свойством \"умный\" требуется меньше опыта для повышения. "
-"Старайтесь в начале кампании давать таким отрядам наносить завершающий удар, "
+"Бойцам со свойством \"умный\" требуется меньше опыта для повышения. "
+"Старайтесь в начале кампании давать таким бойцам наносить завершающий удар, "
 "чтобы как можно раньше получить армию высокоуровневых бойцов. "
 
 #. [tip]
@@ -6149,7 +6142,7 @@ msgid ""
 "will restrict it to one hex of movement in any direction."
 msgstr ""
 "Тактика окружения весьма мощна, особенно против быстрых противников. Если вы "
-"разместите два своих отряда с противоположных сторон противника, их зоны "
+"разместите два своих бойца с противоположных сторон противника, их зоны "
 "контроля не дадут ему уйти дальше, чем на одну ячейку."
 
 #. [tip]
@@ -6166,7 +6159,7 @@ msgid ""
 msgstr ""
 "Вы можете выбрать опции \"Вербовать\" и \"Призвать\", кликнув правой "
 "клавишей по ячейке замка. Это позволит вам выбрать ячейку, куда поместить "
-"новый отряд. Иногда разумное размещение отрядов позволит вам достичь деревни "
+"новый боец. Иногда разумное размещение бойцов позволит вам достичь деревни "
 "на ход раньше."
 
 #. [tip]
@@ -6186,9 +6179,9 @@ msgid ""
 "important when moving through difficult terrain such as water or caves. It "
 "can make the difference between being able to move one hex or two."
 msgstr ""
-"Отряды со свойством \"быстрый\" передвигаются на одну ячейку больше. Это "
+"Бойцы со свойством \"быстрый\" передвигаются на одну ячейку больше. Это "
 "может быть важно при передвижении через сложные территории, такие, как вода, "
-"или пещеры. Быстрый отряд в таких случаях сможет передвинуться не на одну, а "
+"или пещеры. Быстрый боец в таких случаях сможет передвинуться не на одну, а "
 "на две ячейки."
 
 #. [tip]
@@ -6212,8 +6205,8 @@ msgid ""
 "level units that are about to level up than with those same units at a "
 "higher level."
 msgstr ""
-"В кампаниях обычно лучше начинать следующий сценарий с отрядами низшего "
-"уровня, готовыми к повышению, чем с теми же отрядами, уже поднявшимися на "
+"В кампаниях обычно лучше начинать следующий сценарий с бойцами низшего "
+"уровня, готовыми к повышению, чем с теми же бойцами, уже поднявшимися на "
 "более высокий уровень."
 
 #. [tip]
@@ -6236,8 +6229,8 @@ msgid ""
 "Lawful units fight better by day, and chaotic units fight better at night. "
 "Neutral units are unaffected by the time of day."
 msgstr ""
-"Порядочные отряды лучше сражаются днём, а хаотичные — ночью. Нейтральные "
-"отряды одинаково сражаются и днём, и ночью."
+"Порядочные бойцы лучше сражаются днём, а хаотичные — ночью. Нейтральные "
+"бойцы одинаково сражаются и днём, и ночью."
 
 #. [tip]
 #: data/hardwired/tips.cfg:48
@@ -6267,8 +6260,8 @@ msgid ""
 "terrain, because units see as far as they can move in one turn."
 msgstr ""
 "Если вы играете с включёнными \"Пеленой\" или \"Туманом войны\", вы не "
-"будете видеть, что вас ожидает. В этой ситуации отряды-разведчики стоят "
-"своих денег. Старайтесь выбирать таких разведчиков, которые могут легко "
+"будете видеть, что вас ожидает. В этой ситуации бойцы-разведчики стоят своих "
+"денег. Старайтесь выбирать таких разведчиков, которые могут легко "
 "перемещаться по окружающей территории, поскольку они могут видеть так "
 "далеко, как далеко они могут продвинуться за один ход."
 
@@ -6281,9 +6274,9 @@ msgid ""
 "is resistant to, and which will affect it the most."
 msgstr ""
 "Существует шесть типов атаки: колющая, режущая, крушащая, огонь, холод и "
-"мистическая. Разные отряды имеют разную сопротивляемость против каждого типа "
-"атаки. Нажмите правой кнопкой мыши на отряд и выберите \"Описание отряда\", "
-"чтобы увидеть, как данный отряд сопротивляется против различных типов атак."
+"мистическая. Разные бойцы имеют разную сопротивляемость против каждого типа "
+"атаки. Нажмите правой кнопкой мыши на боец и выберите \"Описание бойца\", "
+"чтобы увидеть, как данный боец сопротивляется против различных типов атак."
 
 #. [tip]
 #: data/hardwired/tips.cfg:63
@@ -6293,9 +6286,9 @@ msgid ""
 "selected unit in the currently selected terrain is displayed in the top "
 "right corner of the screen."
 msgstr ""
-"От территории, на которой находятся ваши отряды, зависит вероятность того, "
+"От территории, на которой находятся ваши бойцы, зависит вероятность того, "
 "что атака вашего противника достигнет цели.  Рейтинг сопротивления "
-"выбранного отряда на конкретной выбранной местности можно увидеть в правом "
+"выбранного бойца на конкретной выбранной местности можно увидеть в правом "
 "верхнем углу экрана."
 
 #. [tip]
@@ -6310,7 +6303,7 @@ msgstr ""
 "Отравленные бойцы будут каждый ход терять по восемь единиц здоровья, пока у "
 "них не останется лишь одна единица. Они останутся на пороге смерти, пока яд "
 "не будет исцелён. Лекари  могут предотвращать дальнейшее действие яда, но яд "
-"останелся, если только отряд не имеет способности восстановления, или не "
+"останелся, если только боец не имеет способности восстановления, или не "
 "начнёт свой ход в деревне, или рядом с целителем."
 
 #. [tip]
@@ -6320,9 +6313,9 @@ msgid ""
 "'Actions' menu. By recalling the same units over and over, you can build up "
 "a powerful and experienced army."
 msgstr ""
-"Вы можете использовать отряды из прошлого сценария. Для этого дайте команду "
-"\"Призвать\" в меню \"Действия\". Призывая одни и те же отряды много раз, вы "
-"создаёте мощную и опытную армию. "
+"Вы можете использовать бойцов из прошлого сценария. Для этого дайте команду "
+"\"Призвать\" в меню \"Действия\". Призывая одних и тех же бойцов много раз, "
+"вы создаёте мощную и опытную армию. "
 
 #. [tip]
 #: data/hardwired/tips.cfg:75
@@ -6333,9 +6326,9 @@ msgid ""
 "between them and still create a barrier to the enemy. However, skirmishers "
 "are skilled enough to ignore these zones."
 msgstr ""
-"Отряды, начиная с первого уровня, имеют \"зону контроля\" - все соседние "
-"ячейки. Если отряд перемещается в зону контроля противника, он больше не "
-"может двигаться в этом ходу. Это означает, что между отрядами могут быть две "
+"Бойцы, начиная с первого уровня, имеют \"зону контроля\" - все соседние "
+"ячейки. Если боец перемещается в зону контроля противника, он больше не "
+"может двигаться на этом ходу. Это означает, что между бойцами могут быть две "
 "свободные ячейки, и они всё же будут создавать для противника барьер. "
 "Неуловимые, однако, способны игнорировать эти зоны."
 
@@ -6347,10 +6340,10 @@ msgid ""
 "always have a 70% chance to hit, and units with the 'marksman' ability will "
 "always have at least 60% chance to hit when attacking on their turn."
 msgstr ""
-"Шанс нанести ущерб противнику обычно зависит от того, насколько отряд "
-"защищён на местности, на которой он находится в данный момент. Тем не менее, "
+"Шанс нанести ущерб противнику обычно зависит от того, насколько боец защищён "
+"на местности, на которой он находится в данный момент. Тем не менее, "
 "магические атаки всегда (при атаке и обороне) попадают по противнику с "
-"вероятностью 70%, а атаки отрядов со способностью \"снайпер\", при атаке на "
+"вероятностью 70%, а атаки бойцов со способностью \"снайпер\", при атаке на "
 "своём ходу, попадают не менее чем в 60% случаев."
 
 #. [tip]
@@ -6364,7 +6357,7 @@ msgid ""
 "Units stationed in villages will either heal eight hitpoints at the "
 "beginning of their turn, or will recover from poisoning."
 msgstr ""
-"Отряды, размещённые в деревнях, восстанавливают 8 единиц здоровья в начале "
+"Бойцы, размещённые в деревнях, восстанавливают 8 единиц здоровья в начале "
 "своего хода, или же исцеляются от яда."
 
 #. [tip]
@@ -6374,8 +6367,8 @@ msgid ""
 "does not move or attack, it will recover two hitpoints at the beginning of "
 "its next turn."
 msgstr ""
-"Не передвигайте раненый отряд, если в этом не необходимости — пусть он "
-"отдыхает. Если отряд не двигается и не атакует, он восстанавливает 2 единицы "
+"Не передвигайте раненого бойца, если в этом нет необходимости — пусть он "
+"отдыхает. Если боец не двигается и не атакует, он восстанавливает 2 единицы "
 "здоровья в начале своего следующего хода."
 
 #. [tip]
@@ -6385,8 +6378,8 @@ msgid ""
 "terrain types, while most mounted units do not gain any defensive advantages "
 "from villages or castles."
 msgstr ""
-"Большинство пеших отрядов лучше защищаются в деревнях и замках, чем на "
-"большинстве остальных территорий, тогда как большинство конных отрядов не "
+"Большинство пеших бойцов лучше защищаются в деревнях и замках, чем на "
+"большинстве остальных территорий, тогда как большинство конных бойцов не "
 "получают преимущества в защите, находясь в деревнях и замках."
 
 #. [tip]
@@ -6401,7 +6394,7 @@ msgid ""
 "weapons, but are vulnerable to attacks with piercing weapons, including bows "
 "and spears."
 msgstr ""
-"Конные отряды хорошо защищены от атак режущим и крушащим оружием, но уязвимы "
+"Конные бойцы хорошо защищены от атак режущим и крушащим оружием, но уязвимы "
 "против атак колющего оружия, включая стрелы и копья."
 
 #. [tip]
@@ -6418,8 +6411,8 @@ msgid ""
 "level opponent."
 msgstr ""
 "Добить бойца противника — это лучший способ приобретать опыт. Боец, убивший "
-"противника, получает 8 единиц опыта за каждый уровень убитого им отряда, или "
-"4 единицы за отряд нулевого уровня."
+"противника, получает 8 единиц опыта за каждый уровень убитого им бойца, или "
+"4 единицы за врага нулевого уровня."
 
 #. [tip]
 #: data/hardwired/tips.cfg:103
@@ -6446,7 +6439,7 @@ msgid ""
 "expendable units in some directions to delay enemy units."
 msgstr ""
 "Если вас атакуют с разных сторон, подумайте над тем, чтобы отправить менее "
-"ценные отряды в нескольких направлениях, чтобы задержать противника."
+"ценных бойцов в нескольких направлениях, чтобы задержать противника."
 
 #. [tip]
 #: data/hardwired/tips.cfg:115
@@ -6481,11 +6474,11 @@ msgid ""
 "recruit from there. Also, some of your allies may be willing to make room "
 "for you on their keep so you can recruit there."
 msgstr ""
-"Ваш лидер может призывать и вербовать отряды не только в том замке, в "
+"Ваш лидер может призывать и вербовать бойцов не только в том замке, в "
 "котором он начал игру. Вы можете захватывать замки противника и вербовать "
-"новые отряды и в захваченным замках. Кроме того, некоторые ваши союзники "
+"новых бойцов и в захваченным замках. Кроме того, некоторые ваши союзники "
 "могут добровольно предоставлять вам укрытие в своем замке, чтобы вы могли "
-"вербовать отряды."
+"вербовать бойцов там."
 
 #. [tip]
 #: data/hardwired/tips.cfg:127
@@ -6502,9 +6495,9 @@ msgid ""
 "Units with the 'leadership' ability help lower-level adjacent units on the "
 "same side fight better. Use leaders to help your other units level up faster."
 msgstr ""
-"Отряды со способностью лидерства помогают соседним отрядам низших уровней "
+"Бойцы со способностью \"лидерства\" помогают соседним бойцам низших уровней "
 "сражаться в бою лучше. Используйте лидеров, чтобы помочь быстрее "
-"продвинуться на следующий уровень другим вашим отрядам."
+"продвинуться на следующий уровень другим вашим бойцам."
 
 #. [tip]
 #: data/hardwired/tips.cfg:135
@@ -6513,16 +6506,16 @@ msgid ""
 "the village and attack you, while enjoying the defense and healing of the "
 "village."
 msgstr ""
-"Как правило, избегайте находиться вблизи незанятых деревень. Отряд "
-"противника может захватить деревню и атаковать вас, получая при этом "
-"преимущества защиты и исцеления в деревне."
+"Избегайте находиться вблизи незанятых деревень. Боец противника может "
+"захватить деревню и атаковать вас, получая при этом преимущества защиты и "
+"исцеления в деревне."
 
 #. [tip]
 #: data/hardwired/tips.cfg:139
 msgid "Use lines of units to screen injured units to let them recover."
 msgstr ""
-"Выстраивайте отряды в ряд, закрывая ими раненые отряды, чтобы дать им "
-"возможность восстановиться."
+"Выстраивайте бойцов в ряд, закрывая ими раненых, чтобы дать тем возможность "
+"восстановиться."
 
 #. [tip]
 #: data/hardwired/tips.cfg:140
@@ -6540,7 +6533,7 @@ msgid ""
 "If you move a unit, but don't attack or discover any additional information, "
 "you can undo your move by pressing 'u'."
 msgstr ""
-"Если вы передвинули отряд, но не атаковали и не открыли какой-либо "
+"Если вы передвинули бойца, но не атаковали и не открыли какой-либо "
 "дополнительной информации, вы можете отменить ваше передвижение, нажав "
 "кнопку \"u\"."
 
@@ -6550,8 +6543,8 @@ msgid ""
 "You can see how far enemy units can move by moving the mouse cursor over "
 "them."
 msgstr ""
-"Вы можете видеть, как далеко может двигаться отряд противника, для этого "
-"наведите на него курсор мыши."
+"Вы можете видеть, куда может дойти боец противника. Для этого наведите на "
+"него курсор мыши."
 
 #. [tip]
 #: data/hardwired/tips.cfg:155
@@ -6573,8 +6566,8 @@ msgid ""
 "The 'slow' attack ability makes enemy units move slower and halves the "
 "damage they do on all attacks until they end a turn."
 msgstr ""
-"Атака с замедлением делает передвижения отряда противника медленней и "
-"уменьшает на половину ущерб от его атак до конца хода."
+"Атака с замедлением делает передвижения бойца противника медленней и "
+"уменьшает наполовину ущерб от его атак до конца хода."
 
 #. [tip]
 #: data/hardwired/tips.cfg:163
@@ -6592,8 +6585,8 @@ msgid ""
 "Units are healed when they advance a level. Used wisely, this can turn a "
 "fight."
 msgstr ""
-"Отряды полностью восстанавливаются, получая новый уровень. Использование "
-"этой особенности с умом может перевернуть ход битвы."
+"Бойцы полностью вылечиваются, получая новый уровень. Использование этой "
+"особенности с умом может перевернуть ход битвы."
 
 #. [tip]
 #: data/hardwired/tips.cfg:171
@@ -6601,7 +6594,7 @@ msgid ""
 "Charging units are best used against enemies they can kill with a single "
 "blow."
 msgstr ""
-"Отряды с броском лучше всего использовать против врагов, которых они могут "
+"Бойцы с броском лучше всего использовать против врагов, которых они могут "
 "убить с одного удара."
 
 #. [tip]
@@ -6613,11 +6606,11 @@ msgid ""
 "from advancing a level, so it is generally more useful to try to advance "
 "your lower-level units instead."
 msgstr ""
-"Отряды, достигшие своего высшего уровня, вместо повышения получают "
+"Бойцы, достигшие своего высшего уровня, вместо повышения получают "
 "\"Улучшение Постмаксимального Уровня\" (УПМУ), которое обычно увеличивает их "
 "максимальное здоровье на 3 и полностью их исцеляет. Это намного меньше, чем "
 "преимущества, получаемые от перехода на следующий уровень, поэтому обычно "
-"полезнее стараться продвигать отряды более низких уровней."
+"полезнее продвигать бойцов более низких уровней."
 
 #. [tip]
 #: data/hardwired/tips.cfg:179
@@ -6626,9 +6619,9 @@ msgid ""
 "are limited by its maximum movement. Remember this when deciding what unit "
 "is best to scout specific types of terrain."
 msgstr ""
-"На картах с пеленой или туманом войны обзор отряда ограничен его "
-"максимальным количеством ходов. Помните об этом, когда будете решать, какой "
-"отряд отправлять в разведку на определённом типе местности."
+"На картах с пеленой или туманом войны обзор бойца ограничен его максимальным "
+"количеством ходов. Помните об этом, когда будете решать, кого отправлять в "
+"разведку на определённом типе местности."
 
 #. [tip]
 #: data/hardwired/tips.cfg:183
@@ -6660,9 +6653,8 @@ msgid ""
 "veteran to damage a joint target heavily enough for the junior partner to "
 "get in the killing blow."
 msgstr ""
-"Чтобы  быстро повысить опыт отрядов низкого уровня, объединяйте их с "
-"ветеранами и наносите ветераном значительный урон противнику, чтобы младший "
-"отряд мог его окончательно добить."
+"Чтобы быстро повысить опыт бойцов низкого уровня, объединяйте их с "
+"ветеранами и атакуйте врага ветераном, чтобы младший боец мог его добить."
 
 #. [tip]
 #: data/hardwired/tips.cfg:192
@@ -6696,7 +6688,7 @@ msgid ""
 "a river can inflict heavy casualties. Elves can use the edge of a forest in "
 "a similar manner, and dwarves can do the same with mountains."
 msgstr ""
-"Лишь немногие отряды хорошую защищены в воде; расположив атакующих вдоль "
+"Лишь немногие бойцы хорошую защищены в воде; расположив атакующих вдоль "
 "берега реки, вы можете нанести противнику тяжелые потери. Эльфы могут "
 "подобным же образом использовать границу леса, а гномы — горы."
 
@@ -6791,7 +6783,7 @@ msgstr "деревни"
 #: data/themes/default.cfg:249 data/themes/dfool.cfg:279
 #: data/themes/experimental.cfg:217
 msgid "units"
-msgstr "отряды"
+msgstr "бойцы"
 
 #. [label]: id=upkeep-icon
 #: data/themes/default.cfg:258 data/themes/dfool.cfg:288
@@ -6909,12 +6901,13 @@ msgstr "У вас нет лидера, который мог бы вербова
 #: src/actions.cpp:149
 msgid "You must have your leader on a keep to recruit or recall units."
 msgstr ""
-"Вы можете вербовать или призывать отряды, только если Ваш лидер находится в "
+"Вы можете вербовать или призывать бойцов, только если Ваш лидер находится в "
 "замке."
 
 #: src/actions.cpp:168
 msgid "There are no vacant castle tiles in which to recruit a unit."
-msgstr "Нет свободных ячеек в замке, куда можно было бы поставить новый отряд."
+msgstr ""
+"Нет свободных ячеек в замке, куда можно было бы поставить нового бойца."
 
 #: src/actions.cpp:266 src/actions.cpp:273 src/actions.cpp:289
 #: src/actions.cpp:294
@@ -6944,16 +6937,16 @@ msgstr "Телепорт не удался. Пункт назначения не
 #: src/actions.cpp:2455
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
-msgstr[0] "Замечен дружественный отряд"
-msgstr[1] "Замечено $friends дружественных отряда"
-msgstr[2] "Замечено $friends дружественных отрядов"
+msgstr[0] "Вижу дружественного бойца"
+msgstr[1] "Вижу $friends дружественных бойцов"
+msgstr[2] "Вижу $friends дружественных бойцов"
 
 #: src/actions.cpp:2458
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
-msgstr[0] "Замечен вражеский отряд!"
-msgstr[1] "Замечено $enemies вражеских отряда!"
-msgstr[2] "Замечено $enemies вражеских отрядов!"
+msgstr[0] "Вижу врага!"
+msgstr[1] "Вижу $enemies врагов!"
+msgstr[2] "Вижу $enemies врагов!"
 
 #: src/actions.cpp:2463
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
@@ -6971,7 +6964,7 @@ msgstr[2] "$enemies вражеских"
 
 #: src/actions.cpp:2465
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
-msgstr "Замечены отряды! ($friendphrase, $enemyphrase)"
+msgstr "Замечены войска! ($friendphrase, $enemyphrase)"
 
 #: src/actions.cpp:2474
 msgid "(press $hotkey to keep moving)"
@@ -7159,7 +7152,6 @@ msgid "Update failed"
 msgstr "Не могу обновить"
 
 #: src/addon_management.cpp:864
-#, fuzzy
 msgid "The following add-on could not be downloaded or updated successfully:"
 msgid_plural ""
 "The following add-ons could not be downloaded or updated successfully:"
@@ -7287,7 +7279,7 @@ msgstr "Не удалось правильно удалить аддон."
 
 #: src/ai.cpp:1775
 msgid "Unknown unit type : "
-msgstr "Неизвестный отряд:"
+msgstr "Неизвестный боец:"
 
 #: src/ai_move.cpp:74
 msgid "Movement cost is 0, probably a terrain with movement cost of 0."
@@ -7347,11 +7339,11 @@ msgstr "Обнаружено дублирующее описание для ст
 
 #: src/dialogs.cpp:119
 msgid "Advance Unit"
-msgstr "Отряд продвинулся"
+msgstr "Боец продвинулся"
 
 #: src/dialogs.cpp:120
 msgid "What should our victorious unit become?"
-msgstr "Кем станет ваш победоносный отряд?"
+msgstr "Кем станет ваш победоносный боец?"
 
 #: src/dialogs.cpp:221
 msgid "No objectives available"
@@ -7680,8 +7672,7 @@ msgstr "Не могу записать в файл"
 
 #: src/generate_report.cpp:98
 msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
-msgstr ""
-"Этот отряд невидим. Отряды противника не могут его увидеть или атаковать."
+msgstr "Этот боец невидим. Противник не может его увидеть или атаковать."
 
 #: src/generate_report.cpp:98
 msgid "invisible: "
@@ -7692,7 +7683,7 @@ msgid ""
 "This unit has been slowed. It will only deal half its normal damage when "
 "attacking and its movement cost is doubled."
 msgstr ""
-"Этот отряд был замедлен. Он наносит при атаке только половинный ущерб, и "
+"Этот боец был замедлен. Он наносит при атаке только половинный ущерб, и "
 "движение для него вдвое дороже."
 
 #: src/generate_report.cpp:103
@@ -7708,10 +7699,10 @@ msgid ""
 "Units cannot be killed by poison alone. The poison will not reduce it below "
 "1 HP."
 msgstr ""
-"Этот отряд отравлен. Отряд будет терять 8 ЗД каждый ход до тех пор, пока не "
+"Этот боец отравлен. Он будет терять 8 ЗД каждый ход до тех пор, пока не "
 "вылечится в деревне, либо пока его не исцелит дружественный целитель.\n"
 "\n"
-"Отряд нельзя убить одним ядом. Яд не может понизить ЗД ниже 1 единицы."
+"Бойца нельзя убить одним ядом. Яд не может понизить ЗД ниже 1 единицы."
 
 #: src/generate_report.cpp:108
 msgid "poisoned: "
@@ -7719,8 +7710,7 @@ msgstr "отравлен: "
 
 #: src/generate_report.cpp:115
 msgid "This unit has been turned to stone. It may not move or attack."
-msgstr ""
-"Данный отряд превращён в камень. Отряд не может двигаться или атаковать."
+msgstr "Данный боец превращён в камень. Он не может двигаться или атаковать."
 
 #: src/generate_report.cpp:115
 msgid "stone: "
@@ -7776,15 +7766,15 @@ msgstr "против"
 
 #: src/generate_report.cpp:358
 msgid "Lawful units: "
-msgstr "Порядочные отряды: "
+msgstr "Порядочные бойцы: "
 
 #: src/generate_report.cpp:360
 msgid "Neutral units: "
-msgstr "Нейтральные отряды: "
+msgstr "Нейтральные бойцы: "
 
 #: src/generate_report.cpp:361
 msgid "Chaotic units: "
-msgstr "Хаотичные отряды: "
+msgstr "Хаотичные бойцы: "
 
 #: src/generate_report.cpp:508
 msgid "Observers:"
@@ -7796,11 +7786,11 @@ msgstr "Помощь"
 
 #: src/help.cpp:1114
 msgid "<header>text='Units having this special attack'</header>"
-msgstr "<header>text=\"Отряды с такой специальной атакой\"</header>"
+msgstr "<header>text=\"Бойцы с такой специальной атакой\"</header>"
 
 #: src/help.cpp:1190
 msgid "<header>text='Units having this ability'</header>"
-msgstr "<header>text=\"Отряды с такой способностью\"</header>"
+msgstr "<header>text=\"Бойцы с такой способностью\"</header>"
 
 #: src/help.cpp:1258
 msgid "Advances from: "
@@ -7888,7 +7878,7 @@ msgstr "Цена хода"
 
 #: src/help.cpp:1650
 msgid "<header>text='Units of this race'</header>"
-msgstr "<header>text=\"Отряды этой расы\"</header>"
+msgstr "<header>text=\"Бойцы этой расы\"</header>"
 
 #: src/help.cpp:2584 src/menu_events.cpp:549
 msgid " < Back"
@@ -7963,7 +7953,7 @@ msgstr "Читаю кэш"
 
 #: src/loadscreen.cpp:262
 msgid "Reading unit files."
-msgstr "Читаю файлы отрядов"
+msgstr "Читаю файлы бойцов."
 
 #: src/loadscreen.cpp:281
 msgid "Reading files and creating cache."
@@ -7988,7 +7978,7 @@ msgstr "Вы действительно хотите распустить его
 
 #: src/menu_events.cpp:98
 msgid "My lord, this unit is loyal and requires no upkeep! "
-msgstr "Милорд, этот отряд Верный и не требует содержания!"
+msgstr "Милорд, этот боец Верный и не требует содержания!"
 
 #: src/menu_events.cpp:99 src/menu_events.cpp:102 src/menu_events.cpp:106
 msgid "Do you really want to dismiss her?"
@@ -7996,11 +7986,11 @@ msgstr "Вы действительно хотите распустить её?"
 
 #: src/menu_events.cpp:101
 msgid "My lord, this unit is an experienced one, having advanced levels! "
-msgstr "Милорд, это же опытный отряд высокого уровня!"
+msgstr "Милорд, это же опытный боец высокого уровня!"
 
 #: src/menu_events.cpp:105
 msgid "My lord, this unit is close to advancing a level! "
-msgstr "Милорд, этот отряд скоро может получить новый уровень!"
+msgstr "Милорд, этот боец скоро может получить новый уровень!"
 
 #: src/menu_events.cpp:188
 msgid "Statistics"
@@ -8028,7 +8018,7 @@ msgstr "Статус"
 
 #: src/menu_events.cpp:316
 msgid "Unit List"
-msgstr "Список отрядов"
+msgstr "Список бойцов"
 
 #: src/menu_events.cpp:319 src/menu_events.cpp:341
 msgid "Scroll To"
@@ -8053,7 +8043,7 @@ msgstr "Деревни"
 
 #: src/menu_events.cpp:377
 msgid "status^Units"
-msgstr "отряды"
+msgstr "Бойцы"
 
 #: src/menu_events.cpp:378
 msgid "Upkeep"
@@ -8181,7 +8171,7 @@ msgstr[2] "золотых"
 
 #: src/menu_events.cpp:861
 msgid "You have no units available to recruit."
-msgstr "Нет отрядов для вербовки."
+msgstr "Нет бойцов для вербовки."
 
 #: src/menu_events.cpp:873
 msgid "Recruit"
@@ -8189,11 +8179,11 @@ msgstr "Завербовать"
 
 #: src/menu_events.cpp:874 src/menu_events.cpp:1041
 msgid "Select unit:"
-msgstr "Выберите отряд:"
+msgstr "Выберите бойца:"
 
 #: src/menu_events.cpp:919
 msgid "You don't have enough gold to recruit that unit"
-msgstr "У вас недостаточно золота для вербовки данного отряда"
+msgstr "У вас недостаточно золота для вербовки данного бойца"
 
 #: src/menu_events.cpp:962
 msgid "You are separated from your soldiers and may not recall them"
@@ -8205,7 +8195,7 @@ msgid ""
 "(You must have veteran survivors from a previous scenario)"
 msgstr ""
 "Нет войск для призыва\n"
-"(У вас должны быть уцелевшие с прошлого сценария отряды)"
+"(У вас должны быть уцелевшие с прошлого сценария бойцы)"
 
 #: src/menu_events.cpp:1040
 msgid "Recall"
@@ -8213,17 +8203,17 @@ msgstr "Призвать"
 
 #: src/menu_events.cpp:1051
 msgid "Dismiss Unit"
-msgstr "Распустить отряд"
+msgstr "Уволить бойца"
 
 #: src/menu_events.cpp:1069
 msgid "You must have at least 1 gold piece to recall a unit"
 msgid_plural "You must have at least $cost gold pieces to recall a unit"
 msgstr[0] ""
-"У вас должно быть по крайней мере $cost золотая монета для призыва отряда"
+"У вас должно быть по крайней мере $cost золотая монета для призыва бойца"
 msgstr[1] ""
-"У вас должно быть по крайней мере $cost золотые монеты для призыва отряда"
+"У вас должно быть по крайней мере $cost золотые монеты для призыва бойца"
 msgstr[2] ""
-"У вас должно быть по крайней мере $cost золотых монет для призыва отряда"
+"У вас должно быть по крайней мере $cost золотых монет для призыва бойца"
 
 #: src/menu_events.cpp:1400
 msgid ""
@@ -8234,12 +8224,12 @@ msgstr ""
 #: src/menu_events.cpp:1408 src/menu_events.cpp:1413
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr ""
-"Некоторые отряды еще не сделали ход. Вы действительно хотите завершить свой "
+"Некоторые бойцы еще не сделали ход. Вы действительно хотите завершить свой "
 "ход?"
 
 #: src/menu_events.cpp:1448
 msgid "Rename Unit"
-msgstr "Переименовать отряд"
+msgstr "Переименовать бойца"
 
 #: src/menu_events.cpp:1486
 msgid "Race"
@@ -8247,7 +8237,7 @@ msgstr "Раса"
 
 #: src/menu_events.cpp:1509
 msgid "Create Unit (Debug!)"
-msgstr "Создать отряд (Отладка!)"
+msgstr "Создать бойца (Отладка!)"
 
 #: src/menu_events.cpp:1569
 msgid "Place Label"
@@ -8400,9 +8390,8 @@ msgid "Disable autosaves."
 msgstr ""
 
 #: src/menu_events.cpp:2310
-#, fuzzy
 msgid "Advance to the next scenario, or scenario identified by 'id'"
-msgstr "Ждем следующего сценария..."
+msgstr "Перейти к следующему сценарию, или сценарию 'id'"
 
 #: src/menu_events.cpp:2313
 msgid "Choose next scenario"
@@ -8442,7 +8431,7 @@ msgstr ""
 
 #: src/menu_events.cpp:2334
 msgid "Create a unit."
-msgstr "Создать отряд"
+msgstr "Создать бойца."
 
 #: src/menu_events.cpp:2336
 msgid "Toggle fog for the current player."
@@ -8506,7 +8495,7 @@ msgstr "В ваших списках друзей или игнорирован�
 
 #: src/menu_events.cpp:2711
 msgid "Couldn't find label or unit containing the string '$search'."
-msgstr "Не могу найти метку или отряд, содержащую текст \"$search\"."
+msgstr "Не могу найти метку или бойца с текстом \"$search\"."
 
 #: src/menu_events.cpp:2740
 msgid "Can't droid invalid side: '$side'."
@@ -8832,7 +8821,7 @@ msgstr "Доход, получаемый от каждой деревни за �
 
 #: src/multiplayer_create.cpp:176
 msgid "The amount of experience a unit needs to advance"
-msgstr "Количество опыта, необходимого для улучшения отряда"
+msgstr "Количество опыта, необходимого для продвижения бойца"
 
 #: src/multiplayer_create.cpp:179
 msgid "Use scenario specific settings"
@@ -8845,12 +8834,12 @@ msgstr "Случайное время суток при старте"
 #: src/multiplayer_create.cpp:185
 msgid "Enemy units cannot be seen unless they are in range of your units"
 msgstr ""
-"Вы не можете видеть отряды противника, пока они не окажутся в поле зрения "
-"Ваших отрядов"
+"Вы не можете видеть бойцов противника, пока они не окажутся в поле зрения "
+"Ваших бойцов"
 
 #: src/multiplayer_create.cpp:188
 msgid "The map is unknown until your units explore it"
-msgstr "Карта неизвестна, пока Ваши отряды не исследуют её"
+msgstr "Карта неизвестна, пока Ваши бойцы не исследуют её"
 
 #: src/multiplayer_create.cpp:191
 msgid "Allow users who are not playing to watch the game"
@@ -9036,7 +9025,7 @@ msgstr "Неверный цвет"
 
 #: src/multiplayer_ui.cpp:418
 msgid "Selected user: "
-msgstr "Выб отряд:"
+msgstr "Выберите пользователя:"
 
 #: src/multiplayer_wait.cpp:134
 msgid "Leader: "
@@ -9104,7 +9093,7 @@ msgstr "Инициализация команд"
 
 #: src/play_controller.cpp:140
 msgid "Loading units"
-msgstr "Читаю файлы отрядов"
+msgstr "Читаю файлы бойцов"
 
 #: src/play_controller.cpp:147 src/play_controller.cpp:155
 msgid "Initializing display"
@@ -9390,7 +9379,7 @@ msgstr "Призвано"
 
 #: src/statistics_dialog.cpp:74 src/statistics_dialog.cpp:135
 msgid "Advancements"
-msgstr "Улучшено"
+msgstr "Продвинулись"
 
 #: src/statistics_dialog.cpp:78 src/statistics_dialog.cpp:142
 msgid "Losses"
@@ -9542,11 +9531,11 @@ msgstr "Выйти из игры"
 
 #: src/titlescreen.cpp:443
 msgid "Show next tip of the day"
-msgstr "Показать следующий совет дня"
+msgstr "Показать следующий \"совет дня\""
 
 #: src/titlescreen.cpp:444
 msgid "Show Battle for Wesnoth help"
-msgstr "Помощь по игре Битва за Веснот"
+msgstr "Помощь п Битве за Веснот"
 
 #: src/titlescreen.cpp:445
 msgid "Upload statistics"
@@ -9562,11 +9551,11 @@ msgstr "Помогите Весноту, отправив нам информа�
 
 #: src/unit.cpp:591
 msgid "Unknown unit type '$type|' while generating traits"
-msgstr "Неизвестный тип отряда: '$type|' в списке особенностей"
+msgstr "Неизвестный тип бойца: '$type|' в списке особенностей"
 
 #: src/unit.cpp:792
 msgid "Unknown unit type '$type|'"
-msgstr "Неизвестный тип отряда: '$type|'"
+msgstr "Неизвестный тип бойца: '$type|'"
 
 #: src/unit.cpp:2520 src/unit.cpp:2725 src/unit.cpp:2781
 msgid " and "
@@ -9638,7 +9627,7 @@ msgstr "нейтральный"
 
 #: src/unit_types.cpp:1018
 msgid "female^chaotic"
-msgstr "механизм"
+msgstr "хаотичная"
 
 #: src/unit_types.cpp:1018
 msgid "female^lawful"

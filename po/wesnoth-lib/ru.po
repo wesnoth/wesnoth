@@ -17,8 +17,8 @@ msgstr ""
 "Project-Id-Version: wesnoth-lib.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-02-21 14:37+0100\n"
-"PO-Revision-Date: 2008-03-02 01:14+0300\n"
-"Last-Translator: vicza <vicza@zmail.ru>\n"
+"PO-Revision-Date: 2009-02-21 02:03+0300\n"
+"Last-Translator: Victor Sergienko <singalen@gmail.com>\n"
 "Language-Team:  <http://bugs.wesnoth.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -575,9 +575,8 @@ msgstr ""
 #. [button]: id=next_tod
 #: data/gui/default/window/editor_settings.cfg:75
 #: data/gui/default/window/editor_settings.cfg:76
-#, fuzzy
 msgid "Next"
-msgstr "Следующий отряд"
+msgstr "Следующий боец"
 
 #. [toggle_button]: id=custom_tod_toggle
 #: data/gui/default/window/editor_settings.cfg:83
@@ -1158,7 +1157,7 @@ msgstr "Другие"
 
 #: src/game_preferences_display.cpp:192
 msgid "Show Unit Idle Animations"
-msgstr "Показывать анимацию отрядов при бездействии"
+msgstr "Показывать анимацию стоящих бойцов"
 
 #: src/game_preferences_display.cpp:194
 msgid "Music Volume:"
@@ -1263,15 +1262,15 @@ msgstr ""
 
 #: src/game_preferences_display.cpp:304
 msgid "Make units move and fight faster"
-msgstr "Ускорить движение и битву отрядов"
+msgstr "Ускорить движение и битвы"
 
 #: src/game_preferences_display.cpp:321
 msgid "Units move and fight speed"
-msgstr "Скорость движения и битвы отрядов"
+msgstr "Скорость движения и битв"
 
 #: src/game_preferences_display.cpp:324
 msgid "Show unit idle animations"
-msgstr "Показывать анимацию отрядов при бездействии"
+msgstr "Показывать анимацию стоящих бойцов"
 
 #: src/game_preferences_display.cpp:330
 msgid "Set the frequency of unit idle animations"
@@ -1283,7 +1282,7 @@ msgstr "Установить максимальное количество ав�
 
 #: src/game_preferences_display.cpp:339
 msgid "Do not animate AI units moving"
-msgstr "Не анимировать движения отрядов компьютера"
+msgstr "Не анимировать движения бойцов компьютера"
 
 #: src/game_preferences_display.cpp:347
 msgid "Overlay a grid onto the map"
@@ -1343,7 +1342,7 @@ msgstr "Вставить имя"
 
 #: src/game_preferences_display.cpp:376
 msgid "Show text above a unit when it is hit to display damage inflicted"
-msgstr "При попадании показывать над отрядом нанесённый урон"
+msgstr "При попадании показывать над бойцом нанесённый урон"
 
 #: src/game_preferences_display.cpp:378
 msgid "Change the resolution the game runs at"
@@ -1366,7 +1365,7 @@ msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
 msgstr ""
-"Показывать цветные круги вокруг каждого отряда, чтобы различать, кто на чьей "
+"Показывать цветные круги вокруг каждого бойца, чтобы различать, кто на чьей "
 "стороне"
 
 #: src/game_preferences_display.cpp:391
@@ -1548,11 +1547,11 @@ msgstr ""
 
 #: src/hotkeys.cpp:45
 msgid "Next Unit"
-msgstr "Следующий отряд"
+msgstr "Следующий боец"
 
 #: src/hotkeys.cpp:46
 msgid "Previous Unit"
-msgstr "Предыдущий отряд"
+msgstr "Предыдущий боец"
 
 #: src/hotkeys.cpp:47
 msgid "Hold Position"
@@ -1560,7 +1559,7 @@ msgstr "Сохранять позицию"
 
 #: src/hotkeys.cpp:48
 msgid "End Unit Turn"
-msgstr "Завершить ход отряда"
+msgstr "Завершить ход бойца"
 
 #: src/hotkeys.cpp:49
 msgid "Leader"
@@ -1601,11 +1600,11 @@ msgstr "Ускоренный"
 
 #: src/hotkeys.cpp:59
 msgid "Unit Description"
-msgstr "Описание отряда"
+msgstr "Описание бойца"
 
 #: src/hotkeys.cpp:60
 msgid "Rename Unit"
-msgstr "Переименовать отряд"
+msgstr "Переименовать бойца"
 
 #: src/hotkeys.cpp:61
 msgid "Save Game"
@@ -1657,11 +1656,11 @@ msgstr "Говорить"
 
 #: src/hotkeys.cpp:74
 msgid "Create Unit (Debug!)"
-msgstr "Создать отряд (Отладка!)"
+msgstr "Создать бойца (Отладка!)"
 
 #: src/hotkeys.cpp:75
 msgid "Change Unit Side (Debug!)"
-msgstr "Сменить сторону отряда (Отладка!)"
+msgstr "Сменить сторону бойца (Отладка!)"
 
 #: src/hotkeys.cpp:77
 msgid "Scenario Objectives"
@@ -1669,7 +1668,7 @@ msgstr "Задачи сценария"
 
 #: src/hotkeys.cpp:78
 msgid "Unit List"
-msgstr "Список отрядов"
+msgstr "Список бойцов"
 
 #: src/hotkeys.cpp:79
 msgid "Statistics"
@@ -1934,7 +1933,7 @@ msgstr "Продолжить движение"
 
 #: src/hotkeys.cpp:179
 msgid "Find Label or Unit"
-msgstr "Найти метку или отряд"
+msgstr "Найти метку или бойца"
 
 #: src/hotkeys.cpp:180
 msgid "Speak to Ally"
@@ -2152,6 +2151,10 @@ msgstr ""
 #: src/wml_exception.cpp:75
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr "В разделе '[$section|]' не задан обязательный параметр '$key|' ."
+
+#, fuzzy
+#~ msgid "Change username"
+#~ msgstr "Вставить имя"
 
 #, fuzzy
 #~ msgid "No scrollbar defined."

@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-02-21 14:37+0100\n"
-"PO-Revision-Date: 2009-02-01 14:57+0100\n"
-"Last-Translator: Karol Nowak <grywacz@gmail.com>\n"
+"PO-Revision-Date: 2009-02-20 20:24+0100\n"
+"Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team:  <z.banach@wsisiz.edu.pl>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,7 +18,8 @@ msgstr ""
 "X-Poedit-Country: POLAND\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2)\n"
-"X-Poedit-Basepath: /home/karol/programowanie/wesnoth/wesnoth-git\n"
+"X-Poedit-Basepath: /usr/local/share/wesnoth\n"
+"X-Poedit-SearchPath-0: /usr/local/share/wesnoth\n"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:49
@@ -418,9 +419,8 @@ msgstr "Tłumaczenie macedońskie"
 
 #. [about]
 #: data/core/about.cfg:1716
-#, fuzzy
 msgid "Marathi Translation"
-msgstr "Tłumaczenie łacińskie"
+msgstr "Tłumaczenie marathi"
 
 #. [about]
 #: data/core/about.cfg:1725
@@ -2515,6 +2515,10 @@ msgid ""
 "would take days to traverse. As far as gameplay is concerned, only units "
 "capable of flying can cross this terrain."
 msgstr ""
+"Teren nie do przejścia to każda przepaść lub rozpadlina, której (jak sama "
+"nazwa wskazuje) nie da się przejść po ziemi. Przepaście mają strome, często "
+"wręcz pionowe ściany, których przejście zajęłoby wiele dni. Z punktu "
+"widzenia rozgrywki teren tego typu mogą przekraczać tylko jednostki latające."
 
 #. [topic]: id=terrain_lava
 #: data/core/help.cfg:678
@@ -2569,7 +2573,6 @@ msgstr "Rafa"
 
 #. [topic]: id=terrain_reef
 #: data/core/help.cfg:703
-#, fuzzy
 msgid ""
 "Coastal reefs are shallows formed by stone, coral and sand. This provides "
 "most land units with a more steady footing and defensive positions than "
@@ -2578,12 +2581,12 @@ msgid ""
 "\n"
 "Mermen and Naga both receive 70% defense on coastal reefs."
 msgstr ""
-"Rafy są płyciznami utworzonymi przez kamienie, koralowce i piasek. "
+"Rafy przybrzeżne to płycizny utworzone przez kamienie, koralowce i piasek. "
 "Zapewniają one pieszym jednostkom pewniejszy grunt pod nogami i lepszą "
-"ochronę niż płytka woda, a większość zamieszkujących wody ras cieszy się w "
-"nich wyjątkowo wysokim współczynnikiem obrony.\n"
+"obronę niż płytka woda, a większości ras wodnych dają wyjątkowo wysoki "
+"współczynnik obrony.\n"
 "\n"
-"Mermeni i nagi otrzymują na rafach 70% obrony."
+"Mermeni i nagi mają na rafach obronę 70%."
 
 #. [topic]: id=terrain_bridge
 #: data/core/help.cfg:710
@@ -2631,6 +2634,11 @@ msgid ""
 "jagged peaks at such rarified heights, and not even the fiercest troll can "
 "smash through thick walls of stone."
 msgstr ""
+"Istnieją przeszkody nie do przebycia nawet dla najbardziej zawziętego "
+"podróżnika, takie jak ściany z litej skały czy też niebotyczne góry, których "
+"wierzchołki wiecznie spowijają chmury. Nawet stworzenie latające nie są w "
+"stanie pokonać podniebnych grani, a nawet najsilniejszy troll nie przebije "
+"grubej ściany jaskini."
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:738
@@ -2789,7 +2797,7 @@ msgid ""
 msgstr ""
 "\n"
 "Zmiana kontrolera strony \"side\" (podaj jej numer) na \"username\" (podaj "
-"ksywkę gracza lub obserwatora). Przynależność stron do graczy możesz "
+"pseudonim gracza lub obserwatora). Przynależność stron do graczy możesz "
 "sprawdzić w oknie dialogowym \"Ustawienia scenariusza\", wyświetlanym po "
 "kliknięciu przycisku \"Więcej\" w oknie tabeli statusu (domyślnie Alt+S).\n"
 "\n"
@@ -2844,6 +2852,10 @@ msgid ""
 "campaign.\n"
 "\n"
 msgstr ""
+"\n"
+"Wyświetla menu wyboru scenariusza kampanii, do którego chcesz natychmiast "
+"przejść.\n"
+"\n"
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:805
@@ -3459,7 +3471,7 @@ msgstr "strona $temp_i"
 #. [command]
 #: data/core/macros/ai_controller.cfg:309
 msgid "focusing on defeating $this_enemy_description|."
-msgstr ""
+msgstr "koncentruje się na pokonaniu $this_enemy_description|."
 
 #. [value]
 #. [option]: speaker=narrator
@@ -3483,7 +3495,7 @@ msgstr "Którą przyjazną stronę mamy chronić?"
 #. [command]
 #: data/core/macros/ai_controller.cfg:459
 msgid "focusing on protecting $this_ally_description|."
-msgstr ""
+msgstr "koncentruje się na chronieniu $this_ally_description|."
 
 #. [option]: type=objective
 #: data/core/macros/ai_controller.cfg:511
@@ -3503,7 +3515,7 @@ msgstr "Broń tej lokacji"
 #. [command]
 #: data/core/macros/ai_controller.cfg:551
 msgid "focusing on defending the area around $x1|,$y1|."
-msgstr ""
+msgstr "koncentruje się na obronie terenu wokół $x1|,$y1|."
 
 #. [print]
 #: data/core/macros/ai_controller.cfg:586
@@ -3537,6 +3549,8 @@ msgid ""
 "$ally_leader.name (side $ally_side|) has not been given any instructions and "
 "is acting normally."
 msgstr ""
+"$ally_leader.name (strona $ally_side|) nie ma żadnych specjalnych rozkazów i "
+"działa normalnie."
 
 #. [value]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:811
@@ -3547,13 +3561,17 @@ msgid ""
 "Behavior: $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_behaviour_description"
 msgstr ""
+"Cel: $ai_controller.side_$ally_side|_current_settings."
+"currently_doing_objective_description\n"
+"Zachowanie: $ai_controller.side_$ally_side|_current_settings."
+"currently_doing_behaviour_description"
 
 #. [value]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:825
 msgid ""
 "$ally_leader.name (side $ally_side|) is carrying out the following "
 "instructions:"
-msgstr ""
+msgstr "$ally_leader.name (strona $ally_side|) wykonuje następujące rozkazy:"
 
 #. [literal]
 #: data/core/macros/ai_controller.cfg:840
@@ -4598,6 +4616,8 @@ msgid ""
 "The computer player might not be able to play side $side_number properly in "
 "this scenario. Side $side_number is intended to be played by a human player."
 msgstr ""
+"Komputer może mieć trudności z graniem jako strona $side_number w tym "
+"scenariuszu. Stronę $side_number powinien kontrolować jeden z graczy."
 
 #. [time]: id=deep_underground
 #. [illuminated_time]: id=deep_underground_illum
@@ -6100,6 +6120,11 @@ msgid ""
 "features, and allows us to improve Wesnoth. To learn more about this or "
 "disable it, click the envelope in the bottom-right corner."
 msgstr ""
+"Podczas gry w Bitwę o Wesnoth rejestrowane są anonimowe informacje "
+"statystyczne o postępach gracza, które są przesyłane na nasz serwer i tam "
+"przechowywane. Umożliwia to działanie kilku ciekawych funkcji i pozwala nam "
+"ciągle ulepszać grę. Aby dowiedzieć się więcej o tej funkcji i ewentualnie "
+"ją wyłączyć, kliknij ikonę koperty w prawym dolnym rogu."
 
 #. [tip]
 #: data/hardwired/tips.cfg:4
@@ -6760,6 +6785,7 @@ msgstr "Zapisz moją powtórkę i nie pytaj ponownie"
 msgid ""
 "To change the setting later on, click on the envelope icon in the main menu."
 msgstr ""
+"Aby później zmienić to ustawienie, kliknij ikonę koperty w głównym menu."
 
 #: data/temp-file_send_data_strings.cfg:15
 msgid "Send"
@@ -7150,12 +7176,18 @@ msgid_plural ""
 "Some outdated local add-ons have publishing information attached. They will "
 "not be offered for updating."
 msgstr[0] ""
+"Znaleziono informacje publikowania nieaktualnego dodatku lokalnego. Dodatek "
+"nie zostanie udostępniony do aktualizacji."
 msgstr[1] ""
+"Znaleziono informacje publikowania nieaktualnych dodatków lokalnych. Dodatki "
+"nie zostaną udostępnione do aktualizacji."
 msgstr[2] ""
+"Znaleziono informacje publikowania nieaktualnych dodatków lokalnych. Dodatki "
+"nie zostaną udostępnione do aktualizacji."
 
 #: src/addon_management.cpp:721
 msgid "Could not find any updated add-ons on this server."
-msgstr ""
+msgstr "Nie znaleziono zaktualizowanych dodatków na tym serwerze."
 
 #: src/addon_management.cpp:721
 msgid "No add-ons to update"
@@ -7183,9 +7215,8 @@ msgid "Size"
 msgstr "Rozmiar"
 
 #: src/addon_management.cpp:790
-#, fuzzy
 msgid "Update add-ons"
-msgstr "Wysyłanie dodatku"
+msgstr "Aktualizuj dodatki"
 
 #: src/addon_management.cpp:791
 msgid "Select an add-on to update:"
@@ -7226,7 +7257,6 @@ msgid "All add-ons updated successfully."
 msgstr "Dodatki zostały pomyślnie zaktualizowane."
 
 #: src/addon_management.cpp:898
-#, fuzzy
 msgid "Connecting to add-ons server..."
 msgstr "Łączenie z serwerem dodatków..."
 
@@ -7268,7 +7298,6 @@ msgid "There are no add-ons available for download from this server."
 msgstr "Na tym serwerze nie ma dostępnych dodatków."
 
 #: src/addon_management.cpp:1025
-#, fuzzy
 msgid "Get add-ons"
 msgstr "Pobierz dodatki"
 
@@ -7632,6 +7661,8 @@ msgid ""
 "The server will run in a background process until all users have "
 "disconnected."
 msgstr ""
+"Serwer będzie pracować jako proces tła, dopóki wszyscy użytkownicy nie "
+"zostaną odłączeni."
 
 #: src/game.cpp:1292
 msgid "Don't show again"
@@ -7789,7 +7820,7 @@ msgstr "Odporności: "
 
 #: src/generate_report.cpp:172
 msgid "(Att / Def)"
-msgstr ""
+msgstr "(atak/obr.)"
 
 #: src/generate_report.cpp:191 src/multiplayer_create.cpp:395
 msgid "Experience Modifier: "
@@ -8319,13 +8350,15 @@ msgstr "Szukaj"
 
 #: src/menu_events.cpp:1858
 msgid "This command is currently unavailable."
-msgstr "Ta komenda nie jest w tym momencie dostępna."
+msgstr "To polecenie jest w tej chwili niedostępne."
 
 #: src/menu_events.cpp:1869
 msgid ""
 "Available commands list and command-specific help. Use \"help all\" to "
 "include currently unavailable commands."
 msgstr ""
+"Lista dostępnych poleceń i pomoc do konkretnych poleceń. Użyj \"help all\", "
+"by uwzględnić również polecenia aktualnie niedostępne."
 
 #: src/menu_events.cpp:1974
 msgid " No help available."
@@ -8337,13 +8370,15 @@ msgid ""
 "available commands."
 msgstr ""
 "Wyślij zapytanie do serwera. Jeśli nie podasz argumentów serwer odpowie "
-"listą dostępnych komend."
+"listą dostępnych poleceń."
 
 #: src/menu_events.cpp:2115
 msgid ""
 "Ban and kick a player or observer. If he is not in the game but on the "
 "server he will only be banned."
 msgstr ""
+"Zbanuj i wyrzuć gracza lub obserwatora. Jeśli jest on na serwerze, ale nie "
+"gra, zostanie tylko zbanowany."
 
 #: src/menu_events.cpp:2118
 msgid "Kick a player or observer."
@@ -8375,15 +8410,15 @@ msgstr "Zmień poziom logowania dla wybranej domeny."
 
 #: src/menu_events.cpp:2143
 msgid "Add a nick to your ignores list."
-msgstr "Dodaj ksywkę gracza do listy ignorowanych."
+msgstr "Dodaj pseudonim gracza do listy ignorowanych."
 
 #: src/menu_events.cpp:2145
 msgid "Add a nick to your friends list."
-msgstr "Dodaj ksywkę gracza do listy przyjaciół."
+msgstr "Dodaj pseudonim gracza do listy przyjaciół."
 
 #: src/menu_events.cpp:2147
 msgid "Remove a nick from your ignores or friends list."
-msgstr "Usunięcie ksywki gracza z listy ignorowanych lub przyjaciół."
+msgstr "Usunięcie pseudonimu gracza z listy ignorowanych lub przyjaciół."
 
 #: src/menu_events.cpp:2149
 msgid "Show your ignores and friends list."
@@ -8395,27 +8430,27 @@ msgstr "Wyświetl informacje o wersji."
 
 #: src/menu_events.cpp:2154
 msgid "Register your nick"
-msgstr "Zarejestruj swoją ksywkę"
+msgstr "Zarejestruj swój pseudonim"
 
 #: src/menu_events.cpp:2156
 msgid "Drop your nick."
-msgstr "Skasuj swoją ksywkę."
+msgstr "Skasuj swój pseudonim."
 
 #: src/menu_events.cpp:2158
-#, fuzzy
 msgid "Update details for your nick. For possible details see '/details'."
 msgstr ""
-"Aktualizuj ustawienia dla swojej nazwy użytkownika. Więcej informacji "
-"otrzymasz używając /details"
+"Aktualizuj informacje dodatkowe dla swojego pseudonimu. Aby poznać możliwe "
+"informacje, wpisz \"/details\"."
 
 #: src/menu_events.cpp:2161
-#, fuzzy
 msgid "Request information about a nick."
 msgstr "Zażądaj informacji o użytkowniku."
 
 #: src/menu_events.cpp:2163
 msgid "Request a list of details you can set for your registered nick."
 msgstr ""
+"Zażądaj listy informacji, jakie możesz ustawić dla swojego zarejestrowanego "
+"pseudonimu."
 
 #: src/menu_events.cpp:2285
 msgid "Refresh gui."
@@ -8477,11 +8512,11 @@ msgstr "Wyłącz tryb debugowania."
 
 #: src/menu_events.cpp:2320
 msgid "Set the command used by the custom command hotkey"
-msgstr ""
+msgstr "Ustaw polecenie uruchamiane skrótem polecenia niestandardowego"
 
 #: src/menu_events.cpp:2322
 msgid "Set or show alias to a command"
-msgstr "Ustaw lub pokaż alias dla komendy"
+msgstr "Ustaw lub pokaż alias dla polecenia"
 
 #: src/menu_events.cpp:2324
 msgid "Set a scenario variable."
@@ -8640,46 +8675,51 @@ msgid "Server-side redirect loop"
 msgstr "Pętla przekierowania po stronie serwera"
 
 #: src/multiplayer.cpp:335
-#, fuzzy
 msgid "You must login first."
-msgstr "Musisz się zalogować na ten serwer"
+msgstr "Musisz się najpierw zalogować."
 
 #: src/multiplayer.cpp:337
 msgid "The nick '$nick' is already taken."
-msgstr ""
+msgstr "Pseudonim \"$nick\" jest już zajęty."
 
 #: src/multiplayer.cpp:339
 msgid ""
 "The nick '$nick' contains invalid characters. Only alpha-numeric characters, "
 "underscores and hyphens are allowed."
 msgstr ""
+"Pseudonim \"$nick\" zawiera niedozwolone znaki. Dozwolone są tylko litery, "
+"cyfry, podkreślenia i myślniki."
 
 #: src/multiplayer.cpp:343
 msgid "The nick '$nick' is too long. Nicks must be 18 characters or less."
 msgstr ""
+"Pseudonim \"$nick\" jest za długi. Pseudonim może mieć maksymalnie 18 znaków."
 
 #: src/multiplayer.cpp:346
 msgid "The nick '$nick' is reserved and cannot be used by players."
 msgstr ""
+"Pseudonim \"$nick\" jest zarezerwowany i nie może być używany przez graczy."
 
 #: src/multiplayer.cpp:348 src/multiplayer.cpp:350
 msgid "The nick '$nick' is registered on this server."
-msgstr ""
+msgstr "Pseudonim \"$nick\" jest zarejestrowany na tym serwerze."
 
 #: src/multiplayer.cpp:351
 msgid ""
 "WARNING: There is already a client using this nick, logging in will cause "
 "that client to be kicked!"
 msgstr ""
+"OSTRZEŻENIE: Ten pseudonim jest już używany przez innego klienta. "
+"Zalogowanie spowoduje wyrzucenie tego klienta!"
 
 #: src/multiplayer.cpp:354
 msgid ""
 "Error in the login procedure (the server had no seed for your connection)."
-msgstr ""
+msgstr "Błąd logowania (serwer nie mógł przydzielić połączenia)."
 
 #: src/multiplayer.cpp:357
 msgid "The password you provided was incorrect."
-msgstr ""
+msgstr "Podane hasło jest nieprawidłowe."
 
 #: src/multiplayer_connect.cpp:82 src/multiplayer_connect.cpp:485
 #: src/multiplayer_connect.cpp:613
