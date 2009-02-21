@@ -49,7 +49,7 @@ namespace about
 static void add_lines(std::vector<std::string> &res, config const &c) {
 	std::string title=c["title"];
 	if(title.size()) {
-		title = N_("+" + title);
+		title = "+" + title;
 		res.push_back(title);
 	}
 
@@ -57,7 +57,7 @@ static void add_lines(std::vector<std::string> &res, config const &c) {
 	for(std::vector<std::string>::iterator line = lines.begin();
 		line != lines.end(); line++) {
 		if((*line)[0] == '+' && (*line).size()>1){
-			*line = N_("+  " + (*line).substr(1,(*line).size()-1));
+			*line = "+  " + line->substr(1, line->size() - 1);
 	    } else {
 			*line = "-  " + *line;
 	    }
