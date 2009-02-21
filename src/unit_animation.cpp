@@ -948,6 +948,7 @@ void unit_animator::wait_until(int animation_time) const
 			static_cast<int>((animation_time - get_animation_time()) * speed))));
 	}
 	disp->delay(std::max<int>(0,end_tick - SDL_GetTicks() +5));
+	new_animation_frame();
 }
 void unit_animator::wait_for_end() const
 {
