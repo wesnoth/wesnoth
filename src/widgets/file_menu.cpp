@@ -299,12 +299,9 @@ void file_menu::select_file(const std::string& begin_of_filename)
 	it = std::find_if(files_in_current_dir_.begin(), files_in_current_dir_.end(), match_begin(begin_of_filename));
 	if (it != files_in_current_dir_.end())
 	{
-		type_a_head_ = additional_index + it - files_in_current_dir_.begin();
+		type_a_head_ = it - files_in_current_dir_.begin() + additional_index;
 		move_selection(type_a_head_);
 		return;
-    } else {
-        type_a_head_ = 0;
-        move_selection(0);
     }
 }
 
