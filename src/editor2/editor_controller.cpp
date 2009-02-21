@@ -334,9 +334,7 @@ void editor_controller::close_current_context()
 	if (map_contexts_.size() == 1) {
 		create_default_context();
 		map_contexts_.erase(map_contexts_.begin());
-	} else if (current_context_index_ ==
-			static_cast<int>(map_contexts_.size()) - 1) {
-
+	} else if (current_context_index_ == static_cast<int>(map_contexts_.size()) - 1) {
 		map_contexts_.pop_back();
 		current_context_index_--;
 	} else {
