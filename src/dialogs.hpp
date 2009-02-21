@@ -28,8 +28,6 @@ class unit_type;
 
 #include "widgets/button.hpp"
 
-#include "filechooser.hpp"
-
 namespace dialogs {
 
 /**

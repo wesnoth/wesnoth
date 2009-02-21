@@ -23,7 +23,6 @@
 #include "construct_dialog.hpp"
 #include "cursor.hpp"
 #include "dialogs.hpp"
-#include "filechooser.hpp"
 #include "foreach.hpp"
 #include "game_display.hpp"
 #include "filesystem.hpp"
