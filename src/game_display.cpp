@@ -1108,7 +1108,7 @@ void game_display::add_chat_message(const time_t& time, const std::string& speak
 	std::string msg(1, font::NULL_MARKUP);
 
 	if (message.find("/me ") == 0) {
-		msg.assign(message, 5, message.size());
+		msg.assign(message, 4, message.size());
 		action = true;
 	} else {
 		msg += message;

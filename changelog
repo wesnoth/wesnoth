@@ -1,27 +1,29 @@
 Version 1.5.10+svn:
  * Campaign server:
-   * reject add-ons with an empty type
-   * give warning note when the add-on version is invalid
- * Graphics
-    * New or updated unit graphics: Merman Fighter line, Merman Hunter line
-    * New idle animations: Heavy Infantryman
-    * New portrait for the Javelineer, Gryphon.
+   * Reject add-ons with an empty type.
+   * Give warning note when the add-on version is invalid.
+ * Graphics:
+   * New or updated unit graphics: Merman Fighter line, Merman Hunter line
+   * New idle animations: Heavy Infantryman
+   * New portrait for the Javelineer, Gryphon.
  * Language and i18n:
    * updated translations: Czech, French, German, Russian 
  * Multiplayer:
    * server:
-     * create the fifo group accessible (instead of only user accessible)
+     * Create the fifo group accessible (instead of only user accessible).
  * User interface:
-   * Fixed the assertion failure which could happen when clicking on a button
+   * Fixed the assertion failure which could happen when clicking on a button.
      (bug #12927)
-   * allow chat command quoting as '/ /command'
-   * Fixed a bug which sized listboxes to wrong sizes and caused visual
-     glitches bug #12940
-   * Fix colours in message bug #13019
-   * Make the maximum used width for the message text 650 pixels
-   * Added UI sounds to the new widgets (bug #12748)
-   * Fixed a glitch in the text drawing after showing markedup text 
+   * Allow chat command quoting as '/ /command'.
+   * Fixed a bug which made listboxes the wrong size and caused visual
+     glitches. (bug #12940)
+   * Fixed colors in [message]. (bug #13019)
+   * Made the maximum used width for the message text 650 pixels.
+   * Added UI sounds to the new widgets. (bug #12748)
+   * Fixed a glitch in the text drawing after showing markedup text.
      (bug #13023)
+   * Fixed bug #13034: "/me" messages cut of first character in multiplayer
+     game chat.
 
 Version 1.5.10:
  * Campaigns:
