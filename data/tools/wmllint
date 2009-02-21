@@ -436,6 +436,9 @@ linechanges = (
          "portraits/saurians/transparent/skirmisher.png"),
         ("portraits/Philip_Barber/transparent/undead-death-knight.png",
          "portraits/undead/transparent/death-knight.png"),
+        # Changed just before 1.5.11
+        ("LABEL_PERSISTANT", "LABEL_PERSISTENT"),
+
         )
 
 def validate_stack(stack, filename, lineno):
