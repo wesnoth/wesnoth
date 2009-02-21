@@ -119,7 +119,7 @@ void terrain_builder::tilemap::reload(int x, int y)
 {
 	x_ = x;
 	y_ = y;
-	tiles_.resize((x + 4) * (y + 4));
+	tiles_.swap(std::vector<tile>((x + 4) * (y + 4)));
 }
 
 bool terrain_builder::tilemap::on_map(const map_location &loc) const
