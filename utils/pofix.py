@@ -158,11 +158,14 @@ stringfixes = {
 ("mater what race they come from - even orcs.", "matter what race they come from - even orcs."),
 ),
 
+"wesnoth-low" :(
+("offensive war. This is the council's decision", "offensive war. This is the council's decision."),
+),
 }
 
 # Speak, if all argument files are newer than this timestamp
 # Try to use UTC here
-timecheck = 1233746577 # Wed Feb  4 11:22:57 UTC 2009
+timecheck = 1235216999	# Sat Feb 21 06:49:59 2009
 
 import os, sys, time, stat
 
