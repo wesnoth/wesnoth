@@ -2121,7 +2121,7 @@ void display::refresh_report(reports::TYPE report_num, reports::report report,
 			// (Images generally won't need backing up,
 			// unless they are transperant, but that is done later).
 			if(rect.w > 0 && rect.h > 0) {
-				surf.assign(get_screen_portion(rect));
+				surf.assign(get_surface_portion(screen_.getSurface(),rect));
 				if(reportSurfaces_[report_num] == NULL) {
 					ERR_DP << "Could not backup background for report!\n";
 				}
