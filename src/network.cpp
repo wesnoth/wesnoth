@@ -1074,7 +1074,7 @@ void send_raw_data(const char* buf, int len, connection connection_num, const st
 	if(!connection_num) {
 		for(sockets_list::const_iterator i = sockets.begin();
 		    i != sockets.end(); ++i) {
-			send_raw_data(buf, len, connection_num, packet_type);
+			send_raw_data(buf, len, *i, packet_type);
 		}
 		return;
 	}
