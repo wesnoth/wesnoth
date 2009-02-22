@@ -875,6 +875,7 @@ namespace {
 				state_of_game->get_variable(var_name+".recruit") = side_data["recruit"];
 				state_of_game->get_variable(var_name+".fog") = side_data["fog"];
 				state_of_game->get_variable(var_name+".shroud") = side_data["shroud"];
+				state_of_game->get_variable(var_name+".hidden") = side_data["hidden"];
 
 				state_of_game->get_variable(var_name+".income") = lexical_cast_default<std::string>((*teams)[team_index].income(),"");
 				state_of_game->get_variable(var_name+".village_gold") = lexical_cast_default<std::string>((*teams)[team_index].village_gold(),"");
