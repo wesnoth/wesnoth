@@ -110,13 +110,12 @@ get_statistics_and_delete_temp_files()
 			echo "  saved: ${png_savings_size} bytes, total saved: $((${total_savings_size}/1024)) KiB"
 		else
 			rm -f ${1}.new
-			echo "  already optimized"
+			#no need to mention it when nothing actually changed...
+			#echo "  already optimized"
 		fi
 	else
 		echo "ERROR: temporary file ${1}.new disappeared mysteriously"
 	fi
-	
-	echo -ne "\n"
 }
 
 print_statistics()
