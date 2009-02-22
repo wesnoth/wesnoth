@@ -585,7 +585,7 @@ const frame_parameters unit_frame::merge_parameters(int current_time,const frame
 
 	/** engine provides a submerge for units in water */
 	result.submerge = current_val.submerge?current_val.submerge:animation_val.submerge;
-	if(primary && engine_val.submerge) result.submerge = engine_val.submerge;
+	if(primary && engine_val.submerge && !result.submerge ) result.submerge = engine_val.submerge;
 
 	assert(engine_val.x == 0);
 	result.x = current_val.x?current_val.x:animation_val.x;
