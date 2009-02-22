@@ -685,6 +685,19 @@ void node::output(char*& buf)
 
 	output_cache_ = string_span(begin, buf - begin);
 }
+const char* node::output() {
+	const char* out;
+
+	const int buf_size = output_size() + 1;
+	char* buf = new char[buf_size];
+	out = buf;
+
+	output(buf);
+	*buf++ = 0;
+	assert(buf == out + buf_size);
+
+	return out;
+}
 
 void node::copy_into(node& n) const
 {

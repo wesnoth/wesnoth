@@ -263,9 +263,11 @@ void game::update_side_data() {
 	observers_.clear();
 
 	const simple_wml::node::child_list& level_sides = level_.root().children("side");
-/*	for (config::child_iterator side = level_sides.first;
-			side != level_sides.second; ++side)
-		DBG_GAME << (**side);*/
+	if (!lg::debug.dont_log(lg::mp_server)) {
+		for (simple_wml::node::child_list::const_iterator side = level_sides.begin();
+				side != level_sides.end(); ++side)
+			DBG_GAME << "[side]\n" << (**side).output() << "[/side]\n";
+	}
 	// For each user:
 	// * Find the username.
 	// * Find the side this username corresponds to.

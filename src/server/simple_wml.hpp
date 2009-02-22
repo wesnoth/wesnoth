@@ -142,6 +142,7 @@ public:
 
 	int output_size() const;
 	void output(char*& buf);
+	const char* output();
 
 	void copy_into(node& n) const;
 
