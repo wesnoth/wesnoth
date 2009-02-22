@@ -130,7 +130,7 @@ connection accept_connection();
  * in the middle of sending/receiving data.
  * The socket will be closed when it has finished its send/receive.
  */
-bool disconnect(connection connection_num=0, bool force=false);
+bool disconnect(connection connection_num=0);
 
 /**
  * Function to queue a disconnection.

@@ -62,7 +62,7 @@ void queue_file(TCPsocket sock, const std::string&);
 void queue_raw_data(TCPsocket sock, const char* buf, int len);
 size_t queue_data(TCPsocket sock, const config& buf, const bool gzipped, const std::string& packet_type);
 bool is_locked(const TCPsocket sock);
-bool close_socket(TCPsocket sock, bool force=false);
+bool close_socket(TCPsocket sock);
 TCPsocket detect_error();
 
 std::pair<network::statistics,network::statistics> get_current_transfer_stats(TCPsocket sock);

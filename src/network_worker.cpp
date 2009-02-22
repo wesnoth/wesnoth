@@ -237,9 +237,33 @@ bool receive_with_timeout(TCPsocket s, char* buf, size_t nbytes,
 #ifdef USE_POLL
 				struct pollfd fd = { ((_TCPsocket*)s)->channel, POLLIN, 0 };
 				int poll_res;
+
+				//we timeout of the poll every 100ms. This lets us check to
+				//see if we have been disconnected, in which case we should
+				//abort the receive.
+				const int poll_timeout = std::min(timeout_ms, 100);
 				do {
-					poll_res = poll(&fd, 1, timeout_ms);
-				} while(poll_res == -1 && errno == EINTR);
+					poll_res = poll(&fd, 1, poll_timeout);
+
+					if(poll_res == 0) {
+						timeout_ms -= poll_timeout;
+						if(timeout_ms <= 0) {
+							//we've been waiting too long; abort the receive
+							//as having failed due to timeout.
+							return false;
+						}
+
+						//check to see if we've been interrupted
+						const size_t shard = get_shard(s);
+						const threading::lock lock(*shard_mutexes[shard]);
+						socket_state_map::iterator lock_it = sockets_locked[shard].find(s);
+						assert(lock_it != sockets_locked[shard].end());
+						if(lock_it->second == SOCKET_INTERRUPT) {
+							return false;
+						}
+					}
+
+				} while(poll_res == 0 || poll_res == -1 && errno == EINTR);
 
 				if (poll_res < 1)
 					return false;
@@ -250,11 +274,31 @@ bool receive_with_timeout(TCPsocket s, char* buf, size_t nbytes,
 				int retval;
 				struct timeval tv;
 
-				tv.tv_sec = timeout_ms/1000;
-				tv.tv_usec = timeout_ms % 1000;
+				const int select_timeout = std::min(timeout_ms, 100);
+
+				tv.tv_sec = select_timeout/1000;
+				tv.tv_usec = select_timeout % 1000;
 				do {
 					retval = select(((_TCPsocket*)s)->channel + 1, &readfds, NULL, NULL, &tv);
-				} while(retval == -1 && errno == EINTR);
+
+					if(retval == 0) {
+						timeout_ms -= select_timeout;
+						if(timeout_ms <= 0) {
+							//we've been waiting too long; abort the receive
+							//as having failed due to timeout.
+							return false;
+						}
+
+						//check to see if we've been interrupted
+						const size_t shard = get_shard(s);
+						const threading::lock lock(*shard_mutexes[shard]);
+						socket_state_map::iterator lock_it = sockets_locked[shard].find(s);
+						assert(lock_it != sockets_locked[shard].end());
+						if(lock_it->second == SOCKET_INTERRUPT) {
+							return false;
+						}
+					}
+				} while(retval == 0 || retval == -1 && errno == EINTR);
 
 				if (retval < 1)
 					return false;
@@ -288,6 +332,7 @@ bool receive_with_timeout(TCPsocket s, char* buf, size_t nbytes,
 		}
 		{
 			const size_t shard = get_shard(s);
+			const threading::lock lock(*shard_mutexes[shard]);
 			socket_state_map::iterator lock_it = sockets_locked[shard].find(s);
 			assert(lock_it != sockets_locked[shard].end());
 			if(lock_it->second == SOCKET_INTERRUPT) {
@@ -1020,7 +1065,7 @@ bool is_locked(const TCPsocket sock) {
 	return (lock_it->second == SOCKET_LOCKED);
 }
 
-bool close_socket(TCPsocket sock, bool force)
+bool close_socket(TCPsocket sock)
 {
 	{
 		const size_t shard = get_shard(sock);
@@ -1037,7 +1082,7 @@ bool close_socket(TCPsocket sock, bool force)
 			remove_buffers(sock);
 			return true;
 		}
-		if (!(lock_it->second == SOCKET_LOCKED || lock_it->second == SOCKET_INTERRUPT) || force) {
+		if (!(lock_it->second == SOCKET_LOCKED || lock_it->second == SOCKET_INTERRUPT)) {
 			sockets_locked[shard].erase(lock_it);
 			remove_buffers(sock);
 			return true;

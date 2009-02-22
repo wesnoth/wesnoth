@@ -237,6 +237,7 @@ pending_statistics get_pending_stats()
 
 manager::manager(size_t min_threads, size_t max_threads) : free_(true)
 {
+	fprintf(stderr, "NETWORK MANAGER CALLED!\n");
 	// If the network is already being managed
 	if(socket_set) {
 		free_ = false;
@@ -588,20 +589,12 @@ connection accept_connection()
 	return 0;
 }
 
-bool disconnect(connection s, bool force)
+bool disconnect(connection s)
 {
 	if(s == 0) {
 		while(sockets.empty() == false) {
 			assert(sockets.back() != 0);
-			size_t n = 0;
 			while(disconnect(sockets.back()) == false) {
-				// force a disconnect
-				if (n > 100) {
-					disconnect(sockets.back(), true);
-					n = 0;
-					continue;
-				}
-				++n;
 				SDL_Delay(1);
 			}
 		}
@@ -615,7 +608,7 @@ bool disconnect(connection s, bool force)
 		{
 			return true;
 		}
-		if (!network_worker_pool::close_socket(info->second.sock, force)) {
+		if (!network_worker_pool::close_socket(info->second.sock)) {
 			return false;
 		}
 	}
