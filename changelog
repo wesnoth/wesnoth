@@ -2,6 +2,10 @@ Version 1.5.10+svn:
  * Campaign server:
    * Reject add-ons with an empty type.
    * Give warning note when the add-on version is invalid.
+ * Editor2
+   * Fixed / worked around several filebrowser issues (save/load dialogs)
+     (bugs #13033, #12771, #12625)
+   * Fixed terrain palette issue when the palette was not full (bug #13012)
  * Graphics:
    * New or updated unit graphics: Merman Fighter line, Merman Hunter line
    * New idle animations: Heavy Infantryman
@@ -16,6 +20,9 @@ Version 1.5.10+svn:
  * Multiplayer:
    * server:
      * Create the fifo group accessible (instead of only user accessible).
+ * Music and sound effects:
+   * The game will no longer restart the music on a scenario change or game 
+     load if the currently played track is on the new scenario's playlist
  * User interface:
    * Fixed the assertion failure which could happen when clicking on a button.
      (bug #12927)
@@ -37,6 +44,7 @@ Version 1.5.10+svn:
      starting with --new-widgets.)
  * WML Engine:
    * Fixed bug #13024: Conditional [allow_undo] not always working right
+   * Map size is now hard-limited to 200 by 200
 
 Version 1.5.10:
  * Campaigns:
