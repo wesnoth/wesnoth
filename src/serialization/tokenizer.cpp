@@ -16,6 +16,7 @@
 
 #include "global.hpp"
 
+#include "wesconfig.h"
 #include "serialization/tokenizer.hpp"
 
 
@@ -23,7 +24,7 @@ tokenizer::tokenizer(std::istream& in) :
 	current_(EOF),
 	lineno_(1),
 	startlineno_(0),
-	textdomain_(),
+	textdomain_(PACKAGE),
 	file_(),
 	token_(),
 	in_(in)
