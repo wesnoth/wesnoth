@@ -785,6 +785,7 @@ namespace {
 		std::string recruit_str = cfg["recruit"];
 		std::string fog = cfg["fog"];
 		std::string shroud = cfg["shroud"];
+		std::string hidden = cfg["hidden"];
 		std::string shroud_data = cfg["shroud_data"];
 		std::string village_gold = cfg["village_gold"];
 		const config& parsed = cfg.get_parsed_config();
@@ -835,6 +836,10 @@ namespace {
 			// Merge shroud data
 			if (!shroud_data.empty()) {
 				(*teams)[team_index].merge_shroud_map_data(shroud_data);
+			}
+			// Set whether team is hidden in status table
+			if (!hidden.empty()) {
+				(*teams)[team_index].set_hidden( utils::string_bool(hidden, true) );
 			}
 			// Set fog
 			if (!fog.empty()) {

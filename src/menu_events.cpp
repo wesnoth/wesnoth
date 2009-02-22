@@ -65,11 +65,6 @@ void remove_old_auto_saves()
 	}
 }
 
-
-
-
-
-
 } // end anonymous namespace
 
 namespace events{
@@ -390,6 +385,8 @@ private:
 		const team& viewing_team = teams_[gui_->viewing_team()];
 
 		unsigned total_villages = 0;
+		// a variable to check if there are any teams to show in the table
+		bool status_table_empty = true;
 
 		//if the player is under shroud or fog, they don't get
 		//to see details about the other sides, only their own
@@ -397,9 +394,10 @@ private:
 		//lack of information about the other sides But he see
 		//all names with in colours
 		for(size_t n = 0; n != teams_.size(); ++n) {
-			if(teams_[n].is_empty()) {
+			if(teams_[n].is_empty()||teams_[n].hidden()) {
 				continue;
 			}
+			status_table_empty=false;
 
 			const bool known = viewing_team.knows_about_team(n, network::nconnections() > 0);
 			const bool enemy = viewing_team.is_enemy(n+1);
@@ -421,7 +419,7 @@ private:
 					leader_bools.push_back(true);
 					leader_name = leader->second.name();
 				} else {
-					str << IMAGE_PREFIX << std::string("unknown-unit.png");
+					str << IMAGE_PREFIX << std::string("units/unknown-unit.png");
 					leader_bools.push_back(false);
 					leader_name = "Unknown";
 				}
@@ -463,12 +461,22 @@ private:
 			ERR_NG << "Logic error: map has " << map_.villages().size() << " villages but status table shows " << total_villages << " owned in total\n";
 		}
 
+		if (status_table_empty)
+ 		{
+ 			// no sides to show - display empty table
+ 			std::stringstream str;
+ 			str << " ";
+ 			for (int i=0;i<7;++i) 
+ 				str << COLUMN_SEPARATOR << " ";
+ 			leader_bools.push_back(false);
+ 			items.push_back(str.str());
+ 		}
 		int result = 0;
 		{
 			leader_scroll_dialog slist(*gui_, _("Current Status"), leader_bools, selected, gui::DIALOG_FORWARD);
 			slist.add_button(new gui::dialog_button(gui_->video(), _("More >"),
-			                     gui::button::TYPE_PRESS, gui::DIALOG_FORWARD),
-			                 gui::dialog::BUTTON_EXTRA_LEFT);
+													 gui::button::TYPE_PRESS, gui::DIALOG_FORWARD),
+													 gui::dialog::BUTTON_EXTRA_LEFT);
 			slist.set_menu(items, &sorter);
 			slist.get_menu().move_selection(selected);
 			result = slist.show();
@@ -503,11 +511,13 @@ private:
 		items.push_back(heading.str());
 
 		const team& viewing_team = teams_[gui_->viewing_team()];
+		bool settings_table_empty = true;
 
 		for(size_t n = 0; n != teams_.size(); ++n) {
-			if(teams_[n].is_empty()) {
+			if(teams_[n].is_empty()||teams_[n].hidden()) {
 				continue;
 			}
+			settings_table_empty = false;
 
 			std::stringstream str;
 			const unit_map::const_iterator leader = team_leader(n+1, units_);
@@ -541,23 +551,32 @@ private:
 
 			items.push_back(str.str());
 		}
+		
+		if (settings_table_empty)
+ 		{
+ 			// no sides to show - display empty table
+ 			std::stringstream str;
+ 			for (int i=0;i<8;++i) 
+ 				str << " " << COLUMN_SEPARATOR;
+ 			leader_bools.push_back(false);
+ 			items.push_back(str.str());
+ 		}
+			int result = 0;
+			{
+				leader_scroll_dialog slist(*gui_, _("Scenario Settings"), leader_bools, selected, gui::DIALOG_BACK);
+				slist.set_menu(items, &sorter);
+				slist.get_menu().move_selection(selected);
+				slist.add_button(new gui::dialog_button(gui_->video(), _(" < Back"),
+														 gui::button::TYPE_PRESS, gui::DIALOG_BACK),
+														 gui::dialog::BUTTON_EXTRA_LEFT);
+				result = slist.show();
+				selected = slist.get_menu().selection();
+			} // this will kill the dialog before scrolling
 
-		int result = 0;
-		{
-			leader_scroll_dialog slist(*gui_, _("Scenario Settings"), leader_bools, selected, gui::DIALOG_BACK);
-			slist.set_menu(items, &sorter);
-			slist.get_menu().move_selection(selected);
-			slist.add_button(new gui::dialog_button(gui_->video(), _(" < Back"),
-			                     gui::button::TYPE_PRESS, gui::DIALOG_BACK),
-			                 gui::dialog::BUTTON_EXTRA_LEFT);
-			result = slist.show();
-			selected = slist.get_menu().selection();
-		} // this will kill the dialog before scrolling
-
-		if (result >= 0)
-			gui_->scroll_to_leader(units_, selected+1);
-		else if (result == gui::DIALOG_BACK)
-			status_table(selected);
+			if (result >= 0)
+				gui_->scroll_to_leader(units_, selected+1);
+			else if (result == gui::DIALOG_BACK)
+				status_table(selected);
 	}
 
 	void menu_handler::save_game(const std::string& message, gui::DIALOG_TYPE dialog_type,

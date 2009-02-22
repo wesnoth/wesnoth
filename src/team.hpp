@@ -118,6 +118,7 @@ public:
 		bool disallow_observers;
 		bool allow_player;
 		bool no_leader;
+		bool hidden;
 
 		std::string music;
 
@@ -289,6 +290,8 @@ public:
 	bool get_disallow_observers() {return info_.disallow_observers; };
 	std::string map_colour_to() const { return info_.colour; };
 	bool& no_leader()  { return info_.no_leader; }
+	bool& hidden() { return info_.hidden; }
+	void set_hidden(bool value) { info_.hidden=value; }
 
 	static int nteams();
 

@@ -111,6 +111,7 @@ team::team_info::team_info(const config& cfg) :
 		disallow_observers(utils::string_bool(cfg["disallow_observers"])),
 		allow_player(utils::string_bool(cfg["allow_player"], true)),
 		no_leader(utils::string_bool(cfg["no_leader"])),
+		hidden(utils::string_bool(cfg["hidden"])),
 		music(cfg["music"]),
 		colour(cfg["colour"].size() ? cfg["colour"] : cfg["side"])
 {
@@ -344,6 +345,7 @@ void team::team_info::write(config& cfg) const
 	cfg["disallow_observers"] = disallow_observers ? "yes" : "no";
 	cfg["allow_player"] = allow_player ? "yes" : "no";
 	cfg["no_leader"] = no_leader ? "yes" : "no";
+	cfg["hidden"] = hidden ? "yes" : "no";
 	cfg["number_of_possible_recruits_to_force_recruit"] = lexical_cast<std::string>(number_of_possible_recruits_to_force_recruit);
 
 	std::stringstream enemies_str;
