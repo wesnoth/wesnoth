@@ -13,6 +13,7 @@
 */
 
 #include <boost/lexical_cast.hpp>
+#include <vector>
 
 #include "menu_events.hpp"
 #include "formula_ai.hpp"
@@ -1566,6 +1567,55 @@ bool formula_ai::make_move(game_logic::const_formula_ptr formula_, const game_lo
 	return execute_variant(var);
 }
 
+map_location formula_ai::path_calculator(const map_location& src, const map_location& dst, unit_map::iterator& unit_it) const{
+    std::map<map_location,paths>::iterator path = possible_moves_.find(src);
+    map_location destination = dst;
+
+    //check if destination is within unit's reach
+    if( path->second.routes.count(dst) == 0) {
+            //destination is too far, check where unit can go
+            shortest_path_calculator calc(unit_it->second, current_team(), units_, get_info().teams, get_info().map);
+
+            std::set<map_location> allowed_teleports;
+
+            if(unit_it->second.get_ability_bool("teleport",unit_it->first)) {
+                    for(std::set<map_location>::const_iterator i = current_team().villages().begin();
+                                    i != current_team().villages().end(); ++i) {
+                            //if (viewing_team().is_enemy(unit_it->second.side()) && viewing_team().fogged(*i))
+                            //        continue;
+
+                            unit_map::const_iterator occupant = units_.find(*i);
+                            if (occupant != units_.end() && occupant != unit_it)
+                                    continue;
+
+                            allowed_teleports.insert(*i);
+                    }
+            }
+
+            paths::route route = a_star_search(src, dst, 1000.0, &calc,
+                    get_info().map.w(), get_info().map.h(), &allowed_teleports);
+
+            int movement = unit_it->second.movement_left();
+
+            if( route.steps.size() > 0 ) {
+                for (std::vector<map_location>::const_iterator loc_iter = route.steps.begin() + 1 ; loc_iter !=route.steps.end(); ++loc_iter) {
+                        const int move_cost = unit_it->second.movement_cost(get_info().map[*(loc_iter+1)]);
+
+                        if ( move_cost > movement ) {
+                                break;
+                        }
+                        destination = *loc_iter;
+                        movement -= move_cost;
+                }
+                return destination;
+            } else {
+                return map_location();
+            }
+    }
+
+    return destination;
+}
+
 //commandline=true when we evaluate formula from commandline, false otherwise (default)
 bool formula_ai::execute_variant(const variant& var, bool commandline)
 {
@@ -1599,71 +1649,32 @@ bool formula_ai::execute_variant(const variant& var, bool commandline)
 			LOG_AI << "MOVE: " << move->src().x << "," << move->src().y << " -> " << move->dst().x << "," << move->dst().y << "\n";
 
 			unit_map::iterator unit_it = units_.find(move->src());
-			if( (possible_moves_.count(move->src()) > 0) && (unit_it->second.movement_left() != 0) ) {
-				std::map<map_location,paths>::iterator path = possible_moves_.find(move->src());
+			if( (possible_moves_.count(move->src()) > 0) && (unit_it->second.movement_left() != 0) && get_info().map.on_board(move->dst() ) ) {
 
-				map_location destination = move->dst();
+                                map_location destination = path_calculator(move->src(), move->dst(), unit_it);
 
-				//check if destination is within unit's reach
-				if( path->second.routes.count(move->dst()) == 0) {
-					//destination is too far, check where unit can go
-					shortest_path_calculator calc(unit_it->second, current_team(), units_, get_info().teams, get_info().map);
-					paths::route route = a_star_search(move->src(), move->dst(), 1000.0, &calc,
-						get_info().map.w(), get_info().map.h());
-
-					int movement = unit_it->second.movement_left();
-
-					for (std::vector<map_location>::const_iterator loc_iter = route.steps.begin() + 1 ; loc_iter !=route.steps.end(); ++loc_iter) {
-						const int move_cost = unit_it->second.movement_cost(get_info().map[*(loc_iter+1)]);
-
-						if ( move_cost > movement ) {
-							break;
-						}
-						destination = *loc_iter;
-						movement -= move_cost;
-					}
-				}
-
-				move_unit(move->src(), destination, possible_moves_);
-				unit_map::iterator unit = get_info().units.find(destination);
-				if(unit != get_info().units.end()) {
-					unit->second.set_movement(0);
-				} else {
-					throw formula_error("Incorrect result of calling the move() formula", "", "", 0);
-				}
-				made_move = true;
+                                if( destination != map_location()) {
+                                    move_unit(move->src(), destination, possible_moves_);
+                                    unit_map::iterator unit = get_info().units.find(destination);
+                                    if(unit != get_info().units.end()) {
+                                            unit->second.set_movement(0);
+                                    } else {
+                                            throw formula_error("Incorrect result of calling the move() formula", "", "", 0);
+                                    }
+                                    made_move = true;
+                                }
 			}
 		} else if(move_partial) {
 			LOG_AI << "MOVE PARTIAL: " << move_partial->src().x << "," << move_partial->src().y << " -> " << move_partial->dst().x << "," << move_partial->dst().y << "\n";
 
 			unit_map::iterator unit_it = units_.find(move_partial->src());
-			if( (possible_moves_.count(move_partial->src()) > 0) && (unit_it->second.movement_left() != 0) ) {
-				std::map<map_location,paths>::iterator path = possible_moves_.find(move_partial->src());
+			if( (possible_moves_.count(move_partial->src()) > 0) && (unit_it->second.movement_left() != 0) && get_info().map.on_board(move_partial->dst()) ) {
+                                map_location destination = path_calculator(move_partial->src(), move_partial->dst(), unit_it);
 
-				map_location destination = move_partial->dst();
-
-				//check if destination is within unit's reach
-				if( path->second.routes.count(move_partial->dst()) == 0) {
-					//destination is too far, check where unit can go
-					shortest_path_calculator calc(unit_it->second, current_team(), units_, get_info().teams, get_info().map);
-					paths::route route = a_star_search(move_partial->src(), move_partial->dst(), 1000.0, &calc,
-						get_info().map.w(), get_info().map.h());
-
-					int movement = unit_it->second.movement_left();
-
-					for (std::vector<map_location>::const_iterator loc_iter = route.steps.begin() + 1 ; loc_iter !=route.steps.end(); ++loc_iter) {
-						const int move_cost = unit_it->second.movement_cost(get_info().map[*(loc_iter+1)]);
-
-						if ( move_cost > movement ) {
-							break;
-						}
-						destination = *loc_iter;
-						movement -= move_cost;
-					}
-				}
-
-				move_unit_partial(move_partial->src(), destination, possible_moves_);
-				made_move = true;
+                                if( destination != map_location()) {
+                                    move_unit_partial(move_partial->src(), destination, possible_moves_);
+                                    made_move = true;
+                                }
 			}
 		} else if(attack) {
 			if(get_info().units.count(attack->dst()) == 0) {

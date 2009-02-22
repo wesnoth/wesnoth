@@ -169,6 +169,7 @@ private:
 	void prepare_move() const;
 	void build_move_list();
 	void make_candidate_moves();
+        map_location path_calculator(const map_location& src, const map_location& dst, unit_map::iterator& unit_it) const;
 	mutable bool move_maps_valid_;
 	mutable move_map srcdst_, dstsrc_, full_srcdst_, full_dstsrc_, enemy_srcdst_, enemy_dstsrc_;
 	mutable variant attacks_cache_;
