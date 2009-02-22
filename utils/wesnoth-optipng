@@ -14,6 +14,8 @@
 #  * (Added advdef support)
 #  * (Don't use .stripped files anymore)
 #  * (Improved final statistics)
+#  Copyright (C) 2009 by Nils Kneuper <crazy-ivanovic@gmx.net>
+#  * (Added support for parallization)
 #
 #  Part of the Battle for Wesnoth Project <http://www.wesnoth.org>
 #
@@ -28,6 +30,7 @@
 current_file=""
 # Default optimization process nice
 opti_nice=19
+max_number_threads=6
 total_original_size=0
 total_savings_size=0
 total_savings_filecount=0
@@ -121,6 +124,9 @@ while [ "${1}" != "" ]; do
 	if [ "${1}" = "--nice" ] || [ "${1}" = "-n" ]; then
 		opti_nice=$2
 		shift
+	elif [ "${1}" = "--threads" ]; then
+		max_number_threads=$2
+		shift
 	elif [ "${1}" = "--help" ] || [ "${1}" = "-h" ]; then
 		cat << EOSTREAM
 Wesnoth automatic PNG optimization helper script
@@ -135,6 +141,9 @@ Switches:
                 assumed by default.
 
   --help / -h   Displays this help text.
+
+  --threads     Run script with <value> worker threads. If not specified,
+                6 threads are used by default.
 
 This tool requires OptiPNG (http://www.cs.toronto.edu/~cosmin/pngtech/optipng/),
 Advdef (http://advancemame.sourceforge.net/comp-readme.html) and ImageMagick's
@@ -161,9 +170,20 @@ which advdef &> /dev/null ||
 trap user_int HUP INT TERM
 
 filelist=$(find -iname "*.png")
-for f in $filelist; do
-	optimize_imgfile $f $opti_nice
+
+#work with a parallized joblist
+for f in $filelist
+do
+	while [ $(jobs -rp | wc -l) -ge $max_number_threads ]
+	do
+		#max number of threads reached, wait for half a second...
+		sleep 0.5
+	done
+	#when here, we can do our normal optimization run
+	optimize_imgfile $f $opti_nice &
 done
+#wait till all threads are done before going on in the script
+wait
 
 print_statistics
 
