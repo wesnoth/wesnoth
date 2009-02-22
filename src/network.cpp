@@ -237,7 +237,7 @@ pending_statistics get_pending_stats()
 
 manager::manager(size_t min_threads, size_t max_threads) : free_(true)
 {
-	fprintf(stderr, "NETWORK MANAGER CALLED!\n");
+	DBG_NW << "NETWORK MANAGER CALLED!\n";
 	// If the network is already being managed
 	if(socket_set) {
 		free_ = false;

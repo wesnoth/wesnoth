@@ -263,7 +263,7 @@ bool receive_with_timeout(TCPsocket s, char* buf, size_t nbytes,
 						}
 					}
 
-				} while(poll_res == 0 || poll_res == -1 && errno == EINTR);
+				} while(poll_res == 0 || (poll_res == -1 && errno == EINTR));
 
 				if (poll_res < 1)
 					return false;
