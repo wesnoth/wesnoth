@@ -43,7 +43,6 @@ public:
 	void evaluate_move(const formula_ai* ai, unit_map& units, size_t team_num);
 
 	int get_score() const {return score_;}
-	const std::string& get_name() { return name_;}
 	std::string get_type() const {return type_;}
 	unit_map::unit_iterator get_action_unit() {return action_unit_;}
 	unit_map::unit_iterator get_enemy_unit() {return enemy_unit_;}
