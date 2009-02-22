@@ -24,6 +24,7 @@
 #include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/addon_connect.hpp"
+#include "gui/dialogs/addon_list.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/widgets/window.hpp"
 #include "marked-up_text.hpp"
@@ -1019,27 +1020,34 @@ namespace {
 				return;
 			}
 
-			gui::menu::basic_sorter sorter;
-			sorter.set_alpha_sort(1).set_alpha_sort(2).set_alpha_sort(3).set_alpha_sort(4).set_numeric_sort(5).set_position_sort(6,sizes);
+			int index = -1;
+			if(gui2::new_widgets) {
+				gui2::taddon_list dlg(*addons_tree);
+				dlg.show(disp.video());
+			} else {
 
-			gui::dialog addon_dialog(disp, _("Get add-ons"),
-			                         _("Choose the add-on to download."),
-			                         gui::OK_CANCEL);
-			gui::menu::imgsel_style addon_style(gui::menu::bluebg_style);
+				gui::menu::basic_sorter sorter;
+				sorter.set_alpha_sort(1).set_alpha_sort(2).set_alpha_sort(3).set_alpha_sort(4).set_numeric_sort(5).set_position_sort(6,sizes);
 
-			//make sure the icon isn't too big
-			addon_style.scale_images(font::relative_size(72), font::relative_size(72));
-			gui::menu *addon_menu = new gui::menu(disp.video(), options, false, -1,
-			                                      gui::dialog::max_menu_width, &sorter,
-			                                      &addon_style, false);
-			addon_dialog.set_menu(addon_menu);
+				gui::dialog addon_dialog(disp, _("Get add-ons"),
+										 _("Choose the add-on to download."),
+										 gui::OK_CANCEL);
+				gui::menu::imgsel_style addon_style(gui::menu::bluebg_style);
 
-			gui::filter_textbox* filter = new gui::filter_textbox(disp.video(),
-			_("Filter: "), options, options_to_filter, 1, addon_dialog, 300);
-			addon_dialog.set_textbox(filter);
+				//make sure the icon isn't too big
+				addon_style.scale_images(font::relative_size(72), font::relative_size(72));
+				gui::menu *addon_menu = new gui::menu(disp.video(), options, false, -1,
+													  gui::dialog::max_menu_width, &sorter,
+													  &addon_style, false);
+				addon_dialog.set_menu(addon_menu);
 
-			int index = addon_dialog.show();
-			index = filter->get_index(index);
+				gui::filter_textbox* filter = new gui::filter_textbox(disp.video(),
+				_("Filter: "), options, options_to_filter, 1, addon_dialog, 300);
+				addon_dialog.set_textbox(filter);
+
+				index = addon_dialog.show();
+				index = filter->get_index(index);
+			}
 
 			if(index < 0) {
 				return;

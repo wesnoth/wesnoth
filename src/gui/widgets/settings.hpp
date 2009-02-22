@@ -38,6 +38,7 @@ extern bool new_widgets;
 enum twindow_type {
 	TITLE_SCREEN,            /**< The main title screen of the game. */
 	ADDON_CONNECT,           /**< The addon server connection dialog. */
+	ADDON_LIST,              /**< The addon list dialog. */
 	LANGUAGE_SELECTION,      /**< The language selection dialog. */
 	MESSAGE,                 /**< A generic message dialog. */
 	WML_MESSAGE_LEFT,        /**<
