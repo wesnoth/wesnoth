@@ -474,12 +474,14 @@ void game::change_controller(const size_t side_num,
 		send_to_one(response, sock);
 	}
 
-	// Update the level so observers who join get the new name.
-	const simple_wml::node::child_list& side_list = level_.root().children("side");
-	assert(side_num < side_list.size());
-	side_list[side_num]->set_attr_dup("current_player", player_name.c_str());
-	// Also update controller type
-	side_list[side_num]->set_attr_dup("controller", side_controllers_[side_num].c_str());
+	// Update the level so observers who join get the new name. (The host handles level changes before game start.)
+	if (started_) {
+		const simple_wml::node::child_list& side_list = level_.root().children("side");
+		assert(side_num < side_list.size());
+		side_list[side_num]->set_attr_dup("current_player", player_name.c_str());
+		// Also update controller type (so savegames of observers have proper controllers)
+		side_list[side_num]->set_attr_dup("controller", side_controllers_[side_num].c_str());
+	}
 }
 
 void game::transfer_ai_sides() {
