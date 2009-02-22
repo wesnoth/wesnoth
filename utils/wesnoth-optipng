@@ -186,6 +186,9 @@ trap user_int HUP INT TERM
 filelist=$(find -iname "*.png")
 
 # work with a parallized joblist
+echo "*************************"
+echo "* compressing the files *"
+echo "*************************"
 for f in $filelist
 do
 	while [ $(jobs -rp | wc -l) -ge $max_number_threads ]
@@ -202,6 +205,10 @@ wait
 # collect statistics and remove temp files
 # this is in a seperate part because the stats would not be correct when
 # run with several threads
+echo -ne "\n"
+echo "********************************************"
+echo "* creating statistics and moving files now *"
+echo "********************************************"
 for f in $filelist
 do
 	get_statistics_and_delete_temp_files $f $opti_nice
