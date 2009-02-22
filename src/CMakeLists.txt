@@ -232,6 +232,7 @@ SET(wesnoth-main_SRC
     generate_report.cpp
     generic_event.cpp
     gui/dialogs/addon_connect.cpp
+    gui/dialogs/addon_list.cpp
     gui/dialogs/dialog.cpp
     gui/dialogs/language_selection.cpp
     gui/dialogs/message.cpp
