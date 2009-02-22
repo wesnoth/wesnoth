@@ -143,9 +143,13 @@ namespace game_events
 			bool handle_event(const queued_event& event_info,
 					const vconfig cfg = vconfig());
 
-			bool& rebuild_screen() {return rebuild_screen_;}
-			bool& mutated() {return mutated_;}
-			bool& skip_messages() {return skip_messages_;}
+			bool rebuild_screen() {return rebuild_screen_;}
+			bool mutated() {return mutated_;}
+			bool skip_messages() {return skip_messages_;}
+
+			void set_rebuild_screen(bool newval) {rebuild_screen_ = newval;}
+			void set_mutated(bool newval) {mutated_ = newval;}
+			void set_skip_messages(bool newval) {skip_messages_ = newval;}
 
 			const vconfig& get_vconfig() { return cfg_; }
 		private:

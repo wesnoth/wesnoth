@@ -1786,7 +1786,7 @@ namespace {
 					};
 				}
 			}
-			handler.rebuild_screen() = true;
+			handler.set_rebuild_screen(true);
 		}
 	}
 
@@ -1808,7 +1808,7 @@ namespace {
 		}
 		bool border = utils::string_bool(cfg["border"]);
 		game_map->overlay(mask, cfg.get_parsed_config(), loc.x, loc.y, border);
-		handler.rebuild_screen() = true;
+		handler.set_rebuild_screen(true);
 	}
 
     static bool try_add_unit_to_recall_list(const map_location& loc, const unit& u)
@@ -1999,7 +1999,7 @@ namespace {
 		for(vconfig::child_list::const_iterator cmd = commands.begin();
 				cmd != commands.end(); ++cmd) {
 			if(!handler.handle_event(event_info, *cmd)) {
-				handler.mutated() = false;
+				handler.set_mutated(false);
 			}
 		}
 	}
@@ -2666,7 +2666,7 @@ namespace {
 			(screen)->recalculate_minimap();
 		}
 		if(handler.rebuild_screen()) {
-			handler.rebuild_screen() = false;
+			handler.set_rebuild_screen(false);
 			(screen)->recalculate_minimap();
 			(screen)->rebuild_all();
 		}
@@ -2748,7 +2748,7 @@ namespace {
 	WML_HANDLER_FUNCTION(command,handler,event_info,cfg)
 	{
 		if(!handler.handle_event(event_info, cfg)) {
-			handler.mutated() = false;
+			handler.set_mutated(false);
 		}
 	}
 
@@ -2756,7 +2756,7 @@ namespace {
 		// Allow undo sets the flag saying whether the event has mutated the game to false
 	WML_HANDLER_FUNCTION(allow_undo,handler,/*event_info*/,/*cfg*/)
 	{
-		handler.mutated() = false;
+		handler.set_mutated(false);
 	}
 		// Conditional statements
 	static void if_while_handler(bool is_if, game_events::event_handler& handler, const game_events::queued_event& event_info, const vconfig& cfg)
@@ -2778,7 +2778,7 @@ namespace {
 			for(vconfig::child_list::const_iterator cmd = commands.begin();
 					cmd != commands.end(); ++cmd) {
 				if(!handler.handle_event(event_info, *cmd)) {
-					handler.mutated() = false;
+					handler.set_mutated(false);
 				}
 			}
 		}
@@ -2810,7 +2810,7 @@ namespace {
 			if (var == value) {
 				not_found = false;
 				if(!handler.handle_event(event_info, *c)) {
-					handler.mutated() = false;
+					handler.set_mutated(false);
 				}
 			}
 		}
@@ -2819,7 +2819,7 @@ namespace {
 			const vconfig::child_list elses = cfg.get_children("else");
 			for(vconfig::child_list::const_iterator e = elses.begin(); e != elses.end(); ++e) {
 				if(!handler.handle_event(event_info, *e)) {
-					handler.mutated() = false;
+					handler.set_mutated(false);
 				}
 			}
 		}
@@ -3096,7 +3096,7 @@ std::string get_caption(const vconfig& cfg, unit_map::iterator speaker)
 					text_input_result = text_input_content;
 				}
 				if(dlg_result == gui2::twindow::CANCEL) {
-					handler.skip_messages() = true;
+					handler.set_skip_messages(true);
 				}
 
 				/**
@@ -3114,7 +3114,7 @@ std::string get_caption(const vconfig& cfg, unit_map::iterator speaker)
 
 					dlg.show(screen->video());
 					if(dlg.get_retval() == gui2::twindow::CANCEL) {
-						handler.skip_messages() = true;
+						handler.skip_messages(true);
 					}
 					return;
 				}
@@ -3165,7 +3165,7 @@ std::string get_caption(const vconfig& cfg, unit_map::iterator speaker)
 			for(vconfig::child_list::const_iterator itor = events.begin();
 					itor != events.end(); ++itor) {
 				if(!handler.handle_event(event_info, *itor)) {
-					handler.mutated() = false;
+					handler.set_mutated(false);
 				}
 			}
 		}
@@ -3273,7 +3273,7 @@ std::string get_caption(const vconfig& cfg, unit_map::iterator speaker)
         }
 		*game_map = map;
         screen->reload_map();
-		handler.rebuild_screen() = true;
+		handler.set_rebuild_screen(true);
 	}
 
 	/** Handles all the different types of actions that can be triggered by an event. */
@@ -3402,14 +3402,14 @@ static bool process_event(game_events::event_handler& handler, const game_events
 	// The event hasn't been filtered out, so execute the handler.
 	// First reset the skip_messages to avoid the escape of the previous event
 	// to be carried over into the next.
-	handler.skip_messages() = false;
+	handler.set_skip_messages(false);
 	const bool res = handler.handle_event(ev);
 	if(ev.name == "select") {
 		state_of_game->last_selected = ev.loc1;
 	}
 
 	if(handler.rebuild_screen()) {
-		handler.rebuild_screen() = false;
+		handler.set_rebuild_screen(false);
 		(screen)->recalculate_minimap();
 		(screen)->invalidate_all();
 		(screen)->rebuild_all();
