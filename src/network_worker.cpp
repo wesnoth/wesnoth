@@ -52,6 +52,7 @@
 #  undef INADDR_ANY
 #  undef INADDR_BROADCAST
 #  undef INADDR_NONE
+#  define NOMINMAX
 #  include <windows.h>
 #  define USE_SELECT 1
 typedef int socklen_t;
