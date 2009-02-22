@@ -703,7 +703,7 @@ namespace {
 					}
 				}
 			} catch(version_info::not_sane_exception const&) {
-				ERR_CFG << "local add-on '" << name << "' has invalid version info, skipping from updates check...\n";
+				ERR_CFG << "local add-on '" << name << "' has invalid or no version info, skipping from updates check...\n";
 				continue;
 			}
 		}
