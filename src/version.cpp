@@ -16,8 +16,6 @@
 #include "serialization/string_utils.hpp"
 
 #include <cassert>
-#include <stdexcept>
-
 
 version_info::version_info(const version_info& o)
 	: nums_                 (o.nums_),
@@ -50,55 +48,55 @@ version_info::version_info(const std::string& str)
 	if(str.empty())
 		return;
 
-	// first two components are required to be valid numbers
-	const std::vector<std::string> string_parts = utils::split(str,'.');
-	const size_t parts = string_parts.size();
-	if(parts == 0)
-		return;
+	//
+	// The breakpoint is where the "special" version component begins.
+	// For 1.1.2a it would at the index of the char 'a'. For 1.1.4+svn it is at '+'.
+	//
+	// For 1.5.2 it is at npos.
+	//
+	const std::string::size_type breakpoint_pos = str.find_first_not_of(".0123456789");
+	std::string left_side;
+	if(breakpoint_pos != std::string::npos) {
+		const std::string right_side = str.substr(breakpoint_pos);
+		assert(right_side.empty() == false);
 
-	if(parts > 3)
-		nums_.resize(parts, 0);
-
-	try {
-		size_t i = 0;
-		for(; i < parts-1; i++)
-			nums_[i] = lexical_cast<unsigned int>(string_parts[i]);
-
-		// Check for special suffix on last number and use it
-		std::string numstr;
-		this->init_special_version(string_parts[i], numstr);
-		nums_[i] = lexical_cast<unsigned int>(numstr);
-	}
-	catch (bad_lexical_cast const&) {
-		sane_ = false;
-	}
-	catch (std::out_of_range const&) {
-		;
-	}
-}
-
-void version_info::init_special_version(const std::string& full_component, std::string& number_string)
-{
-	const std::string::size_type sep_pos = full_component.find_first_not_of("0123456789");
-	if(sep_pos != std::string::npos) {
-		const char& c = full_component[sep_pos];
-		if((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')) {
+		if((right_side[0] >= 'A' && right_side[0] <= 'Z') || (right_side[0] >= 'a' && right_side[0] <= 'z')) {
 			special_separator_ = '\0';
-			special_ = full_component.substr(sep_pos);
-		} else {
-			special_separator_ = c;
-			if(sep_pos != full_component.size() - 1) {
-				special_ = full_component.substr(1+sep_pos);
-			} else {
-				special_ = "";
+			special_ = right_side;
+		}
+		else {
+			special_separator_ = right_side[0];
+			if(right_side.size() > 1) {
+				special_ = right_side.substr(1);
 			}
 		}
-		number_string = full_component.substr(0,sep_pos);
-	} else {
-		number_string = full_component;
+
+		left_side = str.substr(0, breakpoint_pos);
+	}
+	else {
+		left_side = str;
+	}
+
+	const std::vector<std::string> components = utils::split(left_side, '.');
+	const size_t s = components.size();
+	if(s == 0) {
+		return;
+	}
+	else if(s > 3) {
+		nums_.resize(s, 0);
+	}
+
+	try {
+		for(size_t i = 0; (i < s); ++i) {
+			nums_[i] = lexical_cast<unsigned int>(components[i]);
+		}
+	}
+	catch(bad_lexical_cast const&) {
+		// FIXME: actually, this is virtually impossible to occur
+		// due to the find_first_not_of() call above...
+		sane_ = false;
 	}
 }
-
 
 void version_info::assign(const version_info& o)
 {
@@ -113,18 +111,24 @@ void version_info::assign(const version_info& o)
 
 std::string version_info::str() const
 {
-	const size_t items = nums_.size();
-	assert(items >= 3);
+	const size_t s = nums_.size();
 
 	std::ostringstream o;
-	o << nums_[0] << '.' << nums_[1] << '.' << nums_[2];
-	if(items > 3) {
-		o << '.';
-		for(size_t i = 3; i < items; ++i)
-			o << nums_[i] << '.';
+	for(size_t k = 0; k < s; ++k) {
+		o << nums_[k];
+
+		if(s != 1+k) {
+			o << '.';
+		}
 	}
-	if(special_separator_ != '\0' && special_.empty() != true) o << special_separator_;
-	if(special_.empty() != true)   o << special_;
+
+	if(! special_.empty()) {
+		if(special_separator_ != '\0') {
+			o << special_separator_;
+		}
+
+		o << special_;
+	}
 
 	return o.str();
 }

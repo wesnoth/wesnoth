@@ -144,8 +144,6 @@ private:
 	std::string               special_;
 	char                      special_separator_;
 	bool                      sane_;
-
-	void init_special_version(const std::string& full_component, std::string& number_string);
 };
 
 /** Equality operator for version_info. */

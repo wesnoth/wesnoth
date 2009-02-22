@@ -21,7 +21,7 @@ BOOST_AUTO_TEST_SUITE( version )
 
 BOOST_AUTO_TEST_CASE( test_version_info )
 {
-	version_info invalid("version_info");
+	version_info invalid(0,0,0,false,'!',"d'oh");
 
 	BOOST_CHECK( !invalid.good() );
 
@@ -53,27 +53,17 @@ BOOST_AUTO_TEST_CASE( test_version_info )
 
 	BOOST_CHECK( left_zero != no_left_zero );
 
-	bool insanity_test = true;
+	const std::string bad_version_info_string_1 = "Viva la revolución!";
+	const std::string bad_version_info_string_2 = "To infinity and beyond!";
 
-	try {
-		const version_info bad_version_info1("Viva la revolución!");
-		const version_info bad_version_info2("To infinity and beyond!");
+	const version_info bad_version_info1( bad_version_info_string_1 );
+	const version_info bad_version_info2( bad_version_info_string_2 );
 
-		// The result of this test can be ignored since it should throw an exepction.
-		bad_version_info1 > bad_version_info2;
+	BOOST_CHECK( bad_version_info1.str() == ("0.0.0"+bad_version_info_string_1) );
+	BOOST_CHECK( bad_version_info2.str() == ("0.0.0"+bad_version_info_string_2) );
 
-		// We should have thrown an exception already...
-		insanity_test = false;
-	}
-	catch( const version_info::not_sane_exception& ) {
-		// Good.
-	}
-
-	BOOST_CHECK( insanity_test );
-
-	// FIXME: disabled for 1.5.10 release.
-	// version_info somewhat_complex("1.5.10-1.6beta2");
-	// BOOST_CHECK( somewhat_complex.major_version() == 1 && somewhat_complex.minor_version() == 5 && somewhat_complex.revision_level() == 10 && somewhat_complex.special_version() == "1.6beta2" && somewhat_complex.special_version_separator() == '-' );
+	version_info somewhat_complex("1.5.10-1.6beta2");
+	BOOST_CHECK( somewhat_complex.major_version() == 1 && somewhat_complex.minor_version() == 5 && somewhat_complex.revision_level() == 10 && somewhat_complex.special_version() == "1.6beta2" && somewhat_complex.special_version_separator() == '-' );
 }
 
 BOOST_AUTO_TEST_SUITE_END()
