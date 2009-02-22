@@ -193,8 +193,8 @@ for f in $filelist
 do
 	while [ $(jobs -p | wc -l) -ge $max_number_threads ]
 	do
-		# max number of threads reached, wait for half a second...
-		sleep 0.5
+		# max number of threads reached, wait for a quarter second...
+		sleep 0.25
 	done
 	#when here, we can do our normal optimization run
 	optimize_imgfile $f $opti_nice &
