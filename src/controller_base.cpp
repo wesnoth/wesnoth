@@ -128,7 +128,8 @@ void controller_base::post_mouse_press(const SDL_Event& /*event*/) {
 bool controller_base::handle_scroll(CKey& key, int mousex, int mousey, int mouse_flags)
 {
 	bool scrolling = false;
-	bool mouse_in_window = SDL_GetAppState() & SDL_APPMOUSEFOCUS;
+	bool mouse_in_window = (SDL_GetAppState() & SDL_APPMOUSEFOCUS)
+        || utils::string_bool(preferences::get("scroll_when_mouse_outside"), true);
 	const int scroll_threshold = (preferences::mouse_scroll_enabled())
 			? preferences::mouse_scroll_threshold()
 			: 0;
