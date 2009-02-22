@@ -1998,9 +1998,7 @@ namespace {
 		const vconfig::child_list commands = cfg.get_children(command_type);
 		for(vconfig::child_list::const_iterator cmd = commands.begin();
 				cmd != commands.end(); ++cmd) {
-			if(!handler.handle_event(event_info, *cmd)) {
-				handler.set_mutated(false);
-			}
+			handler.handle_event(event_info, *cmd);
 		}
 	}
 	WML_HANDLER_FUNCTION(print,/*handler*/,/*event_info*/,cfg)
@@ -2747,9 +2745,7 @@ namespace {
 		// Sub commands that need to be handled in a guaranteed ordering
 	WML_HANDLER_FUNCTION(command,handler,event_info,cfg)
 	{
-		if(!handler.handle_event(event_info, cfg)) {
-			handler.set_mutated(false);
-		}
+		handler.handle_event(event_info, cfg);
 	}
 
 
@@ -2777,9 +2773,7 @@ namespace {
 			const vconfig::child_list commands = cfg.get_children(type);
 			for(vconfig::child_list::const_iterator cmd = commands.begin();
 					cmd != commands.end(); ++cmd) {
-				if(!handler.handle_event(event_info, *cmd)) {
-					handler.set_mutated(false);
-				}
+				handler.handle_event(event_info, *cmd);
 			}
 		}
 	}
@@ -2809,18 +2803,14 @@ namespace {
 			const std::string value = (*c)["value"];
 			if (var == value) {
 				not_found = false;
-				if(!handler.handle_event(event_info, *c)) {
-					handler.set_mutated(false);
-				}
+				handler.handle_event(event_info, *c);
 			}
 		}
 		if (not_found) {
 			// otherwise execute 'else' statements
 			const vconfig::child_list elses = cfg.get_children("else");
 			for(vconfig::child_list::const_iterator e = elses.begin(); e != elses.end(); ++e) {
-				if(!handler.handle_event(event_info, *e)) {
-					handler.set_mutated(false);
-				}
+				handler.handle_event(event_info, *e);
 			}
 		}
 	}
@@ -3164,9 +3154,7 @@ std::string get_caption(const vconfig& cfg, unit_map::iterator speaker)
 			vconfig::child_list events = option_events[option_chosen];
 			for(vconfig::child_list::const_iterator itor = events.begin();
 					itor != events.end(); ++itor) {
-				if(!handler.handle_event(event_info, *itor)) {
-					handler.set_mutated(false);
-				}
+				handler.handle_event(event_info, *itor);
 			}
 		}
 		if(has_text_input) {
@@ -3403,6 +3391,7 @@ static bool process_event(game_events::event_handler& handler, const game_events
 	// First reset the skip_messages to avoid the escape of the previous event
 	// to be carried over into the next.
 	handler.set_skip_messages(false);
+	handler.set_mutated(true);
 	const bool res = handler.handle_event(ev);
 	if(ev.name == "select") {
 		state_of_game->last_selected = ev.loc1;
@@ -3426,6 +3415,8 @@ namespace game_events {
 		{
 			disable();
 		}
+		const bool allowing_undo = !mutated();
+		set_mutated(true);
 
 		vconfig cfg = conf;
 		if(cfg.null()) {
@@ -3443,8 +3434,13 @@ namespace game_events {
 
 		// We do this once the event has completed any music alterations
 		sound::commit_music_changes();
-
-		return mutated_;
+		if(mutated() && allowing_undo) {
+			// explicitly allowing undo, sub-commands should not disallow undo
+			set_mutated(false);
+			return true;
+		} else {
+			return mutated();
+		}
 	}
 
 		void event_handler::handle_event_command(const game_events::queued_event& event_info,
