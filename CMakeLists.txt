@@ -79,6 +79,8 @@ option(ENABLE_TOOLS "Enable building and installation of tools for artists and W
 option(ENABLE_TESTS "Build unit tests")
 option(ENABLE_NLS "Enable building of tranlations" ON)
 option(ENABLE_POOL_ALLOC "Enable custom pool malloc" OFF)
+option(ENABLE_LOW_MEM "Reduce memory usage by removing extra functionality" OFF)
+
 
 set(BINARY_SUFFIX "" CACHE STRING "Suffix behind all binaries")
 set(BINARY_PREFIX "" CACHE STRING "Prefix in front of all binaries")
@@ -141,6 +143,10 @@ if(ENABLE_FRIBIDI AND FRIBIDI_LIBRARIES)
 elseif(ENABLE_FRIBIDI AND NOT FRIBIDI_LIBRARIES)
   message("Could not find FriBiDi. Disabling FriBiDi support.")
 endif()
+
+if(ENABLE_LOW_MEM)
+  add_definitions(-DLOW_MEM)
+endif(ENABLE_LOW_MEM)
 
 #
 # Libraries that are only required by some targets
