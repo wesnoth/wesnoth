@@ -44,7 +44,7 @@ void write_possibly_compressed(std::ostream &out, config &cfg, bool compress);
 class config_writer
 {
 public:
-	config_writer(std::ostream &out, bool compress, const std::string &textdomain, int level = -1);
+	config_writer(std::ostream &out, bool compress, int level = -1);
 
 	void write(const config &cfg);
 

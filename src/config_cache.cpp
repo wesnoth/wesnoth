@@ -105,7 +105,7 @@ namespace game_config {
 	{
 		scoped_ostream stream = ostream_file(path);
 		const bool gzip = true;
-		config_writer writer(*stream,gzip,"",game_config::cache_compression_level);
+		config_writer writer(*stream, gzip, game_config::cache_compression_level);
 		writer.write(cfg);
 	}
 	void config_cache::write_file(std::string path, const preproc_map& defines_map)
@@ -120,7 +120,7 @@ namespace game_config {
 		}
 		scoped_ostream stream = ostream_file(path);
 		const bool gzip = true;
-		config_writer writer(*stream,gzip,"",game_config::cache_compression_level);
+		config_writer writer(*stream, gzip, game_config::cache_compression_level);
 
 		// write all defines to stream;
 		// call foreach define is: second.write(config_writer,first);

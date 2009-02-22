@@ -22,6 +22,7 @@
 
 #include "binary_or_text.hpp"
 #include "config.hpp"
+#include "wesconfig.h"
 #include "serialization/binary_wml.hpp"
 #include "serialization/parser.hpp"
 
@@ -49,13 +50,13 @@ void write_possibly_compressed(std::ostream &out, config &cfg, bool compress)
 }
 
 config_writer::config_writer(
-	std::ostream &out, bool compress, const std::string &textdomain,int level) :
+	std::ostream &out, bool compress, int level) :
 		filter_(),
 		out_ptr_(compress ? &filter_ : &out), //ternary indirection creates a temporary
 		out_(*out_ptr_), //now MSVC will allow binding to the reference member
 		compress_(compress),
 		level_(0),
-		textdomain_(textdomain)
+		textdomain_(PACKAGE)
 {
 	if(compress_) {
 		if (level >=0)

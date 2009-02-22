@@ -253,7 +253,7 @@ namespace {
  				read_compressed(data, *binary_stream);
 
  				scoped_ostream gzip_stream = ostream_file((**itor)["filename"]);
- 				config_writer writer(*gzip_stream, true, "",compress_level_);
+				config_writer writer(*gzip_stream, true, compress_level_);
  				writer.write(data);
  			}
 

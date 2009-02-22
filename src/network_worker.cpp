@@ -347,7 +347,7 @@ bool receive_with_timeout(TCPsocket s, char* buf, size_t nbytes,
 static void output_to_buffer(TCPsocket sock, const config& cfg, std::ostringstream& compressor, bool gzipped)
 {
 	if(gzipped) {
-		config_writer writer(compressor, true, "");
+		config_writer writer(compressor, true);
 		writer.write(cfg);
 	} else {
 		compression_schema *compress;

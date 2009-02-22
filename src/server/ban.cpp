@@ -338,7 +338,7 @@ namespace wesnothd {
 		}
 
 		scoped_ostream ban_file = ostream_file(filename_);
-		config_writer writer(*ban_file, true, "");
+		config_writer writer(*ban_file, true);
 		writer.write(cfg);
 	}
 
