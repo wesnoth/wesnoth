@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #
 #  Script to strip ICC profiles from all png images and to recompress them
 #  afterwards via optipng and advdef
@@ -191,7 +191,7 @@ echo "* compressing the files *"
 echo "*************************"
 for f in $filelist
 do
-	while [ $(jobs -p | wc -l) -ge $max_number_threads ]
+	while [ $(jobs -pr | wc -l) -ge $max_number_threads ]
 	do
 		# max number of threads reached, wait for a quarter second...
 		sleep 0.25
