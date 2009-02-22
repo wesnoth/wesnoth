@@ -467,7 +467,7 @@ namespace {
 								add_license(*data);
 								{
 									scoped_ostream campaign_file = ostream_file(filename);
-									config_writer writer(*campaign_file, true, "",compress_level_);
+									config_writer writer(*campaign_file, true, compress_level_);
 									writer.write(*data);
 								}
 //								write_compressed(*campaign_file, *data);
@@ -533,7 +533,7 @@ namespace {
 
 							{
 								scoped_ostream campaign_file = ostream_file(filename);
-								config_writer writer(*campaign_file, true, "",compress_level_);
+								config_writer writer(*campaign_file, true, compress_level_);
 								writer.write(*data);
 							}
 //							write_compressed(*campaign_file, *data);
