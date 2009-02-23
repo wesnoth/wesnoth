@@ -289,8 +289,9 @@ public:
 	void set_auto_shroud_updates(bool value) { auto_shroud_updates_ = value; }
 	bool get_disallow_observers() {return info_.disallow_observers; };
 	std::string map_colour_to() const { return info_.colour; };
-	bool& no_leader()  { return info_.no_leader; }
-	bool& hidden() { return info_.hidden; }
+	bool no_leader() const { return info_.no_leader; }
+	void have_leader(bool value=true) { info_.no_leader = !value; }
+	bool hidden() const { return info_.hidden; }
 	void set_hidden(bool value) { info_.hidden=value; }
 
 	static int nteams();

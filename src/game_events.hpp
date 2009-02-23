@@ -140,12 +140,12 @@ namespace game_events
 				return kids;
 			}
 
-			bool handle_event(const queued_event& event_info,
+			void handle_event(const queued_event& event_info,
 					const vconfig cfg = vconfig());
 
-			bool rebuild_screen() {return rebuild_screen_;}
-			bool mutated() {return mutated_;}
-			bool skip_messages() {return skip_messages_;}
+			bool rebuild_screen() const {return rebuild_screen_;}
+			bool mutated() const {return mutated_;}
+			bool skip_messages() const {return skip_messages_;}
 
 			void set_rebuild_screen(bool newval) {rebuild_screen_ = newval;}
 			void set_mutated(bool newval) {mutated_ = newval;}

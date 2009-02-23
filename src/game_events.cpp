@@ -2387,7 +2387,6 @@ namespace {
 
 					// The code in dialogs::advance_unit tests whether the unit can advance
 					dialogs::advance_unit(*game_map, *units, loc, *screen, !sel, true);
-					/** @todo FIXME: triggers advance events without preventing infinite loop */
 				}
 
 			} else {
@@ -2447,7 +2446,7 @@ namespace {
 			// If we unstore a leader make sure the team gets a leader if not the loading
 			// in MP might abort since a side without a leader has a recall list.
 			if(u.can_recruit()) {
-				(*teams)[u.side() - 1].no_leader() = false;
+				(*teams)[u.side() - 1].have_leader();
 			}
 
 		} catch(game::load_game_failed& e) {
@@ -3398,7 +3397,7 @@ static bool process_event(game_events::event_handler& handler, const game_events
 	// to be carried over into the next.
 	handler.set_skip_messages(false);
 	handler.set_mutated(true);
-	const bool res = handler.handle_event(ev);
+	handler.handle_event(ev);
 	if(ev.name == "select") {
 		state_of_game->last_selected = ev.loc1;
 	}
@@ -3411,18 +3410,16 @@ static bool process_event(game_events::event_handler& handler, const game_events
 	}
 
 
-	return res;
+	return handler.mutated();
 }
 
 namespace game_events {
-	bool event_handler::handle_event(const game_events::queued_event& event_info, const vconfig conf)
+	void event_handler::handle_event(const game_events::queued_event& event_info, const vconfig conf)
 	{
 		if (first_time_only_)
 		{
 			disable();
 		}
-		const bool allowing_undo = !mutated();
-		set_mutated(true);
 
 		vconfig cfg = conf;
 		if(cfg.null()) {
@@ -3440,13 +3437,6 @@ namespace game_events {
 
 		// We do this once the event has completed any music alterations
 		sound::commit_music_changes();
-		if(mutated() && allowing_undo) {
-			// explicitly allowing undo, sub-commands should not disallow undo
-			set_mutated(false);
-			return true;
-		} else {
-			return mutated();
-		}
 	}
 
 		void event_handler::handle_event_command(const game_events::queued_event& event_info,
