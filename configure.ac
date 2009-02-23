@@ -419,6 +419,13 @@ AC_SUBST([FRIBIDI_CFLAGS])
 AC_SUBST([FRIBIDI_LIBS])
 AM_CONDITIONAL([FRIBIDI], [test "x$fribidifound" = xyes -a "x$fribidi" = xyes ])
 
+# python
+AC_PATH_PROG(PYTHON, python, none)
+AC_SUBST(pkgpythondir)
+if test "x$python_install" = "xyes"; then
+	pkgpythondir=$PYTHON_PREFIX"/lib/python"$PYTHON_VERSION"/site-packages/wesnoth"
+fi
+
 # libpng-config
 
 AC_PATH_PROGS([PNG_CONFIG], [libpng-config libpng12-config], [none])
