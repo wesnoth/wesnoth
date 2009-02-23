@@ -767,11 +767,6 @@ bool startup_effect()
 	return utils::string_bool(preferences::get("startup_effect"), true);
 }
 
-bool run_safe_python()
-{
-	return utils::string_bool(preferences::get("only_run_safe_python_ais"), true);
-}
-
 std::string get_chat_timestamp(const time_t& t) {
 	if (chat_timestamping()) {
 		return lg::get_timestamp(t, clock_format()) + " ";

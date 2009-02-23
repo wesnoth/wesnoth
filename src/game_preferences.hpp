@@ -198,8 +198,6 @@ namespace preferences {
 
 	bool startup_effect();
 
-	bool run_safe_python();
-
 	std::set<std::string> &encountered_units();
 	std::set<t_translation::t_terrain> &encountered_terrains();
 
