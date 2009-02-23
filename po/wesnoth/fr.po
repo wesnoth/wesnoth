@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: fr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-02-21 14:37+0100\n"
-"PO-Revision-Date: 2009-02-12 23:30+0100\n"
+"PO-Revision-Date: 2009-02-21 17:26+0100\n"
 "Last-Translator: Aurélien Paulus <aurelien.paulus@gmail.com>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
 "MIME-Version: 1.0\n"
@@ -20,6 +20,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: KBabel 1.11.2\n"
+"X-Poedit-Language: French\n"
+"X-Poedit-Country: FRANCE\n"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:49
@@ -43,7 +45,6 @@ msgstr "Animer la carte"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:77
-#, fuzzy
 msgid "Show Titlescreen Animation"
 msgstr "Afficher l'animation des titres à l'écran"
 
@@ -132,9 +133,8 @@ msgstr ""
 #. [then]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1241
 #: src/actions.cpp:1054 src/actions.cpp:1330
-#, fuzzy
 msgid "female^slowed"
-msgstr "fidèle"
+msgstr "ralenti"
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [else]
@@ -152,14 +152,12 @@ msgstr "soins +4"
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:17
 #: data/core/macros/abilities.cfg:11
-#, fuzzy
 msgid "female^heals +4"
-msgstr "vigoureuse"
+msgstr "soin +4"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:22
 #: data/core/macros/abilities.cfg:16
-#, fuzzy
 msgid ""
 "Heals +4:\n"
 "Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
@@ -175,8 +173,8 @@ msgstr ""
 "\n"
 "Une unité soignée peut soit regagner jusqu'à 4 points de vie, soit ne pas "
 "subir les effets du poison ce tour-ci.\n"
-"Une unité empoisonnée ne peut pas être traitée par un soigneur, mais devra "
-"trouver un village ou une unité avec la capacité de guérison."
+"Une unité empoisonnée ne peut pas être guérie par un soigneur et devra "
+"trouver un village ou une unité qui dispose de la compétence guérison."
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:45
@@ -187,9 +185,8 @@ msgstr "soins +8"
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:46
 #: data/core/macros/abilities.cfg:31
-#, fuzzy
 msgid "female^heals +8"
-msgstr "vigoureuse"
+msgstr "soin +8"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:51
@@ -670,7 +667,6 @@ msgstr ""
 
 #. [topic]: id=fundamentals
 #: data/core/help.cfg:140
-#, fuzzy
 msgid ""
 "While playing, keep in mind that if you mouse-over many items in the game, "
 "such as the information displayed in the status pane, a brief description "
@@ -678,10 +674,10 @@ msgid ""
 "encounter new <ref>dst='..abilities_section' text='abilities'</ref> for the "
 "first time."
 msgstr ""
-"En cours de partie, une brève explication apparaîtra si vous glissez le "
-"curseur sur différents éléments du jeu, comme par exemple dans le panneau "
-"d'état, à droite. Cela est très utile quand vous voyez pour la première fois "
-"une nouvelle <ref>dst=abilities text='capacité'</ref>."
+"En cours de partie, gardez en tête qu'une brève explication apparaîtra si "
+"vous glissez le curseur sur différents éléments du jeu, comme par exemple "
+"dans le panneau d'état, à droite. Cela est très utile quand vous voyez pour "
+"la première fois une nouvelle <ref>dst=abilities text='capacité'</ref>."
 
 #. [topic]: id=about_game
 #: data/core/help.cfg:145
@@ -2044,7 +2040,7 @@ msgstr ""
 #. [topic]: id=terrain_flat
 #: data/core/help.cfg:450
 msgid "Flat"
-msgstr ""
+msgstr "Plat"
 
 #. [topic]: id=terrain_flat
 #: data/core/help.cfg:455
@@ -2260,7 +2256,6 @@ msgstr "gelé"
 
 #. [topic]: id=terrain_frozen
 #: data/core/help.cfg:551
-#, fuzzy
 msgid ""
 "Frozen terrain represents any flat area that is covered by snow or ice. Most "
 "units are slowed down on it, and have a harder time defending themselves. "
@@ -2269,10 +2264,10 @@ msgid ""
 "\n"
 "Most units have 20 to 40% defense in frozen terrain."
 msgstr ""
-"La neige représente toute zone plane gelée, soit en permanence (comme la "
-"toundra), soit temporairement (comme une plaine enneigée). La plupart des "
-"unités sont ralenties par la neige et il leur est plus difficile de s'y "
-"défendre.\n"
+"Le terrain gelé représente toute zone plane couverte de neige ou non. La "
+"plupart des unités s'y déplacent lentement et éprouvent des difficultés à "
+"s'y défendre. de s'y défendre. Notez que toutes les unités aquatiques, même "
+"celles qui peuvent respirer sous l'eau, ne peuvent nager sous la glace.\n"
 "\n"
 "La plupart des unités ont une défense de 20 à 40 % dans la neige."
 
@@ -2332,15 +2327,14 @@ msgstr "Désert"
 
 #. [topic]: id=terrain_desert
 #: data/core/help.cfg:587
-#, fuzzy
 msgid ""
 "Deserts have a somewhat different composition than small sand pits or "
 "beaches, however for gameplay purposes they are identical. See "
 "<ref>dst='terrain_sand' text='Sand'</ref>."
 msgstr ""
-"Les déserts sont normalement différents des petites zones sableuses ou des "
-"plages mais, dans le jeu, ils sont considérés comme identiques. Voir "
-"<ref>dst=terrain_sand text='sable'</ref>."
+"Les déserts ont une composition différente des petites zones sablonneuses ou "
+"des plages mais ils sont considérés comme identiques pour des raisons de "
+"jouabilité. Voir <ref>dst=terrain_sand text='sable'</ref>."
 
 #. [topic]: id=terrain_cave
 #: data/core/help.cfg:594
@@ -2361,7 +2355,7 @@ msgid ""
 "\n"
 "Most units receive 20 to 40% defense in Caves, whereas dwarves have 50%."
 msgstr ""
-"Ces terrains souterrains représentent des galeries suffisamment spacieuses "
+"Les terrains souterrains représentent des galeries suffisamment spacieuses "
 "pour permettre le passage des unités. Il s'agit d'un terrain inconnu pour la "
 "plupart des unités, qui sont donc ralenties et gênées pour leur défense. Les "
 "nains et les trolls, qui y habitent, se déplacent relativement aisément, "
@@ -2624,9 +2618,8 @@ msgstr ""
 
 #. [topic]: id=terrain_impassable
 #: data/core/help.cfg:722
-#, fuzzy
 msgid "Impassable"
-msgstr "Montagnes infranchissables"
+msgstr "Impraticable"
 
 #. [topic]: id=terrain_impassable
 #: data/core/help.cfg:725
@@ -2941,9 +2934,8 @@ msgstr "guérison"
 
 #. [heals]: id=curing
 #: data/core/macros/abilities.cfg:52
-#, fuzzy
 msgid "female^cures"
-msgstr "intrépide"
+msgstr "Soins"
 
 #. [heals]: id=curing
 #: data/core/macros/abilities.cfg:54
@@ -2963,7 +2955,6 @@ msgstr "régénération"
 
 #. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:77
-#, fuzzy
 msgid "female^regenerates"
 msgstr "régénération"
 
@@ -2985,7 +2976,6 @@ msgstr "inébranlable"
 
 #. [resistance]: id=steadfast
 #: data/core/macros/abilities.cfg:98
-#, fuzzy
 msgid "female^steadfast"
 msgstr "inébranlable"
 
@@ -3011,7 +3001,6 @@ msgstr "commandement"
 #: data/core/macros/abilities.cfg:114 data/core/macros/abilities.cfg:137
 #: data/core/macros/abilities.cfg:172 data/core/macros/abilities.cfg:219
 #: data/core/macros/abilities.cfg:278
-#, fuzzy
 msgid "female^leadership"
 msgstr "commandement"
 
@@ -3045,7 +3034,6 @@ msgstr "tirailleur"
 
 #. [skirmisher]: id=skirmisher
 #: data/core/macros/abilities.cfg:347
-#, fuzzy
 msgid "female^skirmisher"
 msgstr "tirailleur"
 
@@ -3067,7 +3055,6 @@ msgstr "illumination"
 
 #. [illuminates]: id=illumination
 #: data/core/macros/abilities.cfg:363
-#, fuzzy
 msgid "female^illuminates"
 msgstr "illumination"
 
@@ -3117,9 +3104,8 @@ msgstr "embuscade"
 
 #. [hides]: id=ambush
 #: data/core/macros/abilities.cfg:390 data/core/macros/abilities.cfg:392
-#, fuzzy
 msgid "female^ambush"
-msgstr "fidèle"
+msgstr "ambuscade"
 
 #. [hides]: id=ambush
 #: data/core/macros/abilities.cfg:396 data/core/macros/abilities.cfg:400
@@ -3174,7 +3160,6 @@ msgstr "dissimulation"
 
 #. [hides]: id=concealment
 #: data/core/macros/abilities.cfg:442 data/core/macros/abilities.cfg:448
-#, fuzzy
 msgid "female^concealment"
 msgstr "dissimulation"
 
@@ -3204,9 +3189,8 @@ msgstr "immersion"
 
 #. [hides]: id=submerge
 #: data/core/macros/abilities.cfg:468 data/core/macros/abilities.cfg:474
-#, fuzzy
 msgid "female^submerge"
-msgstr "forte"
+msgstr "Submerger"
 
 #. [hides]: id=submerge
 #: data/core/macros/abilities.cfg:472 data/core/macros/abilities.cfg:478
@@ -3523,32 +3507,28 @@ msgstr ""
 #. [print]
 #: data/core/macros/ai_controller.cfg:586
 msgid "Location selection canceled"
-msgstr ""
+msgstr "Sélection d'emplacement annulée"
 
 #. [option]
 #: data/core/macros/ai_controller.cfg:601
-#, fuzzy
 msgid "Clear objective orders"
-msgstr "Annuler les ordres"
+msgstr "Effacer les ordres d'objectif"
 
 #. [option]
 #: data/core/macros/ai_controller.cfg:625
-#, fuzzy
 msgid "Clear behavior orders"
-msgstr "Annuler les ordres"
+msgstr "Effacer les ordres de comportement"
 
 #. [option]
 #: data/core/macros/ai_controller.cfg:649
-#, fuzzy
 msgid "Clear all orders"
-msgstr "Annuler les ordres"
+msgstr "Annuler tous les ordres"
 
 #. [then]
 #: data/core/macros/ai_controller.cfg:775
 #: data/core/macros/ai_controller.cfg:786
-#, fuzzy
 msgid "none set."
-msgstr "aucune"
+msgstr "aucun ordre défini."
 
 #. [value]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:808
@@ -3581,9 +3561,8 @@ msgstr "Déterminer l'objectif…"
 
 #. [literal]
 #: data/core/macros/ai_controller.cfg:880
-#, fuzzy
 msgid "Set behavior..."
-msgstr "Choisir un mot de passe..."
+msgstr "Déterminer un comportement…"
 
 #. [literal]
 #: data/core/macros/ai_controller.cfg:920
@@ -3606,24 +3585,20 @@ msgid "Max HP bonus +"
 msgstr "Bonus de PV max +"
 
 #: data/core/macros/carryover-utils.cfg:9
-#, fuzzy
 msgid "Early finish bonus."
 msgstr "Bonus de fin anticipée : "
 
 #: data/core/macros/carryover-utils.cfg:12
-#, fuzzy
 msgid "No early finish bonus."
-msgstr "Bonus de fin anticipée : "
+msgstr "Aucun bonus de fin anticipée."
 
 #: data/core/macros/carryover-utils.cfg:15
-#, fuzzy
 msgid "`(early finish bonus)"
-msgstr "Bonus de fin anticipée : "
+msgstr "`(bonus de fin anticipée)"
 
 #: data/core/macros/carryover-utils.cfg:18
-#, fuzzy
 msgid "No gold carried over to the next scenario."
-msgstr "80 % de l'or est gardé pour le prochain scénario"
+msgstr "Aucune pièce d'or conservée pour le prochain scénario."
 
 #: data/core/macros/carryover-utils.cfg:22
 msgid ""
@@ -3692,9 +3667,8 @@ msgstr "Ne pas faire de vœu."
 
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:148
-#, fuzzy
 msgid "Take it"
-msgstr "Le laisser"
+msgstr "Prenez-le"
 
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:166
@@ -4203,7 +4177,6 @@ msgid "Kaasa,Kayya,Keyya,Kiira,Korra"
 msgstr "Kaasa,Kayya,Keyya,Kiira,Korra"
 
 #: data/core/macros/names.cfg:23
-#, fuzzy
 msgid ""
 "Addraecyn,Addraenvan,Addraer,Addraercyn,Addraryn,Addreddry,Addredry,"
 "Addregwyn,Addrenyc,Addreoddry,Addreoddyn,Addreonyc,Addreorcyn,Addreran,"
@@ -4262,8 +4235,8 @@ msgstr ""
 "Aethonnyn,Aethuc,Aethudry,Aethugwyn,Aethun,Aethunry,Aethydry,Aethynyc,Blac,"
 "Bladoc,Blaec,Blaedry,Blanry,Blebryn,Bledoc,Blemyr,Blennyn,Blenvan,Bleollyn,"
 "Blercyn,Blidd,Bliddry,Blillyn,Blinvan,Blollyn,Blubryn,Blucyn,Bludry,Blullyn,"
-"Bluran,Blybryn,Blydd,Blygwyn,Blymyr,Blyr,Cac,Cadry,Caebryn,Caedry,Caeran,"
-"Caercyn,Car,Carac,Caraddry,Caradoc,Caraedry,Caraennyn,Cararyn,Caredd,"
+"Bluran,Blybryn,Blydd,Blygwyn,Blymyr,Blyr,Bucyn,Cac,Cadry,Caebryn,Caedry,"
+"Caeran,Caercyn,Car,Carac,Caraddry,Caradoc,Caraedry,Caraennyn,Cararyn,Caredd,"
 "Careddry,Caregwyn,Caren,Careobryn,Careogwyn,Careonvan,Careorraent,Careoryn,"
 "Carercyn,Caric,Cariddry,Carocyn,Caroddyn,Caror,Caroran,Carraent,Carudoc,"
 "Carullyn,Carygwyn,Caryn,Cebryn,Cemyr,Cennyn,Ceoc,Ceoddry,Ceoddyn,Ceomyr,"
@@ -4275,34 +4248,33 @@ msgstr ""
 "Glircyn,Gloddry,Gloddyn,Glonry,Glonvan,Glumyr,Glun,Glunry,Glunvan,Glyc,Glydd,"
 "Glydoc,Glynry,Glynvan,Glyran,Goc,Gor,Gubryn,Gudd,Gullyn,Gumyr,Gur,Gwadoc,"
 "Gwaec,Gwaeddyn,Gwan,Gweddyn,Gwegwyn,Gwellyn,Gwennyn,Gwenyc,Gweocyn,Gweodd,"
-"Gweodoc,Gweodry,Gweogwyn,Gweoran,Gwidoc,Gwodd,Gwoddyn,Gwollyn,Gwor,Gwucyn,"
-"Gwudoc,Gwumyr,Gwuran,Gwybryn,Gwycyn,Gwyddry,Gwydoc,Gwymyr,Gwynnyn,Gydoc,"
-"Gyllyn,Gymyr,Labryn,Ladoc,Laellyn,Lan,Lannyn,Laran,Lec,Lemyr,Lenvan,Leogwyn,"
-"Lercyn,Ligwyn,Lin,Liryn,Lonnyn,Lorraent,Luddry,Ludoc,Lunnyn,Lunvan,Lurraent,"
-"Mac,Maddyn,Maennyn,Manry,Manyc,Marcyn,Mec,Menvan,Meollyn,Meon,Meonnyn,"
-"Meorraent,Middry,Midry,Mimyr,Modd,Moddry,Monry,Moran,Morcyn,Mubryn,Mudoc,"
-"Mugwyn,Murcyn,Mydoc,Mygwyn,Myn,Myrraent,Owac,Owadd,Owaddyn,Owaecyn,Owaedry,"
-"Owarcyn,Owaryn,Owecyn,Owedry,Oweomyr,Oweor,Oweorcyn,Oweran,Owercyn,Owidry,"
-"Owinvan,Owinyc,Owodd,Owoddry,Owogwyn,Owollyn,Oworan,Oworcyn,Oworraent,"
-"Owuddry,Owuddyn,Owugwyn,Owur,Owyran,Rabryn,Radd,Ranvan,Rar,Reoddyn,Reodry,"
-"Rhaecyn,Rhaedoc,Rhaemyr,Rhaerraent,Rhanry,Rharcyn,Rhenry,Rhenvan,Rhenyc,"
-"Rheodd,Rheoddyn,Rheollyn,Rheor,Rheoran,Rheorraent,Rheran,Rherraent,Rhobryn,"
-"Rhodry,Rhollyn,Rhonvan,Rhubryn,Rhugwyn,Rhunyc,Rhur,Rhygwyn,Rhyllyn,Rhynyc,"
-"Rhyrcyn,Rhyrraent,Rocyn,Roddyn,Romyr,Ron,Ronry,Rubryn,Ruddry,Rumyr,Run,"
-"Rurcyn,Rybryn,Rycyn,Ryddry,Rygwyn,Rynnyn,Rynry,Saec,Saellyn,Saemyr,Saenvan,"
-"Saercyn,Sanyc,Saran,Sarraent,Secyn,Seddyn,Sedry,Sellyn,Sennyn,Seoddry,"
-"Seorcyn,Sercyn,Siddry,Simyr,Siryn,Sodd,Sodry,Soran,Suc,Sudd,Surcyn,Sydd,"
-"Syran,Syryn,Tabryn,Taec,Taedd,Taedoc,Taemyr,Taenvan,Taercyn,Tanry,Tarcyn,"
-"Teddyn,Tegwyn,Ten,Tennyn,Tenvan,Teobryn,Teoddyn,Teor,Teorcyn,Terraent,Tinry,"
-"Tinvan,Tiryn,Todd,Tudd,Tuddry,Tudoc,Tunvan,Turraent,Tyddyn,Vaddyn,Vaeddyn,"
-"Vaedry,Vaennyn,Varcyn,Ven,Vennyn,Veocyn,Veoddyn,Veodry,Veogwyn,Veomyr,Vinvan,"
-"Vinyc,Virraent,Vobryn,Vogwyn,Vonry,Vuddyn,Vugwyn,Vyc,Vygwyn,Vyrcyn,Yracyn,"
-"Yraec,Yran,Yrannyn,Yranvan,Yraryn,Yredd,Yreddyn,Yregwyn,Yreryn,Yrinvan,"
-"Yrirraent,Yroddry,Yrullyn,Yrumyr,Yrunnyn,Yrunvan,Yryllyn,Yrymyr,Yrynyc,"
-"Yryrcyn"
+"Gweodoc,Gweodry,Gweogwyn,Gweoran,Gwidoc,Gwilam,Gwodd,Gwoddyn,Gwollyn,Gwor,"
+"Gwucyn,Gwudoc,Gwumyr,Gwuran,Gwybryn,Gwycyn,Gwyddry,Gwydoc,Gwymyr,Gwynnyn,"
+"Gydoc,Gyllyn,Gymyr,Haldar,Labryn,Ladoc,Laellyn,Lan,Lannyn,Laran,Lec,Lemyr,"
+"Lenvan,Leogwyn,Lercyn,Ligwyn,Lin,Liryn,Lonnyn,Lorraent,Luddry,Ludoc,Lunnyn,"
+"Lunvan,Lurraent,Mac,Maddyn,Maennyn,Manry,Manyc,Marcyn,Mec,Menvan,Meollyn,"
+"Meon,Meonnyn,Meorraent,Middry,Midry,Mimyr,Modd,Moddry,Monry,Moran,Morcyn,"
+"Mubryn,Mudoc,Mugwyn,Murcyn,Mydoc,Mygwyn,Myn,Myrraent,Owac,Owadd,Owaddyn,"
+"Owaecyn,Owaedry,Owain,Owarcyn,Owaryn,Owecyn,Owedry,Oweomyr,Oweor,Oweorcyn,"
+"Oweran,Owercyn,Owidry,Owinvan,Owinyc,Owodd,Owoddry,Owogwyn,Owollyn,Oworan,"
+"Oworcyn,Oworraent,Owuddry,Owuddyn,Owugwyn,Owur,Owyran,Rabryn,Radd,Ranvan,Rar,"
+"Reoddyn,Reodry,Rhaecyn,Rhaedoc,Rhaemyr,Rhaerraent,Rhanry,Rharcyn,Rhenry,"
+"Rhenvan,Rhenyc,Rheodd,Rheoddyn,Rheollyn,Rheor,Rheoran,Rheorraent,Rheran,"
+"Rherraent,Rhobryn,Rhodry,Rhollyn,Rhonvan,Rhubryn,Rhugwyn,Rhunyc,Rhur,Rhygwyn,"
+"Rhyllyn,Rhynyc,Rhyrcyn,Rhyrraent,Rocyn,Roddyn,Romyr,Ron,Ronry,Rubryn,Ruddry,"
+"Rumyr,Run,Rurcyn,Rybryn,Rycyn,Ryddry,Rygwyn,Rynnyn,Rynry,Saec,Saellyn,Saemyr,"
+"Saenvan,Saercyn,Sanyc,Saran,Sarraent,Secyn,Seddyn,Sedry,Sellyn,Sennyn,"
+"Seoddry,Seorcyn,Sercyn,Siddry,Simyr,Siryn,Sodd,Sodry,Soran,Suc,Sudd,Surcyn,"
+"Sydd,Syran,Syryn,Tabryn,Taec,Taedd,Taedoc,Taemyr,Taenvan,Taercyn,Tanry,"
+"Tarcyn,Teddyn,Tegwyn,Ten,Tennyn,Tenvan,Teobryn,Teoddyn,Teor,Teorcyn,Terraent,"
+"Tinry,Tinvan,Tiryn,Todd,Tudd,Tuddry,Tudoc,Tunvan,Turraent,Tyddyn,Vaddyn,"
+"Vaeddyn,Vaedry,Vaennyn,Varcyn,Ven,Vennyn,Veocyn,Veoddyn,Veodry,Veogwyn,"
+"Veomyr,Vinvan,Vinyc,Virraent,Vobryn,Vogwyn,Vonry,Vuddyn,Vugwyn,Vyc,Vygwyn,"
+"Vyrcyn,Yracyn,Yraec,Yran,Yrannyn,Yranvan,Yraryn,Yredd,Yreddyn,Yregwyn,Yreryn,"
+"Yrinvan,Yrirraent,Yroddry,Yrullyn,Yrumyr,Yrunnyn,Yrunvan,Yryllyn,Yrymyr,"
+"Yrynyc,Yryrcyn"
 
 #: data/core/macros/names.cfg:24
-#, fuzzy
 msgid ""
 "Alabrylla,Alaebrylla,Alaeniver,Alalla,Alalonna,Alaryan,Aleacla,Aleaniver,"
 "Aleara,Alearka,Alena,Alengwen,Alilonna,Alingwen,Alolla,Alolonna,Alora,"
@@ -4369,8 +4341,8 @@ msgstr ""
 "Eleanoic,Elearka,Elenoic,Elerka,Elivyan,Elulonna,Elurka,Elwllyra,Elwlonna,"
 "Elwngwen,Elwra,Elycla,Elyllyra,Elyngwen,Elyniver,Elyrka,Gwaera,Gwaessa,"
 "Gwangwen,Gweacla,Gwedda,Gwerka,Gwicla,Gwirka,Gwobrylla,Gwoll,Gwona,Gwongwen,"
-"Gwonoic,Gworyan,Gwullyra,Gwussa,Gwwcla,Gwwna,Gwwvyan,Gwycla,Gwydda,Jacla,"
-"Jaena,Jaerka,Jaevyan,Jalyan,Jana,Jarka,Jassa,Jeabrylla,Jealla,Jeanoic,"
+"Gwonoic,Gworyan,Gwullyra,Gwussa,Gwwcla,Gwwna,Gwwvyan,Gwycla,Gwydda,Heldra,"
+"Jacla,Jaena,Jaerka,Jaevyan,Jalyan,Jana,Jarka,Jassa,Jeabrylla,Jealla,Jeanoic,"
 "Jeniver,Jiryan,Jissa,Joll,Jolla,Jona,Jongwen,Jonoic,Jora,Jorka,Jovyan,Judda,"
 "Jull,Julonna,Jura,Jwll,Jwlyan,Jycla,Jyniver,Jynoic,Jyrka,Jyvyan,Laeniver,"
 "Laenoic,Laeryan,Langwen,Larka,Lassa,Lealonna,Lealyan,Ledda,Lelonna,Lelyan,"
@@ -4963,9 +4935,10 @@ msgstr "vigoureuse"
 
 #. [trait]: id=healthy
 #: data/core/macros/traits.cfg:134
-#, fuzzy
 msgid "Can rest while moving, takes a quarter less poison damage"
-msgstr "Peut récupérer en bougeant"
+msgstr ""
+"Peut récupérer en bougeant, subit un quart de dommages en moins lors d'un "
+"empoisonement."
 
 #. [trait]: id=fearless
 #: data/core/macros/traits.cfg:151 data/core/macros/traits.cfg:164
@@ -4989,21 +4962,18 @@ msgstr "faible"
 
 #. [trait]: id=weak
 #: data/core/macros/traits.cfg:175
-#, fuzzy
 msgid "female^weak"
-msgstr "morte-vivante"
+msgstr "faible"
 
 #. [trait]: id=slow
 #: data/core/macros/traits.cfg:192
-#, fuzzy
 msgid "slow"
 msgstr "ralentissement"
 
 #. [trait]: id=slow
 #: data/core/macros/traits.cfg:193
-#, fuzzy
 msgid "female^slow"
-msgstr "fidèle"
+msgstr "lent"
 
 #. [trait]: id=dim
 #: data/core/macros/traits.cfg:209
@@ -5904,15 +5874,13 @@ msgstr ""
 
 #. [race]: id=wolf, description=
 #: data/core/units.cfg:297
-#, fuzzy
 msgid "race^Wolf"
-msgstr "Elfe"
+msgstr "Loup"
 
 #. [race]: id=wolf, description=
 #: data/core/units.cfg:298
-#, fuzzy
 msgid "race^Wolves"
-msgstr "Elfes"
+msgstr "Loups"
 
 #. [race]: id=wose, description=
 #: data/core/units.cfg:307
@@ -6149,6 +6117,11 @@ msgid ""
 "features, and allows us to improve Wesnoth. To learn more about this or "
 "disable it, click the envelope in the bottom-right corner."
 msgstr ""
+"La Bataille pour Wesnoth envoie automatiquement des statistiques anonymes à "
+"propos de l'avancement du jeu à un serveur où elles sont stockées. Cela rend "
+"certaines options disponibles et nous permet d'améliorer Wesnoth. Pour en "
+"savoir plus ou pour désactiver l'envoi automatique, cliquez sur l'enveloppe "
+"dans le coin inférieur droit."
 
 #. [tip]
 #: data/hardwired/tips.cfg:4
@@ -6799,9 +6772,10 @@ msgstr ""
 "contextuel en faisant un clic-droit."
 
 #: data/temp-file_send_data_strings.cfg:12
-#, fuzzy
 msgid "About to upload statistics - Help us make Wesnoth better for you!"
-msgstr "Aidez-nous à améliorer Wesnoth pour vous !"
+msgstr ""
+"À propos de l'envoi de statistiques - Aidez-nous à améliorer Wesnoth pour "
+"vous !"
 
 #: data/temp-file_send_data_strings.cfg:13
 msgid "Save my reply and do not ask again"
@@ -6938,7 +6912,6 @@ msgstr "Voir"
 
 #. [menu]: id=button-playreplay, type=image
 #: data/themes/macros.cfg:75
-#, fuzzy
 msgid "continuous replay"
 msgstr "Revoir la partie sans interruption"
 
@@ -7016,9 +6989,8 @@ msgid "An invalid weapon is selected, possibly by the Python AI."
 msgstr "Une arme non valide a été sélectionnée, sans doute par l'IA Python."
 
 #: src/actions.cpp:1049 src/actions.cpp:1325
-#, fuzzy
 msgid "female^poisoned"
-msgstr "morte-vivante"
+msgstr "empoisonnée"
 
 #: src/actions.cpp:1061 src/actions.cpp:1337
 #, fuzzy
@@ -7131,15 +7103,18 @@ msgid "Dependencies"
 msgstr "Dépendances"
 
 #: src/addon_management.cpp:447
-#, fuzzy
 msgid ""
 "This add-on depends upon the following add-on which you have not installed "
 "yet:"
 msgid_plural ""
 "This add-on depends upon the following add-ons which you have not installed "
 "yet:"
-msgstr[0] "Cette extension a besoin des dépendances suivantes :"
-msgstr[1] "Cette extension a besoin des dépendances suivantes :"
+msgstr[0] ""
+"Cette extension dépend de l'extension suivante que vous n'avez pas encore "
+"installée :"
+msgstr[1] ""
+"Cette extension dépend de l'extensions suivantes que vous n'avez pas encore "
+"installées :"
 
 #: src/addon_management.cpp:452
 msgid "Do you still want to download it?"
@@ -7152,7 +7127,7 @@ msgstr "Tentative de connexion expirée"
 
 #: src/addon_management.cpp:470
 msgid "The server responded with an error: \"$error|\""
-msgstr "Le serveur a renvoyé une erreur : « $error| »"
+msgstr "Le serveur a renvoyé une erreur : « $error »"
 
 #: src/addon_management.cpp:478
 msgid "Terms"
@@ -7172,9 +7147,8 @@ msgid "Response"
 msgstr "Réponse"
 
 #: src/addon_management.cpp:575
-#, fuzzy
 msgid "Downloading add-on: $addon_title|..."
-msgstr "Téléchargement de l'extension en cours..."
+msgstr "Téléchargement de l'extension $addon_title|..."
 
 #: src/addon_management.cpp:591
 msgid ""
@@ -7188,9 +7162,8 @@ msgid "Unchecked script files found:"
 msgstr ""
 
 #: src/addon_management.cpp:650
-#, fuzzy
 msgid "The add-on '$addon_title|' has been successfully installed."
-msgstr "L'extension a été ajoutée."
+msgstr "L'extension « $addon_title » a été installée avec succès."
 
 #: src/addon_management.cpp:652
 msgid "Add-on Installed"
@@ -7208,7 +7181,11 @@ msgid_plural ""
 "Some outdated local add-ons have publishing information attached. They will "
 "not be offered for updating."
 msgstr[0] ""
+"Une extension locale obsolète a publié des informations liées. Aucune mise à "
+"jour ne sera proposée."
 msgstr[1] ""
+"Des extensions locales obsolètes ont publié des informations liées. Aucune "
+"mise à jour ne sera proposée."
 
 #: src/addon_management.cpp:721
 msgid "Could not find any updated add-ons on this server."
@@ -7691,6 +7668,8 @@ msgid ""
 "The server will run in a background process until all users have "
 "disconnected."
 msgstr ""
+"Le serveur fonctionnera en processus d'arrière-plan jusqu'à ce que tous les "
+"utilisateurs se soient déconnectés."
 
 #: src/game.cpp:1292
 msgid "Don't show again"
@@ -8385,6 +8364,9 @@ msgid ""
 "Available commands list and command-specific help. Use \"help all\" to "
 "include currently unavailable commands."
 msgstr ""
+"Liste des commandes disponibles et aide sur les commandes spécifiques. "
+"Utilisez « Aide complète » pour inclure les commandes actuellement "
+"indisponibles."
 
 #: src/menu_events.cpp:1974
 msgid " No help available."
@@ -8403,6 +8385,8 @@ msgid ""
 "Ban and kick a player or observer. If he is not in the game but on the "
 "server he will only be banned."
 msgstr ""
+"Bannir et rejeter un jouer ou un observateur. S'il est absent du jeu mais "
+"qu'il se trouve sur le serveur, il sera seulement banni."
 
 #: src/menu_events.cpp:2118
 msgid "Kick a player or observer."
@@ -8421,12 +8405,11 @@ msgid "Send an emotion or personal action in chat."
 msgstr "Envoie une émotion ou une action personnelle dans la discussion."
 
 #: src/menu_events.cpp:2135
-#, fuzzy
 msgid ""
 "Sends a private message. You can't send messages to players that don't "
 "control a side in a running game you are in."
 msgstr ""
-"Envoie un message privé. Vous ne pouvez pas envoyer de messages privés aux "
+"Envoie un message privé. Vous ne pouvez envoyer de messages privés qu'aux "
 "joueurs qui contrôlent un camp dans la partie où vous êtes."
 
 #: src/menu_events.cpp:2141
@@ -8468,9 +8451,8 @@ msgstr ""
 "consultez '/détails',"
 
 #: src/menu_events.cpp:2161
-#, fuzzy
 msgid "Request information about a nick."
-msgstr "Aucune information sur l'ère trouvée."
+msgstr "Obtenir des informations à propos d'un pseudo."
 
 #: src/menu_events.cpp:2163
 msgid "Request a list of details you can set for your registered nick."
@@ -8488,7 +8470,7 @@ msgstr ""
 
 #: src/menu_events.cpp:2290
 msgid "Assign control of a side to a different player or observer."
-msgstr ""
+msgstr "Assigner le control d'un camp à un autre joueur ou à un observateur."
 
 #: src/menu_events.cpp:2292
 msgid "Clear chat history."
@@ -8513,21 +8495,19 @@ msgstr "Sauvegarde et quitte le jeu."
 #: src/menu_events.cpp:2306
 #, fuzzy
 msgid "Ignore replay errors."
-msgstr "Ignorer les erreurs de replay."
+msgstr "Ignorer les erreurs "
 
 #: src/menu_events.cpp:2308
 msgid "Disable autosaves."
 msgstr "Désactive les sauvegardes automatiques."
 
 #: src/menu_events.cpp:2310
-#, fuzzy
 msgid "Advance to the next scenario, or scenario identified by 'id'"
-msgstr "Passe au scénario suivant."
+msgstr "Avancer au scénario prochain ou au scénario portant l'identifiant 'id'"
 
 #: src/menu_events.cpp:2313
-#, fuzzy
 msgid "Choose next scenario"
-msgstr "Téléchargement du scénario suivant..."
+msgstr "Choisir le scénario suivant"
 
 #: src/menu_events.cpp:2316
 msgid "Turn debug mode on."
@@ -8540,6 +8520,8 @@ msgstr "Désactive le mode débug."
 #: src/menu_events.cpp:2320
 msgid "Set the command used by the custom command hotkey"
 msgstr ""
+"Définir les commandes invoquées par les combinaisons de touches "
+"personnalisées"
 
 #: src/menu_events.cpp:2322
 msgid "Set or show alias to a command"
@@ -8556,10 +8538,12 @@ msgstr "Affiche une variable du scénario."
 #: src/menu_events.cpp:2328
 msgid "Modify a unit variable. (Only top level keys are supported.)"
 msgstr ""
+"Modifier une variable d'unité. (Seules les clés du niveau supérieur sont "
+"prises en charge.)"
 
 #: src/menu_events.cpp:2332
 msgid "Remove a trait from a unit. (Does not work yet.)"
-msgstr ""
+msgstr "Enlever un trait d'une unité. (Ne fonctionne pas encore)"
 
 #: src/menu_events.cpp:2334
 msgid "Create a unit."
@@ -8646,9 +8630,8 @@ msgid "Can't change control of out-of-bounds side: '$side'."
 msgstr "Impossible de changer le contrôle de ce camp hors-limites : « $side »."
 
 #: src/menu_events.cpp:2852
-#, fuzzy
 msgid "Choose Scenario (Debug!)"
-msgstr "Créer une unité (Débug !)"
+msgstr "Choisir un scénario (débogage!)"
 
 #: src/menu_events.cpp:2865
 msgid "Debug mode activated!"
@@ -9495,9 +9478,8 @@ msgid "$error, value '$value', previous '$previous_value' at $pos"
 msgstr "$error, value '$value', previous '$previous_value' at $pos"
 
 #: src/serialization/parser.cpp:361
-#, fuzzy
 msgid "$error, value '$value' at $pos"
-msgstr " $error en $pos"
+msgstr "$error, valeur '$value' à $pos"
 
 #: src/statistics_dialog.cpp:66 src/statistics_dialog.cpp:121
 msgid "Recruits"
@@ -9580,9 +9562,8 @@ msgid "TitleScreen button^Add-ons"
 msgstr "Extensions"
 
 #: src/titlescreen.cpp:417
-#, fuzzy
 msgid "TitleScreen button^Map Editor"
-msgstr "Éditeur"
+msgstr "Éditeur de carte"
 
 #: src/titlescreen.cpp:419
 msgid "TitleScreen button^Language"
@@ -9681,9 +9662,8 @@ msgid "Help Wesnoth by sending us information"
 msgstr "Aider Wesnoth en envoyant des données"
 
 #: src/unit.cpp:591
-#, fuzzy
 msgid "Unknown unit type '$type|' while generating traits"
-msgstr "Type d'unité inconnu : « $type| »"
+msgstr "Type d'unité inconnu lors de la génération des traits : '$type|'"
 
 #: src/unit.cpp:792
 msgid "Unknown unit type '$type|'"
@@ -9757,19 +9737,16 @@ msgid "neutral"
 msgstr "neutre"
 
 #: src/unit_types.cpp:1018
-#, fuzzy
 msgid "female^chaotic"
-msgstr "mécanique"
+msgstr "chaotique"
 
 #: src/unit_types.cpp:1018
-#, fuzzy
 msgid "female^lawful"
-msgstr "fidèle"
+msgstr "loyale"
 
 #: src/unit_types.cpp:1018
-#, fuzzy
 msgid "female^neutral"
-msgstr "morte-vivante"
+msgstr "neutre"
 
 #: src/upload_log.cpp:325
 msgid ""
@@ -9801,10 +9778,6 @@ msgstr "Autoriser l'envoi de résumés"
 
 #~ msgid "+  "
 #~ msgstr "+  "
-
-#, fuzzy
-#~ msgid "Unknown error."
-#~ msgstr "Ère inconnue"
 
 #~ msgid "- King Konrad, 552YW"
 #~ msgstr "- Roi Konrad, 552 YM"
