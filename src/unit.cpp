@@ -2160,7 +2160,7 @@ int unit::defense_modifier(t_translation::t_terrain terrain, int recurse_count) 
 	if(underlying.size() != 1 || underlying.front() != terrain) {
 		bool revert = (underlying.front() == t_translation::MINUS ? true : false);
 		if(recurse_count >= 90) {
-			LOG_STREAM(err, config) << "infinite defense_modifier recursion: " << t_translation::write_terrain_code(terrain) << " depth " << recurse_count << "\n";
+			ERR_CONFIG << "infinite defense_modifier recursion: " << t_translation::write_terrain_code(terrain) << " depth " << recurse_count << "\n";
 		}
 		if(recurse_count >= 100) {
 			return 100;
@@ -2208,6 +2208,9 @@ int unit::defense_modifier(t_translation::t_terrain terrain, int recurse_count) 
 	if(res < 0) {
 		ERR_CONFIG << "Defense '" << res << "' is '< 0' reset to 0 (100% defense).\n";
 		res = 0;
+	} else if(res > 100) {
+		ERR_CONFIG << "Defense '" << res << "' is '> 100' reset to 100 (0% defense).\n";
+		res = 100;
 	}
 
 	defense_mods_.insert(std::pair<t_translation::t_terrain,int>(terrain,res));
