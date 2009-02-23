@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-02-21 14:37+0100\n"
+"POT-Creation-Date: 2009-02-23 14:08+0100\n"
 "PO-Revision-Date: 2008-07-03 22:55+0200\n"
 "Last-Translator: Benoît Timbert <benoit.timbert@free.fr>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
@@ -980,27 +980,27 @@ msgstr "Non"
 msgid "Close"
 msgstr "Fermer"
 
-#: src/filechooser.cpp:58
+#: src/filechooser.cpp:74
 msgid "File: "
 msgstr "Fichier : "
 
-#: src/filechooser.cpp:61
+#: src/filechooser.cpp:77
 msgid "Delete File"
 msgstr "Supprimer le fichier"
 
-#: src/filechooser.cpp:63 src/filechooser.cpp:188
+#: src/filechooser.cpp:79 src/filechooser.cpp:204
 msgid "New Folder"
 msgstr "Nouveau répertoire"
 
-#: src/filechooser.cpp:176
+#: src/filechooser.cpp:192
 msgid "Deletion of the file failed."
 msgstr "La suppression du fichier a échoué."
 
-#: src/filechooser.cpp:189
+#: src/filechooser.cpp:205
 msgid "Name: "
 msgstr "Nom : "
 
-#: src/filechooser.cpp:194
+#: src/filechooser.cpp:210
 msgid "Creation of the directory failed."
 msgstr "La création du répertoire a échoué."
 
@@ -1481,30 +1481,30 @@ msgstr "Le texte ne commence pas dans le cadre."
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr "La widget obligatoire « $id » n'a pas été définie."
 
-#: src/gui/widgets/settings.cpp:131
+#: src/gui/widgets/settings.cpp:132
 msgid "No default gui defined."
 msgstr "Aucune IHM définie par défaut."
 
-#: src/gui/widgets/settings.cpp:263
+#: src/gui/widgets/settings.cpp:264
 msgid "Window not defined."
 msgstr "Fenêtre non définie."
 
-#: src/gui/widgets/settings.cpp:361
+#: src/gui/widgets/settings.cpp:362
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr ""
 "La définition de Widget « $definition » ne contient pas la définition de "
 "« $id »."
 
-#: src/gui/widgets/settings.cpp:473 src/gui/widgets/window_builder.cpp:287
+#: src/gui/widgets/settings.cpp:474 src/gui/widgets/window_builder.cpp:287
 msgid "No resolution defined."
 msgstr "Aucune résolution définie."
 
-#: src/gui/widgets/settings.cpp:501
+#: src/gui/widgets/settings.cpp:502
 msgid "No state or draw section defined."
 msgstr "Aucun état ou zone de dessin défini."
 
-#: src/gui/widgets/settings.cpp:744 src/gui/widgets/settings.cpp:898
+#: src/gui/widgets/settings.cpp:745 src/gui/widgets/settings.cpp:899
 #: src/gui/widgets/window_builder.cpp:378
 #: src/gui/widgets/window_builder.cpp:911
 #: src/gui/widgets/window_builder.cpp:1115
@@ -2118,7 +2118,7 @@ msgstr "Choisir la résolution"
 msgid "Error"
 msgstr "Erreur"
 
-#: src/terrain_translation.cpp:689
+#: src/terrain_translation.cpp:701
 msgid ""
 "A terrain with a string with more than 4 characters has been found, the "
 "affected terrain is :"

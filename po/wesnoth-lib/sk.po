@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-02-21 14:37+0100\n"
+"POT-Creation-Date: 2009-02-23 14:08+0100\n"
 "PO-Revision-Date: 2009-01-16 23:22+0100\n"
 "Last-Translator: aceman <acelists@atlas.sk>\n"
 "Language-Team: none\n"
@@ -939,27 +939,27 @@ msgstr "Nie"
 msgid "Close"
 msgstr "Zavri"
 
-#: src/filechooser.cpp:58
+#: src/filechooser.cpp:74
 msgid "File: "
 msgstr "Súbor:"
 
-#: src/filechooser.cpp:61
+#: src/filechooser.cpp:77
 msgid "Delete File"
 msgstr "Vymaž súbor"
 
-#: src/filechooser.cpp:63 src/filechooser.cpp:188
+#: src/filechooser.cpp:79 src/filechooser.cpp:204
 msgid "New Folder"
 msgstr "Nový adresár"
 
-#: src/filechooser.cpp:176
+#: src/filechooser.cpp:192
 msgid "Deletion of the file failed."
 msgstr "Nepodarilo sa vymazať súbor."
 
-#: src/filechooser.cpp:189
+#: src/filechooser.cpp:205
 msgid "Name: "
 msgstr "Meno:"
 
-#: src/filechooser.cpp:194
+#: src/filechooser.cpp:210
 msgid "Creation of the directory failed."
 msgstr "Nepodarilo sa vytvoriť adresár."
 
@@ -1435,28 +1435,28 @@ msgstr "Text sa nezmestí na plochu."
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr "Nebol definovaný povinný prvok '$id'."
 
-#: src/gui/widgets/settings.cpp:131
+#: src/gui/widgets/settings.cpp:132
 msgid "No default gui defined."
 msgstr "Nebolo definované predvolené GUI."
 
-#: src/gui/widgets/settings.cpp:263
+#: src/gui/widgets/settings.cpp:264
 msgid "Window not defined."
 msgstr "Nie je definované okno."
 
-#: src/gui/widgets/settings.cpp:361
+#: src/gui/widgets/settings.cpp:362
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr "Definícia prvku '$definition' neobsahuje definíciu '$id'."
 
-#: src/gui/widgets/settings.cpp:473 src/gui/widgets/window_builder.cpp:287
+#: src/gui/widgets/settings.cpp:474 src/gui/widgets/window_builder.cpp:287
 msgid "No resolution defined."
 msgstr "Nebolo definované rozlíšenie."
 
-#: src/gui/widgets/settings.cpp:501
+#: src/gui/widgets/settings.cpp:502
 msgid "No state or draw section defined."
 msgstr "Nebol definovaný žiadny stav ani oblasť kreslenia."
 
-#: src/gui/widgets/settings.cpp:744 src/gui/widgets/settings.cpp:898
+#: src/gui/widgets/settings.cpp:745 src/gui/widgets/settings.cpp:899
 #: src/gui/widgets/window_builder.cpp:378
 #: src/gui/widgets/window_builder.cpp:911
 #: src/gui/widgets/window_builder.cpp:1115
@@ -2041,7 +2041,7 @@ msgstr "Vyber si rozlíšenie"
 msgid "Error"
 msgstr "Chyba"
 
-#: src/terrain_translation.cpp:689
+#: src/terrain_translation.cpp:701
 msgid ""
 "A terrain with a string with more than 4 characters has been found, the "
 "affected terrain is :"

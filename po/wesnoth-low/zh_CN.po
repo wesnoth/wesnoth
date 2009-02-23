@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-02-21 14:38+0100\n"
+"POT-Creation-Date: 2009-02-23 14:08+0100\n"
 "PO-Revision-Date: 2008-12-20 11:09+1000\n"
 "Last-Translator: luojie <lililjlj@gmail.com>\n"
 "Language-Team: none\n"
@@ -3488,12 +3488,13 @@ msgstr "Orhtib"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/17_Breaking_the_siege.cfg:325
+#: data/campaigns/Legend_of_Wesmere/utils/deaths.cfg:116
 msgid ""
-"Before you die, know that you lost in Wesmere, you lost in Tath, you will "
+"Before you die, know that you lost in Wesmere, you lost at Tath, you will "
 "lose here and that your Great Chief is dead!"
 msgstr ""
-"在你死前我告诉你，你们在Wesmere输了，在Tath也输了，在这里又输了并且你们的大酋"
-"长也死了！"
+"你死之前我告诉你，你们在Wesmere输了，在Tath也败了，你们将会败在这里并且你们的"
+"大酋长也死了！"
 
 #. [scenario]: id=18_hour_of_glory
 #: data/campaigns/Legend_of_Wesmere/scenarios/18_Hour_of_Glory.cfg:3
@@ -4189,15 +4190,6 @@ msgstr "不！这就是末日了！我们被击败了！"
 msgid "With Uradredia gone, the North Elves will no longer fight!"
 msgstr "Uradredia死了，北方精灵就不能再战了！"
 
-#. [message]: id=Kalenz
-#: data/campaigns/Legend_of_Wesmere/utils/deaths.cfg:116
-msgid ""
-"Before you die, know that you lost in Wesmere, you lost at Tath, you will "
-"lose here and that your Great Chief is dead!"
-msgstr ""
-"你死之前我告诉你，你们在Wesmere输了，在Tath也败了，你们将会败在这里并且你们的"
-"大酋长也死了！"
-
 #. [message]: speaker=unit
 #: data/campaigns/Legend_of_Wesmere/utils/deaths.cfg:128
 msgid "Aargh! I'm dying!"
@@ -4237,6 +4229,13 @@ msgstr "噢不！我们太迟了..."
 #: data/campaigns/Legend_of_Wesmere/utils/low-macros.cfg:154
 msgid "You retrieve $amount_gold pieces of gold."
 msgstr "你追回 $amount_gold金币"
+
+#~ msgid ""
+#~ "Before you die, know that you lost in Wesmere, you lost in Tath, you will "
+#~ "lose here and that your Great Chief is dead!"
+#~ msgstr ""
+#~ "在你死前我告诉你，你们在Wesmere输了，在Tath也输了，在这里又输了并且你们的"
+#~ "大酋长也死了！"
 
 #~ msgid "campaign started"
 #~ msgstr "战役开始"
