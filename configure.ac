@@ -130,9 +130,9 @@ AC_ARG_ENABLE([static],
 	      [static=no])
 
 AC_ARG_ENABLE([python],
-              AS_HELP_STRING([--disable-python], [disable Python support]),
+              AS_HELP_STRING([--disable-python], [disable Python support (only used for extra tools, not ingame!)]),
 	      [python=$enableval],
-	      [python=yes])
+	      [python=no])
 
 AC_ARG_ENABLE([python_install],
               AS_HELP_STRING([--enable-python-install], [enable installation of Python developer tools]),
@@ -283,11 +283,11 @@ AC_ARG_ENABLE([internal-data],
 		[internaldata=$enableval],
 		[internaldata=no])
 
-if test "x$game" = "xno"
-then
-	python=no
-	AC_MSG_WARN([*** Game build disabled, suppressing Python support.])
-fi
+#if test "x$game" = "xno"
+#then
+#	python=no
+#	AC_MSG_WARN([*** Game build disabled, suppressing Python support.])
+#fi
 
 if test "x$python" = "xno"
 then
