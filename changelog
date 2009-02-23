@@ -1,4 +1,4 @@
-Version 1.5.10+svn:
+Version 1.5.11:
  * Campaigns:
    * Descent into Darkness:
      * Removed the custom python AI used in 'A Haunting in Winter'
@@ -20,6 +20,8 @@ Version 1.5.10+svn:
  * Language and i18n:
    * updated translations: Czech, French, German, Hebrew, Lithuanian, Polish,
      Russian, Spanish
+   * Fixed a problem that could lead to wrong cache being used, leading to
+     some strings not being shown as translated (bug #12568)
  * Multiplayer:
    * server:
      * Create the fifo group accessible (instead of only user accessible).
@@ -53,6 +55,7 @@ Version 1.5.10+svn:
    * Map size is now hard-limited to 200 by 200
    * attribute hidden in [side] allows to hide a side from status table,
      it also can be changed by [modify_side] (FR #12814)
+   * Removed support for PythonAI to handle CVE-2009-0367
 
 Version 1.5.10:
  * Campaigns:
