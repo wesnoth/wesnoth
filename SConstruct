@@ -73,7 +73,6 @@ opts.AddOptions(
     BoolOption('prereqs','abort if prerequisites cannot be detected',True),
     ('program_suffix', 'suffix to append to names of installed programs',"$version_suffix"),
     ('version_suffix', 'suffix that will be added to default values of prefsdir, program_suffix and datadirname', ""),
-    BoolOption('python', 'Enable in-game python extensions.', True),
     BoolOption('raw_sockets', 'Set to use raw receiving sockets in the multiplayer network layer rather than the SDL_net facilities', False),
     BoolOption('forum_user_handler', 'Enable forum user handler in wesnothd', False),
     BoolOption('pool_alloc', 'Enable custom pool malloc', False),
@@ -251,9 +250,6 @@ if env["prereqs"]:
     if env["forum_user_handler"]:
         env.ParseConfig("mysql_config --libs --cflags")
         env.Append(CPPDEFINES = ["HAVE_MYSQLPP"])
-
-    if env["python"]:
-        env["python"] = (float(sys.version[:3]) >= 2.4) and conf.CheckPython() or Warning("Python >= 2.4 not found. Python extensions will be disabled.")
 
     env = conf.Finish()
 

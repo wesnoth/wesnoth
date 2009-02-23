@@ -10,11 +10,6 @@
  * before and after each release.
  */
 
-// We are building with scons, so Python cannot be absent. 
-// this definition has to be done somewhere else or the normal builds
-// via autotools are broken, which is ATM not acceptable
-//#define HAVE_PYTHON
-
 // without this ifdef DUMMYLOCALES break, so leave it in even though is seems
 // to not have any real purpose...
 #ifdef HAVE_CONFIG_H

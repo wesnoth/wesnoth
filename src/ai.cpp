@@ -19,10 +19,6 @@
 
 #include "ai2.hpp"
 #include "ai_dfool.hpp"
-#ifdef HAVE_PYTHON
-//#include "python_ai.hpp"
-#include "ai_python.hpp"
-#endif
 #include "array.hpp"
 #include "dialogs.hpp"
 #include "formula_ai.hpp"
@@ -184,40 +180,6 @@ protected:
 };
 
 
-#ifdef HAVE_PYTHON
-// Finds all python AI scripts available in the current binary path.
-// They have to end with .py, and have #!WPY as first line.
-// If preferences allow for unsafe python AIs, then also look for
-// the #!UNSAFE_WPY tag.
-static std::vector<std::string> get_available_py_scripts()
-{
-  int allow_unsafe = !preferences::run_safe_python() ;
-  std::vector<std::string> scripts;
-  const std::vector<std::string>& paths = get_binary_paths("data");
-  for(std::vector<std::string>::const_iterator i = paths.begin(); i != paths.end(); ++i) {
-    std::vector<std::string> files;
-    get_files_in_dir(*i + "ai/python", &files, NULL, ENTIRE_FILE_PATH);
-    for(std::vector<std::string>::const_iterator j = files.begin(); j != files.end(); ++j) {
-      // file ends with .py
-      if (j->substr(j->length() - 3) == ".py") {
-	std::string name(j->substr(j->rfind("/") + 1)); // extract name
-	// read first line
-	std::ifstream s(j->c_str()); std::string mark; s >> mark; s.close();
-	if (mark == "#!WPY" &&
-	    std::find(scripts.begin(), scripts.end(), name) == scripts.end())
-	  scripts.push_back(name);
-	else if (allow_unsafe && mark == "#!UNSAFE_WPY" &&
-		 std::find(scripts.begin(), scripts.end(), name) == scripts.end())
-	  scripts.push_back(name);
-      }
-    }
-  }
-  return scripts;
-}
-#endif
-
-
-
 std::vector<std::string> get_available_ais()
 {
     std::vector<std::string> ais;
@@ -225,10 +187,6 @@ std::vector<std::string> get_available_ais()
     ais.push_back("sample_ai");
     //ais.push_back("idle_ai");
     ais.push_back("dfool_ai");
-#ifdef HAVE_PYTHON
-    std::vector<std::string> scripts = get_available_py_scripts();
-    ais.insert(ais.end(), scripts.begin(), scripts.end());
-#endif
     return ais;
 }
 
@@ -251,17 +209,6 @@ ai_interface* create_ai(const std::string& name, ai_interface::info& info)
 	//	return new advanced_ai(info);
 	else if(name == "ai2")
 		return new ai2(info);
-	else if(name == "python_ai")
-#ifdef HAVE_PYTHON
-	  return new python_ai(info);
-//  	else if(name == "newpy_ai")
-//  	  return new pyai::PythonAI( info ) ;
-#else
-    {
-		ERR_AI << "No Python AI support available in this Wesnoth build! Using the default AI instead.\n";
-		return new ai(info);
-    }
-#endif
 	else if(name != "" && name != "default") {
 		ERR_AI << "AI not found: '" << name << "'. Using default instead.\n";
 	}

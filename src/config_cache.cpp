@@ -77,10 +77,6 @@ namespace game_config {
 		if (game_config::small_gui)
 			defines_map_["SMALL_GUI"] = preproc_define();
 
-#ifdef HAVE_PYTHON
-		defines_map_["PYTHON"] = preproc_define();
-#endif
-
 #if defined(__APPLE__)
 		defines_map_["APPLE"] = preproc_define();
 #endif

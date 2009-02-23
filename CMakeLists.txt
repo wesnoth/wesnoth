@@ -61,7 +61,6 @@ set(LOCALEDIR "translations" CACHE STRING "change the name of the locale data di
 set(PREFERENCES_DIR "" CACHE STRING "Use a non-default preferences directory (.wesnoth on unix)")
 
 #Game options
-option(ENABLE_PYTHON "Enable in-game python extensions" ON)
 option(ENABLE_FRIBIDI "Enable FriBIDi support" ON)
 set(GUI "normal" CACHE STRING "Set for GUI reductions for resolutions down to 320x240 (PDAs) (normal|tiny)")
 
@@ -131,12 +130,6 @@ endif(PREFERENCES_DIR)
 if(GUI STREQUAL "tiny")
   add_definitions(-DUSE_TINY_GUI)
 endif(GUI STREQUAL "tiny")
-
-if(ENABLE_PYTHON AND PYTHON_LIBRARIES)
-  add_definitions(-DHAVE_PYTHON)
-elseif(ENABLE_PYTHON AND NOT PYTHON_LIBRARIES)
-  message("Could not find Python. Disabling Python support.")
-endif()
 
 if(ENABLE_FRIBIDI AND FRIBIDI_LIBRARIES)
   add_definitions(-DHAVE_FRIBIDI)

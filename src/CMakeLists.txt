@@ -53,11 +53,6 @@ set( tools-external-libs
     ${SDLIMAGE_LIBRARY}
 )
 
-if(ENABLE_PYTHON AND PYTHON_LIBRARY)
-  include_directories( ${PYTHON_INCLUDE_PATH} )
-  set(game-external-libs ${game-external-libs} ${PYTHON_LIBRARIES})
-endif(ENABLE_PYTHON AND PYTHON_LIBRARY)
-
 if(ENABLE_FRIBIDI AND FRIBIDI_LIBRARIES)
   include_directories( ${FRIBIDI_INCLUDE_PATH} )
   set(game-external-libs ${game-external-libs} ${FRIBIDI_LIBRARIES})
@@ -208,7 +203,6 @@ SET(wesnoth-main_SRC
     ai_dfool.cpp
     ai_attack.cpp
     ai_move.cpp
-    ai_python.cpp
     ai_village.cpp
     animated_game.cpp
     attack_prediction.cpp

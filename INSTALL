@@ -70,11 +70,6 @@ then
 
 3. Scons build
 
-You will need the following tools:
-
- python >=2.4
- scons
-
 SCons can be found at http://www.scons.org/ .
 
 Simply type 'scons' in the top-level directory to build the game and
@@ -190,7 +185,6 @@ Optional Features:
   --enable-profile          build=profile
   --enable-tests            (See --help documentation on choice of targets)
   --enable-static           static=yes
-  --disable-python          python=no
   --enable-python-install   N/A
   --enable-lite             N/A
   --enable-tinygui          gui=tiny

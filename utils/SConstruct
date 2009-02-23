@@ -73,12 +73,9 @@ env = Environment()
 env["CC"] = "i586-mingw32msvc-gcc"
 env["CXX"] = "i586-mingw32msvc-g++"
 
-# Dependencies: SDL, SDL_net, SDL_mixer, SDL_image, freetype, libintl, python
+# Dependencies: SDL, SDL_net, SDL_mixer, SDL_image, freetype, libintl
 # This is where I put the dependency headers
 env.Append(CPPPATH = ["../win-deps/include"])
-
-# This is where I put the python headers.
-env.Append(CPPPATH = ["../win-deps/include/python24"])
 
 # This is where I put the dependency libs
 env.Append(LIBPATH = ["../win-deps/lib"])
@@ -88,7 +85,7 @@ env.Append(CCFLAGS = ["-O2", "-mthreads", "-DHAVE_PYTHON"])
 env.Append(LINKFLAGS = ["-s", "-mwindows", "-lmingwthrd"])
 env.Append(CPPPATH = ["src", "src/widgets"])
 env.Append(LIBS = ["mingw32", "SDLmain", "SDL", "SDL_net", "SDL_mixer", "SDL_image",
-                   "intl", "wsock32", "freetype", "python24", "boost-iostreams", "z"])
+                   "intl", "wsock32", "freetype", "boost-iostreams", "z"])
 
 # Scons stuff
 env.BuildDir("../build", "src")

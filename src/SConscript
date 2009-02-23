@@ -257,11 +257,7 @@ wesnoth_sources = Split("""
     """)
 
 wesnoth_sources.extend(env.Object("game_preferences_display.cpp", EXTRA_DEFINE = env["PLATFORM"] != "win32" and "WESNOTH_PREFIX='\"$prefix\"'" or None))
-python_env = env.Clone()
-if env['python']:
-    python_env.Append(CPPDEFINES = "HAVE_PYTHON")
-wesnoth_sources.extend(python_env.Object(Split("""
-    ai_python.cpp
+wesnoth_sources.extend(env.Object(Split("""
     ai.cpp
     config_cache.cpp
     multiplayer_connect.cpp
@@ -308,7 +304,7 @@ def WesnothProgram(env, target, source, can_build, **kw):
 from SCons.Script.SConscript import SConsEnvironment
 SConsEnvironment.WesnothProgram = WesnothProgram
 
-game_cpp = python_env.Object("game.cpp", EXTRA_DEFINE = not env["pool_alloc"] and "DISABLE_POOL_ALLOC" or None);
+game_cpp = env.Object("game.cpp", EXTRA_DEFINE = not env["pool_alloc"] and "DISABLE_POOL_ALLOC" or None);
 
 env.WesnothProgram("wesnoth", [game_cpp] + [libwesnoth_extras, libwesnoth_core, libwesnoth_sdl, libwesnoth, libcampaignd, env["wesnoth_res"]], have_client_prereqs)
 
@@ -378,7 +374,7 @@ test_sources = Split("""
     tests/gui/test_save_dialog.cpp
     tests/utils/play_scenario.cpp
     """)
-test_sources.extend(test_env.Object("tests/test_config_cache.cpp", EXTRA_DEFINE = env['python'] and "HAVE_PYTHON" or None))
+test_sources.extend(test_env.Object("tests/test_config_cache.cpp"))
 
 test = test_env.WesnothProgram("test", test_sources +  [libwesnoth_extras, libwesnoth_core, libwesnoth_sdl, libwesnoth,libtest_utils], have_test_prereqs)
 

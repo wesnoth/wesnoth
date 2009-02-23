@@ -657,17 +657,8 @@ config connect::side::get_config() const
 				res["id"] = res["save_id"];
 				config *ai = res.child("ai");
 				if (!ai) ai = &res.add_child("ai");
-				#ifdef HAVE_PYTHON
-				if (ai_algorithm_.substr(ai_algorithm_.length() - 3) == ".py") {
-					(*ai)["ai_algorithm"] = "python_ai";
-					(*ai)["python_script"] = ai_algorithm_;
-				}
-				else
-				#endif
-				{
-					if (ai_algorithm_ != "default")
-						(*ai)["ai_algorithm"] = ai_algorithm_;
-				}
+				if (ai_algorithm_ != "default")
+				     (*ai)["ai_algorithm"] = ai_algorithm_;
 			}
 			description = N_("Computer player");
 			break;

@@ -34,7 +34,7 @@ pkgdatadir=$(datadir)/@DATADIR@
 INTERNALLIBS = -lwesnoth-core -lwesnoth
 
 THELIBS = -L. $(SDL_IMAGE_LIBS) $(SDL_MIXER_LIBS) $(SDL_NET_LIBS) \
-	$(SDL_TTF_LIBS) $(SDL_LIBS) $(PYTHON_LIBS) $(LIBINTL) \
+	$(SDL_TTF_LIBS) $(SDL_LIBS) $(LIBINTL) \
 	$(BOOST_IOSTREAMS_LIBS) $(BOOST_REGEX_LIBS)
 
 wesnoth_source = \
@@ -46,7 +46,6 @@ wesnoth_source = \
 	ai_dfool.cpp \
 	ai_attack.cpp \
 	ai_move.cpp \
-	ai_python.cpp \
 	ai_village.cpp \
 	animated_game.cpp \
 	attack_prediction.cpp \
@@ -199,7 +198,7 @@ endif
 wesnoth_SOURCES = \
 	game.cpp \
 	$(wesnoth_source)
-	
+
 wesnoth_LDADD = $(INTERNALLIBS) $(THELIBS) $(PANGO_LIBS) $(FONTCONFIG_LIBS)
 wesnoth_DEPENDENCIES=libwesnoth-core.a libwesnoth.a
 
@@ -229,7 +228,7 @@ wesnothd_SOURCES = \
 	time.cpp \
 	loadscreen_empty.cpp 
 
- 
+
 wesnothd_LDADD = -L. -lwesnoth-core $(BOOST_IOSTREAMS_LIBS) @SDL_NET_LIBS@ @SDL_LIBS@ $(LIBINTL)
 wesnothd_DEPENDENCIES=libwesnoth-core.a
 
@@ -413,11 +412,6 @@ AM_CXXFLAGS = -DHAVE_REVISION -I../intl -I$(top_srcdir)/intl @SDL_CFLAGS@  -DWES
 
 AM_CFLAGS = -DHAVE_REVISION -I../intl -I$(top_srcdir)/intl @SDL_CFLAGS@ -DWESNOTH_PATH=\"$(pkgdatadir)\" \
 	-DLOCALEDIR=\"$(LOCALEDIR)\" -DHAS_RELATIVE_LOCALEDIR=$(HAS_RELATIVE_LOCALEDIR)
-
-if PYTHON
-AM_CXXFLAGS += @PYTHON_CFLAGS@
-AM_CFLAGS += @PYTHON_CFLAGS@
-endif
 
 if FRIBIDI
     AM_CXXFLAGS += -DHAVE_FRIBIDI @FRIBIDI_CFLAGS@

@@ -73,10 +73,6 @@
 //#include "locale.h"
 //#endif
 
-#ifdef HAVE_PYTHON
-#include "ai_python.hpp"
-#endif
-
 #ifndef DISABLE_EDITOR2
 #include "editor2/editor_main.hpp"
 #endif
@@ -1808,12 +1804,6 @@ static int process_command_args(int argc, char** argv) {
 			<< "  --nomusic                    runs the game without music.\n"
 			<< "  --nosound                    runs the game without sounds and music.\n"
 			<< "  --path                       prints the path to the data directory and exits.\n"
-#ifdef HAVE_PYTHON
-			<< "  --python-api                 prints the runtime documentation for the python\n"
-			<< "                               API.\n"
-			<< "  --python-shell               invokes wesnoth's embedded python interpreter in\n"
-			<< "                               interactive mode.\n"
-#endif
 			<< "  -r, --resolution XxY         sets the screen resolution. Example: -r 800x600\n"
 			<< "  --smallgui                   allows to use screen resolutions down to 800x480\n"
 			<< "                               and resizes a few interface elements.\n"
@@ -1843,18 +1833,6 @@ static int process_command_args(int argc, char** argv) {
 			std::cout <<  game_config::path
 			          << "\n";
 			return 0;
-#ifdef HAVE_PYTHON
-		} else if(val == "--python-api") {
-			python_ai::invoke("documentation");
-			return 0;
-        } else if(val == "--python-shell") {
-			int ret = python_ai::run_shell();
-			if (ret==0) {
-			    return 0;
-		    } else {
-		       return 2;
-		    }
-#endif
 		} else if(val == "--config-dir") {
 			if (argc <= ++arg)
 				break;
