@@ -32,9 +32,9 @@
 
 namespace t_translation {
 
-    size_t max_map_size() {
-        return 200; //TODO make this overridable by the user without having to rebuild
-    }
+	size_t max_map_size() {
+		return 200; //TODO make this overridable by the user without having to rebuild
+	}
 
 /***************************************************************************************/
 // forward declaration of internal functions
@@ -324,10 +324,10 @@ t_map read_game_map(const std::string& str,	std::map<int, coordinate>& starting_
 					ERR_G << "Map not a rectangle error occured at line offset " << y << " position offset " << x << "\n";
 					throw error("Map not a rectangle.");
 				}
-                if (y > max_map_size()) {
+				if (y > max_map_size()) {
 					ERR_G << "Map size exceeds limit (y > " << max_map_size() << ")\n";
 					throw error("Map height limit exceeded.");
-                }
+				}
 			}
 
 			// Prepare next iteration
@@ -350,10 +350,10 @@ t_map read_game_map(const std::string& str,	std::map<int, coordinate>& starting_
 		} else {
 			++x;
 			offset = pos_separator + 1;
-            if (x > max_map_size()) {
+			if (x > max_map_size()) {
 				ERR_G << "Map size exceeds limit (x > " << max_map_size() << ")\n";
 				throw error("Map width limit exceeded.");
-            }
+			}
 		}
 
 	}
@@ -752,8 +752,8 @@ static t_terrain string_to_number_(std::string str, int& start_position, const t
 		str.erase(0, offset + 1);
 	}
 
-    offset = str.find('^', 0);
-    if(offset !=  std::string::npos) {
+	offset = str.find('^', 0);
+	if(offset !=  std::string::npos) {
 		// If either string is longer than 4 characters bail out
 		if(offset > 4 || (str.size() - offset) > 5) {
 			return VOID_TERRAIN;
