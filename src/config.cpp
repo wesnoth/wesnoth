@@ -24,6 +24,7 @@
 #include "log.hpp"
 
 #include <cstring>
+#include <deque>
 
 #define ERR_CF LOG_STREAM(err, config)
 
@@ -355,15 +356,62 @@ const config* config::find_child(const std::string& key,
 		return NULL;
 }
 
+namespace {
+	/**
+	 * Helper struct for iterative config clearing. 
+	 */
+	struct config_clear_state
+	{
+		config* c; //the config being inspected
+		config::child_map::iterator mi; //current child map entry 
+		size_t vi; //index into the child map item vector
+	};
+}
+
 void config::clear()
 {
-	for(child_map::iterator i = children.begin(); i != children.end(); ++i) {
-		std::vector<config*>& v = i->second;
-		for(std::vector<config*>::iterator j = v.begin(); j != v.end(); ++j)
-			delete *j;
+	if (!children.empty()) {
+		//start with this node, the first entry in the child map,
+		//zeroeth element in that entry
+		config_clear_state init;
+		init.c = this;
+		init.mi = children.begin();
+		init.vi = 0;
+		std::deque<config_clear_state> l;
+		l.push_back(init);
+
+		while (!l.empty()) {
+			config_clear_state& state = l.back();
+			if (state.mi != state.c->children.end()) {
+				std::vector<config*>& v = state.mi->second;
+				if (state.vi < v.size()) {
+					config* c = v[state.vi];
+					++state.vi;
+					if (c->children.empty()) {
+						delete c; //special case for a slight speed increase?
+					} else { 
+						//descend to the next level
+						config_clear_state next;
+						next.c = c;
+						next.mi = c->children.begin();
+						next.vi = 0;
+						l.push_back(next);
+					}
+				} else {
+					state.vi = 0;
+					++state.mi;
+				}
+			} else {
+				//reached end of child map for this element - all child nodes 
+				//have beed deleted, so it's safe to clear the map, delete the 
+				//node and move up one level
+				state.c->children.clear();
+				if (state.c != this) delete state.c;
+				l.pop_back();
+			}
+		}
 	}
 
-	children.clear();
 	values.clear();
 	ordered_children.clear();
 }
