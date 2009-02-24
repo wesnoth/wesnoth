@@ -28,6 +28,10 @@ char* uncompress_buffer(const string_span& input, string_span* span)
 	int len = 0;
 	int pos = 0;
 	while(filter.good() && (len = filter.read(&buf[pos], chunk_size).gcount()) == chunk_size) {
+		if(pos + chunk_size > 40000000) {
+			throw error("WML document exceeds 40MB limit");
+		}
+
 		pos += len;
 		buf.resize(pos + chunk_size);
 		len = 0;
