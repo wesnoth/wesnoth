@@ -20,9 +20,6 @@
 #include "ai.hpp"
 #include "ai2.hpp"
 #include "ai_dfool.hpp"
-#ifdef HAVE_PYTHON
-#include "ai_python.hpp"
-#endif
 #include "actions.hpp"
 #include "dialogs.hpp"
 #include "game_config.hpp"
@@ -184,10 +181,6 @@ std::vector<std::string> get_available_ais()
     ais.push_back("sample_ai");
     //ais.push_back("idle_ai");
     ais.push_back("dfool_ai");
-#ifdef HAVE_PYTHON
-    std::vector<std::string> scripts = python_ai::get_available_scripts();
-    ais.insert(ais.end(), scripts.begin(), scripts.end());
-#endif
     return ais;
 }
 
@@ -208,18 +201,8 @@ ai_interface* create_ai(const std::string& name, ai_interface::info& info)
 	//	return new advanced_ai(info);
 	else if(name == "ai2")
 		return new ai2(info);
-	else if(name == "python_ai")
-#ifdef HAVE_PYTHON
-		return new python_ai(info);
-#else
-    {
-		LOG_STREAM(err, ai) << "No Python AI support available in this Wesnoth build!\n";
-		return new ai2(info);
-    }
-#endif
 	else if(name != "")
 		LOG_STREAM(err, ai) << "AI not found: '" << name << "'\n";
-
 	return new ai(info);
 }
 

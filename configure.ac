@@ -120,11 +120,6 @@ AC_ARG_ENABLE([static],
 	      [static=$enableval],
 	      [static=no])
 
-AC_ARG_ENABLE([python],
-              AS_HELP_STRING([--disable-python], [disable Python support]),
-	      [python=$enableval],
-	      [python=yes])
-
 AC_ARG_ENABLE([python_install],
               AS_HELP_STRING([--enable-python-install], [enable installation of Python developer tools]),
 	      [python_install=$enableval],
@@ -309,12 +304,6 @@ AC_ARG_ENABLE([display-revision],
 	      [svnrev=no])
 
 
-if test "x$game" = "xno"
-then
-	python=no
-	AC_MSG_WARN([*** Game build disabled, suppressing Python support.])
-fi
-
 if test "x$python" = "xno"
 then
 	python_install=no
@@ -479,19 +468,6 @@ if test "x$python" = "xyes"; then
 		fi
 		if test "x$pythonfound" = "xyes"; then
 			AC_MSG_RESULT(yes)
-
-			PYTHON_CFLAGS="-DHAVE_PYTHON -I$PYTHON_PREFIX/include/python$PYTHON_VERSION"
-
-			OLD_CPPFLAGS="$CPPFLAGS"
-			OLD_CXXFLAGS="$CXXFLAGS"
-			CPPFLAGS="$CPPFLAGS $PYTHON_CFLAGS"
-			CXXFLAGS="$CXXFLAGS $PYTHON_CFLAGS"
-
-			AC_CHECK_HEADER([Python.h],
-					[],
-					[AC_MSG_WARN([*** Python include files not found! You should install Python development package. Python support disabled]); pythonfound=no])
-			CPPFLAGS="$OLD_CPPFLAGS"
-			CXXFLAGS="$OLD_CXXFLAGS"
 
 			if test "x$pythonfound" = "xyes"; then
 				AC_SUBST([PYTHON_CFLAGS])

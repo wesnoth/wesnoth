@@ -1,4 +1,7 @@
 Version 1.4.7+svn:
+ * campaigns:
+   * Descent into Darkness:
+     * Removed the custom python AI used in 'A Haunting in Winter'
  * language and i18n:
    * updated translations: French, Italian, Japanese
  * multiplayer:
@@ -9,6 +12,7 @@ Version 1.4.7+svn:
    * Additional screenmodes for when SDL can't guess them (patch #1108)
    * Fixed bug #12896: Map generator does not sync between clients when
      advancing in MP campaigns
+   * Removed support for PythonAI to handle CVE-2009-0367
 
 Version 1.4.7:
  * campaigns:

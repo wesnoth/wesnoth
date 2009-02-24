@@ -58,10 +58,6 @@
 #include "serialization/string_utils.hpp"
 #include "sha1.hpp"
 
-#ifdef HAVE_PYTHON
-#include "ai_python.hpp"
-#endif
-
 #include "wesconfig.h"
 
 #include <clocale>
@@ -1876,9 +1872,6 @@ void game_controller::reset_defines_map()
     defines_map_["SMALL_GUI"] = preproc_define();
 #endif
 
-#ifdef HAVE_PYTHON
-	defines_map_["PYTHON"] = preproc_define();
-#endif
 }
 
 void game_controller::play_game(RELOAD_GAME_DATA reload)
@@ -2007,9 +2000,6 @@ static int play_game(int argc, char** argv)
 			<< "  --max-fps                    the maximum fps the game tries to run at the value\n"
 			<< "                               should be between the 1 and 1000, the default is 50.\n"
 			<< "  --path                       prints the name of the game data directory and exits.\n"
-#ifdef HAVE_PYTHON
-			<< "  --python-api                 prints the runtime documentation for the python API.\n"
-#endif
 			<< "  -r, --resolution XxY         sets the screen resolution. Example: -r 800x600\n"
 			<< "  -t, --test                   runs the game in a small test scenario.\n"
 			<< "  -v, --version                prints the game's version number and exits.\n"
@@ -2040,11 +2030,6 @@ static int play_game(int argc, char** argv)
 			std::cout <<  game_config::path
 			          << "\n";
 			return 0;
-#ifdef HAVE_PYTHON
-		} else if(val == "--python-api") {
-			python_ai::invoke("documentation.py");
-			return 0;
-#endif
 		} else if (val.substr(0, 6) == "--log-") {
 			size_t p = val.find('=');
 			if (p == std::string::npos) {

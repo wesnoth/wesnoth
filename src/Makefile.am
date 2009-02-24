@@ -54,7 +54,6 @@ wesnoth_source = \
 	ai_dfool.cpp \
 	ai_attack.cpp \
 	ai_move.cpp \
-	ai_python.cpp \
 	ai_village.cpp \
 	animated_game.cpp \
 	attack_prediction.cpp \
@@ -324,11 +323,6 @@ AM_CXXFLAGS = -I $(srcdir)/sdl_ttf -I../intl -I$(top_srcdir)/intl @SDL_CFLAGS@  
 
 AM_CFLAGS = -I $(srcdir)/sdl_ttf -I../intl -I$(top_srcdir)/intl @SDL_CFLAGS@ -DWESNOTH_PATH=\"$(pkgdatadir)\" \
 	-DLOCALEDIR=\"$(LOCALEDIR)\" -DHAS_RELATIVE_LOCALEDIR=$(HAS_RELATIVE_LOCALEDIR)
-
-if PYTHON
-AM_CXXFLAGS += @PYTHON_CFLAGS@
-AM_CFLAGS += @PYTHON_CFLAGS@
-endif
 
 if FRIBIDI
     AM_CXXFLAGS += -DHAVE_FRIBIDI @FRIBIDI_CFLAGS@
