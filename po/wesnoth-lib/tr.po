@@ -3,13 +3,13 @@
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
 # ihsan Haluk AKIN <ihsan_akin@yahoo.com>, 2005, 2006.
-# Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>, 2008.
+# Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>, 2008, 2009.
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-lib\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-02-23 14:08+0100\n"
-"PO-Revision-Date: 2008-12-19 13:46+0200\n"
+"PO-Revision-Date: 2009-02-23 19:39+0200\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish <wesnoth-tr@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -616,29 +616,27 @@ msgstr "Dili değiştir"
 #. [window]: id=mp_cmd_wrapper
 #: data/gui/default/window/mp_cmd_wrapper.cfg:8
 msgid "Multiplayer command wrapper dialog"
-msgstr ""
+msgstr "Çok oyunculu komut penceresi"
 
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:31
 msgid "Messaging"
-msgstr ""
+msgstr "İletişim"
 
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:61
 msgid "Message:"
-msgstr ""
+msgstr "İleti:"
 
 #. [button]: id=ok
 #: data/gui/default/window/mp_cmd_wrapper.cfg:93
-#, fuzzy
 msgid "Send a private message"
-msgstr "İletileri Temizle"
+msgstr "Bir özel ileti gönder"
 
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:133
-#, fuzzy
 msgid "Friends/Ignored List"
-msgstr "Arkadaşlar Listesi"
+msgstr "Arkadaşlar/Yoksayılanlar Listesi"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=add_friend
@@ -664,34 +662,32 @@ msgstr "Sil"
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:233
 msgid "Moderating"
-msgstr ""
+msgstr "Yönetim"
 
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:263
 msgid "Reason:"
-msgstr ""
+msgstr "Sebep:"
 
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:315
-#, fuzzy
 msgid "Time:"
-msgstr "Tema"
+msgstr "Zaman:"
 
 #. [button]: id=status
 #: data/gui/default/window/mp_cmd_wrapper.cfg:366
-#, fuzzy
 msgid "Status"
-msgstr "Durum Tablosu"
+msgstr "Durum"
 
 #. [button]: id=kick
 #: data/gui/default/window/mp_cmd_wrapper.cfg:381
 msgid "Kick"
-msgstr ""
+msgstr "Defet"
 
 #. [button]: id=ban
 #: data/gui/default/window/mp_cmd_wrapper.cfg:396
 msgid "Ban"
-msgstr ""
+msgstr "Yasakla"
 
 #. [label]
 #: data/gui/default/window/mp_connect.cfg:50
@@ -789,13 +785,12 @@ msgstr "Oyun oluştur"
 #. [window]: id=mp_login
 #: data/gui/default/window/mp_login.cfg:8
 msgid "Multiplayer server login dialog"
-msgstr ""
+msgstr "Çok oyunculu sunucusu oturum açma penceresi"
 
 #. [label]
 #: data/gui/default/window/mp_login.cfg:31
-#, fuzzy
 msgid "Login"
-msgstr "Kullanıcı:"
+msgstr "Oturum"
 
 #. [label]
 #: data/gui/default/window/mp_login.cfg:81
@@ -805,21 +800,20 @@ msgstr "Kullanıcı:"
 
 #. [label]
 #: data/gui/default/window/mp_login.cfg:134
-#, fuzzy
 msgid "Password:"
-msgstr "Parola Ata"
+msgstr "Parola:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=remember_password
 #: data/gui/default/window/mp_login.cfg:190
 #: src/game_preferences_display.cpp:163
 msgid "Save password to preferences (clear text)"
-msgstr ""
+msgstr "Parolayı tercihlere kaydet (şifresiz)"
 
 #. [button]: id=password_reminder
 #: data/gui/default/window/mp_login.cfg:248
 msgid "Password Reminder"
-msgstr ""
+msgstr "Parola Hatırlatıcı"
 
 #. [label]
 #. [grid]
@@ -838,6 +832,12 @@ msgid ""
 "\n"
 "The Battle for Wesnoth forum can be found at http://www.wesnoth.org/forum/"
 msgstr ""
+"Resmi çokoyunculu sunucusuna forum kullanıcı adınız ve parolanızla oturum "
+"açabilirsiniz.\n"
+" Sunucuya bağlanmak için kayıt olmak gerekli değildir; kayıtlı bir kullanıcı "
+"isminiz olsun isterseniz yapcağınız tek şey bir parola belirtmek olacaktır.\n"
+"\n"
+"Forum adresi: http://www.wesnoth.org/forum/"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:141
@@ -861,9 +861,8 @@ msgstr "Sunucuyu Başlat"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:164
-#, fuzzy
 msgid "Host a game using dedicated server 'wesnothd'"
-msgstr "Kendi wesnothd sunucunuzu başlatırsınız"
+msgstr "'wesnothd' adanmış sunucusunu kullanarak bir oyun sunucusu ol"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:174
@@ -985,7 +984,7 @@ msgstr "Tam Ekran Aç-Kapa"
 
 #: src/game_preferences_display.cpp:152
 msgid "Enable scroll tracking of unit actions"
-msgstr ""
+msgstr "Birim eylemlerini izlemek için kaydırmayı etkin kıl"
 
 #: src/game_preferences_display.cpp:153
 msgid "Accelerated Speed"
@@ -1216,7 +1215,7 @@ msgstr ""
 #: src/game_preferences_display.cpp:301
 msgid ""
 "Should the map view scroll to a unit when an action or move is animated."
-msgstr ""
+msgstr "Bir eylem veya hareket oluştuğunda harita o oyuncuya doğru kaysın."
 
 #: src/game_preferences_display.cpp:304
 msgid "Make units move and fight faster"
@@ -1256,7 +1255,7 @@ msgstr "Salondaki oyuncu isimlerinin önünde simge gösterir."
 
 #: src/game_preferences_display.cpp:356
 msgid "Uncheck to delete the saved password (on exit)."
-msgstr ""
+msgstr "Kayıtlı parolayı (çıkışta) silmek için tiki kaldırın."
 
 #: src/game_preferences_display.cpp:359
 msgid "Do not show messages about players joining the multiplayer lobby"
@@ -2058,7 +2057,6 @@ msgid ""
 msgstr "Dizgesi 4 karakterden daha uzun bir arazi bulundu; etkilenen zemin:"
 
 #: src/wml_exception.cpp:52
-#, fuzzy
 msgid ""
 "An error due to possibly invalid WML occurred\n"
 "The error message is :"
@@ -2083,10 +2081,3 @@ msgstr ""
 #: src/wml_exception.cpp:75
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr "‘[$section|]’ bölümünde zorunlu ‘$key|’ anahtarı belirtilmemiş."
-
-#, fuzzy
-#~ msgid "Change username"
-#~ msgstr "Bir kullanıcı adını yerleştirir"
-
-#~ msgid "No scrollbar defined."
-#~ msgstr "Tanımlı bir kaydırma çubuğu yok."

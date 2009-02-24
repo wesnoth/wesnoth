@@ -3,13 +3,13 @@
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
 # İhsan Akın <ihsan_akin@yahoo.com>, 2005, 2006.
-# Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>, 2008.
+# Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>, 2008, 2009.
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-editor\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-02-23 14:07+0100\n"
-"PO-Revision-Date: 2008-12-19 12:42+0200\n"
+"PO-Revision-Date: 2009-02-23 19:16+0200\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish <wesnoth-tr@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -126,12 +126,12 @@ msgstr ""
 
 #. [editor_tool_hint]: id=editor-paste
 #: data/core/editor/tool-hints.cfg:30
-#, fuzzy
 msgid ""
 "Click to paste, zoom out for more accuracy when pasting large areas. Use the "
 "edit menu to transform the clipboard (rotate, mirror)."
 msgstr ""
-"Yapıştırmak için tıklayın. Pano içeriğinde dönüşüm yapmak (döndürmek, "
+"Yapıştırmak için tıklayın. Büyük alanları yapıştırırken doğruluğu arttırmak "
+"için büyütme/küçültme yapın. Pano içeriğinde dönüşüm yapmak (döndürmek, "
 "yansılamak gibi) için düzenleme menüsünü kullanın."
 
 #. [menu]: id=menu-editor-file
@@ -161,11 +161,11 @@ msgstr "köyler"
 
 #: src/editor2/action.cpp:32
 msgid "Error creating action object"
-msgstr ""
+msgstr "Eylem nesnesi oluşturulurken hata"
 
 #: src/editor2/action.cpp:36
 msgid "Action not implemented"
-msgstr ""
+msgstr "Eylem gerçeklenmedi"
 
 #: src/editor2/editor_controller.cpp:123
 msgid "Quit Editor"
@@ -323,15 +323,11 @@ msgid ""
 "the cursor. Pressing a number key by itself will scroll to that player's "
 "starting position."
 msgstr ""
+"Buradan hangi oyuncu başlayacak?Bir oyuncunun başlangıç konumunu belirtmek "
+"için sayı tuşlarını alt tuşu ile birlikte kullanın ve imlecin altındaki "
+"başlangıç konumunu kaldırmak için del tuşunu kullanın. Bir sayı tuşuna "
+"basarak o oyuncunun başlangıç konumuna gidebilirsiniz."
 
 #: src/gui/dialogs/editor_settings.cpp:119
 msgid "Custom setting"
 msgstr "Özel Ayarlar"
-
-#, fuzzy
-#~ msgid ""
-#~ "Which player should start here? You can also use the 1-9 and delete keys "
-#~ "to set/clear starting positions."
-#~ msgstr ""
-#~ "Burada hangi oyuncu oyuna başlayacak? Başlangıç konumunu belirlemek için "
-#~ "1-9 tuşlarını, silmek için Del tuşunu kullanabilirsiniz."

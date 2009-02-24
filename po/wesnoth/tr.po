@@ -5,13 +5,13 @@
 #
 # Nils Kneuper <crazy-ivanovic@gmx.net>, 2005.
 # ihsan Haluk AKIN <ihsan_akin@yahoo.com>, 2005, 2006.
-# Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>, 2008.
+# Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>, 2008, 2009.
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-02-23 23:36+0100\n"
-"PO-Revision-Date: 2008-12-19 12:05+0200\n"
+"PO-Revision-Date: 2009-02-23 21:28+0200\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish <wesnoth-tr@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -32,9 +32,8 @@ msgstr "Fare Kaydırması"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:63
-#, fuzzy
 msgid "Middle-click Scrolling"
-msgstr "Fare Kaydırması"
+msgstr "Orta tuşla Kaydırma"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:70
@@ -419,9 +418,8 @@ msgstr "Makedonca Tercüme"
 
 #. [about]
 #: data/core/about.cfg:1711
-#, fuzzy
 msgid "Marathi Translation"
-msgstr "Latince Tercüme"
+msgstr "Maratice Tercüme"
 
 #. [about]
 #: data/core/about.cfg:1720
@@ -2528,6 +2526,11 @@ msgid ""
 "\n"
 "Mermen and Naga both receive 70% defense on coastal reefs."
 msgstr ""
+"Kayalık sığ sular taş, mercan ve kum ile şekillendirilir. Bu, birimlere sığ "
+"sulardan geçişte daha istikrarlı bir yürüme imkanı sağlamasını yanında çoğu "
+"su canlısına karşı bile daha yüksek savunma sağlar.\n"
+"\n"
+"Mermen ve Nagalar kayalık kıyı üzerinde %70 savunmaya sahiptir."
 
 #. [topic]: id=terrain_bridge
 #: data/core/help.cfg:710
@@ -2658,6 +2661,9 @@ msgid ""
 "Redraws the screen and reloads any image files that have been changed.\n"
 "\n"
 msgstr ""
+"\n"
+"Ekran yeniden çizilir ve değişen resim dosyaları yeniden yüklenir.\n"
+"\n"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:762
@@ -2786,6 +2792,10 @@ msgid ""
 "campaign.\n"
 "\n"
 msgstr ""
+"\n"
+"Bir seferberlikte hemen ilerlemek amacıyla bir senaryo seçmek için bir menü "
+"açar.\n"
+"\n"
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:805
@@ -2827,6 +2837,9 @@ msgid ""
 "Immediately advances to the next scenario in a campaign.\n"
 "\n"
 msgstr ""
+"\n"
+"Bir seferberlikte sonraki senaryoya geçilmesini sağlar.\n"
+"\n"
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:817
@@ -3330,28 +3343,27 @@ msgstr ""
 #. [option]: type=behaviour
 #: data/core/macros/ai_controller.cfg:144
 msgid "Be more aggressive"
-msgstr ""
+msgstr "Daha saldırgan"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:161
 msgid "aggressive."
-msgstr ""
+msgstr "saldırgan"
 
 #. [option]: type=behaviour
 #: data/core/macros/ai_controller.cfg:178
 msgid "Be more defensive"
-msgstr ""
+msgstr "Daha korunmacı"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:191
-#, fuzzy
 msgid "defensive."
-msgstr "Savunma"
+msgstr "korunmacı"
 
 #. [option]: type=objective
 #: data/core/macros/ai_controller.cfg:213
 msgid "Focus on defeating..."
-msgstr ""
+msgstr "Savunmaya odaklan..."
 
 #. [literal]: speaker=narrator
 #. [value]: speaker=narrator
@@ -3365,12 +3377,12 @@ msgstr ""
 #: data/core/macros/ai_controller.cfg:845
 #: data/core/macros/ai_controller.cfg:885
 msgid "Instruct ally"
-msgstr ""
+msgstr "Müttefiğine emir ver"
 
 #. [literal]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:230
 msgid "Which enemy side to focus on?"
-msgstr ""
+msgstr "Hangi düşman tarafına odaklanılacak?"
 
 #. [then]
 #. [else]
@@ -3379,24 +3391,24 @@ msgstr ""
 #: data/core/macros/ai_controller.cfg:437
 #: data/core/macros/ai_controller.cfg:442
 msgid "(side $temp_i|)"
-msgstr ""
+msgstr "($temp_i| tarafı)"
 
 #. [then]
 #: data/core/macros/ai_controller.cfg:288
 #: data/core/macros/ai_controller.cfg:438
 msgid "$side_i_leader.name (side $temp_i|)"
-msgstr ""
+msgstr "$side_i_leader.name ($temp_i| tarafı)"
 
 #. [else]
 #: data/core/macros/ai_controller.cfg:293
 #: data/core/macros/ai_controller.cfg:443
 msgid "side $temp_i"
-msgstr ""
+msgstr " $temp_i tarafı"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:309
 msgid "focusing on defeating $this_enemy_description|."
-msgstr ""
+msgstr "$this_enemy_description| savunulacak."
 
 #. [value]
 #. [option]: speaker=narrator
@@ -3404,74 +3416,69 @@ msgstr ""
 #: data/core/macros/ai_controller.cfg:479
 #: data/core/macros/ai_controller.cfg:870
 #: data/core/macros/ai_controller.cfg:905
-#, fuzzy
 msgid "Back"
-msgstr "Siyah"
+msgstr "Geri"
 
 #. [option]: type=objective
 #: data/core/macros/ai_controller.cfg:359
 msgid "Focus on protecting..."
-msgstr ""
+msgstr "Korunmaya odaklan..."
 
 #. [literal]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:376
 msgid "Which friendly side to protect?"
-msgstr ""
+msgstr "Hangi taraf korunacak?"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:459
 msgid "focusing on protecting $this_ally_description|."
-msgstr ""
+msgstr " $this_ally_description| adlı birimi korumaya odaklan."
 
 #. [option]: type=objective
 #: data/core/macros/ai_controller.cfg:511
 msgid "Defend a location..."
-msgstr ""
+msgstr "Bir konumu savun..."
 
 #. [print]
 #: data/core/macros/ai_controller.cfg:527
 msgid "Right-click to select a location to defend"
-msgstr ""
+msgstr "Savunulacak yeri seçmek için sağ tıklayın"
 
 #. [set_menu_item]: id=ai_controller_defend_location_picker
 #: data/core/macros/ai_controller.cfg:534
 msgid "Defend this location"
-msgstr ""
+msgstr "Burayı savun"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:551
 msgid "focusing on defending the area around $x1|,$y1|."
-msgstr ""
+msgstr " $x1|,$y1| çevresindeki alanı savunmaya odaklan."
 
 #. [print]
 #: data/core/macros/ai_controller.cfg:586
 msgid "Location selection canceled"
-msgstr ""
+msgstr "Yer seçimi iptal edildi"
 
 #. [option]
 #: data/core/macros/ai_controller.cfg:601
-#, fuzzy
 msgid "Clear objective orders"
-msgstr "İşlemi iptal et"
+msgstr "Amaç emirlerini sil"
 
 #. [option]
 #: data/core/macros/ai_controller.cfg:625
-#, fuzzy
 msgid "Clear behavior orders"
-msgstr "İşlemi iptal et"
+msgstr "Davranış emirlerini sil"
 
 #. [option]
 #: data/core/macros/ai_controller.cfg:649
-#, fuzzy
 msgid "Clear all orders"
-msgstr "İşlemi iptal et"
+msgstr "Tüm emirleri sil"
 
 #. [then]
 #: data/core/macros/ai_controller.cfg:775
 #: data/core/macros/ai_controller.cfg:786
-#, fuzzy
 msgid "none set."
-msgstr "hiçbiri"
+msgstr "hiçbir şey atanmadı."
 
 #. [value]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:808
@@ -3479,6 +3486,8 @@ msgid ""
 "$ally_leader.name (side $ally_side|) has not been given any instructions and "
 "is acting normally."
 msgstr ""
+" $ally_leader.name ($ally_side| tarafı) herhangi bir komut vermemiş ve "
+"normal davranıyor."
 
 #. [value]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:811
@@ -3489,29 +3498,32 @@ msgid ""
 "Behavior: $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_behaviour_description"
 msgstr ""
+"Amaç: $ai_controller.side_$ally_side|_current_settings."
+"currently_doing_objective_description\n"
+"Davranış: $ai_controller.side_$ally_side|_current_settings."
+"currently_doing_behaviour_description"
 
 #. [value]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:825
 msgid ""
 "$ally_leader.name (side $ally_side|) is carrying out the following "
 "instructions:"
-msgstr ""
+msgstr " $ally_leader.name ($ally_side| tarafı) şu komutları yerine getirecek:"
 
 #. [literal]
 #: data/core/macros/ai_controller.cfg:840
 msgid "Set objective..."
-msgstr ""
+msgstr "Amacı belirt..."
 
 #. [literal]
 #: data/core/macros/ai_controller.cfg:880
-#, fuzzy
 msgid "Set behavior..."
-msgstr "Parola Ata..."
+msgstr "Davranışı belirt..."
 
 #. [literal]
 #: data/core/macros/ai_controller.cfg:920
 msgid "Exit"
-msgstr ""
+msgstr "Çıkış"
 
 #. [advancement]: id=amla_default
 #: data/core/macros/amla.cfg:10
@@ -6369,34 +6381,36 @@ msgid ""
 "In many campaign scenarios, you may issue simple instructions for your "
 "computer-controlled allies using the right-click context menu."
 msgstr ""
+"Çogu seferberlik senaryosunda sağ tık bağlam menüsünü kullanarak bilgisayar "
+"denetimindeki müttefiklerinize basit komutlar verebilirsiniz."
 
 #: data/temp-file_send_data_strings.cfg:12
-#, fuzzy
 msgid "About to upload statistics - Help us make Wesnoth better for you!"
-msgstr "Wesnoth’u sizin için daha iyi hale getirmemize yardım edin!"
+msgstr ""
+"Karşıya yükleme istatistikleri - Wesnoth’u sizin için daha iyi hale "
+"getirmemize yardım edin!"
 
 #: data/temp-file_send_data_strings.cfg:13
 msgid "Save my reply and do not ask again"
-msgstr ""
+msgstr "Yanıtımı sakla ve bir daha sorma"
 
 #: data/temp-file_send_data_strings.cfg:14
 msgid ""
 "To change the setting later on, click on the envelope icon in the main menu."
 msgstr ""
+"Ayarı daha sonra değiştirmek için ana menüdeki zarf simgesine tıklayın."
 
 #: data/temp-file_send_data_strings.cfg:15
-#, fuzzy
 msgid "Send"
-msgstr "Kum"
+msgstr "Gönder"
 
 #: data/temp-file_send_data_strings.cfg:16
-#, fuzzy
 msgid "Don't send"
-msgstr "Bir daha sorma!"
+msgstr "Gönderme"
 
 #: data/temp-file_send_data_strings.cfg:18
 msgid "Do not ask every time before sending data"
-msgstr ""
+msgstr "Her veri gönderişte bunu sorma"
 
 #. [menu]: id=menu-main
 #: data/themes/default.cfg:120 data/themes/dfool.cfg:134
@@ -6804,9 +6818,8 @@ msgid "Size"
 msgstr "Boyut"
 
 #: src/addon_management.cpp:791
-#, fuzzy
 msgid "Update add-ons"
-msgstr "Eklentileri Güncelle"
+msgstr "Eklentileri güncelle"
 
 #: src/addon_management.cpp:792
 msgid "Select an add-on to update:"
@@ -6840,9 +6853,8 @@ msgid "All add-ons updated successfully."
 msgstr "Tüm güncellemeler sorunsuzca tamamlandı."
 
 #: src/addon_management.cpp:899
-#, fuzzy
 msgid "Connecting to add-ons server..."
-msgstr "Eklenti Sunucusuna bağlanılıyor..."
+msgstr "Eklenti sunucusuna bağlanılıyor..."
 
 #: src/addon_management.cpp:902
 msgid "Could not connect to host."
@@ -6882,7 +6894,6 @@ msgid "There are no add-ons available for download from this server."
 msgstr "Bu sunucuda indirilebilecek bir eklenti yok."
 
 #: src/addon_management.cpp:1032
-#, fuzzy
 msgid "Get add-ons"
 msgstr "Eklentileri al"
 
@@ -7305,22 +7316,20 @@ msgid "Invalid color range: "
 msgstr "Geçersiz renk aralığı: "
 
 #: src/game_events.cpp:134
-#, fuzzy
 msgid "Error: "
-msgstr "Hata"
+msgstr "Hata: "
 
 #: src/game_events.cpp:137
-#, fuzzy
 msgid "Warning: "
-msgstr "Sabah"
+msgstr "Uyarı: "
 
 #: src/game_events.cpp:140
 msgid "Debug: "
-msgstr ""
+msgstr "Hata ayıklama: "
 
 #: src/game_events.cpp:143
 msgid "Info: "
-msgstr ""
+msgstr "Bilgi: "
 
 #: src/game_events.cpp:1074
 msgid "Victory:"
@@ -8011,19 +8020,16 @@ msgid "Drop your nick."
 msgstr "İsminizi siler."
 
 #: src/menu_events.cpp:2178
-#, fuzzy
 msgid "Update details for your nick. For possible details see '/details'."
 msgstr ""
-"Kullanıcı adınızla ilgili ayrıntıları günceller. Ayrıntılar için /details "
+"Kullanıcı adınızla ilgili ayrıntıları günceller. Ayrıntılar için '/details' "
 "komutuna bakınız."
 
 #: src/menu_events.cpp:2181
-#, fuzzy
 msgid "Request information about a nick."
 msgstr "Bir kullanıcı hakkında bilgi isteği."
 
 #: src/menu_events.cpp:2183
-#, fuzzy
 msgid "Request a list of details you can set for your registered nick."
 msgstr "Kayıtlı isminize atayabileceğiniz ayrıntıların listesini ister."
 
@@ -8250,46 +8256,49 @@ msgid "Server-side redirect loop"
 msgstr "Sunucu taraflı yönlendirme döngüsü"
 
 #: src/multiplayer.cpp:335
-#, fuzzy
 msgid "You must login first."
-msgstr "Bu sunucuya oturum açmanız lazım"
+msgstr "Önce oturum açmanız lazım."
 
 #: src/multiplayer.cpp:337
 msgid "The nick '$nick' is already taken."
-msgstr ""
+msgstr "'$nick' zaten alınmış."
 
 #: src/multiplayer.cpp:339
 msgid ""
 "The nick '$nick' contains invalid characters. Only alpha-numeric characters, "
 "underscores and hyphens are allowed."
 msgstr ""
+"'$nick' geçersiz karakter içeriyor. Sadece harfler, rakamlar, alt çizgi ve "
+"tire imine izin verilmektedir."
 
 #: src/multiplayer.cpp:343
 msgid "The nick '$nick' is too long. Nicks must be 18 characters or less."
-msgstr ""
+msgstr "'$nick' çok uzun. Oyuncu isimleri 18 karakterden uzun olamaz."
 
 #: src/multiplayer.cpp:346
 msgid "The nick '$nick' is reserved and cannot be used by players."
-msgstr ""
+msgstr "'$nick' yerleşik bir isim olup oyuncular tarafından kullanılamaz."
 
 #: src/multiplayer.cpp:348 src/multiplayer.cpp:350
 msgid "The nick '$nick' is registered on this server."
-msgstr ""
+msgstr "Bu sunucuda kayıtlı bir '$nick' zaten var."
 
 #: src/multiplayer.cpp:351
 msgid ""
 "WARNING: There is already a client using this nick, logging in will cause "
 "that client to be kicked!"
 msgstr ""
+"UYARI: Bu adı kulanan bir oyuncu zaten var ve oturum açmanız bu oyuncunun "
+"sunucudan atılmasına sebep olacak!"
 
 #: src/multiplayer.cpp:354
 msgid ""
 "Error in the login procedure (the server had no seed for your connection)."
-msgstr ""
+msgstr "Oturum açarken hata oluştu (sunucunun bağlanmanız için kaynağı yok)."
 
 #: src/multiplayer.cpp:357
 msgid "The password you provided was incorrect."
-msgstr ""
+msgstr "Belirttiğiniz parola yanlıştı."
 
 #: src/multiplayer_connect.cpp:82 src/multiplayer_connect.cpp:485
 #: src/multiplayer_connect.cpp:613
@@ -8701,9 +8710,8 @@ msgid "Invalid Color"
 msgstr "Geçersiz Renk"
 
 #: src/multiplayer_ui.cpp:418
-#, fuzzy
 msgid "Selected user: "
-msgstr "Birim seç:"
+msgstr "Seçilen kullanıcı: "
 
 #: src/multiplayer_wait.cpp:134
 msgid "Leader: "
@@ -9284,9 +9292,8 @@ msgid "% parry"
 msgstr " savuşturma yüzdesi"
 
 #: src/unit_types.cpp:958
-#, fuzzy
 msgid "No description available."
-msgstr " Bu konuda bir yardım metni yok."
+msgstr "Bu konuda bir açıklama yok."
 
 #: src/unit_types.cpp:1017
 msgid "chaotic"
@@ -9342,61 +9349,3 @@ msgstr "Özet göndermeyi etkinleştir"
 
 #~ msgid "Only Run Safe Python AIs"
 #~ msgstr "Sadece Güvenli Python SA’ları Çalışsın"
-
-#~ msgid "+  "
-#~ msgstr "+  "
-
-#, fuzzy
-#~ msgid "Unknown error."
-#~ msgstr "Bilinmeyen çağ"
-
-#~ msgid "- King Konrad, 552YW"
-#~ msgstr "- Kral Konrad, WZ552"
-
-#~ msgid "An invalid weapon is send, possibly due to the Python AI."
-#~ msgstr ""
-#~ "Geçersiz bir silah gönderildi, muhtemelen Python Saldırı Arabiriminden "
-#~ "dolayı."
-
-#~ msgid "Login: "
-#~ msgstr "Giriş: "
-
-#~ msgid "VICTORY_AND_DEFEAT_MUSIC is unnecessary and can be removed."
-#~ msgstr "VICTORY_AND_DEFEAT_MUSIC gereksizdir ve silinebilir."
-
-#~ msgid "Log in with password"
-#~ msgstr "Parolalı oturum"
-
-#~ msgid "Request password reminder for this username"
-#~ msgstr "Bu isim için parola hatırlatıcı isteği"
-
-#~ msgid "Choose a different username"
-#~ msgstr "Başka bir isim seçiniz"
-
-#~ msgid "Send a private message to "
-#~ msgstr "Özel bir ileti gönderilir: "
-
-#~ msgid "Whisper"
-#~ msgstr "Fısılda"
-
-#~ msgid "Message: "
-#~ msgstr "İleti: "
-
-#~ msgid "Login"
-#~ msgstr "Giriş"
-
-#~ msgid ""
-#~ "\n"
-#~ "Redraw the screen.\n"
-#~ "\n"
-#~ msgstr ""
-#~ "\n"
-#~ "Ekran yenilenir.\n"
-#~ "\n"
-
-#~ msgid "No server ping since $timeout second. Connection timed out."
-#~ msgid_plural "No server ping since $timeout seconds. Connection timed out."
-#~ msgstr[0] ""
-#~ "$timeout saniyedir sunucu yanıt vermiyor. Bağlantı zaman aşımına uğradı."
-#~ msgstr[1] ""
-#~ "$timeout saniyedir sunucu yanıt vermiyor. Bağlantı zaman aşımına uğradı."
