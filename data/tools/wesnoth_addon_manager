@@ -67,6 +67,10 @@ if __name__ == "__main__":
         help = "Update all installed add-ons in the given directory. " +
         "This works by comparing the _info.cfg file in each addon directory " +
         "with the version on the server.")
+    optionparser.add_option("-v", "--validate",
+        help = "validate python scripts in an add-on " +
+        "(VALIDATE specifies the name of the add-on, " +
+        "set the password with -P)")
     optionparser.add_option("-V", "--verbose",
         help = "be even more verbose for everything",
         action = "store_true",)
