@@ -45,9 +45,9 @@ namespace editor2 {
  */
 class editor_action
 {
-    public:
-        editor_action();
-        virtual ~editor_action();
+	public:
+		editor_action();
+		virtual ~editor_action();
 
 		/**
 		 * Perform the action, returning an undo action that,

@@ -25,7 +25,7 @@ editor_display::editor_display(CVideo& video, const editor_map& map,
 	, brush_locations_()
 	, toolbar_hint_()
 {
-    clear_screen();
+	clear_screen();
 }
 
 void editor_display::add_brush_loc(const map_location& hex)
@@ -54,7 +54,7 @@ void editor_display::remove_brush_loc(const map_location& hex)
 }
 
 void editor_display::rebuild_terrain(const map_location &loc) {
-    builder_->rebuild_terrain(loc);
+	builder_->rebuild_terrain(loc);
 }
 
 void editor_display::pre_draw()
@@ -64,13 +64,13 @@ void editor_display::pre_draw()
 image::TYPE editor_display::get_image_type(const map_location& loc)
 {
 	if (brush_locations_.find(loc) != brush_locations_.end()) {
-        return image::BRIGHTENED;
-    } else if (highlighted_locations_.find(loc) != highlighted_locations_.end()) {
-        return image::SEMI_BRIGHTENED;
-    } else if (map().in_selection(loc)) {
+		return image::BRIGHTENED;
+	} else if (highlighted_locations_.find(loc) != highlighted_locations_.end()) {
+		return image::SEMI_BRIGHTENED;
+	} else if (map().in_selection(loc)) {
 		return image::SEMI_BRIGHTENED;
 	}
-    return image::SCALED_TO_HEX;
+	return image::SCALED_TO_HEX;
 }
 
 void editor_display::draw_hex(const map_location& loc)
@@ -89,7 +89,7 @@ void editor_display::draw_hex(const map_location& loc)
 
 const SDL_Rect& editor_display::get_clip_rect()
 {
-    return map_outside_area();
+	return map_outside_area();
 }
 
 void editor_display::draw_sidebar()

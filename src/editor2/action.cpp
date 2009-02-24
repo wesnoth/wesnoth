@@ -124,7 +124,7 @@ editor_action_chain* editor_action_chain::perform(map_context& mc) const {
 }
 void editor_action_chain::perform_without_undo(map_context& mc) const
 {
-    foreach (editor_action* a, actions_) {
+	foreach (editor_action* a, actions_) {
 		if (a != NULL) {
 			a->perform_without_undo(mc);
 		}

@@ -42,14 +42,14 @@ namespace editor2 {
  */
 class editor_action_whole_map : public editor_action
 {
-    public:
-        editor_action_whole_map(const editor_map& m)
-        : m_(m)
-        {
-        }
-        void perform_without_undo(map_context& m) const;
-    protected:
-        editor_map m_;
+	public:
+		editor_action_whole_map(const editor_map& m)
+		: m_(m)
+		{
+		}
+		void perform_without_undo(map_context& m) const;
+	protected:
+		editor_map m_;
 };
 
 /**
@@ -154,13 +154,13 @@ class editor_action_chain : public editor_action
 		/**
 		 * Perform all the actions in order
 		 */
-	    void perform_without_undo(map_context& m) const;
+		void perform_without_undo(map_context& m) const;
 
-    protected:
+	protected:
 		/**
 		 * The action pointers owned by this action chain
 		 */
-        std::deque<editor_action*> actions_;
+		std::deque<editor_action*> actions_;
 };
 
 
@@ -170,13 +170,13 @@ class editor_action_chain : public editor_action
  */
 class editor_action_location : public editor_action
 {
-  public:
-        editor_action_location(map_location loc)
-        : loc_(loc)
-        {
-        }
-    protected:
-        map_location loc_;
+	public:
+		editor_action_location(map_location loc)
+		: loc_(loc)
+		{
+		}
+	protected:
+		map_location loc_;
 };
 
 /** Base class for actions which in addition to acting on a hex,
@@ -184,14 +184,14 @@ class editor_action_location : public editor_action
  */
 class editor_action_location_terrain : public editor_action_location
 {
-    public:
-        editor_action_location_terrain(map_location loc,
+	public:
+		editor_action_location_terrain(map_location loc,
 			t_translation::t_terrain t)
-        : editor_action_location(loc), t_(t)
-        {
-        }
-    protected:
-        t_translation::t_terrain t_;
+		: editor_action_location(loc), t_(t)
+		{
+		}
+	protected:
+		t_translation::t_terrain t_;
 };
 
 /**
@@ -199,15 +199,15 @@ class editor_action_location_terrain : public editor_action_location
  */
 class editor_action_area : public editor_action_extendable
 {
-    public:
-        editor_action_area(const std::set<map_location>& area)
-        : area_(area)
-        {
-        }
+	public:
+		editor_action_area(const std::set<map_location>& area)
+		: area_(area)
+		{
+		}
 		bool add_location(const map_location& loc);
 		void add_locations(const std::set<map_location>& locs);
 		void extend(const editor_map& map, const std::set<map_location>& locs);
-    protected:
+	protected:
 		std::set<map_location> area_;
 };
 
@@ -216,17 +216,17 @@ class editor_action_area : public editor_action_extendable
  */
 class editor_action_paste : public editor_action_extendable
 {
-    public:
-        editor_action_paste(const map_fragment& paste, const map_location& offset = map_location(0,0))
-        : offset_(offset), paste_(paste)
-        {
-        }
-        editor_action_paste* perform(map_context& mc) const;
-        void perform_without_undo(map_context& mc) const;
+	public:
+		editor_action_paste(const map_fragment& paste, const map_location& offset = map_location(0,0))
+		: offset_(offset), paste_(paste)
+		{
+		}
+		editor_action_paste* perform(map_context& mc) const;
+		void perform_without_undo(map_context& mc) const;
 		void extend(const editor_map& map, const std::set<map_location>& locs);
-    protected:
+	protected:
 		map_location offset_;
-        map_fragment paste_;
+		map_fragment paste_;
 };
 
 /**
@@ -236,13 +236,13 @@ class editor_action_paste : public editor_action_extendable
  */
 class editor_action_paint_hex : public editor_action_location_terrain
 {
-    public:
-        editor_action_paint_hex(const map_location& loc, t_translation::t_terrain t)
-        : editor_action_location_terrain(loc, t)
-        {
-        }
-        editor_action_paint_hex* perform(map_context& mc) const;
-        void perform_without_undo(map_context& mc) const;
+	public:
+		editor_action_paint_hex(const map_location& loc, t_translation::t_terrain t)
+		: editor_action_location_terrain(loc, t)
+		{
+		}
+		editor_action_paint_hex* perform(map_context& mc) const;
+		void perform_without_undo(map_context& mc) const;
 };
 
 /**
@@ -250,15 +250,15 @@ class editor_action_paint_hex : public editor_action_location_terrain
  */
 class editor_action_paint_area : public editor_action_area
 {
-    public:
-        editor_action_paint_area(const std::set<map_location>& area,
+	public:
+		editor_action_paint_area(const std::set<map_location>& area,
 			t_translation::t_terrain t, bool one_layer=false)
-        : editor_action_area(area), t_(t), one_layer_(one_layer)
-        {
-        }
-        editor_action_paste* perform(map_context& mc) const;
-        void perform_without_undo(map_context& mc) const;
-    protected:
+		: editor_action_area(area), t_(t), one_layer_(one_layer)
+		{
+		}
+		editor_action_paste* perform(map_context& mc) const;
+		void perform_without_undo(map_context& mc) const;
+	protected:
 		t_translation::t_terrain t_;
 		bool one_layer_;
 };
@@ -268,14 +268,14 @@ class editor_action_paint_area : public editor_action_area
  */
 class editor_action_fill : public editor_action_location_terrain
 {
-    public:
-        editor_action_fill(map_location loc,
+	public:
+		editor_action_fill(map_location loc,
 			t_translation::t_terrain t, bool one_layer=false)
-        : editor_action_location_terrain(loc, t), one_layer_(one_layer)
-        {
-        }
-        editor_action_paint_area* perform(map_context& mc) const;
-        void perform_without_undo(map_context& mc) const;
+		: editor_action_location_terrain(loc, t), one_layer_(one_layer)
+		{
+		}
+		editor_action_paint_area* perform(map_context& mc) const;
+		void perform_without_undo(map_context& mc) const;
 	protected:
 		bool one_layer_;
 };
@@ -285,13 +285,13 @@ class editor_action_fill : public editor_action_location_terrain
  */
 class editor_action_starting_position : public editor_action_location
 {
-    public:
-        editor_action_starting_position(map_location loc, int player)
-        : editor_action_location(loc), player_(player)
-        {
-        }
-        editor_action* perform(map_context& mc) const;
-        void perform_without_undo(map_context& mc) const;
+	public:
+		editor_action_starting_position(map_location loc, int player)
+		: editor_action_location(loc), player_(player)
+		{
+		}
+		editor_action* perform(map_context& mc) const;
+		void perform_without_undo(map_context& mc) const;
 	protected:
 		int player_;
 };

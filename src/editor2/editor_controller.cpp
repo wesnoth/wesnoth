@@ -116,23 +116,23 @@ editor_controller::editor_controller(const config &game_config, CVideo& video, m
 	init_map_generators(game_config);
 	init_tods(game_config);
 	init_sidebar(game_config);
-    init_music(game_config);
+	init_music(game_config);
 	hotkey_set_mouse_action(hotkey::HOTKEY_EDITOR_TOOL_PAINT);
 	rng_.reset(new rand_rng::rng());
 	rng_setter_.reset(new rand_rng::set_random_generator(rng_.get()));
 	hotkey::get_hotkey(hotkey::HOTKEY_QUIT_GAME).set_description(_("Quit Editor"));
 	get_map_context().set_starting_position_labels(gui());
 	cursor::set(cursor::NORMAL);
-    image::set_colour_adjustment(preferences::editor_r(), preferences::editor_g(), preferences::editor_b());
-    theme& theme = gui().get_theme();
-    const theme::menu* default_tool_menu = NULL;
-    foreach (const theme::menu& m, theme.menus()) {
-        std::string s = m.get_id();
-        if (m.get_id() == "draw_button_editor") {
-            default_tool_menu = &m;
-            break;
-        }
-    }
+	image::set_colour_adjustment(preferences::editor_r(), preferences::editor_g(), preferences::editor_b());
+	theme& theme = gui().get_theme();
+	const theme::menu* default_tool_menu = NULL;
+	foreach (const theme::menu& m, theme.menus()) {
+		std::string s = m.get_id();
+		if (m.get_id() == "draw_button_editor") {
+			default_tool_menu = &m;
+			break;
+		}
+	}
 	refresh_all();
 	events::raise_draw_event();
 	if (default_tool_menu != NULL) {
@@ -190,7 +190,7 @@ void editor_controller::init_mouse_actions(const config& game_config)
 		new mouse_action_paste(clipboard_, key_)));
 	foreach (const theme::menu& menu, gui().get_theme().menus()) {
 		if (menu.items().size() == 1) {
-            hotkey::HOTKEY_COMMAND hk = hotkey::get_hotkey(menu.items().front()).get_id();
+			hotkey::HOTKEY_COMMAND hk = hotkey::get_hotkey(menu.items().front()).get_id();
 			mouse_action_map::iterator i = mouse_actions_.find(hk);
 			if (i != mouse_actions_.end()) {
 				i->second->set_toolbar_button(&menu);
@@ -200,13 +200,13 @@ void editor_controller::init_mouse_actions(const config& game_config)
 	foreach (const config* c, game_config.get_children("editor_tool_hint")) {
 		mouse_action_map::iterator i = mouse_actions_.find(hotkey::get_hotkey((*c)["id"]).get_id());
 		if (i != mouse_actions_.end()) {
-            if ((*c)["id"] != "editor-paste") {
-                std::stringstream dss;
-                dss << hotkey::get_hotkey((*c)["id"]).get_description();
-                dss << "\n";
-                dss << (*c)["text"];
-                hotkey::get_hotkey((*c)["id"]).set_description(dss.str());
-            }
+			if ((*c)["id"] != "editor-paste") {
+				std::stringstream dss;
+				dss << hotkey::get_hotkey((*c)["id"]).get_description();
+				dss << "\n";
+				dss << (*c)["text"];
+				hotkey::get_hotkey((*c)["id"]).set_description(dss.str());
+			}
 			mouse_action_hints_.insert(std::make_pair(i->first, (*c)["text"]));
 		}
 	}
@@ -249,7 +249,7 @@ void editor_controller::init_music(const config& game_config)
 	foreach (const config* i, cfg->get_children("music")) {
 		sound::play_music_config(*i);
 	}
-    sound::commit_music_changes();
+	sound::commit_music_changes();
 }
 
 
@@ -1032,10 +1032,10 @@ void editor_controller::show_menu(const std::vector<std::string>& items_arg, int
 		}
 		++i;
 	}
-    if (!items.empty() && items.front() == "editor-switch-map") {
-	    expand_open_maps_menu(items);
-        context_menu = true; //FIXME hack to display a one-item menu
-    }
+	if (!items.empty() && items.front() == "editor-switch-map") {
+		expand_open_maps_menu(items);
+		context_menu = true; //FIXME hack to display a one-item menu
+	}
 	command_executor::show_menu(items, xloc, yloc, context_menu, gui());
 }
 

@@ -66,9 +66,9 @@ map_context::~map_context()
 void map_context::draw_terrain(t_translation::t_terrain terrain,
 	const map_location& loc, bool one_layer_only)
 {
-    if (!one_layer_only) {
-        terrain = map_.get_terrain_info(terrain).terrain_with_default_base();
-    }
+	if (!one_layer_only) {
+		terrain = map_.get_terrain_info(terrain).terrain_with_default_base();
+	}
 	draw_terrain_actual(terrain, loc, one_layer_only);
 }
 
@@ -97,9 +97,9 @@ void map_context::draw_terrain_actual(t_translation::t_terrain terrain,
 void map_context::draw_terrain(t_translation::t_terrain terrain,
 	const std::set<map_location>& locs, bool one_layer_only)
 {
-    if (!one_layer_only) {
-        terrain = map_.get_terrain_info(terrain).terrain_with_default_base();
-    }
+	if (!one_layer_only) {
+		terrain = map_.get_terrain_info(terrain).terrain_with_default_base();
+	}
 	foreach (const map_location& loc, locs) {
 		draw_terrain_actual(terrain, loc, one_layer_only);
 	}

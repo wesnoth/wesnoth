@@ -297,8 +297,8 @@ class editor_controller : public controller_base,
 		/** init the available time-of-day settings */
 		void init_tods(const config& game_config);
 
-        /** init background music for the editor */
-        void init_music(const config& game_config);
+		/** init background music for the editor */
+		void init_music(const config& game_config);
 
 		/** Load editor-specific tooltips */
 		void load_tooltips();

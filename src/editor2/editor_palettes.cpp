@@ -35,7 +35,7 @@ static bool is_invalid_terrain(t_translation::t_terrain c) {
 terrain_group::terrain_group(const config& cfg, display& gui):
 	id(cfg["id"]), name(cfg["name"]),
 	button(gui.video(), "", gui::button::TYPE_CHECK, cfg["icon"]),
-    core(utils::string_bool(cfg["core"], false))
+	core(utils::string_bool(cfg["core"], false))
 {
 }
 
@@ -66,7 +66,7 @@ terrain_palette::terrain_palette(display &gui, const size_specs &sizes,
 	terrains_ = map().get_terrain_list();
 
 	//move "invalid" terrains to the end
-    size_t size = terrains_.size();
+	size_t size = terrains_.size();
 	for (size_t i = 0; i < size; ++i) {
 		if (is_invalid_terrain(terrains_[i])) {
 			terrains_.push_back(terrains_[i]);
@@ -77,7 +77,7 @@ terrain_palette::terrain_palette(display &gui, const size_specs &sizes,
 	}
 
 	// Get the available groups and add them to the structure
-    const config::child_list& groups = cfg.get_children("editor_group");
+	const config::child_list& groups = cfg.get_children("editor_group");
 	config::child_list::const_iterator g_itor = groups.begin();
 	std::set<std::string> group_names;
 	for(; g_itor != groups.end(); ++ g_itor) {
@@ -91,42 +91,42 @@ terrain_palette::terrain_palette(display &gui, const size_specs &sizes,
 			}
 		}
 	}
-    std::map<std::string, terrain_group*> id_to_group;
-    foreach (terrain_group& tg, terrain_groups_) {
-        id_to_group.insert(std::make_pair(tg.id, &tg));
-    }
+	std::map<std::string, terrain_group*> id_to_group;
+	foreach (terrain_group& tg, terrain_groups_) {
+		id_to_group.insert(std::make_pair(tg.id, &tg));
+	}
 	// The rest of the code assumes this is a valid pointer
 	assert(checked_group_btn_ != 0);
 
 	// add the groups for all terrains to the map
 	foreach (const t_translation::t_terrain& t, terrains_) {
-        const terrain_type& t_info = map().get_terrain_info(t);
+		const terrain_type& t_info = map().get_terrain_info(t);
 
-        // don't display terrains that were automatically created from base+overlay
+		// don't display terrains that were automatically created from base+overlay
 		if (t_info.is_combined()) continue;
 		// nor display terrains that have hide_in_editor=true
 		if (t_info.hide_in_editor()) continue;
 
 		// add the terrain to the requested groups
 		const std::vector<std::string>& keys = utils::split(t_info.editor_group());
-        bool core = true;
+		bool core = true;
 		foreach (const std::string& k, keys) {
 			terrain_map_[k].push_back(t);
-            std::map<std::string, terrain_group*>::iterator i = id_to_group.find(k);
-            if (i != id_to_group.end()) {
-                if (!i->second->core) {
-                    core = false;
-                }
-            }
+			std::map<std::string, terrain_group*>::iterator i = id_to_group.find(k);
+			if (i != id_to_group.end()) {
+				if (!i->second->core) {
+					core = false;
+				}
+			}
 		}
-        // A terrain is considered core iff it does not appear in any
-        // non-core terrain group
-        if (core) {
-    		// Add the terrain to the default group
-	    	terrain_map_["all"].push_back(t);
-        } else {
-            non_core_terrains_.insert(t);
-        }
+		// A terrain is considered core iff it does not appear in any
+		// non-core terrain group
+		if (core) {
+			// Add the terrain to the default group
+			terrain_map_["all"].push_back(t);
+		} else {
+			non_core_terrains_.insert(t);
+		}
 
 	}
 	typedef std::pair<std::string, t_translation::t_list> map_pair;
@@ -319,7 +319,7 @@ std::string terrain_palette::get_terrain_string(const t_translation::t_terrain t
 
 void terrain_palette::left_mouse_click(const int mousex, const int mousey) {
 	int tselect = tile_selected(mousex, mousey);
-    if(tselect >= 0 && (tstart_+tselect) < terrains_.size()) {
+	if(tselect >= 0 && (tstart_+tselect) < terrains_.size()) {
 		select_fg_terrain(terrains_[tstart_+tselect]);
 		gui_.invalidate_game_status();
 	}
@@ -422,7 +422,7 @@ void terrain_palette::draw(bool force) {
 	palrect.y = terrain_start_;
 	palrect.w = size_specs_.palette_w;
 	palrect.h = size_specs_.palette_h;
-    tooltips::clear_tooltips(palrect);
+	tooltips::clear_tooltips(palrect);
 	for(unsigned int counter = starting; counter < ending; counter++){
 		const t_translation::t_terrain terrain = terrains_[counter];
 		const t_translation::t_terrain base_terrain = map().get_terrain_info(terrain).default_base();
@@ -486,16 +486,16 @@ void terrain_palette::draw(bool force) {
 		}
 		draw_rectangle(dstrect.x, dstrect.y, image->w, image->h, color, screen);
 
-        std::stringstream tooltip_text;
-        if (non_core_terrains_.find(terrain) == non_core_terrains_.end()) {
-            //no special for now
-        } else {
-            tooltip_text << "#";
-        }
-        tooltip_text << map().get_terrain_string(terrain);
-        if (gui_.get_draw_terrain_codes()) {
-            tooltip_text << " - " << terrain;
-        }
+		std::stringstream tooltip_text;
+		if (non_core_terrains_.find(terrain) == non_core_terrains_.end()) {
+			//no special for now
+		} else {
+			tooltip_text << "#";
+		}
+		tooltip_text << map().get_terrain_string(terrain);
+		if (gui_.get_draw_terrain_codes()) {
+			tooltip_text << " - " << terrain;
+		}
 		tooltips::add_tooltip(dstrect, tooltip_text.str());
 		if (counter_from_zero % size_specs_.terrain_width == size_specs_.terrain_width - 1)
 			y += size_specs_.terrain_space;
@@ -648,8 +648,8 @@ int brush_bar::selected_index(int x, int y) const {
 	const int bar_y = size_specs_.brush_y;
 
 	if ((x < bar_x || static_cast<size_t>(x) > bar_x + size_ * brushes_.size() +
-			 brushes_.size() * size_specs_.brush_padding) ||
-		    (y < bar_y || static_cast<size_t>(y) > bar_y + size_)) {
+	                  brushes_.size() * size_specs_.brush_padding) ||
+	    (y < bar_y || static_cast<size_t>(y) > bar_y + size_)) {
 
 		return -1;
 	}
