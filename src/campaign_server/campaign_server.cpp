@@ -675,7 +675,7 @@ namespace {
 								// Write the campaign with changed filenames back to disk
 								{
 									scoped_ostream ostream = ostream_file((*campaign)["filename"]);
-									config_writer writer(*ostream, true, "",compress_level_);
+									config_writer writer(*ostream, true, compress_level_);
 									writer.write(campaign_file);
 								}
 //								write_compressed(*ostream, campaign_file);
