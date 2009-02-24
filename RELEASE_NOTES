@@ -22,12 +22,17 @@ existing add-on's for this change.
 
 ***
 
-This release contains an important security update, fixing a vulnerability
-that could allow third-party content (such as campaigns downloaded from the
-add-on server) to execute arbitrary code with user account privileges.  Consult
-CVE-2009-0367 for details.  All content currently on the official add-on server 
-has been inspected to confirm that none of it exploits this vulnerability,
-and the add-on server itself has been patched to ensure that exploits can no
-longer be uploaded.  Therefore, users of previous versions of Battle for Wesnoth 
-who have received user-made content through the official add-on server and 
-no other distribution channel need not fear that they have been compromised.
+This release contains an important security update, fixing a
+vulnerability that could allow third-party content (such as campaigns
+downloaded from the add-on server) to execute arbitrary code with user
+account privileges.  See bug #31048 for details.  All content
+currently on the official add-on server has been inspected to confirm
+that none of it exploits this vulnerability, and the add-on server
+itself has been patched to ensure that exploits can no longer be
+uploaded.  Therefore, users of previous versions of Battle for Wesnoth
+who have received user-made content through the official add-on server
+and no other distribution channel need not fear that their system has
+been compromised.
+
+CVE-2009-0367 has been assigned to this vulnerability and may provide
+further information.
