@@ -273,8 +273,12 @@ namespace wesnothd {
 	}
 
 	bool banned::match_ip(const std::string& ip) const {
-		ip_mask pair = parse_ip(ip);
-		return (ip_ & mask_) == (pair.first & mask_);
+		try {
+			ip_mask pair = parse_ip(ip);
+			return (ip_ & mask_) == (pair.first & mask_);
+		} catch (banned::error& e) {
+			return false;
+		}
 	}
 
 	void ban_manager::read()
