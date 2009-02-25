@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3.7+svn\n"
 "POT-Creation-Date: 2009-02-23 14:13+0100\n"
-"PO-Revision-Date: 2008-05-29 13:24+0100\n"
+"PO-Revision-Date: 2009-02-25 11:29+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -15,6 +15,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
+"X-Poedit-Basepath: /usr/local/share/wesnoth\n"
+"X-Poedit-SearchPath-0: /usr/local/share/wesnoth\n"
 
 # type: Attribute 'lang' of: <book>
 #: ../../doc/manual/manual.en.xml:4
@@ -23,7 +25,6 @@ msgstr "pl"
 
 # type: Content of: <book><bookinfo><title>
 #: ../../doc/manual/manual.en.xml:6
-#, fuzzy
 msgid "Battle for Wesnoth User's Manual"
 msgstr "Podręcznik użytkownika Bitwy o Wesnoth"
 
@@ -40,7 +41,6 @@ msgstr "Bitwa o Wesnoth to turowa gra strategiczna o tematyce fantasy."
 
 # type: Content of: <book><preface><simpara>
 #: ../../doc/manual/manual.en.xml:14
-#, fuzzy
 msgid ""
 "Build up a great army, gradually training raw recruits into hardened "
 "veterans. In later games, recall your toughest warriors and form a deadly "
@@ -48,13 +48,12 @@ msgid ""
 "specialists, and hand pick a force with the right strengths to fight well on "
 "different terrains against all manner of opposition."
 msgstr ""
-"<emphasis>Tworzysz potężną armię</emphasis>, stopniowo szkoląc "
-"niedoświadczonych rekrutów na zaprawionych w boju weteranów. W kolejnych "
-"bitwach przywołujesz swoich najlepszych wojowników, by zebrać "
-"niepowstrzymaną armię, która pokona każdego wroga! Mnogość "
-"wyspecjalizowanych jednostek pozwala starannie dobierać wojowników "
-"dysponujących umiejętnościami najlepiej pasującymi do terenu i broni "
-"pozwalającej skutecznie razić wrogów."
+"Tworzysz potężną armię, stopniowo szkoląc niedoświadczonych rekrutów na "
+"zaprawionych w boju weteranów. W kolejnych bitwach przywołujesz swoich "
+"najlepszych wojowników, by zebrać niepowstrzymaną armię, która pokona "
+"każdego wroga! Mnogość wyspecjalizowanych jednostek pozwala starannie "
+"dobierać wojowników dysponujących umiejętnościami najlepiej pasującymi do "
+"terenu i bronią pozwalającą skutecznie razić wrogów."
 
 # type: Content of: <book><preface><simpara>
 #: ../../doc/manual/manual.en.xml:20
@@ -78,7 +77,6 @@ msgstr ""
 
 # type: Content of: <book><preface><simpara>
 #: ../../doc/manual/manual.en.xml:29
-#, fuzzy
 msgid ""
 "You will be able to select from among over two hundred unit types (infantry, "
 "cavalry, archers, and mages are just the beginning) and fight actions "
@@ -89,10 +87,9 @@ msgstr ""
 "Do wyboru jest ponad dwieście typów jednostek (piechota, kawaleria, łucznicy "
 "i magowie to tylko niewielka część z nich), z których możesz korzystać w "
 "starciach sięgających od drobnych potyczek po walne bitwy między potężnymi "
-"armiami. Można też tworzyć własne jednostki i pisać własne scenariusze, a "
-"nawet całe kampanie. Możesz również wyzywać innych graczy (znajomych lub "
-"nie) na pojedynki w epickich, <emphasis>wieloosobowych</emphasis> bitwach "
-"rozgrywających się w świecie fantasy."
+"armiami. Możesz również wyzywać innych graczy (znajomych lub nie) na "
+"pojedynki w epickich, wieloosobowych bitwach rozgrywających się w świecie "
+"fantasy."
 
 # type: Content of: <book><preface><simpara>
 #: ../../doc/manual/manual.en.xml:35
@@ -103,6 +100,12 @@ msgid ""
 "maintained content is available from an add-on server, and the very best of "
 "it is incorporated into Battle for Wesnoth's official releases."
 msgstr ""
+"Bitwa o Wesnoth jest programem typu open source, a nad ciągłym ulepszaniem "
+"gry pracuje entuzjastyczna społeczność ochotników. Każdy może tworzyć "
+"własne, nowe jednostki, pisać własne scenariusze, a nawet tworzyć skrypty "
+"całych kampanii. Treści zarządzane przez użytkowników można pobierać z "
+"serwera dodatków, a najlepsze kampanie i scenariusze są dołączane do "
+"oficjalnych wydań Bitwy o Wesnoth."
 
 # type: Content of: <book><chapter><title>
 #: ../../doc/manual/manual.en.xml:44
@@ -116,7 +119,6 @@ msgstr "Świat"
 
 # type: Content of: <book><chapter><section><simpara>
 #: ../../doc/manual/manual.en.xml:47
-#, fuzzy
 msgid ""
 "The known portion of the Great Continent, on which Wesnoth abides, is "
 "generally divided into three areas: the Northlands, which are generally "
@@ -131,7 +133,6 @@ msgstr ""
 
 # type: Content of: <book><chapter><section><simpara>
 #: ../../doc/manual/manual.en.xml:53
-#, fuzzy
 msgid ""
 "The Kingdom of Wesnoth lies in the center of this land. Its borders are the "
 "Great River to the north, the Dulatus Hills in the east and south, the edge "
@@ -141,14 +142,11 @@ msgid ""
 "south, and the ocean to the west."
 msgstr ""
 "W centrum tych ziem leży Królestwo Wesnoth. Jego granice są wytyczone przez "
-"Wielką Rzekę na północy, Niższe Wzgórza na wschodzie i południu, Zielone "
-"Bagna na południowym zachodzie i ocean na zachodzie. Granice Elensefaru, "
-"dawnej prowincji Wesnoth, to Wielka Rzeka na północy, Perłowa Zatoka na "
-"południu i ocean na zachodzie, natomiast wschodnia granica z Wesnoth jest "
-"wytyczona dość umownie. Na Ziemiach Północy nie ma zorganizowanej władzy - "
-"obszar zamieszkują rozproszone społeczności orków, krasnoludów, barbarzyńców "
-"i elfów. Północne i wschodnie granice tych terenów nie są wyznaczone. Wielka "
-"Rzeka ogranicza je od południa, a ocean - od zachodu."
+"Wielką Rzekę na północy, Wzgórza Dulatus na wschodzie i południu, skraj Lasu "
+"Aethenwood na południowym zachodzie i ocean na zachodzie. Granice "
+"Elensefaru, dawnej prowincji Wesnoth, to Wielka Rzeka na północy, Perłowa "
+"Zatoka na południu i ocean na zachodzie, natomiast wschodnia granica z "
+"Wesnoth jest wytyczona dość umownie."
 
 # type: Content of: <book><chapter><section><simpara>
 #: ../../doc/manual/manual.en.xml:60
@@ -158,6 +156,10 @@ msgid ""
 "and east lies the forest of Lintanir, where the great kingdom of the North-"
 "Elves keeps to its own mysterious affairs."
 msgstr ""
+"Ziemie Północy to ogólna nazwa dzikich terenów na północ od Wielkiej Rzeki, "
+"gdzie można się natknąć na kolonie orków, krasnoludów, barbarzyńców i elfów. "
+"Na północnym wschodzie leży Las Lintanir, stanowiący wielkie królestwo "
+"tajemniczych Elfów Północy."
 
 # type: Content of: <book><chapter><section><simpara>
 #: ../../doc/manual/manual.en.xml:65
@@ -184,7 +186,6 @@ msgstr "Stworzenia"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:74
-#, fuzzy
 msgid ""
 "In the world of Wesnoth there dwell humans, elves, dwarves, orcs, drakes, "
 "saurians, mermen, nagas, and many other races yet more obscure and wondrous. "
@@ -194,13 +195,14 @@ msgid ""
 "caves orcs and dwarves are most at home. In the forests the elves reign "
 "supreme. In the oceans and rivers mermen and nagas dominate."
 msgstr ""
-"Świat Wesnoth zamieszkują ludzie, elfy, krasnoludy, orkowie, smoki, "
-"jaszczury, mermeni, nagi i wiele innych ras, często jeszcze bardziej "
-"niezwykłych. Przeklęte krainy nawiedzają nieumarli, duchy i zjawy. Każda "
-"rasa przystosowała się do swojego macierzystego środowiska i terenu. Domeną "
-"ludzi są przede wszystkim trawiaste równiny. Góry, wzgórza i jaskinie to "
-"środowiska najkorzystniejsze dla orków i krasnoludów. W lasach niepodzielnie "
-"królują elfy. Wreszcie w rzekach i oceanach dominują mermeni i nagi."
+"Świat Wesnoth zamieszkują ludzie, elfy, krasnoludy, orki, smoki, jaszczury, "
+"mermeni, nagi i wiele innych ras, często jeszcze bardziej niezwykłych. "
+"Przeklęte krainy nawiedzają nieumarli, duchy i zjawy, a w ruinach i lochach "
+"czyhają potwory. Każda rasa przystosowała się do swojego macierzystego "
+"środowiska i terenu. Domeną ludzi są przede wszystkim trawiaste równiny. "
+"Góry, wzgórza i jaskinie to środowiska najkorzystniejsze dla orków i "
+"krasnoludów. W lasach niepodzielnie królują elfy. Wreszcie w rzekach i "
+"oceanach dominują mermeni i nagi."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:83
@@ -250,8 +252,8 @@ msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/main-menu-"
 "1.5.11.jpg\"/> </imageobject>"
 msgstr ""
-"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/main-menu.jpg"
-"\"/> </imageobject>"
+"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/main-menu-"
+"1.5.7.jpg\"/> </imageobject>"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:106 ../../doc/manual/manual.en.xml:349
@@ -384,7 +386,7 @@ msgstr ""
 # type: Content of: <book><chapter><section><variablelist><varlistentry><term>
 #: ../../doc/manual/manual.en.xml:190
 msgid "Map Editor"
-msgstr ""
+msgstr "Edytor map"
 
 # type: Content of: <book><chapter><section><variablelist><varlistentry><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:194
@@ -392,6 +394,8 @@ msgid ""
 "Click this button to start the Map Editor where you can create custom maps "
 "for multiplayer games or for building your own campaign upon."
 msgstr ""
+"Kliknij ten przycisk, aby uruchomić Edytor Map. W edytorze można tworzyć "
+"własne mapy do gier wieloosobowych lub do scenariuszy własnych kampanii."
 
 #: ../../doc/manual/manual.en.xml:201
 msgid "Language"
@@ -463,7 +467,7 @@ msgstr ""
 # type: Content of: <book><chapter><section><variablelist><varlistentry><term>
 #: ../../doc/manual/manual.en.xml:258
 msgid "Next"
-msgstr ""
+msgstr "Następna"
 
 # type: Content of: <book><chapter><section><variablelist><varlistentry><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:262
@@ -475,16 +479,16 @@ msgstr ""
 # type: Content of: <book><chapter><section><variablelist><varlistentry><term>
 #: ../../doc/manual/manual.en.xml:268
 msgid "Previous"
-msgstr ""
+msgstr "Poprzednia"
 
 # type: Content of: <book><chapter><section><variablelist><varlistentry><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:272
-#, fuzzy
 msgid ""
 "Click this button to read the previous little tip from the \"Tome of Wesnoth"
 "\"."
 msgstr ""
-"Kliknij ten przycisk, by przeczytać kolejną wskazówkę z \"Księgi Wesnoth\"."
+"Kliknij ten przycisk, by przeczytać poprzednią wskazówkę z \"Księgi Wesnoth"
+"\"."
 
 # type: Content of: <book><chapter><section><variablelist><varlistentry><term>
 #: ../../doc/manual/manual.en.xml:278
@@ -493,16 +497,15 @@ msgstr "Koperta"
 
 # type: Content of: <book><chapter><section><variablelist><varlistentry><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:282
-#, fuzzy
 msgid ""
 "Click this button (the icon of an envelope) to open a dialog where you can "
 "enable or disable summary uploads which will help us to better balance "
 "campaigns. All data submitted will be anonymous."
 msgstr ""
 "Kliknij ten przycisk (ikonę koperty), by otworzyć okno dialogowe, w którym "
-"możesz włączyć automatyczne przesyłanie podsumowań gier do Projektu Wesnoth. "
-"Dane te pomagają nam w balansowaniu trudności kampanii i są całkowicie "
-"anonimowe. Opcja jest domyślnie wyłączona."
+"możesz włączyć lub wyłączyć automatyczne przesyłanie podsumowań gier do "
+"Projektu Wesnoth. Dane te pomagają nam w zrównoważeniu trudności kampanii i "
+"są całkowicie anonimowe."
 
 # type: Content of: <book><chapter><section><title>
 #: ../../doc/manual/manual.en.xml:291
@@ -621,16 +624,17 @@ msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/multiplayer-"
 "1.5.11.jpg\"/> </imageobject>"
 msgstr ""
-"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/multiplayer.jpg"
-"\"/> </imageobject>"
+"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/multiplayer-"
+"1.5.9.jpg\"/> </imageobject>"
 
 # type: Content of: <book><chapter><section><section><section><title>
 #: ../../doc/manual/manual.en.xml:352
 msgid "Login"
-msgstr ""
+msgstr "Login"
 
 # type: Content of: <book><chapter><section><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:353
+#, fuzzy
 msgid ""
 "This will be your name on the multiplayer server. If you have an account on "
 "the <ulink url=\"http://www.wesnoth.org/forum\">Wesnoth forums</ulink>, you "
@@ -638,6 +642,10 @@ msgid ""
 "password box will pop up if a password is required for the current username. "
 "You cannot use a registered name without the password."
 msgstr ""
+"To będzie Twoja nazwa gracza na serwerze rozgrywki wieloosobowej. Jeśli masz "
+"konto na <ulink url=\"http://www.wesnoth.org/forum\">forum Wesnoth</ulink>, "
+"możesz używać swojej nazwy użytkownika i hasła z forum, by logować się na "
+"serwerze gry. Jeśli chcesz używać zarejestrowanej nazwy, musisz podać hasło."
 
 # type: Content of: <book><chapter><section><section><section><title>
 #: ../../doc/manual/manual.en.xml:361
@@ -659,9 +667,8 @@ msgstr ""
 
 # type: Content of: <book><chapter><section><section><section><title>
 #: ../../doc/manual/manual.en.xml:368
-#, fuzzy
 msgid "Connect to Server"
-msgstr "Połącz z hostem/serwerem"
+msgstr "Połącz z serwerem"
 
 # type: Content of: <book><chapter><section><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:369
@@ -678,15 +685,14 @@ msgstr ""
 
 # type: Content of: <book><chapter><section><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:374
-#, fuzzy
 msgid ""
 "A complete list of official and user setup servers is listed at this "
 "website: <ulink url=\"http://wesnoth.org/wiki/MultiplayerServers"
 "\">Multiplayer servers</ulink>."
 msgstr ""
-"Bardziej kompletna lista serwerów oficjalnych i prowadzonych przez "
-"użytkowników znajduje się pod adresem: <ulink url=\"http://wesnoth.org/wiki/"
-"MultiplayerServers\">Serwery do gry wieloosobowej</ulink>."
+"Pełna lista serwerów oficjalnych i prowadzonych przez użytkowników znajduje "
+"się pod adresem: <ulink url=\"http://wesnoth.org/wiki/MultiplayerServers"
+"\">Serwery gier wieloosobowych</ulink>."
 
 # type: Content of: <book><chapter><section><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:377
@@ -697,6 +703,12 @@ msgid ""
 "connect to a server running on the machine with the address 192.168.0.10 and "
 "the default port, you would enter this in the dialog: 192.168.0.10:15000"
 msgstr ""
+"Ta opcja menu umożliwia też łączenie się z serwerami udostępnianymi przez "
+"innych graczy w sieci. Jeśli więc chcesz połączyć się z serwerem "
+"uruchomionym w sieci lokalnej, wpisz jego adres i numer portu (domyślnie: "
+"15000). Na przykład aby połączyć się z serwerem uruchomionym na maszynie o "
+"adresie 192.168.0.10 i domyślnym porcie, wpisz w oknie dialogowym: "
+"192.168.0.10:15000"
 
 # type: Content of: <book><chapter><section><section><section><title>
 #: ../../doc/manual/manual.en.xml:385
@@ -705,7 +717,6 @@ msgstr "Załóż grę sieciową"
 
 # type: Content of: <book><chapter><section><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:386
-#, fuzzy
 msgid ""
 "To be able to start a multiplayer game without using an external multiplayer "
 "server, you have to start the server, which is usually named "
@@ -721,16 +732,16 @@ msgid ""
 msgstr ""
 "Założenie własnej gry wieloosobowej bez korzystania z zewnętrznego serwera "
 "rozgrywki wymaga samodzielnego lokalnego uruchomienia programu serwera, "
-"który nazywa się najczęściej <emphasis>wesnothd</emphasis>. Następnie należy "
-"z gry nawiązać połączenie z własną maszyną poprzez wpisanie adresu 127.0.0.1 "
-"w oknie dialogowym <emphasis>Połącz z hostem/serwerem</emphasis>. Aby inni "
-"gracze mogli się dołączyć do rozgrywki na Twoim serwerze, muszą mieć "
-"możliwość nawiązania połączenia z portem TCP 15000 Twojego komputera. Jeśli "
-"komputer znajduje się za zaporą sieciową, prawdopodobnie będzie konieczna "
-"zmiana ustawień zapory tak, by przyjmowała ona połączenia przychodzące na "
-"port 15000 i przekierowywała je do maszyny, na której jest udostępniona gra. "
-"Dołączanie do gier założonych na serwerach publicznych lub komputerach "
-"innych użytkowników nie powinno wymagać zmiany ustawień zapory."
+"który nazywa się najczęściej <emphasis>wesnothd</emphasis>. Wybranie tej "
+"opcji spowoduje automatyczne uruchomienie programu w tle. Serwer zostanie "
+"wyłączony, gdy opuszczą go wszyscy gracze. Aby inni gracze mogli się "
+"dołączyć do rozgrywki na Twoim serwerze, muszą mieć możliwość nawiązania "
+"połączenia z portem TCP 15000 Twojego komputera. Jeśli komputer znajduje się "
+"za zaporą sieciową, prawdopodobnie będzie konieczna zmiana ustawień zapory "
+"tak, by przyjmowała ona połączenia przychodzące na port 15000 i "
+"przekierowywała je do maszyny, na której jest udostępniona gra. Dołączanie "
+"do gier założonych na serwerach publicznych lub komputerach innych "
+"użytkowników nie powinno wymagać zmiany ustawień zapory."
 
 # type: Content of: <book><chapter><section><section><section><title>
 #: ../../doc/manual/manual.en.xml:400
@@ -773,13 +784,12 @@ msgstr "Ekran gry"
 
 # type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #: ../../doc/manual/manual.en.xml:417
-#, fuzzy
 msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/game-screen-"
 "1.5.7.jpg\"/> </imageobject>"
 msgstr ""
-"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/game-screen.jpg"
-"\"/> </imageobject>"
+"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/game-screen-"
+"1.5.7.jpg\"/> </imageobject>"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:424
@@ -798,13 +808,12 @@ msgstr ""
 
 # type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #: ../../doc/manual/manual.en.xml:430
-#, fuzzy
 msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/top_pane-1.5.7."
 "jpg\"/> </imageobject>"
 msgstr ""
-"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/top_pane.jpg\"/"
-"> </imageobject>"
+"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/top_pane-1.5.7."
+"jpg\"/> </imageobject>"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:437
@@ -867,7 +876,7 @@ msgstr "Pozycja bieżącego pola (współrzędna X, współrzędna Y)"
 # type: Content of: <book><chapter><section><section><orderedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:492
 msgid "Defense and movement of the currently selected unit on the marked hex"
-msgstr ""
+msgstr "Obrona i koszt ruchu aktualnie wybranej jednostki na zaznaczonym polu"
 
 # type: Content of: <book><chapter><section><section><orderedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:497
@@ -876,13 +885,12 @@ msgstr "Typ bieżącego pola"
 
 # type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #: ../../doc/manual/manual.en.xml:501
-#, fuzzy
 msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/right_pane-"
 "1.5.7.jpg\"/> </imageobject>"
 msgstr ""
-"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/right_pane.jpg"
-"\"/> </imageobject>"
+"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/right_pane-"
+"1.5.7.jpg\"/> </imageobject>"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:508
@@ -938,7 +946,6 @@ msgstr ""
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:544
-#, fuzzy
 msgid ""
 "The first thing you will probably want to do is recruit your first unit. "
 "Press <literal>Ctrl-R</literal> (or right click on an empty castle hex and "
@@ -949,15 +956,15 @@ msgid ""
 "keep and will begin by recruiting its troops &#8212; so don't dilly-dally "
 "looking at the scenery, there's a battle to be won."
 msgstr ""
-"Zapewne pierwszą czynnością, którą zechcesz wykonać, będzie rekrutowanie "
-"pierwszej jednostki. Naciśnij <literal>Ctrl-R</literal> (lub kliknij prawym "
-"przyciskiem myszy puste pole zamku i wybierz \"Rekrutuj\"), by rekrutować "
-"jednostkę wybraną z listy jednostek aktualnie dostępnych. Każdy rekrut "
-"zajmuje jedno wolne pole zamku. Gdy go zapełnisz, obecne w zamku jednostki "
-"będą musiały się odsunąć, by było możliwe dalsze rekrutowanie. Dowódca "
-"Twojego przeciwnika również zaczyna scenariusz w twierdzy i również zacznie "
-"od rekrutacji żołnierzy, więc nie marnuj czasu na podziwianie krajobrazu "
-"&#8212; najpierw musisz wygrać tę bitwę."
+"Twoją pierwszą czynnością będzie zapewne rekrutowanie pierwszej jednostki. "
+"Naciśnij <literal>Ctrl-R</literal> (lub kliknij prawym przyciskiem myszy "
+"puste pole zamku i wybierz \"Rekrutuj\"), by rekrutować jednostkę wybraną z "
+"listy jednostek aktualnie dostępnych. Każdy rekrut zajmuje jedno wolne pole "
+"zamku. Gdy zamek zostanie zapełniony, dalsze rekrutowanie będzie możliwe "
+"dopiero po odsunięciu jednostek z jego pól. Dowódca Twojego przeciwnika "
+"również zaczyna scenariusz w twierdzy i również zacznie od rekrutacji "
+"żołnierzy, więc nie marnuj czasu na podziwianie krajobrazu &#8212; najpierw "
+"musisz wygrać tę bitwę."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:553
@@ -1088,7 +1095,6 @@ msgstr "Zapisywanie i wczytywanie"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:608
-#, fuzzy
 msgid ""
 "At the start of each scenario, your game state is normally saved. If you are "
 "defeated, you may load it and try again. Once you have succeeded, you will "
@@ -1097,8 +1103,8 @@ msgid ""
 "Just remember, a good Battle for Wesnoth player never needs to save during a "
 "scenario. However, most beginners tend to do so rather often."
 msgstr ""
-"Na początku każdego scenariusza istnieje możliwość zapisania stanu gry, "
-"dzięki czemu w razie porażki można scenariusz załadować ponownie i spróbować "
+"Na początku każdego scenariusza stan gry jest automatycznie zapisywany, "
+"dzięki czemu w razie porażki można załadować scenariusz ponownie i spróbować "
 "jeszcze raz. Po zwycięstwie również można zapisać następny scenariusz przed "
 "jego rozpoczęciem. Jeśli musisz przerwać grę w trakcie scenariusza, możesz "
 "zapisać bieżącą turę, by później do niej powrócić. Pamiętaj jednak, że dobry "
@@ -1626,7 +1632,6 @@ msgstr ""
 
 # type: Content of: <book><chapter><section><simpara>
 #: ../../doc/manual/manual.en.xml:1041
-#, fuzzy
 msgid ""
 "Each side is given some amount of gold to begin with, and receives 2 gold "
 "pieces per turn, plus 2 more gold pieces for every village that side "
@@ -1634,12 +1639,12 @@ msgid ""
 "ended the previous scenario with, and a minimum amount defined by the "
 "scenario, which is typically lower as the difficulty level increases."
 msgstr ""
-"Każda stron otrzymuje pewną ilość złota początkowego i dostaje 2 sztuki na "
-"turę, plus 1 sztukę za każdą kontrolowaną wioskę. W kampaniach ilość złota "
-"na początku scenariusza to większa z dwóch wartości: 80% złota posiadanego "
-"po zakończeniu poprzedniego scenariusza lub minimalna wartość zdefiniowana "
-"dla danego scenariusza, która zazwyczaj maleje wraz ze wzrostem poziomu "
-"trudności."
+"Każda strona otrzymuje pewną ilość początkową złota, a następnie co turę "
+"dostaje 2 sztuki złota plus 2 kolejne sztuki za każdą kontrolowaną wioskę. W "
+"kampaniach ilość złota na początku scenariusza to większa z dwóch wartości: "
+"80% złota posiadanego po zakończeniu poprzedniego scenariusza lub minimalna "
+"wartość zdefiniowana dla danego scenariusza, która zazwyczaj maleje wraz ze "
+"wzrostem poziomu trudności."
 
 #: ../../doc/manual/manual.en.xml:1048
 msgid "Recruiting and Recalling"
@@ -1647,13 +1652,12 @@ msgstr "Rekrutacja i przywoływanie"
 
 # type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #: ../../doc/manual/manual.en.xml:1049
-#, fuzzy
 msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/recruit-1.5.7."
 "jpg\"/> </imageobject>"
 msgstr ""
-"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/recruit.jpg\"/"
-"> </imageobject>"
+"<inlinemediaobject> <imageobject> <imagedata fileref=\"images/recruit-1.5.7."
+"jpg\"/> </imageobject>"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:1056
@@ -1851,13 +1855,12 @@ msgstr "1"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject>
 #: ../../doc/manual/manual.en.xml:1165
-#, fuzzy
 msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/schedule-dawn."
 "png\"/> </imageobject>"
 msgstr ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/schedule-dawn."
-"jpg\"/> </imageobject>"
+"png\"/> </imageobject>"
 
 #: ../../doc/manual/manual.en.xml:1173
 msgid "Dawn"
@@ -1877,13 +1880,12 @@ msgstr "2"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject>
 #: ../../doc/manual/manual.en.xml:1187
-#, fuzzy
 msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/schedule-"
 "morning.png\"/> </imageobject>"
 msgstr ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/schedule-"
-"morning.jpg\"/> </imageobject>"
+"morning.png\"/> </imageobject>"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:1195
@@ -1912,13 +1914,12 @@ msgstr "3"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject>
 #: ../../doc/manual/manual.en.xml:1209
-#, fuzzy
 msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/schedule-"
 "afternoon.png\"/> </imageobject>"
 msgstr ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/schedule-"
-"afternoon.jpg\"/> </imageobject>"
+"afternoon.png\"/> </imageobject>"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:1217
@@ -1933,13 +1934,12 @@ msgstr "4"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject>
 #: ../../doc/manual/manual.en.xml:1231
-#, fuzzy
 msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/schedule-dusk."
 "png\"/> </imageobject>"
 msgstr ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/schedule-dusk."
-"jpg\"/> </imageobject>"
+"png\"/> </imageobject>"
 
 #: ../../doc/manual/manual.en.xml:1239
 msgid "Dusk"
@@ -1953,13 +1953,12 @@ msgstr "5"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject>
 #: ../../doc/manual/manual.en.xml:1253
-#, fuzzy
 msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/schedule-"
 "firstwatch.png\"/> </imageobject>"
 msgstr ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/schedule-"
-"firstwatch.jpg\"/> </imageobject>"
+"firstwatch.png\"/> </imageobject>"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:1261
@@ -1974,13 +1973,12 @@ msgstr "6"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject>
 #: ../../doc/manual/manual.en.xml:1275
-#, fuzzy
 msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/schedule-"
 "secondwatch.png\"/> </imageobject>"
 msgstr ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/schedule-"
-"secondwatch.jpg\"/> </imageobject>"
+"secondwatch.png\"/> </imageobject>"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:1283
@@ -1994,13 +1992,12 @@ msgstr "Specjalna"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject>
 #: ../../doc/manual/manual.en.xml:1297
-#, fuzzy
 msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/schedule-"
 "underground.png\"/> </imageobject>"
 msgstr ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/schedule-"
-"underground.jpg\"/> </imageobject>"
+"underground.png\"/> </imageobject>"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:1305
@@ -2188,17 +2185,17 @@ msgstr "Zdrowy"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:1427
-#, fuzzy
 msgid ""
 "Renowned for their vitality, some dwarves are sturdier than others and can "
 "rest even when traveling.  Healthy units have 1 HP plus 1 HP per level more "
 "than usual and rest heal the usual 2 HP after each turn they did not fight.  "
 "They also suffer a quarter less damage from poison."
 msgstr ""
-"Wszystkie krasnoludy są znane z witalności, lecz niektóre z nich cechuje "
+"Wszystkie krasnoludy słyną z witalności, lecz niektóre z nich cechuje "
 "wyjątkowa wytrzymałość, pozwalająca odpoczywać nawet w drodze. Zdrowe "
-"jednostki mają 2 PŻ więcej niż pozostałe i odzyskują dodatkowe 2 PŻ po "
-"każdej turze, w której nie walczyły."
+"jednostki mają więcej PŻ niż pozostałe (1 PŻ bazowo plus 1 PŻ za każdy "
+"poziom) i odzyskują dodatkowe 2 PŻ po każdej turze, w której nie walczyły. "
+"Odnoszą też o jedną czwartą mniejsze obrażenia z powodu zatrucia."
 
 #: ../../doc/manual/manual.en.xml:1437
 msgid "Fearless"
@@ -2206,13 +2203,12 @@ msgstr "Nieustraszony"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:1441
-#, fuzzy
 msgid ""
 "Does not suffer from a negative attack bonus during its unfavorable time of "
 "day (Heavy Infantry, Necrophage, Trolls, Walking Corpses)."
 msgstr ""
 "Ataki tej jednostki nie ulegają osłabieniu podczas niesprzyjającej pory dnia "
-"(trolle, chodzące trupy)."
+"(ciężka piechota, trupojady, trolle, chodzące trupy)."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:1447
@@ -2414,7 +2410,6 @@ msgstr "Trucizna"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:1598
-#, fuzzy
 msgid ""
 "This attack poisons the target. Poisoned units lose 8 HP every turn until "
 "they are cured or are reduced to 1 HP. Poison can not, of itself, kill a "
@@ -2924,19 +2919,18 @@ msgstr ""
 "znajduje się kula. Oto znaczenia poszczególnych kolorów kul:"
 
 #: ../../doc/manual/manual.en.xml:2004
-#, fuzzy
 msgid "Orb"
-msgstr "Kule"
+msgstr "Kula"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><thead><row><entry>
 #: ../../doc/manual/manual.en.xml:2010
 msgid "Description"
-msgstr ""
+msgstr "Opis"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:2017
 msgid "Green"
-msgstr ""
+msgstr "Zielona"
 
 # type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #: ../../doc/manual/manual.en.xml:2020
@@ -2949,17 +2943,14 @@ msgstr ""
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2028
-#, fuzzy
 msgid "If you control the unit and it hasn't moved this turn"
 msgstr ""
-"</inlinemediaobject> Kula zielona oznacza jednostkę pod Twoją kontrolą, "
-"która w tej turze jeszcze się nie ruszała."
+"Jednostka pod Twoją kontrolą, która w tej turze jeszcze się nie ruszała"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: ../../doc/manual/manual.en.xml:2033
-#, fuzzy
 msgid "Yellow"
-msgstr "Spowolnienie"
+msgstr "Żółta"
 
 # type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #: ../../doc/manual/manual.en.xml:2036
@@ -2972,18 +2963,17 @@ msgstr ""
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2044
-#, fuzzy
 msgid ""
 "If you control the unit and it has moved this turn, but could still move "
 "further or attack"
 msgstr ""
-"</inlinemediaobject> Kula żółta oznacza jednostkę pod Twoją kontrolą, która "
-"już się ruszała w tej turze, ale wciąż może ruszyć się dalej lub zaatakować."
+"Jednostka pod Twoją kontrolą, która już się ruszała w tej turze, ale wciąż "
+"może ruszyć się dalej lub zaatakować"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: ../../doc/manual/manual.en.xml:2049
 msgid "Red"
-msgstr ""
+msgstr "Czerwona"
 
 # type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #: ../../doc/manual/manual.en.xml:2052
@@ -2996,17 +2986,15 @@ msgstr ""
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2060
-#, fuzzy
 msgid "If you control the unit, but it has used all its movement this turn"
 msgstr ""
-"</inlinemediaobject> Kula czerwona oznacza jednostkę pod Twoją kontrolą, "
-"która w tej turze wykorzystała już wszystkie punktu ruchu."
+"Jednostka pod Twoją kontrolą, która w tej turze wykorzystała już wszystkie "
+"punktu ruchu"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: ../../doc/manual/manual.en.xml:2065
-#, fuzzy
 msgid "Blue"
-msgstr "Zaraza"
+msgstr "Niebieska"
 
 # type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #: ../../doc/manual/manual.en.xml:2068
@@ -3019,11 +3007,8 @@ msgstr ""
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2076
-#, fuzzy
 msgid "If the unit is an ally you do not control"
-msgstr ""
-"</inlinemediaobject> Kula niebieska oznacza jednostkę sojuszniczą, nad którą "
-"nie masz kontroli."
+msgstr "Jednostka sojusznicza, nad którą nie masz kontroli"
 
 # type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #: ../../doc/manual/manual.en.xml:2084
@@ -3036,11 +3021,8 @@ msgstr ""
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2092
-#, fuzzy
 msgid "Enemy units have no orb on the top of their energy bar"
-msgstr ""
-"</inlinemediaobject> Nad paskiem energii jednostek wroga nie jest "
-"wyświetlana żadna kula."
+msgstr "Wrogie jednostki nie mają kuli nad swoim paskiem energii."
 
 # type: Content of: <book><chapter><section><section><title>
 #: ../../doc/manual/manual.en.xml:2100
@@ -3209,13 +3191,12 @@ msgstr ""
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2178
-#, fuzzy
 msgid ""
 "<emphasis role=\"strong\">Cold</emphasis>: Weapons based on cold or ice "
 "missiles. Example: A Dark Adepts's chill wave."
 msgstr ""
 "<emphasis role=\"strong\">Zimno</emphasis>: Bronie wykorzystujące uderzenia "
-"zimna lub lodu. Przykłady: lodowy pocisk czarodzieja."
+"zimna lub lodu. Przykłady: fala chłodu Mrocznego adepta."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2184
@@ -3228,7 +3209,6 @@ msgstr ""
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2190
-#, fuzzy
 msgid ""
 "<emphasis role=\"strong\">Arcane</emphasis>: An attack that dispels the "
 "magic animating zombies, specters, and other undead creatures and spirits. "
@@ -3310,9 +3290,8 @@ msgstr "Są dwa podstawowe sposoby leczenia jednostek:"
 
 # type: Content of: <book><chapter><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2230
-#, fuzzy
 msgid "Waiting in a village. The unit will heal 8 hitpoints every turn."
-msgstr "Odpoczynek w wiosce. Jednostka będzie co turę odzyskiwać 8 PŻ."
+msgstr "Odpoczynek w wiosce. Jednostka będzie się co turę leczyć za 8 PŻ."
 
 # type: Content of: <book><chapter><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2235
@@ -3348,7 +3327,6 @@ msgstr ""
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2252
-#, fuzzy
 msgid ""
 "Some attacks can inflict poison damage on your unit. When this happens the "
 "poisoned unit will take 8 damage each turn until it is cured. Poison can be "
@@ -3368,7 +3346,8 @@ msgstr ""
 "trucizny, ale nie potrafią usunąć zatrucia. Usunięcie zatrucia powstrzymuje "
 "utratę punktów życia, ale w tej samej turze jednostka nie może już odzyskać "
 "żadnych punktów życia. Zwykłe leczenie jednostki jest możliwe dopiero po "
-"usunięciu zatrucia."
+"usunięciu zatrucia. Odpoczynek nadal pozwala odzyskać nieco PŻ, ale za mało, "
+"by znacząco powstrzymać działanie trucizny."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2261
@@ -3411,13 +3390,12 @@ msgstr ""
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2293
-#, fuzzy
 msgid ""
 "Multiple healers from different allied sides can heal the same unit and "
 "speed up healing."
 msgstr ""
-"Kilku leczących może jednocześnie leczyć tę samą jednostkę, przyspieszając "
-"proces leczenia."
+"Kilku leczących z różnych sprzymierzonych stron może jednocześnie leczyć tę "
+"samą jednostkę, przyspieszając proces leczenia."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2299
@@ -4026,14 +4004,13 @@ msgstr ""
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2590
-#, fuzzy
 msgid ""
 "You can use lower level units as cannon fodder, to slow down enemy. E.g. you "
 "can use them to block enemies reaching your important units."
 msgstr ""
 "Jednostki niskiego poziomu mogą posłużyć jako mięso armatnie, by spowolnić "
 "natarcie wroga - można ich na przykład używać do zablokowania wrogowi "
-"dostępu do Twoich ważnych jednostek."
+"dostępu do istotniejszych jednostek."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2596
@@ -4177,6 +4154,19 @@ msgstr ""
 "Jednostki wyższych poziomów są droższe w utrzymaniu, niż jednostki o "
 "niższych poziomach (1 sztuka złota na poziom), z wyjątkiem jednostek "
 "lojalnych."
+
+# type: Content of: <book><chapter><section><section><section><title>
+#~ msgid "Password"
+#~ msgstr "Hasło "
+
+# type: Content of: <book><chapter><section><section><section><simpara>
+#~ msgid ""
+#~ "You only need to supply a password when you wish to use a registered "
+#~ "username.  In all other cases, just leave it blank."
+#~ msgstr ""
+#~ "Podanie hasła jest konieczne tylko w przypadku korzystania z "
+#~ "zarejestrowanej nazwy użytkownika. W pozostałych przypadkach zostaw pole "
+#~ "hasła puste."
 
 # type: Content of: <book><glossary><title>
 #~ msgid "Glossary"

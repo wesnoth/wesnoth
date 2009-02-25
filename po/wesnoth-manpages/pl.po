@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2009-01-06 22:08+0100\n"
-"PO-Revision-Date: 2008-09-29 12:29+0100\n"
+"PO-Revision-Date: 2009-02-22 11:22+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -27,9 +27,9 @@ msgstr "WESNOTH"
 
 # type: TH
 #: ../../doc/man/wesnoth.6:16 ../../doc/man/wesnothd.6:16
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "2009"
-msgstr "2007"
+msgstr "2009"
 
 # type: TH
 #: ../../doc/man/wesnoth.6:16
@@ -118,20 +118,20 @@ msgstr "ustawia liczbę bitów na piksel. Przykład: B<--bpp 32>"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:49
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<-c, --campaign>"
-msgstr "B<-d, --daemon>"
+msgstr "B<-c, --campaign>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:52
 msgid "goes directly to the campaign selection menu."
-msgstr ""
+msgstr "powoduje przejście bezpośrednio do menu wyboru kampanii."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:52
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--config-dir>I<\\ name>"
-msgstr "B<--load>I<\\ plikzapisu>"
+msgstr "B<--config-dir>I<\\ name>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:57
@@ -139,18 +139,20 @@ msgid ""
 "sets the user configuration directory to I<name> under $HOME or \"My "
 "Documents\\eMy Games\" for windows."
 msgstr ""
+"ustawia katalog konfiguracyjny użytkownika na I<name> w ramach katalogu "
+"$HOME lub (w przypadku systemów Windows) \"My Documents\\eMy Games\"."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:57
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--config-path>"
-msgstr "B<--path>"
+msgstr "B<--config-path>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:60
-#, fuzzy
 msgid "prints the path of the user configuration directory and exits."
-msgstr "wyświetla nazwę katalogu z danymi gry i kończy działanie."
+msgstr ""
+"wyświetla ścieżkę katalogu konfiguracyjnego użytkownika i kończy działanie."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:60
@@ -160,20 +162,18 @@ msgstr "B<-d, --debug>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:64
-#, fuzzy
 msgid ""
 "enables additional command mode options in-game (see the wiki page at http://"
 "www.wesnoth.org/wiki/CommandMode for more information about command mode)."
 msgstr ""
-"wyświetla dodatkowe dane debugowania i włącza dodatkowe opcje trybu poleceń "
-"w grze (więcej informacji dotyczących trybu poleceń można znaleźć na stronie "
-"http://www.wesnoth.org/wiki/CommandMode)."
+"aktywuje dodatkowe opcje trybu poleceń w grze (więcej informacji o trybie "
+"poleceń można znaleźć na stronie http://www.wesnoth.org/wiki/CommandMode)."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:64
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--dummy-locales>"
-msgstr "B<--nocache>"
+msgstr "B<--dummy-locales>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:68
@@ -181,17 +181,19 @@ msgid ""
 "use special dummy locales to switch to any language even if that language "
 "isn't installed system-wide."
 msgstr ""
+"używa specjalnych atrap ustawień regionalnych, by umożliwić przełączenie na "
+"dowolny język, nawet jeśli nie jest on zainstalowany w systemie."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:68
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<-e, --editor>"
-msgstr "B<-t, --test>"
+msgstr "B<-e, --editor>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:71
 msgid "start the in-game map editor directly."
-msgstr ""
+msgstr "powoduje bezpośrednie uruchomienie edytora map."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:71
@@ -263,9 +265,9 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnoth.6:93
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<-l,\\ --load>I<\\ file>"
-msgstr "B<--load>I<\\ plikzapisu>"
+msgstr "B<-l,\\ --load>I<\\ file>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:105
@@ -274,6 +276,9 @@ msgid ""
 "e> or B<--editor> option is used as well, starts the editor with the map "
 "from I<file> open."
 msgstr ""
+"ładuje plik zapisu gry I<file> z domyślnego katalogu zapisanych gier. Jeśli "
+"dodatkowo podano opcję B<-e> lub B<--editor>, zostanie uruchomiony edytor z "
+"załadowaną mapą z pliku I<file>."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:105 ../../doc/man/wesnothd.6:58
@@ -321,9 +326,9 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnoth.6:122
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<-m, --multiplayer>"
-msgstr "B<--multiplayer>"
+msgstr "B<-m, --multiplayer>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:128
@@ -342,13 +347,12 @@ msgstr "B<--no-delay>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:132
-#, fuzzy
 msgid ""
 "runs the game without any delays for graphic benchmarking. This is "
 "automatically enabled by B<--nogui>."
 msgstr ""
-"uruchamia grę bez opóźnień w celu wykonania testów grafiki. Ta opcja jest "
-"domyślnie włączana przez przełącznik B<--nogui>."
+"uruchamia grę bez opóźnień na wykonanie testów wydajności grafiki. Ta opcja "
+"jest domyślnie włączana przez przełącznik B<--nogui>."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:132
@@ -363,15 +367,14 @@ msgstr "wyłącza buforowanie danych gry."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:135
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--nomusic>"
-msgstr "B<--nogui>"
+msgstr "B<--nomusic>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:138
-#, fuzzy
 msgid "runs the game without music."
-msgstr "uruchamia grę bez dźwięków i muzyki."
+msgstr "uruchamia grę bez muzyki."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:138
@@ -397,25 +400,25 @@ msgstr "wyświetla nazwę katalogu z danymi gry i kończy działanie."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:144
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--python-api>"
-msgstr "B<--path>"
+msgstr "B<--python-api>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:147
 msgid "prints the runtime documentation for the python API."
-msgstr ""
+msgstr "wyświetla dokumentację uruchomieniową API Pythona."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:147
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--python-shell>"
-msgstr "B<--path>"
+msgstr "B<--python-shell>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:150
 msgid "invokes wesnoth's embedded python interpreter in interactive mode."
-msgstr ""
+msgstr "wywołuje wbudowany w grę interpreter Pythona w trybie interaktywnym."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:150
@@ -430,9 +433,9 @@ msgstr "ustawia rozdzielczość ekranu gry. Przykład: B<-r 800x600>"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:154
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--smallgui>"
-msgstr "B<--nogui>"
+msgstr "B<--smallgui>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:157
@@ -440,12 +443,14 @@ msgid ""
 "allows to use screen resolutions down to 800x480 and resizes a few interface "
 "elements."
 msgstr ""
+"umożliwia korzystanie z niskich rozdzielczości ekranu (do 800x480) i zmienia "
+"rozmiary niektórych elementów interfejsu."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:157
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<-s,\\ --server\\ [host]>"
-msgstr "B<-v, --verbose>"
+msgstr "B<-s,\\ --server\\ [host]>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:161
@@ -453,6 +458,9 @@ msgid ""
 "connects to the specified host if any, otherwise connect to the first server "
 "in preferences. Example: B<--server server.wesnoth.org>"
 msgstr ""
+"nawiązuje połączenie z podanym hostem lub (jeśli host nie został podany) z "
+"pierwszym serwerem określonym w preferencjach. Przykład: B<--server server."
+"wesnoth.org>"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:161
@@ -467,14 +475,15 @@ msgstr "uruchamia grę z małym scenariuszem testowym."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:164
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--validcache>"
-msgstr "B<--nocache>"
+msgstr "B<--validcache>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:167
 msgid "assumes that the cache is valid. (dangerous)"
 msgstr ""
+"przyjmuje, że zawartość pamięci podręcznej jest poprawna (niebezpieczne)."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:167
@@ -500,14 +509,14 @@ msgstr "uruchamia grę w oknie."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:173
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--with-replay>"
-msgstr "B<--no-delay>"
+msgstr "B<--with-replay>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:178
 msgid "replays the game loaded with the B<--load> option."
-msgstr ""
+msgstr "odtwarza powtórkę gry wczytanej za pomocą opcji B<--load>."
 
 # type: SH
 #: ../../doc/man/wesnoth.6:179
@@ -1233,116 +1242,3 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:206
 msgid "B<wesnoth>(6), B<wesnoth_editor>(6)"
 msgstr "B<wesnoth>(6), B<wesnoth_editor>(6)"
-
-# type: TH
-#~ msgid "WESNOTH_EDITOR"
-#~ msgstr "WESNOTH_EDITOR"
-
-# type: TH
-#~ msgid "wesnoth_editor"
-#~ msgstr "wesnoth_editor"
-
-# type: Plain text
-#~ msgid "Battle for Wesnoth map editor"
-#~ msgstr "Edytor map do Bitwy o Wesnoth"
-
-# type: Plain text
-#~ msgid "wesnoth_editor - Battle for Wesnoth map editor"
-#~ msgstr "wesnoth_editor - Edytor map do Bitwy o Wesnoth"
-
-# type: Plain text
-#~ msgid "B<wesnoth_editor> [I<OPTIONS>] [I<MAP>]"
-#~ msgstr "B<wesnoth_editor> [I<OPCJE>] [I<MAPA>]"
-
-# type: Plain text
-#~ msgid "Battle for B<Wesnoth> map editor."
-#~ msgstr "Edytor map do Bitwy o B<Wesnoth>."
-
-# type: TP
-#~ msgid "B<--bpp>\\ number"
-#~ msgstr "B<--bpp>\\ liczba"
-
-# type: TP
-#~ msgid "B<--datadir>"
-#~ msgstr "B<--datadir>"
-
-# type: Plain text
-#~ msgid "selects the data directory to use."
-#~ msgstr ""
-#~ "pozwala wybrać ścieżkę do katalogu z danymi, które mają być używane."
-
-# type: TP
-#~ msgid "B<-f>,B<\\ --fullscreen>"
-#~ msgstr "B<-f>,B<\\ --fullscreen>"
-
-# type: Plain text
-#~ msgid "runs the editor in full screen mode."
-#~ msgstr "uruchamia edytor w trybie pełnoekranowym."
-
-# type: TP
-#~ msgid "B<-h>,B<\\ --help>"
-#~ msgstr "B<-h>,B<\\ --help>"
-
-# type: TP
-#~ msgid "B<--log->levelB<=>domain1B<,>domain2B<,>..."
-#~ msgstr "B<--log->poziomB<=>domena1B<,>domena2B<,>..."
-
-# type: Plain text
-#~ msgid "sets screen resolution. Example: B<-r 800x600>"
-#~ msgstr "ustawia rozdzielczość ekranu. Przykład: B<-r 800x600>"
-
-# type: TP
-#~ msgid "B<-v>,B<\\ --version>"
-#~ msgstr "B<-v>,B<\\ --version>"
-
-# type: Plain text
-#~ msgid "prints version number and exits."
-#~ msgstr "wyświetla numer wersji i kończy działanie programu."
-
-# type: TP
-#~ msgid "B<-w>,B<\\ --windowed>"
-#~ msgstr "B<-w>,B<\\ --windowed>"
-
-# type: Plain text
-#~ msgid "runs the editor in windowed mode."
-#~ msgstr "uruchamia edytor w oknie."
-
-# type: Plain text
-#~ msgid ""
-#~ "Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt> and ott "
-#~ "E<lt>ott@gaon.netE<gt>."
-#~ msgstr ""
-#~ "Redakcja: Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt> i ott "
-#~ "E<lt>ott@gaon.netE<gt>."
-
-# type: Plain text
-#~ msgid "B<wesnoth>(6), B<wesnothd>(6)"
-#~ msgstr "B<wesnoth>(6), B<wesnothd>(6)"
-
-# type: Plain text
-#~ msgid "loads the file savegame from the standard save game directory."
-#~ msgstr "ładuje plik zapisu z domyślnego katalogu zapisu gry."
-
-# type: TP
-#~ msgid "B<--compress>I<\\ infile\\ outfile>"
-#~ msgstr "B<--compress>I<\\ plikwejsciowyE\\ plikwyjsciowy>"
-
-# type: Plain text
-#~ msgid ""
-#~ "compresses a savefile (I<infile>)  that is in text WML format into binary "
-#~ "WML format (I<outfile>)."
-#~ msgstr ""
-#~ "kompresuje plik zapisu w tekstowym formacie WML (I<plikwejsciowy>) do "
-#~ "binarnego formatu WML (I<plikwyjsciowy>)."
-
-# type: TP
-#~ msgid "B<--decompress>I<\\ infile\\ outfile>"
-#~ msgstr "B<--decompress>I<\\ plikwejsciowy\\ plikwyjsciowy>"
-
-# type: Plain text
-#~ msgid ""
-#~ "decompresses a savefile (I<infile>)  that is in binary WML format into "
-#~ "text WML format (I<outfile>)."
-#~ msgstr ""
-#~ "dekompresuje plik zapisu (I<plikwejsciowy>) w binarnym formacie WML do "
-#~ "tekstowego formatu WML (I<plikwyjsciowy>)."
