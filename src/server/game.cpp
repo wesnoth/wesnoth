@@ -750,7 +750,7 @@ bool game::process_turn(simple_wml::document& data, const player_map::const_iter
 	for (command = commands.begin(); command != commands.end(); ++command) {
 		if (!is_current_player(user->first)
 		&& !is_legal_command(**command, is_player(user->first))) {
-			std::cerr << "ILLEGAL COMMAND: (((" << data.output() << ")))\n";
+			LOG_GAME << "ILLEGAL COMMAND: (((" << data.output() << ")))\n";
 			std::stringstream msg;
 			msg << "Removing illegal command from: " << user->second.name()
 				<< ". Current player is: "
@@ -765,8 +765,8 @@ bool game::process_turn(simple_wml::document& data, const player_map::const_iter
 			marked.push_back(index - marked.size());
 		} else if ((**command).child("speak")) {
 			simple_wml::node& speak = *(**command).child("speak");
-			if (!(speak["team_name"] == "")
-			|| (is_muted_observer(user->first))) {
+			if (speak["team_name"] != "" || is_muted_observer(user->first)) {
+				DBG_GAME << "repackaging..." << std::endl;
 				repackage = true;
 			}
 
@@ -1093,6 +1093,7 @@ void game::send_data_team(simple_wml::document& data,
                           const network::connection exclude,
 						  std::string packet_type) const
 {
+	DBG_GAME << __func__ << "...\n";
 	if (packet_type.empty())
 		packet_type = data.root().first_child().to_string();
 	simple_wml::string_span s = data.output_compressed();
@@ -1116,13 +1117,15 @@ void game::send_data_observers(simple_wml::document& data, const network::connec
 
 bool game::is_on_team(const simple_wml::string_span& team, const network::connection player) const {
 	const simple_wml::node::child_list& side_list = level_.root().children("side");
-	for (side_vector::const_iterator side = std::find(sides_.begin(), sides_.end(), player);
-			side != sides_.end(); ++side) {
+	for (side_vector::const_iterator side = sides_.begin(); side != sides_.end(); ++side) {
+		if (*side != player) continue;
 		for (simple_wml::node::child_list::const_iterator i = side_list.begin();
 				i != side_list.end(); ++i) {
-			if ((**i)["side"].to_int() == side - sides_.begin() + 1) {
-				if ((**i)["team_name"] == team) return true;
-			}
+			if ((**i)["side"].to_int() != side - sides_.begin() + 1) continue;
+			if ((**i)["team_name"] != team) continue;
+			DBG_GAME << "side: " << (**i)["side"].to_int() << " with team_name: " << (**i)["team_name"]
+			<< " belongs to player: " << player << std::endl;
+			return true;
 		}
 	}
 
