@@ -1189,7 +1189,7 @@ void server::process_query(const network::connection sock,
 	std::ostringstream response;
 	const std::string& help_msg = "Available commands are: help, games, metrics,"
 			" motd, netstats [all], stats, status, wml.";
-	if (admins_.count(sock) != 0) {
+	if (admins_.find(sock) != admins_.end()) {
 		if (command == "signout") {
 			LOG_SERVER << "Admin signed out:" << "\tIP: "
 				<< network::ip_address(sock) << "\tnick: "
@@ -1785,6 +1785,7 @@ void server::process_data_lobby(const network::connection sock,
 		const std::vector<wesnothd::game*>::iterator g =
 			std::find_if(games_.begin(),games_.end(), wesnothd::game_id_matches(game_id));
 
+		bool admin = (admins_.find(sock) != admins_.end());
 		static simple_wml::document leave_game_doc("[leave_game]\n[/leave_game]\n", simple_wml::INIT_COMPRESSED);
 		if (g == games_.end()) {
 			WRN_SERVER << network::ip_address(sock) << "\t" << pl->second.name()
@@ -1793,6 +1794,16 @@ void server::process_data_lobby(const network::connection sock,
 			lobby_.send_server_message("Attempt to join unknown game.", sock);
 			send_doc(games_and_users_list_, sock);
 			return;
+		} else if (!(*g)->level_init()) {
+			WRN_SERVER << network::ip_address(sock) << "\t" << pl->second.name()
+				<< "\tattempted to join uninitialized game:\t\"" << (*g)->name()
+				<< "\" (" << game_id << ").\n";
+			send_doc(leave_game_doc, sock);
+			lobby_.send_server_message("Attempt to join an uninitialized game.", sock);
+			send_doc(games_and_users_list_, sock);
+			return;
+		} else if (admin) {
+			// Admins are always allowed to join.
 		} else if ((*g)->player_is_banned(sock)) {
 			DBG_SERVER << network::ip_address(sock) << "\tReject banned player: "
 				<< pl->second.name() << "\tfrom game:\t\"" << (*g)->name()
@@ -1809,16 +1820,8 @@ void server::process_data_lobby(const network::connection sock,
 			lobby_.send_server_message("Incorrect password.", sock);
 			send_doc(games_and_users_list_, sock);
 			return;
-		} else if (!(*g)->level_init()) {
-			WRN_SERVER << network::ip_address(sock) << "\t" << pl->second.name()
-				<< "\tattempted to join uninitialized game:\t\"" << (*g)->name()
-				<< "\" (" << game_id << ").\n";
-			send_doc(leave_game_doc, sock);
-			lobby_.send_server_message("Attempt to join an uninitialized game.", sock);
-			send_doc(games_and_users_list_, sock);
-			return;
 		}
-		bool joined = (*g)->add_player(sock, observer);
+		bool joined = (*g)->add_player(sock, observer, admin);
 		if (!joined) {
 			WRN_SERVER << network::ip_address(sock) << "\t" << pl->second.name()
 				<< "\tattempted to observe game:\t\"" << (*g)->name() << "\" ("

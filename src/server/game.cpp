@@ -875,7 +875,7 @@ bool game::end_turn() {
 	return true;
 }
 
-bool game::add_player(const network::connection player, bool observer) {
+bool game::add_player(const network::connection player, bool observer, bool admin) {
 	if(is_member(player)) {
 		ERR_GAME << "ERROR: Player is already in this game. (socket: "
 			<< player << ")\n";
@@ -892,19 +892,19 @@ bool game::add_player(const network::connection player, bool observer) {
 			<< owner_ << ")\n";
 		return false;
 	}
-	user->second.mark_available(id_, name_);
 	DBG_GAME << debug_player_info();
 	bool became_observer = false;
 	if (!started_ && !observer && take_side(user)) {
 		DBG_GAME << "adding player...\n";
 		players_.push_back(player);
 		send_and_record_server_message((user->second.name() + " has joined the game.").c_str(), player);
-	} else if (!allow_observers()) {
+	} else if (!allow_observers() && !admin) {
 		return false;
 	} else {
 		if (!observer) became_observer = true;
 		DBG_GAME << "adding observer...\n";
 		observers_.push_back(player);
+		if (!allow_observers()) send_and_record_server_message((user->second.name() + " is now observing the game.").c_str(), player);
 
 		simple_wml::document observer_join;
 		observer_join.root().add_child("observer").set_attr_dup("name", user->second.name().c_str());
@@ -912,6 +912,7 @@ bool game::add_player(const network::connection player, bool observer) {
 		// Send observer join to everyone except the new observer.
 		send_data(observer_join, player);
 	}
+	user->second.mark_available(id_, name_);
 	DBG_GAME << debug_player_info();
 	// Send the user the game data.
 	//std::cerr << "SENDING LEVEL {{{" << level_.output() << "}}}\n";

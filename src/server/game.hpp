@@ -87,7 +87,7 @@ public:
 	 *
 	 * @return                    True iff the user successfully joined the game.
 	 */
-	bool add_player(const network::connection player, bool observer = false);
+	bool add_player(const network::connection player, bool observer = false, bool admin = false);
 
 	/**
 	 * Removes a user from the game.
