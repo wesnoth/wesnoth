@@ -37,6 +37,9 @@ namespace preferences {
 		base_manager base;
 	};
 
+	bool is_authenticated();
+	void admin_authentication(const std::string& sender, const std::string& message);
+
 	bool show_lobby_join(const std::string& sender, const std::string& message);
 	int lobby_joins();
 	void _set_lobby_joins(int show);

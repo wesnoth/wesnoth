@@ -98,7 +98,8 @@ public:
 	bool empty() const { return games_.empty(); }
 	bool selection_is_joinable() const
 	{ return empty() ? false : (games_[selected_].vacant_slots > 0 && !games_[selected_].started && games_[selected_].have_era); }
-	bool selection_is_observable() const { return empty() ? false : games_[selected_].observers && games_[selected_].have_era; }
+	// Moderators may observe any game.
+	bool selection_is_observable() const { return empty() ? false : (games_[selected_].observers && games_[selected_].have_era) || preferences::is_authenticated(); }
 	bool selected() const { return double_clicked_ && !empty(); }
 	void reset_selection() { double_clicked_ = false; }
 	int selection() const { return selected_; }

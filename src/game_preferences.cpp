@@ -44,6 +44,7 @@ std::set<std::string> ignores;
 bool friends_initialized = false;
 bool ignores_initialized = false;
 
+bool authenticated = false;
 } // anon namespace
 
 namespace preferences {
@@ -138,6 +139,19 @@ manager::~manager()
 	encountered_units_set.clear();
 	encountered_terrains_set.clear();
 	set_ping_timeout(network::ping_timeout);
+}
+
+bool is_authenticated() {
+	return authenticated;
+}
+
+void admin_authentication(const std::string& sender, const std::string& message) {
+	if(sender != "server") return;
+	if(message.find("You are now recognized as an administrator.") == 0) {
+		authenticated = true;
+	} else if(message.find("You are no longer recognized as an administrator.") == 0) {
+		authenticated = false;
+	}
 }
 
 const std::set<std::string> & get_friends() {

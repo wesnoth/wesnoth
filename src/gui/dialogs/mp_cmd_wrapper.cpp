@@ -18,7 +18,7 @@
 #include "gui/dialogs/field.hpp"
 #include "gui/widgets/label.hpp"
 
-#include "multiplayer.hpp"
+#include "multiplayer_ui.hpp"
 
 namespace gui2 {
 

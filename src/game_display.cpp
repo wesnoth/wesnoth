@@ -1089,6 +1089,8 @@ void game_display::add_chat_message(const time_t& time, const std::string& speak
 	if (!preferences::show_lobby_join(sender, message)) return;
 	if (preferences::is_ignored(sender)) return;
 
+	preferences::admin_authentication(sender, message);
+
 	if (bell) {
 		if ((type == MESSAGE_PRIVATE && (!is_observer() || whisper))
 			|| utils::word_match(message, preferences::login())) {

@@ -47,8 +47,5 @@ void start_client(game_display& disp, const config& game_config,
 		const std::string host);
 
 
-extern bool authenticated;
-void admin_authentication(const std::string& sender, const std::string& message);
-
 }
 #endif

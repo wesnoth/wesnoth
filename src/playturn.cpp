@@ -19,7 +19,6 @@
 #include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
-#include "multiplayer.hpp"
 #include "replay.hpp"
 #include "formula_string_utils.hpp"
 
@@ -71,8 +70,6 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 	if (cfg.child("message")) {
 		const config& cmessage = *cfg.child("message");
 		const int side = lexical_cast_default<int>(cmessage["side"],0);
-
-		mp::admin_authentication(cmessage["sender"], cmessage["message"]);
 
 		gui_.add_chat_message(time(NULL), cmessage["sender"], side,
 				cmessage["message"], game_display::MESSAGE_PUBLIC,

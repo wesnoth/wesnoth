@@ -516,7 +516,7 @@ void ui::process_message(const config& msg, const bool whisper) {
 	if (!preferences::show_lobby_join(sender, message)) return;
 	if (preferences::is_ignored(sender)) return;
 
-	admin_authentication(sender, message);
+	preferences::admin_authentication(sender, message);
 
 	if (whisper || utils::word_match(message, preferences::login())) {
 		sound::play_UI_sound(game_config::sounds::receive_message_highlight);
