@@ -18,7 +18,7 @@
 #include "gui/dialogs/field.hpp"
 #include "gui/widgets/label.hpp"
 
-#include "multiplayer_ui.hpp"
+#include "game_preferences.hpp"
 
 namespace gui2 {
 
@@ -60,10 +60,10 @@ void tmp_cmd_wrapper::pre_show(CVideo& /*video*/, twindow& window)
 	if(message) window.keyboard_capture(message);
 
 	message = dynamic_cast<ttext_box*>(window.find_widget("reason", false));
-	if(message) message->set_active(mp::authenticated);
+	if(message) message->set_active(preferences::is_authenticated());
 
 	message = dynamic_cast<ttext_box*>(window.find_widget("time", false));
-	if(message) message->set_active(mp::authenticated);
+	if(message) message->set_active(preferences::is_authenticated());
 
 	tlabel* label =
 		dynamic_cast<tlabel*>(window.find_widget("user_label", false));
@@ -82,19 +82,19 @@ void tmp_cmd_wrapper::pre_show(CVideo& /*video*/, twindow& window)
 	b = dynamic_cast<tbutton*>(window.find_widget("status", false));
 	if(b) {
 		b->set_retval(4);
-		b->set_active(mp::authenticated);
+		b->set_active(preferences::is_authenticated());
 	}
 
 	b = dynamic_cast<tbutton*>(window.find_widget("kick", false));
 	if(b) {
 		b->set_retval(5);
-		b->set_active(mp::authenticated);
+		b->set_active(preferences::is_authenticated());
 	}
 
 	b = dynamic_cast<tbutton*>(window.find_widget("ban", false));
 	if(b) {
 		b->set_retval(6);
-		b->set_active(mp::authenticated);
+		b->set_active(preferences::is_authenticated());
 	}
 
 }
