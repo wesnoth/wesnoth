@@ -272,6 +272,11 @@ namespace wesnothd {
 		return ip_ & mask & mask_;
 	}
 
+	bool banned::match_ip(const std::string& ip) const {
+		ip_mask pair = parse_ip(ip);
+		return (ip_ & mask_) == (pair.first & mask_);
+	}
+
 	void ban_manager::read()
 	{
 		if (filename_.empty() || !file_exists(filename_))
@@ -600,14 +605,7 @@ namespace wesnothd {
 
 	std::string ban_manager::is_ip_banned(const std::string& ip) const
 	{
-		subnet_compare_setter setter;
-		ban_set::const_iterator ban;
-		try {
-			ban = bans_.find(banned::create_dummy(ip));
-		} catch (banned::error& e) {
-			ERR_SERVER << e.message << " in is_ip_banned\n";
-			return false;
-		}
+		ban_set::const_iterator ban = std::find_if(bans_.begin(), bans_.end(), boost::bind(&banned::match_ip, boost::bind(&banned_ptr::get, _1), ip));
 		if (ban == bans_.end()) return "";
 		return (*ban)->get_reason();
 	}

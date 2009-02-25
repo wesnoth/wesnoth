@@ -110,6 +110,8 @@ namespace wesnothd {
 		bool match_group(const std::string& group) const
 		{ return group_ == group; }
 
+		bool match_ip(const std::string& ip) const;
+
 		unsigned int get_mask_ip(unsigned int) const;
 		unsigned int get_int_ip() const
 		{ return ip_; }
