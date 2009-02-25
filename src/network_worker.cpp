@@ -271,19 +271,16 @@ bool receive_with_timeout(TCPsocket s, char* buf, size_t nbytes,
 				if (poll_res < 1)
 					return false;
 #elif defined(USE_SELECT)
-				fd_set readfds;
-				FD_ZERO(&readfds);
-				FD_SET(((_TCPsocket*)s)->channel, &readfds);
 				int retval;
-				struct timeval tv;
-
 				const int select_timeout = std::min(timeout_ms, 100);
-
-				tv.tv_sec = select_timeout/1000;
-				tv.tv_usec = select_timeout % 1000;
 				do {
+					fd_set readfds;
+					FD_ZERO(&readfds);
+					FD_SET(((_TCPsocket*)s)->channel, &readfds);
+					struct timeval tv;
+					tv.tv_sec = select_timeout/1000;
+					tv.tv_usec = select_timeout % 1000;
 					retval = select(((_TCPsocket*)s)->channel + 1, &readfds, NULL, NULL, &tv);
-
 					if(retval == 0) {
 						timeout_ms -= select_timeout;
 						if(timeout_ms <= 0) {
@@ -303,8 +300,9 @@ bool receive_with_timeout(TCPsocket s, char* buf, size_t nbytes,
 					}
 				} while(retval == 0 || retval == -1 && errno == EINTR);
 
-				if (retval < 1)
+				if (retval < 1) {
 					return false;
+				}
 #else
 				//TODO: consider replacing this with a select call
 				time_used = SDL_GetTicks() - startTicks;
