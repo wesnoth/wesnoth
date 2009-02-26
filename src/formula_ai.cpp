@@ -1463,9 +1463,6 @@ void formula_ai::make_candidate_moves() {
 			callable.add("target", enemy_unit_callable);
 		}
 		const_formula_ptr move_formula((*best_move)->get_move());
-		game_display::get_singleton()->float_label(
-				(*(*best_move)->get_action_unit()).first,
-				(*best_move)->get_name(),0,0,0);
 		make_move(move_formula, callable);
 		// And re-evaluate candidate moves
 		build_move_list();
