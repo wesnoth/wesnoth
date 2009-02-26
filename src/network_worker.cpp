@@ -217,12 +217,14 @@ void check_send_buffer_size(TCPsocket& s)
 }
 
 bool receive_with_timeout(TCPsocket s, char* buf, size_t nbytes,
-		bool update_stats=false, int timeout_ms=60000)
+		bool update_stats=false, int idle_timeout_ms=30000, 
+		int total_timeout_ms=300000)
 {
 #if !defined(USE_POLL) && !defined(USE_SELECT)
 	int startTicks = SDL_GetTicks();
 	int time_used = 0;
 #endif
+	int timeout_ms = idle_timeout_ms;
 	while(nbytes > 0) {
 		const int bytes_read = receive_bytes(s, buf, nbytes);
 		if(bytes_read == 0) {
@@ -250,7 +252,8 @@ bool receive_with_timeout(TCPsocket s, char* buf, size_t nbytes,
 
 					if(poll_res == 0) {
 						timeout_ms -= poll_timeout;
-						if(timeout_ms <= 0) {
+						total_timeout_ms -= poll_timeout;
+						if(timeout_ms <= 0 || total_timeout_ms <= 0) {
 							//we've been waiting too long; abort the receive
 							//as having failed due to timeout.
 							return false;
@@ -279,11 +282,14 @@ bool receive_with_timeout(TCPsocket s, char* buf, size_t nbytes,
 					FD_SET(((_TCPsocket*)s)->channel, &readfds);
 					struct timeval tv;
 					tv.tv_sec = select_timeout/1000;
-					tv.tv_usec = select_timeout % 1000;
+					tv.tv_usec = select_timeout % 1000 * 1000;
 					retval = select(((_TCPsocket*)s)->channel + 1, &readfds, NULL, NULL, &tv);
+					DBG_NW << "select retval: " << retval << ", timeout idle " << timeout_ms 
+						<< " total " << total_timeout_ms << " (ms)\n";
 					if(retval == 0) {
 						timeout_ms -= select_timeout;
-						if(timeout_ms <= 0) {
+						total_timeout_ms -= select_timeout;
+						if(timeout_ms <= 0 || total_timeout_ms <= 0) {
 							//we've been waiting too long; abort the receive
 							//as having failed due to timeout.
 							return false;
@@ -315,7 +321,7 @@ bool receive_with_timeout(TCPsocket s, char* buf, size_t nbytes,
 				return false;
 			}
 		} else {
-
+			timeout_ms = idle_timeout_ms;
 			buf += bytes_read;
 			if(update_stats && !raw_data_only) {
 				const threading::lock lock(*stats_mutex);
