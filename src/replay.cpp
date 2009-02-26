@@ -458,15 +458,12 @@ void replay::add_chat_log_entry(const config* speak, std::stringstream& str, con
 	if (!preferences::show_lobby_join(cfg["id"], cfg["message"])) return;
 	if (preferences::is_ignored(cfg["id"])) return;
 	const std::string& team_name = cfg["team_name"];
-	if(team_name == "" || team_name == team) {
-		if(team_name == "") {
-			str << "<" << cfg["id"] << "> ";
-		} else {
-			str << "*" << cfg["id"] << "* ";
-		}
-		str << cfg["message"] << "\n";
+	if(team_name == "") {
+		str << "<" << cfg["id"] << "> ";
+	} else {
+		str << "*" << cfg["id"] << "* ";
 	}
-
+	str << cfg["message"] << "\n";
 }
 
 void replay::remove_command(int index)
@@ -862,22 +859,17 @@ bool do_replay_handle(game_display& disp, const gamemap& map,
 
 		} else if((child = cfg->child("speak")) != NULL) {
 			const std::string& team_name = (*child)["team_name"];
-			if (team_name == "" || (!is_observer()
-					&& teams[disp.viewing_team()].team_name() == team_name)
-					|| (is_observer() && team_name == "observer"))
-			{
-				const std::string& speaker_name = (*child)["id"];
-				const std::string& message = (*child)["message"];
-				//if (!preferences::show_lobby_join(speaker_name, message)) return;
-				bool is_whisper = (speaker_name.find("whisper: ") == 0);
-				get_replay_source().add_chat_message_location();
-				if (!get_replay_source().is_skipping() || is_whisper) {
-					const int side = lexical_cast_default<int>((*child)["side"],0);
-					disp.add_chat_message(time(NULL), speaker_name, side, message,
-							(team_name == "" ? game_display::MESSAGE_PUBLIC
-							: game_display::MESSAGE_PRIVATE),
-							preferences::message_bell());
-				}
+			const std::string& speaker_name = (*child)["id"];
+			const std::string& message = (*child)["message"];
+			//if (!preferences::show_lobby_join(speaker_name, message)) return;
+			bool is_whisper = (speaker_name.find("whisper: ") == 0);
+			get_replay_source().add_chat_message_location();
+			if (!get_replay_source().is_skipping() || is_whisper) {
+				const int side = lexical_cast_default<int>((*child)["side"],0);
+				disp.add_chat_message(time(NULL), speaker_name, side, message,
+						(team_name == "" ? game_display::MESSAGE_PUBLIC
+						: game_display::MESSAGE_PRIVATE),
+						preferences::message_bell());
 			}
 		} else if((child = cfg->child("label")) != NULL) {
 
