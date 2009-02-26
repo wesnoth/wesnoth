@@ -179,6 +179,16 @@ def transformables(filename, relevant):
     # Return the file content as a string and the transformable extents in it.
     return (content, pairs)
 
+def mapsize(filename):
+    "Return the size of a specified mappfile."
+    x = y = 0
+    for line in open(filename):
+        if "," in line:
+            y += 1
+            nx = line.count(",") + 1
+            assert(x == 0 or x == nx)
+            x = nx
+    return (x, y)
 
 if __name__ == '__main__':
     flip_x = flip_y = verbose = False
@@ -200,6 +210,10 @@ if __name__ == '__main__':
             verbose = True
     if verbose:
         print "Debugging output enabled."
+
+    if mapfile:
+        (mx, my) = mapsize(mapfile)
+        print"%s is %d wide by %d high" % (mapfile, mx, my)
 
     # Are we doing file transformations?
     if arguments:
