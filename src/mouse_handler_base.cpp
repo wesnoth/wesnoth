@@ -132,11 +132,8 @@ void mouse_handler_base::mouse_press(const SDL_MouseButtonEvent& event, const bo
 	if (is_left_click(event)) {
 		if (event.state == SDL_PRESSED) {
 			clear_dragging(event, browse);
-			if (!left_click(event.x, event.y, browse)) {
-				if (!browse && !commands_disabled) {
-					init_dragging(dragging_left_);
-				}
-			}
+			init_dragging(dragging_left_);
+			left_click(event.x, event.y, browse);
 		} else if (event.state == SDL_RELEASED) {
 			minimap_scrolling_ = false;
 			clear_dragging(event, browse);
@@ -145,11 +142,8 @@ void mouse_handler_base::mouse_press(const SDL_MouseButtonEvent& event, const bo
 	} else if (is_right_click(event)) {
 		if (event.state == SDL_PRESSED) {
 			clear_dragging(event, browse);
-			if (!right_click(event.x, event.y, browse)) {
-				if (!browse && !commands_disabled) {
-					init_dragging(dragging_right_);
-				}
-			}
+			init_dragging(dragging_right_);
+			right_click(event.x, event.y, browse);
 		} else if (event.state == SDL_RELEASED) {
 			minimap_scrolling_ = false;
 			clear_dragging(event, browse);

@@ -84,10 +84,11 @@ public:
 	virtual bool allow_mouse_wheel_scroll(int x, int y);
 
 	/**
-	 * Overriden in derived classes, called on a right click (mousedown).
+	 * Overriden in derived classes, called on a left click (mousedown).
 	 * Defaults to process (initiate) minimap scrolling.
 	 * @returns true when the click should not process the event further.
 	 * This means do not treat the call as a start of drag movement.
+	 * FIXME: This return value is currently ignored
 	 */
 	virtual bool left_click(int x, int y, const bool browse);
 
@@ -115,6 +116,7 @@ public:
 	 * be shown, can be used for preprocessing and preventing the menu from
 	 * being displayed without rewriting the right click function.
 	 * @returns true when the menu should be displayed and false otherwise
+	 * FIXME: This return value is currently ignored
 	 */
 	virtual bool right_click_show_menu(int x, int y, const bool browse);
 
