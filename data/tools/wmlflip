@@ -1,0 +1,189 @@
+#!/usr/bin/env python
+"""
+wmlflip -- return the sizes of maps listed on the command line.
+
+Flip macro coordinate arguments on a map.  Use this if you've mirror-reversed
+a map and need to change coordinate-using macros.  Takes a cross-reference
+of all known macros and looks for formals that are either X, Y, *_X, or _Y,
+so it's guaranteed to catch everything.
+"""
+
+import sys, os, time, re, getopt, sre_constants, md5
+from wesnoth.wmltools import *
+
+class ParseArgs:
+    def __init__(self, fp, verbose=False):
+        self.fp = fp
+        self.verbose = verbose
+        self.parsed = []
+        self.namestack = []
+        self.pushback = None
+        self.lead = ""
+        self.parse_until([''])
+    def getchar(self):
+        if self.pushback:
+            c = self.pushback
+            self.pushback = None
+            return c
+        else:
+            return self.fp.read(1)
+    def ungetchar(self, c):
+        if verbose:
+            print "pushing back", c
+        self.pushback = c
+    def parse_until(self, enders):
+        "Parse until we reach specified terminator."
+        if self.verbose:
+            self.lead += "*"
+            print self.lead + " parse_until(%s) starts" % enders
+        while True:
+            c = self.getchar()
+            if self.verbose:
+                print self.lead + "I see", c
+            if c in enders:
+                if self.verbose:
+                    print self.lead + "parse_until(%s) ends" % enders
+                    self.lead = self.lead[:-1]
+                return c
+            elif c == '{':
+              self.parse_call()
+    def parse_call(self):
+        "We see a start of call."
+        if self.verbose:
+            self.lead += "*"
+            print self.lead + "parse_call()"
+        self.namestack.append(["", []])
+        # Fill in the name of the called macro
+        while True:
+            c =  self.getchar()
+            if c.isalnum() or c == '_':
+                self.namestack[-1][0] += c
+            else:
+                break
+        if self.verbose:
+            print self.lead + "name", self.namestack[-1]
+        # Discard if no arguments
+        if c == '}':
+            self.namestack.pop()
+            if self.verbose:
+                print self.lead + "parse_call() ends"
+                self.lead = self.lead[:-1]
+            return
+        # If non-space, this is something like a filename include;
+        # skip until closing }
+        if not c.isspace():
+            while True:
+                c =  self.getchar()
+                if c == '}':
+                    if self.verbose:
+                        print self.lead + "parse_call() ends"
+                        self.lead = self.lead[:-1]
+                    return
+        # It's a macro call with arguments;
+        # parse them, recording the character offsets
+        while self.parse_actual():
+            continue
+        # Discard trailing }
+        self.getchar()
+        # Record the scope we just parsed
+        self.parsed.append(self.namestack.pop())
+        if self.verbose:
+            print self.lead + "parse_call() ends"
+            self.lead = self.lead[:-1]
+    def parse_actual(self):
+        "Parse an actual argument."
+        # Skip leading whitespace
+        if self.verbose:
+            self.lead += "*"
+            print self.lead + "parse_actual() begins"
+        while True:
+            c = self.getchar()
+            if not c.isspace():
+                break
+        if c == '}':
+            if self.verbose:
+                print "** parse_actual() returns False"
+                self.lead = self.lead[:-1]
+            return False
+        # Looks like we have a real argument
+        argstart = self.fp.tell() - 1
+        # Skip leading translation mark, if any
+        if c == "_":
+            c = self.getchar()
+        # Get the argument itself
+        if c == '{':
+            self.parse_call()
+            argend = self.fp.tell()
+        elif c == '(':
+            self.parse_until([")"])
+            argend = self.fp.tell()
+        elif c == '"':
+            if verbose:
+                print self.lead + "starting string argument"
+            self.parse_until(['"'])
+            argend = self.fp.tell()
+        else:
+            ender = self.parse_until(['', ' ', '\t', '\r', '\n', '}'])
+            argend = self.fp.tell() - 1
+            self.ungetchar(ender)
+        self.namestack[-1][1].append((argstart, argend))
+        if self.verbose:
+            print self.lead + "parse_actual() returns True"
+            self.lead = self.lead[:-1]
+        return True
+    def dump(self):
+        print self.parsed
+
+if __name__ == '__main__':
+    here = os.getcwd()
+
+    flip_x = flip_y = verbose = False
+    (options, arguments) = getopt.getopt(sys.argv[1:], "xyv")
+    
+    for (switch, val) in options:
+        if switch in ('-h', '--help'):
+            sys.stderr.write(__doc__)
+            sys.exit(0)
+        elif switch in ('-x'):
+            flip_x = True
+        elif switch in ('-y'):
+            flip_y = True
+        elif switch == '-v':
+            verbose = True
+    if verbose:
+        print "Debugging output enabled."
+
+    if 0:
+        # Cross-reference all files.
+        pop_to_top("wmlflip")  
+        cref = CrossRef(scopelist())
+        os.chdir(here)
+        if verbose:
+            print "Cross-reference complete,"
+
+        # Look at all definitions.  Extract those with  in "_?X" or "_?Y".
+        # Generate a dictionary of names mapping to offsets of arguments
+        # to be transformed.
+        relevant = {}
+        for name in cref.xref:
+            for ref in cref.xref[name]:
+                have_x = have_y = None
+                for (i, arg) in enumerate(ref.args):
+                    if arg == "X" or arg.endswith("_X"):
+                        have_x = i
+                    if arg == "Y" or arg.endswith("_Y"):
+                        have_y = i
+                if have_x is not None and have_y is not None:
+                    relevant[name] = (have_x, have_y)
+
+    # For each file named on the command line...
+    for filename in arguments:
+        if verbose:
+            print "Processing file", filename
+        fp = open(filename, "r")
+        parsed = ParseArgs(fp, verbose)
+        parsed.dump()
+        # THIS IS NOT COMPLETE
+        fp.close()
+
+
