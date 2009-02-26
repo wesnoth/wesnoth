@@ -3217,7 +3217,7 @@ std::string get_caption(const vconfig& cfg, unit_map::iterator speaker)
         if(!(utils::string_bool(behavior_flag,true)))
         {
         	const config &parsed = cfg.get_parsed_config();
-		    new_handlers.push_back(game_events::event_handler(vconfig(&parsed, &parsed)));
+		    new_handlers.push_back(game_events::event_handler(vconfig(&parsed, true)));
         }
         else
         {
@@ -3298,12 +3298,12 @@ std::string get_caption(const vconfig& cfg, unit_map::iterator speaker)
 				foreach(game_events::event_handler& hand, event_handlers) {
 					if(hand.is_menu_item() && hand.matches_name(mref->name)) {
 						LOG_NG << "changing command for " << mref->name << " to:\n" << *wcc.second;
-						hand.read(vconfig(&mref->command,&mref->command));
+						hand.read(vconfig(&mref->command,true));
 					}
 				}
 			} else if(!is_empty_command) {
 				LOG_NG << "setting command for " << mref->name << " to:\n" << *wcc.second;
-				event_handlers.push_back(game_events::event_handler(vconfig(&mref->command,&mref->command), true));
+				event_handlers.push_back(game_events::event_handler(vconfig(&mref->command,true), true));
 			}
 
 			delete wcc.second;
@@ -3608,7 +3608,7 @@ namespace game_events {
 		std::map<std::string, wml_menu_item *>::iterator itor = state_of_game->wml_menu_items.begin();
 		while(itor != state_of_game->wml_menu_items.end()) {
 			if(!itor->second->command.empty()) {
-				event_handlers.push_back(game_events::event_handler(vconfig(&itor->second->command,&itor->second->command), true));
+				event_handlers.push_back(game_events::event_handler(vconfig(&itor->second->command,true), true));
 			}
 			++itor;
 			++wmi_count;
@@ -3703,7 +3703,7 @@ namespace game_events {
 			unit_wml_ids.insert(id);
 			for(config::child_list::const_iterator new_ev = cfgs.begin(); new_ev != cfgs.end(); ++ new_ev) {
 				std::vector<game_events::event_handler> &temp = (pump_manager::count()) ? new_handlers : event_handlers;
-				temp.push_back(game_events::event_handler(vconfig(*new_ev, *new_ev)));
+				temp.push_back(game_events::event_handler(vconfig(*new_ev, true)));
 			}
 		}
 	}

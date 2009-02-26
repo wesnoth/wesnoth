@@ -41,7 +41,11 @@ namespace
 	// keeps track of insert_tag variables used by get_parsed_config
 	std::set<std::string> vconfig_recursion;
 
-	// map to track temp storage of inserted tags on the heap
+	/**
+	 * config_cache is a map to track temp storage of inserted tags on the heap.
+	 * If an event is spawned from a variable or any ActionWML from a volatile
+	 * source is to be executed safely then its memory should be managed by vconfig
+	 */
 	std::map<config const *, int> config_cache;
 
 	// map by hash for equivalent inserted tags already in the cache
@@ -170,6 +174,20 @@ vconfig::vconfig(const config* cfg, const config * cache_key) :
 	}
 }
 
+vconfig::vconfig(const config* cfg, bool is_volatile) :
+	cfg_(cfg), cache_key_(cfg)
+{
+	if(is_volatile) {
+		increment_config_usage(cache_key_);
+		if(cache_key_ != cfg) {
+			//location of volatile cfg has moved
+			cfg_ = cache_key_;
+		}
+	} else {
+		cache_key_ = NULL;
+	}
+}
+
 vconfig::vconfig(const vconfig& v) :
 	cfg_(v.cfg_), cache_key_(v.cache_key_)
 {
@@ -181,7 +199,7 @@ vconfig::~vconfig()
 	decrement_config_usage(cache_key_);
 }
 
-vconfig& vconfig::operator=(const vconfig cfg)
+vconfig& vconfig::operator=(const vconfig& cfg)
 {
 	const config* prev_key = cache_key_;
 	cfg_ = cfg.cfg_;

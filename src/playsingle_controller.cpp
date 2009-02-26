@@ -246,7 +246,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 
 	if(!skip_replay) {
 		for(std::vector<config*>::const_iterator story_i = story.begin(); story_i != story.end(); ++story_i) {
-			show_intro(*gui_,vconfig(*story_i, *story_i), level_);
+			show_intro(*gui_,vconfig(*story_i, true), level_);
 		}
 	}
 	gui_->labels().read(level_, game_events::get_state_of_game());

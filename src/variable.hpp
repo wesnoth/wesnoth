@@ -31,21 +31,23 @@ class unit_map;
  * A variable-expanding proxy for the config class. This class roughly behaves
  * as a constant config object, but automatically expands variables.
  *
- * @todo A default constructed vconfig doesn't work properly in all cases
- * since cfg_ will be deferred without testing in some cases. Fixing it by
- * adding a dummy config seems to fail as well (some test cases failed). The
- * entire class needs to be review to make it safe for using the default
- * constructor.
  */
 class vconfig
 {
+private:
+	vconfig(const config* cfg, const config* cache_key);
 public:
+/**
+ * TODO: in development version 1.7+, the default constructor of vconfig() will
+ * wrap an empty config instead of a null config to facilitate some gui2 code uses
+ *
+ */
 	vconfig();
 	vconfig(const vconfig& v);
-	vconfig(const config* cfg, const config* cache_key=NULL);
+	vconfig(const config* cfg, bool is_volatile=false);
 	~vconfig();
 
-	vconfig& operator=(const vconfig cfg);
+	vconfig& operator=(const vconfig& cfg);
 	vconfig& operator=(const config* cfg);
 
 	bool null() const { return cfg_ == NULL; }
