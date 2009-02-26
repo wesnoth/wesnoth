@@ -12,6 +12,7 @@ import sys, os, time, getopt, cStringIO
 from wesnoth.wmltools import *
 
 class ParseArgs:
+    "Mine macro argument locations out of a .cfg file."
     def __init__(self, fp, verbose=False):
         self.fp = fp
         self.verbose = verbose
@@ -132,31 +133,13 @@ class ParseArgs:
             self.lead = self.lead[:-1]
         return True
 
-if __name__ == '__main__':
-    here = os.getcwd()
-
-    flip_x = flip_y = verbose = False
-    (options, arguments) = getopt.getopt(sys.argv[1:], "xyv")
-    
-    for (switch, val) in options:
-        if switch in ('-h', '--help'):
-            sys.stderr.write(__doc__)
-            sys.exit(0)
-        elif switch in ('-x'):
-            flip_x = True
-        elif switch in ('-y'):
-            flip_y = True
-        elif switch == '-v':
-            verbose = True
-    if verbose:
-        print "Debugging output enabled."
-
+def relevant_macros():
+    "Compute indices of (X, Y) pairs in formals of all mainline macros."
     # Cross-reference all files.
+    here = os.getcwd()
     pop_to_top("wmlflip")  
     cref = CrossRef(scopelist())
     os.chdir(here)
-    if verbose:
-        print "Cross-reference complete,"
 
     # Look at all definitions.  Extract those with  in "_?X" or "_?Y".
     # Generate a dictionary mapping definition names to the indices
@@ -171,29 +154,61 @@ if __name__ == '__main__':
                 if arg == "Y" or arg.endswith("_Y"):
                     have_y = i
             if have_x is not None and have_y is not None:
-                relevant[name] = (have_x, have_y)
+                relevant[name] = (have_x, have_y)    
+    return relevant
 
-    # For each file named on the command line...
-    for filename in arguments:
-        if verbose:
-            print "Processing file", filename
+def transformables(filename, relevant):
+    "Return a list of transformable (X,Y) regions in the specified file."
+    # Grab the content
+    fp = open(filename, "r")
+    content = fp.read()
+    fp.close()
 
-        # Grab the content
-        fp = open(filename, "r")
-        content = fp.read()
-        fp.close()
+    # Get argument offsets from it.
+    calls = ParseArgs(cStringIO.StringIO(content), verbose)
 
-        # Get argument offsets from it
-        calls = ParseArgs(cStringIO.StringIO(content), verbose)
+    # Filter out irrelevant calls.
+    parsed = filter(lambda x: x[0] in relevant, calls.parsed)
 
-        # Filter out irrelevant calls
-        parsed = filter(lambda x: x[0] in relevant, calls.parsed)
+    # Derive list of coordinate pair locations.
+    pairs = []
+    for (name, arglocs) in parsed:
+        (have_x, have_y) = relevant[name]
+        pairs.append((arglocs[have_x], arglocs[have_y]))
 
-        # Derive list of coordinate pair locations
-        pairs = []
-        for (name, arglocs) in parsed:
-            (have_x, have_y) = relevant[name]
-            pairs.append((arglocs[have_x], arglocs[have_y]))
+    # Return the file content as a string and the transformable extents in it.
+    return (content, pairs)
 
-        # MORE GOES HERE
-        print pairs
+
+if __name__ == '__main__':
+    flip_x = flip_y = verbose = False
+    mapfile = None
+    (options, arguments) = getopt.getopt(sys.argv[1:], "m:xyv")
+    
+    for (switch, val) in options:
+        if switch in ('-h', '--help'):
+            sys.stderr.write(__doc__)
+            sys.exit(0)
+        elif switch in ('-m'):
+            mapfile = val
+        elif switch in ('-x'):
+            flip_x = True
+        elif switch in ('-y'):
+            print >>sys.stderr, "Vertical flip is not yet supported."
+            sys.exit(0)
+        elif switch == '-v':
+            verbose = True
+    if verbose:
+        print "Debugging output enabled."
+
+    # Are we doing file transformations?
+    if arguments:
+        relevant = relevant_macros()
+        # For each file named on the command line...
+        for filename in arguments:
+            if verbose:
+                print "Processing file", filename
+            (content, pairs) = transformables(filename, relevant)
+
+            # MORE GOES HERE
+            print pairs
