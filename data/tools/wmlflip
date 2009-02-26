@@ -1,11 +1,14 @@
 #!/usr/bin/env python
 """
-wmlflip -- return the sizes of maps listed on the command line.
+wmlflip -- coordinate transformation for .cfg macro calls.
 
-Flip macro coordinate arguments on a map.  Use this if you've mirror-reversed
-a map and need to change coordinate-using macros.  Takes a cross-reference
-of all known macros and looks for formals that are either X, Y, *_X, or _Y,
-so it's guaranteed to catch everything.
+Modify macro coordinate arguments in a .cfg file.  Use this if you've
+mirror-reversed a map and need to change coordinate-using macros.
+Takes a cross-reference of all known macros and looks for formals that
+are either X, Y, *_X, or _Y, so it's guaranteed to catch everything.
+
+Options:
+    -x        Coordinate transformation for a horizontally flipped map.
 """
 
 import sys, os, time, getopt, cStringIO
@@ -157,7 +160,7 @@ def relevant_macros():
                 relevant[name] = (have_x, have_y)    
     return relevant
 
-def transformables(filename, relevant):
+def transformables(filename, relevant, verbose):
     "Return a list of transformable (X,Y) regions in the specified file."
     # Grab the content
     fp = open(filename, "r")
@@ -176,6 +179,9 @@ def transformables(filename, relevant):
         (have_x, have_y) = relevant[name]
         pairs.append((arglocs[have_x], arglocs[have_y]))
 
+    # Transform these back to fronrt so laterchanges won't screw up earlier ones
+    pairs.reverse()
+
     # Return the file content as a string and the transformable extents in it.
     return (content, pairs)
 
@@ -191,7 +197,8 @@ def mapsize(filename):
     return (x, y)
 
 if __name__ == '__main__':
-    flip_x = flip_y = verbose = False
+    flip_x = flip_y = False
+    verbose = 0
     mapfile = None
     (options, arguments) = getopt.getopt(sys.argv[1:], "m:xyv")
     
@@ -207,13 +214,21 @@ if __name__ == '__main__':
             print >>sys.stderr, "Vertical flip is not yet supported."
             sys.exit(0)
         elif switch == '-v':
-            verbose = True
+            verbose += 1
     if verbose:
         print "Debugging output enabled."
 
     if mapfile:
         (mx, my) = mapsize(mapfile)
-        print"%s is %d wide by %d high" % (mapfile, mx, my)
+        print >>sys.stderr, "%s is %d wide by %d high" % (mapfile, mx, my)
+
+    if arguments and not flip_x:
+        print >>sys.stderr, "No coordinate transform is specified."
+        sys.exit(0)
+
+    if flip_x and not mapfile:
+        print >>sys.stderr, "X flip transformation needs to know the map size.."
+        sys.exit(0)
 
     # Are we doing file transformations?
     if arguments:
@@ -221,8 +236,32 @@ if __name__ == '__main__':
         # For each file named on the command line...
         for filename in arguments:
             if verbose:
-                print "Processing file", filename
-            (content, pairs) = transformables(filename, relevant)
+                print >>sys.stderr, "Processing file", filename
 
-            # MORE GOES HERE
-            print pairs
+            (content, pairs) = transformables(filename, relevant, verbose > 1)
+
+            # Extract the existing coordimates as numbers
+            source = []
+            for ((xs, xe), (ys, ye)) in pairs:
+                x = int(content[xs:xe])
+                y = int(content[ys:ye])
+                source.append((x, y))
+
+            # Perform the actual transformation
+            target = []
+            for (x, y) in source:
+    
+                # Note: This is the *only* part of this code that is
+                # specific to a particular transform.  Thee rest of the
+                # code doesn't care how the target pairs are derives from
+                # the source ones.  We could do matrix algebra here, but
+                # beware the effects of hex-grid transformation.
+                if flip_x:
+                    yn = y
+                    xn = mx - x - 1
+
+                # This is generic again
+                target.append((xn, yn))
+                if verbose:
+                    print "(%d, %d) -> (%d, %d)" % (x, y, xn, yn)
+
