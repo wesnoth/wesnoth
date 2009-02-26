@@ -8,7 +8,7 @@ of all known macros and looks for formals that are either X, Y, *_X, or _Y,
 so it's guaranteed to catch everything.
 """
 
-import sys, os, time, re, getopt, sre_constants, md5
+import sys, os, time, getopt, cStringIO
 from wesnoth.wmltools import *
 
 class ParseArgs:
@@ -131,8 +131,6 @@ class ParseArgs:
             print self.lead + "parse_actual() returns True"
             self.lead = self.lead[:-1]
         return True
-    def dump(self):
-        print self.parsed
 
 if __name__ == '__main__':
     here = os.getcwd()
@@ -153,37 +151,49 @@ if __name__ == '__main__':
     if verbose:
         print "Debugging output enabled."
 
-    if 0:
-        # Cross-reference all files.
-        pop_to_top("wmlflip")  
-        cref = CrossRef(scopelist())
-        os.chdir(here)
-        if verbose:
-            print "Cross-reference complete,"
+    # Cross-reference all files.
+    pop_to_top("wmlflip")  
+    cref = CrossRef(scopelist())
+    os.chdir(here)
+    if verbose:
+        print "Cross-reference complete,"
 
-        # Look at all definitions.  Extract those with  in "_?X" or "_?Y".
-        # Generate a dictionary of names mapping to offsets of arguments
-        # to be transformed.
-        relevant = {}
-        for name in cref.xref:
-            for ref in cref.xref[name]:
-                have_x = have_y = None
-                for (i, arg) in enumerate(ref.args):
-                    if arg == "X" or arg.endswith("_X"):
-                        have_x = i
-                    if arg == "Y" or arg.endswith("_Y"):
-                        have_y = i
-                if have_x is not None and have_y is not None:
-                    relevant[name] = (have_x, have_y)
+    # Look at all definitions.  Extract those with  in "_?X" or "_?Y".
+    # Generate a dictionary mapping definition names to the indices
+    # the X Y formal arguments.
+    relevant = {}
+    for name in cref.xref:
+        for ref in cref.xref[name]:
+            have_x = have_y = None
+            for (i, arg) in enumerate(ref.args):
+                if arg == "X" or arg.endswith("_X"):
+                    have_x = i
+                if arg == "Y" or arg.endswith("_Y"):
+                    have_y = i
+            if have_x is not None and have_y is not None:
+                relevant[name] = (have_x, have_y)
 
     # For each file named on the command line...
     for filename in arguments:
         if verbose:
             print "Processing file", filename
+
+        # Grab the content
         fp = open(filename, "r")
-        parsed = ParseArgs(fp, verbose)
-        parsed.dump()
-        # THIS IS NOT COMPLETE
+        content = fp.read()
         fp.close()
 
+        # Get argument offsets from it
+        calls = ParseArgs(cStringIO.StringIO(content), verbose)
 
+        # Filter out irrelevant calls
+        parsed = filter(lambda x: x[0] in relevant, calls.parsed)
+
+        # Derive list of coordinate pair locations
+        pairs = []
+        for (name, arglocs) in parsed:
+            (have_x, have_y) = relevant[name]
+            pairs.append((arglocs[have_x], arglocs[have_y]))
+
+        # MORE GOES HERE
+        print pairs
