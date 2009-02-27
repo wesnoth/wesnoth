@@ -9,6 +9,8 @@ are either X, Y, *_X, or _Y, so it's guaranteed to catch everything.
 
 Options:
     -x        Coordinate transformation for a horizontally flipped map.
+
+More transformations would be easy to write.
 """
 
 import sys, os, time, getopt, cStringIO
@@ -247,12 +249,12 @@ if __name__ == '__main__':
                 y = int(content[ys:ye])
                 source.append((x, y))
 
-            # Perform the actual transformation
+            # Compute the target coordinate pairs
             target = []
             for (x, y) in source:
     
                 # Note: This is the *only* part of this code that is
-                # specific to a particular transform.  Thee rest of the
+                # specific to a particular transform.  The rest of the
                 # code doesn't care how the target pairs are derives from
                 # the source ones.  We could do matrix algebra here, but
                 # beware the effects of hex-grid transformation.
@@ -265,3 +267,11 @@ if __name__ == '__main__':
                 if verbose:
                     print "(%d, %d) -> (%d, %d)" % (x, y, xn, yn)
 
+            # Perform the actual transformation
+            for (((xs, xe), (ys, ye)), (xn, yn)) in zip(pairs, target):
+                content = content[:ys] +`yn` + content[ye:]
+                content = content[:xs] + `xn` + content[xe:]
+
+            fp = open(filename, "w")
+            fp.write(content)
+            fp.close()
