@@ -239,6 +239,7 @@ class Reference:
             self.references[fn] = []
         self.references[fn].append((n, a))
     def dump_references(self):
+        "Dump all known references to this definition."
         for (file, refs) in self.references.items():
             print "    %s: %s" % (file, `map(lambda x: x[0], refs)`[1:-1])
     def __cmp__(self, other):
