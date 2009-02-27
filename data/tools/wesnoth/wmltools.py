@@ -579,7 +579,7 @@ class CrossRef:
                         key = None
                         # If name is already in our resource list, it's easy.
                         if name in self.fileref and self.visible_from(name, fn, n):
-                            self.fileref[trial].append(fn, n+1)
+                            self.fileref[name].append(fn, n+1)
                             continue
                         # If the name contains subtitutable parts, count
                         # it as a reference to everything the substitutions
@@ -690,13 +690,13 @@ class Translation(dict):
 
             gettext = f.read().decode("utf8")
             matches = re.compile("""(msgid|msgstr)((\s*".*?")+)""").findall(gettext)
-            id = ""
+            msgid = ""
             for match in matches:
                 text = "".join(re.compile('"(.*?)"').findall(match[1]))
                 if match[0] == "msgid":
-                    id = text.replace("\\n", "\n")
+                    msgid = text.replace("\\n", "\n")
                 else:
-                    self.gettext[id] = text.replace("\\n", "\n")
+                    self.gettext[msgid] = text.replace("\\n", "\n")
     def get(self, key, dflt):
         if self.isocode == "C":
             if key:
@@ -803,16 +803,16 @@ vcdir = ".svn"
 
 def vcmove(src, dst):
     "Move a file under version control. Only applied to unmodified files."
-    (dir, base) = os.path.split(src)
-    if os.path.exists(os.path.join(dir, ".svn")):
+    (path, base) = os.path.split(src)
+    if os.path.exists(os.path.join(path, ".svn")):
         return "svn mv %s %s" % (src, dst)
     else:
         return mv + " " + src + " " + dst
 
 def vcunmove(src, dst):
     "Revert the result of a previous move (before commit)."
-    (dir, base) = os.path.split(src)
-    if os.path.exists(os.path.join(dir, ".svn")):
+    (path, base) = os.path.split(src)
+    if os.path.exists(os.path.join(path, ".svn")):
         return "svn revert %s" % dst	# Revert the add at the destination
         return rm + " " + dst		# Remove the moved copy
         return "svn revert %s" % src	# Revert the deletion
@@ -821,16 +821,16 @@ def vcunmove(src, dst):
 
 def vcdelete(src):
     "Delete a file under version control."
-    (dir, base) = os.path.split(src)
-    if os.path.exists(os.path.join(dir, ".svn")):
+    (path, base) = os.path.split(src)
+    if os.path.exists(os.path.join(path, ".svn")):
         return "svn rm %s" % src
     else:
         return rm + " " + src
 
 def vcundelete(src):
     "Revert the result of a previous delete (before commit)."
-    (dir, base) = os.path.split(src)
-    if os.path.exists(os.path.join(dir, ".svn")):
+    (path, base) = os.path.split(src)
+    if os.path.exists(os.path.join(path, ".svn")):
         return "svn revert %s" % src	# Revert the deletion
     else:
         return "echo 'can't undelete %s, not under version control'" % src

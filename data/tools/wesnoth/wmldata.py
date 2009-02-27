@@ -415,8 +415,7 @@ class DataSub(Data):
         self.insert(sub)
         return sub
 
-    def get_or_create_sub_with_attributes(*args, **kw):
-        self, name = args
+    def get_or_create_sub_with_attributes(self, name, **kw):
         """For the uber lazy. Example:
 
             event = scenario.get_or_create_sub_with_attribute("event", name = "prestart")

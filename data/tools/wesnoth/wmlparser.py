@@ -483,8 +483,9 @@ class Parser:
                     rep = self.gettext(self.textdomain, rep[q + 1:qe])
                     rep = '"' + rep + '"'
                 if self.verbose:                        
-                    s = "Replacing {%s} with %s\n" % (macro.params[i], rep)
+                    #s = "Replacing {%s} with %s\n" % (macro.params[i], rep)
                     ##sys.stderr.write(s.encode("utf8"))
+                    pass
                 text = text.replace("{%s}" % macro.params[i], rep)
 
             if text:
@@ -530,7 +531,7 @@ class Parser:
         value = ""
         got_assign = False
         spaces = ""
-        file = "(None)"
+        filename = "(None)"
         line = -1
         while 1:
             if c == "{":
@@ -553,7 +554,7 @@ class Parser:
                     variables += [variable.rstrip()]
                     got_assign = True
                     translatable = False
-                    file = self.filename
+                    filename = self.filename
                     line = self.line
                     self.skip_whitespace()
                 else:
@@ -612,7 +613,7 @@ class Parser:
         for i in range(len(variables)):
             try:
                 key = wmldata.DataText(variables[i], values[i], translatable)
-                key.set_meta(file, line)
+                key.set_meta(filename, line)
                 data.append(key)
             except IndexError:
                 raise Error(self, "Assignement does not match: %s = %s" % (
@@ -734,10 +735,11 @@ class Parser:
                     self.textdomain = self.read_until("\n").strip()
                 else: # comment
                     line = self.read_until("\n")
-                    comment = c + line
+                    #comment = c + line
                     if self.verbose:
-                        msg = "Comment removed: %s" % comment
+                        #msg = "Comment removed: %s" % comment
                         ##sys.stderr.write(msg.encode("utf8"))
+                        pass
             elif c == '[':
                 name = self.read_until("]")[:-1]
                 if name[0] == '/':

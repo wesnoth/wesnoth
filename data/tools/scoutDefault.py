@@ -116,7 +116,7 @@ class wikiSide:
             self.updated_description = self.updated_description.replace('\n',self.ai[self.getCurrentAiNumber()].full_description + '\n',1)
             updateDescription(self.ai[0],sides)
         else:
-            if self.scouts_setting == False:
+            if not self.scouts_setting:
                 space = re.compile('^( |\t)*').search(self.full_description).group()
                 indent = getIndent(self.full_description,self.side)
                 side_scout_text = AI_SCOUTS_TEXT.replace('\t',indent)
@@ -219,7 +219,7 @@ def parseAll (resourcesFile,dirName, fileList):
             basename_out = basename_out + suffix + ext_out
             f = file(basename_out,'w')
             f.write(updated_file)
-            f.close
+            f.close()
 
 def printUsage():
     print "scoutDefault.py [-hRO] [-d directory] [-f file] [-x extension]"

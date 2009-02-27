@@ -292,7 +292,7 @@ class SVN:
         # If a directory exists in both, it needs to be scanned recursively.
 
         for dir in src_dirs:
-            if(os.path.isdir(dest + "/" + dir) == False):
+            if not os.path.isdir(dest + "/" + dir):
                 # src only
                 self.__dir_add(src + "/" + dir, dest + "/" + dir, src_svn, exclude)
             else:
@@ -300,7 +300,7 @@ class SVN:
                 self.__sync_dir(src + "/" + dir, dest + "/" + dir, src_svn, exclude)
 
         for dir in dest_dirs:
-            if(os.path.isdir(src + "/" + dir) == False):
+            if not os.path.isdir(src + "/" + dir):
                 # dest only
                 self.__dir_remove(dest + "/" + dir, not(src_svn))
                 
@@ -312,7 +312,7 @@ class SVN:
         # If a file exists in both it needs to be copied.
 
         for file in src_files:
-            if(os.path.isfile(dest + "/" + file) == False):
+            if not os.path.isfile(dest + "/" + file):
                 # src only
                 self.__file_add(src + "/" + file, dest + "/" + file, src_svn)
             else:
@@ -320,7 +320,7 @@ class SVN:
                 self.__file_copy(src + "/" + file, dest + "/" + file)
 
         for file in dest_files:
-            if(os.path.isfile(src + "/" + file) == False):
+            if not os.path.isfile(src + "/" + file):
                 # dest only
                 self.__file_remove(dest + "/" + file, not(src_svn))
 
@@ -377,7 +377,7 @@ class SVN:
 
         # add parent
         os.mkdir(dest)
-        if(src_svn == False):
+        if not src_svn:
             self.__svn_add(dest)
 
         # get sub items
@@ -403,7 +403,7 @@ class SVN:
 
         # Svn takes care of the cleaning up itself so only
         # need to remove the directory.
-        if(is_svn):
+        if is_svn:
             self.__svn_remove(dir)
         else:
             shutil.rmtree(dir)
@@ -424,7 +424,7 @@ class SVN:
 
         shutil.copy(src, dest)
 
-        if(src_svn == False):
+        if not src_svn:
             self.__svn_add(dest)
 
     """Copies a file.
@@ -449,7 +449,7 @@ class SVN:
 
         logging.debug("__file_remove file = '%s' is_svn = '%s'", file, is_svn)
 
-        if(is_svn):
+        if is_svn:
             self.__svn_remove(file)
         else:
             os.remove(file)

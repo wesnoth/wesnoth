@@ -34,7 +34,6 @@
 #  !!! ONLY USE THIS IF YOU KNOW WHAT YOU ARE DOING !!!
 
 import sys
-import os
 import getopt
 
 def printUsage():
