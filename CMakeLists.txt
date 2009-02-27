@@ -207,7 +207,7 @@ if (GETTEXT_FOUND AND ENABLE_NLS)
 
     # this is a workaround for a bug in 2.4-7
     file(MAKE_DIRECTORY locales)
-    install(DIRECTORY locales DESTINATION ${DATADIR} )
+    install(DIRECTORY locales DESTINATION ${DATADIR} USE_SOURCE_PERMISSIONS )
   endif (LOCALEDEF)
 endif (GETTEXT_FOUND AND ENABLE_NLS)
 add_subdirectory(src)
@@ -239,8 +239,8 @@ if(GUI STREQUAL "tiny")
 
   # this is a workaround for a bug in 2.4-7
   file(MAKE_DIRECTORY ${IMAGE_BUILD_DIR}/data ${IMAGE_BUILD_DIR}/images)
-  install(DIRECTORY ${IMAGE_BUILD_DIR}/data ${IMAGE_BUILD_DIR}/images DESTINATION ${DATADIR})
-  install(DIRECTORY data fonts sounds DESTINATION ${DATADIR} 
+  install(DIRECTORY ${IMAGE_BUILD_DIR}/data ${IMAGE_BUILD_DIR}/images DESTINATION ${DATADIR} USE_SOURCE_PERMISSIONS)
+  install(DIRECTORY data fonts sounds DESTINATION ${DATADIR} USE_SOURCE_PERMISSIONS
           PATTERN "*.png" EXCLUDE
           PATTERN "*.jpg" EXCLUDE
           PATTERN ".svn" EXCLUDE )
@@ -249,7 +249,7 @@ else()
   #
   # Install files
   #
-  install(DIRECTORY data fonts images sounds DESTINATION ${DATADIR} PATTERN ".svn" EXCLUDE )
+  install(DIRECTORY data fonts images sounds DESTINATION ${DATADIR} USE_SOURCE_PERMISSIONS PATTERN ".svn" EXCLUDE )
 
 endif()
 
