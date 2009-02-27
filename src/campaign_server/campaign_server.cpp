@@ -23,6 +23,7 @@
 #include "log.hpp"
 #include "network_worker.hpp"
 #include "serialization/binary_or_text.hpp"
+#include "serialization/binary_wml.hpp"
 #include "serialization/parser.hpp"
 #include "game_config.hpp"
 #include "addon_checks.hpp"
@@ -482,6 +483,10 @@ namespace {
 					} else if(config* upload = data.child("upload")) {
 						LOG_CS << "uploading campaign '" << (*upload)["name"] << "' from " << network::ip_address(sock) << ".\n";
 						config* data = upload->child("data");
+						std::string new_name;
+						const std::string& name = (*upload)["name"];
+						std::transform(name.begin(), name.end(), new_name.begin(), tolower);
+						(*upload)["name"] = new_name;
 						config* campaign = campaigns().find_child("campaign","name",(*upload)["name"]);
 						if(data == NULL) {
 							LOG_CS << "Upload aborted - no add-on data.\n";
