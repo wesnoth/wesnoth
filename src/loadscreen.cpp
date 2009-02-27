@@ -65,7 +65,6 @@ void loadscreen::global_loadscreen_manager::reset()
 
 loadscreen::loadscreen(CVideo &screen, const int &percent):
 	filesystem_counter(0),
-	binarywml_counter(0),
 	setconfig_counter(0),
 	parser_counter(0),
 	screen_(screen),
@@ -199,7 +198,6 @@ loadscreen *loadscreen::global_loadscreen = 0;
 void loadscreen::dump_counters() const
 {
 	INFO_DISP << "loadscreen: filesystem counter = " << filesystem_counter << '\n';
-	INFO_DISP << "loadscreen: binarywml counter = "  << binarywml_counter  << '\n';
 	INFO_DISP << "loadscreen: setconfig counter = "  << setconfig_counter  << '\n';
 	INFO_DISP << "loadscreen: parser counter = "     << parser_counter     << '\n';
 }
@@ -208,8 +206,6 @@ void loadscreen::dump_counters() const
 // for scaling the progressbars:
 #define CALLS_TO_FILESYSTEM 112
 #define PRCNT_BY_FILESYSTEM  20
-#define CALLS_TO_BINARYWML 9561
-#define PRCNT_BY_BINARYWML   20
 #define CALLS_TO_SETCONFIG  306
 #define PRCNT_BY_SETCONFIG   30
 #define CALLS_TO_PARSER   50448
@@ -225,25 +221,6 @@ void increment_filesystem_progress () {
 		}
 		oldpct = (PRCNT_BY_FILESYSTEM * loadscreen::global_loadscreen->filesystem_counter) / CALLS_TO_FILESYSTEM;
 		newpct = (PRCNT_BY_FILESYSTEM * ++(loadscreen::global_loadscreen->filesystem_counter)) / CALLS_TO_FILESYSTEM;
-		//std::cerr << "Calls " << num;
-		if(oldpct != newpct) {
-			//std::cerr << " percent " << newpct;
-			loadscreen::global_loadscreen->increment_progress(newpct - oldpct);
-		}
-		//std::cerr << std::endl;
-	}
-}
-
-void increment_binary_wml_progress () {
-	unsigned newpct, oldpct;
-	// Only do something if the variable is filled in.
-	// I am assuming non parallel access here!
-	if (loadscreen::global_loadscreen != 0) {
-		if (loadscreen::global_loadscreen->binarywml_counter == 0) {
-			loadscreen::global_loadscreen->increment_progress(0, _("Reading cache"));
-		}
-		oldpct = (PRCNT_BY_BINARYWML * loadscreen::global_loadscreen->binarywml_counter) / CALLS_TO_BINARYWML;
-		newpct = (PRCNT_BY_BINARYWML * ++(loadscreen::global_loadscreen->binarywml_counter)) / CALLS_TO_BINARYWML;
 		//std::cerr << "Calls " << num;
 		if(oldpct != newpct) {
 			//std::cerr << " percent " << newpct;

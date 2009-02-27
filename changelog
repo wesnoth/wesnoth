@@ -2,6 +2,9 @@ Version 1.5.11+svn:
  * Language and i18n:
    * updated translations: Chinese (Simplified), Czech, French, Polish,
      Portuguese (Brazil), Spanish, Turkish
+ * Miscellaneous and bug fixes:
+   * Removed last binaryWML references by making the save_index gzip
+     compressed. (We can still receive binaryWML via the network.)
 
 Version 1.5.11:
  * Campaigns:

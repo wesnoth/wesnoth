@@ -27,7 +27,6 @@ loadscreen *loadscreen::global_loadscreen = 0;
 
 void increment_filesystem_progress () {}
 
-void increment_binary_wml_progress () {}
 
 void increment_set_config_progress () {}
 

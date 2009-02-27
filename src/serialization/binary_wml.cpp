@@ -159,7 +159,6 @@ void write_compressed(std::ostream &out, config const &cfg, compression_schema &
 
 static void read_compressed_internal(config &cfg, std::istream &in, compression_schema &schema, int level)
 {
-	increment_binary_wml_progress();
 	if (level >= max_recursion_levels)
 		throw config::error("Too many recursion levels in compressed config read");
 

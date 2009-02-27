@@ -52,7 +52,6 @@ class loadscreen {
 
 		// Counters
 		int filesystem_counter;
-		int binarywml_counter;
 		int setconfig_counter;
 		int parser_counter;
 
@@ -89,7 +88,6 @@ private:
 
 // Global accessible functions that centralize the loadscreen related work.
 void increment_filesystem_progress();
-void increment_binary_wml_progress();
 void increment_set_config_progress();
 void increment_parser_progress();
 

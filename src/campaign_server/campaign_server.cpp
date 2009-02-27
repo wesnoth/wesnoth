@@ -22,7 +22,6 @@
 #include "filesystem.hpp"
 #include "log.hpp"
 #include "network_worker.hpp"
-#include "serialization/binary_wml.hpp"
 #include "serialization/binary_or_text.hpp"
 #include "serialization/parser.hpp"
 #include "game_config.hpp"

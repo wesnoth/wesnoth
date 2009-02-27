@@ -27,7 +27,6 @@
 #include "unit_id.hpp"
 #include "wesconfig.h"
 #include "serialization/binary_or_text.hpp"
-#include "serialization/binary_wml.hpp"
 #include "serialization/parser.hpp"
 #include "wml_exception.hpp"
 #include "formula_string_utils.hpp"
@@ -974,7 +973,7 @@ void write_save_index()
 	log_scope("write_save_index()");
 	try {
 		scoped_ostream stream = ostream_file(get_save_index_file());
-		write_compressed(*stream, save_index());
+		write(*stream, save_index());
 	} catch(io_exception& e) {
 		ERR_NG << "error writing to save index file: '" << e.what() << "'\n";
 	}

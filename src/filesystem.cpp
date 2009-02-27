@@ -260,7 +260,7 @@ std::string get_prefs_file()
 
 std::string get_save_index_file()
 {
-	return get_user_data_dir() + "/save_index";
+	return get_user_data_dir() + "/save_index.gz";
 }
 
 std::string get_saves_dir()
