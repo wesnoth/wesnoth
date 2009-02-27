@@ -4,13 +4,14 @@
 # jan2xue <75jan@163.com>, 2005
 # Huang huan <unicon221@gmail.com>, 2005.
 # Dionysus <huang.wei.bhu@gmail.com>, 2007.  (unicon)
+# sylecn <sylecn@yahoo.com.cn>, 2009.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-02-23 23:36+0100\n"
-"PO-Revision-Date: 2008-12-22 12:15+1000\n"
+"PO-Revision-Date: 2009-02-27 01:29-0600\n"
 "Last-Translator: luojie <lililjlj@gmail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
 "MIME-Version: 1.0\n"
@@ -33,9 +34,8 @@ msgstr "鼠标滚屏"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:63
-#, fuzzy
 msgid "Middle-click Scrolling"
-msgstr "鼠标滚屏"
+msgstr "单击鼠标中键滚屏"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:70
@@ -417,9 +417,8 @@ msgstr "马其顿语"
 
 #. [about]
 #: data/core/about.cfg:1711
-#, fuzzy
 msgid "Marathi Translation"
-msgstr "拉丁语"
+msgstr "马拉地语"
 
 #. [about]
 #: data/core/about.cfg:1720
@@ -548,7 +547,7 @@ msgstr "地形"
 #. [topic]: id=..commands
 #: data/core/help.cfg:74 data/core/help.cfg:732
 msgid "Commands"
-msgstr "指令"
+msgstr "命令"
 
 #. [topic]: id=..abilities_section
 #: data/core/help.cfg:95
@@ -650,7 +649,6 @@ msgstr ""
 
 #. [topic]: id=fundamentals
 #: data/core/help.cfg:140
-#, fuzzy
 msgid ""
 "While playing, keep in mind that if you mouse-over many items in the game, "
 "such as the information displayed in the status pane, a brief description "
@@ -659,8 +657,8 @@ msgid ""
 "first time."
 msgstr ""
 "在游戏中请记住：将鼠标指向游戏中许多物品时，一些信息会显示在状态条上，并附有"
-"简短的描述信息。这一功能在您第一次看到新<ref>dst=abilities text=能力</ref>时"
-"非常有用。"
+"简短的描述信息。这一功能在您第一次看到新<ref>dst='..abilities_section' "
+"text='能力'</ref>时非常有用。"
 
 #. [topic]: id=about_game
 #: data/core/help.cfg:145
@@ -739,7 +737,6 @@ msgstr "征募与召回"
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:165
-#, fuzzy
 msgid ""
 "Each side begins with one leader in their keep. At the start of any battle, "
 "and at times during it, you will need to recruit <ref>dst='..units' "
@@ -753,9 +750,9 @@ msgid ""
 "recruit it."
 msgstr ""
 "游戏开始时，每一方的指挥官都在城堡的主楼上。战斗开始之前或战斗过程中，您可能"
-"需要为您的部队征募<ref>dst=units text=单位</ref>。要想征募单位，指挥官（例"
-"如“继位者”战役中的Konrad）必须位于<ref>dst=terrain_castle text=城堡</ref>的主"
-"楼上。在菜单中选择征兵或右键点击城堡的一个空位选择<italic>text=征兵</"
+"需要为您的部队征募<ref>dst='..units' text='单位'</ref>。要想征募单位，指挥官"
+"（例如“继位者”战役中的Konrad）必须位于<ref>dst='terrain_castle' text='城堡'</"
+"ref>的主楼上。在菜单中选择征兵或右键点击城堡的一个空位选择<italic>text=征兵</"
 "italic>。会弹出征募菜单，其中列出了所有可以征募的单位类别和所需金钱。点击一个"
 "单位可以查看他的数据，然后点征兵按钮就可征募。"
 
@@ -804,7 +801,6 @@ msgstr ""
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:173
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -815,7 +811,7 @@ msgstr ""
 "\n"
 "\n"
 "单位不仅仅需要花费金币去征募或召回，还需要维护费用。参见"
-"<ref>dst=income_and_upkeep text='收入与维护费'</ref>"
+"<ref>dst='income_and_upkeep' text='收入与维护费'</ref>"
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:180
@@ -882,7 +878,6 @@ msgstr ""
 
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:199
-#, fuzzy
 msgid ""
 "The hitpoints are also indicated by an energy bar next to each unit, which "
 "is green, yellow or red. A unit with at least 1 experience point has a blue "
@@ -890,8 +885,8 @@ msgid ""
 "<ref>dst='experience_and_advancement' text='advance'</ref>."
 msgstr ""
 "生命值也显示在单位旁边的能量条上。能量条可能是绿色、黄色或红色。至少有1点经验"
-"值的单位拥有一条蓝色经验条，当单位就快<ref>dst=experience_and_advancement "
-"text=升级</ref>时经验条会显示为白色。"
+"值的单位拥有一条蓝色经验条，当单位就快<ref>dst='experience_and_advancement' "
+"text='升级'</ref>时经验条会显示为白色。"
 
 #. [topic]: id=movement
 #: data/core/help.cfg:206
@@ -948,7 +943,6 @@ msgstr ""
 
 #. [topic]: id=movement
 #: data/core/help.cfg:211
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -963,7 +957,8 @@ msgstr ""
 "\n"
 "移动时，您还需要记住“控制区域”的概念。每个单位都控制他旁边周围的格子，敌军如"
 "进入那些格子，将立即耗尽移动点数。学习如何利用控制区域，是玩韦诺的一个重点。"
-"只有<ref>dst=ability_skirmisher text='游击'</ref>能力可以忽视控制区域的影响。"
+"只有<ref>dst='ability_skirmisher' text='游击'</ref>能力可以忽视控制区域的影"
+"响。"
 
 #. [topic]: id=movement
 #: data/core/help.cfg:213
@@ -1100,7 +1095,6 @@ msgstr ""
 
 #. [topic]: id=combat
 #: data/core/help.cfg:241
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1112,9 +1106,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"以上规则有两个例外：<ref>dst=weaponspecial_magical text='魔法攻击'</ref>和"
-"<ref>dst=weaponspecial_marksman text=精准射击</ref>。“魔法攻击”可以无视地形，"
-"总是有70%的命中几率，而精准射击在进攻中也无视地形，且最少有60%的命中几率。"
+"以上规则有两个例外：<ref>dst='weaponspecial_magical' text='魔法攻击'</ref>和"
+"<ref>dst='weaponspecial_marksman' text='精准射击'</ref>。“魔法攻击”可以无视地"
+"形，总是有70%的命中几率，而精准射击在进攻中也无视地形，且最少有60%的命中几"
+"率。"
 
 #. [topic]: id=combat
 #: data/core/help.cfg:243
@@ -1130,7 +1125,6 @@ msgstr ""
 # sometimes there are quotations in "text='Time of Day'", for example, but sometimes there aren't, as in "text=resistance". what's the difference? and shall i use quotations in a likewise manner in translation?
 #. [topic]: id=combat
 #: data/core/help.cfg:245
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1146,9 +1140,9 @@ msgstr ""
 "\n"
 "根据攻击类型的不同，每次成功攻击会造成一定量的基础伤害。例如，精灵战士5-4的攻"
 "击可以造成5点的基本伤害。两种情况会对此作出修正：即"
-"<ref>dst=damage_types_and_resistance text=抗性</ref>和<ref>dst=time_of_day "
-"text='时刻'</ref>。欲查看详细的基本伤害修正，请在攻击选择菜单中选择"
-"<italic>text='伤害计算'</italic>。"
+"<ref>dst='damage_types_and_resistance' text='抗性'</ref>和"
+"<ref>dst='time_of_day'text='时刻'</ref>。欲查看详细的基本伤害修正，请在攻击选"
+"择菜单中选择<italic>text='伤害计算'</italic>。"
 
 #. [topic]: id=combat
 #: data/core/help.cfg:247
@@ -1366,7 +1360,6 @@ msgstr "治疗"
 
 #. [topic]: id=healing
 #: data/core/help.cfg:300
-#, fuzzy
 msgid ""
 "In combat, your units will inevitably take damage. When a unit "
 "<ref>dst='experience_and_advancement' text='advances'</ref>, it will heal "
@@ -1375,9 +1368,9 @@ msgid ""
 "of which take place at the beginning of your turn, before you take action."
 msgstr ""
 "战斗中，您的单位不可避免的会受到伤害。当一个单位"
-"<ref>dst=experience_and_advancement text=升级</ref>时，会恢复为满生命值状态。"
-"这会在您和敌人单位战斗结束后发生，不论当前是否是您的回合。韦诺还为单位提供了"
-"多种其他的治疗方式，全部都在您开始一回合的行动之前发生。"
+"<ref>dst='experience_and_advancement' text='升级'</ref>时，会恢复为满生命值状"
+"态。这会在您和敌人单位战斗结束后发生，不论当前是否是您的回合。韦诺还为单位提"
+"供了多种其他的治疗方式，全部都在您开始一回合的行动之前发生。"
 
 #. [topic]: id=healing
 #: data/core/help.cfg:302
@@ -1413,7 +1406,6 @@ msgstr ""
 
 #. [topic]: id=healing
 #: data/core/help.cfg:305
-#, fuzzy
 msgid ""
 "\n"
 "Healing units: Units with the <ref>dst='ability_heals +4' text='Heals'</ref> "
@@ -1422,12 +1414,12 @@ msgid ""
 "turn, or prevent Poison from causing that unit damage."
 msgstr ""
 "\n"
-"治疗单位：有<ref>dst=ability_heals text=治疗</ref>能力的单位每回合能恢复相邻"
-"盟军单位4点或8点的生命值，或阻止毒药发作。"
+"治疗单位：有<ref>dst='ability_heals +4' text='治疗'</ref>能力的单位每回合能恢"
+"复相邻盟军单位<ref>dst='ability_heals +4' text='4点'</ref>或"
+"<ref>dst='ability_heals +8' text='8点'</ref>的生命值，或阻止毒药发作。"
 
 #. [topic]: id=healing
 #: data/core/help.cfg:306
-#, fuzzy
 msgid ""
 "\n"
 "Curing units: Units with the <ref>dst='ability_cures' text='Cures'</ref> "
@@ -1435,8 +1427,8 @@ msgid ""
 "healing, if it has that ability as well)."
 msgstr ""
 "\n"
-"治愈单位：有<ref>dst=ability_cures text=治愈</ref>能力的单位可以治愈盟军相邻"
-"单位的中毒效果（如过本单位还有治疗能力，则治愈优先于治疗）。"
+"治愈单位：有<ref>dst='ability_cures' text='治愈'</ref>能力的单位可以治愈盟军"
+"相邻单位的中毒效果（如果本单位还有治疗能力，则治愈优先于治疗）。"
 
 #. [topic]: id=healing
 #: data/core/help.cfg:308
@@ -2150,7 +2142,6 @@ msgstr "洞穴"
 
 #. [topic]: id=terrain_cave
 #: data/core/help.cfg:599
-#, fuzzy
 msgid ""
 "Cave terrain represents any underground cavern with enough room for a unit "
 "to pass. Most units are wholly unfamiliar with the terrain, and thus are "
@@ -2164,8 +2155,8 @@ msgid ""
 msgstr ""
 "洞穴代表任何足以容许单位通过的地下地形。大多数单位不熟悉地形，应此速度和防御"
 "都会受负面影响。矮人和巨魔是洞穴中的主要居民，穿行于这类地形之中也相对的轻巧"
-"一些。凭借自身矮小的特点，矮人在这类地形中穿行时占尽优势。\n"
-"\n"
+"一些。凭借自身矮小的特点，矮人在这类地形中穿行时占尽优势。有时洞穴也会被"
+"<ref>dst='terrain_illuminated_cave' text='照亮'</ref>.\n"
 "大部分兵种在洞穴中有20%到40%的闪避几率，而矮人则有50%。"
 
 #. [topic]: id=terrain_rockbound_cave
@@ -2175,7 +2166,6 @@ msgstr "岩石洞穴"
 
 #. [topic]: id=terrain_rockbound_cave
 #: data/core/help.cfg:611
-#, fuzzy
 msgid ""
 "Rockbound cave terrain is formed by the action of water and wind, carrying "
 "erosive particles that carve the rock. It resembles a scraggy underground "
@@ -2191,7 +2181,8 @@ msgstr ""
 "岩石洞穴这种地形是由携带腐蚀性粒子的水和风侵蚀而成的。它类似于凹凸不平的地下"
 "洞穴，降低了大部分兵种在其中的移动效率，不过防守却因此得到增强。矮人和巨魔是"
 "洞穴中的主要居民，穿行于这类地形之中也相对的轻巧一些。凭借自身矮小的特点，矮"
-"人在这类地形中穿行时占尽优势。\n"
+"人在这类地形中穿行时占尽优势。有时洞穴也会被"
+"<ref>dst='terrain_illuminated_cave' text='照亮'</ref>.\n"
 "\n"
 "大部分兵种在岩石洞穴中有50%的闪避几率；骑兵只有40%，而矮人则有60%。"
 
@@ -2294,19 +2285,19 @@ msgstr ""
 #. [topic]: id=terrain_unwalkable
 #: data/core/help.cfg:668
 msgid "Unwalkable"
-msgstr "无行动能力"
+msgstr "无法行走的"
 
 #. [topic]: id=terrain_unwalkable
 #: data/core/help.cfg:671
-#, fuzzy
 msgid ""
 "Unwalkable terrain covers any chasm or gorge which, as the name implies, "
 "cannot be crossed simply by walking. Chasms are noted for sheer walls which "
 "would take days to traverse. As far as gameplay is concerned, only units "
 "capable of flying can cross this terrain."
 msgstr ""
-"深渊是平地上的凹陷，深不可测。深渊有着陡峭的山壁以至于要花费许多天才能通过。"
-"在游戏中，只有那些能飞过峡谷的单位可以通过这种地形。"
+"无法行走的地形包括所有深渊，峡谷。正如它的名字所暗含的，你无法步行通过这些区"
+"域。深渊以悬崖峭壁闻名，要花费许多天才能通过。在游戏中，只有拥有飞行能力的单"
+"位可以通过这种地形。"
 
 #. [topic]: id=terrain_lava
 #: data/core/help.cfg:678
@@ -2315,7 +2306,6 @@ msgstr "熔岩"
 
 #. [topic]: id=terrain_lava
 #: data/core/help.cfg:681
-#, fuzzy
 msgid ""
 "The dangers inherent in trying to walk on lava are fairly obvious. As far as "
 "movement is concerned, lava is equivalent to <ref>dst='terrain_unwalkable' "
@@ -2325,9 +2315,10 @@ msgid ""
 "This provides an attack bonus for lawful units and removes the attack bonus "
 "from chaotic units."
 msgstr ""
-"穿越熔岩是一件非常危险的事。这种地形只有那些能飞得相当高的单位才可以通过。熔"
-"岩发射出光辉，照亮了它的上空。这位守序单位提供了攻击加乘，同时消除了混乱单位"
-"的攻击加乘。"
+"在熔岩上行走所暗藏的危险显而易见。就移动而言，它和"
+"<ref>dst='terrain_unwalkable' text='无法行走的'</ref>地形相同，只有那些能飞到"
+"离它足够远的高度的单位才可以通过。熔岩发射出光辉，照亮了它的上空。这位守序单"
+"位提供了攻击加乘，同时消除了混乱单位的攻击加乘。"
 
 #. [topic]: id=terrain_ford
 #: data/core/help.cfg:688
@@ -2409,7 +2400,7 @@ msgstr ""
 #. [topic]: id=general_commands
 #: data/core/help.cfg:738
 msgid "General commands"
-msgstr "常规指令"
+msgstr "常规命令"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:743
@@ -2431,11 +2422,15 @@ msgid ""
 "Debug mode is turned off by quitting the game or :nodebug.\n"
 "\n"
 msgstr ""
+"\n"
+"开启调试模式（无法用于多人游戏）。查看<ref>dst='debug_commands' text='调试模"
+"式命令'</ref>.\n"
+"你可以通过退出游戏或输入 :nodebug 命令关闭调试模式。\n"
+"\n"
 
 # can someone explain this to me in other words? i have not seen this in real multiplayer yet
 #. [topic]: id=general_commands
 #: data/core/help.cfg:750
-#, fuzzy
 msgid ""
 "\n"
 "Set or toggle player on side between human and AI player. The player/client "
@@ -2471,7 +2466,7 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"切换一个日志域的日志级别\n"
+"切换一个日志域的记录级别\n"
 "\n"
 
 #. [topic]: id=general_commands
@@ -2481,6 +2476,9 @@ msgid ""
 "Redraws the screen and reloads any image files that have been changed.\n"
 "\n"
 msgstr ""
+"\n"
+"重绘屏幕并重新加载有变动的图片。\n"
+"\n"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:762
@@ -2527,7 +2525,7 @@ msgstr ""
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:777
 msgid "Multiplayer commands"
-msgstr "多人对战指令"
+msgstr "多人对战命令"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:781
@@ -2596,7 +2594,7 @@ msgstr ""
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:798
 msgid "Debug mode commands"
-msgstr "除错模式指令"
+msgstr "调试模式命令"
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:802
@@ -2606,6 +2604,9 @@ msgid ""
 "campaign.\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+"\n"
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:805
@@ -2648,6 +2649,9 @@ msgid ""
 "Immediately advances to the next scenario in a campaign.\n"
 "\n"
 msgstr ""
+"\n"
+"立即进入该战役的下一关（幕）。\n"
+"\n"
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:817
@@ -3126,28 +3130,27 @@ msgstr ""
 #. [option]: type=behaviour
 #: data/core/macros/ai_controller.cfg:144
 msgid "Be more aggressive"
-msgstr ""
+msgstr "更注重进攻"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:161
 msgid "aggressive."
-msgstr ""
+msgstr "注重进攻"
 
 #. [option]: type=behaviour
 #: data/core/macros/ai_controller.cfg:178
 msgid "Be more defensive"
-msgstr ""
+msgstr "更注重防守"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:191
-#, fuzzy
 msgid "defensive."
-msgstr "闪避几率"
+msgstr "防守"
 
 #. [option]: type=objective
 #: data/core/macros/ai_controller.cfg:213
 msgid "Focus on defeating..."
-msgstr ""
+msgstr "重点攻击..."
 
 #. [literal]: speaker=narrator
 #. [value]: speaker=narrator
@@ -3161,12 +3164,12 @@ msgstr ""
 #: data/core/macros/ai_controller.cfg:845
 #: data/core/macros/ai_controller.cfg:885
 msgid "Instruct ally"
-msgstr ""
+msgstr "结盟"
 
 #. [literal]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:230
 msgid "Which enemy side to focus on?"
-msgstr ""
+msgstr "着重对付哪个敌人？"
 
 #. [then]
 #. [else]
@@ -3175,24 +3178,24 @@ msgstr ""
 #: data/core/macros/ai_controller.cfg:437
 #: data/core/macros/ai_controller.cfg:442
 msgid "(side $temp_i|)"
-msgstr ""
+msgstr "(阵营 $temp_i|)"
 
 #. [then]
 #: data/core/macros/ai_controller.cfg:288
 #: data/core/macros/ai_controller.cfg:438
 msgid "$side_i_leader.name (side $temp_i|)"
-msgstr ""
+msgstr "$side_i_leader.name (阵营 $temp_i|)"
 
 #. [else]
 #: data/core/macros/ai_controller.cfg:293
 #: data/core/macros/ai_controller.cfg:443
 msgid "side $temp_i"
-msgstr ""
+msgstr "阵营 $temp_i"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:309
 msgid "focusing on defeating $this_enemy_description|."
-msgstr ""
+msgstr "重点攻击 $this_enemy_description|."
 
 #. [value]
 #. [option]: speaker=narrator
@@ -3200,75 +3203,67 @@ msgstr ""
 #: data/core/macros/ai_controller.cfg:479
 #: data/core/macros/ai_controller.cfg:870
 #: data/core/macros/ai_controller.cfg:905
-#, fuzzy
 msgid "Back"
-msgstr "黑"
+msgstr "撤退"
 
 #. [option]: type=objective
 #: data/core/macros/ai_controller.cfg:359
 msgid "Focus on protecting..."
-msgstr ""
+msgstr "重点保护..."
 
 #. [literal]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:376
-#, fuzzy
 msgid "Which friendly side to protect?"
-msgstr "我该保卫哪里？"
+msgstr "着重保护哪个盟军？"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:459
 msgid "focusing on protecting $this_ally_description|."
-msgstr ""
+msgstr "重点保护 $this_ally_description|."
 
 #. [option]: type=objective
 #: data/core/macros/ai_controller.cfg:511
-#, fuzzy
 msgid "Defend a location..."
-msgstr "守住一个地方！"
+msgstr "把守据点..."
 
 #. [print]
 #: data/core/macros/ai_controller.cfg:527
 msgid "Right-click to select a location to defend"
-msgstr ""
+msgstr "右键单击要把守的地点"
 
 #. [set_menu_item]: id=ai_controller_defend_location_picker
 #: data/core/macros/ai_controller.cfg:534
-#, fuzzy
 msgid "Defend this location"
-msgstr "守住一个地方！"
+msgstr "守住这个地方！"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:551
 msgid "focusing on defending the area around $x1|,$y1|."
-msgstr ""
+msgstr "重点防御周围 $x1|,$y1| 的区域。"
 
 #. [print]
 #: data/core/macros/ai_controller.cfg:586
 msgid "Location selection canceled"
-msgstr ""
+msgstr "地点选择已取消"
 
 #. [option]
 #: data/core/macros/ai_controller.cfg:601
-#, fuzzy
 msgid "Clear objective orders"
-msgstr "取消命令"
+msgstr "取消目标性命令"
 
 #. [option]
 #: data/core/macros/ai_controller.cfg:625
-#, fuzzy
 msgid "Clear behavior orders"
-msgstr "取消命令"
+msgstr "取消行为性命令"
 
 #. [option]
 #: data/core/macros/ai_controller.cfg:649
-#, fuzzy
 msgid "Clear all orders"
-msgstr "取消命令"
+msgstr "取消所有命令"
 
 #. [then]
 #: data/core/macros/ai_controller.cfg:775
 #: data/core/macros/ai_controller.cfg:786
-#, fuzzy
 msgid "none set."
 msgstr "无"
 
@@ -3277,7 +3272,7 @@ msgstr "无"
 msgid ""
 "$ally_leader.name (side $ally_side|) has not been given any instructions and "
 "is acting normally."
-msgstr ""
+msgstr "$ally_leader.name (阵营 $ally_side|) 没有被授予命令，目前正常行动。"
 
 #. [value]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:811
@@ -3288,29 +3283,32 @@ msgid ""
 "Behavior: $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_behaviour_description"
 msgstr ""
+"目标: $ai_controller.side_$ally_side|_current_settings."
+"currently_doing_objective_description\n"
+"行为: $ai_controller.side_$ally_side|_current_settings."
+"currently_doing_behaviour_description"
 
 #. [value]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:825
 msgid ""
 "$ally_leader.name (side $ally_side|) is carrying out the following "
 "instructions:"
-msgstr ""
+msgstr "$ally_leader.name (阵营 $ally_side|) 正在执行以下命令："
 
 #. [literal]
 #: data/core/macros/ai_controller.cfg:840
 msgid "Set objective..."
-msgstr ""
+msgstr "设置目标..."
 
 #. [literal]
 #: data/core/macros/ai_controller.cfg:880
-#, fuzzy
 msgid "Set behavior..."
-msgstr "设定密码..."
+msgstr "设置行为..."
 
 #. [literal]
 #: data/core/macros/ai_controller.cfg:920
 msgid "Exit"
-msgstr ""
+msgstr "退出"
 
 #. [advancement]: id=amla_default
 #: data/core/macros/amla.cfg:10
@@ -4676,12 +4674,12 @@ msgstr "减速"
 #. [trait]: id=dim
 #: data/core/macros/traits.cfg:209
 msgid "dim"
-msgstr ""
+msgstr "幽暗"
 
 #. [trait]: id=dim
 #: data/core/macros/traits.cfg:210
 msgid "female^dim"
-msgstr ""
+msgstr "幽暗"
 
 #. [color_range]: id=red
 #. [color_range]: id=1
@@ -5567,6 +5565,9 @@ msgid ""
 "features, and allows us to improve Wesnoth. To learn more about this or "
 "disable it, click the envelope in the bottom-right corner."
 msgstr ""
+"Wesnoth会自动发送匿名的游戏数据统计给服务器，并会保存这些数据。这会开启一些特"
+"性，并且能帮助我们改进这个游戏。你可以点击右下角的信封图标获得更多关于这项功"
+"能的信息，也可以关闭这项功能。"
 
 #. [tip]
 #: data/hardwired/tips.cfg:4
@@ -6130,35 +6131,32 @@ msgstr ""
 msgid ""
 "In many campaign scenarios, you may issue simple instructions for your "
 "computer-controlled allies using the right-click context menu."
-msgstr ""
+msgstr "在许多战役中，你都可以通过右键快捷菜单对盟友下达简单指令。"
 
 #: data/temp-file_send_data_strings.cfg:12
-#, fuzzy
 msgid "About to upload statistics - Help us make Wesnoth better for you!"
-msgstr "帮助我们改进韦诺，提升您的游戏体验！"
+msgstr "即将上传统计数据 - 帮助我们改进韦诺，提升您的游戏体验！"
 
 #: data/temp-file_send_data_strings.cfg:13
 msgid "Save my reply and do not ask again"
-msgstr ""
+msgstr "记住我的选择，以后不再提示。"
 
 #: data/temp-file_send_data_strings.cfg:14
 msgid ""
 "To change the setting later on, click on the envelope icon in the main menu."
-msgstr ""
+msgstr "如果以后想更改设置，可以单击主界面上的信封图标。"
 
 #: data/temp-file_send_data_strings.cfg:15
-#, fuzzy
 msgid "Send"
-msgstr "沙地"
+msgstr "发送"
 
 #: data/temp-file_send_data_strings.cfg:16
-#, fuzzy
 msgid "Don't send"
-msgstr "不要再问我！"
+msgstr "不发送"
 
 #: data/temp-file_send_data_strings.cfg:18
 msgid "Do not ask every time before sending data"
-msgstr ""
+msgstr "发送数据前不再询问"
 
 #. [menu]: id=menu-main
 #: data/themes/default.cfg:120 data/themes/dfool.cfg:134
@@ -6563,9 +6561,8 @@ msgid "Size"
 msgstr "大小"
 
 #: src/addon_management.cpp:791
-#, fuzzy
 msgid "Update add-ons"
-msgstr "发送插件"
+msgstr "升级插件"
 
 #: src/addon_management.cpp:792
 msgid "Select an add-on to update:"
@@ -6599,7 +6596,6 @@ msgid "All add-ons updated successfully."
 msgstr "成功升级。"
 
 #: src/addon_management.cpp:899
-#, fuzzy
 msgid "Connecting to add-ons server..."
 msgstr "正在连接到插件服务器..."
 
@@ -6641,7 +6637,6 @@ msgid "There are no add-ons available for download from this server."
 msgstr "这个服务器上无可供下载的插件。"
 
 #: src/addon_management.cpp:1032
-#, fuzzy
 msgid "Get add-ons"
 msgstr "获取插件"
 
@@ -6993,7 +6988,7 @@ msgstr "真想要开启一个服务器？"
 msgid ""
 "The server will run in a background process until all users have "
 "disconnected."
-msgstr ""
+msgstr "服务器会在后台一直运行，直到所有用户都断开连接。"
 
 #: src/game.cpp:1287
 msgid "Don't show again"
@@ -7058,22 +7053,20 @@ msgid "Invalid color range: "
 msgstr "无效颜色"
 
 #: src/game_events.cpp:134
-#, fuzzy
 msgid "Error: "
-msgstr "错误"
+msgstr "错误："
 
 #: src/game_events.cpp:137
-#, fuzzy
 msgid "Warning: "
-msgstr "上午"
+msgstr "警告："
 
 #: src/game_events.cpp:140
 msgid "Debug: "
-msgstr ""
+msgstr "调试："
 
 #: src/game_events.cpp:143
 msgid "Info: "
-msgstr ""
+msgstr "信息："
 
 #: src/game_events.cpp:1074
 msgid "Victory:"
@@ -7671,13 +7664,14 @@ msgstr "搜索"
 
 #: src/menu_events.cpp:1878
 msgid "This command is currently unavailable."
-msgstr "目前无有效指令。"
+msgstr "当前无法使用这个命令。"
 
 #: src/menu_events.cpp:1889
 msgid ""
 "Available commands list and command-specific help. Use \"help all\" to "
 "include currently unavailable commands."
 msgstr ""
+"当前可用命令列表和特定命令帮助。如果你想包括当前不可用命令，使用“help all”。"
 
 #: src/menu_events.cpp:1994
 msgid " No help available."
@@ -7687,13 +7681,13 @@ msgstr "没有帮助信息。"
 msgid ""
 "Send a query to the server. Without arguments the server should tell you the "
 "available commands."
-msgstr ""
+msgstr "向服务器发送查询。如果不带参数，服务器应该会告诉你可以使用的命令。"
 
 #: src/menu_events.cpp:2135
 msgid ""
 "Ban and kick a player or observer. If he is not in the game but on the "
 "server he will only be banned."
-msgstr ""
+msgstr "封禁并剔除一个玩家或观察者。如果他不在游戏中，则只会被封禁。"
 
 #: src/menu_events.cpp:2138
 msgid "Kick a player or observer."
@@ -7719,7 +7713,7 @@ msgstr "发送私人消息。您不能发送消息给不在游戏中同一方的
 
 #: src/menu_events.cpp:2161
 msgid "Change the log level of a log domain."
-msgstr ""
+msgstr "更改日志域的记录级别"
 
 #: src/menu_events.cpp:2163
 msgid "Add a nick to your ignores list."
@@ -7751,16 +7745,15 @@ msgstr "抛弃昵称"
 
 #: src/menu_events.cpp:2178
 msgid "Update details for your nick. For possible details see '/details'."
-msgstr ""
+msgstr "设置详细用户信息。输入/details 查看可设置的内容。"
 
 #: src/menu_events.cpp:2181
-#, fuzzy
 msgid "Request information about a nick."
 msgstr "请求一名用户的信息。"
 
 #: src/menu_events.cpp:2183
 msgid "Request a list of details you can set for your registered nick."
-msgstr ""
+msgstr "获取你可以为注册用户设置的详细内容清单。"
 
 #: src/menu_events.cpp:2305
 msgid "Refresh gui."
@@ -7772,7 +7765,7 @@ msgstr "切换一方的AI控制。"
 
 #: src/menu_events.cpp:2310
 msgid "Assign control of a side to a different player or observer."
-msgstr ""
+msgstr "将其中一方控制权授予另一玩家或观察者"
 
 #: src/menu_events.cpp:2312
 msgid "Clear chat history."
@@ -7820,7 +7813,7 @@ msgstr "关闭除错模式。"
 
 #: src/menu_events.cpp:2340
 msgid "Set the command used by the custom command hotkey"
-msgstr ""
+msgstr "为自定义热键设置命令"
 
 #: src/menu_events.cpp:2342
 msgid "Set or show alias to a command"
@@ -7835,13 +7828,12 @@ msgid "Show a scenario variable."
 msgstr "显示一个场景变量"
 
 #: src/menu_events.cpp:2348
-#, fuzzy
 msgid "Modify a unit variable. (Only top level keys are supported.)"
-msgstr "改变一个但闻的变量。（只有最顶级的键支持）"
+msgstr "修改一个单位变量。（只支持顶层的键值）"
 
 #: src/menu_events.cpp:2352
 msgid "Remove a trait from a unit. (Does not work yet.)"
-msgstr ""
+msgstr "去掉一个单位的特质。（目前这个功能还没实现。）"
 
 #: src/menu_events.cpp:2354
 msgid "Create a unit."
@@ -7853,7 +7845,7 @@ msgstr "为当前玩家设置战争迷雾。"
 
 #: src/menu_events.cpp:2358
 msgid "Toggle shroud for the current player."
-msgstr ""
+msgstr "为当前玩家打开／关闭战争云雾"
 
 #: src/menu_events.cpp:2360
 msgid "Give gold to the current player."
@@ -7861,19 +7853,19 @@ msgstr "给当前玩家金子。"
 
 #: src/menu_events.cpp:2362
 msgid "Fire a game event."
-msgstr ""
+msgstr "触发游戏事件"
 
 #: src/menu_events.cpp:2365
 msgid "Toggle overlaying of x,y coordinates on hexes."
-msgstr ""
+msgstr "显示单元格x,y坐标"
 
 #: src/menu_events.cpp:2368
 msgid "Toggle overlaying of terrain codes on hexes."
-msgstr ""
+msgstr "显示单元格地形编码"
 
 #: src/menu_events.cpp:2413
 msgid "Unknown debug level: '$level'."
-msgstr "未知调式级别：'$level'。"
+msgstr "未知调试级别：'$level'。"
 
 #: src/menu_events.cpp:2415 src/menu_events.cpp:2424
 msgid "error"
@@ -7982,46 +7974,47 @@ msgid "Server-side redirect loop"
 msgstr "服务器重定向循环"
 
 #: src/multiplayer.cpp:335
-#, fuzzy
 msgid "You must login first."
-msgstr "您必须登录这个服务器"
+msgstr "您必须先登录"
 
 #: src/multiplayer.cpp:337
 msgid "The nick '$nick' is already taken."
-msgstr ""
+msgstr "用户名 '$nick' 已经被使用。"
 
 #: src/multiplayer.cpp:339
 msgid ""
 "The nick '$nick' contains invalid characters. Only alpha-numeric characters, "
 "underscores and hyphens are allowed."
-msgstr ""
+msgstr "用户名'$nick'包含无效字符。只能使用字母，下划线(_)和连字号(-)。"
 
 #: src/multiplayer.cpp:343
 msgid "The nick '$nick' is too long. Nicks must be 18 characters or less."
-msgstr ""
+msgstr "用户名'$nick'太长了。用户名长度不得超过18个字符。"
 
 #: src/multiplayer.cpp:346
 msgid "The nick '$nick' is reserved and cannot be used by players."
-msgstr ""
+msgstr "用户名'$nick'被保留，无法被玩家使用。"
 
 #: src/multiplayer.cpp:348 src/multiplayer.cpp:350
 msgid "The nick '$nick' is registered on this server."
-msgstr ""
+msgstr "用户名'$nick'已经在这个服务器上注册。"
 
 #: src/multiplayer.cpp:351
 msgid ""
 "WARNING: There is already a client using this nick, logging in will cause "
 "that client to be kicked!"
 msgstr ""
+"警告：已经有一个客户端使用这个用户名登录。如果继续登录将剔除那个客户端。"
 
 #: src/multiplayer.cpp:354
+#, fuzzy
 msgid ""
 "Error in the login procedure (the server had no seed for your connection)."
-msgstr ""
+msgstr "登录错误 （the server had no seed for your connection）"
 
 #: src/multiplayer.cpp:357
 msgid "The password you provided was incorrect."
-msgstr ""
+msgstr "您提供的密码错误。"
 
 #: src/multiplayer_connect.cpp:82 src/multiplayer_connect.cpp:485
 #: src/multiplayer_connect.cpp:613
@@ -8434,9 +8427,8 @@ msgid "Invalid Color"
 msgstr "无效颜色"
 
 #: src/multiplayer_ui.cpp:418
-#, fuzzy
 msgid "Selected user: "
-msgstr "选择单位："
+msgstr "选择用户："
 
 #: src/multiplayer_wait.cpp:134
 msgid "Leader: "
@@ -8999,9 +8991,8 @@ msgid "% parry"
 msgstr "% 回避"
 
 #: src/unit_types.cpp:958
-#, fuzzy
 msgid "No description available."
-msgstr "没有帮助信息。"
+msgstr "没有描述信息。"
 
 #: src/unit_types.cpp:1017
 msgid "chaotic"
