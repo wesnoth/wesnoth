@@ -322,7 +322,6 @@ paths::route mouse_handler::get_route(unit_map::const_iterator un, map_location 
 
 void mouse_handler::mouse_press(const SDL_MouseButtonEvent& event, const bool browse)
 {
-	if (attackmove_) return;
 	mouse_handler_base::mouse_press(event, browse);
 }
 
@@ -444,7 +443,9 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 
 		gui().unhighlight_reach();
 		move_unit_along_current_route(check_shroud);
-	} else {
+	} else if (!attackmove_) {
+		// we block selection during attack+move (because motion is blocked)
+		// FIXME: deal with selected event when commands_disabled
 		// we select a (maybe empty) hex
 		select_hex(hex, browse);
 	}
