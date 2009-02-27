@@ -448,7 +448,7 @@ void replay::speak(const config& cfg)
 	}
 }
 
-void replay::add_chat_log_entry(const config* speak, std::stringstream& str, const std::string& team) const
+void replay::add_chat_log_entry(const config* speak, std::stringstream& str) const
 {
 	if (!speak)
 	{
@@ -480,7 +480,7 @@ void replay::remove_command(int index)
 std::stringstream message_log;
 
 
-std::string replay::build_chat_log(const std::string& team)
+std::string replay::build_chat_log()
 {
 	const config::child_list& cmd = commands();
 	std::vector<int>::iterator loc_it;
@@ -489,7 +489,7 @@ std::string replay::build_chat_log(const std::string& team)
 	{
 		last_location = *loc_it;
 		const config* speak = cmd[last_location]->child("speak");
-		add_chat_log_entry(speak,message_log,team);
+		add_chat_log_entry(speak, message_log);
 
 	}
 	message_locations.clear();
@@ -500,7 +500,7 @@ std::string replay::build_chat_log(const std::string& team)
 		const config* speak = (**i).child("speak");
 		if(speak != NULL) {
 			message_locations.push_back(last_location);
-			add_chat_log_entry(speak,str,team);
+			add_chat_log_entry(speak, str);
 		}
 	}
 #endif

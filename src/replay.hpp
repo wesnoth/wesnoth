@@ -79,7 +79,7 @@ public:
 
 	void add_chat_message_location();
 	void speak(const config& cfg);
-	std::string build_chat_log(const std::string& team);
+	std::string build_chat_log();
 
 	//get data range will get a range of moves from the replay system.
 	//if data_type is 'ALL_DATA' then it will return all data in this range
@@ -125,7 +125,7 @@ private:
 
 	void add_value(const std::string& type, int value);
 
-	void add_chat_log_entry(const config*, std::stringstream&, const std::string&) const;
+	void add_chat_log_entry(const config* speak, std::stringstream& str) const;
 
 	const config::child_list& commands() const;
 	void remove_command(int);
