@@ -260,6 +260,9 @@ void swap_grid(tgrid* grid,
 	assert(content_grid);
 	assert(widget);
 
+	// Make sure the new child has same id.
+	widget->set_id(id);
+
 	// Get the container containing the wanted widget.
 	tgrid* parent_grid = NULL;
 	if(grid) {
