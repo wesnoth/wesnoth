@@ -200,13 +200,6 @@ void editor_controller::init_mouse_actions(const config& game_config)
 	foreach (const config* c, game_config.get_children("editor_tool_hint")) {
 		mouse_action_map::iterator i = mouse_actions_.find(hotkey::get_hotkey((*c)["id"]).get_id());
 		if (i != mouse_actions_.end()) {
-			if ((*c)["id"] != "editor-paste") {
-				std::stringstream dss;
-				dss << hotkey::get_hotkey((*c)["id"]).get_description();
-				dss << "\n";
-				dss << (*c)["text"];
-				hotkey::get_hotkey((*c)["id"]).set_description(dss.str());
-			}
 			mouse_action_hints_.insert(std::make_pair(i->first, (*c)["text"]));
 		}
 	}

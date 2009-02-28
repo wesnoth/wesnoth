@@ -535,6 +535,8 @@ theme::menu::menu(const config& cfg) : object(cfg),
 {
 	if (utils::string_bool(cfg["auto_tooltip"]) && tooltip_.empty() && items_.size() == 1) {
 		tooltip_ = hotkey::get_hotkey(items_[0]).get_description();
+	} else if (utils::string_bool(cfg["tooltip_name_prepend"]) && items_.size() == 1) {
+		tooltip_ = hotkey::get_hotkey(items_[0]).get_description() + "\n" + tooltip_;
 	}
 }
 
