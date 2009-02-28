@@ -25,7 +25,8 @@
 ;; correctly generate WML data:
 ;;   (setq wesnoth-root-directory "/path/to/wesnoth/"
 ;;         wesnoth-update-output-directory "/path/to/wesnoth-mode/"
-;;         wesnoth-addition-file "/path/to/wesnoth-mode/wesnoth-wml-additions.cfg")
+;;         wesnoth-addition-file
+;;         "/path/to/wesnoth-mode/wesnoth-wml-additions.cfg")
 ;; Specifying the appropriate path in each case.
 
 ;; Although WML data is provided along with wesnoth-mode, you can generate
@@ -206,14 +207,16 @@ DIR-OR-FILE can be a file, a directory, or a list of files."
 		(point-min) t))
 	     (string-match "#define " (match-string 1))
 	     (looking-at "^[\t ]*\\[\\+?\\(\\(\\w\\|_\\)+\\)\\]"))
-	(wesnoth-append-tag-information (match-string-no-properties 1) nil nil)
+	(wesnoth-append-tag-information (match-string-no-properties 1)
+                                        nil nil)
 	(setq unmatched-tag-list (cons (match-string-no-properties 1)
 				       unmatched-tag-list)))
        ((looking-at "^[\t ]*\\[\\+?\\(\\(\\w\\|_\\)+\\)\\]")
 	(wesnoth-append-tag-information (car unmatched-tag-list)
 					(match-string-no-properties 1)
 					nil)
-	(wesnoth-append-tag-information (match-string-no-properties 1) nil nil)
+	(wesnoth-append-tag-information (match-string-no-properties 1)
+                                        nil nil)
 	(setq unmatched-tag-list (cons (match-string-no-properties 1)
 				       unmatched-tag-list)))
        ((looking-at "^[\t ]*\\(\\(\\w\\|_\\)+\\)=")
@@ -230,8 +233,9 @@ DIR-OR-FILE can be a file, a directory, or a list of files."
 SUBTAG and ATTRIBUTE are a children of TAG to be added."
   (let ((match (assoc tag wesnoth-tmp-tag-data)))
     (if (not match)
-	(add-to-list 'wesnoth-tmp-tag-data (list tag (and subtag (list subtag))
-					     (and attribute (list attribute))))
+	(add-to-list 'wesnoth-tmp-tag-data
+                     (list tag (and subtag (list subtag))
+                           (and attribute (list attribute))))
       (if subtag
 	  (let ((tmp (nth 1 match)))
 	    (when (not (member subtag tmp))
