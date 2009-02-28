@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-02-28 14:28+0100\n"
+"POT-Creation-Date: 2009-02-28 22:32+0100\n"
 "PO-Revision-Date: 2006-06-15 17:19+0200\n"
 "Last-Translator: Mark Polo <markpolo@gmail.com>\n"
 "Language-Team: Latin\n"
@@ -25,7 +25,7 @@ msgstr "Non"
 
 #. [toggle_button]: id=shroud
 #. [terrain]: id=shroud
-#: data/core/terrain.cfg:22 data/gui/default/window/mp_create_game.cfg:473
+#: data/core/terrain.cfg:22 data/gui/default/window/mp_create_game.cfg:472
 msgid "Shroud"
 msgstr "Integumentum"
 
@@ -395,7 +395,7 @@ msgstr ""
 #. [column]
 #: data/gui/default/window/addon_connect.cfg:32
 #: data/gui/default/window/mp_connect.cfg:31
-#: data/gui/default/window/mp_method_selection.cfg:152
+#: data/gui/default/window/mp_method_selection.cfg:151
 #: data/gui/default/window/mp_server_list.cfg:31
 #, fuzzy
 msgid "Connect to Server"
@@ -440,13 +440,13 @@ msgstr ""
 #: data/gui/default/window/editor_new_map.cfg:111
 #: data/gui/default/window/editor_resize_map.cfg:275
 #: data/gui/default/window/editor_settings.cfg:240
-#: data/gui/default/window/language_selection.cfg:136
+#: data/gui/default/window/language_selection.cfg:134
 #: data/gui/default/window/mp_cmd_wrapper.cfg:462
 #: data/gui/default/window/mp_connect.cfg:190
-#: data/gui/default/window/mp_create_game.cfg:552
+#: data/gui/default/window/mp_create_game.cfg:551
 #: data/gui/default/window/mp_login.cfg:262
-#: data/gui/default/window/mp_method_selection.cfg:224
-#: data/gui/default/window/mp_server_list.cfg:212 src/construct_dialog.cpp:133
+#: data/gui/default/window/mp_method_selection.cfg:223
+#: data/gui/default/window/mp_server_list.cfg:216 src/construct_dialog.cpp:133
 #: src/construct_dialog.cpp:136
 msgid "Cancel"
 msgstr "Abrogare"
@@ -602,7 +602,7 @@ msgstr ""
 #. [button]: id=ok
 #: data/gui/default/window/editor_settings.cfg:230
 #: data/gui/default/window/mp_login.cfg:234
-#: data/gui/default/window/mp_method_selection.cfg:210
+#: data/gui/default/window/mp_method_selection.cfg:209
 #: data/gui/default/window/wml_message.cfg:452
 #: data/gui/default/window/wml_message.cfg:658 src/construct_dialog.cpp:125
 #: src/construct_dialog.cpp:132
@@ -612,7 +612,7 @@ msgstr "Sane"
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=apply
 #: data/gui/default/window/editor_settings.cfg:250
-#: src/game_preferences_display.cpp:191
+#: src/game_preferences_display.cpp:190
 msgid "Apply"
 msgstr ""
 
@@ -629,8 +629,8 @@ msgid "Choose your preferred language:"
 msgstr ""
 
 #. [button]: id=ok
-#: data/gui/default/window/language_selection.cfg:121
-#: data/gui/default/window/language_selection.cfg:122
+#: data/gui/default/window/language_selection.cfg:119
+#: data/gui/default/window/language_selection.cfg:120
 #, fuzzy
 msgid "Change language"
 msgstr "Linguam mutare"
@@ -773,44 +773,44 @@ msgid "Map to play:"
 msgstr ""
 
 #. [toggle_button]: id=use_map_settings
-#: data/gui/default/window/mp_create_game.cfg:315
+#: data/gui/default/window/mp_create_game.cfg:314
 msgid "Use map settings"
 msgstr ""
 
 #. [label]
-#: data/gui/default/window/mp_create_game.cfg:333
+#: data/gui/default/window/mp_create_game.cfg:332
 #, fuzzy
 msgid "Number of turns"
 msgstr "Numerus Collum:"
 
 #. [slider]: id=turn_count
-#: data/gui/default/window/mp_create_game.cfg:356
+#: data/gui/default/window/mp_create_game.cfg:355
 msgid "Unlimited"
 msgstr ""
 
 #. [label]
-#: data/gui/default/window/mp_create_game.cfg:374
+#: data/gui/default/window/mp_create_game.cfg:373
 #, fuzzy
 msgid "Village gold"
 msgstr "Pagus"
 
 #. [label]
-#: data/gui/default/window/mp_create_game.cfg:414
+#: data/gui/default/window/mp_create_game.cfg:413
 msgid "Experience modifier"
 msgstr ""
 
 #. [toggle_button]: id=fog
-#: data/gui/default/window/mp_create_game.cfg:454
+#: data/gui/default/window/mp_create_game.cfg:453
 msgid "Fog of War"
 msgstr ""
 
 #. [toggle_button]: id=random_start_time
-#: data/gui/default/window/mp_create_game.cfg:495
+#: data/gui/default/window/mp_create_game.cfg:494
 msgid "Random start time"
 msgstr ""
 
 #. [button]: id=ok
-#: data/gui/default/window/mp_create_game.cfg:537
+#: data/gui/default/window/mp_create_game.cfg:536
 #, fuzzy
 msgid "Create game"
 msgstr "Novam Chartam Creare"
@@ -868,53 +868,53 @@ msgid ""
 msgstr ""
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:141
+#: data/gui/default/window/mp_method_selection.cfg:140
 msgid "Join Official Server"
 msgstr ""
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:142
+#: data/gui/default/window/mp_method_selection.cfg:141
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr ""
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:153
+#: data/gui/default/window/mp_method_selection.cfg:152
 msgid "Join a different server"
 msgstr ""
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:163
+#: data/gui/default/window/mp_method_selection.cfg:162
 msgid "Host Networked Game"
 msgstr ""
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:164
+#: data/gui/default/window/mp_method_selection.cfg:163
 msgid "Host a game using dedicated server 'wesnothd'"
 msgstr ""
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:174
+#: data/gui/default/window/mp_method_selection.cfg:173
 #, fuzzy
 msgid "Local Game"
 msgstr "Lusum Restituere"
 
 #. [column]
-#: data/gui/default/window/mp_method_selection.cfg:175
+#: data/gui/default/window/mp_method_selection.cfg:174
 msgid "Play a multiplayer game with the AI or humans sharing the same machine"
 msgstr ""
 
-#. [label]
-#: data/gui/default/window/mp_server_list.cfg:84
+#. [label]: id=name
+#: data/gui/default/window/mp_server_list.cfg:86
 msgid "Name"
 msgstr ""
 
-#. [label]
-#: data/gui/default/window/mp_server_list.cfg:96
+#. [label]: id=address
+#: data/gui/default/window/mp_server_list.cfg:102
 msgid "Address"
 msgstr ""
 
 #. [button]: id=ok
-#: data/gui/default/window/mp_server_list.cfg:198
+#: data/gui/default/window/mp_server_list.cfg:202
 #, fuzzy
 msgid "Select"
 msgstr "Omnia Eligere"
@@ -1031,11 +1031,11 @@ msgstr "Tractus IA Praetermittere"
 msgid "Show Grid"
 msgstr "Rete Monstare"
 
-#: src/game_preferences_display.cpp:156 src/game_preferences_display.cpp:342
+#: src/game_preferences_display.cpp:156 src/game_preferences_display.cpp:333
 msgid "Save Replay on SP/MP Victory or MP Defeat"
 msgstr ""
 
-#: src/game_preferences_display.cpp:157 src/game_preferences_display.cpp:345
+#: src/game_preferences_display.cpp:157 src/game_preferences_display.cpp:336
 msgid "Delete Auto-Saves on SP/MP Victory or MP Defeat"
 msgstr ""
 
@@ -1114,265 +1114,253 @@ msgid "Hotkeys"
 msgstr "Claves Notarum"
 
 #: src/game_preferences_display.cpp:179
-msgid "Adjust Gamma"
-msgstr "Gamma Accomodare"
-
-#: src/game_preferences_display.cpp:180
 msgid "Reverse Time Graphics"
 msgstr "Imagines Tempi Invertere"
 
-#: src/game_preferences_display.cpp:182
+#: src/game_preferences_display.cpp:181
 msgid "Sound effects"
 msgstr "Iactationes Aureolae"
 
-#: src/game_preferences_display.cpp:183
+#: src/game_preferences_display.cpp:182
 msgid "Music"
 msgstr "Musica"
 
-#: src/game_preferences_display.cpp:184
+#: src/game_preferences_display.cpp:183
 msgid "Chat Timestamping"
 msgstr "Signa Temporis in Sermone"
 
-#: src/game_preferences_display.cpp:185
+#: src/game_preferences_display.cpp:184
 msgid "sound^Advanced Options"
 msgstr ""
 
-#: src/game_preferences_display.cpp:186
+#: src/game_preferences_display.cpp:185
 msgid "sound^Standard Options"
 msgstr ""
 
-#: src/game_preferences_display.cpp:187
+#: src/game_preferences_display.cpp:186
 msgid "User Interface Sounds"
 msgstr ""
 
-#: src/game_preferences_display.cpp:190
+#: src/game_preferences_display.cpp:189
 #, fuzzy
 msgid "Custom"
 msgstr "Excidere"
 
-#: src/game_preferences_display.cpp:192
+#: src/game_preferences_display.cpp:191
 msgid "Show Unit Idle Animations"
 msgstr ""
 
-#: src/game_preferences_display.cpp:194
+#: src/game_preferences_display.cpp:193
 msgid "Music Volume:"
 msgstr "Magnitudo Musicae:"
 
-#: src/game_preferences_display.cpp:194
+#: src/game_preferences_display.cpp:193
 msgid "SFX Volume:"
 msgstr "Magnitudo Sonitus:"
 
-#: src/game_preferences_display.cpp:195
+#: src/game_preferences_display.cpp:194
 #, fuzzy
 msgid "UI Sound Volume:"
 msgstr "Magnitudo Sonitus:"
 
-#: src/game_preferences_display.cpp:196
+#: src/game_preferences_display.cpp:195
 #, fuzzy
 msgid "Bell Volume:"
 msgstr "Magnitudo Sonitus:"
 
-#: src/game_preferences_display.cpp:196
+#: src/game_preferences_display.cpp:195
 msgid "Scroll Speed:"
 msgstr "Velocitas Gyri:"
 
-#: src/game_preferences_display.cpp:197
-msgid "Gamma:"
-msgstr "Gamma:"
-
-#: src/game_preferences_display.cpp:199
+#: src/game_preferences_display.cpp:198
 msgid "Sample Rate (Hz):"
 msgstr ""
 
-#: src/game_preferences_display.cpp:200
+#: src/game_preferences_display.cpp:199
 msgid "Frequency:"
 msgstr ""
 
-#: src/game_preferences_display.cpp:224
+#: src/game_preferences_display.cpp:223
 msgid "Sound effects on/off"
 msgstr "Iactationes Aureolas ponere/tollere"
 
-#: src/game_preferences_display.cpp:228
+#: src/game_preferences_display.cpp:227
 msgid "Change the sound effects volume"
 msgstr "Magnitudinem sonituum mutare"
 
-#: src/game_preferences_display.cpp:231
+#: src/game_preferences_display.cpp:230
 msgid "Music on/off"
 msgstr "Musicam ponere/tollere"
 
-#: src/game_preferences_display.cpp:235
+#: src/game_preferences_display.cpp:234
 msgid "Change the music volume"
 msgstr "Magnitudinem musicae mutare"
 
-#: src/game_preferences_display.cpp:241
+#: src/game_preferences_display.cpp:240
 #, fuzzy
 msgid "Change the bell volume"
 msgstr "Magnitudinem musicae mutare"
 
-#: src/game_preferences_display.cpp:244
+#: src/game_preferences_display.cpp:243
 msgid "Turn menu and button sounds on/off"
 msgstr ""
 
-#: src/game_preferences_display.cpp:248
+#: src/game_preferences_display.cpp:247
 msgid "Change the sound volume for button clicks, etc."
 msgstr ""
 
-#: src/game_preferences_display.cpp:250
+#: src/game_preferences_display.cpp:249
 #, fuzzy
 msgid "Change the sample rate"
 msgstr "Linguam mutare"
 
-#: src/game_preferences_display.cpp:259
+#: src/game_preferences_display.cpp:258
 #, fuzzy
 msgid "User defined sample rate"
 msgstr "Linguam mutare"
 
-#: src/game_preferences_display.cpp:268 src/game_preferences_display.cpp:272
+#: src/game_preferences_display.cpp:267 src/game_preferences_display.cpp:271
 #, fuzzy
 msgid "Change the buffer size"
 msgstr "Magnitudinem musicae mutare"
 
-#: src/game_preferences_display.cpp:270 src/game_preferences_display.cpp:840
+#: src/game_preferences_display.cpp:269 src/game_preferences_display.cpp:811
 msgid "Buffer Size: "
 msgstr ""
 
-#: src/game_preferences_display.cpp:277
+#: src/game_preferences_display.cpp:276
 msgid "Change the speed of scrolling around the map"
 msgstr "Velocitatem gyri in charta mutare"
 
-#: src/game_preferences_display.cpp:282 src/game_preferences_display.cpp:284
+#: src/game_preferences_display.cpp:281 src/game_preferences_display.cpp:283
 msgid "Set the amount of chat lines shown"
 msgstr "Eligere numerum linearum sermonis monstratum"
 
-#: src/game_preferences_display.cpp:287
+#: src/game_preferences_display.cpp:286
 msgid "Add a timestamp to chat messages"
 msgstr "Signum temporis ad nuntios adiungere"
 
-#: src/game_preferences_display.cpp:290 src/game_preferences_display.cpp:295
-msgid "Change the brightness of the display"
-msgstr "Candorem scrinii mutare"
-
-#: src/game_preferences_display.cpp:298
+#: src/game_preferences_display.cpp:289
 msgid "Choose whether the game should run full screen or in a window"
 msgstr "Eligere si lusus in scrinio aut in fenestra mostratur"
 
-#: src/game_preferences_display.cpp:301
+#: src/game_preferences_display.cpp:292
 msgid ""
 "Should the map view scroll to a unit when an action or move is animated."
 msgstr ""
 
-#: src/game_preferences_display.cpp:304
+#: src/game_preferences_display.cpp:295
 msgid "Make units move and fight faster"
 msgstr "Efficere ut unitates celerius moveantur et pugnent"
 
-#: src/game_preferences_display.cpp:321
+#: src/game_preferences_display.cpp:312
 #, fuzzy
 msgid "Units move and fight speed"
 msgstr "Efficere ut unitates celerius moveantur et pugnent"
 
-#: src/game_preferences_display.cpp:324
+#: src/game_preferences_display.cpp:315
 #, fuzzy
 msgid "Show unit idle animations"
 msgstr "Animationem saltare"
 
-#: src/game_preferences_display.cpp:330
+#: src/game_preferences_display.cpp:321
 msgid "Set the frequency of unit idle animations"
 msgstr ""
 
-#: src/game_preferences_display.cpp:335
+#: src/game_preferences_display.cpp:326
 msgid "Set maximum number of automatic saves to be retained"
 msgstr ""
 
-#: src/game_preferences_display.cpp:339
+#: src/game_preferences_display.cpp:330
 msgid "Do not animate AI units moving"
 msgstr "Non animare tractus unitatum IA"
 
-#: src/game_preferences_display.cpp:347
+#: src/game_preferences_display.cpp:338
 msgid "Overlay a grid onto the map"
 msgstr "Rete monstrare super charta"
 
-#: src/game_preferences_display.cpp:350
+#: src/game_preferences_display.cpp:341
 msgid "Sort the player list in the lobby by player groups"
 msgstr ""
 
-#: src/game_preferences_display.cpp:353
+#: src/game_preferences_display.cpp:344
 #, fuzzy
 msgid "Show icons in front of the player names in the lobby."
 msgstr ""
 "Nuntios de lusoribus qui in vestibulum plurum lusorum intrant monstrare."
 
-#: src/game_preferences_display.cpp:356
+#: src/game_preferences_display.cpp:347
 msgid "Uncheck to delete the saved password (on exit)."
 msgstr ""
 
-#: src/game_preferences_display.cpp:359
+#: src/game_preferences_display.cpp:350
 #, fuzzy
 msgid "Do not show messages about players joining the multiplayer lobby"
 msgstr ""
 "Nuntios de lusoribus qui in vestibulum plurum lusorum intrant monstrare."
 
-#: src/game_preferences_display.cpp:361
+#: src/game_preferences_display.cpp:352
 #, fuzzy
 msgid "Show messages about your friends joining the multiplayer lobby"
 msgstr ""
 "Nuntios de lusoribus qui in vestibulum plurum lusorum intrant monstrare."
 
-#: src/game_preferences_display.cpp:363
+#: src/game_preferences_display.cpp:354
 #, fuzzy
 msgid "Show messages about all players joining the multiplayer lobby"
 msgstr ""
 "Nuntios de lusoribus qui in vestibulum plurum lusorum intrant monstrare."
 
-#: src/game_preferences_display.cpp:365
+#: src/game_preferences_display.cpp:356
 msgid "Find and set path to MP server to host LAN games."
 msgstr ""
 
-#: src/game_preferences_display.cpp:366
+#: src/game_preferences_display.cpp:357
 msgid "View and edit your friends and ignores list"
 msgstr ""
 
-#: src/game_preferences_display.cpp:367
+#: src/game_preferences_display.cpp:358
 msgid "Back to the multiplayer options"
 msgstr ""
 
-#: src/game_preferences_display.cpp:368
+#: src/game_preferences_display.cpp:359
 msgid "Add this username to your friends list"
 msgstr ""
 
-#: src/game_preferences_display.cpp:369
+#: src/game_preferences_display.cpp:360
 msgid "Add this username to your ignores list"
 msgstr ""
 
-#: src/game_preferences_display.cpp:370
+#: src/game_preferences_display.cpp:361
 msgid "Remove this username from your list"
 msgstr ""
 
-#: src/game_preferences_display.cpp:373
+#: src/game_preferences_display.cpp:364
 msgid "Insert a username"
 msgstr ""
 
-#: src/game_preferences_display.cpp:376
+#: src/game_preferences_display.cpp:367
 msgid "Show text above a unit when it is hit to display damage inflicted"
 msgstr ""
 "Titulum super unitate damnum inflictum ostendens monstrare cum percutitur"
 
-#: src/game_preferences_display.cpp:378
+#: src/game_preferences_display.cpp:369
 msgid "Change the resolution the game runs at"
 msgstr "Modum visivum lusi mutare"
 
-#: src/game_preferences_display.cpp:379
+#: src/game_preferences_display.cpp:370
 msgid "Change the theme the game runs with"
 msgstr "Modum visivum lusi mutare"
 
-#: src/game_preferences_display.cpp:382
+#: src/game_preferences_display.cpp:373
 msgid "Display a dialog at the beginning of your turn"
 msgstr "Cestam dialogi in initio tractus tui monstrare"
 
-#: src/game_preferences_display.cpp:385
+#: src/game_preferences_display.cpp:376
 msgid "Play a bell sound at the beginning of your turn"
 msgstr "Tintinnabuli sonitum in initio tractus tui facere"
 
-#: src/game_preferences_display.cpp:388
+#: src/game_preferences_display.cpp:379
 msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
@@ -1380,91 +1368,91 @@ msgstr ""
 "Circulum coloratum circa fundamentum cuiusque unitatis partem ostendentem "
 "monstrare."
 
-#: src/game_preferences_display.cpp:391
+#: src/game_preferences_display.cpp:382
 msgid "Choose whether the sun moves left-to-right or right-to-left"
 msgstr ""
 "Eligere si sol movetur a sinistra ad dexteram aut a dextera ad sinistram"
 
-#: src/game_preferences_display.cpp:394
+#: src/game_preferences_display.cpp:385
 msgid "Use colored mouse cursors (may be slower)"
 msgstr "Indiciis muris coloratis uti (potest esse lentior)"
 
-#: src/game_preferences_display.cpp:397
+#: src/game_preferences_display.cpp:388
 msgid "Use graphical special effects (may be slower)"
 msgstr "Iactationibus graphicis uti (potest esse lentior)"
 
-#: src/game_preferences_display.cpp:399
+#: src/game_preferences_display.cpp:390
 msgid "View and configure keyboard shortcuts"
 msgstr "Aspicere et imponere claves notarum"
 
-#: src/game_preferences_display.cpp:701
+#: src/game_preferences_display.cpp:679
 #, fuzzy
 msgid "Speed: "
 msgstr "Velocitas Gyri:"
 
-#: src/game_preferences_display.cpp:706 src/game_preferences_display.cpp:708
+#: src/game_preferences_display.cpp:684 src/game_preferences_display.cpp:686
 msgid "Maximum Auto-Saves: "
 msgstr ""
 
-#: src/game_preferences_display.cpp:706
+#: src/game_preferences_display.cpp:684
 msgid "infinite"
 msgstr ""
 
-#: src/game_preferences_display.cpp:892
+#: src/game_preferences_display.cpp:863
 msgid "Chat Lines: "
 msgstr "Lineae Sermonis: "
 
-#: src/game_preferences_display.cpp:914 src/game_preferences_display.cpp:922
+#: src/game_preferences_display.cpp:885 src/game_preferences_display.cpp:893
 msgid "Invalid username"
 msgstr ""
 
-#: src/game_preferences_display.cpp:994
+#: src/game_preferences_display.cpp:965
 msgid "yes"
 msgstr "ita"
 
-#: src/game_preferences_display.cpp:996
+#: src/game_preferences_display.cpp:967
 msgid "no"
 msgstr "non"
 
-#: src/game_preferences_display.cpp:1029
+#: src/game_preferences_display.cpp:1000
 msgid "(empty list)"
 msgstr ""
 
-#: src/game_preferences_display.cpp:1150
+#: src/game_preferences_display.cpp:1116
 msgid "Prefs section^General"
 msgstr "Communes"
 
-#: src/game_preferences_display.cpp:1151
+#: src/game_preferences_display.cpp:1117
 msgid "Prefs section^Display"
 msgstr "Scrinium"
 
-#: src/game_preferences_display.cpp:1152
+#: src/game_preferences_display.cpp:1118
 msgid "Prefs section^Sound"
 msgstr "Sonitus"
 
-#: src/game_preferences_display.cpp:1153
+#: src/game_preferences_display.cpp:1119
 msgid "Prefs section^Multiplayer"
 msgstr "Plurum Lusorum"
 
-#: src/game_preferences_display.cpp:1154
+#: src/game_preferences_display.cpp:1120
 msgid "Advanced section^Advanced"
 msgstr "Provecta"
 
-#: src/game_preferences_display.cpp:1189
+#: src/game_preferences_display.cpp:1155
 msgid "Saved Theme Preference: "
 msgstr "Impostatio Modi Visivi Servata:"
 
-#: src/game_preferences_display.cpp:1195
+#: src/game_preferences_display.cpp:1161
 msgid "New theme will take effect on next new or loaded game."
 msgstr ""
 "Novum modum visivum effectum habebit cum primum lusum restues vel incipies."
 
-#: src/game_preferences_display.cpp:1199
+#: src/game_preferences_display.cpp:1165
 #, fuzzy
 msgid "No known themes. Try changing from within an existing game."
 msgstr "Nulli modi visivi noti.  Forsitan potes mutare inter lusum existens."
 
-#: src/game_preferences_display.cpp:1241
+#: src/game_preferences_display.cpp:1207
 msgid "Find $filename server binary to host networked games"
 msgstr ""
 
@@ -1525,8 +1513,8 @@ msgstr ""
 
 #: src/gui/widgets/settings.cpp:745 src/gui/widgets/settings.cpp:899
 #: src/gui/widgets/window_builder.cpp:378
-#: src/gui/widgets/window_builder.cpp:911
-#: src/gui/widgets/window_builder.cpp:1115
+#: src/gui/widgets/window_builder.cpp:903
+#: src/gui/widgets/window_builder.cpp:1107
 msgid "No grid defined."
 msgstr ""
 
@@ -1538,21 +1526,21 @@ msgstr ""
 msgid "Number of columns differ."
 msgstr ""
 
-#: src/gui/widgets/window_builder.cpp:751
+#: src/gui/widgets/window_builder.cpp:743
 #, fuzzy
 msgid "No list defined."
 msgstr "Creatio chartae fefellit."
 
-#: src/gui/widgets/window_builder.cpp:754
+#: src/gui/widgets/window_builder.cpp:746
 msgid "A 'list_definition' should contain one row."
 msgstr ""
 
-#: src/gui/widgets/window_builder.cpp:773
+#: src/gui/widgets/window_builder.cpp:765
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr ""
 
-#: src/gui/widgets/window_builder.cpp:1042
+#: src/gui/widgets/window_builder.cpp:1034
 msgid "The number of value_labels and values don't match."
 msgstr ""
 
@@ -2014,7 +2002,7 @@ msgstr "Imago Scrinii"
 msgid "Screenshot failed"
 msgstr "Imago Scrinii"
 
-#: src/mapgen_dialog.cpp:109 src/preferences_display.cpp:224
+#: src/mapgen_dialog.cpp:109 src/preferences_display.cpp:202
 msgid "Close Window"
 msgstr "Fenestram Claudere"
 
@@ -2079,7 +2067,7 @@ msgstr ""
 msgid "Error creating or aquiring an image."
 msgstr ""
 
-#: src/preferences_display.cpp:75 src/preferences_display.cpp:113
+#: src/preferences_display.cpp:74 src/preferences_display.cpp:112
 msgid ""
 "The video mode could not be changed. Your window manager must be set to 16 "
 "bits per pixel to run the game in windowed mode. Your display must support "
@@ -2090,46 +2078,46 @@ msgstr ""
 "luso cum scrinio toto uti, necesse est habere modum MXXIV x DCCLXVIII x XVI "
 "in scrinio."
 
-#: src/preferences_display.cpp:228
+#: src/preferences_display.cpp:206
 msgid "Hotkey Settings"
 msgstr "Impostationes Clavium Notarum"
 
-#: src/preferences_display.cpp:234 src/preferences_display.cpp:302
+#: src/preferences_display.cpp:212 src/preferences_display.cpp:280
 #, fuzzy
 msgid "Press desired Hotkey (Esc cancels)"
 msgstr "Premere Clavem Notarum volutam"
 
-#: src/preferences_display.cpp:253
+#: src/preferences_display.cpp:231
 msgid "Action"
 msgstr "Actio"
 
-#: src/preferences_display.cpp:253
+#: src/preferences_display.cpp:231
 msgid "Binding"
 msgstr "Adligatio"
 
-#: src/preferences_display.cpp:265
+#: src/preferences_display.cpp:243
 msgid "Change Hotkey"
 msgstr "Clavem Notarum Mutare"
 
-#: src/preferences_display.cpp:268
+#: src/preferences_display.cpp:246
 #, fuzzy
 msgid "Clear Hotkey"
 msgstr "Clavem Notarum Mutare"
 
-#: src/preferences_display.cpp:335
+#: src/preferences_display.cpp:313
 msgid "This Hotkey is already in use."
 msgstr "Haec Clavis Notarum iam usum habet."
 
-#: src/preferences_display.cpp:347
+#: src/preferences_display.cpp:325
 msgid ""
 "Warning: screenshot hotkeys not combined with Control, Alt or Meta keys."
 msgstr ""
 
-#: src/preferences_display.cpp:438
+#: src/preferences_display.cpp:416
 msgid "There are no alternative video modes available"
 msgstr "Carent alteris modis visivis"
 
-#: src/preferences_display.cpp:467
+#: src/preferences_display.cpp:445
 msgid "Choose Resolution"
 msgstr "Resolutionem Eligere"
 
@@ -2162,6 +2150,15 @@ msgstr ""
 #: src/wml_exception.cpp:75
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr ""
+
+#~ msgid "Adjust Gamma"
+#~ msgstr "Gamma Accomodare"
+
+#~ msgid "Gamma:"
+#~ msgstr "Gamma:"
+
+#~ msgid "Change the brightness of the display"
+#~ msgstr "Candorem scrinii mutare"
 
 #, fuzzy
 #~ msgid "Change username"
