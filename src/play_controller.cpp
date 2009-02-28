@@ -790,11 +790,7 @@ void play_controller::expand_autosaves(std::vector<std::string>& items)
 					} else {
 						newsaves.push_back(name);
 					}
-					if (turn == start_turn_) {
-						newitems.push_back(_("Back to start"));
-					} else {
-						newitems.push_back(_("Back to turn ") + lexical_cast<std::string>(turn));
-					}
+					newitems.push_back(_("Back to turn ") + lexical_cast<std::string>(turn));
 				}
 			}
 
