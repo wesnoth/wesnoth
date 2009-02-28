@@ -1450,7 +1450,7 @@ void formula_ai::make_candidate_moves() {
 	while( best_move != candidate_moves_.end() ) {
 		int best_score = (*best_move)->get_score();
 		// If no evals > 0, fallback
-		if(best_score < 0) {
+		if(best_score <= 0) {
 			if (master_)
 			{
 				ai_interface* fallback = create_ai("", get_info());
@@ -2151,7 +2151,9 @@ void candidate_move::evaluate_move(const formula_ai* ai, unit_map& units,
                                                     res = (formula::evaluate(eval_, callable)).as_int();
                                                 } catch(formula_error& e) {
                                                         ai->handle_exception(e);
+                                                        res = -1000;
                                                 } catch(type_error& e) {
+                                                        res = -1000;
                                                         LOG_AI << "formula type error while evaluating candidate move: " << e.message << "\n";
                                                 }
 						if(res > score_) {
