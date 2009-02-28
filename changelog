@@ -1,6 +1,8 @@
 Version 1.5.11+svn:
  * Campaign server:
-   * ignore case on add-on (file)names; fixed bug #13080
+   * Ignore case on add-on (file)names. (bug #13080)
+   * Disallow uploading of add-ons with no title, type, author, version or
+     description specified and warn about invalid versions.
  * Language and i18n:
    * updated translations: Chinese (Simplified), Czech, French, Polish,
      Portuguese (Brazil), Spanish, Turkish

@@ -80,7 +80,7 @@ namespace {
 	config construct_error(const std::string& msg)
 	{
 		config cfg;
-		cfg.add_child("error")["message"] = msg;
+		cfg.add_child("error")["message"] = "#Error: " + msg;
 		LOG_CS << "ERROR: "<<msg<<"\n";
 		return cfg;
 	}
@@ -490,16 +490,28 @@ namespace {
 						config* campaign = campaigns().find_child("campaign","name",(*upload)["name"]);
 						if(data == NULL) {
 							LOG_CS << "Upload aborted - no add-on data.\n";
-							network::send_data(construct_error("No add-on data was supplied."), sock, gzipped);
+							network::send_data(construct_error("Add-on rejected: No add-on data was supplied."), sock, gzipped);
 						} else if(addon_name_legal((*upload)["name"]) == false) {
 							LOG_CS << "Upload aborted - invalid add-on name.\n";
-							network::send_data(construct_error("The name of the add-on is invalid."), sock, gzipped);
+							network::send_data(construct_error("Add-on rejected: The name of the add-on is invalid."), sock, gzipped);
+						} else if(((*upload)["title"]).empty()) {
+							LOG_CS << "Upload aborted - no add-on title specified.\n";
+							network::send_data(construct_error("Add-on rejected: You did not specify the title of the add-on in the pbl file!"), sock, gzipped);
 						} else if(((*upload)["type"]).empty()) {
 							LOG_CS << "Upload aborted - no add-on type specified.\n";
-							network::send_data(construct_error("The type of the add-on is empty. Please specify an appropriate type."), sock, gzipped);
+							network::send_data(construct_error("Add-on rejected: You did not specify the type of the add-on in the pbl file!"), sock, gzipped);
+						} else if(((*upload)["author"]).empty()) {
+							LOG_CS << "Upload aborted - no add-on author specified.\n";
+							network::send_data(construct_error("Add-on rejected: You did not specify the author(s) of the add-on in the pbl file!"), sock, gzipped);
+						} else if(((*upload)["version"]).empty()) {
+							LOG_CS << "Upload aborted - no add-on version specified.\n";
+							network::send_data(construct_error("Add-on rejected: You did not specify the version of the add-on in the pbl file!"), sock, gzipped);
+						} else if(((*upload)["description"]).empty()) {
+							LOG_CS << "Upload aborted - no add-on description specified.\n";
+							network::send_data(construct_error("Add-on rejected: You did not specify a description of the add-on in the pbl file!"), sock, gzipped);
 						} else if(check_names_legal(*data) == false) {
 							LOG_CS << "Upload aborted - invalid file names in add-on data.\n";
-							network::send_data(construct_error("The add-on contains an illegal file or directory name."), sock, gzipped);
+							network::send_data(construct_error("Add-on rejected: The add-on contains an illegal file or directory name."), sock, gzipped);
 						} else if(campaign != NULL && (*campaign)["passphrase"] != (*upload)["passphrase"]) {
 							// the user password failed, now test for the master password, in master password
 							// mode the upload behaves different since it's only intended to update translations.
@@ -544,14 +556,14 @@ namespace {
 
 							} else {
 								LOG_CS << "Upload aborted - incorrect passphrase.\n";
-								network::send_data(construct_error("The add-on already exists, and your passphrase was incorrect."), sock, gzipped);
+								network::send_data(construct_error("Add-on rejected: The add-on already exists, and your passphrase was incorrect."), sock, gzipped);
 							}
 						} else {
 							LOG_CS << "Upload is owner upload.\n";
 							std::string message = "Add-on accepted.";
 
 							if (!version_info((*upload)["version"]).good()) {
-								message += "\n#Note: The version you specified is invalid. This add-on will be ignored for automatic update checks.";
+								message += "\n<255,255,0>Note: The version you specified is invalid. This add-on will be ignored for automatic update checks.";
 							}
 
 							if(campaign == NULL) {
