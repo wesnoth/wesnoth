@@ -44,6 +44,15 @@ void tlistbox::add_row(const string_map& item)
 	assert(generator_);
 	generator_->create_item(
 			-1, list_builder_, item, callback_list_item_clicked);
+
+	tgrid& grid = generator_->get_item(get_item_count() - 1);
+	twindow* window = get_window();
+	assert(window);
+
+	if(get_item_count() == 1) {
+		init_linked_size_widets(*window, grid.begin(), grid.end());
+	}
+	add_linked_size_widgets(*window, grid.begin(), grid.end());
 }
 
 void tlistbox::add_row(
@@ -52,6 +61,15 @@ void tlistbox::add_row(
 	assert(generator_);
 	generator_->create_item(
 			-1, list_builder_, data, callback_list_item_clicked);
+
+	tgrid& grid = generator_->get_item(get_item_count() - 1);
+	twindow* window = get_window();
+	assert(window);
+
+	if(get_item_count() == 1) {
+		init_linked_size_widets(*window, grid.begin(), grid.end());
+	}
+	add_linked_size_widgets(*window, grid.begin(), grid.end());
 }
 
 unsigned tlistbox::get_item_count() const
@@ -187,6 +205,48 @@ void tlistbox::handle_key_right_arrow(SDLMod modifier, bool& handled)
 	// Inherited.
 	if(!handled) {
 		tscrollbar_container::handle_key_right_arrow(modifier, handled);
+	}
+}
+
+void tlistbox::init_linked_size_widets(twindow& window,
+		const tgrid::iterator& begin, const tgrid::iterator& end)
+{
+	for(tgrid::iterator itor = begin; itor != end; ++itor) {
+
+		assert(*itor);
+
+		// Add to list.
+		if(!itor->id().empty()) {
+			window.init_linked_size_group(itor->id(), true, false);
+		}
+
+		// Recurse though the children.
+		tcontainer_* container = dynamic_cast<tcontainer_*>(*itor);
+		if(container) {
+			init_linked_size_widets(window,
+					container->begin(), container->end());
+		}
+	}
+}
+
+void tlistbox::add_linked_size_widgets(twindow& window,
+		const tgrid::iterator& begin, const tgrid::iterator& end)
+{
+	for(tgrid::iterator itor = begin; itor != end; ++itor) {
+
+		assert(*itor);
+
+		// Add to list.
+		if(!itor->id().empty()) {
+			window.add_linked_widget(itor->id(), *itor);
+		}
+
+		// Recurse though the children.
+		tcontainer_* container = dynamic_cast<tcontainer_*>(*itor);
+		if(container) {
+			add_linked_size_widgets(window,
+					container->begin(), container->end());
+		}
 	}
 }
 

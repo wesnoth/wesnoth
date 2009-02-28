@@ -154,6 +154,49 @@ protected:
 private:
 
 	/**
+	 * @todo A listbox must have the following config parameters in the
+	 * instanciation: 
+	 * - fixed row height?
+	 * - fixed column width?
+	 * and if so the following ways to set them
+	 * - fixed depending on header ids
+	 * - fixed depending on footer ids
+	 * - fixed depending on first row ids
+	 * - fixed depending on list (the user has to enter a list of ids)
+	 *
+	 * For now it's always fixed width depending on the first row.
+	 */  
+
+	/**
+	 * Initializes the linked size list.
+	 *
+	 * The routine goes from begin to end through the widgets and if the widget
+	 * has an id it's used to initialize the linked size list of the parent
+	 * window. If the widget is a container all it's children are also
+	 * initialized.
+	 *
+	 * @param window              The parent window.
+	 * @param begin               Begin iterator.
+	 * @param end                 End iterator.
+	 */
+	void init_linked_size_widets(twindow& window,
+			const tgrid::iterator& begin, const tgrid::iterator& end);
+
+	/**
+	 * Adds widgets to the linked size list.
+	 *
+	 * The routine goes from begin to end through the widgets and if the widget
+	 * has an id it's added to the linked size list of the parent window. If
+	 * the widget is a container all it's children are also added.
+	 *
+	 * @param window              The parent window.
+	 * @param begin               Begin iterator.
+	 * @param end                 End iterator.
+	 */
+	void add_linked_size_widgets(twindow& window,
+			const tgrid::iterator& begin, const tgrid::iterator& end);
+
+	/**
 	 * Finishes the building initialization of the widget.
 	 *
 	 * @param header              Builder for the header.
