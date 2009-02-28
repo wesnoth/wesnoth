@@ -15,6 +15,8 @@
 #include <boost/lexical_cast.hpp>
 #include <vector>
 
+#include "unit.hpp"
+
 #include "menu_events.hpp"
 #include "formula_ai.hpp"
 #include "log.hpp"
@@ -1680,6 +1682,8 @@ bool formula_ai::execute_variant(const variant& var, bool commandline)
                                 }
 			}
 		} else if(attack) {
+                        LOG_AI << "ATTACK: " << attack->src() << " -> " << attack->dst() << " " << attack->weapon() << "\n";
+
 			if(get_info().units.count(attack->dst()) == 0) {
 				//this is a legitimate situation; someone might send a series of units in
 				//to attack, but if the defender dies in the middle, we'll save the unit
@@ -1687,11 +1691,25 @@ bool formula_ai::execute_variant(const variant& var, bool commandline)
 				continue;
 			}
 
-			if(attack->move_from() != attack->src()) {
+                        std::map<map_location,paths>::iterator path = possible_moves_.find(attack->move_from());
+
+                        if( path->second.routes.count(attack->src()) == 0) {
+                            made_move = true;
+                            continue;
+                        }
+
+                        unit_map::iterator unit_it = units_.find(attack->move_from());
+
+			if(attack->move_from() != attack->src() && (unit_it->second.movement_left() != 0) && get_info().map.on_board(attack->src() )) {
 				move_unit(attack->move_from(), attack->src(), possible_moves_);
-			}
-			LOG_AI << "ATTACK: " << attack->src() << " -> " << attack->dst() << " " << attack->weapon() << "\n";
-			attack_enemy(attack->src(), attack->dst(), attack->weapon(), attack->defender_weapon());
+			} else {
+                            made_move = true;
+                            continue;
+                        }
+
+                        if(unit_it->second.attacks_left() != 0) {
+                            attack_enemy(attack->src(), attack->dst(), attack->weapon(), attack->defender_weapon());
+                        }
 			made_move = true;
 		} else if(attack_analysis) {
 			//If we get an attack analysis back we will do the first attack.
