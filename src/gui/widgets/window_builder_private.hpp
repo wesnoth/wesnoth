@@ -174,8 +174,6 @@ public:
 	 * serialize the data in the config, so the config is no longer required.
 	 */
 	std::vector<string_map>list_data;
-
-	const bool assume_fixed_row_size;
 };
 
 struct tbuilder_menubar : public tbuilder_control

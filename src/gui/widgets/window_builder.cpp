@@ -695,8 +695,7 @@ tbuilder_listbox::tbuilder_listbox(const config& cfg) :
 	header(cfg.child("header") ? new tbuilder_grid(*(cfg.child("header"))) : 0),
 	footer(cfg.child("footer") ? new tbuilder_grid(*(cfg.child("footer"))) : 0),
 	list_builder(0),
-	list_data(),
-	assume_fixed_row_size(utils::string_bool(cfg["assume_fixed_row_size"]))
+	list_data()
 {
 /*WIKI
  * @page = GUIToolkitWML
@@ -730,17 +729,6 @@ tbuilder_listbox::tbuilder_listbox(const config& cfg) :
  *                                     initial data for the listbox. Every row
  *                                     must have the same number of columns as
  *                                     the 'list_definition'.
- *
- *     assume_fixed_row_size (bool = true)
- *                                     If not all rows can be shown this value
- *                                     becomes important. If fixed size we
- *                                     always show X rows and no half rows are
- *                                     shown. This doesn't mean the rows need to
- *                                     be fixed size eg the addon dialog might
- *                                     get the option to show verbose info in
- *                                     the same listbox in that case it's still
- *                                     allowed to set the value.
- *
  * @end_table
  *
  *
