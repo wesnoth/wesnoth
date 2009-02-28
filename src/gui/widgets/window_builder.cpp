@@ -715,8 +715,12 @@ tbuilder_listbox::tbuilder_listbox(const config& cfg) :
  *                                     Determines whether or not to show the
  *                                     scrollbar.
  *
- *     header (section = [])           Defines the grid for the optional header.
- *     footer (section = [])           Defines the grid for the optional footer.
+ *     header (section = [])           Defines the grid for the optional
+ *                                     header. (This grid will automatically
+ *                                     get the id _header_grid.)
+ *     footer (section = [])           Defines the grid for the optional
+ *                                     footer. (This grid will automatically
+ *                                     get the id _footer_grid.)
  *
  *     list_definition (section)       This defines how a listboxs list data
  *                                     looks. It must contain the grid
