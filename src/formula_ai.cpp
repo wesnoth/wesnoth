@@ -483,6 +483,9 @@ private:
 			shortest_path_calculator calc(unit_it->second, ai_.current_team(), ai_.get_info().units, ai_.get_info().teams, ai_.get_info().map);
 			paths::route route = a_star_search(src, dst, 1000.0, &calc, ai_.get_info().map.w(), ai_.get_info().map.h());
 
+                        if( route.steps.size() == 0 )
+                            return variant();
+
 			for (std::vector<map_location>::const_iterator loc_iter = route.steps.begin() + 1 ; loc_iter !=route.steps.end(); ++loc_iter) {
 				locations.push_back( variant( new location_callable(*loc_iter) ));
 			}
