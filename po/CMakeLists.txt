@@ -8,7 +8,32 @@ add_custom_target(update-po)
 add_custom_target(update-po4a)
 add_custom_target(update-gmo)
 
-set(TRANSLATION_DIRS wesnoth wesnoth-anl wesnoth-aoi wesnoth-did wesnoth-editor wesnoth-ei wesnoth-httt wesnoth-l wesnoth-lib wesnoth-low wesnoth-manpages wesnoth-manual wesnoth-multiplayer wesnoth-nr wesnoth-sof wesnoth-sotbe wesnoth-tb wesnoth-thot wesnoth-trow wesnoth-tsg wesnoth-tutorial wesnoth-units wesnoth-utbs)
+set(TRANSLATION_DIRS
+    wesnoth
+    wesnoth-anl
+    wesnoth-aoi
+    wesnoth-did
+    wesnoth-editor
+    wesnoth-ei
+    wesnoth-httt
+    wesnoth-l
+    wesnoth-lib
+    wesnoth-low
+    wesnoth-manpages
+    wesnoth-manual
+    wesnoth-multiplayer
+    wesnoth-nr
+    wesnoth-sof
+    wesnoth-sotbe
+    wesnoth-tb
+    wesnoth-test
+    wesnoth-thot
+    wesnoth-trow
+    wesnoth-tsg
+    wesnoth-tutorial
+    wesnoth-units
+    wesnoth-utbs
+)
 
 foreach(DIR ${TRANSLATION_DIRS})
   add_subdirectory(${DIR})
