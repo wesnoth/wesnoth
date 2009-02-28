@@ -377,6 +377,7 @@ struct tgui_definition
 		, double_click_time_(0)
 		, sound_button_click_()
 		, sound_toggle_button_click_()
+		, sound_toggle_panel_click_()
 		, sound_slider_adjust_()
 	{
 	}
