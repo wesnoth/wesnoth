@@ -36,7 +36,8 @@ playmp_controller::playmp_controller(const config& level,
 	playsingle_controller(level, state_of_game, ticks, num_turns,
 		game_config, video, skip_replay),
 	turn_data_(NULL),
-	beep_warning_time_(0)
+	beep_warning_time_(0),
+	network_processing_stopped_(false)
 {
 	is_host_ = is_host;
 	// We stop quick replay if play isn't yet past turn 1
@@ -44,9 +45,6 @@ playmp_controller::playmp_controller(const config& level,
 	{
 		skip_replay_ = false;
 	}
-
-	network_processing_stopped_ = false;
-
 }
 
 playmp_controller::~playmp_controller() {
