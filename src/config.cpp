@@ -362,6 +362,13 @@ namespace {
 	 */
 	struct config_clear_state
 	{
+		config_clear_state()
+			: c(NULL)
+			, mi()
+			, vi(0)
+		{
+		}
+
 		config* c; //the config being inspected
 		config::child_map::iterator mi; //current child map entry 
 		size_t vi; //index into the child map item vector
