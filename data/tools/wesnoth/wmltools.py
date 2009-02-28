@@ -440,11 +440,11 @@ class CrossRef:
                         elif '[base_unit]' in line:
                             in_base_unit = True
                         elif '[/base_unit]' in line:
-                            in_base__unit = True
+                            in_base_unit = False
                         elif '[theme]' in line:
                             in_theme = True
                         elif '[/theme]' in line:
-                            in_base__unit = True
+                            in_theme = False
                         elif latch_unit and not in_base_unit and not in_theme and "id" in line:
                             m = CrossRef.tag_parse.search(line)
                             if m and m.group(1) == "id":
