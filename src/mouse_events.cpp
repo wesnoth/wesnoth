@@ -401,27 +401,10 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 				}
 				else //attack == true
 				{
-					if (teams_[team_num_-1].uses_shroud() || teams_[team_num_-1].uses_fog()){
-						//check if some new part of map discovered or is active delay shroud updates, which need special care
-						if (clear_shroud(gui(), map_, units_, teams_, team_num_ - 1)||!teams_[team_num_-1].auto_shroud_updates()){
-							clear_undo_stack();
-							gui().invalidate_all();
-							gui().recalculate_minimap();
-							gui().draw();
-							//some new part of map discovered
-							for(unit_map::const_iterator u = units_.begin(); u != units_.end(); ++u) {
-								if(teams_[team_num_-1].fogged(u->first) == false) {
-									//check if unit is not known
-									if (known_units.find(u->first)==known_units.end())
-									{
-										game_events::raise("sighted",u->first,attack_from);
-									}
-								 }
-							}
-							game_events::pump();
-							return false;
-						}
-					}
+					// execute the move stored in the undo stack
+					// this will update shroud, trigger sighted event and redraw
+					clear_undo_stack();
+					return false;
 				}
 			}
 		}
@@ -496,8 +479,7 @@ void mouse_handler::deselect_hex() {
 
 void mouse_handler::clear_undo_stack()
 {
-	if(teams_[team_num_ - 1].auto_shroud_updates() == false)
-		apply_shroud_changes(undo_stack_,&gui(),map_,units_,teams_,team_num_-1);
+	apply_shroud_changes(undo_stack_,&gui(),map_,units_,teams_,team_num_-1);
 	undo_stack_.clear();
 }
 
