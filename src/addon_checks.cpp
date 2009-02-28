@@ -30,6 +30,7 @@ bool addon_name_legal(const std::string& name)
 	   std::find(name.begin(),name.end(),'/') != name.end() ||
 	   std::find(name.begin(),name.end(),'\\') != name.end() ||
 	   std::find(name.begin(),name.end(),':') != name.end() ||
+	   std::find(name.begin(),name.end(),'~') != name.end() ||
 	   std::adjacent_find(name.begin(),name.end(),two_dots) != name.end()) {
 		return false;
 	} else {
