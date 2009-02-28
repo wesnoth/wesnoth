@@ -3074,8 +3074,6 @@ private:
             	if (network::nconnections() == 0) {
                     std::cerr << "showing ai formula...\n";
                     textbox_info_.show(gui::TEXTBOX_AI,sgettext("prompt^Command:"), "", false, *gui_);
-		} else {
-                    add_chat_message(time(NULL), _("ai"), 0, "Formula commandline not available in network games");
 		}
 	}
 
