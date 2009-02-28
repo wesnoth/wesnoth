@@ -77,12 +77,6 @@ namespace preferences {
 	const std::string& language();
 	void set_language(const std::string& s);
 
-	bool adjust_gamma();
-	void _set_adjust_gamma(bool val);
-
-	int gamma();
-	void _set_gamma(int gamma);
-
 	// Don't rename it to sound() because of a gcc-3.3 branch bug,
 	// which will cause it to conflict with the sound namespace.
 	bool sound_on();

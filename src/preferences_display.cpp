@@ -14,7 +14,7 @@
 
 /**
  *  @file preferences_display.cpp
- *  Manage display-related preferences, e.g. screen-size, gamma etc.
+ *  Manage display-related preferences, e.g. screen-size, etc.
  */
 
 #include "global.hpp"
@@ -46,7 +46,6 @@ display_manager::display_manager(display* d)
 	set_turbo_speed(turbo_speed());
 	set_fullscreen(fullscreen());
 	set_scroll_to_action(scroll_to_action());
-	set_gamma(gamma());
 	set_colour_cursors(utils::string_bool(preferences::get("colour_cursors")));
 }
 
@@ -136,27 +135,6 @@ void set_turbo_speed(double speed)
 
 	if(disp != NULL) {
 		disp->set_turbo_speed(speed);
-	}
-}
-
-void set_adjust_gamma(bool val)
-{
-	// If we are turning gamma adjustment off, then set it to '1.0'
-	if(val == false && adjust_gamma()) {
-		CVideo& video = disp->video();
-		video.setGamma(1.0);
-	}
-
-	_set_adjust_gamma(val);
-}
-
-void set_gamma(int gamma)
-{
-	_set_gamma(gamma);
-
-	if(adjust_gamma()) {
-		CVideo& video = disp->video();
-		video.setGamma(static_cast<float>(gamma) / 100);
 	}
 }
 

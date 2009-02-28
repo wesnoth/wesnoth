@@ -54,8 +54,6 @@ class CVideo : private boost::noncopyable {
 	//did the mode change, since the last call to the modeChanged() method?
 	bool modeChanged();
 
-	int setGamma(float gamma);
-
 	//functions to get the dimensions of the current video-mode
 	int getx() const;
 	int gety() const;

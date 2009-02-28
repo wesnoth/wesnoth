@@ -336,13 +336,6 @@ bool CVideo::modeChanged()
 	return ret;
 }
 
-int CVideo::setGamma(float gamma)
-{
-	SDL_SetGamma(gamma, gamma, gamma);
-
-	return 0;
-}
-
 int CVideo::getx() const
 {
 	return frameBuffer->w;
