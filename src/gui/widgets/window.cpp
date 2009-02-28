@@ -31,7 +31,6 @@
 #include "titlescreen.hpp"
 #include "video.hpp"
 
-
 namespace gui2{
 
 unsigned twindow::sunset_ = 0;
@@ -116,6 +115,7 @@ twindow::twindow(CVideo& video,
 	, easy_close_(false)
 	, easy_close_blocker_()
 	, escape_disabled_(false)
+	, linked_size_()
 	, dirty_list_()
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 	, debug_layout_(new tdebug_layout_graph(this))
@@ -437,6 +437,23 @@ void twindow::remove_easy_close_blocker(const std::string& id)
 		easy_close_blocker_.end());
 }
 
+void twindow::init_linked_size_group(const std::string& id,
+		const bool fixed_width, const bool fixed_height)
+{
+	assert(fixed_width || fixed_height);
+	assert(linked_size_.find(id) == linked_size_.end());
+
+	linked_size_[id] = tlinked_size(fixed_width, fixed_height);
+}
+
+void twindow::add_linked_widget(const std::string& id, twidget* widget)
+{
+	assert(widget);
+	assert(linked_size_.find(id) != linked_size_.end());
+		
+	linked_size_[id].widgets.push_back(widget);
+}
+
 void twindow::layout()
 {
 	/**** Initialize and get initial size. *****/
@@ -459,6 +476,45 @@ void twindow::layout()
 
 	const int maximum_height = automatic_placement_ ?
 			settings::screen_height :  h_(variables);
+
+	/**
+	 * @todo Need to document this new feature in the size algorithm. Also the
+	 * fixed size only works when a widget doesn't get a second layout phase.
+	 */
+	// evaluate the group sizes
+	typedef std::pair<const std::string, tlinked_size> hack;
+	foreach(hack& linked_size, linked_size_) {
+
+		tpoint max_size(0, 0);
+
+		// Determine the maximum size.
+		foreach(twidget* widget, linked_size.second.widgets) {
+
+			const tpoint size = widget->get_best_size();
+
+			if(size.x > max_size.x) {
+				max_size.x = size.x;
+			}
+			if(size.y > max_size.y) {
+				max_size.y = size.y;
+			}
+		}
+
+		// Set the maximum size.
+		foreach(twidget* widget, linked_size.second.widgets) {
+
+			tpoint size = widget->get_best_size();
+
+			if(linked_size.second.width) {
+				size.x = max_size.x;
+			}
+			if(linked_size.second.height) {
+				size.y = max_size.y;
+			}
+
+			widget->set_layout_size(size);
+		}
+	}
 
 	tpoint size = get_best_size();
 	generate_dot_file("get_initial_best_size", LAYOUT);

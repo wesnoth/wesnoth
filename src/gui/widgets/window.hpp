@@ -50,7 +50,9 @@ class twindow : public tpanel, public tevent_handler
 
 	// Wants to use layout().
 	friend class tmessage;
+
 public:
+
 	twindow(CVideo& video,
 		tformula<unsigned>x,
 		tformula<unsigned>y,
@@ -242,6 +244,31 @@ public:
 	void set_escape_disabled(const bool escape_disabled)
 		{ escape_disabled_ = escape_disabled; }
 
+	/**
+	 * Initializes a linked size group.
+	 *
+	 * Note at least one of fixed_width or fixed_height must be true.
+	 *
+	 * @param id                  The id of the group.
+	 * @param fixed_width         Does the group have a fixed width?
+	 * @param fixed_height        Does the group have a fixed height?
+	 */
+	void init_linked_size_group(const std::string& id,
+			const bool fixed_width, const bool fixed_height);
+
+	/**
+	 * Adds a widget to a linked size group.
+	 *
+	 * The group needs to exist, which is done by calling
+	 * init_linked_size_group. A widget may only be member of one group.
+	 * @todo There's no way to remove a widget from the list. 
+	 * @todo Untested if a new widget is added after showing the widgets.
+	 *
+	 * @param id                  The id of the group.
+	 * @param widget              The widget to add to the group.
+	 */
+	void add_linked_widget(const std::string& id, twidget* widget);
+
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
 	/**
@@ -357,6 +384,35 @@ private:
 	 * feature.
 	 */
 	static unsigned sunset_;
+
+	/**
+	 * Helper struct to force widgets the have the same size.
+	 *
+	 * Widget which are linked will get the same width and/or height. This
+	 * can especialy be usefull for listboxes, but can also be used for other
+	 * applications.
+	 */
+	struct tlinked_size
+	{
+		tlinked_size(const bool width = false, const bool height = false)
+			: widgets()
+			, width(width)
+			, height(height)
+		{
+		}
+
+		/** The widgets linked. */
+		std::vector<twidget*> widgets;
+
+		/** Link the widgets in the width? */
+		bool width;
+
+		/** Link the widgets in the height? */
+		bool height;
+	};
+	
+	/** List of the widgets, whose size are linked together. */
+	std::map<std::string, tlinked_size> linked_size_;
 
 	/** Layouts the window. */
 	void layout();

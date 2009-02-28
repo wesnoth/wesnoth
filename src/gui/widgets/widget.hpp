@@ -42,6 +42,7 @@ class twidget
 	, public virtual tevent_executor
 {
 	friend class tdebug_layout_graph;
+	friend class twindow; // needed for modifying the layout_size.
 
 public:
 	twidget()
