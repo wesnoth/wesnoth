@@ -1,0 +1,238 @@
+.\" This program is free software; you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation; either version 2 of the License, or
+.\" (at your option) any later version.
+.\"
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program; if not, write to the Free Software
+.\" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+.\"
+.
+.\"*******************************************************************
+.\"
+.\" This file was generated with po4a. Translate the source file.
+.\"
+.\"*******************************************************************
+.TH WESNOTH 6 2009 wesnoth "Bitwa o Wesnoth"
+.
+.SH NAZWA
+wesnoth \- Bitwa o Wesnoth, turowa strategia w klimatach fantasy
+.
+.SH SKŁADNIA
+.
+\fBwesnoth\fP [\fIOPCJE\fP] [\fISCIEZKA_DO_DANYCH\fP]
+.
+.SH OPIS
+.
+Battle for \fBWesnoth\fP jest turową strategią w klimatach fantasy.
+
+Pokonaj wszystkich wrogich przywódców z pomocą odpowiednio dobranej grupy
+żołnierzy, dbając również o zarządzanie zasobami złota oraz
+wioskami. Wszystkie jednostki posiadają charakterystyczne zalety i
+słabości. Aby wygrać, wykorzystuj zalety swoich jednostek, ustawiając je na
+najlepszych pozycjach i nie pozwól, by twój przeciwnik uczynił to
+samo. Zdobywając doświadczenie, jednostki uczą się nowych umiejętności i
+stają się coraz potężniejsze. Graj w Wesnoth we własnym języku i przetestuj
+swoje umiejętności w rozgrywce przeciwko sprytnemu, komputerowemu
+przeciwnikowi lub przyłącz się do wielkiej sieciowej społeczności graczy
+Wesnoth. Twórz własne jednostki, scenariusze lub kampanie i udostępniaj je
+innym graczom.
+.
+.SH OPCJE
+.
+.TP 
+\fB\-\-bpp\fP\fI\ liczba\fP
+ustawia liczbę bitów na piksel. Przykład: \fB\-\-bpp 32\fP
+.TP 
+\fB\-c, \-\-campaign\fP
+powoduje przejście bezpośrednio do menu wyboru kampanii.
+.TP 
+\fB\-\-config\-dir\fP\fI\ name\fP
+ustawia katalog konfiguracyjny użytkownika na \fIname\fP w ramach katalogu
+$HOME lub (w przypadku systemów Windows) "My Documents\eMy Games".
+.TP 
+\fB\-\-config\-path\fP
+wyświetla ścieżkę katalogu konfiguracyjnego użytkownika i kończy działanie.
+.TP 
+\fB\-d, \-\-debug\fP
+aktywuje dodatkowe opcje trybu poleceń w grze (więcej informacji o trybie
+poleceń można znaleźć na stronie http://www.wesnoth.org/wiki/CommandMode).
+.TP 
+\fB\-\-dummy\-locales\fP
+używa specjalnych atrap ustawień regionalnych, by umożliwić przełączenie na
+dowolny język, nawet jeśli nie jest on zainstalowany w systemie.
+.TP 
+\fB\-e, \-\-editor\fP
+powoduje bezpośrednie uruchomienie edytora map.
+.TP 
+\fB\-\-fps\fP
+wyświetla bieżącą liczbę klatek na sekundę w rogu ekranu.
+.TP 
+\fB\-f, \-\-fullscreen\fP
+uruchamia grę w trybie pełnoekranowym.
+.TP 
+\fB\-\-gunzip\fP\fI\ plikwejsciowy.gz\fP
+dekompresuje plik zapisanej gry w formacie gzip i zapisuje go bez
+rozszerzenia .gz. Pierwotny plik (\fIplikwejsciowy.gz\fP) jest usuwany.
+.TP 
+\fB\-\-gzip\fP\fI\ plikwejsciowy\fP
+kompresuje plik zapisanej gry do archiwum gzip (\fIplikwejsciowy\fP.gz) i usuwa
+pierwotny plik (\fIplikwejsciowy\fP).
+.TP 
+\fB\-h, \-\-help\fP
+wyświetla podsumowanie opcji wiersza poleceń na standardowym wyjściu i
+kończy działanie.
+.TP 
+\fB\-l,\ \-\-load\fP\fI\ file\fP
+ładuje plik zapisu gry \fIfile\fP z domyślnego katalogu zapisanych gier. Jeśli
+dodatkowo podano opcję \fB\-e\fP lub \fB\-\-editor\fP, zostanie uruchomiony edytor z
+załadowaną mapą z pliku \fIfile\fP.
+.TP 
+\fB\-\-log\-\fP\fIpoziom\fP\fB=\fP\fIdomena1\fP\fB,\fP\fIdomena2\fP\fB,\fP\fI...\fP
+określa poziom istotności domen debugowania. \fBall\fP oznacza dopasowanie
+wszystkich domen debugowania. Dostępne poziomy: \fBerror\fP (błędy),\
+\fBwarning\fP (ostrzeżenia),\ \fBinfo\fP (informacje),\ \fBdebug\fP
+(debugowanie). Poziom domyślny to \fBerror\fP (błędy).
+.TP 
+\fB\-\-logdomains\fP
+dokonuje zrzutu wszystkich domen dzienników i kończy działanie.
+.TP 
+\fB\-\-max\-fps\fP
+liczba klatek na sekundę wyświetlanych przez grę. Wartość ta powinna
+zawierać się między 1 a 1000, przy czym domyślna wartość to \fB50\fP.
+.TP 
+\fB\-m, \-\-multiplayer\fP
+uruchamia grę wieloosobową. Wraz z przełącznikiem \fB\-\-multiplayer\fP można
+używać dodatkowych opcji, które zostały objaśnione poniżej.
+.TP 
+\fB\-\-no\-delay\fP
+uruchamia grę bez opóźnień na wykonanie testów wydajności grafiki. Ta opcja
+jest domyślnie włączana przez przełącznik \fB\-\-nogui\fP.
+.TP 
+\fB\-\-nocache\fP
+wyłącza buforowanie danych gry.
+.TP 
+\fB\-\-nomusic\fP
+uruchamia grę bez muzyki.
+.TP 
+\fB\-\-nosound\fP
+uruchamia grę bez dźwięków i muzyki.
+.TP 
+\fB\-\-path\fP
+wyświetla nazwę katalogu z danymi gry i kończy działanie.
+.TP 
+\fB\-\-python\-api\fP
+wyświetla dokumentację uruchomieniową API Pythona.
+.TP 
+\fB\-\-python\-shell\fP
+wywołuje wbudowany w grę interpreter Pythona w trybie interaktywnym.
+.TP 
+\fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\ \fP\fIX\fP\fBx\fP\fIY\fP
+ustawia rozdzielczość ekranu gry. Przykład: \fB\-r 800x600\fP
+.TP 
+\fB\-\-smallgui\fP
+umożliwia korzystanie z niskich rozdzielczości ekranu (do 800x480) i zmienia
+rozmiary niektórych elementów interfejsu.
+.TP 
+\fB\-s,\ \-\-server\ [host]\fP
+nawiązuje połączenie z podanym hostem lub (jeśli host nie został podany) z
+pierwszym serwerem określonym w preferencjach. Przykład: \fB\-\-server
+server.wesnoth.org\fP
+.TP 
+\fB\-t, \-\-test\fP
+uruchamia grę z małym scenariuszem testowym.
+.TP 
+\fB\-\-validcache\fP
+przyjmuje, że zawartość pamięci podręcznej jest poprawna (niebezpieczne).
+.TP 
+\fB\-v, \-\-version\fP
+wyświetla numer wersji i kończy działanie.
+.TP 
+\fB\-w, \-\-windowed\fP
+uruchamia grę w oknie.
+.TP 
+\fB\-\-with\-replay\fP
+odtwarza powtórkę gry wczytanej za pomocą opcji \fB\-\-load\fP.
+.
+.SH "Opcje dla flagi \-\-multiplayer"
+.
+Opcje dostępne dla danej strony gry wieloosobowej są oznaczone przez
+\fInumer\fP. \fInumer\fP powinien zostać zastąpiony przez numer danej
+strony. Zazwyczaj jest to 1 lub 2, ale zależy to od maksymalnej liczby
+graczy w danym scenariuszu.
+.TP 
+\fB\-\-algorithm\fP\fInumer\fP\fB=\fP\fIwartość\fP
+pozwala wybrać niestandardowy algorytm, z którego ma korzystać AI
+kontrolujące daną stronę. Dostępne wartości: \fBidle_ai\fP i \fBsample_ai\fP..
+.TP  
+\fB\-\-controller\fP\fInumer\fP\fB=\fP\fIwartość\fP
+pozwala ustalić typ gracza kontrolującego daną stronę. Dostępne wartości:
+\fBhuman\fP i \fBai\fP.
+.TP  
+\fB\-\-era=\fP\fIwartość\fP
+tej opcji należy użyć, aby zagrać w wybranej erze zamiast w erze domyślnej
+(\fBDefault\fP). Ery wybierane są na podstawie identyfikatora i są opisane w
+pliku \fBdata/multiplayer/eras.cfg\fP.
+.TP 
+\fB\-\-exit\-at\-end\fP
+kończy działanie programu po zakończeniu scenariusza, bez wyświetlania
+tabeli zwycięstwa/porażki, która wymaga kliknięcia OK przez
+użytkownika. Opcja ta jest również stosowana do testowania za pomocą
+skryptów.
+.TP 
+\fB\-\-nogui\fP
+uruchamia grę bez graficznego interfejsu użytkownika (GUI). Aby osiągnać
+planowany rezultat, należy użyć tej flagi przed opcją \fB\-\-multiplayer\fP.
+.TP 
+\fB\-\-parm\fP\fInumer\fP\fB=\fP\fInazwa\fP\fB:\fP\fIwartość\fP
+ustawia dodatkowe parametry dla bieżącej strony. Wartość ta jest zależna od
+opcji użytych z flagami \fB\-\-controller\fP i \fB\-\-algorithm.\fP. Z reguły
+przydatne jedynie dla osób tworzących własne AI. (Dokumentacja niekompletna)
+.TP 
+\fB\-\-scenario=\fP\fIwartość\fP
+wybiera scenariusz gry wieloosobowej według identyfikatora. Domyślnym
+scenariuszem jest \fBmultiplayer_The_Freelands\fP.
+.TP 
+\fB\-\-side\fP\fInumer\fP\fB=\fP\fIwartość\fP
+wybiera dla danej strony frakcję dostępną w bieżącej erze. Frakcja wybierana
+jest za pomocą identyfikatora. Frakcje opisane są w pliku
+data/multiplayer.cfg.
+.TP 
+\fB\-\-turns=\fP\fIwartość\fP
+określa maksymalną liczbę tur dla danego scenariusza. Wartość domyślna to
+\fB50\fP.
+.TP 
+Przykład do testowania własnego AI przeciwko domyślnemu AI bez uruchamiania GUI:
+\fBwesnoth \-\-nogui \-\-multiplayer \-\-controller1=ai \-\-controller2=ai
+\-\-algorithm2=python_ai
+\-\-parm2=skrypt_pythona.py/moje_własne_pythonowe_ai.py\fP
+.
+.SH AUTOR
+.
+Autor: David White <davidnwhite@verizon.net>.
+.br
+Redakcja: Nils Kneuper <crazy\-ivanovic@gmx.net>, ott
+<ott@gaon.net> i Soliton <soliton.de@gmail.com>.
+.br
+Autorem pierwotnej wersji niniejszej strony podręcznika man jest Cyril
+Bouthors <cyril@bouthors.org>.
+.br
+Odwiedź oficjalną stronę WWW: http://www.wesnoth.org/
+.
+.SH "PRAWA AUTORSKIE"
+.
+Copyright \(co 2003\-2007 David White <davidnwhite@verizon.net>
+.br
+Oprogramowanie typu Free Software. Oprogramowanie oparte na licencji GPL
+wersja 2 opublikowanej przez Free Software Foundation. Nie udziela się
+ŻADNEJ gwarancji, łącznie z RĘKOJMIĄ oraz GWARANCJĄ PRZYDATNOŚCI DO
+OKREŚLONEGO CELU.
+.
+.SH "ZOBACZ TAKŻE"
+.
+\fBwesnoth_editor\fP(6), \fBwesnothd\fP(6)
