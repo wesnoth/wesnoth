@@ -269,9 +269,6 @@ battle_context::battle_context(const gamemap& map, const std::vector<team>& team
 		attacker_weapon = 0;
 
 	if (attacker_weapon == -1) {
-		VALIDATE(defender_weapon == -1,
-				_("An invalid weapon is selected, possibly by the Python AI."));
-
 		attacker_weapon = choose_attacker_weapon(attacker, defender, map, teams, units,
 				status, attacker_loc, defender_loc,
 				harm_weight, &defender_weapon, prev_def);
@@ -1160,7 +1157,7 @@ attack::attack(game_display& gui, const gamemap& map,
 				// get weapon info for last_breath and die events
 				config dat;
 				config a_weapon_cfg = (a_stats_->weapon != NULL && a_.valid()) ? a_stats_->weapon->get_cfg() : config();
-				config d_weapon_cfg = (d_stats_->weapon != NULL && a_.valid()) ? a_stats_->weapon->get_cfg() : config();
+				config d_weapon_cfg = (d_stats_->weapon != NULL && d_.valid()) ? d_stats_->weapon->get_cfg() : config();
 				if(a_weapon_cfg["name"].empty())
 					a_weapon_cfg["name"] = "none";
 				if(d_weapon_cfg["name"].empty())
