@@ -528,13 +528,14 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 
 	// Display tab
 	ypos = rect.y + top_border;
-	gamma_button_.set_location(rect.x, ypos);
-	ypos += short_interline;
-	gamma_label_.set_location(rect.x, ypos);
-	SDL_Rect gamma_rect = { rect.x + gamma_label_.width(), ypos,
-							rect.w - gamma_label_.width() - right_border, 0 };
-	gamma_slider_.set_location(gamma_rect);
-	ypos += item_interline; fullscreen_button_.set_location(rect.x, ypos);
+// 	gamma_button_.set_location(rect.x, ypos);
+// 	ypos += short_interline;
+// 	gamma_label_.set_location(rect.x, ypos);
+// 	SDL_Rect gamma_rect = { rect.x + gamma_label_.width(), ypos,
+// 							rect.w - gamma_label_.width() - right_border, 0 };
+// 	gamma_slider_.set_location(gamma_rect);
+// 	ypos += item_interline; 
+	fullscreen_button_.set_location(rect.x, ypos);
 	ypos += item_interline; scroll_to_action_button_.set_location(rect.x, ypos);
 	ypos += item_interline; show_colour_cursors_button_.set_location(rect.x, ypos);
 	ypos += item_interline; flip_time_button_.set_location(rect.x,ypos);
