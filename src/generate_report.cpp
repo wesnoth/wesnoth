@@ -38,15 +38,13 @@ report generate_report(TYPE type,
                        unsigned int current_side, unsigned int playing_side,
                        const map_location& loc, const map_location& mouseover, const map_location& displayed_unit_hex,
                        const gamestatus& status, const std::set<std::string>& observers,
-                       const config& level)
+                       const config& level, bool show_everything)
 {
 	unit_map::iterator u = units.end();
 
 	if((int(type) >= int(UNIT_REPORTS_BEGIN) && int(type) < int(UNIT_REPORTS_END)) || type == POSITION) {
 
-		u = find_visible_unit(units,displayed_unit_hex,
-				      map,
-				      teams,current_team);
+		u = find_visible_unit(units, displayed_unit_hex, map, teams, current_team, show_everything);
 		if(u == units.end() && type != POSITION) {
 			return report();
 		}

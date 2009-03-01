@@ -206,12 +206,12 @@ void game_display::select_hex(map_location hex)
 
 void game_display::highlight_hex(map_location hex)
 {
-	unit_map::const_iterator u = find_visible_unit(units_,hex, get_map(), teams_,teams_[viewing_team()]);
+	unit_map::const_iterator u = find_visible_unit(units_, hex, get_map(), teams_, teams_[viewing_team()], !viewpoint_);
 	if (u != units_.end()) {
 		displayedUnitHex_ = hex;
 		invalidate_unit();
 	} else {
-		u = find_visible_unit(units_,mouseoverHex_, get_map(), teams_,teams_[viewing_team()]);
+		u = find_visible_unit(units_, mouseoverHex_, get_map(), teams_, teams_[viewing_team()], !viewpoint_);
 		if (u != units_.end()) {
 			// mouse moved from unit hex to non-unit hex
 			if (units_.count(selectedHex_)) {
@@ -228,7 +228,7 @@ void game_display::highlight_hex(map_location hex)
 
 void game_display::display_unit_hex(map_location hex)
 {
-	unit_map::const_iterator u = find_visible_unit(units_,hex, get_map(), teams_,teams_[viewing_team()]);
+	unit_map::const_iterator u = find_visible_unit(units_, hex, get_map(), teams_, teams_[viewing_team()], !viewpoint_);
 	if (u != units_.end()) {
 		displayedUnitHex_ = hex;
 		invalidate_unit();
@@ -295,7 +295,7 @@ image::TYPE game_display::get_image_type(const map_location& loc) {
 			return image::BRIGHTENED;
 		} else if (loc == selectedHex_) {
 			unit_map::iterator un = find_visible_unit(units_, loc, get_map(),
-				teams_,teams_[currentTeam_]);
+					teams_, teams_[currentTeam_], !viewpoint_);
 			if (un != units_.end()) {
 				return image::BRIGHTENED;
 			}
@@ -432,14 +432,14 @@ void game_display::draw_report(reports::TYPE report_num)
 							  units_, teams_,
 							  teams_[viewing_team()],
 							  size_t(currentTeam_+1),size_t(activeTeam_+1),
-							  selectedHex_,mouseoverHex_,displayedUnitHex_,status_,observers_,level_);
+							  selectedHex_, mouseoverHex_, displayedUnitHex_,
+							  status_, observers_, level_, !viewpoint_);
 
 	brighten = false;
 	if(report_num == reports::TIME_OF_DAY) {
 		time_of_day tod = timeofday_at(status_,units_,mouseoverHex_,get_map());
 		// Don't show illuminated time on fogged/shrouded tiles
-		if (teams_[viewing_team()].fogged(mouseoverHex_) ||
-				teams_[viewing_team()].shrouded(mouseoverHex_)) {
+		if (fogged(mouseoverHex_) || shrouded(mouseoverHex_)) {
 
 			tod = status_.get_time_of_day(false,mouseoverHex_);
 		}
@@ -472,15 +472,8 @@ void game_display::draw_sidebar()
 	if(invalidateUnit_) {
 		// We display the unit the mouse is over if it is over a unit,
 		// otherwise we display the unit that is selected.
-		unit_map::const_iterator i =
-			find_visible_unit(units_,displayedUnitHex_,
-					get_map(),
-					teams_,teams_[viewing_team()]);
-
-		if(i != units_.end()) {
-			for(size_t r = reports::UNIT_REPORTS_BEGIN; r != reports::UNIT_REPORTS_END; ++r) {
-				draw_report(reports::TYPE(r));
-			}
+		for(size_t r = reports::UNIT_REPORTS_BEGIN; r != reports::UNIT_REPORTS_END; ++r) {
+			draw_report(reports::TYPE(r));
 		}
 
 		invalidateUnit_ = false;
@@ -1038,11 +1031,11 @@ std::string game_display::current_team_name() const
 	return std::string();
 }
 
-void game_display::set_team(size_t teamindex, bool observe)
+void game_display::set_team(size_t teamindex, bool show_everything)
 {
 	assert(teamindex < teams_.size());
 	currentTeam_ = teamindex;
-	if (!observe)
+	if (!show_everything)
 	{
 		labels().set_team(&teams_[teamindex]);
 		viewpoint_ = &teams_[teamindex];

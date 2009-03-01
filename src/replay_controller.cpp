@@ -253,7 +253,6 @@ void replay_controller::replay_show_each(){
 void replay_controller::replay_show_team1(){
 	show_everything_ = false;
 	show_team_ = 1;
-	gui_->set_team(show_team_ - 1, show_everything_);
 	update_teams();
 	update_gui();
 }
