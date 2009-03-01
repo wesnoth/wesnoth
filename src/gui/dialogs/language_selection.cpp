@@ -53,7 +53,6 @@ void tlanguage_selection::pre_show(CVideo& /*video*/, twindow& window)
 	foreach(const language_def& lang, languages) {
 		string_map item;
 		item.insert(std::make_pair("label", lang.language));
-		item.insert(std::make_pair("tooltip", lang.language));
 
 		list->add_row(item);
 		if(lang == current_language) {
