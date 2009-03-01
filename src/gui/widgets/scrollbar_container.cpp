@@ -85,6 +85,8 @@ tscrollbar_container::tscrollbar_container(const unsigned canvas_count)
 	, state_(ENABLED)
 	, vertical_scrollbar_mode_(SHOW_WHEN_NEEDED)
 	, horizontal_scrollbar_mode_(SHOW_WHEN_NEEDED)
+	, initial_vertical_scrollbar_mode_(SHOW_WHEN_NEEDED)
+	, initial_horizontal_scrollbar_mode_(SHOW_WHEN_NEEDED)
 	, vertical_scrollbar_grid_(NULL)
 	, horizontal_scrollbar_grid_(NULL)
 	, vertical_scrollbar_(NULL)
@@ -99,6 +101,12 @@ void tscrollbar_container::layout_init()
 {
 	// Inherited.
 	tcontainer_::layout_init();
+
+	vertical_scrollbar_mode_ = initial_vertical_scrollbar_mode_;
+	horizontal_scrollbar_mode_ = initial_horizontal_scrollbar_mode_;
+
+	show_vertical_scrollbar();
+	show_horizontal_scrollbar();
 
 	assert(content_grid_);
 	content_grid_->layout_init();
@@ -482,6 +490,7 @@ void tscrollbar_container::
 {
 	if(vertical_scrollbar_mode_ != scrollbar_mode) {
 		vertical_scrollbar_mode_ = scrollbar_mode;
+		initial_vertical_scrollbar_mode_ = scrollbar_mode;
 		show_vertical_scrollbar();
 	}
 }
@@ -491,6 +500,7 @@ void tscrollbar_container::
 {
 	if(horizontal_scrollbar_mode_ != scrollbar_mode) {
 		horizontal_scrollbar_mode_ = scrollbar_mode;
+		initial_horizontal_scrollbar_mode_ = scrollbar_mode;
 		show_horizontal_scrollbar();
 	}
 }

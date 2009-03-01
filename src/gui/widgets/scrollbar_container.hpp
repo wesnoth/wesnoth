@@ -340,6 +340,16 @@ private:
 		vertical_scrollbar_mode_,
 		horizontal_scrollbar_mode_;
 
+	/**
+	 * The initial mode of how to show the scrollbar.
+	 *
+	 * If layout_init is called a second time the scrollbar_mode should be
+	 * reset to its 'initial' mode. This is the last mode the user set.
+	 */
+	tscrollbar_mode
+		initial_vertical_scrollbar_mode_,
+		initial_horizontal_scrollbar_mode_;
+
 	/** These are valid after finalize_setup(). */
 	tgrid
 		*vertical_scrollbar_grid_,
