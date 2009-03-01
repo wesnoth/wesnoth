@@ -32,6 +32,8 @@ Version 1.5.11+svn:
    * Fixed bug #13090: Make movement_costs < 1 behave like movement_costs = 1
  * Miscellaneous and bug fixes:
    * Align all network buffers on 4 bytes
+   * Partial fix for bug #13092: avoid a case of invalid iterator usage
+     in FormulaAI
 
 Version 1.5.11:
  * Campaigns:
