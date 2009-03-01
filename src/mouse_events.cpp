@@ -32,11 +32,6 @@
 namespace events{
 
 
-namespace{
-	//minimum dragging distance to fire the drag&drop
-	const double drag_threshold = 14.0;
-}
-
 mouse_handler::mouse_handler(game_display* gui, std::vector<team>& teams,
 		unit_map& units, gamemap& map, gamestatus& status,
 		undo_list& undo_stack, undo_list& redo_stack) :
@@ -75,6 +70,11 @@ mouse_handler::~mouse_handler()
 void mouse_handler::set_team(const int team_number)
 {
 	team_num_ = team_number;
+}
+
+int mouse_handler::drag_threshold() const
+{
+	return 14;
 }
 
 void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)

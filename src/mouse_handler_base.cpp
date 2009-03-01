@@ -34,8 +34,6 @@ command_disabler::~command_disabler()
 
 int commands_disabled= 0;
 
-const int mouse_handler_base::drag_threshold_ = 0;
-
 static bool command_active()
 {
 #ifdef __APPLE__
@@ -110,7 +108,7 @@ bool mouse_handler_base::mouse_motion_default(int x, int y, bool& /*update*/)
 		if ((dragging_left_ && (SDL_GetMouseState(&mx,&my) & SDL_BUTTON_LEFT) != 0)
 		|| (dragging_right_ && (SDL_GetMouseState(&mx,&my) & SDL_BUTTON_RIGHT) != 0)) {
 			const double drag_distance = std::pow((double) (drag_from_x_- mx), 2) + std::pow((double) (drag_from_y_- my), 2);
-			if (drag_distance > drag_threshold_*drag_threshold_) {
+			if (drag_distance > drag_threshold()*drag_threshold()) {
 				dragging_started_ = true;
 				cursor::set_dragging(true);
 			}

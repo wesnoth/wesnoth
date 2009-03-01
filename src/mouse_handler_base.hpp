@@ -51,6 +51,9 @@ public:
 	 */
 	bool is_dragging() const;
 
+	//minimum dragging distance to fire the drag&drop
+	virtual int drag_threshold() const {return 0;};
+
 	void mouse_motion_event(const SDL_MouseMotionEvent& event, const bool browse);
 
 	/** update the mouse with a fake mouse motion */
@@ -156,8 +159,6 @@ protected:
 
 	/** Show context menu flag */
 	bool show_menu_;
-
-	static const int drag_threshold_;
 };
 
 } // end namespace events

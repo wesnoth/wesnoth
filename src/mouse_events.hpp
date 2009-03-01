@@ -69,6 +69,7 @@ protected:
 	const team& viewing_team() const { return teams_[gui().viewing_team()]; }
 	team& current_team() { return teams_[team_num_-1]; }
 
+	int drag_threshold() const;
 	/**
 	 * Use update to force an update of the mouse state.
 	 */
