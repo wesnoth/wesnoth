@@ -37,6 +37,9 @@ public:
 
 	int get_choice() const { return choice_; }
 
+	/** Called when another campaign is selected. */
+	void campaign_selected(twindow& window);
+
 private:
 
 	/** Inherited from tdialog. */

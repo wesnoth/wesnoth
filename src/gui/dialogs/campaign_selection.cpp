@@ -16,11 +16,39 @@
 
 #include "gui/dialogs/campaign_selection.hpp"
 
+#include "gui/dialogs/helper.hpp"
+#include "gui/widgets/image.hpp"
 #include "gui/widgets/listbox.hpp"
+#include "gui/widgets/scroll_label.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 
 namespace gui2 {
+
+void tcampaign_selection::campaign_selected(twindow& window)
+{
+	tlistbox* list = dynamic_cast<tlistbox*>(
+			window.find_widget("campaign_list", false));
+	VALIDATE(list, missing_widget("campaign_list"));
+
+	// Get the selected row
+	config::child_list::const_iterator itor = begin_
+			+ list->get_selected_row(); 
+
+	tscroll_label* scroll_label = dynamic_cast<tscroll_label*>(
+			window.find_widget("description", false));
+	if(scroll_label) {
+		scroll_label->set_label((**itor)["description"]);
+	}
+
+	timage* image = dynamic_cast<timage*>(
+			window.find_widget("image", false));
+	if(image) {
+		image->set_label((**itor)["image"]);
+	}
+
+	window.invalidate_layout();
+}
 
 twindow* tcampaign_selection::build_window(CVideo& video)
 {
@@ -33,6 +61,9 @@ void tcampaign_selection::pre_show(CVideo& /*video*/, twindow& window)
 			window.find_widget("campaign_list", false));
 	VALIDATE(list, missing_widget("campaign_list"));
 
+	list->set_callback_value_change(dialog_callback
+			<tcampaign_selection, &tcampaign_selection::campaign_selected>);
+
 	for(config::child_list::const_iterator itor = begin_;
 			itor != end_; ++itor) {
 
@@ -42,6 +73,7 @@ void tcampaign_selection::pre_show(CVideo& /*video*/, twindow& window)
 		list->add_row(item);
 	}
 
+	campaign_selected(window);
 }
 
 void tcampaign_selection::post_show(twindow& window)
