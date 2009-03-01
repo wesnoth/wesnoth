@@ -1047,75 +1047,83 @@ bool game_controller::new_campaign()
 	config::child_list campaigns = game_config_.get_children("campaign");
 	std::sort(campaigns.begin(),campaigns.end(),less_campaigns_rank);
 
-	if(campaigns.begin() == campaigns.end()) {
-	  gui::show_error_message(disp(),
-				  _("No campaigns are available.\n"));
-		return false;
-	}
+	const config* campaign_ptr = NULL;
 
-	gui2::tcampaign_selection dlg(campaigns.begin(),campaigns.end());
+	if(gui2::new_widgets) {
 
-	dlg.show(disp().video());
-
-	if(dlg.get_retval() != gui2::twindow::OK) {
-		return false;
-	}
-
-	const config& campaign = *campaigns[dlg.get_choice()];
-
-#if 0
-	std::vector<std::string> campaign_names;
-	std::vector<std::pair<std::string,std::string> > campaign_desc;
-
-	for(config::child_list::const_iterator i = campaigns.begin(); i != campaigns.end(); ++i) {
-		std::stringstream str;
-		const std::string& icon = (**i)["icon"];
-		const std::string desc = (**i)["description"];
-		const std::string image = (**i)["image"];
-		if(icon.empty()) {
-			str << COLUMN_SEPARATOR;
-		} else {
-			str << IMAGE_PREFIX << icon << COLUMN_SEPARATOR;
+		if(campaigns.begin() == campaigns.end()) {
+		  gui::show_error_message(disp(),
+					  _("No campaigns are available.\n"));
+			return false;
 		}
 
-		str << (**i)["name"];
+		gui2::tcampaign_selection dlg(campaigns.begin(),campaigns.end());
 
-		campaign_names.push_back(str.str());
-		campaign_desc.push_back(std::pair<std::string,std::string>(desc,image));
-	}
+		dlg.show(disp().video());
 
-	if(campaign_names.size() <= 0) {
-	  gui::show_error_message(disp(),
-				  _("No campaigns are available.\n"));
-		return false;
-	}
-	dialogs::campaign_preview_pane campaign_preview(disp().video(),&campaign_desc);
-	gui::dialog cmenu(disp(), _("Play a campaign"), " ", gui::OK_CANCEL);
-	cmenu.set_menu(campaign_names);
-	cmenu.add_pane(&campaign_preview);
-	gui::dialog::dimension_measurements dim = cmenu.layout();
-	Uint16 screen_width = screen_area().w;
-	Uint16 dialog_width = cmenu.get_frame().get_layout().exterior.w;
-	if(screen_width < 850 && screen_width - dialog_width > 20) {
-		// On small resolutions, reduce the amount of unused horizontal space
-		campaign_preview.set_width(campaign_preview.width() + screen_width - dialog_width - 20);
-		dim = cmenu.layout();
-	}
-	SDL_Rect& preview_loc = dim.panes[&campaign_preview];
-	preview_loc.y = dim.menu_y;
-	if(dim.menu_height > 0) {
-		preview_loc.h = dim.menu_height;
+		if(dlg.get_retval() != gui2::twindow::OK) {
+			return false;
+		}
+
+		campaign_ptr = campaigns[dlg.get_choice()];
+
 	} else {
-		preview_loc.h = cmenu.get_menu().height();
-	}
-	cmenu.set_layout(dim);
 
-	if(cmenu.show() == -1) {
-		return false;
+		std::vector<std::string> campaign_names;
+		std::vector<std::pair<std::string,std::string> > campaign_desc;
+
+		for(config::child_list::const_iterator i = campaigns.begin(); i != campaigns.end(); ++i) {
+			std::stringstream str;
+			const std::string& icon = (**i)["icon"];
+			const std::string desc = (**i)["description"];
+			const std::string image = (**i)["image"];
+			if(icon.empty()) {
+				str << COLUMN_SEPARATOR;
+			} else {
+				str << IMAGE_PREFIX << icon << COLUMN_SEPARATOR;
+			}
+
+			str << (**i)["name"];
+
+			campaign_names.push_back(str.str());
+			campaign_desc.push_back(std::pair<std::string,std::string>(desc,image));
+		}
+
+		if(campaign_names.size() <= 0) {
+		  gui::show_error_message(disp(),
+					  _("No campaigns are available.\n"));
+			return false;
+		}
+		dialogs::campaign_preview_pane campaign_preview(disp().video(),&campaign_desc);
+		gui::dialog cmenu(disp(), _("Play a campaign"), " ", gui::OK_CANCEL);
+		cmenu.set_menu(campaign_names);
+		cmenu.add_pane(&campaign_preview);
+		gui::dialog::dimension_measurements dim = cmenu.layout();
+		Uint16 screen_width = screen_area().w;
+		Uint16 dialog_width = cmenu.get_frame().get_layout().exterior.w;
+		if(screen_width < 850 && screen_width - dialog_width > 20) {
+			// On small resolutions, reduce the amount of unused horizontal space
+			campaign_preview.set_width(campaign_preview.width() + screen_width - dialog_width - 20);
+			dim = cmenu.layout();
+		}
+		SDL_Rect& preview_loc = dim.panes[&campaign_preview];
+		preview_loc.y = dim.menu_y;
+		if(dim.menu_height > 0) {
+			preview_loc.h = dim.menu_height;
+		} else {
+			preview_loc.h = cmenu.get_menu().height();
+		}
+		cmenu.set_layout(dim);
+
+		if(cmenu.show() == -1) {
+			return false;
+		}
+
+		campaign_ptr = campaigns[cmenu.result()];
 	}
 
-	const config& campaign = *campaigns[cmenu.result()];
-#endif
+	const config& campaign = *campaign_ptr;
+
 	state_.campaign = campaign["id"];
 	state_.abbrev = campaign["abbrev"];
 	state_.scenario = campaign["first_scenario"];
