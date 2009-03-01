@@ -59,6 +59,7 @@ public:
 	twidget* build () const;
 
 private:
+	std::string retval_id_;
 	int retval_;
 };
 
@@ -398,6 +399,8 @@ public:
  *
  * @start_table = config
  *     icon (f_string = "")            The name of the icon file to show.
+ *     return_value_id (string = "")   The return value id, see
+ *                                     [[GUIToolkitWML#Button]] for more info.
  *     return_value (int = 0)          The return value, see
  *                                     [[GUIToolkitWML#Button]] for more info.
  * @end_table
@@ -405,6 +408,7 @@ public:
 	tbuilder_toggle_button(const config& cfg) :
 		tbuilder_control(cfg),
 		icon_name_(cfg["icon"]),
+		retval_id_(cfg["return_value_id"]),
 		retval_(lexical_cast_default<int>(cfg["return_value"]))
 	{}
 
@@ -412,6 +416,7 @@ public:
 
 private:
 	std::string icon_name_;
+	std::string retval_id_;
 	int retval_;
 };
 
@@ -428,6 +433,7 @@ public:
 	tbuilder_grid_ptr grid;
 
 private:
+	std::string retval_id_;
 	int retval_;
 };
 

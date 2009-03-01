@@ -598,6 +598,7 @@ void tbuilder_control::init_control(tcontrol* control) const
 
 tbuilder_button::tbuilder_button(const config& cfg) :
 	tbuilder_control(cfg),
+	retval_id_(cfg["return_value_id"]),
 	retval_(lexical_cast_default<int>(cfg["return_value"]))
 {
 /*WIKI
@@ -606,15 +607,20 @@ tbuilder_button::tbuilder_button(const config& cfg) :
  *
  * == Button ==
  *
- * Definition of a button. When a button has a return value it sets the retour
- * value for the window. Normally this closes the window and returns this value
- * to the caller. The return value can either be defined by the user or
- * determined from the id of the button. The return value has a higher
- * precedence as the one defined by the id. (Of course it's weird to give a
- * button an id and then override it's return value.)
+ * Definition of a button. When a button has a return value it sets the
+ * retour value for the window. Normally this closes the window and returns
+ * this value to the caller. The return value can either be defined by the
+ * user or determined from the id of the button. The return value has a
+ * higher precedence as the one defined by the id. (Of course it's weird to
+ * give a button an id and then override it's return value.)
+ *
+ * When the button doesn't have a standard id, but you still want to use the
+ * return value of that id, use return_value_id instead. This has a higher
+ * precedence as return_value.
  *
  * List with the button specific variables:
  * @start_table = config
+ *     return_value_id (string = "")   The return value id.
  *     return_value (int = 0)          The return value.
  *
  * @end_table
@@ -628,7 +634,9 @@ twidget* tbuilder_button::build() const
 
 	init_control(button);
 
-	if(retval_) {
+	if(!retval_id_.empty()) {
+		button->set_retval(twindow::get_retval_by_id(retval_id_));
+	} else if(retval_) {
 		button->set_retval(retval_);
 	} else {
 		button->set_retval(twindow::get_retval_by_id(id));
@@ -1084,6 +1092,7 @@ twidget* tbuilder_toggle_button::build() const
 tbuilder_toggle_panel::tbuilder_toggle_panel(const config& cfg) :
 	tbuilder_control(cfg),
 	grid(0),
+	retval_id_(cfg["return_value_id"]),
 	retval_(lexical_cast_default<int>(cfg["return_value"]))
 {
 /*WIKI
@@ -1099,6 +1108,8 @@ tbuilder_toggle_panel::tbuilder_toggle_panel(const config& cfg) :
  * @start_table = config
  *     grid (section)                  Defines the grid with the widgets to
  *                                     place on the panel.
+ *     return_value_id (string = "")   The return value id, see
+ *                                     [[GUIToolkitWML#Button]] for more info.
  *     return_value (int = 0)          The return value, see
  *                                     [[GUIToolkitWML#Button]] for more info.
  * @end_table
