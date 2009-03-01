@@ -21,6 +21,7 @@
 #ifndef GUI_WIDGETS_WINDOW_HPP_INCLUDED
 #define GUI_WIDGETS_WINDOW_HPP_INCLUDED
 
+#include "cursor.hpp"
 #include "gui/widgets/event_handler.hpp"
 #include "gui/widgets/formula.hpp"
 #include "gui/widgets/helper.hpp"
@@ -44,7 +45,10 @@ class tdebug_layout_graph;
  * base class of top level items, the only item
  * which needs to store the final canvase to draw on
  */
-class twindow : public tpanel, public tevent_handler
+class twindow 
+	: public tpanel
+	, public tevent_handler
+	, public cursor::setter
 {
 	friend class tdebug_layout_graph;
 

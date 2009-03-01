@@ -21,7 +21,6 @@
 
 #include "gui/widgets/window.hpp"
 
-#include "cursor.hpp"
 #include "font.hpp"
 #include "foreach.hpp"
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
@@ -95,6 +94,7 @@ twindow::twindow(CVideo& video,
 		const std::string& definition)
 	: tpanel()
 	, tevent_handler()
+	, cursor::setter(cursor::NORMAL)
 	, video_(video)
 	, status_(NEW)
 	, retval_(0)
