@@ -2216,10 +2216,13 @@ size_t move_unit(game_display* disp,
 		const unit_map::const_iterator enemy_unit = units.find(*step);
 		if (enemy_unit != units.end()) {
 			if (team.is_enemy(enemy_unit->second.side())) {
-				break; // can't traverse enemy
+				// can't traverse enemy (bug in fog or pathfinding?)
+				should_clear_stack = true; // assuming that this enemy was hidden somehow
+				break; 
 			} else if (!tiles_adjacent(*(step-1),*step)) {
 				// can't teleport on ally (on fogged village, with no-leader and view not-shared)
 				teleport_failed = true;
+				should_clear_stack = true; // we have info not supposed to be shared
 				break;
 			}
 		}
@@ -2369,14 +2372,12 @@ size_t move_unit(game_display* disp,
 		for (sight_it = seen_units.begin();
 				sight_it != seen_units.end(); ++sight_it)
 		{
-
 			game_events::raise(sighted_str,*sight_it,steps.back());
 		}
 
 		for (sight_it = stoned_units.begin();
 				sight_it != stoned_units.end(); ++sight_it)
 		{
-
 			game_events::raise(sighted_str,*sight_it,steps.back());
 		}
 	}
