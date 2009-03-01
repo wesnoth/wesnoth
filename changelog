@@ -1,8 +1,8 @@
 Version 1.5.11+svn:
  * Campaign server:
-   * Ignore case on add-on (file)names. (bug #13080)
+   * Ignore case on add-on (file)names (bug #13080)
    * Disallow uploading of add-ons with no title, type, author, version or
-     description specified and warn about invalid versions.
+     description specified and warn about invalid versions
  * Language and i18n:
    * updated translations: Chinese (Simplified), Czech, French, Polish,
      Portuguese (Brazil), Spanish, Turkish
@@ -11,13 +11,13 @@ Version 1.5.11+svn:
      compressed. (We can still receive binaryWML via the network.)
  * User interface:
    * Listbox columns have the same width again
-   * Fix false "click" sometimes triggered at end of unit move (bug #12712).
-   * Now clear fog/shroud before an attack when doing a move+attack action.
-   * Fix broken auto-undo when trying several move+attack with the same unit.
+   * Fix false "click" sometimes triggered at end of unit move (bug #12712)
+   * Now clear fog/shroud before an attack when doing a move+attack action
+   * Fix broken auto-undo when trying several move+attack with the same unit
    * Changed the widgets in the in game message dialog
  * WML Engine:
-   * Fix incorrect or doubled "sighted" events when delaying shroud update.
-   * Fix sometimes doubled "select" events.
+   * Fix incorrect or doubled "sighted" events when delaying shroud update
+   * Fix sometimes doubled "select" events
  * Miscellaneous and bug fixes:
    * Align all network buffers on 4 bytes
 
