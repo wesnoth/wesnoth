@@ -411,13 +411,20 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 
 		gui().unhighlight_reach();
 		move_unit_along_current_route(check_shroud);
+		// during the move, we may have selected another unit
+		// (but without triggering a select event (command was disabled)
+		// in that case reselect it now to fire the event (+ anim & sound)
+		if (selected_hex_ != src) {
+			select_hex(selected_hex_, browse);
+		}
+		return false;
 	} else if (!attackmove_) {
 		// we select a (maybe empty) hex
 		// we block selection during attack+move (because motion is blocked)
-		// FIXME: deal with selected event when commands_disabled
 		select_hex(hex, browse);
 	}
 	return false;
+	//FIXME: clean all these "return false"
 }
 
 void mouse_handler::select_hex(const map_location& hex, const bool browse) {
@@ -447,7 +454,6 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse) {
 		if (!browse && !commands_disabled && u->second.side() == gui().viewing_team()+1) {
 			sound::play_UI_sound("select-unit.wav");
 			u->second.set_selecting(gui(), u->first);
-
 			game_events::fire("select", hex);
 		}
 
