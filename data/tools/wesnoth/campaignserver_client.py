@@ -458,5 +458,6 @@ class CampaignClient:
             if verbose:
                 sys.stderr.write(i * " " + name + "\n")
             self.unpackdir(dir, os.path.join(path, name), i + 2, verbose)
+        return name
 
 # vim: tabstop=4: shiftwidth=4: expandtab: softtabstop=4: autoindent:

@@ -120,7 +120,7 @@ if __name__ == "__main__":
         else:
             decoded = cs.decode(mythread.data)
             print "Unpacking %s..." % name
-            cs.unpackdir(decoded, cdir, verbose = options.verbose)
+            name = cs.unpackdir(decoded, cdir, verbose = options.verbose)
             dirname = os.path.join(cdir, name)
             info = os.path.join(dirname, "_info.cfg")
             try:
