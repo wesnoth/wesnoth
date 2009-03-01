@@ -941,7 +941,7 @@ void unit_animator::wait_until(int animation_time) const
         disp->draw();
         events::pump();
 	int end_tick = animated_units_[0].my_unit->get_animation()->time_to_tick(animation_time);
-	while (SDL_GetTicks() < (unsigned int)end_tick - 20/speed) {
+	while (SDL_GetTicks() < (unsigned int)end_tick) {
 		disp->delay(std::max<int>(0,
 			std::min<int>(10,
 			static_cast<int>((animation_time - get_animation_time()) * speed))));
