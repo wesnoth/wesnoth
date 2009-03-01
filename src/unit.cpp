@@ -2116,7 +2116,7 @@ int unit::movement_cost_internal(const t_translation::t_terrain terrain, const i
 
 	const config* movement_costs = cfg_.child("movement_costs");
 
-	int res = -1;
+	int res = impassable;
 	if(movement_costs != NULL) {
 		if(underlying.size() != 1) {
 			ERR_CONFIG << "terrain '" << terrain << "' has "
