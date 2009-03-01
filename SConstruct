@@ -340,12 +340,12 @@ if not env['static_test']:
 
 if os.path.exists('.git'):
     try:
-        env["svnrev"] = Popen(Split("git-svn find-rev refs/remotes/trunk"), stdout=PIPE, stderr=PIPE).communicate()[0].rstrip("\n")
+        env["svnrev"] = Popen(Split("git svn find-rev refs/remotes/trunk"), stdout=PIPE, stderr=PIPE).communicate()[0].rstrip("\n")
         if not env["svnrev"]:
-            # If you use git-svn for one svn path only there's no refs/remotes/trunk, only git-svn branch
-            env["svnrev"] = Popen(Split("git-svn find-rev git-svn"), stdout=PIPE, stderr=PIPE).communicate()[0].rstrip("\n")
-        # if git-svn can't find HEAD it's a local commit
-        if Popen(Split("git-svn find-rev HEAD"), stdout=PIPE).communicate()[0].rstrip("\n") == "":
+            # If you use git svn for one svn path only there's no refs/remotes/trunk, only git svn branch
+            env["svnrev"] = Popen(Split("git svn find-rev git svn"), stdout=PIPE, stderr=PIPE).communicate()[0].rstrip("\n")
+        # if git svn can't find HEAD it's a local commit
+        if Popen(Split("git svn find-rev HEAD"), stdout=PIPE).communicate()[0].rstrip("\n") == "":
             env["svnrev"] += "L"
         if Popen(Split("git diff --exit-code --quiet")).wait() == 1:
             env["svnrev"] += "M"
