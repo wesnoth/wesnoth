@@ -162,6 +162,8 @@ static void find_routes(const gamemap& map, const unit_map& units,
 		if(old_move_left >= new_turns_moves + new_move_left)
 			continue;
 
+		paths::route &src_route = routes[loc];
+
 		if (!ignore_units) {
 			// we can not traverse enemies
 			const unit_map::const_iterator unit_it =
@@ -176,13 +178,17 @@ static void find_routes(const gamemap& map, const unit_map& units,
 					&& enemy_zoc(map,units,teams, currentloc, viewing_team,u.side(),see_all)
 					&& !u.get_ability_bool("skirmisher", currentloc)) {
 				new_move_left = 0;
-				// Recheck if we already have a better route, but now with the ZoC effect
-				if(old_move_left >= new_turns_moves + 0)
+				// Recheck if we already have a better route, but now with the ZoC effect.
+				// Since the ZOC is cancelling the remaining move points, the game cannot
+				// notice a difference between a short and a long path. So check the path
+				// length too in case of equality.
+				if (old_move_left > new_turns_moves + 0 ||
+				    (old_move_left == new_turns_moves + 0 &&
+				     old_rt->second.steps.size() <= src_route.steps.size() + 1))
 					continue;
 			}
 		}
 
-		paths::route& src_route = routes[loc];
 		paths::route& new_route = routes[currentloc];
 		new_route.steps = src_route.steps;
 		new_route.steps.push_back(loc);
