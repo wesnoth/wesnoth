@@ -1574,10 +1574,11 @@ bool formula_ai::make_move(game_logic::const_formula_ptr formula_, const game_lo
 
 map_location formula_ai::path_calculator(const map_location& src, const map_location& dst, unit_map::iterator& unit_it) const{
     std::map<map_location,paths>::iterator path = possible_moves_.find(src);
+    
     map_location destination = dst;
 
-    //check if destination is within unit's reach
-    if( path->second.routes.count(dst) == 0) {
+    //check if destination is within unit's reach, if not, calculate where to move
+    if( path->second.routes.count(destination) == 0) {
             //destination is too far, check where unit can go
             shortest_path_calculator calc(unit_it->second, current_team(), units_, get_info().teams, get_info().map);
 
@@ -1597,25 +1598,74 @@ map_location formula_ai::path_calculator(const map_location& src, const map_loca
                     }
             }
 
-            paths::route route = a_star_search(src, dst, 1000.0, &calc,
+            unit_map::const_iterator dst_un = units_.find(destination);
+
+            map_location res;
+
+            if( dst_un != units_.end() ) {
+                //there is unit standing at dst, let's try to find free hex to move to
+                const map_location::DIRECTION preferred = destination.get_relative_dir(src);
+
+                int best_rating = 100;//smaller is better
+                map_location adj[6];
+                get_adjacent_tiles(destination,adj);
+
+                for(size_t n = 0; n != 6; ++n) {
+                        if(map_.on_board(adj[n]) == false) {
+                                continue;
+                        }
+
+                        if(units_.find(adj[n]) != units_.end()) {
+                                continue;
+                        }
+
+                        static const size_t NDIRECTIONS = map_location::NDIRECTIONS;
+                        unsigned int difference = abs(int(preferred - n));
+                        if(difference > NDIRECTIONS/2) {
+                                difference = NDIRECTIONS - difference;
+                        }
+
+                        const int rating = difference * 2;
+                        if(rating < best_rating || res.valid() == false) {
+                               best_rating = rating;
+                               res = adj[n];
+                        }
+                }
+            }
+
+            if( res != map_location() ) {
+                destination = res;
+            }
+
+            paths::route route = a_star_search(src, destination, 1000.0, &calc,
                     get_info().map.w(), get_info().map.h(), &allowed_teleports);
 
             int movement = unit_it->second.movement_left();
 
-            if( route.steps.size() > 0 ) {
-                for (std::vector<map_location>::const_iterator loc_iter = route.steps.begin() + 1 ; loc_iter !=route.steps.end(); ++loc_iter) {
-                        const int move_cost = unit_it->second.movement_cost(get_info().map[*(loc_iter+1)]);
+            if( route.steps.size() == 0 ) {
+                emergency_path_calculator em_calc(unit_it->second, get_info().map);
 
-                        if ( move_cost > movement ) {
-                                break;
-                        }
-                        destination = *loc_iter;
-                        movement -= move_cost;
+                route = a_star_search(src, destination, 1000.0, &em_calc, get_info().map.w(), get_info().map.h(), &allowed_teleports);
+
+                if( route.steps.size() < 2 ) {
+                    return map_location();
                 }
-                return destination;
-            } else {
-                return map_location();
             }
+            for (std::vector<map_location>::const_iterator loc_iter = route.steps.begin() + 1 ; loc_iter !=route.steps.end(); ++loc_iter) {
+		typedef formula_ai::move_map::const_iterator Itor;
+		std::pair<Itor,Itor> range = srcdst_.equal_range(src);
+
+                bool found = false;
+		for(Itor i = range.first; i != range.second; ++i) {
+			if (i->second == *loc_iter )
+                            found = true;
+		}
+                if ( !found )
+                    break;
+
+                destination = *loc_iter;
+            }
+            return destination;
     }
 
     return destination;
