@@ -325,6 +325,14 @@ private:
 	/** Widget for the tooltip. */
 	ttooltip tooltip_;
 
+	/** 
+	 * Restorer for the tooltip area.
+	 *
+	 * @todo the current way of showing a tooltip is a kind of hack which
+	 * should be polished post 1.6.
+	 */
+	surface tooltip_restorer_;
+
 	/** Widget for the help popup FIXME should be thelp_popup. */
 	ttooltip help_popup_;
 
@@ -421,8 +429,8 @@ private:
 	void do_show_tooltip(const tpoint& location, const t_string& tooltip);
 
 	/** Inherited from tevent_handler. */
+	void do_remove_tooltip();
 
-	void do_remove_tooltip() { tooltip_.set_visible(twidget::HIDDEN); }
 	/** Inherited from tevent_handler. */
 	void do_show_help_popup(const tpoint& location, const t_string& help_popup);
 

@@ -104,6 +104,7 @@ twindow::twindow(CVideo& video,
 	, top_level_(false)
 	, restorer_()
 	, tooltip_()
+	, tooltip_restorer_()
 	, help_popup_()
 	, automatic_placement_(automatic_placement)
 	, horizontal_placement_(horizontal_placement)
@@ -292,6 +293,10 @@ void twindow::draw()
 		// Find the widgets that are dirty.
 		std::vector<twidget*> call_stack(1, this);
 		populate_dirty_list(*this, call_stack);
+	}
+
+	if(tooltip_.is_visible() && tooltip_.get_dirty()) {
+		dirty_list_.push_back(std::vector<twidget*>(1, &tooltip_));
 	}
 
 	if(dirty_list_.empty()) {
@@ -642,8 +647,13 @@ void twindow::do_show_tooltip(const tpoint& location, const t_string& tooltip)
 	tooltip_.set_label(tooltip);
 	const tpoint size = tooltip_.get_best_size();
 
-	SDL_Rect tooltip_rect = {0, 0, size.x, size.y};
-
+	SDL_Rect tooltip_rect = {
+		(settings::screen_width - size.x) / 2
+		, settings::screen_height - size.y
+		, size.x
+		, size.y
+		};
+#if 0
 	// Find the best position to place the widget
 	if(widget_rect.y - size.y > 0) {
 		// put above
@@ -660,12 +670,24 @@ void twindow::do_show_tooltip(const tpoint& location, const t_string& tooltip)
 		// shift left, no test
 		tooltip_rect.x = client_rect.w - size.x;
 	}
+#endif
 
 	tooltip_.set_size(
 			tpoint(tooltip_rect.x, tooltip_rect.y),
 			tpoint(tooltip_rect.w, tooltip_rect.h));
 
 	tooltip_.set_visible(twidget::VISIBLE);
+
+	tooltip_restorer_= get_surface_portion(video_.getSurface(), tooltip_rect);
+}
+
+void twindow::do_remove_tooltip()
+{
+	SDL_Rect rect = tooltip_.get_rect();
+	SDL_BlitSurface(tooltip_restorer_, 0, video_.getSurface(), &rect);
+	update_rect(tooltip_.get_rect());
+
+	tooltip_.set_visible(twidget::HIDDEN);
 }
 
 void twindow::do_show_help_popup(const tpoint& location, const t_string& help_popup)
