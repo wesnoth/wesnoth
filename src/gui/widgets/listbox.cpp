@@ -34,6 +34,7 @@ tlistbox::tlistbox(const bool has_minimum, const bool has_maximum,
 	: tscrollbar_container(2) // FIXME magic number
 	, generator_(NULL)
 	, list_builder_(NULL)
+	, callback_value_changed_(NULL)
 {
 	generator_ = tgenerator_::build(
 			has_minimum, has_maximum, placement, select);
@@ -139,6 +140,9 @@ void tlistbox::list_item_clicked(twidget* caller)
 
 		if(generator_->get_item(i).has_widget(caller)) {
 			generator_->toggle_item(i);
+			if(callback_value_changed_) { 
+				callback_value_changed_(this);
+			}
 			return;
 		}
 	}
@@ -174,6 +178,9 @@ void tlistbox::handle_key_up_arrow(SDLMod modifier, bool& handled)
 
 		show_content_rect(rect);
 
+		if(callback_value_changed_) { 
+			callback_value_changed_(this);
+		}
 	} else {
 		// Inherited.
 		tscrollbar_container::handle_key_up_arrow(modifier, handled);
@@ -198,6 +205,9 @@ void tlistbox::handle_key_down_arrow(SDLMod modifier, bool& handled)
 
 		show_content_rect(rect);
 
+		if(callback_value_changed_) { 
+			callback_value_changed_(this);
+		}
 	} else {
 		// Inherited.
 		tscrollbar_container::handle_key_up_arrow(modifier, handled);

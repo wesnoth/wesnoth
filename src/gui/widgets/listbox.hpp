@@ -129,8 +129,8 @@ public:
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
-	// FIXME implement
-	void set_callback_value_change(void (*) (twidget* caller)) {}
+	void set_callback_value_change(void (*callback) (twidget* caller)) 
+		{ callback_value_changed_ = callback; }
 
 	void set_list_builder(tbuilder_grid_ptr list_builder)
 		{ list_builder_ = list_builder; }
@@ -216,6 +216,15 @@ private:
 
 	/** Contains the builder for the new items. */
 	tbuilder_grid_const_ptr list_builder_;
+
+	/** 
+	 * This callback is called when the value in the listbox changes.
+	 *
+	 * @todo the implementation of the callback hasn't been tested a lot and
+	 * there might be too many calls. That might happen if an arrow up didn't
+	 * change the selected item.
+	 */
+	void (*callback_value_changed_) (twidget*);
 
 	/** Inherited from tcontrol. */
 	const std::string& get_control_type() const
