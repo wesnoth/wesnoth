@@ -1884,20 +1884,21 @@ void display::draw(bool update,bool force) {
 		return;
 	}
 	bool changed = draw_init();
+	pre_draw();
 	// invalidate all that needs to be invalidated
 	invalidate_animations();
-	pre_draw();
 	update_time_of_day();
 	// at this stage we have everything that needs to be invalidated for this redraw
 	// save it as the previous invalidated, and merge with the previous invalidated_
+	// we merge with the previous redraw because if a hex had a unit last redraw but
+	// not this one, nobody will tell us to redraw (cleanup)
 	previous_invalidated_.swap(invalidated_);
 	invalidated_.insert(previous_invalidated_.begin(),previous_invalidated_.end());
-	// call invalidate_animation again to deal with new conflict arising from the merge
-	// no conflict, if a hex was invalidated last turn but not this turn, then
+	// these new invalidations can not cause any propagation because
+	// if a hex was invalidated last turn but not this turn, then
 	// * case of no unit in neighbour hex=> no propagation
 	// * case of unit in hex but was there last turn=>its hexes are invalidated too
 	// * case of unit inhex not there last turn => it moved, so was invalidated previously
-	//invalidate_animations();
 	if(!get_map().empty()) {
 		//int simulate_delay = 0;
 
