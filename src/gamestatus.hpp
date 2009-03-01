@@ -337,7 +337,7 @@ void save_game(const game_state& gamestate);
 /** Delete a savegame. */
 void delete_game(const std::string& name);
 
-config& save_summary(const std::string& save);
+config& save_summary(std::string save);
 
 void write_save_index();
 

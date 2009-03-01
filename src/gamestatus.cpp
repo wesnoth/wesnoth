@@ -956,8 +956,17 @@ static config& save_index()
 	return save_index_cfg;
 }
 
-config& save_summary(const std::string& save)
+config& save_summary(std::string save)
 {
+	/* 
+	 * All saves are .gz files now so make sure we use that name when opening
+	 * a file. If not some parts of the code use the name with and some parts
+	 * without the .gz suffix.
+	 */
+	if(save.length() >= 3 && save.substr(save.length() - 3) != ".gz") {
+		save += ".gz";
+	}
+
 	config& cfg = save_index();
 	config* res = cfg.find_child("save","save",save);
 	if(res == NULL) {
