@@ -18,6 +18,7 @@ Version 1.5.11+svn:
  * WML Engine:
    * Fix incorrect or doubled "sighted" events when delaying shroud update
    * Fix sometimes doubled "select" events
+   * Fixed bug #13090: Make movement_costs < 1 behave like movement_costs = 1
  * Miscellaneous and bug fixes:
    * Align all network buffers on 4 bytes
 

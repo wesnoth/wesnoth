@@ -38,6 +38,7 @@
 #define LOG_UT LOG_STREAM(info, engine)
 #define WRN_UT LOG_STREAM(warn, engine)
 #define ERR_UT LOG_STREAM(err, engine)
+#define WRN_CONFIG LOG_STREAM(warn, config)
 #define ERR_CONFIG LOG_STREAM(err, config)
 
 namespace {
@@ -2118,7 +2119,7 @@ int unit::movement_cost_internal(const t_translation::t_terrain terrain, const i
 	int res = -1;
 	if(movement_costs != NULL) {
 		if(underlying.size() != 1) {
-			LOG_STREAM(err, config) << "terrain '" << terrain << "' has "
+			ERR_CONFIG << "terrain '" << terrain << "' has "
 				<< underlying.size() << " underlying names - 0 expected\n";
 			return impassable;
 		}
@@ -2130,7 +2131,9 @@ int unit::movement_cost_internal(const t_translation::t_terrain terrain, const i
 	}
 
 	if(res <= 0) {
-		res = impassable;
+		WRN_CONFIG << "Terrain '" << terrain << "' has a movement cost of '"
+		<< res << "' which is '<= 0'; resetting to 1.\n";
+		res = 1;
 	}
 
 	movement_costs_.insert(std::pair<t_translation::t_terrain, int>(terrain,res));
