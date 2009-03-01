@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-03-01 12:14+0100\n"
+"POT-Creation-Date: 2009-03-01 21:23+0100\n"
 "PO-Revision-Date: 2008-05-04 12:00+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -4613,7 +4613,7 @@ msgstr ""
 "Olf,Oul,Oks,Rok,Ruk,Sal,Sam,Sed,Sel,Sen,Sil,Tal,Voter,Vet,Jork"
 
 #. [message]: speaker=narrator
-#: data/core/macros/scenario-utils.cfg:147
+#: data/core/macros/scenario-utils.cfg:155
 msgid ""
 "The computer player might not be able to play side $side_number properly in "
 "this scenario. Side $side_number is intended to be played by a human player."
@@ -5909,6 +5909,27 @@ msgstr "Zvaničan server Vesnota"
 #: data/game_config.cfg:8 data/game_config.cfg:12
 msgid "Alternate Wesnoth Server"
 msgstr "Dopunski server Vesnota"
+
+#. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. [label]
+#: data/gui/default/window/campaign_dialog.cfg:32 src/game.cpp:1098
+msgid "Play a campaign"
+msgstr "Pođite u pohod"
+
+#. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=ok
+#: data/gui/default/window/campaign_dialog.cfg:170 src/dialogs.cpp:686
+#: src/multiplayer_create.cpp:83
+msgid "OK"
+msgstr "U redu"
+
+#. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=cancel
+#: data/gui/default/window/campaign_dialog.cfg:184 src/dialogs.cpp:687
+#: src/dialogs.cpp:1190 src/dialogs.cpp:1297 src/multiplayer_connect.cpp:1015
+#: src/multiplayer_create.cpp:82 src/multiplayer_wait.cpp:184
+msgid "Cancel"
+msgstr "Odustani"
 
 #. [language]
 #: data/hardwired/english.cfg:3
@@ -7367,7 +7388,7 @@ msgstr "bez pogodnog oružja"
 msgid "Chance of being unscathed"
 msgstr "izgledi da prođe bez ozleda"
 
-#: src/attack_prediction_display.cpp:554 src/mouse_events.cpp:604
+#: src/attack_prediction_display.cpp:554 src/mouse_events.cpp:610
 msgid "Damage Calculations"
 msgstr "Računanje štete"
 
@@ -7522,16 +7543,6 @@ msgstr "Pusti snimak"
 msgid "Cancel orders"
 msgstr "Odustani"
 
-#: src/dialogs.cpp:686 src/multiplayer_create.cpp:83
-msgid "OK"
-msgstr "U redu"
-
-#: src/dialogs.cpp:687 src/dialogs.cpp:1190 src/dialogs.cpp:1297
-#: src/multiplayer_connect.cpp:1015 src/multiplayer_create.cpp:82
-#: src/multiplayer_wait.cpp:184
-msgid "Cancel"
-msgstr "Odustani"
-
 #: src/dialogs.cpp:690
 msgid "Delete Save"
 msgstr "Obriši sačuvano"
@@ -7556,21 +7567,21 @@ msgstr "IP: "
 msgid "Moves: "
 msgstr "kretanje: "
 
-#: src/game.cpp:611 src/game.cpp:1402
+#: src/game.cpp:612 src/game.cpp:1428
 msgid "The Battle for Wesnoth"
 msgstr "Boj za Vesnot"
 
-#: src/game.cpp:894 src/game.cpp:898
+#: src/game.cpp:895 src/game.cpp:899
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr ""
 "Upozorenje: Datoteka koju ste pokušali da učitate iskvarena je. Svejedno "
 "učitavam.\n"
 
-#: src/game.cpp:936 src/multiplayer_connect.cpp:1548
+#: src/game.cpp:937 src/multiplayer_connect.cpp:1548
 msgid "This save is from a version too old to be loaded."
 msgstr "Ova pozicija je sačuvana verzijom igre prestarom da bi se učitala."
 
-#: src/game.cpp:942 src/multiplayer_connect.cpp:1555
+#: src/game.cpp:943 src/multiplayer_connect.cpp:1555
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
@@ -7578,72 +7589,68 @@ msgstr ""
 "Ova pozicija je sačuvana različitom verzijom igre. Želite li da pokušate "
 "učitavanje?"
 
-#: src/game.cpp:962 src/game.cpp:965 src/multiplayer_connect.cpp:1529
+#: src/game.cpp:963 src/game.cpp:966 src/multiplayer_connect.cpp:1529
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Datoteka koju ste pokušali da učitate iskvarena je: '"
 
-#: src/game.cpp:968
+#: src/game.cpp:969
 msgid "File I/O Error while reading the game"
 msgstr "U/I greška u datoteci prilikom čitanja igre"
 
-#: src/game.cpp:1071
+#: src/game.cpp:1056 src/game.cpp:1094
 msgid "No campaigns are available.\n"
 msgstr "Nema nijednog pohoda.\n"
 
-#: src/game.cpp:1075
-msgid "Play a campaign"
-msgstr "Pođite u pohod"
-
-#: src/game.cpp:1118
+#: src/game.cpp:1144
 msgid "Difficulty"
 msgstr "Težina"
 
-#: src/game.cpp:1119
+#: src/game.cpp:1145
 msgid "Select difficulty level:"
 msgstr "Izaberite nivo težine:"
 
-#: src/game.cpp:1281
+#: src/game.cpp:1307
 #, fuzzy
 msgid "Do you really want to start the server?"
 msgstr "Želite li zaista da se otpusti?"
 
-#: src/game.cpp:1282
+#: src/game.cpp:1308
 msgid ""
 "The server will run in a background process until all users have "
 "disconnected."
 msgstr ""
 
-#: src/game.cpp:1286
+#: src/game.cpp:1312
 #, fuzzy
 msgid "Don't show again"
 msgstr "Ne pitaj me ponovo!"
 
-#: src/game.cpp:1357
+#: src/game.cpp:1383
 #, fuzzy
 msgid "Error while starting server: "
 msgstr "Greška prilikom igranja igre: "
 
-#: src/game.cpp:1359 src/playcampaign.cpp:97 src/playcampaign.cpp:383
+#: src/game.cpp:1385 src/playcampaign.cpp:97 src/playcampaign.cpp:383
 msgid "The game could not be loaded: "
 msgstr "Igru nije moguće učitati: "
 
-#: src/game.cpp:1361 src/playcampaign.cpp:99 src/playcampaign.cpp:386
+#: src/game.cpp:1387 src/playcampaign.cpp:99 src/playcampaign.cpp:386
 msgid "Error while playing the game: "
 msgstr "Greška prilikom igranja igre: "
 
-#: src/game.cpp:1381 src/playcampaign.cpp:101 src/playcampaign.cpp:389
+#: src/game.cpp:1407 src/playcampaign.cpp:101 src/playcampaign.cpp:389
 msgid "The game map could not be loaded: "
 msgstr "Mapu igre nije moguće učitati: "
 
-#: src/game.cpp:1447 src/game.cpp:1568
+#: src/game.cpp:1473 src/game.cpp:1594
 msgid "Error loading game configuration files: '"
 msgstr "Greška pri učitavanju postavnih datoteka igre: '"
 
-#: src/game.cpp:1448 src/game.cpp:1569
+#: src/game.cpp:1474 src/game.cpp:1595
 msgid "' (The game will now exit)"
 msgstr "' (igra će se sad ugasiti)"
 
-#: src/game.cpp:1543
+#: src/game.cpp:1569
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "Sledeći dodaci imaju grešku i ne mogu se učitati:"
@@ -7651,28 +7658,28 @@ msgstr[1] "Sledeći dodaci imaju grešku i ne mogu se učitati:"
 msgstr[2] "Sledeći dodaci imaju grešku i ne mogu se učitati:"
 msgstr[3] "Sledeći dodatak ima grešku i ne može se učitati:"
 
-#: src/game.cpp:1550
+#: src/game.cpp:1576
 msgid "ERROR DETAILS:"
 msgstr "DETALJI GREŠKE:"
 
-#: src/game.cpp:1578
+#: src/game.cpp:1604
 msgid "Loading data files"
 msgstr "Učitavam podatke."
 
-#: src/game.cpp:1970
+#: src/game.cpp:1996
 msgid "Loading game configuration."
 msgstr "Učitavam postavu igre."
 
-#: src/game.cpp:1976
+#: src/game.cpp:2002
 msgid "Re-initialize fonts for the current language."
 msgstr "Vaspostavljam fontove za tekući jezik."
 
-#: src/game.cpp:1984
+#: src/game.cpp:2010
 #, fuzzy
 msgid "Searching for installed add-ons."
 msgstr "Šaljem dodatak"
 
-#: src/game.cpp:1993
+#: src/game.cpp:2019
 msgid "Loading title screen."
 msgstr "Učitavam naslovni ekran."
 
@@ -7719,16 +7726,16 @@ msgstr " snimak"
 msgid "Could not write to file"
 msgstr "Ne mogu pisati u datoteku"
 
-#: src/generate_report.cpp:98
+#: src/generate_report.cpp:96
 msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
 msgstr ""
 "Ova jedinica je nevidljiva. Neprijatelji je ne mogu videti niti napasti."
 
-#: src/generate_report.cpp:98
+#: src/generate_report.cpp:96
 msgid "invisible: "
 msgstr "nevidljiva: "
 
-#: src/generate_report.cpp:103
+#: src/generate_report.cpp:101
 #, fuzzy
 msgid ""
 "This unit has been slowed. It will only deal half its normal damage when "
@@ -7736,11 +7743,11 @@ msgid ""
 msgstr ""
 "Ova jedinica je usporena. Naneće samo polovinu normalne štete kada napada."
 
-#: src/generate_report.cpp:103
+#: src/generate_report.cpp:101
 msgid "slowed: "
 msgstr "usporena: "
 
-#: src/generate_report.cpp:108
+#: src/generate_report.cpp:106
 msgid ""
 "This unit is poisoned. It will lose 8 HP every turn until it can seek a cure "
 "to the poison in a village or from a friendly unit with the 'cures' "
@@ -7754,31 +7761,31 @@ msgstr ""
 "\n"
 "Jedinice ne mogu biti ubijene samo otrovom. Otrov neće smanjiti UP ispod 1."
 
-#: src/generate_report.cpp:108
+#: src/generate_report.cpp:106
 msgid "poisoned: "
 msgstr "otrovana: "
 
-#: src/generate_report.cpp:115
+#: src/generate_report.cpp:113
 msgid "This unit has been turned to stone. It may not move or attack."
 msgstr "Ova jedinica je pretvorena u kamen. Ne može se kretati niti napadati."
 
-#: src/generate_report.cpp:115
+#: src/generate_report.cpp:113
 msgid "stone: "
 msgstr "okamenjena: "
 
-#: src/generate_report.cpp:170
+#: src/generate_report.cpp:168
 msgid "Resistances: "
 msgstr "otpornosti: "
 
-#: src/generate_report.cpp:172
+#: src/generate_report.cpp:170
 msgid "(Att / Def)"
 msgstr ""
 
-#: src/generate_report.cpp:191 src/multiplayer_create.cpp:395
+#: src/generate_report.cpp:189 src/multiplayer_create.cpp:395
 msgid "Experience Modifier: "
 msgstr "modifikator iskustva: "
 
-#: src/generate_report.cpp:262
+#: src/generate_report.cpp:260
 msgid "tooltip^damage"
 msgid_plural "damage"
 msgstr[0] "štete"
@@ -7786,7 +7793,7 @@ msgstr[1] "štete"
 msgstr[2] "štete"
 msgstr[3] "štete"
 
-#: src/generate_report.cpp:263
+#: src/generate_report.cpp:261
 msgid "tooltip^attack"
 msgid_plural "attacks"
 msgstr[0] "napad"
@@ -7794,41 +7801,41 @@ msgstr[1] "napada"
 msgstr[2] "napada"
 msgstr[3] "napad"
 
-#: src/generate_report.cpp:269
+#: src/generate_report.cpp:267
 #, fuzzy, no-c-format
 msgid "tooltip^% accuracy"
 msgstr "napad"
 
-#: src/generate_report.cpp:275
+#: src/generate_report.cpp:273
 #, fuzzy, no-c-format
 msgid "tooltip^% parry"
 msgstr "štete"
 
-#: src/generate_report.cpp:286
+#: src/generate_report.cpp:284
 msgid "weapon range: "
 msgstr "domet oružja: "
 
-#: src/generate_report.cpp:287
+#: src/generate_report.cpp:285
 msgid "damage type: "
 msgstr "vid štete: "
 
-#: src/generate_report.cpp:308
+#: src/generate_report.cpp:306
 msgid "vs"
 msgstr "pr."
 
-#: src/generate_report.cpp:358
+#: src/generate_report.cpp:356
 msgid "Lawful units: "
 msgstr "zakonite jedinice: "
 
-#: src/generate_report.cpp:360
+#: src/generate_report.cpp:358
 msgid "Neutral units: "
 msgstr "neutralne jedinice: "
 
-#: src/generate_report.cpp:361
+#: src/generate_report.cpp:359
 msgid "Chaotic units: "
 msgstr "haotične jedinice: "
 
-#: src/generate_report.cpp:508
+#: src/generate_report.cpp:506
 msgid "Observers:"
 msgstr "posmatrači:"
 
@@ -8627,11 +8634,11 @@ msgstr "naredba:"
 msgid "User-Command#3"
 msgstr "korisnička-naredba#3"
 
-#: src/mouse_events.cpp:615
+#: src/mouse_events.cpp:621
 msgid "Attack Enemy"
 msgstr "Napadni"
 
-#: src/mouse_events.cpp:616
+#: src/mouse_events.cpp:622
 msgid "Choose weapon:"
 msgstr "Izbor oružja:"
 
@@ -9167,7 +9174,7 @@ msgstr "Ne mogu dodati utičnicu skupu utičnica"
 msgid "Could not send initial handshake"
 msgstr "Ne mogu poslati početno rukovanje"
 
-#: src/pathfind.cpp:303
+#: src/pathfind.cpp:309
 msgid "Terrain with a movement cost less than 1 encountered."
 msgstr "Nađen teren sa troškom kretanja manjim od 1."
 

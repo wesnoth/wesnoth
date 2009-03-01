@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-03-01 12:14+0100\n"
+"POT-Creation-Date: 2009-03-01 21:23+0100\n"
 "PO-Revision-Date: 2009-02-24 13:32+0100\n"
 "Last-Translator: Aurélien Paulus <aurelien.paulus@gmail.com>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
@@ -4670,7 +4670,7 @@ msgstr ""
 "Serin,Sire,Serpe,Tot,Ténu,Ter,Tors,Us,Val,Vin,Veau,Vert,Wy,Ys,Yvel,Xavier"
 
 #. [message]: speaker=narrator
-#: data/core/macros/scenario-utils.cfg:147
+#: data/core/macros/scenario-utils.cfg:155
 msgid ""
 "The computer player might not be able to play side $side_number properly in "
 "this scenario. Side $side_number is intended to be played by a human player."
@@ -5982,6 +5982,27 @@ msgstr "Se connecter au serveur officiel"
 #: data/game_config.cfg:8 data/game_config.cfg:12
 msgid "Alternate Wesnoth Server"
 msgstr "Autre serveur Wesnoth"
+
+#. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. [label]
+#: data/gui/default/window/campaign_dialog.cfg:32 src/game.cpp:1098
+msgid "Play a campaign"
+msgstr "Jouer une campagne"
+
+#. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=ok
+#: data/gui/default/window/campaign_dialog.cfg:170 src/dialogs.cpp:686
+#: src/multiplayer_create.cpp:83
+msgid "OK"
+msgstr "OK"
+
+#. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=cancel
+#: data/gui/default/window/campaign_dialog.cfg:184 src/dialogs.cpp:687
+#: src/dialogs.cpp:1190 src/dialogs.cpp:1297 src/multiplayer_connect.cpp:1015
+#: src/multiplayer_create.cpp:82 src/multiplayer_wait.cpp:184
+msgid "Cancel"
+msgstr "Annuler"
 
 #. [language]
 #: data/hardwired/english.cfg:3
@@ -7496,7 +7517,7 @@ msgstr "Pas d'arme utilisable"
 msgid "Chance of being unscathed"
 msgstr "Chance d'être indemne"
 
-#: src/attack_prediction_display.cpp:554 src/mouse_events.cpp:604
+#: src/attack_prediction_display.cpp:554 src/mouse_events.cpp:610
 msgid "Damage Calculations"
 msgstr "Calcul des dégâts"
 
@@ -7655,16 +7676,6 @@ msgstr "Revoir les actions passées"
 msgid "Cancel orders"
 msgstr "Annuler les ordres"
 
-#: src/dialogs.cpp:686 src/multiplayer_create.cpp:83
-msgid "OK"
-msgstr "OK"
-
-#: src/dialogs.cpp:687 src/dialogs.cpp:1190 src/dialogs.cpp:1297
-#: src/multiplayer_connect.cpp:1015 src/multiplayer_create.cpp:82
-#: src/multiplayer_wait.cpp:184
-msgid "Cancel"
-msgstr "Annuler"
-
 #: src/dialogs.cpp:690
 msgid "Delete Save"
 msgstr "Effacer la sauvegarde"
@@ -7689,23 +7700,23 @@ msgstr "XP : "
 msgid "Moves: "
 msgstr "Déplacements : "
 
-#: src/game.cpp:611 src/game.cpp:1402
+#: src/game.cpp:612 src/game.cpp:1428
 msgid "The Battle for Wesnoth"
 msgstr "Bataille pour Wesnoth"
 
-#: src/game.cpp:894 src/game.cpp:898
+#: src/game.cpp:895 src/game.cpp:899
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr ""
 "Attention : le fichier que vous tentez d'ouvrir est corrompu. Le chargement "
 "continue.\n"
 
-#: src/game.cpp:936 src/multiplayer_connect.cpp:1548
+#: src/game.cpp:937 src/multiplayer_connect.cpp:1548
 msgid "This save is from a version too old to be loaded."
 msgstr ""
 "Cette sauvegarde a été enregistrée avec une version du jeu trop ancienne "
 "pour être chargée."
 
-#: src/game.cpp:942 src/multiplayer_connect.cpp:1555
+#: src/game.cpp:943 src/multiplayer_connect.cpp:1555
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
@@ -7713,35 +7724,31 @@ msgstr ""
 "Cette sauvegarde a été enregistrée avec une version différente du jeu. "
 "Voulez-vous essayer de la charger ?"
 
-#: src/game.cpp:962 src/game.cpp:965 src/multiplayer_connect.cpp:1529
+#: src/game.cpp:963 src/game.cpp:966 src/multiplayer_connect.cpp:1529
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Le fichier que vous avez essayé de charger est corrompu : « "
 
-#: src/game.cpp:968
+#: src/game.cpp:969
 msgid "File I/O Error while reading the game"
 msgstr "Erreur d'E/S en chargeant le jeu"
 
-#: src/game.cpp:1071
+#: src/game.cpp:1056 src/game.cpp:1094
 msgid "No campaigns are available.\n"
 msgstr "Aucune campagne disponible.\n"
 
-#: src/game.cpp:1075
-msgid "Play a campaign"
-msgstr "Jouer une campagne"
-
-#: src/game.cpp:1118
+#: src/game.cpp:1144
 msgid "Difficulty"
 msgstr "Difficulté"
 
-#: src/game.cpp:1119
+#: src/game.cpp:1145
 msgid "Select difficulty level:"
 msgstr "Choisissez le niveau de difficulté :"
 
-#: src/game.cpp:1281
+#: src/game.cpp:1307
 msgid "Do you really want to start the server?"
 msgstr "Voulez-vous vraiment démarrer le serveur ?"
 
-#: src/game.cpp:1282
+#: src/game.cpp:1308
 msgid ""
 "The server will run in a background process until all users have "
 "disconnected."
@@ -7749,61 +7756,61 @@ msgstr ""
 "Le serveur fonctionnera en processus d'arrière-plan jusqu'à ce que tous les "
 "utilisateurs se soient déconnectés."
 
-#: src/game.cpp:1286
+#: src/game.cpp:1312
 msgid "Don't show again"
 msgstr "Ne plus afficher"
 
-#: src/game.cpp:1357
+#: src/game.cpp:1383
 msgid "Error while starting server: "
 msgstr "Erreur lors du démarrage du serveur :"
 
-#: src/game.cpp:1359 src/playcampaign.cpp:97 src/playcampaign.cpp:383
+#: src/game.cpp:1385 src/playcampaign.cpp:97 src/playcampaign.cpp:383
 msgid "The game could not be loaded: "
 msgstr "Le jeu n'a pas pu être chargé : "
 
-#: src/game.cpp:1361 src/playcampaign.cpp:99 src/playcampaign.cpp:386
+#: src/game.cpp:1387 src/playcampaign.cpp:99 src/playcampaign.cpp:386
 msgid "Error while playing the game: "
 msgstr "Erreur lors du déroulement de la partie : "
 
-#: src/game.cpp:1381 src/playcampaign.cpp:101 src/playcampaign.cpp:389
+#: src/game.cpp:1407 src/playcampaign.cpp:101 src/playcampaign.cpp:389
 msgid "The game map could not be loaded: "
 msgstr "La carte n'a pas pu être chargée : "
 
-#: src/game.cpp:1447 src/game.cpp:1568
+#: src/game.cpp:1473 src/game.cpp:1594
 msgid "Error loading game configuration files: '"
 msgstr "Erreur lors du chargement des fichiers de configuration du jeu : « "
 
-#: src/game.cpp:1448 src/game.cpp:1569
+#: src/game.cpp:1474 src/game.cpp:1595
 msgid "' (The game will now exit)"
 msgstr " » (Le jeu va maintenant se terminer)"
 
-#: src/game.cpp:1543
+#: src/game.cpp:1569
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "Impossible de charger cette(ces) extension(s) en erreur :"
 msgstr[1] "Impossible de charger cette(ces) extension(s) en erreur :"
 
-#: src/game.cpp:1550
+#: src/game.cpp:1576
 msgid "ERROR DETAILS:"
 msgstr "Détails des erreurs :"
 
-#: src/game.cpp:1578
+#: src/game.cpp:1604
 msgid "Loading data files"
 msgstr "Lecture des fichiers de données"
 
-#: src/game.cpp:1970
+#: src/game.cpp:1996
 msgid "Loading game configuration."
 msgstr "Chargement de la configuration du jeu"
 
-#: src/game.cpp:1976
+#: src/game.cpp:2002
 msgid "Re-initialize fonts for the current language."
 msgstr "Réinitialiser les polices pour le langage courant."
 
-#: src/game.cpp:1984
+#: src/game.cpp:2010
 msgid "Searching for installed add-ons."
 msgstr "Chercher des extensions installées."
 
-#: src/game.cpp:1993
+#: src/game.cpp:2019
 msgid "Loading title screen."
 msgstr "Chargement de l'écran de présentation"
 
@@ -7848,17 +7855,17 @@ msgstr " film"
 msgid "Could not write to file"
 msgstr "Impossible d'écrire dans le fichier"
 
-#: src/generate_report.cpp:98
+#: src/generate_report.cpp:96
 msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
 msgstr ""
 "Cette unité est invisible. Elle ne peut être vue ou attaquée par des unités "
 "ennemies."
 
-#: src/generate_report.cpp:98
+#: src/generate_report.cpp:96
 msgid "invisible: "
 msgstr "invisible : "
 
-#: src/generate_report.cpp:103
+#: src/generate_report.cpp:101
 msgid ""
 "This unit has been slowed. It will only deal half its normal damage when "
 "attacking and its movement cost is doubled."
@@ -7866,11 +7873,11 @@ msgstr ""
 "Cette unité a été ralentie. Elle ne fera plus que la moitié de ses dégâts "
 "normaux en attaquant et son coût de déplacement est doublé.."
 
-#: src/generate_report.cpp:103
+#: src/generate_report.cpp:101
 msgid "slowed: "
 msgstr "ralentie : "
 
-#: src/generate_report.cpp:108
+#: src/generate_report.cpp:106
 msgid ""
 "This unit is poisoned. It will lose 8 HP every turn until it can seek a cure "
 "to the poison in a village or from a friendly unit with the 'cures' "
@@ -7886,79 +7893,79 @@ msgstr ""
 "Une unité ne peut pas être tuée simplement par du poison. Celui-ci ne fera "
 "pas baisser ses points de vie en dessous de 1."
 
-#: src/generate_report.cpp:108
+#: src/generate_report.cpp:106
 msgid "poisoned: "
 msgstr "empoisonné : "
 
-#: src/generate_report.cpp:115
+#: src/generate_report.cpp:113
 msgid "This unit has been turned to stone. It may not move or attack."
 msgstr ""
 "Cette unité a été changée en pierre. Elle ne peut plus ni bouger, ni "
 "attaquer."
 
-#: src/generate_report.cpp:115
+#: src/generate_report.cpp:113
 msgid "stone: "
 msgstr "pétrification : "
 
-#: src/generate_report.cpp:170
+#: src/generate_report.cpp:168
 msgid "Resistances: "
 msgstr "Résistances : "
 
-#: src/generate_report.cpp:172
+#: src/generate_report.cpp:170
 msgid "(Att / Def)"
 msgstr "(Att / Déf)"
 
-#: src/generate_report.cpp:191 src/multiplayer_create.cpp:395
+#: src/generate_report.cpp:189 src/multiplayer_create.cpp:395
 msgid "Experience Modifier: "
 msgstr "Modifications d'expérience : "
 
-#: src/generate_report.cpp:262
+#: src/generate_report.cpp:260
 msgid "tooltip^damage"
 msgid_plural "damage"
 msgstr[0] "dégât"
 msgstr[1] "dégâts"
 
-#: src/generate_report.cpp:263
+#: src/generate_report.cpp:261
 msgid "tooltip^attack"
 msgid_plural "attacks"
 msgstr[0] "attaque"
 msgstr[1] "attaques"
 
-#: src/generate_report.cpp:269
+#: src/generate_report.cpp:267
 #, no-c-format
 msgid "tooltip^% accuracy"
 msgstr " % précision"
 
-#: src/generate_report.cpp:275
+#: src/generate_report.cpp:273
 #, no-c-format
 msgid "tooltip^% parry"
 msgstr " % parade"
 
-#: src/generate_report.cpp:286
+#: src/generate_report.cpp:284
 msgid "weapon range: "
 msgstr "portée de l'arme :"
 
-#: src/generate_report.cpp:287
+#: src/generate_report.cpp:285
 msgid "damage type: "
 msgstr "type de dégâts :"
 
-#: src/generate_report.cpp:308
+#: src/generate_report.cpp:306
 msgid "vs"
 msgstr "contre"
 
-#: src/generate_report.cpp:358
+#: src/generate_report.cpp:356
 msgid "Lawful units: "
 msgstr "Unités loyales : "
 
-#: src/generate_report.cpp:360
+#: src/generate_report.cpp:358
 msgid "Neutral units: "
 msgstr "Unités neutres : "
 
-#: src/generate_report.cpp:361
+#: src/generate_report.cpp:359
 msgid "Chaotic units: "
 msgstr "Unités chaotiques : "
 
-#: src/generate_report.cpp:508
+#: src/generate_report.cpp:506
 msgid "Observers:"
 msgstr "Observateurs : "
 
@@ -8729,11 +8736,11 @@ msgstr "Commande :"
 msgid "User-Command#3"
 msgstr "Commande utilisateur #3"
 
-#: src/mouse_events.cpp:615
+#: src/mouse_events.cpp:621
 msgid "Attack Enemy"
 msgstr "Attaquer l'ennemi"
 
-#: src/mouse_events.cpp:616
+#: src/mouse_events.cpp:622
 msgid "Choose weapon:"
 msgstr "Choisissez une arme : "
 
@@ -9275,7 +9282,7 @@ msgstr "Impossible d'ajouter le port à la liste des ports"
 msgid "Could not send initial handshake"
 msgstr "Impossible d'envoyer le signal d'établissement de la liaison"
 
-#: src/pathfind.cpp:303
+#: src/pathfind.cpp:309
 msgid "Terrain with a movement cost less than 1 encountered."
 msgstr "Un terrain avec un coût de mouvement inférieur à 1 a été détecté."
 

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-03-01 12:14+0100\n"
+"POT-Creation-Date: 2009-03-01 21:23+0100\n"
 "PO-Revision-Date: 2009-02-23 21:28+0200\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish <wesnoth-tr@googlegroups.com>\n"
@@ -4615,7 +4615,7 @@ msgstr ""
 "Ülö,Üfüf,Üfül,Ofof,Rok,Rök,Sül,Söm,Sed,Sül,Sön,Süş,Tal,Şat,Şet,Şork"
 
 #. [message]: speaker=narrator
-#: data/core/macros/scenario-utils.cfg:147
+#: data/core/macros/scenario-utils.cfg:155
 msgid ""
 "The computer player might not be able to play side $side_number properly in "
 "this scenario. Side $side_number is intended to be played by a human player."
@@ -5633,6 +5633,27 @@ msgstr "Resmi Wesnoth Sunucusu"
 #: data/game_config.cfg:8 data/game_config.cfg:12
 msgid "Alternate Wesnoth Server"
 msgstr "Diğer Wesnoth Sunucusu"
+
+#. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. [label]
+#: data/gui/default/window/campaign_dialog.cfg:32 src/game.cpp:1098
+msgid "Play a campaign"
+msgstr "Bir seferberlik oyna"
+
+#. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=ok
+#: data/gui/default/window/campaign_dialog.cfg:170 src/dialogs.cpp:686
+#: src/multiplayer_create.cpp:83
+msgid "OK"
+msgstr "Tamam"
+
+#. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=cancel
+#: data/gui/default/window/campaign_dialog.cfg:184 src/dialogs.cpp:687
+#: src/dialogs.cpp:1190 src/dialogs.cpp:1297 src/multiplayer_connect.cpp:1015
+#: src/multiplayer_create.cpp:82 src/multiplayer_wait.cpp:184
+msgid "Cancel"
+msgstr "İptal"
 
 #. [language]
 #: data/hardwired/english.cfg:3
@@ -7067,7 +7088,7 @@ msgstr "Kullanılabilir silah yok"
 msgid "Chance of being unscathed"
 msgstr "Yarasız kurtulma şansı"
 
-#: src/attack_prediction_display.cpp:554 src/mouse_events.cpp:604
+#: src/attack_prediction_display.cpp:554 src/mouse_events.cpp:610
 msgid "Damage Calculations"
 msgstr "Hasar Hesaplamaları"
 
@@ -7221,16 +7242,6 @@ msgstr "Tekrar göster"
 msgid "Cancel orders"
 msgstr "İşlemi iptal et"
 
-#: src/dialogs.cpp:686 src/multiplayer_create.cpp:83
-msgid "OK"
-msgstr "Tamam"
-
-#: src/dialogs.cpp:687 src/dialogs.cpp:1190 src/dialogs.cpp:1297
-#: src/multiplayer_connect.cpp:1015 src/multiplayer_create.cpp:82
-#: src/multiplayer_wait.cpp:184
-msgid "Cancel"
-msgstr "İptal"
-
 #: src/dialogs.cpp:690
 msgid "Delete Save"
 msgstr "Kaydı Sil"
@@ -7255,114 +7266,110 @@ msgstr "TP: "
 msgid "Moves: "
 msgstr "Hareket: "
 
-#: src/game.cpp:611 src/game.cpp:1402
+#: src/game.cpp:612 src/game.cpp:1428
 msgid "The Battle for Wesnoth"
 msgstr "Wesnoth Savaşı"
 
-#: src/game.cpp:894 src/game.cpp:898
+#: src/game.cpp:895 src/game.cpp:899
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr "Uyarı: Yüklemeye çalıştığınız dosya bozuk. Yine de yükleniyor.\n"
 
-#: src/game.cpp:936 src/multiplayer_connect.cpp:1548
+#: src/game.cpp:937 src/multiplayer_connect.cpp:1548
 msgid "This save is from a version too old to be loaded."
 msgstr "Bu kayıt oyunun eski bir sürümünden."
 
-#: src/game.cpp:942 src/multiplayer_connect.cpp:1555
+#: src/game.cpp:943 src/multiplayer_connect.cpp:1555
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
 msgstr ""
 "Bu kayıt oyunun farklı bir sürümünden. Yüklemeyi denemek istiyor musunuz?"
 
-#: src/game.cpp:962 src/game.cpp:965 src/multiplayer_connect.cpp:1529
+#: src/game.cpp:963 src/game.cpp:966 src/multiplayer_connect.cpp:1529
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Yüklemeye çalıştığınız dosya bozuk: ‘"
 
-#: src/game.cpp:968
+#: src/game.cpp:969
 msgid "File I/O Error while reading the game"
 msgstr "Oyunu okunurken dosyada G/Ç hatası"
 
-#: src/game.cpp:1071
+#: src/game.cpp:1056 src/game.cpp:1094
 msgid "No campaigns are available.\n"
 msgstr "İşe yarar bir seferberlik yok.\n"
 
-#: src/game.cpp:1075
-msgid "Play a campaign"
-msgstr "Bir seferberlik oyna"
-
-#: src/game.cpp:1118
+#: src/game.cpp:1144
 msgid "Difficulty"
 msgstr "Zorluk"
 
-#: src/game.cpp:1119
+#: src/game.cpp:1145
 msgid "Select difficulty level:"
 msgstr "Zorluk seviyesini seçiniz:"
 
-#: src/game.cpp:1281
+#: src/game.cpp:1307
 msgid "Do you really want to start the server?"
 msgstr "Sunucuyu gerçekten başlatmak istiyor musunuz?"
 
-#: src/game.cpp:1282
+#: src/game.cpp:1308
 msgid ""
 "The server will run in a background process until all users have "
 "disconnected."
 msgstr "Tüm kullanıcılar çıkana kadar sunucu artalanda çalışmaya devam edecek."
 
-#: src/game.cpp:1286
+#: src/game.cpp:1312
 msgid "Don't show again"
 msgstr "Bir daha gösterme"
 
-#: src/game.cpp:1357
+#: src/game.cpp:1383
 msgid "Error while starting server: "
 msgstr "Sunucu başlatılırken hata: "
 
-#: src/game.cpp:1359 src/playcampaign.cpp:97 src/playcampaign.cpp:383
+#: src/game.cpp:1385 src/playcampaign.cpp:97 src/playcampaign.cpp:383
 msgid "The game could not be loaded: "
 msgstr "Oyun yüklenemedi: "
 
-#: src/game.cpp:1361 src/playcampaign.cpp:99 src/playcampaign.cpp:386
+#: src/game.cpp:1387 src/playcampaign.cpp:99 src/playcampaign.cpp:386
 msgid "Error while playing the game: "
 msgstr "Oyunu oynanırken hata: "
 
-#: src/game.cpp:1381 src/playcampaign.cpp:101 src/playcampaign.cpp:389
+#: src/game.cpp:1407 src/playcampaign.cpp:101 src/playcampaign.cpp:389
 msgid "The game map could not be loaded: "
 msgstr "Oyun haritası yüklenemedi: "
 
-#: src/game.cpp:1447 src/game.cpp:1568
+#: src/game.cpp:1473 src/game.cpp:1594
 msgid "Error loading game configuration files: '"
 msgstr "Oyun yapılandırma dosyaları yüklenirken hata: ‘"
 
-#: src/game.cpp:1448 src/game.cpp:1569
+#: src/game.cpp:1474 src/game.cpp:1595
 msgid "' (The game will now exit)"
 msgstr "’ (Şimdi oyundan çıkılıyor)"
 
-#: src/game.cpp:1543
+#: src/game.cpp:1569
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "Şu eklenti hatalı ve yüklenemedi:"
 msgstr[1] "Şu eklenti hatalı ve yüklenemedi:"
 
-#: src/game.cpp:1550
+#: src/game.cpp:1576
 msgid "ERROR DETAILS:"
 msgstr "HATA AYRINTILARI:"
 
-#: src/game.cpp:1578
+#: src/game.cpp:1604
 msgid "Loading data files"
 msgstr "Veri dosyaları yükleniyor"
 
-#: src/game.cpp:1970
+#: src/game.cpp:1996
 msgid "Loading game configuration."
 msgstr "Oyun yapılandırması yükleniyor."
 
-#: src/game.cpp:1976
+#: src/game.cpp:2002
 msgid "Re-initialize fonts for the current language."
 msgstr "Yazıtipleri geçerli dil için yeniden ilklendirildi."
 
-#: src/game.cpp:1984
+#: src/game.cpp:2010
 msgid "Searching for installed add-ons."
 msgstr "Kurulu eklentiler aranıyor."
 
-#: src/game.cpp:1993
+#: src/game.cpp:2019
 msgid "Loading title screen."
 msgstr "Ana ekran yükleniyor."
 
@@ -7407,16 +7414,16 @@ msgstr " tekrar"
 msgid "Could not write to file"
 msgstr "Dosyaya yazılamadı"
 
-#: src/generate_report.cpp:98
+#: src/generate_report.cpp:96
 msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
 msgstr ""
 "Bu birim görünmez. Düşman birimleri tarafından görülemez ve saldırılamaz."
 
-#: src/generate_report.cpp:98
+#: src/generate_report.cpp:96
 msgid "invisible: "
 msgstr "görünmez: "
 
-#: src/generate_report.cpp:103
+#: src/generate_report.cpp:101
 msgid ""
 "This unit has been slowed. It will only deal half its normal damage when "
 "attacking and its movement cost is doubled."
@@ -7424,11 +7431,11 @@ msgstr ""
 "Bu birim yavaşlatıldı; artık her araziyi iki misli yavaş geçecek ve "
 "saldırırken de normalin yarısı kadar hasar verebilecek."
 
-#: src/generate_report.cpp:103
+#: src/generate_report.cpp:101
 msgid "slowed: "
 msgstr "yavaşlatılmış: "
 
-#: src/generate_report.cpp:108
+#: src/generate_report.cpp:106
 msgid ""
 "This unit is poisoned. It will lose 8 HP every turn until it can seek a cure "
 "to the poison in a village or from a friendly unit with the 'cures' "
@@ -7443,77 +7450,77 @@ msgstr ""
 "Bir birim sadece zehir ile öldürülemez. Zehir yaşam enerjisini 1 YP’nin "
 "altına düşürmez."
 
-#: src/generate_report.cpp:108
+#: src/generate_report.cpp:106
 msgid "poisoned: "
 msgstr "zehirlenmiş: "
 
-#: src/generate_report.cpp:115
+#: src/generate_report.cpp:113
 msgid "This unit has been turned to stone. It may not move or attack."
 msgstr "Bu birim taşa çevirildi. Artık hareket edemez ve saldıramaz."
 
-#: src/generate_report.cpp:115
+#: src/generate_report.cpp:113
 msgid "stone: "
 msgstr "taşlaşmış: "
 
-#: src/generate_report.cpp:170
+#: src/generate_report.cpp:168
 msgid "Resistances: "
 msgstr "Dirençler: "
 
-#: src/generate_report.cpp:172
+#: src/generate_report.cpp:170
 msgid "(Att / Def)"
 msgstr "(Sald / Sav)"
 
-#: src/generate_report.cpp:191 src/multiplayer_create.cpp:395
+#: src/generate_report.cpp:189 src/multiplayer_create.cpp:395
 msgid "Experience Modifier: "
 msgstr "Tecrübe Ayarı: "
 
-#: src/generate_report.cpp:262
+#: src/generate_report.cpp:260
 msgid "tooltip^damage"
 msgid_plural "damage"
 msgstr[0] "hasarlı"
 msgstr[1] "hasarlı"
 
-#: src/generate_report.cpp:263
+#: src/generate_report.cpp:261
 msgid "tooltip^attack"
 msgid_plural "attacks"
 msgstr[0] "vuruş"
 msgstr[1] "vuruş"
 
-#: src/generate_report.cpp:269
+#: src/generate_report.cpp:267
 #, no-c-format
 msgid "tooltip^% accuracy"
 msgstr "isabet yüzdesi"
 
-#: src/generate_report.cpp:275
+#: src/generate_report.cpp:273
 #, no-c-format
 msgid "tooltip^% parry"
 msgstr "savuşturma yüzdesi"
 
-#: src/generate_report.cpp:286
+#: src/generate_report.cpp:284
 msgid "weapon range: "
 msgstr "Silah menzili: "
 
-#: src/generate_report.cpp:287
+#: src/generate_report.cpp:285
 msgid "damage type: "
 msgstr "hasar türü: "
 
-#: src/generate_report.cpp:308
+#: src/generate_report.cpp:306
 msgid "vs"
 msgstr ".."
 
-#: src/generate_report.cpp:358
+#: src/generate_report.cpp:356
 msgid "Lawful units: "
 msgstr "Adil birimler: "
 
-#: src/generate_report.cpp:360
+#: src/generate_report.cpp:358
 msgid "Neutral units: "
 msgstr "Tarafsız birimler: "
 
-#: src/generate_report.cpp:361
+#: src/generate_report.cpp:359
 msgid "Chaotic units: "
 msgstr "Kaypak birimler: "
 
-#: src/generate_report.cpp:508
+#: src/generate_report.cpp:506
 msgid "Observers:"
 msgstr "Seyirciler:"
 
@@ -8278,11 +8285,11 @@ msgstr "Komut:"
 msgid "User-Command#3"
 msgstr "3. Kullanıcı Komutu"
 
-#: src/mouse_events.cpp:615
+#: src/mouse_events.cpp:621
 msgid "Attack Enemy"
 msgstr "Düşmana Saldır"
 
-#: src/mouse_events.cpp:616
+#: src/mouse_events.cpp:622
 msgid "Choose weapon:"
 msgstr "Silah seçiniz:"
 
@@ -8816,7 +8823,7 @@ msgstr "Soket, soket kümesine eklenemedi"
 msgid "Could not send initial handshake"
 msgstr "İlk tokalaşma gönderilemedi"
 
-#: src/pathfind.cpp:303
+#: src/pathfind.cpp:309
 msgid "Terrain with a movement cost less than 1 encountered."
 msgstr "Hareket bedeli 1’den küçük arazi saptandı."
 

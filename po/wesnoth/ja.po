@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-03-01 12:14+0100\n"
+"POT-Creation-Date: 2009-03-01 21:23+0100\n"
 "PO-Revision-Date: 2008-07-21 23:50+0900\n"
 "Last-Translator: naoki iimura <amatubu@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
@@ -4584,7 +4584,7 @@ msgstr ""
 "Old,Olf,Oul,Ox,Rock,Rook,Sal,Sam,Sed,Sel,Sen,Sil,Tal,Water,Wet,York"
 
 #. [message]: speaker=narrator
-#: data/core/macros/scenario-utils.cfg:147
+#: data/core/macros/scenario-utils.cfg:155
 msgid ""
 "The computer player might not be able to play side $side_number properly in "
 "this scenario. Side $side_number is intended to be played by a human player."
@@ -5749,6 +5749,27 @@ msgstr "公式サーバー"
 #: data/game_config.cfg:8 data/game_config.cfg:12
 msgid "Alternate Wesnoth Server"
 msgstr "代わりの Wesnoth サーバー"
+
+#. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. [label]
+#: data/gui/default/window/campaign_dialog.cfg:32 src/game.cpp:1098
+msgid "Play a campaign"
+msgstr "キャンペーンをプレイする"
+
+#. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=ok
+#: data/gui/default/window/campaign_dialog.cfg:170 src/dialogs.cpp:686
+#: src/multiplayer_create.cpp:83
+msgid "OK"
+msgstr "OK"
+
+#. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=cancel
+#: data/gui/default/window/campaign_dialog.cfg:184 src/dialogs.cpp:687
+#: src/dialogs.cpp:1190 src/dialogs.cpp:1297 src/multiplayer_connect.cpp:1015
+#: src/multiplayer_create.cpp:82 src/multiplayer_wait.cpp:184
+msgid "Cancel"
+msgstr "キャンセル"
 
 #. [language]
 #: data/hardwired/english.cfg:3
@@ -7182,7 +7203,7 @@ msgstr "使用できる武器がありません"
 msgid "Chance of being unscathed"
 msgstr "無傷でいられる可能性"
 
-#: src/attack_prediction_display.cpp:554 src/mouse_events.cpp:604
+#: src/attack_prediction_display.cpp:554 src/mouse_events.cpp:610
 msgid "Damage Calculations"
 msgstr "ダメージ計算"
 
@@ -7338,16 +7359,6 @@ msgstr "リプレイを見る"
 msgid "Cancel orders"
 msgstr "キャンセル"
 
-#: src/dialogs.cpp:686 src/multiplayer_create.cpp:83
-msgid "OK"
-msgstr "OK"
-
-#: src/dialogs.cpp:687 src/dialogs.cpp:1190 src/dialogs.cpp:1297
-#: src/multiplayer_connect.cpp:1015 src/multiplayer_create.cpp:82
-#: src/multiplayer_wait.cpp:184
-msgid "Cancel"
-msgstr "キャンセル"
-
 #: src/dialogs.cpp:690
 msgid "Delete Save"
 msgstr "保存データの削除"
@@ -7372,116 +7383,112 @@ msgstr "経験: "
 msgid "Moves: "
 msgstr "移動: "
 
-#: src/game.cpp:611 src/game.cpp:1402
+#: src/game.cpp:612 src/game.cpp:1428
 msgid "The Battle for Wesnoth"
 msgstr "The Battle for Wesnoth"
 
-#: src/game.cpp:894 src/game.cpp:898
+#: src/game.cpp:895 src/game.cpp:899
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr "警告: 読み込もうとしたファイルは壊れています。とにかく読み込みます。\n"
 
-#: src/game.cpp:936 src/multiplayer_connect.cpp:1548
+#: src/game.cpp:937 src/multiplayer_connect.cpp:1548
 msgid "This save is from a version too old to be loaded."
 msgstr "この保存データのバージョンは古すぎます。ロードすることができません。"
 
-#: src/game.cpp:942 src/multiplayer_connect.cpp:1555
+#: src/game.cpp:943 src/multiplayer_connect.cpp:1555
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
 msgstr "この保存データはゲームとは異なるバージョンです。 ロードしてみますか？"
 
-#: src/game.cpp:962 src/game.cpp:965 src/multiplayer_connect.cpp:1529
+#: src/game.cpp:963 src/game.cpp:966 src/multiplayer_connect.cpp:1529
 msgid "The file you have tried to load is corrupt: '"
 msgstr "ロードしようとしたファイルは壊れています: '"
 
-#: src/game.cpp:968
+#: src/game.cpp:969
 msgid "File I/O Error while reading the game"
 msgstr "ゲーム読み込み中のファイル入出力エラー"
 
-#: src/game.cpp:1071
+#: src/game.cpp:1056 src/game.cpp:1094
 msgid "No campaigns are available.\n"
 msgstr "キャンペーンが存在しません。\n"
 
-#: src/game.cpp:1075
-msgid "Play a campaign"
-msgstr "キャンペーンをプレイする"
-
-#: src/game.cpp:1118
+#: src/game.cpp:1144
 msgid "Difficulty"
 msgstr "難易度"
 
-#: src/game.cpp:1119
+#: src/game.cpp:1145
 msgid "Select difficulty level:"
 msgstr "難易度を選択して下さい:"
 
-#: src/game.cpp:1281
+#: src/game.cpp:1307
 #, fuzzy
 msgid "Do you really want to start the server?"
 msgstr "本当に彼女を解雇しますか？"
 
-#: src/game.cpp:1282
+#: src/game.cpp:1308
 msgid ""
 "The server will run in a background process until all users have "
 "disconnected."
 msgstr ""
 
-#: src/game.cpp:1286
+#: src/game.cpp:1312
 #, fuzzy
 msgid "Don't show again"
 msgstr "二度と聞かないで！"
 
-#: src/game.cpp:1357
+#: src/game.cpp:1383
 #, fuzzy
 msgid "Error while starting server: "
 msgstr "ゲームプレイ中のエラー: "
 
-#: src/game.cpp:1359 src/playcampaign.cpp:97 src/playcampaign.cpp:383
+#: src/game.cpp:1385 src/playcampaign.cpp:97 src/playcampaign.cpp:383
 msgid "The game could not be loaded: "
 msgstr "ゲームはロードできませんでした: "
 
-#: src/game.cpp:1361 src/playcampaign.cpp:99 src/playcampaign.cpp:386
+#: src/game.cpp:1387 src/playcampaign.cpp:99 src/playcampaign.cpp:386
 msgid "Error while playing the game: "
 msgstr "ゲームプレイ中のエラー: "
 
-#: src/game.cpp:1381 src/playcampaign.cpp:101 src/playcampaign.cpp:389
+#: src/game.cpp:1407 src/playcampaign.cpp:101 src/playcampaign.cpp:389
 msgid "The game map could not be loaded: "
 msgstr "ゲームマップを読み込めませんでした: "
 
-#: src/game.cpp:1447 src/game.cpp:1568
+#: src/game.cpp:1473 src/game.cpp:1594
 msgid "Error loading game configuration files: '"
 msgstr "ゲーム設定ファイルの読み込みエラー: '"
 
-#: src/game.cpp:1448 src/game.cpp:1569
+#: src/game.cpp:1474 src/game.cpp:1595
 msgid "' (The game will now exit)"
 msgstr "' (このゲームは終了します)"
 
-#: src/game.cpp:1543
+#: src/game.cpp:1569
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "以下のアドオンキャンペーンには問題があり、読み込めませんでした:"
 
-#: src/game.cpp:1550
+#: src/game.cpp:1576
 msgid "ERROR DETAILS:"
 msgstr "エラー詳細:"
 
-#: src/game.cpp:1578
+#: src/game.cpp:1604
 msgid "Loading data files"
 msgstr "データファイル読み込み中"
 
-#: src/game.cpp:1970
+#: src/game.cpp:1996
 msgid "Loading game configuration."
 msgstr "ゲーム設定を読み込んでいます。"
 
-#: src/game.cpp:1976
+#: src/game.cpp:2002
 msgid "Re-initialize fonts for the current language."
 msgstr "現在の言語でフォントを再初期化します。"
 
-#: src/game.cpp:1984
+#: src/game.cpp:2010
 #, fuzzy
 msgid "Searching for installed add-ons."
 msgstr "アドオンの一覧を要求中"
 
-#: src/game.cpp:1993
+#: src/game.cpp:2019
 msgid "Loading title screen."
 msgstr "タイトル画面を読み込んでいます。"
 
@@ -7528,17 +7535,17 @@ msgstr "リプレイ"
 msgid "Could not write to file"
 msgstr "ファイルに書き込みできませんでした。"
 
-#: src/generate_report.cpp:98
+#: src/generate_report.cpp:96
 msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
 msgstr ""
 "このユニットは見えません。 敵のユニットから 発見されることも、 攻撃されること"
 "もありません。"
 
-#: src/generate_report.cpp:98
+#: src/generate_report.cpp:96
 msgid "invisible: "
 msgstr "姿が見えない: "
 
-#: src/generate_report.cpp:103
+#: src/generate_report.cpp:101
 #, fuzzy
 msgid ""
 "This unit has been slowed. It will only deal half its normal damage when "
@@ -7547,11 +7554,11 @@ msgstr ""
 "このユニットは遅くなってしまいました。攻撃時に通常の半分のダメージしか与えら"
 "れません。"
 
-#: src/generate_report.cpp:103
+#: src/generate_report.cpp:101
 msgid "slowed: "
 msgstr "遅化: "
 
-#: src/generate_report.cpp:108
+#: src/generate_report.cpp:106
 msgid ""
 "This unit is poisoned. It will lose 8 HP every turn until it can seek a cure "
 "to the poison in a village or from a friendly unit with the 'cures' "
@@ -7565,75 +7572,75 @@ msgstr ""
 "\n"
 "毒のみでは死ぬことはありません。毒はHPを1未満には下げません。"
 
-#: src/generate_report.cpp:108
+#: src/generate_report.cpp:106
 msgid "poisoned: "
 msgstr "毒: "
 
-#: src/generate_report.cpp:115
+#: src/generate_report.cpp:113
 msgid "This unit has been turned to stone. It may not move or attack."
 msgstr "このユニットは石になってしまいました。移動や攻撃はできません。"
 
-#: src/generate_report.cpp:115
+#: src/generate_report.cpp:113
 msgid "stone: "
 msgstr "石化: "
 
-#: src/generate_report.cpp:170
+#: src/generate_report.cpp:168
 msgid "Resistances: "
 msgstr "抵抗力: "
 
-#: src/generate_report.cpp:172
+#: src/generate_report.cpp:170
 msgid "(Att / Def)"
 msgstr ""
 
-#: src/generate_report.cpp:191 src/multiplayer_create.cpp:395
+#: src/generate_report.cpp:189 src/multiplayer_create.cpp:395
 msgid "Experience Modifier: "
 msgstr "経験の修正: "
 
-#: src/generate_report.cpp:262
+#: src/generate_report.cpp:260
 msgid "tooltip^damage"
 msgid_plural "damage"
 msgstr[0] "ダメージ"
 
-#: src/generate_report.cpp:263
+#: src/generate_report.cpp:261
 msgid "tooltip^attack"
 msgid_plural "attacks"
 msgstr[0] "攻撃"
 
-#: src/generate_report.cpp:269
+#: src/generate_report.cpp:267
 #, fuzzy, no-c-format
 msgid "tooltip^% accuracy"
 msgstr "攻撃"
 
-#: src/generate_report.cpp:275
+#: src/generate_report.cpp:273
 #, fuzzy, no-c-format
 msgid "tooltip^% parry"
 msgstr "ダメージ"
 
-#: src/generate_report.cpp:286
+#: src/generate_report.cpp:284
 msgid "weapon range: "
 msgstr "武器の射程:"
 
-#: src/generate_report.cpp:287
+#: src/generate_report.cpp:285
 msgid "damage type: "
 msgstr "ダメージの種類:"
 
-#: src/generate_report.cpp:308
+#: src/generate_report.cpp:306
 msgid "vs"
 msgstr "対"
 
-#: src/generate_report.cpp:358
+#: src/generate_report.cpp:356
 msgid "Lawful units: "
 msgstr "秩序ユニット: "
 
-#: src/generate_report.cpp:360
+#: src/generate_report.cpp:358
 msgid "Neutral units: "
 msgstr "中立ユニット: "
 
-#: src/generate_report.cpp:361
+#: src/generate_report.cpp:359
 msgid "Chaotic units: "
 msgstr "混沌ユニット: "
 
-#: src/generate_report.cpp:508
+#: src/generate_report.cpp:506
 msgid "Observers:"
 msgstr "観戦者:"
 
@@ -8432,11 +8439,11 @@ msgstr "コマンド:"
 msgid "User-Command#3"
 msgstr "ユーザーコマンド#3"
 
-#: src/mouse_events.cpp:615
+#: src/mouse_events.cpp:621
 msgid "Attack Enemy"
 msgstr "敵を攻撃する"
 
-#: src/mouse_events.cpp:616
+#: src/mouse_events.cpp:622
 msgid "Choose weapon:"
 msgstr "武器の選択:"
 
@@ -8971,7 +8978,7 @@ msgstr "ホストに接続できませんでした"
 msgid "Could not send initial handshake"
 msgstr "初期応答確認を送れませんでした"
 
-#: src/pathfind.cpp:303
+#: src/pathfind.cpp:309
 msgid "Terrain with a movement cost less than 1 encountered."
 msgstr "移動コストが 1 未満の土地が見つかりました。"
 
