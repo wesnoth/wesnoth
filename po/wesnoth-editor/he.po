@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-02-23 14:07+0100\n"
+"POT-Creation-Date: 2009-03-01 12:14+0100\n"
 "PO-Revision-Date: 2005-12-18 23:18+0200\n"
 "Last-Translator: Ely Levy <nakeee@gmail.com>\n"
 "Language-Team: Hebrew\n"
@@ -98,21 +98,26 @@ msgstr ""
 
 #. [editor_tool_hint]: id=editor-tool-paint
 #. [editor_tool_hint]: id=editor-tool-fill
+#. [menu]: id=draw_button_editor
+#. [menu]: id=flood_button_editor
 #: data/core/editor/tool-hints.cfg:7 data/core/editor/tool-hints.cfg:13
+#: data/themes/editor2.cfg:179 data/themes/editor2.cfg:192
 msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only."
 msgstr ""
 
 #. [editor_tool_hint]: id=editor-tool-select
-#: data/core/editor/tool-hints.cfg:19
+#. [menu]: id=select_button_editor
+#: data/core/editor/tool-hints.cfg:19 data/themes/editor2.cfg:214
 msgid ""
 "Left mouse button selects, right deselects. Hold Shift for magic-wand "
 "selection of tiles with same terrain."
 msgstr ""
 
 #. [editor_tool_hint]: id=editor-tool-starting-position
-#: data/core/editor/tool-hints.cfg:25
+#. [menu]: id=start_position_button_editor
+#: data/core/editor/tool-hints.cfg:25 data/themes/editor2.cfg:203
 msgid ""
 "Left mouse button displays player selection, right clears. Number keys "
 "scroll to the starting position, alt+number sets respective starting "
@@ -148,7 +153,7 @@ msgid "Window"
 msgstr "ביטול שינוי"
 
 #. [label]: id=villages-icon
-#: data/themes/editor2.cfg:262
+#: data/themes/editor2.cfg:270
 msgid "villages"
 msgstr ""
 
@@ -164,117 +169,117 @@ msgstr ""
 msgid "Quit Editor"
 msgstr "צא מתוכנית העריכה"
 
-#: src/editor2/editor_controller.cpp:282
+#: src/editor2/editor_controller.cpp:275
 msgid "Fatal error"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:296 src/editor2/editor_controller.cpp:991
+#: src/editor2/editor_controller.cpp:289 src/editor2/editor_controller.cpp:984
 msgid "(New Map)"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:302
+#: src/editor2/editor_controller.cpp:295
 msgid "Do you really want to quit?"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:304
+#: src/editor2/editor_controller.cpp:297
 msgid ""
 "Do you really want to quit? Changes in the map since the last save will be "
 "lost."
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:306
+#: src/editor2/editor_controller.cpp:299
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:311
+#: src/editor2/editor_controller.cpp:304
 msgid "Quit"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:366 src/editor2/editor_controller.cpp:478
-#: src/editor2/editor_controller.cpp:514 src/editor2/editor_controller.cpp:536
+#: src/editor2/editor_controller.cpp:359 src/editor2/editor_controller.cpp:471
+#: src/editor2/editor_controller.cpp:507 src/editor2/editor_controller.cpp:529
 msgid "Error"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:366
+#: src/editor2/editor_controller.cpp:359
 msgid "No editor time-of-day found."
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:402
+#: src/editor2/editor_controller.cpp:395
 msgid "Unsaved Changes"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:403
+#: src/editor2/editor_controller.cpp:396
 msgid ""
 "Do you want to discard all changes you made to the map since the last save?"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:416
+#: src/editor2/editor_controller.cpp:409
 #, fuzzy
 msgid "Choose a Map to Open"
 msgstr "בחירת מפה לטעינה"
 
-#: src/editor2/editor_controller.cpp:420
+#: src/editor2/editor_controller.cpp:413
 msgid "This map is already open."
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:458
+#: src/editor2/editor_controller.cpp:451
 msgid "Save the Map As"
 msgstr "שמירת מפה בשם"
 
-#: src/editor2/editor_controller.cpp:462
+#: src/editor2/editor_controller.cpp:455
 #, fuzzy
 msgid "The file already exists. Do you want to overwrite it?"
 msgstr "המפה כבר קיימת. האם לדרוס אותה?"
 
-#: src/editor2/editor_controller.cpp:478
+#: src/editor2/editor_controller.cpp:471
 msgid "No random map generators found."
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:489
+#: src/editor2/editor_controller.cpp:482
 msgid "Map creation failed."
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:504
+#: src/editor2/editor_controller.cpp:497
 #, fuzzy
 msgid "Choose a mask to apply"
 msgstr "בחירת מפה לטעינה"
 
-#: src/editor2/editor_controller.cpp:511
+#: src/editor2/editor_controller.cpp:504
 msgid "Error loading mask"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:526
+#: src/editor2/editor_controller.cpp:519
 msgid "Choose target map"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:533 src/editor2/editor_controller.cpp:646
+#: src/editor2/editor_controller.cpp:526 src/editor2/editor_controller.cpp:639
 #: src/editor2/editor_main.cpp:53
 msgid "Error loading map"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:622
+#: src/editor2/editor_controller.cpp:615
 msgid "Map saved."
 msgstr "מפה נשמרה."
 
-#: src/editor2/editor_controller.cpp:627
+#: src/editor2/editor_controller.cpp:620
 msgid "Could not save the map: $msg"
 msgstr "לא ניתן לשמור את המפה: $msg"
 
-#: src/editor2/editor_controller.cpp:1018
+#: src/editor2/editor_controller.cpp:1011
 msgid "Undo"
 msgstr "ביטול שינוי"
 
-#: src/editor2/editor_controller.cpp:1020
+#: src/editor2/editor_controller.cpp:1013
 msgid "Can't Undo"
 msgstr ""
 
-#: src/editor2/editor_controller.cpp:1024
+#: src/editor2/editor_controller.cpp:1017
 msgid "Redo"
 msgstr "שחזור שינוי"
 
-#: src/editor2/editor_controller.cpp:1026
+#: src/editor2/editor_controller.cpp:1019
 msgid "Can't Redo"
 msgstr ""
 

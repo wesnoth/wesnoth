@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-02-28 22:32+0100\n"
+"POT-Creation-Date: 2009-03-01 12:14+0100\n"
 "PO-Revision-Date: 2009-02-20 20:24+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team:  <z.banach@wsisiz.edu.pl>\n"
@@ -71,7 +71,7 @@ msgstr "Podziemie"
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:303
-#: src/actions.cpp:1049 src/actions.cpp:1325
+#: src/actions.cpp:1046 src/actions.cpp:1322
 msgid "poisoned"
 msgstr "zatruty"
 
@@ -130,14 +130,14 @@ msgstr ""
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [then]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1241
-#: src/actions.cpp:1054 src/actions.cpp:1330
+#: src/actions.cpp:1051 src/actions.cpp:1327
 msgid "female^slowed"
 msgstr "spowolniona"
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [else]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1244
-#: src/actions.cpp:1054 src/actions.cpp:1330
+#: src/actions.cpp:1051 src/actions.cpp:1327
 msgid "slowed"
 msgstr "spowolniony"
 
@@ -6885,8 +6885,8 @@ msgstr "Kończ scenariusz"
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=label-hp
 #: data/themes/default.cfg:212 data/themes/dfool.cfg:232
-#: data/themes/experimental.cfg:181 src/menu_events.cpp:199 src/unit.cpp:2566
-#: src/unit.cpp:2740
+#: data/themes/experimental.cfg:181 src/menu_events.cpp:199 src/unit.cpp:2569
+#: src/unit.cpp:2743
 msgid "HP"
 msgstr "PŻ"
 
@@ -7039,64 +7039,63 @@ msgstr ""
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "Nie ma pustych pól zamku, na których można by rekrutować."
 
-#: src/actions.cpp:266 src/actions.cpp:273 src/actions.cpp:289
-#: src/actions.cpp:294
+#: src/actions.cpp:266 src/actions.cpp:286 src/actions.cpp:291
 msgid "An invalid weapon is selected, possibly by the Python AI."
 msgstr "Wybrano nieprawidłową broń, być może z powodu pythonowego AI."
 
-#: src/actions.cpp:1049 src/actions.cpp:1325
+#: src/actions.cpp:1046 src/actions.cpp:1322
 msgid "female^poisoned"
 msgstr "zatruta"
 
-#: src/actions.cpp:1061 src/actions.cpp:1337
+#: src/actions.cpp:1058 src/actions.cpp:1334
 msgid "female^stone"
 msgstr "zamiana w kamień"
 
-#: src/actions.cpp:1061 src/actions.cpp:1337
+#: src/actions.cpp:1058 src/actions.cpp:1334
 msgid "stone"
 msgstr "zamiana w kamień"
 
-#: src/actions.cpp:2409
+#: src/actions.cpp:2407
 msgid "Ambushed!"
 msgstr "Zasadzka!"
 
-#: src/actions.cpp:2416
+#: src/actions.cpp:2414
 msgid "Failed teleport! Exit not empty"
 msgstr "Teleportowanie niemożliwe! Zajęty punkt docelowy"
 
-#: src/actions.cpp:2455
+#: src/actions.cpp:2453
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "Zauważono przyjazną jednostkę"
 msgstr[1] "Zauważono $friends przyjazne jednostki"
 msgstr[2] "Zauważono $friends przyjaznych jednostek"
 
-#: src/actions.cpp:2458
+#: src/actions.cpp:2456
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "Zauważono jednostkę wroga!"
 msgstr[1] "Zauważono $enemies jednostki wroga!"
 msgstr[2] "Zauważono $enemies jednostek wroga!"
 
-#: src/actions.cpp:2463
+#: src/actions.cpp:2461
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "$friends przyjazna"
 msgstr[1] "$friends przyjazne"
 msgstr[2] "$friends przyjaznych"
 
-#: src/actions.cpp:2464
+#: src/actions.cpp:2462
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "$enemies wroga"
 msgstr[1] "$enemies wrogie"
 msgstr[2] "$enemies wrogich"
 
-#: src/actions.cpp:2465
+#: src/actions.cpp:2463
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Zauważono jednostki! ($friendphrase, $enemyphrase)"
 
-#: src/actions.cpp:2474
+#: src/actions.cpp:2472
 msgid "(press $hotkey to keep moving)"
 msgstr "(naciśnij $hotkey, by kontynuować ruch)"
 
@@ -7104,7 +7103,7 @@ msgstr "(naciśnij $hotkey, by kontynuować ruch)"
 msgid "B"
 msgstr "B"
 
-#: src/addon_management.cpp:363 src/dialogs.cpp:1214
+#: src/addon_management.cpp:363 src/dialogs.cpp:1219
 msgid "KB"
 msgstr "KB"
 
@@ -7473,7 +7472,7 @@ msgstr "Brak odpowiedniej broni"
 msgid "Chance of being unscathed"
 msgstr "Szansa wyjścia bez szwanku"
 
-#: src/attack_prediction_display.cpp:554 src/mouse_events.cpp:637
+#: src/attack_prediction_display.cpp:554 src/mouse_events.cpp:604
 msgid "Damage Calculations"
 msgstr "Wyliczenia obrażeń"
 
@@ -7632,7 +7631,7 @@ msgstr "Anuluj rozkazy"
 msgid "OK"
 msgstr "OK"
 
-#: src/dialogs.cpp:687 src/dialogs.cpp:1190 src/dialogs.cpp:1292
+#: src/dialogs.cpp:687 src/dialogs.cpp:1190 src/dialogs.cpp:1297
 #: src/multiplayer_connect.cpp:1015 src/multiplayer_create.cpp:82
 #: src/multiplayer_wait.cpp:184
 msgid "Cancel"
@@ -8700,11 +8699,11 @@ msgstr "Polecenie:"
 msgid "User-Command#3"
 msgstr "User-Command#3"
 
-#: src/mouse_events.cpp:648
+#: src/mouse_events.cpp:615
 msgid "Attack Enemy"
 msgstr "Atakowanie nieprzyjaciela"
 
-#: src/mouse_events.cpp:649
+#: src/mouse_events.cpp:616
 msgid "Choose weapon:"
 msgstr "Wybierz broń:"
 
@@ -9714,39 +9713,39 @@ msgstr "Pomoc Wesnoth"
 msgid "Help Wesnoth by sending us information"
 msgstr "Pomóż Wesnoth, wysyłając nam informacje"
 
-#: src/unit.cpp:591
+#: src/unit.cpp:592
 msgid "Unknown unit type '$type|' while generating traits"
 msgstr "Znaleziono nieznany typ jednostki '$type|' podczas generowania cech."
 
-#: src/unit.cpp:792
+#: src/unit.cpp:793
 msgid "Unknown unit type '$type|'"
 msgstr "Nieznany typ jednostki '$type|'"
 
-#: src/unit.cpp:2523 src/unit.cpp:2728 src/unit.cpp:2784
+#: src/unit.cpp:2526 src/unit.cpp:2731 src/unit.cpp:2787
 msgid " and "
 msgstr " i "
 
-#: src/unit.cpp:2534
+#: src/unit.cpp:2537
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/unit.cpp:2599
+#: src/unit.cpp:2602
 msgid "moves"
 msgstr "liczba ruchów"
 
-#: src/unit.cpp:2617 src/unit.cpp:2755
+#: src/unit.cpp:2620 src/unit.cpp:2758
 msgid "XP to advance"
 msgstr "PD do awansu"
 
-#: src/unit.cpp:2747
+#: src/unit.cpp:2750
 msgid " move"
 msgstr " ruch"
 
-#: src/unit.cpp:2763
+#: src/unit.cpp:2766
 msgid "$effect_description per level"
 msgstr "$effect_description na poziom"
 
-#: src/unit.cpp:2793
+#: src/unit.cpp:2796
 msgid "$trait_name|: $trait_description "
 msgstr "$trait_name|: $trait_description "
 

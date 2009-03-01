@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-02-28 22:32+0100\n"
+"POT-Creation-Date: 2009-03-01 12:14+0100\n"
 "PO-Revision-Date: 2008-07-21 23:50+0900\n"
 "Last-Translator: naoki iimura <amatubu@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
@@ -73,7 +73,7 @@ msgstr "地下"
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:303
-#: src/actions.cpp:1049 src/actions.cpp:1325
+#: src/actions.cpp:1046 src/actions.cpp:1322
 msgid "poisoned"
 msgstr "毒を受けた"
 
@@ -132,7 +132,7 @@ msgstr ""
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [then]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1241
-#: src/actions.cpp:1054 src/actions.cpp:1330
+#: src/actions.cpp:1051 src/actions.cpp:1327
 #, fuzzy
 msgid "female^slowed"
 msgstr "忠義"
@@ -140,7 +140,7 @@ msgstr "忠義"
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [else]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1244
-#: src/actions.cpp:1054 src/actions.cpp:1330
+#: src/actions.cpp:1051 src/actions.cpp:1327
 msgid "slowed"
 msgstr "遅くなった"
 
@@ -6603,8 +6603,8 @@ msgstr "シナリオ終了"
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=label-hp
 #: data/themes/default.cfg:212 data/themes/dfool.cfg:232
-#: data/themes/experimental.cfg:181 src/menu_events.cpp:199 src/unit.cpp:2566
-#: src/unit.cpp:2740
+#: data/themes/experimental.cfg:181 src/menu_events.cpp:199 src/unit.cpp:2569
+#: src/unit.cpp:2743
 msgid "HP"
 msgstr "HP"
 
@@ -6758,58 +6758,57 @@ msgstr ""
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "ユニットを雇用するための 城タイルの空きがありません。"
 
-#: src/actions.cpp:266 src/actions.cpp:273 src/actions.cpp:289
-#: src/actions.cpp:294
+#: src/actions.cpp:266 src/actions.cpp:286 src/actions.cpp:291
 msgid "An invalid weapon is selected, possibly by the Python AI."
 msgstr "無効な武器が選択されました。おそらく Python で書かれた AI が原因です。"
 
-#: src/actions.cpp:1049 src/actions.cpp:1325
+#: src/actions.cpp:1046 src/actions.cpp:1322
 #, fuzzy
 msgid "female^poisoned"
 msgstr "アンデッド"
 
-#: src/actions.cpp:1061 src/actions.cpp:1337
+#: src/actions.cpp:1058 src/actions.cpp:1334
 #, fuzzy
 msgid "female^stone"
 msgstr "強力"
 
-#: src/actions.cpp:1061 src/actions.cpp:1337
+#: src/actions.cpp:1058 src/actions.cpp:1334
 msgid "stone"
 msgstr "石化"
 
-#: src/actions.cpp:2409
+#: src/actions.cpp:2407
 msgid "Ambushed!"
 msgstr "待ち伏せにあった！"
 
-#: src/actions.cpp:2416
+#: src/actions.cpp:2414
 msgid "Failed teleport! Exit not empty"
 msgstr "テレポートに失敗した！ 出口が空いていなかった"
 
-#: src/actions.cpp:2455
+#: src/actions.cpp:2453
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "味方ユニット発見"
 
-#: src/actions.cpp:2458
+#: src/actions.cpp:2456
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "敵ユニット発見！"
 
-#: src/actions.cpp:2463
+#: src/actions.cpp:2461
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "味方 $friends"
 
-#: src/actions.cpp:2464
+#: src/actions.cpp:2462
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "敵 $enemies"
 
-#: src/actions.cpp:2465
+#: src/actions.cpp:2463
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "ユニットを発見！ ($friendphrase、$enemyphrase )"
 
-#: src/actions.cpp:2474
+#: src/actions.cpp:2472
 msgid "(press $hotkey to keep moving)"
 msgstr "(移動し続けるには $hotkey を押して下さい)"
 
@@ -6817,7 +6816,7 @@ msgstr "(移動し続けるには $hotkey を押して下さい)"
 msgid "B"
 msgstr "バイト"
 
-#: src/addon_management.cpp:363 src/dialogs.cpp:1214
+#: src/addon_management.cpp:363 src/dialogs.cpp:1219
 msgid "KB"
 msgstr "Kバイト"
 
@@ -7183,7 +7182,7 @@ msgstr "使用できる武器がありません"
 msgid "Chance of being unscathed"
 msgstr "無傷でいられる可能性"
 
-#: src/attack_prediction_display.cpp:554 src/mouse_events.cpp:637
+#: src/attack_prediction_display.cpp:554 src/mouse_events.cpp:604
 msgid "Damage Calculations"
 msgstr "ダメージ計算"
 
@@ -7343,7 +7342,7 @@ msgstr "キャンセル"
 msgid "OK"
 msgstr "OK"
 
-#: src/dialogs.cpp:687 src/dialogs.cpp:1190 src/dialogs.cpp:1292
+#: src/dialogs.cpp:687 src/dialogs.cpp:1190 src/dialogs.cpp:1297
 #: src/multiplayer_connect.cpp:1015 src/multiplayer_create.cpp:82
 #: src/multiplayer_wait.cpp:184
 msgid "Cancel"
@@ -8433,11 +8432,11 @@ msgstr "コマンド:"
 msgid "User-Command#3"
 msgstr "ユーザーコマンド#3"
 
-#: src/mouse_events.cpp:648
+#: src/mouse_events.cpp:615
 msgid "Attack Enemy"
 msgstr "敵を攻撃する"
 
-#: src/mouse_events.cpp:649
+#: src/mouse_events.cpp:616
 msgid "Choose weapon:"
 msgstr "武器の選択:"
 
@@ -9433,41 +9432,41 @@ msgstr "Battle for Wesnoth"
 msgid "Help Wesnoth by sending us information"
 msgstr "我々に情報を送って Wesnoth を支援してください"
 
-#: src/unit.cpp:591
+#: src/unit.cpp:592
 #, fuzzy
 msgid "Unknown unit type '$type|' while generating traits"
 msgstr "不明のユニットタイプ '$type|'"
 
-#: src/unit.cpp:792
+#: src/unit.cpp:793
 msgid "Unknown unit type '$type|'"
 msgstr "不明のユニットタイプ '$type|'"
 
 # とりあえず……
-#: src/unit.cpp:2523 src/unit.cpp:2728 src/unit.cpp:2784
+#: src/unit.cpp:2526 src/unit.cpp:2731 src/unit.cpp:2787
 msgid " and "
 msgstr " かつ "
 
-#: src/unit.cpp:2534
+#: src/unit.cpp:2537
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/unit.cpp:2599
+#: src/unit.cpp:2602
 msgid "moves"
 msgstr "移動"
 
-#: src/unit.cpp:2617 src/unit.cpp:2755
+#: src/unit.cpp:2620 src/unit.cpp:2758
 msgid "XP to advance"
 msgstr "レベルアップに必要な経験値"
 
-#: src/unit.cpp:2747
+#: src/unit.cpp:2750
 msgid " move"
 msgstr " 移動"
 
-#: src/unit.cpp:2763
+#: src/unit.cpp:2766
 msgid "$effect_description per level"
 msgstr "レベルにつき $effect_description"
 
-#: src/unit.cpp:2793
+#: src/unit.cpp:2796
 msgid "$trait_name|: $trait_description "
 msgstr "$trait_name|: $trait_description "
 

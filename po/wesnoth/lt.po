@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-02-28 22:32+0100\n"
+"POT-Creation-Date: 2009-03-01 12:14+0100\n"
 "PO-Revision-Date: 2009-02-20 17:31+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lithuanian <kde-i18n-doc@lists.kde.org>\n"
@@ -66,7 +66,7 @@ msgstr "Požemis"
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:303
-#: src/actions.cpp:1049 src/actions.cpp:1325
+#: src/actions.cpp:1046 src/actions.cpp:1322
 msgid "poisoned"
 msgstr "apnuodytas"
 
@@ -120,14 +120,14 @@ msgstr ""
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [then]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1241
-#: src/actions.cpp:1054 src/actions.cpp:1330
+#: src/actions.cpp:1051 src/actions.cpp:1327
 msgid "female^slowed"
 msgstr "sulėtinta"
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [else]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1244
-#: src/actions.cpp:1054 src/actions.cpp:1330
+#: src/actions.cpp:1051 src/actions.cpp:1327
 msgid "slowed"
 msgstr "sulėtintas"
 
@@ -5528,8 +5528,8 @@ msgstr "Baigti scenarijų"
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=label-hp
 #: data/themes/default.cfg:212 data/themes/dfool.cfg:232
-#: data/themes/experimental.cfg:181 src/menu_events.cpp:199 src/unit.cpp:2566
-#: src/unit.cpp:2740
+#: data/themes/experimental.cfg:181 src/menu_events.cpp:199 src/unit.cpp:2569
+#: src/unit.cpp:2743
 msgid "HP"
 msgstr "GT"
 
@@ -5680,64 +5680,63 @@ msgstr ""
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "Nėra laisvų pilies laukelių, kuriuose galima samdyti dalinį."
 
-#: src/actions.cpp:266 src/actions.cpp:273 src/actions.cpp:289
-#: src/actions.cpp:294
+#: src/actions.cpp:266 src/actions.cpp:286 src/actions.cpp:291
 msgid "An invalid weapon is selected, possibly by the Python AI."
 msgstr "Pasirinktas netinkalas ginklas, gal būt dėt Python'o DI."
 
-#: src/actions.cpp:1049 src/actions.cpp:1325
+#: src/actions.cpp:1046 src/actions.cpp:1322
 msgid "female^poisoned"
 msgstr "apnuodyta"
 
-#: src/actions.cpp:1061 src/actions.cpp:1337
+#: src/actions.cpp:1058 src/actions.cpp:1334
 msgid "female^stone"
 msgstr "akmuo"
 
-#: src/actions.cpp:1061 src/actions.cpp:1337
+#: src/actions.cpp:1058 src/actions.cpp:1334
 msgid "stone"
 msgstr "akmuo"
 
-#: src/actions.cpp:2409
+#: src/actions.cpp:2407
 msgid "Ambushed!"
 msgstr "Pasala!"
 
-#: src/actions.cpp:2416
+#: src/actions.cpp:2414
 msgid "Failed teleport! Exit not empty"
 msgstr "Nepavyko teleportuotis! Išėjimas ne laisvas"
 
-#: src/actions.cpp:2455
+#: src/actions.cpp:2453
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "Pastebėtas $friends draugiškas dalinys"
 msgstr[1] "Pastebėti $friends draugiški daliniai"
 msgstr[2] "Pastebėta $friends draugiškų dalinių"
 
-#: src/actions.cpp:2458
+#: src/actions.cpp:2456
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "Pastebėtas $enemies priešiškas dalinys"
 msgstr[1] "Pastebėti $enemies priešiški daliniai"
 msgstr[2] "Pastebėta $enemies priešiškų dalinių"
 
-#: src/actions.cpp:2463
+#: src/actions.cpp:2461
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "$friends draugiškas"
 msgstr[1] "$friends draugiški"
 msgstr[2] "$friends draugiškų"
 
-#: src/actions.cpp:2464
+#: src/actions.cpp:2462
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "$enemies priešiškas"
 msgstr[1] "$enemies priešiški"
 msgstr[2] "$enemies priešiškų"
 
-#: src/actions.cpp:2465
+#: src/actions.cpp:2463
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Pastebėti daliniai! ($friendphrase, $enemyphrase)"
 
-#: src/actions.cpp:2474
+#: src/actions.cpp:2472
 msgid "(press $hotkey to keep moving)"
 msgstr ""
 
@@ -5745,7 +5744,7 @@ msgstr ""
 msgid "B"
 msgstr "B"
 
-#: src/addon_management.cpp:363 src/dialogs.cpp:1214
+#: src/addon_management.cpp:363 src/dialogs.cpp:1219
 msgid "KB"
 msgstr "KB"
 
@@ -6101,7 +6100,7 @@ msgstr "Nėra naudingo ginklo"
 msgid "Chance of being unscathed"
 msgstr "Tikimybė būti nesužeistam"
 
-#: src/attack_prediction_display.cpp:554 src/mouse_events.cpp:637
+#: src/attack_prediction_display.cpp:554 src/mouse_events.cpp:604
 msgid "Damage Calculations"
 msgstr "Žalos skaičiavimai"
 
@@ -6261,7 +6260,7 @@ msgstr "Atšaukti nurodymus"
 msgid "OK"
 msgstr "Gerai"
 
-#: src/dialogs.cpp:687 src/dialogs.cpp:1190 src/dialogs.cpp:1292
+#: src/dialogs.cpp:687 src/dialogs.cpp:1190 src/dialogs.cpp:1297
 #: src/multiplayer_connect.cpp:1015 src/multiplayer_create.cpp:82
 #: src/multiplayer_wait.cpp:184
 msgid "Cancel"
@@ -7302,11 +7301,11 @@ msgstr "Komanda:"
 msgid "User-Command#3"
 msgstr "Naudotojo-komanda#3"
 
-#: src/mouse_events.cpp:648
+#: src/mouse_events.cpp:615
 msgid "Attack Enemy"
 msgstr "Pulti priešą"
 
-#: src/mouse_events.cpp:649
+#: src/mouse_events.cpp:616
 msgid "Choose weapon:"
 msgstr "Pasirinkite ginklą:"
 
@@ -8299,39 +8298,39 @@ msgstr "Padėkite Wesnoth"
 msgid "Help Wesnoth by sending us information"
 msgstr "Padėkite Wesnoth, siųsdami mums informaciją"
 
-#: src/unit.cpp:591
+#: src/unit.cpp:592
 msgid "Unknown unit type '$type|' while generating traits"
 msgstr "Generuojant bruožus nežinomas dalinio tipas „$type|“"
 
-#: src/unit.cpp:792
+#: src/unit.cpp:793
 msgid "Unknown unit type '$type|'"
 msgstr "Nežinomas dalinio tipas „$type|“"
 
-#: src/unit.cpp:2523 src/unit.cpp:2728 src/unit.cpp:2784
+#: src/unit.cpp:2526 src/unit.cpp:2731 src/unit.cpp:2787
 msgid " and "
 msgstr " ir "
 
-#: src/unit.cpp:2534
+#: src/unit.cpp:2537
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/unit.cpp:2599
+#: src/unit.cpp:2602
 msgid "moves"
 msgstr ""
 
-#: src/unit.cpp:2617 src/unit.cpp:2755
+#: src/unit.cpp:2620 src/unit.cpp:2758
 msgid "XP to advance"
 msgstr ""
 
-#: src/unit.cpp:2747
+#: src/unit.cpp:2750
 msgid " move"
 msgstr ""
 
-#: src/unit.cpp:2763
+#: src/unit.cpp:2766
 msgid "$effect_description per level"
 msgstr "$effect_description lygiui"
 
-#: src/unit.cpp:2793
+#: src/unit.cpp:2796
 msgid "$trait_name|: $trait_description "
 msgstr "$trait_name|: $trait_description "
 

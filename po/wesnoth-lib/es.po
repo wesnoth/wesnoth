@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-02-28 22:32+0100\n"
+"POT-Creation-Date: 2009-03-01 12:14+0100\n"
 "PO-Revision-Date: 2009-02-15 17:08-0300\n"
 "Last-Translator: Ignacio R. Morelle <shikadilord@users.sourceforge.net>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -1472,7 +1472,7 @@ msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr "Definición de widget «$definition» carece de una definición para «$id»."
 
-#: src/gui/widgets/settings.cpp:474 src/gui/widgets/window_builder.cpp:287
+#: src/gui/widgets/settings.cpp:474 src/gui/widgets/window_builder.cpp:314
 msgid "No resolution defined."
 msgstr "No se ha definido ninguna resolución."
 
@@ -1481,37 +1481,37 @@ msgid "No state or draw section defined."
 msgstr "No se ha definido ninguna sección de dibujo/estado."
 
 #: src/gui/widgets/settings.cpp:745 src/gui/widgets/settings.cpp:899
-#: src/gui/widgets/window_builder.cpp:378
-#: src/gui/widgets/window_builder.cpp:903
-#: src/gui/widgets/window_builder.cpp:1107
+#: src/gui/widgets/window_builder.cpp:405
+#: src/gui/widgets/window_builder.cpp:932
+#: src/gui/widgets/window_builder.cpp:1141
 msgid "No grid defined."
 msgstr "No se ha definido ninguna malla."
 
-#: src/gui/widgets/window_builder.cpp:506
+#: src/gui/widgets/window_builder.cpp:533
 msgid "A row must have a column."
 msgstr "Una fila debe tener una columna."
 
-#: src/gui/widgets/window_builder.cpp:507
+#: src/gui/widgets/window_builder.cpp:534
 msgid "Number of columns differ."
 msgstr "El número de columnas es distinto."
 
-#: src/gui/widgets/window_builder.cpp:743
+#: src/gui/widgets/window_builder.cpp:772
 msgid "No list defined."
 msgstr "No se ha definido una lista."
 
-#: src/gui/widgets/window_builder.cpp:746
+#: src/gui/widgets/window_builder.cpp:775
 msgid "A 'list_definition' should contain one row."
 msgstr ""
 "Una definición de lista («list_definition») debe contener al menos una fila."
 
-#: src/gui/widgets/window_builder.cpp:765
+#: src/gui/widgets/window_builder.cpp:794
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr ""
 "Los datos de lista («list_data») deben tener el mismo número de columnas que "
 "la definición de lista («list_definition»)."
 
-#: src/gui/widgets/window_builder.cpp:1034
+#: src/gui/widgets/window_builder.cpp:1063
 msgid "The number of value_labels and values don't match."
 msgstr ""
 "El número de etiquetas de valor («value_labels») y valores («values») no es "

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-02-28 22:32+0100\n"
+"POT-Creation-Date: 2009-03-01 12:14+0100\n"
 "PO-Revision-Date: 2006-02-13 01:20+0200\n"
 "Last-Translator: Ely Levy <nakeee@gmail.com>\n"
 "Language-Team: Hebrew\n"
@@ -74,7 +74,7 @@ msgstr "מתחת לאדמה"
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:303
-#: src/actions.cpp:1049 src/actions.cpp:1325
+#: src/actions.cpp:1046 src/actions.cpp:1322
 msgid "poisoned"
 msgstr "מורעל"
 
@@ -134,7 +134,7 @@ msgstr ""
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [then]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1241
-#: src/actions.cpp:1054 src/actions.cpp:1330
+#: src/actions.cpp:1051 src/actions.cpp:1327
 #, fuzzy
 msgid "female^slowed"
 msgstr "פורעת חוק"
@@ -142,7 +142,7 @@ msgstr "פורעת חוק"
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [else]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1244
-#: src/actions.cpp:1054 src/actions.cpp:1330
+#: src/actions.cpp:1051 src/actions.cpp:1327
 msgid "slowed"
 msgstr "מואט"
 
@@ -5956,8 +5956,8 @@ msgstr "תרחיש לא ידוע"
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=label-hp
 #: data/themes/default.cfg:212 data/themes/dfool.cfg:232
-#: data/themes/experimental.cfg:181 src/menu_events.cpp:199 src/unit.cpp:2566
-#: src/unit.cpp:2740
+#: data/themes/experimental.cfg:181 src/menu_events.cpp:199 src/unit.cpp:2569
+#: src/unit.cpp:2743
 msgid "HP"
 msgstr "נק\"פ"
 
@@ -6113,65 +6113,64 @@ msgstr "המנהיג שלך חייב להיות על מצודה כדי לגיי�
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "אין אריח טירה פנוי שניתן לגייס אליו את היחידה."
 
-#: src/actions.cpp:266 src/actions.cpp:273 src/actions.cpp:289
-#: src/actions.cpp:294
+#: src/actions.cpp:266 src/actions.cpp:286 src/actions.cpp:291
 msgid "An invalid weapon is selected, possibly by the Python AI."
 msgstr ""
 
-#: src/actions.cpp:1049 src/actions.cpp:1325
+#: src/actions.cpp:1046 src/actions.cpp:1322
 #, fuzzy
 msgid "female^poisoned"
 msgstr "נוכלת"
 
-#: src/actions.cpp:1061 src/actions.cpp:1337
+#: src/actions.cpp:1058 src/actions.cpp:1334
 #, fuzzy
 msgid "female^stone"
 msgstr "נוכלת"
 
-#: src/actions.cpp:1061 src/actions.cpp:1337
+#: src/actions.cpp:1058 src/actions.cpp:1334
 msgid "stone"
 msgstr "איבון"
 
-#: src/actions.cpp:2409
+#: src/actions.cpp:2407
 msgid "Ambushed!"
 msgstr "נכנסנו למארב!"
 
-#: src/actions.cpp:2416
+#: src/actions.cpp:2414
 msgid "Failed teleport! Exit not empty"
 msgstr ""
 
-#: src/actions.cpp:2455
+#: src/actions.cpp:2453
 #, fuzzy
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "יחידה ידידותית נראתה"
 msgstr[1] "יחידה ידידותית נראתה"
 
-#: src/actions.cpp:2458
+#: src/actions.cpp:2456
 #, fuzzy
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "יחידת אויב נראתה!"
 msgstr[1] "יחידת אויב נראתה!"
 
-#: src/actions.cpp:2463
+#: src/actions.cpp:2461
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/actions.cpp:2464
+#: src/actions.cpp:2462
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/actions.cpp:2465
+#: src/actions.cpp:2463
 #, fuzzy
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "יחידות נראו! ($friends ידידותיות, $enemies  אוייבות)"
 
-#: src/actions.cpp:2474
+#: src/actions.cpp:2472
 #, fuzzy
 msgid "(press $hotkey to keep moving)"
 msgstr "(להמשיך לחץ על $hotkey)"
@@ -6180,7 +6179,7 @@ msgstr "(להמשיך לחץ על $hotkey)"
 msgid "B"
 msgstr "בייט"
 
-#: src/addon_management.cpp:363 src/dialogs.cpp:1214
+#: src/addon_management.cpp:363 src/dialogs.cpp:1219
 msgid "KB"
 msgstr "קילו-בייט"
 
@@ -6571,7 +6570,7 @@ msgstr "בחירת נשק:"
 msgid "Chance of being unscathed"
 msgstr ""
 
-#: src/attack_prediction_display.cpp:554 src/mouse_events.cpp:637
+#: src/attack_prediction_display.cpp:554 src/mouse_events.cpp:604
 msgid "Damage Calculations"
 msgstr "חישובי נזק"
 
@@ -6733,7 +6732,7 @@ msgstr "בטל"
 msgid "OK"
 msgstr "אשר"
 
-#: src/dialogs.cpp:687 src/dialogs.cpp:1190 src/dialogs.cpp:1292
+#: src/dialogs.cpp:687 src/dialogs.cpp:1190 src/dialogs.cpp:1297
 #: src/multiplayer_connect.cpp:1015 src/multiplayer_create.cpp:82
 #: src/multiplayer_wait.cpp:184
 msgid "Cancel"
@@ -7845,11 +7844,11 @@ msgstr "פקודה:"
 msgid "User-Command#3"
 msgstr "מפקד"
 
-#: src/mouse_events.cpp:648
+#: src/mouse_events.cpp:615
 msgid "Attack Enemy"
 msgstr "יש לתקוף את האויב"
 
-#: src/mouse_events.cpp:649
+#: src/mouse_events.cpp:616
 msgid "Choose weapon:"
 msgstr "בחירת נשק:"
 
@@ -8880,42 +8879,42 @@ msgstr "הקרב על ווסנות'"
 msgid "Help Wesnoth by sending us information"
 msgstr "עזור לווסנות' על ידי שליחת מידע אלינו"
 
-#: src/unit.cpp:591
+#: src/unit.cpp:592
 msgid "Unknown unit type '$type|' while generating traits"
 msgstr ""
 
-#: src/unit.cpp:792
+#: src/unit.cpp:793
 msgid "Unknown unit type '$type|'"
 msgstr ""
 
-#: src/unit.cpp:2523 src/unit.cpp:2728 src/unit.cpp:2784
+#: src/unit.cpp:2526 src/unit.cpp:2731 src/unit.cpp:2787
 #, fuzzy
 msgid " and "
 msgstr "חול"
 
-#: src/unit.cpp:2534
+#: src/unit.cpp:2537
 msgid "$attack_list|: $effect_description"
 msgstr ""
 
-#: src/unit.cpp:2599
+#: src/unit.cpp:2602
 #, fuzzy
 msgid "moves"
 msgstr "מהלכים"
 
-#: src/unit.cpp:2617 src/unit.cpp:2755
+#: src/unit.cpp:2620 src/unit.cpp:2758
 msgid "XP to advance"
 msgstr "נק\"נ לרמה הבאה"
 
-#: src/unit.cpp:2747
+#: src/unit.cpp:2750
 #, fuzzy
 msgid " move"
 msgstr "מהלכים"
 
-#: src/unit.cpp:2763
+#: src/unit.cpp:2766
 msgid "$effect_description per level"
 msgstr ""
 
-#: src/unit.cpp:2793
+#: src/unit.cpp:2796
 msgid "$trait_name|: $trait_description "
 msgstr ""
 

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.5\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-02-28 22:32+0100\n"
+"POT-Creation-Date: 2009-03-01 12:14+0100\n"
 "PO-Revision-Date: 2009-02-15 14:30+0100\n"
 "Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
@@ -1458,7 +1458,7 @@ msgstr ""
 "Die Steuerelementdefinition »$defintion« enthält nicht die Definition für "
 "»$id«."
 
-#: src/gui/widgets/settings.cpp:474 src/gui/widgets/window_builder.cpp:287
+#: src/gui/widgets/settings.cpp:474 src/gui/widgets/window_builder.cpp:314
 msgid "No resolution defined."
 msgstr "Keine Auflösung definiert."
 
@@ -1467,36 +1467,36 @@ msgid "No state or draw section defined."
 msgstr "Kein Zustands- oder Zeichenabschnitt definiert."
 
 #: src/gui/widgets/settings.cpp:745 src/gui/widgets/settings.cpp:899
-#: src/gui/widgets/window_builder.cpp:378
-#: src/gui/widgets/window_builder.cpp:903
-#: src/gui/widgets/window_builder.cpp:1107
+#: src/gui/widgets/window_builder.cpp:405
+#: src/gui/widgets/window_builder.cpp:932
+#: src/gui/widgets/window_builder.cpp:1141
 msgid "No grid defined."
 msgstr "Kein Gitternetz definiert."
 
-#: src/gui/widgets/window_builder.cpp:506
+#: src/gui/widgets/window_builder.cpp:533
 msgid "A row must have a column."
 msgstr "Eine Zeile muss mindestens über eine Spalte verfügen."
 
-#: src/gui/widgets/window_builder.cpp:507
+#: src/gui/widgets/window_builder.cpp:534
 msgid "Number of columns differ."
 msgstr "Die Anzahl der Spalten ist verschieden."
 
-#: src/gui/widgets/window_builder.cpp:743
+#: src/gui/widgets/window_builder.cpp:772
 msgid "No list defined."
 msgstr "Keine Liste definiert."
 
-#: src/gui/widgets/window_builder.cpp:746
+#: src/gui/widgets/window_builder.cpp:775
 msgid "A 'list_definition' should contain one row."
 msgstr "Eine »Listendefinition« sollte nur eine Zeile enthalten."
 
-#: src/gui/widgets/window_builder.cpp:765
+#: src/gui/widgets/window_builder.cpp:794
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr ""
 "Die Anzahl von Spalten eines »Listeneintrags« muss jener der "
 "»Listendefinition« entsprechen."
 
-#: src/gui/widgets/window_builder.cpp:1034
+#: src/gui/widgets/window_builder.cpp:1063
 msgid "The number of value_labels and values don't match."
 msgstr "Die Anzahl von Schlüsseln und Werten stimmt nicht überein."
 

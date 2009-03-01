@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-02-23 14:07+0100\n"
+"POT-Creation-Date: 2009-03-01 12:14+0100\n"
 "PO-Revision-Date: 2009-02-23 22:18+0100\n"
 "Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
@@ -92,7 +92,10 @@ msgstr "Spezielles"
 
 #. [editor_tool_hint]: id=editor-tool-paint
 #. [editor_tool_hint]: id=editor-tool-fill
+#. [menu]: id=draw_button_editor
+#. [menu]: id=flood_button_editor
 #: data/core/editor/tool-hints.cfg:7 data/core/editor/tool-hints.cfg:13
+#: data/themes/editor2.cfg:179 data/themes/editor2.cfg:192
 msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only."
@@ -102,7 +105,8 @@ msgstr ""
 "zeichnen."
 
 #. [editor_tool_hint]: id=editor-tool-select
-#: data/core/editor/tool-hints.cfg:19
+#. [menu]: id=select_button_editor
+#: data/core/editor/tool-hints.cfg:19 data/themes/editor2.cfg:214
 msgid ""
 "Left mouse button selects, right deselects. Hold Shift for magic-wand "
 "selection of tiles with same terrain."
@@ -112,7 +116,8 @@ msgstr ""
 "Zauberstabwerkzeug auszuwählen."
 
 #. [editor_tool_hint]: id=editor-tool-starting-position
-#: data/core/editor/tool-hints.cfg:25
+#. [menu]: id=start_position_button_editor
+#: data/core/editor/tool-hints.cfg:25 data/themes/editor2.cfg:203
 msgid ""
 "Left mouse button displays player selection, right clears. Number keys "
 "scroll to the starting position, alt+number sets respective starting "
@@ -154,7 +159,7 @@ msgid "Window"
 msgstr "Fenster"
 
 #. [label]: id=villages-icon
-#: data/themes/editor2.cfg:262
+#: data/themes/editor2.cfg:270
 msgid "villages"
 msgstr "Dörfer"
 
@@ -170,19 +175,19 @@ msgstr "Aktion nicht implementiert"
 msgid "Quit Editor"
 msgstr "Editor beenden"
 
-#: src/editor2/editor_controller.cpp:282
+#: src/editor2/editor_controller.cpp:275
 msgid "Fatal error"
 msgstr "Kritischer Fehler"
 
-#: src/editor2/editor_controller.cpp:296 src/editor2/editor_controller.cpp:991
+#: src/editor2/editor_controller.cpp:289 src/editor2/editor_controller.cpp:984
 msgid "(New Map)"
 msgstr "(Neue Karte)"
 
-#: src/editor2/editor_controller.cpp:302
+#: src/editor2/editor_controller.cpp:295
 msgid "Do you really want to quit?"
 msgstr "Wollt Ihr wirklich beenden?"
 
-#: src/editor2/editor_controller.cpp:304
+#: src/editor2/editor_controller.cpp:297
 msgid ""
 "Do you really want to quit? Changes in the map since the last save will be "
 "lost."
@@ -190,7 +195,7 @@ msgstr ""
 "Wollt Ihr wirklich beenden? Sämtliche Änderungen an der Karte seit dem "
 "letzten Speichern werden verloren gehen."
 
-#: src/editor2/editor_controller.cpp:306
+#: src/editor2/editor_controller.cpp:299
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -198,92 +203,92 @@ msgstr ""
 "Wollt Ihr wirklich beenden? Die folgenden Karten wurden seit dem letzten "
 "Speichern verändert und sämtliche Änderungen werden verloren gehen:"
 
-#: src/editor2/editor_controller.cpp:311
+#: src/editor2/editor_controller.cpp:304
 msgid "Quit"
 msgstr "Beenden"
 
-#: src/editor2/editor_controller.cpp:366 src/editor2/editor_controller.cpp:478
-#: src/editor2/editor_controller.cpp:514 src/editor2/editor_controller.cpp:536
+#: src/editor2/editor_controller.cpp:359 src/editor2/editor_controller.cpp:471
+#: src/editor2/editor_controller.cpp:507 src/editor2/editor_controller.cpp:529
 msgid "Error"
 msgstr "Fehler"
 
-#: src/editor2/editor_controller.cpp:366
+#: src/editor2/editor_controller.cpp:359
 msgid "No editor time-of-day found."
 msgstr "Keine Tageszeiten-Definitionen für den Editor gefunden."
 
-#: src/editor2/editor_controller.cpp:402
+#: src/editor2/editor_controller.cpp:395
 msgid "Unsaved Changes"
 msgstr "Nicht gespeicherte Änderungen"
 
-#: src/editor2/editor_controller.cpp:403
+#: src/editor2/editor_controller.cpp:396
 msgid ""
 "Do you want to discard all changes you made to the map since the last save?"
 msgstr ""
 "Wollt Ihr alle Änderungen an dieser Karte, die ihr seit dem letzten "
 "Speichern gemacht habt, verwerfen?"
 
-#: src/editor2/editor_controller.cpp:416
+#: src/editor2/editor_controller.cpp:409
 msgid "Choose a Map to Open"
 msgstr "Wählt eine Karte aus, die Ihr laden wollt"
 
-#: src/editor2/editor_controller.cpp:420
+#: src/editor2/editor_controller.cpp:413
 msgid "This map is already open."
 msgstr "Diese Karte ist bereits geöffnet."
 
-#: src/editor2/editor_controller.cpp:458
+#: src/editor2/editor_controller.cpp:451
 msgid "Save the Map As"
 msgstr "Karte speichern unter"
 
-#: src/editor2/editor_controller.cpp:462
+#: src/editor2/editor_controller.cpp:455
 msgid "The file already exists. Do you want to overwrite it?"
 msgstr "Diese Datei existiert schon. Soll sie überschrieben werden?"
 
-#: src/editor2/editor_controller.cpp:478
+#: src/editor2/editor_controller.cpp:471
 msgid "No random map generators found."
 msgstr "Keine Generatoren für Zufallskarten gefunden."
 
-#: src/editor2/editor_controller.cpp:489
+#: src/editor2/editor_controller.cpp:482
 msgid "Map creation failed."
 msgstr "Erstellen der Karte fehlgeschlagen"
 
-#: src/editor2/editor_controller.cpp:504
+#: src/editor2/editor_controller.cpp:497
 msgid "Choose a mask to apply"
 msgstr "Wählt eine Maske aus, die Ihr anwenden wollt"
 
-#: src/editor2/editor_controller.cpp:511
+#: src/editor2/editor_controller.cpp:504
 msgid "Error loading mask"
 msgstr "Fehler beim Laden der Maske"
 
-#: src/editor2/editor_controller.cpp:526
+#: src/editor2/editor_controller.cpp:519
 msgid "Choose target map"
 msgstr "Wählt die Zielkarte"
 
-#: src/editor2/editor_controller.cpp:533 src/editor2/editor_controller.cpp:646
+#: src/editor2/editor_controller.cpp:526 src/editor2/editor_controller.cpp:639
 #: src/editor2/editor_main.cpp:53
 msgid "Error loading map"
 msgstr "Fehler beim Laden der Karte"
 
-#: src/editor2/editor_controller.cpp:622
+#: src/editor2/editor_controller.cpp:615
 msgid "Map saved."
 msgstr "Karte gespeichert."
 
-#: src/editor2/editor_controller.cpp:627
+#: src/editor2/editor_controller.cpp:620
 msgid "Could not save the map: $msg"
 msgstr "Die Karte konnte leider nicht gespeichert werden: $msg"
 
-#: src/editor2/editor_controller.cpp:1018
+#: src/editor2/editor_controller.cpp:1011
 msgid "Undo"
 msgstr "Rückgängig"
 
-#: src/editor2/editor_controller.cpp:1020
+#: src/editor2/editor_controller.cpp:1013
 msgid "Can't Undo"
 msgstr "Rückgängig machen nicht möglich"
 
-#: src/editor2/editor_controller.cpp:1024
+#: src/editor2/editor_controller.cpp:1017
 msgid "Redo"
 msgstr "Wiederherstellen"
 
-#: src/editor2/editor_controller.cpp:1026
+#: src/editor2/editor_controller.cpp:1019
 msgid "Can't Redo"
 msgstr "Wiederholen machen nicht möglich"
 

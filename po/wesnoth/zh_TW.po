@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth1.4\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-02-28 22:32+0100\n"
+"POT-Creation-Date: 2009-03-01 12:14+0100\n"
 "PO-Revision-Date: 2008-08-13 01:24+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Chinese/Traditional <steven2880@gmail.com>\n"
@@ -70,7 +70,7 @@ msgstr "地下"
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:303
-#: src/actions.cpp:1049 src/actions.cpp:1325
+#: src/actions.cpp:1046 src/actions.cpp:1322
 msgid "poisoned"
 msgstr "中毒"
 
@@ -127,7 +127,7 @@ msgstr ""
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [then]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1241
-#: src/actions.cpp:1054 src/actions.cpp:1330
+#: src/actions.cpp:1051 src/actions.cpp:1327
 #, fuzzy
 msgid "female^slowed"
 msgstr "忠誠"
@@ -135,7 +135,7 @@ msgstr "忠誠"
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [else]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1244
-#: src/actions.cpp:1054 src/actions.cpp:1330
+#: src/actions.cpp:1051 src/actions.cpp:1327
 msgid "slowed"
 msgstr "減速"
 
@@ -6277,8 +6277,8 @@ msgstr "結束任務"
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=label-hp
 #: data/themes/default.cfg:212 data/themes/dfool.cfg:232
-#: data/themes/experimental.cfg:181 src/menu_events.cpp:199 src/unit.cpp:2566
-#: src/unit.cpp:2740
+#: data/themes/experimental.cfg:181 src/menu_events.cpp:199 src/unit.cpp:2569
+#: src/unit.cpp:2743
 msgid "HP"
 msgstr "生命值"
 
@@ -6430,64 +6430,63 @@ msgstr "您的領袖必須在主堡裏才能招募或召回單位。"
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "城堡内没有空格，無法招募。"
 
-#: src/actions.cpp:266 src/actions.cpp:273 src/actions.cpp:289
-#: src/actions.cpp:294
+#: src/actions.cpp:266 src/actions.cpp:286 src/actions.cpp:291
 msgid "An invalid weapon is selected, possibly by the Python AI."
 msgstr "選擇了一個無效的武器，可能是Python AI選擇的。"
 
-#: src/actions.cpp:1049 src/actions.cpp:1325
+#: src/actions.cpp:1046 src/actions.cpp:1322
 #, fuzzy
 msgid "female^poisoned"
 msgstr "不死"
 
-#: src/actions.cpp:1061 src/actions.cpp:1337
+#: src/actions.cpp:1058 src/actions.cpp:1334
 #, fuzzy
 msgid "female^stone"
 msgstr "强壯"
 
-#: src/actions.cpp:1061 src/actions.cpp:1337
+#: src/actions.cpp:1058 src/actions.cpp:1334
 msgid "stone"
 msgstr "石化"
 
-#: src/actions.cpp:2409
+#: src/actions.cpp:2407
 msgid "Ambushed!"
 msgstr "遭到伏撃！"
 
-#: src/actions.cpp:2416
+#: src/actions.cpp:2414
 msgid "Failed teleport! Exit not empty"
 msgstr "傳送失敗!出口阻塞"
 
 # what is the plural form all about?
-#: src/actions.cpp:2455
+#: src/actions.cpp:2453
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "發現同盟單位"
 msgstr[1] "發現$friends個友好單位"
 
-#: src/actions.cpp:2458
+#: src/actions.cpp:2456
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "發現敵方單位！"
 msgstr[1] "發現$enemies個敵方單位！"
 
 # Can someone show me an example of this line in real gameplay? Else I really can't understand it...
-#: src/actions.cpp:2463
+#: src/actions.cpp:2461
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "$1個同盟單位"
 msgstr[1] "$friends個友好單位"
 
-#: src/actions.cpp:2464
+#: src/actions.cpp:2462
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "1個敵方單位"
 msgstr[1] "$enemies個敵方單位"
 
-#: src/actions.cpp:2465
+#: src/actions.cpp:2463
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "發現非我方控制單位！（$friendphrase, $enemyphrase）"
 
-#: src/actions.cpp:2474
+#: src/actions.cpp:2472
 msgid "(press $hotkey to keep moving)"
 msgstr "（按$hotkey鍵繼續移動）"
 
@@ -6495,7 +6494,7 @@ msgstr "（按$hotkey鍵繼續移動）"
 msgid "B"
 msgstr "B"
 
-#: src/addon_management.cpp:363 src/dialogs.cpp:1214
+#: src/addon_management.cpp:363 src/dialogs.cpp:1219
 msgid "KB"
 msgstr "KB"
 
@@ -6868,7 +6867,7 @@ msgstr "無可用武器"
 msgid "Chance of being unscathed"
 msgstr "不受傷的幾率"
 
-#: src/attack_prediction_display.cpp:554 src/mouse_events.cpp:637
+#: src/attack_prediction_display.cpp:554 src/mouse_events.cpp:604
 msgid "Damage Calculations"
 msgstr "攻撃計算"
 
@@ -7024,7 +7023,7 @@ msgstr "取消"
 msgid "OK"
 msgstr "確定"
 
-#: src/dialogs.cpp:687 src/dialogs.cpp:1190 src/dialogs.cpp:1292
+#: src/dialogs.cpp:687 src/dialogs.cpp:1190 src/dialogs.cpp:1297
 #: src/multiplayer_connect.cpp:1015 src/multiplayer_create.cpp:82
 #: src/multiplayer_wait.cpp:184
 msgid "Cancel"
@@ -8108,11 +8107,11 @@ msgstr "命令："
 msgid "User-Command#3"
 msgstr "使用者命令#3"
 
-#: src/mouse_events.cpp:648
+#: src/mouse_events.cpp:615
 msgid "Attack Enemy"
 msgstr "攻撃敵人"
 
-#: src/mouse_events.cpp:649
+#: src/mouse_events.cpp:616
 msgid "Choose weapon:"
 msgstr "選擇武器："
 
@@ -9095,40 +9094,40 @@ msgstr "Battle for Wesnoth"
 msgid "Help Wesnoth by sending us information"
 msgstr "回報資訊，幫助韋諾"
 
-#: src/unit.cpp:591
+#: src/unit.cpp:592
 #, fuzzy
 msgid "Unknown unit type '$type|' while generating traits"
 msgstr "未知單位 '$type|'"
 
-#: src/unit.cpp:792
+#: src/unit.cpp:793
 msgid "Unknown unit type '$type|'"
 msgstr "未知單位 '$type|'"
 
-#: src/unit.cpp:2523 src/unit.cpp:2728 src/unit.cpp:2784
+#: src/unit.cpp:2526 src/unit.cpp:2731 src/unit.cpp:2787
 msgid " and "
 msgstr "以及"
 
-#: src/unit.cpp:2534
+#: src/unit.cpp:2537
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/unit.cpp:2599
+#: src/unit.cpp:2602
 msgid "moves"
 msgstr "移動點數"
 
-#: src/unit.cpp:2617 src/unit.cpp:2755
+#: src/unit.cpp:2620 src/unit.cpp:2758
 msgid "XP to advance"
 msgstr "升級所需經驗值"
 
-#: src/unit.cpp:2747
+#: src/unit.cpp:2750
 msgid " move"
 msgstr "移動"
 
-#: src/unit.cpp:2763
+#: src/unit.cpp:2766
 msgid "$effect_description per level"
 msgstr "每級 $effect_description"
 
-#: src/unit.cpp:2793
+#: src/unit.cpp:2796
 msgid "$trait_name|: $trait_description "
 msgstr "$trait_name|: $trait_description "
 

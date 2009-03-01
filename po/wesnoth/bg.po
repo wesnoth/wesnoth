@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bg\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-02-28 22:32+0100\n"
+"POT-Creation-Date: 2009-03-01 12:14+0100\n"
 "PO-Revision-Date: 2007-08-21 17:39+0300\n"
 "Last-Translator: Denica <dmincheva2002@gmail.com>\n"
 "Language-Team: Bulgarian <bg@li.org>\n"
@@ -77,7 +77,7 @@ msgstr "Подземие"
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:303
-#: src/actions.cpp:1049 src/actions.cpp:1325
+#: src/actions.cpp:1046 src/actions.cpp:1322
 msgid "poisoned"
 msgstr "отровен"
 
@@ -137,7 +137,7 @@ msgstr ""
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [then]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1241
-#: src/actions.cpp:1054 src/actions.cpp:1330
+#: src/actions.cpp:1051 src/actions.cpp:1327
 #, fuzzy
 msgid "female^slowed"
 msgstr "лоялна"
@@ -145,7 +145,7 @@ msgstr "лоялна"
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [else]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1244
-#: src/actions.cpp:1054 src/actions.cpp:1330
+#: src/actions.cpp:1051 src/actions.cpp:1327
 msgid "slowed"
 msgstr "забавен"
 
@@ -6240,8 +6240,8 @@ msgstr "Отдалечена мисия"
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=label-hp
 #: data/themes/default.cfg:212 data/themes/dfool.cfg:232
-#: data/themes/experimental.cfg:181 src/menu_events.cpp:199 src/unit.cpp:2566
-#: src/unit.cpp:2740
+#: data/themes/experimental.cfg:181 src/menu_events.cpp:199 src/unit.cpp:2569
+#: src/unit.cpp:2743
 msgid "HP"
 msgstr "Здраве"
 
@@ -6395,62 +6395,61 @@ msgstr ""
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "Няма свободни полета замък в които да наберете единица."
 
-#: src/actions.cpp:266 src/actions.cpp:273 src/actions.cpp:289
-#: src/actions.cpp:294
+#: src/actions.cpp:266 src/actions.cpp:286 src/actions.cpp:291
 msgid "An invalid weapon is selected, possibly by the Python AI."
 msgstr ""
 
-#: src/actions.cpp:1049 src/actions.cpp:1325
+#: src/actions.cpp:1046 src/actions.cpp:1322
 #, fuzzy
 msgid "female^poisoned"
 msgstr "немъртва"
 
-#: src/actions.cpp:1061 src/actions.cpp:1337
+#: src/actions.cpp:1058 src/actions.cpp:1334
 #, fuzzy
 msgid "female^stone"
 msgstr "силна"
 
-#: src/actions.cpp:1061 src/actions.cpp:1337
+#: src/actions.cpp:1058 src/actions.cpp:1334
 msgid "stone"
 msgstr "вкаменен"
 
-#: src/actions.cpp:2409
+#: src/actions.cpp:2407
 msgid "Ambushed!"
 msgstr "Засада!"
 
-#: src/actions.cpp:2416
+#: src/actions.cpp:2414
 msgid "Failed teleport! Exit not empty"
 msgstr ""
 
-#: src/actions.cpp:2455
+#: src/actions.cpp:2453
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "Забелязана приятелска единица"
 msgstr[1] "$friends приятелски единици забелязани"
 
-#: src/actions.cpp:2458
+#: src/actions.cpp:2456
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "Забелязана вражеска единица!"
 msgstr[1] "$enemies вражески единици забелязани"
 
-#: src/actions.cpp:2463
+#: src/actions.cpp:2461
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "1 приятелска"
 msgstr[1] "$friends приятелски"
 
-#: src/actions.cpp:2464
+#: src/actions.cpp:2462
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "1 вражеска"
 msgstr[1] "$enemies вражески"
 
-#: src/actions.cpp:2465
+#: src/actions.cpp:2463
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Забелязани единици! ($friendphrase, $enemyphrase)"
 
-#: src/actions.cpp:2474
+#: src/actions.cpp:2472
 msgid "(press $hotkey to keep moving)"
 msgstr "(натиснете $hotkey , за да продължите)"
 
@@ -6458,7 +6457,7 @@ msgstr "(натиснете $hotkey , за да продължите)"
 msgid "B"
 msgstr "Б"
 
-#: src/addon_management.cpp:363 src/dialogs.cpp:1214
+#: src/addon_management.cpp:363 src/dialogs.cpp:1219
 msgid "KB"
 msgstr "КБ"
 
@@ -6837,7 +6836,7 @@ msgstr "Няма използваемо оръжие"
 msgid "Chance of being unscathed"
 msgstr "Шанс да остане невредим"
 
-#: src/attack_prediction_display.cpp:554 src/mouse_events.cpp:637
+#: src/attack_prediction_display.cpp:554 src/mouse_events.cpp:604
 msgid "Damage Calculations"
 msgstr "Оценка на щетите"
 
@@ -7002,7 +7001,7 @@ msgstr "Отказ"
 msgid "OK"
 msgstr "ОК"
 
-#: src/dialogs.cpp:687 src/dialogs.cpp:1190 src/dialogs.cpp:1292
+#: src/dialogs.cpp:687 src/dialogs.cpp:1190 src/dialogs.cpp:1297
 #: src/multiplayer_connect.cpp:1015 src/multiplayer_create.cpp:82
 #: src/multiplayer_wait.cpp:184
 msgid "Cancel"
@@ -8119,11 +8118,11 @@ msgstr "Команда:"
 msgid "User-Command#3"
 msgstr "Команди"
 
-#: src/mouse_events.cpp:648
+#: src/mouse_events.cpp:615
 msgid "Attack Enemy"
 msgstr "Атакувай противника"
 
-#: src/mouse_events.cpp:649
+#: src/mouse_events.cpp:616
 msgid "Choose weapon:"
 msgstr "Избери оръжие:"
 
@@ -9136,42 +9135,42 @@ msgstr "Битката за Уеснот"
 msgid "Help Wesnoth by sending us information"
 msgstr "Помогнете на Уеснот, като ни пращате информация"
 
-#: src/unit.cpp:591
+#: src/unit.cpp:592
 msgid "Unknown unit type '$type|' while generating traits"
 msgstr ""
 
-#: src/unit.cpp:792
+#: src/unit.cpp:793
 msgid "Unknown unit type '$type|'"
 msgstr ""
 
-#: src/unit.cpp:2523 src/unit.cpp:2728 src/unit.cpp:2784
+#: src/unit.cpp:2526 src/unit.cpp:2731 src/unit.cpp:2787
 #, fuzzy
 msgid " and "
 msgstr "Песъчлив терен"
 
-#: src/unit.cpp:2534
+#: src/unit.cpp:2537
 msgid "$attack_list|: $effect_description"
 msgstr ""
 
-#: src/unit.cpp:2599
+#: src/unit.cpp:2602
 #, fuzzy
 msgid "moves"
 msgstr "Ходове"
 
-#: src/unit.cpp:2617 src/unit.cpp:2755
+#: src/unit.cpp:2620 src/unit.cpp:2758
 msgid "XP to advance"
 msgstr "Опит, оставащ до повишение"
 
-#: src/unit.cpp:2747
+#: src/unit.cpp:2750
 #, fuzzy
 msgid " move"
 msgstr "Ходове"
 
-#: src/unit.cpp:2763
+#: src/unit.cpp:2766
 msgid "$effect_description per level"
 msgstr ""
 
-#: src/unit.cpp:2793
+#: src/unit.cpp:2796
 msgid "$trait_name|: $trait_description "
 msgstr ""
 

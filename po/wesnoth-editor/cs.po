@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-02-23 14:07+0100\n"
+"POT-Creation-Date: 2009-03-01 12:14+0100\n"
 "PO-Revision-Date: 2009-02-23 20:40+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
@@ -103,7 +103,10 @@ msgstr "zvláštnosti"
 
 #. [editor_tool_hint]: id=editor-tool-paint
 #. [editor_tool_hint]: id=editor-tool-fill
+#. [menu]: id=draw_button_editor
+#. [menu]: id=flood_button_editor
 #: data/core/editor/tool-hints.cfg:7 data/core/editor/tool-hints.cfg:13
+#: data/themes/editor2.cfg:179 data/themes/editor2.cfg:192
 msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only."
@@ -112,7 +115,8 @@ msgstr ""
 "tlačítko myši. Se shiftem se kreslí pouze základní vrstva."
 
 #. [editor_tool_hint]: id=editor-tool-select
-#: data/core/editor/tool-hints.cfg:19
+#. [menu]: id=select_button_editor
+#: data/core/editor/tool-hints.cfg:19 data/themes/editor2.cfg:214
 msgid ""
 "Left mouse button selects, right deselects. Hold Shift for magic-wand "
 "selection of tiles with same terrain."
@@ -121,7 +125,8 @@ msgstr ""
 "všechny políčka se stejným terénem."
 
 #. [editor_tool_hint]: id=editor-tool-starting-position
-#: data/core/editor/tool-hints.cfg:25
+#. [menu]: id=start_position_button_editor
+#: data/core/editor/tool-hints.cfg:25 data/themes/editor2.cfg:203
 msgid ""
 "Left mouse button displays player selection, right clears. Number keys "
 "scroll to the starting position, alt+number sets respective starting "
@@ -161,7 +166,7 @@ msgid "Window"
 msgstr "Okno"
 
 #. [label]: id=villages-icon
-#: data/themes/editor2.cfg:262
+#: data/themes/editor2.cfg:270
 msgid "villages"
 msgstr "vesnic"
 
@@ -177,26 +182,26 @@ msgstr "Akce není implementována"
 msgid "Quit Editor"
 msgstr "Ukončení editoru"
 
-#: src/editor2/editor_controller.cpp:282
+#: src/editor2/editor_controller.cpp:275
 msgid "Fatal error"
 msgstr "Kritická chyba"
 
-#: src/editor2/editor_controller.cpp:296 src/editor2/editor_controller.cpp:991
+#: src/editor2/editor_controller.cpp:289 src/editor2/editor_controller.cpp:984
 msgid "(New Map)"
 msgstr "(Nová mapa)"
 
-#: src/editor2/editor_controller.cpp:302
+#: src/editor2/editor_controller.cpp:295
 msgid "Do you really want to quit?"
 msgstr "Opravdu si přejete skončit?"
 
-#: src/editor2/editor_controller.cpp:304
+#: src/editor2/editor_controller.cpp:297
 msgid ""
 "Do you really want to quit? Changes in the map since the last save will be "
 "lost."
 msgstr ""
 "Opravdu si přeješ skončit? Změny v mapě od posledního uložení budou ztraceny."
 
-#: src/editor2/editor_controller.cpp:306
+#: src/editor2/editor_controller.cpp:299
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -204,91 +209,91 @@ msgstr ""
 "Opravdu si přeješ skončit? Následující mapy byly změněny; všechny změny od "
 "posledního uložení budou ztraceny:"
 
-#: src/editor2/editor_controller.cpp:311
+#: src/editor2/editor_controller.cpp:304
 msgid "Quit"
 msgstr "Konec"
 
-#: src/editor2/editor_controller.cpp:366 src/editor2/editor_controller.cpp:478
-#: src/editor2/editor_controller.cpp:514 src/editor2/editor_controller.cpp:536
+#: src/editor2/editor_controller.cpp:359 src/editor2/editor_controller.cpp:471
+#: src/editor2/editor_controller.cpp:507 src/editor2/editor_controller.cpp:529
 msgid "Error"
 msgstr "Chyba"
 
-#: src/editor2/editor_controller.cpp:366
+#: src/editor2/editor_controller.cpp:359
 msgid "No editor time-of-day found."
 msgstr "Nenalezena žádná denní doba pro editor."
 
-#: src/editor2/editor_controller.cpp:402
+#: src/editor2/editor_controller.cpp:395
 msgid "Unsaved Changes"
 msgstr "Neuložené změny"
 
-#: src/editor2/editor_controller.cpp:403
+#: src/editor2/editor_controller.cpp:396
 msgid ""
 "Do you want to discard all changes you made to the map since the last save?"
 msgstr "Opravdu si přeješ zahodit všechny změny v mapě od posledního uložení?"
 
-#: src/editor2/editor_controller.cpp:416
+#: src/editor2/editor_controller.cpp:409
 msgid "Choose a Map to Open"
 msgstr "Vyber mapu k načtení"
 
-#: src/editor2/editor_controller.cpp:420
+#: src/editor2/editor_controller.cpp:413
 msgid "This map is already open."
 msgstr "Tato mapa již je otevřena."
 
-#: src/editor2/editor_controller.cpp:458
+#: src/editor2/editor_controller.cpp:451
 msgid "Save the Map As"
 msgstr "Ulož mapu jako"
 
-#: src/editor2/editor_controller.cpp:462
+#: src/editor2/editor_controller.cpp:455
 msgid "The file already exists. Do you want to overwrite it?"
 msgstr "Mapa už existuje. Přeješ si ji přepsat?"
 
-#: src/editor2/editor_controller.cpp:478
+#: src/editor2/editor_controller.cpp:471
 msgid "No random map generators found."
 msgstr "Nebyly nalezeny žádné generátory map."
 
-#: src/editor2/editor_controller.cpp:489
+#: src/editor2/editor_controller.cpp:482
 msgid "Map creation failed."
 msgstr "Mapu se nepodařilo vygenerovat."
 
 # co je zase toto?
-#: src/editor2/editor_controller.cpp:504
+#: src/editor2/editor_controller.cpp:497
 msgid "Choose a mask to apply"
 msgstr "Vyber masku k aplikaci"
 
-#: src/editor2/editor_controller.cpp:511
+#: src/editor2/editor_controller.cpp:504
 msgid "Error loading mask"
 msgstr "Chyba při načítání masky"
 
-#: src/editor2/editor_controller.cpp:526
+#: src/editor2/editor_controller.cpp:519
 msgid "Choose target map"
 msgstr "vyber cílovou mapu"
 
-#: src/editor2/editor_controller.cpp:533 src/editor2/editor_controller.cpp:646
+#: src/editor2/editor_controller.cpp:526 src/editor2/editor_controller.cpp:639
 #: src/editor2/editor_main.cpp:53
 msgid "Error loading map"
 msgstr "Chyba načítání mapy"
 
-#: src/editor2/editor_controller.cpp:622
+#: src/editor2/editor_controller.cpp:615
 msgid "Map saved."
 msgstr "Mapa byla uložena."
 
-#: src/editor2/editor_controller.cpp:627
+#: src/editor2/editor_controller.cpp:620
 msgid "Could not save the map: $msg"
 msgstr "Nepodařilo se uložit mapu: $msg"
 
-#: src/editor2/editor_controller.cpp:1018
+#: src/editor2/editor_controller.cpp:1011
 msgid "Undo"
 msgstr "Zpátky"
 
-#: src/editor2/editor_controller.cpp:1020
+#: src/editor2/editor_controller.cpp:1013
 msgid "Can't Undo"
 msgstr "Nelze vrátit"
 
-#: src/editor2/editor_controller.cpp:1024
+#: src/editor2/editor_controller.cpp:1017
 msgid "Redo"
 msgstr "Vrať"
 
-#: src/editor2/editor_controller.cpp:1026
+#: src/editor2/editor_controller.cpp:1019
 msgid "Can't Redo"
 msgstr "Nelze opakovat"
 
