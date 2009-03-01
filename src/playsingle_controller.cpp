@@ -398,7 +398,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 			// a victory, so let them use [music] tags
 			// instead should they want special music.
 			//
-			if(end_level.result == VICTORY && !obs) {
+			if(end_level.result == VICTORY && (!obs) && (end_level.linger_mode)) {
 				const std::string& victory_music = select_victory_music();
 				if(victory_music.empty() != true)
 					sound::play_music_once(victory_music);
