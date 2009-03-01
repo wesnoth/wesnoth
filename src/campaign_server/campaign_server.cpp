@@ -511,7 +511,8 @@ namespace {
 							network::send_data(construct_error("Add-on rejected: You did not specify a description of the add-on in the pbl file!"), sock, gzipped);
 						} else if(check_names_legal(*data) == false) {
 							LOG_CS << "Upload aborted - invalid file names in add-on data.\n";
-							network::send_data(construct_error("Add-on rejected: The add-on contains an illegal file or directory name."), sock, gzipped);
+							network::send_data(construct_error("Add-on rejected: The add-on contains an illegal file or directory name."
+									" File or directory names may not contain any of the following characters: '/ \\ : ~'"), sock, gzipped);
 						} else if(campaign != NULL && (*campaign)["passphrase"] != (*upload)["passphrase"]) {
 							// the user password failed, now test for the master password, in master password
 							// mode the upload behaves different since it's only intended to update translations.
