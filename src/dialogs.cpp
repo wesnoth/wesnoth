@@ -1191,10 +1191,15 @@ static network::connection network_data_dialog(display& disp, const std::string&
 	std::vector<gui::button*> buttons_ptr(1,&cancel_button);
 
 	gui::dialog_frame frame(disp.video(), msg, gui::dialog_frame::default_style, true, &buttons_ptr);
-	frame.layout(left,top,width,height);
+	SDL_Rect centered_layout = frame.layout(left,top,width,height).interior;
+	centered_layout.x = disp.w() / 2 - centered_layout.w / 2;
+	centered_layout.y = disp.h() / 2 - centered_layout.h / 2;
+	// HACK: otherwise we get an empty useless space in the dialog below the progressbar
+	centered_layout.h = height;
+	frame.layout(centered_layout);
 	frame.draw();
 
-	const SDL_Rect progress_rect = {left+border,top+border,width-border*2,height-border*2};
+	const SDL_Rect progress_rect = {centered_layout.x+border,centered_layout.y+border,centered_layout.w-border*2,centered_layout.h-border*2};
 	gui::progress_bar progress(disp.video());
 	progress.set_location(progress_rect);
 
