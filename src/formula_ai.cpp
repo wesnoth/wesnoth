@@ -1431,9 +1431,6 @@ void formula_ai::play_turn()
 					}
 				}
 			}
-			else {
-				ERR_AI << "FIXME: unit iterator invalidated after make_move()!\n";
-			}
 		}
 	}
 
