@@ -2045,16 +2045,6 @@ namespace {
 		lg::wml_error << message << '\n';
 	}
 
-	/** @deprecated Use [wml_message]. */
-	WML_HANDLER_FUNCTION(debug_message,/*handler*/,/*event_info*/,cfg)
-	{
-		lg::wml_error << "[debug_message] is deprecated and will be removed in 1.5.10; use [wml_message] with the 'wml' logdomain instead" << '\n';
-		const std::string& logger = cfg["logger"];
-		const std::string msg = cfg["message"];
-
-		put_wml_message(logger,msg);
-	}
-
 	WML_HANDLER_FUNCTION(wml_message,/*handler*/,/*event_info*/,cfg)
 	{
 		const std::string& logger = cfg["logger"];
