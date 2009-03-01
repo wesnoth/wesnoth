@@ -56,6 +56,9 @@ textbox::~textbox()
 void textbox::set_inner_location(SDL_Rect const &rect)
 {
 	bg_register(rect);
+	if (text_image_.null()) return;
+	text_pos_ = 0;
+	update_text_cache(false);
 }
 
 const std::string textbox::text() const
@@ -233,14 +236,6 @@ void textbox::set_wrap(bool val)
 		update_text_cache(true);
 		set_dirty(true);
 	}
-}
-
-void textbox::set_location(const SDL_Rect& rect)
-{
-	text_pos_ = 0;
-
-	scrollarea::set_location(rect);
-	set_shown_size(location().h);
 }
 
 void textbox::scroll(unsigned int pos)

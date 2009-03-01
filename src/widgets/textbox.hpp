@@ -44,12 +44,6 @@ public:
 
 	void set_wrap(bool val);
 
-	void set_location(const SDL_Rect& rect);
-
-	//VC++ doesn't like a 'using scrollarea::set_location' directive here, so we declare
-	//an inline forwarding function instead
-	void set_location(int x, int y) { widget::set_location(x,y); }
-
 protected:
 	virtual void draw_contents();
 	virtual void set_inner_location(SDL_Rect const &);
