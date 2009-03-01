@@ -12,27 +12,9 @@ The release team should empty this file after each release.
 
 ***
 
-WML authors: the following image files in /data/core/images have been
-renamed and moved around. The wmllint tool has been updated to help converting
-existing add-on's for this change.
+There are quite some changes on the GUI front and things should start to
+stabilise now. If you see bugs which should be fixed before 1.6 please report
+them in the bug tracker.
 
-* titlescreen/landscapebattlefield.jpg -> story/landscape-battlefield.jpg
-* titlescreen/landscapebridge.jpg -> story/landscape-bridge.jpg
-* titlescreen/landscapecastle.jpg -> story/landscape-castle.jpg
-
-***
-
-This release contains an important security update, fixing a
-vulnerability that could allow third-party content (such as campaigns
-downloaded from the add-on server) to execute arbitrary code with user
-account privileges.  See bug #31048 for details.  All content
-currently on the official add-on server has been inspected to confirm
-that none of it exploits this vulnerability, and the add-on server
-itself has been patched to ensure that exploits can no longer be
-uploaded.  Therefore, users of previous versions of Battle for Wesnoth
-who have received user-made content through the official add-on server
-and no other distribution channel need not fear that their system has
-been compromised.
-
-CVE-2009-0367 has been assigned to this vulnerability and may provide
-further information.
+The message dialog got overhauled with some new images, these are placeholders.
+They will be polished before 1.6.
