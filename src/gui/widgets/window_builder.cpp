@@ -1097,13 +1097,15 @@ tbuilder_toggle_panel::tbuilder_toggle_panel(const config& cfg) :
 {
 /*WIKI
  * @page = GUIToolkitWML
- * @order = 3_widget_panel
+ * @order = 3_widget_toggle_panel
  *
- * == Panel ==
+ * == Toggle panel ==
  *
  * A panel is an item which can hold other items. The difference between a grid
  * and a panel is that it's possible to define how a panel looks. A grid in an
- * invisible container to just hold the items.
+ * invisible container to just hold the items. The toggle panel is a
+ * combination of the panel and a toggle button, it allows a toggle button with
+ * its own grid.
  *
  * @start_table = config
  *     grid (section)                  Defines the grid with the widgets to
