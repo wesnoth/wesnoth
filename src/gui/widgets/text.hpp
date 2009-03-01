@@ -365,6 +365,7 @@ private:
 	 */
 	virtual void handle_key_page_down(SDLMod /*modifier*/, bool& /*handled*/) {}
 
+protected:
 	/**
 	 * Default key handler if none of the above functions is called.
 	 *

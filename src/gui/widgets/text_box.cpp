@@ -262,23 +262,46 @@ void ttext_box::update_offsets()
 	update_canvas();
 }
 
-void ttext_box::handle_key_up_arrow(SDLMod /*modifier*/, bool& handled)
+bool ttext_box::history_up()
 {
-	if (history_.get_enabled()) {
-		std::string s = history_.up(get_value());
-		if (!s.empty()) {
-			set_value(s);
-		}
-
-		handled = true;
+	if(!history_.get_enabled()) {
+		return false;
 	}
+
+	const std::string str = history_.up(get_value());
+	if(!str.empty()) {
+		set_value(str);
+	}
+	return true;
 }
 
-void ttext_box::handle_key_down_arrow(SDLMod /*modifier*/, bool& handled)
+bool ttext_box::history_down()
 {
-	if (history_.get_enabled()) {
-		set_value(history_.down(get_value()));
-		handled = true;
+	if(!history_.get_enabled()) {
+		return false;
+	}
+
+	const std::string str = history_.down(get_value());
+	if(!str.empty()) {
+		set_value(str);
+	}
+	return true;
+}
+
+void ttext_box::handle_key_default(
+		bool& handled, SDLKey key, SDLMod modifier, Uint16 unicode)
+{
+	if(key == SDLK_TAB && (modifier & KMOD_CTRL)) {
+		if(!(modifier& KMOD_SHIFT)) {
+			handled = history_up();
+		} else {
+			handled = history_down();
+		}
+	}
+
+	if(!handled) {
+		// Inherited.
+		ttext_::handle_key_default(handled, key, modifier, unicode);
 	}
 }
 

@@ -210,24 +210,40 @@ private:
 	/**
 	 * Inherited from ttext_.
 	 *
-	 * Unmodified                 If there is a history, goes one item up in the
-	 *                            history, otherwise ignored.
+	 * Unmodified                 Unhandled.
 	 * Control                    Ignored.
 	 * Shift                      Ignored.
 	 * Alt                        Ignored.
 	 */
-	void handle_key_up_arrow(SDLMod modifier, bool& handled);
+	void handle_key_up_arrow(SDLMod /*modifier*/, bool& /*handled*/) {}
 
 	/**
 	 * Inherited from ttext_.
 	 *
-	 * Unmodified                 If there is a history, goes one item down in the
-	 *                            history, otherwise ignored.
+	 * Unmodified                 Unhandled.
 	 * Control                    Ignored.
 	 * Shift                      Ignored.
 	 * Alt                        Ignored.
 	 */
-	void handle_key_down_arrow(SDLMod modifier, bool& handled);
+	void handle_key_down_arrow(SDLMod /*modifier*/, bool& /*handled*/) {}
+
+	/**
+	 * Goes one item up in the history.
+	 *
+	 * @returns                   True if there's a history, false otherwise.
+	 */
+	bool history_up();	
+
+	/**
+	 * Goes one item down in the history.
+	 *
+	 * @returns                   True if there's a history, false otherwise.
+	 */
+	bool history_down();	
+
+	/** Inherited from ttext_. */
+	void handle_key_default(
+		bool& handled, SDLKey key, SDLMod modifier, Uint16 unicode);
 
 	/** Inherited from ttext_. */
 	void handle_key_clear_line(SDLMod modifier, bool& handled);
