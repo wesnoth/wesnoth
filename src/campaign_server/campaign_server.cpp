@@ -483,8 +483,8 @@ namespace {
 					} else if(config* upload = data.child("upload")) {
 						LOG_CS << "uploading campaign '" << (*upload)["name"] << "' from " << network::ip_address(sock) << ".\n";
 						config* data = upload->child("data");
-						std::string new_name;
 						const std::string& name = (*upload)["name"];
+						std::string new_name(name.size(), ' ');
 						std::transform(name.begin(), name.end(), new_name.begin(), tolower);
 						(*upload)["name"] = new_name;
 						config* campaign = campaigns().find_child("campaign","name",(*upload)["name"]);
