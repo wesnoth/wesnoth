@@ -590,6 +590,7 @@ protected:
 	std::map<reports::TYPE, std::string> report_;
 	std::vector<gui::button> buttons_;
 	std::set<map_location> invalidated_;
+	std::set<map_location> previous_invalidated_;
 	std::map<map_location, surface> hex_overlay_;
 	surface selected_hex_overlay_;
 	surface mouseover_hex_overlay_;

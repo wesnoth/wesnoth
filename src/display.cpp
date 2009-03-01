@@ -104,6 +104,7 @@ display::display(CVideo& video, const gamemap* map, const config& theme_cfg, con
 	report_(),
 	buttons_(),
 	invalidated_(),
+	previous_invalidated_(),
 	hex_overlay_(),
 	selected_hex_overlay_(0),
 	mouseover_hex_overlay_(0),
@@ -1887,6 +1888,16 @@ void display::draw(bool update,bool force) {
 	invalidate_animations();
 	pre_draw();
 	update_time_of_day();
+	// at this stage we have everything that needs to be invalidated for this redraw
+	// save it as the previous invalidated, and merge with the previous invalidated_
+	previous_invalidated_.swap(invalidated_);
+	invalidated_.insert(previous_invalidated_.begin(),previous_invalidated_.end());
+	// call invalidate_animation again to deal with new conflict arising from the merge
+	// no conflict, if a hex was invalidated last turn but not this turn, then
+	// * case of no unit in neighbour hex=> no propagation
+	// * case of unit in hex but was there last turn=>its hexes are invalidated too
+	// * case of unit inhex not there last turn => it moved, so was invalidated previously
+	//invalidate_animations();
 	if(!get_map().empty()) {
 		//int simulate_delay = 0;
 

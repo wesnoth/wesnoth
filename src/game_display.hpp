@@ -392,7 +392,6 @@ private:
 	 * the tiles invalidated at last redraw,
 	 * to simplify the cleaning up of tiles left by units
 	 */
-	std::set<map_location> previous_invalidated_;
 	static game_display * singleton_;
 };
 

@@ -67,8 +67,7 @@ game_display::game_display(unit_map& units, CVideo& video, const gamemap& map,
 		reach_map_old_(),
 		reach_map_changed_(true),
 		game_mode_(RUNNING),
-		flags_(),
-		previous_invalidated_()
+		flags_()
 {
 	singleton_ = this;
 
@@ -258,16 +257,6 @@ void game_display::scroll_to_leader(unit_map& units, int side, SCROLL_TYPE scrol
 }
 
 void game_display::pre_draw() {
-	// at this stage we have everything that needs to be invalidated for this redraw
-	// save it as the previous invalidated, and merge with the previous invalidated_
-	previous_invalidated_.swap(invalidated_);
-	invalidated_.insert(previous_invalidated_.begin(),previous_invalidated_.end());
-	// call invalidate_animation again to deal with new conflict arising from the merge
-	// no conflict, if a hex was invalidated last turn but not this turn, then
-	// * case of no unit in neighbour hex=> no propagation
-	// * case of unit in hex but was there last turn=>its hexes are invalidated too
-	// * case of unit inhex not there last turn => it moved, so was invalidated previously
-	//invalidate_animations();
 	process_reachmap_changes();
 	/**
 	 * @todo FIXME: must modify changed, but best to do it at the
