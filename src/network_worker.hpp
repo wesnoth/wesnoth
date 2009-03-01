@@ -30,6 +30,21 @@
 #include "network.hpp"
 #include "SDL_net.h"
 
+/**
+ * Aligns a variable on a 4 byte boundry.
+ *
+ * The address needs to be aligned on a Sparc system, if it's not aligned the
+ * SDLNet_Read32 call will cause a SIGBUS and the server will be terminated [1].
+ * Best use this alignment for all buffers used in for the SDL_Net calls.
+ *
+ * [1] http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=426318
+ */
+#ifdef __GNUC__
+#define ALIGN_4 __attribute__ ((aligned (4)))
+#else
+#define ALIGN_4 
+#endif
+
 namespace network_worker_pool
 {
 
