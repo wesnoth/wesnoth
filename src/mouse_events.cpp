@@ -376,17 +376,6 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 			unit_map::iterator enemy = find_unit(hex);
 			if(u != units_.end() && u->second.side() == team_num_ &&
 				enemy != units_.end() && current_team().is_enemy(enemy->second.side()) && !enemy->second.incapacitated()) {
-				//if shroud or fog is active, rememember units and after attack check if someone isn't seen
-				std::set<map_location> known_units;
-
-				if (teams_[team_num_-1].uses_shroud() || teams_[team_num_-1].uses_fog()){
-					 for(unit_map::const_iterator u = units_.begin(); u != units_.end(); ++u) {
-				   if(teams_[team_num_-1].fogged(u->first) == false) {
-					 known_units.insert(u->first);
-					 teams_[team_num_-1].see(u->second.side()-1);
-							}
-						}
-				}
 
 				// reselect the unit to make the attacker's stats appear during the attack dialog
 				gui().select_hex(attack_from);
