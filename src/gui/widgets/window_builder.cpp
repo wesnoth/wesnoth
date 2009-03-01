@@ -210,6 +210,33 @@ tbuilder_widget_ptr create_builder_widget(const config& cfg)
 	}
 }
 
+/**
+ * Returns the return value for a widget.
+ *
+ * If there's a valid retval_id that will be returned.
+ * Else if there's a retval that's returned.
+ * Else it falls back to the id.
+ */
+int get_retval(const std::string& retval_id,
+		const int retval, const std::string& id)
+{
+	if(!retval_id.empty()) {
+		int result = twindow::get_retval_by_id(retval_id);
+		if(result) {
+			return result;
+		} else {
+			ERR_G_E << "Window builder: retval_id '"
+					<< retval_id << "' is unknown.\n";
+		}
+	}
+
+	if(retval) {
+		return retval;
+	} else {
+		return twindow::get_retval_by_id(id);
+	}
+}
+
 } // namespace
 
 twindow* build(CVideo& video, const std::string& type)
@@ -634,13 +661,7 @@ twidget* tbuilder_button::build() const
 
 	init_control(button);
 
-	if(!retval_id_.empty()) {
-		button->set_retval(twindow::get_retval_by_id(retval_id_));
-	} else if(retval_) {
-		button->set_retval(retval_);
-	} else {
-		button->set_retval(twindow::get_retval_by_id(id));
-	}
+	button->set_retval(get_retval(retval_id_, retval_, id));
 
 	DBG_GUI << "Window builder: placed button '" << id << "' with defintion '"
 		<< definition << "'.\n";
@@ -1081,10 +1102,10 @@ twidget* tbuilder_toggle_button::build() const
 	init_control(toggle_button);
 
 	toggle_button->set_icon_name(icon_name_);
-	toggle_button->set_retval(retval_);
+	toggle_button->set_retval(get_retval(retval_id_, retval_, id));
 
-	DBG_GUI << "Window builder: placed toggle button '" << id << "' with defintion '"
-		<< definition << "'.\n";
+	DBG_GUI << "Window builder: placed toggle button '" 
+			<< id << "' with defintion '" << definition << "'.\n";
 
 	return toggle_button;
 }
@@ -1128,11 +1149,10 @@ twidget* tbuilder_toggle_panel::build() const
 
 	init_control(toggle_panel);
 
-	toggle_panel->set_retval(retval_);
+	toggle_panel->set_retval(get_retval(retval_id_, retval_, id));
 
-	DBG_GUI << "Window builder: placed toggle panel '" << id << "' with defintion '"
-		<< definition << "'.\n";
-
+	DBG_GUI << "Window builder: placed toggle panel '"
+			<< id << "' with defintion '" << definition << "'.\n";
 
 	log_scope2(gui, "Window builder: building grid for toggle panel.");
 
