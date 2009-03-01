@@ -33,6 +33,7 @@
 #include "gamestatus.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/addon_connect.hpp"
+#include "gui/dialogs/campaign_selection.hpp"
 #include "gui/dialogs/language_selection.hpp"
 #include "gui/dialogs/mp_method_selection.hpp"
 #include "gui/dialogs/title_screen.hpp"
@@ -1046,6 +1047,23 @@ bool game_controller::new_campaign()
 	config::child_list campaigns = game_config_.get_children("campaign");
 	std::sort(campaigns.begin(),campaigns.end(),less_campaigns_rank);
 
+	if(campaigns.begin() == campaigns.end()) {
+	  gui::show_error_message(disp(),
+				  _("No campaigns are available.\n"));
+		return false;
+	}
+
+	gui2::tcampaign_selection dlg(campaigns.begin(),campaigns.end());
+
+	dlg.show(disp().video());
+
+	if(dlg.get_retval() != gui2::twindow::OK) {
+		return false;
+	}
+
+	const config& campaign = *campaigns[dlg.get_choice()];
+
+#if 0
 	std::vector<std::string> campaign_names;
 	std::vector<std::pair<std::string,std::string> > campaign_desc;
 
@@ -1097,7 +1115,7 @@ bool game_controller::new_campaign()
 	}
 
 	const config& campaign = *campaigns[cmenu.result()];
-
+#endif
 	state_.campaign = campaign["id"];
 	state_.abbrev = campaign["abbrev"];
 	state_.scenario = campaign["first_scenario"];
