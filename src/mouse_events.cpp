@@ -365,9 +365,8 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 	//see if we're trying to do a attack or move-and-attack
 	if(!browse && !commands_disabled && attack_from.valid()) {
 		if (attack_from == selected_hex_) { //no move needed
-			if (attack_enemy(u, clicked_u) == false) {
-				return false;
-			}
+			attack_enemy(u, clicked_u);
+			return false;
 		}
 		else if (move_unit_along_current_route(false, true)) {//move the unit without updating shroud
 			// a WML event could have invalidated both attacker and defender
@@ -375,12 +374,15 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 			u = find_unit(attack_from);
 			unit_map::iterator enemy = find_unit(hex);
 			if(u != units_.end() && u->second.side() == team_num_ &&
-				enemy != units_.end() && current_team().is_enemy(enemy->second.side()) && !enemy->second.incapacitated()) {
+				enemy != units_.end() && current_team().is_enemy(enemy->second.side()) && !enemy->second.incapacitated()
+				&& !commands_disabled) {
 
 				// reselect the unit to make the attacker's stats appear during the attack dialog
 				gui().select_hex(attack_from);
 
-				if(!commands_disabled && attack_enemy(u,enemy) == false) {
+				if(attack_enemy(u,enemy)) { // Fight !!
+					return false;
+				} else { //canceled attack, undo the move
 					undo_ = true;
 					selected_hex_ = src;
 					gui().select_hex(src);
@@ -388,23 +390,17 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 					gui().highlight_reach(current_paths_);
 					return false;
 				}
-				else //attack == true
-				{
-					// execute the move stored in the undo stack
-					// this will update shroud, trigger sighted event and redraw
-					clear_undo_stack();
-					return false;
-				}
 			}
+			else {  // the attack is not valid anymore, abort
+				return false;
+			}
+			
 		}
-
-		if(check_shroud && clear_shroud(gui(), map_, units_, teams_, team_num_ - 1)) {
-			clear_undo_stack();
-			gui().invalidate_all();
-			gui().draw();
+		else { // interrupted move
+			// we assume that move_unit() did the cleaning
+			// (update shroud/fog, clear undo if needed)
+			return false;
 		}
-
-		return false;
 	}
 
 	//otherwise we're trying to move to a hex
@@ -416,9 +412,9 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 		gui().unhighlight_reach();
 		move_unit_along_current_route(check_shroud);
 	} else if (!attackmove_) {
+		// we select a (maybe empty) hex
 		// we block selection during attack+move (because motion is blocked)
 		// FIXME: deal with selected event when commands_disabled
-		// we select a (maybe empty) hex
 		select_hex(hex, browse);
 	}
 	return false;
