@@ -1640,8 +1640,6 @@ map_location formula_ai::path_calculator(const map_location& src, const map_loca
             paths::route route = a_star_search(src, destination, 1000.0, &calc,
                     get_info().map.w(), get_info().map.h(), &allowed_teleports);
 
-            int movement = unit_it->second.movement_left();
-
             if( route.steps.size() == 0 ) {
                 emergency_path_calculator em_calc(unit_it->second, get_info().map);
 
