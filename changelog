@@ -30,10 +30,11 @@ Version 1.5.11+svn:
    * Fixed bug #13029: Problem with mouse-over unit identification in replays
    * Added experimental campaign selection dialog (Only available when
      starting with --new-widgets.)
-   * Properly reset the scrollbar mode when resizing (bug #13018)  
+   * Properly reset the scrollbar mode when resizing (bug #13018)
+   * Fix unwanted double-clicks (caused by 1-pixel drag&drop)
  * WML Engine:
    * Fix incorrect or doubled "sighted" events when delaying shroud update
-   * Fix sometimes doubled "select" events
+   * Fix sometimes missing or doubled "select" events.
    * Fixed bug #13090: Make movement_costs < 1 behave like movement_costs = 1
  * Miscellaneous and bug fixes:
    * Align all network buffers on 4 bytes
