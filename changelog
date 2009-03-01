@@ -11,6 +11,12 @@ Version 1.5.11+svn:
      compressed. (We can still receive binaryWML via the network.)
  * User interface:
    * Listbox columns have the same width again
+   * Fix false "click" sometimes triggered at end of unit move (bug #12712).
+   * Now clear fog/shroud before an attack when doing a move+attack action.
+   * Fix broken auto-undo when trying several move+attack with the same unit.
+ * WML Engine:
+   * Fix incorrect or doubled "sighted" events when delaying shroud update.
+   * Fix sometimes doubled "select" events.
 
 Version 1.5.11:
  * Campaigns:
