@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-02-28 22:32+0100\n"
-"PO-Revision-Date: 2009-01-31 10:27+0100\n"
+"PO-Revision-Date: 2009-03-01 11:37+0100\n"
 "Last-Translator: Luciano Montanaro <mikelima@cirulla.net>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -43,7 +43,7 @@ msgstr "Scrolling con il clic centrale"
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:70
 msgid "Keep scrolling when mouse leaves window"
-msgstr ""
+msgstr "Continua a scorrere quando il mouse esce dalla finestra"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:77
@@ -428,9 +428,8 @@ msgstr "Traduzione in macedone"
 
 #. [about]
 #: data/core/about.cfg:1714
-#, fuzzy
 msgid "Marathi Translation"
-msgstr "Traduzione in latino"
+msgstr "Traduzione in marathi"
 
 #. [about]
 #: data/core/about.cfg:1723
@@ -2050,15 +2049,16 @@ msgstr ""
 
 #. [topic]: id=traits_dim
 #: data/core/help.cfg:440
-#, fuzzy
 msgid "Dim"
-msgstr "scuro"
+msgstr "Ottuso"
 
 #. [topic]: id=traits_dim
 #: data/core/help.cfg:441
 msgid ""
 "Units with trait Dim suffer a 20% increase in experience required to advance."
 msgstr ""
+"Le unità ottuse hanno una penalità del 20% di esperienza richiesta per "
+"avanzare."
 
 #. [topic]: id=traits_dim
 #: data/core/help.cfg:443
@@ -2068,19 +2068,21 @@ msgid ""
 "Dim is a trait all too common in goblins and other lesser species. There are "
 "reasons these species are lesser, and this is one of them."
 msgstr ""
+"\n"
+"\n"
+"L'ottusità è una caratteristica molto comune tra i goblin e altre specie "
+"minori. C'è un motivo per cui queste specie sono minori, e questo è uno."
 
 #. [topic]: id=traits_slow
 #: data/core/help.cfg:448
-#, fuzzy
 msgid "Slow"
-msgstr "Rallentato"
+msgstr "Lento"
 
 #. [topic]: id=traits_slow
 #: data/core/help.cfg:449
-#, fuzzy
 msgid "Slow units have -1 movement but 5% more hitpoints."
 msgstr ""
-"Le unità veloci hanno 1 punto di movimento extra, ma il 5% di PF in meno del "
+"Le unità lente hanno 1 punto di movimento in meno, ma il 5% di PF in più del "
 "normale."
 
 #. [topic]: id=traits_slow
@@ -2092,17 +2094,23 @@ msgid ""
 "a movement penalty but are compensated for it with a slight increase in "
 "endurance."
 msgstr ""
+"\n"
+"\n"
+"Dal corpo tozzo e goffo, gli individui lenti dei goblin e delle altre specie "
+"hanno una penalità di movimento, compensata però da un leggero aumento della "
+"resistenza."
 
 #. [topic]: id=traits_weak
 #: data/core/help.cfg:456
-#, fuzzy
 msgid "Weak"
-msgstr "debole"
+msgstr "Debole"
 
 #. [topic]: id=traits_weak
 #: data/core/help.cfg:457
 msgid "Units with trait Weak get a -1 increment in hitpoints and melee damage."
 msgstr ""
+"Le unità deboli hanno un incremento di -1 in punti ferita e danno da "
+"combattimento."
 
 #. [topic]: id=..terrains
 #: data/core/help.cfg:465
@@ -7308,7 +7316,6 @@ msgid "Size"
 msgstr "Dimensione"
 
 #: src/addon_management.cpp:791
-#, fuzzy
 msgid "Update add-ons"
 msgstr "Aggiorna estensioni"
 
@@ -7345,7 +7352,6 @@ msgid "All add-ons updated successfully."
 msgstr "Tutte le estensioni aggiornate correttamente."
 
 #: src/addon_management.cpp:899
-#, fuzzy
 msgid "Connecting to add-ons server..."
 msgstr "Connessione al server delle estensioni..."
 
@@ -7387,9 +7393,8 @@ msgid "There are no add-ons available for download from this server."
 msgstr "Nessuna estensione disponibile per il download da questo server."
 
 #: src/addon_management.cpp:1032
-#, fuzzy
 msgid "Get add-ons"
-msgstr "Estensioni"
+msgstr "Scarica estensioni"
 
 #: src/addon_management.cpp:1033
 msgid "Choose the add-on to download."
@@ -8524,19 +8529,16 @@ msgid "Drop your nick."
 msgstr "Scarta il tuo nome."
 
 #: src/menu_events.cpp:2176
-#, fuzzy
 msgid "Update details for your nick. For possible details see '/details'."
 msgstr ""
-"Aggiorna i dettagli del tuo nome utente. Per i dettagli possibili vedi /"
-"details"
+"Aggiorna i dettagli del tuo nome utente. Per i dettagli possibili vedi «/"
+"details»."
 
 #: src/menu_events.cpp:2179
-#, fuzzy
 msgid "Request information about a nick."
-msgstr "Richiedi informazioni su un utente."
+msgstr "Richiedi informazioni su un nome utente."
 
 #: src/menu_events.cpp:2181
-#, fuzzy
 msgid "Request a list of details you can set for your registered nick."
 msgstr ""
 "Richiedi un elenco di dettagli modificabili sul nome utente che hai "
@@ -8771,44 +8773,53 @@ msgstr "Reindirizzamento ridondante da parte del server"
 
 #: src/multiplayer.cpp:335
 msgid "You must login first."
-msgstr ""
+msgstr "Devi prima accedere al server."
 
 #: src/multiplayer.cpp:337
 msgid "The nick '$nick' is already taken."
-msgstr ""
+msgstr "Il nome utente «$nick» è già in uso."
 
 #: src/multiplayer.cpp:339
 msgid ""
 "The nick '$nick' contains invalid characters. Only alpha-numeric characters, "
 "underscores and hyphens are allowed."
 msgstr ""
+"Il nome utente «$nick» contiene caratteri non validi. Sono consentiti solo "
+"caratteri alfanumerici, simboli di sottolineatura o trattini."
 
 #: src/multiplayer.cpp:343
 msgid "The nick '$nick' is too long. Nicks must be 18 characters or less."
 msgstr ""
+"Il nome utente «$nick» è troppo lungo. I nomi utente devono essere lunghi al "
+"più 18 caratteri."
 
 #: src/multiplayer.cpp:346
 msgid "The nick '$nick' is reserved and cannot be used by players."
 msgstr ""
+"Il nome utente «$nick» è riservato e non può essere usato dai giocatori."
 
 #: src/multiplayer.cpp:348 src/multiplayer.cpp:350
 msgid "The nick '$nick' is registered on this server."
-msgstr ""
+msgstr "Il nome utente «$nick» è stato riservato su questo server."
 
 #: src/multiplayer.cpp:351
 msgid ""
 "WARNING: There is already a client using this nick, logging in will cause "
 "that client to be kicked!"
 msgstr ""
+"ATTENZIONE: C'è già un client che usa questo nome utente, l'accesso farà in "
+"modo che l'altro client venga scacciato!"
 
 #: src/multiplayer.cpp:354
 msgid ""
 "Error in the login procedure (the server had no seed for your connection)."
 msgstr ""
+"Errore nella procedura di accesso (il server non ha un seme per la tua "
+"connessione)."
 
 #: src/multiplayer.cpp:357
 msgid "The password you provided was incorrect."
-msgstr ""
+msgstr "La password inserita è sbagliata."
 
 #: src/multiplayer_connect.cpp:82 src/multiplayer_connect.cpp:485
 #: src/multiplayer_connect.cpp:613
