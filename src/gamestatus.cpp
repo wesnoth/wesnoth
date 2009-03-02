@@ -963,7 +963,7 @@ config& save_summary(std::string save)
 	 * a file. If not some parts of the code use the name with and some parts
 	 * without the .gz suffix.
 	 */
-	if(save.length() >= 3 && save.substr(save.length() - 3) != ".gz") {
+	if(save.length() < 3 || save.substr(save.length() - 3) != ".gz") {
 		save += ".gz";
 	}
 
