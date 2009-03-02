@@ -484,10 +484,16 @@ namespace {
 						LOG_CS << "uploading campaign '" << (*upload)["name"] << "' from " << network::ip_address(sock) << ".\n";
 						config* data = upload->child("data");
 						const std::string& name = (*upload)["name"];
-						std::string new_name(name.size(), ' ');
-						std::transform(name.begin(), name.end(), new_name.begin(), tolower);
-						(*upload)["name"] = new_name;
-						config* campaign = campaigns().find_child("campaign","name",(*upload)["name"]);
+						std::string lc_name(name.size(), ' ');
+						std::transform(name.begin(), name.end(), lc_name.begin(), tolower);
+						const config::child_list& campaign_list = campaigns().get_children("campaign");
+						config* campaign = NULL;
+						for (config::child_list::const_iterator i = campaign_list.begin(); i != campaign_list.end(); ++i) {
+							if (utils::lowercase((**i)["name"]) == lc_name) {
+								campaign = *i;
+								break;
+							}
+						}
 						if(data == NULL) {
 							LOG_CS << "Upload aborted - no add-on data.\n";
 							network::send_data(construct_error("Add-on rejected: No add-on data was supplied."), sock, gzipped);
