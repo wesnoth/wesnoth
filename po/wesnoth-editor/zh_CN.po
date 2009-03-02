@@ -4,14 +4,15 @@
 # Automatically generated, 2005.
 # Automatically generated <>, 2005.
 # Huang huan <unicon221@gmail.com>, 2005.(unicon)
+# sylecn <sylecn@yahoo.com.cn>, 2009.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-03-01 12:14+0100\n"
-"PO-Revision-Date: 2007-12-09 13:40+1000\n"
-"Last-Translator: luojie-dune <luojie-dune@operamail.com>\n"
+"PO-Revision-Date: 2009-02-27 17:18-0600\n"
+"Last-Translator: sylecn <sylecn@yahoo.com.cn>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,22 +21,22 @@ msgstr ""
 #. [brush]
 #: data/core/editor/brushes.cfg:5
 msgid "Single Hex"
-msgstr ""
+msgstr "单个格子"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:15
 msgid "Radius 1 Hex"
-msgstr ""
+msgstr "半径为1的格子"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:25
 msgid "Radius 2 Hex"
-msgstr ""
+msgstr "半径为2的格子"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:55
 msgid "Hex Line NW-SE"
-msgstr ""
+msgstr "格子沿西北－东南直线排列"
 
 #. [editor_group]: id=all
 #: data/core/editor/terrain-groups.cfg:10
@@ -90,7 +91,7 @@ msgstr "城堡"
 #. [editor_group]: id=special
 #: data/core/editor/terrain-groups.cfg:79
 msgid "special"
-msgstr ""
+msgstr "特殊的"
 
 #. [editor_tool_hint]: id=editor-tool-paint
 #. [editor_tool_hint]: id=editor-tool-fill
@@ -102,6 +103,8 @@ msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only."
 msgstr ""
+"使用鼠标左（右）键绘制前（背）景地形。按下Shift键可以只绘制基层（base "
+"layer）。"
 
 #. [editor_tool_hint]: id=editor-tool-select
 #. [menu]: id=select_button_editor
@@ -110,6 +113,7 @@ msgid ""
 "Left mouse button selects, right deselects. Hold Shift for magic-wand "
 "selection of tiles with same terrain."
 msgstr ""
+"使用鼠标左键选择，右键取消选择。按下Shift键可以自动选择同一地形的地面。"
 
 #. [editor_tool_hint]: id=editor-tool-starting-position
 #. [menu]: id=start_position_button_editor
@@ -119,6 +123,8 @@ msgid ""
 "scroll to the starting position, alt+number sets respective starting "
 "position under cursor, delete clears."
 msgstr ""
+"单击鼠标左键显示玩家选择，右键取消。使用数字键滚动地图到起始点，Alt+数字键设"
+"置玩家起始点。使用delete键清除光标位置的起始点。"
 
 #. [editor_tool_hint]: id=editor-paste
 #: data/core/editor/tool-hints.cfg:30
@@ -126,6 +132,8 @@ msgid ""
 "Click to paste, zoom out for more accuracy when pasting large areas. Use the "
 "edit menu to transform the clipboard (rotate, mirror)."
 msgstr ""
+"单击以粘贴，粘贴大面积区域时可以放大提高精度。使用编辑菜单来变换图像（选择，"
+"镜像）。"
 
 #. [menu]: id=menu-editor-file
 #: data/themes/editor2.cfg:120
@@ -140,13 +148,12 @@ msgstr "编辑"
 #. [menu]: id=menu-editor-map
 #: data/themes/editor2.cfg:141
 msgid "Map"
-msgstr ""
+msgstr "地图"
 
 #. [menu]: id=menu-editor-window
 #: data/themes/editor2.cfg:151
-#, fuzzy
 msgid "Window"
-msgstr "撤销"
+msgstr "窗口"
 
 #. [label]: id=villages-icon
 #: data/themes/editor2.cfg:270
@@ -155,11 +162,11 @@ msgstr "村庄"
 
 #: src/editor2/action.cpp:32
 msgid "Error creating action object"
-msgstr ""
+msgstr "创建动作对象时错误"
 
 #: src/editor2/action.cpp:36
 msgid "Action not implemented"
-msgstr ""
+msgstr "动作未被实现"
 
 #: src/editor2/editor_controller.cpp:123
 msgid "Quit Editor"
@@ -167,93 +174,90 @@ msgstr "退出编辑器"
 
 #: src/editor2/editor_controller.cpp:275
 msgid "Fatal error"
-msgstr ""
+msgstr "严重错误"
 
 #: src/editor2/editor_controller.cpp:289 src/editor2/editor_controller.cpp:984
 msgid "(New Map)"
-msgstr ""
+msgstr "（新建地图）"
 
 #: src/editor2/editor_controller.cpp:295
 msgid "Do you really want to quit?"
-msgstr ""
+msgstr "确定要退出吗？"
 
 #: src/editor2/editor_controller.cpp:297
 msgid ""
 "Do you really want to quit? Changes in the map since the last save will be "
 "lost."
-msgstr ""
+msgstr "确定要退出吗？上次保存之后所作的修改将会丢失。"
 
 #: src/editor2/editor_controller.cpp:299
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
-msgstr ""
+msgstr "确定要退出吗？下面的地图已经被修改，上次保存之后所作的修改将会丢失："
 
 #: src/editor2/editor_controller.cpp:304
 msgid "Quit"
-msgstr ""
+msgstr "退出"
 
 #: src/editor2/editor_controller.cpp:359 src/editor2/editor_controller.cpp:471
 #: src/editor2/editor_controller.cpp:507 src/editor2/editor_controller.cpp:529
 msgid "Error"
-msgstr ""
+msgstr "错误"
 
 #: src/editor2/editor_controller.cpp:359
 msgid "No editor time-of-day found."
-msgstr ""
+msgstr "没有找到编辑器时间(time-of-day)"
 
 #: src/editor2/editor_controller.cpp:395
 msgid "Unsaved Changes"
-msgstr ""
+msgstr "未保存的更改"
 
 #: src/editor2/editor_controller.cpp:396
 msgid ""
 "Do you want to discard all changes you made to the map since the last save?"
-msgstr ""
+msgstr "放弃上次保存之后所作的修改吗？"
 
 #: src/editor2/editor_controller.cpp:409
-#, fuzzy
 msgid "Choose a Map to Open"
-msgstr "选择地图载入"
+msgstr "选择要打开的地图"
 
 #: src/editor2/editor_controller.cpp:413
 msgid "This map is already open."
-msgstr ""
+msgstr "这张地图已经被打开。"
 
 #: src/editor2/editor_controller.cpp:451
 msgid "Save the Map As"
-msgstr "另存地图为"
+msgstr "地图另存为"
 
 #: src/editor2/editor_controller.cpp:455
-#, fuzzy
 msgid "The file already exists. Do you want to overwrite it?"
-msgstr "地图已存在。你想覆盖吗？"
+msgstr "文件已存在，要覆盖吗？"
 
 #: src/editor2/editor_controller.cpp:471
 msgid "No random map generators found."
-msgstr ""
+msgstr "没有找到随机地图生成器。"
 
 #: src/editor2/editor_controller.cpp:482
 msgid "Map creation failed."
-msgstr ""
+msgstr "创建地图失败。"
 
 #: src/editor2/editor_controller.cpp:497
-#, fuzzy
 msgid "Choose a mask to apply"
-msgstr "选择地图载入"
+msgstr "选择要使用的遮照"
 
 #: src/editor2/editor_controller.cpp:504
 msgid "Error loading mask"
-msgstr ""
+msgstr "加载遮照时错误"
 
 #: src/editor2/editor_controller.cpp:519
 msgid "Choose target map"
-msgstr ""
+msgstr "选择目标地图"
 
 #: src/editor2/editor_controller.cpp:526 src/editor2/editor_controller.cpp:639
 #: src/editor2/editor_main.cpp:53
 msgid "Error loading map"
-msgstr ""
+msgstr "加载地图时错误"
 
 #: src/editor2/editor_controller.cpp:615
 msgid "Map saved."
@@ -269,19 +273,19 @@ msgstr "撤销"
 
 #: src/editor2/editor_controller.cpp:1013
 msgid "Can't Undo"
-msgstr ""
+msgstr "无法撤销"
 
 #: src/editor2/editor_controller.cpp:1017
 msgid "Redo"
-msgstr "重做"
+msgstr "重复"
 
 #: src/editor2/editor_controller.cpp:1019
 msgid "Can't Redo"
-msgstr ""
+msgstr "无法重复"
 
 #: src/editor2/editor_map.cpp:85
 msgid "Empty map file or file not found"
-msgstr ""
+msgstr "无法找到地图文件或地图文件为空"
 
 #: src/editor2/editor_map.cpp:166 src/editor2/mouse_action.cpp:385
 msgid "Player"
@@ -289,7 +293,7 @@ msgstr "玩家"
 
 #: src/editor2/editor_map.cpp:285
 msgid "The size of the target map is different from the current map"
-msgstr ""
+msgstr "目标地图尺寸与当前地图不同"
 
 #: src/editor2/editor_palettes.cpp:522
 msgid "FG"
@@ -300,13 +304,12 @@ msgid "BG"
 msgstr "后置地形"
 
 #: src/editor2/mouse_action.cpp:382
-#, fuzzy
 msgid "(Player)^None"
-msgstr "玩家"
+msgstr "(玩家)"
 
 #: src/editor2/mouse_action.cpp:389
 msgid "Choose player"
-msgstr ""
+msgstr "选择玩家"
 
 #: src/editor2/mouse_action.cpp:390
 msgid ""
@@ -315,10 +318,12 @@ msgid ""
 "the cursor. Pressing a number key by itself will scroll to that player's "
 "starting position."
 msgstr ""
+"哪个玩家在这里开始游戏？使用alt+数字键设置起始点，使用del键清除光标所在位置的"
+"起始点。使用数字键可以跳转到对应的起始点。"
 
 #: src/gui/dialogs/editor_settings.cpp:119
 msgid "Custom setting"
-msgstr ""
+msgstr "自定义设置"
 
 #~ msgid "Settings"
 #~ msgstr "设置"

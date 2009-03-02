@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "POT-Creation-Date: 2009-01-06 22:08+0100\n"
-"PO-Revision-Date: 2007-12-30 03:05+0800\n"
+"PO-Revision-Date: 2009-02-27 15:53-0600\n"
 "Last-Translator: sylecn <sylecn@yahoo.com.cn>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -21,9 +21,9 @@ msgstr "WESNOTH"
 
 # type: TH
 #: ../../doc/man/wesnoth.6:16 ../../doc/man/wesnothd.6:16
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "2009"
-msgstr "2007"
+msgstr "2009"
 
 # type: TH
 #: ../../doc/man/wesnoth.6:16
@@ -107,39 +107,38 @@ msgstr "设置每象素占多少位(BitsPerPixel)。例如：B<--bpp 32>"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:49
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<-c, --campaign>"
-msgstr "B<-d, --daemon>"
+msgstr "B<-c, --campaign>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:52
 msgid "goes directly to the campaign selection menu."
-msgstr ""
+msgstr "直接进入战役选择菜单"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:52
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--config-dir>I<\\ name>"
-msgstr "B<--path>"
+msgstr "B<--config-dir>I<\\ name>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:57
 msgid ""
 "sets the user configuration directory to I<name> under $HOME or \"My "
 "Documents\\eMy Games\" for windows."
-msgstr ""
+msgstr "设置用户数据目录到 I<name> $HOME 或者 我的文档（Windows）下。"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:57
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--config-path>"
-msgstr "B<--path>"
+msgstr "B<--config-path>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:60
-#, fuzzy
 msgid "prints the path of the user configuration directory and exits."
-msgstr "显示游戏数据目录(data directory)并退出"
+msgstr "显示用户数据目录并退出"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:60
@@ -149,19 +148,18 @@ msgstr "B<-d, --debug>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:64
-#, fuzzy
 msgid ""
 "enables additional command mode options in-game (see the wiki page at http://"
 "www.wesnoth.org/wiki/CommandMode for more information about command mode)."
 msgstr ""
-"显示额外的调试信息，使一些附加的命令模式选项可用。关于命令模式(Command Mode)"
-"可以参考wiki: http://www.wesnoth.org/wiki/CommandMode"
+"在游戏中开启附加命令模式选项。关于命令模式(Command Mode)的更多信息请参阅"
+"wiki: http://www.wesnoth.org/wiki/CommandMode"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:64
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--dummy-locales>"
-msgstr "B<--nocache>"
+msgstr "B<--dummy-locales>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:68
@@ -169,17 +167,18 @@ msgid ""
 "use special dummy locales to switch to any language even if that language "
 "isn't installed system-wide."
 msgstr ""
+"使用特殊区域(dummy locales)设置切换到任意语言，即使那种语言不是全局安装的。"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:68
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<-e, --editor>"
-msgstr "B<-t, --test>"
+msgstr "B<-e, --editor>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:71
 msgid "start the in-game map editor directly."
-msgstr ""
+msgstr "启动嵌入式游戏地图编辑器"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:71
@@ -247,9 +246,9 @@ msgstr "显示命令行可用选项，然后退出。"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:93
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<-l,\\ --load>I<\\ file>"
-msgstr "B<--load>I<\\ savegame>"
+msgstr "B<-l,\\ --load>I<\\ file>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:105
@@ -258,6 +257,8 @@ msgid ""
 "e> or B<--editor> option is used as well, starts the editor with the map "
 "from I<file> open."
 msgstr ""
+"从游戏存档目录加载存档 I<file>。如果与 B<-e> 或 B<--editor> 选项同时使用，启"
+"动地图编辑器并打开存档 I<file> 所对应的地图。"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:105 ../../doc/man/wesnothd.6:58
@@ -301,9 +302,9 @@ msgstr "游戏每秒能显示的帧数，可以设为1－1000的数，默认为B
 
 # type: TP
 #: ../../doc/man/wesnoth.6:122
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<-m, --multiplayer>"
-msgstr "B<--multiplayer>"
+msgstr "B<-m, --multiplayer>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:128
@@ -321,7 +322,6 @@ msgstr "B<--no-delay>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:132
-#, fuzzy
 msgid ""
 "runs the game without any delays for graphic benchmarking. This is "
 "automatically enabled by B<--nogui>."
@@ -341,15 +341,14 @@ msgstr "禁止建立游戏数据的缓存"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:135
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--nomusic>"
-msgstr "B<--nogui>"
+msgstr "B<--nomusic>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:138
-#, fuzzy
 msgid "runs the game without music."
-msgstr "以无音乐和音效的方式启动游戏"
+msgstr "启动游戏，并关闭音乐和音效"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:138
@@ -375,25 +374,25 @@ msgstr "显示游戏数据目录(data directory)并退出"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:144
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--python-api>"
-msgstr "B<--path>"
+msgstr "B<--python-api>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:147
 msgid "prints the runtime documentation for the python API."
-msgstr ""
+msgstr "显示PYTHON API的运行时文档。"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:147
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--python-shell>"
-msgstr "B<--path>"
+msgstr "B<--python-shell>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:150
 msgid "invokes wesnoth's embedded python interpreter in interactive mode."
-msgstr ""
+msgstr "开启wesnoth内置的嵌入式python解释器。"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:150
@@ -408,22 +407,22 @@ msgstr "设置屏幕分辨率。例如： B<-r 800x600>"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:154
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--smallgui>"
-msgstr "B<--nogui>"
+msgstr "B<--smallgui>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:157
 msgid ""
 "allows to use screen resolutions down to 800x480 and resizes a few interface "
 "elements."
-msgstr ""
+msgstr "允许屏幕分辨率降低到800x480，并调节一些界面元素的大小。"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:157
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<-s,\\ --server\\ [host]>"
-msgstr "B<-v, --verbose>"
+msgstr "B<-s,\\ --server\\ [host]>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:161
@@ -431,6 +430,8 @@ msgid ""
 "connects to the specified host if any, otherwise connect to the first server "
 "in preferences. Example: B<--server server.wesnoth.org>"
 msgstr ""
+"连接到指定的服务器。如果未指定，则连接到选项中第一个服务器。例如： B<--"
+"server server.wesnoth.org>"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:161
@@ -445,14 +446,14 @@ msgstr "使用一个小的测试场景启动游戏"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:164
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--validcache>"
-msgstr "B<--nocache>"
+msgstr "B<--validcache>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:167
 msgid "assumes that the cache is valid. (dangerous)"
-msgstr ""
+msgstr "总是默认缓存是有效的（valid）。（危险）"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:167
@@ -478,14 +479,14 @@ msgstr "使用窗口模式进入游戏"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:173
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--with-replay>"
-msgstr "B<--no-delay>"
+msgstr "B<--with-replay>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:178
 msgid "replays the game loaded with the B<--load> option."
-msgstr ""
+msgstr "通过和 B<--load> 选项一起使用，播放游戏录像。"
 
 # type: SH
 #: ../../doc/man/wesnoth.6:179
@@ -756,15 +757,13 @@ msgstr "B<wesnothd> B<-V>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:44
-#, fuzzy
 msgid ""
 "Manages Battle for Wesnoth multiplayer games. See http://www.wesnoth.org/"
 "wiki/ServerAdministration on what commands the server accepts via the "
 "wesnoth client (/query ...) or the fifo."
 msgstr ""
-"管理韦诺之战多人游戏。 查看官方wiki上的ServerAdministration页获取更多可以通过"
-"wesnoth客户端或者socket在服务器上运行的命令。对应wiki: http://www.wesnoth."
-"org/wiki/ServerAdministration"
+"管理韦诺之战多人游戏。查看http://www.wesnoth.org/wiki/ServerAdministration 获"
+"取服务器接受的命令列表。客户端使用/query 或 fifo 会显示这一列表。"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:47
@@ -917,7 +916,7 @@ msgstr "Global keys:"
 #: ../../doc/man/wesnothd.6:110
 #, no-wrap
 msgid "B<ban_save_file>"
-msgstr ""
+msgstr "B<ban_save_file>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:114
@@ -925,6 +924,8 @@ msgid ""
 "Full or relative path to a (gzip compressed) file that the server can read "
 "and write.  Bans will be saved to this file and read again on server start."
 msgstr ""
+"一个服务器可读可写的（经gzip压缩的）文件的完整路径或相对路径。封禁信息会自动"
+"保存在这个文件，并在服务器重启时读取。"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:114
@@ -934,11 +935,10 @@ msgstr "B<connections_allowed>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:117
-#, fuzzy
 msgid ""
 "The number of allowed connections from the same IP. B<0> means infinite. "
 "(default: B<5>)"
-msgstr "同一IP允许的连接数。(默认值：B<5>)"
+msgstr "同一IP允许的连接数。B<0> 表示无限制。(默认值：B<5>)"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:117
@@ -960,9 +960,9 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnothd.6:124
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<fifo_path>"
-msgstr "B<--path>"
+msgstr "B<fifo_path>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:128
@@ -971,6 +971,8 @@ msgid ""
 "from wesnoth).  If not specified defaults to the compile-time specified path "
 "(default: /var/run/socket/wesnothd/socket)."
 msgstr ""
+"你能通过调用服务器命令的fifo路径（与在客户端中使用 /query 功能相同）。如果不"
+"指定，则默认为编译时指定的路径(默认：/var/run/socket/wesnothd/socket)."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:128
@@ -1024,7 +1026,7 @@ msgstr "获取管理员权限的密码。通常以`admin '开头。"
 #: ../../doc/man/wesnothd.6:140
 #, no-wrap
 msgid "B<restart_command>"
-msgstr ""
+msgstr "B<restart_command>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:143
@@ -1032,6 +1034,7 @@ msgid ""
 "The command that the server uses to start a new server process via the "
 "`restart' command. (Can only be issued via the fifo.)"
 msgstr ""
+"这是服务器使用`restart'命令开启新进程时使用的命令。（只能通过fifo来调用。）"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:143
@@ -1107,24 +1110,24 @@ msgstr "用逗号分隔的需要重定向的版本号列表。同样可以使用
 msgid ""
 "B<[ban_time]> A tag to define convenient keywords for temporary ban time "
 "lengths."
-msgstr ""
+msgstr "B<[ban_time]> 这个标签定义一些常用的封禁时间长度的关键字。"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:172
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<name>"
-msgstr "B<--nocache>"
+msgstr "B<name>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:175
 msgid "The name used to reference the ban time."
-msgstr ""
+msgstr "给封禁时间起一个名字"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:175
 #, no-wrap
 msgid "B<time>"
-msgstr ""
+msgstr "B<time>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:181
@@ -1135,10 +1138,12 @@ msgid ""
 "Example: time=\"1D12h30m\" results in a ban time of 1 day, 12 hours and 30 "
 "minutes."
 msgstr ""
+"时间长度定义。 格式为：%d[%s[%d%s[...]]] 其中%s是s（秒），m（分钟），h（小"
+"时），D（天），M（月），Y（年），%d是一个数字。如果不指定时间单位，默认为分钟"
+"（m）例如：time=\"1D12h30m\"结果是1天+12小时+30分钟的封禁。"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:187
-#, fuzzy
 msgid ""
 "B<[proxy]> A tag to tell the server to act as a proxy and forward the "
 "connected client's requests to the specified server.  Accepts the same keys "

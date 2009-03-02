@@ -1,0 +1,201 @@
+.\" This program is free software; you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation; either version 2 of the License, or
+.\" (at your option) any later version.
+.\"
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program; if not, write to the Free Software
+.\" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+.\"
+.
+.\"*******************************************************************
+.\"
+.\" This file was generated with po4a. Translate the source file.
+.\"
+.\"*******************************************************************
+.TH WESNOTH 6 2009 wesnoth 韦诺之战
+.
+.SH 命名
+wesnoth \- 韦诺之战，一个非常好的回合制策略游戏
+.
+.SH 摘要
+.
+\fBwesnoth\fP [\fIOPTIONS\fP] [\fIPATH_TO_DATA\fP]
+.
+.SH 描述
+.
+韦诺之战(\fBWesnoth\fP)是一个非常好的回合制策略游戏。
+
+用精心挑选的部队打败所有的敌人首领。管理好你的资源和村庄。 所有单位都有自己的长处和短处；要取得胜利，必须发挥出你的部队的优势，
+同时阻止你的对手这么做。 随着单位获得经验，他们会学会新的技能，变得更强大。
+游戏特性：使用本地语言进行游戏。通过与电脑AI进行对抗提高自己的技能，当然也可以进入Wesnoth网上对战的大家庭。你还可以创建自己的单位，关卡和战役，并与所有wesnoth玩家分享。
+.
+.SH 选项
+.
+.TP 
+\fB\-\-bpp\fP\fI\ number\fP
+设置每象素占多少位(BitsPerPixel)。例如：\fB\-\-bpp 32\fP
+.TP 
+\fB\-c, \-\-campaign\fP
+直接进入战役选择菜单
+.TP 
+\fB\-\-config\-dir\fP\fI\ name\fP
+设置用户数据目录到 \fIname\fP $HOME 或者 我的文档（Windows）下。
+.TP 
+\fB\-\-config\-path\fP
+显示用户数据目录并退出
+.TP 
+\fB\-d, \-\-debug\fP
+在游戏中开启附加命令模式选项。关于命令模式(Command Mode)的更多信息请参阅wiki:
+http://www.wesnoth.org/wiki/CommandMode
+.TP 
+\fB\-\-dummy\-locales\fP
+使用特殊区域(dummy locales)设置切换到任意语言，即使那种语言不是全局安装的。
+.TP 
+\fB\-e, \-\-editor\fP
+启动嵌入式游戏地图编辑器
+.TP 
+\fB\-\-fps\fP
+在屏幕一角显示游戏fps(frames per second)
+.TP 
+\fB\-f, \-\-fullscreen\fP
+使用全屏模式进入游戏
+.TP 
+\fB\-\-gunzip\fP\fI\ infile.gz\fP
+解压缩本应为gzip格式的文件，并保存为去掉 .gz 后缀的同名文件。文件\fIinfile.gz\fP将被删除。
+.TP 
+\fB\-\-gzip\fP\fI\ infile\fP
+用gzip格式压缩文件，文件名为\fIinfile\fP.gz，并删除\fIinfile\fP。
+.TP 
+\fB\-h, \-\-help\fP
+显示命令行可用选项，然后退出。
+.TP 
+\fB\-l,\ \-\-load\fP\fI\ file\fP
+从游戏存档目录加载存档 \fIfile\fP。如果与 \fB\-e\fP 或 \fB\-\-editor\fP 选项同时使用，启动地图编辑器并打开存档 \fIfile\fP
+所对应的地图。
+.TP 
+\fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIdomain1\fP\fB,\fP\fIdomain2\fP\fB,\fP\fI...\fP
+设置debug的级别.\fBall\fP用来匹配任意bebug级别。可选的级别有：\fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\
+\fBdebug\fP. 默认的级别是\fBerror\fP。
+.TP 
+\fB\-\-logdomains\fP
+导出所有日志清单并退出
+.TP 
+\fB\-\-max\-fps\fP
+游戏每秒能显示的帧数，可以设为1－1000的数，默认为\fB50\fP。
+.TP 
+\fB\-m, \-\-multiplayer\fP
+启动一个多人游戏。关于多人游戏下面有更多选项可以与\fB\-\-multiplayer\fP一起使用。
+.TP 
+\fB\-\-no\-delay\fP
+不等待图形基准测试，直接启动游戏。使用 \fB\-\-nogui\fP 选项时会自动启用本选项。
+.TP 
+\fB\-\-nocache\fP
+禁止建立游戏数据的缓存
+.TP 
+\fB\-\-nomusic\fP
+启动游戏，并关闭音乐和音效
+.TP 
+\fB\-\-nosound\fP
+以无音乐和音效的方式启动游戏
+.TP 
+\fB\-\-path\fP
+显示游戏数据目录(data directory)并退出
+.TP 
+\fB\-\-python\-api\fP
+显示PYTHON API的运行时文档。
+.TP 
+\fB\-\-python\-shell\fP
+开启wesnoth内置的嵌入式python解释器。
+.TP 
+\fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\ \fP\fIX\fP\fBx\fP\fIY\fP
+设置屏幕分辨率。例如： \fB\-r 800x600\fP
+.TP 
+\fB\-\-smallgui\fP
+允许屏幕分辨率降低到800x480，并调节一些界面元素的大小。
+.TP 
+\fB\-s,\ \-\-server\ [host]\fP
+连接到指定的服务器。如果未指定，则连接到选项中第一个服务器。例如： \fB\-\-server server.wesnoth.org\fP
+.TP 
+\fB\-t, \-\-test\fP
+使用一个小的测试场景启动游戏
+.TP 
+\fB\-\-validcache\fP
+总是默认缓存是有效的（valid）。（危险）
+.TP 
+\fB\-v, \-\-version\fP
+显示版本号并退出
+.TP 
+\fB\-w, \-\-windowed\fP
+使用窗口模式进入游戏
+.TP 
+\fB\-\-with\-replay\fP
+通过和 \fB\-\-load\fP 选项一起使用，播放游戏录像。
+.
+.SH \-\-multiplayer的额外选项
+.
+多人游戏里面选择一个阵营，可以使用标记\fInumber\fP。 \fInumber\fP 要用代表某个阵营的数字替换。一般是1
+或者2。不过不同的场景可选的阵营数会有不同。具体的取决于你所玩的场景。
+.TP 
+\fB\-\-algorithm\fP\fInumber\fP\fB=\fP\fIvalue\fP
+为这一阵营选择一个非标准的AI算法。可选值有：\fBidle_ai\fP 和 \fBsample_ai\fP.
+.TP  
+\fB\-\-controller\fP\fInumber\fP\fB=\fP\fIvalue\fP
+选择这一阵营的控制者。可选值有：\fBhuman\fP和\fBai\fP。
+.TP  
+\fB\-\-era=\fP\fIvalue\fP
+使用这个选项选择一个模式来代替\fB默认\fP模式。所选模式由id决定。模式在\fBdata/multiplayer/eras.cfg\fP文件中描述。
+.TP 
+\fB\-\-exit\-at\-end\fP
+当场景结束时直接退出而不显示胜利/失败对话框。这个选项也可以用来进行脚本基准测试。
+.TP 
+\fB\-\-nogui\fP
+启动游戏，但不启用图形用户界面(GUI)。此选项必须在\fB\-\-multiplayer\fP之前使用才有效。
+.TP 
+\fB\-\-parm\fP\fInumber\fP\fB=\fP\fIname\fP\fB:\fP\fIvalue\fP
+为这个阵营设置附加选项。这个参数依赖于用于\fB\-\-controller\fP和\fB\-\-algorithm\fP的选项。这个选项只对设计AI的人比较有用。(目前还没有相应的文档)
+.TP 
+\fB\-\-scenario=\fP\fIvalue\fP
+通过id选择多人游戏地图。默认地图是\fBmultiplayer_The_Freelands\fP。
+.TP 
+\fB\-\-side\fP\fInumber\fP\fB=\fP\fIvalue\fP
+为当前阵营选择模式中的一个派别。所选派别由id决定。派别在文件data/multiplayer.cfg文件中描述。
+.TP 
+\fB\-\-turns=\fP\fIvalue\fP
+设置所选场景的回合数限制。默认值为\fB50\fP。
+.TP 
+用来测试你自己写的AI和默认AI的例子，不开启图形界面(GUI)。
+\fBwesnoth \-\-nogui \-\-multiplayer \-\-controller1=ai \-\-controller2=ai
+\-\-algorithm2=python_ai \-\-parm2=python_script:py/my_own_python_ai.py\fPwesnoth
+\-\-nogui \-\-multiplayer \-\-controller1=ai \-\-controller2=ai
+\-\-algorithm2=python_ai \-\-parm2=python_script:py/my_own_python_ai.py
+.
+.SH 作者
+.
+由David White <davidnwhite@verizon.net>编写
+.br
+经Nils Kneuper <crazy\-ivanovic@gmx.net>, ott <ott@gaon.net>
+and Soliton <soliton.de@gmail.com>改动。
+.br
+这个帮助页最早由 Cyril Bouthors 撰写<cyril@bouthors.org>.
+.br
+访问官方网站: http://www.wesnoth.org/
+.
+.SH COPYRIGHT
+.
+Copyright \(co 2003\-2007 David White <davidnwhite@verizon.net>
+.br
+这是一个自由软件；使用由FSF发布的GPL v2协议授权。原文如下：This is Free Software; this software is
+licensed under the GPL version 2, as published by the Free Software
+Foundation.  There is NO warranty; not even for MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.There is NO warranty; not even for MERCHANTABILITY
+or FITNESS FOR A PARTICULAR PURPOSE.
+.
+.SH 参见
+.
+\fBwesnoth_editor\fP(6), \fBwesnothd\fP(6)

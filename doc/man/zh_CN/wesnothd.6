@@ -33,9 +33,8 @@ wesnothd \- 韦诺之战 \fBWesnoth\fP 多人游戏服务器
 .
 .SH 描述
 .
-Manages Battle for Wesnoth multiplayer games. See
-http://www.wesnoth.org/wiki/ServerAdministration on what commands the server
-accepts via the wesnoth client (/query ...) or the fifo.
+管理韦诺之战多人游戏。查看http://www.wesnoth.org/wiki/ServerAdministration
+获取服务器接受的命令列表。客户端使用/query 或 fifo 会显示这一列表。
 .
 .SH 选项
 .
@@ -85,21 +84,18 @@ key="\fIvalue\fP,\fIvalue\fP,..."
 .
 .TP 
 \fBban_save_file\fP
-Full or relative path to a (gzip compressed) file that the server can read
-and write.  Bans will be saved to this file and read again on server start.
+一个服务器可读可写的（经gzip压缩的）文件的完整路径或相对路径。封禁信息会自动保存在这个文件，并在服务器重启时读取。
 .TP 
 \fBconnections_allowed\fP
-The number of allowed connections from the same IP. \fB0\fP means
-infinite. (default: \fB5\fP)
+同一IP允许的连接数。\fB0\fP 表示无限制。(默认值：\fB5\fP)
 .TP 
 \fBdisallow_names\fP
 服务器不允许使用的用户名/昵称。可以使用`*'和`?'通配符来定义。更多信息请查看 \fBglob\fP(7) 。默认值(如果用户没有指定则自动使用)是：
 \fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
 .TP 
 \fBfifo_path\fP
-The path to the fifo you can echo server commands into (same as /query
-\&... from wesnoth).  If not specified defaults to the compile\-time specified
-path (default: /var/run/socket/wesnothd/socket).
+你能通过调用服务器命令的fifo路径（与在客户端中使用 /query
+功能相同）。如果不指定，则默认为编译时指定的路径(默认：/var/run/socket/wesnothd/socket).
 .TP 
 \fBmax_messages\fP
 \fBmessages_time_period\fP中允许存在的消息数。 (默认值: \fB4\fP)
@@ -114,8 +110,7 @@ path (default: /var/run/socket/wesnothd/socket).
 获取管理员权限的密码。通常以`admin '开头。
 .TP 
 \fBrestart_command\fP
-The command that the server uses to start a new server process via the
-`restart' command. (Can only be issued via the fifo.)
+这是服务器使用`restart'命令开启新进程时使用的命令。（只能通过fifo来调用。）
 .TP 
 \fBversions_accepted\fP
 用逗号分隔的服务器接受的版本号列表。支持`*'和`?'通配符。（默认为(与服务器)一致的wesnoth版本）
@@ -138,24 +133,18 @@ The command that the server uses to start a new server process via the
 用逗号分隔的需要重定向的版本号列表。同样可以使用`*'和`?'通配符。
 .RE
 .P
-\fB[ban_time]\fP A tag to define convenient keywords for temporary ban time
-lengths.
+\fB[ban_time]\fP 这个标签定义一些常用的封禁时间长度的关键字。
 .RS
 .TP 
 \fBname\fP
-The name used to reference the ban time.
+给封禁时间起一个名字
 .TP 
 \fBtime\fP
-The time length definition.  The format is: %d[%s[%d%s[...]]] where %s is s
-(seconds), m (minutes), h (hours), D (days), M (months) or Y (years) and %d
-is a number.  If no time modifier is given minutes (m) are assumed.
-Example: time="1D12h30m" results in a ban time of 1 day, 12 hours and 30
-minutes.
+时间长度定义。 格式为：%d[%s[%d%s[...]]]
+其中%s是s（秒），m（分钟），h（小时），D（天），M（月），Y（年），%d是一个数字。如果不指定时间单位，默认为分钟（m）例如：time="1D12h30m"结果是1天+12小时+30分钟的封禁。
 .RE
 .P
-\fB[proxy]\fP A tag to tell the server to act as a proxy and forward the
-connected client's requests to the specified server.  Accepts the same keys
-as \fB[redirect]\fP.
+\fB[proxy]\fP 这个标签告诉服务器扮演代理服务器角色，把用户连接重定向到另一台服务器。与\fB[redirect]\fP接受一样的参数。
 .
 .SH 作者
 .
