@@ -979,40 +979,40 @@ const std::vector<std::string>& get_binary_paths(const std::string& type)
 
 std::string get_binary_file_location(const std::string& type, const std::string& filename)
 {
-	DBG_FS << "Looking for " << filename << "\n";
+	LOG_FS << "Looking for '" << filename << "'.\n";
 
 	if (filename.empty()) {
-		DBG_FS << "  invalid filename ( type: " << type <<")\n";
+		LOG_FS << "  invalid filename (type: " << type <<")\n";
 		return std::string();
 	}
 
 	foreach (const std::string &path, get_binary_paths(type))
 	{
 		const std::string file = path + filename;
-		DBG_FS << "  Checking " << path << "\n";
+		DBG_FS << "  checking '" << path << "'\n";
 		if(file_exists(file)) {
-			DBG_FS << "  Found at " << file << "\n";
+			LOG_FS << "  found at '" << file << "'\n";
 			return file;
 		}
 	}
 
-	DBG_FS << "  not found.\n";
+	LOG_FS << "  not found\n";
 	return std::string();
 }
 
 std::string get_wml_location(const std::string &filename, const std::string &current_dir)
 {
-	LOG_FS << "Looking for " << filename << "\n";
+	LOG_FS << "Looking for '" << filename << "'.\n";
 
 	std::string result;
 
 	if (filename.empty()) {
-		DBG_FS << "  invalid filename\n";
+		LOG_FS << "  invalid filename\n";
 		return result;
 	}
 
 	if (filename.find("..") != std::string::npos) {
-		ERR_FS << "Illegal path '" << filename << "' found (\"..\" not allowed).\n";
+		ERR_FS << "Illegal path '" << filename << "' (\"..\" not allowed).\n";
 		return result;
 	}
 
@@ -1022,7 +1022,7 @@ std::string get_wml_location(const std::string &filename, const std::string &cur
 	{
 		// If the filename starts with '~' or '@', look in the user data directory.
 		result = get_user_data_dir() + "/data/" + filename.substr(1);
-		LOG_FS << "got relative name '" << filename << "' -> '" << result << "'\n";
+		DBG_FS << "  trying '" << result << "'\n";
 
 		already_found = file_exists(result) || is_directory(result);
 
@@ -1039,10 +1039,12 @@ std::string get_wml_location(const std::string &filename, const std::string &cur
 	else if (!game_config::path.empty())
 		result = game_config::path + "/data/" + filename;
 
+	DBG_FS << "  trying '" << result << "'\n";
+
 	if (result.empty() ||
 	    (!already_found && !file_exists(result) && !is_directory(result)))
 	{
-		LOG_FS << "  not found.\n";
+		LOG_FS << "  not found\n";
 		result.clear();
 	}
 	else
