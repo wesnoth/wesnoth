@@ -209,6 +209,12 @@ const std::vector<std::string>& get_binary_paths(const std::string& type);
 std::string get_binary_file_location(const std::string& type, const std::string& filename);
 
 /**
+ * Returns a complete path to the actual directory of a given @a type
+ * or an empty string if the directory isn't present.
+ */
+std::string get_binary_dir_location(const std::string &type, const std::string &filename);
+
+/**
  * Returns a complete path to the actual WML file or directory
  * or an empty string if the file isn't present.
  */

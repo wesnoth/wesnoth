@@ -1008,6 +1008,29 @@ std::string get_binary_file_location(const std::string& type, const std::string&
 	return std::string();
 }
 
+std::string get_binary_dir_location(const std::string &type, const std::string &filename)
+{
+	LOG_FS << "Looking for '" << filename << "'.\n";
+
+	if (filename.empty()) {
+		LOG_FS << "  invalid filename (type: " << type <<")\n";
+		return std::string();
+	}
+
+	foreach (const std::string &path, get_binary_paths(type))
+	{
+		const std::string file = path + filename;
+		DBG_FS << "  checking '" << path << "'\n";
+		if (is_directory(file)) {
+			LOG_FS << "  found at '" << file << "'\n";
+			return file;
+		}
+	}
+
+	LOG_FS << "  not found\n";
+	return std::string();
+}
+
 std::string get_wml_location(const std::string &filename, const std::string &current_dir)
 {
 	LOG_FS << "Looking for '" << filename << "'.\n";
