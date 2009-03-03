@@ -962,8 +962,6 @@ const std::vector<std::string>& get_binary_paths(const std::string& type)
 		if(!game_config::path.empty()) {
 			res.push_back(game_config::path + "/" + *i + type + "/");
 		}
-
-		res.push_back(*i + type + "/");
 	}
 
 	// not found in "/type" directory, try main directory
@@ -971,8 +969,6 @@ const std::vector<std::string>& get_binary_paths(const std::string& type)
 
 	if(!game_config::path.empty())
 		res.push_back(game_config::path+"/");
-
-	res.push_back("");
 
 	return res;
 }
