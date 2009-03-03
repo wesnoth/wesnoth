@@ -109,15 +109,14 @@ void load_settings()
 
 	// Read file.
 	config cfg;
-	const std::string& filename = "data/gui/default.cfg";
 	try {
 		preproc_map preproc(
 				game_config::config_cache::instance().get_preproc_map());
-		scoped_istream stream = preprocess_file(filename, &preproc);
+		scoped_istream stream = preprocess_file(get_wml_location("gui/default.cfg"), &preproc);
 
 		read(cfg, *stream);
 	} catch(config::error&) {
-		ERR_G_P << "Setting: could not read file '" << filename << "'.\n";
+		ERR_G_P << "Setting: could not read file 'data/gui/default.cfg'.\n";
 	}
 
 	// Parse guis

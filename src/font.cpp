@@ -1258,7 +1258,7 @@ bool load_font_config()
 	//config when changing languages
 	config cfg;
 	try {
-		scoped_istream stream = preprocess_file("data/hardwired/fonts.cfg");
+		scoped_istream stream = preprocess_file(get_wml_location("hardwired/fonts.cfg"));
 		read(cfg, *stream);
 	} catch(config::error &e) {
 		ERR_FT << "could not read fonts.cfg:\n"

@@ -136,7 +136,7 @@ static void read_tips_of_day(config& tips_of_day)
 	tips_of_day.clear();
 	LOG_CONFIG << "Loading tips of day\n";
 	try {
-		scoped_istream stream = preprocess_file("data/hardwired/tips.cfg");
+		scoped_istream stream = preprocess_file(get_wml_location("hardwired/tips.cfg"));
 		read(tips_of_day, *stream);
 	} catch(config::error&) {
 		ERR_CONFIG << "Could not read data/hardwired/tips.cfg\n";

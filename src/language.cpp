@@ -152,7 +152,7 @@ bool load_language_list()
 {
 	config cfg;
 	try {
-		scoped_istream stream = preprocess_file("data/hardwired/language.cfg");
+		scoped_istream stream = preprocess_file(get_wml_location("hardwired/language.cfg"));
 		read(cfg, *stream);
 	} catch(config::error &) {
 		return false;
@@ -314,7 +314,7 @@ bool set_language(const language_def& locale)
 
 	// fill string_table (should be moved somwhere else some day)
 	try {
-		scoped_istream stream = preprocess_file("data/hardwired/english.cfg");
+		scoped_istream stream = preprocess_file(get_wml_location("hardwired/english.cfg"));
 		read(cfg, *stream);
 	} catch(config::error& e) {
 		std::cerr << "Could not read english.cfg\n";

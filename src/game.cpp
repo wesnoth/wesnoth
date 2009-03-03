@@ -1251,7 +1251,7 @@ void game_controller::start_wesnothd()
 	if (!file_exists(config))
 	{
 		// copy file if it isn't created yet
-		write_file(config, read_file("data/lan_server.cfg"));
+		write_file(config, read_file(get_wml_location("lan_server.cfg")));
 	}
 	for (path_store::iterator iname = paths_to_try.begin();
 			iname != paths_to_try.end(); ++iname)
