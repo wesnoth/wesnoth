@@ -166,6 +166,11 @@ std::string file_name(const std::string& file);
 std::string directory_name(const std::string& file);
 
 /**
+ * Returns the absolute path of a file.
+ */
+std::string normalize_path(const std::string &path);
+
+/**
  *  The paths manager is responsible for recording the various paths
  *  that binary files may be located at.
  *  It should be passed a config object which holds binary path information.
