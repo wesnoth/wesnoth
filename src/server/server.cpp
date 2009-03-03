@@ -1722,10 +1722,9 @@ void server::delete_game(std::vector<wesnothd::game*>::iterator game_it) {
 
 	// Send a diff of the gamelist with the game deleted to players in the lobby
 	simple_wml::document diff;
-	bool send_diff = false;
 	if(make_delete_diff(*gamelist, "gamelist", "game",
 	                    (*game_it)->description(), diff)) {
-		send_diff = true;
+		lobby_.send_data(diff);
 	}
 
 	// Delete the game from the games_and_users_list_.
@@ -1748,17 +1747,15 @@ void server::delete_game(std::vector<wesnothd::game*>::iterator game_it) {
 		const wesnothd::player_map::iterator pl = players_.find(*user);
 		if (pl != players_.end()) {
 			pl->second.mark_available();
+			simple_wml::document udiff;
 			if (make_change_diff(games_and_users_list_.root(), NULL,
-					     "user", pl->second.config_address(), diff)) {
-				send_diff = true;
+					     "user", pl->second.config_address(), udiff)) {
+				lobby_.send_data(udiff);
 			}
 		} else {
 			ERR_SERVER << "ERROR: delete_game(): Could not find user in players_. (socket: "
 				<< *user << ")\n";
 		}
-	}
-	if (send_diff) {
-		lobby_.send_data(diff,0,"lobby_delete_g");
 	}
 
 	//send users in the game a notification to leave the game since it has ended
