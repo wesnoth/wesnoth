@@ -525,7 +525,8 @@ void ui::process_message(const config& msg, const bool whisper) {
 	} else if (sender == "server") {
 		sound::play_UI_sound(game_config::sounds::receive_message_server);
 	} else {
-		sound::play_UI_sound(game_config::sounds::receive_message);
+		// too annoying and probably not any helpful
+		//sound::play_UI_sound(game_config::sounds::receive_message);
 	}
 	chat_.add_message(time(NULL), (whisper ? "whisper: " : "") + msg["sender"],
 			msg["message"]);
