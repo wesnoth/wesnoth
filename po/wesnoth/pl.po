@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-03-01 21:23+0100\n"
-"PO-Revision-Date: 2009-02-20 20:24+0100\n"
+"PO-Revision-Date: 2009-03-03 20:32+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team:  <z.banach@wsisiz.edu.pl>\n"
 "MIME-Version: 1.0\n"
@@ -39,7 +39,7 @@ msgstr "Przewijanie środkowym przyciskiem myszy"
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:70
 msgid "Keep scrolling when mouse leaves window"
-msgstr ""
+msgstr "Przewijaj dalej, gdy kursor myszy opuści okno"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:77
@@ -2025,15 +2025,15 @@ msgstr ""
 
 #. [topic]: id=traits_dim
 #: data/core/help.cfg:440
-#, fuzzy
 msgid "Dim"
-msgstr "tępy"
+msgstr "Tępy"
 
 #. [topic]: id=traits_dim
 #: data/core/help.cfg:441
 msgid ""
 "Units with trait Dim suffer a 20% increase in experience required to advance."
 msgstr ""
+"Jednostki z cechą Tępy wymagają o 20% więcej doświadczenia, by awansować."
 
 #. [topic]: id=traits_dim
 #: data/core/help.cfg:443
@@ -2043,20 +2043,21 @@ msgid ""
 "Dim is a trait all too common in goblins and other lesser species. There are "
 "reasons these species are lesser, and this is one of them."
 msgstr ""
+"\n"
+"\n"
+"Tępota jest cechą pospolitą wśród goblinów i innych niższych ras. Bez "
+"przesady można powiedzieć, że gatunki te są niższe między innymi za sprawą "
+"tej cechy."
 
 #. [topic]: id=traits_slow
 #: data/core/help.cfg:448
-#, fuzzy
 msgid "Slow"
-msgstr "Spowolniony"
+msgstr "Powolny"
 
 #. [topic]: id=traits_slow
 #: data/core/help.cfg:449
-#, fuzzy
 msgid "Slow units have -1 movement but 5% more hitpoints."
-msgstr ""
-"Szybkie jednostki mają 1 dodatkowy punkt ruchu, ale 5% mniej PŻ niż "
-"normalnie."
+msgstr "Powolne jednostki mają o 1 punkt ruchu mniej, ale o 5% więcej PŻ."
 
 #. [topic]: id=traits_slow
 #: data/core/help.cfg:451
@@ -2067,17 +2068,22 @@ msgid ""
 "a movement penalty but are compensated for it with a slight increase in "
 "endurance."
 msgstr ""
+"\n"
+"\n"
+"Wyjątkowo zwaliste i niezdarne jednostki spośród goblinów i innych ras mają "
+"zwiększone koszty ruchu, ale za to nieznacznie większą wytrzymałość."
 
 #. [topic]: id=traits_weak
 #: data/core/help.cfg:456
-#, fuzzy
 msgid "Weak"
-msgstr "słaby"
+msgstr "Słaby"
 
 #. [topic]: id=traits_weak
 #: data/core/help.cfg:457
 msgid "Units with trait Weak get a -1 increment in hitpoints and melee damage."
 msgstr ""
+"Jednostki z cechą słaba mają o 1 PŻ mniej i odnoszą o 1 punkt większe "
+"obrażenia w walce wręcz."
 
 #. [topic]: id=..terrains
 #: data/core/help.cfg:465
