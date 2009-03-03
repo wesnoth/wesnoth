@@ -215,7 +215,8 @@ std::string get_binary_file_location(const std::string& type, const std::string&
  * Returns a complete path to the actual WML file or directory
  * or an empty string if the file isn't present.
  */
-std::string get_wml_location(const std::string &filename, const std::string &current_dir);
+std::string get_wml_location(const std::string &filename,
+	const std::string &current_dir = std::string());
 
 class scoped_istream {
 	std::istream *stream;
