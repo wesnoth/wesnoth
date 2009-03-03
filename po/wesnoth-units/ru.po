@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: wesnoth.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-03-01 21:23+0100\n"
-"PO-Revision-Date: 2009-02-21 02:04+0300\n"
+"PO-Revision-Date: 2009-03-03 22:43+0300\n"
 "Last-Translator: Victor Sergienko <singalen@gmail.com>\n"
 "Language-Team:  <ru@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -61,9 +61,8 @@ msgstr "клыки"
 
 #. [unit_type]: id=Dread Bat, race=bats
 #: data/core/units/bats/Bat_Dread.cfg:4
-#, fuzzy
 msgid "Dread Bat"
-msgstr "Вампир мышь"
+msgstr "Крыло ужаса"
 
 #. [unit_type]: id=Dread Bat, race=bats
 #: data/core/units/bats/Bat_Dread.cfg:25
@@ -73,6 +72,9 @@ msgid ""
 "began the battle. Bloated with blood they have grown to a huge size and can "
 "feast on bigger and tougher victims."
 msgstr ""
+"Крылья Ужаса быстры, и они питаются кровью своих врагов, восполняя тем самым "
+"своё здоровье. Раздувшись от выпитой крови, они вырастают до огромных "
+"размеров и могут выбирать в жертвы более сильных бойцов."
 
 #. [unit_type]: id=Vampire Bat, race=bats
 #: data/core/units/bats/Bat_Vampire.cfg:4
@@ -122,15 +124,13 @@ msgstr "Пиратский галеон"
 
 #. [unit_type]: id=Pirate Galleon, race=mechanical
 #: data/core/units/boats/Pirate_Galleon.cfg:18
-#, fuzzy
 msgid ""
 "Pirate galleons are to transport ships what wolves are to sheep. The pirates "
 "who crew them are more than happy to help relieve other ships of their "
 "weighty cargo."
 msgstr ""
-"Пиратские галеоны для транспортных кораблей — что волк среди овец. Суда, "
-"полные товаров, не должен плыть одни далеко, лучше слегка помочь им "
-"уберечься от затопления тяжелым грузом..."
+"Пиратский галеон для транспортных кораблей — как волк среди овец. Пираты с "
+"них всегда будут рады помочь другим судам избавиться от тяжёлого груза!"
 
 #. [attack]: type=pierce
 #: data/core/units/boats/Transport_Galleon.cfg:22
@@ -643,7 +643,6 @@ msgstr "Гном драконий страж"
 
 #. [unit_type]: id=Dwarvish Dragonguard, race=dwarf
 #: data/core/units/dwarves/Dragonguard.cfg:21
-#, fuzzy
 msgid ""
 "It is not clear why the Dragonguards are called what they are, a name given "
 "by their dwarven brethren. Some speculate that the name comes from their "
@@ -656,11 +655,12 @@ msgid ""
 msgstr ""
 "Неизвестно, почему этих гномов назвали драконими стражами (Dwarvish "
 "Dragonguard) — такое название было дано их собратьями. Подумав, можно "
-"предположить, такое имя ему дали из-за выбранного ими оружия — странного "
+"предположить, что такое имя определено выбранным ими оружием — странного "
 "предмета, извергающего огонь и смерть. Также есть подозрение, что его оружие "
-"будет настоящей угрозой и для настоящего Дракона. Как бы то ни было, именно "
-"с этим оружием они охраняют великие цитадели гномов; это оружие повергло "
-"многих великих воинов с одного выстрела."
+"будет настоящей угрозой и для настоящего Дракона, если таковой вдруг "
+"обнаружится в известном мире. Как бы то ни было, именно с этим оружием они "
+"охраняют великие цитадели гномов; это оружие повергло многих великих воинов "
+"с одного выстрела."
 
 #. [attack]: type=blade
 #: data/core/units/orcs/Archer.cfg:71 data/core/units/orcs/Assassin.cfg:26
@@ -805,9 +805,8 @@ msgstr "рунический молот"
 
 #. [attack]: type=fire
 #: data/core/units/dwarves/Runemaster.cfg:34
-#, fuzzy
 msgid "lightning bolt"
-msgstr "Удар молнии"
+msgstr "удар молнии"
 
 #. [unit_type]: id=Dwarvish Sentinel, race=dwarf
 #: data/core/units/dwarves/Sentinel.cfg:4
@@ -868,7 +867,6 @@ msgstr "Гном громовержец"
 
 #. [unit_type]: id=Dwarvish Thunderer, race=dwarf
 #: data/core/units/dwarves/Thunderer.cfg:20
-#, fuzzy
 msgid ""
 "When the men of Wesnoth first encountered the dwarves, they were mystified "
 "by the power of the Dwarvish Thunderers, who were able to hurl death from "
@@ -876,10 +874,10 @@ msgid ""
 "The deafening noise of these 'thundersticks' is terrifying to behold, and is "
 "made more so by the secrecy which dwarves wrap about their workings."
 msgstr ""
-"Когда люди Веснота встретили гномов, то те произвели страшное впечатление "
-"мощью своих Громовержцев (Dwarvish Thunderer), способных убивать издали с "
-"помощью странных палок, носимых ими в бою. Оглушающий шум этих  \"громовых "
-"тростей\" вызывает ужас, а принцип их работы окружён тайной."
+"Когда люди Веснота встретили гномов, те произвели страшное впечатление мощью "
+"своих Громовержцев (Dwarvish Thunderer), способных в бою убивать издалека, с "
+"помощью странных палок. Оглушающий шум этих  \"громовых тростей\" вызывает "
+"ужас у слышащих его, а принцип их работы окружён тайной."
 
 #. [attack]: type=pierce
 #: data/core/units/dwarves/Thunderer.cfg:119
@@ -1513,7 +1511,7 @@ msgstr "паутина"
 #. [unit_type]: id=Fog Clearer, race=monster
 #: data/core/units/fake/Fog_Clearer.cfg:7
 msgid "dummy_unit^Fog Clearer"
-msgstr ""
+msgstr "Убирает туман"
 
 #. [unit_type]: id=Direwolf Rider, race=wolf
 #: data/core/units/goblins/Direwolf_Rider.cfg:4
@@ -2025,7 +2023,6 @@ msgstr ""
 #: data/core/units/humans/Loyalist_Duelist.cfg:72
 #: data/core/units/humans/Loyalist_Fencer.cfg:127
 #: data/core/units/humans/Loyalist_Master_at_Arms.cfg:31
-#, fuzzy
 msgid "saber"
 msgstr "сабля"
 
@@ -2544,9 +2541,8 @@ msgstr "Архимаг"
 
 #. [unit_type]: id=Elder Mage, race=human
 #: data/core/units/humans/Mage_Elder.cfg:4
-#, fuzzy
 msgid "Elder Mage"
-msgstr "Серебряный маг"
+msgstr "Древний маг"
 
 #. [unit_type]: id=Elder Mage, race=human
 #: data/core/units/humans/Mage_Elder.cfg:22
@@ -2555,12 +2551,14 @@ msgid ""
 "wearying years of battle. Nevertheless they remain feared on the battlefield "
 "on account of their powerful lightning bolts."
 msgstr ""
+"Достигнув пика своего мугущества много лет назад, Древние Маги с тех пор "
+"могли растратить какую-то часть своих сил в сражениях. Тем не менее, на поле "
+"боя следует опасаться ударов их молний."
 
 #. [attack]: type=fire
 #: data/core/units/humans/Mage_Elder.cfg:34
-#, fuzzy
 msgid "lightning"
-msgstr "Удар молнии"
+msgstr "молния"
 
 #. [unit_type]: id=Great Mage, race=human
 #: data/core/units/humans/Mage_Great.cfg:4
@@ -3091,9 +3089,8 @@ msgstr "вилы"
 
 #. [unit_type]: id=Royal Warrior, race=human
 #: data/core/units/humans/Royal_Warrior.cfg:8
-#, fuzzy
 msgid "Royal Warrior"
-msgstr "Тролль воин"
+msgstr "Король-воин"
 
 #. [unit_type]: id=Royal Warrior, race=human
 #: data/core/units/humans/Royal_Warrior.cfg:31
@@ -3101,6 +3098,8 @@ msgid ""
 "Royal warriors are the kings and princes of human noble houses, armed and "
 "armored to a degree heavier than that of their knights."
 msgstr ""
+"Воины королевской крови - это короли и принцы благородных домов. Они "
+"вооружены и защищены заметно лучше, чем их рыцари."
 
 #. [unit_type]: id=Woodsman, race=human
 #: data/core/units/humans/Woodsman.cfg:4
@@ -3761,6 +3760,9 @@ msgid ""
 "Wolves are aggressive animals that hunt in packs. Although weak "
 "individually, a wolf pack can kill even the strongest man in minutes."
 msgstr ""
+"Волки - это агрессивные животные, охотящиеся стаями. Хотя они довольно слабы "
+"поодиночке, стая волков может убить даже сильнейшего человека за считанные "
+"минуты."
 
 #. [unit_type]: id=Yeti, race=monster
 #: data/core/units/monsters/Yeti.cfg:4
@@ -4085,7 +4087,6 @@ msgstr "Орк с тяжелым арбалетом"
 
 #. [unit_type]: id=Orcish Slurbow, race=orc
 #: data/core/units/orcs/Slurbow.cfg:23
-#, fuzzy
 msgid ""
 "The basic design of a crossbow gives rise to the arbalest or 'slurbow'; a "
 "much more intricate device, complete with a hand-turned cranequin to re-cock "
@@ -4097,11 +4098,11 @@ msgid ""
 "Orcs prize any such weapons they can manage to plunder, and they invariably "
 "end up in the hands of their strongest and most cunning archers."
 msgstr ""
-"Основы конструкции арбалета ведут к самострелу, куда более сложному "
-"приспособлению, дополненному ручным воротом для перезарядки и выполненноему "
-"из более прочных материалов. Обращаться с ним намного проще, при этом "
-"самострел гораздо мощнее. Однако, его производство совершенно вне "
-"компетенции орков.\n"
+"Развитие конструкции арбалета ведёт к арбаллисте, \"самострелу\" - куда "
+"более сложной машине, дополненной ручным воротом для перезарядки, с мощными "
+"композитными деревянно-костяными плечами. Обращаться с ним намного проще, "
+"при этом самострел гораздо мощнее. Однако, его производство за пределами "
+"способностей орков.\n"
 "\n"
 "Поэтому орки весьма ценят трофейные экземпляры подобного оружия, и они "
 "неизменно оказываются в руках лишь самых сильных и хитрых лучников (Orcish "
@@ -4372,9 +4373,8 @@ msgstr ""
 
 #. [unit_type]: id=Troll Shaman, race=troll
 #: data/core/units/trolls/Troll_Shaman.cfg:4
-#, fuzzy
 msgid "Troll Shaman"
-msgstr "Тролль детёныш"
+msgstr "Троллиный шаман"
 
 #. [unit_type]: id=Troll Shaman, race=troll
 #: data/core/units/trolls/Troll_Shaman.cfg:24
@@ -4383,11 +4383,14 @@ msgid ""
 "or tough as other trolls, their true power lies in their fire magic, which "
 "they use to blast enemies with gouts of fire."
 msgstr ""
+"Троллиные шаманы - мистические вожди троллей. Не будучи такими же сильными, "
+"как другие тролли, истинная свою силу они получают от магии огня. Она "
+"позволяет им расстреливать противников потоками огня."
 
 #. [attack]: type=fire
 #: data/core/units/trolls/Troll_Shaman.cfg:41
 msgid "flame blast"
-msgstr ""
+msgstr "пламенный удар"
 
 #. [unit_type]: id=Troll Warrior, race=troll
 #: data/core/units/trolls/Warrior.cfg:4

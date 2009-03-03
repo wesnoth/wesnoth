@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-03-01 21:23+0100\n"
-"PO-Revision-Date: 2009-01-16 23:22+0100\n"
+"PO-Revision-Date: 2009-03-03 20:42+0100\n"
 "Last-Translator: aceman <acelists@atlas.sk>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -616,7 +616,7 @@ msgstr "Zmeň jazyk"
 #. [window]: id=mp_cmd_wrapper
 #: data/gui/default/window/mp_cmd_wrapper.cfg:8
 msgid "Multiplayer command wrapper dialog"
-msgstr ""
+msgstr "Dialógové okno pre príkazy v zápase"
 
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:31
@@ -808,7 +808,7 @@ msgstr "Heslo: "
 #: data/gui/default/window/mp_login.cfg:190
 #: src/game_preferences_display.cpp:163
 msgid "Save password to preferences (clear text)"
-msgstr ""
+msgstr "Uložiť heslo do nastavení (viditeľné ako text)"
 
 #. [button]: id=password_reminder
 #: data/gui/default/window/mp_login.cfg:248
@@ -832,6 +832,12 @@ msgid ""
 "\n"
 "The Battle for Wesnoth forum can be found at http://www.wesnoth.org/forum/"
 msgstr ""
+"Môžeš sa prihlásiť na oficiálny server s používateľským menom a heslom z "
+"fóra.\n"
+"Na prístup na server nie je potrebná registrácia: heslo je nutné zadať len "
+"ak chceš použiť registrované meno.\n"
+"\n"
+"Fórum Bitky o Wesnoth je dostupné na http://www.wesnoth.org/forum/"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:140
@@ -976,9 +982,8 @@ msgid "Toggle Full Screen"
 msgstr "Celá obrazovka (zapni/vypni)"
 
 #: src/game_preferences_display.cpp:152
-#, fuzzy
 msgid "Enable scroll tracking of unit actions"
-msgstr "Zapnúť sledovanie akcií jednotiek."
+msgstr "Zapnúť sledovanie akcií jednotiek"
 
 #: src/game_preferences_display.cpp:153
 msgid "Accelerated Speed"
@@ -1237,7 +1242,7 @@ msgstr "Zobraz ikony pred menami hráčov v čakárni."
 
 #: src/game_preferences_display.cpp:347
 msgid "Uncheck to delete the saved password (on exit)."
-msgstr ""
+msgstr "Zruš zaškrtnutie pre vymazanie uloženého hesla (pri ukončení)."
 
 #: src/game_preferences_display.cpp:350
 msgid "Do not show messages about players joining the multiplayer lobby"
@@ -1878,7 +1883,7 @@ msgstr "Užívateľský príkaz"
 
 #: src/hotkeys.cpp:188
 msgid "Run AI formula"
-msgstr ""
+msgstr "Spustiť vzorec AI"
 
 #: src/hotkeys.cpp:189
 msgid "Clear messages"
@@ -2036,13 +2041,12 @@ msgid ""
 msgstr "Našiel sa terén s identifikátorom s viac ako 4 znakmi: "
 
 #: src/wml_exception.cpp:52
-#, fuzzy
 msgid ""
 "An error due to possibly invalid WML occurred\n"
 "The error message is :"
 msgstr ""
-"Nastala chyba kvôli neplatnému WML\n"
-"Chybová správa je:"
+"Nastala chyba pravdepodobne kvôli neplatnému WML\n"
+"Chybová správa je :"
 
 #: src/wml_exception.cpp:54
 msgid "When reporting the bug please include the following error message :"

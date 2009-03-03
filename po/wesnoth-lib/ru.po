@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-lib.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-03-01 21:23+0100\n"
-"PO-Revision-Date: 2009-02-21 02:03+0300\n"
+"PO-Revision-Date: 2009-03-03 22:54+0300\n"
 "Last-Translator: Victor Sergienko <singalen@gmail.com>\n"
 "Language-Team:  <http://bugs.wesnoth.org>\n"
 "MIME-Version: 1.0\n"
@@ -270,7 +270,7 @@ msgstr "Болото"
 #. [terrain]: id=lit
 #: data/core/terrain.cfg:835
 msgid "Lit"
-msgstr ""
+msgstr "Освещена"
 
 #. [terrain]: id=cave
 #: data/core/terrain.cfg:845
@@ -390,17 +390,17 @@ msgstr "пусто"
 #. [terrain]: id=flat
 #: data/core/terrain.cfg:1294
 msgid "Flat"
-msgstr ""
+msgstr "Плоская"
 
 #. [terrain]: id=frozen
 #: data/core/terrain.cfg:1301
 msgid "Frozen"
-msgstr ""
+msgstr "Замёрзшая"
 
 #. [terrain]: id=unwalkable
 #: data/core/terrain.cfg:1315
 msgid "Unwalkable"
-msgstr ""
+msgstr "Непроходимая"
 
 #. [label]
 #. [column]
@@ -443,7 +443,7 @@ msgstr "Удалить"
 #: data/gui/default/window/mp_connect.cfg:175
 #: data/gui/default/window/mp_connect.cfg:176
 msgid "Connect"
-msgstr ""
+msgstr "Подключиться"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
@@ -633,7 +633,7 @@ msgstr "Применить"
 #: data/gui/default/window/language_selection.cfg:31
 #: data/gui/default/window/title_screen.cfg:83
 msgid "Language"
-msgstr ""
+msgstr "Язык"
 
 #. [label]
 #: data/gui/default/window/language_selection.cfg:50
@@ -766,7 +766,7 @@ msgstr ""
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:177
 msgid "Era:"
-msgstr ""
+msgstr "Эра:"
 
 #. [button]: id=era
 #: data/gui/default/window/mp_create_game.cfg:196
@@ -814,7 +814,7 @@ msgstr ""
 #. [toggle_button]: id=fog
 #: data/gui/default/window/mp_create_game.cfg:453
 msgid "Fog of War"
-msgstr ""
+msgstr "Туман войны"
 
 #. [toggle_button]: id=random_start_time
 #: data/gui/default/window/mp_create_game.cfg:494
@@ -835,18 +835,18 @@ msgstr ""
 #. [label]
 #: data/gui/default/window/mp_login.cfg:31
 msgid "Login"
-msgstr ""
+msgstr "Логин"
 
 #. [label]
 #: data/gui/default/window/mp_login.cfg:81
 #: data/gui/default/window/mp_method_selection.cfg:61
 msgid "Login:"
-msgstr ""
+msgstr "Логин:"
 
 #. [label]
 #: data/gui/default/window/mp_login.cfg:134
 msgid "Password:"
-msgstr ""
+msgstr "Пароль:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=remember_password
@@ -924,7 +924,7 @@ msgstr "Имя: "
 #. [label]: id=address
 #: data/gui/default/window/mp_server_list.cfg:102
 msgid "Address"
-msgstr ""
+msgstr "Адрес"
 
 #. [button]: id=ok
 #: data/gui/default/window/mp_server_list.cfg:202
@@ -941,7 +941,7 @@ msgstr "Окно начала хода"
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:78
 msgid "Campaign"
-msgstr ""
+msgstr "Кампания"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:80
@@ -952,7 +952,7 @@ msgstr "Дорога"
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:81
 msgid "Add-ons"
-msgstr ""
+msgstr "Дополнения"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:82
@@ -970,7 +970,7 @@ msgstr "Настройки"
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:85
 msgid "Credits"
-msgstr ""
+msgstr "Команда"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
@@ -1452,7 +1452,7 @@ msgstr "Загрузить игру"
 
 #: src/gui/dialogs/title_screen.cpp:73
 msgid "Version"
-msgstr ""
+msgstr "Версия"
 
 #: src/gui/widgets/canvas.cpp:292
 msgid "Line doesn't fit on canvas."

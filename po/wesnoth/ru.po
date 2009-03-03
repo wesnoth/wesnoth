@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: wesnoth.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-03-01 21:23+0100\n"
-"PO-Revision-Date: 2009-02-21 02:08+0300\n"
+"PO-Revision-Date: 2009-03-03 22:52+0300\n"
 "Last-Translator: Victor Sergienko <singalen@gmail.com>\n"
 "Language-Team:  <ru@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -43,7 +43,7 @@ msgstr "Прокрутка средним кликом"
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:70
 msgid "Keep scrolling when mouse leaves window"
-msgstr ""
+msgstr "Продолжать скроллить, когда мышь покидает окно"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:77
@@ -1169,7 +1169,6 @@ msgstr ""
 
 #. [topic]: id=combat
 #: data/core/help.cfg:241
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1181,9 +1180,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"В этом правиле есть два исключения: <ref>dst=weaponspecial_magical "
+"У этого правила есть два исключения: <ref>dst=weaponspecial_magical "
 "text='Магические атаки'</ref> и <ref>dst=weaponspecial_marksman "
-"text=Снайперы</ref>. Магические атаки всегда имеют шанс попадания 70%, "
+"text=Снайперы</ref>. Магические атаки всегда имеют шанс попасть в 70%, "
 "независимо от местности. Снайперы всегда имеют шанс не ниже 60%, независимо "
 "от местности, но только при атаке."
 
@@ -1200,7 +1199,6 @@ msgstr ""
 
 #. [topic]: id=combat
 #: data/core/help.cfg:245
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1214,13 +1212,12 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Каждый удар с попаданием характеризуется количеством урона, наносимым этим "
-"типом атаки. Например, Эльф Боец с атакой 5-4 имеет базовый урон в 5 единиц. "
-"Эта цифра может изменяться двумя параметрами: "
-"<ref>dst=damage_types_and_resistance text='Сопротивляемостью'</ref> и "
-"<ref>dst=time_of_day text='Временем Суток'</ref>. Чтобы увидеть при каких "
-"обстоятельствах изменяется базовый урон, выберите <italic>text='Вычисление "
-"повреждений'</italic> в меню атаки."
+"Каждая удачная атака наносит некоторый базовый урон, в зависимости от типа "
+"атаки. Например, Эльф Боец с атакой 5-4 наносит базовый урон в 5 единиц. "
+"Далее на эту цифру меняют две вещи: <ref>dst='damage_types_and_resistance' "
+"text='Сопротивляемость'</ref> и <ref>dst=time_of_day text='Время Суток'</"
+"ref>. Чтобы увидеть, как сейчас меняется базовый урон, нажмите кнопку "
+"<italic>text='Вычисление повреждений'</italic> в окне атаки."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:247
@@ -1642,7 +1639,6 @@ msgstr "Итоги"
 
 #. [topic]: id=wrap_up
 #: data/core/help.cfg:330
-#, fuzzy
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
 "Basic Strategy, or familiarise yourself with <ref>dst='..traits_section' "
@@ -1650,10 +1646,11 @@ msgid ""
 "ref>, but you now know everything you need to know to play the Heir to the "
 "Throne campaign. Have fun, and good luck!"
 msgstr ""
-"Здесь изложены основы игры Битвы за Веснот. Вы также можете прочитать Основы "
-"Стратегии или ознакомиться с <ref>dst=traits text=Особенностями</ref> и "
-"<ref>dst=abilities text=Способностями</ref>, но теперь вы достаточно, чтобы "
-"начать кампанию \"Наследник Престола\". Наслаждайтесь и удачи!"
+"Вы изучили основы игры \"Битва за Веснот\". Ещё Вы можете прочитать \"Основы "
+"стратегии\" или ознакомиться с <ref>dst='..traits_section' text='Traits' "
+"text=Особенностями</ref> и <ref>dst='..abilities_section' "
+"text=Способностями</ref>, но Вы уже знаете достаточно, чтобы начать кампанию "
+"\"Наследник Престола\". Наслаждайтесь, и удачи!"
 
 #. [topic]: id=about
 #: data/core/help.cfg:335
@@ -2003,15 +2000,16 @@ msgstr ""
 
 #. [topic]: id=traits_dim
 #: data/core/help.cfg:440
-#, fuzzy
 msgid "Dim"
-msgstr "его"
+msgstr "Глупый"
 
 #. [topic]: id=traits_dim
 #: data/core/help.cfg:441
 msgid ""
 "Units with trait Dim suffer a 20% increase in experience required to advance."
 msgstr ""
+"Бойцы с особенностью \"Глупый\" страдают недостатком - продвижение на "
+"уровень стоит им на 20% больше опыта."
 
 #. [topic]: id=traits_dim
 #: data/core/help.cfg:443
@@ -2021,20 +2019,21 @@ msgid ""
 "Dim is a trait all too common in goblins and other lesser species. There are "
 "reasons these species are lesser, and this is one of them."
 msgstr ""
+"\n"
+"\n"
+"Глупый - довольно распространённое качество среди гоблинов и менее успешных "
+"видов. Есть причины, по которым эти виды менее успешны, и эта - не последняя."
 
 #. [topic]: id=traits_slow
 #: data/core/help.cfg:448
-#, fuzzy
 msgid "Slow"
-msgstr "Замедлен"
+msgstr "Медленный"
 
 #. [topic]: id=traits_slow
 #: data/core/help.cfg:449
-#, fuzzy
 msgid "Slow units have -1 movement but 5% more hitpoints."
 msgstr ""
-"Быстрые бойцы имеют 1 очко движения дополнительно, но на 5% меньше здоровья, "
-"чем обычно."
+"Медленные бойцы ходят на 1 клетку меньше, но получают на 5% больше здоровья."
 
 #. [topic]: id=traits_slow
 #: data/core/help.cfg:451
@@ -2045,17 +2044,20 @@ msgid ""
 "a movement penalty but are compensated for it with a slight increase in "
 "endurance."
 msgstr ""
+"\n"
+"\n"
+"Толстые и неуклюжие, Медленные гоблины (и прочие существа) получают штраф на "
+"скорость, но зато получают небольшой плюс к здоровью."
 
 #. [topic]: id=traits_weak
 #: data/core/help.cfg:456
-#, fuzzy
 msgid "Weak"
-msgstr "слабый"
+msgstr "Слабый"
 
 #. [topic]: id=traits_weak
 #: data/core/help.cfg:457
 msgid "Units with trait Weak get a -1 increment in hitpoints and melee damage."
-msgstr ""
+msgstr "Бойцы с особенностью \"Слабый\" имеют -1 к здоровью и атакам в бою."
 
 #. [topic]: id=..terrains
 #: data/core/help.cfg:465
@@ -2658,6 +2660,10 @@ msgid ""
 "jagged peaks at such rarified heights, and not even the fiercest troll can "
 "smash through thick walls of stone."
 msgstr ""
+"Далеко не каждый, как бы решительно он не шёл, не может перейти сквозь "
+"стены, и горы такой высоты, что их вершины уходят в облака. Даже летающие "
+"создания не доберутся до вершин запредельной высоты, и даже самый злой "
+"тролль не пробьётся через толстую каменную стену."
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:760
@@ -2739,6 +2745,9 @@ msgid ""
 "Redraws the screen and reloads any image files that have been changed.\n"
 "\n"
 msgstr ""
+"\n"
+"Перерисовывает экран и перезагружает все изменившиеся картинки.\n"
+"\n"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:784
@@ -2867,6 +2876,9 @@ msgid ""
 "campaign.\n"
 "\n"
 msgstr ""
+"\n"
+"Вызывает меню перехода на любой следующий сценарий кампании.\n"
+"\n"
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:827
@@ -2908,6 +2920,9 @@ msgid ""
 "Immediately advances to the next scenario in a campaign.\n"
 "\n"
 msgstr ""
+"\n"
+"Немедленно переводит Вас на следующий сценарий кампании.\n"
+"\n"
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:839
@@ -3456,24 +3471,24 @@ msgstr "На каком противнике сосредоточиться?"
 #: data/core/macros/ai_controller.cfg:437
 #: data/core/macros/ai_controller.cfg:442
 msgid "(side $temp_i|)"
-msgstr ""
+msgstr "(side $temp_i|)"
 
 #. [then]
 #: data/core/macros/ai_controller.cfg:288
 #: data/core/macros/ai_controller.cfg:438
 msgid "$side_i_leader.name (side $temp_i|)"
-msgstr ""
+msgstr "$side_i_leader.name (side $temp_i|)"
 
 #. [else]
 #: data/core/macros/ai_controller.cfg:293
 #: data/core/macros/ai_controller.cfg:443
 msgid "side $temp_i"
-msgstr ""
+msgstr "side $temp_i"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:309
 msgid "focusing on defeating $this_enemy_description|."
-msgstr ""
+msgstr "стараюсь победить $this_enemy_description|."
 
 #. [value]
 #. [option]: speaker=narrator
@@ -3487,7 +3502,7 @@ msgstr "Назад"
 #. [option]: type=objective
 #: data/core/macros/ai_controller.cfg:359
 msgid "Focus on protecting..."
-msgstr ""
+msgstr "Защищай..."
 
 #. [literal]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:376
@@ -3497,7 +3512,7 @@ msgstr "Какого союзника защищать?"
 #. [command]
 #: data/core/macros/ai_controller.cfg:459
 msgid "focusing on protecting $this_ally_description|."
-msgstr ""
+msgstr "Защищаю $this_ally_description|."
 
 #. [option]: type=objective
 #: data/core/macros/ai_controller.cfg:511
@@ -3507,7 +3522,7 @@ msgstr "Защищать место..."
 #. [print]
 #: data/core/macros/ai_controller.cfg:527
 msgid "Right-click to select a location to defend"
-msgstr ""
+msgstr "Кликните правой кнопкой в месте, которое будем защищать"
 
 #. [set_menu_item]: id=ai_controller_defend_location_picker
 #: data/core/macros/ai_controller.cfg:534
@@ -3517,12 +3532,12 @@ msgstr "Защищать это место"
 #. [command]
 #: data/core/macros/ai_controller.cfg:551
 msgid "focusing on defending the area around $x1|,$y1|."
-msgstr ""
+msgstr "Защищаю область вокруг $x1|,$y1|."
 
 #. [print]
 #: data/core/macros/ai_controller.cfg:586
 msgid "Location selection canceled"
-msgstr ""
+msgstr "Решили не выбирать место"
 
 #. [option]
 #: data/core/macros/ai_controller.cfg:601
@@ -3551,6 +3566,8 @@ msgid ""
 "$ally_leader.name (side $ally_side|) has not been given any instructions and "
 "is acting normally."
 msgstr ""
+"$ally_leader.name (side $ally_side|) не получил инструкций и действует на "
+"своё усмотрение."
 
 #. [value]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:811
@@ -3561,18 +3578,22 @@ msgid ""
 "Behavior: $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_behaviour_description"
 msgstr ""
+"Цель: $ai_controller.side_$ally_side|_current_settings."
+"currently_doing_objective_description\n"
+"Манера: $ai_controller.side_$ally_side|_current_settings."
+"currently_doing_behaviour_description"
 
 #. [value]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:825
 msgid ""
 "$ally_leader.name (side $ally_side|) is carrying out the following "
 "instructions:"
-msgstr ""
+msgstr "$ally_leader.name (side $ally_side|) выполняет такие инструкции:"
 
 #. [literal]
 #: data/core/macros/ai_controller.cfg:840
 msgid "Set objective..."
-msgstr ""
+msgstr "Задать цель..."
 
 #. [literal]
 #: data/core/macros/ai_controller.cfg:880
@@ -5019,12 +5040,12 @@ msgstr "замедляет"
 #. [trait]: id=dim
 #: data/core/macros/traits.cfg:209
 msgid "dim"
-msgstr ""
+msgstr "глупый"
 
 #. [trait]: id=dim
 #: data/core/macros/traits.cfg:210
 msgid "female^dim"
-msgstr ""
+msgstr "глупая"
 
 #. [color_range]: id=red
 #. [color_range]: id=1
@@ -6775,6 +6796,8 @@ msgid ""
 "In many campaign scenarios, you may issue simple instructions for your "
 "computer-controlled allies using the right-click context menu."
 msgstr ""
+"Во многих сценариях кампании, если Вашими союзниками управляет компьютер, то "
+"Вы можете давать им команды через контекстное меню по правой кнопке."
 
 #: data/temp-file_send_data_strings.cfg:12
 msgid "About to upload statistics - Help us make Wesnoth better for you!"
@@ -6782,12 +6805,14 @@ msgstr "Сейчас отправим статистику - Помогите н
 
 #: data/temp-file_send_data_strings.cfg:13
 msgid "Save my reply and do not ask again"
-msgstr ""
+msgstr "Сохранить реплей и больше не спрашивать"
 
 #: data/temp-file_send_data_strings.cfg:14
 msgid ""
 "To change the setting later on, click on the envelope icon in the main menu."
 msgstr ""
+"Потом эту настройку можно изменить, кликнув по иконке с конвертом на главном "
+"экране."
 
 #: data/temp-file_send_data_strings.cfg:15
 msgid "Send"
@@ -6799,7 +6824,7 @@ msgstr "Не отсылать"
 
 #: data/temp-file_send_data_strings.cfg:18
 msgid "Do not ask every time before sending data"
-msgstr ""
+msgstr "Больше не спрашивать, когда отсылаю данные."
 
 #. [menu]: id=menu-main
 #: data/themes/default.cfg:120 data/themes/dfool.cfg:134
@@ -7179,16 +7204,22 @@ msgid_plural ""
 "Some outdated local add-ons have publishing information attached. They will "
 "not be offered for updating."
 msgstr[0] ""
+"У вас установлен устаревший неофициальный аддон, его данные указаны ниже. "
+"Его обновлять не будем."
 msgstr[1] ""
+"У вас установлен устаревшие неофициальные аддоны, их данные указаны ниже. Их "
+"обновлять не будем."
 msgstr[2] ""
+"У вас установлен устаревшие неофициальные аддоны, их данные указаны ниже. Их "
+"обновлять не будем."
 
 #: src/addon_management.cpp:722
 msgid "Could not find any updated add-ons on this server."
-msgstr ""
+msgstr "На этом сервере нет обновлённых аддонов."
 
 #: src/addon_management.cpp:722
 msgid "No add-ons to update"
-msgstr ""
+msgstr "Нечего обновлять"
 
 #: src/addon_management.cpp:736 src/addon_management.cpp:939
 #: src/dialogs.cpp:647 src/menu_events.cpp:197 src/menu_events.cpp:1007
@@ -7631,6 +7662,8 @@ msgid ""
 "The server will run in a background process until all users have "
 "disconnected."
 msgstr ""
+"Сервер будет работать фоновым процессом, пока все пользователи не "
+"отсоединятся."
 
 #: src/game.cpp:1312
 msgid "Don't show again"
@@ -7705,11 +7738,11 @@ msgstr "Предупреждение:"
 
 #: src/game_events.cpp:140
 msgid "Debug: "
-msgstr ""
+msgstr "Отладка: "
 
 #: src/game_events.cpp:143
 msgid "Info: "
-msgstr ""
+msgstr "Инфо: "
 
 #: src/game_events.cpp:1074
 msgid "Victory:"
@@ -8322,6 +8355,8 @@ msgid ""
 "Available commands list and command-specific help. Use \"help all\" to "
 "include currently unavailable commands."
 msgstr ""
+"Вы можете получить список команд и помощь по каждой команде. Напишите \"help "
+"all\", если хотите увидеть помощь в т.ч. по недоступным командам."
 
 #: src/menu_events.cpp:1992
 msgid " No help available."
@@ -8332,24 +8367,28 @@ msgid ""
 "Send a query to the server. Without arguments the server should tell you the "
 "available commands."
 msgstr ""
+"Отослать запрос на сервер. Без параметров, сервер выдаст список доступных "
+"команд."
 
 #: src/menu_events.cpp:2133
 msgid ""
 "Ban and kick a player or observer. If he is not in the game but on the "
 "server he will only be banned."
 msgstr ""
+"Забанить и кикнуть игрока или зрителя. Если он не в игре, но на сервере, то "
+"Вы его только забаните."
 
 #: src/menu_events.cpp:2136
 msgid "Kick a player or observer."
-msgstr ""
+msgstr "Кикнуть игрока или зрителя."
 
 #: src/menu_events.cpp:2138
 msgid "Mute an observer."
-msgstr ""
+msgstr "Запретить зрителю говорить."
 
 #: src/menu_events.cpp:2140
 msgid "Mute all observers."
-msgstr ""
+msgstr "Запретить всем зрителям говорить."
 
 #: src/menu_events.cpp:2150
 msgid "Send an emotion or personal action in chat."
@@ -8365,7 +8404,7 @@ msgstr ""
 
 #: src/menu_events.cpp:2159
 msgid "Change the log level of a log domain."
-msgstr ""
+msgstr "Сменить уровень лога в домене лога."
 
 #: src/menu_events.cpp:2161
 msgid "Add a nick to your ignores list."
@@ -8389,15 +8428,15 @@ msgstr "Позакать версию"
 
 #: src/menu_events.cpp:2172
 msgid "Register your nick"
-msgstr ""
+msgstr "Зарегистрировать свой ник"
 
 #: src/menu_events.cpp:2174
 msgid "Drop your nick."
-msgstr ""
+msgstr "Удалить свой ник."
 
 #: src/menu_events.cpp:2176
 msgid "Update details for your nick. For possible details see '/details'."
-msgstr ""
+msgstr "Обновить профиль своего ника. Подробности смотрите через '/details'."
 
 #: src/menu_events.cpp:2179
 msgid "Request information about a nick."
@@ -8405,19 +8444,19 @@ msgstr "Запросить информацию о нике"
 
 #: src/menu_events.cpp:2181
 msgid "Request a list of details you can set for your registered nick."
-msgstr ""
+msgstr "Запросить, какие данные можно менять в своём нике."
 
 #: src/menu_events.cpp:2303
 msgid "Refresh gui."
-msgstr ""
+msgstr "Обновить экран."
 
 #: src/menu_events.cpp:2305
 msgid "Switch a side to/from AI control."
-msgstr ""
+msgstr "Отдать контроль над стороной AI или человеку..."
 
 #: src/menu_events.cpp:2308
 msgid "Assign control of a side to a different player or observer."
-msgstr ""
+msgstr "Отдать контроль над стороной другому игроку или зрителю."
 
 #: src/menu_events.cpp:2310
 msgid "Clear chat history."
@@ -8425,7 +8464,7 @@ msgstr "Очистить историю чата."
 
 #: src/menu_events.cpp:2312
 msgid "Visualize the screen refresh procedure."
-msgstr ""
+msgstr "Показать порядок обновления экрана."
 
 #: src/menu_events.cpp:2315
 msgid "Save game."
@@ -8437,15 +8476,15 @@ msgstr "Выйти из игры"
 
 #: src/menu_events.cpp:2321
 msgid "Save and quit."
-msgstr ""
+msgstr "Сохраниться и выйти."
 
 #: src/menu_events.cpp:2324
 msgid "Ignore replay errors."
-msgstr ""
+msgstr "Игнорировать ошибки в реплее."
 
 #: src/menu_events.cpp:2326
 msgid "Disable autosaves."
-msgstr ""
+msgstr "Отключить автосохранение."
 
 #: src/menu_events.cpp:2328
 msgid "Advance to the next scenario, or scenario identified by 'id'"
@@ -8461,15 +8500,15 @@ msgstr "Включить режим отладки"
 
 #: src/menu_events.cpp:2336
 msgid "Turn debug mode off."
-msgstr ""
+msgstr "Отключить режим отладки."
 
 #: src/menu_events.cpp:2338
 msgid "Set the command used by the custom command hotkey"
-msgstr ""
+msgstr "Сменить команду на горячей клавише."
 
 #: src/menu_events.cpp:2340
 msgid "Set or show alias to a command"
-msgstr ""
+msgstr "Установить/показать алиас команды"
 
 #: src/menu_events.cpp:2342
 msgid "Set a scenario variable."
@@ -8482,10 +8521,11 @@ msgstr "Посмотреть переменную в сценарии."
 #: src/menu_events.cpp:2346
 msgid "Modify a unit variable. (Only top level keys are supported.)"
 msgstr ""
+"Поменять переменную бойца (поддерживаются только ключи верхнего уровня)."
 
 #: src/menu_events.cpp:2350
 msgid "Remove a trait from a unit. (Does not work yet.)"
-msgstr ""
+msgstr "Удалить особенность бойца (пока не работает)."
 
 #: src/menu_events.cpp:2352
 msgid "Create a unit."
@@ -8501,19 +8541,19 @@ msgstr "Переключить пелену для текущей стороны
 
 #: src/menu_events.cpp:2358
 msgid "Give gold to the current player."
-msgstr ""
+msgstr "Дать золота текущему игроку."
 
 #: src/menu_events.cpp:2360
 msgid "Fire a game event."
-msgstr ""
+msgstr "Запустить событие игры."
 
 #: src/menu_events.cpp:2363
 msgid "Toggle overlaying of x,y coordinates on hexes."
-msgstr ""
+msgstr "Переключить отрисовку кодов x,y на сетке."
 
 #: src/menu_events.cpp:2366
 msgid "Toggle overlaying of terrain codes on hexes."
-msgstr ""
+msgstr "Переключить отрисовку кодов местности на сетке."
 
 #: src/menu_events.cpp:2411
 msgid "Unknown debug level: '$level'."
@@ -8581,7 +8621,7 @@ msgstr "Режим отладки включён!"
 
 #: src/menu_events.cpp:2886
 msgid "Debug mode not available in network games"
-msgstr ""
+msgstr "В сетевой игре отладочный режим недоступен."
 
 #: src/menu_events.cpp:2891
 msgid "Debug mode deactivated!"
@@ -8633,36 +8673,40 @@ msgstr "Сначала надо залогиниться"
 
 #: src/multiplayer.cpp:337
 msgid "The nick '$nick' is already taken."
-msgstr ""
+msgstr "Ник '$nick' уже занят."
 
 #: src/multiplayer.cpp:339
 msgid ""
 "The nick '$nick' contains invalid characters. Only alpha-numeric characters, "
 "underscores and hyphens are allowed."
 msgstr ""
+"Ник '$nick' содержит недопустимые символы. Разрешены только латинские "
+"алфавитно-цифровые, подчёрки и дефисы."
 
 #: src/multiplayer.cpp:343
 msgid "The nick '$nick' is too long. Nicks must be 18 characters or less."
-msgstr ""
+msgstr "Ник '$nick' слишком длинный, можно не более 18 символов."
 
 #: src/multiplayer.cpp:346
 msgid "The nick '$nick' is reserved and cannot be used by players."
-msgstr ""
+msgstr "Ник '$nick' зарезервирован и запрещён для игроков."
 
 #: src/multiplayer.cpp:348 src/multiplayer.cpp:350
 msgid "The nick '$nick' is registered on this server."
-msgstr ""
+msgstr "Ник '$nick' уже есть на этом сервере."
 
 #: src/multiplayer.cpp:351
 msgid ""
 "WARNING: There is already a client using this nick, logging in will cause "
 "that client to be kicked!"
 msgstr ""
+"ПРЕДУПРЕЖДЕНИЕ: Клиент с таким ником уже подключён, если вы войдёте, то он "
+"отвалится!"
 
 #: src/multiplayer.cpp:354
 msgid ""
 "Error in the login procedure (the server had no seed for your connection)."
-msgstr ""
+msgstr "Ошибка при входе (сервер не отвечает на ваше подключение)"
 
 #: src/multiplayer.cpp:357
 msgid "The password you provided was incorrect."
@@ -11144,3 +11188,6 @@ msgstr "Включить отправку итогов"
 
 #~ msgid "Map size: "
 #~ msgstr "Размер карты: "
+
+#~ msgid "him"
+#~ msgstr "его"

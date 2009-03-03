@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.4-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-03-01 12:14+0100\n"
-"PO-Revision-Date: 2008-12-27 15:47+0100\n"
+"PO-Revision-Date: 2009-03-03 20:49+0100\n"
 "Last-Translator: Viliam Búr <viliam@bur.sk>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -130,13 +130,13 @@ msgstr ""
 
 #. [editor_tool_hint]: id=editor-paste
 #: data/core/editor/tool-hints.cfg:30
-#, fuzzy
 msgid ""
 "Click to paste, zoom out for more accuracy when pasting large areas. Use the "
 "edit menu to transform the clipboard (rotate, mirror)."
 msgstr ""
-"Kliknutím vložíte. Pomocou editovacieho menu môžete transformovať obsah "
-"schránky (otočiť, preklopiť)."
+"Kliknutím vložíte, použite oddialenie pre zvýšenie presnosti pri vkladaní "
+"väčších plôch. Pomocou editovacieho menu môžete transformovať obsah schránky "
+"(otočiť, preklopiť)."
 
 #. [menu]: id=menu-editor-file
 #: data/themes/editor2.cfg:120
@@ -165,11 +165,11 @@ msgstr "dediny"
 
 #: src/editor2/action.cpp:32
 msgid "Error creating action object"
-msgstr ""
+msgstr "Chyba pri vytváraní objektu akcie"
 
 #: src/editor2/action.cpp:36
 msgid "Action not implemented"
-msgstr ""
+msgstr "Akcia nie je implementovaná"
 
 #: src/editor2/editor_controller.cpp:123
 msgid "Quit Editor"
@@ -323,6 +323,10 @@ msgid ""
 "the cursor. Pressing a number key by itself will scroll to that player's "
 "starting position."
 msgstr ""
+"Ktorý hráč má začínať tu? Môžete použiť klávesy alt a číslo pre nastavenie "
+"východzej pozície pre hráča, a del pre vymazanie východzej pozície pod "
+"kurzorom. Stlačením čísla sa presuniete na východziu pozíciu príslušného "
+"hráča."
 
 #: src/gui/dialogs/editor_settings.cpp:119
 msgid "Custom setting"
