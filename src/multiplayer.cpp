@@ -564,7 +564,8 @@ static void enter_lobby_mode(game_display& disp, const config& game_config, mp::
 					gui::show_error_message(disp, error.message);
 				}
 			}
-			//update lobby content
+			// update lobby content unconditionally because we might have left only after the
+			// game ended in which case we ignored the gamelist and need to request it again
 			network::send_data(config("refresh_lobby"), 0, true);
 			break;
 		case mp::ui::CREATE:
