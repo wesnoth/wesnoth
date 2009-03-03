@@ -126,7 +126,9 @@ def isresource(filename):
 
 def formaltype(f):
     # Deduce the expected type of the formal
-    if f in ("SIDE", "X", "Y", "RED", "GREEN", "BLUE", "TURN", "RADIUS") or f.endswith("NUMBER") or f.endswith("AMOUNT") or f.endswith("_X") or f.endswith("_Y"):
+    if f.startswith("_"):
+        f = f[1:]
+    if f in ("SIDE", "X", "Y", "RED", "GREEN", "BLUE", "TURN", "RADIUS") or f.endswith("NUMBER") or f.endswith("AMOUNT") or f.endswith("COST") or f.endswith("_X") or f.endswith("_Y"):
         ftype = "numeric"
     elif f in ("POSITION",):
         ftype = "position"
@@ -140,7 +142,7 @@ def formaltype(f):
         ftype = "terrain_code"
     elif f in ("NAME", "VAR", "IMAGESTEM", "ID") or f.endswith("_NAME"):
         ftype = "name"
-    elif f in ("STRING", "TYPE", "TEXT"):
+    elif f in ("STRING", "TYPE", "TEXT") or f.endswith("_TEXT"):
         ftype = "string"
     elif f in ("ID_STRING", "NAME_STRING", "DESCRIPTION"):
         ftype = "optional_string"
@@ -150,7 +152,7 @@ def formaltype(f):
         ftype = "sound"
     elif f in ("FILTER",):
         ftype = "filter"
-    elif f.endswith("_WML"):
+    elif f == "WML" or f.endswith("_WML"):
         ftype = "wml"
     elif f in ("AFFIX",):
         ftype = "affix"
