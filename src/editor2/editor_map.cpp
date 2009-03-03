@@ -78,7 +78,7 @@ editor_map::editor_map(const gamemap& map)
 editor_map editor_map::load_from_file(const config& game_config, const std::string& filename)
 {
 	log_scope2(editor, "Loading map " + filename);
-	std::string map_string = read_file(filename, false);
+	std::string map_string = read_file(filename);
 
 
 	if (map_string.empty()) {

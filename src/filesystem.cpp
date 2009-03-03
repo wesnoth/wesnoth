@@ -613,48 +613,37 @@ static std::string read_stream(std::istream& s)
 	return ss.str();
 }
 
-std::istream *istream_file(const std::string& fname, bool relative_from_game_path /*=true*/)
+std::istream *istream_file(const std::string &fname)
 {
-	std::string fname2(fname);
-	return istream_file(fname2, relative_from_game_path);
-}
-
-std::istream *istream_file(std::string& fname, bool relative_from_game_path /*=true*/)
-{
-	LOG_FS << "streaming " << fname << " for reading.\n";
+	LOG_FS << "Streaming " << fname << " for reading.\n";
 	if (fname.empty())
 	{
-		ERR_FS << "Trying to open file with empty name\n";
-		return new std::ifstream();
+		ERR_FS << "Trying to open file with empty name.\n";
+		std::ifstream *s = new std::ifstream();
+		s->clear(std::ios_base::failbit);
+		return s;
 	}
 #ifndef _WIN32
-	if (relative_from_game_path && fname[0] != '/') {
-#else
-	// Check if not start with driver letter
-	if (relative_from_game_path && !std::isalpha(fname[0])) {
-#endif
-		if (!game_config::path.empty())
-			fname = game_config::path + "/" + fname;
-		else
-			WRN_FS << "Using relative path for opening file without game_config::path set\n";
+	// TODO: Should also be done for Windows; but *nix systems should
+	// already be sufficient to catch most offenders.
+	if (fname[0] != '/') {
+		ERR_FS << "Trying to open file with relative path: '" << fname << "'.\n";
+		std::ifstream *s = new std::ifstream();
+		s->clear(std::ios_base::failbit);
+		return s;
 	}
+#endif
 	std::ifstream *s = new std::ifstream(fname.c_str(),std::ios_base::binary);
 	if (s->is_open())
 		return s;
-	LOG_FS << "could not open '" << fname << "' for reading.\n";
+	ERR_FS << "Could not open '" << fname << "' for reading.\n";
 	return s;
 
 }
 
-std::string read_file(const std::string &fname, bool relative_from_game_path /*=true*/)
+std::string read_file(const std::string &fname)
 {
-	scoped_istream s = istream_file(fname, relative_from_game_path);
-	return read_stream(*s);
-}
-
-std::string read_file(std::string &fname, bool relative_from_game_path /*=true*/)
-{
-	scoped_istream s = istream_file(fname, relative_from_game_path);
+	scoped_istream s = istream_file(fname);
 	return read_stream(*s);
 }
 
@@ -689,12 +678,9 @@ void write_file(const std::string& fname, const std::string& data)
 
 std::string read_map(const std::string& name)
 {
-	std::string res = read_file("data/maps/" + name);
-	if(res == "") {
-		res = read_file(get_user_data_dir() + "/data/maps/" + name);
-	}
+	std::string res = read_file(get_wml_location("maps/" + name));
 
-	if(res == "") {
+	if (res.empty()) {
 		res = read_file(get_user_data_dir() + "/editor/maps/" + name);
 	}
 
@@ -1044,7 +1030,7 @@ std::string get_wml_location(const std::string &filename, const std::string &cur
 		if (filename[0] == '@' && !already_found && !game_config::path.empty())
 			result = game_config::path + "/data/" + filename.substr(1);
 	}
-	else if (filename.size() >= 2 && filename[0] == '.' && filename[1] == '/' )
+	else if (filename.size() >= 2 && filename[0] == '.' && filename[1] == '/')
 	{
 		// If the filename begins with a "./", look in the same directory
 		// as the file currrently being preprocessed.
