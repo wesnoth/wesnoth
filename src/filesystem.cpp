@@ -920,9 +920,13 @@ void binary_paths_manager::set_paths(const config& cfg)
 	cleanup();
 	init_binary_paths();
 
-	const config::child_list& items = cfg.get_children("binary_path");
-	for(config::child_list::const_iterator i = items.begin(); i != items.end(); ++i) {
-		std::string path = (**i)["path"].str();
+	foreach (const config *item, cfg.get_children("binary_path"))
+	{
+		std::string path = (*item)["path"].str();
+		if (path.find("..") != std::string::npos) {
+			ERR_FS << "Invalid binary path '" << path << "'\n";
+			continue;
+		}
 		if (!path.empty() && path[path.size()-1] != '/') path += "/";
 		if(binary_paths.count(path) == 0) {
 			binary_paths.insert(path);
@@ -952,15 +956,23 @@ const std::vector<std::string>& get_binary_paths(const std::string& type)
 		return itor->second;
 	}
 
+	if (type.find("..") != std::string::npos) {
+		// Not an assertion, as language.cpp is passing user data as type.
+		ERR_FS << "Invalid WML type '" << type << "' for binary paths\n";
+		static std::vector<std::string> dummy;
+		return dummy;
+	}
+
 	std::vector<std::string>& res = binary_paths_cache[type];
 
 	init_binary_paths();
 
-	for(std::set<std::string>::const_iterator i = binary_paths.begin(); i != binary_paths.end(); ++i) {
-		res.push_back(get_user_data_dir() + "/" + *i + type + "/");
+	foreach (const std::string &path, binary_paths)
+	{
+		res.push_back(get_user_data_dir() + "/" + path + type + "/");
 
 		if(!game_config::path.empty()) {
-			res.push_back(game_config::path + "/" + *i + type + "/");
+			res.push_back(game_config::path + "/" + path + type + "/");
 		}
 	}
 
