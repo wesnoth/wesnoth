@@ -202,10 +202,6 @@ if not os.path.isabs(env["prefix"]):
 # Check some preconditions
 #
 
-def Die(message):
-    print message
-    Exit(1)
-
 def Warning(message):
     print message
     return False
@@ -224,9 +220,9 @@ if env["prereqs"]:
         conf.CheckBoostIostreamsGZip() and \
         conf.CheckBoost("smart_ptr", header_only = True) and \
         conf.CheckSDL(require_version = '1.2.7') and \
-        conf.CheckSDL('SDL_net') or Die("Base prerequisites are not met.")
+        conf.CheckSDL('SDL_net') or Warning("Base prerequisites are not met.")
 
-    have_client_prereqs = \
+    have_client_prereqs = have_server_prereqs and \
         conf.CheckPango("cairo") and \
         conf.CheckPKG("fontconfig") and \
         conf.CheckBoost("regex") and \
@@ -265,6 +261,9 @@ if env["prereqs"]:
 #        Warning("Boost 1.35 not found using old networking code.i")
 #    
 #    env["have_boost_asio"] = have_boost_asio;
+
+    print "If any config checks fail, look in build/config.log for details"
+    print "If a check fails spuriously due to caching, use --config=force to force its rerun"
 
 else:
     have_client_prereqs = True
