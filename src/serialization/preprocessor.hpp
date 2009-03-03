@@ -33,8 +33,8 @@ typedef std::map< std::string, preproc_define > preproc_map;
 
 struct preproc_define
 {
-	preproc_define() : value(""), arguments(), textdomain(""), linenum(0), location("") {}
-	explicit preproc_define(std::string const &val) : value(val), arguments(), textdomain(""), linenum(0), location("") {}
+	preproc_define() : value(), arguments(), textdomain(), linenum(0), location() {}
+	explicit preproc_define(std::string const &val) : value(val), arguments(), textdomain(), linenum(0), location() {}
 	preproc_define(std::string const &val, std::vector< std::string > const &args,
 	               std::string const &domain, int line, std::string const &loc)
 		: value(val), arguments(args), textdomain(domain), linenum(line), location(loc) {}
@@ -46,7 +46,7 @@ struct preproc_define
 	void write(config_writer&, const std::string&) const;
 	void write_argument(config_writer&, const std::string&) const;
 	void read(const config&);
-	void read_argument(const config*);
+	void read_argument(const config &);
 	static preproc_map::value_type read_pair(const config*);
 	bool operator==(preproc_define const &) const;
 	bool operator<(preproc_define const &) const;

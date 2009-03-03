@@ -18,16 +18,14 @@
  * WML preprocessor.
  */
 
-#include "../global.hpp"
+#include "global.hpp"
 
-#include "../config.hpp"
-#include "../filesystem.hpp"
-#include "../log.hpp"
-#include "../wesconfig.h"
-#include "binary_or_text.hpp"
-
-
-#include <boost/bind.hpp>
+#include "config.hpp"
+#include "filesystem.hpp"
+#include "foreach.hpp"
+#include "log.hpp"
+#include "wesconfig.h"
+#include "serialization/binary_or_text.hpp"
 
 #define ERR_CF LOG_STREAM(err, config)
 #define LOG_CF LOG_STREAM(info, config)
@@ -70,18 +68,15 @@ void preproc_define::write(config_writer& writer, const std::string& name) const
 	writer.write_key_val("linenum", lexical_cast<std::string>(linenum));
 	writer.write_key_val("location", location);
 
-	std::for_each(arguments.begin(), arguments.end(),
-			boost::bind(&preproc_define::write_argument,
-				this,
-				boost::ref(writer),
-				_1));
+	foreach (const std::string &arg, arguments)
+		write_argument(writer, arg);
 
 	writer.close_child(key);
 }
 
-void preproc_define::read_argument(const config* cfg)
+void preproc_define::read_argument(const config &cfg)
 {
-	arguments.push_back((*cfg)["name"]);
+	arguments.push_back(cfg["name"]);
 }
 
 void preproc_define::read(const config& cfg)
@@ -91,14 +86,8 @@ void preproc_define::read(const config& cfg)
 	linenum = lexical_cast<int>(cfg["linenum"]);
 	location = cfg["location"];
 
-	const config::child_list args= cfg.get_children("argument");
-	typedef std::vector< std::string > arg_vec;
-	std::for_each(args.begin(), args.end(),
-			boost::bind(&preproc_define::read_argument,
-				this,
-				_1
-				)
-			);
+	foreach (const config *arg, cfg.get_children("argument"))
+		read_argument(*arg);
 }
 
 preproc_map::value_type preproc_define::read_pair(const config* cfg)
