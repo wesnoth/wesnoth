@@ -994,6 +994,11 @@ std::string get_binary_file_location(const std::string& type, const std::string&
 		return std::string();
 	}
 
+	if (filename.find("..") != std::string::npos) {
+		ERR_FS << "Illegal path '" << filename << "' (\"..\" not allowed).\n";
+		return std::string();
+	}
+
 	foreach (const std::string &path, get_binary_paths(type))
 	{
 		const std::string file = path + filename;
@@ -1014,6 +1019,11 @@ std::string get_binary_dir_location(const std::string &type, const std::string &
 
 	if (filename.empty()) {
 		LOG_FS << "  invalid filename (type: " << type <<")\n";
+		return std::string();
+	}
+
+	if (filename.find("..") != std::string::npos) {
+		ERR_FS << "Illegal path '" << filename << "' (\"..\" not allowed).\n";
 		return std::string();
 	}
 
