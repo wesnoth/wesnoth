@@ -1,6 +1,6 @@
 # - Find the native FriBiDI includes and library
 #
-
+#
 # This module defines
 #  FRIBIDI_INCLUDE_DIR, where to find fribidi.h, etc.
 #  FRIBIDI_LIBRARIES, the libraries to link against to use FriBiDi.
@@ -9,7 +9,7 @@
 # also defined, but not for general use are
 #  FRIBIDI_LIBRARY, where to find the FriBiDi library.
 
-include(CheckFunctionExists)
+include(CheckSymbolExists)
 
 SET(FRIBIDI_FOUND "NO")
 
@@ -27,7 +27,9 @@ FIND_LIBRARY(FRIBIDI_LIBRARY
 IF (FRIBIDI_LIBRARY AND FRIBIDI_INCLUDE_DIR)
   SET(CMAKE_REQUIRED_INCLUDES ${FRIBIDI_INCLUDE_DIR})
   SET(CMAKE_REQUIRED_LIBRARIES ${FRIBIDI_LIBRARY})
-  CHECK_FUNCTION_EXISTS(fribidi_utf8_to_unicode FOUND_fribidi_utf8_to_unicode)
+  #we only support version 1 of fribidi and need the symbol fribidi_utf8_to_unicode
+  #here we check if it is really available
+  CHECK_SYMBOL_EXISTS(fribidi_utf8_to_unicode fribidi/fribidi.h FOUND_fribidi_utf8_to_unicode)
   if(FOUND_fribidi_utf8_to_unicode)
     SET(FRIBIDI_LIBRARIES ${FRIBIDI_LIBRARY})
     SET(FRIBIDI_FOUND "YES")
