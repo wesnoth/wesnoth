@@ -39,9 +39,9 @@ private:
 
 struct file_tree_checksum;
 
-enum FILE_NAME_MODE { ENTIRE_FILE_PATH, FILE_NAME_ONLY };
-enum FILE_FILTER { NO_FILTER, SKIP_MEDIA_DIR};
-enum FILE_REORDER_OPTION { DONT_REORDER, DO_REORDER };
+enum file_name_option { ENTIRE_FILE_PATH, FILE_NAME_ONLY };
+enum file_filter_option { NO_FILTER, SKIP_MEDIA_DIR };
+enum file_reorder_option { DONT_REORDER, DO_REORDER };
 
 /**
  * Populates 'files' with all the files and
@@ -56,9 +56,9 @@ enum FILE_REORDER_OPTION { DONT_REORDER, DO_REORDER };
 void get_files_in_dir(const std::string dir,
                       std::vector<std::string>* files,
                       std::vector<std::string>* dirs=NULL,
-                      FILE_NAME_MODE mode=FILE_NAME_ONLY,
-                      FILE_FILTER filter = NO_FILTER,
-                      FILE_REORDER_OPTION reorder=DONT_REORDER,
+                      file_name_option mode = FILE_NAME_ONLY,
+                      file_filter_option filter = NO_FILTER,
+                      file_reorder_option reorder = DONT_REORDER,
                       file_tree_checksum* checksum = NULL);
 
 std::string get_dir(const std::string &dir);
@@ -206,7 +206,7 @@ void clear_binary_paths_cache();
 const std::vector<std::string>& get_binary_paths(const std::string& type);
 
 /**
- * Returns a complete path to the actual file of a given a type of binary,
+ * Returns a complete path to the actual file of a given @a type
  * or an empty string if the file isn't present.
  */
 std::string get_binary_file_location(const std::string& type, const std::string& filename);

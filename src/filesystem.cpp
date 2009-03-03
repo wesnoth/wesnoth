@@ -89,9 +89,9 @@ bool ends_with(const std::string& str, const std::string& suffix)
 void get_files_in_dir(const std::string directory,
 					  std::vector<std::string>* files,
 					  std::vector<std::string>* dirs,
-					  FILE_NAME_MODE mode,
-					  FILE_FILTER filter,
-					  FILE_REORDER_OPTION reorder,
+					  file_name_option mode,
+					  file_filter_option filter,
+					  file_reorder_option reorder,
 					  file_tree_checksum* checksum)
 {
 	// If we have a path to find directories in,
