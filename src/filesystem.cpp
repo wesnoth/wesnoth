@@ -55,6 +55,7 @@ BPath be_path;
 
 #include "config.hpp"
 #include "filesystem.hpp"
+#include "foreach.hpp"
 #include "game_config.hpp"
 #include "log.hpp"
 #include "loadscreen.hpp"
@@ -996,21 +997,72 @@ std::string get_binary_file_location(const std::string& type, const std::string&
 
 	if (filename.empty()) {
 		DBG_FS << "  invalid filename ( type: " << type <<")\n";
-		return "";
+		return std::string();
 	}
 
-	const std::vector<std::string>& paths = get_binary_paths(type);
-	for(std::vector<std::string>::const_iterator i = paths.begin(); i != paths.end(); ++i) {
-		const std::string file = *i + filename;
-		DBG_FS << "  Checking " << *i << "\n";
+	foreach (const std::string &path, get_binary_paths(type))
+	{
+		const std::string file = path + filename;
+		DBG_FS << "  Checking " << path << "\n";
 		if(file_exists(file)) {
-		  DBG_FS << "  Found at " << file << "\n";
+			DBG_FS << "  Found at " << file << "\n";
 			return file;
 		}
 	}
 
-	DBG_FS << "  " << filename << " not found.\n";
-	return "";
+	DBG_FS << "  not found.\n";
+	return std::string();
+}
+
+std::string get_wml_location(const std::string &filename, const std::string &current_dir)
+{
+	LOG_FS << "Looking for " << filename << "\n";
+
+	std::string result;
+
+	if (filename.empty()) {
+		DBG_FS << "  invalid filename\n";
+		return result;
+	}
+
+	if (filename.find("..") != std::string::npos) {
+		ERR_FS << "Illegal path '" << filename << "' found (\"..\" not allowed).\n";
+		return result;
+	}
+
+	bool already_found = false;
+
+	if (filename[0] == '~' || filename[0] == '@')
+	{
+		// If the filename starts with '~' or '@', look in the user data directory.
+		result = get_user_data_dir() + "/data/" + filename.substr(1);
+		LOG_FS << "got relative name '" << filename << "' -> '" << result << "'\n";
+
+		already_found = file_exists(result) || is_directory(result);
+
+		// If it starts with '@', look also in the standard data directory.
+		if (filename[0] == '@' && !already_found && !game_config::path.empty())
+			result = game_config::path + "/data/" + filename.substr(1);
+	}
+	else if (filename.size() >= 2 && filename[0] == '.' && filename[1] == '/' )
+	{
+		// If the filename begins with a "./", look in the same directory
+		// as the file currrently being preprocessed.
+		result = current_dir + filename.substr(2);
+	}
+	else if (!game_config::path.empty())
+		result = game_config::path + "/data/" + filename;
+
+	if (result.empty() ||
+	    (!already_found && !file_exists(result) && !is_directory(result)))
+	{
+		LOG_FS << "  not found.\n";
+		result.clear();
+	}
+	else
+		LOG_FS << "  found: '" << result << "'\n";
+
+	return result;
 }
 
 scoped_istream& scoped_istream::operator=(std::istream *s)
@@ -1022,9 +1074,7 @@ scoped_istream& scoped_istream::operator=(std::istream *s)
 
 scoped_istream::~scoped_istream()
 {
-	DBG_FS <<"deleting stream";
 	delete stream;
-	DBG_FS << " ok\n";
 }
 
 scoped_ostream& scoped_ostream::operator=(std::ostream *s)
