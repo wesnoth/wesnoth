@@ -1125,7 +1125,7 @@ std::string normalize_path(const std::string &p1)
 	else
 #endif
 	if (!is_path_sep(p1[0]))
-		p2 = std::string(get_cwd()) + "/" + p1;
+		p2 = get_cwd() + "/" + p1;
 	else
 		p2 = p1;
 
