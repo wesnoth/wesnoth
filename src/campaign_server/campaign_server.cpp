@@ -738,10 +738,11 @@ int main(int argc, char**argv)
 	lg::timestamps(true);
 	try {
 		printf("argc %d argv[0] %s 1 %s\n",argc,argv[0],argv[1]);
+		std::string cfg_path = normalize_path("server.cfg");
 		if(argc >= 2 && atoi(argv[1])){
-			campaign_server("server.cfg",atoi(argv[1])).run();
+			campaign_server(cfg_path, atoi(argv[1])).run();
 		}else {
-			campaign_server("server.cfg").run();
+			campaign_server(cfg_path).run();
 		}
 	} catch(config::error& /*e*/) {
 		std::cerr << "Could not parse config file\n";
