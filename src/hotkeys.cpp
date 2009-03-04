@@ -239,7 +239,7 @@ static void key_event_execute(display& disp, const SDL_KeyboardEvent& event, com
 const std::string CLEARED_TEXT = "__none__";
 
 hotkey_item::hotkey_item(HOTKEY_COMMAND id,
-		const std::string& command, const std::string& description, bool hidden,
+		const std::string& command, const t_string &description, bool hidden,
 		scope s) :
 	id_(id),
 	command_(command),
@@ -337,7 +337,7 @@ std::string hotkey_item::get_name() const
 	return str.str();
 }
 
-void hotkey_item::set_description(const std::string& description)
+void hotkey_item::set_description(const t_string &description)
 {
 	description_ = description;
 }
@@ -441,7 +441,7 @@ void load_descriptions()
 		if (i >= hotkeys_.size()) {
 			ERR_G << "Hotkey list too short: " << hotkeys_.size() << "\n";
 		}
-		hotkeys_[i].set_description(dsgettext(PACKAGE "-lib", hotkey_list_[i].description));
+		hotkeys_[i].set_description(t_string(hotkey_list_[i].description, PACKAGE "-lib"));
 	}
 }
 

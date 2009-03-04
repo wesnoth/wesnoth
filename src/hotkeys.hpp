@@ -15,6 +15,7 @@
 #define HOTKEYS_HPP_INCLUDED
 
 #include "events.hpp"
+#include "tstring.hpp"
 #include "SDL.h"
 
 #include <string>
@@ -124,16 +125,16 @@ public:
 		{}
 
 	hotkey_item(HOTKEY_COMMAND id, const std::string& command,
-		const std::string& description, bool hidden=false,
+		const t_string &description, bool hidden = false,
 		scope s=SCOPE_GENERAL);
 
 	HOTKEY_COMMAND get_id() const { return id_; };
 	const std::string& get_command() const { return command_; };
-	const std::string& get_description() const { return description_; };
+	const t_string &get_description() const { return description_; };
 
 	void load_from_config(const config& cfg);
 
-	void set_description(const std::string& description);
+	void set_description(const t_string &description);
 	void clear_hotkey();
 	void set_key(int character, int keycode, bool shift, bool ctrl, bool alt, bool cmd);
 
@@ -170,7 +171,7 @@ public:
 private:
 	HOTKEY_COMMAND id_;
 	std::string command_;
-	std::string description_;
+	t_string description_;
 	scope scope_;
 
 	// UNBOUND means unset, CHARACTER means see character_, KEY means keycode_.
