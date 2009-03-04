@@ -9,7 +9,7 @@ SRC_URI="mirror://sourceforge/wesnoth/${PN}-${MY_PV}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
-IUSE="dedicated +editor lite nls server smallgui tinygui tools"
+IUSE="dedicated +editor lite nls server tinygui tools"
 
 RDEPEND=">=media-libs/libsdl-1.2.7
 	media-libs/sdl-net
@@ -33,12 +33,15 @@ DEPEND="${RDEPEND}
 
 S=${WORKDIR}/${PN}-${MY_PV}
 
+use_target() {
+	use $1 && echo $2
+}
+
+use_variable() {
+	echo ${2:-$1}=$(use $1 && echo ${3:-yes} || echo ${4:-no})
+}
+
 pkg_setup() {
-	if use !dedicated && use smallgui && use tinygui ; then
-		ewarn "USE=tinygui overrides USE=smallgui"
-		ebeep
-		epause 10
-	fi
 	games_pkg_setup
 }
 
@@ -79,28 +82,6 @@ src_compile() {
 		myconf="${myconf} server_uid=${GAMES_USER_DED}"
 		myconf="${myconf} server_gid=${GAMES_GROUP}"
 	fi
-	if use !dedicated ; then
-		myconf="${myconf} wesnoth"
-	fi
-	use tools && myconf="${myconf} cutter exploder"
-	if use editor; then
-		myconf="${myconf} editor=yes"
-	else
-		myconf="${myconf} editor=no"
-	fi
-	if use tinygui ; then
-		myconf="${myconf} gui=tiny"
-	elif use smallgui ; then
-		myconf="${myconf} gui=small"
-	fi
-	if use lite ; then
-		myconf="${myconf} lowmem=true"
-	fi
-	if use nls ; then
-		myconf="${myconf} nls=true"
-	else
-		myconf="${myconf} nls=false"
-	fi
 
 	if has ccache $FEATURES; then
 		myconf="${myconf} ccache=yes"
@@ -110,6 +91,13 @@ src_compile() {
 
 	scons $myconf \
 		${SCONSOPTS/-l[0-9]} \
+		$(use_target !dedicated wesnoth) \
+		$(use_target tools cutter) \
+		$(use_target tools exploder) \
+		$(use_variable editor) \
+		$(use_variable tinygui gui tiny normal) \
+		$(use_variable lite lowmem) \
+		$(use_variable nls) \
 		localedirname=/usr/share/locale \
 		prefix=/usr/games \
 		prefsdir=.wesnoth-1.5 \
