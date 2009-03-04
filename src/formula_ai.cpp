@@ -1701,8 +1701,6 @@ bool formula_ai::execute_variant(const variant& var, bool commandline)
 
 		prepare_move();
 		if(move) {
-			LOG_AI << "MOVE: " << move->src().x << "," << move->src().y << " -> " << move->dst().x << "," << move->dst().y << "\n";
-
 			unit_map::iterator unit_it = units_.find(move->src());
 			if( (possible_moves_.count(move->src()) > 0) && (unit_it->second.movement_left() != 0) && get_info().map.on_board(move->dst() ) ) {
 
@@ -1716,24 +1714,24 @@ bool formula_ai::execute_variant(const variant& var, bool commandline)
                                     } else {
                                             throw formula_error("Incorrect result of calling the move() formula", "", "", 0);
                                     }
+                                    LOG_AI << "MOVE: " << move->src().x << "," << move->src().y << " -> " << move->dst().x << "," << move->dst().y << "\n";
                                     made_move = true;
-                                }
+                                } else
+                                    ERR_AI << "IMPOSSIBLE MOVE ORDER\n";
 			}
 		} else if(move_partial) {
-			LOG_AI << "MOVE PARTIAL: " << move_partial->src().x << "," << move_partial->src().y << " -> " << move_partial->dst().x << "," << move_partial->dst().y << "\n";
-
 			unit_map::iterator unit_it = units_.find(move_partial->src());
 			if( (possible_moves_.count(move_partial->src()) > 0) && (unit_it->second.movement_left() != 0) && get_info().map.on_board(move_partial->dst()) ) {
                                 map_location destination = path_calculator(move_partial->src(), move_partial->dst(), unit_it);
 
                                 if( destination != map_location()) {
+                                    LOG_AI << "MOVE PARTIAL: " << move_partial->src().x << "," << move_partial->src().y << " -> " << move_partial->dst().x << "," << move_partial->dst().y << "\n";
                                     move_unit_partial(move_partial->src(), destination, possible_moves_);
                                     made_move = true;
-                                }
+                                } else
+                                    ERR_AI << "IMPOSSIBLE MOVE PARTIAL ORDER\n";
 			}
 		} else if(attack) {
-                        LOG_AI << "ATTACK: " << attack->src() << " -> " << attack->dst() << " " << attack->weapon() << "\n";
-
 			if(get_info().units.count(attack->dst()) == 0) {
 				//this is a legitimate situation; someone might send a series of units in
 				//to attack, but if the defender dies in the middle, we'll save the unit
@@ -1741,25 +1739,26 @@ bool formula_ai::execute_variant(const variant& var, bool commandline)
 				continue;
 			}
 
-                        std::map<map_location,paths>::iterator path = possible_moves_.find(attack->move_from());
+                        if( attack->move_from() != attack->src() ) {
 
-                        if( path->second.routes.count(attack->src()) == 0) {
-                            made_move = true;
-                            continue;
+                            std::map<map_location,paths>::iterator path = possible_moves_.find(attack->move_from());
+
+                            if( path->second.routes.count(attack->src()) == 0) {
+                                ERR_AI << "IMPOSSIBLE ATTACK ORDER\n";
+                                continue;
+                            }
+
+                            LOG_AI << "MOVE: " << attack->move_from().x << "," << attack->move_from().y << " -> " << attack->src().x << "," << attack->src().y << "\n";
+                            move_unit(attack->move_from(), attack->src(), possible_moves_);
                         }
 
-                        unit_map::iterator unit_it = units_.find(attack->move_from());
+                        unit_map::iterator unit_it = units_.find(attack->src());
 
-			if(attack->move_from() != attack->src() && (unit_it->second.movement_left() != 0) && get_info().map.on_board(attack->src() )) {
-				move_unit(attack->move_from(), attack->src(), possible_moves_);
-			} else {
-                            made_move = true;
-                            continue;
-                        }
-
-                        if(unit_it->second.attacks_left() != 0) {
+                        if( ( unit_it != units_.end() ) && (unit_it->second.attacks_left() != 0) ) {
+                            LOG_AI << "ATTACK: " << attack->src() << " -> " << attack->dst() << " " << attack->weapon() << "\n";
                             attack_enemy(attack->src(), attack->dst(), attack->weapon(), attack->defender_weapon());
                         }
+                        
 			made_move = true;
 		} else if(attack_analysis) {
 			//If we get an attack analysis back we will do the first attack.
@@ -1845,7 +1844,7 @@ bool formula_ai::execute_variant(const variant& var, bool commandline)
 		} else {
 			//this information is unneded when evaluating formulas form commandline
 			if (!commandline) {
-				LOG_AI << "UNRECOGNIZED MOVE: " << i->to_debug_string() << "\n";
+				ERR_AI << "UNRECOGNIZED MOVE: " << i->to_debug_string() << "\n";
 			}
 		}
 	}
@@ -2204,7 +2203,7 @@ void candidate_move::evaluate_move(const formula_ai* ai, unit_map& units,
                                                         res = -1000;
                                                 } catch(type_error& e) {
                                                         res = -1000;
-                                                        LOG_AI << "formula type error while evaluating candidate move: " << e.message << "\n";
+                                                        ERR_AI << "formula type error while evaluating candidate move: " << e.message << "\n";
                                                 }
 						if(res > score_) {
 							score_ = res;
@@ -2230,7 +2229,7 @@ void candidate_move::evaluate_move(const formula_ai* ai, unit_map& units,
                                 } catch(formula_error& e) {
                                     ai->handle_exception(e);
                                 } catch(type_error& e) {
-                                    LOG_AI << "formula type error while evaluating candidate move: " << e.message << "\n";
+                                    ERR_AI << "formula type error while evaluating candidate move: " << e.message << "\n";
                                 }
 				if(res > score_) {
 					score_ = res;
