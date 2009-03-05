@@ -1155,7 +1155,8 @@ void server::process_login(const network::connection sock,
 	lobby_.send_data(diff, sock);
 
 	LOG_SERVER << network::ip_address(sock) << "\t" << username
-		<< "\thas logged on. (socket: " << sock << ")\n";
+		<< "\thas logged on" << (registered ? " to a registered account" : "")
+		<< ". (socket: " << sock << ")\n";
 
 	for (std::vector<wesnothd::game*>::const_iterator g = games_.begin(); g != games_.end(); ++g) {
 		// Note: This string is parsed by the client to identify lobby join messages!
