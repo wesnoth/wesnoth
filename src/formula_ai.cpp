@@ -493,21 +493,12 @@ private:
 
                 paths::route route = ai_.shortest_path_calculator( src, dst, unit_it, allowed_teleports );
 
-                if( route.steps.size() == 0 ) {
-                    emergency_path_calculator em_calc(unit_it->second, ai_.get_info().map);
-
-                    route = a_star_search(src, dst, 1000.0, &em_calc, ai_.get_info().map.w(), ai_.get_info().map.h(), &allowed_teleports);
-
-                    if( route.steps.size() < 2 ) {
-                        return variant(&locations);
-                    }
+                if( route.steps.size() < 2 ) {
+                    return variant(&locations);
                 }
 
                 for (std::vector<map_location>::const_iterator loc_iter = route.steps.begin() + 1 ; loc_iter !=route.steps.end(); ++loc_iter) {
-                    if( unit_it->second.movement_cost(ai_.get_info().map[*loc_iter]) < 99 )
-                        locations.push_back( variant( new location_callable(*loc_iter) ));
-                    else
-                        break;
+                    locations.push_back( variant( new location_callable(*loc_iter) ));
                 }
 
 		return variant(&locations);
