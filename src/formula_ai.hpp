@@ -152,6 +152,9 @@ public:
 	void handle_exception(game_logic::formula_error& e) const;
 	void handle_exception(game_logic::formula_error& e, const std::string& failed_operation) const;
 
+        std::set<map_location> get_allowed_teleports(unit_map::iterator& unit_it) const;
+        paths::route shortest_path_calculator(const map_location& src, const map_location& dst, unit_map::iterator& unit_it, std::set<map_location>& allowed_teleports) const;
+
         void invalidate_move_maps() const { move_maps_valid_ = false; }
 
 private:
@@ -169,6 +172,7 @@ private:
 	void prepare_move() const;
 	void build_move_list();
 	void make_candidate_moves();
+
         map_location path_calculator(const map_location& src, const map_location& dst, unit_map::iterator& unit_it) const;
 	mutable bool move_maps_valid_;
 	mutable move_map srcdst_, dstsrc_, full_srcdst_, full_dstsrc_, enemy_srcdst_, enemy_dstsrc_;
