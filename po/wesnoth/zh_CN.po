@@ -11,8 +11,8 @@ msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-03-01 21:23+0100\n"
-"PO-Revision-Date: 2009-02-27 01:29-0600\n"
-"Last-Translator: luojie <lililjlj@gmail.com>\n"
+"PO-Revision-Date: 2009-03-03 15:01-0600\n"
+"Last-Translator: sylecn <sylecn@yahoo.com.cn>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -40,7 +40,7 @@ msgstr "单击鼠标中键滚屏"
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:70
 msgid "Keep scrolling when mouse leaves window"
-msgstr ""
+msgstr "鼠标离开窗口时继续滚动"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:77
@@ -1862,7 +1862,6 @@ msgstr ""
 
 #. [topic]: id=traits_dim
 #: data/core/help.cfg:440
-#, fuzzy
 msgid "Dim"
 msgstr "幽暗"
 
@@ -1870,7 +1869,7 @@ msgstr "幽暗"
 #: data/core/help.cfg:441
 msgid ""
 "Units with trait Dim suffer a 20% increase in experience required to advance."
-msgstr ""
+msgstr "有幽暗特质的单位升级所需的经验值比一般单位多20%."
 
 #. [topic]: id=traits_dim
 #: data/core/help.cfg:443
@@ -1880,18 +1879,20 @@ msgid ""
 "Dim is a trait all too common in goblins and other lesser species. There are "
 "reasons these species are lesser, and this is one of them."
 msgstr ""
+"\n"
+"\n"
+"幽暗特质在地精等稀有种族中很常见。这些种族之所以个体数量较少是有原因的，幽暗"
+"特质便是其中之一。"
 
 #. [topic]: id=traits_slow
 #: data/core/help.cfg:448
-#, fuzzy
 msgid "Slow"
-msgstr "减速"
+msgstr "慢速"
 
 #. [topic]: id=traits_slow
 #: data/core/help.cfg:449
-#, fuzzy
 msgid "Slow units have -1 movement but 5% more hitpoints."
-msgstr "拥有迅捷特质的单位有1点移动点数奖励，但是会减少5%的生命值。"
+msgstr "慢速单位移动点数-1，但是生命值多5%。"
 
 #. [topic]: id=traits_slow
 #: data/core/help.cfg:451
@@ -1902,17 +1903,20 @@ msgid ""
 "a movement penalty but are compensated for it with a slight increase in "
 "endurance."
 msgstr ""
+"\n"
+"\n"
+"体型庞大笨拙，地精和其它种族中的慢速个体在移动上受到限制，但在耐性上得到少许"
+"补偿。"
 
 #. [topic]: id=traits_weak
 #: data/core/help.cfg:456
-#, fuzzy
 msgid "Weak"
 msgstr "虚弱"
 
 #. [topic]: id=traits_weak
 #: data/core/help.cfg:457
 msgid "Units with trait Weak get a -1 increment in hitpoints and melee damage."
-msgstr ""
+msgstr "拥有虚弱特质的单位,攻击次数和近战伤害各-1"
 
 #. [topic]: id=..terrains
 #: data/core/help.cfg:465
@@ -2408,6 +2412,10 @@ msgid ""
 "\n"
 "Mermen and Naga both receive 70% defense on coastal reefs."
 msgstr ""
+"礁石是由石头，珊瑚和泥沙组成的浅滩。这为大部分陆地单位提供比浅水更好的支撑和"
+"防御。同时为水生种族提供特别的高防御。\n"
+"\n"
+"鱼人和娜迦在礁石上都有70%的防御。"
 
 #. [topic]: id=terrain_bridge
 #: data/core/help.cfg:732
@@ -2450,6 +2458,9 @@ msgid ""
 "jagged peaks at such rarified heights, and not even the fiercest troll can "
 "smash through thick walls of stone."
 msgstr ""
+"即使意志最强的旅行者也无法穿过的障碍。通常由坚固的石壁和高耸陡峭的山脉组成。"
+"山脉之高直冲云霄。即使是飞行生物也无法在这种高度找到出路，再残暴的巨魔也无法"
+"刨穿它厚厚的石壁。"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:760
@@ -8063,10 +8074,9 @@ msgstr ""
 "警告：已经有一个客户端使用这个用户名登录。如果继续登录将剔除那个客户端。"
 
 #: src/multiplayer.cpp:354
-#, fuzzy
 msgid ""
 "Error in the login procedure (the server had no seed for your connection)."
-msgstr "登录错误 （the server had no seed for your connection）"
+msgstr "登录错误（the server had no seed for your connection）"
 
 #: src/multiplayer.cpp:357
 msgid "The password you provided was incorrect."

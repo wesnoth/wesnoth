@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-03-01 21:23+0100\n"
-"PO-Revision-Date: 2009-02-23 21:28+0200\n"
+"PO-Revision-Date: 2009-03-05 01:03+0200\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish <wesnoth-tr@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -38,7 +38,7 @@ msgstr "Orta tuşla Kaydırma"
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:70
 msgid "Keep scrolling when mouse leaves window"
-msgstr ""
+msgstr "Fare pencereyi terketse bile kaydırma sürsün"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:77
@@ -1992,15 +1992,16 @@ msgstr ""
 
 #. [topic]: id=traits_dim
 #: data/core/help.cfg:440
-#, fuzzy
 msgid "Dim"
-msgstr "karartır"
+msgstr "Karartır"
 
 #. [topic]: id=traits_dim
 #: data/core/help.cfg:441
 msgid ""
 "Units with trait Dim suffer a 20% increase in experience required to advance."
 msgstr ""
+"Karratma yeteneğine sahip birimlerin terfi etmesi için gereken tecrübe puanı "
+"%20 daha fazladır."
 
 #. [topic]: id=traits_dim
 #: data/core/help.cfg:443
@@ -2010,20 +2011,23 @@ msgid ""
 "Dim is a trait all too common in goblins and other lesser species. There are "
 "reasons these species are lesser, and this is one of them."
 msgstr ""
+"\n"
+"\n"
+"Karartma goblinler gibi düşük özelliklere sahip birimleri için ortak "
+"yetenektir. Bu özelliklerin düşük seviyeli olmasının birçok sebebi zardır ve "
+"bu da onlardan biridir."
 
 #. [topic]: id=traits_slow
 #: data/core/help.cfg:448
-#, fuzzy
 msgid "Slow"
-msgstr "Yavaşlamış"
+msgstr "Yavaş"
 
 #. [topic]: id=traits_slow
 #: data/core/help.cfg:449
-#, fuzzy
 msgid "Slow units have -1 movement but 5% more hitpoints."
 msgstr ""
-"Hızlı birimlerin normalden 1 fazla hareket puanına karşın %5 daha az yaşam "
-"puanı olur."
+"Yavaş birimlerin normalden 1 daha az hareket puanına karşın %5 daha fazla "
+"yaşam puanı olur."
 
 #. [topic]: id=traits_slow
 #: data/core/help.cfg:451
@@ -2034,17 +2038,22 @@ msgid ""
 "a movement penalty but are compensated for it with a slight increase in "
 "endurance."
 msgstr ""
+"\n"
+"\n"
+"Goblinlerin kalın zırhlı, hantal ve yavaş birimlerinin yavaşlıklarına karşın "
+"dayanıklılıklarında biraz artış vardır."
 
 #. [topic]: id=traits_weak
 #: data/core/help.cfg:456
-#, fuzzy
 msgid "Weak"
-msgstr "zayıf"
+msgstr "Zayıf"
 
 #. [topic]: id=traits_weak
 #: data/core/help.cfg:457
 msgid "Units with trait Weak get a -1 increment in hitpoints and melee damage."
 msgstr ""
+"Zayıf birimler yaşam punlarında 1 azalmanın yanısıra yakın saldırı silahları "
+"da 1 puan daha az hasar verir."
 
 #. [topic]: id=..terrains
 #: data/core/help.cfg:465
@@ -9400,12 +9409,3 @@ msgstr "Wesnoth’u sizin için daha iyi hale getirmemize yardım edin!"
 #: src/upload_log.cpp:332
 msgid "Enable summary uploads"
 msgstr "Özet göndermeyi etkinleştir"
-
-#~ msgid "Reading cache"
-#~ msgstr "Önbellek okunuyor"
-
-#~ msgid "Back to start"
-#~ msgstr "Başa geri dön"
-
-#~ msgid "Only Run Safe Python AIs"
-#~ msgstr "Sadece Güvenli Python SA’ları Çalışsın"

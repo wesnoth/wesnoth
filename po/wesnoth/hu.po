@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: hu-wesnoth_1.5\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-03-01 21:23+0100\n"
-"PO-Revision-Date: 2009-02-14 00:08+0100\n"
+"PO-Revision-Date: 2009-03-05 00:46+0100\n"
 "Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
 "Language-Team: Hungarian <wesnoth-hungtrans@gna.org>\n"
 "MIME-Version: 1.0\n"
@@ -41,7 +41,7 @@ msgstr "Görgetés középső kattintással"
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:70
 msgid "Keep scrolling when mouse leaves window"
-msgstr ""
+msgstr "A görgetés folytatása akkor is, ha az egér kifut az ablakból"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:77
@@ -1794,7 +1794,7 @@ msgstr "Gyors"
 #: data/core/help.cfg:371
 msgid "Quick units have 1 extra movement point, but 5% less HP than usual."
 msgstr ""
-"A gyors egységeknek eggyel több a lépési pontjuk, ugyanakkor 5%-kal kevesebb "
+"A gyors egységeknek 1-gyel több a lépési pontjuk, ugyanakkor 5%-kal kevesebb "
 "ÉP-jük van a szokásosnál."
 
 #. [topic]: id=traits_quick
@@ -2052,15 +2052,16 @@ msgstr ""
 
 #. [topic]: id=traits_dim
 #: data/core/help.cfg:440
-#, fuzzy
 msgid "Dim"
-msgstr "buta"
+msgstr "Buta"
 
 #. [topic]: id=traits_dim
 #: data/core/help.cfg:441
 msgid ""
 "Units with trait Dim suffer a 20% increase in experience required to advance."
 msgstr ""
+"A buta egységeknek 20%-kal több tapasztalati pontra van szükségük a "
+"szintlépéshez."
 
 #. [topic]: id=traits_dim
 #: data/core/help.cfg:443
@@ -2070,19 +2071,21 @@ msgid ""
 "Dim is a trait all too common in goblins and other lesser species. There are "
 "reasons these species are lesser, and this is one of them."
 msgstr ""
+"\n"
+"\n"
+"A butaság egy meglehetősen hétköznapi jellemvonás a koboldok és más kisebb "
+"fajok körében. Több oka is van, hogy ezek csak kis fajok; ez az egyik."
 
 #. [topic]: id=traits_slow
 #: data/core/help.cfg:448
-#, fuzzy
 msgid "Slow"
-msgstr "Lelassítva"
+msgstr "Lassú"
 
 #. [topic]: id=traits_slow
 #: data/core/help.cfg:449
-#, fuzzy
 msgid "Slow units have -1 movement but 5% more hitpoints."
 msgstr ""
-"A gyors egységeknek eggyel több a lépési pontjuk, ugyanakkor 5%-kal kevesebb "
+"A lassú egységeknek 1-gyel kevesebb a lépési pontjuk, ugyanakkor 5%-kal több "
 "ÉP-jük van a szokásosnál."
 
 #. [topic]: id=traits_slow
@@ -2094,17 +2097,23 @@ msgid ""
 "a movement penalty but are compensated for it with a slight increase in "
 "endurance."
 msgstr ""
+"\n"
+"\n"
+"A koboldok és más fajok köpcös, ügyetlen és lassú képviselői "
+"mozgáshátrányban vannak, de ezért cserébe kissé ellenállóbbak, mert több ÉP-"
+"jük van."
 
 #. [topic]: id=traits_weak
 #: data/core/help.cfg:456
-#, fuzzy
 msgid "Weak"
-msgstr "gyenge"
+msgstr "Gyenge"
 
 #. [topic]: id=traits_weak
 #: data/core/help.cfg:457
 msgid "Units with trait Weak get a -1 increment in hitpoints and melee damage."
 msgstr ""
+"A gyenge egységek közelharcban 1-gyel kevesebbet sebeznek minden sikeres "
+"támadáskor, és 1-gyel kevesebb ÉP-jük van."
 
 #. [topic]: id=..terrains
 #: data/core/help.cfg:465
@@ -8763,8 +8772,8 @@ msgid ""
 "The nick '$nick' contains invalid characters. Only alpha-numeric characters, "
 "underscores and hyphens are allowed."
 msgstr ""
-"A megadott becenév („$nick”) érvénytelen karaktereket tartalmaz. Csak betűk, "
-"számok, aláhúzás és kötőjel használható."
+"A megadott becenév („$nick”) érvénytelen karaktereket tartalmaz. Csak ékezet "
+"nélküli betűk, számok, aláhúzás és kötőjel használható."
 
 #: src/multiplayer.cpp:343
 msgid "The nick '$nick' is too long. Nicks must be 18 characters or less."
@@ -9851,18 +9860,3 @@ msgstr "Segíts a Wesnoth tökéletesítésében!"
 #: src/upload_log.cpp:332
 msgid "Enable summary uploads"
 msgstr "Összesítések feltöltésének engedélyezése"
-
-#~ msgid "Reading cache"
-#~ msgstr "A gyorsítótár beolvasása"
-
-#~ msgid "Back to start"
-#~ msgstr "Vissza a kezdéshez"
-
-#~ msgid "Only Run Safe Python AIs"
-#~ msgstr "Csak biztonságos Python MI-k futtatása"
-
-#~ msgid "+  "
-#~ msgstr "+  "
-
-#~ msgid "Unknown error."
-#~ msgstr "Ismeretlen hiba."
