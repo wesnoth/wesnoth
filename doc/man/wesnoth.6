@@ -142,12 +142,6 @@ runs the game without sounds and music.
 .B --path
 prints the name of the game data directory and exits.
 .TP
-.B --python-api
-prints the runtime documentation for the python API.
-.TP
-.B --python-shell
-invokes wesnoth's embedded python interpreter in interactive mode.
-.TP
 .BI -r\  X x Y ,\ --resolution\  X x Y
 sets the screen resolution. Example:
 .B -r 800x600
@@ -234,9 +228,6 @@ file.
 .BI --turns= value
 sets the number of turns for the chosen scenario. The default is
 .BR 50 .
-.TP
-Example to test your own AI against the default AI without starting the GUI:
-.B wesnoth --nogui --multiplayer --controller1=ai --controller2=ai --algorithm2=python_ai --parm2=python_script:py/my_own_python_ai.py
 .
 .SH AUTHOR
 .
