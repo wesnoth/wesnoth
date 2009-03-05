@@ -984,14 +984,17 @@ surface floating_label::create_surface()
 
 			Uint32 color = SDL_MapRGBA(foreground->format, bgcolour_.r,bgcolour_.g, bgcolour_.b, bgalpha_);
 			SDL_FillRect(background,NULL, color);
-
-			// we make the text less transparent, because the blitting on the dark background
-			// will darken the aliased part. This also make it more readable
-			foreground = adjust_surface_alpha(foreground, ftofxp(2.0), false);
+	
+			// we make the text less transparent, because the blitting on the
+			// dark background will darken the anti-aliased part.
+			// This 1.13 value seems to restore the brightness of version 1.4
+			// (where the text was blitted directly on screen)
+			foreground = adjust_surface_alpha(foreground, ftofxp(1.13), false);
 
 			SDL_Rect r = { border_, border_, 0, 0 };
 			SDL_SetAlpha(foreground,SDL_SRCALPHA,SDL_ALPHA_OPAQUE);
 			blit_surface(foreground, NULL, background, &r);
+
 			surf_ = create_optimized_surface(background);
 			// RLE compression seems less efficient for big semi-transparent area
 			// so, remove it for this case, but keep the optimized display format
