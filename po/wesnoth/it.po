@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-03-01 21:23+0100\n"
+"POT-Creation-Date: 2009-03-05 10:12+0100\n"
 "PO-Revision-Date: 2009-03-01 11:37+0100\n"
 "Last-Translator: Luciano Montanaro <mikelima@cirulla.net>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -6054,7 +6054,7 @@ msgstr "Server alternativo di Wesnoth"
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/campaign_dialog.cfg:32 src/game.cpp:1098
+#: data/gui/default/window/campaign_dialog.cfg:32 src/game.cpp:1097
 msgid "Play a campaign"
 msgstr "Gioca una campagna"
 
@@ -7276,23 +7276,19 @@ msgstr ""
 "Questa estensione ha un nome di directory o di file non valido e quindi non "
 "può essere installata."
 
-#: src/addon_management.cpp:644
-msgid "Unchecked script files found:"
-msgstr "File di script non controllato trovato: "
-
-#: src/addon_management.cpp:651
+#: src/addon_management.cpp:641
 msgid "The add-on '$addon_title|' has been successfully installed."
 msgstr "L'estensione «$addon_title|» è stata installata."
 
-#: src/addon_management.cpp:653
+#: src/addon_management.cpp:643
 msgid "Add-on Installed"
 msgstr "Estensione installata"
 
-#: src/addon_management.cpp:711
+#: src/addon_management.cpp:701
 msgid "Outdated add-ons"
 msgstr "Estensioni obsolete"
 
-#: src/addon_management.cpp:713
+#: src/addon_management.cpp:703
 msgid ""
 "An outdated local add-on has publishing information attached. It will not be "
 "offered for updating."
@@ -7306,52 +7302,52 @@ msgstr[1] ""
 "Alcune estensioni locali antiquate hanno le informazioni di pubblicazione "
 "allegate. Non verranno proposte per l'aggiornamento."
 
-#: src/addon_management.cpp:722
+#: src/addon_management.cpp:712
 msgid "Could not find any updated add-ons on this server."
 msgstr "Non sono stati trovate estensioni aggiornate sul server."
 
-#: src/addon_management.cpp:722
+#: src/addon_management.cpp:712
 msgid "No add-ons to update"
 msgstr "Non ci sono estensioni da aggiornare"
 
-#: src/addon_management.cpp:736 src/addon_management.cpp:939
+#: src/addon_management.cpp:726 src/addon_management.cpp:929
 #: src/dialogs.cpp:647 src/menu_events.cpp:197 src/menu_events.cpp:1007
 msgid "Name"
 msgstr "Nome"
 
-#: src/addon_management.cpp:736
+#: src/addon_management.cpp:726
 msgid "New version"
 msgstr "Nuova versione"
 
-#: src/addon_management.cpp:736
+#: src/addon_management.cpp:726
 msgid "Old version"
 msgstr "Vecchia versione"
 
-#: src/addon_management.cpp:737 src/addon_management.cpp:940
+#: src/addon_management.cpp:727 src/addon_management.cpp:930
 msgid "Author"
 msgstr "Autore"
 
-#: src/addon_management.cpp:737 src/addon_management.cpp:940
+#: src/addon_management.cpp:727 src/addon_management.cpp:930
 msgid "Size"
 msgstr "Dimensione"
 
-#: src/addon_management.cpp:791
+#: src/addon_management.cpp:781
 msgid "Update add-ons"
 msgstr "Aggiorna estensioni"
 
-#: src/addon_management.cpp:792
+#: src/addon_management.cpp:782
 msgid "Select an add-on to update:"
 msgstr "Seleziona l'estensione da aggiornare:"
 
-#: src/addon_management.cpp:806
+#: src/addon_management.cpp:796
 msgid "Update all"
 msgstr "Aggiorna tutte"
 
-#: src/addon_management.cpp:863
+#: src/addon_management.cpp:853
 msgid "Update failed"
 msgstr "Aggiornamento non riuscito"
 
-#: src/addon_management.cpp:865
+#: src/addon_management.cpp:855
 msgid "The following add-on could not be downloaded or updated successfully:"
 msgid_plural ""
 "The following add-ons could not be downloaded or updated successfully:"
@@ -7359,81 +7355,81 @@ msgstr[0] "La seguente estensione ha degli errori e non si riesce a caricare:"
 msgstr[1] ""
 "Le seguenti estensioni hanno degli errori e non si riescono a caricare:"
 
-#: src/addon_management.cpp:874
+#: src/addon_management.cpp:864
 msgid "Update succeeded"
 msgstr "Aggiornamento riuscito"
 
-#: src/addon_management.cpp:875
+#: src/addon_management.cpp:865
 msgid "Add-on updated successfully."
 msgstr "Estensione aggiornata correttamente."
 
-#: src/addon_management.cpp:876
+#: src/addon_management.cpp:866
 msgid "All add-ons updated successfully."
 msgstr "Tutte le estensioni aggiornate correttamente."
 
-#: src/addon_management.cpp:899
+#: src/addon_management.cpp:889
 msgid "Connecting to add-ons server..."
 msgstr "Connessione al server delle estensioni..."
 
-#: src/addon_management.cpp:902
+#: src/addon_management.cpp:892
 msgid "Could not connect to host."
 msgstr "Impossibile connettersi all'host remoto."
 
-#: src/addon_management.cpp:910
+#: src/addon_management.cpp:900
 msgid "Requesting list of add-ons"
 msgstr "Sto richiedendo la lista delle estensioni"
 
-#: src/addon_management.cpp:923
+#: src/addon_management.cpp:913
 msgid "An error occurred while communicating with the server."
 msgstr "Errore durante la comunicazione con il server."
 
-#: src/addon_management.cpp:939 src/titlescreen.cpp:331
+#: src/addon_management.cpp:929 src/titlescreen.cpp:331
 msgid "Version"
 msgstr "Versione"
 
-#: src/addon_management.cpp:940
+#: src/addon_management.cpp:930
 msgid "Downloads"
 msgstr "Scaricamenti"
 
-#: src/addon_management.cpp:940 src/help.cpp:1386 src/menu_events.cpp:196
+#: src/addon_management.cpp:930 src/help.cpp:1386 src/menu_events.cpp:196
 #: src/menu_events.cpp:1006 src/menu_events.cpp:1505
 msgid "Type"
 msgstr "Tipo"
 
-#: src/addon_management.cpp:1007
+#: src/addon_management.cpp:997
 msgid "Publish add-on: "
 msgstr "Pubblica estensione: "
 
-#: src/addon_management.cpp:1013
+#: src/addon_management.cpp:1003
 msgid "Delete add-on: "
 msgstr "Cancella estensione: "
 
-#: src/addon_management.cpp:1019
+#: src/addon_management.cpp:1009
 msgid "There are no add-ons available for download from this server."
 msgstr "Nessuna estensione disponibile per il download da questo server."
 
-#: src/addon_management.cpp:1032
+#: src/addon_management.cpp:1022
 msgid "Get add-ons"
 msgstr "Scarica estensioni"
 
-#: src/addon_management.cpp:1033
+#: src/addon_management.cpp:1023
 msgid "Choose the add-on to download."
 msgstr "Scegli l'estensione da scaricare."
 
-#: src/addon_management.cpp:1045 src/dialogs.cpp:672 src/menu_events.cpp:1065
+#: src/addon_management.cpp:1035 src/dialogs.cpp:672 src/menu_events.cpp:1065
 #: src/menu_events.cpp:1534
 msgid "Filter: "
 msgstr "Filtro: "
 
-#: src/addon_management.cpp:1076
+#: src/addon_management.cpp:1066
 msgid "Network communication error."
 msgstr "Errore di comunicazione con la rete."
 
-#: src/addon_management.cpp:1079
+#: src/addon_management.cpp:1069
 msgid "Remote host disconnected."
 msgstr "Disconnesso dall'host remoto."
 
-#: src/addon_management.cpp:1082
+#: src/addon_management.cpp:1072
 msgid ""
 "A problem occurred when trying to create the files necessary to install this "
 "add-on."
@@ -7441,41 +7437,41 @@ msgstr ""
 "C'è stato un problema durante la creazione dei file necessari a installare "
 "questa estensione."
 
-#: src/addon_management.cpp:1100 src/addon_management.cpp:1155
+#: src/addon_management.cpp:1090 src/addon_management.cpp:1145
 #: src/dialogs.cpp:282 src/dialogs.cpp:290 src/menu_events.cpp:616
 #: src/multiplayer_create.cpp:529
 msgid "Error"
 msgstr "Errore"
 
-#: src/addon_management.cpp:1101
+#: src/addon_management.cpp:1091
 msgid "You have no add-ons installed."
 msgstr "Non ci sono estensioni installate."
 
-#: src/addon_management.cpp:1113
+#: src/addon_management.cpp:1103
 msgid "Choose the add-on to remove."
 msgstr "Scegli l'estensione da eliminare."
 
-#: src/addon_management.cpp:1113
+#: src/addon_management.cpp:1103
 msgid "Uninstall add-ons"
 msgstr "Deinstalla estensioni"
 
-#: src/addon_management.cpp:1125
+#: src/addon_management.cpp:1115
 msgid "Are you sure you want to remove the add-on '$addon|'?"
 msgstr "Sei sicuro di voler eliminare l'estensione «$addon»?"
 
-#: src/addon_management.cpp:1130 src/multiplayer.cpp:219
+#: src/addon_management.cpp:1120 src/multiplayer.cpp:219
 msgid "Confirm"
 msgstr "Confermo"
 
-#: src/addon_management.cpp:1142
+#: src/addon_management.cpp:1132
 msgid "Add-on '$addon|' deleted."
 msgstr "L'estensione «$addon» è stata eliminata."
 
-#: src/addon_management.cpp:1147
+#: src/addon_management.cpp:1137
 msgid "Add-on deleted"
 msgstr "Estensione eliminata"
 
-#: src/addon_management.cpp:1156
+#: src/addon_management.cpp:1146
 msgid "Add-on could not be deleted properly:"
 msgstr "Non è stato possibile eliminare completamente l'estensione:"
 
@@ -7713,22 +7709,22 @@ msgstr "PE: "
 msgid "Moves: "
 msgstr "Mosse: "
 
-#: src/game.cpp:612 src/game.cpp:1428
+#: src/game.cpp:611 src/game.cpp:1426
 msgid "The Battle for Wesnoth"
 msgstr "The Battle for Wesnoth"
 
-#: src/game.cpp:895 src/game.cpp:899
+#: src/game.cpp:894 src/game.cpp:898
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr ""
 "Attenzione: Il file che hai provato a caricare è danneggiato. Cerco di "
 "caricarlo comunque.\n"
 
-#: src/game.cpp:937 src/multiplayer_connect.cpp:1548
+#: src/game.cpp:936 src/multiplayer_connect.cpp:1548
 msgid "This save is from a version too old to be loaded."
 msgstr ""
 "Questo salvataggio è di una versione troppo vecchia per riuscire a caricarlo."
 
-#: src/game.cpp:943 src/multiplayer_connect.cpp:1555
+#: src/game.cpp:942 src/multiplayer_connect.cpp:1555
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
@@ -7736,31 +7732,31 @@ msgstr ""
 "Questo salvataggio è di una versione differente del gioco. Vuoi provare a "
 "caricarlo?"
 
-#: src/game.cpp:963 src/game.cpp:966 src/multiplayer_connect.cpp:1529
+#: src/game.cpp:962 src/game.cpp:965 src/multiplayer_connect.cpp:1529
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Il file che hai provato a caricare è danneggiato: '"
 
-#: src/game.cpp:969
+#: src/game.cpp:968
 msgid "File I/O Error while reading the game"
 msgstr "Errore di I/O di un file durante la lettura del gioco"
 
-#: src/game.cpp:1056 src/game.cpp:1094
+#: src/game.cpp:1055 src/game.cpp:1093
 msgid "No campaigns are available.\n"
 msgstr "Nessuna campagna disponibile.\n"
 
-#: src/game.cpp:1144
+#: src/game.cpp:1143
 msgid "Difficulty"
 msgstr "Difficoltà"
 
-#: src/game.cpp:1145
+#: src/game.cpp:1144
 msgid "Select difficulty level:"
 msgstr "Seleziona il livello di difficoltà"
 
-#: src/game.cpp:1307
+#: src/game.cpp:1305
 msgid "Do you really want to start the server?"
 msgstr "Vuoi davvero avviare il server?"
 
-#: src/game.cpp:1308
+#: src/game.cpp:1306
 msgid ""
 "The server will run in a background process until all users have "
 "disconnected."
@@ -7768,62 +7764,62 @@ msgstr ""
 "Il server resterà in esecuzione in sottofondo finché tutti gli utenti non si "
 "saranno disconnessi."
 
-#: src/game.cpp:1312
+#: src/game.cpp:1310
 msgid "Don't show again"
 msgstr "Non mostrare più"
 
-#: src/game.cpp:1383
+#: src/game.cpp:1381
 msgid "Error while starting server: "
 msgstr "Errore durante l'avvio del server: "
 
-#: src/game.cpp:1385 src/playcampaign.cpp:97 src/playcampaign.cpp:383
+#: src/game.cpp:1383 src/playcampaign.cpp:97 src/playcampaign.cpp:383
 msgid "The game could not be loaded: "
 msgstr "La partita non può essere caricata: "
 
-#: src/game.cpp:1387 src/playcampaign.cpp:99 src/playcampaign.cpp:386
+#: src/game.cpp:1385 src/playcampaign.cpp:99 src/playcampaign.cpp:386
 msgid "Error while playing the game: "
 msgstr "Errore mentre si gioca la partita: "
 
-#: src/game.cpp:1407 src/playcampaign.cpp:101 src/playcampaign.cpp:389
+#: src/game.cpp:1405 src/playcampaign.cpp:101 src/playcampaign.cpp:389
 msgid "The game map could not be loaded: "
 msgstr "La mappa non può essere caricata: "
 
-#: src/game.cpp:1473 src/game.cpp:1594
+#: src/game.cpp:1471 src/game.cpp:1592
 msgid "Error loading game configuration files: '"
 msgstr "Errore durante il caricamento dei file di configurazione: «"
 
-#: src/game.cpp:1474 src/game.cpp:1595
+#: src/game.cpp:1472 src/game.cpp:1593
 msgid "' (The game will now exit)"
 msgstr "» (Partita in fase di chiusura.)"
 
-#: src/game.cpp:1569
+#: src/game.cpp:1567
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "La seguente estensione ha degli errori e non può essere caricata:"
 msgstr[1] ""
 "Le seguenti estensioni hanno degli errori e non possono essere caricate:"
 
-#: src/game.cpp:1576
+#: src/game.cpp:1574
 msgid "ERROR DETAILS:"
 msgstr "DETTAGLI DELL'ERRORE:"
 
-#: src/game.cpp:1604
+#: src/game.cpp:1602
 msgid "Loading data files"
 msgstr "Caricamento file di dati"
 
-#: src/game.cpp:1996
+#: src/game.cpp:1994
 msgid "Loading game configuration."
 msgstr "Caricamento della configurazione di gioco."
 
-#: src/game.cpp:2002
+#: src/game.cpp:2000
 msgid "Re-initialize fonts for the current language."
 msgstr "Reimpostazione dei font per la lingua corrente."
 
-#: src/game.cpp:2010
+#: src/game.cpp:2008
 msgid "Searching for installed add-ons."
 msgstr "Controllo delle estensioni installate."
 
-#: src/game.cpp:2019
+#: src/game.cpp:2017
 msgid "Loading title screen."
 msgstr "Caricamento schermata dei titoli"
 
@@ -9877,6 +9873,9 @@ msgstr "Aiutaci a migliorare Wesnoth!"
 #: src/upload_log.cpp:332
 msgid "Enable summary uploads"
 msgstr "Abilita l'invio del sommario"
+
+#~ msgid "Unchecked script files found:"
+#~ msgstr "File di script non controllato trovato: "
 
 #~ msgid "Reading cache"
 #~ msgstr "Lettura della cache"

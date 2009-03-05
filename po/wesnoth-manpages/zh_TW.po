@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
-"POT-Creation-Date: 2009-01-06 22:08+0100\n"
+"POT-Creation-Date: 2009-03-05 10:12+0100\n"
 "PO-Revision-Date: 2008-08-13 14:46+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: none\n"
@@ -322,111 +322,91 @@ msgid "prints the name of the game data directory and exits."
 msgstr "顯示遊戲資料庫目錄並退出。"
 
 #: ../../doc/man/wesnoth.6:144
-#, fuzzy, no-wrap
-msgid "B<--python-api>"
-msgstr "B<--path>"
-
-# type: Plain text
-#: ../../doc/man/wesnoth.6:147
-msgid "prints the runtime documentation for the python API."
-msgstr ""
-
-#: ../../doc/man/wesnoth.6:147
-#, fuzzy, no-wrap
-msgid "B<--python-shell>"
-msgstr "B<--path>"
-
-# type: Plain text
-#: ../../doc/man/wesnoth.6:150
-msgid "invokes wesnoth's embedded python interpreter in interactive mode."
-msgstr ""
-
-#: ../../doc/man/wesnoth.6:150
 #, no-wrap
 msgid "B<-r\\ >I<X>B<x>I<Y>B<,\\ --resolution\\ >I<X>B<x>I<Y>"
 msgstr "B<-r\\ >I<X>B<x>I<Y>B<,\\ --resolution\\ >I<X>B<x>I<Y>"
 
-#: ../../doc/man/wesnoth.6:154
+#: ../../doc/man/wesnoth.6:148
 msgid "sets the screen resolution. Example: B<-r 800x600>"
 msgstr "設定螢幕解析度。例如： B<-r 800x600>"
 
-#: ../../doc/man/wesnoth.6:154
+#: ../../doc/man/wesnoth.6:148
 #, fuzzy, no-wrap
 msgid "B<--smallgui>"
 msgstr "B<--nogui>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:157
+#: ../../doc/man/wesnoth.6:151
 msgid ""
 "allows to use screen resolutions down to 800x480 and resizes a few interface "
 "elements."
 msgstr ""
 
-#: ../../doc/man/wesnoth.6:157
+#: ../../doc/man/wesnoth.6:151
 #, fuzzy, no-wrap
 msgid "B<-s,\\ --server\\ [host]>"
 msgstr "B<-v, --verbose>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:161
+#: ../../doc/man/wesnoth.6:155
 msgid ""
 "connects to the specified host if any, otherwise connect to the first server "
 "in preferences. Example: B<--server server.wesnoth.org>"
 msgstr ""
 
-#: ../../doc/man/wesnoth.6:161
+#: ../../doc/man/wesnoth.6:155
 #, no-wrap
 msgid "B<-t, --test>"
 msgstr "B<-t, --test>"
 
-#: ../../doc/man/wesnoth.6:164
+#: ../../doc/man/wesnoth.6:158
 msgid "runs the game in a small test scenario."
 msgstr "執行游戲測試任務。"
 
-#: ../../doc/man/wesnoth.6:164
+#: ../../doc/man/wesnoth.6:158
 #, fuzzy, no-wrap
 msgid "B<--validcache>"
 msgstr "B<--nocache>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:167
+#: ../../doc/man/wesnoth.6:161
 msgid "assumes that the cache is valid. (dangerous)"
 msgstr ""
 
-#: ../../doc/man/wesnoth.6:167
+#: ../../doc/man/wesnoth.6:161
 #, no-wrap
 msgid "B<-v, --version>"
 msgstr "B<-v, --version>"
 
-#: ../../doc/man/wesnoth.6:170
+#: ../../doc/man/wesnoth.6:164
 msgid "shows the version number and exits."
 msgstr "顯示版本並退出。"
 
-#: ../../doc/man/wesnoth.6:170
+#: ../../doc/man/wesnoth.6:164
 #, no-wrap
 msgid "B<-w, --windowed>"
 msgstr "B<-w, --windowed>"
 
-#: ../../doc/man/wesnoth.6:173
+#: ../../doc/man/wesnoth.6:167
 msgid "runs the game in windowed mode."
 msgstr "使用視窗模式執行遊戲。"
 
-#: ../../doc/man/wesnoth.6:173
+#: ../../doc/man/wesnoth.6:167
 #, fuzzy, no-wrap
 msgid "B<--with-replay>"
 msgstr "B<--no-delay>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:178
+#: ../../doc/man/wesnoth.6:172
 msgid "replays the game loaded with the B<--load> option."
 msgstr ""
 
-#: ../../doc/man/wesnoth.6:179
+#: ../../doc/man/wesnoth.6:173
 #, no-wrap
 msgid "Options for --multiplayer"
 msgstr "--multiplayer的額外選項"
 
-#: ../../doc/man/wesnoth.6:186
+#: ../../doc/man/wesnoth.6:180
 msgid ""
 "The side-specific multiplayer options are marked with I<number>.  I<number> "
 "has to be replaced by a side number. It usually is 1 or 2 but depends on the "
@@ -436,34 +416,34 @@ msgstr ""
 "的數字替換。一般是1 或者2。不過不同的任務可選的陣營數會有不同。取決於您的任"
 "務。"
 
-#: ../../doc/man/wesnoth.6:186
+#: ../../doc/man/wesnoth.6:180
 #, no-wrap
 msgid "B<--algorithm>I<number>B<=>I<value>"
 msgstr "B<--algorithm>I<number>B<=>I<value>"
 
-#: ../../doc/man/wesnoth.6:193
+#: ../../doc/man/wesnoth.6:187
 msgid ""
 "selects a non-standard algorithm to be used by the AI controller for this "
 "side. Available values: B<idle_ai> and B<sample_ai>."
 msgstr ""
 "為這個陣營選擇一個非標準的AI控制。可選值有：B<idle_ai> 和 B<sample_ai>."
 
-#: ../../doc/man/wesnoth.6:193
+#: ../../doc/man/wesnoth.6:187
 #, no-wrap
 msgid "B<--controller>I<number>B<=>I<value>"
 msgstr "B<--controller>I<number>B<=>I<value>"
 
-#: ../../doc/man/wesnoth.6:199
+#: ../../doc/man/wesnoth.6:193
 msgid ""
 "selects the controller for this side. Available values: B<human> and B<ai>."
 msgstr "選擇這個陣營的控制者。可選值有：B<human>和B<ai>。"
 
-#: ../../doc/man/wesnoth.6:199
+#: ../../doc/man/wesnoth.6:193
 #, no-wrap
 msgid "B<--era=>I<value>"
 msgstr "B<--era=>I<value>"
 
-#: ../../doc/man/wesnoth.6:206
+#: ../../doc/man/wesnoth.6:200
 msgid ""
 "use this option to play in the selected era instead of the B<Default> era. "
 "The era is chosen by an id. Eras are described in the B<data/multiplayer/"
@@ -472,12 +452,12 @@ msgstr ""
 "使用這個選項選擇一個模式來代替B<Default>模式。所選模式由ID決定。模式在B<data/"
 "multiplayer/eras.cfg>檔案中描述。"
 
-#: ../../doc/man/wesnoth.6:206
+#: ../../doc/man/wesnoth.6:200
 #, no-wrap
 msgid "B<--exit-at-end>"
 msgstr "B<--exit-at-end>"
 
-#: ../../doc/man/wesnoth.6:210
+#: ../../doc/man/wesnoth.6:204
 msgid ""
 "exits once the scenario is over, without displaying victory/defeat dialog "
 "which requires the user to click OK.  This is also used for scriptable "
@@ -485,12 +465,12 @@ msgid ""
 msgstr ""
 "當任務結束時直接退出而不顯示勝利/失敗對話框。這個選項也可以用在初稿基準測試。"
 
-#: ../../doc/man/wesnoth.6:210
+#: ../../doc/man/wesnoth.6:204
 #, no-wrap
 msgid "B<--nogui>"
 msgstr "B<--nogui>"
 
-#: ../../doc/man/wesnoth.6:215
+#: ../../doc/man/wesnoth.6:209
 msgid ""
 "runs the game without the GUI. Must appear before B<--multiplayer> to have "
 "the desired effect."
@@ -498,12 +478,12 @@ msgstr ""
 "執行遊戲，但不啟動使用者圖形界面(GUI)。此選項必須在B<--multiplayer>之前使用才"
 "有效。"
 
-#: ../../doc/man/wesnoth.6:215
+#: ../../doc/man/wesnoth.6:209
 #, no-wrap
 msgid "B<--parm>I<number>B<=>I<name>B<:>I<value>"
 msgstr "B<--parm>I<number>B<=>I<name>B<:>I<value>"
 
-#: ../../doc/man/wesnoth.6:224
+#: ../../doc/man/wesnoth.6:218
 msgid ""
 "sets additional parameters for this side. This parameter depends on the "
 "options used with B<--controller> and B<--algorithm>.  It should only be "
@@ -512,23 +492,23 @@ msgstr ""
 "為這個陣營設置附加選項。這個參數依B<--controller>和B<--algorithm>的選項而定。"
 "這個選項只對設計AI的人比較有用。(目前還沒有相應的文檔)"
 
-#: ../../doc/man/wesnoth.6:224
+#: ../../doc/man/wesnoth.6:218
 #, no-wrap
 msgid "B<--scenario=>I<value>"
 msgstr "B<--scenario=>I<value>"
 
-#: ../../doc/man/wesnoth.6:228
+#: ../../doc/man/wesnoth.6:222
 msgid ""
 "selects a multiplayer scenario by id. The default scenario id is "
 "B<multiplayer_The_Freelands>."
 msgstr "透過ID選擇多人遊戲地圖。預設地圖是B<multiplayer_The_Freelands>。"
 
-#: ../../doc/man/wesnoth.6:228
+#: ../../doc/man/wesnoth.6:222
 #, no-wrap
 msgid "B<--side>I<number>B<=>I<value>"
 msgstr "B<--side>I<number>B<=>I<value>"
 
-#: ../../doc/man/wesnoth.6:233
+#: ../../doc/man/wesnoth.6:227
 msgid ""
 "selects a faction of the current era for this side. The faction is chosen by "
 "an id. Factions are described in the data/multiplayer.cfg file."
@@ -536,40 +516,25 @@ msgstr ""
 "為當前陣營選擇模式中的一個類別。所選類別由ID決定。類別在文件data/multiplayer."
 "cfg文件中描述。"
 
-#: ../../doc/man/wesnoth.6:233
+#: ../../doc/man/wesnoth.6:227
 #, no-wrap
 msgid "B<--turns=>I<value>"
 msgstr "B<--turns=>I<value>"
 
-#: ../../doc/man/wesnoth.6:237
+#: ../../doc/man/wesnoth.6:231
 msgid "sets the number of turns for the chosen scenario. The default is B<50>."
 msgstr "設定所選任務的回合數限制。預設值為B<50>。"
 
-#: ../../doc/man/wesnoth.6:237
-#, no-wrap
-msgid "Example to test your own AI against the default AI without starting the GUI:"
-msgstr "用來測試你自己寫的AI和預設AI的例子，不開啟使用者圖形界面(GUI)。"
-
-#: ../../doc/man/wesnoth.6:240
-msgid ""
-"B<wesnoth --nogui --multiplayer --controller1=ai --controller2=ai --"
-"algorithm2=python_ai --parm2=python_script:py/my_own_python_ai.py>"
-msgstr ""
-"B<wesnoth --nogui --multiplayer --controller1=ai --controller2=ai --"
-"algorithm2=python_ai --parm2=python_script:py/my_own_python_ai.py>wesnoth --"
-"nogui --multiplayer --controller1=ai --controller2=ai --algorithm2=python_ai "
-"--parm2=python_script:py/my_own_python_ai.py"
-
-#: ../../doc/man/wesnoth.6:241 ../../doc/man/wesnothd.6:188
+#: ../../doc/man/wesnoth.6:232 ../../doc/man/wesnothd.6:188
 #, no-wrap
 msgid "AUTHOR"
 msgstr "作者"
 
-#: ../../doc/man/wesnoth.6:244
+#: ../../doc/man/wesnoth.6:235
 msgid "Written by David White E<lt>davidnwhite@verizon.netE<gt>."
 msgstr "由David White E<lt>davidnwhite@verizon.netE<gt>編寫。"
 
-#: ../../doc/man/wesnoth.6:246
+#: ../../doc/man/wesnoth.6:237
 msgid ""
 "Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon."
 "netE<gt> and Soliton E<lt>soliton.de@gmail.comE<gt>."
@@ -577,28 +542,28 @@ msgstr ""
 "經Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt> "
 "and Soliton E<lt>soliton.de@gmail.comE<gt>更動。"
 
-#: ../../doc/man/wesnoth.6:248
+#: ../../doc/man/wesnoth.6:239
 msgid ""
 "This manual page was originally written by Cyril Bouthors "
 "E<lt>cyril@bouthors.orgE<gt>."
 msgstr "這個說明頁最早由 Cyril Bouthors 撰寫E<lt>cyril@bouthors.orgE<gt>。"
 
-#: ../../doc/man/wesnoth.6:250 ../../doc/man/wesnothd.6:195
+#: ../../doc/man/wesnoth.6:241 ../../doc/man/wesnothd.6:195
 msgid "Visit the official homepage: http://www.wesnoth.org/"
 msgstr ""
 "官方網站: http://www.wesnoth.org/繁體中文翻譯團隊:http://wesnoth-tw.blogspot."
 "com/"
 
-#: ../../doc/man/wesnoth.6:251 ../../doc/man/wesnothd.6:196
+#: ../../doc/man/wesnoth.6:242 ../../doc/man/wesnothd.6:196
 #, no-wrap
 msgid "COPYRIGHT"
 msgstr "版權"
 
-#: ../../doc/man/wesnoth.6:254 ../../doc/man/wesnothd.6:199
+#: ../../doc/man/wesnoth.6:245 ../../doc/man/wesnothd.6:199
 msgid "Copyright \\(co 2003-2007 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr "版權 \\(co 2003-2007 David White E<lt>davidnwhite@verizon.netE<gt>"
 
-#: ../../doc/man/wesnoth.6:257 ../../doc/man/wesnothd.6:202
+#: ../../doc/man/wesnoth.6:248 ../../doc/man/wesnothd.6:202
 msgid ""
 "This is Free Software; this software is licensed under the GPL version 2, as "
 "published by the Free Software Foundation.  There is NO warranty; not even "
@@ -610,12 +575,12 @@ msgstr ""
 "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.There is NO warranty; "
 "not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE."
 
-#: ../../doc/man/wesnoth.6:258 ../../doc/man/wesnothd.6:203
+#: ../../doc/man/wesnoth.6:249 ../../doc/man/wesnothd.6:203
 #, no-wrap
 msgid "SEE ALSO"
 msgstr "參見"
 
-#: ../../doc/man/wesnoth.6:261
+#: ../../doc/man/wesnoth.6:252
 msgid "B<wesnoth_editor>(6), B<wesnothd>(6)"
 msgstr "B<wesnoth_editor>(6), B<wesnothd>(6)"
 
@@ -1008,6 +973,26 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:206
 msgid "B<wesnoth>(6), B<wesnoth_editor>(6)"
 msgstr "B<wesnoth>(6), B<wesnoth_editor>(6)"
+
+#, fuzzy
+#~ msgid "B<--python-api>"
+#~ msgstr "B<--path>"
+
+#, fuzzy
+#~ msgid "B<--python-shell>"
+#~ msgstr "B<--path>"
+
+#~ msgid "Example to test your own AI against the default AI without starting the GUI:"
+#~ msgstr "用來測試你自己寫的AI和預設AI的例子，不開啟使用者圖形界面(GUI)。"
+
+#~ msgid ""
+#~ "B<wesnoth --nogui --multiplayer --controller1=ai --controller2=ai --"
+#~ "algorithm2=python_ai --parm2=python_script:py/my_own_python_ai.py>"
+#~ msgstr ""
+#~ "B<wesnoth --nogui --multiplayer --controller1=ai --controller2=ai --"
+#~ "algorithm2=python_ai --parm2=python_script:py/my_own_python_ai.py>wesnoth "
+#~ "--nogui --multiplayer --controller1=ai --controller2=ai --"
+#~ "algorithm2=python_ai --parm2=python_script:py/my_own_python_ai.py"
 
 #~ msgid "WESNOTH_EDITOR"
 #~ msgstr "WESNOTH_EDITOR"

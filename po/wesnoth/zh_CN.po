@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-03-01 21:23+0100\n"
+"POT-Creation-Date: 2009-03-05 10:12+0100\n"
 "PO-Revision-Date: 2009-03-03 15:01-0600\n"
 "Last-Translator: sylecn <sylecn@yahoo.com.cn>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
@@ -5464,7 +5464,7 @@ msgstr "其他服务器"
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/campaign_dialog.cfg:32 src/game.cpp:1098
+#: data/gui/default/window/campaign_dialog.cfg:32 src/game.cpp:1097
 msgid "Play a campaign"
 msgstr "战役"
 
@@ -6590,23 +6590,19 @@ msgid ""
 "The add-on has an invalid file or directory name and can not be installed."
 msgstr "插件的文件或目录的名称问题导致无法安装。"
 
-#: src/addon_management.cpp:644
-msgid "Unchecked script files found:"
-msgstr "发现未检查过的脚本："
-
-#: src/addon_management.cpp:651
+#: src/addon_management.cpp:641
 msgid "The add-on '$addon_title|' has been successfully installed."
 msgstr "插件 '$addon_title|'  已经安装。"
 
-#: src/addon_management.cpp:653
+#: src/addon_management.cpp:643
 msgid "Add-on Installed"
 msgstr "插件已安装"
 
-#: src/addon_management.cpp:711
+#: src/addon_management.cpp:701
 msgid "Outdated add-ons"
 msgstr "过期插件"
 
-#: src/addon_management.cpp:713
+#: src/addon_management.cpp:703
 msgid ""
 "An outdated local add-on has publishing information attached. It will not be "
 "offered for updating."
@@ -6616,173 +6612,173 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/addon_management.cpp:722
+#: src/addon_management.cpp:712
 msgid "Could not find any updated add-ons on this server."
 msgstr "无法在这个服务器找到升级的插件。"
 
-#: src/addon_management.cpp:722
+#: src/addon_management.cpp:712
 msgid "No add-ons to update"
 msgstr "没有要更新的插件"
 
-#: src/addon_management.cpp:736 src/addon_management.cpp:939
+#: src/addon_management.cpp:726 src/addon_management.cpp:929
 #: src/dialogs.cpp:647 src/menu_events.cpp:197 src/menu_events.cpp:1007
 msgid "Name"
 msgstr "名称"
 
-#: src/addon_management.cpp:736
+#: src/addon_management.cpp:726
 msgid "New version"
 msgstr "新版本"
 
-#: src/addon_management.cpp:736
+#: src/addon_management.cpp:726
 msgid "Old version"
 msgstr "旧版本"
 
-#: src/addon_management.cpp:737 src/addon_management.cpp:940
+#: src/addon_management.cpp:727 src/addon_management.cpp:930
 msgid "Author"
 msgstr "作者"
 
-#: src/addon_management.cpp:737 src/addon_management.cpp:940
+#: src/addon_management.cpp:727 src/addon_management.cpp:930
 msgid "Size"
 msgstr "大小"
 
-#: src/addon_management.cpp:791
+#: src/addon_management.cpp:781
 msgid "Update add-ons"
 msgstr "升级插件"
 
-#: src/addon_management.cpp:792
+#: src/addon_management.cpp:782
 msgid "Select an add-on to update:"
 msgstr "选择要更新的插件："
 
-#: src/addon_management.cpp:806
+#: src/addon_management.cpp:796
 msgid "Update all"
 msgstr "全部升级"
 
-#: src/addon_management.cpp:863
+#: src/addon_management.cpp:853
 msgid "Update failed"
 msgstr "升级失败"
 
-#: src/addon_management.cpp:865
+#: src/addon_management.cpp:855
 msgid "The following add-on could not be downloaded or updated successfully:"
 msgid_plural ""
 "The following add-ons could not be downloaded or updated successfully:"
 msgstr[0] "以下插件有错误，无法下载或升级："
 msgstr[1] "以下插件有错误，无法下载或升级："
 
-#: src/addon_management.cpp:874
+#: src/addon_management.cpp:864
 msgid "Update succeeded"
 msgstr "升级完成"
 
-#: src/addon_management.cpp:875
+#: src/addon_management.cpp:865
 msgid "Add-on updated successfully."
 msgstr "成功升级。"
 
-#: src/addon_management.cpp:876
+#: src/addon_management.cpp:866
 msgid "All add-ons updated successfully."
 msgstr "成功升级。"
 
-#: src/addon_management.cpp:899
+#: src/addon_management.cpp:889
 msgid "Connecting to add-ons server..."
 msgstr "正在连接到插件服务器..."
 
-#: src/addon_management.cpp:902
+#: src/addon_management.cpp:892
 msgid "Could not connect to host."
 msgstr "无法连接到主机。"
 
-#: src/addon_management.cpp:910
+#: src/addon_management.cpp:900
 msgid "Requesting list of add-ons"
 msgstr "正在请求插件列表"
 
-#: src/addon_management.cpp:923
+#: src/addon_management.cpp:913
 msgid "An error occurred while communicating with the server."
 msgstr "与服务器通讯错误。"
 
-#: src/addon_management.cpp:939 src/titlescreen.cpp:331
+#: src/addon_management.cpp:929 src/titlescreen.cpp:331
 msgid "Version"
 msgstr "版本"
 
-#: src/addon_management.cpp:940
+#: src/addon_management.cpp:930
 msgid "Downloads"
 msgstr "下载数"
 
-#: src/addon_management.cpp:940 src/help.cpp:1386 src/menu_events.cpp:196
+#: src/addon_management.cpp:930 src/help.cpp:1386 src/menu_events.cpp:196
 #: src/menu_events.cpp:1006 src/menu_events.cpp:1505
 msgid "Type"
 msgstr "类型"
 
-#: src/addon_management.cpp:1007
+#: src/addon_management.cpp:997
 msgid "Publish add-on: "
 msgstr "发布插件： "
 
-#: src/addon_management.cpp:1013
+#: src/addon_management.cpp:1003
 msgid "Delete add-on: "
 msgstr "删除插件： "
 
-#: src/addon_management.cpp:1019
+#: src/addon_management.cpp:1009
 msgid "There are no add-ons available for download from this server."
 msgstr "这个服务器上无可供下载的插件。"
 
-#: src/addon_management.cpp:1032
+#: src/addon_management.cpp:1022
 msgid "Get add-ons"
 msgstr "获取插件"
 
-#: src/addon_management.cpp:1033
+#: src/addon_management.cpp:1023
 msgid "Choose the add-on to download."
 msgstr "选择要下载的插件。"
 
-#: src/addon_management.cpp:1045 src/dialogs.cpp:672 src/menu_events.cpp:1065
+#: src/addon_management.cpp:1035 src/dialogs.cpp:672 src/menu_events.cpp:1065
 #: src/menu_events.cpp:1534
 msgid "Filter: "
 msgstr "过滤： "
 
-#: src/addon_management.cpp:1076
+#: src/addon_management.cpp:1066
 msgid "Network communication error."
 msgstr "网络通讯错误。"
 
-#: src/addon_management.cpp:1079
+#: src/addon_management.cpp:1069
 msgid "Remote host disconnected."
 msgstr "远程主机关闭。"
 
-#: src/addon_management.cpp:1082
+#: src/addon_management.cpp:1072
 msgid ""
 "A problem occurred when trying to create the files necessary to install this "
 "add-on."
 msgstr "这个插件所需文件创建错误。"
 
-#: src/addon_management.cpp:1100 src/addon_management.cpp:1155
+#: src/addon_management.cpp:1090 src/addon_management.cpp:1145
 #: src/dialogs.cpp:282 src/dialogs.cpp:290 src/menu_events.cpp:616
 #: src/multiplayer_create.cpp:529
 msgid "Error"
 msgstr "错误"
 
-#: src/addon_management.cpp:1101
+#: src/addon_management.cpp:1091
 msgid "You have no add-ons installed."
 msgstr "没有安装插件。"
 
-#: src/addon_management.cpp:1113
+#: src/addon_management.cpp:1103
 msgid "Choose the add-on to remove."
 msgstr "选择要删除的插件。"
 
-#: src/addon_management.cpp:1113
+#: src/addon_management.cpp:1103
 msgid "Uninstall add-ons"
 msgstr "卸载插件"
 
-#: src/addon_management.cpp:1125
+#: src/addon_management.cpp:1115
 msgid "Are you sure you want to remove the add-on '$addon|'?"
 msgstr "您确定您要删除插件 '$addon|'?"
 
-#: src/addon_management.cpp:1130 src/multiplayer.cpp:219
+#: src/addon_management.cpp:1120 src/multiplayer.cpp:219
 msgid "Confirm"
 msgstr "确认"
 
-#: src/addon_management.cpp:1142
+#: src/addon_management.cpp:1132
 msgid "Add-on '$addon|' deleted."
 msgstr "插件'$addon|'已删除"
 
-#: src/addon_management.cpp:1147
+#: src/addon_management.cpp:1137
 msgid "Add-on deleted"
 msgstr "插件已删除"
 
-#: src/addon_management.cpp:1156
+#: src/addon_management.cpp:1146
 msgid "Add-on could not be deleted properly:"
 msgstr "无法删除插件:"
 
@@ -7013,109 +7009,109 @@ msgstr "经验值："
 msgid "Moves: "
 msgstr "移动： "
 
-#: src/game.cpp:612 src/game.cpp:1428
+#: src/game.cpp:611 src/game.cpp:1426
 msgid "The Battle for Wesnoth"
 msgstr "韦诺之战"
 
-#: src/game.cpp:895 src/game.cpp:899
+#: src/game.cpp:894 src/game.cpp:898
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr "警告：您试图载入的文件已损坏。继续尝试载入。\n"
 
-#: src/game.cpp:937 src/multiplayer_connect.cpp:1548
+#: src/game.cpp:936 src/multiplayer_connect.cpp:1548
 msgid "This save is from a version too old to be loaded."
 msgstr "这个存档是由一个太早期的游戏版本保存的，现在的版本无法载入。"
 
-#: src/game.cpp:943 src/multiplayer_connect.cpp:1555
+#: src/game.cpp:942 src/multiplayer_connect.cpp:1555
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
 msgstr "这个存档来自于不同版本的游戏。您仍然想载入吗？"
 
-#: src/game.cpp:963 src/game.cpp:966 src/multiplayer_connect.cpp:1529
+#: src/game.cpp:962 src/game.cpp:965 src/multiplayer_connect.cpp:1529
 msgid "The file you have tried to load is corrupt: '"
 msgstr "您试图载入的文件已损坏： '"
 
-#: src/game.cpp:969
+#: src/game.cpp:968
 msgid "File I/O Error while reading the game"
 msgstr "当读取游戏时发生文件I/O错误。"
 
-#: src/game.cpp:1056 src/game.cpp:1094
+#: src/game.cpp:1055 src/game.cpp:1093
 msgid "No campaigns are available.\n"
 msgstr "无可用战役。\n"
 
-#: src/game.cpp:1144
+#: src/game.cpp:1143
 msgid "Difficulty"
 msgstr "难度"
 
-#: src/game.cpp:1145
+#: src/game.cpp:1144
 msgid "Select difficulty level:"
 msgstr "选择难度："
 
-#: src/game.cpp:1307
+#: src/game.cpp:1305
 msgid "Do you really want to start the server?"
 msgstr "真想要开启一个服务器？"
 
-#: src/game.cpp:1308
+#: src/game.cpp:1306
 msgid ""
 "The server will run in a background process until all users have "
 "disconnected."
 msgstr "服务器会在后台一直运行，直到所有用户都断开连接。"
 
-#: src/game.cpp:1312
+#: src/game.cpp:1310
 msgid "Don't show again"
 msgstr "不要再次显示"
 
-#: src/game.cpp:1383
+#: src/game.cpp:1381
 msgid "Error while starting server: "
 msgstr "游戏服务端开启错误： "
 
-#: src/game.cpp:1385 src/playcampaign.cpp:97 src/playcampaign.cpp:383
+#: src/game.cpp:1383 src/playcampaign.cpp:97 src/playcampaign.cpp:383
 msgid "The game could not be loaded: "
 msgstr "无法加载游戏： "
 
-#: src/game.cpp:1387 src/playcampaign.cpp:99 src/playcampaign.cpp:386
+#: src/game.cpp:1385 src/playcampaign.cpp:99 src/playcampaign.cpp:386
 msgid "Error while playing the game: "
 msgstr "游戏执行出错： "
 
-#: src/game.cpp:1407 src/playcampaign.cpp:101 src/playcampaign.cpp:389
+#: src/game.cpp:1405 src/playcampaign.cpp:101 src/playcampaign.cpp:389
 msgid "The game map could not be loaded: "
 msgstr "无法加载游戏地图： "
 
-#: src/game.cpp:1473 src/game.cpp:1594
+#: src/game.cpp:1471 src/game.cpp:1592
 msgid "Error loading game configuration files: '"
 msgstr "载入游戏配置文件时出错： '"
 
-#: src/game.cpp:1474 src/game.cpp:1595
+#: src/game.cpp:1472 src/game.cpp:1593
 msgid "' (The game will now exit)"
 msgstr "' （现在将退出游戏）"
 
-#: src/game.cpp:1569
+#: src/game.cpp:1567
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "以下插件有错误，无法加载："
 msgstr[1] "以下插件有错误，无法加载："
 
-#: src/game.cpp:1576
+#: src/game.cpp:1574
 msgid "ERROR DETAILS:"
 msgstr "错误细节："
 
-#: src/game.cpp:1604
+#: src/game.cpp:1602
 msgid "Loading data files"
 msgstr "读取数据文件"
 
-#: src/game.cpp:1996
+#: src/game.cpp:1994
 msgid "Loading game configuration."
 msgstr "载入游戏配置。"
 
-#: src/game.cpp:2002
+#: src/game.cpp:2000
 msgid "Re-initialize fonts for the current language."
 msgstr "为当前语言重绘字体。"
 
-#: src/game.cpp:2010
+#: src/game.cpp:2008
 msgid "Searching for installed add-ons."
 msgstr "搜索已经安装的插件"
 
-#: src/game.cpp:2019
+#: src/game.cpp:2017
 msgid "Loading title screen."
 msgstr "载入主屏幕。"
 
@@ -9106,6 +9102,9 @@ msgstr "帮助我们改进韦诺，提升您的游戏体验！"
 #: src/upload_log.cpp:332
 msgid "Enable summary uploads"
 msgstr "开启摘要上传模式"
+
+#~ msgid "Unchecked script files found:"
+#~ msgstr "发现未检查过的脚本："
 
 #~ msgid "Reading cache"
 #~ msgstr "正在读取缓存"

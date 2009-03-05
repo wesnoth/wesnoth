@@ -123,12 +123,6 @@ runs the game without sounds and music.
 \fB\-\-path\fP
 prints the name of the game data directory and exits.
 .TP 
-\fB\-\-python\-api\fP
-prints the runtime documentation for the python API.
-.TP 
-\fB\-\-python\-shell\fP
-invokes wesnoth's embedded python interpreter in interactive mode.
-.TP 
 \fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\ \fP\fIX\fP\fBx\fP\fIY\fP
 sets the screen resolution. Example: \fB\-r 800x600\fP
 .TP 
@@ -197,10 +191,6 @@ an id. Factions are described in the data/multiplayer.cfg file.
 .TP 
 \fB\-\-turns=\fP\fIvalue\fP
 sets the number of turns for the chosen scenario. The default is \fB50\fP.
-.TP 
-Example to test your own AI against the default AI without starting the GUI:
-\fBwesnoth \-\-nogui \-\-multiplayer \-\-controller1=ai \-\-controller2=ai
-\-\-algorithm2=python_ai \-\-parm2=python_script:py/my_own_python_ai.py\fP
 .
 .SH AUTHOR
 .

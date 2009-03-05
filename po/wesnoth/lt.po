@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-03-01 21:23+0100\n"
+"POT-Creation-Date: 2009-03-05 10:12+0100\n"
 "PO-Revision-Date: 2009-02-20 17:31+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lithuanian <kde-i18n-doc@lists.kde.org>\n"
@@ -4764,7 +4764,7 @@ msgstr "Alternatyvus Wesnoth serveris"
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/campaign_dialog.cfg:32 src/game.cpp:1098
+#: data/gui/default/window/campaign_dialog.cfg:32 src/game.cpp:1097
 msgid "Play a campaign"
 msgstr "Žaisti kampaniją"
 
@@ -5868,23 +5868,19 @@ msgid ""
 "The add-on has an invalid file or directory name and can not be installed."
 msgstr ""
 
-#: src/addon_management.cpp:644
-msgid "Unchecked script files found:"
-msgstr ""
-
-#: src/addon_management.cpp:651
+#: src/addon_management.cpp:641
 msgid "The add-on '$addon_title|' has been successfully installed."
 msgstr "Priedas „$addon_title|“ buvo sėkmingai įdiegtas."
 
-#: src/addon_management.cpp:653
+#: src/addon_management.cpp:643
 msgid "Add-on Installed"
 msgstr "Priedas įdiegtas"
 
-#: src/addon_management.cpp:711
+#: src/addon_management.cpp:701
 msgid "Outdated add-ons"
 msgstr "Pasenę priedai"
 
-#: src/addon_management.cpp:713
+#: src/addon_management.cpp:703
 msgid ""
 "An outdated local add-on has publishing information attached. It will not be "
 "offered for updating."
@@ -5895,52 +5891,52 @@ msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
-#: src/addon_management.cpp:722
+#: src/addon_management.cpp:712
 msgid "Could not find any updated add-ons on this server."
 msgstr "Serveryje nepavyko rasti nė vieno atnaujinto priedo."
 
-#: src/addon_management.cpp:722
+#: src/addon_management.cpp:712
 msgid "No add-ons to update"
 msgstr "Nėra atnaujintinų priedų"
 
-#: src/addon_management.cpp:736 src/addon_management.cpp:939
+#: src/addon_management.cpp:726 src/addon_management.cpp:929
 #: src/dialogs.cpp:647 src/menu_events.cpp:197 src/menu_events.cpp:1007
 msgid "Name"
 msgstr "Vardas"
 
-#: src/addon_management.cpp:736
+#: src/addon_management.cpp:726
 msgid "New version"
 msgstr "Nauja versija"
 
-#: src/addon_management.cpp:736
+#: src/addon_management.cpp:726
 msgid "Old version"
 msgstr "Sena versija"
 
-#: src/addon_management.cpp:737 src/addon_management.cpp:940
+#: src/addon_management.cpp:727 src/addon_management.cpp:930
 msgid "Author"
 msgstr "Autorius"
 
-#: src/addon_management.cpp:737 src/addon_management.cpp:940
+#: src/addon_management.cpp:727 src/addon_management.cpp:930
 msgid "Size"
 msgstr "Dydis"
 
-#: src/addon_management.cpp:791
+#: src/addon_management.cpp:781
 msgid "Update add-ons"
 msgstr "Atnaujinti priedus"
 
-#: src/addon_management.cpp:792
+#: src/addon_management.cpp:782
 msgid "Select an add-on to update:"
 msgstr "Pasirinkite priedą atnaujinimui:"
 
-#: src/addon_management.cpp:806
+#: src/addon_management.cpp:796
 msgid "Update all"
 msgstr "Atnaujinti viską"
 
-#: src/addon_management.cpp:863
+#: src/addon_management.cpp:853
 msgid "Update failed"
 msgstr "Atnaujinimas nepavyko"
 
-#: src/addon_management.cpp:865
+#: src/addon_management.cpp:855
 msgid "The following add-on could not be downloaded or updated successfully:"
 msgid_plural ""
 "The following add-ons could not be downloaded or updated successfully:"
@@ -5951,121 +5947,121 @@ msgstr[1] ""
 msgstr[2] ""
 "Šie priedai negalėjo būti automatiškai atsiųsti ar sėkmingai atnaujinti:"
 
-#: src/addon_management.cpp:874
+#: src/addon_management.cpp:864
 msgid "Update succeeded"
 msgstr "Sėkmingai atnaujinta"
 
-#: src/addon_management.cpp:875
+#: src/addon_management.cpp:865
 msgid "Add-on updated successfully."
 msgstr "Priedas sėkmingai atnaujintas."
 
-#: src/addon_management.cpp:876
+#: src/addon_management.cpp:866
 msgid "All add-ons updated successfully."
 msgstr "Visi priedai sėkmingai atnaujinti."
 
-#: src/addon_management.cpp:899
+#: src/addon_management.cpp:889
 msgid "Connecting to add-ons server..."
 msgstr "Jungiamasi prie priedų serverio..."
 
-#: src/addon_management.cpp:902
+#: src/addon_management.cpp:892
 msgid "Could not connect to host."
 msgstr ""
 
-#: src/addon_management.cpp:910
+#: src/addon_management.cpp:900
 msgid "Requesting list of add-ons"
 msgstr "Užklausiamas priedų sąrašas"
 
-#: src/addon_management.cpp:923
+#: src/addon_management.cpp:913
 msgid "An error occurred while communicating with the server."
 msgstr "Įvyko klaida, bendraujant su serveriu."
 
-#: src/addon_management.cpp:939 src/titlescreen.cpp:331
+#: src/addon_management.cpp:929 src/titlescreen.cpp:331
 msgid "Version"
 msgstr "Versija"
 
-#: src/addon_management.cpp:940
+#: src/addon_management.cpp:930
 msgid "Downloads"
 msgstr "Atsisiuntimai"
 
-#: src/addon_management.cpp:940 src/help.cpp:1386 src/menu_events.cpp:196
+#: src/addon_management.cpp:930 src/help.cpp:1386 src/menu_events.cpp:196
 #: src/menu_events.cpp:1006 src/menu_events.cpp:1505
 msgid "Type"
 msgstr "Tipas"
 
-#: src/addon_management.cpp:1007
+#: src/addon_management.cpp:997
 msgid "Publish add-on: "
 msgstr "Publish add-on: "
 
-#: src/addon_management.cpp:1013
+#: src/addon_management.cpp:1003
 msgid "Delete add-on: "
 msgstr "Trinti priedą: "
 
-#: src/addon_management.cpp:1019
+#: src/addon_management.cpp:1009
 msgid "There are no add-ons available for download from this server."
 msgstr ""
 
-#: src/addon_management.cpp:1032
+#: src/addon_management.cpp:1022
 msgid "Get add-ons"
 msgstr "Gauti priedų"
 
-#: src/addon_management.cpp:1033
+#: src/addon_management.cpp:1023
 msgid "Choose the add-on to download."
 msgstr ""
 
-#: src/addon_management.cpp:1045 src/dialogs.cpp:672 src/menu_events.cpp:1065
+#: src/addon_management.cpp:1035 src/dialogs.cpp:672 src/menu_events.cpp:1065
 #: src/menu_events.cpp:1534
 msgid "Filter: "
 msgstr "Filtras: "
 
-#: src/addon_management.cpp:1076
+#: src/addon_management.cpp:1066
 msgid "Network communication error."
 msgstr "Bendravimo tinklu klaida."
 
-#: src/addon_management.cpp:1079
+#: src/addon_management.cpp:1069
 msgid "Remote host disconnected."
 msgstr ""
 
-#: src/addon_management.cpp:1082
+#: src/addon_management.cpp:1072
 msgid ""
 "A problem occurred when trying to create the files necessary to install this "
 "add-on."
 msgstr ""
 
-#: src/addon_management.cpp:1100 src/addon_management.cpp:1155
+#: src/addon_management.cpp:1090 src/addon_management.cpp:1145
 #: src/dialogs.cpp:282 src/dialogs.cpp:290 src/menu_events.cpp:616
 #: src/multiplayer_create.cpp:529
 msgid "Error"
 msgstr "Klaida"
 
-#: src/addon_management.cpp:1101
+#: src/addon_management.cpp:1091
 msgid "You have no add-ons installed."
 msgstr "Neturite įdiegtų priedų."
 
-#: src/addon_management.cpp:1113
+#: src/addon_management.cpp:1103
 msgid "Choose the add-on to remove."
 msgstr "Pasirinkite priedą šalinimui."
 
-#: src/addon_management.cpp:1113
+#: src/addon_management.cpp:1103
 msgid "Uninstall add-ons"
 msgstr "Pašalinti priedus"
 
-#: src/addon_management.cpp:1125
+#: src/addon_management.cpp:1115
 msgid "Are you sure you want to remove the add-on '$addon|'?"
 msgstr "Ar tiktai norite pašalinti priedą „$addon|“?"
 
-#: src/addon_management.cpp:1130 src/multiplayer.cpp:219
+#: src/addon_management.cpp:1120 src/multiplayer.cpp:219
 msgid "Confirm"
 msgstr "Patvirtinti"
 
-#: src/addon_management.cpp:1142
+#: src/addon_management.cpp:1132
 msgid "Add-on '$addon|' deleted."
 msgstr "Priedas „$addon|“ ištrintas."
 
-#: src/addon_management.cpp:1147
+#: src/addon_management.cpp:1137
 msgid "Add-on deleted"
 msgstr "Priedas pašalintas"
 
-#: src/addon_management.cpp:1156
+#: src/addon_management.cpp:1146
 msgid "Add-on could not be deleted properly:"
 msgstr "Priedas negali būti tinkamai ištrintas:"
 
@@ -6301,112 +6297,112 @@ msgstr "PT: "
 msgid "Moves: "
 msgstr ""
 
-#: src/game.cpp:612 src/game.cpp:1428
+#: src/game.cpp:611 src/game.cpp:1426
 msgid "The Battle for Wesnoth"
 msgstr "Mūšis dėl Wesnoth"
 
-#: src/game.cpp:895 src/game.cpp:899
+#: src/game.cpp:894 src/game.cpp:898
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr ""
 "Dėmesio: Failas, kurį bandote įkelti yra sugadintas. Įkėlinėjama vis tiek.\n"
 
-#: src/game.cpp:937 src/multiplayer_connect.cpp:1548
+#: src/game.cpp:936 src/multiplayer_connect.cpp:1548
 msgid "This save is from a version too old to be loaded."
 msgstr "Išsaugojimas yra iš per senos versijos, kad būtų įkeltas."
 
-#: src/game.cpp:943 src/multiplayer_connect.cpp:1555
+#: src/game.cpp:942 src/multiplayer_connect.cpp:1555
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
 msgstr ""
 "Išsaugojimas yra iš kitos žaidimo versijos. Ar norite pabandyti jį įkelti?"
 
-#: src/game.cpp:963 src/game.cpp:966 src/multiplayer_connect.cpp:1529
+#: src/game.cpp:962 src/game.cpp:965 src/multiplayer_connect.cpp:1529
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Failas, kurį bandėte įkelti, sugadintas: „"
 
-#: src/game.cpp:969
+#: src/game.cpp:968
 msgid "File I/O Error while reading the game"
 msgstr "Failo I/O klaida, nuskaitant žaidimą"
 
-#: src/game.cpp:1056 src/game.cpp:1094
+#: src/game.cpp:1055 src/game.cpp:1093
 msgid "No campaigns are available.\n"
 msgstr "Nėra jokių kampanijų.\n"
 
-#: src/game.cpp:1144
+#: src/game.cpp:1143
 msgid "Difficulty"
 msgstr "Sunkumas"
 
-#: src/game.cpp:1145
+#: src/game.cpp:1144
 msgid "Select difficulty level:"
 msgstr "Pasirinkite sunkumo lygį:"
 
-#: src/game.cpp:1307
+#: src/game.cpp:1305
 msgid "Do you really want to start the server?"
 msgstr "Ar tikrai norite paleisti serverį?"
 
-#: src/game.cpp:1308
+#: src/game.cpp:1306
 msgid ""
 "The server will run in a background process until all users have "
 "disconnected."
 msgstr "Serveris veiks fono procese, kol visi naudotojai neatsijungs."
 
-#: src/game.cpp:1312
+#: src/game.cpp:1310
 msgid "Don't show again"
 msgstr "Daugiau neberodyti"
 
-#: src/game.cpp:1383
+#: src/game.cpp:1381
 msgid "Error while starting server: "
 msgstr "Įvyko klaida, paleidžiant serverį: "
 
-#: src/game.cpp:1385 src/playcampaign.cpp:97 src/playcampaign.cpp:383
+#: src/game.cpp:1383 src/playcampaign.cpp:97 src/playcampaign.cpp:383
 msgid "The game could not be loaded: "
 msgstr "Žaidimas negali būti įkeltas: "
 
-#: src/game.cpp:1387 src/playcampaign.cpp:99 src/playcampaign.cpp:386
+#: src/game.cpp:1385 src/playcampaign.cpp:99 src/playcampaign.cpp:386
 msgid "Error while playing the game: "
 msgstr "Įvyko klaida, žaidžiant žaidimą: "
 
-#: src/game.cpp:1407 src/playcampaign.cpp:101 src/playcampaign.cpp:389
+#: src/game.cpp:1405 src/playcampaign.cpp:101 src/playcampaign.cpp:389
 msgid "The game map could not be loaded: "
 msgstr "Žaidimo žemėlapis negali būti įkeltas: "
 
-#: src/game.cpp:1473 src/game.cpp:1594
+#: src/game.cpp:1471 src/game.cpp:1592
 msgid "Error loading game configuration files: '"
 msgstr "Įvyko klaida, įkeliant žaidimo konfigūracijos failus: „"
 
-#: src/game.cpp:1474 src/game.cpp:1595
+#: src/game.cpp:1472 src/game.cpp:1593
 msgid "' (The game will now exit)"
 msgstr "“ (Žaidimas dabar išsijungs)"
 
-#: src/game.cpp:1569
+#: src/game.cpp:1567
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "Šis priedas turėjo klaidų ir negali būti įkeltas:"
 msgstr[1] "Šie priedai turėjo klaidų ir negali būti įkelti:"
 msgstr[2] "Šie priedai turėjo klaidų ir negali būti įkelti:"
 
-#: src/game.cpp:1576
+#: src/game.cpp:1574
 msgid "ERROR DETAILS:"
 msgstr "KLAIDOS DETALĖS:"
 
-#: src/game.cpp:1604
+#: src/game.cpp:1602
 msgid "Loading data files"
 msgstr "Įkeliami duomenų failai"
 
-#: src/game.cpp:1996
+#: src/game.cpp:1994
 msgid "Loading game configuration."
 msgstr "Įkeliama žaidimo konfigūracija."
 
-#: src/game.cpp:2002
+#: src/game.cpp:2000
 msgid "Re-initialize fonts for the current language."
 msgstr "Iš naujo įkeliami šriftai naudojamai kalbai."
 
-#: src/game.cpp:2010
+#: src/game.cpp:2008
 msgid "Searching for installed add-ons."
 msgstr "Ieškoma įdiegtų priedų."
 
-#: src/game.cpp:2019
+#: src/game.cpp:2017
 msgid "Loading title screen."
 msgstr "Įkeliamas titulinis vaizdas."
 
