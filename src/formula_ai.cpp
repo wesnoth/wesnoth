@@ -461,7 +461,7 @@ private:
 class shortest_path_function : public function_expression {
 public:
 	explicit shortest_path_function(const args_list& args, const formula_ai& ai)
-	  : function_expression("shortest_path", args, 2, 2), ai_(ai)
+	  : function_expression("shortest_path", args, 2, 3), ai_(ai)
 	{}
 
 private:
@@ -471,14 +471,21 @@ private:
 
 		const map_location src = convert_variant<location_callable>(args()[0]->evaluate(variables))->loc();
 		const map_location dst = convert_variant<location_callable>(args()[1]->evaluate(variables))->loc();
+                map_location unit_loc;
 
                 if( src == dst )
                     return variant(&locations);
-                
-		unit_map::iterator unit_it = ai_.get_info().units.find(src);
+
+                if(args().size() > 2)
+                    unit_loc = convert_variant<location_callable>(args()[2]->evaluate(variables))->loc();
+                else
+                    unit_loc = src;
+
+                unit_map::iterator unit_it = ai_.get_info().units.find(unit_loc);
+
 		if( unit_it == ai_.get_info().units.end() ) {
 			std::ostringstream str;
-			str << "shortest_path function: expected unit at location (" << (src.x+1) << "," << (src.y+1) << ")";
+			str << "shortest_path function: expected unit at location (" << (unit_loc.x+1) << "," << (unit_loc.y+1) << ")";
 			throw formula_error( str.str(), "", "", 0);
 		}
 
@@ -497,7 +504,64 @@ private:
                 }
 
                 for (std::vector<map_location>::const_iterator loc_iter = route.steps.begin() + 1 ; loc_iter !=route.steps.end(); ++loc_iter) {
+                    if( unit_it->second.movement_cost(ai_.get_info().map[*loc_iter]) < 99 )
                         locations.push_back( variant( new location_callable(*loc_iter) ));
+                    else
+                        break;
+                }
+
+		return variant(&locations);
+	}
+
+	const formula_ai& ai_;
+};
+
+class simplest_path_function : public function_expression {
+public:
+	explicit simplest_path_function(const args_list& args, const formula_ai& ai)
+	  : function_expression("simplest_path", args, 2, 3), ai_(ai)
+	{}
+
+private:
+	variant execute(const formula_callable& variables) const {
+
+		std::vector<variant> locations;
+
+		const map_location src = convert_variant<location_callable>(args()[0]->evaluate(variables))->loc();
+		const map_location dst = convert_variant<location_callable>(args()[1]->evaluate(variables))->loc();
+                map_location unit_loc;
+
+                if( src == dst )
+                    return variant(&locations);
+
+                if(args().size() > 2)
+                    unit_loc = convert_variant<location_callable>(args()[2]->evaluate(variables))->loc();
+                else
+                    unit_loc = src;
+
+                unit_map::iterator unit_it = ai_.get_info().units.find(unit_loc);
+
+		if( unit_it == ai_.get_info().units.end() ) {
+			std::ostringstream str;
+			str << "simplest_path function: expected unit at location (" << (unit_loc.x+1) << "," << (unit_loc.y+1) << ")";
+			throw formula_error( str.str(), "", "", 0);
+		}
+
+                std::set<map_location> allowed_teleports = ai_.get_allowed_teleports(unit_it);
+
+                emergency_path_calculator em_calc(unit_it->second, ai_.get_info().map);
+
+                paths::route route = a_star_search(src, dst, 1000.0, &em_calc, ai_.get_info().map.w(), ai_.get_info().map.h(), &allowed_teleports);
+
+                if( route.steps.size() < 2 ) {
+                    return variant(&locations);
+                }
+
+                for (std::vector<map_location>::const_iterator loc_iter = route.steps.begin() + 1 ; loc_iter !=route.steps.end(); ++loc_iter) {
+                    if( unit_it->second.movement_cost(ai_.get_info().map[*loc_iter]) < 99 )
+                        locations.push_back( variant( new location_callable(*loc_iter) ));
+                    else
+                        break;
                 }
 
 		return variant(&locations);
@@ -1234,6 +1298,8 @@ expression_ptr ai_function_symbol_table::create_function(const std::string &fn,
 		return expression_ptr(new distance_to_nearest_unowned_village_function(args, ai_));
 	} else if(fn == "shortest_path") {
 		return expression_ptr(new shortest_path_function(args, ai_));
+	} else if(fn == "simplest_path") {
+		return expression_ptr(new simplest_path_function(args, ai_));
 	} else if(fn == "nearest_keep") {
 		return expression_ptr(new nearest_keep_function(args, ai_));
 	} else if(fn == "nearest_loc") {
@@ -1675,17 +1741,22 @@ map_location formula_ai::path_calculator(const map_location& src, const map_loca
                 }
             }
 
+            destination = map_location();
+
             for (std::vector<map_location>::const_iterator loc_iter = route.steps.begin() + 1 ; loc_iter !=route.steps.end(); ++loc_iter) {
 		typedef formula_ai::move_map::const_iterator Itor;
 		std::pair<Itor,Itor> range = srcdst_.equal_range(src);
 
                 bool found = false;
 		for(Itor i = range.first; i != range.second; ++i) {
-			if (i->second == *loc_iter )
+			if (i->second == *loc_iter ) {
                             found = true;
+                            break;
+                        }
 		}
-                if ( !found )
-                    break;
+                if ( !found ) {
+                    continue;
+                }
 
                 destination = *loc_iter;
             }
