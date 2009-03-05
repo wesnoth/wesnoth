@@ -636,16 +636,6 @@ namespace {
 		unarchive_addon(cfg);
 		LOG_CFG << "addon unpacked successfully\n";
 
-		std::string warning = "";
-		std::vector<config *> scripts = find_scripts(cfg, ".unchecked");
-		if(!scripts.empty()) {
-			WRN_CFG << "downloaded addon '" << addon_title << "' has unchecked scripts\n";
-			warning += "\n";
-			warning += _("Unchecked script files found:");
-			foreach(const config* i, scripts)
-				warning += "\n" + (*i)["name"];
-		}
-
 		if(show_result) {
 			const std::string& message =
 				utils::interpolate_variables_into_string(_("The add-on '$addon_title|' has been successfully installed."), &syms);
