@@ -59,7 +59,7 @@ various GNU/Linux distributions.</p>
 <p>We have many new features for your delectation this time around,
 including a new mainline campaign, two new multiplayer scenarios, and
 another refresh of the user interface.</p>
- 
+
 <!--
 <div class='thumb tright'>
   <div><img src='images/start-2.jpg' alt='Wesnoth Screenshot'/></div>
@@ -74,10 +74,13 @@ use the game AI as your commander for an allied side, setting its
 objectives as you like.</p>
 
 <p>Multiplayer has two new maps, 4p <em>Underworld</em> and 4p <em>A
-New Land</em>; existing maps have been revised and updated. There are
-two new units (Dread Bat and Royal Warrior), and one new terrain (cave
-path).</p>
- 
+New Land</em>; existing maps have been revised and updated.</p>
+
+<p>Almost all mainline campaigns now use a different method of carrying
+over gold from scenario to scenario: the amount of gold retained is now
+40% instead of 80%, but it is added to the minimum starting gold of the
+next scenario instead of only replacing it if higher.</p>
+
 <p>Many mainline campaigns have improved storyline prose and new
 cutscenes or epilogs.  Several have improved and redrawn campaign
 maps. All now have dates in the Wesnoth history timeline and almost
@@ -85,7 +88,7 @@ all have journey animations on their campaign maps.  The history and
 geography of Wesnoth have been developed in more depth and detail, and
 more campaigns now include references to events in that overall
 history, adding depth and richness to the narration.</p>
- 
+
 <p>The game graphics have been improved, with a whole new range of
 unit portraits in more realistic styles.  Many more units have full
 animations and team coloring. Forests get more variety with graphics
@@ -93,15 +96,27 @@ for spring/summer, fall, and winter deciduous forest terrains.  There
 are new village graphics for human cities and primitive tribal
 areas.</p>
 
+<p>There is a new basic terrain type, coastal reef, which gives most
+land-based units slightly higher defense than in regular shallow water,
+and 70% defense to most water-based units such as mermen and naga.</p>
+
 <p>Our composers have added three new original background tracks:
 <em>Heroes' Rite</em>, <em>The Dangerous Symphony</em>, and <em>The
 Deep Path</em>. Also, the game now plays special music clips for
 victory and defeat events.</p>
- 
+
 <p>The game interface has continued to evolve, especially in making
 more dramatic use of portaits.  Unit recall dialogs now display useful
 information about your veterans' traits.  Addons now display their
 category when you browse them on the download server.</p>
+
+<p>The multiplayer server can now be logged onto using the username and
+password of a Wesnoth forum account.  However, registration and logging
+in using an account is not required and one can continue to use an
+unregistered username.</p>
+
+<p>The multiplayer lobby has been improved to allow easier management of
+the friends and ignores list by double-clicking on the player list.</p>
 
 <p>Sadly, one user-visible feature had to be removed.  The
 gamma-correction slider is gone; crash bugs in the SDL implementation
@@ -111,18 +126,21 @@ behind the feature made it too dangerous.</p>
 Macedonian, and Marathi.  Existing translations have been extensively
 updated and revised.</p>
 
-<h3 id='campdev'>For Campaign Developers</h3>
+<h3 id='campdev'>For Content Developers</h3>
 
 <p>The map editor is much improved.  It can be started from within the
 game now.  You can toggle overlay displays of terrain codes and map
 coordinates while editing. The editor can handle multiple maps in a
 session, and you can take screenshots of full maps.  There's also a
 new interactive editing tool for animated journey tracks.</p>
- 
+
+<p>There are several new core units available everywhere: Troll Shaman,
+Royal Warrior and Dread Bat.</p>
+
 <p>Less visible changes include improvements in the game AI, including a new
 formula-based AI that allows more flexible setting of objectives and an
 improved pathfinding algorithm.  As usual, WML has grown more powerful
-with many new tags and attributes to extend the range of what 
+with many new tags and attributes to extend the range of what
 campaign authors can do.</p>
 
 <p>The support for writing Python AIs has been removed because the
