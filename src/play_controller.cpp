@@ -745,6 +745,10 @@ void play_controller::process_keyup_event(const SDL_Event& event) {
 
 			if(u != units_.end()) {
 				const bool teleport = u->second.get_ability_bool("teleport",u->first);
+
+				// if it's not the unit's turn, we reset its moves
+				unit_movement_resetter move_reset(u->second, u->second.side() != player_number_);
+		
 				mouse_handler_.set_current_paths(paths(map_,units_,u->first,
 				                       teams_,false,teleport, teams_[gui_->viewing_team()],
 				                       mouse_handler_.get_path_turns()));
