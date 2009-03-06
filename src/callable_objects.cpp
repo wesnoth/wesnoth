@@ -159,9 +159,11 @@ variant unit_callable::get_value(const std::string& key) const
 	} else if(key == "loc") {
 		return variant(new location_callable(loc_));
 	} else if(key == "id") {
-		return variant(u_.type_id());
-	} else if(key == "type") {
 		return variant(u_.id());
+	} else if(key == "type") {
+		return variant(u_.type_id());
+	} else if(key == "name") {
+		return variant(u_.name());
 	} else if(key == "leader") {
 		return variant(u_.can_recruit());
 	} else if(key == "undead") {
@@ -241,6 +243,7 @@ void unit_callable::get_inputs(std::vector<game_logic::formula_input>* inputs) c
 	inputs->push_back(game_logic::formula_input("loc", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("id", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("type", FORMULA_READ_ONLY));
+	inputs->push_back(game_logic::formula_input("name", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("leader", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("undead", FORMULA_READ_ONLY));
 	inputs->push_back(game_logic::formula_input("traits", FORMULA_READ_ONLY));
