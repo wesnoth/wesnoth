@@ -153,7 +153,7 @@ std::vector<ai::target> ai::find_targets(unit_map::const_iterator leader, const 
 			{
 				//Support seems to cause the AI to just 'sit around' a lot, so
 				//only turn it on if it's explicitly enabled.
-				if(current_team().ai_parameters()["support_villages"] == "yes") {
+				if(utils::string_bool(current_team().ai_parameters()["support_villages"])) {
 					double enemy = power_projection(*t, enemy_dstsrc);
 					if (enemy > 0)
 					{
