@@ -691,19 +691,23 @@ expression_ptr parse_expression(const token* i1, const token* i2, function_symbo
 		} else if( (i2-1)->type == TOKEN_RSQUARE) { //check if there is [ ] : either a list/map definition, or a operator
 				const token* tok = i2-2;
 				int square_parens = 0;
+                                bool is_map = false;
 				while ( (tok->type != TOKEN_LSQUARE || square_parens) && tok != i1) {
 						if (tok->type == TOKEN_RSQUARE) {
 							square_parens++;
 						} else if(tok->type == TOKEN_LSQUARE) {
 							square_parens--;
-						}
+						} else if( (tok->type == TOKEN_POINTER) && !square_parens ) {
+                                                    is_map = true;
+                                                }
 						--tok;
 				}
 				if (tok->type == TOKEN_LSQUARE) {
 					if (tok == i1) {
 						//create a list or a map
 						std::vector<expression_ptr> args;
-						if ( (i1+2)->type == TOKEN_POINTER ) {
+
+						if ( is_map ) {
 							parse_set_args(i1+1, i2-1, &args, symbols);
 							return expression_ptr(new map_expression(args));
 						} else {
