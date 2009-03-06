@@ -499,7 +499,7 @@ def unit_chooser(ai*,unit_map)
 				size(
 					filter(
 						my_units, 
-						id = unit_type
+						type = unit_type
 					)
 				)
 			) / 
