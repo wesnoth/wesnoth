@@ -1463,8 +1463,9 @@ void formula_ai::play_turn()
 
 	for(unit_map::unit_iterator i = units_.begin() ; i != units_.end() ; ++i)
 	{
-		if ( (i->second.side() == get_info().team_num) && i->second.has_formula() )
+		if ( (i->second.side() == get_info().team_num)  )
 		{
+                    if ( i->second.has_formula() ) {
 			try {
 				game_logic::const_formula_ptr formula(new game_logic::formula(i->second.get_formula(), &function_table));
 				game_logic::map_formula_callable callable(this);
@@ -1477,24 +1478,24 @@ void formula_ai::play_turn()
 					e.line = 0;
 				handle_exception( e, "Unit formula error for unit: '" + i->second.type_id() + "' standing at (" + boost::lexical_cast<std::string>(i->first.x+1) + "," + boost::lexical_cast<std::string>(i->first.y+1) + ")");
 			}
-
-			if( i.valid() ) {
-				if( i->second.has_loop_formula() )
-				{
-					try {
-						game_logic::const_formula_ptr loop_formula(new game_logic::formula(i->second.get_loop_formula(), &function_table));
-						game_logic::map_formula_callable callable(this);
-						callable.add_ref();
-						callable.add("me", variant(new unit_callable(*i)));
-						while ( make_move(loop_formula, callable) ) {}
-					}
-					catch(formula_error& e) {
-						if(e.filename == "formula")
-							e.line = 0;
-						handle_exception( e, "Unit loop formula error for unit: '" + i->second.type_id() + "' standing at (" + boost::lexical_cast<std::string>(i->first.x+1) + "," + boost::lexical_cast<std::string>(i->first.y+1) + ")");
-					}
-				}
-			}
+                    }
+                    if( i.valid() ) {
+                        if( i->second.has_loop_formula() )
+                        {
+                                try {
+                                        game_logic::const_formula_ptr loop_formula(new game_logic::formula(i->second.get_loop_formula(), &function_table));
+                                        game_logic::map_formula_callable callable(this);
+                                        callable.add_ref();
+                                        callable.add("me", variant(new unit_callable(*i)));
+                                        while ( make_move(loop_formula, callable) ) {}
+                                }
+                                catch(formula_error& e) {
+                                        if(e.filename == "formula")
+                                                e.line = 0;
+                                        handle_exception( e, "Unit loop formula error for unit: '" + i->second.type_id() + "' standing at (" + boost::lexical_cast<std::string>(i->first.x+1) + "," + boost::lexical_cast<std::string>(i->first.y+1) + ")");
+                                }
+                        }
+                    }
 		}
 	}
 
