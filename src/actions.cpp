@@ -2340,7 +2340,7 @@ size_t move_unit(game_display* disp,
 	unit::clear_status_caches();
 
 	if(move_recorder != NULL) {
-		move_recorder->add_movement(steps.front(),steps.back());
+		move_recorder->add_movement(steps);
 	}
 
 	bool event_mutated = false;

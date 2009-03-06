@@ -110,6 +110,10 @@ struct map_location {
 std::vector<map_location> parse_location_range(const std::string& xvals,
 	const std::string& yvals, const gamemap *const map=NULL);
 
+/** Write a vector of locations into a config
+ *  adding keys x=x1,x2,..,xn and y=y1,y2,..,yn */
+void write_locations(const std::vector<map_location>& locs, config& cfg);
+
 /** Dumps a position on a stream, for debug purposes. */
 std::ostream &operator<<(std::ostream &s, map_location const &l);
 

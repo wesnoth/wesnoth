@@ -1338,7 +1338,7 @@ private:
 			gui_->invalidate(route.back());
 			gui_->draw();
 
-			recorder.add_movement(route.front(),route.back());
+			recorder.add_movement(action.route);
 		}
 		gui_->invalidate_unit();
 		gui_->invalidate_game_status();

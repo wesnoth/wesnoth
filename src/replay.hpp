@@ -57,7 +57,7 @@ public:
 	void add_recall(int unit_index, const map_location& loc);
 	void add_disband(int unit_index);
 	void add_countdown_update(int value,int team);
-	void add_movement(const map_location& a, const map_location& b);
+	void add_movement(const std::vector<map_location>& steps);
 	void add_attack(const map_location& a, const map_location& b,
 	                int att_weapon, int def_weapon);
 	void choose_option(int index);

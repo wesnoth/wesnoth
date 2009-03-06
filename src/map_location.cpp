@@ -341,3 +341,23 @@ std::vector<map_location> parse_location_range(const std::string& x, const std::
 	}
 	return res;
 }
+
+void write_locations(const std::vector<map_location>& locs, config& cfg)
+{
+	std::stringstream x, y;
+
+	std::vector<map_location>::const_iterator i = locs.begin(),
+			end = locs.end();
+
+	for(; i != end; ++i) {
+		x << (i->x + 1);
+		y << (i->y + 1);
+		if(i+1 != end){
+			x << ",";
+			y << ",";
+		}
+	}
+
+	cfg["x"] = x.str();
+	cfg["y"] = y.str();
+}

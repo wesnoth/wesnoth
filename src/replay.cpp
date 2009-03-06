@@ -295,9 +295,14 @@ void replay::add_countdown_update(int value, int team)
 }
 
 
-void replay::add_movement(const map_location& a,const map_location& b)
+void replay::add_movement(const std::vector<map_location>& steps)
 {
-	add_pos("move",a,b);
+	config* const cmd = add_command();
+
+	config move;
+	write_locations(steps, move);
+
+	cmd->add_child("move",move);
 }
 
 void replay::add_attack(const map_location& a, const map_location& b, int att_weapon, int def_weapon)
@@ -557,10 +562,17 @@ void replay::undo()
 		{
 			// A unit's move is being undone.
 			// Repair unsynced cmds whose locations depend on that unit's location.
-			map_location dst(*(child->child("destination")),
-				game_events::get_state_of_game());
-			map_location src(*(child->child("source")),
-				game_events::get_state_of_game());
+			const std::vector<map_location> steps =
+					parse_location_range((*child)["x"],(*child)["y"]);
+
+			if(steps.empty()) {
+				ERR_REPLAY << "trying to undo a move using an empty path";
+				return; // nothing to do, I suppose.
+			}
+
+			const map_location src = steps.front();
+			const map_location dst = steps.back();
+
 			for (std::vector<config::child_iterator>::iterator async_cmd =
 				 async_cmds.begin(); async_cmd != async_cmds.end(); async_cmd++)
 			{
@@ -1028,15 +1040,23 @@ bool do_replay_handle(game_display& disp, const gamemap& map,
 			}
 		}
 		else if((child = cfg->child("move")) != NULL) {
-			const config* const destination = child->child("destination");
-			const config* const source = child->child("source");
 
-			if(destination == NULL || source == NULL) {
-				replay::throw_error("no destination/source found in movement\n");
+			const std::string& x = (*child)["x"];
+			const std::string& y = (*child)["y"];
+
+			if(x.empty() || y.empty()) {
+				// x,y keys will be missing in replay recorded before 1.5.13
+				replay::throw_error("missing path data in [move], mandatory since 1.5.13 - 1.6RC2 \n");
 			}
 
-			const map_location src(*source, game_events::get_state_of_game());
-			const map_location dst(*destination, game_events::get_state_of_game());
+			const std::vector<map_location> steps =	parse_location_range(x,y);
+
+			if(steps.empty()) {
+				replay::throw_error("incorrect path data found in [move]\n");
+			}
+
+			const map_location src = steps.front();
+			const map_location dst = steps.back();
 
 			if (src == dst) {
 				WRN_REPLAY << "Warning: Move with identical source and destination. Skipping...";
@@ -1058,27 +1078,7 @@ bool do_replay_handle(game_display& disp, const gamemap& map,
 				replay::throw_error(errbuf.str());
 			}
 
-			// search path assuming current_team as viewing team
-			const shortest_path_calculator calc(u->second, current_team, units, teams, map);
-			std::set<map_location> allowed_teleports;
-			if(u->second.get_ability_bool("teleport",src)) {
-				// search all known empty friendly villages
-				for(std::set<map_location>::const_iterator i = current_team.villages().begin();
-					i != current_team.villages().end(); ++i) {
-					if (current_team.is_enemy(u->second.side()) && current_team.fogged(*i))
-						continue;
-
-					unit_map::const_iterator occupant = find_visible_unit(units, *i, map,teams, current_team);
-					if (occupant != units.end() && occupant != u)
-						continue;
-
-					allowed_teleports.insert(*i);
-				}
-			}
-
-			paths::route route = a_star_search(src, dst, 10000.0, &calc, map.w(), map.h(), &allowed_teleports);
-
-			::move_unit(&disp, map, units, teams, route.steps, NULL, NULL, NULL, true, true, true);
+			::move_unit(&disp, map, units, teams, steps, NULL, NULL, NULL, true, true, true);
 		}
 
 		else if((child = cfg->child("attack")) != NULL) {

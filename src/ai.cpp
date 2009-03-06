@@ -478,6 +478,8 @@ map_location ai_interface::move_unit_partial(location from, location to,
 
 	const std::map<location,paths>::iterator p_it = possible_moves.find(from);
 
+	std::vector<location> steps;
+	
 	if(p_it != possible_moves.end()) {
 		paths& p = p_it->second;
 		std::map<location,paths::route>::iterator rt = p.routes.begin();
@@ -493,7 +495,7 @@ map_location ai_interface::move_unit_partial(location from, location to,
 			}
 			u_it->second.set_movement(rt->second.move_left);
 
-			std::vector<location> steps = rt->second.steps;
+			steps = rt->second.steps;
 
 			while(steps.empty() == false && info_.units.find(to) != info_.units.end() && from != to){
 				LOG_AI << "AI attempting illegal move. Attempting to move onto existing unit\n";
@@ -597,7 +599,7 @@ map_location ai_interface::move_unit_partial(location from, location to,
 		info_.disp.draw();
 	}
 
-	recorder.add_movement(from,to);
+	recorder.add_movement(steps);
 
 	game_events::fire("moveto",to);
 
