@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-02-28 14:29+0100\n"
-"PO-Revision-Date: 2008-12-04 04:57+0200\n"
+"PO-Revision-Date: 2009-03-06 07:57+0200\n"
 "Last-Translator: Mikko Nikkilä <miccoh@gmail.com>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -24,12 +24,12 @@ msgstr "Lainsuojaton"
 #. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:17
 msgid "(Easy)"
-msgstr "(Helppo)"
+msgstr "(helppo)"
 
 #. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:17
 msgid "(Difficult)"
-msgstr "(Vaativa)"
+msgstr "(vaikea)"
 
 #. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:17
@@ -39,7 +39,7 @@ msgstr "Talonpoika"
 #. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:17
 msgid "(Normal)"
-msgstr "(Normaali)"
+msgstr "(normaali)"
 
 #. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:17
@@ -62,7 +62,7 @@ msgstr ""
 "Wesnothin koulutetut miekat, sillä liikkeellä on myös pimeämpiä vihollisia, "
 "kuten örkkejä ja epäkuolleita.\n"
 "\n"
-"(Keskitasoa, 9 skenaariota)"
+"(keskitasoa, 9 skenaariota)"
 
 #. [about]
 #: data/campaigns/Liberty/_main.cfg:28
@@ -238,15 +238,15 @@ msgstr "Gorokh"
 
 #. [message]: speaker=Fal Khag
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:192
-#, fuzzy
 msgid ""
 "I long to burn human cities, but until our great chieftains provide us with "
 "sufficient forces we must look to these villagers to feed our wolves and "
 "slake the thirst of our blades."
 msgstr ""
-"Kaipaan ihmisten kaupunkien polttamista, mutta ennen kuin suuret "
-"päällikkömme kustantavat meille tarpeelliset joukot, meidän on ruokittava "
-"susiamme kyläläisillä ja tyydytettävä miekkojemme verenhimo."
+"Kaipaan polttamaan ihmisten kaupunkeja, mutta ennen kuin suuret päällikkömme "
+"kustantavat meille tarpeelliset joukot, meidän on käännyttävä näiden "
+"kyläläisten puoleen ruokkiaksemme sutemme ja tyydyttääksemme miekkojemme "
+"verenhimo."
 
 #. [message]: speaker=Fal Khag
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:196
@@ -322,23 +322,21 @@ msgstr ""
 
 #. [message]: speaker=Harper
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:241
-#, fuzzy
 msgid ""
 "That goblin leader is heading full-speed straight for Dallben. But we'll "
 "need to chase them all down if we're going to stop them."
 msgstr ""
-"Hiisijohtaja suuntaa täydellä nopeudella suoraan kohti Dallbenia. Meidän on "
-"saalistettava hänet, jos aiomme pysäyttää hiidet."
+"Tuo hiisijohtaja suuntaa täydellä nopeudella suoraan kohti Dallbenia. Mutta "
+"meidän on napattava heidät kaikki, jos aiomme pysäyttää ne."
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:245
-#, fuzzy
 msgid ""
 "Do it. Try to hold them back until us old-timers can get there and finish "
 "them off."
 msgstr ""
-"Tee se. Yritä pidätellä heitä, kunnes ehdimme sinne viimeistelemään jutun. "
-"Minusta tuntuu, että voit häiritä johtajaa – loput niistä hämmentyvät."
+"Tee se. Yritä pidätellä heitä, kunnes me vanhukset ehdimme sinne "
+"viimeistelemään jutun."
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:249
@@ -417,10 +415,8 @@ msgstr "Jasken"
 
 #. [message]: speaker=Wolmas
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:342
-#, fuzzy
 msgid "What's happening here? Why are you running like mad, $unit.name|?"
-msgstr ""
-"Mitä täällä tapahtuu? Miksi juokset kuin hullu, $unit.user_description|?"
+msgstr "Mitä täällä tapahtuu? Miksi juokset kuin hullu, $unit.name|?"
 
 #. [message]: speaker=unit
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:346
@@ -476,7 +472,7 @@ msgstr "Kansalaistottelemattomuus"
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:69
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:50
 msgid "Rebels"
-msgstr ""
+msgstr "Kapinalliset"
 
 #. [side]: type=Cavalier, id=Tarwen
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:47
@@ -499,7 +495,7 @@ msgstr "Tarwen"
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:67
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:81
 msgid "Asheviere"
-msgstr ""
+msgstr "Asheviere"
 
 #. [objective]: condition=win
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:78
@@ -649,7 +645,7 @@ msgstr "Urk Delek"
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:88
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:109
 msgid "Evil"
-msgstr ""
+msgstr "Pahuus"
 
 #. [side]: type=Saurian Oracle, id=Thhsthss
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:94
@@ -668,7 +664,6 @@ msgstr "Relnanin kuolema"
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:165
-#, fuzzy
 msgid ""
 "Relnan, thank you for welcoming our messenger and agreeing to meet with us. "
 "In your many years as Delwyn's magistrate I have never known your judgment "
@@ -1412,7 +1407,6 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:317
-#, fuzzy
 msgid ""
 "The remaining members were very grateful and offered Baldras a sizable sum "
 "of gold for his help. It was not the help he was hoping for, but he knew it "
@@ -1420,8 +1414,7 @@ msgid ""
 msgstr ""
 "Jäljelle jääneet jäsenet olivat hyvin kiitollisia ja ehdottivat Baldrasille "
 "kookasta kultasummaa hänen avustaan. Se ei ollut sen kaltaista apua, kuin "
-"hän olisi kaivannut, mutta hän tiesi, että se olisi tarpeeksi tulevaan "
-"koitokseen."
+"hän olisi toivonut, mutta hän tiesi sen olevan tarpeeksi tulevaan koitokseen."
 
 #. [message]: speaker=Helicrom
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:336
@@ -1443,15 +1436,14 @@ msgstr ""
 
 #. [message]: speaker=Helicrom
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:344
-#, fuzzy
 msgid ""
 "No one here is in a position to be dispensing moral judgments. Regardless, "
 "you have done great service to us today, and we owe you a debt. I will help "
 "you to the utmost of my ability."
 msgstr ""
 "Täällä kukaan ei ole sellaisessa asemassa, että voisi jaella moraalisia "
-"päätöksiä. Siitä huolimatta et voi yliarvoida sen palveluksesi arvoa, jonka "
-"esitit täällä tänään. Autan sinua niin paljon kuin kykenen."
+"päätöksiä. Siitä huolimatta olet tehnyt meille tänään suuren palveluksen ja "
+"olemme sinulle velkaa. Autan sinua niin paljon kuin kykenen."
 
 #. [message]: speaker=Helicrom
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:348
@@ -1566,13 +1558,12 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:30
-#, fuzzy
 msgid ""
 "Knowing they too would be labeled criminals, he reluctantly accepted their "
 "help. (Baldras is now able to recruit outlaws.)"
 msgstr ""
 "Tietäen, että heidätkin leimattaisiin roistoiksi, hän vastahakoisesti "
-"hyväksyi heidän apunsa. Baldras voi nyt värvätä lainsuojattomia."
+"hyväksyi heidän apunsa. (Baldras voi nyt värvätä lainsuojattomia.)"
 
 #. [part]
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:33
@@ -1639,7 +1630,6 @@ msgstr ""
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:158
-#, fuzzy
 msgid ""
 "The garrison. The towers of Halstead are more than a garrison, nephew, they "
 "are a fortress. They used to protect this area from the enemies of Wesnoth; "
@@ -1647,8 +1637,8 @@ msgid ""
 msgstr ""
 "Tukikohtaa. Halsteadin tornit ovat enemmän kuin tukikohta, veljenpoika, ne "
 "ovat linnoitus. Niillä oli tapana suojella tätä aluetta Wesnothin "
-"vihollisilta. En koskaan kuvitellut, että jonakin päivänä ne voisivat "
-"tarjota Wesnothin vihollisille asuinpaikan."
+"vihollisilta. En koskaan kuvitellut, että ne voisivat tarjota Wesnothin "
+"vihollisille asuinpaikan."
 
 #. [event]: id=Pitcher 20 14}, id=Pitcher 28 18}, id=Pitcher 20 14}
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:161
@@ -1667,9 +1657,9 @@ msgstr "Setä, hänellä on yllään Elensen tunnukset. Meidän tulisi vastata."
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:176
-#, fuzzy
 msgid "Rider, hush before we are discovered! Come to us, but quietly!"
-msgstr "Ratsastaja, hiljaa siellä tai meidät löydetään! Tule tänne, nopeasti."
+msgstr ""
+"Ratsastaja, hiljaa siellä tai meidät löydetään! Tule tänne, mutta hiljaa!"
 
 #. [message]: speaker=Pitcher
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:183
@@ -1899,7 +1889,7 @@ msgstr "Vashna"
 #. [side]: type=Orcish Warlord, id=Vashna
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:178
 msgid "Orcs"
-msgstr ""
+msgstr "Örkit"
 
 #. [objective]: condition=win
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:283
@@ -2127,7 +2117,6 @@ msgstr ""
 
 #. [message]: speaker=Dommel
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:636
-#, fuzzy
 msgid "They have breached the fortress gate! Repulse them!"
 msgstr "He ovat murtaneet linnakkeen portin! Torjukaa heidät!"
 
@@ -2214,9 +2203,8 @@ msgstr ""
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:876
-#, fuzzy
 msgid "Our dream of freedom... gone... Unngh."
-msgstr "Unelmamme vapaudesta... mennyt... Uungh."
+msgstr "Unelmamme vapaudesta... poissa... Unngh."
 
 #. [message]: speaker=Harper
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:894
@@ -2296,7 +2284,7 @@ msgstr ""
 #. [scenario]: id=epilog
 #: data/campaigns/Liberty/scenarios/09_Epilog.cfg:4
 msgid "Liberty - Epilogue"
-msgstr "Vapaus – Epilogi"
+msgstr "Vapaus – Loppunäytös"
 
 #. [part]
 #: data/campaigns/Liberty/scenarios/09_Epilog.cfg:14
@@ -2406,13 +2394,12 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Liberty/scenarios/09_Epilog.cfg:44
-#, fuzzy
 msgid ""
 "'If you wish to find us, head southwest. When you reach the land's end, just "
 "keep going. See you in the Three Sisters, old friend. - Relnan' "
 msgstr ""
 "”Jos tahdot löytää meidät, ota suuta lounaaseen. Kun saavutat maan reunan, "
-"anna mennä vaan. Nähdään pian, vanha ystävä. –Relnan”"
+"anna mennä vaan. Nähdään pian Kolmella siskolla, vanha ystävä. –Relnan”"
 
 #. [unit_type]: id=Bone Knight, race=undead
 #: data/campaigns/Liberty/units/Bone_Knight.cfg:5
@@ -2580,9 +2567,8 @@ msgstr ""
 
 #. [unit_type]: id=Thug_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:16
-#, fuzzy
 msgid "Villager"
-msgstr "Kylänvanhin"
+msgstr "Kyläläinen"
 
 #. [unit_type]: id=Thug_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:19
@@ -2678,6 +2664,10 @@ msgid ""
 "native toughness and knowledge of local conditions make them formidable on "
 "their home ground."
 msgstr ""
+"Rajakylät ylläpitävät miliisiä, joka on omistautunut kitkemään "
+"vastahakoisuudet. Vaikka nämä rajavartijat eivät ole koulutettuja ja "
+"aseistettuja sotaväen standardien mukaan, niiden luontainen sisukkuus ja "
+"paikallistietämys tekevät heistä varteenotettavia kotikentillään."
 
 #. [female]
 #: data/campaigns/Liberty/units/Villagers.cfg:101

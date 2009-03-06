@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-03-05 10:12+0100\n"
-"PO-Revision-Date: 2008-11-22 17:20+0200\n"
-"Last-Translator: Simo Sutela <qurnelius@netscape.net>\n"
+"PO-Revision-Date: 2009-03-06 22:42+0200\n"
+"Last-Translator: Samu Voutilainen <samu.voutilainen@gmail.com>\n"
 "Language-Team: Finnish\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -29,9 +29,8 @@ msgstr "Vieritys hiirellä"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:63
-#, fuzzy
 msgid "Middle-click Scrolling"
-msgstr "Vieritys hiirellä"
+msgstr "Vieritys hiiren keskipainikkeella"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:70
@@ -45,9 +44,8 @@ msgstr "Animoi kartta"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:84
-#, fuzzy
 msgid "Show Titlescreen Animation"
-msgstr "Kampanjat"
+msgstr "Näytä avausruudun animaatiot"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:91
@@ -155,7 +153,6 @@ msgstr "hoivaa +4"
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:22
 #: data/core/macros/abilities.cfg:16
-#, fuzzy
 msgid ""
 "Heals +4:\n"
 "Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
@@ -166,10 +163,10 @@ msgid ""
 "care of a village or a unit that can cure."
 msgstr ""
 "Hoivaa +4:\n"
-"Yksikkö voi hoivata viereisiä ystävällisiä yksiköitä jokaisen vuoron "
-"alussa.\n"
+"Yksikkö voi hoivata viereisiä ystävällisiä yksiköitä oman vuoronsa alussa.\n"
 "\n"
-"Hoivattu yksikkö saa enintään 4 EP per vuoro, tai estää myrkyn vaikutuksen.\n"
+"Tämän hoivaajan toimesta hoivattu yksikkö saa enintään 4 EP per vuoro, tai "
+"yksikön ollessa myrkytetty, kumoaa myrkyn vaikutuksen.\n"
 "Hoivaaja ei voi parantaa yksikköä myrkytyksestä, sillä se onnistuu vain "
 "lääkitsijältä tai kylässä."
 
@@ -258,9 +255,8 @@ msgstr "Kansainvälistyksen hallinnoijat"
 
 #. [about]
 #: data/core/about.cfg:901
-#, fuzzy
 msgid "English strings edition"
-msgstr "Brittienglanninkielinen käännös"
+msgstr "Englanninkielisten rivien editointi"
 
 #. [about]
 #: data/core/about.cfg:908
@@ -419,9 +415,8 @@ msgstr "Makedoniankielinen käännös"
 
 #. [about]
 #: data/core/about.cfg:1714
-#, fuzzy
 msgid "Marathi Translation"
-msgstr "Latinankielinen käännös"
+msgstr "Marathinkielinen käännös"
 
 #. [about]
 #: data/core/about.cfg:1723
@@ -664,7 +659,6 @@ msgstr ""
 
 #. [topic]: id=fundamentals
 #: data/core/help.cfg:140
-#, fuzzy
 msgid ""
 "While playing, keep in mind that if you mouse-over many items in the game, "
 "such as the information displayed in the status pane, a brief description "
@@ -674,8 +668,8 @@ msgid ""
 msgstr ""
 "Pelatessasi saat monista käsitteistä lyhyen kuvauksen pitämällä kursoria "
 "niiden päällä, esimerkiksi tilannepaneelissa. Tämä ominaisuus on erityisen "
-"hyödyllinen kohdatessasi uusia <ref>dst=abilities text=erikoistaitoja</ref> "
-"ensimmäistä kertaa."
+"hyödyllinen kohdatessasi uusia ominaisuuksia, esimerkiksi <ref>dst='.."
+"abilities_section' text='erikoistaitoja'</ref>, ensimmäistä kertaa."
 
 #. [topic]: id=about_game
 #: data/core/help.cfg:145
@@ -763,7 +757,6 @@ msgstr "Värväys ja kutsuminen"
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:165
-#, fuzzy
 msgid ""
 "Each side begins with one leader in their keep. At the start of any battle, "
 "and at times during it, you will need to recruit <ref>dst='..units' "
@@ -777,14 +770,16 @@ msgid ""
 "recruit it."
 msgstr ""
 "Jokainen osapuoli aloittaa yhdellä johtajalla linnakkeessa. Taistelun "
-"alussa, ja ajoittain sen aikana, sinun täytyy värvätä <ref>dst=units "
-"text=yksiköitä</ref> armeijaasi. Värvätäksesi, johtajasi (esimerkiksi Konrad "
-"kampanjassa Valtaistuimen perillinen) tulee olla <ref>dst=terrain_castle "
-"text=linnan</ref> linnakeheksassa. Sitten voit värvätä joko valitsemalla "
-"valikosta värvää tai klikkaamalla  linnaheksaa oikealla hiirennäppäimellä ja "
-"valitsemalla <italic>text=värvää</italic>. Tämä aukaisee värväysvalikon, "
-"joka listaa mahdolliset värvättävät yksiköt ja niiden hinnat. Klikkaa "
-"yksikköä nähdäksesi sen tiedot, ja paina värväysnappia värvätäksesi sen."
+"alussa, ja ajoittain sen aikana, sinun täytyy värvätä <ref>dst='..units' "
+"text='yksiköitä'</ref> armeijaasi. Värvätäksesi, johtajasi (esimerkiksi "
+"Konrad kampanjassa Valtaistuimen perillinen) tulee olla "
+"<ref>dst='terrain_castle' text='linnan'</ref> linnakeheksassa. Siten voit "
+"värvätä joko valitsemalla valikosta kohdan ”värvää” tai klikkaamalla  "
+"linnaheksaa oikealla hiirenkorvalla ja valitsemalla kohdan "
+"<italic>text='värvää'</italic>. Tämä aukaisee värväysvalikon, joka listaa "
+"värvättävissä olevat yksiköt ja niiden hinnat. Voit klikata yksikköä "
+"nähdäksesi tarkempaa tietoa siitä ja värvätä yksikön joko tuplaklikkaamalla "
+"sitä tai painamalla värväysnappia yksikön ollessa valittuna."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:167
@@ -806,7 +801,6 @@ msgstr ""
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:169
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -815,8 +809,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Värvätyt yksiköt saavat kaksi satunnaista <ref>dst=..traits_section "
-"text=ominaisuutta</ref>, jotka vaikuttavat niiden kykyihin."
+"Värvätyt yksiköt saavat kaksi satunnaista <ref>dst='..traits_section' "
+"text='piirrettä'</ref>, jotka vaikuttavat niiden kykyihin."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:171
@@ -836,7 +830,6 @@ msgstr ""
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:173
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -847,7 +840,7 @@ msgstr ""
 "\n"
 "\n"
 "Muista, että paitsi yksiköiden värvääminen ja kutsuminen, myös niiden "
-"ylläpito maksaa. Katso kohta <ref>dst=income_and_upkeep text='Tulot ja "
+"ylläpito maksaa. Katso kohta <ref>dst='income_and_upkeep' text='Tulot ja "
 "menot'</ref> saadaksesi lisätietoja."
 
 #. [topic]: id=orbs
@@ -922,7 +915,6 @@ msgstr ""
 
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:199
-#, fuzzy
 msgid ""
 "The hitpoints are also indicated by an energy bar next to each unit, which "
 "is green, yellow or red. A unit with at least 1 experience point has a blue "
@@ -932,7 +924,8 @@ msgstr ""
 "Elämäpisteet näytetään myös energiapylväänä jokaisen yksikön vieressä. "
 "Energiapylväs on vihreä, keltainen tai punainen. Yksikkö, jolla on vähintään "
 "1 kokemuspiste, saa sinisen kokemuspylvään, joka muuttuu valkoiseksi, kun "
-"yksikkö on <ref>dst=experience_and_advancement text=ylenemässä</ref>."
+"yksikkö on pian <ref>dst='experience_and_advancement' text='ylenemässä'</"
+"ref>."
 
 #. [topic]: id=movement
 #: data/core/help.cfg:206
@@ -999,7 +992,6 @@ msgstr ""
 
 #. [topic]: id=movement
 #: data/core/help.cfg:211
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1016,8 +1008,9 @@ msgstr ""
 "alueet”. Kukin yksikkö hallitsee vieressään olevia heksoja. Jos "
 "vihollisyksikkö siirtyy tällaiseen heksaan, se ei voi liikkua enempää "
 "vuoronsa aikana. Yksiköiden hallitsemien aluiden käytön opettelu on tärkeä "
-"osa Wesnothia, sillä vain <ref>dst=ability_skirmisher text=kahakoitsijat</"
-"ref> voivat jättää hallitut alueet huomiotta."
+"osa Wesnothia, sillä vain <ref>dst='ability_skirmisher' "
+"text='kahakoitsijat'</ref> voivat liikkua vihollisen hallitsemalla alueella "
+"ongelmitta."
 
 #. [topic]: id=movement
 #: data/core/help.cfg:213
@@ -1179,7 +1172,6 @@ msgstr ""
 
 #. [topic]: id=combat
 #: data/core/help.cfg:241
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1191,11 +1183,11 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Tähän sääntöön on vain kaksi poikkeusta: <ref>dst=weaponspecial_magical "
-"text='maagiset hyökkäykset'</ref> ja <ref>dst=weaponspecial_marksman "
-"text=tarkk’ampujat</ref>. Maagisilla hyökkäyksilla on aina 70% mahdollisuus "
-"osua. Tarkk’ampujilla on hyökätessä vähintään 60% mahdollisuus osua, "
-"riippumatta puolustautujan maastosta."
+"Tähän sääntöön on kaksi poikkeusta: <ref>dst='weaponspecial_magical' "
+"text='maagiset hyökkäykset'</ref> ja <ref>dst='weaponspecial_marksman' "
+"text='tarkk’ampujat'</ref>. Maagisilla hyökkäyksilla on aina 70% "
+"mahdollisuus osua ja tarkk’ampujilla on hyökätessä aina vähintään 60% "
+"mahdollisuus osua, riippumatta maastosta."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:243
@@ -1210,7 +1202,6 @@ msgstr ""
 
 #. [topic]: id=combat
 #: data/core/help.cfg:245
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1225,16 +1216,15 @@ msgstr ""
 "\n"
 "\n"
 "Jokainen isku, joka osuu, aiheuttaa hyökkäystyypistä riippuvan perusmäärän "
-"vahinkoa. Esimerkiksi haltiasoturi, jolla on 5-4 miekkahyökkäys, aiheuttaa 5 "
-"perusvahinkoa. Vahingon määrään vaikuttaa yleensä kaksi asiaa: "
-"<ref>dst=damage_types_and_resistance text=vastustus</ref> ja "
-"<ref>dst=time_of_day text=vuorokaudenaika</ref>. Nähdäksesi, miten nämä "
-"vaikuttavat, valitse <italic>text='Vahinkolaskelmat'</italic> "
+"vahinkoa. Esimerkiksi haltiasoturi, jolla on 5-4 miekkahyökkäys, aiheuttaa "
+"viisi pistettä perusvahinkoa. Vahingon määrään yleensä vaikuttaa kaksi "
+"asiaa: <ref>dst='damage_types_and_resistance' text='vastustus'</ref> ja "
+"<ref>dst='time_of_day' text='vuorokaudenaika'</ref>. Nähdäksesi, miten nämä "
+"vaikuttavat, valitse <italic>text='Vahinkolaskelmat'</italic>-kohta "
 "hyökkäysvalikossa."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:247
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1245,9 +1235,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Joillakin yksiköillä on <ref>dst=abilities text=erikoistaitoja</ref>, jotka "
-"vaikuttavat niiden taistelussa tekemään vahinkoon. Yleisin näistä on "
-"<ref>dst=weaponspecial_charge text=rynnäkkö</ref>, joka kaksinkertaistaa "
+"Joillakin yksiköillä on <ref>dst='abilities' text='erikoistaitoja'</ref>, "
+"jotka vaikuttavat niiden taistelussa tekemään vahinkoon. Yksi näistä on "
+"<ref>dst='weaponspecial_charge' text='rynnäkkö'</ref>, joka kaksinkertaistaa "
 "sekä hyökkääjän että puolustajan tekemän vahingon, kun rynnäköivä yksikkö "
 "hyökkää."
 
@@ -1434,7 +1424,6 @@ msgstr ""
 
 #. [topic]: id=experience_and_advancement
 #: data/core/help.cfg:292
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1452,14 +1441,13 @@ msgstr ""
 "\n"
 "\n"
 "Vaikka useimmilla yksiköillä on kolme kehitystasoa, kaikilla ei ole. "
-"Joillakin yksiköillä (kuten <ref>dst=unit_Mage text=velhoilla</ref>) voi "
+"Joillakin yksiköillä (kuten <ref>dst='unit_Mage' text='velhoilla'</ref>) voi "
 "olla neljä. Kun yksikkö saavuttaa enimmäistasonsa, sillä on luultavasti "
-"mahdollisuus ”enimmäistason jälkeiseen ylenemiseen” (EJY, englanniksi "
-"AMLA).\n"
+"mahdollisuus ”enimmäistason jälkeiseen ylenemiseen” (EJY, englanniksi AMLA). "
 "EJY muuttaa yksikköä joka kerta, kun yksikkö saavuttaa kokemuspisteidensä "
 "rajan, mutta yksikkö pysyy samantasoisena. Tyypillinen EJY-vaikutus on, että "
 "yksikön kokonais-EP-määrä kasvaa kolmella ja yksikkö paranee täysin. Yksikkö "
-"saavuttaa ensimmäisen EJY:n yleensä 150 KP:llä (120 KP:llä jos se on "
+"saavuttaa ensimmäisen EJY:nsä yleensä 150 KP:llä (120 KP:llä jos se on "
 "älykäs). EJY:n saavuttaminen kuitenkin vaikeutuu jokaisen EJY:n jälkeen, "
 "joten yleensä on kannattavampaa yrittää saada alempitasoisia yksiköitä "
 "ylenemään."
@@ -1471,7 +1459,6 @@ msgstr "Parantaminen"
 
 #. [topic]: id=healing
 #: data/core/help.cfg:300
-#, fuzzy
 msgid ""
 "In combat, your units will inevitably take damage. When a unit "
 "<ref>dst='experience_and_advancement' text='advances'</ref>, it will heal "
@@ -1480,15 +1467,14 @@ msgid ""
 "of which take place at the beginning of your turn, before you take action."
 msgstr ""
 "Taistelussa on väistämätöntä, että yksikkösi vahingoittuvat. Kun yksikkö "
-"<ref>dst=experience_and_advancement text=ylenee</ref>, se paranee täysin. "
-"Näin voi tapahtua, kun yksikkö päättää taistelemisen vastustajaa vastaan, "
-"riippumatta siitä, onko sinun vuorosi. Wesnothissa on useita tapoja parantaa "
-"yksiköitäsi. Kaikki näistä toimivat vuoron alussa, ennen kuin liikutat "
-"joukkojasi."
+"<ref>dst='experience_and_advancement' text='ylenee'</ref>, se paranee "
+"täysin. Näin voi tapahtua, kun yksikkö päättää taistelemisen vastustajaa "
+"vastaan, riippumatta siitä, onko sinun vuorosi. Wesnothissa on useita tapoja "
+"parantaa yksiköitäsi. Kaikki näistä toimivat vuoron alussa, ennen kuin "
+"liikutat joukkojasi."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:302
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1511,19 +1497,17 @@ msgstr ""
 
 #. [topic]: id=healing
 #: data/core/help.cfg:304
-#, fuzzy
 msgid ""
 "\n"
 "<ref>dst='ability_regenerates' text='Regeneration'</ref>: Certain units "
 "(such as trolls) will automatically heal 8HP every turn."
 msgstr ""
 "\n"
-"<ref>dst=ability_regenerates text=Uusiutuminen</ref>: Tietyt yksiköt (kuten "
-"peikot) paranevat automaattisesti 8 elämäpistettä joka vuoro."
+"<ref>dst='ability_regenerates' text='Uusiutuminen'</ref>: Tietyt yksiköt "
+"(kuten peikot) paranevat automaattisesti 8 elämäpistettä joka vuoro."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:305
-#, fuzzy
 msgid ""
 "\n"
 "Healing units: Units with the <ref>dst='ability_heals +4' text='Heals'</ref> "
@@ -1532,13 +1516,12 @@ msgid ""
 "turn, or prevent Poison from causing that unit damage."
 msgstr ""
 "\n"
-"Hoivaavat yksiköt: Yksiköt, joilla on erikoistaito <ref>dst=ability_heals "
-"text=Hoivaa</ref>, voivat hoivata viereisiään ystävällisiä yksiköitä yleensä "
-"4 tai 8 EP per vuoro, tai estää myrkyn vaikutuksen."
+"Hoivaavat yksiköt: Yksiköt, joilla on erikoistaito <ref>dst='ability_heals' "
+"text='”hoivaa”'</ref>, voivat hoivata viereisiään ystävällisiä yksiköitä "
+"yleensä 4 tai 8 EP per vuoro, tai estää myrkyn vaikutuksen."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:306
-#, fuzzy
 msgid ""
 "\n"
 "Curing units: Units with the <ref>dst='ability_cures' text='Cures'</ref> "
@@ -1546,8 +1529,8 @@ msgid ""
 "healing, if it has that ability as well)."
 msgstr ""
 "\n"
-"Lääkitsevät yksiköt: Yksiköt jotka osaavat <ref>dst=ability_cures "
-"text=lääkitä</ref>, parantavat jokaisen vieressään olevan oman puolen "
+"Lääkitsevät yksiköt: Yksiköt jotka osaavat <ref>dst='ability_cures' "
+"text='lääkitä'</ref>, parantavat jokaisen vieressään olevan oman puolen "
 "yksikön myrkytystilan (hoivaamisen sijaan, jos yksiköllä on myös kyseinen "
 "erikoistaito)."
 
@@ -1663,7 +1646,6 @@ msgstr "Yhteenveto"
 
 #. [topic]: id=wrap_up
 #: data/core/help.cfg:330
-#, fuzzy
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
 "Basic Strategy, or familiarise yourself with <ref>dst='..traits_section' "
@@ -1672,8 +1654,8 @@ msgid ""
 "Throne campaign. Have fun, and good luck!"
 msgstr ""
 "Nämä olivat Wesnothin perusteet. Saatat haluta lukea lisää perusstrategiasta "
-"tai tutustua paremmin <ref>dst=traits text=ominaisuuksiin</ref> ja "
-"<ref>dst=abilities text=erikoistaitoihin</ref>. Tässä vaiheessa tiedät "
+"tai tutustua paremmin <ref>dst='traits' text='piirteisiin'</ref> ja "
+"<ref>dst='abilities' text='erikoistaitoihin'</ref>. Tässä vaiheessa tiedät "
 "kaiken, mitä tarvitset pelataksesi Valtaistuimen perillinen -kampanjaa. Pidä "
 "hauskaa, ja onnea!"
 
@@ -1702,7 +1684,6 @@ msgstr ""
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:352
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1713,14 +1694,13 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Ominaisuudet, joita epäkuolleet yksiköt saavat, ovat "
-"<ref>dst=traits_intelligent text=älykäs</ref>, <ref>dst=traits_quick "
-"text=nopea</ref>, <ref>dst=traits_resilient text=kestävä</ref>, ja "
-"<ref>dst=traits_strong text=vahva</ref>."
+"Piirteet, jotka epäkuolleet yksiköt voivat saada, ovat "
+"<ref>dst='traits_intelligent' text='älykäs'</ref>, <ref>dst='traits_quick' "
+"text='nopea'</ref>, <ref>dst='traits_resilient' text='kestävä'</ref>, ja "
+"<ref>dst='traits_strong' text='vahva'</ref>."
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:356
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1731,9 +1711,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Muita piirteitä, joita yksiköillä voi olla, ovat <ref>dst=traits_loyal "
-"text=uskollinen</ref>, <ref>dst=traits_undead text=epäkuollut</ref>, sekä "
-"<ref>dst=traits_dextrous text=taitava</ref>.\n"
+"Muita piirteitä, joita yksiköllä voi olla: <ref>dst='traits_loyal' "
+"text='uskollinen'</ref>, <ref>dst='traits_undead' text='epäkuollut'</ref>, "
+"sekä <ref>dst='traits_dextrous' text='taitava'</ref>.\n"
 "\n"
 
 #. [topic]: id=traits_intelligent
@@ -2015,7 +1995,6 @@ msgstr ""
 
 #. [topic]: id=traits_healthy
 #: data/core/help.cfg:435
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2024,15 +2003,15 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Elinvoimaisilla yksiköillä on kaksi elämäpistettä enemmän kuin muilla ja "
-"lepääminen parantaa kaksi ylimääräistä elämäpistettä joka vuoro taistelun "
-"ulkopuolella."
+"Elinvoimaisilla yksiköillä on yksi elämäpiste jokaista kokemustasoa kohti "
+"enemmän kuin muilla ja lepääminen parantaa kaksi ylimääräistä elämäpistettä "
+"joka vuoro taistelun ulkopuolella."
 
 #. [topic]: id=traits_dim
 #: data/core/help.cfg:440
 #, fuzzy
 msgid "Dim"
-msgstr "Keskitaso"
+msgstr "hämärtää"
 
 #. [topic]: id=traits_dim
 #: data/core/help.cfg:441
@@ -2075,8 +2054,9 @@ msgstr ""
 
 #. [topic]: id=traits_weak
 #: data/core/help.cfg:456
+#, fuzzy
 msgid "Weak"
-msgstr ""
+msgstr "heikko"
 
 #. [topic]: id=traits_weak
 #: data/core/help.cfg:457
@@ -2097,7 +2077,7 @@ msgstr ""
 #. [topic]: id=terrain_flat
 #: data/core/help.cfg:472
 msgid "Flat"
-msgstr ""
+msgstr "tasamaa"
 
 #. [topic]: id=terrain_flat
 #: data/core/help.cfg:477
@@ -2125,15 +2105,14 @@ msgstr "tie"
 
 #. [topic]: id=terrain_road
 #: data/core/help.cfg:487
-#, fuzzy
 msgid ""
 "Roads are beaten paths of dirt, formed by many travelers passing over them. "
 "As far as gameplay is concerned, Roads behave as <ref>dst='terrain_flat' "
 "text='Flat'</ref> terrain."
 msgstr ""
-"Tiet ovat käytettyjä hiekkaisia kulkureittejä, jotka muodostuvat kulkijoiden "
-"tallaamana. Pelaamisen kannalta tiet vastaavat <ref>dst=terrain_grassland "
-"text=tasankoja</ref>."
+"Tiet ovat kuluneita hiekasta ja mudasta muodostuneita kulkureittejä, "
+"syntyneinä monien kulkijoiden tallattua samaa polkua pitkin. Pelaamisen "
+"kannalta tiet vastaavat <ref>dst='terrain_grassland' text='tasankoja'</ref>."
 
 #. [topic]: id=terrain_forest
 #: data/core/help.cfg:494
@@ -2306,11 +2285,10 @@ msgstr ""
 #. [topic]: id=terrain_frozen
 #: data/core/help.cfg:568
 msgid "Frozen"
-msgstr ""
+msgstr "jäätynyt"
 
 #. [topic]: id=terrain_frozen
 #: data/core/help.cfg:573
-#, fuzzy
 msgid ""
 "Frozen terrain represents any flat area that is covered by snow or ice. Most "
 "units are slowed down on it, and have a harder time defending themselves. "
@@ -2319,12 +2297,13 @@ msgid ""
 "\n"
 "Most units have 20 to 40% defense in frozen terrain."
 msgstr ""
-"Lumi edustaa kaikenlaista tasaista, jäätynyttä maastoa – oli se sitten "
-"pysyvää (kuten tundra) tai tilapäistä (kuten lumen peittämä tasanko). "
-"Useimpien yksiköiden kulkeminen hidastuu lumessa ja niiden puolustautuminen "
-"vaikeutuu.\n"
+"Jäätynyt maasto edustaa kaikenlaista tasaista, lumen tai jään peittämää "
+"aluetta. Useimpien yksiköiden kulkeminen hidastuu lumessa ja niiden "
+"puolustautuminen vaikeutuu. Huomaa, ettei uivat yksiköt, edes ne, jotka "
+"voivat hengittää veden alla, voi uida jäässä. \n"
 "\n"
-"Useimpien yksiköiden puolustus lumella on 20%:ista 40%:iin."
+"Useimpien yksiköiden puolustus lumella on 20 prosentin ja 40 prosentin "
+"välillä."
 
 #. [topic]: id=terrain_castle
 #: data/core/help.cfg:580
@@ -2380,14 +2359,14 @@ msgstr "aavikkoa"
 
 #. [topic]: id=terrain_desert
 #: data/core/help.cfg:609
-#, fuzzy
 msgid ""
 "Deserts have a somewhat different composition than small sand pits or "
 "beaches, however for gameplay purposes they are identical. See "
 "<ref>dst='terrain_sand' text='Sand'</ref>."
 msgstr ""
-"Aavikot eroavat hieman hiekkakuoppien ja -rantojen hiekasta. Pelin kannalta "
-"ne kuitenkin vastaavat <ref>dst=terrain_sand text=hiekkaa</ref>."
+"Aavikot ovat jonkin verran erilaisia verrattuna hiekkakuoppiin ja "
+"aurinkorantoihin. Pelin kannalta ne kuitenkin vastaavat "
+"<ref>dst='terrain_sand' text='hiekkaa'</ref>."
 
 #. [topic]: id=terrain_cave
 #: data/core/help.cfg:616
@@ -2396,7 +2375,6 @@ msgstr "luola"
 
 #. [topic]: id=terrain_cave
 #: data/core/help.cfg:621
-#, fuzzy
 msgid ""
 "Cave terrain represents any underground cavern with enough room for a unit "
 "to pass. Most units are wholly unfamiliar with the terrain, and thus are "
@@ -2408,15 +2386,15 @@ msgid ""
 "\n"
 "Most units receive 20 to 40% defense in Caves, whereas dwarves have 50%."
 msgstr ""
-"Luola edustaa kaikkia maanalaisia onkaloita, joissa on tarpeeksi tilaa "
-"yksiköiden liikkua. Useimmat yksiköt eivät tunne luolia ja ovat siksi sekä "
-"hitaita että huonoja puolustautumaan siellä. Kääpiöt ja peikot, jotka asuvat "
-"luolissa, liikkuvat niissä vaivatta – erityisesti kääpiöt, joiden pieni koko "
-"on luolissa etu. Silloin tällöin luolat ovat "
-"<ref>dst=terrain_illuminated_cave text=valaistuja</ref>.\n"
+"Luola edustaa kaikkia maanalaisia onkaloita, joissa yksiköillä on tarpeeksi "
+"tilaa liikkua. Useimmat yksiköt eivät tunne luolia ja ovat siksi sekä "
+"hitaita, että huonoja puolustautumaan siellä. Kääpiöt ja peikot, jotka "
+"asuvat luolissa, liikkuvat niissä vaivatta – erityisesti kääpiöt, joiden "
+"pieni koko on luolissa etu. Silloin tällöin luolat ovat "
+"<ref>dst='terrain_illuminated_cave' text='valaistuja'</ref>.\n"
 "\n"
-"Useimpien yksiköiden puolustus luolissa on 20% 40%:iin, kun se kääpiöillä on "
-"50%."
+"Useimpien yksiköiden puolustus luolissa on 20 prosentista 40 prosenttiin, "
+"kun se kääpiöillä on 50 prosenttia."
 
 #. [topic]: id=terrain_rockbound_cave
 #: data/core/help.cfg:628
@@ -2425,7 +2403,6 @@ msgstr "louhikkoluola"
 
 #. [topic]: id=terrain_rockbound_cave
 #: data/core/help.cfg:633
-#, fuzzy
 msgid ""
 "Rockbound cave terrain is formed by the action of water and wind, carrying "
 "erosive particles that carve the rock. It resembles a scraggy underground "
@@ -2438,16 +2415,16 @@ msgid ""
 "Most units have about 50% defense in rocky caves, whereas cavalry are "
 "limited to 40%. Dwarves enjoy 60% defense in Rockbound caves."
 msgstr ""
-"Louhikkoluola on syntynyt tuulen ja virtaavan veden vaikutuksesta. "
-"Louhikkoinen luola on vaikeakulkuista useimmille yksiköille, mutta "
-"louhikossa on helppo puolustautua. Peikot ja etenkin kääpiöt, jotka "
+"Louhikkoluola on syntynyt tuulen ja virtaavan veden aiheuttaman eroosion "
+"tuloksena. Louhikkoinen luola on vaikeakulkuista useimmille yksiköille, "
+"mutta louhikossa on helppo puolustautua. Peikot, ja etenkin kääpiöt, jotka "
 "useimmiten asuvat luolissa, ovat tottuneet louhikkoihin ja liikkuvat siellä "
-"ongelmitta. Kääpiöt pienen kokonsa ansiosta hyötyvät louhikkoluolista "
-"eniten. Silloin tällöin luolat ovat <ref>dst=terrain_illuminated_cave "
-"text=valaistuja</ref>\n"
+"ongelmitta. Kääpiöt, pienen kokonsa ansiosta, hyötyvät louhikkoluolista "
+"eniten. Silloin tällöin louhikkoluolat ovat "
+"<ref>dst='terrain_illuminated_cave' text='valaistuja'</ref>\n"
 "\n"
 "Useimpien yksiköiden puolustus louhikkoluolassa on 50%. Kääpiöillä puolustus "
-"on peräti 60% ja ratsuyksiköillä vain 40%."
+"on peräti 60% ja ratsuyksiköillä 40%."
 
 #. [topic]: id=terrain_illuminated_cave
 #: data/core/help.cfg:640
@@ -2558,20 +2535,20 @@ msgstr ""
 #. [topic]: id=terrain_unwalkable
 #: data/core/help.cfg:690
 msgid "Unwalkable"
-msgstr ""
+msgstr "Ylitsepääsemätön"
 
 #. [topic]: id=terrain_unwalkable
 #: data/core/help.cfg:693
-#, fuzzy
 msgid ""
 "Unwalkable terrain covers any chasm or gorge which, as the name implies, "
 "cannot be crossed simply by walking. Chasms are noted for sheer walls which "
 "would take days to traverse. As far as gameplay is concerned, only units "
 "capable of flying can cross this terrain."
 msgstr ""
-"Kuilu on maassa oleva rotko, jonka syvyys voi olla suunnaton. Kuilujen "
-"tunnusmerkkinä ovat jyrkät seinämät, joiden kiipeämiseen kuluisi päiviä. "
-"Pelissä vain lentävät yksiköt voivat liikkua kuilujen yli."
+"Ylitsepääsemätön maasto sisältää kaikki kuilut ja rotkot, joita ei voi "
+"ylittää yksinkertaisesti vain kävelemällä. Kuilujen tunnusmerkkinä ovat "
+"jyrkät seinämät, joiden kiipeämiseen kuluisi päiviä. Pelissä vain lentävät "
+"yksiköt voivat liikkua kuilujen yli."
 
 #. [topic]: id=terrain_lava
 #: data/core/help.cfg:700
@@ -2580,7 +2557,6 @@ msgstr "laavaa"
 
 #. [topic]: id=terrain_lava
 #: data/core/help.cfg:703
-#, fuzzy
 msgid ""
 "The dangers inherent in trying to walk on lava are fairly obvious. As far as "
 "movement is concerned, lava is equivalent to <ref>dst='terrain_unwalkable' "
@@ -2590,10 +2566,12 @@ msgid ""
 "This provides an attack bonus for lawful units and removes the attack bonus "
 "from chaotic units."
 msgstr ""
-"Laavassa käveleminen on vaarallista. Tällaisen maaston voivat ylittää vain "
-"yksiköt, jotka pystyvät lentämään huomattavan korkealla sen yläpuolella. "
-"Lisäksi laava hohtaa valoa, joka antaa sen yläpuolella käydyissä "
-"taisteluissa etua lainkuuliaisille yksiköille ja haittaa kaoottisille."
+"Laavassa kävelemisen yrittämisen vaarat ovat melko selviä useimmille. "
+"Liikkumisen kannalta laava on muistuttaa <ref>dst='terrain_unwalkable' "
+"text='ylitsepääsemätöntä'</ref> maastoa, ja sen voivat ylittää vain yksiköt, "
+"jotka pystyvät lentämään korkealla sen yläpuolella. Lisäksi, laava hohtaa "
+"valoa, joka antaa sen yläpuolella käydyissä taisteluissa etua "
+"lainkuuliaisille yksiköille ja haittaa kaoottisille."
 
 #. [topic]: id=terrain_ford
 #: data/core/help.cfg:710
@@ -2618,9 +2596,8 @@ msgstr ""
 
 #. [topic]: id=terrain_reef
 #: data/core/help.cfg:720
-#, fuzzy
 msgid "Coastal Reef"
-msgstr "linna"
+msgstr "Rannikkoriutta"
 
 #. [topic]: id=terrain_reef
 #: data/core/help.cfg:725
@@ -2632,6 +2609,13 @@ msgid ""
 "\n"
 "Mermen and Naga both receive 70% defense on coastal reefs."
 msgstr ""
+"Koralliriutat ovat matalikkoja muodostuneina kivestä, korallista ja "
+"hiekasta. Tämä antaa suurimmalle osalle maayksiköistä vakaamman jalansijan "
+"ja puolustusaseman kuin he saisivat matalassa vedessä rämpien. Myös "
+"vedenasukkaat saavat poikkeuksellisen korkean puolustuksen.\n"
+"\n"
+"Merenmiehet ja nagat saavat molemmat 70 prosentin puolustuksen "
+"koralliriutoilla."
 
 #. [topic]: id=terrain_bridge
 #: data/core/help.cfg:732
@@ -2678,6 +2662,11 @@ msgid ""
 "jagged peaks at such rarified heights, and not even the fiercest troll can "
 "smash through thick walls of stone."
 msgstr ""
+"Esteitä, joita edes kaikkein päättäväisimmät matkustajat eivät voi ylittää, "
+"sisältää kiinteitä seiniä ja niin korkeita vuoria, että niiden huiput ovat "
+"jatkuvasti pilvien peitossa. Edes lentävät olennot eivät kykene navigoimaan "
+"näiden särmikkäiden huippujen luona henkeäsalpaavissa korkeuksissa, eikä "
+"edes raivokkaimmat peikot voi tuhota näitä kivestä muodostuneita seiniä. "
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:760
@@ -2696,7 +2685,6 @@ msgstr ""
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:769
-#, fuzzy
 msgid ""
 "\n"
 "Switch debug mode on (does not work in multiplayer). See "
@@ -2705,8 +2693,8 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Vaihda testaustila päälle (ei toimi moninpelissä). Katso "
-"<ref>dst=debug_commands text='Testaustilan komennot'</ref>.\n"
+"Kytke testaustila päälle (ei toimi moninpelissä). Katso "
+"<ref>dst='debug_commands' text='Testaustilan komennot'</ref>.\n"
 "Testaustila suljetaan lopettamalla peli tai komennolla :nodebug.\n"
 "\n"
 
@@ -2759,6 +2747,9 @@ msgid ""
 "Redraws the screen and reloads any image files that have been changed.\n"
 "\n"
 msgstr ""
+"\n"
+"Päivittää ruudun ja lataa kaikki kuvat, jotka ovat muuttuneet.\n"
+"\n"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:784
@@ -2887,6 +2878,10 @@ msgid ""
 "campaign.\n"
 "\n"
 msgstr ""
+"\n"
+"Avaa valikon, jolla voi valita, mihin kampanjan skenaarioon haluat päästä "
+"välittömästi.\n"
+"\n"
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:827
@@ -2928,6 +2923,9 @@ msgid ""
 "Immediately advances to the next scenario in a campaign.\n"
 "\n"
 msgstr ""
+"\n"
+"Siirry välittömästi seuraavaan kampanjan skenaarioon.\n"
+"\n"
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:839
@@ -3054,7 +3052,6 @@ msgstr "johtaja"
 #: data/core/macros/abilities.cfg:118 data/core/macros/abilities.cfg:141
 #: data/core/macros/abilities.cfg:176 data/core/macros/abilities.cfg:223
 #: data/core/macros/abilities.cfg:282
-#, fuzzy
 msgid ""
 "Leadership:\n"
 "This unit can lead our own units that are next to it, making them fight "
@@ -3235,9 +3232,8 @@ msgstr "sukellusväijytys"
 
 #. [hides]: id=submerge
 #: data/core/macros/abilities.cfg:468 data/core/macros/abilities.cfg:474
-#, fuzzy
 msgid "female^submerge"
-msgstr "vahva"
+msgstr "sukellusväijytys"
 
 #. [hides]: id=submerge
 #: data/core/macros/abilities.cfg:472 data/core/macros/abilities.cfg:478
@@ -3264,9 +3260,8 @@ msgstr "ruokinta"
 
 #. [dummy]: id=feeding
 #: data/core/macros/abilities.cfg:497
-#, fuzzy
 msgid "female^feeding"
-msgstr "peloton"
+msgstr "ruokinta"
 
 #. [dummy]: id=feeding
 #: data/core/macros/abilities.cfg:499
@@ -3288,7 +3283,6 @@ msgid "backstab"
 msgstr "selkäänpuukotus"
 
 #: data/core/macros/abilities.cfg:567
-#, fuzzy
 msgid ""
 "Backstab:\n"
 "When used offensively, this attack deals double damage if there is an enemy "
@@ -3296,9 +3290,9 @@ msgid ""
 "incapacitated (turned to stone or otherwise paralyzed)."
 msgstr ""
 "Selkäänpuukotus:\n"
-"Tämä hyökkäys tekee kaksinkertaisen vahingon, jos kohteen vastakkaisella "
-"puolella on sille vihamielinen ja taistelukykyinen yksikkö (esim. yksikköä "
-"ei ole muutettu kiveksi)."
+"Yksikön hyökätessä tämä hyökkäys tekee kaksinkertaisen vahingon, jos kohteen "
+"vastakkaisella puolella on kohteelle vihamielinen ja taistelukykyinen "
+"yksikkö (yksikköä ei ole esimerkiksi  muutettu kiveksi)."
 
 #: data/core/macros/abilities.cfg:579 data/core/macros/abilities.cfg:591
 msgid "plague"
@@ -3378,7 +3372,6 @@ msgid "swarm"
 msgstr "parvi"
 
 #: data/core/macros/abilities.cfg:654
-#, fuzzy
 msgid ""
 "Swarm:\n"
 "The number of strikes of this attack decreases when the unit is wounded. The "
@@ -3387,9 +3380,10 @@ msgid ""
 "number of strikes."
 msgstr ""
 "Parvi:\n"
-"Kun yksikkö haavoittuu vähenee sen iskujen lukumäärä. Iskujen väheneminen on "
-"suoraan verrannollista elämäpisteiden vähenemiseen. Jos yksiköllä on "
-"esimerkiksi jäljellä 3/4 elämäpisteistä, käyttää se iskuistaan vain 3/4."
+"Kun yksikkö haavoittuu, sen iskujen lukumäärä määrä vähenee. Iskujen "
+"väheneminen on suoraan verrannollista elämäpisteiden vähenemiseen. "
+"Rsimerkiksi, jos yksiköllä on jäljellä 3/4 elämäpisteistä, sillä on iskuja "
+"vain 3/4 alkuperäisestä."
 
 #: data/core/macros/abilities.cfg:663
 msgid "charge"
@@ -3438,28 +3432,27 @@ msgstr ""
 #. [option]: type=behaviour
 #: data/core/macros/ai_controller.cfg:144
 msgid "Be more aggressive"
-msgstr ""
+msgstr "Ole aggressiivisempi"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:161
 msgid "aggressive."
-msgstr ""
+msgstr "aggressiivinen."
 
 #. [option]: type=behaviour
 #: data/core/macros/ai_controller.cfg:178
 msgid "Be more defensive"
-msgstr ""
+msgstr "Ole puolustavampi"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:191
-#, fuzzy
 msgid "defensive."
-msgstr "Puolustus"
+msgstr "puolustava."
 
 #. [option]: type=objective
 #: data/core/macros/ai_controller.cfg:213
 msgid "Focus on defeating..."
-msgstr ""
+msgstr "Keskity kukistamiseen..."
 
 #. [literal]: speaker=narrator
 #. [value]: speaker=narrator
@@ -3473,12 +3466,12 @@ msgstr ""
 #: data/core/macros/ai_controller.cfg:845
 #: data/core/macros/ai_controller.cfg:885
 msgid "Instruct ally"
-msgstr ""
+msgstr "Ohjeista liittolaista"
 
 #. [literal]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:230
 msgid "Which enemy side to focus on?"
-msgstr ""
+msgstr "Mihin vihollispuoleen pitäisi keskittyä?"
 
 #. [then]
 #. [else]
@@ -3487,24 +3480,24 @@ msgstr ""
 #: data/core/macros/ai_controller.cfg:437
 #: data/core/macros/ai_controller.cfg:442
 msgid "(side $temp_i|)"
-msgstr ""
+msgstr "(osapuoli $temp_i|)"
 
 #. [then]
 #: data/core/macros/ai_controller.cfg:288
 #: data/core/macros/ai_controller.cfg:438
 msgid "$side_i_leader.name (side $temp_i|)"
-msgstr ""
+msgstr "$side_i_leader.name (osapuoli $temp_i|)"
 
 #. [else]
 #: data/core/macros/ai_controller.cfg:293
 #: data/core/macros/ai_controller.cfg:443
 msgid "side $temp_i"
-msgstr ""
+msgstr "osapuoli $temp_i"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:309
 msgid "focusing on defeating $this_enemy_description|."
-msgstr ""
+msgstr "keskitytään kukistamaan vihollinen $this_enemy_description|."
 
 #. [value]
 #. [option]: speaker=narrator
@@ -3512,76 +3505,69 @@ msgstr ""
 #: data/core/macros/ai_controller.cfg:479
 #: data/core/macros/ai_controller.cfg:870
 #: data/core/macros/ai_controller.cfg:905
-#, fuzzy
 msgid "Back"
-msgstr "Musta"
+msgstr "Takaisin"
 
 #. [option]: type=objective
 #: data/core/macros/ai_controller.cfg:359
 msgid "Focus on protecting..."
-msgstr ""
+msgstr "Keskity suojelemaan..."
 
 #. [literal]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:376
 msgid "Which friendly side to protect?"
-msgstr ""
+msgstr "Mitä ystävällistä puolta pitäisi suojella?"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:459
 msgid "focusing on protecting $this_ally_description|."
-msgstr ""
+msgstr "keskitytään suojelemaan ystävää $this_ally_description|."
 
 #. [option]: type=objective
 #: data/core/macros/ai_controller.cfg:511
-#, fuzzy
 msgid "Defend a location..."
-msgstr "Indonesiankielinen käännös"
+msgstr "Puolusta paikkaa..."
 
 #. [print]
 #: data/core/macros/ai_controller.cfg:527
 msgid "Right-click to select a location to defend"
-msgstr ""
+msgstr "Klikkaa oikealla hiirenkorvalla haluamaasi puolustuspaikkaa"
 
 #. [set_menu_item]: id=ai_controller_defend_location_picker
 #: data/core/macros/ai_controller.cfg:534
-#, fuzzy
 msgid "Defend this location"
-msgstr "Indonesiankielinen käännös"
+msgstr "Puolusta tätä paikkaa"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:551
 msgid "focusing on defending the area around $x1|,$y1|."
-msgstr ""
+msgstr "keskitytään puolustamaan aluetta $x1|,$y1|:n ympärillä."
 
 #. [print]
 #: data/core/macros/ai_controller.cfg:586
 msgid "Location selection canceled"
-msgstr ""
+msgstr "Alueen valinta peruttu"
 
 #. [option]
 #: data/core/macros/ai_controller.cfg:601
-#, fuzzy
 msgid "Clear objective orders"
-msgstr "Peruuta"
+msgstr "Poista tavoitekäskyt"
 
 #. [option]
 #: data/core/macros/ai_controller.cfg:625
-#, fuzzy
 msgid "Clear behavior orders"
-msgstr "Peruuta"
+msgstr "Poista käyttäytymiskäskyt"
 
 #. [option]
 #: data/core/macros/ai_controller.cfg:649
-#, fuzzy
 msgid "Clear all orders"
-msgstr "Peruuta"
+msgstr "Poista kaikki käskyt"
 
 #. [then]
 #: data/core/macros/ai_controller.cfg:775
 #: data/core/macros/ai_controller.cfg:786
-#, fuzzy
 msgid "none set."
-msgstr "Ei mitään"
+msgstr "ei mitään"
 
 #. [value]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:808
@@ -3589,6 +3575,8 @@ msgid ""
 "$ally_leader.name (side $ally_side|) has not been given any instructions and "
 "is acting normally."
 msgstr ""
+"$ally_leader.name (puoli $ally_side|) ei ole antanut yhtään ohjeistusta ja "
+"toimii normaalisti."
 
 #. [value]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:811
@@ -3599,6 +3587,10 @@ msgid ""
 "Behavior: $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_behaviour_description"
 msgstr ""
+"Tavoite: $ai_controller.side_$ally_side|_current_settings."
+"currently_doing_objective_description\n"
+"Käyttäytyminen: $ai_controller.side_$ally_side|_current_settings."
+"currently_doing_behaviour_description"
 
 #. [value]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:825
@@ -3606,22 +3598,22 @@ msgid ""
 "$ally_leader.name (side $ally_side|) is carrying out the following "
 "instructions:"
 msgstr ""
+"$ally_leader.name (puoli $ally_side|) toteuttaa seuraavanlaisia käskyjä:"
 
 #. [literal]
 #: data/core/macros/ai_controller.cfg:840
 msgid "Set objective..."
-msgstr ""
+msgstr "Aseta tavoite..."
 
 #. [literal]
 #: data/core/macros/ai_controller.cfg:880
-#, fuzzy
 msgid "Set behavior..."
-msgstr "Aseta salasana..."
+msgstr "Aseta käyttäytyminen..."
 
 #. [literal]
 #: data/core/macros/ai_controller.cfg:920
 msgid "Exit"
-msgstr ""
+msgstr "Poistu"
 
 #. [advancement]: id=amla_default
 #: data/core/macros/amla.cfg:10
@@ -3647,38 +3639,43 @@ msgid "No early finish bonus."
 msgstr "Ei palkintoa aikaisesta lopetuksesta."
 
 #: data/core/macros/carryover-utils.cfg:15
-#, fuzzy
 msgid "`(early finish bonus)"
-msgstr "Palkinto aikaisesta lopetuksesta."
+msgstr "`(aikaisesen lopetuksen bonus)"
 
 #: data/core/macros/carryover-utils.cfg:18
 msgid "No gold carried over to the next scenario."
 msgstr ""
+"Skenaariosta ei jäänyt jäljelle yhtään kultaa seuraavaa skenaariota varten."
 
 #: data/core/macros/carryover-utils.cfg:22
 msgid ""
 "\n"
 "100% of finishing gold carried over to the next scenario."
 msgstr ""
+"\n"
+"100% lopetuskullasta saatiin mukaan seuraavaan skenaarioon."
 
 #: data/core/macros/carryover-utils.cfg:26
 msgid ""
 "\n"
 "40% of finishing gold carried over to the next scenario."
 msgstr ""
+"\n"
+"40% lopetuskullasta saatiin mukaan seuraavaan seuraavaan skenaarioon."
 
 #: data/core/macros/carryover-utils.cfg:30
 msgid ""
 "\n"
 "20% of finishing gold carried over to the next scenario."
 msgstr ""
+"\n"
+"20% lopetuskullasta saatiin mukaan seuraavaan skenaarioon."
 
 #. [message]: speaker=narrator
 #: data/core/macros/items.cfg:39
-#, fuzzy
 msgid "You have come across a wishing well. What would you like to wish for?"
 msgstr ""
-"Saavut toivomuskaivolle.\n"
+"poSaavut toivomuskaivolle.\n"
 "Mitä toivot?"
 
 #. [option]: speaker=narrator
@@ -3722,15 +3719,13 @@ msgstr "Jätä toivomatta."
 
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:148
-#, fuzzy
 msgid "Take it"
-msgstr "Vastaanotettu"
+msgstr "Ota se"
 
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:166
-#, fuzzy
 msgid "Leave it"
-msgstr "Vaihda yksikön nimeä"
+msgstr "Jätä se"
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:226
@@ -3836,7 +3831,7 @@ msgstr "Vain merenmiehet voivat käyttää tätä esinettä!"
 
 #: data/core/macros/items.cfg:535
 msgid "Should $unit.name pick up the trident?"
-msgstr ""
+msgstr "Pitäisikö yksikön $unit.name ottaa kolmikärki?"
 
 #. [object]
 #: data/core/macros/items.cfg:537
@@ -4234,7 +4229,6 @@ msgid "Kaasa,Kayya,Keyya,Kiira,Korra"
 msgstr "Kaasa,Kayya,Keyya,Kiira,Korra"
 
 #: data/core/macros/names.cfg:23
-#, fuzzy
 msgid ""
 "Addraecyn,Addraenvan,Addraer,Addraercyn,Addraryn,Addreddry,Addredry,"
 "Addregwyn,Addrenyc,Addreoddry,Addreoddyn,Addreonyc,Addreorcyn,Addreran,"
@@ -4293,8 +4287,8 @@ msgstr ""
 "Aethonnyn,Aethuc,Aethudry,Aethugwyn,Aethun,Aethunry,Aethydry,Aethynyc,Blac,"
 "Bladoc,Blaec,Blaedry,Blanry,Blebryn,Bledoc,Blemyr,Blennyn,Blenvan,Bleollyn,"
 "Blercyn,Blidd,Bliddry,Blillyn,Blinvan,Blollyn,Blubryn,Blucyn,Bludry,Blullyn,"
-"Bluran,Blybryn,Blydd,Blygwyn,Blymyr,Blyr,Cac,Cadry,Caebryn,Caedry,Caeran,"
-"Caercyn,Car,Carac,Caraddry,Caradoc,Caraedry,Caraennyn,Cararyn,Caredd,"
+"Bluran,Blybryn,Blydd,Blygwyn,Blymyr,Blyr,Bucyn,Cac,Cadry,Caebryn,Caedry,"
+"Caeran,Caercyn,Car,Carac,Caraddry,Caradoc,Caraedry,Caraennyn,Cararyn,Caredd,"
 "Careddry,Caregwyn,Caren,Careobryn,Careogwyn,Careonvan,Careorraent,Careoryn,"
 "Carercyn,Caric,Cariddry,Carocyn,Caroddyn,Caror,Caroran,Carraent,Carudoc,"
 "Carullyn,Carygwyn,Caryn,Cebryn,Cemyr,Cennyn,Ceoc,Ceoddry,Ceoddyn,Ceomyr,"
@@ -4306,34 +4300,33 @@ msgstr ""
 "Glircyn,Gloddry,Gloddyn,Glonry,Glonvan,Glumyr,Glun,Glunry,Glunvan,Glyc,Glydd,"
 "Glydoc,Glynry,Glynvan,Glyran,Goc,Gor,Gubryn,Gudd,Gullyn,Gumyr,Gur,Gwadoc,"
 "Gwaec,Gwaeddyn,Gwan,Gweddyn,Gwegwyn,Gwellyn,Gwennyn,Gwenyc,Gweocyn,Gweodd,"
-"Gweodoc,Gweodry,Gweogwyn,Gweoran,Gwidoc,Gwodd,Gwoddyn,Gwollyn,Gwor,Gwucyn,"
-"Gwudoc,Gwumyr,Gwuran,Gwybryn,Gwycyn,Gwyddry,Gwydoc,Gwymyr,Gwynnyn,Gydoc,"
-"Gyllyn,Gymyr,Labryn,Ladoc,Laellyn,Lan,Lannyn,Laran,Lec,Lemyr,Lenvan,Leogwyn,"
-"Lercyn,Ligwyn,Lin,Liryn,Lonnyn,Lorraent,Luddry,Ludoc,Lunnyn,Lunvan,Lurraent,"
-"Mac,Maddyn,Maennyn,Manry,Manyc,Marcyn,Mec,Menvan,Meollyn,Meon,Meonnyn,"
-"Meorraent,Middry,Midry,Mimyr,Modd,Moddry,Monry,Moran,Morcyn,Mubryn,Mudoc,"
-"Mugwyn,Murcyn,Mydoc,Mygwyn,Myn,Myrraent,Owac,Owadd,Owaddyn,Owaecyn,Owaedry,"
-"Owarcyn,Owaryn,Owecyn,Owedry,Oweomyr,Oweor,Oweorcyn,Oweran,Owercyn,Owidry,"
-"Owinvan,Owinyc,Owodd,Owoddry,Owogwyn,Owollyn,Oworan,Oworcyn,Oworraent,"
-"Owuddry,Owuddyn,Owugwyn,Owur,Owyran,Rabryn,Radd,Ranvan,Rar,Reoddyn,Reodry,"
-"Rhaecyn,Rhaedoc,Rhaemyr,Rhaerraent,Rhanry,Rharcyn,Rhenry,Rhenvan,Rhenyc,"
-"Rheodd,Rheoddyn,Rheollyn,Rheor,Rheoran,Rheorraent,Rheran,Rherraent,Rhobryn,"
-"Rhodry,Rhollyn,Rhonvan,Rhubryn,Rhugwyn,Rhunyc,Rhur,Rhygwyn,Rhyllyn,Rhynyc,"
-"Rhyrcyn,Rhyrraent,Rocyn,Roddyn,Romyr,Ron,Ronry,Rubryn,Ruddry,Rumyr,Run,"
-"Rurcyn,Rybryn,Rycyn,Ryddry,Rygwyn,Rynnyn,Rynry,Saec,Saellyn,Saemyr,Saenvan,"
-"Saercyn,Sanyc,Saran,Sarraent,Secyn,Seddyn,Sedry,Sellyn,Sennyn,Seoddry,"
-"Seorcyn,Sercyn,Siddry,Simyr,Siryn,Sodd,Sodry,Soran,Suc,Sudd,Surcyn,Sydd,"
-"Syran,Syryn,Tabryn,Taec,Taedd,Taedoc,Taemyr,Taenvan,Taercyn,Tanry,Tarcyn,"
-"Teddyn,Tegwyn,Ten,Tennyn,Tenvan,Teobryn,Teoddyn,Teor,Teorcyn,Terraent,Tinry,"
-"Tinvan,Tiryn,Todd,Tudd,Tuddry,Tudoc,Tunvan,Turraent,Tyddyn,Vaddyn,Vaeddyn,"
-"Vaedry,Vaennyn,Varcyn,Ven,Vennyn,Veocyn,Veoddyn,Veodry,Veogwyn,Veomyr,Vinvan,"
-"Vinyc,Virraent,Vobryn,Vogwyn,Vonry,Vuddyn,Vugwyn,Vyc,Vygwyn,Vyrcyn,Yracyn,"
-"Yraec,Yran,Yrannyn,Yranvan,Yraryn,Yredd,Yreddyn,Yregwyn,Yreryn,Yrinvan,"
-"Yrirraent,Yroddry,Yrullyn,Yrumyr,Yrunnyn,Yrunvan,Yryllyn,Yrymyr,Yrynyc,"
-"Yryrcyn"
+"Gweodoc,Gweodry,Gweogwyn,Gweoran,Gwidoc,Gwilam,Gwodd,Gwoddyn,Gwollyn,Gwor,"
+"Gwucyn,Gwudoc,Gwumyr,Gwuran,Gwybryn,Gwycyn,Gwyddry,Gwydoc,Gwymyr,Gwynnyn,"
+"Gydoc,Gyllyn,Gymyr,Haldar,Labryn,Ladoc,Laellyn,Lan,Lannyn,Laran,Lec,Lemyr,"
+"Lenvan,Leogwyn,Lercyn,Ligwyn,Lin,Liryn,Lonnyn,Lorraent,Luddry,Ludoc,Lunnyn,"
+"Lunvan,Lurraent,Mac,Maddyn,Maennyn,Manry,Manyc,Marcyn,Mec,Menvan,Meollyn,"
+"Meon,Meonnyn,Meorraent,Middry,Midry,Mimyr,Modd,Moddry,Monry,Moran,Morcyn,"
+"Mubryn,Mudoc,Mugwyn,Murcyn,Mydoc,Mygwyn,Myn,Myrraent,Owac,Owadd,Owaddyn,"
+"Owaecyn,Owaedry,Owain,Owarcyn,Owaryn,Owecyn,Owedry,Oweomyr,Oweor,Oweorcyn,"
+"Oweran,Owercyn,Owidry,Owinvan,Owinyc,Owodd,Owoddry,Owogwyn,Owollyn,Oworan,"
+"Oworcyn,Oworraent,Owuddry,Owuddyn,Owugwyn,Owur,Owyran,Rabryn,Radd,Ranvan,Rar,"
+"Reoddyn,Reodry,Rhaecyn,Rhaedoc,Rhaemyr,Rhaerraent,Rhanry,Rharcyn,Rhenry,"
+"Rhenvan,Rhenyc,Rheodd,Rheoddyn,Rheollyn,Rheor,Rheoran,Rheorraent,Rheran,"
+"Rherraent,Rhobryn,Rhodry,Rhollyn,Rhonvan,Rhubryn,Rhugwyn,Rhunyc,Rhur,Rhygwyn,"
+"Rhyllyn,Rhynyc,Rhyrcyn,Rhyrraent,Rocyn,Roddyn,Romyr,Ron,Ronry,Rubryn,Ruddry,"
+"Rumyr,Run,Rurcyn,Rybryn,Rycyn,Ryddry,Rygwyn,Rynnyn,Rynry,Saec,Saellyn,Saemyr,"
+"Saenvan,Saercyn,Sanyc,Saran,Sarraent,Secyn,Seddyn,Sedry,Sellyn,Sennyn,"
+"Seoddry,Seorcyn,Sercyn,Siddry,Simyr,Siryn,Sodd,Sodry,Soran,Suc,Sudd,Surcyn,"
+"Sydd,Syran,Syryn,Tabryn,Taec,Taedd,Taedoc,Taemyr,Taenvan,Taercyn,Tanry,"
+"Tarcyn,Teddyn,Tegwyn,Ten,Tennyn,Tenvan,Teobryn,Teoddyn,Teor,Teorcyn,Terraent,"
+"Tinry,Tinvan,Tiryn,Todd,Tudd,Tuddry,Tudoc,Tunvan,Turraent,Tyddyn,Vaddyn,"
+"Vaeddyn,Vaedry,Vaennyn,Varcyn,Ven,Vennyn,Veocyn,Veoddyn,Veodry,Veogwyn,"
+"Veomyr,Vinvan,Vinyc,Virraent,Vobryn,Vogwyn,Vonry,Vuddyn,Vugwyn,Vyc,Vygwyn,"
+"Vyrcyn,Yracyn,Yraec,Yran,Yrannyn,Yranvan,Yraryn,Yredd,Yreddyn,Yregwyn,Yreryn,"
+"Yrinvan,Yrirraent,Yroddry,Yrullyn,Yrumyr,Yrunnyn,Yrunvan,Yryllyn,Yrymyr,"
+"Yrynyc,Yryrcyn"
 
 #: data/core/macros/names.cfg:24
-#, fuzzy
 msgid ""
 "Alabrylla,Alaebrylla,Alaeniver,Alalla,Alalonna,Alaryan,Aleacla,Aleaniver,"
 "Aleara,Alearka,Alena,Alengwen,Alilonna,Alingwen,Alolla,Alolonna,Alora,"
@@ -4400,8 +4393,8 @@ msgstr ""
 "Eleanoic,Elearka,Elenoic,Elerka,Elivyan,Elulonna,Elurka,Elwllyra,Elwlonna,"
 "Elwngwen,Elwra,Elycla,Elyllyra,Elyngwen,Elyniver,Elyrka,Gwaera,Gwaessa,"
 "Gwangwen,Gweacla,Gwedda,Gwerka,Gwicla,Gwirka,Gwobrylla,Gwoll,Gwona,Gwongwen,"
-"Gwonoic,Gworyan,Gwullyra,Gwussa,Gwwcla,Gwwna,Gwwvyan,Gwycla,Gwydda,Jacla,"
-"Jaena,Jaerka,Jaevyan,Jalyan,Jana,Jarka,Jassa,Jeabrylla,Jealla,Jeanoic,"
+"Gwonoic,Gworyan,Gwullyra,Gwussa,Gwwcla,Gwwna,Gwwvyan,Gwycla,Gwydda,Heldra,"
+"Jacla,Jaena,Jaerka,Jaevyan,Jalyan,Jana,Jarka,Jassa,Jeabrylla,Jealla,Jeanoic,"
 "Jeniver,Jiryan,Jissa,Joll,Jolla,Jona,Jongwen,Jonoic,Jora,Jorka,Jovyan,Judda,"
 "Jull,Julonna,Jura,Jwll,Jwlyan,Jycla,Jyniver,Jynoic,Jyrka,Jyvyan,Laeniver,"
 "Laenoic,Laeryan,Langwen,Larka,Lassa,Lealonna,Lealyan,Ledda,Lelonna,Lelyan,"
@@ -4654,6 +4647,8 @@ msgid ""
 "The computer player might not be able to play side $side_number properly in "
 "this scenario. Side $side_number is intended to be played by a human player."
 msgstr ""
+"Tietokonepelaaja ei välttämättä kykene pelaamaan puolta $side_number tässä "
+"skenaariossa. Tämä osapuoli on tarkoitettu ihmispelaajan pelattavaksi."
 
 #. [time]: id=deep_underground
 #. [illuminated_time]: id=deep_underground_illum
@@ -4723,14 +4718,13 @@ msgstr ""
 "joistain hyökkäyksistä."
 
 #: data/core/macros/special-notes.cfg:29
-#, fuzzy
 msgid ""
 " The leadership of this unit enables adjacent units of the same side to deal "
 "more damage in combat, though this only applies to units of lower level."
 msgstr ""
-" Tämä yksikön johtamistaidot auttavat viereisiä ystävällisiä yksiköitä "
-"tekemään enemmän vahinkoa taistelussa, vaikkakin tämä pätee vain "
-"alemmantasoisiin yksiköihin."
+" Tämä yksikön johtamistaidot auttavat vieressä olevia ystävällisiä yksiköitä "
+"tekemään enemmän vahinkoa taistelussa, joskin tämä pätee vain "
+"alempitasoisiin yksiköihin."
 
 #: data/core/macros/special-notes.cfg:32
 msgid ""
@@ -4809,13 +4803,12 @@ msgstr ""
 "yksikkö voi puukottaa aiheuttaen kaksinkertaisen vahingon."
 
 #: data/core/macros/special-notes.cfg:62
-#, fuzzy
 msgid ""
 " Foes who lose their life to the plague will rise again in unlife, unless "
 "they are standing on a village."
 msgstr ""
-" Jos vihollinen kuolee tämän yksikön levittämään tautiin, se herää henkiin "
-"epäkuolleena."
+" Jos vihollinen kuolee tämän yksikön levittämään ruttoon, se herää henkiin "
+"epäkuolleena, ellei yksikkö ole kylässä."
 
 #: data/core/macros/special-notes.cfg:65
 msgid ""
@@ -4989,9 +4982,9 @@ msgstr "elinvoimainen"
 
 #. [trait]: id=healthy
 #: data/core/macros/traits.cfg:134
-#, fuzzy
 msgid "Can rest while moving, takes a quarter less poison damage"
-msgstr "Voi levätä samalla liikkuen"
+msgstr ""
+"Voi levätä samalla liikkuen, ottaa neljänneksen vähemmän vahikoa myrkystä"
 
 #. [trait]: id=fearless
 #: data/core/macros/traits.cfg:151 data/core/macros/traits.cfg:164
@@ -5011,37 +5004,32 @@ msgstr "Taistelee normaalisti epäedullisina vuorokaudenaikoina"
 #. [trait]: id=weak
 #: data/core/macros/traits.cfg:174
 msgid "weak"
-msgstr ""
+msgstr "heikko"
 
 #. [trait]: id=weak
 #: data/core/macros/traits.cfg:175
-#, fuzzy
 msgid "female^weak"
-msgstr "epäkuollut"
+msgstr "heikko"
 
 #. [trait]: id=slow
 #: data/core/macros/traits.cfg:192
-#, fuzzy
 msgid "slow"
-msgstr "hidastaa"
+msgstr "hidas"
 
 #. [trait]: id=slow
 #: data/core/macros/traits.cfg:193
-#, fuzzy
 msgid "female^slow"
-msgstr "uskollinen"
+msgstr "hidas"
 
 #. [trait]: id=dim
 #: data/core/macros/traits.cfg:209
-#, fuzzy
 msgid "dim"
-msgstr "Keskitaso"
+msgstr "hämärtää"
 
 #. [trait]: id=dim
 #: data/core/macros/traits.cfg:210
-#, fuzzy
 msgid "female^dim"
-msgstr "peloton"
+msgstr "hämärtää"
 
 #. [color_range]: id=red
 #. [color_range]: id=1
@@ -5129,7 +5117,6 @@ msgstr "Draakit"
 
 #. [race]: id=drake
 #: data/core/units.cfg:68
-#, fuzzy
 msgid ""
 "Drakes are large, winged and fire-breathing creatures, reminiscent of true "
 "dragons. On average, an adult drake stands around three meters tall and "
@@ -5194,69 +5181,72 @@ msgid ""
 "a relatively cold climate, a feature which has allowed them to populate even "
 "some of the mountains of the far north of the Great Continent."
 msgstr ""
-"Draakit ovat suuria, siivellisiä ja tulta syökseviä olentoja, todellisten "
-"lohikäärmeiden jäänteitä. Täysikasvuinen draakki on noin kolme metriä pitkä "
-"ja painaa helposti enemmän kuin hevonen ja ratsastaja yhdessä. Niiden iho "
-"koostuu kovista suomuista, jotka kestävät hyvin useimpia fyysisiä iskuja, "
-"lukuun ottamatta lävistäviä ja kylmiä iskuja. Useimmat draakit kykenevät "
-"todelliseen lentämiseen ja pystyvät matkustamaan pitkiäkin matkoja nopeasti. "
-"Kuitenkin niiden suuri koko ja paino rajoittaa niiden lentoa tehden "
-"draakeista kömpelöitä ilmassa. Kun mahdollista, ne käyttävät hyödyksi "
-"maaston ominaisuuksia kuten mäkiä, vuoria ja puita saavuttaakseen suuremman "
-"korkeuden ja nopeuden. Kuitenkin, draakkien vihollisten onneksi, ne ovat "
-"kuitenkin melko kömpelöitä olentoja ja yllättävän hitaita taistelussa. Tämä, "
-"yhdistettynä heidän suureen kokoonsa, tekee draakeista helppoja kohteita "
-"niille, jotka uskaltavat hyökätä draakkien kimppuun.\\n\n"
-"Draakit ovat luonnostaan maagisia olentoja, mysteerisellä tulella "
-"varustettuina vaalimassa heidän elämäänsä. Tämän voi helposti varmistaa, kun "
-"yksi heistä menehtyy taistelussa; sen sisäinen tuli vapautuu, polttaen "
-"niiden jäännökset tuhkaksi. Niiden sisäinen tuli on myös heidän suurin "
-"heikkous; se tekee niistä erittäin heikkoja kylmille hyökkäyksille. "
-"Huolimatta heidän maagisesta olemuksestaan, draakit ovat kykenemättömiä "
-"kanavoimaan taikuutta kontrolloidusti. Samalla kun  draakin ruumis on "
-"kyllästetty taikuudella, mahdollistaen draakin tulensyöksennän ja antaen "
-"sille sen elämän, niillä ei ole tahdollista kontrollia yli tämän taikuuden "
-"toimintojen.\n"
+"Draakit ovat suuria, siivekkäitä ja tulta syökseviä olentoja, jotka "
+"muistuttavat oikeita lohikäärmeitä. Keskimäärin täysikasvuinen draakki on "
+"noin kolme metriä pitkä ja painaa enemmän kuin hevonen ja ratsastaja "
+"yhteensä. Draakkien nahka koostuu kovista suomuista, jotka kestävät hyvin "
+"useimpia fyysisiä iskuja lävistävää ja kylmää vahinkoa lukuun ottamatta. "
+"Useimmat draakit pystyvät lentämään ja matkustamaan pitkiä matkoja nopeasti. "
+"Niiden suuri koko ja paino kuitenkin rajoittaa lentokykyä jossain määrin "
+"tehden heistä kömpelöitä ilmassa. Kun mahdollista, he käyttävät hyväksi "
+"maaston ominaisuuksia, kuten kukkuloita, vuoria ja puita, päästäkseen "
+"korkeammalle ja saavuttaakseen suuremman nopeuden. Vihollistensa onneksi "
+"draakit ovat silti melko kömpelöitä ja yllättävän hitaita taistelussa. "
+"Suureen kokoon yhdistettynä tämä tekee draakeista helppoja niille, jotka "
+"uskaltavat hyökätä heidän kimppuunsa.\n"
+"\n"
+"Draakit ovat luonnostaan maagisia olentoja – salaperäinen sisäinen tuli "
+"ruokkii heidän elämäänsä. Tämän voi havaita, kun draakki menehtyy "
+"taistelussa: hänen sisäinen tulensa vapautuu ja polttaa jäännökset tuhkaksi. "
+"Sisäinen tuli on myös heidän suurin heikkoutensa: se tekee heistä erittäin "
+"haavoittuvaisia kylmiä hyökkäyksiä vastaan. Huolimatta maagisesta "
+"olemuksestaan draakit ovat kykenemättömiä kanavoimaan taikuutta hallitusti. "
+"Draakin ruumis on kyllästetty taikuudella, mikä mahdollistaa tulensyöksennän "
+"ja antaa draakille elämän, mutta he eivät voi hallita taikuuttaan "
+"tahdonalaisesti.\n"
 "\n"
 "<header>text='Yhteiskunta'</header>\n"
-"Draakit ovat suhteellisen sotainen laji ja heidän yhteisöjä voidaan "
-"parhaiten kuvata kulttuurisina sotayhteisöinä. Draakkien heimon ydin on "
-"pieni ryhmä veteraanisotureita, joita keskinäisesti kunnioitetaan – tai "
-"yksinkertaisesti pelätään – johtaja, joka hallitsee yhteisöä rautanyrkillä. "
-"Jokaisen draakin odotetaan ansaitsevan heidän paikkansa tiukassa "
-"hierarkiassa, totellen ylempiään ja komentaen alempiaan. Pääsy hallitsevaan "
-"eliittiin on mahdollista vain haastaen ja voittaen ylempi yksittäisessä "
-"taistelussa, joka on tie, jolla hierarkia eliitin itsensä sisällä on "
-"muodostettu. Kaikenlainen pettäminen mitä tahansa draakkia kohtaan, "
-"poikkeuksetta, nähdään pelkurimaisena ja mahdottomana.\n"
+"Draakit ovat jokseenkin sotaisa rotu, ja heidän yhteisöjään voidaan "
+"parhaiten kuvata sivistyneiksi soturiyhteiskunniksi. Draakkiheimon ydin on "
+"pieni ryhmä veteraanisotureita, joita johtaa kunnioitettu – tai "
+"yksinkertaisesti pelätty – johtaja, joka hallitsee yhteisöä rautaisella "
+"kouralla. Jokaisen draakin odotetaan ansaitsevan paikkansa tiukassa "
+"hierarkiassa, tottelevan ylempiään ja komentavan alempiaan. Pääsy "
+"hallitsevaan eliittiin on mahdollista vain haastamalla ja kukistamalla "
+"ylempiarvoisen draakin kaksintaistelussa, millä tavoin toimii myös eliitin "
+"sisäinen hierarkia. Kaikenlaista pettämistä ketä tahansa kanssadraakkia "
+"kohtaan pidetään poikkeuksetta pelkurimaisena ja epähyväksyttävänä "
+"toimintana.\n"
 "\n"
-"Samalla kun niiden sotainen luontonsa ja reviiritajunsa ajaa ne puolustamaan "
-"alueitaan julmasti, draakit harvoin tunkeutuvat tai hiipivät alueille, "
-"joilla jo valmiiksi on joku valtalaji. Sen sijaan, ne asettuvat "
-"asuttamattomille alueille perustaakseen oman reviirinsä. Ne ensisijaisesti "
-"saavat ravintonsa suuresta riistasta, jota ne saalistavat alamailta heidän "
-"kotiensa ympäriltä, mutta poikaset ja alemman kastin draakit tunnetusti "
-"syövät myös sammalia ja sieniä joita ne viljelevät syvillä luolissaan. Ainoa "
-"teknologia, jota draakit arvostavat, on panssari – ja aseen taonta, ja eivät "
-"tarvitse muuta kulttuuria tai tiedettä tämän lisäksi. Kuitenkin, muutamien "
-"mielestä niiden muoti on melkeinpä haastamaton laadussaan, vain hienoimpien "
-"draakkitakomoiden tuotteet pärjäävät niille.\n"
+"Vaikka draakkien sotaisa luonne ja reviiritaju ajaa heidät puolustamaan omia "
+"alueitaan raivoisasti, he tunkeutuvat harvoin sellaisille alueille, joita "
+"joku muista valtaroduista jo asuttaa. Sen sijaan draakit asettuvat "
+"asuttamattomille alueille perustaakseen sinne omat valtapiirinsä. "
+"Ensisijaisesti he saavat ravintonsa suurriistasta, jota he saalistavat "
+"kotimaitaan ympäröiviltä alangoilta, mutta poikasten ja alemman kastin "
+"draakkien tiedetään syövän myös tiettyjä sammalia ja sieniä, joita he "
+"viljelevät syvällä luolissaan. Ainoa draakkien arvostama teknologia on "
+"panssarin- ja aseentaonta, eivätkä he tunne taikka kaipaa sen lisäksi muuta "
+"tiedettä tai kulttuuria. Silti ne harvat esineet, joita he valmistavat, ovat "
+"laadultaan ylittämättömiä, eivätkä niille vedä vertojaan kuin parhaiden "
+"kääpiötakomoiden tuotteet.\n"
 "\n"
-"Draakit kuoriutuvat munista ja yleensä elävät 20 tai 30 vuotiaiksi. Kuolema "
-"taistelussa on suosituin vaihtoehto draakille jättää tämä maailma. Toisin "
-"kuin vanhemmat yksilöt muissa lajeissa, draakit luonnostaan kasvavat enemmän "
-"agressiivisiksi ja uhkarohkeiksi elämänsä loppua kohti, kenties auttaakseen "
-"jäämään draakkien sankariksi elämänsä jälkeen.\n"
+"Draakit kuoriutuvat munista ja elävät yleensä 20–30-vuotiaiksi. Kuolema "
+"taistelussa on draakeille mieluisin tapa poistua tästä maailmasta. Toisin "
+"kuin muiden rotujen vanhimpien yksilöiden tapauksissa, draakeista tulee "
+"vanhemmiten äkäisempiä ja uhkarohkeampia, kenties paikkaansa kansansa "
+"sankarilegendoissa varmistaen.\n"
 "\n"
 "<header>text='Maantiede'</header>\n"
-"Draakit ovat kotoisin Morogorin saarelta Suurelta valtamereltä. Kuitenkin, "
-"saari on hitaasti uponnut vuosikausten aikana, ja draakkien kolonnat ovat "
-"hitaasti levinneet Suurelle mantereelle. Draakit tuppaavat tehd kotinsa "
-"vuoriluoliin tulivuorten vierelle suojellakseen muniaan, poikasiaan ja "
-"ahjojaan. Vaikka Draakit suosivat luonnostaan lämpöä, heidän sisäinen "
-"tulensa on enemmän kuin kykenevä pysymään päällä jopa melko kylmässä "
-"ilmastossa, ominaisuus, joka on sallinut heidän asuttaa jopa joitain "
-"vuoristoja kaukana pohjoisessa Suurella mantereella."
+"Draakit ovat kotoisin Suurella valtamerellä sijaitsevalta "
+"tulivuorisaariketjulta. Draakkiväestön kasvaminen ja monen heidän "
+"kotisaarensa vajoaminen meren alle ovat aiheuttaneet draakkisiirtokuntien "
+"leviämisen Suurelle mantereelle. Draakit tapaavat tehdä kotinsa luoliin "
+"tulivuorten lähistölle suojellakseen muniaan, poikasiaan ja ahjojaan. Vaikka "
+"draakit luonnostaan suosivat lämpimiä olosuhteita, heidän sisäinen tulensa "
+"pystyy kyllä pitämään heidät hengissä jopa suhteellisen kylmässä ilmastossa, "
+"mikä on sallinut heidän asuttaa jopa joitakin kaukaisen pohjoisen vuoria "
+"Suurella mantereella."
 
 #. [race]: id=dwarf
 #: data/core/units.cfg:88
@@ -5275,7 +5265,6 @@ msgstr "Kääpiöt"
 
 #. [race]: id=dwarf
 #: data/core/units.cfg:95
-#, fuzzy
 msgid ""
 "The dwarves are a race famed for their miners, blacksmiths, merchants and "
 "warriors. Considered as the third oldest race on the great continent after "
@@ -5323,56 +5312,56 @@ msgid ""
 "Called runesmiths, they use these carvings to enchant items in order to "
 "augment certain aspects of their natures."
 msgstr ""
-"Kääpiöiden rotu on kuuluisia mainareistaan, sepistään, kauppiaistaan ja "
-"sotureistaan. Heitä pidetään kolmanneksi vanhimpana rotuna suurella "
-"mantereella, heti haltioiden ja peikkojen jälken, ja heidän varhainen "
-"historiansa on mysteerien peitossa. Legendat kertovat kauan sitten "
-"unohdetusta ajasta, kun he alkoivat ilmestymään heidän maanalaisesta "
-"maailmastaan luolien lävitse. Mitään ei tiedetä heidän elämästään ennen "
-"heidän saapumisestaan, tai syistään maanpäälliselle maailmalle "
-"ilmestymisestään, mutta siitä lähtien he ovat olleet olennainen osa "
-"mantereen historiaa. Pian, heidän ilmestymisensä jälkeen maan alta, kääpiöt "
-"päätyivät konfliktiin alkuperäisten asukkaiden, haltioiden, kanssa. "
-"Alkuperäinen kiistan syy on kadonnut historian hämäriin, mutta nämä kaksi "
-"rotua ovat taistelleet sittemmin kolme pitkää sotaa, jotka keskeytyivät "
-"muutaman vuosikymmenen rauhan ajankausilla. Näiden sotien aikana kääpiöt "
-"eivät voineet irroittaa haltioita syviltä metsistä etelässä, mutta "
+"Kääpiöiden rotu on kuuluisa kaivosmiehistään, sepistään, kauppiaistaan ja "
+"sotureistaan. Heitä pidetään Suuren mantereen kolmanneksi vanhimpana rotuna, "
+"heti haltioiden ja peikkojen jälkeen, ja heidän varhaishistoriansa on "
+"mysteerien peittämä. Legendat kertovat, nykyään jo unohdetusta ajasta, "
+"jolloin he alkoivat ilmestymään heidän maanalaisesta maailmastaan luolien "
+"lävitse. Heidän silloisesta elämästä ennen heidän saapumisestaan, tai "
+"syistään maanpäälliselle maailmalle ilmestymisestään, ei tiedetä, mutta "
+"siitä lähtien he ovat olleet olennainen osa mantereen historiaa. Pian, "
+"heidän ilmestymisensä jälkeen, kääpiöt päätyivät konfliktiin "
+"alkuperäisasukkaiden, haltioiden, kanssa. Kiistan alkuperäinen syy on "
+"kadonnut historian hämäriin, mutta sittemmin nämä kaksi rotua ovat "
+"taistelleet kolme pitkää sotaa, joiden välissä oli vain muutaman "
+"vuosikymmenen rauhan aikakausia. Näiden sotien aikana kääpiöt eivät "
+"onnistuneet irroittamaan haltioita syvistä metsistään etelässä, mutta "
 "onnistuivat lujittamaan paikkaansa kukkuloilla ja vuorilla mantereen "
 "pohjoispuolella, jotka tunnetaan nykyään Pohjanmaana. Siitä lähtien he ovat "
 "rakentaneet fantastisia linnoituksia ja siirtokuntia syvälle vuoristoihin ja "
-"louhikkoihin heidän alueellaan.\n"
+"louhikkoihin alueellaan.\n"
 "\n"
-"Ehkäpä heidän eristyneisyytensä takia, kääpiöt ovat yleisesti ottaen "
+"Ehkäpä johtuen heidän eristyneisyydestään, kääpiöt ovat yleisesti ottaen "
 "epäluottavaisia tai vihamielisiä useimpia rotuja, erityisesti haltioita, "
-"kohti. Yksi ainoa poikkeus tähän on heidän temperamenttinsä ihmisiä kohti. "
-"Tämän voisi jäljittää aina takaisin Haldric ensimmäisen aikakaudelle, ja "
-"ihmisten ja örkkien saapumiseen mantereelle. Kääpiöt alkoivat antaa "
-"joidenkin ihmisten, pääasiassa toisinajattelijoiden ja lainsuojattomien "
-"paossa Wesnothin kruunulta, asettaa aloilleen tiettyjä alueita Pohjanmaalla. "
-"Heidän motivaatio oli yllätykseton. Näiden yksittäisten ahdinko muistutti "
-"kääpiöitä heidän aikaisesta vainohistoriastaan, saaden aikaan "
-"yhteenkuuluvuuden tunnetta. Kääpiöillä oli myös paljon saatavana "
-"muodostaessaan sidettä näiden hylkiöiden kanssa. He asettaisivat alueet, "
-"joilla kääpiöt eivät itse halunneet asuttaa; tasangot, metsät ja suot, "
-"vapauttaen heidät puolustamasta näitä alueita. Myöhemmin, kun heitä uhattiin "
-"örkkien toimesta, kääpiöt ja heidän ihmisliittolaiset muodostivat Knalgan "
-"liittouman puolustaakseen heidän valtakuntaansa.\n"
+"kohti. Yksi ainoa poikkeus tähän on heidän luonteensa ihmisiä kohti. Tämän "
+"voisi jäljittää aina takaisin Haldric ensimmäisen aikakaudelle, ihmisten ja "
+"örkkien saapumiseen mantereelle. Kääpiöt alkoivat antaa joidenkin ihmisten, "
+"pääasiassa Wesnothin kruunulta paossa olevien toisinajattelijoiden ja "
+"lainsuojattomien, rauhoittaa tiettyjä alueita Pohjanmaalla. Heidän "
+"motivaationsa ei yllättänyt. Näiden yksinäisten ahdinko muistutti kääpiöitä "
+"heidän aikaisesta vainohistoriastaan, saaden aikaan yhteenkuuluvuuden "
+"tunnetta. Kääpiöillä oli myös paljon saatavana siteestä näiden hylkiöiden "
+"kanssa. He asuttaisivat alueet, joilla kääpiöt eivät itse halunneet asua: "
+"tasangot, metsät ja suot, vapauttaen heidät puolustamasta näitä alueita. "
+"Myöhemmin, kun heitä örkit uhkasivat heitä, kääpiöt ja heidän "
+"ihmisliittolaiset muodostivat Knalgan liittouman puolustaakseen heidän "
+"valtakuntaansa.\n"
 "\n"
-"Kääpiöt ovat pieni kansa ihmismittakaavalla, mutta he eivät ole missään "
-"mielessä hauraita. Heidän soturinsa, karskeja ja voimakkaita, ovat sekä "
+"Kääpiöt ovat pieni kansa ihmisten mittakaavalla, mutta he eivät ole missään "
+"mielessä hauraita. Heidän soturinsa ovat karskeja ja voimakkaita, sekä "
 "pelättyjä, että kunnioitettuja koko mantereella kyvykkyydestään taistelussa. "
 "Lisäksi, kääpiöt ovat tunnettuja laskelmoivasta älykkyydestään ja "
 "erinomaisesta käsityöstään. Kääpiösepät ovat maineikkaita kuolettavista "
-"aseistaan ja painavista panssareistaan. Nämä ominaisuudet ovat "
-"haastamattomia laadussaan, kenties vain mahtavimpien draakkiseppien "
-"toimesta. Heidän älykkyytensä ja luonnollisen älykkyytensä on myös tehneet "
-"heidät teknisesti kehittyneimmäksi roduksi mantereella. Yksi heidän eniten "
-"kuuluisa, ja pelätty, löytö on mysteerinen jauhe, joka aiheuttaa välittömän "
-"räjähdyksen joutuessaan kosketuksiin kipinöiden tai tulen kanssa. Tietyt "
-"kääpiösoturit käyttävät tätä jauhetta paiskatakseen pieniä esineitä "
-"uskomattomalla nopeudella. Teknologiaviettymystensä takia, kääpiöt tuppaavat "
+"aseistaan ja painavista panssareistaan. Nämä varustukset ovat lyömättömiä "
+"laadussaan, kenties vain mahtavimmat draakkisepät kykenevät vvastaamaan "
+"haasteeseen. Heidän älykkyytensä ja luonnollisen uteliaisuutensa on myös "
+"tehnyt heidät teknisesti kehittyneimmäksi roduksi mantereella. Heidän eniten "
+"kuuluisin, ja pelätyin, löytö on mysteerinen jauhe, joka aiheuttaa "
+"välittömän räjähdyksen joutuessaan kosketuksiin kipinöiden tai tulen kanssa. "
+"Tietyt kääpiösoturit käyttävät tätä jauhetta paiskatakseen pieniä esineitä "
+"uskomattomalla nopeudella. Teknologiaviettymystensä takia kääpiöt tuppaavat "
 "vieroksumaan taikuuden käyttäjiä. Kuitenkin, kääpiöillä on riimuseppiä, "
-"jotka ehostavat heidän omia luonnollisia kykyjään."
+"jotka ehostavat heidän omia, luonnollisia kykyjään."
 
 #. [race]: id=elf
 #: data/core/units.cfg:107
@@ -5683,7 +5672,6 @@ msgstr "Örkit"
 
 #. [race]: id=orc
 #: data/core/units.cfg:252
-#, fuzzy
 msgid ""
 "In appearance, orcs are half men and half beasts. They are taller, sturdier "
 "and stronger than humans. They are warlike, savage, and cruel by nature. "
@@ -5743,65 +5731,65 @@ msgid ""
 msgstr ""
 "Ulkonäöltään örkit ovat puoliksi ihmisiä ja puoliksi petoja. He ovat "
 "pidempiä, rotevampia ja vahvempia kuin ihmiset. He ovat luonnostaan "
-"sotaisia, julmia ja raakoja. Heidän verensä on tummempaa ja tiheämpää kuin "
-"normaaleiden ihmisten, ja he eivät huolehdi henkilökohtaisesta hygieniasta "
-"tai ulkonäöstään. Vaikka örkit ovat väkivaltaisia olentoja jopa keskenään, "
-"ovat he silti laumasieluja: örkki ei koskaan matkusta pitkään tai asu yksin "
-"pienemmissä kuin puolen tusinan ryhmissä.\n"
+"sotaisia, julmia ja raakoja. Heidän verensä on tummempaa ja sakeampaa kuin "
+"tavallisten ihmisten, eivätkä he juuri huolehdi henkilökohtaisesta "
+"hygieniastaan tai ulkonäöstään. Vaikka örkit ovat väkivaltaisia jopa "
+"toisiaan kohtaan, ovat he silti laumasieluja: örkit eivät koskaan matkusta "
+"tai asu pitkään alle puolen tusinan ryhmässä.\n"
 "\n"
 "<header>text='Yhteiskunta'</header>\n"
 "Lähes jokainen örkki on jonkin heimon tai klaanin jäsen. Naapuriheimojen "
 "väliset suhteet ovat yleensä väkivaltaiset, paitsi tapauksissa, joissa "
 "yhteinen vihollinen uhkaa heidän olemassaoloaan tai suuren ryöstösaaliin "
-"mahdollisuus päihittää keskinäisen vihanpidon. Silloin tällöin jokin vahva "
+"mahdollisuus päihittää keskinäisen vihanpidon. Silloin tällöin joku vahva "
 "päällikkö saattaa nousta johtamaan useaa heimoa, yleensä uhkailemalla "
 "kannattajia. Rauhan aikana örkkiheimo keskittyy lähes ainoastaan "
 "vahvistamaan itseään valmistellakseen seuraavaa aseistettua välikohtausta. "
-"Örkit ovat tunnettuja raakalaismaisesta kirjoitustavastaan – yleensä verestä "
-"– vaikka sitä useimmiten käytetään herjausten vaihtamisessa tai "
-"heimojohtajien välisissä uhkauksissa.\n"
+"Örkit hallitsevat karkean kirjoitusjärjestelmän – jota yleensä kirjoitetaan "
+"verellä – joskin sitä käytetään useimmiten heimojohtajien välisissä "
+"herjauksissa ja uhkauksissa.\n"
 "\n"
-"Örkkiyhteiskunnat perustuvat myös hiukan muuhunkin kuin voimaan: mahti tekee "
-"oikeutta, ja johtaja johtaa ja selviytyy ainoastaan niin kauan, kun kukaan "
-"ei onnistu riistämään titteliä häneltä. Ainainen kamppailu voimasta kiehuu "
-"hiljalleen potentiaalisten heimojohtajien välillä. Örkkijohtaja harvoin elää "
-"enemmän kuin kourallisen vuosia nauttiakseen absoluuttisesta "
-"vaikutusvallastaan ennen kuin hänet surmataan asemansa takia – vaikka "
-"historia tunteekin muutamia merkittäviä poikkeuksia. Örkeillä ei ole mitään "
-"ihmeempiä kunniasääntöjä, ja kun kiistämätön raaka voima on yleensä suosittu "
-"keino käyttää voimaa, salamurhaaminen, myrkyttäminen ja selkäänpuukottaminen "
-"ovat kelpo keinoja päästä tavoitteisiinsa.\n"
+"Örkkiyhteiskunnat eivät perustu juuri muuhun kuin voimaan; valta oikeuttaa "
+"mitä vain, ja päällikkö johtaa ja selviytyy ainoastaan niin kauan kuin "
+"kukaan ei onnistu riistämään titteliä häneltä. Ainainen kamppailu vallasta "
+"kiehuu hiljalleen potentiaalisten heimojohtajien välillä. Örkkijohtaja elää "
+"harvoin pidempään kuin kourallisen vuosia nauttiakseen rajattomasta "
+"vaikutusvallastaan ennen kuin hänet surmataan asemansa takia – jos kohta "
+"historia tuntee muutamia merkittäviä poikkeuksiakin. Örkeillä ei ole "
+"erityisiä kunniasääntöjä, ja vaikka kiistämätön raaka voima on yleensä "
+"suosituin keino käyttää valtaa, ovat salamurhaaminen, myrkyttäminen ja "
+"selkäänpuukottaminen aivan kelpoja keinoja tavoitteiden saavuttamiseksi.\n"
 "\n"
-"Örkit enimmäkseen elelevät maaseudulla, usein kukkulaisilla tai "
-"vuoristoisilla alueilla, joskus luolissa. He eivät viljele maata eivätkä "
-"pidä karjaa, mutta he ovat päteviä metsästäjiä fyysisen pituutensa ja "
-"eläimellisyytensä tuloksena. Heidän suuren lukumääränsä tähden he ovat "
-"kykeneviä metsästämään alueen tyhjäksi kaikesta jyrsijää suuremmasta "
-"suhteellisen lyhyessä ajassa. Tämän ja heidän epävakaan johtajuutensa takia "
-"örkkiheimoilla on tapana elää puolipaimentolaista elämäntyyliä jäämättä "
+"Örkit elelevät enimmäkseen syrjäseuduilla, usein kukkuloilla tai "
+"vuoristoisilla alueilla, joskus luolissa. He eivät viljele maata, eivätkä "
+"pidä karjaa, mutta ovat päteviä metsästäjiä fyysisen pituutensa ja "
+"eläimellisyytensä vuoksi. Suuren lukumääränsä tähden he voivat metsästää "
+"alueen käytännössä tyhjäksi kaikesta jyrsijöitä suuremmasta riistasta "
+"suhteellisen lyhyessä ajassa. Tämän ja epävakaan johtajuuden takia "
+"örkkiheimoilla on tapana noudattaa puolipaimentolaista elämäntapaa jäämättä "
 "koskaan yhdelle alueelle liian pitkäksi aikaa. Suuremmat heimot voivat "
-"vakiintua lujasti samalle alueelle vuosiksi, jopa vuosikymmeniksi, ja "
-"rakentaa suuria leirejä tai lähes kaupunkeja, mutta jopa nämä ovat helposti "
-"purettavissa ja hylättävissä, jos tulee tarvetta sijoittaa lauma uudelleen.\n"
+"vakiintua lujasti samalle alueelle vuosiksi tai jopa vuosikymmeniksi ja "
+"rakentaa suuria leirejä, jotka muistuttavat melkein kaupunkeja, mutta jopa "
+"nämä ovat helposti purettavissa ja hylättävissä, jos tulee tarvetta siirtää "
+"laumaa.\n"
 "\n"
 "Vanhimmat tunnetut örkit ovat olleet iältään noin 50–60-vuotiaita, mutta "
-"hyvin harva yksilö koskaan elää näkemään kahta tai kolmea vuosikymmentä "
+"hyvin harvat yksilöt elävät näkemään yli kahta tai kolmea vuosikymmentä "
 "ennen loppunsa kohtaamista joko sodassa tai lajitoverinsa kädestä. Vanhimmat "
-"örkit ovat yleensä shamaaneja, jotka ovat ehkäpä ainoita, jotka moni "
-"heidänlajisensa näkee näkee luotettavina ja neutraaleina. Tottumuksen "
-"alkuperä ei ole tiedossa, sillä shamaanit eivät suoraan tue paljoakaan "
-"örkkiyhteiskuntia, vaan toimivat neuvonantajina – mikä on jotakin sellaista, "
-"mitä örkit muuten eivät tapaa sietää. Shamaanit ovat monella tavalla monen "
-"muun örkin vastakohtia: he ovat yleensä fyysisesti riutuneita sekä heikkoja "
-"verrattuna muihin, ja heiltä puuttuu taistelutaitoja. Huolimatta heidän "
-"luottamuksestaan raakaan voimaan ei sellaista lainkaan kehity likikään "
-"kaikille örkeille. Moni örkki on syntynyt pienempänä ja heikompana kuin "
-"muut, ja heidän ollessaan lähes vastasyntyneitä, heidän vahvemmat "
-"sisaruksensa ovat näyttäneet heille heidän paikkansa. Vahvemmat "
-"rutiininomaisesti riistävät ruuasta suurimman osaan ja näin kasvavat yhä "
-"vahvemmiksi, kun taas heidän heikommat sisaruksensa eivät. Monet näistä "
-"yksilöistä yleensä erikoistuvat muihin taitoihin, kuten jousiammuntaan tai "
-"salamurhaamiseen."
+"örkit ovat usein shamaaneja, joita kenties ainoina useimmat heidän "
+"lajitovereistaan pitävät luotettavina ja puolueettomina. Katsomuksen "
+"alkuperä ei ole tiedossa, sillä shamaanit eivät suoraan tue "
+"örkkiyhteiskuntaa paljoakaan toimien ainoastaan neuvonantajina – mitä noin "
+"yleensä örkit eivät juuri siedä. Shamaanit ovat monella tavalla useimpien "
+"muiden örkkien vastakohtia: he ovat yleensä ruumiiltaan riutuneita ja "
+"heikkoja verrattuna muihin, ja heiltä puuttuu taistelutaitoja. Huolimatta "
+"örkkien luottamuksesta raakaan voimaan, ei sellaista suinkaan kehity heille "
+"kaikille. Moni örkki syntyy muita pienempänä ja heikompana, ja jo liki "
+"vastasyntyneinä vahvemmat sisarukset näyttävät heille heidän paikkansa. "
+"Vahvemmat yksilöt riistävät rutiininomaisesti suurimman osaan ruoasta ja "
+"kasvavat näin yhä vahvemmiksi, toisin kuin heikommat sisaruksensa. Monet "
+"näistä yksilöistä tapaavat erikoistua muihin taitoihin, kuten jousiammuntaan "
+"tai salamurhaamiseen."
 
 #. [race]: id=troll
 #: data/core/units.cfg:259
@@ -6183,11 +6171,16 @@ msgid ""
 "features, and allows us to improve Wesnoth. To learn more about this or "
 "disable it, click the envelope in the bottom-right corner."
 msgstr ""
+"Taistelu Wesnothista lähettää automaattisesti anonyymisoitua statistiikkaa "
+"edistyksistäsi pelissä palvelimelle, jossa tätä tietoa varastoidaan. Tämä "
+"antaa sinulle pari ominaisuutta, ja mahdollistaa kehittäjille tarkemman "
+"kampanjoiden tasapainottamisen. Oppiaksesi siitä lisää, tai ottaaksesi sen "
+"pois käytöstä, klikkaa kirjekuorta ruudun alaoikeassa nurkassa. "
 
 #. [tip]
 #: data/hardwired/tips.cfg:4
 msgid "Wesnoth Developers"
-msgstr ""
+msgstr "Wesnnothin kehittäjät"
 
 #. [tip]
 #: data/hardwired/tips.cfg:7
@@ -6413,7 +6406,6 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:67
-#, fuzzy
 msgid ""
 "Poisoned units will lose eight hitpoints every turn until they are one point "
 "from death. They will remain at death's door until the poison is removed. "
@@ -6422,9 +6414,9 @@ msgid ""
 "next to a unit with the 'Cures' ability."
 msgstr ""
 "Myrkytetyt yksilöt menettävät kahdeksan elämäpistettä joka vuorolla, kunnes "
-"he ovat pisteen päässä kuolemasta. He jäävät kuoleman ovelle, kunnes myrkky "
+"he ovat pisteen päässä kuolemasta. Ne jäävät kuoleman ovelle, kunnes myrkky "
 "on poistettu. Hoivaajat voivat estää myrkytetyn yksikön tilan huonontumisen, "
-"mutta myrkky ei katoa ennen kuin yksikkö uusiutuu tai viettää vuoron kylässä "
+"mutta myrkky ei katoa ennen kuin yksikkö uusiutuu, viettää vuoron kylässä "
 "tai lääkitsemään kykenevän yksikön vieressä."
 
 #. [tip]
@@ -6819,34 +6811,37 @@ msgid ""
 "In many campaign scenarios, you may issue simple instructions for your "
 "computer-controlled allies using the right-click context menu."
 msgstr ""
+"Monissa kampanjoiden skenaarioissa voit antaa yksinkertaisia ohjeistuksia "
+"tietokoneen ohjastamille liittolaisillesi käyttäen hiiren oikean painikkeen "
+"takaa löytyvää pudotusvalikkoa."
 
 #: data/temp-file_send_data_strings.cfg:12
-#, fuzzy
 msgid "About to upload statistics - Help us make Wesnoth better for you!"
-msgstr "Auta meitä kehittämään Wesnothista parempi sinulle!"
+msgstr ""
+"Tietoa statistiikan lähetyksestä — Auta meitä kehittämään Wesnothista sopiva "
+"sinulle!"
 
 #: data/temp-file_send_data_strings.cfg:13
 msgid "Save my reply and do not ask again"
-msgstr ""
+msgstr "Tallenna uusintani automaattisesti"
 
 #: data/temp-file_send_data_strings.cfg:14
 msgid ""
 "To change the setting later on, click on the envelope icon in the main menu."
 msgstr ""
+"Vaihtaaksesi tätä asetusta myöhemmin, klikkaa kirjekuorta päävalikossa."
 
 #: data/temp-file_send_data_strings.cfg:15
-#, fuzzy
 msgid "Send"
-msgstr "hiekkaa"
+msgstr "Lähetä"
 
 #: data/temp-file_send_data_strings.cfg:16
-#, fuzzy
 msgid "Don't send"
-msgstr "Älä kysy tätä uudelleen!"
+msgstr "Älä lähetä"
 
 #: data/temp-file_send_data_strings.cfg:18
 msgid "Do not ask every time before sending data"
-msgstr ""
+msgstr "Älä kysy joka kerta ennen tietojen lähetystä"
 
 #. [menu]: id=menu-main
 #: data/themes/default.cfg:120 data/themes/dfool.cfg:134
@@ -7100,49 +7095,44 @@ msgid "MB"
 msgstr "Mt"
 
 #: src/addon_management.cpp:369
-#, fuzzy
 msgid "GB"
-msgstr "t"
+msgstr "IB"
 
 #: src/addon_management.cpp:402
 msgid "addon_type^Campaign"
-msgstr ""
+msgstr "kampanja"
 
 #: src/addon_management.cpp:404
 msgid "addon_type^Scenario"
-msgstr ""
+msgstr "skenaario"
 
 #: src/addon_management.cpp:406
-#, fuzzy
 msgid "addon_type^MP era"
-msgstr "Toisella koneella oleva skenaario"
+msgstr "MP-aikakausi"
 
 #: src/addon_management.cpp:408
-#, fuzzy
 msgid "addon_type^MP faction"
-msgstr "Toisella koneella oleva skenaario"
+msgstr "MP-liittouma"
 
 #: src/addon_management.cpp:410
-#, fuzzy
 msgid "addon_type^MP map-pack"
-msgstr "Toisella koneella oleva skenaario"
+msgstr "MP-karttapakkaus"
 
 #: src/addon_management.cpp:412
-#, fuzzy
 msgid "addon_type^MP scenario"
-msgstr "Toisella koneella oleva skenaario"
+msgstr "MP-skenaario"
 
 #: src/addon_management.cpp:414
 msgid "addon_type^MP campaign"
-msgstr ""
+msgstr "MP-kampanja"
 
 #: src/addon_management.cpp:416
 msgid "addon_type^Resources"
-msgstr ""
+msgstr "apuvälineet"
 
 #: src/addon_management.cpp:418
 msgid "addon_type^(unknown)"
-msgstr ""
+msgstr "(tuntematon)"
 
 #: src/addon_management.cpp:447
 msgid "Dependencies"
@@ -7191,28 +7181,27 @@ msgid "Response"
 msgstr "Vastaus"
 
 #: src/addon_management.cpp:576
-#, fuzzy
 msgid "Downloading add-on: $addon_title|..."
-msgstr "Haetaan lisäosaa..."
+msgstr "Ladataan lisäosaa: $addon_title|..."
 
 #: src/addon_management.cpp:592
 msgid ""
 "The add-on has an invalid file or directory name and can not be installed."
 msgstr ""
+"Tässä lisäosassa on on epäkelpo tiedosto- tai hakemistonimi, eikä sitä voida "
+"asentaa."
 
 #: src/addon_management.cpp:641
-#, fuzzy
 msgid "The add-on '$addon_title|' has been successfully installed."
-msgstr "Lisäosa on asennettu."
+msgstr "Lisäosa ”$addon_title|” on asennettu."
 
 #: src/addon_management.cpp:643
 msgid "Add-on Installed"
 msgstr "Lisäosa asennettu"
 
 #: src/addon_management.cpp:701
-#, fuzzy
 msgid "Outdated add-ons"
-msgstr "Lähetetään lisäosaa"
+msgstr "Vanhentuneet lisäosat"
 
 #: src/addon_management.cpp:703
 msgid ""
@@ -7222,7 +7211,11 @@ msgid_plural ""
 "Some outdated local add-ons have publishing information attached. They will "
 "not be offered for updating."
 msgstr[0] ""
+"Vanhentuneessa paikallisessa lisäosassa on mukana julkistustietoa. Sitä ei "
+"tarjota päivitettäväksi."
 msgstr[1] ""
+"Joissakin vanhentuneissa paikallisissa lisäosissa on mukana julkistustietoa. "
+"Niitä ei tarjota päivitettäväksi."
 
 #: src/addon_management.cpp:712
 msgid "Could not find any updated add-ons on this server."
@@ -7230,7 +7223,7 @@ msgstr "Päivitettyjä lisäosia ei löytynyt tältä palvelimelta."
 
 #: src/addon_management.cpp:712
 msgid "No add-ons to update"
-msgstr ""
+msgstr "Yksikään lisäosa ei vaadi päivittämistä"
 
 #: src/addon_management.cpp:726 src/addon_management.cpp:929
 #: src/dialogs.cpp:647 src/menu_events.cpp:197 src/menu_events.cpp:1007
@@ -7254,30 +7247,29 @@ msgid "Size"
 msgstr "koko"
 
 #: src/addon_management.cpp:781
-#, fuzzy
 msgid "Update add-ons"
 msgstr "Päivitä lisäosat"
 
 #: src/addon_management.cpp:782
 msgid "Select an add-on to update:"
-msgstr ""
+msgstr "Valitse lisäosa päivitettäväksi:"
 
 #: src/addon_management.cpp:796
-#, fuzzy
 msgid "Update all"
-msgstr "kiveä"
+msgstr "Päivitä kaikki"
 
 #: src/addon_management.cpp:853
 msgid "Update failed"
 msgstr "Päivitys epäonnistui"
 
 #: src/addon_management.cpp:855
-#, fuzzy
 msgid "The following add-on could not be downloaded or updated successfully:"
 msgid_plural ""
 "The following add-ons could not be downloaded or updated successfully:"
-msgstr[0] "Seuraavassa lisäosassa oli virhe, eikä sitä voitu ladata:"
-msgstr[1] "Seuraavissa lisäosissa oli virheitä, eikä niitä voitu ladata:"
+msgstr[0] ""
+"Seuraavassa lisäosassa oli virhe, eikä sitä voitu asentaa tai päivittää:"
+msgstr[1] ""
+"Seuraavissa lisäosissa oli virheitä, eikä niitä voitu asentaa tai päivittää:"
 
 #: src/addon_management.cpp:864
 msgid "Update succeeded"
@@ -7285,30 +7277,27 @@ msgstr "Päivitys onnistui"
 
 #: src/addon_management.cpp:865
 msgid "Add-on updated successfully."
-msgstr ""
+msgstr "Lisäosa päivitetty onnistuneesti."
 
 #: src/addon_management.cpp:866
 msgid "All add-ons updated successfully."
-msgstr ""
+msgstr "Kaikki lisäosat päivitetty onnistuneesti."
 
 #: src/addon_management.cpp:889
-#, fuzzy
 msgid "Connecting to add-ons server..."
-msgstr "Yhdistetään palvelimeen..."
+msgstr "Yhdistetään lisäosapalvelimeen..."
 
 #: src/addon_management.cpp:892
 msgid "Could not connect to host."
 msgstr "Yhteyttä koneeseen ei saatu."
 
 #: src/addon_management.cpp:900
-#, fuzzy
 msgid "Requesting list of add-ons"
-msgstr "Pyydetään lisäosia"
+msgstr "Pyydetään listaa lisäosista"
 
 #: src/addon_management.cpp:913
-#, fuzzy
 msgid "An error occurred while communicating with the server."
-msgstr "Virhe viestinnässä palvelimen kanssa."
+msgstr "Virhe kommunikoidessa palvelimen kanssa."
 
 #: src/addon_management.cpp:929 src/titlescreen.cpp:331
 msgid "Version"
@@ -7336,9 +7325,8 @@ msgid "There are no add-ons available for download from this server."
 msgstr "Tällä palvelimella ei ole yhtään lisäosaa."
 
 #: src/addon_management.cpp:1022
-#, fuzzy
 msgid "Get add-ons"
-msgstr "Hanki lisäosia"
+msgstr "Hae lisäosia"
 
 #: src/addon_management.cpp:1023
 msgid "Choose the add-on to download."
@@ -7358,11 +7346,10 @@ msgid "Remote host disconnected."
 msgstr "Toinen kone katkaisi yhteyden."
 
 #: src/addon_management.cpp:1072
-#, fuzzy
 msgid ""
 "A problem occurred when trying to create the files necessary to install this "
 "add-on."
-msgstr "Lisäosan tarvitsemien tiedostojen luonnissa oli ongelmia."
+msgstr "Lisäosan tarvitsemien tiedostojen luonnissa oli ongelmia. "
 
 #: src/addon_management.cpp:1090 src/addon_management.cpp:1145
 #: src/dialogs.cpp:282 src/dialogs.cpp:290 src/menu_events.cpp:616
@@ -7371,18 +7358,16 @@ msgid "Error"
 msgstr "Virhe"
 
 #: src/addon_management.cpp:1091
-#, fuzzy
 msgid "You have no add-ons installed."
-msgstr "Sinulla ei ole yhtään lisäosaa asennettuna."
+msgstr "Sinulla ei ole yhtään lisäosaa."
 
 #: src/addon_management.cpp:1103
 msgid "Choose the add-on to remove."
 msgstr "Valitse poistettava lisäosa."
 
 #: src/addon_management.cpp:1103
-#, fuzzy
 msgid "Uninstall add-ons"
-msgstr "Lähetetään lisäosaa"
+msgstr "Poista lisäosia"
 
 #: src/addon_management.cpp:1115
 msgid "Are you sure you want to remove the add-on '$addon|'?"
@@ -7401,9 +7386,8 @@ msgid "Add-on deleted"
 msgstr "Lisäosa poistettu"
 
 #: src/addon_management.cpp:1146
-#, fuzzy
 msgid "Add-on could not be deleted properly:"
-msgstr "Lisäosaa ei voitu poistaa – tiedostoa ei löytynyt."
+msgstr "Lisäosaa ei voitu poistaa:"
 
 #: src/ai.cpp:1722
 msgid "Unknown unit type : "
@@ -7610,9 +7594,8 @@ msgid "Show replay"
 msgstr "Näytä uusinta"
 
 #: src/dialogs.cpp:683
-#, fuzzy
 msgid "Cancel orders"
-msgstr "Peruuta"
+msgstr "Peruuta käskyt"
 
 #: src/dialogs.cpp:690
 msgid "Delete Save"
@@ -7679,24 +7662,24 @@ msgid "Select difficulty level:"
 msgstr "Valitse vaikeustaso:"
 
 #: src/game.cpp:1305
-#, fuzzy
 msgid "Do you really want to start the server?"
-msgstr "Haluatko todella erottaa hänet?"
+msgstr "Haluatko varmasti käynnistää palvelimen?"
 
 #: src/game.cpp:1306
 msgid ""
 "The server will run in a background process until all users have "
 "disconnected."
 msgstr ""
+"Palvelin ajaa itseään taustaprosessina kunnes kaikki käyttäjät ovat "
+"poistuneet."
 
 #: src/game.cpp:1310
 msgid "Don't show again"
 msgstr "Älä näytä uudelleen"
 
 #: src/game.cpp:1381
-#, fuzzy
 msgid "Error while starting server: "
-msgstr "Virhe pelatessa: "
+msgstr "Virhe käynnistäessä palvelinta:"
 
 #: src/game.cpp:1383 src/playcampaign.cpp:97 src/playcampaign.cpp:383
 msgid "The game could not be loaded: "
@@ -7741,9 +7724,8 @@ msgid "Re-initialize fonts for the current language."
 msgstr "Alustetaan merkistö uudelleen tätä kieltä varten."
 
 #: src/game.cpp:2008
-#, fuzzy
 msgid "Searching for installed add-ons."
-msgstr "Pyydetään lisäosia"
+msgstr "Etsitään asennettuja lisäosia."
 
 #: src/game.cpp:2017
 msgid "Loading title screen."
@@ -7754,22 +7736,20 @@ msgid "Invalid color range: "
 msgstr "Virheellinen värialue: "
 
 #: src/game_events.cpp:134
-#, fuzzy
 msgid "Error: "
-msgstr "Virhe"
+msgstr "Virhe:"
 
 #: src/game_events.cpp:137
-#, fuzzy
 msgid "Warning: "
-msgstr "aamupäivä"
+msgstr "Varoitus:"
 
 #: src/game_events.cpp:140
 msgid "Debug: "
-msgstr ""
+msgstr "Virheenetsintä:"
 
 #: src/game_events.cpp:143
 msgid "Info: "
-msgstr ""
+msgstr "Info:"
 
 #: src/game_events.cpp:1074
 msgid "Victory:"
@@ -7803,13 +7783,12 @@ msgid "invisible: "
 msgstr "näkymätön: "
 
 #: src/generate_report.cpp:101
-#, fuzzy
 msgid ""
 "This unit has been slowed. It will only deal half its normal damage when "
 "attacking and its movement cost is doubled."
 msgstr ""
-"Tämä yksikkö on hidastettu, ja tekee hyökätessään vain puolet normaalista "
-"vahingostaan."
+"Tämä yksikkö on hidastettu. Se tekee hyökätessä vain puolet normaalista "
+"vahingostaan ja sen liikkumiskustannukset on tuplattu."
 
 #: src/generate_report.cpp:101
 msgid "slowed: "
@@ -7847,7 +7826,7 @@ msgstr "Vastustukset: "
 
 #: src/generate_report.cpp:170
 msgid "(Att / Def)"
-msgstr ""
+msgstr "(hyök. / puol. )"
 
 #: src/generate_report.cpp:189 src/multiplayer_create.cpp:395
 msgid "Experience Modifier: "
@@ -7866,14 +7845,14 @@ msgstr[0] "hyökkäys"
 msgstr[1] "hyökkäykset"
 
 #: src/generate_report.cpp:267
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "tooltip^% accuracy"
-msgstr "hyökkäys"
+msgstr "% tarkkuus"
 
 #: src/generate_report.cpp:273
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "tooltip^% parry"
-msgstr "kokonaisvahinko"
+msgstr "% torjunta"
 
 #: src/generate_report.cpp:284
 msgid "weapon range: "
@@ -7936,9 +7915,8 @@ msgid "Abilities: "
 msgstr "Erikoistaidot: "
 
 #: src/help.cpp:1344
-#, fuzzy
 msgid "Ability Upgrades: "
-msgstr "Erikoistaidot: "
+msgstr "Taitopäivitykset:"
 
 #: src/help.cpp:1362
 msgid "Cost: "
@@ -8068,9 +8046,8 @@ msgid "?"
 msgstr "?"
 
 #: src/loadscreen.cpp:220
-#, fuzzy
 msgid "Verifying cache"
-msgstr "Tarkastetaan väliaikaistiedostoa."
+msgstr "Tarkistetaan välimuistia"
 
 #: src/loadscreen.cpp:239
 msgid "Reading unit files."
@@ -8098,9 +8075,8 @@ msgid "Do you really want to dismiss him?"
 msgstr "Haluatko todella erottaa hänet?"
 
 #: src/menu_events.cpp:94
-#, fuzzy
 msgid "My lord, this unit is loyal and requires no upkeep! "
-msgstr "Herrani, tämä yksikkö on lähellä ylenemistä! "
+msgstr "Herrani, tämä yksikkö on uskollinen, eikä se siis tarvitse ylläpitoa!"
 
 #: src/menu_events.cpp:95 src/menu_events.cpp:98 src/menu_events.cpp:102
 msgid "Do you really want to dismiss her?"
@@ -8119,7 +8095,6 @@ msgid "Statistics"
 msgstr "Tilastot"
 
 #: src/menu_events.cpp:198 src/menu_events.cpp:1008
-#, fuzzy
 msgid "Level^Lvl."
 msgstr "Taso"
 
@@ -8372,133 +8347,126 @@ msgid "Search"
 msgstr "Etsi"
 
 #: src/menu_events.cpp:1876
-#, fuzzy
 msgid "This command is currently unavailable."
-msgstr "Yhtään kampanjaa ei ole saatavilla.\n"
+msgstr "Et voi käyttää tätä komentoa nyt."
 
 #: src/menu_events.cpp:1887
 msgid ""
 "Available commands list and command-specific help. Use \"help all\" to "
 "include currently unavailable commands."
 msgstr ""
+"Näyttää käytettävissä olevat komennot tai tarkan ohjeen yksittäiselle "
+"komennolle, riippuen parametristä. Käytä ”help all” -komentoa nähdäksesi nyt "
+"saavuttamattomissakin olevat komennot."
 
 #: src/menu_events.cpp:1992
-#, fuzzy
 msgid " No help available."
-msgstr "Ei tavoitteita saatavana"
+msgstr " Ohjetta ei ole saatavilla."
 
 #: src/menu_events.cpp:2130
 msgid ""
 "Send a query to the server. Without arguments the server should tell you the "
 "available commands."
 msgstr ""
+"Lähetä pyyntö palvelimelle. Ilman parametrejä palvelimen pitäisi lähettää "
+"sinulle listan saatavilla olevista komennoista."
 
 #: src/menu_events.cpp:2133
 msgid ""
 "Ban and kick a player or observer. If he is not in the game but on the "
 "server he will only be banned."
 msgstr ""
+"Anna porttikielto pelaajalle tai katselijalle. Jos hän ei ole pelissä, mutta "
+"serverillä, hän saa vain porttikiellon."
 
 #: src/menu_events.cpp:2136
 msgid "Kick a player or observer."
-msgstr ""
+msgstr "Potki käyttäjä tai katselija."
 
 #: src/menu_events.cpp:2138
 msgid "Mute an observer."
-msgstr ""
+msgstr "Hiljennä katsoja."
 
 #: src/menu_events.cpp:2140
 msgid "Mute all observers."
-msgstr ""
+msgstr "Hiljennä kaikki katsojat."
 
 #: src/menu_events.cpp:2150
-#, fuzzy
 msgid "Send an emotion or personal action in chat."
-msgstr "Lähetä tunneilmaisu tai toiminto keskustelussa. Käyttö: /me <viesti>"
+msgstr "Lähetä tunneilmaisu tai henkilökohtainen toimi keskustelussa."
 
 #: src/menu_events.cpp:2153
-#, fuzzy
 msgid ""
 "Sends a private message. You can't send messages to players that don't "
 "control a side in a running game you are in."
 msgstr ""
 "Lähettää yksityisviestin. Et voi lähettää viestejä pelaajille, jotka eivät "
-"hallitse mitään puolta pelissä. Käyttö: /msg <nimimerkki> <viesti>"
+"hallitse mitään puolta pelissä."
 
 #: src/menu_events.cpp:2159
 msgid "Change the log level of a log domain."
-msgstr ""
+msgstr "Vaihda lokipiirin lokitustasoa."
 
 #: src/menu_events.cpp:2161
-#, fuzzy
 msgid "Add a nick to your ignores list."
-msgstr "Lisää pelaaja torjuttujen listallesi. Käyttö: /list ignore <nimi>"
+msgstr "Lisää pelaaja torjuttujen listallesi."
 
 #: src/menu_events.cpp:2163
-#, fuzzy
 msgid "Add a nick to your friends list."
-msgstr "Lisätyt ystävälistalle: "
+msgstr "Lisää nimimerkki ystävälistallesi."
 
 #: src/menu_events.cpp:2165
-#, fuzzy
 msgid "Remove a nick from your ignores or friends list."
-msgstr ""
-"Poista pelaaja ystävien tai torjuttujen listaltasi. Käyttö: /ignore remove "
-"<pelaajanimi>"
+msgstr "Poista pelaaja ystävien tai torjuttujen listaltasi."
 
 #: src/menu_events.cpp:2167
-#, fuzzy
 msgid "Show your ignores and friends list."
-msgstr "Näytä torjuttujen ja ystävien listasi. Käyttö: /list display"
+msgstr "Näytä torjuttujen ja ystävien listasi."
 
 #: src/menu_events.cpp:2170
-#, fuzzy
 msgid "Display version information."
-msgstr "Aikakausitietoa ei löydetty"
+msgstr "Näytä versioon liittyvä tieto."
 
 #: src/menu_events.cpp:2172
 msgid "Register your nick"
-msgstr ""
+msgstr "Rekisteröi nimimerkkisi"
 
 #: src/menu_events.cpp:2174
 msgid "Drop your nick."
-msgstr ""
+msgstr "Poista nimimerkkisi."
 
 #: src/menu_events.cpp:2176
 msgid "Update details for your nick. For possible details see '/details'."
 msgstr ""
+"Päivitä nimimerkkisi tietoja. Mahdolliset tiedot näet komennolla ”/details”."
 
 #: src/menu_events.cpp:2179
-#, fuzzy
 msgid "Request information about a nick."
-msgstr "Aikakausitietoa ei löydetty"
+msgstr "Pyydä tietoa nimimerkkiin liittyen."
 
 #: src/menu_events.cpp:2181
 msgid "Request a list of details you can set for your registered nick."
-msgstr ""
+msgstr "Pyydä listaa tiedoista, jotka olet asettanut nimimerkillesi."
 
 #: src/menu_events.cpp:2303
 msgid "Refresh gui."
-msgstr ""
+msgstr "Päivitä käyttöliittymä."
 
 #: src/menu_events.cpp:2305
 msgid "Switch a side to/from AI control."
-msgstr ""
+msgstr "Vaihda puolen kontrolli tietokonelle/tietokoneelta."
 
 #: src/menu_events.cpp:2308
 msgid "Assign control of a side to a different player or observer."
-msgstr ""
+msgstr "Siirrä puolen kontrolli toiselle pelaajalle tai katsojalle."
 
 #: src/menu_events.cpp:2310
-#, fuzzy
 msgid "Clear chat history."
-msgstr ""
-"\n"
-"Tyhjennä keskusteluikkuna.\n"
+msgstr "Tyhjennä keskusteluhistoria."
 
 #: src/menu_events.cpp:2312
 msgid "Visualize the screen refresh procedure."
-msgstr ""
+msgstr "Visualisoi ruudunpäivitysprosessi."
 
 #: src/menu_events.cpp:2315
 msgid "Save game."
@@ -8510,19 +8478,21 @@ msgstr "Poistu pelistä."
 
 #: src/menu_events.cpp:2321
 msgid "Save and quit."
-msgstr ""
+msgstr "Tallenna ja poistu."
 
 #: src/menu_events.cpp:2324
 msgid "Ignore replay errors."
-msgstr ""
+msgstr "Sivuuta uusintojen virheet."
 
 #: src/menu_events.cpp:2326
 msgid "Disable autosaves."
-msgstr ""
+msgstr "Poista automaattitallennukset käytöstä."
 
 #: src/menu_events.cpp:2328
 msgid "Advance to the next scenario, or scenario identified by 'id'"
 msgstr ""
+"Jatka seuraavasta skenaariosta tai skenaariosta, joka on identifioitu id:llä "
+"'id'"
 
 #: src/menu_events.cpp:2331
 msgid "Choose next scenario"
@@ -8534,63 +8504,47 @@ msgstr "Käynnistä testaustila."
 
 #: src/menu_events.cpp:2336
 msgid "Turn debug mode off."
-msgstr ""
+msgstr "Poista virheenetsintätila pois käytöstä."
 
 #: src/menu_events.cpp:2338
 msgid "Set the command used by the custom command hotkey"
-msgstr ""
+msgstr "Aseta komento käyttäjän omalle komentopikanäppäimelle"
 
 #: src/menu_events.cpp:2340
 msgid "Set or show alias to a command"
-msgstr ""
+msgstr "Aseta tai näytä komennon vaihtoehtoinen pikanäppäin"
 
 #: src/menu_events.cpp:2342
-#, fuzzy
 msgid "Set a scenario variable."
-msgstr ""
-"\n"
-"Näytä pelintila (gamestate) -muuttuja.\n"
-"\n"
+msgstr "Aseta skenaariomuuttuja."
 
 #: src/menu_events.cpp:2344
-#, fuzzy
 msgid "Show a scenario variable."
-msgstr ""
-"\n"
-"Näytä pelintila (gamestate) -muuttuja.\n"
-"\n"
+msgstr "Näytä skenaariomuuttuja."
 
 #: src/menu_events.cpp:2346
 msgid "Modify a unit variable. (Only top level keys are supported.)"
-msgstr ""
+msgstr "Muuta yksikkömuuttujaa (vain ylimmän tason avaimet ovat tuettuja)."
 
 #: src/menu_events.cpp:2350
 msgid "Remove a trait from a unit. (Does not work yet.)"
-msgstr ""
+msgstr "Poista piirre yksiköstä (ei vielä toimi)."
 
 #: src/menu_events.cpp:2352
 msgid "Create a unit."
 msgstr "Luo yksikkö."
 
 #: src/menu_events.cpp:2354
-#, fuzzy
 msgid "Toggle fog for the current player."
-msgstr ""
-"\n"
-"Sumu/huntu päälle tai pois nykyiselle joukkueelle.\n"
-"\n"
+msgstr "Kytke sumu nykyiselle pelaajalle."
 
 #: src/menu_events.cpp:2356
-#, fuzzy
 msgid "Toggle shroud for the current player."
-msgstr ""
-"\n"
-"Sumu/huntu päälle tai pois nykyiselle joukkueelle.\n"
-"\n"
+msgstr "Kytke huntu nykyiselle pelaajalle."
 
 #: src/menu_events.cpp:2358
 msgid "Give gold to the current player."
-msgstr ""
+msgstr "Anna kultaa nykyiselle pelaajalle."
 
 #: src/menu_events.cpp:2360
 msgid "Fire a game event."
@@ -8598,11 +8552,11 @@ msgstr "Laukaise pelitapahtuma."
 
 #: src/menu_events.cpp:2363
 msgid "Toggle overlaying of x,y coordinates on hexes."
-msgstr ""
+msgstr "Kytke x,y-koordinaattien näyttö heksoissa."
 
 #: src/menu_events.cpp:2366
 msgid "Toggle overlaying of terrain codes on hexes."
-msgstr ""
+msgstr "Kytke terrainkoodien näyttö heksoissa"
 
 #: src/menu_events.cpp:2411
 msgid "Unknown debug level: '$level'."
@@ -8670,7 +8624,7 @@ msgstr "Testaustila otettu käyttöön!"
 
 #: src/menu_events.cpp:2886
 msgid "Debug mode not available in network games"
-msgstr ""
+msgstr "Korjaustila ei ole saatavilla verkkopeleissä"
 
 #: src/menu_events.cpp:2891
 msgid "Debug mode deactivated!"
@@ -8678,7 +8632,7 @@ msgstr "Testaustila poistettu käytöstä!"
 
 #: src/menu_events.cpp:3052
 msgid "ai"
-msgstr ""
+msgstr "ai"
 
 #: src/menu_events.cpp:3060 src/menu_events.cpp:3076
 msgid "prompt^Command:"
@@ -8716,46 +8670,54 @@ msgid "Server-side redirect loop"
 msgstr "Palvelinpuolen uudelleenohjaussilmukka"
 
 #: src/multiplayer.cpp:335
-#, fuzzy
 msgid "You must login first."
-msgstr "Tälle palvelimelle vaaditaan kirjautumista."
+msgstr "Sinun täytyy ensin sisäänkirjautua."
 
 #: src/multiplayer.cpp:337
 msgid "The nick '$nick' is already taken."
-msgstr ""
+msgstr "Nimimerkki ”$nick” on jo käytössä."
 
 #: src/multiplayer.cpp:339
 msgid ""
 "The nick '$nick' contains invalid characters. Only alpha-numeric characters, "
 "underscores and hyphens are allowed."
 msgstr ""
+"Nimimerkissä ”$nick” on epäkelpoja merkkejä. Nimimerkissä voi olla vain "
+"kirjaimia, numeroita, alaviivoja ja tavuviivoja."
 
 #: src/multiplayer.cpp:343
 msgid "The nick '$nick' is too long. Nicks must be 18 characters or less."
 msgstr ""
+"Nimimerkki ”$nick” on liian pitkä. Nimimerkin pituuden täytyy olla 18 "
+"merkkiä tai vähemmän."
 
 #: src/multiplayer.cpp:346
 msgid "The nick '$nick' is reserved and cannot be used by players."
 msgstr ""
+"Nimimerkki ”$nick” on varattu, eikä sitä voida käyttää pelaajien toimesta."
 
 #: src/multiplayer.cpp:348 src/multiplayer.cpp:350
 msgid "The nick '$nick' is registered on this server."
-msgstr ""
+msgstr "Nimimerkki ”$nick” on rekisteröity tällä palvelimella."
 
 #: src/multiplayer.cpp:351
 msgid ""
 "WARNING: There is already a client using this nick, logging in will cause "
 "that client to be kicked!"
 msgstr ""
+"VAROITUS: Paikalla on jo yksi klientti tällä nimimerkillä, "
+"sisäänkirjautuminen aiheuttaa tämän klientin ulospotkimisen."
 
 #: src/multiplayer.cpp:354
 msgid ""
 "Error in the login procedure (the server had no seed for your connection)."
 msgstr ""
+"Virhe sisäänkirjautumisprosessissa (palvelimella ei ole esiastetta "
+"yhteydellesi)."
 
 #: src/multiplayer.cpp:357
 msgid "The password you provided was incorrect."
-msgstr ""
+msgstr "Antamasi salasana on väärä."
 
 #: src/multiplayer_connect.cpp:82 src/multiplayer_connect.cpp:485
 #: src/multiplayer_connect.cpp:613
@@ -8799,16 +8761,15 @@ msgstr "(tyhjä paikka)"
 
 #: src/multiplayer_connect.cpp:673
 msgid "(Reserved for $playername)"
-msgstr ""
+msgstr "(varattu pelaajalle $playername)"
 
 #: src/multiplayer_connect.cpp:803
-#, fuzzy
 msgid "Reserved"
-msgstr "Yläraja: "
+msgstr "Varattu"
 
 #: src/multiplayer_connect.cpp:804
 msgid "--give--"
-msgstr ""
+msgstr "--anna--"
 
 #: src/multiplayer_connect.cpp:926
 msgid "Only random sides in the current era."
@@ -9170,9 +9131,8 @@ msgid "Invalid Color"
 msgstr "Virheellinen väri"
 
 #: src/multiplayer_ui.cpp:418
-#, fuzzy
 msgid "Selected user: "
-msgstr "Valitse yksikkö:"
+msgstr "Valittu käyttäjä:"
 
 #: src/multiplayer_wait.cpp:134
 msgid "Leader: "
@@ -9208,7 +9168,7 @@ msgstr "Valitse liittoumasi:"
 
 #: src/multiplayer_wait.cpp:303
 msgid "Starting position: "
-msgstr ""
+msgstr "Aloituspaikka:"
 
 #: src/network.cpp:103
 msgid "invalid network handle"
@@ -9231,9 +9191,8 @@ msgid "Terrain with a movement cost less than 1 encountered."
 msgstr "Maastoa yhtä vähemmällä liikkumiskustannuksella kohdattu."
 
 #: src/play_controller.cpp:98
-#, fuzzy
 msgid "Loading level"
-msgstr "Ladataan aloitusikkunaa."
+msgstr "Ladataan tasoa"
 
 #: src/play_controller.cpp:119
 msgid "Initializing teams"
@@ -9297,7 +9256,7 @@ msgstr "Tuntematon skenaario: '$scenario|'"
 
 #: src/playmp_controller.cpp:219
 msgid "Undoing moves not yet transmitted to the server."
-msgstr ""
+msgstr "Siirtojen peruutuksia ei ole vielä toimitettu palvelimelle."
 
 #: src/playmp_controller.cpp:299
 msgid "End scenario"
@@ -9502,12 +9461,11 @@ msgstr "otettu mukaan paikasta"
 
 #: src/serialization/parser.cpp:357
 msgid "$error, value '$value', previous '$previous_value' at $pos"
-msgstr ""
+msgstr "$error, arvo ”$value”, edellinen ”$previous_value” sijainnissa $pos"
 
 #: src/serialization/parser.cpp:361
-#, fuzzy
 msgid "$error, value '$value' at $pos"
-msgstr "$error paikassa $pos"
+msgstr "$error (arvo ”$value”) paikassa $pos"
 
 #: src/statistics_dialog.cpp:66 src/statistics_dialog.cpp:121
 msgid "Recruits"
@@ -9590,9 +9548,8 @@ msgid "TitleScreen button^Add-ons"
 msgstr "Lisäosat"
 
 #: src/titlescreen.cpp:417
-#, fuzzy
 msgid "TitleScreen button^Map Editor"
-msgstr "Lopeta"
+msgstr "Karttaeditori"
 
 #: src/titlescreen.cpp:419
 msgid "TitleScreen button^Language"
@@ -9652,7 +9609,7 @@ msgstr "Lataa käyttäjien tekemiä kampanjoita, aikakausia, tai karttapakkauksi
 
 #: src/titlescreen.cpp:437
 msgid "Start the map editor"
-msgstr ""
+msgstr "Käynnistä karttaeditori"
 
 #: src/titlescreen.cpp:439
 msgid "Change the language"
@@ -9683,18 +9640,16 @@ msgid "Upload statistics"
 msgstr "Lähetä tilastot"
 
 #: src/titlescreen.cpp:504
-#, fuzzy
 msgid "Help Wesnoth"
-msgstr "Taistelu Wesnothista"
+msgstr "Auta Wesnothia"
 
 #: src/titlescreen.cpp:505
 msgid "Help Wesnoth by sending us information"
 msgstr "Auta Wesnothia lähettämällä meille tietoa"
 
 #: src/unit.cpp:592
-#, fuzzy
 msgid "Unknown unit type '$type|' while generating traits"
-msgstr "Tuntematon yksikkötyyppi '$type|'"
+msgstr "Tuntematon yksikkötyyppi ”$type|” generoidessa piirteitä"
 
 #: src/unit.cpp:793
 msgid "Unknown unit type '$type|'"
@@ -9743,17 +9698,16 @@ msgstr[1] "iskua"
 #: src/unit_types.cpp:218
 #, no-c-format
 msgid "% accuracy"
-msgstr ""
+msgstr "% tarkkuus"
 
 #: src/unit_types.cpp:228
 #, no-c-format
 msgid "% parry"
-msgstr ""
+msgstr "% torjunnat"
 
 #: src/unit_types.cpp:958
-#, fuzzy
 msgid "No description available."
-msgstr "Ei tavoitteita saatavana"
+msgstr "Kuvausta ei ole saatavilla."
 
 #: src/unit_types.cpp:1017
 msgid "chaotic"
@@ -9807,15 +9761,20 @@ msgstr "Auta meitä kehittämään Wesnothista parempi sinulle!"
 msgid "Enable summary uploads"
 msgstr "Salli yhteenvetojen lähettäminen"
 
-#, fuzzy
-#~ msgid "Reading cache"
-#~ msgstr "Luetaan väliaikaistiedostoa."
-
-#~ msgid "Back to start"
-#~ msgstr "Takaisin alkuun"
+#~ msgid "Only Run Safe Python AIs"
+#~ msgstr "Aja vain turvallisia Python-tekoälyjä"
 
 #~ msgid "+  "
 #~ msgstr "+ "
+
+#~ msgid "Unchecked script files found:"
+#~ msgstr "Tarkastamattomia skriptitiedostoja löydetty:"
+
+#~ msgid "Reading cache"
+#~ msgstr "Luetaan välimuistia"
+
+#~ msgid "Back to start"
+#~ msgstr "Takaisin alkuun"
 
 #, fuzzy
 #~ msgid "Unknown error."

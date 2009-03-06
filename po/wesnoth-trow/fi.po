@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-02-23 23:37+0100\n"
-"PO-Revision-Date: 2008-06-22 02:55+0200\n"
+"PO-Revision-Date: 2009-03-06 08:01+0200\n"
 "Last-Translator: Mikko Nikkilä <miccoh@gmail.com>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -36,12 +36,12 @@ msgstr "Taistelija"
 #. [campaign]: id=The_Rise_Of_Wesnoth
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:16
 msgid "(Easy)"
-msgstr "(Helppo)"
+msgstr "(helppo)"
 
 #. [campaign]: id=The_Rise_Of_Wesnoth
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:17
 msgid "(Normal)"
-msgstr "(Normaali)"
+msgstr "(normaali)"
 
 #. [campaign]: id=The_Rise_Of_Wesnoth
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:17
@@ -51,7 +51,7 @@ msgstr "Komentaja"
 #. [campaign]: id=The_Rise_Of_Wesnoth
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:18
 msgid "(Challenging)"
-msgstr "(Haastava)"
+msgstr "(haastava)"
 
 #. [campaign]: id=The_Rise_Of_Wesnoth
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:18
@@ -71,7 +71,7 @@ msgstr ""
 "itse Wesnothin kuningaskunta. Yhteenotto kuolleiden valtiaan Jevyanin kanssa "
 "odottaa...\n"
 "\n"
-"(Keskivaikea, 25 skenaariota.)"
+"(keskitasoa, 25 skenaariota)"
 
 #. [about]
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:26
@@ -91,7 +91,7 @@ msgstr "Taidetyö ja graafinen suunnittelu"
 #. [about]
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:54
 msgid "WML Contributors"
-msgstr ""
+msgstr "WML-kirjoittajat"
 
 #. [scenario]: id=A_Summer_of_Storms
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:4
@@ -134,9 +134,8 @@ msgstr "Prinssi Haldric"
 
 #. [side]: type=Noble Youth, type=Noble Fighter, id=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:32
-#, fuzzy
 msgid "Haldric"
-msgstr "Haldric."
+msgstr "Haldric"
 
 #. [side]: type=Wesfolk Outcast, id=Wesfolk Leader
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:38
@@ -383,7 +382,7 @@ msgstr "Romahdus"
 #. [side]: type=Noble Fighter, id=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:28
 msgid "Stormvale"
-msgstr ""
+msgstr "Myrskylaakso"
 
 #. [side]: type=Orcish Warlord, id=Tan-Rarbag
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:62
@@ -437,7 +436,7 @@ msgstr "Tan-Rarbag"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:40
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:65
 msgid "Orcs"
-msgstr ""
+msgstr "Örkit"
 
 #. [side]: type=Orcish Warrior, id=Tan-Erang
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:86
@@ -601,9 +600,8 @@ msgstr "Lady Lainsuojaton"
 
 #. [option]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:339
-#, fuzzy
 msgid "Your word can't be trusted. Prepare to meet your gods!"
-msgstr "Sanaasi ei voi luottaa. Valmistaudu kohtaamaan luojasi!"
+msgstr "Sanoihisi ei voida luottaa. Valmistaudu kohtaamaan jumalasi!"
 
 #. [message]: speaker=Wesfolk Leader
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:344
@@ -696,7 +694,7 @@ msgstr "Kiusallinen pako"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:25
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:28
 msgid "Refugees"
-msgstr ""
+msgstr "Pakolaiset"
 
 #. [side]: type=Orcish Warlord, id=Tan-Schmog
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:35
@@ -977,7 +975,7 @@ msgstr "Cleon"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_River_Road.cfg:79
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_River_Road.cfg:108
 msgid "Cultists"
-msgstr ""
+msgstr "Kultistit"
 
 #. [side]: type=Dark Sorcerer, id=Lollyra
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_River_Road.cfg:58
@@ -1024,14 +1022,13 @@ msgstr "Skorpioni"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_River_Road.cfg:169
-#, fuzzy
 msgid ""
 "With great trepidation, Prince Haldric leads his refugee band into the Swamp "
 "of Esten. In the center of that very swamp a shroud of fog descends over "
 "young Prince Haldric."
 msgstr ""
-"Vastahakoisesti prinssi Haldric johtaa pakolaisryhmänsä Estenin soille. Suon "
-"keskellä oleva sumu laskeutuu nuoren prinssi Haldricin ylle."
+"Vastahakoisesti prinssi Haldric johtaa pakolaisryhmänsä Estenin soille. "
+"Keskellä suota sumu laskeutuu nuoren prinssi Haldricin ylle."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_River_Road.cfg:175
@@ -1328,9 +1325,8 @@ msgstr "Mielummin hän kuin minä! Kutsukaa apujoukkoja!"
 
 #. [message]: speaker=Tan-Bok
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:335
-#, fuzzy
 msgid "Hogar was a fool! Reserves!"
-msgstr "Holgar oli hölmö! Kutsukaa apujoukkoja!"
+msgstr "Hogar oli hölmö! Kutsukaa apujoukkoja!"
 
 #. [unit]: type=Knight, id=Sir Ladoc
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:355
@@ -1772,7 +1768,7 @@ msgstr "Kuolonherra Lenvan"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/06_Temple_of_the_Deep.cfg:46
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:126
 msgid "Undead"
-msgstr ""
+msgstr "Epäkuolleet"
 
 #. [objective]: condition=win
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/06_Temple_of_the_Deep.cfg:111
@@ -1915,9 +1911,8 @@ msgstr "Yllättävän-Puumainen"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:37
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:47
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:58
-#, fuzzy
 msgid "Treefolk"
-msgstr "Wessi"
+msgstr "Puukansa"
 
 #. [side]: type=Wose, id=Theylook-Thesame-Toyou
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:43
@@ -2231,7 +2226,7 @@ msgstr "Kirkasvesisatama"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:31
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:59
 msgid "Humans"
-msgstr ""
+msgstr "Ihmiset"
 
 #. [then]
 #. [side]: type=Lieutenant, id=Commander Aethyr
@@ -2581,9 +2576,8 @@ msgstr ""
 
 #. [message]: speaker=Commander Aethyr
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:956
-#, fuzzy
 msgid "Let me have peace in Death! My love, I'll be there soon--"
-msgstr "Tulkoon minulle rauha kuolemassa! Rakkaani, olen pian luonasi..."
+msgstr "Tulkoon minulle rauha kuolemassa! Rakkaani, olen siellä pian..."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/08_Clearwater_Port.cfg:961
@@ -2807,13 +2801,12 @@ msgstr "Lähistöllä on outo monoliitti."
 
 #. [message]: speaker=Lady Jessica
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:321
-#, fuzzy
 msgid ""
 "Haldric, this looks like a job for you, probably something to do with the "
 "lich. Maybe you should get yourself over here."
 msgstr ""
-"Haldric, tämä vaikuttaa sopivalta tehtävältä sinulle. Sillä on varmaan "
-"jotain tekemistä kuolonherran kanssa. Ehkä sinun pitäisi hankkiutua tänne."
+"Haldric, tämä vaikuttaa sopivalta hommalta sinulle. Sillä on varmaan jotakin "
+"tekemistä kuolonherran kanssa. Ehkä sinun pitäisi hankkiutua tänne."
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:341
@@ -2982,7 +2975,7 @@ msgstr "Daellyn Punainen"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/10_Sewer.cfg:47
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/10_Sewer.cfg:69
 msgid "Red Wizards"
-msgstr ""
+msgstr "Punaiset velhot"
 
 #. [side]: type=Arch Mage, id=Tinry the Red
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/10_Sewer.cfg:61
@@ -3810,7 +3803,7 @@ msgstr "Kegrid"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:66
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:96
 msgid "Drakes"
-msgstr ""
+msgstr "Draakit"
 
 #. [side]: type=Drake Flameheart, id=Gerrick
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:60
@@ -3960,7 +3953,7 @@ msgstr "Abraxas"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:70
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:98
 msgid "Naga"
-msgstr ""
+msgstr "Nagat"
 
 #. [side]: type=Naga Warrior, id=Xamalia
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:64
@@ -4077,7 +4070,7 @@ msgstr "Glimir"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_New_Land.cfg:60
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_New_Land.cfg:79
 msgid "Continentals"
-msgstr ""
+msgstr "Mantereiset"
 
 #. [side]: type=Dwarvish Stalwart, id=Dursil
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_New_Land.cfg:54
@@ -4100,6 +4093,8 @@ msgid ""
 "Alas, the shore of the Great Continent was not so tranquil a place as it had "
 "appeared from at sea."
 msgstr ""
+"Harmi vain, suuren mantereen rannikot eivät olleet niin rauhallinen paikka, "
+"kuin miltä se oli mereltä katsottuna näyttänyt."
 
 #. [message]: speaker=Glimir
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_New_Land.cfg:114
@@ -4203,9 +4198,8 @@ msgstr ""
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:34
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_New_Land.cfg:227
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:33
-#, fuzzy
 msgid "Lady Dionli"
-msgstr "Lordi Dionli"
+msgstr "Lady Dionli"
 
 #. [message]: speaker=Lady Dionli
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_New_Land.cfg:232
@@ -4368,7 +4362,7 @@ msgstr "Ka'lian"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:47
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:58
 msgid "Elves"
-msgstr ""
+msgstr "Haltiat"
 
 #. [side]: type=Elvish Champion, id=Lord Logalmier
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_Elf_Lords.cfg:44
@@ -4785,9 +4779,8 @@ msgstr "Irix"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:78
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:111
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:145
-#, fuzzy
 msgid "Saurians"
-msgstr "Satras"
+msgstr "Sauriaanit"
 
 #. [side]: type=Saurian Flanker, id=Vriss
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17a_The_Dragon.cfg:72
@@ -4937,7 +4930,7 @@ msgstr "Tirasch"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17b_A_Beach.cfg:43
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17b_A_Beach.cfg:69
 msgid "Monsters"
-msgstr ""
+msgstr "Hirviöt"
 
 #. [side]: type=Saurian Flanker, id=Ssirk
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17b_A_Beach.cfg:63
@@ -5019,9 +5012,8 @@ msgstr "Erart"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17c_Troll_Hole.cfg:70
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17c_Troll_Hole.cfg:96
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17c_Troll_Hole.cfg:122
-#, fuzzy
 msgid "Trolls"
-msgstr "Tromas"
+msgstr "Peikot"
 
 #. [side]: type=Troll Warrior, id=Raol
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17c_Troll_Hole.cfg:64
@@ -5265,38 +5257,37 @@ msgstr "Jessica piilossa"
 
 #. [message]: speaker=Lord Logalmier
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:115
-#, fuzzy
 msgid ""
 "So a doom has followed them here from their old home. My Outriders have "
 "reported that orcs have made landfall. Orcs! The tree-killers of our most "
 "ancient legends. Some thought them only a nightmare to frighten children, "
 "and never real at all."
 msgstr ""
-"Tuho on siis seurannut heitä tänne asti. Tiedustelijani kertovat örkkien "
-"nousseen maihin. Örkkejä täällä, ensimmäistä kertaa vuosisatoihin."
+"Tuho on siis seurannut heitä vanhasta kodista tänne saakka. Tiedustelijani "
+"kertovat örkkien nousseen maihin. Örkkejä! Kaikkein vanhimpien legendojen "
+"puuntappajia! Jotkut luulivat niiden olevan vain kauhutarinoita, joita "
+"kerrotaan pelotellakseen lapsia, eikä lainkaan totta!"
 
 #. [message]: speaker=Lady Dionli
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:119
-#, fuzzy
 msgid ""
 "And he bears an artifact of some power. The orcs would not be able to sense "
 "that. There is some hand we cannot see at work here."
 msgstr ""
-"Ja hänellä on mukanaan voimakas taikaesine. Örkit eivät havaitsisi sitä. "
-"Täällä on tekeillä jotain suurempaa."
+"Ja hänellä on mukanaan melko voimakas taikaesine. Örkit eivät havaitsisi "
+"sitä. Täällä on tekeillä jotain mitä me emme näe."
 
 #. [message]: speaker=Lord Aryad
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:123
-#, fuzzy
 msgid ""
 "We may have decided wrongly. If the humans drive the orcs off we should "
 "honor our pledge. If more trouble follows them here we should let them fight "
 "it out, then we should 'deal' with the survivors, and make a compromise with "
 "the Dwarves."
 msgstr ""
-"Olemme saattaneet olla väärässä päätöksessämme. Jos ihmiset ajavat örkit "
-"pois, meidän kannattaa noudattaa lupaustamme. Jos ongelmat jatkuvat, meidän "
-"kannattaa antaa ihmisten ja örkkien tapella, ”hoidella” henkiinjääneet ja "
+"Olemme saattaneet päättää väärin. Jos ihmiset ajavat örkit pois, meidän "
+"kannattaa noudattaa lupaustamme. Jos ongelmat jatkuvat, meidän kannattaa "
+"antaa ihmisten ja örkkien tapella, sitten ”hoidella” henkiinjääneet ja "
 "yrittää sovitella asioita kääpiöiden kanssa."
 
 #. [message]: speaker=Lady Dionli
@@ -5309,7 +5300,6 @@ msgstr ""
 
 #. [message]: speaker=Lord Logalmier
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:132
-#, fuzzy
 msgid ""
 "We are the people of the forest, you know that all words spoken to these un-"
 "people are of secondary importance to our own needs. As Lord Aryad said, 'If "
@@ -5317,10 +5307,10 @@ msgid ""
 "should 'deal' with the survivors, and make a compromise with the Dwarves.'"
 msgstr ""
 "Me olemme metsän kansaa, ja te tiedätte, että kaikki, mitä olemme luvanneet "
-"tälle epäkansalle, on vähemmän tärkeää kuin kansamme tarpeet. Kuten lordi "
-"Aryad sanoi: ”Jos ongelmat jatkuvat, meidän kannattaa antaa ihmisten ja "
-"örkkien tapella, ’hoidella’ henkiinjääneet ja yrittää sovitella asioita "
-"kääpiöiden kanssa.”"
+"tälle epäkansalle, on vähemmän tärkeää kuin oman kansamme tarpeet. Kuten "
+"lordi Aryad sanoi: ”Jos ongelmat jatkuvat, meidän kannattaa antaa ihmisten "
+"ja örkkien tapella, sitten ’hoidella’ henkiinjääneet ja yrittää sovitella "
+"asioita kääpiöiden kanssa.”"
 
 #. [message]: speaker=Lady Dionli
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:140
@@ -6010,9 +6000,8 @@ msgstr ""
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:125
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:162
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:200
-#, fuzzy
 msgid "Evil"
-msgstr "Eriol"
+msgstr "Pahuus"
 
 #. [side]: type=Orcish Warlord, id=Tan-Vragish
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:82
@@ -6484,12 +6473,12 @@ msgstr ""
 #. [scenario]: id=Epilogue
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:4
 msgid "Epilogue"
-msgstr "Jälkinäytös"
+msgstr "Loppunäytös"
 
 #. [side]: type=Noble Commander, id=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:23
 msgid "Wesnothians"
-msgstr ""
+msgstr "Wesnothilaiset"
 
 #. [message]: speaker=Minister Edmond
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:140
@@ -6944,9 +6933,8 @@ msgstr "linko"
 
 #. [unit_type]: id=Wesfolk Leader, race=human
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Leader.cfg:4
-#, fuzzy
 msgid "female^Wesfolk Leader"
-msgstr "Wessirouva"
+msgstr "Wessijohtajatar"
 
 #. [unit_type]: id=Wesfolk Outcast, race=human
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Outcast.cfg:4
@@ -7010,26 +6998,23 @@ msgstr "häirintä"
 
 #. [skirmisher]: id=distract
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-abilities.cfg:8
-#, fuzzy
 msgid ""
 "Distract:\n"
 "This unit negates enemy Zones of Control around itself for allied units (but "
 "not for itself)."
 msgstr ""
 "Häirintä:\n"
-"Tämä yksikkö kiinnittää ympärillään olevien vihollisyksiköiden huomion "
-"itseensä päästäen liittolaisyksiköt (itseään lukuun ottamatta) livahtamaan "
-"niiden hallitseman alueen ohi."
+"Tämä yksikkö kumoaa vihollisen hallitseman alueen vaikutuksen itsensä "
+"ympäriltä liittolaisyksiköitään varten (lukuun ottamatta itseään)."
 
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-abilities.cfg:23
-#, fuzzy
 msgid ""
 "This unit is capable of distracting opponents, allowing allied units to "
 "trespass their Zones of Control and move unhindered around them."
 msgstr ""
 "Tämä yksikkö kykenee häiritsemään vastustajia, sallien liittolaisyksiköiden "
 "livahtaa tämän yksikön lähellä olevien vihollisyksiköiden hallitsemien "
-"alueiden ohitse huomaamatta."
+"alueiden läpi huomaamatta."
 
 #. [message]: speaker=unit
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-deaths.cfg:12
@@ -7219,16 +7204,15 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-story.cfg:35
-#, fuzzy
 msgid ""
 "You must recall that the route from the western continent to our Green Isle "
 "was perilous at the best of times - so perilous that a stable trading "
 "relationship between the mainland and the Isle could never be maintained."
 msgstr ""
-"Seuraavat vuosisadat olivat rauhallisia. Muistakaa, että merireitti "
-"läntiseltä mantereelta Vihersaarellemme oli parhainakin aikoina turmiollinen "
-"– niin turmiollinen, että pysyviä kauppayhteyksiä mannermaan ja saaren "
-"välillä ei koskaan voisi syntyä."
+"Teidän on muistettava, että merireitti läntiseltä mantereelta "
+"Vihersaarellemme oli parhainakin aikoina turmiollinen – niin turmiollinen, "
+"että pysyviä kauppayhteyksiä mannermaan ja saaren välillä ei koskaan voisi "
+"syntyä."
 
 #. [part]
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-story.cfg:44
@@ -7318,7 +7302,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-story.cfg:109
-#, fuzzy
 msgid ""
 "To the southwest lay the Midlands. These were prosperous kingdoms, nestled "
 "between hill and forest. These had been the breadbasket of the Green Isle, "
@@ -7326,7 +7309,7 @@ msgid ""
 "Southbay, the largest city on the Isle. The coming of the Orcs threatened to "
 "lay waste to all this."
 msgstr ""
-"Lounaassa oli Keskiylänkö. Sen rikkaat kuningaskunnat olivat metsien ja "
+"Lounaassa on Keskiylänkö. Sen rikkaat kuningaskunnat olivat metsien ja "
 "vuorten välissä. Maa on viljavaa aina vietäväksi asti, arvokkaita tukkeja ja "
 "jalokiviä on myös riittämiin. Näiden kuningaskuntien viljalla ruokittiin "
 "Suvilahti, saaren suurin kaupunki. Nyt kun örkit ovat tulleet, Keskiylänkö "
@@ -7350,7 +7333,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-story.cfg:127
-#, fuzzy
 msgid ""
 "Several days later Prince Haldric departs in his ship, the Eldaric, his home "
 "and the Green Isle lost to him forever. Before him lay a vast expanse of "
@@ -7358,15 +7340,13 @@ msgid ""
 "even more exotic lands even further to the East."
 msgstr ""
 "Muutamia päiviä myöhemmin prinssi Haldric lähtee laivallaan Eldaricillä. "
-"Hänen entiset kotinsa ja saarensa ovat hänelle nyt mennyttä elämää. "
-"Sydämessään tietää, ettei koskaan enää palaisi syrjäiseen laaksoonsa. "
+"Hänen entiset kotinsa ja Vihersaari ovat hänelle nyt iäksi mennyttä elämää. "
 "Edessään hän näkee laajan myrskyisen meren ja sen salaperäisen saaren, jonka "
 "Lady Jessica on maininnut, ja yhä enemmän tuntemattomia maita vielä "
 "kauempana idässä."
 
 #. [part]
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-story.cfg:133
-#, fuzzy
 msgid ""
 "The island that King Haldric and his crew are approaching was at one time a "
 "volcano that is now slowly sinking into the sea. The elder Crown Prince of "
@@ -7374,10 +7354,10 @@ msgid ""
 "belligerent nature of its reptilian inhabitants. There will be little left "
 "of that foothold by now."
 msgstr ""
-"Ilmeisestikin saari, jonne kuningas Haldric miehistöineen ovat saapumassa, "
-"oli aiemmin tulivuori, joka nyt kuitenkin hitaasti uppoaa mereen. Suvilahden "
-"vanhempi kruununprinssi onnistui perustamaan tukikohdan tälle saarelle "
-"huolimatta sen sotaisista liskoasukkaista. Siitä tukikohdasta on tuskin enää "
+"Saari, jonne kuningas Haldric miehistöineen on saapumassa, oli aiemmin "
+"tulivuori, joka nyt kuitenkin hitaasti uppoaa mereen. Suvilahden vanhempi "
+"kruununprinssi onnistui perustamaan tukikohdan tälle saarelle huolimatta sen "
+"sotaisista liskomaisista asukkaista. Siitä tukikohdasta on tuskin enää "
 "paljoa jäljellä."
 
 #. [part]
@@ -7387,6 +7367,9 @@ msgid ""
 "hunt small game, relieved to have land beneath their feet. When they depart, "
 "even the sea-weather is milder."
 msgstr ""
+"Nagojen kukistumisen jälkeen Haldricin pakolaiset nauttivat raikasta vettä "
+"ja metsästivät hiukan riistaa, ollen helpottuneita jalkojensa alla olevasta "
+"maasta. Kun he erosivat, jopa merisää oli leuto."
 
 #. [part]
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-story.cfg:155
@@ -7395,6 +7378,9 @@ msgid ""
 "gulls and feel the loom of the land. The Great Continent appears before them "
 "over the summer-lit seas."
 msgstr ""
+"Viikon vakaasti itäänpäin seilattuaan he alkoivat kuulla lokkien huutoja ja "
+"tuntea maan lähestyvän. Suuri manner ilmestyi heidän eteensä auringon "
+"valaiseman meren takana."
 
 #~ msgid "Miscellaneous"
 #~ msgstr "Sekalainen"
