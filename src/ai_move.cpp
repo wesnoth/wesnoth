@@ -151,13 +151,17 @@ std::vector<ai::target> ai::find_targets(unit_map::const_iterator leader, const 
 
 			if (ally_village)
 			{
-				double enemy = power_projection(*t, enemy_dstsrc);
-				if (enemy > 0)
-				{
-					enemy *= 1.7;
-					double our = power_projection(*t, friends_dstsrc);
-					double value = village_value * our / enemy;
-					add_target(target(*t, value, target::SUPPORT));
+				//Support seems to cause the AI to just 'sit around' a lot, so
+				//only turn it on if it's explicitly enabled.
+				if(current_team().ai_parameters()["support_villages"] == "yes") {
+					double enemy = power_projection(*t, enemy_dstsrc);
+					if (enemy > 0)
+					{
+						enemy *= 1.7;
+						double our = power_projection(*t, friends_dstsrc);
+						double value = village_value * our / enemy;
+						add_target(target(*t, value, target::SUPPORT));
+					}
 				}
 			}
 			else
