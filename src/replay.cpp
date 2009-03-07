@@ -297,6 +297,10 @@ void replay::add_countdown_update(int value, int team)
 
 void replay::add_movement(const std::vector<map_location>& steps)
 {
+	if(steps.empty()) { // no move, nothing to record
+		return;
+	}
+
 	config* const cmd = add_command();
 
 	config move;
