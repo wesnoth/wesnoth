@@ -1208,7 +1208,7 @@ namespace {
 
 		const std::string round_val = cfg["round"];
 		if(round_val.empty() == false) {
-			double value = lexical_cast<double>(var.c_str());
+			double value = lexical_cast_default<double>(var.c_str());
 			if (round_val == "ceil") {
 				value = std::ceil(value);
 			} else if (round_val == "floor") {
