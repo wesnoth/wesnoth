@@ -2167,6 +2167,10 @@ size_t move_unit(game_display* disp,
 {
 	assert(route.empty() == false);
 
+	if (route.size() <= 2 && route.front() == route.back()) {
+		DBG_NG << "Ignore an unit trying to jump on its hex at " << route.front() << "\n";
+	}
+
 	// Stop the user from issuing any commands while the unit is moving
 	const events::command_disabler disable_commands;
 
