@@ -1643,7 +1643,7 @@ paths::route formula_ai::shortest_path_calculator(const map_location& src, const
 
     map_location destination = dst;
 
-    shortest_path_calculator::shortest_path_calculator calc(unit_it->second, current_team(), units_, get_info().teams, get_info().map);
+    ::shortest_path_calculator calc(unit_it->second, current_team(), units_, get_info().teams, get_info().map);
 
     unit_map::const_iterator dst_un = units_.find(destination);
 
