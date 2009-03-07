@@ -211,7 +211,7 @@ tline::tline(const config& cfg) :
  *                                     @* bold      bold font
  *                                     @* italic    italic font
  *                                     @* underline underlined font
- *                                     Since SDL has problems combining these
+ *                                     @-Since SDL has problems combining these
  *                                     styles only one can be picked. Once SDL
  *                                     will allow multiple options, this type
  *                                     will be transformed to a comma separated
@@ -228,8 +228,9 @@ tline::tline(const config& cfg) :
  *                                     @* top    aligned at the top
  *                                     @* bottom aligned at the bottom
  *                                     @* center centered
- *                                     When nothing is set or an another value
- *                                     as in the list the item is centred.
+ *                                     @-When nothing is set or an another
+ *                                     value as in the list the item is
+ *                                     centred.
  *
  *     h_align                         Horizontal alignment; how an item is
  *                                     aligned horizontal in the available

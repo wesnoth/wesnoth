@@ -87,6 +87,15 @@ if __name__ == "__main__":
             for j in range(len(res[i])):
                  sys.stderr.write("Line " + str(i) + " match " + str(j) + " : " + res[i][j] + "\n")
 
+    def format(data):
+        """Formats the data for the wiki.
+        
+        @* -> \n* needed in a list.
+        @- -> \n needed to add text after a list."""
+        data = re.sub(r'@\*', "\n*", data)
+        data = re.sub(r'@\-', "\n", data)
+        return data
+
     def create_config_table(data):
         """Creates a table for data in a config table.
 
@@ -115,7 +124,7 @@ if __name__ == "__main__":
                 result += "| mandatory\n"
             else:
                 result += "| " + res[i][2] + "\n"
-            result += "| " + re.sub(r'@\*', "\n*", res[i][3]) + "\n"
+            result += "| " + format(res[i][3]) + "\n"
         result += "|}"
 
         return result
@@ -144,7 +153,7 @@ if __name__ == "__main__":
             result += "|-\n"
             result += "| " + res[i][0] + "\n"
             result += "| " + res[i][1] + "\n"
-            result += "| " + re.sub(r'@\*', "\n*", res[i][2]) + "\n"
+            result += "| " + format(res[i][2]) + "\n"
         result += "|}"
 
         return result
@@ -168,7 +177,7 @@ if __name__ == "__main__":
         for i in range(len(res)):
             result += "|-\n"
             result += "| <span id=\"" + res[i][0] + "\">" + res[i][0] + "</span>\n"
-            result += "| " + re.sub(r'@\*', "\n*", res[i][1]) + "\n"
+            result += "| " + format(res[i][1]) + "\n"
         result += "|}"
 
         return result
@@ -192,7 +201,7 @@ if __name__ == "__main__":
         for i in range(len(res)):
             result += "|-\n"
             result += "| " + res[i][0] + "\n"
-            result += "| " + re.sub(r'@\*', "\n*", res[i][1]) + "\n"
+            result += "| " + format(res[i][1]) + "\n"
         result += "|}"
 
         return result
