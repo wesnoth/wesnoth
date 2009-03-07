@@ -1040,23 +1040,40 @@ bool do_replay_handle(game_display& disp, const gamemap& map,
 			}
 		}
 		else if((child = cfg->child("move")) != NULL) {
+			map_location src, dst;
+			std::vector<map_location> steps;
+			bool need_pathfinding = false;
 
 			const std::string& x = (*child)["x"];
 			const std::string& y = (*child)["y"];
 
-			if(x.empty() || y.empty()) {
-				// x,y keys will be missing in replay recorded before 1.5.13
-				replay::throw_error("missing path data in [move], mandatory since 1.5.13 - 1.6RC2 \n");
+			if(!x.empty() && !y.empty()) {
+				// Normal [move] format, we just parse the path
+				steps =	parse_location_range(x,y);
+
+				if(steps.empty()) {
+					replay::throw_error("incorrect path data found in [move]\n");
+				}
+
+				src = steps.front();
+				dst = steps.back();
+			}
+			else {
+				// This is 1.5.12-1.6RC1 [move] format, parse the old data
+				const config* const destination = child->child("destination");
+				const config* const source = child->child("source");
+
+				if(source == NULL || destination == NULL) {
+					replay::throw_error("no path or destination/source found in movement\n");
+				}
+
+				src = map_location(*source, game_events::get_state_of_game());
+				dst = map_location(*destination, game_events::get_state_of_game());
+
+				// 1.6RC1 needed pathfinding to generate the path data
+				need_pathfinding = true;
 			}
 
-			const std::vector<map_location> steps =	parse_location_range(x,y);
-
-			if(steps.empty()) {
-				replay::throw_error("incorrect path data found in [move]\n");
-			}
-
-			const map_location src = steps.front();
-			const map_location dst = steps.back();
 
 			if (src == dst) {
 				WRN_REPLAY << "Warning: Move with identical source and destination. Skipping...";
@@ -1076,6 +1093,32 @@ bool do_replay_handle(game_display& disp, const gamemap& map,
 				errbuf << "unfound location for source of movement: "
 				       << src << " -> " << dst << '\n';
 				replay::throw_error(errbuf.str());
+			}
+
+			// backwards compatibility code for 1.6RC1
+			// NOTE: This will still OOS sometimes when ambushing AI
+			// but if the RC1 replay worked before,
+			// then it will continue to work with RC2
+			if(need_pathfinding) {
+				// search path assuming current_team as viewing team
+				const shortest_path_calculator calc(u->second, current_team, units, teams, map);
+				std::set<map_location> allowed_teleports;
+				if(u->second.get_ability_bool("teleport",src)) {
+					// search all known empty friendly villages
+					for(std::set<map_location>::const_iterator i = current_team.villages().begin();
+						i != current_team.villages().end(); ++i) {
+						if (current_team.is_enemy(u->second.side()) && current_team.fogged(*i))
+						continue;
+
+						unit_map::const_iterator occupant = find_visible_unit(units, *i, map,teams, current_team);
+						if (occupant != units.end() && occupant != u)
+							continue;
+
+						allowed_teleports.insert(*i);
+					}
+				}
+
+				steps = a_star_search(src, dst, 10000.0, &calc, map.w(), map.h(), &allowed_teleports).steps;
 			}
 
 			::move_unit(&disp, map, units, teams, steps, NULL, NULL, NULL, true, true, true);
