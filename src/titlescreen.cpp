@@ -526,7 +526,7 @@ TITLE_RESULT show_title(game_display& screen, config& tips_of_day)
 	update_whole_screen();
 	background_is_dirty_ = false;
 
-	titlescreen_handler ts_handler(key[SDLK_ESCAPE] != false);
+	titlescreen_handler ts_handler(key[SDLK_ESCAPE] != 0); //!= 0 to avoid a MSVC warning C4800
 
 	LOG_DP << "entering interactive loop...\n";
 
