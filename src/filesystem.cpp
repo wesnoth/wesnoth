@@ -1137,8 +1137,6 @@ std::string normalize_path(const std::string &p1)
 	}
 #endif
 
-	const char *p3 = p2.c_str();
-
 	std::vector<std::string> components(1);
 	for (int i = 0, i_end = p2.size(); i <= i_end; ++i)
 	{
