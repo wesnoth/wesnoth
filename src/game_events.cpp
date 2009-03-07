@@ -1164,51 +1164,51 @@ namespace {
 		const std::string add = cfg["add"];
 		if(add.empty() == false) {
 			if(isint(var.str()) && isint(add)) {
-				var = str_cast( atoi(var.c_str()) + atoi(add.c_str()) );
+				var = str_cast( std::atoi(var.c_str()) + std::atoi(add.c_str()) );
 			} else {
-				var = str_cast( atof(var.c_str()) + atof(add.c_str()) );
+				var = str_cast( std::atof(var.c_str()) + std::atof(add.c_str()) );
 			}
 		}
 
 		const std::string multiply = cfg["multiply"];
 		if(multiply.empty() == false) {
 			if(isint(var) && isint(multiply)) {
-				var = str_cast( atoi(var.c_str()) * atoi(multiply.c_str()) );
+				var = str_cast( std::atoi(var.c_str()) * std::atoi(multiply.c_str()) );
 			} else {
-				var = str_cast( atof(var.c_str()) * atof(multiply.c_str()) );
+				var = str_cast( std::atof(var.c_str()) * std::atof(multiply.c_str()) );
 			}
 		}
 
 		const std::string divide = cfg["divide"];
 		if(divide.empty() == false) {
-			if (atof(divide.c_str()) == 0) {
+			if (std::atof(divide.c_str()) == 0) {
 				ERR_NG << "division by zero on variable " << name << "\n";
 				return;
 			}
 			if(isint(var) && isint(divide)) {
-				var = str_cast( atoi(var.c_str()) / atoi(divide.c_str()) );
+				var = str_cast( std::atoi(var.c_str()) / std::atoi(divide.c_str()) );
 			} else {
-				var = str_cast( atof(var.c_str()) / atof(divide.c_str()) );
+				var = str_cast( std::atof(var.c_str()) / std::atof(divide.c_str()) );
 			}
 		}
 
 		const std::string modulo = cfg["modulo"];
 		if(modulo.empty() == false) {
-			if(atof(modulo.c_str()) == 0) {
+			if(std::atof(modulo.c_str()) == 0) {
 				ERR_NG << "division by zero on variable " << name << "\n";
 				return;
 			}
 			if(isint(var) && isint(modulo)) {
-				var = str_cast( atoi(var.c_str()) % atoi(modulo.c_str()) );
+				var = str_cast( std::atoi(var.c_str()) % std::atoi(modulo.c_str()) );
 			} else {
-				double value = fmod( atof(var.c_str()), atof(modulo.c_str()) );
+				double value = std::fmod( std::atof(var.c_str()), std::atof(modulo.c_str()) );
 				var = str_cast(value);
 			}
 		}
 
 		const std::string round_val = cfg["round"];
 		if(round_val.empty() == false) {
-			double value = lexical_cast_default<double>(var.c_str());
+			double value = std::atof(var.c_str());
 			if (round_val == "ceil") {
 				value = std::ceil(value);
 			} else if (round_val == "floor") {
@@ -1217,7 +1217,7 @@ namespace {
 				// We assume the value is an integer.
 				// Any non-numerical values will be interpreted as 0
 				// Which is probably what was intended anyway
-				const int decimals = atoi(round_val.c_str());
+				const int decimals = std::atoi(round_val.c_str());
 				value *= std::pow(10.0, decimals); //add $decimals zeroes
 				value = round_portable(value); // round() isn't implemented everywhere
 				value *= std::pow(10.0, -decimals); //and remove them
@@ -1229,7 +1229,7 @@ namespace {
 		if(ipart.empty() == false) {
 			const std::string orig = state_of_game->get_variable(ipart);
 			double result;
-			modf( atof(ipart.c_str()), &result );
+			std::modf( std::atof(ipart.c_str()), &result );
 			var = str_cast(result);
 		}
 
@@ -1237,7 +1237,7 @@ namespace {
 		if(fpart.empty() == false) {
 			const std::string orig = state_of_game->get_variable(fpart);
 			double ignore;
-			double result = modf( atof(fpart.c_str()), &ignore );
+			double result = std::modf( std::atof(fpart.c_str()), &ignore );
 			var = str_cast(result);
 		}
 
