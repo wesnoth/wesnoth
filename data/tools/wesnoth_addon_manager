@@ -51,6 +51,8 @@ if __name__ == "__main__":
         "name may be a Python regexp matched against all add-on names " +
         "(specify the path where to put it with -c, " +
         "current directory will be used by default)")
+    optionparser.add_option("-T", "--type",
+        help = "Type of addons to download, e.g. 'era' or 'campaign'.")
     optionparser.add_option("-t", "--tar",
         help = "When used together with --download, create tarballs of any " +
         "downloaded addons and put into the specified directory.")
@@ -211,12 +213,13 @@ if __name__ == "__main__":
             campaigns = data.get_or_create_sub("campaigns")
             for campaign in campaigns.get_all("campaign"):
                 name = campaign.get_text_val("name", "?")
+                type = campaign.get_text_val("type", "")
                 version = campaign.get_text_val("version", "")
                 uploads = campaign.get_text_val("uploads", "")
                 if re.escape(options.download).replace("\\_", "_") == options.download:
                     if name == options.download:
                         fetchlist.append((name, version, uploads))
-                else:
+                elif options.type and options.type == type:
                     if re.search(options.download, name):
                         fetchlist.append((name, version, uploads))
 
