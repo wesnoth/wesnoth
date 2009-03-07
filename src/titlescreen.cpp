@@ -526,7 +526,7 @@ TITLE_RESULT show_title(game_display& screen, config& tips_of_day)
 	update_whole_screen();
 	background_is_dirty_ = false;
 
-	titlescreen_handler ts_handler(key[SDLK_ESCAPE]);
+	titlescreen_handler ts_handler(key[SDLK_ESCAPE] != false);
 
 	LOG_DP << "entering interactive loop...\n";
 
