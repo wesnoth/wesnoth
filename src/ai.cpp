@@ -581,6 +581,14 @@ map_location ai_interface::move_unit_partial(location from, location to,
 			}
 		}
 	}
+	//FIXME: probably missing some "else" here
+	// It looks like if the AI doesn't find a route in possible_move,
+	// she will just teleport her unit between 'from' and 'to'
+	// I suppose this never happen, but in the meantime, add code for replay
+	if (steps.empty()) {
+		steps.push_back(from);
+		steps.push_back(to);
+	}
 
 	std::pair<map_location,unit> *p = info_.units.extract(u_it->first);
 
