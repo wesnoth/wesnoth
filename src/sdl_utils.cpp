@@ -431,6 +431,99 @@ surface scale_surface(surface const &surf, int w, int h, bool optimize)
 	return optimize ? create_optimized_surface(dst) : dst;
 }
 
+
+// This is a copy-paste of the previous function scale_surface
+// We only removed the alpha channel and big comments
+// and change how we optimize the resulting surface
+surface scale_opaque_surface(surface const &surf, int w, int h, bool optimize_format)
+{
+	if(surf == NULL)
+		return NULL;
+
+	if(w == surf->w && h == surf->h) {
+		return surf;
+	}
+	assert(w >= 0);
+	assert(h >= 0);
+
+	surface dst(create_neutral_surface(w,h));
+
+	if (w == 0 || h ==0) {
+		std::cerr << "Create an empty image\n";
+		return create_optimized_surface(dst);
+	}
+
+	surface src(make_neutral_surface(surf));
+	// Now both surfaces are always in the "neutral" pixel format
+
+	if(src == NULL || dst == NULL) {
+		std::cerr << "Could not create surface to scale onto\n";
+		return NULL;
+	}
+
+	const fixed_t xratio = fxpdiv(surf->w,w);
+	const fixed_t yratio = fxpdiv(surf->h,h);
+
+	{
+		surface_lock src_lock(src);
+		surface_lock dst_lock(dst);
+
+		Uint32* const src_pixels = reinterpret_cast<Uint32*>(src_lock.pixels());
+		Uint32* const dst_pixels = reinterpret_cast<Uint32*>(dst_lock.pixels());
+
+		fixed_t ysrc = ftofxp(0.0);
+		for(int ydst = 0; ydst != h; ++ydst, ysrc += yratio) {
+			fixed_t xsrc = ftofxp(0.0);
+			for(int xdst = 0; xdst != w; ++xdst, xsrc += xratio) {
+				const int xsrcint = fxptoi(xsrc);
+				const int ysrcint = fxptoi(ysrc);
+
+				Uint32* const src_word = src_pixels + ysrcint*src->w + xsrcint;
+				Uint32* const dst_word = dst_pixels +    ydst*dst->w + xdst;
+				const int dx = (xsrcint + 1 < src->w) ? 1 : 0;
+				const int dy = (ysrcint + 1 < src->h) ? src->w : 0;
+
+				Uint8 r,g,b;
+				Uint32 rr,gg,bb;
+				Uint32 pix[4], bilin[4];
+
+				const fixed_t e = 0x000000FF & xsrc;
+				const fixed_t s = 0x000000FF & ysrc;
+				const fixed_t n = 0xFF - s;
+				const fixed_t w = 0xFF - e;
+
+				pix[0] = *src_word;              // northwest
+				pix[1] = *(src_word + dx);       // northeast
+				pix[2] = *(src_word + dy);       // southwest
+				pix[3] = *(src_word + dx + dy);  // southeast
+
+				bilin[0] = n*w;
+				bilin[1] = n*e;
+				bilin[2] = s*w;
+				bilin[3] = s*e;
+
+				int loc;
+				rr = gg = bb = 0;
+				for (loc=0; loc<4; loc++) {
+				  r = pix[loc] >> 16;
+				  g = pix[loc] >> 8;
+				  b = pix[loc] >> 0;
+				  rr += r * bilin[loc];
+				  gg += g * bilin[loc];
+				  bb += b * bilin[loc];
+				}
+				r = rr >> 16;
+				g = gg >> 16;
+				b = bb >> 16;
+				*dst_word = (255 << 24) + (r << 16) + (g << 8) + b;
+			}
+		}
+	}
+
+	return optimize_format ? display_format_alpha(dst) : dst;
+}
+
+
 surface scale_surface_blended(surface const &surf, int w, int h, bool optimize)
 {
 	if(surf== NULL)

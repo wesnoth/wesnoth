@@ -309,7 +309,7 @@ static void draw_background(game_display& screen)
 		if(game_title_list.empty()) {
 			ERR_CONFIG << "No title image defined\n";
 		} else {
-			surface const title_surface(scale_surface(
+			surface const title_surface(scale_opaque_surface(
 				image::get_image(game_title_list[rand()%game_title_list.size()]),
 				screen.w(), screen.h()));
 
