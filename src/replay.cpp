@@ -1123,6 +1123,10 @@ bool do_replay_handle(game_display& disp, const gamemap& map,
 				}
 
 				steps = a_star_search(src, dst, 10000.0, &calc, map.w(), map.h(), &allowed_teleports).steps;
+
+				if (steps.empty()) {
+					replay::throw_error("Pathfinding fails in the backwards compatibility code for 1.6RC1");
+				}
 			}
 
 			::move_unit(&disp, map, units, teams, steps, NULL, NULL, NULL, true, true, true);
