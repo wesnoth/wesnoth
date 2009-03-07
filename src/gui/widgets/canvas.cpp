@@ -108,7 +108,7 @@ tline::tline(const config& cfg) :
  *     y1 (f_unsigned = 0)             The y coordinate of the startpoint.
  *     x2 (f_unsigned = 0)             The x coordinate of the endpoint.
  *     y2 (f_unsigned = 0)             The y coordinate of the endpoint.
- *     colour (widget = "")            The colour of the line.
+ *     colour (colour = "")            The colour of the line.
  *     thickness = (unsigned = 0)      The thickness of the line if 0 nothing
  *                                     is drawn.
  *     debug = (string = "")           Debug message to show upon creation
