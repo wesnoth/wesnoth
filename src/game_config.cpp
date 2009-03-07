@@ -54,7 +54,7 @@ namespace game_config
 
 	int cache_compression_level = 6;
 
-	std::string game_icon = "wesnoth-icon.png", game_title, game_logo, title_music, lobby_music;
+	std::string game_icon = "wesnoth-icon-small.png", game_title, game_logo, title_music, lobby_music;
 	int title_logo_x = 0, title_logo_y = 0, title_buttons_x = 0, title_buttons_y = 0, title_buttons_padding = 0,
 	    title_tip_x = 0, title_tip_width = 0, title_tip_padding = 0;
 
