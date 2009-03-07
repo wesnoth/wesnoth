@@ -370,13 +370,17 @@ tcontrol_definition::tcontrol_definition(const config& cfg) :
 	description(cfg["description"]),
 	resolutions()
 {
+
 /*WIKI
- * @page = GUIToolkitWML
- * @order = 1_widget
+ * @page = GUIWidgetDefinitionWML
+ * @order = 1
  *
- * = Widget defintion =
+ * THIS PAGE IS AUTOMATICALLY GENERATED, DO NOT MODIFY DIRECTLY !!!
  *
- * Every widget has some parts in common, first of all every definition has the
+ * = Widget definition =
+ *
+ * This page describes the definition of all widgets in the toolkit. Every
+ * widget has some parts in common, first of all every definition has the
  * following fields.
  *
  * @start_table = config
@@ -530,8 +534,8 @@ tbutton_definition::tresolution::tresolution(const config& cfg) :
 	tresolution_definition_(cfg)
 {
 /*WIKI
- * @page = GUIToolkitWML
- * @order = 1_widget_button
+ * @page = GUIWidgetDefinitionWML
+ * @order = 1_button
  *
  * == Button ==
  *
@@ -571,8 +575,8 @@ thorizontal_scrollbar_definition::tresolution::tresolution(const config& cfg) :
 	right_offset(lexical_cast_default<unsigned>(cfg["right_offset"]))
 {
 /*WIKI
- * @page = GUIToolkitWML
- * @order = 1_widget_vertical_scrollbar
+ * @page = GUIWidgetDefinitionWML
+ * @order = 1_vertical_scrollbar
  *
  * == Horizontal scrollbar ==
  *
@@ -627,8 +631,8 @@ timage_definition::tresolution::tresolution(const config& cfg) :
 	tresolution_definition_(cfg)
 {
 /*WIKI
- * @page = GUIToolkitWML
- * @order = 1_widget_image
+ * @page = GUIWidgetDefinitionWML
+ * @order = 1_image
  *
  * == Image ==
  *
@@ -657,8 +661,8 @@ tlabel_definition::tresolution::tresolution(const config& cfg) :
 	tresolution_definition_(cfg)
 {
 /*WIKI
- * @page = GUIToolkitWML
- * @order = 1_widget_label
+ * @page = GUIWidgetDefinitionWML
+ * @order = 1_label
  *
  * == Label ==
  *
@@ -688,8 +692,8 @@ tlistbox_definition::tresolution::tresolution(const config& cfg) :
 	grid(NULL)
 {
 /*WIKI
- * @page = GUIToolkitWML
- * @order = 1_widget_listbox
+ * @page = GUIWidgetDefinitionWML
+ * @order = 1_listbox
  *
  * == Listbox ==
  *
@@ -759,8 +763,8 @@ tmenubar_definition::tresolution::tresolution(const config& cfg) :
 	tresolution_definition_(cfg)
 {
 /*WIKI
- * @page = GUIToolkitWML
- * @order = 1_widget_menubar
+ * @page = GUIWidgetDefinitionWML
+ * @order = 1_menubar
  *
  * == Menubar ==
  *
@@ -788,8 +792,8 @@ tminimap_definition::tresolution::tresolution(const config& cfg) :
 	tresolution_definition_(cfg)
 {
 /*WIKI
- * @page = GUIToolkitWML
- * @order = 1_widget_minimap
+ * @page = GUIWidgetDefinitionWML
+ * @order = 1_minimap
  *
  * == Minimap ==
  *
@@ -820,8 +824,8 @@ tpanel_definition::tresolution::tresolution(const config& cfg) :
 	right_border(lexical_cast_default<unsigned>(cfg["right_border"]))
 {
 /*WIKI
- * @page = GUIToolkitWML
- * @order = 1_widget_panel
+ * @page = GUIWidgetDefinitionWML
+ * @order = 1_panel
  *
  * == Panel ==
  *
@@ -860,8 +864,8 @@ tscroll_label_definition::tresolution::tresolution(const config& cfg) :
 	grid(NULL)
 {
 /*WIKI
- * @page = GUIToolkitWML
- * @order = 1_widget_scroll_label
+ * @page = GUIWidgetDefinitionWML
+ * @order = 1_scroll_label
  *
  * == Scroll label ==
  *
@@ -919,8 +923,8 @@ tslider_definition::tresolution::tresolution(const config& cfg) :
 	right_offset(lexical_cast_default<unsigned>(cfg["right_offset"]))
 {
 /*WIKI
- * @page = GUIToolkitWML
- * @order = 1_widget_slider
+ * @page = GUIWidgetDefinitionWML
+ * @order = 1_slider
  *
  * == Slider ==
  *
@@ -976,8 +980,8 @@ tspacer_definition::tresolution::tresolution(const config& cfg) :
 	tresolution_definition_(cfg)
 {
 /*WIKI
- * @page = GUIToolkitWML
- * @order = 1_widget_spacer
+ * @page = GUIWidgetDefinitionWML
+ * @order = 1_spacer
  *
  * == Spacer ==
  *
@@ -1002,8 +1006,8 @@ ttext_box_definition::tresolution::tresolution(const config& cfg) :
 	text_y_offset(cfg["text_y_offset"])
 {
 /*WIKI
- * @page = GUIToolkitWML
- * @order = 1_widget_text_box
+ * @page = GUIWidgetDefinitionWML
+ * @order = 1_text_box
  *
  * == Text box ==
  *
@@ -1045,8 +1049,8 @@ ttoggle_button_definition::tresolution::tresolution(const config& cfg) :
 	tresolution_definition_(cfg)
 {
 /*WIKI
- * @page = GUIToolkitWML
- * @order = 1_widget_toggle_button
+ * @page = GUIWidgetDefinitionWML
+ * @order = 1_toggle_button
  *
  * == Toggle button ==
  *
@@ -1089,8 +1093,8 @@ ttoggle_panel_definition::tresolution::tresolution(const config& cfg) :
 	right_border(lexical_cast_default<unsigned>(cfg["right_border"]))
 {
 /*WIKI
- * @page = GUIToolkitWML
- * @order = 1_widget_toggle_panel
+ * @page = GUIWidgetDefinitionWML
+ * @order = 1_toggle_panel
  *
  * == Toggle panel ==
  *
@@ -1142,8 +1146,8 @@ ttooltip_definition::tresolution::tresolution(const config& cfg) :
 
 {
 /*WIKI
- * @page = GUIToolkitWML
- * @order = 1_widget_tooltip
+ * @page = GUIWidgetDefinitionWML
+ * @order = 1_tooltip
  *
  * == Tooltip ==
  *
@@ -1176,8 +1180,8 @@ tvertical_scrollbar_definition::tresolution::tresolution(const config& cfg) :
 	bottom_offset(lexical_cast_default<unsigned>(cfg["bottom_offset"]))
 {
 /*WIKI
- * @page = GUIToolkitWML
- * @order = 1_widget_vertical_scrollbar
+ * @page = GUIWidgetDefinitionWML
+ * @order = 1_vertical_scrollbar
  *
  * == Vertical scrollbar ==
  *
@@ -1224,8 +1228,8 @@ twindow_definition::twindow_definition(const config& cfg) :
 	tpanel_definition(cfg)
 {
 /*WIKI
- * @page = GUIToolkitWML
- * @order = 1_widget_window
+ * @page = GUIWidgetDefinitionWML
+ * @order = 1_window
  *
  * == Window ==
  *
