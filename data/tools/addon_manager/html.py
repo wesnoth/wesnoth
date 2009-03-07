@@ -21,7 +21,7 @@ $(document).ready(function()
 { 
     $("#campaigns").tablesorter(
     {
-        headers: { 0: { sorter: false} }
+        headers: { 1: { sorter: false} }
     }
     ); 
 } 
@@ -53,13 +53,15 @@ Select the add-on you want to install from the list and click "OK". The download
     w("<table class=\"tablesorter\" id=\"campaigns\">")
     w("<thead>")
     w("<tr>")
-    for header in ["Icon", "Addon", "Size", "Traffic", "Date", "Notes"]:
+    for header in ["Type", "Icon", "Addon", "Size", "Traffic", "Date", "Notes"]:
         w("<th>%s&nbsp;&nbsp;&nbsp;</th>" % header)
     w("</tr>")
     w("</thead>")
     w("<tbody>")
     for campaign in campaigns.get_all("campaign"):
         v = campaign.get_text_val
+        translations = campaign.get_all("translation")
+        languages = [x.get_text_val("language") for x in translations]
         w("<tr>")
         icon = v("icon", "")
         if icon:
@@ -82,7 +84,10 @@ Select the add-on you want to install from the list and click "OK". The download
                 imgurl = "icons/" + os.path.basename(icon)
             os.system("cp -u " + src + " " + path + "/icons")
                 
+        type = v("type", "none")
+        size = float(v("size", "0"))
         name = v("title", "unknown")
+        w(('<td>%s</td>') % type)
         w(('<td><img alt="%s" src="%s" width="72px" height="72px"/>'
             ) % (icon, imgurl))
         w('<div class="desc"><b>%s</b><br/>%s</div></td>' % (
@@ -91,7 +96,7 @@ Select the add-on you want to install from the list and click "OK". The download
         w("Version: %s<br/>" % v("version", "unknown"))
         w("Author: %s</td>" % v("author", "unknown"))
         MiB = 1024 * 1024
-        w("<td><b>%.2f</b>MiB" % (float(v("size", "unknown")) / MiB))
+        w("<td><span class=\"hidden\">%d</span><b>%.2f</b>MiB" % (size, size / MiB))
         if url:
             link = url.rstrip("/") + "/" + v("name") + ".tar.bz2"
             w("<br/><a href=\"%s\">download</a></td>" % link)
@@ -104,7 +109,7 @@ Select the add-on you want to install from the list and click "OK". The download
         t = time.localtime(timestamp)
         w("<td><span class=\"hidden\">%d</span>%s</td>" % (timestamp,
             time.strftime("%b %d %Y", t)))
-        w("<td>%s</td>" % v("translate", ""))
+        w("<td>%s</td>" % (", ".join(languages)))
         w("</tr>")
     w("</tbody>")
     w("</table>")
