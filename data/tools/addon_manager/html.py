@@ -91,7 +91,7 @@ Select the add-on you want to install from the list and click "OK". The download
         w("Version: %s<br/>" % v("version", "unknown"))
         w("Author: %s</td>" % v("author", "unknown"))
         MiB = 1024 * 1024
-        w("<td>%.2fMiB" % (float(v("size", "unknown")) / MiB))
+        w("<td><b>%.2f</b>MiB" % (float(v("size", "unknown")) / MiB))
         if url:
             link = url.rstrip("/") + "/" + v("name") + ".tar.bz2"
             w("<br/><a href=\"%s\">download</a></td>" % link)
