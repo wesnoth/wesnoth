@@ -13,8 +13,8 @@
 */
 
 /**
- * @file setting.cpp
- * Implementation of settings.hpp.
+ * @file src/gui/widgets/settings.cpp
+ * Implementation of settingss.hpp.
  */
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
