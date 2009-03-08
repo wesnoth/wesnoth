@@ -2613,18 +2613,17 @@ void apply_shroud_changes(undo_list& undos, game_display* disp, const gamemap& m
 			// known_units.insert(*step);
 
 			// Clear the shroud, and collect new seen_units
-			//FIXME: we don't use a separate stoned_units because I don't see the point
-			// This avoid to change the sighted order (more risky here)
-			// but must be cleaned (the function or the call)
 			std::set<map_location> seen_units;
+			std::set<map_location> stoned_units;
 			cleared_shroud |= clear_shroud_unit(map,units,*step,teams,team,
-				&known_units,&seen_units,&seen_units);
+				&known_units,&seen_units,&stoned_units);
 
+			// Fire sighted events
+			// Try to keep same order (stoned units after normal units)
+			// as with move_unit for replay
 			for (std::set<map_location>::iterator sight_it = seen_units.begin();
 				sight_it != seen_units.end(); ++sight_it)
 			{
-				known_units.insert(*sight_it);
-
 				unit_map::const_iterator new_unit = units.find(*sight_it);
 				assert(new_unit != units.end());
 				teams[team].see(new_unit->second.side()-1);
@@ -2632,7 +2631,16 @@ void apply_shroud_changes(undo_list& undos, game_display* disp, const gamemap& m
 				game_events::raise("sighted",*sight_it,unit_itor->first);
 				sighted_event = true;
 			}
+			for (std::set<map_location>::iterator sight_it = stoned_units.begin();
+				sight_it != stoned_units.end(); ++sight_it)
+			{
+				unit_map::const_iterator new_unit = units.find(*sight_it);
+				assert(new_unit != units.end());
+				teams[team].see(new_unit->second.side()-1);
 
+				game_events::raise("sighted",*sight_it,unit_itor->first);
+				sighted_event = true;
+			}
 		}
 	}
 
