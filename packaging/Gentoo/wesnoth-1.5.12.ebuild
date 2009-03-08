@@ -1,53 +1,55 @@
 EAPI=2
 inherit eutils toolchain-funcs flag-o-matic games
 
-MY_PV=${PV/_/}
 DESCRIPTION="Battle for Wesnoth - A fantasy turn-based strategy game"
 HOMEPAGE="http://www.wesnoth.org/"
-SRC_URI="mirror://sourceforge/wesnoth/${PN}-${MY_PV}.tar.bz2"
+SRC_URI="mirror://sourceforge/wesnoth/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
-IUSE="dedicated +editor lite nls server tinygui tools"
+IUSE="+client +editor lite nls server tinygui tools"
 
 RDEPEND=">=media-libs/libsdl-1.2.7
 	media-libs/sdl-net
 	dev-libs/boost
-	!dedicated? (
-		x11-libs/libX11
+	client? (
 		>=media-libs/libsdl-1.2.7[X]
 		>=media-libs/sdl-mixer-1.2[vorbis]
 		>=media-libs/sdl-image-1.2[png,jpeg]
 		>=media-libs/sdl-ttf-2.0.8
+		x11-libs/libX11
 		x11-libs/pango
 	)
-	nls? ( virtual/libintl )"
+	nls? ( virtual/libintl )
+	tools? (
+		>=media-libs/libsdl-1.2.7[X]
+		>=media-libs/sdl-mixer-1.2[vorbis]
+		>=media-libs/sdl-image-1.2
+		>=media-libs/sdl-ttf-2.0.8
+		x11-libs/libX11
+	)"
 DEPEND="${RDEPEND}
-	!dedicated? (
-		smallgui? ( media-gfx/imagemagick )
-		tinygui? ( media-gfx/imagemagick )
+	client? (
+		tinygui? ( media-gfx/imagemagick[jpeg,png] )
 	)
 	nls? ( sys-devel/gettext )
 	>=dev-util/scons-0.96.93"
 
-S=${WORKDIR}/${PN}-${MY_PV}
-
 use_target() {
-	use $1 && echo $2
+	useq $1 && echo $2
 }
 
 use_variable() {
-	echo ${2:-$1}=$(use $1 && echo ${3:-yes} || echo ${4:-no})
+	echo ${2:-$1}=$(useq $1 && echo ${3:-yes} || echo ${4:-no})
 }
 
 pkg_setup() {
 	games_pkg_setup
 }
 
-src_unpack() {
-	unpack ${A}
-	if use dedicated || use server ; then
+src_prepare() {
+	if use server ; then
 		sed \
 			-e "s:GAMES_BINDIR:${GAMES_BINDIR}:" \
 			-e "s:GAMES_STATEDIR:${GAMES_STATEDIR}:" \
@@ -63,7 +65,7 @@ src_configure() {
 }
 
 src_compile() {
-	local myconf
+	local myconf="build=release desktop_entry=yes"
 
 	local SCONSOPTS=`echo ${MAKEOPTS} | \
 		sed s/-j$/-j256/\;s/-j[[:space:]]/-j256\ / |
@@ -76,9 +78,7 @@ src_compile() {
 		filter-flags -fstack-protector
 		append-flags -fno-stack-protector
 	fi
-	if use dedicated || use server ; then
-		myconf="${myconf} wesnothd"
-		myconf="${myconf} campaignd"
+	if use server ; then
 		myconf="${myconf} server_uid=${GAMES_USER_DED}"
 		myconf="${myconf} server_gid=${GAMES_GROUP}"
 	fi
@@ -91,7 +91,9 @@ src_compile() {
 
 	scons $myconf \
 		${SCONSOPTS/-l[0-9]} \
-		$(use_target !dedicated wesnoth) \
+		$(use_target client wesnoth) \
+		$(use_target server wesnothd) \
+		$(use_target server campaignd) \
 		$(use_target tools cutter) \
 		$(use_target tools exploder) \
 		$(use_variable editor) \
@@ -112,7 +114,7 @@ src_install() {
 	scons install destdir=${D} --implicit-deps-unchanged ||
 	die "scons install failed"
 	dodoc changelog
-	if use dedicated || use server; then
+	if use server; then
 		keepdir "${GAMES_STATEDIR}/run/wesnothd"
 		doinitd "${T}"/wesnothd || die "doinitd failed"
 	fi
