@@ -13,7 +13,7 @@
    See the COPYING file for more details.
 */
 
-/** @file widgets/scrollbar.cpp */
+/** @file src/widgets/scrollbar.cpp */
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
