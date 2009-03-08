@@ -1298,4 +1298,14 @@ std::vector<twindow_builder::tresolution>::const_iterator get_window_builder(con
 	ERROR_LOG(false);
 }
 
+/*WIKI
+ * @page = GUIWidgetDefinitionWML
+ * @order = ZZZZZZ_footer
+ *
+ * [[Category: WML Reference]]
+ * [[Category: GUI WML Reference]]
+ * [[Category: Generated]]
+ *
+ */
+
 } // namespace gui2
