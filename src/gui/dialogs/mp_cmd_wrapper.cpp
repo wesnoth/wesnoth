@@ -32,16 +32,16 @@ namespace gui2 {
  * to various commands in the multiplayer lobby
  *
  * @start_table = container
- *     message		(text_box)  Text to send as a private message
- *     reason		(text_box)  The reason for a ban
- *     time		(text_box)  The time the ban lasts
- *     [send_message]	(button)    Execute /msg
- *     [add_friend]	(button)    Execute /friend
- *     [add_ignore]	(button)    Execute /ignore
- *     [remove]		(button)    Execute /remove
- *     [status]		(button)    Execute /query status
- *     [kick]		(button)    Execute /query kick
- *     [ban]		(button)    Execute /query kban
+ *     message (text_box)         Text to send as a private message.
+ *     reason (text_box)          The reason for a ban.
+ *     time (text_box)            The time the ban lasts.
+ *     [send_message] (button)    Execute /msg.
+ *     [add_friend] (button)      Execute /friend.
+ *     [add_ignore] (button)      Execute /ignore.
+ *     [remove] (button)          Execute /remove.
+ *     [status] (button)          Execute /query status.
+ *     [kick] (button)            Execute /query kick.
+ *     [ban] (button)             Execute /query kban.
  * @end_table
  */
 
