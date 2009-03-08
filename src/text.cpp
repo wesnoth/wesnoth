@@ -359,7 +359,7 @@ ttext& ttext::set_ellipse_mode(const PangoEllipsizeMode ellipse_mode)
 		assert(context_);
 
 		pango_layout_set_ellipsize(layout_, ellipse_mode);
-		ellipse_mode_ = ellipse_mode_;
+		ellipse_mode_ = ellipse_mode;
 		calculation_dirty_ = true;
 		surface_dirty_ = true;
 	}
