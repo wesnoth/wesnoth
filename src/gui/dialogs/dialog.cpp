@@ -99,3 +99,25 @@ void tdialog::finalize_fields(twindow& window)
 
 } // namespace gui2
 
+
+/*WIKI
+ * @page = GUIWindowDefinitionWML
+ * @order = 1
+ *
+ * THIS PAGE IS AUTOMATICALLY GENERATED, DO NOT MODIFY DIRECTLY !!!
+ *
+ * = Window definition =
+ *
+ * The window definition define how the windows shown in the dialog look.
+ */
+
+/*WIKI
+ * @page = GUIWindowDefinitionWML
+ * @order = ZZZZZZ_footer
+ *
+ * [[Category: WML Reference]]
+ * [[Category: GUI WML Reference]]
+ * [[Category: Generated]]
+ *
+ */
+

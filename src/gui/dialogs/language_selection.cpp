@@ -25,7 +25,7 @@
 namespace gui2 {
 
 /*WIKI
- * @page = GUIWindowWML
+ * @page = GUIWindowDefinitionWML
  * @order = 2_language_selection
  *
  * == Language selection ==

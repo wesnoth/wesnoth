@@ -25,7 +25,7 @@
 namespace gui2 {
 
 /*WIKI
- * @page = GUIWindowWML
+ * @page = GUIWindowDefinitionWML
  * @order = 2_mp_method_selection
  *
  * == MP method selection ==

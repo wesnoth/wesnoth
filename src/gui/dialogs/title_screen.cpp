@@ -42,7 +42,7 @@ void show_dialog(twidget* caller)
 } // namespace
 
 /*WIKI
- * @page = GUIWindowWML
+ * @page = GUIWindowDefinitionWML
  * @order = 2_title_screen
  *
  * == Title screen ==

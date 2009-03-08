@@ -23,7 +23,7 @@
 namespace gui2 {
 
 /*WIKI
- * @page = GUIWindowWML
+ * @page = GUIWindowDefinitionWML
  * @order = 2_mp_cmd_wrapper
  *
  * == Multiplayer command wrapper ==

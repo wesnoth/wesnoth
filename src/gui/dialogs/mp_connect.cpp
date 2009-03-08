@@ -31,7 +31,7 @@ namespace gui2 {
 namespace {
 
 /*WIKI
- * @page = GUIWindowWML
+ * @page = GUIWindowDefinitionWML
  * @order = 2_mp_server_list
  *
  * == Multiplayer server list ==
@@ -127,7 +127,7 @@ void callback_view_list_button(twidget* caller)
 } // namespace
 
 /*WIKI
- * @page = GUIWindowWML
+ * @page = GUIWindowDefinitionWML
  * @order = 2_mp_connect
  *
  * == Multiplayer connect ==
@@ -188,7 +188,7 @@ void tmp_connect::show_server_list(twindow& window)
 }
 
 /*WIKI
- * @page = GUIWindowWML
+ * @page = GUIWindowDefinitionWML
  * @order = 2_mp_login
  *
  * == Multiplayer connect ==

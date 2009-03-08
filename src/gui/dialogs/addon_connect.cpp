@@ -22,7 +22,7 @@
 namespace gui2 {
 
 /*WIKI
- * @page = GUIWindowWML
+ * @page = GUIWindowDefinitionWML
  * @order = 2_addon_connect
  *
  * == Addon connect ==
