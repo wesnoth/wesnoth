@@ -525,7 +525,7 @@ std::pair<map_location,map_location> ai::choose_move(std::vector<target>& target
 			if(tg->type == target::VILLAGE) {
 				if(current_team().ai_parameters().has_attribute("scout_village_targetting")) {
 					rating *= lexical_cast_default<int>(current_team().ai_parameters()["scout_village_targetting"],3);
-					lg::wml_error << "[ai] the 'scout_village_targetting' attribute is deprecated, support will be removed in version 1.7.0; use 'scout_village_targetting' instead\n";
+					lg::wml_error << "[ai] the 'scout_village_targetting' attribute is deprecated, support will be removed in version 1.7.0; use 'scout_village_targeting' instead\n";
 				}
 				else {
 					rating *= lexical_cast_default<int>(current_team().ai_parameters()["scout_village_targeting"],3);
