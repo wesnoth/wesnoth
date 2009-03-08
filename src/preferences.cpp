@@ -65,6 +65,12 @@ base_manager::~base_manager()
 
 void write_preferences()
 {
+    #ifndef _WIN32
+
+    bool prefs_file_existed = access(get_prefs_file().c_str(), F_OK) == 0;
+
+    #endif
+
 	try {
 		scoped_ostream prefs_file = ostream_file(get_prefs_file());
 		write(*prefs_file, prefs);
@@ -75,8 +81,12 @@ void write_preferences()
 
     #ifndef _WIN32
 
-    if(chmod(get_prefs_file().c_str(), 0600) == -1) {
-        std::cerr << "error setting permissions of preferences file '" << get_prefs_file() << "'\n";
+    if(!prefs_file_existed) {
+
+        if(chmod(get_prefs_file().c_str(), 0600) == -1) {
+            std::cerr << "error setting permissions of preferences file '" << get_prefs_file() << "'\n";
+        }
+
     }
 
     #endif
