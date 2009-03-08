@@ -102,6 +102,17 @@ void ttext_box::update_canvas()
 	const unsigned start = get_selection_start();
 	const int length = get_selection_length();
 
+
+	PangoEllipsizeMode ellipse_mode = PANGO_ELLIPSIZE_NONE;
+	if(!can_wrap()) {
+		if((start + length) > (get_length() / 2)) {
+			ellipse_mode = PANGO_ELLIPSIZE_START;
+		} else {
+			ellipse_mode = PANGO_ELLIPSIZE_END;
+		}
+	}
+	set_ellipse_mode(ellipse_mode);
+
 	// Set the selection info
 	unsigned start_offset = 0;
 	unsigned end_offset = 0;
@@ -133,6 +144,7 @@ void ttext_box::update_canvas()
 
 		tmp.set_variable("selection_offset", variant(start_offset));
 		tmp.set_variable("selection_width", variant(end_offset  - start_offset ));
+		tmp.set_variable("text_wrap_mode", variant(ellipse_mode));
 	}
 }
 
