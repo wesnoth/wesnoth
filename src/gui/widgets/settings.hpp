@@ -13,7 +13,7 @@
 */
 
 /**
- * @file setting.hpp
+ * @file src/gui/widgets/settings.hpp
  * This file contains the settings handling of the widget library.
  */
 
