@@ -210,10 +210,10 @@ const std::string& tgui_definition::read(const config& cfg)
  * @end_table
  *
  * <span id="window_list"></span>List of available windows:
- * @start_table = window_definition
- *     addon_connect                 The dialog to connect to the addon server
+ * @start_table = window_overview
+ *     Addon_connect                 The dialog to connect to the addon server
  *                                   and maintain locally installed addons.
- *     language_selection            The dialog to select the primairy language.
+ *     Language_selection            The dialog to select the primairy language.
  * @end_table
  *
  */
