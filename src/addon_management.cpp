@@ -1223,20 +1223,23 @@ void refresh_addon_version_info_cache()
 
 		config cfg;
 		std::string const& addon = addons[i];
-		scoped_istream stream = istream_file(info_file);
-
-		read(cfg, *stream);
-
-		config const* const info_cfg = cfg.child("info");
-		if(info_cfg == NULL) {
-			++i;
-			continue;
-		}
-		std::string const& version = (*info_cfg)["version"];
-		LOG_CFG << "caching add-on version info: " << addon << " [" << version << "]\n";
-		version_info_cache.insert(std::make_pair(addon, version_info(version)));
-
 		++i;
+
+		if(file_exists(info_file)) {
+			scoped_istream stream = istream_file(info_file);
+			read(cfg, *stream);
+
+			config const* const info_cfg = cfg.child("info");
+			if(info_cfg == NULL) {
+				continue;
+			}
+			std::string const& version = (*info_cfg)["version"];
+			LOG_CFG << "caching add-on version info: " << addon << " [" << version << "]\n";
+			version_info_cache.insert(std::make_pair(addon, version_info(version)));
+		}
+		else {
+			WRN_CFG << "add-on '" << addon << "' has no _info.cfg; cannot read version info\n";
+		}
 	}
 }
 
