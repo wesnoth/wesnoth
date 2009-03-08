@@ -393,7 +393,7 @@ if __name__ == "__main__":
 
             if(os.path.isdir(dir + "/" + item)):
                 process_directory(dir + "/" + item)
-            elif(item.endswith(".cpp")):
+            elif(item.endswith(".cpp") or item.endswith(".hpp")):
                 process_file(dir + "/" + item)
 
 
