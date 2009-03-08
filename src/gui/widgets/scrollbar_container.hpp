@@ -82,15 +82,13 @@ public:
 	void layout_wrap(const unsigned maximum_width);
 
 	/** Inherited from twidget (not tcontainer_). */
-	bool has_vertical_scrollbar() const
-		{ return vertical_scrollbar_mode_ != HIDE; }
+	bool has_vertical_scrollbar() const;
 
 	/** Inherited from tcontainer_. */
 	void layout_use_vertical_scrollbar(const unsigned maximum_height);
 
 	/** Inherited from twidget (not tcontainer_). */
-	bool has_horizontal_scrollbar() const
-		{ return horizontal_scrollbar_mode_ != HIDE; }
+	bool has_horizontal_scrollbar() const;
 
 	/** Inherited from tcontainer_. */
 	void layout_use_horizontal_scrollbar(const unsigned maximum_width);
