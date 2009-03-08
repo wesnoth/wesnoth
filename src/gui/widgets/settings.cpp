@@ -176,34 +176,37 @@ const std::string& tgui_definition::read(const config& cfg)
  * @end_table
  *
  * <span id="widget_list"></span>List of available widgets:
- * @start_table = widget_definition
- *     button_definition             A push button.
- *     image_definition              An image.
- *     horizontal_scrollbar_definition
- *                                   A horizontal scrollbar.
- *     menubar_definition            A menubar which is used in menus and the
- *                                   tabbar in a tabcontrol.
- *     minimap_definition            A minimap to show the gamemap, this only
+ * @start_table = widget_overview
+ *     Button                        A push button.
+ *     Image                         An image.
+ *     Horizontal_scrollbar          A horizontal scrollbar.
+ *     Label                         A label without scrollbars.
+ *     Listbox                       A listbox.
+ *     Menubar                       A menubar which is used in menus and the
+ *                                   tabbar in a tabcontrol. (NOTE this widget
+ *                                   is still under heavy development.)
+ *     Minimap                       A minimap to show the gamemap, this only
  *                                   shows the map and has no interaction
  *                                   options. This version is used for map
  *                                   previews, there will be a another version
  *                                   which allows interaction.
- *     label_definition              A label.
- *     listbox_definition            A listbox.
- *     panel_definition              A panel.
- *     scroll_label_definition       A scroll_label.
- *     slider_definition             A slider.
- *     spacer_definition             A spacer.
- *     text_box_definition           A single line text box.
- *     toggle_button_definition      A kind of button with two 'states' normal
+ *     Panel                         A panel is a container with can have it's
+ *                                   own visual attributes. 
+ *     Scroll_label                  A label which can have scrollbars.
+ *     Slider                        A slider.
+ *     Spacer                        A spacer is a dummy widget which can be
+ *                                   used if a cell in a container needs to be
+ *                                   empty or have a fixed size.
+ *     Text_box                      A single line text box.
+ *     Toggle_button                 A kind of button with two 'states' normal
  *                                   and selected. This is a more generic widget
  *                                   which is used for eg checkboxes and
  *                                   radioboxes.
- *     toggle_panel_definition       Like a toggle button but then as panel so
+ *     Toggle_panel                  Like a toggle button but then as panel so
  *                                   can hold multiple items in a grid.
- *     tooltip_definition            A small tooltip with help.
- *     vertical_scrollbar_definition A vertical scrollbar.
- *     window_definition             A window.
+ *     Tooltip                       A small tooltip with help.
+ *     Vertical_scrollbar            A vertical scrollbar.
+ *     Window                        A window.
  * @end_table
  *
  * <span id="window_list"></span>List of available windows:

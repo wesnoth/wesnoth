@@ -181,7 +181,8 @@ if __name__ == "__main__":
         result += "|}"
 
         return result
-        
+    
+    # FIXME remove after create_window_definition_table has been converted.
     def create_widget_definition_table(data):
         """Creates a table for a widget definition."""
 
@@ -205,6 +206,33 @@ if __name__ == "__main__":
         result += "|}"
 
         return result
+
+    def create_widget_overview_table(data):
+        """Creates a table for all available widgets."""
+        #matches a line like
+        # Button                        A push button.
+        variable = "(?:[a-z]|[A-Z])(?:[a-z]|[A-Z]|[0-9]|_)*"
+        regex = re.compile(" *(" + variable +  ") +(.*)\n")
+        res = regex.findall(data)
+
+        # empty table
+        if(len(res) == 0):
+            sys.stderr.write("Empty table:\n" + data + "\n")
+            return "Empty table."
+
+        result = '{| border="1"'
+        result += "\n!Section\n!Description\n"
+        for i in range(len(res)):
+            result += "|-\n"
+            result += "| " + re.sub(r'_', ' ', res[i][0])
+            result += " ([[GUIWidgetDefinitionWML#" 
+            result += res[i][0]
+            result += "|definition]])\n"
+            result += "| " + format(res[i][1]) + "\n"
+        result += "|}"
+
+        return result
+
 
     def create_window_definition_table(data):
         """Creates a table for a window definition."""
@@ -286,8 +314,8 @@ if __name__ == "__main__":
             return create_formula_table(table.group(2) + "\n")
         elif(type == "variable_types"):
             return create_variable_types_table(table.group(2) + "\n")
-        elif(type == "widget_definition"):
-            return create_widget_definition_table(table.group(2) + "\n")
+        elif(type == "widget_overview"):
+            return create_widget_overview_table(table.group(2) + "\n")
         elif(type == "window_definition"):
             return create_window_definition_table(table.group(2) + "\n")
         elif(type == "container"):
