@@ -273,25 +273,26 @@ if __name__ == "__main__":
             return "Empty table."
 
         result = '{| border="1"'
-        result += "\n!mandatory\n!id\n!type\n!return value\n!description\n"
+        result += "\n!ID (return value)\n!Type\n!Mandatory\n!Description\n"
         for i in range(len(res)):
             result += "|-\n"
+            if(res[i][1] == ""):
+                result += "|"
+            else:
+                result += "| " + res[i][1] + " "
+
+            if(res[i][3] == ""):
+                result += "\n"
+            else:
+                result += "(" + res[i][3] + ")\n"
+
+            result += "| " + res[i][2] + "\n"
+
             if(res[i][0] == ""):
                 result += "|no\n"
             else:
                 result += "|yes\n"
 
-            if(res[i][1] == ""):
-                result += "|not used\n"
-            else:
-                result += "| " + res[i][1] + "\n"
-
-            result += "| " + res[i][2] + "\n"
-
-            if(res[i][3] == ""):
-                result += "|none\n"
-            else:
-                result += "| " + res[i][3] + "\n"
             result += "| " + re.sub(r'@\*', "\n*", res[i][4]) + "\n"
         result += "|}"
 
