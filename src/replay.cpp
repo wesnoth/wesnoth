@@ -1130,6 +1130,17 @@ bool do_replay_handle(game_display& disp, const gamemap& map,
 			}
 
 			::move_unit(&disp, map, units, teams, steps, NULL, NULL, NULL, true, true, true);
+
+			//NOTE: The AI fire sighetd event whem moving in the FoV of team 1
+			// (supposed to be the human player in SP)
+			// That's ugly but let's try to make the replay works like that too
+			if(team_num != 1 && teams.front().fog_or_shroud() && !teams.front().fogged(dst)
+					 && (current_team.is_ai() || current_team.is_network_ai()))
+			{
+				// the second parameter is impossible to know 
+				// and the AI doesn't use it too in the local version
+				game_events::fire("sighted",dst);
+			}
 		}
 
 		else if((child = cfg->child("attack")) != NULL) {
