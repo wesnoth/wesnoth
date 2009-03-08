@@ -14,6 +14,7 @@
 
 #include "global.hpp"
 #include "filesystem.hpp"
+#include "foreach.hpp"
 #include "game_preferences.hpp"
 #include "log.hpp"
 #include "sound.hpp"
@@ -512,7 +513,15 @@ static void play_new_music()
 		const std::string& filename = get_binary_file_location("music", current_track.name);
 
 		if(filename.empty()) {
-			ERR_AUDIO << "Could not open track '" << current_track.name << "'\n";
+			const std::string bad_track = current_track.name;
+			ERR_AUDIO << "Could not open track '" << current_track.name << "', disabling for this playlist\n";
+
+			current_track.name = "";
+			foreach(music_track& trk, current_track_list) {
+				if(trk.name == bad_track) {
+					trk.name = "";
+				}
+			}
 			return;
 		}
 
