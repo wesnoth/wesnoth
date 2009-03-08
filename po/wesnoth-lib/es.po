@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-03-05 10:12+0100\n"
+"POT-Creation-Date: 2009-03-08 22:43+0100\n"
 "PO-Revision-Date: 2009-02-15 17:08-0300\n"
 "Last-Translator: Ignacio R. Morelle <shikadilord@users.sourceforge.net>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -1439,19 +1439,19 @@ msgstr "Cargar partida..."
 msgid "Version"
 msgstr "Versión"
 
-#: src/gui/widgets/canvas.cpp:292
+#: src/gui/widgets/canvas.cpp:308
 msgid "Line doesn't fit on canvas."
 msgstr "La línea no cabe en el lienzo."
 
-#: src/gui/widgets/canvas.cpp:427
+#: src/gui/widgets/canvas.cpp:443
 msgid "Rectangle doesn't fit on canvas."
 msgstr "El rectángulo no cabe en el lienzo."
 
-#: src/gui/widgets/canvas.cpp:798
+#: src/gui/widgets/canvas.cpp:814
 msgid "Text has a font size of 0."
 msgstr "El texto tiene un tamaño de fuente nulo."
 
-#: src/gui/widgets/canvas.cpp:863
+#: src/gui/widgets/canvas.cpp:879
 msgid "Text doesn't start on canvas."
 msgstr "El texto no empieza en el lienzo."
 
@@ -1463,55 +1463,55 @@ msgstr "El widget obligatorio «$id» no ha sido definido."
 msgid "No default gui defined."
 msgstr "No se ha definido una interfaz de usuario predeterminada."
 
-#: src/gui/widgets/settings.cpp:264
+#: src/gui/widgets/settings.cpp:292
 msgid "Window not defined."
 msgstr "Ventana no definida."
 
-#: src/gui/widgets/settings.cpp:362
+#: src/gui/widgets/settings.cpp:390
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr "Definición de widget «$definition» carece de una definición para «$id»."
 
-#: src/gui/widgets/settings.cpp:474 src/gui/widgets/window_builder.cpp:314
+#: src/gui/widgets/settings.cpp:506 src/gui/widgets/window_builder.cpp:326
 msgid "No resolution defined."
 msgstr "No se ha definido ninguna resolución."
 
-#: src/gui/widgets/settings.cpp:502
+#: src/gui/widgets/settings.cpp:534
 msgid "No state or draw section defined."
 msgstr "No se ha definido ninguna sección de dibujo/estado."
 
-#: src/gui/widgets/settings.cpp:745 src/gui/widgets/settings.cpp:899
-#: src/gui/widgets/window_builder.cpp:405
-#: src/gui/widgets/window_builder.cpp:932
-#: src/gui/widgets/window_builder.cpp:1141
+#: src/gui/widgets/settings.cpp:763 src/gui/widgets/settings.cpp:917
+#: src/gui/widgets/window_builder.cpp:416
+#: src/gui/widgets/window_builder.cpp:926
+#: src/gui/widgets/window_builder.cpp:1135
 msgid "No grid defined."
 msgstr "No se ha definido ninguna malla."
 
-#: src/gui/widgets/window_builder.cpp:533
+#: src/gui/widgets/window_builder.cpp:527
 msgid "A row must have a column."
 msgstr "Una fila debe tener una columna."
 
-#: src/gui/widgets/window_builder.cpp:534
+#: src/gui/widgets/window_builder.cpp:528
 msgid "Number of columns differ."
 msgstr "El número de columnas es distinto."
 
-#: src/gui/widgets/window_builder.cpp:772
+#: src/gui/widgets/window_builder.cpp:766
 msgid "No list defined."
 msgstr "No se ha definido una lista."
 
-#: src/gui/widgets/window_builder.cpp:775
+#: src/gui/widgets/window_builder.cpp:769
 msgid "A 'list_definition' should contain one row."
 msgstr ""
 "Una definición de lista («list_definition») debe contener al menos una fila."
 
-#: src/gui/widgets/window_builder.cpp:794
+#: src/gui/widgets/window_builder.cpp:788
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr ""
 "Los datos de lista («list_data») deben tener el mismo número de columnas que "
 "la definición de lista («list_definition»)."
 
-#: src/gui/widgets/window_builder.cpp:1063
+#: src/gui/widgets/window_builder.cpp:1057
 msgid "The number of value_labels and values don't match."
 msgstr ""
 "El número de etiquetas de valor («value_labels») y valores («values») no es "
