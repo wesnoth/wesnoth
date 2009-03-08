@@ -13,7 +13,7 @@
 */
 
 /**
- * @file image.cpp
+ * @file src/image.cpp
  * Routines for images: load, scale, re-color, etc.
  */
 
