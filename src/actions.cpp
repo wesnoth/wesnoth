@@ -2078,7 +2078,8 @@ namespace {
 			const unit_map& units, const map_location& loc,
 			std::vector<team>& teams, int team,
 			const std::set<map_location>* known_units = NULL,
-			std::set<map_location>* seen_units = NULL)
+			std::set<map_location>* seen_units = NULL,
+			std::set<map_location>* stoned_units = NULL)
 	{
 		std::vector<map_location> cleared_locations;
 
@@ -2105,7 +2106,14 @@ namespace {
 				//just in case we managed to move on a fogged hex (teleport)
 				if(seen_units != NULL && known_units != NULL
 						&& known_units->count(*it) == 0 && *it != loc) {
-					seen_units->insert(*it);
+					if (!utils::string_bool(sighted->second.get_state("stoned")))
+					{
+						seen_units->insert(*it);
+					}
+					else if (stoned_units != NULL)
+					{
+						stoned_units->insert(*it);
+					}
 				}
 			}
 		}
@@ -2214,6 +2222,7 @@ size_t move_unit(game_display* disp,
 	const int starting_moves = ui->second.movement_left();
 	int moves_left = starting_moves;
 	std::set<map_location> seen_units;
+	std::set<map_location> stoned_units;
 	bool discovered_unit = false;
 	bool teleport_failed = false;
 	bool should_clear_stack = false;
@@ -2265,10 +2274,10 @@ size_t move_unit(game_display* disp,
 				const temporary_unit_placer unit_placer(units,*step,temp_unit);
 				if( team.auto_shroud_updates()) {
 					should_clear_stack |= clear_shroud_unit(map,units,*step,teams,
-							ui->second.side()-1,&known_units,&seen_units);
+							ui->second.side()-1,&known_units,&seen_units,&stoned_units);
 				} else {
 					clear_shroud_unit(map,units,*step,teams,
-							ui->second.side()-1,&known_units,&seen_units);
+							ui->second.side()-1,&known_units,&seen_units,&stoned_units);
 				}
 				if(should_clear_stack) {
 					disp->invalidate_all();
@@ -2388,6 +2397,12 @@ size_t move_unit(game_display* disp,
 		// Fire sighted event here
 		for (sight_it = seen_units.begin();
 				sight_it != seen_units.end(); ++sight_it)
+		{
+			game_events::raise(sighted_str,*sight_it,steps.back());
+		}
+
+		for (sight_it = stoned_units.begin();
+				sight_it != stoned_units.end(); ++sight_it)
 		{
 			game_events::raise(sighted_str,*sight_it,steps.back());
 		}
@@ -2598,9 +2613,12 @@ void apply_shroud_changes(undo_list& undos, game_display* disp, const gamemap& m
 			// known_units.insert(*step);
 
 			// Clear the shroud, and collect new seen_units
+			//FIXME: we don't use a separate stoned_units because I don't see the point
+			// This avoid to change the sighted order (more risky here)
+			// but must be cleaned (the function or the call)
 			std::set<map_location> seen_units;
 			cleared_shroud |= clear_shroud_unit(map,units,*step,teams,team,
-				&known_units,&seen_units);
+				&known_units,&seen_units,&seen_units);
 
 			for (std::set<map_location>::iterator sight_it = seen_units.begin();
 				sight_it != seen_units.end(); ++sight_it)
