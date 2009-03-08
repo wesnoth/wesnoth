@@ -511,20 +511,6 @@ tstate_definition::tstate_definition(const config* cfg) :
 	canvas.set_cfg(*draw);
 }
 
-/*WIKI
- * @page = GUIToolkitWML
- * @order = 1_widget
- *
- * = Example =
- *
- * FIXME add a example here.
- *
- * = List of widgets =
- *
- * Below the list of available widgets.
- *
- */
-
 tbutton_definition::tbutton_definition(const config& cfg) :
 	tcontrol_definition(cfg)
 {
