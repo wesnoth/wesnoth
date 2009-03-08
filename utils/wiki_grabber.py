@@ -202,7 +202,10 @@ if __name__ == "__main__":
             result += "| " + re.sub(r'_', ' ', res[i][0])
             result += " ([[GUIWidgetDefinitionWML#" 
             result += res[i][0]
-            result += "|definition]])\n"
+            result += "|definition]]"
+            result += ", [[GUIWidgetInstanceWML#" 
+            result += res[i][0]
+            result += "|instantiation]])\n"
             result += "| " + format(res[i][1]) + "\n"
         result += "|}"
 
