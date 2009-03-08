@@ -66,8 +66,8 @@ private:
 struct tbuilder_image : public tbuilder_control
 {
 /*WIKI
- * @page = GUIToolkitWML
- * @order = 3_widget_image
+ * @page = GUIWidgetInstanceWML
+ * @order = 2_image
  *
  * == Image ==
  *
@@ -112,7 +112,7 @@ private:
 public:
 /*WIKI
  * @page = GUIToolkitWML
- * @order = 3_widget_horizontal_scrollbar
+ * @order = 2_horizontal_scrollbar
  *
  * == Horizontal scrollbar ==
  *
@@ -133,8 +133,8 @@ private:
 	tbuilder_label();
 public:
 /*WIKI
- * @page = GUIToolkitWML
- * @order = 3_widget_label
+ * @page = GUIWidgetInstanceWML
+ * @order = 2_label
  *
  * == Label ==
  *
@@ -197,8 +197,8 @@ private:
 struct tbuilder_minimap : public tbuilder_control
 {
 /*WIKI
- * @page = GUIToolkitWML
- * @order = 3_widget_minimap
+ * @page = GUIWidgetInstanceWML
+ * @order = 2_minimap
  *
  * == Minimap ==
  *
@@ -252,8 +252,8 @@ struct tbuilder_scroll_label : public tbuilder_control
 {
 public:
 /*WIKI
- * @page = GUIToolkitWML
- * @order = 3_widget_scroll_label
+ * @page = GUIWidgetInstanceWML
+ * @order = 2_scroll_label
  *
  * == Scroll label ==
  *
@@ -286,8 +286,8 @@ private:
 	tbuilder_spacer();
 public:
 /*WIKI
- * @page = GUIToolkitWML
- * @order = 3_widget_spacer
+ * @page = GUIWidgetInstanceWML
+ * @order = 2_spacer
  *
  * == Spacer ==
  *
@@ -325,8 +325,8 @@ private:
 
 public:
 /*WIKI
- * @page = GUIToolkitWML
- * @order = 3_widget_text_box
+ * @page = GUIWidgetInstanceWML
+ * @order = 2_text_box
  *
  * == Text box ==
  *
@@ -360,8 +360,8 @@ private:
 
 public:
 /*WIKI
- * @page = GUIToolkitWML
- * @order = 3_widget_password_box
+ * @page = GUIWidgetInstanceWML
+ * @order = 2_password_box
  *
  * == Password box ==
  *
@@ -393,7 +393,7 @@ private:
 public:
 /*WIKI
  * @page = GUIToolkitWML
- * @order = 3_widget_toggle_button
+ * @order = 2_toggle_button
  *
  * == Toggle button ==
  *
@@ -444,8 +444,8 @@ private:
 
 public:
 /*WIKI
- * @page = GUIToolkitWML
- * @order = 3_widget_vertical_scrollbar
+ * @page = GUIWidgetInstanceWML
+ * @order = 2_vertical_scrollbar
  *
  * == Vertical scrollbar ==
  *

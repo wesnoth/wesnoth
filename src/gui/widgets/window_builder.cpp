@@ -12,7 +12,6 @@
    See the COPYING file for more details.
 */
 
-
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "gui/widgets/window_builder_private.hpp"
@@ -239,6 +238,19 @@ int get_retval(const std::string& retval_id,
 
 } // namespace
 
+/*WIKI
+ * @page = GUIWidgetInstanceWML
+ * @order = 1
+ *
+ * THIS PAGE IS AUTOMATICALLY GENERATED, DO NOT MODIFY DIRECTLY !!!
+ *
+ * = Widget instance =
+ *
+ * Inside a grid (which is inside all container widgets) a widget is
+ * instantiated. With this instantiation some more variables of a widget can
+ * be tuned. This page will describe what can be tuned.
+ * 
+ */
 twindow* build(CVideo& video, const std::string& type)
 {
 	std::vector<twindow_builder::tresolution>::const_iterator
@@ -551,8 +563,8 @@ tbuilder_control::tbuilder_control(const config& cfg) :
 		utils::string_bool("use_tooltip_on_label_overflow", true))
 {
 /*WIKI
- * @page = GUIToolkitWML
- * @order = 3_widget
+ * @page = GUIWidgetInstanceWML
+ * @order = 1_widget
  *
  * = Widget =
  *
@@ -629,12 +641,12 @@ tbuilder_button::tbuilder_button(const config& cfg) :
 	retval_(lexical_cast_default<int>(cfg["return_value"]))
 {
 /*WIKI
- * @page = GUIToolkitWML
- * @order = 3_widget_button
+ * @page = GUIWidgetInstanceWML
+ * @order = 2_button
  *
  * == Button ==
  *
- * Definition of a button. When a button has a return value it sets the
+ * Instance of a button. When a button has a return value it sets the
  * retour value for the window. Normally this closes the window and returns
  * this value to the caller. The return value can either be defined by the
  * user or determined from the id of the button. The return value has a
@@ -727,12 +739,12 @@ tbuilder_listbox::tbuilder_listbox(const config& cfg) :
 	list_data()
 {
 /*WIKI
- * @page = GUIToolkitWML
- * @order = 3_widget_listbox
+ * @page = GUIWidgetInstanceWML
+ * @order = 2_listbox
  *
  * == Listbox ==
  *
- * Definition of a listbox.
+ * Instance of a listbox.
  *
  * List with the listbox specific variables:
  * @start_table = config
@@ -834,8 +846,8 @@ tbuilder_menubar::tbuilder_menubar(const config& cfg) :
 	cells_()
 {
 /*WIKI
- * @page = GUIToolkitWML
- * @order = 3_widget_menubar
+ * @page = GUIWidgetInstanceWML
+ * @order = 2_menubar
  *
  * == Menubar ==
  *
@@ -914,8 +926,8 @@ tbuilder_panel::tbuilder_panel(const config& cfg) :
 	grid(0)
 {
 /*WIKI
- * @page = GUIToolkitWML
- * @order = 3_widget_panel
+ * @page = GUIWidgetInstanceWML
+ * @order = 2_panel
  *
  * == Panel ==
  *
@@ -999,8 +1011,8 @@ tbuilder_slider::tbuilder_slider(const config& cfg) :
 	value_labels_()
 {
 /*WIKI
- * @page = GUIToolkitWML
- * @order = 3_widget_slider
+ * @page = GUIWidgetInstanceWML
+ * @order = 3_slider
  *
  * == Slider ==
  *
@@ -1117,8 +1129,8 @@ tbuilder_toggle_panel::tbuilder_toggle_panel(const config& cfg) :
 	retval_(lexical_cast_default<int>(cfg["return_value"]))
 {
 /*WIKI
- * @page = GUIToolkitWML
- * @order = 3_widget_toggle_panel
+ * @page = GUIWidgetInstanceWML
+ * @order = 2_toggle_panel
  *
  * == Toggle panel ==
  *
@@ -1266,6 +1278,16 @@ twidget* tbuilder_grid::build (tgrid* grid) const
 } // namespace gui2
 /*WIKI
  * @page = GUIToolkitWML
+ * @order = ZZZZZZ_footer
+ *
+ * [[Category: WML Reference]]
+ * [[Category: GUI WML Reference]]
+ * [[Category: Generated]]
+ *
+ */
+
+/*WIKI
+ * @page = GUIWidgetInstanceWML
  * @order = ZZZZZZ_footer
  *
  * [[Category: WML Reference]]
