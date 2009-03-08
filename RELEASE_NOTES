@@ -3,32 +3,25 @@ notes for the next release, it allows easy syncing with the release
 team, since you don't have to be around when the release takes
 place...
 
-Just dump whatever you want to have mentioned in the release notes here. Please
-take care that it is in a way that allows copy&paste to the release notes. That
-is making sure that spelling/grammar/whatever is usable and that you are using
- complete sentences, not just single words.
+Just dump whatever you want to have mentioned in the release notes
+here. Please take care that it is in a way that allows copy&paste to
+the release notes. That is making sure that spelling/grammar/whatever
+is usable and that you are using complete sentences, not just single
+words.
 
 The release team should empty this file after each release.
 
 ***
 
-This release is the second 1.6 release candidate, meaning that no further
-compatibility-breaking changes are expected. We invite all content-providers,
-Wesnoth-related external sites, and any other concerned parties to test compatibility 
-with this release. We also encourage players to playtest this release heavily.
-Now is the time to report all the bugs that are obvious to you but which we 
-may not have noticed.
+This release is the second 1.6 release candidate.  We invite all UMC
+authors to test this release for compatibility with their add-ons. We
+also encourage players to playtest this release heavily.  Now is the
+time to report all the bugs that are obvious to you but which we may
+not have noticed.
 
-***
-
-There are quite some changes on the GUI front and things should start to
-stabilise now. If you see bugs which should be fixed before 1.6 please report
-them in the bug tracker.
-
-The message dialog got overhauled with some new images.  These are placeholders.
-They will be polished prior to releasing 1.6.
-
-Users who want to play on the MP dev-server must upgrate to 1.6RC2.
-
-There was sometimes a bug with 1.6RC1 replay when moving near ambushed unit, specially with the AI. Fixed now, but a replay not working with 1.6RC1 will still not work with 1.6RC2. Savegames are OK, but if you started a scenario with RC1, the replay of this scenario may still have the same bug.
-***
+The previous release candidate contained a bug involving ambushed
+units which sometimes resulted in corrupted replays or in multiplayer
+games going out-of-sync.  As a result, we must require that players
+upgrade to 1.6RC2 in order to play on the 1.5 MP server.  Savegames
+and replays that worked with previous versions will continue to work
+with 1.6RC2, although old corrupt replays will remain corrupt.
