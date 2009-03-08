@@ -25,6 +25,16 @@
 
 namespace gui2 {
 
+/*WIKI
+ * @page = GUIWindowDefinitionWML
+ * @order = 2_campaign_selection
+ *
+ * == Campaign selection ==
+ * 
+ * This shows the dialog choose which campaign the user wants to play. This
+ * dialog is under construction and only used with --new-widgets.
+ */
+
 void tcampaign_selection::campaign_selected(twindow& window)
 {
 	tlistbox* list = dynamic_cast<tlistbox*>(
