@@ -927,9 +927,16 @@ void save_game(const game_state& gamestate)
 	}
 
 	scoped_ostream os(open_save_game(filename));
-	config_writer out(*os, preferences::compress_saves());
-	write_game(out, gamestate);
-	finish_save_game(out, gamestate, gamestate.label);
+	std::stringstream ss;
+	{
+		config_writer out(ss, preferences::compress_saves());
+		write_game(out, gamestate);
+		finish_save_game(out, gamestate, gamestate.label);
+	}
+	(*os) << ss.str();
+	if (!os->good()) {
+		throw game::save_game_failed(_("Could not write to file"));
+	}
 }
 
 namespace {

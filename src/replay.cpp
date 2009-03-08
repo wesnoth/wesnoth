@@ -26,6 +26,7 @@
 #include "game_end_exceptions.hpp"
 #include "game_preferences.hpp"
 #include "game_events.hpp"
+#include "gettext.hpp"
 #include "log.hpp"
 #include "map.hpp"
 #include "map_label.hpp"
@@ -212,13 +213,19 @@ void replay::save_game(const std::string& label, const config& snapshot,
 		filename += ".gz";
 	}
 
+	std::stringstream ss;
+	{
+		config_writer out(ss, preferences::compress_saves());
+		::write_game(out, saveInfo_);
+		finish_save_game(out, saveInfo_, saveInfo_.label);
+	}
 	scoped_ostream os(open_save_game(filename));
-	config_writer out(*os, preferences::compress_saves());
-	::write_game(out, saveInfo_);
-	finish_save_game(out, saveInfo_, saveInfo_.label);
-
+	(*os) << ss.str();
 	saveInfo_.replay_data = config();
 	saveInfo_.snapshot = config();
+	if (!os->good()) {
+		throw game::save_game_failed(_("Could not write to file"));
+	}
 }
 
 void replay::add_unit_checksum(const map_location& loc,config* const cfg)
