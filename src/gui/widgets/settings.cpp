@@ -228,8 +228,11 @@ const std::string& tgui_definition::read(const config& cfg)
  *     MP_method_selection           The dialog to select the kind of MP game
  *                                   to play. Official server, local etc.
  *     MP_server_list                List of the 'official' MP servers.
- *     MP_login                      XXX
- *     MP_cmd_wrapper                XXX
+ *     MP_login                      The dialog to provide a password for registered
+ *                                   usernames, request a password reminder or
+ *                                   choose a different username.
+ *     MP_cmd_wrapper                Perform various actions on the selected user
+ *                                   (e.g. whispering or kicking).
  *     MP_create_game                The dialog to select and create an MP game.
  *     Title_screen                  The title screen.
  *     Editor_new_map                Creates a new map in the editor.
