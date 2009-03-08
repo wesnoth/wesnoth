@@ -16,6 +16,7 @@
 #include "controller_base.hpp"
 #include "dialogs.hpp"
 #include "mouse_handler_base.hpp"
+#include "foreach.hpp"
 
 controller_base::controller_base(
 		int ticks, const config& game_config, CVideo& /*video*/) :
@@ -130,10 +131,14 @@ bool controller_base::handle_scroll(CKey& key, int mousex, int mousey, int mouse
 	bool scrolling = false;
 	bool mouse_in_window = (SDL_GetAppState() & SDL_APPMOUSEFOCUS)
         || utils::string_bool(preferences::get("scroll_when_mouse_outside"), true);
-	const int scroll_threshold = (preferences::mouse_scroll_enabled())
+	int scroll_threshold = (preferences::mouse_scroll_enabled())
 			? preferences::mouse_scroll_threshold()
 			: 0;
-
+	foreach (const theme::menu& m, get_display().get_theme().menus()) {
+		if (point_in_rect(mousex, mousey, m.get_location())) {
+			scroll_threshold = 0;
+		}
+	}
 	if ((key[SDLK_UP] && have_keyboard_focus())
 	|| (mousey < scroll_threshold && mouse_in_window)) {
 		get_display().scroll(0,-preferences::scroll_speed());
