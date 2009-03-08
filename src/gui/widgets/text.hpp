@@ -82,6 +82,8 @@ public:
 
 	void set_maximum_length(const size_t maximum_length);
 
+	size_t get_length() const { return text_.get_length(); }
+
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
 	void set_value(const std::string& text);
@@ -186,6 +188,9 @@ protected:
 
 	void set_maximum_height(const int height)
 		{ text_.set_maximum_height(height); }
+
+	void set_ellipse_mode(const PangoEllipsizeMode ellipse_mode)
+		{ text_.set_ellipse_mode(ellipse_mode); }
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
