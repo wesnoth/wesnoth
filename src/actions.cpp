@@ -977,6 +977,12 @@ attack::attack(game_display& gui, const gamemap& map,
 	int abs_n_attack_ = 0;
 	int abs_n_defend_ = 0;
 
+	bool update_att_fog = false;
+	bool update_def_fog = false;
+	bool update_minimap = false;
+	const int attacker_side = a_.get_unit().side();
+	const int defender_side = d_.get_unit().side();
+
 	static const std::string poison_string("poison");
 
 	LOG_NG << "Fight: (" << a_.loc_ << ") vs (" << d_.loc_ << ") ATT: " << a_stats_->weapon->name() << " " << a_stats_->damage << "-" << a_stats_->num_blows << "(" << a_stats_->chance_to_hit << "%) vs DEF: " << (d_stats_->weapon ? d_stats_->weapon->name() : "none") << " " << d_stats_->damage << "-" << d_stats_->num_blows << "(" << d_stats_->chance_to_hit << "%)" << (defender_strikes_first ? " defender first-strike" : "") << "\n";
@@ -1150,7 +1156,6 @@ attack::attack(game_display& gui, const gamemap& map,
 				game_events::entity_location death_loc(d_.iter_);
 				game_events::entity_location attacker_loc(a_.iter_);
 				std::string undead_variation = d_.get_unit().undead_variation();
-				const int defender_side = d_.get_unit().side();
 				fire_event("attack_end");
 				refresh_bc();
 
@@ -1221,12 +1226,9 @@ attack::attack(game_display& gui, const gamemap& map,
 				} else {
 					LOG_NG << "unit not reanimated" << std::endl;
 				}
-				if (update_display_){
-					recalculate_fog(map_,units_,teams_,defender_side-1);
-					gui_.invalidate_all();
-					gui_.recalculate_minimap();
-					gui_.draw();
-				}
+
+				update_def_fog = true;
+				update_minimap = true;
 				break;
 			} else if(hits) {
 				if (a_stats_->poisons &&
@@ -1237,6 +1239,7 @@ attack::attack(game_display& gui, const gamemap& map,
 
 				if(a_stats_->slows && !utils::string_bool(d_.get_unit().get_state("slowed"))) {
 					d_.get_unit().set_state("slowed","yes");
+					update_def_fog = true;
 					d_.damage_ = d_stats_->slow_damage;
 					LOG_NG << "defender slowed\n";
 				}
@@ -1245,6 +1248,7 @@ attack::attack(game_display& gui, const gamemap& map,
 				static const std::string stone_string("stone");
 				if (a_stats_->stones) {
 					d_.get_unit().set_state("stoned","yes");
+					update_def_fog = true;
 					a_.n_attacks_ = 0;
 					d_.n_attacks_ = 0;
 					DELAY_END_LEVEL(delayed_exception, game_events::fire(stone_string, d_.iter_->first, a_.iter_->first));
@@ -1421,7 +1425,6 @@ attack::attack(game_display& gui, const gamemap& map,
 
 				game_events::entity_location death_loc(a_.iter_);
 				game_events::entity_location defender_loc(d_.iter_);
-				const int attacker_side = a_.get_unit().side();
 				fire_event("attack_end");
 				refresh_bc();
 
@@ -1491,12 +1494,9 @@ attack::attack(game_display& gui, const gamemap& map,
 				} else {
 					LOG_NG<<"unit not reanimated"<<std::endl;
 				}
-				if (update_display_){
-					recalculate_fog(map_,units_,teams_,attacker_side-1);
-					gui_.invalidate_all();
-					gui_.recalculate_minimap();
-					gui_.draw();
-				}
+
+				update_att_fog = true;
+				update_minimap = true;
 				break;
 			} else if(hits) {
 				if (d_stats_->poisons &&
@@ -1507,6 +1507,7 @@ attack::attack(game_display& gui, const gamemap& map,
 
 				if(d_stats_->slows && !utils::string_bool(a_.get_unit().get_state("slowed"))) {
 					a_.get_unit().set_state("slowed","yes");
+					update_att_fog = true;
 					a_.damage_ = a_stats_->slow_damage;
 					LOG_NG << "attacker slowed\n";
 				}
@@ -1516,6 +1517,7 @@ attack::attack(game_display& gui, const gamemap& map,
 				static const std::string stone_string("stone");
 				if (d_stats_->stones) {
 					a_.get_unit().set_state("stoned","yes");
+					update_att_fog = true;
 					d_.n_attacks_ = 0;
 					a_.n_attacks_ = 0;
 
@@ -1539,6 +1541,26 @@ attack::attack(game_display& gui, const gamemap& map,
 			fire_event("attack_end");
 			refresh_bc();
 		}
+	}
+
+	// TODO: if we knew the viewing team, we could skip some of these display update
+	if(update_att_fog && teams_[attacker_side-1].uses_fog()) {
+		recalculate_fog(map_,units_,teams_,attacker_side-1);
+		if (update_display_) {
+			gui_.invalidate_all();
+			gui_.recalculate_minimap();
+		}
+	}
+	if(update_def_fog && teams_[defender_side-1].uses_fog()) {
+		recalculate_fog(map_,units_,teams_,defender_side-1);
+		if (update_display_) {
+			gui_.invalidate_all();
+			gui_.recalculate_minimap();
+		}
+	}
+
+	if(update_minimap && update_display_) {
+		gui_.recalculate_minimap();
 	}
 
 	if(a_.valid()) {
