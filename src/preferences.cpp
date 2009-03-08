@@ -22,6 +22,7 @@
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "filesystem.hpp"
+#include "game_preferences.hpp"
 #include "gui/widgets/settings.hpp"
 #include "hotkeys.hpp"
 #include "preferences.hpp"
@@ -29,6 +30,7 @@
 #include "video.hpp" // non_interactive()
 #include "serialization/parser.hpp"
 
+#include <sys/stat.h> // for setting the permissions of the preferences file
 
 namespace {
 
@@ -70,6 +72,26 @@ void write_preferences()
 	} catch(io_exception&) {
 		std::cerr << "error writing to preferences file '" << get_prefs_file() << "'\n";
 	}
+
+
+    #ifndef _WIN32
+
+	// Make the preferences file only user readable if it contains a password
+
+	// Is it really impossible to read the umask without setting it at the same time?
+	int mask = umask(0);
+	umask(mask);
+
+    if(chmod(get_prefs_file().c_str(),
+                // If we save the password set the preferences file only user readable,
+                // otherwise set it according to the umask
+                remember_password() ? S_IRUSR | S_IWUSR : 0666 - mask
+                ) == -1) {
+        std::cerr << "error setting permissions of preferences file '" << get_prefs_file() << "'\n";
+    }
+
+    #endif
+
 
 }
 
