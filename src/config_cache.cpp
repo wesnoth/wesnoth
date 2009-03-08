@@ -28,6 +28,7 @@
 #include "serialization/parser.hpp"
 
 #include <boost/bind.hpp>
+#include <boost/algorithm/string/replace.hpp>
 
 #define ERR_CACHE LOG_STREAM(err, cache)
 #define LOG_CACHE LOG_STREAM(info, cache)
@@ -191,7 +192,9 @@ namespace game_config {
 			const std::string& cache = get_cache_dir();
 			if(cache != "") {
 				sha1_hash sha(defines_string.str()); // use a hash for a shorter display of the defines
-				const std::string fname = cache + "/cache-v" + game_config::revision + "-" + sha.display();
+				const std::string fname = cache + "/cache-v" + 
+					boost::algorithm::replace_all_copy(game_config::revision, ":", "_") + 
+					"-" + sha.display();
 				const std::string fname_checksum = fname + ".checksum" + extension;
 
 				file_tree_checksum dir_checksum;
