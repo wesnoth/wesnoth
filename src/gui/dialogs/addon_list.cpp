@@ -34,7 +34,9 @@ namespace gui2 {
  * @order = 2_addon_list
  *
  * == Addon list ==
- *
+ * 
+ * This shows the dialog with the addons to install. This dialog is under
+ * construction and only used with --new-widgets.
  */
 
 twindow* taddon_list::build_window(CVideo& video)
