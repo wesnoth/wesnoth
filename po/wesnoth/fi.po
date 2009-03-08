@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-03-05 10:12+0100\n"
-"PO-Revision-Date: 2009-03-06 22:42+0200\n"
+"PO-Revision-Date: 2009-03-07 18:40+0200\n"
 "Last-Translator: Samu Voutilainen <samu.voutilainen@gmail.com>\n"
 "Language-Team: Finnish\n"
 "MIME-Version: 1.0\n"
@@ -35,7 +35,7 @@ msgstr "Vieritys hiiren keskipainikkeella"
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:70
 msgid "Keep scrolling when mouse leaves window"
-msgstr ""
+msgstr "Jatka vierittämistä, jos hiiri poistuu ikkunasta"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:77
@@ -2009,15 +2009,16 @@ msgstr ""
 
 #. [topic]: id=traits_dim
 #: data/core/help.cfg:440
-#, fuzzy
 msgid "Dim"
-msgstr "hämärtää"
+msgstr "hidasälyinen"
 
 #. [topic]: id=traits_dim
 #: data/core/help.cfg:441
 msgid ""
 "Units with trait Dim suffer a 20% increase in experience required to advance."
 msgstr ""
+"Hidasälyiset yksiköt oppivat huonommin kuin muut, kasvattaen ylenemiseen "
+"tarvittavien kokemuspisteiden määrää 20 prosentilla."
 
 #. [topic]: id=traits_dim
 #: data/core/help.cfg:443
@@ -2027,20 +2028,23 @@ msgid ""
 "Dim is a trait all too common in goblins and other lesser species. There are "
 "reasons these species are lesser, and this is one of them."
 msgstr ""
+"\n"
+"\n"
+"Hiisillä ja muilla vähäisempiä roduilla on aivan liian usein piirre "
+"”hidasälyinen”. On syitä, miksi nämä rodut ovat ”vähäisempiä”, ja tämä on "
+"yksi niistä syistä."
 
 #. [topic]: id=traits_slow
 #: data/core/help.cfg:448
-#, fuzzy
 msgid "Slow"
-msgstr "hidastettu"
+msgstr "hidas"
 
 #. [topic]: id=traits_slow
 #: data/core/help.cfg:449
-#, fuzzy
 msgid "Slow units have -1 movement but 5% more hitpoints."
 msgstr ""
-"Nopeilla yksiköillä on 1 liikepiste enemmän, mutta 5% vähemmän elämäpisteitä "
-"kuin muilla."
+"Hitailla yksiköillä on yksi liikkumispiste vähemmän, mutta 5% enemmän "
+"osumapisteitä."
 
 #. [topic]: id=traits_slow
 #: data/core/help.cfg:451
@@ -2051,10 +2055,13 @@ msgid ""
 "a movement penalty but are compensated for it with a slight increase in "
 "endurance."
 msgstr ""
+"\n"
+"\n"
+"Paksukroppaisia ja kömpelöitä, hitaita vähäisempien lajien edustajia, joiden "
+"on vaikea liikkua, mutta kestävät jonkin verran pahemmin vahinkoa."
 
 #. [topic]: id=traits_weak
 #: data/core/help.cfg:456
-#, fuzzy
 msgid "Weak"
 msgstr "heikko"
 
@@ -2062,6 +2069,8 @@ msgstr "heikko"
 #: data/core/help.cfg:457
 msgid "Units with trait Weak get a -1 increment in hitpoints and melee damage."
 msgstr ""
+"Yksiköt, jotka ovat heikkoja, ottavat yhden pisteen vähennyksen "
+"osumapisteisiin ja lähitaisteluvahinkoon."
 
 #. [topic]: id=..terrains
 #: data/core/help.cfg:465

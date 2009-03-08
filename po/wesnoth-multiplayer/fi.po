@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-03-01 21:23+0100\n"
-"PO-Revision-Date: 2008-06-01 22:46+0200\n"
-"Last-Translator: Samu Voutilainen <ec5983@kolumbus.fi>\n"
+"PO-Revision-Date: 2009-03-07 21:54+0200\n"
+"Last-Translator: Mikko Nikkilä <miccoh@gmail.com>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -89,6 +89,9 @@ msgid ""
 "Basilisk. The petrified forms of his victims remain as monuments to his "
 "savage power."
 msgstr ""
+"Kerran nämä luolat olivat legendaarisen vanhemman basiliskin, Chak’kso "
+"Ney’yksin pesä. Hänen kivettyneet uhrinsa säilyvät muistomonumentteina hänen "
+"raa’asta voimastaan."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:21
@@ -349,7 +352,6 @@ msgstr "Rah Ihn Mar"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:140
-#, fuzzy
 msgid ""
 "Rah Ihn Mar, Champion of the Burning Hills, made his way to the Ruaskkolin "
 "Lake region in pursuit of the Elvish Hero Terowydlithrol, known among Elves "
@@ -361,15 +363,16 @@ msgid ""
 "Terowydlithrol, who had been seen entering the region but a day ago. Burning "
 "for vengeance, Rah Ihn Mar began the hunt....."
 msgstr ""
-"Rah Ihn Mar, Palavien kukkuloiden mestari, selvisi Raskkolinin järviseudulle "
-"jahdatessaan haltiasankari Terowydlithrolia, tunnettu haltioiden keskuudessa "
-"“Lohikäärmekirouksena“. On sanottu, että Terowydlithrol oli tappanut Tulen "
-"lohikäärmeen, joka uhkasi haltiakylää, ja aloitti “vastahyökkäyksen“, jossa "
-"37 draakkia, jotka olivat leiriytyneet läheiseen kuiluun ja uskottiin olevan "
-"yhteistyössä lohikäärmeen kanssa, teurastettiin. Tietäen, että nämä draakit "
-"olivat syyttömiä, Rah Ihn Mar tuli Ruaskkolinin järvelle saalistaakseen ja "
-"surmatakseen Terowydlithrolin, joka oli nähty saapuvan alueelle vain päivä "
-"sitten. Palaen kostosta, Rah Ihn Mar aloitti saalistuksen..."
+"Rah Ihn Mar, Palavien kukkuloiden mestari, pääsi Ruaskkolinin järviseudulle "
+"jahdatessaan haltiasankari Terowydlithrolia, joka oli haltioiden kesken "
+"tunnettu ”Lohikäärmeenturmana”. Oli sanottu, että Terowydlithrol oli "
+"surmannut tulilohikäärmeen, joka uhkasi haltiakylää, ja hän aloitti "
+"”vastahyökkäyksen”, jossa teurastettiin 37 draakkia, jotka olivat "
+"leiriytyneet läheiseen kuiluun ja joiden uskottiin olevan yhteistyössä "
+"lohikäärmeen kanssa. Tietäen, että nämä draakit olivat viattomia, Rah Ihn "
+"Mar tuli Ruaskkolinin järvelle saalistaakseen ja surmatakseen "
+"Terowydlithrolin, jonka oli nähty saapuvan alueelle vain päivää aikaisemmin. "
+"Kostonhimosta palaen Rah Ihn Mar aloitti saalistuksensa..."
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:148
@@ -562,6 +565,8 @@ msgid ""
 "Cynsaun Province was named for Warrior-Queen Cynsaun the First, who drove "
 "the necromancers from these lands in 961 YW."
 msgstr ""
+"Cynsaun maakunta oli nimetty taistelijakuningattaren Cynsaun I:n mukaan. "
+"Kuningatar ajoi pimeyden herrat tiehensä näiltä mailta 961 WV."
 
 #. [multiplayer]: id=multiplayer_2p_Dark_Forecast
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:5
@@ -570,7 +575,6 @@ msgstr "2p - Pimeä Ennustus (Selviytyminen)"
 
 #. [multiplayer]: id=multiplayer_2p_Dark_Forecast
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:8
-#, fuzzy
 msgid ""
 "Dark Forecast is a survival scenario for solitaire or two-player team-based "
 "play against randomly AI spawned units. Victory is achieved by surviving all "
@@ -581,8 +585,10 @@ msgid ""
 msgstr ""
 "Pimeä ennustus on selviytymisskenaario yhdelle tai kahdelle pelaajalle "
 "tiimissä pelaten satunnaisesti ilmestyviä tietokoneyksiköitä vastaan. Voitto "
-"on saavutettavissa selviytymällä kaikista vihollisaalloista. Pelin edetessä, "
-"maasto muuttuu satunnaisten sääefektien mukaan."
+"saavutetaan selviytymällä kaikista vihollisaalloista. Pelin edetessä maasto "
+"muuttuu satunnaisten sääefektien mukaan.\n"
+"\n"
+"Huomaa: Sinun on käytettävä kartan asetuksia, jotta skenaario toimisi oikein."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:473
@@ -632,16 +638,14 @@ msgstr "Selkeä sää"
 #. [side]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1204
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1235
-#, fuzzy
 msgid "teamname^Revolt"
-msgstr "Länsi"
+msgstr "Kapinalliset"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1254
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1270
-#, fuzzy
 msgid "teamname^Human"
-msgstr "Itä"
+msgstr "Ihmiset"
 
 #. [then]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1423
@@ -751,13 +755,12 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1535
-#, fuzzy
 msgid ""
 "Ugh! How can this be? Defeated by mere barbarians! My gods have forsaken "
 "me..."
 msgstr ""
-"Ugh! Voiko tämä olla? Häviö pelkille barbaareille! Jumalani ovat unohtaneet "
-"minut..."
+"Ugh! Kuinka tämä näin voi olla? Häviö pelkille barbaareille! Jumalani ovat "
+"unohtaneet minut..."
 
 #. [message]: speaker=second_unit
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1549
@@ -795,6 +798,13 @@ msgid ""
 "the Den of Onis, hoping to unlock the strange and mysterious magics of its "
 "creators."
 msgstr ""
+"Tämä luolista kaikkein epätavallisin tunnettiin aikoinaan Nauravien "
+"paholaisten kammiona ja se oli Kah Ruuk Onin sisempi linnoitus. Kah Ruuk oli "
+"ilkeä ja ovela ihmisiä syövien paholaisten rotu, joka terrorisoi Itäisten "
+"maiden kansoja lähes neljän sadan vuoden ajan ennen kuin katosi Irdyasta "
+"jättämättä jälkeäkään. Siitä lähtien monta ryhmää on kilpaillut Onisin "
+"luolan hallinnasta, toivoen vapauttavansa sen luojien oudon ja salaperäisen "
+"taikuuden."
 
 #. [multiplayer]: id=multiplayer_Fallenstar_Lake
 #: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:5
@@ -892,7 +902,7 @@ msgstr ""
 #. [multiplayer]: id=multiplayer_Howling_Ghost_Badlands
 #: data/multiplayer/scenarios/2p_Howling_Ghost_Badlands.cfg:5
 msgid "2p - Howling Ghost Badlands"
-msgstr ""
+msgstr "2p - Ulisevan aaveen maa"
 
 #. [multiplayer]: id=multiplayer_Howling_Ghost_Badlands
 #: data/multiplayer/scenarios/2p_Howling_Ghost_Badlands.cfg:6
@@ -900,6 +910,8 @@ msgid ""
 "Little remains of this once wealthy mining colony, now a haven for raiders "
 "and thieves."
 msgstr ""
+"Tämä aiemmin vauras kaivossiirtokunta tarjoaa nykyään suojapaikan "
+"ryöstäjille ja varkaille."
 
 #. [multiplayer]: id=multiplayer_Sablestone_Delta
 #: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:5
@@ -941,9 +953,8 @@ msgstr "Tämä on kivestä tehty veistos."
 
 #. [multiplayer]: id=multiplayer_Sullas_Ruins
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:39
-#, fuzzy
 msgid "2p - Sulla's Ruins"
-msgstr "2p - Sullaksen rauniot"
+msgstr "2p - Sullan rauniot"
 
 #. [multiplayer]: id=multiplayer_Sullas_Ruins
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:40
@@ -1026,6 +1037,11 @@ msgid ""
 "for hundreds of years, repelling great beasts from their western borders, "
 "and Carorathian Imperialists from their eastern borders."
 msgstr ""
+"Vapaamaat, joita kaukoidässä asuvat kansat kutsuvat myös Kuninkaattomaksi "
+"maaksi, sijaitsee Villimaiden ja Carorathin kuningaskunnan välissä erottaen "
+"äärimmäisen lain ja raakuuden maat toisistaan. Vapaamaiden kansat ovat "
+"taistelleet satoja vuosia maittensa valloitusyrityksiä vastaan, torjuen "
+"länsirajoillaan suuria petoja ja Carorathian imperialisteja itärajoillaan."
 
 #. [multiplayer]: id=multiplayer_Weldyn_Channel
 #: data/multiplayer/scenarios/2p_Weldyn_Channel.cfg:5
@@ -1038,6 +1054,8 @@ msgid ""
 "This vital supply route has played a key role in many of Wesnoth's greatest "
 "battles."
 msgstr ""
+"Tämä elintärkeä täydennysreitti on ollut avainasemassa monissa Wesnothin "
+"suurimmista taisteluista."
 
 #. [multiplayer]: id=multiplayer_Alirok_Marsh
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:5
@@ -1357,12 +1375,13 @@ msgstr ""
 #. [multiplayer]: id=multiplayer_4p_Underworld
 #: data/multiplayer/scenarios/4p_Underworld.cfg:5
 msgid "4p - Underworld"
-msgstr ""
+msgstr "4p - Alamaailma"
 
 #. [multiplayer]: id=multiplayer_4p_Underworld
 #: data/multiplayer/scenarios/4p_Underworld.cfg:6
 msgid "A fast-paced 2 vs. 2 map set deep below the surface."
 msgstr ""
+"Nopeatempoinen 2 vastaan 2 -kartta, joka sijoittuu syvälle pinnan alle."
 
 #. [multiplayer]: id=multiplayer_Xanthe_Chaos
 #: data/multiplayer/scenarios/4p_Xanthe_Chaos.cfg:7
@@ -1521,7 +1540,7 @@ msgstr "Selviydy kaikista vihollisten hyökkäyksistä."
 #. [multiplayer]: id=multiplayer_6p_Team_Survival
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:350
 msgid "Death of your team leaders."
-msgstr "Päällikkösi kuolema."
+msgstr "Joukkueesi johtajien kuolema."
 
 #. [multiplayer]: id=multiplayer_6p_Team_Survival
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:372

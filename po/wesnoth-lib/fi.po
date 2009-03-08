@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-03-05 10:12+0100\n"
-"PO-Revision-Date: 2008-05-31 21:51+0200\n"
-"Last-Translator: Samu Voutilainen <ec5983@kolumbus.fi>\n"
+"PO-Revision-Date: 2009-03-07 20:44+0200\n"
+"Last-Translator: Samu Voutilainen <samu.voutilainen@gmail.com>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -256,7 +256,7 @@ msgstr "suota"
 #. [terrain]: id=lit
 #: data/core/terrain.cfg:835
 msgid "Lit"
-msgstr ""
+msgstr "valaistu"
 
 #. [terrain]: id=cave
 #: data/core/terrain.cfg:845
@@ -376,17 +376,17 @@ msgstr "tyhjiö"
 #. [terrain]: id=flat
 #: data/core/terrain.cfg:1294
 msgid "Flat"
-msgstr ""
+msgstr "tasamaa"
 
 #. [terrain]: id=frozen
 #: data/core/terrain.cfg:1301
 msgid "Frozen"
-msgstr ""
+msgstr "jäätynyt"
 
 #. [terrain]: id=unwalkable
 #: data/core/terrain.cfg:1315
 msgid "Unwalkable"
-msgstr ""
+msgstr "ylitsepääsemätön"
 
 #. [label]
 #. [column]
@@ -401,13 +401,13 @@ msgstr "Jatka liikettä"
 #. [label]
 #: data/gui/default/window/addon_connect.cfg:51
 msgid "You will now connect to a server to download add-ons."
-msgstr ""
+msgstr "Yhdistät parhaillaan palvelimeen ladataksesi lisäosia."
 
 #. [label]
 #: data/gui/default/window/addon_connect.cfg:81
 #: data/gui/default/window/mp_connect.cfg:80
 msgid "Server:"
-msgstr ""
+msgstr "Palvelin:"
 
 #. [button]
 #: data/gui/default/window/addon_connect.cfg:135
@@ -429,7 +429,7 @@ msgstr "Poista"
 #: data/gui/default/window/mp_connect.cfg:175
 #: data/gui/default/window/mp_connect.cfg:176
 msgid "Connect"
-msgstr ""
+msgstr "Yhdistä"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
@@ -532,12 +532,12 @@ msgstr "Korkeus:"
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:147
 msgid "Expand / shrink direction"
-msgstr ""
+msgstr "Laajenna / supista suuntaa"
 
 #. [toggle_button]: id=copy_edge_terrain
 #: data/gui/default/window/editor_resize_map.cfg:242
 msgid "Copy edge terrain"
-msgstr ""
+msgstr "Kopioi reunusmaasto"
 
 #. [button]: id=ok
 #: data/gui/default/window/editor_resize_map.cfg:264
@@ -556,7 +556,7 @@ msgstr "Pikanäppäinten asetukset"
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:46
 msgid "Time of day lighting preset"
-msgstr ""
+msgstr "Vuorokaudenajan esiasetus"
 
 #. [button]: id=next_tod
 #: data/gui/default/window/editor_settings.cfg:75
@@ -568,12 +568,12 @@ msgstr "Seuraava yksikkö"
 #. [toggle_button]: id=custom_tod_toggle
 #: data/gui/default/window/editor_settings.cfg:83
 msgid "Custom lighting setting"
-msgstr ""
+msgstr "Muokattu valaistusasetus"
 
 #. [toggle_button]: id=custom_tod_auto_refresh
 #: data/gui/default/window/editor_settings.cfg:93
 msgid "Auto-update map view"
-msgstr ""
+msgstr "Päivitä automaattisesti karttanäkymää"
 
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:120
@@ -590,12 +590,12 @@ msgstr "Toistonopeus:"
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:172
 msgid "Blue:"
-msgstr ""
+msgstr "Sininen:"
 
 #. [toggle_button]: id=use_mdi
 #: data/gui/default/window/editor_settings.cfg:208
 msgid "Allow more than one map to be open at the same time (MDI)"
-msgstr ""
+msgstr "Salli useampi kuin vain yksi kartta olla auki samaan aikaan (MDI-tila)"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
@@ -620,12 +620,12 @@ msgstr "Hyväksy"
 #: data/gui/default/window/language_selection.cfg:31
 #: data/gui/default/window/title_screen.cfg:83
 msgid "Language"
-msgstr ""
+msgstr "Kieli"
 
 #. [label]
 #: data/gui/default/window/language_selection.cfg:50
 msgid "Choose your preferred language:"
-msgstr ""
+msgstr "Valitse haluamasi kieli"
 
 #. [button]: id=ok
 #: data/gui/default/window/language_selection.cfg:119
@@ -647,7 +647,7 @@ msgstr ""
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:61
 msgid "Message:"
-msgstr ""
+msgstr "Viesti: "
 
 #. [button]: id=ok
 #: data/gui/default/window/mp_cmd_wrapper.cfg:93
@@ -690,7 +690,7 @@ msgstr ""
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:263
 msgid "Reason:"
-msgstr ""
+msgstr "Syy: "
 
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:315
@@ -707,18 +707,18 @@ msgstr "Tilannetaulu"
 #. [button]: id=kick
 #: data/gui/default/window/mp_cmd_wrapper.cfg:381
 msgid "Kick"
-msgstr ""
+msgstr "Potkaise"
 
 #. [button]: id=ban
 #: data/gui/default/window/mp_cmd_wrapper.cfg:396
 msgid "Ban"
-msgstr ""
+msgstr "Estä"
 
 #. [label]
 #: data/gui/default/window/mp_connect.cfg:50
 #: data/gui/default/window/mp_server_list.cfg:51
 msgid "You will now connect to the multiplayer server."
-msgstr ""
+msgstr "Yhdistät parhaillaan moninpelipalvelimeen."
 
 #. [button]: id=list
 #: data/gui/default/window/mp_connect.cfg:148
@@ -737,7 +737,7 @@ msgstr "Tallenna peli"
 #: data/gui/default/window/mp_create_game.cfg:62
 #: data/gui/default/window/mp_create_game.cfg:77
 msgid "Name of game:"
-msgstr ""
+msgstr "Pelin nimi:"
 
 #. [label]: id=map_players
 #: data/gui/default/window/mp_create_game.cfg:140
@@ -748,12 +748,12 @@ msgstr "Pelaajia:"
 #. [label]: id=map_size
 #: data/gui/default/window/mp_create_game.cfg:159
 msgid "Map size: "
-msgstr ""
+msgstr "Kartan koko:"
 
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:177
 msgid "Era:"
-msgstr ""
+msgstr "Aikakausi:"
 
 #. [button]: id=era
 #: data/gui/default/window/mp_create_game.cfg:196
@@ -764,17 +764,17 @@ msgstr "Nollaa zoomaus"
 #. [button]: id=password
 #: data/gui/default/window/mp_create_game.cfg:218
 msgid "Set Password"
-msgstr ""
+msgstr "Aseta salasana"
 
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:246
 msgid "Map to play:"
-msgstr ""
+msgstr "Pelattava kartta:"
 
 #. [toggle_button]: id=use_map_settings
 #: data/gui/default/window/mp_create_game.cfg:314
 msgid "Use map settings"
-msgstr ""
+msgstr "Käytä kartan asetuksia"
 
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:332
@@ -785,7 +785,7 @@ msgstr "Mäkien määrä:"
 #. [slider]: id=turn_count
 #: data/gui/default/window/mp_create_game.cfg:355
 msgid "Unlimited"
-msgstr ""
+msgstr "Rajoittamaton"
 
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:373
@@ -796,7 +796,7 @@ msgstr "kylä"
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:413
 msgid "Experience modifier"
-msgstr ""
+msgstr "Kokemusmuuttuja"
 
 #. [toggle_button]: id=fog
 #: data/gui/default/window/mp_create_game.cfg:453
@@ -806,7 +806,7 @@ msgstr ""
 #. [toggle_button]: id=random_start_time
 #: data/gui/default/window/mp_create_game.cfg:494
 msgid "Random start time"
-msgstr ""
+msgstr "Satunnainen aloitusaika"
 
 #. [button]: id=ok
 #: data/gui/default/window/mp_create_game.cfg:536
@@ -817,7 +817,7 @@ msgstr "Luo uusi kartta"
 #. [window]: id=mp_login
 #: data/gui/default/window/mp_login.cfg:8
 msgid "Multiplayer server login dialog"
-msgstr ""
+msgstr "Moninpelipalvelimen sisäänkirjautumisikkuna"
 
 #. [label]
 #: data/gui/default/window/mp_login.cfg:31
@@ -833,19 +833,19 @@ msgstr ""
 #. [label]
 #: data/gui/default/window/mp_login.cfg:134
 msgid "Password:"
-msgstr ""
+msgstr "Salasana:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=remember_password
 #: data/gui/default/window/mp_login.cfg:190
 #: src/game_preferences_display.cpp:163
 msgid "Save password to preferences (clear text)"
-msgstr ""
+msgstr "Tallenna salasana asetuksiin (tekstimuodossa)"
 
 #. [button]: id=password_reminder
 #: data/gui/default/window/mp_login.cfg:248
 msgid "Password Reminder"
-msgstr ""
+msgstr "Salasanamuistutus"
 
 #. [label]
 #. [grid]
@@ -865,31 +865,38 @@ msgid ""
 "\n"
 "The Battle for Wesnoth forum can be found at http://www.wesnoth.org/forum/"
 msgstr ""
+"Voit kirjautua sisään viralliselle moninpelipalvelimelle käyttäen Wesnothin "
+"foorumille tekemääsi tunnusta ja sen salasanaa.\n"
+"Huomaa, ettei rekisteröinti ole pakollista palvelimelle liittymistä varten: "
+"sinun täytyy antaa salasana vain, jos haluat käyttää rekisteröityä "
+"käyttäjätunnusta.\n"
+"\n"
+"Wesnothin foorumin löytää osoitteesta http://www.wesnoth.org/forum/"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:140
 msgid "Join Official Server"
-msgstr ""
+msgstr "Liity viralliselle palvelimelle"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:141
 msgid "Log on to the official Wesnoth multiplayer server"
-msgstr ""
+msgstr "Kirjaudu sisään Wesnothin viralliselle moninpelipalvelimelle"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:152
 msgid "Join a different server"
-msgstr ""
+msgstr "Liity toiselle palvelimelle"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:162
 msgid "Host Networked Game"
-msgstr ""
+msgstr "Tee oma verkkopeli"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:163
 msgid "Host a game using dedicated server 'wesnothd'"
-msgstr ""
+msgstr "Tee peli käyttäen dedikoitua palvelinta, wesnothd:tä."
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:173
@@ -900,7 +907,7 @@ msgstr "Lataa peli"
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:174
 msgid "Play a multiplayer game with the AI or humans sharing the same machine"
-msgstr ""
+msgstr "Pelaa moninpeli tekoälyn tai ihmisten kanssa samalla tietokoneella"
 
 #. [label]: id=name
 #: data/gui/default/window/mp_server_list.cfg:86
@@ -911,7 +918,7 @@ msgstr "Nimi:"
 #. [label]: id=address
 #: data/gui/default/window/mp_server_list.cfg:102
 msgid "Address"
-msgstr ""
+msgstr "Osoite"
 
 #. [button]: id=ok
 #: data/gui/default/window/mp_server_list.cfg:202
@@ -928,7 +935,7 @@ msgstr "Näytä vuoron vaihtuminen"
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:78
 msgid "Campaign"
-msgstr ""
+msgstr "Kampanja"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:80
@@ -939,7 +946,7 @@ msgstr "tie"
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:81
 msgid "Add-ons"
-msgstr ""
+msgstr "Lisäosat"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:82
@@ -957,7 +964,7 @@ msgstr "Asetukset"
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:85
 msgid "Credits"
-msgstr ""
+msgstr "Tekijät"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
@@ -1060,7 +1067,7 @@ msgstr "Ikonisoi aulan lista"
 
 #: src/game_preferences_display.cpp:164
 msgid "Set path to wesnothd"
-msgstr ""
+msgstr "Aseta ”wesnothd”:n polku"
 
 #: src/game_preferences_display.cpp:165
 msgid "Friends List"
@@ -1274,6 +1281,7 @@ msgstr "Näytä ikonit pelaajien nimien edessä aulassa."
 #: src/game_preferences_display.cpp:347
 msgid "Uncheck to delete the saved password (on exit)."
 msgstr ""
+"Poista valinta poistaaksesi tallennetun salasanasi (sulkeassasi Wesnothin)"
 
 #: src/game_preferences_display.cpp:350
 msgid "Do not show messages about players joining the multiplayer lobby"
@@ -1289,7 +1297,7 @@ msgstr "Näytä viestejä kaikkien pelaajien aulaan liittymistä koskien."
 
 #: src/game_preferences_display.cpp:356
 msgid "Find and set path to MP server to host LAN games."
-msgstr ""
+msgstr "Etsi ja aseta polku moninpelipalvelimeen pitääksesi verkkopelejä. "
 
 #: src/game_preferences_display.cpp:357
 msgid "View and edit your friends and ignores list"

@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-units-fi\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-03-01 21:23+0100\n"
-"PO-Revision-Date: 2008-07-15 03:08+0200\n"
+"PO-Revision-Date: 2009-03-07 23:54+0200\n"
 "Last-Translator: Mikko Nikkilä <miccoh@gmail.com>\n"
 "Language-Team: Finnish <kde-i18n-fi-discussion@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -53,9 +53,8 @@ msgstr "torahampaat"
 
 #. [unit_type]: id=Dread Bat, race=bats
 #: data/core/units/bats/Bat_Dread.cfg:4
-#, fuzzy
 msgid "Dread Bat"
-msgstr "Vampyyrilepakko"
+msgstr "Kauhulepakko"
 
 #. [unit_type]: id=Dread Bat, race=bats
 #: data/core/units/bats/Bat_Dread.cfg:25
@@ -65,6 +64,10 @@ msgid ""
 "began the battle. Bloated with blood they have grown to a huge size and can "
 "feast on bigger and tougher victims."
 msgstr ""
+"Kauhulepakot ovat nopeita ja voivat imeä uhriensa verta parantuen samalla "
+"itse, jopa vahvemmiksi kuin he olivat taistelun alussa. Verestä "
+"pullistuineina ne ovat valtavan kokoisia ja voivat herkutella entistäkin "
+"suuremmilla ja vahvemmilla uhreilla."
 
 #. [unit_type]: id=Vampire Bat, race=bats
 #: data/core/units/bats/Bat_Vampire.cfg:4
@@ -115,15 +118,14 @@ msgstr "Merirosvolaiva"
 
 #. [unit_type]: id=Pirate Galleon, race=mechanical
 #: data/core/units/boats/Pirate_Galleon.cfg:18
-#, fuzzy
 msgid ""
 "Pirate galleons are to transport ships what wolves are to sheep. The pirates "
 "who crew them are more than happy to help relieve other ships of their "
 "weighty cargo."
 msgstr ""
-"Merirosvolaivat ovat kuljetuslaivoille mitä sudet ovat lampaille. Piraatit "
-"ovat enemmän kuin iloisia saadessaan auttaa muita laivoja niiden painavan "
-"lastin kanssa. "
+"Merirosvolaivat ovat kuljetuslaivoille mitä sudet ovat lampaille. Niillä "
+"seilaavat piraatit ovat enemmän kuin iloisia saadessaan auttaa muita laivoja "
+"niiden painavan lastin kanssa."
 
 #. [attack]: type=pierce
 #: data/core/units/boats/Transport_Galleon.cfg:22
@@ -632,7 +634,6 @@ msgstr "Lohikäärmekaartilainen"
 
 #. [unit_type]: id=Dwarvish Dragonguard, race=dwarf
 #: data/core/units/dwarves/Dragonguard.cfg:21
-#, fuzzy
 msgid ""
 "It is not clear why the Dragonguards are called what they are, a name given "
 "by their dwarven brethren. Some speculate that the name comes from their "
@@ -643,13 +644,13 @@ msgid ""
 "Dwarven citadels are both renowned and feared; weapons that have broken the "
 "mightiest of warriors in a single blow."
 msgstr ""
-"Ei ole selvää, miksi kääpiöt kutsuvat lohikäärmekaartia tällä nimellä. "
-"Jotkut arvelevat, että nimi tulee heidän aseistaan, erikoisista sauvoista "
-"jotka sylkevät kuoloa ja tulta. Toiset arvelevat, että tälläinen ase olisi "
-"uhka jopa todelliselle lohikäärmelle, jos sellainen olento nähtäisiin "
-"tunnetussa maailmassa. Oli miten oli, näistä aseista suurten "
-"kääpiölinnoitusten vartijat tunnetaan, ja heitä pelätään. Tällaiset aseet "
-"ovat kaataneet mahtavimpiakin sotureita yhdellä iskulla."
+"Ei ole selvää, miksi kääpiöt kutsuvat lohikäärmekaartia juuri tällä nimellä. "
+"Jotkut arvelevat, että nimi tulee heidän asevalinnastaan, niistä erikoisista "
+"sauvoista, jotka sylkevät tulta ja kuolemaa. Toiset arvelevat, että "
+"tälläinen ase olisi uhka jopa oikealle lohikäärmelle, jos sellainen olento "
+"nähtäisiin tunnetussa maailmassa. Oli miten oli, näiden aseiden tähden "
+"suurten kääpiölinnoitusten vartijat ovat tunnettuja ja pelättyjä. Tällaiset "
+"aseet ovat nimittäin kaataneet mahtavimpiakin sotureita yhdellä iskulla."
 
 #. [attack]: type=blade
 #: data/core/units/orcs/Archer.cfg:71 data/core/units/orcs/Assassin.cfg:26
@@ -792,9 +793,8 @@ msgstr "riimuvasara"
 
 #. [attack]: type=fire
 #: data/core/units/dwarves/Runemaster.cfg:34
-#, fuzzy
 msgid "lightning bolt"
-msgstr "salama"
+msgstr "salamanisku"
 
 #. [unit_type]: id=Dwarvish Sentinel, race=dwarf
 #: data/core/units/dwarves/Sentinel.cfg:4
@@ -857,7 +857,6 @@ msgstr "Ukkoskääpiö"
 
 #. [unit_type]: id=Dwarvish Thunderer, race=dwarf
 #: data/core/units/dwarves/Thunderer.cfg:20
-#, fuzzy
 msgid ""
 "When the men of Wesnoth first encountered the dwarves, they were mystified "
 "by the power of the Dwarvish Thunderers, who were able to hurl death from "
@@ -866,10 +865,10 @@ msgid ""
 "made more so by the secrecy which dwarves wrap about their workings."
 msgstr ""
 "Kun Wesnothin joukot ensi kerran kohtasivat kääpiöt, heille tuotti suurta "
-"ihmetystä ukkoskääpiöiden voima, sille nämä sylkivät tulta kaukaa erikoisten "
-"sauvojensa avulla. Korviahuumaava melu, joka näistä ukkostikuista lähtee, on "
-"kauheaa kuunneltavaa, ja sitä pahentaa salamyhkäisyys, joka ympäröi "
-"kääpiöiden töitä."
+"ihmetystä ukkoskääpiöiden voima, sille nämä sylkivät kuolemaa kaukaa "
+"taisteluun tuomiensa erikoisten sauvojen avulla. Näistä ukkostikuista "
+"lähtevä korviahuumaava melu on kauheaa kuunneltavaa ja sitä pahentaa "
+"salamyhkäisyys, joka ympäröi kääpiöiden töitä."
 
 #. [attack]: type=pierce
 #: data/core/units/dwarves/Thunderer.cfg:119
@@ -884,7 +883,6 @@ msgstr "Ukkosvartija"
 
 #. [unit_type]: id=Dwarvish Thunderguard, race=dwarf
 #: data/core/units/dwarves/Thunderguard.cfg:22
-#, fuzzy
 msgid ""
 "The Dwarven Thunderguards are famed for their curious weaponry, these "
 "strange staffs of wood and iron that make a thunderous noise in their anger. "
@@ -897,14 +895,15 @@ msgid ""
 "Though a single shot from these 'thundersticks' can take several minutes to "
 "prepare, the results are seen by the Dwarves as being well worth the wait."
 msgstr ""
-"Ukkosvartijat ovat kuuluisia aseistaan, erikoisista puu- ja rautasauvoista, "
-"jotka pitävät ukkosmaista ääntä vihassaan. Näiden aseiden toiminta on "
-"mysteeri, salaisuus, jonka Knalgan kääpiöt vievät hautaansa. Se, mitä "
-"tiedetään on että kääpiöt kaatavat omituista mustaa pölyä näiden aseiden "
-"suuhun, jonka jotkut väittävät ruokkivan sisällä olevaa petoa. \n"
+"Ukkosvartijat ovat kuuluisia erikoisista aseistaan, oudoista puu- ja "
+"rautasauvoista, jotka vihastuessaan pitävät ukkosmaista ääntä. Näiden "
+"aseiden toiminta on mysteeri, salaisuus, jonka niitä käyttävät Knalgan "
+"kääpiöt vievät hautaansa. Se mitä tiedetään, on että kääpiöt kaatavat "
+"omituista mustaa pölyä näiden aseiden suuhun, jonka jotkut väittävät "
+"ruokkivan sisälle vangittua petoa. \n"
 "\n"
-"Vaikka yhtä laukausta näistä 'ukkoskepeistä' saattaa joutua valmistelemaan "
-"monta minuuttia, tulokset ovat kääpiöiden mielestä hyvin sen arvoisia."
+"Vaikka yhtä laukausta näistä ”ukkoskepeistä” saattaa joutua valmistelemaan "
+"monta minuuttia, tulokset ovat kääpiöiden mielestä hyvinkin sen arvoisia."
 
 #. [unit_type]: id=Dwarvish Ulfserker, race=dwarf
 #: data/core/units/dwarves/Ulfserker.cfg:4
@@ -1499,7 +1498,7 @@ msgstr "seitti"
 #. [unit_type]: id=Fog Clearer, race=monster
 #: data/core/units/fake/Fog_Clearer.cfg:7
 msgid "dummy_unit^Fog Clearer"
-msgstr ""
+msgstr "Sumunselkeyttäjä"
 
 #. [unit_type]: id=Direwolf Rider, race=wolf
 #: data/core/units/goblins/Direwolf_Rider.cfg:4
@@ -1556,7 +1555,6 @@ msgstr "Hiisiritari"
 
 #. [unit_type]: id=Goblin Knight, race=wolf
 #: data/core/units/goblins/Knight.cfg:20
-#, fuzzy
 msgid ""
 "The Goblin 'Knights' have little in common with the men who share that "
 "title, and the title is bestowed in mockery by their enemies. The similarity "
@@ -1566,14 +1564,14 @@ msgid ""
 "The wolves they are given are bred for speed and strength, making them quite "
 "dangerous in combat."
 msgstr ""
-"'Hiisiritareilla' on hyvin vähän yhteistä niiden miesten kanssa jotka tuon "
-"tittelin jakavat, ja sitä käytetäänkin lähinnä heidän vihollistensa "
-"pilkassa. Yhtenäisyys on lähinnä siinä että he ovat susiratsastajien "
-"eliitti, luultavasti ylennetty onnistuttuaan jossain ryöstöretkessä tai "
-"muussa yhtä pahassa asiassa. \n"
+"Hiisien ”ritareilla” on hyvin vähän yhteistä niiden ihmisten kanssa, jotka "
+"tuon tittelin jakavat, ja titteliä käytetäänkin lähinnä heidän vihollistensa "
+"pilkaamiseen. Yhtenäisyys on lähinnä siinä, että he ovat susiratsastajien "
+"eliitti. Heidät on luultavasti ylennetty onnistuttuaan jossakin "
+"ryöstöretkessä tai muussa yhtä pahassa asiassa. \n"
 "\n"
-"Heidän sutensa on kasvatettu vahvoiksi ja nopeiksi, mikä tekee heistä varsin "
-"vaarallisia taistelussa."
+"Heille annetut sudet on kasvatettu vahvoiksi ja nopeiksi, mikä tekee niistä "
+"varsin vaarallisia taistelussa."
 
 #. [unit_type]: id=Goblin Pillager, race=wolf
 #: data/core/units/goblins/Pillager.cfg:4
@@ -1707,15 +1705,15 @@ msgstr "Aarnikotkamestari"
 
 #. [unit_type]: id=Gryphon Master, race=gryphon
 #: data/core/units/gryphons/Gryphon_Master.cfg:19
-#, fuzzy
 msgid ""
 "Gryphon Masters have long experience flying the Gryphons, which have become "
 "an extension of themselves. This special relationship makes the heart of the "
 "earth-bound tremble, for these mighty birds of prey may strike from anywhere."
 msgstr ""
-"Aarnikotkien mestarit ovat lentäneet aarnikotkilla pitkään ja pitävät "
-"aarnikotkia itsensä jatkeina. Tämä erikoinen suhde herättää kauhua niissä, "
-"jotka on maahan sidottu, sillä tämä mahtava pari voi iskeä missä tahansa."
+"Aarnikotkien mestarit ovat lentäneet aarnikotkilla niin pitkään, että "
+"aarnikotkista on tullut heidän itsensä jatkeina. Tämä erikoinen suhde "
+"herättää kauhua niissä, jotka on maahan sidottu, sillä tämä mahtava pari voi "
+"iskeä mistä tahansa."
 
 #. [unit_type]: id=Gryphon Rider, race=gryphon
 #: data/core/units/gryphons/Gryphon_Rider.cfg:4
@@ -1944,7 +1942,6 @@ msgstr "Ratsumies"
 
 #. [unit_type]: id=Cavalryman, race=human
 #: data/core/units/humans/Loyalist_Cavalryman.cfg:23
-#, fuzzy
 msgid ""
 "Cavalrymen are distinguished from horsemen by their tactics and equipment. A "
 "cavalryman wears heavier armor, and carries a sword and shield, rather than "
@@ -1957,12 +1954,12 @@ msgid ""
 msgstr ""
 "Ratsumiehet eroavat hevosmiehistä taktiikaltaan ja varustukseltaan. "
 "Ratsumiehen panssari on raskaampi ja hän kantaa miekkaa ja kilpeä peitsen "
-"sijaan. Heidän taktiikkaansa ei kuulu rynnäkkö vaan manööverit kuten "
-"sohaisuhyökkäykset miekkaa, käyttäen sekä miekkaa että hevosta taistelun "
+"sijaan. Heidän taktiikkaansa ei kuulu rynnäkkö, vaan heillä on tapana "
+"sohaista miekallaan käyttäen sekä hevosta että ratsastajaa taistelun "
 "työkaluina.\n"
 "\n"
-"Ratsumiehet ovat hyödyllisiä asemien ottamisessa ja pitämisessä, omien "
-"joukkojen suojaamisessa ja tiedustelussa."
+"Ratsumiehet ovat hyvin hyödyllisiä asemien ottamisessa ja pitämisessä "
+"avoimella maalla, omien joukkojen suojaamisessa ja tiedustelussa."
 
 #. [unit_type]: id=Dragoon, race=human
 #: data/core/units/humans/Loyalist_Dragoon.cfg:4
@@ -2021,9 +2018,8 @@ msgstr ""
 #: data/core/units/humans/Loyalist_Duelist.cfg:72
 #: data/core/units/humans/Loyalist_Fencer.cfg:127
 #: data/core/units/humans/Loyalist_Master_at_Arms.cfg:31
-#, fuzzy
 msgid "saber"
-msgstr "säilä"
+msgstr "sapeli"
 
 #. [unit_type]: id=Fencer, race=human
 #: data/core/units/humans/Loyalist_Fencer.cfg:4
@@ -2032,7 +2028,6 @@ msgstr "Miekkailija"
 
 #. [unit_type]: id=Fencer, race=human
 #: data/core/units/humans/Loyalist_Fencer.cfg:20
-#, fuzzy
 msgid ""
 "Fencers belong to a school of thought that considers the armor most soldiers "
 "wear in combat to be their own worst enemy. While armor can only soften a "
@@ -2045,18 +2040,18 @@ msgid ""
 "disadvantage. They take relish in dancing circles around troops like heavy "
 "infantry, mocking the weight of their full armor."
 msgstr ""
-"Miekkailijoille tyypillistä on ajatus, että suojukset, joita useimmat "
-"sotilaat pukevat, ovat heidän pahin vihollinen. Samalla kun suojus voi vain "
-"heikentää iskua, sen väistäminen jättää puolustajan kokonaan "
-"vahingoittumatta. Taito pysty luotettavasti väistämään jokaisen "
-"hyökkäyssiirron on rikkaus vain nille, joiden ruumiille se sopii, ja niin "
-"vain niille, jotka kykenevät kestämään ankaran koulutuksen. \n"
+"Miekkailijoille tyypillistä on ajattelutapa, että suojukset, joita useimmat "
+"sotilaat pukevat taistelussa, ovat heidän itsensä pahin vihollinen. "
+"Esimerkiksi suojus vain heikentää iskua – iskun väistäminen jättää "
+"puolustajan kokonaan vahingoittumatta. Taito pystyä luotettavasti väistämään "
+"jokainen hyökkäävä liike on etu vain nille, joiden ruumiille se sopii, ja "
+"niin vain niille, jotka kykenevät kestämään ankaran koulutuksen. \n"
 "\n"
-"Varustettuna vain tikarilla ja sapelilla, miekkailijat ovat yhtä "
+"Ainoastaan tikarilla ja sapelilla varustetut miekkailijat ovat yhtä "
 "kevytjalkaisia ja hyödyllisiä monissa tilanteissa, joissa heidän suojus-"
-"toverinsa ovat epäedullisessa asemassa. He usein tanssivat ympyrää "
-"joukkojen, kuten raskaan jalkamiehen, ympärillä, pilkaten heidän painavan "
-"panssarinsa painoa."
+"toverinsa ovat epäedullisessa asemassa. Usein he tanssivat ympyrää "
+"sellaisten joukkojen kuten raskaan jalkamiehen ympärillä pilkaten heidän "
+"painavan panssarinsa painoa."
 
 #. [unit_type]: id=General, race=human
 #: data/core/units/humans/Loyalist_General.cfg:4
@@ -2540,9 +2535,8 @@ msgstr "Arkkivelhotar"
 
 #. [unit_type]: id=Elder Mage, race=human
 #: data/core/units/humans/Mage_Elder.cfg:4
-#, fuzzy
 msgid "Elder Mage"
-msgstr "Hopeavelho"
+msgstr "Vanha velho"
 
 #. [unit_type]: id=Elder Mage, race=human
 #: data/core/units/humans/Mage_Elder.cfg:22
@@ -2551,10 +2545,13 @@ msgid ""
 "wearying years of battle. Nevertheless they remain feared on the battlefield "
 "on account of their powerful lightning bolts."
 msgstr ""
+"Kerran mahtavat vanhat velhot ovat jo nähneet parhaimmat päivänsä ja ovat "
+"nykyään hieman väsyneitä vuosien taisteluiden jälkeen. Siitä huolimatta "
+"heitä yhä pelätään taistelukentillä heidän voimakkaiden salamaniskujensa "
+"takia."
 
 #. [attack]: type=fire
 #: data/core/units/humans/Mage_Elder.cfg:34
-#, fuzzy
 msgid "lightning"
 msgstr "salama"
 
@@ -3085,9 +3082,8 @@ msgstr "talikko"
 
 #. [unit_type]: id=Royal Warrior, race=human
 #: data/core/units/humans/Royal_Warrior.cfg:8
-#, fuzzy
 msgid "Royal Warrior"
-msgstr "Peikkosoturi"
+msgstr "Kuninkaallinen taistelija"
 
 #. [unit_type]: id=Royal Warrior, race=human
 #: data/core/units/humans/Royal_Warrior.cfg:31
@@ -3095,6 +3091,8 @@ msgid ""
 "Royal warriors are the kings and princes of human noble houses, armed and "
 "armored to a degree heavier than that of their knights."
 msgstr ""
+"Kuninkaalliset taistelijat ovat ihmisten ylhäisiä kuninkaita ja ruhtinaita, "
+"jotka on aseistettu ja panssaroitu astetta raskaammin kuin heidän ritarinsa."
 
 #. [unit_type]: id=Woodsman, race=human
 #: data/core/units/humans/Woodsman.cfg:4
@@ -3103,15 +3101,14 @@ msgstr "Eränkävijä"
 
 #. [unit_type]: id=Woodsman, race=human
 #: data/core/units/humans/Woodsman.cfg:19
-#, fuzzy
 msgid ""
 "Woodsmen are hunters, woodcutters, charcoal-burners, and others who eke out "
 "a living where the human world verges on the wilderness. Wits and woodcraft "
 "often support them where weapons will not."
 msgstr ""
-"Eränkävijät ovat metsästäjiä, puunhakkaajia, miilunpolttajia ja muita elää "
-"kituuttavia siellä, missä ihmismaailma hipoo erämaata. Nokkeluus ja "
-"erätaidot paikkaavat aseiden puutteet."
+"Eränkävijät ovat metsästäjiä, puunhakkaajia, miilunpolttajia ja muita, jotka "
+"elää kituuttavat siellä, missä ihmismaailma hipoo erämaata. Nokkeluus ja "
+"erätaidot yleensä auttavat heitä siinä, missä aseet eivät."
 
 #. [unit_type]: id=Huntsman, race=human
 #: data/core/units/humans/Woodsman_Huntsman.cfg:5
@@ -3120,7 +3117,6 @@ msgstr "Metsästäjä"
 
 #. [unit_type]: id=Huntsman, race=human
 #: data/core/units/humans/Woodsman_Huntsman.cfg:22
-#, fuzzy
 msgid ""
 "Hunting is a popular sport of noblemen, but it can also be a livelihood for "
 "commoners. Like any other craft, it has men of masterful skill in its "
@@ -3138,21 +3134,20 @@ msgid ""
 "capitally useful in a fight."
 msgstr ""
 "Metsästys on yleinen urheilulaji jalosukuisten joukossa, mutta se voi olla "
-"myös aatelittomien toimeentulona. Aivan kuin muutkin käsityöt, "
-"metsästyksellä on miehiä mestarillisella taidolla sen harjoittamiseen. "
-"Metsästäjät tuntevat kaikki heidän alansa temput, ja ovat kokeneita "
-"erämaassa suunnistamisessa, jäljittämisessä ja jousen käytössä. He ovat "
-"tasavertainen vastus liikkuvia kohteita vastaan, ja pensaitten alla "
-"piileskeleviä vastaan; heidän vuosien saatossa ampumapeleistä hankittu kyky, "
-"se, joka varuskunnan jousimiehiltä yleensä puuttuu.\n"
+"myös aatelittomien toimeentulona. Aivan kuten muistakin ammateista, myös "
+"metsästäjistä löytyy oman alansa mestareita. Metsästäjät tuntevat kaikki "
+"alansa temput ja ovat kokeneita erämaassa suunnistamisessa, jäljittämisessä "
+"ja jousen käytössä. He ovat hyviä ampumaan liikkuvia ja piileskeleviä "
+"kohteita. Se on vuosien saatossa riistanammunnasta saatu kyky, joka "
+"varuskunnan jousimiehiltä yleensä puuttuu.\n"
 "\n"
-"Mestarimetsästäjät palkataan niiden ryhmien toimesta, jotka asuvat "
-"erämaassa, tai ovat vain kulkemassa sen läpi, ovat he sitten lainkuuliaita, "
-"tai heitä, jotka taistelevat sitä vastaan. Jopa luonnolla itsellään voi olla "
-"kuolettavia yllätyksiä, ja jokainen komentaja, joka epäonnistuu tälläisen "
-"oppaan värväämisessä, voi menettää miehensä pelkästään maastolle. Hyvät "
-"metsämiehet voivat säästää elämiä, helpottaa matkustusta, tuoda ruokaa, ja "
-"heidän kykynsä jousella on ehdottomasti hyödyksi taistelussa."
+"Mestarimetsästäjät palkataan niiden ryhmien toimesta, jotka asuvat erämaassa "
+"tai ovat vain kulkemassa sen läpi, ovat he sitten lainkuuliaita, tai niitä, "
+"jotka taistelevat sitä vastaan. Jopa luonnolla itsellään voi olla "
+"kuolettavia yllätyksiä, ja jokainen komentaja, joka epäonnistuu hyvän oppaan "
+"värväämisessä, voi menettää miehensä pelkästään maastolle. Hyvät metsämiehet "
+"voivat säästää elämiä, helpottaa matkustusta, hankkia ruokaa, ja heidän "
+"kykynsä jousen kanssa on enimmäkseen hyödyksi taistelussa."
 
 #. [unit_type]: id=Poacher, race=human
 #: data/core/units/humans/Woodsman_Poacher.cfg:4
@@ -3161,7 +3156,6 @@ msgstr "Salametsästäjä"
 
 #. [unit_type]: id=Poacher, race=human
 #: data/core/units/humans/Woodsman_Poacher.cfg:22
-#, fuzzy
 msgid ""
 "Though not trained as warriors, the skills possessed by a hunter (especially "
 "those of archery) are useful in battle. Any group of soldiers or bandits "
@@ -3171,14 +3165,14 @@ msgid ""
 "Because of their experience, these hunters are unusually capable at night, "
 "and in forests and swamps."
 msgstr ""
-"Vaikka heitä ei ole koulutettu sotureiksi, metsästämisen kautta hankitut "
-"taidot (varsinkin juosiammuntaan liittyvät) ovat hyödyllisiä taistelussa. "
-"Jokainen bandiittiryhmä tarvitsee muutaman salametsästäjän "
-"palkkalistoilleen, ei ainoastaan saalistukseen, mutta myös auttaakseen "
-"tiukoissa taisteluissa.\n"
+"Vaikka metsästäjiä ei olekaan koulutettu sotureiksi, metsästämisen kautta "
+"hankitut taidot (varsinkin juosiammuntaan liittyvät) ovat hyödyllisiä "
+"taistelussa. Jokainen villin erämään halki matkustava sotilas- tai "
+"bandiittiryhmä tarvitsee muutaman salametsästäjän palkkalistoilleen, ei "
+"ainoastaan saalistukseen, vaan myös auttaakseen tiukassa taistelussa.\n"
 "\n"
 "Kokemuksensa takia nämä metsästäjät ovat epätavallisen pystyväisiä yöllä, "
-"sekä metsissä ja suolla."
+"sekä metsissä että suolla."
 
 #. [unit_type]: id=Ranger, race=human
 #: data/core/units/humans/Woodsman_Ranger.cfg:5
@@ -3187,7 +3181,6 @@ msgstr "Samooja"
 
 #. [unit_type]: id=Ranger, race=human
 #: data/core/units/humans/Woodsman_Ranger.cfg:22
-#, fuzzy
 msgid ""
 "Rangers are wild men and wanderers, who have chosen to shun the company of "
 "their fellow men for myriad reasons. They have spent the better part of "
@@ -3202,17 +3195,17 @@ msgid ""
 "be in the employ of bandits, as they are to be in the king's service."
 msgstr ""
 "Saamojat ovat villiä miehiä ja vaeltajia, jotka ovat päättäneet karttaa "
-"heidän vertaisiaan lukemattomista eri syistä johtuen. He ovat viettäneet "
-"paremman puoliskon elämästään tiheässä luonnossa ja tietävät monia sen "
-"salaisuuksia. He ovat erinomaisia tunnustelijoita ja tiedustelijoita, ja he "
-"voivat löytää ruokaa ja suojaa sieltä, mistä muut miehet löytäisivät vain "
+"kaltaisiaan ihmisiä lukemattomista eri syistä johtuen. He ovat viettäneet "
+"paremman puoliskon elämästään luonnon helmassa ja tietävät monia sen "
+"salaisuuksia. He ovat erinomaisia tienraivaajia ja tiedustelijoita, ja he "
+"voivat löytää ruokaa ja suojaa paikoista, joista muut löytäisivät vain "
 "tikkuja ja keppejä.\n"
 "\n"
-"Näiden miesten läsnäolo vaivaa autoritaarisia hallitsijoita; he ovat "
-"elementti, joita ritarit ja maalliset armeijat eivät voi kontrolloida. He "
-"ovat miehiä epämääräisillä motiiveilla ja ovat ensimmäisenä pilkan kohteena "
-"kruunun tasolla. Samoojia voi värvätä, mutta he ovat juuri niin varmasti "
-"bandiittien palkkaamana kuin he ovat kuninkaan palveluksessa. "
+"Näiden miesten läsnäolo vaivaa kovaluonteisimpia hallitsijoita – he ovat "
+"asia, jota ritarit ja maalliset armeijat eivät voi hallita. He ovat "
+"epämääristen motiivien miehiä ja ovat kuninkaallisten ensimmäisiä "
+"pilkankohteita. Samoojia voi värvätä, mutta heihin törmää yhtä varmasti niin "
+"bandiittien palkkaamana kuin kuninkaankin palveluksessa. "
 
 #. [unit_type]: id=Trapper, race=human
 #: data/core/units/humans/Woodsman_Trapper.cfg:4
@@ -3396,17 +3389,16 @@ msgstr "Merenmiesharppuunoija"
 
 #. [unit_type]: id=Merman Javelineer, race=merman
 #: data/core/units/merfolk/Javelineer.cfg:20
-#, fuzzy
 msgid ""
 "Those mermen who master the art of the javelin can become nearly as "
 "effective as an archer - though the heft of their weapons impedes their "
 "range, the impact of one is considerably greater. In the water, the mobility "
 "of the mermen more than makes up for this when facing foes who cannot swim."
 msgstr ""
-"Ne merenmiehet, jotka hallitsevät keihäänheiton taidon, tulevat lähes yhtä "
-"tehokkaiksi kuin jousimiehet - vaikka aseen paino huonontaa heidän "
-"kantamaansa, sen isku on huomattavasti kovempi. Vedessä merenmiesten "
-"liikkuvuus korvaa tämän hyvin, kun vastassa on uimataidottomia vihollisia."
+"Ne merenmiehet, jotka hallitsevät keihäänheiton taidon, voivat tulevat lähes "
+"yhtä tehokkaiksi kuin jousimiehet – vaikka aseen massa huonontaakin sen "
+"kantomatkaa, sen isku on huomattavasti kovempi. Vedessä merenmiesten "
+"liikkuvuus korvaa tämän hyvin, jos vastassa on uimataidottomia vihollisia."
 
 #. [unit_type]: id=Merman Netcaster, race=merman
 #: data/core/units/merfolk/Netcaster.cfg:4
@@ -3495,7 +3487,6 @@ msgstr "Merenmieskeihästäjä"
 
 #. [unit_type]: id=Merman Spearman, race=merman
 #: data/core/units/merfolk/Spearman.cfg:19
-#, fuzzy
 msgid ""
 "Archery is little favored by the mermen, for whom use of javelins serves a "
 "similar function. Though thrown javelins are of little use under the water, "
@@ -3504,12 +3495,12 @@ msgid ""
 "wreak damage. They are also useful in melee, even deep under the surface, "
 "which is something that certainly cannot be said of arrows."
 msgstr ""
-"Jousiammunta ei ole merenmiesten suosiossa, sillä keihäänheitto palvelee "
-"samaa tarkoitusta heille. Vaikka heittokeihäät ovat varsin hyödyttömiä veden "
-"alla, ne ovat erittäin hyödyllisiä pinnalla, jossa niiden paino sallii "
-"niiden lentää muutamia metrejä veden alla liikkuen yhä tarpeeksi lujaa "
-"vahingoittaakseen. Ne ovat hyödyllisiä myös lähitaistelussa, jopa syvällä "
-"veden alla, jossa nuolet varmasti ovat hyödyttömiä."
+"Jousiammunta ei juurikaan ole merenmiesten suosiossa, sillä keihäänheitto "
+"palvelee heille samaa tarkoitusta. Vaikka heittokeihäät veden alla varsin "
+"vähän käytetäänkin, ne ovat erittäin hyödyllisiä pinnalla, jossa niiden "
+"paino sallii niiden lentää muutamia metrejä veden alle liikkuen yhä "
+"tarpeeksi lujaa vahingoittaakseen. Ne ovat hyödyllisiä myös lähitaistelussa, "
+"jopa syvällä pinnan alla, mitä ei varmasti voi sanoa nuolista."
 
 #. [unit_type]: id=Merman Triton, race=merman
 #: data/core/units/merfolk/Triton.cfg:4
@@ -3763,6 +3754,9 @@ msgid ""
 "Wolves are aggressive animals that hunt in packs. Although weak "
 "individually, a wolf pack can kill even the strongest man in minutes."
 msgstr ""
+"Sudet ovat agressiivisia eläimiä, jotka metsästävät laumoissa. Vaikka ne "
+"ovatkin heikkoja yksin, niin susilauma pystyy hetkessä tappamaan jopa "
+"vahvimman miehen."
 
 #. [unit_type]: id=Yeti, race=monster
 #: data/core/units/monsters/Yeti.cfg:4
@@ -3832,7 +3826,6 @@ msgstr "Myrmidonitar"
 
 #. [female]
 #: data/core/units/nagas/Myrmidon.cfg:85
-#, fuzzy
 msgid ""
 "The most practiced of the nagani blademasters are initiated into the caste "
 "of the Myrmidon, masters of their twin-bladed art. They strike as fast as "
@@ -3841,9 +3834,9 @@ msgid ""
 "allows them a deadly mobility."
 msgstr ""
 "Nagojen suurimmat miekkamestarit nostetaan myrmidonien kastiin. Nämä soturit "
-"ovat kaksiteräisen taidot mestareita, jotka iskevät nopeasti kuten käärmeet "
-"joita he muistuttavat ja tanssivat hyökkäyksiä karkuun taidolla. Paitsi että "
-"he ovat vaarallisia vihollisia avomaalla, heidän uimataitonsa sallii "
+"ovat kahden miekan käytön mestareita ja he iskevät nopeasti kuin käärmeet, "
+"joita he muistuttavat, ja tanssivat taidolla hyökkäyksiä karkuun. Paitsi "
+"että he ovat vaarallisia vihollisia avomaalla, heidän uimataitonsa sallii "
 "tappavan liikkuvuuden."
 
 #. [unit_type]: id=Naga Warrior, race=naga
@@ -3875,7 +3868,6 @@ msgstr "Nagasoturi"
 
 #. [female]
 #: data/core/units/nagas/Warrior.cfg:82
-#, fuzzy
 msgid ""
 "Many of the young warriors of the nagani aspire for the day when they merit "
 "their second blade. Their martial practice of using twin blades is wholly "
@@ -3884,12 +3876,12 @@ msgid ""
 "dodge from blows. This makes them potent on land, but the friction of water "
 "greatly impedes their ability to do this."
 msgstr ""
-"Monet nuoret naga-soturit odottavat päivää, jolloin he saavat toisen "
+"Monet nuoret nagasoturit odottavat päivää, jolloin he ansaitsevat toisen "
 "miekkansa. Heidän tapansa käyttää kahta miekkaa on täysin erilainen kuin "
-"örkeillä ja muilla roduilla. He käyttävät käärmemäistä muotoaan "
-"mahdollisimman tehokkaasti, kääntyen ja kiemurellen pois hyökkäystän alla. "
-"Tämä tekee heistä vaarallisia maalla, mutta veden vastustus häiritsee heidän "
-"kykyään tehdä tätä."
+"örkeillä ja muilla roduilla, sillä he ovat alkaneet oppia käyttämään "
+"käärmemäistä muotoaan mahdollisimman tehokkaasti, kääntyen ja kiemurellen "
+"pois hyökkäysten alta. Tämä tekee heistä vaarallisia maalla, mutta veden "
+"vastustus häiritsee heidän kykyään tehdä tätä."
 
 #. [unit_type]: id=Ogre, race=ogre
 #: data/core/units/ogres/Ogre.cfg:4
@@ -4086,7 +4078,6 @@ msgstr "Rautajousiörkki"
 
 #. [unit_type]: id=Orcish Slurbow, race=orc
 #: data/core/units/orcs/Slurbow.cfg:23
-#, fuzzy
 msgid ""
 "The basic design of a crossbow gives rise to the arbalest or 'slurbow'; a "
 "much more intricate device, complete with a hand-turned cranequin to re-cock "
@@ -4099,12 +4090,12 @@ msgid ""
 "end up in the hands of their strongest and most cunning archers."
 msgstr ""
 "Tavallisen varsijousen suunnittelu antoi pohjan jalkajouselle, tai "
-"‘riippujouselle’; paljon monimutkaisemmalle laitteelle, sisältäen "
-"käsikäyttöisen ‘latausvivun’ aseen lataukseen, ja usein useita kerrospuusta "
-"tai -luusta tehtyjä kaaria liikuttamaan ammusta. Tälläistä laitetta on "
-"paljon helpompi käyttää, ja se on paljon tehokkaampi kuin yksinkertaisemmat "
-"varsijouset; se on myös kokonaan örkkien valmistustaidon "
-"saavuttamattomissa.\n"
+"”kaarijouselle”, paljon monimutkaisemmalle laitteelle, sisältäen "
+"käsikäyttöisen ”latausvivun” aseen lataamista varten ja usein monia "
+"laminoidusta puusta tai luusta tehtyjä kaaria liikuttamaan ammusta. "
+"Tälläistä laitetta on paljon helpompi käyttää ja se on paljon tehokkaampi "
+"kuin yksinkertaisemmat varsijouset. Se on myös kokonaan örkkien "
+"valmistustaidon ulottumattomissa.\n"
 "\n"
 "Örkit arvostavat jokaista asetta, jonka he onnistuvat ryöstämään, ja ne "
 "poikkeuksetta päätyvät heidän voimakkaimpien ja viekkaimpien jousiampujien "
@@ -4377,9 +4368,8 @@ msgstr ""
 
 #. [unit_type]: id=Troll Shaman, race=troll
 #: data/core/units/trolls/Troll_Shaman.cfg:4
-#, fuzzy
 msgid "Troll Shaman"
-msgstr "Peikonpentu"
+msgstr "Peikkoshamaani"
 
 #. [unit_type]: id=Troll Shaman, race=troll
 #: data/core/units/trolls/Troll_Shaman.cfg:24
@@ -4388,11 +4378,14 @@ msgid ""
 "or tough as other trolls, their true power lies in their fire magic, which "
 "they use to blast enemies with gouts of fire."
 msgstr ""
+"Peikkoshamaanit ovat peikkojen salaperäisiä johtajia. He eivät ole yhtä "
+"vahvoja kuin muut peikot, mutta heidän todellinen voimansa piileekin "
+"tulitaikuudessa, jota he käyttävät vihollisten pamauttelemiseen."
 
 #. [attack]: type=fire
 #: data/core/units/trolls/Troll_Shaman.cfg:41
 msgid "flame blast"
-msgstr ""
+msgstr "tulenleimaus"
 
 #. [unit_type]: id=Troll Warrior, race=troll
 #: data/core/units/trolls/Warrior.cfg:4
