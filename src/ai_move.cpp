@@ -523,7 +523,7 @@ std::pair<map_location,map_location> ai::choose_move(std::vector<target>& target
 
 			//scouts also get a bonus for going after villages
 			if(tg->type == target::VILLAGE) {
-				rating *= lexical_cast_default<int>(current_team().ai_parameters()["scout_village_targetting"],3);
+				rating *= lexical_cast_default<int>(current_team().ai_parameters()["scout_village_targeting"],3);
 			}
 		}
 
@@ -548,12 +548,13 @@ std::pair<map_location,map_location> ai::choose_move(std::vector<target>& target
 		return std::pair<location,location>();
 	}
 
-	//if we have the 'simple_targetting' flag set, then we don't see if any other
-	//units can put a better bid forward for this target
-	const bool dumb_ai = utils::string_bool(current_team().ai_parameters()["simple_targetting"]);
+	//if we have the 'simple_targeting' flag set, then we don't
+	//see if any other units can put a better bid forward for this
+	//target
+	const bool dumb_ai = utils::string_bool(current_team().ai_parameters()["simple_targeting"]);
 
 	if(dumb_ai == false) {
-		LOG_AI << "complex targetting...\n";
+		LOG_AI << "complex targeting...\n";
 		//now see if any other unit can put a better bid forward
 		for(++u; u != units_.end(); ++u) {
 			if(u->second.side() != team_num_ || u->second.can_recruit() ||
@@ -611,7 +612,7 @@ std::pair<map_location,map_location> ai::choose_move(std::vector<target>& target
 			}
 		}
 
-		LOG_AI << "done complex targetting...\n";
+		LOG_AI << "done complex targeting...\n";
 	} else {
 		u = units_.end();
 	}

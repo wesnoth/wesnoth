@@ -1089,7 +1089,7 @@ void ai::do_move()
 
 	find_threats();
 
-	LOG_AI << "move/targetting phase\n";
+	LOG_AI << "move/targeting phase\n";
 
 	const bool met_invisible_unit = move_to_targets(possible_moves,srcdst,dstsrc,enemy_dstsrc,leader);
 	if(met_invisible_unit) {

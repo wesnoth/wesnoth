@@ -444,6 +444,8 @@ linechanges = (
         ("titlescreen/landscapecastle.jpg",
          "story/landscape-castle.jpg"),
         ("LABEL_PERSISTANT", "LABEL_PERSISTENT"),
+        # Changed just before 1.5.13
+        ("targetting", "targeting"),
         )
 
 def validate_stack(stack, filename, lineno):
