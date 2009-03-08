@@ -494,23 +494,6 @@ tbuilder_grid::tbuilder_grid(const config& cfg) :
  *                                     the widget.
  * @end_table
  *
- * == Widget ==
- *
- * The widget is one of the following items:
- * * button a button.
- * * image an image.
- * * grid a grid, this is used to nest items.
- * * horizontal_scrollbar a horizontal scrollbar.
- * * label a label.
- * * listbox a listbox.
- * * panel a panel (a grid which can be drawn on).
- * * slider a slider.
- * * spacer a filler item.
- * * text_box a text box.
- * * vertical_scrollbar a vertical scrollbar.
- *
- * More details about the widgets is in the next section.
- *
  */
 	log_scope2(gui_parse, "Window builder: parsing a grid");
 
