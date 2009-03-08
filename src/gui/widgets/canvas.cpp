@@ -178,8 +178,12 @@ tline::tline(const config& cfg) :
  *
  * = Variables =
  *
- * In various parts of the GUI engine the following table contains all valid
- * variable types. Note this page is automatically generated.
+ * In various parts of the GUI there are several variables types in use. This
+ * page describes them. 
+ *
+ * == Simple types ==
+ *
+ * The simple types are types which have one value or a short list of options.
  *
  * @start_table = variable_types
  *     unsigned                        Unsigned number (positive whole numbers
@@ -218,10 +222,6 @@ tline::tline(const config& cfg) :
  *                                     list. If empty we default to the normal
  *                                     style.
  *
- *     section                         A section is a generic variable for a
- *                                     WML section. The description should
- *                                     explain the exact type.
- *
  *     v_align                         Vertical alignment; how an item is
  *                                     aligned vertically in the available
  *                                     space. Possible values:
@@ -259,6 +259,21 @@ tline::tline(const config& cfg) :
  *                                     @* auto   Shows the scrollbar when
  *                                     needed. The widget will reserve space for
  *                                     the scrollbar, but only show when needed.
+ * @end_table
+ *
+ * == Section types ==
+ *
+ * For more complex parts, there are sections. Sections contain of several
+ * lines of WML and can have sub sections. For example a grid has sub sections
+ * which contain various widgets. Here's the list of sections.
+ *
+ * @start_table = variable_types
+ *     section                         A generic section. The documentation
+ *                                     about the section should describe the
+ *                                     section in further detail.
+ *
+ *     grid                            A grid contains serveral widgets. (TODO
+ *                                     add link to generic grid page.)
  * @end_table
  */
 

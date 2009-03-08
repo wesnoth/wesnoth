@@ -401,8 +401,7 @@ twindow_builder::tresolution::tresolution(const config& cfg) :
  *                                   Definition of the window which we want to
  *                                   show.
  *
- *     grid (section)                The grid with the widgets to show. FIXME
- *                                   the grid needs its own documentation page.
+ *     grid (grid)                   The grid with the widgets to show.
  * @end_table
  *
  * The size variables are copied to the window and will be determined runtime.
@@ -755,10 +754,10 @@ tbuilder_listbox::tbuilder_listbox(const config& cfg) :
  *                                     Determines whether or not to show the
  *                                     scrollbar.
  *
- *     header (section = [])           Defines the grid for the optional
+ *     header (grid = [])              Defines the grid for the optional
  *                                     header. (This grid will automatically
  *                                     get the id _header_grid.)
- *     footer (section = [])           Defines the grid for the optional
+ *     footer (grid = [])              Defines the grid for the optional
  *                                     footer. (This grid will automatically
  *                                     get the id _footer_grid.)
  *
@@ -936,7 +935,7 @@ tbuilder_panel::tbuilder_panel(const config& cfg) :
  * invisible container to just hold the items.
  *
  * @start_table = config
- *     grid (section)                  Defines the grid with the widgets to
+ *     grid (grid)                     Defines the grid with the widgets to
  *                                     place on the panel.
  * @end_table
  *
@@ -1141,7 +1140,7 @@ tbuilder_toggle_panel::tbuilder_toggle_panel(const config& cfg) :
  * its own grid.
  *
  * @start_table = config
- *     grid (section)                  Defines the grid with the widgets to
+ *     grid (grid)                     Defines the grid with the widgets to
  *                                     place on the panel.
  *     return_value_id (string = "")   The return value id, see
  *                                     [[GUIToolkitWML#Button]] for more info.

@@ -865,7 +865,7 @@ tscroll_label_definition::tresolution::tresolution(const config& cfg) :
  * expected to become required).
  *
  * @start_table = config
- *     grid (section)                  A grid containing the widgets for main
+ *     grid (grid)                     A grid containing the widgets for main
  *                                     widget.
  * @end_table
  *
