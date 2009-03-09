@@ -1190,25 +1190,8 @@ void server::process_query(const network::connection sock,
 	std::ostringstream response;
 	const std::string& help_msg = "Available commands are: help, games, metrics,"
 			" motd, netstats [all], stats, status, wml.";
-	if (admins_.find(sock) != admins_.end()) {
-		if (command == "signout") {
-			LOG_SERVER << "Admin signed out:" << "\tIP: "
-				<< network::ip_address(sock) << "\tnick: "
-				<< pl->second.name() << std::endl;
-			admins_.erase(sock);
-			// This string is parsed by the client!
-			response << "You are no longer recognized as an administrator.";
-			if(user_handler_) {
-				user_handler_->set_is_moderator(pl->second.name(), false);
-			}
-		} else {
-			LOG_SERVER << "Admin Command:" << "\ttype: " << command
-				<< "\tIP: "<< network::ip_address(sock)
-				<< "\tnick: "<< pl->second.name() << std::endl;
-			response << process_command(command.to_string(), pl->second.name());
-		}
 	// Commands a player may issue.
-	} else if (command == "help") {
+	if (command == "help" || command.empty()) {
 		response << help_msg;
 	} else if (command == "status") {
 		response << process_command(command.to_string() + " " + pl->second.name(), pl->second.name());
@@ -1223,8 +1206,25 @@ void server::process_query(const network::connection sock,
 			|| command == "wml")
 	{
 		response << process_command(command.to_string(), pl->second.name());
+	} else if (admins_.find(sock) != admins_.end()) {
+		if (command == "signout") {
+			LOG_SERVER << "Admin signed out: IP: "
+				<< network::ip_address(sock) << "\tnick: "
+				<< pl->second.name() << std::endl;
+			admins_.erase(sock);
+			// This string is parsed by the client!
+			response << "You are no longer recognized as an administrator.";
+			if(user_handler_) {
+				user_handler_->set_is_moderator(pl->second.name(), false);
+			}
+		} else {
+			LOG_SERVER << "Admin Command: type: " << command
+				<< "\tIP: "<< network::ip_address(sock)
+				<< "\tnick: "<< pl->second.name() << std::endl;
+			response << process_command(command.to_string(), pl->second.name());
+		}
 	} else if (command == admin_passwd_) {
-		LOG_SERVER << "New Admin recognized:" << "\tIP: "
+		LOG_SERVER << "New Admin recognized: IP: "
 			<< network::ip_address(sock) << "\tnick: "
 			<< pl->second.name() << std::endl;
 		admins_.insert(sock);
@@ -1358,10 +1358,11 @@ std::string server::process_command(const std::string& query, const std::string&
 			}
 			if (!found) return out.str();
 		}
+		const bool match_ip = (std::count(parameters.begin(), parameters.end(), '.') >= 1);
 		for (wesnothd::player_map::const_iterator pl = players_.begin(); pl != players_.end(); ++pl) {
-			if (parameters == ""
-			|| utils::wildcard_string_match(network::ip_address(pl->first), parameters)
-			|| utils::wildcard_string_match(pl->second.name(), parameters)) {
+			if (parameters == "" || parameters == "*"
+			|| (match_ip && utils::wildcard_string_match(network::ip_address(pl->first), parameters))
+			|| (!match_ip && utils::wildcard_string_match(pl->second.name(), parameters))) {
 				const network::connection_stats& stats = network::get_connection_stats(pl->first);
 				const int time_connected = stats.time_connected/1000;
 				const int seconds = time_connected%60;
