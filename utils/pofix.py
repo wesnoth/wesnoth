@@ -161,11 +161,16 @@ stringfixes = {
 "wesnoth-low" :(
 ("offensive war. This is the council's decision", "offensive war. This is the council's decision."),
 ),
+
+"wesnoth-ei" :(
+("But Gweddry and Owaec were to find", "But Gweddry and Dacyn were to find"),
+),
+
 }
 
 # Speak, if all argument files are newer than this timestamp
 # Try to use UTC here
-timecheck = 1235216999	# Sat Feb 21 06:49:59 2009
+timecheck = 1236639684	# Mon Mar  9 19:02:04 EDT 2009 
 
 import os, sys, time, stat
 
