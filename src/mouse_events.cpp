@@ -435,7 +435,7 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse) {
 	show_partial_move_ = false;
 
 	unit_map::iterator u = find_unit(hex);
-	if(hex.valid() && u != units_.end() ) {
+	if(hex.valid() && u != units_.end() && !u->second.get_hidden()) {
 		next_unit_ = u->first;
 
 		// if it's not the unit's turn, we reset its moves

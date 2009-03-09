@@ -285,7 +285,7 @@ image::TYPE game_display::get_image_type(const map_location& loc) {
 		} else if (loc == selectedHex_) {
 			unit_map::iterator un = find_visible_unit(units_, loc, get_map(),
 					teams_, teams_[currentTeam_], !viewpoint_);
-			if (un != units_.end()) {
+			if (un != units_.end() && !un->second.get_hidden()) {
 				return image::BRIGHTENED;
 			}
 		}
