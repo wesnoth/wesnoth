@@ -61,9 +61,9 @@ void ttext_::mouse_middle_button_click(tevent_handler&)
 
 }
 
-void ttext_::recieve_keyboard_focus(tevent_handler& /*event_handler*/)
+void ttext_::receive_keyboard_focus(tevent_handler& /*event_handler*/)
 {
-	DBG_G_E << "Text: recieve focus.\n";
+	DBG_G_E << "Text: receive focus.\n";
 
 	set_state(FOCUSSED);
 }

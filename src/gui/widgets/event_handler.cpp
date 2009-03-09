@@ -298,7 +298,7 @@ void tevent_handler::keyboard_capture(twidget* widget)
 	keyboard_focus_ = widget;
 
 	if(keyboard_focus_) {
-		keyboard_focus_->recieve_keyboard_focus(*this);
+		keyboard_focus_->receive_keyboard_focus(*this);
 	}
 }
 

@@ -185,7 +185,7 @@ public:
 	/***** ***** ***** ***** focus ***** ***** ***** *****/
 
 	/**
-	 * The widget recieves a focus event.
+	 * The widget receives a focus event.
 	 *
 	 * Container classes are notified when a child item gets a mouse down
 	 * event. This can be used to capture the keyboard.
@@ -197,16 +197,16 @@ public:
 	/**
 	 * Called when a widget receives the keyboard focus.
 	 *
-	 * @todo add to the event schedule, first lose then recieve.
+	 * @todo add to the event schedule, first lose then receive.
 	 *
 	 * @param event_handler       The event handler that send the event.
 	 */
-	virtual void recieve_keyboard_focus(tevent_handler& /*event_handler*/) {}
+	virtual void receive_keyboard_focus(tevent_handler& /*event_handler*/) {}
 
 	/**
 	 * Called when a widget loses the keyboard focus.
 	 *
-	 * @todo add to the event schedule, first lose then recieve.
+	 * @todo add to the event schedule, first lose then receive.
 	 *
 	 * @param event_handler       The event handler that send the event, most
 	 *                            of the time the widget will be the one
