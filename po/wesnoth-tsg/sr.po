@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-02-28 14:29+0100\n"
+"POT-Creation-Date: 2009-03-10 00:16+0100\n"
 "PO-Revision-Date: 2008-06-22 12:00+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -94,7 +94,6 @@ msgid "Born to the Banner"
 msgstr "Рођен за барјак"
 
 #. [side]: type=Horseman Commander, id=Deoran
-#. [side]: type=Dismounted Commander 1, id=Deoran
 #. [side]: id=Deoran
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:26
 #: data/campaigns/The_South_Guard/scenarios/10a_Elf_Epilogue.cfg:17
@@ -117,7 +116,6 @@ msgstr "Деоран"
 #. [side]: type=Troll Hero, id=Grek
 #. [side]
 #. [side]: type=Lieutenant, id=Plynry
-#. [side]: type=Dismounted Commander 1, id=Deoran
 #. [side]: id=Deoran
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:30
 #: data/campaigns/The_South_Guard/scenarios/10a_Elf_Epilogue.cfg:20
@@ -178,9 +176,9 @@ msgstr "Поразиш ли Урзу Матина"
 
 #. [objective]: condition=lose
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:228
-#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:348
-#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:529
-#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:586
+#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:334
+#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:515
+#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:572
 #: data/campaigns/The_South_Guard/scenarios/08a_Return_To_Kerlath.cfg:41
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:171
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:247
@@ -202,9 +200,9 @@ msgstr "Настрада ли Деоран"
 
 #. [objective]: condition=lose
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:244
-#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:360
-#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:541
-#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:598
+#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:346
+#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:527
+#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:584
 #: data/campaigns/The_South_Guard/scenarios/08a_Return_To_Kerlath.cfg:53
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:183
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:263
@@ -836,9 +834,9 @@ msgstr "Убијеш ли Урзу Налмата, вођа разбојника
 
 #. [objective]: condition=lose
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:236
-#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:352
-#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:533
-#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:590
+#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:338
+#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:519
+#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:576
 #: data/campaigns/The_South_Guard/scenarios/08a_Return_To_Kerlath.cfg:45
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:179
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:255
@@ -1380,9 +1378,9 @@ msgstr "Доведеш ли Етилијел у Мебриново село"
 
 #. [objective]: condition=lose
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:240
-#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:356
-#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:537
-#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:594
+#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:342
+#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:523
+#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:580
 #: data/campaigns/The_South_Guard/scenarios/08a_Return_To_Kerlath.cfg:49
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:259
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:628
@@ -2546,7 +2544,7 @@ msgid "Eye Guardian"
 msgstr "видостражар"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:251
+#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:252
 msgid ""
 "My mount will not help me in these rocky paths - I will leave him here at "
 "the entrance and proceed on foot."
@@ -2555,12 +2553,21 @@ msgstr ""
 "продужити пешке."
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:255
+#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:256
 msgid "That is wise. Speed is less valuable in caves than toughness."
 msgstr "Мудро је то. У пећинама је од брзине вреднија издржљивост."
 
+#. [message]: speaker=Ethiliel
+#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:311
+msgid ""
+"Proceed slowly, who knows what evils inhabited these parts before Mebrin was "
+"turned! We cannot be too careful."
+msgstr ""
+"Напредујмо полако, ко зна какво је зло настањивало ове крајеве пре него што "
+"се Мебрин преметну! Не можемо бити преопрезни."
+
 #. [message]: speaker=narrator
-#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:261
+#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:317
 msgid ""
 "Cavalrymen and Dragoons will be less useful in the caves than soldiers who "
 "fight on foot."
@@ -2569,28 +2576,19 @@ msgstr ""
 "на ногама."
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:266
+#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:322
 msgid "Also, soldiers with the -quick- trait will be useful in the dark."
 msgstr "Такође, војници са особином хитрости биће корисни у тами."
 
-#. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:338
-msgid ""
-"Proceed slowly, who knows what evils inhabited these parts before Mebrin was "
-"turned! We cannot be too careful."
-msgstr ""
-"Напредујмо полако, ко зна какво је зло настањивало ове крајеве пре него што "
-"се Мебрин преметну! Не можемо бити преопрезни."
-
 #. [objective]: condition=win
-#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:344
-#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:521
-#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:578
+#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:330
+#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:507
+#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:564
 msgid "Find the source of the undead under the citadel"
 msgstr "Нађеш ли извор немртвих испод тврђаве"
 
 #. [message]: speaker=Minister Hylas
-#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:381
+#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:367
 msgid ""
 "What horrid creature may that be? I've seen many wicked things in my life, "
 "but never one such as that."
@@ -2599,7 +2597,7 @@ msgstr ""
 "још не нешто овакво."
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:386
+#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:372
 msgid ""
 "It must be a guardian of some kind set here by Mebrin. We elves have heard "
 "stories of these creatures but I wouldn't have expected to come across "
@@ -2610,7 +2608,7 @@ msgstr ""
 "овде. Наставимо опрезно."
 
 #. [message]: speaker=Grek
-#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:399
+#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:385
 msgid ""
 "Ha! Humans and elves! What are you doing in our caves, and why shouldn't we "
 "grind your bones and gnaw on your flesh?"
@@ -2619,12 +2617,12 @@ msgstr ""
 "кости и почастимо се вашим месом?"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:404
+#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:390
 msgid "We mean no trespass. We are hunting the undead."
 msgstr "Жао нам је што сметамо. Ловимо немртве."
 
 #. [message]: speaker=Grek
-#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:409
+#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:395
 msgid ""
 "Undead! Ha! We kill undead all the time. You be friendly enough so we won't "
 "kill you, but why should we help you?"
@@ -2633,7 +2631,7 @@ msgstr ""
 "побити, али зашто помогнемо?"
 
 #. [message]: speaker=Grek
-#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:470
+#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:456
 msgid ""
 "Gold is good. We can trade gold for weapons and fire. We will help you "
 "defeat the undead now."
@@ -2642,13 +2640,13 @@ msgstr ""
 "средите немртве."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:474
+#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:460
 msgid ""
 "What aid can you offer us? We are not well suited to fighting in the caves."
 msgstr "Какву нам помоћ можете пружити? Нисмо баш вични борби у пећинама."
 
 #. [message]: speaker=Grek
-#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:478
+#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:464
 msgid ""
 "We already planned to kill the undead ourselves... First we kill dwarves "
 "though! Now we have dwarvish thunder fire and many trolls ready for "
@@ -2659,7 +2657,7 @@ msgstr ""
 "исто пођу и помогну да згромите немртве."
 
 #. [message]: speaker=Grek
-#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:482
+#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:468
 #, fuzzy
 msgid ""
 "Go here and light the thunder fire and it will blast a back door into the "
@@ -2668,12 +2666,12 @@ msgstr ""
 "Приђите овде и потпалите громоватру, и пробије вам двери у јазбину косца!"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:493
+#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:479
 msgid "What should we offer them for their help?"
 msgstr "Чиме да их понудимо, да нам се нађу при руци?"
 
 #. [option]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:495
+#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:481
 msgid ""
 "We will give you $troll_help_cost gold pieces if you help us defeat the "
 "undead."
@@ -2682,7 +2680,7 @@ msgstr ""
 "немртве."
 
 #. [message]: speaker=Grek
-#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:515
+#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:501
 msgid ""
 "Haha, you humans and elves poor, you have not enough gold! If you want troll "
 "help, you must come to me when you have the gold."
@@ -2691,8 +2689,8 @@ msgstr ""
 "тролова, морате доћи опет кад скупите више злата."
 
 #. [objective]: condition=win
-#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:525
-#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:582
+#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:511
+#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:568
 msgid ""
 "Meet with and pay the troll leader $troll_help_cost gold to receive their "
 "help"
@@ -2700,22 +2698,22 @@ msgstr ""
 "Сретнеш ли се са вођем тролова и платиш $troll_help_cost за њихову помоћу"
 
 #. [option]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:555
+#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:541
 msgid "We will offer you freedom and a place in our lands."
 msgstr "Понудићемо вам слободу и место у нашим земљама."
 
 #. [message]: speaker=Grek
-#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:559
+#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:545
 msgid "Ha! Who wants stupid human lands!"
 msgstr "Ха! Коме треба земља глупих људи!"
 
 #. [message]: speaker=Minister Hylas
-#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:563
+#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:549
 msgid "Then you will not aid us in our quest to destroy the undead menace?"
 msgstr "Онда нам нећете помоћи нам у намери да одстранимо пошаст немртвих?"
 
 #. [message]: speaker=Grek
-#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:568
+#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:554
 msgid ""
 "Bah! We destroy the undead when we want. Maybe wait for a few years first. "
 "If you want troll help, you come see me and give proper payment!"
@@ -2724,7 +2722,7 @@ msgstr ""
 "Ако желите помоћ тролова, нађите ме и понудите добру накнаду!"
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:572
+#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:558
 msgid ""
 "These creatures are much too simpleminded to be of any help to us but at "
 "least they will not attack us outright. We will have to face Mebrin alone."
@@ -2733,43 +2731,43 @@ msgstr ""
 "изравно напасти. Мораћемо сами пред Мебрина."
 
 #. [message]: speaker=Grek
-#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:641
+#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:627
 msgid "Ha, you can afford troll help this time?"
 msgstr "Ха, овај пут можете приуштити нашу помоћ?"
 
 #. [option]: speaker=Grek
-#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:650
+#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:636
 msgid "Here's $troll_help_cost for your help against the undead."
 msgstr "Ево $troll_help_cost за вашу помоћ против немртвих."
 
 #. [option]: speaker=Grek
-#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:658
+#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:644
 msgid "No, sorry."
 msgstr "Не може."
 
 #. [message]: speaker=unit
-#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:691
+#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:677
 msgid "I'm lighting it!"
 msgstr "Палим!"
 
 #. [message]: speaker=unit
-#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:725
+#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:711
 msgid "I've broken through!"
 msgstr "Пробих се!"
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:748
+#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:734
 msgid "Mebrin! My teacher of old! Can that truly be you?"
 msgstr "Мебрине! Мој давнашњи учитељу! Можеш ли то бити збиља ти?"
 
 #. [message]: speaker=Mal M'Brin
-#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:754
+#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:740
 #, fuzzy
 msgid "Eth...Ethiliel? You are here?"
 msgstr "Ет..Етилијел? Откуд ти?"
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:759
+#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:745
 msgid ""
 "How did you come to be here, you of all people, shut away from the trees and "
 "the light of the sun?"
@@ -2778,7 +2776,7 @@ msgstr ""
 "светла?"
 
 #. [message]: speaker=Mal M'Brin
-#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:764
+#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:750
 msgid ""
 "I broke their chains. They bound me, the accursed humans. Bound me! "
 "Kidnapped me to raise undead for them. Menaced me with cold iron...ahh, the "
@@ -2789,12 +2787,12 @@ msgstr ""
 "кожи, пекло је, горело!"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:769
+#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:755
 msgid "What is this? Elves bear steel swords."
 msgstr "Шта то треба да значи? Носе вилењаци челичне мачеве."
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:774
+#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:760
 msgid ""
 "They are but warriors. All elves feel the shadow of iron, and to those who "
 "walk our higher paths it is a bane, interfering with our magic. But this "
@@ -2807,7 +2805,7 @@ msgstr ""
 "прозбориш."
 
 #. [message]: speaker=Mal M'Brin
-#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:779
+#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:765
 msgid ""
 "Humans! Betrayers! Tree-killers! They are a blight on the world! I shall "
 "bring my new servants north to the lands we so foolishly granted to men in "
@@ -2818,7 +2816,7 @@ msgstr ""
 "времена, и све их разорити!"
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:784
+#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:770
 msgid ""
 "Your servants! Your servants are abominations worse than any human. They "
 "stink of the grave. This cannot be the sage Mebrin that I knew and revered "
@@ -2830,7 +2828,7 @@ msgstr ""
 "Никада се он не би удружио са мртвима против живих!"
 
 #. [message]: speaker=Mal M'Brin
-#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:789
+#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:775
 msgid ""
 "I am called Mal M'Brin now, Ethiliel, best student of mine. It is time for a "
 "new lesson. I was such as you, full of doubt and weakness, but now I have "
@@ -2844,7 +2842,7 @@ msgstr ""
 "празнину у срцу свих ствари. Ти, једнако, можеш окусити њену безграничну моћ."
 
 #. [message]: speaker=Mal M'Brin
-#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:794
+#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:780
 msgid ""
 "Join me! Stand by my side! We shall rise and sweep the humans from the green "
 "world. Their corpses will serve us; their bones will dance for our pleasure."
@@ -2853,7 +2851,7 @@ msgstr ""
 "света. Њихове ће нам лешине служити, њихове ће кости плесати за наш ужитак."
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:799
+#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:785
 msgid ""
 "And when we were done, what would we have become? Unlife. Hungering shadows, "
 "devouring all we once cherished."
@@ -2862,13 +2860,13 @@ msgstr ""
 "прождиру све што некад неговасмо."
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:805
+#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:791
 msgid ""
 "No. It shall not be. The sage Mebrin is dead. It is time to put him to rest."
 msgstr "Не. Тако неће бити. Мудрац Мебрин је мртав. Време је и да почива."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:811
+#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:797
 msgid ""
 "Even a mere human can see that you have become a mockery of all that you "
 "once believed in. I will destroy you and your works if it's the last thing I "
@@ -2878,7 +2876,7 @@ msgstr ""
 "веровао. Сатрећу тебе и дела твоја, макар ми то било последње!"
 
 #. [message]: speaker=Mal M'Brin
-#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:815
+#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:801
 msgid ""
 "You, destroy me? Fool human. You will die, and the elves you have seduced "
 "with you. And you shall serve me beyond death, forever."
@@ -2887,7 +2885,7 @@ msgstr ""
 "служићеш ми с ону страну смрти, заувек."
 
 #. [message]: speaker=Mal M'Brin
-#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:827
+#: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:813
 msgid ""
 "Nooo! This cannot be. The elves I once led have destroyed me. After all I "
 "have sacrificed, I still die...."
@@ -3102,16 +3100,16 @@ msgid "Plynry"
 msgstr "Плинри"
 
 #. [event]
-#: data/campaigns/The_South_Guard/scenarios/08a_Return_To_Kerlath.cfg:230
-#: data/campaigns/The_South_Guard/scenarios/08a_Return_To_Kerlath.cfg:231
-#: data/campaigns/The_South_Guard/scenarios/08a_Return_To_Kerlath.cfg:232
-#: data/campaigns/The_South_Guard/scenarios/08a_Return_To_Kerlath.cfg:233
-#: data/campaigns/The_South_Guard/scenarios/08a_Return_To_Kerlath.cfg:234
+#: data/campaigns/The_South_Guard/scenarios/08a_Return_To_Kerlath.cfg:163
+#: data/campaigns/The_South_Guard/scenarios/08a_Return_To_Kerlath.cfg:164
+#: data/campaigns/The_South_Guard/scenarios/08a_Return_To_Kerlath.cfg:165
+#: data/campaigns/The_South_Guard/scenarios/08a_Return_To_Kerlath.cfg:166
+#: data/campaigns/The_South_Guard/scenarios/08a_Return_To_Kerlath.cfg:167
 msgid "Border Guard"
 msgstr "граничар"
 
 #. [message]
-#: data/campaigns/The_South_Guard/scenarios/08a_Return_To_Kerlath.cfg:248
+#: data/campaigns/The_South_Guard/scenarios/08a_Return_To_Kerlath.cfg:181
 msgid ""
 "Tharzo! That meddler who killed the Urza brothers approaches from the south. "
 "His men and horses look worn out."
@@ -3120,7 +3118,7 @@ msgstr ""
 "људи му изгледају изморено."
 
 #. [message]: speaker=Tharzo Kalain
-#: data/campaigns/The_South_Guard/scenarios/08a_Return_To_Kerlath.cfg:253
+#: data/campaigns/The_South_Guard/scenarios/08a_Return_To_Kerlath.cfg:186
 msgid ""
 "The dark gods have put revenge in our laps. Destroy them all before they "
 "reach the border fort!"
@@ -3129,17 +3127,17 @@ msgstr ""
 "граничне утврде!"
 
 #. [message]: speaker=Plynry
-#: data/campaigns/The_South_Guard/scenarios/08a_Return_To_Kerlath.cfg:268
+#: data/campaigns/The_South_Guard/scenarios/08a_Return_To_Kerlath.cfg:201
 msgid "Halt! Who comes to the border of Wesnoth?"
 msgstr "Стој! Ко се приближава веснотској граници?"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/08a_Return_To_Kerlath.cfg:273
+#: data/campaigns/The_South_Guard/scenarios/08a_Return_To_Kerlath.cfg:206
 msgid "It is I, Deoran, commander of the South Guard, and my men."
 msgstr "Ја сам, Деоран, заповедник Јужњачке гарде, с људима."
 
 #. [message]: speaker=Plynry
-#: data/campaigns/The_South_Guard/scenarios/08a_Return_To_Kerlath.cfg:278
+#: data/campaigns/The_South_Guard/scenarios/08a_Return_To_Kerlath.cfg:211
 msgid ""
 "Deoran? You had been thought lost long since. But I see by your men's gear "
 "and drill that they are of the South Guard indeed. Pass.."
@@ -3148,12 +3146,12 @@ msgstr ""
 "људи да сте одиста од Јужњачке гарде. Прођите..."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/08a_Return_To_Kerlath.cfg:283
+#: data/campaigns/The_South_Guard/scenarios/08a_Return_To_Kerlath.cfg:216
 msgid "We, and our elvish allies, have won a great battle against a lich."
 msgstr "Ми, с нашим вилењачким савезницима, однесмо велику победу над косцем."
 
 #. [message]: speaker=Plynry
-#: data/campaigns/The_South_Guard/scenarios/08a_Return_To_Kerlath.cfg:288
+#: data/campaigns/The_South_Guard/scenarios/08a_Return_To_Kerlath.cfg:221
 msgid ""
 "Elvish allies? I think you had best make haste to Westin. There are rumors "
 "of trouble with the elves of the Aethenwood."
@@ -3343,7 +3341,7 @@ msgstr "Далеко од дома страдам — али не и узалу�
 msgid "Vengeance"
 msgstr "Освета"
 
-#. [side]: type=Dismounted Commander 1, id=Deoran
+#. [side]: type=Horseman Commander, id=Deoran
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:46
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:47
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:48
