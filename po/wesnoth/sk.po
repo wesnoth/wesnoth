@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-03-08 22:42+0100\n"
-"PO-Revision-Date: 2009-03-03 21:53+0100\n"
+"PO-Revision-Date: 2009-03-04 23:06+0100\n"
 "Last-Translator: aceman <acelists@atlas.sk>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -1463,7 +1463,6 @@ msgstr ""
 
 #. [topic]: id=healing
 #: data/core/help.cfg:302
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1472,8 +1471,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Oddych: Jednotka, ktorá sa nehýbala, neútočila, ani nikto naútočil na ňu, sa "
-"v ďalšom kole uzdraví o 2 body."
+"Oddych: Jednotka, ktorá sa nehýbala, neútočila, ani nikto neútočil na ňu, sa "
+"v ďalšom kole uzdraví o 2 životy."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:303
@@ -1486,19 +1485,17 @@ msgstr ""
 
 #. [topic]: id=healing
 #: data/core/help.cfg:304
-#, fuzzy
 msgid ""
 "\n"
 "<ref>dst='ability_regenerates' text='Regeneration'</ref>: Certain units "
 "(such as trolls) will automatically heal 8HP every turn."
 msgstr ""
 "\n"
-"<ref>dst=ability_regeneration text='Regenerácia'</ref>: Niektoré jednotky "
-"(napríklad trollovia) sa v každom kole automaticky uzdravia o 8 bodov."
+"<ref>dst='ability_regeneration' text='Regenerácia'</ref>: Niektoré jednotky "
+"(napríklad trollovia) sa v každom kole automaticky uzdravia o 8 životov."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:305
-#, fuzzy
 msgid ""
 "\n"
 "Healing units: Units with the <ref>dst='ability_heals +4' text='Heals'</ref> "
@@ -1507,10 +1504,11 @@ msgid ""
 "turn, or prevent Poison from causing that unit damage."
 msgstr ""
 "\n"
-"Uzdravujúce jednotky: Jednotky so schopnosťou <ref>dst=ability_heals "
+"Uzdravujúce jednotky: Jednotky so schopnosťou <ref>dst='ability_heals +4' "
 "text='uzdravovať'</ref> vyliečia spojenecké jednotky na vedľajších poliach, "
-"zvyčajne o 4 alebo 8 bodov zdravia za kolo; alebo zabránia jedu spôsobiť "
-"jednotke v danom kole zranenie."
+"zvyčajne o <ref>dst='ability_heals +4' text='4'</ref> alebo "
+"<ref>dst='ability_heals +8' text='8'</ref> životov za kolo; alebo zabránia "
+"jedu spôsobiť jednotke v danom kole zranenie."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:306
@@ -2028,14 +2026,15 @@ msgstr ""
 
 #. [topic]: id=traits_weak
 #: data/core/help.cfg:456
-#, fuzzy
 msgid "Weak"
-msgstr "trait^weak"
+msgstr "Slabý"
 
 #. [topic]: id=traits_weak
 #: data/core/help.cfg:457
 msgid "Units with trait Weak get a -1 increment in hitpoints and melee damage."
 msgstr ""
+"Jednotky s vlastnosťou 'slabé' získavajú menej o 1 bod života a spôsobujú o "
+"1 bod zranenia pri útoku zblízka menej."
 
 #. [topic]: id=..terrains
 #: data/core/help.cfg:465
@@ -2341,7 +2340,6 @@ msgstr "Jaskyňa"
 
 #. [topic]: id=terrain_cave
 #: data/core/help.cfg:621
-#, fuzzy
 msgid ""
 "Cave terrain represents any underground cavern with enough room for a unit "
 "to pass. Most units are wholly unfamiliar with the terrain, and thus are "
@@ -2358,7 +2356,7 @@ msgstr ""
 "preto sú tu pomalé a ťažko sa bránia. Trpaslíci a trollovia žijú v "
 "jaskyniach, preto sa tu pomerne ľahko pohybujú; zvlášť trpaslíci, ktorí sa "
 "vďaka menším rozmerom ľahko vyhnú mnohým prekážkam. Jaskyne sú niekedy "
-"<ref>dst=terrain_illuminated_cave text=osvetlené</ref>.\n"
+"<ref>dst='terrain_illuminated_cave' text='osvetlené'</ref>.\n"
 "\n"
 "Väčšina jednotiek má v jaskyniach obranu 20 až 40%, trpaslíci majú 50%."
 
@@ -2369,7 +2367,6 @@ msgstr "Skalnatá jaskyňa"
 
 #. [topic]: id=terrain_rockbound_cave
 #: data/core/help.cfg:633
-#, fuzzy
 msgid ""
 "Rockbound cave terrain is formed by the action of water and wind, carrying "
 "erosive particles that carve the rock. It resembles a scraggy underground "
@@ -2387,8 +2384,8 @@ msgstr ""
 "efektivitu väčšiny jednotiek, ale zlepšuje ich obranu. Trpaslíci a "
 "trollovia, hlavní obyvatelia jaskýň, sa v tomto teréne orientujú pomerne "
 "ľahko. Trpaslíci majú vďaka svojej malej výške v takomto teréne veľké "
-"výhody. Jaskyne sú niekedy <ref>dst=terrain_illuminated_cave text=osvetlené</"
-"ref>.\n"
+"výhody. Jaskyne sú niekedy <ref>dst='terrain_illuminated_cave' "
+"text='osvetlené'</ref>.\n"
 "\n"
 "Väčšina jednotiek má v skalnatej jaskyni obranu okolo 50%, jazda len 40%. "
 "Trpaslíci majú v skalnatej jaskyni obranu 60%."
@@ -2474,7 +2471,6 @@ msgstr "Ponorená dedina"
 
 #. [topic]: id=terrain_water_village
 #: data/core/help.cfg:683
-#, fuzzy
 msgid ""
 "Submerged villages are the homes of Merfolk and Nagas. While water-dwelling "
 "creatures are at home here, land-dwellers have a hard time navigating and "
@@ -2993,7 +2989,6 @@ msgstr "velenie"
 #: data/core/macros/abilities.cfg:118 data/core/macros/abilities.cfg:141
 #: data/core/macros/abilities.cfg:176 data/core/macros/abilities.cfg:223
 #: data/core/macros/abilities.cfg:282
-#, fuzzy
 msgid ""
 "Leadership:\n"
 "This unit can lead our own units that are next to it, making them fight "
@@ -3005,7 +3000,8 @@ msgid ""
 "difference in their levels."
 msgstr ""
 "Velenie:\n"
-"Táto jednotka dokáže viesť jednotky okolo seba, takže bojujú lepšie.\n"
+"Táto jednotka dokáže viesť spojenecké jednotky okolo seba, takže bojujú "
+"lepšie.\n"
 "\n"
 "Jednotky nižšej úrovne na vedľajších políčkach spôsobia v boji väčšie "
 "zranenie. Ak sa jednotka nižšej úrovne nachádza vedľa spojeneckej jednotky s "
@@ -3222,7 +3218,6 @@ msgid "backstab"
 msgstr "zákerný"
 
 #: data/core/macros/abilities.cfg:567
-#, fuzzy
 msgid ""
 "Backstab:\n"
 "When used offensively, this attack deals double damage if there is an enemy "
@@ -3230,7 +3225,7 @@ msgid ""
 "incapacitated (turned to stone or otherwise paralyzed)."
 msgstr ""
 "Zákerný:\n"
-"Tento útok dá dvojnásobné zranenie, ak sa na opačnej strane od obete "
+"Tento útok spôsobí dvojnásobné zranenie, ak sa na opačnej strane od obete "
 "nachádza bojaschopná (čiže nie napríklad skamenená) jednotka nepriateľská k "
 "obeti."
 
@@ -3311,7 +3306,6 @@ msgid "swarm"
 msgstr "húf"
 
 #: data/core/macros/abilities.cfg:654
-#, fuzzy
 msgid ""
 "Swarm:\n"
 "The number of strikes of this attack decreases when the unit is wounded. The "
@@ -3320,9 +3314,9 @@ msgid ""
 "number of strikes."
 msgstr ""
 "Húf:\n"
-"Počet útokov tejto jednotky klesá, keď je zranená. Počet útokov je priamo "
-"úmerný zdraviu jednotky. Napríklad ak má jednotka 3/4 maximálneho počtu "
-"životov, bude mať 3/4 počtu útokov."
+"Počet úderov tohto útoku klesá, keď je jednotka zranená. Počet úderov je "
+"priamo úmerný zdraviu jednotky. Napríklad ak má jednotka 3/4 maximálneho "
+"počtu životov, bude mať 3/4 počtu úderov."
 
 #: data/core/macros/abilities.cfg:663
 msgid "charge"
@@ -3371,17 +3365,17 @@ msgstr ""
 #. [option]: type=behaviour
 #: data/core/macros/ai_controller.cfg:144
 msgid "Be more aggressive"
-msgstr ""
+msgstr "Buď viac agresívny"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:161
 msgid "aggressive."
-msgstr ""
+msgstr "agresívny."
 
 #. [option]: type=behaviour
 #: data/core/macros/ai_controller.cfg:178
 msgid "Be more defensive"
-msgstr ""
+msgstr "Buď viac defenzívny"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:191
@@ -3392,7 +3386,7 @@ msgstr "Obrana"
 #. [option]: type=objective
 #: data/core/macros/ai_controller.cfg:213
 msgid "Focus on defeating..."
-msgstr ""
+msgstr "Sústreď sa na porazenie..."
 
 #. [literal]: speaker=narrator
 #. [value]: speaker=narrator
@@ -3411,7 +3405,7 @@ msgstr "Povedz spojencovi inštrukcie"
 #. [literal]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:230
 msgid "Which enemy side to focus on?"
-msgstr ""
+msgstr "na ktorú nepriateľskú stranu sa sústrediť?"
 
 #. [then]
 #. [else]
@@ -3426,7 +3420,7 @@ msgstr "(strana $temp_i|)"
 #: data/core/macros/ai_controller.cfg:288
 #: data/core/macros/ai_controller.cfg:438
 msgid "$side_i_leader.name (side $temp_i|)"
-msgstr ""
+msgstr "$side_i_leader.name (strana $temp_i|)"
 
 #. [else]
 #: data/core/macros/ai_controller.cfg:293
@@ -3437,7 +3431,7 @@ msgstr "strana $temp_i"
 #. [command]
 #: data/core/macros/ai_controller.cfg:309
 msgid "focusing on defeating $this_enemy_description|."
-msgstr ""
+msgstr "sústreďujem sa na porazenie $this_enemy_description|."
 
 #. [value]
 #. [option]: speaker=narrator
@@ -3451,17 +3445,17 @@ msgstr "Naspäť"
 #. [option]: type=objective
 #: data/core/macros/ai_controller.cfg:359
 msgid "Focus on protecting..."
-msgstr ""
+msgstr "Sústreď sa na ochranu..."
 
 #. [literal]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:376
 msgid "Which friendly side to protect?"
-msgstr ""
+msgstr "Ktorú spriatelenú stranu chrániť?"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:459
 msgid "focusing on protecting $this_ally_description|."
-msgstr ""
+msgstr "sústreďujem sa na ochranu $this_ally_description|."
 
 #. [option]: type=objective
 #: data/core/macros/ai_controller.cfg:511
@@ -3471,40 +3465,37 @@ msgstr "Bráň pozíciu"
 #. [print]
 #: data/core/macros/ai_controller.cfg:527
 msgid "Right-click to select a location to defend"
-msgstr ""
+msgstr "Klikni pravým tlačidlom na označenie bránenej pozície"
 
 #. [set_menu_item]: id=ai_controller_defend_location_picker
 #: data/core/macros/ai_controller.cfg:534
 msgid "Defend this location"
-msgstr ""
+msgstr "Brániť túto pozíciu"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:551
 msgid "focusing on defending the area around $x1|,$y1|."
-msgstr ""
+msgstr "sústreďujem sa na obranu oblasti okolo $x1|,$y1|."
 
 #. [print]
 #: data/core/macros/ai_controller.cfg:586
 msgid "Location selection canceled"
-msgstr ""
+msgstr "Výber pozície zrušený"
 
 #. [option]
 #: data/core/macros/ai_controller.cfg:601
-#, fuzzy
 msgid "Clear objective orders"
-msgstr "Storno"
+msgstr "Vymaž rozkazy o cieľoch"
 
 #. [option]
 #: data/core/macros/ai_controller.cfg:625
-#, fuzzy
 msgid "Clear behavior orders"
-msgstr "Storno"
+msgstr "Vymaž rozkazy správania"
 
 #. [option]
 #: data/core/macros/ai_controller.cfg:649
-#, fuzzy
 msgid "Clear all orders"
-msgstr "Storno"
+msgstr "Vymaž všetky rozkazy"
 
 #. [then]
 #: data/core/macros/ai_controller.cfg:775
@@ -3519,6 +3510,8 @@ msgid ""
 "$ally_leader.name (side $ally_side|) has not been given any instructions and "
 "is acting normally."
 msgstr ""
+"$ally_leader.name (strana $ally_side|) nedostal žiadne inštrukcie a správa "
+"sa normálne."
 
 #. [value]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:811
@@ -3529,13 +3522,17 @@ msgid ""
 "Behavior: $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_behaviour_description"
 msgstr ""
+"Cieľ: $ai_controller.side_$ally_side|_current_settings."
+"currently_doing_objective_description\n"
+"Správanie: $ai_controller.side_$ally_side|_current_settings."
+"currently_doing_behaviour_description"
 
 #. [value]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:825
 msgid ""
 "$ally_leader.name (side $ally_side|) is carrying out the following "
 "instructions:"
-msgstr ""
+msgstr "$ally_leader.name (strana $ally_side|) vykonáva nasledovné inštrukcie:"
 
 #. [literal]
 #: data/core/macros/ai_controller.cfg:840
@@ -3589,18 +3586,24 @@ msgid ""
 "\n"
 "100% of finishing gold carried over to the next scenario."
 msgstr ""
+"\n"
+"100% konečného zlata sa prenáša do ďalšej scény."
 
 #: data/core/macros/carryover-utils.cfg:26
 msgid ""
 "\n"
 "40% of finishing gold carried over to the next scenario."
 msgstr ""
+"\n"
+"40% konečného zlata sa prenáša do ďalšej scény."
 
 #: data/core/macros/carryover-utils.cfg:30
 msgid ""
 "\n"
 "20% of finishing gold carried over to the next scenario."
 msgstr ""
+"\n"
+"20% konečného zlata sa prenáša do ďalšej scény."
 
 #. [message]: speaker=narrator
 #: data/core/macros/items.cfg:39
@@ -4578,6 +4581,8 @@ msgid ""
 "The computer player might not be able to play side $side_number properly in "
 "this scenario. Side $side_number is intended to be played by a human player."
 msgstr ""
+"Počítač možno nebude schopný správne hrať za stranu $side_number v tejto "
+"scéne. Strana $side_number je určená na hranie človekom."
 
 #. [time]: id=deep_underground
 #. [illuminated_time]: id=deep_underground_illum
@@ -4644,13 +4649,12 @@ msgstr ""
 "obrane."
 
 #: data/core/macros/special-notes.cfg:29
-#, fuzzy
 msgid ""
 " The leadership of this unit enables adjacent units of the same side to deal "
 "more damage in combat, though this only applies to units of lower level."
 msgstr ""
-" Velenie umožňuje tejto jednotke zvýšiť zranenie, ktoré jednotky na "
-"vedľajších políčkach spôsobujú v boji; platí to len na jednotky na nižšej "
+" Velenie umožňuje tejto jednotke zvýšiť zranenie, ktoré spojenecké jednotky "
+"na vedľajších políčkach spôsobujú v boji; platí to len na jednotky na nižšej "
 "úrovni."
 
 #: data/core/macros/special-notes.cfg:32
@@ -4728,12 +4732,12 @@ msgstr ""
 "dvojnásobné zranenie."
 
 #: data/core/macros/special-notes.cfg:62
-#, fuzzy
 msgid ""
 " Foes who lose their life to the plague will rise again in unlife, unless "
 "they are standing on a village."
 msgstr ""
-" Nepriateľ, ktorý stratí život morovým útokom, opäť povstane ako nemŕtvy."
+" Nepriateľ, ktorý stratí život morovým útokom, opäť povstane ako nemŕtvy, ak "
+"práve nestojí v dedine."
 
 #: data/core/macros/special-notes.cfg:65
 msgid ""
@@ -4909,9 +4913,10 @@ msgstr "životaschopná"
 
 #. [trait]: id=healthy
 #: data/core/macros/traits.cfg:134
-#, fuzzy
 msgid "Can rest while moving, takes a quarter less poison damage"
-msgstr "Môže odpočívať aj keď sa pohybuje."
+msgstr ""
+"Môže odpočívať aj keď sa pohybuje, jed mu spôsobuje o štvrtinu menšie "
+"zranenia."
 
 #. [trait]: id=fearless
 #: data/core/macros/traits.cfg:151 data/core/macros/traits.cfg:164
@@ -4930,15 +4935,13 @@ msgstr "Bojuje normálne aj počas nevýhodnej dennej/nočnej doby"
 
 #. [trait]: id=weak
 #: data/core/macros/traits.cfg:174
-#, fuzzy
 msgid "weak"
-msgstr "trait^weak"
+msgstr "slabý"
 
 #. [trait]: id=weak
 #: data/core/macros/traits.cfg:175
-#, fuzzy
 msgid "female^weak"
-msgstr "trait^weak"
+msgstr "slabá"
 
 #. [trait]: id=slow
 #: data/core/macros/traits.cfg:192
@@ -6706,6 +6709,8 @@ msgid ""
 "In many campaign scenarios, you may issue simple instructions for your "
 "computer-controlled allies using the right-click context menu."
 msgstr ""
+"V mnohých scénach vo výprave môžeš vydávať jednoduché rozkazy spojencom "
+"ovládaným počítačom pomocou kontextového menu (pravé tlačidlo myši)."
 
 #: data/temp-file_send_data_strings.cfg:12
 msgid "About to upload statistics - Help us make Wesnoth better for you!"
@@ -7004,9 +7009,8 @@ msgid "addon_type^Scenario"
 msgstr "Scéna"
 
 #: src/addon_management.cpp:406
-#, fuzzy
 msgid "addon_type^MP era"
-msgstr "Scéna z iného počítača"
+msgstr "Éra pre zápas"
 
 #: src/addon_management.cpp:408
 #, fuzzy
@@ -7014,14 +7018,12 @@ msgid "addon_type^MP faction"
 msgstr "Scéna z iného počítača"
 
 #: src/addon_management.cpp:410
-#, fuzzy
 msgid "addon_type^MP map-pack"
-msgstr "Scéna z iného počítača"
+msgstr "Mapy pre zápas"
 
 #: src/addon_management.cpp:412
-#, fuzzy
 msgid "addon_type^MP scenario"
-msgstr "Scéna z iného počítača"
+msgstr "Scéna na zápas"
 
 #: src/addon_management.cpp:414
 msgid "addon_type^MP campaign"
@@ -7088,11 +7090,11 @@ msgstr "Sťahujem doplnok: $addon_title|..."
 msgid ""
 "The add-on has an invalid file or directory name and can not be installed."
 msgstr ""
+"Doplnok má chybný názov súboru alebo adresára a nemôže byť nainštalovaný."
 
 #: src/addon_management.cpp:641
-#, fuzzy
 msgid "The add-on '$addon_title|' has been successfully installed."
-msgstr "Doplnok je nainštalovaný."
+msgstr "Doplnok '$addon_title|' je nainštalovaný."
 
 #: src/addon_management.cpp:643
 msgid "Add-on Installed"
@@ -7115,11 +7117,11 @@ msgstr[2] ""
 
 #: src/addon_management.cpp:712
 msgid "Could not find any updated add-ons on this server."
-msgstr ""
+msgstr "Na tomto serveri sa nenašli žiadne aktualizované doplnky."
 
 #: src/addon_management.cpp:712
 msgid "No add-ons to update"
-msgstr ""
+msgstr "Žiadne doplnky nemajú aktualizácie"
 
 #: src/addon_management.cpp:726 src/addon_management.cpp:929
 #: src/dialogs.cpp:647 src/menu_events.cpp:197 src/menu_events.cpp:1007
@@ -7148,7 +7150,7 @@ msgstr "Aktualizovať doplnky"
 
 #: src/addon_management.cpp:782
 msgid "Select an add-on to update:"
-msgstr ""
+msgstr "Vyber doplnok na aktualizovanie:"
 
 #: src/addon_management.cpp:796
 msgid "Update all"
@@ -7159,13 +7161,12 @@ msgid "Update failed"
 msgstr "Aktualizácia sa nepodarila"
 
 #: src/addon_management.cpp:855
-#, fuzzy
 msgid "The following add-on could not be downloaded or updated successfully:"
 msgid_plural ""
 "The following add-ons could not be downloaded or updated successfully:"
-msgstr[0] "Kvôli chybám sa nepodarilo načítať nasledujúce doplňujúce príbehy:"
-msgstr[1] "Kvôli chybám sa nepodarilo načítať nasledujúci doplňujúci príbeh:"
-msgstr[2] "Kvôli chybám sa nepodarilo načítať nasledujúce doplňujúce príbehy:"
+msgstr[0] "Nasledujúce doplnky sa nepodarilo stiahnuť alebo aktualizovať:"
+msgstr[1] "Nasledujúci doplnok sa nepodarilo stiahnuť alebo aktualizovať:"
+msgstr[2] "Nasledujúce doplnky sa nepodarilo stiahnuť alebo aktualizovať:"
 
 #: src/addon_management.cpp:864
 msgid "Update succeeded"
@@ -7173,16 +7174,15 @@ msgstr "Aktualizácia bola úspešná"
 
 #: src/addon_management.cpp:865
 msgid "Add-on updated successfully."
-msgstr ""
+msgstr "Doplnok úspešne aktualizovaný."
 
 #: src/addon_management.cpp:866
 msgid "All add-ons updated successfully."
-msgstr ""
+msgstr "Všetky doplnky úspešne aktualizované."
 
 #: src/addon_management.cpp:889
-#, fuzzy
 msgid "Connecting to add-ons server..."
-msgstr "Pripájam sa na server..."
+msgstr "Pripájam sa na server doplnkov..."
 
 #: src/addon_management.cpp:892
 msgid "Could not connect to host."
@@ -7193,9 +7193,8 @@ msgid "Requesting list of add-ons"
 msgstr "Pýtam si zoznam doplnkov"
 
 #: src/addon_management.cpp:913
-#, fuzzy
 msgid "An error occurred while communicating with the server."
-msgstr "Chyba pri komunikácii so serverom."
+msgstr "Nastala chyba pri komunikácii so serverom."
 
 #: src/addon_management.cpp:929 src/titlescreen.cpp:331
 msgid "Version"
@@ -7244,11 +7243,11 @@ msgid "Remote host disconnected."
 msgstr "Server sa odpojil."
 
 #: src/addon_management.cpp:1072
-#, fuzzy
 msgid ""
 "A problem occurred when trying to create the files necessary to install this "
 "add-on."
-msgstr "Nastala chyba pri vytváraní inštalačných súborov tohto doplnku."
+msgstr ""
+"Nastala chyba pri vytváraní súborov potrebných k inštalácii tohto doplnku."
 
 #: src/addon_management.cpp:1090 src/addon_management.cpp:1145
 #: src/dialogs.cpp:282 src/dialogs.cpp:290 src/menu_events.cpp:616
@@ -7492,9 +7491,8 @@ msgid "Show replay"
 msgstr "Ukáž záznam"
 
 #: src/dialogs.cpp:683
-#, fuzzy
 msgid "Cancel orders"
-msgstr "Storno"
+msgstr "Zruš rozkazy"
 
 #: src/dialogs.cpp:690
 msgid "Delete Save"
@@ -8275,15 +8273,15 @@ msgstr ""
 
 #: src/menu_events.cpp:2136
 msgid "Kick a player or observer."
-msgstr ""
+msgstr "Vykopnúť hráča alebo diváka."
 
 #: src/menu_events.cpp:2138
 msgid "Mute an observer."
-msgstr ""
+msgstr "Umlčať diváka."
 
 #: src/menu_events.cpp:2140
 msgid "Mute all observers."
-msgstr ""
+msgstr "Umlčať divákov."
 
 #: src/menu_events.cpp:2150
 msgid "Send an emotion or personal action in chat."
@@ -8318,9 +8316,8 @@ msgid "Show your ignores and friends list."
 msgstr "Zobraz svoj zoznam ignorovaných a priateľov."
 
 #: src/menu_events.cpp:2170
-#, fuzzy
 msgid "Display version information."
-msgstr "Nenašli sa informácie o ére."
+msgstr "Zobraziť informácie o verzii."
 
 #: src/menu_events.cpp:2172
 msgid "Register your nick"
@@ -8335,9 +8332,8 @@ msgid "Update details for your nick. For possible details see '/details'."
 msgstr ""
 
 #: src/menu_events.cpp:2179
-#, fuzzy
 msgid "Request information about a nick."
-msgstr "Nenašli sa informácie o ére."
+msgstr "Vyžiadaj informácie o nicku."
 
 #: src/menu_events.cpp:2181
 msgid "Request a list of details you can set for your registered nick."
@@ -8381,7 +8377,7 @@ msgstr ""
 
 #: src/menu_events.cpp:2326
 msgid "Disable autosaves."
-msgstr ""
+msgstr "Vypnúť automatické ukladanie."
 
 #: src/menu_events.cpp:2328
 msgid "Advance to the next scenario, or scenario identified by 'id'"
@@ -8397,7 +8393,7 @@ msgstr "Zapni režim ladenia."
 
 #: src/menu_events.cpp:2336
 msgid "Turn debug mode off."
-msgstr ""
+msgstr "Vypnúť režim ladenia."
 
 #: src/menu_events.cpp:2338
 msgid "Set the command used by the custom command hotkey"
@@ -9648,6 +9644,9 @@ msgstr "Pomôž nám urobiť Wesnoth lepším pre teba!"
 #: src/upload_log.cpp:332
 msgid "Enable summary uploads"
 msgstr "Umožni posielanie štatistík"
+
+#~ msgid "Unchecked script files found:"
+#~ msgstr "Našli sa neskontrolované skripty:"
 
 #, fuzzy
 #~ msgid "Reading cache"
