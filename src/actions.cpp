@@ -962,7 +962,7 @@ attack::attack(game_display& gui, const gamemap& map,
 		const double attacker_inflict = static_cast<double>(d_.get_unit().hitpoints()) - defender.average_hp();
 		const double defender_inflict = static_cast<double>(a_.get_unit().hitpoints()) - attacker.average_hp();
 
-		attack_stats.attack_excepted_damage(attacker_inflict,defender_inflict);
+		attack_stats.attack_expected_damage(attacker_inflict,defender_inflict);
 	}
 
 	a_.orig_attacks_ = a_stats_->num_blows;

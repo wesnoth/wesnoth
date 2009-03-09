@@ -54,7 +54,7 @@ namespace statistics
 		long long damage_inflicted, damage_taken;
 		long long turn_damage_inflicted, turn_damage_taken;
 
-		static const long long desimal_shift = 1000;
+		static const int decimal_shift = 1000;
 
 		// Expected value for damage inflicted/taken * 1000, based on
 		// probability to hit,
@@ -92,11 +92,11 @@ namespace statistics
 		attack_context(const unit& a, const unit& d, int a_cth, int d_cth);
 		~attack_context();
 
-		enum ATTACK_RESULT { MISSES, HITS, KILLS };
+		enum hit_result { MISSES, HITS, KILLS };
 
-		void attack_excepted_damage(double attacker_inflict, double defender_inflict);
-		void attack_result(ATTACK_RESULT res, long long damage, long long drain);
-		void defend_result(ATTACK_RESULT res, long long damage, long long drain);
+		void attack_expected_damage(double attacker_inflict, double defender_inflict);
+		void attack_result(hit_result res, int damage, int drain);
+		void defend_result(hit_result res, int damage, int drain);
 
 	private:
 

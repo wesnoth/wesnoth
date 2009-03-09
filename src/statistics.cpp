@@ -87,10 +87,10 @@ std::vector<scenario_stats> master_stats;
 
 } // end anon namespace
 
-static stats& get_stats(std::string save_id)
+static stats &get_stats(const std::string &save_id)
 {
 	if(master_stats.empty()) {
-		master_stats.push_back(scenario_stats(""));
+		master_stats.push_back(scenario_stats(std::string()));
 	}
 
 	std::map<std::string,stats>& team_stats = master_stats.back().team_stats;
@@ -504,96 +504,101 @@ stats& attack_context::defender_stats()
 	return get_stats(defender_side);
 }
 
-void attack_context::attack_excepted_damage(double attacker_inflict_, double defender_inflict_)
+void attack_context::attack_expected_damage(double attacker_inflict_, double defender_inflict_)
 {
-	const long long attacker_inflict = static_cast<long long>(attacker_inflict_ * stats::desimal_shift);
-	const long long defender_inflict = static_cast<long long>(defender_inflict_ * stats::desimal_shift);
-	attacker_stats().new_expected_damage_inflicted	+= attacker_inflict;
-	attacker_stats().new_expected_damage_taken	+= defender_inflict;
-	defender_stats().new_expected_damage_inflicted	+= defender_inflict;
-	defender_stats().new_expected_damage_taken	+= attacker_inflict;
-	attacker_stats().new_turn_expected_damage_inflicted += attacker_inflict;
-	attacker_stats().new_turn_expected_damage_taken	    += defender_inflict;
-	defender_stats().new_turn_expected_damage_inflicted += defender_inflict;
-	defender_stats().new_turn_expected_damage_taken	    += attacker_inflict;
+	int attacker_inflict = static_cast<int>(attacker_inflict_ * stats::decimal_shift);
+	int defender_inflict = static_cast<int>(defender_inflict_ * stats::decimal_shift);
+	stats &att_stats = attacker_stats(), &def_stats = defender_stats();
+	att_stats.new_expected_damage_inflicted += attacker_inflict;
+	att_stats.new_expected_damage_taken     += defender_inflict;
+	def_stats.new_expected_damage_inflicted += defender_inflict;
+	def_stats.new_expected_damage_taken     += attacker_inflict;
+	att_stats.new_turn_expected_damage_inflicted += attacker_inflict;
+	att_stats.new_turn_expected_damage_taken     += defender_inflict;
+	def_stats.new_turn_expected_damage_inflicted += defender_inflict;
+	def_stats.new_turn_expected_damage_taken     += attacker_inflict;
 }
 
 
-void attack_context::attack_result(attack_context::ATTACK_RESULT res, long long damage, long long drain)
+void attack_context::attack_result(hit_result res, int damage, int drain)
 {
 	if(stats_disabled > 0)
 		return;
 
 	attacker_res.push_back(res == MISSES ? '0' : '1');
+	stats &att_stats = attacker_stats(), &def_stats = defender_stats();
 
 	if(res != MISSES) {
 		// handle drain
-		attacker_stats().damage_taken -= drain;
-		defender_stats().damage_inflicted -= drain;
-		attacker_stats().turn_damage_taken -= drain;
-		defender_stats().turn_damage_inflicted -= drain;
+		att_stats.damage_taken          -= drain;
+		def_stats.damage_inflicted      -= drain;
+		att_stats.turn_damage_taken     -= drain;
+		def_stats.turn_damage_inflicted -= drain;
 
-		attacker_stats().damage_inflicted += damage;
-		defender_stats().damage_taken += damage;
-		attacker_stats().turn_damage_inflicted += damage;
-		defender_stats().turn_damage_taken += damage;
+		att_stats.damage_inflicted      += damage;
+		def_stats.damage_taken          += damage;
+		att_stats.turn_damage_inflicted += damage;
+		def_stats.turn_damage_taken     += damage;
 	}
-	const int exp_damage = damage * chance_to_hit_defender * 10;
-	const int exp_drain  = drain  * chance_to_hit_defender * 10;
 
-	attacker_stats().expected_damage_taken -= exp_drain;
-	defender_stats().expected_damage_inflicted -= exp_drain;
-	attacker_stats().turn_expected_damage_taken -= exp_drain;
-	defender_stats().turn_expected_damage_inflicted -= exp_drain;
+	int exp_damage = damage * chance_to_hit_defender * (stats::decimal_shift / 100);
+	int exp_drain  = drain  * chance_to_hit_defender * (stats::decimal_shift / 100);
+
+	att_stats.expected_damage_taken          -= exp_drain;
+	def_stats.expected_damage_inflicted      -= exp_drain;
+	att_stats.turn_expected_damage_taken     -= exp_drain;
+	def_stats.turn_expected_damage_inflicted -= exp_drain;
 
 	// handle drain
-	attacker_stats().expected_damage_inflicted += exp_damage;
-	defender_stats().expected_damage_taken += exp_damage;
-	attacker_stats().turn_expected_damage_inflicted += exp_damage;
-	defender_stats().turn_expected_damage_taken += exp_damage;
+	att_stats.expected_damage_inflicted      += exp_damage;
+	def_stats.expected_damage_taken          += exp_damage;
+	att_stats.turn_expected_damage_inflicted += exp_damage;
+	def_stats.turn_expected_damage_taken     += exp_damage;
 
 	if(res == KILLS) {
-		attacker_stats().killed[defender_type]++;
-		defender_stats().deaths[defender_type]++;
+		++att_stats.killed[defender_type];
+		++def_stats.deaths[defender_type];
 	}
 }
 
-void attack_context::defend_result(attack_context::ATTACK_RESULT res, long long damage, long long drain)
+void attack_context::defend_result(hit_result res, int damage, int drain)
 {
 	if(stats_disabled > 0)
 		return;
 
 	defender_res.push_back(res == MISSES ? '0' : '1');
-
+	stats &att_stats = attacker_stats(), &def_stats = defender_stats();
 
 	if(res != MISSES) {
 		//handle drain
-		defender_stats().damage_taken -= drain;
-		attacker_stats().damage_inflicted -= drain;
-		defender_stats().turn_damage_taken -= drain;
-		attacker_stats().turn_damage_inflicted -= drain;
+		def_stats.damage_taken          -= drain;
+		att_stats.damage_inflicted      -= drain;
+		def_stats.turn_damage_taken     -= drain;
+		att_stats.turn_damage_inflicted -= drain;
 
-		attacker_stats().damage_taken += damage;
-		defender_stats().damage_inflicted += damage;
-		attacker_stats().turn_damage_taken += damage;
-		defender_stats().turn_damage_inflicted += damage;
+		att_stats.damage_taken          += damage;
+		def_stats.damage_inflicted      += damage;
+		att_stats.turn_damage_taken     += damage;
+		def_stats.turn_damage_inflicted += damage;
 	}
-	const long long exp_damage = damage * chance_to_hit_attacker * 10;
-	const long long exp_drain = drain * chance_to_hit_attacker * 10;
-	//handle drain
-	defender_stats().expected_damage_taken -= exp_drain;
-	attacker_stats().expected_damage_inflicted -= exp_drain;
-	defender_stats().turn_expected_damage_taken -= exp_drain;
-	attacker_stats().turn_expected_damage_inflicted -= exp_drain;
 
-	attacker_stats().expected_damage_taken += exp_damage;
-	defender_stats().expected_damage_inflicted += exp_damage;
-	attacker_stats().turn_expected_damage_taken += exp_damage;
-	defender_stats().turn_expected_damage_inflicted += exp_damage;
+	int exp_damage = damage * chance_to_hit_attacker * (stats::decimal_shift / 100);
+	int exp_drain  = drain  * chance_to_hit_attacker * (stats::decimal_shift / 100);
+
+	//handle drain
+	def_stats.expected_damage_taken          -= exp_drain;
+	att_stats.expected_damage_inflicted      -= exp_drain;
+	def_stats.turn_expected_damage_taken     -= exp_drain;
+	att_stats.turn_expected_damage_inflicted -= exp_drain;
+
+	att_stats.expected_damage_taken          += exp_damage;
+	def_stats.expected_damage_inflicted      += exp_damage;
+	att_stats.turn_expected_damage_taken     += exp_damage;
+	def_stats.turn_expected_damage_inflicted += exp_damage;
 
 	if(res == KILLS) {
-		attacker_stats().deaths[attacker_type]++;
-		defender_stats().killed[attacker_type]++;
+		++att_stats.deaths[attacker_type];
+		++def_stats.killed[attacker_type];
 	}
 }
 

@@ -195,28 +195,26 @@ void statistics_dialog::make_damage_line(std::vector<std::string>& items,
 					 const long long& turn_damage,
 					 const long long& turn_expected)
 {
-	const int dsa = statistics::stats::desimal_shift * damage
-	              - expected;
-	const int dst = statistics::stats::desimal_shift * turn_damage
-	              - turn_expected;
+	int shift = statistics::stats::decimal_shift;
 
-	std::stringstream str;
+	int dsa = shift * damage      - expected;
+	int dst = shift * turn_damage - turn_expected;
+
+	std::ostringstream str;
 	str << header << COLUMN_SEPARATOR
 		<< damage << " / "
-		<< (expected/100 / (double)statistics::stats::desimal_shift * 100.0)
+		<< (expected * 10 + shift / 2) / shift * 0.1
 		<< COLUMN_SEPARATOR
-		<< ((dsa > 0) ? "+" : "")
-		<< ((expected == 0) ? 0
-				: 100 * dsa / expected)
-		<< "%" << COLUMN_SEPARATOR
+		<< ((dsa < 0) ^ (expected < 0) ? "" : "+")
+		<< (expected == 0 ? 0 : 100 * dsa / expected)
+		<< '%' << COLUMN_SEPARATOR
 		<< COLUMN_SEPARATOR
 		<< turn_damage << " / "
-		<< (turn_expected/100 / (double)statistics::stats::desimal_shift * 100.0)
+		<< (turn_expected * 10 + shift / 2) / shift * 0.1
 		<< COLUMN_SEPARATOR
-		<< ((dst > 0) ? "+" : "")
-		<< ((turn_expected == 0) ? 0
-				: 100 * dst / turn_expected)
-		<< "%";
+		<< ((dst < 0) ^ (turn_expected < 0) ? "" : "+")
+		<< (turn_expected == 0 ? 0 : 100 * dst / turn_expected)
+		<< '%';
 	items.push_back(str.str());
 
 }
