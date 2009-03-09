@@ -440,22 +440,29 @@ void ai::attack_analysis::analyze(const gamemap& map, unit_map& units,
 				xp_for_advance = 1;
 
 			fight_xp = defend_it->second.level();
-			kill_xp = fight_xp * game_config::kill_experience;
+			kill_xp = fight_xp ? fight_xp * game_config::kill_experience :
+				game_config::kill_experience / 2;
 
-			if (fight_xp >= xp_for_advance)
+			if (fight_xp >= xp_for_advance) {
 				advance_prob = prob_fought;
-			else if (kill_xp >= xp_for_advance)
+				avg_losses -= up->second.cost() * prob_fought;
+			} else if (kill_xp >= xp_for_advance) {
 				advance_prob = prob_killed;
-			avg_losses -= up->second.cost() * advance_prob;
-
-			// The reward for getting a unit closer to advancement
-			// (if it didn't advance) is to get the proportion of
-			// remaining experience needed, and multiply it by
-			// a quarter of the unit cost.
-			// This will cause the AI to heavily favor
-			// getting xp for close-to-advance units.
-			avg_losses -= (up->second.cost()*fight_xp)/(xp_for_advance*4) * (prob_fought - prob_killed);
-			avg_losses -= (up->second.cost()*kill_xp)/(xp_for_advance*4) * prob_killed;
+				avg_losses -= up->second.cost() * prob_killed;
+				// The reward for getting a unit closer to advancement
+				// (if it didn't advance) is to get the proportion of
+				// remaining experience needed, and multiply it by
+				// a quarter of the unit cost.
+				// This will cause the AI to heavily favor
+				// getting xp for close-to-advance units.
+				avg_losses -= up->second.cost() * 0.25 *
+					fight_xp * (prob_fought - prob_killed)
+					/ xp_for_advance;
+			} else {
+				avg_losses -= up->second.cost() * 0.25 *
+					(kill_xp * prob_killed + fight_xp * (prob_fought - prob_killed))
+					/ xp_for_advance;
+			}
 
 			// The reward for killing with a unit that plagues
 			// is to get a 'negative' loss of that unit.
@@ -472,8 +479,10 @@ void ai::attack_analysis::analyze(const gamemap& map, unit_map& units,
 		 * directly.  For each level of attacker def gets 1 xp or
 		 * kill_experience.
 		 */
-		def_avg_experience += up->second.level() *
-			(1.0 - att.hp_dist[0] + game_config::kill_experience * att.hp_dist[0]);
+		int fight_xp = up->second.level();
+		int kill_xp = fight_xp ? fight_xp * game_config::kill_experience :
+				game_config::kill_experience / 2;
+		def_avg_experience += fight_xp * (1.0 - att.hp_dist[0]) + kill_xp * att.hp_dist[0];
 		if (m == movements.begin()) {
 			first_chance_kill = def.hp_dist[0];
 		}
