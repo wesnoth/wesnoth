@@ -697,6 +697,9 @@ bool mouse_handler::unit_in_cycle(unit_map::const_iterator it)
 			it->second.invisible(it->first,units_,teams_))
 		return false;
 
+	if(it->second.get_hidden())
+		return false;
+
 	return true;
 
 }
