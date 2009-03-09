@@ -151,7 +151,8 @@ void tevent_handler::handle_event(const SDL_Event& event)
 		case SDL_MOUSEBUTTONDOWN:
 
 			// The wheel buttons generate and up and down event we handle the
-			// up event so ignore the mouse if it's a down event
+			// up event so ignore the mouse if it's a down event. Handle it
+			// here to avoid a warning.
 			if(event.button.button == SDL_BUTTON_WHEELUP
 					|| event.button.button == SDL_BUTTON_WHEELDOWN
 					|| event.button.button == SDL_BUTTON_WHEELLEFT
@@ -194,7 +195,6 @@ void tevent_handler::handle_event(const SDL_Event& event)
 					// cast to avoid being printed as char.
 					WRN_G_E << "Unhandled 'mouse button down' event for button "
 						<< static_cast<Uint32>(event.button.button) << ".\n";
-					assert(false);
 					break;
 			}
 			break;
@@ -240,7 +240,6 @@ void tevent_handler::handle_event(const SDL_Event& event)
 					// cast to avoid being printed as char.
 					WRN_G_E << "Unhandled 'mouse button up' event for button "
 						<< static_cast<Uint32>(event.button.button) << ".\n";
-					assert(false);
 					break;
 			}
 			break;
