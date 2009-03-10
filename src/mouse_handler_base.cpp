@@ -276,18 +276,24 @@ void mouse_handler_base::init_dragging(bool& dragging_flag)
 
 void mouse_handler_base::clear_dragging(const SDL_MouseButtonEvent& event, bool browse)
 {
-	if (!browse && !commands_disabled && dragging_started_) {
+	// we reset dragging info before calling functions
+	// because they may take time to return, and we
+	// could have started other drag&drop before that
+	cursor::set_dragging(false);
+	if (dragging_started_) {
+		dragging_started_ = false;
 		if (dragging_left_) {
+			dragging_left_ = false;
 			left_drag_end(event.x, event.y, browse);
 		}
 		if (dragging_right_) {
+			dragging_right_ = false;
 			right_drag_end(event.x, event.y, browse);
 		}
+	} else {
+		dragging_left_ = false;
+		dragging_right_ = false;
 	}
-	dragging_left_ = false;
-	dragging_right_ = false;
-	dragging_started_ = false;
-	cursor::set_dragging(false);
 }
 
 
