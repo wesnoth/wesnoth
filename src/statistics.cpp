@@ -22,6 +22,7 @@
 #include "log.hpp"
 #include "serialization/binary_or_text.hpp"
 #include "unit.hpp"
+#include "util.hpp"
 
 #define ERR_NG lg::err(lg::engine)
 #define DBG_NG LOG_STREAM(debug, engine)
@@ -462,8 +463,8 @@ stats& attack_context::defender_stats()
 
 void attack_context::attack_expected_damage(double attacker_inflict_, double defender_inflict_)
 {
-	int attacker_inflict = static_cast<int>(attacker_inflict_ * stats::decimal_shift);
-	int defender_inflict = static_cast<int>(defender_inflict_ * stats::decimal_shift);
+	int attacker_inflict = round_double(attacker_inflict_ * stats::decimal_shift);
+	int defender_inflict = round_double(defender_inflict_ * stats::decimal_shift);
 	stats &att_stats = attacker_stats(), &def_stats = defender_stats();
 	att_stats.expected_damage_inflicted += attacker_inflict;
 	att_stats.expected_damage_taken     += defender_inflict;
