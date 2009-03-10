@@ -134,6 +134,7 @@ public:
 	virtual void right_mouse_up(int x, int y, const bool browse);
 
 protected:
+	void cancel_dragging();
 	void clear_dragging(const SDL_MouseButtonEvent& event, bool browse);
 	void init_dragging(bool& dragging_flag);
 

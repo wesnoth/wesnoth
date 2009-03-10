@@ -129,7 +129,7 @@ void mouse_handler_base::mouse_press(const SDL_MouseButtonEvent& event, const bo
 
 	if (is_left_click(event)) {
 		if (event.state == SDL_PRESSED) {
-			clear_dragging(event, browse);
+			cancel_dragging();
 			init_dragging(dragging_left_);
 			left_click(event.x, event.y, browse);
 		} else if (event.state == SDL_RELEASED) {
@@ -139,7 +139,7 @@ void mouse_handler_base::mouse_press(const SDL_MouseButtonEvent& event, const bo
 		}
 	} else if (is_right_click(event)) {
 		if (event.state == SDL_PRESSED) {
-			clear_dragging(event, browse);
+			cancel_dragging();
 			init_dragging(dragging_right_);
 			right_click(event.x, event.y, browse);
 		} else if (event.state == SDL_RELEASED) {
@@ -272,6 +272,14 @@ void mouse_handler_base::init_dragging(bool& dragging_flag)
 	dragging_flag = true;
 	SDL_GetMouseState(&drag_from_x_, &drag_from_y_);
 	drag_from_hex_ = gui().hex_clicked_on(drag_from_x_, drag_from_y_);
+}
+
+void mouse_handler_base::cancel_dragging()
+{
+	dragging_started_ = false;
+	dragging_left_ = false;
+	dragging_right_ = false;
+	cursor::set_dragging(false);
 }
 
 void mouse_handler_base::clear_dragging(const SDL_MouseButtonEvent& event, bool browse)
