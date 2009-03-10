@@ -225,7 +225,7 @@ public:
 	bool loyal() const {return cfg_["upkeep"]=="loyal"; }
 
 	void set_hidden(bool state);
-	bool get_hidden() { return hidden_; };
+	bool get_hidden() const { return hidden_; };
 	bool is_flying() const { return flying_; }
 	bool is_fearless() const { return is_fearless_; }
 	bool is_healthy() const { return is_healthy_; }
