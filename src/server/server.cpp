@@ -1164,7 +1164,7 @@ void server::process_login(const network::connection sock,
 	}
 
 	if(user_handler_ && user_handler_->user_is_moderator(username)) {
-		LOG_SERVER << "New Admin recognized:" << "\tIP: "
+		LOG_SERVER << "Admin automatically recognized: IP: "
 			<< network::ip_address(sock) << "\tnick: "
 			<< username << std::endl;
 		admins_.insert(sock);
@@ -1175,7 +1175,7 @@ void server::process_login(const network::connection sock,
 
 	// Log the IP
 	ip_log_[username] = network::ip_address(sock);
-	// Remove the oldes entry in the size of the IP log exceeds the maximum size
+	// Remove the oldest entry if the size of the IP log exceeds the maximum size
 	if(ip_log_.size() > max_ip_log_size_) ip_log_.erase(ip_log_.begin());
 }
 
