@@ -739,7 +739,8 @@ AC_STRUCT_TM
 AC_FUNC_ERROR_AT_LINE
 AC_FUNC_STAT
 AC_FUNC_STRFTIME
-AC_CHECK_FUNCS([floor socket strtoul])
+AC_CHECK_LIB(m, floor)
+AC_CHECK_FUNCS([round socket strtoul sendfile])
 
 
 #######################################################################

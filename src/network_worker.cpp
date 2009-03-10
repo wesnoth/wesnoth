@@ -31,15 +31,15 @@
 #include "serialization/binary_or_text.hpp"
 #include "serialization/binary_wml.hpp"
 #include "serialization/parser.hpp"
+#include "wesconfig.h"
 
 #include <cerrno>
 #include <deque>
 
-#ifdef USE_SENDFILE
+#ifdef HAVE_SENDFILE
 #include <sys/sendfile.h>
 #include <netinet/in.h>
 #include <netinet/tcp.h>
-#define HAVE_POLL_H
 #endif
 
 
@@ -472,7 +472,7 @@ static SOCKET_STATE send_buffer(TCPsocket sock, std::vector<char>& buf, int in_s
 	}
 }
 
-#ifdef USE_SENDFILE
+#ifdef HAVE_SENDFILE
 struct cork_setter {
 	cork_setter(int socket) : cork_(1), socket_(socket)
 	{
@@ -498,7 +498,7 @@ static SOCKET_STATE send_file(buffer* buf)
 {
 	size_t upto = 0;
 	size_t filesize = file_size(buf->config_error);
-#ifdef USE_SENDFILE
+#ifdef HAVE_SENDFILE
 	// implements linux sendfile support
 	LOG_NW << "send_file use system sendfile: " << (network_use_system_sendfile?"yes":"no") << "\n";
 	if (network_use_system_sendfile)
