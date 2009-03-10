@@ -20,6 +20,7 @@
 #include <map>
 
 #include "formula.hpp"
+#include "formula_callable.hpp"
 #include "variant.hpp"
 
 namespace game_logic {

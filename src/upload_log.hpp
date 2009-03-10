@@ -14,10 +14,15 @@
 
 #ifndef UPLOAD_LOG_H_INCLUDED
 #define UPLOAD_LOG_H_INCLUDED
+
+#include <string>
+
+#include "config.hpp"
 #include "thread.hpp"
 
 class config;
 class display;
+class game_state;
 class t_string;
 class team;
 class unit_map;

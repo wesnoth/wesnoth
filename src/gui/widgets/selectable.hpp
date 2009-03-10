@@ -17,6 +17,8 @@
 
 namespace gui2 {
 
+class twidget;
+
 /**
  * Small abstract helper class.
  *

@@ -16,11 +16,12 @@
 #ifndef REPLAY_CONTROLLER_H_INCLUDED
 #define REPLAY_CONTROLLER_H_INCLUDED
 
-class video;
-
+#include "game_end_exceptions.hpp"
 #include "play_controller.hpp"
 
 #include <vector>
+
+class video;
 
 class replay_controller : public play_controller
 {

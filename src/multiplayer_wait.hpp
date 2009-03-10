@@ -20,6 +20,7 @@
 #include "widgets/menu.hpp"
 #include "widgets/combo.hpp"
 
+#include "leader_list.hpp"
 #include "gamestatus.hpp"
 #include "multiplayer_ui.hpp"
 

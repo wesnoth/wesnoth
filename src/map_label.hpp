@@ -15,19 +15,17 @@
 #ifndef MAP_LABEL_HPP_INCLUDED
 #define MAP_LABEL_HPP_INCLUDED
 
-class config;
 #include "map_location.hpp"
 #include "font.hpp"
-
-#include "serialization/string_utils.hpp"
 
 #include <map>
 #include <string>
 
+class config;
 class display;
-class terrain_label;
 class game_state;
-
+class team;
+class terrain_label;
 
 
 class map_labels
