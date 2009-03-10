@@ -486,6 +486,7 @@ game_state::game_state(const config& cfg, bool show_replay) :
 	log_scope("read_game");
 
 	const config* snapshot = cfg.child("snapshot");
+	const config* replay_start = cfg.child("replay_start");
 
 	// We have to load era id for MP games so they can load correct era.
 
@@ -502,7 +503,22 @@ game_state::game_state(const config& cfg, bool show_replay) :
 	} else {
 		// Start of scenario save, replays and MP campaign network next scenario
 		// have the recall list stored in root of the config.
-		load_recall_list(cfg.get_children("player"));
+		// Edit: 
+		// Unfortunately, the replay savegame format is not homogeneous. Some savegames
+		// have the player information stored in the starting position, others in the
+		// root of the config. If the starting position player information is available
+		// it will be preferred.
+		if (replay_start != NULL){
+			// Check if we find some player information in the starting position
+			const config::child_list& cfg_players = (*replay_start).get_children("player");
+			if (!cfg_players.empty())
+				load_recall_list(cfg_players);
+			else
+				load_recall_list(cfg.get_children("player"));
+		}
+		else{
+			load_recall_list(cfg.get_children("player"));
+		}
 	}
 
 	LOG_NG << "scenario: '" << scenario << "'\n";
@@ -527,7 +543,6 @@ game_state::game_state(const config& cfg, bool show_replay) :
 		replay_data = *replay;
 	}
 
-	const config* replay_start = cfg.child("replay_start");
 	if(replay_start != NULL) {
 		starting_pos = *replay_start;
 		//This is a quick hack to make replays for campaigns work again:
