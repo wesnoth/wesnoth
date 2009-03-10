@@ -219,7 +219,7 @@ if __name__ == "__main__":
                 if re.escape(options.download).replace("\\_", "_") == options.download:
                     if name == options.download:
                         fetchlist.append((name, version, uploads))
-                elif options.type and options.type == type:
+                elif not options.type or options.type == type:
                     if re.search(options.download, name):
                         fetchlist.append((name, version, uploads))
 
