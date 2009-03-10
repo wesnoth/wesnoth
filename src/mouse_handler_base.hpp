@@ -66,7 +66,7 @@ public:
 	 * @returns true when the caller should not process the mouse motion
 	 * further (i.e. should return), false otherwise.
 	 */
-	bool mouse_motion_default(int x, int y, bool& update);
+	bool mouse_motion_default(int x, int y, bool update);
 
 	/**
 	 * Called when a mouse motion event takes place. Derived classes mustprovide an
