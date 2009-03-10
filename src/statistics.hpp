@@ -60,15 +60,8 @@ namespace statistics
 		// probability to hit,
 		// Use this long term to see how lucky a side is.
 
-		/**
-		 * @todo FIXME: Since integers are used, rounding errors accumulate.
-		 * Also, slow isn't accounted for properly. Rusty's simulator could be
-		 * used obtain valid values.
-		 */
 		long long expected_damage_inflicted, expected_damage_taken;
 		long long turn_expected_damage_inflicted, turn_expected_damage_taken;
-		long long new_expected_damage_inflicted, new_expected_damage_taken;
-		long long new_turn_expected_damage_inflicted, new_turn_expected_damage_taken;
 		std::string save_id;
 	};
 

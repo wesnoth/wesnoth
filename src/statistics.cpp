@@ -208,12 +208,6 @@ static void merge_stats(stats& a, const stats& b)
 	a.turn_damage_taken = b.turn_damage_taken;
 	a.turn_expected_damage_inflicted = b.turn_expected_damage_inflicted;
 	a.turn_expected_damage_taken = b.turn_expected_damage_taken;
-
-	a.new_expected_damage_inflicted += b.new_expected_damage_inflicted;
-	a.new_expected_damage_taken += b.new_expected_damage_taken;
-	// Only take the last value for this turn
-	a.new_turn_expected_damage_inflicted = b.new_turn_expected_damage_inflicted;
-	a.new_turn_expected_damage_taken = b.new_turn_expected_damage_taken;
 }
 
 namespace statistics
@@ -237,10 +231,6 @@ stats::stats() :
 	expected_damage_taken(0),
 	turn_expected_damage_inflicted(0),
 	turn_expected_damage_taken(0),
-	new_expected_damage_inflicted(0),
-	new_expected_damage_taken(0),
-	new_turn_expected_damage_inflicted(0),
-	new_turn_expected_damage_taken(0),
 	save_id()
 {}
 
@@ -262,10 +252,6 @@ stats::stats(const config& cfg) :
 	expected_damage_taken(0),
 	turn_expected_damage_inflicted(0),
 	turn_expected_damage_taken(0),
-	new_expected_damage_inflicted(0),
-	new_expected_damage_taken(0),
-	new_turn_expected_damage_inflicted(0),
-	new_turn_expected_damage_taken(0),
 	save_id(std::string())
 {
 	read(cfg);
@@ -282,7 +268,7 @@ config stats::write() const
 	res.add_child("attacks",write_battle_result_map(attacks));
 	res.add_child("defends",write_battle_result_map(defends));
 
-	std::stringstream ss;
+	std::ostringstream ss;
 	ss << recruit_cost;
 	res["recruit_cost"] = ss.str();
 	ss.str(std::string());
@@ -315,19 +301,6 @@ config stats::write() const
 	ss << turn_expected_damage_taken;
 	res["turn_expected_damage_taken"] = ss.str();
 
-	ss.str(std::string());
-	ss << new_expected_damage_inflicted;
-	res["new_expected_damage_inflicted"] = ss.str();
-	ss.str(std::string());
-	ss << new_expected_damage_taken;
-	res["new_expected_damage_taken"] = ss.str();
-	ss.str(std::string());
-	ss << new_turn_expected_damage_inflicted;
-	res["new_turn_expected_damage_inflicted"] = ss.str();
-	ss.str(std::string());
-	ss << new_turn_expected_damage_taken;
-	res["new_turn_expected_damage_taken"] = ss.str();
-
 	return res;
 }
 
@@ -355,7 +328,7 @@ void stats::write(config_writer &out) const
 	write_battle_result_map(out, defends);
 	out.close_child("defends");
 
-	std::stringstream ss;
+	std::ostringstream ss;
 	ss << recruit_cost;
 	out.write_key_val("recruit_cost", ss.str());
 	ss.str(std::string());
@@ -387,19 +360,6 @@ void stats::write(config_writer &out) const
 	ss.str(std::string());
 	ss << turn_expected_damage_taken;
 	out.write_key_val("turn_expected_damage_taken", ss.str());
-
-	ss.str(std::string());
-	ss << new_expected_damage_inflicted;
-	out.write_key_val("new_expected_damage_inflicted", ss.str());
-	ss.str(std::string());
-	ss << new_expected_damage_taken;
-	out.write_key_val("new_expected_damage_taken", ss.str());
-	ss.str(std::string());
-	ss << new_turn_expected_damage_inflicted;
-	out.write_key_val("new_turn_expected_damage_inflicted", ss.str());
-	ss.str(std::string());
-	ss << new_turn_expected_damage_taken;
-	out.write_key_val("new_turn_expected_damage_taken", ss.str());
 
 	out.write_key_val("save_id", save_id);
 
@@ -445,10 +405,6 @@ void stats::read(const config& cfg)
 	turn_expected_damage_inflicted = lexical_cast<long long>(cfg["turn_expected_damage_inflicted"]);
 	turn_expected_damage_taken = lexical_cast<long long>(cfg["turn_expected_damage_taken"]);
 
-	new_expected_damage_inflicted = lexical_cast_default<long long>(cfg["new_expected_damage_inflicted"],expected_damage_inflicted);
-	new_expected_damage_taken = lexical_cast_default<long long>(cfg["new_expected_damage_taken"],expected_damage_taken);
-	new_turn_expected_damage_inflicted = lexical_cast_default<long long>(cfg["new_turn_expected_damage_inflicted"],turn_expected_damage_inflicted);
-	new_turn_expected_damage_taken = lexical_cast_default<long long>(cfg["new_turn_expected_damage_taken"],turn_expected_damage_taken);
 	save_id = cfg["save_id"];
 }
 
@@ -509,14 +465,14 @@ void attack_context::attack_expected_damage(double attacker_inflict_, double def
 	int attacker_inflict = static_cast<int>(attacker_inflict_ * stats::decimal_shift);
 	int defender_inflict = static_cast<int>(defender_inflict_ * stats::decimal_shift);
 	stats &att_stats = attacker_stats(), &def_stats = defender_stats();
-	att_stats.new_expected_damage_inflicted += attacker_inflict;
-	att_stats.new_expected_damage_taken     += defender_inflict;
-	def_stats.new_expected_damage_inflicted += defender_inflict;
-	def_stats.new_expected_damage_taken     += attacker_inflict;
-	att_stats.new_turn_expected_damage_inflicted += attacker_inflict;
-	att_stats.new_turn_expected_damage_taken     += defender_inflict;
-	def_stats.new_turn_expected_damage_inflicted += defender_inflict;
-	def_stats.new_turn_expected_damage_taken     += attacker_inflict;
+	att_stats.expected_damage_inflicted += attacker_inflict;
+	att_stats.expected_damage_taken     += defender_inflict;
+	def_stats.expected_damage_inflicted += defender_inflict;
+	def_stats.expected_damage_taken     += attacker_inflict;
+	att_stats.turn_expected_damage_inflicted += attacker_inflict;
+	att_stats.turn_expected_damage_taken     += defender_inflict;
+	def_stats.turn_expected_damage_inflicted += defender_inflict;
+	def_stats.turn_expected_damage_taken     += attacker_inflict;
 }
 
 
@@ -540,20 +496,6 @@ void attack_context::attack_result(hit_result res, int damage, int drain)
 		att_stats.turn_damage_inflicted += damage;
 		def_stats.turn_damage_taken     += damage;
 	}
-
-	int exp_damage = damage * chance_to_hit_defender * (stats::decimal_shift / 100);
-	int exp_drain  = drain  * chance_to_hit_defender * (stats::decimal_shift / 100);
-
-	att_stats.expected_damage_taken          -= exp_drain;
-	def_stats.expected_damage_inflicted      -= exp_drain;
-	att_stats.turn_expected_damage_taken     -= exp_drain;
-	def_stats.turn_expected_damage_inflicted -= exp_drain;
-
-	// handle drain
-	att_stats.expected_damage_inflicted      += exp_damage;
-	def_stats.expected_damage_taken          += exp_damage;
-	att_stats.turn_expected_damage_inflicted += exp_damage;
-	def_stats.turn_expected_damage_taken     += exp_damage;
 
 	if(res == KILLS) {
 		++att_stats.killed[defender_type];
@@ -581,20 +523,6 @@ void attack_context::defend_result(hit_result res, int damage, int drain)
 		att_stats.turn_damage_taken     += damage;
 		def_stats.turn_damage_inflicted += damage;
 	}
-
-	int exp_damage = damage * chance_to_hit_attacker * (stats::decimal_shift / 100);
-	int exp_drain  = drain  * chance_to_hit_attacker * (stats::decimal_shift / 100);
-
-	//handle drain
-	def_stats.expected_damage_taken          -= exp_drain;
-	att_stats.expected_damage_inflicted      -= exp_drain;
-	def_stats.turn_expected_damage_taken     -= exp_drain;
-	att_stats.turn_expected_damage_inflicted -= exp_drain;
-
-	att_stats.expected_damage_taken          += exp_damage;
-	def_stats.expected_damage_inflicted      += exp_damage;
-	att_stats.turn_expected_damage_taken     += exp_damage;
-	def_stats.turn_expected_damage_inflicted += exp_damage;
 
 	if(res == KILLS) {
 		++att_stats.deaths[attacker_type];
@@ -659,8 +587,6 @@ void reset_turn_stats(std::string save_id)
 	s.turn_damage_taken = 0;
 	s.turn_expected_damage_inflicted = 0;
 	s.turn_expected_damage_taken = 0;
-	s.new_turn_expected_damage_inflicted = 0;
-	s.new_turn_expected_damage_taken = 0;
 	s.save_id = save_id;
 }
 

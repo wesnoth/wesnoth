@@ -169,18 +169,7 @@ statistics_dialog::statistics_dialog(game_display &disp,
 			stats_.expected_damage_taken,
 			stats_.turn_damage_taken,
 			stats_.turn_expected_damage_taken);
-	items.push_back("New stats:");
 
-	statistics_dialog::make_damage_line(items, _("Inflicted"),
-			stats_.damage_inflicted,
-			stats_.new_expected_damage_inflicted,
-			stats_.turn_damage_inflicted,
-			stats_.new_turn_expected_damage_inflicted);
-	statistics_dialog::make_damage_line(items, _("Taken"),
-			stats_.damage_taken,
-			stats_.new_expected_damage_taken,
-			stats_.turn_damage_taken,
-			stats_.new_turn_expected_damage_taken);
 	set_menu(items);
 }
 
