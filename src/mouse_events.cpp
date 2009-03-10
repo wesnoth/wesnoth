@@ -81,6 +81,13 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 {
 	if (attackmove_) return;
 
+	// we ignore the position coming from event handler
+	// because it's always a little obsolete and we don't need
+	// to hightlight all the hexes where the mouse passed.
+	// Also, sometimes it seems to have one *very* obsolete
+	// and isolated mouse motion event when using drag&drop
+	SDL_GetMouseState(&x,&y);  // <-- modify x and y
+
 	if (mouse_handler_base::mouse_motion_default(x, y, update)) return;
 
 	const map_location new_hex = gui().hex_clicked_on(x,y);
