@@ -242,6 +242,9 @@ if env["prereqs"]:
         conf.CheckCHeader("poll.h", "<>")
         conf.CheckCHeader("sys/poll.h", "<>")
         conf.CheckCHeader("sys/select.h", "<>")
+        conf.CheckFunc("sendfile")
+
+    conf.CheckFunc("round")
 
     if env["forum_user_handler"]:
         env.ParseConfig("mysql_config --libs --cflags")
