@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-03-08 22:44+0100\n"
-"PO-Revision-Date: 2009-02-22 13:47+0300\n"
+"PO-Revision-Date: 2009-03-10 22:53+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -229,7 +229,7 @@ msgstr "Graur-Tanas"
 #. [objective]: condition=win
 #: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:311
 msgid "Reach the signpost"
-msgstr ""
+msgstr "Pasiekite kelrodinį stulpą"
 
 #. [objective]: condition=lose
 #: data/campaigns/Legend_of_Wesmere/scenarios/04_Elvish_Treasury.cfg:103
@@ -464,7 +464,7 @@ msgstr ""
 #. [objective]: condition=win
 #: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:336
 msgid "Kalenz must reach the signpost"
-msgstr ""
+msgstr "Kalenzas privalo pasiekti kelrodinį stulpą"
 
 #. [objective]: condition=win
 #: data/campaigns/Legend_of_Wesmere/scenarios/02_Hostile_mountains.cfg:340
@@ -1624,12 +1624,12 @@ msgstr "truputį patyrusių karių"
 #. [set_variable]
 #: data/campaigns/Legend_of_Wesmere/scenarios/09_Bounty_hunters.cfg:221
 msgid "$left_behind and $l3_selector_store[$i].name"
-msgstr ""
+msgstr "$left_behind ir $l3_selector_store[$i].name"
 
 #. [set_variable]
 #: data/campaigns/Legend_of_Wesmere/scenarios/09_Bounty_hunters.cfg:227
 msgid "$left_behind|, $l3_selector_store[$i].name"
-msgstr ""
+msgstr "$left_behind|, $l3_selector_store[$i].name"
 
 #. [message]: id=Huurgh
 #: data/campaigns/Legend_of_Wesmere/scenarios/09_Bounty_hunters.cfg:241
@@ -1773,7 +1773,7 @@ msgstr "Grifų vadas"
 #. [objective]: condition=win
 #: data/campaigns/Legend_of_Wesmere/scenarios/10_Cliffs_of_Thoria.cfg:105
 msgid "Reach the signpost with Kalenz"
-msgstr ""
+msgstr "Pasiekite kelrodinį stulpą su Kalenzu"
 
 #. [message]: id=Landar
 #: data/campaigns/Legend_of_Wesmere/scenarios/10_Cliffs_of_Thoria.cfg:152
@@ -2075,6 +2075,9 @@ msgid ""
 "\n"
 "What's that, and what does it have to do with us?"
 msgstr ""
+"@Kalenzas\n"
+"\n"
+"Kas tai yra, ir ką tai turi bendro su mumis?"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:108
@@ -2118,6 +2121,9 @@ msgid ""
 "\n"
 "So the orcs will, seeking the Ruby, now attack the humans?"
 msgstr ""
+"@Kalenzas\n"
+"\n"
+"Taigi orkai, ieškodami rubino, dabar užpuls žmones?"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:136
@@ -2601,6 +2607,9 @@ msgid ""
 "that you cut off the orcish reinforcements from the north. They must not be "
 "allowed to enter the battle! Our reinforcements should arrive in a few days."
 msgstr ""
+"Generolas Aldaras gavo jūsų žinią, kad jūs atvyksite. Jis prašo, kad jūs "
+"atkirstumėte orkų pastiprinimus iš šiaurės. Negalima jiems leisti įsitraukti "
+"į mūšį! Mūsų pastiprinimai turėtų atvykti keleto dienų bėgyje."
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/14_Human_Alliance.cfg:277
@@ -2968,6 +2977,7 @@ msgstr "Ozulas"
 #: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die.cfg:243
 msgid "Kill the Orcish Great Chief and Kalenz must reach the signpost"
 msgstr ""
+"Užmuškite Didįjį orkų vadą ir Kalenzas privalo pasiekti kelrodinį stulpą"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die.cfg:273
@@ -3259,7 +3269,7 @@ msgstr "Gulmodas"
 #. [scenario]: id=17_Breaking_the_siege
 #: data/campaigns/Legend_of_Wesmere/scenarios/17_Breaking_the_siege.cfg:3
 msgid "Breaking the siege"
-msgstr ""
+msgstr "Apsiausties pralaužimas"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/17_Breaking_the_siege.cfg:21
@@ -3498,12 +3508,12 @@ msgstr ""
 #. [message]: id=Cleodil
 #: data/campaigns/Legend_of_Wesmere/scenarios/19_Costly_Revenge.cfg:168
 msgid "I fear this will be a bloodbath..."
-msgstr ""
+msgstr "Bijau, kad tai bus kruvinos skerdynės..."
 
 #. [message]: id=Landar
 #: data/campaigns/Legend_of_Wesmere/scenarios/19_Costly_Revenge.cfg:172
 msgid "It is our chance to finish them off..."
-msgstr ""
+msgstr "Tai mūsų šansas galutinai juos pribaigti..."
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/19_Costly_Revenge.cfg:181
@@ -3652,7 +3662,7 @@ msgstr "Oblilas"
 #. [objective]: condition=win
 #: data/campaigns/Legend_of_Wesmere/scenarios/21_Elvish_Assassins.cfg:172
 msgid "Kalenz reaches the signpost"
-msgstr ""
+msgstr "Kalenzas pasiekia kelrodinį stulpą"
 
 #. [unit]: id=Galenor, type=Elvish Scout
 #: data/campaigns/Legend_of_Wesmere/scenarios/21_Elvish_Assassins.cfg:247
@@ -3664,6 +3674,8 @@ msgstr "Galenoras"
 msgid ""
 "My lord Kalenz, you are in great danger! You must leave here immediately."
 msgstr ""
+"Mano valdove Kalenzai, jūs esate dideliame pavojuje! Privalote nedelsdami "
+"išvykti iš čia."
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/21_Elvish_Assassins.cfg:261
