@@ -71,6 +71,7 @@ Select the add-on you want to install from the list and click "OK". The download
             except OSError: pass
             if "." not in icon: icon += ".png"
             src = "./data/core/images/" + icon
+            if os.path.exists(icon): src = icon
             if not os.path.exists(src):
                 src = glob.glob("./data/campaigns/*/images/" + icon)
                 if src: src = src[0]
@@ -82,7 +83,10 @@ Select the add-on you want to install from the list and click "OK". The download
                     imgurl = "icons/" + os.path.basename(icon)
             else:
                 imgurl = "icons/" + os.path.basename(icon)
-            os.system("cp -u " + src + " " + path + "/icons")
+            command = os.path.join(os.path.dirname(__file__),
+                "../unit_tree/TeamColorizer '" + src + "' '" + path + "/"
+                + imgurl + "'")
+            os.system(command)
                 
         type = v("type", "none")
         size = float(v("size", "0"))
