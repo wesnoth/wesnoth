@@ -325,6 +325,7 @@ private:
 	std::string restart_command;
 	size_t max_ip_log_size_;
 	std::string uh_name_;
+	bool deny_unregistered_login_;
 
 	/** Parse the server config into local variables. */
 	void load_config();
@@ -508,6 +509,8 @@ void server::load_config() {
 	motd_ = cfg_["motd"];
 	lan_server_ = lexical_cast_default<time_t>(cfg_["lan_server"], 0);
 	uh_name_ = cfg_["user_handler"];
+
+	deny_unregistered_login_ = utils::string_bool(cfg_["deny_unregistered_login"], false);
 
 	disallowed_names_.clear();
 	if (cfg_["disallow_names"] == "") {
@@ -1103,6 +1106,13 @@ void server::process_login(const network::connection sock,
 		seeds_.erase(sock);
 		user_handler_->user_logged_in(username);
 		}
+	}
+
+	// If we disallow unregistered users and this user is not registered send an error
+	if(user_handler_ && !registered && deny_unregistered_login_) {
+		send_error(sock, ("The nick '" + username + "' is not registered. "
+				"This server disallows unregistered nicks.").c_str(), MP_NAME_UNREGISTERED_ERROR);
+		return;
 	}
 
 	if(p != players_.end()) {
