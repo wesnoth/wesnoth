@@ -92,7 +92,9 @@ public:
 	 */
 	ai_interface(info& arg) : info_(arg), last_interact_(0), user_interact_("ai_user_interact"),
 		unit_recruited_("ai_unit_recruited"), unit_moved_("ai_unit_moved"),
-		enemy_attacked_("ai_enemy_attacked") {}
+		enemy_attacked_("ai_enemy_attacked") {
+		add_ref(); //this class shouldn't be reference counted.
+	}
 	virtual ~ai_interface() {}
 
 	/**
