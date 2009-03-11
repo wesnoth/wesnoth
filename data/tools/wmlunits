@@ -476,7 +476,7 @@ class HTMLOutput:
                                     if sname:
                                         s.append(sname)
                                 s = ", ".join(s)
-                                write(" (%s)" % s)
+                                if s: write(" (%s)" % s)
                             write("<br />")
                         write("</div>")
 
