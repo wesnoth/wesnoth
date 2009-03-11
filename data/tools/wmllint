@@ -455,6 +455,10 @@ def validate_stack(stack, filename, lineno):
     if stack:
         (tag, attributes) = tagstack[-1]
         ancestors = map(lambda x: x[0], tagstack)
+        # Most tags are not allowed with [part]
+        if "part" in ancestors and tag not in ("part", "image", "insert_tag", "if", "then", "else", "deprecated_message"):
+            print '"%s", line %d: [%s] within [part] tag' % (filename, lineno+1, tag)
+        
         #if tag == "sound" and "attack" in ancestors:
         #    print '"%s", line %d: deprecated [sound] within [attack] tag' % (filename, lineno+1)
 
