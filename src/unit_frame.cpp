@@ -479,34 +479,31 @@ bool unit_frame::invalidate(const bool force,const int frame_time,const map_loca
 				image::SCALED_TO_ZOOM
 				);
 	}
+	// we always invalidate our own hex because we need to be called at redraw time even 
+	// if we don't draw anything in the hex itself
+	bool result = false;
 	if (image != NULL) {
 		const int x = static_cast<int>(tmp_offset * xdst + (1.0-tmp_offset) * xsrc)+current_data.x+d2-(image->w/2);
 		const int y = static_cast<int>(tmp_offset * ydst + (1.0-tmp_offset) * ysrc)+current_data.y+d2-(image->h/2);
 		// if we need to update ourselve because we changed, invalidate our hexes
 		// and return whether or not our hexs was invalidated
 		const SDL_Rect r = {x,y,image->w,image->h};
-		if(force || need_update()){
-			bool result = false;
+		if(force || need_update() || disp->rectangle_need_update(r)){
 			// invalidate ouself to be called at redraw time
 			result |= disp->invalidate(src);
 			// invalidate all hex we plan to overwrite
 			result |= disp->invalidate_visible_locations_in_rect(r);
-			return result;
 		}
-		// if not, check if any of our hexes is already invalidated, if any is, invalidate all of them
-		if(disp->rectangle_need_update(r)) {
-			bool result = false;
+	} else {
+		// we have no "redraw surface" but we still need to invalidate our own hex
+		// in case we have a halo and/or sound that needs a redraw
+		if(force || need_update() ){
 			// invalidate ouself to be called at redraw time
 			result |= disp->invalidate(src);
-			// invalidate all hex we plan to overwrite
-			result |= disp->invalidate_visible_locations_in_rect(r);
-			return result;
+			result |= disp->invalidate(dst);
 		}
-		return false;
-
-
 	}
-	return false;
+	return result;
 }
 
 
