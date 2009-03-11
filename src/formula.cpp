@@ -767,7 +767,9 @@ expression_ptr parse_expression(const token* i1, const token* i2, function_symbo
 
 		throw formula_error("Could not parse expression", tokens_to_string(i1, i2), *i1->filename, i1->line_number);
 	}
-
+	if (op + 1 == end) {
+		throw formula_error("Expected another token", tokens_to_string(begin,end-1), *op->filename, op->line_number);
+	}
 	if(op == i1) {
 		try{
 			return expression_ptr(new unary_operator_expression(
@@ -923,7 +925,6 @@ formula::formula(const std::string& str, function_symbol_table* symbols) :
 		expr_ = expression_ptr(new null_expression());
 	}
 }
-
 formula::formula(const token* i1, const token* i2, function_symbol_table* symbols) :
 	expr_(),
 	str_()
