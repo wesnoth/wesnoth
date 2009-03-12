@@ -340,7 +340,7 @@ unit_race::GENDER unit::generate_gender(const unit_type& type, bool gen, game_st
 
 unit::unit(unit_map* unitmap, const gamemap* map, const gamestatus* game_status,
 		const std::vector<team>* /*teams*/, const unit_type* t, int side,
-		bool use_traits, bool dummy_unit, unit_race::GENDER gender, std::string variation) :
+		bool use_traits, bool dummy_unit, unit_race::GENDER gender, std::string variation, bool force_gender) :
 	cfg_(),
 	advances_to_(),
 	type_(),
@@ -361,7 +361,7 @@ unit::unit(unit_map* unitmap, const gamemap* map, const gamestatus* game_status,
 	image_mods_(),
 	unrenamable_(false),
 	side_(side),
-	gender_(dummy_unit ? gender : generate_gender(*t,use_traits)),
+	gender_(dummy_unit||force_gender ? gender : generate_gender(*t,use_traits)),
 	alpha_(),
 	unit_formula_(),
 	unit_loop_formula_(),

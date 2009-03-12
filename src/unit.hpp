@@ -72,7 +72,7 @@ public:
 		const config& cfg, bool use_traits=false, game_state* state = 0);
 	/** Initializes a unit from a unit type */
 	unit(const unit_type* t, int side, bool use_traits=false, bool dummy_unit=false, unit_race::GENDER gender=unit_race::MALE, std::string variation="");
-	unit(unit_map* unitmap, const gamemap* map, const gamestatus* game_status, const std::vector<team>* teams, const unit_type* t, int side, bool use_traits=false, bool dummy_unit=false, unit_race::GENDER gender=unit_race::MALE, std::string variation="");
+	unit(unit_map* unitmap, const gamemap* map, const gamestatus* game_status, const std::vector<team>* teams, const unit_type* t, int side, bool use_traits=false, bool dummy_unit=false, unit_race::GENDER gender=unit_race::MALE, std::string variation="", bool force_gender=false);
 	virtual ~unit();
 	unit& operator=(const unit&);
 
