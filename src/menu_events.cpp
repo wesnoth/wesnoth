@@ -22,6 +22,7 @@
 #include "global.hpp"
 
 #include "dialogs.hpp"
+#include "formatter.hpp"
 #include "formula_ai.hpp"
 #include "filechooser.hpp"
 #include "game_end_exceptions.hpp"
@@ -41,6 +42,7 @@
 #include "unit_display.hpp"
 #include "wml_separators.hpp"
 #include "formula_string_utils.hpp"
+#include "widgets/combo.hpp"
 
 
 #define ERR_NG LOG_STREAM(err, engine)
@@ -1499,6 +1501,7 @@ private:
 	{
 		std::vector<std::string> options;
 		static int last_selection = -1;
+		static bool random_gender = false;
 		std::vector<const unit_type*> unit_choices;
 		const std::string heading = std::string(1,HEADING_PREFIX) +
 									_("Race")      + COLUMN_SEPARATOR +
@@ -1523,8 +1526,15 @@ private:
 		}
 
 		int choice = 0;
+		bool random_gender_choice = random_gender;
 		{
 			gui::dialog umenu(*gui_, _("Create Unit (Debug!)"), "", gui::OK_CANCEL);
+
+			umenu.add_option(
+				(formatter()<<_("Gender: ")<<_("gender^Random")).str(),
+				random_gender_choice,
+				gui::dialog::BUTTON_EXTRA
+			);
 
 			gui::menu::basic_sorter sorter;
 			sorter.set_alpha_sort(0).set_alpha_sort(1);
@@ -1548,13 +1558,20 @@ private:
 
 			choice = umenu.show();
 			choice = filter->get_index(choice);
+			random_gender_choice = umenu.option_checked(0);
 		}
 
 		if (size_t(choice) < unit_choices.size()) {
 			last_selection = choice;
+			random_gender  = random_gender_choice;
+
+			const std::vector<unit_race::GENDER>& genders = (*unit_choices[choice]).genders();
+			const unit_race::GENDER gender =
+				(!genders.empty() ? genders[gamestate_.rng().get_random() % genders.size()] : unit_race::MALE);
+
 			units_.erase(mousehandler.get_last_hex());
 
-			unit chosen(&units_,&map_,&status_,&teams_,unit_choices[choice],1,false);
+			unit chosen(&units_,&map_,&status_,&teams_,unit_choices[choice],1,false,false,gender,"",random_gender);
 			chosen.new_turn();
 			units_.add(new std::pair<map_location,unit>(mousehandler.get_last_hex(),chosen));
 
