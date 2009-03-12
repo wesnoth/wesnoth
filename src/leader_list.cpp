@@ -24,7 +24,7 @@
 #include "wml_separators.hpp"
 #include "widgets/combo.hpp"
 
-const std::string leader_list_manager::random_enemy_picture("units/random-dice.png~RC(magenta>1)");
+const std::string leader_list_manager::random_enemy_picture("units/random-dice.png");
 
 leader_list_manager::leader_list_manager(const config::child_list& side_list,
 		gui::combo* leader_combo , gui::combo* gender_combo):
