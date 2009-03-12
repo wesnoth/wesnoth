@@ -194,6 +194,28 @@ public:
 	}
 };
 
+class dot_callable : public formula_callable {
+public:
+	dot_callable(const formula_callable &global,
+			const formula_callable& local)
+		: global_(global), local_(local) { }
+private:
+	const formula_callable& global_, &local_;
+
+	void get_inputs(std::vector<formula_input>* inputs) const {
+            return local_.get_inputs(inputs);
+	}
+
+	variant get_value(const std::string& key) const {
+            variant v = local_.query_value(key);
+
+            if ( v == variant() )
+		return global_.query_value(key);
+            else
+                return v;
+	}
+};
+
 class dot_expression : public formula_expression {
 public:
 	dot_expression(expression_ptr left, expression_ptr right)
@@ -204,14 +226,17 @@ private:
 		const variant left = left_->evaluate(variables);
 		if(!left.is_callable()) {
 			if(left.is_list()) {
-				return right_->evaluate(list_callable(left));
+                                list_callable list_call(left);
+                                dot_callable callable(variables, list_call);
+				return right_->evaluate(callable);
 			}
 
 			return left;
 		}
 
-		return right_->evaluate(*left.as_callable());
-	}
+                dot_callable callable(variables, *left.as_callable());
+                return right_->evaluate(callable);
+        }
 
 	expression_ptr left_, right_;
 };
