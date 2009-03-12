@@ -574,7 +574,6 @@ unit_type::unit_type() :
 	build_status_(NOT_BUILT),
 	portraits_()
 {
-    DBG_UT << "unit_type default constructor\n";
 	gender_types_[0] = NULL;
 	gender_types_[1] = NULL;
 }
@@ -615,7 +614,6 @@ unit_type::unit_type(const unit_type& o) :
     build_status_(o.build_status_),
 	portraits_(o.portraits_)
 {
-    DBG_UT << "unit_type copy-constructor\n";
 	gender_types_[0] = o.gender_types_[0] != NULL ? new unit_type(*o.gender_types_[0]) : NULL;
 	gender_types_[1] = o.gender_types_[1] != NULL ? new unit_type(*o.gender_types_[1]) : NULL;
 
@@ -663,13 +661,11 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 	build_status_(NOT_BUILT),
 	portraits_()
 {
-    DBG_UT << "unit_type constructor cfg, mv_types, races, traits\n";
 	build_full(cfg, mv_types, races, traits);
 }
 
 unit_type::~unit_type()
 {
-    DBG_UT << "unit_type destructor\n";
     if (gender_types_[unit_race::MALE] != NULL)
         delete gender_types_[unit_race::MALE];
     if (gender_types_[unit_race::FEMALE] != NULL)
@@ -775,8 +771,6 @@ void unit_type::build_full(const config& cfg, const movement_type_map& mv_types,
 	else{
 	    DBG_UT << "no parent found for movement_type " << move_type << "\n";
 	}
-
-	experience_needed_=lexical_cast_default<int>(cfg["experience"],500);
 
 	flag_rgb_ = cfg["flag_rgb"];
 	game_config::add_color_info(cfg);
@@ -920,7 +914,9 @@ void unit_type::build_created(const config& cfg, const movement_type_map& mv_typ
         advances_to_ = utils::split(advances_to_val);
     DBG_UT << "unit_type '" << id_ << "' advances to : " << advances_to_val << "\n";
 
-    build_status_ = CREATED;
+ 	experience_needed_=lexical_cast_default<int>(cfg["experience"],500);
+	
+	build_status_ = CREATED;
 }
 
 const unit_type& unit_type::get_gender_unit_type(unit_race::GENDER gender) const
@@ -1103,7 +1099,10 @@ void unit_type::add_advancement(const unit_type &to_unit,int xp)
 		return;
 	}
 
-	if(xp>0 && experience_needed_>xp) experience_needed_=xp;
+	if( xp > 0 && experience_needed_ > xp){
+        DBG_UT << "Lowering experience_needed from " << experience_needed_ << " to " << xp << " due to [advancefrom] of " << to_id << "\n";
+		experience_needed_ = xp;
+	}
 
 	// Add advancements to gendered subtypes, if supported by to_unit
 	for(int gender=0; gender<=1; ++gender) {
