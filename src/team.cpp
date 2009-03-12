@@ -28,6 +28,23 @@
 #define LOG_NG LOG_STREAM(info, engine)
 #define WRN_NG LOG_STREAM(warn, engine)
 
+//some default values for the AI parameters following the default values listed
+//in the wiki at http://www.wesnoth.org/wiki/AiWML
+
+//A number 0 or higher which determines how many scouts the AI recruits. If 0,
+//the AI doesn't recruit scouts to capture villages.
+const int ai_default_villages_per_scout = 4;
+//A number 0 or higher which determines how much the AI targets enemy leaders.
+const double ai_default_leader_value = 3.0;
+//A number 0 or higher which determines how much the AI tries to capture villages.
+const double ai_default_village_value = 1.0;
+//details see in the [AI] tag explaination in the wiki:
+//http://www.wesnoth.org/wiki/AiWML#the_.5Bai.5D_tag
+const double ai_default_aggression = 0.5;
+//details see in the [AI] tag explaination in the wiki:
+//http://www.wesnoth.org/wiki/AiWML#the_.5Bai.5D_tag
+const double ai_default_caution = 0.25;
+
 namespace {
 	std::vector<team>* teams = NULL;
 }
@@ -100,11 +117,11 @@ team::team_info::team_info(const config& cfg) :
 		ai_algorithm(cfg["ai_algorithm"]),
 		ai_params(),
 		ai_memory_(),
-		villages_per_scout(),
-		leader_value(3.0),
-		village_value(4.5),
-		aggression_(0.5),
-		caution_(0.25),
+		villages_per_scout(ai_default_villages_per_scout),
+		leader_value(ai_default_leader_value),
+		village_value(ai_default_village_value),
+		aggression_(ai_default_aggression),
+		caution_(ai_default_caution),
 		targets(),
 		share_maps(false),
 		share_view(false),
@@ -196,8 +213,8 @@ team::team_info::team_info(const config& cfg) :
 	else
 		controller = AI;
 
-	if(ai_algorithm.empty()
-) {
+	if(ai_algorithm.empty())
+	{
 		ai_algorithm = global_ai_params["ai_algorithm"];
 	}
 
@@ -208,65 +225,65 @@ team::team_info::team_info(const config& cfg) :
 
 	std::string scouts_val = cfg["villages_per_scout"];
 
-	if(scouts_val.empty()
-) {
+	if(scouts_val.empty())
+	{
 		scouts_val = global_ai_params["villages_per_scout"];
 	}
 
 	if(scouts_val.empty()) {
-		villages_per_scout = 8;
+		villages_per_scout = ai_default_villages_per_scout;
 	} else {
 		villages_per_scout = atoi(scouts_val.c_str());
 	}
 
 	std::string leader_val = cfg["leader_value"];
 
-	if(leader_val.empty()
-) {
+	if(leader_val.empty())
+	{
 		leader_val = global_ai_params["leader_value"];
 	}
 
 	if(leader_val.empty()) {
-		leader_value = 3.0;
+		leader_value = ai_default_leader_value;
 	} else {
 		leader_value = atof(leader_val.c_str());
 	}
 
 	std::string village_val = cfg["village_value"];
 
-	if(village_val.empty()
-) {
+	if(village_val.empty())
+	{
 		village_val = global_ai_params["village_value"];
 	}
 
 	if(village_val.empty()) {
-		village_value = 3.0;
+		village_value = ai_default_village_value;
 	} else {
 		village_value = atof(village_val.c_str());
 	}
 
 	std::string aggression_val = cfg["aggression"];
 
-	if(aggression_val.empty()
-) {
+	if(aggression_val.empty())
+	{
 		aggression_val = global_ai_params["aggression"];
 	}
 
 	if(aggression_val.empty()) {
-		aggression_ = 0.3;
+		aggression_ = ai_default_aggression;
 	} else {
 		aggression_ = atof(aggression_val.c_str());
 	}
 
 	std::string caution_val = cfg["caution"];
 
-	if(caution_val.empty()
-) {
+	if(caution_val.empty())
+	{
 		caution_val = global_ai_params["caution"];
 	}
 
 	if(caution_val.empty()) {
-		caution_ = 0.4;
+		caution_ = ai_default_caution;
 	} else {
 		caution_ = atof(caution_val.c_str());
 	}
@@ -277,8 +294,8 @@ team::team_info::team_info(const config& cfg) :
 		can_recruit.insert(*i);
 	}
 
-	if(recruitment_pattern.empty()
-) {
+	if(recruitment_pattern.empty())
+	{
 		recruitment_pattern =
 			utils::split(global_ai_params["recruitment_pattern"]);
 		LOG_NG << "Recruitment pattern: " << global_ai_params["recruitment_pattern"] << "\n";
