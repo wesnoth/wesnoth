@@ -184,9 +184,9 @@ std::vector<std::string> get_available_ais()
 {
     std::vector<std::string> ais;
     ais.push_back("default");
-    ais.push_back("sample_ai");
+    //ais.push_back("sample_ai");
     //ais.push_back("idle_ai");
-    ais.push_back("dfool_ai");
+    //ais.push_back("dfool_ai");
     return ais;
 }
 
