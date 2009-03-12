@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-03-10 00:15+0100\n"
-"PO-Revision-Date: 2009-03-07 18:40+0200\n"
+"PO-Revision-Date: 2009-03-09 06:05+0200\n"
 "Last-Translator: Samu Voutilainen <samu.voutilainen@gmail.com>\n"
 "Language-Team: Finnish\n"
 "MIME-Version: 1.0\n"
@@ -9302,7 +9302,7 @@ msgstr "Palkinto aikaisesta lopetuksesta: "
 
 #: src/playsingle_controller.cpp:188
 msgid "per turn"
-msgstr "vuorossa"
+msgstr "jokaisesta vuorosta"
 
 #: src/playsingle_controller.cpp:189
 msgid "Turns finished early: "
@@ -9314,7 +9314,7 @@ msgstr "Palkinto: "
 
 #: src/playsingle_controller.cpp:194
 msgid "Gold: "
-msgstr "Kultapalaa: "
+msgstr "Kultapaloja: "
 
 #: src/playsingle_controller.cpp:198
 msgid "Carry over percentage: "
@@ -9322,11 +9322,11 @@ msgstr "Yliviennin prosentti: "
 
 #: src/playsingle_controller.cpp:201
 msgid "Bonus Gold: "
-msgstr "Palkintokulta: "
+msgstr "Palkintokultaa: "
 
 #: src/playsingle_controller.cpp:203
 msgid "Retained Gold: "
-msgstr "Kultapalaa jäljellä: "
+msgstr "Jäljelle jäänyttä kultaa:"
 
 #: src/playsingle_controller.cpp:213
 msgid ""
@@ -9336,10 +9336,10 @@ msgid_plural ""
 "You will start the next scenario with $gold on top of the defined minimum "
 "starting gold."
 msgstr[0] ""
-"Aloitat seuraavan skenaarion $gold|:lla kullalla ja lisäksi sille määrätyllä "
+"Aloitat seuraavan skenaarion $gold| kultapalalla ja lisäksi määrätyllä "
 "vähimmäisaloituskullalla."
 msgstr[1] ""
-"Aloitat seuraavan skenaarion $gold|:lla kullalla ja lisäksi sille määrätyllä "
+"Aloitat seuraavan skenaarion $gold| kultapalalla ja lisäksi määrätyllä "
 "vähimmäisaloituskullalla."
 
 #: src/playsingle_controller.cpp:221
@@ -9350,15 +9350,15 @@ msgid_plural ""
 "You will start the next scenario with $gold or its defined minimum starting "
 "gold, whichever is higher."
 msgstr[0] ""
-"Aloitat seuraavan skenaarion $gold|:lla kullalla tai sille määrätyllä "
-"vähimmäisaloituskullalla, riippuen kumpi on suurempi."
+"Aloitat seuraavan skenaarion $gold| kultapalalla tai määrätyllä "
+"vähimmäisaloituskullalla, riippuen siitä, kumpi on suurempi."
 msgstr[1] ""
-"Aloitat seuraavan skenaarion $gold|:lla kullalla tai sille määrätyllä "
-"vähimmäisaloituskullalla, riippuen kumpi on suurempi."
+"Aloitat seuraavan skenaarion $gold| kultapalalla tai määrätyllä "
+"vähimmäisaloituskullalla, riippuen siitä, kumpi on suurempi."
 
 #: src/playsingle_controller.cpp:355
 msgid "Game Over"
-msgstr "Peli loppui"
+msgstr "Loppu"
 
 #: src/playsingle_controller.cpp:356
 msgid "The game is over."
@@ -9378,7 +9378,7 @@ msgstr "Olet voittaja!"
 
 #: src/playsingle_controller.cpp:490 src/playsingle_controller.cpp:548
 msgid "The file you have tried to load is corrupt"
-msgstr "Tiedosto, jonka yritit avata on korruptoitunut"
+msgstr "Tiedosto, jonka yritit avata, on korruptoitunut"
 
 #: src/playsingle_controller.cpp:500
 msgid ""
@@ -9526,7 +9526,7 @@ msgstr "liittolaisen kylä"
 
 #: src/terrain.cpp:149
 msgid "Enemy village"
-msgstr "viholliskylä"
+msgstr "vihollisen kylä"
 
 #: src/terrain.cpp:154
 msgid "Owned village"
@@ -9534,7 +9534,7 @@ msgstr "sinun kyläsi"
 
 #: src/theme.cpp:331
 msgid "border_size should be between 0.0 and 0.5."
-msgstr "border_size pitäisi olla 0.0:n ja 0.5:n välillä."
+msgstr "border_size tulisi olla 0.0:n ja 0.5:n välillä."
 
 #: src/titlescreen.cpp:411
 msgid "TitleScreen button^Tutorial"
@@ -9605,8 +9605,8 @@ msgid ""
 "Play multiplayer (hotseat, LAN, or Internet), or a single scenario against "
 "the AI"
 msgstr ""
-"Pelaa moninpeli (hotseat, LAN, tai Internet) tai yksittäinen skenaario "
-"tietokonetta vastaan"
+"Pelaa moninpeli samalla koneella, lähiverkossa tai internetissä tai "
+"yksittäinen skenaario tietokonetta vastaan"
 
 #: src/titlescreen.cpp:434
 msgid "Load a saved game"

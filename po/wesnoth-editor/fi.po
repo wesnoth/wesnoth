@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.4-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-03-01 12:14+0100\n"
-"PO-Revision-Date: 2007-12-07 21:17+0200\n"
-"Last-Translator: Samu Voutilainen <ec5983@kolumbus.fi>\n"
+"PO-Revision-Date: 2009-03-12 01:40+0200\n"
+"Last-Translator: Simo Sutela <qurnelius@netscape.net>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,22 +19,22 @@ msgstr ""
 #. [brush]
 #: data/core/editor/brushes.cfg:5
 msgid "Single Hex"
-msgstr ""
+msgstr "Yksittäinen heksa"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:15
 msgid "Radius 1 Hex"
-msgstr ""
+msgstr "1 heksan säde"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:25
 msgid "Radius 2 Hex"
-msgstr ""
+msgstr "2 heksan säde"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:55
 msgid "Hex Line NW-SE"
-msgstr ""
+msgstr "Heksalinja luode–kaakko"
 
 #. [editor_group]: id=all
 #: data/core/editor/terrain-groups.cfg:10
@@ -89,7 +89,7 @@ msgstr "linna"
 #. [editor_group]: id=special
 #: data/core/editor/terrain-groups.cfg:79
 msgid "special"
-msgstr ""
+msgstr "erikoinen"
 
 #. [editor_tool_hint]: id=editor-tool-paint
 #. [editor_tool_hint]: id=editor-tool-fill
@@ -101,6 +101,8 @@ msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only."
 msgstr ""
+"Käytä vasenta ja oikeaa hiirennappia edusta- ja taustavärin maalaamiseen. "
+"Pidä shiftiä pohjassa maalataksesi vain taustatasoa."
 
 #. [editor_tool_hint]: id=editor-tool-select
 #. [menu]: id=select_button_editor
@@ -109,6 +111,8 @@ msgid ""
 "Left mouse button selects, right deselects. Hold Shift for magic-wand "
 "selection of tiles with same terrain."
 msgstr ""
+"Vasen hiirennappi valitsee, oikea pyyhkii valinnan. Shift pohjassa valitsee "
+"samanmaastoiset laatat automaattisesti."
 
 #. [editor_tool_hint]: id=editor-tool-starting-position
 #. [menu]: id=start_position_button_editor
@@ -118,6 +122,9 @@ msgid ""
 "scroll to the starting position, alt+number sets respective starting "
 "position under cursor, delete clears."
 msgstr ""
+"Vasen hiirennappi näyttää pelaajavalinnan, oikea pyyhkii. Numeronäppäimet "
+"vierittävät aloituskohtaan, alt+numero asettaa kyseisen aloituskohdan "
+"kursorin kohdalle, delete pyyhkii."
 
 #. [editor_tool_hint]: id=editor-paste
 #: data/core/editor/tool-hints.cfg:30
@@ -125,6 +132,9 @@ msgid ""
 "Click to paste, zoom out for more accuracy when pasting large areas. Use the "
 "edit menu to transform the clipboard (rotate, mirror)."
 msgstr ""
+"Klikkaus liittää; zoomaa kauemmas tarkentaaksesi suurten alueiden "
+"liittämistä. Käytä Muokkaa-valikkoa leikepöydän muokkaamiseen (kierto, "
+"peilaus)."
 
 #. [menu]: id=menu-editor-file
 #: data/themes/editor2.cfg:120
@@ -139,13 +149,12 @@ msgstr "Muokkaa"
 #. [menu]: id=menu-editor-map
 #: data/themes/editor2.cfg:141
 msgid "Map"
-msgstr ""
+msgstr "Kartta"
 
 #. [menu]: id=menu-editor-window
 #: data/themes/editor2.cfg:151
-#, fuzzy
 msgid "Window"
-msgstr "Peruuta"
+msgstr "Ikkuna"
 
 #. [label]: id=villages-icon
 #: data/themes/editor2.cfg:270
@@ -154,105 +163,108 @@ msgstr "kylää"
 
 #: src/editor2/action.cpp:32
 msgid "Error creating action object"
-msgstr ""
+msgstr "Virhe luotaessa toiminto-objektia."
 
 #: src/editor2/action.cpp:36
 msgid "Action not implemented"
-msgstr ""
+msgstr "Toimintoa ei ole luotu."
 
 #: src/editor2/editor_controller.cpp:123
 msgid "Quit Editor"
-msgstr "Lopeta"
+msgstr "Sulje editori"
 
 #: src/editor2/editor_controller.cpp:275
 msgid "Fatal error"
-msgstr ""
+msgstr "Vakava virhe"
 
 #: src/editor2/editor_controller.cpp:289 src/editor2/editor_controller.cpp:984
 msgid "(New Map)"
-msgstr ""
+msgstr "(uusi kartta)"
 
 #: src/editor2/editor_controller.cpp:295
 msgid "Do you really want to quit?"
-msgstr ""
+msgstr "Haluatko todella lopettaa?"
 
 #: src/editor2/editor_controller.cpp:297
 msgid ""
 "Do you really want to quit? Changes in the map since the last save will be "
 "lost."
 msgstr ""
+"Haluatko todella lopettaa? Viime tallennuksen jälkeiset muutokset karttaan "
+"menetetään."
 
 #: src/editor2/editor_controller.cpp:299
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
 msgstr ""
+"Haluatko todella lopettaa? Seuraavia karttoja on muutettu ja kaikki viime "
+"tallennuksen jälkeiset muutokset menetetään:"
 
 #: src/editor2/editor_controller.cpp:304
 msgid "Quit"
-msgstr ""
+msgstr "Lopeta"
 
 #: src/editor2/editor_controller.cpp:359 src/editor2/editor_controller.cpp:471
 #: src/editor2/editor_controller.cpp:507 src/editor2/editor_controller.cpp:529
 msgid "Error"
-msgstr ""
+msgstr "Virhe"
 
 #: src/editor2/editor_controller.cpp:359
 msgid "No editor time-of-day found."
-msgstr ""
+msgstr "Editorin vuorokaudenaikoja ei löytynyt."
 
 #: src/editor2/editor_controller.cpp:395
 msgid "Unsaved Changes"
-msgstr ""
+msgstr "Tallentamattomat muutokset"
 
 #: src/editor2/editor_controller.cpp:396
 msgid ""
 "Do you want to discard all changes you made to the map since the last save?"
 msgstr ""
+"Haluatko hävittää kaikki viime tallennuksen jälkeen karttaan tekemäsi "
+"muutokset?"
 
 #: src/editor2/editor_controller.cpp:409
-#, fuzzy
 msgid "Choose a Map to Open"
-msgstr "Valitse ladattava kartta"
+msgstr "Valitse avattava kartta"
 
 #: src/editor2/editor_controller.cpp:413
 msgid "This map is already open."
-msgstr ""
+msgstr "Valittu kartta on jo avoinna."
 
 #: src/editor2/editor_controller.cpp:451
 msgid "Save the Map As"
 msgstr "Tallenna kartta nimellä"
 
 #: src/editor2/editor_controller.cpp:455
-#, fuzzy
 msgid "The file already exists. Do you want to overwrite it?"
-msgstr "Kartta on jo olemassa. Haluatko korvata sen?"
+msgstr "Tiedosto on jo olemassa. Haluatko korvata sen?"
 
 #: src/editor2/editor_controller.cpp:471
 msgid "No random map generators found."
-msgstr ""
+msgstr "Kartan satunnaisgeneraattoreita ei löydy."
 
 #: src/editor2/editor_controller.cpp:482
 msgid "Map creation failed."
-msgstr ""
+msgstr "Kartan luonti epäonnistui."
 
 #: src/editor2/editor_controller.cpp:497
-#, fuzzy
 msgid "Choose a mask to apply"
-msgstr "Valitse ladattava kartta"
+msgstr "Valitse käytettävä maski"
 
 #: src/editor2/editor_controller.cpp:504
 msgid "Error loading mask"
-msgstr ""
+msgstr "Maskin lataus epäonnistui."
 
 #: src/editor2/editor_controller.cpp:519
 msgid "Choose target map"
-msgstr ""
+msgstr "Valitse kohdekartta"
 
 #: src/editor2/editor_controller.cpp:526 src/editor2/editor_controller.cpp:639
 #: src/editor2/editor_main.cpp:53
 msgid "Error loading map"
-msgstr ""
+msgstr "Kartan lataus epännistui."
 
 #: src/editor2/editor_controller.cpp:615
 msgid "Map saved."
@@ -268,7 +280,7 @@ msgstr "Peruuta"
 
 #: src/editor2/editor_controller.cpp:1013
 msgid "Can't Undo"
-msgstr ""
+msgstr "Ei voi peruuttaa"
 
 #: src/editor2/editor_controller.cpp:1017
 msgid "Redo"
@@ -276,11 +288,11 @@ msgstr "Tee uudelleen"
 
 #: src/editor2/editor_controller.cpp:1019
 msgid "Can't Redo"
-msgstr ""
+msgstr "Ei voi tehdä uudelleen"
 
 #: src/editor2/editor_map.cpp:85
 msgid "Empty map file or file not found"
-msgstr ""
+msgstr "Tyhjä karttatiedosto tai tiedostoa ei löytynyt."
 
 #: src/editor2/editor_map.cpp:166 src/editor2/mouse_action.cpp:385
 msgid "Player"
@@ -288,24 +300,23 @@ msgstr "Pelaaja"
 
 #: src/editor2/editor_map.cpp:285
 msgid "The size of the target map is different from the current map"
-msgstr ""
+msgstr "Kohdekartta on eri kokoinen kuin tämänhetkinen kartta."
 
 #: src/editor2/editor_palettes.cpp:522
 msgid "FG"
-msgstr "Etuala (vasen näppäin)"
+msgstr "Edusta (vasen nappi)"
 
 #: src/editor2/editor_palettes.cpp:524
 msgid "BG"
-msgstr "Taka-ala (oikea näppäin)"
+msgstr "Tausta (oikea nappi)"
 
 #: src/editor2/mouse_action.cpp:382
-#, fuzzy
 msgid "(Player)^None"
-msgstr "Pelaaja"
+msgstr "Ei mikään"
 
 #: src/editor2/mouse_action.cpp:389
 msgid "Choose player"
-msgstr ""
+msgstr "Valitse pelaaja"
 
 #: src/editor2/mouse_action.cpp:390
 msgid ""
@@ -314,10 +325,14 @@ msgid ""
 "the cursor. Pressing a number key by itself will scroll to that player's "
 "starting position."
 msgstr ""
+"Mikä pelaaja aloittaa tästä? Voit käyttää alt-näppäintä ja numeronäppäimiä "
+"pelaajan aloituskohdan asettamiseen ja delete-näppäintä pyyhkimään "
+"aloituskohdan kursorin alla. Pelkän numeronäppäimen painaminen vierittää "
+"kyseisen pelaajan aloituskohtaan."
 
 #: src/gui/dialogs/editor_settings.cpp:119
 msgid "Custom setting"
-msgstr ""
+msgstr "Muokattu asetus"
 
 #~ msgid "Settings"
 #~ msgstr "Asetukset"

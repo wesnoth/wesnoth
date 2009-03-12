@@ -6,14 +6,13 @@ msgstr ""
 "Project-Id-Version: wesnoth-tutorial-fi\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-12-03 19:43+0100\n"
-"PO-Revision-Date: 2009-03-01 20:30+0200\n"
-"Last-Translator: Mikko Nikkilä <miccoh@gmail.com>\n"
+"PO-Revision-Date: 2009-03-11 00:48+0200\n"
+"Last-Translator: Simo Sutela <qurnelius@netscape.net>\n"
 "Language-Team: Finnish <kde-i18n-fi-discussion@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: KBabel 1.11.4\n"
 
 #. [tutorial]: id=tutorial
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:41
@@ -131,7 +130,7 @@ msgid ""
 "*Left click or press spacebar to continue..."
 msgstr ""
 "\n"
-"*Paina hiiren vasenta näppäintä tai välilyöntiä jatkaaksesi..."
+"*Paina hiiren vasenta painiketta tai välilyöntiä jatkaaksesi…"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:197
@@ -214,12 +213,12 @@ msgstr ""
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:314
 msgid "Good morning, Delfador! Is it time to attack things?"
-msgstr "Hyvää huomenta, Delfador! Onko jo aika taistella?"
+msgstr "Hyvää huomenta, Delfador! Onko jo aika tapella?"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:318
 msgid "Um, well..."
-msgstr "Öh, noo..."
+msgstr "Öh, noo…"
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:322
@@ -640,8 +639,8 @@ msgid ""
 "You can right click on a unit to see a detailed Unit Description."
 msgstr ""
 "Vihje:\n"
-"Täydellisen kuvauksen yksiköstä saat, kun napsautat yksikön kohdalla hiiren "
-"oikeaa nappia ja valitset yksikön kuvaus."
+"Tarkan kuvauksen yksiköstä saat, kun napsautat sen kohdalla hiiren oikeaa "
+"painiketta ja valitset ”Yksikön kuvaus”."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:923
@@ -697,7 +696,7 @@ msgstr ""
 "Valittuasi yksikön, näet prosenttilukemia erilaisille maastoruuduille. "
 "Suurempi prosenttiluku tarkoittaa helpompaa puolustautumista. Esimerkiksi "
 "puolustus on hyvä linnoissa ja kylissä, mutta huono joissa. "
-"Harjoittelunukkejen hyökkäykset ovat tosin maagisia, joten niillä on 70 % "
+"Harjoittelunukkejen hyökkäykset ovat tosin maagisia, joten niillä on 70% "
 "mahdollisuus osua sinuun riippumatta siitä missä maastossa olet."
 
 #. [message]: speaker=second_unit
@@ -769,7 +768,7 @@ msgid ""
 "scenario."
 msgstr ""
 "Voittoilmoituksen jälkeen kartta harmaantuu ilmoittamaan skenaarion "
-"loppumisesta, mutta voit vielä tarkastella viimeisia asemia ja joukkojesi "
+"loppumisesta, mutta voit vielä tarkastella viimeisiä asemia ja joukkojesi "
 "kuntoa ennen kuin klikkaat ”Lopeta skenaario” jatkaaksesi seuraavan "
 "skenaarioon."
 
@@ -842,7 +841,7 @@ msgstr ""
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:29
 msgid "Move a unit (fighter if possible) to the patch of forest"
-msgstr "Siirrä yksikkö (taistelija jos mahdollista) metsäkaistaleelle"
+msgstr "Siirrä yksikkö (soturi, jos mahdollista) metsäkaistaleelle"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:36
@@ -1107,7 +1106,7 @@ msgstr ""
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:588
 msgid "No! I said recruit an Elvish SHAMAN! Now try again..."
-msgstr "Ei, minä käskin sinua värväämään haltiaSHAMAANIN! Yritä uudelleen..."
+msgstr "Ei! Käskin sinua värväämään haltiaSHAMAANIN! Yritä uudelleen…"
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:597
@@ -1179,7 +1178,7 @@ msgstr "Elriend"
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:699
 msgid "No! I said RECALL $recall_name2|! Now try again..."
-msgstr "Ei! Käskin KUTSUA yksikön $recall_name2|! Yritä uudestaan…"
+msgstr "Ei! Käskin KUTSUA yksikön $recall_name2|! Yritä uudelleen…"
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:708
@@ -1252,8 +1251,8 @@ msgid ""
 "$recruit.language_name|? I said RECRUIT a new ELVISH FIGHTER. Now try "
 "again..."
 msgstr ""
-"$recruit.language_name|? Käskin sinua VÄRVÄÄMÄÄN HaltiaSOTURIN! Yritä "
-"uudelleen..."
+"$recruit.language_name|? Käskin sinua VÄRVÄÄMÄÄN uuden HALTIASOTURIN! Yritä "
+"uudelleen…"
 
 #. [unit]: id=Elindel, type=Elvish Fighter
 #. [else]
@@ -1341,7 +1340,7 @@ msgid ""
 "of hitting an Elvish Archer in forests."
 msgstr ""
 "Erinomaista. Haltiat ovat hyvin suojassa metsässä. Metsässä ollessa "
-"todennäköisyys osua jousihaltiaan on vain 30 %."
+"todennäköisyys osua jousihaltiaan on vain 30%."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:926
@@ -1351,7 +1350,7 @@ msgid ""
 "Cancel!"
 msgstr ""
 "On erittäin vaarallista seisoa vedessä, kun vihollisia on lähistöllä! "
-"Yksikköösi osutaan 80 % todennäköisyydellä, kun tulee vihollisen "
+"Yksikköösi osutaan 80% todennäköisyydellä, kun tulee vihollisen "
 "vastahyökkäys! Peruuta siirtosi!"
 
 #. [event]
@@ -1414,7 +1413,7 @@ msgstr ""
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:977
 msgid "Recruit another Archer and a Fighter"
-msgstr "Värvää toinen jousihaltia ja soturi"
+msgstr "Värvää vielä jousihaltia ja soturi"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:992
@@ -1458,7 +1457,7 @@ msgstr "Eivätkö yksikkömme voi vain kiertää örkin ohitse?"
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1028
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1029
 msgid "ZoC"
-msgstr "UGH!"
+msgstr "YHA"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1032
@@ -1526,7 +1525,7 @@ msgid ""
 "attack you!"
 msgstr ""
 "On erittäin vaarallista olla vedessä, kun vihollisia on lähettyvillä! "
-"Yksikköösi osutaan 80 % todennäköisyydellä! Peru siirtosi ja odota, että he "
+"Yksikköösi osutaan 80% todennäköisyydellä! Peru siirtosi ja odota, että he "
 "hyökkäävät sinua vastaan!"
 
 #. [event]
@@ -1556,7 +1555,7 @@ msgid ""
 "day. Elves are neutral: unaffected by night and day."
 msgstr ""
 "Varovasti! Nyt on yö. Örkit ovat kaoottisia. Se tarkoittaa, että niiden "
-"hyökkäykset ovat 25 % voimakkaampia yöllä ja 25 % heikompia päivällä. Sinä "
+"hyökkäykset ovat 25% voimakkaampia yöllä ja 25% heikompia päivällä. Sinä "
 "olet lainkuuliainen eli voimakkaampi päivällä. Haltiat ovat neutraaleja, "
 "joihin yö ja päivä eivät vaikuta."
 
@@ -1609,8 +1608,8 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1181
 msgid "You only need to defeat the leader to win (see Main Menu->Objectives)."
 msgstr ""
-"Sinun riittää kukistaa ainoastaan vihollisjohtaja voittaaksesi (ks. Valikko "
-"→ Skenaarion tavoitteet)."
+"Sinun tarvitsee ainoastaan kukistaa vihollisjohtaja voittaaksesi (ks. "
+"Valikko → Skenaarion tavoitteet)."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1186
@@ -1732,7 +1731,7 @@ msgid ""
 "damage each for 4 attacks. Use me to dislodge hard-to-hit units."
 msgstr ""
 "Seuraavalle tasolle yleneminen on parantanut minut täysin!\n"
-"Minulla on aina 60 % mahdollisuus osua jousellani ja teen 9 elämäpistettä "
+"Minulla on aina 60% mahdollisuus osua jousellani ja teen 9 elämäpistettä "
 "vahinkoa jokaisella neljällä hyökkäykselläni. Käytä minua vaikeasti "
 "osuttavia vihollisia vastaan."
 
@@ -1758,7 +1757,7 @@ msgid ""
 msgstr ""
 "Seuraavalle tasolle yleneminen on parantanut minut täysin!\n"
 "Olen hyvä taistelemaan sekä miekalla että jousella ja minulla on myös "
-"erikoiskyky: johtaja. Tason yksi yksiköt tekevät ympärilläni 25 % enemmän "
+"erikoiskyky: johtaja. Tason yksi yksiköt tekevät ympärilläni 25% enemmän "
 "vahinkoa, joten sinun on syytä sijoittaa minut huolellisesti."
 
 #. [message]: speaker=unit
