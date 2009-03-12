@@ -539,11 +539,11 @@ def create_recruits_map(ai*)
 		[
 			set_var('recruits_map_creator', turn ),
 			set_var('recruits_map',
-				recruitment_list_builder(
-					eval(ai),
-					evaluate_attackers(ai),
-					evaluate_defenders(ai)
-				)
+				debug_print('final unit evaluation: ', recruitment_list_builder(
+					debug_print('current AI evaluation (0-100): ', eval(ai)),
+					debug_print('attackers evaluation: ',evaluate_attackers(ai)),
+					debug_print('defenders evaluation: ',evaluate_defenders(ai))
+				))
 			)
 		],
 		[]
