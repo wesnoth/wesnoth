@@ -126,7 +126,7 @@ public:
 	game_display& disp();
 
 	bool init_video();
-	bool init_config();
+	bool init_config(const bool force=false);
 	bool init_language();
 	bool play_test();
 	bool play_multiplayer_mode();
@@ -163,7 +163,7 @@ private:
 	game_controller(const game_controller&);
 	void operator=(const game_controller&);
 
-	void load_game_cfg();
+	void load_game_cfg(const bool force=false);
 	void reset_translations();
 	void set_unit_data();
 
@@ -577,14 +577,14 @@ bool game_controller::init_video()
 	return true;
 }
 
-bool game_controller::init_config()
+bool game_controller::init_config(const bool force)
 {
 	cache_.clear_defines();
 
 	// make sure that multiplayer mode is set if command line parameter is selected
 	if (multiplayer_mode_)
 		cache_.add_define("MULTIPLAYER");
-	load_game_cfg();
+	load_game_cfg(force);
 
 	game_config::load_config(game_config_.child("game_config"));
 	hotkey::deactivate_all_scopes();
@@ -1214,7 +1214,7 @@ namespace
 		cache_.recheck_filetree_checksum();
 		old_defines_map_.clear();
 		clear_binary_paths_cache();
-		init_config();
+		init_config(true);
 	}
 
 void game_controller::start_wesnothd()
@@ -1475,10 +1475,10 @@ void game_controller::reset_translations()
 
 }
 
-void game_controller::load_game_cfg()
+void game_controller::load_game_cfg(const bool force)
 {
 	gui::set_background_dirty();
-	if (!game_config_.empty()
+	if (!game_config_.empty() && !force
 			&& old_defines_map_ == cache_.get_preproc_map())
 		return; // game_config already holds requested config in memory
 	old_defines_map_ = cache_.get_preproc_map();
