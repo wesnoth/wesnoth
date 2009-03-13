@@ -452,7 +452,7 @@ void game::change_controller(const size_t side_num,
 				+ " takes control of side " + side + ".").c_str());
 		side_controllers_[side_num] = "human";
 	} else {
-		send_and_record_server_message((player_name + (controller == "human_ai" ? "" : "un")
+		send_and_record_server_message((player_name + (controller == "human_ai" ? " " : " un")
 				+ "droids side " + side + ".").c_str());
 		side_controllers_[side_num] = (controller == "human_ai" ? "ai" : "human");
 	}
