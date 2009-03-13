@@ -235,6 +235,20 @@ bool make_change_diff(const simple_wml::node& src,
 	return true;
 }
 
+std::string player_status(wesnothd::player_map::const_iterator pl) {
+	std::ostringstream out;
+	const network::connection_stats& stats = network::get_connection_stats(pl->first);
+	const int time_connected = stats.time_connected/1000;
+	const int seconds = time_connected%60;
+	const int minutes = (time_connected/60)%60;
+	const int hours = time_connected/(60*60);
+	out << "'" << pl->second.name() << "' @ " << network::ip_address(pl->first)
+		<< " connected for " << hours << ":" << minutes << ":" << seconds
+		<< " sent " << stats.bytes_sent << " bytes, received "
+		<< stats.bytes_received << " bytes";
+	return out.str();
+}
+
 }
 class fps_limiter {
 	size_t start_ticks_;
@@ -1201,9 +1215,7 @@ void server::process_query(const network::connection sock,
 	const std::string& help_msg = "Available commands are: help, games, metrics,"
 			" motd, netstats [all], stats, status, wml.";
 	// Commands a player may issue.
-	if (command == "help" || command.empty()) {
-		response << help_msg;
-	} else if (command == "status") {
+	if (command == "status") {
 		response << process_command(command.to_string() + " " + pl->second.name(), pl->second.name());
 	} else if (command == "games"
 			|| command == "metrics"
@@ -1233,6 +1245,8 @@ void server::process_query(const network::connection sock,
 				<< "\tnick: "<< pl->second.name() << std::endl;
 			response << process_command(command.to_string(), pl->second.name());
 		}
+	} else if (command == "help" || command.empty()) {
+		response << help_msg;
 	} else if (command == admin_passwd_) {
 		LOG_SERVER << "New Admin recognized: IP: "
 			<< network::ip_address(sock) << "\tnick: "
@@ -1275,7 +1289,7 @@ std::string server::process_command(const std::string& query, const std::string&
 	std::string parameters = (i == query.end() ? "" : std::string(i+1,query.end()));
 	utils::strip(parameters);
 	const std::string& help_msg = "Available commands are: ban <mask> [<time>] <reason>,"
-			" bans [deleted], kick <mask> [<reason>], k[ick]ban <mask> [<time>] <reason>,"
+			" bans [deleted], clones, kick <mask> [<reason>], k[ick]ban <mask> [<time>] <reason>,"
 			" help, games, metrics, netstats [all], [lobby]msg <message>, motd [<message>],"
 			" requests, stats, status [<mask>], searchlog <mask>, signout, unban <ipmask>";
 	// Shutdown, restart and sample commands can only be issued via the socket.
@@ -1373,15 +1387,25 @@ std::string server::process_command(const std::string& query, const std::string&
 			if (parameters == "" || parameters == "*"
 			|| (match_ip && utils::wildcard_string_match(network::ip_address(pl->first), parameters))
 			|| (!match_ip && utils::wildcard_string_match(pl->second.name(), parameters))) {
-				const network::connection_stats& stats = network::get_connection_stats(pl->first);
-				const int time_connected = stats.time_connected/1000;
-				const int seconds = time_connected%60;
-				const int minutes = (time_connected/60)%60;
-				const int hours = time_connected/(60*60);
-				out << "\n'" << pl->second.name() << "' @ " << network::ip_address(pl->first)
-					<< " connected for " << hours << ":" << minutes << ":" << seconds
-					<< " sent " << stats.bytes_sent << " bytes, received "
-					<< stats.bytes_received << " bytes";
+				out << std::endl << player_status(pl);
+			}
+		}
+	} else if (command == "clones") {
+		out << "CLONES STATUS REPORT";
+		std::set<std::string> clones;
+		for (wesnothd::player_map::const_iterator pl = players_.begin(); pl != players_.end(); ++pl) {
+			if (clones.find(network::ip_address(pl->first)) != clones.end()) continue;
+			bool found = false;
+			for (wesnothd::player_map::const_iterator clone = players_.begin(); clone != players_.end(); ++clone) {
+				if (pl->first == clone->first) continue;
+				if (network::ip_address(pl->first) == network::ip_address(clone->first)) {
+					if (!found) {
+						found = true;
+						clones.insert(network::ip_address(pl->first));
+						out << std::endl << player_status(pl);
+					}
+					out << std::endl << player_status(clone);
+				}
 			}
 		}
 	} else if (command == "bans") {
