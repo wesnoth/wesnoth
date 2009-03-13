@@ -37,6 +37,9 @@ namespace settings {
 	unsigned screen_width = 0;
 	unsigned screen_height = 0;
 
+	unsigned gamemap_width = 0;
+	unsigned gamemap_height = 0;
+
 	unsigned popup_show_delay = 0;
 	unsigned popup_show_time = 0;
 	unsigned help_show_time = 0;

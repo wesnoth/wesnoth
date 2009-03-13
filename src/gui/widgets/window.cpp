@@ -23,6 +23,7 @@
 
 #include "font.hpp"
 #include "foreach.hpp"
+#include "game_display.hpp"
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 #include "gui/widgets/debug.hpp"
 #endif
@@ -144,6 +145,15 @@ void twindow::update_screen_size()
 		const SDL_Rect rect = screen_area();
 		settings::screen_width = rect.w;
 		settings::screen_height = rect.h;
+
+		game_display* display = game_display::get_singleton();
+		if(display) {
+			settings::gamemap_width = display->map_area().w;
+			settings::gamemap_height = display->map_area().h;
+		} else {
+			settings::gamemap_width = settings::screen_width;
+			settings::gamemap_height = settings::screen_height;
+		}
 	}
 }
 
@@ -401,6 +411,8 @@ void twindow::draw()
 void twindow::window_resize(tevent_handler&,
 		const unsigned new_width, const unsigned new_height)
 {
+	settings::gamemap_width += new_width - settings::screen_width ;
+	settings::gamemap_height += new_height - settings::screen_height ;
 	settings::screen_width = new_width;
 	settings::screen_height = new_height;
 	invalidate_layout();

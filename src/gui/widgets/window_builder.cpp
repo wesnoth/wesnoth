@@ -408,8 +408,14 @@ twindow_builder::tresolution::tresolution(const config& cfg) :
  * This is needed since the main window can be resized and the dialog needs to
  * resize accordingly. The following variables are available:
  * @start_table = formula
- *     screen_width unsigned         The usable width of the wesnoth main window.
- *     screen_height unsigned        The usable height of the wesnoth main window.
+ *     screen_width unsigned         The usable width of the Wesnoth main window.
+ *     screen_height unsigned        The usable height of the Wesnoth main window.
+ *     gamemap_width unsigned        The usable width of the Wesnoth gamemap,
+ *                                   if no gamemap shown it's the same value as
+ *                                   screen_width.
+ *     gamemap_height unsigned       The usable height of the Wesnoth gamemap,
+ *                                   if no gamemap shown it's the same value as
+ *                                   screen_height.
  * @end_table
  */
 

@@ -436,6 +436,13 @@ private:
 		extern unsigned screen_width;
 		extern unsigned screen_height;
 
+		/**
+		 * The size of the map area, if not available equal to the screen
+		 * size.
+		 */
+		extern unsigned gamemap_width;
+		extern unsigned gamemap_height;
+
 		/** These are copied from the active gui. */
 		extern unsigned popup_show_delay;
 		extern unsigned popup_show_time;
