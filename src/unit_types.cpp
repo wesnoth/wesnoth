@@ -28,8 +28,9 @@
 
 
 #define ERR_CONFIG LOG_STREAM(err, config)
-#define LOG_CONFIG LOG_STREAM(info,config)
-#define WRN_CONFIG LOG_STREAM(warn,config)
+#define WRN_CONFIG LOG_STREAM(warn, config)
+#define LOG_CONFIG LOG_STREAM(info, config)
+#define DBG_CONFIG LOG_STREAM(debug, config)
 #define DBG_UT LOG_STREAM(debug, engine)
 #define LOG_UT LOG_STREAM(info, engine)
 #define ERR_UT LOG_STREAM(err, engine)
@@ -1223,7 +1224,7 @@ unit_type_data::unit_type_map::const_iterator unit_type_data::unit_type_map_wrap
 
     unit_type_map::iterator itor = types_.find(key);
 
-    LOG_CONFIG << "trying to find " << key  << " in unit_type list (unit_type_data.unit_types)\n";
+    DBG_CONFIG << "trying to find " << key  << " in unit_type list (unit_type_data.unit_types)\n";
 
     //This might happen if units of another era are requested (for example for savegames)
     if (itor == types_.end()){

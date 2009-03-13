@@ -989,7 +989,7 @@ const std::vector<std::string>& get_binary_paths(const std::string& type)
 
 std::string get_binary_file_location(const std::string& type, const std::string& filename)
 {
-	LOG_FS << "Looking for '" << filename << "'.\n";
+	DBG_FS << "Looking for '" << filename << "'.\n";
 
 	if (filename.empty()) {
 		LOG_FS << "  invalid filename (type: " << type <<")\n";
@@ -1015,18 +1015,18 @@ std::string get_binary_file_location(const std::string& type, const std::string&
 		const std::string file = path + filename;
 		DBG_FS << "  checking '" << path << "'\n";
 		if(file_exists(file)) {
-			LOG_FS << "  found at '" << file << "'\n";
+			DBG_FS << "  found at '" << file << "'\n";
 			return file;
 		}
 	}
 
-	LOG_FS << "  not found\n";
+	DBG_FS << "  not found\n";
 	return std::string();
 }
 
 std::string get_binary_dir_location(const std::string &type, const std::string &filename)
 {
-	LOG_FS << "Looking for '" << filename << "'.\n";
+	DBG_FS << "Looking for '" << filename << "'.\n";
 
 	if (filename.empty()) {
 		LOG_FS << "  invalid filename (type: " << type <<")\n";
@@ -1043,18 +1043,18 @@ std::string get_binary_dir_location(const std::string &type, const std::string &
 		const std::string file = path + filename;
 		DBG_FS << "  checking '" << path << "'\n";
 		if (is_directory(file)) {
-			LOG_FS << "  found at '" << file << "'\n";
+			DBG_FS << "  found at '" << file << "'\n";
 			return file;
 		}
 	}
 
-	LOG_FS << "  not found\n";
+	DBG_FS << "  not found\n";
 	return std::string();
 }
 
 std::string get_wml_location(const std::string &filename, const std::string &current_dir)
 {
-	LOG_FS << "Looking for '" << filename << "'.\n";
+	DBG_FS << "Looking for '" << filename << "'.\n";
 
 	std::string result;
 
@@ -1096,11 +1096,11 @@ std::string get_wml_location(const std::string &filename, const std::string &cur
 	if (result.empty() ||
 	    (!already_found && !file_exists(result) && !is_directory(result)))
 	{
-		LOG_FS << "  not found\n";
+		DBG_FS << "  not found\n";
 		result.clear();
 	}
 	else
-		LOG_FS << "  found: '" << result << "'\n";
+		DBG_FS << "  found: '" << result << "'\n";
 
 	return result;
 }
