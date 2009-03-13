@@ -872,6 +872,28 @@ def output(isocode):
     for c in stuff.campaign_lookup.keys():
         stuff.is_mainline_campaign[c] = True
 
+    print "Parsing addons ...",
+    sys.stdout.flush()
+    n = stuff.add_addons(image_collector)
+    print "%d units found." % n
+
+    # Now we read each addon campaign in turn to get its units.
+    cnames = stuff.campaign_lookup.keys()
+    for cname in cnames:
+        if cname in stuff.is_mainline_campaign: continue
+        campaign = stuff.campaign_lookup[cname]
+        print "Parsing %s units ..." % cname,
+        sys.stdout.flush()
+
+        define = campaign.get_text_val("define")
+        WML = stuff.parser.parse("""
+            #define %s\n#enddef
+            {~campaigns}""" % define,
+            ignore_macros = lambda x: x.find("/scenarios") == -1)
+        n = stuff.add_units(WML, cname)
+        image_collector.add_binary_pathes_from_WML(cname, WML)
+        print n, "units found."
+
     # Parse all unit data
     # This reads in units.cfg, giving us all the mainline units.
     print "Parsing mainline units ...",
@@ -894,29 +916,7 @@ def output(isocode):
         n = stuff.add_units(WML, cname)
         image_collector.add_binary_pathes_from_WML(cname, WML)
         print n, "units found."
-
     sys.stderr.flush()
-    print "Parsing addons ...",
-    sys.stdout.flush()
-    n = stuff.add_addons(image_collector)
-    print "%d units found." % n
-    
-    # Now we read each addon campaign in turn to get its units.
-    cnames = stuff.campaign_lookup.keys()
-    for cname in cnames:
-        if cname in stuff.is_mainline_campaign: continue
-        campaign = stuff.campaign_lookup[cname]
-        print "Parsing %s units ..." % cname,
-        sys.stdout.flush()
-
-        define = campaign.get_text_val("define")
-        WML = stuff.parser.parse("""
-            #define %s\n#enddef
-            {~campaigns}""" % define,
-            ignore_macros = lambda x: x.find("/scenarios") == -1)
-        n = stuff.add_units(WML, cname)
-        image_collector.add_binary_pathes_from_WML(cname, WML)
-        print n, "units found."
 
     stuff.find_unit_factions()
 
