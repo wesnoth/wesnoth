@@ -476,6 +476,14 @@ void unit_map::insert(std::pair<map_location,unit> *p)
 	size_t unit_id = p->second.underlying_id();
 	umap::iterator iter = map_.find(unit_id);
 
+	// TODO: should also check for out-of-map locations.
+	if (!p->first.valid()) {
+		ERR_NG << "Trying to add " << p->second.name() <<
+			" - " << p->second.id() << " at an invalid location; Discarding.\n";
+		delete p;
+		return;
+	}
+
 	if (iter == map_.end()) {
 		map_[unit_id] = std::make_pair(true, p);
 	} else if(!iter->second.first) {
