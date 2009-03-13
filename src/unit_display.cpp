@@ -72,6 +72,7 @@ static void move_unit_between(const map_location& a, const map_location& b, unit
         animator.pause_animation();
 	disp->scroll_to_tiles(a,b,game_display::ONSCREEN,true,0.0,false);
         animator.restart_animation();
+	new_animation_frame(); //fix bug #13179: Unit's move have sometimes a jumpy start
 	int target_time = animator.get_animation_time_potential();
 	target_time += 150;
 	target_time -= target_time%150;
