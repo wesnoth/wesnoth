@@ -34,7 +34,7 @@ find_package( X11 )
 pkg_check_modules( PANGOCAIRO REQUIRED pangocairo>=1.14.8 )
 
 #use pkg-config to find fontconfig:
-pkg_check_modules( FONTCONFIG REQUIRED fontconfig>=2.4.2 )
+pkg_check_modules( FONTCONFIG REQUIRED fontconfig>=2.4.1 )
 
 #needed to get some SDL defines in... (as of rev31694 -D_GNU_SOURCE=1 is required!)
 set(SDL_CONFIG "sdl-config" CACHE STRING "Path to sdl-config script")

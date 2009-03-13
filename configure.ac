@@ -895,7 +895,7 @@ if test "x$game" = "xyes" || test "x$tests" = "xyes"; then
 	PKG_CHECK_MODULES(PANGO, pangocairo >= 1.14.8)
 	CPPFLAGS="$CPPFLAGS $PANGO_CFLAGS"
 
-	PKG_CHECK_MODULES(FONTCONFIG, fontconfig >= 2.4.2)
+	PKG_CHECK_MODULES(FONTCONFIG, fontconfig >= 2.4.1)
 	CPPFLAGS="$CPPFLAGS $FONTCONFIG_CFLAGS"
 fi
 
