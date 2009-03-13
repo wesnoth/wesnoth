@@ -283,7 +283,9 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 			SDL_Event event;
 			event.type = 0;
 			int character=0,keycode=0; // Just to avoid warning
-			int mod=0;
+			int mod = 0;
+			const int any_mod = KMOD_CTRL | KMOD_ALT | KMOD_LMETA;
+
 			while (event.type!=SDL_KEYDOWN) SDL_PollEvent(&event);
 			do {
 				if (event.type==SDL_KEYDOWN)
@@ -298,8 +300,7 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 			} while (event.type!=SDL_KEYUP);
 			restorer.restore();
 			disp.update_display();
-
-			if (keycode == SDLK_ESCAPE && mod == 0) {
+			if (keycode == SDLK_ESCAPE && (mod & any_mod) == 0) {
 				//cancel -- no action
 			} else {
 				const hotkey::hotkey_item& oldhk = hotkey::get_hotkey(character, keycode, (mod & KMOD_SHIFT) != 0,
@@ -320,8 +321,7 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 
 					if ((newhk.get_id() == hotkey::HOTKEY_SCREENSHOT
 							|| newhk.get_id() == hotkey::HOTKEY_MAP_SCREENSHOT)
-							 && (mod & KMOD_CTRL) == 0 && (mod & KMOD_ALT) == 0
-							 && (mod & KMOD_LMETA) == 0) {
+							 && (mod & any_mod) == 0) {
 						gui::message_dialog(disp,"", _("Warning: screenshot hotkeys not combined with Control, Alt or Meta keys.")).show();
 					}
 				}
