@@ -16,7 +16,7 @@ shift
 PARAMETERS="$@"
 
 case $VERSION in
-1.4)
+1.4|1.6)
 	THREADS=4
 	;;
 *)

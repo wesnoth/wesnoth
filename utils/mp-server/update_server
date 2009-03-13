@@ -55,10 +55,7 @@ esac
 if [ $TYPE = campaignd ]; then
 	CXXFLAGS="$CXXFLAGS -ggdb3 -pg"
 	LDFLAGS="$LDFLAGS -pg"
-	SCONS="no"
-	if [ "$SERVER" = "trunk" ]; then
-		SCONS="yes"
-	fi
+	[ "$SERVER" = "1.4" ] && SCONS=no
 fi
 
 REVISION=""
