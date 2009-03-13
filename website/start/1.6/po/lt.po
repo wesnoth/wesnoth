@@ -5,14 +5,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6\n"
-"POT-Creation-Date: 2009-03-10 23:40+0100\n"
+"POT-Creation-Date: 2009-03-13 09:46+0100\n"
 "PO-Revision-Date: 2009-03-11 09:57+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%"
+"100<10 || n%100>=20) ? 1 : 2);\n"
 
 # type: Attribute 'xml:lang' of: <html>
 #: template.html:2
@@ -52,8 +53,21 @@ msgstr "Mūšio dėl Wesnoth 1.6 išleidimo pastabos"
 # type: Content of: <html><body><div><div><div><p>
 #: template.html:35
 #, fuzzy
-msgid "<em>March ??, 2009</em>. Once again it's time for that epoch-making event, a Wesnoth stable release. The Battle for Wesnoth team is proud to release version 1.6 of <em>The Battle for Wesnoth</em>, a <a href='http://www.gnu.org/philosophy/philosophy.html'>Free</a>, turn-based strategy game with a fantasy theme and roleplaying elements. The game is <a href='#download'>available for download</a> now for Windows, Mac OS X and various GNU/Linux distributions."
-msgstr "<em>2008 m. kovo 8 d</em>. Mūšio dėl Wesnoth komanda didžiuodamasi išleidžia <em>Mūšio dėl Wesnoth</em> 1.4 versiją, <a href='http://www.gnu.org/philosophy/philosophy.html'>Laisvą</a>, ėjimais pagrįstą strateginį žaidimą su fantastine tema ir vaidmenų žaidimo elementais. Žaidimas dabar <a href='#download'>prieinamas atsisiuntimui</a> Windows, Mac OS X, ir įvairioms GNU/Linux distribucijoms."
+msgid ""
+"<em>March ??, 2009</em>. Once again it's time for that epoch-making event, a "
+"Wesnoth stable release. The Battle for Wesnoth team is proud to release "
+"version 1.6 of <em>The Battle for Wesnoth</em>, a <a href='http://www.gnu."
+"org/philosophy/philosophy.html'>Free</a>, turn-based strategy game with a "
+"fantasy theme and roleplaying elements. The game is <a "
+"href='#download'>available for download</a> now for Windows, Mac OS X and "
+"various GNU/Linux distributions."
+msgstr ""
+"<em>2008 m. kovo 8 d</em>. Mūšio dėl Wesnoth komanda didžiuodamasi išleidžia "
+"<em>Mūšio dėl Wesnoth</em> 1.4 versiją, <a href='http://www.gnu.org/"
+"philosophy/philosophy.html'>Laisvą</a>, ėjimais pagrįstą strateginį žaidimą "
+"su fantastine tema ir vaidmenų žaidimo elementais. Žaidimas dabar <a "
+"href='#download'>prieinamas atsisiuntimui</a> Windows, Mac OS X, ir "
+"įvairioms GNU/Linux distribucijoms."
 
 # type: Content of: <html><body><div><div><div><ul><li>
 #: template.html:45
@@ -96,8 +110,7 @@ msgid "<a href='#more'>More Info</a>"
 msgstr "<a href='#more'>Daugiau informacijos</a>"
 
 # type: Content of: <html><body><div><div><div>
-#: template.html:60
-#: template.html:232
+#: template.html:60 template.html:232
 msgid "<br/>"
 msgstr "<br/>"
 
@@ -108,7 +121,10 @@ msgstr "Kas naujo yra Wesnoth 1.6"
 
 # type: Content of: <html><body><div><div><div><p>
 #: template.html:64
-msgid "We have many new features for your enjoyment this time around, including a new mainline campaign, two new multiplayer scenarios and another refresh of the user interface."
+msgid ""
+"We have many new features for your enjoyment this time around, including a "
+"new mainline campaign, two new multiplayer scenarios and another refresh of "
+"the user interface."
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><h3>
@@ -123,17 +139,35 @@ msgstr "Kampanijos"
 
 # type: Content of: <html><body><div><div><div><p>
 #: template.html:78
-msgid "There is a new mainline campaign, <em>The Legend of Wesmere</em>, with new gameplay features including (in one scenario) the ability to use the game AI as your commander for an allied side, setting its objectives as you like. Search for this hidden feature by clicking right-clicking on your allied commanders during scenario 7.  This campaign was imported from the <a href=\"http://www.wesnoth.org/forum/viewtopic.php?f=8&t=21413\"> Wesnoth-UMC-Dev project</a>, where it spent a few months being adapted for mainline."
+msgid ""
+"There is a new mainline campaign, <em>The Legend of Wesmere</em>, with new "
+"gameplay features including (in one scenario) the ability to use the game AI "
+"as your commander for an allied side, setting its objectives as you like. "
+"Search for this hidden feature by right-clicking on your allied commanders "
+"during scenario 7.  This campaign was imported from the <a href=\"http://www."
+"wesnoth.org/forum/viewtopic.php?f=8&t=21413\"> Wesnoth-UMC-Dev project</a>, "
+"where it spent a few months being adapted for mainline."
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><p>
 #: template.html:88
-msgid "Almost all mainline campaigns now use a different method of carrying over gold from scenario to scenario: the amount of gold retained is now 40% instead of 80%, but it is added to the minimum starting gold of the next scenario instead of only replacing it if higher."
+msgid ""
+"Almost all mainline campaigns now use a different method of carrying over "
+"gold from scenario to scenario: the amount of gold retained is now 40% "
+"instead of 80%, but it is added to the minimum starting gold of the next "
+"scenario instead of only replacing it if higher."
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><p>
 #: template.html:93
-msgid "Many mainline campaigns have improved storyline prose and new cutscenes or epilogs.  Several have improved and redrawn campaign maps. All now have dates in the Wesnoth history timeline, and almost all have journey animations on their campaign maps.  The history and geography of Wesnoth have been developed in more depth and detail: More campaigns now include references to events in the overall history, adding depth and richness to the narration."
+msgid ""
+"Many mainline campaigns have improved storyline prose and new cutscenes or "
+"epilogs.  Several have improved and redrawn campaign maps. All now have "
+"dates in the Wesnoth history timeline, and almost all have journey "
+"animations on their campaign maps.  The history and geography of Wesnoth "
+"have been developed in more depth and detail: More campaigns now include "
+"references to events in the overall history, adding depth and richness to "
+"the narration."
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><dl><dt>
@@ -143,12 +177,17 @@ msgstr "Daugelio žaidėjų žaidimas"
 
 # type: Content of: <html><body><div><div><div><p>
 #: template.html:103
-msgid "The multiplayer server can now be logged onto using the username and password of a Wesnoth forum account.  However, registration is not required and one can continue to use an unregistered username."
+msgid ""
+"The multiplayer server can now be logged onto using the username and "
+"password of a Wesnoth forum account.  However, registration is not required "
+"and one can continue to use an unregistered username."
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><p>
 #: template.html:108
-msgid "The multiplayer lobby has been improved to allow easier management of the friends and ignores list by double-clicking on the player list."
+msgid ""
+"The multiplayer lobby has been improved to allow easier management of the "
+"friends and ignores list by double-clicking on the player list."
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><p>
@@ -173,12 +212,15 @@ msgstr ""
 
 # type: Content of: <html><body><div><div><div><ul><li>
 #: template.html:116
-msgid "Added the traits weak, slow and dim and made goblins each receive one of them instead of two standard traits."
+msgid ""
+"Added the traits weak, slow and dim and made goblins each receive one of "
+"them instead of two standard traits."
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><ul><li>
 #: template.html:118
-msgid "Added the marksman special to the ranged attack of the Orcish Assassin line."
+msgid ""
+"Added the marksman special to the ranged attack of the Orcish Assassin line."
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><ul><li>
@@ -198,28 +240,51 @@ msgstr "Bendrai"
 
 # type: Content of: <html><body><div><div><div><p>
 #: template.html:126
-msgid "The game graphics have been improved with a whole new range of unit portraits.  Many more units have full animations and team coloring."
-msgstr "Žaidimo grafika buvo patobulinta visiškai naujais dalinių portretais.  Daug naujų dalinių turi pilnas animacijas ir komandinį spalvinimą."
+msgid ""
+"The game graphics have been improved with a whole new range of unit "
+"portraits.  Many more units have full animations and team coloring."
+msgstr ""
+"Žaidimo grafika buvo patobulinta visiškai naujais dalinių portretais.  Daug "
+"naujų dalinių turi pilnas animacijas ir komandinį spalvinimą."
 
 # type: Content of: <html><body><div><div><div><p>
 #: template.html:129
-msgid "There is a new basic terrain type, coastal reef, which gives most land-based units slightly higher defense than in regular shallow water, and 70% defense to most water-based units such as mermen and nagas.  Forests get more variety with graphics for spring/summer, fall and winter deciduous forest terrains.  There are new village graphics for human cities and primitive tribal areas."
+msgid ""
+"There is a new basic terrain type, coastal reef, which gives most land-based "
+"units slightly higher defense than in regular shallow water, and 70% defense "
+"to most water-based units such as mermen and nagas.  Forests get more "
+"variety with graphics for spring/summer, fall and winter deciduous forest "
+"terrains.  There are new village graphics for human cities and primitive "
+"tribal areas."
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><p>
 #: template.html:136
-msgid "Our composers have added four new original background tracks: <em>Heroes' Rite</em>, <em>The Dangerous Symphony</em>, <em>Suspense</em> and <em>The Deep Path</em>. Also, the game now plays special music clips for victory and defeat events."
+msgid ""
+"Our composers have added four new original background tracks: <em>Heroes' "
+"Rite</em>, <em>The Dangerous Symphony</em>, <em>Suspense</em> and <em>The "
+"Deep Path</em>. Also, the game now plays special music clips for victory and "
+"defeat events."
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><p>
 #: template.html:141
-msgid "The game interface has continued to evolve, especially in making more dramatic use of portraits.  Unit recall dialogs now display useful information about your veterans' traits.  Add-ons now display their category when you browse them on the download server."
+msgid ""
+"The game interface has continued to evolve, especially in making more "
+"dramatic use of portraits.  Unit recall dialogs now display useful "
+"information about your veterans' traits.  Add-ons now display their category "
+"when you browse them on the download server."
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><p>
 #: template.html:146
-msgid "New game translations include Arabic, Croatian, Friulian, Latvian, Macedonian and Marathi.  Existing translations have been extensively updated and revised."
-msgstr "Nauji žaidimo vertimai, įskaitant Arabų, Kroatų, Friulų, Latvių, Makedonų ir Marati.  Esantys vertimai buvo plačiai papildyti ir pataisyti."
+msgid ""
+"New game translations include Arabic, Croatian, Friulian, Latvian, "
+"Macedonian and Marathi.  Existing translations have been extensively updated "
+"and revised."
+msgstr ""
+"Nauji žaidimo vertimai, įskaitant Arabų, Kroatų, Friulų, Latvių, Makedonų ir "
+"Marati.  Esantys vertimai buvo plačiai papildyti ir pataisyti."
 
 # type: Content of: <html><body><div><div><div><h3>
 #: template.html:150
@@ -228,22 +293,41 @@ msgstr "Turinio kūrėjams"
 
 # type: Content of: <html><body><div><div><div><p>
 #: template.html:152
-msgid "The map editor was much improved (thank you, Google Summer of Code).  It can be started from within the game now.  You can toggle overlay displays of terrain codes and map coordinates while editing. The editor can handle multiple maps in a session, and you can take screenshots of full maps.  There's also a new interactive editing tool for animated journey tracks."
+msgid ""
+"The map editor was much improved (thank you, Google Summer of Code).  It can "
+"be started from within the game now.  You can toggle overlay displays of "
+"terrain codes and map coordinates while editing. The editor can handle "
+"multiple maps in a session, and you can take screenshots of full maps.  "
+"There's also a new interactive editing tool for animated journey tracks."
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><p>
 #: template.html:158
-msgid "There are some new core units available everywhere: Troll Shaman, Royal Warrior and Dread Bat."
+msgid ""
+"There are some new core units available everywhere: Troll Shaman, Royal "
+"Warrior and Dread Bat."
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><p>
 #: template.html:161
-msgid "Less visible changes include improvements in the game AI, including a new formula-based AI that allows more flexible setting of objectives and an improved pathfinding algorithm.  As usual, WML has grown more powerful with many new tags and attributes to extend the range of what campaign authors can do.  The GUI engine is under heavy development; these changes will allow the entire GUI to be configured from WML.  The first steps have been made, but the project is not finished yet and will continue in the 1.7 development cycle."
+msgid ""
+"Less visible changes include improvements in the game AI, including a new "
+"formula-based AI that allows more flexible setting of objectives and an "
+"improved pathfinding algorithm.  As usual, WML has grown more powerful with "
+"many new tags and attributes to extend the range of what campaign authors "
+"can do.  The GUI engine is under heavy development; these changes will allow "
+"the entire GUI to be configured from WML.  The first steps have been made, "
+"but the project is not finished yet and will continue in the 1.7 development "
+"cycle."
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><p>
 #: template.html:170
-msgid "The support for writing Python AIs has been removed because the feature opened a serious security hole. However, we hope to build an even more powerful AI-scripting feature, possibly using a different and safer extension language, in 1.7."
+msgid ""
+"The support for writing Python AIs has been removed because the feature "
+"opened a serious security hole. However, we hope to build an even more "
+"powerful AI-scripting feature, possibly using a different and safer "
+"extension language, in 1.7."
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><h2>
@@ -253,33 +337,69 @@ msgstr "Atsisiųsti"
 
 # type: Content of: <html><body><div><div><div><p>
 #: template.html:179
-msgid "Battle for Wesnoth is made available under the <a href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU General Public License</a> (GPL). Source code is available from <a href='http://www.wesnoth.org'>wesnoth.org</a> where you will also find instructions for <a href='http://wesnoth.org/wiki/CompilingWesnoth'>building from source</a> on a range of different operating systems. Ready-to-go packages are also available for most popular operating systems, including Linux and Windows and Mac OS X."
-msgstr "Mūšis dėl Wesnoth išleistas su <a href='http://www.gnu.org/copyleft/gpl-2.0.html'>GNU Bendra Viešąja Licencija</a> (GPL). Išeities kodas prieinamas iš <a href='http://www.wesnoth.org'>wesnoth.org</a>, kur jūs taip pat rasite <a href='http://wesnoth.org/wiki/CompilingWesnoth'>kompiliavimo iš išeities kodo</a> instrukcijas įvairiose operacinėse sistemose. Paruošti paketai taip pat prieinami daugeliui populiariausių operacinių sistemų, įskaitant Linux, Windows ir Mac OS X."
+msgid ""
+"Battle for Wesnoth is made available under the <a href='http://www.gnu.org/"
+"licenses/gpl-2.0.html'>GNU General Public License</a> (GPL). Source code is "
+"available from <a href='http://www.wesnoth.org'>wesnoth.org</a> where you "
+"will also find instructions for <a href='http://wesnoth.org/wiki/"
+"CompilingWesnoth'>building from source</a> on a range of different operating "
+"systems. Ready-to-go packages are also available for most popular operating "
+"systems, including Linux and Windows and Mac OS X."
+msgstr ""
+"Mūšis dėl Wesnoth išleistas su <a href='http://www.gnu.org/copyleft/gpl-2.0."
+"html'>GNU Bendra Viešąja Licencija</a> (GPL). Išeities kodas prieinamas iš "
+"<a href='http://www.wesnoth.org'>wesnoth.org</a>, kur jūs taip pat rasite <a "
+"href='http://wesnoth.org/wiki/CompilingWesnoth'>kompiliavimo iš išeities "
+"kodo</a> instrukcijas įvairiose operacinėse sistemose. Paruošti paketai taip "
+"pat prieinami daugeliui populiariausių operacinių sistemų, įskaitant Linux, "
+"Windows ir Mac OS X."
 
 # type: Content of: <html><body><div><div><div><ul><li>
 #: template.html:193
-msgid "<strong> <a href='http://downloads.sourceforge.net/wesnoth/wesnoth-1.6.tar.bz2?download'>Source code</a> </strong>"
-msgstr "<strong> <a href='http://downloads.sourceforge.net/wesnoth/wesnoth-1.6.tar.bz2?download'>Išeities kodas</a> </strong>"
+msgid ""
+"<strong> <a href='http://downloads.sourceforge.net/wesnoth/wesnoth-1.6.tar."
+"bz2?download'>Source code</a> </strong>"
+msgstr ""
+"<strong> <a href='http://downloads.sourceforge.net/wesnoth/wesnoth-1.6.tar."
+"bz2?download'>Išeities kodas</a> </strong>"
 
 # type: Content of: <html><body><div><div><div><ul><li>
 #: template.html:198
-msgid "<strong> <a href='http://downloads.sourceforge.net/wesnoth/wesnoth-1.6-windows.exe?download'>Wesnoth for MS Windows</a> </strong>"
-msgstr "<strong> <a href='http://downloads.sourceforge.net/wesnoth/wesnoth-1.6-windows.exe?download'>Wesnoth MS Windows'ams</a> </strong>"
+msgid ""
+"<strong> <a href='http://downloads.sourceforge.net/wesnoth/wesnoth-1.6-"
+"windows.exe?download'>Wesnoth for MS Windows</a> </strong>"
+msgstr ""
+"<strong> <a href='http://downloads.sourceforge.net/wesnoth/wesnoth-1.6-"
+"windows.exe?download'>Wesnoth MS Windows'ams</a> </strong>"
 
 # type: Content of: <html><body><div><div><div><ul><li>
 #: template.html:203
-msgid "<strong> <a href='http://downloads.sourceforge.net/wesnoth/Wesnoth_MacOSX_1.6.dmg?download'>Wesnoth for Mac OS X</a> </strong>"
-msgstr "<strong> <a href='http://downloads.sourceforge.net/wesnoth/Wesnoth_MacOSX_1.6.dmg?download'>Wesnoth Mac OS X'ui</a> </strong>"
+msgid ""
+"<strong> <a href='http://downloads.sourceforge.net/wesnoth/"
+"Wesnoth_MacOSX_1.6.dmg?download'>Wesnoth for Mac OS X</a> </strong>"
+msgstr ""
+"<strong> <a href='http://downloads.sourceforge.net/wesnoth/"
+"Wesnoth_MacOSX_1.6.dmg?download'>Wesnoth Mac OS X'ui</a> </strong>"
 
 # type: Content of: <html><body><div><div><div><p>
 #: template.html:209
-msgid "You can get up to date information about downloads at the <a href='http://www.wesnoth.org/wiki/Download'>downloads page</a>."
-msgstr "Galite gauti naujausią informaciją apie atsisiuntimus <a href='http://www.wesnoth.org/wiki/Download'>atsisiuntimų puslapyje</a>."
+msgid ""
+"You can get up to date information about downloads at the <a href='http://"
+"www.wesnoth.org/wiki/Download'>downloads page</a>."
+msgstr ""
+"Galite gauti naujausią informaciją apie atsisiuntimus <a href='http://www."
+"wesnoth.org/wiki/Download'>atsisiuntimų puslapyje</a>."
 
 # type: Content of: <html><body><div><div><div><p>
 #: template.html:212
-msgid "If you downloaded previous versions of the game, you might be interested in downloading the <a href='http://www.wesnoth.org/wiki/Download_Xdeltas'>xdelta</a> files only."
-msgstr "Jeigu jūs atsisiuntėte ankstesnes žaidimo versijas, jus gali sudominti tik <a href='http://www.wesnoth.org/wiki/Download_Xdeltas'>xdelta</a> failų atsisiuntimas."
+msgid ""
+"If you downloaded previous versions of the game, you might be interested in "
+"downloading the <a href='http://www.wesnoth.org/wiki/"
+"Download_Xdeltas'>xdelta</a> files only."
+msgstr ""
+"Jeigu jūs atsisiuntėte ankstesnes žaidimo versijas, jus gali sudominti tik "
+"<a href='http://www.wesnoth.org/wiki/Download_Xdeltas'>xdelta</a> failų "
+"atsisiuntimas."
 
 # type: Content of: <html><body><div><div><div><h2>
 #: template.html:217
@@ -288,26 +408,37 @@ msgstr "Daugiau informacijos"
 
 # type: Content of: <html><body><div><div><div><ul><li>
 #: template.html:221
-msgid "<a href='http://svn.gna.org/viewcvs/*checkout*/wesnoth/tags/1.6/changelog'>Full Changelog</a> (English, very long)"
-msgstr "<a href='http://svn.gna.org/viewcvs/*checkout*/wesnoth/tags/1.6/changelog'>Pilnas pakeitimų žurnalas</a> (Angliškai, labai ilgas)"
+msgid ""
+"<a href='http://svn.gna.org/viewcvs/*checkout*/wesnoth/tags/1.6/"
+"changelog'>Full Changelog</a> (English, very long)"
+msgstr ""
+"<a href='http://svn.gna.org/viewcvs/*checkout*/wesnoth/tags/1.6/"
+"changelog'>Pilnas pakeitimų žurnalas</a> (Angliškai, labai ilgas)"
 
 # type: Content of: <html><body><div><div><div><ul><li>
 #: template.html:224
-msgid "<a href='http://svn.gna.org/viewcvs/*checkout*/wesnoth/tags/1.6/doc/manual/manual.en.html'>User's Manual</a>"
-msgstr "<a href='http://svn.gna.org/viewcvs/*checkout*/wesnoth/tags/1.6/doc/manual/manual.en.html'>Naudotojo vadovas</a>"
+msgid ""
+"<a href='http://svn.gna.org/viewcvs/*checkout*/wesnoth/tags/1.6/doc/manual/"
+"manual.en.html'>User's Manual</a>"
+msgstr ""
+"<a href='http://svn.gna.org/viewcvs/*checkout*/wesnoth/tags/1.6/doc/manual/"
+"manual.en.html'>Naudotojo vadovas</a>"
 
 # type: Content of: <html><body><div><div><div><ul><li>
 #: template.html:225
 msgid "<a href='http://www.wesnoth.org'>Wesnoth Official Website</a> (English)"
-msgstr "<a href='http://www.wesnoth.org'>Oficialus Wesnoth tinklalapis</a> (Angliškai)"
+msgstr ""
+"<a href='http://www.wesnoth.org'>Oficialus Wesnoth tinklalapis</a> "
+"(Angliškai)"
 
 # type: Content of: <html><body><div><div><div><ul><li>
 #: template.html:229
-msgid "<a href='http://www.wesnoth.org/start/1.4'>Wesnoth 1.4 Release Notes</a>"
-msgstr "<a href='http://www.wesnoth.org/start/1.4'>Wesnoth 1.4 išleidimo pastabos</a>"
+msgid ""
+"<a href='http://www.wesnoth.org/start/1.4'>Wesnoth 1.4 Release Notes</a>"
+msgstr ""
+"<a href='http://www.wesnoth.org/start/1.4'>Wesnoth 1.4 išleidimo pastabos</a>"
 
 # type: Content of: <html><body><div><div><div><div><p>
 #: template.html:236
 msgid "This page is also available in the following languages:"
 msgstr "Šis puslapis taip pat prieinamas šiomis kalbomis:"
-
