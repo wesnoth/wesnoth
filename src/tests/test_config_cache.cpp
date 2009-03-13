@@ -65,9 +65,9 @@ class test_config_cache : public game_config::config_cache {
 		return cache_;
 	}
 
-	void set_force_not_valid_cache(bool force)
+	void set_force_invalid_cache(bool force)
 	{
-		game_config::config_cache::set_force_not_valid_cache(force);
+		game_config::config_cache::set_force_invalid_cache(force);
 	}
 };
 
@@ -273,7 +273,7 @@ BOOST_AUTO_TEST_CASE( test_define_loading )
 
 	transaction.lock();
 
-	cache.set_force_not_valid_cache(true);
+	cache.set_force_invalid_cache(true);
 	config umc_config;
 	child = &umc_config.add_child("umc");
 	(*child)["test"] = "umc load";
@@ -282,7 +282,7 @@ BOOST_AUTO_TEST_CASE( test_define_loading )
 	child = &umc_config.add_child("test_key4");
 	(*child)["defined"] = "parameter";
 	BOOST_CHECK_EQUAL(umc_config, *cache.get_config("data/test/test/umc.cfg"));
-	cache.set_force_not_valid_cache(false);
+	cache.set_force_invalid_cache(false);
 }
 
 BOOST_AUTO_TEST_CASE( test_lead_spaces_loading )
@@ -290,9 +290,9 @@ BOOST_AUTO_TEST_CASE( test_lead_spaces_loading )
 	config test_config;
 	test_config.add_child("test_lead_space")["space"] = "empty char in middle";
 	// Force reload of cache
-	cache.set_force_not_valid_cache(true);
+	cache.set_force_invalid_cache(true);
 	BOOST_CHECK_EQUAL(test_config, *cache.get_config("data/test/test/leading_space.cfg"));
-	cache.set_force_not_valid_cache(false);
+	cache.set_force_invalid_cache(false);
 	BOOST_CHECK_EQUAL(test_config, *cache.get_config("data/test/test/leading_space.cfg"));
 }
 
@@ -302,9 +302,9 @@ BOOST_AUTO_TEST_CASE( test_performance )
 {
 	test_scoped_define mp("MULTIPLAYER");
 	config cfg_ref;
-//	cache.set_force_not_valid_cache(true);
+//	cache.set_force_invalid_cache(true);
 	cache.get_config("data/", cfg_ref);
-//	cache.set_force_not_valid_cache(false);
+//	cache.set_force_invalid_cache(false);
 	for (int i=0; i < 3; ++i)
 	{
 		cache.get_config("data/");

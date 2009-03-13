@@ -98,7 +98,7 @@ namespace game_config {
 		typedef std::multimap<std::string,std::string> path_define_map;
 		private:
 
-		bool force_valid_cache_, use_cache_, not_valid_cache_;
+		bool force_valid_cache_, use_cache_, fake_invalid_cache_;
 		preproc_map defines_map_;
 		path_define_map path_defines_;
 
@@ -122,8 +122,7 @@ namespace game_config {
 		protected:
 		config_cache();
 
-		void set_force_not_valid_cache(bool);
-
+		void set_force_invalid_cache(bool);
 
 
 		public:

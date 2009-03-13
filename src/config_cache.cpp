@@ -45,7 +45,7 @@ namespace game_config {
 	config_cache::config_cache() :
 		force_valid_cache_(false),
 		use_cache_(true),
-		not_valid_cache_(false),
+		fake_invalid_cache_(false),
 		defines_map_(),
 		path_defines_()
 	{
@@ -199,7 +199,7 @@ namespace game_config {
 
 				file_tree_checksum dir_checksum;
 
-				if(!force_valid_cache_ && !not_valid_cache_) {
+				if(!force_valid_cache_ && !fake_invalid_cache_) {
 					try {
 						if(file_exists(fname_checksum)) {
 							DBG_CACHE << "Reading checksum: " << fname_checksum << "\n";
@@ -322,9 +322,9 @@ namespace game_config {
 		return;
 	}
 
-	void config_cache::set_force_not_valid_cache(bool force)
+	void config_cache::set_force_invalid_cache(bool force)
 	{
-		not_valid_cache_ = force;
+		fake_invalid_cache_ = force;
 	}
 
 	void config_cache::set_use_cache(bool use)
