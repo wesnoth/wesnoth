@@ -357,7 +357,7 @@ void ai::attack_analysis::analyze(const gamemap& map, unit_map& units,
 		// We fix up units map to reflect what this would look like.
 		std::pair<map_location,unit> *up = units.extract(m->first);
 		up->first = m->second;
-		units.add(up);
+		units.insert(up);
 
 		if (up->second.can_recruit()) {
 			uses_leader = true;
@@ -504,9 +504,7 @@ void ai::attack_analysis::analyze(const gamemap& map, unit_map& units,
 
 	// Restore the units to their original positions.
 	for (m = movements.begin(); m != movements.end(); ++m) {
-		std::pair<map_location,unit> *up = units.extract(m->second);
-		up->first = m->first;
-		units.add(up);
+		units.move(m->second, m->first);
 	}
 }
 

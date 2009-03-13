@@ -15,6 +15,7 @@
 #include <boost/lexical_cast.hpp>
 #include <vector>
 
+#include "foreach.hpp"
 #include "unit.hpp"
 
 #include "menu_events.hpp"
@@ -369,10 +370,9 @@ private:
 		variant attack = args()[0]->evaluate(variables);
 		ai::attack_analysis* analysis = convert_variant<ai::attack_analysis>(attack);
 		unit_map units_with_moves(ai_.get_info().units);
-		for(size_t n = 0; n != analysis->movements.size(); ++n) {
-			std::pair<map_location,unit>* pair = units_with_moves.extract(analysis->movements[n].first);
-			pair->first = analysis->movements[n].second;
-			units_with_moves.add(pair);
+		typedef std::pair<map_location, map_location> mv;
+		foreach (const mv &m, analysis->movements) {
+			units_with_moves.move(m.first, m.second);
 		}
 
 		std::vector<variant> vars;

@@ -156,7 +156,7 @@ void get_player_info(const config& cfg, game_state& gamestate,
 		VALIDATE(units.count(start_pos) == 0,
 			 t_string(vgettext("Duplicate side definition for side '$side|' found.", symbols)));
 
-		units.add(new std::pair<map_location,unit>(map.starting_position(new_unit.side()), new_unit));
+		units.add(map.starting_position(new_unit.side()), new_unit);
 		LOG_NG << "initializing side '" << cfg["side"] << "' at "
 			<< start_pos << '\n';
 	}
@@ -212,7 +212,7 @@ void get_player_info(const config& cfg, game_state& gamestate,
 			if (units.find(loc) != units.end()) {
 				ERR_NG << "[unit] trying to overwrite existing unit at " << loc << "\n";
 			} else {
-				units.add(new std::pair<map_location,unit>(loc,new_unit));
+				units.add(loc, new_unit);
 				LOG_NG << "inserting unit for side " << new_unit.side() << "\n";
 			}
 		}

@@ -75,8 +75,6 @@ public:
 	unit_map() : map_(), lmap_(), num_iters_(0), num_invalid_(0) { };
 	unit_map(const unit_map &that);
 	unit_map &operator =(const unit_map &that);
-	/** A unit map with a copy of a single unit in it. */
-	explicit unit_map(const map_location &loc, const unit &u);
 	~unit_map();
 
 	/**
@@ -415,13 +413,26 @@ public:
 	std::pair<map_location,unit> *extract(const map_location &loc);
 
 	/**
-	 * Map owns pointer after this.  Loc must be currently empty. unit's
-	 * underlying_id should not be present in the map already
+	 * Adds a copy of unit @a u at location @a l of the map.
 	 */
-	void add(std::pair<map_location,unit> *p);
+	void add(const map_location &l, const unit &u);
+
+	/**
+	 * Adds the pair location/unit to the map.
+	 * @pre The location is empty.
+	 * @pre The unit::underlying_id should not be used by the map already.
+	 * @note The map takes ownership of the pointed object.
+	 * @note This function should be used in conjunction with #extract only.
+	 */
+	void insert(std::pair<map_location,unit> *p);
+
+	/**
+	 * Moves a unit from location @a src to location @a dst.
+	 */
+	void move(const map_location &src, const map_location &dst);
 
 	/** Like add, but loc must be occupied (implicitly erased). */
-	void replace(std::pair<map_location,unit> *p);
+	void replace(const map_location &l, const unit &u);
 
 	void erase(xy_accessor pos);
 	size_t erase(const map_location &loc);

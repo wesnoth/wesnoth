@@ -396,11 +396,11 @@ namespace dfool {
 	 //      std::cout<<"turn: "<< turns_[i] <<"\n";
 	  turn_used[l] = t;
 	  if(t != 0){
-	    u.replace(new std::pair<map_location,unit>(l,units_[i]));
+	    u.replace(l, units_[i]);
 	  }else{
 	    std::cout<<"id: "<< ids_[i] <<"\n";
 
-	    u.add(new std::pair<map_location,unit>(l,units_[i]));
+	    u.add(l, units_[i]);
 	  }
       }
     }

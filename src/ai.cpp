@@ -593,7 +593,7 @@ map_location ai_interface::move_unit_partial(location from, location to,
 	std::pair<map_location,unit> *p = info_.units.extract(u_it->first);
 
 	p->first = to;
-	info_.units.add(p);
+	info_.units.insert(p);
 	p->second.set_standing(p->first);
 	if(info_.map.is_village(to)) {
 		// If a new village is captured, disallow any future movement.
@@ -2088,8 +2088,10 @@ void ai::move_leader_after_recruit(const move_map& /*srcdst*/,
 				if(current_loc.valid()) {
 					LOG_AI << "considering movement to " << str_cast(current_loc.x + 1)
 						<< "," << str_cast(current_loc.y+1);
-					unit_map temp_units(current_loc,leader->second);
-					const paths p(map_,temp_units,current_loc,teams_,false,false,current_team());
+					unit_map temp_units;
+					temp_units.add(current_loc, leader->second);
+					const paths p(map_, temp_units, current_loc, teams_, false,
+					              false, current_team());
 
 					if(p.routes.count(i->first)) {
 						move_unit(leader->first,current_loc,possible_moves);
@@ -2125,7 +2127,7 @@ void ai::move_leader_after_recruit(const move_map& /*srcdst*/,
 			}
 		}
 
-		units_.add(temp_leader);
+		units_.insert(temp_leader);
 
 		if(friend_can_reach_keep) {
 			// Find a location for our leader to vacate the keep to

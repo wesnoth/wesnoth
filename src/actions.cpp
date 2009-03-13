@@ -177,7 +177,7 @@ std::string recruit_unit(const gamemap& map, const int side, unit_map& units,
 	new_unit.heal_all();
 	new_unit.set_hidden(true);
 
-	units.add(new std::pair<map_location,unit>(recruit_location,new_unit));
+	units.add(recruit_location, new_unit);
 
 	if (is_recall)
 	{
@@ -1206,7 +1206,8 @@ attack::attack(game_display& gui, const gamemap& map,
 					reanimitor = unit_type_data::types().find_unit_type(a_stats_->plague_type);
 					LOG_NG << "found unit type:" << reanimitor->second.id() << std::endl;
 					if(reanimitor != unit_type_data::types().end()) {
-						unit newunit = unit(&units_, &map_, &state_, &teams_, &reanimitor->second, a_.get_unit().side(), true, true);
+						unit newunit(&units_, &map_, &state_, &teams_, &reanimitor->second,
+						             a_.get_unit().side(), true, true);
 						newunit.set_attacks(0);
 						// Apply variation
 						if(strcmp(undead_variation.c_str(), "null")) {
@@ -1217,7 +1218,7 @@ attack::attack(game_display& gui, const gamemap& map,
 							newunit.add_modification("variation",mod);
 							newunit.heal_all();
 						}
-						units_.add(new std::pair<map_location,unit>(death_loc, newunit));
+						units_.add(death_loc, newunit);
 						preferences::encountered_units().insert(newunit.type_id());
 						if (update_display_){
 							gui_.invalidate(death_loc);
@@ -1476,7 +1477,8 @@ attack::attack(game_display& gui, const gamemap& map,
 					reanimitor = unit_type_data::types().find_unit_type(d_stats_->plague_type);
 					LOG_NG << "found unit type:" << reanimitor->second.id() << std::endl;
 					if(reanimitor != unit_type_data::types().end()) {
-						unit newunit = unit(&units_, &map_, &state_, &teams_, &reanimitor->second,d_.get_unit().side(), true, true);
+						unit newunit(&units_, &map_, &state_, &teams_, &reanimitor->second,
+						             d_.get_unit().side(), true, true);
 						// Apply variation
 						if(strcmp(undead_variation.c_str(),"null")){
 							config mod;
@@ -1485,7 +1487,7 @@ attack::attack(game_display& gui, const gamemap& map,
 							variation["name"]=undead_variation;
 							newunit.add_modification("variation",mod);
 						}
-						units_.add(new std::pair<map_location,unit>(death_loc,newunit));
+						units_.add(death_loc, newunit);
 						preferences::encountered_units().insert(newunit.type_id());
 						if (update_display_){
 							gui_.invalidate(death_loc);
@@ -1892,7 +1894,7 @@ void advance_unit(unit_map& units,
 	preferences::encountered_units().insert(new_unit.type_id());
 	LOG_STREAM(info, config) << "Added '" << new_unit.type_id() << "' to encountered units\n";
 
-	units.replace(new std::pair<map_location,unit>(loc,new_unit));
+	units.replace(loc, new_unit);
 	LOG_NG << "firing post_advance event at " << loc << "\n";
 	game_events::fire("post_advance",loc);
 }
@@ -2359,10 +2361,8 @@ size_t move_unit(game_display* disp,
 
 	ui->second.set_movement(moves_left);
 
-	std::pair<map_location,unit> *p = units.extract(ui->first);
-	p->first = steps.back();
-	units.add(p);
-	ui = units.find(p->first);
+	units.move(ui->first, steps.back());
+	ui = units.find(steps.back());
 	unit::clear_status_caches();
 
 	if(move_recorder != NULL) {

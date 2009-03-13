@@ -549,9 +549,7 @@ namespace {
 					const int side = u->second.side();
 					const map_location src_loc = u->first;
 
-					std::pair<map_location,unit> *up = units->extract(u->first);
-					up->first = vacant_dst;
-					units->add(up);
+					units->move(src_loc, vacant_dst);
 					unit_mutations++;
 					if(game_map->is_village(vacant_dst)) {
 						get_village(vacant_dst, *screen,*teams,side-1,*units);
@@ -1860,7 +1858,7 @@ namespace {
 					(*teams)[new_unit.side() - 1].set_current_player(new_unit.name());
 
 				units->erase(loc);
-				units->add(new std::pair<map_location,unit>(loc,new_unit));
+				units->add(loc, new_unit);
 				unit_mutations++;
 				if(game_map->is_village(loc)) {
 					get_village(loc,*screen,*teams,new_unit.side()-1,*units);
@@ -2346,7 +2344,7 @@ namespace {
 				}
 
 				units->erase(loc);
-				units->add(new std::pair<map_location,unit>(loc,u));
+				units->add(loc, u);
 				unit_mutations++;
 
 				std::string text = cfg["text"];

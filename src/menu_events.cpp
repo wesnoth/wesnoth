@@ -1207,7 +1207,7 @@ private:
 			up->second.set_goto(map_location());
 			up->second.set_movement(starting_moves);
 			up->first = route.back();
-			units_.add(up);
+			units_.insert(up);
 			unit::clear_status_caches();
 			up->second.set_standing(up->first);
 			gui_->invalidate(route.back());
@@ -1324,7 +1324,7 @@ private:
 			up->second.set_goto(map_location());
 			up->second.set_movement(starting_moves);
 			up->first = route.back();
-			units_.add(up);
+			units_.insert(up);
 			unit::clear_status_caches();
 			up->second.set_standing(up->first);
 
@@ -1569,11 +1569,9 @@ private:
 			const unit_race::GENDER gender =
 				(!genders.empty() ? genders[gamestate_.rng().get_random() % genders.size()] : unit_race::MALE);
 
-			units_.erase(mousehandler.get_last_hex());
-
 			unit chosen(&units_,&map_,&status_,&teams_,unit_choices[choice],1,false,false,gender,"",random_gender);
 			chosen.new_turn();
-			units_.add(new std::pair<map_location,unit>(mousehandler.get_last_hex(),chosen));
+			units_.replace(mousehandler.get_last_hex(), chosen);
 
 			gui_->invalidate(mousehandler.get_last_hex());
 			gui_->invalidate_unit();
@@ -3009,18 +3007,19 @@ private:
 		}
 	}
 	void console_handler::do_create() {
-		if (menu_handler_.map_.on_board(mouse_handler_.get_last_hex())) {
+		const map_location &loc = mouse_handler_.get_last_hex();
+		if (menu_handler_.map_.on_board(loc)) {
 			const unit_type_data::unit_type_map::const_iterator i = unit_type_data::types().find_unit_type(get_data());
 			if(i == unit_type_data::types().end()) {
 				command_failed("Invalid unit type");
 				return;
 			}
 
-			menu_handler_.units_.erase(mouse_handler_.get_last_hex());
-			menu_handler_.units_.add(new std::pair<map_location,unit>(
-				mouse_handler_.get_last_hex(),
-				unit(&menu_handler_.units_,&menu_handler_.map_,&menu_handler_.status_,&menu_handler_.teams_,&i->second,1,false)));
-			menu_handler_.gui_->invalidate(mouse_handler_.get_last_hex());
+			menu_handler_.units_.erase(loc);
+			menu_handler_.units_.add(loc,
+				unit(&menu_handler_.units_, &menu_handler_.map_, &menu_handler_.status_,
+				     &menu_handler_.teams_, &i->second, 1, false));
+			menu_handler_.gui_->invalidate(loc);
 			menu_handler_.gui_->invalidate_unit();
 		} else {
 			command_failed("Invalid location");

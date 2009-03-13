@@ -3065,14 +3065,14 @@ temporary_unit_placer::temporary_unit_placer(unit_map& m, const map_location& lo
 	: m_(m), loc_(loc), temp_(m.extract(loc))
 {
 	u.clone();
-	m.add(new std::pair<map_location,unit>(loc,u));
+	m.add(loc, u);
 }
 
 temporary_unit_placer::~temporary_unit_placer()
 {
 	m_.erase(loc_);
 	if(temp_) {
-		m_.add(temp_);
+		m_.insert(temp_);
 	}
 }
 

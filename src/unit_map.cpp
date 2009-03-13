@@ -26,15 +26,6 @@
 
 typedef std::pair<std::string, std::pair<bool, std::pair<map_location, unit>*> > umap_pair;
 
-unit_map::unit_map(const map_location &loc, const unit &u) :
-	map_(),
-	lmap_(),
-	num_iters_(0),
-	num_invalid_(0)
-{
-	add(new std::pair<map_location,unit>(loc, u));
-}
-
 unit_map::unit_map(const unit_map &that) :
 	/* Initialize to silence compiler warnings. */
 	map_(),
@@ -52,7 +43,7 @@ unit_map &unit_map::operator=(const unit_map &that)
 	num_invalid_ = 0;
 	for (umap::const_iterator i = that.map_.begin(); i != that.map_.end(); i++) {
 		if (i->second.first) {
-			add(new std::pair<map_location,unit>(i->second.second->first, i->second.second->second));
+			add(i->second.second->first, i->second.second->second);
 		}
 	}
 	return *this;
@@ -468,8 +459,19 @@ unit_map::unit_iterator unit_map::begin() {
 		return unit_iterator(i, this);
 }
 
+void unit_map::add(const map_location &l, const unit &u)
+{
+	insert(new std::pair<map_location,unit>(l, u));
+}
 
-void unit_map::add(std::pair<map_location,unit> *p)
+void unit_map::move(const map_location &src, const map_location &dst)
+{
+	std::pair<map_location,unit> *p = extract(src);
+	p->first = dst;
+	insert(p);
+}
+
+void unit_map::insert(std::pair<map_location,unit> *p)
 {
 	size_t unit_id = p->second.underlying_id();
 	umap::iterator iter = map_.find(unit_id);
@@ -480,7 +482,8 @@ void unit_map::add(std::pair<map_location,unit> *p)
 		iter->second.second = p;
 		validate(iter);
 	} else if(iter->second.second->first == p->first) {
-		replace(p);
+		erase(p->first);
+		insert(p);
 		return;
 	} else {
 		ERR_NG << "Trying to add " << p->second.name() <<
@@ -495,7 +498,7 @@ void unit_map::add(std::pair<map_location,unit> *p)
 			<< (1 + n_unit::id_manager::instance().get_save_id())
 			<< " to prevent duplicate id conflicts.\n";
 		p->second.clone(false);
-		add(p);
+		insert(p);
 		return;
 	}
 
@@ -506,12 +509,10 @@ void unit_map::add(std::pair<map_location,unit> *p)
 	assert(res.second);
 }
 
-void unit_map::replace(std::pair<map_location,unit> *p)
+void unit_map::replace(const map_location &l, const unit &u)
 {
-	if (erase(p->first) != 1)
-		assert(0);
-	DBG_NG << "Replace unit " << p->second.underlying_id() << "\n";
-	add(p);
+	erase(l);
+	add(l, u);
 }
 
 void unit_map::delete_all()
