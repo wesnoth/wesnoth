@@ -1501,12 +1501,12 @@ void formula_ai::play_turn()
 
 	if(use_eval_lists_) {
 		make_candidate_moves();
-	} else {
-		game_logic::map_formula_callable callable(this);
-		callable.add_ref();
-		while(make_move(move_formula_,callable)) {
-		}
 	}
+
+	game_logic::map_formula_callable callable(this);
+	callable.add_ref();
+        while(make_move(move_formula_,callable)) { }
+
 }
 
 void formula_ai::make_candidate_moves() {
@@ -1518,11 +1518,6 @@ void formula_ai::make_candidate_moves() {
 		int best_score = (*best_move)->get_score();
 		// If no evals > 0, fallback
 		if(best_score <= 0) {
-			if (master_)
-			{
-				ai_interface* fallback = create_ai("", get_info());
-				fallback->play_turn();
-			}
 			return;
 		}
 		// Otherwise, make the best scoring move
@@ -1539,13 +1534,6 @@ void formula_ai::make_candidate_moves() {
 		// And re-evaluate candidate moves
 		build_move_list();
 		best_move = candidate_moves_.begin();
-	}
-
-	// After all candidate moves have been exhausted, fallback
-	if (master_)
-	{
-		ai_interface* fallback = create_ai("", get_info());
-		fallback->play_turn();
 	}
 }
 
