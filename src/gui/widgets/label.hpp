@@ -36,7 +36,7 @@ public:
 
 	/** Inherited from tcontrol. */
 	void set_active(const bool active)
-		{ if(get_active() != active) set_state(active ? ENABLED : DISABLED); };
+		{ if(get_active() != active) set_state(active ? ENABLED : DISABLED); }
 
 	/** Inherited from tcontrol. */
 	bool get_active() const { return state_ != DISABLED; }
