@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-03-10 00:15+0100\n"
-"PO-Revision-Date: 2009-03-12 23:48-0500\n"
+"PO-Revision-Date: 2009-03-13 21:08-0500\n"
 "Last-Translator: luojie <lililjlj@gmail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
 "MIME-Version: 1.0\n"
@@ -659,7 +659,7 @@ msgid ""
 msgstr ""
 "在游戏中请记住：将鼠标指向游戏中许多物品时，一些信息会显示在状态条上，并附有"
 "简短的描述信息。这一功能在您第一次看到新<ref>dst='..abilities_section' "
-"text='能力'</ref>时非常有用。"
+"text='技能'</ref>时非常有用。"
 
 #. [topic]: id=about_game
 #: data/core/help.cfg:145
@@ -677,10 +677,10 @@ msgid ""
 "If your computer has a connection to the Internet, you can play against "
 "other people across the Internet."
 msgstr ""
-"本游戏由一系列的战斗组合而成，每次战斗称作一个剧本。每个剧本会让您的部队和一"
-"个或更多的对手作战。您可以选择和电脑或朋友在同一台电脑上对战（同台竞技模"
-"式）。如果您的电脑在局域网内，您也可以和其他局域网内的人对战。如果您的电脑能"
-"上网，则可以和其他能上网的人对战。"
+"本游戏由一系列的战斗组合而成，每次战斗成为一个关卡。每一关中您的部队会和一个"
+"或更多的对手作战。您可以选择和电脑或朋友在同一台电脑上对战（交替操作）。如果"
+"您的电脑在局域网内，您也可以和其他局域网内的人对战。如果您的电脑连着因特网，"
+"则可以和其他在网上的人对战。"
 
 #. [topic]: id=about_game
 #: data/core/help.cfg:148
@@ -694,8 +694,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"战役讲述着一个故事，是由一系列环环相扣的场景(称为”幕”)组成的，您常常得更小心"
-"谨慎，确保最精良的部队存活下来，能够在战役中的下一幕里继续战斗。"
+"战役讲述着一个故事，是由一系列环环相扣的关卡组成的，您常常得更小心谨慎，确保"
+"最精良的部队存活下来，能够在战役中的下一关继续战斗。"
 
 #. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:154
@@ -712,9 +712,9 @@ msgid ""
 "rescuing someone, or solving a puzzle, or holding out against a siege until "
 "a certain number of turns have elapsed."
 msgstr ""
-"注意每个场景开始前弹出的目标窗口。通常您通过杀死敌人首领取得胜利，自己首领阵"
-"亡时游戏失败。但是有些场景可能有其他目标－让您的首领到达指定地点，或者救人，"
-"或者解决一个迷题，或者与敌人对抗并坚持一定回合数。"
+"注意每一关开始前弹出的目标窗口。通常您通过杀死敌人首领取得胜利，自己首领阵亡"
+"时游戏失败。但是有些关卡可能有其他目标－让您的首领到达指定地点，或者救人，或"
+"者解决一个迷题，或者与敌人对抗并坚持一定回合数。"
 
 #. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:157
@@ -728,7 +728,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"场景胜利后,地图显示为灰色，'回合结束' 按钮会变成 '结束场景'。这时您可以改变游"
+"关卡胜利后,地图显示为灰色，'回合结束' 按钮会变成 '结束本关'。这时您可以改变游"
 "戏存档选项，也可以（在多人游戏中）和其他玩家交流。然后才按下那个按钮继续。"
 
 #. [topic]: id=recruit_and_recall
@@ -1002,7 +1002,7 @@ msgid ""
 "a manual update via 'update shroud now' (or the end of your turn) and "
 "thereby perserve your ability to undo movement."
 msgstr ""
-"某些场景的部分地图是不可见的，这背后有两种机理，可以分开或一同作用。战场黑幕"
+"某些关卡的部分地图是不可见的，这背后有两种机理，可以分开或一同作用。战场黑幕"
 "会隐藏这个区域的地形和任何单位。但是，一旦被侦测，您时时刻刻都能看见这个区"
 "域。战争迷雾只会隐藏（不是您的或盟友的）单位和村庄的归属。在附近有您的单位时"
 "迷雾会消失，当他们离去后会再次笼罩。每个单位都能清除本回合移动所经过区域和区"
@@ -1142,8 +1142,8 @@ msgstr ""
 "根据攻击类型的不同，每次成功攻击会造成一定量的基础伤害。例如，精灵战士5-4的攻"
 "击可以造成5点的基本伤害。两种情况会对此作出修正：即"
 "<ref>dst='damage_types_and_resistance' text='抗性'</ref>和"
-"<ref>dst='time_of_day'text='时刻'</ref>。欲查看详细的基本伤害修正，请在攻击选"
-"择菜单中选择<italic>text='伤害计算'</italic>。"
+"<ref>dst='time_of_day' text='时刻'</ref>。欲查看详细的基本伤害修正，请在攻击"
+"选择菜单中选择<italic>text='伤害计算'</italic>。"
 
 #. [topic]: id=combat
 #: data/core/help.cfg:247
@@ -1157,7 +1157,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"少数单位拥有特别的<ref>dst='..abilities_section' text='能力'</ref>，会影响在"
+"少数单位拥有特别的<ref>dst='..abilities_section' text='技能'</ref>，会影响在"
 "战斗中的伤害输出。最常见的，具有<ref>dst='weaponspecial_charge' text='冲锋'</"
 "ref>能力的单位在战斗中的使用此技能，则使进攻方和防守方都输出双倍的伤害。"
 
@@ -1295,7 +1295,7 @@ msgstr "后半夜"
 msgid ""
 "Keep in mind that some scenarios take place underground, where it is "
 "perpetually night!"
-msgstr "记住，有些场景是发生在地下的，那里一直是晚上。"
+msgstr "记住，有些关卡是发生在地下的，那里一直是晚上。"
 
 #. [topic]: id=experience_and_advancement
 #: data/core/help.cfg:287
@@ -1459,7 +1459,7 @@ msgid ""
 "Income and Upkeep."
 msgstr ""
 "韦诺中，仅仅征兵并战斗是不够的。您得注意您的金币，特别是在战役中，您能将多余"
-"的金币携带到下一幕。影响金币的主要是两个方面：收入和维护费用。"
+"的金币携带到下一关。影响金币的主要是两个方面：收入和维护费用。"
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:318
@@ -1523,8 +1523,8 @@ msgid ""
 msgstr ""
 "\n"
 "维护费用的支付规则中有一个重要的例外：即具有忠诚特质的单位不需支付维护费用。"
-"每一幕开始时您拥有的单位（比如Konrad或Delfador），或在场景中加入己方的单位"
-"（如在“继位者”第二幕中加入的骑兵）通常都具有忠诚特质。"
+"每一关开始时您拥有的单位（比如Konrad或Delfador），或在战役中加入己方的单位"
+"（如在“继位者”第二关中加入的骑兵）通常都具有忠诚特质。"
 
 #. [topic]: id=wrap_up
 #: data/core/help.cfg:329
@@ -2565,7 +2565,7 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"离开场景（无提示窗口）。\n"
+"退出本关（无须用户确认）。\n"
 "\n"
 
 #. [topic]: id=general_commands
@@ -2576,7 +2576,7 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"保存游戏（无提示窗口）。\n"
+"保存游戏（无须用户确认）。\n"
 "\n"
 
 #. [topic]: id=general_commands
@@ -2586,7 +2586,7 @@ msgid ""
 "Save the game and quit the scenario (without prompting)."
 msgstr ""
 "\n"
-"保存游戏并退出当前场景（无提示窗口）。"
+"保存游戏并退出当前场景（无须用户确认）。"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:799
@@ -2716,7 +2716,7 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"立即进入该战役的下一关（幕）。\n"
+"立即进入该战役的下一关。\n"
 "\n"
 
 #. [topic]: id=debug_commands
@@ -3513,7 +3513,7 @@ msgstr "毒素此刻正渗透到这个单位的全身。"
 msgid ""
 "This water will make melee weapons have the 'arcane' damage type until the "
 "end of the current scenario."
-msgstr "这瓶水将让单位的近战武器类型变为'奥术'直到下一幕开始."
+msgstr "这瓶水将让单位的近战武器类型变为'奥术'直到下一关开始."
 
 #: data/core/macros/items.cfg:290
 msgid "I am not suited to the use of this item! Let another take it."
@@ -5879,8 +5879,7 @@ msgid ""
 "After you have played a few scenarios, read the 'Gameplay' section in the "
 "help screen carefully. Details become important as scenarios get harder!"
 msgstr ""
-"玩过几个场景后,请认真阅读帮助中的'游戏玩法'部分.那些技巧在更难的场景中会很有"
-"用的!"
+"玩过几关后,请认真阅读帮助中的'游戏玩法'部分.那些技巧在更难的场景中会很有用的!"
 
 #. [tip]
 #: data/hardwired/tips.cfg:39
@@ -5889,7 +5888,7 @@ msgid ""
 "level units that are about to level up than with those same units at a "
 "higher level."
 msgstr ""
-"通常在开始下一幕的时候使用就快升级的低等级单位会更好一些，而不使用同一类型的"
+"通常在开始下一关的时候使用就快升级的低等级单位会更好一些，而不使用同一类型的"
 "高等级单位。"
 
 #. [tip]
@@ -5986,7 +5985,7 @@ msgid ""
 "'Actions' menu. By recalling the same units over and over, you can build up "
 "a powerful and experienced army."
 msgstr ""
-"您可以通过游戏菜单中的“召回”选项来调用上个场景中的单位。通过不断召回同一组单"
+"您可以通过游戏菜单中的“召回”选项来调用上一关中的单位。通过不断召回同一组单"
 "位，您可以建立一支强力而经验值丰富的军队。"
 
 #. [tip]
@@ -6704,7 +6703,7 @@ msgstr "插件已安装"
 
 #: src/addon_management.cpp:701
 msgid "Outdated add-ons"
-msgstr "过期插件"
+msgstr "不是最新的插件"
 
 #: src/addon_management.cpp:703
 msgid ""
@@ -6832,7 +6831,7 @@ msgstr "选择要下载的插件。"
 #: src/addon_management.cpp:1035 src/dialogs.cpp:672 src/menu_events.cpp:1065
 #: src/menu_events.cpp:1534
 msgid "Filter: "
-msgstr "过滤： "
+msgstr "过滤/查找： "
 
 #: src/addon_management.cpp:1066
 msgid "Network communication error."
@@ -7067,7 +7066,7 @@ msgid ""
 "(Games are saved automatically when you complete a scenario)"
 msgstr ""
 "没有存档，无法载入。\n"
-"（当您完成一个场景时会自动存档）"
+"（当您完成一关时会自动存档）"
 
 #: src/dialogs.cpp:647
 msgid "Date"
@@ -7604,7 +7603,7 @@ msgstr "单位列表"
 
 #: src/menu_events.cpp:315 src/menu_events.cpp:337
 msgid "Scroll To"
-msgstr "滚动到"
+msgstr "跳转"
 
 #: src/menu_events.cpp:369
 msgid "Leader"
@@ -7776,7 +7775,7 @@ msgid ""
 "(You must have veteran survivors from a previous scenario)"
 msgstr ""
 "没有可供召回的单位\n"
-"（只能召回上一幕存活下来的单位）"
+"（只能召回上一关存活下来的单位）"
 
 #: src/menu_events.cpp:1058
 msgid "Recall"
@@ -7960,23 +7959,23 @@ msgstr "忽视回放错误。"
 
 #: src/menu_events.cpp:2326
 msgid "Disable autosaves."
-msgstr "禁止自动存档。"
+msgstr "关闭自动存档。"
 
 #: src/menu_events.cpp:2328
 msgid "Advance to the next scenario, or scenario identified by 'id'"
-msgstr "进入下一幕游戏，或者id识别开始..."
+msgstr "进入下一关游戏，或者由id指定的关卡..."
 
 #: src/menu_events.cpp:2331
 msgid "Choose next scenario"
-msgstr "正在下载下一幕"
+msgstr "选择下一关"
 
 #: src/menu_events.cpp:2334
 msgid "Turn debug mode on."
-msgstr "打开除错模式。"
+msgstr "打开调试模式。"
 
 #: src/menu_events.cpp:2336
 msgid "Turn debug mode off."
-msgstr "关闭除错模式。"
+msgstr "关闭调试模式。"
 
 #: src/menu_events.cpp:2338
 msgid "Set the command used by the custom command hotkey"
@@ -7988,11 +7987,11 @@ msgstr "设置或者显示一条命令的alias(别名)"
 
 #: src/menu_events.cpp:2342
 msgid "Set a scenario variable."
-msgstr "显示一个场景变量"
+msgstr "设置一个关卡变量"
 
 #: src/menu_events.cpp:2344
 msgid "Show a scenario variable."
-msgstr "显示一个场景变量"
+msgstr "显示一个关卡变量"
 
 #: src/menu_events.cpp:2346
 msgid "Modify a unit variable. (Only top level keys are supported.)"
@@ -8000,7 +7999,7 @@ msgstr "修改一个单位变量。（只支持顶层的键值）"
 
 #: src/menu_events.cpp:2350
 msgid "Remove a trait from a unit. (Does not work yet.)"
-msgstr "去掉一个单位的特质。（目前这个功能还没实现。）"
+msgstr "去掉单位的一个特质。（目前这个功能还没实现。）"
 
 #: src/menu_events.cpp:2352
 msgid "Create a unit."
@@ -9010,7 +9009,7 @@ msgstr "设置"
 
 #: src/titlescreen.cpp:421
 msgid "TitleScreen button^Credits"
-msgstr "工作人员"
+msgstr "制作人员"
 
 #: src/titlescreen.cpp:422
 msgid "TitleScreen button^Quit"

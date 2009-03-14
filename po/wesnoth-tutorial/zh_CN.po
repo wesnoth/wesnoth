@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-12-03 19:43+0100\n"
-"PO-Revision-Date: 2009-02-27 01:34-0600\n"
+"PO-Revision-Date: 2009-03-13 18:32-0500\n"
 "Last-Translator: zinc <minghaoruan@gmail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
 "MIME-Version: 1.0\n"
@@ -343,7 +343,7 @@ msgstr "单击右下角的'结束回合'按钮"
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:489
 msgid "Ouch! I need to heal! Only $student_hp hitpoints left!"
-msgstr "嗷! 我需要治疗! 我只剩 $student_hp 点生命了!"
+msgstr "啊! 我需要治疗! 我只剩 $student_hp 点生命了!"
 
 #. [event]
 #. [then]
@@ -488,14 +488,15 @@ msgstr "但是让你的战士去和刺靶战斗之前, 你应该知道他们有�
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:720
 msgid "I'll tell them to use the one that does the most damage!"
-msgstr "哪种厉害用哪种!"
+msgstr "我会让他们用伤害最高的攻击方式!"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:724
 msgid ""
 "And which would that be? The sword (5-4) or the bow (3-3)? I suppose you'll "
 "find out..."
-msgstr "那么哪种更厉害? 剑(5-4) 还是弓箭 (3-3)? 我想你会找到答案的..."
+msgstr ""
+"那么你认为哪种伤害更高呢? 剑(5-4) 还是弓箭 (3-3)? 我想你会找到答案的..."
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:726
@@ -529,7 +530,7 @@ msgid ""
 "attack. Quintain defended with its melee attack (3-5). The ranged attack was "
 "safer."
 msgstr ""
-"你的精灵使用了剑(5-4,也就是5伤害,攻击4次),这是一种近战攻击,所以刺靶会以它的近"
+"你的精灵使用了剑(5-4,每次5点伤害,攻击4次),这是一种近战攻击,所以刺靶会以它的近"
 "战攻击反击(3-5). 而远程攻击将会更安全."
 
 #. [message]: id=Delfador
@@ -540,7 +541,7 @@ msgid ""
 "was safer.\n"
 "End your turn, then attack again."
 msgstr ""
-"你的精灵使用了剑(5-4,也就是5伤害,攻击4次),这是一种近战攻击,所以刺靶会以它的近"
+"你的精灵使用了剑(5-4,每次5点伤害,攻击4次),这是一种近战攻击,所以刺靶会以它的近"
 "战攻击反击(3-5). 而远程攻击将会更安全.\n"
 "结束回合, 然后再次攻击."
 
@@ -551,7 +552,7 @@ msgid ""
 "attack. The quintain defended with its melee attack (3-5).\n"
 "You should tell the other Elf to use the bow."
 msgstr ""
-"你的精灵使用了剑(5-4,也就是5伤害,攻击4次),这是一种近战攻击,所以刺靶会以它的近"
+"你的精灵使用了剑(5-4,每次5点伤害,攻击4次),这是一种近战攻击,所以刺靶会以它的近"
 "战攻击反击(3-5). \n"
 "你应该让另一个精灵使用弓箭."
 
@@ -569,8 +570,8 @@ msgid ""
 "The quintain has no ranged attack, only a melee attack, so it could not "
 "defend itself."
 msgstr ""
-"你的精灵使用了弓箭,这是一种远程攻击(3-3,即3点伤害,攻击3次). 刺靶没有远程攻击,"
-"只有近战攻击,所以它不会反击."
+"你的精灵使用了弓箭,这是一种远程攻击(3-3,每次3点伤害,攻击3次). 刺靶没有远程攻"
+"击,只有近战攻击,所以它不会反击."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:849
@@ -580,8 +581,8 @@ msgid ""
 "defend itself.\n"
 "End your turn, then attack again."
 msgstr ""
-"你的精灵使用了弓箭,这是一种远程攻击(3-3,即3点伤害,攻击3次). 刺靶没有远程攻击,"
-"只有近战攻击,所以它不会反击.\n"
+"你的精灵使用了弓箭,这是一种远程攻击(3-3,每次3点伤害,攻击3次). 刺靶没有远程攻"
+"击,只有近战攻击,所以它不会反击.\n"
 "结束回合,然后再次攻击."
 
 #. [message]: id=Delfador
@@ -702,7 +703,7 @@ msgstr "你希望继续练习吗?"
 #. [option]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1061
 msgid "Yes, I'm still figuring it out."
-msgstr "是,我还要继续."
+msgstr "是,我希望继续."
 
 #. [option]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1064
@@ -717,7 +718,7 @@ msgid ""
 "state of your troops before clicking 'End Scenario' to continue to the next "
 "scenario."
 msgstr ""
-"您的胜利使地图变灰了──一切成了过去,但是还可以在点击 “结束场景” 进入下一场景之"
+"您的胜利使地图变灰了──一切成了过去,但是还可以在点击 “结束本关” 进入下一关之"
 "前,看看你的大军的部署和状态^.^."
 
 #: data/campaigns/tutorial/scenarios/2_Speaking.cfg:27
@@ -970,8 +971,8 @@ msgid ""
 "and $recall_name2 gained $recall_xp2. You should recall them now so they can "
 "gain more experience, rather than recruiting new ones."
 msgstr ""
-"在上个场景中, $recall_name1 积累了 $recall_xp1 点经验值, 而 $recall_name2 获"
-"得了$recall_xp2 点. 你现在应该召回他们来代替征募新的单位."
+"在上一关中, $recall_name1 积累了 $recall_xp1 点经验值, 而 $recall_name2 获得"
+"了$recall_xp2 点. 你现在应该召回他们来代替征募新的单位."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:528
@@ -980,8 +981,8 @@ msgid ""
 "You should recall that unit now, and recruit a second one (which is cheaper "
 "than recalling, anyway)."
 msgstr ""
-"在上个场景中, $recall_name1 积累了 $recall_xp1 点经验值. 你现在应该召回它, 然"
-"后再征募另一个(不管怎么说,这比召回便宜点)."
+"在上一关中, $secall_name1 积累了 $recall_xp1 点经验值. 你现在应该召回它, 然后"
+"再征募另一个(不管怎么说,这比召回便宜点)."
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:531
@@ -1483,7 +1484,7 @@ msgstr ""
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1181
 msgid "You only need to defeat the leader to win (see Main Menu->Objectives)."
-msgstr "你只需要击败敌人领袖就可以胜利（查看 '菜单'->'场景目标'）。"
+msgstr "你只需要击败敌人领袖就可以胜利（查看 '菜单'->'战役目标'）。"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1186
