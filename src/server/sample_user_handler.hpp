@@ -22,9 +22,6 @@
  * If you use this on anything real you are insane
  */
 
-// Class is currently broken due to the hardcoding of the phpbb hashing algorithms
-// @todo fix it
-
 class suh : public user_handler {
 	public:
 		suh(config c);
