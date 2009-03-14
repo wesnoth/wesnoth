@@ -28,17 +28,29 @@ if [ "$1" = "--test" ]; then
 fi
 
 PARAMETERS=$*
-THREADS=0
+THREADS=4
 PORT=15000
 
 case $SERVER in
-	1.4 )	PORT=14998
+	1.4)
+		PORT=14998
+		THREADS=32
 		;;
-	1.5* )	PORT=14999
+	1.6)
+		PORT=14999
+		THREADS=32
 		;;
-	trunk )	PORT=15000
+	1.5*)
+		PORT=14999
+		THREADS=16
 		;;
-	* )
+	1.7*)
+		PORT=14997
+		THREADS=16
+		;;
+	trunk)
+		PORT=15000
+		;;
 esac
 
 ulimit -Ss 2048
