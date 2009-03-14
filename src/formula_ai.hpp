@@ -52,7 +52,7 @@ public:
 		bool operator() (const boost::shared_ptr<candidate_move> lmove,
 				const boost::shared_ptr<candidate_move> rmove) const
 		{
-			return lmove->get_score() < rmove->get_score();
+			return lmove->get_score() > rmove->get_score();
 		}
 	};
 
@@ -70,6 +70,18 @@ private:
 
 typedef boost::shared_ptr<candidate_move> candidate_move_ptr;
 typedef std::set<game_logic::candidate_move_ptr, game_logic::candidate_move::move_compare> candidate_move_set;
+
+typedef std::pair< unit_map::unit_iterator, int> unit_formula_pair;
+
+struct unit_formula_compare {
+        bool operator() (const unit_formula_pair left,
+                        const unit_formula_pair right) const
+        {
+                return left.second > right.second;
+        }
+};
+
+typedef std::multiset< unit_formula_pair, game_logic::unit_formula_compare > unit_formula_set;
 
 class ai_function_symbol_table : public function_symbol_table {
 

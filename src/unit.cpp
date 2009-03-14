@@ -100,6 +100,8 @@ unit::unit(const unit& o):
 
            unit_formula_(o.unit_formula_),
            unit_loop_formula_(o.unit_loop_formula_),
+           unit_priority_formula_(o.unit_priority_formula_),
+           unit_on_fail_formula_(o.unit_on_fail_formula_),
            formula_vars_(o.formula_vars_ ? new game_logic::map_formula_callable(*o.formula_vars_) : o.formula_vars_),
 
            recruits_(o.recruits_),
@@ -183,6 +185,8 @@ unit::unit(unit_map* unitmap, const gamemap* map, const gamestatus* game_status,
 	alpha_(),
 	unit_formula_(),
 	unit_loop_formula_(),
+        unit_priority_formula_(),
+        unit_on_fail_formula_(),
 	formula_vars_(),
 	recruits_(),
 	movement_(0),
@@ -260,6 +264,8 @@ unit::unit(const config& cfg,bool use_traits) :
 	alpha_(),
 	unit_formula_(),
 	unit_loop_formula_(),
+        unit_priority_formula_(),
+        unit_on_fail_formula_(),
 	formula_vars_(),
 	recruits_(),
 	movement_(0),
@@ -365,6 +371,8 @@ unit::unit(unit_map* unitmap, const gamemap* map, const gamestatus* game_status,
 	alpha_(),
 	unit_formula_(),
 	unit_loop_formula_(),
+        unit_priority_formula_(),
+        unit_on_fail_formula_(),
 	formula_vars_(),
 	recruits_(),
 	movement_(0),
@@ -462,6 +470,8 @@ unit::unit(const unit_type* t, int side, bool use_traits, bool dummy_unit,
 	alpha_(),
 	unit_formula_(),
 	unit_loop_formula_(),
+        unit_priority_formula_(),
+        unit_on_fail_formula_(),
 	formula_vars_(),
 	recruits_(),
 	movement_(0),
@@ -1443,6 +1453,8 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 	//support for unit formulas and unit-specyfic variables in [ai_vars]
 	unit_formula_ = cfg["formula"];
 	unit_loop_formula_ = cfg["loop_formula"];
+        unit_priority_formula_ = cfg["priority_formula"];
+	unit_on_fail_formula_ = cfg["on_fail"];
 
 	const config* ai_vars = cfg.child("ai_vars");
 	if (ai_vars)
@@ -1613,6 +1625,12 @@ void unit::write(config& cfg) const
 
 	if (has_loop_formula())
 		cfg["loop_formula"] = unit_loop_formula_;
+
+	if (has_priority_formula())
+		cfg["priority_formula"] = unit_priority_formula_;
+
+	if (has_on_fail_formula())
+		cfg["on_fail"] = unit_on_fail_formula_;
 
 
 	if (formula_vars_ && formula_vars_->empty() == false)

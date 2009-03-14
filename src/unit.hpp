@@ -291,8 +291,12 @@ public:
 	void add_formula_var(std::string str, variant var);
 	bool has_formula() const { return !unit_formula_.empty(); }
 	bool has_loop_formula() const { return !unit_loop_formula_.empty(); }
+	bool has_priority_formula() const { return !unit_priority_formula_.empty(); }
+	bool has_on_fail_formula() const { return !unit_on_fail_formula_.empty(); }
 	const std::string& get_formula() const { return unit_formula_; }
 	const std::string& get_loop_formula() const { return unit_loop_formula_; }
+	const std::string& get_priority_formula() const { return unit_priority_formula_; }
+	const std::string& get_on_fail_formula() const { return unit_on_fail_formula_; }
 
 	void reset_modifications();
 	void backup_state();
@@ -382,6 +386,8 @@ private:
 
 	std::string unit_formula_;
 	std::string unit_loop_formula_;
+	std::string unit_priority_formula_;
+	std::string unit_on_fail_formula_;
 	game_logic::map_formula_callable_ptr formula_vars_;
 
 	std::vector<std::string> recruits_;

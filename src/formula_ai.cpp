@@ -1461,43 +1461,85 @@ void formula_ai::play_turn()
 {
 	//execute units formulas first
 
+        unit_formula_set units_with_formulas;
+
 	for(unit_map::unit_iterator i = units_.begin() ; i != units_.end() ; ++i)
 	{
-		if ( (i->second.side() == get_info().team_num)  )
-		{
-                    if ( i->second.has_formula() ) {
-			try {
-				game_logic::const_formula_ptr formula(new game_logic::formula(i->second.get_formula(), &function_table));
-				game_logic::map_formula_callable callable(this);
-				callable.add_ref();
-				callable.add("me", variant(new unit_callable(*i)));
-				make_move(formula, callable);
-			}
-			catch(formula_error& e) {
-				if(e.filename == "formula")
-					e.line = 0;
-				handle_exception( e, "Unit formula error for unit: '" + i->second.type_id() + "' standing at (" + boost::lexical_cast<std::string>(i->first.x+1) + "," + boost::lexical_cast<std::string>(i->first.y+1) + ")");
-			}
-                    }
-                    if( i.valid() ) {
-                        if( i->second.has_loop_formula() )
-                        {
-                                try {
-                                        game_logic::const_formula_ptr loop_formula(new game_logic::formula(i->second.get_loop_formula(), &function_table));
-                                        game_logic::map_formula_callable callable(this);
-                                        callable.add_ref();
-                                        callable.add("me", variant(new unit_callable(*i)));
-                                        while ( make_move(loop_formula, callable) ) {}
-                                }
-                                catch(formula_error& e) {
-                                        if(e.filename == "formula")
-                                                e.line = 0;
-                                        handle_exception( e, "Unit loop formula error for unit: '" + i->second.type_id() + "' standing at (" + boost::lexical_cast<std::string>(i->first.x+1) + "," + boost::lexical_cast<std::string>(i->first.y+1) + ")");
-                                }
+            if ( (i->second.side() == get_info().team_num)  )
+            {
+                if ( i->second.has_formula() || i->second.has_loop_formula()) {
+                    int priority = 0;
+std::cout<< "Znalazlem jednostke z formulka!\n";
+                    if( i->second.has_priority_formula() ) {
+                        try {
+                            game_logic::const_formula_ptr priority_formula(new game_logic::formula(i->second.get_priority_formula(), &function_table));
+                            game_logic::map_formula_callable callable(this);
+                            callable.add_ref();
+                            callable.add("me", variant(new unit_callable(*i)));
+                            priority = (formula::evaluate(priority_formula, callable)).as_int();
+                        } catch(formula_error& e) {
+                                if(e.filename == "formula")
+                                        e.line = 0;
+                                handle_exception( e, "Unit priority formula error for unit: '" + i->second.type_id() + "' standing at (" + boost::lexical_cast<std::string>(i->first.x+1) + "," + boost::lexical_cast<std::string>(i->first.y+1) + ")");
+
+                                priority = 0;
+                        } catch(type_error& e) {
+                                priority = 0;
+                                ERR_AI << "formula type error while evaluating unit priority formula  " << e.message << "\n";
                         }
                     }
-		}
+
+                    units_with_formulas.insert( unit_formula_pair( i, priority ) );
+                }
+            }
+        }
+
+        std::cout << "MAPA UNIT FORMULAS: " << units_with_formulas.size() << "\n";
+
+	for(unit_formula_set::iterator pair_it = units_with_formulas.begin() ; pair_it != units_with_formulas.end() ; ++pair_it)
+	{
+            unit_map::iterator i = pair_it->first;
+
+            if( i.valid() ) {
+
+                if ( i->second.has_formula() ) {
+                    try {
+                            game_logic::const_formula_ptr formula(new game_logic::formula(i->second.get_formula(), &function_table));
+                            game_logic::map_formula_callable callable(this);
+                            callable.add_ref();
+                            callable.add("me", variant(new unit_callable(*i)));
+                            make_move(formula, callable);
+                    }
+                    catch(formula_error& e) {
+                            if(e.filename == "formula")
+                                    e.line = 0;
+                            handle_exception( e, "Unit formula error for unit: '" + i->second.type_id() + "' standing at (" + boost::lexical_cast<std::string>(i->first.x+1) + "," + boost::lexical_cast<std::string>(i->first.y+1) + ")");
+                    }
+                }
+            } else
+std::cout << "FIRST I INVALID!\n";
+            
+            if( i.valid() ) {
+                if( i->second.has_loop_formula() )
+                {
+                        try {
+                                game_logic::const_formula_ptr loop_formula(new game_logic::formula(i->second.get_loop_formula(), &function_table));
+                                game_logic::map_formula_callable callable(this);
+                                callable.add_ref();
+                                callable.add("me", variant(new unit_callable(*i)));
+                                while ( make_move(loop_formula, callable) ) {}
+                        }
+                        catch(formula_error& e) {
+                                if(e.filename == "formula")
+                                        e.line = 0;
+                                handle_exception( e, "Unit loop formula error for unit: '" + i->second.type_id() + "' standing at (" + boost::lexical_cast<std::string>(i->first.x+1) + "," + boost::lexical_cast<std::string>(i->first.y+1) + ")");
+                        }
+                }
+            } else
+std::cout<< "SECOND I INVALID!\n";
 	}
+
+        std::cout<< "PO UNIT FORMULAS\n";
 
 	if(use_eval_lists_) {
 		make_candidate_moves();
