@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-03-08 22:43+0100\n"
+"POT-Creation-Date: 2009-03-14 13:09+0100\n"
 "PO-Revision-Date: 2008-08-11 01:15+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Chinese/Traditional <steven2880@gmail.com>\n"
@@ -598,8 +598,8 @@ msgstr ""
 #: data/gui/default/window/editor_settings.cfg:230
 #: data/gui/default/window/mp_login.cfg:234
 #: data/gui/default/window/mp_method_selection.cfg:209
-#: data/gui/default/window/wml_message.cfg:452
-#: data/gui/default/window/wml_message.cfg:658 src/construct_dialog.cpp:125
+#: data/gui/default/window/wml_message.cfg:442
+#: data/gui/default/window/wml_message.cfg:648 src/construct_dialog.cpp:125
 #: src/construct_dialog.cpp:132
 msgid "OK"
 msgstr "確定"
@@ -1455,56 +1455,56 @@ msgstr "畫面沒有文字。"
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr "元件'$id'沒有被設定"
 
-#: src/gui/widgets/settings.cpp:132
+#: src/gui/widgets/settings.cpp:135
 msgid "No default gui defined."
 msgstr "沒有設定預設網格"
 
-#: src/gui/widgets/settings.cpp:292
+#: src/gui/widgets/settings.cpp:295
 msgid "Window not defined."
 msgstr "視窗沒有設定"
 
-#: src/gui/widgets/settings.cpp:390
+#: src/gui/widgets/settings.cpp:393
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr "元件設定 '$definition' 沒有設定 '$id'."
 
-#: src/gui/widgets/settings.cpp:506 src/gui/widgets/window_builder.cpp:326
+#: src/gui/widgets/settings.cpp:509 src/gui/widgets/window_builder.cpp:326
 msgid "No resolution defined."
 msgstr "没有設定解決方法"
 
-#: src/gui/widgets/settings.cpp:534
+#: src/gui/widgets/settings.cpp:537
 msgid "No state or draw section defined."
 msgstr "没有設定狀態或界線"
 
-#: src/gui/widgets/settings.cpp:763 src/gui/widgets/settings.cpp:917
-#: src/gui/widgets/window_builder.cpp:416
-#: src/gui/widgets/window_builder.cpp:926
-#: src/gui/widgets/window_builder.cpp:1135
+#: src/gui/widgets/settings.cpp:766 src/gui/widgets/settings.cpp:920
+#: src/gui/widgets/window_builder.cpp:422
+#: src/gui/widgets/window_builder.cpp:932
+#: src/gui/widgets/window_builder.cpp:1141
 msgid "No grid defined."
 msgstr "沒有設定網格"
 
-#: src/gui/widgets/window_builder.cpp:527
+#: src/gui/widgets/window_builder.cpp:533
 msgid "A row must have a column."
 msgstr "行必須要有列"
 
-#: src/gui/widgets/window_builder.cpp:528
+#: src/gui/widgets/window_builder.cpp:534
 msgid "Number of columns differ."
 msgstr "列數不同。"
 
-#: src/gui/widgets/window_builder.cpp:766
+#: src/gui/widgets/window_builder.cpp:772
 msgid "No list defined."
 msgstr "没有設定列表"
 
-#: src/gui/widgets/window_builder.cpp:769
+#: src/gui/widgets/window_builder.cpp:775
 msgid "A 'list_definition' should contain one row."
 msgstr "'list_definition' 應該最少要有一行。"
 
-#: src/gui/widgets/window_builder.cpp:788
+#: src/gui/widgets/window_builder.cpp:794
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr "'list_data' 的數值必須跟 'list_definition'有相同的數列。"
 
-#: src/gui/widgets/window_builder.cpp:1057
+#: src/gui/widgets/window_builder.cpp:1063
 msgid "The number of value_labels and values don't match."
 msgstr ""
 
@@ -2055,7 +2055,7 @@ msgstr "更改快捷鍵"
 msgid "Clear Hotkey"
 msgstr "更改快捷鍵"
 
-#: src/preferences_display.cpp:313
+#: src/preferences_display.cpp:314
 msgid "This Hotkey is already in use."
 msgstr "此快捷鍵已經被使用"
 

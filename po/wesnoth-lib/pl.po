@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-03-08 22:43+0100\n"
+"POT-Creation-Date: 2009-03-14 13:09+0100\n"
 "PO-Revision-Date: 2009-03-13 19:36+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team:  <z.banach@wsisiz.edu.pl>\n"
@@ -585,8 +585,8 @@ msgstr "Pozwól na otworzenie więcej niż jednej mapy w tym samym czasie (MDI)"
 #: data/gui/default/window/editor_settings.cfg:230
 #: data/gui/default/window/mp_login.cfg:234
 #: data/gui/default/window/mp_method_selection.cfg:209
-#: data/gui/default/window/wml_message.cfg:452
-#: data/gui/default/window/wml_message.cfg:658 src/construct_dialog.cpp:125
+#: data/gui/default/window/wml_message.cfg:442
+#: data/gui/default/window/wml_message.cfg:648 src/construct_dialog.cpp:125
 #: src/construct_dialog.cpp:132
 msgid "OK"
 msgstr "OK"
@@ -1445,56 +1445,56 @@ msgstr "Tekst nie zaczyna się na kanwie."
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr "Wymagany widget '$id' nie został zdefiniowany."
 
-#: src/gui/widgets/settings.cpp:132
+#: src/gui/widgets/settings.cpp:135
 msgid "No default gui defined."
 msgstr "Nie zdefiniowano domyślnego interfejsu."
 
-#: src/gui/widgets/settings.cpp:292
+#: src/gui/widgets/settings.cpp:295
 msgid "Window not defined."
 msgstr "Niezdefiniowane okno."
 
-#: src/gui/widgets/settings.cpp:390
+#: src/gui/widgets/settings.cpp:393
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr "Definicja widgetu '$definition' nie zawiera definicji '$id'."
 
-#: src/gui/widgets/settings.cpp:506 src/gui/widgets/window_builder.cpp:326
+#: src/gui/widgets/settings.cpp:509 src/gui/widgets/window_builder.cpp:326
 msgid "No resolution defined."
 msgstr "Nie zdefiniowano rozdzielczości."
 
-#: src/gui/widgets/settings.cpp:534
+#: src/gui/widgets/settings.cpp:537
 msgid "No state or draw section defined."
 msgstr "Nie zdefiniowano stanu albo sekcji rysowania."
 
-#: src/gui/widgets/settings.cpp:763 src/gui/widgets/settings.cpp:917
-#: src/gui/widgets/window_builder.cpp:416
-#: src/gui/widgets/window_builder.cpp:926
-#: src/gui/widgets/window_builder.cpp:1135
+#: src/gui/widgets/settings.cpp:766 src/gui/widgets/settings.cpp:920
+#: src/gui/widgets/window_builder.cpp:422
+#: src/gui/widgets/window_builder.cpp:932
+#: src/gui/widgets/window_builder.cpp:1141
 msgid "No grid defined."
 msgstr "Nie zdefiniowano siatki."
 
-#: src/gui/widgets/window_builder.cpp:527
+#: src/gui/widgets/window_builder.cpp:533
 msgid "A row must have a column."
 msgstr "Wiersz musi mieć kolumnę."
 
-#: src/gui/widgets/window_builder.cpp:528
+#: src/gui/widgets/window_builder.cpp:534
 msgid "Number of columns differ."
 msgstr "Liczby kolumn są różne."
 
-#: src/gui/widgets/window_builder.cpp:766
+#: src/gui/widgets/window_builder.cpp:772
 msgid "No list defined."
 msgstr "Nie zdefiniowano listy."
 
-#: src/gui/widgets/window_builder.cpp:769
+#: src/gui/widgets/window_builder.cpp:775
 msgid "A 'list_definition' should contain one row."
 msgstr "'list_definition' powinien zawierać jeden rząd"
 
-#: src/gui/widgets/window_builder.cpp:788
+#: src/gui/widgets/window_builder.cpp:794
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr "'list_data' musi mieć taką samą liczbę kolumn jak 'list_definition'"
 
-#: src/gui/widgets/window_builder.cpp:1057
+#: src/gui/widgets/window_builder.cpp:1063
 msgid "The number of value_labels and values don't match."
 msgstr "Liczby elementów value_label i value się nie zgadzają."
 
@@ -2029,7 +2029,7 @@ msgstr "Zmień skrót"
 msgid "Clear Hotkey"
 msgstr "Usuń skrót"
 
-#: src/preferences_display.cpp:313
+#: src/preferences_display.cpp:314
 msgid "This Hotkey is already in use."
 msgstr "Ten skrót jest już używany."
 

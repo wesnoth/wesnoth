@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bg\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-03-08 22:43+0100\n"
+"POT-Creation-Date: 2009-03-14 13:09+0100\n"
 "PO-Revision-Date: 2007-05-02 22:38+0300\n"
 "Last-Translator: Nikolay Vladimirov <nikolay@vladimiroff.com>\n"
 "Language-Team: Български\n"
@@ -604,8 +604,8 @@ msgstr ""
 #: data/gui/default/window/editor_settings.cfg:230
 #: data/gui/default/window/mp_login.cfg:234
 #: data/gui/default/window/mp_method_selection.cfg:209
-#: data/gui/default/window/wml_message.cfg:452
-#: data/gui/default/window/wml_message.cfg:658 src/construct_dialog.cpp:125
+#: data/gui/default/window/wml_message.cfg:442
+#: data/gui/default/window/wml_message.cfg:648 src/construct_dialog.cpp:125
 #: src/construct_dialog.cpp:132
 msgid "OK"
 msgstr "ОК "
@@ -1470,58 +1470,58 @@ msgstr ""
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:132
+#: src/gui/widgets/settings.cpp:135
 msgid "No default gui defined."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:292
+#: src/gui/widgets/settings.cpp:295
 msgid "Window not defined."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:390
+#: src/gui/widgets/settings.cpp:393
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:506 src/gui/widgets/window_builder.cpp:326
+#: src/gui/widgets/settings.cpp:509 src/gui/widgets/window_builder.cpp:326
 #, fuzzy
 msgid "No resolution defined."
 msgstr "Създаването на картата се провали."
 
-#: src/gui/widgets/settings.cpp:534
+#: src/gui/widgets/settings.cpp:537
 msgid "No state or draw section defined."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:763 src/gui/widgets/settings.cpp:917
-#: src/gui/widgets/window_builder.cpp:416
-#: src/gui/widgets/window_builder.cpp:926
-#: src/gui/widgets/window_builder.cpp:1135
+#: src/gui/widgets/settings.cpp:766 src/gui/widgets/settings.cpp:920
+#: src/gui/widgets/window_builder.cpp:422
+#: src/gui/widgets/window_builder.cpp:932
+#: src/gui/widgets/window_builder.cpp:1141
 msgid "No grid defined."
 msgstr ""
 
-#: src/gui/widgets/window_builder.cpp:527
+#: src/gui/widgets/window_builder.cpp:533
 msgid "A row must have a column."
 msgstr ""
 
-#: src/gui/widgets/window_builder.cpp:528
+#: src/gui/widgets/window_builder.cpp:534
 msgid "Number of columns differ."
 msgstr ""
 
-#: src/gui/widgets/window_builder.cpp:766
+#: src/gui/widgets/window_builder.cpp:772
 #, fuzzy
 msgid "No list defined."
 msgstr "Създаването на картата се провали."
 
-#: src/gui/widgets/window_builder.cpp:769
+#: src/gui/widgets/window_builder.cpp:775
 msgid "A 'list_definition' should contain one row."
 msgstr ""
 
-#: src/gui/widgets/window_builder.cpp:788
+#: src/gui/widgets/window_builder.cpp:794
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr ""
 
-#: src/gui/widgets/window_builder.cpp:1057
+#: src/gui/widgets/window_builder.cpp:1063
 msgid "The number of value_labels and values don't match."
 msgstr ""
 
@@ -2084,7 +2084,7 @@ msgstr "Смяна на горещия клавиш"
 msgid "Clear Hotkey"
 msgstr "Смяна на горещия клавиш"
 
-#: src/preferences_display.cpp:313
+#: src/preferences_display.cpp:314
 msgid "This Hotkey is already in use."
 msgstr "Горещият клавиш е вече в употреба."
 

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-03-08 22:43+0100\n"
+"POT-Creation-Date: 2009-03-14 13:09+0100\n"
 "PO-Revision-Date: 2009-02-15 17:08-0300\n"
 "Last-Translator: Ignacio R. Morelle <shikadilord@users.sourceforge.net>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -585,8 +585,8 @@ msgstr "Mantener más de un mapa abierto a la vez (MDI)"
 #: data/gui/default/window/editor_settings.cfg:230
 #: data/gui/default/window/mp_login.cfg:234
 #: data/gui/default/window/mp_method_selection.cfg:209
-#: data/gui/default/window/wml_message.cfg:452
-#: data/gui/default/window/wml_message.cfg:658 src/construct_dialog.cpp:125
+#: data/gui/default/window/wml_message.cfg:442
+#: data/gui/default/window/wml_message.cfg:648 src/construct_dialog.cpp:125
 #: src/construct_dialog.cpp:132
 msgid "OK"
 msgstr "Aceptar"
@@ -1459,59 +1459,59 @@ msgstr "El texto no empieza en el lienzo."
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr "El widget obligatorio «$id» no ha sido definido."
 
-#: src/gui/widgets/settings.cpp:132
+#: src/gui/widgets/settings.cpp:135
 msgid "No default gui defined."
 msgstr "No se ha definido una interfaz de usuario predeterminada."
 
-#: src/gui/widgets/settings.cpp:292
+#: src/gui/widgets/settings.cpp:295
 msgid "Window not defined."
 msgstr "Ventana no definida."
 
-#: src/gui/widgets/settings.cpp:390
+#: src/gui/widgets/settings.cpp:393
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr "Definición de widget «$definition» carece de una definición para «$id»."
 
-#: src/gui/widgets/settings.cpp:506 src/gui/widgets/window_builder.cpp:326
+#: src/gui/widgets/settings.cpp:509 src/gui/widgets/window_builder.cpp:326
 msgid "No resolution defined."
 msgstr "No se ha definido ninguna resolución."
 
-#: src/gui/widgets/settings.cpp:534
+#: src/gui/widgets/settings.cpp:537
 msgid "No state or draw section defined."
 msgstr "No se ha definido ninguna sección de dibujo/estado."
 
-#: src/gui/widgets/settings.cpp:763 src/gui/widgets/settings.cpp:917
-#: src/gui/widgets/window_builder.cpp:416
-#: src/gui/widgets/window_builder.cpp:926
-#: src/gui/widgets/window_builder.cpp:1135
+#: src/gui/widgets/settings.cpp:766 src/gui/widgets/settings.cpp:920
+#: src/gui/widgets/window_builder.cpp:422
+#: src/gui/widgets/window_builder.cpp:932
+#: src/gui/widgets/window_builder.cpp:1141
 msgid "No grid defined."
 msgstr "No se ha definido ninguna malla."
 
-#: src/gui/widgets/window_builder.cpp:527
+#: src/gui/widgets/window_builder.cpp:533
 msgid "A row must have a column."
 msgstr "Una fila debe tener una columna."
 
-#: src/gui/widgets/window_builder.cpp:528
+#: src/gui/widgets/window_builder.cpp:534
 msgid "Number of columns differ."
 msgstr "El número de columnas es distinto."
 
-#: src/gui/widgets/window_builder.cpp:766
+#: src/gui/widgets/window_builder.cpp:772
 msgid "No list defined."
 msgstr "No se ha definido una lista."
 
-#: src/gui/widgets/window_builder.cpp:769
+#: src/gui/widgets/window_builder.cpp:775
 msgid "A 'list_definition' should contain one row."
 msgstr ""
 "Una definición de lista («list_definition») debe contener al menos una fila."
 
-#: src/gui/widgets/window_builder.cpp:788
+#: src/gui/widgets/window_builder.cpp:794
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr ""
 "Los datos de lista («list_data») deben tener el mismo número de columnas que "
 "la definición de lista («list_definition»)."
 
-#: src/gui/widgets/window_builder.cpp:1057
+#: src/gui/widgets/window_builder.cpp:1063
 msgid "The number of value_labels and values don't match."
 msgstr ""
 "El número de etiquetas de valor («value_labels») y valores («values») no es "
@@ -2047,7 +2047,7 @@ msgstr "Cambiar acceso rápido"
 msgid "Clear Hotkey"
 msgstr "Eliminar acceso rápido"
 
-#: src/preferences_display.cpp:313
+#: src/preferences_display.cpp:314
 msgid "This Hotkey is already in use."
 msgstr "Este acceso rápido ya se está usando."
 
