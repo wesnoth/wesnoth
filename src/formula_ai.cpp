@@ -1379,6 +1379,22 @@ formula_ai::formula_ai(info& i) :
 		}
 	}
 
+        config::const_child_itors functions = ai_param.child_range("function");
+        for(config::const_child_iterator i = functions.first; i != functions.second; ++i) {
+                const t_string& name = (**i)["name"];
+                const t_string& inputs = (**i)["inputs"];
+                const t_string& formula_str = (**i)["formula"];
+
+                std::vector<std::string> args = utils::split(inputs);
+
+                try{
+                        function_table.add_formula_function(name, game_logic::const_formula_ptr(new game_logic::formula(formula_str, &function_table)), game_logic::formula::create_optional_formula((**i)["precondition"], &function_table), args);
+                }
+                catch(formula_error& e) {
+                        handle_exception(e, "Error while registering function '" + name + "'");
+                }
+        }        
+
 	config::const_child_itors team_formula = ai_param.child_range("team_formula");
 	if(team_formula.first != team_formula.second) {
 		std::string formula_string = (**team_formula.first)["rulebase"];
@@ -1390,22 +1406,6 @@ formula_ai::formula_ai(info& i) :
 			move_formula_ = game_logic::formula_ptr();
 		}
 	} else {
-		config::const_child_itors functions = ai_param.child_range("function");
-		for(config::const_child_iterator i = functions.first; i != functions.second; ++i) {
-			const t_string& name = (**i)["name"];
-			const t_string& inputs = (**i)["inputs"];
-			const t_string& formula_str = (**i)["formula"];
-
-			std::vector<std::string> args = utils::split(inputs);
-
-			try{
-				function_table.add_formula_function(name, game_logic::const_formula_ptr(new game_logic::formula(formula_str, &function_table)), game_logic::formula::create_optional_formula((**i)["precondition"], &function_table), args);
-			}
-			catch(formula_error& e) {
-				handle_exception(e, "Error while registering function '" + name + "'");
-			}
-		}
-
 		try{
 			recruit_formula_ = game_logic::formula::create_optional_formula(current_team().ai_parameters()["recruit"], &function_table);
 		}
