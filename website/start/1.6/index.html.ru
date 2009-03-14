@@ -128,9 +128,10 @@ project</a>, where it spent a few months being adapted for mainline.</p>
 зимы. Есть новые картинки для человеческих деревень, как больших городов,
 так и первобытных поселений.</p>
 
-<p>Наши композиторы создали четыре новых мелодии: <em>Ритуалы героев</em>,
-<em>Опасная симфония</em>, <em>Тревога</em> и <em>Дальняя тропа</em>. Кроме
-того, теперь при победе и поражении вы услышите разные мелодии.</p>
+<p>Our composers have added five new original background tracks: <em>Heroes'
+Rite</em>, <em>Siege of Laurelmor</em>, <em>Suspense</em>, <em>The Dangerous
+Symphony</em> and <em>The Deep Path</em>. Also, the game now plays special
+music clips for victory and defeat events.</p>
 
 <p>Интерфейс игры продолжает развиваться, теперь по ходу сюжета вы будете чаще
 видеть портреты бойцов. Диалог призыва бойцов теперь показывает особенности
