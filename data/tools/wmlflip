@@ -8,7 +8,15 @@ Takes a cross-reference of all known macros and looks for formals that
 are either X, Y, *_X, or _Y, so it's guaranteed to catch everything.
 
 Options:
+    -m        Argument of this switch should name the map file.
+              Required, because the coordinate transform needs to know the
+              map dimensions.
+
     -x        Coordinate transformation for a horizontally flipped map.
+
+    -v        Enanle debugging output.
+
+    -h        Emit a help message and quit.
 
 More transformations would be easy to write.
 """
