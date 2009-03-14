@@ -1587,6 +1587,13 @@ std::string server::process_command(const std::string& query, const std::string&
 			}
 		}
 		if (!found_something) out << "\nNo results found for '" << parameters << "'.";
+	} else if (command == "deny_unregistered_login" || command == "dul") {
+		if (parameters == "") {
+			out << "Unregistered login is " << (deny_unregistered_login_ ? "disallowd" : "allowed") << ".";
+		} else {
+			deny_unregistered_login_ = (parameters == "yes");
+			out << "Unregistered login is now " << (deny_unregistered_login_ ? "disallowd" : "allowed") << ".";
+		}
 	} else {
 		out << "Command '" << command << "' is not recognized.\n" << help_msg;
 	}
