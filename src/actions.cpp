@@ -1153,8 +1153,8 @@ attack::attack(game_display& gui, const gamemap& map,
 				d_.xp_ = 0;
 				gui_.invalidate(a_.iter_->first);
 
-				game_events::entity_location death_loc(d_.iter_);
-				game_events::entity_location attacker_loc(a_.iter_);
+				game_events::entity_location death_loc(d_.loc_, d_.id_);
+				game_events::entity_location attacker_loc(a_.loc_, a_.id_);
 				std::string undead_variation = d_.get_unit().undead_variation();
 				fire_event("attack_end");
 				refresh_bc();
@@ -1424,8 +1424,8 @@ attack::attack(game_display& gui, const gamemap& map,
 
 				std::string undead_variation = a_.get_unit().undead_variation();
 
-				game_events::entity_location death_loc(a_.iter_);
-				game_events::entity_location defender_loc(d_.iter_);
+				game_events::entity_location death_loc(a_.loc_, a_.id_);
+				game_events::entity_location defender_loc(d_.loc_, d_.id_);
 				fire_event("attack_end");
 				refresh_bc();
 

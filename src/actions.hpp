@@ -196,7 +196,7 @@ class attack {
 		struct unit_info {
 			const map_location loc_;
 			int weapon_;
-			const unit_map::iterator iter_;
+			const unit_map::unit_xy_iterator iter_;
 			size_t id_;    /**< unit.underlying_id() */
 			std::string weap_id_;
 			int orig_attacks_;    
