@@ -49,7 +49,7 @@ public:
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
-	void set_can_wrap(const bool wrap) {  can_wrap_ = wrap; }
+	void set_can_wrap(const bool wrap) { can_wrap_ = wrap; }
 
 private:
 
