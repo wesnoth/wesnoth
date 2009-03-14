@@ -113,16 +113,15 @@ variant attack_type_callable::get_value(const std::string& key) const
 	} else if(key == "number_of_attacks") {
 		return variant(att_.num_attacks());
 	} else if(key == "special") {
-		std::string specials = att_.weapon_specials(true);
+                std::vector<t_string> specials = att_.special_tooltips(true);
 
-		if(specials == "") {
-			std::vector<variant> res;
-			return variant( &res );
-		}
+                std::vector<variant> res;
 
-		std::vector< std::string > string_vector = utils::split( specials );
+                for( std::vector<t_string>::iterator i = specials.begin(); i != specials.end() && i+1 != specials.end(); i=i+2) {
+                    res.push_back( variant( i->base_str() ) );
+                }
 
-		return convert_vector( string_vector );
+		return variant(&res);
 	}
 
 	return variant();
