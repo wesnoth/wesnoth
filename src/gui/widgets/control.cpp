@@ -148,8 +148,9 @@ void tcontrol::layout_wrap(const unsigned maximum_width)
 		set_layout_size(size);
 
 		DBG_G_L << "tcontrol(" + get_control_type() + ") " + __func__ + ":"
-			<< " result " << size
-			<< ".\n";
+				<< " maximum_width " << maximum_width
+				<< " result " << size
+				<< ".\n";
 
 	}
 }
