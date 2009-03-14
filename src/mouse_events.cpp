@@ -500,8 +500,16 @@ bool mouse_handler::move_unit_along_current_route(bool check_shroud, bool attack
 	current_route_.steps.clear();
 
 	attackmove_ = attackmove;
-	const size_t moves = ::move_unit(&gui(),map_,units_,teams_,
+	size_t moves = 0;
+	try{
+		moves = ::move_unit(&gui(),map_,units_,teams_,
 	                   steps,&recorder,&undo_stack_,&next_unit_,false,check_shroud);
+	} catch(end_turn_exception&) {
+		attackmove_ = false;
+		cursor::set(cursor::NORMAL);
+		gui().invalidate_game_status();
+		throw;
+	}
 	attackmove_ = false;
 
 	cursor::set(cursor::NORMAL);
