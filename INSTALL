@@ -72,9 +72,9 @@ then
 
 SCons can be found at http://www.scons.org/ .
 
-Simply type 'scons' in the top-level directory to build the game and
-editor. It is possible to select individual targets by naming them as
-scons arguments, including wesnothd (the Wesnoth multiplayer server)
+Simply type 'scons' in the top-level directory to build the game with the
+editor and the server. It is possible to select individual targets by naming
+them as scons arguments, including wesnothd (the Wesnoth multiplayer server)
 and campaignd (the campaign server).
 
 scons takes a prefix= argument that says where to install the game
