@@ -160,6 +160,31 @@ private:
 };
 
 
+class adjacent_locs_function : public function_expression {
+public:
+	adjacent_locs_function(const args_list& args, const formula_ai& ai)
+	  : function_expression("adjacent_locs", args, 1, 1), ai_(ai) {
+	}
+
+private:
+	variant execute(const formula_callable& variables) const {
+		const map_location loc = convert_variant<location_callable>(args()[0]->evaluate(variables))->loc();
+		map_location adj[6];
+		get_adjacent_tiles(loc, adj);
+
+		std::vector<variant> v;
+		for(int n = 0; n != 6; ++n) {
+                        if (ai_.get_info().map.on_board(adj[n]) )
+                            v.push_back(variant(new location_callable(adj[n])));
+		}
+
+		return variant(&v);
+	}
+
+	const formula_ai& ai_;
+};
+
+
 class nearest_keep_function : public function_expression {
 public:
 	nearest_keep_function(const args_list& args, const formula_ai& ai)
@@ -1285,6 +1310,8 @@ expression_ptr ai_function_symbol_table::create_function(const std::string &fn,
 		return expression_ptr(new max_possible_damage_function(args, ai_));
 	} else if(fn == "max_possible_damage_with_retaliation") {
 		return expression_ptr(new max_possible_damage_with_retaliation_function(args, ai_));
+	} else if(fn == "adjacent_locs") {
+		return expression_ptr(new adjacent_locs_function(args, ai_));
 	} else if(fn == "distance_to_nearest_unowned_village") {
 		return expression_ptr(new distance_to_nearest_unowned_village_function(args, ai_));
 	} else if(fn == "shortest_path") {
@@ -1469,7 +1496,6 @@ void formula_ai::play_turn()
             {
                 if ( i->second.has_formula() || i->second.has_loop_formula()) {
                     int priority = 0;
-std::cout<< "Znalazlem jednostke z formulka!\n";
                     if( i->second.has_priority_formula() ) {
                         try {
                             game_logic::const_formula_ptr priority_formula(new game_logic::formula(i->second.get_priority_formula(), &function_table));
@@ -1494,8 +1520,6 @@ std::cout<< "Znalazlem jednostke z formulka!\n";
             }
         }
 
-        std::cout << "MAPA UNIT FORMULAS: " << units_with_formulas.size() << "\n";
-
 	for(unit_formula_set::iterator pair_it = units_with_formulas.begin() ; pair_it != units_with_formulas.end() ; ++pair_it)
 	{
             unit_map::iterator i = pair_it->first;
@@ -1516,8 +1540,7 @@ std::cout<< "Znalazlem jednostke z formulka!\n";
                             handle_exception( e, "Unit formula error for unit: '" + i->second.type_id() + "' standing at (" + boost::lexical_cast<std::string>(i->first.x+1) + "," + boost::lexical_cast<std::string>(i->first.y+1) + ")");
                     }
                 }
-            } else
-std::cout << "FIRST I INVALID!\n";
+            }
             
             if( i.valid() ) {
                 if( i->second.has_loop_formula() )
@@ -1535,11 +1558,8 @@ std::cout << "FIRST I INVALID!\n";
                                 handle_exception( e, "Unit loop formula error for unit: '" + i->second.type_id() + "' standing at (" + boost::lexical_cast<std::string>(i->first.x+1) + "," + boost::lexical_cast<std::string>(i->first.y+1) + ")");
                         }
                 }
-            } else
-std::cout<< "SECOND I INVALID!\n";
+            }
 	}
-
-        std::cout<< "PO UNIT FORMULAS\n";
 
 	if(use_eval_lists_) {
 		make_candidate_moves();
@@ -1856,6 +1876,11 @@ bool formula_ai::execute_variant(const variant& var, bool commandline)
 				continue;
 			}
 
+                        if( !get_info().map.on_board(attack->dst()) || !get_info().map.on_board(attack->src()) || !get_info().map.on_board(attack->move_from())) {
+                            ERR_AI << "IMPOSSIBLE ATTACK ORDER\n";
+                            continue;
+                        }
+
                         if( attack->move_from() != attack->src() ) {
 
                             std::map<map_location,paths>::iterator path = possible_moves_.find(attack->move_from());
@@ -1871,9 +1896,14 @@ bool formula_ai::execute_variant(const variant& var, bool commandline)
 
                         unit_map::iterator unit_it = units_.find(attack->src());
 
-                        if( ( unit_it != units_.end() ) && (unit_it->second.attacks_left() != 0) ) {
-                            LOG_AI << "ATTACK: " << attack->src() << " -> " << attack->dst() << " " << attack->weapon() << "\n";
-                            attack_enemy(attack->src(), attack->dst(), attack->weapon(), attack->defender_weapon());
+                        int x_diff = attack->src().x - attack->dst().x;
+                        int y_diff = attack->src().y - attack->dst().y;
+
+                        if( x_diff < 2 && x_diff > -2 && y_diff < 2 &&  y_diff > -2 && attack->src() != attack->dst() ) {
+                            if( ( unit_it != units_.end() ) && (unit_it->second.attacks_left() != 0) ) {
+                                LOG_AI << "ATTACK: " << attack->src() << " -> " << attack->dst() << " " << attack->weapon() << "\n";
+                                attack_enemy(attack->src(), attack->dst(), attack->weapon(), attack->defender_weapon());
+                            }
                         }
                         
 			made_move = true;

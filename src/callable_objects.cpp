@@ -41,17 +41,6 @@ variant location_callable::get_value(const std::string& key) const
 		return variant(loc_.x+1);
 	} else if(key == "y") {
 		return variant(loc_.y+1);
-	} else if(key == "adjacent_locs") {
-		map_location adj[6];
-		get_adjacent_tiles(loc_, adj);
-
-		std::vector<variant> v;
-		v.reserve(6);
-		for(int n = 0; n != 6; ++n) {
-			v.push_back(variant(new location_callable(adj[n])));
-		}
-
-		return variant(&v);
 	} else {
 		return variant();
 	}
