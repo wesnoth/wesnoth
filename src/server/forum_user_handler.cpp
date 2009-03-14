@@ -146,6 +146,8 @@ bool fuh::user_exists(const std::string& name) {
 
 bool fuh::user_is_moderator(const std::string& name) {
 
+	if(!user_exists(name)) return false;
+
 	try {
 		return get_writable_detail_for_user(name, "user_is_moderator") == "1";
 	} catch (error e) {
@@ -156,6 +158,8 @@ bool fuh::user_is_moderator(const std::string& name) {
 }
 
 void fuh::set_is_moderator(const std::string& name, const bool& is_moderator) {
+
+	if(!user_exists(name)) return;
 
 	try {
 		write_detail(name, "user_is_moderator", is_moderator ? "1" : "0");
