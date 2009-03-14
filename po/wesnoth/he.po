@@ -7,13 +7,14 @@
 #
 # Oron Peled <oron@actcom.co.il>, 2005.
 # Ely Levy <nakeee@gmail.com>, 2005, 2006.
+# Ariel Ben-Yehuda <ariel.bys@gmail.com>, 2009.
 msgid ""
 msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-03-10 00:15+0100\n"
-"PO-Revision-Date: 2006-02-13 01:20+0200\n"
-"Last-Translator: Ely Levy <nakeee@gmail.com>\n"
+"PO-Revision-Date: 2009-03-13 14:36+0200\n"
+"Last-Translator: Ariel Ben-Yehuda <ariel.bys@gmail.com>\n"
 "Language-Team: Hebrew\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,40 +25,37 @@ msgstr ""
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:49
 msgid "Compressed Saves"
-msgstr ""
+msgstr "דחיסת שמירות"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:56
-#, fuzzy
 msgid "Mouse Scrolling"
-msgstr "ריפוי"
+msgstr "גילגול ע\"י עכבר"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:63
-#, fuzzy
 msgid "Middle-click Scrolling"
-msgstr "ריפוי"
+msgstr "גילגול ע\"י כפתור מרכזי"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:70
 msgid "Keep scrolling when mouse leaves window"
-msgstr ""
+msgstr "המשך לגלגל שהעכבר עוזב את המסך"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:77
 msgid "Animate Map"
-msgstr ""
+msgstr "הנפש מפה"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:84
-#, fuzzy
 msgid "Show Titlescreen Animation"
-msgstr "מערכה"
+msgstr "הנפש מסך המתנה"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:91
 msgid "Unit Standing Animations"
-msgstr ""
+msgstr "הנפש יחידות עומדות"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:98
@@ -105,14 +103,13 @@ msgstr "קסום"
 #. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:749
 #: data/core/macros/abilities.cfg:641
-#, fuzzy
 msgid ""
 "Magical:\n"
 "This attack always has a 70% chance to hit regardless of the defensive "
 "ability of the unit being attacked."
 msgstr ""
-"קסומה:\n"
-"להתקפה זו יש תמיד סיכוי של 70% לפגוע."
+"קסם:\n"
+"התקפות קסומות מתעלמות משטח ומקבלות סיכוי פגיעה של 70%."
 
 #. [firststrike]: id=firststrike
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:761
@@ -135,9 +132,8 @@ msgstr ""
 #. [then]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1241
 #: src/actions.cpp:1057 src/actions.cpp:1331
-#, fuzzy
 msgid "female^slowed"
-msgstr "פורעת חוק"
+msgstr "מואטת"
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [else]
@@ -149,21 +145,18 @@ msgstr "מואט"
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:16
 #: data/core/macros/abilities.cfg:10
-#, fuzzy
 msgid "heals +4"
-msgstr "טיפול בפצעים"
+msgstr "ריפוי +4"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:17
 #: data/core/macros/abilities.cfg:11
-#, fuzzy
 msgid "female^heals +4"
-msgstr "גנבת"
+msgstr "ריפוי +4"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:22
 #: data/core/macros/abilities.cfg:16
-#, fuzzy
 msgid ""
 "Heals +4:\n"
 "Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
@@ -173,32 +166,30 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
-"טיפול בפצעים:\n"
-"נותן ליחידה לטפל בפציעות של יחידות ידידותיות סמוכות בתחילת כל תור.\n"
+"ריפוי +4:\n"
+"יחידה זו יכולה לטפל בפציעות של יחידות ידידותיות סמוכות בתחילת כל תור.\n"
 "\n"
-"יחידה שמטופלת על ידי מטפל יכולה להחלים עד 4 נק\"פ בתור.\n"
-"מטפל יכול להחזיר סך הכל 8 נק\"פ בתור, לכל היחידות בהן הוא מטפל.\n"
+"יחידה שמטופלת על ידי מרפא +4 יכולה להחלים עד 4 נק\"פ בתור, או לעצור את "
+"ההשפעה של רעל  לתור.\n"
+"מרפא +4 יכול להחזיר סך הכל 8 נק\"פ בתור, לכל היחידות בהן הוא מטפל.\n"
 "יחידה מורעלת לא יכולה להרפא מהרעל על ידי מטפל, וחייבת לחפש תרופה לרעל בכפר "
-"או מיחידה עם יכולת ריפוי."
+"או מיחידה עם יכולת ריפוי +8."
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:45
 #: data/core/macros/abilities.cfg:30
-#, fuzzy
 msgid "heals +8"
-msgstr "טיפול בפצעים"
+msgstr "ריפוי +8"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:46
 #: data/core/macros/abilities.cfg:31
-#, fuzzy
 msgid "female^heals +8"
-msgstr "גנבת"
+msgstr "ריפוי +8"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:51
 #: data/core/macros/abilities.cfg:36
-#, fuzzy
 msgid ""
 "Heals +8:\n"
 "This unit combines herbal remedies with magic to heal units more quickly "
@@ -222,17 +213,15 @@ msgstr ""
 #. [about]
 #: data/core/about.cfg:7
 msgid "Programming"
-msgstr ""
+msgstr "מתכנתים"
 
 #. [about]
 #: data/core/about.cfg:186
-#, fuzzy
 msgid "General Purpose Administration and Coordination"
-msgstr "+מנהלי מערכת כלליים"
+msgstr "מנהלי מערכת כלליים"
 
 #. [about]
 #: data/core/about.cfg:204
-#, fuzzy
 msgid "Artwork and Graphics"
 msgstr "עיצוב אומנותי וגרפיקה"
 
@@ -244,28 +233,25 @@ msgstr "מוסיקה"
 #. [about]
 #: data/core/about.cfg:526
 msgid "Sound Effects"
-msgstr ""
+msgstr "אפקטים קוליים"
 
 #. [about]
 #: data/core/about.cfg:542
-#, fuzzy
 msgid "Campaign Design"
-msgstr "מערכה"
+msgstr "עיצוב מערכות"
 
 #. [about]
 #: data/core/about.cfg:609
-#, fuzzy
 msgid "Multiplayer Maps and Balancing"
 msgstr "מפות למשחק רב משתתפים"
 
 #. [about]
 #: data/core/about.cfg:650
 msgid "Packagers"
-msgstr "אורזי חבילות"
+msgstr "התקנות"
 
 #. [about]
 #: data/core/about.cfg:716
-#, fuzzy
 msgid "Miscellaneous contributors"
 msgstr "שונות"
 
@@ -276,9 +262,8 @@ msgstr "מנהלי תרגום"
 
 #. [about]
 #: data/core/about.cfg:905
-#, fuzzy
 msgid "English strings edition"
-msgstr "תרגום לאנגלית (אנגליה)"
+msgstr "תרגום לאנגלית (ארצות הברית)"
 
 #. [about]
 #: data/core/about.cfg:912
@@ -287,9 +272,8 @@ msgstr "תרגום לאפריקנית"
 
 #. [about]
 #: data/core/about.cfg:928
-#, fuzzy
 msgid "Arabic Translation"
-msgstr "תרגום לסרבית"
+msgstr "תרגום ערבית"
 
 #. [about]
 #: data/core/about.cfg:935
@@ -313,15 +297,13 @@ msgstr "תרגום לסינית"
 
 #. [about]
 #: data/core/about.cfg:1042
-#, fuzzy
 msgid "Chinese (Taiwan) Translation"
-msgstr "תרגום לסינית"
+msgstr "(טיון) תרגום לסינית"
 
 #. [about]
 #: data/core/about.cfg:1049
-#, fuzzy
 msgid "Croatian Translation"
-msgstr "תרגום לקטאלאנית"
+msgstr "תרגום לקרואטית"
 
 #. [about]
 #: data/core/about.cfg:1056
@@ -355,9 +337,8 @@ msgstr "תרגום לאסטונית"
 
 #. [about]
 #: data/core/about.cfg:1244
-#, fuzzy
 msgid "Filipino Translation"
-msgstr "תרגום לפינית"
+msgstr "תרגום לפיליפינית"
 
 #. [about]
 #: data/core/about.cfg:1254
@@ -371,15 +352,13 @@ msgstr "תרגום לצרפתית"
 
 #. [about]
 #: data/core/about.cfg:1417
-#, fuzzy
 msgid "Friulian Translation"
-msgstr "תרגום לפינית"
+msgstr "תרגום לפורלן"
 
 #. [about]
 #: data/core/about.cfg:1424
-#, fuzzy
 msgid "Galician Translation"
-msgstr "תרגום לסלובנית"
+msgstr "תרגום לגליסית"
 
 #. [about]
 #: data/core/about.cfg:1459
@@ -418,9 +397,8 @@ msgstr "תרגום ליפנית"
 
 #. [about]
 #: data/core/about.cfg:1681
-#, fuzzy
 msgid "Korean Translation"
-msgstr "תרגום לנורווגית"
+msgstr "תרגום לקוריאנית"
 
 #. [about]
 #: data/core/about.cfg:1688
@@ -429,27 +407,23 @@ msgstr "תרגום ללטינית"
 
 #. [about]
 #: data/core/about.cfg:1695
-#, fuzzy
 msgid "Latvian Translation"
-msgstr "תרגום ללטינית"
+msgstr "תרגום ללטבית"
 
 #. [about]
 #: data/core/about.cfg:1702
-#, fuzzy
 msgid "Lithuanian Translation"
-msgstr "תרגום לאיטלקית"
+msgstr "תרגום לליטאית"
 
 #. [about]
 #: data/core/about.cfg:1710
-#, fuzzy
 msgid "Macedonian Translation"
-msgstr "תרגום לאינדונזית"
+msgstr "תרגום למקדונית"
 
 #. [about]
 #: data/core/about.cfg:1718
-#, fuzzy
 msgid "Marathi Translation"
-msgstr "תרגום ללטינית"
+msgstr "תרגום למרטהי"
 
 #. [about]
 #: data/core/about.cfg:1727
@@ -473,9 +447,8 @@ msgstr "תרגום לפורטוגזית (ברזיל)"
 
 #. [about]
 #: data/core/about.cfg:1840
-#, fuzzy
 msgid "Romanian Translation"
-msgstr "תרגום לאסטונית"
+msgstr "תרגום לרומנית"
 
 #. [about]
 #: data/core/about.cfg:1848
@@ -514,15 +487,14 @@ msgstr "תרגום לתורכית"
 
 #. [about]
 #: data/core/about.cfg:2048
-#, fuzzy
 msgid "Valencian (southern Catalan) Translation"
-msgstr "תרגום לסלובנית"
+msgstr "תרגום לולנסית (דרום קטלן)"
 
 #. [about]
 #: data/core/about.cfg:2061
 #, fuzzy
 msgid "RACV's Translation"
-msgstr "תרגום לסינית"
+msgstr "התרגום של RACV"
 
 #. [about]
 #: data/core/about.cfg:2068
@@ -531,7 +503,6 @@ msgstr "בוטים"
 
 #. [fonts]
 #: data/core/fonts.cfg:7 data/hardwired/fonts.cfg:7
-#, fuzzy
 msgid "DejaVuSans.ttf,sazanami-gothic.ttf,wqy-zenhei-gb2312.ttf"
 msgstr "DejaVuSans.ttf,sazanami-gothic.ttf,gkai00mp.ttf "
 
@@ -552,7 +523,7 @@ msgstr "אפשרויות משחק"
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:33 data/core/help.cfg:348 src/menu_events.cpp:1011
 msgid "Traits"
-msgstr "מאפיינים"
+msgstr "כשרונות"
 
 #. [section]: id=units
 #. [topic]: id=..units
@@ -581,13 +552,11 @@ msgstr "סוגי שטח"
 #. [section]: id=commands
 #. [topic]: id=..commands
 #: data/core/help.cfg:74 data/core/help.cfg:754
-#, fuzzy
 msgid "Commands"
-msgstr "מפקד"
+msgstr "פקודות"
 
 #. [topic]: id=..abilities_section
 #: data/core/help.cfg:95
-#, fuzzy
 msgid ""
 "Certain units have abilities that either directly affect other units, or "
 "have an impact on how the unit interacts with other units. These abilities "
@@ -595,8 +564,9 @@ msgid ""
 "\n"
 msgstr ""
 "ליחידות מסוימות יש יכולות שמשפיעות על יחידות אחרות או באופן ישיר או משפיעות "
-"על האופן בו היחידה פועלת עם יחידות אחרות. יכולות אלו יהיו רשומות,  כשתפגוש "
-"בהם, תחת הכותרת הזו."
+"על האופן בו היחידה פועלת עם יחידות אחרות. יכולות אלו יהיו רשומות, כשתפגוש "
+"בהם, תחת הכותרת הזו.\n"
+"\n"
 
 #. [topic]: id=..weapon_specials
 #: data/core/help.cfg:104
@@ -605,12 +575,13 @@ msgid ""
 "attacking with them.\n"
 "\n"
 msgstr ""
+"לנשקים מסוימים יש יכולות מיוחדות אשר מגבירים את האפקטיביות של השימוש בהם.\n"
+"\n"
 
 #. [topic]: id=.unknown_unit
 #: data/core/help.cfg:111
-#, fuzzy
 msgid "Unknown Unit"
-msgstr "תרחיש לא ידוע"
+msgstr "יחידה לא מוכר"
 
 #. [topic]: id=.unknown_unit
 #: data/core/help.cfg:114
@@ -620,6 +591,10 @@ msgid ""
 "This unit is unknown for the moment. You must discover it in the game to be "
 "allowed to see its description."
 msgstr ""
+"\n"
+"\n"
+"אינך יודע על יחידה זה כעת. אתה חייב לפגוש אותו במשחק לפני שתוכל לראות את "
+"תכונותיו."
 
 #. [topic]: id=introduction_topic
 #: data/core/help.cfg:119
@@ -639,10 +614,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"הקרב על ווסנות' הוא משחק פנטזיה אסטרטגי מבוסס תורות, קצת לא רגיל בקרב משחקי "
+"הקרב על ווסנות' הוא משחק פנטזיה אסטרטגי מבוסס תורים, קצת לא רגיל בקרב משחקי "
 "אסטרטגיה מודרנים. בעוד משחקים אחרים שואפים לתחכום הקרב על ווסנות' שואף "
-"לפשטות גם בחוקים וגם במשחקיות. זה לא הופך את המשחק לפשוט, מתוך החוקים "
-"הפשוטים הללו צומח עושר אסטרטגי, כך שהמשחק פשוט ללמידה אבל אתגר למומחה."
+"לפשטות גם בחוקים וגם במשחק. זה לא הופך את המשחק לפשוט, מתוך החוקים הפשוטים "
+"הללו צומח עושר אסטרטגי, כך שהמשחק פשוט ללמידה אבל אתגר למומחה."
 
 #. [topic]: id=fundamentals
 #: data/core/help.cfg:134
@@ -679,8 +654,8 @@ msgstr ""
 "\n"
 "כדי לתחיל הכי כדאי ללחוץ על הכפתור <italic>text=הדרכה</italic> בתפריט הראשי. "
 "זה יוביל אותך אל ההדרכה האיטראקטיבית, שתלמד אותך את הדברים הבסיסיים על "
-"ווסנות'. אחרי זה, מומלץ שתשחק, דבר ראשון, בתרחיש יורש העצר - לחץ על  "
-"<italic>text=מערכה</italic>  ואז על <italic>text='יורש העצר'</italic>. "
+"ווסנות'. אחרי זה, מומלץ שתשחק, דבר ראשון, במערכת תסביך הירושה - לחץ על  "
+"<italic>text=מערכה</italic>  ואז על <italic>text='תסביך הירושה'</italic>. "
 "מכיוון שהקרב על ווסנות' יכול להיות מאד מאתגר, יכול להיות שתרצה להתחיל מ - "
 "<italic>text=קל</italic>."
 
@@ -714,9 +689,9 @@ msgid ""
 "If your computer has a connection to the Internet, you can play against "
 "other people across the Internet."
 msgstr ""
-"המרחק מתרחש כסידרת קרבות הנקראים תרחישים. כל תרחיש מציב את כוחותך מול הכוחות "
-"של יריב אחד או יותר. אתה יכול לשחק נגד המחשב, או עם חברים, כאשר כל אחד יושב "
-"מול המחשב בתורו (משחק כסאות מוזיקלים). אם המחשב שלך מחובר לרשת מחשבים, אתה "
+"המרחק מתרחש כסידרת קרבות הנקראים התקלויות. כל התקלות מציב את כוחותך מול "
+"הכוחות של יריב אחד או יותר. אתה יכול לשחק נגד המחשב, או עם חברים, כאשר כל "
+"אחד יושב מול המחשב בתורו (משחק הכסאות). אם המחשב שלך מחובר לרשת מחשבים, אתה "
 "יכול לשחק מול אנשים אחרים ברשת. אם המחשב שלך מחובר לאיטרנט אתה יכול לשחק מול "
 "אנשים אחרים באינטרנט."
 
@@ -732,14 +707,14 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"מערכות מורכבות ממספר תרחישים שממשיכים אחד מהשני ומספרים סיפור. במערכה, "
-"לעיתים קרובות אתה צריך לשחק ביתר זהירות,  תוך שמרה על היחידות הטובות ביותר "
-"שלך כך שאפשר יהיה להשתמש בהם בתרחישים מאוחרים יותר במערכה."
+"מערכות מורכבות ממספר התקלויות שממשיכים אחד מהשני ומספרים סיפור. במערכה, "
+"לעיתים קרובות אתה צריך לשחק ביתר זהירות, תוך שמרה על היחידות הטובות ביותר "
+"שלך כך שאפשר יהיה להשתמש בהם בהתקלויות מאוחרים יותר במערכה."
 
 #. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:154
 msgid "Victory and Defeat"
-msgstr ""
+msgstr "נצחון והפסד"
 
 #. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:155
@@ -751,6 +726,11 @@ msgid ""
 "rescuing someone, or solving a puzzle, or holding out against a siege until "
 "a certain number of turns have elapsed."
 msgstr ""
+"שים לב להודעת מטרות ההתקלות בתחילת כל התקלות. לרוב ניצחון יושג ע\"י הריגת כל "
+"מנהיגי האויב, והפסד ע\"י מות מנהיגך (או דמות ראשית (גיבור) אחרת, כמו דלפדור "
+"בתסביך הירושה). אבל, לחלק מההיתקלויות יש מטרה אחרת - להזיז את מנהיגך לנקודה "
+"מסויימת, או להציל מישהו, או לשרוד למספר תורים עד שעזרה מגיעה, או לשרוד עד "
+"שחבר מגיע ואז להזיז את מנהיגך לנקודה מסיומת. "
 
 #. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:157
@@ -762,6 +742,11 @@ msgid ""
 "options or (if you are in a multiplayer game) chatting with other players "
 "before pressing that button to advance."
 msgstr ""
+"\n"
+"\n"
+"כשאתה מנצח היתקלות, המפה תהפוך לאפורה וכפתור 'סיים תור' יהפוך לכפתור 'סיים "
+"התקלות'. בינתיים תוכל לעשות דברים כמו לשנות את הגדרות השמירה או (במשחק רב-"
+"משתתפים) לדבר עם המשתתפים האחרים לפני שתלחוץ על הכפתור ותעבור להתקלות הבאה. "
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:164
@@ -785,9 +770,9 @@ msgid ""
 msgstr ""
 "כל צד מתחיל עם מנהיג אחד במצודה שלו. בהתחלה של כל קרב, ולפעמים גם במהלכו, "
 "אתה צריך לגייס <ref>dst=units text=יחידות</ref> לצבא שלך. כדי לגייס, אתה "
-"חייב שהמנהיג שלך (למשל, קונרד בתרחיש יורש העצר) על משושה המצודה של "
+"חייב שהמנהיג שלך (למשל, קונרד במערכת תסביך הירושה) על משבצת המצודה של "
 "<ref>dst=terrain_castle text=טירה</ref>. אז אתה יכול לגייס או על ידי בחירת "
-"גיוס מהתפריט או על ידי לחיצה ימנית על המשושה ובחירת <italic>text=גיוס</"
+"גיוס מהתפריט או על ידי לחיצה ימנית על המשבצת ובחירת <italic>text=גיוס</"
 "italic>. זה יפתח את תפריט הגיוס שיציג את רשימת היחידות הניתנות לגיוס, יחד עם "
 "עלות הגיוס בזהב. לחץ על יחידה כדי לראות את הסטטיסטיקות שלה, ואז לחץ על גיוס "
 "כדי לגייס אותה."
@@ -804,14 +789,13 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"אם לחצת לחיצה ימנית על משושה טירה ובחרת גיוס, היחידה החדשה תופיע במשושה הזה. "
-"אחרת, היא תופיע במשושה פנוי ליד המצודה. מספר היחידות שאתה יכול לגייס הוא ככל "
-"היותר כמספר המשושים החופשיים בטירה שלך, אתה לא יכול להשקיע בגיוס יותר זהב "
+"אם לחצת לחיצה ימנית על משבצת טירה ובחרת גיוס, היחידה החדשה תופיע במשבצת זו. "
+"אחרת, היא תופיע במשבצת פנויה ליד המצודה. מספר היחידות שאתה יכול לגייס הוא "
+"ככל היותר כמספר המשושים הפנויים בטירה שלך, אתה לא יכול להשקיע בגיוס יותר זהב "
 "ממה שיש לך."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:169
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -820,8 +804,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"יחידות מגוייסות מגיעות עם שני <ref>dst=traits text='מאפיינים'</ref> אקראיים "
-"שמשנים את הסטטיסטקות שלהן."
+"יחידות מגוייסות מגיעות עם שני <ref>dst=traits text='כשרונות'</ref> אקראיים "
+"שמשנים את תכונותיהם."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:171
@@ -834,12 +818,12 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"בתרחישים מאוחרים, אתה יכול להחזיר יחידות ששרדו קרבות קודמים. החזרה עולה 20 "
-"זהב קבועים ומציגה לך רשימה של כל היחידות ששרדו מתרחישים קודמים."
+"בהתקלויות מאוחרות, אתה יכול להחזיר יחידות ששרדו קרבות קודמים. החזרה תמיד "
+"עולה 20 זהב (בחירה ב\"החזרה\" בתפריט או על-ידי Shift-R מציג לך רשימה של "
+"היחידות ששרדו התקלויות קודמות)."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:173
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -849,7 +833,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"יחידות לא רק עולות כסף לגיוס והחזרה, הן גם זקוקות לתמיכה כספית. למידע נוסף "
+"יחידות לא רק עולות כסף לגיוס והחזרה, הן גם זקוקות לתשלומי משכורת. למידע נוסף "
 "ראה <ref>dst=income_and_upkeep text='הכנסה ואחזקה'</ref>."
 
 #. [topic]: id=orbs
@@ -921,7 +905,6 @@ msgstr ""
 
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:199
-#, fuzzy
 msgid ""
 "The hitpoints are also indicated by an energy bar next to each unit, which "
 "is green, yellow or red. A unit with at least 1 experience point has a blue "
@@ -954,17 +937,17 @@ msgid ""
 "a move in a village you don't already own will also use up a unit's "
 "movement, but will still allow it to attack."
 msgstr ""
-"התנועה בקרב על ווסנות' היא פשוטה. לחץ על היחידה שברצונך להזיז כדי לבחור "
-"אותה, ואז לחץ על המשושה שאתה רוצה להזיז אותה אליו. כאשר יחידה נבחרה, כל "
-"המקומות אליהם היא יכולה לזוז בתור הנוכחי יהיו מוארים, וכל שאר המשושים במפה "
-"יהיו חשוכים. העברת הסמן מעל משושה מואר תראה את יחס ההגנה שיהיה ליחדה אם תנוע "
-"למשושה זה .העברת הסמן מעל משושה חשוך תראה גם את מספר התורות שנדרש כדי להגיע "
-"אליו, ולחיצה עליו תגרום ליחידה לזוז לעברו במסלול המהיר ביותר בתור הנוכחי "
-"ובתורות הבאים. אם אתה לא משתמש בכל נקודות התנועה של היחידה כאשר אתה מזיז "
-"אותה בפעם הראשונה, אתה יכול להזיז אותה שוב. הדבר שימושי כאשר אתה רוצה ששתי "
-"יחידות יחליפו מקום. התקפה עם יחידה תשתמש בכל נקודות התנועה שלה. סיום המהלך "
-"בכפר שעדיין לא בשליטתך תשתמש גם בכל נקודות התנועה של היחידה, אבל היא עדיין "
-"תוכל להתקיף."
+"הזזת יחידות בקרב על ווסנות' היא פעולה פשוטה. לחץ על היחידה שברצונך להזיז "
+"כדי  לבחור אותה, ואז לחץ על המשבצת שאתה רוצה להזיז אותה אליה. כאשר יחידה "
+"נבחרה, כל המקומות אליהם היא יכולה לזוז בתור הנוכחי יהיו מוארים, וכל שאר "
+"המשבצות במפה יהיו חשוכים. העברת הסמן מעל משבצת מואר תראה את יחס ההגנה שיהיה "
+"ליחדה אם תנוע למשבצת זו .העברת הסמן מעל משבצת חשוכה תראה גם את מספר התורים "
+"שנדרש כדי להגיע אליו, ולחיצה עליו תגרום ליחידה לזוז לעברו במסלול המהיר ביותר "
+"בתור הנוכחי ובתורים הבאים. אם אתה לא משתמש בכל נקודות התנועה של היחידה כאשר "
+"אתה מזיז אותה בפעם הראשונה, אתה יכול להזיז אותה שוב. הדבר שימושי כאשר אתה "
+"רוצה ששתי יחידות יחליפו מקום. התקפה עם יחידה תשתמש בכל נקודות התנועה שלה. "
+"סיום המהלך בכפר שעדיין לא בשליטתך תשתמש גם בכל נקודות התנועה של היחידה, אבל "
+"היא עדיין תוכל להתקיף."
 
 #. [topic]: id=movement
 #: data/core/help.cfg:209
@@ -984,17 +967,17 @@ msgstr ""
 "\n"
 "\n"
 "לכל יחידה יש מספר מסויים של נקודות תנועה, מספר נקודות התנועה בהם היא משתמשת "
-"במעבר למשושה חדש תלוי בסוג השטח של המשושה המדובר. לדוגמה, כניסה לאדמת מרעה "
+"במעבר למשבצת חדשה תלוי בסוג השטח של המשבצת המדובר. לדוגמה, כניסה לאדמת מרעה "
 "עולה כמעט תמיד נקודת תנועה אחת. המספר המדוייק של נקודות התנועה שדרושות "
-"לכניסה למשושה תלויה בסוג היחידה - יחידות אלפיות ישקיעו רק נקודת תנועה אחה, "
-"רוב היחידות של האורקים ובני האדם ישקיעו 2, אבל פרשים ישקיעו 3. אתה יכול "
-"ללמוד כמה נקודות תנועה דרושות ליחידה כדי להכנס לסוג שטח מסויים על ידי לחיצה "
-"ימנית עליה, בחירת תאור יחידה, ואז הסתכל תחת <italic>text='התאמות שטח'</"
-"italic>."
+"לכניסה למשבצת תלויה בסוג היחידה - יחידות אלפיות ישקיעו רק נקודת תנועה אחת "
+"כדי להכנס ליער, אבל רוב היחידות של האורקים ובני האדם ישקיעו 2, ופרשים בני-"
+"אנוש ישקיעו 3. (פרשים אלפיים ישקיעו 1 ורוכבי זאבים 2). אתה יכול ללמוד כמה "
+"נקודות תנועה דרושות ליחידה כדי להכנס לסוג שטח מסויים על ידי לחיצה ימנית "
+"עליה, בחירת בתאור יחידה, ואז הסתכל ב<italic>text=מתאמי שטח</italic> (למטה "
+"בתאור).italic>."
 
 #. [topic]: id=movement
 #: data/core/help.cfg:211
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1007,11 +990,11 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"עוד דבר שכדי לשים אליו לב בזמן שזזים הוא אזורי שליטה. כל יחידה מייצרת אזור "
-"שליטה במשושים הצמודים המקיפים אותה, כל יחידה אוייב שתכנס למשושים האלו תסיים "
-"מיד את התזוזה שלה.  הלימוד של איך לנצל את אזורי השליטה לטובתך הוא חלק חשוב "
-"מווסנות', בגלל שרק <ref>dst=ability_skirmisher text='מסתננות'</ref> יכולות "
-"להתעלם מאזורי השליטה."
+"עוד דבר שכדי לשים אליו לב בזמן שזזים הוא אזורי שליטה. כל יחידה מדרגה 1 ומעלה "
+"מייצרת אזור שליטה בשש המשבצות הצמודות המקיפום אותה. כל יחידה אוייב שתכנס "
+"למשבצות אלו תסיים מיד את תנועתה. לדעת איך לנצל את אזורי השליטה לטובתך הוא "
+"חלק חשוב מווסנות', בגלל שרק יחידות <ref>dst=ability_skirmisher "
+"text='מסתננות'</ref> יכולות להתעלם מאזורי השליטה."
 
 #. [topic]: id=movement
 #: data/core/help.cfg:213
@@ -1035,7 +1018,6 @@ msgstr "הסתרה וערפל קרב"
 
 #. [topic]: id=shroud_and_fog
 #: data/core/help.cfg:223
-#, fuzzy
 msgid ""
 "In some scenarios, parts of the map will be hidden from you. There are two "
 "mechanisms that can be used separately or together. The Shroud hides both "
@@ -1056,19 +1038,26 @@ msgid ""
 "a manual update via 'update shroud now' (or the end of your turn) and "
 "thereby perserve your ability to undo movement."
 msgstr ""
-"במהלך המשחק בכמה מהתרחישים חלקים מהמפה יהיו מוסתרים מפניך. ישנם שני מנגנונים "
-"בהם אפשר להשתמש או ביחד או כל אחד לחוד. מנגנון ההסתרה יסתיר מפניך גם את השטח "
-"וגם את היחידות במיקום מסויים. אולם ברגע שהוסר המיקום תמיד ישאר גלוי. וערפל "
-"הקרב שמסתיר ממך רק יחידות ובעלות על כפרים (מבלד אילו ששייכים לך או לבני "
-"בריתך). ערפל הקרב נעלם באופן זמני כאשר יש לך יחידות בקרבת מקום, אבל יחזור "
-"שהן יעזבו. גם ההסתרה וגם ערפל הקרב מוסרים על ידי יחידות. כל יחידה תגלה את כל "
-"המיקומים אליהם היא יכולה להגיע תוך תור אחד, (תוך התעלמות מאזורי שליטה "
-"ויחידות אוייב), ואת המיקומים שצמודים למקומים אילו."
+"במהלך המשחק בכמה מההתקלויות חלקים מהמפה יהיו מוסתרים מפניך. ישנם שני "
+"מנגנונים בהם אפשר להשתמש או ביחד או כל אחד לחוד. מנגנון ההסתרה יסתיר מפניך "
+"גם את השטח וגם את היחידות במיקום מסויים. אולם ברגע שהוסר המיקום תמיד ישאר "
+"גלוי. וערפל הקרב שמסתיר ממך רק יחידות ובעלות על כפרים (מבלד אילו ששייכים לך "
+"או לבני בריתך). ערפל הקרב נעלם באופן זמני כאשר יש לך יחידות בקרבת מקום, אבל "
+"יחזור שהן יעזבו. גם ההסתרה וגם ערפל הקרב מוסרים על ידי יחידות. כל יחידה תגלה "
+"את כל המשבצות אליהם היא יכולה להגיע תוך תור אחד, (תוך התעלמות מאזורי שליטה "
+"ויחידות אויב).\n"
+"\n"
+"בדרך כלל, אתה יכול לבטל את תנועת יחידותך, כל עוד שום תקרית עם תוצאות "
+"אקראיות, כגון קרב או גיוס (משום שרוב היחידות המגויסות מקבלות כשרונות אקראיים "
+"בזמן הגיוס). חסיפת שטח המוחבא ע\"י הסתרה או ערפל קרב גם ימנע פעולה זו. אולי "
+"תרצה להפעיל את מנגנון 'דחה חשיפת שטח' בתפריט הפעולות. מנגנון זה מונע עדכוני "
+"שטח עד לפעולה כוללת אקראיות או באופן ידני ע\"י 'עדכן שטח כעת' (או בסוף תורך) "
+"ולכן ישמור על יכולתך לבטל מהלכים."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:230
 msgid "Combat"
-msgstr "לחימה"
+msgstr "קרב"
 
 #. [topic]: id=combat
 #: data/core/help.cfg:231
@@ -1083,14 +1072,13 @@ msgid ""
 "involves weapons such as swords, axes or fangs; and ranged, which usually "
 "involves weapons such as bows, spears and fireballs."
 msgstr ""
-"הלחימה בקרב על ווסנות' תתרחש תמיד בין יחידות במשושים צמודים. לחץ על היחידה "
-"שלך, ואז לחץ על האוייב שאתה רוצה להתקיף: היחידה שלך תזוז לעבר יחידת האוייב, "
-"וכאשר הן יגיעו אחת ליד השנייה, הלחימה תתחיל. המתקיף והמגן ינסו לפגוע לסרוגין "
-"עד שהם יסיימו את מספר ניסיונות הפגיעה המוקצה להם. המתקיף בוחר עם איזה מכלי "
-"הנשק שלו להתקיף, והמגן מגיב עם אחת מההתקפות שלו שמאותו סוג. ישנם שני סוגי "
-"התקפות: קפ\"פ, שבדרך כלל כרוך בשימוש בכלי נשק כמו חרבות, גרזנים או ניבים; "
-"והתקפה לטווח רחוק שבדרך כלל כרוכה בשימוש בכלי נשק כמו קשתות, חניתות או כדורי "
-"אש."
+"קרב בקרב על ווסנות' תתרחש תמיד בין יחידות במשבצות צמודות. לחץ על היחידה שלך, "
+"ואז לחץ על האויב שאתה רוצה להתקיף: היחידה שלך תזוז לעבר יחידת האוייב, וכאשר "
+"הן יגיעו אחת ליד השנייה, הקרב יתחיל. המתקיף והמגן ינסו לפגוע לסרוגין עד שהם "
+"יסיימו את מספר ניסיונות הפגיעה המוקצה להם. המתקיף בוחר עם איזה מכלי הנשק שלו "
+"להתקיף, והמגן מגיב עם אחת מההתקפות שלו שמאותו סוג. ישנם שני סוגי התקפות: קפא"
+"\"פ, שבדרך כלל כרוך בשימוש בכלי נשק כמו חרבות, גרזנים או ניבים; והתקפה לטווח "
+"רחוק שבדרך כלל כרוכה בשימוש בכלי נשק כמו קשתות, חניתות או כדורי אש."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:233
@@ -1153,7 +1141,7 @@ msgstr ""
 "\n"
 "לכל יחידה יש סיכוי להפגע, שמבוסס על סוג השטח עליו היא נמצאת. הדבר מוצג "
 "בחלונית המצב, וכמו כן ניתן למצוא אותו על ידי לחיצה ימנית על יחידה בחירת תאור "
-"יחידה, ואז תחת <italic>text='התאמות שטח'</italic>. לדוגמה, להרבה אלפים יש "
+"יחידה, ואז תחת <italic>text='מתאמי שטח'</italic>. לדוגמה, להרבה אלפים יש "
 "דירוג הגנה של 70% ביער, כלומר ליחידה שמתקיפה אותם יש רק סיכוי של 30% לפגוע."
 
 #. [topic]: id=combat
@@ -1242,9 +1230,9 @@ msgid ""
 "and Arcane attacks. Different units may have resistances which alter the "
 "damage which they take from certain damage types."
 msgstr ""
-"בווסנות', ישנם שלושה סוגי נזק שבדרך כלל מזוהים עם התקפות פיזיות:להב, חודרני, "
-"ריסוק. בנוסף, ישנם שלושה סוגי נזק נוספים, שבדרך כלל מזוהים עם התקפות קסומות: "
-"אש, קור וקדוש. ליחידות שונות יכולות להיות עמידויות שישנו את כמות הנזק שיגרם "
+"בווסנות', ישנם שלושה סוגי נזק שבדרך כלל מזוהים עם התקפות פיזיות :להב, חודר, "
+"מוחץ. בנוסף, ישנם שלושה סוגי נזק נוספים, שבדרך כלל מזוהים עם התקפות קסומות: "
+"אש, קור וקסום. ליחידות שונות יכולות להיות עמידויות שישנו את כמות הנזק שיגרם "
 "להן מסוגי נזק מסויימים."
 
 #. [topic]: id=damage_types_and_resistance
@@ -1267,7 +1255,6 @@ msgstr ""
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:258
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1277,8 +1264,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"לדוגמה, לשלדים יש עמידות גבוהה כנגד נזק להב וחודרני, אבל הם פגיעים לנזק אש "
-"וריסוק, ומאוד פגיעים לנזק קדוש."
+"לדוגמה, לשלדים יש עמידות גבוהה כנגד נזק להב וחודר, אבל הם פגיעים לנזק אש "
+"ומחץ, ומאוד פגיעים לנזק קסום."
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:260
@@ -1368,7 +1355,7 @@ msgstr "משמרת שניה"
 msgid ""
 "Keep in mind that some scenarios take place underground, where it is "
 "perpetually night!"
-msgstr "שים לב שיש תרחישים שמתרחשים מתחת האדמה, ושם תמיד שורר לילה!"
+msgstr "שים לב שיש התקלויות המתרשות מתחת האדמה, ושם תמיד שורר לילה!"
 
 #. [topic]: id=experience_and_advancement
 #: data/core/help.cfg:287
@@ -1399,13 +1386,12 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"ליחידות יש כמות ניסיון מסויימת שנדרשת כדי להתקדם (ליחידות, עם חכמה כמאפיין, "
+"ליחידות יש כמות ניסיון מסויימת שנדרשת כדי להתקדם (ליחידות עם כשרון החכמה , "
 "דרושים 20% פחות). כאשר הן משיגות את הכמות הנדרשת, הן מתקדמות מיד לרמה הבאה, "
 "ומתרפאות באופן מלא בתהליך. בחלק מהמקרים ניתן לבחור בין אפשרויות קידום שונות."
 
 #. [topic]: id=experience_and_advancement
 #: data/core/help.cfg:292
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1451,7 +1437,7 @@ msgid ""
 msgstr ""
 "במהלך הלחימה, היחידות שלך, באופן בלתי נמנע, יספגו נזק. כאשר יחידה "
 "<ref>dst=experience_and_advancement text=מתקדמת</ref>, היא מתרפאה באופן מלא. "
-"הדבר יכול לקרות כאשר אתה מסיים להלחם עם אוייב, בין אם זה תורך ובין אם לא. "
+"הדבר יכול לקרות כאשר אתה מסיים להלחם עם אויב, בין אם זה תורך ובין אם לא. "
 "ווסנות' מציע מספר דרכים ליחידה שלך להתרפא, כאשר כולן מתרחשות בתחילת התור "
 "שלך, לפני שאתה מתחיל לפעול."
 
@@ -1500,13 +1486,13 @@ msgid ""
 "turn, or prevent Poison from causing that unit damage."
 msgstr ""
 "\n"
-"יחידות מטפלות: יחידות עם היכולת <ref>dst=ability_heals text='טיפול בפצעים'</"
-"ref> יחזירו עד 8 נק\"פ לתור, וכמו כן ימנעו נזק מרעל. רק יחידות שצמודות "
-"ושמאותו צד של היחידה המטפלת יטופלו, ורק עד 4 נק\"פ ליחידה."
+"יחידות מטפלות: יחידות עם היכולת <ref>dst='ability_heals +4' text='ריפוי'</"
+"ref> ירפאו מספר מסוים של נק\"פ לכל יחידה בנת-ברית, בדרך-כלל "
+"<ref>dst='ability_heals +4' text='4'</ref> או <ref>dst='ability_heals +8' "
+"text='8'</ref> לתור, או למנוע מרעל לגרום לנזק."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:306
-#, fuzzy
 msgid ""
 "\n"
 "Curing units: Units with the <ref>dst='ability_cures' text='Cures'</ref> "
@@ -1520,7 +1506,6 @@ msgstr ""
 
 #. [topic]: id=healing
 #: data/core/help.cfg:308
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1531,9 +1516,9 @@ msgstr ""
 "\n"
 "\n"
 "מנוחה יכולה להיות משולבת עם צורות אחרות של ריפוי, אבל כפרים, התחדשות, טיפול "
-"וריפוי לא יכולים להיות משולבים יחד. יחידת מרפא או עזרה ראשונה שתשומת הלב שלה "
-"מחולקת בין יותר מידי יחידות פצועות תהיה פחות יעילה בריפוי הנזק של כל יחידה. "
-"ודבר אחרון, יחידות מתרפאות באופן מלא בין תרחישים."
+"וריפוי לא יכולים להיות משולבים יחד. יחידת מרפא שתשומת לבה מחולקת בין יותר "
+"מידי יחידות פצועות תהיה פחות יעילה בריפוי הנזק של כל יחידה. ודבר אחרון, "
+"יחידות מתרפאות באופן מלא בין התקלויות."
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:315
@@ -1549,12 +1534,11 @@ msgid ""
 "Income and Upkeep."
 msgstr ""
 "בווסנות', זה לא מספיק פשוט לגייס יחידות ולהלחם. אתה חייב גם לשמור על הזהב "
-"שלך, במיוחד במערכות, בהם אתה יכול להעביר זהב מתרחיש אחד לבא אחריו. יש לכך "
+"שלך, במיוחד במערכות, בהם אתה יכול להעביר זהב מהתקלות אחד לבאה אחריו. יש לכך "
 "שני צדדים; הכנסה ואחזקה."
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:318
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1591,7 +1575,6 @@ msgstr ""
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:322
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1606,7 +1589,6 @@ msgstr ""
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:323
-#, fuzzy
 msgid ""
 "\n"
 "There are two important exceptions to Upkeep: units with the Loyal trait and "
@@ -1617,10 +1599,11 @@ msgid ""
 "leader."
 msgstr ""
 "\n"
-"יש יוצא דופן אחד חשוב לאחזקה: יחידות עם המאפיין הנאמנות אף פעם לא דורשות "
-"אחזקה. ליחידות אתם אתה מתחיל את התרחיש (כמו קונרד ודלפור), או יחידות שהצטרפו "
-"במהלך התרחיש (כמו הפרש בתרחיש השני של היורש לכס) בדרך כלל יהיה את מאפיין "
-"הנאמנות."
+"ישנם שני יוצאי דופן חשובים לאחזקה: יחידות עם כשרון הנאמנות אף פעם לא דורשות "
+"אחזקה, ואותו הדבר נכון גם למנהיגים. ליחידות אתם אתה מתחיל את המערכה (כמו "
+"דלפדור), או יחידות שהצטרפו במהלכה לא על-ידי גיוס (כמו הפרש בהתקלות השניה "
+"בתסביך הירושה) בדרך כלל יהיה את כשרון הנאמנות. הגיבור הראשי (כמו קונרד) כמעט "
+"תמיד יהיה המנהיג."
 
 #. [topic]: id=wrap_up
 #: data/core/help.cfg:329
@@ -1629,7 +1612,6 @@ msgstr "סיכום"
 
 #. [topic]: id=wrap_up
 #: data/core/help.cfg:330
-#, fuzzy
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
 "Basic Strategy, or familiarise yourself with <ref>dst='..traits_section' "
@@ -1638,9 +1620,9 @@ msgid ""
 "Throne campaign. Have fun, and good luck!"
 msgstr ""
 "זה מסיים את העקרונות הבסיסיים של ווסנות'. יכול להיות שתרצה להמשיך לקרוא על "
-"אסטרטגיה בסיסית, או לערוך הכרות עם  <ref>dst=traits text='המאפיינים'</ref> ו "
-"<ref>dst=abilities text=יכולות</ref>, אבל עכשיו אתה יודע כל מה שאתה צריך "
-"לדעת כדי לשחק בתרחיש היורש לכס. תהנה, ובהצלחה!"
+"אסטרטגיה בסיסית, או לערוך הכרות עם  <ref>dst=traits text='הכשרונות'</ref> ו "
+"<ref>dst=abilities text=היכולות</ref>, אבל עכשיו אתה יודע כל מה שאתה צריך "
+"לדעת כדי לשחק במערכץ תסביך הירושה. תהנה, ובהצלחה!"
 
 #. [topic]: id=about
 #: data/core/help.cfg:335
@@ -1660,13 +1642,12 @@ msgid ""
 "modifications that change a unit's attributes slightly. They are usually "
 "randomly assigned to a unit when it is recruited."
 msgstr ""
-"לרוב היחידות יש שני מאפיינים. אולם ליחידות אל-מתות יש מאפיין בודד - 'אל-"
-"מוות' , וליחידות ווס אין אף מאפיין. מאפיינים של יחידה משנים מעט את תכונותיה, "
+"לרוב היחידות יש שני כשרונות. אולם ליחידות אל-מתות יש כשרון בודד - 'אל-"
+"מוות' , וליחידות ווס אין אף כשרון. מאפיינים של יחידה משנים מעט את תכונותיה, "
 "ולרוב מוקצים לה באופן אקראי בעת גיוסה."
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:352
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1676,14 +1657,13 @@ msgid ""
 "text='Resilient'</ref>, and <ref>dst='traits_strong' text='Strong'</ref>."
 msgstr ""
 "\n"
-"המאפיינים שאפשריים לכל היחידות שהן לא אל-מתות הם <ref>dst=traits_intelligent "
+"הכשרונות שאפשריים לכל היחידות שהן לא אל-מתות הם <ref>dst=traits_intelligent "
 "text=חכמה</ref>, <ref>dst=traits_quick text=מהירה</ref>, "
 "<ref>dst=traits_resilient text=חסונה</ref>, ו <ref>dst=traits_strong "
 "text=חזקה</ref>."
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:356
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1694,9 +1674,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"מאפיינים אחרים שיכולים להיות מוקצים ליחדות הם <ref>dst=traits_loyal "
+"כשרונות אחרים שיכולים להיות מוקצים ליחדות הם <ref>dst=traits_loyal "
 "text=נאמנה</ref>, <ref>dst=traits_undead text=אל-מתה</ref>, ו "
-"<ref>dst=traits_dextrous text=דייקנית</ref>."
+"<ref>dst=traits_dextrous text=זריזה</ref>.\n"
+"\n"
 
 #. [topic]: id=traits_intelligent
 #: data/core/help.cfg:362
@@ -1722,9 +1703,9 @@ msgstr ""
 "\n"
 "\n"
 "יחידות חכמות מאד שימושיות בתחילת המערכה בגלל שהם יכולות להתקדם לדרגות גבוהות "
-"מהר יותר. מאוחר יותר במהלך המערכה חכמה  שימושית פחות בגלל שהקידום לאחר דרגה "
+"מהר יותר. מאוחר יותר במהלך המערכה חכמה שימושית פחות בגלל שהקידום לאחר דרגה "
 "מרבית (קלד\"מ) לא מהווה שינוי משמעותי כמו התקדמות דרגה. אם יש לך יחידות רבות "
-"בדרגה המירבית, יכול להיות שתרצה להחזיר יחידות עם מאפיינים שימושיים יותר."
+"בדרגה המירבית, יכול להיות שתרצה להחזיר יחידות עם כשרונות שימושיים יותר."
 
 #. [topic]: id=traits_quick
 #: data/core/help.cfg:370
@@ -1733,9 +1714,8 @@ msgstr "מהירה"
 
 #. [topic]: id=traits_quick
 #: data/core/help.cfg:371
-#, fuzzy
 msgid "Quick units have 1 extra movement point, but 5% less HP than usual."
-msgstr "ליחידות מהירות יש עוד נקודת תנועה אחת, אבל 10% פחות נק\"פ מכרגיל."
+msgstr "ליחידות מהירות יש עוד נקודת תנועה אחת, אבל 5% פחות נק\"פ מכרגיל."
 
 #. [topic]: id=traits_quick
 #: data/core/help.cfg:373
@@ -1764,9 +1744,8 @@ msgstr "חסונה"
 
 #. [topic]: id=traits_resilient
 #: data/core/help.cfg:379
-#, fuzzy
 msgid "Resilient units have 4 HP plus 1 HP per level more than usual."
-msgstr "ליחידות חסונות יש 7 נק\"פ יותר מכרגיל."
+msgstr "ליחידות חסונות יש 4 נק\"פ + נק\"פ 1/דרגה יותר מהרגיל."
 
 #. [topic]: id=traits_resilient
 #: data/core/help.cfg:381
@@ -1793,13 +1772,12 @@ msgstr "חזקה"
 
 #. [topic]: id=traits_strong
 #: data/core/help.cfg:387
-#, fuzzy
 msgid ""
 "Strong units do 1 more damage for every successful strike in melee combat, "
 "and have 1 more HP."
 msgstr ""
-"יחידות חזקות עושות נקודת נזק אחת יותר עבור כל פגיעה מוצלחת בקפ\"פ , ויש להן "
-"עוד 2 נק\"פ."
+"יחידות חזקות עושות נקודת נזק אחת יותר עבור כל פגיעה מוצלחת בקפא\"פ , ויש להן "
+"עוד נקודת פגיעה 1."
 
 #. [topic]: id=traits_strong
 #: data/core/help.cfg:389
@@ -1813,19 +1791,19 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"בעוד שחוזק שימושי לכל יחידת קפ\"פ, הוא שימושי במיוחד ליחדות עם מספר גבוהה של "
-"התקפות לתור כמו למשל לוחם אלפי. יחידות חזקות שימושיות כאשר עוד כמות קטנה של "
-"נזק היא כל מה שצריך כדי להפוך מכה שגורמת נזק למכת מוות."
+"בעוד שכוח שימושי לכל יחידת קפא\"פ, הוא שימושי במיוחד ליחדות עם מספר גבוהה של "
+"התקפות לתור כמו למשל לוחם אלפי. יחידות חזקות שימושיות גם כאשר עוד כמות קטנה "
+"של נזק היא כל מה שצריך כדי להפוך מכה שגורמת נזק למכת מוות."
 
 #. [topic]: id=traits_fearless
 #: data/core/help.cfg:394
 msgid "Fearless"
-msgstr ""
+msgstr "חסרת פחד"
 
 #. [topic]: id=traits_fearless
 #: data/core/help.cfg:395
 msgid "Aversion to light and dark holds no sway over these brave individuals."
-msgstr ""
+msgstr "פחד מהחושך או האור לא משפיעה על יחידות אמיצות אלו"
 
 #. [topic]: id=traits_loyal
 #: data/core/help.cfg:400
@@ -1856,7 +1834,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"במהלך מערכות,יכול להיות שיחידות מסויימות יבחרו מרצונן להצטרף לכוחות השחקן. "
+"במהלך מערכות, יכול להיות שיחידות מסויימות יבחרו מרצונן להצטרף לכוחות השחקן. "
 "יחידות אלו מסומנות עם מאפיין הנאמנות. למרות שיתכן שתצטרך לשלם כדי לקרוא להן "
 "חזרה, הן לעולם לא ידרשו הוצאות אחזקה. עובדה זו יכולה להפוך אותן ליקרות ערך "
 "במהלך מערכות ארוכות, כאשר הזהב קשה להשגה. מאפיין זה לאולם לא ניתו ליחידות "
@@ -1870,11 +1848,11 @@ msgstr "אל-מתה"
 
 #. [topic]: id=traits_undead
 #: data/core/help.cfg:409
-#, fuzzy
 msgid ""
 "Undead units are immune to poison, also drain and plague doesn't work on "
 "them."
-msgstr "יחידות אל-מתות מחוסנות בפני רעל."
+msgstr ""
+"יחידות אל-מתות הינם חסינות לרעל, ויכולות יניקה ומגיפה אינם משפיעות עליהם. "
 
 #. [topic]: id=traits_undead
 #: data/core/help.cfg:411
@@ -1888,7 +1866,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"ליחידות אל-מתות יש בדרך כלל את 'אל-מוות' כמאפיין היחיד שלהן. מכיוון שיחידות "
+"ליחידות אל-מתות יש בדרך כלל את 'אל-מוות' ככשרון היחיד שלהן. מכיוון שיחידות "
 "אל-מתות הם גופות של מתים, שהוחזרו כדי להלחם שוב, אין לרעל כל השפעה עליהן. "
 "עובדה זו יכולה להפוך אותן ליקרות ערך כאשר נלחמים ביריב שמשתמש ברעל ביחד עם "
 "ההתקפות שלו."
@@ -1896,15 +1874,15 @@ msgstr ""
 #. [topic]: id=traits_mechanical
 #: data/core/help.cfg:416
 msgid "trait^Mechanical"
-msgstr ""
+msgstr "מכני"
 
 #. [topic]: id=traits_mechanical
 #: data/core/help.cfg:417
-#, fuzzy
 msgid ""
 "Mechanical units are immune to poison, also drain and plague doesn't work on "
 "them."
-msgstr "יחידות אל-מתות מחוסנות בפני רעל."
+msgstr ""
+"יחידות מכניות הינם חסינות לרעל, ויכולות יניקה ומגיפה אינם משפיעות עליהם. "
 
 #. [topic]: id=traits_mechanical
 #: data/core/help.cfg:419
@@ -1915,18 +1893,21 @@ msgid ""
 "mechanical units don't really have life, drain, poison and plague has no "
 "effect upon them."
 msgstr ""
+"\n"
+"\n"
+"ליחידות מכניות (כגון סירות) יש בדרך כלל את 'מכני' ככשרון היחיד שלהם. מכיוון "
+"שיחידות אלו לא באמת חיות, יניקה, רעל ומגיפה לא משפיעים עליהם. "
 
 #. [topic]: id=traits_dextrous
 #: data/core/help.cfg:424
 msgid "Dextrous"
-msgstr "דייקנית"
+msgstr "זריזה"
 
 #. [topic]: id=traits_dextrous
 #: data/core/help.cfg:425
-#, fuzzy
 msgid ""
 "Dextrous units do 1 more damage for every successful strike in ranged combat."
-msgstr "יחידות דייקניות עושות נקודת נזק אחת יותר לכל ניסיון פגיעה מוצלח בקשת."
+msgstr "יחידות חזקות עושות נקודת נזק אחת יותר עבור כל פגיעה מוצלחת בטווח רחוק."
 
 #. [topic]: id=traits_dextrous
 #: data/core/help.cfg:427
@@ -1940,14 +1921,14 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"דיוק הוא מאפיין שקיים רק אצל האלפים. האלפים נודעים בתנועותהם מלאות החן, "
+"זריזות רבה הוא כשרון שקיים רק אצל האלפים. האלפים נודעים בתנועותהם מלאות החן, "
 "ובכשרונם הרב עם קשת. אולם, כמה מהם חוננו בכישרון טבעי שעוקף את זה של אחיהם. "
-"אלפים אלו מורדים נקודה נוספת שך נזק בכל חץ."
+"אלפים אלו מורדים נקודה נוספת של נזק בכל התקפת טווח-רחוק."
 
 #. [topic]: id=traits_healthy
 #: data/core/help.cfg:432
 msgid "Healthy"
-msgstr ""
+msgstr "בריאה"
 
 #. [topic]: id=traits_healthy
 #: data/core/help.cfg:433
@@ -1955,6 +1936,8 @@ msgid ""
 "Renowned for their vitality, some dwarves are sturdier than others and can "
 "rest even when travelling."
 msgstr ""
+"ידועים בקשיחותם, מספר גמדים הינם קשוחים יותר מאחרים ויכולים לנוח גם בזמן "
+"תנועה."
 
 #. [topic]: id=traits_healthy
 #: data/core/help.cfg:435
@@ -1964,18 +1947,22 @@ msgid ""
 "Healthy units have 1 HP plus 1 HP per level more than usual and rest heal "
 "the usual 2 HP after each turn they did not fight."
 msgstr ""
+"\n"
+"\n"
+"יחידות בריאות מקבלות נק\"פ אחד ועוד נק\"פ אחד/דרגה יותר מהרגיל. הם יכולות "
+"לנוח (ולקבל 2 נק\"פ) בכל תור שהם לא נלחמות, גם עם הם זזו. הם גם סופגים 2 "
+"פחות נזק/תור מרעל. "
 
 #. [topic]: id=traits_dim
 #: data/core/help.cfg:440
-#, fuzzy
 msgid "Dim"
-msgstr "בינוני"
+msgstr "טיפשה"
 
 #. [topic]: id=traits_dim
 #: data/core/help.cfg:441
 msgid ""
 "Units with trait Dim suffer a 20% increase in experience required to advance."
-msgstr ""
+msgstr "יחידות טיפשות צריכות 20% יותר נסיון בשביל להצליח לעלות רמה"
 
 #. [topic]: id=traits_dim
 #: data/core/help.cfg:443
@@ -1985,18 +1972,20 @@ msgid ""
 "Dim is a trait all too common in goblins and other lesser species. There are "
 "reasons these species are lesser, and this is one of them."
 msgstr ""
+"\n"
+"\n"
+"טיפשות היא כשרון די נפוץ בגובלינים ויצורים פחותים אחרים. יש סיבות שיצורים "
+"אלו הינם אלו הם הפחותים, וזה אחד מהם."
 
 #. [topic]: id=traits_slow
 #: data/core/help.cfg:448
-#, fuzzy
 msgid "Slow"
-msgstr "מואט"
+msgstr "איטית"
 
 #. [topic]: id=traits_slow
 #: data/core/help.cfg:449
-#, fuzzy
 msgid "Slow units have -1 movement but 5% more hitpoints."
-msgstr "ליחידות מהירות יש עוד נקודת תנועה אחת, אבל 10% פחות נק\"פ מכרגיל."
+msgstr "ליחידות איטיות יש נקודת תנועה אחת פחות, אבל 5% יותר נק\"פ"
 
 #. [topic]: id=traits_slow
 #: data/core/help.cfg:451
@@ -2007,16 +1996,21 @@ msgid ""
 "a movement penalty but are compensated for it with a slight increase in "
 "endurance."
 msgstr ""
+"\n"
+"\n"
+"כבדי-גוף ומסורבלים, גובלינים איטיים הינם איטיים (כמובן) יותר מאחרים אבל טיפה "
+"יותר קשוחים. "
 
 #. [topic]: id=traits_weak
 #: data/core/help.cfg:456
 msgid "Weak"
-msgstr ""
+msgstr "חלשה"
 
 #. [topic]: id=traits_weak
 #: data/core/help.cfg:457
 msgid "Units with trait Weak get a -1 increment in hitpoints and melee damage."
 msgstr ""
+"ליחידות חלשות יש נקודת פגיעה 1 פחות ומורידים 1 פחות נזק בהתקפות קפא\"פ. "
 
 #. [topic]: id=..terrains
 #: data/core/help.cfg:465
@@ -2025,11 +2019,14 @@ msgid ""
 "unit's defensive capability in combat.\n"
 "\n"
 msgstr ""
+"מפות מכילות מספר סוגי-שטח אשר משפיעים גם על תנועה וגם על היכולת ההגנתית של "
+"יחידות בקרב.\n"
+"\n"
 
 #. [topic]: id=terrain_flat
 #: data/core/help.cfg:472
 msgid "Flat"
-msgstr ""
+msgstr "שטוח"
 
 #. [topic]: id=terrain_flat
 #: data/core/help.cfg:477
@@ -2042,10 +2039,10 @@ msgid ""
 "\n"
 "Most units have defense of 30 to 40% on grassland."
 msgstr ""
-"אדמת מרעה מייצגת מישורים פתוחים, אם מעובדים, שמורים לאדמות מרעה או גדלים "
-"פרא. בהיותה איזור פתוח, אפשר לחצות אדמת מרעה בקלות אולם קשה להגן על עצמך "
-"בהיותך עליה. בדרך כלל, היחידות ש באופן המיטבי על אדמת מרעה הן יחידות פרשים, "
-"או יחידות מאד מהירות שמנצלות את השטח הפתוח.\n"
+"אדמת מרעה מייצגת מישורים פתוחים, אם מעובדים, חתוכים למרעה או גדלים פרא. "
+"בהיותה איזור פתוח, אפשר לחצות אדמת מרעה בקלות אולם קשה להגן על עצמך בהיותך "
+"עליה. בדרך כלל, היחידות ש באופן המיטבי על אדמת מרעה הן יחידות פרשים, או "
+"יחידות מאד מהירות שמנצלות את השטח הפתוח.\n"
 "\n"
 "לרוב היחידות יש הגנה של 30 עד 40% על אדמת מרעה."
 
@@ -2063,7 +2060,7 @@ msgid ""
 "text='Flat'</ref> terrain."
 msgstr ""
 "דרכים הן שבלי עפר כבושים, שנוצרו על ידי הנוסעים הרבים שעברו עליהם. ככל שזה "
-"נוגע למשחקיות, דרכים זהות ל<ref>dst=terrain_grassland text='אדמת מרעה'</ref>."
+"נוגע למשחק, דרכים הינם שטח <ref>dst='terrain_flat' text='שטוח'</ref>."
 
 #. [topic]: id=terrain_forest
 #: data/core/help.cfg:494
@@ -2072,7 +2069,6 @@ msgstr "יער"
 
 #. [topic]: id=terrain_forest
 #: data/core/help.cfg:501
-#, fuzzy
 msgid ""
 "Forests represent any woodland with significant undergrowth, enough to "
 "hinder passage. Though they slow nearly everyone down, forests do offer "
@@ -2090,16 +2086,16 @@ msgid ""
 "\n"
 msgstr ""
 "יערות מסמנים כל שטח מיוער עם סבך משמעותי מספיק כדי להפריע למעבר. למרות שהם "
-"מאיטים כמעט את כולם, יערות מציעים הגנה טובה יותר לרוב היחידות מאשר מישור "
-"פתוח. לפרשים, לעומת זו, יש כל כך הרבה בעיות לנווט בהם שכל יתרון מתנועה חשאית "
-"נעלם. אלפים הם יוצאי דופן לחוק הכללי הזה ליערות. לא רק שהם שומרים על תנועה "
-"מלאה ביערות, הם גם מקבלים בונוס הגנה משמעותי. גם גמדים הם יוצאי דופן לחוק "
-"זה; למרות שהם יכולים לחתוך את דרכם דרך היער בלי בלי להפסיד הרבה מהירות, חוסר "
-"ההכרות המוחלטת שלהם עם השטח גורמת לכך שהם לא מקבלים שום בונוס להגנה.\n"
+"מאיטים כמעט את כולם, יערות מציעים הגנה טובה יותר לרוב היחידות מאשר מישורים "
+"פתוחים. לפרשים, לעומת זו, יש כל כך הרבה בעיות לנווט בהם שכל יתרון מתנועה "
+"חשאית נעלם. אלפים הם יוצאי דופן לחוק הכללי הזה ליערות. לא רק שהם שומרים על "
+"תנועה מלאה ביערות, הם גם מקבלים בונוס הגנה משמעותי. גם גמדים הם יוצאי דופן "
+"לחוק זה; למרות שהם יכולים לחתוך את דרכם דרך היער בלי בלי להפסיד הרבה מהירות, "
+"חוסר ההכרות המוחלטת שלהם עם השטח גורמת לכך שהם לא מקבלים שום בונוס להגנה.\n"
 "\n"
 "לרוב היחידות יש 50% הגנה ביערות, אבל פרשים מוגבלים ל - 40%. אלפים, מצד שני, "
 "נהנים מ - 60 עד 70% הגנה, אפילו ליחידותם הרכובות. גמדים באון כללי מקבלים רק "
-"30% הגנה ביערות."
+"30% הגנה ביערות.\n"
 
 #. [topic]: id=terrain_hills
 #: data/core/help.cfg:508
@@ -2172,10 +2168,10 @@ msgid ""
 msgstr ""
 "ביצות מייצגות כמעט כל סוד של אדמה רווית מים. ביצות מאיטות כמעט את כולם, "
 "ופוגעות ביכולתם להגן על עצמם. יוצאי הדופן לכך הם כל הגזעים שמוכשרים גופנית "
-"לשחייה במים, אילו מקבלים גם תנועה מלאה וגם בונוס להגנה. אלה שמוצאים את "
-"פרנסתם בביצות מיומנים גם בשימוש בשטח למציאת מחסה.\n"
+"לשחייה במים, אשר מקבלים גם תנועה מלאה וגם בונוס להגנה. אלה שמוצאים את פרנסתם "
+"בביצות מיומנים גם בשימוש בשטח למציאת מחסה.\n"
 "\n"
-"רוב היחידות צריכות להסתדר עם 30% הגנב בביצות. אנשי-יםת נאגה ולטאנשים נאניםמ "
+"רוב היחידות צריכות להסתדר עם 30% הגנב בביצות. אנשי-יםת, נאגה ולטאנשים נהנים "
 "כולם באופן כללי מ 60%."
 
 #. [topic]: id=terrain_shallow_water
@@ -2203,7 +2199,7 @@ msgstr ""
 "מקבלים בונוס הגנה משמעותי ותנועה מלאה.\n"
 "\n"
 "רוב היחידות צריכות להסתדר עם 20 עד 30% הגנה במים רדודים, בעוד שגם נאגה וגם "
-"אנשי-ים נהנים מ - 60%."
+"בני-ים נהנים מ - 60%."
 
 #. [topic]: id=terrain_deep_water
 #: data/core/help.cfg:556
@@ -2228,11 +2224,10 @@ msgstr ""
 #. [topic]: id=terrain_frozen
 #: data/core/help.cfg:568
 msgid "Frozen"
-msgstr ""
+msgstr "שלג"
 
 #. [topic]: id=terrain_frozen
 #: data/core/help.cfg:573
-#, fuzzy
 msgid ""
 "Frozen terrain represents any flat area that is covered by snow or ice. Most "
 "units are slowed down on it, and have a harder time defending themselves. "
@@ -2242,7 +2237,9 @@ msgid ""
 "Most units have 20 to 40% defense in frozen terrain."
 msgstr ""
 "שלג מייצג כל אזור קפוא שטוח, או באופן קבוע (כמו טונדרה), או באופן זמני (כמו "
-"אדמת מרעה מכוסת שלג). רוב היחידות מואטות על ידי שלג, ומתקשות להגן על עצמן.\n"
+"אדמת מרעה מכוסת שלג). רוב היחידות מואטות על ידי שלג, ומתקשות להגן על עצמן."
+"שים לב שיחידות שוחות, גם אלו המסוגלות לנשום מתחת למים, לא יכולות לשחות "
+"מתחתלקרח.\n"
 "\n"
 "לרוב היחידות יש 20 עד 40% הגנה בשלג."
 
@@ -2253,7 +2250,6 @@ msgstr "טירה"
 
 #. [topic]: id=terrain_castle
 #: data/core/help.cfg:587
-#, fuzzy
 msgid ""
 "Castles are any sort of permanent fortification. Nearly all units receive a "
 "considerable bonus to their defense by being stationed in a castle, and all "
@@ -2265,12 +2261,13 @@ msgid ""
 "Most units have about 60% defense in a castle.\n"
 "\n"
 msgstr ""
-"טירות הן כל סוג של בוצורים קבועים. כמעט כל היחידות מקבלות בונוס הגנה גדול "
+"טירות הן כל סוג של ביצורים קבועים. כמעט כל היחידות מקבלות בונוס הגנה גדול "
 "במיוחד כאשר הן מוצבות בטירות, וכל היחידות מקבלות תנועה מלאה בטירה. הצבת "
-"יחידות בטירה מייצגת את יכולת ההגנה שלה. בלי יחידה בכל משושה קיר, אוייב יכול "
+"יחידות בטירה מייצגת את יכולת ההגנה שלה. בלי יחידה בכל משבצת קיר, אויב יכול "
 "פשוט להתגנב לתוך הטירה בלי להעצר, וקבל אותם בונוסי הגנה כמו כל מי שבפנים.\n"
 "\n"
-"רוב היחידות מקבלות 60% הגנה בטירה."
+"רוב היחידות מקבלות 60% הגנה בטירה.\n"
+"\n"
 
 #. [topic]: id=terrain_sand
 #: data/core/help.cfg:594
@@ -2315,7 +2312,6 @@ msgstr "מערה"
 
 #. [topic]: id=terrain_cave
 #: data/core/help.cfg:621
-#, fuzzy
 msgid ""
 "Cave terrain represents any underground cavern with enough room for a unit "
 "to pass. Most units are wholly unfamiliar with the terrain, and thus are "
@@ -2337,11 +2333,10 @@ msgstr ""
 #. [topic]: id=terrain_rockbound_cave
 #: data/core/help.cfg:628
 msgid "Rockbound Cave"
-msgstr "מערה מוקפת סלעים"
+msgstr "מערה מלאה סלעים"
 
 #. [topic]: id=terrain_rockbound_cave
 #: data/core/help.cfg:633
-#, fuzzy
 msgid ""
 "Rockbound cave terrain is formed by the action of water and wind, carrying "
 "erosive particles that carve the rock. It resembles a scraggy underground "
@@ -2354,20 +2349,19 @@ msgid ""
 "Most units have about 50% defense in rocky caves, whereas cavalry are "
 "limited to 40%. Dwarves enjoy 60% defense in Rockbound caves."
 msgstr ""
-"מערה מוקפת סלעים נוצרת מפעולתם של מים ורוח, שנושאיםחלקיקים המכרסמים באבן "
+"מערה מלאה סלעים נוצרת מפעולתם של מים ורוח, שנושאיםחלקיקים המכרסמים באבן "
 "ומעצבים אותה. היא דומה למערה תת-קרקעית גדולה עם פני שטח מחוספסים שפוגעים "
 "ביעילות של רוב היחידות, אבל שתורמים להגנה. לגמדים וטרולים, שגרים בעיקר "
 "במערות, קל יחסית להסתדר בסוג שטח זה. גמדים, בזכות גודלם הקטן יש את היתרון "
 "בתנועה בטופוגרפיה מסוג זה.\n"
 "\n"
 "לרוב היחידות יש 50% הגנה במערות סילעיות, בעוד שיחידות רוכבות מוגבלות ל 40%. "
-"גמדים נהנים מ 60% הגנה במערות מוקפות סלעים."
+"גמדים נהנים מ 60% הגנה במערות מלאות סלעים."
 
 #. [topic]: id=terrain_illuminated_cave
 #: data/core/help.cfg:640
-#, fuzzy
 msgid "Illuminated Cave"
-msgstr "מאירה"
+msgstr "מערה מוארת"
 
 #. [topic]: id=terrain_illuminated_cave
 #: data/core/help.cfg:643
@@ -2377,6 +2371,9 @@ msgid ""
 "for lawful units and removes the attack bonus from chaotic units. In all "
 "other regards this terrain is functionally identical to normal cave terrains."
 msgstr ""
+"אזורים נדירים של העולם מתחת לאדמה מוארים ע\"י אור מהאדמה הנכנס לחושך שלמטה. "
+"זה נותן תוסף לנזק של יחידות סדר ומקטין את הנזק של יחידות תוהו. בכל דרך אחרת, "
+"שטח זה זהה לשטח מערה רגיל. "
 
 #. [topic]: id=terrain_fungus
 #: data/core/help.cfg:650
@@ -2385,7 +2382,6 @@ msgstr "חורשת פיטריות"
 
 #. [topic]: id=terrain_fungus
 #: data/core/help.cfg:655
-#, fuzzy
 msgid ""
 "Mushroom groves are vast underground forests of giant mushrooms, which "
 "thrive in the damp darkness. Most units have trouble negotiating the spongy "
@@ -2414,7 +2410,6 @@ msgstr "כפר"
 
 #. [topic]: id=terrain_village
 #: data/core/help.cfg:669
-#, fuzzy
 msgid ""
 "Villages represent any group of buildings, human or otherwise. Almost all "
 "units, even cavalry, have any easy time navigating villages, and most units "
@@ -2432,13 +2427,13 @@ msgstr ""
 "מוצבות בכפר.כפרים נותנים ליחידות את המשאבים להתנקות ולטפל בפצעיהן, מה שנותן "
 "ךלכ יחידה שמוצבת בכפר להתרפא ב8 נקודות פגיעה כל תור, או להתרפא מרעל.\n"
 "\n"
-"לרוב היחידות יש 50 עד 60% הגנה בכפרים, לעומת זו פרשים מקבלים רק 40%."
+"לרוב היחידות יש 50 עד 60% הגנה בכפרים, לעומת זו פרשים מקבלים רק 40%.\n"
+"\n"
 
 #. [topic]: id=terrain_water_village
 #: data/core/help.cfg:678
-#, fuzzy
 msgid "Submerged Village"
-msgstr "כפר כבוש"
+msgstr "כפר ימי"
 
 #. [topic]: id=terrain_water_village
 #: data/core/help.cfg:683
@@ -2453,24 +2448,29 @@ msgid ""
 "Merfolk and Nagas have 60% defense in submerged villages, whereas land based "
 "units usually have a low defense."
 msgstr ""
+"כפרים מוצפים הם ביתם של בני-הים והנאגות. למרות שיצורי מים הם בבית כאן, לאלו "
+"ההולכים על האדמה יש בעיות לנווט ולהגן על כפרים אלו. אבל, כמו כל הכפרים, כל "
+"היצורים הנמצאים בכפרים ימיים מרופאים ב8 נק\"פ (או מתרפאים מרעל) כל תור. \n"
+"\n"
+"בני-ים ונאגות מקבלים 60% הגנה בכפרים אלו, בזמן שאלו ההולכים על היבשה מקבלים "
+"הגנה נמוכה. "
 
 #. [topic]: id=terrain_unwalkable
 #: data/core/help.cfg:690
 msgid "Unwalkable"
-msgstr ""
+msgstr "בלתי הליך"
 
 #. [topic]: id=terrain_unwalkable
 #: data/core/help.cfg:693
-#, fuzzy
 msgid ""
 "Unwalkable terrain covers any chasm or gorge which, as the name implies, "
 "cannot be crossed simply by walking. Chasms are noted for sheer walls which "
 "would take days to traverse. As far as gameplay is concerned, only units "
 "capable of flying can cross this terrain."
 msgstr ""
-"קניון הוא בגע באדמה, שמגיע לעומקים לא ידועים. קניונים מזוהים לפי הקירות "
-"התלולים שיקחו ימים לחצייה. ככל שזה נוגע למשחקיות, רק יחידות בעלות יכולת "
-"תעופה יכולות לחצות את סוג השטח הזה."
+"שטח לא-הליך הוא כל קניון או חור אחר, אשר כמו שהשם אומר, לא ניתן למעבר רק על-"
+"ידי הליכה. קניונים מזוהים לפי הקירות התלולים שיקחו ימים לחצייה. ככל שזה נוגע "
+"למשחק, רק יחידות בעלות יכולת תעופה יכולות לחצות את סוג השטח הזה."
 
 #. [topic]: id=terrain_lava
 #: data/core/help.cfg:700
@@ -2479,7 +2479,6 @@ msgstr "לבה"
 
 #. [topic]: id=terrain_lava
 #: data/core/help.cfg:703
-#, fuzzy
 msgid ""
 "The dangers inherent in trying to walk on lava are fairly obvious. As far as "
 "movement is concerned, lava is equivalent to <ref>dst='terrain_unwalkable' "
@@ -2489,8 +2488,10 @@ msgid ""
 "This provides an attack bonus for lawful units and removes the attack bonus "
 "from chaotic units."
 msgstr ""
-"הסכנות שטמונות בלנסות ללכת על לבה מובנות מאליו. סוג שטח זה יכול להחצות על "
-"ידי היחידות שמסוגלות לעוף מספיק גבוה מעליו."
+"הסכנות שטמונות בלנסות ללכת על לבה מובנות מאליו. בשביל תנועה שטח זה נחשב "
+"כ<ref>dst='terrain_unwalkable' text='בלתי הליך'</ref>, הניתן לחצייה רק על "
+"ידיהיצורים המסוגלים לעוף מרחק רב מעליו. המגמה הרוחחת גם מייצרת אוח, אשר "
+"מגדיל את הנזק של יצורי סדר ומקטין את זה של יצורי תוהו."
 
 #. [topic]: id=terrain_ford
 #: data/core/help.cfg:710
@@ -2509,14 +2510,13 @@ msgid ""
 msgstr ""
 "באזורים בהם הנהר מאד רדוד, המעבר מעליו הוא פשוט ליחידות מבוססות אדמה. יותר "
 "מזה, לכל יצור שמותאם לשחיה יש תנועה מלאה גם בחלקים אילו של הנהר. כלכ שזה "
-"נוגע למשחקיות, מתייחסים לשפך נהר כמו אדמת מרעה או מים רדודים, כאשר נבחר האחד "
+"נוגע למשחק, מתייחסים לשפך נהר כמו אדמת מרעה או מים רדודים, כאשר נבחר האחד "
 "שנותן את בונוסי ההגנה והתנועה הגבוהים ביותר ליחידה."
 
 #. [topic]: id=terrain_reef
 #: data/core/help.cfg:720
-#, fuzzy
 msgid "Coastal Reef"
-msgstr "טירה"
+msgstr "שונית אלמוגים"
 
 #. [topic]: id=terrain_reef
 #: data/core/help.cfg:725
@@ -2528,6 +2528,11 @@ msgid ""
 "\n"
 "Mermen and Naga both receive 70% defense on coastal reefs."
 msgstr ""
+"שוניות אלמוגים הינם אזורים רדדודים שנוצרו ע\"י אבן, אלמוגים וחול. זה נותן "
+"ליצורי אדמה יותר מקום לעמוד ואזורים הגנתיים ממה שמים רגילים יתנו באופן רגיל "
+"וגם יותר הגנה ליצורי מים.\n"
+"\n"
+"בני-ים ונאגות מקבלים 70% הגנה בשוניות."
 
 #. [topic]: id=terrain_bridge
 #: data/core/help.cfg:732
@@ -2536,7 +2541,6 @@ msgstr "גשר"
 
 #. [topic]: id=terrain_bridge
 #: data/core/help.cfg:737
-#, fuzzy
 msgid ""
 "To those capable of building one, the ability to lay a bridge offers a "
 "liberation from the fickle nature of waterways, whose fords come and go with "
@@ -2551,20 +2555,19 @@ msgid ""
 "capable of occupying a bridge hex at the same time."
 msgstr ""
 "לאילו שיכולים לבנות אחד, היכולת להניח גשר מציעה שחרור מהטבע ה‮הפכפך של דרכי "
-"המים,  שהמעברות שלהן הולכות ובאות עם הירידה והעליה של קו המים. וכל זה בלי "
+"המים, שהמעברות שלהן הולכות ובאות עם הירידה והעליה של קו המים. וכל זה בלי "
 "לדבר על התענוג של רגליים יבשות, שאיבודו הוא לא נושא לצחוק בחודשים הקרים של "
-"השנה..\n"
+"השנה...\n"
 "\n"
 "לאילו שהולכים ביבשה או בים, גשר הוא הטוב ביותר משני העולמות - למטרות המשחק, "
 "מתייחסים אליו כאדמת מרעה או מים רדודים, איזה מהם שמציע את התנועה ובונוס "
-"ההגנה הטובים ביותר ליחידה שנמצאת על משושה הגשר. שים לב שיחידות שוחות ויחידות "
-"קרקע לא יכולות להמצא על משושה הגשר באותו זמן."
+"ההגנה הטובים ביותר ליחידה שנמצאת על משבצת הגשר. שים לב שיחידות שוחות ויחידות "
+"קרקע לא יכולות להמצא על משבצת הגשר באותו זמן."
 
 #. [topic]: id=terrain_impassable
 #: data/core/help.cfg:744
-#, fuzzy
 msgid "Impassable"
-msgstr "הרים"
+msgstr "בלתי-עביר"
 
 #. [topic]: id=terrain_impassable
 #: data/core/help.cfg:747
@@ -2575,12 +2578,15 @@ msgid ""
 "jagged peaks at such rarified heights, and not even the fiercest troll can "
 "smash through thick walls of stone."
 msgstr ""
+"מחסומים שאפילו המטייל הנחוש ביותר לא יכול לעבור כוללים קירות אבן קשה והרים "
+"כה גבוהים ותלולים שהם מתיד מוקפים בענן. אפילו יצורים מעופפים לא יכולים לנווט "
+"בפסגוד המחודדות בגבהים אלו, ואפילו הטרול החזק ביותר לא יכול לרסק קיר אבן "
+"קשה. "
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:760
-#, fuzzy
 msgid "General commands"
-msgstr "גנרל"
+msgstr "פקודות סטנדרטיות"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:765
@@ -2589,6 +2595,9 @@ msgid ""
 "Clear chat messages.\n"
 "\n"
 msgstr ""
+"\n"
+"נקה הודעות צ'אט\n"
+"\n"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:769
@@ -2599,6 +2608,11 @@ msgid ""
 "Debug mode is turned off by quitting the game or :nodebug.\n"
 "\n"
 msgstr ""
+"\n"
+"עבור למצב דיבוג (לא עובד במשחק רב-משתתפים). ראה <ref>dst='debug_commands' "
+"text='פקודות במצב דיבוג'</ref>.\n"
+"נין לצאת ממצב זה ע\"י יציאה מהמשחק או :nodebug.\n"
+"\n"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:772
@@ -2611,6 +2625,12 @@ msgid ""
 "active side if no parameter is supplied.\n"
 "\n"
 msgstr ""
+"\n"
+"העבר צד בין שליטת שחקן לשליטת מחשב ולהפך. השחקן ששולט בצד זה צריך לשלוח "
+"פקודה זאת. בלי פרמטרים נוספים, החלף בין המצבים. עם 'on', העבר לשליטת מחשב. "
+"עם 'off' העבר לשליטת שחקן. פעולה זאת תשנה את הצד הנוחכי אלא עם פרמטר מסמן צד "
+"אחר. \n"
+"\n"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:775
@@ -2619,6 +2639,9 @@ msgid ""
 "Toggle the display of the current frames per second.\n"
 "\n"
 msgstr ""
+"\n"
+"שנה את מספר הפריימים לשניה.\n"
+"\n"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:778
@@ -2627,6 +2650,9 @@ msgid ""
 "Switch a log domain to a different log level.\n"
 "\n"
 msgstr ""
+"\n"
+"שנה את רמת התיעוד.\n"
+"\n"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:781
@@ -2635,6 +2661,9 @@ msgid ""
 "Redraws the screen and reloads any image files that have been changed.\n"
 "\n"
 msgstr ""
+"\n"
+"מצייר את המסך מחדש וטוען קבצי תמונה שהשתנו.\n"
+"\n"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:784
@@ -2643,6 +2672,9 @@ msgid ""
 "Bring up theme selection menu.\n"
 "\n"
 msgstr ""
+"\n"
+"פתח את תפריט בחירת מראה.\n"
+"\n"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:787
@@ -2651,6 +2683,9 @@ msgid ""
 "Quit the scenario (without prompting).\n"
 "\n"
 msgstr ""
+"\n"
+"צא מההתקלות הנוכחית (בלי להקפיץ חלון).\n"
+"\n"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:790
@@ -2659,6 +2694,9 @@ msgid ""
 "Save the game (without prompting).\n"
 "\n"
 msgstr ""
+"\n"
+"שמור את משחק.\n"
+"\n"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:791
@@ -2666,12 +2704,13 @@ msgid ""
 "\n"
 "Save the game and quit the scenario (without prompting)."
 msgstr ""
+"\n"
+"שמור את המשחק וצא מההתקלות הנוכחית."
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:799
-#, fuzzy
 msgid "Multiplayer commands"
-msgstr "מפות למשחק רב משתתפים"
+msgstr "פקודות למשחק רב משתתפים"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:803
@@ -2681,6 +2720,10 @@ msgid ""
 "kick him.\n"
 "\n"
 msgstr ""
+"\n"
+"אסור למשתמש לשחק במשחק רב-משתתפים עם כתובת הIP של המשתמש והעף אותו מהמשחק "
+"הנוכחי.\n"
+"\n"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:806
@@ -2692,6 +2735,11 @@ msgid ""
 "'more' button in the 'Status Table' (alt+s by default) to get there.).\n"
 "\n"
 msgstr ""
+"\n"
+"שנה את השולט בצד (כתוב את מספר הצד) למשתמש (כתוב את שם השחקן/צופה). אתה יכול "
+"לבדוק איזה צד שייך למי בחלון 'הגדרות התקלות'. (לחץ על כפתוח ה 'עוד' בטבלת "
+"המצב (בדרך כלל alt-s) כדי להגיע).\n"
+"\n"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:809
@@ -2702,6 +2750,10 @@ msgid ""
 "difficulties.\n"
 "\n"
 msgstr ""
+"\n"
+"העף שחקן ממשחק רב-משתתפים. הם יכולים להצטרף מחדש. דרך ידידותית להוריד מישהו "
+"עם בעיות בחיבור או במחשב (או בחברים).\n"
+"\n"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:812
@@ -2711,6 +2763,10 @@ msgid ""
 "displayed.\n"
 "\n"
 msgstr ""
+"\n"
+"השתק צופה אחד (עם הוא מגלה דברים ששחקנים אחרים לא יכולים לראות בגלל ערפל "
+"קרב , לדוגמא). אם שום שם משתמש לא נכתב, מציג את רשימת המשתמשים המושתקים.\n"
+"\n"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:813
@@ -2718,13 +2774,16 @@ msgid ""
 "\n"
 "Toggle muting/silencing of all observers on/off."
 msgstr ""
+"\n"
+"הדלק/כבה השתקת כל הצופים."
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:820
-#, fuzzy
 msgid "Debug mode commands"
-msgstr "גנרל"
+msgstr "פקודות למצב דיבוג (עם אתה לא יודע מה זה אז אתה כנראה לא צריך את זה)."
 
+# I'm skipping this for a moment as most users who use Debug Mode 
+# (Campaign Developers, for example) know english
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:824
 msgid ""
@@ -2798,6 +2857,7 @@ msgid ""
 "hitpoints=100"
 msgstr ""
 
+# END SKIPPING
 #. [heals]: id=curing
 #: data/core/macros/abilities.cfg:51
 msgid "cures"
@@ -2805,9 +2865,8 @@ msgstr "מרפא"
 
 #. [heals]: id=curing
 #: data/core/macros/abilities.cfg:52
-#, fuzzy
 msgid "female^cures"
-msgstr "נסיכה"
+msgstr "מרפאת"
 
 #. [heals]: id=curing
 #: data/core/macros/abilities.cfg:54
@@ -2816,6 +2875,9 @@ msgid ""
 "A curer can cure a unit of poison, although that unit will receive no "
 "additional healing on the turn it is cured of the poison."
 msgstr ""
+"מרפא:\n"
+"יחידה מרפאת יכולה לרפא יחידות אחרות סמוכות מרעל, אבל יחידות אלו לא יקבלו "
+"ריפוי אחר בתור זה."
 
 #. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:76
@@ -2824,13 +2886,11 @@ msgstr "התחדשות"
 
 #. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:77
-#, fuzzy
 msgid "female^regenerates"
 msgstr "התחדשות"
 
 #. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:79
-#, fuzzy
 msgid ""
 "Regenerates:\n"
 "The unit will heal itself 8 HP per turn. If it is poisoned, it will remove "
@@ -2838,7 +2898,7 @@ msgid ""
 msgstr ""
 "התחדשות:\n"
 "יחידה זו תרפא את עצמה ב 8 נק\"פ לתור. אם היא מורעלת, היא תסיר את הרעל במקום "
-"לרפא."
+"להתרפא."
 
 #. [resistance]: id=steadfast
 #: data/core/macros/abilities.cfg:97
@@ -2847,7 +2907,6 @@ msgstr "קור רוח"
 
 #. [resistance]: id=steadfast
 #: data/core/macros/abilities.cfg:98
-#, fuzzy
 msgid "female^steadfast"
 msgstr "קור רוח"
 
@@ -2873,7 +2932,6 @@ msgstr "מנהיגות"
 #: data/core/macros/abilities.cfg:114 data/core/macros/abilities.cfg:137
 #: data/core/macros/abilities.cfg:172 data/core/macros/abilities.cfg:219
 #: data/core/macros/abilities.cfg:278
-#, fuzzy
 msgid "female^leadership"
 msgstr "מנהיגות"
 
@@ -2881,7 +2939,6 @@ msgstr "מנהיגות"
 #: data/core/macros/abilities.cfg:118 data/core/macros/abilities.cfg:141
 #: data/core/macros/abilities.cfg:176 data/core/macros/abilities.cfg:223
 #: data/core/macros/abilities.cfg:282
-#, fuzzy
 msgid ""
 "Leadership:\n"
 "This unit can lead our own units that are next to it, making them fight "
@@ -2897,40 +2954,36 @@ msgstr ""
 "\n"
 "יחידות סמוכות מדרגה נמוכה יותר יגרמו יותר נזק בקרב. כאשר היחידה סמוכה, מרמה "
 "נמוכה יוצר ובאותו צד כמו היחידה עם המנהיגות, התקפותיה עושות 25% יותר נזק "
-"כפול ההפרש בדרגות."
+"כפול הפרש הדרגות."
 
 #. [skirmisher]: id=skirmisher
 #: data/core/macros/abilities.cfg:346
 msgid "skirmisher"
-msgstr "מסתננת"
+msgstr "מסתנן"
 
 #. [skirmisher]: id=skirmisher
 #: data/core/macros/abilities.cfg:347
-#, fuzzy
 msgid "female^skirmisher"
 msgstr "מסתננת"
 
 #. [skirmisher]: id=skirmisher
 #: data/core/macros/abilities.cfg:349
-#, fuzzy
 msgid ""
 "Skirmisher:\n"
 "This unit is skilled in moving past enemies quickly, and ignores all enemy "
 "Zones of Control."
 msgstr ""
 "מסתננת:\n"
-"יחידה זו מוכשרת במעבר מהיר של קווי האוייב, תוך התעלמות מכל אזורי השליטה של "
-"האוייב. (יוצא מהכלל: אם היחידה עוצרת בתוך אזור שליטה של האוייב נקודות התנועה "
-"הנותרות שלה יאופסו אפילו אם היא מסתננת). "
+"יחידה זו מוכשרת במעבר מהיר של קווי האויב, תוך התעלמות מכל אזורי השליטה של "
+"האויב. "
 
 #. [illuminates]: id=illumination
 #: data/core/macros/abilities.cfg:362
 msgid "illuminates"
-msgstr "מאירה"
+msgstr "מאיר"
 
 #. [illuminates]: id=illumination
 #: data/core/macros/abilities.cfg:363
-#, fuzzy
 msgid "female^illuminates"
 msgstr "מאירה"
 
@@ -2953,25 +3006,23 @@ msgstr ""
 #. [teleport]: id=teleport
 #: data/core/macros/abilities.cfg:377
 msgid "teleport"
-msgstr "העתקה"
+msgstr "טלפורטציה"
 
 #. [teleport]: id=teleport
 #: data/core/macros/abilities.cfg:378
-#, fuzzy
 msgid "female^teleport"
-msgstr "חכמה"
+msgstr "טלפורטציה"
 
 #. [teleport]: id=teleport
 #: data/core/macros/abilities.cfg:380
-#, fuzzy
 msgid ""
 "Teleport:\n"
 "This unit may teleport between any two empty villages owned by its side "
 "using one of its moves."
 msgstr ""
 "העתקה:\n"
-"יחידה זו יכולה להעתיק את עצמה בין כל שני כפרים ידידותיים תוך שימוש באחת "
-"מנקודות התנועה שלה."
+"יחידה זו יכולה לעבור את בין כל שני כפרים ידידותיים תוך שימוש באחת מנקודות "
+"התנועה שלה."
 
 #. [hides]: id=ambush
 #: data/core/macros/abilities.cfg:389 data/core/macros/abilities.cfg:391
@@ -2980,13 +3031,11 @@ msgstr "מארב"
 
 #. [hides]: id=ambush
 #: data/core/macros/abilities.cfg:390 data/core/macros/abilities.cfg:392
-#, fuzzy
 msgid "female^ambush"
-msgstr "פורעת חוק"
+msgstr "מארב"
 
 #. [hides]: id=ambush
 #: data/core/macros/abilities.cfg:396 data/core/macros/abilities.cfg:400
-#, fuzzy
 msgid ""
 "Ambush:\n"
 "This unit can hide in forest, and remain undetected by its enemies.\n"
@@ -2999,7 +3048,7 @@ msgstr ""
 "יחידה זו יכולה להתחבא ביער, ולהשאר לא מגולה על ידי האוייביה.\n"
 "\n"
 "יחידות אוייב לא יכולות לראות או להתקיף יחידה זו כשהיא ביער, חוץ מאשר בתור "
-"שמיד אחרי שיחידה זו התקיפה, או אם יש יחידות אוייב ליד יחידה זו."
+"שמיד אחרי שיחידה זו התקיפה, או אם יש יחידות אויב ליד יחידה זו."
 
 #. [hides]: id=nightstalk
 #: data/core/macros/abilities.cfg:415 data/core/macros/abilities.cfg:416
@@ -3009,7 +3058,6 @@ msgstr "התגנבות לילה"
 
 #. [hides]: id=nightstalk
 #: data/core/macros/abilities.cfg:420 data/core/macros/abilities.cfg:426
-#, fuzzy
 msgid ""
 "Nightstalk:\n"
 "The unit becomes invisible during night.\n"
@@ -3022,29 +3070,25 @@ msgstr ""
 "יחידה זו יכולה להפוך לבלתי נראת במשך הלילה.\n"
 "\n"
 "יחידות אוייב לא יכולות לראות או להתקיף יחידה זו במשך הלילה, חוץ מאשר בתור "
-"שמיד אחרי שיחידה זו התקיפה, או אם יש יחידות אוייב ליד יחידה זו."
+"שמיד אחרי שיחידה זו התקיפה, או אם יש יחידות אויב ליד יחידה זו."
 
 #. [hides]: id=nightstalk
 #: data/core/macros/abilities.cfg:422
-#, fuzzy
 msgid "female^nightstalk"
 msgstr "התגנבות לילה"
 
 #. [hides]: id=concealment
 #: data/core/macros/abilities.cfg:441 data/core/macros/abilities.cfg:447
-#, fuzzy
 msgid "concealment"
-msgstr "מחנה"
+msgstr "הסתתרות"
 
 #. [hides]: id=concealment
 #: data/core/macros/abilities.cfg:442 data/core/macros/abilities.cfg:448
-#, fuzzy
 msgid "female^concealment"
-msgstr "מחנה"
+msgstr "הסתתרות"
 
 #. [hides]: id=concealment
 #: data/core/macros/abilities.cfg:446 data/core/macros/abilities.cfg:452
-#, fuzzy
 msgid ""
 "Concealment:\n"
 "This unit can hide in villages (with the exception of water villages), and "
@@ -3055,10 +3099,11 @@ msgid ""
 "immediately loses all its remaining movement."
 msgstr ""
 "צלילה\n"
-"יחידה זו יכולה להתחבא במים עמוקים, ולהשאר לא מגולה על ידי האוייביה.\n"
+"יחידה זו יכולה להתחבא בכפרים (חוץ מכפרי מים), ולהשאר לא מגולה על ידי "
+"אויביה.\n"
 "\n"
-"יחידות אוייב לא יכולות לראות או להתקיף יחידה זו כשהיא במים עמוקים, חוץ מאשר "
-"בתור שמיד אחרי שיחידה זו התקיפה, או אם יש יחידות אוייב ליד יחידה זו."
+"יחידות אויב לא יכולות לראות או להתקיף יחידה זו כשהיא (חוץ מכפרי מים), חוץ "
+"מאשר בתור שמיד אחרי שיחידה זו התקיפה, או אם יש יחידות אוייב ליד יחידה זו."
 
 #. [hides]: id=submerge
 #: data/core/macros/abilities.cfg:467 data/core/macros/abilities.cfg:473
@@ -3067,13 +3112,11 @@ msgstr "צלילה"
 
 #. [hides]: id=submerge
 #: data/core/macros/abilities.cfg:468 data/core/macros/abilities.cfg:474
-#, fuzzy
 msgid "female^submerge"
-msgstr "נוכלת"
+msgstr "צלילה"
 
 #. [hides]: id=submerge
 #: data/core/macros/abilities.cfg:472 data/core/macros/abilities.cfg:478
-#, fuzzy
 msgid ""
 "Submerge:\n"
 "This unit can hide in deep water, and remain undetected by its enemies.\n"
@@ -3083,21 +3126,20 @@ msgid ""
 "immediately loses all its remaining movement."
 msgstr ""
 "צלילה\n"
-"יחידה זו יכולה להתחבא במים עמוקים, ולהשאר לא מגולה על ידי האוייביה.\n"
+"יחידה זו יכולה להתחבא במים עמוקים, ולהשאר לא מגולה על ידי אויביה.\n"
 "\n"
-"יחידות אוייב לא יכולות לראות או להתקיף יחידה זו כשהיא במים עמוקים, חוץ מאשר "
+"יחידות אויב לא יכולות לראות או להתקיף יחידה זו כשהיא במים עמוקים, חוץ מאשר "
 "בתור שמיד אחרי שיחידה זו התקיפה, או אם יש יחידות אוייב ליד יחידה זו."
 
 #. [dummy]: id=feeding
 #: data/core/macros/abilities.cfg:496
 msgid "feeding"
-msgstr ""
+msgstr "אכילה"
 
 #. [dummy]: id=feeding
 #: data/core/macros/abilities.cfg:497
-#, fuzzy
 msgid "female^feeding"
-msgstr "נסיכה"
+msgstr "אכילה"
 
 #. [dummy]: id=feeding
 #: data/core/macros/abilities.cfg:499
@@ -3105,18 +3147,17 @@ msgid ""
 "Feeding:\n"
 "This unit gains 1 hitpoint added to its maximum whenever it kills a living "
 "unit."
-msgstr ""
+msgstr "נקודות הפגיעה המקסימליות של יחידה זו גדלות ב-1 כשהיא הורגת יחידה חיה. "
 
 #: data/core/macros/abilities.cfg:523
 msgid "+1 max HP"
-msgstr ""
+msgstr "+1 נק\"פ מלא"
 
 #: data/core/macros/abilities.cfg:565
 msgid "backstab"
-msgstr "דקירה מאחור"
+msgstr "דקירה בגב"
 
 #: data/core/macros/abilities.cfg:567
-#, fuzzy
 msgid ""
 "Backstab:\n"
 "When used offensively, this attack deals double damage if there is an enemy "
@@ -3132,7 +3173,6 @@ msgid "plague"
 msgstr "מגיפה"
 
 #: data/core/macros/abilities.cfg:581
-#, fuzzy
 msgid ""
 "Plague:\n"
 "When a unit is killed by a Plague attack, that unit is replaced with a unit "
@@ -3144,7 +3184,6 @@ msgstr ""
 "לצד של היחידה עם התקפת המגפה. (הדבר לא עובד על אל-מתים או יחידות בכפרים)."
 
 #: data/core/macros/abilities.cfg:593
-#, fuzzy
 msgid ""
 "Plague:\n"
 "When a unit is killed by a Plague attack, that unit is replaced with a "
@@ -3152,16 +3191,14 @@ msgid ""
 "doesn't work on Undead or units in villages."
 msgstr ""
 "מגפה:\n"
-"כאשר יחידה מתה מהתקפת מגפה, יחידה זו מוחלפת על ידי יחידה מאותו סוג ששייכת "
-"לצד של היחידה עם התקפת המגפה. (הדבר לא עובד על אל-מתים או יחידות בכפרים)."
+"כאשר יחידה מתה מהתקפת מגפה, יחידה זו מוחלפת על ידי גוויה מהלכת ששייכת לצד של "
+"היחידה עם התקפת המגפה. (הדבר לא עובד על אל-מתים או יחידות בכפרים)."
 
 #: data/core/macros/abilities.cfg:603
-#, fuzzy
 msgid "slows"
-msgstr "איטיות"
+msgstr "מאט"
 
 #: data/core/macros/abilities.cfg:605
-#, fuzzy
 msgid ""
 "Slow:\n"
 "This attack slows the target until it ends a turn. Slow halves the damage "
@@ -3171,10 +3208,10 @@ msgid ""
 msgstr ""
 "האטה:\n"
 "התקפה זאת מאיטה את המטרה. האטה מפחיתה בחצי את הנזק שנגרם על ידי ההתקפות "
-"ויחידות מואטות נעות בחצי מהמהירות (מעוגל למעלה)."
+"ויחידות מואטות נעות בחצי מהמהירות (מעוגל למטה). במסך הצד כלי מואט יקבל סימן "
+"חילזון"
 
 #: data/core/macros/abilities.cfg:614
-#, fuzzy
 msgid "stones"
 msgstr "איבון"
 
@@ -3204,7 +3241,6 @@ msgid "swarm"
 msgstr "נחיל"
 
 #: data/core/macros/abilities.cfg:654
-#, fuzzy
 msgid ""
 "Swarm:\n"
 "The number of strikes of this attack decreases when the unit is wounded. The "
@@ -3222,7 +3258,6 @@ msgid "charge"
 msgstr "הסתערות"
 
 #: data/core/macros/abilities.cfg:665
-#, fuzzy
 msgid ""
 "Charge:\n"
 "When used offensively, this attack deals double damage to the target. It "
@@ -3233,9 +3268,8 @@ msgstr ""
 "הנגד של המטרה."
 
 #: data/core/macros/abilities.cfg:677
-#, fuzzy
 msgid "drains"
-msgstr "ניקוז"
+msgstr "יניקה"
 
 #: data/core/macros/abilities.cfg:679
 msgid ""
@@ -3244,7 +3278,7 @@ msgid ""
 "amount of damage it deals (rounded down)."
 msgstr ""
 "ניקוז:\n"
-"יחידה זו מנקזת את כח החיים מיחידות חיות, ומרפא את עצמה בחצי מהנזק אותה היא "
+"יחידה זו יונקת את כח החיים מיחידות חיות, ומרפא את עצמה בחצי מהנזק אותה היא "
 "גרמה (מעוגל למטה)."
 
 #: data/core/macros/abilities.cfg:699
@@ -3252,7 +3286,6 @@ msgid "poison"
 msgstr "רעל"
 
 #: data/core/macros/abilities.cfg:701
-#, fuzzy
 msgid ""
 "Poison:\n"
 "This attack poisons living targets. Poisoned units lose 8 HP every turn "
@@ -3261,33 +3294,32 @@ msgid ""
 msgstr ""
 "רעל:\n"
 "התקפה זו מרעילה את המטרה. יחידות מורעלות מאבדות 8 נק\"פ כל תור עד שהן "
-"מתרפאות או עד שהנק\"פ שלהן יורד ל 1."
+"מתרפאות או עד שהנק\"פ שלהן יורד ל 1. הרעל לא יכול להרוג יחידות בעצמו. "
 
 #. [option]: type=behaviour
 #: data/core/macros/ai_controller.cfg:144
 msgid "Be more aggressive"
-msgstr ""
+msgstr "יהיה יותר אגרסיבי"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:161
 msgid "aggressive."
-msgstr ""
+msgstr "אגרסיבי."
 
 #. [option]: type=behaviour
 #: data/core/macros/ai_controller.cfg:178
 msgid "Be more defensive"
-msgstr ""
+msgstr "יהיה יותר הגנתי"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:191
-#, fuzzy
 msgid "defensive."
-msgstr "הגנה"
+msgstr "הגנתי."
 
 #. [option]: type=objective
 #: data/core/macros/ai_controller.cfg:213
 msgid "Focus on defeating..."
-msgstr ""
+msgstr "יתמקד על הבסת..."
 
 #. [literal]: speaker=narrator
 #. [value]: speaker=narrator
@@ -3301,12 +3333,12 @@ msgstr ""
 #: data/core/macros/ai_controller.cfg:845
 #: data/core/macros/ai_controller.cfg:885
 msgid "Instruct ally"
-msgstr ""
+msgstr "ישלוט בחבר"
 
 #. [literal]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:230
 msgid "Which enemy side to focus on?"
-msgstr ""
+msgstr "על איזה צד אתה רוצה להתמקד?"
 
 #. [then]
 #. [else]
@@ -3315,24 +3347,24 @@ msgstr ""
 #: data/core/macros/ai_controller.cfg:437
 #: data/core/macros/ai_controller.cfg:442
 msgid "(side $temp_i|)"
-msgstr ""
+msgstr "(צד $temp_i|)"
 
 #. [then]
 #: data/core/macros/ai_controller.cfg:288
 #: data/core/macros/ai_controller.cfg:438
 msgid "$side_i_leader.name (side $temp_i|)"
-msgstr ""
+msgstr "$side_i_leader.name (צד $temp_i|)"
 
 #. [else]
 #: data/core/macros/ai_controller.cfg:293
 #: data/core/macros/ai_controller.cfg:443
 msgid "side $temp_i"
-msgstr ""
+msgstr "צד $temp_i"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:309
 msgid "focusing on defeating $this_enemy_description|."
-msgstr ""
+msgstr "יתמקד בהבסת צד $this_enemy_description|."
 
 #. [value]
 #. [option]: speaker=narrator
@@ -3340,83 +3372,76 @@ msgstr ""
 #: data/core/macros/ai_controller.cfg:479
 #: data/core/macros/ai_controller.cfg:870
 #: data/core/macros/ai_controller.cfg:905
-#, fuzzy
 msgid "Back"
 msgstr "< חזרה "
 
 #. [option]: type=objective
 #: data/core/macros/ai_controller.cfg:359
 msgid "Focus on protecting..."
-msgstr ""
+msgstr "יתמקד בהגנה על..."
 
 #. [literal]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:376
 msgid "Which friendly side to protect?"
-msgstr ""
+msgstr "על איזה צד להגן?"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:459
 msgid "focusing on protecting $this_ally_description|."
-msgstr ""
+msgstr "מתמקד בהגנה על $this_ally_description|."
 
 #. [option]: type=objective
 #: data/core/macros/ai_controller.cfg:511
-#, fuzzy
 msgid "Defend a location..."
-msgstr "תרגום לאינדונזית"
+msgstr "יגן על מיקום"
 
 #. [print]
 #: data/core/macros/ai_controller.cfg:527
 msgid "Right-click to select a location to defend"
-msgstr ""
+msgstr ".כפתור ימני לבחירת מיקום"
 
 #. [set_menu_item]: id=ai_controller_defend_location_picker
 #: data/core/macros/ai_controller.cfg:534
-#, fuzzy
 msgid "Defend this location"
-msgstr "תרגום לאינדונזית"
+msgstr "הגן על מקום זה"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:551
 msgid "focusing on defending the area around $x1|,$y1|."
-msgstr ""
+msgstr "מקמקד על הגנת האזור ליד $x1|,$y1|."
 
 #. [print]
 #: data/core/macros/ai_controller.cfg:586
 msgid "Location selection canceled"
-msgstr ""
+msgstr "בחירת מיקום בוטלה"
 
 #. [option]
 #: data/core/macros/ai_controller.cfg:601
-#, fuzzy
 msgid "Clear objective orders"
-msgstr "בטל"
+msgstr "בטל מטרות"
 
 #. [option]
 #: data/core/macros/ai_controller.cfg:625
-#, fuzzy
 msgid "Clear behavior orders"
-msgstr "בטל"
+msgstr "בטל פקודות התנהגות"
 
 #. [option]
 #: data/core/macros/ai_controller.cfg:649
-#, fuzzy
 msgid "Clear all orders"
-msgstr "בטל"
+msgstr "בטל את כל הפקודות"
 
 #. [then]
 #: data/core/macros/ai_controller.cfg:775
 #: data/core/macros/ai_controller.cfg:786
-#, fuzzy
 msgid "none set."
-msgstr "אין"
+msgstr "כלום לא נבחר."
 
 #. [value]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:808
 msgid ""
 "$ally_leader.name (side $ally_side|) has not been given any instructions and "
 "is acting normally."
-msgstr ""
+msgstr "ל$ally_leader.name (צד $ally_side|) לא ניתנו פקודות והו מתנהג כרגיל. "
 
 #. [value]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:811
@@ -3427,34 +3452,37 @@ msgid ""
 "Behavior: $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_behaviour_description"
 msgstr ""
+"מטרה: $ai_controller.side_$ally_side|_current_settings."
+"currently_doing_objective_description\n"
+"התנהגות: $ai_controller.side_$ally_side|_current_settings."
+"currently_doing_behaviour_description"
 
 #. [value]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:825
 msgid ""
 "$ally_leader.name (side $ally_side|) is carrying out the following "
 "instructions:"
-msgstr ""
+msgstr "$ally_leader.name (צד $ally_side|) כעת מבצע: "
 
 #. [literal]
 #: data/core/macros/ai_controller.cfg:840
 msgid "Set objective..."
-msgstr ""
+msgstr "בחר מטרה..."
 
 #. [literal]
 #: data/core/macros/ai_controller.cfg:880
 msgid "Set behavior..."
-msgstr ""
+msgstr "בחר התנהגות..."
 
 #. [literal]
 #: data/core/macros/ai_controller.cfg:920
 msgid "Exit"
-msgstr ""
+msgstr "צא"
 
 #. [advancement]: id=amla_default
 #: data/core/macros/amla.cfg:10
-#, fuzzy
 msgid "Max HP bonus +3, Max XP +20%"
-msgstr "בונוס לנק\"פ המרבי +"
+msgstr "נק\"פ מרבי +3, נק\"נ מרבי +20%"
 
 #. [advancement]: id=tough_{HP_ADVANCE_NUMBER}
 #: data/core/macros/amla.cfg:38
@@ -3467,45 +3495,47 @@ msgid "Max HP bonus +"
 msgstr "בונוס לנק\"פ המרבי +"
 
 #: data/core/macros/carryover-utils.cfg:9
-#, fuzzy
 msgid "Early finish bonus."
-msgstr "בונוס גמירה מוקדמת: "
+msgstr "בונוס סיום מוקדם: "
 
 #: data/core/macros/carryover-utils.cfg:12
-#, fuzzy
 msgid "No early finish bonus."
-msgstr "בונוס גמירה מוקדמת: "
+msgstr "אין בונוס סיום מוקדם."
 
 #: data/core/macros/carryover-utils.cfg:15
-#, fuzzy
 msgid "`(early finish bonus)"
-msgstr "בונוס גמירה מוקדמת: "
+msgstr "(בונוס סיום מוקדם)"
 
 #: data/core/macros/carryover-utils.cfg:18
 msgid "No gold carried over to the next scenario."
-msgstr ""
+msgstr "שום זהב לא מועבר להתקלות הבאה."
 
 #: data/core/macros/carryover-utils.cfg:22
 msgid ""
 "\n"
 "100% of finishing gold carried over to the next scenario."
 msgstr ""
+"\n"
+"100% מזהב הסיום מועבר להתקלות הבאה."
 
 #: data/core/macros/carryover-utils.cfg:26
 msgid ""
 "\n"
 "40% of finishing gold carried over to the next scenario."
 msgstr ""
+"\n"
+"40% מזהב הסיום מועבר להתקלות הבאה."
 
 #: data/core/macros/carryover-utils.cfg:30
 msgid ""
 "\n"
 "20% of finishing gold carried over to the next scenario."
 msgstr ""
+"\n"
+"20% מזהב הסיום מועבר להתקלות הבאה."
 
 #. [message]: speaker=narrator
 #: data/core/macros/items.cfg:39
-#, fuzzy
 msgid "You have come across a wishing well. What would you like to wish for?"
 msgstr ""
 "מצאת בדרכך באר משאלות.\n"
@@ -3550,15 +3580,13 @@ msgstr "אל תבקש משאלה."
 
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:148
-#, fuzzy
 msgid "Take it"
-msgstr "מערה מוארת"
+msgstr "קח חפץ."
 
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:166
-#, fuzzy
 msgid "Leave it"
-msgstr "מערה מוארת"
+msgstr "עזוב חפץ"
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:226
@@ -3590,11 +3618,11 @@ msgstr "הרעל מתפשט בעורקיי היחידה הזאת ברגע זה �
 msgid ""
 "This water will make melee weapons have the 'arcane' damage type until the "
 "end of the current scenario."
-msgstr ""
+msgstr "מים אלו יהפכו נשקי קפא\"פ לקדושים עד סוף ההתקלות."
 
 #: data/core/macros/items.cfg:290
 msgid "I am not suited to the use of this item! Let another take it."
-msgstr "אני לא מתאים לשימוש של החפץ הזה! תן למישהו אחר לקחת אותו."
+msgstr "אני לא יכול להשתמש בחפץ הזה! תן למישהו אחר לקחת אותו."
 
 #. [object]
 #: data/core/macros/items.cfg:292
@@ -3609,12 +3637,12 @@ msgstr "שיקוי כח"
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:328
 msgid "Strength is given to the drinker."
-msgstr "נותן כח לשותה."
+msgstr "כח ניתן לשותה."
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:368
 msgid "Potion of Decay"
-msgstr "שיקוי התנוונות"
+msgstr "שיקוי רקבון"
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:371
@@ -3658,7 +3686,7 @@ msgstr "רק יצורים קסומים יכולים להשתמש בחפץ כזה
 
 #: data/core/macros/items.cfg:535
 msgid "Only the mermen can use this item!"
-msgstr "רק איש-ים יכול להשתמש בחפץ זה!"
+msgstr "רק בני-ים יכול להשתמש בחפץ זה!"
 
 #: data/core/macros/items.cfg:535
 msgid "Should $unit.name pick up the trident?"
@@ -3672,13 +3700,15 @@ msgstr "קילשון סערה"
 #. [object]
 #: data/core/macros/items.cfg:540
 msgid "This trident allows a merman to shoot electric bolts at his enemies!"
-msgstr "קילשון זה יתן לאיש הים לירות ברקים חשמליים על אוייביו!"
+msgstr "קילשון זה יתן לבן הים לירות ברקים חשמליים על אוייביו!"
 
 #. [effect]: type=fire
 #: data/core/macros/items.cfg:544
 msgid "storm trident"
 msgstr "קילשון סערה"
 
+# I NEED VARIABLE MARKOV-CHAIN-SIZE AND BELOW-LINE CHARACTERS
+# FOR HEBREW NAMES (BECAUSE IN HEBREW WE USE NIKUD, NOT VOWEL LETTERS)
 #: data/core/macros/names.cfg:3
 msgid ""
 "Egar,Elch,Ga'ash,Gadé Ihn,Gakré Ohm,Galeck,Galsh,Garadin,Garchin,Gark,Garlan,"
@@ -4119,6 +4149,8 @@ msgid ""
 "The computer player might not be able to play side $side_number properly in "
 "this scenario. Side $side_number is intended to be played by a human player."
 msgstr ""
+"שחקן המחשב אולי לא יצליח לשחק את צד $side_number בהתקלות זו. צד זה נועד "
+"למשחק ע\"י שחקן אנושי."
 
 #. [time]: id=deep_underground
 #. [illuminated_time]: id=deep_underground_illum
@@ -4127,76 +4159,84 @@ msgid "Deep Underground"
 msgstr "עמוק מתחת לאדמה"
 
 #: data/core/macros/special-notes.cfg:5
-#, fuzzy
 msgid ""
 "\n"
 "\n"
 "Special Notes:"
-msgstr "מיוחד"
+msgstr ""
+"\n"
+"\n"
+"מיוחד:"
 
 #: data/core/macros/special-notes.cfg:8
 msgid ""
 " Spirits have very unusual resistances to damage, and move quite slowly over "
 "open water."
-msgstr ""
+msgstr " לרוחות יש התנגדויות מוזרות, וזזות באופן איטי מעל מים פתוחים. "
 
 #: data/core/macros/special-notes.cfg:11
 msgid ""
 " This unit's arcane attack deals tremendous damage to magical creatures, and "
 "even some to mundane creatures."
 msgstr ""
+" התקפות הקסם של יחידה זו מורידות נזק עצום ליצורים קסומים, וגם קצת לאלו "
+"הרגילים."
 
 #: data/core/macros/special-notes.cfg:14
 msgid " This unit is capable of basic healing."
-msgstr ""
+msgstr " יחידה זו יכולה לרפא באופן בסיסי. "
 
 #: data/core/macros/special-notes.cfg:17
 msgid ""
 " This unit is capable of healing those around it, and curing them of poison."
-msgstr ""
+msgstr " יחידה זו יכולה לרפא את אלו שלידיה מפגעים או מרעל. "
 
 #: data/core/macros/special-notes.cfg:20
 msgid ""
 " This unit is capable of neutralizing the effects of poison in units around "
 "it."
-msgstr ""
+msgstr " יחידה זו יכולה לרפא את אלו שלידיה מרעל. "
 
 #: data/core/macros/special-notes.cfg:23
 msgid ""
 " This unit regenerates, which allows it to heal as though always stationed "
 "in a village."
-msgstr ""
+msgstr " יחידה זו מתחדשת, ויכולה להתרפאות כאילו היא תמיד נמצאת בכפר."
 
 #: data/core/macros/special-notes.cfg:26
 msgid ""
 " The steadiness of this unit reduces damage from some attacks, but only "
 "while defending."
 msgstr ""
+" קשיחותה של יחידה זו מורידה נזק מחלק מההתקפות, אבל רק עם היחידה לא התחילה את "
+"הקרב. "
 
 #: data/core/macros/special-notes.cfg:29
 msgid ""
 " The leadership of this unit enables adjacent units of the same side to deal "
 "more damage in combat, though this only applies to units of lower level."
 msgstr ""
+" מנהיגותה של יחידה זו זה מאפשרת ליחידות סמוכות מדרגה נמוכה יותר להוריד יותר "
+"נזק בקרב."
 
 #: data/core/macros/special-notes.cfg:32
 msgid ""
 " This unit's skill at skirmishing allows it to ignore enemies' zones of "
 "control and thus move unhindered around them."
 msgstr ""
+" מיומנות יחידה זו בהסתננות מאפשרת לה להתעלם מאזורי שליטה וכף לעבור בינם בלי "
+"להאט. "
 
 #: data/core/macros/special-notes.cfg:35
 msgid " Illumination increases the lighting level in adjacent areas."
-msgstr ""
+msgstr " יחידה זו מאירה על משבצות סמוכות, וכך מגדילה את כוחם של יחידות סדר. "
 
 #: data/core/macros/special-notes.cfg:38
-#, fuzzy
 msgid ""
 " This unit can use one move to teleport between any two empty villages "
 "controlled by its side."
 msgstr ""
-"העתקה:\n"
-"יחידה זו יכולה להעתיק את עצמה בין כל שני כפרים ידידותיים תוך שימוש באחת "
+" יחידה זו יכולה לעבור בין כל שני כפרים ידידותיים ריקים תוך שימוש באחת "
 "מנקודות התנועה שלה."
 
 #: data/core/macros/special-notes.cfg:41
@@ -4204,114 +4244,123 @@ msgid ""
 " In woodlands, this unit's ambush skill renders it invisible to enemies "
 "unless it is immediately adjacent or has revealed itself by attacking."
 msgstr ""
+" ביערות, יכולת המארב של יחידה זו הופכת אותה לבלתי נראית לאויבים אלא עם הם "
+"סמוכים או עם היחידה תקפה בתור האחרון."
 
 #: data/core/macros/special-notes.cfg:44
 msgid " This unit is able to hide at night, leaving no trace of its presence."
-msgstr ""
+msgstr " יחידה זאת יכולה להתחבא בלילות בלי להשאיר סימן."
 
 #: data/core/macros/special-notes.cfg:47
 msgid ""
 " This unit can hide in villages (with the exception of water villages), and "
 "remain undetected by its enemies, except by those standing next to it."
 msgstr ""
+" יחידה זו יכולה להתחבא בכפרים (חוץ מכפרי מים), ולא להראות ע\"י אויביהם, חוץ "
+"מאלו הנמצאים ממש לידם."
 
 #: data/core/macros/special-notes.cfg:50
 msgid ""
 " This unit can move unseen in deep water, requiring no air from the surface."
-msgstr ""
+msgstr " יחידה זו יכולה ללככת על הקרקעית במים עמוקים כך שאויביה לא יראו אותה."
 
 #: data/core/macros/special-notes.cfg:53
 msgid ""
 " This unit gains 1 hitpoint added to its maximum whenever it kills a living "
 "unit."
-msgstr ""
+msgstr " יחידה זו מקבלת נק\"פ אחד יותר לנק\"פ המלא כשהי הורגת יצור חי."
 
 #: data/core/macros/special-notes.cfg:56
 msgid ""
 " Whenever its berserk attack is used, this unit continues to push the attack "
 "until either it or its enemy lies dead."
-msgstr ""
+msgstr " כשיחידה זו משתמשת בהתקפת טירוף קרב, הקרב ממשיף עד שאחת מהיחידות מתות."
 
 #: data/core/macros/special-notes.cfg:59
-#, fuzzy
 msgid ""
 " If there is an enemy of the target on the opposite side of the target while "
 "attacking it, this unit may backstab, inflicting double damage by creeping "
 "around behind that enemy."
 msgstr ""
-"תקיפה מאחור:\n"
-"התקפה זו גורמת לנזק כפול אם יש יחידה אוייבת למטרה בצידה השני של המטרה, "
-"ויחידה זו לא מנוטרלת (לדוגמה הפכה לאבן)."
+" אם יחידה זו מאגפת את המטרה עם יחידה אחרת העויינת למטרה, יחידה זו יכולה "
+"לדקור את מטרתה בגב ולהוריד נזק כפול בקרבות שנפתחו ע\"י יחידה זו."
 
 #: data/core/macros/special-notes.cfg:62
 msgid ""
 " Foes who lose their life to the plague will rise again in unlife, unless "
 "they are standing on a village."
-msgstr ""
+msgstr " אויבים שאיבדו את חייהם למגיפה יחזרו כאל-מתים עם הם לא נמצאים בכפר."
 
 #: data/core/macros/special-notes.cfg:65
 msgid ""
 " This unit is able to slow its enemies, halving their movement speed and "
 "attack damage until they end a turn."
 msgstr ""
+" יחידה זו יכולה להאט את אויביה, וכח לחצות אד תנועתם ונזק התקפותיהם עד לסוף "
+"תורם."
 
 #: data/core/macros/special-notes.cfg:68
 msgid ""
 " The ability to turn the living to stone makes this unit extremely dangerous."
-msgstr ""
+msgstr " יכולתה של יחידה זו להפוך את החיים לאבן הופכת אותה ליריב מסוכן. "
 
 #: data/core/macros/special-notes.cfg:71
 msgid ""
 " This unit's marksmanship gives it a high chance of hitting targeted "
 "enemies, but only on the attack."
 msgstr ""
+" כשרון הצלפות של יחידה זו נותן לה סיכוי גבוה לפגוע באויבים עם היא פתחה באש."
 
 #: data/core/macros/special-notes.cfg:74
 msgid ""
 " The unit has magical attacks, which always have a high chance of hitting an "
 "opponent."
-msgstr ""
+msgstr "התקפותיו של יחידה זו הינם קסומות, ולכן תמיד מקבלות סיכוי גבוה לפגוע."
 
 #: data/core/macros/special-notes.cfg:77
 msgid ""
 " The swarming attacks of this unit become less deadly whenever its members "
 "are wounded."
-msgstr ""
+msgstr " התקפת נחיל זה הופכת לחלשה יותר שחלקים ממנו נפגעים."
 
 #: data/core/macros/special-notes.cfg:80
 msgid ""
 " Using a charging attack doubles both damage dealt and received; this does "
 "not affect defensive retaliation."
 msgstr ""
+" התקפות הסתערות מכפילות גם את הנזק שהם מורידים וגם את זה שהם סופגים בזמן "
+"התקפה."
 
 #: data/core/macros/special-notes.cfg:83
 msgid ""
 " During battle, this unit can drain life from victims to renew its own "
 "health."
-msgstr ""
+msgstr " במהלך הקרב, יחידה זו יכולה לינוק חיים מקורבנותיה כדי לחדש את בריאותה."
 
 #: data/core/macros/special-notes.cfg:86
 msgid ""
 " The length of this unit's weapon allows it to strike first in melee, even "
 "in defense."
 msgstr ""
+" אורכו של הנשק שיחידה זו נושאת נותן לה את המכה הראשונה, אפילו בזמן הגנה."
 
 #: data/core/macros/special-notes.cfg:89
 msgid ""
 " The victims of this unit's poison will continually take damage until they "
 "can be cured in town or by a unit which cures."
 msgstr ""
+" הנפגעים מהרעל שיחידה זו נושאת יפגעו בצורה מתמשכת עד שיגיעו לכפר או ליחידה "
+"המסוגלת לרפאות רעלים."
 
 #. [trait]: id=loyal
 #: data/core/macros/traits.cfg:8
 msgid "loyal"
-msgstr "נאמנה"
+msgstr "נאמן"
 
 #. [trait]: id=loyal
 #: data/core/macros/traits.cfg:9
-#, fuzzy
 msgid "female^loyal"
-msgstr "פורעת חוק"
+msgstr "נאמנה"
 
 #. [trait]: id=loyal
 #: data/core/macros/traits.cfg:10
@@ -4321,155 +4370,138 @@ msgstr "אפס אחזקה"
 #. [trait]: id=undead
 #: data/core/macros/traits.cfg:22
 msgid "undead"
-msgstr "אל-מתה"
+msgstr "אל-מת"
 
 #. [trait]: id=undead
 #: data/core/macros/traits.cfg:23
-#, fuzzy
 msgid "female^undead"
-msgstr "נוכלת"
+msgstr "אל-מתה"
 
 #. [trait]: id=undead
 #. [trait]: id=mechanical
 #: data/core/macros/traits.cfg:24 data/core/macros/traits.cfg:39
-#, fuzzy
 msgid "Immune to drain, poison and plague"
-msgstr "עמידה לרעל"
+msgstr "חסינה לרעל, יניקה ומגיפה"
 
 #. [trait]: id=mechanical
 #: data/core/macros/traits.cfg:37
-#, fuzzy
 msgid "mechanical"
-msgstr "קסום"
+msgstr "מכני"
 
 #. [trait]: id=mechanical
 #: data/core/macros/traits.cfg:38
-#, fuzzy
 msgid "female^mechanical"
-msgstr "גנבת"
+msgstr "מכני"
 
 #. [trait]: id=strong
 #: data/core/macros/traits.cfg:51
 msgid "strong"
-msgstr "חזקה"
+msgstr "חזק"
 
 #. [trait]: id=strong
 #: data/core/macros/traits.cfg:52
-#, fuzzy
 msgid "female^strong"
-msgstr "נוכלת"
+msgstr "חזקה"
 
 #. [trait]: id=dextrous
 #: data/core/macros/traits.cfg:69
 msgid "dextrous"
-msgstr "מדייקת"
+msgstr "זריז"
 
 #. [trait]: id=dextrous
 #: data/core/macros/traits.cfg:70
-#, fuzzy
 msgid "female^dextrous"
-msgstr "מדייקת"
+msgstr "זריזה"
 
 #. [trait]: id=quick
 #: data/core/macros/traits.cfg:83
 msgid "quick"
-msgstr "מהירה"
+msgstr "מהיר"
 
 #. [trait]: id=quick
 #: data/core/macros/traits.cfg:84
-#, fuzzy
 msgid "female^quick"
-msgstr "נסיכה"
+msgstr "מהירה"
 
 #. [trait]: id=intelligent
 #: data/core/macros/traits.cfg:100
 msgid "intelligent"
-msgstr "חכמה"
+msgstr "חכם"
 
 #. [trait]: id=intelligent
 #: data/core/macros/traits.cfg:101
-#, fuzzy
 msgid "female^intelligent"
 msgstr "חכמה"
 
 #. [trait]: id=resilient
 #: data/core/macros/traits.cfg:113
 msgid "resilient"
-msgstr "עמידה"
+msgstr "עמיד"
 
 #. [trait]: id=resilient
 #: data/core/macros/traits.cfg:114
-#, fuzzy
 msgid "female^resilient"
 msgstr "עמידה"
 
 #. [trait]: id=healthy
 #: data/core/macros/traits.cfg:132
 msgid "healthy"
-msgstr ""
+msgstr "בריא"
 
 #. [trait]: id=healthy
 #: data/core/macros/traits.cfg:133
-#, fuzzy
 msgid "female^healthy"
-msgstr "גנבת"
+msgstr "בריאה"
 
 #. [trait]: id=healthy
 #: data/core/macros/traits.cfg:134
 msgid "Can rest while moving, takes a quarter less poison damage"
-msgstr ""
+msgstr "יכול לנוך בזמן הליכה, מקבל רק 6 (במקום 8) נזק/תור מרעל."
 
 #. [trait]: id=fearless
 #: data/core/macros/traits.cfg:151 data/core/macros/traits.cfg:164
-#, fuzzy
 msgid "fearless"
-msgstr "נסיכה"
+msgstr "חסר פחד"
 
 #. [trait]: id=fearless
 #: data/core/macros/traits.cfg:152 data/core/macros/traits.cfg:165
-#, fuzzy
 msgid "female^fearless"
-msgstr "נסיכה"
+msgstr "חסרת פחד"
 
 #. [trait]: id=fearless
 #: data/core/macros/traits.cfg:153 data/core/macros/traits.cfg:166
 msgid "Fights normally during unfavorable times of day/night"
-msgstr ""
+msgstr "לא שופג הקטנות לנזק מקרב בזמן (אור/חושך) גרוע."
 
 #. [trait]: id=weak
 #: data/core/macros/traits.cfg:174
 msgid "weak"
-msgstr ""
+msgstr "חלש"
 
 #. [trait]: id=weak
 #: data/core/macros/traits.cfg:175
-#, fuzzy
 msgid "female^weak"
-msgstr "נוכלת"
+msgstr "חלשה"
 
 #. [trait]: id=slow
 #: data/core/macros/traits.cfg:192
-#, fuzzy
 msgid "slow"
-msgstr "איטיות"
+msgstr "איטי"
 
 #. [trait]: id=slow
 #: data/core/macros/traits.cfg:193
-#, fuzzy
 msgid "female^slow"
-msgstr "פורעת חוק"
+msgstr "איטית"
 
 #. [trait]: id=dim
 #: data/core/macros/traits.cfg:209
-#, fuzzy
 msgid "dim"
-msgstr "בינוני"
+msgstr "טיפש"
 
 #. [trait]: id=dim
 #: data/core/macros/traits.cfg:210
-#, fuzzy
 msgid "female^dim"
-msgstr "נסיכה"
+msgstr "טיפשה"
 
 #. [color_range]: id=red
 #. [color_range]: id=1
@@ -4504,9 +4536,8 @@ msgstr "כתום"
 #. [color_range]: id=black
 #. [color_range]: id=5
 #: data/core/team-colors.cfg:44 data/core/team-colors.cfg:101
-#, fuzzy
 msgid "Black"
-msgstr "< חזרה "
+msgstr "שחור"
 
 #. [color_range]: id=white
 #. [color_range]: id=8
@@ -4523,45 +4554,39 @@ msgstr "חום"
 #. [color_range]: id=teal
 #. [color_range]: id=9
 #: data/core/team-colors.cfg:62 data/core/team-colors.cfg:119
-#, fuzzy
 msgid "Teal"
-msgstr "צוות"
+msgstr "טורקיז כהה"
 
 #. [race]: id=bats, description=
 #: data/core/units.cfg:43
-#, fuzzy
 msgid "race^Bat"
-msgstr "בני-אדם"
+msgstr "עטלף"
 
 #. [race]: id=bats, description=
 #: data/core/units.cfg:44
-#, fuzzy
 msgid "race+female^Bat"
-msgstr "בני-אדם"
+msgstr "עטלפית"
 
 #. [race]: id=bats, description=
 #: data/core/units.cfg:45
-#, fuzzy
 msgid "race^Bats"
-msgstr "בני-אדם"
+msgstr "עטלפים"
 
 #. [race]: id=drake
 #: data/core/units.cfg:53
-#, fuzzy
 msgid "race^Drake"
-msgstr "טרול"
+msgstr "דרקודם"
 
 #. [race]: id=drake
 #: data/core/units.cfg:54
-#, fuzzy
 msgid "race+female^Drake"
-msgstr "טרול"
+msgstr "דרקודמית"
 
+# TODO: RACE STATS
 #. [race]: id=drake
 #: data/core/units.cfg:55
-#, fuzzy
 msgid "race^Drakes"
-msgstr "טרול"
+msgstr "דרקודמים"
 
 #. [race]: id=drake
 #: data/core/units.cfg:68
@@ -4632,20 +4657,18 @@ msgstr ""
 
 #. [race]: id=dwarf
 #: data/core/units.cfg:88
-#, fuzzy
 msgid "race^Dwarf"
-msgstr "טרול"
+msgstr "גמד"
 
 #. [race]: id=dwarf
 #: data/core/units.cfg:89
-#, fuzzy
 msgid "race+female^Dwarf"
-msgstr "טרול"
+msgstr "גמדה"
 
 #. [race]: id=dwarf
 #: data/core/units.cfg:90
 msgid "race^Dwarves"
-msgstr ""
+msgstr "גמדים"
 
 #. [race]: id=dwarf
 #: data/core/units.cfg:95
@@ -4699,21 +4722,18 @@ msgstr ""
 
 #. [race]: id=elf
 #: data/core/units.cfg:107
-#, fuzzy
 msgid "race^Elf"
-msgstr "טרול"
+msgstr "אלף"
 
 #. [race]: id=elf
 #: data/core/units.cfg:108
-#, fuzzy
 msgid "race+female^Elf"
-msgstr "טרול"
+msgstr "אלפית"
 
 #. [race]: id=elf
 #: data/core/units.cfg:109
-#, fuzzy
 msgid "race^Elves"
-msgstr "טרול"
+msgstr "אלפים"
 
 #. [race]: id=elf
 #: data/core/units.cfg:119
@@ -4757,54 +4777,46 @@ msgstr ""
 
 #. [race]: id=goblin, description=
 #: data/core/units.cfg:129
-#, fuzzy
 msgid "race^Goblin"
-msgstr "טרול"
+msgstr "גובלין"
 
 #. [race]: id=goblin, description=
 #: data/core/units.cfg:130
-#, fuzzy
 msgid "race+female^Goblin"
-msgstr "טרול"
+msgstr "גובלינית"
 
 #. [race]: id=goblin, description=
 #: data/core/units.cfg:131
 msgid "race^Goblins"
-msgstr ""
+msgstr "גובלינים"
 
 #. [race]: id=gryphon, description=
 #: data/core/units.cfg:144
-#, fuzzy
 msgid "race^Gryphon"
-msgstr "טרול"
+msgstr "גריפון"
 
 #. [race]: id=gryphon, description=
 #: data/core/units.cfg:145
-#, fuzzy
 msgid "race+female^Gryphon"
-msgstr "טרול"
+msgstr "גריפון"
 
 #. [race]: id=gryphon, description=
 #: data/core/units.cfg:146
-#, fuzzy
 msgid "race^Gryphons"
-msgstr "טרול"
+msgstr "גריפונים"
 
 #. [race]: id=human
 #: data/core/units.cfg:161
-#, fuzzy
 msgid "race^Human"
-msgstr "בני-אדם"
+msgstr "בן-אדם"
 
 #. [race]: id=human
 #: data/core/units.cfg:162
-#, fuzzy
 msgid "race+female^Human"
-msgstr "בני-אדם"
+msgstr "בת-אדם"
 
 #. [race]: id=human
 #: data/core/units.cfg:163
-#, fuzzy
 msgid "race^Humans"
 msgstr "בני-אדם"
 
@@ -4852,112 +4864,98 @@ msgstr ""
 
 #. [race]: id=lizard, description=
 #: data/core/units.cfg:178
-#, fuzzy
 msgid "race^Saurian"
-msgstr "אל-מתים"
+msgstr "לטאיש"
 
 #. [race]: id=lizard, description=
 #: data/core/units.cfg:179
-#, fuzzy
 msgid "race+female^Saurian"
-msgstr "אל-מתים"
+msgstr "לטאשה"
 
 #. [race]: id=lizard, description=
 #: data/core/units.cfg:180
-#, fuzzy
 msgid "race^Saurians"
-msgstr "אל-מתים"
+msgstr "לטאנשים"
 
 #. [race]: id=mechanical, description=
 #: data/core/units.cfg:189
 msgid "race^Mechanical"
-msgstr ""
+msgstr "מכני"
 
 #. [race]: id=mechanical, description=
 #: data/core/units.cfg:190
-#, fuzzy
 msgid "race+plural^Mechanical"
-msgstr "גנבת"
+msgstr "מכניים"
 
 #. [race]: id=merman, description=
 #: data/core/units.cfg:200
-#, fuzzy
 msgid "race^Merman"
-msgstr "בני-אדם"
+msgstr "בן-ים"
 
 #. [race]: id=merman, description=
 #: data/core/units.cfg:201
-#, fuzzy
 msgid "race^Mermaid"
-msgstr "בני-אדם"
+msgstr "בת-ים"
 
 #. [race]: id=merman, description=
 #: data/core/units.cfg:202
 msgid "race^Mermen"
-msgstr ""
+msgstr "בני-ים"
 
 #. [race]: id=monster, description=
 #: data/core/units.cfg:210
-#, fuzzy
 msgid "race^Monster"
-msgstr "טרול"
+msgstr "מפלצת"
 
 #. [race]: id=monster, description=
 #: data/core/units.cfg:211
 msgid "race^Monsters"
-msgstr ""
+msgstr "מפלצות"
 
 #. [race]: id=naga, description=
 #: data/core/units.cfg:219
-#, fuzzy
 msgid "race^Naga"
-msgstr "בני-אדם"
+msgstr "נאגה"
 
 #. [race]: id=naga, description=
 #: data/core/units.cfg:220
-#, fuzzy
 msgid "race^Nagani"
-msgstr "בני-אדם"
+msgstr "נאגיני"
 
 #. [race]: id=naga, description=
 #: data/core/units.cfg:221
 msgid "race^Nagas"
-msgstr ""
+msgstr "נאגות"
 
 #. [race]: id=ogre, description=
 #: data/core/units.cfg:229
-#, fuzzy
 msgid "race^Ogre"
-msgstr "טרול"
+msgstr "עוג"
 
 #. [race]: id=ogre, description=
 #: data/core/units.cfg:230
-#, fuzzy
 msgid "race+female^Ogre"
-msgstr "טרול"
+msgstr "עוגית"
 
 #. [race]: id=ogre, description=
 #: data/core/units.cfg:231
 msgid "race^Ogres"
-msgstr ""
+msgstr "עוגים"
 
 #. [race]: id=orc
 #: data/core/units.cfg:240
-#, fuzzy
 msgid "race^Orc"
-msgstr "טרול"
+msgstr "אורק"
 
 #. [race]: id=orc
 #: data/core/units.cfg:241
-#, fuzzy
 msgid "race+female^Orc"
-msgstr "טרול"
+msgstr "אורקית"
 
 #. [race]: id=orc
 #: data/core/units.cfg:242
-#, fuzzy
 msgid "race^Orcs"
-msgstr "טרול"
+msgstr "אורקים"
 
 #. [race]: id=orc
 #: data/core/units.cfg:252
@@ -5021,21 +5019,18 @@ msgstr ""
 
 #. [race]: id=troll
 #: data/core/units.cfg:259
-#, fuzzy
 msgid "race^Troll"
 msgstr "טרול"
 
 #. [race]: id=troll
 #: data/core/units.cfg:260
-#, fuzzy
 msgid "race+female^Troll"
-msgstr "טרול"
+msgstr "טרולית"
 
 #. [race]: id=troll
 #: data/core/units.cfg:261
-#, fuzzy
 msgid "race^Trolls"
-msgstr "טרול"
+msgstr "טרולים"
 
 #. [race]: id=troll
 #: data/core/units.cfg:267
@@ -5079,17 +5074,15 @@ msgstr ""
 #. [race]: id=undead
 #: data/core/units.cfg:281
 msgid "race^Undead"
-msgstr "אל-מתים"
+msgstr "אל-מת"
 
 #. [race]: id=undead
 #: data/core/units.cfg:282
-#, fuzzy
 msgid "race+female^Undead"
-msgstr "אל-מתים"
+msgstr "אל-מתה"
 
 #. [race]: id=undead
 #: data/core/units.cfg:283
-#, fuzzy
 msgid "race+plural^Undead"
 msgstr "אל-מתים"
 
@@ -5124,43 +5117,37 @@ msgstr ""
 
 #. [race]: id=wolf, description=
 #: data/core/units.cfg:297
-#, fuzzy
 msgid "race^Wolf"
-msgstr "טרול"
+msgstr "זאב"
 
 #. [race]: id=wolf, description=
 #: data/core/units.cfg:298
-#, fuzzy
 msgid "race^Wolves"
-msgstr "טרול"
+msgstr "זאבים"
 
 #. [race]: id=wose, description=
 #: data/core/units.cfg:307
-#, fuzzy
 msgid "race^Wose"
-msgstr "טרול"
+msgstr "ווס"
 
 #. [race]: id=wose, description=
 #: data/core/units.cfg:308
-#, fuzzy
 msgid "race^Woses"
-msgstr "טרול"
+msgstr "ווסים"
 
 #. [server]
 #: data/game_config.cfg:4
-#, fuzzy
 msgid "Official Wesnoth Server"
-msgstr "הצטרף לשרת הרשמי"
+msgstr "שרת ווסנות' הרשמי"
 
 #. [server]
 #: data/game_config.cfg:8 data/game_config.cfg:12
 msgid "Alternate Wesnoth Server"
-msgstr ""
+msgstr "שרת ווסנות' אחר"
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/default/window/campaign_dialog.cfg:32 src/game.cpp:1097
-#, fuzzy
 msgid "Play a campaign"
 msgstr "מערכה"
 
@@ -5197,7 +5184,7 @@ msgstr "קשה"
 #. [language]
 #: data/hardwired/english.cfg:6
 msgid "Nightmare"
-msgstr ""
+msgstr "סיוט"
 
 #. [language]
 #: data/hardwired/english.cfg:11
@@ -5237,7 +5224,7 @@ msgstr ""
 #. [language]
 #: data/hardwired/english.cfg:19
 msgid "$name's Bridge,$name's Crossing"
-msgstr "גשר $name,מעברת $name"
+msgstr "גשר $name,מעבר $name"
 
 #. [language]
 #: data/hardwired/english.cfg:20
@@ -5247,7 +5234,7 @@ msgstr "דרך $name,מעבר $name,המעבר של $name"
 #. [language]
 #: data/hardwired/english.cfg:21
 msgid "$name River,River $name"
-msgstr "$name נהר,נהר $name"
+msgstr "$name נהר,הנהר ה $name"
 
 #. [language]
 #: data/hardwired/english.cfg:22
@@ -5303,7 +5290,7 @@ msgstr "כפר $name,מושב $name,עיירת $name,הר $name,הר $name,צו�
 #. [language]
 #: data/hardwired/english.cfg:34
 msgid "melee"
-msgstr "קפ\"פ"
+msgstr "קפא\"פ"
 
 #. [language]
 #: data/hardwired/english.cfg:35
@@ -5323,7 +5310,7 @@ msgstr "חודר"
 #. [language]
 #: data/hardwired/english.cfg:40
 msgid "impact"
-msgstr "מכה"
+msgstr "מוחץ"
 
 #. [language]
 #: data/hardwired/english.cfg:41
@@ -5333,13 +5320,12 @@ msgstr "אש"
 #. [language]
 #: data/hardwired/english.cfg:42
 msgid "cold"
-msgstr "קר"
+msgstr "קור"
 
 #. [language]
 #: data/hardwired/english.cfg:43
-#, fuzzy
 msgid "arcane"
-msgstr "טווח רחוק"
+msgstr "קסום"
 
 #. [tip]
 #: data/hardwired/tips.cfg:3
@@ -5353,7 +5339,7 @@ msgstr ""
 #. [tip]
 #: data/hardwired/tips.cfg:4
 msgid "Wesnoth Developers"
-msgstr ""
+msgstr "צוות הפיתוח"
 
 #. [tip]
 #: data/hardwired/tips.cfg:7
@@ -5362,11 +5348,13 @@ msgid ""
 "if you coddle him too much he may be at too low a level to survive future "
 "battles."
 msgstr ""
+"אל תשכח לאמן את מנהיגך! אתה צריך לשמור עליו בטוח, אבל עם תשכח לאמנו אתה תהיה "
+"בצרה עם יהיה חור קטנטן בהגנה עליו..."
 
 #. [tip]
 #: data/hardwired/tips.cfg:8 data/hardwired/tips.cfg:136
 msgid "- Great Mage Delfador, 516YW"
-msgstr ""
+msgstr "- דלפדור הקוסם הדגול, 516 לווסנות'"
 
 #. [tip]
 #: data/hardwired/tips.cfg:11
@@ -5376,6 +5364,9 @@ msgid ""
 "where they are). Use this to make sure the enemy can't reach your weak or "
 "injured units on his next turn."
 msgstr ""
+"בתפריט 'פעולות' אתה יכול לסמן את 'Show Enemy Moves' כדי לסמן את כל המשבצות "
+"שכלי אויב שבחרת יכול לזוז (כל עוד כליך ישארו במקומם). דבר זה שימושי לבדוק עם "
+"האויב יכול להגיע לכלי פגיע ולחסום אותו עם זה המצב."
 
 #. [tip]
 #: data/hardwired/tips.cfg:12 data/hardwired/tips.cfg:24
@@ -5394,7 +5385,7 @@ msgstr ""
 #: data/hardwired/tips.cfg:200 data/hardwired/tips.cfg:204
 #: data/hardwired/tips.cfg:209
 msgid "- The Wesnoth Tactical Guide"
-msgstr ""
+msgstr "- ספר טקטיקת ווסנות'"
 
 #. [tip]
 #: data/hardwired/tips.cfg:15
@@ -5403,11 +5394,13 @@ msgid ""
 "Early in a campaign, try to give killing blows to these units so you can get "
 "some high-level troops sooner."
 msgstr ""
+"יחידות עם םכשרון החכמה צריכים פחות ניסיון כדי לעלות רמה. מוקדם במערכה, נסה "
+"לתת יותר ניסיון לכיחידות אלו כדי לקבל לוחמים גבוהי-דרגה מוקדם יותר."
 
 #. [tip]
 #: data/hardwired/tips.cfg:16
 msgid "- King Konrad, 536YW"
-msgstr ""
+msgstr "- המלך קונרד, 536 לווסנות'"
 
 #. [tip]
 #: data/hardwired/tips.cfg:19
@@ -5416,11 +5409,13 @@ msgid ""
 "By placing two units on opposite sides of an enemy, their zones of control "
 "will restrict it to one hex of movement in any direction."
 msgstr ""
+"טקטיקת האיגוף היא חזקה מאוד, בייחוד נגד יריבים חזקים. עם 2 יחידות מאגפות "
+"יחידה לא מסתננת הזורי השליטה שלהם מגבילים את המטרה למשבצת אחת בתור."
 
 #. [tip]
 #: data/hardwired/tips.cfg:20 data/hardwired/tips.cfg:128
 msgid "- Memoirs of Gweddry, 627YW"
-msgstr ""
+msgstr "- הביוגרפיה של גוודי, 627 לווסנות'"
 
 #. [tip]
 #: data/hardwired/tips.cfg:23
@@ -5429,6 +5424,8 @@ msgid ""
 "castle tile. That will let you chose which hex you put a new unit in. "
 "Placing units wisely can sometimes let you reach a village a turn earlier."
 msgstr ""
+"אתה יכול לגייס ולהחזיר ע\"י כפתור ימני על משבצת הטירה. זה יאםשר לך לבחור "
+"באיזו משבצת טירה לשים את הכלי החדש ולהגיע לכפר תור קודם. "
 
 #. [tip]
 #: data/hardwired/tips.cfg:27
@@ -5437,6 +5434,8 @@ msgid ""
 "'Status Table' will let you know how your enemies are doing, and how you are "
 "doing in comparison."
 msgstr ""
+"יש כמה מסכי סיכום נחמדים בתפריט הראשי: לדוגמא, טבלת המצב תראה לך את יחס "
+"הכוחות בין הצדדים."
 
 #. [tip]
 #: data/hardwired/tips.cfg:31
@@ -5445,11 +5444,15 @@ msgid ""
 "important when moving through difficult terrain such as water or caves. It "
 "can make the difference between being able to move one hex or two."
 msgstr ""
+"יחידות מהירות זזות משבצת אחת יותר בתור. זה יכות להיות חשוב מאוד בשטחים קשים "
+"כגון הרים וגבעות. לדוגמא: רוב יחידות בני-האדם והאלפים (מהירות 5, 3 מהירות "
+"למשבצת הרים) יכולות לזוז רק משבצת הר אחת/תור, אבל יחידות מהירות (מהירות 6) "
+"יכולות לזוז 2, הכפלה של קצב המהירות!"
 
 #. [tip]
 #: data/hardwired/tips.cfg:32 data/hardwired/tips.cfg:104
 msgid "- High Lord Kalenz, 470YW"
-msgstr ""
+msgstr "- קלנז הלורד הגבוה, 470 לווסנות'"
 
 #. [tip]
 #: data/hardwired/tips.cfg:35
@@ -5457,6 +5460,8 @@ msgid ""
 "After you have played a few scenarios, read the 'Gameplay' section in the "
 "help screen carefully. Details become important as scenarios get harder!"
 msgstr ""
+"אחרי שעברת כמה התקלויות, קרא את חוקי המשחק שוב. חוקים שהיו נסתרים קודם "
+"הופכים יותר חשובים שרמת הקושי עולה."
 
 #. [tip]
 #: data/hardwired/tips.cfg:39
@@ -5465,6 +5470,7 @@ msgid ""
 "level units that are about to level up than with those same units at a "
 "higher level."
 msgstr ""
+"בדרך-כלל עדיף להתחיל התקלות עם כלים שכמעט עלו רמה מאשר אלה שהרגע עלו רמה."
 
 #. [tip]
 #: data/hardwired/tips.cfg:43
@@ -5472,16 +5478,16 @@ msgid ""
 "On www.wesnoth.org you can find strategy guides, technical support, the "
 "history of Wesnoth, and much more."
 msgstr ""
+"ב www.wesnoth.org תוכל למצוא עוד טיפים, תמיכה טכנית, את ההיסטוריה של "
+"ווסנות', ועוד (הערה: האתר באנגלית)."
 
 #. [tip]
 #: data/hardwired/tips.cfg:44
-#, fuzzy
 msgid "- The Wesnoth Community"
-msgstr "הדרכה"
+msgstr "- מפתחי המשחק"
 
 #. [tip]
 #: data/hardwired/tips.cfg:47
-#, fuzzy
 msgid ""
 "Lawful units fight better by day, and chaotic units fight better at night. "
 "Neutral units are unaffected by the time of day."
@@ -5492,19 +5498,19 @@ msgstr ""
 #. [tip]
 #: data/hardwired/tips.cfg:48
 msgid "- Royal Compendium of Battle Terminology - Volume II, 212YW"
-msgstr ""
+msgstr "- האנציקלופדיה המלכותית של מונחי קרב - כרך 2, 212 לווסנות'"
 
 #. [tip]
 #: data/hardwired/tips.cfg:51
 msgid ""
 "An otherwise sound plan can fail if you attack at the wrong time of day."
-msgstr ""
+msgstr "תוכנית שאמורה לעבוד בהצלחה עלולה להיכשל עם היא מבוצעת בזמן הלא נכון."
 
 #. [tip]
 #: data/hardwired/tips.cfg:52 data/hardwired/tips.cfg:76
 #: data/hardwired/tips.cfg:124 data/hardwired/tips.cfg:132
 msgid "- Handbook of Tactical Analysis Volume I - Haldric II, 42YW"
-msgstr ""
+msgstr "- מדריך הטקטיקות - הלדריק השני, 42 לווסנות'"
 
 #. [tip]
 #: data/hardwired/tips.cfg:55
@@ -5514,6 +5520,9 @@ msgid ""
 "cost. Try to choose scouts that can easily move across the surrounding "
 "terrain, because units see as far as they can move in one turn."
 msgstr ""
+"עם אתה משחק עם 'הסתרה' או 'ערפל קרב', אתה לא יוע מי הם אויבך. במקרה זה, "
+"סיירים לטווח רחוק שווים את מחירם. נסה לבחור את אלו המתאימים לשטח, מכיוון "
+"שיחידות רואות למרחק שהם יכולות ללכת בתור הבא עם יחידות אויב לא היו על המפה."
 
 #. [tip]
 #: data/hardwired/tips.cfg:59
@@ -5524,7 +5533,7 @@ msgid ""
 "Right-click on a unit and select 'Unit Description' to see which attacks it "
 "is resistant to, and which will affect it the most."
 msgstr ""
-"ישנם 6 סוגי התקפות: חדירה, להב, מכה, אש, קור וקדושה. ליחידות שונות יש חולשה "
+"ישנם 6 סוגי התקפות: חדירה, להב, מחץ, אש, קור וקסם. ליחידות שונות יש חולשה "
 "כנגד סוגי התקפה שונים. לחיצה ימנית על היחידה, ואז בחר 'תאור יחידה', ואז לחץ "
 "על 'עמידות' כדי לראות כמה עמידה יחידה כנגד סוגי התקפה שונים."
 
@@ -5549,21 +5558,23 @@ msgid ""
 "not be removed unless the unit regenerates, or begins a turn in a village or "
 "next to a unit with the 'Cures' ability."
 msgstr ""
+"יחידות מורעלות יאבדו 8 נק\"פ בתוח עד שישאר להם נקודת פגיעה אחת. הם ישארו "
+"במצב זה עד שהרעל יוסר. רוב המרפאים יכולים לעצור את איבוד הנק\"פ במקום "
+"לרפאות, אבל הרעל לא יוסר אלא עם היחידה מתחדשת, או מתחילה את התור בכפר או ליד "
+"יחידה המסוגלת לרפא רעל."
 
 #. [tip]
 #: data/hardwired/tips.cfg:71
-#, fuzzy
 msgid ""
 "You can use units from a previous scenario by selecting 'Recall' in the "
 "'Actions' menu. By recalling the same units over and over, you can build up "
 "a powerful and experienced army."
 msgstr ""
-"אתה יכול להשתמש ביחידות מתרחישים קודמים על ידי בחירת 'החזרה' מתפריט המשחק. "
+"אתה יכול להשתמש ביחידות מהתקלויות קודמות על ידי בחירת 'החזרה' מתפריט המשחק. "
 "על ידי החזרת אותה יחידה שוב שוב, אתה יכול לבנות צבא חזק ומנוסה."
 
 #. [tip]
 #: data/hardwired/tips.cfg:75
-#, fuzzy
 msgid ""
 "Units of level one and higher have a 'Zone of Control' in each of the hexes "
 "next to them. If a unit moves into an enemy's zone of control, it may not "
@@ -5577,7 +5588,6 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:79
-#, fuzzy
 msgid ""
 "The chance to hit a unit usually depends on how well that unit can defend "
 "itself in the terrain in which it is standing. However, magical attacks "
@@ -5585,13 +5595,13 @@ msgid ""
 "always have at least 60% chance to hit when attacking on their turn."
 msgstr ""
 "הסיכוי לפגוע ביחידה תלוי בדרך כלל בכמה טוב יכולה היחידה להגן על עצמה בסוג "
-"השטח עליו היא עומדת, אולם להתקפות קסומות יד 70% לפגוע גם בהתקפה וגם בהגנה, "
-"ולהתקפות צלפים יש לפחות 60% לפגוע בזמן התקפה."
+"השטח עליו היא עומדת, אולם להתקפות קסומות יש 70% לפגוע גם בהתקפה וגם בהגנה, "
+"ולהתקפות צליפה יש לפחות 60% לפגוע בזמן התקפה."
 
 #. [tip]
 #: data/hardwired/tips.cfg:80
 msgid "- Handbook of Tactical Analysis Volume II - Haldric II, 43YW"
-msgstr ""
+msgstr "- מדריך הטקטיקה כרך 2 - הלדריק השני, 43 לווסנות' "
 
 #. [tip]
 #: data/hardwired/tips.cfg:83
@@ -5599,11 +5609,11 @@ msgstr ""
 msgid ""
 "Units stationed in villages will either heal eight hitpoints at the "
 "beginning of their turn, or will recover from poisoning."
-msgstr "יחידות שמוצבות בכפרים יתרפאו ב 8 נקודות םגיעה בתחילת תורן."
+msgstr ""
+"יחידות שמוצבות בכפרים יתרפאו ב 8 נקודות פגיעה אן יתרפאו מרעל בתחילת תורן."
 
 #. [tip]
 #: data/hardwired/tips.cfg:87
-#, fuzzy
 msgid ""
 "Don't move an injured unit if you don't have to - let it rest. If a unit "
 "does not move or attack, it will recover two hitpoints at the beginning of "
@@ -5614,7 +5624,6 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:91
-#, fuzzy
 msgid ""
 "Foot units tend to defend better in villages and castles than in other "
 "terrain types, while most mounted units do not gain any defensive advantages "
@@ -5626,49 +5635,45 @@ msgstr ""
 #. [tip]
 #: data/hardwired/tips.cfg:92 data/hardwired/tips.cfg:172
 msgid "- Sir Kaylan, 498YW"
-msgstr ""
+msgstr "- סיר קיילין, 498 לווסנות'"
 
 #. [tip]
 #: data/hardwired/tips.cfg:95
-#, fuzzy
 msgid ""
 "Horse-based units are generally resistant to attacks with bladed or impact "
 "weapons, but are vulnerable to attacks with piercing weapons, including bows "
 "and spears."
 msgstr ""
 "יחידות שמבוססות על סוסים, עמידות באופן כללי נגד התקפות עם נשקי להב או מכה, "
-"אבל פגיעות להתקפות עם נשק חודר, כולל קשתות וחניתות."
+"אבל פגיעות להתקפות עם נשק חודר, כגון קשתות וחניתות."
 
 #. [tip]
 #: data/hardwired/tips.cfg:96
 msgid "- Sir Kaylan, 502YW"
-msgstr ""
+msgstr "- סיר קיילין, 502 לווסנות'"
 
 #. [tip]
 #: data/hardwired/tips.cfg:99
-#, fuzzy
 msgid ""
 "Inflicting the killing blow on an enemy unit is the best way to gain "
 "experience. Units killing an enemy will gain eight experience points for "
 "every level of the unit they kill, or four experience points for a zero-"
 "level opponent."
 msgstr ""
-"הנחתת מכת המוות על יחידת אוייב היא הדרך הטובה ביותר לקבלת ניסיון. יחידות "
+"הנחתת מכת המוות על יחידת אויב היא הדרך הטובה ביותר לקבלת ניסיון. יחידות "
 "שהורגות אוייב יקבלו 8 נקודות ניסיון לכל רמה של היחידה שהן הרגו."
 
 #. [tip]
 #: data/hardwired/tips.cfg:103
-#, fuzzy
 msgid ""
 "Elvish units move and fight well in forest. Dwarvish units move and fight "
 "well in hills, mountains and caves."
 msgstr ""
 "יחידות אלפיות נעות ונלחמות בצורה מאד טובה ביער. יחידות גמדיות נעות ונלחמות "
-"בצורה מאד טובה בהרים וגבעות."
+"בצורה מאד טובה בהרים, בגבעות ובמערות."
 
 #. [tip]
 #: data/hardwired/tips.cfg:107
-#, fuzzy
 msgid ""
 "Patience is often key. Rather than attacking in bad conditions or with few "
 "troops, wait for better conditions and then attack."
@@ -5694,7 +5699,7 @@ msgstr "אל תפחד לסגת ולהתארגן מחדש, לעיתים קרוב�
 #. [tip]
 #: data/hardwired/tips.cfg:116
 msgid "- Meneldur, 123YW"
-msgstr ""
+msgstr "- מלנדור, 123 לווסנות'"
 
 #. [tip]
 #: data/hardwired/tips.cfg:119
@@ -5705,8 +5710,8 @@ msgid ""
 "villages and waiting for turns to run out."
 msgstr ""
 "ברוב המערכות תקבל זהב כבונוס על סיום מוקדם, בתלות במספר הכפרים במפה, ומספר "
-"התורות שסיימת מוקדם. אתה תמיד תקבל יותר זהב בדרך זו מאשר על ידי כבישת כפרים "
-"והמתנה עד סיום התורות."
+"התורים שסיימת מוקדם. אתה תמיד תקבל יותר זהב בדרך זו מאשר על ידי כבישת כפרים "
+"והמתנה עד סיום התורים."
 
 #. [tip]
 #: data/hardwired/tips.cfg:123
@@ -5722,22 +5727,19 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:127
-#, fuzzy
 msgid ""
 "Skeletons are resistant to piercing, bladed and cold-based attacks but are "
 "vulnerable to impact, fire, and arcane attacks."
-msgstr ""
-"שלדים עמידים כנגד התקפות חדירה ולהב, אבל פגיעים להתקפות מכה, אש וקדושה."
+msgstr "שלדים עמידים כנגד התקפות חדירה ולהב, אבל פגיעים להתקפות מחץ, אש וקסם."
 
 #. [tip]
 #: data/hardwired/tips.cfg:131
-#, fuzzy
 msgid ""
 "Units with the 'leadership' ability help lower-level adjacent units on the "
 "same side fight better. Use leaders to help your other units level up faster."
 msgstr ""
-"יחידות עם יכולת הנהגה גורמות ליחידות סמוכות מאותו צד שברמה נמוכה יותר להלחם "
-"טוב יותר."
+"יחידות עם יכולת ה'מנהיגות' גורמות ליחידות סמוכות מאותו צד שברמה נמוכה יותר "
+"להלחם טוב יותר. השתמש בהם כדי לאפשר לנמוכי-הרמה בשליטתך לעלות דרגה מהר יותר. "
 
 #. [tip]
 #: data/hardwired/tips.cfg:135
@@ -5747,18 +5749,19 @@ msgid ""
 "the village and attack you, while enjoying the defense and healing of the "
 "village."
 msgstr ""
-"המנע באופן כללי מלזוז אל יד כפרים בלי יחידות עליהם. יחידת אוייב יכולה לנוע "
-"אל תוך הכפר ולהתקיף אותך, בעוד היא נהנת מההגנה והריפוי של הכפר."
+"המנע באופן כללי מלזוז ליד כפרים בלי יחידות עליהם. יחידת אויב יכולה לנוע אל "
+"תוך הכפר ולהתקיף אותך, בעוד היא נהנת מההגנה והריפוי של הכפר."
 
 #. [tip]
 #: data/hardwired/tips.cfg:139
 msgid "Use lines of units to screen injured units to let them recover."
-msgstr "השתמש בקווים של יחידות להגנה על יחידות פגועות כדי לתת להן זמן להתרפות."
+msgstr ""
+"השתמש בקווים של יחידות להגנה על יחידות פגועות כדי לתת להן זמן להתרפאות."
 
 #. [tip]
 #: data/hardwired/tips.cfg:140
 msgid "- Princess Li'sar, 515YW"
-msgstr ""
+msgstr "- הנסיכה ליזאר, 515 לווסנות'"
 
 #. [tip]
 #: data/hardwired/tips.cfg:143
@@ -5790,33 +5793,31 @@ msgid ""
 "needing to attack anything themselves."
 msgstr ""
 "השתמש במרפאים כדי לתמוך בהתקפות שלך, הם ינצחו עבורך קרבות בלי שהם יצטרכו "
-"להתקוף אף אחד בעצמם."
+"להתקוף שום דבר בעצמם."
 
 #. [tip]
 #: data/hardwired/tips.cfg:156
 msgid "- The Scroll of Chantal, 516YW"
-msgstr ""
+msgstr "- מגילות צ'נטל, 516 לווסנות'"
 
 #. [tip]
 #: data/hardwired/tips.cfg:159
-#, fuzzy
 msgid ""
 "The 'slow' attack ability makes enemy units move slower and halves the "
 "damage they do on all attacks until they end a turn."
 msgstr ""
-"יכולת ההתקפה 'האטה'  תגרום ליחדות האוייב לנוע לאט יותר, אבל היא גם תפחית "
-"בחצי את הנזק שגורמות ההתקפות שלהן."
+"התקפות עם יכולת 'האטה' יגרמו ליחדות האוייב לנוע לאט יותר ויחצו את נזק "
+"התקפותיהם."
 
 #. [tip]
 #: data/hardwired/tips.cfg:163
-#, fuzzy
 msgid "Arcane attacks are very powerful against undead."
-msgstr "התקפות קדושות מאד חזקות כנגד אל-מתים."
+msgstr "התקפות קסם חזקות במיוחד כנגד אל-מתים וקצת פחות נגד דרקודמים."
 
 #. [tip]
 #: data/hardwired/tips.cfg:164
 msgid "- Great Sage Dacyn, 626YW"
-msgstr ""
+msgstr "- הקודם הדגול דאקין, 626 לווסנות'"
 
 #. [tip]
 #: data/hardwired/tips.cfg:167
@@ -5836,7 +5837,6 @@ msgstr "יחידות מסתערות יעילות במיוחד כנגד אויי�
 
 #. [tip]
 #: data/hardwired/tips.cfg:175
-#, fuzzy
 msgid ""
 "Instead of leveling up, high-level units gain an 'After Maximum Level "
 "Advancement' (AMLA), which usually increases the unit's maximum hitpoints by "
@@ -5856,6 +5856,9 @@ msgid ""
 "are limited by its maximum movement. Remember this when deciding what unit "
 "is best to scout specific types of terrain."
 msgstr ""
+"במפות עם 'הסתרה' אן 'ערפל קרב', כלים יכולים לראות למרחק שהם יכולים לנוע בתור "
+"אחד ללא יחידות אויב, אבל עם השפעות שטח. לכן, חשוב לבחור יחידות סיור שמתאימות "
+"לשטח."
 
 #. [tip]
 #: data/hardwired/tips.cfg:183
@@ -5863,10 +5866,11 @@ msgid ""
 "Nearly every icon and word in Wesnoth's playing screen has a tool-tip. Place "
 "your mouse pointer over one to get an explanation or description."
 msgstr ""
+"כמעט כל מילה או תמונה בחלון הקרב על ווסנות' תראה לך הסבר קצר עם תעביר את "
+"העכבר מעלייה"
 
 #. [tip]
 #: data/hardwired/tips.cfg:187
-#, fuzzy
 msgid ""
 "You can send the Wesnoth Project an anonymous summary of your progress using "
 "the 'Help Wesnoth' button (indicated by the envelope icon near the lower-"
@@ -5883,11 +5887,13 @@ msgid ""
 "veteran to damage a joint target heavily enough for the junior partner to "
 "get in the killing blow."
 msgstr ""
+"כדי לקדם יחידות נמוכות-רמה מהר, צרף אותם לאחת גבוהת-רמה והשתמש בה להחליש "
+"יחידות אויב כך שהיחידות החלשות יהרגו אותם בהתקפה אחת."
 
 #. [tip]
 #: data/hardwired/tips.cfg:192
 msgid "- Queen Li'sar, 528YW"
-msgstr ""
+msgstr "- המלכה ליזאר, 528 לווסנות'"
 
 #. [tip]
 #: data/hardwired/tips.cfg:195
@@ -5896,6 +5902,8 @@ msgid ""
 "Shroud Updates' option on when you need to move units while retaining the "
 "ability to undo."
 msgstr ""
+"אתה לא יכול לבטל מהלך שחוסף ערפל קרב או שטח מוסתר. השתמש במנגנון 'דחה "
+"עדכוני  שטח' אם אתה רוצה לשמור על יכולת הביטול. "
 
 #. [tip]
 #: data/hardwired/tips.cfg:199
@@ -5903,7 +5911,9 @@ msgid ""
 "If an enemy benefits more from a rare terrain type than you do, occupying "
 "that terrain will deprive them of its benefits."
 msgstr ""
+"עם האויב משיג יותר מסוג שטח נדיר ממך, תפוס שטח זה כדי למנוע ממנו לעשות זאת."
 
+# TODO: WILL WAIT
 #. [tip]
 #: data/hardwired/tips.cfg:203
 msgid ""
@@ -5920,32 +5930,29 @@ msgid ""
 msgstr ""
 
 #: data/temp-file_send_data_strings.cfg:12
-#, fuzzy
 msgid "About to upload statistics - Help us make Wesnoth better for you!"
-msgstr "עזור לנו להפוך את ווסנות' לטוב יותר בשבילך!"
+msgstr "מתחיל להעלות סטטיסטיקה - עזור לנו להפוך את ווסנות' לטוב יותר בשבילך!"
 
 #: data/temp-file_send_data_strings.cfg:13
 msgid "Save my reply and do not ask again"
-msgstr ""
+msgstr "שמור את הקלטת המשחק ואל תשאל שוב."
 
 #: data/temp-file_send_data_strings.cfg:14
 msgid ""
 "To change the setting later on, click on the envelope icon in the main menu."
-msgstr ""
+msgstr "כדי לשנות את ההגדרה אחר-כך, לחץ על כפתור המעטפה בתפריט הראשי."
 
 #: data/temp-file_send_data_strings.cfg:15
-#, fuzzy
 msgid "Send"
-msgstr "חול"
+msgstr "שלח"
 
 #: data/temp-file_send_data_strings.cfg:16
-#, fuzzy
 msgid "Don't send"
-msgstr "אל תשאל שוב!"
+msgstr "אל תשלח"
 
 #: data/temp-file_send_data_strings.cfg:18
 msgid "Do not ask every time before sending data"
-msgstr ""
+msgstr "אל תשאל שוב לפני שליחה"
 
 #. [menu]: id=menu-main
 #: data/themes/default.cfg:120 data/themes/dfool.cfg:134
@@ -5964,16 +5971,15 @@ msgstr "פעולות"
 #: data/themes/default.cfg:153 data/themes/default.cfg:763
 #: data/themes/dfool.cfg:160
 msgid "End Turn"
-msgstr "סוף תור"
+msgstr "סיים תור"
 
 #. [menu]: id=button-endturn
 #. [change]: id=button-endturn
 #. [menu]: id=button-endturn2
 #: data/themes/default.cfg:154 data/themes/default.cfg:764
 #: data/themes/default.cfg:1018 data/themes/dfool.cfg:161
-#, fuzzy
 msgid "End Scenario"
-msgstr "תרחיש לא ידוע"
+msgstr "סיים התקלות"
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=label-hp
@@ -6040,14 +6046,13 @@ msgstr "פעל."
 #. [remove]: id=button-endturn
 #. [menu]: id=button-endturn2
 #: data/themes/default.cfg:1009 data/themes/default.cfg:1017
-#, fuzzy
 msgid "short end-turn^E."
-msgstr "סוף"
+msgstr "סוף תור"
 
 #. [label]: id=label-mp
 #: data/themes/dfool.cfg:252
 msgid "MP"
-msgstr ""
+msgstr "מהירות"
 
 #. [label]: id=replay-label
 #: data/themes/macros.cfg:59
@@ -6061,9 +6066,8 @@ msgstr "הצג"
 
 #. [menu]: id=button-playreplay, type=image
 #: data/themes/macros.cfg:75
-#, fuzzy
 msgid "continuous replay"
-msgstr " מהתחלה"
+msgstr "הסרט"
 
 #. [menu]: id=button-stopreplay, type=image
 #: data/themes/macros.cfg:92
@@ -6073,7 +6077,7 @@ msgstr "עצור"
 #. [menu]: id=button-stopreplay, type=image
 #: data/themes/macros.cfg:93
 msgid "pause at end of turn"
-msgstr ""
+msgstr "עצור בסוף התור"
 
 #. [menu]: id=button-resetreplay, type=image
 #: data/themes/macros.cfg:110
@@ -6083,7 +6087,7 @@ msgstr "התחל מחדש"
 #. [menu]: id=button-resetreplay, type=image
 #: data/themes/macros.cfg:111
 msgid "reset to beginning"
-msgstr ""
+msgstr "חזור להתחלה"
 
 #. [menu]: id=button-nextturn, type=image
 #: data/themes/macros.cfg:128
@@ -6092,9 +6096,8 @@ msgstr "התור הבא"
 
 #. [menu]: id=button-nextturn, type=image
 #: data/themes/macros.cfg:129
-#, fuzzy
 msgid "play turn"
-msgstr "לכל תור"
+msgstr "שחק תור"
 
 #. [menu]: id=button-nextside, type=image
 #: data/themes/macros.cfg:146
@@ -6103,15 +6106,13 @@ msgstr "הצד הבא"
 
 #. [menu]: id=button-nextside, type=image
 #: data/themes/macros.cfg:147
-#, fuzzy
 msgid "play side turn"
-msgstr "לכל תור"
+msgstr "שחק צד"
 
 #. [menu]: id=show-what
 #: data/themes/macros.cfg:163
-#, fuzzy
 msgid "Point of view"
-msgstr "שיקוי התנוונות"
+msgstr "נקודת מבט"
 
 #. [menu]: id=skip-animation, type=checkbox
 #: data/themes/macros.cfg:179
@@ -6133,25 +6134,23 @@ msgstr "המנהיג שלך חייב להיות על מצודה כדי לגיי�
 
 #: src/actions.cpp:168
 msgid "There are no vacant castle tiles in which to recruit a unit."
-msgstr "אין אריח טירה פנוי שניתן לגייס אליו את היחידה."
+msgstr "אין משבצת טירה פנויה שניתן לגייס אליו את היחידה."
 
 #: src/actions.cpp:266 src/actions.cpp:286 src/actions.cpp:291
 msgid "An invalid weapon is selected, possibly by the Python AI."
-msgstr ""
+msgstr "נבחר נשק לא חוקי, כנראה ע\"י קוד משחק בעייתי."
 
 #: src/actions.cpp:1052 src/actions.cpp:1326
-#, fuzzy
 msgid "female^poisoned"
-msgstr "נוכלת"
+msgstr "מורעלת"
 
 #: src/actions.cpp:1064 src/actions.cpp:1338
-#, fuzzy
 msgid "female^stone"
-msgstr "נוכלת"
+msgstr "מאובנת"
 
 #: src/actions.cpp:1064 src/actions.cpp:1338
 msgid "stone"
-msgstr "איבון"
+msgstr "מאובן"
 
 #: src/actions.cpp:2433
 msgid "Ambushed!"
@@ -6159,105 +6158,95 @@ msgstr "נכנסנו למארב!"
 
 #: src/actions.cpp:2440
 msgid "Failed teleport! Exit not empty"
-msgstr ""
+msgstr "טלפורטציה נכשלה! היציאה חסומה!"
 
 #: src/actions.cpp:2479
-#, fuzzy
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
-msgstr[0] "יחידה ידידותית נראתה"
-msgstr[1] "יחידה ידידותית נראתה"
+msgstr[0] "יחידה ידידותית נראתה."
+msgstr[1] "$friends יחידות ידידותיות נראו."
 
 #: src/actions.cpp:2482
-#, fuzzy
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "יחידת אויב נראתה!"
-msgstr[1] "יחידת אויב נראתה!"
+msgstr[1] "$friends יחידות אויב נראו!"
 
 #: src/actions.cpp:2487
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "ידידותית"
+msgstr[1] "$friends ידידותיות"
 
 #: src/actions.cpp:2488
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "עוינת"
+msgstr[1] "עוינות"
 
 #: src/actions.cpp:2489
-#, fuzzy
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
-msgstr "יחידות נראו! ($friends ידידותיות, $enemies  אוייבות)"
+msgstr "יחידות נראו! ($friends ידידותיות, $enemies  עוינות)"
 
 #: src/actions.cpp:2498
-#, fuzzy
 msgid "(press $hotkey to keep moving)"
 msgstr "(להמשיך לחץ על $hotkey)"
 
 #: src/addon_management.cpp:360
 msgid "B"
-msgstr "בייט"
+msgstr ""
 
 #: src/addon_management.cpp:363 src/dialogs.cpp:1219
 msgid "KB"
-msgstr "קילו-בייט"
+msgstr "kiB"
 
 #: src/addon_management.cpp:366
 msgid "MB"
-msgstr "מגה-בייט"
+msgstr "MiB"
 
 #: src/addon_management.cpp:369
-#, fuzzy
 msgid "GB"
-msgstr "בייט"
+msgstr "GiB"
 
 #: src/addon_management.cpp:402
 msgid "addon_type^Campaign"
-msgstr ""
+msgstr "מערכה"
 
 #: src/addon_management.cpp:404
 msgid "addon_type^Scenario"
-msgstr ""
+msgstr "התקלות"
 
 #: src/addon_management.cpp:406
-#, fuzzy
 msgid "addon_type^MP era"
-msgstr "תרחיש לא ידוע"
+msgstr "עידן לרב-משתתפים"
 
 #: src/addon_management.cpp:408
-#, fuzzy
 msgid "addon_type^MP faction"
-msgstr "תרחיש לא ידוע"
+msgstr "צבא לרב-משתתפים"
 
 #: src/addon_management.cpp:410
-#, fuzzy
 msgid "addon_type^MP map-pack"
-msgstr "תרחיש לא ידוע"
+msgstr "חבילת מפות לרב-משתתפים"
 
 #: src/addon_management.cpp:412
-#, fuzzy
 msgid "addon_type^MP scenario"
-msgstr "תרחיש לא ידוע"
+msgstr "התקלות לרב-משתתפים"
 
 #: src/addon_management.cpp:414
 msgid "addon_type^MP campaign"
-msgstr ""
+msgstr "מערכה לרב-משתתפים"
 
 #: src/addon_management.cpp:416
 msgid "addon_type^Resources"
-msgstr ""
+msgstr "ספרייה"
 
 #: src/addon_management.cpp:418
 msgid "addon_type^(unknown)"
-msgstr ""
+msgstr "לא ידוע"
 
 #: src/addon_management.cpp:447
-#, fuzzy
 msgid "Dependencies"
-msgstr "נסיכה"
+msgstr "תלויה"
 
 #: src/addon_management.cpp:448
 msgid ""
@@ -6266,13 +6255,12 @@ msgid ""
 msgid_plural ""
 "This add-on depends upon the following add-ons which you have not installed "
 "yet:"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "חבילה זו תלויה בחבילה זאת שעדיין לא הותקנה על מחשבך: "
+msgstr[1] "חבילה זו תלויה בחבילות אלו שעדיין לא הותקנו על מחשבך: "
 
 #: src/addon_management.cpp:453
-#, fuzzy
 msgid "Do you still want to download it?"
-msgstr "האם אתה בטוח שברצונך למחוק משחק זה?"
+msgstr "האם אתה בטוח שברצונך להוריד אותה?"
 
 #: src/addon_management.cpp:468 src/addon_management.cpp:542
 #: src/multiplayer.cpp:207 src/multiplayer.cpp:312 src/multiplayer_ui.cpp:68
@@ -6280,22 +6268,20 @@ msgid "Connection timed out"
 msgstr "תם זמן ההמתנה לחיבור"
 
 #: src/addon_management.cpp:471
-#, fuzzy
 msgid "The server responded with an error: \"$error|\""
-msgstr "השרת הגיב בהודעת שגיאה: \""
+msgstr "השרת הגיב בהודעת שגיאה: \"$error|\""
 
 #: src/addon_management.cpp:479
 msgid "Terms"
 msgstr "תנאים"
 
 #: src/addon_management.cpp:513
-#, fuzzy
 msgid "Sending add-on"
-msgstr "שולח מערכה"
+msgstr "שולח חבילה"
 
 #: src/addon_management.cpp:517 src/addon_management.cpp:544
 msgid "The server responded with an error: \""
-msgstr "השרת הגיב בהודעת שגיאה: \""
+msgstr "השרת הגיב בהודעת שגיאה: \"$error|\""
 
 #: src/addon_management.cpp:521 src/addon_management.cpp:548
 #: src/multiplayer_wait.cpp:408
@@ -6303,29 +6289,26 @@ msgid "Response"
 msgstr "תגובה"
 
 #: src/addon_management.cpp:576
-#, fuzzy
 msgid "Downloading add-on: $addon_title|..."
-msgstr "מוריד מערכה..."
+msgstr "מוריד את $addon_title|..."
 
 #: src/addon_management.cpp:592
 msgid ""
 "The add-on has an invalid file or directory name and can not be installed."
-msgstr ""
+msgstr "חבילה זו כוללת שם קובץ או תיקייה לא-חוקי ואינה ניתנן להתקנה."
 
 #: src/addon_management.cpp:641
 #, fuzzy
 msgid "The add-on '$addon_title|' has been successfully installed."
-msgstr "המערכה הותקנה."
+msgstr "החבילה '$addon_title|' הותקנה בהצלחה."
 
 #: src/addon_management.cpp:643
-#, fuzzy
 msgid "Add-on Installed"
-msgstr "מערכה הותקנה"
+msgstr "החבילה הותקנה"
 
 #: src/addon_management.cpp:701
-#, fuzzy
 msgid "Outdated add-ons"
-msgstr "שולח מערכה"
+msgstr "חבילות ישנות"
 
 #: src/addon_management.cpp:703
 msgid ""
@@ -6334,16 +6317,16 @@ msgid ""
 msgid_plural ""
 "Some outdated local add-ons have publishing information attached. They will "
 "not be offered for updating."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "לחבילה ישנה זו יש מידע שליחה מצורף. לא יהיה ניתן לעדכנו."
+msgstr[1] "לחבילות ישנות אלו יש מידע שליחה מצורף. לא יהיה ניתן לעדכנו."
 
 #: src/addon_management.cpp:712
 msgid "Could not find any updated add-ons on this server."
-msgstr ""
+msgstr "שום גרסא מעודכנת לא נמצאה על השרת."
 
 #: src/addon_management.cpp:712
 msgid "No add-ons to update"
-msgstr ""
+msgstr "אין חבילות ברות-עדכון."
 
 #: src/addon_management.cpp:726 src/addon_management.cpp:929
 #: src/dialogs.cpp:647 src/menu_events.cpp:197 src/menu_events.cpp:1007
@@ -6351,14 +6334,12 @@ msgid "Name"
 msgstr "שם"
 
 #: src/addon_management.cpp:726
-#, fuzzy
 msgid "New version"
-msgstr "גרסה"
+msgstr "גרסא חדשה"
 
 #: src/addon_management.cpp:726
-#, fuzzy
 msgid "Old version"
-msgstr "גרסה"
+msgstr "גרסא ישנה"
 
 #: src/addon_management.cpp:727 src/addon_management.cpp:930
 msgid "Author"
@@ -6369,66 +6350,59 @@ msgid "Size"
 msgstr "גודל"
 
 #: src/addon_management.cpp:781
-#, fuzzy
 msgid "Update add-ons"
-msgstr "שולח מערכה"
+msgstr "חדכן חבילות"
 
 #: src/addon_management.cpp:782
 msgid "Select an add-on to update:"
-msgstr ""
+msgstr "בחר חבילה לעדכון:"
 
 #: src/addon_management.cpp:796
-#, fuzzy
 msgid "Update all"
-msgstr "קיר מערה"
+msgstr "עדכן הכל"
 
 #: src/addon_management.cpp:853
-#, fuzzy
 msgid "Update failed"
-msgstr "קיר מערה"
+msgstr "העדכון נכשל"
 
 #: src/addon_management.cpp:855
-#, fuzzy
 msgid "The following add-on could not be downloaded or updated successfully:"
 msgid_plural ""
 "The following add-ons could not be downloaded or updated successfully:"
-msgstr[0] "בתוספי המערכות הבאים היו שגיאות שמנעו את טעינתם:"
-msgstr[1] "בתוספי המערכות הבאים היו שגיאות שמנעו את טעינתם:"
+msgstr[0] "בחבילה זו היו שגיאות שמנעו את עדכונם/הורדתם:"
+msgstr[1] "בחבילות אלו היו שגיאות שמנעו את עדכונם/הורדתם:"
 
 #: src/addon_management.cpp:864
-#, fuzzy
 msgid "Update succeeded"
-msgstr "שולח מערכה"
+msgstr "העדכון הושלם בהצלחה."
 
 #: src/addon_management.cpp:865
 msgid "Add-on updated successfully."
-msgstr ""
+msgstr "עדכון החבילות הושלם בהצלחה."
 
 #: src/addon_management.cpp:866
 msgid "All add-ons updated successfully."
-msgstr ""
+msgstr "כל החבילות עודכנו בהצלחה."
 
 #: src/addon_management.cpp:889
-#, fuzzy
 msgid "Connecting to add-ons server..."
 msgstr "מתחבר לשרת..."
 
 #: src/addon_management.cpp:892
 msgid "Could not connect to host."
-msgstr "כישלון בחיבור למחשב מארח."
+msgstr "כישלון בחיבור לשרת."
 
 #: src/addon_management.cpp:900
 msgid "Requesting list of add-ons"
-msgstr ""
+msgstr "מוריד את רשימת החבילות"
 
 #: src/addon_management.cpp:913
-#, fuzzy
 msgid "An error occurred while communicating with the server."
 msgstr "שגיאה בתקשורת עם השרת."
 
 #: src/addon_management.cpp:929 src/titlescreen.cpp:331
 msgid "Version"
-msgstr "גרסה"
+msgstr "גרסא"
 
 #: src/addon_management.cpp:930
 msgid "Downloads"
@@ -6440,39 +6414,33 @@ msgid "Type"
 msgstr "סוג"
 
 #: src/addon_management.cpp:997
-#, fuzzy
 msgid "Publish add-on: "
-msgstr "פרסום מערכה: "
+msgstr "פרסם חבילה: "
 
 #: src/addon_management.cpp:1003
-#, fuzzy
 msgid "Delete add-on: "
-msgstr "מחיקת מערכה: "
+msgstr "מחק חבילה: "
 
 #: src/addon_management.cpp:1009
-#, fuzzy
 msgid "There are no add-ons available for download from this server."
 msgstr "אין מערכות להורדה משרת זה."
 
 #: src/addon_management.cpp:1022
-#, fuzzy
 msgid "Get add-ons"
-msgstr "שולח מערכה"
+msgstr "הורד חבילות"
 
 #: src/addon_management.cpp:1023
-#, fuzzy
 msgid "Choose the add-on to download."
-msgstr "בחר מערכה להורדה."
+msgstr "בחר חבילה להורדה."
 
 #: src/addon_management.cpp:1035 src/dialogs.cpp:672 src/menu_events.cpp:1065
 #: src/menu_events.cpp:1534
-#, fuzzy
 msgid "Filter: "
-msgstr "יכולות: "
+msgstr "סינון: "
 
 #: src/addon_management.cpp:1066
 msgid "Network communication error."
-msgstr "תקלת תקשורת ברשת."
+msgstr "תקלת בתקשורת רשת."
 
 #: src/addon_management.cpp:1069
 msgid "Remote host disconnected."
@@ -6483,7 +6451,7 @@ msgstr "המארח המרוחק התנתק."
 msgid ""
 "A problem occurred when trying to create the files necessary to install this "
 "add-on."
-msgstr "הייתה בעיה ביצירת הקבצים הדרושים להתקנת המערכה."
+msgstr "הייתה בעיה ביצירת הקבצים הדרושים להתקנת החבילה."
 
 #: src/addon_management.cpp:1090 src/addon_management.cpp:1145
 #: src/dialogs.cpp:282 src/dialogs.cpp:290 src/menu_events.cpp:616
@@ -6492,101 +6460,88 @@ msgid "Error"
 msgstr "שגיאה"
 
 #: src/addon_management.cpp:1091
-#, fuzzy
 msgid "You have no add-ons installed."
-msgstr "המערכה הותקנה."
+msgstr "אין לך חבילות מותקנות."
 
 #: src/addon_management.cpp:1103
-#, fuzzy
 msgid "Choose the add-on to remove."
-msgstr "בחר מערכה להורדה."
+msgstr "בחר חבילה למחיקה."
 
 #: src/addon_management.cpp:1103
-#, fuzzy
 msgid "Uninstall add-ons"
-msgstr "שולח מערכה"
+msgstr "מחק חבילות"
 
 #: src/addon_management.cpp:1115
 msgid "Are you sure you want to remove the add-on '$addon|'?"
-msgstr ""
+msgstr "אתה בטוח שברצונך למחוק את החבילה '$addon|'?"
 
 #: src/addon_management.cpp:1120 src/multiplayer.cpp:219
 msgid "Confirm"
-msgstr ""
+msgstr "אשר"
 
 #: src/addon_management.cpp:1132
-#, fuzzy
 msgid "Add-on '$addon|' deleted."
-msgstr "מערכה הותקנה"
+msgstr "החבילה '$addon|' נמחקה"
 
 #: src/addon_management.cpp:1137
-#, fuzzy
 msgid "Add-on deleted"
-msgstr "מערכה הותקנה"
+msgstr "החבילה נמחקה"
 
 #: src/addon_management.cpp:1146
 msgid "Add-on could not be deleted properly:"
-msgstr ""
+msgstr "לא ניתן למחוק את החבילה:"
 
 #: src/ai.cpp:1732
-#, fuzzy
 msgid "Unknown unit type : "
-msgstr "תרחיש לא ידוע"
+msgstr "כלי לא ידוע: "
 
 #: src/ai_move.cpp:74
 msgid "Movement cost is 0, probably a terrain with movement cost of 0."
-msgstr ""
+msgstr "מחלק מהירות 0. כנראה שטח עם מחלק מהירות 0."
 
 #: src/attack_prediction_display.cpp:113 src/attack_prediction_display.cpp:223
 msgid "Attacker"
-msgstr "תוקפת"
+msgstr "תוקף"
 
 #: src/attack_prediction_display.cpp:114 src/attack_prediction_display.cpp:222
 msgid "Defender"
-msgstr "מגנה"
+msgstr "מגן"
 
 #: src/attack_prediction_display.cpp:132
 msgid "Expected Battle Result (HP)"
-msgstr ""
+msgstr "תוצאת סיום קרב מצופה (נק\"פ)"
 
 #: src/attack_prediction_display.cpp:224
-#, fuzzy
 msgid " resistance vs "
-msgstr "עמידויות"
+msgstr " עמידות נגד "
 
 #: src/attack_prediction_display.cpp:225
-#, fuzzy
 msgid " vulnerability vs "
-msgstr "פגיעות התוקף מצד"
+msgstr " פגיעות ל "
 
 #: src/attack_prediction_display.cpp:235
-#, fuzzy
 msgid "Slowed"
 msgstr "מואט"
 
 #: src/attack_prediction_display.cpp:242
-#, fuzzy
 msgid "Time of day"
 msgstr "זמן ביום"
 
 #: src/attack_prediction_display.cpp:252
-#, fuzzy
 msgid "Leadership"
 msgstr "מנהיגות"
 
 #: src/attack_prediction_display.cpp:259
-#, fuzzy
 msgid "Total damage"
-msgstr "נזק כולל"
+msgstr "נזק סופי"
 
 #: src/attack_prediction_display.cpp:266
-#, fuzzy
 msgid "No usable weapon"
-msgstr "בחירת נשק:"
+msgstr "אין נשק שמיש"
 
 #: src/attack_prediction_display.cpp:271
 msgid "Chance of being unscathed"
-msgstr ""
+msgstr "סיכוי לא להפגע"
 
 #: src/attack_prediction_display.cpp:554 src/mouse_events.cpp:610
 msgid "Damage Calculations"
@@ -6594,7 +6549,7 @@ msgstr "חישובי נזק"
 
 #: src/config_adapter.cpp:157
 msgid "Duplicate side definition for side '$side|' found."
-msgstr ""
+msgstr "נמצאה הגדרת צד כפולה לצד '$side|'."
 
 #: src/dialogs.cpp:119
 msgid "Advance Unit"
@@ -6602,7 +6557,7 @@ msgstr "קדם יחידה"
 
 #: src/dialogs.cpp:120
 msgid "What should our victorious unit become?"
-msgstr "למה כדי שיחידתנו המנצחת תהפוך?"
+msgstr "למה כדאי שיחידתנו המנצחת תהפוך?"
 
 #: src/dialogs.cpp:221
 msgid "No objectives available"
@@ -6613,32 +6568,29 @@ msgid "Save Game"
 msgstr "שמור משחק"
 
 #: src/dialogs.cpp:256
-#, fuzzy
 msgid "Quit Game"
 msgstr "צא מהמשחק"
 
 #: src/dialogs.cpp:261
 msgid "Ignore All"
-msgstr ""
+msgstr "התעלם מהכל"
 
 #: src/dialogs.cpp:283
 msgid ""
 "Save names may not contain colons, slashes, or backslashes. Please choose a "
 "different name."
-msgstr "אסור שהשם יכיל נקודותיים, לוכסנים או לוכסנים הפוכים. יש לבחור שם אחר."
+msgstr "אסור שהשם יכיל נקודותיים, סלאשים או באקסלשים. יש לבחור שם אחר."
 
 #: src/dialogs.cpp:291
 #, fuzzy
 msgid "Save names should not end on '.gz'. Please choose a different name."
-msgstr "אסור שהשם יכיל נקודותיים, לוכסנים או לוכסנים הפוכים. יש לבחור שם אחר."
+msgstr "אסור שהשם יגמר ב-'.gz'. יש לבחור שם אחר."
 
 #: src/dialogs.cpp:299
-#, fuzzy
 msgid "Save already exists. Do you want to overwrite it?"
 msgstr "המשחק השמור כבר קיים. האם לדרוס אותו?"
 
 #: src/dialogs.cpp:300 src/menu_events.cpp:604 src/playcampaign.cpp:418
-#, fuzzy
 msgid "Name: "
 msgstr "שם:"
 
@@ -6656,16 +6608,15 @@ msgstr "אל תשאל שוב!"
 
 #: src/dialogs.cpp:507
 msgid "%a %b %d %H:%M %Y"
-msgstr "%a %b %d %H:%M %Y"
+msgstr "%A %d/%m/%G %H:%M"
 
 #: src/dialogs.cpp:527
 msgid "#(Invalid)"
 msgstr "#(לא חוקי)"
 
 #: src/dialogs.cpp:541
-#, fuzzy
 msgid "Campaign: $campaign_name"
-msgstr "מערכה"
+msgstr "מערכה: $campaign_name"
 
 #: src/dialogs.cpp:548
 msgid "Multiplayer"
@@ -6677,7 +6628,7 @@ msgstr "הדרכה"
 
 #: src/dialogs.cpp:558 src/menu_events.cpp:590
 msgid "replay"
-msgstr "שחק מהתחלה"
+msgstr "הקלטת משחק"
 
 #: src/dialogs.cpp:560 src/menu_events.cpp:592
 msgid "Turn"
@@ -6685,19 +6636,19 @@ msgstr "תור"
 
 #: src/dialogs.cpp:562
 msgid "Scenario Start"
-msgstr "תחילת תרחיש"
+msgstr "תחילת התקלות"
 
 #: src/dialogs.cpp:565
 msgid "Difficulty: "
-msgstr "קושי:"
+msgstr "רמת קושי:"
 
 #: src/dialogs.cpp:567
 msgid "Version: "
-msgstr "גרסה: "
+msgstr "גרסא: "
 
 #: src/dialogs.cpp:591 src/dialogs.cpp:607
 msgid "%b %d %y"
-msgstr "%b %d %y"
+msgstr "%d/%m/%G"
 
 #: src/dialogs.cpp:597
 msgid "%H:%M"
@@ -6709,21 +6660,20 @@ msgstr "%A, %H:%M"
 
 #: src/dialogs.cpp:603
 msgid "%b %d"
-msgstr "%b %d"
+msgstr "%b/%d"
 
 #: src/dialogs.cpp:631
 msgid "No Saved Games"
 msgstr "אין משחקים שמורים"
 
 #: src/dialogs.cpp:632
-#, fuzzy
 msgid ""
 "There are no saved games to load.\n"
 "\n"
 "(Games are saved automatically when you complete a scenario)"
 msgstr ""
 "אין משחקים שמורים לטעון.\n"
-"(משחקים נשמרים אוטומטית כאשר אתה מסיים תרחיש)"
+"(משחקים נשמרים אוטומטית כאשר אתה מסיים התקלות)"
 
 #: src/dialogs.cpp:647
 msgid "Date"
@@ -6739,12 +6689,11 @@ msgstr "בחר משחק לטעינה"
 
 #: src/dialogs.cpp:679
 msgid "Show replay"
-msgstr "הצג הרצה"
+msgstr "הצג הקלטה"
 
 #: src/dialogs.cpp:683
-#, fuzzy
 msgid "Cancel orders"
-msgstr "בטל"
+msgstr "בטל פקודות"
 
 #: src/dialogs.cpp:690
 msgid "Delete Save"
@@ -6779,9 +6728,8 @@ msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr "אזהרה: הקובץ, אותו ניסית לטעון, פגום. טוען בכל זאת.\n"
 
 #: src/game.cpp:936 src/multiplayer_connect.cpp:1548
-#, fuzzy
 msgid "This save is from a version too old to be loaded."
-msgstr "משחק שמור זה שייך לגרסה שונה של המשחק. האם ברצונך לטעון אותו?"
+msgstr "משחק שמור זה שייך לגרסה ישנה מדי ואי אפשר לטעון אותו."
 
 #: src/game.cpp:942 src/multiplayer_connect.cpp:1555
 msgid ""
@@ -6804,32 +6752,29 @@ msgstr "אין מטרות זמינות"
 
 #: src/game.cpp:1143
 msgid "Difficulty"
-msgstr "קושי"
+msgstr "רמת קושי"
 
 #: src/game.cpp:1144
 msgid "Select difficulty level:"
 msgstr "בחר רמת קושי:"
 
 #: src/game.cpp:1305
-#, fuzzy
 msgid "Do you really want to start the server?"
-msgstr "האם אתה בטוח שברצונך למחוק משחק זה?"
+msgstr "האם אתה בטוח שברצונך להפעיל את השרת?"
 
 #: src/game.cpp:1306
 msgid ""
 "The server will run in a background process until all users have "
 "disconnected."
-msgstr ""
+msgstr "השרת ירוץ ברקע עד שהמשתמש האחרון יצא."
 
 #: src/game.cpp:1310
-#, fuzzy
 msgid "Don't show again"
-msgstr "אל תשאל שוב!"
+msgstr "אל תציג שוב!"
 
 #: src/game.cpp:1381
-#, fuzzy
 msgid "Error while starting server: "
-msgstr "שגיאה בזמן המשחק: "
+msgstr "שגיאה בזמן התחלת שרת: "
 
 #: src/game.cpp:1383 src/playcampaign.cpp:97 src/playcampaign.cpp:383
 msgid "The game could not be loaded: "
@@ -6852,11 +6797,10 @@ msgid "' (The game will now exit)"
 msgstr "' (המשחק יסתיים עתה)"
 
 #: src/game.cpp:1567
-#, fuzzy
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
-msgstr[0] "בתוספי המערכות הבאים היו שגיאות שמנעו את טעינתם:"
-msgstr[1] "בתוספי המערכות הבאים היו שגיאות שמנעו את טעינתם:"
+msgstr[0] "בחבילה זו היו שגיאות שמנעו את טעינו:"
+msgstr[1] "בחבילות הבאות היו שגיאות שמנעו את טעינתם:"
 
 #: src/game.cpp:1574
 msgid "ERROR DETAILS:"
@@ -6864,48 +6808,43 @@ msgstr "פרטי השגיאה:"
 
 #: src/game.cpp:1602
 msgid "Loading data files"
-msgstr ""
+msgstr "טוען קבצי מידע"
 
 #: src/game.cpp:1994
-#, fuzzy
 msgid "Loading game configuration."
-msgstr "שגיאה בטעינת קבצי תצורה: "
+msgstr "טוען קבצי תצורה."
 
 #: src/game.cpp:2000
 msgid "Re-initialize fonts for the current language."
-msgstr ""
+msgstr "אתחל גופנים לשפה החדשה."
 
 #: src/game.cpp:2008
-#, fuzzy
 msgid "Searching for installed add-ons."
-msgstr "שולח מערכה"
+msgstr "מחפש חבילות מותקנות."
 
 #: src/game.cpp:2017
 msgid "Loading title screen."
-msgstr ""
+msgstr "טוען משך ראשי"
 
 #: src/game_config.cpp:287
-#, fuzzy
 msgid "Invalid color range: "
-msgstr "צבע לא חוקי"
+msgstr "צבע לא חוקי: "
 
 #: src/game_events.cpp:134
-#, fuzzy
 msgid "Error: "
-msgstr "שגיאה"
+msgstr "שגיאה: "
 
 #: src/game_events.cpp:137
-#, fuzzy
 msgid "Warning: "
-msgstr "בוקר"
+msgstr "אזהרה: "
 
 #: src/game_events.cpp:140
 msgid "Debug: "
-msgstr ""
+msgstr "דיבוג: "
 
 #: src/game_events.cpp:143
 msgid "Info: "
-msgstr ""
+msgstr "מידע: "
 
 #: src/game_events.cpp:1074
 msgid "Victory:"
@@ -6918,7 +6857,7 @@ msgstr "תבוסה:"
 #: src/gamestatus.cpp:242 src/gamestatus.cpp:256 src/gamestatus.cpp:274
 #: src/gamestatus.cpp:357 src/gamestatus.cpp:382
 msgid "No time of day has been defined."
-msgstr ""
+msgstr "שום קטגורית זמן לא הוגדרה. "
 
 #: src/gamestatus.cpp:771 src/gamestatus.cpp:773 src/playcampaign.cpp:417
 msgid " replay"
@@ -6938,11 +6877,10 @@ msgid "invisible: "
 msgstr "בלתי נראה: "
 
 #: src/generate_report.cpp:101
-#, fuzzy
 msgid ""
 "This unit has been slowed. It will only deal half its normal damage when "
 "attacking and its movement cost is doubled."
-msgstr "יחידה זו הואטה, היא תגרום רק חצי מהנזק הרגיל בזמן התקפה."
+msgstr "יחידה זו הואטה, היא תגרום רק חצי מהנזק הרגיל בקרב ותזוז בחצי מהמהירות."
 
 #: src/generate_report.cpp:101
 msgid "slowed: "
@@ -6975,20 +6913,18 @@ msgid "stone: "
 msgstr "אבן: "
 
 #: src/generate_report.cpp:168
-#, fuzzy
 msgid "Resistances: "
-msgstr "עמידויות"
+msgstr "עמידויות: "
 
 #: src/generate_report.cpp:170
 msgid "(Att / Def)"
-msgstr ""
+msgstr "(התקפה/הגנה)"
 
 #: src/generate_report.cpp:189 src/multiplayer_create.cpp:395
 msgid "Experience Modifier: "
-msgstr "השפעת הניסיון:"
+msgstr "השפעת הניסיון: "
 
 #: src/generate_report.cpp:260
-#, fuzzy
 msgid "tooltip^damage"
 msgid_plural "damage"
 msgstr[0] "נזק כולל"
@@ -6997,18 +6933,18 @@ msgstr[1] "נזק כולל"
 #: src/generate_report.cpp:261
 msgid "tooltip^attack"
 msgid_plural "attacks"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "התקפה"
+msgstr[1] "התקפות"
 
 #: src/generate_report.cpp:267
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "tooltip^% accuracy"
-msgstr "נזק כולל"
+msgstr "דיוק"
 
 #: src/generate_report.cpp:273
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "tooltip^% parry"
-msgstr "נזק כולל"
+msgstr "חסימה"
 
 #: src/generate_report.cpp:284
 msgid "weapon range: "
@@ -7016,7 +6952,7 @@ msgstr "טווח נשק: "
 
 #: src/generate_report.cpp:285
 msgid "damage type: "
-msgstr "סוג נשק: "
+msgstr "סוג נזק: "
 
 #: src/generate_report.cpp:306
 msgid "vs"
@@ -7040,60 +6976,47 @@ msgstr "צופים:"
 
 #: src/help.cpp:43
 msgid "Help"
-msgstr ""
+msgstr "עזרה"
 
 #: src/help.cpp:1114
-#, fuzzy
 msgid "<header>text='Units having this special attack'</header>"
-msgstr ""
-"\n"
-"\n"
-"<header>text='סיכויי פגיעה'</header>"
+msgstr "<header>text='יחידות עם התקפה מיוחדת זו'</header>"
 
 #: src/help.cpp:1190
-#, fuzzy
 msgid "<header>text='Units having this ability'</header>"
-msgstr ""
-"\n"
-"\n"
-"<header>text='סיכויי פגיעה'</header>"
+msgstr "<header>text='יחידות עם יכולת זו'</header>"
 
 #: src/help.cpp:1258
-#, fuzzy
 msgid "Advances from: "
-msgstr "מתקדמת אל: "
+msgstr "מתקדמת מ: "
 
 #: src/help.cpp:1287
 msgid "Advances to: "
 msgstr "מתקדמת אל: "
 
 #: src/help.cpp:1318 src/help.cpp:1593 src/help.cpp:1644
-#, fuzzy
 msgid "race^Miscellaneous"
 msgstr "שונות"
 
 #: src/help.cpp:1320
-#, fuzzy
 msgid "Race: "
-msgstr "אלה"
+msgstr "גזע: "
 
 #: src/help.cpp:1327
 msgid "Abilities: "
 msgstr "יכולות: "
 
 #: src/help.cpp:1344
-#, fuzzy
 msgid "Ability Upgrades: "
-msgstr "יכולות: "
+msgstr "תגבורי יכולות: "
 
 #: src/help.cpp:1362
-#, fuzzy
 msgid "Cost: "
-msgstr "מהלכים: "
+msgstr "עלות: "
 
 #: src/help.cpp:1363
 msgid "Alignment: "
-msgstr "נטיה: "
+msgstr "נטייה: "
 
 #: src/help.cpp:1369
 msgid "Required XP: "
@@ -7101,12 +7024,11 @@ msgstr "נק\"פ נדרש: "
 
 #: src/help.cpp:1378
 msgid "unit help^Attacks"
-msgstr ""
+msgstr "התקפות"
 
 #: src/help.cpp:1385
-#, fuzzy
 msgid "unit help^Name"
-msgstr "צא מהמשחק"
+msgstr "שם"
 
 #: src/help.cpp:1387
 msgid "Strikes"
@@ -7134,7 +7056,7 @@ msgstr "עמידות"
 
 #: src/help.cpp:1481
 msgid "Terrain Modifiers"
-msgstr "התאמות שטח"
+msgstr "מתאמי שטח"
 
 #: src/help.cpp:1485
 msgid "Terrain"
@@ -7145,17 +7067,13 @@ msgid "Defense"
 msgstr "הגנה"
 
 #: src/help.cpp:1487
-#, fuzzy
 msgid "Movement Cost"
-msgstr "תנועה"
+msgstr "מחיר תנועה"
 
 #: src/help.cpp:1650
 #, fuzzy
 msgid "<header>text='Units of this race'</header>"
-msgstr ""
-"\n"
-"\n"
-"<header>text='סיכויי פגיעה'</header>"
+msgstr "<header>text='יחידות מגזע זה'</header>"
 
 #: src/help.cpp:2584 src/menu_events.cpp:569
 msgid " < Back"
@@ -7171,7 +7089,7 @@ msgstr "הפנייה לנושא לא ידוע: "
 
 #: src/help.cpp:2951
 msgid "corrupted original file"
-msgstr ""
+msgstr "הקובץ המקורי פגום"
 
 #: src/help.cpp:3057
 msgid "The Battle for Wesnoth Help"
@@ -7199,19 +7117,18 @@ msgstr "שפת ברירת המחדל של המערכת"
 
 #: src/leader_list.cpp:139 src/multiplayer_connect.cpp:215
 #: src/multiplayer_connect.cpp:267
-#, fuzzy
 msgid "gender^Random"
 msgstr "אקראי"
 
 #: src/leader_list.cpp:149 src/multiplayer_connect.cpp:211
 #: src/multiplayer_connect.cpp:263
 msgid "Female ♀"
-msgstr ""
+msgstr "נקבה ♀"
 
 #: src/leader_list.cpp:153 src/multiplayer_connect.cpp:213
 #: src/multiplayer_connect.cpp:265
 msgid "Male ♂"
-msgstr ""
+msgstr "זכר ♂"
 
 #: src/leader_list.cpp:164 src/leader_list.cpp:197
 msgid "Random"
@@ -7223,23 +7140,23 @@ msgstr "?"
 
 #: src/loadscreen.cpp:220
 msgid "Verifying cache"
-msgstr ""
+msgstr "מוודא מטמון..."
 
 #: src/loadscreen.cpp:239
 msgid "Reading unit files."
-msgstr ""
+msgstr "קורא תכונות יחידות..."
 
 #: src/loadscreen.cpp:258
 msgid "Reading files and creating cache."
-msgstr ""
+msgstr "קורא קבצים ומייצר מטמון..."
 
 #: src/map.cpp:162
 msgid "A map without a header is not supported"
-msgstr ""
+msgstr "אין תמיכה במפות ללא כותרת. המפה כנראה ישנה, נסה לעדכן את החבילה."
 
 #: src/mapgen.cpp:710
 msgid "Random maps with an odd width aren't supported."
-msgstr ""
+msgstr "איו תמיכה במפות אקראיות עם רוחב אי-זוגי."
 
 #: src/menu_events.cpp:54 src/menu_events.cpp:746 src/menu_events.cpp:748
 #: src/play_controller.cpp:790 src/playcampaign.cpp:110
@@ -7247,62 +7164,48 @@ msgid "Auto-Save"
 msgstr "שמירה אוטומטית"
 
 #: src/menu_events.cpp:94 src/menu_events.cpp:97 src/menu_events.cpp:101
-#, fuzzy
 msgid "Do you really want to dismiss him?"
-msgstr "האם אתה בטוח שברצונך למחוק משחק זה?"
+msgstr "האם אתה בטוח שברצונך לשחרר אותו?"
 
 #: src/menu_events.cpp:94
-#, fuzzy
 msgid "My lord, this unit is loyal and requires no upkeep! "
-msgstr ""
-"אדוני הלורד, היחידה הזאת קרובלורדה להתקדמות דרגה! האם אתה באמת רוצה לשחרר את "
-"$noun?"
+msgstr "אדוני הלורד, היחידה הזאת נאמנה ואינה דורשת כסף תחזוקה! "
 
 #: src/menu_events.cpp:95 src/menu_events.cpp:98 src/menu_events.cpp:102
-#, fuzzy
 msgid "Do you really want to dismiss her?"
-msgstr "האם אתה בטוח שברצונך למחוק משחק זה?"
+msgstr "האם אתה בטוח שברצונך לשחרר אותב?"
 
 #: src/menu_events.cpp:97
-#, fuzzy
 msgid "My lord, this unit is an experienced one, having advanced levels! "
-msgstr ""
-"אדוני הלורד, היחידה הזאת היא יחידה מנוסה, שהתקדמה דרגות! האם אתה באמת רוצה "
-"לשחרר את $noun?"
+msgstr "אדוני הלורד, היחידה הזאת היא יחידה מנוסה, שהתקדמה דרגות! "
 
 #: src/menu_events.cpp:101
-#, fuzzy
 msgid "My lord, this unit is close to advancing a level! "
-msgstr ""
-"אדוני הלורד, היחידה הזאת קרובלורדה להתקדמות דרגה! האם אתה באמת רוצה לשחרר את "
-"$noun?"
+msgstr "אדוני הלורד, היחידה הזאת קרובה להתקדמות דרגה! "
 
 #: src/menu_events.cpp:184
 msgid "Statistics"
 msgstr "סטטיסטיקות"
 
 #: src/menu_events.cpp:198 src/menu_events.cpp:1008
-#, fuzzy
 msgid "Level^Lvl."
-msgstr "רמה"
+msgstr "דרגה"
 
 #: src/menu_events.cpp:201
 msgid "unit list^Traits"
-msgstr ""
+msgstr "כשרונות"
 
 #: src/menu_events.cpp:202
 msgid "Moves"
-msgstr "מהלכים"
+msgstr "מהירות"
 
 #: src/menu_events.cpp:203
-#, fuzzy
 msgid "Location^Loc."
 msgstr "מיקום"
 
 #: src/menu_events.cpp:204
-#, fuzzy
 msgid "Status"
-msgstr "סטטיסטיקות"
+msgstr "מצב"
 
 #: src/menu_events.cpp:312
 msgid "Unit List"
@@ -7310,7 +7213,7 @@ msgstr "רשימת יחידות"
 
 #: src/menu_events.cpp:315 src/menu_events.cpp:337
 msgid "Scroll To"
-msgstr ""
+msgstr "גלגל ל-"
 
 #: src/menu_events.cpp:369
 msgid "Leader"
@@ -7331,7 +7234,7 @@ msgstr "כפרים"
 
 #: src/menu_events.cpp:373
 msgid "status^Units"
-msgstr ""
+msgstr "יחידות"
 
 #: src/menu_events.cpp:374
 msgid "Upkeep"
@@ -7343,68 +7246,58 @@ msgid "Income"
 msgstr "הכנסה"
 
 #: src/menu_events.cpp:476
-#, fuzzy
 msgid "Current Status"
-msgstr "סטטיסטיקות"
+msgstr "מצב נוככי"
 
 #: src/menu_events.cpp:477
-#, fuzzy
 msgid "More >"
-msgstr "עוד"
+msgstr "עוד >"
 
 #: src/menu_events.cpp:495
-#, fuzzy
 msgid "scenario settings^Leader"
-msgstr "תחילת תרחיש"
+msgstr "מנהיג"
 
 #: src/menu_events.cpp:497
-#, fuzzy
 msgid "scenario settings^Side"
-msgstr "תחילת תרחיש"
+msgstr "צד"
 
 #: src/menu_events.cpp:498
-#, fuzzy
 msgid ""
 "scenario settings^Start\n"
 "Gold"
-msgstr "תחילת תרחיש"
+msgstr "זהב התחלתי"
 
 #: src/menu_events.cpp:499
-#, fuzzy
 msgid ""
 "scenario settings^Base\n"
 "Income"
-msgstr "תחילת תרחיש"
+msgstr "הכנסת בסיס"
 
 #: src/menu_events.cpp:500
 msgid ""
 "scenario settings^Gold Per\n"
 "Village"
-msgstr ""
+msgstr "זהב לכפר"
 
 #: src/menu_events.cpp:501
-#, fuzzy
 msgid "scenario settings^Fog"
-msgstr "תחילת תרחיש"
+msgstr "ערפל קרב"
 
 #: src/menu_events.cpp:502
-#, fuzzy
 msgid "scenario settings^Shroud"
-msgstr "תחילת תרחיש"
+msgstr "הסתרה"
 
 #: src/menu_events.cpp:549 src/menu_events.cpp:550
-#, fuzzy
 msgid "no"
-msgstr "שלג"
+msgstr "לא"
 
 #: src/menu_events.cpp:549 src/menu_events.cpp:550
 msgid "yes"
-msgstr ""
+msgstr "כן"
 
 #: src/menu_events.cpp:566
-#, fuzzy
 msgid "Scenario Settings"
-msgstr "תחילת תרחיש"
+msgstr "הגדרות תרחיש"
 
 #: src/menu_events.cpp:613
 msgid "Saved"
@@ -7419,22 +7312,21 @@ msgid "The game could not be saved"
 msgstr "שמירת המשחק נכשלה"
 
 #: src/menu_events.cpp:631
-#, fuzzy
 msgid "Save the Map As"
-msgstr "שתף מפות"
+msgstr "שמור מפה בשם"
 
+# TODO
 #: src/menu_events.cpp:636
-#, fuzzy
 msgid "The map already exists. Do you want to overwrite it?"
-msgstr "המשחק השמור כבר קיים. האם לדרוס אותו?"
+msgstr "המפה כבר קיימת. האם לדרוס אותה?"
 
 #: src/menu_events.cpp:648
 msgid "Map saved."
-msgstr ""
+msgstr "המפה נשמרה."
 
 #: src/menu_events.cpp:652
 msgid "Could not save the map: $msg"
-msgstr ""
+msgstr "לא ניתן לשמור את המפה: $msg"
 
 #: src/menu_events.cpp:753
 msgid "Could not auto save the game. Please save the game manually."
@@ -7453,12 +7345,10 @@ msgid "Send to allies only"
 msgstr "שלח לבעלי ברית בלבד"
 
 #: src/menu_events.cpp:792
-#, fuzzy
 msgid "Send to observers only"
-msgstr "שלח לבעלי ברית בלבד"
+msgstr "שלח לצופים בלבד"
 
 #: src/menu_events.cpp:872
-#, fuzzy
 msgid "unit^Gold"
 msgid_plural "Gold"
 msgstr[0] "זהב"
@@ -7485,13 +7375,12 @@ msgid "You are separated from your soldiers and may not recall them"
 msgstr "הופרדת מחיילך, ולכן אתה לא יכול להחזירם"
 
 #: src/menu_events.cpp:1001
-#, fuzzy
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
 msgstr ""
 "אין יחידות זמינות להחזרה\n"
-"(חייבות להיות לך יחידות מנוסות ששרדו תרחיש קודם)"
+"(חייבות להיות לך יחידות מנוסות ששרדו התקלות קודמת)"
 
 #: src/menu_events.cpp:1058
 msgid "Recall"
@@ -7502,7 +7391,6 @@ msgid "Dismiss Unit"
 msgstr "שחרר יחידה"
 
 #: src/menu_events.cpp:1087
-#, fuzzy
 msgid "You must have at least 1 gold piece to recall a unit"
 msgid_plural "You must have at least $cost gold pieces to recall a unit"
 msgstr[0] "אתה חייב לפחות $cost זהב כדי להחזיר יחידה"
@@ -7522,54 +7410,52 @@ msgid "Rename Unit"
 msgstr "שנה שם יחידה"
 
 #: src/menu_events.cpp:1504
-#, fuzzy
 msgid "Race"
-msgstr "אלה"
+msgstr "גזע"
 
 #: src/menu_events.cpp:1527
 msgid "Create Unit (Debug!)"
-msgstr ""
+msgstr "צור כלי (דיבוג!)"
 
 #: src/menu_events.cpp:1587
 msgid "Place Label"
 msgstr "מקם תגית"
 
 #: src/menu_events.cpp:1590 src/menu_events.cpp:1593
-#, fuzzy
 msgid "Label: "
 msgstr "תגית:"
 
 #: src/menu_events.cpp:1595
-#, fuzzy
 msgid "Team only"
-msgstr "צוות"
+msgstr "לחברי צוות בלבד"
 
 #: src/menu_events.cpp:1696
 msgid "Search"
 msgstr "חיפוש"
 
 #: src/menu_events.cpp:1876
-#, fuzzy
 msgid "This command is currently unavailable."
-msgstr "אין מטרות זמינות"
+msgstr "פקודה זו אינה זמינה כעת"
 
 #: src/menu_events.cpp:1887
 msgid ""
 "Available commands list and command-specific help. Use \"help all\" to "
 "include currently unavailable commands."
 msgstr ""
+"רשימת הפקודות הזמינות ועזרה על פקודות. השתמש ב\"help all\" כדי לראות גם "
+"פקודות שאינם זמינות כעת."
 
 #: src/menu_events.cpp:1992
-#, fuzzy
 msgid " No help available."
-msgstr "אין מטרות זמינות"
+msgstr " אין עזרה על דבר זה."
 
 #: src/menu_events.cpp:2130
 msgid ""
 "Send a query to the server. Without arguments the server should tell you the "
 "available commands."
-msgstr ""
+msgstr "שלח בקשה לשרת. בלי פרמטרים השרת יחזיר את הפקודות המותרות."
 
+# TODO: CONTINUE
 #: src/menu_events.cpp:2133
 msgid ""
 "Ban and kick a player or observer. If he is not in the game but on the "
@@ -8106,7 +7992,7 @@ msgstr "טען משחק"
 
 #: src/multiplayer_create.cpp:138
 msgid "The maximum number of turns the game can last"
-msgstr "מספר תורות המירבי שהמשחק יכול להמשך"
+msgstr "מספר תורים המירבי שהמשחק יכול להמשך"
 
 #: src/multiplayer_create.cpp:141
 msgid "Enables user time limit"
@@ -8205,11 +8091,11 @@ msgstr ""
 
 #: src/multiplayer_create.cpp:334
 msgid "Turns: "
-msgstr "תורות: "
+msgstr "תורים: "
 
 #: src/multiplayer_create.cpp:336
 msgid "Unlimited Turns"
-msgstr "מספר בלתי מוגבל של תורות"
+msgstr "מספר בלתי מוגבל של תורים"
 
 #: src/multiplayer_create.cpp:364
 #, fuzzy
@@ -8219,7 +8105,7 @@ msgstr "זמן התחלתי:"
 #: src/multiplayer_create.cpp:369
 #, fuzzy
 msgid "Turn Bonus: "
-msgstr "תורות: "
+msgstr "תורים: "
 
 #: src/multiplayer_create.cpp:373
 #, fuzzy
@@ -8520,7 +8406,7 @@ msgstr "לכל תור"
 
 #: src/playsingle_controller.cpp:189
 msgid "Turns finished early: "
-msgstr "תורות שנגמרו מוקדם: "
+msgstr "תורים שנגמרו מוקדם: "
 
 #: src/playsingle_controller.cpp:191
 msgid "Bonus: "
@@ -9005,547 +8891,3 @@ msgstr "עזור לנו להפוך את ווסנות' לטוב יותר בשבי
 #: src/upload_log.cpp:332
 msgid "Enable summary uploads"
 msgstr ""
-
-#~ msgid "+  "
-#~ msgstr "+  "
-
-#, fuzzy
-#~ msgid "Unknown error."
-#~ msgstr "עידן לא ידוע: "
-
-#~ msgid "Login: "
-#~ msgstr "שם משתמש: "
-
-#, fuzzy
-#~ msgid "Choose a different username"
-#~ msgstr "הצטרף לשרת הרשמי"
-
-#, fuzzy
-#~ msgid "Whisper"
-#~ msgstr "לבן"
-
-#, fuzzy
-#~ msgid "Message: "
-#~ msgstr "הודעה:"
-
-#, fuzzy
-#~ msgid "Login"
-#~ msgstr "שם משתמש: "
-
-#, fuzzy
-#~ msgid "Abilites"
-#~ msgstr "יכולות"
-
-#, fuzzy
-#~ msgid "Location name?"
-#~ msgstr "טען משחק"
-
-#, fuzzy
-#~ msgid "Give new orders"
-#~ msgstr "בטל"
-
-#, fuzzy
-#~ msgid "value: "
-#~ msgstr "שם:"
-
-#, fuzzy
-#~ msgid "Defeat an enemy Leader!"
-#~ msgstr ""
-#~ "נצחון\n"
-#~ "@תבוסה מנהיגי האויב"
-
-#~ msgid "Grassland"
-#~ msgstr "אדמת מרעה"
-
-#~ msgid "Snow"
-#~ msgstr "שלג"
-
-#~ msgid "Ice"
-#~ msgstr "קרח"
-
-#, fuzzy
-#~ msgid ""
-#~ "Ice represents any body of frozen water. For gameplay purposes, it is "
-#~ "identical to <ref>dst='terrain_snow' text='Snow'</ref>. Note that "
-#~ "swimming units, even those who can breathe underwater, cannot swim "
-#~ "underneath ice."
-#~ msgstr ""
-#~ "קרח מייצג כל גוף של מים קפואים, למטרת משחקיות, הוא זהה "
-#~ "ל<ref>dst=terrain_tundra text=שלג</ref>. שים לב שיחידות שוחות, אפילו אילו "
-#~ "שיכולות לנשום מתחת למים, לא יכולת לשחות מתחת לקרח."
-
-#~ msgid "Savanna"
-#~ msgstr "ערבה"
-
-#, fuzzy
-#~ msgid ""
-#~ "Savannas are plains of tall grass, found in the warmer climates of the "
-#~ "world. For gameplay purposes, they are identical to "
-#~ "<ref>dst='terrain_grassland' text='Grassland'</ref>."
-#~ msgstr ""
-#~ "ערבות הן מישורים של עשב גבוה, שנמצאות באזורי האקלים החמים יותר בעולם. ככל "
-#~ "שזה נוגע למשחקיות, הן זהות ל<ref>dst=terrain_grassland text='אדמת מרעה'</"
-#~ "ref>."
-
-#~ msgid "Chasm"
-#~ msgstr "תהום"
-
-#~ msgid "Cave Wall"
-#~ msgstr "קיר מערה"
-
-#~ msgid ""
-#~ "Cave walls are made of solid stone, renowned for its ability to impede "
-#~ "even the most determined traveler."
-#~ msgstr ""
-#~ "קירות מערה עשויים מאבן קשה, שידועה ביכולת שלה לעצור אפילו את הנוסע הנחוש "
-#~ "ביותר."
-
-#~ msgid "Battle for Wesnoth"
-#~ msgstr "הקרב על ווסנות'"
-
-#~ msgid "No multiplayer sides available in this game"
-#~ msgstr "לא נמצאו צדדים למשחק רב-משתתפים במשחק זה"
-
-#~ msgid "Warning: Errors occurred while loading game configuration files: '"
-#~ msgstr "אזהרה: שגיאות הופיעו בעת טעינת קבצי התצורה של המשחק: '"
-
-#, fuzzy
-#~ msgid "testing translation reset."
-#~ msgstr "תרגום לאסטונית"
-
-#, fuzzy
-#~ msgid "Connect to add-ons server"
-#~ msgstr "התחבר לשרת"
-
-#, fuzzy
-#~ msgid "Type the address of a server to download add-ons from."
-#~ msgstr "עתה מתחבר לשרת מערכה לצורך הורדת מערכות."
-
-#~ msgid "Server: "
-#~ msgstr "שרת: "
-
-#~ msgid "Join Official Server"
-#~ msgstr "הצטרף לשרת הרשמי"
-
-#~ msgid "Log on to the official Wesnoth multiplayer server"
-#~ msgstr "התחברות לשרת משחקי הרשת הרשמי של ווסנות'"
-
-#~ msgid "Connect to Server"
-#~ msgstr "התחבר לשרת"
-
-#, fuzzy
-#~ msgid "Join a different server"
-#~ msgstr "הצטרף לשרת הרשמי"
-
-#~ msgid "Host Networked Game"
-#~ msgstr "ארח משחק רשת"
-
-#, fuzzy
-#~ msgid "Host a game using dedicated server 'wesnothd'"
-#~ msgstr "ארח משחק ללא שימוש בשרת"
-
-#, fuzzy
-#~ msgid ""
-#~ "Play a multiplayer game with the AI or humans sharing the same machine"
-#~ msgstr "משחק רב משתתפים על אותו מחשב"
-
-#~ msgid "Language"
-#~ msgstr "שפה"
-
-#~ msgid "Choose your preferred language:"
-#~ msgstr "בחר את השפה המועדפת עליך:"
-
-#, fuzzy
-#~ msgid "View List"
-#~ msgstr "רשימת יחידות"
-
-#, fuzzy
-#~ msgid "List of Servers"
-#~ msgstr "התחבר לשרת"
-
-#~ msgid "Connect to Host"
-#~ msgstr "התחברות למחשב מארח"
-
-#~ msgid "Choose host to connect to: "
-#~ msgstr "בחר מחשב מארח להתחברות: "
-
-#, fuzzy
-#~ msgid "testing translation reset"
-#~ msgstr "תרגום לאסטונית"
-
-#, fuzzy
-#~ msgid "test translation reset"
-#~ msgstr "תרגום לפורטוגזית"
-
-#, fuzzy
-#~ msgid "File"
-#~ msgstr "יכולות: "
-
-#, fuzzy
-#~ msgid "Map"
-#~ msgstr "זאפ"
-
-#, fuzzy
-#~ msgid "Remove add-ons"
-#~ msgstr "מחיקת מערכה: "
-
-#, fuzzy
-#~ msgid "--move--"
-#~ msgstr "מהלכים"
-
-#~ msgid "Level"
-#~ msgstr "רמה"
-
-#, fuzzy
-#~ msgid "Default"
-#~ msgstr "ברירת מחדל"
-
-#, fuzzy
-#~ msgid "name :"
-#~ msgstr "שם:"
-
-#, fuzzy
-#~ msgid "cancel"
-#~ msgstr "בטל"
-
-#, fuzzy
-#~ msgid "#(unknown campaign)"
-#~ msgstr "עידן לא ידוע: "
-
-#~ msgid "Screenshot"
-#~ msgstr "צילום מסך"
-
-#, fuzzy
-#~ msgid "Map_Screenshot"
-#~ msgstr "צילום מסך"
-
-#, fuzzy
-#~ msgid "Unknown subcommand."
-#~ msgstr "תרחיש לא ידוע"
-
-#, fuzzy
-#~ msgid "Unknown command."
-#~ msgstr "עידן לא ידוע: "
-
-#, fuzzy
-#~ msgid "Unknown command: "
-#~ msgstr "תרחיש לא ידוע: "
-
-#~ msgid "Join a server or hosted game"
-#~ msgstr "הצטרף לשרת או למשחק מאורח "
-
-#~ msgid "DejaVuSans.ttf,sazanami-gothic.ttf,gkai00mp.ttf"
-#~ msgstr "DejaVuSans.ttf,sazanami-gothic.ttf,gkai00mp.ttf "
-
-#~ msgid "Vacant Slots:"
-#~ msgstr "מקומות פנויים:"
-
-#~ msgid "Damage Taken"
-#~ msgstr "נזק שנספג"
-
-#~ msgid "Damage Inflicted (EV)"
-#~ msgstr "נזק נגרם (ע\"צ)"
-
-#~ msgid "Damage Taken (EV)"
-#~ msgstr "נזק שנספג (ע\"צ)"
-
-#, fuzzy
-#~ msgid ""
-#~ "Poisoned units lose 8 hitpoints every turn, but they will not die from "
-#~ "poison: poison will never reduce them below 1 hitpoint. Poisoned units "
-#~ "next to a healer will not lose hitpoints on their next turn. If they are "
-#~ "in a village or next to a unit with the 'cures' ability, the poison will "
-#~ "be completely cured on their next turn."
-#~ msgstr ""
-#~ "יחידות מורעלות יאבדו 8 נקודות פגיעה כל תור, אבל לא ימותו מרעל: רעל לעולם "
-#~ "לא יוריד את נקודות הפגיעה אל מתחת לאחד. אפשר לרפא יחידות מורעלות על ידי "
-#~ "הזזתם לתוך כפר, או ליד יחידה עם יכולת ריפוי."
-
-#~ msgid "Contributors"
-#~ msgstr "תורמים"
-
-#, fuzzy
-#~ msgid "Heal to full, MAX XP +25%"
-#~ msgstr ", נק\"ן מירבי +25%"
-
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "Each scenario has some objectives, shown as the scenario starts. These "
-#~ "objectives list what you need to do to win, and what you should do to "
-#~ "avoid losing. Often the objective is to defeat all enemies, but other "
-#~ "times you need to reach a destination, to rescue someone, to solve a "
-#~ "puzzle, or just to survive a certain number of turns."
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "לכל תרחיש יש מטרות, שמוצגות בתחילת התרחיש. המטרות אומרות מה אתה צריך "
-#~ "לעשות כדי לנצח בתרחיש, וממה אתה צריך להמנע כדי לא להפסיד. לעיתים קרובות "
-#~ "המטרה היא להביס את כל האוייבים שלך, אבל לפעמים אתה צריך להגיע ליעד, להציל "
-#~ "מישהו, לפתור חידה או פשוט לשרוד מספר מסוים של תורות."
-
-#, fuzzy
-#~ msgid "Campaign Maintenance"
-#~ msgstr "מערכה"
-
-#, fuzzy
-#~ msgid "Artwork and Graphics Design"
-#~ msgstr "עיצוב אומנותי וגרפיקה"
-
-#, fuzzy
-#~ msgid "Translators"
-#~ msgstr "תרגום לצ'כית"
-
-#, fuzzy
-#~ msgid "Code and Translation Assistance"
-#~ msgstr "תרגום לנורווגית"
-
-#, fuzzy
-#~ msgid "WML Assistance"
-#~ msgstr "עמידות"
-
-#~ msgid "Era not available"
-#~ msgstr "תקופה אינה זמינה"
-
-#~ msgid "-- The Tome of Wesnoth"
-#~ msgstr "-- הספר של ווסנות'"
-
-#, fuzzy
-#~ msgid "Masked Dwarf"
-#~ msgstr "טרול"
-
-#~ msgid "Full Heal"
-#~ msgstr "ריפוי מלא"
-
-#~ msgid ""
-#~ "In a campaign, you can use veteran units from previous scenarios by using "
-#~ "the 'recall' option."
-#~ msgstr ""
-#~ "בתרחיש, אתה יכול להשתמש ביחידה ותיקה מתרחישים קודמים על ידי שימוש באפשרות "
-#~ "'החזרה'."
-
-#~ msgid ""
-#~ "Holding the mouse cursor on an ability or trait shows a description of "
-#~ "that ability or trait."
-#~ msgstr "החזקת הסמן מעל יכולת או מאפיין תראה את תאור היכולת או המאפיין."
-
-#~ msgid "Binary Saves"
-#~ msgstr "קובץ שמירה בינארי"
-
-#, fuzzy
-#~ msgid "time left"
-#~ msgstr "הגבלת זמן"
-
-#~ msgid "No multiplayer sides."
-#~ msgstr "לא נמצאו יריבים."
-
-#~ msgid ""
-#~ "The games are out of sync and will have to exit. Do you want to save an "
-#~ "error log of your game?"
-#~ msgstr ""
-#~ "המשחקים לא מתואמים ויהיו חייבים לצאת. האם אתה רוצה לשמור את יומן השגיאות "
-#~ "של המשחק שלך?"
-
-#, fuzzy
-#~ msgid "TitleScreen button^More"
-#~ msgstr "טען"
-
-#~ msgid ""
-#~ "The login name you chose is too long, please use a login with less than "
-#~ "18 characters"
-#~ msgstr "שם המשתמש שבחרת ארוך מידי, בחר בבקשה שם משתמש עם פחות מ 18 תווים"
-
-#, fuzzy
-#~ msgid "Receiving data..."
-#~ msgstr "מקבל נתוני משחק..."
-
-#~ msgid "Campaign"
-#~ msgstr "מערכה"
-
-#, fuzzy
-#~ msgid "race^Lizards"
-#~ msgstr "אל-מתים"
-
-#, fuzzy
-#~ msgid "Advance from:"
-#~ msgstr "מתקדמת אל: "
-
-#~ msgid "Choose the campaign you want to play:"
-#~ msgstr "בחר את המערכה שברצונך לשחק:"
-
-#, fuzzy
-#~ msgid " per level"
-#~ msgstr "רמה"
-
-#, fuzzy
-#~ msgid "female^Elvish Lady"
-#~ msgstr "גנבת"
-
-#~ msgid "; "
-#~ msgstr ";"
-
-#, fuzzy
-#~ msgid "/level"
-#~ msgstr "רמה"
-
-#~ msgid "This water will make melee weapons holy."
-#~ msgstr "המים יהפכו נשק פנים מול פנים לקדוש."
-
-#~ msgid "Replace with "
-#~ msgstr "החלף עם "
-
-#, fuzzy
-#~ msgid "Races"
-#~ msgstr "אלה"
-
-#, fuzzy
-#~ msgid "Music Development"
-#~ msgstr "-   מפתח ראשי"
-
-#, fuzzy
-#~ msgid "WML Contributors"
-#~ msgstr "תורמים"
-
-#~ msgid "Elves"
-#~ msgstr "אלפים"
-
-#~ msgid "Orcs"
-#~ msgstr "אורקים"
-
-#~ msgid "her"
-#~ msgstr "אותה"
-
-#~ msgid "him"
-#~ msgstr "אותו"
-
-#, fuzzy
-#~ msgid "game settings^Fog"
-#~ msgstr "השתמש בהגדרות המפה"
-
-#~ msgid "Can't set abilities yet, sorry."
-#~ msgstr "לא יכול לקבוע יכולות עדיין, מצטער."
-
-#, fuzzy
-#~ msgid "Credits"
-#~ msgstr "מאפיינים"
-
-#, fuzzy
-#~ msgid "Unit art"
-#~ msgstr "רשימת יחידות"
-
-#, fuzzy
-#~ msgid "Map art"
-#~ msgstr "מפה"
-
-#~ msgid "mace"
-#~ msgstr "אלה"
-
-#~ msgid "sling"
-#~ msgstr "סלינג"
-
-#, fuzzy
-#~ msgid "female^Fugitive"
-#~ msgstr "קוסמת"
-
-#, fuzzy
-#~ msgid "Highwayman"
-#~ msgstr "נושא חנית"
-
-#, fuzzy
-#~ msgid "Outlaw Ranger"
-#~ msgstr "פורע חוק"
-
-#~ msgid "bow"
-#~ msgstr "קשת"
-
-#, fuzzy
-#~ msgid "None"
-#~ msgstr "אין"
-
-#, fuzzy
-#~ msgid "Elven Castle"
-#~ msgstr "טירת גמדים"
-
-#~ msgid "Dwarven Castle"
-#~ msgstr "טירת גמדים"
-
-#~ msgid "Ruin"
-#~ msgstr "הריסות"
-
-#~ msgid "Sunken Ruin"
-#~ msgstr "הריסות שקועות"
-
-#~ msgid "Swamp Ruin"
-#~ msgstr "הריסות ביצה"
-
-#, fuzzy
-#~ msgid "Encampment keep"
-#~ msgstr "מחנה"
-
-#~ msgid "Keep"
-#~ msgstr "מצודה"
-
-#, fuzzy
-#~ msgid "Elven Keep"
-#~ msgstr "טירת גמדים"
-
-#, fuzzy
-#~ msgid "Dwarven keep"
-#~ msgstr "טירת גמדים"
-
-#, fuzzy
-#~ msgid "Sunken keep"
-#~ msgstr "הריסות שקועות"
-
-#, fuzzy
-#~ msgid "Swamp keep"
-#~ msgstr "ביצה"
-
-#, fuzzy
-#~ msgid "Crater"
-#~ msgstr "טירה"
-
-#, fuzzy
-#~ msgid "Rubble"
-#~ msgstr "כפול"
-
-#~ msgid "Oasis"
-#~ msgstr "נווה מדבר"
-
-#~ msgid "Snow Forest"
-#~ msgstr "יער מושלג"
-
-#~ msgid "Great Tree"
-#~ msgstr "עץ ענקי"
-
-#~ msgid "Tropical Forest"
-#~ msgstr "יער טרופי"
-
-#~ msgid "Snow Hills"
-#~ msgstr "גבעות שלג"
-
-#~ msgid "Dunes"
-#~ msgstr "דיונות"
-
-#, fuzzy
-#~ msgid "Desert road"
-#~ msgstr "מדבר"
-
-#~ msgid "Dirt"
-#~ msgstr "עפר"
-
-#, fuzzy
-#~ msgid "Farmland"
-#~ msgstr "צליפה"
-
-#, fuzzy
-#~ msgid "Rockbound Cave Lit"
-#~ msgstr "מערה מוקפת סלעים"
-
-#, fuzzy
-#~ msgid "Impassable Mountains"
-#~ msgstr "הרים"
-
-#, fuzzy
-#~ msgid "Impassable Desert Mountains"
-#~ msgstr "הרים"
