@@ -72,7 +72,7 @@ void location_callable::serialize_to_string(std::string& str) const
 {
 	std::ostringstream s;
 	s << "loc(" << (loc_.x+1) << "," << (loc_.y+1) << ")";
-	str = s.str();
+	str += s.str();
 }
 
 variant move_map_callable::get_value(const std::string& key) const

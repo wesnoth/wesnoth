@@ -34,7 +34,7 @@ struct token_type {
 token_type token_types[] = { { regex("^(not\\b|and\\b|or\\b|where\\b|d(?=[^a-zA-Z])|\\*|\\+|-(?=[^>])|\\^|%|/|<=|>=|<|>|!=|=|\\.)"), TOKEN_OPERATOR },
 				{ regex("^functions\\b"),  TOKEN_KEYWORD },
 				{ regex("^def\\b"),        TOKEN_KEYWORD },
-				{ regex("^faifile\\b"),        TOKEN_KEYWORD },
+				{ regex("^fai\\b"),        TOKEN_KEYWORD },
 				{ regex("^faiend\\b"),        TOKEN_KEYWORD },
 				{ regex("^'[^']*'"),       TOKEN_STRING_LITERAL },
 				{ regex("^[a-zA-Z_]+"),    TOKEN_IDENTIFIER },

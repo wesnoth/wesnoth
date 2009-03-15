@@ -1450,28 +1450,34 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 		advances_to_ = temp_advances;
 	}
 
-	//support for unit formulas and unit-specyfic variables in [ai_vars]
-	unit_formula_ = cfg["formula"];
-	unit_loop_formula_ = cfg["loop_formula"];
-        unit_priority_formula_ = cfg["priority_formula"];
-	unit_on_fail_formula_ = cfg["on_fail"];
+        const config* ai = cfg.child("ai");
 
-	const config* ai_vars = cfg.child("ai_vars");
-	if (ai_vars)
-	{
-		formula_vars_ = new game_logic::map_formula_callable;
+        if( ai )
+        {
+            unit_formula_ = (*ai)["formula"];
+            unit_loop_formula_ = (*ai)["loop_formula"];
+            unit_priority_formula_ = (*ai)["priority"];
+            unit_on_fail_formula_ = (*ai)["on_fail"];
+            
+            const config* ai_vars = (*ai).child("vars");
+            if (ai_vars)
+            {
+                    formula_vars_ = new game_logic::map_formula_callable;
 
-		variant var;
-		for(string_map::const_iterator i = ai_vars->values.begin(); i != ai_vars->values.end(); ++i)
-		{
- 			var.serialize_from_string(i->second);
-			formula_vars_->add(i->first, var);
-		}
-	} else {
-		formula_vars_ = game_logic::map_formula_callable_ptr();
-	}
-	//remove ai_vars from private cfg
-	cfg_.clear_children("ai_vars");
+                    variant var;
+                    for(string_map::const_iterator i = ai_vars->values.begin(); i != ai_vars->values.end(); ++i)
+                    {
+                            var.serialize_from_string(i->second);
+                            formula_vars_->add(i->first, var);
+                    }
+            } else {
+                    formula_vars_ = game_logic::map_formula_callable_ptr();
+            }
+
+        }
+
+        //remove ai from private cfg
+	cfg_.clear_children("ai");
 
 	//dont use the unit_type's attacks if this config has its own defined
 	config::const_child_itors cfg_range = cfg.child_range("attack");
@@ -1619,37 +1625,43 @@ void unit::write(config& cfg) const
 
 	cfg["type"] = type_id();
 
-	//support for unit formulas and unit-specyfic variables in [ai_vars]
-	if (has_formula())
-		cfg["formula"] = unit_formula_;
+	//support for unit formulas in [ai] and unit-specyfic variables in [ai] [vars]
 
-	if (has_loop_formula())
-		cfg["loop_formula"] = unit_loop_formula_;
+        if ( has_formula() || has_loop_formula() || (formula_vars_ && formula_vars_->empty() == false) ) {
 
-	if (has_priority_formula())
-		cfg["priority_formula"] = unit_priority_formula_;
+            cfg.add_child("ai");
+            config* ai = cfg.child("ai");
 
-	if (has_on_fail_formula())
-		cfg["on_fail"] = unit_on_fail_formula_;
+            if (has_formula())
+                    (*ai)["formula"] = unit_formula_;
+
+            if (has_loop_formula())
+                    (*ai)["loop_formula"] = unit_loop_formula_;
+
+            if (has_priority_formula())
+                    (*ai)["priority"] = unit_priority_formula_;
+
+            if (has_on_fail_formula())
+                    (*ai)["on_fail"] = unit_on_fail_formula_;
 
 
-	if (formula_vars_ && formula_vars_->empty() == false)
-	{
-		cfg.add_child("ai_vars");
-		config* ai_vars = cfg.child("ai_vars");
+            if (formula_vars_ && formula_vars_->empty() == false)
+            {
+                    (*ai).add_child("vars");
+                    config* ai_vars = (*ai).child("vars");
 
-		std::string str;
-		for(game_logic::map_formula_callable::const_iterator i = formula_vars_->begin(); i != formula_vars_->end(); ++i)
-		{
-			i->second.serialize_to_string(str);
-			if (!str.empty())
-			{
-				(*ai_vars)[i->first] = str;
-				str.clear();
-			}
-		}
-	}
-
+                    std::string str;
+                    for(game_logic::map_formula_callable::const_iterator i = formula_vars_->begin(); i != formula_vars_->end(); ++i)
+                    {
+                            i->second.serialize_to_string(str);
+                            if (!str.empty())
+                            {
+                                    (*ai_vars)[i->first] = str;
+                                    str.clear();
+                            }
+                    }
+            }
+        }
 
 	cfg["gender"] = gender_string(gender_);
 

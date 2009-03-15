@@ -66,6 +66,7 @@ public:
 
 	virtual void get_inputs(std::vector<formula_input>* /*inputs*/) const {};
 
+        //note: this function should NOT overwrite str, but append text to it!
 	void serialize(std::string& str) const {
 		serialize_to_string(str);
 	}
@@ -81,6 +82,7 @@ protected:
 		return this < callable ? -1 : (this == callable ? 0 : 1);
 	}
 
+        //note: this function should NOT overwrite str, but append text to it!
 	virtual void serialize_to_string(std::string& /*str*/) const {
 		throw type_error("Tried to serialize type which cannot be serialized");
 	}

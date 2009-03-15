@@ -853,8 +853,8 @@ formula::formula(const std::string& str, function_symbol_table* symbols) :
 	std::vector<token> tokens;
 	std::string::const_iterator i1 = str.begin(), i2 = str.end();
 
-	//set true when 'faifile' keyword is found
-	bool faifile_keyword = false;
+	//set true when 'fai' keyword is found
+	bool fai_keyword = false;
 	//used to locally keep the track of which file we parse actually and in which line we are
 	std::vector< std::pair< std::string, int> > files;
 	//used as a source of strings - we point to these strings from tokens
@@ -888,8 +888,8 @@ formula::formula(const std::string& str, function_symbol_table* symbols) :
 				files.back().second++;
 				tokens.pop_back();
 			} else
-			if( ( current_type == TOKEN_KEYWORD) && ( std::string(tokens.back().begin,tokens.back().end)  == "faifile") ) {
-				faifile_keyword = true;
+			if( ( current_type == TOKEN_KEYWORD) && ( std::string(tokens.back().begin,tokens.back().end)  == "fai") ) {
+				fai_keyword = true;
 				tokens.pop_back();
 			} else
 			if( ( current_type == TOKEN_KEYWORD) && ( std::string(tokens.back().begin,tokens.back().end) == "faiend") ) {
@@ -901,7 +901,7 @@ formula::formula(const std::string& str, function_symbol_table* symbols) :
 					throw formula_error("Unexpected 'faiend' found", "", "", 0);
 				}
 			} else
-			if (faifile_keyword) {
+			if (fai_keyword) {
 				if(current_type == TOKEN_STRING_LITERAL) {
 					std::string str = std::string(tokens.back().begin,tokens.back().end);
 					files.push_back( std::make_pair( str , 1 ) );
@@ -910,12 +910,12 @@ formula::formula(const std::string& str, function_symbol_table* symbols) :
 					if(ret.second==true) {
 						filenames_it = ret.first;
 					} else {
-						throw formula_error("Faifile already included", "faifile" + str, "", 0);
+						throw formula_error("Faifile already included", "fai" + str, "", 0);
 					}
 					tokens.pop_back();
-					faifile_keyword = false;
+					fai_keyword = false;
 				} else {
-					throw formula_error("Expected string after the 'faifile'", "faifile", "", 0);
+					throw formula_error("Expected string after the 'fai'", "fai", "", 0);
 				}
 			} else {
 				//in every token not specified above, store line number and name of file it came from

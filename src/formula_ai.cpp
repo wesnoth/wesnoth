@@ -1970,7 +1970,7 @@ bool formula_ai::execute_variant(const variant& var, bool commandline)
 		} else if(i->is_string() && i->as_string() == "recruit") {
 			do_recruitment();
 			made_move = true;
-		} else if(i->is_string() && i->as_string() == "end_turn") {
+		} else if(i->is_string() && (i->as_string() == "end_turn" || i->as_string() == "end" )  ) {
 			return false;
 		} else if(fallback_command) {
 			if (master_)

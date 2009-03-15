@@ -35,18 +35,5 @@ BOOST_AUTO_TEST_CASE( test_move )
 	BOOST_CHECK_EQUAL(scenario.find_unit_loc("side_1_leader"), map_location(14,4));
 }
 
-BOOST_AUTO_TEST_CASE( test_move_teleport_bug )
-{
-	test_utils::play_scenario scenario("formula");
-
-	scenario.add_formula_command("move(loc(11,3), loc(19,7))");
-
-	scenario.play();
-
-	// Remember that map_location() handles automaticaly transition to 1 based from 0 based locations
-	// we should land to same place as previus test as 19,7 is 2 moves to same direction
-	BOOST_CHECK_EQUAL(scenario.find_unit_loc("side_1_leader"), map_location(14,4));
-}
-
 
 BOOST_AUTO_TEST_SUITE_END();
