@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu-wesnoth_1.5\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-03-14 15:27+0100\n"
+"POT-Creation-Date: 2009-03-15 22:31+0100\n"
 "PO-Revision-Date: 2009-03-05 00:46+0100\n"
 "Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
 "Language-Team: Hungarian <wesnoth-hungtrans@gna.org>\n"
@@ -220,42 +220,42 @@ msgid "Programming"
 msgstr "Programozás"
 
 #. [about]
-#: data/core/about.cfg:186
+#: data/core/about.cfg:189
 msgid "General Purpose Administration and Coordination"
 msgstr "Általános ügyintézők"
 
 #. [about]
-#: data/core/about.cfg:204
+#: data/core/about.cfg:207
 msgid "Artwork and Graphics"
 msgstr "Grafika és megjelenítés"
 
 #. [about]
-#: data/core/about.cfg:499
+#: data/core/about.cfg:502
 msgid "Music"
 msgstr "Zene"
 
 #. [about]
-#: data/core/about.cfg:530
+#: data/core/about.cfg:533
 msgid "Sound Effects"
 msgstr "Hanghatások"
 
 #. [about]
-#: data/core/about.cfg:546
+#: data/core/about.cfg:549
 msgid "Campaign Design"
 msgstr "Hadjárattervezés"
 
 #. [about]
-#: data/core/about.cfg:613
+#: data/core/about.cfg:616
 msgid "Multiplayer Maps and Balancing"
 msgstr "Többjátékos pályák tervezése és finomhangolása"
 
 #. [about]
-#: data/core/about.cfg:654
+#: data/core/about.cfg:657
 msgid "Packagers"
 msgstr "Csomagkészítők"
 
 #. [about]
-#: data/core/about.cfg:720
+#: data/core/about.cfg:723
 msgid "Miscellaneous contributors"
 msgstr "További közreműködők"
 
@@ -6048,7 +6048,7 @@ msgstr "Nem hivatalos Wesnoth-kiszolgáló"
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/campaign_dialog.cfg:32 src/game.cpp:1097
+#: data/gui/default/window/campaign_dialog.cfg:32 src/game.cpp:1107
 msgid "Play a campaign"
 msgstr "Hadjárat"
 
@@ -6950,8 +6950,8 @@ msgstr "Küldetés vége"
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=label-hp
 #: data/themes/default.cfg:212 data/themes/dfool.cfg:232
-#: data/themes/experimental.cfg:181 src/menu_events.cpp:201 src/unit.cpp:2569
-#: src/unit.cpp:2743
+#: data/themes/experimental.cfg:181 src/menu_events.cpp:201 src/unit.cpp:2592
+#: src/unit.cpp:2766
 msgid "HP"
 msgstr "ÉP"
 
@@ -7519,7 +7519,7 @@ msgstr "Nincsen használható fegyver"
 msgid "Chance of being unscathed"
 msgstr "Sértetlenül maradás esélye"
 
-#: src/attack_prediction_display.cpp:554 src/mouse_events.cpp:617
+#: src/attack_prediction_display.cpp:554 src/mouse_events.cpp:625
 msgid "Damage Calculations"
 msgstr "Sebzés előszámítások"
 
@@ -7697,7 +7697,7 @@ msgstr "TP: "
 msgid "Moves: "
 msgstr "Lépés: "
 
-#: src/game.cpp:611 src/game.cpp:1426
+#: src/game.cpp:611 src/game.cpp:1436
 msgid "The Battle for Wesnoth"
 msgstr "Harc Wesnothért"
 
@@ -7720,31 +7720,36 @@ msgstr ""
 "Ez a mentés a játék egy másik verziójával készült. Megpróbálod mégis "
 "betölteni? "
 
-#: src/game.cpp:962 src/game.cpp:965 src/multiplayer_connect.cpp:1529
+#: src/game.cpp:963 src/game.cpp:971 src/playsingle_controller.cpp:490
+#: src/playsingle_controller.cpp:548
+msgid "The file you have tried to load is corrupt"
+msgstr "A fájl, amelyet megpróbáltál betölteni, sérült"
+
+#: src/game.cpp:966 src/game.cpp:974 src/multiplayer_connect.cpp:1529
 msgid "The file you have tried to load is corrupt: '"
 msgstr "A fájl, amelyet megpróbáltál betölteni, megsérült: '"
 
-#: src/game.cpp:968
+#: src/game.cpp:978
 msgid "File I/O Error while reading the game"
 msgstr "Fájl I/O hiba a játék beolvasásakor"
 
-#: src/game.cpp:1055 src/game.cpp:1093
+#: src/game.cpp:1065 src/game.cpp:1103
 msgid "No campaigns are available.\n"
 msgstr "Nincsenek elérhető hadjáratok.\n"
 
-#: src/game.cpp:1143
+#: src/game.cpp:1153
 msgid "Difficulty"
 msgstr "Nehézség"
 
-#: src/game.cpp:1144
+#: src/game.cpp:1154
 msgid "Select difficulty level:"
 msgstr "Válassz nehézségi szintet:"
 
-#: src/game.cpp:1305
+#: src/game.cpp:1315
 msgid "Do you really want to start the server?"
 msgstr "Biztosan el akarod indítani a kiszolgálót?"
 
-#: src/game.cpp:1306
+#: src/game.cpp:1316
 msgid ""
 "The server will run in a background process until all users have "
 "disconnected."
@@ -7752,61 +7757,61 @@ msgstr ""
 "A kiszolgáló mindaddig fut a háttérben, amíg minden felhasználó le nem "
 "kapcsolódik."
 
-#: src/game.cpp:1310
+#: src/game.cpp:1320
 msgid "Don't show again"
 msgstr "Ne mutasd többször"
 
-#: src/game.cpp:1381
+#: src/game.cpp:1391
 msgid "Error while starting server: "
 msgstr "Hiba a kiszolgáló indítása közben:"
 
-#: src/game.cpp:1383 src/playcampaign.cpp:97 src/playcampaign.cpp:383
+#: src/game.cpp:1393 src/playcampaign.cpp:97 src/playcampaign.cpp:383
 msgid "The game could not be loaded: "
 msgstr "A játékot nem sikerült betölteni: "
 
-#: src/game.cpp:1385 src/playcampaign.cpp:99 src/playcampaign.cpp:386
+#: src/game.cpp:1395 src/playcampaign.cpp:99 src/playcampaign.cpp:386
 msgid "Error while playing the game: "
 msgstr "Hiba a játék közben: "
 
-#: src/game.cpp:1405 src/playcampaign.cpp:101 src/playcampaign.cpp:389
+#: src/game.cpp:1415 src/playcampaign.cpp:101 src/playcampaign.cpp:389
 msgid "The game map could not be loaded: "
 msgstr "A pályát nem sikerült betölteni: "
 
-#: src/game.cpp:1471 src/game.cpp:1592
+#: src/game.cpp:1481 src/game.cpp:1602
 msgid "Error loading game configuration files: '"
 msgstr "Hiba a konfigurációs fájlok betöltésekor: '"
 
-#: src/game.cpp:1472 src/game.cpp:1593
+#: src/game.cpp:1482 src/game.cpp:1603
 msgid "' (The game will now exit)"
 msgstr "' (A játék most befejezi a futást)"
 
-#: src/game.cpp:1567
+#: src/game.cpp:1577
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "Hiba a következő kiegészítésben, a betöltés sikertelen: "
 msgstr[1] "Hiba a következő kiegészítésekben, a betöltés sikertelen: "
 
-#: src/game.cpp:1574
+#: src/game.cpp:1584
 msgid "ERROR DETAILS:"
 msgstr "A HIBA RÉSZLETEZÉSE:"
 
-#: src/game.cpp:1602
+#: src/game.cpp:1612
 msgid "Loading data files"
 msgstr "Egységek fájljainak beolvasása"
 
-#: src/game.cpp:1994
+#: src/game.cpp:2004
 msgid "Loading game configuration."
 msgstr "A játék beállításainak betöltése"
 
-#: src/game.cpp:2000
+#: src/game.cpp:2010
 msgid "Re-initialize fonts for the current language."
 msgstr "Betűtípus újrainicializálása a jelenlegi nyelvhez."
 
-#: src/game.cpp:2008
+#: src/game.cpp:2018
 msgid "Searching for installed add-ons."
 msgstr "Telepített kiegészítések keresése"
 
-#: src/game.cpp:2017
+#: src/game.cpp:2027
 msgid "Loading title screen."
 msgstr "Kezdőképernyő betöltése"
 
@@ -7830,11 +7835,11 @@ msgstr "Hibakeresés:"
 msgid "Info: "
 msgstr "Információ:"
 
-#: src/game_events.cpp:1072
+#: src/game_events.cpp:1078
 msgid "Victory:"
 msgstr "Győzöl, ha:"
 
-#: src/game_events.cpp:1075
+#: src/game_events.cpp:1081
 msgid "Defeat:"
 msgstr "Veszítesz, ha:"
 
@@ -8731,11 +8736,11 @@ msgstr "Parancs:"
 msgid "User-Command#3"
 msgstr "Felhasználói parancs#3"
 
-#: src/mouse_events.cpp:628
+#: src/mouse_events.cpp:636
 msgid "Attack Enemy"
 msgstr "Ellenség megtámadása"
 
-#: src/mouse_events.cpp:629
+#: src/mouse_events.cpp:637
 msgid "Choose weapon:"
 msgstr "Válassz fegyvert:"
 
@@ -9460,10 +9465,6 @@ msgstr "Győzelem"
 msgid "You have emerged victorious!"
 msgstr "Győztél!"
 
-#: src/playsingle_controller.cpp:490 src/playsingle_controller.cpp:548
-msgid "The file you have tried to load is corrupt"
-msgstr "A fájl, amelyet megpróbáltál betölteni, sérült"
-
 #: src/playsingle_controller.cpp:500
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
@@ -9743,39 +9744,39 @@ msgstr "Segítsd a Wesnothot"
 msgid "Help Wesnoth by sending us information"
 msgstr "Segítsd a Wesnoth fejlesztőit azzal, hogy információt küldesz!"
 
-#: src/unit.cpp:592
+#: src/unit.cpp:602
 msgid "Unknown unit type '$type|' while generating traits"
 msgstr "Hiba a jellemvonások generálásakor – ismeretlen egységtípus: „|$type|”"
 
-#: src/unit.cpp:793
+#: src/unit.cpp:804
 msgid "Unknown unit type '$type|'"
 msgstr "Ismeretlen egységtípus: „|$type|”"
 
-#: src/unit.cpp:2526 src/unit.cpp:2731 src/unit.cpp:2787
+#: src/unit.cpp:2549 src/unit.cpp:2754 src/unit.cpp:2826
 msgid " and "
 msgstr " és "
 
-#: src/unit.cpp:2537
+#: src/unit.cpp:2560
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/unit.cpp:2602
+#: src/unit.cpp:2625
 msgid "moves"
 msgstr "lépések"
 
-#: src/unit.cpp:2620 src/unit.cpp:2758
+#: src/unit.cpp:2643 src/unit.cpp:2781
 msgid "XP to advance"
 msgstr "TP a szintlépéshez"
 
-#: src/unit.cpp:2750
+#: src/unit.cpp:2773
 msgid " move"
 msgstr " lép"
 
-#: src/unit.cpp:2766
+#: src/unit.cpp:2789
 msgid "$effect_description per level"
 msgstr "$effect_description szintenként"
 
-#: src/unit.cpp:2796
+#: src/unit.cpp:2835
 msgid "$trait_name|: $trait_description "
 msgstr "$trait_name|: $trait_description "
 

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-03-14 15:27+0100\n"
+"POT-Creation-Date: 2009-03-15 22:31+0100\n"
 "PO-Revision-Date: 2008-07-21 23:50+0900\n"
 "Last-Translator: naoki iimura <amatubu@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
@@ -219,42 +219,42 @@ msgid "Programming"
 msgstr "プログラミング"
 
 #. [about]
-#: data/core/about.cfg:186
+#: data/core/about.cfg:189
 msgid "General Purpose Administration and Coordination"
 msgstr "全般の管理と調整"
 
 #. [about]
-#: data/core/about.cfg:204
+#: data/core/about.cfg:207
 msgid "Artwork and Graphics"
 msgstr "アートワークおよびグラフィクス"
 
 #. [about]
-#: data/core/about.cfg:499
+#: data/core/about.cfg:502
 msgid "Music"
 msgstr "音楽"
 
 #. [about]
-#: data/core/about.cfg:530
+#: data/core/about.cfg:533
 msgid "Sound Effects"
 msgstr "サウンドエフェクト"
 
 #. [about]
-#: data/core/about.cfg:546
+#: data/core/about.cfg:549
 msgid "Campaign Design"
 msgstr "キャンペーンデザイン"
 
 #. [about]
-#: data/core/about.cfg:613
+#: data/core/about.cfg:616
 msgid "Multiplayer Maps and Balancing"
 msgstr "マルチプレイヤーマップとバランス調整"
 
 #. [about]
-#: data/core/about.cfg:654
+#: data/core/about.cfg:657
 msgid "Packagers"
 msgstr "パッケージ作成"
 
 #. [about]
-#: data/core/about.cfg:720
+#: data/core/about.cfg:723
 msgid "Miscellaneous contributors"
 msgstr "その他の貢献者"
 
@@ -5753,7 +5753,7 @@ msgstr "代わりの Wesnoth サーバー"
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/campaign_dialog.cfg:32 src/game.cpp:1097
+#: data/gui/default/window/campaign_dialog.cfg:32 src/game.cpp:1107
 msgid "Play a campaign"
 msgstr "キャンペーンをプレイする"
 
@@ -6625,8 +6625,8 @@ msgstr "シナリオ終了"
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=label-hp
 #: data/themes/default.cfg:212 data/themes/dfool.cfg:232
-#: data/themes/experimental.cfg:181 src/menu_events.cpp:201 src/unit.cpp:2569
-#: src/unit.cpp:2743
+#: data/themes/experimental.cfg:181 src/menu_events.cpp:201 src/unit.cpp:2592
+#: src/unit.cpp:2766
 msgid "HP"
 msgstr "HP"
 
@@ -7200,7 +7200,7 @@ msgstr "使用できる武器がありません"
 msgid "Chance of being unscathed"
 msgstr "無傷でいられる可能性"
 
-#: src/attack_prediction_display.cpp:554 src/mouse_events.cpp:617
+#: src/attack_prediction_display.cpp:554 src/mouse_events.cpp:625
 msgid "Damage Calculations"
 msgstr "ダメージ計算"
 
@@ -7380,7 +7380,7 @@ msgstr "経験: "
 msgid "Moves: "
 msgstr "移動: "
 
-#: src/game.cpp:611 src/game.cpp:1426
+#: src/game.cpp:611 src/game.cpp:1436
 msgid "The Battle for Wesnoth"
 msgstr "The Battle for Wesnoth"
 
@@ -7398,94 +7398,99 @@ msgid ""
 "load it?"
 msgstr "この保存データはゲームとは異なるバージョンです。 ロードしてみますか？"
 
-#: src/game.cpp:962 src/game.cpp:965 src/multiplayer_connect.cpp:1529
+#: src/game.cpp:963 src/game.cpp:971 src/playsingle_controller.cpp:490
+#: src/playsingle_controller.cpp:548
+msgid "The file you have tried to load is corrupt"
+msgstr "読み込もうとしたファイルは 壊れています。"
+
+#: src/game.cpp:966 src/game.cpp:974 src/multiplayer_connect.cpp:1529
 msgid "The file you have tried to load is corrupt: '"
 msgstr "ロードしようとしたファイルは壊れています: '"
 
-#: src/game.cpp:968
+#: src/game.cpp:978
 msgid "File I/O Error while reading the game"
 msgstr "ゲーム読み込み中のファイル入出力エラー"
 
-#: src/game.cpp:1055 src/game.cpp:1093
+#: src/game.cpp:1065 src/game.cpp:1103
 msgid "No campaigns are available.\n"
 msgstr "キャンペーンが存在しません。\n"
 
-#: src/game.cpp:1143
+#: src/game.cpp:1153
 msgid "Difficulty"
 msgstr "難易度"
 
-#: src/game.cpp:1144
+#: src/game.cpp:1154
 msgid "Select difficulty level:"
 msgstr "難易度を選択して下さい:"
 
-#: src/game.cpp:1305
+#: src/game.cpp:1315
 #, fuzzy
 msgid "Do you really want to start the server?"
 msgstr "本当に彼女を解雇しますか？"
 
-#: src/game.cpp:1306
+#: src/game.cpp:1316
 msgid ""
 "The server will run in a background process until all users have "
 "disconnected."
 msgstr ""
 
-#: src/game.cpp:1310
+#: src/game.cpp:1320
 #, fuzzy
 msgid "Don't show again"
 msgstr "二度と聞かないで！"
 
-#: src/game.cpp:1381
+#: src/game.cpp:1391
 #, fuzzy
 msgid "Error while starting server: "
 msgstr "ゲームプレイ中のエラー: "
 
-#: src/game.cpp:1383 src/playcampaign.cpp:97 src/playcampaign.cpp:383
+#: src/game.cpp:1393 src/playcampaign.cpp:97 src/playcampaign.cpp:383
 msgid "The game could not be loaded: "
 msgstr "ゲームはロードできませんでした: "
 
-#: src/game.cpp:1385 src/playcampaign.cpp:99 src/playcampaign.cpp:386
+#: src/game.cpp:1395 src/playcampaign.cpp:99 src/playcampaign.cpp:386
 msgid "Error while playing the game: "
 msgstr "ゲームプレイ中のエラー: "
 
-#: src/game.cpp:1405 src/playcampaign.cpp:101 src/playcampaign.cpp:389
+#: src/game.cpp:1415 src/playcampaign.cpp:101 src/playcampaign.cpp:389
 msgid "The game map could not be loaded: "
 msgstr "ゲームマップを読み込めませんでした: "
 
-#: src/game.cpp:1471 src/game.cpp:1592
+#: src/game.cpp:1481 src/game.cpp:1602
 msgid "Error loading game configuration files: '"
 msgstr "ゲーム設定ファイルの読み込みエラー: '"
 
-#: src/game.cpp:1472 src/game.cpp:1593
+#: src/game.cpp:1482 src/game.cpp:1603
 msgid "' (The game will now exit)"
 msgstr "' (このゲームは終了します)"
 
-#: src/game.cpp:1567
+#: src/game.cpp:1577
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "以下のアドオンキャンペーンには問題があり、読み込めませんでした:"
 
-#: src/game.cpp:1574
+#: src/game.cpp:1584
 msgid "ERROR DETAILS:"
 msgstr "エラー詳細:"
 
-#: src/game.cpp:1602
+#: src/game.cpp:1612
 msgid "Loading data files"
 msgstr "データファイル読み込み中"
 
-#: src/game.cpp:1994
+#: src/game.cpp:2004
 msgid "Loading game configuration."
 msgstr "ゲーム設定を読み込んでいます。"
 
-#: src/game.cpp:2000
+#: src/game.cpp:2010
 msgid "Re-initialize fonts for the current language."
 msgstr "現在の言語でフォントを再初期化します。"
 
-#: src/game.cpp:2008
+#: src/game.cpp:2018
 #, fuzzy
 msgid "Searching for installed add-ons."
 msgstr "アドオンの一覧を要求中"
 
-#: src/game.cpp:2017
+#: src/game.cpp:2027
 msgid "Loading title screen."
 msgstr "タイトル画面を読み込んでいます。"
 
@@ -7511,11 +7516,11 @@ msgstr ""
 msgid "Info: "
 msgstr ""
 
-#: src/game_events.cpp:1072
+#: src/game_events.cpp:1078
 msgid "Victory:"
 msgstr "勝利条件:"
 
-#: src/game_events.cpp:1075
+#: src/game_events.cpp:1081
 msgid "Defeat:"
 msgstr "敗北条件:"
 
@@ -8440,11 +8445,11 @@ msgstr "コマンド:"
 msgid "User-Command#3"
 msgstr "ユーザーコマンド#3"
 
-#: src/mouse_events.cpp:628
+#: src/mouse_events.cpp:636
 msgid "Attack Enemy"
 msgstr "敵を攻撃する"
 
-#: src/mouse_events.cpp:629
+#: src/mouse_events.cpp:637
 msgid "Choose weapon:"
 msgstr "武器の選択:"
 
@@ -9152,10 +9157,6 @@ msgstr "勝利"
 msgid "You have emerged victorious!"
 msgstr "あなたの勝利が明らかになりました！"
 
-#: src/playsingle_controller.cpp:490 src/playsingle_controller.cpp:548
-msgid "The file you have tried to load is corrupt"
-msgstr "読み込もうとしたファイルは 壊れています。"
-
 #: src/playsingle_controller.cpp:500
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
@@ -9436,41 +9437,41 @@ msgstr "Battle for Wesnoth"
 msgid "Help Wesnoth by sending us information"
 msgstr "我々に情報を送って Wesnoth を支援してください"
 
-#: src/unit.cpp:592
+#: src/unit.cpp:602
 #, fuzzy
 msgid "Unknown unit type '$type|' while generating traits"
 msgstr "不明のユニットタイプ '$type|'"
 
-#: src/unit.cpp:793
+#: src/unit.cpp:804
 msgid "Unknown unit type '$type|'"
 msgstr "不明のユニットタイプ '$type|'"
 
 # とりあえず……
-#: src/unit.cpp:2526 src/unit.cpp:2731 src/unit.cpp:2787
+#: src/unit.cpp:2549 src/unit.cpp:2754 src/unit.cpp:2826
 msgid " and "
 msgstr " かつ "
 
-#: src/unit.cpp:2537
+#: src/unit.cpp:2560
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/unit.cpp:2602
+#: src/unit.cpp:2625
 msgid "moves"
 msgstr "移動"
 
-#: src/unit.cpp:2620 src/unit.cpp:2758
+#: src/unit.cpp:2643 src/unit.cpp:2781
 msgid "XP to advance"
 msgstr "レベルアップに必要な経験値"
 
-#: src/unit.cpp:2750
+#: src/unit.cpp:2773
 msgid " move"
 msgstr " 移動"
 
-#: src/unit.cpp:2766
+#: src/unit.cpp:2789
 msgid "$effect_description per level"
 msgstr "レベルにつき $effect_description"
 
-#: src/unit.cpp:2796
+#: src/unit.cpp:2835
 msgid "$trait_name|: $trait_description "
 msgstr "$trait_name|: $trait_description "
 

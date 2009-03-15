@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-03-14 15:27+0100\n"
+"POT-Creation-Date: 2009-03-15 22:31+0100\n"
 "PO-Revision-Date: 2009-02-28 18:32-0300\n"
 "Last-Translator: Ignacio R. Morelle <shikadilord@users.sourceforge.net>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -224,42 +224,42 @@ msgid "Programming"
 msgstr "Programación"
 
 #. [about]
-#: data/core/about.cfg:186
+#: data/core/about.cfg:189
 msgid "General Purpose Administration and Coordination"
 msgstr "Administración de propósito general y coordinación"
 
 #. [about]
-#: data/core/about.cfg:204
+#: data/core/about.cfg:207
 msgid "Artwork and Graphics"
 msgstr "Trabajo artístico y gráficos"
 
 #. [about]
-#: data/core/about.cfg:499
+#: data/core/about.cfg:502
 msgid "Music"
 msgstr "Música"
 
 #. [about]
-#: data/core/about.cfg:530
+#: data/core/about.cfg:533
 msgid "Sound Effects"
 msgstr "Efectos de sonido"
 
 #. [about]
-#: data/core/about.cfg:546
+#: data/core/about.cfg:549
 msgid "Campaign Design"
 msgstr "Diseño de campañas"
 
 #. [about]
-#: data/core/about.cfg:613
+#: data/core/about.cfg:616
 msgid "Multiplayer Maps and Balancing"
 msgstr "Equilibrado y mapas para multijugador"
 
 #. [about]
-#: data/core/about.cfg:654
+#: data/core/about.cfg:657
 msgid "Packagers"
 msgstr "Empaquetadores"
 
 #. [about]
-#: data/core/about.cfg:720
+#: data/core/about.cfg:723
 msgid "Miscellaneous contributors"
 msgstr "Contribuidores misceláneos"
 
@@ -6099,7 +6099,7 @@ msgstr "Servidor wesnoth alternativo"
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/campaign_dialog.cfg:32 src/game.cpp:1097
+#: data/gui/default/window/campaign_dialog.cfg:32 src/game.cpp:1107
 msgid "Play a campaign"
 msgstr "Jugar una campaña"
 
@@ -7007,8 +7007,8 @@ msgstr "Finalizar Escenario"
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=label-hp
 #: data/themes/default.cfg:212 data/themes/dfool.cfg:232
-#: data/themes/experimental.cfg:181 src/menu_events.cpp:201 src/unit.cpp:2569
-#: src/unit.cpp:2743
+#: data/themes/experimental.cfg:181 src/menu_events.cpp:201 src/unit.cpp:2592
+#: src/unit.cpp:2766
 msgid "HP"
 msgstr "PV"
 
@@ -7584,7 +7584,7 @@ msgstr "Sin arma utilizable"
 msgid "Chance of being unscathed"
 msgstr "Posibilidad de salir ileso"
 
-#: src/attack_prediction_display.cpp:554 src/mouse_events.cpp:617
+#: src/attack_prediction_display.cpp:554 src/mouse_events.cpp:625
 msgid "Damage Calculations"
 msgstr "Cálculo del daño"
 
@@ -7766,7 +7766,7 @@ msgstr "PX: "
 msgid "Moves: "
 msgstr "Movimientos: "
 
-#: src/game.cpp:611 src/game.cpp:1426
+#: src/game.cpp:611 src/game.cpp:1436
 msgid "The Battle for Wesnoth"
 msgstr "La batalla por Wesnoth"
 
@@ -7790,31 +7790,36 @@ msgstr ""
 "Esta partida guardada es de otra versión del juego. ¿Quiere intentar "
 "cargarla igualmente?"
 
-#: src/game.cpp:962 src/game.cpp:965 src/multiplayer_connect.cpp:1529
+#: src/game.cpp:963 src/game.cpp:971 src/playsingle_controller.cpp:490
+#: src/playsingle_controller.cpp:548
+msgid "The file you have tried to load is corrupt"
+msgstr "El archivo que ha intentado cargar está corrupto"
+
+#: src/game.cpp:966 src/game.cpp:974 src/multiplayer_connect.cpp:1529
 msgid "The file you have tried to load is corrupt: '"
 msgstr "El archivo que ha intentado cargar está corrupto: «"
 
-#: src/game.cpp:968
+#: src/game.cpp:978
 msgid "File I/O Error while reading the game"
 msgstr "Error de E/S mientras se intentaba cargar la partida"
 
-#: src/game.cpp:1055 src/game.cpp:1093
+#: src/game.cpp:1065 src/game.cpp:1103
 msgid "No campaigns are available.\n"
 msgstr "No hay campañas disponibles.\n"
 
-#: src/game.cpp:1143
+#: src/game.cpp:1153
 msgid "Difficulty"
 msgstr "Dificultad"
 
-#: src/game.cpp:1144
+#: src/game.cpp:1154
 msgid "Select difficulty level:"
 msgstr "Seleccione el nivel de dificultad:"
 
-#: src/game.cpp:1305
+#: src/game.cpp:1315
 msgid "Do you really want to start the server?"
 msgstr "¿Realmente quiere iniciar el servidor?"
 
-#: src/game.cpp:1306
+#: src/game.cpp:1316
 msgid ""
 "The server will run in a background process until all users have "
 "disconnected."
@@ -7822,62 +7827,62 @@ msgstr ""
 "El servidor se ejecutará como un proceso en segundo plano hasta que todos "
 "los usuarios se desconecten."
 
-#: src/game.cpp:1310
+#: src/game.cpp:1320
 msgid "Don't show again"
 msgstr "No mostrar otra vez"
 
-#: src/game.cpp:1381
+#: src/game.cpp:1391
 msgid "Error while starting server: "
 msgstr "Error al iniciar el servidor: "
 
-#: src/game.cpp:1383 src/playcampaign.cpp:97 src/playcampaign.cpp:383
+#: src/game.cpp:1393 src/playcampaign.cpp:97 src/playcampaign.cpp:383
 msgid "The game could not be loaded: "
 msgstr "La partida no se ha podido cargar: "
 
-#: src/game.cpp:1385 src/playcampaign.cpp:99 src/playcampaign.cpp:386
+#: src/game.cpp:1395 src/playcampaign.cpp:99 src/playcampaign.cpp:386
 msgid "Error while playing the game: "
 msgstr "Error durante el juego: "
 
-#: src/game.cpp:1405 src/playcampaign.cpp:101 src/playcampaign.cpp:389
+#: src/game.cpp:1415 src/playcampaign.cpp:101 src/playcampaign.cpp:389
 msgid "The game map could not be loaded: "
 msgstr "El mapa del juego no se ha podido cargar: "
 
-#: src/game.cpp:1471 src/game.cpp:1592
+#: src/game.cpp:1481 src/game.cpp:1602
 msgid "Error loading game configuration files: '"
 msgstr "Error cargando archivos de configuración del juego: «"
 
-#: src/game.cpp:1472 src/game.cpp:1593
+#: src/game.cpp:1482 src/game.cpp:1603
 msgid "' (The game will now exit)"
 msgstr "» (el juego finalizará en este momento)"
 
-#: src/game.cpp:1567
+#: src/game.cpp:1577
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "El siguiente complemento contiene errores y no se ha podido cargar:"
 msgstr[1] ""
 "Los siguientes complementos contienen errores y no se han podido cargar:"
 
-#: src/game.cpp:1574
+#: src/game.cpp:1584
 msgid "ERROR DETAILS:"
 msgstr "DETALLES DEL ERROR:"
 
-#: src/game.cpp:1602
+#: src/game.cpp:1612
 msgid "Loading data files"
 msgstr "Leyendo archivos de datos"
 
-#: src/game.cpp:1994
+#: src/game.cpp:2004
 msgid "Loading game configuration."
 msgstr "Cargando configuración del juego."
 
-#: src/game.cpp:2000
+#: src/game.cpp:2010
 msgid "Re-initialize fonts for the current language."
 msgstr "Reiniciando tipografías para el idioma actual."
 
-#: src/game.cpp:2008
+#: src/game.cpp:2018
 msgid "Searching for installed add-ons."
 msgstr "Buscando complementos instalados."
 
-#: src/game.cpp:2017
+#: src/game.cpp:2027
 msgid "Loading title screen."
 msgstr "Cargando pantalla inicial."
 
@@ -7901,11 +7906,11 @@ msgstr "Depuración: "
 msgid "Info: "
 msgstr "Información: "
 
-#: src/game_events.cpp:1072
+#: src/game_events.cpp:1078
 msgid "Victory:"
 msgstr "Victoria:"
 
-#: src/game_events.cpp:1075
+#: src/game_events.cpp:1081
 msgid "Defeat:"
 msgstr "Derrota:"
 
@@ -8808,11 +8813,11 @@ msgstr "Orden:"
 msgid "User-Command#3"
 msgstr "Órden-Usuario#3"
 
-#: src/mouse_events.cpp:628
+#: src/mouse_events.cpp:636
 msgid "Attack Enemy"
 msgstr "Atacar al enemigo"
 
-#: src/mouse_events.cpp:629
+#: src/mouse_events.cpp:637
 msgid "Choose weapon:"
 msgstr "Escoger arma:"
 
@@ -9533,10 +9538,6 @@ msgstr "Victoria"
 msgid "You have emerged victorious!"
 msgstr "¡Ha vencido!"
 
-#: src/playsingle_controller.cpp:490 src/playsingle_controller.cpp:548
-msgid "The file you have tried to load is corrupt"
-msgstr "El archivo que ha intentado cargar está corrupto"
-
 #: src/playsingle_controller.cpp:500
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
@@ -9817,39 +9818,39 @@ msgstr "Ayude a Wesnoth"
 msgid "Help Wesnoth by sending us information"
 msgstr "Ayude a Wesnoth enviándonos información"
 
-#: src/unit.cpp:592
+#: src/unit.cpp:602
 msgid "Unknown unit type '$type|' while generating traits"
 msgstr "Tipo de unidad desconocido «$type|»"
 
-#: src/unit.cpp:793
+#: src/unit.cpp:804
 msgid "Unknown unit type '$type|'"
 msgstr "Tipo de unidad desconocido «$type|»"
 
-#: src/unit.cpp:2526 src/unit.cpp:2731 src/unit.cpp:2787
+#: src/unit.cpp:2549 src/unit.cpp:2754 src/unit.cpp:2826
 msgid " and "
 msgstr "and"
 
-#: src/unit.cpp:2537
+#: src/unit.cpp:2560
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/unit.cpp:2602
+#: src/unit.cpp:2625
 msgid "moves"
 msgstr "movimientos"
 
-#: src/unit.cpp:2620 src/unit.cpp:2758
+#: src/unit.cpp:2643 src/unit.cpp:2781
 msgid "XP to advance"
 msgstr "PX para subir de nivel"
 
-#: src/unit.cpp:2750
+#: src/unit.cpp:2773
 msgid " move"
 msgstr "movimiento"
 
-#: src/unit.cpp:2766
+#: src/unit.cpp:2789
 msgid "$effect_description per level"
 msgstr "$effect_description por nivel"
 
-#: src/unit.cpp:2796
+#: src/unit.cpp:2835
 msgid "$trait_name|: $trait_description "
 msgstr "$trait_name|: $trait_description "
 

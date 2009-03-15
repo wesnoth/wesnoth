@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-03-14 15:27+0100\n"
+"POT-Creation-Date: 2009-03-15 22:31+0100\n"
 "PO-Revision-Date: 2009-03-14 18:17-0500\n"
 "Last-Translator: luojie <lililjlj@gmail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
@@ -212,42 +212,42 @@ msgid "Programming"
 msgstr "编程"
 
 #. [about]
-#: data/core/about.cfg:186
+#: data/core/about.cfg:189
 msgid "General Purpose Administration and Coordination"
 msgstr "规划和协调"
 
 #. [about]
-#: data/core/about.cfg:204
+#: data/core/about.cfg:207
 msgid "Artwork and Graphics"
 msgstr "艺术与图像设计 "
 
 #. [about]
-#: data/core/about.cfg:499
+#: data/core/about.cfg:502
 msgid "Music"
 msgstr "音乐"
 
 #. [about]
-#: data/core/about.cfg:530
+#: data/core/about.cfg:533
 msgid "Sound Effects"
 msgstr "音效"
 
 #. [about]
-#: data/core/about.cfg:546
+#: data/core/about.cfg:549
 msgid "Campaign Design"
 msgstr "战役设计"
 
 #. [about]
-#: data/core/about.cfg:613
+#: data/core/about.cfg:616
 msgid "Multiplayer Maps and Balancing"
 msgstr "多人地图和平衡性"
 
 #. [about]
-#: data/core/about.cfg:654
+#: data/core/about.cfg:657
 msgid "Packagers"
 msgstr "游戏打包人员"
 
 #. [about]
-#: data/core/about.cfg:720
+#: data/core/about.cfg:723
 msgid "Miscellaneous contributors"
 msgstr "贡献者"
 
@@ -5576,7 +5576,7 @@ msgstr "其他服务器"
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/campaign_dialog.cfg:32 src/game.cpp:1097
+#: data/gui/default/window/campaign_dialog.cfg:32 src/game.cpp:1107
 msgid "Play a campaign"
 msgstr "战役"
 
@@ -6386,8 +6386,8 @@ msgstr "结束场景"
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=label-hp
 #: data/themes/default.cfg:212 data/themes/dfool.cfg:232
-#: data/themes/experimental.cfg:181 src/menu_events.cpp:201 src/unit.cpp:2569
-#: src/unit.cpp:2743
+#: data/themes/experimental.cfg:181 src/menu_events.cpp:201 src/unit.cpp:2592
+#: src/unit.cpp:2766
 msgid "HP"
 msgstr "生命值"
 
@@ -6946,7 +6946,7 @@ msgstr "无可用武器"
 msgid "Chance of being unscathed"
 msgstr "不受伤的几率"
 
-#: src/attack_prediction_display.cpp:554 src/mouse_events.cpp:617
+#: src/attack_prediction_display.cpp:554 src/mouse_events.cpp:625
 msgid "Damage Calculations"
 msgstr "攻击计算"
 
@@ -7121,7 +7121,7 @@ msgstr "经验值："
 msgid "Moves: "
 msgstr "移动： "
 
-#: src/game.cpp:611 src/game.cpp:1426
+#: src/game.cpp:611 src/game.cpp:1436
 msgid "The Battle for Wesnoth"
 msgstr "韦诺之战"
 
@@ -7139,91 +7139,96 @@ msgid ""
 "load it?"
 msgstr "这个存档来自于不同版本的游戏。您仍然想载入吗？"
 
-#: src/game.cpp:962 src/game.cpp:965 src/multiplayer_connect.cpp:1529
+#: src/game.cpp:963 src/game.cpp:971 src/playsingle_controller.cpp:490
+#: src/playsingle_controller.cpp:548
+msgid "The file you have tried to load is corrupt"
+msgstr "您想载入的文件已损坏"
+
+#: src/game.cpp:966 src/game.cpp:974 src/multiplayer_connect.cpp:1529
 msgid "The file you have tried to load is corrupt: '"
 msgstr "您试图载入的文件已损坏： '"
 
-#: src/game.cpp:968
+#: src/game.cpp:978
 msgid "File I/O Error while reading the game"
 msgstr "当读取游戏时发生文件I/O错误。"
 
-#: src/game.cpp:1055 src/game.cpp:1093
+#: src/game.cpp:1065 src/game.cpp:1103
 msgid "No campaigns are available.\n"
 msgstr "无可用战役。\n"
 
-#: src/game.cpp:1143
+#: src/game.cpp:1153
 msgid "Difficulty"
 msgstr "难度"
 
-#: src/game.cpp:1144
+#: src/game.cpp:1154
 msgid "Select difficulty level:"
 msgstr "选择难度："
 
-#: src/game.cpp:1305
+#: src/game.cpp:1315
 msgid "Do you really want to start the server?"
 msgstr "真想要开启一个服务器？"
 
-#: src/game.cpp:1306
+#: src/game.cpp:1316
 msgid ""
 "The server will run in a background process until all users have "
 "disconnected."
 msgstr "服务器会在后台一直运行，直到所有用户都断开连接。"
 
-#: src/game.cpp:1310
+#: src/game.cpp:1320
 msgid "Don't show again"
 msgstr "不要再次显示"
 
-#: src/game.cpp:1381
+#: src/game.cpp:1391
 msgid "Error while starting server: "
 msgstr "游戏服务端开启错误： "
 
-#: src/game.cpp:1383 src/playcampaign.cpp:97 src/playcampaign.cpp:383
+#: src/game.cpp:1393 src/playcampaign.cpp:97 src/playcampaign.cpp:383
 msgid "The game could not be loaded: "
 msgstr "无法加载游戏： "
 
-#: src/game.cpp:1385 src/playcampaign.cpp:99 src/playcampaign.cpp:386
+#: src/game.cpp:1395 src/playcampaign.cpp:99 src/playcampaign.cpp:386
 msgid "Error while playing the game: "
 msgstr "游戏执行出错： "
 
-#: src/game.cpp:1405 src/playcampaign.cpp:101 src/playcampaign.cpp:389
+#: src/game.cpp:1415 src/playcampaign.cpp:101 src/playcampaign.cpp:389
 msgid "The game map could not be loaded: "
 msgstr "无法加载游戏地图： "
 
-#: src/game.cpp:1471 src/game.cpp:1592
+#: src/game.cpp:1481 src/game.cpp:1602
 msgid "Error loading game configuration files: '"
 msgstr "载入游戏配置文件时出错： '"
 
-#: src/game.cpp:1472 src/game.cpp:1593
+#: src/game.cpp:1482 src/game.cpp:1603
 msgid "' (The game will now exit)"
 msgstr "' （现在将退出游戏）"
 
-#: src/game.cpp:1567
+#: src/game.cpp:1577
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "以下插件有错误，无法加载："
 msgstr[1] "以下插件有错误，无法加载："
 
-#: src/game.cpp:1574
+#: src/game.cpp:1584
 msgid "ERROR DETAILS:"
 msgstr "错误细节："
 
-#: src/game.cpp:1602
+#: src/game.cpp:1612
 msgid "Loading data files"
 msgstr "读取数据文件"
 
-#: src/game.cpp:1994
+#: src/game.cpp:2004
 msgid "Loading game configuration."
 msgstr "载入游戏配置。"
 
-#: src/game.cpp:2000
+#: src/game.cpp:2010
 msgid "Re-initialize fonts for the current language."
 msgstr "为当前语言重绘字体。"
 
-#: src/game.cpp:2008
+#: src/game.cpp:2018
 msgid "Searching for installed add-ons."
 msgstr "搜索已经安装的插件"
 
-#: src/game.cpp:2017
+#: src/game.cpp:2027
 msgid "Loading title screen."
 msgstr "载入主屏幕。"
 
@@ -7247,11 +7252,11 @@ msgstr "调试："
 msgid "Info: "
 msgstr "信息："
 
-#: src/game_events.cpp:1072
+#: src/game_events.cpp:1078
 msgid "Victory:"
 msgstr "胜利："
 
-#: src/game_events.cpp:1075
+#: src/game_events.cpp:1081
 msgid "Defeat:"
 msgstr "失败："
 
@@ -8126,11 +8131,11 @@ msgstr "命令："
 msgid "User-Command#3"
 msgstr "用户命令#3"
 
-#: src/mouse_events.cpp:628
+#: src/mouse_events.cpp:636
 msgid "Attack Enemy"
 msgstr "攻击敌人"
 
-#: src/mouse_events.cpp:629
+#: src/mouse_events.cpp:637
 msgid "Choose weapon:"
 msgstr "选择武器："
 
@@ -8826,10 +8831,6 @@ msgstr "胜利"
 msgid "You have emerged victorious!"
 msgstr "您取得了胜利！"
 
-#: src/playsingle_controller.cpp:490 src/playsingle_controller.cpp:548
-msgid "The file you have tried to load is corrupt"
-msgstr "您想载入的文件已损坏"
-
 #: src/playsingle_controller.cpp:500
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
@@ -9102,39 +9103,39 @@ msgstr "帮助韦诺之战"
 msgid "Help Wesnoth by sending us information"
 msgstr "发送信息，帮助韦诺"
 
-#: src/unit.cpp:592
+#: src/unit.cpp:602
 msgid "Unknown unit type '$type|' while generating traits"
 msgstr "生成头像时，未知单位种类 '$type|'"
 
-#: src/unit.cpp:793
+#: src/unit.cpp:804
 msgid "Unknown unit type '$type|'"
 msgstr "未知单位种类 '$type|'"
 
-#: src/unit.cpp:2526 src/unit.cpp:2731 src/unit.cpp:2787
+#: src/unit.cpp:2549 src/unit.cpp:2754 src/unit.cpp:2826
 msgid " and "
 msgstr "以及"
 
-#: src/unit.cpp:2537
+#: src/unit.cpp:2560
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/unit.cpp:2602
+#: src/unit.cpp:2625
 msgid "moves"
 msgstr "移动点数"
 
-#: src/unit.cpp:2620 src/unit.cpp:2758
+#: src/unit.cpp:2643 src/unit.cpp:2781
 msgid "XP to advance"
 msgstr "的升级所需经验值"
 
-#: src/unit.cpp:2750
+#: src/unit.cpp:2773
 msgid " move"
 msgstr "移动"
 
-#: src/unit.cpp:2766
+#: src/unit.cpp:2789
 msgid "$effect_description per level"
 msgstr "每级 $effect_description"
 
-#: src/unit.cpp:2796
+#: src/unit.cpp:2835
 msgid "$trait_name|: $trait_description "
 msgstr "$trait_name|: $trait_description "
 

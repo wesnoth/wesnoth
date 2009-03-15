@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.1.1\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-03-14 15:27+0100\n"
+"POT-Creation-Date: 2009-03-15 22:31+0100\n"
 "PO-Revision-Date: 2006-12-22 21:30+0100\n"
 "Last-Translator: YbeRn00b <asgeiraakre@gmail.com>\n"
 "Language-Team: None\n"
@@ -216,46 +216,46 @@ msgid "Programming"
 msgstr ""
 
 #. [about]
-#: data/core/about.cfg:186
+#: data/core/about.cfg:189
 #, fuzzy
 msgid "General Purpose Administration and Coordination"
 msgstr "+Allmenne administratorer"
 
 #. [about]
-#: data/core/about.cfg:204
+#: data/core/about.cfg:207
 #, fuzzy
 msgid "Artwork and Graphics"
 msgstr "Grafikk og illustrasjoner"
 
 #. [about]
-#: data/core/about.cfg:499
+#: data/core/about.cfg:502
 msgid "Music"
 msgstr "Musikk"
 
 #. [about]
-#: data/core/about.cfg:530
+#: data/core/about.cfg:533
 msgid "Sound Effects"
 msgstr ""
 
 #. [about]
-#: data/core/about.cfg:546
+#: data/core/about.cfg:549
 #, fuzzy
 msgid "Campaign Design"
 msgstr "Felttogdesigner"
 
 #. [about]
-#: data/core/about.cfg:613
+#: data/core/about.cfg:616
 #, fuzzy
 msgid "Multiplayer Maps and Balancing"
 msgstr "Gruppespillkart"
 
 #. [about]
-#: data/core/about.cfg:654
+#: data/core/about.cfg:657
 msgid "Packagers"
 msgstr "Pakkere"
 
 #. [about]
-#: data/core/about.cfg:720
+#: data/core/about.cfg:723
 #, fuzzy
 msgid "Miscellaneous contributors"
 msgstr "Diverse"
@@ -5299,7 +5299,7 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/campaign_dialog.cfg:32 src/game.cpp:1097
+#: data/gui/default/window/campaign_dialog.cfg:32 src/game.cpp:1107
 #, fuzzy
 msgid "Play a campaign"
 msgstr "Felttog"
@@ -6147,8 +6147,8 @@ msgstr "Scenario hos annen spiller"
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=label-hp
 #: data/themes/default.cfg:212 data/themes/dfool.cfg:232
-#: data/themes/experimental.cfg:181 src/menu_events.cpp:201 src/unit.cpp:2569
-#: src/unit.cpp:2743
+#: data/themes/experimental.cfg:181 src/menu_events.cpp:201 src/unit.cpp:2592
+#: src/unit.cpp:2766
 msgid "HP"
 msgstr "HP"
 
@@ -6751,7 +6751,7 @@ msgstr "Ingen brukbare våpen"
 msgid "Chance of being unscathed"
 msgstr "Sjanse for å være uskadet"
 
-#: src/attack_prediction_display.cpp:554 src/mouse_events.cpp:617
+#: src/attack_prediction_display.cpp:554 src/mouse_events.cpp:625
 msgid "Damage Calculations"
 msgstr "Skadeberegninger"
 
@@ -6937,7 +6937,7 @@ msgstr "XP: "
 msgid "Moves: "
 msgstr "Flytt: "
 
-#: src/game.cpp:611 src/game.cpp:1426
+#: src/game.cpp:611 src/game.cpp:1436
 msgid "The Battle for Wesnoth"
 msgstr "Kampen om Wesnoth"
 
@@ -6960,98 +6960,103 @@ msgstr ""
 "Det lagrede spillet er fra en annen versjon av spillet. Vil du prøve å laste "
 "det inn likevel?"
 
-#: src/game.cpp:962 src/game.cpp:965 src/multiplayer_connect.cpp:1529
+#: src/game.cpp:963 src/game.cpp:971 src/playsingle_controller.cpp:490
+#: src/playsingle_controller.cpp:548
+msgid "The file you have tried to load is corrupt"
+msgstr "Det er noe galt med filen du prøvde å laste"
+
+#: src/game.cpp:966 src/game.cpp:974 src/multiplayer_connect.cpp:1529
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Filen du prøver å laste er i ustand: '"
 
-#: src/game.cpp:968
+#: src/game.cpp:978
 msgid "File I/O Error while reading the game"
 msgstr "I/O-feil ved lesing av spillet"
 
-#: src/game.cpp:1055 src/game.cpp:1093
+#: src/game.cpp:1065 src/game.cpp:1103
 #, fuzzy
 msgid "No campaigns are available.\n"
 msgstr "Ingen mål tilgjengelig."
 
-#: src/game.cpp:1143
+#: src/game.cpp:1153
 msgid "Difficulty"
 msgstr "Vanskelighetsgrad"
 
-#: src/game.cpp:1144
+#: src/game.cpp:1154
 msgid "Select difficulty level:"
 msgstr "Velg vanskelighetsgrad:"
 
-#: src/game.cpp:1305
+#: src/game.cpp:1315
 #, fuzzy
 msgid "Do you really want to start the server?"
 msgstr "Vil du virkelig slette dette spillet?"
 
-#: src/game.cpp:1306
+#: src/game.cpp:1316
 msgid ""
 "The server will run in a background process until all users have "
 "disconnected."
 msgstr ""
 
-#: src/game.cpp:1310
+#: src/game.cpp:1320
 #, fuzzy
 msgid "Don't show again"
 msgstr "Ikke spør meg igjen!"
 
-#: src/game.cpp:1381
+#: src/game.cpp:1391
 #, fuzzy
 msgid "Error while starting server: "
 msgstr "Feil under spill: "
 
-#: src/game.cpp:1383 src/playcampaign.cpp:97 src/playcampaign.cpp:383
+#: src/game.cpp:1393 src/playcampaign.cpp:97 src/playcampaign.cpp:383
 msgid "The game could not be loaded: "
 msgstr "Spillet kunne ikke lastes: "
 
-#: src/game.cpp:1385 src/playcampaign.cpp:99 src/playcampaign.cpp:386
+#: src/game.cpp:1395 src/playcampaign.cpp:99 src/playcampaign.cpp:386
 msgid "Error while playing the game: "
 msgstr "Feil under spill: "
 
-#: src/game.cpp:1405 src/playcampaign.cpp:101 src/playcampaign.cpp:389
+#: src/game.cpp:1415 src/playcampaign.cpp:101 src/playcampaign.cpp:389
 msgid "The game map could not be loaded: "
 msgstr "Kartet kunne ikke lastes: "
 
-#: src/game.cpp:1471 src/game.cpp:1592
+#: src/game.cpp:1481 src/game.cpp:1602
 msgid "Error loading game configuration files: '"
 msgstr "Feil ved lasting av konfigurasjonsfiler: '"
 
-#: src/game.cpp:1472 src/game.cpp:1593
+#: src/game.cpp:1482 src/game.cpp:1603
 msgid "' (The game will now exit)"
 msgstr "' (Spillet avsluttes)"
 
-#: src/game.cpp:1567
+#: src/game.cpp:1577
 #, fuzzy
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "Følgende ekstra felttog hadde feil og kunne ikke lastes inn: "
 msgstr[1] "Følgende ekstra felttog hadde feil og kunne ikke lastes inn: "
 
-#: src/game.cpp:1574
+#: src/game.cpp:1584
 msgid "ERROR DETAILS:"
 msgstr "FEILRAPPORT:"
 
-#: src/game.cpp:1602
+#: src/game.cpp:1612
 #, fuzzy
 msgid "Loading data files"
 msgstr "Leser enhetsbeskrivelser."
 
-#: src/game.cpp:1994
+#: src/game.cpp:2004
 msgid "Loading game configuration."
 msgstr "Feil ved lasting av spillkonfigurasjon."
 
-#: src/game.cpp:2000
+#: src/game.cpp:2010
 msgid "Re-initialize fonts for the current language."
 msgstr "Installer skrift for gjeldende språk på nytt."
 
-#: src/game.cpp:2008
+#: src/game.cpp:2018
 #, fuzzy
 msgid "Searching for installed add-ons."
 msgstr "Sender spilltillegg"
 
-#: src/game.cpp:2017
+#: src/game.cpp:2027
 msgid "Loading title screen."
 msgstr "Laster hovedmeny."
 
@@ -7078,11 +7083,11 @@ msgstr ""
 msgid "Info: "
 msgstr ""
 
-#: src/game_events.cpp:1072
+#: src/game_events.cpp:1078
 msgid "Victory:"
 msgstr "Seier:"
 
-#: src/game_events.cpp:1075
+#: src/game_events.cpp:1081
 msgid "Defeat:"
 msgstr "Nederlag:"
 
@@ -8050,11 +8055,11 @@ msgstr "Kommando:"
 msgid "User-Command#3"
 msgstr "Kommandoer"
 
-#: src/mouse_events.cpp:628
+#: src/mouse_events.cpp:636
 msgid "Attack Enemy"
 msgstr "Angrip fiende"
 
-#: src/mouse_events.cpp:629
+#: src/mouse_events.cpp:637
 msgid "Choose weapon:"
 msgstr "Velg våpen:"
 
@@ -8778,10 +8783,6 @@ msgstr "Seier"
 msgid "You have emerged victorious!"
 msgstr "Du har seiret!"
 
-#: src/playsingle_controller.cpp:490 src/playsingle_controller.cpp:548
-msgid "The file you have tried to load is corrupt"
-msgstr "Det er noe galt med filen du prøvde å laste"
-
 #: src/playsingle_controller.cpp:500
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
@@ -9078,42 +9079,42 @@ msgstr "Kampen om Wesnoth"
 msgid "Help Wesnoth by sending us information"
 msgstr "Hjelp utviklerne ved å sende oss informasjon"
 
-#: src/unit.cpp:592
+#: src/unit.cpp:602
 msgid "Unknown unit type '$type|' while generating traits"
 msgstr ""
 
-#: src/unit.cpp:793
+#: src/unit.cpp:804
 msgid "Unknown unit type '$type|'"
 msgstr ""
 
-#: src/unit.cpp:2526 src/unit.cpp:2731 src/unit.cpp:2787
+#: src/unit.cpp:2549 src/unit.cpp:2754 src/unit.cpp:2826
 #, fuzzy
 msgid " and "
 msgstr "Sand"
 
-#: src/unit.cpp:2537
+#: src/unit.cpp:2560
 msgid "$attack_list|: $effect_description"
 msgstr ""
 
-#: src/unit.cpp:2602
+#: src/unit.cpp:2625
 #, fuzzy
 msgid "moves"
 msgstr "Flytt"
 
-#: src/unit.cpp:2620 src/unit.cpp:2758
+#: src/unit.cpp:2643 src/unit.cpp:2781
 msgid "XP to advance"
 msgstr "XP til forfremmelse"
 
-#: src/unit.cpp:2750
+#: src/unit.cpp:2773
 #, fuzzy
 msgid " move"
 msgstr "Flytt"
 
-#: src/unit.cpp:2766
+#: src/unit.cpp:2789
 msgid "$effect_description per level"
 msgstr ""
 
-#: src/unit.cpp:2796
+#: src/unit.cpp:2835
 msgid "$trait_name|: $trait_description "
 msgstr ""
 

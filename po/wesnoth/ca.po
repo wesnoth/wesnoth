@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.5.8+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-03-14 15:27+0100\n"
+"POT-Creation-Date: 2009-03-15 22:31+0100\n"
 "PO-Revision-Date: 2009-03-15 18:56+0100\n"
 "Last-Translator: Jordà Polo <jorda@ettin.org>\n"
 "Language-Team: Catalan <wesnoth-ca@lists.ettin.org>\n"
@@ -220,42 +220,42 @@ msgid "Programming"
 msgstr "Programació"
 
 #. [about]
-#: data/core/about.cfg:186
+#: data/core/about.cfg:189
 msgid "General Purpose Administration and Coordination"
 msgstr "Administrador de propòsit general i coordinació"
 
 #. [about]
-#: data/core/about.cfg:204
+#: data/core/about.cfg:207
 msgid "Artwork and Graphics"
 msgstr "Il·lustracions i gràfics"
 
 #. [about]
-#: data/core/about.cfg:499
+#: data/core/about.cfg:502
 msgid "Music"
 msgstr "Música"
 
 #. [about]
-#: data/core/about.cfg:530
+#: data/core/about.cfg:533
 msgid "Sound Effects"
 msgstr "Efectes de so"
 
 #. [about]
-#: data/core/about.cfg:546
+#: data/core/about.cfg:549
 msgid "Campaign Design"
 msgstr "Disseny de campanyes"
 
 #. [about]
-#: data/core/about.cfg:613
+#: data/core/about.cfg:616
 msgid "Multiplayer Maps and Balancing"
 msgstr "Mapes i balanceig del mode multijugador"
 
 #. [about]
-#: data/core/about.cfg:654
+#: data/core/about.cfg:657
 msgid "Packagers"
 msgstr "Empaquetadors"
 
 #. [about]
-#: data/core/about.cfg:720
+#: data/core/about.cfg:723
 msgid "Miscellaneous contributors"
 msgstr "Altres contribucions"
 
@@ -2031,8 +2031,8 @@ msgstr "Alentit"
 #: data/core/help.cfg:449
 msgid "Slow units have -1 movement but 5% more hitpoints."
 msgstr ""
-"Les unitats lentes tenen un punt de moviment menys, però un 5% més de "
-"punts de vida."
+"Les unitats lentes tenen un punt de moviment menys, però un 5% més de punts "
+"de vida."
 
 #. [topic]: id=traits_slow
 #: data/core/help.cfg:451
@@ -5621,7 +5621,7 @@ msgstr "Servidor alternatiu de Wesnoth"
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/campaign_dialog.cfg:32 src/game.cpp:1097
+#: data/gui/default/window/campaign_dialog.cfg:32 src/game.cpp:1107
 msgid "Play a campaign"
 msgstr "Comença una campanya"
 
@@ -6453,8 +6453,8 @@ msgstr "Fi de l'escenari"
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=label-hp
 #: data/themes/default.cfg:212 data/themes/dfool.cfg:232
-#: data/themes/experimental.cfg:181 src/menu_events.cpp:201 src/unit.cpp:2569
-#: src/unit.cpp:2743
+#: data/themes/experimental.cfg:181 src/menu_events.cpp:201 src/unit.cpp:2592
+#: src/unit.cpp:2766
 msgid "HP"
 msgstr "HP"
 
@@ -7022,7 +7022,7 @@ msgstr "No hi ha cap arma disponible"
 msgid "Chance of being unscathed"
 msgstr "Probabilitat d'acabar indemne"
 
-#: src/attack_prediction_display.cpp:554 src/mouse_events.cpp:617
+#: src/attack_prediction_display.cpp:554 src/mouse_events.cpp:625
 msgid "Damage Calculations"
 msgstr "Càlcul de mal"
 
@@ -7201,7 +7201,7 @@ msgstr "XP: "
 msgid "Moves: "
 msgstr "Moviments: "
 
-#: src/game.cpp:611 src/game.cpp:1426
+#: src/game.cpp:611 src/game.cpp:1436
 msgid "The Battle for Wesnoth"
 msgstr "La Batalla per Wesnoth"
 
@@ -7223,92 +7223,97 @@ msgstr ""
 "Aquesta partida és d'una versió diferent del joc. Voleu intentar carregar-la "
 "igualment?"
 
-#: src/game.cpp:962 src/game.cpp:965 src/multiplayer_connect.cpp:1529
+#: src/game.cpp:963 src/game.cpp:971 src/playsingle_controller.cpp:490
+#: src/playsingle_controller.cpp:548
+msgid "The file you have tried to load is corrupt"
+msgstr "El fitxer que heu intentat carregar està corromput."
+
+#: src/game.cpp:966 src/game.cpp:974 src/multiplayer_connect.cpp:1529
 msgid "The file you have tried to load is corrupt: '"
 msgstr "El fitxer que heu intentat carregar està corromput: '"
 
-#: src/game.cpp:968
+#: src/game.cpp:978
 msgid "File I/O Error while reading the game"
 msgstr "Error d'E/S en el fitxer mentre es llegia la partida"
 
-#: src/game.cpp:1055 src/game.cpp:1093
+#: src/game.cpp:1065 src/game.cpp:1103
 msgid "No campaigns are available.\n"
 msgstr "No hi ha campanyes disponibles.\n"
 
-#: src/game.cpp:1143
+#: src/game.cpp:1153
 msgid "Difficulty"
 msgstr "Dificultat"
 
-#: src/game.cpp:1144
+#: src/game.cpp:1154
 msgid "Select difficulty level:"
 msgstr "Seleccioneu el nivell de dificultat:"
 
-#: src/game.cpp:1305
+#: src/game.cpp:1315
 msgid "Do you really want to start the server?"
 msgstr "Segur que voleu iniciar el servidor?"
 
-#: src/game.cpp:1306
+#: src/game.cpp:1316
 msgid ""
 "The server will run in a background process until all users have "
 "disconnected."
 msgstr ""
 
-#: src/game.cpp:1310
+#: src/game.cpp:1320
 msgid "Don't show again"
 msgstr "No tornis a mostrar-ho."
 
-#: src/game.cpp:1381
+#: src/game.cpp:1391
 msgid "Error while starting server: "
 msgstr "S'ha produït un error mentre s'iniciava el servidor: "
 
-#: src/game.cpp:1383 src/playcampaign.cpp:97 src/playcampaign.cpp:383
+#: src/game.cpp:1393 src/playcampaign.cpp:97 src/playcampaign.cpp:383
 msgid "The game could not be loaded: "
 msgstr "No ha estat possible desar la partida:"
 
-#: src/game.cpp:1385 src/playcampaign.cpp:99 src/playcampaign.cpp:386
+#: src/game.cpp:1395 src/playcampaign.cpp:99 src/playcampaign.cpp:386
 msgid "Error while playing the game: "
 msgstr "S'ha produït un error durant la partida: "
 
-#: src/game.cpp:1405 src/playcampaign.cpp:101 src/playcampaign.cpp:389
+#: src/game.cpp:1415 src/playcampaign.cpp:101 src/playcampaign.cpp:389
 msgid "The game map could not be loaded: "
 msgstr "No ha estat possible carregar la partida:"
 
-#: src/game.cpp:1471 src/game.cpp:1592
+#: src/game.cpp:1481 src/game.cpp:1602
 msgid "Error loading game configuration files: '"
 msgstr "Error carregant els fitxers de configuració del joc: '"
 
-#: src/game.cpp:1472 src/game.cpp:1593
+#: src/game.cpp:1482 src/game.cpp:1603
 msgid "' (The game will now exit)"
 msgstr "' (ara es tancarà el joc)."
 
-#: src/game.cpp:1567
+#: src/game.cpp:1577
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "El complement següent contenia errors i no s'ha pogut carregar:"
 msgstr[1] ""
 "Els complements següents contenien errors i no s'han pogut carregar:"
 
-#: src/game.cpp:1574
+#: src/game.cpp:1584
 msgid "ERROR DETAILS:"
 msgstr "DETALLS DE L'ERROR:"
 
-#: src/game.cpp:1602
+#: src/game.cpp:1612
 msgid "Loading data files"
 msgstr "S'estan llegint els fitxers de dades"
 
-#: src/game.cpp:1994
+#: src/game.cpp:2004
 msgid "Loading game configuration."
 msgstr "S'està carregant la configuració del joc."
 
-#: src/game.cpp:2000
+#: src/game.cpp:2010
 msgid "Re-initialize fonts for the current language."
 msgstr "S'està tornant a inicialitzar la font per a l'idioma actual."
 
-#: src/game.cpp:2008
+#: src/game.cpp:2018
 msgid "Searching for installed add-ons."
 msgstr "S'estan cercant els complements instal·lats..."
 
-#: src/game.cpp:2017
+#: src/game.cpp:2027
 msgid "Loading title screen."
 msgstr "S'està carregant la pantalla principal."
 
@@ -7332,11 +7337,11 @@ msgstr "Depuració: "
 msgid "Info: "
 msgstr "Informació: "
 
-#: src/game_events.cpp:1072
+#: src/game_events.cpp:1078
 msgid "Victory:"
 msgstr "Victòria:"
 
-#: src/game_events.cpp:1075
+#: src/game_events.cpp:1081
 msgid "Defeat:"
 msgstr "Derrota:"
 
@@ -8228,11 +8233,11 @@ msgstr "Comanda:"
 msgid "User-Command#3"
 msgstr "Ordre d'usuari #3"
 
-#: src/mouse_events.cpp:628
+#: src/mouse_events.cpp:636
 msgid "Attack Enemy"
 msgstr "Atac enemic"
 
-#: src/mouse_events.cpp:629
+#: src/mouse_events.cpp:637
 msgid "Choose weapon:"
 msgstr "Trieu l'arma:"
 
@@ -8927,10 +8932,6 @@ msgstr "Victòria"
 msgid "You have emerged victorious!"
 msgstr "Heu estat el vencedor!"
 
-#: src/playsingle_controller.cpp:490 src/playsingle_controller.cpp:548
-msgid "The file you have tried to load is corrupt"
-msgstr "El fitxer que heu intentat carregar està corromput."
-
 #: src/playsingle_controller.cpp:500
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
@@ -9208,39 +9209,39 @@ msgstr "Ajuda de Wesnoth"
 msgid "Help Wesnoth by sending us information"
 msgstr "Ajudeu Wesnoth enviant informació de les partides"
 
-#: src/unit.cpp:592
+#: src/unit.cpp:602
 msgid "Unknown unit type '$type|' while generating traits"
 msgstr "Tipus d'unitat «$type|» desconegut mentre s'estaven generant els trets"
 
-#: src/unit.cpp:793
+#: src/unit.cpp:804
 msgid "Unknown unit type '$type|'"
 msgstr "Tipus d'unitat «$type|» desconegut"
 
-#: src/unit.cpp:2526 src/unit.cpp:2731 src/unit.cpp:2787
+#: src/unit.cpp:2549 src/unit.cpp:2754 src/unit.cpp:2826
 msgid " and "
 msgstr " i "
 
-#: src/unit.cpp:2537
+#: src/unit.cpp:2560
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/unit.cpp:2602
+#: src/unit.cpp:2625
 msgid "moves"
 msgstr "moviments"
 
-#: src/unit.cpp:2620 src/unit.cpp:2758
+#: src/unit.cpp:2643 src/unit.cpp:2781
 msgid "XP to advance"
 msgstr "punt d'experiència per avançar"
 
-#: src/unit.cpp:2750
+#: src/unit.cpp:2773
 msgid " move"
 msgstr " moviment"
 
-#: src/unit.cpp:2766
+#: src/unit.cpp:2789
 msgid "$effect_description per level"
 msgstr ""
 
-#: src/unit.cpp:2796
+#: src/unit.cpp:2835
 msgid "$trait_name|: $trait_description "
 msgstr ""
 

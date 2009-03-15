@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-03-14 15:27+0100\n"
+"POT-Creation-Date: 2009-03-15 22:31+0100\n"
 "PO-Revision-Date: 2008-03-01 19:31+0200\n"
 "Last-Translator: Aleksej Korgenkov <grimpanto@mail.ru>\n"
 "Language-Team: \n"
@@ -224,42 +224,42 @@ msgid "Programming"
 msgstr "Programado"
 
 #. [about]
-#: data/core/about.cfg:186
+#: data/core/about.cfg:189
 msgid "General Purpose Administration and Coordination"
 msgstr "Ĝenerala mastrumado"
 
 #. [about]
-#: data/core/about.cfg:204
+#: data/core/about.cfg:207
 msgid "Artwork and Graphics"
 msgstr "Artlaboro kaj desegnado"
 
 #. [about]
-#: data/core/about.cfg:499
+#: data/core/about.cfg:502
 msgid "Music"
 msgstr "Muziko"
 
 #. [about]
-#: data/core/about.cfg:530
+#: data/core/about.cfg:533
 msgid "Sound Effects"
 msgstr "Sonefektoj"
 
 #. [about]
-#: data/core/about.cfg:546
+#: data/core/about.cfg:549
 msgid "Campaign Design"
 msgstr "Desegnado de kampanjoj"
 
 #. [about]
-#: data/core/about.cfg:613
+#: data/core/about.cfg:616
 msgid "Multiplayer Maps and Balancing"
 msgstr "Grupludaj mapoj kaj balancigo"
 
 #. [about]
-#: data/core/about.cfg:654
+#: data/core/about.cfg:657
 msgid "Packagers"
 msgstr "Pakaĵfarado"
 
 #. [about]
-#: data/core/about.cfg:720
+#: data/core/about.cfg:723
 msgid "Miscellaneous contributors"
 msgstr "Diversaj kontribuantoj"
 
@@ -5586,7 +5586,7 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/campaign_dialog.cfg:32 src/game.cpp:1097
+#: data/gui/default/window/campaign_dialog.cfg:32 src/game.cpp:1107
 msgid "Play a campaign"
 msgstr "Ludi kampanjon"
 
@@ -6413,8 +6413,8 @@ msgstr "Fini scenejon"
 #. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=label-hp
 #: data/themes/default.cfg:212 data/themes/dfool.cfg:232
-#: data/themes/experimental.cfg:181 src/menu_events.cpp:201 src/unit.cpp:2569
-#: src/unit.cpp:2743
+#: data/themes/experimental.cfg:181 src/menu_events.cpp:201 src/unit.cpp:2592
+#: src/unit.cpp:2766
 msgid "HP"
 msgstr "Vivoj"
 
@@ -7004,7 +7004,7 @@ msgstr "Neniu uzebla armilo"
 msgid "Chance of being unscathed"
 msgstr ""
 
-#: src/attack_prediction_display.cpp:554 src/mouse_events.cpp:617
+#: src/attack_prediction_display.cpp:554 src/mouse_events.cpp:625
 msgid "Damage Calculations"
 msgstr "Vundiĝelkalkulo"
 
@@ -7184,7 +7184,7 @@ msgstr "Spertoj:"
 msgid "Moves: "
 msgstr "Movoj:"
 
-#: src/game.cpp:611 src/game.cpp:1426
+#: src/game.cpp:611 src/game.cpp:1436
 msgid "The Battle for Wesnoth"
 msgstr "Batalo pri Vesnot"
 
@@ -7209,98 +7209,103 @@ msgstr ""
 "Tiu ĉi konservita ludo estas el alia versio de programo. Ĉu mi provu ŝarĝi "
 "ĝin?"
 
-#: src/game.cpp:962 src/game.cpp:965 src/multiplayer_connect.cpp:1529
+#: src/game.cpp:963 src/game.cpp:971 src/playsingle_controller.cpp:490
+#: src/playsingle_controller.cpp:548
+msgid "The file you have tried to load is corrupt"
+msgstr "Dosiero, kiun vi volis legi, estas damaĝita."
+
+#: src/game.cpp:966 src/game.cpp:974 src/multiplayer_connect.cpp:1529
 msgid "The file you have tried to load is corrupt: '"
 msgstr "La dosiero, kiun vi volis ŝarĝi, estas damaĝita: '"
 
-#: src/game.cpp:968
+#: src/game.cpp:978
 msgid "File I/O Error while reading the game"
 msgstr "Eraro ĉe legado de lud-dosiero"
 
-#: src/game.cpp:1055 src/game.cpp:1093
+#: src/game.cpp:1065 src/game.cpp:1103
 #, fuzzy
 msgid "No campaigns are available.\n"
 msgstr "Neniaj celoj estas starigitaj"
 
-#: src/game.cpp:1143
+#: src/game.cpp:1153
 msgid "Difficulty"
 msgstr "Komplikeco"
 
-#: src/game.cpp:1144
+#: src/game.cpp:1154
 msgid "Select difficulty level:"
 msgstr "Elektu nivelon:"
 
-#: src/game.cpp:1305
+#: src/game.cpp:1315
 #, fuzzy
 msgid "Do you really want to start the server?"
 msgstr "Ĉu vi vere volas likvidi ŝin?"
 
-#: src/game.cpp:1306
+#: src/game.cpp:1316
 msgid ""
 "The server will run in a background process until all users have "
 "disconnected."
 msgstr ""
 
-#: src/game.cpp:1310
+#: src/game.cpp:1320
 #, fuzzy
 msgid "Don't show again"
 msgstr "Ne demandu denove!"
 
-#: src/game.cpp:1381
+#: src/game.cpp:1391
 #, fuzzy
 msgid "Error while starting server: "
 msgstr "Eraro ĉe ludado:"
 
-#: src/game.cpp:1383 src/playcampaign.cpp:97 src/playcampaign.cpp:383
+#: src/game.cpp:1393 src/playcampaign.cpp:97 src/playcampaign.cpp:383
 msgid "The game could not be loaded: "
 msgstr "Ne eblis alŝuti ludon:"
 
-#: src/game.cpp:1385 src/playcampaign.cpp:99 src/playcampaign.cpp:386
+#: src/game.cpp:1395 src/playcampaign.cpp:99 src/playcampaign.cpp:386
 msgid "Error while playing the game: "
 msgstr "Eraro ĉe ludado:"
 
-#: src/game.cpp:1405 src/playcampaign.cpp:101 src/playcampaign.cpp:389
+#: src/game.cpp:1415 src/playcampaign.cpp:101 src/playcampaign.cpp:389
 msgid "The game map could not be loaded: "
 msgstr "Ne eblis alŝuti ludmapon:"
 
-#: src/game.cpp:1471 src/game.cpp:1592
+#: src/game.cpp:1481 src/game.cpp:1602
 msgid "Error loading game configuration files: '"
 msgstr "Eraro ĉe legado de agordigaj dosieroj:  '"
 
-#: src/game.cpp:1472 src/game.cpp:1593
+#: src/game.cpp:1482 src/game.cpp:1603
 msgid "' (The game will now exit)"
 msgstr "' (Ludo nun finiĝas)"
 
-#: src/game.cpp:1567
+#: src/game.cpp:1577
 #, fuzzy
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "Pro eraroj ne eblis alŝuti sekvajn kompletigajn kampanjojn:"
 msgstr[1] "Pro eraroj ne eblis alŝuti sekvajn kompletigajn kampanjojn:"
 
-#: src/game.cpp:1574
+#: src/game.cpp:1584
 msgid "ERROR DETAILS:"
 msgstr "DETALOJ DE ERARO:"
 
-#: src/game.cpp:1602
+#: src/game.cpp:1612
 msgid "Loading data files"
 msgstr ""
 
-#: src/game.cpp:1994
+#: src/game.cpp:2004
 #, fuzzy
 msgid "Loading game configuration."
 msgstr "Eraro ĉe legado de agordigaj dosieroj:  '"
 
-#: src/game.cpp:2000
+#: src/game.cpp:2010
 msgid "Re-initialize fonts for the current language."
 msgstr ""
 
-#: src/game.cpp:2008
+#: src/game.cpp:2018
 #, fuzzy
 msgid "Searching for installed add-ons."
 msgstr "Mi enŝutas kampanjon..."
 
-#: src/game.cpp:2017
+#: src/game.cpp:2027
 msgid "Loading title screen."
 msgstr ""
 
@@ -7327,11 +7332,11 @@ msgstr ""
 msgid "Info: "
 msgstr ""
 
-#: src/game_events.cpp:1072
+#: src/game_events.cpp:1078
 msgid "Victory:"
 msgstr "Venko se:"
 
-#: src/game_events.cpp:1075
+#: src/game_events.cpp:1081
 msgid "Defeat:"
 msgstr "Malvenko se:"
 
@@ -8221,11 +8226,11 @@ msgstr "Ordono:"
 msgid "User-Command#3"
 msgstr "Komandanto"
 
-#: src/mouse_events.cpp:628
+#: src/mouse_events.cpp:636
 msgid "Attack Enemy"
 msgstr "Ataku malamikon"
 
-#: src/mouse_events.cpp:629
+#: src/mouse_events.cpp:637
 msgid "Choose weapon:"
 msgstr "Elektu armilojn:"
 
@@ -8932,10 +8937,6 @@ msgstr "Venko"
 msgid "You have emerged victorious!"
 msgstr "Vi venkis!"
 
-#: src/playsingle_controller.cpp:490 src/playsingle_controller.cpp:548
-msgid "The file you have tried to load is corrupt"
-msgstr "Dosiero, kiun vi volis legi, estas damaĝita."
-
 #: src/playsingle_controller.cpp:500
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
@@ -9215,39 +9216,39 @@ msgstr "Batalo por Vesnot'"
 msgid "Help Wesnoth by sending us information"
 msgstr ""
 
-#: src/unit.cpp:592
+#: src/unit.cpp:602
 msgid "Unknown unit type '$type|' while generating traits"
 msgstr ""
 
-#: src/unit.cpp:793
+#: src/unit.cpp:804
 msgid "Unknown unit type '$type|'"
 msgstr ""
 
-#: src/unit.cpp:2526 src/unit.cpp:2731 src/unit.cpp:2787
+#: src/unit.cpp:2549 src/unit.cpp:2754 src/unit.cpp:2826
 msgid " and "
 msgstr " kaj "
 
-#: src/unit.cpp:2537
+#: src/unit.cpp:2560
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/unit.cpp:2602
+#: src/unit.cpp:2625
 msgid "moves"
 msgstr "movoj"
 
-#: src/unit.cpp:2620 src/unit.cpp:2758
+#: src/unit.cpp:2643 src/unit.cpp:2781
 msgid "XP to advance"
 msgstr "Sperto por avanco"
 
-#: src/unit.cpp:2750
+#: src/unit.cpp:2773
 msgid " move"
 msgstr " movo"
 
-#: src/unit.cpp:2766
+#: src/unit.cpp:2789
 msgid "$effect_description per level"
 msgstr ""
 
-#: src/unit.cpp:2796
+#: src/unit.cpp:2835
 msgid "$trait_name|: $trait_description "
 msgstr "$trait_name|: $trait_description "
 

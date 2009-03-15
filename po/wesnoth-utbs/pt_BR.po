@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-03-01 21:24+0100\n"
+"POT-Creation-Date: 2009-03-15 22:06+0100\n"
 "PO-Revision-Date: 2007-12-06 00:59+0900\n"
 "Last-Translator: Claus Aranha <caranha@gmail.com>\n"
 "Language-Team: pt_BR\n"
@@ -14699,8 +14699,8 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Hero.cfg:35
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Captain.cfg:47
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Sentinel.cfg:40
-#: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:504
-#: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:535
+#: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:296
+#: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:359
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Scout.cfg:40
 #: data/campaigns/Under_the_Burning_Suns/units/Corrupted_Elf.cfg:32
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Champion.cfg:36
@@ -14819,7 +14819,7 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/units/Naga_Hunter.cfg:51
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Hero.cfg:44
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Captain.cfg:56
-#: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:544
+#: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:368
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Scout.cfg:49
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Champion.cfg:45
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Fighter.cfg:43
@@ -14861,8 +14861,8 @@ msgstr "Vingadora do Deserto"
 #. [unit_type]: id=Desert Captain, race=elf
 #. [variation]
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Captain.cfg:4
-#: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:172
-#: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:199
+#: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:557
+#: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:574
 msgid "Desert Captain"
 msgstr "Capitão do Deserto"
 
@@ -14880,7 +14880,7 @@ msgstr ""
 
 #. [variation]
 #. [unit_type]: id=Desert Champion, race=elf
-#: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:282
+#: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:643
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Champion.cfg:4
 msgid "Desert Champion"
 msgstr "Campeão do Deserto"
@@ -14942,7 +14942,10 @@ msgstr "espinhos"
 
 #. [variation]
 #. [unit_type]: id=Desert Fighter, race=elf
-#: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:144
+#: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:484
+#: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:502
+#: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:520
+#: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:538
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Fighter.cfg:5
 msgid "Desert Fighter"
 msgstr "Soldado do Deserto"
@@ -14962,8 +14965,8 @@ msgstr ""
 #. [unit_type]: id=Desert Hero, race=elf
 #. [variation]
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Hero.cfg:4
-#: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:227
-#: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:254
+#: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:609
+#: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:626
 msgid "Desert Hero"
 msgstr "Herói do Deserto"
 
@@ -15020,7 +15023,7 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Hunter.cfg:46
 #: data/campaigns/Under_the_Burning_Suns/units/Nym.cfg:39
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Sentinel.cfg:49
-#: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:398
+#: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:69
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Prowler.cfg:49
 msgid "bolas"
 msgstr "boleadeira"
@@ -15068,7 +15071,7 @@ msgstr "Atiradora do Deserto"
 #. [unit_type]: id=Desert Marshal, race=elf
 #. [variation]
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Marshal.cfg:4
-#: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:309
+#: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:591
 msgid "Desert Marshal"
 msgstr "Marechal do Deserto"
 
@@ -15739,55 +15742,41 @@ msgstr ""
 msgid "flaming sword"
 msgstr "espada flamejante"
 
-#. [unit_type]: id=Kaleh, race=elf
-#: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:98
-msgid "Kaleh of the Quenoth Elves"
-msgstr "Kaleh dos elfos de Quenoth."
-
-#. [variation]
-#: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:138
-msgid "Desert Youth"
-msgstr "Jovem do Deserto"
-
-#. [unit_type]: id=Kaleh, race=elf
-#: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:335
+#: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:36
 msgid "a leader in battle"
 msgstr "um líder em batalha"
 
-#. [unit_type]: id=Kaleh, race=elf
-#: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:345
-#: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:354
-msgid "a better swordsman"
-msgstr "um espadachim melhor"
-
-#. [unit_type]: id=Kaleh, race=elf
-#: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:363
-#: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:373
-msgid "a better archer"
-msgstr "um arqueiro melhor"
-
-#. [unit_type]: id=Kaleh, race=elf
-#: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:382
-msgid "a marksman with the bow"
-msgstr "um atirador de elite com o arco"
-
-#. [unit_type]: id=Kaleh, race=elf
-#: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:394
+#: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:63
 msgid "trained by Nym in using the bolas"
 msgstr "treinado por Nym no uso da boleadeira"
 
-#. [unit_type]: id=Kaleh, race=elf
-#: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:449
+#: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:124
+#: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:139
+#: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:153
+msgid "a better swordsman"
+msgstr "um espadachim melhor"
+
+#: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:168
+#: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:184
+#: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:199
+msgid "a better archer"
+msgstr "um arqueiro melhor"
+
+#: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:213
+msgid "a marksman with the bow"
+msgstr "um atirador de elite com o arco"
+
+#: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:230
 msgid "gain +20% resistance under the sun"
 msgstr "ganha +20% de resistência sob o sol"
 
 #. [resistance]: id=sustenance
-#: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:466
+#: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:249
 msgid "sustenance"
 msgstr "sustância"
 
 #. [resistance]: id=sustenance
-#: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:468
+#: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:251
 #, fuzzy
 msgid ""
 "Sustenance:\n"
@@ -15798,26 +15787,24 @@ msgstr ""
 "As resistências desta unidade são 20% maiores sob a luz do dia, na defesa e "
 "no ataque. Vulnerabilidades não são afetadas."
 
-#. [unit_type]: id=Kaleh, race=elf
-#: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:476
+#: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:262
 msgid "gain +10% resistance to blade, pierce and impact"
 msgstr ""
 "ganha +10% de resistência contra ataques de corte, perfuração e impacto"
 
-#. [unit_type]: id=Kaleh, race=elf
-#: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:500
+#: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:290
 msgid "gain a stunning attack that disrupts enemy ZOC"
 msgstr "ganha um ataque atordoante que cancela a ZDC inimiga"
 
 #. [chance_to_hit]: id=stun
-#: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:514
-#: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:517
+#: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:306
+#: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:309
 msgid "stun"
 msgstr "atordoar"
 
 #. [chance_to_hit]: id=stun
-#: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:516
-#: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:519
+#: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:308
+#: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:311
 #, fuzzy
 msgid ""
 "Stun:\n"
@@ -15830,8 +15817,11 @@ msgstr ""
 "Controle caso um golpe acerte. O atacante também se expõe durante este "
 "ataque, e ficará Lento como resultado do esforço. Não funciona na defesa."
 
-#. [unit_type]: id=Kaleh, race=elf
-#: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:528
+#: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:327
+msgid "Kaleh of the Quenoth Elves"
+msgstr "Kaleh dos elfos de Quenoth."
+
+#: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:352
 msgid ""
 "Kaleh is still a young Elf of the Quenoth, on the verge of adulthood. He "
 "trained with his father with the bow and sword, joining him in lighter "
@@ -15846,6 +15836,11 @@ msgstr ""
 "solene do que o normal para aqueles que andam sob os dois sóis. Ele começou "
 "a procurar dentro de si as respostas e seu caminho, sem imaginar o quanto o "
 "seu povo procuraria nele o caminho a seguir nos tempos futuros."
+
+#. [variation]
+#: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:474
+msgid "Desert Youth"
+msgstr "Jovem do Deserto"
 
 #. [unit_type]: id=Lava Monster, race=monster
 #: data/campaigns/Under_the_Burning_Suns/units/Lava_Monster.cfg:26
