@@ -975,6 +975,7 @@ namespace {
 						ERR_CF << "invalid move_unit_fake source: " << src << '\n';
 						break;
 					}
+					path.push_back(src);
 					continue;
 				}
 				shortest_path_calculator calc(dummy_unit,
@@ -1009,10 +1010,15 @@ namespace {
 						assert(route.steps.size() > 0);
 					}
 				}
-				unit_display::move_unit(route.steps, dummy_unit, *teams);
+				// we add this section to the end of the complete path
+				// skipping section's head because already included
+				// by the previous iteration
+				path.insert(path.end(),
+						route.steps.begin()+1, route.steps.end());
 
 				src = dst;
 			}
+			unit_display::move_unit(path, dummy_unit, *teams);
 		}
 	}
 
