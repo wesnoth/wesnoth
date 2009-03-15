@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6\n"
-"POT-Creation-Date: 2009-03-15 18:41+0100\n"
+"POT-Creation-Date: 2009-03-15 19:01+0100\n"
 "PO-Revision-Date: 2009-03-15 17:25+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: none\n"
@@ -41,7 +41,8 @@ msgid "Wesnoth logo"
 msgstr "Wesnoth logotipas"
 
 # type: Content of: <html><body><div><div><div>
-#: template.html:19
+#: template.html:19 template.html:65 template.html:100 template.html:130
+#: template.html:167
 msgid "</a>"
 msgstr "</a>"
 
@@ -110,7 +111,7 @@ msgid "<a href='#more'>More Info</a>"
 msgstr "<a href='#more'>Daugiau informacijos</a>"
 
 # type: Content of: <html><body><div><div><div>
-#: template.html:60 template.html:243
+#: template.html:60 template.html:244
 msgid "<br/>"
 msgstr "<br/>"
 
@@ -119,8 +120,13 @@ msgstr "<br/>"
 msgid "What's New in Wesnoth 1.6"
 msgstr "Kas naujo yra Wesnoth 1.6"
 
+# type: Content of: <html><body><div><div><div><div><div><a>
+#: template.html:65
+msgid "<a href='images/start-2-full.jpg'>"
+msgstr ""
+
 # type: Attribute 'alt' of: <html><body><div><div><div><a><img>
-#: template.html:65 template.html:100 template.html:129 template.html:166
+#: template.html:65 template.html:100 template.html:130 template.html:167
 #, fuzzy
 msgid "Wesnoth Screenshot"
 msgstr "Wesnoth logotipas"
@@ -181,6 +187,11 @@ msgid ""
 "have been developed in more depth and detail: More campaigns now include "
 "references to events in the overall history, adding depth and richness to "
 "the narration."
+msgstr ""
+
+# type: Content of: <html><body><div><div><div><div><div><a>
+#: template.html:100
+msgid "<a href='images/start-1-full.jpg'>"
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><dl><dt>
@@ -254,13 +265,24 @@ msgstr "Padidinta Vaikščiojančio lavono kaina nuo 7 iki 8."
 msgid "Decreased the cost of the Bowman from 15 to 14."
 msgstr "Sumažinta lankininko kaina nuo 15 iki 14."
 
+# type: Content of: <html><body><div><div><div><ul><li>
+#: template.html:124
+#, fuzzy
+msgid "Decreased the melee attack of the Bowman from 6-2 to 4-2."
+msgstr "Padidinta Goblinų ietininko ataka artimais ginklais nuo 4-3 iki 6-3."
+
 # type: Content of: <html><body><div><div><div><h4>
-#: template.html:126
+#: template.html:127
 msgid "General"
 msgstr "Bendrai"
 
+# type: Content of: <html><body><div><div><div><div><div><a>
+#: template.html:130
+msgid "<a href='images/start-4-full.jpg'>"
+msgstr ""
+
 # type: Content of: <html><body><div><div><div><p>
-#: template.html:132
+#: template.html:133
 msgid ""
 "The game graphics have been improved with a whole new range of unit "
 "portraits.  Many more units have full animations and team coloring."
@@ -269,7 +291,7 @@ msgstr ""
 "naujų dalinių turi pilnas animacijas ir komandinį spalvinimą."
 
 # type: Content of: <html><body><div><div><div><p>
-#: template.html:135
+#: template.html:136
 msgid ""
 "There is a new basic terrain type, coastal reef, which gives most land-based "
 "units slightly higher defense than in regular shallow water, and 70% defense "
@@ -280,7 +302,7 @@ msgid ""
 msgstr ""
 
 # type: Content of: <html><body><div><div><div><p>
-#: template.html:142
+#: template.html:143
 msgid ""
 "Our composers have added five new original background tracks: <em>Heroes' "
 "Rite</em>, <em>Siege of Laurelmor</em>, <em>Suspense</em>, <em>The Dangerous "
@@ -293,7 +315,7 @@ msgstr ""
 "specialius muzikinius klipus pergalės ir pralaimėjimo įvykiams."
 
 # type: Content of: <html><body><div><div><div><p>
-#: template.html:147
+#: template.html:148
 msgid ""
 "The game interface has continued to evolve, especially in making more "
 "dramatic use of portraits.  Unit recall dialogs now display useful "
@@ -306,7 +328,7 @@ msgstr ""
 "atsisiuntimų serveryje."
 
 # type: Content of: <html><body><div><div><div><p>
-#: template.html:152
+#: template.html:153
 msgid ""
 "New game translations include Arabic, Croatian, Friulian, Latvian, "
 "Macedonian and Marathi.  Existing translations have been extensively updated "
@@ -316,12 +338,12 @@ msgstr ""
 "Marati.  Esantys vertimai buvo plačiai papildyti ir pataisyti."
 
 # type: Content of: <html><body><div><div><div><h3>
-#: template.html:156
+#: template.html:157
 msgid "For Content Developers"
 msgstr "Turinio kūrėjams"
 
 # type: Content of: <html><body><div><div><div><p>
-#: template.html:158
+#: template.html:159
 msgid ""
 "The map editor was much improved (thank you, Google Summer of Code).  It can "
 "be started from within the game now.  You can toggle overlay displays of "
@@ -330,8 +352,13 @@ msgid ""
 "There's also a new interactive editing tool for animated journey tracks."
 msgstr ""
 
+# type: Content of: <html><body><div><div><div><div><div><a>
+#: template.html:167
+msgid "<a href='images/start-3-full.jpg'>"
+msgstr ""
+
 # type: Content of: <html><body><div><div><div><p>
-#: template.html:169
+#: template.html:170
 msgid ""
 "There are some new core units available everywhere: Troll Shaman, Royal "
 "Warrior and Dread Bat."
@@ -340,7 +367,7 @@ msgstr ""
 "Baisusis šikšnosparnis."
 
 # type: Content of: <html><body><div><div><div><p>
-#: template.html:172
+#: template.html:173
 msgid ""
 "Less visible changes include improvements in the game AI, including a new "
 "formula-based AI that allows more flexible setting of objectives and an "
@@ -360,7 +387,7 @@ msgstr ""
 "padaryti, bet projektas dar nebaigtas ir tęsis 1.7 versijoje."
 
 # type: Content of: <html><body><div><div><div><p>
-#: template.html:181
+#: template.html:182
 msgid ""
 "The support for writing Python AIs has been removed because the feature "
 "opened a serious security hole. However, we hope to build an even more "
@@ -372,12 +399,12 @@ msgstr ""
 "galbūt naudojant kitokią ir saugesnę plėtinių kalbą 1.7 versijoje."
 
 # type: Content of: <html><body><div><div><div><h2>
-#: template.html:188
+#: template.html:189
 msgid "Download"
 msgstr "Atsisiųsti"
 
 # type: Content of: <html><body><div><div><div><p>
-#: template.html:190
+#: template.html:191
 msgid ""
 "Battle for Wesnoth is made available under the <a href='http://www.gnu.org/"
 "licenses/gpl-2.0.html'>GNU General Public License</a> (GPL). Source code is "
@@ -396,7 +423,7 @@ msgstr ""
 "Windows ir Mac OS X."
 
 # type: Content of: <html><body><div><div><div><ul><li>
-#: template.html:204
+#: template.html:205
 msgid ""
 "<strong> <a href='http://downloads.sourceforge.net/wesnoth/wesnoth-1.6.tar."
 "bz2?download'>Source code</a> </strong>"
@@ -405,7 +432,7 @@ msgstr ""
 "bz2?download'>Išeities kodas</a> </strong>"
 
 # type: Content of: <html><body><div><div><div><ul><li>
-#: template.html:209
+#: template.html:210
 msgid ""
 "<strong> <a href='http://downloads.sourceforge.net/wesnoth/wesnoth-1.6-"
 "windows.exe?download'>Wesnoth for MS Windows</a> </strong>"
@@ -414,7 +441,7 @@ msgstr ""
 "windows.exe?download'>Wesnoth MS Windows'ams</a> </strong>"
 
 # type: Content of: <html><body><div><div><div><ul><li>
-#: template.html:214
+#: template.html:215
 msgid ""
 "<strong> <a href='http://downloads.sourceforge.net/wesnoth/"
 "Wesnoth_MacOSX_1.6.dmg?download'>Wesnoth for Mac OS X</a> </strong>"
@@ -423,7 +450,7 @@ msgstr ""
 "Wesnoth_MacOSX_1.6.dmg?download'>Wesnoth Mac OS X'ui</a> </strong>"
 
 # type: Content of: <html><body><div><div><div><p>
-#: template.html:220
+#: template.html:221
 msgid ""
 "You can get up to date information about downloads at the <a href='http://"
 "www.wesnoth.org/wiki/Download'>downloads page</a>."
@@ -432,7 +459,7 @@ msgstr ""
 "wesnoth.org/wiki/Download'>atsisiuntimų puslapyje</a>."
 
 # type: Content of: <html><body><div><div><div><p>
-#: template.html:223
+#: template.html:224
 msgid ""
 "If you downloaded previous versions of the game, you might be interested in "
 "downloading the <a href='http://www.wesnoth.org/wiki/"
@@ -443,12 +470,12 @@ msgstr ""
 "atsisiuntimas."
 
 # type: Content of: <html><body><div><div><div><h2>
-#: template.html:228
+#: template.html:229
 msgid "More Info"
 msgstr "Daugiau informacijos"
 
 # type: Content of: <html><body><div><div><div><ul><li>
-#: template.html:232
+#: template.html:233
 msgid ""
 "<a href='http://svn.gna.org/viewcvs/*checkout*/wesnoth/tags/1.6/"
 "changelog'>Full Changelog</a> (English, very long)"
@@ -457,7 +484,7 @@ msgstr ""
 "changelog'>Pilnas pakeitimų žurnalas</a> (Angliškai, labai ilgas)"
 
 # type: Content of: <html><body><div><div><div><ul><li>
-#: template.html:235
+#: template.html:236
 msgid ""
 "<a href='http://svn.gna.org/viewcvs/*checkout*/wesnoth/tags/1.6/doc/manual/"
 "manual.en.html'>User's Manual</a>"
@@ -466,20 +493,20 @@ msgstr ""
 "manual.en.html'>Naudotojo vadovas</a>"
 
 # type: Content of: <html><body><div><div><div><ul><li>
-#: template.html:236
+#: template.html:237
 msgid "<a href='http://www.wesnoth.org'>Wesnoth Official Website</a> (English)"
 msgstr ""
 "<a href='http://www.wesnoth.org'>Oficialus Wesnoth tinklalapis</a> "
 "(Angliškai)"
 
 # type: Content of: <html><body><div><div><div><ul><li>
-#: template.html:240
+#: template.html:241
 msgid ""
 "<a href='http://www.wesnoth.org/start/1.4'>Wesnoth 1.4 Release Notes</a>"
 msgstr ""
 "<a href='http://www.wesnoth.org/start/1.4'>Wesnoth 1.4 išleidimo pastabos</a>"
 
 # type: Content of: <html><body><div><div><div><div><p>
-#: template.html:247
+#: template.html:248
 msgid "This page is also available in the following languages:"
 msgstr "Šis puslapis taip pat prieinamas šiomis kalbomis:"
