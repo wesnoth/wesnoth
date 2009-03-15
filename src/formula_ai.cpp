@@ -14,6 +14,7 @@
 
 #include <boost/lexical_cast.hpp>
 #include <vector>
+#include <queue>
 
 #include "foreach.hpp"
 #include "unit.hpp"
@@ -184,6 +185,58 @@ private:
 	const formula_ai& ai_;
 };
 
+
+class castle_locs_function : public function_expression {
+public:
+	castle_locs_function(const args_list& args, const formula_ai& ai)
+	  : function_expression("castle_locs", args, 1, 1), ai_(ai) {
+	}
+
+private:
+	variant execute(const formula_callable& variables) const {
+		const map_location starting_loc = convert_variant<location_callable>(args()[0]->evaluate(variables))->loc();
+
+                std::set< map_location > visited_locs;
+                std::queue< map_location > queued_locs;
+
+                queued_locs.push(starting_loc);
+
+                while( !queued_locs.empty() ) {
+                   const map_location loc = queued_locs.front();
+                   queued_locs.pop();
+
+                   if ( visited_locs.find( loc ) != visited_locs.end() )
+                       continue;
+
+                   visited_locs.insert(loc);
+
+                   map_location adj[6];
+                   get_adjacent_tiles(loc, adj);
+
+                   for(int n = 0; n != 6; ++n) {
+                        if ( ai_.get_info().map.on_board(adj[n]) && visited_locs.find( adj[n] ) == visited_locs.end() ) {
+                            if ( ai_.get_info().map.get_terrain_info(adj[n]).is_keep() ||
+                                    ai_.get_info().map.get_terrain_info(adj[n]).is_castle() ) {
+                                queued_locs.push(adj[n]);
+                            }
+                        }
+                   }
+                }
+
+                if ( !ai_.get_info().map.get_terrain_info(starting_loc).is_keep() &&
+                     !ai_.get_info().map.get_terrain_info(starting_loc).is_castle() )
+                    visited_locs.erase(starting_loc);
+
+                std::vector<variant> res;
+                foreach( const map_location ml, visited_locs) {
+                    res.push_back( variant(new location_callable( ml ) ) );
+                }
+
+		return variant(&res);
+	}
+
+	const formula_ai& ai_;
+};
 
 class nearest_keep_function : public function_expression {
 public:
@@ -1312,6 +1365,8 @@ expression_ptr ai_function_symbol_table::create_function(const std::string &fn,
 		return expression_ptr(new max_possible_damage_with_retaliation_function(args, ai_));
 	} else if(fn == "adjacent_locs") {
 		return expression_ptr(new adjacent_locs_function(args, ai_));
+	} else if(fn == "castle_locs") {
+		return expression_ptr(new castle_locs_function(args, ai_));
 	} else if(fn == "distance_to_nearest_unowned_village") {
 		return expression_ptr(new distance_to_nearest_unowned_village_function(args, ai_));
 	} else if(fn == "shortest_path") {
