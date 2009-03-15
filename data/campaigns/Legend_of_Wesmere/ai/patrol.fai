@@ -1,0 +1,40 @@
+fai 'patrol.fai'
+
+def patrol_move(me)
+    if( me.vars.next_step = me.loc,
+        set_unit_var('next_step',
+            me.vars.waypoints[ me.vars.next_step ],
+            me.loc
+        ),
+        move_partial(
+            me.loc,
+            shortest_path( me.loc, me.vars.next_step )[0]
+        )
+    );
+
+if( me.movement_left = 0,
+    end,
+    if(attack,
+        attack,
+        patrol_move(me)
+    )
+)
+
+where attack = if( path_to, 
+			if(path_to.size <= me.vars.guard_radius, 
+				attack( me.loc, path_to.last, closest_unit.loc ), 
+				0 
+			),
+			0
+		)
+		
+where path_to = if( closest_unit, 
+			shortest_path( me.loc, closest_unit.loc ),
+			[]
+		)
+
+where closest_unit = choose(
+			enemy_units, 'unit',
+			-distance_between(me.vars.next_step, unit.loc)
+		)
+faiend
