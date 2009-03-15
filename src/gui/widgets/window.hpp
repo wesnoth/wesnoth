@@ -42,6 +42,14 @@ class tdialog;
 class tdebug_layout_graph;
 
 /**
+ * Dummy struct for the layout engine.
+ *
+ * When an object changes it's width in the height phase of the layout engine
+ * things might need to change so rerun the layout phase in that case.
+ */
+struct trelayout_exception {};
+
+/**
  * base class of top level items, the only item
  * which needs to store the final canvase to draw on
  */
@@ -428,6 +436,17 @@ private:
 
 	/** Layouts the window. */
 	void layout();
+
+	/**
+	 * Layouts the window.
+	 *
+	 * This is a new routine which will be used as fallback when the normal
+	 * layout engine fails. In 1.7 this will become the real layout engine.
+	 *
+	 * @param maximum_width       The maximum width of the window.
+	 * @param maximum_height      The maximum height of the window.
+	 */
+	void layout2(const unsigned maximum_width, const unsigned maximum_height);
 
 	/** Inherited from tevent_handler. */
 	void do_show_tooltip(const tpoint& location, const t_string& tooltip);

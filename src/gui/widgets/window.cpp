@@ -555,19 +555,16 @@ void twindow::layout()
 		generate_dot_file("horizontal_scrollbar", LAYOUT);
 	}
 
-	// *** shrink (can change height)
-	if(size.x > maximum_width) {
-		layout_shrink_width(maximum_width);
-		size = get_best_size();
-		generate_dot_file("shrink_width", LAYOUT);
-	}
-
 	// *** failed?
 	if(size.x > maximum_width) {
 		ERR_G_L << "Failed to resize window, wanted width "
 			<< size.x << " available width "
 			<< maximum_width << ".\n";
-		assert(false);
+
+		// Fall back to the new layout engine.
+		layout2(maximum_width, maximum_height);
+		size = get_best_size();
+		assert(size.x <= maximum_width && size.y <= maximum_height);
 	}
 
 	/***** Does the height fit in the available height? ******/
@@ -591,7 +588,11 @@ void twindow::layout()
 		ERR_G_L << "Failed to resize window, wanted height "
 			<< size.y << " available height "
 			<< maximum_height << ".\n";
-		assert(false);
+
+		// Fall back to the new layout engine.
+		layout2(maximum_width, maximum_height);
+		size = get_best_size();
+		assert(size.x <= maximum_width && size.y <= maximum_height);
 	}
 
 	/***** Get the best location for the window *****/
@@ -642,6 +643,58 @@ void twindow::layout()
 
 	// The widgets might have moved so set the mouse location properly.
 	init_mouse_location();
+}
+
+void twindow::layout2(
+		const unsigned maximum_width, const unsigned maximum_height)
+{
+	/**
+	 * @todo The following features are not done yet:
+	 * - Linked widget support.
+	 */
+
+	DBG_G_L << "twindow " << __func__ << ": maximum size "
+			<< maximum_width << ',' << maximum_height << ".\n";
+
+	layout_init2(true);
+
+	bool done = false;
+	unsigned run = 1;
+	while(!done) {
+		done = true;
+
+		tpoint size = get_best_size();
+		generate_dot_file("get_initial_best_size-"
+				+ lexical_cast<std::string>(run), LAYOUT);
+
+		try {
+
+			/***** Does the width fit in the available width? *****/
+			if(size.x > static_cast<int>(maximum_width)) {
+				layout_fit_width(maximum_width, FORCE);
+				size = get_best_size();
+				generate_dot_file("layout_fit_width-"
+						+ lexical_cast<std::string>(run), LAYOUT);
+				assert(size.x <= static_cast<int>(maximum_width));
+			}
+
+			/***** Does the height fit in the available height? *****/
+			// This part hasn't been implemented yet.
+#if 0
+			if(size.y > maximum_height) {
+				layout_fit_height(maximum_height);
+				size = get_best_size();
+				generate_dot_file("layout_fit_height-"
+						+ lexical_cast<std::string>(run), LAYOUT);
+				assert(size.y <= maximum_height);
+			}
+#endif
+		} catch(trelayout_exception&) {
+			layout_init2(false);
+			done = false;
+			++run;
+		}
+	}
 }
 
 void twindow::do_show_tooltip(const tpoint& location, const t_string& tooltip)
