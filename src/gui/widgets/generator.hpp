@@ -203,6 +203,10 @@ public:
 	virtual void layout_init2(const bool /*full_initialization*/) = 0;
 
 	/** Inherited from twidget. */
+	virtual void layout_fit_width(const unsigned /*maximum_width */, 
+			const tfit_flags /*flags*/) { /* Make pure virtual? */ }
+
+	/** Inherited from twidget. */
 	virtual tpoint calculate_best_size() const = 0;
 
 	/** Inherited from twidget. */

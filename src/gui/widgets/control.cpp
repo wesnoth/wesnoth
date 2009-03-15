@@ -173,13 +173,56 @@ void tcontrol::layout_shrink_width(const unsigned maximum_width)
 
 	/** @todo handle the tooltip properly. */
 
-	std::cerr << "Shrink from : " << get_best_size().x 
-		<< " to " << maximum_width << ".\n";
-
 	shrunken_ = true;
 	set_layout_size(tpoint(maximum_width, get_best_size().y));
 
 	assert(static_cast<unsigned>(get_best_size().x) == maximum_width);
+}
+
+void tcontrol::layout_fit_width(const unsigned maximum_width,
+		const tfit_flags flags)
+{
+	assert(get_visible() != twidget::INVISIBLE);
+
+	log_scope2(gui_layout, 
+			"tcontrol(" + get_control_type() + ") " + __func__);
+	DBG_G_L << "maximum_width " << maximum_width
+			<< " flags " << flags
+			<< ".\n";
+
+	// Already fits.
+	if(get_best_size().x <= static_cast<int>(maximum_width)) {
+		DBG_G_L << "Already fits.\n";
+		return;
+	}
+
+	// Wrap.
+	if((flags & twidget::WRAP) && can_wrap()) {
+		layout_wrap(maximum_width);
+
+		if(get_best_size().x <= static_cast<int>(maximum_width)) {
+			DBG_G_L << "Success: Wrapped.\n";
+			return;
+		}
+	}
+
+	// Horizontal scrollbar.
+	if((flags & twidget::SCROLLBAR) && has_horizontal_scrollbar()) {
+		layout_use_horizontal_scrollbar(maximum_width);
+
+		if(get_best_size().x <= static_cast<int>(maximum_width)) {
+			DBG_G_L << "Success: Horizontal scrollbar.\n";
+			return;
+		}
+	}
+
+	// Shrink.
+	if((flags & twidget::SHRINK) && can_shrink_width()) {
+		layout_shrink_width(maximum_width);
+		DBG_G_L << "Success: Shrunken.\n";
+	}
+	
+	DBG_G_L << "Failed.\n";
 }
 
 tpoint tcontrol::calculate_best_size() const
