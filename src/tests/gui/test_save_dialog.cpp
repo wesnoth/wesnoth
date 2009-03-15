@@ -92,7 +92,7 @@ namespace test {
 			source.press_key(10, keyid);
 			source.release_key(13, keyid);
 
-			std::string fname("press_enter");
+			std::string fname("test_save");
 			write_file(get_saves_dir() + "/" + fname +".gz", "böö");
 			// Start test (set ticks start time)
 
@@ -108,6 +108,7 @@ namespace test {
 			BOOST_CHECK_MESSAGE(press_return_after->is_fired(), "get_save_name returned before 2nd enter event was sent");
 			BOOST_CHECK_MESSAGE(!release_return_after->is_fired(), "get_save_name returned after 2nd release event was sent");
 
+			remove((get_saves_dir() + "/" + fname + ".gz").c_str());
 		}
 
 	BOOST_AUTO_TEST_SUITE_END()
