@@ -122,11 +122,6 @@ void move_unit(const std::vector<map_location>& path, unit& u, const std::vector
 	bool invisible = teams[u.side()-1].is_enemy(int(disp->viewing_team()+1)) &&
 		u.invisible(path[0],units,teams);
 
-	if(!invisible) {
-		// Scroll to the path, but only if it fully fits on screen.
-		// If it does not fit we might be able to do a better scroll later.
-		disp->scroll_to_tiles(path, game_display::ONSCREEN, true, true,0.0,false);
-	}
 
 	bool was_hidden = u.get_hidden();
 	// Original unit is usually hidden (but still on map, so count is correct)
@@ -135,6 +130,11 @@ void move_unit(const std::vector<map_location>& path, unit& u, const std::vector
 	temp_unit.set_standing(path[0],false);
 	temp_unit.set_hidden(false);
 	disp->place_temporary_unit(temp_unit,path[0]);
+	if(!invisible) {
+		// Scroll to the path, but only if it fully fits on screen.
+		// If it does not fit we might be able to do a better scroll later.
+		disp->scroll_to_tiles(path, game_display::ONSCREEN, true, true,0.0,false);
+	}
         disp->draw();
 	for(size_t i = 0; i+1 < path.size(); ++i) {
 
