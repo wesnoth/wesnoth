@@ -549,6 +549,9 @@ def create_recruits_map(ai*)
 		[]
 	);
 
+def castle_space(ai*)
+	filter( map( castle_locs( my_leader.loc ), 'location', if( unit_at( location ), 1, 0 ) ), self = 0  ).size;
+
 if(vars.turn_initialized = turn,
 		if( 
 			get_unit_type(
@@ -558,19 +561,23 @@ if(vars.turn_initialized = turn,
 				).key
 			).cost <
 			my_side.gold,
-			recruit(debug_print(
-				unit_chooser(
-					self,
-					unit_map_cost_filter(
+			if( castle_space(self),
+				recruit(debug_print(
+					unit_chooser(
 						self,
-						vars.recruits_map
+						unit_map_cost_filter(
+							self,
+							vars.recruits_map
+						)
 					)
-				)
-			)),
-			fallback('') 
+				)),
+				fallback()
+			),
+			fallback() 
 		),
 	[set_var(debug_print('turn_initialized'), turn)] +
 	initialize_weapon_specials_map(self) +
 	create_recruits_map(self)
 )
+
 faiend
