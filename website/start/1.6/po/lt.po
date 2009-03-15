@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6\n"
-"POT-Creation-Date: 2009-03-15 19:30+0100\n"
+"POT-Creation-Date: 2009-03-15 21:30+0100\n"
 "PO-Revision-Date: 2009-03-15 17:25+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: none\n"
@@ -41,7 +41,7 @@ msgid "Wesnoth logo"
 msgstr "Wesnoth logotipas"
 
 # type: Content of: <html><body><div><div><div>
-#: template.html:19 template.html:67 template.html:102 template.html:132
+#: template.html:19 template.html:75 template.html:109 template.html:135
 #: template.html:169
 msgid "</a>"
 msgstr "</a>"
@@ -120,19 +120,8 @@ msgstr "<br/>"
 msgid "What's New in Wesnoth 1.6"
 msgstr "Kas naujo yra Wesnoth 1.6"
 
-# type: Content of: <html><body><div><div><div><div><div><a>
-#: template.html:67
-msgid "<a href='images/start-2-full.jpg'>"
-msgstr ""
-
-# type: Attribute 'alt' of: <html><body><div><div><div><a><img>
-#: template.html:67 template.html:102 template.html:132 template.html:169
-#, fuzzy
-msgid "Wesnoth Screenshot"
-msgstr "Wesnoth logotipas"
-
 # type: Content of: <html><body><div><div><div><p>
-#: template.html:70
+#: template.html:66
 msgid ""
 "We have many new features for your enjoyment this time around, including a "
 "new mainline campaign, two new multiplayer scenarios and another refresh of "
@@ -143,14 +132,25 @@ msgstr ""
 "naudotojo sąsajos atnaujinimą."
 
 # type: Content of: <html><body><div><div><div><h3>
-#: template.html:74
+#: template.html:70
 msgid "For Players"
 msgstr "Žaidėjams"
 
 # type: Content of: <html><body><div><div><div><h4>
-#: template.html:76
+#: template.html:72
 msgid "Campaigns"
 msgstr "Kampanijos"
+
+# type: Content of: <html><body><div><div><div><div><div><a>
+#: template.html:75
+msgid "<a href='images/start-2-full.jpg'>"
+msgstr ""
+
+# type: Attribute 'alt' of: <html><body><div><div><div><a><img>
+#: template.html:75 template.html:109 template.html:135 template.html:169
+#, fuzzy
+msgid "Wesnoth Screenshot"
+msgstr "Wesnoth logotipas"
 
 # type: Content of: <html><body><div><div><div><p>
 #: template.html:78
@@ -189,18 +189,13 @@ msgid ""
 "the narration."
 msgstr ""
 
-# type: Content of: <html><body><div><div><div><div><div><a>
-#: template.html:102
-msgid "<a href='images/start-1-full.jpg'>"
-msgstr ""
-
 # type: Content of: <html><body><div><div><div><dl><dt>
-#: template.html:105
+#: template.html:101
 msgid "Multiplayer"
 msgstr "Daugelio žaidėjų žaidimas"
 
 # type: Content of: <html><body><div><div><div><p>
-#: template.html:107
+#: template.html:103
 msgid ""
 "The multiplayer server can now be logged onto using the username and "
 "password of a Wesnoth forum account.  However, registration is not required "
@@ -210,6 +205,11 @@ msgstr ""
 "Wesnoth forumo paskyros naudotojo vardu ir slaptažodžiu.  Vis dėlto, "
 "registracija nėra privaloma ir galima ir toliau naudoti neregistruotą "
 "naudotojo vardą."
+
+# type: Content of: <html><body><div><div><div><div><div><a>
+#: template.html:109
+msgid "<a href='images/start-1-full.jpg'>"
+msgstr ""
 
 # type: Content of: <html><body><div><div><div><p>
 #: template.html:112
@@ -276,19 +276,19 @@ msgstr "Padidinta Goblinų ietininko ataka artimais ginklais nuo 4-3 iki 6-3."
 msgid "General"
 msgstr "Bendrai"
 
-# type: Content of: <html><body><div><div><div><div><div><a>
-#: template.html:132
-msgid "<a href='images/start-4-full.jpg'>"
-msgstr ""
-
 # type: Content of: <html><body><div><div><div><p>
-#: template.html:135
+#: template.html:131
 msgid ""
 "The game graphics have been improved with a whole new range of unit "
 "portraits.  Many more units have full animations and team coloring."
 msgstr ""
 "Žaidimo grafika buvo patobulinta visiškai naujais dalinių portretais.  Daug "
 "naujų dalinių turi pilnas animacijas ir komandinį spalvinimą."
+
+# type: Content of: <html><body><div><div><div><div><div><a>
+#: template.html:135
+msgid "<a href='images/start-4-full.jpg'>"
+msgstr ""
 
 # type: Content of: <html><body><div><div><div><p>
 #: template.html:138

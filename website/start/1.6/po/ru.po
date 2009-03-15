@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-announcement.po\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-03-15 19:30+0100\n"
+"POT-Creation-Date: 2009-03-15 21:30+0100\n"
 "PO-Revision-Date: 2009-03-14 13:55+0300\n"
 "Last-Translator: Victor Sergienko <singalen@gmail.com>\n"
 "Language-Team: wesnoth\n"
@@ -46,7 +46,7 @@ msgid "Wesnoth logo"
 msgstr "Логотип Веснота"
 
 # type: Content of: <html><body><div><div><div>
-#: template.html:19 template.html:67 template.html:102 template.html:132
+#: template.html:19 template.html:75 template.html:109 template.html:135
 #: template.html:169
 msgid "</a>"
 msgstr "</a>"
@@ -124,19 +124,8 @@ msgstr "<br/>"
 msgid "What's New in Wesnoth 1.6"
 msgstr "Что нового в «Битве за Веснот» 1.6"
 
-# type: Content of: <html><body><div><div><div><div><div><a>
-#: template.html:67
-msgid "<a href='images/start-2-full.jpg'>"
-msgstr ""
-
-# type: Attribute 'alt' of: <html><body><div><div><div><a><img>
-#: template.html:67 template.html:102 template.html:132 template.html:169
-#, fuzzy
-msgid "Wesnoth Screenshot"
-msgstr "Логотип Веснота"
-
 # type: Content of: <html><body><div><div><div><p>
-#: template.html:70
+#: template.html:66
 msgid ""
 "We have many new features for your enjoyment this time around, including a "
 "new mainline campaign, two new multiplayer scenarios and another refresh of "
@@ -147,14 +136,25 @@ msgstr ""
 "ещё мы снова обновили пользовательский интерфейс."
 
 # type: Content of: <html><body><div><div><div><h3>
-#: template.html:74
+#: template.html:70
 msgid "For Players"
 msgstr "Для игроков"
 
 # type: Content of: <html><body><div><div><div><h4>
-#: template.html:76
+#: template.html:72
 msgid "Campaigns"
 msgstr "Кампании"
+
+# type: Content of: <html><body><div><div><div><div><div><a>
+#: template.html:75
+msgid "<a href='images/start-2-full.jpg'>"
+msgstr ""
+
+# type: Attribute 'alt' of: <html><body><div><div><div><a><img>
+#: template.html:75 template.html:109 template.html:135 template.html:169
+#, fuzzy
+msgid "Wesnoth Screenshot"
+msgstr "Логотип Веснота"
 
 # type: Content of: <html><body><div><div><div><p>
 #: template.html:78
@@ -206,18 +206,13 @@ msgstr ""
 "гораздо глубже: кампании ссылаются на события общей истории, что оживляет "
 "сюжет и добавляет ему глубины."
 
-# type: Content of: <html><body><div><div><div><div><div><a>
-#: template.html:102
-msgid "<a href='images/start-1-full.jpg'>"
-msgstr ""
-
 # type: Content of: <html><body><div><div><div><dl><dt>
-#: template.html:105
+#: template.html:101
 msgid "Multiplayer"
 msgstr "Мультиплеер"
 
 # type: Content of: <html><body><div><div><div><p>
-#: template.html:107
+#: template.html:103
 msgid ""
 "The multiplayer server can now be logged onto using the username and "
 "password of a Wesnoth forum account.  However, registration is not required "
@@ -226,6 +221,11 @@ msgstr ""
 "Теперь на МП-сервер можно заходить под аккаунтом с форума Веснота. "
 "Регистрация, правда, не обязательна — вы по-прежнему можете входить без "
 "регистрации."
+
+# type: Content of: <html><body><div><div><div><div><div><a>
+#: template.html:109
+msgid "<a href='images/start-1-full.jpg'>"
+msgstr ""
 
 # type: Content of: <html><body><div><div><div><p>
 #: template.html:112
@@ -292,19 +292,19 @@ msgstr "Ближняя атака гоблина-копейщика усилен
 msgid "General"
 msgstr "В целом"
 
-# type: Content of: <html><body><div><div><div><div><div><a>
-#: template.html:132
-msgid "<a href='images/start-4-full.jpg'>"
-msgstr ""
-
 # type: Content of: <html><body><div><div><div><p>
-#: template.html:135
+#: template.html:131
 msgid ""
 "The game graphics have been improved with a whole new range of unit "
 "portraits.  Many more units have full animations and team coloring."
 msgstr ""
 "К графике игры добавили полный набор новых портретов. Теперь у бойцов "
 "намного больше анимаций, и есть поддержка командных цветов."
+
+# type: Content of: <html><body><div><div><div><div><div><a>
+#: template.html:135
+msgid "<a href='images/start-4-full.jpg'>"
+msgstr ""
 
 # type: Content of: <html><body><div><div><div><p>
 #: template.html:138
