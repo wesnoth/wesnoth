@@ -151,9 +151,10 @@ void move_unit(const std::vector<map_location>& path, unit& u, const std::vector
 				for(size_t j = i; j < path.size(); j++) {
 					remaining_path.push_back(path[j]);
 				}
-                                temp_unit.get_animation()->pause_animation();
-				disp->scroll_to_tiles(remaining_path, game_display::ONSCREEN, true,false,0.0,false);
-                                temp_unit.get_animation()->restart_animation();
+				temp_unit.get_animation()->pause_animation();
+				disp->scroll_to_tiles(remaining_path,
+							game_display::ONSCREEN, true,false,0.0,false);
+				temp_unit.get_animation()->restart_animation();
 			}
 
 			if(tiles_adjacent(path[i], path[i+1])) {
