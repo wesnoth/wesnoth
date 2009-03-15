@@ -1,4 +1,4 @@
-faifile 'patrol.fai'
+fai 'patrol.fai'
 
 def patrol_move(me)
     if( me.vars.next_step = me.loc,
@@ -13,7 +13,7 @@ def patrol_move(me)
     );
 
 if( me.movement_left = 0,
-    end_turn,
+    end,
     if(attack,
         attack,
         patrol_move(me)
