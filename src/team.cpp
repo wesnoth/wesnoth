@@ -19,6 +19,7 @@
 
 #include "global.hpp"
 
+#include "foreach.hpp"
 #include "game_events.hpp"
 #include "gamestatus.hpp"
 #include "log.hpp"
@@ -568,7 +569,12 @@ size_t team::average_recruit_price()
 	if (info_.average_price)
 		return info_.average_price;
 
-	std::for_each(info_.can_recruit.begin(), info_.can_recruit.end(), count_average(info_.average_price));
+	{
+		count_average avg(info_.average_price);
+		BOOST_FOREACH(std::string type, info_.can_recruit){
+			avg(type);
+		}
+	}
 	return info_.average_price;
 }
 
