@@ -151,6 +151,7 @@ public:
 	/** @todo Also handle the tooltip state if shrunken_ &&
 	 * use_tooltip_on_label_overflow_. */
 	void layout_init();
+	void layout_init2(const bool full_initialization);
 
 	/** Inherited from twidget. */
 	void layout_wrap(const unsigned maximum_width);

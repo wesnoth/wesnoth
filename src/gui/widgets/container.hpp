@@ -49,6 +49,7 @@ public:
 
 	/** Inherited from tcontrol. */
 	void layout_init();
+	void layout_init2(const bool full_initialization);
 
 private:
 	/** Inherited from twidget. */

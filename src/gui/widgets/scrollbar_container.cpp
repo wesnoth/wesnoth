@@ -112,6 +112,36 @@ void tscrollbar_container::layout_init()
 	content_grid_->layout_init();
 }
 
+void tscrollbar_container::layout_init2(const bool full_initialization)
+{
+	// Inherited.
+	tcontainer_::layout_init2(full_initialization);
+
+	if(full_initialization) {
+		/*
+		 * When the scrollbars should be shown when needed, assume they're not
+		 * needed and unhide them when needed.
+		 */
+		if(initial_vertical_scrollbar_mode_ == SHOW_WHEN_NEEDED) {
+			vertical_scrollbar_mode_ = HIDE;
+		} else {
+			vertical_scrollbar_mode_ = initial_vertical_scrollbar_mode_;
+		}
+		show_vertical_scrollbar();
+
+		if(initial_vertical_scrollbar_mode_ == SHOW_WHEN_NEEDED) {
+			horizontal_scrollbar_mode_ = HIDE;
+		} else {
+			horizontal_scrollbar_mode_ = initial_horizontal_scrollbar_mode_;
+		}
+		show_horizontal_scrollbar();
+	}
+
+	assert(content_grid_);
+	content_grid_->layout_init2(full_initialization);
+
+}
+
 void tscrollbar_container::layout_wrap(const unsigned maximum_width)
 {
 	// Inherited.

@@ -200,6 +200,7 @@ public:
 
 	/** Inherited from twidget. */
 	virtual void layout_init() = 0;
+	virtual void layout_init2(const bool /*full_initialization*/) = 0;
 
 	/** Inherited from twidget. */
 	virtual tpoint calculate_best_size() const = 0;

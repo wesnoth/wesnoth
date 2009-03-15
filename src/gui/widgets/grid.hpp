@@ -181,6 +181,7 @@ public:
 
 	/** Inherited from twidget. */
 	void layout_init();
+	void layout_init2(const bool full_initialization);
 
 private:
 

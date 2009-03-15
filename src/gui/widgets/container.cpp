@@ -26,6 +26,14 @@ void tcontainer_::layout_init()
 	grid_.layout_init();
 }
 
+void tcontainer_::layout_init2(const bool full_initialization)
+{
+	// Inherited.
+	tcontrol::layout_init2(full_initialization);
+
+	grid_.layout_init2(full_initialization);
+}
+
 void tcontainer_::layout_wrap(const unsigned maximum_width)
 {
 	// Inherited.

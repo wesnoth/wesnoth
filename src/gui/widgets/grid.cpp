@@ -198,6 +198,21 @@ void tgrid::layout_init()
 	}
 }
 
+void tgrid::layout_init2(const bool full_initialization)
+{
+	// Inherited.
+	twidget::layout_init2(full_initialization);
+
+	// Clear child caches.
+	foreach(tchild& child, children_) {
+
+		twidget* widget = child.widget();
+		if(widget && widget->get_visible() != twidget::INVISIBLE) {
+			widget->layout_init2(full_initialization);
+		}
+	}
+}
+
 tpoint tgrid::calculate_best_size() const
 {
 	log_scope2(gui_layout, std::string("tgrid ") + __func__);

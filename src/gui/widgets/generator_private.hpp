@@ -604,6 +604,16 @@ public:
 		}
 	}
 
+	void layout_init2(const bool full_initialization)
+	{
+		foreach(titem* item, items_) {
+			if(item->grid.get_visible() != twidget::INVISIBLE) {
+				item->grid.layout_init2(full_initialization);
+			}
+		}
+	}
+
+
 	/** Inherited from tgenerator_. */
 	tpoint calculate_best_size() const
 	{

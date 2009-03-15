@@ -126,6 +126,16 @@ void tcontrol::layout_init()
 	shrunken_ = false;
 }
 
+void tcontrol::layout_init2(const bool full_initialization)
+{
+	// Inherited.
+	twidget::layout_init2(full_initialization);
+
+	if(full_initialization) {
+		shrunken_ = false;
+	}
+}
+
 void tcontrol::layout_wrap(const unsigned maximum_width)
 {
 	// Inherited.
