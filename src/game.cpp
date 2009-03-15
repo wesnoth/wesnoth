@@ -959,10 +959,20 @@ bool game_controller::load_game()
 		state_.rng().seed_random(seed, calls);
 
 	} catch(config::error& e) {
-		gui::show_error_message(disp(), _("The file you have tried to load is corrupt: '") + e.message + '\'');
+		if(e.message.empty()) {
+			gui::show_error_message(disp(), _("The file you have tried to load is corrupt"));
+		}
+		else {
+			gui::show_error_message(disp(), _("The file you have tried to load is corrupt: '") + e.message + '\'');
+		}
 		return false;
 	} catch(game::error& e) {
-		gui::show_error_message(disp(), _("The file you have tried to load is corrupt: '") + e.message + '\'');
+		if(e.message.empty()) {
+			gui::show_error_message(disp(), _("The file you have tried to load is corrupt"));
+		}
+		else {
+			gui::show_error_message(disp(), _("The file you have tried to load is corrupt: '") + e.message + '\'');
+		}
 		return false;
 	} catch(io_exception&) {
 		gui::show_error_message(disp(), _("File I/O Error while reading the game"));
