@@ -156,6 +156,9 @@ public:
 	/** Inherited from twidget. */
 	void layout_wrap(const unsigned maximum_width);
 
+	/** Inherited from twidget. */
+	void layout_shrink_width(const unsigned maximum_width);
+
 protected:
 	/** Inherited from twidget. */
 	tpoint calculate_best_size() const;

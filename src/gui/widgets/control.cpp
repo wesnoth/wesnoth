@@ -165,6 +165,23 @@ void tcontrol::layout_wrap(const unsigned maximum_width)
 	}
 }
 
+void tcontrol::layout_shrink_width(const unsigned maximum_width)
+{
+	DBG_G_L << "tcontrol(" + get_control_type() + ") " + __func__ + ":"
+			<< " maximum_width " << maximum_width
+			<< ".\n";
+
+	/** @todo handle the tooltip properly. */
+
+	std::cerr << "Shrink from : " << get_best_size().x 
+		<< " to " << maximum_width << ".\n";
+
+	shrunken_ = true;
+	set_layout_size(tpoint(maximum_width, get_best_size().y));
+
+	assert(static_cast<unsigned>(get_best_size().x) == maximum_width);
+}
+
 tpoint tcontrol::calculate_best_size() const
 {
 	assert(config_);

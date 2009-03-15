@@ -225,14 +225,22 @@ public:
 	virtual void layout_use_horizontal_scrollbar(const unsigned /*maximum_width*/)
 		{ assert(has_horizontal_scrollbar()); }
 
+	/** Can the widget reduce its width. */
+	virtual bool can_shrink_width() const { return false; }
+
 	/**
-	 * Tries to shrink a widget so it fits in the wanted width.
+	 * Shrinks the contents of the widget so it can fit the wanted width
 	 *
-	 * @todo implement this function properly.
+	 * @todo implement this function properly at the moment it kind of works
+	 * for a label but should also work for a button and maybe some other
+	 * classes.
 	 *
 	 * @param maximum_width       The wanted maximum width of the widget.
+	 *
+	 * @pre                       can_shrink_width() == true.
 	 */
-	virtual void layout_shrink_width(const unsigned /*maximum_width*/) { }
+	virtual void layout_shrink_width(const unsigned /*maximum_width*/)
+		{ assert(can_shrink_width()); }
 
 	/**
 	 * Does the widget have a vertical scrollbar.
