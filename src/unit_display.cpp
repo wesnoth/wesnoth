@@ -156,10 +156,12 @@ void move_unit(const std::vector<map_location>& path, unit& u, const std::vector
                                 temp_unit.get_animation()->restart_animation();
 			}
 
-			if( !tiles_adjacent(path[i], path[i+1])) {
+			if(tiles_adjacent(path[i], path[i+1])) {
+				move_unit_between(path[i],path[i+1],temp_unit);
+			} else if (path[i] != path[i+1]) {
 				teleport_unit_between(path[i],path[i+1],temp_unit);
 			} else {
-				move_unit_between(path[i],path[i+1],temp_unit);
+				continue; // no move needed
 			}
 		}
 	}
