@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: 1.5.8+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-03-14 15:27+0100\n"
-"PO-Revision-Date: 2009-01-31 21:24+0100\n"
+"PO-Revision-Date: 2009-03-15 18:56+0100\n"
 "Last-Translator: Jordà Polo <jorda@ettin.org>\n"
 "Language-Team: Catalan <wesnoth-ca@lists.ettin.org>\n"
 "MIME-Version: 1.0\n"
@@ -426,9 +426,8 @@ msgstr "Traducció al macedònic"
 
 #. [about]
 #: data/core/about.cfg:1728
-#, fuzzy
 msgid "Marathi Translation"
-msgstr "Traducció al llatí"
+msgstr "Traducció al marathi"
 
 #. [about]
 #: data/core/about.cfg:1737
@@ -1697,7 +1696,7 @@ msgstr ""
 "\n"
 "Els trets disponibles per a tots als que no siguin no morts són "
 "<ref>dst='traits_intelligent' text='intel·ligència'</ref>, "
-"<ref>'dst=traits_quick' text='rapidesa'</ref>, <ref>dst='traits_resilient' "
+"<ref>dst='traits_quick' text='rapidesa'</ref>, <ref>dst='traits_resilient' "
 "text='robustesa'</ref>, i <ref>dst='traits_strong' text='fortalesa'</ref>."
 
 #. [topic]: id=..traits_section
@@ -2030,11 +2029,10 @@ msgstr "Alentit"
 
 #. [topic]: id=traits_slow
 #: data/core/help.cfg:449
-#, fuzzy
 msgid "Slow units have -1 movement but 5% more hitpoints."
 msgstr ""
-"Les unitats ràpides tenen un punt de moviment extra, però un 5% menys de "
-"vida de lo normal."
+"Les unitats lentes tenen un punt de moviment menys, però un 5% més de "
+"punts de vida."
 
 #. [topic]: id=traits_slow
 #: data/core/help.cfg:451
@@ -2048,9 +2046,8 @@ msgstr ""
 
 #. [topic]: id=traits_weak
 #: data/core/help.cfg:456
-#, fuzzy
 msgid "Weak"
-msgstr "feble"
+msgstr "Feble"
 
 #. [topic]: id=traits_weak
 #: data/core/help.cfg:457
@@ -2598,9 +2595,8 @@ msgstr ""
 
 #. [topic]: id=terrain_reef
 #: data/core/help.cfg:720
-#, fuzzy
 msgid "Coastal Reef"
-msgstr "Castell"
+msgstr "Escull costaner"
 
 #. [topic]: id=terrain_reef
 #: data/core/help.cfg:725
@@ -3458,9 +3454,8 @@ msgstr ""
 #: data/core/macros/ai_controller.cfg:479
 #: data/core/macros/ai_controller.cfg:870
 #: data/core/macros/ai_controller.cfg:905
-#, fuzzy
 msgid "Back"
-msgstr "Negre"
+msgstr ""
 
 #. [option]: type=objective
 #: data/core/macros/ai_controller.cfg:359
@@ -6416,9 +6411,8 @@ msgid ""
 msgstr ""
 
 #: data/temp-file_send_data_strings.cfg:15
-#, fuzzy
 msgid "Send"
-msgstr "Sorra"
+msgstr "Envia"
 
 #: data/temp-file_send_data_strings.cfg:16
 #, fuzzy
@@ -6832,7 +6826,6 @@ msgid "Size"
 msgstr "Mida"
 
 #: src/addon_management.cpp:781
-#, fuzzy
 msgid "Update add-ons"
 msgstr "Actualitza els complements"
 
@@ -6869,9 +6862,8 @@ msgid "All add-ons updated successfully."
 msgstr ""
 
 #: src/addon_management.cpp:889
-#, fuzzy
 msgid "Connecting to add-ons server..."
-msgstr "Connectant amb el servidor de complements..."
+msgstr "S'està connectant amb el servidor de complements..."
 
 #: src/addon_management.cpp:892
 msgid "Could not connect to host."
@@ -7325,22 +7317,20 @@ msgid "Invalid color range: "
 msgstr "El rang de colors no és vàlid: "
 
 #: src/game_events.cpp:134
-#, fuzzy
 msgid "Error: "
-msgstr "Error"
+msgstr "Error: "
 
 #: src/game_events.cpp:137
-#, fuzzy
 msgid "Warning: "
-msgstr "Matí"
+msgstr "Avís: "
 
 #: src/game_events.cpp:140
 msgid "Debug: "
-msgstr ""
+msgstr "Depuració: "
 
 #: src/game_events.cpp:143
 msgid "Info: "
-msgstr ""
+msgstr "Informació: "
 
 #: src/game_events.cpp:1072
 msgid "Victory:"
@@ -7509,9 +7499,8 @@ msgid "Abilities: "
 msgstr "Habilitats: "
 
 #: src/help.cpp:1344
-#, fuzzy
 msgid "Ability Upgrades: "
-msgstr "Habilitats: "
+msgstr "Habilitats millorades: "
 
 #: src/help.cpp:1362
 msgid "Cost: "
@@ -7641,9 +7630,8 @@ msgid "?"
 msgstr "?"
 
 #: src/loadscreen.cpp:220
-#, fuzzy
 msgid "Verifying cache"
-msgstr "S'està verificant la memòria cau."
+msgstr "S'està verificant la memòria cau"
 
 #: src/loadscreen.cpp:239
 msgid "Reading unit files."
@@ -8039,9 +8027,8 @@ msgid "Update details for your nick. For possible details see '/details'."
 msgstr ""
 
 #: src/menu_events.cpp:2194
-#, fuzzy
 msgid "Request information about a nick."
-msgstr "No s'ha trobat la informació sobre les eres."
+msgstr ""
 
 #: src/menu_events.cpp:2196
 msgid "Request a list of details you can set for your registered nick."
@@ -8723,9 +8710,8 @@ msgid "Invalid Color"
 msgstr "Color no vàlid"
 
 #: src/multiplayer_ui.cpp:418
-#, fuzzy
 msgid "Selected user: "
-msgstr "Seleccioneu una unitat:"
+msgstr "Usuari seleccionat: "
 
 #: src/multiplayer_wait.cpp:134
 msgid "Leader: "
@@ -9125,7 +9111,6 @@ msgid "TitleScreen button^Add-ons"
 msgstr "Complements"
 
 #: src/titlescreen.cpp:417
-#, fuzzy
 msgid "TitleScreen button^Map Editor"
 msgstr "Editor"
 
@@ -9185,7 +9170,7 @@ msgstr "Descarrega campanyes, eres, o mapes fets per altres jugadors"
 
 #: src/titlescreen.cpp:437
 msgid "Start the map editor"
-msgstr ""
+msgstr "Inicia l'editor de mapes"
 
 #: src/titlescreen.cpp:439
 msgid "Change the language"
@@ -9282,9 +9267,8 @@ msgid "% parry"
 msgstr "% aturada"
 
 #: src/unit_types.cpp:955
-#, fuzzy
 msgid "No description available."
-msgstr " L'ajuda no està disponible."
+msgstr "No hi ha disponible."
 
 #: src/unit_types.cpp:1014
 msgid "chaotic"
