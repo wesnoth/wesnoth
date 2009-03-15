@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-03-14 15:27+0100\n"
-"PO-Revision-Date: 2009-03-13 21:08-0500\n"
+"PO-Revision-Date: 2009-03-14 18:17-0500\n"
 "Last-Translator: luojie <lililjlj@gmail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
 "MIME-Version: 1.0\n"
@@ -214,7 +214,7 @@ msgstr "编程"
 #. [about]
 #: data/core/about.cfg:186
 msgid "General Purpose Administration and Coordination"
-msgstr "整体规划和协调"
+msgstr "规划和协调"
 
 #. [about]
 #: data/core/about.cfg:204
@@ -254,7 +254,7 @@ msgstr "贡献者"
 #. [about]
 #: data/core/about.cfg:884
 msgid "Internationalization Managers"
-msgstr "国际化管理者"
+msgstr "国际化管理员"
 
 #. [about]
 #: data/core/about.cfg:909
@@ -299,7 +299,7 @@ msgstr "繁体中文"
 #. [about]
 #: data/core/about.cfg:1053
 msgid "Croatian Translation"
-msgstr "Croatian Translation"
+msgstr "克罗地亚语"
 
 #. [about]
 #: data/core/about.cfg:1060
@@ -349,7 +349,7 @@ msgstr "法语"
 #. [about]
 #: data/core/about.cfg:1424
 msgid "Friulian Translation"
-msgstr "Friulian Translation"
+msgstr "弗留利语"
 
 #. [about]
 #: data/core/about.cfg:1431
@@ -499,7 +499,7 @@ msgstr "电脑"
 #. [fonts]
 #: data/core/fonts.cfg:7 data/hardwired/fonts.cfg:7
 msgid "DejaVuSans.ttf,wqy-zenhei.ttc"
-msgstr "wqy-zenhei.ttc,DejaVuSans.ttf"
+msgstr "DejaVuSans.ttf,wqy-zenhei.ttc"
 
 #. [section]: id=introduction
 #. [topic]: id=..introduction
@@ -659,7 +659,7 @@ msgid ""
 msgstr ""
 "在游戏中请记住：将鼠标指向游戏中许多物品时，一些信息会显示在状态条上，并附有"
 "简短的描述信息。这一功能在您第一次看到新<ref>dst='..abilities_section' "
-"text='技能'</ref>时非常有用。"
+"text='能力'</ref>时非常有用。"
 
 #. [topic]: id=about_game
 #: data/core/help.cfg:145
@@ -677,10 +677,10 @@ msgid ""
 "If your computer has a connection to the Internet, you can play against "
 "other people across the Internet."
 msgstr ""
-"本游戏由一系列的战斗组合而成，每次战斗成为一个关卡。每一关中您的部队会和一个"
-"或更多的对手作战。您可以选择和电脑或朋友在同一台电脑上对战（交替操作）。如果"
-"您的电脑在局域网内，您也可以和其他局域网内的人对战。如果您的电脑连着因特网，"
-"则可以和其他在网上的人对战。"
+"本游戏由一系列的战斗组合而成，每次战斗称作一个剧本。每个剧本会让您的部队和一"
+"个或更多的对手作战。您可以选择和电脑或朋友在同一台电脑上对战（同台竞技模"
+"式）。如果您的电脑在局域网内，您也可以和其他局域网内的人对战。如果您的电脑能"
+"上网，则可以和其他能上网的人对战。"
 
 #. [topic]: id=about_game
 #: data/core/help.cfg:148
@@ -694,8 +694,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"战役讲述着一个故事，是由一系列环环相扣的关卡组成的，您常常得更小心谨慎，确保"
-"最精良的部队存活下来，能够在战役中的下一关继续战斗。"
+"战役讲述着一个故事，是由一系列环环相扣的场景(称为”幕”)组成的，您常常得更小心"
+"谨慎，确保最精良的部队存活下来，能够在战役中的下一幕里继续战斗。"
 
 #. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:154
@@ -712,9 +712,9 @@ msgid ""
 "rescuing someone, or solving a puzzle, or holding out against a siege until "
 "a certain number of turns have elapsed."
 msgstr ""
-"注意每一关开始前弹出的目标窗口。通常您通过杀死敌人首领取得胜利，自己首领阵亡"
-"时游戏失败。但是有些关卡可能有其他目标－让您的首领到达指定地点，或者救人，或"
-"者解决一个迷题，或者与敌人对抗并坚持一定回合数。"
+"注意每个场景开始前弹出的目标窗口。通常您通过杀死敌人首领取得胜利，自己首领阵"
+"亡时游戏失败。但是有些场景可能有其他目标－让您的首领到达指定地点，或者救人，"
+"或者解决一个迷题，或者与敌人对抗并坚持一定回合数。"
 
 #. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:157
@@ -728,7 +728,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"关卡胜利后,地图显示为灰色，'回合结束' 按钮会变成 '结束本关'。这时您可以改变游"
+"场景胜利后,地图显示为灰色，'回合结束' 按钮会变成 '结束场景'。这时您可以改变游"
 "戏存档选项，也可以（在多人游戏中）和其他玩家交流。然后才按下那个按钮继续。"
 
 #. [topic]: id=recruit_and_recall
@@ -1002,7 +1002,7 @@ msgid ""
 "a manual update via 'update shroud now' (or the end of your turn) and "
 "thereby perserve your ability to undo movement."
 msgstr ""
-"某些关卡的部分地图是不可见的，这背后有两种机理，可以分开或一同作用。战场黑幕"
+"某些场景的部分地图是不可见的，这背后有两种机理，可以分开或一同作用。战场黑幕"
 "会隐藏这个区域的地形和任何单位。但是，一旦被侦测，您时时刻刻都能看见这个区"
 "域。战争迷雾只会隐藏（不是您的或盟友的）单位和村庄的归属。在附近有您的单位时"
 "迷雾会消失，当他们离去后会再次笼罩。每个单位都能清除本回合移动所经过区域和区"
@@ -1142,8 +1142,8 @@ msgstr ""
 "根据攻击类型的不同，每次成功攻击会造成一定量的基础伤害。例如，精灵战士5-4的攻"
 "击可以造成5点的基本伤害。两种情况会对此作出修正：即"
 "<ref>dst='damage_types_and_resistance' text='抗性'</ref>和"
-"<ref>dst='time_of_day' text='时刻'</ref>。欲查看详细的基本伤害修正，请在攻击"
-"选择菜单中选择<italic>text='伤害计算'</italic>。"
+"<ref>dst='time_of_day'text='时刻'</ref>。欲查看详细的基本伤害修正，请在攻击选"
+"择菜单中选择<italic>text='伤害计算'</italic>。"
 
 #. [topic]: id=combat
 #: data/core/help.cfg:247
@@ -1157,7 +1157,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"少数单位拥有特别的<ref>dst='..abilities_section' text='技能'</ref>，会影响在"
+"少数单位拥有特别的<ref>dst='..abilities_section' text='能力'</ref>，会影响在"
 "战斗中的伤害输出。最常见的，具有<ref>dst='weaponspecial_charge' text='冲锋'</"
 "ref>能力的单位在战斗中的使用此技能，则使进攻方和防守方都输出双倍的伤害。"
 
@@ -1295,7 +1295,7 @@ msgstr "后半夜"
 msgid ""
 "Keep in mind that some scenarios take place underground, where it is "
 "perpetually night!"
-msgstr "记住，有些关卡是发生在地下的，那里一直是晚上。"
+msgstr "记住，有些场景是发生在地下的，那里一直是晚上。"
 
 #. [topic]: id=experience_and_advancement
 #: data/core/help.cfg:287
@@ -1459,7 +1459,7 @@ msgid ""
 "Income and Upkeep."
 msgstr ""
 "韦诺中，仅仅征兵并战斗是不够的。您得注意您的金币，特别是在战役中，您能将多余"
-"的金币携带到下一关。影响金币的主要是两个方面：收入和维护费用。"
+"的金币携带到下一幕。影响金币的主要是两个方面：收入和维护费用。"
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:318
@@ -1523,8 +1523,8 @@ msgid ""
 msgstr ""
 "\n"
 "维护费用的支付规则中有一个重要的例外：即具有忠诚特质的单位不需支付维护费用。"
-"每一关开始时您拥有的单位（比如Konrad或Delfador），或在战役中加入己方的单位"
-"（如在“继位者”第二关中加入的骑兵）通常都具有忠诚特质。"
+"每一幕开始时您拥有的单位（比如Konrad或Delfador），或在场景中加入己方的单位"
+"（如在“继位者”第二幕中加入的骑兵）通常都具有忠诚特质。"
 
 #. [topic]: id=wrap_up
 #: data/core/help.cfg:329
@@ -2565,7 +2565,7 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"退出本关（无须用户确认）。\n"
+"离开场景（无提示窗口）。\n"
 "\n"
 
 #. [topic]: id=general_commands
@@ -2576,7 +2576,7 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"保存游戏（无须用户确认）。\n"
+"保存游戏（无提示窗口）。\n"
 "\n"
 
 #. [topic]: id=general_commands
@@ -2586,7 +2586,7 @@ msgid ""
 "Save the game and quit the scenario (without prompting)."
 msgstr ""
 "\n"
-"保存游戏并退出当前场景（无须用户确认）。"
+"保存游戏并退出当前场景（无提示窗口）。"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:799
@@ -2671,7 +2671,7 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"\n"
+"弹出窗口，选择一个场景直接进入一个战役。\n"
 "\n"
 
 #. [topic]: id=debug_commands
@@ -2716,7 +2716,7 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"立即进入该战役的下一关。\n"
+"立即进入该战役的下一关（幕）。\n"
 "\n"
 
 #. [topic]: id=debug_commands
@@ -2760,8 +2760,7 @@ msgid ""
 "hitpoints=100"
 msgstr ""
 "\n"
-"改变选定单位的某个属性。例如:\n"
-" :unit hitpoint=100"
+"改变选定单位的某个属性。例如：单位生命值=100"
 
 #. [heals]: id=curing
 #: data/core/macros/abilities.cfg:51
@@ -2975,7 +2974,7 @@ msgstr ""
 #. [hides]: id=nightstalk
 #: data/core/macros/abilities.cfg:422
 msgid "female^nightstalk"
-msgstr "nightstal"
+msgstr "夜行"
 
 #. [hides]: id=concealment
 #: data/core/macros/abilities.cfg:441 data/core/macros/abilities.cfg:447
@@ -3048,7 +3047,7 @@ msgid ""
 "unit."
 msgstr ""
 "食尸:\n"
-"这种单位每杀死一个单位能为自己添加一点生命值。"
+"这种单位每杀死一个单位能为自己添加一点生命值上限。"
 
 #: data/core/macros/abilities.cfg:523
 msgid "+1 max HP"
@@ -3513,11 +3512,11 @@ msgstr "毒素此刻正渗透到这个单位的全身。"
 msgid ""
 "This water will make melee weapons have the 'arcane' damage type until the "
 "end of the current scenario."
-msgstr "这瓶水将让单位的近战武器类型变为'奥术'直到下一关开始."
+msgstr "这瓶水将让单位的近战武器类型变为'奥术'直到下一幕开始."
 
 #: data/core/macros/items.cfg:290
 msgid "I am not suited to the use of this item! Let another take it."
-msgstr "我不适合用这件物品！让别人去用吧。"
+msgstr "我不适合用这个东西！让别人去拿吧。"
 
 #. [object]
 #: data/core/macros/items.cfg:292
@@ -3567,7 +3566,7 @@ msgstr "戒指持有人行动变慢。"
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:481
 msgid "Staff of Swiftness"
-msgstr "疾速法杖"
+msgstr "迅捷法杖"
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:484
@@ -3595,7 +3594,7 @@ msgstr "风暴三叉戟"
 #. [object]
 #: data/core/macros/items.cfg:540
 msgid "This trident allows a merman to shoot electric bolts at his enemies!"
-msgstr "这柄三叉戟能让人鱼向敌人射出闪电。"
+msgstr "这柄三叉戟能让人鱼向敌人发射闪电!"
 
 #. [effect]: type=fire
 #: data/core/macros/items.cfg:544
@@ -4905,32 +4904,31 @@ msgstr ""
 "\n"
 "龙族是魔法生物，神秘的内部火焰引发他们的生命。这可以很容易地看到他们时，一个"
 "在战斗中的喷吐；其内部火灾一旦释放，就把他们燃烧殆尽。体内的火也是他们的最大"
-"弱点: 这使他们极易受到寒冷的侵袭. 尽管他们的神奇的性质, 龙族无法控制这种力"
-"量. 虽然魔法充斥身体, 可以从嘴中喷出, 但却无法有意识的控制利用. \n"
+"弱点：这使他们极易受到寒冷的侵袭。尽管他们的神奇的性质，龙族无法控制这种力"
+"量。虽然魔法充斥身体，可以从嘴中喷出，但却无法有意识的控制利用。\n"
 "\n"
 "<header>text='社会'</header>\n"
-"龙族是一种比较好战的种族, 他们的社会才能最好地描述为社会培养武术。核心的德雷"
-"克是一个小部落集团为首的老战士相互尊重-或只是担心-领导谁的社会规则与铁腕。每"
-"德雷克预计将赢得他们在严格的等级制度，服从上级指挥他们低人一等。进入统治精英"
-"是唯一可能的挑战和战胜上级单打击，这是道路等级的精英本身就是建立。使用欺骗的"
-"任何种类的任何研究员德雷克是，没有例外，被视为卑鄙的和不能接受的。 \n"
+"龙族是一种比较好战的种族，他们的社会为了最好地提升战力而设。龙族核心由相互尊"
+"重制衡的领导层，装备铁戟，以及其领导下一个小集团的老战士组成。龙族的阶级显"
+"著，每个个体都要由自己的位置，绝对服从上级指挥。进入统治精英的唯一可能是单挑"
+"上级并取胜，这是道路精英本身建立的。使用任何种类的欺骗不可饶恕，没有例外，被"
+"视为卑鄙的和不被接受。 \n"
 "\n"
-"虽然他们的好战的性质和意义上的领土硬盘他们捍卫自己的领土野蛮，公鸭很少侵入或"
-"侵入的领域，已经占领的其他主要比赛。相反，他们定居在无人居住的地区建立自己的"
-"领土上存在。它们主要捕食大型游戏，他们在寻找自己的家园周围低地，但刚孵化和下"
-"等种姓公鸭是众所周知的饲料也对某些苔藓和真菌培养他们在其洞穴深。唯一的技术公"
-"鸭值装甲和武器锻造，既不知道或需要其他科学和文化除了这一点。然而，少数执行他"
-"们的方式几乎是无与伦比的质量，只有符合这些生产最好的Dwarvish代工。 \n"
+"虽然他们好战，野蛮地捍卫自己的领土，但龙族很少入侵或侵入其他种族的领域。相"
+"反，他们在无人居住的地区建立自己的领地。它们主要食物来源为自己的家园周围低"
+"地，但刚孵化和下等种姓龙族位于苔藓和真菌繁茂的洞穴深处。龙族的唯一技术是装甲"
+"和武器锻造，不知道也不需要其他科学和文化。然而，这样专精产出了无与伦比的质"
+"量，只有最好的矮人作品可以比肩。\n"
 "\n"
-"公鸭正在孵化的蛋，通常生活自然之间20至30年。死在战场上是最喜欢的方式为德雷克"
-"离开这个世界。与老成员的其他种族，公鸭自然增长更具侵略性和鲁莽争取结束其自然"
-"的生活，也许，以帮助确保他们在英雄传说中的客气。\n"
+"龙族从孵化中的蛋开始，通常20至30年寿命。死在战场上是最喜欢的方式。不像其他古"
+"老种族，龙族天性更具侵略性也鲁莽，不断争取知道结束生命，也许，以帮助奠定他们"
+"在英雄传说中的位置。\n"
 "\n"
-" <header>文字= '地理“ < /页眉” \n"
-"公鸭来自链的火山岛的大海洋。相结合的人口压力和沉降的许多家庭造成了群岛殖民地"
-"公鸭蔓延至伟大的大陆。公鸭往往使他们的家园在火山附近山区的洞穴，以保护他们的"
-"蛋， hatchings和伪造。尽管公鸭自然喜欢温暖，其内部消防超过能够维持甚至在相对"
-"寒冷的气候，一个特点，这些优点使他们填充甚至一些山区的最北部的伟大的大陆。"
+"<header>text='地理'</header>\n"
+"龙族来自大洋上的连锁火山岛。人口压力和岛屿沉降造成了群岛殖民地的龙族蔓延至伟"
+"大的大陆。龙族往往把他们的家园在设在火山附近山区的洞穴中，以保护他们的蛋，隐"
+"匿自身，打造装备。尽管龙族自然喜欢温暖，内部的火焰使得寒冷的气候也难影响他们"
+"的生活，这个优点使他们能填充一些山区的最北部。"
 
 #. [race]: id=dwarf
 #: data/core/units.cfg:88
@@ -4949,7 +4947,6 @@ msgstr "矮人"
 
 #. [race]: id=dwarf
 #: data/core/units.cfg:95
-#, fuzzy
 msgid ""
 "The dwarves are a race famed for their miners, blacksmiths, merchants and "
 "warriors. Considered as the third oldest race on the great continent after "
@@ -5477,9 +5474,21 @@ msgid ""
 "dwarves who migrated there. Trolls are a common sight on the mountain ranges "
 "north and east of Wesnoth, and wherever Orcish hordes travel."
 msgstr ""
-"巨魔是远古生物, 大陆上已知的最古老种族. 他们庞大, 缓慢, 思维简单, 生命极为长"
-"久, 深入高山洞穴之中. 最特殊的是他们内部维持和恢复自身的神秘能力. 使得他们完"
-"全不同于其他的已知生物. 他们只有很少的实际需求: 很少的食物和水, "
+"巨魔是远古生物，大陆上已知的最古老种族。他们庞大，缓慢，思维简单，生命极为长"
+"久，深入高山洞穴之中。最特殊的是他们内部维持和恢复自身的神秘能力。使得他们完"
+"全不同于其他的已知生物。他们只有很少的实际需求：很少的食物和水，以及保护自"
+"己。它们没有什么忧虑，大多时间睡觉以及沉思。巨魔有一种天生的好奇心。他们不和"
+"任何其他生物如精灵有亲戚关系，不过和土地和岩石非常亲切。他们关心周围，小崽子"
+"们乐于旅行亲眼见识世界。变老之后逐渐消极，不断淡忘了这种探索外界的乐趣，更多"
+"安静的睡眠在熟悉的洞穴角落。直到他们逝去，缓慢变成无生命的石像。\n"
+"\n"
+"巨魔是常常被认为野蛮的怪物。通常这种误解因为兽人劝说巨魔加入他们的军队。因为"
+"他们相对简单的思维不了解其他种族，常常见到一股兽人部队中有一些巨魔，对付与兽"
+"人有纷争的‘敌人’。但是巨魔还是有最常见的敌人的，就是矮人，远古起就是仇敌。\n"
+"\n"
+"<header>text='地理'</header>\n"
+"巨魔定居在大陆高山上，远比矮人早到。从Wesnoth东边到北边的山脉中，经常可见，或"
+"者是到处行动的兽人部队里。"
 
 #. [race]: id=undead
 #: data/core/units.cfg:281
@@ -5498,7 +5507,6 @@ msgstr "不死族"
 
 #. [race]: id=undead
 #: data/core/units.cfg:289
-#, fuzzy
 msgid ""
 "Undead are not really a single race of creatures, although often treated as "
 "such. Almost any dead creature can, by a sufficiently skilled necromancer, "
@@ -5879,7 +5887,8 @@ msgid ""
 "After you have played a few scenarios, read the 'Gameplay' section in the "
 "help screen carefully. Details become important as scenarios get harder!"
 msgstr ""
-"玩过几关后,请认真阅读帮助中的'游戏玩法'部分.那些技巧在更难的场景中会很有用的!"
+"玩过几个场景后,请认真阅读帮助中的'游戏玩法'部分.那些技巧在更难的场景中会很有"
+"用的!"
 
 #. [tip]
 #: data/hardwired/tips.cfg:39
@@ -5888,7 +5897,7 @@ msgid ""
 "level units that are about to level up than with those same units at a "
 "higher level."
 msgstr ""
-"通常在开始下一关的时候使用就快升级的低等级单位会更好一些，而不使用同一类型的"
+"通常在开始下一幕的时候使用就快升级的低等级单位会更好一些，而不使用同一类型的"
 "高等级单位。"
 
 #. [tip]
@@ -5985,7 +5994,7 @@ msgid ""
 "'Actions' menu. By recalling the same units over and over, you can build up "
 "a powerful and experienced army."
 msgstr ""
-"您可以通过游戏菜单中的“召回”选项来调用上一关中的单位。通过不断召回同一组单"
+"您可以通过游戏菜单中的“召回”选项来调用上个场景中的单位。通过不断召回同一组单"
 "位，您可以建立一支强力而经验值丰富的军队。"
 
 #. [tip]
@@ -6703,7 +6712,7 @@ msgstr "插件已安装"
 
 #: src/addon_management.cpp:701
 msgid "Outdated add-ons"
-msgstr "不是最新的插件"
+msgstr "过期插件"
 
 #: src/addon_management.cpp:703
 msgid ""
@@ -6712,8 +6721,8 @@ msgid ""
 msgid_plural ""
 "Some outdated local add-ons have publishing information attached. They will "
 "not be offered for updating."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "一个过期的本地插件附带的信息显示。不会再升级了。"
+msgstr[1] "一些过期的本地插件附带的信息显示。不会再升级了。"
 
 #: src/addon_management.cpp:712
 msgid "Could not find any updated add-ons on this server."
@@ -6831,7 +6840,7 @@ msgstr "选择要下载的插件。"
 #: src/addon_management.cpp:1035 src/dialogs.cpp:672 src/menu_events.cpp:1067
 #: src/menu_events.cpp:1544
 msgid "Filter: "
-msgstr "过滤/查找： "
+msgstr "过滤： "
 
 #: src/addon_management.cpp:1066
 msgid "Network communication error."
@@ -7066,7 +7075,7 @@ msgid ""
 "(Games are saved automatically when you complete a scenario)"
 msgstr ""
 "没有存档，无法载入。\n"
-"（当您完成一关时会自动存档）"
+"（当您完成一个场景时会自动存档）"
 
 #: src/dialogs.cpp:647
 msgid "Date"
@@ -7603,7 +7612,7 @@ msgstr "单位列表"
 
 #: src/menu_events.cpp:317 src/menu_events.cpp:339
 msgid "Scroll To"
-msgstr "跳转"
+msgstr "滚动到"
 
 #: src/menu_events.cpp:371
 msgid "Leader"
@@ -7775,7 +7784,7 @@ msgid ""
 "(You must have veteran survivors from a previous scenario)"
 msgstr ""
 "没有可供召回的单位\n"
-"（只能召回上一关存活下来的单位）"
+"（只能召回上一幕存活下来的单位）"
 
 #: src/menu_events.cpp:1060
 msgid "Recall"
@@ -7963,23 +7972,23 @@ msgstr "忽视回放错误。"
 
 #: src/menu_events.cpp:2341
 msgid "Disable autosaves."
-msgstr "关闭自动存档。"
+msgstr "禁止自动存档。"
 
 #: src/menu_events.cpp:2343
 msgid "Advance to the next scenario, or scenario identified by 'id'"
-msgstr "进入下一关游戏，或者由id指定的关卡..."
+msgstr "进入下一幕游戏，或者id识别开始..."
 
 #: src/menu_events.cpp:2346
 msgid "Choose next scenario"
-msgstr "选择下一关"
+msgstr "正在下载下一幕"
 
 #: src/menu_events.cpp:2349
 msgid "Turn debug mode on."
-msgstr "打开调试模式。"
+msgstr "打开除错模式。"
 
 #: src/menu_events.cpp:2351
 msgid "Turn debug mode off."
-msgstr "关闭调试模式。"
+msgstr "关闭除错模式。"
 
 #: src/menu_events.cpp:2353
 msgid "Set the command used by the custom command hotkey"
@@ -7991,11 +8000,11 @@ msgstr "设置或者显示一条命令的alias(别名)"
 
 #: src/menu_events.cpp:2357
 msgid "Set a scenario variable."
-msgstr "设置一个关卡变量"
+msgstr "显示一个场景变量"
 
 #: src/menu_events.cpp:2359
 msgid "Show a scenario variable."
-msgstr "显示一个关卡变量"
+msgstr "显示一个场景变量"
 
 #: src/menu_events.cpp:2361
 msgid "Modify a unit variable. (Only top level keys are supported.)"
@@ -8003,7 +8012,7 @@ msgstr "修改一个单位变量。（只支持顶层的键值）"
 
 #: src/menu_events.cpp:2365
 msgid "Remove a trait from a unit. (Does not work yet.)"
-msgstr "去掉单位的一个特质。（目前这个功能还没实现。）"
+msgstr "去掉一个单位的特质。（目前这个功能还没实现。）"
 
 #: src/menu_events.cpp:2367
 msgid "Create a unit."
@@ -9009,7 +9018,7 @@ msgstr "设置"
 
 #: src/titlescreen.cpp:421
 msgid "TitleScreen button^Credits"
-msgstr "制作人员"
+msgstr "贡献者"
 
 #: src/titlescreen.cpp:422
 msgid "TitleScreen button^Quit"
@@ -9186,9 +9195,9 @@ msgid ""
 "help us improve game play by giving permission to send these summaries "
 "(anonymously) to wesnoth.org.\n"
 msgstr ""
-"韦诺依赖向您一样的志愿者给我们提供反馈信息，特别是来自新手的回馈。韦诺之战保"
-"存了您游戏的摘要信息，如果您允许（匿名）发送这些摘要给wesnoth.org，您将帮助我"
-"们改进游戏。\n"
+"Wesnoth依赖像您一样的志愿者提供反馈信息，特别是来自新手的回馈。韦诺之战保存了"
+"您游戏的摘要信息，如果您允许匿名发送这些摘要给wesnoth.org，您将帮助我们改进游"
+"戏。\n"
 
 #: src/upload_log.cpp:326
 msgid "Summaries are stored here:"
@@ -9200,11 +9209,11 @@ msgstr "您可以在这里察看结果："
 
 #: src/upload_log.cpp:330
 msgid "Help us make Wesnoth better for you!"
-msgstr "帮助我们改进韦诺，提升您的游戏体验！"
+msgstr "大家一起把Wesnoth变得更好！"
 
 #: src/upload_log.cpp:332
 msgid "Enable summary uploads"
-msgstr "开启摘要上传模式"
+msgstr "开启摘要上传"
 
 #~ msgid "Unchecked script files found:"
 #~ msgstr "发现未检查过的脚本："
