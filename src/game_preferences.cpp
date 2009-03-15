@@ -154,7 +154,7 @@ void admin_authentication(const std::string& sender, const std::string& message)
 	}
 }
 
-const std::set<std::string> & get_friends() {
+void initialize_friends() {
 	if(!friends_initialized) {
 		std::vector<std::string> names = utils::split(preferences::get("friends"));
 		std::set<std::string> tmp(names.begin(), names.end());
@@ -162,11 +162,14 @@ const std::set<std::string> & get_friends() {
 
 		friends_initialized = true;
 	}
+}
 
+const std::set<std::string> & get_friends() {
+	initialize_friends();
 	return friends;
 }
 
-const std::set<std::string> & get_ignores() {
+void initialize_ignores() {
 	if(!ignores_initialized) {
 		std::vector<std::string> names = utils::split(preferences::get("ignores"));
 		std::set<std::string> tmp(names.begin(), names.end());
@@ -174,7 +177,9 @@ const std::set<std::string> & get_ignores() {
 
 		ignores_initialized = true;
 	}
+}
 
+const std::set<std::string> & get_ignores() {
 	return ignores;
 }
 
@@ -217,10 +222,12 @@ void clear_ignores() {
 }
 
 bool is_friend(const std::string& nick) {
+	initialize_friends();
 	return friends.find(nick) != friends.end();
 }
 
 bool is_ignored(const std::string& nick) {
+	initialize_ignores();
 	return ignores.find(nick) != ignores.end();
 }
 
