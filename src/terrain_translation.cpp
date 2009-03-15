@@ -33,7 +33,7 @@
 namespace t_translation {
 
 	size_t max_map_size() {
-		return 200; //TODO make this overridable by the user without having to rebuild
+		return 1000; //TODO make this overridable by the user without having to rebuild
 	}
 
 /***************************************************************************************/
