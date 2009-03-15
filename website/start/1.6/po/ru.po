@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-announcement.po\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-03-14 14:43+0100\n"
+"POT-Creation-Date: 2009-03-15 18:41+0100\n"
 "PO-Revision-Date: 2009-03-14 13:55+0300\n"
 "Last-Translator: Victor Sergienko <singalen@gmail.com>\n"
 "Language-Team: wesnoth\n"
@@ -114,7 +114,7 @@ msgid "<a href='#more'>More Info</a>"
 msgstr "<a href='#more'>Дополнительно</a>"
 
 # type: Content of: <html><body><div><div><div>
-#: template.html:60 template.html:232
+#: template.html:60 template.html:243
 msgid "<br/>"
 msgstr "<br/>"
 
@@ -123,8 +123,14 @@ msgstr "<br/>"
 msgid "What's New in Wesnoth 1.6"
 msgstr "Что нового в «Битве за Веснот» 1.6"
 
+# type: Attribute 'alt' of: <html><body><div><div><div><a><img>
+#: template.html:65 template.html:100 template.html:129 template.html:166
+#, fuzzy
+msgid "Wesnoth Screenshot"
+msgstr "Логотип Веснота"
+
 # type: Content of: <html><body><div><div><div><p>
-#: template.html:64
+#: template.html:68
 msgid ""
 "We have many new features for your enjoyment this time around, including a "
 "new mainline campaign, two new multiplayer scenarios and another refresh of "
@@ -135,17 +141,17 @@ msgstr ""
 "ещё мы снова обновили пользовательский интерфейс."
 
 # type: Content of: <html><body><div><div><div><h3>
-#: template.html:74
+#: template.html:72
 msgid "For Players"
 msgstr "Для игроков"
 
 # type: Content of: <html><body><div><div><div><h4>
-#: template.html:76
+#: template.html:74
 msgid "Campaigns"
 msgstr "Кампании"
 
 # type: Content of: <html><body><div><div><div><p>
-#: template.html:78
+#: template.html:76
 #, fuzzy
 msgid ""
 "There is a new mainline campaign, <em>The Legend of Wesmere</em>, with new "
@@ -165,7 +171,7 @@ msgstr ""
 "месяцев адаптировали к основной ветке игры."
 
 # type: Content of: <html><body><div><div><div><p>
-#: template.html:88
+#: template.html:86
 msgid ""
 "Almost all mainline campaigns now use a different method of carrying over "
 "gold from scenario to scenario: the amount of gold retained is now 40% "
@@ -177,7 +183,7 @@ msgstr ""
 "эта сумма не заменяет минимальный стартовый уровень, а добавляется к нему."
 
 # type: Content of: <html><body><div><div><div><p>
-#: template.html:93
+#: template.html:91
 msgid ""
 "Many mainline campaigns have improved storyline prose and new cutscenes or "
 "epilogs.  Several have improved and redrawn campaign maps. All now have "
@@ -195,12 +201,12 @@ msgstr ""
 "сюжет и добавляет ему глубины."
 
 # type: Content of: <html><body><div><div><div><dl><dt>
-#: template.html:101
+#: template.html:103
 msgid "Multiplayer"
 msgstr "Мультиплеер"
 
 # type: Content of: <html><body><div><div><div><p>
-#: template.html:103
+#: template.html:105
 msgid ""
 "The multiplayer server can now be logged onto using the username and "
 "password of a Wesnoth forum account.  However, registration is not required "
@@ -211,7 +217,7 @@ msgstr ""
 "регистрации."
 
 # type: Content of: <html><body><div><div><div><p>
-#: template.html:108
+#: template.html:110
 msgid ""
 "The multiplayer lobby has been improved to allow easier management of the "
 "friends and ignores list by double-clicking on the player list."
@@ -220,27 +226,27 @@ msgstr ""
 "двойному клику на списке игроков."
 
 # type: Content of: <html><body><div><div><div><p>
-#: template.html:111
+#: template.html:113
 msgid "Notable changes to default era balancing include:"
 msgstr "Основные изменения в балансе основной эры:"
 
 # type: Content of: <html><body><div><div><div><ul><li>
-#: template.html:113
+#: template.html:115
 msgid "Increased the cost of the Goblin Spearman from 8 to 9."
 msgstr "Цена гоблина-копейщика увеличена с 8 до 9."
 
 # type: Content of: <html><body><div><div><div><ul><li>
-#: template.html:114
+#: template.html:116
 msgid "Increased the movement of the Goblin Spearman line from 4 to 5."
 msgstr "Дальность хода гоблина-копейщика увеличена с 4 до 5."
 
 # type: Content of: <html><body><div><div><div><ul><li>
-#: template.html:115
+#: template.html:117
 msgid "Increased the melee attack of the Goblin Spearman from 4-3 to 6-3."
 msgstr "Ближняя атака гоблина-копейщика усилена с 4-3 до 6-3."
 
 # type: Content of: <html><body><div><div><div><ul><li>
-#: template.html:116
+#: template.html:118
 msgid ""
 "Added the traits weak, slow and dim and made goblins each receive one of "
 "them instead of two standard traits."
@@ -249,28 +255,28 @@ msgstr ""
 "из них вместо двух обычных."
 
 # type: Content of: <html><body><div><div><div><ul><li>
-#: template.html:118
+#: template.html:120
 msgid ""
 "Added the marksman special to the ranged attack of the Orcish Assassin line."
 msgstr "У метательной атаки Орков-Убийц теперь есть особенность \"снайпер\"."
 
 # type: Content of: <html><body><div><div><div><ul><li>
-#: template.html:120
+#: template.html:122
 msgid "Increased the cost of the Walking Corpse from 7 to 8."
 msgstr "Цена ходячего трупа увеличена с 7 до 8."
 
 # type: Content of: <html><body><div><div><div><ul><li>
-#: template.html:121
+#: template.html:123
 msgid "Decreased the cost of the Bowman from 15 to 14."
 msgstr "Цена лучника уменьшена с 15 до 14."
 
 # type: Content of: <html><body><div><div><div><h4>
-#: template.html:124
+#: template.html:126
 msgid "General"
 msgstr "В целом"
 
 # type: Content of: <html><body><div><div><div><p>
-#: template.html:126
+#: template.html:132
 msgid ""
 "The game graphics have been improved with a whole new range of unit "
 "portraits.  Many more units have full animations and team coloring."
@@ -279,7 +285,7 @@ msgstr ""
 "намного больше анимаций, и есть поддержка командных цветов."
 
 # type: Content of: <html><body><div><div><div><p>
-#: template.html:129
+#: template.html:135
 msgid ""
 "There is a new basic terrain type, coastal reef, which gives most land-based "
 "units slightly higher defense than in regular shallow water, and 70% defense "
@@ -295,7 +301,7 @@ msgstr ""
 "первобытных поселений."
 
 # type: Content of: <html><body><div><div><div><p>
-#: template.html:136
+#: template.html:142
 #, fuzzy
 msgid ""
 "Our composers have added five new original background tracks: <em>Heroes' "
@@ -308,7 +314,7 @@ msgstr ""
 "того, теперь при победе и поражении вы услышите разные мелодии."
 
 # type: Content of: <html><body><div><div><div><p>
-#: template.html:141
+#: template.html:147
 msgid ""
 "The game interface has continued to evolve, especially in making more "
 "dramatic use of portraits.  Unit recall dialogs now display useful "
@@ -320,7 +326,7 @@ msgstr ""
 "ваших ветеранов. В браузере дополнений теперь видны их типы."
 
 # type: Content of: <html><body><div><div><div><p>
-#: template.html:146
+#: template.html:152
 msgid ""
 "New game translations include Arabic, Croatian, Friulian, Latvian, "
 "Macedonian and Marathi.  Existing translations have been extensively updated "
@@ -331,12 +337,12 @@ msgstr ""
 "пересматриваются."
 
 # type: Content of: <html><body><div><div><div><h3>
-#: template.html:150
+#: template.html:156
 msgid "For Content Developers"
 msgstr "Для разработчиков кампаний, рас, карт..."
 
 # type: Content of: <html><body><div><div><div><p>
-#: template.html:152
+#: template.html:158
 msgid ""
 "The map editor was much improved (thank you, Google Summer of Code).  It can "
 "be started from within the game now.  You can toggle overlay displays of "
@@ -351,7 +357,7 @@ msgstr ""
 "анимации путешествий на карте."
 
 # type: Content of: <html><body><div><div><div><p>
-#: template.html:158
+#: template.html:169
 msgid ""
 "There are some new core units available everywhere: Troll Shaman, Royal "
 "Warrior and Dread Bat."
@@ -360,7 +366,7 @@ msgstr ""
 "Ужаса."
 
 # type: Content of: <html><body><div><div><div><p>
-#: template.html:161
+#: template.html:172
 msgid ""
 "Less visible changes include improvements in the game AI, including a new "
 "formula-based AI that allows more flexible setting of objectives and an "
@@ -380,7 +386,7 @@ msgstr ""
 "ветви 1.7."
 
 # type: Content of: <html><body><div><div><div><p>
-#: template.html:170
+#: template.html:181
 msgid ""
 "The support for writing Python AIs has been removed because the feature "
 "opened a serious security hole. However, we hope to build an even more "
@@ -392,12 +398,12 @@ msgstr ""
 "для AI, возможно, на другом, более безопасном языке, в ветви 1.7."
 
 # type: Content of: <html><body><div><div><div><h2>
-#: template.html:177
+#: template.html:188
 msgid "Download"
 msgstr "Загрузить"
 
 # type: Content of: <html><body><div><div><div><p>
-#: template.html:179
+#: template.html:190
 msgid ""
 "Battle for Wesnoth is made available under the <a href='http://www.gnu.org/"
 "licenses/gpl-2.0.html'>GNU General Public License</a> (GPL). Source code is "
@@ -416,7 +422,7 @@ msgstr ""
 "X, уже доступны готовые к использованию пакеты."
 
 # type: Content of: <html><body><div><div><div><ul><li>
-#: template.html:193
+#: template.html:204
 msgid ""
 "<strong> <a href='http://downloads.sourceforge.net/wesnoth/wesnoth-1.6.tar."
 "bz2?download'>Source code</a> </strong>"
@@ -425,7 +431,7 @@ msgstr ""
 "bz2?download'>Исходный код</a> </strong>"
 
 # type: Content of: <html><body><div><div><div><ul><li>
-#: template.html:198
+#: template.html:209
 msgid ""
 "<strong> <a href='http://downloads.sourceforge.net/wesnoth/wesnoth-1.6-"
 "windows.exe?download'>Wesnoth for MS Windows</a> </strong>"
@@ -434,7 +440,7 @@ msgstr ""
 "windows.exe?download'>Версия для MS Windows</a> </strong>"
 
 # type: Content of: <html><body><div><div><div><ul><li>
-#: template.html:203
+#: template.html:214
 msgid ""
 "<strong> <a href='http://downloads.sourceforge.net/wesnoth/"
 "Wesnoth_MacOSX_1.6.dmg?download'>Wesnoth for Mac OS X</a> </strong>"
@@ -443,7 +449,7 @@ msgstr ""
 "Wesnoth_MacOSX_1.6.dmg?download'>Версия для Mac OS X</a> </strong>"
 
 # type: Content of: <html><body><div><div><div><p>
-#: template.html:209
+#: template.html:220
 msgid ""
 "You can get up to date information about downloads at the <a href='http://"
 "www.wesnoth.org/wiki/Download'>downloads page</a>."
@@ -452,7 +458,7 @@ msgstr ""
 "Download'>странице закачек</a>."
 
 # type: Content of: <html><body><div><div><div><p>
-#: template.html:212
+#: template.html:223
 msgid ""
 "If you downloaded previous versions of the game, you might be interested in "
 "downloading the <a href='http://www.wesnoth.org/wiki/"
@@ -462,12 +468,12 @@ msgstr ""
 "файлы <a href='http://www.wesnoth.org/wiki/Download_Xdeltas'>xdelta</a>."
 
 # type: Content of: <html><body><div><div><div><h2>
-#: template.html:217
+#: template.html:228
 msgid "More Info"
 msgstr "Дополнительно"
 
 # type: Content of: <html><body><div><div><div><ul><li>
-#: template.html:221
+#: template.html:232
 msgid ""
 "<a href='http://svn.gna.org/viewcvs/*checkout*/wesnoth/tags/1.6/"
 "changelog'>Full Changelog</a> (English, very long)"
@@ -476,7 +482,7 @@ msgstr ""
 "changelog'>Полный журнал изменений</a> (на английском, очень длинный)"
 
 # type: Content of: <html><body><div><div><div><ul><li>
-#: template.html:224
+#: template.html:235
 #, fuzzy
 msgid ""
 "<a href='http://svn.gna.org/viewcvs/*checkout*/wesnoth/tags/1.6/doc/manual/"
@@ -486,18 +492,18 @@ msgstr ""
 "manual.en.html'>Руководство пользователя</a>"
 
 # type: Content of: <html><body><div><div><div><ul><li>
-#: template.html:225
+#: template.html:236
 msgid "<a href='http://www.wesnoth.org'>Wesnoth Official Website</a> (English)"
 msgstr ""
 "<a href='http://www.wesnoth.org'>Официальный сайт игры</a> (на английском)"
 
 # type: Content of: <html><body><div><div><div><ul><li>
-#: template.html:229
+#: template.html:240
 msgid ""
 "<a href='http://www.wesnoth.org/start/1.4'>Wesnoth 1.4 Release Notes</a>"
 msgstr "<a href='http://www.wesnoth.org/start/1.4>Пресс-релиз о версии 1.4</a>"
 
 # type: Content of: <html><body><div><div><div><div><p>
-#: template.html:236
+#: template.html:247
 msgid "This page is also available in the following languages:"
 msgstr "Эта страница также доступна на следующих языках:"

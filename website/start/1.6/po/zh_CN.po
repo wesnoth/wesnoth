@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth 1.6\n"
-"POT-Creation-Date: 2009-03-14 14:43+0100\n"
+"POT-Creation-Date: 2009-03-15 18:41+0100\n"
 "PO-Revision-Date: 2009-03-12 22:39-0500\n"
 "Last-Translator: sylecn <sylecn@yahoo.com.cn>\n"
 "Language-Team: zh_CN <www.wesnoth.cn>\n"
@@ -107,7 +107,7 @@ msgid "<a href='#more'>More Info</a>"
 msgstr "<a href='#more'>更多信息</a>"
 
 # type: Content of: <html><body><div><div><div>
-#: template.html:60 template.html:232
+#: template.html:60 template.html:243
 msgid "<br/>"
 msgstr "<br/>"
 
@@ -116,8 +116,14 @@ msgstr "<br/>"
 msgid "What's New in Wesnoth 1.6"
 msgstr "Wesnoth 1.6 新增元素"
 
+# type: Attribute 'alt' of: <html><body><div><div><div><a><img>
+#: template.html:65 template.html:100 template.html:129 template.html:166
+#, fuzzy
+msgid "Wesnoth Screenshot"
+msgstr "Wesnoth logo"
+
 # type: Content of: <html><body><div><div><div><p>
-#: template.html:64
+#: template.html:68
 msgid ""
 "We have many new features for your enjoyment this time around, including a "
 "new mainline campaign, two new multiplayer scenarios and another refresh of "
@@ -127,17 +133,17 @@ msgstr ""
 "次更新了我们的用户界面。"
 
 # type: Content of: <html><body><div><div><div><h3>
-#: template.html:74
+#: template.html:72
 msgid "For Players"
 msgstr "对于玩家"
 
 # type: Content of: <html><body><div><div><div><h4>
-#: template.html:76
+#: template.html:74
 msgid "Campaigns"
 msgstr "战役"
 
 # type: Content of: <html><body><div><div><div><p>
-#: template.html:78
+#: template.html:76
 #, fuzzy
 msgid ""
 "There is a new mainline campaign, <em>The Legend of Wesmere</em>, with new "
@@ -155,7 +161,7 @@ msgstr ""
 "了几个月才进入了主线。"
 
 # type: Content of: <html><body><div><div><div><p>
-#: template.html:88
+#: template.html:86
 msgid ""
 "Almost all mainline campaigns now use a different method of carrying over "
 "gold from scenario to scenario: the amount of gold retained is now 40% "
@@ -167,7 +173,7 @@ msgstr ""
 "比最小起始金币高就直接作为起始金币。"
 
 # type: Content of: <html><body><div><div><div><p>
-#: template.html:93
+#: template.html:91
 msgid ""
 "Many mainline campaigns have improved storyline prose and new cutscenes or "
 "epilogs.  Several have improved and redrawn campaign maps. All now have "
@@ -183,12 +189,12 @@ msgstr ""
 "用到整个历史中的事件，使得故事更有深度，更丰富多彩。"
 
 # type: Content of: <html><body><div><div><div><h4>
-#: template.html:101
+#: template.html:103
 msgid "Multiplayer"
 msgstr "多人游戏"
 
 # type: Content of: <html><body><div><div><div><p>
-#: template.html:103
+#: template.html:105
 msgid ""
 "The multiplayer server can now be logged onto using the username and "
 "password of a Wesnoth forum account.  However, registration is not required "
@@ -198,34 +204,34 @@ msgstr ""
 "要是没有被注册的用户名您都可以继续使用。"
 
 # type: Content of: <html><body><div><div><div><p>
-#: template.html:108
+#: template.html:110
 msgid ""
 "The multiplayer lobby has been improved to allow easier management of the "
 "friends and ignores list by double-clicking on the player list."
 msgstr "多人游戏聊天室现在更容易管理好友和忽略名单，只要双击玩家列表就可以。"
 
 # type: Content of: <html><body><div><div><div><p>
-#: template.html:111
+#: template.html:113
 msgid "Notable changes to default era balancing include:"
 msgstr "默认时代的重要平衡性变化包括："
 
 # type: Content of: <html><body><div><div><div><ul><li>
-#: template.html:113
+#: template.html:115
 msgid "Increased the cost of the Goblin Spearman from 8 to 9."
 msgstr "地精长矛兵造价从8提升到9。"
 
 # type: Content of: <html><body><div><div><div><ul><li>
-#: template.html:114
+#: template.html:116
 msgid "Increased the movement of the Goblin Spearman line from 4 to 5."
 msgstr "地精长矛兵移动力从4提升到5。"
 
 # type: Content of: <html><body><div><div><div><ul><li>
-#: template.html:115
+#: template.html:117
 msgid "Increased the melee attack of the Goblin Spearman from 4-3 to 6-3."
 msgstr "地精长矛兵近战攻击从4-3提升到6-3。"
 
 # type: Content of: <html><body><div><div><div><ul><li>
-#: template.html:116
+#: template.html:118
 msgid ""
 "Added the traits weak, slow and dim and made goblins each receive one of "
 "them instead of two standard traits."
@@ -234,28 +240,28 @@ msgstr ""
 "个普通特质。"
 
 # type: Content of: <html><body><div><div><div><ul><li>
-#: template.html:118
+#: template.html:120
 msgid ""
 "Added the marksman special to the ranged attack of the Orcish Assassin line."
 msgstr "为兽人刺客的远程攻击增加神射手特性。"
 
 # type: Content of: <html><body><div><div><div><ul><li>
-#: template.html:120
+#: template.html:122
 msgid "Increased the cost of the Walking Corpse from 7 to 8."
 msgstr "僵尸造价从7提升到8。"
 
 # type: Content of: <html><body><div><div><div><ul><li>
-#: template.html:121
+#: template.html:123
 msgid "Decreased the cost of the Bowman from 15 to 14."
 msgstr "弓箭手造价从15降低到14。"
 
 # type: Content of: <html><body><div><div><div><h4>
-#: template.html:124
+#: template.html:126
 msgid "General"
 msgstr "总体"
 
 # type: Content of: <html><body><div><div><div><p>
-#: template.html:126
+#: template.html:132
 msgid ""
 "The game graphics have been improved with a whole new range of unit "
 "portraits.  Many more units have full animations and team coloring."
@@ -263,7 +269,7 @@ msgstr ""
 "游戏画面由于一整组新的单位图像而得到提升。许多单位都有完整动作和组队颜色。"
 
 # type: Content of: <html><body><div><div><div><p>
-#: template.html:129
+#: template.html:135
 msgid ""
 "There is a new basic terrain type, coastal reef, which gives most land-based "
 "units slightly higher defense than in regular shallow water, and 70% defense "
@@ -277,7 +283,7 @@ msgstr ""
 "同的落叶林地形。人类城市的村庄和主要部落的村庄都有新的图案。"
 
 # type: Content of: <html><body><div><div><div><p>
-#: template.html:136
+#: template.html:142
 #, fuzzy
 msgid ""
 "Our composers have added five new original background tracks: <em>Heroes' "
@@ -290,7 +296,7 @@ msgstr ""
 "功或失败时会播放特别音乐片段。"
 
 # type: Content of: <html><body><div><div><div><p>
-#: template.html:141
+#: template.html:147
 msgid ""
 "The game interface has continued to evolve, especially in making more "
 "dramatic use of portraits.  Unit recall dialogs now display useful "
@@ -301,7 +307,7 @@ msgstr ""
 "应的有用信息。附加组件现在在浏览下载服务器时会显示它们的目录"
 
 # type: Content of: <html><body><div><div><div><p>
-#: template.html:146
+#: template.html:152
 msgid ""
 "New game translations include Arabic, Croatian, Friulian, Latvian, "
 "Macedonian and Marathi.  Existing translations have been extensively updated "
@@ -311,12 +317,12 @@ msgstr ""
 "Marathi。 已经存在的翻译有了许多重要更新和校正。"
 
 # type: Content of: <html><body><div><div><div><h3>
-#: template.html:150
+#: template.html:156
 msgid "For Content Developers"
 msgstr "对于内容制作者"
 
 # type: Content of: <html><body><div><div><div><p>
-#: template.html:152
+#: template.html:158
 msgid ""
 "The map editor was much improved (thank you, Google Summer of Code).  It can "
 "be started from within the game now.  You can toggle overlay displays of "
@@ -330,14 +336,14 @@ msgstr ""
 "制作行走轨迹动画。/todo"
 
 # type: Content of: <html><body><div><div><div><p>
-#: template.html:158
+#: template.html:169
 msgid ""
 "There are some new core units available everywhere: Troll Shaman, Royal "
 "Warrior and Dread Bat."
 msgstr "新增核心单位，到处都可以使用：巨魔萨满, 皇家武士, 恐惧蝙蝠。"
 
 # type: Content of: <html><body><div><div><div><p>
-#: template.html:161
+#: template.html:172
 msgid ""
 "Less visible changes include improvements in the game AI, including a new "
 "formula-based AI that allows more flexible setting of objectives and an "
@@ -354,7 +360,7 @@ msgstr ""
 "来配置。现在基础已经实现，但是这项工程还没有完成，会继续在1.7版本中开发。"
 
 # type: Content of: <html><body><div><div><div><p>
-#: template.html:170
+#: template.html:181
 msgid ""
 "The support for writing Python AIs has been removed because the feature "
 "opened a serious security hole. However, we hope to build an even more "
@@ -366,12 +372,12 @@ msgstr ""
 "全的扩展语言。"
 
 # type: Content of: <html><body><div><div><div><h2>
-#: template.html:177
+#: template.html:188
 msgid "Download"
 msgstr "下载"
 
 # type: Content of: <html><body><div><div><div><p>
-#: template.html:179
+#: template.html:190
 msgid ""
 "Battle for Wesnoth is made available under the <a href='http://www.gnu.org/"
 "licenses/gpl-2.0.html'>GNU General Public License</a> (GPL). Source code is "
@@ -388,7 +394,7 @@ msgstr ""
 "作系统包括Linux, Windows 和 Mac OS X的用户提供现成的软件包。"
 
 # type: Content of: <html><body><div><div><div><ul><li>
-#: template.html:193
+#: template.html:204
 msgid ""
 "<strong> <a href='http://downloads.sourceforge.net/wesnoth/wesnoth-1.6.tar."
 "bz2?download'>Source code</a> </strong>"
@@ -397,7 +403,7 @@ msgstr ""
 "bz2?download'>源代码</a> </strong>"
 
 # type: Content of: <html><body><div><div><div><ul><li>
-#: template.html:198
+#: template.html:209
 msgid ""
 "<strong> <a href='http://downloads.sourceforge.net/wesnoth/wesnoth-1.6-"
 "windows.exe?download'>Wesnoth for MS Windows</a> </strong>"
@@ -406,7 +412,7 @@ msgstr ""
 "windows.exe?download'>Wesnoth for MS Windows</a> </strong>"
 
 # type: Content of: <html><body><div><div><div><ul><li>
-#: template.html:203
+#: template.html:214
 msgid ""
 "<strong> <a href='http://downloads.sourceforge.net/wesnoth/"
 "Wesnoth_MacOSX_1.6.dmg?download'>Wesnoth for Mac OS X</a> </strong>"
@@ -415,7 +421,7 @@ msgstr ""
 "Wesnoth_MacOSX_1.6.dmg?download'>Wesnoth for Mac OS X</a> </strong>"
 
 # type: Content of: <html><body><div><div><div><p>
-#: template.html:209
+#: template.html:220
 msgid ""
 "You can get up to date information about downloads at the <a href='http://"
 "www.wesnoth.org/wiki/Download'>downloads page</a>."
@@ -424,7 +430,7 @@ msgstr ""
 "的下载信息。"
 
 # type: Content of: <html><body><div><div><div><p>
-#: template.html:212
+#: template.html:223
 msgid ""
 "If you downloaded previous versions of the game, you might be interested in "
 "downloading the <a href='http://www.wesnoth.org/wiki/"
@@ -434,12 +440,12 @@ msgstr ""
 "org/wiki/Download_Xdeltas'>xdelta文件。"
 
 # type: Content of: <html><body><div><div><div><h2>
-#: template.html:217
+#: template.html:228
 msgid "More Info"
 msgstr "更多信息"
 
 # type: Content of: <html><body><div><div><div><ul><li>
-#: template.html:221
+#: template.html:232
 msgid ""
 "<a href='http://svn.gna.org/viewcvs/*checkout*/wesnoth/tags/1.6/"
 "changelog'>Full Changelog</a> (English, very long)"
@@ -448,7 +454,7 @@ msgstr ""
 "整日志</a> (英文, 非常长)"
 
 # type: Content of: <html><body><div><div><div><ul><li>
-#: template.html:224
+#: template.html:235
 msgid ""
 "<a href='http://svn.gna.org/viewcvs/*checkout*/wesnoth/tags/1.6/doc/manual/"
 "manual.en.html'>User's Manual</a>"
@@ -457,17 +463,17 @@ msgstr ""
 "manual/manual.zh_CN.html'>用户手册</a>"
 
 # type: Content of: <html><body><div><div><div><ul><li>
-#: template.html:225
+#: template.html:236
 msgid "<a href='http://www.wesnoth.org'>Wesnoth Official Website</a> (English)"
 msgstr "<a href='http://www.wesnoth.org'>Wesnoth 官方网站</a> (英文)"
 
 # type: Content of: <html><body><div><div><div><ul><li>
-#: template.html:229
+#: template.html:240
 msgid ""
 "<a href='http://www.wesnoth.org/start/1.4'>Wesnoth 1.4 Release Notes</a>"
 msgstr "<a href='http://www.wesnoth.org/start/1.4'>Wesnoth 1.4 发行说明</a>"
 
 # type: Content of: <html><body><div><div><div><div><p>
-#: template.html:236
+#: template.html:247
 msgid "This page is also available in the following languages:"
 msgstr "这个页面已被翻译为以下语言："
