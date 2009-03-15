@@ -698,13 +698,14 @@ void unit::advance_to(const unit_type* t, bool use_traits, game_state* state)
 	t = &t->get_gender_unit_type(gender_).get_variation(variation_);
 	reset_modifications();
 
-	// Remove old type's halo, animations, abilities, and attacks
+	// Remove old type's halo, animations, abilities, attacks and advancement options (AMLA)
 	cfg_["halo"] = "";
 	foreach(const std::string& tag_name, unit_animation::all_tag_names()) {
 		cfg_.clear_children(tag_name);
 	}
 	cfg_.clear_children("abilities");
 	cfg_.clear_children("attacks");
+	cfg_.clear_children("advancement");
 
 	if(t->movement_type().get_parent()) {
 		cfg_.merge_with(t->movement_type().get_parent()->get_cfg());
@@ -2476,7 +2477,7 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 	if(no_add == false) {
 		new_child = &modifications_.add_child(type,mod);
 	}
-
+	config last_effect;
 	std::vector<t_string> effects_description;
 	for(config::const_child_itors i = mod.child_range("effect");
 		i.first != i.second; ++i.first) {
@@ -2498,6 +2499,10 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 				continue;
 			}
 		}
+		/** @todo The above two filters can be removed in 1.7 they're covered by the SUF. */
+		// Apply SUF. (Filtering on location is probably a bad idea though.)
+		if (const config* afilter = (**i.first).child("filter"))
+		    if (!matches_filter(afilter, map_location(cfg_, NULL))) continue;
 
 		const std::string& apply_to = (**i.first)["apply_to"];
 		const std::string& apply_times = (**i.first)["times"];
@@ -2510,21 +2515,9 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 			while (times > 0) {
 				times --;
 
-				// Apply variations -- only apply if we are adding this
-				// for the first time.
-				if(apply_to == "variation" && no_add == false) {
-					variation_ = (**i.first)["name"];
-					advance_to(this->type());
-				} else if(apply_to == "type" && no_add == false) {
-					new_child->init_attribute("prev_type", type_id());
-					type_ = (**i.first)["name"];
-					int hit_points = hit_points_;
-					int experience = experience_;
-					int movement = movement_;
-					advance_to(this->type());
-					hit_points_ = hit_points;
-					experience_ = experience;
-					movement_ = movement;
+				// Apply unit type/variation changes last to avoid double applying effects on advance.
+				if ((apply_to == "variation" || apply_to == "type") && no_add == false) {
+					last_effect = **i.first;
 				} else if(apply_to == "profile") {
 					const std::string& portrait = (**i.first)["portrait"];
 					const std::string& description = (**i.first)["description"];
@@ -2799,7 +2792,23 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 			effects_description.push_back(description);
 
 	}
-
+	// Apply variations -- only apply if we are adding this for the first time.
+	if (!last_effect.empty() && no_add == false) {
+		if ((last_effect)["apply_to"] == "variation") {
+			variation_ = (last_effect)["name"];
+			advance_to(this->type());
+		} else if ((last_effect)["apply_to"] == "type") {
+			new_child->init_attribute("prev_type", type_id());
+			type_ = (last_effect)["name"];
+			int hit_points = hit_points_;
+			int experience = experience_;
+			int movement = movement_;
+			advance_to(this->type());
+			hit_points_ = hit_points;
+			experience_ = experience;
+			movement_ = movement;
+		}
+	}
 	t_string& description = modification_descriptions_[type];
 	t_string trait_description;
 
