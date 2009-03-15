@@ -535,7 +535,7 @@ void tgrid::layout_use_horizontal_scrollbar(const unsigned maximum_width)
 	set_layout_size(calculate_best_size());
 }
 
-void tgrid::layout_fit_width(const unsigned maximum_width, 
+void tgrid::layout_fit_width(const unsigned maximum_width,
 		const tfit_flags flags)
 {
 	log_scope2(gui_layout, std::string("tgrid ") + __func__);
@@ -550,7 +550,7 @@ void tgrid::layout_fit_width(const unsigned maximum_width,
 	}
 
 	// Try to reduce our size; friendly first.
-	tfit_flags current_flags = 
+	tfit_flags current_flags =
 			static_cast<tfit_flags>(flags & (WRAP | SCROLLBAR));
 
 	if(current_flags) {
@@ -572,11 +572,11 @@ void tgrid::layout_fit_width(const unsigned maximum_width,
 	}
 
 	DBG_G_L << "Failed.\n";
-	assert(flags != FORCE 
+	assert(flags != FORCE
 			|| static_cast<unsigned>(get_best_size().x) <= maximum_width);
 }
 
-void tgrid::impl_layout_fit_width(const unsigned maximum_width, 
+void tgrid::impl_layout_fit_width(const unsigned maximum_width,
 		const tfit_flags flags)
 {
 	log_scope2(gui_layout, std::string("tgrid ") + __func__);
@@ -627,7 +627,7 @@ void tgrid::impl_layout_fit_width(const unsigned maximum_width,
 			assert(widget);
 
 			if(widget->get_visible() != twidget::INVISIBLE
-					&& widget->get_best_size().x 
+					&& widget->get_best_size().x
 					> static_cast<int>(wanted_width)) {
 
 				chld.layout_fit_width(wanted_width, flags);
@@ -1121,7 +1121,7 @@ void tgrid::tchild::layout_use_horizontal_scrollbar(
 			maximum_width - border_space().x);
 }
 
-void tgrid::tchild::layout_fit_width(const unsigned maximum_width, 
+void tgrid::tchild::layout_fit_width(const unsigned maximum_width,
 		const tfit_flags flags)
 {
 	assert(widget_);
@@ -1133,7 +1133,7 @@ void tgrid::tchild::layout_fit_width(const unsigned maximum_width,
 			<< ".\n";
 
 	widget_->layout_fit_width(maximum_width - border_space().x, flags);
-	if(widget_->get_best_size().x 
+	if(widget_->get_best_size().x
 			+ border_space().x
 			<= static_cast<int>(maximum_width)) {
 

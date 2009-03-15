@@ -1144,7 +1144,7 @@ bool do_replay_handle(game_display& disp, const gamemap& map,
 			if(team_num != 1 && teams.front().fog_or_shroud() && !teams.front().fogged(dst)
 					 && (current_team.is_ai() || current_team.is_network_ai()))
 			{
-				// the second parameter is impossible to know 
+				// the second parameter is impossible to know
 				// and the AI doesn't use it too in the local version
 				game_events::fire("sighted",dst);
 			}

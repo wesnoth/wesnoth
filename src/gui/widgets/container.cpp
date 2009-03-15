@@ -136,7 +136,7 @@ void tcontainer_::layout_use_horizontal_scrollbar(const unsigned maximum_width)
 	set_layout_size(size);
 }
 
-void tcontainer_::layout_fit_width(const unsigned maximum_width, 
+void tcontainer_::layout_fit_width(const unsigned maximum_width,
 		const tfit_flags flags)
 {
 	// Inherited.

@@ -24,7 +24,7 @@
 
 namespace t_translation {
 
-    /** 
+    /**
      * Return the maximum allowed map size (in either dimension),
      * the maximum map area is, therefore, this value squared.
      */

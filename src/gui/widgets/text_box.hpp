@@ -232,14 +232,14 @@ private:
 	 *
 	 * @returns                   True if there's a history, false otherwise.
 	 */
-	bool history_up();	
+	bool history_up();
 
 	/**
 	 * Goes one item down in the history.
 	 *
 	 * @returns                   True if there's a history, false otherwise.
 	 */
-	bool history_down();	
+	bool history_down();
 
 	/** Inherited from ttext_. */
 	void handle_key_default(

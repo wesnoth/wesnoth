@@ -479,7 +479,7 @@ bool unit_frame::invalidate(const bool force,const int frame_time,const map_loca
 				image::SCALED_TO_ZOOM
 				);
 	}
-	// we always invalidate our own hex because we need to be called at redraw time even 
+	// we always invalidate our own hex because we need to be called at redraw time even
 	// if we don't draw anything in the hex itself
 	bool result = false;
 	if (image != NULL) {

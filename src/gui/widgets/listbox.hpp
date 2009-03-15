@@ -129,7 +129,7 @@ public:
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
-	void set_callback_value_change(void (*callback) (twidget* caller)) 
+	void set_callback_value_change(void (*callback) (twidget* caller))
 		{ callback_value_changed_ = callback; }
 
 	void set_list_builder(tbuilder_grid_ptr list_builder)
@@ -155,7 +155,7 @@ private:
 
 	/**
 	 * @todo A listbox must have the following config parameters in the
-	 * instanciation: 
+	 * instanciation:
 	 * - fixed row height?
 	 * - fixed column width?
 	 * and if so the following ways to set them
@@ -165,7 +165,7 @@ private:
 	 * - fixed depending on list (the user has to enter a list of ids)
 	 *
 	 * For now it's always fixed width depending on the first row.
-	 */  
+	 */
 
 	/**
 	 * Initializes the linked size list.
@@ -217,7 +217,7 @@ private:
 	/** Contains the builder for the new items. */
 	tbuilder_grid_const_ptr list_builder_;
 
-	/** 
+	/**
 	 * This callback is called when the value in the listbox changes.
 	 *
 	 * @todo the implementation of the callback hasn't been tested a lot and

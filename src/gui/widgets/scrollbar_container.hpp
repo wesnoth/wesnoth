@@ -95,7 +95,7 @@ public:
 	void layout_use_horizontal_scrollbar(const unsigned maximum_width);
 
 	/** Inherited from tcontainer. */
-	void layout_fit_width(const unsigned maximum_width, 
+	void layout_fit_width(const unsigned maximum_width,
 			const tfit_flags flags);
 
 private:
@@ -156,7 +156,7 @@ public:
 	tgrid *content_grid() { return content_grid_; }
 	const tgrid *content_grid() const { return content_grid_; }
 
-	const SDL_Rect& content_visible_area() const 
+	const SDL_Rect& content_visible_area() const
 		{ return content_visible_area_; }
 
 	/**

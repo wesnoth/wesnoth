@@ -208,13 +208,13 @@ public:
 	void layout_use_horizontal_scrollbar(const unsigned maximum_width);
 
 	/** Inherited from twidget. */
-	void layout_fit_width(const unsigned maximum_width, 
+	void layout_fit_width(const unsigned maximum_width,
 			const tfit_flags flags);
 private:
 	/** Internal helper for layout_fit_width. */
-	void impl_layout_fit_width(const unsigned maximum_width, 
+	void impl_layout_fit_width(const unsigned maximum_width,
 			const tfit_flags flags);
-public:	
+public:
 	/** Inherited from twidget. */
 	void set_size(const tpoint& origin, const tpoint& size);
 
@@ -305,7 +305,7 @@ private:
 		void layout_use_horizontal_scrollbar(const unsigned maximum_width);
 
 		/** Forwards layout_fit_width() to the cell. */
-		void layout_fit_width(const unsigned maximum_width, 
+		void layout_fit_width(const unsigned maximum_width,
 				const tfit_flags flags);
 
 		/** Returns the id of the widget/ */

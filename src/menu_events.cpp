@@ -468,7 +468,7 @@ private:
  			// no sides to show - display empty table
  			std::stringstream str;
  			str << " ";
- 			for (int i=0;i<7;++i) 
+ 			for (int i=0;i<7;++i)
  				str << COLUMN_SEPARATOR << " ";
  			leader_bools.push_back(false);
  			items.push_back(str.str());
@@ -553,12 +553,12 @@ private:
 
 			items.push_back(str.str());
 		}
-		
+
 		if (settings_table_empty)
  		{
  			// no sides to show - display empty table
  			std::stringstream str;
- 			for (int i=0;i<8;++i) 
+ 			for (int i=0;i<8;++i)
  				str << " " << COLUMN_SEPARATOR;
  			leader_bools.push_back(false);
  			items.push_back(str.str());

@@ -401,7 +401,7 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 			else {  // the attack is not valid anymore, abort
 				return false;
 			}
-			
+
 		}
 		else { // interrupted move
 			// we assume that move_unit() did the cleaning

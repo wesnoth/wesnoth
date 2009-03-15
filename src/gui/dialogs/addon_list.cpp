@@ -34,7 +34,7 @@ namespace gui2 {
  * @order = 2_addon_list
  *
  * == Addon list ==
- * 
+ *
  * This shows the dialog with the addons to install. This dialog is under
  * construction and only used with --new-widgets.
  */
@@ -46,14 +46,14 @@ twindow* taddon_list::build_window(CVideo& video)
 
 void taddon_list::pre_show(CVideo& /*video*/, twindow& window)
 {
-	tlistbox* list = 
+	tlistbox* list =
 		dynamic_cast<tlistbox*>(window.find_widget("addon_list", false));
 	VALIDATE(list, missing_widget("addon_list"));
 
 	const config::child_list& cmps = cfg_.get_children("campaign");
 
 
-	for(config::child_list::const_iterator itor = cmps.begin(); 
+	for(config::child_list::const_iterator itor = cmps.begin();
 			itor != cmps.end(); ++itor) {
 
 		std::map<std::string, std::map<std::string, t_string> > data;

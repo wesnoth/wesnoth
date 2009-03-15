@@ -467,7 +467,7 @@ void twindow::add_linked_widget(const std::string& id, twidget* widget)
 {
 	assert(widget);
 	assert(linked_size_.find(id) != linked_size_.end());
-		
+
 	linked_size_[id].widgets.push_back(widget);
 }
 

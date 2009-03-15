@@ -53,13 +53,13 @@ void tlistbox::add_row(const string_map& item)
 	if(get_item_count() == 1) {
 		init_linked_size_widets(*window, grid.begin(), grid.end());
 
-		/** 
+		/**
 		 * @todo add footer and make one function to do this part since the
 		 * code is duplicated at two places.
 		 */
 		tgrid* header_grid = dynamic_cast<tgrid*>(
 				content_grid()->find_widget("_header_grid", false));
-	
+
 		if(header_grid) {
 			add_linked_size_widgets(*window, header_grid->begin(),
 					header_grid->end());
@@ -84,7 +84,7 @@ void tlistbox::add_row(
 
 		tgrid* header_grid = dynamic_cast<tgrid*>(
 				content_grid()->find_widget("_header_grid", false));
-	
+
 		if(header_grid) {
 			add_linked_size_widgets(*window, header_grid->begin(),
 					header_grid->end());
@@ -140,7 +140,7 @@ void tlistbox::list_item_clicked(twidget* caller)
 
 		if(generator_->get_item(i).has_widget(caller)) {
 			generator_->toggle_item(i);
-			if(callback_value_changed_) { 
+			if(callback_value_changed_) {
 				callback_value_changed_(this);
 			}
 			return;
@@ -178,7 +178,7 @@ void tlistbox::handle_key_up_arrow(SDLMod modifier, bool& handled)
 
 		show_content_rect(rect);
 
-		if(callback_value_changed_) { 
+		if(callback_value_changed_) {
 			callback_value_changed_(this);
 		}
 	} else {
@@ -205,7 +205,7 @@ void tlistbox::handle_key_down_arrow(SDLMod modifier, bool& handled)
 
 		show_content_rect(rect);
 
-		if(callback_value_changed_) { 
+		if(callback_value_changed_) {
 			callback_value_changed_(this);
 		}
 	} else {

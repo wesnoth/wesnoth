@@ -862,7 +862,7 @@ attack::unit_info::unit_info(const map_location& loc, int weapon, unit_map& unit
 	orig_attacks_(0),
 	n_attacks_(0),
 	cth_(0),
-	damage_(0), 
+	damage_(0),
 	xp_(0)
 {
 	if (!valid()) {
@@ -1083,9 +1083,9 @@ attack::attack(game_display& gui, const gamemap& map,
 			const int damage_done = std::min<int>(d_.get_unit().hitpoints(), a_.damage_);
 			bool dies = d_.get_unit().take_hit(damage_defender_takes);
 			LOG_NG << "defender took " << damage_defender_takes << (dies ? " and died" : "") << "\n";
-			attack_stats.attack_result(hits ? 
-					(dies ? 
-						statistics::attack_context::KILLS 
+			attack_stats.attack_result(hits ?
+					(dies ?
+						statistics::attack_context::KILLS
 						: statistics::attack_context::HITS)
 					: statistics::attack_context::MISSES, damage_done, drains_damage);
 
@@ -1395,10 +1395,10 @@ attack::attack(game_display& gui, const gamemap& map,
 				}
 				refresh_bc();
 			}
-			attack_stats.defend_result(hits ? 
-					(dies ? 
-						statistics::attack_context::KILLS : 
-						statistics::attack_context::HITS) : 
+			attack_stats.defend_result(hits ?
+					(dies ?
+						statistics::attack_context::KILLS :
+						statistics::attack_context::HITS) :
 					statistics::attack_context::MISSES, damage_done, drains_damage);
 			if(hits || dies){
 				int amount_drained = 0;
@@ -2246,7 +2246,7 @@ size_t move_unit(game_display* disp,
 			if (team.is_enemy(enemy_unit->second.side())) {
 				// can't traverse enemy (bug in fog or pathfinding?)
 				should_clear_stack = true; // assuming that this enemy was hidden somehow
-				break; 
+				break;
 			} else if (!tiles_adjacent(*(step-1),*step)) {
 				// can't teleport on ally (on fogged village, with no-leader and view not-shared)
 				teleport_failed = true;

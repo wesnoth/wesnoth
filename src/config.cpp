@@ -358,7 +358,7 @@ const config* config::find_child(const std::string& key,
 
 namespace {
 	/**
-	 * Helper struct for iterative config clearing. 
+	 * Helper struct for iterative config clearing.
 	 */
 	struct config_clear_state
 	{
@@ -370,7 +370,7 @@ namespace {
 		}
 
 		config* c; //the config being inspected
-		config::child_map::iterator mi; //current child map entry 
+		config::child_map::iterator mi; //current child map entry
 		size_t vi; //index into the child map item vector
 	};
 }
@@ -396,7 +396,7 @@ void config::clear()
 					++state.vi;
 					if (c->children.empty()) {
 						delete c; //special case for a slight speed increase?
-					} else { 
+					} else {
 						//descend to the next level
 						config_clear_state next;
 						next.c = c;
@@ -409,8 +409,8 @@ void config::clear()
 					++state.mi;
 				}
 			} else {
-				//reached end of child map for this element - all child nodes 
-				//have beed deleted, so it's safe to clear the map, delete the 
+				//reached end of child map for this element - all child nodes
+				//have beed deleted, so it's safe to clear the map, delete the
 				//node and move up one level
 				state.c->children.clear();
 				if (state.c != this) delete state.c;

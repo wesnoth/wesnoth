@@ -984,7 +984,7 @@ surface floating_label::create_surface()
 
 			Uint32 color = SDL_MapRGBA(foreground->format, bgcolour_.r,bgcolour_.g, bgcolour_.b, bgalpha_);
 			SDL_FillRect(background,NULL, color);
-	
+
 			// we make the text less transparent, because the blitting on the
 			// dark background will darken the anti-aliased part.
 			// This 1.13 value seems to restore the brightness of version 1.4

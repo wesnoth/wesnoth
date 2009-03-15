@@ -479,7 +479,7 @@ map_location ai_interface::move_unit_partial(location from, location to,
 	const std::map<location,paths>::iterator p_it = possible_moves.find(from);
 
 	std::vector<location> steps;
-	
+
 	if(p_it != possible_moves.end()) {
 		paths& p = p_it->second;
 		std::map<location,paths::route>::iterator rt = p.routes.begin();

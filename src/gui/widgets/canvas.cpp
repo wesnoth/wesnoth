@@ -179,7 +179,7 @@ tline::tline(const config& cfg) :
  * = Variables =
  *
  * In various parts of the GUI there are several variables types in use. This
- * page describes them. 
+ * page describes them.
  *
  * == Simple types ==
  *

@@ -184,7 +184,7 @@ void tcontrol::layout_fit_width(const unsigned maximum_width,
 {
 	assert(get_visible() != twidget::INVISIBLE);
 
-	log_scope2(gui_layout, 
+	log_scope2(gui_layout,
 			"tcontrol(" + get_control_type() + ") " + __func__);
 	DBG_G_L << "maximum_width " << maximum_width
 			<< " flags " << flags
@@ -221,7 +221,7 @@ void tcontrol::layout_fit_width(const unsigned maximum_width,
 		layout_shrink_width(maximum_width);
 		DBG_G_L << "Success: Shrunken.\n";
 	}
-	
+
 	DBG_G_L << "Failed.\n";
 }
 

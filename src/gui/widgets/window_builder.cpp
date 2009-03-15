@@ -249,7 +249,7 @@ int get_retval(const std::string& retval_id,
  * Inside a grid (which is inside all container widgets) a widget is
  * instantiated. With this instantiation some more variables of a widget can
  * be tuned. This page will describe what can be tuned.
- * 
+ *
  */
 twindow* build(CVideo& video, const std::string& type)
 {
@@ -1104,7 +1104,7 @@ twidget* tbuilder_toggle_button::build() const
 	toggle_button->set_icon_name(icon_name_);
 	toggle_button->set_retval(get_retval(retval_id_, retval_, id));
 
-	DBG_GUI << "Window builder: placed toggle button '" 
+	DBG_GUI << "Window builder: placed toggle button '"
 			<< id << "' with defintion '" << definition << "'.\n";
 
 	return toggle_button;

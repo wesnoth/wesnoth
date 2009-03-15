@@ -916,7 +916,7 @@ void unit_type::build_created(const config& cfg, const movement_type_map& mv_typ
     DBG_UT << "unit_type '" << id_ << "' advances to : " << advances_to_val << "\n";
 
  	experience_needed_=lexical_cast_default<int>(cfg["experience"],500);
-	
+
 	build_status_ = CREATED;
 }
 

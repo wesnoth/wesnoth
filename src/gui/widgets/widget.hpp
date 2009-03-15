@@ -146,7 +146,7 @@ public:
 	/** Initializes the layout phase. */
 	virtual void layout_init() { layout_size_ = tpoint(0,0); }
 
-	/** 
+	/**
 	 * Initializes the layout phase.
 	 *
 	 * @param full_initialization Reset the widget to its initial state. This
@@ -256,8 +256,8 @@ public:
 	 * @param maximum_width       The maximum width of the window.
 	 * @param flags               The flags for the fitting.
 	 */
-	virtual void layout_fit_width(const unsigned /*maximum_width*/, 
-			const tfit_flags /*flags*/) 
+	virtual void layout_fit_width(const unsigned /*maximum_width*/,
+			const tfit_flags /*flags*/)
 	{
 		//FIXME should be pure abstract but gives linker errors.
 	}

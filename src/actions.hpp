@@ -199,17 +199,17 @@ class attack {
 			const unit_map::unit_xy_iterator iter_;
 			size_t id_;    /**< unit.underlying_id() */
 			std::string weap_id_;
-			int orig_attacks_;    
+			int orig_attacks_;
 			int n_attacks_;    /**< number of attacks left */
 			int cth_;
 			int damage_;
-			int xp_;	
+			int xp_;
 
 			unit_info(const map_location& loc, int weapon, unit_map& units);
 			unit& get_unit();
 			bool valid();
 
-			std::string dump();		
+			std::string dump();
 		};
 
 		battle_context* bc_;

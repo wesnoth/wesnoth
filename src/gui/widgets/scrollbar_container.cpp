@@ -157,16 +157,16 @@ void tscrollbar_container::layout_wrap(const unsigned maximum_width)
 
 bool tscrollbar_container::has_vertical_scrollbar() const
 {
-	/** 
+	/**
 	 * @todo look at cleaning the has_X_scrollbar and can_wrap to do the
 	 * visibility test in a more generic way, preferably in the grid.
 	 */
-	return is_visible() && vertical_scrollbar_mode_ != HIDE; 
+	return is_visible() && vertical_scrollbar_mode_ != HIDE;
 }
 
 bool tscrollbar_container::has_horizontal_scrollbar() const
-{ 
-	return is_visible() && horizontal_scrollbar_mode_ != HIDE; 
+{
+	return is_visible() && horizontal_scrollbar_mode_ != HIDE;
 }
 
 void tscrollbar_container::
@@ -197,12 +197,12 @@ void tscrollbar_container::
 	set_layout_size(size);
 }
 
-void tscrollbar_container::layout_fit_width(const unsigned maximum_width, 
+void tscrollbar_container::layout_fit_width(const unsigned maximum_width,
 		const tfit_flags flags)
 {
 	assert(get_visible() != twidget::INVISIBLE);
 
-	log_scope2(gui_layout, 
+	log_scope2(gui_layout,
 			"tscrollbar_container(" + get_control_type() + ") " + __func__);
 	DBG_G_L << "maximum_width " << maximum_width
 			<< " flags " << flags
@@ -239,7 +239,7 @@ void tscrollbar_container::layout_fit_width(const unsigned maximum_width,
 		layout_shrink_width(maximum_width);
 		DBG_G_L << "Success: Shrunken.\n";
 	}
-*/	
+*/
 	DBG_G_L << "Failed.\n";
 }
 
@@ -649,9 +649,9 @@ void tscrollbar_container::show_content_rect(const SDL_Rect& rect)
 	// will look good. First calculate the left and top position depending on
 	// the current position.
 
-	const int left_position = horizontal_scrollbar_->get_item_position() 
+	const int left_position = horizontal_scrollbar_->get_item_position()
 			+ (rect.x - content_->get_x());
-	const int top_position = vertical_scrollbar_->get_item_position() 
+	const int top_position = vertical_scrollbar_->get_item_position()
 			+ (rect.y - content_->get_y());
 
 	// bottom.

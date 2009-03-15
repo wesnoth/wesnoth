@@ -217,7 +217,7 @@ void check_send_buffer_size(TCPsocket& s)
 }
 
 bool receive_with_timeout(TCPsocket s, char* buf, size_t nbytes,
-		bool update_stats=false, int idle_timeout_ms=30000, 
+		bool update_stats=false, int idle_timeout_ms=30000,
 		int total_timeout_ms=300000)
 {
 #if !defined(USE_POLL) && !defined(USE_SELECT)
@@ -284,7 +284,7 @@ bool receive_with_timeout(TCPsocket s, char* buf, size_t nbytes,
 					tv.tv_sec = select_timeout/1000;
 					tv.tv_usec = select_timeout % 1000 * 1000;
 					retval = select(((_TCPsocket*)s)->channel + 1, &readfds, NULL, NULL, &tv);
-					DBG_NW << "select retval: " << retval << ", timeout idle " << timeout_ms 
+					DBG_NW << "select retval: " << retval << ", timeout idle " << timeout_ms
 						<< " total " << total_timeout_ms << " (ms)\n";
 					if(retval == 0) {
 						timeout_ms -= select_timeout;

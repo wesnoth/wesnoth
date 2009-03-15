@@ -21,7 +21,7 @@ class config;
 
 namespace gui2 {
 
-class taddon_list 
+class taddon_list
 	: public tdialog
 {
 public:

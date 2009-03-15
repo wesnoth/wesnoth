@@ -169,7 +169,7 @@ surface stretch_surface_horizontal(
  *
  *  @return                  An optimized surface.
  *                           returned.
- * 
+ *
  *  @retval surf             Returned if h == surf->h, note this ignores the
  *                           optimize flag.
  */

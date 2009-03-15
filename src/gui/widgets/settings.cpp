@@ -194,7 +194,7 @@ const std::string& tgui_definition::read(const config& cfg)
  *                                   previews, there will be a another version
  *                                   which allows interaction.
  *     Panel                         A panel is a container with can have it's
- *                                   own visual attributes. 
+ *                                   own visual attributes.
  *     Scroll_label                  A label which can have scrollbars.
  *     Slider                        A slider.
  *     Spacer                        A spacer is a dummy widget which can be

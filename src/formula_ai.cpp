@@ -1420,7 +1420,7 @@ formula_ai::formula_ai(info& i) :
                 catch(formula_error& e) {
                         handle_exception(e, "Error while registering function '" + name + "'");
                 }
-        }        
+        }
 
 	config::const_child_itors team_formula = ai_param.child_range("team_formula");
 	if(team_formula.first != team_formula.second) {
@@ -1541,7 +1541,7 @@ void formula_ai::play_turn()
                     }
                 }
             }
-            
+
             if( i.valid() ) {
                 if( i->second.has_loop_formula() )
                 {
@@ -1762,7 +1762,7 @@ std::set<map_location> formula_ai::get_allowed_teleports(unit_map::iterator& uni
 
 map_location formula_ai::path_calculator(const map_location& src, const map_location& dst, unit_map::iterator& unit_it) const{
     std::map<map_location,paths>::iterator path = possible_moves_.find(src);
-    
+
     map_location destination = dst;
 
     //check if destination is within unit's reach, if not, calculate where to move
@@ -1905,7 +1905,7 @@ bool formula_ai::execute_variant(const variant& var, bool commandline)
                                 attack_enemy(attack->src(), attack->dst(), attack->weapon(), attack->defender_weapon());
                             }
                         }
-                        
+
 			made_move = true;
 		} else if(attack_analysis) {
 			//If we get an attack analysis back we will do the first attack.

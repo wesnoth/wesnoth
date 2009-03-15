@@ -53,7 +53,7 @@ struct trelayout_exception {};
  * base class of top level items, the only item
  * which needs to store the final canvase to draw on
  */
-class twindow 
+class twindow
 	: public tpanel
 	, public tevent_handler
 	, public cursor::setter
@@ -273,7 +273,7 @@ public:
 	 *
 	 * The group needs to exist, which is done by calling
 	 * init_linked_size_group. A widget may only be member of one group.
-	 * @todo There's no way to remove a widget from the list. 
+	 * @todo There's no way to remove a widget from the list.
 	 * @todo Untested if a new widget is added after showing the widgets.
 	 *
 	 * @param id                  The id of the group.
@@ -337,7 +337,7 @@ private:
 	/** Widget for the tooltip. */
 	ttooltip tooltip_;
 
-	/** 
+	/**
 	 * Restorer for the tooltip area.
 	 *
 	 * @todo the current way of showing a tooltip is a kind of hack which
@@ -430,7 +430,7 @@ private:
 		/** Link the widgets in the height? */
 		bool height;
 	};
-	
+
 	/** List of the widgets, whose size are linked together. */
 	std::map<std::string, tlinked_size> linked_size_;
 

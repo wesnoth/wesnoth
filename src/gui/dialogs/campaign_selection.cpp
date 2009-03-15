@@ -30,7 +30,7 @@ namespace gui2 {
  * @order = 2_campaign_selection
  *
  * == Campaign selection ==
- * 
+ *
  * This shows the dialog choose which campaign the user wants to play. This
  * dialog is under construction and only used with --new-widgets.
  */
@@ -43,7 +43,7 @@ void tcampaign_selection::campaign_selected(twindow& window)
 
 	// Get the selected row
 	config::child_list::const_iterator itor = begin_
-			+ list->get_selected_row(); 
+			+ list->get_selected_row();
 
 	tscroll_label* scroll_label = dynamic_cast<tscroll_label*>(
 			window.find_widget("description", false));

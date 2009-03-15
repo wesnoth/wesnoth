@@ -33,7 +33,7 @@
 #ifdef __GNUC__
 #define ALIGN_4 __attribute__ ((aligned (4)))
 #else
-#define ALIGN_4 
+#define ALIGN_4
 #endif
 
 namespace network_worker_pool

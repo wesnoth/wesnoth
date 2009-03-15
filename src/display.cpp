@@ -721,7 +721,7 @@ void display::drawing_buffer_commit()
 		LAYER_UNIT_FIRST,
 		LAYER_UNIT_MOVE_DEFAULT,
 		// Make sure the movement doesn't show above fog and reachmap.
-		LAYER_REACHMAP, 
+		LAYER_REACHMAP,
 		LAYER_LAST_LAYER };
 
 	for(size_t z = 1; z < sizeof(layer_groups)/sizeof(layer_groups[0]); ++z) {

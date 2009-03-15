@@ -1458,7 +1458,7 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
             unit_loop_formula_ = (*ai)["loop_formula"];
             unit_priority_formula_ = (*ai)["priority"];
             unit_on_fail_formula_ = (*ai)["on_fail"];
-            
+
             const config* ai_vars = (*ai).child("vars");
             if (ai_vars)
             {

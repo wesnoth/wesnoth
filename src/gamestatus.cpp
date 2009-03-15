@@ -503,7 +503,7 @@ game_state::game_state(const config& cfg, bool show_replay) :
 	} else {
 		// Start of scenario save, replays and MP campaign network next scenario
 		// have the recall list stored in root of the config.
-		// Edit: 
+		// Edit:
 		// Unfortunately, the replay savegame format is not homogeneous. Some savegames
 		// have the player information stored in the starting position, others in the
 		// root of the config. If the starting position player information is available
@@ -980,7 +980,7 @@ static config& save_index()
 
 config& save_summary(std::string save)
 {
-	/* 
+	/*
 	 * All saves are .gz files now so make sure we use that name when opening
 	 * a file. If not some parts of the code use the name with and some parts
 	 * without the .gz suffix.
