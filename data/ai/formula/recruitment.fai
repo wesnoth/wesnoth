@@ -408,9 +408,7 @@ def evaluate_defenders(ai*)
 					)
 				)
 			),
-			(
-				value * 2
-			) / 3
+			value / 3
 		), 
 		value +
 		map(
@@ -420,7 +418,7 @@ def evaluate_defenders(ai*)
 					my_recruits
 				)
 			),
-		value / 3
+		value * 2 / 3
 		)[key]
 	);
 
