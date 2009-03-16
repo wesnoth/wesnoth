@@ -101,86 +101,7 @@ private:
 	}
 };
 
-namespace {
-int transition(int begin, int val1, int end, int val2, int value) {
-	if(value < begin || value > end) {
-		return 0;
-	}
 
-	if(value == begin) {
-		return val1;
-	} else if(value == end) {
-		return val2;
-	}
-
-	const int comp1 = val1*(end - value);
-	const int comp2 = val2*(value - begin);
-	return (comp1 + comp2)/(end - begin);
-}
-}
-
-class transition_function : public function_expression {
-public:
-	explicit transition_function(const args_list& args)
-			: function_expression("transition", args, 5, 5)
-	{}
-private:
-	variant execute(const formula_callable& variables) const {
-		const int value = args()[0]->evaluate(variables).as_int();
-		const int begin = args()[1]->evaluate(variables).as_int();
-		const int end = args()[3]->evaluate(variables).as_int();
-		if(value < begin || value > end) {
-			return variant(0);
-		}
-		const int val1 = args()[2]->evaluate(variables).as_int();
-		const int val2 = args()[4]->evaluate(variables).as_int();
-		return variant(transition(begin, val1, end, val2, value));
-	}
-};
-
-class color_transition_function : public function_expression {
-public:
-	explicit color_transition_function(const args_list& args)
-			: function_expression("color_transition", args, 5)
-	{}
-private:
-	variant execute(const formula_callable& variables) const {
-		const int value = args()[0]->evaluate(variables).as_int();
-		int begin = args()[1]->evaluate(variables).as_int();
-		int end = -1;
-		size_t n = 3;
-		while(n < args().size()) {
-			end = args()[n]->evaluate(variables).as_int();
-			if(value >= begin && value <= end) {
-				break;
-			}
-
-			begin = end;
-			n += 2;
-		}
-
-		if(value < begin || value > end) {
-			return variant(0);
-		}
-		const int val1 = args()[n-1]->evaluate(variables).as_int();
-		const int val2 = args()[n+1 < args().size() ? n+1 : n]->
-		                               evaluate(variables).as_int();
-		const int r1 = (val1/10000)%100;
-		const int g1 = (val1/100)%100;
-		const int b1 = (val1)%100;
-		const int r2 = (val2/10000)%100;
-		const int g2 = (val2/100)%100;
-		const int b2 = (val2)%100;
-
-		const int r = transition(begin,r1,end,r2,value);
-		const int g = transition(begin,g1,end,g2,value);
-		const int b = transition(begin,b1,end,b2,value);
-		return variant(
-		       std::min<int>(99,std::max<int>(0,r))*100*100 +
-		       std::min<int>(99,std::max<int>(0,g))*100+
-		       std::min<int>(99,std::max<int>(0,b)));
-	}
-};
 
 
 class abs_function : public function_expression {
@@ -898,8 +819,6 @@ functions_map& get_functions_map() {
 		FUNCTION(sum);
 		FUNCTION(head);
 		FUNCTION(rgb);
-		FUNCTION(transition);
-		FUNCTION(color_transition);
 		FUNCTION(size);
 		FUNCTION(null);
 		FUNCTION(refcount);
