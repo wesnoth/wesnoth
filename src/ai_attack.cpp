@@ -270,8 +270,11 @@ void ai::do_attack_analysis(
 
 			cur_analysis.analyze(map_, units_, teams_, state_, *this, dstsrc, srcdst, enemy_dstsrc, current_team().aggression());
 
-			//Remove this short-circuiting logic for now.. --David
-			if(cur_analysis.rating(current_team().aggression(),*this) > rating_to_beat) {
+			//This logic to sometimes not add the attack because it doesn't
+			//rate high enough seems to remove attacks from consideration
+			//that should not be removed, so it has been removed.
+			//  -- David.
+//			if(cur_analysis.rating(current_team().aggression(),*this) > rating_to_beat) {
 
 				result.push_back(cur_analysis);
 				used_locations[cur_position] = true;
@@ -279,7 +282,7 @@ void ai::do_attack_analysis(
 				                   tiles,used_locations,
 				                   units,result,cur_analysis);
 				used_locations[cur_position] = false;
-			}
+//			}
 
 			cur_analysis.vulnerability -= best_vulnerability;
 			cur_analysis.support -= best_support;
