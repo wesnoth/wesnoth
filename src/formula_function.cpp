@@ -86,24 +86,6 @@ private:
 	}
 };
 
-class rgb_function : public function_expression {
-public:
-	explicit rgb_function(const args_list& args)
-	     : function_expression("rgb", args, 3, 3)
-	{}
-
-private:
-	variant execute(const formula_callable& variables) const {
-		return variant(10000*
-		 std::min<int>(99,std::max<int>(0,args()[0]->evaluate(variables).as_int())) +
-		 std::min<int>(99,std::max<int>(0,args()[1]->evaluate(variables).as_int()))*100+
-		 std::min<int>(99,std::max<int>(0,args()[2]->evaluate(variables).as_int())));
-	}
-};
-
-
-
-
 class abs_function : public function_expression {
 public:
 	explicit abs_function(const args_list& args)
@@ -818,7 +800,6 @@ functions_map& get_functions_map() {
 		FUNCTION(map);
 		FUNCTION(sum);
 		FUNCTION(head);
-		FUNCTION(rgb);
 		FUNCTION(size);
 		FUNCTION(null);
 		FUNCTION(refcount);
