@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-03-15 22:05+0100\n"
-"PO-Revision-Date: 2007-12-06 00:41+0900\n"
-"Last-Translator: Claus Aranha <caranha@gmail.com>\n"
+"PO-Revision-Date: 2009-03-11 12:05-0400\n"
+"Last-Translator: Rainer Oliveira <rainercoliveira@gmail.com>\n"
 "Language-Team: Portuguese/Brazil\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,22 +20,22 @@ msgstr ""
 #. [brush]
 #: data/core/editor/brushes.cfg:5
 msgid "Single Hex"
-msgstr ""
+msgstr "Hex único"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:15
 msgid "Radius 1 Hex"
-msgstr ""
+msgstr "Hex alcance 1"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:25
 msgid "Radius 2 Hex"
-msgstr ""
+msgstr "Hex alcance 2"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:55
 msgid "Hex Line NW-SE"
-msgstr ""
+msgstr "Hex linha Noroeste-Sudeste"
 
 #. [editor_group]: id=all
 #: data/core/editor/terrain-groups.cfg:10
@@ -90,7 +90,7 @@ msgstr "castelo"
 #. [editor_group]: id=special
 #: data/core/editor/terrain-groups.cfg:79
 msgid "special"
-msgstr ""
+msgstr "especial"
 
 #. [editor_tool_hint]: id=editor-tool-paint
 #. [editor_tool_hint]: id=editor-tool-fill
@@ -102,6 +102,8 @@ msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only."
 msgstr ""
+"Use o botão do mouse esquerda/direita para desenhar o terreno da frente/de "
+"fundo. Segure Shift para pintar apenas a camada base."
 
 #. [editor_tool_hint]: id=editor-tool-select
 #. [menu]: id=select_button_editor
@@ -110,6 +112,8 @@ msgid ""
 "Left mouse button selects, right deselects. Hold Shift for magic-wand "
 "selection of tiles with same terrain."
 msgstr ""
+"O botão esquerdo do mouse seleciona, o direito deseleciona. Segure Shift "
+"para seleção 'varinha mágica' de quadros com mesmo terreno."
 
 #. [editor_tool_hint]: id=editor-tool-starting-position
 #. [menu]: id=start_position_button_editor
@@ -119,6 +123,9 @@ msgid ""
 "scroll to the starting position, alt+number sets respective starting "
 "position under cursor, delete clears."
 msgstr ""
+"O botão esquerdo do mouse mostra a seleção do jogador, o direito limpa. "
+"Teclas numéricas rolam para a posição inicial, alt+número ajusta a posição "
+"inicial para o ponto embaixo do cursor, a tecla delete a remove."
 
 #. [editor_tool_hint]: id=editor-paste
 #: data/core/editor/tool-hints.cfg:30
@@ -126,6 +133,8 @@ msgid ""
 "Click to paste, zoom out for more accuracy when pasting large areas. Use the "
 "edit menu to transform the clipboard (rotate, mirror)."
 msgstr ""
+"Clique para colar; afaste para ter maior exatidão quando colar grandes "
+"áreas. Use o menu editar para transformar a prancheta (rodar, espelhar)."
 
 #. [menu]: id=menu-editor-file
 #: data/themes/editor2.cfg:120
@@ -140,13 +149,12 @@ msgstr "Editar"
 #. [menu]: id=menu-editor-map
 #: data/themes/editor2.cfg:141
 msgid "Map"
-msgstr ""
+msgstr "Mapa"
 
 #. [menu]: id=menu-editor-window
 #: data/themes/editor2.cfg:151
-#, fuzzy
 msgid "Window"
-msgstr "Desfazer"
+msgstr "Janela"
 
 #. [label]: id=villages-icon
 #: data/themes/editor2.cfg:270
@@ -155,11 +163,11 @@ msgstr "aldeias"
 
 #: src/editor2/action.cpp:32
 msgid "Error creating action object"
-msgstr ""
+msgstr "Erro criando objeto de ação"
 
 #: src/editor2/action.cpp:36
 msgid "Action not implemented"
-msgstr ""
+msgstr "Ação não implementada"
 
 #: src/editor2/editor_controller.cpp:123
 msgid "Quit Editor"
@@ -167,93 +175,98 @@ msgstr "Sair do Editor"
 
 #: src/editor2/editor_controller.cpp:275
 msgid "Fatal error"
-msgstr ""
+msgstr "Erro fatal"
 
 #: src/editor2/editor_controller.cpp:289 src/editor2/editor_controller.cpp:984
 msgid "(New Map)"
-msgstr ""
+msgstr "(Novo Mapa)"
 
 #: src/editor2/editor_controller.cpp:295
 msgid "Do you really want to quit?"
-msgstr ""
+msgstr "Você realmente deseja sair?"
 
 #: src/editor2/editor_controller.cpp:297
 msgid ""
 "Do you really want to quit? Changes in the map since the last save will be "
 "lost."
 msgstr ""
+"Você realmente deseja sair? Mudanças feitas no mapa desde o último "
+"salvamento serão perdidas."
 
 #: src/editor2/editor_controller.cpp:299
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
 msgstr ""
+"Você realmente deseja sair? Os mapas seguintes foram modificados e todas as "
+"mudanças desde o último salvamento serão perdidas:"
 
 #: src/editor2/editor_controller.cpp:304
 msgid "Quit"
-msgstr ""
+msgstr "Sair"
 
 #: src/editor2/editor_controller.cpp:359 src/editor2/editor_controller.cpp:471
 #: src/editor2/editor_controller.cpp:507 src/editor2/editor_controller.cpp:529
 msgid "Error"
-msgstr ""
+msgstr "Erro"
 
 #: src/editor2/editor_controller.cpp:359
 msgid "No editor time-of-day found."
-msgstr ""
+msgstr "Nenhum editor tempo-do-dia encontrado."
 
 #: src/editor2/editor_controller.cpp:395
 msgid "Unsaved Changes"
-msgstr ""
+msgstr "Mudanças não salvas"
 
 #: src/editor2/editor_controller.cpp:396
 msgid ""
 "Do you want to discard all changes you made to the map since the last save?"
 msgstr ""
+"Você quer descartar todas as mudanças feitas no mapa desde o último "
+"salvamento?"
 
 #: src/editor2/editor_controller.cpp:409
-#, fuzzy
 msgid "Choose a Map to Open"
 msgstr "Escolha um mapa para carregar"
 
 #: src/editor2/editor_controller.cpp:413
 msgid "This map is already open."
-msgstr ""
+msgstr "Esse mapa já está aberto."
 
 #: src/editor2/editor_controller.cpp:451
 msgid "Save the Map As"
 msgstr "Salvar o mapa como"
 
 #: src/editor2/editor_controller.cpp:455
-#, fuzzy
 msgid "The file already exists. Do you want to overwrite it?"
-msgstr "O mapa já existe. Você quer sobreescrevê-lo?"
+msgstr "O mapa já existe. Você quer sobrescrevê-lo?"
 
 #: src/editor2/editor_controller.cpp:471
 msgid "No random map generators found."
-msgstr ""
+msgstr "Nenhum gerador de mapas aleatórios encontrado."
 
 #: src/editor2/editor_controller.cpp:482
 msgid "Map creation failed."
-msgstr ""
+msgstr "Criação de mapa mal-sucedida."
 
 #: src/editor2/editor_controller.cpp:497
 #, fuzzy
 msgid "Choose a mask to apply"
-msgstr "Escolha um mapa para carregar"
+msgstr "Escolha uma máscara para aplicar"
 
 #: src/editor2/editor_controller.cpp:504
+#, fuzzy
 msgid "Error loading mask"
-msgstr ""
+msgstr "Erro carregando a máscara"
 
 #: src/editor2/editor_controller.cpp:519
 msgid "Choose target map"
-msgstr ""
+msgstr "Escolha o mapa alvo"
 
 #: src/editor2/editor_controller.cpp:526 src/editor2/editor_controller.cpp:639
 #: src/editor2/editor_main.cpp:53
 msgid "Error loading map"
-msgstr ""
+msgstr "Erro carregando o mapa"
 
 #: src/editor2/editor_controller.cpp:615
 msgid "Map saved."
@@ -269,7 +282,7 @@ msgstr "Desfazer"
 
 #: src/editor2/editor_controller.cpp:1013
 msgid "Can't Undo"
-msgstr ""
+msgstr "Não pode desfazer"
 
 #: src/editor2/editor_controller.cpp:1017
 msgid "Redo"
@@ -277,11 +290,11 @@ msgstr "Refazer"
 
 #: src/editor2/editor_controller.cpp:1019
 msgid "Can't Redo"
-msgstr ""
+msgstr "Não pode refazer"
 
 #: src/editor2/editor_map.cpp:85
 msgid "Empty map file or file not found"
-msgstr ""
+msgstr "Arquivo de mapa vazio ou arquivo não encontrado"
 
 #: src/editor2/editor_map.cpp:166 src/editor2/mouse_action.cpp:385
 msgid "Player"
@@ -289,7 +302,7 @@ msgstr "Jogador"
 
 #: src/editor2/editor_map.cpp:285
 msgid "The size of the target map is different from the current map"
-msgstr ""
+msgstr "O tamanho do mapa alvo é diferente do mapa atual"
 
 #: src/editor2/editor_palettes.cpp:522
 msgid "FG"
@@ -300,13 +313,12 @@ msgid "BG"
 msgstr "Fundo"
 
 #: src/editor2/mouse_action.cpp:382
-#, fuzzy
 msgid "(Player)^None"
-msgstr "Jogador"
+msgstr "Nenhum"
 
 #: src/editor2/mouse_action.cpp:389
 msgid "Choose player"
-msgstr ""
+msgstr "Escolha o jogador"
 
 #: src/editor2/mouse_action.cpp:390
 msgid ""
@@ -315,10 +327,14 @@ msgid ""
 "the cursor. Pressing a number key by itself will scroll to that player's "
 "starting position."
 msgstr ""
+"Que jogador deve iniciar aqui? Você pode usar alt e uma tecla numérica para "
+"ajustar a posição inicial de um jogador e del para limpar essa posição "
+"abaixo do cursor. Pressionando uma tecla numérica por si só irá rolar para a "
+"posição inicial daquele jogador."
 
 #: src/gui/dialogs/editor_settings.cpp:119
 msgid "Custom setting"
-msgstr ""
+msgstr "Configuração customizada"
 
 #~ msgid "Settings"
 #~ msgstr "Configurações"
