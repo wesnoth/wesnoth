@@ -49,9 +49,6 @@ void fuh::remove_user(const std::string& name) {
 // The hashing code is basically taken from forum_auth.cpp
 bool fuh::login(const std::string& name, const std::string& password, const std::string& seed) {
 
-	// Set an alphabet-like string for use in encrytpion algorithm
-	std::string itoa64("./0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz");
-
 	// Retrieve users' password as hash
 
 	std::string hash;
