@@ -154,7 +154,7 @@ void admin_authentication(const std::string& sender, const std::string& message)
 	}
 }
 
-void initialize_friends() {
+static void initialize_friends() {
 	if(!friends_initialized) {
 		std::vector<std::string> names = utils::split(preferences::get("friends"));
 		std::set<std::string> tmp(names.begin(), names.end());
@@ -169,7 +169,7 @@ const std::set<std::string> & get_friends() {
 	return friends;
 }
 
-void initialize_ignores() {
+static void initialize_ignores() {
 	if(!ignores_initialized) {
 		std::vector<std::string> names = utils::split(preferences::get("ignores"));
 		std::set<std::string> tmp(names.begin(), names.end());
