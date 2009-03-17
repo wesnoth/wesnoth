@@ -72,12 +72,25 @@ static void move_unit_between(const map_location& a, const map_location& b, unit
         animator.pause_animation();
 	disp->scroll_to_tiles(a,b,game_display::ONSCREEN,true,0.0,false);
         animator.restart_animation();
-	new_animation_frame(); //fix bug #13179: Unit's move have sometimes a jumpy start
+
+	// useless now, previous short draw() just did one
+	// new_animation_frame();
+
 	int target_time = animator.get_animation_time_potential();
+
+		// target_time must be short to avoid jumpy move
+		// std::cout << "target time: " << target_time << "\n";
+	// we round it to the next multile of 150
 	target_time += 150;
 	target_time -= target_time%150;
-	if(  target_time - animator.get_animation_time_potential() < 100 ) target_time +=150;
+
+	// This code causes backwards teleport because the time > 150 causes offset > 1.0
+	// which will not match with the following -1.0
+	// if(  target_time - animator.get_animation_time_potential() < 100 ) target_time +=150;
+	
 	animator.wait_until(target_time);
+		// debug code, see unit_frame::redraw()
+		// std::cout << "   end\n";
 	map_location arr[6];
 	get_adjacent_tiles(a, arr);
 	unsigned int i;
@@ -135,7 +148,21 @@ void move_unit(const std::vector<map_location>& path, unit& u, const std::vector
 		// If it does not fit we might be able to do a better scroll later.
 		disp->scroll_to_tiles(path, game_display::ONSCREEN, true, true,0.0,false);
 	}
-        disp->draw();
+	// We need to clear big invalidation before the move and have a smooth animation
+	// (mainly black stripes and invalidation after canceling atatck dialog)
+	// Two draw calls are needed to also redraw the previously invalidated hexes
+	// We use update=false because we don't need delay here (no time wasted)
+	// and no screen refresh (will be done by last 3rd draw() and it optimizes
+	// the double blitting done by these invalidations)
+    disp->draw(false);
+	disp->draw(false);
+
+	// The last draw() was still slow, and its inital new_animation_frame() call
+	// is now old, so we do another draw() to get a fresh one
+	// TODO: replace that by a new_animation_frame() before starting anims
+	//       don't forget to change the previous draw(false) to true
+	disp->draw(true);
+
 	for(size_t i = 0; i+1 < path.size(); ++i) {
 
 		invisible = teams[temp_unit.side()-1].is_enemy(int(disp->viewing_team()+1)) &&
