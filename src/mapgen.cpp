@@ -764,6 +764,8 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 		}
 	}
 
+	std::map<int, t_translation::coordinate> starting_positions;
+	LOG_NG << output_map(terrain, starting_positions);
 	LOG_NG << "placed land forms\n";
 	LOG_NG << (SDL_GetTicks() - ticks) << "\n"; ticks = SDL_GetTicks();
 
@@ -970,8 +972,10 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 			}
 		}
 		if(best_ranking == 0) {
+			//FIXME: Make this error message translatable (not possible atm due to string freeze)
 			ERR_NG << "No castle location found, aborting.\n";
-			return "";
+			std::string error = "No valid castle location found. Too many or too few mountain hexes? (please check the 'max hill size' parameter)";
+			throw mapgen_exception(error);
 		}
 		assert(std::find(castles.begin(), castles.end(), best_loc) == castles.end());
 		castles.push_back(best_loc);
@@ -1134,7 +1138,6 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 
 
 	// Now that road drawing is done, we can plonk down the castles.
-	std::map<int, t_translation::coordinate> starting_positions;
 	for(std::vector<location>::const_iterator c = castles.begin(); c != castles.end(); ++c) {
 		if(c->valid() == false) {
 			continue;

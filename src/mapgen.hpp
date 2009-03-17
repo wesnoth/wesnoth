@@ -26,6 +26,17 @@ class display;
 #include <string>
 #include <vector>
 
+struct mapgen_exception : public std::exception
+{
+	mapgen_exception(const std::string& msg)
+	: msg(msg)
+	{
+	}
+	~mapgen_exception() throw() {}
+	const char* what() const throw() { return msg.c_str(); }
+	const std::string msg;
+};
+
 class map_generator
 {
 public:

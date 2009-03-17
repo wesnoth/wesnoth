@@ -25,6 +25,7 @@
 #include "map.hpp"
 #include "map_exception.hpp"
 #include "map_create.hpp"
+#include "Gui/Dialogs/message.hpp"
 #include "minimap.hpp"
 #include "multiplayer_create.hpp"
 #include "filesystem.hpp"
@@ -463,6 +464,9 @@ void create::process_event()
 		cursor::setter cur(cursor::WAIT);
 		parameters_.scenario_data = generator_->create_scenario(std::vector<std::string>());
 		map_changed = true;
+
+		if (!parameters_.scenario_data["error_message"].empty())
+			gui2::show_message(disp().video(), "map generation error", parameters_.scenario_data["error_message"]);
 
 		// Set the scenario to have placing of sides
 		// based on the terrain they prefer
