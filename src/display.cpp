@@ -74,6 +74,8 @@ namespace {
 	bool benchmark = false;
 }
 
+int display::last_zoom_ = SmallZoom;
+
 display::display(CVideo& video, const gamemap* map, const config& theme_cfg, const config& cfg, const config& level) :
 	screen_(video),
 	map_(map),
@@ -82,7 +84,6 @@ display::display(CVideo& video, const gamemap* map, const config& theme_cfg, con
 	ypos_(0),
 	theme_(theme_cfg, screen_area()),
 	zoom_(DefaultZoom),
-	last_zoom_(SmallZoom),
 	builder_(new terrain_builder(cfg, level, map, theme_.border().tile_image)),
 	minimap_(NULL),
 	minimap_location_(empty_rect),
@@ -1493,10 +1494,14 @@ void display::set_zoom(int amount)
 		SDL_Rect const &area = map_area();
 		xpos_ += (xpos_ + area.w / 2) * amount / zoom_;
 		ypos_ += (ypos_ + area.h / 2) * amount / zoom_;
+
 		zoom_ = new_zoom;
 		bounds_check_position();
-
+		if (zoom_ != DefaultZoom) {
+			last_zoom_ = zoom_;
+		}
 		image::set_zoom(zoom_);
+
 		labels().recalculate_labels();
 		redraw_background_ = true;
 		invalidate_all();
@@ -1516,7 +1521,6 @@ void display::set_default_zoom()
 		// When we are already at the default zoom,
 		// switch to the last zoom used
 		set_zoom(last_zoom_ - zoom_);
-		last_zoom_ = DefaultZoom;
 	}
 }
 

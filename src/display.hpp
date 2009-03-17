@@ -556,7 +556,7 @@ protected:
 	int xpos_, ypos_;
 	theme theme_;
 	int zoom_;
-	int last_zoom_;
+	static int last_zoom_;
 	boost::scoped_ptr<terrain_builder> builder_;
 	surface minimap_;
 	SDL_Rect minimap_location_;
