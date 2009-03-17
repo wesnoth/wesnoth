@@ -229,6 +229,19 @@ static server_type open_connection(game_display& disp, const std::string& origin
 						if(is_pw_request) {
 							if((*error)["phpbb_encryption"] == "yes") {
 
+								// Apparently HTML key-characters are passed to the hashing functions of phpbb in this escaped form.
+								// I will do closer investigations on this, for now let's just hope these are all of them.
+
+								// Note: we must obviously replace '&' first, I wasted some time before I figured that out... :)
+								for(std::string::size_type pos = 0; (pos = password.find('&', pos)) != std::string::npos; ++pos )
+									password.replace(pos, 1, "&amp;");
+								for(std::string::size_type pos = 0; (pos = password.find('\"', pos)) != std::string::npos; ++pos )
+									password.replace(pos, 1, "&quot;");
+								for(std::string::size_type pos = 0; (pos = password.find('<', pos)) != std::string::npos; ++pos )
+									password.replace(pos, 1, "&lt;");
+								for(std::string::size_type pos = 0; (pos = password.find('>', pos)) != std::string::npos; ++pos )
+									password.replace(pos, 1, "&gt;");
+
 								// start the hashing
 								std::string result;
 
