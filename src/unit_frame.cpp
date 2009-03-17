@@ -358,6 +358,11 @@ void unit_frame::redraw(const int frame_time,bool first_time,const map_location 
 
 	const frame_parameters current_data = merge_parameters(frame_time,animation_val,engine_val,primary);
 	double tmp_offset = current_data.offset;
+
+		// debug code allowing to see the number of frames and their position
+		// you need to add a '/n'
+		// if (tmp_offset) std::cout << (int)(tmp_offset*100) << ",";
+
 	int d2 = game_display::get_singleton()->hex_size() / 2;
 	if(first_time ) {
 		// stuff sthat should be done only once per frame
