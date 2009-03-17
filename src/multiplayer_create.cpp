@@ -25,7 +25,7 @@
 #include "map.hpp"
 #include "map_exception.hpp"
 #include "map_create.hpp"
-#include "Gui/Dialogs/message.hpp"
+#include "gui/dialogs/message.hpp"
 #include "minimap.hpp"
 #include "multiplayer_create.hpp"
 #include "filesystem.hpp"
