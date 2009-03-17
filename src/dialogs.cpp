@@ -85,8 +85,9 @@ void advance_unit(const gamemap& map,
 	}
 
 	const config::child_list& mod_options = u->second.get_modification_advances();
-
+	bool always_display = false;
 	for(config::child_list::const_iterator mod = mod_options.begin(); mod != mod_options.end(); ++mod) {
+		if (utils::string_bool((**mod)["always_display"])) always_display = true;
 		sample_units.push_back(::get_advanced_unit(units,loc,u->second.type_id()));
 		sample_units.back().add_modification("advance",**mod);
 		const unit& type = sample_units.back();
@@ -109,7 +110,7 @@ void advance_unit(const gamemap& map,
 		return;
 	} else if(random_choice) {
 		res = rand()%lang_options.size();
-	} else if(lang_options.size() > 1) {
+	} else if(lang_options.size() > 1 || always_display) {
 
 		units_list_preview_pane unit_preview(gui,&map,sample_units);
 		std::vector<gui::preview_pane*> preview_panes;
