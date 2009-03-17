@@ -1,16 +1,14 @@
 #!/bin/sh
-if ! [ $# -ge 1 ]; then
-	echo "Syntax: $0 <server version> [message]" >&2
-	exit 1
-fi
+die() {	echo >&2 "$@"; exit 1; }
+notfound() { echo >&2 "$SOCKET not found, sending to the '$1'."; SOCKET=$SERVERBASE/$1/var/run/socket; }
+
+[ $# -ge 1 ] || die "Syntax: $0 <server version> [message]"
 
 SERVER=$1
 SERVERBASE=$HOME/servers/$SERVER
 SOCKET=$SERVERBASE/build/var/run/socket
-if ! [ -d "$SERVERBASE" ]; then
-	echo "Server '$SERVER' not found." >&2
-	exit 1
-fi
+
+[ -d "$SERVERBASE" ] die "Server '$SERVER' not found."
 shift
 if [ "$*" = "" ]; then
 	message="The server will get restarted now. Please don't forget to save your game!"
@@ -19,15 +17,9 @@ else
 	message=$*
 fi
 
-if ! [ -e $SOCKET ]; then
-	echo "$SOCKET not found, sending to the 'oldbuild'." >&2
-	SOCKET=$SERVERBASE/oldbuild/var/run/socket
-fi
-if ! [ -p $SOCKET ]; then
-	echo "$SOCKET is not a named pipe (fifo)." >&2
-	echo "Is the $SERVER server running?" >&2
-	exit 1
-fi
+[ -e $SOCKET ] || { notfound oldbuild; [ -e $SOCKET ] || notfound revertedbuild; }
+[ -p $SOCKET ] || die "$SOCKET is not a named pipe (fifo).
+Is the $SERVER server running?"
 
 echo "msg $message" > $SOCKET
 
