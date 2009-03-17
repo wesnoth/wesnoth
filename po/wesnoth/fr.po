@@ -12,16 +12,13 @@ msgstr ""
 "Project-Id-Version: fr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-03-15 22:31+0100\n"
-"PO-Revision-Date: 2009-02-24 13:32+0100\n"
+"PO-Revision-Date: 2009-03-17 22:34+0100\n"
 "Last-Translator: Aurélien Paulus <aurelien.paulus@gmail.com>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: KBabel 1.11.2\n"
-"X-Poedit-Language: French\n"
-"X-Poedit-Country: FRANCE\n"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:49
@@ -765,7 +762,6 @@ msgstr "Recruter et rappeler"
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:165
-#, fuzzy
 msgid ""
 "Each side begins with one leader in their keep. At the start of any battle, "
 "and at times during it, you will need to recruit <ref>dst='..units' "
@@ -780,14 +776,15 @@ msgid ""
 msgstr ""
 "Chaque camp commence avec un chef dans son donjon. Au début de chaque "
 "bataille et pendant son déroulement, vous aurez besoin d'enrôler des "
-"<ref>dst=units text='unités'</ref> dans votre armée. Pour recruter, vous "
-"devez avoir votre chef (Konrad dans la campagne de « L'Héritier du trône ») "
-"sur une case donjon d'un <ref>dst=terrain_casle text='château'</ref>. Vous "
-"pourrez alors recruter soit en choisissant « Recruter » dans le menu ou par "
-"un clic-droit sur un hexagone et en sélectionnant <italic>text='Recruter'</"
-"italic>. Cela affichera le menu d'enrôlement listant les unités disponibles "
-"et leur coût en or. Sélectionnez une unité pour voir ses caractéristiques à "
-"gauche, puis appuyez sur le bouton « Recruter » pour l'enrôler."
+"<ref>dst='..units' text='unités'</ref> dans votre armée. Pour recruter, vous "
+"devez avoir votre chef (par exemple, il s'agit de Konrad dans la campagne "
+"« L'Héritier du trône ») sur une case donjon d'un <ref>dst='terrain_castle' "
+"text='château'</ref>. Vous pourrez alors recruter soit en choisissant "
+"« Recruter » dans le menu soit en effectuant un clic-droit sur un hexagone et "
+"en sélectionnant <italic>text='Recruter'</italic>. Cela affichera le menu "
+"d'enrôlement listant les unités disponibles et leur coût en or. Sélectionnez "
+"une unité pour voir ses caractéristiques, puis appuyez sur le bouton "
+"« Recruter » pour l'enrôler."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:167
@@ -809,7 +806,6 @@ msgstr ""
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:169
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -818,7 +814,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Les unités recrutées arrivent avec deux <ref>dst=..traits_section "
+"Les unités recrutées arrivent avec deux <ref>dst='..traits_section' "
 "text='traits'</ref> aléatoires qui modifient leurs caractéristiques."
 
 #. [topic]: id=recruit_and_recall
@@ -838,7 +834,6 @@ msgstr ""
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:173
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -848,9 +843,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Les unités coûtent de l'or pour le recrutement, le rappel et pour leur "
-"entretien. Voir <ref>dst=income_and_upkeep text='Revenu et entretien'</ref> "
-"pour plus d'informations."
+"Les unités coûtent de l'or, non seulement pour les recruter ou les rappeler, "
+"mais aussi pour les entretenir. Consultez <ref>dst='income_and_upkeep' "
+"text='Revenu et entretien'</ref> pour plus d'informations."
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:180
@@ -921,7 +916,6 @@ msgstr ""
 
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:199
-#, fuzzy
 msgid ""
 "The hitpoints are also indicated by an energy bar next to each unit, which "
 "is green, yellow or red. A unit with at least 1 experience point has a blue "
@@ -931,8 +925,8 @@ msgstr ""
 "Les points de vie sont aussi indiqués par une barre d'énergie verte, jaune, "
 "ou rouge, près de chaque unité. Une unité avec au moins un point "
 "d'expérience a une barre d'expérience bleue, qui devient blanche quand "
-"l'unité est sur le point d'<ref>dst=experience_and_advancement text='avancer "
-"d\\'un niveau'</ref>."
+"l'unité est sur le point d'<ref>dst='experience_and_advancement' "
+"text='avancer d\\'un niveau'</ref>."
 
 #. [topic]: id=movement
 #: data/core/help.cfg:206
@@ -997,7 +991,6 @@ msgstr ""
 
 #. [topic]: id=movement
 #: data/core/help.cfg:211
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1010,12 +1003,12 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Pendant les déplacement, il ne faut pas oublier la notion de « Zones de "
+"Pendant les déplacements, il ne faut pas oublier la notion de « zone de "
 "contrôle ». Chaque unité contrôle les hexagones qui l'entourent, et empêche "
-"toute unité ennemie qui y pénètre de continuer son mouvement. Apprendre "
-"l'utilisation des zones de contrôle constitue un élément important de "
-"Wesnoth, puisque seuls les <ref>dst=ability_skirmisher text='tirailleurs'</"
-"ref> peuvent les ignorer."
+"toute unité ennemie qui y pénètre de continuer son mouvement. Apprendre à "
+"utiliser des zones de contrôle constitue un élément important de Wesnoth, "
+"puisque seuls les <ref>dst='ability_skirmisher' text='tirailleurs'</ref> "
+"peuvent les ignorer."
 
 #. [topic]: id=movement
 #: data/core/help.cfg:213
@@ -1178,7 +1171,6 @@ msgstr ""
 
 #. [topic]: id=combat
 #: data/core/help.cfg:241
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1190,11 +1182,12 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Il y a deux exceptions à cette règle : <ref>dst=weaponspecial_magical "
-"text='les attaques enchantées'</ref> et le <ref>dst=weaponspecial_marksman "
-"text='tireur d\\'élite'</ref>. Les attaques enchantées ont toujours une "
-"probabilité de toucher de 70 % et celle des tireurs d'élite est d'au moins "
-"60 %, indépendamment du terrain."
+"Il y a deux exceptions à cette règle : les <ref>dst='weaponspecial_magical' "
+"text='attaques enchantées'</ref> et les <ref>dst='weaponspecial_marksman' "
+"text='tireurs d\\'élite'</ref>. Les attaques enchantées ont toujours une "
+"probabilité de toucher de 70 %, indépendamment du terrain, et celle des "
+"tireurs d'élite est d'au moins 60 % quand ils engagent le combat, là encore "
+"indépendamment·du·terrain."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:243
@@ -1209,7 +1202,6 @@ msgstr ""
 
 #. [topic]: id=combat
 #: data/core/help.cfg:245
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1224,16 +1216,15 @@ msgstr ""
 "\n"
 "\n"
 "Chaque coup qui porte inflige une quantité de dégâts modifiée par plusieurs "
-"facteurs ; par exemple, un guerrier elfe avec une attaque 5-4 cause 5 points "
+"facteurs. Par exemple, un guerrier elfe avec une attaque 5-4 cause 5 points "
 "de dégâts comme base. Cela est généralement modifié par deux éléments : "
-"<ref>dst=damage_types_and_resistance text='la résistance'</ref> et "
-"<ref>dst=time_of_day text='le moment de la journée'</ref>. Pour voir "
+"<ref>dst='damage_types_and_resistance' text='la résistance'</ref> et "
+"<ref>dst='time_of_day' text='le moment de la journée'</ref>. Pour voir "
 "l'influence de ces paramètres, sélectionnez <italic>text='Calcul des "
-"dégâts'</italic> pendant la sélection de l'attaque."
+"dégâts'</italic> pendant le choix de l'attaque."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:247
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1244,11 +1235,12 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Quelques unités possèdent des <ref>dst=abilities text='capacités'</ref> "
-"spéciales qui affectent la quantité de dégâts infligés en combat. La plus "
-"courante d'entre elles est la <ref>dst=weaponspecial_charge text='charge'</"
-"ref>, qui double les dégâts infligés par l'attaquant et par le défenseur "
-"lorsque l'unité attaquante charge."
+"Quelques unités possèdent des <ref>dst='..abilities_section' "
+"text='capacités'</ref> spéciales qui affectent la quantité de dégâts "
+"infligés en combat. La plus courante d'entre elles est la "
+"<ref>dst='weaponspecial_charge' text='charge'</ref>, qui double les dégâts "
+"infligés par l'attaquant et par le défenseur lorsque l'unité attaquante "
+"charge."
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:253
@@ -1436,7 +1428,6 @@ msgstr ""
 # Damien : j'ai allégé la traduction car les règles du jeu ont un peu changé.
 #. [topic]: id=experience_and_advancement
 #: data/core/help.cfg:292
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1453,14 +1444,15 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"La plupart des unités ont trois niveaux, mais pas toutes ; certaines (comme "
-"les <ref>dst=unit_Mage text='mages'</ref>) peuvent en avoir quatre. Une "
-"unité qui atteint son niveau maximum peut avoir une « Amélioration Post-"
+"La plupart des unités ont trois niveaux, mais pas toutes. Quelques unes "
+"(comme les <ref>dst=unit_Mage text='mages'</ref>) peuvent en avoir quatre. "
+"Une unité qui atteint son niveau maximum peut avoir une « Amélioration Post-"
 "Niveau Maximum » (APNM), qui la transformera à chaque palier d'expérience : "
 "l'unité reste au même niveau mais, généralement, l'APNM augmente son maximum "
-"de PV de 3 points. Chaque APNM sera de plus en plus difficile à gagner, et "
-"il est beaucoup plus utile d'essayer de faire progresser vos unités de "
-"niveau inférieur."
+"de PV de 3 points et la soigne complètement. Cependant, chaque nouvelle APNM "
+"obtenue par une unité rendra les suivantes de plus en plus difficiles à "
+"gagner ; il est donc généralement plus utile d'essayer de faire progresser "
+"vos unités de niveau inférieur."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:299
@@ -1485,7 +1477,6 @@ msgstr ""
 
 #. [topic]: id=healing
 #: data/core/help.cfg:302
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1509,19 +1500,17 @@ msgstr ""
 
 #. [topic]: id=healing
 #: data/core/help.cfg:304
-#, fuzzy
 msgid ""
 "\n"
 "<ref>dst='ability_regenerates' text='Regeneration'</ref>: Certain units "
 "(such as trolls) will automatically heal 8HP every turn."
 msgstr ""
 "\n"
-"<ref>dst=ability_regenerates text='Régénération'</ref> : certaines unités "
+"<ref>dst='ability_regenerates' text='Régénération'</ref> : certaines unités "
 "(comme les trolls) se soigneront automatiquement de 8 PV à chaque tour."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:305
-#, fuzzy
 msgid ""
 "\n"
 "Healing units: Units with the <ref>dst='ability_heals +4' text='Heals'</ref> "
@@ -1530,13 +1519,14 @@ msgid ""
 "turn, or prevent Poison from causing that unit damage."
 msgstr ""
 "\n"
-"Unités soignantes : les unités avec la capacité de <ref>dst=ability_heals "
-"text='soins'</ref> soigneront les unités alliées adjacentes, habituellement "
-"de 4 ou 8 PV par tour, ou empêcheront le poison de leur faire des dégâts."
+"Unités soignantes : les unités avec la capacité de <ref>dst='ability_heals "
+"+4' text='soins'</ref> soigneront les unités alliées adjacentes, "
+"habituellement de <ref>dst='ability_heals·+4'·text='4 PV'</ref> ou "
+"<ref>dst='ability_heals·+8'·text='8 PV'</ref> par tour, ou empêcheront le "
+"poison de leur faire des dégâts."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:306
-#, fuzzy
 msgid ""
 "\n"
 "Curing units: Units with the <ref>dst='ability_cures' text='Cures'</ref> "
@@ -1544,9 +1534,10 @@ msgid ""
 "healing, if it has that ability as well)."
 msgstr ""
 "\n"
-"Unités guérisseuses : les unités avec la capacité de <ref>dst=ability_cures "
-"text='guérison'</ref> guériront de l'empoisonnement toutes les unités "
-"adjacentes (au lieu de les soigner, si l'unité est aussi soignante)."
+"Unités guérisseuses : les unités avec la capacité de "
+"<ref>dst='ability_cures' text='guérison'</ref> guériront de l'empoisonnement "
+"toutes les unités adjacentes (au lieu de les soigner, si l'unité est aussi "
+"soignante)."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:308
@@ -1662,7 +1653,6 @@ msgstr "Conclusion"
 
 #. [topic]: id=wrap_up
 #: data/core/help.cfg:330
-#, fuzzy
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
 "Basic Strategy, or familiarise yourself with <ref>dst='..traits_section' "
@@ -1671,10 +1661,10 @@ msgid ""
 "Throne campaign. Have fun, and good luck!"
 msgstr ""
 "Ceci conclut les bases de Wesnoth. Vous pourriez vouloir en lire plus sur la "
-"stratégie de base ou vous familiariser avec les <ref>dst=traits "
-"text='traits'</ref> et les <ref>dst=abilities text='capacités'</ref>, mais "
-"vous connaissez maintenant le nécessaire pour jouer la campagne « L'Héritier "
-"du trône ». Amusez-vous bien et bonne chance !"
+"stratégie de base ou vous familiariser avec les <ref>dst='..traits_section' "
+"text='traits'</ref> et les <ref>dst='..abilities_section' text='capacités'</"
+"ref>, mais vous connaissez maintenant le nécessaire pour jouer la campagne "
+"« L'Héritier du trône ». Amusez-vous bien et bonne chance !"
 
 #. [topic]: id=about
 #: data/core/help.cfg:335
@@ -1701,7 +1691,6 @@ msgstr ""
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:352
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1713,13 +1702,12 @@ msgstr ""
 "\n"
 "\n"
 "Toutes les unités, sauf les morts-vivants, peuvent disposer des traits "
-"<ref>dst=traits_intelligent text='intelligent'</ref>, <ref>dst=traits_quick "
-"text='rapide'</ref>, <ref>dst=traits_resilient text='robuste'</ref> ou "
-"<ref>dst=traits_strong text='fort'</ref>."
+"<ref>dst='traits_intelligent' text='intelligent'</ref>, "
+"<ref>dst='traits_quick' text='rapide'</ref>, <ref>dst='traits_resilient' "
+"text='robuste'</ref> ou <ref>dst='traits_strong' text='fort'</ref>."
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:356
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1730,9 +1718,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Les unités peuvent également posséder les traits <ref>dst=traits_loyal "
-"text='fidèle'</ref>, <ref>dst=traits_undead text='mort-vivant'</ref> et "
-"<ref>dst=traits_dextrous text='habile'</ref>.\n"
+"Les unités peuvent également posséder les traits <ref>dst='traits_dextrous' "
+"text='habile'</ref>, <ref>dst='traits_loyal' text='fidèle'</ref> et "
+"<ref>dst='traits_undead' text='mort-vivant'</ref>.\n"
 "\n"
 
 #. [topic]: id=traits_intelligent
@@ -2048,17 +2036,14 @@ msgstr ""
 
 #. [topic]: id=traits_slow
 #: data/core/help.cfg:448
-#, fuzzy
 msgid "Slow"
-msgstr "Ralenti"
+msgstr "Lent"
 
 #. [topic]: id=traits_slow
 #: data/core/help.cfg:449
-#, fuzzy
 msgid "Slow units have -1 movement but 5% more hitpoints."
 msgstr ""
-"Les unités rapides ont un point de mouvement supplémentaire, mais 5 % de PV "
-"en moins que la normale."
+"Les unités lentes ont un point de mouvement en moins, mais 5 % de PV en plus."
 
 #. [topic]: id=traits_slow
 #: data/core/help.cfg:451
@@ -2072,9 +2057,8 @@ msgstr ""
 
 #. [topic]: id=traits_weak
 #: data/core/help.cfg:456
-#, fuzzy
 msgid "Weak"
-msgstr "faible"
+msgstr "Faible"
 
 #. [topic]: id=traits_weak
 #: data/core/help.cfg:457
@@ -2122,7 +2106,6 @@ msgstr "Route"
 
 #. [topic]: id=terrain_road
 #: data/core/help.cfg:487
-#, fuzzy
 msgid ""
 "Roads are beaten paths of dirt, formed by many travelers passing over them. "
 "As far as gameplay is concerned, Roads behave as <ref>dst='terrain_flat' "
@@ -2130,7 +2113,7 @@ msgid ""
 msgstr ""
 "Les routes sont des chemins de terre formés par le passage de nombreux "
 "voyageurs. Dans le jeu, les routes sont identiques aux "
-"<ref>dst=terrain_grassland text='prairies'</ref>."
+"<ref>dst='terrain_flat' text='terrains plats'</ref>."
 
 #. [topic]: id=terrain_forest
 #: data/core/help.cfg:494
@@ -2398,7 +2381,6 @@ msgstr "Caverne"
 
 #. [topic]: id=terrain_cave
 #: data/core/help.cfg:621
-#, fuzzy
 msgid ""
 "Cave terrain represents any underground cavern with enough room for a unit "
 "to pass. Most units are wholly unfamiliar with the terrain, and thus are "
@@ -2415,11 +2397,11 @@ msgstr ""
 "plupart des unités, qui sont donc ralenties et gênées pour leur défense. Les "
 "nains et les trolls, qui y habitent, se déplacent relativement aisément, "
 "particulièrement les nains qui, du fait de leur petite taille, peuvent "
-"circuler à travers de nombreux obstacles. De temps en temps, les cavernes "
-"sont <ref>dst=terrain_illuminated_cave text='éclairées'</ref>.\n"
+"franchir de nombreux obstacles. De temps en temps, les cavernes sont "
+"<ref>dst='terrain_illuminated_cave' text='éclairées'</ref>.\n"
 "\n"
-"La plupart des unités reçoivent 20 à 40 % de défense dans les cavernes, les "
-"nains en obtiennent 50 %."
+"La plupart des unités bénéficient de 20 à 40 % de défense dans les cavernes, "
+"les nains en obtiennent 50 %."
 
 #. [topic]: id=terrain_rockbound_cave
 #: data/core/help.cfg:628
@@ -2428,7 +2410,6 @@ msgstr "Caverne accidentée"
 
 #. [topic]: id=terrain_rockbound_cave
 #: data/core/help.cfg:633
-#, fuzzy
 msgid ""
 "Rockbound cave terrain is formed by the action of water and wind, carrying "
 "erosive particles that carve the rock. It resembles a scraggy underground "
@@ -2448,7 +2429,7 @@ msgstr ""
 "habitants des cavernes, s'y déplacent relativement aisément. Les nains, du "
 "fait de leur petite taille, peuvent pleinement tirer parti de ce type de "
 "topographie. De temps en temps, les cavernes sont "
-"<ref>dst=terrain_illuminated_cave text='éclairées'</ref>.\n"
+"<ref>dst='terrain_illuminated_cave' text='éclairées'</ref>.\n"
 "\n"
 "La plupart des unités ont environ 50% de défense dans ces cavernes, alors "
 "que la cavalerie est limitée à 40%. Les nains y bénéficient de 60% de "
@@ -2566,17 +2547,16 @@ msgstr "impraticable"
 
 #. [topic]: id=terrain_unwalkable
 #: data/core/help.cfg:693
-#, fuzzy
 msgid ""
 "Unwalkable terrain covers any chasm or gorge which, as the name implies, "
 "cannot be crossed simply by walking. Chasms are noted for sheer walls which "
 "would take days to traverse. As far as gameplay is concerned, only units "
 "capable of flying can cross this terrain."
 msgstr ""
-"Les abîmes sont des gorges dans le sol menant à des profondeurs inconnues. "
-"Ils comportent des falaises si raides qu'il faudrait des jours pour les "
-"traverser. Dans le jeu, seules les unités capables de voler peuvent les "
-"franchir."
+"La notion de terrain impraticable couvre les abîmes et gorges qui ne peuvent "
+"être franchies en marchant. Les abîmes comportent des falaises si raides "
+"qu'il faudrait des jours pour les traverser. Dans le jeu, seules les unités "
+"capables de voler peuvent les franchir."
 
 #. [topic]: id=terrain_lava
 #: data/core/help.cfg:700
@@ -3072,7 +3052,6 @@ msgstr "commandement"
 #: data/core/macros/abilities.cfg:118 data/core/macros/abilities.cfg:141
 #: data/core/macros/abilities.cfg:176 data/core/macros/abilities.cfg:223
 #: data/core/macros/abilities.cfg:282
-#, fuzzy
 msgid ""
 "Leadership:\n"
 "This unit can lead our own units that are next to it, making them fight "
@@ -3146,9 +3125,8 @@ msgstr "téléportation"
 
 #. [teleport]: id=teleport
 #: data/core/macros/abilities.cfg:378
-#, fuzzy
 msgid "female^teleport"
-msgstr "intelligente"
+msgstr "téléportation"
 
 #. [teleport]: id=teleport
 #: data/core/macros/abilities.cfg:380
@@ -3280,9 +3258,8 @@ msgstr "nécrophagie"
 
 #. [dummy]: id=feeding
 #: data/core/macros/abilities.cfg:497
-#, fuzzy
 msgid "female^feeding"
-msgstr "intrépide"
+msgstr "nécrophagie"
 
 #. [dummy]: id=feeding
 #: data/core/macros/abilities.cfg:499
@@ -3304,7 +3281,6 @@ msgid "backstab"
 msgstr "coup dans le dos"
 
 #: data/core/macros/abilities.cfg:567
-#, fuzzy
 msgid ""
 "Backstab:\n"
 "When used offensively, this attack deals double damage if there is an enemy "
@@ -3313,8 +3289,8 @@ msgid ""
 msgstr ""
 "Coup dans le dos :\n"
 "Lorsqu'elle est utilisée offensivement, cette attaque occasionne des dégâts "
-"doublés si une unité ennemie, et non pétrifiée, de la cible se trouve en vis-"
-"à-vis de l'attaquant."
+"doublés si une unité ennemie (ni pétrifiée ni paralysée) de la cible se "
+"trouve en vis-à-vis de l'attaquant."
 
 #: data/core/macros/abilities.cfg:579 data/core/macros/abilities.cfg:591
 msgid "plague"
@@ -3394,7 +3370,6 @@ msgid "swarm"
 msgstr "déferlement"
 
 #: data/core/macros/abilities.cfg:654
-#, fuzzy
 msgid ""
 "Swarm:\n"
 "The number of strikes of this attack decreases when the unit is wounded. The "
@@ -3402,10 +3377,10 @@ msgid ""
 "unit has. For example a unit with 3/4 of its maximum HP will get 3/4 of the "
 "number of strikes."
 msgstr ""
-"déferlement :\n"
+"Déferlement :\n"
 "Le nombre de frappes de cette attaque diminue lorsque l'unité est blessée. "
-"La diminution est proportionnelle aux % de points de vie restant. Par "
-"exemple une unité avec 3/4 de ses points de vie aura 3/4 de ses frappes."
+"Ce nombre est proportionnel aux points de vie restants. Par exemple une "
+"unité avec 3/4 de ses points de vie aura 3/4 de ses frappes."
 
 #: data/core/macros/abilities.cfg:663
 msgid "charge"
@@ -4747,7 +4722,6 @@ msgstr ""
 "défend."
 
 #: data/core/macros/special-notes.cfg:29
-#, fuzzy
 msgid ""
 " The leadership of this unit enables adjacent units of the same side to deal "
 "more damage in combat, though this only applies to units of lower level."
@@ -5150,7 +5124,6 @@ msgstr "Dracans"
 
 #. [race]: id=drake
 #: data/core/units.cfg:68
-#, fuzzy
 msgid ""
 "Drakes are large, winged and fire-breathing creatures, reminiscent of true "
 "dragons. On average, an adult drake stands around three meters tall and "
@@ -5221,12 +5194,11 @@ msgstr ""
 "ceux qui perforent ou font des dégâts basés sur le froid. La plupart des "
 "dracans savent voler et peuvent voyager rapidement sur de longues "
 "distances ; mais leur masse et leur corpulence les rendent gauches dans les "
-"airs ; ils utilisent, quand c'est possible, les collines, les montagnes, ou "
-"les arbres, pour décoller d'un point plus haut qui leur permet d'atteindre "
-"une meilleure vitesse et une hauteur plus élevée. Heureusement pour leurs "
-"ennemis, ces créatures sont plutôt maladroites et étonnamment lentes au "
-"combat, ce qui en fait des cibles de grande taille faciles à atteindre pour "
-"ceux qui veulent les attaquer.\n"
+"airs. Ils utilisent, quand c'est possible, les collines, les montagnes, ou "
+"les arbres, pour s'élancer et ainsi atteindre une vitesse et une hauteur "
+"plus élevées. Heureusement pour leurs ennemis, ces créatures sont plutôt "
+"maladroites et étonnamment lentes au combat, ce qui en fait des cibles de "
+"grande taille faciles à atteindre pour ceux qui osent les attaquer.\n"
 "\n"
 "Les dracans sont des créatures magiques possédant un mystérieux feu "
 "intérieur, source de leur énergie vitale, qui se remarque facilement en "
@@ -5262,13 +5234,13 @@ msgstr ""
 "une place dans les récits héroïques de leur peuple.\n"
 "\n"
 "<header>text='Localisation'</header>\n"
-"Les dracans proviennent de l'île de Morogor dans le Grand Océan. Mais comme "
-"elle s'enfonce lentement depuis des siècles, des colonies se sont établies "
-"sur le Grand Continent, de préférence dans les cavernes des montagnes ou "
-"dans les volcans pour protéger leurs couvées, leurs jeunes et leurs forges. "
-"Même s'ils préfèrent la chaleur, leur feu intérieur les protège des climats "
-"froids ; cela leur a d'ailleurs permis de s'étendre jusqu'aux massifs de "
-"l'extrême nord du continent."
+"Les dracans proviennent d'une chaîne d'îles volcaniques dans le Grand Océan. "
+"La pression démographique causée par l'affaissement de certaines îles les a "
+"poussés à s'établir sur le Grand Continent, de préférence dans les cavernes "
+"des montagnes ou dans les volcans pour protéger leurs couvées, leurs jeunes "
+"et leurs forges. Même s'ils préfèrent la chaleur, leur feu intérieur les "
+"protège des climats froids ; cela leur a d'ailleurs permis de s'étendre "
+"jusqu'aux massifs de l'extrême nord du continent."
 
 #. [race]: id=dwarf
 #: data/core/units.cfg:88
@@ -5287,7 +5259,6 @@ msgstr "Nains"
 
 #. [race]: id=dwarf
 #: data/core/units.cfg:95
-#, fuzzy
 msgid ""
 "The dwarves are a race famed for their miners, blacksmiths, merchants and "
 "warriors. Considered as the third oldest race on the great continent after "
@@ -5354,16 +5325,15 @@ msgstr ""
 "\n"
 "Peut-être à cause de leur isolement, les nains sont souvent méfiants et "
 "hostiles envers les autres races, surtout les elfes. Les humains constituent "
-"une exception notable, qui peut provenir de l'époque de l'arrivée Haldric "
-"Ier et des orcs sur le continent. Les nains ont autorisé quelques humains, "
+"une exception notable qui remonte à l'époque de l'arrivée Haldric Ier et des "
+"orcs sur le continent. Les nains ont autorisé quelques humains, "
 "principalement des hors-la-loi et des fugitifs recherchés par la Couronne, "
 "de s'installer dans certaines zones des Terres du Nord. Leurs motivations "
 "n'étaient pas une surprise : le destin de ces hommes leur rappelait leurs "
-"premières persécutions et éveillait leur solidarité ; par ailleurs, les "
-"nains profitaient grandement de ces nouveaux venus qui colonisaient des "
-"terres indésirables : les plaines, les forêts et les marais ne devaient plus "
-"être défendus. Plus tard, sous la menace des orcs, les nains et les humains "
-"formèrent l'Alliance de Knalga pour défendre leur royaume commun.\n"
+"premières persécutions et éveillait leur solidarité. Par ailleurs, les nains "
+"profitaient grandement de ces nouveaux venus qui colonisaient des terres "
+"indésirables : les plaines, les forêts et les marais n'avaient dès lors plus "
+"besoin d'être défendus.\n"
 "\n"
 "Les nains mesurent moins que les humains mais ne sont pas du tout fragiles. "
 "Leurs guerriers, forts et puissants, sont à la fois craints et respectés à "
@@ -5398,7 +5368,6 @@ msgstr "Elfes"
 
 #. [race]: id=elf
 #: data/core/units.cfg:119
-#, fuzzy
 msgid ""
 "Compared to humans, elves are somewhat taller, more agile but less sturdy. "
 "They have slightly pointy ears, pale skin and usually blond hair. Few "
@@ -5440,16 +5409,23 @@ msgstr ""
 "Ils ont des oreilles légèrement pointues, une peau pâle, et des cheveux "
 "souvent blonds. La différence la plus notable est la longévité supérieure "
 "des elfes : à moins d'être emportés par une maladie, un accident ou une "
-"guerre, beaucoup vivent deux siècles ; ceux dotés de capacités magiques "
-"vivent encore un siècle de plus ; la plupart deviennent plus fragiles en "
-"approchant la vingtième décennie et meurent quelques dizaines d'années plus "
-"tard. Les elfes sont naturellement imprégnés d'un peu de magie qui, même si "
-"rares sont ceux qui peuvent directement la manipuler, leur accorde une "
-"existence prolongée, des sens plus aiguisés, et des traits comme le tir "
-"d'élite ou la dissimulation ; cela leur permet de réaliser des exploits "
-"sidérants pour la plupart des êtres normaux. Ces elfes qui développent leurs "
-"pouvoirs peuvent vraiment les utiliser de façons formidables. Beaucoup "
-"choisissent de mettre à profit leur don pour soigner les autres.\n"
+"guerre, beaucoup vivent deux siècles et demi. Bien que ceux dotés de "
+"capacités magiques vivent aisément un siècle de plus, la majorité des elfes "
+"deviennent subitement de santé fragile à un certain âge entre 250 et 300 ans "
+"et meurent une année ou deux plus tard.\n"
+"\n"
+"Les elfes sont naturellement imprégnés d'un peu de magie qui, même si rares "
+"sont ceux qui peuvent directement la manipuler, leur accorde une existence "
+"prolongée, des sens plus aiguisés, et des traits comme le tir d'élite ou la "
+"dissimulation ; cela leur permet de réaliser des exploits sidérants pour la "
+"plupart des êtres normaux. Ces elfes qui développent leurs pouvoirs peuvent "
+"vraiment les utiliser de façons formidables. Beaucoup choisissent de mettre "
+"à profit leur don pour soigner les autres.\n"
+"\n"
+"Quelques elfes qui se sont aventurés loin dans les voies magiques et "
+"mystiques sont devenus particulièrement sensibles au toucher glacé du fer et "
+"peuvent mettre brûler par lui. Les légendes elfiques suggèrent que cette "
+"sensibilité exacerbée n'était pas rare jadis.\n"
 "\n"
 "Les elfes passent beaucoup de temps à perfectionner leurs talents et leurs "
 "compétences. Ceux qui n'aiment pas la magie se consacrent aux exercices "
@@ -5459,10 +5435,12 @@ msgstr ""
 "précision. Tous les elfes partagent aussi une réelle affection pour la "
 "nature vierge ; ils se sentent mal à l'aise dans les espaces ouverts et sans "
 "végétation ; cela les a conduit à habiter les forêts du Grand Continent, "
-"comme par exemple Aethenwood au sud-ouest ou Wesmere au nord-ouest. Les "
-"elfes sont peut-être la plus ancienne race du continent, à départager avec "
-"les trolls. Il est difficile de dater leurs premiers campements, sûrement "
-"vieux de plus d'un millénaire."
+"Aethenwood au sud-ouest, Wesmere au nord-ouest ainsi que les grandes forêts "
+"du Nord dont Lintanir est la partie la plus méridionale.\n"
+"\n"
+"Les elfes sont peut-être la plus ancienne race du continent, à départager "
+"avec les trolls. Il est difficile de dater leurs premiers campements, "
+"sûrement vieux de plus d'un millénaire."
 
 #. [race]: id=goblin, description=
 #: data/core/units.cfg:129
@@ -5686,7 +5664,6 @@ msgstr "Orcs"
 
 #. [race]: id=orc
 #: data/core/units.cfg:252
-#, fuzzy
 msgid ""
 "In appearance, orcs are half men and half beasts. They are taller, sturdier "
 "and stronger than humans. They are warlike, savage, and cruel by nature. "
@@ -5748,7 +5725,7 @@ msgstr ""
 "sont plus grands et plus forts que les humains. Ils sont belliqueux, "
 "sauvages, et cruels. Leur sang est plus sombre et plus épais que celui d'un "
 "homme normal ; ils se soucient peu de leur hygiène ou de leur apparence. "
-"Bien que ils soient violents, même entre eux, ils aiment vivre en groupes : "
+"Bien qu'ils soient violents, même entre eux, ils aiment vivre en groupes : "
 "un orc ne vit ou ne voyage jamais en bandes de moins d'une demi-douzaine "
 "d'individus.\n"
 "\n"
@@ -5788,7 +5765,7 @@ msgstr ""
 "souvent les seuls êtres modérés à qui faire confiance. L'origine de cette "
 "coutume est inconnue, car les chamans contribuent peu à la société orc, se "
 "contentant de donner des conseils (ce qui est généralement peu apprécié "
-"venant des autres) ; ils contrastent avec les autres de leur espèce : ils "
+"venant des autres). Ils contrastent avec les autres de leur espèce : ils "
 "sont souvent petits et frêles, et manquent d'adresse au combat. Beaucoup "
 "d'orcs naissent faibles et chétifs, et sont supplantés par leurs semblables "
 "plus costauds. Les plus forts dévorent l'essentiel de la nourriture et "
@@ -5813,7 +5790,6 @@ msgstr "Trolls"
 
 #. [race]: id=troll
 #: data/core/units.cfg:267
-#, fuzzy
 msgid ""
 "Trolls are ancient creatures, one of the oldest known races known to inhabit "
 "the Great Continent. They are large, slow, simple-minded, and live extremely "
@@ -7153,9 +7129,8 @@ msgid "MB"
 msgstr "Mo"
 
 #: src/addon_management.cpp:369
-#, fuzzy
 msgid "GB"
-msgstr "o"
+msgstr "Go"
 
 #: src/addon_management.cpp:402
 msgid "addon_type^Campaign"
@@ -7166,32 +7141,28 @@ msgid "addon_type^Scenario"
 msgstr "Scénario"
 
 #: src/addon_management.cpp:406
-#, fuzzy
 msgid "addon_type^MP era"
-msgstr "Scénario distant"
+msgstr "Ère multijoueur"
 
 #: src/addon_management.cpp:408
-#, fuzzy
 msgid "addon_type^MP faction"
-msgstr "Scénario distant"
+msgstr "Faction multijoueur"
 
 #: src/addon_management.cpp:410
-#, fuzzy
 msgid "addon_type^MP map-pack"
-msgstr "Scénario distant"
+msgstr "Cartes multijoueur"
 
 #: src/addon_management.cpp:412
-#, fuzzy
 msgid "addon_type^MP scenario"
-msgstr "Scénario distant"
+msgstr "Scénario multijoueur"
 
 #: src/addon_management.cpp:414
 msgid "addon_type^MP campaign"
-msgstr "MP campaign"
+msgstr "Campagne multijoueur"
 
 #: src/addon_management.cpp:416
 msgid "addon_type^Resources"
-msgstr "Resources"
+msgstr "Ressources"
 
 #: src/addon_management.cpp:418
 msgid "addon_type^(unknown)"
@@ -7212,7 +7183,7 @@ msgstr[0] ""
 "Cette extension dépend de l'extension suivante que vous n'avez pas encore "
 "installée :"
 msgstr[1] ""
-"Cette extension dépend de l'extensions suivantes que vous n'avez pas encore "
+"Cette extension dépend des extensions suivantes que vous n'avez pas encore "
 "installées :"
 
 #: src/addon_management.cpp:453
@@ -7226,7 +7197,7 @@ msgstr "Tentative de connexion expirée"
 
 #: src/addon_management.cpp:471
 msgid "The server responded with an error: \"$error|\""
-msgstr "Le serveur a renvoyé une erreur : « $error »"
+msgstr "Le serveur a renvoyé une erreur : « $error| »"
 
 #: src/addon_management.cpp:479
 msgid "Terms"
@@ -7334,7 +7305,8 @@ msgid_plural ""
 msgstr[0] ""
 "L'extension suivante n'a pas pu être téléchargée ou être mise à jour :"
 msgstr[1] ""
-"Les extensions suivantes n'ont pu être téléchargées ou être mises à jour :"
+"Les extensions suivantes n'ont pas pu être téléchargées ou être mises à "
+"jour :"
 
 #: src/addon_management.cpp:864
 msgid "Update succeeded"
