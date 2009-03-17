@@ -1,12 +1,12 @@
-# Copyright (C) Wesnoth development team, 2007-2008.
+# Copyright (C) Wesnoth development team, 2007-2009.
 # Translators:
-#  Andrius Štikonas <stikonas@gmail.com>, 2007-2008.
+#  Andrius Štikonas <stikonas@gmail.com>, 2007-2009.
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-03-15 22:31+0100\n"
-"PO-Revision-Date: 2009-03-10 22:07+0300\n"
+"PO-Revision-Date: 2009-03-14 15:14+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lithuanian <kde-i18n-doc@lists.kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -240,7 +240,7 @@ msgstr "Angliškų eilučių redagavimas"
 #. [about]
 #: data/core/about.cfg:916
 msgid "Afrikaans Translation"
-msgstr "Afrikaans vertimas"
+msgstr "Afrikanų vertimas"
 
 #. [about]
 #: data/core/about.cfg:932
@@ -717,7 +717,7 @@ msgstr ""
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:164
 msgid "Recruiting and Recalling"
-msgstr ""
+msgstr "Samdymas ir Grąžinimas"
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:165
@@ -1670,6 +1670,7 @@ msgstr "Bukas"
 msgid ""
 "Units with trait Dim suffer a 20% increase in experience required to advance."
 msgstr ""
+"Daliniams su gebėjimu Bukas reikia 20% daugiau patirties tam, kad patobulėtų."
 
 #. [topic]: id=traits_dim
 #: data/core/help.cfg:443
@@ -1679,6 +1680,10 @@ msgid ""
 "Dim is a trait all too common in goblins and other lesser species. There are "
 "reasons these species are lesser, and this is one of them."
 msgstr ""
+"\n"
+"\n"
+"Bukas yra gebėjimas būdingas goblinams ir kitoms mažesnėms rūšims. Yra "
+"priežasčių, kodėl šios rūšys yra mažosios, ir tai yra viena iš jų."
 
 #. [topic]: id=traits_slow
 #: data/core/help.cfg:448
@@ -5495,7 +5500,7 @@ msgstr ""
 
 #: data/temp-file_send_data_strings.cfg:13
 msgid "Save my reply and do not ask again"
-msgstr ""
+msgstr "Išsaugoti mano peržaidimą ir daugiau nebeklausti"
 
 #: data/temp-file_send_data_strings.cfg:14
 msgid ""
@@ -5512,7 +5517,7 @@ msgstr "Nesiųsti"
 
 #: data/temp-file_send_data_strings.cfg:18
 msgid "Do not ask every time before sending data"
-msgstr ""
+msgstr "Nebeklausti kiekvieną kartą prieš siunčiant duomenis"
 
 #. [menu]: id=menu-main
 #: data/themes/default.cfg:120 data/themes/dfool.cfg:134
@@ -5691,6 +5696,7 @@ msgstr "Neturite vado, su kuriuo galite samdyti."
 #: src/actions.cpp:149
 msgid "You must have your leader on a keep to recruit or recall units."
 msgstr ""
+"Jūsų vadas turi būti bokšte, kad galėtumėte samdyti arba grąžinti dalinius."
 
 #: src/actions.cpp:168
 msgid "There are no vacant castle tiles in which to recruit a unit."
@@ -6416,15 +6422,15 @@ msgstr "Klaida: "
 
 #: src/game_events.cpp:137
 msgid "Warning: "
-msgstr "Dėmesio: "
+msgstr "Įspėjimas: "
 
 #: src/game_events.cpp:140
 msgid "Debug: "
-msgstr ""
+msgstr "Derinimas: "
 
 #: src/game_events.cpp:143
 msgid "Info: "
-msgstr ""
+msgstr "Informacija: "
 
 #: src/game_events.cpp:1078
 msgid "Victory:"
@@ -6529,7 +6535,7 @@ msgstr "žalos"
 
 #: src/generate_report.cpp:284
 msgid "weapon range: "
-msgstr ""
+msgstr "ginklo nuotolis: "
 
 #: src/generate_report.cpp:285
 msgid "damage type: "
@@ -6617,7 +6623,7 @@ msgstr "Smūgiai"
 
 #: src/help.cpp:1388
 msgid "Range"
-msgstr ""
+msgstr "Nuotolis"
 
 #: src/help.cpp:1389
 msgid "Special"
@@ -6637,7 +6643,7 @@ msgstr "Atsparumas"
 
 #: src/help.cpp:1481
 msgid "Terrain Modifiers"
-msgstr ""
+msgstr "Vietovių modifikatoriai"
 
 #: src/help.cpp:1485
 msgid "Terrain"
@@ -6960,17 +6966,19 @@ msgstr "Neturite pakankamai aukso, kad pasamdytumėte šį dalinį"
 
 #: src/menu_events.cpp:982
 msgid "You are separated from your soldiers and may not recall them"
-msgstr ""
+msgstr "Esate atskirtas nuo savo karių ir negalite grąžinti jų"
 
 #: src/menu_events.cpp:1003
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
 msgstr ""
+"Nėra dalinių prieinamų grąžinimui\n"
+"(Privalote turėti išgyvenusių veteranų iš ankstesnio scenarijaus)"
 
 #: src/menu_events.cpp:1060
 msgid "Recall"
-msgstr ""
+msgstr "Grąžinti"
 
 #: src/menu_events.cpp:1071
 msgid "Dismiss Unit"
@@ -6979,9 +6987,9 @@ msgstr "Atleisti dalinį"
 #: src/menu_events.cpp:1089
 msgid "You must have at least 1 gold piece to recall a unit"
 msgid_plural "You must have at least $cost gold pieces to recall a unit"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Privalote turėti bent $cost aukso, kad grąžintumėte dalinį."
+msgstr[1] "Privalote turėti bent $cost aukso, kad grąžintumėte dalinį."
+msgstr[2] "Privalote turėti bent $cost aukso, kad grąžintumėte dalinį."
 
 #: src/menu_events.cpp:1420
 msgid ""
@@ -7371,10 +7379,11 @@ msgstr ""
 msgid ""
 "Error in the login procedure (the server had no seed for your connection)."
 msgstr ""
+"Klaida, registravimosi procedūroje (serveris neturėjo jūsų ryšio sėklos)."
 
 #: src/multiplayer.cpp:360
 msgid "The password you provided was incorrect."
-msgstr ""
+msgstr "Slaptažodis, kurį pateikėte, buvo neteisingas."
 
 #: src/multiplayer_connect.cpp:82 src/multiplayer_connect.cpp:485
 #: src/multiplayer_connect.cpp:613
@@ -8123,7 +8132,7 @@ msgstr "Samdymai"
 
 #: src/statistics_dialog.cpp:70 src/statistics_dialog.cpp:128
 msgid "Recalls"
-msgstr ""
+msgstr "Grąžinimai"
 
 #: src/statistics_dialog.cpp:74 src/statistics_dialog.cpp:135
 msgid "Advancements"
@@ -8408,63 +8417,3 @@ msgstr "Padėkite mums padaryti Wesnoth geresnį jums!"
 #: src/upload_log.cpp:332
 msgid "Enable summary uploads"
 msgstr "Įgalinti santraukų siuntimą"
-
-#~ msgid "Reading cache"
-#~ msgstr "Skaitomas podėlis"
-
-#~ msgid "Back to start"
-#~ msgstr "Atgal į pradžią"
-
-#~ msgid "Only Run Safe Python AIs"
-#~ msgstr "Paleisti tik saugius Pythono DI"
-
-#~ msgid "+  "
-#~ msgstr "+  "
-
-#, fuzzy
-#~ msgid "Unknown error."
-#~ msgstr "Nežinoma era"
-
-#~ msgid "- King Konrad, 552YW"
-#~ msgstr "- Karalius Konradas, 552WM"
-
-#~ msgid "An invalid weapon is send, possibly due to the Python AI."
-#~ msgstr "Nusiųstas netinkamas ginklas, gal būt dėt Python'o DI."
-
-#~ msgid "VICTORY_AND_DEFEAT_MUSIC is unnecessary and can be removed."
-#~ msgstr "VICTORY_AND_DEFEAT_MUSIC yra nereikalinga ir gali būti pašalinta."
-
-#~ msgid "Log in with password"
-#~ msgstr "Prisijungti su slaptažodžiu"
-
-#~ msgid "Request password reminder for this username"
-#~ msgstr "Pareikalauti slaptažodžio priminimą šiam naudotojo vardui"
-
-#~ msgid "Choose a different username"
-#~ msgstr "Pasirinkite kitą naudotojo vardą"
-
-#~ msgid "Send a private message to "
-#~ msgstr "Siųsti asmeninę žinutę žaidėjui "
-
-#~ msgid "Whisper"
-#~ msgstr "Šnibždėti"
-
-#~ msgid "Message: "
-#~ msgstr "Žinutė: "
-
-#~ msgid ""
-#~ "\n"
-#~ "Redraw the screen.\n"
-#~ "\n"
-#~ msgstr ""
-#~ "\n"
-#~ "Perpiešti ekraną.\n"
-#~ "\n"
-
-#, fuzzy
-#~ msgid ""
-#~ " This unit is capable of healing those around it, slowing dehydration, "
-#~ "and curing them of poison."
-#~ msgstr ""
-#~ " Šis dalinys sugeba neutralizuoti nuodų veikimą, aplink jį esančiuose "
-#~ "daliniuose."
