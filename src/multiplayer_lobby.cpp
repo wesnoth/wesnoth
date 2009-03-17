@@ -145,6 +145,7 @@ void gamebrowser::draw_row(const size_t index, const SDL_Rect& item_rect, ROW_TY
 		}
 	}
 	if(!game.have_era) {
+		font_color = font::DISABLED_COLOUR;
 		no_era_string = _(" (Unknown Era)");
 	}
 
