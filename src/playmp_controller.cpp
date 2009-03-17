@@ -274,8 +274,6 @@ void playmp_controller::play_human_turn(){
 					secs = (secs > maxtime) ? maxtime : secs;
 					current_team().set_countdown_time(1000 * secs);
 				}
-				recorder.add_countdown_update(current_team().countdown_time(),player_number_);
-				recorder.end_turn();
 				turn_data_->send_data();
 
 				throw end_turn_exception();
