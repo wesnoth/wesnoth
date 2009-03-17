@@ -2134,6 +2134,22 @@ private:
 			 */
 			void do_details();
 
+			std::string get_flags_description() const {
+				return "(A) - auth command";
+			}
+
+			std::string get_command_flags_description(
+				const map_command_handler<chat_command_handler>::command& c) const
+			{
+				return std::string(c.has_flag('A') ? " (auth only)" : "");
+			}
+
+			bool is_enabled(
+				const map_command_handler<chat_command_handler>::command& c) const
+			{
+				return !(c.has_flag('A') && !preferences::is_authenticated());
+			}
+
 			void print(const std::string& title, const std::string& message)
 			{
 				chat_handler_.add_chat_message(time(NULL), title, 0, message);
@@ -2156,11 +2172,11 @@ private:
 				register_command("ping", &chat_command_handler::do_network_send,
 					"");
 				register_command("green", &chat_command_handler::do_network_send,
-					"");
+					"", "", "A");
 				register_command("red", &chat_command_handler::do_network_send,
-					"");
+					"", "", "A");
 				register_command("yellow", &chat_command_handler::do_network_send,
-					"");
+					"", "", "A");
 				register_command("emote", &chat_command_handler::do_emote,
 					_("Send an emotion or personal action in chat."), "<message>");
 				register_alias("emote", "me");
@@ -2286,19 +2302,21 @@ private:
 			void do_toggle_draw_terrain_codes();
 
 			std::string get_flags_description() const {
-				return "(D) - debug only, (N) - network only";
+				return "(D) - debug only, (N) - network only, (A) - auth only";
 			}
 			using chat_command_handler::get_command_flags_description; //silence a warning
 			std::string get_command_flags_description(const chmap::command& c) const
 			{
 				return std::string(c.has_flag('D') ? " (debug command)" : "")
-				     + std::string(c.has_flag('N') ? " (network only)" : "");
+				     + std::string(c.has_flag('N') ? " (network only)" : "")
+					 + std::string(c.has_flag('A') ? " (auth only)" : "");
 			}
 			using map::is_enabled;
 			bool is_enabled(const chmap::command& c) const
 			{
 				return !((c.has_flag('D') && !game_config::debug)
-					  || (c.has_flag('N') && network::nconnections() == 0));
+					  || (c.has_flag('N') && network::nconnections() == 0)
+					  || (c.has_flag('A') && !preferences::is_authenticated()));
 			}
 			void print(const std::string& title, const std::string& message)
 			{
