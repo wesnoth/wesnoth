@@ -1730,6 +1730,7 @@ bool formula_ai::make_move(game_logic::const_formula_ptr formula_, const game_lo
 {
 	if(!formula_) {
 		if(master_) {
+			LOG_AI << "Falling back to default AI.\n";
 			ai_interface* fallback = create_ai("", get_info());
 			fallback->play_turn();
 		}
@@ -2036,6 +2037,7 @@ bool formula_ai::execute_variant(const variant& var, bool commandline)
 					throw fallback_ai_to_human_exception();
 				} else
 				{
+					LOG_AI << "Explicit fallback to: " << fallback_command->key() << std::endl;
 					ai_interface* fallback = create_ai(fallback_command->key(), get_info());
 					if(fallback) {
 						fallback->play_turn();
