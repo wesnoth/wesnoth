@@ -339,12 +339,7 @@ std::string default_map_generator::config_name() const
 
 std::string default_map_generator::create_map(const std::vector<std::string>& args)
 {
-	try{
-		return generate_map(args);
-	}
-	catch (mapgen_exception){
-		return "";
-	}
+	return generate_map(args);
 }
 
 std::string default_map_generator::generate_map(const std::vector<std::string>& /*args*/, std::map<map_location,std::string>* labels)
@@ -381,29 +376,18 @@ std::string default_map_generator::generate_map(const std::vector<std::string>& 
 	// Keep a copy of labels as it can be written to by the map generator func
 	std::map<map_location,std::string> labels_copy;
 	int tries = 10;
-	std::string error_message;
 	do {
 		if (labels) {
 				labels_copy = *labels;
 		}
-		try{
-			map = default_generate_map(width_, height_, island_size, island_off_center,
-				iterations, hill_size_, max_lakes, (nvillages_ * width_ * height_) / 1000,
-				castle_size_, nplayers_, link_castles_, labels, cfg_);
-			error_message = "";
-		}
-		catch (mapgen_exception& exc){
-			error_message = exc.msg;
-		}
+		map = default_generate_map(width_, height_, island_size, island_off_center,
+			iterations, hill_size_, max_lakes, (nvillages_ * width_ * height_) / 1000,
+			castle_size_, nplayers_, link_castles_, labels, cfg_);
 		--tries;
 	} while (tries && map.empty());
 	if (labels) {
 		labels->swap(labels_copy);
 	}
-
-	if (error_message != "")
-		throw mapgen_exception(error_message);
-
 	return map;
 }
 
@@ -421,13 +405,7 @@ config default_map_generator::create_scenario(const std::vector<std::string>& ar
 
 	std::map<map_location,std::string> labels;
 	DBG_NG << "generating map...\n";
-	try{
-		res["map_data"] = generate_map(args,&labels);
-	}
-	catch (mapgen_exception exc){
-		res["map_data"] = "";
-		res["error_message"] = exc.msg;
-	}
+	res["map_data"] = generate_map(args,&labels);
 	DBG_NG << "done generating map..\n";
 
 	for(std::map<map_location,std::string>::const_iterator i =
