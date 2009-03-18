@@ -427,7 +427,7 @@ void playmp_controller::wait_for_upload()
 }
 
 void playmp_controller::after_human_turn(){
-	if ( level_["mp_countdown"] == "yes" ){
+	if ( utils::string_bool(level_["mp_countdown"]) ){
 		const int action_increment = lexical_cast_default<int>(level_["mp_countdown_action_bonus"],0);
 		const int maxtime = lexical_cast_default<int>(level_["mp_countdown_reservoir_time"],0);
 		int secs = (current_team().countdown_time() / 1000) + lexical_cast_default<int>(level_["mp_countdown_turn_bonus"],0);
