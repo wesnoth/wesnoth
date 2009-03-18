@@ -635,7 +635,7 @@ battle_context::unit_stats::unit_stats(const unit &u, const map_location& u_loc,
 		slows = weapon->get_special_bool("slow");
 		drains = weapon->get_special_bool("drains") && !utils::string_bool(opp.get_state("not_living"));
 		stones = weapon->get_special_bool("stones");
-		poisons = weapon->get_special_bool("poison") && opp.get_state("not_living") != "yes" && opp.get_state("poisoned") != "yes";
+		poisons = weapon->get_special_bool("poison") && utils::string_bool(opp.get_state("not_living")) != true && utils::string_bool(opp.get_state("poisoned")) != true;
 		backstab_pos = is_attacker && backstab_check(u_loc, opp_loc, units, teams);
 		rounds = weapon->get_specials("berserk").highest("value", 1).first;
 		firststrike = weapon->get_special_bool("firststrike");
