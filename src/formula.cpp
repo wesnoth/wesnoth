@@ -340,7 +340,7 @@ class where_variables: public formula_callable {
 public:
 	where_variables(const formula_callable &base,
 			expr_table_ptr table )
-		: base_(base), table_(table) { }
+		: formula_callable(false), base_(base), table_(table) { }
 private:
 	const formula_callable& base_;
 	expr_table_ptr table_;
