@@ -1289,18 +1289,17 @@ public:
 				 advance_it != advance_end; ++advance_it) {
 				std::string unit_id = *advance_it;
 				std::map<std::string,unit_type>::const_iterator type = unit_type_data::types().find_unit_type(unit_id);
-				if(type != unit_type_data::types().end()) {
+				if(type != unit_type_data::types().end() && !type->second.hide_help()) {
+					if (advance_it != next_units.begin()) ss << ", ";
 					std::string lang_unit = type->second.type_name();
 					std::string ref_id;
-					if (description_type(type->second) == FULL_DESCRIPTION && !type->second.hide_help()) {
+					if (description_type(type->second) == FULL_DESCRIPTION) {
 						ref_id = unit_prefix + type->second.id();
 					} else {
 						ref_id = unknown_unit_topic;
 						lang_unit += " (?)";
 					}
 					ss << "<ref>dst='" << escape(ref_id) << "' text='" << escape(lang_unit) << "'</ref>";
-					if (advance_it + 1 != advance_end)
-						ss << ", ";
 				}
 			}
 			ss << "\n";
