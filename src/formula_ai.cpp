@@ -1427,7 +1427,8 @@ formula_ai::formula_ai(info& i) :
 	const config& ai_param = current_team().ai_parameters();
 
 	// Check to see if we want to use eval_lists
-	if(ai_param.get_attribute("eval_list") == "yes") {
+
+	if( utils::string_bool( ai_param.get_attribute("eval_list") ) ) {
 		use_eval_lists_ = true;
 	}
 

@@ -155,8 +155,8 @@ variant unit_callable::get_value(const std::string& key) const
 	} else if(key == "leader") {
 		return variant(u_.can_recruit());
 	} else if(key == "undead") {
-		if ( u_.get_state("not_living") == "yes" )
-					return variant( 1 );
+		if ( utils::string_bool(u_.get_state("not_living"))  )
+                    return variant( 1 );
 
 		return variant( 0 );
 	} else if(key == "attacks") {
