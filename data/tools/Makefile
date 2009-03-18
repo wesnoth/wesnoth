@@ -82,6 +82,15 @@ reindent:
 editor_bindings:
 	@./extractbindings <../themes/editor.cfg 
 
+# Look at the difficulty-rank order of the campaigns
+rank:
+	 @grep rank ../campaigns/*/_main.cfg | sed -n \
+		-e '/rank=/s///' \
+		-e '/..\/campaigns\//s///' \
+		-e '/\/_main.cfg:/s///p' \
+		| sort -n -k 2 \
+		| awk '{print $$2, "\t", $$1}'
+
 # For performing test lifts of mainline
 lift:
 	./wmllint --verbose $(MAINLINE) $(UMC)
