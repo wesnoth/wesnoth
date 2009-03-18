@@ -475,7 +475,7 @@ Usage: macroscope [options] dirpath
                 #xref.undersized()
                 xref.unresdump()
                 xref.duplicates(exportonly=True)
-    except:
+    except KeyboardInterrupt:
         print >>sys.stderr, "wmlscope: aborted."
     
 # wmlscope ends here
