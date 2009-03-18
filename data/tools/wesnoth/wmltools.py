@@ -180,7 +180,7 @@ def actualtype(a):
         atype = None	# Can't tell -- it's a macro expansion
     elif re.match(image_reference, a):
         atype = "image"
-    elif re.match(r"(\*|[A-Z][a-z]+)\^[A-Z][a-z\\|/]+\Z", a):
+    elif re.match(r"(\*|[A-Z][a-z]+)\^([A-Z][a-z\\|/]+\Z)?", a):
         atype = "terrain_code"
     elif a.endswith(".wav") or a.endswith(".ogg"):
         atype = "sound"
