@@ -24,6 +24,7 @@
 #include "font.hpp"
 #include "foreach.hpp"
 #include "game_display.hpp"
+#include "gettext.hpp"
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 #include "gui/widgets/debug.hpp"
 #endif
@@ -564,7 +565,6 @@ void twindow::layout()
 		// Fall back to the new layout engine.
 		layout2(maximum_width, maximum_height);
 		size = get_best_size();
-		assert(size.x <= maximum_width && size.y <= maximum_height);
 	}
 
 	/***** Does the height fit in the available height? ******/
@@ -592,7 +592,22 @@ void twindow::layout()
 		// Fall back to the new layout engine.
 		layout2(maximum_width, maximum_height);
 		size = get_best_size();
-		assert(size.x <= maximum_width && size.y <= maximum_height);
+	}
+
+	if(size.x > maximum_width || size.y > maximum_height) {
+
+		std::stringstream sstr;
+		sstr << __FILE__ << ":" << __LINE__ << " in function '" << __func__
+				<< "' found the following problem: Failed to size window;"
+				<< " wanted size " << size 
+				<< " available size "
+				<< maximum_width << ',' << maximum_height 
+				<< " screen size "
+				<< settings::screen_width << ',' << settings::screen_height
+				<< '.';
+
+		throw twml_exception(_("Failed to show a dialog, "
+				"which doesn't fit on the screen."), sstr.str());
 	}
 
 	/***** Get the best location for the window *****/
