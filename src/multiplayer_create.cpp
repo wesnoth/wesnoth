@@ -519,7 +519,7 @@ void create::process_event()
 		int nsides = parameters_.scenario_data.get_children("side").size();
 		const config::child_list& player_sides = parameters_.scenario_data.get_children("side");
 		for(config::child_list::const_iterator k = player_sides.begin(); k != player_sides.end(); ++k) {
-			if((**k)["allow_player"] == "no") {
+			if(utils::string_bool((**k)["allow_player"],true)) {
 				nsides--;
 			}
 		}
