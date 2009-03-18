@@ -18,8 +18,8 @@ msgstr ""
 "Project-Id-Version: ru\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-03-15 22:05+0100\n"
-"PO-Revision-Date: 2007-08-20 01:10+0600\n"
-"Last-Translator: Azamat H. Hackimov <azamat.hackimov@gmail.com>\n"
+"PO-Revision-Date: 2009-03-17 23:11+0300\n"
+"Last-Translator: Fedor Khod'kov <fedor76@istra.ru>\n"
 "Language-Team: Russian <bugs.wesnoth.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -34,22 +34,22 @@ msgstr ""
 #. [brush]
 #: data/core/editor/brushes.cfg:5
 msgid "Single Hex"
-msgstr ""
+msgstr "Одиночное поле"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:15
 msgid "Radius 1 Hex"
-msgstr ""
+msgstr "Радиус 1 поле"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:25
 msgid "Radius 2 Hex"
-msgstr ""
+msgstr "Радиус 2 поля"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:55
 msgid "Hex Line NW-SE"
-msgstr ""
+msgstr "Диагональ СЗ-ЮВ"
 
 #. [editor_group]: id=all
 #: data/core/editor/terrain-groups.cfg:10
@@ -84,7 +84,7 @@ msgstr "мерзлота"
 #. [editor_group]: id=rough
 #: data/core/editor/terrain-groups.cfg:51
 msgid "rough"
-msgstr ""
+msgstr "возвышение"
 
 #. [editor_group]: id=cave
 #: data/core/editor/terrain-groups.cfg:58
@@ -104,7 +104,7 @@ msgstr "замок"
 #. [editor_group]: id=special
 #: data/core/editor/terrain-groups.cfg:79
 msgid "special"
-msgstr ""
+msgstr "особое"
 
 #. [editor_tool_hint]: id=editor-tool-paint
 #. [editor_tool_hint]: id=editor-tool-fill
@@ -116,6 +116,9 @@ msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only."
 msgstr ""
+"Используйте левую (правую) кнопку мышки, чтобы рисовать основной "
+"(дополнительный) ландшафт. Удерживайте Shift, чтобы рисовать только базовый "
+"тип местности."
 
 #. [editor_tool_hint]: id=editor-tool-select
 #. [menu]: id=select_button_editor
@@ -124,6 +127,8 @@ msgid ""
 "Left mouse button selects, right deselects. Hold Shift for magic-wand "
 "selection of tiles with same terrain."
 msgstr ""
+"Выбирайте левой кнопкой мыши, отменяйте выбор правой. Shift — «волшебная "
+"палочка», она выбирает клетки с одинаковым ландшафтом."
 
 #. [editor_tool_hint]: id=editor-tool-starting-position
 #. [menu]: id=start_position_button_editor
@@ -133,6 +138,9 @@ msgid ""
 "scroll to the starting position, alt+number sets respective starting "
 "position under cursor, delete clears."
 msgstr ""
+"Левая кнопка мышки выбирает игрока, права стирает. Цифровые клавиши "
+"перемещают к начальным позициям, Alt+цифровая клавиша устанавливает "
+"соответствующую начальную позицию под курсором, Delete стирает."
 
 #. [editor_tool_hint]: id=editor-paste
 #: data/core/editor/tool-hints.cfg:30
@@ -140,6 +148,9 @@ msgid ""
 "Click to paste, zoom out for more accuracy when pasting large areas. Use the "
 "edit menu to transform the clipboard (rotate, mirror)."
 msgstr ""
+"Кликните мышкой для вставки. Когда вставляете большие области, увеличьте "
+"масштаб для большей точности. Используйте меню «Правка», чтобы изменить "
+"(повернуть, отразить) буфер обмена."
 
 #. [menu]: id=menu-editor-file
 #: data/themes/editor2.cfg:120
@@ -154,27 +165,25 @@ msgstr "Правка"
 #. [menu]: id=menu-editor-map
 #: data/themes/editor2.cfg:141
 msgid "Map"
-msgstr ""
+msgstr "Карта"
 
 #. [menu]: id=menu-editor-window
 #: data/themes/editor2.cfg:151
-#, fuzzy
 msgid "Window"
-msgstr "Отменить"
+msgstr "Окно"
 
 #. [label]: id=villages-icon
 #: data/themes/editor2.cfg:270
-#, fuzzy
 msgid "villages"
-msgstr "деревня"
+msgstr "деревни"
 
 #: src/editor2/action.cpp:32
 msgid "Error creating action object"
-msgstr ""
+msgstr "Ошибка при создании объекта действия"
 
 #: src/editor2/action.cpp:36
 msgid "Action not implemented"
-msgstr ""
+msgstr "Еще не реализовано"
 
 #: src/editor2/editor_controller.cpp:123
 msgid "Quit Editor"
@@ -182,93 +191,96 @@ msgstr "Выход из редактора"
 
 #: src/editor2/editor_controller.cpp:275
 msgid "Fatal error"
-msgstr ""
+msgstr "Критическая ошибка"
 
 #: src/editor2/editor_controller.cpp:289 src/editor2/editor_controller.cpp:984
 msgid "(New Map)"
-msgstr ""
+msgstr "(Новая карта)"
 
 #: src/editor2/editor_controller.cpp:295
 msgid "Do you really want to quit?"
-msgstr ""
+msgstr "Действительно хотите выйти?"
 
 #: src/editor2/editor_controller.cpp:297
 msgid ""
 "Do you really want to quit? Changes in the map since the last save will be "
 "lost."
 msgstr ""
+"Действительно хотите выйти? Вы потеряете все изменения, которые внесли с "
+"последнего сохранения."
 
 #: src/editor2/editor_controller.cpp:299
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
 msgstr ""
+"Действительно хотите выйти? У вас есть несохранённые карты, все изменения в "
+"них будут утрачены:"
 
 #: src/editor2/editor_controller.cpp:304
 msgid "Quit"
-msgstr ""
+msgstr "Выйти"
 
 #: src/editor2/editor_controller.cpp:359 src/editor2/editor_controller.cpp:471
 #: src/editor2/editor_controller.cpp:507 src/editor2/editor_controller.cpp:529
 msgid "Error"
-msgstr ""
+msgstr "Ошибка"
 
 #: src/editor2/editor_controller.cpp:359
 msgid "No editor time-of-day found."
-msgstr ""
+msgstr "Редактор времени суток не найден."
 
 #: src/editor2/editor_controller.cpp:395
 msgid "Unsaved Changes"
-msgstr ""
+msgstr "Несохранённые изменения"
 
 #: src/editor2/editor_controller.cpp:396
 msgid ""
 "Do you want to discard all changes you made to the map since the last save?"
 msgstr ""
+"Вы правда хотите сбросить все изменения, которые внесли с последнего "
+"сохранения карты?"
 
 #: src/editor2/editor_controller.cpp:409
-#, fuzzy
 msgid "Choose a Map to Open"
-msgstr "Выберите карту для загрузки"
+msgstr "Выберите, какую карту открыть"
 
 #: src/editor2/editor_controller.cpp:413
 msgid "This map is already open."
-msgstr ""
+msgstr "Вы уже открыли эту карту"
 
 #: src/editor2/editor_controller.cpp:451
 msgid "Save the Map As"
 msgstr "Сохранить карту как"
 
 #: src/editor2/editor_controller.cpp:455
-#, fuzzy
 msgid "The file already exists. Do you want to overwrite it?"
-msgstr "Карта уже существует. Вы хотите перезаписать её?"
+msgstr "Файл уже существует. Хотите перезаписать?"
 
 #: src/editor2/editor_controller.cpp:471
 msgid "No random map generators found."
-msgstr ""
+msgstr "Генераторы случайных карт не найдены."
 
 #: src/editor2/editor_controller.cpp:482
 msgid "Map creation failed."
-msgstr ""
+msgstr "Не удалось создать карту."
 
 #: src/editor2/editor_controller.cpp:497
-#, fuzzy
 msgid "Choose a mask to apply"
-msgstr "Выберите карту для загрузки"
+msgstr "Выберите, какую маску применить"
 
 #: src/editor2/editor_controller.cpp:504
 msgid "Error loading mask"
-msgstr ""
+msgstr "Не удалось заглузить маску"
 
 #: src/editor2/editor_controller.cpp:519
 msgid "Choose target map"
-msgstr ""
+msgstr "Выберите целевую карту"
 
 #: src/editor2/editor_controller.cpp:526 src/editor2/editor_controller.cpp:639
 #: src/editor2/editor_main.cpp:53
 msgid "Error loading map"
-msgstr ""
+msgstr "Не удалось загрузить карту"
 
 #: src/editor2/editor_controller.cpp:615
 msgid "Map saved."
@@ -284,7 +296,7 @@ msgstr "Отменить"
 
 #: src/editor2/editor_controller.cpp:1013
 msgid "Can't Undo"
-msgstr ""
+msgstr "Нечего отменять"
 
 #: src/editor2/editor_controller.cpp:1017
 msgid "Redo"
@@ -292,11 +304,11 @@ msgstr "Повторить"
 
 #: src/editor2/editor_controller.cpp:1019
 msgid "Can't Redo"
-msgstr ""
+msgstr "Нечего повторять"
 
 #: src/editor2/editor_map.cpp:85
 msgid "Empty map file or file not found"
-msgstr ""
+msgstr "Файл карты пуст или не найден"
 
 #: src/editor2/editor_map.cpp:166 src/editor2/mouse_action.cpp:385
 msgid "Player"
@@ -304,24 +316,23 @@ msgstr "Игрок"
 
 #: src/editor2/editor_map.cpp:285
 msgid "The size of the target map is different from the current map"
-msgstr ""
+msgstr "Размер целевой карты отличается от размера текущей"
 
 #: src/editor2/editor_palettes.cpp:522
 msgid "FG"
-msgstr "Цвет"
+msgstr "ОСН"
 
 #: src/editor2/editor_palettes.cpp:524
 msgid "BG"
-msgstr "Фон"
+msgstr "ДОП"
 
 #: src/editor2/mouse_action.cpp:382
-#, fuzzy
 msgid "(Player)^None"
-msgstr "Игрок"
+msgstr "Нет"
 
 #: src/editor2/mouse_action.cpp:389
 msgid "Choose player"
-msgstr ""
+msgstr "Выберите игрока"
 
 #: src/editor2/mouse_action.cpp:390
 msgid ""
@@ -330,10 +341,14 @@ msgid ""
 "the cursor. Pressing a number key by itself will scroll to that player's "
 "starting position."
 msgstr ""
+"Какому игроку начинать отсюда? Можете использовать Alt и клавиши с цифрами, "
+"чтобы задать начальную позицию игрока, и Delete, чтобы очистить начальную "
+"позицию под курсором. Если просто нажать клавишу с цифрой, вы переместитесь "
+"к начальной позиции соответствующего игрока."
 
 #: src/gui/dialogs/editor_settings.cpp:119
 msgid "Custom setting"
-msgstr ""
+msgstr "Настройка произвольных параметров"
 
 #~ msgid "Settings"
 #~ msgstr "Настройки"
