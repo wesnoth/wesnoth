@@ -539,15 +539,31 @@ std::pair<int,map_location> unit_ability_list::lowest(const std::string& key, in
  *
  */
 
+namespace {
+	bool get_special_children(std::vector<const config*>& result, const config& parent,
+	                           const std::string& id, bool just_peeking=false) {
+		config::all_children_iterator it, it_end = parent.ordered_end();
+		for(it = parent.ordered_begin(); it != it_end; ++it) {
+			if(it.get_key() == id || it.get_child()["id"] == id) {
+				if(just_peeking) {
+					return true; // peek succeeded, abort
+				} else {
+					result.push_back(it->second);
+				}
+			}
+		}
+		return false;
+	}
+}
 
 bool attack_type::get_special_bool(const std::string& special,bool force) const
 {
 //	log_scope("get_special_bool");
 	const config* specials = cfg_.child("specials");
 	if(specials) {
-		const config::child_list& list = specials->get_children(special);
-		if (!list.empty() && force) return true;
-		for (config::child_list::const_iterator i = list.begin(),
+		std::vector<const config*> list;
+		if (get_special_children(list, *specials, special, force)) return true;
+		for (std::vector<const config*>::iterator i = list.begin(),
 		     i_end = list.end(); i != i_end; ++i) {
 			if (special_active(**i, true))
 				return true;
@@ -556,8 +572,9 @@ bool attack_type::get_special_bool(const std::string& special,bool force) const
 	if (force || !other_attack_) return false;
 	specials = other_attack_->cfg_.child("specials");
 	if (specials) {
-		const config::child_list& list = specials->get_children(special);
-		for (config::child_list::const_iterator i = list.begin(),
+		std::vector<const config*> list;
+		get_special_children(list, *specials, special);
+		for (std::vector<const config*>::iterator i = list.begin(),
 		     i_end = list.end(); i != i_end; ++i) {
 			if (other_attack_->special_active(**i, false))
 				return true;

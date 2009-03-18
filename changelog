@@ -12,6 +12,7 @@ Version 1.5.14+svn:
    * Increase the map size limit to 1000 by 1000
    * Added an 'always_display' key to [advancement] to make it possible to show
      the advance dialog even with just one option.
+   * weapon filters now recognize the id= attribute of specials (bug #13193)
  * Miscellaneous and bug fixes:
    * Fixed bug #13204: NR: Death event doesn't re-spawn Malifor as expected
    * Fixed bug #13198: Corrupt replay in MP
