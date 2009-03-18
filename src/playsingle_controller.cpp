@@ -267,7 +267,8 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 	}
 
 	victory_conditions::set_victory_when_enemies_defeated(
-						level_["victory_when_enemies_defeated"] != "no");
+		utils::string_bool(level_["victory_when_enemies_defeated"], true)
+	);
 	victory_conditions::set_carryover_percentage(
 		lexical_cast_default<int>(level_["carryover_percentage"],
 		game_config::gold_carryover_percentage));

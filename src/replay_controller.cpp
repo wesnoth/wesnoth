@@ -99,7 +99,8 @@ void replay_controller::init(){
 	init_gui();
 	statistics::fresh_stats();
 	victory_conditions::set_victory_when_enemies_defeated(
-						level_["victory_when_enemies_defeated"] != "no");
+		utils::string_bool(level_["victory_when_enemies_defeated"], true)
+	);
 
 	DBG_REPLAY << "first_time..." << (recorder.is_skipping() ? "skipping" : "no skip") << "\n";
 
