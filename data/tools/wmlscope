@@ -357,122 +357,125 @@ Usage: macroscope [options] dirpath
    directories are given, all files under the current directory are checked.
 """)
 
-    # Process options
-    (options, arguments) = getopt.getopt(sys.argv[1:], "cCdhe:f:lr:t:uw:",
-                                         [
-                                          'crossreference',
-                                          'collisions',
-                                          'definitions',
-                                          'exclude=',
-                                          'extracthelp',
-                                          'force-used=',
-                                          'from=',
-        				  'help',
-                                          'listfiles',
-                                          'refcount=',
-                                          'typelist=',
-                                          'unchecked',
-                                          'unresolved',
-                                          'warnlevel=',
-                                          ])
-    crossreference = definitions = listfiles = unresolved = extracthelp = False
-    from_restrict = None
-    refcount_restrict = None
-    forceused = []
-    exclude = []
-    warnlevel = 0
-    collisions = False
-    typelist = None
-    unchecked = False
-    for (switch, val) in options:
-        if switch in ('-h', '--help'):
-            help()
-            sys.exit(0)
-        if switch in ('-f', '--from'):
-            from_restrict = val
-        elif switch in ('-c', '--crossreference'):
-            crossreference = True
-            warnlevel = 1
-        elif switch in ('-C', '--collisions'):
-            collisions = True
-        elif switch in ('-d', '--definitions'):
-            definitions = True
-        elif switch in ('-e', '--exclude'):
-            exclude.append(val)
-        elif switch == '--extracthelp':
-            extracthelp = True
-        elif switch == '--force-used':
-            forceused.append(val)
-        elif switch in ('-l', '--listfiles'):
-            listfiles = True
-        elif switch in ('-r', '--refcount'):
-            refcount_restrict = int(val)
-        elif switch == '--unchecked':
-            unchecked = True
-        elif switch in ('-t', '--typelist'):
-            typelist = val
-        elif switch in ('-u', '--unresolved'):
-            unresolved = True
-        elif switch in ('-w', '--warnlevel'):
-            warnlevel = int(val)
+    try:
+        # Process options
+        (options, arguments) = getopt.getopt(sys.argv[1:], "cCdhe:f:lr:t:uw:",
+                                             [
+                                              'crossreference',
+                                              'collisions',
+                                              'definitions',
+                                              'exclude=',
+                                              'extracthelp',
+                                              'force-used=',
+                                              'from=',
+                                              'help',
+                                              'listfiles',
+                                              'refcount=',
+                                              'typelist=',
+                                              'unchecked',
+                                              'unresolved',
+                                              'warnlevel=',
+                                              ])
+        crossreference = definitions = listfiles = unresolved = extracthelp = False
+        from_restrict = None
+        refcount_restrict = None
+        forceused = []
+        exclude = []
+        warnlevel = 0
+        collisions = False
+        typelist = None
+        unchecked = False
+        for (switch, val) in options:
+            if switch in ('-h', '--help'):
+                help()
+                sys.exit(0)
+            if switch in ('-f', '--from'):
+                from_restrict = val
+            elif switch in ('-c', '--crossreference'):
+                crossreference = True
+                warnlevel = 1
+            elif switch in ('-C', '--collisions'):
+                collisions = True
+            elif switch in ('-d', '--definitions'):
+                definitions = True
+            elif switch in ('-e', '--exclude'):
+                exclude.append(val)
+            elif switch == '--extracthelp':
+                extracthelp = True
+            elif switch == '--force-used':
+                forceused.append(val)
+            elif switch in ('-l', '--listfiles'):
+                listfiles = True
+            elif switch in ('-r', '--refcount'):
+                refcount_restrict = int(val)
+            elif switch == '--unchecked':
+                unchecked = True
+            elif switch in ('-t', '--typelist'):
+                typelist = val
+            elif switch in ('-u', '--unresolved'):
+                unresolved = True
+            elif switch in ('-w', '--warnlevel'):
+                warnlevel = int(val)
 
-    forceused = "|".join(forceused)
-    if len(arguments):
-        dirpath = arguments
-    else:
-        dirpath = ['.']
-    if not extracthelp:
-        print "# Wmlscope reporting on %s" % time.ctime()
-        print "# Invocation: %s" % " ".join(sys.argv)
-        print "# Working directory: %s" % os.getcwd()
-    xref = CrossRefLister(dirpath, "|".join(exclude), warnlevel)
-    if extracthelp:
-        xref.extracthelp(dirpath[0], sys.stdout)
-    elif unchecked:
-        xref.unchecked(sys.stdout)
-    elif listfiles:
-        for (namespace, filename) in xref.filelist.generator():
-            print filename
-    if collisions:
-        collisions = []
-        for (namespace, filename) in xref.filelist.generator():
-            ifp = open(filename)
-            collisions.append(md5.new(ifp.read()).digest())
-            ifp.close()
-        collisions = zip(xref.filelist.flatten(), collisions)
-        hashcounts = {}
-        for (n, h) in collisions:
-            hashcounts[h] = hashcounts.get(h, 0) + 1
-        collisions = filter(lambda (n, h): hashcounts[h] > 1, collisions)
-        collisions.sort(lambda (n1, h1), (n2, h2): cmp(h1, h2))
-        lasthash = None
-        for (n, h) in collisions:
-            if h != lasthash:
-                print "%%"
-                lasthash = h
-            print n
-        xref.duplicates(exportonly=False)
-    elif typelist:
-        xref.typelist(typelist)
-    elif crossreference or definitions or listfiles or unresolved:
-        def predicate(name, defloc):
-            if from_restrict and not re.search(from_restrict, defloc.filename):
-                return False
-            if refcount_restrict!=None \
-                   and len(defloc.references) != refcount_restrict \
-                   or (refcount_restrict == 0 and forceused and re.search(forceused, name)):
-                return False
-            return True
-        if crossreference:
-            if xref.noxref:
-                print >>sys.stderr, "macroscope: can't make cross-reference, input included a definitions file."
-            else:
-                xref.xrefdump(predicate)
-        if definitions:
-            xref.deflist(predicate)
-        if unresolved:
-            #xref.undersized()
-            xref.unresdump()
-            xref.duplicates(exportonly=True)
+        forceused = "|".join(forceused)
+        if len(arguments):
+            dirpath = arguments
+        else:
+            dirpath = ['.']
+        if not extracthelp:
+            print "# Wmlscope reporting on %s" % time.ctime()
+            print "# Invocation: %s" % " ".join(sys.argv)
+            print "# Working directory: %s" % os.getcwd()
+        xref = CrossRefLister(dirpath, "|".join(exclude), warnlevel)
+        if extracthelp:
+            xref.extracthelp(dirpath[0], sys.stdout)
+        elif unchecked:
+            xref.unchecked(sys.stdout)
+        elif listfiles:
+            for (namespace, filename) in xref.filelist.generator():
+                print filename
+        if collisions:
+            collisions = []
+            for (namespace, filename) in xref.filelist.generator():
+                ifp = open(filename)
+                collisions.append(md5.new(ifp.read()).digest())
+                ifp.close()
+            collisions = zip(xref.filelist.flatten(), collisions)
+            hashcounts = {}
+            for (n, h) in collisions:
+                hashcounts[h] = hashcounts.get(h, 0) + 1
+            collisions = filter(lambda (n, h): hashcounts[h] > 1, collisions)
+            collisions.sort(lambda (n1, h1), (n2, h2): cmp(h1, h2))
+            lasthash = None
+            for (n, h) in collisions:
+                if h != lasthash:
+                    print "%%"
+                    lasthash = h
+                print n
+            xref.duplicates(exportonly=False)
+        elif typelist:
+            xref.typelist(typelist)
+        elif crossreference or definitions or listfiles or unresolved:
+            def predicate(name, defloc):
+                if from_restrict and not re.search(from_restrict, defloc.filename):
+                    return False
+                if refcount_restrict!=None \
+                       and len(defloc.references) != refcount_restrict \
+                       or (refcount_restrict == 0 and forceused and re.search(forceused, name)):
+                    return False
+                return True
+            if crossreference:
+                if xref.noxref:
+                    print >>sys.stderr, "macroscope: can't make cross-reference, input included a definitions file."
+                else:
+                    xref.xrefdump(predicate)
+            if definitions:
+                xref.deflist(predicate)
+            if unresolved:
+                #xref.undersized()
+                xref.unresdump()
+                xref.duplicates(exportonly=True)
+    except:
+        print >>sys.stderr, "wmlscope: aborted."
     
 # wmlscope ends here
