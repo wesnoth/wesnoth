@@ -149,8 +149,8 @@ void twindow::update_screen_size()
 
 		game_display* display = game_display::get_singleton();
 		if(display) {
-			settings::gamemap_width = display->map_area().w;
-			settings::gamemap_height = display->map_area().h;
+			settings::gamemap_width = display->map_outside_area().w;
+			settings::gamemap_height = display->map_outside_area().h;
 		} else {
 			settings::gamemap_width = settings::screen_width;
 			settings::gamemap_height = settings::screen_height;
