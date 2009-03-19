@@ -277,7 +277,6 @@ static server_type open_connection(game_display& disp, const std::string& origin
 									md5_worker.finalize();
 									output =  md5_worker.raw_digest();
 								} while (--hash_seed);
-								temp_hash = std::string((char *) output, (char *) output + 16);
 
 								// Now encode the resulting mix
 								std::string encoded_hash;
