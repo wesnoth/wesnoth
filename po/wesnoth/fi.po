@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-03-18 17:28+0100\n"
+"POT-Creation-Date: 2009-03-20 00:45+0100\n"
 "PO-Revision-Date: 2009-03-18 17:58+0200\n"
 "Last-Translator: Samu Voutilainen <samu.voutilainen@gmail.com>\n"
 "Language-Team: Finnish\n"
@@ -7176,7 +7176,7 @@ msgid "Do you still want to download it?"
 msgstr "Haluatko silti ladata sen?"
 
 #: src/addon_management.cpp:468 src/addon_management.cpp:542
-#: src/multiplayer.cpp:207 src/multiplayer.cpp:325 src/multiplayer_ui.cpp:68
+#: src/multiplayer.cpp:207 src/multiplayer.cpp:324 src/multiplayer_ui.cpp:68
 msgid "Connection timed out"
 msgstr "Yhteys katkaistiin odotuksen jälkeen."
 
@@ -8699,15 +8699,15 @@ msgstr ""
 msgid "Server-side redirect loop"
 msgstr "Palvelinpuolen uudelleenohjaussilmukka"
 
-#: src/multiplayer.cpp:348
+#: src/multiplayer.cpp:347
 msgid "You must login first."
 msgstr "Sinun täytyy ensin sisäänkirjautua."
 
-#: src/multiplayer.cpp:350
+#: src/multiplayer.cpp:349
 msgid "The nick '$nick' is already taken."
 msgstr "Nimimerkki ”$nick” on jo käytössä."
 
-#: src/multiplayer.cpp:352
+#: src/multiplayer.cpp:351
 msgid ""
 "The nick '$nick' contains invalid characters. Only alpha-numeric characters, "
 "underscores and hyphens are allowed."
@@ -8715,22 +8715,31 @@ msgstr ""
 "Nimimerkissä ”$nick” on epäkelpoja merkkejä. Nimimerkissä voi olla vain "
 "kirjaimia, numeroita, alaviivoja ja tavuviivoja."
 
-#: src/multiplayer.cpp:356
+#: src/multiplayer.cpp:355
 msgid "The nick '$nick' is too long. Nicks must be 18 characters or less."
 msgstr ""
 "Nimimerkki ”$nick” on liian pitkä. Nimimerkin pituuden täytyy olla 18 "
 "merkkiä tai vähemmän."
 
-#: src/multiplayer.cpp:359
+#: src/multiplayer.cpp:358
 msgid "The nick '$nick' is reserved and cannot be used by players."
 msgstr ""
 "Nimimerkki ”$nick” on varattu, eikä sitä voida käyttää pelaajien toimesta."
 
-#: src/multiplayer.cpp:364 src/multiplayer.cpp:366
+#: src/multiplayer.cpp:360
+#, fuzzy
+msgid "The nick '$nick' is not registered on this server."
+msgstr "Nimimerkki ”$nick” on rekisteröity tällä palvelimella."
+
+#: src/multiplayer.cpp:361
+msgid " This server disallows unregistered nicks."
+msgstr ""
+
+#: src/multiplayer.cpp:363 src/multiplayer.cpp:365
 msgid "The nick '$nick' is registered on this server."
 msgstr "Nimimerkki ”$nick” on rekisteröity tällä palvelimella."
 
-#: src/multiplayer.cpp:367
+#: src/multiplayer.cpp:366
 msgid ""
 "WARNING: There is already a client using this nick, logging in will cause "
 "that client to be kicked!"
@@ -8738,14 +8747,14 @@ msgstr ""
 "VAROITUS: Paikalla on jo yksi klientti tällä nimimerkillä, "
 "sisäänkirjautuminen aiheuttaa tämän klientin ulospotkimisen."
 
-#: src/multiplayer.cpp:370
+#: src/multiplayer.cpp:369
 msgid ""
 "Error in the login procedure (the server had no seed for your connection)."
 msgstr ""
 "Virhe sisäänkirjautumisprosessissa (palvelimella ei ole esiastetta "
 "yhteydellesi)."
 
-#: src/multiplayer.cpp:373
+#: src/multiplayer.cpp:372
 msgid "The password you provided was incorrect."
 msgstr "Antamasi salasana on väärä."
 

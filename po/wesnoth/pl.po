@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-03-18 17:28+0100\n"
+"POT-Creation-Date: 2009-03-20 00:45+0100\n"
 "PO-Revision-Date: 2009-03-13 19:37+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team:  <z.banach@wsisiz.edu.pl>\n"
@@ -7198,7 +7198,7 @@ msgid "Do you still want to download it?"
 msgstr "Czy nadal chcesz go pobrać?"
 
 #: src/addon_management.cpp:468 src/addon_management.cpp:542
-#: src/multiplayer.cpp:207 src/multiplayer.cpp:325 src/multiplayer_ui.cpp:68
+#: src/multiplayer.cpp:207 src/multiplayer.cpp:324 src/multiplayer_ui.cpp:68
 msgid "Connection timed out"
 msgstr "Minął czas oczekiwania na połączenie"
 
@@ -8743,15 +8743,15 @@ msgstr "Serwer wymaga wersji '$version1', a twoja to '$version2'"
 msgid "Server-side redirect loop"
 msgstr "Pętla przekierowania po stronie serwera"
 
-#: src/multiplayer.cpp:348
+#: src/multiplayer.cpp:347
 msgid "You must login first."
 msgstr "Musisz się najpierw zalogować."
 
-#: src/multiplayer.cpp:350
+#: src/multiplayer.cpp:349
 msgid "The nick '$nick' is already taken."
 msgstr "Pseudonim \"$nick\" jest już zajęty."
 
-#: src/multiplayer.cpp:352
+#: src/multiplayer.cpp:351
 msgid ""
 "The nick '$nick' contains invalid characters. Only alpha-numeric characters, "
 "underscores and hyphens are allowed."
@@ -8759,21 +8759,30 @@ msgstr ""
 "Pseudonim \"$nick\" zawiera niedozwolone znaki. Dozwolone są tylko litery, "
 "cyfry, podkreślenia i myślniki."
 
-#: src/multiplayer.cpp:356
+#: src/multiplayer.cpp:355
 msgid "The nick '$nick' is too long. Nicks must be 18 characters or less."
 msgstr ""
 "Pseudonim \"$nick\" jest za długi. Pseudonim może mieć maksymalnie 18 znaków."
 
-#: src/multiplayer.cpp:359
+#: src/multiplayer.cpp:358
 msgid "The nick '$nick' is reserved and cannot be used by players."
 msgstr ""
 "Pseudonim \"$nick\" jest zarezerwowany i nie może być używany przez graczy."
 
-#: src/multiplayer.cpp:364 src/multiplayer.cpp:366
+#: src/multiplayer.cpp:360
+#, fuzzy
+msgid "The nick '$nick' is not registered on this server."
+msgstr "Pseudonim \"$nick\" jest zarejestrowany na tym serwerze."
+
+#: src/multiplayer.cpp:361
+msgid " This server disallows unregistered nicks."
+msgstr ""
+
+#: src/multiplayer.cpp:363 src/multiplayer.cpp:365
 msgid "The nick '$nick' is registered on this server."
 msgstr "Pseudonim \"$nick\" jest zarejestrowany na tym serwerze."
 
-#: src/multiplayer.cpp:367
+#: src/multiplayer.cpp:366
 msgid ""
 "WARNING: There is already a client using this nick, logging in will cause "
 "that client to be kicked!"
@@ -8781,12 +8790,12 @@ msgstr ""
 "OSTRZEŻENIE: Ten pseudonim jest już używany przez innego klienta. "
 "Zalogowanie spowoduje wyrzucenie tego klienta!"
 
-#: src/multiplayer.cpp:370
+#: src/multiplayer.cpp:369
 msgid ""
 "Error in the login procedure (the server had no seed for your connection)."
 msgstr "Błąd logowania (serwer nie mógł przydzielić połączenia)."
 
-#: src/multiplayer.cpp:373
+#: src/multiplayer.cpp:372
 msgid "The password you provided was incorrect."
 msgstr "Podane hasło jest nieprawidłowe."
 

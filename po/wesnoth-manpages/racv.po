@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
-"POT-Creation-Date: 2009-03-05 10:12+0100\n"
+"POT-Creation-Date: 2009-03-20 00:47+0100\n"
 "PO-Revision-Date: 2008-03-23 22:08+0100\n"
 "Last-Translator: Mavorte <mavorte1@yahoo.es>\n"
 "Language-Team: Valencian\n"
@@ -647,7 +647,7 @@ msgstr ""
 "estableix el número de tandes per al escenari triat. Per defecte és B<50>."
 
 # type: SH
-#: ../../doc/man/wesnoth.6:232 ../../doc/man/wesnothd.6:188
+#: ../../doc/man/wesnoth.6:232 ../../doc/man/wesnothd.6:242
 #, no-wrap
 msgid "AUTHOR"
 msgstr "AUTOR"
@@ -676,24 +676,24 @@ msgstr ""
 "E<lt>cyril@bouthors.orgE<gt>."
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:241 ../../doc/man/wesnothd.6:195
+#: ../../doc/man/wesnoth.6:241 ../../doc/man/wesnothd.6:249
 msgid "Visit the official homepage: http://www.wesnoth.org/"
 msgstr "Visite la pàgina web oficial: http://www.wesnoth.org/"
 
 # type: SH
-#: ../../doc/man/wesnoth.6:242 ../../doc/man/wesnothd.6:196
+#: ../../doc/man/wesnoth.6:242 ../../doc/man/wesnothd.6:250
 #, no-wrap
 msgid "COPYRIGHT"
 msgstr "COPYRIGHT"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:245 ../../doc/man/wesnothd.6:199
+#: ../../doc/man/wesnoth.6:245 ../../doc/man/wesnothd.6:253
 msgid "Copyright \\(co 2003-2007 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr ""
 "Copyright \\(co 2003-2007 David White E<lt>davidnwhite@verizon.netE<gt>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:248 ../../doc/man/wesnothd.6:202
+#: ../../doc/man/wesnoth.6:248 ../../doc/man/wesnothd.6:256
 msgid ""
 "This is Free Software; this software is licensed under the GPL version 2, as "
 "published by the Free Software Foundation.  There is NO warranty; not even "
@@ -705,7 +705,7 @@ msgstr ""
 "PARTICULAR."
 
 # type: SH
-#: ../../doc/man/wesnoth.6:249 ../../doc/man/wesnothd.6:203
+#: ../../doc/man/wesnoth.6:249 ../../doc/man/wesnothd.6:257
 #, no-wrap
 msgid "SEE ALSO"
 msgstr "VEJA'S TAMBÉ"
@@ -1067,14 +1067,30 @@ msgid "Example: B<versions_accepted=\"*\"> accepts any version string."
 msgstr ""
 "Eixemple:  B<versions_accepted=\"*\"> acepta qualsevol cadena de versió."
 
+# type: TP
+#: ../../doc/man/wesnothd.6:149
+#, no-wrap
+msgid "B<user_handler>"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:154
+msgid ""
+"The name of the user handler to use. Currently available user handlers are "
+"'forum' (to connect wesnothd to a phpbb forum database) and 'sample' (a "
+"sample implementation of the user handler interface, if you use this on "
+"anything real you are insane). The default value is 'forum'. You must also "
+"add a B<[user_handler]> section, see below."
+msgstr ""
+
 # type: SS
-#: ../../doc/man/wesnothd.6:150
+#: ../../doc/man/wesnothd.6:155
 #, no-wrap
 msgid "Global tags:"
 msgstr "Etiquetes globals:"
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:155
+#: ../../doc/man/wesnothd.6:160
 msgid ""
 "B<[redirect]> A tag to specify a server to redirect certain client versions "
 "to."
@@ -1083,35 +1099,35 @@ msgstr ""
 "redirigiràn certes versions de clients."
 
 # type: TP
-#: ../../doc/man/wesnothd.6:156
+#: ../../doc/man/wesnothd.6:161
 #, no-wrap
 msgid "B<host>"
 msgstr "B<host>"
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:159
+#: ../../doc/man/wesnothd.6:164
 msgid "The address of the server to redirect to."
 msgstr "La direcció del servidor cap al que es farà la redirecció."
 
 # type: TP
-#: ../../doc/man/wesnothd.6:159
+#: ../../doc/man/wesnothd.6:164
 #, no-wrap
 msgid "B<port>"
 msgstr "B<port>"
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:162
+#: ../../doc/man/wesnothd.6:167
 msgid "The port to connect to."
 msgstr "El port al que es fará la conexió."
 
 # type: TP
-#: ../../doc/man/wesnothd.6:162
+#: ../../doc/man/wesnothd.6:167
 #, no-wrap
 msgid "B<version>"
 msgstr "B<version>"
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:167
+#: ../../doc/man/wesnothd.6:172
 msgid ""
 "A comma separated list of versions to redirect. Behaves the same way as "
 "B<versions_accepted> in regard to wildcard patterns."
@@ -1120,31 +1136,31 @@ msgstr ""
 "sintaxis que per a B<versions_accepted> respecte als comodins."
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:171
+#: ../../doc/man/wesnothd.6:176
 msgid ""
 "B<[ban_time]> A tag to define convenient keywords for temporary ban time "
 "lengths."
 msgstr ""
 
 # type: TP
-#: ../../doc/man/wesnothd.6:172
+#: ../../doc/man/wesnothd.6:177
 #, fuzzy, no-wrap
 msgid "B<name>"
 msgstr "B<--nocache>"
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:175
+#: ../../doc/man/wesnothd.6:180
 msgid "The name used to reference the ban time."
 msgstr ""
 
 # type: TP
-#: ../../doc/man/wesnothd.6:175
+#: ../../doc/man/wesnothd.6:180
 #, no-wrap
 msgid "B<time>"
 msgstr ""
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:181
+#: ../../doc/man/wesnothd.6:186
 msgid ""
 "The time length definition.  The format is: %d[%s[%d%s[...]]] where %s is s "
 "(seconds), m (minutes), h (hours), D (days), M (months) or Y (years) and %d "
@@ -1154,7 +1170,7 @@ msgid ""
 msgstr ""
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:187
+#: ../../doc/man/wesnothd.6:192
 #, fuzzy
 msgid ""
 "B<[proxy]> A tag to tell the server to act as a proxy and forward the "
@@ -1166,12 +1182,174 @@ msgstr ""
 "Acepta les mateixes claus que B<[redirect]>."
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:193
+#: ../../doc/man/wesnothd.6:198
+msgid ""
+"B<[user_handler]> Configures the user handler. Available keys vary depending "
+"on which user handler is set with the B<user_handler> key. If no "
+"[user_handler] section is present in the configuration the server will run "
+"without any nick registration service."
+msgstr ""
+
+# type: TP
+#: ../../doc/man/wesnothd.6:199
+#, fuzzy, no-wrap
+msgid "B<db_host>"
+msgstr "B<host>"
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:202
+msgid "(for user_handler=forum) The hostname of the database server"
+msgstr ""
+
+# type: TP
+#: ../../doc/man/wesnothd.6:202
+#, fuzzy, no-wrap
+msgid "B<db_name>"
+msgstr "B<--nocache>"
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:205
+msgid "(for user_handler=forum) The name of the database"
+msgstr ""
+
+# type: TP
+#: ../../doc/man/wesnothd.6:205
+#, no-wrap
+msgid "B<db_user>"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:208
+msgid ""
+"(for user_handler=forum) The name of the user under which to log into the "
+"database"
+msgstr ""
+
+# type: TP
+#: ../../doc/man/wesnothd.6:208
+#, fuzzy, no-wrap
+msgid "B<db_password>"
+msgstr "B<passwd>"
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:211
+msgid "(for user_handler=forum) This user's password"
+msgstr ""
+
+# type: TP
+#: ../../doc/man/wesnothd.6:211
+#, no-wrap
+msgid "B<db_users_table>"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:214
+msgid ""
+"(for user_handler=forum) The name of the table in which your phpbb forums "
+"saves its user data. Most likely this will be E<lt>table-prefixE<gt>_users "
+"(e.g. phpbb3_users)."
+msgstr ""
+
+# type: TP
+#: ../../doc/man/wesnothd.6:214
+#, no-wrap
+msgid "B<db_extra_table>"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:218
+msgid ""
+"(for user_handler=forum) The name of the table in which wesnothd will save "
+"its own data about users. You will have to create this table manually, e.g.: "
+"CREATE TABLE E<lt>table-nameE<gt>(username VARCHAR(255) PRIMARY KEY, "
+"user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4) "
+"NOT NULL DEFAULT 0);"
+msgstr ""
+
+# type: TP
+#: ../../doc/man/wesnothd.6:218
+#, no-wrap
+msgid "B<user_expiration>"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:221
+msgid ""
+"(for user_handler=sample) The time after which a registered nick expires (in "
+"days)."
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:225
+msgid ""
+"B<[mail]> Configures an SMTP server through which the user handler can send "
+"mail. Currently only used by the sample user handler."
+msgstr ""
+
+# type: TP
+#: ../../doc/man/wesnothd.6:226
+#, fuzzy, no-wrap
+msgid "B<server>"
+msgstr "B<version>"
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:229
+msgid "The hostname of the mail server"
+msgstr ""
+
+# type: TP
+#: ../../doc/man/wesnothd.6:229
+#, fuzzy, no-wrap
+msgid "B<username>"
+msgstr "B<--nocache>"
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:232
+msgid "The user name under which to log into the mail server."
+msgstr ""
+
+# type: TP
+#: ../../doc/man/wesnothd.6:232
+#, fuzzy, no-wrap
+msgid "B<password>"
+msgstr "B<passwd>"
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:235
+msgid "This user's password."
+msgstr ""
+
+# type: TP
+#: ../../doc/man/wesnothd.6:235
+#, no-wrap
+msgid "B<from_address>"
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:238
+msgid "The reply-to address of you mail."
+msgstr ""
+
+# type: TP
+#: ../../doc/man/wesnothd.6:238
+#, fuzzy, no-wrap
+msgid "B<mail_port>"
+msgstr "B<port>"
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:241
+msgid "The port on which your mail server is running. Default is 25."
+msgstr ""
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:247
+#, fuzzy
 msgid ""
 "Written by David White E<lt>davidnwhite@verizon.netE<gt>.  Edited by Nils "
-"Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt> and "
-"Soliton E<lt>soliton.de@gmail.comE<gt>.  This manual page was originally "
-"written by Cyril Bouthors E<lt>cyril@bouthors.orgE<gt>."
+"Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt>, "
+"Soliton E<lt>soliton.de@gmail.comE<gt> and Thomas Baumhauer E<lt>thomas."
+"baumhauer@gmail.comE<gt>.  This manual page was originally written by Cyril "
+"Bouthors E<lt>cyril@bouthors.orgE<gt>."
 msgstr ""
 "Escrit per David White E<lt>davidnwhite@verizon.netE<gt>.  Editat per Nils "
 "Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt> i "
@@ -1179,7 +1357,7 @@ msgstr ""
 "escrita inicialment per Cyril Bouthors E<lt>cyril@bouthors.orgE<gt>."
 
 # type: Plain text
-#: ../../doc/man/wesnothd.6:206
+#: ../../doc/man/wesnothd.6:260
 msgid "B<wesnoth>(6), B<wesnoth_editor>(6)"
 msgstr "B<wesnoth>(6), B<wesnoth_editor>(6)"
 

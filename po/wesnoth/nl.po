@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-03-18 17:28+0100\n"
+"POT-Creation-Date: 2009-03-20 00:45+0100\n"
 "PO-Revision-Date: 2009-03-11 17:15+0100\n"
 "Last-Translator: Alexander van Gessel (AI/AI0867) <AI0867@gmail.com>\n"
 "Language-Team: Dutch translation <foppe.benedictus@gmail.com>\n"
@@ -7162,7 +7162,7 @@ msgid "Do you still want to download it?"
 msgstr "Wilt je het nog steeds downloaden?"
 
 #: src/addon_management.cpp:468 src/addon_management.cpp:542
-#: src/multiplayer.cpp:207 src/multiplayer.cpp:325 src/multiplayer_ui.cpp:68
+#: src/multiplayer.cpp:207 src/multiplayer.cpp:324 src/multiplayer_ui.cpp:68
 msgid "Connection timed out"
 msgstr "Connectie timed out"
 
@@ -8688,15 +8688,15 @@ msgstr "De server vereist versie '$version1'. Jij hebt versie '$version2'."
 msgid "Server-side redirect loop"
 msgstr "Server-side verwijzingslus"
 
-#: src/multiplayer.cpp:348
+#: src/multiplayer.cpp:347
 msgid "You must login first."
 msgstr "Je moet eerst inloggen."
 
-#: src/multiplayer.cpp:350
+#: src/multiplayer.cpp:349
 msgid "The nick '$nick' is already taken."
 msgstr "De bijnaam '$nick' is al in gebruik."
 
-#: src/multiplayer.cpp:352
+#: src/multiplayer.cpp:351
 msgid ""
 "The nick '$nick' contains invalid characters. Only alpha-numeric characters, "
 "underscores and hyphens are allowed."
@@ -8704,21 +8704,30 @@ msgstr ""
 "De bijnaam '$nick' bevat ongeldige karakters. Alleen alpha-numerieke "
 "karakters, underscores ('_') en hyphens ('-') zijn toegestaan."
 
-#: src/multiplayer.cpp:356
+#: src/multiplayer.cpp:355
 msgid "The nick '$nick' is too long. Nicks must be 18 characters or less."
 msgstr ""
 "De bijnaam '$nick' is te lang. Bijnamen moeten 18 karakters of minder zijn."
 
-#: src/multiplayer.cpp:359
+#: src/multiplayer.cpp:358
 msgid "The nick '$nick' is reserved and cannot be used by players."
 msgstr ""
 "De bijnaam '$nick' is gereserveerd en kan niet door spelers worden gebruikt."
 
-#: src/multiplayer.cpp:364 src/multiplayer.cpp:366
+#: src/multiplayer.cpp:360
+#, fuzzy
+msgid "The nick '$nick' is not registered on this server."
+msgstr "De bijnaam '$nick' is geregistreerd op deze server."
+
+#: src/multiplayer.cpp:361
+msgid " This server disallows unregistered nicks."
+msgstr ""
+
+#: src/multiplayer.cpp:363 src/multiplayer.cpp:365
 msgid "The nick '$nick' is registered on this server."
 msgstr "De bijnaam '$nick' is geregistreerd op deze server."
 
-#: src/multiplayer.cpp:367
+#: src/multiplayer.cpp:366
 msgid ""
 "WARNING: There is already a client using this nick, logging in will cause "
 "that client to be kicked!"
@@ -8726,13 +8735,13 @@ msgstr ""
 "WAARSCHUWING: Er is al een gebruiker met deze bijnaam, inloggen zal deze van "
 "de server verwijderen!"
 
-#: src/multiplayer.cpp:370
+#: src/multiplayer.cpp:369
 msgid ""
 "Error in the login procedure (the server had no seed for your connection)."
 msgstr ""
 "Fout in de login procedure. (de server had geen bron voor jouw verbinding)"
 
-#: src/multiplayer.cpp:373
+#: src/multiplayer.cpp:372
 msgid "The password you provided was incorrect."
 msgstr "Het wachtwoord dat je hebt ingevuld was niet correct."
 
