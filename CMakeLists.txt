@@ -30,12 +30,6 @@ find_package( PythonInterp 2.4 )
 find_package( PythonCustom )
 find_package( X11 )
 
-#use pkg-config to find pangocairo:
-pkg_check_modules( PANGOCAIRO REQUIRED pangocairo>=1.14.8 )
-
-#use pkg-config to find fontconfig:
-pkg_check_modules( FONTCONFIG REQUIRED fontconfig>=2.4.1 )
-
 #needed to get some SDL defines in... (as of rev31694 -D_GNU_SOURCE=1 is required!)
 set(SDL_CONFIG "sdl-config" CACHE STRING "Path to sdl-config script")
 exec_program(${SDL_CONFIG} ARGS "--cflags" OUTPUT_VARIABLE SDL_CFLAGS)
@@ -142,21 +136,27 @@ endif(ENABLE_LOW_MEM)
 
 if(ENABLE_TOOLS OR ENABLE_GAME OR ENABLE_TESTS)
   find_package( SDL_image 1.2 REQUIRED )
-endif()
+endif(ENABLE_TOOLS OR ENABLE_GAME OR ENABLE_TESTS)
 if(ENABLE_GAME OR ENABLE_TESTS)
   find_package( SDL_mixer 1.2 REQUIRED )
   find_package( SDL_ttf 2.0.8 REQUIRED )
-endif()
+endif(ENABLE_GAME OR ENABLE_TESTS)
 if(ENABLE_GAME OR ENABLE_SERVER OR ENABLE_CAMPAIGN_SERVER OR ENABLE_TESTS)
   find_package( SDL_net REQUIRED )
-endif()
+endif(ENABLE_GAME OR ENABLE_SERVER OR ENABLE_CAMPAIGN_SERVER OR ENABLE_TESTS)
 if(ENABLE_TOOLS)
   find_package( ZLIB REQUIRED )
   find_package( PNG REQUIRED )
-endif()
+endif(ENABLE_TOOLS)
 if(ENABLE_TESTS)
 	find_package( Boost 1.33 REQUIRED COMPONENTS unit_test_framework )
-endif()
+endif(ENABLE_TESTS)
+if(ENABLE_GAME)
+	#use pkg-config to find pangocairo:
+	pkg_check_modules( PANGOCAIRO REQUIRED pangocairo>=1.14.8 )
+	#use pkg-config to find fontconfig:
+	pkg_check_modules( FONTCONFIG REQUIRED fontconfig>=2.4.1 )
+endif(ENABLE_GAME)
 
 # get languages
 file(READ po/LINGUAS LINGUAS)
