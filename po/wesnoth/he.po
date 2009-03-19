@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-03-18 17:28+0100\n"
-"PO-Revision-Date: 2009-03-13 14:36+0200\n"
+"PO-Revision-Date: 2009-03-21 00:33+0200\n"
 "Last-Translator: Ariel Ben-Yehuda <ariel.bys@gmail.com>\n"
 "Language-Team: Hebrew\n"
 "MIME-Version: 1.0\n"
@@ -7365,7 +7365,7 @@ msgstr "אין לך יחידות זמינות לגיוס."
 
 #: src/menu_events.cpp:893
 msgid "Recruit"
-msgstr "גיוס"
+msgstr "גייס"
 
 #: src/menu_events.cpp:894 src/menu_events.cpp:1061
 msgid "Select unit:"
@@ -7423,9 +7423,8 @@ msgid "Create Unit (Debug!)"
 msgstr "צור כלי (דיבוג!)"
 
 #: src/menu_events.cpp:1534 src/multiplayer_wait.cpp:136
-#, fuzzy
 msgid "Gender: "
-msgstr "מנהיג: "
+msgstr "מיו: "
 
 #: src/menu_events.cpp:1602
 msgid "Place Label"
@@ -7465,77 +7464,76 @@ msgid ""
 "available commands."
 msgstr "שלח בקשה לשרת. בלי פרמטרים השרת יחזיר את הפקודות המותרות."
 
-# TODO: CONTINUE
 #: src/menu_events.cpp:2164
 msgid ""
 "Ban and kick a player or observer. If he is not in the game but on the "
 "server he will only be banned."
-msgstr ""
+msgstr "העף ומנע שחקן או צופה מלשחק. עם הוא לא משחק הוא רק ימנע מלשחק."
 
 #: src/menu_events.cpp:2167
 msgid "Kick a player or observer."
-msgstr ""
+msgstr "העף שחקן או צופה."
 
 #: src/menu_events.cpp:2169
 msgid "Mute an observer."
-msgstr ""
+msgstr "השתק צופה."
 
 #: src/menu_events.cpp:2171
 msgid "Mute all observers."
-msgstr ""
+msgstr "השתק את כל הצופים."
 
 #: src/menu_events.cpp:2181
 msgid "Send an emotion or personal action in chat."
-msgstr ""
+msgstr "שלח סמיילי או פעולה אישית בצ'אט."
 
 #: src/menu_events.cpp:2184
 msgid ""
 "Sends a private message. You can't send messages to players that don't "
 "control a side in a running game you are in."
 msgstr ""
+"שלח הודעה פרטית. אי אפשר לשלוח הודעות פרטיות לשחקנים שלא שולטים בצד במשחק. "
 
 #: src/menu_events.cpp:2190
 msgid "Change the log level of a log domain."
-msgstr ""
+msgstr "שנה את רמת ההקלטה של מערכת ההקלטה."
 
 #: src/menu_events.cpp:2192
 msgid "Add a nick to your ignores list."
-msgstr ""
+msgstr "הוסף שם לרשימת ההתעלמויות."
 
 #: src/menu_events.cpp:2194
 msgid "Add a nick to your friends list."
-msgstr ""
+msgstr "הוסף שם לרשימת החברים"
 
 #: src/menu_events.cpp:2196
 msgid "Remove a nick from your ignores or friends list."
-msgstr ""
+msgstr "הוצא שם מרשימת ההתעלמויות או החברים."
 
 #: src/menu_events.cpp:2198
 msgid "Show your ignores and friends list."
-msgstr ""
+msgstr "הראה את רשימות החברים וההתעלמויות"
 
 #: src/menu_events.cpp:2201
-#, fuzzy
 msgid "Display version information."
-msgstr "לא נמצאו תקופות"
+msgstr "הצג את מידע הגרסא."
 
 #: src/menu_events.cpp:2203
 msgid "Register your nick"
-msgstr ""
+msgstr "רשום את שם המשתמש שלך"
 
 #: src/menu_events.cpp:2205
 msgid "Drop your nick."
-msgstr ""
+msgstr "זרוק את שם המשתמש שלך"
 
 #: src/menu_events.cpp:2207
 msgid "Update details for your nick. For possible details see '/details'."
-msgstr ""
+msgstr "עדכן מידע על שם המשתמש. לפרטים ראה '\\details'."
 
 #: src/menu_events.cpp:2210
-#, fuzzy
 msgid "Request information about a nick."
-msgstr "לא נמצאו תקופות"
+msgstr "בקש מידע על שם משתמש."
 
+# TODO: CONTINUE
 #: src/menu_events.cpp:2212
 msgid "Request a list of details you can set for your registered nick."
 msgstr ""
@@ -8482,9 +8480,8 @@ msgid ""
 msgstr "התרחש ניתוק מהרשת, והמשחק אינו יכול להמשך. האם ברצונך לשמור את המשחק?"
 
 #: src/playsingle_controller.cpp:674
-#, fuzzy
 msgid "It is now $name|'s turn"
-msgstr "עכשיו תורך"
+msgstr "עכשיו הגיע תורו של $name|"
 
 #: src/playturn.cpp:219
 msgid "Replace with AI"
@@ -8499,19 +8496,16 @@ msgid "Abort game"
 msgstr "נטוש את המשחק"
 
 #: src/playturn.cpp:226 src/playturn.cpp:238
-#, fuzzy
 msgid "Replace with $player"
-msgstr "החלף בשחקן מקומי"
+msgstr "החלף ב $player"
 
 #: src/playturn.cpp:244
-#, fuzzy
 msgid "$player has left the game. What do you want to do?"
-msgstr "נטש את המשחק. מה ברצונך לעשות?"
+msgstr "$player נטש את המשחק. מה ברצונך לעשות ?"
 
 #: src/replay_controller.cpp:81
-#, fuzzy
 msgid "The file you have tried to load is corrupt. Continue playing?"
-msgstr "הקובץ, אותו ניסית לטעון, פגום"
+msgstr "הקובץ, אותו ניסית לטעון, פגום. המשך לשחק?"
 
 #: src/serialization/parser.cpp:129
 msgid "Unexpected characters at line start"
@@ -8559,24 +8553,23 @@ msgstr "תווים לא צפויים אחרי שם משתנה (מצפה ל , א�
 
 #: src/serialization/parser.cpp:282 src/serialization/parser.cpp:306
 msgid "Unterminated quoted string"
-msgstr "מחרוזת ציטוט ללא סוגר"
+msgstr " מחרוזת עם ציטוט ללא סוגר "
 
 #: src/serialization/parser.cpp:329
 msgid " included from "
-msgstr "נכלל מתוך"
+msgstr " נכלל מתוך "
 
 #: src/serialization/parser.cpp:357
 msgid "$error, value '$value', previous '$previous_value' at $pos"
-msgstr ""
+msgstr "$error, מידע '$value', קודם '$previous_value' ב $pos"
 
 #: src/serialization/parser.cpp:361
-#, fuzzy
 msgid "$error, value '$value' at $pos"
-msgstr "$error ב $pos"
+msgstr "$error, מידע '$value' ב $pos"
 
 #: src/statistics_dialog.cpp:66 src/statistics_dialog.cpp:121
 msgid "Recruits"
-msgstr "מגוייסים"
+msgstr "גיוסים"
 
 #: src/statistics_dialog.cpp:70 src/statistics_dialog.cpp:128
 msgid "Recalls"
@@ -8595,32 +8588,28 @@ msgid "Kills"
 msgstr "הריגות"
 
 #: src/statistics_dialog.cpp:103
-#, fuzzy
 msgid "Details"
-msgstr "זנב"
+msgstr "פרטים"
 
 #: src/statistics_dialog.cpp:155
-#, fuzzy
 msgid "Damage"
 msgstr "נזק"
 
 #: src/statistics_dialog.cpp:156
 msgid "Over All"
-msgstr ""
+msgstr "בכל התורים"
 
 #: src/statistics_dialog.cpp:158
-#, fuzzy
 msgid "This Turn"
-msgstr "תור"
+msgstr "בתור הזה"
 
 #: src/statistics_dialog.cpp:162
-#, fuzzy
 msgid "Inflicted"
 msgstr "נזק נגרם"
 
 #: src/statistics_dialog.cpp:167
 msgid "Taken"
-msgstr ""
+msgstr "נלקחו"
 
 #: src/terrain.cpp:144
 msgid "Allied village"
@@ -8628,7 +8617,7 @@ msgstr "כפר בעלי ברית"
 
 #: src/terrain.cpp:149
 msgid "Enemy village"
-msgstr "כפר אוייב"
+msgstr "כפר אויב"
 
 #: src/terrain.cpp:154
 msgid "Owned village"
@@ -8636,7 +8625,7 @@ msgstr "כפר כבוש"
 
 #: src/theme.cpp:331
 msgid "border_size should be between 0.0 and 0.5."
-msgstr ""
+msgstr "border_size אמור להיות בין 0.0 ל 0.5."
 
 #: src/titlescreen.cpp:411
 msgid "TitleScreen button^Tutorial"
@@ -8655,14 +8644,12 @@ msgid "TitleScreen button^Load"
 msgstr "טען"
 
 #: src/titlescreen.cpp:415
-#, fuzzy
 msgid "TitleScreen button^Add-ons"
-msgstr "טען"
+msgstr "חבילות"
 
 #: src/titlescreen.cpp:417
-#, fuzzy
 msgid "TitleScreen button^Map Editor"
-msgstr "צא"
+msgstr "עורך מפות"
 
 #: src/titlescreen.cpp:419
 msgid "TitleScreen button^Language"
@@ -8673,33 +8660,28 @@ msgid "TitleScreen button^Preferences"
 msgstr "העדפות"
 
 #: src/titlescreen.cpp:421
-#, fuzzy
 msgid "TitleScreen button^Credits"
-msgstr "צא"
+msgstr "קרדיטס"
 
 #: src/titlescreen.cpp:422
 msgid "TitleScreen button^Quit"
 msgstr "צא"
 
 #: src/titlescreen.cpp:425
-#, fuzzy
 msgid "TitleScreen button^Previous"
-msgstr "צא"
+msgstr "הקודם"
 
 #: src/titlescreen.cpp:426
-#, fuzzy
 msgid "TitleScreen button^Next"
-msgstr "צא"
+msgstr "הבא"
 
 #: src/titlescreen.cpp:427
-#, fuzzy
 msgid "TitleScreen button^Help"
-msgstr "טען"
+msgstr "עזרה"
 
 #: src/titlescreen.cpp:429
-#, fuzzy
 msgid "TitleScreen button^Help Wesnoth"
-msgstr "טען"
+msgstr "עזור לווסנות'"
 
 #: src/titlescreen.cpp:431
 msgid "Start a tutorial to familiarize yourself with the game"
@@ -8714,21 +8696,20 @@ msgid ""
 "Play multiplayer (hotseat, LAN, or Internet), or a single scenario against "
 "the AI"
 msgstr ""
-"משחק רב-משתתפים (כסאות מוזיקליים, רשת מקומית, או אינטרנט), או תרחיש יחיד נגד "
-"המחשב"
+"משחק רב-משתתפים (כסאות מוזיקליים, רשת מקומית, או אינטרנט), או התקלות יחידה "
+"נגד המחשב"
 
 #: src/titlescreen.cpp:434
-#, fuzzy
 msgid "Load a saved game"
-msgstr "טען מחדש משחק לשחקן אחד"
+msgstr "טען שמירה"
 
 #: src/titlescreen.cpp:435
 msgid "Download usermade campaigns, eras, or map packs"
-msgstr ""
+msgstr "הורד מערכות, עידנים או חבילות מפות"
 
 #: src/titlescreen.cpp:437
 msgid "Start the map editor"
-msgstr ""
+msgstr "התחל את עורך המפות"
 
 #: src/titlescreen.cpp:439
 msgid "Change the language"
@@ -8748,22 +8729,19 @@ msgstr "צא מהמשחק"
 
 #: src/titlescreen.cpp:443
 msgid "Show next tip of the day"
-msgstr ""
+msgstr "הראה את הטיפ הבא"
 
 #: src/titlescreen.cpp:444
-#, fuzzy
 msgid "Show Battle for Wesnoth help"
 msgstr "העזרה של הקרב של ווסנות'"
 
 #: src/titlescreen.cpp:445
-#, fuzzy
 msgid "Upload statistics"
-msgstr "סטטיסטיקות"
+msgstr "העלה סטטיסטיקות"
 
 #: src/titlescreen.cpp:504
-#, fuzzy
 msgid "Help Wesnoth"
-msgstr "הקרב על ווסנות'"
+msgstr "עזור לווסנות'"
 
 #: src/titlescreen.cpp:505
 msgid "Help Wesnoth by sending us information"
@@ -8771,71 +8749,69 @@ msgstr "עזור לווסנות' על ידי שליחת מידע אלינו"
 
 #: src/unit.cpp:602
 msgid "Unknown unit type '$type|' while generating traits"
-msgstr ""
+msgstr "נמצא כלי לא ידוע '$type|' בזמן יצירת כשרונות"
 
 #: src/unit.cpp:804
 msgid "Unknown unit type '$type|'"
-msgstr ""
+msgstr "כלי לא ידוע '$type|'"
 
 #: src/unit.cpp:2549 src/unit.cpp:2754 src/unit.cpp:2826
-#, fuzzy
 msgid " and "
-msgstr "חול"
+msgstr " ו "
 
 #: src/unit.cpp:2560
 msgid "$attack_list|: $effect_description"
-msgstr ""
+msgstr "$attack_list|: $effect_description"
 
+# NOT TO GET THE "UNTRANSLATED"
+# MESSAGE
 #: src/unit.cpp:2625
-#, fuzzy
 msgid "moves"
-msgstr "מהלכים"
+msgstr "מהירות"
 
 #: src/unit.cpp:2643 src/unit.cpp:2781
 msgid "XP to advance"
 msgstr "נק\"נ לרמה הבאה"
 
 #: src/unit.cpp:2773
-#, fuzzy
 msgid " move"
-msgstr "מהלכים"
+msgstr " תנועה"
 
 #: src/unit.cpp:2789
 msgid "$effect_description per level"
-msgstr ""
+msgstr "$effect_description/דרגה"
 
 #: src/unit.cpp:2835
 msgid "$trait_name|: $trait_description "
-msgstr ""
+msgstr "$trait_name|: $trait_description "
 
+# NOT TO GET THE "UNTRANSLATED"
+# MESSAGE
 #: src/unit_types.cpp:198 src/unit_types.cpp:264
-#, fuzzy
 msgid "damage"
 msgid_plural "damage"
 msgstr[0] "נזק"
 msgstr[1] "נזק"
 
 #: src/unit_types.cpp:208 src/unit_types.cpp:271
-#, fuzzy
 msgid "strike"
 msgid_plural "strikes"
-msgstr[0] "מס' התקפות לתור"
-msgstr[1] "מס' התקפות לתור"
+msgstr[0] "נסיון פגיעה"
+msgstr[1] "נסיונות פגיעה"
 
 #: src/unit_types.cpp:219
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "% accuracy"
-msgstr "נזק כולל"
+msgstr "% דיוק"
 
 #: src/unit_types.cpp:229
 #, no-c-format
 msgid "% parry"
-msgstr ""
+msgstr "% חסימה"
 
 #: src/unit_types.cpp:955
-#, fuzzy
 msgid "No description available."
-msgstr "אין מטרות זמינות"
+msgstr "לא קיים ציאור כעת"
 
 #: src/unit_types.cpp:1014
 msgid "chaotic"
@@ -8850,22 +8826,18 @@ msgid "neutral"
 msgstr "ניטרלי"
 
 #: src/unit_types.cpp:1015
-#, fuzzy
 msgid "female^chaotic"
-msgstr "גנבת"
+msgstr "תוהו"
 
 #: src/unit_types.cpp:1015
-#, fuzzy
 msgid "female^lawful"
-msgstr "פורעת חוק"
+msgstr "סדר"
 
 #: src/unit_types.cpp:1015
-#, fuzzy
 msgid "female^neutral"
-msgstr "נוכלת"
+msgstr "ניטרלי"
 
 #: src/upload_log.cpp:325
-#, fuzzy
 msgid ""
 "Wesnoth relies on volunteers like yourself for feedback, especially "
 "beginners and new players. Wesnoth keeps summaries of your games: you can "
@@ -8878,10 +8850,9 @@ msgstr ""
 
 #: src/upload_log.cpp:326
 msgid "Summaries are stored here:"
-msgstr ""
+msgstr "הסיכומים מאוכסנים כאן:"
 
 #: src/upload_log.cpp:328
-#, fuzzy
 msgid "You can view the results at:"
 msgstr "אתה יכול לראות את התוצאות ב "
 
@@ -8891,4 +8862,4 @@ msgstr "עזור לנו להפוך את ווסנות' לטוב יותר בשבי
 
 #: src/upload_log.cpp:332
 msgid "Enable summary uploads"
-msgstr ""
+msgstr "אפשר העלאות סיכומיפ"

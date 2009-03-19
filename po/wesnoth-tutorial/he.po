@@ -1,18 +1,19 @@
-# translation of he.po to Hebrew
+# translation of tutorial to Hebrew
 # Ely Levy <nakeee@gmail.com>, 2005, 2006.
+# Ariel Ben-Yehuda <ariel.bys@gmail.com>, 2009.
 msgid ""
 msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-12-03 19:43+0100\n"
-"PO-Revision-Date: 2006-03-08 23:56+0200\n"
-"Last-Translator: Ely Levy <nakeee@gmail.com>\n"
-"Language-Team: Hebrew\n"
+"PO-Revision-Date: 2009-03-19 23:55+0200\n"
+"Last-Translator: \n"
+"Language-Team: en_US <kde-i18n-doc@lists.kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms:  nplurals=2; plural=(n != 1);\n"
-"X-Generator: KBabel 1.11.1\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 0.2\n"
 
 #. [tutorial]: id=tutorial
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:41
@@ -25,7 +26,7 @@ msgstr ""
 #. [tutorial]: id=tutorial
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:42
 msgid "Wesnoth Tutorial"
-msgstr ""
+msgstr "הדרכת ווסנות'"
 
 #. [side]: type=Fighter, id=student
 #. [command]
@@ -53,21 +54,26 @@ msgid ""
 "Healing\n"
 "Recruiting"
 msgstr ""
+"שיעור זה ילמד אותך דברים אלו:\n"
+"תנועה\n"
+"התקפה\n"
+"ריפוי\n"
+"גיוס"
 
 #. [objective]: condition=win
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:130
 msgid "Destroy a fierce enemy"
-msgstr ""
+msgstr "הבס אויב חזק"
 
 #. [objective]: condition=lose
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:134
 msgid "Get yourself killed"
-msgstr ""
+msgstr "מצא את עצמך מת"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:149
 msgid "Who would you like to play?"
-msgstr ""
+msgstr "את מי אתה רוצה לשחק (התכונות זהות)?"
 
 #. [unit]: type=Fighteress, id=student
 #. [command]
@@ -77,13 +83,13 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:160
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:172
 msgid "Li'sar"
-msgstr ""
+msgstr "ליזאר"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:187
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:195
 msgid "*Welcome to Wesnoth!"
-msgstr ""
+msgstr "*ברוכ(ה) הבא(ה) לווסנות'!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:189
@@ -91,6 +97,8 @@ msgid ""
 "\n"
 "For this tutorial, you are playing Konrad. "
 msgstr ""
+"\n"
+"בהדרכה זאת, אתה תשחק את קונרד."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:190
@@ -98,7 +106,7 @@ msgstr ""
 msgid ""
 "You are standing in the keep, and your mentor Delfador is on the east side "
 "of the river."
-msgstr ""
+msgstr "אתה עומד במצודה, ומורך דלפדור כעת נמצא בגדה המזרחית של הנהר"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:192
@@ -114,11 +122,12 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:599
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:640
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:673
-#, fuzzy
 msgid ""
 "\n"
 "*Left click or press spacebar to continue..."
-msgstr "מותו של קונרד"
+msgstr ""
+"\n"
+"*לחץ על הכפתור השמאלי או על רווח כדי להמשיך"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:197
@@ -126,6 +135,8 @@ msgid ""
 "\n"
 "For this tutorial, you are playing Li'sar. "
 msgstr ""
+"\n"
+"בהדרכה זאת, את תשחקי את ליזאר."
 
 #. [event]
 #. [event]: id=student moves 0}
@@ -133,9 +144,8 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:203
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:393
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:497
-#, fuzzy
 msgid "Left click on Konrad"
-msgstr "מותו של קונרד"
+msgstr "כפתור שמאלי על קונרד"
 
 #. [event]
 #. [event]: id=student moves 0}
@@ -143,9 +153,8 @@ msgstr "מותו של קונרד"
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:204
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:394
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:498
-#, fuzzy
 msgid "Left click on Li'sar"
-msgstr "כמה רחוק יכול הלוחם האלפי שלי לזוז?"
+msgstr "כפתור שמאלי על ליזאר"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:223
@@ -153,6 +162,8 @@ msgid ""
 "*You have selected Konrad.\n"
 "The places he can move to are highlighted."
 msgstr ""
+"*בחרת בקונרד.\n"
+"המקומות שאתה יכול לזוז אליהם מוארות."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:231
@@ -160,27 +171,28 @@ msgid ""
 "*You have selected Li'sar.\n"
 "The places she can move to are highlighted."
 msgstr ""
+"*בחרת בליזאר.\n"
+"המקומות שאתה יכול לזוז אליהם מוארות."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:237
 msgid "HERE"
-msgstr ""
+msgstr "-כאן-"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:243
 msgid "Move Konrad next to Delfador by clicking on the tile marked 'HERE'."
-msgstr ""
+msgstr "הזז את קונרד לליד דלפדור על-ידי לחיצה על המשבצת המסומנת ב '-כאן-'"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:248
 msgid "Move Li'sar next to Delfador by clicking on the tile marked 'HERE'."
-msgstr ""
+msgstr "הזזי את ליזאר לליד דלפדור על-ידי לחיצה על המשבצת המסומנת ב '-כאן-'"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:254
-#, fuzzy
 msgid "Left click on tile labeled HERE"
-msgstr "מותו של קונרד"
+msgstr "כפתור שמאלי על המשבצת המסומנת ב -כאן-"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:289
@@ -189,48 +201,51 @@ msgid ""
 "You moved to the wrong place! After this message, you can press 'u' to undo, "
 "then try again."
 msgstr ""
+"*אופס!\n"
+"הלכת למקום הלא נכון! אחרי הודעה זו, אתה יכול ללחוץ על 'u' כדי לבטל את המהלך, "
+"ואז לחזור שנית."
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:314
 msgid "Good morning, Delfador! Is it time to attack things?"
-msgstr ""
+msgstr "בוקר טוב דלפדור. האם הגיעה השעה לתקוף דברים?"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:318
 msgid "Um, well..."
-msgstr ""
+msgstr "אהם, כנראה..."
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:322
 msgid "Have you found an orc for me to fight, huh? A troll?"
-msgstr ""
+msgstr "מצאת אורק שאני יכול לחסל? אולי איזה טרול?"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:326
 msgid "Quiet! I will summon an enemy for you..."
-msgstr ""
+msgstr "שקט! אני יזמן יריב בשבילך..."
 
 #. [event]: id=student moves 0}
 #. [unit_type]: id=Quintain, race=mechanical
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:354
 #: data/campaigns/tutorial/units/Quintain.cfg:4
 msgid "Quintain"
-msgstr ""
+msgstr "קונטנה"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:358
 msgid "... this quintain!"
-msgstr ""
+msgstr "... את הקונטנה (סוג של בובה לאימון באומנות החרב) הזה!"
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:362
 msgid "A quintain? You want me to pretend to fight a dummy?"
-msgstr ""
+msgstr "קונטנה? אתה רוצה שאעמיד פנים שאני נלחם בבובה?"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:366
 msgid "Child, you have 32 hitpoints and a sword. I'm fairly sure you'll win."
-msgstr ""
+msgstr "ילד, יש לך 32 נקודות פגיעה וחרב חדה. אני די בטוח שתנצח."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:371
@@ -239,6 +254,8 @@ msgid ""
 "(the quintain). You will see an attack description. When you click OK, "
 "Konrad will attack."
 msgstr ""
+"בשביל לתקוף את הקונטנה, קודם סמן את התוקף (קונרד) ואז את המטרה (הקונטנה). "
+"אתה תראה את תיאור ההתקפה. כשתלחץ אישור, קונרד יתקוף"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:377
@@ -247,31 +264,33 @@ msgid ""
 "(the quintain). You will see an attack description. When you click OK, "
 "Li'sar will attack."
 msgstr ""
+"בשביל לתקוף את הקונטנה, קודם סמן את התוקף (ליזאר) ואז את המטרה (הקונטנה). "
+"אתה תראה את תיאור ההתקפה. כשתלחץ אישור, ליזאר תתקוף"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:389
 msgid "Click on the quintain to attack it"
-msgstr ""
+msgstr "לחץ על הקונטנה בשביל לתקוף אותה"
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:425
 msgid "Hey! This quintain fights back!"
-msgstr ""
+msgstr "הי! הקונטנה תוקפת בחזרה!"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:429
 msgid "Hmm, maybe we should have started with a doll."
-msgstr ""
+msgstr "המם, אולי היה עדיף להתחיל עם בובה."
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:433
 msgid "Should I retreat?"
-msgstr ""
+msgstr "לסגת?"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:437
 msgid "Good idea!"
-msgstr ""
+msgstr "רעיון טוב!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:442
@@ -279,6 +298,8 @@ msgid ""
 "Note: the tiny blue crown above Delfador means you will lose the game if he "
 "is killed. You will also lose the game if your leader (Konrad) is killed."
 msgstr ""
+"הערה: הכתר הכחול הקטן מעל דלפדור אומר שתפסיד במשחק עם הוא ימות. אתה תפסיד גם "
+"עם מנהיגך (קונרד) יובס."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:445
@@ -286,18 +307,20 @@ msgid ""
 "Note: the tiny blue crown above Delfador means you will lose the game if he "
 "is killed. You will also lose the game if your leader (Li'sar) is killed."
 msgstr ""
+"הערה: הכתר הכחול הקטן מעל דלפדור אומר שתפסיד במשחק עם הוא ימות. אתה תפסיד גם "
+"עם מנהיגתך (ליזאר) תובס."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:455
 msgid ""
 "Unfortunately, you've used up your turn attacking the quintain. The quintain "
 "will now get a turn."
-msgstr ""
+msgstr "לרוע המזל, בזבזת את תורך בהתקפה על הקונטינה. עכשיו הגיע תורה."
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:459
 msgid "The DUMMY gets a turn?"
-msgstr ""
+msgstr "לבובה יש תור!?"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:465
@@ -307,16 +330,19 @@ msgid ""
 "every time, you'll drop from $student_hp to $future_hp hit points. Brace "
 "yourself!"
 msgstr ""
+"כן. היא בובה קסומה.\n"
+"כעת, לבובה יש 5 ניסיונות פגיעה וכל פגיעה מורידה 3 נזק. עם כל הניסיונות "
+"פוגעים, אתה תרד מ $student_hp ל $future_hp נק\"פ. התגונן!"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:468
 msgid "Click on the End Turn button on the bottom right"
-msgstr ""
+msgstr "לחץ על כפתור \"סוף תור\""
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:489
 msgid "Ouch! I need to heal! Only $student_hp hitpoints left!"
-msgstr ""
+msgstr "אוי! אני צריך ריפוי! נשארו לי רק $student_hp נק\"פ!"
 
 #. [event]
 #. [then]
@@ -331,16 +357,18 @@ msgid ""
 "There is a village on the other side of the river. Visiting villages is a "
 "good idea, and ending your turn in one will heal you. To the village!"
 msgstr ""
+"יש כפר בצד השני של הנהר. ביקור בכפרים הוא רעיון מצוין, ועם תסיים את תורך "
+"באחד אתה תתרפא. אל הכפר!"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:507
 msgid "Click on the village to move Konrad"
-msgstr ""
+msgstr "לחץ על הכפר כדי להזיז את קונרד"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:508
 msgid "Click on the village to move Li'sar"
-msgstr ""
+msgstr "לחצי על הכפר כדי להזיז את ליזאר"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:526
@@ -350,6 +378,9 @@ msgid ""
 "provide the gold needed to recruit units. Each turn, you gain two gold plus "
 "one for every village you own."
 msgstr ""
+"כבשת כפר! עכשיו הוא מעלה את  דגלך והוא הוסף לסכום כפריף למעלה במסך (ליד "
+"תמונת הבית). כפרים נותנים את הזה הנדרש לגיוס יחידות. כל תור, אתה מקבל 2 זהב "
+"ועוד אחד לכל כפר הנמצא תחת שליתתך"
 
 #. [event]
 #. [then]
@@ -360,7 +391,7 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:800
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:852
 msgid "Click on the End Turn button"
-msgstr ""
+msgstr "לחץ על כפתור \"סיים תור\""
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:565
@@ -368,11 +399,13 @@ msgid ""
 "You're about to be healed by $hp_difference hitpoints, but I think you're "
 "going to need some help against that quintain."
 msgstr ""
+"עוד מעת תתרפא ב $hp_difference נק\"פ. אבל אני חושב שתצתרך קצת עזרה נגד "
+"הקונטינה."
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:569
 msgid "I'll recruit some elves!"
-msgstr ""
+msgstr "אגייס קצת אלפים!"
 
 #. [event]
 #. [then]
@@ -387,18 +420,17 @@ msgid ""
 "A splendid idea. You can recruit two units if you return to the keep. You "
 "have plenty of gold for that."
 msgstr ""
+"רעיון מצוין. תוכל לגייס 2 יחידות עם תחזור למצודה. יש לך מספיק זהב לעשות זאת."
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:578
-#, fuzzy
 msgid "Move Konrad to the keep"
-msgstr "הזז את הלוחם שלך על הכפר."
+msgstr "הזז את קונרד למצודה"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:579
-#, fuzzy
 msgid "Move Li'sar to the keep"
-msgstr "הזז את הלוחם שלך על הכפר."
+msgstr "הזז את ליזאר למצודה"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:597
@@ -407,6 +439,8 @@ msgid ""
 "right-clicking and selecting 'Recruit'. This time you will only be given one "
 "type of unit to choose: the Elvish Fighter."
 msgstr ""
+"כשאתה נמצא במצודה, אתה יכול לגייס למשבצות הטירה שלייד ע\"י כפתור ימני על "
+"המשבצת ובחירה ב'גייס'. כרגע יש רק כלי אחד לבחור ממנו: הלוחם האלפי."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:602
@@ -426,9 +460,8 @@ msgstr ""
 #. [else]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:650
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:683
-#, fuzzy
 msgid "Right click on the other castle tile and Recruit another unit"
-msgstr "מצויין, גייסת לוחם אלפי."
+msgstr "כפתור ימני על משבצת הטירה האחרת וגיס יחידה אחרת"
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:700
@@ -462,9 +495,8 @@ msgstr ""
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:726
-#, fuzzy
 msgid "Left click on an Elvish Fighter"
-msgstr "כמה רחוק יכול הלוחם האלפי שלי לזוז?"
+msgstr "כפתור שמאלי על הלוחם האלפי"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:727
@@ -677,9 +709,8 @@ msgstr ""
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:25
-#, fuzzy
 msgid "Patch of forest"
-msgstr "מותו של דלפדור"
+msgstr "יער"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:26
@@ -757,9 +788,8 @@ msgstr ""
 #. [objective]: condition=win
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:332
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:371
-#, fuzzy
 msgid "Defeat the Orc Leader"
-msgstr "הבס את דלפדור"
+msgstr "הבס את מנהיג האורקים"
 
 #. [objective]: condition=lose
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:336
@@ -770,13 +800,12 @@ msgstr "מותו של קונרד"
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:340
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:379
 msgid "Turns run out"
-msgstr "נגמרו התורות"
+msgstr "סוף התורים"
 
 #. [objective]: condition=lose
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:375
-#, fuzzy
 msgid "Death of Li'sar"
-msgstr "מותו של דלפדור"
+msgstr "מותה של ליזאר"
 
 #. [unit]: id=Galdrad, type=Elvish Captain
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:388
@@ -811,9 +840,8 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:421
-#, fuzzy
 msgid "What should I do?"
-msgstr "מה לעשות עכשיו?"
+msgstr "מה עושים?"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:426
@@ -895,9 +923,8 @@ msgstr ""
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:532
-#, fuzzy
 msgid "Right click on the tile north-east of you and recall $recall_name1"
-msgstr "מצויין, גייסת לוחם אלפי."
+msgstr "כפתור ימני על הטירה בצפון-מזרח שלך והחזר את $recall_name2"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:541
@@ -924,9 +951,8 @@ msgstr "לוחם אלפי"
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:548
-#, fuzzy
 msgid "Right click on the tile north-east of you and recruit an Elvish Fighter"
-msgstr "מצויין, גייסת לוחם אלפי."
+msgstr "כפתור ימני על הטירה בצפון-מזרח שלך וגייס לוחם אלפי"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:588
@@ -943,9 +969,8 @@ msgstr ""
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:598
-#, fuzzy
 msgid "So, should I end my turn now?"
-msgstr "איך אני מסיים את תורי, שוב?"
+msgstr "אחרי שגייסתי כל-כך הרבה כלים, עדיף לי לסיים את תורי?"
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:600
@@ -957,15 +982,13 @@ msgstr ""
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:602
-#, fuzzy
 msgid "Move Konrad to capture a village"
-msgstr "הזז את הלוחם שלך על הכפר."
+msgstr "הזז את קונרד וכבוש כפר"
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:603
-#, fuzzy
 msgid "Move Li'sar to capture a village"
-msgstr "הזז את הלוחם שלך על הכפר."
+msgstr "הזז את ליזאר וכבוש כפר"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:620
@@ -1046,9 +1069,8 @@ msgstr ""
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:799
-#, fuzzy
 msgid "Right click on the tile east of you and recall $recall_name2"
-msgstr "מצויין, גייסת לוחם אלפי."
+msgstr "כפתור ימני על הטירה במזרח שלך והחזר את $recall_name2"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:800
@@ -1058,9 +1080,8 @@ msgstr ""
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:804
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:847
-#, fuzzy
 msgid "Right click on the tile east of you and recruit an Elvish Fighter"
-msgstr "מצויין, גייסת לוחם אלפי."
+msgstr "כפתור ימני על הטירה במזרח שלך וגייס לוחם אלפי"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:827
@@ -1156,9 +1177,8 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:944
-#, fuzzy
 msgid "Fighter to HERE"
-msgstr "לוחם"
+msgstr "לוחם ל-כאן-"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:945
@@ -1214,15 +1234,13 @@ msgstr ""
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:994
-#, fuzzy
 msgid "Move Konrad to another (unowned) village"
-msgstr "הזז את הלוחם שלך על הכפר."
+msgstr "הזז את קונרד לכפר (ריק) אחר."
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:995
-#, fuzzy
 msgid "Move Li'sar to another (unowned) village"
-msgstr "הזז את הלוחם שלך על הכפר."
+msgstr "הזז את ליזאר לכפר (ריק) אחר."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1020
@@ -1339,9 +1357,8 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1168
-#, fuzzy
 msgid "Defend here"
-msgstr "הבס את מרלה"
+msgstr "הגן על מקום זה"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1169
@@ -1502,7 +1519,6 @@ msgstr "לוחם"
 #. [unit_type]: id=Fighter, race=human
 #: data/campaigns/tutorial/units/Fighteress.cfg:17
 #: data/campaigns/tutorial/units/Fighter.cfg:17
-#, fuzzy
 msgid ""
 "Young and brash, Fighters are skilled with swords and are vulnerable to "
 "attack from enemies. However, they have the potential to become great "
@@ -1518,15 +1534,13 @@ msgstr "חרב"
 
 #. [unit_type]: id=Fighteress, race=human
 #: data/campaigns/tutorial/units/Fighteress.cfg:4
-#, fuzzy
 msgid "female^Fighter"
-msgstr "לוחם"
+msgstr "לוחמת"
 
 #. [attack]: type=blade
 #: data/campaigns/tutorial/units/Fighteress.cfg:21
-#, fuzzy
 msgid "saber"
-msgstr "סברה"
+msgstr "סייף"
 
 #. [unit_type]: id=Quintain, race=mechanical
 #: data/campaigns/tutorial/units/Quintain.cfg:14
@@ -1538,7 +1552,7 @@ msgstr ""
 #. [attack]: type=impact
 #: data/campaigns/tutorial/units/Quintain.cfg:22
 msgid "flail"
-msgstr ""
+msgstr "כוכב שחר"
 
 #~ msgid "Elder Mage"
 #~ msgstr "זקן קוסמים"
