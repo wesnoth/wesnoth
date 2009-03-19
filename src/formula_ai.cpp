@@ -945,6 +945,9 @@ private:
 		{
 			const unit& un = u_call->get_unit();
 
+                        if( un.total_movement() < un.movement_cost( ai_.get_info().map[loc]) )
+                            return variant();
+
 			if(!ai_.get_info().map.on_board(loc)) {
 				return variant();
 			}
@@ -955,6 +958,9 @@ private:
 		if (u_type)
 		{
 			const unit_type& un = u_type->get_unit_type();
+                        
+                        if( un.movement() < un.movement_type().movement_cost(ai_.get_info().map, ai_.get_info().map[loc]) )
+                            return variant();
 
 			if(!ai_.get_info().map.on_board(loc)) {
 				return variant();
