@@ -226,13 +226,20 @@ gui2::tpoint ttext::get_column_line(const gui2::tpoint& position) const
 
 	// Now convert this offset to a column, this way is a bit hacky but haven't
 	// found a better solution yet.
+
+	/** 
+	 * @todo There's still a bug left. When you select a text which is in the
+	 * ellipses on the right side the text gets reformatted with ellipses on
+	 * the left and the selected character is not the one under the cursor.
+	 * Other widget toolkits don't show ellipses and have no indication more
+	 * text is available. Haven't found what the best thing to do would be.
+	 * Until that time leave it as is.
+	 */
 	for(size_t i = 0; ; ++i) {
 		const int pos = get_cursor_position(i, line).x;
 
 		if(pos == offset) {
 			return  gui2::tpoint(i, line);
-		} else if(pos == 0) {
-			assert(i == 0);
 		}
 	}
 }
