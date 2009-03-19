@@ -1901,15 +1901,22 @@ bool formula_ai::execute_variant(const variant& var, bool commandline)
                                 map_location destination = path_calculator(move->src(), move->dst(), unit_it);
 
                                 if( destination != map_location()) {
-                                    move_unit(move->src(), destination, possible_moves_);
-                                    unit_map::iterator unit = get_info().units.find(destination);
-                                    if(unit != get_info().units.end()) {
-                                            unit->second.set_movement(0);
+                                    map_location new_location = move_unit(move->src(), destination, possible_moves_);
+                                    if ( (new_location != move->src()) || (move->src()==move->dst()) ){
+                                        unit_map::iterator unit = get_info().units.find(new_location);
+
+                                        if(unit != get_info().units.end()) {
+                                                unit->second.set_movement(0);
+                                        } else {
+                                                throw formula_error("Incorrect result of calling the move() formula", "", "", 0);
+                                        }
+                                        
+                                        LOG_AI << "MOVE: " << move->src().x << "," << move->src().y << " -> " << move->dst().x << "," << move->dst().y << "\n";
+                                        made_move = true;
+                                        
                                     } else {
-                                            throw formula_error("Incorrect result of calling the move() formula", "", "", 0);
+                                           ERR_AI << "IMPOSSIBLE MOVE ORDER - MOVE FAILED\n";
                                     }
-                                    LOG_AI << "MOVE: " << move->src().x << "," << move->src().y << " -> " << move->dst().x << "," << move->dst().y << "\n";
-                                    made_move = true;
                                 } else
                                     ERR_AI << "IMPOSSIBLE MOVE ORDER\n";
 			}
