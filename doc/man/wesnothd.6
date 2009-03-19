@@ -146,6 +146,11 @@ A comma separated list of version strings to be accepted by the server. `*' and 
 (defaults to the corresponding wesnoth version)
 .br
 Example: \fBversions_accepted="*"\fR accepts any version string.
+.TP 
+.B user_handler
+The name of the user handler to use. Currently available user handlers are 'forum' (to connect wesnothd to a phpbb forum database) and 'sample' (a sample implementation of the user handler interface, if you use this on anything real you are insane). The default value is 'forum'. You must also add a
+.B [user_handler]
+section, see below.
 .
 .SS "Global tags:"
 .
@@ -184,11 +189,60 @@ Example: time="1D12h30m" results in a ban time of 1 day, 12 hours and 30 minutes
 A tag to tell the server to act as a proxy and forward the connected client's requests to the specified server.
 Accepts the same keys as 
 .BR [redirect] .
+.RE
+.P
+.B [user_handler]
+Configures the user handler. Available keys vary depending on which user handler is set with the
+.B user_handler
+key. If no [user_handler] section is present in the configuration the server will run without any nick registration service.
+.RS
+.TP 
+.B db_host
+(for user_handler=forum) The hostname of the database server
+.TP 
+.B db_name
+(for user_handler=forum) The name of the database
+.TP 
+.B db_user
+(for user_handler=forum) The name of the user under which to log into the database
+.TP 
+.B db_password
+(for user_handler=forum) This user's password
+.TP 
+.B db_users_table
+(for user_handler=forum) The name of the table in which your phpbb forums saves its user data. Most likely this will be <table-prefix>_users (e.g. phpbb3_users).
+.TP 
+.B db_extra_table
+(for user_handler=forum) The name of the table in which wesnothd will save its own data about users. You will have to create this table manually, e.g.:
+CREATE TABLE <table-name>(username VARCHAR(255) PRIMARY KEY, user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4) NOT NULL DEFAULT 0);
+.TP 
+.B user_expiration
+(for user_handler=sample) The time after which a registered nick expires (in days).
+.RE
+.P
+.B [mail]
+Configures an SMTP server through which the user handler can send mail. Currently only used by the sample user handler.
+.RS
+.TP 
+.B server
+The hostname of the mail server
+.TP 
+.B username
+The user name under which to log into the mail server.
+.TP 
+.B password
+This user's password.
+.TP 
+.B from_address
+The reply-to address of you mail.
+.TP 
+.B mail_port
+The port on which your mail server is running. Default is 25.
 .
 .SH AUTHOR
 .
 Written by David White <davidnwhite@verizon.net>.
-Edited by Nils Kneuper <crazy-ivanovic@gmx.net>, ott <ott@gaon.net> and Soliton <soliton.de@gmail.com>.
+Edited by Nils Kneuper <crazy-ivanovic@gmx.net>, ott <ott@gaon.net>, Soliton <soliton.de@gmail.com> and Thomas Baumhauer <thomas.baumhauer@gmail.com>.
 This manual page was originally written by Cyril Bouthors <cyril@bouthors.org>.
 .br
 Visit the official homepage: http://www.wesnoth.org/
