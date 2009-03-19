@@ -358,8 +358,8 @@ static server_type open_connection(game_display& disp, const std::string& origin
 					} else if((*error)["error_code"] == MP_NAME_RESERVED_ERROR) {
 						error_message = vgettext("The nick '$nick' is reserved and cannot be used by players.", i18n_symbols);
 					} else if((*error)["error_code"] == MP_NAME_UNREGISTERED_ERROR) {
-						/** @todo  add translatable message once we are out of the string freeze */
-						error_message = (*error)["message"];
+						error_message = vgettext("The nick '$nick' is not registered on this server.", i18n_symbols) +
+								+ " " + _(" This server disallows unregistered nicks.");
 					} else if((*error)["error_code"] == MP_PASSWORD_REQUEST) {
 						error_message = vgettext("The nick '$nick' is registered on this server.", i18n_symbols);
 					} else if((*error)["error_code"] == MP_PASSWORD_REQUEST_FOR_LOGGED_IN_NAME) {
