@@ -8,10 +8,8 @@
 #  GETTEXT_INFO_MSG            = information string about gettext
 #  GETTEXT_XGETTEXT_EXECUTABLE = xgettext tool
 #  GETTEXT_MSGINIT_EXECUTABLE  = msginit tool
-#  GETTEXT_MSGMERGE_EXECUTABLE = msgmerge tool
 #  GETTEXT_MSGCAT_EXECUTABLE   = msgcat tool
 #  GETTEXT_MSGCONV_EXECUTABLE  = msgconv tool
-#  GETTEXT_MSGFMT_EXECUTABLE   = msgfmt tool
 #  GETTEXT_TOOLS_FOUND         = true if all the tools were found
 #  GETTEXT_FOUND               = true if both runtime and tools were found
 # As a convenience, the following variables can be set before including
@@ -30,10 +28,8 @@ macro(GETTEXT_FIND_POTENTIAL_DIRS)
       "${GETTEXT_INTL_LIBRARY}"
       "${GETTEXT_XGETTEXT_EXECUTABLE}"
       "${GETTEXT_MSGINIT_EXECUTABLE}"
-      "${GETTEXT_MSGMERGE_EXECUTABLE}"
       "${GETTEXT_MSGCAT_EXECUTABLE}"
       "${GETTEXT_MSGCONV_EXECUTABLE}"
-      "${GETTEXT_MSGFMT_EXECUTABLE}"
       )
     get_filename_component(path "${filepath}" PATH)
     set(potential_bin_dirs ${potential_bin_dirs} "${path}/../bin")
