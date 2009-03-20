@@ -21,6 +21,7 @@
 #include "global.hpp"
 
 #include "config.hpp"
+#include "foreach.hpp"
 #include "log.hpp"
 
 #include <cstring>
@@ -311,6 +312,22 @@ const t_string& config::get_attribute(const std::string& key) const
 		static const t_string empty_string;
 		return empty_string;
 	}
+}
+
+void config::merge_attributes(const config &cfg)
+{
+	assert(this != &cfg);
+	for (string_map::const_iterator i = cfg.values.begin(),
+	     i_end = cfg.values.end(); i != i_end; ++i)
+	{
+		values[i->first] = i->second;
+	}
+}
+
+config::const_attr_itors config::attribute_range() const
+{
+	return const_attr_itors(const_attribute_iterator(values.begin()),
+	                        const_attribute_iterator(values.end()));
 }
 
 namespace {
@@ -798,9 +815,9 @@ std::string config::debug() const
 std::ostream& operator << (std::ostream& outstream, const config& cfg) {
 	static int i = 0;
 	i++;
-	for(string_map::const_iterator val = cfg.values.begin(); val != cfg.values.end(); ++val) {
+	foreach (const config::attribute &val,  cfg.attribute_range()) {
 		for (int j = 0; j < i-1; j++){ outstream << char(9); }
-		outstream << val->first << " = " << val->second << "\n";
+		outstream << val.first << " = " << val.second << '\n';
 	}
 	for(config::all_children_iterator list = cfg.ordered_begin(); list != cfg.ordered_end(); ++list) {
 		{ for (int j = 0; j < i-1; j++){ outstream << char(9); } }
@@ -900,11 +917,6 @@ bool operator==(const config& a, const config& b)
 	}
 
 	return x == a.ordered_end() && y == b.ordered_end();
-}
-
-bool operator!=(const config& a, const config& b)
-{
-	return !operator==(a,b);
 }
 
 //#define TEST_CONFIG

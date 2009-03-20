@@ -786,8 +786,10 @@ tbuilder_listbox::tbuilder_listbox(const config& cfg) :
 			const config::child_list& col_cfgs = (**row_itor).get_children("column");
 			for(std::vector<config*>::const_iterator col_itor = col_cfgs.begin();
 					col_itor != col_cfgs.end(); ++col_itor) {
-
-				list_data.push_back((**col_itor).values);
+				list_data.push_back(string_map());
+				foreach (const config::attribute &i, (*col_itor)->attribute_range()) {
+					list_data.back()[i.first] = i.second;
+				}
 				++col;
 			}
 

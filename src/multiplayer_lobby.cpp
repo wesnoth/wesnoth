@@ -18,6 +18,7 @@
 
 #include "global.hpp"
 
+#include "foreach.hpp"
 #include "map_exception.hpp"
 #include "marked-up_text.hpp"
 #include "minimap.hpp"
@@ -481,8 +482,8 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 				if (map_hashes_ && !games_.back().reloaded) {
 					const std::string& hash = (**game)["hash"];
 					bool hash_found = false;
-					for(string_map::const_iterator i = map_hashes_->values.begin(); i != map_hashes_->values.end(); ++i) {
-						if(i->first == (**game)["mp_scenario"] && i->second == hash) {
+					foreach (const config::attribute &i, map_hashes_->attribute_range()) {
+						if (i.first == (**game)["mp_scenario"] && i.second == hash) {
 							hash_found = true;
 							break;
 						}

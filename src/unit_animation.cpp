@@ -63,7 +63,7 @@ config unit_animation::prepare_animation(const config &cfg,const std::string ani
 		unexpanded_anims.pop_back();
 		config::all_children_iterator child = analyzed_anim.ordered_begin();
 		config expanded_anim;
-		expanded_anim.values =  analyzed_anim.values;
+		expanded_anim.merge_attributes(analyzed_anim);
 		while(child != analyzed_anim.ordered_end()) {
 			if(*(*child).first == "if") {
 				std::vector<config> to_add;

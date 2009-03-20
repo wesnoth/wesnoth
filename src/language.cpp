@@ -327,8 +327,8 @@ bool set_language(const language_def& locale)
 		return false;
 	}
 
-	for(string_map::const_iterator j = langp->values.begin(); j != langp->values.end(); ++j) {
-		strings_[j->first] = j->second;
+	foreach (const config::attribute &j, langp->attribute_range()) {
+		strings_[j.first] = j.second;
 	}
 	// end of string_table fill
 

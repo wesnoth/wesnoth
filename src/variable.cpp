@@ -224,10 +224,8 @@ const config vconfig::get_parsed_config() const
 {
 	config res;
 
-	for(string_map::const_iterator itor = cfg_->values.begin();
-		itor != cfg_->values.end(); ++itor)
-	{
-		res[itor->first] = expand(itor->first);
+	foreach (const config::attribute &i, cfg_->attribute_range()) {
+		res[i.first] = expand(i.first);
 	}
 
 	for(config::all_children_iterator child = cfg_->ordered_begin();

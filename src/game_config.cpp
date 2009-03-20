@@ -16,6 +16,7 @@
 #include "game_config.hpp"
 
 #include "config.hpp"
+#include "foreach.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "util.hpp"
@@ -263,12 +264,13 @@ namespace game_config
 
 		const config::child_list& colors = v.get_children("color_palette");
 		for(config::child_list::const_iterator cp = colors.begin(); cp != colors.end(); ++cp) {
-			for(string_map::const_iterator rgb_it = (*cp)->values.begin(); rgb_it != (*cp)->values.end(); ++rgb_it) {
+			foreach (const config::attribute &rgb, (*cp)->attribute_range())
+			{
 				try {
-					team_rgb_colors.insert(std::make_pair(rgb_it->first,string2rgb(rgb_it->second)));
+					team_rgb_colors.insert(std::make_pair(rgb.first, string2rgb(rgb.second)));
 				} catch(bad_lexical_cast&) {
 					//throw config::error(_("Invalid team color: ") + rgb_it->second);
-					ERR_NG << "Invalid team color: " << rgb_it->second << "\n";
+					ERR_NG << "Invalid team color: " << rgb.second << "\n";
 				}
 			}
 		}

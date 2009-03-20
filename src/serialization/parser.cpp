@@ -484,8 +484,8 @@ static void write_internal(config const &cfg, std::ostream &out, std::string& te
 	if (tab > max_recursion_levels)
 		throw config::error("Too many recursion levels in config write");
 
-	for(string_map::const_iterator i = cfg.values.begin(), i_end = cfg.values.end(); i != i_end; ++i) {
-		write_key_val(out, i->first, i->second, tab, textdomain);
+	foreach (const config::attribute &i, cfg.attribute_range()) {
+		write_key_val(out, i.first, i.second, tab, textdomain);
 	}
 
 	for(config::all_children_iterator j = cfg.ordered_begin(), j_end = cfg.ordered_end(); j != j_end; ++j) {

@@ -522,8 +522,8 @@ string_map unit_movement_type::damage_table() const
 
 	const config* const resistance = cfg_.child("resistance");
 	if(resistance != NULL) {
-		for(string_map::const_iterator i = resistance->values.begin(); i != resistance->values.end(); ++i) {
-			res[i->first] = i->second;
+		foreach (const config::attribute &i, resistance->attribute_range()) {
+			res[i.first] = i.second;
 		}
 	}
 

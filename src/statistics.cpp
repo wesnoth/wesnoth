@@ -122,8 +122,8 @@ static void write_str_int_map(config_writer &out, const stats::str_int_map& m)
 static stats::str_int_map read_str_int_map(const config& cfg)
 {
 	stats::str_int_map m;
-	for(string_map::const_iterator i = cfg.values.begin(); i != cfg.values.end(); ++i) {
-		m[i->first] = atoi(i->second.c_str());
+	foreach (const config::attribute &i, cfg.attribute_range()) {
+		m[i.first] = atoi(i.second.c_str());
 	}
 
 	return m;

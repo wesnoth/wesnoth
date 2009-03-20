@@ -49,9 +49,15 @@ class config;
 
 typedef boost::shared_ptr<config> config_ptr;
 
+bool operator==(const config &, const config &);
+inline bool operator!=(const config &a, const config &b) { return !operator==(a, b); }
+std::ostream &operator << (std::ostream &, const config &);
+
 /** A config object defines a single node in a WML file, with access to child nodes. */
 class config
 {
+	friend bool operator==(const config& a, const config& b);
+
 public:
 	// Create an empty node.
 	config();
@@ -120,6 +126,34 @@ public:
 	typedef std::pair<child_iterator,child_iterator> child_itors;
 	typedef std::pair<const_child_iterator,const_child_iterator> const_child_itors;
 
+	typedef std::pair<const std::string, t_string> attribute;
+
+	struct const_attribute_iterator
+	{
+		typedef attribute value_type;
+		typedef std::forward_iterator_tag iterator_category;
+		typedef int difference_type;
+		typedef const attribute *pointer;
+		typedef const attribute &reference;
+		typedef string_map::const_iterator Itor;
+		explicit const_attribute_iterator(Itor i = Itor()): i_(i) {}
+		const_attribute_iterator(const const_attribute_iterator &i): i_(i.i_) {}
+
+		const_attribute_iterator &operator++() { ++i_; return *this; }
+		const_attribute_iterator operator++(int) { return const_attribute_iterator(i_++); }
+
+		const attribute &operator*() const { return *i_; }
+		const attribute *operator->() const { return &*i_; }
+
+		bool operator==(const const_attribute_iterator &i) const { return i_ == i.i_; }
+		bool operator!=(const const_attribute_iterator &i) const { return i_ != i.i_; }
+
+	private:
+		Itor i_;
+	};
+
+	typedef std::pair<const_attribute_iterator,const_attribute_iterator> const_attr_itors;
+
 	typedef std::pair<child_list::iterator, child_list::iterator> child_itors_bak;
 	child_itors_bak child_range_bak(const std::string &);
 	child_itors child_range(const std::string& key);
@@ -140,6 +174,9 @@ public:
 	const t_string& get_attribute(const std::string& key) const;
 	bool has_attribute(const std::string& key) const {return values.find(key) != values.end();}
 	void remove_attribute(const std::string& key) {values.erase(key);}
+	void merge_attributes(const config &);
+
+	const_attr_itors attribute_range() const;
 
 	config* find_child(const std::string& key, const std::string& name,
 	                   const t_string& value);
@@ -248,18 +285,14 @@ public:
 	//this is a cheap O(1) operation
 	void swap(config& cfg);
 
+private:
 	/** All the attributes of this node. */
 	string_map values;
 
-private:
 	/** A list of all children of this node. */
 	child_map children;
 
 	std::vector<child_pos> ordered_children;
 };
-
-bool operator==(const config& a, const config& b);
-bool operator!=(const config& a, const config& b);
-std::ostream& operator << (std::ostream& os, const config& cfg);
 
 #endif

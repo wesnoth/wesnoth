@@ -182,9 +182,7 @@ static void expand_partialresolution(config& dst_cfg, const config& top_cfg)
 			res_cfgs_.push_back(*parent);
 			while(!parent_stack.empty()) {
 				//override attributes
-				for(string_map::const_iterator j = parent_stack.back()->values.begin(); j != parent_stack.back()->values.end(); ++j) {
-					res_cfgs_.back()[j->first] = j->second;
-				}
+				res_cfgs_.back().merge_attributes(*parent_stack.back());
 
 				foreach (const config &rm, parent_stack.back()->child_range("remove")) {
 					find_ref(rm["id"], res_cfgs_.back(), true);
@@ -193,11 +191,7 @@ static void expand_partialresolution(config& dst_cfg, const config& top_cfg)
 				foreach (const config &chg, parent_stack.back()->child_range("change"))
 				{
 					config &target = find_ref(chg["id"], res_cfgs_.back());
-					for (string_map::const_iterator k = chg.values.begin(),
-					     k_end = chg.values.end(); k != k_end; ++k)
-					{
-						target[k->first] = k->second;
-					}
+					target.merge_attributes(chg);
 				}
 
 				{
@@ -237,9 +231,7 @@ static void do_resolve_rects(const config& cfg, config& resolved_config, config*
 		}
 
 		// copy all key/values
-		for(string_map::const_iterator j = cfg.values.begin(); j != cfg.values.end(); ++j) {
-			resolved_config[j->first] = j->second;
-		}
+		resolved_config.merge_attributes(cfg);
 
 		// override default reference rect with "ref" parameter if any
 		if (!cfg["ref"].empty()) {

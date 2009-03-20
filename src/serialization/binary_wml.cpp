@@ -21,6 +21,7 @@
 #include "global.hpp"
 
 #include "config.hpp"
+#include "foreach.hpp"
 #include "loadscreen.hpp"
 #include "log.hpp"
 #include "serialization/binary_wml.hpp"
@@ -130,13 +131,13 @@ static void write_compressed_internal(std::ostream &out, config const &cfg, comp
 	if (level > max_recursion_levels)
 		throw config::error("Too many recursion levels in compressed config write");
 
-	for (string_map::const_iterator i = cfg.values.begin(), i_end = cfg.values.end(); i != i_end; ++i) {
-		if (i->second.empty() == false) {
+	foreach (const config::attribute &i, cfg.attribute_range()) {
+		if (!i.second.empty()) {
 			// Output the name, using compression
-			compress_emit_word(out, i->first, schema);
+			compress_emit_word(out, i.first, schema);
 
 			// Output the value, with no compression
-			compress_output_literal_word(out, i->second.to_serialized());
+			compress_output_literal_word(out, i.second.to_serialized());
 		}
 	}
 
@@ -202,7 +203,7 @@ static void read_compressed_internal(config &cfg, std::istream &in, compression_
 				// We have a name/value pair, the value is always a literal string
 				std::string value = compress_read_literal_word(in);
 				t_string t_value = t_string::from_serialized(value);
-				cfg.values.insert(std::make_pair(word, t_value));
+				cfg[word] = t_value;
 			}
 		}
 

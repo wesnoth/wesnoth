@@ -1445,10 +1445,9 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
                     formula_vars_ = new game_logic::map_formula_callable;
 
                     variant var;
-                    for(string_map::const_iterator i = ai_vars->values.begin(); i != ai_vars->values.end(); ++i)
-                    {
-                            var.serialize_from_string(i->second);
-                            formula_vars_->add(i->first, var);
+			foreach (const config::attribute &i, ai_vars->attribute_range()) {
+				var.serialize_from_string(i.second);
+				formula_vars_->add(i.first, var);
                     }
             } else {
                     formula_vars_ = game_logic::map_formula_callable_ptr();
@@ -1513,8 +1512,8 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 
 	const config* status_flags = cfg.child("status");
 	if(status_flags) {
-		for(string_map::const_iterator st = status_flags->values.begin(); st != status_flags->values.end(); ++st) {
-			states_[st->first] = st->second;
+		foreach (const config::attribute &st, status_flags->attribute_range()) {
+			states_[st.first] = st.second;
 		}
 		cfg_.remove_child("status",0);
 	}
@@ -2286,7 +2285,11 @@ string_map unit::get_base_resistances() const
 {
 	const config* const resistance = cfg_.child("resistance");
 	if(resistance != NULL) {
-		return resistance->values;
+		string_map res;
+		foreach (const config::attribute &i, resistance->attribute_range()) {
+			res[i.first] = i.second;
+		}
+		return res;
 	}
 	return string_map();
 }
@@ -2444,14 +2447,10 @@ size_t unit::modification_count(const std::string& type, const std::string& id) 
 /** Helper function for add_modifications */
 static void mod_mdr_merge(config& dst, const config& mod, bool delta)
 {
-	string_map::const_iterator iter = mod.values.begin();
-	string_map::const_iterator end = mod.values.end();
-	for (; iter != end; iter++) {
-		dst[iter->first] =
-			lexical_cast_default<std::string>(
-				(delta == true)*lexical_cast_default<int>(dst[iter->first])
-				+ lexical_cast_default<int>(iter->second)
-			);
+	foreach (const config::attribute &i, mod.attribute_range()) {
+		int v = 0;
+		if (delta) v = lexical_cast_default<int>(dst[i.first]);
+		dst[i.first] = lexical_cast<std::string>(v + lexical_cast_default<int>(i.second));
 	}
 }
 

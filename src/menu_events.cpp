@@ -659,7 +659,7 @@ private:
 
 	void menu_handler::write_game_snapshot(config& start) const
 	{
-		start.values = level_.values;
+		start.merge_attributes(level_);
 
 		start["snapshot"] = "yes";
 
@@ -2401,9 +2401,8 @@ private:
 
 				config* alias_list = preferences::get_alias();
 				if (alias_list != NULL) {
-					string_map::const_iterator a = alias_list->values.begin();
-					for (; a != alias_list->values.end(); ++a) {
-						register_alias(a->second, a->first);
+					foreach (const config::attribute &a, alias_list->attribute_range()) {
+						register_alias(a.second, a.first);
 					}
 				}
 			}
