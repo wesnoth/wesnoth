@@ -20,6 +20,7 @@
 #include "global.hpp"
 
 #include "dialogs.hpp"
+#include "foreach.hpp"
 #include "game_events.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
@@ -84,20 +85,20 @@ void advance_unit(const gamemap& map,
 		preferences::encountered_units().insert(*op);
 	}
 
-	const config::child_list& mod_options = u->second.get_modification_advances();
 	bool always_display = false;
-	for(config::child_list::const_iterator mod = mod_options.begin(); mod != mod_options.end(); ++mod) {
-		if (utils::string_bool((**mod)["always_display"])) always_display = true;
+	foreach (const config &mod, u->second.get_modification_advances())
+	{
+		if (utils::string_bool(mod["always_display"])) always_display = true;
 		sample_units.push_back(::get_advanced_unit(units,loc,u->second.type_id()));
-		sample_units.back().add_modification("advance",**mod);
+		sample_units.back().add_modification("advance", mod);
 		const unit& type = sample_units.back();
-		if((**mod)["image"].str().size()){
-		  lang_options.push_back(IMAGE_PREFIX + (**mod)["image"].str() + COLUMN_SEPARATOR + (**mod)["description"].str());
-		}else{
+		if (!mod["image"].empty()) {
+			lang_options.push_back(IMAGE_PREFIX + mod["image"].str() + COLUMN_SEPARATOR + mod["description"].str());
+		} else {
 #ifdef LOW_MEM
-		  lang_options.push_back(IMAGE_PREFIX + type.absolute_image() + COLUMN_SEPARATOR + (**mod)["description"].str());
+			lang_options.push_back(IMAGE_PREFIX + type.absolute_image() + COLUMN_SEPARATOR + mod["description"].str());
 #else
-		  lang_options.push_back(IMAGE_PREFIX + type.absolute_image() + u->second.image_mods() + COLUMN_SEPARATOR + (**mod)["description"].str());
+			lang_options.push_back(IMAGE_PREFIX + type.absolute_image() + u->second.image_mods() + COLUMN_SEPARATOR + mod["description"].str());
 #endif
 		}
 	}
@@ -163,7 +164,7 @@ bool animate_unit_advancement(unit_map& units, map_location loc, game_display& g
 	}
 
 	const std::vector<std::string>& options = u->second.advances_to();
-	const config::child_list& mod_options = u->second.get_modification_advances();
+	std::vector<config> mod_options = u->second.get_modification_advances();
 
 	if(choice >= options.size() + mod_options.size()) {
 		return false;
@@ -184,7 +185,7 @@ bool animate_unit_advancement(unit_map& units, map_location loc, game_display& g
 		::advance_unit(units,loc,chosen_unit);
 	} else {
 		unit amla_unit(u->second);
-		config mod_option(*mod_options[choice - options.size()]);
+		const config &mod_option = mod_options[choice - options.size()];
 
 		LOG_NG << "firing advance event (AMLA)\n";
 		game_events::fire("advance",loc);

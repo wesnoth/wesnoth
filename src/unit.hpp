@@ -245,8 +245,9 @@ public:
     std::map<std::string,std::string> advancement_icons() const;
     std::vector<std::pair<std::string,std::string> > amla_icons() const;
 
-	config::child_list get_modification_advances() const;
-	const config::child_list& modification_advancements() const { return cfg_.get_children("advancement"); }
+	std::vector<config> get_modification_advances() const;
+	config::const_child_itors modification_advancements() const
+	{ return cfg_.child_range("advancement"); }
 
 	size_t modification_count(const std::string& type, const std::string& id) const;
 

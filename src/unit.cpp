@@ -2322,32 +2322,31 @@ std::map<terrain_type::TERRAIN,int> unit::movement_type() const
 std::map<std::string,std::string> unit::advancement_icons() const
 {
 	std::map<std::string,std::string> temp;
-	std::string image;
-	if(can_advance()){
-		if(advances_to_.empty()==false){
-			std::stringstream tooltip;
-			image=game_config::level_image;
-			std::vector<std::string> adv=advances_to();
-			for(std::vector<std::string>::const_iterator i=adv.begin();i!=adv.end();i++){
-				if((*i).size()){
-					tooltip<<(*i).c_str()<<"\n";
-				}
-			}
-			temp[image]=tooltip.str();
+	if (!can_advance())
+		return temp;
+
+	if (!advances_to_.empty())
+	{
+		std::ostringstream tooltip;
+		const std::string &image = game_config::level_image;
+		foreach (const std::string &s, advances_to())
+		{
+			if (!s.empty())
+				tooltip << s << '\n';
 		}
-		const config::child_list mods=get_modification_advances();
-		for(config::child_list::const_iterator i = mods.begin(); i != mods.end(); ++i) {
-			image=(**i)["image"];
-			if(image.size()){
-				std::stringstream tooltip;
-				tooltip<<temp[image];
-				std::string tt=(**i)["description"];
-				if(tt.size()){
-					tooltip<<tt<<"\n";
-				}
-				temp[image]=tooltip.str();
-			}
-		}
+		temp[image] = tooltip.str();
+	}
+
+	foreach (const config &adv, get_modification_advances())
+	{
+		const std::string &image = adv["image"];
+		if (image.empty()) continue;
+		std::ostringstream tooltip;
+		tooltip << temp[image];
+		const std::string &tt = adv["description"];
+		if (!tt.empty())
+			tooltip << tt << '\n';
+		temp[image] = tooltip.str();
 	}
 	return(temp);
 }
@@ -2356,13 +2355,14 @@ std::vector<std::pair<std::string,std::string> > unit::amla_icons() const
 	std::vector<std::pair<std::string,std::string> > temp;
 	std::pair<std::string,std::string> icon; //<image,tooltip>
 
-	const config::child_list& advances = get_modification_advances();
-	for(config::child_list::const_iterator i = advances.begin(); i != advances.end(); ++i) {
-		icon.first=(**i)["icon"];
-		icon.second=(**i)["description"];
+	foreach (const config &adv, get_modification_advances())
+	{
+		icon.first = adv["icon"];
+		icon.second = adv["description"];
 
-		for(unsigned int j=0;j<(modification_count("advance",(**i)["id"]));j++) {
-
+		for (unsigned j = 0, j_count = modification_count("advance", adv["id"]);
+		     j < j_count; ++j)
+		{
 			temp.push_back(icon);
 		}
 	}
@@ -2411,34 +2411,39 @@ void unit::reset_modifications()
 	cfg_.merge_with(to_merge);
 }
 
-config::child_list unit::get_modification_advances() const
+std::vector<config> unit::get_modification_advances() const
 {
-	config::child_list res;
-	const config::child_list& advances = modification_advancements();
-	for(config::child_list::const_iterator i = advances.begin(); i != advances.end(); ++i) {
-		if (!utils::string_bool((**i)["strict_amla"]) || advances_to_.empty()) {
-			if(modification_count("advance",(**i)["id"]) < lexical_cast_default<size_t>((**i)["max_times"],1)) {
-				std::vector<std::string> temp = utils::split((**i)["require_amla"]);
-				if(temp.size()){
-					std::sort(temp.begin(),temp.end());
-					std::vector<std::string> uniq;
-					std::unique_copy(temp.begin(),temp.end(),std::back_inserter(uniq));
-					bool requirements_done=true;
-					for(std::vector<std::string>::const_iterator ii = uniq.begin(); ii != uniq.end(); ii++){
-						int required_num = std::count(temp.begin(),temp.end(),*ii);
-						int mod_num = modification_count("advance",*ii);
-						if(required_num>mod_num){
-							requirements_done=false;
-						}
-					}
-					if(requirements_done){
-						res.push_back(*i);
-					}
-				}else{
-					res.push_back(*i);
-				}
+	std::vector<config> res;
+	foreach (const config &adv, modification_advancements())
+	{
+		if (utils::string_bool(adv["strict_amla"]) && !advances_to_.empty())
+			continue;
+		if (modification_count("advance", adv["id"]) >=
+		    lexical_cast_default<size_t>(adv["max_times"], 1))
+			continue;
+
+		std::vector<std::string> temp = utils::split(adv["require_amla"]);
+		if (temp.empty()) {
+			res.push_back(adv);
+			continue;
+		}
+
+		std::sort(temp.begin(), temp.end());
+		std::vector<std::string> uniq;
+		std::unique_copy(temp.begin(), temp.end(), std::back_inserter(uniq));
+
+		bool requirements_done = true;
+		foreach (const std::string &s, uniq)
+		{
+			int required_num = std::count(temp.begin(), temp.end(), s);
+			int mod_num = modification_count("advance", s);
+			if (required_num > mod_num) {
+				requirements_done = false;
+				break;
 			}
 		}
+		if (requirements_done)
+			res.push_back(adv);
 	}
 
 	return res;
