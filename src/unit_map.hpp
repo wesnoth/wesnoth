@@ -179,9 +179,9 @@ public:
 		typedef typename iter_types::iterator_type iterator_type;
 
 		unit_xy_policy() { }
-		unit_xy_policy(const iterator_type& i, const unit_map* map) : loc_(i->second.get_location()) { }
+		unit_xy_policy(const iterator_type& i, const unit_map* /*map*/) : loc_(i->second.get_location()) { }
 
-		void update(iterator_type& iter, const unit_map* map) {
+		void update(iterator_type& iter, const unit_map* /*map*/) {
 			loc_ = iter->second.get_location();
 		}
 
