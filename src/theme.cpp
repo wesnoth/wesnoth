@@ -17,6 +17,7 @@
 #include "global.hpp"
 
 #include "font.hpp"
+#include "foreach.hpp"
 #include "gettext.hpp"
 #include "hotkeys.hpp"
 #include "log.hpp"
@@ -185,22 +186,20 @@ static void expand_partialresolution(config& dst_cfg, const config& top_cfg)
 					res_cfgs_.back().values[j->first] = j->second;
 				}
 
+				foreach (const config &rm, parent_stack.back()->child_range("remove")) {
+					find_ref(rm["id"], res_cfgs_.back(), true);
+				}
+
+				foreach (const config &chg, parent_stack.back()->child_range("change"))
 				{
-					const config::child_list& c = parent_stack.back()->get_children("remove");
-					for(config::child_list::const_iterator j = c.begin(); j != c.end(); ++j) {
-						find_ref ((**j)["id"], res_cfgs_.back(), true);
+					config &target = find_ref(chg["id"], res_cfgs_.back());
+					for (string_map::const_iterator k = chg.values.begin(),
+					     k_end = chg.values.end(); k != k_end; ++k)
+					{
+						target[k->first] = k->second;
 					}
 				}
-				{
-					const config::child_list& c = parent_stack.back()->get_children("change");
-					for(config::child_list::const_iterator j = c.begin(); j != c.end(); ++j) {
-						config& target = find_ref ((**j)["id"], res_cfgs_.back());
-						for(string_map::iterator k = (**j).values.begin();
-								k != (**j).values.end(); ++k) {
-							target.values[k->first] = k->second;
-						}
-					}
-				}
+
 				{
 					// cannot add [status] sub-elements, but who cares
 					const config* c = parent_stack.back()->child("add");
@@ -218,9 +217,8 @@ static void expand_partialresolution(config& dst_cfg, const config& top_cfg)
 			}
 		}
 		// Add all the resolutions
-		const config::child_list& res_list = top_cfg.get_children("resolution");
-		for(config::child_list::const_iterator j = res_list.begin(); j != res_list.end(); ++j) {
-			dst_cfg.add_child("resolution", (**j));
+		foreach (const config &res, top_cfg.child_range("resolution")) {
+			dst_cfg.add_child("resolution", res);
 		}
 		// Add all the resolved resolutions
 		for(std::vector<config>::const_iterator k = res_cfgs_.begin(); k != res_cfgs_.end(); ++k) {
@@ -645,28 +643,26 @@ void theme::add_object(const config& cfg){
 		}
 	}
 
-	const config::child_list& panel_list = cfg.get_children("panel");
-	for(config::child_list::const_iterator p = panel_list.begin(); p != panel_list.end(); ++p) {
-		panel new_panel(**p);
-		set_object_location(new_panel, (**p)["rect"], (**p)["ref"]);
+	foreach (const config &p, cfg.child_range("panel")) {
+		panel new_panel(p);
+		set_object_location(new_panel, p["rect"], p["ref"]);
 		panels_.push_back(new_panel);
 	}
 
-	const config::child_list& label_list = cfg.get_children("label");
-	for(config::child_list::const_iterator lb = label_list.begin(); lb != label_list.end(); ++lb) {
-		label new_label(**lb);
-		set_object_location(new_label, (**lb)["rect"], (**lb)["ref"]);
+	foreach (const config &lb, cfg.child_range("label")) {
+		label new_label(lb);
+		set_object_location(new_label, lb["rect"], lb["ref"]);
 		labels_.push_back(new_label);
 	}
 
-	const config::child_list& menu_list = cfg.get_children("menu");
-	for(config::child_list::const_iterator m = menu_list.begin(); m != menu_list.end(); ++m) {
-		menu new_menu(**m);
+	foreach (const config &m, cfg.child_range("menu"))
+	{
+		menu new_menu(m);
 		DBG_DP << "adding menu: " << (new_menu.is_context() ? "is context" : "not context") << "\n";
 		if(new_menu.is_context())
 			context_ = new_menu;
 		else{
-			set_object_location(new_menu, (**m)["rect"], (**m)["ref"]);
+			set_object_location(new_menu, m["rect"], m["ref"]);
 			menus_.push_back(new_menu);
 		}
 
@@ -724,32 +720,26 @@ void theme::modify(const config* cfg){
 			title_stash[m->get_id()] = m->title();
 	}
 
+	// Change existing theme objects.
+	foreach (const config &c, cfg->child_range("change"))
 	{
-		// changes to existing theme objects
-		const config::child_list& c = cfg->get_children("change");
-		for(config::child_list::const_iterator j = c.begin(); j != c.end(); ++j) {
-			std::string id = (**j)["id"];
-			std::string ref_id = (**j)["ref"];
-			theme::object& element = find_element(id);
-			if (element.get_id() == id){
-				set_object_location(element, (**j)["rect"], ref_id);
-			}
-		}
+		std::string id = c["id"];
+		std::string ref_id = c["ref"];
+		theme::object &element = find_element(id);
+		if (element.get_id() == id)
+			set_object_location(element, c["rect"], ref_id);
 	}
-	// adding new theme objects
-	{
-		const config::child_list& c = cfg->get_children("add");
-		for(config::child_list::const_iterator j = c.begin(); j != c.end(); ++j) {
-			add_object(**j);
-		}
+
+	// Add new theme objects.
+	foreach (const config &c, cfg->child_range("add")) {
+		add_object(c);
 	}
-	// removing existent theme objects
-	{
-		const config::child_list& c = cfg->get_children("remove");
-		for(config::child_list::const_iterator j = c.begin(); j != c.end(); ++j) {
-			remove_object((**j)["id"]);
-		}
+
+	// Remove existent theme objects.
+	foreach (const config &c, cfg->child_range("remove")) {
+		remove_object(c["id"]);
 	}
+
 	for (m = menus_.begin(); m != menus_.end(); ++m) {
 		if (title_stash.find(m->get_id()) != title_stash.end())
 			m->set_title(title_stash[m->get_id()]);
@@ -784,18 +774,17 @@ const theme::status_item* theme::get_status_item(const std::string& key) const
 }
 
 std::map<std::string, config> theme::known_themes;
-void theme::set_known_themes(const config* cfg){
-        known_themes.clear();
-        if(cfg == NULL)
-	       return;
-	const config& v = *cfg;
-	const config::child_list& known_themes_cfg = v.get_children("theme");
+void theme::set_known_themes(const config* cfg)
+{
+	known_themes.clear();
+	if (!cfg)
+		return;
 
-	for(config::child_list::const_iterator thm = known_themes_cfg.begin(); thm != known_themes_cfg.end(); ++thm) {
-	       std::string thm_name=(**thm)["name"];
-	       if(thm_name!="null" && thm_name!="editor"){
-	              known_themes[thm_name]=(**thm);
-	       }
+	foreach (const config &thm, cfg->child_range("theme"))
+	{
+		std::string thm_name = thm["name"];
+		if (thm_name != "null" && thm_name != "editor")
+			known_themes[thm_name] = thm;
 	}
 }
 
