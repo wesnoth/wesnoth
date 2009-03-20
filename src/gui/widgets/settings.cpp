@@ -22,6 +22,7 @@
 #include "asserts.hpp"
 #include "config_cache.hpp"
 #include "filesystem.hpp"
+#include "foreach.hpp"
 #include "gettext.hpp"
 #include "gui/widgets/window.hpp"
 #include "serialization/parser.hpp"
@@ -123,12 +124,9 @@ void load_settings()
 	}
 
 	// Parse guis
-	const config::child_list& gui_cfgs = cfg.get_children("gui");
-	for(std::vector<config*>::const_iterator itor = gui_cfgs.begin();
-			itor != gui_cfgs.end(); ++itor) {
-
+	foreach (const config &g, cfg.child_range("gui")) {
 		std::pair<std::string, tgui_definition> child;
-		child.first = child.second.read(**itor);
+		child.first = child.second.read(g);
 		guis.insert(child);
 	}
 
@@ -254,35 +252,30 @@ const std::string& tgui_definition::read(const config& cfg)
 	DBG_G_P << "Parsing gui " << id << '\n';
 
 	/***** Control definitions *****/
-	load_definitions<tbutton_definition>("button", cfg.get_children("button_definition"));
-	load_definitions<thorizontal_scrollbar_definition>
-		("horizontal_scrollbar", cfg.get_children("horizontal_scrollbar_definition"));
-	load_definitions<timage_definition>("image", cfg.get_children("image_definition"));
-	load_definitions<tlabel_definition>("label", cfg.get_children("label_definition"));
-	load_definitions<tlistbox_definition>("listbox", cfg.get_children("listbox_definition"));
-	load_definitions<tmenubar_definition>("menubar", cfg.get_children("menubar_definition"));
-	load_definitions<tminimap_definition>("minimap", cfg.get_children("minimap_definition"));
-	load_definitions<tpanel_definition>("panel", cfg.get_children("panel_definition"));
-	load_definitions<tscroll_label_definition>("scroll_label", cfg.get_children("scroll_label_definition"));
-	load_definitions<tslider_definition>("slider", cfg.get_children("slider_definition"));
-	load_definitions<tspacer_definition>("spacer", cfg.get_children("spacer_definition"));
-	load_definitions<ttext_box_definition>("text_box", cfg.get_children("text_box_definition"));
+	load_definitions<tbutton_definition>("button", cfg);
+	load_definitions<thorizontal_scrollbar_definition>("horizontal_scrollbar", cfg);
+	load_definitions<timage_definition>("image", cfg);
+	load_definitions<tlabel_definition>("label", cfg);
+	load_definitions<tlistbox_definition>("listbox", cfg);
+	load_definitions<tmenubar_definition>("menubar", cfg);
+	load_definitions<tminimap_definition>("minimap", cfg);
+	load_definitions<tpanel_definition>("panel", cfg);
+	load_definitions<tscroll_label_definition>("scroll_label", cfg);
+	load_definitions<tslider_definition>("slider", cfg);
+	load_definitions<tspacer_definition>("spacer", cfg);
+	load_definitions<ttext_box_definition>("text_box", cfg);
 	// use the same definition for password boxes
-	load_definitions<ttext_box_definition>("password_box", cfg.get_children("text_box_definition"));
-	load_definitions<ttoggle_button_definition>("toggle_button", cfg.get_children("toggle_button_definition"));
-	load_definitions<ttoggle_panel_definition>("toggle_panel", cfg.get_children("toggle_panel_definition"));
-	load_definitions<ttooltip_definition>("tooltip", cfg.get_children("tooltip_definition"));
-	load_definitions<tvertical_scrollbar_definition>
-		("vertical_scrollbar", cfg.get_children("vertical_scrollbar_definition"));
-	load_definitions<twindow_definition>("window", cfg.get_children("window_definition"));
+	load_definitions<ttext_box_definition>("password_box", cfg, "text_box_definition");
+	load_definitions<ttoggle_button_definition>("toggle_button", cfg);
+	load_definitions<ttoggle_panel_definition>("toggle_panel", cfg);
+	load_definitions<ttooltip_definition>("tooltip", cfg);
+	load_definitions<tvertical_scrollbar_definition>("vertical_scrollbar", cfg);
+	load_definitions<twindow_definition>("window", cfg);
 
 	/***** Window types *****/
-	const config::child_list& window_instance_cfgs = cfg.get_children("window");
-	for(std::vector<config*>::const_iterator itor = window_instance_cfgs.begin();
-			itor != window_instance_cfgs.end(); ++itor) {
-
+	foreach (const config &w, cfg.child_range("window")) {
 		std::pair<std::string, twindow_builder> child;
-		child.first = child.second.read(**itor);
+		child.first = child.second.read(w);
 		window_types.insert(child);
 	}
 
@@ -372,12 +365,11 @@ void tgui_definition::activate() const
 
 template<class T>
 void tgui_definition::load_definitions(
-	const std::string& definition_type, const config::child_list& definition_list)
+	const std::string &definition_type, const config &cfg, const char *key)
 {
-	for(std::vector<config*>::const_iterator itor = definition_list.begin();
-			itor != definition_list.end(); ++itor) {
-
-		T* def = new T(**itor);
+	foreach (const config &d, cfg.child_range(key ? key : definition_type + "_definition"))
+	{
+		T* def = new T(d);
 
 		// We assume all definitions are unique if not we would leak memory.
 		assert(control_definition[definition_type].find(def->id)
@@ -503,14 +495,12 @@ tresolution_definition_::tresolution_definition_(const config& cfg) :
 }
 
 template<class T>
-void tcontrol_definition::load_resolutions(const config::child_list& resolution_list)
+void tcontrol_definition::load_resolutions(const config &cfg)
 {
-
-	VALIDATE(!resolution_list.empty(), _("No resolution defined."));
-	for(std::vector<config*>::const_iterator itor = resolution_list.begin();
-			itor != resolution_list.end(); ++itor) {
-
-		resolutions.push_back(new T(**itor));
+	config::const_child_itors itors = cfg.child_range("resolution");
+	VALIDATE(itors.first != itors.second, _("No resolution defined."));
+	foreach (const config &r, itors) {
+		resolutions.push_back(new T(r));
 	}
 }
 
@@ -544,7 +534,7 @@ tbutton_definition::tbutton_definition(const config& cfg) :
 {
 	DBG_G_P << "Parsing button " << id << '\n';
 
-	load_resolutions<tresolution>(cfg.get_children("resolution"));
+	load_resolutions<tresolution>(cfg);
 }
 
 tbutton_definition::tresolution::tresolution(const config& cfg) :
@@ -579,7 +569,7 @@ thorizontal_scrollbar_definition::
 {
 	DBG_G_P << "Parsing horizontal scrollbar " << id << '\n';
 
-	load_resolutions<tresolution>(cfg.get_children("resolution"));
+	load_resolutions<tresolution>(cfg);
 }
 
 thorizontal_scrollbar_definition::tresolution::tresolution(const config& cfg) :
@@ -641,7 +631,7 @@ timage_definition::timage_definition(const config& cfg) :
 {
 	DBG_G_P << "Parsing image " << id << '\n';
 
-	load_resolutions<tresolution>(cfg.get_children("resolution"));
+	load_resolutions<tresolution>(cfg);
 }
 
 timage_definition::tresolution::tresolution(const config& cfg) :
@@ -670,7 +660,7 @@ tlabel_definition::tlabel_definition(const config& cfg) :
 {
 	DBG_G_P << "Parsing label " << id << '\n';
 
-	load_resolutions<tresolution>(cfg.get_children("resolution"));
+	load_resolutions<tresolution>(cfg);
 }
 
 
@@ -701,7 +691,7 @@ tlistbox_definition::tlistbox_definition(const config& cfg) :
 {
 	DBG_G_P << "Parsing listbox " << id << '\n';
 
-	load_resolutions<tresolution>(cfg.get_children("resolution"));
+	load_resolutions<tresolution>(cfg);
 }
 
 tlistbox_definition::tresolution::tresolution(const config& cfg) :
@@ -773,7 +763,7 @@ tmenubar_definition::tmenubar_definition(const config& cfg) :
 {
 	DBG_G_P << "Parsing menubar " << id << '\n';
 
-	load_resolutions<tresolution>(cfg.get_children("resolution"));
+	load_resolutions<tresolution>(cfg);
 }
 
 tmenubar_definition::tresolution::tresolution(const config& cfg) :
@@ -802,7 +792,7 @@ tminimap_definition::tminimap_definition(const config& cfg) :
 {
 	DBG_G_P << "Parsing minimap " << id << '\n';
 
-	load_resolutions<tresolution>(cfg.get_children("resolution"));
+	load_resolutions<tresolution>(cfg);
 }
 
 tminimap_definition::tresolution::tresolution(const config& cfg) :
@@ -830,7 +820,7 @@ tpanel_definition::tpanel_definition(const config& cfg) :
 
 	DBG_G_P << "Parsing panel " << id << '\n';
 
-	load_resolutions<tresolution>(cfg.get_children("resolution"));
+	load_resolutions<tresolution>(cfg);
 }
 
 tpanel_definition::tresolution::tresolution(const config& cfg) :
@@ -873,7 +863,7 @@ tscroll_label_definition::tscroll_label_definition(const config& cfg) :
 {
 	DBG_G_P << "Parsing scroll label " << id << '\n';
 
-	load_resolutions<tresolution>(cfg.get_children("resolution"));
+	load_resolutions<tresolution>(cfg);
 }
 
 tscroll_label_definition::tresolution::tresolution(const config& cfg) :
@@ -927,7 +917,7 @@ tslider_definition::tslider_definition(const config& cfg) :
 {
 	DBG_G_P << "Parsing slider " << id << '\n';
 
-	load_resolutions<tresolution>(cfg.get_children("resolution"));
+	load_resolutions<tresolution>(cfg);
 }
 
 tslider_definition::tresolution::tresolution(const config& cfg) :
@@ -989,7 +979,7 @@ tspacer_definition::tspacer_definition(const config& cfg) :
 {
 	DBG_G_P << "Parsing spacer " << id << '\n';
 
-	load_resolutions<tresolution>(cfg.get_children("resolution"));
+	load_resolutions<tresolution>(cfg);
 }
 
 
@@ -1014,7 +1004,7 @@ ttext_box_definition::ttext_box_definition(const config& cfg) :
 {
 	DBG_G_P << "Parsing text_box " << id << '\n';
 
-	load_resolutions<tresolution>(cfg.get_children("resolution"));
+	load_resolutions<tresolution>(cfg);
 }
 
 ttext_box_definition::tresolution::tresolution(const config& cfg) :
@@ -1059,7 +1049,7 @@ ttoggle_button_definition::ttoggle_button_definition(const config& cfg) :
 {
 	DBG_G_P << "Parsing toggle button " << id << '\n';
 
-	load_resolutions<tresolution>(cfg.get_children("resolution"));
+	load_resolutions<tresolution>(cfg);
 }
 
 ttoggle_button_definition::tresolution::tresolution(const config& cfg) :
@@ -1099,7 +1089,7 @@ ttoggle_panel_definition::ttoggle_panel_definition(const config& cfg) :
 {
 	DBG_G_P << "Parsing toggle panel " << id << '\n';
 
-	load_resolutions<tresolution>(cfg.get_children("resolution"));
+	load_resolutions<tresolution>(cfg);
 }
 
 ttoggle_panel_definition::tresolution::tresolution(const config& cfg) :
@@ -1155,7 +1145,7 @@ ttooltip_definition::ttooltip_definition(const config& cfg) :
 {
 	DBG_G_P << "Parsing tooltip " << id << '\n';
 
-	load_resolutions<tresolution>(cfg.get_children("resolution"));
+	load_resolutions<tresolution>(cfg);
 }
 
 ttooltip_definition::tresolution::tresolution(const config& cfg) :
@@ -1184,7 +1174,7 @@ tvertical_scrollbar_definition::tvertical_scrollbar_definition(const config& cfg
 {
 	DBG_G_P << "Parsing vertical scrollbar " << id << '\n';
 
-	load_resolutions<tresolution>(cfg.get_children("resolution"));
+	load_resolutions<tresolution>(cfg);
 }
 
 tvertical_scrollbar_definition::tresolution::tresolution(const config& cfg) :

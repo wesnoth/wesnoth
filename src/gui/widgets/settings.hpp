@@ -137,7 +137,7 @@ public:
 	tcontrol_definition(const config& cfg);
 
 	template<class T>
-	void load_resolutions(const config::child_list& resolution_list);
+	void load_resolutions(const config &resolution_list);
 
 	std::string id;
 	t_string description;
@@ -403,7 +403,7 @@ struct tgui_definition
 private:
 	template<class T>
 	void load_definitions(const std::string& definition_type,
-		const config::child_list& definition_list);
+		const config &cfg, const char *key = NULL);
 
 	unsigned popup_show_delay_;
 	unsigned popup_show_time_;
