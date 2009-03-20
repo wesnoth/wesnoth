@@ -662,10 +662,9 @@ std::vector<std::string> unit::get_traits_list() const
 {
 	std::vector<std::string> res;
 
-	config::child_list const &mods = modifications_.get_children("trait");
-	for(config::child_list::const_iterator j = mods.begin(), j_end = mods.end(); j != j_end; ++j)
+	foreach (const config &mod, modifications_.child_range("trait"))
 	{
-			std::string const &id = (**j)["id"];
+			std::string const &id = mod["id"];
 			if (!id.empty())
 				res.push_back(id);
 	}
@@ -1294,19 +1293,14 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 		variable_info vi(cfg["find_in"], false, variable_info::TYPE_CONTAINER);
 		if(!vi.is_valid) return false;
 		if(vi.explicit_index) {
-			if(id_ != (vi.vars->get_children(vi.key)[vi.index])->get_attribute("id")) {
+			config::const_child_iterator i = vi.vars->child_range(vi.key).first;
+			std::advance(i, vi.index);
+			if ((*i)["id"] != id_) {
 				return false;
 			}
 		} else {
-			config::child_itors ch_itors = vi.vars->child_range(vi.key);
-			for(; ch_itors.first != ch_itors.second; ++ch_itors.first) {
-				if (id_ == ch_itors.first->get_attribute("id")) {
-					break;
-				}
-			}
-			if(ch_itors.first == ch_itors.second) {
+			if (!vi.vars->find_child(vi.key, "id", id_))
 				return false;
-			}
 		}
 	}
 	if(cfg.has_attribute("formula")) {
@@ -2386,8 +2380,8 @@ void unit::reset_modifications()
 	}
 	config to_merge;
 	foreach(const std::string& tag, mod_childs) {
-		foreach(config* child, t->cfg_.get_children(tag)) {
-			to_merge.add_child(tag, *child);
+		foreach (const config &child, t->cfg_.child_range(tag)) {
+			to_merge.add_child(tag, child);
 		}
 	}
 	cfg_.merge_with(to_merge);
@@ -2434,9 +2428,8 @@ std::vector<config> unit::get_modification_advances() const
 size_t unit::modification_count(const std::string& type, const std::string& id) const
 {
 	size_t res = 0;
-	const config::child_list& items = modifications_.get_children(type);
-	for(config::child_list::const_iterator i = items.begin(); i != items.end(); ++i) {
-		if((**i)["id"] == id) {
+	foreach (const config &item, modifications_.child_range(type)) {
+		if (item["id"] == id) {
 			++res;
 		}
 	}
@@ -2862,17 +2855,17 @@ void unit::apply_modifications()
 {
 	log_scope("apply mods");
 	std::vector< t_string > traits;
-	config::child_list const &mods = modifications_.get_children("trait");
-	for(config::child_list::const_iterator j = mods.begin(), j_end = mods.end(); j != j_end; ++j) {
-		is_fearless_ = is_fearless_ || (**j)["id"] == "fearless";
-		is_healthy_ = is_healthy_ || (**j)["id"] == "healthy";
-		const std::string gender_string = gender_ == unit_race::FEMALE ? "female_name" : "male_name";
-		t_string const &gender_specific_name = (**j)[gender_string];
+	foreach (config &m, modifications_.child_range("trait"))
+	{
+		is_fearless_ = is_fearless_ || m["id"] == "fearless";
+		is_healthy_ = is_healthy_ || m["id"] == "healthy";
+		const char *gender_string = gender_ == unit_race::FEMALE ? "female_name" : "male_name";
+		t_string const &gender_specific_name = m[gender_string];
 		if (!gender_specific_name.empty()) {
 			traits.push_back(gender_specific_name);
-			(**j)["name"] = gender_specific_name;
+			m["name"] = gender_specific_name;
 		} else {
-			t_string const &name = (**j)["name"];
+			t_string const &name = m["name"];
 			if (!name.empty()) {
 				traits.push_back(name);
 			}
@@ -2881,10 +2874,9 @@ void unit::apply_modifications()
 
 	for(size_t i = 0; i != NumModificationTypes; ++i) {
 		const std::string& mod = ModificationTypes[i];
-		const config::child_list& mods = modifications_.get_children(mod);
-		for(config::child_list::const_iterator j = mods.begin(); j != mods.end(); ++j) {
+		foreach (const config &m, modifications_.child_range(mod)) {
 			log_scope("add mod");
-			add_modification(ModificationTypes[i],**j,true);
+			add_modification(ModificationTypes[i], m, true);
 		}
 	}
 
@@ -3192,9 +3184,7 @@ std::string get_checksum(const unit& u) {
 		"zoc",
 		""};
 
-	int i;
-
-	for (i = 0; !main_keys[i].empty(); ++i)
+	for (int i = 0; !main_keys[i].empty(); ++i)
 	{
 		wcfg[main_keys[i]] = unit_config[main_keys[i]];
 	}
@@ -3205,39 +3195,32 @@ std::string get_checksum(const unit& u) {
 	        "damage",
         	"number",
 		""};
-	const config::child_list& attacks = unit_config.get_children("attack");
-	for (config::child_list::const_iterator att = attacks.begin(); att != attacks.end(); ++att)
+
+	foreach (const config &att, unit_config.child_range("attack"))
 	{
 		config& child = wcfg.add_child("attack");
-		for (i = 0; !attack_keys[i].empty(); ++i)
-		{
-			child[attack_keys[i]] = (**att)[attack_keys[i]];
+		for (int i = 0; !attack_keys[i].empty(); ++i) {
+			child[attack_keys[i]] = att[attack_keys[i]];
 		}
-		const config::child_list& specials = (*att)->get_children("specials");
-
-		for (config::child_list::const_iterator spec = specials.begin(); spec != specials.end(); ++spec)
-		{
-			config& child_spec = child.add_child("specials", **spec);
+		foreach (const config &spec, att.child_range("specials")) {
+			config& child_spec = child.add_child("specials", spec);
 			child_spec.recursive_clear_value("description");
-
 		}
 
 	}
 
-	const config::child_list& abilities = unit_config.get_children("abilities");
-	for (config::child_list::const_iterator abi = abilities.begin(); abi != abilities.end(); ++abi)
+	foreach (const config &abi, unit_config.child_range("abilities"))
 	{
-		config& child = wcfg.add_child("abilities", **abi);
+		config& child = wcfg.add_child("abilities", abi);
 		child.recursive_clear_value("description");
 		child.recursive_clear_value("description_inactive");
 		child.recursive_clear_value("name");
 		child.recursive_clear_value("name_inactive");
 	}
 
-	const config::child_list& traits = unit_config.get_children("trait");
-	for (config::child_list::const_iterator trait = traits.begin(); trait != traits.end(); ++trait)
+	foreach (const config &trait, unit_config.child_range("trait"))
 	{
-		config& child = wcfg.add_child("trait", **trait);
+		config& child = wcfg.add_child("trait", trait);
 		child.recursive_clear_value("description");
 		child.recursive_clear_value("male_name");
 		child.recursive_clear_value("female_name");
@@ -3246,38 +3229,14 @@ std::string get_checksum(const unit& u) {
 
 	const std::string child_keys[] = {"advance_from", "defense", "movement_cost", "resistance",""};
 
-	for  (i = 0; !child_keys[i].empty(); ++i)
+	for (int i = 0; !child_keys[i].empty(); ++i)
 	{
-		const config::child_list& children = unit_config.get_children(child_keys[i]);
-		for (config::child_list::const_iterator c = children.begin(); c != children.end(); ++c)
-		{
-			wcfg.add_child(child_keys[i], **c);
+		foreach (const config &c, unit_config.child_range(child_keys[i])) {
+			wcfg.add_child(child_keys[i], c);
 		}
 	}
 	DBG_UT << wcfg;
 
 	return wcfg.hash();
-
-	unit_config["controller"] = "";
-	// Since the ai messes up the 'moves' attribute, ignore that for the checksum
-	unit_config["moves"] = "";
-	// Non-critical attributes to ignore.
-	unit_config["alpha"] = "";
-	unit_config["description"] = "";
-	unit_config["die_sound"] = "";
-	unit_config["ellipse"] = "";
-	unit_config["facing"] = "";
-	unit_config["flag_rgb"] = "";
-	unit_config["image"] = "";
-	unit_config["language_name"] = "";
-	unit_config["name"] = "";
-	unit_config["overlays"] = "";
-	// Non-critical tags to ignore.
-	unit_config.clear_children("comment");
-	foreach(const std::string& tag_name, unit_animation::all_tag_names()) {
-		unit_config.clear_children(tag_name);
-	}
-
-	return unit_config.hash();
 }
 
