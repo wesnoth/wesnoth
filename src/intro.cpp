@@ -33,21 +33,15 @@
 #define ERR_NG LOG_STREAM(err , engine)
 #define LOG_NG LOG_STREAM(info, engine)
 
-namespace {
-	void scan_deprecation_messages(const config& cfg)
+static void scan_deprecation_messages(const config &cfg)
+{
+	foreach (const config &child, cfg.child_range("deprecated_message"))
 	{
-		foreach(config const * const child, cfg.get_children("deprecated_message")) {
-			if(child == NULL) {
-				ERR_NG << "NULL config while searching deprecated_messages\n";
-				continue;
-			}
-			const std::string msg = (*child)["message"];
-			if(!msg.empty()) {
-				lg::wml_error << msg << '\n';
-			}
-		}
+		const std::string &msg = child["message"];
+		if (msg.empty()) continue;
+		LOG_STREAM(err, wml) << msg << '\n';
 	}
-} // end unnamed namespace
+}
 
 static bool show_intro_part(display &disp, const vconfig& part,
 		const std::string& scenario);
