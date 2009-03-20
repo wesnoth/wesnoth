@@ -3572,14 +3572,11 @@ namespace game_events {
 		variable_manager(&state_of_game_)
 	{
 		assert(!manager_running);
-		const config::child_list& events_list = cfg.get_children("event");
-		for(config::child_list::const_iterator i = events_list.begin();
-				i != events_list.end(); ++i) {
-			event_handlers.push_back(game_events::event_handler(*i));
+		foreach (const config &ev, cfg.child_range("event")) {
+			event_handlers.push_back(game_events::event_handler(&ev));
 		}
-		std::vector<std::string> unit_ids = utils::split(cfg["unit_wml_ids"]);
-		for(std::vector<std::string>::const_iterator id_it = unit_ids.begin(); id_it != unit_ids.end(); ++id_it) {
-			unit_wml_ids.insert(*id_it);
+		foreach (const std::string &id, utils::split(cfg["unit_wml_ids"])) {
+			unit_wml_ids.insert(id);
 		}
 
 		teams = &teams_;
