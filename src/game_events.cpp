@@ -3691,13 +3691,13 @@ namespace game_events {
 		return pump();
 	}
 
-	void add_events(const config::child_list& cfgs,const std::string& id)
+	void add_events(const config::const_child_itors &cfgs, const std::string &id)
 	{
 		if(std::find(unit_wml_ids.begin(),unit_wml_ids.end(),id) == unit_wml_ids.end()) {
 			unit_wml_ids.insert(id);
-			for(config::child_list::const_iterator new_ev = cfgs.begin(); new_ev != cfgs.end(); ++ new_ev) {
+			foreach (const config &new_ev, cfgs) {
 				std::vector<game_events::event_handler> &temp = (pump_manager::count()) ? new_handlers : event_handlers;
-				temp.push_back(game_events::event_handler(vconfig(*new_ev, true)));
+				temp.push_back(game_events::event_handler(vconfig(&new_ev, true)));
 			}
 		}
 	}

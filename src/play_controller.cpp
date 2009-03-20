@@ -184,7 +184,7 @@ void play_controller::init(CVideo& video){
 	// add era events for MP game
 	const config* era_cfg = level_.child("era");
 	if (era_cfg != NULL) {
-		game_events::add_events(era_cfg->get_children("event"),"era_events");
+		game_events::add_events(era_cfg->child_range("event"), "era_events");
 	}
 
 

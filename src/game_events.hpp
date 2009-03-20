@@ -279,7 +279,7 @@ namespace game_events
 
 	game_state* get_state_of_game();
 	void write_events(config& cfg);
-	void add_events(const config::child_list& cfgs,const std::string& id);
+	void add_events(const config::const_child_itors &cfgs,const std::string& id);
 
 	bool unit_matches_filter(unit_map::const_iterator itor, const vconfig filter);
 

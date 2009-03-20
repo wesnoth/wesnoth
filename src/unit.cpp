@@ -578,7 +578,7 @@ void unit::set_game_context(unit_map* unitmap, const gamemap* map, const gamesta
 	gamestatus_ = game_status;
 
 	// In case the unit carries EventWML, apply it now
-	game_events::add_events(cfg_.get_children("event"),type_);
+	game_events::add_events(cfg_.child_range("event"), type_);
 }
 
 // Apply mandatory traits (e.g. undead, mechanical) to a unit and then
@@ -763,7 +763,7 @@ void unit::advance_to(const unit_type* t, bool use_traits, game_state* state)
 		heal_all();
 	}
 
-	game_events::add_events(cfg_.get_children("event"),type_);
+	game_events::add_events(cfg_.child_range("event"), type_);
 
 	set_state("poisoned","");
 	set_state("slowed","");
@@ -1562,7 +1562,7 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 		cfg_["generate_name"] = "";
 	}
 
-	game_events::add_events(cfg_.get_children("event"),type_);
+	game_events::add_events(cfg_.child_range("event"), type_);
 	// Make the default upkeep "full"
 	if(cfg_["upkeep"].empty()) {
 		cfg_["upkeep"] = "full";
