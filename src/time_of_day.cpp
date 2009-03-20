@@ -16,6 +16,7 @@
 
 #include "global.hpp"
 
+#include "foreach.hpp"
 #include "time_of_day.hpp"
 
 
@@ -69,10 +70,8 @@ void time_of_day::write(config& cfg) const
 
 void time_of_day::parse_times(const config& cfg, std::vector<time_of_day>& normal_times)
 {
-	const config::child_list& times = cfg.get_children("time");
-	config::child_list::const_iterator t;
-	for(t = times.begin(); t != times.end(); ++t) {
-		normal_times.push_back(time_of_day(**t));
+	foreach (const config &t, cfg.child_range("time")) {
+		normal_times.push_back(time_of_day(t));
 	}
 
 	if(normal_times.empty())
