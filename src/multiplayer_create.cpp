@@ -19,6 +19,7 @@
 
 #include "global.hpp"
 
+#include "foreach.hpp"
 #include "gettext.hpp"
 #include "construct_dialog.hpp"
 #include "settings.hpp"
@@ -113,16 +114,17 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist)
 	}
 
 	// Standard maps
-	const config::child_list& levels = cfg.get_children("multiplayer");
 	i = 0;
-	for(config::child_list::const_iterator j = levels.begin(); j != levels.end(); ++j, ++i)
+	foreach (const config &j, cfg.child_range("multiplayer"))
 	{
-		if (utils::string_bool((**j)["allow_new_game"], true))
+		if (utils::string_bool(j["allow_new_game"], true))
 		{
-			menu_help_str = help_sep + ((**j)["name"]);
-			map_options_.push_back(((**j)["name"]) + menu_help_str);
+			std::string name = j["name"];
+			menu_help_str = help_sep + name;
+			map_options_.push_back(name + menu_help_str);
 			map_index_.push_back(i);
 		}
+		++i;
 	}
 
 	// Create the scenarios menu
@@ -199,10 +201,9 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist)
 	vision_combo_.set_selected(0);
 
 	// The possible eras to play
-	const config::child_list& era_list = cfg.get_children("era");
 	std::vector<std::string> eras;
-	for(config::child_list::const_iterator er = era_list.begin(); er != era_list.end(); ++er) {
-		eras.push_back((**er)["name"]);
+	foreach (const config &er, cfg.child_range("era")) {
+		eras.push_back(er["name"]);
 	}
 	if(eras.empty()) {
 		gui::message_dialog(disp, "", _("No eras found.")).show();
@@ -259,7 +260,6 @@ create::~create()
 
 create::parameters& create::get_parameters()
 {
-	const config::child_list& era_list = game_config().get_children("era");
 	const int turns = turns_slider_.value() < turns_slider_.max_value() ?
 		turns_slider_.value() : -1;
 
@@ -277,10 +277,16 @@ create::parameters& create::get_parameters()
 	// Updates the values in the "parameters_" member to match
 	// the values selected by the user with the widgets:
 	parameters_.name = name_entry_.text();
-	if (size_t(era_combo_.selected()) >= era_list.size()) {
-		throw config::error(_("Invalid era selected"));
+
+	config::const_child_itors era_list = game_config().child_range("era");
+	for (int num = era_combo_.selected(); num > 0; --num) {
+		if (era_list.first == era_list.second) {
+			throw config::error(_("Invalid era selected"));
+		}
+		++era_list.first;
 	}
-	parameters_.era = (*era_list[era_combo_.selected()])["id"];
+
+	parameters_.era = (*era_list.first)["id"];
 	parameters_.num_turns = turns;
 	// CHECK
 	parameters_.mp_countdown_init_time = mp_countdown_init_time_val;
@@ -420,25 +426,31 @@ void create::process_event()
 			size_t index = select - user_maps_.size() - 1;
 			assert(index < map_index_.size());
 			index = map_index_[index];
-			const config::child_list& levels = game_config().get_children("multiplayer");
 
-			if(index < levels.size()) {
+			config::const_child_itors levels = game_config().child_range("multiplayer");
+			for (; index > 0; --index) {
+				if (levels.first == levels.second) break;
+				++levels.first;
+			}
 
-				parameters_.scenario_data = *levels[index];
-				std::string map_data = parameters_.scenario_data["map_data"];
+			if (levels.first != levels.second)
+			{
+				const config &level = *levels.first;
+				parameters_.scenario_data = level;
+				std::string map_data = level["map_data"];
 
-				if(map_data.empty() && parameters_.scenario_data.get_attribute("map") != "") {
-					map_data = read_map(parameters_.scenario_data["map"]);
+				if (map_data.empty() && !level["map"].empty()) {
+					map_data = read_map(level["map"]);
 				}
 
 				// If the map should be randomly generated.
-				if(parameters_.scenario_data.get_attribute("map_generation") != "") {
-					generator_.assign(create_map_generator(parameters_.scenario_data["map_generation"],parameters_.scenario_data.child("generator")));
+				if (!level["map_generation"].empty()) {
+					generator_.assign(create_map_generator(level["map_generation"], level.child("generator")));
 				}
 
 #ifndef USE_TINY_GUI
-				if(!parameters_.scenario_data.get_attribute("description").empty()) {
-					tooltips::add_tooltip(minimap_rect_,parameters_.scenario_data["description"]);
+				if (!level["description"].empty()) {
+					tooltips::add_tooltip(minimap_rect_, level["description"]);
 				}
 #endif
 			}
@@ -498,7 +510,7 @@ void create::process_event()
 		// starting positions, then generate the additional sides
 		const int map_positions = map.get() != NULL ? map->num_valid_starting_positions() : 0;
 
-		for(int pos =  parameters_.scenario_data.get_children("side").size(); pos < map_positions; ++pos) {
+		for (int pos = parameters_.scenario_data.child_count("side"); pos < map_positions; ++pos) {
 			config& side = parameters_.scenario_data.add_child("side");
 			side["enemy"] = "1";
 			side["side"] = lexical_cast<std::string>(pos+1);
@@ -515,12 +527,9 @@ void create::process_event()
 		}
 #endif
 
-		int nsides = parameters_.scenario_data.get_children("side").size();
-		const config::child_list& player_sides = parameters_.scenario_data.get_children("side");
-		for(config::child_list::const_iterator k = player_sides.begin(); k != player_sides.end(); ++k) {
-			if(!utils::string_bool((**k)["allow_player"],true)) {
-				nsides--;
-			}
+		int nsides = 0;
+		foreach (const config &k, parameters_.scenario_data.child_range("side")) {
+			if (utils::string_bool(k["allow_player"], true)) ++nsides;
 		}
 
 		std::stringstream players;
@@ -560,21 +569,21 @@ void create::process_event()
 		 * This might change in the future.
 		 * NOTE when 'load game' is selected there are no sides.
 		 */
-		if(parameters_.scenario_data.get_children("side").size()) {
+		config::const_child_itors sides = parameters_.scenario_data.child_range("side");
+		if (sides.first != sides.second)
+		{
+			const config &cfg = *sides.first;
 
 			village_gold_slider_.set_value(map_settings ?
-				settings::get_village_gold((*parameters_.
-					scenario_data.get_children("side").front())["village_gold"]) :
+				settings::get_village_gold(cfg["village_gold"]) :
 				preferences::village_gold());
 
 			fog_game_.set_check(map_settings ?
-				settings::use_fog((*parameters_.
-					scenario_data.get_children("side").front())["fog"]) :
+				settings::use_fog(cfg["fog"]) :
 				preferences::fog());
 
 			shroud_game_.set_check(map_settings ?
-				settings::use_shroud((*parameters_.
-					scenario_data.get_children("side").front())["shroud"]) :
+				settings::use_shroud(cfg["shroud"]) :
 				preferences::shroud());
 		}
 
