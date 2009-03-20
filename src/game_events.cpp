@@ -787,7 +787,7 @@ namespace {
 		std::string shroud_data = cfg["shroud_data"];
 		std::string village_gold = cfg["village_gold"];
 		const config& parsed = cfg.get_parsed_config();
-		const config::child_list& ai = parsed.get_children("ai");
+		const config::const_child_itors &ai = parsed.child_range("ai");
 		/**
 		 * @todo also allow client to modify a side's colour if it is possible
 		 * to change it on the fly without causing visual glitches
@@ -848,7 +848,7 @@ namespace {
 				(*teams)[team_index].set_village_gold(lexical_cast_default<int>(village_gold));
 			}
 			// Override AI parameters
-			if (!ai.empty()) {
+			if (ai.first != ai.second) {
 				(*teams)[team_index].set_ai_parameters(ai);
 			}
 		}

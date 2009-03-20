@@ -137,18 +137,18 @@ team::team_info::team_info(const config& cfg) :
 	if (!user_team_name.translatable())
 		user_team_name = user_team_name.from_serialized(user_team_name);
 	config global_ai_params;
-	const config::child_list& ai_parameters = cfg.get_children("ai");
-	for(config::child_list::const_iterator aiparam = ai_parameters.begin(); aiparam != ai_parameters.end(); ++aiparam) {
-		ai_params.push_back(**aiparam);
 
-		if((**aiparam)["turns"].empty() && (**aiparam)["time_of_day"].empty()) {
-			global_ai_params.append(**aiparam);
+	foreach (const config &aiparam, cfg.child_range("ai"))
+	{
+		ai_params.push_back(aiparam);
+
+		if (aiparam["turns"].empty() && aiparam["time_of_day"].empty()) {
+			global_ai_params.append(aiparam);
 		}
 	}
 
-	const config::child_list& ai_mems = cfg.get_children("ai_memory");
-	for(config::child_list::const_iterator aimem = ai_mems.begin(); aimem != ai_mems.end(); ++aimem) {
-	  ai_memory_.append(**aimem);
+	foreach (const config &aimem, cfg.child_range("ai_memory")) {
+		ai_memory_.append(aimem);
 	}
 
 	// at the start of a scenario "start_gold" is not set, we need to take the
@@ -472,9 +472,9 @@ team::team(const config& cfg, const gamemap& map, int gold) :
 	}
 
 	// Load in the villages the side controls at the start
-	const config::child_list& villages = cfg.get_children("village");
-	for(config::child_list::const_iterator v = villages.begin(); v != villages.end(); ++v) {
-		map_location loc(**v,game_events::get_state_of_game());
+	foreach (const config &v, cfg.child_range("village"))
+	{
+		map_location loc(v, game_events::get_state_of_game());
 		if (map.is_village(loc)) {
 			villages_.insert(loc);
 		} else {
@@ -708,12 +708,11 @@ void team::set_ai_memory(const config& ai_mem){
   info_.ai_memory_=ai_mem;
 }
 
-void team::set_ai_parameters(const config::child_list& ai_parameters)
+void team::set_ai_parameters(const config::const_child_itors &ai_parameters)
 {
 	info_.ai_params.clear();		// override
-	config::child_list::const_iterator i;
-	for (i = ai_parameters.begin(); i != ai_parameters.end(); ++i) {
-		info_.ai_params.push_back(**i);
+	foreach (const config &p, ai_parameters) {
+		info_.ai_params.push_back(p);
 	}
 }
 
