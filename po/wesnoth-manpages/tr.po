@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-manpages\n"
 "POT-Creation-Date: 2009-03-20 00:47+0100\n"
-"PO-Revision-Date: 2009-02-23 19:41+0200\n"
+"PO-Revision-Date: 2009-03-20 20:52+0200\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish <wesnoth-tr@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -920,7 +920,7 @@ msgstr "Genel anahtar (key) isimleri:"
 #: ../../doc/man/wesnothd.6:110
 #, no-wrap
 msgid "B<ban_save_file>"
-msgstr "B<ban_kayıt-dosyası>"
+msgstr "B<ban_save_file>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:114
@@ -970,7 +970,7 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:124
 #, no-wrap
 msgid "B<fifo_path>"
-msgstr "B<fifo_yolu>"
+msgstr "B<fifo_path>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:128
@@ -1041,7 +1041,7 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:140
 #, no-wrap
 msgid "B<restart_command>"
-msgstr "B<yeniden_başlatma_komutu>"
+msgstr "B<restart_command>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:143
@@ -1078,7 +1078,7 @@ msgstr "Örnek: B<versions_accepted=\"*\"> her sürüm dizgesi kabul edilir.."
 #: ../../doc/man/wesnothd.6:149
 #, no-wrap
 msgid "B<user_handler>"
-msgstr ""
+msgstr "B<user_handler>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:154
@@ -1089,6 +1089,12 @@ msgid ""
 "anything real you are insane). The default value is 'forum'. You must also "
 "add a B<[user_handler]> section, see below."
 msgstr ""
+"Kullanılacak kullanıcı işlemcisinin ismi. Şu an kullanılabilecek kullanıcı "
+"işlemcisi isimleri: 'forum' (wesnothd ile bir phpbb forumu veritabanını "
+"bağlanmak için) ve 'sample' (kullanıcı işlemcisi arayüzü için örnek "
+"gerçeklenim; bunu gerçek bir uygulamada kullanmamalısınız). 'forum' "
+"öntanımlıdır. Ayrıca, bir B<[user_handler]> bölümü eklemeniz gerekir; "
+"aşağıya bakınız."
 
 # type: SS
 #: ../../doc/man/wesnothd.6:155
@@ -1155,7 +1161,7 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:177
 #, no-wrap
 msgid "B<name>"
-msgstr "B<isim>"
+msgstr "B<name>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:180
@@ -1166,7 +1172,7 @@ msgstr "Yasaklama süresine atfedilen isim."
 #: ../../doc/man/wesnothd.6:180
 #, no-wrap
 msgid "B<time>"
-msgstr "B<süre>"
+msgstr "B<time>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:186
@@ -1202,34 +1208,38 @@ msgid ""
 "[user_handler] section is present in the configuration the server will run "
 "without any nick registration service."
 msgstr ""
+"B<[user_handler]> Kullanıcı işlemcisini yapılandırır.  Kullanılabilecek "
+"anahtarlar B<user_handler> anahtarı ile hangi kullanıcı işlemcisinin "
+"tanımlandığına bağlıdır. Yapılandırmada bir [user_handler] bölümü yoksa "
+"sunucu herhangi bir kullanıcı kayıt hizmeti olmadan çalışacaktır."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:199
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<db_host>"
-msgstr "B<host>"
+msgstr "B<db_host>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:202
 msgid "(for user_handler=forum) The hostname of the database server"
-msgstr ""
+msgstr "(user_handler=forum için) Veritabanı sunucusunun konak adı."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:202
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<db_name>"
-msgstr "B<isim>"
+msgstr "B<db_name>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:205
 msgid "(for user_handler=forum) The name of the database"
-msgstr ""
+msgstr "(user_handler=forum için) Veritabanının ismi."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:205
 #, no-wrap
 msgid "B<db_user>"
-msgstr ""
+msgstr "B<db_user>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:208
@@ -1237,23 +1247,24 @@ msgid ""
 "(for user_handler=forum) The name of the user under which to log into the "
 "database"
 msgstr ""
+"(user_handler=forum için) Veritabanını girişte kullanılacak kullanıcı ismi."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:208
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<db_password>"
-msgstr "B<passwd>"
+msgstr "B<db_password>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:211
 msgid "(for user_handler=forum) This user's password"
-msgstr ""
+msgstr "(user_handler=forum için) Bu kullanıcının parolası"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:211
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<db_users_table>"
-msgstr "B<ban_kayıt-dosyası>"
+msgstr "B<db_users_table>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:214
@@ -1262,12 +1273,15 @@ msgid ""
 "saves its user data. Most likely this will be E<lt>table-prefixE<gt>_users "
 "(e.g. phpbb3_users)."
 msgstr ""
+"(user_handler=forum için) PHPBB forumlarınızın kullanıcı verilerini "
+"saklayacağı tablonun ismi. Bu tablo genellikle belirtilir: E<lt>tablo-"
+"önekiE<gt>_users (örnek: phpbb3_users)."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:214
 #, no-wrap
 msgid "B<db_extra_table>"
-msgstr ""
+msgstr "B<db_extra_table>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:218
@@ -1278,12 +1292,17 @@ msgid ""
 "user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4) "
 "NOT NULL DEFAULT 0);"
 msgstr ""
+"(user_handler=forum için) wesnothd'nin kullanıcıları hakkındaki verileri "
+"saklayacağı tablonun ismi. Bu tabloyu elle kendiniz oluşturmalısınız. Örnek: "
+"CREATE TABLE E<lt>tablo-ismiE<gt>(kullanıcı VARCHAR(255) PRIMARY KEY, "
+"son_giren_kullanıcı INT UNSIGNED NOT NULL DEFAULT 0, yönetici_adı TINYINT(4) "
+"NOT NULL DEFAULT 0);"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:218
 #, no-wrap
 msgid "B<user_expiration>"
-msgstr ""
+msgstr "B<user_expiration>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:221
@@ -1291,6 +1310,8 @@ msgid ""
 "(for user_handler=sample) The time after which a registered nick expires (in "
 "days)."
 msgstr ""
+"(user_handler=sample için) Kayıtlı bir oyuncu adının geçerli kalacağı gün "
+"sayısı."
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:225
@@ -1298,65 +1319,67 @@ msgid ""
 "B<[mail]> Configures an SMTP server through which the user handler can send "
 "mail. Currently only used by the sample user handler."
 msgstr ""
+"B<[mail]> Kullanıcı işlemcisinin epostaları göndereceği SMTP sunucusunu "
+"yapılandırır. Şimdilik sadece örnek kullanıcı işlemcisi tarafından "
+"kullanılmaktadır."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:226
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<server>"
-msgstr "B<version>"
+msgstr "B<server>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:229
 msgid "The hostname of the mail server"
-msgstr ""
+msgstr "Posta sunucusunun konak adı."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:229
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<username>"
-msgstr "B<isim>"
+msgstr "B<username>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:232
 msgid "The user name under which to log into the mail server."
-msgstr ""
+msgstr "Posta sunucusuna girişte kullanılacak kullanıcı adı."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:232
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<password>"
-msgstr "B<passwd>"
+msgstr "B<password>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:235
 msgid "This user's password."
-msgstr ""
+msgstr "Bu kullanıcının parolası."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:235
 #, no-wrap
 msgid "B<from_address>"
-msgstr ""
+msgstr "B<from_address>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:238
 msgid "The reply-to address of you mail."
-msgstr ""
+msgstr "Epostanızın yanıtlama adresi."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:238
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<mail_port>"
-msgstr "B<port>"
+msgstr "B<mail_port>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:241
 msgid "The port on which your mail server is running. Default is 25."
-msgstr ""
+msgstr "Eposta sunucunuzun dinlediği port. 25 öntanımlıdır."
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:247
-#, fuzzy
 msgid ""
 "Written by David White E<lt>davidnwhite@verizon.netE<gt>.  Edited by Nils "
 "Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt>, "
@@ -1365,45 +1388,14 @@ msgid ""
 "Bouthors E<lt>cyril@bouthors.orgE<gt>."
 msgstr ""
 "Program David White E<lt>davidnwhite@verizon.netE<gt> tarafından yazılmış, "
-"Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt> ve "
-"Soliton E<lt>soliton.de@gmail.comE<gt> tarafından düzenlenmiştir. Bu kılavuz "
-"sayfası ilk defa Cyril Bouthors E<lt>cyril@bouthors.orgE<gt> tarafından "
-"yazılmış Nilgün Belma Bugüner E<lt>nilgun@belgeler.orgE<gt> tarafından "
-"Türkçe'ye çevrilmiştir."
+"Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt>, "
+"Soliton E<lt>soliton.de@gmail.comE<gt> ve Thomas Baumhauer E<lt>thomas."
+"baumhauer@gmail.comE<gt> tarafından düzenlenmiştir. Bu kılavuz sayfası ilk "
+"defa Cyril Bouthors E<lt>cyril@bouthors.orgE<gt> tarafından yazılmış Nilgün "
+"Belma Bugüner E<lt>nilgun@belgeler.orgE<gt> tarafından Türkçe'ye "
+"çevrilmiştir."
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:260
 msgid "B<wesnoth>(6), B<wesnoth_editor>(6)"
 msgstr "B<wesnoth>(6), B<wesnoth_editor>(6)"
-
-# type: TP
-#~ msgid "B<--python-api>"
-#~ msgstr "B<--python-api>"
-
-# type: Plain text
-#~ msgid "prints the runtime documentation for the python API."
-#~ msgstr "Python API için çalışma anı belgelerini basar."
-
-# type: TP
-#~ msgid "B<--python-shell>"
-#~ msgstr "B<--python-shell>"
-
-# type: Plain text
-#~ msgid "invokes wesnoth's embedded python interpreter in interactive mode."
-#~ msgstr "etkileşimli kipte gömülü python yorumlayıcısını çağırır."
-
-# type: TP
-#~ msgid ""
-#~ "Example to test your own AI against the default AI without starting the "
-#~ "GUI:"
-#~ msgstr ""
-#~ "Çizgesel arayüzü başlatmaksızın kendi saldırı arayüzünüzü öntanımlı "
-#~ "saldırı arayüzüne karşı denemek için komut satırı örneği:"
-
-# type: Plain text
-#~ msgid ""
-#~ "B<wesnoth --nogui --multiplayer --controller1=ai --controller2=ai --"
-#~ "algorithm2=python_ai --parm2=python_script:py/my_own_python_ai.py>"
-#~ msgstr ""
-#~ "B<wesnoth --nogui --multiplayer --controller1=ai --controller2=ai --"
-#~ "algorithm2=python_ai --parm2=python_script:py/benim_python_ai.py>"
