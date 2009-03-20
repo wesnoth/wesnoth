@@ -20,6 +20,7 @@
 
 #include "global.hpp"
 
+#include "foreach.hpp"
 #include "playcampaign.hpp"
 #include "map_create.hpp"
 #include "playmp_controller.hpp"
@@ -119,7 +120,8 @@ static void clean_saves(const std::string &label)
 
 static LEVEL_RESULT playsingle_scenario(const config& game_config,
 		const config* level, display& disp, game_state& state_of_game,
-		const std::vector<config*>& story, upload_log& log, bool skip_replay, end_level_exception *end_level)
+		const config::const_child_itors &story, upload_log &log,
+		bool skip_replay, end_level_exception *end_level)
 {
 	const int ticks = SDL_GetTicks();
 	const int num_turns = atoi((*level)["turns"].c_str());
@@ -151,7 +153,7 @@ static LEVEL_RESULT playsingle_scenario(const config& game_config,
 
 static LEVEL_RESULT playmp_scenario(const config& game_config,
 		config const* level, display& disp, game_state& state_of_game,
-		const config::child_list& story, upload_log& log, bool skip_replay,
+		const config::const_child_itors &story, upload_log &log, bool skip_replay,
 		io_type_t& io_type, end_level_exception *end_level)
 {
 	const int ticks = SDL_GetTicks();
@@ -245,32 +247,26 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 		if (!gamestate.snapshot["label"].empty()){
 			gamestate.label = gamestate.snapshot["label"];
 		}
+
+		// Get the current gold values of players, so they don't start
+		// with the amount they had at the start of the scenario
+		foreach (const config &p, gamestate.snapshot.child_range("player"))
 		{
-			// Get the current gold values of players, so they don't start
-			// with the amount they had at the start of the scenario
-			const std::vector<config*>& player_cfg = gamestate.snapshot.get_children("player");
-			for (std::vector<config*>::const_iterator p = player_cfg.begin(); p != player_cfg.end(); p++){
-				std::string save_id = (**p)["save_id"];
-				player_info* player = gamestate.get_player(save_id);
-				if (player != NULL){
-					player->gold = lexical_cast <int> ((**p)["gold"]);
-				}
-			}
+			player_info *player = gamestate.get_player(p["save_id"]);
+			if (player)
+				player->gold = lexical_cast<int>(p["gold"]);
 		}
+
+		// Also get the recruitment list if there are some specialties in this scenario
+		foreach (const config &p, gamestate.snapshot.child_range("side"))
 		{
-			// Also get the recruitment list if there are some specialties in this scenario
-			const std::vector<config*>& player_cfg = gamestate.snapshot.get_children("side");
-			for (std::vector<config*>::const_iterator p = player_cfg.begin(); p != player_cfg.end(); p++){
-				std::string save_id = (**p)["save_id"];
-				player_info* player = gamestate.get_player(save_id);
-				if (player != NULL){
-					const std::string& can_recruit_str = (**p)["recruit"];
-					if(can_recruit_str != "") {
-						player->can_recruit.clear();
-						const std::vector<std::string> can_recruit = utils::split(can_recruit_str);
-						std::copy(can_recruit.begin(),can_recruit.end(),std::inserter(player->can_recruit,player->can_recruit.end()));
-					}
-				}
+			player_info *player = gamestate.get_player(p["save_id"]);
+			if (!player) continue;
+			const std::string &can_recruit_str = p["recruit"];
+			if (!can_recruit_str.empty()) {
+				player->can_recruit.clear();
+				std::vector<std::string> can_recruit = utils::split(can_recruit_str);
+				player->can_recruit.insert(can_recruit.begin(), can_recruit.end());
 			}
 		}
 	}
@@ -278,18 +274,15 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 	controller_map controllers;
 
 	if(io_type == IO_SERVER) {
-		const config::child_list& sides_list = scenario->get_children("side");
-		for(config::child_list::const_iterator side = sides_list.begin();
-				side != sides_list.end(); ++side) {
-			if ((**side)["current_player"] == preferences::login())
-			{
-				(**side)["controller"] = preferences::client_type();
+		foreach (config &side, const_cast<config *>(scenario)->child_range("side"))
+		{
+			if (side["current_player"] == preferences::login()) {
+				side["controller"] = preferences::client_type();
 			}
-			std::string id = (**side)["save_id"];
+			std::string id = side["save_id"];
 			if(id.empty())
 				continue;
-			controllers[id] = player_controller((**side)["controller"],
-					(**side)["id"]);
+			controllers[id] = player_controller(side["controller"], side["id"]);
 		}
 	}
 
@@ -301,20 +294,19 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 				scenario = &starting_pos;
 			}
 
-			const config::child_list& sides_list = starting_pos.get_children("side");
-			for(config::child_list::const_iterator side = sides_list.begin();
-					side != sides_list.end(); ++side) {
-				if((**side)["current_player"] == preferences::login()) {
-					(**side)["controller"] = preferences::client_type();
-				} else if((**side)["controller"] != "null") {
+			foreach (config &side, starting_pos.child_range("side"))
+			{
+				if (side["current_player"] == preferences::login()) {
+					side["controller"] = preferences::client_type();
+				} else if (side["controller"] != "null") {
 					// @todo: Fix logic to use network_ai controller
 					// if it is networked ai
-					(**side)["controller"] = "network";
+					side["controller"] = "network";
 				}
 			}
 		}
 
-		const config::child_list& story = scenario->get_children("story");
+		config::const_child_itors story = scenario->child_range("story");
 		gamestate.next_scenario = (*scenario)["next_scenario"];
 
 		bool save_game_after_scenario = true;
@@ -489,10 +481,9 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 				scenario = &starting_pos;
 
 				// Tweaks sides to adapt controllers and descriptions.
-				const config::child_list& sides_list = starting_pos.get_children("side");
-				for(config::child_list::const_iterator side = sides_list.begin();
-						side != sides_list.end(); ++side) {
-					std::string id = (**side)["save_id"];
+				foreach (config &side, starting_pos.child_range("side"))
+				{
+					std::string id = side["save_id"];
 					if(id.empty()) {
 						continue;
 					}
@@ -505,9 +496,9 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 					if(ctr != controllers.end()) {
 						player_info *player = gamestate.get_player(id);
 						if (player) {
-							(**side)["current_player"] = player->name;
+							side["current_player"] = player->name;
 						}
-						(**side)["controller"] = ctr->second.controller;
+						side["controller"] = ctr->second.controller;
 					}
 				}
 

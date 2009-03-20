@@ -22,6 +22,7 @@
 #include "playsingle_controller.hpp"
 
 #include "ai.hpp"
+#include "foreach.hpp"
 #include "game_end_exceptions.hpp"
 #include "gettext.hpp"
 #include "intro.hpp"
@@ -231,8 +232,9 @@ void playsingle_controller::report_victory(
 	report << '\n' << goldmsg;
 }
 
-LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& story, upload_log& log,
-												  bool skip_replay, end_level_exception* end_level_result)
+LEVEL_RESULT playsingle_controller::play_scenario(
+	const config::const_child_itors &story, upload_log &log,
+	bool skip_replay, end_level_exception *end_level_result)
 {
 	LOG_NG << "in playsingle_controller::play_scenario()...\n";
 
@@ -245,8 +247,8 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 	sound::commit_music_changes();
 
 	if(!skip_replay) {
-		for(std::vector<config*>::const_iterator story_i = story.begin(); story_i != story.end(); ++story_i) {
-			show_intro(*gui_,vconfig(*story_i, true), level_);
+		foreach (const config &s, story) {
+			show_intro(*gui_, vconfig(&s, true), level_);
 		}
 	}
 	gui_->labels().read(level_, game_events::get_state_of_game());
