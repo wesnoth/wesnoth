@@ -416,142 +416,148 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 	}
 
 }
+
 void unit_animation::add_anims( std::vector<unit_animation> & animations, const config & cfg)
 {
 	config expanded_cfg;
-	config::child_list::const_iterator anim_itor;
 
 	expanded_cfg = unit_animation::prepare_animation(cfg,"animation");
-	const config::child_list& parsed_animations = expanded_cfg.get_children("animation");
-	for(anim_itor = parsed_animations.begin(); anim_itor != parsed_animations.end(); ++anim_itor) {
-		animations.push_back(unit_animation(**anim_itor));
+	foreach (const config &anim, expanded_cfg.child_range("animation")) {
+		animations.push_back(unit_animation(anim));
 	}
 
+	std::string default_layer = lexical_cast<std::string>
+		(display::LAYER_UNIT_DEFAULT - display::LAYER_UNIT_FIRST);
+	std::string move_layer = lexical_cast<std::string>
+		(display::LAYER_UNIT_MOVE_DEFAULT - display::LAYER_UNIT_FIRST);
+	std::string missile_layer = lexical_cast<std::string>
+		(display::LAYER_UNIT_MISSILE_DEFAULT - display::LAYER_UNIT_FIRST);
 
 	expanded_cfg = unit_animation::prepare_animation(cfg,"resistance_anim");
-	const config::child_list& resistance_anims = expanded_cfg.get_children("resistance_anim");
-	for(anim_itor = resistance_anims.begin(); anim_itor != resistance_anims.end(); ++anim_itor) {
-		(**anim_itor)["apply_to"] ="resistance";
-		if((**anim_itor)["layer"].empty())
-			(**anim_itor)["layer"] =lexical_cast<std::string>(display::LAYER_UNIT_DEFAULT-display::LAYER_UNIT_FIRST);
-		animations.push_back(unit_animation(**anim_itor));
+	foreach (config &anim, expanded_cfg.child_range("resistance_anim"))
+	{
+		anim["apply_to"] = "resistance";
+		if (anim["layer"].empty()) anim["layer"] = default_layer;
+		animations.push_back(unit_animation(anim));
 	}
+
 	expanded_cfg = unit_animation::prepare_animation(cfg,"leading_anim");
-	const config::child_list& leading_anims = expanded_cfg.get_children("leading_anim");
-	for(anim_itor = leading_anims.begin(); anim_itor != leading_anims.end(); ++anim_itor) {
-		(**anim_itor)["apply_to"] ="leading";
-		if((**anim_itor)["layer"].empty())
-			(**anim_itor)["layer"] =lexical_cast<std::string>(display::LAYER_UNIT_DEFAULT-display::LAYER_UNIT_FIRST);
-		animations.push_back(unit_animation(**anim_itor));
+	foreach (config &anim, expanded_cfg.child_range("leading_anim"))
+	{
+		anim["apply_to"] = "leading";
+		if (anim["layer"].empty()) anim["layer"] = default_layer;
+		animations.push_back(unit_animation(anim));
 	}
+
 	expanded_cfg = unit_animation::prepare_animation(cfg,"recruit_anim");
-	const config::child_list& recruit_anims = expanded_cfg.get_children("recruit_anim");
-	for(anim_itor = recruit_anims.begin(); anim_itor != recruit_anims.end(); ++anim_itor) {
-		(**anim_itor)["apply_to"] ="recruited";
-		if((**anim_itor)["layer"].empty())
-			(**anim_itor)["layer"] =lexical_cast<std::string>(display::LAYER_UNIT_DEFAULT-display::LAYER_UNIT_FIRST);
-		animations.push_back(unit_animation(**anim_itor));
+	foreach (config &anim, expanded_cfg.child_range("recruit_anim"))
+	{
+		anim["apply_to"] = "recruited";
+		if (anim["layer"].empty()) anim["layer"] = default_layer;
+		animations.push_back(unit_animation(anim));
 	}
+
 	expanded_cfg = unit_animation::prepare_animation(cfg,"standing_anim");
-	const config::child_list& standing_anims = expanded_cfg.get_children("standing_anim");
-	for(anim_itor = standing_anims.begin(); anim_itor != standing_anims.end(); ++anim_itor) {
-		(**anim_itor)["apply_to"] ="standing,default";
-		if((**anim_itor)["layer"].empty())
-			(**anim_itor)["layer"] =lexical_cast<std::string>(display::LAYER_UNIT_DEFAULT-display::LAYER_UNIT_FIRST);
-		animations.push_back(unit_animation(**anim_itor));
+	foreach (config &anim, expanded_cfg.child_range("standing_anim"))
+	{
+		anim["apply_to"] = "standing,default";
+		if (anim["layer"].empty()) anim["layer"] = default_layer;
+		animations.push_back(unit_animation(anim));
 	}
+
 	expanded_cfg = unit_animation::prepare_animation(cfg,"idle_anim");
-	const config::child_list& idle_anims = expanded_cfg.get_children("idle_anim");
-	for(anim_itor = idle_anims.begin(); anim_itor != idle_anims.end(); ++anim_itor) {
-		(**anim_itor)["apply_to"] ="idling";
-		if((**anim_itor)["layer"].empty())
-			(**anim_itor)["layer"] =lexical_cast<std::string>(display::LAYER_UNIT_DEFAULT-display::LAYER_UNIT_FIRST);
-		animations.push_back(unit_animation(**anim_itor));
+	foreach (config &anim, expanded_cfg.child_range("idle_anim"))
+	{
+		anim["apply_to"] = "idling";
+		if (anim["layer"].empty()) anim["layer"] = default_layer;
+		animations.push_back(unit_animation(anim));
 	}
+
 	expanded_cfg = unit_animation::prepare_animation(cfg,"levelin_anim");
-	const config::child_list& levelin_anims = expanded_cfg.get_children("levelin_anim");
-	for(anim_itor = levelin_anims.begin(); anim_itor != levelin_anims.end(); ++anim_itor) {
-		(**anim_itor)["apply_to"] ="levelin";
-		if((**anim_itor)["layer"].empty())
-			(**anim_itor)["layer"] =lexical_cast<std::string>(display::LAYER_UNIT_DEFAULT-display::LAYER_UNIT_FIRST);
-		animations.push_back(unit_animation(**anim_itor));
+	foreach (config &anim, expanded_cfg.child_range("levelin_anim"))
+	{
+		anim["apply_to"] = "levelin";
+		if (anim["layer"].empty()) anim["layer"] = default_layer;
+		animations.push_back(unit_animation(anim));
 	}
+
 	expanded_cfg = unit_animation::prepare_animation(cfg,"levelout_anim");
-	const config::child_list& levelout_anims = expanded_cfg.get_children("levelout_anim");
-	for(anim_itor = levelout_anims.begin(); anim_itor != levelout_anims.end(); ++anim_itor) {
-		(**anim_itor)["apply_to"] ="levelout";
-		if((**anim_itor)["layer"].empty())
-			(**anim_itor)["layer"] =lexical_cast<std::string>(display::LAYER_UNIT_DEFAULT-display::LAYER_UNIT_FIRST);
-		animations.push_back(unit_animation(**anim_itor));
+	foreach (config &anim, expanded_cfg.child_range("levelout_anim"))
+	{
+		anim["apply_to"] = "levelout";
+		if (anim["layer"].empty()) anim["layer"] = default_layer;
+		animations.push_back(unit_animation(anim));
 	}
+
 	expanded_cfg = unit_animation::prepare_animation(cfg,"healing_anim");
-	const config::child_list& healing_anims = expanded_cfg.get_children("healing_anim");
-	for(anim_itor = healing_anims.begin(); anim_itor != healing_anims.end(); ++anim_itor) {
-		(**anim_itor)["apply_to"] ="healing";
-		if((**anim_itor)["layer"].empty())
-			(**anim_itor)["layer"] =lexical_cast<std::string>(display::LAYER_UNIT_DEFAULT-display::LAYER_UNIT_FIRST);
-		(**anim_itor)["value"]=(**anim_itor)["damage"];
-		animations.push_back(unit_animation(**anim_itor));
+	foreach (config &anim, expanded_cfg.child_range("healing_anim"))
+	{
+		anim["apply_to"] = "healing";
+		if (anim["layer"].empty()) anim["layer"] = default_layer;
+		anim["value"] = anim["damage"];
+		animations.push_back(unit_animation(anim));
 	}
+
 	expanded_cfg = unit_animation::prepare_animation(cfg,"healed_anim");
-	const config::child_list& healed_anims = expanded_cfg.get_children("healed_anim");
-	for(anim_itor = healed_anims.begin(); anim_itor != healed_anims.end(); ++anim_itor) {
-		(**anim_itor)["apply_to"] ="healed";
-		if((**anim_itor)["layer"].empty())
-			(**anim_itor)["layer"] =lexical_cast<std::string>(display::LAYER_UNIT_DEFAULT-display::LAYER_UNIT_FIRST);
-		(**anim_itor)["value"]=(**anim_itor)["healing"];
-		animations.push_back(unit_animation(**anim_itor));
+	foreach (config &anim, expanded_cfg.child_range("healed_anim"))
+	{
+		anim["apply_to"] = "healed";
+		if (anim["layer"].empty()) anim["layer"] = default_layer;
+		anim["value"] = anim["healing"];
+		animations.push_back(unit_animation(anim));
 		animations.back().sub_anims_["_healed_sound"] = particule();
 		animations.back().sub_anims_["_healed_sound"].add_frame(1,frame_builder());
 		animations.back().sub_anims_["_healed_sound"].add_frame(1,frame_builder().sound("heal.wav"),true);
 	}
+
 	expanded_cfg = unit_animation::prepare_animation(cfg,"poison_anim");
-	const config::child_list& poison_anims = expanded_cfg.get_children("poison_anim");
-	for(anim_itor = poison_anims.begin(); anim_itor != poison_anims.end(); ++anim_itor) {
-		(**anim_itor)["apply_to"] ="poisoned";
-		if((**anim_itor)["layer"].empty())
-			(**anim_itor)["layer"] =lexical_cast<std::string>(display::LAYER_UNIT_DEFAULT-display::LAYER_UNIT_FIRST);
-		(**anim_itor)["value"]=(**anim_itor)["damage"];
-		animations.push_back(unit_animation(**anim_itor));
+	foreach (config &anim, expanded_cfg.child_range("poison_anim"))
+	{
+		anim["apply_to"] ="poisoned";
+		if (anim["layer"].empty()) anim["layer"] = default_layer;
+		anim["value"] = anim["damage"];
+		animations.push_back(unit_animation(anim));
 		animations.back().sub_anims_["_poison_sound"] = particule();
 		animations.back().sub_anims_["_poison_sound"].add_frame(1,frame_builder());
 		animations.back().sub_anims_["_poison_sound"].add_frame(1,frame_builder().sound("poison.ogg"),true);
 	}
-	expanded_cfg = unit_animation::prepare_animation(cfg,"movement_anim");
-	const config::child_list& movement_anims = expanded_cfg.get_children("movement_anim");
-	for(anim_itor = movement_anims.begin(); anim_itor != movement_anims.end(); ++anim_itor) {
-		if((**anim_itor)["offset"].empty() ) {
-			(**anim_itor)["offset"] ="0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,";
 
+	expanded_cfg = unit_animation::prepare_animation(cfg,"movement_anim");
+	foreach (config &anim, expanded_cfg.child_range("movement_anim"))
+	{
+		if (anim["offset"].empty()) {
+			anim["offset"] = "0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,";
 		}
-		(**anim_itor)["apply_to"] ="movement";
-		if((**anim_itor)["layer"].empty())
-			(**anim_itor)["layer"] =lexical_cast<std::string>(display::LAYER_UNIT_MOVE_DEFAULT-display::LAYER_UNIT_FIRST);
-		animations.push_back(unit_animation(**anim_itor));
+		anim["apply_to"] = "movement";
+		if (anim["layer"].empty()) anim["layer"] = move_layer;
+		animations.push_back(unit_animation(anim));
 	}
+
 	expanded_cfg = unit_animation::prepare_animation(cfg,"defend");
-	const config::child_list& defends = expanded_cfg.get_children("defend");
-	for(anim_itor = defends.begin(); anim_itor != defends.end(); ++anim_itor) {
-		(**anim_itor)["apply_to"] ="defend";
-		if((**anim_itor)["layer"].empty())
-			(**anim_itor)["layer"] =lexical_cast<std::string>(display::LAYER_UNIT_DEFAULT-display::LAYER_UNIT_FIRST);
-		if(!(**anim_itor)["damage"].empty() && (**anim_itor)["value"].empty()) {
-			(**anim_itor)["value"]=(**anim_itor)["damage"];
+	foreach (config &anim, expanded_cfg.child_range("defend"))
+	{
+		anim["apply_to"] = "defend";
+		if (anim["layer"].empty()) anim["layer"] = default_layer;
+		if (!anim["damage"].empty() && anim["value"].empty()) {
+			anim["value"] = anim["damage"];
 		}
-		if((**anim_itor)["hits"].empty())
+		if (anim["hits"].empty())
 		{
-			(**anim_itor)["hits"]="no";
-			animations.push_back(unit_animation(**anim_itor));
-			(**anim_itor)["hits"]="yes";
-			animations.push_back(unit_animation(**anim_itor));
+			anim["hits"] = "no";
+			animations.push_back(unit_animation(anim));
+			anim["hits"] = "yes";
+			animations.push_back(unit_animation(anim));
 			animations.back().add_frame(225,frame_builder()
 					.image(animations.back().get_last_frame().parameters(0).image)
 					.duration(225)
 					.blend("0.0,0.5:75,0.0:75,0.5:75,0.0",game_display::rgb(255,0,0)));
-		} else {
-			foreach(std::string hit_type, utils::split((**anim_itor)["hits"])) {
-				config tmp = **anim_itor;
-				tmp["hits"]=hit_type;
+		}
+		else
+		{
+			foreach (const std::string &hit_type, utils::split(anim["hits"]))
+			{
+				config tmp = anim;
+				tmp["hits"] = hit_type;
 				animations.push_back(unit_animation(tmp));
 				if(hit_type == "yes" || hit_type == "hit" || hit_type=="kill") {
 					animations.back().add_frame(225,frame_builder()
@@ -562,34 +568,34 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 			}
 		}
 	}
+
 	expanded_cfg = unit_animation::prepare_animation(cfg,"attack_anim");
-	const config::child_list& attack_anims = expanded_cfg.get_children("attack_anim");
-	for(config::child_list::const_iterator d = attack_anims.begin(); d != attack_anims.end(); ++d) {
-		(**d)["apply_to"] ="attack";
-		if((**d)["layer"].empty())
-			(**d)["layer"] =lexical_cast<std::string>(display::LAYER_UNIT_MOVE_DEFAULT-display::LAYER_UNIT_FIRST);
-		if((**d)["offset"].empty() && (**d).get_children("missile_frame").empty()) {
-			(**d)["offset"] ="0~0.6,0.6~0";
+	foreach (config &anim, expanded_cfg.child_range("attack_anim"))
+	{
+		anim["apply_to"] = "attack";
+		if (anim["layer"].empty()) anim["layer"] = move_layer;
+		config::const_child_itors missile_fs = anim.child_range("missile_frame");
+		if (anim["offset"].empty() && missile_fs.first == missile_fs.second) {
+			anim["offset"] ="0~0.6,0.6~0";
 		}
-		if(!(**d).get_children("missile_frame").empty()) {
-			if( (**d)["missile_offset"].empty())(**d)["missile_offset"] = "0~0.8";
-			if( (**d)["missile_layer"].empty())(**d)["missile_layer"] = lexical_cast<std::string>(display::LAYER_UNIT_MISSILE_DEFAULT-display::LAYER_UNIT_FIRST);
+		if (missile_fs.first != missile_fs.second) {
+			if (anim["missile_offset"].empty()) anim["missile_offset"] = "0~0.8";
+			if (anim["missile_layer"].empty()) anim["missile_layer"] = missile_layer;
 			config tmp;
 			tmp["duration"]="1";
-			(**d).add_child("missile_frame",tmp);
-			(**d).add_child_at("missile_frame",tmp,0);
+			anim.add_child("missile_frame", tmp);
+			anim.add_child_at("missile_frame", tmp, 0);
 		}
 
-		animations.push_back(unit_animation(**d));
+		animations.push_back(unit_animation(anim));
 	}
-	// always have an attack animation
+
 	expanded_cfg = unit_animation::prepare_animation(cfg,"death");
-	const config::child_list& deaths = expanded_cfg.get_children("death");
-	for(anim_itor = deaths.begin(); anim_itor != deaths.end(); ++anim_itor) {
-		(**anim_itor)["apply_to"] ="death";
-		if((**anim_itor)["layer"].empty())
-			(**anim_itor)["layer"] =lexical_cast<std::string>(display::LAYER_UNIT_DEFAULT-display::LAYER_UNIT_FIRST);
-		animations.push_back(unit_animation(**anim_itor));
+	foreach (config &anim, expanded_cfg.child_range("death"))
+	{
+		anim["apply_to"] = "death";
+		if (anim["layer"].empty()) anim["layer"] = default_layer;
+		animations.push_back(unit_animation(anim));
 		image::locator image_loc = animations.back().get_last_frame().parameters(0).image;
 		animations.back().add_frame(600,frame_builder().image(image_loc).duration(600).highlight("1~0:600"));
 		if(!cfg["die_sound"].empty()) {
@@ -598,39 +604,34 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 			animations.back().sub_anims_["_death_sound"].add_frame(1,frame_builder().sound(cfg["die_sound"]),true);
 		}
 	}
-	// Always have a defensive animation
+
 	expanded_cfg = unit_animation::prepare_animation(cfg,"victory_anim");
-	const config::child_list& victory_anims = expanded_cfg.get_children("victory_anim");
-	for(anim_itor = victory_anims.begin(); anim_itor != victory_anims.end(); ++anim_itor) {
-		(**anim_itor)["apply_to"] ="victory";
-		if((**anim_itor)["layer"].empty())
-			(**anim_itor)["layer"] =lexical_cast<std::string>(display::LAYER_UNIT_DEFAULT-display::LAYER_UNIT_FIRST);
-		animations.push_back(unit_animation(**anim_itor));
-	}
-	// Always have a victory animation
-	expanded_cfg = unit_animation::prepare_animation(cfg,"extra_anim");
-	const config::child_list& extra_anims = expanded_cfg.get_children("extra_anim");
-	for(anim_itor = extra_anims.begin(); anim_itor != extra_anims.end(); ++anim_itor) {
-		(**anim_itor)["apply_to"] =(**anim_itor)["flag"];
-		if((**anim_itor)["layer"].empty())
-			(**anim_itor)["layer"] =lexical_cast<std::string>(display::LAYER_UNIT_DEFAULT-display::LAYER_UNIT_FIRST);
-		animations.push_back(unit_animation(**anim_itor));
-	}
-	expanded_cfg = unit_animation::prepare_animation(cfg,"teleport_anim");
-	const config::child_list& teleports = expanded_cfg.get_children("teleport_anim");
-	for(anim_itor = teleports.begin(); anim_itor != teleports.end(); ++anim_itor) {
-		(**anim_itor)["apply_to"] ="pre_teleport";
-		if((**anim_itor)["layer"].empty())
-			(**anim_itor)["layer"] =lexical_cast<std::string>(display::LAYER_UNIT_DEFAULT-display::LAYER_UNIT_FIRST);
-		animations.push_back(unit_animation(**anim_itor));
-		animations.back().unit_anim_.remove_frames_after(0);
-		(**anim_itor)["apply_to"] ="post_teleport";
-		if((**anim_itor)["layer"].empty())
-			(**anim_itor)["layer"] =lexical_cast<std::string>(display::LAYER_UNIT_DEFAULT-display::LAYER_UNIT_FIRST);
-		animations.push_back(unit_animation(**anim_itor));
-		animations.back().unit_anim_.remove_frames_until(0);
+	foreach (config &anim, expanded_cfg.child_range("victory_anim"))
+	{
+		anim["apply_to"] = "victory";
+		if (anim["layer"].empty()) anim["layer"] = default_layer;
+		animations.push_back(unit_animation(anim));
 	}
 
+	expanded_cfg = unit_animation::prepare_animation(cfg,"extra_anim");
+	foreach (config &anim, expanded_cfg.child_range("extra_anim"))
+	{
+		anim["apply_to"] = anim["flag"];
+		if (anim["layer"].empty()) anim["layer"] = default_layer;
+		animations.push_back(unit_animation(anim));
+	}
+
+	expanded_cfg = unit_animation::prepare_animation(cfg,"teleport_anim");
+	foreach (config &anim, expanded_cfg.child_range("teleport_anim"))
+	{
+		if (anim["layer"].empty()) anim["layer"] = default_layer;
+		anim["apply_to"] = "pre_teleport";
+		animations.push_back(unit_animation(anim));
+		animations.back().unit_anim_.remove_frames_after(0);
+		anim["apply_to"] ="post_teleport";
+		animations.push_back(unit_animation(anim));
+		animations.back().unit_anim_.remove_frames_until(0);
+	}
 }
 
 void unit_animation::particule::override( int start_time,int duration, const std::string highlight,const std::string blend_ratio ,Uint32 blend_color ,const std::string offset,const std::string layer)
