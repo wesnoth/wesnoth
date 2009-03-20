@@ -239,10 +239,8 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 	LOG_NG << "in playsingle_controller::play_scenario()...\n";
 
 	// Start music.
-	const config::child_list& m = level_.get_children("music");
-	config::child_list::const_iterator i;
-	for (i = m.begin(); i != m.end(); i++) {
-		sound::play_music_config(**i);
+	foreach (const config &m, level_.child_range("music")) {
+		sound::play_music_config(m);
 	}
 	sound::commit_music_changes();
 
@@ -254,17 +252,18 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 	gui_->labels().read(level_, game_events::get_state_of_game());
 
 	// Find a list of 'items' (i.e. overlays) on the level, and add them
-	const config::child_list& overlays = level_.get_children("item");
-	for(config::child_list::const_iterator overlay = overlays.begin(); overlay != overlays.end(); ++overlay) {
-		gui_->add_overlay(map_location(**overlay, game_events::get_state_of_game()), (**overlay)["image"], (**overlay)["halo"], (**overlay)["team_name"], utils::string_bool((**overlay)["visible_in_fog"], true));
+	foreach (const config &overlay, level_.child_range("item"))
+	{
+		gui_->add_overlay(
+			map_location(overlay, game_events::get_state_of_game()),
+			overlay["image"], overlay["halo"], overlay["team_name"],
+			utils::string_bool(overlay["visible_in_fog"], true));
 	}
 
 	// Read sound sources
 	assert(soundsources_manager_ != NULL);
-	const config::child_list& snd_sources = level_.get_children("sound_source");
-	for(config::child_list::const_iterator i = snd_sources.begin(); i != snd_sources.end(); ++i) {
-		assert(*i != NULL);
-		soundsource::sourcespec spec(**i);
+	foreach (const config &s, level_.child_range("sound_source")) {
+		soundsource::sourcespec spec(s);
 		soundsources_manager_->add(spec);
 	}
 
