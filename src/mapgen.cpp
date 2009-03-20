@@ -19,6 +19,7 @@
 
 #include "global.hpp"
 
+#include "foreach.hpp"
 #include "gettext.hpp"
 #include "language.hpp"
 #include "log.hpp"
@@ -745,9 +746,8 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 
 	std::vector<terrain_height_mapper> height_conversion;
 
-	const config::child_list& height_cfg = cfg.get_children("height");
-	for(config::child_list::const_iterator h = height_cfg.begin(); h != height_cfg.end(); ++h) {
-		height_conversion.push_back(terrain_height_mapper(**h));
+	foreach (const config &h, cfg.child_range("height")) {
+		height_conversion.push_back(terrain_height_mapper(h));
 	}
 
 	terrain_map terrain(width, t_translation::t_list(height, grassland));
@@ -880,9 +880,8 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 	LOG_NG << (SDL_GetTicks() - ticks) << "\n"; ticks = SDL_GetTicks();
 
 	std::vector<terrain_converter> converters;
-	const config::child_list& converter_items = cfg.get_children("convert");
-	for(config::child_list::const_iterator cv = converter_items.begin(); cv != converter_items.end(); ++cv) {
-		converters.push_back(terrain_converter(**cv));
+	foreach (const config &cv, cfg.child_range("convert")) {
+		converters.push_back(terrain_converter(cv));
 	}
 
 	LOG_NG << "created terrain converters\n";
