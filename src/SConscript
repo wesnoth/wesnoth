@@ -389,7 +389,6 @@ if env["svnrev"] != "" and env["svnrev"] != "exported":
 
 sources = []
 if "TAGS" in COMMAND_LINE_TARGETS:
-    EnsureSConsVersion(0, 98)
     sources = [ Glob(os.path.join(dir, pattern)) for dir in ["", "*", "*/*"] for pattern in ["*.cpp", "*.hpp"] ]
 
 Export("sources")
