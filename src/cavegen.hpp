@@ -50,7 +50,7 @@ private:
 
 		map_location center;
 		std::set<map_location> locs;
-		config* items;
+		const config *items;
 	};
 
 	struct passage {

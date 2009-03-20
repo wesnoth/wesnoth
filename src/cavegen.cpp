@@ -20,10 +20,11 @@
 #include "global.hpp"
 
 #include "cavegen.hpp"
+#include "foreach.hpp"
 #include "log.hpp"
 #include "map.hpp"
 #include "pathfind.hpp"
-
+#include "util.hpp"
 
 #define LOG_NG LOG_STREAM(info, engine)
 
@@ -151,20 +152,20 @@ void cave_map_generator::build_chamber(map_location loc, std::set<map_location>&
 
 void cave_map_generator::generate_chambers()
 {
-	const config::child_list& chambers = cfg_->get_children("chamber");
-	for(config::child_list::const_iterator i = chambers.begin(); i != chambers.end(); ++i) {
+	foreach (const config &ch, cfg_->child_range("chamber"))
+	{
 		// If there is only a chance of the chamber appearing, deal with that here.
-		const std::string& chance = (**i)["chance"];
-		if(chance != "" && (rand()%100) < atoi(chance.c_str())) {
+		const std::string &chance = ch["chance"];
+		if (!chance.empty() && (rand() % 100) < atoi(chance.c_str())) {
 			continue;
 		}
 
-		const std::string& xpos = (**i)["x"];
-		const std::string& ypos = (**i)["y"];
+		const std::string &xpos = ch["x"];
+		const std::string &ypos = ch["y"];
 
 		size_t min_xpos = 0, min_ypos = 0, max_xpos = width_, max_ypos = height_;
 
-		if(xpos != "") {
+		if (!xpos.empty()) {
 			const std::vector<std::string>& items = utils::split(xpos, '-');
 			if(items.empty() == false) {
 				min_xpos = atoi(items.front().c_str()) - 1;
@@ -172,7 +173,7 @@ void cave_map_generator::generate_chambers()
 			}
 		}
 
-		if(ypos != "") {
+		if (!ypos.empty()) {
 			const std::vector<std::string>& items = utils::split(ypos, '-');
 			if(items.empty() == false) {
 				min_ypos = atoi(items.front().c_str()) - 1;
@@ -183,34 +184,25 @@ void cave_map_generator::generate_chambers()
 		const size_t x = translate_x(min_xpos + (rand()%(max_xpos-min_xpos)));
 		const size_t y = translate_y(min_ypos + (rand()%(max_ypos-min_ypos)));
 
-		const std::string& size = (**i)["size"];
-		size_t chamber_size = 3;
-		if(size != "") {
-			chamber_size = atoi(size.c_str());
-		}
-
-		const std::string& jagged = (**i)["jagged"];
-		size_t jagged_edges = 0;
-		if(jagged != "") {
-			jagged_edges = atoi(jagged.c_str());
-		}
+		size_t chamber_size = lexical_cast_default(ch["size"], 3);
+		size_t jagged_edges = lexical_cast_default(ch["jagged"], 0);
 
 		chamber new_chamber;
 		new_chamber.center = map_location(x,y);
 		build_chamber(new_chamber.center,new_chamber.locs,chamber_size,jagged_edges);
 
-		new_chamber.items = (**i).child("items");
+		new_chamber.items = ch.child("items");
 
-		const std::string& id = (**i)["id"];
-		if(id != "") {
+		const std::string &id = ch["id"];
+		if (!id.empty()) {
 			chamber_ids_[id] = chambers_.size();
 		}
 
 		chambers_.push_back(new_chamber);
 
-		const config::child_list& passages = (**i).get_children("passage");
-		for(config::child_list::const_iterator p = passages.begin(); p != passages.end(); ++p) {
-			const std::string& dst = (**p)["destination"];
+		foreach (const config &p, ch.child_range("passage"))
+		{
+			const std::string &dst = p["destination"];
 
 			// Find the destination of this passage
 			const std::map<std::string,size_t>::const_iterator itor = chamber_ids_.find(dst);
@@ -219,7 +211,7 @@ void cave_map_generator::generate_chambers()
 
 			assert(itor->second < chambers_.size());
 
-			passages_.push_back(passage(new_chamber.center,chambers_[itor->second].center,**p));
+			passages_.push_back(passage(new_chamber.center, chambers_[itor->second].center, p));
 		}
 	}
 }
