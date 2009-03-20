@@ -698,18 +698,17 @@ void unit_type::build_full(const config& cfg, const movement_type_map& mv_types,
 	{
 		possibleTraits_.add_child("trait", **i);
 	}
-	const config::child_list& variations = cfg.get_children("variation");
-	for(config::child_list::const_iterator var = variations.begin(); var != variations.end(); ++var) {
-		const config& var_cfg = **var;
+	foreach (const config &var_cfg, cfg.child_range("variation"))
+	{
 		if(utils::string_bool(var_cfg["inherit"])) {
 			config nvar_cfg(cfg);
 			nvar_cfg.merge_with(var_cfg);
 			nvar_cfg.clear_children("variation");
-			variations_.insert(std::pair<std::string,unit_type*>(nvar_cfg["variation_name"],
-												 new unit_type(nvar_cfg,mv_types,races,traits)));
+			variations_.insert(std::make_pair(nvar_cfg["variation_name"],
+				new unit_type(nvar_cfg, mv_types, races, traits)));
 		} else {
-			variations_.insert(std::pair<std::string,unit_type*>((**var)["variation_name"],
-												 new unit_type(**var,mv_types,races,traits)));
+			variations_.insert(std::make_pair(var_cfg["variation_name"],
+				new unit_type(var_cfg, mv_types, races, traits)));
 		}
 	}
 
@@ -749,10 +748,9 @@ void unit_type::build_full(const config& cfg, const movement_type_map& mv_types,
 	}
 
 	// Insert any traits that are just for this unit type
-	const config::child_list& unit_traits = cfg.get_children("trait");
-	for(i=unit_traits.begin(); i != unit_traits.end(); ++i)
+	foreach (const config &trait, cfg.child_range("trait"))
 	{
-		possibleTraits_.add_child("trait", **i);
+		possibleTraits_.add_child("trait", trait);
 	}
 
 	zoc_ = utils::string_bool(cfg["zoc"], level_ > 0);
@@ -1024,11 +1022,11 @@ const char* unit_type::alignment_id(unit_type::ALIGNMENT align)
 bool unit_type::has_ability(const std::string& ability) const
 {
 	const config* abil = cfg_.child("abilities");
-	if(abil) {
-		return (abil->get_children(ability).size() > 0);
-	}
-	return false;
+	if (!abil) return false;
+	config::const_child_itors a = abil->child_range(ability);
+	return a.first != a.second;
 }
+
 bool unit_type::has_ability_by_id(const std::string& ability) const
 {
 	const config* abil = cfg_.child("abilities");
