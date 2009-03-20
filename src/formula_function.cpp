@@ -164,6 +164,40 @@ private:
 	}
 };
 
+class debug_float_function : public function_expression {
+public:
+        explicit debug_float_function(const args_list& args)
+          : function_expression("debug_float", args, 2, 3)
+        {}
+
+private:
+        variant execute(const formula_callable& variables) const {
+                const args_list& arguments = args();
+                const variant var0 = arguments[0]->evaluate(variables);
+                const variant var1 = arguments[1]->evaluate(variables);
+
+                const map_location location = convert_variant<location_callable>(var0)->loc();
+                std::string text;
+                
+                if(arguments.size() == 2) {
+                        text = var1.to_debug_string();
+                        display_float(location,text);
+                        return var1;
+                } else {
+                        const variant var2 = arguments[2]->evaluate(variables);
+                        text = var1.string_cast() + var2.to_debug_string();
+                        display_float(location,text);
+                        return var2;
+                }
+
+        } 
+
+        void display_float(const map_location& location, const std::string& text) const{
+                game_display::get_singleton()->float_label(location,text,255,0,0);
+        }
+};
+
+
 class debug_print_function : public function_expression {
 public:
 	explicit debug_print_function(const args_list& args)
@@ -794,6 +828,7 @@ functions_map& get_functions_map() {
 		FUNCTION(min);
 		FUNCTION(max);
 		FUNCTION(choose);
+                FUNCTION(debug_float);
 		FUNCTION(debug_print);
 		FUNCTION(wave);
 		FUNCTION(sort);
