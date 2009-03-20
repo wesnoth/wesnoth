@@ -110,9 +110,9 @@ const char __attribute__((used)) stackcookie[] = "\0$STACK: 16000000";
 #define LOG_NET LOG_STREAM(info, network)
 #define ERR_FS LOG_STREAM(err, filesystem)
 
-static bool less_campaigns_rank(const config* a, const config* b) {
-	return lexical_cast_default<int>((*a)["rank"],1000) <
-	       lexical_cast_default<int>((*b)["rank"],1000);
+static bool less_campaigns_rank(const config &a, const config &b) {
+	return lexical_cast_default<int>(a["rank"], 1000) <
+	       lexical_cast_default<int>(b["rank"], 1000);
 }
 
 namespace {
@@ -776,7 +776,6 @@ bool game_controller::play_multiplayer_mode()
 		}
 
 		if (utils::string_bool((*side)["random_faction"])) {
-			const config::child_list& factions = era_cfg->get_children("multiplayer_side");
 			std::vector<std::string> faction_choices, faction_excepts;
 			faction_choices = utils::split((*side)["choices"]);
 			if(faction_choices.size() == 1 && faction_choices.front() == "") {
@@ -786,24 +785,19 @@ bool game_controller::play_multiplayer_mode()
 			if(faction_excepts.size() == 1 && faction_excepts.front() == "") {
 				faction_excepts.clear();
 			}
-			for(unsigned int i = 0, j = 0; i < factions.size(); ++i) {
-				if (utils::string_bool((*factions[i])["random_faction"]) != true) {
-					const std::string& faction_id = (*factions[i])["id"];
-					if (
-						!faction_choices.empty() &&
-						std::find(faction_choices.begin(),faction_choices.end(),faction_id) == faction_choices.end()
-					)
-						continue;
-					if (
-						!faction_excepts.empty() &&
-						std::find(faction_excepts.begin(),faction_excepts.end(),faction_id) != faction_excepts.end()
-					)
-						continue;
-					j++;
-					if (rand()%j == 0) {
-						side = factions[i];
-					}
-				}
+			unsigned j = 0;
+			foreach (const config &faction, era_cfg->child_range("multiplayer_side"))
+			{
+				if (utils::string_bool(faction["random_faction"])) continue;
+				const std::string &faction_id = faction["id"];
+				if (!faction_choices.empty() &&
+				    std::find(faction_choices.begin(), faction_choices.end(), faction_id) == faction_choices.end())
+					continue;
+				if (!faction_excepts.empty() &&
+				    std::find(faction_excepts.begin(), faction_excepts.end(), faction_id) != faction_excepts.end())
+					continue;
+				if (rand() % ++j == 0)
+					side = &faction;
 			}
 			if (utils::string_bool((*side)["random_faction"], false) == true) {
 				std::string side_name = (type == side_types.end() ? "default" : type->second);
@@ -1054,10 +1048,11 @@ bool game_controller::new_campaign()
 	state_ = game_state();
 	state_.campaign_type = "scenario";
 
-	config::child_list campaigns = game_config_.get_children("campaign");
+	const config::const_child_itors &ci = game_config_.child_range("campaign");
+	std::vector<config> campaigns(ci.first, ci.second);
 	std::sort(campaigns.begin(),campaigns.end(),less_campaigns_rank);
 
-	const config* campaign_ptr = NULL;
+	int campaign_num = 0;
 
 	if(gui2::new_widgets) {
 
@@ -1067,7 +1062,7 @@ bool game_controller::new_campaign()
 			return false;
 		}
 
-		gui2::tcampaign_selection dlg(campaigns.begin(),campaigns.end());
+		gui2::tcampaign_selection dlg(campaigns);
 
 		dlg.show(disp().video());
 
@@ -1075,28 +1070,26 @@ bool game_controller::new_campaign()
 			return false;
 		}
 
-		campaign_ptr = campaigns[dlg.get_choice()];
+		campaign_num = dlg.get_choice();
 
 	} else {
 
 		std::vector<std::string> campaign_names;
 		std::vector<std::pair<std::string,std::string> > campaign_desc;
 
-		for(config::child_list::const_iterator i = campaigns.begin(); i != campaigns.end(); ++i) {
-			std::stringstream str;
-			const std::string& icon = (**i)["icon"];
-			const std::string desc = (**i)["description"];
-			const std::string image = (**i)["image"];
-			if(icon.empty()) {
-				str << COLUMN_SEPARATOR;
-			} else {
-				str << IMAGE_PREFIX << icon << COLUMN_SEPARATOR;
-			}
+		foreach (const config &c, campaigns)
+		{
+			std::ostringstream str;
+			const std::string &icon = c["icon"];
+			const std::string &desc = c["description"];
+			const std::string &image = c["image"];
 
-			str << (**i)["name"];
+			if (!icon.empty())
+				str << IMAGE_PREFIX << icon;
+			str << COLUMN_SEPARATOR << c["name"];
 
 			campaign_names.push_back(str.str());
-			campaign_desc.push_back(std::pair<std::string,std::string>(desc,image));
+			campaign_desc.push_back(std::make_pair(desc, image));
 		}
 
 		if(campaign_names.size() <= 0) {
@@ -1129,10 +1122,10 @@ bool game_controller::new_campaign()
 			return false;
 		}
 
-		campaign_ptr = campaigns[cmenu.result()];
+		campaign_num = cmenu.result();
 	}
 
-	const config& campaign = *campaign_ptr;
+	const config &campaign = campaigns[campaign_num];
 
 	state_.campaign = campaign["id"];
 	state_.abbrev = campaign["abbrev"];
@@ -1592,8 +1585,8 @@ void game_controller::load_game_cfg(const bool force)
 		game_config_.append(core_terrain_rules);
 
 		config& hashes = game_config_.add_child("multiplayer_hashes");
-		for(config::child_list::const_iterator ch = game_config_.get_children("multiplayer").begin(); ch != game_config_.get_children("multiplayer").end(); ++ch) {
-			hashes[(**ch)["id"]] = (*ch)->hash();
+		foreach (const config &ch, game_config_.child_range("multiplayer")) {
+			hashes[ch["id"]] = ch.hash();
 		}
 
 		set_unit_data();

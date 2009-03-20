@@ -16,6 +16,7 @@
 
 #include "gui/dialogs/campaign_selection.hpp"
 
+#include "foreach.hpp"
 #include "gui/dialogs/helper.hpp"
 #include "gui/widgets/image.hpp"
 #include "gui/widgets/listbox.hpp"
@@ -42,19 +43,18 @@ void tcampaign_selection::campaign_selected(twindow& window)
 	VALIDATE(list, missing_widget("campaign_list"));
 
 	// Get the selected row
-	config::child_list::const_iterator itor = begin_
-			+ list->get_selected_row();
+	const config &row = campaigns_[list->get_selected_row()];
 
 	tscroll_label* scroll_label = dynamic_cast<tscroll_label*>(
 			window.find_widget("description", false));
 	if(scroll_label) {
-		scroll_label->set_label((**itor)["description"]);
+		scroll_label->set_label(row["description"]);
 	}
 
 	timage* image = dynamic_cast<timage*>(
 			window.find_widget("image", false));
 	if(image) {
-		image->set_label((**itor)["image"]);
+		image->set_label(row["image"]);
 	}
 
 	window.invalidate_layout();
@@ -74,12 +74,10 @@ void tcampaign_selection::pre_show(CVideo& /*video*/, twindow& window)
 	list->set_callback_value_change(dialog_callback
 			<tcampaign_selection, &tcampaign_selection::campaign_selected>);
 
-	for(config::child_list::const_iterator itor = begin_;
-			itor != end_; ++itor) {
-
+	foreach (const config &c, campaigns_) {
 		string_map item;
-		item.insert(std::make_pair("icon", (**itor)["icon"]));
-		item.insert(std::make_pair("label", (**itor)["name"]));
+		item.insert(std::make_pair("icon", c["icon"]));
+		item.insert(std::make_pair("label", c["name"]));
 		list->add_row(item);
 	}
 

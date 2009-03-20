@@ -25,11 +25,8 @@ class tcampaign_selection
 	: public tdialog
 {
 public:
-	tcampaign_selection(
-			const config::child_list::const_iterator& begin,
-			const config::child_list::const_iterator& end)
-		: begin_(begin)
-		, end_(end)
+	tcampaign_selection(const std::vector<config> &c)
+		: campaigns_(c)
 		, choice_(-1)
 
 	{
@@ -53,11 +50,8 @@ private:
 
 	/** Config which contains the list with the campaigns. */
 
-	/** Iterator to the start of the campaign list. */
-	const config::child_list::const_iterator& begin_;
-
-	/** Iterator to the end of the campaign list. */
-	const config::child_list::const_iterator& end_;
+	/** Campaign list. */
+	const std::vector<config> &campaigns_;
 
 	/** The choosen campaign. */
 	int choice_;
