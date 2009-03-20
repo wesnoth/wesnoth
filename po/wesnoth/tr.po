@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-03-20 00:45+0100\n"
-"PO-Revision-Date: 2009-03-05 01:03+0200\n"
+"PO-Revision-Date: 2009-03-20 20:15+0200\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish <wesnoth-tr@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -8352,13 +8352,12 @@ msgid "The nick '$nick' is reserved and cannot be used by players."
 msgstr "'$nick' yerleşik bir isim olup oyuncular tarafından kullanılamaz."
 
 #: src/multiplayer.cpp:360
-#, fuzzy
 msgid "The nick '$nick' is not registered on this server."
-msgstr "Bu sunucuda kayıtlı bir '$nick' zaten var."
+msgstr "'$nick' bu sunucuda kayıtlı değil."
 
 #: src/multiplayer.cpp:361
 msgid " This server disallows unregistered nicks."
-msgstr ""
+msgstr " Kayıtlı olmayan oyuncu adlarına bu sunucuda izin verilmemektedir."
 
 #: src/multiplayer.cpp:363 src/multiplayer.cpp:365
 msgid "The nick '$nick' is registered on this server."
@@ -9415,6 +9414,3 @@ msgstr "Wesnoth’u sizin için daha iyi hale getirmemize yardım edin!"
 #: src/upload_log.cpp:332
 msgid "Enable summary uploads"
 msgstr "Özet göndermeyi etkinleştir"
-
-#~ msgid "Unchecked script files found:"
-#~ msgstr "Kondtol edilmemiş betik dosyaları bulundu:"

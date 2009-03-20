@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: fi\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-02-02 07:59+0100\n"
-"PO-Revision-Date: 2009-03-08 15:55+0200\n"
+"PO-Revision-Date: 2009-03-20 18:45+0200\n"
 "Last-Translator: Mikko Nikkilä <miccoh@gmail.com>\n"
 "Language-Team: Finnish\n"
 "MIME-Version: 1.0\n"
@@ -62,10 +62,10 @@ msgid ""
 "\n"
 "(Novice level, 7 scenarios.)"
 msgstr ""
-"Puolusta haltioiden metsiä ensimmäisiä Suurelle mantereelle saapuvia örkkejä "
+"Puolusta haltioiden metsiä ensimmäisiä Suurmantereelle saapuvia örkkejä "
 "vastaan ja opi samalla arvokkaita taktiikoita.\n"
 "\n"
-"(aloittelijatasoa, 7 skenaariota, 39 % suomennettu)"
+"(aloittelijatasoa, 7 skenaariota, 43 % suomennettu)"
 
 #. [about]
 #: data/campaigns/An_Orcish_Incursion/_main.cfg:35
@@ -138,7 +138,7 @@ msgid ""
 "others, had for centuries fought nothing more than an occasional skirmish. "
 "They were to find themselves facing conflicts of a long-forgotten intensity."
 msgstr ""
-"Ihmisten ja örkkien saapuminen vavisutti Suurelle mantereelle asettuneiden "
+"Ihmisten ja örkkien saapuminen vavisutti Suurmantereelle asettuneiden "
 "kansojen elämää. Haltiat, kääpiöt ja muut olivat päässeet tasapainoon "
 "toistensa kanssa ja tottuneet vuosisatojen saatossa korkeintaan pieniin "
 "kahakoihin. Nyt he joutuivat kuitenkin valmistautumaan sotatoimiin "
@@ -192,7 +192,6 @@ msgstr ""
 
 #. [objectives]
 #: data/campaigns/An_Orcish_Incursion/scenarios/1_Defend_the_Forest.cfg:95
-#, fuzzy
 msgid ""
 "Hint:\n"
 "Elves can move quickly and safely among the trees. Pick off the enemy grunts "
@@ -200,7 +199,7 @@ msgid ""
 msgstr ""
 "Vihje:\n"
 "Haltiat liikkuvat nopeasti ja turvallisesti puiden seassa. Tuhoa vihollisen "
-"jalkaväkeä jousiampujillasi metsän suojista."
+"jalkaväki jousiampujillasi metsän suojista."
 
 #. [objective]: condition=win
 #: data/campaigns/An_Orcish_Incursion/scenarios/1_Defend_the_Forest.cfg:101
@@ -321,7 +320,7 @@ msgstr ""
 #. [message]: id=Urugha
 #: data/campaigns/An_Orcish_Incursion/scenarios/1_Defend_the_Forest.cfg:198
 msgid "Finally! Got him!"
-msgstr ""
+msgstr "Viimeinkin! Nalkissa on!"
 
 #. [message]: race=elf
 #: data/campaigns/An_Orcish_Incursion/scenarios/1_Defend_the_Forest.cfg:205
@@ -406,9 +405,8 @@ msgstr "Kukista Gharlsa"
 
 #. [message]: role=Adviser
 #: data/campaigns/An_Orcish_Incursion/scenarios/2_Assassins.cfg:124
-#, fuzzy
 msgid "The trail leads straight to this place, my lord."
-msgstr "Örkkien löyhkäävä jälki johti suoraan tänne."
+msgstr "Örkkien löyhkäävä jälki johti suoraan tänne, herrani."
 
 #. [message]: id=Erlornas
 #: data/campaigns/An_Orcish_Incursion/scenarios/2_Assassins.cfg:128
@@ -432,10 +430,8 @@ msgstr ""
 
 #. [message]: id=Gharlsa
 #: data/campaigns/An_Orcish_Incursion/scenarios/2_Assassins.cfg:140
-#, fuzzy
 msgid "Gharlsa sees elves...yes...fresh meat for wolves. Yes, yes..."
-msgstr ""
-"Gharlsa näkee haltioita, niin... Tuoretta lihaa susillemme, aivan niin..."
+msgstr "Gharlsa näkee haltioita, niin... Tuoretta lihaa susille, aivan niin..."
 
 #. [message]: id=Erlornas
 #: data/campaigns/An_Orcish_Incursion/scenarios/2_Assassins.cfg:144
@@ -444,11 +440,8 @@ msgstr ""
 
 #. [message]: role=Adviser
 #: data/campaigns/An_Orcish_Incursion/scenarios/2_Assassins.cfg:148
-#, fuzzy
 msgid "Does that demented creature truly believe he can kill us?"
-msgstr ""
-"Luuleeko tuo latvasta laho olento pystyvänsä kukistamaan meidät? Antakaamme "
-"hänelle opetus!"
+msgstr "Luuleeko tuo latvasta laho olento pystyvänsä kukistamaan meidät?"
 
 #. [message]: id=Erlornas
 #: data/campaigns/An_Orcish_Incursion/scenarios/2_Assassins.cfg:152
@@ -992,9 +985,8 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/campaigns/An_Orcish_Incursion/scenarios/5_Linaera_the_Quick.cfg:112
-#, fuzzy
 msgid "Defeat Krughnar and break the siege"
-msgstr "Kukista Krughnar"
+msgstr "Kukista Krughnar ja murra piirritys"
 
 #. [objective]: condition=lose
 #: data/campaigns/An_Orcish_Incursion/scenarios/6_A_Detour_through_the_Swamp.cfg:70
@@ -1204,13 +1196,12 @@ msgstr ""
 
 #. [message]: speaker=Linaera
 #: data/campaigns/An_Orcish_Incursion/scenarios/6_A_Detour_through_the_Swamp.cfg:137
-#, fuzzy
 msgid ""
 "Thank you, Erlornas... now I can return to my tower in peace. But I think "
 "some of my apprentices wish to follow you north in pursuit of the orcs."
 msgstr ""
 "Kiitos, Erlornas. Nyt voin palata rauhassa torniini. Mutta uskoisin, että "
-"jotkut oppilaistani haluavat seurata sinua pohjoiseen ajamaan örkkejä takaa."
+"jotkut oppilaistani haluavat seurata sinua pohjoiseen ajamaan takaa örkkejä."
 
 #. [message]: role=mage
 #: data/campaigns/An_Orcish_Incursion/scenarios/6_A_Detour_through_the_Swamp.cfg:141
