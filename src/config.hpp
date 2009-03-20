@@ -141,16 +141,6 @@ public:
 	bool has_attribute(const std::string& key) const {return values.find(key) != values.end();}
 	void remove_attribute(const std::string& key) {values.erase(key);}
 
-	/**
-	 * This should only be used if there is no mapping of the key already,
-	 * e.g. when creating a new config object. It does not replace an existing value.
-	 * @returns true when it added the key-value pair, false if it already existed
-	 *          (and you probably wanted to use config[key] = value)
-	 */
-	bool init_attribute(const std::string& key, const t_string& value) {
-		return values.insert(string_map::value_type(key, value)).second;
-	}
-
 	config* find_child(const std::string& key, const std::string& name,
 	                   const t_string& value);
 	const config* find_child(const std::string& key, const std::string& name,

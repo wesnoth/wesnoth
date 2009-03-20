@@ -2780,7 +2780,8 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 			variation_ = (last_effect)["name"];
 			advance_to(this->type());
 		} else if ((last_effect)["apply_to"] == "type") {
-			new_child->init_attribute("prev_type", type_id());
+			if (!new_child->has_attribute("prev_type"))
+				(*new_child)["prev_type"] = type_id();
 			type_ = (last_effect)["name"];
 			int hit_points = hit_points_;
 			int experience = experience_;
