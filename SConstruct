@@ -415,9 +415,8 @@ if env["dummy_locales"]:
             "ln -sf $SOURCE.filebase $TARGET"
             )
 
-# TODO: replace with env.Requires when compatibility with scons 0.96.93 isn't required anymore
-    env.Depends(wesnoth, Dir("locales"))
-    env.Depends(wesnoth, Dir("translations"))
+    env.Requires(wesnoth, Dir("locales"))
+    env.Requires(wesnoth, Dir("translations"))
 
 #
 # Unix installation productions
