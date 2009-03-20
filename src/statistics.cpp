@@ -19,6 +19,7 @@
 
 #include "global.hpp"
 #include "statistics.hpp"
+#include "foreach.hpp"
 #include "log.hpp"
 #include "serialization/binary_or_text.hpp"
 #include "unit.hpp"
@@ -57,9 +58,8 @@ scenario_stats::scenario_stats(const config& cfg) :
 	team_stats(),
 	scenario_name(cfg["scenario"])
 {
-	const config::child_list& teams = cfg.get_children("team");
-	for(config::child_list::const_iterator i = teams.begin(); i != teams.end(); ++i) {
-		team_stats[(**i)["save_id"]] = stats(**i);
+	foreach (const config &team, cfg.child_range("team")) {
+		team_stats[team["save_id"]] = stats(team);
 	}
 }
 
@@ -160,11 +160,11 @@ static void write_battle_result_map(config_writer &out, const stats::battle_resu
 static stats::battle_result_map read_battle_result_map(const config& cfg)
 {
 	stats::battle_result_map m;
-	const config::child_list c = cfg.get_children("sequence");
-	for(config::child_list::const_iterator i = c.begin(); i != c.end(); ++i) {
-		config item = **i;
+	foreach (const config &i, cfg.child_range("sequence"))
+	{
+		config item = i;
 		const int key = atoi(item["_num"].c_str());
-		item.values.erase("_num");
+		item.remove_attribute("_num");
 		m[key] = read_str_int_map(item);
 	}
 
@@ -640,9 +640,8 @@ void read_stats(const config& cfg)
 	fresh_stats();
 	mid_scenario = (utils::string_bool(cfg["mid_scenario"]));
 
-	const config::child_list& scenarios = cfg.get_children("scenario");
-	for(config::child_list::const_iterator i = scenarios.begin(); i != scenarios.end(); ++i) {
-		master_stats.push_back(scenario_stats(**i));
+	foreach (const config &s, cfg.child_range("scenario")) {
+		master_stats.push_back(scenario_stats(s));
 	}
 }
 
