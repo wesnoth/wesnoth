@@ -658,7 +658,7 @@ bool ui::user_info::operator> (const user_info& b) const {
 void ui::gamelist_updated(bool silent)
 {
 	config::child_list users = gamelist_.get_children("user");
-	config::child_iterator user;
+	config::child_list::iterator user;
 	std::list<user_info> u_list;
 
 	for (user = users.begin(); user != users.end(); ++user) {
@@ -773,7 +773,7 @@ void ui::set_user_list(const std::vector<std::string>& list, bool silent)
 
 std::string ui::get_selected_user_game() {
 	config::child_list users = gamelist_.get_children("user");
-	config::child_iterator user;
+	config::child_list::iterator user;
 
 	for (user = users.begin(); user != users.end(); ++user) {
 		if((**user)["name"] == selected_user_) {

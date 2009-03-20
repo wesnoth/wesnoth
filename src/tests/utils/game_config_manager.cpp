@@ -84,7 +84,7 @@ namespace test_utils {
 
 			cfg_.merge_children("units");
 
-			const config* const units = cfg_.child("units");
+			config *units = cfg_.child("units");
 			if(units != NULL) {
 				unit_type_data::types().set_config(*units);
 			}

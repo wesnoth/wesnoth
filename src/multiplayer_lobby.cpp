@@ -404,7 +404,7 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 
 	games_.clear();
 	config::child_list games = cfg.get_children("game");
-	config::child_iterator game;
+	config::child_list::iterator game;
 
 	for(game = games.begin(); game != games.end(); ++game) {
 		bool verified = true;

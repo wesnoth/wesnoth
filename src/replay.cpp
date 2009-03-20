@@ -23,6 +23,7 @@
 
 #include "actions.hpp"
 #include "dialogs.hpp"
+#include "foreach.hpp"
 #include "game_end_exceptions.hpp"
 #include "game_preferences.hpp"
 #include "game_events.hpp"
@@ -547,8 +548,10 @@ config replay::get_data_range(int cmd_start, int cmd_end, DATA_TYPE data_type)
 
 void replay::undo()
 {
-	config::child_itors cmd = cfg_.child_range("command");
-	std::vector<config::child_iterator> async_cmds;
+	const config::child_list &cmds = cfg_.get_children("command");
+	std::pair<config::child_list::const_iterator, config::child_list::const_iterator>
+		cmd(cmds.begin(), cmds.end());
+	std::vector<config::child_list::const_iterator> async_cmds;
 	// Remember commands not yet synced and skip over them.
 	// We assume that all already sent (sent=yes) data isn't undoable
 	// even if not marked explicitely with undo=no.
@@ -584,7 +587,7 @@ void replay::undo()
 			const map_location src = steps.front();
 			const map_location dst = steps.back();
 
-			for (std::vector<config::child_iterator>::iterator async_cmd =
+			for (std::vector<config::child_list::const_iterator>::iterator async_cmd =
 				 async_cmds.begin(); async_cmd != async_cmds.end(); async_cmd++)
 			{
 				config* async_child;
@@ -604,7 +607,7 @@ void replay::undo()
 			// A unit is being un-recruited or un-recalled.
 			// Remove unsynced commands that would act on that unit.
 			map_location src(*child, game_events::get_state_of_game());
-			for (std::vector<config::child_iterator>::iterator async_cmd =
+			for (std::vector<config::child_list::const_iterator>::iterator async_cmd =
 				 async_cmds.begin(); async_cmd != async_cmds.end(); async_cmd++)
 			{
 				config* async_child;
@@ -713,8 +716,9 @@ bool replay::empty()
 
 void replay::add_config(const config& cfg, MARK_SENT mark)
 {
-	for(config::const_child_itors i = cfg.child_range("command"); i.first != i.second; ++i.first) {
-		config& cfg = cfg_.add_child("command",**i.first);
+	foreach (const config &cmd, cfg.child_range("command"))
+	{
+		config &cfg = cfg_.add_child("command", cmd);
 		if (cfg.child("speak"))
 		{
 			pos_ = ncommands();

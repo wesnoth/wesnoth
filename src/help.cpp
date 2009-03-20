@@ -20,6 +20,7 @@
 #include "global.hpp"
 
 #include "about.hpp"
+#include "foreach.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "help.hpp"
@@ -759,10 +760,9 @@ void generate_contents()
 			// opening the help browser in the default manner.
 			config hidden_toplevel;
 			std::stringstream ss;
-			config::const_child_itors itors;
-			for (itors = help_config->child_range("section"); itors.first != itors.second;
-				 itors.first++) {
-				const std::string id = (*(*itors.first))["id"];
+			foreach (const config &section, help_config->child_range("section"))
+			{
+				const std::string id = section["id"];
 				if (find_section(toplevel, id) == NULL) {
 					// This section does not exist referenced from the
 					// toplevel. Hence, add it to the hidden ones if it
@@ -777,9 +777,9 @@ void generate_contents()
 			}
 			hidden_toplevel["sections"] = ss.str();
 			ss.str("");
-			for (itors = help_config->child_range("topic"); itors.first != itors.second;
-				 itors.first++) {
-				const std::string id = (*(*itors.first))["id"];
+			foreach (const config &topic, help_config->child_range("topic"))
+			{
+				const std::string id = topic["id"];
 				if (find_topic(toplevel, id) == NULL) {
 					if (!topic_is_referenced(id, *help_config)) {
 						if (ss.str() != "") {
@@ -827,10 +827,10 @@ bool section_is_referenced(const std::string &section_id, const config &cfg)
 			return true;
 		}
 	}
-	for (config::const_child_itors itors = cfg.child_range("section");
-		 itors.first != itors.second; itors.first++) {
+	foreach (const config &section, cfg.child_range("section"))
+	{
 		const std::vector<std::string> sections_refd
-			= utils::quoted_split((*(*itors.first))["sections"]);
+			= utils::quoted_split(section["sections"]);
 		if (std::find(sections_refd.begin(), sections_refd.end(), section_id)
 			!= sections_refd.end()) {
 			return true;
@@ -850,10 +850,10 @@ bool topic_is_referenced(const std::string &topic_id, const config &cfg)
 			return true;
 		}
 	}
-	for (config::const_child_itors itors = cfg.child_range("section");
-		 itors.first != itors.second; itors.first++) {
+	foreach (const config &section, cfg.child_range("section"))
+	{
 		const std::vector<std::string> topics_refd
-			= utils::quoted_split((*(*itors.first))["topics"]);
+			= utils::quoted_split(section["topics"]);
 		if (std::find(topics_refd.begin(), topics_refd.end(), topic_id)
 			!= topics_refd.end()) {
 			return true;

@@ -759,7 +759,8 @@ bool game_controller::play_multiplayer_mode()
 	}
 
 	int side_num = 1;
-	for(config::child_itors itors = level.child_range("side"); itors.first != itors.second; ++itors.first, ++side_num) {
+	foreach (config &s, level.child_range("side"))
+	{
 		std::map<int,std::string>::const_iterator type = side_types.find(side_num),
 		                                          controller = side_controllers.find(side_num),
 		                                          algorithm = side_algorithms.find(side_num);
@@ -815,27 +816,28 @@ bool game_controller::play_multiplayer_mode()
 
 		char buf[20];
 		snprintf(buf,sizeof(buf),"%d",side_num);
-		(*itors.first)->values["side"] = buf;
+		s["side"] = buf;
 
-		(*itors.first)->values["canrecruit"] = "yes";
+		s["canrecruit"] = "yes";
 
-		(*itors.first)->append(*side);
+		s.append(*side);
 
 		if(controller != side_controllers.end()) {
-			(*itors.first)->values["controller"] = controller->second;
+			s["controller"] = controller->second;
 		}
 
 		if(algorithm != side_algorithms.end()) {
-			(*itors.first)->values["ai_algorithm"] = algorithm->second;
+			s["ai_algorithm"] = algorithm->second;
 		}
 
-		config& ai_params = (*itors.first)->add_child("ai");
+		config& ai_params = s.add_child("ai");
 
 		//now add in any arbitrary parameters given to the side
 		for(string_map::const_iterator j = side_parameters[side_num].begin(); j != side_parameters[side_num].end(); ++j) {
-			(*itors.first)->values[j->first] = j->second;
+			s[j->first] = j->second;
 			ai_params[j->first] = j->second;
 		}
+		++side_num;
 	}
 
 	try {
@@ -1012,25 +1014,24 @@ bool game_controller::load_game()
 	}
 
 	if(state_.campaign_type == "multiplayer") {
-		for(config::child_itors sides = state_.snapshot.child_range("side");
-		    sides.first != sides.second; ++sides.first) {
-			if((**sides.first)["controller"] == "network")
-				(**sides.first)["controller"] = "human";
-			if((**sides.first)["controller"] == "network_ai")
-				(**sides.first)["controller"] = "human_ai";
+		foreach (config &side, state_.snapshot.child_range("side"))
+		{
+			if (side["controller"] == "network")
+				side["controller"] = "human";
+			if (side["controller"] == "network_ai")
+				side["controller"] = "human_ai";
 		}
 	}
 
 	if (cancel_orders) {
-		for(config::child_itors sides = state_.snapshot.child_range("side");
-			    sides.first != sides.second; ++sides.first) {
-				if((**sides.first)["controller"] == "human") {
-					for (config::child_itors units = (**sides.first).child_range("unit");
-							units.first != units.second; ++units.first) {
-						(**units.first)["goto_x"] = "-999";
-						(**units.first)["goto_y"] = "-999";
-					}
-				}
+		foreach (config &side, state_.snapshot.child_range("side"))
+		{
+			if (side["controller"] != "human") continue;
+			foreach (config &unit, side.child_range("unit"))
+			{
+				unit["goto_x"] = "-999";
+				unit["goto_y"] = "-999";
+			}
 		}
 	}
 
@@ -1461,7 +1462,7 @@ void game_controller::show_upload_begging()
 
 
 void game_controller::set_unit_data(){
-    const config* const units = game_config_.child("units");
+    config *units = game_config_.child("units");
     if(units != NULL) {
         unit_type_data::types().set_config(*units);
     }

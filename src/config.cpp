@@ -88,26 +88,33 @@ void config::merge_children(const std::string& key)
 	add_child(key,merged_children);
 }
 
-config::child_itors config::child_range(const std::string& key)
+config::child_itors_bak config::child_range_bak(const std::string& key)
 {
 	child_map::iterator i = children.find(key);
 	if(i != children.end()) {
-		return child_itors(i->second.begin(),i->second.end());
+		return child_itors_bak(i->second.begin(),i->second.end());
 	} else {
 		static std::vector<config*> dummy;
-		return child_itors(dummy.begin(),dummy.end());
+		return child_itors_bak(dummy.begin(),dummy.end());
 	}
+}
+
+config::child_itors config::child_range(const std::string& key)
+{
+	child_map::iterator i = children.find(key);
+	static child_list dummy;
+	child_list *p = &dummy;
+	if (i != children.end()) p = &i->second;
+	return child_itors(child_iterator(p->begin()), child_iterator(p->end()));
 }
 
 config::const_child_itors config::child_range(const std::string& key) const
 {
 	child_map::const_iterator i = children.find(key);
-	if(i != children.end()) {
-		return const_child_itors(i->second.begin(),i->second.end());
-	} else {
-		static const std::vector<config*> dummy;
-		return const_child_itors(dummy.begin(),dummy.end());
-	}
+	static child_list dummy;
+	const child_list *p = &dummy;
+	if (i != children.end()) p = &i->second;
+	return const_child_itors(const_child_iterator(p->begin()), const_child_iterator(p->end()));
 }
 
 size_t config::child_count(const std::string& key) const
@@ -216,7 +223,7 @@ void config::clear_children(const std::string& key)
 
 	child_map::iterator i = children.find(key);
 	if (i != children.end()) {
-		for (child_iterator c = i->second.begin(); c != i->second.end(); c++) {
+		for (child_list::iterator c = i->second.begin(); c != i->second.end(); c++) {
 			delete *c;
 		}
 		children.erase(i);

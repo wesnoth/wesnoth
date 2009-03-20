@@ -318,13 +318,12 @@ team::team_info::team_info(const config& cfg) :
 	global_recruitment_pattern = recruitment_pattern;
 
 	// Additional targets
-	config::const_child_itors tgts;
-	for(tgts = cfg.child_range("target"); tgts.first != tgts.second; ++tgts.first) {
-		targets.push_back(target(**tgts.first));
+	foreach (const config &tgt, cfg.child_range("target")) {
+		targets.push_back(target(tgt));
 	}
 
-	for(tgts = global_ai_params.child_range("target"); tgts.first != tgts.second; ++tgts.first) {
-		targets.push_back(target(**tgts.first));
+	foreach (const config &tgt, global_ai_params.child_range("target")) {
+		targets.push_back(target(tgt));
 	}
 
 	// Share_view and share_maps can't both be enabled,

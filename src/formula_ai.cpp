@@ -20,6 +20,7 @@
 #include "unit.hpp"
 
 #include "menu_events.hpp"
+#include "foreach.hpp"
 #include "formula_ai.hpp"
 #include "log.hpp"
 #include "attack_prediction.hpp"
@@ -1439,27 +1440,24 @@ formula_ai::formula_ai(info& i) :
 	}
 
 	// Register candidate moves in function symbol table
-	config::const_child_itors rc_moves =
-		ai_param.child_range("register_candidate_move");
-
-	for(config::const_child_iterator i = rc_moves.first;
-			i != rc_moves.second; ++i) {
-		const t_string& name = (**i)["name"];
-		const t_string& inputs = (**i)["inputs"];
+	foreach (const config &rc_move, ai_param.child_range("register_candidate_move"))
+	{
+		const t_string &name = rc_move["name"];
+		const t_string &inputs = rc_move["inputs"];
 		std::vector<std::string> args = utils::split(inputs);
 
 		try{
 			game_logic::const_formula_ptr action_formula(
-					new game_logic::formula((**i)["action"], &function_table));
+					new game_logic::formula(rc_move["action"], &function_table));
 
 			game_logic::const_formula_ptr eval_formula(
-					new game_logic::formula((**i)["evaluation"], &function_table));
+					new game_logic::formula(rc_move["evaluation"], &function_table));
 
 			const formula_ptr precondition_formula =
-					game_logic::formula::create_optional_formula((**i)["precondition"],
+					game_logic::formula::create_optional_formula(rc_move["precondition"],
 							&function_table);
 
-			function_table.register_candidate_move(name, (**i)["type"],
+			function_table.register_candidate_move(name, rc_move["type"],
 									action_formula, eval_formula,
 									precondition_formula, args);
 		}
@@ -1468,25 +1466,28 @@ formula_ai::formula_ai(info& i) :
 		}
 	}
 
-        config::const_child_itors functions = ai_param.child_range("function");
-        for(config::const_child_iterator i = functions.first; i != functions.second; ++i) {
-                const t_string& name = (**i)["name"];
-                const t_string& inputs = (**i)["inputs"];
-                const t_string& formula_str = (**i)["formula"];
+	foreach (const config &func, ai_param.child_range("function"))
+	{
+		const t_string &name = func["name"];
+		const t_string &inputs = func["inputs"];
+		const t_string &formula_str = func["formula"];
 
-                std::vector<std::string> args = utils::split(inputs);
+		std::vector<std::string> args = utils::split(inputs);
 
-                try{
-                        function_table.add_formula_function(name, game_logic::const_formula_ptr(new game_logic::formula(formula_str, &function_table)), game_logic::formula::create_optional_formula((**i)["precondition"], &function_table), args);
-                }
-                catch(formula_error& e) {
-                        handle_exception(e, "Error while registering function '" + name + "'");
-                }
-        }
+		try {
+			function_table.add_formula_function(name,
+				game_logic::const_formula_ptr(new game_logic::formula(formula_str, &function_table)),
+				game_logic::formula::create_optional_formula(func["precondition"], &function_table),
+				args);
+			}
+			catch(formula_error& e) {
+				handle_exception(e, "Error while registering function '" + name + "'");
+			}
+		}
 
 	config::const_child_itors team_formula = ai_param.child_range("team_formula");
 	if(team_formula.first != team_formula.second) {
-		std::string formula_string = (**team_formula.first)["rulebase"];
+		std::string formula_string = (*team_formula.first)["rulebase"];
 		try{
 			move_formula_ = game_logic::formula::create_optional_formula(formula_string, &function_table);
 		}

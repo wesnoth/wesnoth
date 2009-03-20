@@ -53,13 +53,9 @@ config unit_animation::prepare_animation(const config &cfg,const std::string ani
 {
 	config expanded_animations;
 	std::vector<config> unexpanded_anims;
-	{
-		// store all the anims we have to analyze
-		config::const_child_itors all_anims = cfg.child_range(animation_tag);
-		config::const_child_iterator current_anim;
-		for(current_anim = all_anims.first; current_anim != all_anims.second ; current_anim++) {
-			unexpanded_anims.push_back(**current_anim);
-		}
+	// store all the anims we have to analyze
+	foreach (const config &anim, cfg.child_range(animation_tag)) {
+		unexpanded_anims.push_back(anim);
 	}
 	while(!unexpanded_anims.empty()) {
 		// take one anim out of the unexpanded list
@@ -165,13 +161,12 @@ unit_animation::unit_animation(const config& cfg,const std::string frame_string 
 		const map_location::DIRECTION d = map_location::parse_direction(*i);
 		directions_.push_back(d);
 	}
-	config::const_child_iterator itor;
-	for(itor = cfg.child_range("filter").first; itor <cfg.child_range("filter").second;itor++) {
-		unit_filter_.push_back(**itor);
+	foreach (const config &filter, cfg.child_range("filter")) {
+		unit_filter_.push_back(filter);
 	}
 
-	for(itor = cfg.child_range("secondary_unit_filter").first; itor <cfg.child_range("secondary_unit_filter").second;itor++) {
-		secondary_unit_filter_.push_back(**itor);
+	foreach (const config &filter, cfg.child_range("secondary_unit_filter")) {
+		secondary_unit_filter_.push_back(filter);
 	}
 	frequency_ = atoi(cfg["frequency"].c_str());
 
@@ -199,11 +194,11 @@ unit_animation::unit_animation(const config& cfg,const std::string frame_string 
 	for(swing=swing_str.begin() ; swing != swing_str.end() ; swing++) {
 		swing_num_.push_back(atoi(swing->c_str()));
 	}
-	for(itor = cfg.child_range("filter_attack").first; itor <cfg.child_range("filter_attack").second;itor++) {
-		primary_attack_filter_.push_back(**itor);
+	foreach (const config &filter, cfg.child_range("filter_attack")) {
+		primary_attack_filter_.push_back(filter);
 	}
-	for(itor = cfg.child_range("filter_second_attack").first; itor <cfg.child_range("filter_second_attack").second;itor++) {
-		secondary_attack_filter_.push_back(**itor);
+	foreach (const config &filter, cfg.child_range("filter_second_attack")) {
+		secondary_attack_filter_.push_back(filter);
 	}
 
 }
@@ -680,15 +675,16 @@ unit_animation::particule::particule(
 	config::const_child_iterator itor;
 	starting_frame_time_=INT_MAX;
 	if(cfg[frame_string+"start_time"].empty() &&range.first != range.second) {
-		for(itor = range.first; itor != range.second; itor++) {
-			starting_frame_time_=std::min(starting_frame_time_,atoi((**itor)["begin"].c_str()));
+		foreach (const config &frame, range) {
+			starting_frame_time_ = std::min(starting_frame_time_, atoi(frame["begin"].c_str()));
 		}
 	} else {
 		starting_frame_time_ = atoi(cfg[frame_string+"start_time"].c_str());
 	}
 
-	for(; range.first != range.second; ++range.first) {
-		unit_frame tmp_frame(**range.first);
+	foreach (const config &frame, range)
+	{
+		unit_frame tmp_frame(frame);
 		add_frame(tmp_frame.duration(),tmp_frame,!tmp_frame.does_not_change());
 	}
 	parameters_.duration(get_animation_duration());

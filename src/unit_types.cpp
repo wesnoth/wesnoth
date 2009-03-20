@@ -20,6 +20,7 @@
 #include "global.hpp"
 
 #include "asserts.hpp"
+#include "foreach.hpp"
 #include "gettext.hpp"
 #include "loadscreen.hpp"
 #include "log.hpp"
@@ -692,7 +693,7 @@ void unit_type::build_full(const config& cfg, const movement_type_map& mv_types,
 	movementType_ = unit_movement_type(cfg);
 	alpha_ = ftofxp(1.0);
 
-	config::const_child_iterator i;
+	config::child_list::const_iterator i;
 	for(i=traits.begin(); i != traits.end(); ++i)
 	{
 		possibleTraits_.add_child("trait", **i);
@@ -777,9 +778,8 @@ void unit_type::build_full(const config& cfg, const movement_type_map& mv_types,
 	game_config::add_color_info(cfg);
 
 
-	for(config::const_child_itors range = cfg_.child_range("portrait");
-	    range.first != range.second; ++range.first) {
-		portraits_.push_back(tportrait(**range.first));
+	foreach (const config &portrait, cfg_.child_range("portrait")) {
+		portraits_.push_back(tportrait(portrait));
 	}
 
 	// Deprecation messages, only seen when unit is parsed for the first time.
@@ -839,14 +839,12 @@ void unit_type::build_help_index(const config& cfg, const movement_type_map& mv_
 		}
 	}
 
-	for(config::const_child_itors adv_itors = cfg.child_range("advancement");
-	adv_itors.first != adv_itors.second; ++adv_itors.first)
+	foreach (const config &adv, cfg.child_range("advancement"))
 	{
-		for(config::const_child_itors eff_itors = (**adv_itors.first).child_range("effect");
-		eff_itors.first != eff_itors.second; ++eff_itors.first)
+		foreach (const config &effect, adv.child_range("effect"))
 		{
-			const config* abil_cfg = (**eff_itors.first).child("abilities");
-			if(!abil_cfg || (**eff_itors.first)["apply_to"] != "new_ability") {
+			const config *abil_cfg = effect.child("abilities");
+			if (!abil_cfg || effect["apply_to"] != "new_ability") {
 				continue;
 			}
 			const config::child_map& abi = abil_cfg->all_children();
@@ -969,9 +967,8 @@ const std::vector<unit_animation>& unit_type::animations() const {
 std::vector<attack_type> unit_type::attacks() const
 {
 	std::vector<attack_type> res;
-	for(config::const_child_itors range = cfg_.child_range("attack");
-	    range.first != range.second; ++range.first) {
-		res.push_back(attack_type(**range.first));
+	foreach (const config &att, cfg_.child_range("attack")) {
+		res.push_back(attack_type(att));
 	}
 
 	return res;
@@ -1145,7 +1142,7 @@ unit_type_data::unit_type_map_wrapper::unit_type_map_wrapper() :
     dummy_unit_map_.insert(std::pair<const std::string,unit_type>("dummy_unit", unit_type()));
 }
 
-void unit_type_data::unit_type_map_wrapper::set_config(const config& cfg)
+void unit_type_data::unit_type_map_wrapper::set_config(config &cfg)
 {
     DBG_UT << "unit_type_data::set_config, name: " << cfg["name"] << "\n";
 
@@ -1153,41 +1150,40 @@ void unit_type_data::unit_type_map_wrapper::set_config(const config& cfg)
     set_unit_config(cfg);
 	set_unit_traits(cfg.get_children("trait"));
 
-	config::const_child_itors i;
-	for(i = cfg.child_range("movetype"); i.first != i.second; ++i.first)
+	foreach (const config &mt, cfg.child_range("movetype"))
 	{
-		const unit_movement_type move_type(**i.first);
+		const unit_movement_type move_type(mt);
 		movement_types_.insert(
 			std::pair<std::string,unit_movement_type>(move_type.name(), move_type));
 		increment_set_config_progress();
 	}
 
-	for(i = cfg.child_range("race"); i.first != i.second; ++i.first)
+	foreach (const config &r, cfg.child_range("race"))
 	{
-		const unit_race race(**i.first);
+		const unit_race race(r);
 		races_.insert(std::pair<std::string,unit_race>(race.id(),race));
 		increment_set_config_progress();
 	}
 
-	for(i = cfg.child_range("unit_type"); i.first != i.second; ++i.first)
+	foreach (config &ut, cfg.child_range("unit_type"))
 	{
-	    std::string id = (**i.first)["id"];
-		if((**i.first).child("base_unit"))
+	    std::string id = ut["id"];
+		if (ut.child("base_unit"))
 		{
             // Derive a new unit type from an existing base unit id
-			const std::string based_from = (*(**i.first).child("base_unit"))["id"];
+			const std::string based_from = (*ut.child("base_unit"))["id"];
 			config from_cfg = find_config(based_from);
 
             config merge_cfg = from_cfg;
-            merge_cfg.merge_with(**i.first);
+			merge_cfg.merge_with(ut);
             merge_cfg.clear_children("base_unit");
             std::string id = merge_cfg["id"];
             if(id.empty()) {
                 id = from_cfg["name"];
             }
 
-            (**i.first) = merge_cfg;
-            (**i.first)["id"] = id;
+			ut = merge_cfg;
+			ut["id"] = id;
             /*
             //merge the base_unit config into this one
             (**i.first).merge_and_keep(from_cfg);
@@ -1338,10 +1334,10 @@ void unit_type_data::unit_type_map_wrapper::add_advancement(unit_type& to_unit) 
     config::const_child_itors af;
     const config& cfg = to_unit.get_cfg();
 
-    for(af = cfg.child_range("advancefrom"); af.first != af.second; ++af.first)
+    foreach (const config &af, cfg.child_range("advancefrom"))
     {
-        const std::string &from = (**af.first)["unit"];
-        const int xp = lexical_cast_default<int>((**af.first)["experience"],0);
+        const std::string &from = af["unit"];
+        const int xp = lexical_cast_default<int>(af["experience"],0);
 
         unit_type_data::unit_type_map::iterator from_unit = types_.find(from);
 
@@ -1376,14 +1372,14 @@ bool unit_type::not_living() const
 				continue;
 			}
 			config::const_child_itors i;
-			for(i = (**j).child_range("effect"); i.first != i.second; ++i.first) {
-
+			foreach (const config &effect, (**j).child_range("effect"))
+			{
 				// See if the effect only applies to
 				// certain unit types But don't worry
 				// about gender checks, since we don't
 				// know what the gender of the
 				// hypothetical recruit is.
-				vals = &((**i.first).values);
+				vals = &effect.values;
 				temp = vals->find("unit_type");
 				if(temp != vals->end()) {
 					const std::vector<std::string>& types = utils::split((*temp).second);

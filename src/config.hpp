@@ -67,12 +67,57 @@ public:
 	typedef std::vector<config*> child_list;
 	typedef std::map<std::string,child_list> child_map;
 
-	typedef std::vector<config*>::iterator child_iterator;
-	typedef std::vector<config*>::const_iterator const_child_iterator;
+	struct child_iterator
+	{
+		typedef config value_type;
+		typedef std::forward_iterator_tag iterator_category;
+		typedef int difference_type;
+		typedef config *pointer;
+		typedef config &reference;
+		typedef child_list::iterator Itor;
+		explicit child_iterator(Itor i = Itor()): i_(i) {}
+
+		child_iterator &operator++() { ++i_; return *this; }
+		child_iterator operator++(int) { return child_iterator(i_++); }
+
+		config &operator*() const { return **i_; }
+		config *operator->() const { return &**i_; }
+
+		bool operator==(const child_iterator &i) const { return i_ == i.i_; }
+		bool operator!=(const child_iterator &i) const { return i_ != i.i_; }
+
+	private:
+		Itor i_;
+	};
+
+	struct const_child_iterator
+	{
+		typedef config value_type;
+		typedef std::forward_iterator_tag iterator_category;
+		typedef int difference_type;
+		typedef const config *pointer;
+		typedef const config &reference;
+		typedef child_list::const_iterator Itor;
+		explicit const_child_iterator(Itor i = Itor()): i_(i) {}
+
+		const_child_iterator &operator++() { ++i_; return *this; }
+		const_child_iterator operator++(int) { return const_child_iterator(i_++); }
+
+		const config &operator*() const { return **i_; }
+		const config *operator->() const { return &**i_; }
+
+		bool operator==(const const_child_iterator &i) const { return i_ == i.i_; }
+		bool operator!=(const const_child_iterator &i) const { return i_ != i.i_; }
+
+	private:
+		Itor i_;
+	};
 
 	typedef std::pair<child_iterator,child_iterator> child_itors;
 	typedef std::pair<const_child_iterator,const_child_iterator> const_child_itors;
 
+	typedef std::pair<child_list::iterator, child_list::iterator> child_itors_bak;
+	child_itors_bak child_range_bak(const std::string &);
 	child_itors child_range(const std::string& key);
 	const_child_itors child_range(const std::string& key) const;
 	size_t child_count(const std::string& key) const;

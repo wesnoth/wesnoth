@@ -21,6 +21,7 @@
 
 #include "ai.hpp"
 #include "dialogs.hpp"
+#include "foreach.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "map.hpp"
@@ -172,10 +173,11 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 		// Necessary to display leader information when loading saves.
 		config::const_child_itors side_units = cfg.child_range("unit");
 		std::string leader_type;
-		for(;side_units.first != side_units.second; ++side_units.first) {
-			if(utils::string_bool((**side_units.first)["canrecruit"], false)) {
-				leader_type = (**side_units.first)["type"];
-				gender_ = (**side_units.first)["gender"];
+		foreach (const config &side_unit, cfg.child_range("unit"))
+		{
+			if (utils::string_bool(side_unit["canrecruit"], false)) {
+				leader_type = side_unit["type"];
+				gender_ = side_unit["gender"];
 				break;
 			}
 		}
@@ -904,8 +906,9 @@ void connect::side::resolve_random()
 
 		// Builds the list of sides eligible for choice (nonrandom factions)
 		std::vector<int> nonrandom_sides;
-		for(config::child_iterator itor = parent_->era_sides_.begin();
-				itor != parent_->era_sides_.end(); ++itor) {
+		for (config::child_list::iterator itor = parent_->era_sides_.begin(),
+		     itor_end = parent_->era_sides_.end(); itor != itor_end; ++itor)
+		{
 			if((**itor)["random_faction"] != "yes") {
 				const std::string& faction_id = (**itor)["id"];
 				if (
@@ -1430,15 +1433,15 @@ void connect::lists_init()
     ai_algorithms_ = get_available_ais();
 
 	// Factions
-	const config::child_itors sides = current_config()->child_range("side");
+	config::child_itors sides = current_config()->child_range("side");
 
 	// Teams
-	config::child_iterator sd;
 	if(params_.use_map_settings) {
-		for(sd = sides.first; sd != sides.second; ++sd) {
-			const int side_num = sd - sides.first + 1;
-			t_string& team_name = (**sd)["team_name"];
-			t_string& user_team_name = (**sd)["user_team_name"];
+		int side_num = 1;
+		foreach (config &side, sides)
+		{
+			t_string &team_name = side["team_name"];
+			t_string &user_team_name = side["user_team_name"];
 
 			if(team_name.empty())
 				team_name = lexical_cast<std::string>(side_num);
@@ -1455,12 +1458,15 @@ void connect::lists_init()
 				user_team_names_.push_back(user_team_name.to_serialized());
 				player_teams_.push_back(user_team_name.str());
 			}
+			++side_num;
 		}
 	} else {
 		std::vector<std::string> map_team_names;
-		for(sd = sides.first; sd != sides.second; ++sd) {
-			const std::string side_num = lexical_cast<std::string>(sd - sides.first + 1);
-			t_string& team_name = (**sd)["team_name"];
+		int _side_num = 1;
+		foreach (config &side, sides)
+		{
+			const std::string side_num = lexical_cast<std::string>(_side_num);
+			t_string &team_name = side["team_name"];
 
 			if(team_name.empty())
 				team_name = side_num;
@@ -1477,6 +1483,7 @@ void connect::lists_init()
 			team_names_.push_back(side_num);
 			user_team_names_.push_back(team_prefix_ + side_num);
 			player_teams_.push_back(team_prefix_ + side_num);
+			++_side_num;
 		}
 	}
 
@@ -1486,10 +1493,9 @@ void connect::lists_init()
 	}
 
 	// Populates "sides_" from the level configuration
-	sides_.reserve(sides.second - sides.first);
 	int index = 0;
-	for(sd = sides.first; sd != sides.second; ++sd, ++index) {
-		sides_.push_back(side(*this, **sd, index));
+	foreach (const config &s, sides) {
+		sides_.push_back(side(*this, s, index++));
 	}
 	int offset=0;
 	// This function must be called after the sides_ vector is fully populated.

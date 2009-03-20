@@ -1321,7 +1321,7 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 		} else {
 			config::child_itors ch_itors = vi.vars->child_range(vi.key);
 			for(; ch_itors.first != ch_itors.second; ++ch_itors.first) {
-				if(id_ == (*ch_itors.first)->get_attribute("id")) {
+				if (id_ == ch_itors.first->get_attribute("id")) {
 					break;
 				}
 			}
@@ -1485,7 +1485,7 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 	if(cfg_range.first != cfg_range.second) {
 		attacks_.clear();
 		do {
-			attacks_.push_back(attack_type(**cfg_range.first));
+			attacks_.push_back(attack_type(*cfg_range.first));
 		} while(++cfg_range.first != cfg_range.second);
 	}
 	cfg_.clear_children("attack");
@@ -1496,7 +1496,7 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 		cfg_.clear_children("abilities");
 		config &target = cfg_.add_child("abilities");
 		do {
-			target.append(**cfg_range.first);
+			target.append(*cfg_range.first);
 		} while(++cfg_range.first != cfg_range.second);
 	}
 
@@ -1507,7 +1507,7 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 		defense_mods_.clear();
 		config &target = cfg_.add_child("defense");
 		do {
-			target.append(**cfg_range.first);
+			target.append(*cfg_range.first);
 		} while(++cfg_range.first != cfg_range.second);
 	}
 
@@ -1518,7 +1518,7 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 		movement_costs_.clear();
 		config &target = cfg_.add_child("movement_costs");
 		do {
-			target.append(**cfg_range.first);
+			target.append(*cfg_range.first);
 		} while(++cfg_range.first != cfg_range.second);
 	}
 
@@ -1528,7 +1528,7 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 		cfg_.clear_children("resistance");
 		config &target = cfg_.add_child("resistance");
 		do {
-			target.append(**cfg_range.first);
+			target.append(*cfg_range.first);
 		} while(++cfg_range.first != cfg_range.second);
 	}
 
@@ -2479,11 +2479,10 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 	}
 	config last_effect;
 	std::vector<t_string> effects_description;
-	for(config::const_child_itors i = mod.child_range("effect");
-		i.first != i.second; ++i.first) {
-
+	foreach (const config &effect, mod.child_range("effect"))
+	{
 		// See if the effect only applies to certain unit types
-		const std::string& type_filter = (**i.first)["unit_type"];
+		const std::string &type_filter = effect["unit_type"];
 		if(type_filter.empty() == false) {
 			const std::vector<std::string>& types = utils::split(type_filter);
 			if(std::find(types.begin(),types.end(),type_id()) == types.end()) {
@@ -2491,7 +2490,7 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 			}
 		}
 		// See if the effect only applies to certain genders
-		const std::string& gender_filter = (**i.first)["unit_gender"];
+		const std::string &gender_filter = effect["unit_gender"];
 		if(gender_filter.empty() == false) {
 			const std::string& gender = gender_string(gender_);
 			const std::vector<std::string>& genders = utils::split(gender_filter);
@@ -2501,11 +2500,11 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 		}
 		/** @todo The above two filters can be removed in 1.7 they're covered by the SUF. */
 		// Apply SUF. (Filtering on location is probably a bad idea though.)
-		if (const config* afilter = (**i.first).child("filter"))
+		if (const config *afilter = effect.child("filter"))
 		    if (!matches_filter(afilter, map_location(cfg_, NULL))) continue;
 
-		const std::string& apply_to = (**i.first)["apply_to"];
-		const std::string& apply_times = (**i.first)["times"];
+		const std::string &apply_to = effect["apply_to"];
+		const std::string &apply_times = effect["times"];
 		int times = 1;
 		t_string description;
 
@@ -2517,18 +2516,18 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 
 				// Apply unit type/variation changes last to avoid double applying effects on advance.
 				if ((apply_to == "variation" || apply_to == "type") && no_add == false) {
-					last_effect = **i.first;
+					last_effect = effect;
 				} else if(apply_to == "profile") {
-					const std::string& portrait = (**i.first)["portrait"];
-					const std::string& description = (**i.first)["description"];
+					const std::string &portrait = effect["portrait"];
+					const std::string &description = effect["description"];
 					if(!portrait.empty()) cfg_["profile"] = portrait;
 					if(!description.empty()) cfg_["description"] = description;
 					//help::unit_topic_generator(*this, (**i.first)["help_topic"]);
 				} else if(apply_to == "new_attack") {
-					attacks_.push_back(attack_type(**i.first));
+					attacks_.push_back(attack_type(effect));
 				} else if(apply_to == "remove_attacks") {
 					for(std::vector<attack_type>::iterator a = attacks_.begin(); a != attacks_.end(); ++a) {
-						if (a->matches_filter(**i.first,false)) {
+						if (a->matches_filter(effect, false)) {
 							attacks_.erase(a--);
 						}
 					}
@@ -2540,7 +2539,7 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 					std::string desc;
 					for(std::vector<attack_type>::iterator a = attacks_.begin();
 						a != attacks_.end(); ++a) {
-						bool affected = a->apply_modification(**i.first,&desc);
+						bool affected = a->apply_modification(effect, &desc);
 						if(affected && desc != "") {
 							if(first_attack) {
 								first_attack = false;
@@ -2561,14 +2560,14 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 					}
 				} else if(apply_to == "hitpoints") {
 					LOG_UT << "applying hitpoint mod..." << hit_points_ << "/" << max_hit_points_ << "\n";
-					const std::string& increase_hp = (**i.first)["increase"];
-					const std::string& heal_full = (**i.first)["heal_full"];
-					const std::string& increase_total = (**i.first)["increase_total"];
-					const std::string& set_hp = (**i.first)["set"];
-					const std::string& set_total = (**i.first)["set_total"];
+					const std::string &increase_hp = effect["increase"];
+					const std::string &heal_full = effect["heal_full"];
+					const std::string &increase_total = effect["increase_total"];
+					const std::string &set_hp = effect["set"];
+					const std::string &set_total = effect["set_total"];
 
 					// If the hitpoints are allowed to end up greater than max hitpoints
-					const std::string& violate_max = (**i.first)["violate_maximum"];
+					const std::string &violate_max = effect["violate_maximum"];
 
 					if(set_hp.empty() == false) {
 						if(set_hp[set_hp.size()-1] == '%') {
@@ -2615,8 +2614,8 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 					if(hit_points_ < 1)
 						hit_points_ = 1;
 				} else if(apply_to == "movement") {
-					const std::string& increase = (**i.first)["increase"];
-					const std::string& set_to = (**i.first)["set"];
+					const std::string &increase = effect["increase"];
+					const std::string &set_to = effect["set"];
 
 					if(increase.empty() == false) {
 						if (!times)
@@ -2634,7 +2633,7 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 					if(movement_ > max_movement_)
 						movement_ = max_movement_;
 				} else if(apply_to == "max_experience") {
-					const std::string& increase = (**i.first)["increase"];
+					const std::string &increase = effect["increase"];
 
 					if(increase.empty() == false) {
 						if (!times)
@@ -2648,8 +2647,8 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 				} else if(apply_to == "loyal") {
 					cfg_["upkeep"] = "loyal";
 				} else if(apply_to == "status") {
-					const std::string& add = (**i.first)["add"];
-					const std::string& remove = (**i.first)["remove"];
+					const std::string &add = effect["add"];
+					const std::string &remove = effect["remove"];
 
 					if(add.empty() == false) {
 						set_state(add,"yes");
@@ -2660,8 +2659,8 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 					}
 				} else if (apply_to == "movement_costs") {
 					config *mv = cfg_.child("movement_costs");
-					config *ap = (**i.first).child("movement_costs");
-					const std::string& replace = (**i.first)["replace"];
+					const config *ap = effect.child("movement_costs");
+					const std::string &replace = effect["replace"];
 					if(!mv) {
 						mv = &cfg_.add_child("movement_costs");
 					}
@@ -2671,8 +2670,8 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 					movement_costs_.clear();
 				} else if (apply_to == "defense") {
 					config *mv = cfg_.child("defense");
-					config *ap = (**i.first).child("defense");
-					const std::string& replace = (**i.first)["replace"];
+					const config *ap = effect.child("defense");
+					const std::string &replace = effect["replace"];
 					if(!mv) {
 						mv = &cfg_.add_child("defense");
 					}
@@ -2682,8 +2681,8 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 					defense_mods_.clear();
 				} else if (apply_to == "resistance") {
 					config *mv = cfg_.child("resistance");
-					config *ap = (**i.first).child("resistance");
-					const std::string& replace = (**i.first)["replace"];
+					const config *ap = effect.child("resistance");
+					const std::string &replace = effect["replace"];
 					if(!mv) {
 						mv = &cfg_.add_child("resistance");
 					}
@@ -2691,17 +2690,16 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 						mod_mdr_merge(*mv, *ap, !utils::string_bool(replace));
 					}
 				} else if (apply_to == "zoc") {
-					const std::string& zoc_value = (**i.first)["value"];
+					const std::string &zoc_value = effect["value"];
 					if(!zoc_value.empty()) {
 						emit_zoc_ = utils::string_bool(zoc_value);
 					}
 				} else if (apply_to == "new_ability") {
-					config *ab_effect;
 					config *ab = cfg_.child("abilities");
 					if(!ab) {
 						ab = &cfg_.add_child("abilities");
 					}
-					ab_effect = (**i.first).child("abilities");
+					const config *ab_effect = effect.child("abilities");
 					if (ab_effect) {
 						config to_append;
 						config::all_children_iterator j, j_end = ab_effect->ordered_end();
@@ -2713,7 +2711,7 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 						ab->append(to_append);
 					}
 				} else if (apply_to == "remove_ability") {
-					config *ab_effect = (**i.first).child("abilities");
+					const config *ab_effect = effect.child("abilities");
 					if (ab_effect) {
 						config::all_children_iterator j, j_end = ab_effect->ordered_end();
 						for(j = ab_effect->ordered_begin(); j != j_end; ++j) {
@@ -2722,20 +2720,20 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 					}
 				} else if (apply_to == "image_mod") {
 					LOG_UT << "applying image_mod \n";
-					std::string mod = (**i.first)["replace"];
+					std::string mod = effect["replace"];
 					if (!mod.empty()){
 						image_mods_ = mod;
 					}
 					LOG_UT << "applying image_mod \n";
-					mod = (**i.first)["add"];
+					mod = effect["add"];
 					if (!mod.empty()){
 						image_mods_ += mod;
 					}
 
-					game_config::add_color_info(**i.first);
+					game_config::add_color_info(effect);
 					LOG_UT << "applying image_mod \n";
 				} else if (apply_to == "new_animation") {
-					unit_animation::add_anims(animations_,**i.first);
+					unit_animation::add_anims(animations_, effect);
 				}
 			} // end while
 		} else { // for times = per level & level = 0 we still need to rebuild the descriptions
@@ -2746,7 +2744,7 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 				for(std::vector<attack_type>::iterator a = attacks_.begin();
 					a != attacks_.end(); ++a) {
 					std::string desc;
-					bool affected = a->describe_modification(**i.first,&desc);
+					bool affected = a->describe_modification(effect, &desc);
 					if(affected && desc != "") {
 						if(first_attack) {
 							first_attack = false;
@@ -2758,7 +2756,7 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 					}
 				}
 			} else if(apply_to == "hitpoints") {
-				const std::string& increase_total = (**i.first)["increase_total"];
+				const std::string &increase_total = effect["increase_total"];
 
 				if(increase_total.empty() == false) {
 					description += (increase_total[0] != '-' ? "+" : "") +
@@ -2766,14 +2764,14 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 						t_string(N_("HP"), "wesnoth");
 				}
 			} else if(apply_to == "movement") {
-				const std::string& increase = (**i.first)["increase"];
+				const std::string &increase = effect["increase"];
 
 				if(increase.empty() == false) {
 					description += (increase[0] != '-' ? "+" : "") +
 						increase + t_string(N_(" move"), "wesnoth");
 				}
 			} else if(apply_to == "max_experience") {
-				const std::string& increase = (**i.first)["increase"];
+				const std::string &increase = effect["increase"];
 
 				if(increase.empty() == false) {
 					description += (increase[0] != '-' ? "+" : "") +

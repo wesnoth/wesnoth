@@ -42,13 +42,11 @@ brush::brush(const config& cfg)
 			add_relative_location(loc.x, loc.y);
 		}
 	}
-	config::const_child_itors cfg_range = cfg.child_range("relative");
-	while (cfg_range.first != cfg_range.second) {
-		const config& relative = **cfg_range.first;
+	foreach (const config &relative, cfg.child_range("relative"))
+	{
 		int x = lexical_cast_default<int>(relative["x"], 0);
 		int y = lexical_cast_default<int>(relative["y"], 0);
 		add_relative_location(x, y);
-		++cfg_range.first;
 	}
 	if (relative_tiles_.empty()) {
 		WRN_ED << "Empty brush definition, name=" << name_ << "\n";

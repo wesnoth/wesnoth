@@ -15,6 +15,7 @@
 #include "global.hpp"
 
 #include "dialogs.hpp"
+#include "foreach.hpp"
 #include "gettext.hpp"
 #include "leader_list.hpp"
 #include "log.hpp"
@@ -460,10 +461,10 @@ void wait::generate_menu()
 		// Hack: if there is a unit which can recruit, use it as a
 		// leader. Necessary to display leader information when loading
 		// saves.
-		config::const_child_itors side_units = sd.child_range("unit");
-		for(;side_units.first != side_units.second; ++side_units.first) {
-			if(utils::string_bool((**side_units.first)["canrecruit"], false)) {
-				leader_type = (**side_units.first)["type"];
+		foreach (const config &side_unit, sd.child_range("unit"))
+		{
+			if (utils::string_bool(side_unit["canrecruit"], false)) {
+				leader_type = side_unit["type"];
 				break;
 			}
 		}

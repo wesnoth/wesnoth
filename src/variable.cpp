@@ -21,6 +21,7 @@
 
 #include "global.hpp"
 
+#include "foreach.hpp"
 #include "gamestatus.hpp"
 #include "log.hpp"
 #include "formula_string_utils.hpp"
@@ -317,10 +318,9 @@ vconfig vconfig::child(const std::string& key) const
 	{
 		return vconfig(natural, cache_key_);
 	}
-	for(config::const_child_itors chitors = cfg_->child_range("insert_tag");
-		chitors.first != chitors.second; ++chitors.first)
+	foreach (const config &ins, cfg_->child_range("insert_tag"))
 	{
-		vconfig insert_cfg(*chitors.first);
+		vconfig insert_cfg(&ins);
 		if(insert_cfg["name"] == key) {
 			variable_info vinfo(insert_cfg["variable"], false, variable_info::TYPE_CONTAINER);
 			if(!vinfo.is_valid) {
@@ -341,10 +341,9 @@ bool vconfig::has_child(const std::string& key) const
 	if(cfg_->child(key) != NULL) {
 		return true;
 	}
-	for(config::const_child_itors chitors = cfg_->child_range("insert_tag");
-		chitors.first != chitors.second; ++chitors.first)
+	foreach (const config &ins, cfg_->child_range("insert_tag"))
 	{
-		vconfig insert_cfg(*chitors.first);
+		vconfig insert_cfg(&ins);
 		if(insert_cfg["name"] == key) {
 			return true;
 		}
@@ -738,5 +737,5 @@ config& variable_info::as_container() {
 
 variable_info::array_range variable_info::as_array() {
 	assert(is_valid);
-	return vars->child_range(key);
+	return vars->child_range_bak(key);
 }

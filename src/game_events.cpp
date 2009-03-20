@@ -1577,9 +1577,9 @@ namespace {
 					dest.vars->merge_with(data);
 				}
 			} else if(mode == "insert" || dest.explicit_index) {
-				config::child_itors chitors = data.child_range(dest.key);
-				while(chitors.first != chitors.second) {
-					dest.vars->add_child_at(dest.key, **chitors.first++, dest.index++);
+				foreach (const config &child, data.child_range(dest.key))
+				{
+					dest.vars->add_child_at(dest.key, child, dest.index++);
 				}
 			} else {
 				dest.vars->append(data);

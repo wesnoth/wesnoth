@@ -147,7 +147,7 @@ static void read_tips_of_day(config& tips_of_day)
 	//user's first time playing since this feature has been added, so we'll
 	//leave the tips in their default order, which will always contain a tip
 	//regarding the upload log first, so the user sees it.
-	config::child_itors tips = tips_of_day.child_range("tip");
+	config::child_itors_bak tips = tips_of_day.child_range_bak("tip");
 	if (tips.first != tips.second && preferences::has_upload_log()) {
 		std::random_shuffle(tips.first, tips.second);
 	}
@@ -164,9 +164,9 @@ static void next_tip_of_day(config& tips_of_day, bool reverse = false)
 {
 	// we just rotate the tip list, to avoid the need to keep track
 	// of the current one, and keep it valid, cycle it, etc...
-	config::child_itors tips = tips_of_day.child_range("tip");
+	config::child_itors_bak tips = tips_of_day.child_range_bak("tip");
 	if (tips.first != tips.second) {
-		config::child_iterator direction = reverse ? tips.first+1 : tips.second-1;
+		config::child_list::iterator direction = reverse ? tips.first+1 : tips.second-1;
 		std::rotate(tips.first, direction, tips.second);
 	}
 }

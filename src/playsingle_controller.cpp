@@ -238,7 +238,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 
 	// Start music.
 	const config::child_list& m = level_.get_children("music");
-	config::const_child_iterator i;
+	config::child_list::const_iterator i;
 	for (i = m.begin(); i != m.end(); i++) {
 		sound::play_music_config(**i);
 	}

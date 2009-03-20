@@ -162,11 +162,11 @@ bool load_language_list()
 	known_languages.push_back(
 		language_def("", t_string(N_("System default language"), "wesnoth"), "ltr", "", "A"));
 
-	config::const_child_itors langs = cfg.child_range("locale");
-	for(;langs.first != langs.second; ++langs.first) {
+	foreach (const config &lang, cfg.child_range("locale"))
+	{
 		known_languages.push_back(
-			language_def((**langs.first)["locale"], (**langs.first)["name"], (**langs.first)["dir"],
-				(**langs.first)["alternates"], (**langs.first)["sort_name"]));
+			language_def(lang["locale"], lang["name"], lang["dir"],
+			             lang["alternates"], lang["sort_name"]));
 	}
 
 	return true;
@@ -386,11 +386,10 @@ const language_def& get_locale()
 
 void init_textdomains(const config& cfg)
 {
-	config::const_child_itors t = cfg.child_range("textdomain");
-
-	for(;t.first != t.second; ++t.first) {
-		const std::string name = (**t.first)["name"];
-		const std::string path = (**t.first)["path"];
+	foreach (const config &t, cfg.child_range("textdomain"))
+	{
+		const std::string &name = t["name"];
+		const std::string &path = t["path"];
 
 		if(path.empty()) {
 			t_string::add_textdomain(name, get_intl_dir());

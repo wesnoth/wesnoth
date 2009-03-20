@@ -347,7 +347,7 @@ public:
 
 		public:
             const race_map& races() const { return races_; }
-            void set_config(const config& cfg);
+            void set_config(config &cfg);
 
 			unit_type_map::const_iterator begin() const { return types_.begin(); }
 			unit_type_map::const_iterator end() const { return types_.end(); }
