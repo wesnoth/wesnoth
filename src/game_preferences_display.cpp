@@ -18,6 +18,7 @@
 #include "display.hpp"
 #include "filesystem.hpp"
 #include "filechooser.hpp"
+#include "foreach.hpp"
 #include "gettext.hpp"
 #include "preferences_display.hpp"
 #include "wml_separators.hpp"
@@ -942,9 +943,11 @@ void preferences_dialog::process_event()
 
 const config* preferences_dialog::get_advanced_pref() const
 {
-	const config::child_list& adv = game_cfg_.get_children("advanced_preference");
-	if(advanced_selection_ >= 0 && advanced_selection_ < int(adv.size())) {
-		return adv[advanced_selection_];
+	config::const_child_itors itors = game_cfg_.child_range("advanced_preference");
+	int nb_prefs = std::distance(itors.first, itors.second);
+	if (advanced_selection_ >= 0 && advanced_selection_ < nb_prefs) {
+		std::advance(itors.first, advanced_selection_);
+		return &*itors.first;
 	} else {
 		return NULL;
 	}
@@ -953,12 +956,12 @@ const config* preferences_dialog::get_advanced_pref() const
 void preferences_dialog::set_advanced_menu()
 {
 	std::vector<std::string> advanced_items;
-	const config::child_list& adv = game_cfg_.get_children("advanced_preference");
-	for(config::child_list::const_iterator i = adv.begin(); i != adv.end(); ++i) {
+	foreach (const config &adv, game_cfg_.child_range("advanced_preference"))
+	{
 		std::ostringstream str;
-		std::string field = preferences::get((**i)["field"]);
+		std::string field = preferences::get(adv["field"]);
 		if(field.empty()) {
-			field = (**i)["default"];
+			field = adv["default"];
 		}
 
 		if(field == "yes") {
@@ -967,7 +970,7 @@ void preferences_dialog::set_advanced_menu()
 			field = _("no");
 		}
 
-		str << (**i)["name"] << COLUMN_SEPARATOR << field;
+		str << adv["name"] << COLUMN_SEPARATOR << field;
 		advanced_items.push_back(str.str());
 	}
 
