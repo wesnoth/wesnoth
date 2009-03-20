@@ -632,7 +632,7 @@ bool lobby::lobby_sorter::less(int column, const gui::menu::item& row1, const gu
 		return false;
 	}
 
-	int nb = list->child_count("game");
+	size_t nb = list->child_count("game");
 	if(row1.id >= nb || row2.id >= nb) {
 		return false;
 	}
