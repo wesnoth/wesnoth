@@ -64,8 +64,8 @@ inline ADDON_GROUP is_addon_sp_or_mp(ADDON_TYPE t)
 bool addon_name_legal(const std::string& name);
 /** Probes an add-on archive for illegal names. */
 bool check_names_legal(const config& dir);
-/** Return a vector of detected scripts. */
-std::vector<config *> find_scripts(const config &cfg, std::string extension);
+/** Adds detected scripts to a vector. */
+void find_scripts(config &cfg, const std::string &extension, std::vector<config *> &);
 
 std::string encode_binary(const std::string& str);
 std::string unencode_binary(const std::string& str);

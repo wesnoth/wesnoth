@@ -16,6 +16,7 @@
 #include "global.hpp"
 #include "addon_checks.hpp"
 #include "config.hpp"
+#include "foreach.hpp"
 
 #include <cstring>
 
@@ -40,16 +41,12 @@ bool addon_name_legal(const std::string& name)
 
 bool check_names_legal(const config& dir)
 {
-	const config::child_list& files = dir.get_children("file");
-	for(config::child_list::const_iterator i = files.begin(); i != files.end(); ++i) {
-			if (!addon_name_legal((**i)["name"])) return false;
+	foreach (const config &path, dir.child_range("file")) {
+		if (!addon_name_legal(path["name"])) return false;
 	}
-	const config::child_list& dirs = dir.get_children("dir");
-	{
-		for(config::child_list::const_iterator i = dirs.begin(); i != dirs.end(); ++i) {
-				if (!addon_name_legal((**i)["name"])) return false;
-				if (!check_names_legal(**i)) return false;
-		}
+	foreach (const config &path, dir.child_range("dir")) {
+		if (!addon_name_legal(path["name"])) return false;
+		if (!check_names_legal(path)) return false;
 	}
 	return true;
 }
@@ -82,29 +79,24 @@ ADDON_TYPE get_addon_type(const std::string& str)
 		return ADDON_UNKNOWN;
 }
 
-std::vector<config *> find_scripts(const config &cfg, std::string extension)
+void find_scripts(config &cfg, const std::string &extension,
+                  std::vector<config *> &scripts)
 {
-	std::vector<config *> python_scripts;
-	const config::child_list& dirs = cfg.get_children("dir");
-	config::child_list::const_iterator i;
-	for(i = dirs.begin(); i != dirs.end(); ++i) {
-		const config::child_list& files = (**i).get_children("file");
-		config::child_list::const_iterator j;
-		for(j = files.begin(); j != files.end(); ++j) {
-			std::string filename = (**j)["name"].str();
+	foreach (config &i, cfg.child_range("dir"))
+	{
+		foreach (config &j, cfg.child_range("file"))
+		{
+			std::string filename = j["name"];
 			if (filename.length() > extension.length()) {
 				if (filename.substr(filename.length() - extension.length()) ==
 					extension) {
-					python_scripts.push_back(*j);
+					scripts.push_back(&j);
 				}
 			}
 		}
 		// Recursively look for files in sub directories.
-		std::vector<config *> childs = find_scripts(**i, extension);
-		python_scripts.insert(python_scripts.end(),
-			childs.begin(), childs.end());
+		find_scripts(i, extension, scripts);
 	}
-	return python_scripts;
 }
 
 namespace {

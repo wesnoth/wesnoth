@@ -20,6 +20,7 @@
  */
 
 #include "filesystem.hpp"
+#include "foreach.hpp"
 #include "log.hpp"
 #include "network_worker.hpp"
 #include "serialization/binary_or_text.hpp"
@@ -214,33 +215,35 @@ namespace {
 	// again.
 	std::string check_python_scripts(config &data, std::string filename)
 	{
-		std::vector<config *> python_scripts = find_scripts(data, ".py");
-		if (!python_scripts.empty()) {
-			// Campaign contains python scripts.
-			config old_campaign;
-			scoped_istream stream = istream_file(filename);
-			read_gz(old_campaign, *stream);
-			std::vector<config *> old_scripts = find_scripts(old_campaign, ".py");
-			std::string script_names = "";
-			std::vector<config *>::iterator i, j;
-			// Go through all newly uploaded python scripts.
-			for (i = python_scripts.begin(); i != python_scripts.end(); ++i) {
-				bool already = false;
-				// Compare to existing, approved scripts.
-				for (j = old_scripts.begin(); j != old_scripts.end(); ++j) {
-					if ((**i)["contents"] != (**j)["contents"]) continue;
-					already = true;
-					break;
-				}
-				if (!already) {
-					script_names += "\n" + (**i)["name"];
-					(**i)["name"] += ".unchecked";
-				}
+		std::vector<config *> python_scripts;
+		find_scripts(data, ".py", python_scripts);
+		if (python_scripts.empty()) return std::string();
+		// Campaign contains python scripts.
+		config old_campaign;
+		scoped_istream stream = istream_file(filename);
+		read_gz(old_campaign, *stream);
+		std::vector<config *> old_scripts;
+		find_scripts(old_campaign, ".py", old_scripts);
+		std::string script_names;
+		// Go through all newly uploaded python scripts.
+		foreach (config *i, python_scripts)
+		{
+			bool already = false;
+			// Compare to existing, approved scripts.
+			foreach (const config *j, old_scripts)
+			{
+				if ((*i)["contents"] != (*j)["contents"]) continue;
+				already = true;
+				break;
 			}
-			if (script_names != "")
-				return "\nScripts awaiting approval:\n" + script_names;
+			if (!already) {
+				script_names += "\n" + (*i)["name"];
+				(*i)["name"] += ".unchecked";
+			}
 		}
-		return "";
+		if (!script_names.empty())
+			return "\nScripts awaiting approval:\n" + script_names;
+		return std::string();
 	}
 
 	// Go through all .py.unchecked files in the given campaign, and rename them to
@@ -249,21 +252,19 @@ namespace {
 	// command.
 	std::string validate_all_python_scripts(config &data)
 	{
-		std::vector<config *> python_scripts = find_scripts(data, ".py.unchecked");
-		if (!python_scripts.empty()) {
-			// Campaign contains unchecked python scripts.
-			std::string script_names = "";
-			std::vector<config *>::iterator i;
-			// Go through all unchecked python scripts.
-			for (i = python_scripts.begin(); i != python_scripts.end(); ++i) {
-				std::string name = (**i)["name"];
-				name.resize(name.length() - 10);
-				(**i)["name"] = name;
-				script_names += "\n" + name;
-			}
-			return script_names;
+		std::vector<config *> python_scripts;
+		find_scripts(data, ".py.unchecked", python_scripts);
+		if (python_scripts.empty()) return std::string();
+		// Campaign contains unchecked python scripts.
+		std::string script_names;
+		foreach (config *i, python_scripts)
+		{
+			std::string name = (*i)["name"];
+			name.resize(name.length() - 10);
+			(*i)["name"] = name;
+			script_names += "\n" + name;
 		}
-		return "";
+		return script_names;
 	}
 
 	// Add a file COPYING.txt with the GPL to an uploaded campaign.
