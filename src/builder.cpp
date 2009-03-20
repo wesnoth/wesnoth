@@ -21,6 +21,7 @@
 
 #include "builder.hpp"
 #include "config.hpp"
+#include "foreach.hpp"
 #include "log.hpp"
 #include "map.hpp"
 
@@ -538,20 +539,17 @@ terrain_builder::building_rule terrain_builder::rotate_rule(const terrain_builde
 
 void terrain_builder::add_images_from_config(rule_imagelist& images, const config &cfg, bool global, int dx, int dy)
 {
-	const config::child_list& cimages = cfg.get_children("image");
-
-
-	for(config::child_list::const_iterator img = cimages.begin(); img != cimages.end(); ++img) {
-
-		const std::string &name = (**img)["name"];
-		const int layer = lexical_cast_default<int>((**img)["layer"], 0);
+	foreach (const config &img, cfg.child_range("image"))
+	{
+		const std::string &name = img["name"];
+		const int layer = lexical_cast_default<int>(img["layer"], 0);
 
 		int basex = 0, basey = 0;
-		if((**img)["base"].empty()) {
+		if (img["base"].empty()) {
 			basex = TILEWIDTH / 2 + dx;
 			basey = TILEWIDTH / 2 + dy;
 		} else {
-			std::vector<std::string> base = utils::split((**img)["base"]);
+			std::vector<std::string> base = utils::split(img["base"]);
 
 			if(base.size() >= 2) {
 				basex = atoi(base[0].c_str());
@@ -560,8 +558,8 @@ void terrain_builder::add_images_from_config(rule_imagelist& images, const confi
 		}
 
 		int center_x = -1, center_y = -1;
-		if( !(**img)["center"].empty()) {
-			std::vector<std::string> center = utils::split((**img)["center"]);
+		if (!img["center"].empty()) {
+			std::vector<std::string> center = utils::split(img["center"]);
 
 			if(center.size() >= 2) {
 				center_x = atoi(center[0].c_str());
@@ -575,12 +573,10 @@ void terrain_builder::add_images_from_config(rule_imagelist& images, const confi
 		images.back().variants.insert(std::pair<std::string, rule_image_variant>("", rule_image_variant(name,"")));
 
 		// Adds the other variants of the image
-		const config::child_list& variants = (**img).get_children("variant");
-
-		for(config::child_list::const_iterator variant = variants.begin();
-				variant != variants.end(); ++variant) {
-			const std::string &name = (**variant)["name"];
-			const std::string &tod = (**variant)["tod"];
+		foreach (const config &variant, img.child_range("variant"))
+		{
+			const std::string &name = variant["name"];
+			const std::string &tod = variant["tod"];
 
 			images.back().variants.insert(std::pair<std::string, rule_image_variant>(tod, rule_image_variant(name,tod)));
 
@@ -706,50 +702,49 @@ void terrain_builder::parse_config(const config &cfg)
 	log_scope("terrain_builder::parse_config");
 
 	// Parses the list of building rules (BRs)
-	const config::child_list& brs = cfg.get_children("terrain_graphics");
-
-	for(config::child_list::const_iterator br = brs.begin(); br != brs.end(); ++br) {
+	foreach (const config &br, cfg.child_range("terrain_graphics"))
+	{
 		building_rule pbr; // Parsed Building rule
 
 		// add_images_from_config(pbr.images, **br);
 
-		if(!((**br)["x"].empty() || (**br)["y"].empty()))
-			pbr.location_constraints = map_location(atoi((**br)["x"].c_str())-1, atoi((**br)["y"].c_str())-1);
+		if(!br["x"].empty() && !br["y"].empty())
+			pbr.location_constraints =
+				map_location(atoi(br["x"].c_str()) - 1, atoi(br["y"].c_str()) - 1);
 
-		pbr.probability = (**br)["probability"].empty() ? -1 : atoi((**br)["probability"].c_str());
-		pbr.precedence = (**br)["precedence"].empty() ? 0 : atoi((**br)["precedence"].c_str());
+		pbr.probability = br["probability"].empty() ? -1 : atoi(br["probability"].c_str());
+		pbr.precedence = br["precedence"].empty() ? 0 : atoi(br["precedence"].c_str());
 
 		// Mapping anchor indices to anchor locations.
 		anchormap anchors;
 
 		// Parse the map= , if there is one (and fill the anchors list)
-		parse_mapstring((**br)["map"], pbr, anchors, **br);
+		parse_mapstring(br["map"], pbr, anchors, br);
 
 		// Parses the terrain constraints (TCs)
-		config::child_list tcs((*br)->get_children("tile"));
-
-		for(config::child_list::const_iterator tc = tcs.begin(); tc != tcs.end(); tc++) {
+		foreach (const config &tc, br.child_range("tile"))
+		{
 			// Adds the terrain constraint to the current built terrain's list
 			// of terrain constraints, if it does not exist.
 			map_location loc;
-			if((**tc)["x"].size()) {
-				loc.x = atoi((**tc)["x"].c_str());
+			if (!tc["x"].empty()) {
+				loc.x = atoi(tc["x"].c_str());
 			}
-			if((**tc)["y"].size()) {
-				loc.y = atoi((**tc)["y"].c_str());
+			if (!tc["y"].empty()) {
+				loc.y = atoi(tc["y"].c_str());
 			}
-			if(!(**tc)["loc"].empty()) {
-				std::vector<std::string> sloc = utils::split((**tc)["loc"]);
+			if (!tc["loc"].empty()) {
+				std::vector<std::string> sloc = utils::split(tc["loc"]);
 				if(sloc.size() == 2) {
 					loc.x = atoi(sloc[0].c_str());
 					loc.y = atoi(sloc[1].c_str());
 				}
 			}
 			if(loc.valid()) {
-				add_constraints(pbr.constraints, loc, **tc, **br);
+				add_constraints(pbr.constraints, loc, tc, br);
 			}
-			if((**tc)["pos"].size()) {
-				int pos = atoi((**tc)["pos"].c_str());
+			if (!tc["pos"].empty()) {
+				int pos = atoi(tc["pos"].c_str());
 				if(anchors.find(pos) == anchors.end()) {
 					LOG_STREAM(warn, engine) << "Invalid anchor!\n";
 					continue;
@@ -760,14 +755,14 @@ void terrain_builder::parse_config(const config &cfg)
 
 				for(; range.first != range.second; range.first++) {
 					loc = range.first->second;
-					add_constraints(pbr.constraints, loc, **tc, **br);
+					add_constraints(pbr.constraints, loc, tc, br);
 				}
 			}
 		}
 
-		const std::string global_set_flag = (**br)["set_flag"];
-		const std::string global_no_flag = (**br)["no_flag"];
-		const std::string global_has_flag = (**br)["has_flag"];
+		const std::string global_set_flag = br["set_flag"];
+		const std::string global_no_flag = br["no_flag"];
+		const std::string global_has_flag = br["has_flag"];
 
 		for(constraint_set::iterator constraint = pbr.constraints.begin(); constraint != pbr.constraints.end();
 		    constraint++) {
@@ -784,7 +779,7 @@ void terrain_builder::parse_config(const config &cfg)
 		}
 
 		// Handles rotations
-		const std::string rotations = (**br)["rotations"];
+		const std::string &rotations = br["rotations"];
 
 		add_rotated_rules(building_rules_, pbr, rotations);
 
