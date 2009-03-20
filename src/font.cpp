@@ -1274,9 +1274,8 @@ bool load_font_config()
 		return false;
 
 	std::set<std::string> known_fonts;
-	const config::child_list fonts = fonts_config->get_children("font");
-	for (config::child_list::const_iterator child = fonts.begin(); child != fonts.end(); ++child) {
-		known_fonts.insert((**child)["name"]);
+	foreach (const config &font, fonts_config->child_range("font")) {
+		known_fonts.insert(font["name"]);
 	}
 
 	font_order = (*fonts_config)["order"];
