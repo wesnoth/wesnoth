@@ -15,6 +15,7 @@
 #include "playturn.hpp"
 
 #include "construct_dialog.hpp"
+#include "foreach.hpp"
 #include "game_end_exceptions.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
@@ -67,32 +68,30 @@ void turn_info::send_data()
 turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg,
 		network::connection from, std::deque<config>& backlog, bool skip_replay)
 {
-	if (cfg.child("message")) {
-		const config& cmessage = *cfg.child("message");
+	if (const config *msg = cfg.child("message"))
+	{
+		const config &cmessage = *msg;
 		const int side = lexical_cast_default<int>(cmessage["side"],0);
 
 		gui_.add_chat_message(time(NULL), cmessage["sender"], side,
 				cmessage["message"], game_display::MESSAGE_PUBLIC,
 				preferences::message_bell());
 	}
-	if (cfg.child("whisper") != NULL /*&& is_observer()*/) {
-		const config& cwhisper = *cfg.child("whisper");
+
+	if (const config *msg = cfg.child("whisper") /*&& is_observer()*/)
+	{
+		const config &cwhisper = *msg;
 		gui_.add_chat_message(time(NULL), "whisper: " + cwhisper["sender"], 0,
 				cwhisper["message"], game_display::MESSAGE_PRIVATE,
 				preferences::message_bell());
 	}
-	if(cfg.child("observer") != NULL) {
-		const config::child_list& observers = cfg.get_children("observer");
-		for(config::child_list::const_iterator ob = observers.begin(); ob != observers.end(); ++ob) {
-			gui_.add_observer((**ob)["name"]);
-		}
+
+	foreach (const config &ob, cfg.child_range("observer")) {
+		gui_.add_observer(ob["name"]);
 	}
 
-	if(cfg.child("observer_quit") != NULL) {
-		const config::child_list& observers = cfg.get_children("observer_quit");
-		for(config::child_list::const_iterator ob = observers.begin(); ob != observers.end(); ++ob) {
-			gui_.remove_observer((**ob)["name"]);
-		}
+	foreach (const config &ob, cfg.child_range("observer_quit")) {
+		gui_.remove_observer(ob["name"]);
 	}
 
 	if(cfg.child("leave_game") != NULL) {
@@ -101,17 +100,17 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 
 	bool turn_end = false;
 
-	const config::child_list& turns = cfg.get_children("turn");
-	if(turns.empty() == false && from != network::null_connection) {
+	config::const_child_itors turns = cfg.child_range("turn");
+	if (turns.first != turns.second && from != network::null_connection) {
 		//forward the data to other peers
 		network::send_data_all_except(cfg, from, true);
 	}
 
-	for(config::child_list::const_iterator t = turns.begin(); t != turns.end(); ++t) {
-
+	foreach (const config &t, turns)
+	{
 		if(turn_end == false) {
 			/** @todo FIXME: Check what commands we execute when it's our turn! */
-			replay replay_obj(**t);
+			replay replay_obj(t);
 			replay_obj.set_skip(skip_replay);
 			replay_obj.start_replay();
 
@@ -130,13 +129,13 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 				replay::last_replay_error = e.message; //FIXME: some better way to pass this?
 				replay_error_.notify_observers();
 			}
-			recorder.add_config(**t,replay::MARK_AS_SENT);
+			recorder.add_config(t, replay::MARK_AS_SENT);
 		} else {
 
 			//this turn has finished, so push the remaining moves
 			//into the backlog
 			backlog.push_back(config());
-			backlog.back().add_child("turn",**t);
+			backlog.back().add_child("turn", t);
 		}
 	}
 
