@@ -1,10 +1,18 @@
+Version 1.6+svn:
+ * Language and i18n:
+   * updated translations: Hebrew
+
 Version 1.6a:
  * User interface:
    * Remove a no longer valid assert (bug #13217)
    * Make sure the dialog always uses the full map area width
- * Language and i18n:
-   * updated translations: Hebrew
-
+ * Multiplayer and AI:
+   * Fixed bug #13222: Do not use the FormulaAI by default since it could lead
+     to the AI doing nothing
+   * Fixed bug #13218: infinite loop in the AI if it persistently tries to move
+     unit to occupied square
+   * Moved FormulaAI related debug output into the info log level
+   
 Version 1.6:
  * Campaigns:
    * Under the Burning Suns:
