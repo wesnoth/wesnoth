@@ -165,8 +165,8 @@ void editor_controller::init_sidebar(const config& game_config)
 
 void editor_controller::init_brushes(const config& game_config)
 {
-	foreach (const config* i, game_config.get_children("brush")) {
-		brushes_.push_back(brush(*i));
+	foreach (const config &i, game_config.child_range("brush")) {
+		brushes_.push_back(brush(i));
 	}
 	if (brushes_.size() == 0) {
 		ERR_ED << "No brushes defined!";
@@ -197,21 +197,24 @@ void editor_controller::init_mouse_actions(const config& game_config)
 			}
 		}
 	}
-	foreach (const config* c, game_config.get_children("editor_tool_hint")) {
-		mouse_action_map::iterator i = mouse_actions_.find(hotkey::get_hotkey((*c)["id"]).get_id());
+	foreach (const config &c, game_config.child_range("editor_tool_hint")) {
+		mouse_action_map::iterator i =
+			mouse_actions_.find(hotkey::get_hotkey(c["id"]).get_id());
 		if (i != mouse_actions_.end()) {
-			mouse_action_hints_.insert(std::make_pair(i->first, (*c)["text"]));
+			mouse_action_hints_.insert(std::make_pair(i->first, c["text"]));
 		}
 	}
 }
 
 void editor_controller::init_map_generators(const config& game_config)
 {
-	foreach (const config* i, game_config.get_children("multiplayer")) {
-		if ((*i)["map_generation"] == "default") {
-			const config* generator_cfg = i->child("generator");
+	foreach (const config &i, game_config.child_range("multiplayer"))
+	{
+		if (i["map_generation"] == "default") {
+			const config *generator_cfg = i.child("generator");
 			if (generator_cfg == NULL) {
-				ERR_ED << "Scenario \"" << (*i)["name"] << "\" with id " << (*i)["id"] << " has map_generation=default but no [generator] tag";
+				ERR_ED << "Scenario \"" << i["name"] << "\" with id " << i["id"]
+					<< " has map_generation=default but no [generator] tag";
 			} else {
 				map_generator* m = create_map_generator("", generator_cfg);
 				map_generators_.push_back(m);
@@ -227,8 +230,8 @@ void editor_controller::init_tods(const config& game_config)
 		ERR_ED << "No editor time-of-day defined\n";
 		return;
 	}
-	foreach (const config* i, cfg->get_children("time")) {
-		tods_.push_back(time_of_day(*i));
+	foreach (const config &i, cfg->child_range("time")) {
+		tods_.push_back(time_of_day(i));
 	}
 }
 
@@ -239,8 +242,8 @@ void editor_controller::init_music(const config& game_config)
 		ERR_ED << "No editor music defined\n";
 		return;
 	}
-	foreach (const config* i, cfg->get_children("music")) {
-		sound::play_music_config(*i);
+	foreach (const config &i, cfg->child_range("music")) {
+		sound::play_music_config(i);
 	}
 	sound::commit_music_changes();
 }
