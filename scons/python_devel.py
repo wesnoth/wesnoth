@@ -10,8 +10,7 @@ def PythonExtension(env, target, source, **kv):
     return env.SharedLibrary(target, source, SHLIBPREFIX='', SHLIBSUFFIX=distutils.sysconfig.get_config_var("SO"), **kv)
 
 def generate(env):
-    from SCons.Script.SConscript import SConsEnvironment
-    SConsEnvironment.PythonExtension = PythonExtension
+    env.AddMethod(PythonExtension)
 
 def CheckPython(context):
     env = context.env

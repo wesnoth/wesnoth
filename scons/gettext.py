@@ -43,8 +43,7 @@ def generate(env):
             return env.MsgMerge(target, source)
         else:
             return env.MsgInit(target, source)
-    from SCons.Script.SConscript import SConsEnvironment
-    SConsEnvironment.MsgInitMerge = MsgInitMerge
+    env.AddMethod(MsgInitMerge)
 
     env["PO4A_GETTEXTIZE"] = WhereIs("po4a-gettextize")
     po4a_gettextize = Builder(

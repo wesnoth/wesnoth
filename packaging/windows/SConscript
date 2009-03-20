@@ -34,5 +34,4 @@ def WindowsInstaller(env, files):
 
     env.Alias("windows-installer", [files, "#/Wesnoth.nsi"], "makensis ${SOURCES[-1]}")
 
-from SCons.Script.SConscript import SConsEnvironment
-SConsEnvironment.WindowsInstaller = WindowsInstaller
+env.AddMethod(WindowsInstaller)

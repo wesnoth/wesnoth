@@ -302,8 +302,8 @@ def WesnothProgram(env, target, source, can_build, **kw):
     exec target + " = bin"
     Export(target)
 
-from SCons.Script.SConscript import SConsEnvironment
-SConsEnvironment.WesnothProgram = WesnothProgram
+env.AddMethod(WesnothProgram)
+test_env.AddMethod(WesnothProgram)
 
 game_cpp = env.Object("game.cpp", EXTRA_DEFINE = not env["pool_alloc"] and "DISABLE_POOL_ALLOC" or None);
 

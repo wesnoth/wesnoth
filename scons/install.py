@@ -102,10 +102,8 @@ def InstallData(env, datadir, component, source, subdir = ""):
         env.Alias("install-" + component, install)
 
 def generate(env):
-    #env.AddMethod(InstallWithSuffix)
-    from SCons.Script.SConscript import SConsEnvironment
-    SConsEnvironment.InstallBinary = InstallBinary
-    SConsEnvironment.InstallData = InstallData
+    env.AddMethod(InstallBinary)
+    env.AddMethod(InstallData)
 
     env.Append(BUILDERS={'InstallFiltered':Builder(action=InstallFilteredHook, target_factory=Dir, source_factory=Dir)})
 
