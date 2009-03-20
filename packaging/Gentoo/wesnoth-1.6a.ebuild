@@ -34,7 +34,7 @@ DEPEND="${RDEPEND}
 		tinygui? ( media-gfx/imagemagick[jpeg,png] )
 	)
 	nls? ( sys-devel/gettext )
-	>=dev-util/scons-0.96.93"
+	>=dev-util/scons-0.98.3"
 
 use_target() {
 	useq $1 && echo $2
@@ -102,7 +102,7 @@ src_compile() {
 		$(use_variable nls) \
 		localedirname=/usr/share/locale \
 		prefix=/usr/games \
-		prefsdir=.wesnoth-1.5 \
+		prefsdir=.wesnoth-1.6 \
 		icondir=/usr/share/icons \
 		desktopdir=/usr/share/applications \
 		docdir=/usr/share/doc/${PF} \
