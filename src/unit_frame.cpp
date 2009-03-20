@@ -174,7 +174,8 @@ frame_builder::frame_builder(const config& cfg,const std::string& frame_string) 
 	submerge_(""),
 	x_(""),
 	y_(""),
-	drawing_layer_("")
+	drawing_layer_(""),
+	in_hex_(false)
 {
 	image(image::locator(cfg[frame_string+"image"]),cfg[frame_string+"image_mod"]);
 	image_diagonal(image::locator(cfg[frame_string+"image_diagonal"]),cfg[frame_string+"image_mod"]);
@@ -205,7 +206,7 @@ frame_builder::frame_builder(const config& cfg,const std::string& frame_string) 
 	x(cfg[frame_string+"x"]);
 	y(cfg[frame_string+"y"]);
 	drawing_layer(cfg[frame_string+"layer"]);
-
+	in_hex(cfg[frame_string+"in_hex"]);
 }
 
 const frame_parameters frame_builder::parameters(int current_time) const
@@ -230,6 +231,7 @@ const frame_parameters frame_builder::parameters(int current_time) const
 	result.x = x_.get_current_element(current_time);
 	result.y = y_.get_current_element(current_time);
 	result.drawing_layer = drawing_layer_.get_current_element(current_time,display::LAYER_UNIT_DEFAULT-display::LAYER_UNIT_FIRST);
+	result.in_hex = in_hex_;
 	return result;
 }
 frame_builder & frame_builder::image(const image::locator image ,const std::string & image_mod)
@@ -318,6 +320,12 @@ frame_builder & frame_builder::drawing_layer(const std::string& drawing_layer)
 	drawing_layer_=progressive_int(drawing_layer,duration_);
 	return *this;
 }
+frame_builder & frame_builder::in_hex(const std::string& in_hex)
+{
+	in_hex_= utils::string_bool(in_hex);
+	return *this;
+}
+
 bool frame_builder::does_not_change() const
 {
 	return halo_.does_not_change() &&
@@ -490,14 +498,22 @@ bool unit_frame::invalidate(const bool force,const int frame_time,const map_loca
 	if (image != NULL) {
 		const int x = static_cast<int>(tmp_offset * xdst + (1.0-tmp_offset) * xsrc)+current_data.x+d2-(image->w/2);
 		const int y = static_cast<int>(tmp_offset * ydst + (1.0-tmp_offset) * ysrc)+current_data.y+d2-(image->h/2);
+		const SDL_Rect r = {x,y,image->w,image->h};
+		// check if the unit fit in a hex
+		bool in_hex = current_data.in_hex && r.x==xsrc && r.y==ysrc
+				&& r.w==disp->hex_size() && r.h==disp->hex_size();
+		// check if our underlying hexes are invalidated
+		bool rect_need_update = in_hex ?
+				disp->hex_need_update(src) : disp->rectangle_need_update(r);
 		// if we need to update ourselve because we changed, invalidate our hexes
 		// and return whether or not our hexs was invalidated
-		const SDL_Rect r = {x,y,image->w,image->h};
-		if(force || need_update() || disp->rectangle_need_update(r)){
+		if(force || need_update() || rect_need_update) {
 			// invalidate ouself to be called at redraw time
 			result |= disp->invalidate(src);
-			// invalidate all hex we plan to overwrite
-			result |= disp->invalidate_visible_locations_in_rect(r);
+			if(in_hex == false) {
+				// invalidate all hexes we plan to overwrite
+				result |= disp->invalidate_visible_locations_in_rect(r);
+			}
 		}
 	} else {
 		// we have no "redraw surface" but we still need to invalidate our own hex
@@ -600,6 +616,8 @@ const frame_parameters unit_frame::merge_parameters(int current_time,const frame
 	result.drawing_layer = current_val.drawing_layer !=  display::LAYER_UNIT_DEFAULT-display::LAYER_UNIT_FIRST?
 		current_val.drawing_layer:animation_val.drawing_layer;
 
+	assert(!engine_val.in_hex);
+	result.in_hex = current_val.in_hex ? current_val.in_hex : animation_val.in_hex;
 #ifdef LOW_MEM
 	if(primary) {
 		result.image= engine_val.image;
