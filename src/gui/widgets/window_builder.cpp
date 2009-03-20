@@ -322,12 +322,10 @@ const std::string& twindow_builder::read(const config& cfg)
 
 	DBG_G_P << "Window builder: reading data for window " << id_ << ".\n";
 
-	const config::child_list& cfgs = cfg.get_children("resolution");
-	VALIDATE(!cfgs.empty(), _("No resolution defined."));
-	for(std::vector<config*>::const_iterator itor = cfgs.begin();
-			itor != cfgs.end(); ++itor) {
-
-		resolutions.push_back(tresolution(**itor));
+	config::const_child_itors cfgs = cfg.child_range("resolution");
+	VALIDATE(cfgs.first != cfgs.second, _("No resolution defined."));
+	foreach (const config &i, cfgs) {
+		resolutions.push_back(tresolution(i));
 	}
 
 	return id_;
@@ -503,31 +501,27 @@ tbuilder_grid::tbuilder_grid(const config& cfg) :
  */
 	log_scope2(gui_parse, "Window builder: parsing a grid");
 
-	const config::child_list& row_cfgs = cfg.get_children("row");
-	for(std::vector<config*>::const_iterator row_itor = row_cfgs.begin();
-			row_itor != row_cfgs.end(); ++row_itor) {
-
+	foreach (const config &row, cfg.child_range("row"))
+	{
 		unsigned col = 0;
 
-		row_grow_factor.push_back(lexical_cast_default<unsigned>((**row_itor)["grow_factor"]));
+		row_grow_factor.push_back(lexical_cast_default<unsigned>(row["grow_factor"]));
 
-		const config::child_list& col_cfgs = (**row_itor).get_children("column");
-		for(std::vector<config*>::const_iterator col_itor = col_cfgs.begin();
-				col_itor != col_cfgs.end(); ++col_itor) {
-
-			flags.push_back(read_flags(**col_itor));
-			border_size.push_back(lexical_cast_default<unsigned>((**col_itor)["border_size"]));
+		foreach (const config &c, row.child_range("column"))
+		{
+			flags.push_back(read_flags(c));
+			border_size.push_back(lexical_cast_default<unsigned>(c["border_size"]));
 			if(rows == 0) {
-				col_grow_factor.push_back(lexical_cast_default<unsigned>((**col_itor)["grow_factor"]));
+				col_grow_factor.push_back(lexical_cast_default<unsigned>(c["grow_factor"]));
 			}
 
-			widgets.push_back(create_builder_widget(**col_itor));
+			widgets.push_back(create_builder_widget(c));
 
 			++col;
 		}
 
 		++rows;
-		if(row_itor == row_cfgs.begin()) {
+		if (rows == 1) {
 			cols = col;
 		} else {
 			VALIDATE(col, _("A row must have a column."));
@@ -775,27 +769,23 @@ tbuilder_listbox::tbuilder_listbox(const config& cfg) :
 	VALIDATE(list_builder->rows == 1, _("A 'list_definition' should contain one row."));
 
 	const config *data = cfg.child("list_data");
-	if(data) {
+	if (!data) return;
 
-		const config::child_list& row_cfgs = data->get_children("row");
-		for(std::vector<config*>::const_iterator row_itor = row_cfgs.begin();
-				row_itor != row_cfgs.end(); ++row_itor) {
+	foreach (const config &row, data->child_range("row"))
+	{
+		unsigned col = 0;
 
-			unsigned col = 0;
-
-			const config::child_list& col_cfgs = (**row_itor).get_children("column");
-			for(std::vector<config*>::const_iterator col_itor = col_cfgs.begin();
-					col_itor != col_cfgs.end(); ++col_itor) {
-				list_data.push_back(string_map());
-				foreach (const config::attribute &i, (*col_itor)->attribute_range()) {
-					list_data.back()[i.first] = i.second;
-				}
-				++col;
+		foreach (const config &c, row.child_range("column"))
+		{
+			list_data.push_back(string_map());
+			foreach (const config::attribute &i, c.attribute_range()) {
+				list_data.back()[i.first] = i.second;
 			}
-
-			VALIDATE(col == list_builder->cols, _("'list_data' must have "
-				"the same number of columns as the 'list_definition'."));
+			++col;
 		}
+
+		VALIDATE(col == list_builder->cols, _("'list_data' must have "
+			"the same number of columns as the 'list_definition'."));
 	}
 }
 
@@ -857,11 +847,10 @@ tbuilder_menubar::tbuilder_menubar(const config& cfg) :
  * @end_table
  */
 	const config* data = cfg.child("data");
+	if (!data) return;
 
-	if(data) {
-		foreach(const config* cell, data->get_children("cell")) {
-			cells_.push_back(tbuilder_gridcell(*cell));
-		}
+	foreach(const config &cell, data->child_range("cell")) {
+		cells_.push_back(tbuilder_gridcell(cell));
 	}
 }
 
@@ -1038,13 +1027,10 @@ tbuilder_slider::tbuilder_slider(const config& cfg) :
  * @end_table
  */
 	const config* labels = cfg.child("value_labels");
-	if(labels) {
+	if (!labels) return;
 
-		const config::child_list& value = labels->get_children("value");
-		foreach(const config* label, value) {
-
-			value_labels_.push_back((*label)["label"]);
-		}
+	foreach (const config &label, labels->child_range("value")) {
+		value_labels_.push_back(label["label"]);
 	}
 }
 
