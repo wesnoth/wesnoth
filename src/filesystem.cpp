@@ -922,9 +922,9 @@ void binary_paths_manager::set_paths(const config& cfg)
 	cleanup();
 	init_binary_paths();
 
-	foreach (const config *item, cfg.get_children("binary_path"))
+	foreach (const config &bp, cfg.child_range("binary_path"))
 	{
-		std::string path = (*item)["path"].str();
+		std::string path = bp["path"].str();
 		if (path.find("..") != std::string::npos) {
 			ERR_FS << "Invalid binary path '" << path << "'\n";
 			continue;
