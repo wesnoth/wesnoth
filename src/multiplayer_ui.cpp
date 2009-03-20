@@ -119,7 +119,7 @@ void level_to_gamestate(config& level, game_state& state)
 	if(vars != NULL) {
 		state.set_variables(*vars);
 	}
-	state.set_menu_items(level.get_children("menu_item"));
+	state.set_menu_items(level.child_range("menu_item"));
 
 	//Check whether it is a save-game by looking for snapshot data
 	const bool saved_game = (level.child("snapshot") && level.child("snapshot")->child("side"));
@@ -136,13 +136,13 @@ void level_to_gamestate(config& level, game_state& state)
 		if (state.snapshot.child("variables") != NULL){
 			state.set_variables(*state.snapshot.child("variables"));
 		}
-		state.set_menu_items(state.snapshot.get_children("menu_item"));
+		state.set_menu_items(state.snapshot.child_range("menu_item"));
 	}
 
 	//If it is a start-of-scenario save, we need to load the player information from
 	//the [player] tags
 	if(start_of_scenario){
-		state.load_recall_list(state.starting_pos.get_children("player"));
+		state.load_recall_list(state.starting_pos.child_range("player"));
 	}
 
 	//In any type of reload(normal save or start-of-scenario) the players could have

@@ -43,7 +43,7 @@ public:
 	explicit replay(const config& cfg);
 
 	void set_save_info(const game_state& save);
-	void set_save_info(const game_state& save, const config::child_list& players);
+	void set_save_info(const game_state &save, const config::const_child_itors &players);
 	void set_save_info_completion(const std::string &st);
 
 	void set_skip(bool skip);

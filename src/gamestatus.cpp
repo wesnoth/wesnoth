@@ -19,6 +19,7 @@
 
 #include "global.hpp"
 
+#include "foreach.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "game_preferences.hpp"
@@ -203,9 +204,9 @@ gamestatus::gamestatus(const config& time_cfg, int num_turns, game_state* s_o_g)
 
 	set_start_ToD(const_cast<config&>(time_cfg),s_o_g);
 
-	const config::child_list& times_range = time_cfg.get_children("time_area");
-	for(config::child_list::const_iterator t = times_range.begin(); t != times_range.end(); ++t)
-		this->add_time_area(**t);
+	foreach (const config &t, time_cfg.child_range("time_area")) {
+		this->add_time_area(t);
+	}
 }
 
 void gamestatus::write(config& cfg) const
@@ -401,24 +402,23 @@ bool gamestatus::next_turn()
 	return numTurns_ == -1 || turn_ <= size_t(numTurns_);
 }
 
-static player_info read_player(const config* cfg)
+static player_info read_player(const config &cfg)
 {
 	player_info res;
 
-	res.name = (*cfg)["name"];
+	res.name = cfg["name"];
 
-	res.gold = atoi((*cfg)["gold"].c_str());
-	res.gold_add = utils::string_bool((*cfg)["gold_add"]);
+	res.gold = atoi(cfg["gold"].c_str());
+	res.gold_add = utils::string_bool(cfg["gold_add"]);
 
-	const config::child_list& units = cfg->get_children("unit");
-	for(config::child_list::const_iterator i = units.begin(); i != units.end(); ++i) {
-		res.available_units.push_back(unit(**i,false));
+	foreach (const config &u, cfg.child_range("unit")) {
+		res.available_units.push_back(unit(u, false));
 	}
 
 	res.can_recruit.clear();
 
-	const std::string& can_recruit_str = (*cfg)["can_recruit"];
-	if(can_recruit_str != "") {
+	const std::string &can_recruit_str = cfg["can_recruit"];
+	if (!can_recruit_str.empty()) {
 		const std::vector<std::string> can_recruit = utils::split(can_recruit_str);
 		std::copy(can_recruit.begin(),can_recruit.end(),std::inserter(res.can_recruit,res.can_recruit.end()));
 	}
@@ -498,7 +498,7 @@ game_state::game_state(const config& cfg, bool show_replay) :
 		rng_.seed_random(lexical_cast_default<unsigned>((*snapshot)["random_calls"]));
 
 		// Midgame saves have the recall list stored in the snapshot.
-		load_recall_list(snapshot->get_children("player"));
+		load_recall_list(snapshot->child_range("player"));
 
 	} else {
 		// Start of scenario save, replays and MP campaign network next scenario
@@ -510,14 +510,14 @@ game_state::game_state(const config& cfg, bool show_replay) :
 		// it will be preferred.
 		if (replay_start != NULL){
 			// Check if we find some player information in the starting position
-			const config::child_list& cfg_players = (*replay_start).get_children("player");
-			if (!cfg_players.empty())
+			config::const_child_itors cfg_players = replay_start->child_range("player");
+			if (cfg_players.first != cfg_players.second)
 				load_recall_list(cfg_players);
 			else
-				load_recall_list(cfg.get_children("player"));
+				load_recall_list(cfg.child_range("player"));
 		}
 		else{
-			load_recall_list(cfg.get_children("player"));
+			load_recall_list(cfg.child_range("player"));
 		}
 	}
 
@@ -536,7 +536,7 @@ game_state::game_state(const config& cfg, bool show_replay) :
 	if(vars != NULL) {
 		set_variables(*vars);
 	}
-	set_menu_items(cfg.get_children("menu_item"));
+	set_menu_items(cfg.child_range("menu_item"));
 
 	const config* const replay = cfg.child("replay");
 	if(replay != NULL) {
@@ -552,10 +552,9 @@ game_state::game_state(const config& cfg, bool show_replay) :
 		//See also playcampaign::play_game, where after finishing the scenario the replay
 		//will be saved.
 		if(!starting_pos.empty()) {
-			config::child_list player_list = cfg.get_children("player");
-			for (config::child_list::const_iterator p = player_list.begin(); p != player_list.end(); p++){
+			foreach (const config &p, cfg.child_range("player")) {
 				config& cfg_player = starting_pos.add_child("player");
-				cfg_player.merge_with(**p);
+				cfg_player.merge_with(p);
 			}
 		}
 	}
@@ -1051,21 +1050,20 @@ void extract_summary_data_from_save(const game_state& gamestate, config& out)
 
 	if(leader == "") {
 		const config& snapshot = has_snapshot ? gamestate.snapshot : gamestate.starting_pos;
-		const config::child_list& sides = snapshot.get_children("side");
-		for(config::child_list::const_iterator s = sides.begin(); s != sides.end() && leader.empty(); ++s) {
-
-			if((**s)["controller"] != "human") {
+		foreach (const config &side, snapshot.child_range("side"))
+		{
+			if (side["controller"] != "human") {
 				continue;
 			}
 
-			if(utils::string_bool((**s)["shroud"])) {
+			if (utils::string_bool(side["shroud"])) {
 				shrouded = true;
 			}
 
-			const config::child_list& units = (**s).get_children("unit");
-			for(config::child_list::const_iterator u = units.begin(); u != units.end(); ++u) {
-				if(utils::string_bool( (**u)["canrecruit"], false) == true) {
-					leader = (**u)["id"];
+			foreach (const config &u, side.child_range("unit"))
+			{
+				if (utils::string_bool(u["canrecruit"], false)) {
+					leader = u["id"];
 					break;
 				}
 			}
@@ -1119,11 +1117,10 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 	/** @todo Ideally we should grab all leaders if there's more than 1 human player? */
 	std::string leader;
 
-	const config::child_list& players = cfg_save.get_children("player");
-
-	for(config::child_list::const_iterator i = players.begin(); i != players.end(); ++i) {
-		if (utils::string_bool( (**i)["canrecruit"], false) == true){
-			leader = (**i)["save_id"];
+	foreach (const config &p, cfg_save.child_range("player"))
+	{
+		if (utils::string_bool(p["canrecruit"], false)) {
+			leader = p["save_id"];
 		}
 	}
 
@@ -1132,21 +1129,20 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 	if(leader == "") {
 		const config* snapshot = has_snapshot ? cfg_snapshot : cfg_replay_start;
 		if (snapshot != NULL){
-			const config::child_list& sides = snapshot->get_children("side");
-			for(config::child_list::const_iterator s = sides.begin(); s != sides.end() && leader.empty(); ++s) {
-
-				if((**s)["controller"] != "human") {
+			foreach (const config &side, snapshot->child_range("side"))
+			{
+				if (side["controller"] != "human") {
 					continue;
 				}
 
-				if(utils::string_bool((**s)["shroud"])) {
+				if (utils::string_bool(side["shroud"])) {
 					shrouded = true;
 				}
 
-				const config::child_list& units = (**s).get_children("unit");
-				for(config::child_list::const_iterator u = units.begin(); u != units.end(); ++u) {
-					if(utils::string_bool( (**u)["canrecruit"], false) == true) {
-						leader = (**u)["id"];
+				foreach (const config &u, side.child_range("unit"))
+				{
+					if (utils::string_bool(u["canrecruit"], false)) {
+						leader = u["id"];
 						break;
 					}
 				}
@@ -1226,18 +1222,19 @@ void game_state::clear_variable(const std::string& varname)
 	}
 }
 
-void game_state::load_recall_list(const config::child_list& players)
+void game_state::load_recall_list(const config::const_child_itors &players)
 {
-	if(!players.empty()) {
-		for(config::child_list::const_iterator i = players.begin(); i != players.end(); ++i) {
-			std::string save_id = (**i)["save_id"];
+	if (players.first == players.second) return;
 
-			if(save_id.empty()) {
-				ERR_NG << "Corrupted player entry: NULL save_id" << std::endl;
-			} else {
-				player_info player = read_player(*i);
-				this->players.insert(std::pair<std::string, player_info>(save_id,player));
-			}
+	foreach (const config &p, players)
+	{
+		const std::string &save_id = p["save_id"];
+
+		if (save_id.empty()) {
+			ERR_NG << "Corrupted player entry: NULL save_id" << std::endl;
+		} else {
+			player_info player = read_player(p);
+			this->players.insert(std::make_pair(save_id, player));
 		}
 	}
 }
@@ -1333,15 +1330,15 @@ void game_state::set_variables(const config& vars) {
 	variables = vars;
 }
 
-void game_state::set_menu_items(const config::child_list& menu_items) {
+void game_state::set_menu_items(const config::const_child_itors &menu_items)
+{
 	clear_wmi(wml_menu_items);
-	for (config::child_list::const_iterator i = menu_items.begin(),
-	     i_end = menu_items.end(); i != i_end; ++i)
+	foreach (const config &item, menu_items)
 	{
-		const std::string& id = (**i)["id"].base_str();
+		const std::string &id = item["id"].base_str();
 		wml_menu_item*& mref = wml_menu_items[id];
 		if(mref == NULL) {
-			mref = new wml_menu_item(id, *i);
+			mref = new wml_menu_item(id, &item);
 		} else {
 			WRN_NG << "duplicate menu item (" << id << ") while loading gamestate\n";
 		}

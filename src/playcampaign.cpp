@@ -240,7 +240,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 		if(gamestate.snapshot.child("variables") != NULL) {
 			gamestate.set_variables(*gamestate.snapshot.child("variables"));
 		}
-		gamestate.set_menu_items(gamestate.snapshot.get_children("menu_item"));
+		gamestate.set_menu_items(gamestate.snapshot.child_range("menu_item"));
 		// Replace game label with that from snapshot
 		if (!gamestate.snapshot["label"].empty()){
 			gamestate.label = gamestate.snapshot["label"];
@@ -417,13 +417,14 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 				std::string label = gamestate.label + _(" replay");
 				if (dialogs::get_save_name(disp, "", _("Name: "), &label,
 					gui::OK_CANCEL, _("Save Replay"), false, false) == 0) {
-				try {
+					try {
 						config snapshot;
 						//If the starting position contains player information, use this for
 						//the replay savegame (this originally comes from the gamestate constructor,
 						//where the player stuff is added to the starting position to be used here.
-						config::child_list player_list = gamestate.starting_pos.get_children("player");
-						if (player_list.size() > 0) {
+						config::child_itors player_list =
+							gamestate.starting_pos.child_range("player");
+						if (player_list.first != player_list.second) {
 							recorder.set_save_info(gamestate, player_list);
 						}
 						recorder.save_game(label, snapshot, gamestate.starting_pos);

@@ -169,7 +169,7 @@ void replay::set_save_info(const game_state& save)
 	saveInfo_ = save;
 }
 
-void replay::set_save_info(const game_state& save, const config::child_list& players)
+void replay::set_save_info(const game_state &save, const config::const_child_itors &players)
 {
 	saveInfo_ = save;
 	saveInfo_.players.clear();

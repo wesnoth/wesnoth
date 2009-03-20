@@ -108,7 +108,7 @@ public:
 	 *
 	 * @param players      Reference to the players section to load.
 	 */
-	void load_recall_list(const config::child_list& players);
+	void load_recall_list(const config::const_child_itors &players);
 
 	std::vector<scoped_wml_variable*> scoped_variables;
 	std::map<std::string, wml_menu_item*> wml_menu_items;
@@ -116,7 +116,7 @@ public:
 	const config& get_variables() const { return variables; }
 	void set_variables(const config& vars);
 
-	void set_menu_items(const config::child_list& menu_items);
+	void set_menu_items(const config::const_child_itors &menu_items);
 
 	// Variable access
 
