@@ -26,6 +26,7 @@
 #include "config.hpp"
 #include "construct_dialog.hpp"
 #include "cursor.hpp"
+#include "foreach.hpp"
 #include "game_display.hpp"
 #include "game_preferences.hpp"
 #include "events.hpp"
@@ -147,9 +148,14 @@ static void read_tips_of_day(config& tips_of_day)
 	//user's first time playing since this feature has been added, so we'll
 	//leave the tips in their default order, which will always contain a tip
 	//regarding the upload log first, so the user sees it.
-	config::child_itors_bak tips = tips_of_day.child_range_bak("tip");
-	if (tips.first != tips.second && preferences::has_upload_log()) {
-		std::random_shuffle(tips.first, tips.second);
+	config::const_child_itors itors = tips_of_day.child_range("tip");
+	if (itors.first != itors.second && preferences::has_upload_log()) {
+		std::vector<config> tips(itors.first, itors.second);
+		std::random_shuffle(tips.begin(), tips.end());
+		tips_of_day.clear();
+		foreach (const config &tip, tips) {
+			tips_of_day.add_child("tip", tip);
+		}
 	}
 
 	//Make sure that the upload log preference is set, if it's not already, so
@@ -164,10 +170,16 @@ static void next_tip_of_day(config& tips_of_day, bool reverse = false)
 {
 	// we just rotate the tip list, to avoid the need to keep track
 	// of the current one, and keep it valid, cycle it, etc...
-	config::child_itors_bak tips = tips_of_day.child_range_bak("tip");
-	if (tips.first != tips.second) {
-		config::child_list::iterator direction = reverse ? tips.first+1 : tips.second-1;
-		std::rotate(tips.first, direction, tips.second);
+	config::const_child_itors itors = tips_of_day.child_range("tip");
+	if (itors.first != itors.second) {
+		std::vector<config> tips(itors.first, itors.second);
+		std::vector<config>::iterator direction =
+			reverse ? tips.begin() + 1 : tips.end() - 1;
+		std::rotate(tips.begin(), direction, tips.end());
+		tips_of_day.clear();
+		foreach (const config &tip, tips) {
+			tips_of_day.add_child("tip", tip);
+		}
 	}
 }
 
