@@ -22,13 +22,14 @@ namespace gui { class combo; }
 
 #include "unit_types.hpp"
 #include <string>
+#include <vector>
 
 class leader_list_manager
 {
 public:
 	static const std::string random_enemy_picture;
 
-	leader_list_manager(const config::child_list& side_list,
+	leader_list_manager(const std::vector<const config *> &side_list,
 			gui::combo* leader_combo = NULL, gui::combo* gender_combo = NULL);
 
 	void set_leader_combo(gui::combo* combo);
@@ -47,7 +48,7 @@ private:
 	std::vector<std::string> leaders_;
 	std::vector<std::string> genders_;
 	std::vector<std::string> gender_ids_;
-	config::child_list side_list_;
+	std::vector<const config *> side_list_;
 	gui::combo* leader_combo_;
 	gui::combo* gender_combo_;
 	int colour_;

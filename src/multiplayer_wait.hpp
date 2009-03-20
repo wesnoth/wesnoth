@@ -50,7 +50,7 @@ private:
 	{
 	public:
 		leader_preview_pane(game_display& disp,
-				const config::child_list& side_list, int color);
+			const std::vector<const config *> &side_list, int color);
 
 		bool show_above() const;
 		bool left_side() const;
@@ -63,7 +63,7 @@ private:
 		virtual void draw_contents();
 		virtual void process_event();
 
-		const config::child_list side_list_;
+		std::vector<const config *> side_list_;
 		const int color_;
 		gui::combo leader_combo_; // Must appear before the leader_list_manager
 		gui::combo gender_combo_; // Must appear before the leader_list_manager

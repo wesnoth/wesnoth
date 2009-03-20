@@ -295,7 +295,7 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 			// Pick the first faction with the greater amount of data matching the criteria
 			int faction_index = 0;
 			int best_score = 0;
-			std::vector<config*>::const_iterator faction = parent.era_sides_.begin();
+			std::vector<const config*>::const_iterator faction = parent.era_sides_.begin();
 			while(faction != parent.era_sides_.end()) {
 				int faction_score = 0;
 				const config& side = (**faction);
@@ -575,12 +575,12 @@ void connect::side::init_ai_algorithm_combo()
 void connect::side::update_faction_combo()
 {
 	std::vector<std::string> factions;
-	for(std::vector<config*>::const_iterator faction = parent_->era_sides_.begin();
-		   faction != parent_->era_sides_.end(); ++faction) {
-		const std::string& name = (**faction)["name"];
-		const std::string& icon = (**faction)["image"];
+	foreach (const config *faction, parent_->era_sides_)
+	{
+		const std::string& name = (*faction)["name"];
+		const std::string& icon = (*faction)["image"];
 		if (!icon.empty()) {
-			std::string rgb = (**faction)["flag_rgb"];
+			std::string rgb = (*faction)["flag_rgb"];
 			if (rgb.empty())
 				rgb = "magenta";
 
@@ -906,11 +906,12 @@ void connect::side::resolve_random()
 
 		// Builds the list of sides eligible for choice (nonrandom factions)
 		std::vector<int> nonrandom_sides;
-		for (config::child_list::iterator itor = parent_->era_sides_.begin(),
-		     itor_end = parent_->era_sides_.end(); itor != itor_end; ++itor)
+		int num = -1;
+		foreach (const config *i, parent_->era_sides_)
 		{
-			if((**itor)["random_faction"] != "yes") {
-				const std::string& faction_id = (**itor)["id"];
+			++num;
+			if ((*i)["random_faction"] != "yes") {
+				const std::string& faction_id = (*i)["id"];
 				if (
 					!faction_choices.empty() &&
 					std::find(faction_choices.begin(),faction_choices.end(),faction_id) == faction_choices.end()
@@ -921,7 +922,7 @@ void connect::side::resolve_random()
 					std::find(faction_excepts.begin(),faction_excepts.end(),faction_id) != faction_excepts.end()
 				)
 					continue;
-				nonrandom_sides.push_back(itor - parent_->era_sides_.begin());
+				nonrandom_sides.push_back(num);
 			}
 		}
 
@@ -1423,10 +1424,8 @@ void connect::lists_init()
 	player_types_.push_back(_("Computer Player"));
 	player_types_.push_back(_("Empty"));
 
-	for(std::vector<config*>::const_iterator faction = era_sides_.begin();
-													   faction != era_sides_.end();
-													   ++faction) {
-		player_factions_.push_back((**faction)["name"]);
+	foreach (const config *faction, era_sides_) {
+		player_factions_.push_back((*faction)["name"]);
 	}
 
 	// AI algorithms
@@ -1676,7 +1675,10 @@ void connect::load_game()
 	}
 	if (era_cfg)
 	{
-		era_sides_ = era_cfg->get_children("multiplayer_side");
+		era_sides_.clear();
+		foreach (const config &e, era_cfg->child_range("multiplayer_side")) {
+			era_sides_.push_back(&e);
+		}
 		level_.add_child("era", *era_cfg);
 	}
 

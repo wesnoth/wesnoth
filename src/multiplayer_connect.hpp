@@ -256,7 +256,7 @@ private:
 	create::parameters params_;
 
 	/** The list of available sides for the current era. */
-	config::child_list era_sides_;
+	std::vector<const config *> era_sides_;
 
 	// Lists used for combos
 	std::vector<std::string> player_types_;

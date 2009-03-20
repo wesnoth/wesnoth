@@ -38,7 +38,7 @@ const int leader_pane_border = 10;
 namespace mp {
 
 wait::leader_preview_pane::leader_preview_pane(game_display& disp,
-		const config::child_list& side_list, int color) :
+		const std::vector<const config *> &side_list, int color) :
 	gui::preview_pane(disp.video()),
 	side_list_(side_list),
 	color_(color),
@@ -222,34 +222,40 @@ void wait::join_game(bool observe)
 	append_to_title(": " + level_["name"]);
 
 	if (!observe) {
-		const config::child_list& sides_list = level_.get_children("side");
-
 		//search for an appropriate vacant slot. If a description is set
 		//(i.e. we're loading from a saved game), then prefer to get the side
 		//with the same description as our login. Otherwise just choose the first
 		//available side.
-		int side_choice = -1;
-		for(config::child_list::const_iterator s = sides_list.begin(); s != sides_list.end(); ++s) {
-			if((**s)["controller"] == "reserved" && (**s)["current_player"] == preferences::login())
+		const config *side_choice = NULL;
+		int side_num = -1, nb_sides = 0;
+		foreach (const config &sd, level_.child_range("side"))
+		{
+			if (sd["controller"] == "reserved" && sd["current_player"] == preferences::login())
 			{
-				side_choice = s - sides_list.begin();
+				side_choice = &sd;
+				side_num = nb_sides;
 				break;
 			}
-			if((**s)["controller"] == "network" && (**s)["id"].empty()) {
-				if (side_choice < 0)  // found the first empty side
-					side_choice = s - sides_list.begin();
-				if((**s)["current_player"] == preferences::login()) {
-					side_choice = s - sides_list.begin();
+			if (sd["controller"] == "network" && sd["id"].empty())
+			{
+				if (!side_choice) { // found the first empty side
+					side_choice = &sd;
+					side_num = nb_sides;
+				}
+				if (sd["current_player"] == preferences::login()) {
+					side_choice = &sd;
+					side_num = nb_sides;
 					break;  // found the prefered one
 				}
 			}
+			++nb_sides;
 		}
-		if (static_cast<size_t>(side_choice) >= sides_list.size()) {
+		if (!side_choice) {
 			set_result(QUIT);
 			return;
 		}
 
-		const bool allow_changes = (*sides_list[side_choice])["allow_changes"] != "no";
+		const bool allow_changes = (*side_choice)["allow_changes"] != "no";
 
 		//if the client is allowed to choose their team, instead of having
 		//it set by the server, do that here.
@@ -263,29 +269,28 @@ void wait::join_game(bool observe)
 			/** @todo Check whether we have the era. If we don't inform the user. */
 			if(era == NULL)
 				throw config::error(_("No era information found."));
-			const config::child_list& possible_sides =
-				era->get_children("multiplayer_side");
-			if(possible_sides.empty()) {
+			config::const_child_itors possible_sides = era->child_range("multiplayer_side");
+			if (possible_sides.first == possible_sides.second) {
 				set_result(QUIT);
 				throw config::error(_("No multiplayer sides found"));
 				return;
 			}
 
-			int color = side_choice;
-			const std::string color_str = (*sides_list[side_choice])["colour"];
+			int color = side_num;
+			const std::string color_str = (*side_choice)["colour"];
 			if (!color_str.empty())
 				color = game_config::color_info(color_str).index() - 1;
 
 			std::vector<std::string> choices;
-			for(config::child_list::const_iterator side =
-					possible_sides.begin(); side !=
-					possible_sides.end(); ++side)
+			std::vector<const config *> leader_sides;
+			foreach (const config &side, possible_sides)
 			{
-				const std::string& name = (**side)["name"];
-				const std::string& icon = (**side)["image"];
+				const std::string &name = side["name"];
+				const std::string &icon = side["image"];
+				leader_sides.push_back(&side);
 
 				if (!icon.empty()) {
-					std::string rgb = (**side)["flag_rgb"];
+					std::string rgb = side["flag_rgb"];
 					if (rgb.empty())
 						rgb = "magenta";
 
@@ -297,11 +302,10 @@ void wait::join_game(bool observe)
 			}
 
 			std::vector<gui::preview_pane* > preview_panes;
-			leader_preview_pane leader_selector(disp(),
-					possible_sides, color);
+			leader_preview_pane leader_selector(disp(), leader_sides, color);
 			preview_panes.push_back(&leader_selector);
 
-			const int res = gui::show_dialog(disp(), NULL, _("Choose your faction:"), _("Starting position: ") + lexical_cast<std::string>(side_choice+1),
+			const int res = gui::show_dialog(disp(), NULL, _("Choose your faction:"), _("Starting position: ") + lexical_cast<std::string>(side_num + 1),
 						gui::OK_CANCEL, &choices, &preview_panes);
 			if(res < 0) {
 				set_result(QUIT);
@@ -311,7 +315,7 @@ void wait::join_game(bool observe)
 			leader_choice = leader_selector.get_selected_leader();
 			gender_choice = leader_selector.get_selected_gender();
 
-			assert(faction_choice < possible_sides.size());
+			assert(faction_choice < leader_sides.size());
 
 			config faction;
 			config& change = faction.add_child("change_faction");
@@ -429,8 +433,8 @@ void wait::process_network_data(const config& data, const network::connection so
 	} else if(data.child("side")) {
 		level_ = data;
 		LOG_NW << "got some sides. Current number of sides = "
-			<< level_.get_children("side").size() << ","
-			<< data.get_children("side").size() << "\n";
+			<< level_.child_count("side") << ','
+			<< data.child_count("side") << '\n';
 		generate_menu();
 	}
 }
@@ -443,10 +447,8 @@ void wait::generate_menu()
 	std::vector<std::string> details;
 	std::vector<std::string> playerlist;
 
-	const config::child_list& sides = level_.get_children("side");
-	for(config::child_list::const_iterator s = sides.begin(); s != sides.end(); ++s) {
-		const config& sd = **s;
-
+	foreach (const config &sd, level_.child_range("side"))
+	{
 		if(sd["allow_player"] == "no") {
 			continue;
 		}
