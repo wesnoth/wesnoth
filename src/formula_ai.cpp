@@ -1918,7 +1918,7 @@ bool formula_ai::execute_variant(const variant& var, bool commandline)
                                                 throw formula_error("Incorrect result of calling the move() formula", "", "", 0);
                                         }
                                         
-                                        LOG_AI << "MOVE: " << move->src().x << "," << move->src().y << " -> " << move->dst().x << "," << move->dst().y << "\n";
+                                        LOG_AI << "MOVE: " << move->src().x+1 << "," << move->src().y+1 << " -> " << move->dst().x+1 << "," << move->dst().y+1 << "\n";
                                         made_move = true;
                                         
                                     } else {
@@ -1933,7 +1933,7 @@ bool formula_ai::execute_variant(const variant& var, bool commandline)
                                 map_location destination = path_calculator(move_partial->src(), move_partial->dst(), unit_it);
 
                                 if( destination != map_location()) {
-                                    LOG_AI << "MOVE PARTIAL: " << move_partial->src().x << "," << move_partial->src().y << " -> " << move_partial->dst().x << "," << move_partial->dst().y << "\n";
+                                    LOG_AI << "MOVE PARTIAL: " << move_partial->src().x+1 << "," << move_partial->src().y+1 << " -> " << move_partial->dst().x+1 << "," << move_partial->dst().y+1 << "\n";
                                     move_unit_partial(move_partial->src(), destination, possible_moves_);
                                     made_move = true;
                                 } else
@@ -1961,7 +1961,7 @@ bool formula_ai::execute_variant(const variant& var, bool commandline)
                                 continue;
                             }
 
-                            LOG_AI << "MOVE: " << attack->move_from().x << "," << attack->move_from().y << " -> " << attack->src().x << "," << attack->src().y << "\n";
+                            LOG_AI << "MOVE: " << attack->move_from().x+1 << "," << attack->move_from().y+1 << " -> " << attack->src().x+1 << "," << attack->src().y+1 << "\n";
                             move_unit(attack->move_from(), attack->src(), possible_moves_);
                         }
 
