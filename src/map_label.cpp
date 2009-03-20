@@ -15,6 +15,7 @@
 #include "global.hpp"
 
 #include "display.hpp"
+#include "foreach.hpp"
 #include "map_label.hpp"
 #include "formula_string_utils.hpp"
 
@@ -76,10 +77,10 @@ void map_labels::read(const config& cfg, const variable_set *variables)
 {
 	clear_all();
 
-	const config::child_list& items = cfg.get_children("label");
-	for(config::child_list::const_iterator i = items.begin(); i != items.end(); ++i) {
-		const map_location loc(**i, variables);
-		terrain_label* label = new terrain_label(*this, **i, variables);
+	foreach (const config &i, cfg.child_range("label"))
+	{
+		const map_location loc(i, variables);
+		terrain_label* label = new terrain_label(*this, i, variables);
 		add_label(loc, label);
 	}
 	recalculate_labels();
