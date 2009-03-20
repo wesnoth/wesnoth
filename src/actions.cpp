@@ -1699,7 +1699,7 @@ void calculate_healing(game_display& disp, const gamemap& map,
 		const bool is_poisoned = utils::string_bool(i->second.get_state("poisoned"));
 		if(is_poisoned) {
 			// Remove the enemies' healers to determine if poison is slowed or cured
-			for(std::vector<std::pair<config*,map_location> >::iterator
+			for (std::vector<std::pair<const config *, map_location> >::iterator
 					h_it = heal.cfgs.begin(); h_it != heal.cfgs.end();) {
 
 				unit_map::iterator potential_healer = units.find(h_it->second);
@@ -1711,7 +1711,7 @@ void calculate_healing(game_display& disp, const gamemap& map,
 					++h_it;
 				}
 			}
-			for(std::vector<std::pair<config*,map_location> >::const_iterator
+			for (std::vector<std::pair<const config *, map_location> >::const_iterator
 					heal_it = heal.cfgs.begin(); heal_it != heal.cfgs.end(); ++heal_it) {
 
 				if((*heal_it->first)["poison"] == "cured") {
@@ -1731,7 +1731,7 @@ void calculate_healing(game_display& disp, const gamemap& map,
 
 		// For heal amounts, only consider healers on side which is starting now.
 		// Remove all healers not on this side.
-		for(std::vector<std::pair<config*,map_location> >::iterator h_it =
+		for (std::vector<std::pair<const config *, map_location> >::iterator h_it =
 				heal.cfgs.begin(); h_it != heal.cfgs.end();) {
 
 			unit_map::iterator potential_healer = units.find(h_it->second);
@@ -1762,7 +1762,7 @@ void calculate_healing(game_display& disp, const gamemap& map,
 				healers.clear();
 			}
 			if(regen.cfgs.size()) {
-				for(std::vector<std::pair<config*,map_location> >::const_iterator regen_it = regen.cfgs.begin(); regen_it != regen.cfgs.end(); ++regen_it) {
+				for (std::vector<std::pair<const config *, map_location> >::const_iterator regen_it = regen.cfgs.begin(); regen_it != regen.cfgs.end(); ++regen_it) {
 					if((*regen_it->first)["poison"] == "cured") {
 						curer = units.end();
 						curing = "cured";
@@ -2312,7 +2312,7 @@ size_t move_unit(game_display* disp,
 
 				unit_ability_list hides = it->second.get_abilities("hides",it->first);
 
-				std::vector<std::pair<config*,map_location> >::const_iterator hide_it = hides.cfgs.begin();
+				std::vector<std::pair<const config *, map_location> >::const_iterator hide_it = hides.cfgs.begin();
 				// we only use the first valid alert message
 				for(;hide_it != hides.cfgs.end() && !ambushed_string.empty(); ++hide_it) {
 					ambushed_string = (*hide_it->first)["alert"];

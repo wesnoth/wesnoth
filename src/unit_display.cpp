@@ -295,7 +295,7 @@ void unit_attack(
 		animator.add_animation(&attacker,"attack",att->first,damage,true,false,text_2,display::rgb(0,255,0),hit_type,&attack,secondary_attack,swing);
 		animator.add_animation(&defender,"defend",def->first,damage,true,false,text  ,display::rgb(255,0,0),hit_type,&attack,secondary_attack,swing);
 
-		for(std::vector<std::pair<config*,map_location> >::iterator itor = leaders.cfgs.begin(); itor != leaders.cfgs.end(); itor++) {
+		for (std::vector<std::pair<const config *, map_location> >::iterator itor = leaders.cfgs.begin(); itor != leaders.cfgs.end(); itor++) {
 			if(itor->second == a) continue;
 			if(itor->second == b) continue;
 			unit_map::iterator leader = units.find(itor->second);
@@ -303,7 +303,7 @@ void unit_attack(
 			leader->second.set_facing(itor->second.get_relative_dir(a));
 			animator.add_animation(&leader->second,"leading",itor->second,damage,true,false,"",0,hit_type,&attack,secondary_attack,swing);
 		}
-		for(std::vector<std::pair<config*,map_location> >::iterator itor = helpers.cfgs.begin(); itor != helpers.cfgs.end(); itor++) {
+		for (std::vector<std::pair<const config *, map_location> >::iterator itor = helpers.cfgs.begin(); itor != helpers.cfgs.end(); itor++) {
 			if(itor->second == a) continue;
 			if(itor->second == b) continue;
 			unit_map::iterator helper = units.find(itor->second);

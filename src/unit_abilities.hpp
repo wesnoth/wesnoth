@@ -31,11 +31,11 @@ struct individual_effect
 {
 	individual_effect() : type(NOT_USED), value(0), ability(NULL),
 		loc(map_location::null_location) {};
-	individual_effect(value_modifier t,int val,config* abil,const map_location& l);
-	void set(value_modifier t,int val,config* abil,const map_location& l);
+	individual_effect(value_modifier t, int val, const config *abil, const map_location &l);
+	void set(value_modifier t, int val, const config *abil,const map_location &l);
 	value_modifier type;
 	int value;
-	config* ability;
+	const config *ability;
 	map_location loc;
 };
 
