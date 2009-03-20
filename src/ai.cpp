@@ -21,6 +21,7 @@
 #include "ai_dfool.hpp"
 #include "array.hpp"
 #include "dialogs.hpp"
+#include "foreach.hpp"
 #include "formula_ai.hpp"
 #include "game_end_exceptions.hpp"
 #include "game_events.hpp"
@@ -880,23 +881,22 @@ void ai::find_threats()
 	}
 
 	// Look for directions to protect a specific location.
-	const config::child_list& locations = parms.get_children("protect_location");
-	for(config::child_list::const_iterator i = locations.begin(); i != locations.end(); ++i) {
+	foreach (const config &p, parms.child_range("protect_location"))
+	{
 		items.push_back(protected_item(
-					lexical_cast_default<double>((**i)["value"], 1.0),
-					lexical_cast_default<int>((**i)["radius"], 20),
-					map_location(**i, &get_info().game_state_)));
+					lexical_cast_default<double>(p["value"], 1.0),
+					lexical_cast_default<int>(p["radius"], 20),
+					map_location(p, &get_info().game_state_)));
 	}
 
 	// Look for directions to protect a unit.
-	const config::child_list& protected_units = parms.get_children("protect_unit");
-	for(config::child_list::const_iterator j = protected_units.begin(); j != protected_units.end(); ++j) {
-
+	foreach (const config &p, parms.child_range("protect_unit"))
+	{
 		for(unit_map::const_iterator u = units_.begin(); u != units_.end(); ++u) {
-			if(game_events::unit_matches_filter(u, *j)) {
+			if (game_events::unit_matches_filter(u, &p)) {
 				items.push_back(protected_item(
-							lexical_cast_default<double>((**j)["value"], 1.0),
-							lexical_cast_default<int>((**j)["radius"], 20),
+							lexical_cast_default<double>(p["value"], 1.0),
+							lexical_cast_default<int>(p["radius"], 20),
 							u->first));
 			}
 		}
@@ -2323,12 +2323,10 @@ const map_location& ai::nearest_keep(const map_location& loc)
 const std::set<map_location>& ai::avoided_locations()
 {
 	if(avoid_.empty()) {
-		const config::child_list& avoids = current_team().ai_parameters().get_children("avoid");
-		for(config::child_list::const_iterator a = avoids.begin(); a != avoids.end(); ++a) {
-
-			const std::vector<location>& locs = parse_location_range((**a)["x"],(**a)["y"]);
-			for(std::vector<location>::const_iterator i = locs.begin(); i != locs.end(); ++i) {
-				avoid_.insert(*i);
+		foreach (const config &av, current_team().ai_parameters().child_range("avoid"))
+		{
+			foreach (const location &loc, parse_location_range(av["x"], av["y"])) {
+				avoid_.insert(loc);
 			}
 		}
 
