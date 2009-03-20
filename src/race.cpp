@@ -23,11 +23,7 @@
 #include "random.hpp"
 
 
-namespace {
-
-config::child_list empty_traits;
-
-}
+static config empty_traits;
 
 static void add_prefixes(const wide_string& str, size_t length, markov_prefix_map& res)
 {
@@ -136,7 +132,7 @@ unit_race::unit_race() :
 		description_(),
 		ntraits_(0),
 		chain_size_(0),
-		traits_(&empty_traits),
+		traits_(empty_traits.child_range("trait")),
 		global_traits_(true)
 {
 		name_[MALE] = "";
@@ -149,7 +145,7 @@ unit_race::unit_race(const config& cfg) :
 		description_(cfg["description"]),
 		ntraits_(atoi(cfg["num_traits"].c_str())),
 		chain_size_(atoi(cfg["markov_chain_size"].c_str())),
-		traits_(&cfg.get_children("trait")),
+		traits_(cfg.child_range("trait")),
 		global_traits_(!utils::string_bool(cfg["ignore_global_traits"]))
 
 {
@@ -196,9 +192,9 @@ bool unit_race::uses_global_traits() const
 	return global_traits_;
 }
 
-const config::child_list& unit_race::additional_traits() const
+const config::const_child_itors &unit_race::additional_traits() const
 {
-	return *traits_;
+	return traits_;
 }
 
 unsigned int unit_race::num_traits() const { return ntraits_; }

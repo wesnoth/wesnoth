@@ -734,11 +734,10 @@ void unit_type::build_full(const config& cfg, const movement_type_map& mv_types,
 			if(utils::string_bool(cfg["ignore_race_traits"])) {
 				possibleTraits_.clear();
 			} else {
-				const config::child_list& traits = race_->additional_traits();
-				for(i=traits.begin(); i != traits.end(); ++i)
+				foreach (const config &t, race_->additional_traits())
 				{
-					if(alignment_ != NEUTRAL || ((**i)["id"]) != "fearless")
-						possibleTraits_.add_child("trait", **i);
+					if (alignment_ != NEUTRAL || t["id"] != "fearless")
+						possibleTraits_.add_child("trait", t);
 				}
 			}
 		}

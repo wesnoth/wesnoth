@@ -46,7 +46,7 @@ public:
 
 	bool uses_global_traits() const;
 
-	const config::child_list& additional_traits() const;
+	const config::const_child_itors &additional_traits() const;
 	unsigned int num_traits() const;
 
 private:
@@ -58,7 +58,7 @@ private:
 	markov_prefix_map next_[NUM_GENDERS];
 	int chain_size_;
 
-	const config::child_list* traits_;
+	config::const_child_itors traits_;
 	bool global_traits_;
 };
 
