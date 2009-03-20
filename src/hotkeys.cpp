@@ -18,6 +18,7 @@
 
 #include "construct_dialog.hpp"
 #include "display.hpp"
+#include "foreach.hpp"
 #include "hotkeys.hpp"
 #include "game_end_exceptions.hpp"
 #include "gettext.hpp"
@@ -452,11 +453,11 @@ void set_hotkey_tag_name(const std::string& name)
 
 void load_hotkeys(const config& cfg)
 {
-	const config::child_list& children = cfg.get_children(hotkey_tag_name);
-	for(config::child_list::const_iterator i = children.begin(); i != children.end(); ++i) {
-		hotkey_item& h = get_hotkey((**i)["command"]);
+	foreach (const config &hk, cfg.child_range(hotkey_tag_name))
+	{
+		hotkey_item& h = get_hotkey(hk["command"]);
 		if(h.get_id() != HOTKEY_NULL) {
-			h.load_from_config(**i);
+			h.load_from_config(hk);
 		}
 	}
 }
