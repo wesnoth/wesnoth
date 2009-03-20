@@ -87,11 +87,8 @@ manager::manager() :
 
 			std::vector<std::string> current_history;
 			foreach(const config* history_id_child, history_id.second) {
-
-				const config::child_list& line = history_id_child->get_children("line");
-				foreach(const config* line_data, line) {
-
-					current_history.push_back((*line_data)["message"]);
+				foreach (const config &line_data, history_id_child->child_range("line")) {
+					current_history.push_back(line_data["message"]);
 				}
 			}
 
@@ -296,12 +293,10 @@ const std::vector<game_config::server_info>& server_list()
 		std::vector<game_config::server_info> &game_servers = game_config::server_list;
 		VALIDATE(game_servers.size() > 0, _("No server has been defined."));
 		pref_servers.insert(pref_servers.begin(), game_servers.begin(), game_servers.end());
-		const std::vector<config *> &user_servers = get_prefs()->get_children("server");
-		std::vector<config *>::const_iterator server;
-		for(server = user_servers.begin(); server != user_servers.end(); ++server) {
+		foreach (const config &server, get_prefs()->child_range("server")) {
 			game_config::server_info sinf;
-			sinf.name = (**server)["name"];
-			sinf.address = (**server)["address"];
+			sinf.name = server["name"];
+			sinf.address = server["address"];
 			pref_servers.push_back(sinf);
 		}
 	}
