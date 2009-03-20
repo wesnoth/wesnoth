@@ -21,7 +21,7 @@ RDEPEND=">=media-libs/libsdl-1.2.7
 		x11-libs/libX11
 		x11-libs/pango
 	)
-	nls? ( virtual/libintl )
+	virtual/libintl
 	tools? (
 		>=media-libs/libsdl-1.2.7[X]
 		>=media-libs/sdl-mixer-1.2[vorbis]
