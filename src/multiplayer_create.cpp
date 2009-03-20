@@ -117,8 +117,7 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist)
 	i = 0;
 	for(config::child_list::const_iterator j = levels.begin(); j != levels.end(); ++j, ++i)
 	{
-		if ( ((*j)->values.find("allow_new_game") == (*j)->values.end())
-			|| utils::string_bool((**j)["allow_new_game"],true))
+		if (utils::string_bool((**j)["allow_new_game"], true))
 		{
 			menu_help_str = help_sep + ((**j)["name"]);
 			map_options_.push_back(((**j)["name"]) + menu_help_str);

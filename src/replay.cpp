@@ -322,9 +322,10 @@ void replay::add_attack(const map_location& a, const map_location& b, int att_we
 	add_pos("attack",a,b);
 	char buf[100];
 	snprintf(buf,sizeof(buf),"%d",att_weapon);
-	current_->child("attack")->values["weapon"] = buf;
+	config &cfg = *current_->child("attack");
+	cfg["weapon"] = buf;
 	snprintf(buf,sizeof(buf),"%d",def_weapon);
-	current_->child("attack")->values["defender_weapon"] = buf;
+	cfg["defender_weapon"] = buf;
 	add_unit_checksum(a,current_);
 	add_unit_checksum(b,current_);
 }

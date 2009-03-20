@@ -254,7 +254,7 @@ void cave_map_generator::place_items(const chamber& c, config::all_children_iter
 
 		char xbuf[50];
 		snprintf(xbuf,sizeof(xbuf),"%d",loc->x+1);
-		cfg.values["x"] = xbuf;
+		cfg["x"] = xbuf;
 		if(filter != NULL) {
 			(*filter)["x"] = xbuf;
 		}
@@ -265,7 +265,7 @@ void cave_map_generator::place_items(const chamber& c, config::all_children_iter
 
 		char ybuf[50];
 		snprintf(ybuf,sizeof(ybuf),"%d",loc->y+1);
-		cfg.values["y"] = ybuf;
+		cfg["y"] = ybuf;
 		if(filter != NULL) {
 			(*filter)["y"] = ybuf;
 		}

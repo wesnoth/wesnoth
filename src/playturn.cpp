@@ -340,9 +340,9 @@ void turn_info::change_side_controller(const std::string& side, const std::strin
 void turn_info::take_side(const std::string& side, const std::string& controller)
 {
 	config cfg;
-	cfg.values["side"] = side;
-	cfg.values["controller"] = controller;
-	cfg.values["name"] = controller+side;
+	cfg["side"] = side;
+	cfg["controller"] = controller;
+	cfg["name"] = controller+side;
 	network::send_data(cfg, 0, true);
 }
 #endif

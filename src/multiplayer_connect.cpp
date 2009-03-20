@@ -1190,7 +1190,7 @@ void connect::process_network_data(const config& data, const network::connection
 		const std::string name = data["name"];
 		if(name.empty()) {
 			config response;
-			response.values["failed"] = "yes";
+			response["failed"] = "yes";
 			network::send_data(response, sock, true);
 			ERR_CF << "ERROR: No username provided with the side.\n";
 			return;
@@ -1204,14 +1204,14 @@ void connect::process_network_data(const config& data, const network::connection
 			 */
 			if(find_player_side(name) != -1) {
 				config response;
-				response.values["failed"] = "yes";
+				response["failed"] = "yes";
 				response["message"] = "The nick '" + name + "' is already in use.";
 				network::send_data(response, sock, true);
 				return;
 			} else {
 				users_.erase(player);
 				config observer_quit;
-				observer_quit.add_child("observer_quit").values["name"] = name;
+				observer_quit.add_child("observer_quit")["name"] = name;
 				network::send_data(observer_quit, 0, true);
 				update_user_combos();
 			}
@@ -1232,7 +1232,7 @@ void connect::process_network_data(const config& data, const network::connection
 
 				if(itor == sides_.end()) {
 					config response;
-					response.values["failed"] = "yes";
+					response["failed"] = "yes";
 					network::send_data(response, sock, true);
 					config kick;
 					kick["username"] = data["name"];
@@ -1266,7 +1266,7 @@ void connect::process_network_data(const config& data, const network::connection
 		} else {
 			ERR_CF << "tried to take illegal side: " << side_taken << '\n';
 			config response;
-			response.values["failed"] = "yes";
+			response["failed"] = "yes";
 			network::send_data(response, sock, true);
 		}
 	}

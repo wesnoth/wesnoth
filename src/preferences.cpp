@@ -114,7 +114,7 @@ config* get_child(const std::string& key)
 }
 
 void erase(const std::string& key) {
-	prefs.values.erase(key);
+	prefs.remove_attribute(key);
 }
 
 std::string get(const std::string& key) {
@@ -186,12 +186,10 @@ int min_allowed_height()
 std::pair<int,int> resolution()
 {
 	const std::string postfix = fullscreen() ? "resolution" : "windowsize";
-	const string_map::const_iterator x = prefs.values.find('x' + postfix);
-	const string_map::const_iterator y = prefs.values.find('y' + postfix);
-	if(x != prefs.values.end() && y != prefs.values.end() &&
-	   x->second.empty() == false && y->second.empty() == false) {
-		std::pair<int,int> res (std::max(atoi(x->second.c_str()),min_allowed_width()),
-		                        std::max(atoi(y->second.c_str()),min_allowed_height()));
+	std::string x = prefs['x' + postfix], y = prefs['y' + postfix];
+	if (!x.empty() && !y.empty()) {
+		std::pair<int,int> res(std::max(atoi(x.c_str()), min_allowed_width()),
+		                       std::max(atoi(y.c_str()), min_allowed_height()));
 
 		// Make sure resolutions are always divisible by 4
 		//res.first &= ~3;
@@ -592,7 +590,7 @@ void add_alias(const std::string& alias, const std::string& command) {
 	if (alias_list == NULL) {
 		alias_list = &(prefs.add_child("alias"));
 	}
-	alias_list->values[alias] = command;
+	(*alias_list)[alias] = command;
 }
 
 

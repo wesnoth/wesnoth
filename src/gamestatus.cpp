@@ -1218,7 +1218,7 @@ void game_state::clear_variable(const std::string& varname)
 		to_clear.vars->remove_child(to_clear.key, to_clear.index);
 	} else {
 		to_clear.vars->clear_children(to_clear.key);
-		to_clear.vars->values.erase(to_clear.key);
+		to_clear.vars->remove_attribute(to_clear.key);
 	}
 }
 

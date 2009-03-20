@@ -361,7 +361,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 				// it will not ask for the map to be generated again on reload
 				static config new_level;
 				new_level = *scenario;
-				new_level.values["map_data"] = map_data;
+				new_level["map_data"] = map_data;
 				scenario = &new_level;
 
 				gamestate.starting_pos = new_level;
@@ -538,7 +538,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 					// it will not ask for the map to be generated again on reload
 					static config new_level;
 					new_level = *scenario;
-					new_level.values["map_data"] = map_data;
+					new_level["map_data"] = map_data;
 					scenario = &new_level;
 
 					gamestate.starting_pos = new_level;

@@ -766,8 +766,7 @@ connection receive_data(config& cfg, connection connection_num, bool* gzipped, b
 	waiting_sockets.insert(result);
 	if(!is_server()) {
 		const time_t& now = time(NULL);
-		const string_map::const_iterator ping = cfg.values.find("ping");
-		if (ping != cfg.values.end()) {
+		if (cfg.has_attribute("ping")) {
 			LOG_NW << "Lag: " << (now - lexical_cast<time_t>(cfg["ping"])) << "\n";
 			last_ping = now;
 		} else if (last_ping != 0) {

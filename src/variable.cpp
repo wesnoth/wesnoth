@@ -717,7 +717,7 @@ variable_info::variable_info(const std::string& varname,
 
 t_string& variable_info::as_scalar() {
 	assert(is_valid);
-	return vars->values[key];
+	return (*vars)[key];
 }
 
 config& variable_info::as_container() {

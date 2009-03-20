@@ -204,7 +204,7 @@ void wait::join_game(bool observe)
 	//if we have got valid side data
 	//the first condition is to make sure that we don't have another
 	//WML message with a side-tag in it
-	while((level_.values.find("version") == level_.values.end()) || (level_.child("side") == NULL)) {
+	while (!level_.has_attribute("version") || !level_.child("side")) {
 		network::connection data_res = dialogs::network_receive_dialog(disp(),
 				_("Getting game data..."), level_);
 		if (!data_res) {

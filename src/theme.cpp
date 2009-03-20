@@ -183,7 +183,7 @@ static void expand_partialresolution(config& dst_cfg, const config& top_cfg)
 			while(!parent_stack.empty()) {
 				//override attributes
 				for(string_map::const_iterator j = parent_stack.back()->values.begin(); j != parent_stack.back()->values.end(); ++j) {
-					res_cfgs_.back().values[j->first] = j->second;
+					res_cfgs_.back()[j->first] = j->second;
 				}
 
 				foreach (const config &rm, parent_stack.back()->child_range("remove")) {
@@ -238,7 +238,7 @@ static void do_resolve_rects(const config& cfg, config& resolved_config, config*
 
 		// copy all key/values
 		for(string_map::const_iterator j = cfg.values.begin(); j != cfg.values.end(); ++j) {
-			resolved_config.values[j->first] = j->second;
+			resolved_config[j->first] = j->second;
 		}
 
 		// override default reference rect with "ref" parameter if any
@@ -261,7 +261,7 @@ static void do_resolve_rects(const config& cfg, config& resolved_config, config*
 		}
 		// resolve the rect value to absolute coordinates
 		if (!cfg["rect"].empty()) {
-			resolved_config.values["rect"] = resolve_rect(cfg["rect"]);
+			resolved_config["rect"] = resolve_rect(cfg["rect"]);
 		}
 	}
 
