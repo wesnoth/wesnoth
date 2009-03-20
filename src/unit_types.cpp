@@ -626,7 +626,7 @@ unit_type::unit_type(const unit_type& o) :
 
 
 unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
-		const race_map& races, const std::vector<config*>& traits) :
+                     const race_map &races, const config::const_child_itors &traits) :
 	cfg_(),
 	id_(),
 	type_name_(),
@@ -685,7 +685,7 @@ void unit_type::set_config(const config& cfg)
 }
 
 void unit_type::build_full(const config& cfg, const movement_type_map& mv_types,
-                     const race_map& races, const std::vector<config*>& traits)
+                           const race_map &races, const config::const_child_itors &traits)
 {
     if ( (build_status_ == NOT_BUILT) || (build_status_ == CREATED) )
         build_help_index(cfg, mv_types, races, traits);
@@ -693,10 +693,9 @@ void unit_type::build_full(const config& cfg, const movement_type_map& mv_types,
 	movementType_ = unit_movement_type(cfg);
 	alpha_ = ftofxp(1.0);
 
-	config::child_list::const_iterator i;
-	for(i=traits.begin(); i != traits.end(); ++i)
+	foreach (const config &t, traits)
 	{
-		possibleTraits_.add_child("trait", **i);
+		possibleTraits_.add_child("trait", t);
 	}
 	foreach (const config &var_cfg, cfg.child_range("variation"))
 	{
@@ -785,7 +784,7 @@ void unit_type::build_full(const config& cfg, const movement_type_map& mv_types,
 }
 
 void unit_type::build_help_index(const config& cfg, const movement_type_map& mv_types,
-                     const race_map& races, const std::vector<config*>& traits)
+                                 const race_map &races, const config::const_child_itors &traits)
 {
     if (build_status_ == NOT_BUILT){
         set_config(cfg);
@@ -872,7 +871,7 @@ void unit_type::build_help_index(const config& cfg, const movement_type_map& mv_
 }
 
 void unit_type::build_created(const config& cfg, const movement_type_map& mv_types,
-                     const race_map& races, const std::vector<config*>& traits)
+                              const race_map &races, const config::const_child_itors &traits)
 {
 	gender_types_[0] = NULL;
 	gender_types_[1] = NULL;
@@ -1145,7 +1144,7 @@ void unit_type_data::unit_type_map_wrapper::set_config(config &cfg)
 
     clear();
     set_unit_config(cfg);
-	set_unit_traits(cfg.get_children("trait"));
+	set_unit_traits(cfg.child_range("trait"));
 
 	foreach (const config &mt, cfg.child_range("movetype"))
 	{
@@ -1353,53 +1352,51 @@ void unit_type_data::unit_type_map_wrapper::add_advancement(unit_type& to_unit) 
 // a particular unit is living or not, use get_state("not_living") for that.
 bool unit_type::not_living() const
 {
-		// If a unit hasn't been modified it starts out as living.
-		bool not_living = false;
+	// If a unit hasn't been modified it starts out as living.
+	bool not_living = false;
 
-		// Look at all of the "musthave" traits to see if the not_living
-		// status gets changed. In the unlikely event it gets changed
-		// multiple times, we want to try to do it in the same order
-		// that unit::apply_modifications does things.
-		config::child_list const &mods = possible_traits();
-		config::child_list::const_iterator j, j_end = mods.end();
-		for(j = mods.begin(); j != j_end; ++j) {
-			const string_map *vals = &((**j).values);
-			string_map::const_iterator temp = vals->find("availability");
-			if (temp == vals->end() || (*temp).second != "musthave") {
+	// Look at all of the "musthave" traits to see if the not_living
+	// status gets changed. In the unlikely event it gets changed
+	// multiple times, we want to try to do it in the same order
+	// that unit::apply_modifications does things.
+	foreach (const config &mod, possible_traits())
+	{
+		if (mod["availability"] != "musthave")
+			continue;
+
+		foreach (const config &effect, mod.child_range("effect"))
+		{
+			// See if the effect only applies to
+			// certain unit types But don't worry
+			// about gender checks, since we don't
+			// know what the gender of the
+			// hypothetical recruit is.
+			const std::string &ut = effect["unit_type"];
+			if (!ut.empty()) {
+				const std::vector<std::string> &types = utils::split(ut);
+				if(std::find(types.begin(), types.end(), id()) == types.end())
+					continue;
+			}
+
+			// We're only interested in status changes.
+			if (effect["apply_to"] != "status") {
 				continue;
 			}
-			config::const_child_itors i;
-			foreach (const config &effect, (**j).child_range("effect"))
-			{
-				// See if the effect only applies to
-				// certain unit types But don't worry
-				// about gender checks, since we don't
-				// know what the gender of the
-				// hypothetical recruit is.
-				vals = &effect.values;
-				temp = vals->find("unit_type");
-				if(temp != vals->end()) {
-					const std::vector<std::string>& types = utils::split((*temp).second);
-					if(std::find(types.begin(),types.end(),id()) == types.end()) {
-							continue;
-					}
-				}
-
-				// We're only interested in status changes.
-				temp = vals->find("apply_to");
-				if (temp == vals->end() || (*temp).second != "status") {
-					continue;
-				}
-				temp = vals->find("add");
-				if (temp != vals->end() && (*temp).second == "not_living") {
-					not_living = true;
-				}
-				temp = vals->find("remove");
-				if (temp != vals->end() && (*temp).second == "not_living") {
-					not_living = false;
-				}
+			if (effect["add"] == "not_living") {
+				not_living = true;
+			}
+			if (effect["remove"] == "not_living") {
+				not_living = false;
 			}
 		}
+	}
 
-		return not_living;
+	return not_living;
+}
+
+bool unit_type::has_random_traits() const
+{
+	if (num_traits() == 0) return false;
+	config::const_child_itors t = possible_traits();
+	return t.first != t.second && ++t.first != t.second;
 }

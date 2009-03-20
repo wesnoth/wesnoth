@@ -1017,20 +1017,19 @@ const unit_types_preview_pane::details unit_types_preview_pane::get_details() co
 	}
 
 	//FIXME: This probably must be move into a unit_type function
-	const std::vector<config*> traits = t->possible_traits();
-	for(std::vector<config*>::const_iterator i = traits.begin(); i != traits.end(); i++) {
-		if((**(i))["availability"] == "musthave") {
-			std::string gender_string = (!t->genders().empty() && t->genders().front()== unit_race::FEMALE) ? "female_name" : "male_name";
-			t_string name = (**i)[gender_string];
-			if (name.empty()) {
-				name = (**i)["name"];
+	foreach (const config &tr, t->possible_traits())
+	{
+		if (tr["availability"] != "musthave") continue;
+		std::string gender_string = (!t->genders().empty() && t->genders().front()== unit_race::FEMALE) ? "female_name" : "male_name";
+		t_string name = tr[gender_string];
+		if (name.empty()) {
+			name = tr["name"];
+		}
+		if (!name.empty()) {
+			if (!det.traits.empty()) {
+				det.traits += ", ";
 			}
-			if (!name.empty()) {
-				if (i != traits.begin()) {
-					det.traits += ", ";
-				}
-				det.traits += name;
-			}
+			det.traits += name;
 		}
 	}
 
@@ -1047,9 +1046,9 @@ const unit_types_preview_pane::details unit_types_preview_pane::get_details() co
 	// Check if AMLA color is needed
 	// FIXME: not sure if it's fully accurate (but not very important for unit_type)
 	// xp_color also need a simpler function for doing this
-	const config::child_list& advances = t->modification_advancements();
-	for(config::child_list::const_iterator j = advances.begin(); j != advances.end(); ++j) {
-		if (!utils::string_bool((**j)["strict_amla"]) || !t->can_advance()) {
+	foreach (const config &adv, t->modification_advancements())
+	{
+		if (!utils::string_bool(adv["strict_amla"]) || !t->can_advance()) {
 			det.xp_color = "<100,0,150>"; // from unit::xp_color()
 			break;
 		}

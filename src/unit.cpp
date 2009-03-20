@@ -606,77 +606,56 @@ void unit::generate_traits(bool musthaveonly, game_state* state)
 		LOG_STREAM(err, engine) << "unit of type " << type_id() << " not found!\n";
 		throw game::game_error(error_message);
 	}
-	std::vector<config*> candidate_traits = type->second.possible_traits();
-	std::vector<config*> traits;
 
-	// First remove traits the unit already has from consideration.
-	// And count them so that we can figure out how many more are needed.
-	size_t t = 0;
-	config::child_list const &mods = modifications_.get_children("trait");
-	for(config::child_list::const_iterator j = mods.begin(), j_end = mods.end(); j != j_end; ++j) {
-		++t;
-		size_t m = 0;
-		for(size_t n = 0; n < candidate_traits.size(); ++n) {
-			if((**(candidate_traits.begin()+m))["id"] == (**j)["id"]) {
-				candidate_traits.erase(candidate_traits.begin()+m);
-			} else {
-				++m;
+	config::const_child_itors current_traits = modifications_.child_range("trait");
+	std::vector<config> candidate_traits;
+
+	foreach (const config &t, type->second.possible_traits())
+	{
+		// Skip the trait if the unit already has it.
+		const std::string &tid = t["id"];
+		bool already = false;
+		foreach (const config &mod, current_traits)
+		{
+			if (mod["id"] == tid) {
+				already = true;
+				break;
 			}
 		}
-	}
+		if (already) continue;
 
-	// Next add in any mandatory traits. These aren't limited by the
-	// number of traits allowed for a unit. They also don't use
-	// any random numbers for assignment. (And hence don't cause
-	// problems for multiplayer.)
-	size_t num_traits = candidate_traits.size();
-	size_t m = 0;
-	for(size_t n = 0; n < num_traits; ++n) {
-		if(!(**(candidate_traits.begin()+m))["availability"].empty() &&
-		(**(candidate_traits.begin()+m))["availability"] == "musthave") {
-			traits.push_back(candidate_traits[m]);
-			candidate_traits.erase(candidate_traits.begin()+m);
-			++t;
-		} else {
-			++m;
-		}
-	}
-
-	// If musthaveonly then don't generate any random/optional traits
-	if(!musthaveonly) {
-		// Next for leaders remove any traits that are not available to
-		// the "any" category.
-		if(can_recruit()) {
-			num_traits = candidate_traits.size();
-			m = 0;
-			for(size_t n = 0; n < num_traits; ++n) {
-				if(!(**(candidate_traits.begin()+m))["availability"].empty() ||
-				(**(candidate_traits.begin()+m))["availability"] != "any") {
-					candidate_traits.erase(candidate_traits.begin()+m);
-				} else {
-					++m;
-				}
-			}
+		// Add the trait if it is mandatory.
+		const std::string &avl = t["availability"];
+		if (avl == "musthave")
+		{
+			modifications_.add_child("trait", t);
+			current_traits = modifications_.child_range("trait");
+			continue;
 		}
 
-		// Now randomly fill out to the number of traits required or until
-		// there aren't any more traits.
-		num_traits = type->second.num_traits();
-		for(size_t n = t; n < num_traits && candidate_traits.empty() == false; ++n) {
-			const size_t num =
-				(state ?  state->rng().get_random() : get_random()) % candidate_traits.size();
-			traits.push_back(candidate_traits[num]);
-			candidate_traits.erase(candidate_traits.begin()+num);
-		}
-
-		// Once random traits are added, don't do it again.
-		// Such as when restoring a saved character.
-		cfg_["random_traits"]="no";
+		// The trait is still available, mark it as a candidate for randomizing.
+		// For leaders, only traits with availability "any" are considered.
+		if (!musthaveonly && (!can_recruit() || avl == "any"))
+			candidate_traits.push_back(t);
 	}
 
-	for(std::vector<config*>::const_iterator j2 = traits.begin(); j2 != traits.end(); ++j2) {
-		modifications_.add_child("trait",**j2);
+	if (musthaveonly) return;
+
+	// Now randomly fill out to the number of traits required or until
+	// there aren't any more traits.
+	int nb_traits = std::distance(current_traits.first, current_traits.second);
+	int max_traits = type->second.num_traits();
+	for (; nb_traits < max_traits && !candidate_traits.empty(); ++nb_traits)
+	{
+		int num = (state ? state->rng().get_random() : get_random())
+		          % candidate_traits.size();
+		modifications_.add_child("trait", candidate_traits[num]);
+		candidate_traits.erase(candidate_traits.begin() + num);
 	}
+
+	// Once random traits are added, don't do it again.
+	// Such as when restoring a saved character.
+	cfg_["random_traits"] = "no";
 }
 
 std::vector<std::string> unit::get_traits_list() const

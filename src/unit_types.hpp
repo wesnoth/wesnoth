@@ -161,20 +161,20 @@ public:
 
 	unit_type();
 	unit_type(const config& cfg, const movement_type_map& movement_types,
-	          const race_map& races, const std::vector<config*>& traits);
+	          const race_map &races, const config::const_child_itors &traits);
 	unit_type(const unit_type& o);
 
 	~unit_type();
 
 	/** Load data into an empty unit_type */
 	void build_full(const config& cfg, const movement_type_map& movement_types,
-	          const race_map& races, const std::vector<config*>& traits);
+	                const race_map &races, const config::const_child_itors &traits);
 	/** Partially load data into an empty unit_type */
     void build_help_index(const config& cfg, const movement_type_map& movement_types,
-	          const race_map& races, const std::vector<config*>& traits);
+	                      const race_map &races, const config::const_child_itors &traits);
 	/** Load the most needed data into an empty unit_type */
     void build_created(const config& cfg, const movement_type_map& mv_types,
-                         const race_map& races, const std::vector<config*>& traits);
+	                   const race_map &races, const config::const_child_itors &traits);
 
 	/**
 	 * Adds an additional advancement path to a unit type.
@@ -218,7 +218,8 @@ public:
 	int experience_needed(bool with_acceleration=true) const;
 	std::vector<std::string> advances_to() const { return advances_to_; }
 	std::vector<std::string> advances_from() const { return advances_from_; }
-	const config::child_list& modification_advancements() const { return cfg_.get_children("advancement"); }
+	config::const_child_itors modification_advancements() const
+	{ return cfg_.child_range("advancement"); }
 
 	struct experience_accelerator {
 		experience_accelerator(int modifier);
@@ -253,8 +254,9 @@ public:
 	bool has_ability_by_id(const std::string& ability) const;
 	std::vector<std::string> get_ability_list() const;
 
-	const std::vector<config*> possible_traits() const { return possibleTraits_.get_children("trait"); }
-	bool has_random_traits() const { return (num_traits() > 0 && possible_traits().size() > 1); }
+	config::const_child_itors possible_traits() const
+	{ return possibleTraits_.child_range("trait"); }
+	bool has_random_traits() const;
 
 	const std::vector<unit_race::GENDER>& genders() const { return genders_; }
 
@@ -368,7 +370,8 @@ public:
 			{}
 
             void set_unit_config(const config& unit_cfg) { unit_cfg_ = &unit_cfg; }
-            void set_unit_traits(const config::child_list unit_traits) { unit_traits_ = unit_traits; }
+			void set_unit_traits(const config::const_child_itors &unit_traits)
+			{ unit_traits_ = unit_traits; }
 
 			const config& find_config(const std::string& key) const;
 			std::pair<unit_type_map::iterator, bool> insert(const std::pair<std::string,unit_type>& utype) { return types_.insert(utype); }
@@ -386,7 +389,7 @@ public:
             mutable unit_type_map dummy_unit_map_;
             movement_type_map movement_types_;
             race_map races_;
-            config::child_list unit_traits_;
+			config::const_child_itors unit_traits_;
             const config* unit_cfg_;
 	};
 
