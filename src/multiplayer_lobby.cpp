@@ -404,23 +404,23 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 	}
 
 	games_.clear();
-	config::child_list games = cfg.get_children("game");
-	config::child_list::iterator game;
 
-	for(game = games.begin(); game != games.end(); ++game) {
+	foreach (const config &game, cfg.child_range("game"))
+	{
 		bool verified = true;
 		games_.push_back(game_item());
-		games_.back().password_required = (**game)["password"] == "yes";
-		games_.back().reloaded = (**game)["savegame"] == "yes";
+		games_.back().password_required = game["password"] == "yes";
+		games_.back().reloaded = game["savegame"] == "yes";
 		games_.back().have_era = true;
-		if((**game)["mp_era"] != "") {
-			const config* const era_cfg = game_config.find_child("era", "id", (**game)["mp_era"]);
+		if (!game["mp_era"].empty())
+		{
+			const config *era_cfg = game_config.find_child("era", "id", game["mp_era"]);
 			utils::string_map symbols;
-			symbols["era_id"] = (**game)["mp_era"];
+			symbols["era_id"] = game["mp_era"];
 			if (era_cfg != NULL) {
 				games_.back().map_info = era_cfg->get_attribute("name");
 			} else {
-				if((**game)["require_era"] == "no") {
+				if (game["require_era"] == "no") {
 					games_.back().have_era = true;
 				} else {
 					games_.back().have_era = false;
@@ -432,9 +432,9 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 			games_.back().map_info = _("Unknown era");
 			verified = false;
 		}
-		games_.back().map_data = (**game)["map_data"];
+		games_.back().map_data = game["map_data"];
 		if(games_.back().map_data.empty()) {
-			games_.back().map_data = read_map((**game)["map"]);
+			games_.back().map_data = read_map(game["map"]);
 		}
 
 		if(! games_.back().map_data.empty()) {
@@ -467,12 +467,13 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 			games_.back().map_info += " - ??x??";
 		}
 		games_.back().map_info += " ";
-		if((**game)["mp_scenario"] != "") {
+		if (!game["mp_scenario"].empty())
+		{
 			// check if it's a multiplayer scenario
-			const config* level_cfg = game_config.find_child("multiplayer", "id", (**game)["mp_scenario"]);
+			const config *level_cfg = game_config.find_child("multiplayer", "id", game["mp_scenario"]);
 			if(level_cfg == NULL) {
 				// check if it's a user map
-				level_cfg = game_config.find_child("generic_multiplayer", "id", (**game)["mp_scenario"]);
+				level_cfg = game_config.find_child("generic_multiplayer", "id", game["mp_scenario"]);
 			}
 			if(level_cfg) {
 				games_.back().map_info += level_cfg->get_attribute("name");
@@ -480,10 +481,10 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 				// so it makes no sense to test them, they always would appear
 				// as remote scenarios
 				if (map_hashes_ && !games_.back().reloaded) {
-					const std::string& hash = (**game)["hash"];
+					std::string hash = game["hash"];
 					bool hash_found = false;
 					foreach (const config::attribute &i, map_hashes_->attribute_range()) {
-						if (i.first == (**game)["mp_scenario"] && i.second == hash) {
+						if (i.first == game["mp_scenario"] && i.second == hash) {
 							hash_found = true;
 							break;
 						}
@@ -496,7 +497,7 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 				}
 			} else {
 				utils::string_map symbols;
-				symbols["scenario_id"] = (**game)["mp_scenario"];
+				symbols["scenario_id"] = game["mp_scenario"];
 				games_.back().map_info += vgettext("Unknown scenario: $scenario_id", symbols);
 				verified = false;
 			}
@@ -509,13 +510,13 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 			games_.back().map_info += _("Reloaded game");
 			verified = false;
 		}
-		games_.back().id = (**game)["id"];
-		games_.back().name = (**game)["name"];
-		const std::string& turn = (**game)["turn"];
-		const std::string& slots = (**game)["slots"];
+		games_.back().id = game["id"];
+		games_.back().name = game["name"];
+		std::string turn = game["turn"];
+		std::string slots = game["slots"];
 		games_.back().vacant_slots = lexical_cast_default<size_t>(slots, 0);
 		games_.back().current_turn = 0;
-		if(turn != "") {
+		if (!turn.empty()) {
 			games_.back().started = true;
 			int index = turn.find_first_of('/');
 			if (index > -1){
@@ -534,19 +535,19 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 			}
 		}
 
-		games_.back().use_map_settings = ((**game)["mp_use_map_settings"] == "yes");
-		games_.back().gold = (**game)["mp_village_gold"];
-		if((**game)["mp_fog"] == "yes") {
+		games_.back().use_map_settings = game["mp_use_map_settings"] == "yes";
+		games_.back().gold = game["mp_village_gold"];
+		if (game["mp_fog"] == "yes") {
 			games_.back().vision = _("Fog");
 			games_.back().fog = true;
-			if((**game)["mp_shroud"] == "yes") {
+			if (game["mp_shroud"] == "yes") {
 				games_.back().vision += "/";
 				games_.back().vision += _("Shroud");
 				games_.back().shroud = true;
 			} else {
 				games_.back().shroud = false;
 			}
-		} else if((**game)["mp_shroud"] == "yes") {
+		} else if (game["mp_shroud"] == "yes") {
 			games_.back().vision = _("Shroud");
 			games_.back().fog = false;
 			games_.back().shroud = true;
@@ -555,15 +556,15 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 			games_.back().fog = false;
 			games_.back().shroud = false;
 		}
-		if((**game)["mp_countdown"] == "yes" ) {
-			games_.back().time_limit =   (**game)["mp_countdown_init_time"] + " / +"
-			                           + (**game)["mp_countdown_turn_bonus"] + " "
-			                           + (**game)["mp_countdown_action_bonus"];
+		if (game["mp_countdown"] == "yes" ) {
+			games_.back().time_limit =   game["mp_countdown_init_time"] + " / +"
+			                           + game["mp_countdown_turn_bonus"] + " "
+			                           + game["mp_countdown_action_bonus"];
 		} else {
 			games_.back().time_limit = "";
 		}
-		games_.back().xp = (**game)["experience_modifier"] + "%";
-		games_.back().observers = (**game)["observer"] != "no" ? true : false;
+		games_.back().xp = game["experience_modifier"] + "%";
+		games_.back().observers = game["observer"] != "no" ? true : false;
 		games_.back().verified = verified;
 	}
 	set_full_size(games_.size());
@@ -631,13 +632,17 @@ bool lobby::lobby_sorter::less(int column, const gui::menu::item& row1, const gu
 		return false;
 	}
 
-	const config::child_list& games = list->get_children("game");
-	if(row1.id >= games.size() || row2.id >= games.size()) {
+	int nb = list->child_count("game");
+	if(row1.id >= nb || row2.id >= nb) {
 		return false;
 	}
 
-	const config& game1 = *games[row1.id];
-	const config& game2 = *games[row2.id];
+	config::const_child_iterator gi = list->child_range("game").first, gs = gi;
+	std::advance(gi, row1.id);
+	const config &game1 = *gi;
+	gi = gs;
+	std::advance(gi, row2.id);
+	const config &game2 = *gi;
 
 	if(column == MAP_COLUMN) {
 		size_t mapsize1 = game1["map_data"].size();
