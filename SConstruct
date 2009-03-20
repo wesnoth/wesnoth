@@ -14,14 +14,6 @@ from glob import glob
 from subprocess import Popen, PIPE, call
 from os import access, F_OK
 
-for dir in ["release", "debug", "profile"]:
-    if glob(os.path.join("build", dir, "*.cpp")):
-        shutil.rmtree(os.path.join("build", dir), True)
-try:
-    os.remove("wesnoth-base")
-except:
-    pass
-
 SConsignFile("build/sconsign.dblite")
 
 # Warn user of current set of build options.
