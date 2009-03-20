@@ -56,9 +56,9 @@ static void verify(const unit_map& units, const config& cfg) {
 			   << nunits << " according to data source. " << units.size() << " locally\n";
 
 		std::set<map_location> locs;
-		const config::child_list& items = cfg.get_children("unit");
-		for(config::child_list::const_iterator i = items.begin(); i != items.end(); ++i) {
-			const map_location loc(**i, game_events::get_state_of_game());
+		foreach (const config &u, cfg.child_range("unit"))
+		{
+			const map_location loc(u, game_events::get_state_of_game());
 			locs.insert(loc);
 
 			if(units.count(loc) == 0) {
@@ -77,13 +77,13 @@ static void verify(const unit_map& units, const config& cfg) {
 		errbuf.clear();
 	}
 
-	const config::child_list& items = cfg.get_children("unit");
-	for(config::child_list::const_iterator i = items.begin(); i != items.end(); ++i) {
-		const map_location loc(**i, game_events::get_state_of_game());
+	foreach (const config &un, cfg.child_range("unit"))
+	{
+		const map_location loc(un, game_events::get_state_of_game());
 		const unit_map::const_iterator u = units.find(loc);
 		if(u == units.end()) {
 			errbuf << "SYNC VERIFICATION FAILED: data source says there is a '"
-				   << (**i)["type"] << "' (side " << (**i)["side"] << ") at "
+				   << un["type"] << "' (side " << un["side"] << ") at "
 				   << loc << " but there is no local record of it\n";
 			replay::throw_error(errbuf.str());
 			errbuf.clear();
@@ -95,9 +95,9 @@ static void verify(const unit_map& units, const config& cfg) {
 		bool is_ok = true;
 		static const std::string fields[] = {"type","hitpoints","experience","side",""};
 		for(const std::string* str = fields; str->empty() == false; ++str) {
-			if(cfg[*str] != (**i)[*str]) {
+			if (cfg[*str] != un[*str]) {
 				errbuf << "ERROR IN FIELD '" << *str << "' for unit at "
-					   << loc << " data source: '" << (**i)[*str]
+					   << loc << " data source: '" << un[*str]
 					   << "' local: '" << cfg[*str] << "'\n";
 				is_ok = false;
 			}
@@ -548,7 +548,7 @@ config replay::get_data_range(int cmd_start, int cmd_end, DATA_TYPE data_type)
 
 void replay::undo()
 {
-	const config::child_list &cmds = cfg_.get_children("command");
+	const config::child_list &cmds = commands();
 	std::pair<config::child_list::const_iterator, config::child_list::const_iterator>
 		cmd(cmds.begin(), cmds.end());
 	std::vector<config::child_list::const_iterator> async_cmds;
@@ -766,8 +766,9 @@ static void check_checksums(game_display& disp,const unit_map& units,const confi
 	if(! game_config::mp_debug) {
 		return;
 	}
-	for(config::child_list::const_iterator ci = cfg.get_children("checksum").begin(); ci != cfg.get_children("checksum").end(); ++ci) {
-		map_location loc(**ci, game_events::get_state_of_game());
+	foreach (const config &ch, cfg.child_range("checksum"))
+	{
+		map_location loc(ch, game_events::get_state_of_game());
 		unit_map::const_iterator u = units.find(loc);
 		if(u == units.end()) {
 			std::stringstream message;
@@ -776,7 +777,7 @@ static void check_checksums(game_display& disp,const unit_map& units,const confi
 					game_display::MESSAGE_PRIVATE, false);
 			continue;
 		}
-		if(get_checksum(u->second) != (**ci)["value"]) {
+		if (get_checksum(u->second) != ch["value"]) {
 			std::stringstream message;
 			message << "checksum mismatch at " << loc.x+1 << "," << loc.y+1 << "!";
 			disp.add_chat_message(time(NULL), "verification", 1, message.str(),
@@ -1228,8 +1229,8 @@ bool do_replay_handle(game_display& disp, const gamemap& map,
 			}
 			fix_shroud = !get_replay_source().is_skipping();
 		} else if((child = cfg->child("fire_event")) != NULL) {
-			for(config::child_list::const_iterator v = child->get_children("set_variable").begin(); v != child->get_children("set_variable").end(); ++v) {
-				state_of_game.set_variable((**v)["name"],(**v)["value"]);
+			foreach (const config &v, child->child_range("set_variable")) {
+				state_of_game.set_variable(v["name"], v["value"]);
 			}
 			const std::string event = (*child)["raise"];
 			//exclude these events here, because in a replay proper time of execution can't be
