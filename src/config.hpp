@@ -67,6 +67,8 @@ public:
 	typedef std::vector<config*> child_list;
 	typedef std::map<std::string,child_list> child_map;
 
+	struct const_child_iterator;
+
 	struct child_iterator
 	{
 		typedef config value_type;
@@ -88,6 +90,7 @@ public:
 
 	private:
 		Itor i_;
+		friend struct const_child_iterator;
 	};
 
 	struct const_child_iterator
@@ -99,6 +102,7 @@ public:
 		typedef const config &reference;
 		typedef child_list::const_iterator Itor;
 		explicit const_child_iterator(Itor i = Itor()): i_(i) {}
+		const_child_iterator(const child_iterator &i): i_(i.i_) {}
 
 		const_child_iterator &operator++() { ++i_; return *this; }
 		const_child_iterator operator++(int) { return const_child_iterator(i_++); }
