@@ -190,12 +190,12 @@ static const config* get_tip_of_day(config& tips_of_day)
 		read_tips_of_day(tips_of_day);
 	}
 
-	const config::child_list& tips = tips_of_day.get_children("tip");
-
 	// next_tip_of_day rotate tips, so better stay iterator-safe
-	for (size_t t=0; t < tips.size(); t++, next_tip_of_day(tips_of_day)) {
-		const config* tip = tips.front();
-		if (tip == NULL) continue;
+	for (int nb_tips = tips_of_day.child_count("tip"); nb_tips > 0;
+	     --nb_tips, next_tip_of_day(tips_of_day))
+	{
+		const config *tip = tips_of_day.child("tip");
+		assert(tip);
 
 		const std::vector<std::string> needed_units = utils::split((*tip)["encountered_units"],',');
 		if (needed_units.empty()) {
