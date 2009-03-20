@@ -119,8 +119,8 @@ gamemap::gamemap(const config& cfg, const std::string& data):
 		usage_(IS_MAP)
 {
 	DBG_G << "loading map: '" << data << "'\n";
-	const config::child_list& terrains = cfg.get_children("terrain");
-	create_terrain_maps(terrains,terrainList_,tcodeToTerrain_);
+	const config::const_child_itors &terrains = cfg.child_range("terrain");
+	create_terrain_maps(terrains, terrainList_, tcodeToTerrain_);
 
 	read(data);
 }
@@ -272,7 +272,7 @@ std::string gamemap::write() const
 
 void gamemap::overlay(const gamemap& m, const config& rules_cfg, int xpos, int ypos, bool border)
 {
-	const config::child_list& rules = rules_cfg.get_children("rule");
+	const config::const_child_itors &rules = rules_cfg.child_range("rule");
 	int actual_border = (m.border_size() == border_size()) && border ? border_size() : 0;
 
 	const int xstart = std::max<int>(-actual_border, -xpos - actual_border);
@@ -293,11 +293,12 @@ void gamemap::overlay(const gamemap& m, const config& rules_cfg, int xpos, int y
 			}
 
 			// See if there is a matching rule
-			config::child_list::const_iterator rule = rules.begin();
-			for( ; rule != rules.end(); ++rule) {
+			config::const_child_iterator rule = rules.first;
+			for( ; rule != rules.second; ++rule)
+			{
 				static const std::string src_key = "old", src_not_key = "old_not",
 				                         dst_key = "new", dst_not_key = "new_not";
-				const config& cfg = **rule;
+				const config &cfg = *rule;
 				const t_translation::t_list& src = t_translation::read_list(cfg[src_key]);
 
 				if(!src.empty() && t_translation::terrain_matches(current, src) == false) {
@@ -326,8 +327,9 @@ void gamemap::overlay(const gamemap& m, const config& rules_cfg, int xpos, int y
 			}
 
 
-			if(rule != rules.end()) {
-				const config& cfg = **rule;
+			if (rule != rules.second)
+			{
+				const config &cfg = *rule;
 				const t_translation::t_list& terrain = t_translation::read_list(cfg["terrain"]);
 
 				tmerge_mode mode = BOTH;

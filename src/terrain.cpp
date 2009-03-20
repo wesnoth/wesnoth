@@ -14,7 +14,7 @@
 
 #include "global.hpp"
 
-#include "config.hpp"
+#include "foreach.hpp"
 #include "gettext.hpp"
 #include "terrain.hpp"
 
@@ -226,16 +226,15 @@ t_translation::t_terrain terrain_type::terrain_with_default_base() const {
 	return number_;
 }
 
-void create_terrain_maps(const std::vector<config*>& cfgs,
+void create_terrain_maps(const config::const_child_itors &cfgs,
                          t_translation::t_list& terrain_list,
                          std::map<t_translation::t_terrain, terrain_type>& letter_to_terrain)
 {
-	for(std::vector<config*>::const_iterator i = cfgs.begin();
-	    i != cfgs.end(); ++i) {
-		terrain_type terrain(**i);
+	foreach (const config &t, cfgs)
+	{
+		terrain_type terrain(t);
 		terrain_list.push_back(terrain.number());
-		letter_to_terrain.insert(std::pair<t_translation::t_terrain, terrain_type>(
-		                              terrain.number(),terrain));
+		letter_to_terrain.insert(std::make_pair(terrain.number(), terrain));
 	}
 }
 

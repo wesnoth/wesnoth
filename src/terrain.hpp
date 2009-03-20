@@ -14,13 +14,12 @@
 #ifndef TERRAIN_H_INCLUDED
 #define TERRAIN_H_INCLUDED
 
-class config;
+#include "config.hpp"
 #include "tstring.hpp"
 #include "terrain_translation.hpp"
 
 #include <map>
 #include <string>
-#include <vector>
 
 class terrain_type
 {
@@ -115,7 +114,7 @@ private:
 	bool hide_in_editor_;
 };
 
-void create_terrain_maps(const std::vector<config*>& cfgs,
+void create_terrain_maps(const config::const_child_itors &cfgs,
                          t_translation::t_list& terrain_list,
                          std::map<t_translation::t_terrain, terrain_type>& letter_to_terrain);
 
