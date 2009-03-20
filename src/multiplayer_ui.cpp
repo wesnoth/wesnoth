@@ -15,6 +15,7 @@
 #include "global.hpp"
 
 #include "construct_dialog.hpp"
+#include "foreach.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/mp_cmd_wrapper.hpp"
 #include "log.hpp"
@@ -148,21 +149,23 @@ void level_to_gamestate(config& level, game_state& state)
 	//In any type of reload(normal save or start-of-scenario) the players could have
 	//changed and need to be replaced
 	if(saved_game || start_of_scenario){
-		const config::child_list& saved_sides = (saved_game ?
-			state.snapshot.get_children("side") :
-			state.starting_pos.get_children("side"));
+		config::child_itors saved_sides = saved_game ?
+			state.snapshot.child_range("side") :
+			state.starting_pos.child_range("side");
+		config::const_child_itors level_sides = level.child_range("side");
 
-		const config::child_list& level_sides = level.get_children("side");
-		for(config::child_list::const_iterator side = saved_sides.begin(); side != saved_sides.end(); ++side) {
-			for(config::child_list::const_iterator lside = level_sides.begin(); lside != level_sides.end(); ++lside) {
-				if ( ((**side)["side"] == (**lside)["side"]) && (
-					 ((**side)["current_player"] != (**lside)["current_player"]) ||
-					 ((**side)["controller"] != (**lside)["controller"]) )){
-
-					(**side)["current_player"] = (**lside)["current_player"];
-					(**side)["id"] = (**lside)["id"];
-					(**side)["save_id"] = (**lside)["save_id"];
-					(**side)["controller"] = (**lside)["controller"];
+		foreach (config &side, saved_sides)
+		{
+			foreach (const config &lside, level_sides)
+			{
+				if (side["side"] == lside["side"] &&
+						(side["current_player"] != lside["current_player"] ||
+						 side["controller"] != lside["controller"]))
+				{
+					side["current_player"] = lside["current_player"];
+					side["id"] = lside["id"];
+					side["save_id"] = lside["save_id"];
+					side["controller"] = lside["controller"];
 					break;
 				}
 			}
@@ -657,25 +660,18 @@ bool ui::user_info::operator> (const user_info& b) const {
 
 void ui::gamelist_updated(bool silent)
 {
-	config::child_list users = gamelist_.get_children("user");
-	config::child_list::iterator user;
 	std::list<user_info> u_list;
 
-	for (user = users.begin(); user != users.end(); ++user) {
+	foreach (const config &user, gamelist_.child_range("user"))
+	{
 		user_info u_elem;
-		u_elem.name = (**user)["name"];
-		u_elem.game_id = "";
-		u_elem.location = "";
-		u_elem.state = (**user)["available"] == "no" ? GAME : LOBBY;
-		u_elem.registered = utils::string_bool((**user)["registered"]);
-		if(!(**user)["game_id"].empty()) {
-			u_elem.game_id = (**user)["game_id"];
-			if (u_elem.game_id == selected_game_) {
-				u_elem.state = SEL_GAME;
-			}
-		}
-		if(!(**user)["location"].empty()) {
-			u_elem.location = (**user)["location"];
+		u_elem.name = user["name"];
+		u_elem.state = user["available"] == "no" ? GAME : LOBBY;
+		u_elem.registered = utils::string_bool(user["registered"]);
+		u_elem.game_id = user["game_id"];
+		u_elem.location = user["location"];
+		if (!u_elem.game_id.empty() && u_elem.game_id == selected_game_) {
+			u_elem.state = SEL_GAME;
 		}
 		if (u_elem.name == preferences::login()) {
 			u_elem.relation = ME;
@@ -771,17 +767,11 @@ void ui::set_user_list(const std::vector<std::string>& list, bool silent)
 	user_list_ = list;
 }
 
-std::string ui::get_selected_user_game() {
-	config::child_list users = gamelist_.get_children("user");
-	config::child_list::iterator user;
-
-	for (user = users.begin(); user != users.end(); ++user) {
-		if((**user)["name"] == selected_user_) {
-			return (**user)["game_id"];
-		}
-	}
-
-	return "";
+std::string ui::get_selected_user_game()
+{
+	const config *u = gamelist_.find_child("user", "name", selected_user_);
+	if (u) return (*u)["game_id"];
+	return std::string();
 }
 
 void ui::append_to_title(const std::string& text) {
