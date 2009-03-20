@@ -33,7 +33,6 @@
 #include <boost/shared_ptr.hpp>
 
 #include <map>
-#include <memory>
 #include <ostream>
 #include <string>
 #include <vector>
@@ -83,7 +82,7 @@ public:
 		typedef config *pointer;
 		typedef config &reference;
 		typedef child_list::iterator Itor;
-		explicit child_iterator(Itor i = Itor()): i_(i) {}
+		explicit child_iterator(const Itor &i = Itor()): i_(i) {}
 
 		child_iterator &operator++() { ++i_; return *this; }
 		child_iterator operator++(int) { return child_iterator(i_++); }
@@ -107,7 +106,7 @@ public:
 		typedef const config *pointer;
 		typedef const config &reference;
 		typedef child_list::const_iterator Itor;
-		explicit const_child_iterator(Itor i = Itor()): i_(i) {}
+		explicit const_child_iterator(const Itor &i = Itor()): i_(i) {}
 		const_child_iterator(const child_iterator &i): i_(i.i_) {}
 
 		const_child_iterator &operator++() { ++i_; return *this; }
@@ -136,7 +135,7 @@ public:
 		typedef const attribute *pointer;
 		typedef const attribute &reference;
 		typedef string_map::const_iterator Itor;
-		explicit const_attribute_iterator(Itor i = Itor()): i_(i) {}
+		explicit const_attribute_iterator(const Itor &i = Itor()): i_(i) {}
 		const_attribute_iterator(const const_attribute_iterator &i): i_(i.i_) {}
 
 		const_attribute_iterator &operator++() { ++i_; return *this; }
@@ -206,27 +205,37 @@ public:
 		bool operator!=(const child_pos& o) const { return !operator==(o); }
 	};
 
-	struct all_children_iterator {
-		typedef std::pair<const std::string*,const config*> value_type;
+	typedef std::pair<const std::string *, const config *> any_child;
+
+	struct all_children_iterator
+	{
+		typedef any_child value_type;
 		typedef std::forward_iterator_tag iterator_category;
 		typedef int difference_type;
-		typedef std::auto_ptr<value_type> pointer;
-		typedef value_type& reference;
+		typedef any_child *pointer;
+		typedef any_child &reference;
 		typedef std::vector<child_pos>::const_iterator Itor;
-		explicit all_children_iterator(Itor i=Itor());
+		explicit all_children_iterator(const Itor &i = Itor()): i_(i) {}
 
-		all_children_iterator& operator++();
-		all_children_iterator  operator++(int);
+		all_children_iterator &operator++() { ++i_; return *this; }
+		all_children_iterator operator++(int) { return all_children_iterator(i_++); }
+
+		struct arrow_helper
+		{
+			any_child data;
+			arrow_helper(const all_children_iterator &i): data(*i) {}
+			any_child *operator->() { return &data; }
+		};
 
 		value_type operator*() const;
-		pointer operator->() const;
+		arrow_helper operator->() const { return *this; }
 
 		const std::string& get_key() const;
 		size_t get_index() const;
 		const config& get_child() const;
 
-		bool operator==(all_children_iterator i) const;
-		bool operator!=(all_children_iterator i) const;
+		bool operator==(const all_children_iterator &i) const { return i_ == i.i_; }
+		bool operator!=(const all_children_iterator &i) const { return i_ != i.i_; }
 
 	private:
 		Itor i_;

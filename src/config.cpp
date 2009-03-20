@@ -452,30 +452,9 @@ bool config::empty() const
 	return children.empty() && values.empty();
 }
 
-config::all_children_iterator::all_children_iterator(config::all_children_iterator::Itor i) : i_(i)
-{}
-
-config::all_children_iterator& config::all_children_iterator::operator++()
-{
-	++i_;
-	return *this;
-}
-
-config::all_children_iterator config::all_children_iterator::operator++(int)
-{
-	config::all_children_iterator i = *this;
-	++i_;
-	return i;
-}
-
-std::pair<const std::string*,const config*> config::all_children_iterator::operator*() const
+config::any_child config::all_children_iterator::operator*() const
 {
 	return std::pair<const std::string*,const config*>(&(i_->pos->first),i_->pos->second[i_->index]);
-}
-
-config::all_children_iterator::pointer config::all_children_iterator::operator->() const
-{
-	return pointer(new std::pair<const std::string*,const config*>(&(i_->pos->first),i_->pos->second[i_->index]));
 }
 
 const std::string& config::all_children_iterator::get_key() const
@@ -491,16 +470,6 @@ const config& config::all_children_iterator::get_child() const
 size_t config::all_children_iterator::get_index() const
 {
 	return i_->index;
-}
-
-bool config::all_children_iterator::operator==(all_children_iterator i) const
-{
-	return i_ == i.i_;
-}
-
-bool config::all_children_iterator::operator!=(all_children_iterator i) const
-{
-	return i_ != i.i_;
 }
 
 config::all_children_iterator config::ordered_begin() const
