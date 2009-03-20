@@ -349,8 +349,8 @@ void ai::find_villages(
 		const unit& un = u->second;
 		//FIXME: suokko turned this 2:1 to 1.5:1.0.
 		//and dropped the second term of the multiplication.  Is that better?
-		const double threat_multipler = (current_loc == leader_loc?2:1) * current_team().caution() * 10;
-		if(un.hitpoints() < (threat_multipler*threat*2*un.defense_modifier(map_.get_terrain(current_loc)))/100) {
+		//const double threat_multipler = (current_loc == leader_loc?2:1) * current_team().caution() * 10;
+		if(un.hitpoints() < (threat*2*un.defense_modifier(map_.get_terrain(current_loc)))/100) {
 			continue;
 		}
 
