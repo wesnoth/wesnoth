@@ -22,6 +22,7 @@
 #include "construct_dialog.hpp"
 #include "display.hpp"
 #include "font.hpp"
+#include "foreach.hpp"
 #include "game_config.hpp"
 #include "gettext.hpp"
 #include "marked-up_text.hpp"
@@ -47,109 +48,118 @@ namespace about
  * add all the credits lines from the about section to the list of strings.
  */
 static void add_lines(std::vector<std::string> &res, config const &c) {
-	std::string title=c["title"];
-	if(title.size()) {
+	std::string title = c["title"];
+	if (!title.empty()) {
 		title = "+" + title;
 		res.push_back(title);
 	}
 
 	std::vector<std::string> lines = utils::split(c["text"], '\n');
-	for(std::vector<std::string>::iterator line = lines.begin();
-		line != lines.end(); line++) {
-		if((*line)[0] == '+' && (*line).size()>1){
-			*line = "+  " + line->substr(1, line->size() - 1);
-	    } else {
-			*line = "-  " + *line;
-	    }
-	    if(line->size()) {
-			if ((*line)[0] == '_')
-				*line = gettext(line->substr(1,line->size()-1).c_str());
-			res.push_back(*line);
+	foreach (std::string &line, lines)
+	{
+		if (line.size() > 1 && line[0] == '+')
+			line = "+  " + line.substr(1);
+		else
+			line = "-  " + line;
+
+		if (!line.empty())
+		{
+			if (line[0] == '_')
+				line = gettext(line.substr(1).c_str());
+			res.push_back(line);
 		}
 	}
 
-	config::child_list entries = c.get_children("entry");
-	config::child_list::const_iterator entry;
-	for(entry = entries.begin(); entry != entries.end(); entry++) {
-		res.push_back("-  "+(**entry)["name"]);
+	foreach (const config &entry, c.child_range("entry")) {
+		res.push_back("-  "+ entry["name"]);
 	}
 }
 
 
-std::vector<std::string> get_text(std::string campaign) {
+std::vector<std::string> get_text(const std::string &campaign)
+{
 	std::vector< std::string > res;
 
-	const config::child_list& children = about::about_list.get_children("about");
+	config::child_itors children = about_list.child_range("about");
 
-	for(config::child_list::const_iterator cc = children.begin(); cc != children.end(); ++cc) {
-	  // just finished a particular campaign
-	  if(campaign.size() && campaign == (**cc)["id"]){
-		add_lines(res, **cc);
-	  }
+	foreach (const config &child, children)
+	{
+		// just finished a particular campaign
+		if (campaign == child["id"]) {
+			add_lines(res, child);
+		}
 	}
 
-	for(config::child_list::const_iterator acc = children.begin(); acc != children.end(); ++acc) {
-	  add_lines(res, **acc);
+	foreach (const config &child, children) {
+	  add_lines(res, child);
 	}
 
 	return res;
 }
 
-void set_about(const config& cfg){
-	config::child_list about = cfg.get_children("about");
-	for(config::child_list::const_iterator A = about.begin(); A != about.end(); A++) {
-		config AA = (**A);
-		about_list.add_child("about",AA);
-		if(!AA["images"].empty()){
-			if(images_default.empty()){
-				images_default=AA["images"];
-			}else{
-				images_default+=","+AA["images"];
-			}
+void set_about(const config &cfg)
+{
+	foreach (const config &about, cfg.child_range("about"))
+	{
+		about_list.add_child("about", about);
+		const std::string &im = about["images"];
+		if (!images.empty())
+		{
+			if (images_default.empty())
+				images_default = im;
+			else
+				images_default += ',' + im;
 		}
 	}
-	config::child_list campaigns = cfg.get_children("campaign");
-	for(config::child_list::const_iterator C = campaigns.begin(); C != campaigns.end(); C++) {
-		config::child_list about = (**C).get_children("about");
-		if(about.size()){
-			config temp;
-			std::string text;
-			std::string title;
-			std::string campaign=(**C)["id"];
-			title=(**C)["name"];
-			temp["title"]=title;
-			temp["id"]=(**C)["id"];
-			for(config::child_list::const_iterator A = about.begin(); A != about.end(); A++) {
-				config AA = (**A);
-				std::string subtitle=AA["title"];
-				if(subtitle.size()){
+
+	foreach (const config &campaign, cfg.child_range("campaign"))
+	{
+		config::const_child_itors abouts = campaign.child_range("about");
+		if (abouts.first == abouts.second) continue;
+
+		config temp;
+		std::ostringstream text;
+		const std::string &id = campaign["id"];
+		temp["title"] = campaign["name"];
+		temp["id"] = id;
+		std::string campaign_images;
+
+		foreach (const config &about, abouts)
+		{
+			const std::string &subtitle = about["title"];
+			if (!subtitle.empty())
+			{
+				text << '+';
 				if (subtitle[0] == '_')
-						subtitle = gettext(subtitle.substr(1,subtitle.size()-1).c_str());
-					text += "+" + subtitle + "\n";
-				}
-				std::vector<std::string> lines=utils::split(AA["text"],'\n');
-				for(std::vector<std::string>::iterator line=lines.begin();
-					line != lines.end(); line++){
-					text+="    "+(*line)+"\n";
-				}
-
-				config::child_list entries = AA.get_children("entry");
-				config::child_list::const_iterator entry;
-				for(entry = entries.begin(); entry != entries.end(); entry++) {
-					text+="    "+(**entry)["name"]+"\n";
-				}
-
-				if(!AA["images"].empty()){
-					if(images[campaign].empty()){
-						images[campaign]=AA["images"];
-					}else{
-						images[campaign]+=","+AA["images"];
-					}
-				}
+					text << gettext(subtitle.substr(1, subtitle.size() - 1).c_str());
+				else
+					text << subtitle;
+				text << '\n';
 			}
-			temp["text"]=text;
-			about_list.add_child("about",temp);
+
+			foreach (const std::string &line, utils::split(about["text"], '\n'))
+			{
+				text << "    " << line << '\n';
+			}
+
+			foreach (const config &entry, about.child_range("entry"))
+			{
+				text << "    " << entry["name"] << '\n';
+			}
+
+			const std::string &im = about["images"];
+			if (!im.empty())
+			{
+				if (campaign_images.empty())
+					campaign_images = im;
+				else
+					campaign_images += ',' + im;
+			}
 		}
+
+		images[id] = campaign_images;
+		temp["text"] = text.str();
+		about_list.add_child("about",temp);
 	}
 }
 
@@ -159,7 +169,7 @@ void set_about(const config& cfg){
  * Names of people are shown scrolling up like in movie-credits.\n
  * Uses map from wesnoth or campaign as background.
  */
-void show_about(display &disp, std::string campaign)
+void show_about(display &disp, const std::string &campaign)
 {
 	cursor::set(cursor::WAIT);
 	CVideo &video = disp.video();

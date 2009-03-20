@@ -26,9 +26,9 @@ class config;
 namespace about
 {
 
-void show_about(display &disp, std::string campaign="");
+void show_about(display &disp, const std::string &campaign = std::string());
 void set_about(const config& cfg);
-std::vector<std::string> get_text(std::string campaign="");
+std::vector<std::string> get_text(const std::string &campaign = std::string());
 
 }
 
