@@ -195,14 +195,13 @@ namespace {
 
 	void find_translations(const config& cfg, config& campaign)
 	{
-		const config::child_list& dirs = cfg.get_children("dir");
-		for(config::child_list::const_iterator i = dirs.begin(); i != dirs.end(); ++i) {
-			if((const t_string)(**i)["name"] == "LC_MESSAGES") {
-				config* language = &campaign.add_child("translation");
-				(*language)["language"] = cfg["name"];
-			}
-			else {
-				find_translations(**i, campaign);
+		foreach (const config &dir, cfg.child_range("dir"))
+		{
+			if (dir["name"] == "LC_MESSAGES") {
+				config &language = campaign.add_child("translation");
+				language["language"] = cfg["name"];
+			} else {
+				find_translations(dir, campaign);
 			}
 		}
 	}
@@ -297,14 +296,15 @@ namespace {
  		if (cfg_["converted_to_gzipped_data"] != "yes")
  		{
 			// Convert all addons to gzip
- 			config::child_list camps = campaigns().get_children("campaign");
- 			LOG_CS << "Converting all stored addons to gzip format. Number of addons: " << camps.size() <<"\n";
+			config::const_child_itors camps = campaigns().child_range("campaign");
+			LOG_CS << "Converting all stored addons to gzip format. Number of addons: "
+				<< std::distance(camps.first, camps.second) << '\n';
 
- 			for (config::child_list::iterator itor = camps.begin();
- 					itor != camps.end(); ++itor)
- 			{
- 				LOG_CS << "Converting " << (**itor)["name"] << "\n";
- 				scoped_istream binary_stream = istream_file((**itor)["filename"]);
+			foreach (const config &cm, camps)
+			{
+				LOG_CS << "Converting " << cm["name"] << '\n';
+				std::string filename = cm["filename"];
+				scoped_istream binary_stream = istream_file(filename);
  				config data;
  				if (binary_stream->peek() == 31) //This is gzip file allready
  				{
@@ -313,7 +313,7 @@ namespace {
  				}
  				read_compressed(data, *binary_stream);
 
- 				scoped_ostream gzip_stream = ostream_file((**itor)["filename"]);
+				scoped_ostream gzip_stream = ostream_file(filename);
 				config_writer writer(*gzip_stream, true, compress_level_);
  				writer.write(data);
  			}
@@ -323,20 +323,22 @@ namespace {
 		if (cfg_["encoded"] != "yes")
 		{
 			// Convert all addons to gzip
- 			config::child_list camps = campaigns().get_children("campaign");
- 			LOG_CS << "Encoding all stored campaigns. Number of addons: " << camps.size() <<"\n";
+			config::const_child_itors camps = campaigns().child_range("campaign");
+			LOG_CS << "Encoding all stored addons. Number of addons: "
+				<< std::distance(camps.first, camps.second) << '\n';
 
- 			for (config::child_list::iterator itor = camps.begin();
- 					itor != camps.end(); ++itor)
- 			{
- 				LOG_CS << "Encoding " << (**itor)["name"] << "\n";
+			foreach (const config &cm, camps)
+			{
+				LOG_CS << "Encoding " << cm["name"] << '\n';
+				std::string filename = cm["filename"], newfilename = filename + ".new";
+
 				{
-					scoped_istream in_file = istream_file((**itor)["filename"]);
+					scoped_istream in_file = istream_file(filename);
 					boost::iostreams::filtering_stream<boost::iostreams::input> in_filter;
 					in_filter.push(boost::iostreams::gzip_decompressor());
 					in_filter.push(*in_file);
 
-					scoped_ostream out_file = ostream_file((**itor)["filename"] + ".new");
+					scoped_ostream out_file = ostream_file(newfilename);
 					boost::iostreams::filtering_stream<boost::iostreams::output> out_filter;
 					out_filter.push(boost::iostreams::gzip_compressor(boost::iostreams::gzip_params(compress_level_)));
 					out_filter.push(*out_file);
@@ -353,11 +355,10 @@ namespace {
 						}
 						c = in_filter.get();
 					}
-
-					std::remove((**itor)["filename"].c_str());
-					std::rename(((**itor)["filename"]+".new").c_str(),((**itor)["filename"]).c_str());
-
 				}
+
+				std::remove(filename.c_str());
+				std::rename(newfilename.c_str(), filename.c_str());
 			}
 
 			cfg_["encoded"] = "yes";
@@ -402,54 +403,49 @@ namespace {
 						LOG_CS << "sending campaign list to " << network::ip_address(sock) << (gzipped?" using gzip":"");
 						time_t epoch = time(NULL);
 						config campaign_list;
-						(campaign_list)["timestamp"] = lexical_cast<std::string>(epoch);
-						if((const t_string)(*req)["times_relative_to"] != "now") {
+						campaign_list["timestamp"] = lexical_cast<std::string>(epoch);
+						if ((*req)["times_relative_to"] != "now") {
 							epoch = 0;
 						}
-						int before_flag = 0;
+
+						bool before_flag = false;
 						time_t before = epoch;
-						if((const t_string)(*req)["before"] != "") {
-							try {
-								before = before + lexical_cast<time_t>((*req)["before"]);
-								before_flag = 1;
-							}
-							catch(bad_lexical_cast) {
-							}
-						}
-						int after_flag = 0;
+						try {
+							before = before + lexical_cast<time_t>((*req)["before"]);
+							before_flag = true;
+						} catch(bad_lexical_cast) {}
+
+						bool after_flag = false;
 						time_t after = epoch;
-						if((const t_string)(*req)["after"] != "") {
-							try {
-								after = after + lexical_cast<time_t>((*req)["after"]);
-								after_flag = 1;
-							}
-							catch(bad_lexical_cast) {
-							}
-						}
-						config::child_list cmps = campaigns().get_children("campaign");
-						for(config::child_list::iterator i = cmps.begin(); i != cmps.end(); ++i) {
-							if((const t_string)(*req)["name"] != "" && (*req)["name"] != (**i)["name"]) continue;
-							if(before_flag && ((const t_string)(**i)["timestamp"] == "" || lexical_cast_default<time_t>((**i)["timestamp"],0) >= before)) continue;
-							if(after_flag && ((const t_string)(**i)["timestamp"] == "" || lexical_cast_default<time_t>((**i)["timestamp"],0) <= after)) continue;
-							int found = 1;
-							if((const t_string)(*req)["language"] != "") {
-								found = 0;
-								config::child_list translation = (**i).get_children("translation");
-								for(config::child_list::iterator j = translation.begin(); j != translation.end(); ++j) {
-									if((*req)["language"] == (**j)["language"]) {
-										found = 1;
+						try {
+							after = after + lexical_cast<time_t>((*req)["after"]);
+							after_flag = true;
+						} catch(bad_lexical_cast) {}
+
+						std::string name = (*req)["name"], lang = (*req)["language"];
+						foreach (const config &i, campaigns().child_range("campaign"))
+						{
+							if (!name.empty() && name != i["name"]) continue;
+							std::string tm = i["timestamp"];
+							if (before_flag && (tm.empty() || lexical_cast_default<time_t>(tm, 0) >= before)) continue;
+							if (after_flag && (tm.empty() || lexical_cast_default<time_t>(tm, 0) <= after)) continue;
+							if (!lang.empty()) {
+								bool found = false;
+								foreach (const config &j, i.child_range("translation")) {
+									if (j["language"] == lang) {
+										found = true;
 										break;
 									}
 								}
+								if (!found) continue;
 							}
-							if(found == 0) continue;
-							campaign_list.add_child("campaign", (**i));
+							campaign_list.add_child("campaign", i);
 						}
-						cmps = campaign_list.get_children("campaign");
-						for(config::child_list::iterator j = cmps.begin(); j != cmps.end(); ++j) {
-							(**j)["passphrase"] = "";
-							(**j)["upload_ip"] = "";
-							(**j)["email"] = "";
+
+						foreach (config &j, campaign_list.child_range("campaign")) {
+							j["passphrase"] = t_string();
+							j["upload_ip"] = t_string();
+							j["email"] = t_string();
 						}
 
 						config response;
@@ -487,11 +483,10 @@ namespace {
 						const std::string& name = (*upload)["name"];
 						std::string lc_name(name.size(), ' ');
 						std::transform(name.begin(), name.end(), lc_name.begin(), tolower);
-						const config::child_list& campaign_list = campaigns().get_children("campaign");
 						config* campaign = NULL;
-						for (config::child_list::const_iterator i = campaign_list.begin(); i != campaign_list.end(); ++i) {
-							if (utils::lowercase((**i)["name"]) == lc_name) {
-								campaign = *i;
+						foreach (config &c, campaigns().child_range("campaign")) {
+							if (utils::lowercase(c["name"]) == lc_name) {
+								campaign = &c;
 								break;
 							}
 						}
