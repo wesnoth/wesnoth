@@ -10,7 +10,7 @@
 // the msgfmt program path
 $msgfmt="/usr/bin/msgfmt";
 
-$branch="1.4";
+$branch="1.6";
 
 $trunkbasedir="/usr/src/svn-checkouts/trunk/";
 $branchbasedir="/usr/src/svn-checkouts/$branch/";
