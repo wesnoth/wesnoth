@@ -2678,10 +2678,9 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 					const config *ab_effect = effect.child("abilities");
 					if (ab_effect) {
 						config to_append;
-						config::all_children_iterator j, j_end = ab_effect->ordered_end();
-						for(j = ab_effect->ordered_begin(); j != j_end; ++j) {
-							if(!has_ability_by_id(j.get_child()["id"])) {
-								to_append.add_child(j.get_key(), j.get_child());
+						foreach (const config::any_child &ab, ab_effect->all_children_range()) {
+							if(!has_ability_by_id(ab.cfg["id"])) {
+								to_append.add_child(ab.key, ab.cfg);
 							}
 						}
 						ab->append(to_append);
@@ -2689,9 +2688,8 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 				} else if (apply_to == "remove_ability") {
 					const config *ab_effect = effect.child("abilities");
 					if (ab_effect) {
-						config::all_children_iterator j, j_end = ab_effect->ordered_end();
-						for(j = ab_effect->ordered_begin(); j != j_end; ++j) {
-							remove_ability_by_id(j.get_child()["id"]);
+						foreach (const config::any_child &ab, ab_effect->all_children_range()) {
+							remove_ability_by_id(ab.cfg["id"]);
 						}
 					}
 				} else if (apply_to == "image_mod") {
