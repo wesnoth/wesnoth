@@ -532,13 +532,13 @@ std::pair<int,map_location> unit_ability_list::lowest(const std::string& key, in
 namespace {
 	bool get_special_children(std::vector<const config*>& result, const config& parent,
 	                           const std::string& id, bool just_peeking=false) {
-		config::all_children_iterator it, it_end = parent.ordered_end();
-		for(it = parent.ordered_begin(); it != it_end; ++it) {
-			if(it.get_key() == id || it.get_child()["id"] == id) {
+		foreach (const config::any_child &sp, parent.all_children_range())
+		{
+			if (sp.key == id || sp.cfg["id"] == id) {
 				if(just_peeking) {
 					return true; // peek succeeded, abort
 				} else {
-					result.push_back(it->second);
+					result.push_back(&sp.cfg);
 				}
 			}
 		}
