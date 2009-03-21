@@ -23,6 +23,7 @@
 
 #include "config.hpp"
 #include "../../image.hpp"
+#include "foreach.hpp"
 #include "gettext.hpp"
 #include "gui/widgets/formula.hpp"
 #include "gui/widgets/helper.hpp"
@@ -956,11 +957,10 @@ void tcanvas::parse_cfg(const config& cfg)
 	log_scope2(gui_parse, "Canvas: parsing config.");
 	shapes_.clear();
 
-	for(config::all_children_iterator itor =
-			cfg.ordered_begin(); itor != cfg.ordered_end(); ++itor) {
-
-		const std::string& type = *((*itor).first);;
-		const config& data = *((*itor).second);
+	foreach (const config::any_child &it, cfg.all_children_range())
+	{
+		const std::string &type = it.key;
+		const config &data = it.cfg;
 
 		DBG_G_P << "Canvas: found shape of the type " << type << ".\n";
 
