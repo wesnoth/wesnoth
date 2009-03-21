@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "POT-Creation-Date: 2009-03-20 00:47+0100\n"
-"PO-Revision-Date: 2009-01-31 11:14+0100\n"
+"PO-Revision-Date: 2009-03-21 15:08+0100\n"
 "Last-Translator: Luciano Montanaro <mikelima@cirulla.net>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -1081,7 +1081,7 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:149
 #, no-wrap
 msgid "B<user_handler>"
-msgstr ""
+msgstr "B<user_handler>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:154
@@ -1203,31 +1203,31 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnothd.6:199
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<db_host>"
-msgstr "B<host>"
+msgstr "B<db_host>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:202
 msgid "(for user_handler=forum) The hostname of the database server"
-msgstr ""
+msgstr "(per user_handler=forum) L'hostname del server del database"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:202
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<db_name>"
-msgstr "B<nome>"
+msgstr "B<db_name>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:205
 msgid "(for user_handler=forum) The name of the database"
-msgstr ""
+msgstr "(per ser_handleu=forum) Il nome del database"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:205
 #, no-wrap
 msgid "B<db_user>"
-msgstr ""
+msgstr "B<db_user>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:208
@@ -1235,23 +1235,24 @@ msgid ""
 "(for user_handler=forum) The name of the user under which to log into the "
 "database"
 msgstr ""
+"(per user_handler=forum) Il nome dell'utente con cui connettersi al database"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:208
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<db_password>"
-msgstr "B<passwd>"
+msgstr "B<db_password>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:211
 msgid "(for user_handler=forum) This user's password"
-msgstr ""
+msgstr "(per user_handler=forum) La password di questo utente"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:211
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<db_users_table>"
-msgstr "B<ban_save_file>"
+msgstr "B<db_users_table>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:214
@@ -1265,7 +1266,7 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:214
 #, no-wrap
 msgid "B<db_extra_table>"
-msgstr ""
+msgstr "B<db_extra_table>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:218
@@ -1281,7 +1282,7 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:218
 #, no-wrap
 msgid "B<user_expiration>"
-msgstr ""
+msgstr "B<user_expiration>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:221
@@ -1299,62 +1300,63 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnothd.6:226
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<server>"
-msgstr "B<version>"
+msgstr "B<server>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:229
 msgid "The hostname of the mail server"
-msgstr ""
+msgstr "L'hostname del sever della posta"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:229
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<username>"
-msgstr "B<nome>"
+msgstr "B<username>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:232
 msgid "The user name under which to log into the mail server."
-msgstr ""
+msgstr "Il nome utente per connettersi al server della posta."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:232
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<password>"
-msgstr "B<passwd>"
+msgstr "B<password>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:235
 msgid "This user's password."
-msgstr ""
+msgstr "La password di questo utente."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:235
 #, no-wrap
 msgid "B<from_address>"
-msgstr ""
+msgstr "B<from_address>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:238
 msgid "The reply-to address of you mail."
-msgstr ""
+msgstr "L'indirizzo reply-to della tua posta."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:238
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<mail_port>"
-msgstr "B<port>"
+msgstr "B<mail_port>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:241
 msgid "The port on which your mail server is running. Default is 25."
 msgstr ""
+"La porta su cui il tuo server di posta è in ascolto. Omettendo un valore, "
+"viene usata la 25."
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:247
-#, fuzzy
 msgid ""
 "Written by David White E<lt>davidnwhite@verizon.netE<gt>.  Edited by Nils "
 "Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt>, "
@@ -1364,8 +1366,9 @@ msgid ""
 msgstr ""
 "Scritto David White E<lt>davidnwhite@verizon.netE<gt>.  Modificato da Nils "
 "Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt> e "
-"Soliton E<lt>soliton.de@gmail.comE<gt>.  Questo manuale è stato scritto in "
-"origine da Cyril Bouthors E<lt>cyril@bouthors.orgE<gt>."
+"Soliton E<lt>soliton.de@gmail.comE<gt> w Thomas Bauhauer E<lt>thomas."
+"baumhauer@gmailcomE<gt>. Questo manuale è stato scritto in origine da Cyril "
+"Bouthors E<lt>cyril@bouthors.orgE<gt>."
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:260
