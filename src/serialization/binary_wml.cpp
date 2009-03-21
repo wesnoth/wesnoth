@@ -142,7 +142,7 @@ static void write_compressed_internal(std::ostream &out, config const &cfg, comp
 	}
 
 	for (config::all_children_iterator j = cfg.ordered_begin(), j_end = cfg.ordered_end(); j != j_end; ++j) {
-		std::pair< std::string const *, config const * > const &item = *j;
+		const config::any_child &item = *j;
 		std::string const &name = *item.first;
 		config const &cfg2 = *item.second;
 

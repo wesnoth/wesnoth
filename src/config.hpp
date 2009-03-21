@@ -205,7 +205,15 @@ public:
 		bool operator!=(const child_pos& o) const { return !operator==(o); }
 	};
 
-	typedef std::pair<const std::string *, const config *> any_child;
+	struct any_child
+	{
+		const std::string *first;
+		const config *second;
+		const std::string &key;
+		const config &cfg;
+		any_child(const std::string *k, const config *c):
+			first(k), second(c), key(*k), cfg(*c) {}
+	};
 
 	struct all_children_iterator
 	{
@@ -213,7 +221,7 @@ public:
 		typedef std::forward_iterator_tag iterator_category;
 		typedef int difference_type;
 		typedef any_child *pointer;
-		typedef any_child &reference;
+		typedef any_child reference;
 		typedef std::vector<child_pos>::const_iterator Itor;
 		explicit all_children_iterator(const Itor &i = Itor()): i_(i) {}
 
@@ -227,7 +235,7 @@ public:
 			any_child *operator->() { return &data; }
 		};
 
-		value_type operator*() const;
+		any_child operator*() const;
 		arrow_helper operator->() const { return *this; }
 
 		const std::string& get_key() const;
@@ -241,7 +249,11 @@ public:
 		Itor i_;
 	};
 
+	typedef std::pair<all_children_iterator, all_children_iterator> all_children_itors;
+
 	/** In-order iteration over all children. */
+	all_children_itors all_children_range() const;
+
 	all_children_iterator ordered_begin() const;
 	all_children_iterator ordered_end() const;
 	all_children_iterator erase(const all_children_iterator& i);

@@ -64,7 +64,7 @@ config& config::operator=(const config& cfg)
 void config::append(const config& cfg)
 {
 	for(all_children_iterator i = cfg.ordered_begin(); i != cfg.ordered_end(); ++i) {
-		const std::pair<const std::string*,const config*>& value = *i;
+		const any_child &value = *i;
 		add_child(*value.first,*value.second);
 	}
 
@@ -454,7 +454,7 @@ bool config::empty() const
 
 config::any_child config::all_children_iterator::operator*() const
 {
-	return std::pair<const std::string*,const config*>(&(i_->pos->first),i_->pos->second[i_->index]);
+	return any_child(&i_->pos->first, i_->pos->second[i_->index]);
 }
 
 const std::string& config::all_children_iterator::get_key() const
@@ -480,6 +480,13 @@ config::all_children_iterator config::ordered_begin() const
 config::all_children_iterator config::ordered_end() const
 {
 	return all_children_iterator(ordered_children.end());
+}
+
+config::all_children_itors config::all_children_range() const
+{
+	return all_children_itors(
+		all_children_iterator(ordered_children.begin()),
+		all_children_iterator(ordered_children.end()));
 }
 
 config config::get_diff(const config& c) const
@@ -614,7 +621,7 @@ void config::apply_diff(const config& diff)
 	for(i = child_changes.begin(); i != child_changes.end(); ++i) {
 		const size_t index = lexical_cast<size_t>((**i)["index"].str());
 		for(all_children_iterator j = (*i)->ordered_begin(); j != (*i)->ordered_end(); ++j) {
-			const std::pair<const std::string*,const config*> item = *j;
+			const any_child &item = *j;
 
 			if(item.first->empty()) {
 				continue;
@@ -633,7 +640,7 @@ void config::apply_diff(const config& diff)
 	for(i = child_inserts.begin(); i != child_inserts.end(); ++i) {
 		const size_t index = lexical_cast<size_t>((**i)["index"].str());
 		for(all_children_iterator j = (*i)->ordered_begin(); j != (*i)->ordered_end(); ++j) {
-			const std::pair<const std::string*,const config*> item = *j;
+			const any_child &item = *j;
 			add_child_at(*item.first,*item.second,index);
 		}
 	}
@@ -642,7 +649,7 @@ void config::apply_diff(const config& diff)
 	for(i = child_deletes.begin(); i != child_deletes.end(); ++i) {
 		const size_t index = lexical_cast<size_t>((**i)["index"].str());
 		for(all_children_iterator j = (*i)->ordered_begin(); j != (*i)->ordered_end(); ++j) {
-			const std::pair<const std::string*,const config*> item = *j;
+			const any_child &item = *j;
 
 			remove_child(*item.first,index);
 		}
@@ -874,8 +881,8 @@ bool operator==(const config& a, const config& b)
 
 	config::all_children_iterator x = a.ordered_begin(), y = b.ordered_begin();
 	while(x != a.ordered_end() && y != b.ordered_end()) {
-		const std::pair<const std::string*,const config*> val1 = *x;
-		const std::pair<const std::string*,const config*> val2 = *y;
+		const config::any_child &val1 = *x;
+		const config::any_child &val2 = *y;
 
 		if(*val1.first != *val2.first || *val1.second != *val2.second) {
 			return false;

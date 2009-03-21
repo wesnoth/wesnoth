@@ -225,7 +225,7 @@ static void do_resolve_rects(const config& cfg, config& resolved_config, config*
 
 		// recursively resolve children
 		for(config::all_children_iterator i = cfg.ordered_begin(); i != cfg.ordered_end(); ++i) {
-			const std::pair<const std::string*,const config*>& value = *i;
+			const config::any_child &value = *i;
 			config& childcfg = resolved_config.add_child(*value.first);
 			do_resolve_rects(*value.second, childcfg, (*value.first =="resolution") ? &childcfg : resol_cfg);
 		}

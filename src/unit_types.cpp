@@ -162,7 +162,7 @@ bool attack_type::apply_modification(const config& cfg,std::string* description)
 		if (specials != NULL) {
 			config new_specials;
 			for(config::all_children_iterator s = specials->ordered_begin(); s != specials->ordered_end(); ++s) {
-				const std::pair<const std::string*,const config*>& vp = *s;
+				const config::any_child &vp = *s;
 				std::vector<std::string>::const_iterator found_id =
 					std::find(dsl.begin(),dsl.end(),vp.second->get_attribute("id"));
 				if (found_id == dsl.end()) {
@@ -185,7 +185,7 @@ bool attack_type::apply_modification(const config& cfg,std::string* description)
 			new_specials = cfg_.child("specials");
 		}
 		for(config::all_children_iterator s = set_specials->ordered_begin(); s != set_specials->ordered_end(); ++s) {
-			const std::pair<const std::string*,const config*>& value = *s;
+			const config::any_child &value = *s;
 			new_specials->add_child(*value.first,*value.second);
 		}
 	}

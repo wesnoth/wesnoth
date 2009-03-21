@@ -489,7 +489,7 @@ static void write_internal(config const &cfg, std::ostream &out, std::string& te
 	}
 
 	for(config::all_children_iterator j = cfg.ordered_begin(), j_end = cfg.ordered_end(); j != j_end; ++j) {
-		const std::pair<const std::string*,const config*>& item = *j;
+		const config::any_child &item = *j;
 		const std::string& name = *item.first;
 		const config& cfg = *item.second;
 
