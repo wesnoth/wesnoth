@@ -188,6 +188,7 @@ public:
 	const std::string& current_player() const { return info_.current_player; }
 
 	void set_objectives(const t_string& new_objectives, bool silently=false);
+	void set_objectives_changed() { info_.objectives_changed = true; }
 	void reset_objectives_changed() { info_.objectives_changed = false; }
 
 	const t_string& objectives() const { return info_.objectives; }

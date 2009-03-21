@@ -1128,6 +1128,21 @@ namespace {
 		}
 	}
 
+	WML_HANDLER_FUNCTION(show_objectives,/*handler*/,/*event_info*/,cfg)
+	{
+		std::string side = cfg["side"];
+		const size_t side_num = lexical_cast_default<size_t>(side,0);
+		if(side_num == 0) {
+			for(std::vector<team>::iterator itor = teams->begin();
+					itor != teams->end(); ++itor) {
+
+				itor->set_objectives_changed();
+			}
+		} else {
+			(*teams)[side_num - 1].set_objectives_changed();
+		}
+	}
+
 // Helper function(s) for [set_variable]
 namespace {
 	bool isint(const std::string &var) {
