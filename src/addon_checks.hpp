@@ -21,13 +21,6 @@
 
 class config;
 
-/** Values used for the directory scans */
-enum ADDON_GROUP {
-	ADDON_SINGLEPLAYER,	/**< (userdir)/data/campaigns */
-	ADDON_MULTIPLAYER,	/**< (userdir)/data/multiplayer */
-	ADDON_ALL			/**< all of the above. */
-};
-
 /**
  * Values used for add-on classification; UI-only
  * at the moment, in the future it could be used for
@@ -50,15 +43,6 @@ enum ADDON_TYPE {
 };
 
 ADDON_TYPE get_addon_type(const std::string& str);
-
-inline ADDON_GROUP is_addon_sp_or_mp(ADDON_TYPE t)
-{
-	return (t == ADDON_MP_CAMPAIGN ||
-	        t == ADDON_MP_SCENARIO ||
-	        t == ADDON_MP_ERA ||
-	        t == ADDON_MP_MAPS ||
-	        t == ADDON_MP_FACTION) ? ADDON_MULTIPLAYER : ADDON_SINGLEPLAYER;
-}
 
 /** Checks whether an add-on name is legal or not. */
 bool addon_name_legal(const std::string& name);
