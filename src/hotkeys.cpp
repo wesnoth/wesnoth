@@ -124,6 +124,7 @@ const struct {
 	{ hotkey::HOTKEY_EDITOR_CUT, "editor-cut", N_("Cut"), false, hotkey::SCOPE_EDITOR },
 	{ hotkey::HOTKEY_EDITOR_COPY, "editor-copy", N_("Copy"), false, hotkey::SCOPE_EDITOR },
 	{ hotkey::HOTKEY_EDITOR_PASTE, "editor-paste", N_("Paste"), false, hotkey::SCOPE_EDITOR },
+	{ hotkey::HOTKEY_EDITOR_EXPORT_SELECTION_COORDS, "editor-export-selection-coords", N_("Export selected coordinates to system clipboard"), false, hotkey::SCOPE_EDITOR },
 	{ hotkey::HOTKEY_EDITOR_SELECT_ALL, "editor-select-all",
 		 N_("Select All"), false, hotkey::SCOPE_EDITOR },
 	{ hotkey::HOTKEY_EDITOR_SELECT_INVERSE, "editor-select-inverse",

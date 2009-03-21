@@ -25,6 +25,7 @@
 #include "gui/dialogs/editor_settings.hpp"
 #include "gui/widgets/window.hpp"
 
+#include "../clipboard.hpp"
 #include "../config_adapter.hpp"
 #include "../filechooser.hpp"
 #include "../filesystem.hpp"
@@ -770,6 +771,7 @@ bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int 
 			return true; //tool selection always possible
 		case HOTKEY_EDITOR_CUT:
 		case HOTKEY_EDITOR_COPY:
+		case HOTKEY_EDITOR_EXPORT_SELECTION_COORDS:
 		case HOTKEY_EDITOR_SELECTION_FILL:
 		case HOTKEY_EDITOR_SELECTION_RANDOMIZE:
 			return !get_map().selection().empty();
@@ -895,6 +897,9 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 			return true;
 		case HOTKEY_EDITOR_CUT:
 			cut_selection();
+			return true;
+		case HOTKEY_EDITOR_EXPORT_SELECTION_COORDS:
+			export_selection_coords();
 			return true;
 		case HOTKEY_EDITOR_SELECT_ALL:
 			if (!get_map().everything_selected()) {
@@ -1069,6 +1074,24 @@ void editor_controller::cut_selection()
 {
 	copy_selection();
 	perform_refresh(editor_action_paint_area(get_map().selection(), background_terrain_));
+}
+
+void editor_controller::export_selection_coords()
+{
+	std::stringstream ssx, ssy;
+	std::set<map_location>::const_iterator i = get_map().selection().begin();
+	if (i != get_map().selection().end()) {
+		ssx << "x = " << i->x + 1;
+		ssy << "y = " << i->y + 1;
+		++i;
+		while (i != get_map().selection().end()) {
+			ssx << ", " << i->x + 1;
+			ssy << ", " << i->y + 1;
+			++i;
+		}
+		ssx << "\n" << ssy.str() << "\n";
+		copy_to_clipboard(ssx.str(), false);
+	}
 }
 
 void editor_controller::fill_selection()
