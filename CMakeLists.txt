@@ -3,7 +3,12 @@
 # * some other smaller stuff
 # * nice INSTALL howto
 # * check for poll(2) and select(2) as in SConstruct line 183 and if found, define same
-#   symbols as autoconf would.
+#   symbols as autoconf would. See also 
+#   http://svn.gna.org/viewcvs/wesnoth?rev=33522&view=rev
+#   http://svn.gna.org/viewcvs/wesnoth?rev=33523&view=rev
+# * Detect Python and install Python tools
+# * Rewrite the pot-update
+# * Test everything
 
 # set minimum version
 cmake_minimum_required(VERSION 2.6.0)
