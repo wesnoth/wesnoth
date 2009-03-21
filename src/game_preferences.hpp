@@ -234,6 +234,22 @@ namespace preferences {
 	void encounter_recallable_units(game_state& gamestate);
 	// Add all terrains on the map as encountered terrains.
 	void encounter_map_terrain(gamemap& map);
+
+	bool filter_lobby();
+	void set_filter_lobby(bool value);
+
+	bool fi_invert();
+	void set_fi_invert(bool value);
+
+	bool fi_vacant_slots();
+	void set_fi_vacant_slots(bool value);
+
+	bool fi_friends_in_game();
+	void set_fi_friends_in_game(bool value);
+
+	std::string fi_text();
+	void set_fi_text(const std::string& search_string);
+
 }
 
 #endif

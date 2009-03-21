@@ -405,7 +405,7 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 
 	games_.clear();
 
-	foreach (const config &game, cfg.child_range("game"))
+	foreach (const config &game, cfg.child("gamelist")->child_range("game"))
 	{
 		bool verified = true;
 		games_.push_back(game_item());
@@ -566,6 +566,9 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 		games_.back().xp = game["experience_modifier"] + "%";
 		games_.back().observers = game["observer"] != "no" ? true : false;
 		games_.back().verified = verified;
+
+		// Hack...
+		if(preferences::fi_invert() ? game_matches_filter(games_.back(), cfg) : !game_matches_filter(games_.back(), cfg)) games_.pop_back();
 	}
 	set_full_size(games_.size());
 	set_shown_size(inner_location().h / row_height());
@@ -606,6 +609,38 @@ void gamebrowser::select_game(const std::string id) {
 	}
 	adjust_position(selected_);
 	set_dirty();
+}
+
+bool gamebrowser::game_matches_filter(const game_item& i, const config& cfg) {
+
+    if(!preferences::filter_lobby()) return true;
+
+    if(preferences::fi_vacant_slots() && i.vacant_slots == 0) return false;
+
+    if(preferences::fi_friends_in_game()) {
+        bool found_friend = false;
+        foreach(const config &user, cfg.child_range("user")) {
+            if(preferences::is_friend(user["name"]) && user["game_id"] == i.id) {
+                found_friend = true;
+                break;
+            }
+        }
+        if(!found_friend) return false;
+    }
+
+    if(!preferences::fi_text().empty()) {
+        bool found_match = true;
+        foreach(const std::string& search_string, utils::split(preferences::fi_text(), ' ', utils::STRIP_SPACES)) {
+            if(std::search(i.map_info.begin(), i.map_info.end(), search_string.begin(), search_string.end(), chars_equal_insensitive) == i.map_info.end() &&
+                    std::search(i.name.begin(), i.name.end(), search_string.begin(), search_string.end(), chars_equal_insensitive) == i.name.end()) {
+                found_match = false;
+                break;
+            }
+        }
+        if(!found_match) return false;
+    }
+
+    return true;
 }
 
 lobby::lobby_sorter::lobby_sorter(const config& cfg) : cfg_(cfg)
@@ -692,12 +727,42 @@ lobby::lobby(game_display& disp, const config& cfg, chat& c, config& gamelist) :
 	game_preferences_(disp.video(), _("Preferences")),
 #endif
 	quit_game_(disp.video(), _("Quit")),
+#ifndef USE_TINY_GUI
+	apply_filter_(disp.video(), _("Apply Filer"), gui::button::TYPE_CHECK),
+	invert_filter_(disp.video(), _("Invert"), gui::button::TYPE_CHECK),
+	vacant_slots_(disp.video(), _("Vacant Slots"), gui::button::TYPE_CHECK),
+	friends_in_game_(disp.video(), _("Friends in Game"), gui::button::TYPE_CHECK),
+	filter_label_(disp.video(), _("Search:")),
+	filter_text_(disp.video(), 150),
+#endif
 	last_selected_game_(-1), sorter_(gamelist),
 	games_menu_(disp.video(),cfg.child("multiplayer_hashes")),
-	minimaps_()
+	minimaps_(),
+	search_string_(preferences::fi_text())
 {
 	skip_replay_.set_check(preferences::skip_mp_replay());
 	skip_replay_.set_help_string(_("Skip quickly to the active turn when observing"));
+
+#ifndef USE_TINY_GUI
+	apply_filter_.set_check(preferences::filter_lobby());
+	apply_filter_.set_help_string(_("Enable the games filter. If unchecked all games are shown, regardless of any filter."));
+
+	invert_filter_.set_check(preferences::fi_invert());
+	invert_filter_.set_help_string(_("Show all games that do *not* match your filter. Useful for hiding games you are not interested in."));
+    invert_filter_.enable(apply_filter_.checked());
+
+	vacant_slots_.set_check(preferences::fi_vacant_slots());
+	vacant_slots_.set_help_string(_("Only show games that have a least one vacant slot"));
+    vacant_slots_.enable(apply_filter_.checked());
+
+	friends_in_game_.set_check(preferences::fi_friends_in_game());
+	friends_in_game_.set_help_string(_("Only show games that are played or observed by at least one of your friends"));
+    friends_in_game_.enable(apply_filter_.checked());
+
+    filter_text_.set_text(search_string_);
+	filter_text_.set_help_string(_("Only show games whose title or description contain the entered text"));
+#endif
+
 	game_config::debug = false;
 	gamelist_updated();
 	sound::play_music_repeatedly(game_config::lobby_music);
@@ -716,6 +781,14 @@ void lobby::hide_children(bool hide)
 	game_preferences_.hide(hide);
 #endif
 	quit_game_.hide(hide);
+#ifndef USE_TINY_GUI
+	apply_filter_.hide(hide);
+	invert_filter_.hide(hide);
+	vacant_slots_.hide(hide);
+	friends_in_game_.hide(hide);
+	filter_label_.hide(hide);
+	filter_text_.hide(hide);
+#endif
 }
 
 void lobby::layout_children(const SDL_Rect& rect)
@@ -754,19 +827,33 @@ void lobby::layout_children(const SDL_Rect& rect)
 
 	games_menu_.set_location(client_area().x, client_area().y + title().height());
 	games_menu_.set_measurements(client_area().w, client_area().h
-			- title().height() - gui::ButtonVPadding);
+			- title().height() - gui::ButtonVPadding
+#ifndef USE_TINY_GUI
+			- apply_filter_.location().h
+#endif
+			);
+
+#ifndef USE_TINY_GUI
+    apply_filter_.set_location(client_area().x, games_menu_.location().y + games_menu_.location().h + gui::ButtonVPadding);
+    invert_filter_.set_location(client_area().x + apply_filter_.location().w + btn_space, games_menu_.location().y + games_menu_.location().h + gui::ButtonVPadding);
+    vacant_slots_.set_location(client_area().w - apply_filter_.location().w, games_menu_.location().y + games_menu_.location().h + gui::ButtonVPadding);
+    friends_in_game_.set_location(vacant_slots_.location().x - friends_in_game_.location().w - btn_space, games_menu_.location().y + games_menu_.location().h + gui::ButtonVPadding);
+    filter_text_.set_location(friends_in_game_.location().x - filter_text_.location().w - btn_space * 4, games_menu_.location().y + games_menu_.location().h + gui::ButtonVPadding);
+    filter_label_.set_location(filter_text_.location().x - filter_label_.location().w - btn_space, games_menu_.location().y + games_menu_.location().h + gui::ButtonVPadding
+            + (apply_filter_.location().h - filter_label_.location().h) / 2);
+
+#endif
 }
 
 void lobby::gamelist_updated(bool silent)
 {
 	ui::gamelist_updated(silent);
-
 	const config* list = gamelist().child("gamelist");
 	if(list == NULL) {
 		// No gamelist yet. Do not update anything.
 		return;
 	}
-	games_menu_.set_game_items(*list, game_config());
+	games_menu_.set_game_items(gamelist(), game_config());
 	join_game_.enable(games_menu_.selection_is_joinable());
 	observe_game_.enable(games_menu_.selection_is_observable());
 }
@@ -858,6 +945,50 @@ void lobby::process_event()
 		set_result(QUIT);
 		return;
 	}
+
+#ifndef USE_TINY_GUI
+	if(apply_filter_.pressed()) {
+		preferences::set_filter_lobby(apply_filter_.checked());
+		invert_filter_.enable(apply_filter_.checked());
+		vacant_slots_.enable(apply_filter_.checked());
+		friends_in_game_.enable(apply_filter_.checked());
+		filter_label_.enable(apply_filter_.checked());
+
+		/** @todo I am aware that the box is not grayed out even though
+                  it definitely should be. This is because the textbox
+                  class currently does not really have an easy way to do
+                  that. I'll have to look into this.
+		*/
+		filter_text_.set_editable(apply_filter_.checked());
+		gamelist_updated();
+		return;
+	}
+
+	if(invert_filter_.pressed()) {
+		preferences::set_fi_invert(invert_filter_.checked());
+		gamelist_updated();
+		return;
+	}
+
+	if(vacant_slots_.pressed()) {
+		preferences::set_fi_vacant_slots(vacant_slots_.checked());
+		gamelist_updated();
+		return;
+	}
+
+	if(friends_in_game_.pressed()) {
+		preferences::set_fi_friends_in_game(friends_in_game_.checked());
+		gamelist_updated();
+		return;
+	}
+
+	if(search_string_ != filter_text_.text()) {
+	    search_string_ = filter_text_.text();
+	    preferences::set_fi_text(search_string_);
+	    gamelist_updated();
+	}
+#endif
+
 }
 
 void lobby::process_network_data(const config& data, const network::connection sock)

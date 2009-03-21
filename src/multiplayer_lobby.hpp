@@ -105,6 +105,7 @@ public:
 	int selection() const { return selected_; }
 	game_item selected_game() { return games_[selected_]; }
 	void select_game(const std::string id);
+	bool game_matches_filter(const game_item& i, const config& cfg);
 protected:
 	unsigned int row_height() const { return item_height_ + (2 * style_->get_thickness()); }
 private:
@@ -171,12 +172,23 @@ private:
 #endif
 	gui::button quit_game_;
 
+#ifndef USE_TINY_GUI
+	gui::button apply_filter_;
+	gui::button invert_filter_;
+	gui::button vacant_slots_;
+	gui::button friends_in_game_;
+	gui::label filter_label_;
+	gui::textbox filter_text_;
+#endif
+
 	int last_selected_game_;
 
 	lobby_sorter sorter_;
 	gamebrowser games_menu_;
 
 	std::map<std::string,std::string> minimaps_;
+
+	std::string search_string_;
 };
 
 } // end namespace mp
