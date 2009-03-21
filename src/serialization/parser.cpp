@@ -488,14 +488,11 @@ static void write_internal(config const &cfg, std::ostream &out, std::string& te
 		write_key_val(out, i.first, i.second, tab, textdomain);
 	}
 
-	for(config::all_children_iterator j = cfg.ordered_begin(), j_end = cfg.ordered_end(); j != j_end; ++j) {
-		const config::any_child &item = *j;
-		const std::string& name = *item.first;
-		const config& cfg = *item.second;
-
-		write_open_child(out, name, tab);
-		write_internal(cfg, out, textdomain, tab + 1);
-		write_close_child(out, name, tab);
+	foreach (const config::any_child &item, cfg.all_children_range())
+	{
+		write_open_child(out, item.key, tab);
+		write_internal(item.cfg, out, textdomain, tab + 1);
+		write_close_child(out, item.key, tab);
 	}
 }
 
