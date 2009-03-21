@@ -224,10 +224,10 @@ static void expand_partialresolution(config& dst_cfg, const config& top_cfg)
 static void do_resolve_rects(const config& cfg, config& resolved_config, config* resol_cfg = NULL) {
 
 		// recursively resolve children
-		for(config::all_children_iterator i = cfg.ordered_begin(); i != cfg.ordered_end(); ++i) {
-			const config::any_child &value = *i;
-			config& childcfg = resolved_config.add_child(*value.first);
-			do_resolve_rects(*value.second, childcfg, (*value.first =="resolution") ? &childcfg : resol_cfg);
+		foreach (const config::any_child &value, cfg.all_children_range()) {
+			config &childcfg = resolved_config.add_child(value.key);
+			do_resolve_rects(value.cfg, childcfg,
+				value.key == "resolution" ? &childcfg : resol_cfg);
 		}
 
 		// copy all key/values
