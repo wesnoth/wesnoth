@@ -732,13 +732,14 @@ bool config::matches(const config &filter) const
 	}
 
 	// Now, match the kids
-	for(all_children_iterator i2 = filter.ordered_begin(); i2 != filter.ordered_end(); ++i2) {
-		if(*(*i2).first == "not") continue;
-		child_list interesting_children = get_children(*(*i2).first);
+	foreach (const any_child &i, filter.all_children_range())
+	{
+		if (i.key == "not") continue;
 		bool found = false;
-		for(child_list::iterator j2 = interesting_children.begin(); j2 != interesting_children.end(); ++j2) {
-			if((*j2)->matches(*(*i2).second)) {
+		foreach (const config &j, child_range(i.key)) {
+			if (j.matches(i.cfg)) {
 				found = true;
+				break;
 			}
 		}
 		if(!found) return false;
@@ -795,12 +796,13 @@ std::ostream& operator << (std::ostream& outstream, const config& cfg) {
 		for (int j = 0; j < i-1; j++){ outstream << char(9); }
 		outstream << val.first << " = " << val.second << '\n';
 	}
-	for(config::all_children_iterator list = cfg.ordered_begin(); list != cfg.ordered_end(); ++list) {
-		{ for (int j = 0; j < i-1; j++){ outstream << char(9); } }
-		outstream << "[" << *(*list).first << "]\n";
-		outstream << *(*list).second;
-		{ for (int j = 0; j < i-1; j++){ outstream << char(9); } }
-		outstream << "[/" << *(*list).first << "]\n";
+	foreach (const config::any_child &child, cfg.all_children_range())
+	{
+		for (int j = 0; j < i - 1; ++j) outstream << char(9);
+		outstream << "[" << child.key << "]\n";
+		outstream << child.cfg;
+		for (int j = 0; j < i - 1; ++j) outstream << char(9);
+		outstream << "[/" << child.key << "]\n";
 	}
 	i--;
     return outstream;
@@ -879,20 +881,14 @@ bool operator==(const config& a, const config& b)
 	if (a.values != b.values)
 		return false;
 
-	config::all_children_iterator x = a.ordered_begin(), y = b.ordered_begin();
-	while(x != a.ordered_end() && y != b.ordered_end()) {
-		const config::any_child &val1 = *x;
-		const config::any_child &val2 = *y;
-
-		if(*val1.first != *val2.first || *val1.second != *val2.second) {
+	config::all_children_itors x = a.all_children_range(), y = b.all_children_range();
+	for (; x.first != x.second && y.first != y.second; ++x.first, ++y.first) {
+		if (x.first->key != y.first->key || x.first->cfg != y.first->cfg) {
 			return false;
 		}
-
-		++x;
-		++y;
 	}
 
-	return x == a.ordered_end() && y == b.ordered_end();
+	return x.first == x.second && y.first == y.second;
 }
 
 //#define TEST_CONFIG
