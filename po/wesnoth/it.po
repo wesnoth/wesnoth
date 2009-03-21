@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-03-20 00:45+0100\n"
-"PO-Revision-Date: 2009-03-01 11:37+0100\n"
+"PO-Revision-Date: 2009-03-21 14:33+0100\n"
 "Last-Translator: Luciano Montanaro <mikelima@cirulla.net>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -3722,7 +3722,7 @@ msgstr "`(premio per turni risparmiati)"
 
 #: data/core/macros/carryover-utils.cfg:18
 msgid "No gold carried over to the next scenario."
-msgstr "L'oro non è portato nello scenario successivo."
+msgstr "Nessun oro riportato nello scenario successivo."
 
 #: data/core/macros/carryover-utils.cfg:22
 msgid ""
@@ -3730,7 +3730,7 @@ msgid ""
 "100% of finishing gold carried over to the next scenario."
 msgstr ""
 "\n"
-"Il 100% dell'oro con cui si termina portato nello scenario successivo."
+"Il 100% dell'oro del finale riportato nello scenario successivo."
 
 #: data/core/macros/carryover-utils.cfg:26
 msgid ""
@@ -3738,7 +3738,7 @@ msgid ""
 "40% of finishing gold carried over to the next scenario."
 msgstr ""
 "\n"
-"Il 40% dell'oro con cui si termina portato nello scenario successivo."
+"Il 40% dell'oro del finale riportato nello scenario successivo."
 
 #: data/core/macros/carryover-utils.cfg:30
 msgid ""
@@ -3746,7 +3746,7 @@ msgid ""
 "20% of finishing gold carried over to the next scenario."
 msgstr ""
 "\n"
-"Il 20% dell'oro con cui si termina viene portato nello scenario successivo."
+"Il 20% dell'oro del finale riportato nello scenario successivo."
 
 #. [message]: speaker=narrator
 #: data/core/macros/items.cfg:39
@@ -8810,13 +8810,12 @@ msgstr ""
 "Il nome utente «$nick» è riservato e non può essere usato dai giocatori."
 
 #: src/multiplayer.cpp:360
-#, fuzzy
 msgid "The nick '$nick' is not registered on this server."
-msgstr "Il nome utente «$nick» è stato riservato su questo server."
+msgstr "Il nome utente «$nick» non è stato registrato su questo server."
 
 #: src/multiplayer.cpp:361
 msgid " This server disallows unregistered nicks."
-msgstr ""
+msgstr " Questo server non permette l'uso di nomi non registrati."
 
 #: src/multiplayer.cpp:363 src/multiplayer.cpp:365
 msgid "The nick '$nick' is registered on this server."

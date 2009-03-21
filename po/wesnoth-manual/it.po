@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "POT-Creation-Date: 2009-02-23 14:13+0100\n"
-"PO-Revision-Date: 2009-01-31 11:18+0100\n"
+"PO-Revision-Date: 2009-03-21 15:46+0100\n"
 "Last-Translator: Luciano Montanaro <mikelima@cirulla.net>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -245,7 +245,6 @@ msgstr ""
 
 # type: Content of: <book><chapter><section><simpara><inlinemediaobject>
 #: ../../doc/manual/manual.en.xml:101
-#, fuzzy
 msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/main-menu-"
 "1.5.11.jpg\"/> </imageobject>"
@@ -618,13 +617,12 @@ msgstr ""
 
 # type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #: ../../doc/manual/manual.en.xml:344
-#, fuzzy
 msgid ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/multiplayer-"
 "1.5.11.jpg\"/> </imageobject>"
 msgstr ""
 "<inlinemediaobject> <imageobject> <imagedata fileref=\"images/multiplayer-"
-"1.5.9.jpg\"/> </imageobject>"
+"1.5.11.jpg\"/> </imageobject>"
 
 # type: Content of: <book><chapter><section><section><section><title>
 #: ../../doc/manual/manual.en.xml:352
@@ -640,6 +638,12 @@ msgid ""
 "password box will pop up if a password is required for the current username. "
 "You cannot use a registered name without the password."
 msgstr ""
+"Questo sarà il tuo nome sul server multigiocatore. Se hai un account per il "
+"<ulink url=\"http://www.wesnoth.org/forum\">forum di Wesnoth</ulink>, puoi "
+"usare gli stessi nome utente e password per l'accesso al server. Apparirà un "
+"riquadro per l'immissione della password se è necessario immettere una "
+"password per il nome utente attuale. Non si può usare un nome utente "
+"registrato senza password."
 
 # type: Content of: <book><chapter><section><section><section><title>
 #: ../../doc/manual/manual.en.xml:361
@@ -696,6 +700,12 @@ msgid ""
 "connect to a server running on the machine with the address 192.168.0.10 and "
 "the default port, you would enter this in the dialog: 192.168.0.10:15000"
 msgstr ""
+"Puoi anche raggiungere un server ospitato da qualsiasi altro giocatore con "
+"questa voce di menu. Quindi se hai un server in esecuzione nella rete "
+"locale, inserisci qui l'indirizzo e il numero di porta (normalmente: 15000). "
+"Se ad esempio vuoi connetterti con un server in esecuzione sulla macchina "
+"con l'indirizzo 192.168.0.10 e con la porta predefinita, scriverai nella "
+"finestra di dialogo: 192.168.0.10:15000"
 
 # type: Content of: <book><chapter><section><section><section><title>
 #: ../../doc/manual/manual.en.xml:385
@@ -2822,20 +2832,20 @@ msgid ""
 "top of a unit's energy bar provide a quick way to see which of your units "
 "have already moved or can move further in the current turn."
 msgstr ""
-"Se fai clic su un'unità individui tutti i luoghi che potrà muoversi nel "
-"turno corrente scurendo tutti gli esagoni non raggiungibili (premendo i "
-"numeri da 2 a 7 potrai individuare le ulteriori caselle che possono essere "
-"raggiunte in quel numero di turni in modo analogo). In questa modalità, "
-"spostando il cursore su una casella individuerai il percorso che la tua "
-"unità dovrà intraprendere verso la casella, anche il bonus difensivo che la "
-"tua unità avrà su quella casella e, se ci vuole più di un turno, il numero "
-"di turni necessari per arrivare. Se non vuoi muovere l'unità, la modalità "
-"potrà essere cancellata scegliendo un'altra unità (cliccando sulla nuova "
-"unità o usando il tasto <literal>n</literal> o <literal>N</literal> o "
-"cliccando con il tasto destro (Command-clic su Mac) un qualunque punto della "
-"mappa. La <link linkend=\"orbs\">sfera</link> sopra la barra dell'energia di "
-"un'unità è un modo veloce per sapere quali delle tue unità hanno già mosso o "
-"si possono ancora muovere nel turno corrente."
+"Se fai clic su un'unità individui tutti i luoghi che potrà raggiungere nel "
+"turno corrente oscurando tutti gli esagoni non raggiungibili (premendo i "
+"numeri da 2 a 7 potrai individuare le caselle raggiungibili in quel numero "
+"di turni in modo analogo). In questa modalità, spostando il cursore su una "
+"casella individuerai il percorso che la tua unità dovrà intraprendere verso "
+"la casella, anche il bonus difensivo che la tua unità avrà su quella casella "
+"e, se ci vuole più di un turno, il numero di turni necessari per arrivare. "
+"Se non vuoi muovere l'unità, la modalità potrà essere cancellata scegliendo "
+"un'altra unità (facendo clic sulla nuova unità o usando il tasto <literal>n</"
+"literal> o <literal>N</literal> o facendo clic con il tasto destro (Command-"
+"clic su Mac) su un qualunque punto della mappa. La <link linkend=\"orbs"
+"\">sfera</link> sopra la barra dell'energia di un'unità è un modo veloce per "
+"sapere quali delle tue unità hanno già mosso o si possono ancora muovere nel "
+"turno corrente."
 
 # type: Content of: <book><chapter><section><simpara>
 #: ../../doc/manual/manual.en.xml:1958
@@ -3495,10 +3505,10 @@ msgid ""
 "behind, indeed cannot be attacked as the enemy cannot move close to it."
 msgstr ""
 "Nel menu Azione, puoi scegliere «Mostra le mosse nemiche» per evidenziare le "
-"caselle che il tuo avversario può attualmente raggiungere. Si tiene conto "
-"delle zone di controllo. Così, puoi controllare che la tua unità moribonda, "
-"che si trova dietro, non possa davvero essere attaccata dato che il nemico "
-"non può raggiungerla."
+"caselle che l'avversario può attualmente raggiungere. Si tiene conto delle "
+"zone di controllo. Così, puoi controllare che la tua unità moribonda, che si "
+"trova dietro, non possa davvero essere attaccata dato che il nemico non può "
+"raggiungerla."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2349
@@ -3507,10 +3517,10 @@ msgid ""
 "to end your move out of striking range of the enemy army. He cannot attack "
 "but most likely will close into your striking range."
 msgstr ""
-"Quando gli eserciti si scontrano, probabilmente vorresti essere il primo ad "
-"attaccare. Perciò cerca di concludere il tuo spostamento fino al portata di "
-"attacco dell'esercito nemico. Non può attaccarti ma probabilmente si "
-"avvicinerà alla tua portata."
+"Quando gli eserciti si scontrano, vorrai essere il primo ad attaccare. "
+"Perciò cerca di concludere lo spostamento al di là della portata di attacco "
+"dell'esercito nemico. Non potrà attaccarti ma probabilmente si avvicinerà "
+"alla tua portata."
 
 # type: Content of: <book><chapter><section><section><title>
 #: ../../doc/manual/manual.en.xml:2355
@@ -3606,9 +3616,9 @@ msgid ""
 "them. For ZOC reasons, a unit with one enemy behind it and one in front is "
 "trapped."
 msgstr ""
-"Se allinei le tue truppe puoi anche impedire che il nemico ne circondi "
-"qualcuna. A causa della ZDC, un'unità con un avversario dietro e uno davanti "
-"è intrappolata."
+"Se allinei le truppe puoi anche impedire che il nemico ne circondi qualcuna. "
+"A causa della ZDC, un'unità con un avversario dietro e uno davanti è "
+"intrappolata."
 
 # type: Content of: <book><chapter><section><section><title>
 #: ../../doc/manual/manual.en.xml:2396
@@ -3625,10 +3635,10 @@ msgid ""
 "quickly recover."
 msgstr ""
 "Quando un'unità sulla linea del fronte è gravemente danneggiata puoi "
-"spostarla al sicuro dietro la tua linea difensiva. Per tenere la linea, "
+"spostarla al sicuro dietro la linea difensiva. Per tenere la linea, "
 "probabilmente dovrai sostituirla con una riserva, perciò tieni un paio di "
-"unità dietro la linea del fronte. Se hai dei guaritori, le unità ferite "
-"nella seconda linea recupereranno in fretta."
+"unità dietro la linea del fronte. Se hai dei guaritori, le unità ferite in "
+"seconda linea recupereranno in fretta."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2403
@@ -3649,9 +3659,9 @@ msgid ""
 "defense against an enemy in a hex with low terrain. That way, the enemy's "
 "counterstrikes will be less likely to do damage."
 msgstr ""
-"Cerca di disporre le tue truppe in modo che attacchino da una casella con "
-"alta difesa un avversario in una casella con un terreno basso. In questo "
-"modo, è meno probabile che la risposta del nemico faccia danno."
+"Cerca di disporre le truppe in modo che attacchino da una casella con alta "
+"difesa un avversario in una casella con un terreno basso. In questo modo, è "
+"meno probabile che la risposta del nemico faccia danno."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2412
@@ -3709,7 +3719,7 @@ msgid ""
 "exploit."
 msgstr ""
 "Colpire per primo è un vantaggio perché ti permette d scegliere quale unità "
-"affrontare. Sfrutta le debolezze del nemico: per esempio, dirigi i tuoi "
+"affrontare. Sfrutta le debolezze del nemico: per esempio, dirigi gli "
 "attacchi a distanza contro i nemici senza attacchi a distanza. Sfrutta le "
 "debolezze come la vulnerabilità dei cavallerizzi alla perforazione. Ma "
 "ricorda che al loro turno contrattaccheranno, perciò potresti avere dei "
@@ -3725,8 +3735,8 @@ msgid ""
 msgstr ""
 "Per esempio, i cavallerizzi possono molto bene fare una linea contro le "
 "reclute degli orchi e i cuccioli di troll perché hanno una certa resistenza "
-"contro le lame e gli impatti. Ma i tuoi cavallerizzi possono cadere "
-"velocemente contro gli orchi arcieri e i goblin armigeri."
+"contro le lame e gli impatti. Ma i cavallerizzi possono cadere velocemente "
+"contro gli orchi arcieri e i goblin armigeri."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2443
@@ -3890,7 +3900,7 @@ msgstr ""
 "partita un altro giorno o per proteggerti dai crolli di sistema. Non "
 "consigliamo di caricare e caricare le partite salvate a metà scenario solo "
 "perché il tuo mago bianco continua a morire. Impara invece a proteggere i "
-"tuoi maghi bianchi e a bilanciare i rischi! Questo è strategia."
+"maghi bianchi e a bilanciare i rischi! Questo è strategia."
 
 # type: Content of: <book><chapter><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2525
@@ -4069,8 +4079,8 @@ msgstr ""
 "Alcune unità sono resistenti o vulnerabili ai diversi tipi di attacco. Le "
 "unità a cavallo sono deboli contro gli attacchi che perforano. Il fuoco e "
 "gli attacchi esoterici distruggono i non-morti. Per vedere come un'unità "
-"resiste a un tipo di attacco, clicca con il tasto destro sull'unità, scegli "
-"«Descrizione dell'unità», poi «Resistenza». Ciò ti mostrerà quanto un'unità è "
+"resiste a un tipo di attacco, fai clic su di essa con il tasto destro, "
+"scegli «Descrizione dell'unità», poi «Resistenza». Ciò ti mostrerà quanto è "
 "resistente ai diversi tipi di attacco."
 
 # type: Content of: <book><chapter><section><section><simpara>
@@ -4110,8 +4120,8 @@ msgid ""
 "the turns."
 msgstr ""
 "Più velocemente finisci uno scenario, più oro riceverai; ottieni più oro "
-"vincendo in anticipo, piuttosto che conquistare tutti i villaggi della mappa "
-"per i turni rimanenti."
+"vincendo in anticipo, piuttosto che conquistando tutti i villaggi della "
+"mappa per i turni rimanenti."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2676
