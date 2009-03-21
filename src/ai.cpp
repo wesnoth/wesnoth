@@ -610,7 +610,7 @@ map_location ai_interface::move_unit_partial(location from, location to,
 
 	recorder.add_movement(steps);
 
-	game_events::fire("moveto",to);
+	game_events::fire("moveto",to,from);
 
 	if((info_.teams.front().uses_fog() || info_.teams.front().uses_shroud()) &&
 			!info_.teams.front().fogged(to)) {

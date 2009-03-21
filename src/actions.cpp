@@ -2408,7 +2408,7 @@ size_t move_unit(game_display* disp,
 		}
 	}
 
-	game_events::raise("moveto",steps.back());
+	game_events::raise("moveto",steps.back(),steps.front());
 
 	event_mutated |= game_events::pump();
 
