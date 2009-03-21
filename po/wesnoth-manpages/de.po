@@ -5,8 +5,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6\n"
 "POT-Creation-Date: 2009-03-20 00:47+0100\n"
-"PO-Revision-Date: 2009-01-14 20:37+0100\n"
-"Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
+"PO-Revision-Date: 2009-03-21 13:56+0100\n"
+"Last-Translator: Nils Kneuper <crazy-ivanovic  AT gmx  D O  T net>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1090,7 +1090,7 @@ msgstr "Beispiel: B<versions_accepted=\"*\"> akzeptiert alle Versionen."
 #: ../../doc/man/wesnothd.6:149
 #, no-wrap
 msgid "B<user_handler>"
-msgstr ""
+msgstr "B<user_handler>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:154
@@ -1101,6 +1101,13 @@ msgid ""
 "anything real you are insane). The default value is 'forum'. You must also "
 "add a B<[user_handler]> section, see below."
 msgstr ""
+"Der Name der zu verwendenden Nutzerverwaltung. Momentan sind als "
+"Nutzerverwaltungen »forum« (um via wesnothd eine Verbindung zu einer phpbb "
+"Forum Datenbank aufzubauen) und »sample« (eine Beispielimplementierung der "
+"Nutzerverwaltungsschnittstelle, diese dient nur als Beispiel und sollte "
+"nicht genutzt werden) verfügbar. Standardmäßig wird die Nutzerverwaltung "
+"»forum« verwendet. Außerdem muss ein B<[user_handler]> angelegt werden. Der "
+"Aufbau von diesem ist weiter unten beschrieben."
 
 # type: SS
 #: ../../doc/man/wesnothd.6:155
@@ -1215,34 +1222,38 @@ msgid ""
 "[user_handler] section is present in the configuration the server will run "
 "without any nick registration service."
 msgstr ""
+"B<[user_handler]> Dies Konfiguriert die Nutzerverwaltung. Die verwendbaren "
+"Schlüssel hängen davon ab, welche Nutzerverwaltung beim B<user_handler> "
+"Schlüssel festgelegt wurde. Ist kein [user_handler] Bereich vorhanden, so "
+"ist es nicht möglich registrierte Nutzernamen auf dem Server zu verwenden."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:199
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<db_host>"
-msgstr "B<host>"
+msgstr "B<db_host>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:202
 msgid "(for user_handler=forum) The hostname of the database server"
-msgstr ""
+msgstr "(für user_handler=forum) Der Hostname des Datenbank-Servers"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:202
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<db_name>"
-msgstr "B<name>"
+msgstr "B<db_name>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:205
 msgid "(for user_handler=forum) The name of the database"
-msgstr ""
+msgstr "(für user_handler=forum) Der Name der zu nutzenden Datenbank"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:205
 #, no-wrap
 msgid "B<db_user>"
-msgstr ""
+msgstr "B<db_user>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:208
@@ -1250,23 +1261,25 @@ msgid ""
 "(for user_handler=forum) The name of the user under which to log into the "
 "database"
 msgstr ""
+"(für user_handler=forum) Der Benutzername, der zur Anmeldung an der "
+"Datenbank verwendet werden soll"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:208
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<db_password>"
-msgstr "B<passwd>"
+msgstr "B<db_password>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:211
 msgid "(for user_handler=forum) This user's password"
-msgstr ""
+msgstr "(für user_handler=forum) Das zugehörige Passwort für den Nutzer"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:211
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<db_users_table>"
-msgstr "B<ban_save_file>"
+msgstr "B<db_users_table>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:214
@@ -1275,12 +1288,15 @@ msgid ""
 "saves its user data. Most likely this will be E<lt>table-prefixE<gt>_users "
 "(e.g. phpbb3_users)."
 msgstr ""
+"(für user_handler=forum) Der Name der Tabelle, in der das phpbb forum die "
+"Nutzerdaten ablegt. Dies ist höchstwahrscheinlich E<lt>table-"
+"prefixE<gt>_users (z.B. phpbb3_users)."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:214
 #, no-wrap
 msgid "B<db_extra_table>"
-msgstr ""
+msgstr "B<db_extra_table>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:218
@@ -1291,12 +1307,18 @@ msgid ""
 "user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4) "
 "NOT NULL DEFAULT 0);"
 msgstr ""
+"(für user_handler=forum) Der Name der Tabelle, in der wesnothd spezifische "
+"Nutzerdaten abgelegt werden sollen. Diese Tabelle muss manuell angelegt "
+"werden. Dies erfolgt z.B. mit einem Befehl wie diesem: CREATE TABLE "
+"E<lt>table-nameE<gt>(username VARCHAR(255) PRIMARY KEY, user_lastvisit INT "
+"UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4) NOT NULL DEFAULT "
+"0);"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:218
 #, no-wrap
 msgid "B<user_expiration>"
-msgstr ""
+msgstr "B<user_expiration>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:221
@@ -1304,6 +1326,8 @@ msgid ""
 "(for user_handler=sample) The time after which a registered nick expires (in "
 "days)."
 msgstr ""
+"(für user_handler=sample) Zeit (in Tagen) nach der ein registrierter "
+"Benutzername verfällt."
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:225
@@ -1311,65 +1335,69 @@ msgid ""
 "B<[mail]> Configures an SMTP server through which the user handler can send "
 "mail. Currently only used by the sample user handler."
 msgstr ""
+"B<[mail]> Konfiguriert einen SMTP-Server über den die Nutzerverwaltung "
+"Benachrichtigungen verschicken kann. Dies wird momentan nur von der "
+"Nutzerverwaltung »sample« verwendet."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:226
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<server>"
-msgstr "B<version>"
+msgstr "B<server>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:229
 msgid "The hostname of the mail server"
-msgstr ""
+msgstr "Der Hostname des Mail-Servers."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:229
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<username>"
-msgstr "B<name>"
+msgstr "B<username>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:232
 msgid "The user name under which to log into the mail server."
-msgstr ""
+msgstr "Der Nutzername mit welchem man sich beim Mail-Server anmeldet."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:232
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<password>"
-msgstr "B<passwd>"
+msgstr "B<password>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:235
 msgid "This user's password."
-msgstr ""
+msgstr "Das Passwort dieses Nutzers."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:235
 #, no-wrap
 msgid "B<from_address>"
-msgstr ""
+msgstr "B<from_address>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:238
 msgid "The reply-to address of you mail."
-msgstr ""
+msgstr "Die Antwortadresse für ausgehende Mails."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:238
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<mail_port>"
-msgstr "B<port>"
+msgstr "B<mail_port>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:241
 msgid "The port on which your mail server is running. Default is 25."
 msgstr ""
+"Der Port, auf welchem der Mailserver arbeitet. Standardmäßig wird Port 25 "
+"verwendet."
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:247
-#, fuzzy
 msgid ""
 "Written by David White E<lt>davidnwhite@verizon.netE<gt>.  Edited by Nils "
 "Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt>, "
@@ -1379,11 +1407,11 @@ msgid ""
 msgstr ""
 "Geschrieben von David White E<lt>davidnwhite@verizon.netE<gt>.  Bearbeitet "
 "von Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon."
-"netE<gt>und Soliton  E<lt>soliton.de@gmail.comE<gt>.  Übersetzt von Jan-"
-"Heiner Laberenz E<lt>Jan-Heiner@arcor.deE<gt>, Nils Kneuper E<lt>crazy-"
-"ivanovic@gmx.netE<gt>und Soliton E<lt>soliton.de@gmail.comE<gt>.  Diese "
-"Beschreibung stammt im Original von Cyril Bouthors E<lt>cyril@bouthors."
-"orgE<gt>."
+"netE<gt>, Soliton  E<lt>soliton.de@gmail.comE<gt> und Thomas Baumhauer "
+"E<lt>thomas.baumhauer@gmail.comE<gt>.  Übersetzt von Jan-Heiner Laberenz "
+"E<lt>Jan-Heiner@arcor.deE<gt>, Nils Kneuper E<lt>crazy-ivanovic@gmx."
+"netE<gt>und Soliton E<lt>soliton.de@gmail.comE<gt>.  Diese Beschreibung "
+"stammt im Original von Cyril Bouthors E<lt>cyril@bouthors.orgE<gt>."
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:260
