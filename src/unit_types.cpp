@@ -161,12 +161,11 @@ bool attack_type::apply_modification(const config& cfg,std::string* description)
 		config* specials = cfg_.child("specials");
 		if (specials != NULL) {
 			config new_specials;
-			for(config::all_children_iterator s = specials->ordered_begin(); s != specials->ordered_end(); ++s) {
-				const config::any_child &vp = *s;
+			foreach (const config::any_child &vp, specials->all_children_range()) {
 				std::vector<std::string>::const_iterator found_id =
-					std::find(dsl.begin(),dsl.end(),vp.second->get_attribute("id"));
+					std::find(dsl.begin(), dsl.end(), vp.cfg["id"]);
 				if (found_id == dsl.end()) {
-					new_specials.add_child(*vp.first,*vp.second);
+					new_specials.add_child(vp.key, vp.cfg);
 				}
 			}
 			cfg_.clear_children("specials");
@@ -184,9 +183,8 @@ bool attack_type::apply_modification(const config& cfg,std::string* description)
 			cfg_.add_child("specials");
 			new_specials = cfg_.child("specials");
 		}
-		for(config::all_children_iterator s = set_specials->ordered_begin(); s != set_specials->ordered_end(); ++s) {
-			const config::any_child &value = *s;
-			new_specials->add_child(*value.first,*value.second);
+		foreach (const config::any_child &value, set_specials->all_children_range()) {
+			new_specials->add_child(value.key, value.cfg);
 		}
 	}
 
