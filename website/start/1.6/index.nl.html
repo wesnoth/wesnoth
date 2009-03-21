@@ -1,0 +1,273 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="nl">
+
+<head>
+  <meta http-equiv="content-type" content="text/xhtml; charset=utf-8"/>
+  <link href="styles/intl.css" type="text/css" title="Standaard" rel="stylesheet"/>
+  <link rel="shortcut icon" type="image/png"
+        href="http://www.wesnoth.org/mw/skins/glamdrol/ico.png"/>
+  <title>Strijd om Wesnoth 1.6</title>
+</head>
+
+<body>
+
+<div id='global'>
+
+<div id='header'>
+  <div id='logo'>
+    <a href='http://www.wesnoth.org'><img alt='Wesnoth logo'
+       src='http://www.wesnoth.org/mw/skins/glamdrol/title16.jpg'/></a>
+  </div>
+</div>
+
+<div id='nav'>
+</div>
+
+<div id='main'>
+<div id='content'>
+
+<h1>Strijd om Wesnoth 1.6 Release Notes</h1>
+
+<p><em>March 22, 2009</em>. Once again it's time for that epoch-making event, a
+Wesnoth stable release. The Battle for Wesnoth team is proud to release
+version 1.6 of <em>The Battle for Wesnoth</em>, a <a
+href='http://www.gnu.org/philosophy/philosophy.html'>Free</a>, turn-based
+strategy game with a fantasy theme and roleplaying elements. The game is <a
+href='#download'>available for download</a> now for Windows, Mac OS X and
+various GNU/Linux distributions.</p>
+
+<ul>
+  <li>
+    <a href='#game'>Wat is nieuw in Wesnoth 1.6</a>
+    <ul>
+      <li>
+        <a href='#players'>Voor spelers</a>
+        <ul>
+          <li><a href='#campaigns'>Veldtochten</a></li>
+          <li><a href='#multiplayer'>Multiplayer</a></li>
+          <li><a href='#general'>Algemeen</a></li>
+        </ul>
+      </li>
+      <li><a href='#campdev'>Voor veldtocht ontwikkelaars</a></li>
+    </ul>
+  </li>
+  <li><a href='#download'>Download</a></li>
+  <li><a href='#more'>Meer informatie</a></li>
+</ul>
+
+<br/>
+
+<h2 id='game'>Wat is nieuw in Wesnoth 1.6</h2>
+
+<p>We have many new features for your enjoyment this time around, including a
+new mainline campaign, two new multiplayer scenarios and another refresh of
+the user interface.</p>
+
+<h3 id='players'>Voor spelers</h3>
+
+<h4 id='campaigns'>Veldtochten</h4>
+
+<div class='thumb tright'>
+  <div><a href='images/start-2-full.jpg'><img src='images/start-2.jpg' alt='Wesnoth schermafbeelding'/></a></div>
+</div>
+
+<p>There is a new mainline campaign, <em>The Legend of Wesmere</em>, with new
+gameplay features including (in one scenario) the ability to use the game AI
+as your commander for an allied side, setting its objectives as you
+like. Search for this hidden feature by right-clicking on your allied
+commanders during scenario 7.  This campaign was imported from the <a
+href="http://www.wesnoth.org/forum/viewtopic.php?f=8&amp;t=21413">Wesnoth-UMC-Dev
+project</a>, where it spent a few months being adapted for mainline.</p>
+
+<p>Bijna alle meegeleverde veldtochten gebruiken nu een andere methode om goud
+over te dragen van scenario naar scenario: de hoeveelheid goud die
+overblijft is nu 40% in plaats van 80%, maar het wordt toegevoegd aan de
+minimum starthoeveelheid in plaats van deze te vervangen als het hoger is.</p>
+
+<p>Many mainline campaigns have improved storyline prose and new cutscenes or
+epilogs.  Several have improved and redrawn campaign maps. All now have
+dates in the Wesnoth history timeline, and almost all have journey
+animations on their campaign maps.  The history and geography of Wesnoth
+have been developed in more depth and detail: More campaigns now include
+references to events in the overall history, adding depth and richness to
+the narration.</p>
+
+<h4 id='multiplayer'>Multiplayer</h4>
+
+<p>Er kan nu op de multiplayer server worden ingelogd met de gebruikersnaam en
+wachtwoord van een Wesnoth forum account.  Registratie is echter niet nodig
+en ongeregistreerde gebruikersnamen kunnen nog gewoon gebruikt worden.</p>
+
+<div class='thumb tright'>
+  <div><a href='images/start-1-full.jpg'><img src='images/start-1.jpg' alt='Wesnoth schermafbeelding'/></a></div>
+</div>
+
+<p>De multiplayer lobby is verbeterd om het makkelijker managen van de
+vriend-en negeerlijsten mogelijk te maken door middel van dubbelklikken op
+de spelerlijst.</p>
+
+<p>Op te merken veranderingen van het standaard tijdperk:</p>
+<ul>
+<li>Kosten van de Kobold Speervechter verhoogd van 8 naar 9.</li>
+<li>Beweging van de Kobold Speervechter lijn verhoogd van 4 naar 5.</li>
+<li>Korte-afstands aanval van de Kobold Speervechter verhoogd van 4-3 naar 6-3.</li>
+<li>De kenmerken zwak, traag en dom zijn toegevoegd en de kobolds krijgen elk
+een van deze in plaats van twee standaardkenmerken.</li>
+<li>De precisieschutter vaardigheid is toegevoegd aan de afstands-aanval van de
+Orkdoder.</li>
+<li>Prijs van het Wandelend Lijk verhoogd van 7 naar 8.</li>
+<li>Prijs van de Boogschutter verlaagd van 15 naar 14.</li>
+<li>Korte-afstands aanval van de Boogschutter verlaagd van 6-2 naar 4-2.</li>
+</ul>
+
+<h4 id='general'>Algemeen</h4>
+
+<p>De graphics van het spel zijn verbeterd met een hele nieuwe serie van
+eenheidportretten. Vele eenheden hebben nu volledige animaties en
+teamkleuring.</p>
+
+<div class='thumb tright'>
+  <div><a href='images/start-4-full.jpg'><img src='images/start-4.jpg' alt='Wesnoth schermafbeelding'/></a></div>
+</div>
+
+<p>Er is een nieuw basisterreintype, kustrif, dat de meeste land-gebaseerde
+eenheden een licht verbeterde verdediging geeft dan normaal ondiep water en
+de meeste water-gebaseerde eenheden, zoals meermannen en nagas, 70%
+verdediging.  Bossen hebben meer gevarieerde graphics gekregen voor
+loofbossen in de lente/zomer, herfst en winter.  Er zijn nieuwe
+dorp-graphics voor menselijke steden en primitieve tribale gebieden.</p>
+
+<p>Onze componisten hebben vijf nieuwe originele achtergrondnummers toegevoegd:
+<em>Heroes' Rite</em>, <em>Siege of Laurelmor</em>, <em>Suspense</em>,
+<em>The Dangerous Symphony</em> en <em>The Deep Path</em>. Ook speelt het
+spel nu muziek af voor overwinnings- en nederlaaggebeurtenissen.</p>
+
+<p>De spelinterface is verder gevorderd, vooral in het meer dramatisch
+gebruikmaken van portretten.  Eenheidoproep dialogen laten nu meer bruikbare
+informatie zien over de kenmerken van je veteranen.  Add-ons laten nu hun
+categorie zijn als je ze bekijkt op de downloadserver.</p>
+
+<p>Nieuwe spelvertalingen zijn er voor Arabisch, Friulisch, Kroatisch, Lets,
+Macedonisch en Marathi.  Bestaande vertalingen zijn extensief vernieuwd en
+verbeterd.</p>
+
+<h3 id='campdev'>For Content Developers</h3>
+
+<p>De kaartbewerker is sterk verbeterd (met dank aan de Google Summer of
+Code).  Deze kan nu gestart worden van binnen het spel.  Je kan terreincodes
+en kaartcoordinaten op de kaart projecteren terwijl je deze bewerkt. De
+bewerker kan nu meerdere kaarten tegelijk openen en je kan
+schermafbeeldingen van volledige kaarten maken.  Er is ook een nieuwe
+interactieve bewerkinstrument voor geanimeerde veldtochtsporen.</p>
+
+<div class='thumb tright'>
+  <div><a href='images/start-3-full.jpg'><img src='images/start-3.jpg' alt='Wesnoth schermafbeelding'/></a></div>
+</div>
+
+<p>Er zijn enkele nieuwe kerneenheden overal beschikbaar: De Trolsjamaan,
+Koninklijke Strijder en de Duistervleermuis.</p>
+
+<p>Minder zichbare veranderingen behelzen verbeteringen van de spel AI,
+inclusief een nieuwe formule-gebaseerde AI die meer flexibiliteit in het
+instellen van doelen toestaat en een verbeterd padvind-algoritme.  Zoals
+gebruikelijk is WML krachtiger geworden met vele nieuwe tags en attributen
+om de auteurs van veldtochten meer mogelijkheden te geven.  De GUI engine is
+onderhevig aan sterke verandering; dit laat de hele GUI geconfigureerd
+worden vanuit WML.  De eerste stappen zijn gemaakt, maar het project is nog
+niet afgerond en zal worden voortgezet in de 1.7 ontwikkelingscyclus.</p>
+
+<p>De ondersteuning voor het schrijven van Python AIs is verwijderd omdat dit
+feature een ernstig beveiligingslek opende. Wij hopen echter een nog
+krachtiger AI-scriping feature te bouwen, mogelijk door middel van een
+andere en veiligere uitbreidingstaal, in 1.7.</p>
+
+<div class='visualClear'></div>
+
+<h2 id='download'>Download</h2>
+
+<p>Strijd om Wesnoth is beschikbaar gesteld onder de <a
+href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU General Public
+License</a> (GPL). Broncode is beschikbaar op <a
+href='http://www.wesnoth.org'>wesnoth.org</a> waar eveneens instructies
+staan om <a href='http://wesnoth.org/wiki/CompilingWesnoth'>uit de broncode
+te compileren</a> op verschillende besturingssystemen. Klaar voor gebruik
+bestanden zijn eveneens beschikbaar voor de meest populaire
+besturingssystemen, zoals Linux, Windows en Mac OS X.</p>
+
+
+<!--
+TODO: add the correct links once the files are available
+-->
+<ul>
+<li>
+  <strong> <a
+href='http://downloads.sourceforge.net/wesnoth/wesnoth-1.6a.tar.bz2?download'>Broncode</a>
+</strong>
+</li>
+<li>
+  <strong> <a
+href='http://downloads.sourceforge.net/wesnoth/wesnoth-1.6a-win32.exe?download'>Wesnoth
+voor MS Windows</a> </strong>
+</li>
+<li>
+  <strong> <a
+href='http://downloads.sourceforge.net/wesnoth/Wesnoth_1.6a.dmg?download'>Wesnoth
+voor Mac OS X</a> </strong>
+</li>
+</ul>
+
+<p>Je kunt nu recente informatie over downloads vinden op de <a
+href='http://www.wesnoth.org/wiki/Download'>downloads pagina</a>.</p>
+
+<p>Als je eerdere versies van het spel gedownload hebt, kun je wellicht de <a
+href='http://www.wesnoth.org/wiki/Download_Xdeltas'>xdelta</a> bestanden
+gebruiken.</p>
+
+
+<h2 id='more'>Meer informatie</h2>
+
+<ul>
+  <li>
+    <a
+href='http://svn.gna.org/viewcvs/*checkout*/wesnoth/tags/1.6/changelog'>Volledige
+veranderingenlijst</a> (Engelstalig en erg lang)
+  </li>
+  <li><a
+href='http://svn.gna.org/viewcvs/*checkout*/wesnoth/tags/1.6/doc/manual/manual.en.html'>Gebruikershandleiding</a></li>
+  <li><a href='http://www.wesnoth.org'>Wesnoth officiële website</a> (Engelstalig)</li>
+
+
+
+  <!--
+    The announcements from 1.0 and 1.2 were lost in a server crash, commenting it out from the release notes...
+    By now they are restored, but won't add them in anymore...
+-->
+<!--  <li><a href='http://www.wesnoth.org/start/1.0'>Wesnoth 1.0 Release Notes</a></li> -->
+<!--  <li><a href='http://www.wesnoth.org/start/1.2'>Wesnoth 1.2 Release Notes</a></li> -->
+<li><a href='http://www.wesnoth.org/start/1.4'>Wesnoth 1.4 Release Notes</a></li>
+</ul>
+
+<br/>
+<hr/>
+
+<div id="languages">
+<p>Deze pagina is eveneens beschikbaar in de volgende talen:</p>
+<ul>
+
+<!--LANGS--><li><a href='index.ca.html'>Català</a></li><li><a href='index.cs.html'>Čeština</a></li><li><a href='index.de.html'>Deutsch</a></li><li><a href='index.en.html'>English</a></li><li><a href='index.es.html'>Español</a></li><li><a href='index.hu.html'>Magyar</a></li><li><a href='index.lt.html'>Lietuvių</a></li><li><a href='index.nb_NO.html'>Norsk bokmål</a></li><li><a href='index.nl.html'>Nederlands</a></li><li><a href='index.pl.html'>Polski</a></li><li><a href='index.ru.html'>Русский</a></li><li><a href='index.tr.html'>Türkçe</a></li><li><a href='index.zh_CN.html'>中文</a></li>
+<!--LANGS-->
+</ul>
+</div>
+
+</div> 
+
+<!-- content -->
+<div class="visualClear"></div>
+
+</div> 
+<!-- main -->
+</div> 
+
+<!-- global -->
+</body>
+</html>
