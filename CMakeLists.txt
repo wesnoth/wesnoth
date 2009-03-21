@@ -69,6 +69,11 @@ option(ENABLE_NLS "Enable building of tranlations" ON)
 option(ENABLE_POOL_ALLOC "Enable custom pool malloc" OFF)
 option(ENABLE_LOW_MEM "Reduce memory usage by removing extra functionality" OFF)
 
+#misc options
+if(NOT MSVC)
+	# Pot updates don't work at Windows so no reason to even try
+    option(ENABLE_POT_UPDATE_TARGET "Enables the tools to update the pot files and manuals. This target has extra dependencies." OFF)
+endif(NOT MSVC)
 
 set(BINARY_SUFFIX "" CACHE STRING "Suffix behind all binaries")
 set(BINARY_PREFIX "" CACHE STRING "Prefix in front of all binaries")
