@@ -274,8 +274,9 @@ namespace game_config {
 
 		// use static preproc_define::read_pair(config*) to make a object
 		// and pass that object config_cache_transaction::insert_to_active method
-	   	std::for_each(cfg.ordered_begin(), cfg.ordered_end(),
-				add_define_from_file());
+		foreach (const config::any_child &value, cfg.all_children_range()) {
+			preproc_define::read_pair(&value.cfg);
+		}
 	}
 
 	void config_cache::read_defines_queue()
