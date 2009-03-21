@@ -464,6 +464,9 @@ private:
 		for(str_it = str.begin(); str_it != str.end() - (key.size()-1); ++str_it)
 		{
 			key_it = key.begin();
+                        if((key_it) == key.end()) {
+                                return variant(1);
+                        }
 			tmp_it = str_it;
 
 			while( *tmp_it == *key_it)
@@ -653,6 +656,9 @@ private:
 		const variant items = args()[0]->evaluate(variables);
 		variant_iterator it = items.get_iterator();
 		it = items.begin();
+                if(it == items.end()) {
+                        return variant();
+                }
 		return *it;
 	}
 };
