@@ -228,12 +228,10 @@ const config vconfig::get_parsed_config() const
 		res[i.first] = expand(i.first);
 	}
 
-	for(config::all_children_iterator child = cfg_->ordered_begin();
-		child != cfg_->ordered_end(); ++child)
+	foreach (const config::any_child &child, cfg_->all_children_range())
 	{
-		const std::string &child_key = *(*child).first;
-		if(child_key == "insert_tag") {
-			vconfig insert_cfg(child->second);
+		if (child.key == "insert_tag") {
+			vconfig insert_cfg(&child.cfg);
 			const t_string& name = insert_cfg["name"];
 			const t_string& vname = insert_cfg["variable"];
 			if(!vconfig_recursion.insert(vname).second) {
@@ -266,7 +264,7 @@ const config vconfig::get_parsed_config() const
 				}
 			}
 		} else {
-			res.add_child(child_key, vconfig((*child).second).get_parsed_config());
+			res.add_child(child.key, vconfig(&child.cfg).get_parsed_config());
 		}
 	}
 	return res;
@@ -276,14 +274,12 @@ vconfig::child_list vconfig::get_children(const std::string& key) const
 {
 	vconfig::child_list res;
 
-	for(config::all_children_iterator child = cfg_->ordered_begin();
-		child != cfg_->ordered_end(); ++child)
+	foreach (const config::any_child &child, cfg_->all_children_range())
 	{
-		const std::string &child_key = *(*child).first;
-		if(child_key == key) {
-			res.push_back(vconfig(child->second, cache_key_));
-		} else if(child_key == "insert_tag") {
-			vconfig insert_cfg(child->second);
+		if (child.key == key) {
+			res.push_back(vconfig(&child.cfg, cache_key_));
+		} else if (child.key == "insert_tag") {
+			vconfig insert_cfg(&child.cfg);
 			if(insert_cfg["name"] == key) {
 				variable_info vinfo(insert_cfg["variable"], false, variable_info::TYPE_CONTAINER);
 				if(!vinfo.is_valid) {
