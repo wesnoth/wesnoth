@@ -154,6 +154,13 @@ void unit_map::insert(std::pair<map_location,unit> *p)
 	unit_id_type unit_id = p->second.underlying_id();
 	umap::iterator iter = map_.find(unit_id);
 
+	if (!p->first.valid()) {
+ 		ERR_NG << "Trying to add " << p->second.name() <<
+ 	    	" - " << p->second.id() << " at an invalid location; Discarding.\n";
+ 		delete p;
+ 	   	return;
+ 	}
+
 	if (iter == map_.end()) {
 		map_[unit_id] = node(true, p);
 	} else if(!is_valid(iter)) {
@@ -245,7 +252,7 @@ void unit_map::clear()
 }
 
 void unit_map::clean_invalid() {
-	if (num_invalid_ < lmap_.size() || num_iters_ > 0) 
+	if (num_iters_ > 0 || num_invalid_ < lmap_.size()) 
 		return;
 
 	size_t num_cleaned = 0;
