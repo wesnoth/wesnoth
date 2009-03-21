@@ -94,7 +94,7 @@ unit_map::const_unit_iterator unit_map::find(const size_t &id) const {
 	return const_unit_iterator(iter, this);
 }
 
-bool match_unit_id(std::string id, unit_map::umap::value_type val) {
+static bool match_unit_id(std::string id, unit_map::umap::value_type val) {
 	return val.second.valid() && val.second.get_unit().id() == id;
 }
 
