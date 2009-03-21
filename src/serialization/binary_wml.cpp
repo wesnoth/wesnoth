@@ -141,14 +141,11 @@ static void write_compressed_internal(std::ostream &out, config const &cfg, comp
 		}
 	}
 
-	for (config::all_children_iterator j = cfg.ordered_begin(), j_end = cfg.ordered_end(); j != j_end; ++j) {
-		const config::any_child &item = *j;
-		std::string const &name = *item.first;
-		config const &cfg2 = *item.second;
-
+	foreach (const config::any_child &item, cfg.all_children_range())
+	{
 		out.put(compress_open_element);
-		compress_emit_word(out, name, schema);
-		write_compressed_internal(out, cfg2, schema, level + 1);
+		compress_emit_word(out, item.key, schema);
+		write_compressed_internal(out, item.cfg, schema, level + 1);
 		out.put(compress_close_element);
 	}
 }
