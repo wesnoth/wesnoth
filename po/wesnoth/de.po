@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-03-20 00:45+0100\n"
-"PO-Revision-Date: 2009-03-01 13:47+0100\n"
-"Last-Translator: Nils Kneuper <crazy-ivanovic  AT gmx  D O  T net>\n"
+"PO-Revision-Date: 2009-03-21 09:59+0100\n"
+"Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -7678,7 +7678,7 @@ msgstr "Der Spielstand existiert bereits. Möchtet Ihr ihn überschreiben?"
 
 #: src/dialogs.cpp:301 src/menu_events.cpp:606 src/playcampaign.cpp:418
 msgid "Name: "
-msgstr "Name:"
+msgstr "Name: "
 
 #: src/dialogs.cpp:302
 msgid "Overwrite?"
@@ -8922,13 +8922,12 @@ msgstr ""
 "werden."
 
 #: src/multiplayer.cpp:360
-#, fuzzy
 msgid "The nick '$nick' is not registered on this server."
-msgstr "Der Benutzername »$nick« ist auf diesem Server registriert."
+msgstr "Der Benutzername »$nick« ist auf diesem Server nicht registriert."
 
 #: src/multiplayer.cpp:361
 msgid " This server disallows unregistered nicks."
-msgstr ""
+msgstr "Der Server erlaubt keine unregistrierten Benutzernamen."
 
 #: src/multiplayer.cpp:363 src/multiplayer.cpp:365
 msgid "The nick '$nick' is registered on this server."
@@ -9369,7 +9368,7 @@ msgstr "Ungültige Farbe"
 
 #: src/multiplayer_ui.cpp:418
 msgid "Selected user: "
-msgstr "Benutzer auswählen:"
+msgstr "Benutzer auswählen: "
 
 #: src/multiplayer_wait.cpp:134
 msgid "Leader: "
@@ -9401,7 +9400,7 @@ msgstr "Wählt Eure Fraktion:"
 
 #: src/multiplayer_wait.cpp:303
 msgid "Starting position: "
-msgstr "Startposition:"
+msgstr "Startposition: "
 
 #: src/network.cpp:103
 msgid "invalid network handle"
