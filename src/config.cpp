@@ -614,42 +614,37 @@ void config::apply_diff(const config& diff)
 		}
 	}
 
-	const child_list& child_changes = diff.get_children("change_child");
-	child_list::const_iterator i;
-	for(i = child_changes.begin(); i != child_changes.end(); ++i) {
-		const size_t index = lexical_cast<size_t>((**i)["index"].str());
-		for(all_children_iterator j = (*i)->ordered_begin(); j != (*i)->ordered_end(); ++j) {
-			const any_child &item = *j;
-
-			if(item.first->empty()) {
+	foreach (const config &i, diff.child_range("change_child"))
+	{
+		const size_t index = lexical_cast<size_t>(i["index"].str());
+		foreach (const any_child &item, i.all_children_range())
+		{
+			if (item.key.empty()) {
 				continue;
 			}
 
-			const child_map::iterator itor = children.find(*item.first);
+			const child_map::iterator itor = children.find(item.key);
 			if(itor == children.end() || index >= itor->second.size()) {
-				throw error("error in diff: could not find element '" + *item.first + "'");
+				throw error("error in diff: could not find element '" + item.key + "'");
 			}
 
-			itor->second[index]->apply_diff(*item.second);
+			itor->second[index]->apply_diff(item.cfg);
 		}
 	}
 
-	const child_list& child_inserts = diff.get_children("insert_child");
-	for(i = child_inserts.begin(); i != child_inserts.end(); ++i) {
-		const size_t index = lexical_cast<size_t>((**i)["index"].str());
-		for(all_children_iterator j = (*i)->ordered_begin(); j != (*i)->ordered_end(); ++j) {
-			const any_child &item = *j;
-			add_child_at(*item.first,*item.second,index);
+	foreach (const config &i, diff.child_range("insert_child"))
+	{
+		const size_t index = lexical_cast<size_t>(i["index"].str());
+		foreach (const any_child &item, i.all_children_range()) {
+			add_child_at(item.key, item.cfg, index);
 		}
 	}
 
-	const child_list& child_deletes = diff.get_children("delete_child");
-	for(i = child_deletes.begin(); i != child_deletes.end(); ++i) {
-		const size_t index = lexical_cast<size_t>((**i)["index"].str());
-		for(all_children_iterator j = (*i)->ordered_begin(); j != (*i)->ordered_end(); ++j) {
-			const any_child &item = *j;
-
-			remove_child(*item.first,index);
+	foreach (const config &i, diff.child_range("delete_child"))
+	{
+		const size_t index = lexical_cast<size_t>(i["index"].str());
+		foreach (const any_child &item, i.all_children_range()) {
+			remove_child(item.key, index);
 		}
 	}
 }
