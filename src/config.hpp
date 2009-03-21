@@ -207,12 +207,9 @@ public:
 
 	struct any_child
 	{
-		const std::string *first;
-		const config *second;
 		const std::string &key;
 		const config &cfg;
-		any_child(const std::string *k, const config *c):
-			first(k), second(c), key(*k), cfg(*c) {}
+		any_child(const std::string *k, const config *c): key(*k), cfg(*c) {}
 	};
 
 	struct all_children_iterator
