@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2009-03-17 15:01+0100\n"
-"PO-Revision-Date: 2008-03-06 12:57+0100\n"
-"Last-Translator: Foppe Benedictus <foppe.benedictus@gmail.com>\n"
+"PO-Revision-Date: 2009-03-21 17:10+0100\n"
+"Last-Translator: Alexander van Gessel <AI0867@gmail.com>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -28,9 +28,8 @@ msgstr "Standaard"
 
 # type: Content of: <html><head><title>
 #: template.html:9
-#, fuzzy
 msgid "Battle for Wesnoth 1.6"
-msgstr "Strijd om Wesnoth 1.4"
+msgstr "Strijd om Wesnoth 1.6"
 
 # type: Content of: <html><body><div><div><div><ul><li>
 #: template.html:18
@@ -50,9 +49,8 @@ msgstr "</a>"
 
 # type: Content of: <html><body><div><div><div><h1>
 #: template.html:29
-#, fuzzy
 msgid "Battle for Wesnoth 1.6 Release Notes"
-msgstr "Strijd om Wesnoth 1.4 Release Notes"
+msgstr "Strijd om Wesnoth 1.6 Release Notes"
 
 # type: Content of: <html><body><div><div><div><p>
 #: template.html:31
@@ -66,7 +64,7 @@ msgid ""
 "href='#download'>available for download</a> now for Windows, Mac OS X and "
 "various GNU/Linux distributions."
 msgstr ""
-"<em>8 Maart 2008</em>. Het Strijd om Wesnoth team is trots versie 1.4 aan te "
+"<em>22 Maart 2009</em>. Het Strijd om Wesnoth team is trots versie 1.6 aan te "
 "mogen kondigen van <em>De Strijd om Wesnoth</em> een <a href='http://www.gnu."
 "org/philosophy/philosophy.html'>vrij</a> beurt-gebaseerd strategie spel met "
 "een fantasy thema en rollenspel elementen. Het spel is nu <a "
@@ -75,9 +73,8 @@ msgstr ""
 
 # type: Content of: <html><body><div><div><div><ul><li>
 #: template.html:41
-#, fuzzy
 msgid "<a href='#game'>What's New in Wesnoth 1.6</a>"
-msgstr "<a href='#game'>Wat is nieuw in Wesnoth 1.4</a>"
+msgstr "<a href='#game'>Wat is nieuw in Wesnoth 1.6</a>"
 
 # type: Content of: <html><body><div><div><div><ul><li><ul><li>
 #: template.html:44
@@ -86,21 +83,18 @@ msgstr "<a href='#players'>Voor spelers</a>"
 
 # type: Content of: <html><body><div><div><div><ul><li><ul><li>
 #: template.html:46
-#, fuzzy
 msgid "<a href='#campaigns'>Campaigns</a>"
-msgstr "<a href='#campdev'>Voor veldtocht ontwikkelaars</a>"
+msgstr "<a href='#campaigns'>Veldtochten</a>"
 
 # type: Content of: <html><body><div><div><div><ul><li><ul><li>
 #: template.html:47
-#, fuzzy
 msgid "<a href='#multiplayer'>Multiplayer</a>"
-msgstr "<a href='#players'>Voor spelers</a>"
+msgstr "<a href='#multiplayer'>Multiplayer</a>"
 
 # type: Content of: <html><body><div><div><div><ul><li>
 #: template.html:48
-#, fuzzy
 msgid "<a href='#general'>General</a>"
-msgstr "<a href='#download'>Download</a>"
+msgstr "<a href='#general'>Algemeen</a>"
 
 # type: Content of: <html><body><div><div><div><ul><li><ul><li>
 #: template.html:51
@@ -124,17 +118,20 @@ msgstr "<br/>"
 
 # type: Content of: <html><body><div><div><div><h2>
 #: template.html:60
-#, fuzzy
 msgid "What's New in Wesnoth 1.6"
-msgstr "Wat is nieuw in Wesnoth 1.4"
+msgstr "Wat is nieuw in Wesnoth 1.6"
 
 # type: Content of: <html><body><div><div><div><p>
 #: template.html:62
+#, fuzzy
 msgid ""
 "We have many new features for your enjoyment this time around, including a "
 "new mainline campaign, two new multiplayer scenarios and another refresh of "
 "the user interface."
 msgstr ""
+"We hebben vele nieuwe features, inclusief een"
+"nieuwe meegeleverde veldtocht, twee nieuwe mutliplayer scenarios en een "
+"verbeterde gebruikersinterface."
 
 # type: Content of: <html><body><div><div><div><h3>
 #: template.html:66
@@ -144,7 +141,7 @@ msgstr "Voor spelers"
 # type: Content of: <html><body><div><div><div><h4>
 #: template.html:68
 msgid "Campaigns"
-msgstr ""
+msgstr "Veldtochten"
 
 # type: Content of: <html><body><div><div><div><div><div><a>
 #: template.html:71
@@ -158,6 +155,7 @@ msgstr "Wesnoth schermafbeelding"
 
 # type: Content of: <html><body><div><div><div><p>
 #: template.html:74
+#, fuzzy
 msgid ""
 "There is a new mainline campaign, <em>The Legend of Wesmere</em>, with new "
 "gameplay features including (in one scenario) the ability to use the game AI "
@@ -167,6 +165,8 @@ msgid ""
 "wesnoth.org/forum/viewtopic.php?f=8&amp;t=21413\">Wesnoth-UMC-Dev project</"
 "a>, where it spent a few months being adapted for mainline."
 msgstr ""
+"Er is een nieuwe meegeleverde veldtocht, <em>De Legende van Wesmere</em>, "
+"met nieuwe features ."
 
 # type: Content of: <html><body><div><div><div><p>
 #: template.html:84
@@ -176,6 +176,10 @@ msgid ""
 "instead of 80%, but it is added to the minimum starting gold of the next "
 "scenario instead of only replacing it if higher."
 msgstr ""
+"Bijna alle meegeleverde veldtochten gebruiken nu een andere methode om "
+"goud over te dragen van scenario naar scenario: de hoeveelheid goud die "
+"overblijft is nu 40% in plaats van 80%, maar het wordt toegevoegd aan de "
+"minimum starthoeveelheid in plaats van deze te vervangen als het hoger is."
 
 # type: Content of: <html><body><div><div><div><p>
 #: template.html:89
@@ -191,9 +195,8 @@ msgstr ""
 
 # type: Content of: <html><body><div><div><div><dl><dt>
 #: template.html:97
-#, fuzzy
 msgid "Multiplayer"
-msgstr "Multiplayer veldtochten"
+msgstr "Multiplayer"
 
 # type: Content of: <html><body><div><div><div><p>
 #: template.html:99
@@ -202,6 +205,9 @@ msgid ""
 "password of a Wesnoth forum account.  However, registration is not required "
 "and one can continue to use an unregistered username."
 msgstr ""
+"Er kan nu op de multiplayer server worden ingelogd met de gebruikersnaam "
+"en wachtwoord van een Wesnoth forum account.  Registratie is echter niet "
+"nodig en ongeregistreerde gebruikersnamen kunnen nog gewoon gebruikt worden."
 
 # type: Content of: <html><body><div><div><div><div><div><a>
 #: template.html:105
@@ -214,26 +220,30 @@ msgid ""
 "The multiplayer lobby has been improved to allow easier management of the "
 "friends and ignores list by double-clicking on the player list."
 msgstr ""
+"De multiplayer lobby is verbeterd om het makkelijker managen van de vriend-"
+"en negeerlijsten mogelijk te maken door middel van dubbelklikken op de "
+"spelerlijst."
 
 # type: Content of: <html><body><div><div><div><p>
 #: template.html:111
 msgid "Notable changes to default era balancing include:"
-msgstr ""
+msgstr "Op te merken veranderingen van het standaard tijdperk:"
 
 # type: Content of: <html><body><div><div><div><ul><li>
 #: template.html:113
 msgid "Increased the cost of the Goblin Spearman from 8 to 9."
-msgstr ""
+msgstr "Kosten van de Kobold Speervechter verhoogd van 8 naar 9."
 
 # type: Content of: <html><body><div><div><div><ul><li>
 #: template.html:114
 msgid "Increased the movement of the Goblin Spearman line from 4 to 5."
-msgstr ""
+msgstr "Beweging van de Kobold Speervechter lijn verhoogd van 4 naar 5."
 
 # type: Content of: <html><body><div><div><div><ul><li>
 #: template.html:115
 msgid "Increased the melee attack of the Goblin Spearman from 4-3 to 6-3."
 msgstr ""
+"Korte-afstands aanval van de Kobold Speervechter verhoogd van 4-3 naar 6-3."
 
 # type: Content of: <html><body><div><div><div><ul><li>
 #: template.html:116
@@ -241,32 +251,36 @@ msgid ""
 "Added the traits weak, slow and dim and made goblins each receive one of "
 "them instead of two standard traits."
 msgstr ""
+"De kenmerken zwak, traag en dom zijn toegevoegd en de kobolds krijgen elk "
+"een van deze in plaats van twee standaardkenmerken."
 
 # type: Content of: <html><body><div><div><div><ul><li>
 #: template.html:118
 msgid ""
 "Added the marksman special to the ranged attack of the Orcish Assassin line."
 msgstr ""
+"De precisieschutter vaardigheid is toegevoegd aan de afstands-aanval van de "
+"Orkdoder."
 
 # type: Content of: <html><body><div><div><div><ul><li>
 #: template.html:120
 msgid "Increased the cost of the Walking Corpse from 7 to 8."
-msgstr ""
+msgstr "Prijs van het Wandelend Lijk verhoogd van 7 naar 8."
 
 # type: Content of: <html><body><div><div><div><ul><li>
 #: template.html:121
 msgid "Decreased the cost of the Bowman from 15 to 14."
-msgstr ""
+msgstr "Prijs van de Boogschutter verlaagd van 15 naar 14."
 
 # type: Content of: <html><body><div><div><div><ul><li>
 #: template.html:122
 msgid "Decreased the melee attack of the Bowman from 6-2 to 4-2."
-msgstr ""
+msgstr "Korte-afstands aanval van de Boogschutter verlaagd van 6-2 naar 4-2."
 
 # type: Content of: <html><body><div><div><div><h4>
 #: template.html:125
 msgid "General"
-msgstr ""
+msgstr "Algemeen"
 
 # type: Content of: <html><body><div><div><div><p>
 #: template.html:127
@@ -274,6 +288,9 @@ msgid ""
 "The game graphics have been improved with a whole new range of unit "
 "portraits.  Many more units have full animations and team coloring."
 msgstr ""
+"De graphics van het spel zijn verbeterd met een hele nieuwe serie van "
+"eenheidportretten. Vele eenheden hebben nu volledige animaties en "
+"teamkleuring."
 
 # type: Content of: <html><body><div><div><div><div><div><a>
 #: template.html:131
@@ -290,6 +307,12 @@ msgid ""
 "terrains.  There are new village graphics for human cities and primitive "
 "tribal areas."
 msgstr ""
+"Er is een nieuw basisterreintype, kustrif, dat de meeste land-gebaseerde "
+"eenheden een licht verbeterde verdediging geeft dan normaal ondiep water "
+"en de meeste water-gebaseerde eenheden, zoals meermannen en nagas, 70% "
+"verdediging.  Bossen hebben meer gevarieerde graphics gekregen voor "
+"loofbossen in de lente/zomer, herfst en winter.  Er zijn nieuwe dorp-graphics"
+" voor menselijke steden en primitieve tribale gebieden."
 
 # type: Content of: <html><body><div><div><div><p>
 #: template.html:141
@@ -299,6 +322,10 @@ msgid ""
 "Symphony</em> and <em>The Deep Path</em>. Also, the game now plays special "
 "music clips for victory and defeat events."
 msgstr ""
+"Onze componisten hebben vijf nieuwe originele achtergrondnummers toegevoegd: "
+"<em>Heroes' Rite</em>, <em>Siege of Laurelmor</em>, <em>Suspense</em>, "
+"<em>The Dangerous Symphony</em> en <em>The Deep Path</em>. Ook speelt het "
+"spel nu muziek af voor overwinnings- en nederlaaggebeurtenissen."
 
 # type: Content of: <html><body><div><div><div><p>
 #: template.html:146
@@ -308,6 +335,10 @@ msgid ""
 "information about your veterans' traits.  Add-ons now display their category "
 "when you browse them on the download server."
 msgstr ""
+"De spelinterface is verder gevorderd, vooral in het meer dramatisch "
+"gebruikmaken van portretten.  Eenheidoproep dialogen laten nu meer bruikbare "
+"informatie zien over de kenmerken van je veteranen.  Add-ons laten nu hun "
+"categorie zijn als je ze bekijkt op de downloadserver."
 
 # type: Content of: <html><body><div><div><div><p>
 #: template.html:151
@@ -316,6 +347,9 @@ msgid ""
 "Macedonian and Marathi.  Existing translations have been extensively updated "
 "and revised."
 msgstr ""
+"Nieuwe spelvertalingen zijn er voor Arabisch, Friulisch, Kroatisch, Lets, "
+"Macedonisch en Marathi.  Bestaande vertalingen zijn extensief vernieuwd en "
+"verbeterd."
 
 # type: Content of: <html><body><div><div><div><h3>
 #: template.html:155
@@ -332,6 +366,12 @@ msgid ""
 "multiple maps in a session, and you can take screenshots of full maps.  "
 "There's also a new interactive editing tool for animated journey tracks."
 msgstr ""
+"De kaartbewerker is sterk verbeterd (met dank aan de Google Summer of Code). "
+" Deze kan nu gestart worden van binnen het spel.  Je kan terreincodes en "
+"kaartcoordinaten op de kaart projecteren terwijl je deze bewerkt. De "
+"bewerker kan nu meerdere kaarten tegelijk openen en je kan "
+"schermafbeeldingen van volledige kaarten maken.  Er is ook een nieuwe "
+"interactieve bewerkinstrument voor geanimeerde veldtochtsporen."
 
 # type: Content of: <html><body><div><div><div><div><div><a>
 #: template.html:165
@@ -344,6 +384,8 @@ msgid ""
 "There are some new core units available everywhere: Troll Shaman, Royal "
 "Warrior and Dread Bat."
 msgstr ""
+"Er zijn enkele nieuwe kerneenheden overal beschikbaar: De Trolsjamaan, "
+"Koninklijke Strijder en de Duistervleermuis."
 
 # type: Content of: <html><body><div><div><div><p>
 #: template.html:171
@@ -357,6 +399,14 @@ msgid ""
 "but the project is not finished yet and will continue in the 1.7 development "
 "cycle."
 msgstr ""
+"Minder zichbare veranderingen behelzen verbeteringen van de spel AI, "
+"inclusief een nieuwe formule-gebaseerde AI die meer flexibiliteit in het "
+"instellen van doelen toestaat en een verbeterd padvind-algoritme.  Zoals "
+"gebruikelijk is WML krachtiger geworden met vele nieuwe tags en attributen "
+"om de auteurs van veldtochten meer mogelijkheden te geven.  De GUI engine is "
+"onderhevig aan sterke verandering; dit laat de hele GUI geconfigureerd "
+"worden vanuit WML.  De eerste stappen zijn gemaakt, maar het project is nog "
+"niet afgerond en zal worden voortgezet in de 1.7 ontwikkelingscyclus."
 
 # type: Content of: <html><body><div><div><div><p>
 #: template.html:180
@@ -366,6 +416,10 @@ msgid ""
 "powerful AI-scripting feature, possibly using a different and safer "
 "extension language, in 1.7."
 msgstr ""
+"De ondersteuning voor het schrijven van Python AIs is verwijderd omdat "
+"dit feature een ernstig beveiligingslek opende. Wij hopen echter een nog "
+"krachtiger AI-scriping feature te bouwen, mogelijk door middel van een "
+"andere en veiligere uitbreidingstaal, in 1.7."
 
 # type: Content of: <html><body><div><div><div><h2>
 #: template.html:187
@@ -374,7 +428,6 @@ msgstr "Download"
 
 # type: Content of: <html><body><div><div><div><p>
 #: template.html:189
-#, fuzzy
 msgid ""
 "Battle for Wesnoth is made available under the <a href='http://www.gnu.org/"
 "licenses/gpl-2.0.html'>GNU General Public License</a> (GPL). Source code is "
@@ -385,7 +438,7 @@ msgid ""
 "systems, including Linux and Windows and Mac OS X."
 msgstr ""
 "Strijd om Wesnoth is beschikbaar gesteld onder de <a href='http://www.gnu."
-"org/copyleft/gpl.html'>GNU General Public License</a> (GPL). Broncode is "
+"org/licenses/gpl-2.0.html'>GNU General Public License</a> (GPL). Broncode is "
 "beschikbaar op <a href='http://www.wesnoth.org'>wesnoth.org</a> waar "
 "eveneens instructies staan om <a href='http://wesnoth.org/wiki/"
 "CompilingWesnoth'>uit de broncode te compileren</a> op verschillende "
@@ -394,33 +447,30 @@ msgstr ""
 
 # type: Content of: <html><body><div><div><div><ul><li>
 #: template.html:203
-#, fuzzy
 msgid ""
 "<strong> <a href='http://downloads.sourceforge.net/wesnoth/wesnoth-1.6a.tar."
 "bz2?download'>Source code</a> </strong>"
 msgstr ""
-"<strong> <a href='http://downloads.sourceforge.net/wesnoth/wesnoth-1.4.tar."
-"gz?download'>Broncode</a> </strong>"
+"<strong> <a href='http://downloads.sourceforge.net/wesnoth/wesnoth-1.6a.tar."
+"bz2?download'>Broncode</a> </strong>"
 
 # type: Content of: <html><body><div><div><div><ul><li>
 #: template.html:208
-#, fuzzy
 msgid ""
 "<strong> <a href='http://downloads.sourceforge.net/wesnoth/wesnoth-1.6a-"
 "win32.exe?download'>Wesnoth for MS Windows</a> </strong>"
 msgstr ""
-"<strong> <a href='http://downloads.sourceforge.net/wesnoth/wesnoth-1.4-"
+"<strong> <a href='http://downloads.sourceforge.net/wesnoth/wesnoth-1.6a-"
 "win32.exe?download'>Wesnoth voor MS Windows</a> </strong>"
 
 # type: Content of: <html><body><div><div><div><ul><li>
 #: template.html:213
-#, fuzzy
 msgid ""
 "<strong> <a href='http://downloads.sourceforge.net/wesnoth/"
 "Wesnoth_1.6a.dmg?download'>Wesnoth for Mac OS X</a> </strong>"
 msgstr ""
 "<strong> <a href='http://downloads.sourceforge.net/wesnoth/"
-"Wesnoth_MacOSX_1.4.dmg?download'>Wesnoth voor Mac OS X</a> </strong>"
+"Wesnoth_1.6a.dmg?download'>Wesnoth voor Mac OS X</a> </strong>"
 
 # type: Content of: <html><body><div><div><div><p>
 #: template.html:219
@@ -449,22 +499,20 @@ msgstr "Meer informatie"
 
 # type: Content of: <html><body><div><div><div><ul><li>
 #: template.html:231
-#, fuzzy
 msgid ""
 "<a href='http://svn.gna.org/viewcvs/*checkout*/wesnoth/tags/1.6/"
 "changelog'>Full Changelog</a> (English, very long)"
 msgstr ""
-"<a href='http://svn.gna.org/viewcvs/*checkout*/wesnoth/tags/1.4/"
+"<a href='http://svn.gna.org/viewcvs/*checkout*/wesnoth/tags/1.6/"
 "changelog'>Volledige veranderingenlijst</a> (Engelstalig en erg lang)"
 
 # type: Content of: <html><body><div><div><div><ul><li>
 #: template.html:234
-#, fuzzy
 msgid ""
 "<a href='http://svn.gna.org/viewcvs/*checkout*/wesnoth/tags/1.6/doc/manual/"
 "manual.en.html'>User's Manual</a>"
 msgstr ""
-"<a href='http://svn.gna.org/viewcvs/*checkout*/wesnoth/tags/1.4/doc/manual/"
+"<a href='http://svn.gna.org/viewcvs/*checkout*/wesnoth/tags/1.6/doc/manual/"
 "manual.en.html'>Gebruikershandleiding</a>"
 
 # type: Content of: <html><body><div><div><div><ul><li>
@@ -475,11 +523,10 @@ msgstr ""
 
 # type: Content of: <html><body><div><div><div><ul><li>
 #: template.html:242
-#, fuzzy
 msgid ""
 "<a href='http://www.wesnoth.org/start/1.4'>Wesnoth 1.4 Release Notes</a>"
 msgstr ""
-"<a href='http://www.wesnoth.org/start/1.0'>Wesnoth 1.0 Release Notes</a>"
+"<a href='http://www.wesnoth.org/start/1.4'>Wesnoth 1.4 Release Notes</a>"
 
 # type: Content of: <html><body><div><div><div><div><p>
 #: template.html:249
