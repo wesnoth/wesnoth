@@ -63,9 +63,8 @@ config& config::operator=(const config& cfg)
 
 void config::append(const config& cfg)
 {
-	for(all_children_iterator i = cfg.ordered_begin(); i != cfg.ordered_end(); ++i) {
-		const any_child &value = *i;
-		add_child(*value.first,*value.second);
+	foreach (const any_child &value, cfg.all_children_range()) {
+		add_child(value.key, value.cfg);
 	}
 
 	for(string_map::const_iterator j = cfg.values.begin(); j != cfg.values.end(); ++j) {
@@ -235,9 +234,8 @@ void config::recursive_clear_value(const std::string& key)
 {
 	values.erase(key);
 
-	for (all_children_iterator it = ordered_begin(); it != ordered_end(); ++it)
-	{
-		const_cast<config*>(it->second)->recursive_clear_value(key);
+	foreach (const any_child &value, all_children_range()) {
+		const_cast<config *>(&value.cfg)->recursive_clear_value(key);
 	}
 }
 
