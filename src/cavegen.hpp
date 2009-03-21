@@ -65,7 +65,6 @@ private:
 	void build_chamber(map_location loc, std::set<map_location>& locs, size_t size, size_t jagged);
 
 	void place_chamber(const chamber& c);
-	void place_items(const chamber& c, config::all_children_iterator i1, config::all_children_iterator i2);
 
 	void place_passage(const passage& p);
 

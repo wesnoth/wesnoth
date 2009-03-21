@@ -222,21 +222,12 @@ void cave_map_generator::place_chamber(const chamber& c)
 		set_terrain(*i,clear_);
 	}
 
-	if(c.items != NULL) {
-		place_items(c,c.items->ordered_begin(),c.items->ordered_end());
-	}
-}
-
-void cave_map_generator::place_items(const chamber& c, config::all_children_iterator i1, config::all_children_iterator i2)
-{
-	if(c.locs.empty()) {
-		return;
-	}
+	if (c.items == NULL || c.locs.empty()) return;
 
 	size_t index = 0;
-	while(i1 != i2) {
-		const std::string& key = *(*i1).first;
-		config cfg = *(*i1).second;
+	foreach (const config::any_child &it, c.items->all_children_range())
+	{
+		config cfg = it.cfg;
 		config* const filter = cfg.child("filter");
 		config* const object = cfg.child("object");
 		config* object_filter = NULL;
@@ -275,11 +266,11 @@ void cave_map_generator::place_items(const chamber& c, config::all_children_iter
 		}
 
 		// If this is a side, place a castle for the side
-		if(key == "side" && !utils::string_bool(cfg["no_castle"])) {
+		if (it.key == "side" && !utils::string_bool(cfg["no_castle"])) {
 			place_castle(cfg["side"],*loc);
 		}
 
-		res_.add_child(key,cfg);
+		res_.add_child(it.key, cfg);
 
 		if(!loc_var.empty()) {
 			config &temp = res_.add_child("event");
@@ -291,8 +282,6 @@ void cave_map_generator::place_items(const chamber& c, config::all_children_iter
 			ycfg["name"] = loc_var + "_y";
 			ycfg["value"] = ybuf;
 		}
-
-		++i1;
 	}
 }
 
