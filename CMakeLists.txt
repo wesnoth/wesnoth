@@ -25,8 +25,6 @@ find_package( PkgConfig REQUIRED )
 # src/gettext.cpp since it includes libintl.h)
 find_package( Gettext REQUIRED )
 find_package( FriBiDi )
-find_package( PythonInterp 2.4 )
-find_package( PythonCustom )
 find_package( X11 )
 
 #needed to get some SDL defines in... (as of rev31694 -D_GNU_SOURCE=1 is required!)
