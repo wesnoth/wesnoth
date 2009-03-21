@@ -61,45 +61,43 @@ config unit_animation::prepare_animation(const config &cfg,const std::string ani
 		// take one anim out of the unexpanded list
 		const config analyzed_anim = unexpanded_anims.back();
 		unexpanded_anims.pop_back();
-		config::all_children_iterator child = analyzed_anim.ordered_begin();
 		config expanded_anim;
 		expanded_anim.merge_attributes(analyzed_anim);
-		while(child != analyzed_anim.ordered_end()) {
-			if(*(*child).first == "if") {
+		config::all_children_itors children = analyzed_anim.all_children_range();
+		for (config::all_children_iterator child = children.first; child != children.second; )
+		{
+			if (child->key == "if") {
 				std::vector<config> to_add;
 				config expanded_chunk = expanded_anim;
 				// add the content of if
-				expanded_chunk.append(*(*child).second);
+				expanded_chunk.append(child->cfg);
 				to_add.push_back(expanded_chunk);
-				child++;
-				if(child != analyzed_anim.ordered_end() && *(*child).first == "else") {
-					while(child != analyzed_anim.ordered_end() && *(*child).first == "else") {
+				++child;
+				if (child != children.second && child->key == "else") {
+					while (child != children.second && child->key == "else") {
 						expanded_chunk = expanded_anim;
 						// add the content of else to the stored one
-						expanded_chunk.append(*(*child).second);
+						expanded_chunk.append(child->cfg);
 						to_add.push_back(expanded_chunk);
 						// store the partially expanded string for later analyzis
-						child++;
+						++child;
 					}
-
 				} else {
 					// add an anim with the if part removed
 					to_add.push_back(expanded_anim);
 				}
 				// copy the end of the anim "as is" other if will be treated later
-				while(child != analyzed_anim.ordered_end()) {
-					for(std::vector<config>::iterator itor= to_add.begin(); itor != to_add.end();itor++) {
-						itor->add_child(*(*child).first,*(*child).second);
-
+				for (; child != children.second; ++child) {
+					foreach (config &c, to_add) {
+						c.add_child(child->key, child->cfg);
 					}
-					child++;
 				}
 				unexpanded_anims.insert(unexpanded_anims.end(),to_add.begin(),to_add.end());
 			} else {
 				// add the current node
-				expanded_anim.add_child(*(*child).first,*(*child).second);
-				child++;
-				if(child == analyzed_anim.ordered_end())
+				expanded_anim.add_child(child->key, child->cfg);
+				++child;
+				if (child == children.second)
 					expanded_animations.add_child(animation_tag,expanded_anim);
 			}
 		}
