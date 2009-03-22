@@ -116,8 +116,6 @@ namespace game_config {
 		preproc_map& make_copy_map();
 		void add_defines_map_diff(preproc_map&);
 
-		scoped_preproc_define_ptr create_path_preproc_define(const path_define_map::value_type&);
-
 		// Protected to let test code access
 		protected:
 		config_cache();

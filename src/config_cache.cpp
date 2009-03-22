@@ -27,7 +27,6 @@
 #include "serialization/binary_or_text.hpp"
 #include "serialization/parser.hpp"
 
-#include <boost/bind.hpp>
 #include <boost/algorithm/string/replace.hpp>
 
 #define ERR_CACHE LOG_STREAM(err, cache)
@@ -118,14 +117,10 @@ namespace game_config {
 		const bool gzip = true;
 		config_writer writer(*stream, gzip, game_config::cache_compression_level);
 
-		// write all defines to stream;
-		// call foreach define is: second.write(config_writer,first);
-		std::for_each(defines_map.begin(), defines_map.end(),
-			   	boost::bind(&preproc_define::write,
-					boost::bind(&preproc_map::value_type::second,_1),
-					boost::ref(writer),
-					boost::bind(&preproc_map::value_type::first,_1)));
-
+		// write all defines to stream
+		foreach (const preproc_map::value_type &define, defines_map) {
+			define.second.write(writer, define.first);
+		}
 	}
 
 	void config_cache::read_file(const std::string& path, config& cfg)
@@ -283,16 +278,9 @@ namespace game_config {
 	void config_cache::read_defines_queue()
 	{
 		const config_cache_transaction::filenames& files = config_cache_transaction::instance().get_define_files();
-		std::for_each(files.begin(), files.end(),
-				boost::bind(&config_cache::read_defines_file,
-					this,
-					_1));
-	}
-
-	scoped_preproc_define_ptr config_cache::create_path_preproc_define(const path_define_map::value_type& define)
-	{
-		scoped_preproc_define_ptr ret(new scoped_preproc_define(define.second));
-		return ret;
+		foreach (const std::string &path, files) {
+			read_defines_file(path);
+		}
 	}
 
 	void config_cache::load_configs(const std::string& path, config& cfg)
@@ -303,14 +291,11 @@ namespace game_config {
 		{
 			// activate path defines
 			scoped_preproc_define_list defines;
-			std::for_each(path_defines_.lower_bound(path),path_defines_.upper_bound(path),
-					boost::bind(&scoped_preproc_define_list::push_back,
-						boost::ref(defines),
-						boost::bind(&config_cache::create_path_preproc_define,
-							this,
-							_1)
-						)
-					);
+			foreach (const path_define_map::value_type &define, path_defines_.equal_range(path)) {
+				scoped_preproc_define_ptr ptr(new scoped_preproc_define(define.second));
+				defines.push_back(ptr);
+			}
+
 			if (use_cache_)
 			{
 				read_cache(path, cfg);
@@ -451,7 +436,10 @@ namespace game_config {
 					active_map_.end(),
 					std::insert_iterator<preproc_map>(temp,temp.begin()),
 					&compare_define);
-			std::for_each(temp.begin(), temp.end(),boost::bind(&config_cache_transaction::insert_to_active,this, _1));
+
+			foreach (const preproc_map::value_type &def, temp) {
+				insert_to_active(def);
+			}
 
 			temp.swap(new_map);
 		} else if (get_state() == LOCKED) {
