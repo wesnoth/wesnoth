@@ -107,7 +107,7 @@ public:
 	/**
 	 * Return the selection set.
 	 */
-	const std::set<map_location> selection() const { return selection_; }
+	const std::set<map_location>& selection() const { return selection_; }
 
 	/**
 	 * Clear the selection
