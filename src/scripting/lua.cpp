@@ -17,6 +17,7 @@ extern "C" {
 #include <cstring>
 #include <iostream>
 
+#include "filesystem.hpp"
 #include "foreach.hpp"
 #include "gamestatus.hpp"
 #include "scripting/lua.hpp"
@@ -96,7 +97,7 @@ static void table_of_wml_config(lua_State *L, config const &cfg)
  * Converts a Lua table to a config object.
  * The source table should be at the top of the stack on entry. It is
  * still at the top on exit.
- * @a tstring_meta absolute stack position of t_string's metatable, or 0 if none.
+ * @param tstring_meta absolute stack position of t_string's metatable, or 0 if none.
  * @return false if some attributes had not the proper type.
  * @note If the table has holes in the integer keys or floating-point keys,
  *       some keys will be ignored and the error will go undetected.
@@ -462,6 +463,33 @@ static int lua_set_variable(lua_State *L)
 	return 0;
 }
 
+/**
+ * Loads and executes a Lua file.
+ * - Arg 1: string containing the file name.
+ * - Ret *: values returned by executing the file body.
+ */
+static int lua_dofile(lua_State *L)
+{
+	char const *m = luaL_checkstring(L, 1);
+	if (false) {
+		error_call_destructors_1:
+		return luaL_argerror(L, 1, "file not found");
+		error_call_destructors_2:
+		return lua_error(L);
+		continue_call_destructor:
+		lua_call(L, 0, 1);
+		return 1;
+	}
+	std::string p = get_wml_location(m);
+	if (p.empty())
+		goto error_call_destructors_1;
+
+	if (luaL_loadfile(L, p.c_str()))
+		goto error_call_destructors_2;
+
+	goto continue_call_destructor;
+}
+
 static int lua_message(lua_State *L)
 {
 	char const *m = luaL_checkstring(L, 1);
@@ -497,6 +525,7 @@ LuaKernel::LuaKernel()
 		{ "get_units",    &lua_get_units    },
 		{ "get_variable", &lua_get_variable },
 		{ "message",      &lua_message      },
+		{ "dofile",       &lua_dofile       },
 		{ "set_variable", &lua_set_variable },
 		{ "textdomain",   &lua_textdomain   },
 		{ NULL, NULL }
@@ -531,6 +560,12 @@ LuaKernel::LuaKernel()
 	lua_pushstring(L, "Hands off! (tstring metatable)");
 	lua_setfield(L, -2, "__metatable");
 	lua_settable(L, LUA_REGISTRYINDEX);
+
+	// Delete dofile and loadfile.
+	lua_pushnil(L);
+	lua_setglobal(L, "dofile");
+	lua_pushnil(L);
+	lua_setglobal(L, "loadfile");
 
 	// Push the error handler, then close debug.
 	lua_settop(L, 0);
