@@ -639,7 +639,9 @@ void LuaKernel::execute(char const *prog, int nArgs, int nRets)
 	int res = luaL_loadstring(L, prog);
 	if (res)
 	{
-		std::cerr << "Syntax error while loading Lua script.\n";
+		std::cerr << "Failure while loading Lua script: "
+		          << lua_tostring(L, -1) << '\n';
+		lua_pop(L, 1);
 		return;
 	}
 
