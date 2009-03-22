@@ -468,35 +468,39 @@ surface locator::load_image_sub_file() const
 						}
 					}
 					else {
-						//
-						// try to recolor source palette to target palette (palette switch)
-						//
-						const std::vector<std::string> remap_params = utils::split(field,'=');
-						if(remap_params.size() > 1) {
-							std::map<Uint32, Uint32> tmp_map;
-							try {
-								std::vector<Uint32> const& old_palette =
-									game_config::tc_info(remap_params[0]);
-								std::vector<Uint32> const& new_palette =
-									game_config::tc_info(remap_params[1]);
+						// Deprecated 1.6 palette switch syntax
+						if(field.find('=') != std::string::npos) {
+							lg::wml_error << "the ~RC() image function cannot be used for palette switch (A=B) in 1.7.x; use ~PAL(A>B) instead\n";
+						}
+					}
+				}
+				// Palette switch (PAL)
+				else if("PAL" == function) {
+					const std::vector<std::string> remap_params = utils::split(field,'>');
+					if(remap_params.size() > 1) {
+						std::map<Uint32, Uint32> tmp_map;
+						try {
+							std::vector<Uint32> const& old_palette =
+								game_config::tc_info(remap_params[0]);
+							std::vector<Uint32> const& new_palette =
+								game_config::tc_info(remap_params[1]);
 
-								for(size_t i = 0; i < old_palette.size() && i < new_palette.size(); ++i) {
-									tmp_map[old_palette[i]] = new_palette[i];
-								}
+							for(size_t i = 0; i < old_palette.size() && i < new_palette.size(); ++i) {
+								tmp_map[old_palette[i]] = new_palette[i];
 							}
-							catch(config::error& e) {
-								ERR_DP
-									<< "caught config::error while processing palette switch RC: "
-									<< e.message
-									<< '\n';
-								ERR_DP
-									<< "bailing out from RC\n";
-								tmp_map.clear();
-							}
+						}
+						catch(config::error& e) {
+							ERR_DP
+								<< "caught config::error while processing PAL function: "
+								<< e.message
+								<< '\n';
+							ERR_DP
+								<< "bailing out from PAL\n";
+							tmp_map.clear();
+						}
 
-							foreach(const rc_entry_type& rc_entry, tmp_map) {
-								rc.map()[rc_entry.first] = rc_entry.second;
-							}
+						foreach(const rc_entry_type& rc_entry, tmp_map) {
+							rc.map()[rc_entry.first] = rc_entry.second;
 						}
 					}
 				}
