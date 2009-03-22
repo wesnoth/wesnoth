@@ -212,6 +212,9 @@ class editor_controller : public controller_base,
 		/** Cut the selection from the current map to the clipboard */
 		void cut_selection();
 
+		/** Export the WML-compatible list of selected tiles to the system clipboard */
+		void export_selection_coords();
+
 		/** Fill the selection with the foreground terrain */
 		void fill_selection();
 
