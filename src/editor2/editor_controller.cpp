@@ -699,9 +699,9 @@ void editor_controller::refresh_after_action(bool drag_part)
 		return;
 	} else {
 		if (get_map_context().needs_terrain_rebuild()) {
-			if ((auto_update_transitions_ == TransitionUpdateMode::on) 
-			|| (auto_update_transitions_ == TransitionUpdateMode::partial) 
-			&& (!drag_part || get_map_context().everything_changed())) {
+			if ((auto_update_transitions_ == TransitionUpdateMode::on)
+			|| ((auto_update_transitions_ == TransitionUpdateMode::partial) 
+			&& (!drag_part || get_map_context().everything_changed()))) {
 				gui().rebuild_all();
 				get_map_context().set_needs_terrain_rebuild(false);
 				gui().invalidate_all();
