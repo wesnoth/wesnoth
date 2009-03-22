@@ -45,6 +45,7 @@ struct event_handler_data
 };
 
 /* Dummy pointer for getting unique keys for Lua's registry. */
+static char const executeKey = 0;
 static char const gettextKey = 0;
 static char const getunitKey = 0;
 static char const handlerKey = 0;
@@ -581,13 +582,16 @@ LuaKernel::LuaKernel()
 	lua_pushnil(L);
 	lua_setglobal(L, "loadfile");
 
-	// Push the error handler, then close debug.
-	lua_settop(L, 0);
+	// Store the error handler, then close debug.
+	lua_pushlightuserdata(L, (void *)&executeKey);
 	lua_getglobal(L, "debug");
 	lua_getfield(L, -1, "traceback");
 	lua_remove(L, -2);
+	lua_settable(L, LUA_REGISTRYINDEX);
 	lua_pushnil(L);
 	lua_setglobal(L, "debug");
+
+	lua_settop(L, 0);
 }
 
 LuaKernel::~LuaKernel()
@@ -649,13 +653,19 @@ void LuaKernel::execute(char const *prog, int nArgs, int nRets)
 {
 	lua_State *L = mState;
 
+	// Load the error handler before the function arguments.
+	lua_pushlightuserdata(L, (void *)&executeKey);
+	lua_gettable(L, LUA_REGISTRYINDEX);
+	if (nArgs)
+		lua_insert(L, -1 - nArgs);
+
 	// Compile script into a variadic function.
 	int res = luaL_loadstring(L, prog);
 	if (res)
 	{
 		std::cerr << "Failure while loading Lua script: "
 		          << lua_tostring(L, -1) << '\n';
-		lua_pop(L, 1);
+		lua_pop(L, 2);
 		return;
 	}
 
@@ -663,12 +673,14 @@ void LuaKernel::execute(char const *prog, int nArgs, int nRets)
 	if (nArgs)
 		lua_insert(L, -1 - nArgs);
 
-	res = lua_pcall(L, nArgs, nRets, 1);
+	res = lua_pcall(L, nArgs, nRets, -2 - nArgs);
 	if (res)
 	{
 		std::cerr << "Failure while running Lua script: "
 		          << lua_tostring(L, -1) << '\n';
-		lua_pop(L, 1);
+		lua_pop(L, 2);
 		return;
 	}
+
+	lua_remove(L, -1 - nRets);
 }
