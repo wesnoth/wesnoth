@@ -359,6 +359,9 @@ void play_controller::search(){
 
 
 void play_controller::fire_prestart(bool execute){
+	// Run initialization scripts, even if loading from a snapshot.
+	game_events::fire("preload");
+
 	// pre-start events must be executed before any GUI operation,
 	// as those may cause the display to be refreshed.
 	if (execute){
