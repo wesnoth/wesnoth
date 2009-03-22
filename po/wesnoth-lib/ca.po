@@ -4,14 +4,14 @@
 # This file is distributed under the same license as the Battle for Wesnoth
 # package.
 #
-# Jordà Polo <jorda@ettin.org>, 2004, 2005, 2006, 2008.
+# Jordà Polo <jorda@ettin.org>, 2004, 2005, 2006, 2008, 2009.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 1.5.5+svn\n"
+"Project-Id-Version: 1.6.0+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-03-20 00:45+0100\n"
-"PO-Revision-Date: 2008-10-25 11:31+0200\n"
+"PO-Revision-Date: 2009-03-22 09:40+0100\n"
 "Last-Translator: Jordà Polo <jorda@ettin.org>\n"
 "Language-Team: Catalan <wesnoth-ca@lists.ettin.org>\n"
 "MIME-Version: 1.0\n"
@@ -256,7 +256,7 @@ msgstr "Pantà"
 #. [terrain]: id=lit
 #: data/core/terrain.cfg:835
 msgid "Lit"
-msgstr ""
+msgstr "Llum"
 
 #. [terrain]: id=cave
 #: data/core/terrain.cfg:845
@@ -424,7 +424,6 @@ msgstr "Suprimeix complements"
 msgid "Connect"
 msgstr "Connecta"
 
-#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
 #: data/gui/default/window/addon_connect.cfg:216
 #: data/gui/default/window/editor_generate_map.cfg:111
@@ -496,37 +495,33 @@ msgstr "Canvia la mida del mapa"
 
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:46
-#, fuzzy
 msgid "New width:"
 msgstr "Amplada nova:"
 
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:70
-#, fuzzy
 msgid "Old width:"
 msgstr "Amplada antiga:"
 
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:95
-#, fuzzy
 msgid "New height:"
 msgstr "Alçada nova:"
 
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:119
-#, fuzzy
 msgid "Old height:"
 msgstr "Alçada antiga:"
 
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:147
 msgid "Expand / shrink direction"
-msgstr ""
+msgstr "Direcció del canvi de mida"
 
 #. [toggle_button]: id=copy_edge_terrain
 #: data/gui/default/window/editor_resize_map.cfg:242
 msgid "Copy edge terrain"
-msgstr ""
+msgstr "Còpia el terreny de la vora"
 
 #. [button]: id=ok
 #: data/gui/default/window/editor_resize_map.cfg:264
@@ -534,7 +529,6 @@ msgstr ""
 msgid "Resize map"
 msgstr "Canvia la mida del mapa"
 
-#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:38 src/hotkeys.cpp:105
 msgid "Editor Settings"
@@ -554,12 +548,12 @@ msgstr "Següent"
 #. [toggle_button]: id=custom_tod_toggle
 #: data/gui/default/window/editor_settings.cfg:83
 msgid "Custom lighting setting"
-msgstr ""
+msgstr "Il·luminació personalitzada"
 
 #. [toggle_button]: id=custom_tod_auto_refresh
 #: data/gui/default/window/editor_settings.cfg:93
 msgid "Auto-update map view"
-msgstr ""
+msgstr "Actualitza automàticament el mapa"
 
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:120
@@ -579,9 +573,8 @@ msgstr "Blau:"
 #. [toggle_button]: id=use_mdi
 #: data/gui/default/window/editor_settings.cfg:208
 msgid "Allow more than one map to be open at the same time (MDI)"
-msgstr ""
+msgstr "Permet més d'un mapa obert alhora (MDI)"
 
-#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #: data/gui/default/window/editor_settings.cfg:230
 #: data/gui/default/window/mp_login.cfg:234
@@ -592,7 +585,6 @@ msgstr ""
 msgid "OK"
 msgstr "D'acord"
 
-#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=apply
 #: data/gui/default/window/editor_settings.cfg:250
 #: src/game_preferences_display.cpp:190
@@ -625,40 +617,35 @@ msgstr ""
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:31
 msgid "Messaging"
-msgstr ""
+msgstr "Missatges"
 
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:61
 msgid "Message:"
-msgstr ""
+msgstr "Missatge:"
 
 #. [button]: id=ok
 #: data/gui/default/window/mp_cmd_wrapper.cfg:93
-#, fuzzy
 msgid "Send a private message"
-msgstr "Neteja els missatges"
+msgstr "Envia un missatge privat"
 
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:133
-#, fuzzy
 msgid "Friends/Ignored List"
-msgstr "Llista d'amics"
+msgstr "Llista d'amics/ignorats"
 
-#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=add_friend
 #: data/gui/default/window/mp_cmd_wrapper.cfg:162
 #: src/game_preferences_display.cpp:167
 msgid "Add As Friend"
 msgstr "Afegeix com amic"
 
-#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=add_ignore
 #: data/gui/default/window/mp_cmd_wrapper.cfg:177
 #: src/game_preferences_display.cpp:168
 msgid "Add As Ignore"
 msgstr "Afegeix com ignorat"
 
-#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=remove
 #: data/gui/default/window/mp_cmd_wrapper.cfg:192
 #: src/game_preferences_display.cpp:169
@@ -668,34 +655,32 @@ msgstr "Suprimeix"
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:233
 msgid "Moderating"
-msgstr ""
+msgstr "Moderació"
 
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:263
 msgid "Reason:"
-msgstr ""
+msgstr "Motiu:"
 
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:315
-#, fuzzy
 msgid "Time:"
-msgstr "Tema"
+msgstr "Temps:"
 
 #. [button]: id=status
 #: data/gui/default/window/mp_cmd_wrapper.cfg:366
-#, fuzzy
 msgid "Status"
-msgstr "Taula d'estat"
+msgstr "Estat"
 
 #. [button]: id=kick
 #: data/gui/default/window/mp_cmd_wrapper.cfg:381
 msgid "Kick"
-msgstr ""
+msgstr "Expulsa"
 
 #. [button]: id=ban
 #: data/gui/default/window/mp_cmd_wrapper.cfg:396
 msgid "Ban"
-msgstr ""
+msgstr "Bandeja"
 
 #. [label]
 #: data/gui/default/window/mp_connect.cfg:50
@@ -797,9 +782,8 @@ msgstr ""
 
 #. [label]
 #: data/gui/default/window/mp_login.cfg:31
-#, fuzzy
 msgid "Login"
-msgstr "Nom d'usuari:"
+msgstr "Inici de sessió"
 
 #. [label]
 #: data/gui/default/window/mp_login.cfg:81
@@ -809,21 +793,19 @@ msgstr "Nom d'usuari:"
 
 #. [label]
 #: data/gui/default/window/mp_login.cfg:134
-#, fuzzy
 msgid "Password:"
-msgstr "Estableix la contrasenya"
+msgstr "Contrasenya:"
 
-#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=remember_password
 #: data/gui/default/window/mp_login.cfg:190
 #: src/game_preferences_display.cpp:163
 msgid "Save password to preferences (clear text)"
-msgstr ""
+msgstr "Desa la contrasenya a la configuració (text net)"
 
 #. [button]: id=password_reminder
 #: data/gui/default/window/mp_login.cfg:248
 msgid "Password Reminder"
-msgstr ""
+msgstr "Recordatori de la contrasenya"
 
 #. [label]
 #. [grid]
@@ -865,9 +847,8 @@ msgstr "Serveix una partida en xarxa"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:163
-#, fuzzy
 msgid "Host a game using dedicated server 'wesnothd'"
-msgstr "Serveix una partida utilitzar un servidor dedicat «wesnothd»"
+msgstr "Serveix una partida utilitzant un servidor «wesnothd» dedicat"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:173
@@ -920,7 +901,6 @@ msgstr "Complements"
 msgid "Editor"
 msgstr "Editor"
 
-#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:84
 #: src/game_preferences_display.cpp:50 src/hotkeys.cpp:76
@@ -932,7 +912,6 @@ msgstr "Preferències"
 msgid "Credits"
 msgstr "Crèdits"
 
-#. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:86 src/hotkeys.cpp:651
 #: src/hotkeys.cpp:938
@@ -1038,7 +1017,7 @@ msgstr "Iconitza la llista de jugadors"
 
 #: src/game_preferences_display.cpp:164
 msgid "Set path to wesnothd"
-msgstr ""
+msgstr "Estableix el camí al wesnothd"
 
 #: src/game_preferences_display.cpp:165
 msgid "Friends List"
@@ -1490,7 +1469,7 @@ msgstr "No s'ha definit la llista."
 
 #: src/gui/widgets/window_builder.cpp:775
 msgid "A 'list_definition' should contain one row."
-msgstr ""
+msgstr "Una «list_definition» hauria de contenir almenys una fila."
 
 #: src/gui/widgets/window_builder.cpp:794
 msgid ""
@@ -1499,7 +1478,7 @@ msgstr ""
 
 #: src/gui/widgets/window_builder.cpp:1063
 msgid "The number of value_labels and values don't match."
-msgstr ""
+msgstr "El nombre de «value_labels» i «values» no coincideix."
 
 #: src/hotkeys.cpp:45
 msgid "Next Unit"
@@ -1694,13 +1673,12 @@ msgid "Quit to Desktop"
 msgstr "Surt"
 
 #: src/hotkeys.cpp:103
-#, fuzzy
 msgid "Close Map"
-msgstr "Tanca"
+msgstr "Tanca el mapa"
 
 #: src/hotkeys.cpp:104
 msgid "Switch Map"
-msgstr ""
+msgstr "Canvia de mapa"
 
 #: src/hotkeys.cpp:106
 msgid "Partial Undo"
@@ -1800,11 +1778,11 @@ msgstr ""
 
 #: src/hotkeys.cpp:141
 msgid "Rotate Selection"
-msgstr ""
+msgstr "Gira la selecció"
 
 #: src/hotkeys.cpp:143
 msgid "Flip Selection"
-msgstr ""
+msgstr "Inverteix la selecció"
 
 #: src/hotkeys.cpp:145
 msgid "Fill Selection"
@@ -1820,7 +1798,7 @@ msgstr ""
 
 #: src/hotkeys.cpp:153
 msgid "Rotate Map"
-msgstr ""
+msgstr "Gira el mapa"
 
 #: src/hotkeys.cpp:155
 msgid "Generate Map"
@@ -2063,12 +2041,11 @@ msgstr ""
 "terreny afectat és: "
 
 #: src/wml_exception.cpp:52
-#, fuzzy
 msgid ""
 "An error due to possibly invalid WML occurred\n"
 "The error message is :"
 msgstr ""
-"S'ha produït un error degut a que el WML no és vàlid.\n"
+"S'ha produït un error degut a que el WML possiblement no sigui vàlid.\n"
 "El missatge d'error és: "
 
 #: src/wml_exception.cpp:54
@@ -2095,10 +2072,6 @@ msgstr "A la secció «[$section|]», la clau obligatòria «$key|» no està de
 
 #~ msgid "Change the brightness of the display"
 #~ msgstr "Canvia la brillantor de la pantalla"
-
-#, fuzzy
-#~ msgid "Change username"
-#~ msgstr "Introduïu el nom d'un usuari"
 
 #~ msgid "No scrollbar defined."
 #~ msgstr "No s'ha definit la barra de desplaçament."

@@ -12,10 +12,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 1.5.8+svn\n"
+"Project-Id-Version: 1.6.0+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-03-20 00:45+0100\n"
-"PO-Revision-Date: 2009-03-15 18:56+0100\n"
+"PO-Revision-Date: 2009-03-21 20:49+0100\n"
 "Last-Translator: Jordà Polo <jorda@ettin.org>\n"
 "Language-Team: Catalan <wesnoth-ca@lists.ettin.org>\n"
 "MIME-Version: 1.0\n"
@@ -41,7 +41,7 @@ msgstr "Desplaçament amb el botó del mig"
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:70
 msgid "Keep scrolling when mouse leaves window"
-msgstr ""
+msgstr "Manté el desplaçament en deixar la finestra"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:77
@@ -70,7 +70,6 @@ msgstr "Mostra els combats"
 msgid "Underground"
 msgstr "Sota terra"
 
-#. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:303
 #: src/actions.cpp:1052 src/actions.cpp:1327
@@ -137,7 +136,6 @@ msgstr ""
 msgid "female^slowed"
 msgstr "alentida"
 
-#. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [else]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1244
 #: src/actions.cpp:1057 src/actions.cpp:1332
@@ -2002,9 +2000,8 @@ msgstr ""
 
 #. [topic]: id=traits_dim
 #: data/core/help.cfg:440
-#, fuzzy
 msgid "Dim"
-msgstr "totxo"
+msgstr "Totxo"
 
 #. [topic]: id=traits_dim
 #: data/core/help.cfg:441
@@ -2023,9 +2020,8 @@ msgstr ""
 
 #. [topic]: id=traits_slow
 #: data/core/help.cfg:448
-#, fuzzy
 msgid "Slow"
-msgstr "Alentit"
+msgstr "Lent"
 
 #. [topic]: id=traits_slow
 #: data/core/help.cfg:449
@@ -2478,7 +2474,6 @@ msgstr ""
 "La majoria d'unitats tenen d'un 50% a un 60% de defensa en els boscatges, "
 "però la cavalleria només té un 20%."
 
-#. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [topic]: id=terrain_village
 #: data/core/help.cfg:662 src/terrain.cpp:139
 msgid "Village"
@@ -3228,7 +3223,6 @@ msgid "backstab"
 msgstr "punyalada"
 
 #: data/core/macros/abilities.cfg:567
-#, fuzzy
 msgid ""
 "Backstab:\n"
 "When used offensively, this attack deals double damage if there is an enemy "
@@ -3237,8 +3231,8 @@ msgid ""
 msgstr ""
 "Punyalada:\n"
 "Quan s'utilitza ofensivament, aquest atac causa el doble de mal si hi ha una "
-"unitat enemiga de l'objectiu al costat oposat, i aquesta unitat no està "
-"incapacitada (per exemple, convertida en pedra)."
+"unitat enemiga de l'objectiu al seu costat oposat, i aquesta unitat no està "
+"incapacitada (per exemple, convertida en pedra o paralitzada)."
 
 #: data/core/macros/abilities.cfg:579 data/core/macros/abilities.cfg:591
 msgid "plague"
@@ -3318,7 +3312,6 @@ msgid "swarm"
 msgstr "eixam"
 
 #: data/core/macros/abilities.cfg:654
-#, fuzzy
 msgid ""
 "Swarm:\n"
 "The number of strikes of this attack decreases when the unit is wounded. The "
@@ -3337,15 +3330,14 @@ msgid "charge"
 msgstr "càrrega"
 
 #: data/core/macros/abilities.cfg:665
-#, fuzzy
 msgid ""
 "Charge:\n"
 "When used offensively, this attack deals double damage to the target. It "
 "also causes this unit to take double damage from the target's counterattack."
 msgstr ""
 "Càrrega:\n"
-"Aquest atac causa el doble de mal. També fa que la unitat que el realitza "
-"prengui el doble de mal per part del seu contrincant."
+"Quan s'utilitza ofensivament, aquest atac causa el doble de mal. També fa "
+"que la unitat que el realitza rebi el doble en el contraatac del contrincant."
 
 #: data/core/macros/abilities.cfg:677
 msgid "drains"
@@ -3380,28 +3372,27 @@ msgstr ""
 #. [option]: type=behaviour
 #: data/core/macros/ai_controller.cfg:144
 msgid "Be more aggressive"
-msgstr ""
+msgstr "Més agressiu"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:161
 msgid "aggressive."
-msgstr ""
+msgstr "agressiu."
 
 #. [option]: type=behaviour
 #: data/core/macros/ai_controller.cfg:178
 msgid "Be more defensive"
-msgstr ""
+msgstr "Més defensiu"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:191
-#, fuzzy
 msgid "defensive."
-msgstr "Defensa"
+msgstr "defensiu."
 
 #. [option]: type=objective
 #: data/core/macros/ai_controller.cfg:213
 msgid "Focus on defeating..."
-msgstr ""
+msgstr "Centrat en derrotar..."
 
 #. [literal]: speaker=narrator
 #. [value]: speaker=narrator
@@ -3420,7 +3411,7 @@ msgstr ""
 #. [literal]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:230
 msgid "Which enemy side to focus on?"
-msgstr ""
+msgstr "En quin bàndol enemic s'hauria de centrar?"
 
 #. [then]
 #. [else]
@@ -3429,24 +3420,24 @@ msgstr ""
 #: data/core/macros/ai_controller.cfg:437
 #: data/core/macros/ai_controller.cfg:442
 msgid "(side $temp_i|)"
-msgstr ""
+msgstr "(bàndol $temp_i|)"
 
 #. [then]
 #: data/core/macros/ai_controller.cfg:288
 #: data/core/macros/ai_controller.cfg:438
 msgid "$side_i_leader.name (side $temp_i|)"
-msgstr ""
+msgstr "$side_i_leader.name (bàndol $temp_i|)"
 
 #. [else]
 #: data/core/macros/ai_controller.cfg:293
 #: data/core/macros/ai_controller.cfg:443
 msgid "side $temp_i"
-msgstr ""
+msgstr "bàndol $temp_i"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:309
 msgid "focusing on defeating $this_enemy_description|."
-msgstr ""
+msgstr "centrat en derrotar $this_enemy_description|."
 
 #. [value]
 #. [option]: speaker=narrator
@@ -3455,72 +3446,68 @@ msgstr ""
 #: data/core/macros/ai_controller.cfg:870
 #: data/core/macros/ai_controller.cfg:905
 msgid "Back"
-msgstr ""
+msgstr "Enrere"
 
 #. [option]: type=objective
 #: data/core/macros/ai_controller.cfg:359
 msgid "Focus on protecting..."
-msgstr ""
+msgstr "Centrat en protegir..."
 
 #. [literal]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:376
 msgid "Which friendly side to protect?"
-msgstr ""
+msgstr "Quin bàndol s'hauria de protegir?"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:459
 msgid "focusing on protecting $this_ally_description|."
-msgstr ""
+msgstr "centrat en protegir $this_ally_description|."
 
 #. [option]: type=objective
 #: data/core/macros/ai_controller.cfg:511
 msgid "Defend a location..."
-msgstr ""
+msgstr "Defensa una posició..."
 
 #. [print]
 #: data/core/macros/ai_controller.cfg:527
 msgid "Right-click to select a location to defend"
-msgstr ""
+msgstr "Feu clic amb el botó dret per seleccionar la posició a defensar"
 
 #. [set_menu_item]: id=ai_controller_defend_location_picker
 #: data/core/macros/ai_controller.cfg:534
 msgid "Defend this location"
-msgstr ""
+msgstr "Defensa aquesta posició"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:551
 msgid "focusing on defending the area around $x1|,$y1|."
-msgstr ""
+msgstr "centrat en defensar l'àrea al voltant de $x1|,$y1|."
 
 #. [print]
 #: data/core/macros/ai_controller.cfg:586
 msgid "Location selection canceled"
-msgstr ""
+msgstr "S'ha cancel·lat la selecció de la posició"
 
 #. [option]
 #: data/core/macros/ai_controller.cfg:601
-#, fuzzy
 msgid "Clear objective orders"
-msgstr "Cancel·la les ordres"
+msgstr ""
 
 #. [option]
 #: data/core/macros/ai_controller.cfg:625
-#, fuzzy
 msgid "Clear behavior orders"
-msgstr "Cancel·la les ordres"
+msgstr ""
 
 #. [option]
 #: data/core/macros/ai_controller.cfg:649
-#, fuzzy
 msgid "Clear all orders"
-msgstr "Cancel·la les ordres"
+msgstr ""
 
 #. [then]
 #: data/core/macros/ai_controller.cfg:775
 #: data/core/macros/ai_controller.cfg:786
-#, fuzzy
 msgid "none set."
-msgstr "cap"
+msgstr ""
 
 #. [value]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:808
@@ -3553,18 +3540,16 @@ msgstr ""
 
 #. [literal]
 #: data/core/macros/ai_controller.cfg:880
-#, fuzzy
 msgid "Set behavior..."
-msgstr "Estableix la contrasenya..."
+msgstr "Estableix el comportament..."
 
 #. [literal]
 #: data/core/macros/ai_controller.cfg:920
 msgid "Exit"
-msgstr ""
+msgstr "Surt"
 
 #. [advancement]: id=amla_default
 #: data/core/macros/amla.cfg:10
-#, fuzzy
 msgid "Max HP bonus +3, Max XP +20%"
 msgstr "Bonificació HP màxim +3, XP màxim +20%"
 
@@ -3579,19 +3564,16 @@ msgid "Max HP bonus +"
 msgstr "Bonificació HP màxim +"
 
 #: data/core/macros/carryover-utils.cfg:9
-#, fuzzy
 msgid "Early finish bonus."
-msgstr "Bonificació per rapidesa: "
+msgstr "Bonificació per acabar aviat."
 
 #: data/core/macros/carryover-utils.cfg:12
-#, fuzzy
 msgid "No early finish bonus."
-msgstr "Bonificació per rapidesa: "
+msgstr "No hi ha bonificació per acabar aviat."
 
 #: data/core/macros/carryover-utils.cfg:15
-#, fuzzy
 msgid "`(early finish bonus)"
-msgstr "Bonificació per rapidesa: "
+msgstr ""
 
 #: data/core/macros/carryover-utils.cfg:18
 msgid "No gold carried over to the next scenario."
@@ -3617,11 +3599,8 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/core/macros/items.cfg:39
-#, fuzzy
 msgid "You have come across a wishing well. What would you like to wish for?"
-msgstr ""
-"Heu arribat a un pou dels desitjos.\n"
-"Què voleu demanar?"
+msgstr "Heu arribat a un pou dels desitjos. Què desitgeu demanar?"
 
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:42
@@ -4174,7 +4153,6 @@ msgid "Kaasa,Kayya,Keyya,Kiira,Korra"
 msgstr "Kaasa,Kayya,Keyya,Kiira,Korra"
 
 #: data/core/macros/names.cfg:23
-#, fuzzy
 msgid ""
 "Addraecyn,Addraenvan,Addraer,Addraercyn,Addraryn,Addreddry,Addredry,"
 "Addregwyn,Addrenyc,Addreoddry,Addreoddyn,Addreonyc,Addreorcyn,Addreran,"
@@ -4233,6 +4211,52 @@ msgstr ""
 "Aethonnyn,Aethuc,Aethudry,Aethugwyn,Aethun,Aethunry,Aethydry,Aethynyc,Blac,"
 "Bladoc,Blaec,Blaedry,Blanry,Blebryn,Bledoc,Blemyr,Blennyn,Blenvan,Bleollyn,"
 "Blercyn,Blidd,Bliddry,Blillyn,Blinvan,Blollyn,Blubryn,Blucyn,Bludry,Blullyn,"
+"Bluran,Blybryn,Blydd,Blygwyn,Blymyr,Blyr,Bucyn,Cac,Cadry,Caebryn,Caedry,"
+"Caeran,Caercyn,Car,Carac,Caraddry,Caradoc,Caraedry,Caraennyn,Cararyn,Caredd,"
+"Careddry,Caregwyn,Caren,Careobryn,Careogwyn,Careonvan,Careorraent,Careoryn,"
+"Carercyn,Caric,Cariddry,Carocyn,Caroddyn,Caror,Caroran,Carraent,Carudoc,"
+"Carullyn,Carygwyn,Caryn,Cebryn,Cemyr,Cennyn,Ceoc,Ceoddry,Ceoddyn,Ceomyr,"
+"Ceonnyn,Ceonry,Ceoryn,Cicyn,Cin,Cinry,Coc,Convan,Corcyn,Cubryn,Cunry,Curyn,"
+"Cynyc,Cyryn,Dac,Dadd,Dadoc,Daeddry,Daedoc,Daellyn,Demyr,Denvan,Deodd,Deollyn,"
+"Deonyc,Derraent,Dibryn,Dinnyn,Dircyn,Dycyn,Dyddyn,Gaddry,Gaebryn,Gaedry,"
+"Gaercyn,Gagwyn,Gan,Gannyn,Gar,Gecyn,Geddyn,Gegwyn,Geodry,Ginvan,Glacyn,"
+"Gladoc,Glaercyn,Glarraent,Gleddry,Gleoddyn,Gleran,Gliddyn,Glillyn,Glinry,"
+"Glircyn,Gloddry,Gloddyn,Glonry,Glonvan,Glumyr,Glun,Glunry,Glunvan,Glyc,Glydd,"
+"Glydoc,Glynry,Glynvan,Glyran,Goc,Gor,Gubryn,Gudd,Gullyn,Gumyr,Gur,Gwadoc,"
+"Gwaec,Gwaeddyn,Gwan,Gweddyn,Gwegwyn,Gwellyn,Gwennyn,Gwenyc,Gweocyn,Gweodd,"
+"Gweodoc,Gweodry,Gweogwyn,Gweoran,Gwidoc,Gwilam,Gwodd,Gwoddyn,Gwollyn,Gwor,"
+"Gwucyn,Gwudoc,Gwumyr,Gwuran,Gwybryn,Gwycyn,Gwyddry,Gwydoc,Gwymyr,Gwynnyn,"
+"Gydoc,Gyllyn,Gymyr,Haldar,Labryn,Ladoc,Laellyn,Lan,Lannyn,Laran,Lec,Lemyr,"
+"Lenvan,Leogwyn,Lercyn,Ligwyn,Lin,Liryn,Lonnyn,Lorraent,Luddry,Ludoc,Lunnyn,"
+"Lunvan,Lurraent,Mac,Maddyn,Maennyn,Manry,Manyc,Marcyn,Mec,Menvan,Meollyn,"
+"Meon,Meonnyn,Meorraent,Middry,Midry,Mimyr,Modd,Moddry,Monry,Moran,Morcyn,"
+"Mubryn,Mudoc,Mugwyn,Murcyn,Mydoc,Mygwyn,Myn,Myrraent,Owac,Owadd,Owaddyn,"
+"Owaecyn,Owaedry,Owain,Owarcyn,Owaryn,Owecyn,Owedry,Oweomyr,Oweor,Oweorcyn,"
+"Oweran,Owercyn,Owidry,Owinvan,Owinyc,Owodd,Owoddry,Owogwyn,Owollyn,Oworan,"
+"Oworcyn,Oworraent,Owuddry,Owuddyn,Owugwyn,Owur,Owyran,Rabryn,Radd,Ranvan,Rar,"
+"Reoddyn,Reodry,Rhaecyn,Rhaedoc,Rhaemyr,Rhaerraent,Rhanry,Rharcyn,Rhenry,"
+"Rhenvan,Rhenyc,Rheodd,Rheoddyn,Rheollyn,Rheor,Rheoran,Rheorraent,Rheran,"
+"Rherraent,Rhobryn,Rhodry,Rhollyn,Rhonvan,Rhubryn,Rhugwyn,Rhunyc,Rhur,Rhygwyn,"
+"Rhyllyn,Rhynyc,Rhyrcyn,Rhyrraent,Rocyn,Roddyn,Romyr,Ron,Ronry,Rubryn,Ruddry,"
+"Rumyr,Run,Rurcyn,Rybryn,Rycyn,Ryddry,Rygwyn,Rynnyn,Rynry,Saec,Saellyn,Saemyr,"
+"Saenvan,Saercyn,Sanyc,Saran,Sarraent,Secyn,Seddyn,Sedry,Sellyn,Sennyn,"
+"Seoddry,Seorcyn,Sercyn,Siddry,Simyr,Siryn,Sodd,Sodry,Soran,Suc,Sudd,Surcyn,"
+"Sydd,Syran,Syryn,Tabryn,Taec,Taedd,Taedoc,Taemyr,Taenvan,Taercyn,Tanry,"
+"Tarcyn,Teddyn,Tegwyn,Ten,Tennyn,Tenvan,Teobryn,Teoddyn,Teor,Teorcyn,Terraent,"
+"Tinry,Tinvan,Tiryn,Todd,Tudd,Tuddry,Tudoc,Tunvan,Turraent,Tyddyn,Vaddyn,"
+"Vaeddyn,Vaedry,Vaennyn,Varcyn,Ven,Vennyn,Veocyn,Veoddyn,Veodry,Veogwyn,"
+"Veomyr,Vinvan,Vinyc,Virraent,Vobryn,Vogwyn,Vonry,Vuddyn,Vugwyn,Vyc,Vygwyn,"
+"Vyrcyn,Yracyn,Yraec,Yran,Yrannyn,Yranvan,Yraryn,Yredd,Yreddyn,Yregwyn,Yreryn,"
+"Yrinvan,Yrirraent,Yroddry,Yrullyn,Yrumyr,Yrunnyn,Yrunvan,Yryllyn,Yrymyr,"
+"Yrynyc,YryrcynAddraecyn,Addraenvan,Addraer,Addraercyn,Addraryn,Addreddry,"
+"Addredry,Addregwyn,Addrenyc,Addreoddry,Addreoddyn,Addreonyc,Addreorcyn,"
+"Addreran,Addribryn,Addriddyn,Addrocyn,Addroryn,Addrunvan,Addrurcyn,Addryllyn,"
+"Addrynvan,Aethacyn,Aethadry,Aethaec,Aethaeran,Aethaeryn,Aethagwyn,Aethanry,"
+"Aetharcyn,Aethec,Aethellyn,Aethenvan,Aetheoc,Aetheollyn,Aetheonyc,Aetheorcyn,"
+"Aethercyn,Aetherraent,Aethibryn,Aethiddry,Aethircyn,Aethobryn,Aethoddyn,"
+"Aethonnyn,Aethuc,Aethudry,Aethugwyn,Aethun,Aethunry,Aethydry,Aethynyc,Blac,"
+"Bladoc,Blaec,Blaedry,Blanry,Blebryn,Bledoc,Blemyr,Blennyn,Blenvan,Bleollyn,"
+"Blercyn,Blidd,Bliddry,Blillyn,Blinvan,Blollyn,Blubryn,Blucyn,Bludry,Blullyn,"
 "Bluran,Blybryn,Blydd,Blygwyn,Blymyr,Blyr,Cac,Cadry,Caebryn,Caedry,Caeran,"
 "Caercyn,Car,Carac,Caraddry,Caradoc,Caraedry,Caraennyn,Cararyn,Caredd,"
 "Careddry,Caregwyn,Caren,Careobryn,Careogwyn,Careonvan,Careorraent,Careoryn,"
@@ -4273,7 +4297,6 @@ msgstr ""
 "Yryrcyn"
 
 #: data/core/macros/names.cfg:24
-#, fuzzy
 msgid ""
 "Alabrylla,Alaebrylla,Alaeniver,Alalla,Alalonna,Alaryan,Aleacla,Aleaniver,"
 "Aleara,Alearka,Alena,Alengwen,Alilonna,Alingwen,Alolla,Alolonna,Alora,"
@@ -4340,8 +4363,8 @@ msgstr ""
 "Eleanoic,Elearka,Elenoic,Elerka,Elivyan,Elulonna,Elurka,Elwllyra,Elwlonna,"
 "Elwngwen,Elwra,Elycla,Elyllyra,Elyngwen,Elyniver,Elyrka,Gwaera,Gwaessa,"
 "Gwangwen,Gweacla,Gwedda,Gwerka,Gwicla,Gwirka,Gwobrylla,Gwoll,Gwona,Gwongwen,"
-"Gwonoic,Gworyan,Gwullyra,Gwussa,Gwwcla,Gwwna,Gwwvyan,Gwycla,Gwydda,Jacla,"
-"Jaena,Jaerka,Jaevyan,Jalyan,Jana,Jarka,Jassa,Jeabrylla,Jealla,Jeanoic,"
+"Gwonoic,Gworyan,Gwullyra,Gwussa,Gwwcla,Gwwna,Gwwvyan,Gwycla,Gwydda,Heldra,"
+"Jacla,Jaena,Jaerka,Jaevyan,Jalyan,Jana,Jarka,Jassa,Jeabrylla,Jealla,Jeanoic,"
 "Jeniver,Jiryan,Jissa,Joll,Jolla,Jona,Jongwen,Jonoic,Jora,Jorka,Jovyan,Judda,"
 "Jull,Julonna,Jura,Jwll,Jwlyan,Jycla,Jyniver,Jynoic,Jyrka,Jyvyan,Laeniver,"
 "Laenoic,Laeryan,Langwen,Larka,Lassa,Lealonna,Lealyan,Ledda,Lelonna,Lelyan,"
@@ -4662,13 +4685,12 @@ msgstr ""
 "només quan defensa."
 
 #: data/core/macros/special-notes.cfg:29
-#, fuzzy
 msgid ""
 " The leadership of this unit enables adjacent units of the same side to deal "
 "more damage in combat, though this only applies to units of lower level."
 msgstr ""
-"El lideratge d'aquesta unitat permet a les unitats amigues al seu voltant "
-"causar més dany en combat, encara que açò només s'aplica a unitats de nivell "
+" El lideratge d'aquesta unitat permet a les unitats amigues adjacents causar "
+"més dany en combat, encara que açò només s'aplica a unitats de nivell "
 "inferior."
 
 #: data/core/macros/special-notes.cfg:32
@@ -4684,14 +4706,12 @@ msgid " Illumination increases the lighting level in adjacent areas."
 msgstr " La il·luminació incrementa el nivell de llum al voltant."
 
 #: data/core/macros/special-notes.cfg:38
-#, fuzzy
 msgid ""
 " This unit can use one move to teleport between any two empty villages "
 "controlled by its side."
 msgstr ""
-"Teletransport:\n"
-"Aquesta unitat pot teletransportar-se entre dos llogarets amics de manera "
-"instantània."
+" Aquesta unitat pot teletransportar-se entre dos llogarets buits controlats "
+"pel seu mateix bàndol."
 
 #: data/core/macros/special-notes.cfg:41
 msgid ""
@@ -5996,7 +6016,7 @@ msgid ""
 "right corner of the screen."
 msgstr ""
 "El terreny que ocupen les teves unitats determina la probabilitat que tenen "
-"els teus adversaris. de colpejar-les. L'índex de defensa de la unitat "
+"els teus adversaris de colpejar-les. L'índex de defensa de la unitat "
 "seleccionada actualment en el terreny seleccionat actualment es mostra a la "
 "cantonada superior dreta de la pantalla."
 
@@ -6147,7 +6167,7 @@ msgid ""
 "expendable units in some directions to delay enemy units."
 msgstr ""
 "Si sou atacat des de diferents flancs, tal vegada sigui una bona idea enviar "
-"tropes prescindibles per retrasar l'atac."
+"tropes prescindibles per alentir l'atac enemic."
 
 #. [tip]
 #: data/hardwired/tips.cfg:115
@@ -6415,9 +6435,8 @@ msgid "Send"
 msgstr "Envia"
 
 #: data/temp-file_send_data_strings.cfg:16
-#, fuzzy
 msgid "Don't send"
-msgstr "No tornis a preguntar."
+msgstr "No ho enviïs"
 
 #: data/temp-file_send_data_strings.cfg:18
 msgid "Do not ask every time before sending data"
@@ -6450,7 +6469,6 @@ msgstr "Fi del torn"
 msgid "End Scenario"
 msgstr "Fi de l'escenari"
 
-#. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=label-hp
 #: data/themes/default.cfg:212 data/themes/dfool.cfg:232
 #: data/themes/experimental.cfg:181 src/menu_events.cpp:201 src/unit.cpp:2592
@@ -6458,7 +6476,6 @@ msgstr "Fi de l'escenari"
 msgid "HP"
 msgstr "HP"
 
-#. #-#-#-#-#  wesnoth.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=label-xp
 #: data/themes/default.cfg:221 data/themes/dfool.cfg:242
 #: data/themes/experimental.cfg:190 src/menu_events.cpp:202
@@ -6688,19 +6705,16 @@ msgid "addon_type^Scenario"
 msgstr "Escenari"
 
 #: src/addon_management.cpp:406
-#, fuzzy
 msgid "addon_type^MP era"
 msgstr "Era MJ"
 
 #: src/addon_management.cpp:408
-#, fuzzy
 msgid "addon_type^MP faction"
 msgstr "Facció MJ"
 
 #: src/addon_management.cpp:410
-#, fuzzy
 msgid "addon_type^MP map-pack"
-msgstr "Paquet de mapes MJ"
+msgstr "Mapes MJ"
 
 #: src/addon_management.cpp:412
 msgid "addon_type^MP scenario"
@@ -6708,7 +6722,7 @@ msgstr "Escenari MJ"
 
 #: src/addon_management.cpp:414
 msgid "addon_type^MP campaign"
-msgstr "Campanya (MJ)"
+msgstr "Campanya MJ"
 
 #: src/addon_management.cpp:416
 msgid "addon_type^Resources"
@@ -6723,7 +6737,6 @@ msgid "Dependencies"
 msgstr "Dependències"
 
 #: src/addon_management.cpp:448
-#, fuzzy
 msgid ""
 "This add-on depends upon the following add-on which you have not installed "
 "yet:"
@@ -6731,9 +6744,10 @@ msgid_plural ""
 "This add-on depends upon the following add-ons which you have not installed "
 "yet:"
 msgstr[0] ""
-"Aquest complement requereix la següent dependència que encara no heu "
-"instal·lat:"
-msgstr[1] "Aquest complement requereix les següents dependències addicionals:"
+"Aquest complement depèn del següent complement que encara no heu instal·lat:"
+msgstr[1] ""
+"Aquest complement depèn dels següents complements addicionals que encara no "
+"heu instal·lat:"
 
 #: src/addon_management.cpp:453
 msgid "Do you still want to download it?"
@@ -6903,7 +6917,6 @@ msgid "There are no add-ons available for download from this server."
 msgstr "No hi ha complements disponibles per a descarregar en aquest servidor."
 
 #: src/addon_management.cpp:1022
-#, fuzzy
 msgid "Get add-ons"
 msgstr "Obté complements"
 
@@ -8264,7 +8277,7 @@ msgstr "Redirecció del servidor"
 #: src/multiplayer.cpp:347
 #, fuzzy
 msgid "You must login first."
-msgstr "Heu d'entrar en aquest servidor"
+msgstr "Primer heu d'entrar."
 
 #: src/multiplayer.cpp:349
 msgid "The nick '$nick' is already taken."
