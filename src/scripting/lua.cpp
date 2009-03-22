@@ -366,7 +366,7 @@ static int lua_fire(lua_State *L)
 	event_handler_data *eh = static_cast<event_handler_data *>(lua_touserdata(L, -1));
 
 	eh->handler->handle_event
-		(game_events::queued_event("_from_lua", l1, l2, config()), vconfig(&cfg));
+		(game_events::queued_event("_from_lua", l1, l2, config()), vconfig(&cfg, true));
 	return 0;
 }
 
