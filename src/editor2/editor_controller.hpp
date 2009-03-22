@@ -405,7 +405,7 @@ class editor_controller : public controller_base,
 		map_fragment clipboard_;
 
 		/** Flag to rebuild terrain on every terrain change */
-		bool auto_update_transitions_;
+		int auto_update_transitions_;
 
 		bool use_mdi_;
 

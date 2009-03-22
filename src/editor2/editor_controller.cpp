@@ -44,6 +44,13 @@ namespace {
 	const char* prefkey_default_dir = "editor2_default_dir";
 	const char* prefkey_auto_update_transitions = "editor2_auto_update_transitions";
 	const char* prefkey_use_mdi = "editor2_use_mdi";
+
+	namespace TransitionUpdateMode {
+		const int off = 0;
+		const int on = 1;
+		const int partial = 2;
+		const int count = 3;
+	}
 }
 
 namespace editor2 {
@@ -99,7 +106,8 @@ editor_controller::editor_controller(const config &game_config, CVideo& video, m
 	, foreground_terrain_(t_translation::MOUNTAIN)
 	, background_terrain_(t_translation::GRASS_LAND)
 	, clipboard_()
-	, auto_update_transitions_(utils::string_bool(preferences::get(prefkey_auto_update_transitions), true))
+	, auto_update_transitions_(lexical_cast_default<int>(
+		preferences::get(prefkey_auto_update_transitions), TransitionUpdateMode::partial))
 	, use_mdi_(utils::string_bool(preferences::get(prefkey_use_mdi), true))
 	, default_dir_(preferences::get(prefkey_default_dir))
 {
@@ -691,7 +699,9 @@ void editor_controller::refresh_after_action(bool drag_part)
 		return;
 	} else {
 		if (get_map_context().needs_terrain_rebuild()) {
-			if (!drag_part || auto_update_transitions_ || get_map_context().everything_changed()) {
+			if ((auto_update_transitions_ == TransitionUpdateMode::on) 
+			|| (auto_update_transitions_ == TransitionUpdateMode::partial) 
+			&& (!drag_part || get_map_context().everything_changed())) {
 				gui().rebuild_all();
 				get_map_context().set_needs_terrain_rebuild(false);
 				gui().invalidate_all();
@@ -816,8 +826,6 @@ hotkey::ACTION_STATE editor_controller::get_action_state(hotkey::HOTKEY_COMMAND 
 		case HOTKEY_EDITOR_TOOL_SELECT:
 		case HOTKEY_EDITOR_TOOL_STARTING_POSITION:
 			return is_mouse_action_set(command) ? ACTION_ON : ACTION_OFF;
-		case HOTKEY_EDITOR_AUTO_UPDATE_TRANSITIONS:
-			return auto_update_transitions_ ? ACTION_ON : ACTION_OFF;
 		case HOTKEY_EDITOR_DRAW_COORDINATES:
 			return gui_->get_draw_coordinates() ? ACTION_ON : ACTION_OFF;
 		case HOTKEY_EDITOR_DRAW_TERRAIN_CODES:
@@ -952,9 +960,9 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 			resize_map_dialog();
 			return true;
 		case HOTKEY_EDITOR_AUTO_UPDATE_TRANSITIONS:
-			auto_update_transitions_ = !auto_update_transitions_;
+			auto_update_transitions_ = (auto_update_transitions_ + 1) % TransitionUpdateMode::count;
 			preferences::set(prefkey_auto_update_transitions, lexical_cast<std::string>(auto_update_transitions_));
-			if (!auto_update_transitions_) {
+			if (auto_update_transitions_ != TransitionUpdateMode::on) {
 				return true;
 			} // else intentionally fall through
 		case HOTKEY_EDITOR_UPDATE_TRANSITIONS:
@@ -1025,6 +1033,18 @@ void editor_controller::show_menu(const std::vector<std::string>& items_arg, int
 				hotkey::get_hotkey(*i).set_description(_("Redo"));
 			} else {
 				hotkey::get_hotkey(*i).set_description(_("Can't Redo"));
+			}
+		} else if (command == hotkey::HOTKEY_EDITOR_AUTO_UPDATE_TRANSITIONS) {
+			switch (auto_update_transitions_) {
+				case TransitionUpdateMode::on:
+					hotkey::get_hotkey(*i).set_description(_("Auto-update Terrain Transitions: Yes"));
+					break;
+				case TransitionUpdateMode::partial:
+					hotkey::get_hotkey(*i).set_description(_("Auto-update Terrain Transitions: Partial"));
+					break;
+				case TransitionUpdateMode::off:
+				default:
+					hotkey::get_hotkey(*i).set_description(_("Auto-update Terrain Transitions: No"));
 			}
 		} else if(!can_execute_command(command)
 		|| (context_menu && !in_context_menu(command))) {
