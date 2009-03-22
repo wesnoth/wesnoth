@@ -1,5 +1,6 @@
 ## some includes ##
 include_directories( ${Boost_INCLUDE_DIR} )
+include_directories( ${LUA_INCLUDE_DIR} )
 include_directories( ${SDL_INCLUDE_DIR} )
 include_directories( ${PANGOCAIRO_INCLUDE_DIRS} )
 include_directories( ${FONTCONFIG_INCLUDE_DIRS} )
@@ -41,6 +42,7 @@ set( game-external-libs
     ${SDLTTF_LIBRARY}
     ${PANGOCAIRO_LDFLAGS}
     ${FONTCONFIG_LDFLAGS}
+    ${LUA_LIBRARIES}
 )
 
 set( server-external-libs
@@ -293,6 +295,7 @@ SET(wesnoth-main_SRC
     portrait.cpp
     replay.cpp
     replay_controller.cpp
+    scripting/lua.cpp
     sha1.cpp
     settings.cpp
     statistics.cpp

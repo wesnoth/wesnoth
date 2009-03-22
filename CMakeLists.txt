@@ -25,6 +25,7 @@ set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
 # find all deps needed, pkgconfig is needed to find pangocairo
 find_package( SDL 1.2.7 REQUIRED )
 find_package( Boost 1.33 REQUIRED COMPONENTS iostreams regex )
+find_package( Lua51 REQUIRED)
 find_package( PkgConfig REQUIRED )
 # yes, gettext is *required* even when NLS is deactivated (this is to compile
 # src/gettext.cpp since it includes libintl.h)
