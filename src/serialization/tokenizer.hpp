@@ -94,6 +94,27 @@ class tokenizer
 				case EOF:
 					token_.type = token::END;
 					break;
+				case '<':
+					if (peek_char() != '<') {
+						token_.type = token::MISC;
+						token_.value += current_;
+						break;
+					}
+					token_.type = token::QSTRING;
+					next_char_fast();
+					while (true) {
+						next_char();
+						if(current_ == EOF) {
+							token_.type = token::UNTERMINATED_QSTRING;
+							break;
+						}
+						if (current_ == '>' && peek_char() == '>') {
+							next_char_fast();
+							break;
+						}
+						token_.value += current_;
+					}
+					break;
 				case '"':
 					token_.type = token::QSTRING;
 					while (1) {
