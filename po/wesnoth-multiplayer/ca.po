@@ -5,7 +5,7 @@
 # package.
 #
 # Dan Rosàs Garcia, 2004.
-# Jordà Polo <jorda@ettin.org>, 2004, 2005, 2006, 2007, 2008.
+# Jordà Polo <jorda@ettin.org>, 2004, 2005, 2006, 2007, 2008, 2009.
 # Daniel López <dani@darlinx.com>, 2005.
 # Joan Queralt <jqueral7@xtec.net>, 2006.
 # Jose Gordillo <kilder@hotmail.com>, 2007.
@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: 1.5.5+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-03-01 21:23+0100\n"
-"PO-Revision-Date: 2008-10-18 12:18+0200\n"
+"PO-Revision-Date: 2009-03-22 09:05+0100\n"
 "Last-Translator: Jordà Polo <jorda@ettin.org>\n"
 "Language-Team: Catalan <wesnoth-ca@lists.ettin.org>\n"
 "MIME-Version: 1.0\n"
@@ -528,7 +528,6 @@ msgstr "2j - Fosc auguri (supervivència)"
 
 #. [multiplayer]: id=multiplayer_2p_Dark_Forecast
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:8
-#, fuzzy
 msgid ""
 "Dark Forecast is a survival scenario for solitaire or two-player team-based "
 "play against randomly AI spawned units. Victory is achieved by surviving all "
@@ -541,7 +540,10 @@ msgstr ""
 "equips de dos, contra unitats aleatòries. La victòria s'assoleix si el "
 "jugador aconsegueix sobreviure totes les onades d'enemics. Al mesura que "
 "avança la partida, el terreny canvia segons condicions meteorològiques "
-"aleatòries."
+"aleatòries.\n"
+"\n"
+"Nota: utilitzeu els paràmetres del mapa per a un funcionament adequat de "
+"l'escenari."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:473
@@ -586,16 +588,14 @@ msgstr "Cel clar"
 #. [side]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1204
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1235
-#, fuzzy
 msgid "teamname^Revolt"
-msgstr "Oest"
+msgstr "Rebels"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1254
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1270
-#, fuzzy
 msgid "teamname^Human"
-msgstr "Est"
+msgstr "Humans"
 
 #. [then]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1423
@@ -859,7 +859,6 @@ msgstr "Aquesta és una escultura de pedra."
 
 #. [multiplayer]: id=multiplayer_Sullas_Ruins
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:39
-#, fuzzy
 msgid "2p - Sulla's Ruins"
 msgstr "2j - Les ruïnes de Sulla"
 
@@ -1282,7 +1281,7 @@ msgstr ""
 #. [multiplayer]: id=multiplayer_4p_Underworld
 #: data/multiplayer/scenarios/4p_Underworld.cfg:5
 msgid "4p - Underworld"
-msgstr ""
+msgstr "4j - El món dels morts"
 
 #. [multiplayer]: id=multiplayer_4p_Underworld
 #: data/multiplayer/scenarios/4p_Underworld.cfg:6
@@ -1668,18 +1667,6 @@ msgid ""
 "A wesnoth benchmark, use --no-delay --multiplayer --"
 "scenario=wesbench_shroud_walk --exit-at-end."
 msgstr ""
-
-#, fuzzy
-#~ msgid "2p - Fast To Madness"
-#~ msgstr "2j - El llac del meteorit"
-
-#, fuzzy
-#~ msgid " Recommended setting of 3 gold per village."
-#~ msgstr " Es recomana assignar 2 monedes d'or per llogaret."
-
-#, fuzzy
-#~ msgid "4p - Mines of Mallorod"
-#~ msgstr "4j - Rei de la muntanya"
 
 #~ msgid ""
 #~ "Players must maneuver their units through the divisive terrain of this "

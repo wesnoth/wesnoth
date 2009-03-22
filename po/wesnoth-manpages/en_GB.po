@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
 "POT-Creation-Date: 2009-03-20 00:47+0100\n"
-"PO-Revision-Date: 2006-09-06 18:18+0100\n"
-"Last-Translator: PJR <pjr@britishlibrary.net>\n"
+"PO-Revision-Date: 2009-03-20 16:21-0500\n"
+"Last-Translator: Eric S. Raymond <esr@thyrsus.com>\n"
 "Language-Team: English (British)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1068,7 +1068,7 @@ msgstr "Example: versions_accepted=\"*\" accepts any version string."
 #: ../../doc/man/wesnothd.6:149
 #, no-wrap
 msgid "B<user_handler>"
-msgstr ""
+msgstr "B<user_handler>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:154
@@ -1079,6 +1079,11 @@ msgid ""
 "anything real you are insane). The default value is 'forum'. You must also "
 "add a B<[user_handler]> section, see below."
 msgstr ""
+"The name of the user handler to use. Currently available user handlers are "
+"'forum' (to connect wesnothd to a phpbb forum database) and 'sample' (a "
+"sample implementation of the user handler interface, if you use this on "
+"anything real you are insane). The default value is 'forum'. You must also "
+"add a B<[user_handler]> section, see below."
 
 # type: SS
 #: ../../doc/man/wesnothd.6:155
@@ -1192,34 +1197,38 @@ msgid ""
 "[user_handler] section is present in the configuration the server will run "
 "without any nick registration service."
 msgstr ""
+"B<[user_handler]> Configures the user handler. Available keys vary depending "
+"on which user handler is set with the B<user_handler> key. If no "
+"[user_handler] section is present in the configuration the server will run "
+"without any nick registration service."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:199
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<db_host>"
-msgstr "B<host>"
+msgstr "B<db_host>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:202
 msgid "(for user_handler=forum) The hostname of the database server"
-msgstr ""
+msgstr "(for user_handler=forum) The hostname of the database server"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:202
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<db_name>"
-msgstr "B<name>"
+msgstr "B<db_name>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:205
 msgid "(for user_handler=forum) The name of the database"
-msgstr ""
+msgstr "(for user_handler=forum) The name of the database"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:205
 #, no-wrap
 msgid "B<db_user>"
-msgstr ""
+msgstr "B<db_user>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:208
@@ -1227,23 +1236,25 @@ msgid ""
 "(for user_handler=forum) The name of the user under which to log into the "
 "database"
 msgstr ""
+"(for user_handler=forum) The name of the user under which to log into the "
+"database"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:208
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<db_password>"
-msgstr "B<passwd>"
+msgstr "B<db_password>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:211
 msgid "(for user_handler=forum) This user's password"
-msgstr ""
+msgstr "(for user_handler=forum) This user's password"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:211
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<db_users_table>"
-msgstr "B<ban_save_file>"
+msgstr "B<db_users_table>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:214
@@ -1252,12 +1263,15 @@ msgid ""
 "saves its user data. Most likely this will be E<lt>table-prefixE<gt>_users "
 "(e.g. phpbb3_users)."
 msgstr ""
+"(for user_handler=forum) The name of the table in which your phpbb forums "
+"saves its user data. Most likely this will be E<lt>table-prefixE<gt>_users "
+"(e.g. phpbb3_users)."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:214
 #, no-wrap
 msgid "B<db_extra_table>"
-msgstr ""
+msgstr "B<db_extra_table>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:218
@@ -1268,12 +1282,17 @@ msgid ""
 "user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4) "
 "NOT NULL DEFAULT 0);"
 msgstr ""
+"(for user_handler=forum) The name of the table in which wesnothd will save "
+"its own data about users. You will have to create this table manually, e.g.: "
+"CREATE TABLE E<lt>table-nameE<gt>(username VARCHAR(255) PRIMARY KEY, "
+"user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4) "
+"NOT NULL DEFAULT 0);"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:218
 #, no-wrap
 msgid "B<user_expiration>"
-msgstr ""
+msgstr "B<user_expiration>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:221
@@ -1281,6 +1300,8 @@ msgid ""
 "(for user_handler=sample) The time after which a registered nick expires (in "
 "days)."
 msgstr ""
+"(for user_handler=sample) The time after which a registered nick expires (in "
+"days)."
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:225
@@ -1288,65 +1309,66 @@ msgid ""
 "B<[mail]> Configures an SMTP server through which the user handler can send "
 "mail. Currently only used by the sample user handler."
 msgstr ""
+"B<[mail]> Configures an SMTP server through which the user handler can send "
+"mail. Currently only used by the sample user handler."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:226
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<server>"
-msgstr "B<version>"
+msgstr "B<server>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:229
 msgid "The hostname of the mail server"
-msgstr ""
+msgstr "The hostname of the mail server"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:229
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<username>"
-msgstr "B<name>"
+msgstr "B<username>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:232
 msgid "The user name under which to log into the mail server."
-msgstr ""
+msgstr "The user name under which to log into the mail server."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:232
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<password>"
-msgstr "B<passwd>"
+msgstr "B<password>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:235
 msgid "This user's password."
-msgstr ""
+msgstr "This user's password."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:235
 #, no-wrap
 msgid "B<from_address>"
-msgstr ""
+msgstr "B<from_address>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:238
 msgid "The reply-to address of you mail."
-msgstr ""
+msgstr "The reply-to address of you mail."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:238
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<mail_port>"
-msgstr "B<port>"
+msgstr "B<mail_port>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:241
 msgid "The port on which your mail server is running. Default is 25."
-msgstr ""
+msgstr "The port on which your mail server is running. Default is 25."
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:247
-#, fuzzy
 msgid ""
 "Written by David White E<lt>davidnwhite@verizon.netE<gt>.  Edited by Nils "
 "Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt>, "
@@ -1355,189 +1377,12 @@ msgid ""
 "Bouthors E<lt>cyril@bouthors.orgE<gt>."
 msgstr ""
 "Written by David White E<lt>davidnwhite@verizon.netE<gt>.  Edited by Nils "
-"Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt> and "
-"Soliton E<lt>soliton.de@gmail.comE<gt>.  This manual page was originally "
-"written by Cyril Bouthors E<lt>cyril@bouthors.orgE<gt>."
+"Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt>, "
+"Soliton E<lt>soliton.de@gmail.comE<gt> and Thomas Baumhauer E<lt>thomas."
+"baumhauer@gmail.comE<gt>.  This manual page was originally written by Cyril "
+"Bouthors E<lt>cyril@bouthors.orgE<gt>."
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:260
 msgid "B<wesnoth>(6), B<wesnoth_editor>(6)"
 msgstr "B<wesnoth>(6), B<wesnoth_editor>(6)"
-
-# type: TP
-#~ msgid "B<--python-api>"
-#~ msgstr "B<--python-api>"
-
-# type: Plain text
-#~ msgid "prints the runtime documentation for the python API."
-#~ msgstr "prints the runtime documentation for the python API."
-
-# type: TP
-#~ msgid "B<--python-shell>"
-#~ msgstr "B<--python-shell>"
-
-# type: Plain text
-#~ msgid "invokes wesnoth's embedded python interpreter in interactive mode."
-#~ msgstr "invokes wesnoth's embedded python interpreter in interactive mode."
-
-# type: TP
-#~ msgid ""
-#~ "Example to test your own AI against the default AI without starting the "
-#~ "GUI:"
-#~ msgstr ""
-#~ "Example to test your own AI against the default AI without starting the "
-#~ "GUI:"
-
-# type: Plain text
-#~ msgid ""
-#~ "B<wesnoth --nogui --multiplayer --controller1=ai --controller2=ai --"
-#~ "algorithm2=python_ai --parm2=python_script:py/my_own_python_ai.py>"
-#~ msgstr ""
-#~ "B<wesnoth --nogui --multiplayer --controller1=ai --controller2=ai --"
-#~ "algorithm2=python_ai --parm2=python_script:py/my_own_python_ai.py>"
-
-# type: TH
-#~ msgid "WESNOTH_EDITOR"
-#~ msgstr "WESNOTH_EDITOR"
-
-# type: TH
-#~ msgid "wesnoth_editor"
-#~ msgstr "wesnoth_editor"
-
-# type: Plain text
-#~ msgid "Battle for Wesnoth map editor"
-#~ msgstr "Battle for Wesnoth map editor"
-
-# type: Plain text
-#~ msgid "wesnoth_editor - Battle for Wesnoth map editor"
-#~ msgstr "wesnoth_editor - Battle for Wesnoth map editor"
-
-# type: Plain text
-#~ msgid "B<wesnoth_editor> [I<OPTIONS>] [I<MAP>]"
-#~ msgstr "B<wesnoth_editor> [I<OPTIONS>] [I<MAP>]"
-
-# type: Plain text
-#~ msgid "Battle for B<Wesnoth> map editor."
-#~ msgstr "Battle for B<Wesnoth> map editor."
-
-# type: TP
-#~ msgid "B<--bpp>\\ number"
-#~ msgstr "B<--bpp>\\ number"
-
-# type: TP
-#~ msgid "B<--datadir>"
-#~ msgstr "B<--datadir>"
-
-# type: Plain text
-#~ msgid "selects the data directory to use."
-#~ msgstr "selects the data directory to use."
-
-# type: TP
-#~ msgid "B<-f>,B<\\ --fullscreen>"
-#~ msgstr "B<-f>,B<\\ --fullscreen>"
-
-# type: Plain text
-#~ msgid "runs the editor in full screen mode."
-#~ msgstr "runs the editor in full screen mode."
-
-# type: TP
-#~ msgid "B<-h>,B<\\ --help>"
-#~ msgstr "B<-h>,B<\\ --help>"
-
-# type: Plain text
-#~ msgid "sets screen resolution. Example: B<-r 800x600>"
-#~ msgstr "sets screen resolution. Example: B<-r 800x600>"
-
-# type: TP
-#~ msgid "B<-v>,B<\\ --version>"
-#~ msgstr "B<-v>,B<\\ --version>"
-
-# type: Plain text
-#~ msgid "prints version number and exits."
-#~ msgstr "prints version number and exits."
-
-# type: TP
-#~ msgid "B<-w>,B<\\ --windowed>"
-#~ msgstr "B<-w>,B<\\ --windowed>"
-
-# type: Plain text
-#~ msgid "runs the editor in windowed mode."
-#~ msgstr "runs the editor in windowed mode."
-
-# type: Plain text
-#~ msgid ""
-#~ "Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt> and ott "
-#~ "E<lt>ott@gaon.netE<gt>."
-#~ msgstr ""
-#~ "Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt> and ott "
-#~ "E<lt>ott@gaon.netE<gt>."
-
-# type: Plain text
-#~ msgid "B<wesnoth>(6), B<wesnothd>(6)"
-#~ msgstr "B<wesnoth>(6), B<wesnothd>(6)"
-
-# type: Plain text
-#~ msgid "loads the file savegame from the standard save game directory."
-#~ msgstr "loads the file savegame from the standard save game directory."
-
-# type: TP
-#~ msgid "B<--compress>I<\\ infile\\ outfile>"
-#~ msgstr "B<--compress>I<\\ infile\\ outfile>"
-
-# type: Plain text
-#~ msgid ""
-#~ "compresses a savefile (I<infile>)  that is in text WML format into binary "
-#~ "WML format (I<outfile>)."
-#~ msgstr ""
-#~ "compresses a savefile (I<infile>)  that is in text WML format into binary "
-#~ "WML format (I<outfile>)."
-
-# type: TP
-#~ msgid "B<-r>,B<\\ --resolution>"
-#~ msgstr "B<-r>,B<\\ --resolution>"
-
-# type: TP
-#~ msgid "B<--bpp>"
-#~ msgstr "B<--bpp>"
-
-# type: TP
-#~ msgid "B<-h>, B<--help>"
-#~ msgstr "B<-h>, B<--help>"
-
-# type: TH
-#~ msgid "June 2005"
-#~ msgstr "June 2005"
-
-# type: TP
-#~ msgid ""
-#~ "B<--log-error=\"domain1,domain2,...\">, B<--log-warning=\"...\">, B<--log-"
-#~ "info=\"...\">"
-#~ msgstr ""
-#~ "B<--log-error=\"domain1,domain2,...\">, B<--log-warning=\"...\">, B<--log-"
-#~ "info=\"...\">"
-
-# type: Plain text
-#~ msgid ""
-#~ "sets the severity level of the debug domains. \"all\" can be used to "
-#~ "match any debug domain.  B<--log-info> shows all messages, B<--log-"
-#~ "warning> only warnings and errors, and B<--log-error> just errors."
-#~ msgstr ""
-#~ "sets the severity level of the debug domains. \"all\" can be used to "
-#~ "match any debug domain.  B<--log-info> shows all messages, B<--log-"
-#~ "warning> only warnings and errors, and B<--log-error> just errors."
-
-# type: Plain text
-#~ msgid ""
-#~ "Written by David White E<lt>davidnwhite@verizon.netE<gt>.  Edited by Nils "
-#~ "Kneuper E<lt>crazy-ivanovic@gmx.netE<gt> and ott E<lt>ott@gaon.netE<gt>.  "
-#~ "This manual page was originally written by Cyril Bouthors "
-#~ "E<lt>cyril@bouthors.orgE<gt>."
-#~ msgstr ""
-#~ "Written by David White E<lt>davidnwhite@verizon.netE<gt>.  Edited by Nils "
-#~ "Kneuper E<lt>crazy-ivanovic@gmx.netE<gt> and ott E<lt>ott@gaon.netE<gt>.  "
-#~ "This manual page was originally written by Cyril Bouthors "
-#~ "E<lt>cyril@bouthors.orgE<gt>."
-
-# type: Plain text
-#~ msgid "wesnoth(6), wesnothd(6)"
-#~ msgstr "wesnoth(6), wesnothd(6)"
