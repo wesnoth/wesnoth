@@ -33,6 +33,7 @@
 #include "map_label.hpp"
 #include "map_exception.hpp"
 #include "replay.hpp"
+#include "scripting/lua.hpp"
 #include "sound.hpp"
 #include "terrain_filter.hpp"
 #include "unit_display.hpp"
@@ -63,6 +64,7 @@ namespace {
 	std::vector<team>* teams = NULL;
 	game_state* state_of_game = NULL;
 	gamestatus* status_ptr = NULL;
+	LuaKernel *lua_kernel = NULL;
 	int floating_label = 0;
 	Uint32 unit_mutations = 0;
 
@@ -515,6 +517,11 @@ namespace {
 		(screen)->invalidate_all();
 	}
 
+	WML_HANDLER_FUNCTION(lua, handler, ev, cfg)
+	{
+		// Go through get_config for the script, otherwise it gets interpolated.
+		lua_kernel->run_event(cfg.get_config()["code"].c_str(), ev, &handler, units);
+	}
 
 	WML_HANDLER_FUNCTION(remove_shroud, , , cfg)
 	{
@@ -3599,6 +3606,7 @@ namespace game_events {
 		units = &units_;
 		state_of_game = &state_of_game_;
 		status_ptr = &status;
+		lua_kernel = new LuaKernel;
 		manager_running = true;
 
 		used_items.clear();
@@ -3678,6 +3686,8 @@ namespace game_events {
 		units = NULL;
 		state_of_game = NULL;
 		status_ptr = NULL;
+		delete lua_kernel;
+		lua_kernel = NULL;
 		unit_wml_ids.clear();
 	}
 
