@@ -136,6 +136,7 @@ wesnoth_source = \
 	portrait.cpp \
 	replay.cpp \
 	replay_controller.cpp \
+	scripting/lua.cpp \
 	sha1.cpp \
 	settings.cpp \
 	statistics.cpp \
