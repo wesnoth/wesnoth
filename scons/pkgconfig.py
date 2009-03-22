@@ -7,7 +7,7 @@ def CheckPKG(context, name):
     context.Message( 'Checking for %s... ' % name )
     try:
         env["ENV"]["PKG_CONFIG_PATH"] = os.environ.get("PKG_CONFIG_PATH")
-        env.ParseConfig("pkg-config --libs --cflags $PKGCONFIG_FLAGS " + name)
+        env.ParseConfig("pkg-config --libs --cflags $PKGCONFIG_FLAGS '" + name + "'")
         context.Result("yes")
         return True
     except OSError:

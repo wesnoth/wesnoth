@@ -219,7 +219,7 @@ if env["prereqs"]:
     have_client_prereqs = have_server_prereqs and \
         conf.CheckPango("cairo") and \
         conf.CheckPKG("fontconfig") and \
-        (conf.CheckPKG("lua '>=' 5.1") or conf.CheckPKG("lua5.1 '>=' 5.1")) and \
+        (conf.CheckPKG("lua >= 5.1") or conf.CheckPKG("lua5.1 >= 5.1")) and \
         conf.CheckBoost("regex") and \
         conf.CheckSDL("SDL_ttf", require_version = "2.0.8") and \
         conf.CheckSDL("SDL_mixer", require_version = '1.2.0') and \
