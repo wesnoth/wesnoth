@@ -351,6 +351,7 @@ class preprocessor_data: preprocessor
 		 * - 'I': skipping the "if" branch of a ifdef/ifndef (the "else" branch, if any, will be processed)
 		 * - 'J': skipping the "else" branch of a ifdef/ifndef
 		 * - '"': processing a string
+		 * - '<': processing a verbatim string
 		 * - '{': processing between chunks of a macro call (skip spaces)
 		 * - '[': processing inside a chunk of a macro call (stop on space or '(')
 		 * - '(': processing a parenthesized macro argument
@@ -635,6 +636,22 @@ bool preprocessor_data::get_chunk()
 		buffer += '\n';
 		// line_change = 1-1 = 0
 		put(buffer);
+	} else if (token.type == '<') {
+		put(c);
+		if (c == '>' && in_->peek() == '>') {
+			put(in_->get());
+			if (!skipping_ && slowpath_) {
+				std::string tmp = strings_.back();
+				pop_token();
+				strings_.back() += tmp;
+			} else
+				pop_token();
+		}
+	} else if (c == '<' && in_->peek() == '<') {
+		in_->get();
+		push_token('<');
+		put('<');
+		put('<');
 	} else if (c == '"') {
 		if (token.type == '"') {
 			target_.quoted_ = false;
