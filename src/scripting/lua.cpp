@@ -392,8 +392,9 @@ static int lua_fire_event(lua_State *L)
 }
 
 /**
- * Sets a WML variable.
+ * Gets a WML variable.
  * - Arg1: string containing the variable name.
+ * - Arg2: optional bool indicating if tables for containers should be left empty.
  * - Ret1: value of the variable, if any.
  */
 static int lua_get_variable(lua_State *L)
@@ -407,7 +408,8 @@ static int lua_get_variable(lua_State *L)
 		variable_info w(m, false, variable_info::TYPE_CONTAINER);
 		if (w.is_valid) {
 			lua_newtable(L);
-			table_of_wml_config(L, w.as_container());
+			if (lua_toboolean(L, 2))
+				table_of_wml_config(L, w.as_container());
 			return 1;
 		}
 	}
