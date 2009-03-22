@@ -519,8 +519,7 @@ namespace {
 
 	WML_HANDLER_FUNCTION(lua, handler, ev, cfg)
 	{
-		// Go through get_config for the script, otherwise it gets interpolated.
-		lua_kernel->run_event(cfg.get_config()["code"].c_str(), ev, &handler, units);
+		lua_kernel->run_event(cfg, ev, &handler, units);
 	}
 
 	WML_HANDLER_FUNCTION(remove_shroud, , , cfg)

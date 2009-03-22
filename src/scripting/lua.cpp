@@ -602,7 +602,7 @@ LuaKernel::~LuaKernel()
 /**
  * Runs a script from an event handler.
  */
-void LuaKernel::run_event(char const *prog, game_events::queued_event const &ev,
+void LuaKernel::run_event(vconfig const &cfg, game_events::queued_event const &ev,
                           game_events::event_handler *handler, unit_map *units)
 {
 	lua_State *L = mState;
@@ -615,22 +615,38 @@ void LuaKernel::run_event(char const *prog, game_events::queued_event const &ev,
 	eh->units = units;
 	lua_settable(L, LUA_REGISTRYINDEX);
 
-	// Push location arguments.
-	int args = 0;
-	if (ev.loc1.valid())
-	{
+	// Get user-defined arguments; append locations and weapons to it.
+	config args;
+	vconfig vargs = cfg.child("args");
+	if (!vargs.null()) {
+		args = vargs.get_parsed_config();
+	}
+	if (const config *weapon = ev.data.child("first")) {
+		args.add_child("weapon", *weapon);
+	}
+	if (const config *weapon = ev.data.child("first")) {
+		args.add_child("second_weapon", *weapon);
+	}
+	lua_newtable(L);
+	table_of_wml_config(L, args);
+	if (ev.loc1.valid()) {
 		lua_pushinteger(L, ev.loc1.x + 1);
+		lua_setfield(L, -2, "x1");
 		lua_pushinteger(L, ev.loc1.y + 1);
-		args += 2;
-		if (ev.loc2.valid())
-		{
-			lua_pushinteger(L, ev.loc2.x + 1);
-			lua_pushinteger(L, ev.loc2.y + 1);
-			args += 2;
-		}
+		lua_setfield(L, -2, "y1");
+	}
+	if (ev.loc2.valid()) {
+		lua_pushinteger(L, ev.loc2.x + 1);
+		lua_setfield(L, -2, "x2");
+		lua_pushinteger(L, ev.loc2.y + 1);
+		lua_setfield(L, -2, "y2");
 	}
 
-	execute(prog, args, 0);
+	// Get the code from the uninterpolated config object, so that $ symbols
+	// are not messed with.
+	const std::string &prog = cfg.get_config()["code"];
+
+	execute(prog.c_str(), 1, 0);
 
 	// Clear registry.
 	lua_pushlightuserdata(L, (void *)&handlerKey);
