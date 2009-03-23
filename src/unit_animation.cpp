@@ -554,7 +554,8 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 					.duration(225)
 					.blend("0.0,0.5:75,0.0:75,0.5:75,0.0",game_display::rgb(255,0,0)));
 		} else {
-			foreach(std::string hit_type, utils::split((**anim_itor)["hits"])) {
+			std::vector<std::string> v = utils::split((**anim_itor)["hits"]);
+			foreach(std::string hit_type, v) {
 				config tmp = **anim_itor;
 				tmp["hits"]=hit_type;
 				animations.push_back(unit_animation(tmp));
