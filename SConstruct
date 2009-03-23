@@ -218,10 +218,16 @@ if env["prereqs"]:
         conf.CheckSDL(require_version = '1.2.7') and \
         conf.CheckSDL('SDL_net') or Warning("Base prerequisites are not met.")
 
+    def check_lua():
+        if env["lua"]:
+            return conf.CheckLua(require_version = "5.1")
+        else:
+            return True
+
     have_client_prereqs = have_server_prereqs and \
         conf.CheckPango("cairo") and \
         conf.CheckPKG("fontconfig") and \
-        conf.CheckLua(require_version = "5.1") and \
+        check_lua() and \
         conf.CheckBoost("regex") and \
         conf.CheckSDL("SDL_ttf", require_version = "2.0.8") and \
         conf.CheckSDL("SDL_mixer", require_version = '1.2.0') and \
