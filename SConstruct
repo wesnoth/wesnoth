@@ -82,6 +82,7 @@ opts.AddVariables(
     ('boost_suffix', 'Suffix of boost libraries.'),
     PathVariable('gettextdir', 'Root directory of Gettext\'s installation.', "", OptionalPath), 
     PathVariable('gtkdir', 'Directory where GTK SDK is installed.', "", OptionalPath),
+    PathVariable('luadir', 'Directory where Lua binary package is unpacked.', "", OptionalPath),
     ('host', 'Cross-compile host.', ''),
     ('jobs', 'Set the number of parallel compilations', "1", lambda key, value, env: int(value), int),
     BoolVariable('distcc', 'Use distcc', False),
@@ -201,7 +202,7 @@ def Warning(message):
     return False
 
 from metasconf import init_metasconf
-configure_args = dict(custom_tests = init_metasconf(env, ["cplusplus", "python_devel", "sdl", "boost", "pango", "pkgconfig", "gettext"]), config_h = "config.h",
+configure_args = dict(custom_tests = init_metasconf(env, ["cplusplus", "python_devel", "sdl", "boost", "pango", "pkgconfig", "gettext", "lua"]), config_h = "config.h",
     log_file="build/config.log", conf_dir="build/sconf_temp")
 
 env.MergeFlags(env["extra_flags_config"])
@@ -219,7 +220,7 @@ if env["prereqs"]:
     have_client_prereqs = have_server_prereqs and \
         conf.CheckPango("cairo") and \
         conf.CheckPKG("fontconfig") and \
-        (conf.CheckPKG("lua >= 5.1") or conf.CheckPKG("lua5.1 >= 5.1")) and \
+        conf.CheckLua(require_version = "5.1") and \
         conf.CheckBoost("regex") and \
         conf.CheckSDL("SDL_ttf", require_version = "2.0.8") and \
         conf.CheckSDL("SDL_mixer", require_version = '1.2.0') and \
