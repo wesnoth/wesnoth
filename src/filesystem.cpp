@@ -278,7 +278,7 @@ std::string get_cache_dir()
 
 std::string get_addon_campaigns_dir()
 {
-	const std::string dir_path = get_user_data_dir() + "/data/campaigns";
+	const std::string dir_path = get_user_data_dir() + "/data/add-ons";
 	return get_dir(dir_path);
 }
 
@@ -532,7 +532,7 @@ static std::string setup_user_data_dir()
 	_mkdir((game_config::preferences_dir + "/editor/maps").c_str());
 	_mkdir((game_config::preferences_dir + "/data").c_str());
 	_mkdir((game_config::preferences_dir + "/data/ais").c_str());
-	_mkdir((game_config::preferences_dir + "/data/campaigns").c_str());
+	_mkdir((game_config::preferences_dir + "/data/add-ons").c_str());
 	_mkdir((game_config::preferences_dir + "/data/multiplayer").c_str());
 	_mkdir((game_config::preferences_dir + "/data/maps").c_str());
 	_mkdir((game_config::preferences_dir + "/data/maps/multiplayer").c_str());
@@ -557,7 +557,7 @@ static std::string setup_user_data_dir()
 		BEOS_CREATE_PREFERENCES_SUBDIR("editor/maps");
 		BEOS_CREATE_PREFERENCES_SUBDIR("data");
 		BEOS_CREATE_PREFERENCES_SUBDIR("data/ais");
-		BEOS_CREATE_PREFERENCES_SUBDIR("data/campaigns");
+		BEOS_CREATE_PREFERENCES_SUBDIR("data/add-ons");
 		BEOS_CREATE_PREFERENCES_SUBDIR("data/multiplayer");
 		BEOS_CREATE_PREFERENCES_SUBDIR("data/maps");
 		BEOS_CREATE_PREFERENCES_SUBDIR("data/maps/multiplayer");
@@ -583,7 +583,7 @@ static std::string setup_user_data_dir()
 	create_directory_if_missing(dir_path + "/editor/maps");
 	create_directory_if_missing(dir_path + "/data");
 	create_directory_if_missing(dir_path + "/data/ais");
-	create_directory_if_missing(dir_path + "/data/campaigns");
+	create_directory_if_missing(dir_path + "/data/add-ons");
 	create_directory_if_missing(dir_path + "/data/multiplayer");
 	create_directory_if_missing(dir_path + "/data/maps");
 	create_directory_if_missing(dir_path + "/data/maps/multiplayer");
