@@ -22,6 +22,16 @@
  *   to force object unscoping before erroring out.
  */
 
+#ifdef DISABLE_LUA
+#include "scripting/lua.hpp"
+LuaKernel::LuaKernel() {std::cerr <<"NOTE: Lua support disabled in this build";}
+LuaKernel::~LuaKernel() {}
+void LuaKernel::run_event(vconfig const &cfg, game_events::queued_event const &ev,
+	game_events::event_handler *handler, unit_map *units) {}
+void LuaKernel::run(char const *prog) {}
+void LuaKernel::execute(char const *prog, int nArgs, int nRets) {}
+#else  // HAVE LUA
+
 extern "C" {
 #include <lualib.h>
 #include <lauxlib.h>
@@ -700,3 +710,6 @@ void LuaKernel::execute(char const *prog, int nArgs, int nRets)
 
 	lua_remove(L, -1 - nRets);
 }
+
+#endif // HAVE LUA
+

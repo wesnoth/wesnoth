@@ -60,6 +60,7 @@ opts.AddVariables(
     PathVariable('python_site_packages_dir', 'sets the directory where python modules are installed', "lib/python/site-packages/wesnoth", PathVariable.PathAccept),
     BoolVariable('editor', 'Enable editor', True),
     BoolVariable('lowmem', 'Set to reduce memory usage by removing extra functionality', False),
+    BoolVariable('lua', 'Enable Lua support', True),
     BoolVariable('nls','enable compile/install of gettext message catalogs',True),
     PathVariable('prefix', 'autotools-style installation prefix', "/usr/local", PathVariable.PathAccept),
     PathVariable('prefsdir', 'user preferences directory', ".wesnoth$version_suffix", PathVariable.PathAccept),
@@ -316,6 +317,9 @@ for env in [test_env, env]:
 
     if not env["editor"]:
         env.Append(CPPDEFINES = "DISABLE_EDITOR2")
+
+    if not env['lua']:
+        env.Append(CPPDEFINES = "DISABLE_LUA")
 
     if env["PLATFORM"] == "win32":
         env["pool_alloc"] = False
