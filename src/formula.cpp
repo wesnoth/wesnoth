@@ -678,6 +678,9 @@ expression_ptr parse_expression(const token* i1, const token* i2, function_symbo
 				++i1;
 			}
 			const std::string precond = "";
+			if(symbols == NULL) {
+				throw formula_error("Function symbol table required but not present", "",*i1->filename, i1->line_number);
+			}
 			symbols->add_formula_function(formula_name,
 					const_formula_ptr(new formula(beg, i1, symbols)),
 					formula::create_optional_formula(precond, symbols),
