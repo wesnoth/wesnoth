@@ -553,7 +553,8 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 		}
 		else
 		{
-			foreach (const std::string &hit_type, utils::split(anim["hits"]))
+			std::vector<std::string> v = utils::split(anim["hits"]);
+			foreach (const std::string &hit_type, v)
 			{
 				config tmp = anim;
 				tmp["hits"] = hit_type;
