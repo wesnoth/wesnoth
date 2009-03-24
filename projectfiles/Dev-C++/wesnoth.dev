@@ -1,7 +1,7 @@
 [Project]
 FileName=wesnoth.dev
 Name=wesnoth
-UnitCount=210
+UnitCount=213
 Type=0
 Ver=1
 ObjFiles=
@@ -11,14 +11,14 @@ ResourceIncludes=..\..\packaging\windows
 MakeIncludes=
 Compiler=_@@_
 CppCompiler=-DHAVE_PYTHON_@@_-DUSE_GZIP_@@_-DHAVE_FRIBIDI_@@_-DDISABLE_POOL_ALLOC_@@_-mthreads_@@_-march=native_@@_-fexceptions_@@_-O3_@@__@@__@@__@@__@@__@@_
-Linker=-lmingwthrd_@@_-lmingw32_@@_-mthreads_@@_-lSDLmain _@@_-lSDL _@@_-lSDL_image _@@_-lSDL_net _@@_-lSDL_mixer _@@_-lSDL_ttf_@@_-lfreetype _@@_-lintl _@@_-lpython25_@@_-lpng_@@_-lboost_iostreams_dw2_@@_-lboost_regex_dw2_@@_-lz_@@_-lws2_32_@@_-ljpeg_@@_-lfribidi_@@_-lpango-1.0_@@_-lpangocairo-1.0_@@_-lcairo_@@_-lgobject-2.0_@@_-lfontconfig_@@_-lglib-2.0_@@_
+Linker=-lmingwthrd_@@_-lmingw32_@@_-mthreads_@@_-lSDLmain _@@_-lSDL _@@_-lSDL_image _@@_-lSDL_net _@@_-lSDL_mixer _@@_-lSDL_ttf_@@_-lfreetype _@@_-lintl _@@_-lpython25_@@_-lpng_@@_-lboost_iostreams_dw2_@@_-lboost_regex_dw2_@@_-lz_@@_-lws2_32_@@_-ljpeg_@@_-lfribidi_@@_-lpango-1.0_@@_-lpangocairo-1.0_@@_-lcairo_@@_-lgobject-2.0_@@_-lfontconfig_@@_-lglib-2.0_@@_-llua51_@@_
 IsCpp=1
 Icon=
 ExeOutput=..\..
 ObjectOutput=
 OverrideOutput=1
 HostApplication=
-Folders=
+Folders=Headers,Headers/editor2,Headers/gui,Headers/gui/dialogs,Headers/gui/widgets,Headers/scripting,Headers/serialization,Headers/widgets,Others,Resources,Sources,Sources/editor2,Sources/gui,Sources/gui/dialogs,Sources/gui/widgets,Sources/scripting,Sources/serialization,Sources/widgets
 CommandLine=--log-info=all -t
 UseCustomMakefile=0
 CustomMakefile=
@@ -30,9 +30,9 @@ OverrideOutputName=wesnoth_dc.exe
 PrivateResource=wesnoth_private.rc
 
 [Unit27]
-FileName=..\..\src\image.cpp
+FileName=..\..\src\font.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -40,9 +40,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit29]
-FileName=..\..\src\font.cpp
+FileName=..\..\src\serialization\preprocessor.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources/serialization
 Compile=1
 Link=1
 Priority=1000
@@ -50,19 +50,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit37]
-FileName=..\..\src\serialization\binary_wml.cpp
+FileName=..\..\src\language.cpp
 CompileCpp=1
-Folder=wesnoth
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit40]
-FileName=..\..\src\preferences.cpp
-CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -70,9 +60,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit44]
-FileName=..\..\src\widgets\menu.cpp
+FileName=..\..\src\about.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -80,9 +70,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit48]
-FileName=..\..\src\statistics.cpp
+FileName=..\..\src\titlescreen.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -90,9 +80,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit53]
-FileName=..\..\src\titlescreen.cpp
+FileName=..\..\src\unit_animation.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -100,9 +90,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit56]
-FileName=..\..\src\preferences_display.cpp
+FileName=..\..\src\race.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -110,9 +100,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit70]
-FileName=..\..\src\sdl_utils.cpp
+FileName=..\..\src\replay_controller.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -120,9 +110,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit72]
-FileName=..\..\src\theme.cpp
+FileName=..\..\src\playsingle_controller.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -130,9 +120,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit73]
-FileName=..\..\src\variable.cpp
+FileName=..\..\src\play_controller.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -140,9 +130,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit78]
-FileName=..\..\src\play_controller.cpp
+FileName=..\..\src\mouse_events.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -150,19 +140,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit79]
-FileName=..\..\src\playmp_controller.cpp
+FileName=..\..\src\minimap.cpp
 CompileCpp=1
-Folder=wesnoth
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit80]
-FileName=..\..\src\network_worker.cpp
-CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -170,9 +150,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit85]
-FileName=..\..\src\minimap.cpp
+FileName=..\..\src\gui\widgets\window_builder.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources/gui/widgets
 Compile=1
 Link=1
 Priority=1000
@@ -180,9 +160,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit89]
-FileName=..\..\src\serialization\tokenizer.cpp
+FileName=..\..\src\variant.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -190,9 +170,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit92]
-FileName=..\..\src\gui\widgets\window_builder.cpp
+FileName=..\..\src\gui\widgets\control.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources/gui/widgets
 Compile=1
 Link=1
 Priority=1000
@@ -200,9 +180,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit93]
-FileName=..\..\src\gui\widgets\grid.cpp
+FileName=..\..\src\clipboard.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -210,9 +190,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit94]
-FileName=..\..\src\gui\widgets\listbox.cpp
+FileName=..\..\src\multiplayer_ui.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -220,9 +200,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit95]
-FileName=..\..\src\gui\widgets\window.cpp
+FileName=..\..\src\multiplayer_create.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -230,9 +210,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit96]
-FileName=..\..\src\variant.cpp
+FileName=..\..\src\multiplayer_connect.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -240,9 +220,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit98]
-FileName=..\..\src\gui\widgets\event_handler.cpp
+FileName=..\..\src\multiplayer_lobby.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -250,9 +230,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit100]
-FileName=..\..\src\widgets\scrollbar.cpp
+FileName=..\..\src\menu_events.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -260,19 +240,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit101]
-FileName=..\..\src\clipboard.cpp
+FileName=..\..\src\gui\widgets\text.cpp
 CompileCpp=1
-Folder=wesnoth
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit105]
-FileName=..\..\src\multiplayer_wait.cpp
-CompileCpp=1
-Folder=wesnoth
+Folder=Sources/gui/widgets
 Compile=1
 Link=1
 Priority=1000
@@ -280,9 +250,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit107]
-FileName=..\..\src\widgets\combo.cpp
+FileName=..\..\src\astarsearch.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -290,9 +260,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit108]
-FileName=..\..\src\widgets\slider.cpp
+FileName=..\..\src\reports.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -300,9 +270,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit109]
-FileName=..\..\src\menu_events.cpp
+FileName=..\..\src\unit_frame.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -310,9 +280,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit112]
-FileName=..\..\src\gui\widgets\text_box.cpp
+FileName=..\..\src\attack_prediction.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -320,9 +290,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit113]
-FileName=..\..\src\pathfind.cpp
+FileName=..\..\src\config_adapter.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -330,9 +300,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit118]
-FileName=..\..\src\reports.cpp
+FileName=..\..\src\soundsource.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -340,9 +310,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit119]
-FileName=..\..\src\unit_frame.cpp
+FileName=..\..\src\gui\widgets\canvas.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources/gui/widgets
 Compile=1
 Link=1
 Priority=1000
@@ -350,9 +320,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit120]
-FileName=..\..\src\terrain_filter.cpp
+FileName=..\..\src\gui\widgets\vertical_scrollbar.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources/gui/widgets
 Compile=1
 Link=1
 Priority=1000
@@ -360,9 +330,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit125]
-FileName=..\..\src\cavegen.cpp
+FileName=..\..\src\gui\widgets\scrollbar.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources/gui/widgets
 Compile=1
 Link=1
 Priority=1000
@@ -370,9 +340,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit126]
-FileName=..\..\src\floating_textbox.cpp
+FileName=..\..\src\formula_function.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -380,9 +350,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit128]
-FileName=..\..\src\soundsource.cpp
+FileName=..\..\src\leader_list.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -390,19 +360,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit131]
-FileName=..\..\src\gui\widgets\toggle_button.cpp
+FileName=..\..\src\ai_attack.cpp
 CompileCpp=1
-Folder=wesnoth
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit132]
-FileName=..\..\src\gui\widgets\button.cpp
-CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -410,9 +370,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit133]
-FileName=..\..\src\gui\widgets\panel.cpp
+FileName=..\..\src\ai_village.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -420,9 +380,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit134]
-FileName=..\..\src\gui\widgets\label.cpp
+FileName=..\..\src\ai_move.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -430,9 +390,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit135]
-FileName=..\..\src\gui\widgets\container.cpp
+FileName=..\..\src\astarnode.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -440,9 +400,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit136]
-FileName=..\..\src\gui\widgets\scrollbar.cpp
+FileName=..\..\src\mapgen.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -450,19 +410,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit137]
-FileName=..\..\src\formula_function.cpp
+FileName=..\..\src\gui\widgets\widget.cpp
 CompileCpp=1
-Folder=wesnoth
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit138]
-FileName=..\..\src\formula_tokenizer.cpp
-CompileCpp=1
-Folder=wesnoth
+Folder=Sources/gui/widgets
 Compile=1
 Link=1
 Priority=1000
@@ -470,9 +420,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit139]
-FileName=..\..\src\leader_list.cpp
+FileName=..\..\src\addon_management.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -480,9 +430,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit140]
-FileName=..\..\src\filechooser.cpp
+FileName=..\..\src\gui\dialogs\addon_connect.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources/gui/dialogs
 Compile=1
 Link=1
 Priority=1000
@@ -490,9 +440,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit141]
-FileName=..\..\src\formula_ai.cpp
+FileName=..\..\src\addon_checks.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -500,9 +450,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit143]
-FileName=..\..\src\ai_dfool.cpp
+FileName=..\..\src\gui\dialogs\mp_connect.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources/gui/dialogs
 Compile=1
 Link=1
 Priority=1000
@@ -510,9 +460,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit144]
-FileName=..\..\src\ai_village.cpp
+FileName=..\..\src\time_of_day.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -520,9 +470,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit146]
-FileName=..\..\src\astarnode.cpp
+FileName=..\..\src\text.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -530,9 +480,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit147]
-FileName=..\..\src\mapgen.cpp
+FileName=..\..\src\controller_base.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -540,9 +490,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit148]
-FileName=..\..\src\gui\widgets\widget.cpp
+FileName=..\..\src\portrait.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -550,9 +500,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit149]
-FileName=..\..\src\widgets\file_menu.cpp
+FileName=..\..\src\mouse_handler_base.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -560,19 +510,19 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit150]
-FileName=..\..\src\filesystem_win32.ii
+FileName=..\..\src\attack_prediction_display.cpp
 CompileCpp=1
-Folder=wesnoth
-Compile=0
-Link=0
+Folder=Sources
+Compile=1
+Link=1
 Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
 [Unit151]
-FileName=..\..\src\addon_management.cpp
+FileName=..\..\src\gui\widgets\slider.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources/gui/widgets
 Compile=1
 Link=1
 Priority=1000
@@ -580,9 +530,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit152]
-FileName=..\..\src\gui\dialogs\addon_connect.cpp
+FileName=..\..\src\gui\widgets\menubar.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources/gui/widgets
 Compile=1
 Link=1
 Priority=1000
@@ -590,9 +540,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit153]
-FileName=..\..\src\addon_checks.cpp
+FileName=..\..\src\statistics_dialog.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -600,9 +550,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit154]
-FileName=..\..\src\gui\dialogs\dialog.cpp
+FileName=..\..\src\gui\dialogs\mp_create_game.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources/gui/dialogs
 Compile=1
 Link=1
 Priority=1000
@@ -610,9 +560,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit160]
-FileName=..\..\src\portrait.cpp
+FileName=..\..\src\version.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -620,9 +570,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit162]
-FileName=..\..\src\attack_prediction_display.cpp
+FileName=..\..\src\gui\dialogs\title_screen.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources/gui/dialogs
 Compile=1
 Link=1
 Priority=1000
@@ -630,9 +580,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit165]
-FileName=..\..\src\statistics_dialog.cpp
+FileName=..\..\src\unit_id.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -640,9 +590,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit169]
-FileName=..\..\src\gui\widgets\tooltip.cpp
+FileName=..\..\src\gui\dialogs\message.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources/gui/dialogs
 Compile=1
 Link=1
 Priority=1000
@@ -650,9 +600,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit171]
-FileName=..\..\src\widgets\drop_target.cpp
+FileName=..\..\src\editor2\action.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources/editor2
 Compile=1
 Link=1
 Priority=1000
@@ -660,9 +610,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit172]
-FileName=..\..\src\version.cpp
+FileName=..\..\src\editor2\brush.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources/editor2
 Compile=1
 Link=1
 Priority=1000
@@ -670,9 +620,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit175]
-FileName=..\..\src\config_cache.cpp
+FileName=..\..\src\editor2\editor_layout.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources/editor2
 Compile=1
 Link=1
 Priority=1000
@@ -680,9 +630,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit176]
-FileName=..\..\src\network.cpp
+FileName=..\..\src\editor2\editor_main.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources/editor2
 Compile=1
 Link=1
 Priority=1000
@@ -690,9 +640,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit177]
-FileName=..\..\src\unit_id.cpp
+FileName=..\..\src\editor2\editor_map.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources/editor2
 Compile=1
 Link=1
 Priority=1000
@@ -700,9 +650,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit180]
-FileName=..\..\src\gui\widgets\image.cpp
+FileName=..\..\src\editor2\map_fragment.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources/editor2
 Compile=1
 Link=1
 Priority=1000
@@ -710,9 +660,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit181]
-FileName=..\..\src\gui\dialogs\message.cpp
+FileName=..\..\src\editor2\mouse_action.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources/editor2
 Compile=1
 Link=1
 Priority=1000
@@ -720,9 +670,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit182]
-FileName=..\..\src\map_location.cpp
+FileName=..\..\src\gui\dialogs\editor_resize_map.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources/gui/dialogs
 Compile=1
 Link=1
 Priority=1000
@@ -730,9 +680,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit183]
-FileName=..\..\src\editor2\action.cpp
+FileName=..\..\src\gui\dialogs\editor_generate_map.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources/gui/dialogs
 Compile=1
 Link=1
 Priority=1000
@@ -740,9 +690,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit184]
-FileName=..\..\src\editor2\brush.cpp
+FileName=..\..\src\gui\dialogs\editor_new_map.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources/gui/dialogs
 Compile=1
 Link=1
 Priority=1000
@@ -750,9 +700,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit185]
-FileName=..\..\src\editor2\editor_controller.cpp
+FileName=..\..\src\gui\dialogs\editor_settings.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources/gui/dialogs
 Compile=1
 Link=1
 Priority=1000
@@ -760,19 +710,19 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit186]
-FileName=..\..\src\editor2\editor_display.cpp
+FileName=..\..\packaging\windows\wesnoth.rc
 CompileCpp=1
-Folder=wesnoth
+Folder=Resources
 Compile=1
-Link=1
+Link=0
 Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
 [Unit188]
-FileName=..\..\src\editor2\editor_main.cpp
+FileName=..\..\src\gui\widgets\horizontal_scrollbar.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources/gui/widgets
 Compile=1
 Link=1
 Priority=1000
@@ -780,9 +730,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit189]
-FileName=..\..\src\editor2\editor_map.cpp
+FileName=..\..\src\gui\widgets\generator.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources/gui/widgets
 Compile=1
 Link=1
 Priority=1000
@@ -790,9 +740,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit190]
-FileName=..\..\src\editor2\editor_palettes.cpp
+FileName=..\..\src\formula_string_utils.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -800,9 +750,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit194]
-FileName=..\..\src\gui\dialogs\editor_resize_map.cpp
+FileName=..\..\src\malloc.c
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -810,9 +760,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit195]
-FileName=..\..\src\gui\dialogs\editor_generate_map.cpp
+FileName=..\..\src\poolalloc.c
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -820,9 +770,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit196]
-FileName=..\..\src\gui\dialogs\editor_new_map.cpp
+FileName=..\..\src\image_function.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -830,9 +780,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit197]
-FileName=..\..\src\gui\dialogs\editor_settings.cpp
+FileName=..\..\src\gui\dialogs\addon_list.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources/gui/dialogs
 Compile=1
 Link=1
 Priority=1000
@@ -840,19 +790,19 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit198]
-FileName=..\..\packaging\windows\wesnoth.rc
+FileName=..\..\src\gui\dialogs\campaign_selection.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources/gui/dialogs
 Compile=1
-Link=0
+Link=1
 Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
 [Unit199]
-FileName=..\..\src\gui\dialogs\wml_message.cpp
+FileName=..\..\src\scripting\lua.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources/scripting
 Compile=1
 Link=1
 Priority=1000
@@ -860,9 +810,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit200]
-FileName=..\..\src\gui\widgets\horizontal_scrollbar.cpp
+FileName=..\..\src\scripting\lua.hpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Headers/scripting
 Compile=1
 Link=1
 Priority=1000
@@ -870,9 +820,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit201]
-FileName=..\..\src\gui\widgets\generator.cpp
+FileName=..\..\src\gui\widgets\button.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources/gui/widgets
 Compile=1
 Link=1
 Priority=1000
@@ -880,9 +830,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit202]
-FileName=..\..\src\formula_string_utils.cpp
+FileName=..\..\src\widgets\button.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources/widgets
 Compile=1
 Link=1
 Priority=1000
@@ -890,9 +840,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit204]
-FileName=..\..\src\gui\dialogs\mp_cmd_wrapper.cpp
+FileName=..\..\src\widgets\file_menu.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources/widgets
 Compile=1
 Link=1
 Priority=1000
@@ -900,9 +850,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit206]
-FileName=..\..\src\malloc.c
+FileName=..\..\src\widgets\menu_style.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources/widgets
 Compile=1
 Link=1
 Priority=1000
@@ -910,9 +860,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit207]
-FileName=..\..\src\poolalloc.c
+FileName=..\..\src\widgets\progressbar.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources/widgets
 Compile=1
 Link=1
 Priority=1000
@@ -920,9 +870,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit208]
-FileName=..\..\src\image_function.cpp
+FileName=..\..\src\widgets\scrollarea.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources/widgets
 Compile=1
 Link=1
 Priority=1000
@@ -930,9 +880,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit209]
-FileName=..\..\src\gui\dialogs\addon_list.cpp
+FileName=..\..\src\widgets\scrollarea.hpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources/widgets
 Compile=1
 Link=1
 Priority=1000
@@ -940,9 +890,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit210]
-FileName=..\..\src\gui\dialogs\campaign_selection.cpp
+FileName=..\..\src\widgets\scrollbar.hpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources/widgets
 Compile=1
 Link=1
 Priority=1000
@@ -950,9 +900,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit211]
-FileName=..\..\src\unit_abilities.hpp
+FileName=..\..\src\widgets\scrollpane.hpp
 CompileCpp=1
-Folder=
+Folder=Sources/widgets
 Compile=1
 Link=1
 Priority=1000
@@ -960,9 +910,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit212]
-FileName=..\..\src\attack_prediction.hpp
+FileName=..\..\src\widgets\slider.hpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources/widgets
 Compile=1
 Link=1
 Priority=1000
@@ -970,9 +920,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit213]
-FileName=..\..\src\floating_textbox.cpp
+FileName=..\..\src\widgets\textbox.hpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources/widgets
 Compile=1
 Link=1
 Priority=1000
@@ -982,7 +932,7 @@ BuildCmd=
 [Unit214]
 FileName=..\..\src\floating_textbox.hpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -992,7 +942,7 @@ BuildCmd=
 [Unit215]
 FileName=..\..\src\play_controller.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -1002,7 +952,7 @@ BuildCmd=
 [Unit216]
 FileName=..\..\src\play_controller.hpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -1012,7 +962,7 @@ BuildCmd=
 [Unit217]
 FileName=..\..\src\playmp_controller.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -1022,7 +972,7 @@ BuildCmd=
 [Unit218]
 FileName=..\..\src\playmp_controller.hpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -1032,7 +982,7 @@ BuildCmd=
 [Unit219]
 FileName=..\..\src\playsingle_controller.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -1042,7 +992,7 @@ BuildCmd=
 [Unit220]
 FileName=..\..\src\playsingle_controller.hpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -1052,7 +1002,7 @@ BuildCmd=
 [Unit221]
 FileName=..\..\src\widgets\menu_style.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -1062,7 +1012,7 @@ BuildCmd=
 [Unit222]
 FileName=..\..\src\generic_event.hpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -1072,7 +1022,7 @@ BuildCmd=
 [Unit224]
 FileName=..\..\src\unit_frame.hpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -1098,9 +1048,9 @@ ProductVersion=
 AutoIncBuildNr=0
 
 [Unit166]
-FileName=..\..\src\gui\dialogs\mp_create_game.cpp
+FileName=..\..\src\gui\widgets\scroll_label.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources/gui/widgets
 Compile=1
 Link=1
 Priority=1000
@@ -1108,9 +1058,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit167]
-FileName=..\..\src\gui\widgets\minimap.cpp
+FileName=..\..\src\game_events.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -1120,7 +1070,7 @@ BuildCmd=
 [Unit227]
 FileName=..\..\src\widgets\file_menu.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources/widgets
 Compile=1
 Link=1
 Priority=1000
@@ -1130,7 +1080,7 @@ BuildCmd=
 [Unit228]
 FileName=..\..\src\widgets\file_menu.hpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources/widgets
 Compile=1
 Link=1
 Priority=1000
@@ -1140,7 +1090,7 @@ BuildCmd=
 [Unit226]
 FileName=..\..\src\unit_map.hpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -1150,7 +1100,7 @@ BuildCmd=
 [Unit229]
 FileName=..\..\src\unit_frame.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -1160,7 +1110,7 @@ BuildCmd=
 [Unit231]
 FileName=..\..\src\soundsource.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -1170,7 +1120,7 @@ BuildCmd=
 [Unit232]
 FileName=..\..\src\construct_dialog.hpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -1180,7 +1130,7 @@ BuildCmd=
 [Unit233]
 FileName=..\..\src\construct_dialog.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -1190,7 +1140,7 @@ BuildCmd=
 [Unit234]
 FileName=..\..\src\terrain_translation.hpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -1200,7 +1150,7 @@ BuildCmd=
 [Unit235]
 FileName=..\..\src\terrain_translation.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -1210,7 +1160,7 @@ BuildCmd=
 [Unit236]
 FileName=..\..\src\game_display.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -1220,7 +1170,7 @@ BuildCmd=
 [Unit230]
 FileName=..\..\src\soundsource.hpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -1230,7 +1180,7 @@ BuildCmd=
 [Unit237]
 FileName=..\..\src\game_display.hpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -1240,7 +1190,7 @@ BuildCmd=
 [Unit238]
 FileName=..\..\src\animated_game.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -1250,7 +1200,7 @@ BuildCmd=
 [Unit239]
 FileName=..\..\src\file_chooser.hpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -1260,7 +1210,7 @@ BuildCmd=
 [Unit241]
 FileName=..\..\src\construct_dialog.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -1270,7 +1220,7 @@ BuildCmd=
 [Unit242]
 FileName=..\..\src\construct_dialog.hpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -1280,7 +1230,7 @@ BuildCmd=
 [Unit241]
 FileName=..\..\src\terrain_filter.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -1290,7 +1240,7 @@ BuildCmd=
 [Unit242]
 FileName=..\..\src\terrain_filter.hpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -1300,7 +1250,7 @@ BuildCmd=
 [Unit243]
 FileName=..\..\src\game_preferences.hpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -1310,7 +1260,7 @@ BuildCmd=
 [Unit245]
 FileName=..\..\src\game_preferences.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -1320,7 +1270,7 @@ BuildCmd=
 [Unit246]
 FileName=..\..\src\game_preferences_display.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -1330,7 +1280,7 @@ BuildCmd=
 [Unit247]
 FileName=..\..\src\sha1.hpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -1340,7 +1290,7 @@ BuildCmd=
 [Unit248]
 FileName=..\..\src\sha1.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -1350,7 +1300,7 @@ BuildCmd=
 [Unit249]
 FileName=..\..\src\settings.hpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -1360,7 +1310,7 @@ BuildCmd=
 [Unit250]
 FileName=..\..\src\settings.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -1370,7 +1320,7 @@ BuildCmd=
 [Unit251]
 FileName=..\..\src\wml_exception.hpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -1380,7 +1330,7 @@ BuildCmd=
 [Unit244]
 FileName=..\..\src\astarsearch.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -1390,7 +1340,7 @@ BuildCmd=
 [Unit252]
 FileName=..\..\src\wml_exception.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -1400,7 +1350,7 @@ BuildCmd=
 [Unit253]
 FileName=..\..\src\ai_village.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -1410,7 +1360,7 @@ BuildCmd=
 [Unit254]
 FileName=..\..\src\variant.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -1420,7 +1370,7 @@ BuildCmd=
 [Unit255]
 FileName=..\..\src\callable_objects.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -1430,7 +1380,7 @@ BuildCmd=
 [Unit256]
 FileName=..\..\src\formula.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -1440,7 +1390,7 @@ BuildCmd=
 [Unit257]
 FileName=..\..\src\formula_ai.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -1450,7 +1400,7 @@ BuildCmd=
 [Unit258]
 FileName=..\..\src\formula_function.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -1460,7 +1410,7 @@ BuildCmd=
 [Unit259]
 FileName=..\..\src\formula_tokenizer.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -1468,9 +1418,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit24]
-FileName=..\..\src\sound.cpp
+FileName=..\..\src\hotkeys.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -1478,19 +1428,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit43]
-FileName=..\..\src\gui\dialogs\mp_method_selection.cpp
+FileName=..\..\src\statistics.cpp
 CompileCpp=1
-Folder=wesnoth
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit45]
-FileName=..\..\src\widgets\button.cpp
-CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -1498,9 +1438,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit46]
-FileName=..\..\src\random.cpp
+FileName=..\..\src\util.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -1508,9 +1448,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit55]
-FileName=..\..\src\help.cpp
+FileName=..\..\src\unit_abilities.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -1518,9 +1458,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit61]
-FileName=..\..\src\race.cpp
+FileName=..\..\src\animated_game.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -1528,9 +1468,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit63]
-FileName=..\..\src\actions.cpp
+FileName=..\..\src\team.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -1538,9 +1478,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit64]
-FileName=..\..\src\map_label.cpp
+FileName=..\..\src\halo.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -1548,9 +1488,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit83]
-FileName=..\..\src\widgets\scrollarea.cpp
+FileName=..\..\src\gui\widgets\helper.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources/gui/widgets
 Compile=1
 Link=1
 Priority=1000
@@ -1558,9 +1498,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit116]
-FileName=..\..\src\generic_event.cpp
+FileName=..\..\src\floating_textbox.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -1568,9 +1508,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit117]
-FileName=..\..\src\astarsearch.cpp
+FileName=..\..\src\playturn.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -1578,9 +1518,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit127]
-FileName=..\..\src\playturn.cpp
+FileName=..\..\src\formula_tokenizer.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -1588,9 +1528,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit156]
-FileName=..\..\src\time_of_day.cpp
+FileName=..\..\src\gui\widgets\spacer.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources/gui/widgets
 Compile=1
 Link=1
 Priority=1000
@@ -1598,9 +1538,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit158]
-FileName=..\..\src\text.cpp
+FileName=..\..\src\widgets\combo_drag.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources/widgets
 Compile=1
 Link=1
 Priority=1000
@@ -1608,9 +1548,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit159]
-FileName=..\..\src\controller_base.cpp
+FileName=..\..\src\widgets\drop_target.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources/widgets
 Compile=1
 Link=1
 Priority=1000
@@ -1618,9 +1558,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit161]
-FileName=..\..\src\mouse_handler_base.cpp
+FileName=..\..\src\md5.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -1630,7 +1570,7 @@ BuildCmd=
 [Unit1]
 FileName=..\..\src\game.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -1640,7 +1580,7 @@ BuildCmd=
 [Unit2]
 FileName=..\..\src\config.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -1650,7 +1590,7 @@ BuildCmd=
 [Unit3]
 FileName=..\..\src\unit_types.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -1660,7 +1600,7 @@ BuildCmd=
 [Unit4]
 FileName=..\..\src\unit_map.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -1670,7 +1610,7 @@ BuildCmd=
 [Unit5]
 FileName=..\..\src\log.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -1680,7 +1620,7 @@ BuildCmd=
 [Unit6]
 FileName=..\..\src\video.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -1690,7 +1630,7 @@ BuildCmd=
 [Unit7]
 FileName=..\..\src\game_display.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -1700,7 +1640,7 @@ BuildCmd=
 [Unit8]
 FileName=..\..\src\gamestatus.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -1710,7 +1650,7 @@ BuildCmd=
 [Unit9]
 FileName=..\..\src\map.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -1720,7 +1660,7 @@ BuildCmd=
 [Unit10]
 FileName=..\..\src\filesystem.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -1730,7 +1670,7 @@ BuildCmd=
 [Unit11]
 FileName=..\..\src\playcampaign.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -1740,7 +1680,7 @@ BuildCmd=
 [Unit12]
 FileName=..\..\src\wml_exception.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -1750,7 +1690,7 @@ BuildCmd=
 [Unit13]
 FileName=..\..\src\tstring.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -1760,7 +1700,7 @@ BuildCmd=
 [Unit15]
 FileName=..\..\src\show_dialog.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -1770,7 +1710,7 @@ BuildCmd=
 [Unit16]
 FileName=..\..\src\serialization\string_utils.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources/serialization
 Compile=1
 Link=1
 Priority=1000
@@ -1780,7 +1720,7 @@ BuildCmd=
 [Unit17]
 FileName=..\..\src\construct_dialog.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -1790,7 +1730,7 @@ BuildCmd=
 [Unit18]
 FileName=..\..\src\dialogs.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -1800,27 +1740,7 @@ BuildCmd=
 [Unit20]
 FileName=..\..\src\upload_log.cpp
 CompileCpp=1
-Folder=wesnoth
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit21]
-FileName=..\..\src\widgets\widget.cpp
-CompileCpp=1
-Folder=wesnoth
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit22]
-FileName=..\..\src\tooltips.cpp
-CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -1828,9 +1748,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit23]
-FileName=..\..\src\widgets\menu_style.cpp
+FileName=..\..\src\events.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -1838,9 +1758,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit25]
-FileName=..\..\src\events.cpp
+FileName=..\..\src\image.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -1848,9 +1768,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit26]
-FileName=..\..\src\hotkeys.cpp
+FileName=..\..\src\game_preferences.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -1858,9 +1778,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit28]
-FileName=..\..\src\game_preferences.cpp
+FileName=..\..\src\thread.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -1868,9 +1788,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit30]
-FileName=..\..\src\thread.cpp
+FileName=..\..\src\loadscreen.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -1878,9 +1798,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit31]
-FileName=..\..\src\serialization\preprocessor.cpp
+FileName=..\..\src\serialization\parser.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources/serialization
 Compile=1
 Link=1
 Priority=1000
@@ -1888,9 +1808,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit32]
-FileName=..\..\src\loadscreen.cpp
+FileName=..\..\src\marked-up_text.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -1898,9 +1818,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit33]
-FileName=..\..\src\serialization\parser.cpp
+FileName=..\..\src\cursor.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -1908,9 +1828,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit34]
-FileName=..\..\src\marked-up_text.cpp
+FileName=..\..\src\sha1.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -1918,9 +1838,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit35]
-FileName=..\..\src\cursor.cpp
+FileName=..\..\src\serialization\binary_wml.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources/serialization
 Compile=1
 Link=1
 Priority=1000
@@ -1928,9 +1848,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit36]
-FileName=..\..\src\sha1.cpp
+FileName=..\..\src\gui\dialogs\language_selection.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources/gui/dialogs
 Compile=1
 Link=1
 Priority=1000
@@ -1938,9 +1858,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit38]
-FileName=..\..\src\gui\dialogs\language_selection.cpp
+FileName=..\..\src\preferences.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -1948,19 +1868,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit39]
-FileName=..\..\src\language.cpp
+FileName=..\..\src\multiplayer.cpp
 CompileCpp=1
-Folder=wesnoth
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit41]
-FileName=..\..\src\widgets\textbox.cpp
-CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -1968,9 +1878,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit42]
-FileName=..\..\src\multiplayer.cpp
+FileName=..\..\src\replay.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -1978,9 +1888,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit49]
-FileName=..\..\src\about.cpp
+FileName=..\..\src\display.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -1988,9 +1898,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit50]
-FileName=..\..\src\intro.cpp
+FileName=..\..\src\help.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -1998,9 +1908,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit51]
-FileName=..\..\src\util.cpp
+FileName=..\..\src\preferences_display.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -2008,9 +1918,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit52]
-FileName=..\..\src\serialization\binary_or_text.cpp
+FileName=..\..\src\game_preferences_display.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -2018,9 +1928,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit54]
-FileName=..\..\src\display.cpp
+FileName=..\..\src\terrain_translation.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -2028,9 +1938,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit57]
-FileName=..\..\src\game_preferences_display.cpp
+FileName=..\..\src\unit.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -2038,9 +1948,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit58]
-FileName=..\..\src\unit_animation.cpp
+FileName=..\..\src\actions.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -2048,9 +1958,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit59]
-FileName=..\..\src\terrain_translation.cpp
+FileName=..\..\src\map_label.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -2058,9 +1968,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit60]
-FileName=..\..\src\unit_abilities.cpp
+FileName=..\..\src\pathutils.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -2068,9 +1978,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit62]
-FileName=..\..\src\unit.cpp
+FileName=..\..\src\builder.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -2078,9 +1988,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit65]
-FileName=..\..\src\pathutils.cpp
+FileName=..\..\src\sdl_utils.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -2088,9 +1998,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit66]
-FileName=..\..\src\animated_game.cpp
+FileName=..\..\src\generate_report.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -2098,9 +2008,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit67]
-FileName=..\..\src\builder.cpp
+FileName=..\..\src\theme.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -2108,9 +2018,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit68]
-FileName=..\..\src\team.cpp
+FileName=..\..\src\variable.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -2118,9 +2028,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit69]
-FileName=..\..\src\halo.cpp
+FileName=..\..\src\terrain.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -2128,9 +2038,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit71]
-FileName=..\..\src\generate_report.cpp
+FileName=..\..\src\map_create.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -2138,9 +2048,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit74]
-FileName=..\..\src\terrain.cpp
+FileName=..\..\src\playmp_controller.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -2148,9 +2058,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit75]
-FileName=..\..\src\replay_controller.cpp
+FileName=..\..\src\network_worker.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -2158,9 +2068,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit76]
-FileName=..\..\src\map_create.cpp
+FileName=..\..\src\widgets\label.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources/widgets
 Compile=1
 Link=1
 Priority=1000
@@ -2168,9 +2078,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit77]
-FileName=..\..\src\playsingle_controller.cpp
+FileName=..\..\src\key.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -2178,19 +2088,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit81]
-FileName=..\..\src\widgets\label.cpp
+FileName=..\..\src\settings.cpp
 CompileCpp=1
-Folder=wesnoth
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit82]
-FileName=..\..\src\key.cpp
-CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -2198,9 +2098,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit84]
-FileName=..\..\src\mouse_events.cpp
+FileName=..\..\src\gui\widgets\settings.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources/gui/widgets
 Compile=1
 Link=1
 Priority=1000
@@ -2208,9 +2108,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit87]
-FileName=..\..\src\color_range.cpp
+FileName=..\..\src\gui\widgets\listbox.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources/gui/widgets
 Compile=1
 Link=1
 Priority=1000
@@ -2218,9 +2118,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit88]
-FileName=..\..\src\settings.cpp
+FileName=..\..\src\gui\widgets\window.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources/gui/widgets
 Compile=1
 Link=1
 Priority=1000
@@ -2228,9 +2128,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit90]
-FileName=..\..\src\gui\widgets\helper.cpp
+FileName=..\..\src\formula.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -2238,19 +2138,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit91]
-FileName=..\..\src\gui\widgets\settings.cpp
+FileName=..\..\src\gui\widgets\event_handler.cpp
 CompileCpp=1
-Folder=wesnoth
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit97]
-FileName=..\..\src\formula.cpp
-CompileCpp=1
-Folder=wesnoth
+Folder=Sources/gui/widgets
 Compile=1
 Link=1
 Priority=1000
@@ -2258,9 +2148,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit99]
-FileName=..\..\src\gui\widgets\control.cpp
+FileName=..\..\src\widgets\combo.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources/widgets
 Compile=1
 Link=1
 Priority=1000
@@ -2268,9 +2158,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit102]
-FileName=..\..\src\multiplayer_ui.cpp
+FileName=..\..\src\gui\widgets\text_box.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources/gui/widgets
 Compile=1
 Link=1
 Priority=1000
@@ -2278,9 +2168,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit103]
-FileName=..\..\src\multiplayer_create.cpp
+FileName=..\..\src\pathfind.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -2288,19 +2178,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit104]
-FileName=..\..\src\multiplayer_connect.cpp
+FileName=..\..\src\unit_display.cpp
 CompileCpp=1
-Folder=wesnoth
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit106]
-FileName=..\..\src\multiplayer_lobby.cpp
-CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -2308,9 +2188,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit110]
-FileName=..\..\src\widgets\scrollpane.cpp
+FileName=..\..\src\terrain_filter.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -2318,9 +2198,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit111]
-FileName=..\..\src\gui\widgets\text.cpp
+FileName=..\..\src\callable_objects.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -2328,9 +2208,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit114]
-FileName=..\..\src\unit_display.cpp
+FileName=..\..\src\mapgen_dialog.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -2338,9 +2218,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit115]
-FileName=..\..\src\ai.cpp
+FileName=..\..\src\cavegen.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -2348,9 +2228,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit121]
-FileName=..\..\src\callable_objects.cpp
+FileName=..\..\src\gui\widgets\toggle_button.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources/gui/widgets
 Compile=1
 Link=1
 Priority=1000
@@ -2358,9 +2238,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit122]
-FileName=..\..\src\attack_prediction.cpp
+FileName=..\..\src\gui\widgets\panel.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources/gui/widgets
 Compile=1
 Link=1
 Priority=1000
@@ -2368,9 +2248,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit123]
-FileName=..\..\src\config_adapter.cpp
+FileName=..\..\src\gui\widgets\label.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources/gui/widgets
 Compile=1
 Link=1
 Priority=1000
@@ -2378,9 +2258,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit124]
-FileName=..\..\src\mapgen_dialog.cpp
+FileName=..\..\src\gui\widgets\container.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources/gui/widgets
 Compile=1
 Link=1
 Priority=1000
@@ -2388,9 +2268,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit129]
-FileName=..\..\src\gui\widgets\canvas.cpp
+FileName=..\..\src\filechooser.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -2398,9 +2278,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit130]
-FileName=..\..\src\gui\widgets\vertical_scrollbar.cpp
+FileName=..\..\src\formula_ai.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -2408,9 +2288,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit142]
-FileName=..\..\src\ai_attack.cpp
+FileName=..\..\src\gui\dialogs\dialog.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources/gui/dialogs
 Compile=1
 Link=1
 Priority=1000
@@ -2418,9 +2298,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit145]
-FileName=..\..\src\ai_move.cpp
+FileName=..\..\src\gui\widgets\toggle_panel.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources/gui/widgets
 Compile=1
 Link=1
 Priority=1000
@@ -2428,9 +2308,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit47]
-FileName=..\..\src\replay.cpp
+FileName=..\..\src\serialization\binary_or_text.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources/serialization
 Compile=1
 Link=1
 Priority=1000
@@ -2438,9 +2318,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit155]
-FileName=..\..\src\gui\dialogs\mp_connect.cpp
+FileName=..\..\src\gui\widgets\minimap.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources/gui/widgets
 Compile=1
 Link=1
 Priority=1000
@@ -2450,7 +2330,7 @@ BuildCmd=
 [Unit19]
 FileName=..\..\src\game_config.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -2458,9 +2338,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit157]
-FileName=..\..\src\gui\widgets\toggle_panel.cpp
+FileName=..\..\src\gui\widgets\tooltip.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources/gui/widgets
 Compile=1
 Link=1
 Priority=1000
@@ -2468,9 +2348,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit163]
-FileName=..\..\src\gui\widgets\slider.cpp
+FileName=..\..\src\config_cache.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -2478,9 +2358,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit164]
-FileName=..\..\src\gui\widgets\menubar.cpp
+FileName=..\..\src\network.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -2488,9 +2368,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit168]
-FileName=..\..\src\gui\widgets\spacer.cpp
+FileName=..\..\src\gui\widgets\image.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources/gui/widgets
 Compile=1
 Link=1
 Priority=1000
@@ -2498,9 +2378,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit170]
-FileName=..\..\src\widgets\combo_drag.cpp
+FileName=..\..\src\map_location.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -2508,9 +2388,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit173]
-FileName=..\..\src\md5.cpp
+FileName=..\..\src\editor2\editor_controller.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources/editor2
 Compile=1
 Link=1
 Priority=1000
@@ -2518,9 +2398,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit174]
-FileName=..\..\src\gui\dialogs\title_screen.cpp
+FileName=..\..\src\editor2\editor_display.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources/editor2
 Compile=1
 Link=1
 Priority=1000
@@ -2528,9 +2408,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit179]
-FileName=..\..\src\game_events.cpp
+FileName=..\..\src\editor2\map_context.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources/editor2
 Compile=1
 Link=1
 Priority=1000
@@ -2540,7 +2420,7 @@ BuildCmd=
 [Unit14]
 FileName=..\..\src\gettext.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources
 Compile=1
 Link=1
 Priority=1000
@@ -2548,9 +2428,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit178]
-FileName=..\..\src\gui\widgets\scroll_label.cpp
+FileName=..\..\src\editor2\editor_palettes.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources/editor2
 Compile=1
 Link=1
 Priority=1000
@@ -2558,9 +2438,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit86]
-FileName=..\..\src\widgets\progressbar.cpp
+FileName=..\..\src\gui\widgets\grid.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources/gui/widgets
 Compile=1
 Link=1
 Priority=1000
@@ -2568,9 +2448,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit187]
-FileName=..\..\src\editor2\editor_layout.cpp
+FileName=..\..\src\gui\dialogs\wml_message.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources/gui/dialogs
 Compile=1
 Link=1
 Priority=1000
@@ -2578,9 +2458,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit191]
-FileName=..\..\src\editor2\map_context.cpp
+FileName=..\..\src\gui\widgets\scrollbar_container.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources/gui/widgets
 Compile=1
 Link=1
 Priority=1000
@@ -2588,9 +2468,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit192]
-FileName=..\..\src\editor2\map_fragment.cpp
+FileName=..\..\src\gui\dialogs\mp_cmd_wrapper.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources/gui/dialogs
 Compile=1
 Link=1
 Priority=1000
@@ -2598,9 +2478,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit193]
-FileName=..\..\src\editor2\mouse_action.cpp
+FileName=..\..\src\gui\widgets\password_box.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources/gui/widgets
 Compile=1
 Link=1
 Priority=1000
@@ -2608,9 +2488,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit203]
-FileName=..\..\src\gui\widgets\scrollbar_container.cpp
+FileName=..\..\src\widgets\widget.hpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources/widgets
 Compile=1
 Link=1
 Priority=1000
@@ -2618,11 +2498,130 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit205]
-FileName=..\..\src\gui\widgets\password_box.cpp
+FileName=..\..\src\widgets\menu.cpp
 CompileCpp=1
-Folder=wesnoth
+Folder=Sources/widgets
 Compile=1
 Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit21]
+FileName=..\..\src\tooltips.cpp
+CompileCpp=1
+Folder=Sources
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit22]
+FileName=..\..\src\sound.cpp
+CompileCpp=1
+Folder=Sources
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit40]
+FileName=..\..\src\gui\dialogs\mp_method_selection.cpp
+CompileCpp=1
+Folder=Sources/gui/dialogs
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit41]
+FileName=..\..\src\random.cpp
+CompileCpp=1
+Folder=Sources
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit45]
+FileName=..\..\src\intro.cpp
+CompileCpp=1
+Folder=Sources
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit80]
+FileName=..\..\src\color_range.cpp
+CompileCpp=1
+Folder=Sources
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit82]
+FileName=..\..\src\serialization\tokenizer.cpp
+CompileCpp=1
+Folder=Sources/serialization
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit97]
+FileName=..\..\src\multiplayer_wait.cpp
+CompileCpp=1
+Folder=Sources
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit105]
+FileName=..\..\src\ai.cpp
+CompileCpp=1
+Folder=Sources
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit106]
+FileName=..\..\src\generic_event.cpp
+CompileCpp=1
+Folder=Sources
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit132]
+FileName=..\..\src\ai_dfool.cpp
+CompileCpp=1
+Folder=Sources
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit138]
+FileName=..\..\src\filesystem_win32.ii
+Folder=Others
+Compile=0
+Link=0
 Priority=1000
 OverrideBuildCmd=0
 BuildCmd=

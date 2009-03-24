@@ -61,7 +61,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="libintl.lib SDL.lib SDL_image.lib SDL_ttf.lib SDL_mixer.lib SDL_net.lib cairo.lib winmm.lib ws2_32.lib jpeg.lib libpng.lib libogg.lib libvorbisfile.lib SDLmain.lib pango-1.0.lib pangocairo-1.0.lib freetype.lib gobject-2.0.lib python26.lib glib-2.0.lib"
+				AdditionalDependencies="libintl.lib SDL.lib SDL_image.lib SDL_ttf.lib SDL_mixer.lib SDL_net.lib cairo.lib winmm.lib ws2_32.lib jpeg.lib libpng.lib libogg.lib libvorbisfile.lib SDLmain.lib pango-1.0.lib pangocairo-1.0.lib freetype.lib gobject-2.0.lib python26.lib glib-2.0.lib lua51.lib"
 				LinkIncremental="2"
 				AdditionalLibraryDirectories=""
 				GenerateDebugInformation="true"
@@ -140,7 +140,7 @@
 				Name="VCLinkerTool"
 				IgnoreImportLibrary="true"
 				LinkLibraryDependencies="false"
-				AdditionalDependencies="libintl.lib SDL.lib SDL_image.lib SDL_ttf.lib SDL_mixer.lib SDL_net.lib cairo.lib winmm.lib ws2_32.lib jpeg.lib libpng.lib libogg.lib libvorbisfile.lib SDLmain.lib pango-1.0.lib pangocairo-1.0.lib freetype.lib gobject-2.0.lib python26.lib glib-2.0.lib"
+				AdditionalDependencies="libintl.lib SDL.lib SDL_image.lib SDL_ttf.lib SDL_mixer.lib SDL_net.lib cairo.lib winmm.lib ws2_32.lib jpeg.lib libpng.lib libogg.lib libvorbisfile.lib SDLmain.lib pango-1.0.lib pangocairo-1.0.lib freetype.lib gobject-2.0.lib python26.lib glib-2.0.lib lua51.lib"
 				AdditionalLibraryDirectories=""
 				GenerateDebugInformation="true"
 				SubSystem="2"
@@ -216,7 +216,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="libintl.lib SDL.lib SDL_image.lib SDL_ttf.lib SDL_mixer.lib SDL_net.lib cairo.lib winmm.lib ws2_32.lib jpeg.lib libpng.lib libogg.lib libvorbisfile.lib SDLmain.lib pango-1.0.lib pangocairo-1.0.lib freetype.lib gobject-2.0.lib python26.lib glib-2.0.lib"
+				AdditionalDependencies="libintl.lib SDL.lib SDL_image.lib SDL_ttf.lib SDL_mixer.lib SDL_net.lib cairo.lib winmm.lib ws2_32.lib jpeg.lib libpng.lib libogg.lib libvorbisfile.lib SDLmain.lib pango-1.0.lib pangocairo-1.0.lib freetype.lib gobject-2.0.lib python26.lib glib-2.0.lib lua51.lib"
 				LinkIncremental="2"
 				AdditionalLibraryDirectories=""
 				GenerateDebugInformation="true"
@@ -2666,6 +2666,14 @@
 					</FileConfiguration>
 				</File>
 			</Filter>
+			<Filter
+				Name="Scripting"
+				>
+				<File
+					RelativePath="..\..\src\scripting\lua.cpp"
+					>
+				</File>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="Resource Files"
@@ -3386,6 +3394,14 @@
 				</File>
 				<File
 					RelativePath="..\..\src\widgets\slider.hpp"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="Scripting"
+				>
+				<File
+					RelativePath="..\..\src\scripting\lua.hpp"
 					>
 				</File>
 			</Filter>

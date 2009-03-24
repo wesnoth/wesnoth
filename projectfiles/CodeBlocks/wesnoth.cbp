@@ -63,6 +63,7 @@
 			<Add library="gobject-2.0" />
 			<Add library="fontconfig" />
 			<Add library="libglib-2.0" />
+			<Add library="lua51" />
 		</Linker>
 		<Unit filename="..\..\packaging\windows\wesnoth.rc">
 			<Option compilerVar="WINDRES" />
@@ -357,6 +358,8 @@
 		<Unit filename="..\..\src\reports.cpp" />
 		<Unit filename="..\..\src\reports.hpp" />
 		<Unit filename="..\..\src\scoped_resource.hpp" />
+		<Unit filename="..\..\src\scripting\lua.cpp" />
+		<Unit filename="..\..\src\scripting\lua.hpp" />
 		<Unit filename="..\..\src\sdl_utils.cpp" />
 		<Unit filename="..\..\src\sdl_utils.hpp" />
 		<Unit filename="..\..\src\serialization\binary_or_text.cpp" />
