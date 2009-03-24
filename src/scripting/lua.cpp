@@ -39,11 +39,11 @@ extern "C" {
 
 #include <cassert>
 #include <cstring>
-#include <iostream>
 
 #include "filesystem.hpp"
 #include "foreach.hpp"
 #include "gamestatus.hpp"
+#include "log.hpp"
 #include "scripting/lua.hpp"
 #include "unit.hpp"
 
@@ -518,7 +518,7 @@ static int lua_dofile(lua_State *L)
 static int lua_message(lua_State *L)
 {
 	char const *m = luaL_checkstring(L, 1);
-	std::cerr << "Lua script says: \"" << m << "\"\n";
+	LOG_STREAM(info, lua) << "Script says: \"" << m << "\"\n";
 	return 0;
 }
 
@@ -689,8 +689,9 @@ void LuaKernel::execute(char const *prog, int nArgs, int nRets)
 	int res = luaL_loadstring(L, prog);
 	if (res)
 	{
-		std::cerr << "Failure while loading Lua script: "
-		          << lua_tostring(L, -1) << '\n';
+		LOG_STREAM(err, lua)
+			<< "Failure while loading Lua script: "
+			<< lua_tostring(L, -1) << '\n';
 		lua_pop(L, 2);
 		return;
 	}
@@ -702,8 +703,9 @@ void LuaKernel::execute(char const *prog, int nArgs, int nRets)
 	res = lua_pcall(L, nArgs, nRets, -2 - nArgs);
 	if (res)
 	{
-		std::cerr << "Failure while running Lua script: "
-		          << lua_tostring(L, -1) << '\n';
+		LOG_STREAM(err, lua)
+			<< "Failure while running Lua script: "
+			<< lua_tostring(L, -1) << '\n';
 		lua_pop(L, 2);
 		return;
 	}
