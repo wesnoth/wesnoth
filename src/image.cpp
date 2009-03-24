@@ -618,6 +618,14 @@ surface locator::load_image_sub_file() const
 					const int b = lexical_cast_default<int>(field);
 					functor_queue.push_back(new cs_function(0,0,b));
 				}
+				// Fake image function used by GUI2 portraits until
+				// Mordante gets rid of it. *tsk* *tsk*
+				else if("RIGHT" == function) {
+					;
+				}
+				else {
+					ERR_DP << "unknown image function in path: " << function << '\n';
+				}
 			}
 		}
 
