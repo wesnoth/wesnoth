@@ -17,8 +17,8 @@ msgstr ""
 "Project-Id-Version: wesnoth-lib.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-03-20 00:45+0100\n"
-"PO-Revision-Date: 2009-03-17 23:18+0300\n"
-"Last-Translator: Fedor Khod'kov <fedor76@istra.ru>\n"
+"PO-Revision-Date: 2009-03-24 20:28+0300\n"
+"Last-Translator: Victor Sergienko <singalen@gmail.com>\n"
 "Language-Team:  <http://bugs.wesnoth.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -408,7 +408,7 @@ msgstr "Подключиться к серверу"
 #. [label]
 #: data/gui/default/window/addon_connect.cfg:51
 msgid "You will now connect to a server to download add-ons."
-msgstr "Теперь подключимся к серверу и загрузим дополнения."
+msgstr "Теперь подключимся к серверу и загрузим аддоны."
 
 #. [label]
 #: data/gui/default/window/addon_connect.cfg:81
@@ -420,13 +420,13 @@ msgstr "Сервер:"
 #: data/gui/default/window/addon_connect.cfg:135
 #: data/gui/default/window/addon_connect.cfg:136
 msgid "Update add-ons"
-msgstr "Обновить дополнения"
+msgstr "Обновить аддоны"
 
 #. [button]
 #: data/gui/default/window/addon_connect.cfg:168
 #: data/gui/default/window/addon_connect.cfg:169
 msgid "Remove Add-ons"
-msgstr "Удалить дополнения"
+msgstr "Удалить аддоны"
 
 #. [button]: id=ok
 #: data/gui/default/window/addon_connect.cfg:201
@@ -919,7 +919,7 @@ msgstr "Дорога"
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:81
 msgid "Add-ons"
-msgstr "Дополнения"
+msgstr "Аддоны"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:82
@@ -995,7 +995,7 @@ msgstr "На весь экран"
 
 #: src/game_preferences_display.cpp:152
 msgid "Enable scroll tracking of unit actions"
-msgstr "Сдвикать карту, показывая действия бойцов"
+msgstr "Прокручивать карту, показывая действия бойцов"
 
 #: src/game_preferences_display.cpp:153
 msgid "Accelerated Speed"
@@ -1067,7 +1067,7 @@ msgstr "Показывать цвета команд"
 
 #: src/game_preferences_display.cpp:174
 msgid "Show Color Cursors"
-msgstr "Показывать цветные курсоры"
+msgstr "Включить цветные курсоры"
 
 #: src/game_preferences_display.cpp:175
 msgid "Show Haloing Effects"
@@ -1356,7 +1356,7 @@ msgstr "неограничено"
 
 #: src/game_preferences_display.cpp:863
 msgid "Chat Lines: "
-msgstr "Линии чата: "
+msgstr "Строк в чате:"
 
 #: src/game_preferences_display.cpp:885 src/game_preferences_display.cpp:893
 msgid "Invalid username"
@@ -1473,7 +1473,7 @@ msgstr "Сетка не определена."
 
 #: src/gui/widgets/window.cpp:609
 msgid "Failed to show a dialog, which doesn't fit on the screen."
-msgstr ""
+msgstr "Не могу показать диалог, он не помещается на экране."
 
 #: src/gui/widgets/window_builder.cpp:533
 msgid "A row must have a column."
