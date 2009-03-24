@@ -1,9 +1,9 @@
-#check for some playtform specific things and export defines accordingly...
+#check for some platform specific things and export defines accordingly...
 #done basically the same was as AC_CHECK_HEADERS and AC_CHECK_FUNCS in configure.ac
 #the file is basically built upon the info available at
 #http://www.vtk.org/Wiki/CMake_HowToDoPlatformChecks
-INCLUDE(CheckIncludeFiles) 
-INCLUDE(CheckFunctionExists) 
+INCLUDE(CheckIncludeFiles)
+INCLUDE(CheckFunctionExists)
 INCLUDE(CheckLibraryExists)
 
 #the two includes below seem to not be required, those headers are checked for
