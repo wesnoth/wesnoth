@@ -73,20 +73,20 @@ unsigned get_h_align(const std::string& h_align)
 
 unsigned get_border(const std::vector<std::string>& border)
 {
-	if(std::find(border.begin(), border.end(), "all") != border.end()) {
+	if(std::find(border.begin(), border.end(), std::string("all")) != border.end()) {
 		return tgrid::BORDER_TOP
 			| tgrid::BORDER_BOTTOM | tgrid::BORDER_LEFT | tgrid::BORDER_RIGHT;
 	} else {
-		if(std::find(border.begin(), border.end(), "top") != border.end()) {
+		if(std::find(border.begin(), border.end(), std::string("top")) != border.end()) {
 			return tgrid::BORDER_TOP;
 		}
-		if(std::find(border.begin(), border.end(), "bottom") != border.end()) {
+		if(std::find(border.begin(), border.end(), std::string("bottom")) != border.end()) {
 			return tgrid::BORDER_BOTTOM;
 		}
-		if(std::find(border.begin(), border.end(), "left") != border.end()) {
+		if(std::find(border.begin(), border.end(), std::string("left")) != border.end()) {
 			return tgrid::BORDER_LEFT;
 		}
-		if(std::find(border.begin(), border.end(), "right") != border.end()) {
+		if(std::find(border.begin(), border.end(), std::string("right")) != border.end()) {
 			return tgrid::BORDER_RIGHT;
 		}
 	}
