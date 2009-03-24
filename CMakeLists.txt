@@ -2,8 +2,6 @@
 # what is not working so far:
 # * some other smaller stuff
 # * nice INSTALL howto
-# * check for poll(2) and select(2) as in SConstruct line 183 and if found, define same
-#   symbols as autoconf would.
 
 # set minimum version and make sure that things work with cmake 2.6, too
 cmake_minimum_required(VERSION 2.4.6)
@@ -34,6 +32,9 @@ find_package( X11 )
 set(SDL_CONFIG "sdl-config" CACHE STRING "Path to sdl-config script")
 exec_program(${SDL_CONFIG} ARGS "--cflags" OUTPUT_VARIABLE SDL_CFLAGS)
 add_definitions(${SDL_CFLAGS})
+
+#check for some compiler/arch specific things and export defines accordingly...
+INCLUDE (SearchForStuff)
 
 #
 # Options
