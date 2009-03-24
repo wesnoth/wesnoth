@@ -4,7 +4,7 @@ from pkgconfig import run_pkg_config
 def CheckLua(context, require_version):
     env = context.env
 
-    context.Message("Checking for Lua version " + require_version + "... ")
+    context.Message("Checking for Lua development files version " + require_version + "... ")
 
     version = ".".join(require_version.split(".")[0:2])
 
