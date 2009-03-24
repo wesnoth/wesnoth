@@ -2,10 +2,6 @@
 # what is not working so far:
 # * some other smaller stuff
 # * nice INSTALL howto
-# * check for poll(2) and select(2) as in SConstruct line 183 and if found, define same
-#   symbols as autoconf would. See also 
-#   http://svn.gna.org/viewcvs/wesnoth?rev=33522&view=rev
-#   http://svn.gna.org/viewcvs/wesnoth?rev=33523&view=rev
 # * Detect Python and install Python tools
 # * Rewrite the pot-update
 # * Test everything
@@ -37,6 +33,9 @@ find_package( X11 )
 set(SDL_CONFIG "sdl-config" CACHE STRING "Path to sdl-config script")
 exec_program(${SDL_CONFIG} ARGS "--cflags" OUTPUT_VARIABLE SDL_CFLAGS)
 add_definitions(${SDL_CFLAGS})
+
+#check for some compiler/arch specific things and export defines accordingly...
+INCLUDE (SearchForStuff)
 
 #
 # Options
