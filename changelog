@@ -6,6 +6,7 @@ Version 1.7.0-svn:
  * General:
    * The add-ons directory, <preferences>/data/campaigns, has been renamed
      and it is now <preferences>/data/add-ons
+   * Fixed compilation with -D_GLIBCXX_PARALLEL
  * Graphics:
    * The ~RC() image functor does not accept the special palette switch
      ~RC(palette1=palette2) syntax anymore. ~PAL(palette1>palette2) should

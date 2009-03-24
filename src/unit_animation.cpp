@@ -303,7 +303,7 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 	std::vector<unit_animation>::const_iterator itor;
 	add_anims(animations,cfg);
 	for(itor = animations.begin(); itor != animations.end() ; itor++) {
-		if (std::find(itor->event_.begin(),itor->event_.end(),"default")!= itor->event_.end()) {
+		if (std::find(itor->event_.begin(),itor->event_.end(),std::string("default"))!= itor->event_.end()) {
 			animation_base.push_back(*itor);
 			animation_base.back().base_score_ = unit_animation::DEFAULT_ANIM;
 			animation_base.back().event_.clear();

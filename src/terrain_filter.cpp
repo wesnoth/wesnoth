@@ -223,15 +223,15 @@ bool terrain_filter::match_internal(const map_location& loc, const bool ignore_x
 	if(!tod_type.empty()) {
 		const std::vector<std::string>& vals = utils::split(tod_type);
 		if(tod.lawful_bonus<0) {
-			if(std::find(vals.begin(),vals.end(),"chaotic") == vals.end()) {
+			if(std::find(vals.begin(),vals.end(),std::string("chaotic")) == vals.end()) {
 				return false;
 			}
 		} else if(tod.lawful_bonus>0) {
-			if(std::find(vals.begin(),vals.end(),"lawful") == vals.end()) {
+			if(std::find(vals.begin(),vals.end(),std::string("lawful")) == vals.end()) {
 				return false;
 			}
 		} else {
-			if(std::find(vals.begin(),vals.end(),"neutral") == vals.end()) {
+			if(std::find(vals.begin(),vals.end(),std::string("neutral")) == vals.end()) {
 				return false;
 			}
 		}
