@@ -39,7 +39,7 @@ static void scan_deprecation_messages(const config &cfg)
 	{
 		const std::string &msg = child["message"];
 		if (msg.empty()) continue;
-		LOG_STREAM(err, wml) << msg << '\n';
+		lg::wml_error << msg << '\n';
 	}
 }
 
