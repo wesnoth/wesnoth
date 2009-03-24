@@ -20,6 +20,7 @@
 
 #include "global.hpp"
 #include "foreach.hpp"
+#include "gamestatus.hpp"
 #include "intro.hpp"
 #include "variable.hpp"
 #include "display.hpp"
@@ -74,6 +75,37 @@ void show_intro(display &disp, const vconfig& data, const config& level)
 				return;
 			}
 			show_intro(disp, selection, level);
+		} else if(item.first == "switch") {
+			const vconfig switch_node = item.second;
+			game_state* const gamestate = game_events::get_state_of_game();
+			assert(gamestate != NULL);
+
+			const std::string var_name = switch_node["variable"];
+			const std::string var_actual_value = (*gamestate).get_variable_const(var_name);
+			const vconfig::child_list& cases = item.second.get_children("case");
+			bool not_found = true;
+
+			for(vconfig::all_children_iterator j = switch_node.ordered_begin(); j != switch_node.ordered_end(); ++j) {
+				if(j->first != "case")
+					continue;
+
+				const std::string var_expected_value = (j->second)["value"];
+
+			    if(var_actual_value == var_expected_value) {
+			    	not_found = false;
+			    	show_intro(disp, (j->second), level);
+			    	// FIXME: stop? the game_events.cpp version doesn't stop.
+			    }
+			}
+
+			if(not_found) {
+				for(vconfig::all_children_iterator j = switch_node.ordered_begin(); j != switch_node.ordered_end(); ++j) {
+					if(j->first != "else")
+						continue;
+
+					show_intro(disp, (j->second), level);
+				}
+			}
 		}
 	}
 
