@@ -38,10 +38,10 @@ public:
 };
 
 /**
- * Recolor (RC) function.
- * It is used both for palette switches (e.g. "~RC(pal1=pal2)")
- * color-range-based recoloring (also known as TC, e.g. "~RC(magenta>teal)")
- * and team-based recoloring (e.g. "~TC(1,magenta)").
+ * Recolor (RC/TC/PAL) function.
+ * It is used not only for color-range-based recoloring ("~RC(magenta>teal)")
+ * but also for team-color-based color range selection and recoloring
+ * ("~TC(3,magenta)") and palette switches ("~PAL(000000,005000 > FFFFFF,FF00FF)").
  */
 class rc_function : public function_base
 {
