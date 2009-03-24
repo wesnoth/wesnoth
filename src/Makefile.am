@@ -372,6 +372,7 @@ libwesnoth_a_SOURCES = \
 	show_dialog.cpp \
 	sound.cpp \
 	soundsource.cpp \
+	sound_music_track.cpp \
 	terrain.cpp \
 	terrain_translation.cpp \
 	time_of_day.cpp \

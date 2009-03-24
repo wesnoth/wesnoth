@@ -18,6 +18,7 @@
 #include "game_preferences.hpp"
 #include "log.hpp"
 #include "sound.hpp"
+#include "sound_music_track.hpp"
 
 #include "SDL_mixer.h"
 
@@ -138,59 +139,29 @@ std::list< sound_cache_chunk > sound_cache;
 typedef std::list< sound_cache_chunk >::iterator sound_cache_iterator;
 std::map<std::string,Mix_Music*> music_cache;
 
-struct music_track
-{
-	music_track(const std::string &tname);
-	music_track(const std::string &tname,
-				const std::string &ms_before_str,
-				const std::string &ms_after_str);
-	void write(config &snapshot, bool append);
-
-	std::string name;
-	unsigned int ms_before, ms_after;
-	bool once;
-};
-
 std::vector<std::string> played_before;
 
-music_track::music_track(const std::string &tname)
-	: name(tname), ms_before(0), ms_after(0), once(false)
-{
-}
-
-music_track::music_track(const std::string &tname,
-						 const std::string &ms_before_str,
-						 const std::string &ms_after_str)
-	: name(tname),
-	ms_before(lexical_cast_default<int>(ms_before_str)),
-	ms_after(lexical_cast_default<int>(ms_after_str)),
-	once(false)
-{
-}
-
-void music_track::write(config &snapshot, bool append)
-{
-		config& m = snapshot.add_child("music");
-		m["name"] = name;
-		m["ms_before"] = lexical_cast<std::string>(ms_before);
-		m["ms_after"] = lexical_cast<std::string>(ms_after);
-		if (append)
-			m["append"] = "yes";
-}
-
-std::vector<music_track> current_track_list;
-struct music_track current_track("");
-struct music_track last_track("");
+//
+// FIXME: the first music_track may be initialized before main()
+// is reached. Using the logging facilities may lead to a SIGSEGV
+// because it's not guaranteed that their objects are already alive.
+//
+// Use the music_track default constructor to avoid trying to
+// invoke a log object while resolving paths.
+//
+std::vector<sound::music_track> current_track_list;
+sound::music_track current_track;
+sound::music_track last_track;
 
 }
 
-static bool track_ok(const std::string &name)
+static bool track_ok(const std::string& id)
 {
-	LOG_AUDIO << "Considering " << name << "\n";
+	LOG_AUDIO << "Considering " << id << "\n";
 
 	// If they committed changes to list, we forget previous plays, but
 	// still *never* repeat same track twice if we have an option.
-	if (name == current_track.name)
+	if (id == current_track.file_path())
 		return false;
 
 	if (current_track_list.size() <= 3)
@@ -209,7 +180,7 @@ static bool track_ok(const std::string &name)
 	std::vector<std::string>::reverse_iterator i;
 
 	for (i = played_before.rbegin(); i != played_before.rend(); i++) {
-		if (*i == name) {
+		if (*i == id) {
 			num_played++;
 			if (num_played == 2)
 				break;
@@ -231,7 +202,7 @@ static bool track_ok(const std::string &name)
 	if (i != played_before.rend()) {
 		i++;
 		if (i != played_before.rend()) {
-			if (*i == name) {
+			if (*i == id) {
 				LOG_AUDIO << "Played just before previous\n";
 				return false;
 			}
@@ -242,36 +213,35 @@ static bool track_ok(const std::string &name)
 }
 
 
-static const music_track &choose_track()
+static const sound::music_track &choose_track()
 {
 	assert(!current_track_list.empty());
 
-	std::string name;
 	unsigned int track = 0;
 
 	if (current_track_list.size() > 1) {
 		do {
 			track = rand()%current_track_list.size();
-		} while (!track_ok(current_track_list[track].name));
+		} while (!track_ok( current_track_list[track].file_path() ));
 	}
 
-	//LOG_AUDIO << "Next track will be " << current_track_list[track].name << "\n";
-	played_before.push_back(current_track_list[track].name);
+	//LOG_AUDIO << "Next track will be " << current_track_list[track].file_path() << "\n";
+	played_before.push_back( current_track_list[track].file_path() );
 	return current_track_list[track];
 }
 
 static std::string pick_one(const std::string &files)
 {
-	std::vector<std::string> names = utils::split(files);
+	std::vector<std::string> ids = utils::split(files);
 
-	if (names.size() == 0)
+	if (ids.size() == 0)
 		return "";
-	if (names.size() == 1)
-		return names[0];
+	if (ids.size() == 1)
+		return ids[0];
 
 #ifdef LOW_MEM
 	// We're memory constrained, so we shouldn't cache too many chunks
-	return names[0];
+	return ids[0];
 #endif
 
 	// We avoid returning same choice twice if we can avoid it.
@@ -279,16 +249,16 @@ static std::string pick_one(const std::string &files)
 	unsigned int choice;
 
 	if (prev_choices.find(files) != prev_choices.end()) {
-		choice = rand()%(names.size()-1);
+		choice = rand()%(ids.size()-1);
 		if (choice >= prev_choices[files])
 			choice++;
 		prev_choices[files] = choice;
 	} else {
-		choice = rand()%names.size();
+		choice = rand()%ids.size();
 		prev_choices.insert(std::pair<std::string,unsigned int>(files,choice));
 	}
 
-	return names[choice];
+	return ids[choice];
 }
 
 namespace {
@@ -480,7 +450,7 @@ void play_music_once(const std::string &file)
 void play_no_music()
 {
 	current_track_list = std::vector<music_track>();
-	current_track = music_track("");
+	current_track = music_track();
 
 	if (preferences::music_on() && mix_ok && Mix_PlayingMusic()) {
 		Mix_FadeOutMusic(500);
@@ -497,7 +467,7 @@ void play_music()
 	music_start_time = 1; //immediate (same as effect as SDL_GetTicks())
 	want_new_music=true;
 	no_fading=false;
-	fadingout_time=current_track.ms_after;
+	fadingout_time=current_track.ms_after();
 }
 
 static void play_new_music()
@@ -505,38 +475,27 @@ static void play_new_music()
 	music_start_time = 0; //reset status: no start time
 	want_new_music = true;
 
-	if(!preferences::music_on() || !mix_ok || current_track.name.empty())
+	if(!preferences::music_on() || !mix_ok || !current_track.valid()) {
 		return;
+	}
 
-	std::map<std::string,Mix_Music*>::const_iterator itor = music_cache.find(current_track.name);
+	const std::string& filename = current_track.file_path();
+
+	std::map<std::string,Mix_Music*>::const_iterator itor = music_cache.find(filename);
 	if(itor == music_cache.end()) {
-		const std::string& filename = get_binary_file_location("music", current_track.name);
-
-		if(filename.empty()) {
-			const std::string bad_track = current_track.name;
-			ERR_AUDIO << "Could not open track '" << current_track.name << "', disabling for this playlist\n";
-
-			current_track.name = "";
-			foreach(music_track& trk, current_track_list) {
-				if(trk.name == bad_track) {
-					trk.name = "";
-				}
-			}
-			return;
-		}
-
+		LOG_AUDIO << "attempting to insert track '" << filename << "'\n into cache\n";
 		Mix_Music* const music = Mix_LoadMUS(filename.c_str());
 		if(music == NULL) {
 			ERR_AUDIO << "Could not load music file '" << filename << "': "
 					  << Mix_GetError() << "\n";
 			return;
 		}
-		itor = music_cache.insert(std::pair<std::string,Mix_Music*>(current_track.name,music)).first;
+		itor = music_cache.insert(std::pair<std::string,Mix_Music*>(filename,music)).first;
 		last_track=current_track;
 	}
 
-	LOG_AUDIO << "Playing track '" << current_track.name << "'\n";
-	int fading_time=current_track.ms_before;
+	LOG_AUDIO << "Playing track '" << filename << "'\n";
+	int fading_time=current_track.ms_before();
 	if(no_fading)
 	{
 		fading_time=0;
@@ -545,61 +504,66 @@ static void play_new_music()
 	const int res = Mix_FadeInMusic(itor->second, 1, fading_time);
 	if(res < 0)
 	{
-		ERR_AUDIO << "Could not play music: " << Mix_GetError() << " " << current_track.name <<" \n";
+		ERR_AUDIO << "Could not play music: " << Mix_GetError() << " " << filename <<" \n";
 	}
 
 	want_new_music=false;
 }
 
-void play_music_repeatedly(const std::string &name)
+void play_music_repeatedly(const std::string &id)
 {
 	// Can happen if scenario doesn't specify.
-	if (name.empty())
+	if (id.empty())
 		return;
 
-	current_track_list = std::vector<music_track>(1, music_track(name));
+	current_track_list = std::vector<music_track>(1, music_track(id));
 
 	// If we're already playing it, don't interrupt.
-	if (current_track.name != name) {
-		current_track = music_track(name);
+	if (current_track != id) {
+		current_track = music_track(id);
 		play_music();
 	}
 }
 
-void play_music_config(const config &music)
+void play_music_config(const config &music_node)
 {
-	struct music_track track(music["name"], music["ms_before"], music["ms_after"]);
+	music_track track( music_node );
 
 	// If they say play once, we don't alter playlist.
-	if (utils::string_bool(music["play_once"])) {
+	if (utils::string_bool(music_node["play_once"])) {
 		current_track = track;
-		current_track.once = true;
+		current_track.set_play_once(true);
 		play_music();
 		return;
 	}
 
 	// Clear play list unless they specify append.
-	if (!utils::string_bool(music["append"])) {
+	if (!utils::string_bool(music_node["append"])) {
 		current_track_list = std::vector<music_track>();
 	}
 
-	// Avoid 2 tracks with the same name, since that can cause an infinite loop
-	// in choose_track(), 2 tracks with the same name will always return the
-	// current track and track_ok() doesn't allow that.
-	std::vector<music_track>::const_iterator itor = current_track_list.begin();
-	while(itor != current_track_list.end()) {
-		if(itor->name == track.name) break;
-		++itor;
-	}
+	if(track.valid()) {
+		// Avoid 2 tracks with the same name, since that can cause an infinite loop
+		// in choose_track(), 2 tracks with the same name will always return the
+		// current track and track_ok() doesn't allow that.
+		std::vector<music_track>::const_iterator itor = current_track_list.begin();
+		while(itor != current_track_list.end()) {
+			if(track == *itor) break;
+			++itor;
+		}
 
-	if(itor == current_track_list.end()) {
-		current_track_list.push_back(track);
-	} else {
-		ERR_AUDIO << "Tried to add duplicate track '" << track.name << "'\n";
+		if(itor == current_track_list.end()) {
+			current_track_list.push_back(track);
+		} else {
+			ERR_AUDIO << "tried to add duplicate track '" << track.file_path() << "'\n";
+		}
+	}
+	else if(track.id().empty() == false) {
+		ERR_AUDIO << "cannot open track '" << track.id() << "'; disabled in this playlist.\n";
 	}
 
 	// They can tell us to start playing this list immediately.
-	if (utils::string_bool(music["immediate"])) {
+	if (utils::string_bool(music_node["immediate"])) {
 		current_track = track;
 		play_music();
 	}
@@ -636,12 +600,12 @@ void commit_music_changes()
 	played_before = std::vector<std::string>();
 
 	// Play-once is OK if still playing.
-	if (current_track.once)
+	if (current_track.play_once())
 		return;
 
 	// If current track no longer on playlist, change it.
 	for (i = current_track_list.begin(); i != current_track_list.end(); i++) {
-		if (current_track.name == i->name)
+		if (current_track == *i)
 			return;
 	}
 

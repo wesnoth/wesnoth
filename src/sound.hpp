@@ -40,14 +40,14 @@ void stop_UI_sound();
 void stop_bell();
 
 // Read config entry, alter track list accordingly.
-void play_music_config(const config &music);
+void play_music_config(const config &music_node);
 // Act on any track list changes from above.
 void commit_music_changes();
 
 // Play this particular music file over and over and over.
-void play_music_repeatedly(const std::string &name);
+void play_music_repeatedly(const std::string& id);
 // Play this particular music file once, then silence.
-void play_music_once(const std::string &name);
+void play_music_once(const std::string& id);
 // Empty the playlist (and stop playing)
 void play_no_music();
 // Empty the playlist
