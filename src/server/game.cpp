@@ -472,12 +472,12 @@ void game::change_controller(const size_t side_num,
 	}
 }
 
-void game::transfer_ai_sides() {
+void game::transfer_ai_sides(const network::connection player) {
 	bool ai_transfer = false;
-	// Check for ai sides first and drop them, too, if the host left.
+	// Check for ai sides of the leaving player.
 	for (size_t side = 0; side < side_controllers_.size(); ++side){
 		//send the host a notification of removal of this side
-		if (side_controllers_[side] != "ai") continue;
+		if (sides_[side] != player || side_controllers_[side] != "ai") continue;
 
 		ai_transfer = true;
 		simple_wml::document drop;
@@ -1020,7 +1020,7 @@ bool game::remove_player(const network::connection player, const bool disconnect
 
 		send_to_one(drop, owner_);
 	}
-	if (host) transfer_ai_sides();
+	transfer_ai_sides(player);
 	DBG_GAME << debug_player_info();
 
 	send_user_list(player);
