@@ -21,6 +21,7 @@ $langs['he'] = 'Hebrew';
 $langs['hr'] = 'Croatian';
 $langs['hu'] = 'Hungarian';
 $langs['id'] = 'Bahasa Indonesian';
+$langs['is'] = 'Icelandic';
 $langs['it'] = 'Italian';
 $langs['ja'] = 'Japanese';
 $langs['ko'] = 'Korean';
