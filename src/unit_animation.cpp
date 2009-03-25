@@ -309,13 +309,17 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 			animation_base.back().event_.clear();
 		}
 	}
+
+	const std::string& default_image_in_hex = cfg["in_hex"];
+	//const std::string& default_image_in_hex = is_in_hex(default_image) ? "yes" : "no";
+
 	if( animation_base.empty() )
-		animation_base.push_back(unit_animation(0,frame_builder().image(default_image).duration(1).in_hex(cfg["in_hex"]),"",unit_animation::DEFAULT_ANIM));
+		animation_base.push_back(unit_animation(0,frame_builder().image(default_image).duration(1).in_hex(default_image_in_hex),"",unit_animation::DEFAULT_ANIM));
 
 	//the default standing anim when disbabled use the main in_hex key
-	animations.push_back(unit_animation(0,frame_builder().image(default_image).duration(1).in_hex(cfg["in_hex"]),"_disabled_",0));
+		animations.push_back(unit_animation(0,frame_builder().image(default_image).duration(1).in_hex(default_image_in_hex),"_disabled_",0));
 	animations.push_back(unit_animation(0,frame_builder().image(default_image).duration(1).
-					blend("0.0~0.3:100,0.3~0.0:200",display::rgb(255,255,255)).in_hex(cfg["in_hex"]),"_disabled_selected_",0));
+					blend("0.0~0.3:100,0.3~0.0:200",display::rgb(255,255,255)).in_hex(default_image_in_hex),"_disabled_selected_",0));
 	for(itor = animation_base.begin() ; itor != animation_base.end() ; itor++ ) {
 		unit_animation tmp_anim = *itor;
 		// provide all default anims

@@ -232,6 +232,9 @@ surface adjust_surface_alpha_add(surface const &surf, int amount, bool optimize=
 /** Applies a mask on a surface. */
 surface mask_surface(surface const &surf, surface const &mask);
 
+/** Check if a surface fit into a mask */
+bool in_mask_surface(surface const &surf, surface const &mask);
+
 /** Cross-fades a surface. */
 surface blur_surface(surface const &surf, int depth = 1, bool optimize=true);
 

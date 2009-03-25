@@ -992,6 +992,50 @@ surface mask_surface(surface const &surf, surface const &mask)
 	//return create_optimized_surface(nsurf);
 }
 
+bool in_mask_surface(surface const &surf, surface const &mask)
+{
+	if(surf == NULL || mask == NULL) {
+		return false;
+	}
+
+	if (surf->w != surf->w || surf->h != mask->h ) {
+		// not same size, consider it doesn't fit
+		return false;
+	}
+
+	surface nsurf = make_neutral_surface(surf);
+	surface nmask(make_neutral_surface(mask));
+
+	if(nsurf == NULL || nmask == NULL) {
+		std::cerr << "could not make neutral surface...\n";
+		return NULL;
+	}
+
+	{
+		surface_lock lock(nsurf);
+		surface_lock mlock(nmask);
+
+		Uint32* mbeg = mlock.pixels();
+		Uint32* mend = mbeg + nmask->w*nmask->h;
+		Uint32* beg = lock.pixels();
+		// no need for 'end', because both surfaces have same size
+
+		while(mbeg != mend) {
+			Uint8 malpha = (*mbeg) >> 24;
+			if(malpha == 0) {
+				Uint8 alpha = (*beg) >> 24;
+				if (alpha)
+					return false;
+			}
+			++mbeg;
+			++beg;
+		}
+	}
+
+	return true;
+}
+
+
 surface blur_surface(surface const &surf, int depth, bool optimize)
 {
 	if(surf == NULL) {

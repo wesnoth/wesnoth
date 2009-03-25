@@ -921,6 +921,19 @@ surface get_image(const image::locator& i_locator, TYPE type)
 	return res;
 }
 
+bool is_in_hex(const locator& i_locator)
+{
+	const surface mask(get_image(game_config::terrain_mask_image, UNSCALED));
+	const surface image(get_image(i_locator, UNSCALED));
+
+	bool res = in_mask_surface(image, mask);
+	//std::cout << "in_hex : " << i_locator.get_filename()
+	//		<< " " << (res ? "yes" : "no") << "\n";
+
+	return res;
+}
+
+
 surface reverse_image(const surface& surf)
 {
 	if(surf == NULL) {
