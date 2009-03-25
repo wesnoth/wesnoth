@@ -5,7 +5,7 @@ import os
 def run_pkg_config(env, name):
     try:
         env["ENV"]["PKG_CONFIG_PATH"] = os.environ.get("PKG_CONFIG_PATH")
-        env.ParseConfig("pkg-config --libs --cflags $PKGCONFIG_FLAGS '" + name + "'")
+        env.ParseConfig("pkg-config --libs --cflags $PKGCONFIG_FLAGS \"" + name + "\"")
         return True
     except OSError:
         return False
