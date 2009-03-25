@@ -399,7 +399,6 @@ void game::transfer_side_control(const network::connection sock, const simple_wm
 		return;
 	}
 	sides_[side_num - 1] = 0;
-	bool host_leave = false;
 	// If the old player lost his last side, make him an observer.
 	if (std::find(sides_.begin(), sides_.end(), old_player) == sides_.end()) {
 		observers_.push_back(old_player);
@@ -410,20 +409,8 @@ void game::transfer_side_control(const network::connection sock, const simple_wm
 		simple_wml::document observer_join;
 		observer_join.root().add_child("observer").set_attr_dup("name", old_player_name.c_str());
 		send_data(observer_join, old_player);
-		// If the old player was the host of the game, choose another player.
-		/*if (old_player == owner_) {
-			host_leave = true;
-			if (players_.empty()) {
-				owner_ = newplayer->first;
-			} else {
-				owner_ = players_.front();
-			}
-			notify_new_host();
-		}*/
 	}
 	change_controller(side_num - 1, newplayer, false);
-
-	if (host_leave) transfer_ai_sides();
 
 	// If we gave the new side to an observer add him to players_.
 	if (is_observer(newplayer->first)) {
