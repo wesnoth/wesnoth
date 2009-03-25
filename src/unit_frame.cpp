@@ -175,7 +175,8 @@ frame_builder::frame_builder(const config& cfg,const std::string& frame_string) 
 	x_(""),
 	y_(""),
 	drawing_layer_(""),
-	in_hex_(false)
+	in_hex_(false),
+	diagonal_in_hex_(false)
 {
 	image(image::locator(cfg[frame_string+"image"]),cfg[frame_string+"image_mod"]);
 	image_diagonal(image::locator(cfg[frame_string+"image_diagonal"]),cfg[frame_string+"image_mod"]);
@@ -206,7 +207,6 @@ frame_builder::frame_builder(const config& cfg,const std::string& frame_string) 
 	x(cfg[frame_string+"x"]);
 	y(cfg[frame_string+"y"]);
 	drawing_layer(cfg[frame_string+"layer"]);
-	in_hex(cfg[frame_string+"in_hex"]);
 }
 
 const frame_parameters frame_builder::parameters(int current_time) const
@@ -232,18 +232,21 @@ const frame_parameters frame_builder::parameters(int current_time) const
 	result.y = y_.get_current_element(current_time);
 	result.drawing_layer = drawing_layer_.get_current_element(current_time,display::LAYER_UNIT_DEFAULT-display::LAYER_UNIT_FIRST);
 	result.in_hex = in_hex_;
+	result.diagonal_in_hex = diagonal_in_hex_;
 	return result;
 }
 frame_builder & frame_builder::image(const image::locator image ,const std::string & image_mod)
 {
 	image_ = image;
 	image_mod_ = image_mod;
+	in_hex_ = is_in_hex(image);
 	return *this;
 }
 frame_builder & frame_builder::image_diagonal(const image::locator image_diagonal,const std::string& image_mod)
 {
 	image_diagonal_ = image_diagonal;
 	image_mod_ = image_mod;
+	diagonal_in_hex_ = is_in_hex(image_diagonal);
 	return *this;
 }
 frame_builder & frame_builder::sound(const std::string& sound)
@@ -318,11 +321,6 @@ frame_builder & frame_builder::y(const std::string& y)
 frame_builder & frame_builder::drawing_layer(const std::string& drawing_layer)
 {
 	drawing_layer_=progressive_int(drawing_layer,duration_);
-	return *this;
-}
-frame_builder & frame_builder::in_hex(const std::string& in_hex)
-{
-	in_hex_= utils::string_bool(in_hex);
 	return *this;
 }
 
@@ -473,13 +471,16 @@ bool unit_frame::invalidate(const bool force,const int frame_time,const map_loca
 	const frame_parameters current_data = merge_parameters(frame_time,animation_val,engine_val,primary);
 	double tmp_offset = current_data.offset;
 	int d2 = game_display::get_singleton()->hex_size() / 2;
+	bool image_fit_hex = false;
 
 	image::locator image_loc;
 	if(direction != map_location::NORTH && direction != map_location::SOUTH) {
 		image_loc = current_data.image_diagonal;
+		image_fit_hex = current_data.diagonal_in_hex;
 	}
 	if(image_loc.is_void() || image_loc.get_filename() == "") { // invalid diag image, or not diagonal
 		image_loc = current_data.image;
+		image_fit_hex = current_data.in_hex;
 	}
 
 	surface image;
@@ -500,7 +501,7 @@ bool unit_frame::invalidate(const bool force,const int frame_time,const map_loca
 		const int y = static_cast<int>(tmp_offset * ydst + (1.0-tmp_offset) * ysrc)+current_data.y+d2-(image->h/2);
 		const SDL_Rect r = {x,y,image->w,image->h};
 		// check if the unit fit in a hex
-		bool in_hex = current_data.in_hex && r.x==xsrc && r.y==ysrc
+		bool in_hex = image_fit_hex && r.x==xsrc && r.y==ysrc
 				&& r.w==disp->hex_size() && r.h==disp->hex_size();
 		// check if our underlying hexes are invalidated
 		bool rect_need_update = in_hex ?
@@ -545,14 +546,18 @@ const frame_parameters unit_frame::merge_parameters(int current_time,const frame
 
 	/** engine provides a default image to use for the unit when none is available */
 	result.image = current_val.image.is_void() || current_val.image.get_filename() == ""?animation_val.image:current_val.image;
+	result.in_hex = current_val.image.is_void() || current_val.image.get_filename() == ""?animation_val.in_hex:current_val.in_hex;
 	if(primary && ( result.image.is_void() || result.image.get_filename().empty())) {
 		result.image = engine_val.image;
+		result.in_hex = engine_val.in_hex;
 	}
 
 	/** engine provides a default image to use for the unit when none is available */
 	result.image_diagonal = current_val.image_diagonal.is_void() || current_val.image_diagonal.get_filename() == ""?animation_val.image_diagonal:current_val.image_diagonal;
+	result.diagonal_in_hex = current_val.image_diagonal.is_void() || current_val.image_diagonal.get_filename() == ""?animation_val.diagonal_in_hex:current_val.diagonal_in_hex;
 	if(primary && ( result.image_diagonal.is_void() || result.image_diagonal.get_filename().empty())) {
 		result.image_diagonal = engine_val.image_diagonal;
+		result.diagonal_in_hex = engine_val.diagonal_in_hex;
 	}
 
 	/** engine provides a string for "stoned" and "team color" modifications */
@@ -616,12 +621,12 @@ const frame_parameters unit_frame::merge_parameters(int current_time,const frame
 	result.drawing_layer = current_val.drawing_layer !=  display::LAYER_UNIT_DEFAULT-display::LAYER_UNIT_FIRST?
 		current_val.drawing_layer:animation_val.drawing_layer;
 
-	assert(!engine_val.in_hex);
-	result.in_hex = current_val.in_hex ? current_val.in_hex : animation_val.in_hex;
 #ifdef LOW_MEM
 	if(primary) {
 		result.image= engine_val.image;
+		result.in_hex = engine_val.in_hex;
 		result.image_diagonal= engine_val.image;
+		result.diagonal_in_hex = engine_val.diagonal_in_hex;
 	}
 #endif
 	return result;

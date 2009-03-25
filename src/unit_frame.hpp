@@ -86,7 +86,8 @@ class frame_parameters{
 	x(0),
 	y(0),
 	drawing_layer(display::LAYER_UNIT_DEFAULT-display::LAYER_UNIT_FIRST),
-	in_hex(false)
+	in_hex(false),
+	diagonal_in_hex(false)
 	{};
 
 	image::locator image;
@@ -109,6 +110,7 @@ class frame_parameters{
 	int y;
 	int drawing_layer;
 	bool in_hex;
+	bool diagonal_in_hex;
 } ;
 /**
  * keep most parameters in a separate class to simplify handling of large
@@ -137,7 +139,8 @@ class frame_builder {
 		x_(""),
 		y_(""),
 		drawing_layer_(lexical_cast<std::string>(display::LAYER_UNIT_DEFAULT-display::LAYER_UNIT_FIRST)),
-		in_hex_(false)
+		in_hex_(false),
+		diagonal_in_hex_(false)
 	{};
 		frame_builder(const config& cfg,const std::string &frame_string = "");
 		/** allow easy chained modifications will raised assert if used after initialization */
@@ -154,7 +157,6 @@ class frame_builder {
 		frame_builder & x(const std::string& x);
 		frame_builder & y(const std::string& y);
 		frame_builder & drawing_layer(const std::string& drawing_layer);
-		frame_builder & in_hex(const std::string& in_hex);
 		/** getters for the different parameters */
 		const frame_parameters parameters(int current_time) const ;
 
@@ -183,6 +185,7 @@ class frame_builder {
 		progressive_int y_;
 		progressive_int drawing_layer_;
 		bool in_hex_;
+		bool diagonal_in_hex_;
 };
 
 /** Describe a unit's animation sequence. */
