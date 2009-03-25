@@ -1865,6 +1865,21 @@ void server::process_data_lobby(const network::connection sock,
 			send_doc(games_and_users_list_, sock);
 			return;
 		}
+		const std::vector<wesnothd::game*>::iterator g2 =
+			std::find_if(games_.begin(),games_.end(), wesnothd::game_is_member(sock));
+		if (g2 != games_.end()) {
+			WRN_SERVER << network::ip_address(sock) << "\t" << pl->second.name()
+				<< "\tattempted to join a second game. He's already in game:\t\""
+				<< (*g2)->name() << "\" (" << (*g2)->id() << ")." << "(socket: "
+				<< sock << ")\n";
+			send_doc(leave_game_doc, sock);
+			lobby_.send_server_message(("Attempt to join a second game."
+					" You're already in game: \"" + (*g2)->name() + "\"."
+					" (You may have to log off and back on to get your client"
+					" in sync again.)").c_str(), sock);
+			send_doc(games_and_users_list_, sock);
+			return;
+		}
 		bool joined = (*g)->add_player(sock, observer, admin);
 		if (!joined) {
 			WRN_SERVER << network::ip_address(sock) << "\t" << pl->second.name()
