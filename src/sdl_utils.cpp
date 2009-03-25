@@ -1008,7 +1008,7 @@ bool in_mask_surface(surface const &surf, surface const &mask)
 
 	if(nsurf == NULL || nmask == NULL) {
 		std::cerr << "could not make neutral surface...\n";
-		return NULL;
+		return false;
 	}
 
 	{
