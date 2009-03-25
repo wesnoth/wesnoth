@@ -85,17 +85,29 @@ void loadscreen::set_progress(const int percentage, const std::string &text, con
 {
 	// Saturate percentage.
 	prcnt_ = percentage < MIN_PERCENTAGE ? MIN_PERCENTAGE: percentage > MAX_PERCENTAGE ? MAX_PERCENTAGE: percentage;
+	//
 	// Set progress bar parameters:
-	int fcr =  21, fcg =  53, fcb =  80;		// RGB-values for finished piece.
-	int lcr =  21, lcg =  22, lcb =  24;		// Leftover piece.
-	int bcr = 188, bcg = 176, bcb = 136;		// Border color.
-	int bw = 1;								//< Border width.
-	int bispw = 1;								//< Border inner spacing width.
+	//
+	// RGB-values for finished piece.
+	int fcr =  21, fcg =  53, fcb =  80;
+	// Groove.
+	int lcr =  21, lcg =  22, lcb =  24;
+	// Border color.
+	int bcr = 188, bcg = 176, bcb = 136;
+	// Border width.
+	int bw = 1;
+	// Border inner spacing width.
+	int bispw = 1;
 	bw = 2*(bw+bispw) > screen_.getx() ? 0: 2*(bw+bispw) > screen_.gety() ? 0: bw;
-	int scrx = screen_.getx() - 2*(bw+bispw);	//< Available width.
-	int scry = screen_.gety() - 2*(bw+bispw);	//< Available height.
-	int pbw = scrx/2;							//< Used width.
-	int pbh = scry/16;							//< Used heigth.
+	// Available width.
+	int scrx = screen_.getx() - 2*(bw+bispw);
+	// Available height.
+	int scry = screen_.gety() - 2*(bw+bispw);
+	// Used width.
+	int pbw = scrx/2;
+	// Used heigth.
+	int pbh = scry/16;
+	// Height of the lighting line.
 	int	lightning_thickness = 2;
 
 	surface const gdis = screen_.getSurface();
