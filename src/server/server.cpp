@@ -1892,7 +1892,8 @@ void server::process_data_lobby(const network::connection sock,
 		}
 		LOG_SERVER << network::ip_address(sock) << "\t" << pl->second.name()
 			<< "\tjoined game:\t\"" << (*g)->name()
-			<< "\" (" << game_id << (observer ? ") as an observer.\n" : ").\n");
+			<< "\" (" << game_id << ")" << (observer ? " as an observer" : "")
+			<< ". (socket: " << sock << ")\n";
 		lobby_.remove_player(sock);
 		(*g)->describe_slots();
 
@@ -1934,11 +1935,8 @@ void server::process_data_game(const network::connection sock,
 		return;
 	}
 
-	std::vector<wesnothd::game*>::iterator itor;
-	for (itor = games_.begin(); itor != games_.end(); ++itor) {
-		if ((*itor)->is_owner(sock) || (*itor)->is_member(sock))
-			break;
-	}
+	const std::vector<wesnothd::game*>::iterator itor =
+		std::find_if(games_.begin(),games_.end(), wesnothd::game_is_member(sock));
 	if (itor == games_.end()) {
 		ERR_SERVER << "ERROR: Could not find game for player: "
 			<< pl->second.name() << ". (socket: " << sock << ")\n";
