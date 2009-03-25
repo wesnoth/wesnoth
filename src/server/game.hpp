@@ -206,7 +206,7 @@ private:
 			const player_map::const_iterator newplayer,
 			const bool player_left = true,
 			const std::string controller = "");
-	void transfer_ai_sides();
+	void transfer_ai_sides(const network::connection player);
 	void send_data_team(simple_wml::document& data, const simple_wml::string_span& team,
 			const network::connection exclude=0, std::string packet_type = "") const;
 	void send_data_observers(simple_wml::document& data, const network::connection exclude=0, std::string packet_type = "") const;
