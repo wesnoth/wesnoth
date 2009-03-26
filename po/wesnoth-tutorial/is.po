@@ -1,10 +1,11 @@
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 1.7.0-svn\n"
+"Project-Id-Version: Battle for Wesnoth 1.6+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-12-03 19:43+0100\n"
-"PO-Revision-Date: 2008-12-03 19:43+0100\n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2009-03-26 22:29+0000\n"
+"Last-Translator: Automatically generated <gabrielp@simnet.is>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -17,11 +18,14 @@ msgid ""
 "welcoming new players. Please keep friendly fun feeling! Any questions email "
 "rusty@rustcorp.com.au!"
 msgstr ""
+"Halló, þýðendur! Sýnikenslan er ætluð að vera smá fyndin í byrjun, fyrir "
+"nýliðana. Vinsamlegast haldið kennslunni vinalegri og fyndni. Eitthverjar "
+"spurningar fara á netfangið rusty@rustcorp.com.au!"
 
 #. [tutorial]: id=tutorial
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:42
 msgid "Wesnoth Tutorial"
-msgstr ""
+msgstr "Wesnoth sýnikennsla"
 
 #. [side]: type=Fighter, id=student
 #. [command]
@@ -33,12 +37,12 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:151
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:153
 msgid "Konrad"
-msgstr ""
+msgstr "Konrad"
 
 #. [unit]: id=Delfador, type=Elder Mage
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:113
 msgid "Delfador"
-msgstr ""
+msgstr "Delfador"
 
 #. [objectives]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:128
@@ -49,21 +53,26 @@ msgid ""
 "Healing\n"
 "Recruiting"
 msgstr ""
+"Þú munnt læra grunnin að:\n"
+" Hreyfingu\n"
+" Árás\n"
+" Lækningu\n"
+" Ráðningu"
 
 #. [objective]: condition=win
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:130
 msgid "Destroy a fierce enemy"
-msgstr ""
+msgstr "Drepa grimman óvin"
 
 #. [objective]: condition=lose
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:134
 msgid "Get yourself killed"
-msgstr ""
+msgstr "Fá sjálfan þig dauðann"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:149
 msgid "Who would you like to play?"
-msgstr ""
+msgstr "Hvern langar þér að spila?"
 
 #. [unit]: type=Fighteress, id=student
 #. [command]
@@ -73,13 +82,13 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:160
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:172
 msgid "Li'sar"
-msgstr ""
+msgstr "Li'sar"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:187
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:195
 msgid "*Welcome to Wesnoth!"
-msgstr ""
+msgstr "Velkominn til Wesnoth!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:189
@@ -87,6 +96,8 @@ msgid ""
 "\n"
 "For this tutorial, you are playing Konrad. "
 msgstr ""
+"\n"
+"Fyrir þessa sýnikennslu, leikur þú Konrad. "
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:190
@@ -95,6 +106,8 @@ msgid ""
 "You are standing in the keep, and your mentor Delfador is on the east side "
 "of the river."
 msgstr ""
+"Þú stendur í höllinni, og leiðbeinandinn þinn, Delfador, er austanmeginn við "
+"ánna."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:192
@@ -114,6 +127,8 @@ msgid ""
 "\n"
 "*Left click or press spacebar to continue..."
 msgstr ""
+"\n"
+"*Þrýstu á bilstöngina til að halda áfram..."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:197
@@ -121,6 +136,8 @@ msgid ""
 "\n"
 "For this tutorial, you are playing Li'sar. "
 msgstr ""
+"\n"
+"Fyrir þessa sýnikennslu, leikur þú Li'sar. "
 
 #. [event]
 #. [event]: id=student moves 0}
@@ -129,7 +146,7 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:393
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:497
 msgid "Left click on Konrad"
-msgstr ""
+msgstr "Smelltu á Konrad"
 
 #. [event]
 #. [event]: id=student moves 0}
@@ -138,7 +155,7 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:394
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:498
 msgid "Left click on Li'sar"
-msgstr ""
+msgstr "Smelltu á Li'sar"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:223
@@ -146,6 +163,8 @@ msgid ""
 "*You have selected Konrad.\n"
 "The places he can move to are highlighted."
 msgstr ""
+"*Þú hefur valið Konrad.\n"
+"Reitirnir sem hann getur fært sig á eru upplýstir."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:231
@@ -153,26 +172,30 @@ msgid ""
 "*You have selected Li'sar.\n"
 "The places she can move to are highlighted."
 msgstr ""
+"*Þú hefur valið Li'sar.\n"
+"Reitirnir sem hún getur fært sig á eru upplýstir."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:237
 msgid "HERE"
-msgstr ""
+msgstr "HINGAÐ"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:243
 msgid "Move Konrad next to Delfador by clicking on the tile marked 'HERE'."
 msgstr ""
+"Færðu Konrad að Delfador með því að smella á reitinn merktann 'HINGAÐ'."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:248
 msgid "Move Li'sar next to Delfador by clicking on the tile marked 'HERE'."
 msgstr ""
+"Færðu Li'sar að Delfador með því að smella á reitinn merktann 'HINGAÐ'."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:254
 msgid "Left click on tile labeled HERE"
-msgstr ""
+msgstr "Smelltu á reitinn merktann 'HINGAÐ'"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:289
@@ -185,44 +208,46 @@ msgstr ""
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:314
 msgid "Good morning, Delfador! Is it time to attack things?"
-msgstr ""
+msgstr "Góðan dag, Delfador! Er kominn tími á að hefja árasir á hluti?"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:318
 msgid "Um, well..."
-msgstr ""
+msgstr "Um, eh..."
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:322
+#, fuzzy
 msgid "Have you found an orc for me to fight, huh? A troll?"
-msgstr ""
+msgstr "Hefur þú fundið orc fyrir mig til að berjast við? Tröll?"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:326
 msgid "Quiet! I will summon an enemy for you..."
-msgstr ""
+msgstr "Þögn! Ég mun kalla framm óvin fyrir þig..."
 
 #. [event]: id=student moves 0}
 #. [unit_type]: id=Quintain, race=mechanical
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:354
 #: data/campaigns/tutorial/units/Quintain.cfg:4
 msgid "Quintain"
-msgstr ""
+msgstr "Kráka"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:358
 msgid "... this quintain!"
-msgstr ""
+msgstr "... þessa kráku!"
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:362
 msgid "A quintain? You want me to pretend to fight a dummy?"
-msgstr ""
+msgstr "Kráku? Vilt þú að ég þykist vera að berjast við kráku?"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:366
 msgid "Child, you have 32 hitpoints and a sword. I'm fairly sure you'll win."
 msgstr ""
+"Barn, þú hefur 32 lífstig og sverð. Ég er nokkuð viss um að þú munnt sigra."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:371
@@ -231,6 +256,9 @@ msgid ""
 "(the quintain). You will see an attack description. When you click OK, "
 "Konrad will attack."
 msgstr ""
+"Til að gera árás á krákuna, fyrst, veldu gerandann (Konrad) og síðan "
+"þolandann (krákuna). Þú munt sjá árásarlýsingu. Þegar þú hefur valið 'Allt í "
+"lagi', Konrad mun hefja árás."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:377
@@ -239,31 +267,34 @@ msgid ""
 "(the quintain). You will see an attack description. When you click OK, "
 "Li'sar will attack."
 msgstr ""
+"Til að hefja árás á krákuna, fyrst, veldu gerandann (Li'sar) og síðan "
+"þolandann (krákuna). Þú munt sjá árásarlýsingu. Þegar þú hefur valið 'Allt í "
+"lagi', Konrad mun hefja árás."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:389
 msgid "Click on the quintain to attack it"
-msgstr ""
+msgstr "Smeltu á krákuna til að hefja árás"
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:425
 msgid "Hey! This quintain fights back!"
-msgstr ""
+msgstr "Hey! Krákan berst á móti!"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:429
 msgid "Hmm, maybe we should have started with a doll."
-msgstr ""
+msgstr "Hmm, kannski höfðum við átt að hefja æfingar dúkkum."
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:433
 msgid "Should I retreat?"
-msgstr ""
+msgstr "Ætti ég að hörfa?"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:437
 msgid "Good idea!"
-msgstr ""
+msgstr "Góð hugmynd!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:442
@@ -271,6 +302,9 @@ msgid ""
 "Note: the tiny blue crown above Delfador means you will lose the game if he "
 "is killed. You will also lose the game if your leader (Konrad) is killed."
 msgstr ""
+"Ath.: Littli blái hnötturinn fyrir ofan Delfador þýðir að þú munt tapa "
+"leiknum ef hann er drepinn. Þú munnt einnig tapa leiknum ef leiðtoginn þinn "
+"(Konrad) er drepinn."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:445
@@ -278,6 +312,9 @@ msgid ""
 "Note: the tiny blue crown above Delfador means you will lose the game if he "
 "is killed. You will also lose the game if your leader (Li'sar) is killed."
 msgstr ""
+"Ath.: Littli blái hnötturinn fyrir ofan Delfador þýðir að þú munt tapa "
+"leiknum ef hann er drepinn. Þú munnt einnig tapa leiknum ef leiðtoginn þinn "
+"(Li'sar) er drepin."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:455
@@ -285,11 +322,13 @@ msgid ""
 "Unfortunately, you've used up your turn attacking the quintain. The quintain "
 "will now get a turn."
 msgstr ""
+"Því miður, en þú hefur notað upp þína umferð við árásina á krákuna. Krákan "
+"mun nú fá sína umferð."
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:459
 msgid "The DUMMY gets a turn?"
-msgstr ""
+msgstr "Fær KRÁKAN umferð?"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:465
@@ -299,23 +338,27 @@ msgid ""
 "every time, you'll drop from $student_hp to $future_hp hit points. Brace "
 "yourself!"
 msgstr ""
+"Já. Þetta er göldrótt kráka.\n"
+"Krákan fær 5 tilraunir til að hitta þig fyrir 3 lífstig hverja tilraun. Ef "
+"hún hittir þig í öllum tilraunum, munnt þú fara úr $student_hp lífstigum "
+"niður í $future_hp lífstig. Viðbúinn!"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:468
 msgid "Click on the End Turn button on the bottom right"
-msgstr ""
+msgstr "Smeltu á 'Ljúka umferð' neðst í hægra horninu"
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:489
 msgid "Ouch! I need to heal! Only $student_hp hitpoints left!"
-msgstr ""
+msgstr "Á! Ég þarf á lækningu að halda! Aðeins $student_hp lífstig eftir!"
 
 #. [event]
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:448
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:491
 msgid "Village"
-msgstr ""
+msgstr "Þorp"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:494
@@ -323,16 +366,18 @@ msgid ""
 "There is a village on the other side of the river. Visiting villages is a "
 "good idea, and ending your turn in one will heal you. To the village!"
 msgstr ""
+"Það er þorp hinum megin við ánna. Heimsóknir í þorp er góð hugmynd, og með "
+"því að ljúka umferðinni þinni í þorpi læknar þig. Að þorpinu!"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:507
 msgid "Click on the village to move Konrad"
-msgstr ""
+msgstr "Smelltu á þorpið til að færa Konrad"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:508
 msgid "Click on the village to move Li'sar"
-msgstr ""
+msgstr "Smelltu á þorpið til að færa Li'sar"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:526
@@ -342,6 +387,10 @@ msgid ""
 "provide the gold needed to recruit units. Each turn, you gain two gold plus "
 "one for every village you own."
 msgstr ""
+"Þú hefur hertekið þorp! Það nú flaggar fánalitur þinn og hefur verið bætt "
+"við í þorpa talninguna efst á skjánum (húsið). Þorp gefa þér gullið sem "
+"þarfnast í að ráða einingar. Eftir hverja umferð færð þú tvö gull, plús eitt "
+"fyrir hvert þorp sem þú átt."
 
 #. [event]
 #. [then]
@@ -352,26 +401,29 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:800
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:852
 msgid "Click on the End Turn button"
-msgstr ""
+msgstr "Smelltu á 'Ljúka umferð'"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:565
+#, fuzzy
 msgid ""
 "You're about to be healed by $hp_difference hitpoints, but I think you're "
 "going to need some help against that quintain."
 msgstr ""
+"Þú munt verða læknaður/læknuð um $hp_difference lífstig, en ég held að þú "
+"þurfir eitthverja hjálp með krákuna."
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:569
 msgid "I'll recruit some elves!"
-msgstr ""
+msgstr "Ég ræð nokkra álfa!"
 
 #. [event]
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:964
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:571
 msgid "Keep"
-msgstr ""
+msgstr "Höll"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:574
@@ -379,16 +431,18 @@ msgid ""
 "A splendid idea. You can recruit two units if you return to the keep. You "
 "have plenty of gold for that."
 msgstr ""
+"Frábær hugmynd! Þú getur ráðið tvo eininga ef þú ferð aftur að höllinni. Þú "
+"hefur nóg af gulli fyrir það."
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:578
 msgid "Move Konrad to the keep"
-msgstr ""
+msgstr "Færðu Konrad að höllinni"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:579
 msgid "Move Li'sar to the keep"
-msgstr ""
+msgstr "Færðu Li'sar að höllinni"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:597
@@ -397,11 +451,14 @@ msgid ""
 "right-clicking and selecting 'Recruit'. This time you will only be given one "
 "type of unit to choose: the Elvish Fighter."
 msgstr ""
+"Þegar þú ert í höll, þá getur þú ráðið í hallarreitina kringum þig með því "
+"að hægri-smella og velja 'Ráða'. Í þetta skipti mun þér vera í boði aðeins "
+"ein tegund einingar til að velja um: Elvish Fighter."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:602
 msgid "Right click on one castle tile and select Recruit"
-msgstr ""
+msgstr "Hægri-smelltu á eitthvern hallarreit og veldu 'Ráða'"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:638
@@ -412,23 +469,27 @@ msgid ""
 "Note: after this dialog, you can move the mouse over a unit to see a "
 "description on the right of the screen."
 msgstr ""
+"Þessir nýráðnu einingar geta ekkert gert þessa umferð. Þú munt geta stjórnað "
+"þeim næstu umferð.\n"
+"Ath.: Eftir þessi skilaboð, getur þú fært músarbendilinn yfir einingu og séð "
+"lýsingu einingar hægra megin á skjánum."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:650
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:683
 msgid "Right click on the other castle tile and Recruit another unit"
-msgstr ""
+msgstr "Hægri-smelltu á hinn hallarreitinn og ráðaðu aðra einingu"
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:700
 msgid ""
 "Hey, the quintain just healed 2 hitpoints! I'd better attack it at once!"
-msgstr ""
+msgstr "Hey, krákan læknaðist um 2 lífstig! Ég ætti að hefja árás samstundis!"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:704
 msgid "Yes, if a unit doesn't do anything for a turn, it will slowly heal."
-msgstr ""
+msgstr "Já, ef eining gerir ekkert í heila umferð, læknast hún hægt og rólega."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:716
@@ -436,11 +497,13 @@ msgid ""
 "But before you send your fighters against the quintain, you should know they "
 "have two kinds of attack..."
 msgstr ""
+"En áður en þú sendir bardagamennina þína á móti krákunni, þú ættir að vita "
+"að þeir hafa tvær tegundir árása."
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:720
 msgid "I'll tell them to use the one that does the most damage!"
-msgstr ""
+msgstr "Segðu þeim að nota það sem gerir sem mestu meiðsl!"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:724
@@ -448,11 +511,13 @@ msgid ""
 "And which would that be? The sword (5-4) or the bow (3-3)? I suppose you'll "
 "find out..."
 msgstr ""
+"Og hvert yrði það? Sverðið (5-4) eða boginn (3-3)? Ég hyggst að því að þú "
+"finnur það út..."
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:726
 msgid "Left click on an Elvish Fighter"
-msgstr ""
+msgstr "Smelltu á Elvish Fighter"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:727
@@ -470,7 +535,7 @@ msgstr ""
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:755
 msgid "Left click on the Quintain to attack it."
-msgstr ""
+msgstr "Smelltu á krákuna til að hefja árás"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:789
@@ -479,6 +544,8 @@ msgid ""
 "attack. Quintain defended with its melee attack (3-5). The ranged attack was "
 "safer."
 msgstr ""
+"Álfurinn þinn notaði sverð (5-4; eða 5 meiðsl, 4 árásir), sem er melee áras. "
+"Krákan varði sig með melee árás (3-5). Skotmálið var öruggara."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:797

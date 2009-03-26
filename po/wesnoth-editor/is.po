@@ -1,16 +1,16 @@
-# #-#-#-#-#  wesnoth-editor.cpp1.po (Battle for Wesnoth VERSION)  #-#-#-#-#
-# Icelandic translations for Battle for Wesnoth package.
+# ----wesnoth-editor.cpp1.po (Battle for Wesnoth VERSION)  ----Icelandic translations for Battle for Wesnoth package.
 # Copyright (C) 2009 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # Automatically generated, 2009.
 #
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 1.7.0-svn\n"
+"Project-Id-Version: Battle for Wesnoth 1.6+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-03-15 22:05+0100\n"
-"PO-Revision-Date: 2009-03-15 22:05+0100\n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2009-03-26 21:56+0000\n"
+"Last-Translator: Automatically generated <gabrielp@simnet.is>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,77 +19,77 @@ msgstr ""
 #. [brush]
 #: data/core/editor/brushes.cfg:5
 msgid "Single Hex"
-msgstr ""
+msgstr "Einn reitur"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:15
 msgid "Radius 1 Hex"
-msgstr ""
+msgstr "Radíus 1 reit"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:25
 msgid "Radius 2 Hex"
-msgstr ""
+msgstr "Radíus 2 reiti"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:55
 msgid "Hex Line NW-SE"
-msgstr ""
+msgstr "Reitarlína NV-SA"
 
 #. [editor_group]: id=all
 #: data/core/editor/terrain-groups.cfg:10
 msgid "all"
-msgstr ""
+msgstr "allt"
 
 #. [editor_group]: id=water
 #: data/core/editor/terrain-groups.cfg:16
 msgid "water"
-msgstr ""
+msgstr "vatn"
 
 #. [editor_group]: id=flat
 #: data/core/editor/terrain-groups.cfg:23
 msgid "flat"
-msgstr ""
+msgstr "flatt"
 
 #. [editor_group]: id=desert
 #: data/core/editor/terrain-groups.cfg:30
 msgid "desert"
-msgstr ""
+msgstr "eyðimörk"
 
 #. [editor_group]: id=forest
 #: data/core/editor/terrain-groups.cfg:37
 msgid "forest"
-msgstr ""
+msgstr "skógar"
 
 #. [editor_group]: id=frozen
 #: data/core/editor/terrain-groups.cfg:44
 msgid "frozen"
-msgstr ""
+msgstr "frost"
 
 #. [editor_group]: id=rough
 #: data/core/editor/terrain-groups.cfg:51
 msgid "rough"
-msgstr ""
+msgstr "ójöfnuður"
 
 #. [editor_group]: id=cave
 #: data/core/editor/terrain-groups.cfg:58
 msgid "cave"
-msgstr ""
+msgstr "hellir"
 
 #. [editor_group]: id=village
 #: data/core/editor/terrain-groups.cfg:65
 msgid "village"
-msgstr ""
+msgstr "þorp"
 
 #. [editor_group]: id=castle
 #: data/core/editor/terrain-groups.cfg:72
 msgid "castle"
-msgstr ""
+msgstr "kastali"
 
 #. [editor_group]: id=special
 #: data/core/editor/terrain-groups.cfg:79
 msgid "special"
-msgstr ""
+msgstr "sérstakt"
 
 #. [editor_tool_hint]: id=editor-tool-paint
 #. [editor_tool_hint]: id=editor-tool-fill
@@ -129,27 +129,27 @@ msgstr ""
 #. [menu]: id=menu-editor-file
 #: data/themes/editor2.cfg:120
 msgid "File"
-msgstr ""
+msgstr "Skrá"
 
 #. [menu]: id=menu-editor-edit
 #: data/themes/editor2.cfg:131
 msgid "Edit"
-msgstr ""
+msgstr "Breyta"
 
 #. [menu]: id=menu-editor-map
 #: data/themes/editor2.cfg:141
 msgid "Map"
-msgstr ""
+msgstr "Kort"
 
 #. [menu]: id=menu-editor-window
 #: data/themes/editor2.cfg:151
 msgid "Window"
-msgstr ""
+msgstr "Gluggar"
 
 #. [label]: id=villages-icon
 #: data/themes/editor2.cfg:270
 msgid "villages"
-msgstr ""
+msgstr "þorp"
 
 #: src/editor2/action.cpp:32
 msgid "Error creating action object"
@@ -157,44 +157,48 @@ msgstr ""
 
 #: src/editor2/action.cpp:36
 msgid "Action not implemented"
-msgstr ""
+msgstr "Skipun ekki forrituð"
 
 #: src/editor2/editor_controller.cpp:123
 msgid "Quit Editor"
-msgstr ""
+msgstr "Loka kortagerð"
 
 #: src/editor2/editor_controller.cpp:275
 msgid "Fatal error"
-msgstr ""
+msgstr "Alvarleg villa"
 
 #: src/editor2/editor_controller.cpp:289 src/editor2/editor_controller.cpp:984
 msgid "(New Map)"
-msgstr ""
+msgstr "(Nýtt kort)"
 
 #: src/editor2/editor_controller.cpp:295
 msgid "Do you really want to quit?"
-msgstr ""
+msgstr "Ertu viss um að þú viljir hætta?"
 
 #: src/editor2/editor_controller.cpp:297
 msgid ""
 "Do you really want to quit? Changes in the map since the last save will be "
 "lost."
 msgstr ""
+"Ertu viss um að þú viljir hætta? Breytingar á kortinu síðan síðustu vistun "
+"munu glatast."
 
 #: src/editor2/editor_controller.cpp:299
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
 msgstr ""
+"Ertu viss um að þú viljir hætta? Eftirfarandi kort voru breytt og allar "
+"breytingar síðan síðustu vistum munu glatast."
 
 #: src/editor2/editor_controller.cpp:304
 msgid "Quit"
-msgstr ""
+msgstr "Hætta"
 
 #: src/editor2/editor_controller.cpp:359 src/editor2/editor_controller.cpp:471
 #: src/editor2/editor_controller.cpp:507 src/editor2/editor_controller.cpp:529
 msgid "Error"
-msgstr ""
+msgstr "Villa"
 
 #: src/editor2/editor_controller.cpp:359
 msgid "No editor time-of-day found."
@@ -202,24 +206,25 @@ msgstr ""
 
 #: src/editor2/editor_controller.cpp:395
 msgid "Unsaved Changes"
-msgstr ""
+msgstr "Óvistaðar breytingar"
 
 #: src/editor2/editor_controller.cpp:396
 msgid ""
 "Do you want to discard all changes you made to the map since the last save?"
 msgstr ""
+"Viltu eyða öllum breytingum sem hafa verið gerðar síðan síðustu vistun?"
 
 #: src/editor2/editor_controller.cpp:409
 msgid "Choose a Map to Open"
-msgstr ""
+msgstr "Veldu kort til að opna"
 
 #: src/editor2/editor_controller.cpp:413
 msgid "This map is already open."
-msgstr ""
+msgstr "Þetta kort er nú þegar opið."
 
 #: src/editor2/editor_controller.cpp:451
 msgid "Save the Map As"
-msgstr ""
+msgstr "Vista kort sem"
 
 #: src/editor2/editor_controller.cpp:455
 msgid "The file already exists. Do you want to overwrite it?"
@@ -248,11 +253,11 @@ msgstr ""
 #: src/editor2/editor_controller.cpp:526 src/editor2/editor_controller.cpp:639
 #: src/editor2/editor_main.cpp:53
 msgid "Error loading map"
-msgstr ""
+msgstr "Villa við hlöðun korts"
 
 #: src/editor2/editor_controller.cpp:615
 msgid "Map saved."
-msgstr ""
+msgstr "Kort vistað."
 
 #: src/editor2/editor_controller.cpp:620
 msgid "Could not save the map: $msg"
@@ -260,27 +265,27 @@ msgstr ""
 
 #: src/editor2/editor_controller.cpp:1011
 msgid "Undo"
-msgstr ""
+msgstr "Afturkalla"
 
 #: src/editor2/editor_controller.cpp:1013
 msgid "Can't Undo"
-msgstr ""
+msgstr "Gat ekki afturkallað"
 
 #: src/editor2/editor_controller.cpp:1017
 msgid "Redo"
-msgstr ""
+msgstr "Endurkalla"
 
 #: src/editor2/editor_controller.cpp:1019
 msgid "Can't Redo"
-msgstr ""
+msgstr "Gat ekki endurkallað"
 
 #: src/editor2/editor_map.cpp:85
 msgid "Empty map file or file not found"
-msgstr ""
+msgstr "Tómt kort eða kort ekki fundið"
 
 #: src/editor2/editor_map.cpp:166 src/editor2/mouse_action.cpp:385
 msgid "Player"
-msgstr ""
+msgstr "Spilari"
 
 #: src/editor2/editor_map.cpp:285
 msgid "The size of the target map is different from the current map"
@@ -296,11 +301,11 @@ msgstr ""
 
 #: src/editor2/mouse_action.cpp:382
 msgid "(Player)^None"
-msgstr ""
+msgstr "Enginn"
 
 #: src/editor2/mouse_action.cpp:389
 msgid "Choose player"
-msgstr ""
+msgstr "Veldu spilara"
 
 #: src/editor2/mouse_action.cpp:390
 msgid ""
@@ -312,4 +317,4 @@ msgstr ""
 
 #: src/gui/dialogs/editor_settings.cpp:119
 msgid "Custom setting"
-msgstr ""
+msgstr "Sérstakar stillingar"
