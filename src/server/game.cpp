@@ -444,7 +444,9 @@ void game::change_controller(const size_t side_num,
 	const std::string& side = lexical_cast<std::string, size_t>(side_num + 1);
 	sides_[side_num] = sock;
 
-	if (controller.empty()) {
+	if (player_left && side_controllers_[side_num] == "ai") {
+		// Automatic AI side transfer.
+	} else if (controller.empty()) {
 		send_and_record_server_message((player_name
 				+ " takes control of side " + side + ".").c_str());
 		side_controllers_[side_num] = "human";
@@ -479,27 +481,6 @@ void game::change_controller(const size_t side_num,
 		side_list[side_num]->set_attr_dup("current_player", player_name.c_str());
 		// Also update controller type (so savegames of observers have proper controllers)
 		side_list[side_num]->set_attr_dup("controller", side_controllers_[side_num].c_str());
-	}
-}
-
-void game::transfer_ai_sides(const network::connection player) {
-	bool ai_transfer = false;
-	// Check for ai sides of the leaving player.
-	for (size_t side = 0; side < side_controllers_.size(); ++side){
-		//send the host a notification of removal of this side
-		if (sides_[side] != player || side_controllers_[side] != "ai") continue;
-
-		ai_transfer = true;
-		simple_wml::document drop;
-		const std::string side_drop = lexical_cast<std::string, size_t>(side + 1);
-		drop.root().set_attr("side_drop", side_drop.c_str());
-		drop.root().set_attr("controller", "ai");
-		const simple_wml::string_span data = drop.output_compressed();
-		network::send_raw_data(data.begin(), data.size(), owner_, drop.root().first_child().to_string());
-		sides_[side] = owner_;
-	}
-	if (ai_transfer) {
-		send_and_record_server_message("AI sides transferred to new host.");
 	}
 }
 
@@ -1007,11 +988,13 @@ bool game::remove_player(const network::connection player, const bool disconnect
 		notify_new_host();
 	}
 
+	bool ai_transfer = false;
 	// Look for all sides the player controlled and drop them.
 	// (Give them to the host.)
 	for (side_vector::iterator side = sides_.begin(); side != sides_.end(); ++side)	{
 		size_t side_num = side - sides_.begin();
-		if (*side != player || side_controllers_[side_num] == "ai") continue;
+		if (*side != player) continue;
+		if (side_controllers_[side_num] == "ai") ai_transfer = true;
 
 		change_controller(side_num, player_info_->find(owner_));
 		// Check whether the host is actually a player and make him one if not.
@@ -1023,16 +1006,15 @@ bool game::remove_player(const network::connection player, const bool disconnect
 		}
 
 		//send the host a notification of removal of this side
-		char side_drop_buf[64];
-		sprintf(side_drop_buf, "%d", static_cast<int>(side_num + 1));
+		const std::string side_drop = lexical_cast<std::string, size_t>(side_num + 1);
 		simple_wml::document drop;
-		drop.root().set_attr("side_drop", side_drop_buf);
-		// We're only dropping non-ai sides here. (The client just cares if it's an AI or not.)
-		drop.root().set_attr("controller", "network");
+		drop.root().set_attr("side_drop", side_drop.c_str());
+		drop.root().set_attr("controller", side_controllers_[side_num].c_str());
 
 		send_to_one(drop, owner_);
 	}
-	transfer_ai_sides(player);
+	if (ai_transfer) send_and_record_server_message("AI sides transferred to host.");
+
 	DBG_GAME << debug_player_info();
 
 	send_user_list(player);
