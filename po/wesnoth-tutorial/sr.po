@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-12-03 19:43+0100\n"
+"POT-Creation-Date: 2009-03-26 23:43+0100\n"
 "PO-Revision-Date: 2008-06-22 12:00+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -126,9 +126,9 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:373
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:379
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:528
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:599
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:640
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:673
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:608
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:649
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:682
 #, fuzzy
 msgid ""
 "\n"
@@ -418,15 +418,15 @@ msgstr ""
 #. [then]
 #. [else]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:531
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:645
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:678
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:800
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:852
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:654
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:687
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:809
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:861
 msgid "Click on the End Turn button"
 msgstr "Кликни на „Готово“"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:565
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:567
 #, fuzzy
 msgid ""
 "You're about to be healed by $hp_difference hitpoints, but I think you're "
@@ -435,20 +435,30 @@ msgstr ""
 "Сада ће ти извидати 8 ударпоена. Али размишљах, ипак ће ти требати помоћ "
 "против тог дрвенка."
 
+#. [message]: id=Delfador
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:572
+#, fuzzy
+msgid ""
+"female^You're about to be healed by $hp_difference hitpoints, but I think "
+"you're going to need some help against that quintain."
+msgstr ""
+"Сада ће ти извидати 8 ударпоена. Али размишљах, ипак ће ти требати помоћ "
+"против тог дрвенка."
+
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:569
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:578
 msgid "I'll recruit some elves!"
 msgstr "Позваћу вилењаке добре!"
 
 #. [event]
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:964
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:571
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:580
 msgid "Keep"
 msgstr "замак"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:574
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:583
 #, fuzzy
 msgid ""
 "A splendid idea. You can recruit two units if you return to the keep. You "
@@ -458,17 +468,17 @@ msgstr ""
 "недостати неће за тај чин, сигурно."
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:578
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:587
 msgid "Move Konrad to the keep"
 msgstr "Пошаљи Конрада у замак"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:579
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:588
 msgid "Move Li'sar to the keep"
 msgstr "Пошаљи Лизару у замак"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:597
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:606
 #, fuzzy
 msgid ""
 "Whenever you're on a keep, you can recruit into castle tiles around it by "
@@ -481,13 +491,13 @@ msgstr ""
 "*Кликни левим или притисни тастер да наставиш..."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:602
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:611
 msgid "Right click on one castle tile and select Recruit"
 msgstr "Кликни десним на поље замка и изабери „Унајми“"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:638
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:671
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:647
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:680
 #, fuzzy
 msgid ""
 "These newly recruited units can do nothing this turn; you will control them "
@@ -502,13 +512,13 @@ msgstr ""
 "*Кликни левим или притисни тастер да наставиш..."
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:650
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:683
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:659
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:692
 msgid "Right click on the other castle tile and Recruit another unit"
 msgstr "Кликни десним на друго поље замка и унајми још једну јединицу"
 
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:700
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:709
 #, fuzzy
 msgid ""
 "Hey, the quintain just healed 2 hitpoints! I'd better attack it at once!"
@@ -516,12 +526,12 @@ msgstr ""
 "Гле, дрвенку се управо обновише два ударпоена! Боље ми је ударити чим пре!"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:704
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:713
 msgid "Yes, if a unit doesn't do anything for a turn, it will slowly heal."
 msgstr ""
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:716
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:725
 #, fuzzy
 msgid ""
 "But before you send your fighters against the quintain, you should know they "
@@ -532,13 +542,13 @@ msgstr ""
 "ударити двојако..."
 
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:720
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:729
 #, fuzzy
 msgid "I'll tell them to use the one that does the most damage!"
 msgstr "Рећи ћу им да ударе тако да што више штете нанесу!"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:724
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:733
 #, fuzzy
 msgid ""
 "And which would that be? The sword (5-4) or the bow (3-3)? I suppose you'll "
@@ -548,18 +558,18 @@ msgstr ""
 "спознати..."
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:726
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:735
 msgid "Left click on an Elvish Fighter"
 msgstr "Кликни левим на вилин-борца"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:727
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:736
 #, fuzzy
 msgid "End your turn and attack again."
 msgstr "Заврши свој потез, а онда нападни поново."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:744
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:753
 msgid ""
 "You wouldn't do anything stupid like charging that quintain yourself again, "
 "now would you?\n"
@@ -567,12 +577,12 @@ msgid ""
 msgstr ""
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:755
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:764
 msgid "Left click on the Quintain to attack it."
 msgstr "Кликни левим на дрвенка да га нападнеш."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:789
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:798
 #, fuzzy
 msgid ""
 "Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
@@ -584,7 +594,7 @@ msgstr ""
 "безбеднији."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:797
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:806
 #, fuzzy
 msgid ""
 "Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
@@ -598,7 +608,7 @@ msgstr ""
 "Окончај свој потез, те удари поново."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:809
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:818
 #, fuzzy
 msgid ""
 "Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
@@ -610,15 +620,15 @@ msgstr ""
 "Треба да упутиш другог вилењака да користи лук."
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:812
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:861
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:821
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:870
 #, fuzzy
 msgid "Attack with the other Elf"
 msgstr "Нападни другим вилењаком"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:841
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:859
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:850
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:868
 #, fuzzy
 msgid ""
 "Your elf used a bow, which is a ranged attack (3-3; or 3 damage, 3 attacks). "
@@ -630,7 +640,7 @@ msgstr ""
 "бранити."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:849
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:858
 #, fuzzy
 msgid ""
 "Your elf used a bow, which is a ranged attack (3-3; or 3 damage, 3 attacks). "
@@ -644,18 +654,18 @@ msgstr ""
 "Окончај свој потез, те нападни поново."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:880
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:889
 #, fuzzy
 msgid "Keep attacking with both elves until the quintain is finished!"
 msgstr "Настави да нападаш, обојицом вилењака, док не довршиш дрвенка!"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:894
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:903
 msgid "Maybe you should recruit another elf?"
 msgstr "Можда да унајмиш још једног вилењака?"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:900
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:909
 msgid ""
 "Note:\n"
 "You can right click on a unit to see a detailed Unit Description."
@@ -664,7 +674,7 @@ msgstr ""
 "Кликом десним на јединицу можеш видети њен детаљан опис."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:923
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:932
 #, fuzzy
 msgid ""
 "Note:\n"
@@ -677,7 +687,7 @@ msgstr ""
 "устребају. Посебно чувај јединице са највише искуствених поена (ИП)."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:942
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:951
 msgid ""
 "Note:\n"
 "Each village you own can support a single unit for free. After that, each "
@@ -688,7 +698,7 @@ msgstr ""
 "преко тога, коштаће те златник по потезу."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:959
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:968
 #, fuzzy
 msgid ""
 "Note:\n"
@@ -704,7 +714,7 @@ msgstr ""
 "више на издржавање од јединица првог нивоа."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:976
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:985
 #, fuzzy
 msgid ""
 "Note:\n"
@@ -721,13 +731,13 @@ msgstr ""
 "где год да стојиш."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1001
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1010
 msgid "The quintain is dead, sirs, and I have gained more experience!"
 msgstr "Дрвенко је уништен, господо, а ја сакупих искуства!"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1006
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1010
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1015
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1019
 #, fuzzy
 msgid ""
 "Yes, you gain experience through battle, especially by killing an opponent. "
@@ -737,7 +747,7 @@ msgstr ""
 "Сакупљајући искуство, моћ ти расте."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1007
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1016
 #, fuzzy
 msgid ""
 " Now, Konrad, I will leave you with more dummies to practice on! After that, "
@@ -747,7 +757,7 @@ msgstr ""
 "морамо се бацити на озбиљнија дела..."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1011
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1020
 #, fuzzy
 msgid ""
 " Now, Li'sar, I will leave you with more dummies to practice on! After that, "
@@ -757,7 +767,7 @@ msgstr ""
 "морамо се бацити на озбиљнија дела..."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1050
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1059
 msgid ""
 "Note:\n"
 "These dummies only attack if you are a single tile away. With care, you "
@@ -768,22 +778,22 @@ msgstr ""
 "можеш их сређивати једну по једну."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1059
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1068
 msgid "Do you want to keep practicing?"
 msgstr "Треба ли ти још вежбања?"
 
 #. [option]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1061
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1070
 msgid "Yes, I'm still figuring it out."
 msgstr "Да, још увек испробавам."
 
 #. [option]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1064
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1073
 msgid "No, I think I've got it."
 msgstr "Не, мислим да све схватих."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1099
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1108
 #, fuzzy
 msgid ""
 "After your victory notice, the map will be grayed out to indicate that the "
