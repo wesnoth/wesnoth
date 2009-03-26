@@ -3,6 +3,7 @@ from pkgconfig import run_pkg_config
 
 def CheckLua(context, require_version):
     env = context.env
+    backup = env.Clone().Dictionary()
 
     context.Message("Checking for Lua development files version " + require_version + "... ")
 
@@ -23,6 +24,7 @@ def CheckLua(context, require_version):
         return True
     else:
         context.Result("no")
+        env.Replace(**backup)
         return False
 
 config_checks = { "CheckLua" : CheckLua }
