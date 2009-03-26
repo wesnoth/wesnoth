@@ -641,7 +641,7 @@ static void write_player(config_writer &out, const player_info& player)
 }
 
 /** @deprecated, use other write_game below. */
-void write_game(const game_state& gamestate, config& cfg, WRITE_GAME_MODE mode)
+void write_game(const game_state& gamestate, config& cfg)
 {
 	log_scope("write_game");
 	cfg["label"] = gamestate.label;
@@ -694,16 +694,6 @@ void write_game(const game_state& gamestate, config& cfg, WRITE_GAME_MODE mode)
 		write_player(i->second, new_cfg);
 		new_cfg["save_id"]=i->first;
 		cfg.add_child("player", new_cfg);
-	}
-
-	if(mode == WRITE_FULL_GAME) {
-		if(gamestate.replay_data.child("replay") == NULL) {
-			cfg.add_child("replay",gamestate.replay_data);
-		}
-
-		cfg.add_child("snapshot",gamestate.snapshot);
-		cfg.add_child("replay_start",gamestate.starting_pos);
-		cfg.add_child("statistics",statistics::write_stats());
 	}
 }
 
