@@ -83,6 +83,9 @@ game::game(player_map& players, const network::connection host,
 
 game::~game()
 {
+	for (user_vector::const_iterator p = players_.begin(); p != players_.end(); ++p) {
+		remove_player(*p, false, true);
+	}
 	for(std::vector<simple_wml::document*>::iterator i = history_.begin(); i != history_.end(); ++i) {
 		delete *i;
 	}
@@ -935,7 +938,7 @@ bool game::add_player(const network::connection player, bool observer, bool admi
 	return true;
 }
 
-bool game::remove_player(const network::connection player, const bool disconnect) {
+bool game::remove_player(const network::connection player, const bool disconnect, const bool destruct) {
 	if (!is_member(player)) {
 		ERR_GAME << "ERROR: User is not in this game. (socket: "
 			<< player << ")\n";
@@ -976,6 +979,8 @@ bool game::remove_player(const network::connection player, const bool disconnect
 		<< (observer ? " as an observer" : "")
 		<< (disconnect ? " and disconnected" : "")
 		<< ". (socket: " << user->first << ")\n";
+	// No need to do anything more when the game gets destructed.
+	if (destruct) return true;
 	if (game_ended) {
 		send_server_message_to_all((user->second.name() + " ended the game.").c_str(), player);
 		return true;

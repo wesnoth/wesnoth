@@ -96,7 +96,7 @@ public:
 	 *                            no more players or the host left on a not yet
 	 *                            started game.
 	 */
-	bool remove_player(const network::connection player, const bool disconnect=false);
+	bool remove_player(const network::connection player, const bool disconnect=false, const bool destruct=false);
 
 	/** Adds players and observers into one vector and returns that. */
 	const user_vector all_game_users() const;
