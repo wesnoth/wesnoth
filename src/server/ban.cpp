@@ -276,7 +276,7 @@ namespace wesnothd {
 		try {
 			ip_mask pair = parse_ip(ip);
 			return (ip_ & mask_) == (pair.first & mask_);
-		} catch (banned::error& e) {
+		} catch (banned::error&) {
 			return false;
 		}
 	}

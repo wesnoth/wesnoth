@@ -20,6 +20,12 @@
 
 #include "game.hpp"
 
+#ifndef __func__
+ #ifdef __FUNCTION__
+  #define __func__ __FUNCTION__
+ #endif
+#endif
+
 
 #define ERR_GAME LOG_STREAM(err, mp_server)
 #define WRN_GAME LOG_STREAM(warn, mp_server)

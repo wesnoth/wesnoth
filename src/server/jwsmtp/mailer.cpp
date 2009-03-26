@@ -21,7 +21,7 @@
 //   http://johnwiggins.net
 //   smtplib@johnwiggins.net
 //
-#ifdef _WIN32
+#ifdef _MSC_VER
 // std::vector<std::string> This gives this warning in VC..
 // bloody annoying, there is a way round it according to MS.
 // The debugger basically cannot browse anything with a name
