@@ -44,6 +44,8 @@
 #ifdef _WIN32
 #include <windows.h>
 
+static void write_player(const player_info& player, config& cfg);
+
 /**
  * conv_ansi_utf8()
  *   - Convert a string between ANSI encoding (for Windows filename) and UTF-8
@@ -565,6 +567,60 @@ game_state::game_state(const config& cfg, bool show_replay) :
 	}
 }
 
+void game_state::write_snapshot(config& cfg) const
+{
+	log_scope("write_game");
+	cfg["label"] = label;
+	cfg["history"] = history;
+	cfg["abbrev"] = abbrev;
+	cfg["version"] = game_config::version;
+
+	cfg["scenario"] = scenario;
+	cfg["next_scenario"] = next_scenario;
+
+	cfg["completion"] = completion;
+
+	cfg["campaign"] = campaign;
+	cfg["campaign_type"] = campaign_type;
+	cfg["difficulty"] = difficulty;
+
+	cfg["campaign_define"] = campaign_define;
+	cfg["campaign_extra_defines"] = utils::join(campaign_xtra_defines);
+	cfg["next_underlying_unit_id"] = lexical_cast<std::string>(n_unit::id_manager::instance().get_save_id());
+
+	cfg["random_seed"] = lexical_cast<std::string>(rng_.get_random_seed());
+	cfg["random_calls"] = lexical_cast<std::string>(rng_.get_random_calls());
+
+	cfg["end_text"] = end_text;
+	cfg["end_text_duration"] = str_cast<unsigned int>(end_text_duration);
+
+	cfg.add_child("variables", variables);
+
+	for(std::map<std::string, wml_menu_item *>::const_iterator j=wml_menu_items.begin();
+	    j!=wml_menu_items.end(); ++j) {
+		config new_cfg;
+		new_cfg["id"]=j->first;
+		new_cfg["image"]=j->second->image;
+		new_cfg["description"]=j->second->description;
+		new_cfg["needs_select"]= (j->second->needs_select) ? "yes" : "no";
+		if(!j->second->show_if.empty())
+			new_cfg.add_child("show_if", j->second->show_if);
+		if(!j->second->filter_location.empty())
+			new_cfg.add_child("filter_location", j->second->filter_location);
+		if(!j->second->command.empty())
+			new_cfg.add_child("command", j->second->command);
+		cfg.add_child("menu_item", new_cfg);
+	}
+
+	for(std::map<std::string, player_info>::const_iterator i=players.begin();
+	    i!=players.end(); ++i) {
+		config new_cfg;
+		::write_player(i->second, new_cfg);
+		new_cfg["save_id"]=i->first;
+		cfg.add_child("player", new_cfg);
+	}
+}
+
 static void write_player(const player_info& player, config& cfg)
 {
 	cfg["name"] = player.name;
@@ -638,63 +694,6 @@ static void write_player(config_writer &out, const player_info& player)
 	}
 
 	out.write_key_val("can_recruit", can_recruit_str);
-}
-
-/** @deprecated, use other write_game below. */
-void write_game(const game_state& gamestate, config& cfg)
-{
-	log_scope("write_game");
-	cfg["label"] = gamestate.label;
-	cfg["history"] = gamestate.history;
-	cfg["abbrev"] = gamestate.abbrev;
-	cfg["version"] = game_config::version;
-
-	cfg["scenario"] = gamestate.scenario;
-	cfg["next_scenario"] = gamestate.next_scenario;
-
-	cfg["completion"] = gamestate.completion;
-
-	cfg["campaign"] = gamestate.campaign;
-
-	cfg["campaign_type"] = gamestate.campaign_type;
-
-	cfg["difficulty"] = gamestate.difficulty;
-
-	cfg["campaign_define"] = gamestate.campaign_define;
-	cfg["campaign_extra_defines"] = utils::join(gamestate.campaign_xtra_defines);
-	cfg["next_underlying_unit_id"] = lexical_cast<std::string>(n_unit::id_manager::instance().get_save_id());
-
-	cfg["random_seed"] = lexical_cast<std::string>(gamestate.rng().get_random_seed());
-	cfg["random_calls"] = lexical_cast<std::string>(gamestate.rng().get_random_calls());
-
-	cfg["end_text"] = gamestate.end_text;
-	cfg["end_text_duration"] = str_cast<unsigned int>(gamestate.end_text_duration);
-
-	cfg.add_child("variables",gamestate.get_variables());
-
-	for(std::map<std::string, wml_menu_item *>::const_iterator j=gamestate.wml_menu_items.begin();
-	    j!=gamestate.wml_menu_items.end(); ++j) {
-		config new_cfg;
-		new_cfg["id"]=j->first;
-		new_cfg["image"]=j->second->image;
-		new_cfg["description"]=j->second->description;
-		new_cfg["needs_select"]= (j->second->needs_select) ? "yes" : "no";
-		if(!j->second->show_if.empty())
-			new_cfg.add_child("show_if", j->second->show_if);
-		if(!j->second->filter_location.empty())
-			new_cfg.add_child("filter_location", j->second->filter_location);
-		if(!j->second->command.empty())
-			new_cfg.add_child("command", j->second->command);
-		cfg.add_child("menu_item", new_cfg);
-	}
-
-	for(std::map<std::string, player_info>::const_iterator i=gamestate.players.begin();
-	    i!=gamestate.players.end(); ++i) {
-		config new_cfg;
-		write_player(i->second, new_cfg);
-		new_cfg["save_id"]=i->first;
-		cfg.add_child("player", new_cfg);
-	}
 }
 
 void write_game(config_writer &out, const game_state& gamestate, WRITE_GAME_MODE mode)

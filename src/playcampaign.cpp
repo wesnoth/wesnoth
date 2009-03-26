@@ -545,7 +545,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 				// Adds player information, and other state
 				// information, to the configuration object
 				assert(cfg.child("store_next_scenario") != NULL);
-				write_game(gamestate, *cfg.child("store_next_scenario"));
+				gamestate.write_snapshot(*cfg.child("store_next_scenario"));
 				network::send_data(cfg, 0, true);
 			}
 		}

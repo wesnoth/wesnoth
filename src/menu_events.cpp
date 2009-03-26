@@ -713,8 +713,7 @@ private:
 
 		sound::write_music_play_list(start);
 
-		write_game(gamestate_, start);
-		start["completion"] = gamestate_.completion;
+		gamestate_.write_snapshot(start);
 
 		//write out the current state of the map
 		start["map_data"] = map_.write();
