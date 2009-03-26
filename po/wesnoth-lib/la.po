@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-03-20 00:45+0100\n"
+"POT-Creation-Date: 2009-03-26 12:25+0100\n"
 "PO-Revision-Date: 2006-06-15 17:19+0200\n"
 "Last-Translator: Mark Polo <markpolo@gmail.com>\n"
 "Language-Team: Latin\n"
@@ -503,7 +503,7 @@ msgstr "Novam Chartam Creare"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_resize_map.cfg:27 src/hotkeys.cpp:151
+#: data/gui/default/window/editor_resize_map.cfg:27 src/hotkeys.cpp:152
 msgid "Resize Map"
 msgstr "Magnitudinem Chartae Mutare"
 
@@ -961,8 +961,8 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
-#: data/gui/default/window/title_screen.cfg:86 src/hotkeys.cpp:651
-#: src/hotkeys.cpp:938
+#: data/gui/default/window/title_screen.cfg:86 src/hotkeys.cpp:652
+#: src/hotkeys.cpp:939
 msgid "Quit"
 msgstr "Relinquere"
 
@@ -1588,7 +1588,7 @@ msgstr "Minuere"
 msgid "Default Zoom"
 msgstr "Conspectus Solitus"
 
-#: src/hotkeys.cpp:56 src/hotkeys.cpp:893
+#: src/hotkeys.cpp:56 src/hotkeys.cpp:894
 msgid "Screenshot"
 msgstr "Imago Scrinii"
 
@@ -1828,180 +1828,184 @@ msgstr "Exscribere"
 msgid "Paste"
 msgstr "Glutinare"
 
-#: src/hotkeys.cpp:127
+#: src/hotkeys.cpp:126
+msgid "Export selected coordinates to system clipboard"
+msgstr ""
+
+#: src/hotkeys.cpp:128
 msgid "Select All"
 msgstr "Omnia Eligere"
 
-#: src/hotkeys.cpp:129
+#: src/hotkeys.cpp:130
 msgid "Select Inverse"
 msgstr ""
 
-#: src/hotkeys.cpp:131
+#: src/hotkeys.cpp:132
 #, fuzzy
 msgid "Select None"
 msgstr "Omnia Eligere"
 
-#: src/hotkeys.cpp:133
+#: src/hotkeys.cpp:134
 msgid "Rotate Clipboard Clockwise"
 msgstr ""
 
-#: src/hotkeys.cpp:135
+#: src/hotkeys.cpp:136
 msgid "Rotate Clipboard Counter-Clockwise"
 msgstr ""
 
-#: src/hotkeys.cpp:137
+#: src/hotkeys.cpp:138
 msgid "Flip Clipboard Horizontally"
 msgstr ""
 
-#: src/hotkeys.cpp:139
+#: src/hotkeys.cpp:140
 msgid "Flip Clipboard Vertically"
 msgstr ""
 
-#: src/hotkeys.cpp:141
+#: src/hotkeys.cpp:142
 #, fuzzy
 msgid "Rotate Selection"
 msgstr "Electionem Implere"
 
-#: src/hotkeys.cpp:143
+#: src/hotkeys.cpp:144
 #, fuzzy
 msgid "Flip Selection"
 msgstr "Electionem Implere"
 
-#: src/hotkeys.cpp:145
+#: src/hotkeys.cpp:146
 msgid "Fill Selection"
 msgstr "Electionem Implere"
 
-#: src/hotkeys.cpp:147
+#: src/hotkeys.cpp:148
 #, fuzzy
 msgid "Generate Tiles In Selection"
 msgstr "Electionem Implere"
 
-#: src/hotkeys.cpp:149
+#: src/hotkeys.cpp:150
 msgid "Randomize Tiles In Selection"
 msgstr ""
 
-#: src/hotkeys.cpp:153
+#: src/hotkeys.cpp:154
 #, fuzzy
 msgid "Rotate Map"
 msgstr "Chartam Restituere"
 
-#: src/hotkeys.cpp:155
+#: src/hotkeys.cpp:156
 #, fuzzy
 msgid "Generate Map"
 msgstr "Chartam Novam Generare"
 
-#: src/hotkeys.cpp:157
+#: src/hotkeys.cpp:158
 msgid "Apply a Mask"
 msgstr ""
 
-#: src/hotkeys.cpp:159
+#: src/hotkeys.cpp:160
 #, fuzzy
 msgid "Create Mask"
 msgstr "Lusum Servare"
 
-#: src/hotkeys.cpp:161
+#: src/hotkeys.cpp:162
 #, fuzzy
 msgid "Refresh Display"
 msgstr "Scrinium"
 
-#: src/hotkeys.cpp:163
+#: src/hotkeys.cpp:164
 msgid "Update Terrain Transitions"
 msgstr ""
 
-#: src/hotkeys.cpp:165
+#: src/hotkeys.cpp:166
 msgid "Auto-update Terrain Transitions"
 msgstr ""
 
-#: src/hotkeys.cpp:167
+#: src/hotkeys.cpp:168
 msgid "Refresh Image Cache"
 msgstr "Thesaurum Imaginum Renovare"
 
-#: src/hotkeys.cpp:169
+#: src/hotkeys.cpp:170
 msgid "Draw Hex Coordinates"
 msgstr ""
 
-#: src/hotkeys.cpp:171
+#: src/hotkeys.cpp:172
 #, fuzzy
 msgid "Draw Terrain Codes"
 msgstr "Agros Pingere"
 
-#: src/hotkeys.cpp:176
+#: src/hotkeys.cpp:177
 msgid "Delay Shroud Updates"
 msgstr "Integumentum Tardius Ponere"
 
-#: src/hotkeys.cpp:177
+#: src/hotkeys.cpp:178
 msgid "Update Shroud Now"
 msgstr "Integumentum Nunc Ponere"
 
-#: src/hotkeys.cpp:178
+#: src/hotkeys.cpp:179
 msgid "Continue Move"
 msgstr "Tractum Pergere"
 
-#: src/hotkeys.cpp:179
+#: src/hotkeys.cpp:180
 msgid "Find Label or Unit"
 msgstr "Titulum aut Unitatem Invenire"
 
-#: src/hotkeys.cpp:180
+#: src/hotkeys.cpp:181
 msgid "Speak to Ally"
 msgstr "Socio Loqui"
 
-#: src/hotkeys.cpp:181
+#: src/hotkeys.cpp:182
 msgid "Speak to All"
 msgstr "Omnibus Loqui"
 
-#: src/hotkeys.cpp:182
+#: src/hotkeys.cpp:183
 msgid "Help"
 msgstr "Subsidium"
 
-#: src/hotkeys.cpp:183
+#: src/hotkeys.cpp:184
 msgid "View Chat Log"
 msgstr "Acta Colloquii Aspicere"
 
-#: src/hotkeys.cpp:184
+#: src/hotkeys.cpp:185
 msgid "Change the language"
 msgstr "Linguam mutare"
 
-#: src/hotkeys.cpp:186
+#: src/hotkeys.cpp:187
 msgid "Enter user command"
 msgstr "Imperium utentis dare"
 
-#: src/hotkeys.cpp:187
+#: src/hotkeys.cpp:188
 #, fuzzy
 msgid "Custom command"
 msgstr "Imperium utentis dare"
 
-#: src/hotkeys.cpp:188
+#: src/hotkeys.cpp:189
 msgid "Run AI formula"
 msgstr ""
 
-#: src/hotkeys.cpp:189
+#: src/hotkeys.cpp:190
 #, fuzzy
 msgid "Clear messages"
 msgstr "Titula Tollere"
 
-#: src/hotkeys.cpp:191
+#: src/hotkeys.cpp:192
 msgid "User-Command#2"
 msgstr ""
 
-#: src/hotkeys.cpp:192
+#: src/hotkeys.cpp:193
 msgid "User-Command#3"
 msgstr ""
 
-#: src/hotkeys.cpp:651 src/hotkeys.cpp:938
+#: src/hotkeys.cpp:652 src/hotkeys.cpp:939
 msgid "Do you really want to quit?"
 msgstr "Visne vere relinquere?"
 
-#: src/hotkeys.cpp:893
+#: src/hotkeys.cpp:894
 #, fuzzy
 msgid "Map-Screenshot"
 msgstr "Imago Scrinii"
 
-#: src/hotkeys.cpp:900
+#: src/hotkeys.cpp:901
 #, fuzzy
 msgid "Screenshot done"
 msgstr "Imago Scrinii"
 
-#: src/hotkeys.cpp:902
+#: src/hotkeys.cpp:903
 #, fuzzy
 msgid "Screenshot failed"
 msgstr "Imago Scrinii"

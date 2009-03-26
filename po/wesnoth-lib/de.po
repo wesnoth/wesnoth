@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-03-20 00:45+0100\n"
+"POT-Creation-Date: 2009-03-26 12:25+0100\n"
 "PO-Revision-Date: 2009-03-21 13:04+0100\n"
 "Last-Translator: Nils Kneuper <crazy-ivanovic  AT gmx  D O  T net>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
@@ -487,7 +487,7 @@ msgstr "Karte erstellen"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_resize_map.cfg:27 src/hotkeys.cpp:151
+#: data/gui/default/window/editor_resize_map.cfg:27 src/hotkeys.cpp:152
 msgid "Resize Map"
 msgstr "Kartengröße anpassen"
 
@@ -928,8 +928,8 @@ msgstr "Mitwirkende"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
-#: data/gui/default/window/title_screen.cfg:86 src/hotkeys.cpp:651
-#: src/hotkeys.cpp:938
+#: data/gui/default/window/title_screen.cfg:86 src/hotkeys.cpp:652
+#: src/hotkeys.cpp:939
 msgid "Quit"
 msgstr "Beenden"
 
@@ -1546,7 +1546,7 @@ msgstr "Verkleinern"
 msgid "Default Zoom"
 msgstr "Keine Vergrößerung"
 
-#: src/hotkeys.cpp:56 src/hotkeys.cpp:893
+#: src/hotkeys.cpp:56 src/hotkeys.cpp:894
 msgid "Screenshot"
 msgstr "Bildschirmfoto"
 
@@ -1774,167 +1774,171 @@ msgstr "Kopieren"
 msgid "Paste"
 msgstr "Einfügen"
 
-#: src/hotkeys.cpp:127
+#: src/hotkeys.cpp:126
+msgid "Export selected coordinates to system clipboard"
+msgstr ""
+
+#: src/hotkeys.cpp:128
 msgid "Select All"
 msgstr "Alles auswählen"
 
-#: src/hotkeys.cpp:129
+#: src/hotkeys.cpp:130
 msgid "Select Inverse"
 msgstr "Auswahl umkehren"
 
-#: src/hotkeys.cpp:131
+#: src/hotkeys.cpp:132
 msgid "Select None"
 msgstr "Nichts auswählen"
 
-#: src/hotkeys.cpp:133
+#: src/hotkeys.cpp:134
 msgid "Rotate Clipboard Clockwise"
 msgstr "Zwischenablage im Uhrzeigersinn rotieren"
 
-#: src/hotkeys.cpp:135
+#: src/hotkeys.cpp:136
 msgid "Rotate Clipboard Counter-Clockwise"
 msgstr "Zwischenablage gegen den Uhrzeigersinn rotieren"
 
-#: src/hotkeys.cpp:137
+#: src/hotkeys.cpp:138
 msgid "Flip Clipboard Horizontally"
 msgstr "Zwischenablage horizontal spiegeln"
 
-#: src/hotkeys.cpp:139
+#: src/hotkeys.cpp:140
 msgid "Flip Clipboard Vertically"
 msgstr "Zwischenablage vertikal spiegeln"
 
-#: src/hotkeys.cpp:141
+#: src/hotkeys.cpp:142
 msgid "Rotate Selection"
 msgstr "Auswahl rotieren"
 
-#: src/hotkeys.cpp:143
+#: src/hotkeys.cpp:144
 msgid "Flip Selection"
 msgstr "Ausgewählten Bereich umdrehen"
 
-#: src/hotkeys.cpp:145
+#: src/hotkeys.cpp:146
 msgid "Fill Selection"
 msgstr "Ausgewählten Bereich füllen"
 
-#: src/hotkeys.cpp:147
+#: src/hotkeys.cpp:148
 msgid "Generate Tiles In Selection"
 msgstr "Felder in Auswahl generieren"
 
-#: src/hotkeys.cpp:149
+#: src/hotkeys.cpp:150
 msgid "Randomize Tiles In Selection"
 msgstr "Felder in Auswahl randomisieren"
 
-#: src/hotkeys.cpp:153
+#: src/hotkeys.cpp:154
 msgid "Rotate Map"
 msgstr "Karte drehen"
 
-#: src/hotkeys.cpp:155
+#: src/hotkeys.cpp:156
 msgid "Generate Map"
 msgstr "Karte erzeugen"
 
-#: src/hotkeys.cpp:157
+#: src/hotkeys.cpp:158
 msgid "Apply a Mask"
 msgstr "Maske anwenden"
 
-#: src/hotkeys.cpp:159
+#: src/hotkeys.cpp:160
 msgid "Create Mask"
 msgstr "Maske erstellen"
 
-#: src/hotkeys.cpp:161
+#: src/hotkeys.cpp:162
 msgid "Refresh Display"
 msgstr "Anzeige aktualisieren"
 
-#: src/hotkeys.cpp:163
+#: src/hotkeys.cpp:164
 msgid "Update Terrain Transitions"
 msgstr "Geländeübergänge aktualisieren"
 
-#: src/hotkeys.cpp:165
+#: src/hotkeys.cpp:166
 msgid "Auto-update Terrain Transitions"
 msgstr "Geländeübergänge automatisch aktualisieren"
 
-#: src/hotkeys.cpp:167
+#: src/hotkeys.cpp:168
 msgid "Refresh Image Cache"
 msgstr "Grafik-Cache aktualisieren"
 
-#: src/hotkeys.cpp:169
+#: src/hotkeys.cpp:170
 msgid "Draw Hex Coordinates"
 msgstr "Hexkoordinaten anzeigen"
 
-#: src/hotkeys.cpp:171
+#: src/hotkeys.cpp:172
 msgid "Draw Terrain Codes"
 msgstr "Geländekürzel zeigen"
 
-#: src/hotkeys.cpp:176
+#: src/hotkeys.cpp:177
 msgid "Delay Shroud Updates"
 msgstr "Schleier verspätet aktualisieren"
 
-#: src/hotkeys.cpp:177
+#: src/hotkeys.cpp:178
 msgid "Update Shroud Now"
 msgstr "Schleier jetzt aktualisieren"
 
-#: src/hotkeys.cpp:178
+#: src/hotkeys.cpp:179
 msgid "Continue Move"
 msgstr "Bewegung fortsetzen"
 
-#: src/hotkeys.cpp:179
+#: src/hotkeys.cpp:180
 msgid "Find Label or Unit"
 msgstr "Beschriftung / Einheiten suchen"
 
-#: src/hotkeys.cpp:180
+#: src/hotkeys.cpp:181
 msgid "Speak to Ally"
 msgstr "Nachricht an Verbündete"
 
-#: src/hotkeys.cpp:181
+#: src/hotkeys.cpp:182
 msgid "Speak to All"
 msgstr "Nachricht an alle"
 
-#: src/hotkeys.cpp:182
+#: src/hotkeys.cpp:183
 msgid "Help"
 msgstr "Hilfe"
 
-#: src/hotkeys.cpp:183
+#: src/hotkeys.cpp:184
 msgid "View Chat Log"
 msgstr "Gesprächsprotokoll anzeigen"
 
-#: src/hotkeys.cpp:184
+#: src/hotkeys.cpp:185
 msgid "Change the language"
 msgstr "Spracheinstellungen ändern"
 
-#: src/hotkeys.cpp:186
+#: src/hotkeys.cpp:187
 msgid "Enter user command"
 msgstr "Kommandozeile öffnen"
 
-#: src/hotkeys.cpp:187
+#: src/hotkeys.cpp:188
 msgid "Custom command"
 msgstr "Benutzerdefinierter Befehl"
 
-#: src/hotkeys.cpp:188
+#: src/hotkeys.cpp:189
 msgid "Run AI formula"
 msgstr "KI Schema ausführen"
 
-#: src/hotkeys.cpp:189
+#: src/hotkeys.cpp:190
 msgid "Clear messages"
 msgstr "Mitteilungen löschen"
 
-#: src/hotkeys.cpp:191
+#: src/hotkeys.cpp:192
 msgid "User-Command#2"
 msgstr "Benutzerkommando#2"
 
-#: src/hotkeys.cpp:192
+#: src/hotkeys.cpp:193
 msgid "User-Command#3"
 msgstr "Benutzerkommando#3"
 
-#: src/hotkeys.cpp:651 src/hotkeys.cpp:938
+#: src/hotkeys.cpp:652 src/hotkeys.cpp:939
 msgid "Do you really want to quit?"
 msgstr "Möchtet Ihr das Spiel wirklich beenden?"
 
-#: src/hotkeys.cpp:893
+#: src/hotkeys.cpp:894
 msgid "Map-Screenshot"
 msgstr "Bildschirmfoto der Karte"
 
-#: src/hotkeys.cpp:900
+#: src/hotkeys.cpp:901
 msgid "Screenshot done"
 msgstr "Bildschirmfoto erstellt"
 
-#: src/hotkeys.cpp:902
+#: src/hotkeys.cpp:903
 msgid "Screenshot failed"
 msgstr "Erstellen des Bildschirmfotos fehlgeschlagen"
 

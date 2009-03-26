@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2009-03-20 00:45+0100\n"
+"POT-Creation-Date: 2009-03-26 12:25+0100\n"
 "PO-Revision-Date: 2009-02-04 17:22+0100\n"
 "Last-Translator: Gustav Tiger <admin@tigge.org>\n"
 "Language-Team: Swedish\n"
@@ -491,7 +491,7 @@ msgstr "Skapa ny karta"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_resize_map.cfg:27 src/hotkeys.cpp:151
+#: data/gui/default/window/editor_resize_map.cfg:27 src/hotkeys.cpp:152
 msgid "Resize Map"
 msgstr "Ändra kartans storlek"
 
@@ -931,8 +931,8 @@ msgstr "Upphovsmän"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
-#: data/gui/default/window/title_screen.cfg:86 src/hotkeys.cpp:651
-#: src/hotkeys.cpp:938
+#: data/gui/default/window/title_screen.cfg:86 src/hotkeys.cpp:652
+#: src/hotkeys.cpp:939
 msgid "Quit"
 msgstr "Avsluta"
 
@@ -1533,7 +1533,7 @@ msgstr "Zooma ut"
 msgid "Default Zoom"
 msgstr "Standardzoom"
 
-#: src/hotkeys.cpp:56 src/hotkeys.cpp:893
+#: src/hotkeys.cpp:56 src/hotkeys.cpp:894
 msgid "Screenshot"
 msgstr "Skärmdump"
 
@@ -1761,167 +1761,171 @@ msgstr "Kopiera"
 msgid "Paste"
 msgstr "Klistra in"
 
-#: src/hotkeys.cpp:127
+#: src/hotkeys.cpp:126
+msgid "Export selected coordinates to system clipboard"
+msgstr ""
+
+#: src/hotkeys.cpp:128
 msgid "Select All"
 msgstr "Markera alla"
 
-#: src/hotkeys.cpp:129
+#: src/hotkeys.cpp:130
 msgid "Select Inverse"
 msgstr "Invertera markering"
 
-#: src/hotkeys.cpp:131
+#: src/hotkeys.cpp:132
 msgid "Select None"
 msgstr "Markera ingen"
 
-#: src/hotkeys.cpp:133
+#: src/hotkeys.cpp:134
 msgid "Rotate Clipboard Clockwise"
 msgstr "Rotera urklipp medurs"
 
-#: src/hotkeys.cpp:135
+#: src/hotkeys.cpp:136
 msgid "Rotate Clipboard Counter-Clockwise"
 msgstr "Rotera urklipp moturs"
 
-#: src/hotkeys.cpp:137
+#: src/hotkeys.cpp:138
 msgid "Flip Clipboard Horizontally"
 msgstr "Vänd urklipp horisontellt"
 
-#: src/hotkeys.cpp:139
+#: src/hotkeys.cpp:140
 msgid "Flip Clipboard Vertically"
 msgstr "Vänd urklipp vertikalt"
 
-#: src/hotkeys.cpp:141
+#: src/hotkeys.cpp:142
 msgid "Rotate Selection"
 msgstr "Rotera markerat"
 
-#: src/hotkeys.cpp:143
+#: src/hotkeys.cpp:144
 msgid "Flip Selection"
 msgstr "Vänd markering"
 
-#: src/hotkeys.cpp:145
+#: src/hotkeys.cpp:146
 msgid "Fill Selection"
 msgstr "Fyll markerat"
 
-#: src/hotkeys.cpp:147
+#: src/hotkeys.cpp:148
 msgid "Generate Tiles In Selection"
 msgstr "Generera rutor i markering"
 
-#: src/hotkeys.cpp:149
+#: src/hotkeys.cpp:150
 msgid "Randomize Tiles In Selection"
 msgstr "Slumpa rutor i markering"
 
-#: src/hotkeys.cpp:153
+#: src/hotkeys.cpp:154
 msgid "Rotate Map"
 msgstr "Rotera karta"
 
-#: src/hotkeys.cpp:155
+#: src/hotkeys.cpp:156
 msgid "Generate Map"
 msgstr "Generera karta"
 
-#: src/hotkeys.cpp:157
+#: src/hotkeys.cpp:158
 msgid "Apply a Mask"
 msgstr "Applicera en markering"
 
-#: src/hotkeys.cpp:159
+#: src/hotkeys.cpp:160
 msgid "Create Mask"
 msgstr "Skapa maskering"
 
-#: src/hotkeys.cpp:161
+#: src/hotkeys.cpp:162
 msgid "Refresh Display"
 msgstr "Rita om skärm"
 
-#: src/hotkeys.cpp:163
+#: src/hotkeys.cpp:164
 msgid "Update Terrain Transitions"
 msgstr "Uppdatera terrängövergångar"
 
-#: src/hotkeys.cpp:165
+#: src/hotkeys.cpp:166
 msgid "Auto-update Terrain Transitions"
 msgstr "Uppdatera terrängövergångar automatiskt"
 
-#: src/hotkeys.cpp:167
+#: src/hotkeys.cpp:168
 msgid "Refresh Image Cache"
 msgstr "Uppdatera bildcache"
 
-#: src/hotkeys.cpp:169
+#: src/hotkeys.cpp:170
 msgid "Draw Hex Coordinates"
 msgstr "Rita hex-koordinater"
 
-#: src/hotkeys.cpp:171
+#: src/hotkeys.cpp:172
 msgid "Draw Terrain Codes"
 msgstr "Rita terrängkoder"
 
-#: src/hotkeys.cpp:176
+#: src/hotkeys.cpp:177
 msgid "Delay Shroud Updates"
 msgstr "Fördröj slöjuppdateringarna"
 
-#: src/hotkeys.cpp:177
+#: src/hotkeys.cpp:178
 msgid "Update Shroud Now"
 msgstr "Uppdatera slöjan nu"
 
-#: src/hotkeys.cpp:178
+#: src/hotkeys.cpp:179
 msgid "Continue Move"
 msgstr "Fortsätt draget"
 
-#: src/hotkeys.cpp:179
+#: src/hotkeys.cpp:180
 msgid "Find Label or Unit"
 msgstr "Sök efter etikett eller trupp"
 
-#: src/hotkeys.cpp:180
+#: src/hotkeys.cpp:181
 msgid "Speak to Ally"
 msgstr "Tala med allierad"
 
-#: src/hotkeys.cpp:181
+#: src/hotkeys.cpp:182
 msgid "Speak to All"
 msgstr "Tala med alla"
 
-#: src/hotkeys.cpp:182
+#: src/hotkeys.cpp:183
 msgid "Help"
 msgstr "Hjälp"
 
-#: src/hotkeys.cpp:183
+#: src/hotkeys.cpp:184
 msgid "View Chat Log"
 msgstr "Se chattloggen"
 
-#: src/hotkeys.cpp:184
+#: src/hotkeys.cpp:185
 msgid "Change the language"
 msgstr "Byt språk"
 
-#: src/hotkeys.cpp:186
+#: src/hotkeys.cpp:187
 msgid "Enter user command"
 msgstr "Ge användarkommando"
 
-#: src/hotkeys.cpp:187
+#: src/hotkeys.cpp:188
 msgid "Custom command"
 msgstr "Användarkommando"
 
-#: src/hotkeys.cpp:188
+#: src/hotkeys.cpp:189
 msgid "Run AI formula"
 msgstr "Kör AI-formel"
 
-#: src/hotkeys.cpp:189
+#: src/hotkeys.cpp:190
 msgid "Clear messages"
 msgstr "Rensa meddelanden"
 
-#: src/hotkeys.cpp:191
+#: src/hotkeys.cpp:192
 msgid "User-Command#2"
 msgstr "Användarkommando #2"
 
-#: src/hotkeys.cpp:192
+#: src/hotkeys.cpp:193
 msgid "User-Command#3"
 msgstr "Användarkommando #3"
 
-#: src/hotkeys.cpp:651 src/hotkeys.cpp:938
+#: src/hotkeys.cpp:652 src/hotkeys.cpp:939
 msgid "Do you really want to quit?"
 msgstr "Vill du verkligen sluta?"
 
-#: src/hotkeys.cpp:893
+#: src/hotkeys.cpp:894
 msgid "Map-Screenshot"
 msgstr "Kart-skärmdump"
 
-#: src/hotkeys.cpp:900
+#: src/hotkeys.cpp:901
 msgid "Screenshot done"
 msgstr "Skärmdump klar"
 
-#: src/hotkeys.cpp:902
+#: src/hotkeys.cpp:903
 msgid "Screenshot failed"
 msgstr "Skärmdump misslyckades"
 
