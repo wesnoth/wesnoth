@@ -19,7 +19,6 @@
 #include "gettext.hpp"
 #include "log.hpp"
 #include "util.hpp"
-#include "version.hpp"
 #include "wesconfig.h"
 #include "serialization/string_utils.hpp"
 #ifdef HAVE_REVISION
