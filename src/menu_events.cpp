@@ -716,19 +716,6 @@ private:
 		write_game(gamestate_, start, WRITE_SNAPSHOT_ONLY);
 		start["completion"] = gamestate_.completion;
 
-        /*
-        // 29.11.07, YogiHH: I can't see why this is needed at all and it
-        // breaks some savegame functionality. Probably the original reasons
-        // for putting this in are no longer valid.
-
-		// Clobber gold values to make sure the snapshot uses the values
-		// in [side] instead.
-		const config::child_list& players=start.get_children("player");
-		for(config::child_list::const_iterator pi=players.begin();
-			pi!=players.end(); ++pi) {
-			(**pi)["gold"] = "-1000000";
-		}
-        */
 		//write out the current state of the map
 		start["map_data"] = map_.write();
 
