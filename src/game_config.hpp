@@ -15,10 +15,10 @@
 #define GAME_CONFIG_H_INCLUDED
 
 class config;
-class version_info;
 
 #include "color_range.hpp"
 #include "tstring.hpp"
+#include "version.hpp"
 
 #include <string>
 #include <vector>
