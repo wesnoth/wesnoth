@@ -26,9 +26,11 @@
 #define __COMPAT_H__
 
 #ifdef _WIN32
-#pragma warning( disable : 4786 )
+# ifdef _MSC_VER
+#  pragma warning( disable : 4786 )
 // tell the linker which libraries to find functions in
-#pragma comment(lib, "ws2_32.lib")
+#  pragma comment(lib, "ws2_32.lib")
+# endif
 #include <winsock2.h>
 #else // assume some unix variant
 #include <sys/socket.h>
