@@ -83,8 +83,9 @@ game::game(player_map& players, const network::connection host,
 
 game::~game()
 {
-	for (user_vector::const_iterator p = players_.begin(); p != players_.end(); ++p) {
-		remove_player(*p, false, true);
+	user_vector users = all_game_users();
+	for (user_vector::const_iterator u = users.begin(); u != users.end(); ++u) {
+		remove_player(*u, false, true);
 	}
 	for(std::vector<simple_wml::document*>::iterator i = history_.begin(); i != history_.end(); ++i) {
 		delete *i;
