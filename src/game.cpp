@@ -925,20 +925,25 @@ bool game_controller::load_game()
 
 		const std::string version = cfg["version"];
 		if(version != game_config::version) {
-			// do not load if too old, if either the savegame or the current game
-			// has the version 'test' allow loading
-			if(!game_config::is_compatible_savegame_version(version)) {
-				/* GCC-3.3 needs a temp var otherwise compilation fails */
-				gui::message_dialog dlg(disp(), "", _("This save is from a version too old to be loaded."));
-				dlg.show();
-				return false;
-			}
+			const version_info parsed_savegame_version(version);
+			if(game_config::wesnoth_version.minor_version() % 2 != 0 ||
+			   game_config::wesnoth_version.major_version() != parsed_savegame_version.major_version() ||
+			   game_config::wesnoth_version.minor_version() != parsed_savegame_version.minor_version()) {
+				// do not load if too old, if either the savegame or the current game
+				// has the version 'test' allow loading
+				if(!game_config::is_compatible_savegame_version(version)) {
+					/* GCC-3.3 needs a temp var otherwise compilation fails */
+					gui::message_dialog dlg(disp(), "", _("This save is from a version too old to be loaded."));
+					dlg.show();
+					return false;
+				}
 
-			const int res = gui::dialog(disp(),"",
-			                      _("This save is from a different version of the game. Do you want to try to load it?"),
-			                      gui::YES_NO).show();
-			if(res == 1) {
-				return false;
+				const int res = gui::dialog(disp(),"",
+									_("This save is from a different version of the game. Do you want to try to load it?"),
+									gui::YES_NO).show();
+				if(res == 1) {
+					return false;
+				}
 			}
 		}
 
