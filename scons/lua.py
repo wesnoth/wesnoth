@@ -16,11 +16,12 @@ def CheckLua(context, require_version):
         env.Append(LIBPATH = ["$luadir"], CPPPATH = ["$luadir/include"], LIBS = "lua" + version)
         found = True
     else:
-        found = run_pkg_config(env, "lua >= " + require_version) or run_pkg_config(env, "lua" + version + " >= " + require_version)
+        found = run_pkg_config(context, "lua >= " + require_version) or run_pkg_config(context, "lua" + version + " >= " + require_version)
         if not found:
             try:
                 prefix, include = find_include([env["prefix"]], "lualib.h", "", not env["host"])[0]
                 found = True
+                context.Log("Found Lua header " + include + ".\n")
                 env.Append(LIBPATH = [join(prefix, "lib")], CPPPATH = [join(prefix, "include")], LIBS = ["lua"])
             except IndexError:
                 pass
