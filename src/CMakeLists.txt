@@ -25,6 +25,8 @@ endif()
 
 # needed to get include paths in the subfolders correct
 include_directories( ${CMAKE_SOURCE_DIR}/src/ )
+# needed to have the generated config.h used, too
+include_directories( ${CMAKE_CURRENT_BINARY_DIR} )
 
 link_directories(${Boost_LIBRARY_DIRS})
 
