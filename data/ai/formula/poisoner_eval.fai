@@ -1,0 +1,17 @@
+fai 'poisoner_eval.fai'
+
+if(filter(me.attacks,'att',filter(att.special,'spe',contains_string(spe,'poison'))),
+	if(target.undead = 0,
+		if(target.hitpoints >= 5,
+			if(target.max_experience - target.experience > 8,
+				if(index_of('regenerates',target.abilities) = -1,
+					if(index_of('poisoned',keys(target.states)) = -1, 1
+					,-1)
+				,-1)
+			,-1)
+		,-1)
+	,-1)
+,-1)
+
+
+faiend

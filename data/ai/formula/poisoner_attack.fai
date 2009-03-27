@@ -1,0 +1,13 @@
+fai 'poisoner_attack.fai'
+
+def get_best_defense_loc(moves, attacker, enemy)
+    choose(filter(map(filter(moves, src=attacker.loc), dst),
+		distance_between(self, enemy.loc) = 1),
+		defense_on(attacker.loc, self));
+
+	attack(me.loc, get_best_defense_loc(my_moves.moves, me, target), target.loc, att_weap)
+
+
+    where att_weap = index_of(['poison'],map(me.attacks,special))
+
+faiend
