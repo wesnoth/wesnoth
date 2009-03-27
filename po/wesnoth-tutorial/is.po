@@ -4,12 +4,14 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-12-03 19:43+0100\n"
-"PO-Revision-Date: 2009-03-26 22:29+0000\n"
+"PO-Revision-Date: 2009-03-26 23:21+0000\n"
 "Last-Translator: Automatically generated <gabrielp@simnet.is>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+"Content-Transfer-Encoding: 8bitPlural-Forms: nplurals=2; plural=(n % 100 != "
+"1 && n % 100 != 21 && n % 100 != 31 && n % 100 != 41 && n % 100 != 51 && n % "
+"100 != 61 && n % 100 != 71 && n % 100 != 81 && n % 100 != 91);\n"
 
 #. [tutorial]: id=tutorial
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:41
@@ -405,13 +407,12 @@ msgstr "Smelltu á 'Ljúka umferð'"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:565
-#, fuzzy
 msgid ""
 "You're about to be healed by $hp_difference hitpoints, but I think you're "
 "going to need some help against that quintain."
 msgstr ""
-"Þú munt verða læknaður/læknuð um $hp_difference lífstig, en ég held að þú "
-"þurfir eitthverja hjálp með krákuna."
+"Þú munt verða læknaður um $hp_difference lífstig, en ég held að þú þurfir "
+"eitthverja hjálp með krákuna."
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:569
@@ -1574,3 +1575,10 @@ msgstr ""
 #: data/campaigns/tutorial/units/Quintain.cfg:22
 msgid "flail"
 msgstr ""
+
+#~ msgid ""
+#~ "female^You're about to be healed by $hp_difference hitpoints, but I think "
+#~ "you're going to need some help against that quintain."
+#~ msgstr ""
+#~ "Þú munt verða læknuð um $hp_difference lífstig, en ég held að þú þurfir "
+#~ "eitthverja hjálp með krákuna."

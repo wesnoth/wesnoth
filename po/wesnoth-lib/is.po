@@ -9,12 +9,14 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-03-20 00:45+0100\n"
-"PO-Revision-Date: 2009-03-26 22:53+0000\n"
+"PO-Revision-Date: 2009-03-27 22:51+0000\n"
 "Last-Translator: Automatically generated <gabrielp@simnet.is>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+"Content-Transfer-Encoding: 8bitPlural-Forms: nplurals=2; plural=(n % 100 != "
+"1 && n % 100 != 21 && n % 100 != 31 && n % 100 != 41 && n % 100 != 51 && n % "
+"100 != 61 && n % 100 != 71 && n % 100 != 81 && n % 100 != 91);\n"
 
 #. [terrain]: id=off_map
 #: data/core/terrain.cfg:13
@@ -25,7 +27,7 @@ msgstr "Ekkert"
 #. [terrain]: id=shroud
 #: data/core/terrain.cfg:22 data/gui/default/window/mp_create_game.cfg:472
 msgid "Shroud"
-msgstr ""
+msgstr "Hyl"
 
 #. [terrain]: id=fog
 #: data/core/terrain.cfg:31
@@ -61,7 +63,7 @@ msgstr "Brú"
 #. [terrain]: id=encampment
 #: data/core/terrain.cfg:162
 msgid "Encampment"
-msgstr ""
+msgstr "Herbúðir"
 
 #. [terrain]: id=castle
 #. [terrain]: id=dwarven_castle
@@ -78,12 +80,12 @@ msgstr "Rústir"
 #. [terrain]: id=sunkenruin
 #: data/core/terrain.cfg:216
 msgid "Sunken Ruin"
-msgstr ""
+msgstr "Sokknar rústir"
 
 #. [terrain]: id=swampruin
 #: data/core/terrain.cfg:228
 msgid "Swamp Ruin"
-msgstr ""
+msgstr "Mýrarústir"
 
 #. [terrain]: id=encampment_keep
 #. [terrain]: id=human_keep
@@ -102,7 +104,7 @@ msgstr "Höll"
 #. [terrain]: id=crater
 #: data/core/terrain.cfg:351
 msgid "Crater"
-msgstr ""
+msgstr "Eldgígur"
 
 #. [terrain]: id=desert
 #: data/core/terrain.cfg:361
@@ -112,7 +114,7 @@ msgstr "Eyðimörk"
 #. [terrain]: id=sand_rubble
 #: data/core/terrain.cfg:371
 msgid "Rubble"
-msgstr ""
+msgstr "Möl"
 
 #. [terrain]: id=sand
 #: data/core/terrain.cfg:382
@@ -122,7 +124,7 @@ msgstr "Sandur"
 #. [terrain]: id=oasis
 #: data/core/terrain.cfg:390
 msgid "Oasis"
-msgstr ""
+msgstr "Grasey"
 
 #. [terrain]: id=snow_forest
 #. [terrain]: id=deciduous_forest_winter_snow
@@ -135,7 +137,7 @@ msgstr "Snjóskógur"
 #. [terrain]: id=great_tree
 #: data/core/terrain.cfg:416
 msgid "Great Tree"
-msgstr ""
+msgstr "Tré"
 
 #. [terrain]: id=forest
 #. [terrain]: id=deciduous_forest_summer
@@ -168,7 +170,7 @@ msgstr ""
 #: data/core/terrain.cfg:591 data/core/terrain.cfg:601
 #: data/core/terrain.cfg:611
 msgid "Forested Hills"
-msgstr ""
+msgstr "Skógarhlíð"
 
 #. [terrain]: id=forested_snow_hills
 #. [terrain]: id=deciduous_forest_winter_snow_hills
@@ -176,7 +178,7 @@ msgstr ""
 #: data/core/terrain.cfg:541 data/core/terrain.cfg:581
 #: data/core/terrain.cfg:621
 msgid "Forested Snow Hills"
-msgstr ""
+msgstr "Snjóskógarhlíð"
 
 #. [terrain]: id=grassland
 #. [terrain]: id=grassland_flowers
@@ -184,12 +186,12 @@ msgstr ""
 #: data/core/terrain.cfg:635 data/core/terrain.cfg:644
 #: data/core/terrain.cfg:653
 msgid "Grassland"
-msgstr ""
+msgstr "Graslendi"
 
 #. [terrain]: id=savanna
 #: data/core/terrain.cfg:662
 msgid "Savanna"
-msgstr ""
+msgstr "Grasslétta"
 
 #. [terrain]: id=snow_hills
 #: data/core/terrain.cfg:675
@@ -217,12 +219,12 @@ msgstr "Fjöll"
 #. [terrain]: id=canyon
 #: data/core/terrain.cfg:738
 msgid "Chasm"
-msgstr ""
+msgstr "Sprunga"
 
 #. [terrain]: id=lava_chasm
 #: data/core/terrain.cfg:747
 msgid "Lava chasm"
-msgstr ""
+msgstr "Hraunsprunga"
 
 #. [terrain]: id=lava
 #: data/core/terrain.cfg:757
@@ -239,7 +241,7 @@ msgstr "Vegur"
 #. [terrain]: id=dirt
 #: data/core/terrain.cfg:780
 msgid "Dirt"
-msgstr ""
+msgstr "Saur"
 
 #. [terrain]: id=farm
 #: data/core/terrain.cfg:807
@@ -254,7 +256,7 @@ msgstr "Mýri"
 #. [terrain]: id=lit
 #: data/core/terrain.cfg:835
 msgid "Lit"
-msgstr ""
+msgstr "Lýsing"
 
 #. [terrain]: id=cave
 #: data/core/terrain.cfg:845
@@ -264,7 +266,7 @@ msgstr "Hellir"
 #. [terrain]: id=cave_path
 #: data/core/terrain.cfg:863
 msgid "Cave path"
-msgstr ""
+msgstr "Hellisvegur"
 
 #. [terrain]: id=fungus
 #: data/core/terrain.cfg:872
@@ -274,7 +276,7 @@ msgstr "Sveppalundur"
 #. [terrain]: id=fungus_beam
 #: data/core/terrain.cfg:881
 msgid "Mushroom Grove Lit"
-msgstr ""
+msgstr "Upplýstur sveppalundur"
 
 #. [terrain]: id=rocky_cave
 #: data/core/terrain.cfg:892
@@ -339,12 +341,12 @@ msgstr "Árif"
 #. [terrain]: id=cloud
 #: data/core/terrain.cfg:1233
 msgid "Impassable Mountains"
-msgstr ""
+msgstr "Ófær fjöll"
 
 #. [terrain]: id=clouddesert
 #: data/core/terrain.cfg:1242
 msgid "Impassable Desert Mountains"
-msgstr ""
+msgstr "Ófærð eyðimerkurfjöll"
 
 #. [terrain]: id=cavewall
 #: data/core/terrain.cfg:1251
@@ -380,7 +382,7 @@ msgstr "Frost"
 #. [terrain]: id=unwalkable
 #: data/core/terrain.cfg:1315
 msgid "Unwalkable"
-msgstr "Ógengilegð"
+msgstr "Ógengilegt"
 
 #. [label]
 #. [column]
@@ -394,7 +396,7 @@ msgstr "Tengjast miðlara"
 #. [label]
 #: data/gui/default/window/addon_connect.cfg:51
 msgid "You will now connect to a server to download add-ons."
-msgstr ""
+msgstr "Þú munt nú tengjast miðlara til að niðurhala viðbótum."
 
 #. [label]
 #: data/gui/default/window/addon_connect.cfg:81
@@ -406,7 +408,7 @@ msgstr "Miðlari:"
 #: data/gui/default/window/addon_connect.cfg:135
 #: data/gui/default/window/addon_connect.cfg:136
 msgid "Update add-ons"
-msgstr ""
+msgstr "Uppfæra viðbætur"
 
 #. [button]
 #: data/gui/default/window/addon_connect.cfg:168
@@ -484,7 +486,7 @@ msgstr "Lengd:"
 #: data/gui/default/window/editor_new_map.cfg:100
 #: data/gui/default/window/editor_new_map.cfg:101
 msgid "Create new map"
-msgstr ""
+msgstr "Nýtt kort"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -573,7 +575,7 @@ msgstr "Blár:"
 #. [toggle_button]: id=use_mdi
 #: data/gui/default/window/editor_settings.cfg:208
 msgid "Allow more than one map to be open at the same time (MDI)"
-msgstr ""
+msgstr "Leyfa fleiru en einu korti að vera opið samtímis"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
@@ -603,7 +605,7 @@ msgstr "Tungumál"
 #. [label]
 #: data/gui/default/window/language_selection.cfg:50
 msgid "Choose your preferred language:"
-msgstr ""
+msgstr "Veldu tungumál:"
 
 #. [button]: id=ok
 #: data/gui/default/window/language_selection.cfg:119
@@ -634,21 +636,21 @@ msgstr "Senda einkaskilaboð"
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:133
 msgid "Friends/Ignored List"
-msgstr ""
+msgstr "Vina-/hunsunarlisti"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=add_friend
 #: data/gui/default/window/mp_cmd_wrapper.cfg:162
 #: src/game_preferences_display.cpp:167
 msgid "Add As Friend"
-msgstr ""
+msgstr "Bæta sem vin"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=add_ignore
 #: data/gui/default/window/mp_cmd_wrapper.cfg:177
 #: src/game_preferences_display.cpp:168
 msgid "Add As Ignore"
-msgstr ""
+msgstr "Bæta sem hunsun"
 
 #. #-#-#-#-#  wesnoth-lib.wml.po (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=remove
@@ -680,7 +682,7 @@ msgstr "Staða:"
 #. [button]: id=kick
 #: data/gui/default/window/mp_cmd_wrapper.cfg:381
 msgid "Kick"
-msgstr ""
+msgstr "Sparka"
 
 #. [button]: id=ban
 #: data/gui/default/window/mp_cmd_wrapper.cfg:396
@@ -696,7 +698,7 @@ msgstr ""
 #. [button]: id=list
 #: data/gui/default/window/mp_connect.cfg:148
 msgid "View List"
-msgstr ""
+msgstr "Skoða lista"
 
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:33
@@ -728,17 +730,17 @@ msgstr "Tímabil:"
 #. [button]: id=era
 #: data/gui/default/window/mp_create_game.cfg:196
 msgid "Default"
-msgstr ""
+msgstr "Sjálfgefið"
 
 #. [button]: id=password
 #: data/gui/default/window/mp_create_game.cfg:218
 msgid "Set Password"
-msgstr ""
+msgstr "Setja lykilorð"
 
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:246
 msgid "Map to play:"
-msgstr ""
+msgstr "Kort til spilunar:"
 
 #. [toggle_button]: id=use_map_settings
 #: data/gui/default/window/mp_create_game.cfg:314
@@ -758,7 +760,7 @@ msgstr "Ótakmarkað"
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:373
 msgid "Village gold"
-msgstr ""
+msgstr "Þorp gull"
 
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:413
@@ -768,7 +770,7 @@ msgstr ""
 #. [toggle_button]: id=fog
 #: data/gui/default/window/mp_create_game.cfg:453
 msgid "Fog of War"
-msgstr ""
+msgstr "Sjóndeild"
 
 #. [toggle_button]: id=random_start_time
 #: data/gui/default/window/mp_create_game.cfg:494
@@ -788,13 +790,13 @@ msgstr ""
 #. [label]
 #: data/gui/default/window/mp_login.cfg:31
 msgid "Login"
-msgstr ""
+msgstr "Innskráning"
 
 #. [label]
 #: data/gui/default/window/mp_login.cfg:81
 #: data/gui/default/window/mp_method_selection.cfg:61
 msgid "Login:"
-msgstr ""
+msgstr "Notendanafn:"
 
 #. [label]
 #: data/gui/default/window/mp_login.cfg:134
@@ -811,7 +813,7 @@ msgstr ""
 #. [button]: id=password_reminder
 #: data/gui/default/window/mp_login.cfg:248
 msgid "Password Reminder"
-msgstr ""
+msgstr "Lykilorðaáminning"
 
 #. [label]
 #. [grid]
@@ -951,7 +953,7 @@ msgstr "Ný mappa"
 
 #: src/filechooser.cpp:192
 msgid "Deletion of the file failed."
-msgstr ""
+msgstr "Eyðing skráar mistókst."
 
 #: src/filechooser.cpp:205
 msgid "Name: "
@@ -963,7 +965,7 @@ msgstr ""
 
 #: src/game_preferences.cpp:297
 msgid "No server has been defined."
-msgstr ""
+msgstr "Enginn miðlari hefur verið skilgreindur."
 
 #: src/game_preferences.cpp:361
 msgid "player"
@@ -987,15 +989,15 @@ msgstr ""
 
 #: src/game_preferences_display.cpp:155
 msgid "Show Grid"
-msgstr ""
+msgstr "Sýna útlínur"
 
 #: src/game_preferences_display.cpp:156 src/game_preferences_display.cpp:333
 msgid "Save Replay on SP/MP Victory or MP Defeat"
-msgstr ""
+msgstr "Vista endurspilun eftir SP/MP sigur eða MP tap"
 
 #: src/game_preferences_display.cpp:157 src/game_preferences_display.cpp:336
 msgid "Delete Auto-Saves on SP/MP Victory or MP Defeat"
-msgstr ""
+msgstr "Eyða sjálfvistunum eftir SP/MP sigur eða MP tap"
 
 #: src/game_preferences_display.cpp:158
 msgid "Do Not Show Lobby Joins"
@@ -1055,7 +1057,7 @@ msgstr ""
 
 #: src/game_preferences_display.cpp:176
 msgid "Change Resolution"
-msgstr ""
+msgstr "Breyta upplausn"
 
 #: src/game_preferences_display.cpp:177
 msgid "Theme"
@@ -1071,7 +1073,7 @@ msgstr ""
 
 #: src/game_preferences_display.cpp:181
 msgid "Sound effects"
-msgstr ""
+msgstr "Hljóð"
 
 #: src/game_preferences_display.cpp:182
 msgid "Music"
@@ -1083,11 +1085,11 @@ msgstr ""
 
 #: src/game_preferences_display.cpp:184
 msgid "sound^Advanced Options"
-msgstr ""
+msgstr "Frekari stillingar"
 
 #: src/game_preferences_display.cpp:185
 msgid "sound^Standard Options"
-msgstr ""
+msgstr "Venjulegar stillingar"
 
 #: src/game_preferences_display.cpp:186
 msgid "User Interface Sounds"
@@ -1119,7 +1121,7 @@ msgstr ""
 
 #: src/game_preferences_display.cpp:195
 msgid "Scroll Speed:"
-msgstr ""
+msgstr "Skrunhraði:"
 
 #: src/game_preferences_display.cpp:198
 msgid "Sample Rate (Hz):"
@@ -1131,7 +1133,7 @@ msgstr "Tíðni:"
 
 #: src/game_preferences_display.cpp:223
 msgid "Sound effects on/off"
-msgstr ""
+msgstr "Hljóð á/af"
 
 #: src/game_preferences_display.cpp:227
 msgid "Change the sound effects volume"
@@ -1159,7 +1161,7 @@ msgstr ""
 
 #: src/game_preferences_display.cpp:249
 msgid "Change the sample rate"
-msgstr ""
+msgstr "Breyta tíðni"
 
 #: src/game_preferences_display.cpp:258
 msgid "User defined sample rate"
@@ -1175,7 +1177,7 @@ msgstr "Stærð flýtiminnis: "
 
 #: src/game_preferences_display.cpp:276
 msgid "Change the speed of scrolling around the map"
-msgstr ""
+msgstr "Breyta hraða skrunu yfir kortið"
 
 #: src/game_preferences_display.cpp:281 src/game_preferences_display.cpp:283
 msgid "Set the amount of chat lines shown"
@@ -1196,7 +1198,7 @@ msgstr ""
 
 #: src/game_preferences_display.cpp:295
 msgid "Make units move and fight faster"
-msgstr ""
+msgstr "Hreyfing eininga og árásarhraði"
 
 #: src/game_preferences_display.cpp:312
 msgid "Units move and fight speed"
@@ -1252,7 +1254,7 @@ msgstr ""
 
 #: src/game_preferences_display.cpp:357
 msgid "View and edit your friends and ignores list"
-msgstr ""
+msgstr "Skoða og breyta vina og óvinalistann þinn"
 
 #: src/game_preferences_display.cpp:358
 msgid "Back to the multiplayer options"
@@ -1260,19 +1262,19 @@ msgstr ""
 
 #: src/game_preferences_display.cpp:359
 msgid "Add this username to your friends list"
-msgstr ""
+msgstr "Bæta þessu notendanafni á vinalistann þinn"
 
 #: src/game_preferences_display.cpp:360
 msgid "Add this username to your ignores list"
-msgstr ""
+msgstr "Bæta þessu notendanafni á hunsunarlistann þinn"
 
 #: src/game_preferences_display.cpp:361
 msgid "Remove this username from your list"
-msgstr ""
+msgstr "Fjarlægja þetta notendanafn úr listanum þínum"
 
 #: src/game_preferences_display.cpp:364
 msgid "Insert a username"
-msgstr ""
+msgstr "Bæta við notendanafni"
 
 #: src/game_preferences_display.cpp:367
 msgid "Show text above a unit when it is hit to display damage inflicted"
@@ -1280,11 +1282,11 @@ msgstr ""
 
 #: src/game_preferences_display.cpp:369
 msgid "Change the resolution the game runs at"
-msgstr ""
+msgstr "Breyta upplausninni sem leikurinn keyrir á"
 
 #: src/game_preferences_display.cpp:370
 msgid "Change the theme the game runs with"
-msgstr ""
+msgstr "Breyta þemaið leikurinn keyrir með"
 
 #: src/game_preferences_display.cpp:373
 msgid "Display a dialog at the beginning of your turn"
@@ -1292,7 +1294,7 @@ msgstr ""
 
 #: src/game_preferences_display.cpp:376
 msgid "Play a bell sound at the beginning of your turn"
-msgstr ""
+msgstr "Spila bjölluhljóð við upphaf umferðar þinnar"
 
 #: src/game_preferences_display.cpp:379
 msgid ""
@@ -1322,7 +1324,7 @@ msgstr "Hraði:"
 
 #: src/game_preferences_display.cpp:684 src/game_preferences_display.cpp:686
 msgid "Maximum Auto-Saves: "
-msgstr ""
+msgstr "Mesti fjöldi sjálfvistana: "
 
 #: src/game_preferences_display.cpp:684
 msgid "infinite"
@@ -1330,7 +1332,7 @@ msgstr "óendanlegt"
 
 #: src/game_preferences_display.cpp:863
 msgid "Chat Lines: "
-msgstr ""
+msgstr "Spjalllínur: "
 
 #: src/game_preferences_display.cpp:885 src/game_preferences_display.cpp:893
 msgid "Invalid username"
@@ -1350,7 +1352,7 @@ msgstr "(tómur listi)"
 
 #: src/game_preferences_display.cpp:1116
 msgid "Prefs section^General"
-msgstr ""
+msgstr "Almennt"
 
 #: src/game_preferences_display.cpp:1117
 msgid "Prefs section^Display"
@@ -1370,11 +1372,11 @@ msgstr ""
 
 #: src/game_preferences_display.cpp:1155
 msgid "Saved Theme Preference: "
-msgstr ""
+msgstr "Vistað þema: "
 
 #: src/game_preferences_display.cpp:1161
 msgid "New theme will take effect on next new or loaded game."
-msgstr ""
+msgstr "Ný þema mun taka gildi næsta leik."
 
 #: src/game_preferences_display.cpp:1165
 msgid "No known themes. Try changing from within an existing game."
@@ -1406,7 +1408,7 @@ msgstr ""
 
 #: src/gui/widgets/canvas.cpp:814
 msgid "Text has a font size of 0."
-msgstr ""
+msgstr "Texti hefur leturstærðina 0."
 
 #: src/gui/widgets/canvas.cpp:879
 msgid "Text doesn't start on canvas."
@@ -1422,7 +1424,7 @@ msgstr ""
 
 #: src/gui/widgets/settings.cpp:295
 msgid "Window not defined."
-msgstr ""
+msgstr "Gluggi ekki skilgreindur."
 
 #: src/gui/widgets/settings.cpp:393
 msgid ""
@@ -1431,7 +1433,7 @@ msgstr ""
 
 #: src/gui/widgets/settings.cpp:509 src/gui/widgets/window_builder.cpp:326
 msgid "No resolution defined."
-msgstr ""
+msgstr "Engin upplausn skilgreind."
 
 #: src/gui/widgets/settings.cpp:537
 msgid "No state or draw section defined."
@@ -1450,19 +1452,19 @@ msgstr ""
 
 #: src/gui/widgets/window_builder.cpp:533
 msgid "A row must have a column."
-msgstr ""
+msgstr "Röð þarf að hafa dálk."
 
 #: src/gui/widgets/window_builder.cpp:534
 msgid "Number of columns differ."
-msgstr ""
+msgstr "Fjöldi dálka mismunar."
 
 #: src/gui/widgets/window_builder.cpp:772
 msgid "No list defined."
-msgstr ""
+msgstr "Enginn listi skilgreindur."
 
 #: src/gui/widgets/window_builder.cpp:775
 msgid "A 'list_definition' should contain one row."
-msgstr ""
+msgstr "'list_definition' ætti að innihalda eina röð."
 
 #: src/gui/widgets/window_builder.cpp:794
 msgid ""
@@ -1471,7 +1473,7 @@ msgstr ""
 
 #: src/gui/widgets/window_builder.cpp:1063
 msgid "The number of value_labels and values don't match."
-msgstr ""
+msgstr "Talan value_labels og values passa ekki."
 
 #: src/hotkeys.cpp:45
 msgid "Next Unit"
@@ -1543,7 +1545,7 @@ msgstr "Vista enduspilun"
 
 #: src/hotkeys.cpp:63
 msgid "Save The Map"
-msgstr "Vista kortið"
+msgstr "Vista kort"
 
 #: src/hotkeys.cpp:65
 msgid "Recruit"
@@ -1567,11 +1569,11 @@ msgstr ""
 
 #: src/hotkeys.cpp:70
 msgid "Mouse Scrolling"
-msgstr ""
+msgstr "Músarskruna"
 
 #: src/hotkeys.cpp:71
 msgid "Status Table"
-msgstr ""
+msgstr "Stöðutafla"
 
 #: src/hotkeys.cpp:72
 msgid "Mute"
@@ -1579,15 +1581,15 @@ msgstr ""
 
 #: src/hotkeys.cpp:73
 msgid "Speak"
-msgstr ""
+msgstr "Tala"
 
 #: src/hotkeys.cpp:74
 msgid "Create Unit (Debug!)"
-msgstr ""
+msgstr "Búa til einingu (Aflúsun!)"
 
 #: src/hotkeys.cpp:75
 msgid "Change Unit Side (Debug!)"
-msgstr ""
+msgstr "Breyta hlið einingar (Aflúsun!)"
 
 #: src/hotkeys.cpp:77
 msgid "Scenario Objectives"
@@ -1595,7 +1597,7 @@ msgstr ""
 
 #: src/hotkeys.cpp:78
 msgid "Unit List"
-msgstr ""
+msgstr "Einingalisti"
 
 #: src/hotkeys.cpp:79
 msgid "Statistics"
@@ -1635,15 +1637,15 @@ msgstr ""
 
 #: src/hotkeys.cpp:89
 msgid "Reset"
-msgstr ""
+msgstr "Endursetja"
 
 #: src/hotkeys.cpp:91
 msgid "Next Turn"
-msgstr ""
+msgstr "Næsta umferð"
 
 #: src/hotkeys.cpp:92
 msgid "Next Side"
-msgstr ""
+msgstr "Næsta hlið"
 
 #: src/hotkeys.cpp:94
 msgid "Full map"
@@ -1651,7 +1653,7 @@ msgstr "Fullt kort"
 
 #: src/hotkeys.cpp:96
 msgid "Each team"
-msgstr ""
+msgstr "Hvert lið"
 
 #: src/hotkeys.cpp:98
 msgid "Team 1"
@@ -1663,7 +1665,7 @@ msgstr ""
 
 #: src/hotkeys.cpp:102
 msgid "Quit to Desktop"
-msgstr ""
+msgstr "Hætta"
 
 #: src/hotkeys.cpp:103
 msgid "Close Map"
@@ -1691,7 +1693,7 @@ msgstr "Vista kort sem"
 
 #: src/hotkeys.cpp:111
 msgid "Revert All Changes"
-msgstr ""
+msgstr "Afturkalla allar breytingar"
 
 #: src/hotkeys.cpp:112
 msgid "Map Information"
@@ -1703,7 +1705,7 @@ msgstr ""
 
 #: src/hotkeys.cpp:115
 msgid "Next Tool"
-msgstr ""
+msgstr "Næsta verkfæri"
 
 #: src/hotkeys.cpp:116
 msgid "Paint Tool"
@@ -1723,11 +1725,11 @@ msgstr ""
 
 #: src/hotkeys.cpp:121
 msgid "Next Brush"
-msgstr ""
+msgstr "Næsta pensil"
 
 #: src/hotkeys.cpp:122
 msgid "Default Brush"
-msgstr ""
+msgstr "Sjálfgefin pensil"
 
 #: src/hotkeys.cpp:123
 msgid "Cut"
@@ -1747,7 +1749,7 @@ msgstr "Velja allt"
 
 #: src/hotkeys.cpp:129
 msgid "Select Inverse"
-msgstr ""
+msgstr "Velja öfugt"
 
 #: src/hotkeys.cpp:131
 msgid "Select None"
@@ -1771,15 +1773,15 @@ msgstr ""
 
 #: src/hotkeys.cpp:141
 msgid "Rotate Selection"
-msgstr ""
+msgstr "Snúa við vali"
 
 #: src/hotkeys.cpp:143
 msgid "Flip Selection"
-msgstr ""
+msgstr "Flippa val"
 
 #: src/hotkeys.cpp:145
 msgid "Fill Selection"
-msgstr ""
+msgstr "Filla val"
 
 #: src/hotkeys.cpp:147
 msgid "Generate Tiles In Selection"
@@ -1819,23 +1821,23 @@ msgstr ""
 
 #: src/hotkeys.cpp:167
 msgid "Refresh Image Cache"
-msgstr ""
+msgstr "Endurhlaða flýtigögn mynda"
 
 #: src/hotkeys.cpp:169
 msgid "Draw Hex Coordinates"
-msgstr ""
+msgstr "Teikna útlínur reita"
 
 #: src/hotkeys.cpp:171
 msgid "Draw Terrain Codes"
-msgstr ""
+msgstr "Teikna jarðkóða"
 
 #: src/hotkeys.cpp:176
 msgid "Delay Shroud Updates"
-msgstr ""
+msgstr "Seinka uppfærslu hylja"
 
 #: src/hotkeys.cpp:177
 msgid "Update Shroud Now"
-msgstr ""
+msgstr "Uppfæra hyljar núna"
 
 #: src/hotkeys.cpp:178
 msgid "Continue Move"
@@ -1847,7 +1849,7 @@ msgstr ""
 
 #: src/hotkeys.cpp:180
 msgid "Speak to Ally"
-msgstr ""
+msgstr "Tala við vini"
 
 #: src/hotkeys.cpp:181
 msgid "Speak to All"
@@ -1863,7 +1865,7 @@ msgstr ""
 
 #: src/hotkeys.cpp:184
 msgid "Change the language"
-msgstr ""
+msgstr "Breyta tungumáli"
 
 #: src/hotkeys.cpp:186
 msgid "Enter user command"
@@ -1895,7 +1897,7 @@ msgstr "Ertu viss um að þú viljir hætta?"
 
 #: src/hotkeys.cpp:893
 msgid "Map-Screenshot"
-msgstr ""
+msgstr "Skjáskot korts"
 
 #: src/hotkeys.cpp:900
 msgid "Screenshot done"
@@ -1919,11 +1921,11 @@ msgstr "Spilarar:"
 
 #: src/mapgen_dialog.cpp:122
 msgid "Number of Hills:"
-msgstr ""
+msgstr "Fjöldi hóla:"
 
 #: src/mapgen_dialog.cpp:123
 msgid "Max Hill Size:"
-msgstr ""
+msgstr "Mesta hæð hóla:"
 
 #: src/mapgen_dialog.cpp:124
 msgid "Villages:"
@@ -1931,7 +1933,7 @@ msgstr "Þorp:"
 
 #: src/mapgen_dialog.cpp:125
 msgid "Castle Size:"
-msgstr ""
+msgstr "Stærð hallar:"
 
 #: src/mapgen_dialog.cpp:126
 msgid "Landform:"
@@ -1943,15 +1945,15 @@ msgstr ""
 
 #: src/mapgen_dialog.cpp:304
 msgid "/1000 tiles"
-msgstr ""
+msgstr "/1000 reiti"
 
 #: src/mapgen_dialog.cpp:314
 msgid "Coastal"
-msgstr ""
+msgstr "Strönd"
 
 #: src/mapgen_dialog.cpp:314
 msgid "Inland"
-msgstr ""
+msgstr "Uppland"
 
 #: src/mapgen_dialog.cpp:314
 msgid "Island"
@@ -1959,11 +1961,11 @@ msgstr "Eyja"
 
 #: src/marked-up_text.cpp:332
 msgid "The maximum text width is less than 1."
-msgstr ""
+msgstr "Mesta breidd texta er minni en 1."
 
 #: src/minimap.cpp:86
 msgid "Could not get image for terrain: $terrain."
-msgstr ""
+msgstr "Gat ekki sótt mynd fyrir jörð: $terrain"
 
 #: src/minimap.cpp:115 src/minimap.cpp:127
 msgid "Error creating or aquiring an image."
@@ -2025,17 +2027,20 @@ msgstr "Villa"
 msgid ""
 "A terrain with a string with more than 4 characters has been found, the "
 "affected terrain is :"
-msgstr ""
+msgstr "Jörð með streng lengri en 4 bókstafir fannst. Jörðin er :"
 
 #: src/wml_exception.cpp:52
 msgid ""
 "An error due to possibly invalid WML occurred\n"
 "The error message is :"
 msgstr ""
+"Villa, líklegast vegna ógildrar WML, átti sér stað\n"
+"Villuskilaboðin eru :"
 
 #: src/wml_exception.cpp:54
 msgid "When reporting the bug please include the following error message :"
 msgstr ""
+"Þegar tilkynna á galla, vinsamlegast láttu eftirfarandi villuboð fylgja með :"
 
 #: src/wml_exception.cpp:72
 msgid ""

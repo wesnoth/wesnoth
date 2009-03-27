@@ -9,12 +9,14 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-03-15 22:05+0100\n"
-"PO-Revision-Date: 2009-03-26 21:56+0000\n"
+"PO-Revision-Date: 2009-03-27 16:58+0000\n"
 "Last-Translator: Automatically generated <gabrielp@simnet.is>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+"Content-Transfer-Encoding: 8bitPlural-Forms: nplurals=2; plural=(n % 100 != "
+"1 && n % 100 != 21 && n % 100 != 31 && n % 100 != 41 && n % 100 != 51 && n % "
+"100 != 61 && n % 100 != 71 && n % 100 != 81 && n % 100 != 91);\n"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:5
@@ -269,7 +271,7 @@ msgstr "Afturkalla"
 
 #: src/editor2/editor_controller.cpp:1013
 msgid "Can't Undo"
-msgstr "Gat ekki afturkallað"
+msgstr "Afturkalla"
 
 #: src/editor2/editor_controller.cpp:1017
 msgid "Redo"
@@ -277,7 +279,7 @@ msgstr "Endurkalla"
 
 #: src/editor2/editor_controller.cpp:1019
 msgid "Can't Redo"
-msgstr "Gat ekki endurkallað"
+msgstr "Endurkalla"
 
 #: src/editor2/editor_map.cpp:85
 msgid "Empty map file or file not found"
