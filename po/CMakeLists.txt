@@ -21,8 +21,8 @@ set(TRANSLATION_DIRS
     wesnoth-l
     wesnoth-lib
     wesnoth-low
-    wesnoth-manpages
-    wesnoth-manual
+    #wesnoth-manpages
+    #wesnoth-manual
     wesnoth-multiplayer
     wesnoth-nr
     wesnoth-sof
