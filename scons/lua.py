@@ -1,5 +1,8 @@
 # vi: syntax=python:et:ts=4
 from pkgconfig import run_pkg_config
+from config_check_utils import find_include
+
+from os.path import join
 
 def CheckLua(context, require_version):
     env = context.env
@@ -14,6 +17,13 @@ def CheckLua(context, require_version):
         found = True
     else:
         found = run_pkg_config(env, "lua >= " + require_version) or run_pkg_config(env, "lua" + version + " >= " + require_version)
+        if not found:
+            try:
+                prefix, include = find_include([env["prefix"]], "lualib.h", "", not env["host"])[0]
+                found = True
+                env.Append(LIBPATH = [join(prefix, "lib")], CPPPATH = [join(prefix, "include")], LIBS = ["lua"])
+            except IndexError:
+                pass
 
     result = found and context.TryLink("""
     #include <lualib.h>
