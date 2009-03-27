@@ -5,7 +5,7 @@ wmltools.py -- Python routines for working with a Battle For Wesnoth WML tree
 
 import sys, os, re, sre_constants, md5, glob
 
-resource_extensions = ("png", "jpg", "ogg", "wav", "map", "mask")
+resource_extensions = ("png", "jpg", "jpeg", "ogg", "wav", "map", "mask")
 image_reference = r"[A-Za-z0-9{}.][A-Za-z0-9_/+{}.-]*\.(png|jpg)(?=(~.*)?)"
 
 def pop_to_top(whoami):
