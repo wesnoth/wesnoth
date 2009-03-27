@@ -21,11 +21,9 @@ set(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS true)
 # use our own version of FindBoost.cmake and other Find* scripts
 set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
 
-# find all deps needed, pkgconfig is needed to find pangocairo
 find_package( SDL 1.2.7 REQUIRED )
 find_package( Boost 1.33 REQUIRED COMPONENTS iostreams regex )
 find_package( Lua51 REQUIRED)
-find_package( PkgConfig REQUIRED )
 # yes, gettext is *required* even when NLS is deactivated (this is to compile
 # src/gettext.cpp since it includes libintl.h)
 find_package( Gettext REQUIRED )
@@ -162,9 +160,8 @@ if(ENABLE_TESTS)
 	find_package( Boost 1.33 REQUIRED COMPONENTS unit_test_framework )
 endif(ENABLE_TESTS)
 if(ENABLE_GAME)
-	#use pkg-config to find pangocairo:
+	find_package( PkgConfig REQUIRED )
 	pkg_check_modules( PANGOCAIRO REQUIRED pangocairo>=1.14.8 )
-	#use pkg-config to find fontconfig:
 	pkg_check_modules( FONTCONFIG REQUIRED fontconfig>=2.4.1 )
 endif(ENABLE_GAME)
 
