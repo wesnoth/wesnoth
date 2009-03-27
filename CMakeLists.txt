@@ -5,6 +5,9 @@
 # * Detect Python and install Python tools
 # * Rewrite the pot-update
 # * Test everything
+# * Install the .desktop files
+# * Fix tiny gui with processing the data directory
+# * Make translations work without installation
 
 # set minimum version
 cmake_minimum_required(VERSION 2.6.0)
