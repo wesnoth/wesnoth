@@ -68,6 +68,7 @@
 #include "serialization/preprocessor.hpp"
 #include "serialization/string_utils.hpp"
 #include "sha1.hpp"
+#include "version.hpp"
 
 //#ifdef _WIN32
 //#include "locale.h"
