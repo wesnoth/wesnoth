@@ -20,6 +20,7 @@
 #include "unit.hpp"
 
 #include "menu_events.hpp"
+#include "filesystem.hpp"
 #include "foreach.hpp"
 #include "formula_ai.hpp"
 #include "log.hpp"
@@ -186,6 +187,38 @@ private:
 	const formula_ai& ai_;
 };
 
+/** FormulaAI function to run fai script from file. Usable from in-game console.
+*   arguments[0] - required file name, follows the usual wml convention
+*/
+class run_file_function : public function_expression {
+public:
+	explicit run_file_function(const args_list& args, formula_ai& ai)
+	    :  function_expression("run_file", args, 1, 1), ai_(ai)
+	{}
+private:
+	variant execute(const formula_callable& variables) const {
+		const args_list& arguments = args();
+		const variant var0 = arguments[0]->evaluate(variables);
+		const std::string filename = var0.string_cast();
+
+		//NOTE: get_wml_location also filters file path to ensure it doesn't contain things like "../../top/secret"
+		std::string path = get_wml_location(filename);
+		if(path.empty()) {
+			return variant(); //no suitable file
+		}
+
+		std::string formula_string = read_file(path);
+		//need to get function_table from somewhere or delegate to someone who has access to it
+		formula_ptr parsed_formula = ai_.create_optional_formula(formula_string);
+		if(parsed_formula == game_logic::formula_ptr()) {
+			return variant(); //was unable to create a formula from file
+		}
+		return parsed_formula->execute(variables);
+	}
+
+	formula_ai& ai_;
+
+};
 
 class castle_locs_function : public function_expression {
 public:
@@ -1392,6 +1425,8 @@ expression_ptr ai_function_symbol_table::create_function(const std::string &fn,
 		return expression_ptr(new calculate_outcome_function(args, ai_));
 	} else if(fn == "distance_between") {
 		return expression_ptr(new distance_between_function(args));
+	} else if(fn == "run_file") {
+		return expression_ptr(new run_file_function(args, ai_));
 	} else {
 		return function_symbol_table::create_function(fn, args);
 	}
@@ -1539,6 +1574,16 @@ void formula_ai::display_message(const std::string& msg) const
 	get_info().disp.add_chat_message(time(NULL), "fai", get_info(). team_num, msg,
 				game_display::MESSAGE_PUBLIC, false);
 
+}
+
+formula_ptr formula_ai::create_optional_formula(const std::string& formula_string){
+	try{
+		return game_logic::formula::create_optional_formula(formula_string, &function_table);
+	}
+	catch(formula_error& e) {
+		handle_exception(e);
+		return game_logic::formula_ptr();
+	}
 }
 
 void formula_ai::new_turn()

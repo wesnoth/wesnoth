@@ -167,7 +167,17 @@ public:
         std::set<map_location> get_allowed_teleports(unit_map::iterator& unit_it) const;
         paths::route shortest_path_calculator(const map_location& src, const map_location& dst, unit_map::iterator& unit_it, std::set<map_location>& allowed_teleports) const;
 
-        void invalidate_move_maps() const { move_maps_valid_ = false; }
+	void invalidate_move_maps() const { move_maps_valid_ = false; }
+
+	/** Create a new formula from the string, using the symbol table which is stored in the AI.
+	*
+	*   @param formula_string the string from which a formula should be created
+	*   @return pointer to created function or
+	*   @retval game_logic::formula_ptr() if there were any problems
+	*/
+	game_logic::formula_ptr create_optional_formula(const std::string& formula_string);
+
+
 
 private:
 	void display_message(const std::string& msg) const;
