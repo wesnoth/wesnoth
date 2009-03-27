@@ -3,9 +3,7 @@ set(XGETTEXT_OPTIONS "--from-code=UTF-8 --sort-by-file --keyword=sgettext --keyw
 
 CONFIGURE_FILE(${CMAKE_CURRENT_SOURCE_DIR}/pot-update.sh.in ${CMAKE_CURRENT_BINARY_DIR}/pot-update.sh)
 
-if(ENABLE_POT_UPDATE_TARGET)
-	add_custom_target(update-po4a)
-endif(ENABLE_POT_UPDATE_TARGET)
+add_custom_target(update-po4a)
 add_custom_target(update-pot)
 add_custom_target(update-po)
 add_custom_target(update-gmo)
