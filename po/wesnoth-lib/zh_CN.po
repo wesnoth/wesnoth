@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-03-20 00:45+0100\n"
-"PO-Revision-Date: 2009-03-13 17:25-0500\n"
+"PO-Revision-Date: 2009-03-27 22:50-0500\n"
 "Last-Translator: sylecn <sylecn@yahoo.com.cn>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -1453,7 +1453,7 @@ msgstr "网格未定义"
 
 #: src/gui/widgets/window.cpp:609
 msgid "Failed to show a dialog, which doesn't fit on the screen."
-msgstr ""
+msgstr "无法显示一个对话框，屏幕大小不适。"
 
 #: src/gui/widgets/window_builder.cpp:533
 msgid "A row must have a column."
@@ -2061,6 +2061,9 @@ msgstr ""
 #: src/wml_exception.cpp:75
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr "在区块'[$section|]'中，必须设的值'$key|'没有设置。"
+
+#~ msgid "Export selected coordinates to system clipboard"
+#~ msgstr "导出所选坐标范围到系统剪贴板"
 
 #~ msgid "Adjust Gamma"
 #~ msgstr "调整亮度"

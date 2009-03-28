@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-03-20 00:45+0100\n"
-"PO-Revision-Date: 2009-03-23 22:19-0500\n"
+"PO-Revision-Date: 2009-03-27 22:47-0500\n"
 "Last-Translator: luojie <lililjlj@gmail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
 "MIME-Version: 1.0\n"
@@ -167,11 +167,11 @@ msgid ""
 "care of a village or a unit that can cure."
 msgstr ""
 "治疗+4：\n"
-"允许单位在每回合开始时治疗相邻受伤的友好单位，或阻止毒药在该回合发作。\n"
+"允许单位在每回合开始时治疗相邻受伤的友好单位。\n"
 "\n"
 "本单位每回合可以为附近每个单位恢复最多4点生命值，或阻止毒药在该回合发作。\n"
-"'治疗+4'能力无法解除附近单位的中毒效果，只有进入村庄或者被拥有疗毒能力的单位"
-"治疗。"
+"治疗能力无法解除附近单位的中毒效果,只有进入村庄或者靠近拥有'治愈'能力的单位才"
+"能解毒。"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:45
@@ -203,8 +203,8 @@ msgstr ""
 "度的。\n"
 "\n"
 "本单位每回合可以为附近每个单位恢复最多8点生命值，或阻止毒药在该回合发作。\n"
-"'治疗+4'能力无法解除附近单位的中毒效果,只有进入村庄或者靠近拥有'治愈'能力的单"
-"位可以解毒"
+"治疗能力无法解除附近单位的中毒效果,只有进入村庄或者靠近拥有'治愈'能力的单位才"
+"能解毒。"
 
 #. [about]
 #: data/core/about.cfg:7
@@ -1142,8 +1142,8 @@ msgstr ""
 "根据攻击类型的不同，每次成功攻击会造成一定量的基础伤害。例如，精灵战士5-4的攻"
 "击可以造成5点的基本伤害。两种情况会对此作出修正：即"
 "<ref>dst='damage_types_and_resistance' text='抗性'</ref>和"
-"<ref>dst='time_of_day'text='时刻'</ref>。欲查看详细的基本伤害修正，请在攻击选"
-"择菜单中选择<italic>text='伤害计算'</italic>。"
+"<ref>dst='time_of_day' text='时刻'</ref>。欲查看详细的基本伤害修正，请在攻击"
+"选择菜单中选择<italic>text='伤害计算'</italic>。"
 
 #. [topic]: id=combat
 #: data/core/help.cfg:247
@@ -1541,8 +1541,8 @@ msgid ""
 "Throne campaign. Have fun, and good luck!"
 msgstr ""
 "韦诺之战的基本规则就此结束。您或许想要阅读基本的游戏策略，或再熟悉一下"
-"<ref>dst='..traits_section text'='特质'</ref>和<ref>dst='.."
-"abilities_section' text='能力'</ref>。现在您已经有足够的经验去玩《继位者之"
+"<ref>dst='..traits_section' text='特质'</ref>和<ref>dst='.."
+"abilities_section' text='技能'</ref>。现在您已经有足够的经验去玩《继位者之"
 "战》这个战役了。祝您好运，玩得开心！"
 
 #. [topic]: id=about
@@ -8180,13 +8180,12 @@ msgid "The nick '$nick' is reserved and cannot be used by players."
 msgstr "用户名'$nick'被保留，无法被玩家使用。"
 
 #: src/multiplayer.cpp:360
-#, fuzzy
 msgid "The nick '$nick' is not registered on this server."
-msgstr "用户名'$nick'已经在这个服务器上注册。"
+msgstr "用户名'$nick'没有在这个服务器上注册。"
 
 #: src/multiplayer.cpp:361
 msgid " This server disallows unregistered nicks."
-msgstr ""
+msgstr "这个服务器不允许未注册用户(登陆)。"
 
 #: src/multiplayer.cpp:363 src/multiplayer.cpp:365
 msgid "The nick '$nick' is registered on this server."
@@ -9224,6 +9223,9 @@ msgstr "大家一起把Wesnoth变得更好！"
 #: src/upload_log.cpp:332
 msgid "Enable summary uploads"
 msgstr "开启摘要上传"
+
+#~ msgid "Icelandic translation"
+#~ msgstr "冰岛语"
 
 #~ msgid "Unchecked script files found:"
 #~ msgstr "发现未检查过的脚本："
