@@ -1712,6 +1712,7 @@ void unit::write(config& cfg) const
 }
 
 void unit::add_formula_var(std::string str, variant var) {
+	if(!formula_vars_) formula_vars_ = new game_logic::map_formula_callable;
 	formula_vars_->add(str, var);
 }
 
