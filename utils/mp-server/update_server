@@ -32,9 +32,7 @@ if ! [ -d $SOURCE ]; then
 	echo "$SOURCE not found." >&2
 	exit 1
 fi
-# only really needed on server.wesnoth.org
-#CXXFLAGS="$CXXFLAGS -I$HOME/tools/include"
-#LDFLAGS="$LDFLAGS -L$HOME/tools/lib"
+
 case $SERVER in
 	1.2 )   cd $SOURCE/1.2   || exit 1
 		CXXFLAGS="$CXXFLAGS -ggdb3"
@@ -84,11 +82,18 @@ mkdir -p $BUILD
 if [ "$SCONS" = "yes" ]; then
 	if [ $TYPE = wesnothd ]; then
 		BUILD_FLAGS="fifodir=$BUILD/var/run raw_sockets=1 forum_user_handler=1"
+		case $(hostname) in
+			gonzo.dicp.de)
+				BUILD_FLAGS="fifodir=$BUILD/var/run raw_sockets=1 boostdir=$HOME/tools/include boostlibdir=$HOME/tools/lib boost_suffix=-mt"
+				;;
+			basilic)
+				BUILD_FLAGS="fifodir=$BUILD/var/run raw_sockets=1"
+				;;
+		esac
 	fi
 	mkdir -p $BUILD/var/run
 	# need to remove .scons-option-cache when parameters get removed!
 	CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" scons install-$TYPE prefix=$BUILD program_suffix=-$SERVER $BUILD_FLAGS profile=0 fribidi=0 python=0 localedir= prefsdir= > $BUILD/scons.log || exit 1
-#	boostdir=$HOME/tools/include boostlibdir=$HOME/tools/lib boost_suffix=-mt
 else
 	if [ $TYPE = wesnothd ]; then
 		BUILD_FLAGS="--enable-server --enable-raw-sockets --with-fifodir=$BUILD/var/run"
