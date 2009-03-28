@@ -82,6 +82,14 @@ std::string nullify_markup(const std::string& text);
  */
 bool is_format_char(char c);
 
+/**
+ * Determine if a wchar_t is a CJK character
+ *
+ * @retval true                   Input-char is a CJK char
+ * @retval false                  Input-char is a not CJK char.
+ */
+bool is_cjk_char(const wchar_t ch);
+
 /** Create string of color-markup, such as "<255,255,0>" for yellow. */
 std::string color2markup(const SDL_Color color);
 

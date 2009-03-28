@@ -2995,7 +2995,19 @@ std::string get_first_word(const std::string &s)
 		// This word is '\n'.
 		first_word_end = first_word_start+1;
 	}
-	return s.substr(0, first_word_end);
+
+	//if no gap(' ' or '\n') found, test if it is CJK character
+	std::string re = s.substr(0, first_word_end);
+
+	utils::utf8_iterator ch(re);
+	if (ch == utils::utf8_iterator::end(re))
+		return re;
+
+	wchar_t firstchar = *ch;
+	if (font::is_cjk_char(firstchar)) {
+		re = utils::wchar_to_string(firstchar);
+	}
+	return re;
 }
 
 /**
