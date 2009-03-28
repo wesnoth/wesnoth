@@ -483,46 +483,41 @@ bool unit_frame::invalidate(const bool force,const int frame_time,const map_loca
 		image_fit_hex = current_data.in_hex;
 	}
 
-	surface image;
-	if(!image_loc.is_void() && image_loc.get_filename() != "") { // invalid diag image, or not diagonal
-		/**
-		 * @todo cache handling: here we will use the image again soon we
-		 * should cache it here and release it (if needed) after redrawn
-		 */
-		image=image::get_image(image_loc,
-				image::SCALED_TO_ZOOM
-				);
-	}
 	// we always invalidate our own hex because we need to be called at redraw time even
 	// if we don't draw anything in the hex itself
 	bool result = false;
-	if (image != NULL) {
-		const int x = static_cast<int>(tmp_offset * xdst + (1.0-tmp_offset) * xsrc)+current_data.x+d2-(image->w/2);
-		const int y = static_cast<int>(tmp_offset * ydst + (1.0-tmp_offset) * ysrc)+current_data.y+d2-(image->h/2);
-		const SDL_Rect r = {x,y,image->w,image->h};
-		// check if the unit fit in a hex
-		bool in_hex = image_fit_hex && r.x==xsrc && r.y==ysrc
-				&& r.w==disp->hex_size() && r.h==disp->hex_size();
-		// check if our underlying hexes are invalidated
-		bool rect_need_update = in_hex ?
-				disp->hex_need_update(src) : disp->rectangle_need_update(r);
-		// if we need to update ourselve because we changed, invalidate our hexes
-		// and return whether or not our hexs was invalidated
-		if(force || need_update() || rect_need_update) {
-			// invalidate ouself to be called at redraw time
+	if(image_fit_hex && tmp_offset==0 && current_data.x == 0 && current_data.y == 0) {
+		if(force || need_update()) {
 			result |= disp->invalidate(src);
-			if(in_hex == false) {
-				// invalidate all hexes we plan to overwrite
-				result |= disp->invalidate_visible_locations_in_rect(r);
-			}
 		}
 	} else {
-		// we have no "redraw surface" but we still need to invalidate our own hex
-		// in case we have a halo and/or sound that needs a redraw
-		if(force || need_update() ){
-			// invalidate ouself to be called at redraw time
-			result |= disp->invalidate(src);
-			result |= disp->invalidate(dst);
+		surface image;
+		if(!image_loc.is_void() && image_loc.get_filename() != "") { // invalid diag image, or not diagonal
+			image=image::get_image(image_loc,
+					image::SCALED_TO_ZOOM
+					);
+		}
+		if (image != NULL) {
+			const int x = static_cast<int>(tmp_offset * xdst + (1.0-tmp_offset) * xsrc)+current_data.x+d2-(image->w/2);
+			const int y = static_cast<int>(tmp_offset * ydst + (1.0-tmp_offset) * ysrc)+current_data.y+d2-(image->h/2);
+			const SDL_Rect r = {x,y,image->w,image->h};
+			// check if our underlying hexes are invalidated
+			bool rect_need_update = disp->rectangle_need_update(r);
+			// if we need to update ourselve because we changed, invalidate our hexes
+			// and return whether or not our hexs was invalidated
+			if(force || need_update() || rect_need_update) {
+				// invalidate ouself to be called at redraw time
+				result |= disp->invalidate(src);
+				result |= disp->invalidate_visible_locations_in_rect(r);
+			}
+		} else {
+			// we have no "redraw surface" but we still need to invalidate our own hex
+			// in case we have a halo and/or sound that needs a redraw
+			if(force || need_update() ){
+				// invalidate ouself to be called at redraw time
+				result |= disp->invalidate(src);
+				result |= disp->invalidate(dst);
+			}
 		}
 	}
 	return result;
