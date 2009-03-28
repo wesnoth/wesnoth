@@ -197,16 +197,12 @@ static void wesnoth_setlocale(int category, std::string slocale,
 #endif
 
 #ifdef __BEOS__
-	if(setenv ("LANG", locale, 1) == -1)
+	if (category == LC_MESSAGES && setenv ("LANG", locale, 1) == -1)
 		std::cerr << "setenv LANG failed: " << strerror(errno);
-	if(setenv ("LC_ALL", locale, 1) == -1)
-		std::cerr << "setenv LC_ALL failed: " << strerror(errno);
 #endif
 #ifdef __APPLE__
-	if(setenv ("LANGUAGE", locale, 1) == -1)
+	if (category == LC_MESSAGES && setenv ("LANGUAGE", locale, 1) == -1)
 		std::cerr << "setenv LANGUAGE failed: " << strerror(errno);
-	if(setenv ("LC_ALL", locale, 1) == -1)
-		std::cerr << "setenv LC_ALL failed: " << strerror(errno);
 #endif
 
 #ifdef _WIN32
