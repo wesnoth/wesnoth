@@ -637,7 +637,7 @@ std::string attack_type::weapon_specials(bool force) const
 	     i_end = list_map.end(); i != i_end; ++i) {
 		for (config::child_list::const_iterator j = i->second.begin(),
 		     j_end = i->second.end(); j != j_end; ++j) {
-			char const *s = (force || special_active(**j, true, true))
+			char const *s = (force || special_active(**j, true))
 				? "name" : "name_inactive";
 			std::string const &name = (**j)[s];
 
@@ -658,7 +658,7 @@ std::string attack_type::weapon_specials(bool force) const
  * cfg: a weapon special WML structure
  *
  */
-bool attack_type::special_active(const config& cfg,bool self,bool report) const
+bool attack_type::special_active(const config& cfg, bool self) const
 {
 //	log_scope("special_active");
 	assert(unitmap_ != NULL);
@@ -676,7 +676,7 @@ bool attack_type::special_active(const config& cfg,bool self,bool report) const
 	}
 
 	if(attacker_) {
-		if (!report) {
+		{
 			std::string const &active = cfg["active_on"];
 			if (!active.empty() && active != "offense")
 				return false;
@@ -701,7 +701,7 @@ bool attack_type::special_active(const config& cfg,bool self,bool report) const
 			}
 		}
 	} else {
-		if (!report) {
+		{
 			std::string const &active = cfg["active_on"];
 			if (!active.empty() && active != "defense")
 				return false;

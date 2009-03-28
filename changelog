@@ -25,6 +25,9 @@ Version 1.7.0-svn:
      via floating popups on the specified hex
    * Added run_file FormulaAI function to allow running .fai scripts directly
      from in-game console
+ * User interface:
+   * Fixed bug #13257: Attack dialog always uses the active name of a weapon
+     special
  * WML Engine:
    * Added [show_objectives] tag (part of bug #13042)
    * Made moveto events set $x2,$y2 to the source hex. (bug #13140)
