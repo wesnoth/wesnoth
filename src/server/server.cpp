@@ -323,7 +323,7 @@ private:
 	config read_config() const;
 
 	// settings from the server config
-	std::set<std::string> accepted_versions_;
+	std::vector<std::string> accepted_versions_;
 	std::map<std::string,config> redirected_versions_;
 	std::map<std::string,config> proxy_versions_;
 	std::vector<std::string> disallowed_names_;
@@ -564,13 +564,10 @@ void server::load_config() {
 	accepted_versions_.clear();
 	const std::string& versions = cfg_["versions_accepted"];
 	if (versions.empty() == false) {
-		const std::vector<std::string> accepted(utils::split(versions));
-		for (std::vector<std::string>::const_iterator i = accepted.begin(); i != accepted.end(); ++i) {
-			accepted_versions_.insert(*i);
-		}
+		accepted_versions_ = utils::split(versions);
 	} else {
-		accepted_versions_.insert(game_config::version);
-		accepted_versions_.insert("test");
+		accepted_versions_.push_back(game_config::version);
+		accepted_versions_.push_back("test");
 	}
 
 	redirected_versions_.clear();
@@ -954,7 +951,7 @@ void server::process_login(const network::connection sock,
 		const simple_wml::string_span& version_str_span = (*version)["version"];
 		const std::string version_str(version_str_span.begin(),
 		                              version_str_span.end());
-		std::set<std::string>::const_iterator accepted_it;
+		std::vector<std::string>::const_iterator accepted_it;
 		// Check if it is an accepted version.
 		for (accepted_it = accepted_versions_.begin();
 			accepted_it != accepted_versions_.end(); ++accepted_it) {
