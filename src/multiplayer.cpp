@@ -19,7 +19,7 @@
 #include "gui/dialogs/mp_connect.hpp"
 #include "gui/dialogs/mp_create_game.hpp"
 #include "gui/widgets/window.hpp"
-#include "md5.hpp"
+#include "hash.hpp"
 #include "multiplayer.hpp"
 #include "multiplayer_connect.hpp"
 #include "multiplayer_error_codes.hpp"
@@ -242,72 +242,10 @@ static server_type open_connection(game_display& disp, const std::string& origin
 								for(std::string::size_type pos = 0; (pos = password.find('>', pos)) != std::string::npos; ++pos )
 									password.replace(pos, 1, "&gt;");
 
-								// start the hashing
-								std::string result;
+								const std::string salt = (*error)["salt"];
 
-								// Check if we have everything we need
-								if((*error)["salt"].empty() || (*error)["hash_seed"].empty()) {
-									return ABORT_SERVER;
-								}
-
-								std::string itoa64("./0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz");
-
-								std::string salt = (*error)["salt"];
-								int hash_seed;
-								try {
-									hash_seed = lexical_cast_default<int>((*error)["hash_seed"]);
-								} catch (bad_lexical_cast) {
-									std::cerr << "Bad lexical cast reading hash_seed\n";
-									return ABORT_SERVER;
-								}
-
-								// Start the MD5 hashing
-								salt.append(password);
-								MD5 md5_worker;
-								md5_worker.update((unsigned char *)salt.c_str(),salt.length());
-								md5_worker.finalize();
-								unsigned char * output = (unsigned char *) malloc (sizeof(unsigned char) * 16);
-								output = md5_worker.raw_digest();
-								std::string temp_hash;
-								do {
-									temp_hash = std::string((char *) output, (char *) output + 16);
-									temp_hash.append(password);
-									MD5 md5_worker;
-									md5_worker.update((unsigned char *)temp_hash.c_str(),temp_hash.length());
-									md5_worker.finalize();
-									output =  md5_worker.raw_digest();
-								} while (--hash_seed);
-
-								// Now encode the resulting mix
-								std::string encoded_hash;
-								unsigned int i = 0, value;
-								do {
-									value = output[i++];
-									encoded_hash.append(itoa64.substr(value & 0x3f,1));
-									if(i < 16)
-										value |= (int)output[i] << 8;
-									encoded_hash.append(itoa64.substr((value >> 6) & 0x3f,1));
-									if(i++ >= 16)
-										break;
-									if(i < 16)
-										value |= (int)output[i] << 16;
-									encoded_hash.append(itoa64.substr((value >> 12) & 0x3f,1));
-									if(i++ >= 16)
-										break;
-									encoded_hash.append(itoa64.substr((value >> 18) & 0x3f,1));
-								} while (i < 16);
-								free (output);
-
-								// Now mix the resulting hash with the random seed
-								result = encoded_hash + (*error)["random_salt"];
-
-								MD5 md5_worker2;
-								md5_worker2.update((unsigned char *)result.c_str(), result.size());
-								md5_worker2.finalize();
-
-								result = std::string(md5_worker2.hex_digest());
-
-								sp["password"] = result;
+								sp["password"] = util::create_hash(util::create_hash(password, util::get_salt(salt),
+										util::get_iteration_count(salt)), salt.substr(12, 8));
 
 							} else {
 								sp["password"] = password;

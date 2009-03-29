@@ -460,10 +460,9 @@ void server::send_error_dup(network::connection sock, const std::string& msg) co
 void server::send_password_request(network::connection sock, const char* msg,
 	const std::string& user, const char* error_code, bool force_confirmation)
 {
-	std::string salt1 = user_handler_->create_salt();
-	std::string salt2 = user_handler_->create_pepper(user, 0);
-	std::string salt3 = user_handler_->create_pepper(user, 1);
-	if(user_handler_->use_phpbb_encryption() && (salt2.empty() || salt3.empty())) {
+	std::string salt = user_handler_->create_salt();
+	std::string pepper = user_handler_->create_pepper(user);
+	if(user_handler_->use_phpbb_encryption() && pepper.empty()) {
 		send_error(sock, "Even though your nick is registered on this server you "
 					"cannot log in due to an error in the hashing algorithm. "
 					"Logging into your forum account on http://forum.wesnoth.org "
@@ -471,16 +470,14 @@ void server::send_password_request(network::connection sock, const char* msg,
 		return;
 	}
 
-	seeds_.insert(std::pair<network::connection,std::string>(sock, salt1));
+	seeds_.insert(std::pair<network::connection,std::string>(sock, salt));
 
 	simple_wml::document doc;
 	doc.root().add_child("error").set_attr("message", msg);
 	(*(doc.root().child("error"))).set_attr("password_request", "yes");
 	(*(doc.root().child("error"))).set_attr("phpbb_encryption",
 			user_handler_->use_phpbb_encryption() ? "yes" : "no");
-	(*(doc.root().child("error"))).set_attr("random_salt", salt1.c_str());
-	(*(doc.root().child("error"))).set_attr("hash_seed", salt2.c_str());
-	(*(doc.root().child("error"))).set_attr("salt", salt3.c_str());
+	(*(doc.root().child("error"))).set_attr("salt", (pepper + salt).c_str());
 	(*(doc.root().child("error"))).set_attr("force_confirmation",
 			force_confirmation ? "yes" : "no");
 	if(strlen(error_code)) (*(doc.root().child("error"))).set_attr("error_code", error_code);

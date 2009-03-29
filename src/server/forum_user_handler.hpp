@@ -20,7 +20,6 @@
 #include <vector>
 
 #include <mysql/mysql.h>
-#include "../md5.hpp"
 
 /**
  * @class A user_handler implementation to link the server
@@ -58,12 +57,10 @@ class fuh : public user_handler {
 		/**
 		 * Needed because the hashing algorithm used by phpbb requires some info
 		 * from the original hash to recreate the same hash
-		 * index = 0 returns the hash seed
-		 * index = 1 return the salt
 		 *
 		 * Return an empty string if an error occurs
 		 */
-		std::string create_pepper(const std::string& name, int index);
+		std::string create_pepper(const std::string& name);
 
 		void user_logged_in(const std::string& name);
 

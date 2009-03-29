@@ -62,7 +62,7 @@ class suh : public user_handler {
 		void set_user_detail(const std::string& user, const std::string& detail, const std::string& value);
 		std::string get_valid_details();
 
-		std::string create_pepper(const std::string&, int) { return ""; }
+		std::string create_pepper(const std::string&) { return ""; }
 		bool use_phpbb_encryption() const { return false; }
 
 	private:

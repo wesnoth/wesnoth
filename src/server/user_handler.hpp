@@ -145,7 +145,7 @@ class user_handler {
 		 *
 		 * If not needed let it return and empty string or whatever you feel like.
 		 */
-		virtual std::string create_pepper(const std::string& name, int index) =0;
+		virtual std::string create_pepper(const std::string& username) =0;
 
 		/**
 		 * Does this user_handler want passwords passed encrypted using phpbb's algorithm?

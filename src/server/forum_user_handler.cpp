@@ -15,6 +15,7 @@
 #ifdef HAVE_MYSQLPP
 
 #include "forum_user_handler.hpp"
+#include "../hash.hpp"
 
 #include <stdlib.h>
 #include <sstream>
@@ -61,31 +62,24 @@ bool fuh::login(const std::string& name, const std::string& password, const std:
 	}
 
 	// Check hash prefix, if different than $H$ hash is invalid
-	if(hash.substr(0,3) != "$H$") {
-		ERR_UH << "Invalid hash prefix for user '" << name << "'" << std::endl;
+	if(!util::is_valid_hash(hash)) {
+		ERR_UH << "Invalid hash for user '" << name << "'" << std::endl;
 		return false;
 	}
 
-	std::string valid_hash = hash.substr(12,34) + seed;
-	MD5 md5_worker;
-	md5_worker.update((unsigned char *)valid_hash.c_str(), valid_hash.size());
-	md5_worker.finalize();
-	valid_hash = std::string(md5_worker.hex_digest());
+	std::string valid_hash = util::create_hash(hash.substr(12,34), seed);
 
 	if(password == valid_hash) return true;
 
 	return false;
 }
 
-std::string fuh::create_pepper(const std::string& name, int index) {
+std::string fuh::create_pepper(const std::string& name) {
 
 	// Some doulbe security, this should never be neeeded
 	if(!(user_exists(name))) {
 		return "";
 	}
-
-	// Set an alphabet-like string for use in encrytpion algorithm
-	std::string itoa64("./0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz");
 
 	std::string hash;
 
@@ -96,33 +90,9 @@ std::string fuh::create_pepper(const std::string& name, int index) {
 		return "";
 	}
 
-	// Check hash prefix, if different than $H$ hash is invalid
-	if(hash.substr(0,3) != "$H$")
-		return "";
+	if(!util::is_valid_hash(hash)) return "";
 
-	if(index == 0) {
-		// Start of the encryption, get the position of first nonidentifier character in extended alphabet
-		int hash_seed = itoa64.find_first_of(hash[3]);
-
-		// If position is lower than 8 or higher than 32 hash is also invalid
-		if(hash_seed < 7 || hash_seed > 30)
-			return "";
-
-		// Set the number of encryption passes as 2^position
-		hash_seed = 1 << hash_seed;
-
-		std::stringstream ss;
-		ss << hash_seed;
-		return ss.str();
-
-	} else if (index == 1) {
-		// Create salt for mixing with the hash
-		return hash.substr(4,8);
-
-	} else {
-		return "";
-	}
-
+	return hash.substr(0,12);
 }
 
 void fuh::user_logged_in(const std::string& name) {
