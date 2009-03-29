@@ -35,6 +35,7 @@ struct tag_name_manager {
 		names.push_back("movement_anim");
 		names.push_back("poison_anim");
 		names.push_back("recruit_anim");
+		names.push_back("recruiting_anim");
 		names.push_back("standing_anim");
 		names.push_back("teleport_anim");
 		names.push_back("victory_anim");
@@ -452,6 +453,14 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 	foreach (config &anim, expanded_cfg.child_range("recruit_anim"))
 	{
 		anim["apply_to"] = "recruited";
+		if (anim["layer"].empty()) anim["layer"] = default_layer;
+		animations.push_back(unit_animation(anim));
+	}
+
+	expanded_cfg = unit_animation::prepare_animation(cfg,"recruiting_anim");
+	foreach (config &anim, expanded_cfg.child_range("recruiting_anim"))
+	{
+		anim["apply_to"] = "recruiting";
 		if (anim["layer"].empty()) anim["layer"] = default_layer;
 		animations.push_back(unit_animation(anim));
 	}
