@@ -2471,7 +2471,7 @@ void candidate_move::evaluate_move(const formula_ai* ai, unit_map& units,
 							(ai->can_attack(me->first, target->first)) ) {
                                                 int res = -1000;
 
-						game_logic::map_formula_callable callable((formula_callable*) ai);
+						game_logic::map_formula_callable callable(static_cast<const formula_callable*>(ai));
 						callable.add_ref();
 						callable.add("me", variant(new unit_callable(*me)));
 						callable.add("target", variant(new unit_callable(*target)));
@@ -2501,7 +2501,7 @@ void candidate_move::evaluate_move(const formula_ai* ai, unit_map& units,
 			if( (i->second.side() == team_num) &&
 					(i->second.has_moved() == false) ) {
                                 int res = -1000;
-				game_logic::map_formula_callable callable((formula_callable*) ai);
+				game_logic::map_formula_callable callable(static_cast<const formula_callable*>(ai));
 				callable.add_ref();
 				callable.add("me", variant(new unit_callable(*i)));
                                 try {
