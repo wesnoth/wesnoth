@@ -958,7 +958,7 @@ attack::attack(game_display& gui, const gamemap& map,
 		// Calculate stats for battle
 		combatant attacker(bc_->get_attacker_stats());
 		combatant defender(bc_->get_defender_stats());
-		attacker.fight(defender);
+		attacker.fight(defender,false);
 		const double attacker_inflict = static_cast<double>(d_.get_unit().hitpoints()) - defender.average_hp();
 		const double defender_inflict = static_cast<double>(a_.get_unit().hitpoints()) - attacker.average_hp();
 
