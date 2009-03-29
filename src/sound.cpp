@@ -138,6 +138,8 @@ std::list< sound_cache_chunk > sound_cache;
 typedef std::list< sound_cache_chunk >::iterator sound_cache_iterator;
 std::map<std::string,Mix_Music*> music_cache;
 
+struct no_valid_tracks {};
+
 struct music_track
 {
 	music_track(const std::string &tname);
@@ -186,6 +188,9 @@ struct music_track last_track("");
 
 static bool track_ok(const std::string &name)
 {
+	if(name.empty()) {
+		return false;
+	}
 	LOG_AUDIO << "Considering " << name << "\n";
 
 	// If they committed changes to list, we forget previous plays, but
@@ -245,6 +250,17 @@ static bool track_ok(const std::string &name)
 static const music_track &choose_track()
 {
 	assert(!current_track_list.empty());
+
+	bool all_invalid = true;
+	foreach(const music_track& mt, current_track_list) {
+		if(!mt.name.empty()) {
+			all_invalid = false;
+			break;
+		}
+	}
+	if(all_invalid) {
+		throw no_valid_tracks();
+	}
 
 	std::string name;
 	unsigned int track = 0;
@@ -607,23 +623,28 @@ void play_music_config(const config &music)
 
 void music_thinker::process(events::pump_info &info) {
 	if(preferences::music_on()) {
-		if(!music_start_time && !current_track_list.empty() && !Mix_PlayingMusic()) {
-			// Pick next track, add ending time to its start time.
-			current_track = choose_track();
-			music_start_time = info.ticks();
-			no_fading=true;
-			fadingout_time=0;
-		}
-
-		if(music_start_time && info.ticks(&music_refresh, music_refresh_rate) >= music_start_time - fadingout_time) {
-			want_new_music=true;
-		}
-
-		if(want_new_music) {
-			if(Mix_PlayingMusic()) {
-				Mix_FadeOutMusic(fadingout_time);
+		try {
+			if(!music_start_time && !current_track_list.empty() && !Mix_PlayingMusic()) {
+				// Pick next track, add ending time to its start time.
+				current_track = choose_track();
+				music_start_time = info.ticks();
+				no_fading=true;
+				fadingout_time=0;
 			}
-			play_new_music();
+
+			if(music_start_time && info.ticks(&music_refresh, music_refresh_rate) >= music_start_time - fadingout_time) {
+				want_new_music=true;
+			}
+
+			if(want_new_music) {
+				if(Mix_PlayingMusic()) {
+					Mix_FadeOutMusic(fadingout_time);
+				}
+				play_new_music();
+			}
+		}
+		catch(no_valid_tracks const&) {
+			current_track_list.clear();
 		}
 	}
 }
