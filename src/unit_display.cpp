@@ -29,7 +29,7 @@
 static void teleport_unit_between( const map_location& a, const map_location& b, unit& temp_unit)
 {
 	game_display* disp = game_display::get_singleton();
-	if(!disp || disp->video().update_locked() || (disp->fogged(a) && disp->fogged(b))) {
+	if(!disp || disp->video().update_locked() || disp->video().faked() || (disp->fogged(a) && disp->fogged(b))) {
 		return;
 	}
 	disp->scroll_to_tiles(a,b,game_display::ONSCREEN,true,0.0,false);
@@ -59,7 +59,7 @@ static void teleport_unit_between( const map_location& a, const map_location& b,
 static void move_unit_between(const map_location& a, const map_location& b, unit& temp_unit)
 {
 	game_display* disp = game_display::get_singleton();
-	if(!disp || disp->video().update_locked() || (disp->fogged(a) && disp->fogged(b))) {
+	if(!disp || disp->video().update_locked() || disp->video().faked() || (disp->fogged(a) && disp->fogged(b))) {
 		return;
 	}
 
@@ -127,6 +127,9 @@ void move_unit(const std::vector<map_location>& path, unit& u, const std::vector
 	game_display* disp = game_display::get_singleton();
 	assert(!path.empty());
 	assert(disp);
+	if(!disp || disp->video().update_locked() || disp->video().faked() ) {
+		return;
+	}
 	// One hex path (strange), nothing to do
 	if (path.size()==1) return;
 
@@ -154,7 +157,7 @@ void move_unit(const std::vector<map_location>& path, unit& u, const std::vector
 	// We use update=false because we don't need delay here (no time wasted)
 	// and no screen refresh (will be done by last 3rd draw() and it optimizes
 	// the double blitting done by these invalidations)
-    disp->draw(false);
+	disp->draw(false);
 	disp->draw(false);
 
 	// The last draw() was still slow, and its inital new_animation_frame() call
@@ -210,7 +213,7 @@ void unit_die(const map_location& loc, unit& loser,
 		const attack_type* attack,const attack_type* secondary_attack, const map_location& winner_loc,unit* winner)
 {
 	game_display* disp = game_display::get_singleton();
-	if(!disp ||disp->video().update_locked() || disp->fogged(loc) || preferences::show_combat() == false) {
+	if(!disp ||disp->video().update_locked() || disp->video().faked() || disp->fogged(loc) || preferences::show_combat() == false) {
 		return;
 	}
 	unit_animator animator;
@@ -235,15 +238,15 @@ void unit_attack(
 		  int swing,std::string hit_text,bool drain,std::string att_text)
 {
 	game_display* disp = game_display::get_singleton();
-	if(!disp || preferences::show_combat() == false) return;
+	if(!disp ||disp->video().update_locked() || disp->video().faked() || 
+			(disp->fogged(a) && disp->fogged(b)) || preferences::show_combat() == false) {
+		return;
+	}
 	unit_map& units = disp->get_units();
 	disp->select_hex(map_location::null_location);
-	const bool hide = disp->video().update_locked() || (disp->fogged(a) && disp->fogged(b));
 
-	if(!hide) {
-		// scroll such that there is at least half a hex spacing around fighters
-		disp->scroll_to_tiles(a,b,game_display::ONSCREEN,true,0.5,false);
-	}
+	// scroll such that there is at least half a hex spacing around fighters
+	disp->scroll_to_tiles(a,b,game_display::ONSCREEN,true,0.5,false);
 
 	log_scope("unit_attack");
 
@@ -338,7 +341,7 @@ void unit_attack(
 void unit_recruited(const map_location& loc,const map_location& leader_loc)
 {
 	game_display* disp = game_display::get_singleton();
-	if(!disp || disp->video().update_locked() ||disp->fogged(loc)) return;
+	if(!disp || disp->video().update_locked() || disp->video().faked() ||disp->fogged(loc)) return;
 	unit_map::iterator u = disp->get_units().find(loc);
 	if(u == disp->get_units().end()) return;
 	u->second.set_hidden(true);
@@ -367,7 +370,7 @@ void unit_recruited(const map_location& loc,const map_location& leader_loc)
 void unit_healing(unit& healed,map_location& healed_loc, std::vector<unit_map::iterator> healers, int healing)
 {
 	game_display* disp = game_display::get_singleton();
-	if(!disp || disp->video().update_locked() || disp->fogged(healed_loc)) return;
+	if(!disp || disp->video().update_locked() || disp->video().faked() || disp->fogged(healed_loc)) return;
 	if(healing==0) return;
 	// This is all the pretty stuff.
 	disp->scroll_to_tile(healed_loc, game_display::ONSCREEN,true,false);
@@ -392,11 +395,13 @@ void unit_healing(unit& healed,map_location& healed_loc, std::vector<unit_map::i
 void wml_animation_internal(unit_animator & animator,const vconfig &cfg, const gamemap& map, const gamestatus& game_status,unit_map & units,const map_location& default_location = map_location::null_location);
 void wml_animation(const vconfig &cfg,unit_map & units, const gamemap& map, const gamestatus& game_status,const map_location& default_location)
 {
-		unit_animator animator;
-		wml_animation_internal(animator,cfg,map,game_status,units,default_location);
-		animator.start_animations();
-		animator.wait_for_end();
-		animator.set_all_standing();
+	game_display* disp = game_display::get_singleton();
+	if(!disp || disp->video().update_locked() || disp->video().faked()) return;
+	unit_animator animator;
+	wml_animation_internal(animator,cfg,map,game_status,units,default_location);
+	animator.start_animations();
+	animator.wait_for_end();
+	animator.set_all_standing();
 }
 
 void wml_animation_internal(unit_animator & animator,const vconfig &cfg, const gamemap& map, const gamestatus& game_status,unit_map & units,const map_location& default_location)
