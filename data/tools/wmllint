@@ -669,7 +669,7 @@ def pangoize(message, filename, line):
     "Pango conversion of old-style Wesnoth markup."
     if '&' in message:
         amper = message.find('&')
-        if message[amper:amper+5] != "&amp;":
+        if message[amper:amper+1].isspace():
             message = message[:amper] + "&amp;" + message[amper+1:]
     if re.search("<[0-9]+,[0-9]+,[0-9]+>", message):
         print '"%s", line %d: color spec in line requires manual fix.' % (filename, line)
@@ -1015,7 +1015,7 @@ def sanity_check(filename, lines):
                 # Doing a better job would require tokenizing to pick up the
                 # string boundaries. I'd do it, but AI0867 is already working
                 # on a parser-based wmllint.   
-                if '{' in value and "+" not in value:
+                if '{' in value and "+" not in value and value.find('{') > value.find("_"):
                     print '"%s", line %d: macro reference in translatable string'\
                           % (filename, i+1)
                 #if future and re.search("[.,!?]  ", lines[i]):
