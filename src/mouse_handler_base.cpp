@@ -258,9 +258,10 @@ bool mouse_handler_base::right_click(int x, int y, const bool browse)
 	return false;
 }
 
-void mouse_handler_base::right_drag_end(int x, int y, const bool browse)
+void mouse_handler_base::right_drag_end(int /*x*/, int /*y*/, const bool /*browse*/)
 {
-	left_click(x, y, browse);
+	//FIXME: This is called when we select an option in context-menu,
+	//       which is bad because that was not a real dragging
 }
 
 void mouse_handler_base::right_mouse_up(int /*x*/, int /*y*/, const bool /*browse*/)
