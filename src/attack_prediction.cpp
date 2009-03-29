@@ -761,7 +761,7 @@ void combatant::consider_levelup(combatant &opp) {
 // Of course, one could be a woman.  Or both.
 // And neither could be human, too.
 // Um, ok, it was a stupid thing to say.
-void combatant::fight(combatant &opp)
+void combatant::fight(combatant &opp, bool levelup_considered)
 {
 	unsigned int rounds = std::max<unsigned int>(u_.rounds, opp.u_.rounds);
 
@@ -837,8 +837,10 @@ void combatant::fight(combatant &opp)
 			opp.hp_dist[i] = opp.summary[0][i] + opp.summary[1][i];
 	}
 
-	consider_levelup(opp);
-	opp.consider_levelup(*this);
+	if(levelup_considered) {
+		consider_levelup(opp);
+		opp.consider_levelup(*this);
+	}
 
 	// Make sure we don't try to access the vectors out of bounds,
 	// drain increases HPs so we determine the number of HP here
