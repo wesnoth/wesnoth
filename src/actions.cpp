@@ -191,7 +191,7 @@ std::string recruit_unit(const gamemap& map, const int side, unit_map& units,
 	}
 	const unit_map::iterator new_unit_itor = units.find(recruit_location);
 	if(new_unit_itor != units.end()) new_unit_itor->second.set_hidden(false);
-	if(show)unit_display::unit_recruited(recruit_location);
+	if(show)unit_display::unit_recruited(recruit_location,u->first);
 	if (is_recall)
 	{
 		LOG_NG << "firing recall event\n";
@@ -1179,9 +1179,9 @@ attack::attack(game_display& gui, const gamemap& map,
 
 				refresh_bc();
 				if(!a_.valid()) {
-					unit_display::unit_die(d_.iter_->first, d_.get_unit(), NULL, d_stats_->weapon, NULL);
+					unit_display::unit_die(d_.iter_->first, d_.get_unit(), NULL, d_stats_->weapon);
 				} else {
-					unit_display::unit_die(d_.iter_->first, d_.get_unit(),a_stats_->weapon,d_stats_->weapon, &(a_.get_unit()));
+					unit_display::unit_die(d_.iter_->first, d_.get_unit(),a_stats_->weapon,d_stats_->weapon,a_.iter_->first, &(a_.get_unit()));
 				}
 
 				DELAY_END_LEVEL(delayed_exception, game_events::fire("die",death_loc,attacker_loc, dat));
@@ -1449,9 +1449,9 @@ attack::attack(game_display& gui, const gamemap& map,
 
 				refresh_bc();
 				if(!d_.valid()) {
-					unit_display::unit_die(a_.loc_, a_.get_unit(),a_stats_->weapon, NULL, NULL);
+					unit_display::unit_die(a_.loc_, a_.get_unit(),a_stats_->weapon);
 				} else {
-					unit_display::unit_die(a_.loc_, a_.get_unit(),a_stats_->weapon,d_stats_->weapon, &(d_.get_unit()));
+					unit_display::unit_die(a_.loc_, a_.get_unit(),a_stats_->weapon,d_stats_->weapon,d_.loc_, &(d_.get_unit()));
 				}
 
 				DELAY_END_LEVEL(delayed_exception, game_events::fire("die",death_loc,defender_loc,dat));

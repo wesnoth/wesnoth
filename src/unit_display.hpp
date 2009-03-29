@@ -46,7 +46,7 @@ void move_unit(const std::vector<map_location>& path, unit& u, const std::vector
  *
  * Note: this only shows the effect, it doesn't actually kill the unit.
  */
-void unit_die( const map_location& loc, unit& u, const attack_type* attack=NULL, const attack_type*secondary_attack=NULL, unit * winner=NULL);
+void unit_die( const map_location& loc, unit& u, const attack_type* attack=NULL, const attack_type*secondary_attack=NULL,const map_location& winner_loc = map_location::null_location, unit * winner=NULL);
 
 /**
  *  Make the unit on tile 'a' attack the unit on tile 'b'.
@@ -61,7 +61,9 @@ void unit_attack(
                  const map_location& a, const map_location& b, int damage,
                  const attack_type& attack, const attack_type* secondary_attack,
 		 int swing,std::string hit_text,bool drain,std::string att_text);
-void unit_recruited(map_location& loc);
+
+
+void unit_recruited(const map_location& loc,const map_location& leader_loc=map_location::null_location);
 
 /**
  *  Set healer_loc to an invalid location if there are no healers.

@@ -67,7 +67,7 @@ static void move_unit_between(const map_location& a, const map_location& b, unit
 	disp->place_temporary_unit(temp_unit,a);
 	temp_unit.set_facing(a.get_relative_dir(b));
 	unit_animator animator;
-	animator.replace_anim_if_invalid(&temp_unit,"movement",a);
+	animator.replace_anim_if_invalid(&temp_unit,"movement",a,b);
 	animator.start_animations();
         animator.pause_animation();
 	disp->scroll_to_tiles(a,b,game_display::ONSCREEN,true,0.0,false);
@@ -207,7 +207,7 @@ void move_unit(const std::vector<map_location>& path, unit& u, const std::vector
 }
 
 void unit_die(const map_location& loc, unit& loser,
-		const attack_type* attack,const attack_type* secondary_attack, unit* winner)
+		const attack_type* attack,const attack_type* secondary_attack, const map_location& winner_loc,unit* winner)
 {
 	game_display* disp = game_display::get_singleton();
 	if(!disp ||disp->video().update_locked() || disp->fogged(loc) || preferences::show_combat() == false) {
@@ -215,9 +215,9 @@ void unit_die(const map_location& loc, unit& loser,
 	}
 	unit_animator animator;
 	// hide the hp/xp bars of the loser (useless and prevent bars around an erased unit)
-	animator.add_animation(&loser,"death",loc,0,false,false,"",0,unit_animation::KILL,attack,secondary_attack,0);
+	animator.add_animation(&loser,"death",loc,winner_loc,0,false,false,"",0,unit_animation::KILL,attack,secondary_attack,0);
 	// but show the bars of the winner (avoid blinking and show its xp gain)
-	animator.add_animation(winner,"victory",loc.get_direction(loser.facing()),0,true,false,"",0,
+	animator.add_animation(winner,"victory",winner_loc,loc,0,true,false,"",0,
 			unit_animation::KILL,secondary_attack,attack,0);
 	animator.start_animations();
 	animator.wait_for_end();
@@ -292,8 +292,8 @@ void unit_attack(
 		}else {
 			hit_type = unit_animation::MISS;
 		}
-		animator.add_animation(&attacker,"attack",att->first,damage,true,false,text_2,display::rgb(0,255,0),hit_type,&attack,secondary_attack,swing);
-		animator.add_animation(&defender,"defend",def->first,damage,true,false,text  ,display::rgb(255,0,0),hit_type,&attack,secondary_attack,swing);
+		animator.add_animation(&attacker,"attack",att->first,def->first,damage,true,false,text_2,display::rgb(0,255,0),hit_type,&attack,secondary_attack,swing);
+		animator.add_animation(&defender,"defend",def->first,att->first,damage,true,false,text  ,display::rgb(255,0,0),hit_type,&attack,secondary_attack,swing);
 
 		for (std::vector<std::pair<const config *, map_location> >::iterator itor = leaders.cfgs.begin(); itor != leaders.cfgs.end(); itor++) {
 			if(itor->second == a) continue;
@@ -301,7 +301,7 @@ void unit_attack(
 			unit_map::iterator leader = units.find(itor->second);
 			assert(leader != units.end());
 			leader->second.set_facing(itor->second.get_relative_dir(a));
-			animator.add_animation(&leader->second,"leading",itor->second,damage,true,false,"",0,hit_type,&attack,secondary_attack,swing);
+			animator.add_animation(&leader->second,"leading",itor->second,att->first,damage,true,false,"",0,hit_type,&attack,secondary_attack,swing);
 		}
 		for (std::vector<std::pair<const config *, map_location> >::iterator itor = helpers.cfgs.begin(); itor != helpers.cfgs.end(); itor++) {
 			if(itor->second == a) continue;
@@ -309,7 +309,7 @@ void unit_attack(
 			unit_map::iterator helper = units.find(itor->second);
 			assert(helper != units.end());
 			helper->second.set_facing(itor->second.get_relative_dir(b));
-			animator.add_animation(&helper->second,"resistance",itor->second,damage,true,false,"",0,hit_type,&attack,secondary_attack,swing);
+			animator.add_animation(&helper->second,"resistance",itor->second,def->first,damage,true,false,"",0,hit_type,&attack,secondary_attack,swing);
 		}
 
 	}
@@ -335,20 +335,29 @@ void unit_attack(
 }
 
 
-void unit_recruited(map_location& loc)
+void unit_recruited(const map_location& loc,const map_location& leader_loc)
 {
 	game_display* disp = game_display::get_singleton();
 	if(!disp || disp->video().update_locked() ||disp->fogged(loc)) return;
 	unit_map::iterator u = disp->get_units().find(loc);
 	if(u == disp->get_units().end()) return;
-
 	u->second.set_hidden(true);
-	disp->scroll_to_tile(loc,game_display::ONSCREEN,true,false);
+
+	unit_animator animator;
+	if(leader_loc != map_location::null_location) {
+		unit_map::iterator leader = disp->get_units().find(leader_loc);
+		if(leader == disp->get_units().end()) return;
+		disp->scroll_to_tiles(loc,leader_loc,game_display::ONSCREEN,true,0.0,false);
+		leader->second.set_facing(leader_loc.get_relative_dir(loc));
+		animator.add_animation(&leader->second,"recruiting",leader_loc,loc);
+	} else {
+		disp->scroll_to_tile(loc,game_display::ONSCREEN,true,false);
+	}
+
 	disp->draw();
 	u->second.set_hidden(false);
 	u->second.set_facing(static_cast<map_location::DIRECTION>(rand()%map_location::NDIRECTIONS));
-	unit_animator animator;
-	animator.add_animation(&u->second,"recruited",loc);
+	animator.add_animation(&u->second,"recruited",loc,leader_loc);
 	animator.start_animations();
 	animator.wait_for_end();
 	animator.set_all_standing();
@@ -367,12 +376,12 @@ void unit_healing(unit& healed,map_location& healed_loc, std::vector<unit_map::i
 
 	for(std::vector<unit_map::iterator>::iterator heal_anim_it = healers.begin(); heal_anim_it != healers.end(); ++heal_anim_it) {
 		(*heal_anim_it)->second.set_facing((*heal_anim_it)->first.get_relative_dir(healed_loc));
-		animator.add_animation(&(*heal_anim_it)->second,"healing",(*heal_anim_it)->first,healing);
+		animator.add_animation(&(*heal_anim_it)->second,"healing",(*heal_anim_it)->first,healed_loc,healing);
 	}
 	if (healing < 0) {
-		animator.add_animation(&healed,"poisoned",healed_loc,-healing,false,false,lexical_cast<std::string>(-healing), display::rgb(255,0,0));
+		animator.add_animation(&healed,"poisoned",healed_loc,map_location::null_location,-healing,false,false,lexical_cast<std::string>(-healing), display::rgb(255,0,0));
 	} else {
-		animator.add_animation(&healed,"healed",healed_loc,healing,false,false,lexical_cast<std::string>(healing), display::rgb(0,255,0));
+		animator.add_animation(&healed,"healed",healed_loc,map_location::null_location,healing,false,false,lexical_cast<std::string>(healing), display::rgb(0,255,0));
 	}
 	animator.start_animations();
 	animator.wait_for_end();
@@ -450,15 +459,18 @@ void wml_animation_internal(unit_animator & animator,const vconfig &cfg, const g
 		}
 		disp->scroll_to_tile(u->first, game_display::ONSCREEN,true,false);
 		vconfig t_filter = cfg.child("facing");
+		map_location secondary_loc = map_location::null_location;
 		if(!t_filter.empty()) {
 			terrain_filter filter(t_filter,map,game_status,units);
 			std::set<map_location> locs;
 			filter.get_locations(locs);
 			if(!locs.empty()) {
-				u->second.set_facing(u->first.get_relative_dir(*locs.begin()));
+				map_location::DIRECTION dir =u->first.get_relative_dir(*locs.begin());
+				u->second.set_facing(dir);
+				secondary_loc = u->first.get_direction(dir);
 			}
 		}
-		animator.add_animation(&u->second,cfg["flag"],u->first,lexical_cast_default<int>(cfg["value"]),utils::string_bool(cfg["with_bars"]),
+		animator.add_animation(&u->second,cfg["flag"],u->first,secondary_loc,lexical_cast_default<int>(cfg["value"]),utils::string_bool(cfg["with_bars"]),
 				false,cfg["text"],text_color, hits,primary,secondary,0);
 	}
 	const vconfig::child_list sub_anims = cfg.get_children("animate");

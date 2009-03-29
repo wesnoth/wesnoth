@@ -2827,13 +2827,15 @@ const t_string& unit::modification_description(const std::string& type) const
 
 
 
-const unit_animation* unit::choose_animation(const game_display& disp, const map_location& loc,const std::string& event,const int value,const unit_animation::hit_type hit,const attack_type* attack,const attack_type* second_attack, int swing_num) const
+const unit_animation* unit::choose_animation(const game_display& disp, const map_location& loc,const std::string& event,
+		const map_location& second_loc,const int value,const unit_animation::hit_type hit,
+		const attack_type* attack, const attack_type* second_attack, int swing_num) const
 {
 	// Select one of the matching animations at random
 	std::vector<const unit_animation*> options;
 	int max_val = unit_animation::MATCH_FAIL;
 	for(std::vector<unit_animation>::const_iterator i = animations_.begin(); i != animations_.end(); ++i) {
-		int matching = i->matches(disp,loc,this,event,value,hit,attack,second_attack,swing_num);
+		int matching = i->matches(disp,loc,second_loc,this,event,value,hit,attack,second_attack,swing_num);
 		if(matching > unit_animation::MATCH_FAIL && matching == max_val) {
 			options.push_back(&*i);
 		} else if(matching > max_val) {

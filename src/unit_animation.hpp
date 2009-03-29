@@ -38,7 +38,7 @@ class unit_animation
 		static void fill_initial_animations( std::vector<unit_animation> & animations, const config & cfg);
 		static void add_anims( std::vector<unit_animation> & animations, const config & cfg);
 
-		int matches(const game_display &disp,const map_location& loc,const unit* my_unit,const std::string & event="",const int value=0,hit_type hit=INVALID,const attack_type* attack=NULL,const attack_type* second_attack = NULL, int swing_num =0) const;
+		int matches(const game_display &disp,const map_location& loc,const map_location& second_loc,const unit* my_unit,const std::string & event="",const int value=0,hit_type hit=INVALID,const attack_type* attack=NULL,const attack_type* second_attack = NULL, int swing_num =0) const;
 
 
 		const unit_frame& get_last_frame() const{ return unit_anim_.get_last_frame() ; };
@@ -130,6 +130,7 @@ class unit_animator
 
 		void add_animation(unit* animated_unit,const std::string& event,
 				const map_location &src = map_location::null_location,
+				const map_location &dst = map_location::null_location,
 				const int value=0,bool with_bars = false,bool cycles = false,
 				const std::string text="",const Uint32 text_color=0,
 				const unit_animation::hit_type hit_type = unit_animation::INVALID,
@@ -137,6 +138,7 @@ class unit_animator
 				int swing_num =0);
 		void replace_anim_if_invalid(unit* animated_unit,const std::string& event,
 				const map_location &src = map_location::null_location,
+				const map_location &dst = map_location::null_location,
 				const int value=0,bool with_bars = false,bool cycles = false,
 				const std::string text="",const Uint32 text_color=0,
 				const unit_animation::hit_type hit_type = unit_animation::INVALID,
