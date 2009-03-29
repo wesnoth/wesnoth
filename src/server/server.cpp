@@ -2229,17 +2229,19 @@ void server::process_data_game(const network::connection sock,
 			}
 			// Send all other players in the lobby the update to the gamelist.
 			simple_wml::document diff;
-			bool diff1 = make_change_diff(*games_and_users_list_.root().child("gamelist"),
+			make_change_diff(*games_and_users_list_.root().child("gamelist"),
 						      "gamelist", "game", g->description(), diff);
-			bool diff2 = make_change_diff(games_and_users_list_.root(), NULL,
-						      "user", pl->second.config_address(), diff);
-			if (diff1 || diff2) {
-				lobby_.send_data(diff, sock);
+			const wesnothd::player_map::iterator pl2 = players_.find(user);
+			if (pl2 == players_.end()) {
+				ERR_SERVER << "ERROR: Could not find kicked player in players_."
+				" (socket: " << user << ")\n";
+			} else {
+				make_change_diff(games_and_users_list_.root(), NULL, "user",
+						pl2->second.config_address(), diff);
 			}
+			lobby_.send_data(diff, sock);
 			// Send the removed user the lobby game list.
 			send_doc(games_and_users_list_, user);
-			// FIXME: should also send a user diff to the lobby
-			//        to mark this player as available for others
 		}
 		return;
 	// If info is being provided about the game state.
