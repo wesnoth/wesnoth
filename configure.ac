@@ -562,7 +562,7 @@ int main (int argc, char **argv)
     ])],
     [AC_MSG_RESULT(yes)],
     [AC_MSG_RESULT(no)]
-    [AC_MSG_ERROR([*** Please upgrade your SDL version])],
+    [AC_MSG_ERROR([*** Please upgrade your SDL and/or SDL_ttf version])],
     [AC_MSG_RESULT([not tested in cross-compiling])])
     rm -f conf.sdltest
 
