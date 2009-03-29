@@ -414,10 +414,26 @@ private:
 		int weapon;
 		if (args().size() > 3) weapon = args()[3]->evaluate(variables).as_int();
 		else weapon = -1;
+
+		map_location attacker_location = 
+			convert_variant<location_callable>(args()[0]->evaluate(variables))->loc();
+		if(ai_.get_info().units.count(attacker_location) == 0) {
+			ERR_AI << "Performing calculate_outcome() with non-existent attacker at (" <<
+				attacker_location.x+1 << "," << attacker_location.y+1 << ")\n";
+			return variant();
+		}
+
+		map_location defender_location = 
+			convert_variant<location_callable>(args()[2]->evaluate(variables))->loc();
+		if(ai_.get_info().units.count(defender_location) == 0) {
+			ERR_AI << "Performing calculate_outcome() with non-existent defender at (" <<
+				defender_location.x+1 << "," << defender_location.y+1 << ")\n";
+			return variant();
+		}
+
 		battle_context bc(ai_.get_info().map, ai_.get_info().teams, ai_.get_info().units,
 			ai_.get_info().state, convert_variant<location_callable>(args()[1]->evaluate(variables))->loc(),
-			convert_variant<location_callable>(args()[2]->evaluate(variables))->loc(), weapon, -1, 1.0, NULL,
-			&ai_.get_info().units.find(convert_variant<location_callable>(args()[0]->evaluate(variables))->loc())->second);
+			defender_location, weapon, -1, 1.0, NULL, &ai_.get_info().units.find(attacker_location)->second);
 		std::vector<double> hp_dist = bc.get_attacker_combatant().hp_dist;
 		std::vector<double>::iterator it = hp_dist.begin();
 		int i = 0;
