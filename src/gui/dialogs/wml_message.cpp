@@ -72,7 +72,7 @@ void twml_message_::pre_show(CVideo& video, twindow& window)
 	tcontrol* label =
 			dynamic_cast<tcontrol*>(window.find_widget("label", false));
 	assert(label);
-	label->set_markup_mode(tcontrol::WML_MARKUP);
+	label->set_markup_mode(tcontrol::PANGO_MARKUP);
 
 	// Find the input box related fields.
 	tlabel* caption = dynamic_cast<tlabel*>(

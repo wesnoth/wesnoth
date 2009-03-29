@@ -647,6 +647,64 @@ declared_spellings = {"GLOBAL":["I'm", "I've", "I'd", "I'll",
                                 "princeling", "wilderlands", "ensorcels"
                                 ]}
 
+pango_conversions = (("~", '<b>', '</b>'),
+                     ("@", '<span color="green">', "</span>"),
+                     ("#", '<span color="red">', "</span>"),
+                     ("*", '<span size="big">', "</span>"),
+                     ("`", '<span size="small">', "</span>"),
+                     )
+
+def pangostrip(message):
+    "Strip Pango margup out of a string."
+    # This is all known Pango convenience tags
+    for tag in ("b", "big", "i", "s", "sub", "sup", "small", "tt", "u"):
+        message = message.replace("<"+tag+">", "").replace("</"+tag+">", "")
+    # Now remove general span tags
+    message = re.sub("</?span[^>]*>", "", message)
+    # And Pango specials;
+    message = re.sub("&[a-z]+;", "", message)
+    return message
+
+def pangoize(message, filename, line):
+    "Pango conversion of old-style Wesnoth markup."
+    if '&' in message:
+        amper = message.find('&')
+        if message[amper:amper+5] != "&amp;":
+            message = message[:amper] + "&amp;" + message[amper+1:]
+    if re.search("<[0-9]+,[0-9]+,[0-9]+>", message):
+        print '"%s", line %d: color spec in line requires manual fix.' % (filename, line)
+    # Hack old-style Wesnoth markup
+    for (oldstyle, newstart, newend) in pango_conversions:
+        if oldstyle not in message:
+            continue
+        where = message.find(oldstyle)
+        if message[where-1] != '"':	# Start of string only
+            continue
+        if message.strip()[-1] != '"':
+            print '"%s", line %d: %s highlight at start of multiline string requires manual fix.' % (filename, line, oldstyle)
+            continue
+        if '+' in message:
+            print '"%s", line %d: %s highlight in composite string requires manual fix.' % (filename, line, oldstyle)
+            continue
+        # This is the common, simple case we can fix automatically
+        message = message[:where] + newstart + message[where+1:]
+        endq = lines[where].rfind('"')
+        message = message[:endq] + newend + message[endq+1:]
+    # Check for unescaped < and >
+    if "<" in message or ">" in message:
+        reduced = pangostrip(message)
+        if "<" in reduced or ">" in reduced:
+            if message == reduced:	# No pango markup
+                here = message.find('<')
+                if message[here:here+4] != "&lt;":
+                    message = message[:here] + "&lt;" + message[here+1:]
+                here = message.find('>')
+                if message[here:here+4] != "&gt;":
+                    message = message[:here] + "&gt;" + message[here+1:]
+            else:
+                print '"%s", line %d: < or > in pango string requires manual fix.' % (filename, line, oldstyle)
+    return message
+
 class WmllintIterator(WmlIterator):
     "Fold an Emacs-compatible error reporter into WmlIterator."
     def printError(self, *misc):
@@ -891,6 +949,8 @@ def sanity_check(filename, lines):
     in_trait = False
     ignore_id = False
     in_object = False
+    in_message = False
+    in_option = False
     ignoreable = False
     preamble_seen = False
     sentence_end = re.compile("(?<=[.!?;:])  +")
@@ -913,6 +973,14 @@ def sanity_check(filename, lines):
             in_object = True
         elif "[/object]" in lines[i]:
             in_object = False
+        elif "[message]" in lines[i]:
+            in_message = True
+        elif "[/message]" in lines[i]:
+            in_message = False
+        elif "[/option]" in lines[i]:
+            in_option = False
+        elif "[option]" in lines[i]:
+            in_option = True
         elif "[label]" in lines[i] or "[chamber]" in lines[i] or "[time]" in lines[i]:
             ignore_id = True
         elif "[/label]" in lines[i] or "[/chamber]" in lines[i] or "[/time]" in lines[i]:
@@ -976,6 +1044,8 @@ def sanity_check(filename, lines):
                 if capitalization_error.search(lines[i]):
                     print '"%s", line %d: probable capitalization or punctuation error' \
                           % (filename, i+1)
+                if key == "message" and in_message and not in_option:
+                    lines[i] = pangoize(lines[i], filename, i)
             else:
                 if in_scenario and key == "id":
                     if in_person:
@@ -1585,6 +1655,9 @@ def spellcheck(fn, d):
                 value = value[:-1].rstrip()
             # Strip off string quotes
             value = string_strip(value)
+            # Remove pango markup
+            if "<" in value or ">" in value or '&' in value:
+                value = pangostrip(value)
             # Discard extraneous stuff 
             value = value.replace("...", " ")
             value = value.replace("''", "")
@@ -1604,7 +1677,7 @@ def spellcheck(fn, d):
                 lowered = token.lower()
                 if d.check(lowered):
                     continue
-                # Strip leading punctuastion and grotty Wesnoth highlighters
+                # Strip leading punctuation and grotty Wesnoth highlighters
                 while lowered and lowered[0] in " \t(`@*'%_":
                     lowered = lowered[1:]
                 # Not interested in interpolations or numeric literals
