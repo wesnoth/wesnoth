@@ -104,6 +104,7 @@ SET(libwesnoth-core_STAT_SRC
     filesystem.cpp
     game_config.cpp
     gettext.cpp
+    hash.cpp
     log.cpp
     map.cpp
     map_location.cpp
