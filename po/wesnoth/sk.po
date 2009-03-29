@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2009-03-20 00:45+0100\n"
-"PO-Revision-Date: 2009-03-04 23:06+0100\n"
+"PO-Revision-Date: 2009-03-29 15:57+0100\n"
 "Last-Translator: aceman <acelists@atlas.sk>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -36,7 +36,7 @@ msgstr "Umožniť rolovanie stredným tlačidlom"
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:70
 msgid "Keep scrolling when mouse leaves window"
-msgstr ""
+msgstr "Pokračovať v posúvaní mapy aj keď myš opustí okno"
 
 #. [advanced_preference]: type=boolean
 #: data/_main.cfg:77
@@ -257,9 +257,8 @@ msgstr "Správcovia prekladu"
 
 #. [about]
 #: data/core/about.cfg:915
-#, fuzzy
 msgid "English strings edition"
-msgstr "Anglický (britský) preklad"
+msgstr "Anglické texty"
 
 #. [about]
 #: data/core/about.cfg:922
@@ -660,7 +659,6 @@ msgstr ""
 
 #. [topic]: id=fundamentals
 #: data/core/help.cfg:140
-#, fuzzy
 msgid ""
 "While playing, keep in mind that if you mouse-over many items in the game, "
 "such as the information displayed in the status pane, a brief description "
@@ -670,8 +668,8 @@ msgid ""
 msgstr ""
 "Počas hry si pamätaj, že ak prejdeš myšou ponad mnohé herné prvky, napríklad "
 "informácie zobrazené v stavovom paneli, zobrazí sa krátky popis danej "
-"položky. To je zvlášť užitočné, keď sa po prvýkrát stretneš s novou "
-"<ref>dst=abilities text=\"schopnosťou\"</ref>."
+"položky. To je zvlášť užitočné, keď sa prvýkrát stretneš s nejakou novou "
+"<ref>dst='..abilities_section' text=\"schopnosťou\"</ref>."
 
 #. [topic]: id=about_game
 #: data/core/help.cfg:145
@@ -758,7 +756,6 @@ msgstr "Verbovanie a privolávanie"
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:165
-#, fuzzy
 msgid ""
 "Each side begins with one leader in their keep. At the start of any battle, "
 "and at times during it, you will need to recruit <ref>dst='..units' "
@@ -772,14 +769,15 @@ msgid ""
 "recruit it."
 msgstr ""
 "Každá strana začína s jedným veliteľom v pevnosti. Na začiatku hry, a často "
-"aj počas nej, budete potrebovať naverbovať <ref>dst=units text='jednotky'</"
-"ref> do armády. Verbovať môžete, ak je váš veliteľ (Konrád, v príbehu Dedič "
-"trónu) na políčku \"pevnosť\" v <ref>dst=terrain_castle text='hrade'</ref>. "
-"Vtedy môžete verbovať pomocou voľby \"Verbuj\" v menu, alebo ťuknutím pravým "
-"tlačidlom na políčko a výberom možnosti <italic>text='Verbuj'</italic>. "
-"Objaví sa verbovacie menu so zoznamom jednotiek, ktoré môžete verbovať, a s "
-"ich cenou. Ťuknutím na jednotku sa naľavo zobrazia jej štatistiky, po "
-"stlačení tlačidla \"Verbuj\" sa naverbuje."
+"aj počas nej, budete potrebovať naverbovať <ref>dst='..units' "
+"text='jednotky'</ref> do armády. Verbovať môžete, ak je váš veliteľ "
+"(napríklad Konrád, v príbehu Dedič trónu) na políčku \"pevnosť\" v "
+"<ref>dst='terrain_castle' text='hrade'</ref>. Vtedy môžete verbovať pomocou "
+"voľby \"Verbuj\" v menu, alebo ťuknutím pravým tlačidlom na políčko a "
+"výberom možnosti <italic>text='Verbuj'</italic>. Objaví sa verbovacie menu "
+"so zoznamom jednotiek, ktoré môžete verbovať, a s ich cenou. Ťuknutím na "
+"jednotku sa naľavo zobrazia jej štatistiky, po stlačení tlačidla \"Verbuj\" "
+"sa naverbuje."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:167
@@ -801,7 +799,6 @@ msgstr ""
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:169
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -810,7 +807,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Naverbované jednotky majú dve náhodné <ref>dst=..traits_section "
+"Naverbované jednotky majú dve náhodné <ref>dst='..traits_section' "
 "text='vlastnosti'</ref>, ktoré ovplyvňujú ich štatistiky."
 
 #. [topic]: id=recruit_and_recall
@@ -830,7 +827,6 @@ msgstr ""
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:173
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -842,7 +838,7 @@ msgstr ""
 "\n"
 "Za jednotky sa neplatí len pri verbovaní a privolávaní, ale aj ich údržba "
 "stojí peniaze. Ďalšie informácie nájdete v kapitole "
-"<ref>dst=income_and_upkeep text='Príjmy a výdavky'</ref>."
+"<ref>dst='income_and_upkeep' text='Príjmy a výdavky'</ref>."
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:180
@@ -913,18 +909,17 @@ msgstr ""
 
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:199
-#, fuzzy
 msgid ""
 "The hitpoints are also indicated by an energy bar next to each unit, which "
 "is green, yellow or red. A unit with at least 1 experience point has a blue "
 "experience bar, which turns white as the unit is about to "
 "<ref>dst='experience_and_advancement' text='advance'</ref>."
 msgstr ""
-"Body zdravia sa zobrazujú aj pomocou ukazovateľa zdravia pri každe jednotke. "
-"Tento ukazovateľ je zelený, žltý alebo červený. Jednotka, ktorá má aspoň 1 "
-"bod skúsenosti, má aj ukazovateľ skúsenosti. Ten je modrý, a zmení sa na "
-"biely, ak je jednotka blízko <ref>dst=experience_and_advancement text="
-"\"povýšenia\"</ref>."
+"Body zdravia sa zobrazujú aj pomocou ukazovateľa zdravia pri každej "
+"jednotke. Tento ukazovateľ je zelený, žltý alebo červený. Jednotka, ktorá má "
+"aspoň 1 bod skúsenosti, má aj ukazovateľ skúsenosti. Ten je modrý a zmení sa "
+"na biely, ak je jednotka blízko <ref>dst='experience_and_advancement' "
+"text='povýšenia'</ref>."
 
 #. [topic]: id=movement
 #: data/core/help.cfg:206
@@ -988,7 +983,6 @@ msgstr ""
 
 #. [topic]: id=movement
 #: data/core/help.cfg:211
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1002,10 +996,10 @@ msgstr ""
 "\n"
 "\n"
 "Ďalšia vec, na ktorú treba pri pohybe pamätať, je oblasť kontroly. Každá "
-"jednotka kontroluje okolité políčka, a ak na ne vstúpi nepriateľská "
-"jednotka, jej pohyb tým skončil. Dôležitou súčasťou hrania Wesnothu je "
-"naučiť sa využívať oblasti kontroly vo svoj prospech. Iba "
-"<ref>dst=ability_skirmish text='priebojné'</ref> jednotky môžu ignorovať "
+"jednotka kontroluje okolité políčka a ak na ne vstúpi nepriateľská jednotka, "
+"jej pohyb sa tým skončí. Dôležitou súčasťou hrania Wesnothu je naučiť sa "
+"využívať oblasti kontroly vo svoj prospech. Iba "
+"<ref>dst='ability_skirmisher' text='priebojné'</ref> jednotky môžu ignorovať "
 "oblasti kontroly."
 
 #. [topic]: id=movement
@@ -1163,7 +1157,6 @@ msgstr ""
 
 #. [topic]: id=combat
 #: data/core/help.cfg:241
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1175,10 +1168,11 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Toto pravidlo má dve výnimky: <ref>dst=magical_attacks text='magický útok'</"
-"ref> a útok <ref>dst=ability_marksman text='ostrostrelca'</ref>. Magickú "
-"útok má vždy šancu na zásah 70%, bez ohľadu na terén, a ostrostrelec má "
-"počas svojho útoku vždy šancu na záhas aspoň 60%, bez ohľadu na terén."
+"Toto pravidlo má dve výnimky: <ref>dst='weaponspecial_magical' text='magický "
+"útok'</ref> a útok <ref>dst='weaponspecial_marksman' text='ostrostrelca'</"
+"ref>. Magický útok má vždy 70% šancu na zásah, bez ohľadu na terén, a "
+"ostrostrelec má počas svojho útoku vždy šancu na zásah aspoň 60%, bez ohľadu "
+"na terén."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:243
@@ -1193,7 +1187,6 @@ msgstr ""
 
 #. [topic]: id=combat
 #: data/core/help.cfg:245
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1209,14 +1202,13 @@ msgstr ""
 "\n"
 "Každý úder, ktorý zasiahne, spôsobuje základné zranenie podľa typu útoku. "
 "Napríklad elf vojak s útokom mečom 5-4 spôsobuje základné zranenie 5. To "
-"zvyčajne ešte ovplyvňujú dve veci: <ref>dst=damage_types_and_resistance "
-"text='odolnosť'</ref> a <ref>dst=time_of_day text='denná doba'</ref>. Ak "
+"zvyčajne ešte ovplyvňujú dve veci: <ref>dst='damage_types_and_resistance' "
+"text='odolnosť'</ref> a <ref>dst='time_of_day' text='denná doba'</ref>. Ak "
 "chcete vedieť, ako okolnosti ovplyvňujú základné zranenie, vyberte si v menu "
 "pri výbere útoku položku <italic>text='výpočet zranenia'</italic>."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:247
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1227,10 +1219,11 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Niektoré jednotky majú zvláštne <ref>dst=abilities text='schopnosti'</ref>, "
-"ktoré ovplyvňujú zranenie spôsobené v súboji. Najznámejšou z nich je "
-"<ref>dst=ability_charge text='výpad'</ref>, ktorý pri útoku jednotky s touto "
-"schopnosťou zdvojnásobuje zranenie spôsobené aj útočníkovi aj obrancovi."
+"Niektoré jednotky majú zvláštne <ref>dst='..abilities_section' "
+"text='schopnosti'</ref>, ktoré ovplyvňujú zranenie spôsobené v súboji. "
+"Najznámejšou z nich je <ref>dst='weaponspecial_charge' text='výpad'</ref>, "
+"ktorý pri útoku jednotky s touto schopnosťou zdvojnásobuje zranenie "
+"spôsobené obrancovi ale aj útočníkovi."
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:253
@@ -1413,7 +1406,6 @@ msgstr ""
 
 #. [topic]: id=experience_and_advancement
 #: data/core/help.cfg:292
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1431,13 +1423,13 @@ msgstr ""
 "\n"
 "\n"
 "Väčšina jednotiek má tri možné úrovne, ale nie je to tak vždy. Niektoré "
-"jednotky (ako napríklad <ref>dst=unit_Mage text='mágovia'</ref>) môžu mať "
+"jednotky (ako napríklad <ref>dst='unit_Mage' text='mágovia'</ref>) môžu mať "
 "štyri. Akonáhle jednotka dosiahne najvyššiu úroveň, môže mať ešte "
 "\"vylepšovanie po najvyššej úrovni\". Pri \"vylepšovaní po najvyššej úrovni"
 "\" sa jednotka, ktorá dosiahla stanovený počet skúseností upraví, ale "
 "zostane na rovnakej úrovni. Zvyčajne sa zvýši jej maximálny počet životov o "
-"3 plne sa uzdraví. Prvýkrát treba dosiahnuť asi 150 skúseností (120 pre "
-"inteligentné jednotky). Neskôr však na rovnaký efekt treba stále viac "
+"3 a plne sa uzdraví. Prvýkrát treba dosiahnuť asi 150 bodov skúseností (120 "
+"pre inteligentné jednotky). Neskôr však na rovnaký efekt treba stále viac "
 "skúseností, takže sa zvyčajne oplatí povyšovať jednotky na nižších úrovniach."
 
 #. [topic]: id=healing
@@ -1447,7 +1439,6 @@ msgstr "Liečenie"
 
 #. [topic]: id=healing
 #: data/core/help.cfg:300
-#, fuzzy
 msgid ""
 "In combat, your units will inevitably take damage. When a unit "
 "<ref>dst='experience_and_advancement' text='advances'</ref>, it will heal "
@@ -1456,10 +1447,10 @@ msgid ""
 "of which take place at the beginning of your turn, before you take action."
 msgstr ""
 "Vaše jednotky v súbojoch nevyhnutne utrpia zranenie. Keď je jednotka "
-"<ref>dst=experience_and_advancement text='povýšená'</ref>, plne sa vylieči. "
-"To sa môže stať pri boji so súperom, či už počas vášho alebo súperovho ťahu. "
-"Wesnoth umožňuje liečiť jednotky niekoľkými ďalšími spôsobmi. Tieto sa "
-"všetky vykonávajú na začiatku vášho kola, predtým ako začnete ťahať."
+"<ref>dst='experience_and_advancement' text='povýšená'</ref>, plne sa "
+"vylieči. To sa môže stať pri boji so súperom, či už počas tvojho alebo "
+"súperovho ťahu. Wesnoth umožňuje liečiť jednotky i ďalšími spôsobmi. Tieto "
+"sa všetky vykonávajú na začiatku tvojho kola, predtým ako začneš ťahať."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:302
@@ -1491,7 +1482,7 @@ msgid ""
 "(such as trolls) will automatically heal 8HP every turn."
 msgstr ""
 "\n"
-"<ref>dst='ability_regeneration' text='Regenerácia'</ref>: Niektoré jednotky "
+"<ref>dst='ability_regenerates' text='Regenerácia'</ref>: Niektoré jednotky "
 "(napríklad trollovia) sa v každom kole automaticky uzdravia o 8 životov."
 
 #. [topic]: id=healing
@@ -1985,15 +1976,15 @@ msgstr ""
 
 #. [topic]: id=traits_dim
 #: data/core/help.cfg:440
-#, fuzzy
 msgid "Dim"
-msgstr "Stredná"
+msgstr "Hlúpy"
 
 #. [topic]: id=traits_dim
 #: data/core/help.cfg:441
 msgid ""
 "Units with trait Dim suffer a 20% increase in experience required to advance."
 msgstr ""
+"Jednotky s vlastnosťou 'hlúpy' potrebujú o 20% viac skúseností aby povýšili."
 
 #. [topic]: id=traits_dim
 #: data/core/help.cfg:443
@@ -2003,6 +1994,10 @@ msgid ""
 "Dim is a trait all too common in goblins and other lesser species. There are "
 "reasons these species are lesser, and this is one of them."
 msgstr ""
+"\n"
+"\n"
+"Hlúposť je častou vlastnosťou goblinov a iných nižších druhov. Je niekoľko "
+"príčin, prečo sú tieto druhy považované za nižšie a toto je jedna z nich."
 
 #. [topic]: id=traits_slow
 #: data/core/help.cfg:448
@@ -2023,6 +2018,10 @@ msgid ""
 "a movement penalty but are compensated for it with a slight increase in "
 "endurance."
 msgstr ""
+"\n"
+"\n"
+"Nemotorní a pomalí jedinci z goblinov a iných druhov majú postih v pohybe, "
+"ale vykompenzovaný zvýšenou vytrvalosťou."
 
 #. [topic]: id=traits_weak
 #: data/core/help.cfg:456
@@ -2255,7 +2254,6 @@ msgstr "Zamrznuté"
 
 #. [topic]: id=terrain_frozen
 #: data/core/help.cfg:573
-#, fuzzy
 msgid ""
 "Frozen terrain represents any flat area that is covered by snow or ice. Most "
 "units are slowed down on it, and have a harder time defending themselves. "
@@ -2264,11 +2262,12 @@ msgid ""
 "\n"
 "Most units have 20 to 40% defense in frozen terrain."
 msgstr ""
-"Sneh predstavuje rovnú oblasť, ktorá je zamrznutá - či už trvalo (napríklad "
-"tundra) alebo dočasne (napríklad zasnežená lúka). Väčšinu jednotiek sneh "
-"spomaľuje a ťažšie sa na ňom bránia.\n"
+"Zamrznutý terén predstavuje rovnú oblasť, ktorá je pokrytá snehom alebo "
+"ľadom. Väčšina jednotiek je na ňom spomalená a ťažšie sa na ňom bráni. "
+"Plávajúce jednotky, ani tie čo vedia dýchať pod vodou, nemôžu plávať pod "
+"ľadom.\n"
 "\n"
-"Väčšina jednotiek má v snehu obranu 20 až 40%."
+"Väčšina jednotiek má na zamrznutom teréne obranu 20 až 40%."
 
 #. [topic]: id=terrain_castle
 #: data/core/help.cfg:580
@@ -2493,22 +2492,20 @@ msgstr ""
 
 #. [topic]: id=terrain_unwalkable
 #: data/core/help.cfg:690
-#, fuzzy
 msgid "Unwalkable"
-msgstr "Nepriechodné"
+msgstr "Neschodné"
 
 #. [topic]: id=terrain_unwalkable
 #: data/core/help.cfg:693
-#, fuzzy
 msgid ""
 "Unwalkable terrain covers any chasm or gorge which, as the name implies, "
 "cannot be crossed simply by walking. Chasms are noted for sheer walls which "
 "would take days to traverse. As far as gameplay is concerned, only units "
 "capable of flying can cross this terrain."
 msgstr ""
-"Trhlina je otvor v zemi vedúci do ohromnej hĺbky. Trhliny mávajú strmé "
-"steny, ktorých zliezanie by trvalo celé dni. Z hľadiska hry sa môžu cez "
-"trhlinu pohybovať iba lietajúce jednotky."
+"Neschodný terén zahŕňa priepasti a rokliny, ktoré nie je možné prejsť "
+"chôdzou. Rokliny mávajú strmé steny, ktorých zliezanie by trvalo celé dni. Z "
+"hľadiska hry sa môžu cez tento terén pohybovať len lietajúce jednotky."
 
 #. [topic]: id=terrain_lava
 #: data/core/help.cfg:700
@@ -2517,7 +2514,6 @@ msgstr "Láva"
 
 #. [topic]: id=terrain_lava
 #: data/core/help.cfg:703
-#, fuzzy
 msgid ""
 "The dangers inherent in trying to walk on lava are fairly obvious. As far as "
 "movement is concerned, lava is equivalent to <ref>dst='terrain_unwalkable' "
@@ -2528,10 +2524,11 @@ msgid ""
 "from chaotic units."
 msgstr ""
 "Nebezpečenstvo vyplývajúce z pokusu prejsť cez horúcu lávu je jasné každému. "
-"Cez tento terén môžu prejsť iba jednotky, ktoré dokážu dostatočne vysoko "
-"lietať. Tečúca magma vydáva výrazné svetlo, ktoré osvetľuje plochu priamo "
-"nad ňou. To poskytuje bonus pri útoku jednotkám poriadku, a uberá bonus "
-"jednotkám chaosu."
+"Čo sa týka možností pohybu, láva je  zhodná s <ref>dst='terrain_unwalkable' "
+"text='neschodným'</ref> terénom a môžu cez ňu prejsť iba jednotky, ktoré "
+"dokážu dostatočne vysoko lietať. Roztavená magma vydáva výrazné svetlo, "
+"ktoré osvetľuje oblasť priamo nad ňou. To poskytuje bonus pri útoku "
+"jednotkám poriadku a uberá bonus jednotkám chaosu."
 
 #. [topic]: id=terrain_ford
 #: data/core/help.cfg:710
@@ -2569,6 +2566,11 @@ msgid ""
 "\n"
 "Mermen and Naga both receive 70% defense on coastal reefs."
 msgstr ""
+"Pobrežné útesy sú plytčiny tvorené skalami, koralmi a pieskom. To poskytuje "
+"suchozemským jednotkám lepšie obranné pozície ako obyčajná plytká voda. "
+"Vodným tvorom umožňuje výnimočne vysokú obranu.\n"
+"\n"
+"Vodní a hadí ľudia majú v pobrežných útesoch obranu 70%."
 
 #. [topic]: id=terrain_bridge
 #: data/core/help.cfg:732
@@ -2602,7 +2604,7 @@ msgstr ""
 #. [topic]: id=terrain_impassable
 #: data/core/help.cfg:744
 msgid "Impassable"
-msgstr "Neprekročiteľné"
+msgstr "Neprekonateľné"
 
 #. [topic]: id=terrain_impassable
 #: data/core/help.cfg:747
@@ -2613,6 +2615,10 @@ msgid ""
 "jagged peaks at such rarified heights, and not even the fiercest troll can "
 "smash through thick walls of stone."
 msgstr ""
+"Ani najodhodlanejší cestovateľ nedokáže prekonať prekážky ako hladké steny z "
+"kameňa, hory tak vysoké a strmé, že sú stále vo venci oblakov. Dokonca ani "
+"lietajúce bytosti sa nevedia orientovať medzi rozoklanými vrcholmi v takých "
+"výškach. Ani najzúrivejší trol nedokáže preraziť hrubú kamennú stenu."
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:760
@@ -2694,6 +2700,9 @@ msgid ""
 "Redraws the screen and reloads any image files that have been changed.\n"
 "\n"
 msgstr ""
+"\n"
+"Prekreslí obrazovku a znovu načíta obrázky, ktoré sa zmenili.\n"
+"\n"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:784
@@ -2822,6 +2831,9 @@ msgid ""
 "campaign.\n"
 "\n"
 msgstr ""
+"\n"
+"Zobrazí menu na výber scény z výpravy, do ktorej sa má hneď postúpiť.\n"
+"\n"
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:827
@@ -2863,6 +2875,9 @@ msgid ""
 "Immediately advances to the next scenario in a campaign.\n"
 "\n"
 msgstr ""
+"\n"
+"Ihneď postúpi do ďalšej scény vo výprave.\n"
+"\n"
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:839
@@ -3379,9 +3394,8 @@ msgstr "Buď viac defenzívny"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:191
-#, fuzzy
 msgid "defensive."
-msgstr "Obrana"
+msgstr "defenzívny."
 
 #. [option]: type=objective
 #: data/core/macros/ai_controller.cfg:213
@@ -3500,9 +3514,8 @@ msgstr "Vymaž všetky rozkazy"
 #. [then]
 #: data/core/macros/ai_controller.cfg:775
 #: data/core/macros/ai_controller.cfg:786
-#, fuzzy
 msgid "none set."
-msgstr "Nastav značku"
+msgstr "nič nenastavené."
 
 #. [value]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:808
@@ -3546,9 +3559,8 @@ msgstr "Nastav správanie..."
 
 #. [literal]
 #: data/core/macros/ai_controller.cfg:920
-#, fuzzy
 msgid "Exit"
-msgstr "Východ"
+msgstr "Koniec"
 
 #. [advancement]: id=amla_default
 #: data/core/macros/amla.cfg:10
@@ -3650,15 +3662,13 @@ msgstr "Nemám žiadne želanie."
 
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:148
-#, fuzzy
 msgid "Take it"
-msgstr "Áno, vezmem si ho."
+msgstr "Vziať ho"
 
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:166
-#, fuzzy
 msgid "Leave it"
-msgstr "Nechám ho tak"
+msgstr "Nechať ho tak"
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:226
@@ -3764,7 +3774,7 @@ msgstr "Tento predmet môžu používať iba morskí ľudia!"
 
 #: data/core/macros/items.cfg:535
 msgid "Should $unit.name pick up the trident?"
-msgstr ""
+msgstr "Má $unit.name zodvihnúť trojzubec?"
 
 #. [object]
 #: data/core/macros/items.cfg:537
@@ -4955,15 +4965,13 @@ msgstr "pomalá"
 
 #. [trait]: id=dim
 #: data/core/macros/traits.cfg:209
-#, fuzzy
 msgid "dim"
-msgstr "Stredná"
+msgstr "hlúpy"
 
 #. [trait]: id=dim
 #: data/core/macros/traits.cfg:210
-#, fuzzy
 msgid "female^dim"
-msgstr "Zabijačka"
+msgstr "hlúpa"
 
 #. [color_range]: id=red
 #. [color_range]: id=1
@@ -5051,7 +5059,6 @@ msgstr "Jašteri"
 
 #. [race]: id=drake
 #: data/core/units.cfg:68
-#, fuzzy
 msgid ""
 "Drakes are large, winged and fire-breathing creatures, reminiscent of true "
 "dragons. On average, an adult drake stands around three meters tall and "
@@ -5117,27 +5124,26 @@ msgid ""
 "some of the mountains of the far north of the Great Continent."
 msgstr ""
 "Jašterí národ pozostáva z obrích, okrídlených stvorení chrliacich ohnivý "
-"dych, ktoré sa v čomsi podobajú na legendárnych drakov. V priemere, je "
-"dospelý jašter vysoký asi tri metre a bežne váži toľko čo jeden človek aj so "
-"svojim koňom. Ich koža pozostáva z tvrdých šupín, ktoré sú odolné voči "
-"väčšine fyzických útokov, s výnimkou bodnutia či strely a samozrejme ľadovej "
-"strely. Väčšina jašterov je schopná bežného boja a tiež dokáže rýchlo "
-"prekonávať veľké vzdialenosti. Avšak ich bežná postava a hmotnosť do istej "
-"miery obmedzujú ich manévrovaciu schopnosť - tým pádom vyzerajú vo vzduchu "
-"dosť nemotorne. Ak je to možné snažia sa využívať terén, najmä hory, kopce a "
-"stromy ako miesta, odkiaľ sa dá jednoduchšie odštartovať. Asi našťastie pre "
-"ich nepriateľov sú jašteri dosť nemotorné stvorenia a v boji i prekvapujúco "
-"pomalé. Toto, v kombinácii s veľkosťou, z nich robí vcelku ľahký cieľ pre "
-"tých, ktorí sa na útok odvážia.\n"
+"dych, ktoré sa v čomsi podobajú na legendárnych drakov. V priemere je "
+"dospelý jašter vysoký asi tri metre a bežne váži viac ako jeden človek aj so "
+"svojím koňom. Ich koža pozostáva z tvrdých šupín, ktoré sú odolné voči "
+"väčšine fyzických útokov, s výnimkou bodnutia a chladu. Väčšina jašterov je "
+"schopná letu a dokáže rýchlo prekonávať veľké vzdialenosti. Avšak ich veľká "
+"postava a hmotnosť do istej miery obmedzujú ich manévrovaciu schopnosť - tým "
+"pádom vyzerajú vo vzduchu dosť nemotorne. Ak je to možné, snažia sa využívať "
+"terén, najmä hory, kopce a stromy ako miesta, odkiaľ sa dá jednoduchšie "
+"odštartovať. Asi našťastie pre ich nepriateľov sú jašteri dosť nemotorné "
+"stvorenia a v boji i prekvapujúco pomalé. Toto, v kombinácii s veľkosťou, z "
+"nich robí vcelku ľahký cieľ pre tých, ktorí sa na útok odvážia.\n"
 "\n"
 "Jašteri sú od prírody magickými tvormi, v ich žilách doslova koluje záhadný "
-"vnútorný oheň. O tom sa môže jeden rýchlo presvedčiť, keď niektorí z "
-"jašterov padne v boji - tento vnútorný oheň sa náhle uvoľní a spáli telesné "
-"zvyšky na popol. Ale tento vnútorný oheň je zároveň ich najväčšou slabosťou "
-"- robí ich obzvlášť zraniteľnými ľadovými strelami. Napriek tomu, že majú "
-"jašteri magický pôvod, nedokážu mágiu používať kontrolovaným spôsobom. Mágia "
-"v ich telách im síce umožňuje chrliť oheň, ale sami nedokážu túto schopnosť "
-"ani usmerniť ani riadiť.\n"
+"vnútorný oheň. O tom sa možno ľahko presvedčiť, keď niektorý z jašterov "
+"padne v boji - tento vnútorný oheň sa náhle uvoľní a spáli telesné zvyšky na "
+"popol. Ale tento vnútorný oheň je zároveň ich najväčšou slabosťou - robí ich "
+"obzvlášť zraniteľnými voči útokom chladom. Napriek svojmu magickému pôvodu "
+"nedokážu mágiu používať ovládateľným spôsobom. Mágia v ich telách im síce "
+"umožňuje chrliť oheň a dáva mu život, ale sami nedokážu túto schopnosť "
+"usmerniť ani riadiť.\n"
 "\n"
 "<header>text='Spoločnosť'</header>\n"
 "Jašteri sú relatívne bojovnou rasou a ich spoločnosť by sa dala popísať ako "
@@ -5152,7 +5158,7 @@ msgstr ""
 "\n"
 "Aj keď ich bojovnosť a zmysel pre teritorialitu často doháňa k urputnej "
 "obrane svojho územia, jašteri málokedy napadnú či vstúpia neoprávnene na "
-"územie iných. Namiesto toho sa zvyknú usídľovať v neobývaných oblastiach "
+"územie iných rás. Namiesto toho sa zvyknú usídľovať v neobývaných oblastiach "
 "kontinentu. Ich zvyčajnou diétou býva divá zver, ktorú lovia v nížinách "
 "okolo svojich sídel, no novonarodení jašteri a jašteri nižšieho postavenia "
 "sa často živia i machom a hubami, ktoré si pestujú hlboko vo svojich "
@@ -5193,7 +5199,6 @@ msgstr "Trpaslíci"
 
 #. [race]: id=dwarf
 #: data/core/units.cfg:95
-#, fuzzy
 msgid ""
 "The dwarves are a race famed for their miners, blacksmiths, merchants and "
 "warriors. Considered as the third oldest race on the great continent after "
@@ -5242,52 +5247,49 @@ msgid ""
 "augment certain aspects of their natures."
 msgstr ""
 "Trpaslíci sú rasou, ktorá je preslávená baníkmi a kováčmi, ale tiež "
-"obchodníkmi a bojovníkmi. Je to tretia najstaršia rasa na veľkom kontinente, "
-"za elfmi a trolmi. Ich skorá história je zahalená tajomstvom. Podľa legiend, "
-"v časoch dávno zabudnutých sa trpasličí národ objavil na svete a vyšiel zo "
-"svojich podzemných jaskýň. Nič ale nie je známe o živote tohto národa "
-"predtým, než vyšiel z podzemia. Rovnako nie je známy dôvod, prečo vlastne "
-"vystúpil na povrch zeme, ale každopádne sa ako národ trpaslíci stali "
+"obchodníkmi a bojovníkmi. Je to tretia najstaršia rasa na Veľkom kontinente, "
+"po elfoch a troloch. Ich skorá história je zahalená tajomstvom. Podľa "
+"legiend sa v časoch dávno zabudnutých trpasličí národ objavil na svete a "
+"vyšiel zo svojich podzemných jaskýň. Nič ale nie je známe o živote tohto "
+"národa predtým, než vyšiel z podzemia. Rovnako nie je známy dôvod, prečo "
+"vlastne vystúpil na povrch zeme, ale každopádne sa ako národ trpaslíci stali "
 "základnou súčasťou diania na kontinente. Nedlho po východe z podzemia sa "
 "trpaslíci dostali do konfliktu s pôvodnými obyvateľmi povrchu - elfmi. "
 "Skutočný dôvod na tento konflikt sa dávno stratil v histórii, ale tieto dve "
 "rasy už stihli vybojovať tri veľké a dlhé vojny, ktoré boli prerušené len "
-"pár rokmi mieru. Počas týchto vojen nedokázali trpaslíci vytlačiť elfov z "
-"hustých južných lesov, no podarilo sa im upevniť si pozíciu v severných "
-"kopcoch a horách, ktoré sú na kontinente známe ako \"Severná Zem\". Od tých "
-"čias vystavali fantastické opevnenia a osady hlboko v kopcoch a údoliach "
-"tohto územia.\n"
+"pár desaťročiami mieru. Počas týchto vojen nedokázali trpaslíci vytlačiť "
+"elfov z hustých južných lesov, no podarilo sa im upevniť si pozíciu v "
+"severných kopcoch a horách, ktoré sú na kontinente známe ako \"Severná Zem"
+"\". Od tých čias vystavali fantastické opevnenia a osady hlboko v kopcoch a "
+"údoliach tohto územia.\n"
 "\n"
-"Pravdepodobne vďaka svojej izolácii, trpaslíci sú veľmi nedôverčiví a často "
-"i nepriateľskí voči ostatným rasám, hlavne elfom. Jedinou výnimkou je snáď "
-"iba ich vzťah k ľuďom, ktorý je možné vystopovať až do čias Haldrika I. a "
-"príchodu ľudí i orkov na kontinent. V tom čase trpaslíci povolili osídlenie "
-"zopár ľuďom, zvyčajne rebelom a vyhnancom z Wesnotského kráľovstva. "
-"Motivácia na tento veľkorysý čin nie je nejako zvlášť prekvapujúca. Útrapy "
-"týchto osadníkov pripomenuli trpaslíkom časy ich vlastného prenasledovania a "
-"vyvolali určitú dávku solidarity. Ale trpaslíci dokázali na takýchto "
-"dohodách s vyhnancami nemálo získať. Vyhnanci sa totiž usídľovali v "
-"oblastiach, ktoré sa trpaslíkom hnusili - na nížinách, v lesoch či pri "
-"močiaroch, čím ich vlastne pre trpaslíkov úspešne bránili. Neskôr, keď sa "
-"zvýšilo ohrozenie zo strany orkov, trpaslíci a ľudia sa spojili do tzv. "
-"Aliancie Knalgy, aby ubránili spoločné územia.\n"
-"\n"
+"Pravdepodobne kvôli svojej izolácii sú trpaslíci veľmi nedôverčiví a často i "
+"nepriateľskí voči ostatným rasám, hlavne elfom. Jedinou výnimkou je snáď iba "
+"ich vzťah k ľuďom, ktorý je možné vystopovať až do čias Haldrika I. a "
+"príchodu ľudí i orkov na kontinent. V tom čase trpaslíci povolili usadiť sa "
+"v Severnej zemi zopár ľuďom, zvyčajne rebelom a vyhnancom z Wesnotského "
+"kráľovstva. Motivácia na tento veľkorysý čin nie je nejako zvlášť "
+"prekvapujúca. Útrapy týchto osadníkov pripomenuli trpaslíkom časy ich "
+"vlastného prenasledovania a vyvolali určitú dávku solidarity. Ale trpaslíci "
+"dokázali na takýchto dohodách s vyhnancami nemálo získať. Vyhnanci sa totiž "
+"usídľovali v oblastiach, ktoré sa trpaslíkom hnusili - na nížinách, v lesoch "
+"či pri močiaroch, čím ich vlastne pre trpaslíkov úspešne bránili.\n"
 "Trpaslíci sú zvyčajne nižšieho vzrastu, vzhľadom na ľudské miery, to ale "
 "neznamená, že by boli zvlášť krehkí. Práve naopak, ich bojovníci sú tvrdí a "
 "nesmierne silní a právom sa ich obávajú protivníci v nejednej bitke. Na "
 "dôvažok sú trpaslíci známi svojimi matematickými schopnosťami a precíznou "
 "zručnosťou. Ich kováči sú preslávení výrobou vynikajúcich zbraní aj ťažkého "
-"brnenia. Ich výrobky nemajú na svete páru, čo sa týka kvality - snáď iba "
+"brnenia. Ich výrobky nemajú na svete páru - čo sa týka kvality snáď iba "
 "výrobky pochádzajúce od dračieho národa sú porovnateľné. Intelekt a "
 "prirodzená zvedavosť urobili z trpaslíkov technicky najpokrokovejšiu rasu na "
 "kontinente. Jeden z ich najznámejších (a najviac obávaných) je vynález "
 "záhadného prachu, ktorý dokáže pri styku s ohňom vyvolať silné explózie. "
-"Niektorí trpasličí bojovníci sa naučili používať tento prach na streľbu "
-"malých guliek. Vďaka svojmu technologickému nadaniu, trpaslíci sú obyčajne "
-"nedôverčiví voči používateľom mágie. Avšak istý druh mágie sa používa "
-"napríklad pri pokrývaní zbraní či brnenia runami. Títo runoví kováči "
-"používajú runy na vyjadrenie čarovných formuliek, ktoré potom zosilňujú "
-"určité schopnosti."
+"Niektorí trpasličí bojovníci sa naučili využívať tento prach na vymršťovanie "
+"malých guliek vysokými rýchlosťami. Vďaka svojmu technologickému nadaniu sú "
+"trpaslíci obyčajne nedôverčiví voči používateľom mágie. Avšak istý druh "
+"mágie sa používa napríklad pri pokrývaní zbraní či brnenia runami. Títo "
+"runoví kováči používajú runy na vyjadrenie čarovných formuliek, ktoré potom "
+"zosilňujú určité schopnosti predmetov."
 
 #. [race]: id=elf
 #: data/core/units.cfg:107
@@ -5306,7 +5308,6 @@ msgstr "Elfovia"
 
 #. [race]: id=elf
 #: data/core/units.cfg:119
-#, fuzzy
 msgid ""
 "Compared to humans, elves are somewhat taller, more agile but less sturdy. "
 "They have slightly pointy ears, pale skin and usually blond hair. Few "
@@ -5346,31 +5347,38 @@ msgid ""
 msgstr ""
 "Ak ich porovnáme s ľuďmi, elfovia sú o čosi vyšší, pohyblivejší a menej "
 "robustní. Zvyčajne majú mierne zašpicatené uši, svetlú pokožku a "
-"najčastejšie blond vlasy. Snáď najväčším rozdielom medzi elfmi a ľuďmi je v "
-"elfskej dlhovekosti - väčšina z nich sa dožije i dvoch storočí, ak ich "
+"najčastejšie blond vlasy. Snáď najväčším rozdielom medzi elfmi a ľuďmi je "
+"elfská dlhovekosť - väčšina z nich sa dožíva dva a pol storočia, ak ich "
 "samozrejme neskláti choroba, nehoda či vojna. V prípade niektorých jedincov "
 "s výraznými magickými schopnosťami sa vek predĺži o ďalšie storočie, no u "
-"väčšiny elfov sa s pribúdajúcim vekom znižuje fyzická odolnosť. Elfovia sú "
-"od prírody nadaní na mágiu, aspoň do určitej miery. Väčšina z nich síce "
-"mágiu nedokáže používať priamo, ale už len prítomnosť mágie im zlepšuje "
-"zmysly, vnímanie a spôsobuje už spomínanú dlhovekosť. Mnoho elfov sa "
-"vyznačuje magickými schopnosťami v oblasti zakrádania či streľby, čím dokážu "
-"robiť veci za normálnych okolností nepredstaviteľné. Z tých elfov, ktorí sa "
-"túto schopnosť naučia používať viac všeobecne, sa zvyčajne rýchlo stávajú "
-"naozaj uznávaní profesionáli. Mnohí z nich dokážu využiť svoj dar na "
-"liečenie iných.\n"
+"väčšiny elfov sa medzi 250. a 300. rokom zníži fyzická odolnosť a skoro na "
+"to (za rok či dva) opustia svet.\n"
+"\n"
+"Elfovia sú od prírody nadaní na mágiu, aspoň do určitej miery. Väčšina z "
+"nich síce mágiu nedokáže používať priamo, ale už len prítomnosť mágie im "
+"zlepšuje zmysly, vnímanie a spôsobuje už spomínanú dlhovekosť. Mnoho elfov "
+"sa vyznačuje mágiou ovplyvnenými schopnosťami v oblasti zakrádania či "
+"presnej streľby, čím dokážu robiť veci pre iné bytosti nepredstaviteľné. Z "
+"tých elfov, ktorí sa túto moc naučia používať viac všeobecne, sa zvyčajne "
+"rýchlo stávajú naozaj uznávaní profesionáli. Mnohí z nich sa rozhodnú využiť "
+"tento dar na liečenie iných.\n"
+"\n"
+"Niektorí elfovia, ktorí sa vydali cestami mágie a mysticizmu, sa stali "
+"citlivými na prítomnosť chladného železa. Až tak, že ich môže popáliť. "
+"Elfské legendy naznačujú, že v dávnej minulosti bol tento jav bežnejší.\n"
 "\n"
 "Elfovia trávia veľkú časť svojho života zlepšovaním svojich vrodených "
 "schopností. Tí bez výraznej magickej sily sa sústreďujú na zlepšovanie "
 "fyzických zručností. Ako priamy následok, elfovia sú vynikajúcimi "
 "lukostrelcami, čo je aj ich hlavný bojový prostriedok. Väčšina elfských "
 "bojovníkov nosí luk a žiadna iná rasa nedokáže konkurovať elfským strelcom v "
-"rýchlosti či presnosti. Všetci elfovia zdieľajú lásku k nepoškvrnenej "
-"prírode. Zvyčajne sa cítia nesvoji v rozľahlých otvorených nížinách či "
-"kopcoch, následkom čoho je ich hlavný osídľovací priestor vo veľkých lesoch "
-"kontinentu, ako napríklad Etenwood na juhozápade či Wesmér na severozápade. "
-"Elfovia sú na kontinente najstaršou rasou, možno s teoretickou výnimkou "
-"trolov. Aj keď je prakticky nemožné presne datovať ich osídlenia, mnohé z "
+"rýchlosti a presnosti. Všetci elfovia zdieľajú lásku k nepoškvrnenej "
+"prírode. Zvyčajne sa cítia nesvoji v otvorených nezarastených priestoroch. "
+"Preto žijú najmä v lesoch Veľkého kontinentu: Etenwood na juhozápade, Wesmér "
+"na severozápade a veľké severné lesy s Lintanirom na južnom okraji.\n"
+"\n"
+"Elfovia sú na kontinente najstaršou rasou, možno s výnimkou trolov. Aj keď "
+"je prakticky nemožné spoľahlivo datovať ich osídlenia, nepochybne mnohé z "
 "nich existujú už viac než tisícročie."
 
 #. [race]: id=goblin, description=
@@ -5592,7 +5600,6 @@ msgstr "Orkovia"
 
 #. [race]: id=orc
 #: data/core/units.cfg:252
-#, fuzzy
 msgid ""
 "In appearance, orcs are half men and half beasts. They are taller, sturdier "
 "and stronger than humans. They are warlike, savage, and cruel by nature. "
@@ -5653,7 +5660,7 @@ msgstr ""
 "Svojim výzorom sú orkovia napoly ľudia a napoly zvery. Sú vyšší, robustnejší "
 "a silnejší než ľudia. Sú veľmi bojovní, barbarskí a od prírody suroví. Ich "
 "krv je tmavšia a hustejšia než u bežných ľudí a vyznačujú sa pramalou "
-"starostlivosťou o osobnú hygienu a zovňajšok všeobecne. Napriek tomu že sú "
+"starostlivosťou o osobnú hygienu a zovňajšok všeobecne. Napriek tomu, že sú "
 "orkovia násilnícki i medzi sebou, sú v podstate kmeňovo založení - ork nikdy "
 "necestuje sám a málokedy žije v skupinkách s menej než šiestimi členmi.\n"
 "\n"
@@ -5669,9 +5676,9 @@ msgstr ""
 "výmeny urážok medzi kmeňovými vodcami.\n"
 "\n"
 "Spoločnosti orkov sú založené na máločom inom než hrubá sila - moc je matkou "
-"práva... Vodca je vodcom a prežíva iba dovtedy, pokiaľ sa nenájde niekto, "
-"kto mu titul vezme v zápase. Medzi potenciálnymi náčelníkmi neustále vrie "
-"boj o moc. Vodca málokedy prežije viac než zopár rokov, aby si užil svoju "
+"práva... Vodca prežíva iba dovtedy, pokiaľ sa nenájde niekto, kto mu titul "
+"vezme v zápase. Medzi potenciálnymi náčelníkmi neustále vrie boj o moc. "
+"Vodca málokedy prežije viac než zopár rokov, aby si užil svoju "
 "absolutistickú autoritu. Zvyčajne ho zabijú v boji o pozíciu, aj keď "
 "história pozná pár svetlých výnimiek. Medzi orkmi nefunguje žiaden výrazný "
 "systém cti a aj keď je sila najčastejšou formou na ukázanie moci, za bežné "
@@ -5681,29 +5688,29 @@ msgstr ""
 "Orkovia žijú zvyčajne vo vidieckych oblastiach, často v kopcovitých a "
 "horských regiónoch, občas v jaskyniach. Nevenujú sa poľnohospodárstvu, "
 "nechovajú dobytok, ale zato sú vcelku dobrými lovcami - najmä vďaka svojej "
-"fyzickej sile a brutalite. Kvôli veľkému počtu v jednom kmeni, dokážu "
+"fyzickej sile a brutalite. Kvôli veľkému počtu v jednom kmeni dokážu "
 "akúkoľvek oblasť takmer úplne vyhladiť od živočíchov väčších než hlodavce. "
 "Pre toto a kvôli nestabilnému vodcovstvu majú orkovia tendenciu kočovať, "
 "nikdy sa nezdržia na jednom mieste príliš dlho. Väčšie kmene sa sem-tam "
 "napevno usadia v jednej oblasti na obdobie niekoľkých rokov či dokonca "
 "desaťročí, čo niekedy vedie k vybudovaniu táborísk, ktoré v mnohom "
-"pripomínajú mestá. Ale aj tieto tábory sú len tábormi a v prípade potreby "
-"presunúť celú hordu ich je možné rýchlo rozobrať a zbaliť.\n"
+"pripomínajú mestá. Ale aj tieto tábory je možné rýchlo rozobrať a opustiť v "
+"prípade potreby presunúť celú hordu.\n"
 "\n"
 "Najstarší známi orkovia majú okolo 50 až 60 rokov, ale iba málo jednotlivcom "
 "sa podarí žiť dlhšie než dve-tri desaťročia, kým nepadnú v boji s "
 "nepriateľom či súkmeňovcom. Starí orkovia sa často stávajú šamanmi - snáď "
-"jedinými zástupcami orkov, ktorých rôzne kmene uznávajú ako dôveryhodných a "
+"jedinými zástupcami orkov, ktorých ostatní uznávajú ako dôveryhodných a "
 "neutrálnych. Pôvod tohto zvyku nie je jasný, keďže šamani v ničom priamo "
 "neprispievajú do spoločnosti a slúžia iba ako poradcovia - čo nie je čosi, "
-"čo by sa tolerovalo medzi orkami. Šamani sú v mnohom úplným protikladom "
-"typického orka - sú fyzicky slabí a chýbajú im bojové zručnosti. Napriek "
-"spoliehaniu sa na hrubú silu, nie každému orkovi je sila daná. Mnoho orkov "
-"sa narodí s menším a slabším vzrastom, čo im vynáša pocit podradenosti "
+"čo by sa normálne medzi orkami tolerovalo. Šamani sú v mnohom úplným "
+"protikladom typického orka - sú fyzicky slabí a chýbajú im bojové zručnosti. "
+"Napriek spoliehaniu sa na hrubú silu, nie každému orkovi je sila daná. Mnoho "
+"orkov sa narodí s menším a slabším vzrastom, čo im vynáša pocit podradenosti "
 "svojim silnejším kamarátom. Silnejší si zvyčajne uchmatne viac potravy a tak "
 "ešte viac zosilnie, kdežto u tých slabších je to opačne. Mnohí z týchto "
-"slabších orkov sa špecializuje na zručnosti súvisiace s nepriamym bojom, ako "
-"napríklad atentátnictvo, otravy a podobne."
+"slabších orkov sa špecializujú na iné zručnosti, napríklad atentátnictvo "
+"alebo lukostreľbu."
 
 #. [race]: id=troll
 #: data/core/units.cfg:259
@@ -5722,7 +5729,6 @@ msgstr "Trolovia"
 
 #. [race]: id=troll
 #: data/core/units.cfg:267
-#, fuzzy
 msgid ""
 "Trolls are ancient creatures, one of the oldest known races known to inhabit "
 "the Great Continent. They are large, slow, simple-minded, and live extremely "
@@ -5808,7 +5814,6 @@ msgstr "Nemŕtvi"
 
 #. [race]: id=undead
 #: data/core/units.cfg:289
-#, fuzzy
 msgid ""
 "Undead are not really a single race of creatures, although often treated as "
 "such. Almost any dead creature can, by a sufficiently skilled necromancer, "
@@ -5836,7 +5841,7 @@ msgid ""
 "and dwarves before that."
 msgstr ""
 "Nemŕtvi v skutočnosti nie sú jednotnou rasou, aj keď sa niekedy tak chápu. "
-"skoro každá mŕtva bytosť môže byť dostatočne skúseným černokňažníkom "
+"Skoro každá mŕtva bytosť môže byť dostatočne skúseným černokňažníkom "
 "\"oživená\". Nemŕtvi sú neprirodzené tvory bez vlastnej vôle, poslúchajúce "
 "toho, kto ich vytvoril, bez otázok a zamyslenia. Väčšou záhadou "
 "černokňažníctva je to, ako sú tieto výtvory udržiavané bez neprestajného "
@@ -5849,10 +5854,10 @@ msgstr ""
 "zručných v mágii, ako elfovia a morskí ľudia, rozprávajú o veľmi málo "
 "príslušníkoch týchto rás, ktorí sa zahĺbili do tohto temného umenia. "
 "Predpokladá sa, že černokňažnícka mágia vyžaduje veľkú schopnosť "
-"prispôsobenia a flexibilnú myseľ. Extrémy týchto vlastností sa najčastejšie "
-"vyskytujú u ľudí. Konečným cieľom väčšiny černokňažníkov je použiť toto "
-"umenie udržiavania života na seba, zmeniť samých seba za každú cenu, uniknúť "
-"smrti zachovaním svojej mysle a duše.\n"
+"prispôsobenia sa a flexibilnú myseľ. Extrémy týchto vlastností sa "
+"najčastejšie vyskytujú u ľudí. Konečným cieľom väčšiny černokňažníkov je "
+"použiť toto umenie udržiavania života na seba, zmeniť samých seba za každú "
+"cenu, uniknúť smrti zachovaním svojej mysle a duše.\n"
 "\n"
 "<header>text='Zemepis'</header>\n"
 "Páni nemŕtvych prišli na Veľký kontinent vo veľkých množstvách vzápätí po "
@@ -6086,6 +6091,10 @@ msgid ""
 "features, and allows us to improve Wesnoth. To learn more about this or "
 "disable it, click the envelope in the bottom-right corner."
 msgstr ""
+"Bitka o Wesnoth automaticky odosiela anonymné štatistiky o tvojich postupoch "
+"v hre na server, kde sú ukladané. Toto umožňuje viaceré funkcie, vrátane "
+"vylepšovania Wesnothu. Pre ďalšie informácie alebo vypnutie odosielania, "
+"klikni na obálku v pravom dolnom rohu."
 
 #. [tip]
 #: data/hardwired/tips.cfg:4
@@ -6724,6 +6733,7 @@ msgstr "Ulož moju odpoveď a už sa znovu nepýtaj"
 msgid ""
 "To change the setting later on, click on the envelope icon in the main menu."
 msgstr ""
+"Neskôr je možné nastavenie zmeniť kliknutím na ikonu obálky v hlavnom menu."
 
 #: data/temp-file_send_data_strings.cfg:15
 msgid "Send"
@@ -6735,7 +6745,7 @@ msgstr "Neodoslať"
 
 #: data/temp-file_send_data_strings.cfg:18
 msgid "Do not ask every time before sending data"
-msgstr ""
+msgstr "Nepýtať sa pred každým odosielaním dát"
 
 #. [menu]: id=menu-main
 #: data/themes/default.cfg:120 data/themes/dfool.cfg:134
@@ -6996,9 +7006,8 @@ msgid "MB"
 msgstr "MB"
 
 #: src/addon_management.cpp:369
-#, fuzzy
 msgid "GB"
-msgstr "Anglický (britský) preklad"
+msgstr "GB"
 
 #: src/addon_management.cpp:402
 msgid "addon_type^Campaign"
@@ -7013,9 +7022,8 @@ msgid "addon_type^MP era"
 msgstr "Éra pre zápas"
 
 #: src/addon_management.cpp:408
-#, fuzzy
 msgid "addon_type^MP faction"
-msgstr "Scéna z iného počítača"
+msgstr "Frakcia pre zápas"
 
 #: src/addon_management.cpp:410
 msgid "addon_type^MP map-pack"
@@ -7112,8 +7120,14 @@ msgid_plural ""
 "Some outdated local add-ons have publishing information attached. They will "
 "not be offered for updating."
 msgstr[0] ""
+"Niektoré zastaralé lokálne doplnky majú pripojené informácie o publikovaní. "
+"Nebudú ponúknuté na aktualizáciu."
 msgstr[1] ""
+"Zastaralý lokálny doplnok má pripojené informácie o publikovaní. Nebude "
+"ponúknutý na aktualizáciu."
 msgstr[2] ""
+"Niektoré zastaralé lokálne doplnky majú pripojené informácie o publikovaní. "
+"Nebudú ponúknuté na aktualizáciu."
 
 #: src/addon_management.cpp:712
 msgid "Could not find any updated add-ons on this server."
@@ -7571,6 +7585,8 @@ msgid ""
 "The server will run in a background process until all users have "
 "disconnected."
 msgstr ""
+"Server bude bežať ako proces na pozadí až kým sa neodpoja všetci "
+"používatelia."
 
 #: src/game.cpp:1320
 msgid "Don't show again"
@@ -7726,7 +7742,7 @@ msgstr "Odolnosti: "
 
 #: src/generate_report.cpp:170
 msgid "(Att / Def)"
-msgstr ""
+msgstr "(Úto / Obr)"
 
 #: src/generate_report.cpp:189 src/multiplayer_create.cpp:396
 msgid "Experience Modifier: "
@@ -7747,14 +7763,14 @@ msgstr[1] "útok"
 msgstr[2] "útoky"
 
 #: src/generate_report.cpp:267
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "tooltip^% accuracy"
-msgstr "útoky"
+msgstr ""
 
 #: src/generate_report.cpp:273
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "tooltip^% parry"
-msgstr "útoky"
+msgstr ""
 
 #: src/generate_report.cpp:284
 msgid "weapon range: "
@@ -8330,7 +8346,7 @@ msgstr "Zobraziť informácie o verzii."
 
 #: src/menu_events.cpp:2203
 msgid "Register your nick"
-msgstr ""
+msgstr "Zaregistruj si prezývku"
 
 #: src/menu_events.cpp:2205
 msgid "Drop your nick."
@@ -8354,11 +8370,11 @@ msgstr "Prekresli prostredie"
 
 #: src/menu_events.cpp:2338
 msgid "Switch a side to/from AI control."
-msgstr ""
+msgstr "Vypni/zapni ovládanie strany počítačom."
 
 #: src/menu_events.cpp:2341
 msgid "Assign control of a side to a different player or observer."
-msgstr ""
+msgstr "Prideľ kontrolu nad stranou inému hráčovi alebo divákovi."
 
 #: src/menu_events.cpp:2343
 msgid "Clear chat history."
@@ -8366,7 +8382,7 @@ msgstr "Vymaže všetky správy."
 
 #: src/menu_events.cpp:2345
 msgid "Visualize the screen refresh procedure."
-msgstr ""
+msgstr "Zviditeľniť proces prekresľovania obrazovky."
 
 #: src/menu_events.cpp:2348
 msgid "Save game."
@@ -8390,7 +8406,7 @@ msgstr "Vypnúť automatické ukladanie."
 
 #: src/menu_events.cpp:2361
 msgid "Advance to the next scenario, or scenario identified by 'id'"
-msgstr ""
+msgstr "Postúpiť do ďalšej scény alebo scény s názvom 'id'"
 
 #: src/menu_events.cpp:2364
 msgid "Choose next scenario"
@@ -8442,7 +8458,7 @@ msgstr "Prepne odkrývanie mapy pre aktuálneho hráča."
 
 #: src/menu_events.cpp:2391
 msgid "Give gold to the current player."
-msgstr ""
+msgstr "Odovzdať zlato aktívnemu hráčovi."
 
 #: src/menu_events.cpp:2393
 msgid "Fire a game event."
@@ -8450,11 +8466,11 @@ msgstr "Spustí udalosť hry."
 
 #: src/menu_events.cpp:2396
 msgid "Toggle overlaying of x,y coordinates on hexes."
-msgstr ""
+msgstr "Prepnúť zobrazovanie súradníc x,y na políčkach mapy."
 
 #: src/menu_events.cpp:2399
 msgid "Toggle overlaying of terrain codes on hexes."
-msgstr ""
+msgstr "Prepnúť zobrazovanie kódov terénu na políčkach mapy."
 
 #: src/menu_events.cpp:2444
 msgid "Unknown debug level: '$level'."
@@ -8522,7 +8538,7 @@ msgstr "Režim ladenia aktivovaný!"
 
 #: src/menu_events.cpp:2919
 msgid "Debug mode not available in network games"
-msgstr ""
+msgstr "Režim ladenia nie je dostupný pri sieťových hrách"
 
 #: src/menu_events.cpp:2924
 msgid "Debug mode deactivated!"
@@ -8573,48 +8589,54 @@ msgstr "Musíš sa najprv prihlásiť."
 
 #: src/multiplayer.cpp:349
 msgid "The nick '$nick' is already taken."
-msgstr ""
+msgstr "Prezývka '$nick' je už používaná."
 
 #: src/multiplayer.cpp:351
 msgid ""
 "The nick '$nick' contains invalid characters. Only alpha-numeric characters, "
 "underscores and hyphens are allowed."
 msgstr ""
+"Prezývka '$nick' obsahuje nepovolené znaky. Povolené sú len písmená, čísla, "
+"pomlčky a podtržníky."
 
 #: src/multiplayer.cpp:355
 msgid "The nick '$nick' is too long. Nicks must be 18 characters or less."
 msgstr ""
+"Prezývka '$nick' je príliš dlhá. Prezývky môžu mať maximálne 18 znakov."
 
 #: src/multiplayer.cpp:358
 msgid "The nick '$nick' is reserved and cannot be used by players."
-msgstr ""
+msgstr "Prezývka '$nick' je rezervovaná a nemôže byť použitá hráčmi."
 
 #: src/multiplayer.cpp:360
 msgid "The nick '$nick' is not registered on this server."
-msgstr ""
+msgstr "Prezývka '$nick' nie je na tomto serveri registrovaná."
 
 #: src/multiplayer.cpp:361
 msgid " This server disallows unregistered nicks."
-msgstr ""
+msgstr " Tento server nepovoľuje neregistrované prezývky."
 
 #: src/multiplayer.cpp:363 src/multiplayer.cpp:365
 msgid "The nick '$nick' is registered on this server."
-msgstr ""
+msgstr "Prezývka '$nick' je na tomto serveri registrovaná."
 
 #: src/multiplayer.cpp:366
 msgid ""
 "WARNING: There is already a client using this nick, logging in will cause "
 "that client to be kicked!"
 msgstr ""
+"VAROVANIE: Túto prezývku už používa iný používateľ, prihlásenie spôsobí "
+"vykopnutie tohto používateľa!"
 
 #: src/multiplayer.cpp:369
+#, fuzzy
 msgid ""
 "Error in the login procedure (the server had no seed for your connection)."
-msgstr ""
+msgstr "Chyba pri prihlasovaní (server nemal seed pre toto pripojenie)."
 
 #: src/multiplayer.cpp:372
 msgid "The password you provided was incorrect."
-msgstr ""
+msgstr "Zadané heslo je nesprávne."
 
 #: src/multiplayer_connect.cpp:82 src/multiplayer_connect.cpp:485
 #: src/multiplayer_connect.cpp:613
@@ -8658,7 +8680,7 @@ msgstr "(Prázdne miesto)"
 
 #: src/multiplayer_connect.cpp:673
 msgid "(Reserved for $playername)"
-msgstr ""
+msgstr "(Vyhradené pre $playername)"
 
 #: src/multiplayer_connect.cpp:803
 msgid "Reserved"
@@ -9352,7 +9374,7 @@ msgstr " vložený z "
 
 #: src/serialization/parser.cpp:357
 msgid "$error, value '$value', previous '$previous_value' at $pos"
-msgstr ""
+msgstr "$error, hodnota '$value', predtým '$previous_value' na $pos"
 
 #: src/serialization/parser.cpp:361
 msgid "$error, value '$value' at $pos"
