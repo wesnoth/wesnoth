@@ -1,14 +1,19 @@
 Version 1.7.0-svn:
+ * General:
+   * The add-ons directory, <preferences>/data/campaigns, has been renamed
+     and it is now <preferences>/data/add-ons
+ * AI:
+   * Fixed incorrect handling of poisoning attacks when suggesting best attack
+     in user interface
  * Editor2:
    * New feature: exporting of selection coordinates to system clipboard
    * Made auto terrain transition mode tri-state: on (editor2's on), partial
      (1.4 editor's on / editor2's off) and off (1.4's off).
- * General:
-   * The add-ons directory, <preferences>/data/campaigns, has been renamed
-     and it is now <preferences>/data/add-ons
-   * Fixed compilation with -D_GLIBCXX_PARALLEL
-   * Fixed handling of floating-point WML constants on localized Windows
-     (impacts "submerge" animations and AI settings)
+ * FormulaAI:
+   * Fixed bug #13230: added debug_float FormulaAI function to allow debugging
+     via floating popups on the specified hex
+   * Added run_file FormulaAI function to allow running .fai scripts directly
+     from in-game console
  * Graphics:
    * The ~RC() image functor does not accept the special palette switch
      ~RC(palette1=palette2) syntax anymore. ~PAL(palette1>palette2) should
@@ -23,14 +28,6 @@ Version 1.7.0-svn:
       German, Finnish, Hebrew, Italian, Russian, Slovak, Turkish
    * Updated CJK character range
    * Fixed word wrapping in CJK languages (patch #1140 from sylecn)
- * AI:
-   * Fixed incorrect handling of poisoning attacks when suggesting best attack
-     in user interface
- * FormulaAI:
-   * Fixed bug #13230: added debug_float FormulaAI function to allow debugging
-     via floating popups on the specified hex
-   * Added run_file FormulaAI function to allow running .fai scripts directly
-     from in-game console
  * User interface:
    * Fixed bug #13257: Attack dialog always uses the active name of a weapon
      special
@@ -41,6 +38,10 @@ Version 1.7.0-svn:
      now (bug #13170)
    * Added a "preload" WML event type.
    * Added support for Lua scripts in WML event actions ([lua] tag)
+ * Miscellaneous and bugfixes:
+   * Fixed compilation with -D_GLIBCXX_PARALLEL
+   * Fixed handling of floating-point WML constants on localized Windows
+     (impacts "submerge" animations and AI settings)
 
 Version 1.6a:
  * User interface:
