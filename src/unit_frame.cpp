@@ -406,7 +406,7 @@ void unit_frame::redraw(const int frame_time,bool first_time,const map_location 
 		if(primary) facing_north = true;
 		game_display::get_singleton()->render_unit_image(x + current_data.x- image->w/2,
 			       	y  + current_data.y- image->h/2,
-			       	(display::tdrawing_layer)(display::LAYER_UNIT_FIRST+current_data.drawing_layer),
+			       	static_cast<display::tdrawing_layer>(display::LAYER_UNIT_FIRST+current_data.drawing_layer),
 			       	src, image, facing_west, false,
 				ftofxp(current_data.highlight_ratio), current_data.blend_with,
 			       	current_data.blend_ratio,current_data.submerge,!facing_north);
