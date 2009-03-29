@@ -91,9 +91,9 @@ void show_intro(display &disp, const vconfig& data, const config& level)
 				const std::string var_expected_value = (j->second)["value"];
 
 			    if(var_actual_value == var_expected_value) {
-			    	not_found = false;
-			    	show_intro(disp, (j->second), level);
-			    	// FIXME: stop? the game_events.cpp version doesn't stop.
+					not_found = false;
+					show_intro(disp, (j->second), level);
+					// FIXME: stop? the game_events.cpp version doesn't stop.
 			    }
 			}
 
