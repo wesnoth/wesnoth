@@ -203,7 +203,8 @@ int positional_source::calculate_volume(const map_location &loc, const display &
 		return 0;
 	}
 
-	return static_cast<int>(( ( (distance - range_) / (double) faderange_) * DISTANCE_SILENT));
+	return static_cast<int>((((distance - range_)
+			/ static_cast<double>(faderange_)) * DISTANCE_SILENT));
 }
 
 void positional_source::add_location(const map_location &loc)
